@@ -26,6 +26,11 @@ const large = useMediaQuery('(min-width: 1024px)')
 const tablet = useMediaQuery('(min-width: 768px)')
 const paletteOpen = ref(false)
 const inspectorOpen = ref(false)
+/** "Add field" from the canvas: the drawer / slide-over below laptop width, else the palette search. */
+function showFieldList() {
+  if (large.value) document.querySelector<HTMLInputElement>('#builder-palette input')?.focus()
+  else paletteOpen.value = true
+}
 
 defineShortcuts({
   meta_d: { handler: () => builder.duplicate(), usingInput: false },
@@ -49,10 +54,10 @@ defineShortcuts({
 
     <div class="grid items-start gap-4 lg:grid-cols-[240px_minmax(0,1fr)_300px]">
       <UCard v-if="large" class="sticky top-0" :ui="{ body: 'p-3 sm:p-3 h-[calc(100dvh-11rem)]' }">
-        <FormsBuilderPalette />
+        <FormsBuilderPalette id="builder-palette" />
       </UCard>
-      <div class="mb-20 min-w-0 rounded-xl bg-elevated/40 p-3 sm:p-5 lg:mb-0">
-        <FormsBuilderCanvas :issues="issues" />
+      <div class="min-w-0 rounded-xl bg-elevated/40 p-3 sm:p-5">
+        <FormsBuilderCanvas :issues="issues" @add-field="showFieldList" />
       </div>
       <UCard v-if="large" class="sticky top-0" :ui="{ body: 'p-4 sm:p-4 h-[calc(100dvh-11rem)]' }">
         <FormsBuilderInspector />
@@ -60,11 +65,18 @@ defineShortcuts({
     </div>
 
     <template v-if="!large">
-      <!-- Below laptop width: palette and settings live in a floating bar at the bottom (thumb reach). -->
-      <div class="pointer-events-none fixed inset-x-0 bottom-4 z-20 flex justify-center px-4">
+      <!-- Below laptop width: field list and settings in a bar that sticks to the bottom of the
+           content (thumb reach) — never over the footer. -->
+      <div class="pointer-events-none sticky bottom-3 z-20 mt-3 flex justify-center">
         <div class="pointer-events-auto flex items-center gap-1 rounded-xl border border-default bg-default p-1 shadow-lg">
           <UButton icon="i-lucide-plus" :label="t('builder.palette.title')" color="neutral" @click="paletteOpen = true" />
-          <UButton icon="i-lucide-sliders-horizontal" :label="t('builder.inspector.panel')" color="neutral" variant="ghost" @click="inspectorOpen = true" />
+          <UButton
+            icon="i-lucide-sliders-horizontal"
+            :label="t('builder.inspector.panel')"
+            color="neutral"
+            variant="ghost"
+            @click="inspectorOpen = true"
+          />
         </div>
       </div>
       <USlideover v-if="tablet" v-model:open="paletteOpen" side="left" :title="t('builder.palette.title')">

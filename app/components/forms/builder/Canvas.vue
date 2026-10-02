@@ -9,6 +9,8 @@ import { VueDraggable } from 'vue-draggable-plus'
 import type { FieldType } from '#shared/utils/forms/fields'
 
 defineProps<{ issues?: Record<string, string> }>()
+/** Ask the page to show the field list (drawer on phones / tablets, palette search on laptops). */
+const emit = defineEmits<{ addField: [] }>()
 const { t } = useI18n()
 const confirm = useConfirm()
 const builder = useBuilder()
@@ -88,6 +90,14 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
         size="sm"
         @click="builder.addPage()"
       />
+      <UButton
+        :label="t('builder.palette.title')"
+        icon="i-lucide-plus"
+        color="neutral"
+        size="sm"
+        class="ms-auto lg:hidden"
+        @click="emit('addField')"
+      />
       <UDropdownMenu :items="pageMenu" :content="{ align: 'start' }">
         <UButton
           icon="i-lucide-ellipsis"
@@ -163,6 +173,17 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
           </div>
         </VueDraggable>
       </VueDraggable>
+
+      <UButton
+        v-if="page.rows.length"
+        :label="t('builder.palette.title')"
+        icon="i-lucide-plus"
+        color="neutral"
+        variant="outline"
+        block
+        class="border border-dashed border-accented bg-transparent text-muted ring-0 hover:text-highlighted"
+        @click.stop="emit('addField')"
+      />
 
       <div
         v-if="!page.rows.length"
