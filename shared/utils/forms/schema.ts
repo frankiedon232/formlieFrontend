@@ -17,9 +17,13 @@ export const formFieldSchema = z.object({
   help: text(2000).optional(),
   width: z.number().int().min(1).max(12).optional(),
   required: z.boolean().optional(),
+  /** Shown and submitted, but can't be changed (e.g. a prefilled reference). Never required. */
+  readonly: z.boolean().optional(),
+  /** Shown greyed out and not submitted. Never required. */
+  disabled: z.boolean().optional(),
   validation: z.record(z.string(), z.unknown()).optional(),
   options: z
-    .array(z.object({ value: text(200), label: text(500) }))
+    .array(z.object({ value: text(200), label: text(500), score: z.number().finite().optional() }))
     .max(500)
     .nullable()
     .optional(),
@@ -35,6 +39,8 @@ export const formSchemaV1 = z.object({
       progress_bar: z.boolean().optional(),
       save_resume: z.boolean().optional(),
       language: text(10).optional(),
+      /** Where labels sit, for the whole form: above the field (default) or beside it. */
+      label_position: z.enum(['top', 'left']).optional(),
     })
     .optional(),
   pages: z

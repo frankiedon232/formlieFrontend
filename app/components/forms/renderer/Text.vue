@@ -48,7 +48,8 @@ const currencySymbol = computed(() => {
     return code
   }
 })
-const readonly = computed(() => props.mode === 'builder' || props.field.type === 'calculated')
+const readonly = computed(() => !!props.field.readonly || props.field.type === 'calculated')
+const disabled = computed(() => !!props.field.disabled)
 </script>
 
 <template>
@@ -68,6 +69,7 @@ const readonly = computed(() => props.mode === 'builder' || props.field.type ===
     :required="field.required"
     :maxlength="(field.validation?.max_length as number | undefined) ?? undefined"
     :readonly="readonly"
+    :disabled="disabled"
     autoresize
     class="w-full"
   />
@@ -80,6 +82,7 @@ const readonly = computed(() => props.mode === 'builder' || props.field.type ===
     :placeholder="field.type === 'calculated' ? t('renderer.calculated') : field.placeholder"
     :required="field.required"
     :readonly="readonly"
+    :disabled="disabled"
     :icon="field.type === 'calculated' ? 'i-lucide-calculator' : ICONS[field.type]"
     :autocomplete="field.type === 'email' ? 'email' : field.type === 'phone' ? 'tel' : undefined"
     class="w-full"

@@ -3,6 +3,7 @@ import {
   allFields,
   blankSchema,
   diffSchemas,
+  fieldKey,
   sectionOwners,
   type FormField,
   keyFromLabel,
@@ -88,5 +89,19 @@ describe('sectionOwners', () => {
       { id: 'r4', fields: [f('c', 'phone')] },
     ])
     expect([...owners.values()]).toEqual([null, null, 's1', null, null])
+  })
+})
+
+describe('field keys and locked fields', () => {
+  it('adds a stable suffix from the field id', () => {
+    expect(fieldKey('Full name', 'fld_k3x9abcdef', [])).toBe('full_name_k3x9')
+    expect(fieldKey('Full name', 'fld_k3x9abcdef', ['full_name_k3x9'])).toBe('full_name_k3x9_2')
+  })
+
+  it('flags required fields nobody can fill in', () => {
+    const schema = starterSchema('contact_lead')
+    const field = allFields(schema).find(f => f.required)!
+    field.readonly = true
+    expect(publishIssues(schema).some(i => i.code === 'locked_required' && i.field_id === field.id)).toBe(true)
   })
 })

@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Ombi limeghairiwa.",
     "FRM-NET-1002": "Jibu lisilotarajiwa kutoka kwa seva.",
     "FRM-FORM-1007": "Hili haliwezekani katika hali ya sasa ya fomu. Onyesha upya kisha ujaribu tena.",
-    "FRM-FORM-1008": "Tayari kuna folda yenye jina hili."
+    "FRM-FORM-1008": "Tayari kuna folda yenye jina hili.",
+    "FRM-FORM-1009": "Orodha yenye jina hili tayari ipo."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "Ufunguo wa API",
       "export": "Uhamishaji",
-      "folder": "Folda"
+      "folder": "Folda",
+      "saved_field": "Sehemu iliyohifadhiwa",
+      "option_list": "Orodha ya chaguo"
     },
     "field": {
       "name": "Jina",
@@ -635,7 +638,12 @@
       "forms_purged": "Fomu imefutwa kabisa",
       "forms_folder_created": "Folda imeundwa",
       "forms_folder_renamed": "Folda imebadilishwa jina",
-      "forms_folder_deleted": "Folda imefutwa"
+      "forms_folder_deleted": "Folda imefutwa",
+      "forms_field_saved": "Sehemu imehifadhiwa kwenye maktaba",
+      "forms_field_removed": "Sehemu imeondolewa kwenye maktaba",
+      "forms_list_created": "Orodha imeundwa",
+      "forms_list_updated": "Orodha imesasishwa",
+      "forms_list_deleted": "Orodha imefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -982,12 +990,13 @@
       "no_inputs": "Ongeza angalau swali moja",
       "empty_label": "Swali moja halina lebo",
       "duplicate_key": "Sehemu mbili zinatumia ufunguo mmoja",
-      "no_options": "Sehemu ya chaguo haina chaguo"
+      "no_options": "Sehemu ya chaguo haina chaguo",
+      "locked_required": "Ni lazima, lakini wajibuji hawawezi kuijaza (imefichwa, kusoma tu au imezimwa)"
     },
     "inspector": {
       "panel": "Mipangilio ya sehemu",
       "basics": "Msingi",
-      "label": "Swali",
+      "label": "Lebo",
       "title": "Kichwa",
       "help": "Maandishi ya msaada",
       "placeholder": "Maandishi ya mfano",
@@ -1061,7 +1070,10 @@
       "message": "Ujumbe",
       "collapsible": "Inayokunjika",
       "collapsibleHint": "Wanaojibu wanaweza kukunja maswali yaliyo chini ya kichwa hiki.",
-      "startCollapsed": "Anza ikiwa imekunjwa"
+      "startCollapsed": "Anza ikiwa imekunjwa",
+      "numbered": "Pa chaguo namba",
+      "numberedHint": "Kwa hesabu: chaguo lililochaguliwa huhesabiwa kama namba yake.",
+      "optionScore": "Namba ya {label}"
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -1083,6 +1095,53 @@
       "build": "Jenga",
       "logic": "Mantiki",
       "versions": "Matoleo"
+    },
+    "renameHint": "Bofya mara mbili ili kubadilisha jina",
+    "access": {
+      "label": "Jibu",
+      "editable": "Inaharirika",
+      "readonly": "Kusoma tu",
+      "disabled": "Imezimwa",
+      "editableHint": "Wajibuji wanaweza kujaza hii.",
+      "readonlyHint": "Inaonyeshwa na kutumwa pamoja na jibu, lakini haiwezi kubadilishwa — k.m. kumbukumbu iliyojazwa awali.",
+      "disabledHint": "Inaonyeshwa kwa rangi ya kijivu na haitumwi pamoja na jibu.",
+      "noRequired": "Sehemu za kusoma tu na zilizozimwa haziwezi kuwa lazima — hakuna anayeweza kuzijaza."
+    },
+    "labels": {
+      "title": "Mahali pa lebo",
+      "top": "Juu ya sehemu",
+      "left": "Kando ya sehemu",
+      "hint": "Mpangilio mmoja kwa fomu nzima. Kwenye simu lebo huwa juu kila wakati."
+    },
+    "files": {
+      "hint": "Acha tupu ili kukubali faili yoyote. Tafuta, au andika aina isiyoorodheshwa (k.m. .xyz).",
+      "any": "Aina yoyote ya faili",
+      "anyButton": "Ruhusu zote",
+      "search": "Tafuta aina za faili…",
+      "count": "Aina {count} imeruhusiwa | Aina {count} zimeruhusiwa",
+      "custom": "Imeongezwa na wewe",
+      "remove": "Ondoa {type}",
+      "all": {
+        "images": "Picha zote",
+        "audio": "Sauti zote",
+        "video": "Video zote"
+      },
+      "group": {
+        "images": "Picha",
+        "documents": "Hati",
+        "spreadsheets": "Lahajedwali",
+        "presentations": "Mawasilisho",
+        "audio": "Sauti",
+        "video": "Video",
+        "archives": "Kumbukumbu zilizobanwa",
+        "ebooks": "Vitabu pepe",
+        "data": "Data na barua pepe",
+        "code": "Msimbo",
+        "design": "Usanifu na 3D",
+        "fonts": "Fonti",
+        "security": "Funguo na vyeti",
+        "apps": "Programu na visakinishi"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Tuma",
     "next": "Endelea",
-    "thanks": "Asante!"
+    "thanks": "Asante!",
+    "moreInfo": "Zaidi kuhusu “{field}”",
+    "openCalendar": "Fungua kalenda",
+    "fileRejected": "Haijaongezwa: {files}. Angalia aina za faili zinazoruhusiwa na kikomo cha MB {mb}."
   },
   "logic": {
     "crumb": "Mantiki",
@@ -1158,7 +1220,11 @@
       "field": "Inatumia sehemu iliyofutwa",
       "value": "Thamani haipo",
       "target": "Lengo halipo",
-      "noAction": "Hakuna kitendo"
+      "noAction": "Hakuna kitendo",
+      "requireLocked": "Haiwezekani kufanya sehemu iliyofichwa, ya kusoma tu au iliyozimwa kuwa lazima",
+      "self": "Inaficha au kufuta swali inaloliangalia",
+      "backwards": "Kuruka kunaweza kwenda mbele tu",
+      "conflict": "Inaficha na kulazimisha swali lilelile"
     },
     "op": {
       "eq": "ni",
@@ -1174,13 +1240,30 @@
       "true": "imewashwa",
       "false": "imezimwa",
       "before": "ni kabla ya",
-      "after": "ni baada ya"
+      "after": "ni baada ya",
+      "starts_with": "inaanza na",
+      "ends_with": "inaishia na",
+      "between": "iko kati ya",
+      "not_between": "haiko kati ya",
+      "in": "ni yoyote kati ya",
+      "not_in": "si yoyote kati ya",
+      "contains_all": "ina zote kati ya",
+      "count_gte": "imechaguliwa angalau …",
+      "count_lte": "imechaguliwa hadi …"
     },
     "action": {
       "show": "Onyesha",
       "hide": "Ficha",
       "require": "Fanya lazima",
-      "jump": "Nenda kwa ukurasa"
+      "jump": "Nenda kwa ukurasa",
+      "unrequire": "Fanya hiari",
+      "enable": "Washa",
+      "disable": "Zima",
+      "set_value": "Weka jibu",
+      "clear_value": "Futa jibu",
+      "show_page": "Onyesha ukurasa",
+      "hide_page": "Ficha ukurasa",
+      "skip_to_end": "Ruka hadi mwisho"
     },
     "sentence": {
       "rule": "Ikiwa {conditions}, {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "onyesha {target}",
       "hide": "ficha {target}",
       "require": "fanya {target} kuwa lazima",
-      "jump": "nenda kwa {target}"
+      "jump": "nenda kwa {target}",
+      "starts_with": "{field} inaanza na {value}",
+      "ends_with": "{field} inaishia na {value}",
+      "between": "{field} iko kati ya {value} na {value2}",
+      "not_between": "{field} haiko kati ya {value} na {value2}",
+      "in": "{field} ni yoyote kati ya {value}",
+      "not_in": "{field} si yoyote kati ya {value}",
+      "contains_all": "{field} ina zote kati ya {value}",
+      "count_gte": "{field} ina angalau {value} zilizochaguliwa",
+      "count_lte": "{field} ina hadi {value} zilizochaguliwa",
+      "unrequire": "fanya {target} kuwa hiari",
+      "enable": "washa {target}",
+      "disable": "zima {target}",
+      "set_value": "weka {target} kuwa {value}",
+      "clear_value": "futa {target}",
+      "show_page": "onyesha ukurasa {target}",
+      "hide_page": "ruka ukurasa {target}",
+      "skip_to_end": "ruka hadi mwisho"
     },
     "emptyTitle": "Bado hakuna kanuni",
     "emptyDesc": "Onyesha, ficha au lazimisha maswali kulingana na majibu ya awali, au ruka hadi ukurasa mwingine.",
@@ -1220,7 +1320,71 @@
       "use": "Weka:",
       "empty": "Ongeza fomula",
       "unknown": "Hakuna sehemu inayotumia ufunguo “{key}”",
-      "self": "Sehemu haiwezi kujitumia yenyewe"
+      "self": "Sehemu haiwezi kujitumia yenyewe",
+      "syntax": "Fomula hii haijakamilika — angalia mabano, koma na viendeshaji",
+      "functions": "Vitendakazi:",
+      "choiceScored": "Huhesabiwa kama namba ya chaguo lililochaguliwa",
+      "choiceUnscored": "Pa chaguo zake namba (mipangilio ya sehemu → Chaguo) ili uitumie katika jumla",
+      "guideTitle": "Jinsi fomula zinavyofanya kazi",
+      "guideMath": "Tumia namba, + − * / na mabano: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Maswali ya kuchagua huhesabiwa kama namba iliyopewa chaguo lililochaguliwa (Chaguo → Pa chaguo namba); yakichaguliwa kadhaa hujumlishwa.",
+      "guideIf": "Chagua thamani kwa sharti: if({'{'}plan{'}'} = \"Premium\", 50, 10). Linganisha kwa = != > >= < <=.",
+      "guideFunctions": "Pia: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Ndiyo",
+    "no": "Hapana",
+    "from": "Kutoka",
+    "to": "Hadi",
+    "pickValues": "Chagua majibu",
+    "typeValues": "Andika thamani, bonyeza Enter",
+    "noValueNeeded": "Hakuna jibu linalohitajika",
+    "setValueFor": "Thamani ya {field}",
+    "ifBadge": "1 · IKIWA",
+    "thenBadge": "2 · KISHA",
+    "ifTitle": "Angalia majibu haya",
+    "thenTitle": "Kisha fanya hivi",
+    "ifHelp": "Chagua swali, jinsi ya kulilinganisha, na jibu litakaloanzisha kanuni.",
+    "thenHelp": "Chagua kitakachotokea majibu yakilingana — na kwa swali au ukurasa upi.",
+    "matchLead": "Endesha kanuni wakati",
+    "andChip": "na",
+    "orChip": "au",
+    "colQuestion": "Swali",
+    "colCondition": "Sharti",
+    "colAnswer": "Jibu",
+    "colAction": "Kitendo",
+    "colTarget": "Swali au ukurasa",
+    "problemCount": "Jambo {count} la kurekebisha | Mambo {count} ya kurekebisha",
+    "actionDesc": {
+      "show": "Weka swali likiwa limefichwa hadi kanuni hii ilingane.",
+      "hide": "Ficha swali wakati kanuni hii inalingana.",
+      "require": "Fanya swali kuwa lazima wakati kanuni hii inalingana.",
+      "unrequire": "Ruhusu wajibuji kuruka swali la lazima.",
+      "enable": "Ruhusu wajibuji kubadilisha swali lililozimwa.",
+      "disable": "Fanya swali kuwa la kijivu ili lisibadilishwe.",
+      "set_value": "Jaza jibu kiotomatiki.",
+      "clear_value": "Futa jibu ambalo halihusiki tena.",
+      "show_page": "Weka ukurasa ukiwa umefichwa hadi kanuni hii ilingane.",
+      "hide_page": "Ruka ukurasa wakati kanuni hii inalingana.",
+      "jump": "Baada ya ukurasa huu, endelea kwenye ukurasa mwingine.",
+      "skip_to_end": "Baada ya ukurasa huu, nenda moja kwa moja kuwasilisha."
+    },
+    "starter": {
+      "show": {
+        "title": "Onyesha swali",
+        "text": "Uliza swali la ziada pale tu jibu la awali linapohitaji."
+      },
+      "require": {
+        "title": "Fanya swali kuwa lazima",
+        "text": "Omba maelezo zaidi katika baadhi ya hali tu."
+      },
+      "jump": {
+        "title": "Ruka hadi ukurasa",
+        "text": "Wapeleke wajibuji kwenye ukurasa unaolingana na majibu yao."
+      },
+      "set_value": {
+        "title": "Jaza jibu",
+        "text": "Weka jibu kiotomatiki kutokana na majibu ya awali."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Imeondolewa",
       "pages": "Kurasa {n}",
       "rules": "Kanuni {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Vyanzo vya sehemu",
+    "tab": {
+      "fields": "Sehemu",
+      "saved": "Zilizohifadhiwa",
+      "lists": "Orodha"
+    },
+    "searchSaved": "Tafuta sehemu zilizohifadhiwa…",
+    "searchLists": "Tafuta orodha…",
+    "saveShort": "Hifadhi",
+    "saveField": "Hifadhi sehemu",
+    "saveFieldHint": "Hifadhi sehemu hii ili uitumie tena katika fomu yoyote",
+    "saveFieldTitle": "Hifadhi sehemu",
+    "saveFieldDesc": "Itaonekana chini ya Zilizohifadhiwa katika orodha ya sehemu, pamoja na mipangilio yake yote, kwa kila fomu katika eneo hili la kazi.",
+    "fieldName": "Jina",
+    "nameRequired": "Weka jina.",
+    "savedEmptyTitle": "Bado hakuna sehemu zilizohifadhiwa",
+    "savedEmptyDesc": "Chagua sehemu kisha uchague Hifadhi katika mipangilio yake ili uitumie tena hapa.",
+    "removeField": "Ondoa {name} kwenye sehemu zilizohifadhiwa",
+    "removeFieldTitle": "Ungependa kuondoa “{name}” kwenye sehemu zilizohifadhiwa?",
+    "removeFieldDesc": "Fomu ambazo tayari zinaitumia zitabaki na nakala yao.",
+    "remove": "Ondoa",
+    "newList": "Orodha mpya",
+    "newListTitle": "Orodha mpya",
+    "editList": "Hariri orodha",
+    "editListTitle": "Hariri orodha",
+    "deleteList": "Futa orodha",
+    "deleteListTitle": "Ungependa kufuta orodha “{name}”?",
+    "deleteListDesc": "Sehemu ambazo tayari zinaitumia zitabaki na chaguo zao.",
+    "listDesc": "Chaguo zinazotumika tena kwa sehemu yoyote ya kuchagua — nchi, maeneo, bidhaa, timu …",
+    "listName": "Jina",
+    "listNamePlaceholder": "k.m. Maeneo",
+    "listOptions": "Chaguo",
+    "listOptionsPlaceholder": "Chaguo moja kwa kila mstari",
+    "optionsRequired": "Ongeza angalau chaguo moja.",
+    "optionsTooMany": "Orodha inaweza kuwa na hadi chaguo 2,000.",
+    "optionCount": "Chaguo {count} | Chaguo {count}",
+    "listsEmptyTitle": "Bado hakuna orodha",
+    "listsEmptyDesc": "Unda orodha mara moja na uitumie katika sehemu yoyote ya menyu kunjuzi, redio au kisanduku cha kuteua.",
+    "addList": "Ongeza {name} kama menyu kunjuzi",
+    "addAs": "Ongeza kama {type}",
+    "listMenu": "Vitendo vya {name}",
+    "useList": "Jaza kutoka kwenye orodha…",
+    "saveAsList": "Hifadhi kama orodha",
+    "toast": {
+      "fieldSaved": "“{name}” imehifadhiwa — iko chini ya Zilizohifadhiwa",
+      "fieldRemoved": "“{name}” imeondolewa kwenye sehemu zilizohifadhiwa",
+      "listCreated": "Orodha “{name}” imeundwa",
+      "listUpdated": "Orodha “{name}” imesasishwa",
+      "listDeleted": "Orodha “{name}” imefutwa"
     }
   }
 }

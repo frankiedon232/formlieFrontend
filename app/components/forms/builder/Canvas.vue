@@ -14,14 +14,7 @@ const confirm = useConfirm()
 const builder = useBuilder()
 const { page, pages, pageId, selected } = builder
 
-const SPAN: Record<number, string> = {
-  12: 'sm:col-span-12',
-  9: 'sm:col-span-9',
-  8: 'sm:col-span-8',
-  6: 'sm:col-span-6',
-  4: 'sm:col-span-4',
-  3: 'sm:col-span-3',
-}
+const labelPosition = computed(() => builder.schema.value?.settings?.label_position ?? 'top')
 const tabs = computed(() =>
   pages.value.map((p, i) => ({ value: p.id, label: p.title || t('builder.page.default', { n: i + 1 }) })),
 )
@@ -107,7 +100,12 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
       </UDropdownMenu>
     </div>
 
-    <UCard v-if="page" class="mx-auto w-full max-w-3xl" :ui="{ body: 'flex flex-col gap-5 p-4 sm:p-8' }">
+    <UCard
+      v-if="page"
+      class="mx-auto w-full max-w-3xl @container"
+      :class="FORM_RADIUS"
+      :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-8' }"
+    >
       <div v-if="pages.length > 1" class="flex flex-col gap-1.5" @click.stop>
         <div class="flex justify-between text-xs text-muted">
           <span>{{ t('builder.page.stepOf', { n: pageIndex + 1, total: pages.length }) }}</span>
@@ -133,7 +131,7 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
         handle="[data-no-row-drag]"
         :animation="150"
         ghost-class="opacity-40"
-        class="flex min-h-24 flex-col gap-5"
+        class="flex min-h-24 flex-col gap-1"
         @add="afterDrop"
         @end="afterDrop"
       >
@@ -145,18 +143,19 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
           handle="[data-drag-handle]"
           :animation="150"
           ghost-class="opacity-40"
-          class="grid grid-cols-12 gap-x-4 gap-y-5"
+          class="grid grid-cols-12 gap-x-2 gap-y-1"
           @start="builder.history.record()"
           @end="afterDrop"
         >
           <div
             v-for="field in row.fields"
             :key="field.id"
-            class="col-span-12"
-            :class="SPAN[field.width ?? 12]"
+            class="col-span-12 @container"
+            :class="FIELD_SPAN[field.width ?? 12]"
           >
             <FormsBuilderFieldShell
               :field="field"
+              :label-position="labelPosition"
               :selected="selected.includes(field.id)"
               :issue="issues?.[field.id]"
               @remove="builder.removeWithUndo([field.id])"
@@ -167,7 +166,7 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
 
       <div
         v-if="!page.rows.length"
-        class="pointer-events-none -mt-29 flex flex-col items-center gap-3 rounded-lg border border-dashed border-default px-4 py-10 text-center"
+        class="pointer-events-none -mt-28 flex flex-col items-center gap-3 rounded-lg border border-dashed border-default px-4 py-10 text-center"
       >
         <!-- Lets drags pass through to the drop area underneath; only the buttons take clicks. -->
         <UIcon name="i-lucide-mouse-pointer-click" class="size-6 text-muted" />

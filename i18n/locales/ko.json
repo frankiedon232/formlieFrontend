@@ -317,7 +317,8 @@
     "FRM-NET-1001": "요청이 취소되었습니다.",
     "FRM-NET-1002": "서버에서 예상치 못한 응답을 받았습니다.",
     "FRM-FORM-1007": "양식의 현재 상태에서는 할 수 없습니다. 새로 고친 후 다시 시도하세요.",
-    "FRM-FORM-1008": "같은 이름의 폴더가 이미 있습니다."
+    "FRM-FORM-1008": "같은 이름의 폴더가 이미 있습니다.",
+    "FRM-FORM-1009": "같은 이름의 목록이 이미 있습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -570,7 +571,9 @@
       "webhook": "웹훅",
       "api_key": "API 키",
       "export": "내보내기",
-      "folder": "폴더"
+      "folder": "폴더",
+      "saved_field": "저장된 항목",
+      "option_list": "옵션 목록"
     },
     "field": {
       "name": "이름",
@@ -635,7 +638,12 @@
       "forms_purged": "양식 영구 삭제됨",
       "forms_folder_created": "폴더 생성됨",
       "forms_folder_renamed": "폴더 이름 변경됨",
-      "forms_folder_deleted": "폴더 삭제됨"
+      "forms_folder_deleted": "폴더 삭제됨",
+      "forms_field_saved": "항목을 라이브러리에 저장함",
+      "forms_field_removed": "항목을 라이브러리에서 제거함",
+      "forms_list_created": "목록 생성됨",
+      "forms_list_updated": "목록 업데이트됨",
+      "forms_list_deleted": "목록 삭제됨"
     },
     "detail": {
       "who": "누가",
@@ -982,12 +990,13 @@
       "no_inputs": "질문을 하나 이상 추가하세요",
       "empty_label": "레이블이 없는 질문이 있습니다",
       "duplicate_key": "두 항목이 같은 키를 사용합니다",
-      "no_options": "옵션이 없는 선택 항목이 있습니다"
+      "no_options": "옵션이 없는 선택 항목이 있습니다",
+      "locked_required": "필수이지만 응답자가 입력할 수 없음(숨김, 읽기 전용 또는 사용 안 함)"
     },
     "inspector": {
       "panel": "항목 설정",
       "basics": "기본",
-      "label": "질문",
+      "label": "레이블",
       "title": "제목",
       "help": "도움말",
       "placeholder": "자리 표시자",
@@ -1061,7 +1070,10 @@
       "message": "메시지",
       "collapsible": "접기 가능",
       "collapsibleHint": "응답자가 이 제목 아래의 질문을 접을 수 있습니다.",
-      "startCollapsed": "접힌 상태로 시작"
+      "startCollapsed": "접힌 상태로 시작",
+      "numbered": "옵션에 번호 지정",
+      "numberedHint": "계산용: 선택한 옵션은 해당 번호로 계산됩니다.",
+      "optionScore": "{label}의 번호"
     },
     "shortcuts": {
       "title": "단축키",
@@ -1083,6 +1095,53 @@
       "build": "만들기",
       "logic": "로직",
       "versions": "버전"
+    },
+    "renameHint": "두 번 클릭하여 이름 변경",
+    "access": {
+      "label": "응답",
+      "editable": "편집 가능",
+      "readonly": "읽기 전용",
+      "disabled": "사용 안 함",
+      "editableHint": "응답자가 입력할 수 있습니다.",
+      "readonlyHint": "표시되고 응답과 함께 전송되지만 변경할 수 없습니다. 예: 미리 채운 참조 번호.",
+      "disabledHint": "회색으로 표시되며 응답과 함께 전송되지 않습니다.",
+      "noRequired": "읽기 전용 및 사용 안 함 항목은 필수로 지정할 수 없습니다. 아무도 입력할 수 없기 때문입니다."
+    },
+    "labels": {
+      "title": "레이블 위치",
+      "top": "항목 위",
+      "left": "항목 옆",
+      "hint": "양식 전체에 적용되는 설정입니다. 휴대폰에서는 레이블이 항상 위에 표시됩니다."
+    },
+    "files": {
+      "hint": "비워 두면 모든 파일을 허용합니다. 검색하거나 목록에 없는 형식을 입력하세요(예: .xyz).",
+      "any": "모든 파일 형식",
+      "anyButton": "모두 허용",
+      "search": "파일 형식 검색…",
+      "count": "{count}개 형식 허용 | {count}개 형식 허용",
+      "custom": "직접 추가함",
+      "remove": "{type} 제거",
+      "all": {
+        "images": "모든 이미지",
+        "audio": "모든 오디오",
+        "video": "모든 동영상"
+      },
+      "group": {
+        "images": "이미지",
+        "documents": "문서",
+        "spreadsheets": "스프레드시트",
+        "presentations": "프레젠테이션",
+        "audio": "오디오",
+        "video": "동영상",
+        "archives": "압축 파일",
+        "ebooks": "전자책",
+        "data": "데이터 및 이메일",
+        "code": "코드",
+        "design": "디자인 및 3D",
+        "fonts": "글꼴",
+        "security": "키 및 인증서",
+        "apps": "앱 및 설치 파일"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "제출",
     "next": "다음",
-    "thanks": "감사합니다!"
+    "thanks": "감사합니다!",
+    "moreInfo": "‘{field}’ 자세히 보기",
+    "openCalendar": "달력 열기",
+    "fileRejected": "추가되지 않음: {files}. 허용된 파일 형식과 {mb} MB 제한을 확인하세요."
   },
   "logic": {
     "crumb": "로직",
@@ -1158,7 +1220,11 @@
       "field": "삭제된 필드 사용",
       "value": "값 없음",
       "target": "대상 없음",
-      "noAction": "동작 없음"
+      "noAction": "동작 없음",
+      "requireLocked": "숨김, 읽기 전용 또는 사용 안 함 항목은 필수로 지정할 수 없습니다",
+      "self": "확인하는 질문 자체를 숨기거나 지웁니다",
+      "backwards": "이동은 앞쪽 페이지로만 가능합니다",
+      "conflict": "같은 질문을 숨기면서 필수로 지정합니다"
     },
     "op": {
       "eq": "같음",
@@ -1174,13 +1240,30 @@
       "true": "켜짐",
       "false": "꺼짐",
       "before": "이전",
-      "after": "이후"
+      "after": "이후",
+      "starts_with": "다음으로 시작",
+      "ends_with": "다음으로 끝남",
+      "between": "사이",
+      "not_between": "범위 밖",
+      "in": "다음 중 하나",
+      "not_in": "다음 중 해당 없음",
+      "contains_all": "모두 포함",
+      "count_gte": "… 개 이상 선택",
+      "count_lte": "… 개 이하 선택"
     },
     "action": {
       "show": "표시",
       "hide": "숨기기",
       "require": "필수로 지정",
-      "jump": "페이지로 이동"
+      "jump": "페이지로 이동",
+      "unrequire": "선택 사항으로 지정",
+      "enable": "사용",
+      "disable": "사용 안 함",
+      "set_value": "응답 설정",
+      "clear_value": "응답 지우기",
+      "show_page": "페이지 표시",
+      "hide_page": "페이지 숨기기",
+      "skip_to_end": "끝으로 건너뛰기"
     },
     "sentence": {
       "rule": "‘{conditions}’ 조건을 충족하면 {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "{target} 표시",
       "hide": "{target} 숨기기",
       "require": "{target} 필수로 지정",
-      "jump": "{target}(으)로 이동"
+      "jump": "{target}(으)로 이동",
+      "starts_with": "{field} {value}(으)로 시작",
+      "ends_with": "{field} {value}(으)로 끝남",
+      "between": "{field} {value}~{value2} 사이",
+      "not_between": "{field} {value}~{value2} 범위 밖",
+      "in": "{field} {value} 중 하나",
+      "not_in": "{field} {value} 중 해당 없음",
+      "contains_all": "{field}에 {value} 모두 포함",
+      "count_gte": "{field} {value}개 이상 선택",
+      "count_lte": "{field} {value}개 이하 선택",
+      "unrequire": "{target} 선택 사항으로 지정",
+      "enable": "{target} 사용",
+      "disable": "{target} 사용 안 함",
+      "set_value": "{target}을(를) {value}(으)로 설정",
+      "clear_value": "{target} 지우기",
+      "show_page": "{target} 페이지 표시",
+      "hide_page": "{target} 페이지 건너뛰기",
+      "skip_to_end": "끝으로 건너뛰기"
     },
     "emptyTitle": "아직 규칙이 없습니다",
     "emptyDesc": "이전 답변에 따라 질문을 표시하거나 숨기거나 필수로 지정하고, 다른 페이지로 건너뛸 수 있습니다.",
@@ -1220,7 +1320,71 @@
       "use": "삽입:",
       "empty": "수식 추가",
       "unknown": "“{key}” 키를 사용하는 필드가 없습니다",
-      "self": "필드는 자기 자신을 사용할 수 없습니다"
+      "self": "필드는 자기 자신을 사용할 수 없습니다",
+      "syntax": "수식이 완전하지 않습니다 — 괄호, 쉼표, 연산자를 확인하세요",
+      "functions": "함수:",
+      "choiceScored": "선택한 옵션의 번호로 계산됩니다",
+      "choiceUnscored": "합계에 사용하려면 옵션에 번호를 지정하세요(항목 설정 → 옵션)",
+      "guideTitle": "수식 사용법",
+      "guideMath": "숫자, + − * / 와 괄호를 사용하세요: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "선택형 질문은 선택한 옵션에 지정한 번호로 계산됩니다(옵션 → 옵션에 번호 지정). 여러 개를 선택하면 합산됩니다.",
+      "guideIf": "조건에 따라 값 선택: if({'{'}plan{'}'} = \"Premium\", 50, 10). 비교에는 = != > >= < <= 를 사용합니다.",
+      "guideFunctions": "그 외: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "예",
+    "no": "아니요",
+    "from": "시작",
+    "to": "끝",
+    "pickValues": "응답 선택",
+    "typeValues": "값을 입력하고 Enter",
+    "noValueNeeded": "응답 필요 없음",
+    "setValueFor": "{field} 값",
+    "ifBadge": "1 · 조건",
+    "thenBadge": "2 · 동작",
+    "ifTitle": "확인할 응답",
+    "thenTitle": "실행할 동작",
+    "ifHelp": "질문, 비교 방법, 규칙을 실행할 응답을 선택하세요.",
+    "thenHelp": "응답이 일치할 때 실행할 동작과 대상 질문 또는 페이지를 선택하세요.",
+    "matchLead": "규칙 실행 조건",
+    "andChip": "그리고",
+    "orChip": "또는",
+    "colQuestion": "질문",
+    "colCondition": "조건",
+    "colAnswer": "응답",
+    "colAction": "동작",
+    "colTarget": "질문 또는 페이지",
+    "problemCount": "수정할 항목 {count}개 | 수정할 항목 {count}개",
+    "actionDesc": {
+      "show": "이 규칙이 일치할 때까지 질문을 숨깁니다.",
+      "hide": "이 규칙이 일치하는 동안 질문을 숨깁니다.",
+      "require": "이 규칙이 일치하는 동안 질문을 필수로 지정합니다.",
+      "unrequire": "응답자가 필수 질문을 건너뛸 수 있게 합니다.",
+      "enable": "응답자가 사용 안 함 질문을 변경할 수 있게 합니다.",
+      "disable": "질문을 회색으로 표시하여 변경할 수 없게 합니다.",
+      "set_value": "응답을 자동으로 채웁니다.",
+      "clear_value": "더 이상 해당하지 않는 응답을 비웁니다.",
+      "show_page": "이 규칙이 일치할 때까지 페이지를 숨깁니다.",
+      "hide_page": "이 규칙이 일치하는 동안 페이지를 건너뜁니다.",
+      "jump": "이 페이지 다음에 다른 페이지로 이어집니다.",
+      "skip_to_end": "이 페이지 다음에 바로 제출로 이동합니다."
+    },
+    "starter": {
+      "show": {
+        "title": "질문 표시",
+        "text": "이전 응답에 따라 필요할 때만 추가 질문을 합니다."
+      },
+      "require": {
+        "title": "질문을 필수로 지정",
+        "text": "일부 경우에만 세부 정보를 요구합니다."
+      },
+      "jump": {
+        "title": "페이지로 건너뛰기",
+        "text": "응답에 맞는 페이지로 응답자를 안내합니다."
+      },
+      "set_value": {
+        "title": "응답 채우기",
+        "text": "이전 응답을 바탕으로 응답을 자동 설정합니다."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "삭제됨",
       "pages": "페이지 {n}",
       "rules": "규칙 {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "항목 출처",
+    "tab": {
+      "fields": "항목",
+      "saved": "저장됨",
+      "lists": "목록"
+    },
+    "searchSaved": "저장된 항목 검색…",
+    "searchLists": "목록 검색…",
+    "saveShort": "저장",
+    "saveField": "항목 저장",
+    "saveFieldHint": "이 항목을 저장하여 모든 양식에서 재사용",
+    "saveFieldTitle": "항목 저장",
+    "saveFieldDesc": "이 워크스페이스의 모든 양식에서 항목 목록의 ‘저장됨’에 모든 설정과 함께 표시됩니다.",
+    "fieldName": "이름",
+    "nameRequired": "이름을 입력하세요.",
+    "savedEmptyTitle": "저장된 항목이 아직 없습니다",
+    "savedEmptyDesc": "항목을 선택하고 설정에서 ‘저장’을 선택하면 여기에서 재사용할 수 있습니다.",
+    "removeField": "저장된 항목에서 {name} 제거",
+    "removeFieldTitle": "저장된 항목에서 ‘{name}’을(를) 제거할까요?",
+    "removeFieldDesc": "이미 사용 중인 양식은 사본을 유지합니다.",
+    "remove": "제거",
+    "newList": "새 목록",
+    "newListTitle": "새 목록",
+    "editList": "목록 편집",
+    "editListTitle": "목록 편집",
+    "deleteList": "목록 삭제",
+    "deleteListTitle": "‘{name}’ 목록을 삭제할까요?",
+    "deleteListDesc": "이미 사용 중인 항목은 옵션을 유지합니다.",
+    "listDesc": "모든 선택형 항목에서 재사용할 수 있는 옵션 — 국가, 지역, 제품, 팀 등",
+    "listName": "이름",
+    "listNamePlaceholder": "예: 지역",
+    "listOptions": "옵션",
+    "listOptionsPlaceholder": "한 줄에 옵션 하나",
+    "optionsRequired": "옵션을 하나 이상 추가하세요.",
+    "optionsTooMany": "목록에는 옵션을 최대 2,000개까지 넣을 수 있습니다.",
+    "optionCount": "옵션 {count}개 | 옵션 {count}개",
+    "listsEmptyTitle": "목록이 아직 없습니다",
+    "listsEmptyDesc": "목록을 한 번 만들면 드롭다운, 라디오, 체크박스 항목에서 사용할 수 있습니다.",
+    "addList": "{name}을(를) 드롭다운으로 추가",
+    "addAs": "{type}(으)로 추가",
+    "listMenu": "{name} 옵션",
+    "useList": "목록에서 채우기…",
+    "saveAsList": "목록으로 저장",
+    "toast": {
+      "fieldSaved": "‘{name}’ 저장됨 — ‘저장됨’에서 찾을 수 있습니다",
+      "fieldRemoved": "저장된 항목에서 ‘{name}’ 제거됨",
+      "listCreated": "‘{name}’ 목록 생성됨",
+      "listUpdated": "‘{name}’ 목록 업데이트됨",
+      "listDeleted": "‘{name}’ 목록 삭제됨"
     }
   }
 }

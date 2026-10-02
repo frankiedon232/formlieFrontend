@@ -35,6 +35,20 @@ export function keyFromLabel(label: string, taken: Iterable<string>): string {
   return `${base}_${n}`
 }
 
+/**
+ * Field key for the builder: the label as snake_case plus a short suffix taken from the field id
+ * (`full_name_k3x9`) — unique even when two fields share a label, and stable while the label
+ * changes. Read-only in the UI; it names the answer in exports, integrations and formulas.
+ */
+export function fieldKey(label: string, id: string, taken: Iterable<string>): string {
+  const suffix = id.replace(/^[a-z]+_/, '').slice(0, 4) || 'x'
+  const base = keyFromLabel(label, []).slice(0, 40)
+  return keyFromLabel(`${base}_${suffix}`, taken)
+}
+
+/** Read-only or disabled: shown but not editable by respondents, so it can never be required. */
+export const isLocked = (field: Pick<FormField, 'readonly' | 'disabled'>) => !!field.readonly || !!field.disabled
+
 export const allFields = (schema: FormSchemaV1): FormField[] =>
   schema.pages.flatMap(page => page.rows.flatMap(row => row.fields))
 
@@ -266,7 +280,7 @@ export function starterSchema(key: StarterTemplateKey): FormSchemaV1 {
 
 // ── Publish checks ──────────────────────────────────────────────────────────────────
 
-export type PublishIssueCode = 'no_inputs' | 'empty_label' | 'duplicate_key' | 'no_options'
+export type PublishIssueCode = 'no_inputs' | 'empty_label' | 'duplicate_key' | 'no_options' | 'locked_required'
 
 export interface PublishIssue {
   code: PublishIssueCode
@@ -285,6 +299,8 @@ export function publishIssues(schema: FormSchemaV1): PublishIssue[] {
     if ((seen.get(f.key) ?? 0) > 1) issues.push({ code: 'duplicate_key', field_id: f.id })
     if (hasOptions(f.type) && !f.option_set_id && !(f.options?.length ?? 0))
       issues.push({ code: 'no_options', field_id: f.id })
+    // Nobody could fill these in, so the form could never be submitted.
+    if (f.required && (isLocked(f) || f.type === 'hidden')) issues.push({ code: 'locked_required', field_id: f.id })
   }
   return issues
 }

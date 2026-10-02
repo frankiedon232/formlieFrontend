@@ -1,6 +1,6 @@
 <!-- Matrix / grid: one choice per row (rows in props.rows, columns = options). Scrolls sideways on phones. -->
 <script setup lang="ts">
-import type { FormField } from '#shared/utils/forms/build'
+import { isLocked, type FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
@@ -11,7 +11,8 @@ const answers = computed(() =>
   value.value && typeof value.value === 'object' ? (value.value as Record<string, string>) : {},
 )
 const pick = (row: string, column: string) => (value.value = { ...answers.value, [row]: column })
-const disabled = computed(() => props.mode === 'builder')
+// Read-only and disabled both block changes here (Nuxt UI choice controls have no read-only state).
+const disabled = computed(() => isLocked(props.field))
 </script>
 
 <template>

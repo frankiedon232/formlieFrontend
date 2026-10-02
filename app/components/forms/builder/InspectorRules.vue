@@ -123,14 +123,7 @@ const range = (min: unknown, max: unknown) =>
     </div>
 
     <template v-if="has('files')">
-      <UFormField :label="t('builder.inspector.accept')" :description="t('builder.inspector.acceptHint')">
-        <UInput
-          :model-value="String(p.accept ?? '')"
-          class="w-full font-mono"
-          placeholder=".pdf,.docx,image/*"
-          @update:model-value="x => setProp({ accept: String(x) })"
-        />
-      </UFormField>
+      <FormsBuilderInspectorFileTypes :accept="String(p.accept ?? '')" @update="accept => setProp({ accept })" />
       <div class="grid grid-cols-2 gap-2">
         <UFormField :label="t('builder.inspector.maxFiles')">
           <UInputNumber

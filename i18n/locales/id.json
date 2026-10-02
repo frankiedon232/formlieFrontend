@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Permintaan dibatalkan.",
     "FRM-NET-1002": "Respons tak terduga dari server.",
     "FRM-FORM-1007": "Tidak bisa dilakukan pada status formulir saat ini. Muat ulang lalu coba lagi.",
-    "FRM-FORM-1008": "Folder dengan nama ini sudah ada."
+    "FRM-FORM-1008": "Folder dengan nama ini sudah ada.",
+    "FRM-FORM-1009": "Daftar dengan nama ini sudah ada."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "Kunci API",
       "export": "Ekspor",
-      "folder": "Folder"
+      "folder": "Folder",
+      "saved_field": "Kolom tersimpan",
+      "option_list": "Daftar opsi"
     },
     "field": {
       "name": "Nama",
@@ -635,7 +638,12 @@
       "forms_purged": "Formulir dihapus permanen",
       "forms_folder_created": "Folder dibuat",
       "forms_folder_renamed": "Folder diganti nama",
-      "forms_folder_deleted": "Folder dihapus"
+      "forms_folder_deleted": "Folder dihapus",
+      "forms_field_saved": "Kolom disimpan ke pustaka",
+      "forms_field_removed": "Kolom dihapus dari pustaka",
+      "forms_list_created": "Daftar dibuat",
+      "forms_list_updated": "Daftar diperbarui",
+      "forms_list_deleted": "Daftar dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -982,12 +990,13 @@
       "no_inputs": "Tambahkan setidaknya satu pertanyaan",
       "empty_label": "Ada pertanyaan tanpa label",
       "duplicate_key": "Dua kolom memakai kunci yang sama",
-      "no_options": "Ada kolom pilihan tanpa opsi"
+      "no_options": "Ada kolom pilihan tanpa opsi",
+      "locked_required": "Wajib, tetapi responden tidak dapat mengisinya (tersembunyi, hanya baca, atau nonaktif)"
     },
     "inspector": {
       "panel": "Pengaturan kolom",
       "basics": "Dasar",
-      "label": "Pertanyaan",
+      "label": "Label",
       "title": "Judul",
       "help": "Teks bantuan",
       "placeholder": "Teks contoh",
@@ -1061,7 +1070,10 @@
       "message": "Pesan",
       "collapsible": "Dapat dilipat",
       "collapsibleHint": "Responden dapat melipat pertanyaan di bawah judul ini.",
-      "startCollapsed": "Mulai dalam keadaan terlipat"
+      "startCollapsed": "Mulai dalam keadaan terlipat",
+      "numbered": "Beri nomor pada opsi",
+      "numberedHint": "Untuk perhitungan: opsi yang dipilih dihitung sebagai nomornya.",
+      "optionScore": "Nomor untuk {label}"
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -1083,6 +1095,53 @@
       "build": "Buat",
       "logic": "Logika",
       "versions": "Versi"
+    },
+    "renameHint": "Klik dua kali untuk mengganti nama",
+    "access": {
+      "label": "Jawaban",
+      "editable": "Dapat diedit",
+      "readonly": "Hanya baca",
+      "disabled": "Nonaktif",
+      "editableHint": "Responden dapat mengisinya.",
+      "readonlyHint": "Ditampilkan dan dikirim bersama respons, tetapi tidak dapat diubah — mis. referensi yang sudah terisi.",
+      "disabledHint": "Ditampilkan redup dan tidak dikirim bersama respons.",
+      "noRequired": "Kolom hanya baca dan nonaktif tidak dapat diwajibkan — tidak ada yang bisa mengisinya."
+    },
+    "labels": {
+      "title": "Posisi label",
+      "top": "Di atas kolom",
+      "left": "Di samping kolom",
+      "hint": "Satu pengaturan untuk seluruh formulir. Di ponsel, label selalu berada di atas."
+    },
+    "files": {
+      "hint": "Biarkan kosong untuk menerima file apa pun. Cari, atau ketik jenis yang tidak tercantum (mis. .xyz).",
+      "any": "Semua jenis file",
+      "anyButton": "Izinkan semua",
+      "search": "Cari jenis file…",
+      "count": "{count} jenis diizinkan | {count} jenis diizinkan",
+      "custom": "Ditambahkan oleh Anda",
+      "remove": "Hapus {type}",
+      "all": {
+        "images": "Semua gambar",
+        "audio": "Semua audio",
+        "video": "Semua video"
+      },
+      "group": {
+        "images": "Gambar",
+        "documents": "Dokumen",
+        "spreadsheets": "Spreadsheet",
+        "presentations": "Presentasi",
+        "audio": "Audio",
+        "video": "Video",
+        "archives": "Arsip",
+        "ebooks": "E-book",
+        "data": "Data & email",
+        "code": "Kode",
+        "design": "Desain & 3D",
+        "fonts": "Font",
+        "security": "Kunci & sertifikat",
+        "apps": "Aplikasi & penginstal"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Kirim",
     "next": "Berikutnya",
-    "thanks": "Terima kasih!"
+    "thanks": "Terima kasih!",
+    "moreInfo": "Selengkapnya tentang “{field}”",
+    "openCalendar": "Buka kalender",
+    "fileRejected": "Tidak ditambahkan: {files}. Periksa jenis file yang diizinkan dan batas {mb} MB."
   },
   "logic": {
     "crumb": "Logika",
@@ -1158,7 +1220,11 @@
       "field": "Memakai kolom yang dihapus",
       "value": "Nilai belum diisi",
       "target": "Target tidak ada",
-      "noAction": "Tidak ada tindakan"
+      "noAction": "Tidak ada tindakan",
+      "requireLocked": "Kolom tersembunyi, hanya baca, atau nonaktif tidak dapat diwajibkan",
+      "self": "Menyembunyikan atau mengosongkan pertanyaan yang diperiksanya",
+      "backwards": "Lompatan hanya bisa ke depan",
+      "conflict": "Menyembunyikan dan mewajibkan pertanyaan yang sama"
     },
     "op": {
       "eq": "adalah",
@@ -1174,13 +1240,30 @@
       "true": "aktif",
       "false": "nonaktif",
       "before": "sebelum",
-      "after": "setelah"
+      "after": "setelah",
+      "starts_with": "diawali",
+      "ends_with": "diakhiri",
+      "between": "antara",
+      "not_between": "tidak antara",
+      "in": "salah satu dari",
+      "not_in": "bukan salah satu dari",
+      "contains_all": "mencakup semua",
+      "count_gte": "dipilih minimal …",
+      "count_lte": "dipilih maksimal …"
     },
     "action": {
       "show": "Tampilkan",
       "hide": "Sembunyikan",
       "require": "Jadikan wajib",
-      "jump": "Buka halaman"
+      "jump": "Buka halaman",
+      "unrequire": "Jadikan opsional",
+      "enable": "Aktifkan",
+      "disable": "Nonaktifkan",
+      "set_value": "Tetapkan jawaban",
+      "clear_value": "Kosongkan jawaban",
+      "show_page": "Tampilkan halaman",
+      "hide_page": "Sembunyikan halaman",
+      "skip_to_end": "Langsung ke akhir"
     },
     "sentence": {
       "rule": "Jika {conditions}, {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "tampilkan {target}",
       "hide": "sembunyikan {target}",
       "require": "jadikan {target} wajib",
-      "jump": "buka {target}"
+      "jump": "buka {target}",
+      "starts_with": "{field} diawali {value}",
+      "ends_with": "{field} diakhiri {value}",
+      "between": "{field} antara {value} dan {value2}",
+      "not_between": "{field} tidak antara {value} dan {value2}",
+      "in": "{field} salah satu dari {value}",
+      "not_in": "{field} bukan salah satu dari {value}",
+      "contains_all": "{field} mencakup semua {value}",
+      "count_gte": "{field} dipilih minimal {value}",
+      "count_lte": "{field} dipilih maksimal {value}",
+      "unrequire": "jadikan {target} opsional",
+      "enable": "aktifkan {target}",
+      "disable": "nonaktifkan {target}",
+      "set_value": "isi {target} dengan {value}",
+      "clear_value": "kosongkan {target}",
+      "show_page": "tampilkan halaman {target}",
+      "hide_page": "lewati halaman {target}",
+      "skip_to_end": "langsung ke akhir"
     },
     "emptyTitle": "Belum ada aturan",
     "emptyDesc": "Tampilkan, sembunyikan, atau wajibkan pertanyaan berdasarkan jawaban sebelumnya, atau lompat ke halaman lain.",
@@ -1220,7 +1320,71 @@
       "use": "Sisipkan:",
       "empty": "Tambahkan rumus",
       "unknown": "Tidak ada kolom yang memakai kunci “{key}”",
-      "self": "Kolom tidak dapat memakai dirinya sendiri"
+      "self": "Kolom tidak dapat memakai dirinya sendiri",
+      "syntax": "Rumus ini belum lengkap — periksa tanda kurung, koma, dan operator",
+      "functions": "Fungsi:",
+      "choiceScored": "Dihitung sebagai nomor opsi yang dipilih",
+      "choiceUnscored": "Beri nomor pada opsinya (pengaturan kolom → Opsi) agar bisa dipakai dalam penjumlahan",
+      "guideTitle": "Cara kerja rumus",
+      "guideMath": "Gunakan angka, + − * / dan tanda kurung: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Pertanyaan pilihan dihitung sebagai nomor opsi yang dipilih (Opsi → Beri nomor pada opsi); jika beberapa dipilih, nilainya dijumlahkan.",
+      "guideIf": "Pilih nilai berdasarkan kondisi: if({'{'}plan{'}'} = \"Premium\", 50, 10). Bandingkan dengan = != > >= < <=.",
+      "guideFunctions": "Juga: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Ya",
+    "no": "Tidak",
+    "from": "Dari",
+    "to": "Sampai",
+    "pickValues": "Pilih jawaban",
+    "typeValues": "Ketik nilai, tekan Enter",
+    "noValueNeeded": "Tidak perlu jawaban",
+    "setValueFor": "Nilai untuk {field}",
+    "ifBadge": "1 · JIKA",
+    "thenBadge": "2 · MAKA",
+    "ifTitle": "Periksa jawaban ini",
+    "thenTitle": "Lalu lakukan ini",
+    "ifHelp": "Pilih pertanyaan, cara membandingkannya, dan jawaban yang memicu aturan.",
+    "thenHelp": "Pilih apa yang terjadi saat jawaban cocok — dan untuk pertanyaan atau halaman mana.",
+    "matchLead": "Jalankan aturan saat",
+    "andChip": "dan",
+    "orChip": "atau",
+    "colQuestion": "Pertanyaan",
+    "colCondition": "Kondisi",
+    "colAnswer": "Jawaban",
+    "colAction": "Tindakan",
+    "colTarget": "Pertanyaan atau halaman",
+    "problemCount": "{count} hal perlu diperbaiki | {count} hal perlu diperbaiki",
+    "actionDesc": {
+      "show": "Sembunyikan pertanyaan sampai aturan ini cocok.",
+      "hide": "Sembunyikan pertanyaan selama aturan ini cocok.",
+      "require": "Wajibkan pertanyaan selama aturan ini cocok.",
+      "unrequire": "Izinkan responden melewati pertanyaan wajib.",
+      "enable": "Izinkan responden mengubah pertanyaan yang nonaktif.",
+      "disable": "Redupkan pertanyaan agar tidak bisa diubah.",
+      "set_value": "Isi jawaban secara otomatis.",
+      "clear_value": "Kosongkan jawaban yang tidak berlaku lagi.",
+      "show_page": "Sembunyikan halaman sampai aturan ini cocok.",
+      "hide_page": "Lewati halaman selama aturan ini cocok.",
+      "jump": "Setelah halaman ini, lanjut ke halaman lain.",
+      "skip_to_end": "Setelah halaman ini, langsung ke pengiriman."
+    },
+    "starter": {
+      "show": {
+        "title": "Tampilkan pertanyaan",
+        "text": "Ajukan pertanyaan lanjutan hanya jika jawaban sebelumnya memerlukannya."
+      },
+      "require": {
+        "title": "Wajibkan pertanyaan",
+        "text": "Minta detail hanya dalam kasus tertentu."
+      },
+      "jump": {
+        "title": "Lompat ke halaman",
+        "text": "Arahkan responden ke halaman yang sesuai dengan jawaban mereka."
+      },
+      "set_value": {
+        "title": "Isi jawaban",
+        "text": "Tetapkan jawaban secara otomatis dari jawaban sebelumnya."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Dihapus",
       "pages": "Halaman {n}",
       "rules": "Aturan {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Sumber kolom",
+    "tab": {
+      "fields": "Kolom",
+      "saved": "Tersimpan",
+      "lists": "Daftar"
+    },
+    "searchSaved": "Cari kolom tersimpan…",
+    "searchLists": "Cari daftar…",
+    "saveShort": "Simpan",
+    "saveField": "Simpan kolom",
+    "saveFieldHint": "Simpan kolom ini untuk dipakai lagi di formulir mana pun",
+    "saveFieldTitle": "Simpan kolom",
+    "saveFieldDesc": "Kolom ini muncul di Tersimpan dalam daftar kolom, lengkap dengan pengaturannya, untuk setiap formulir di ruang kerja ini.",
+    "fieldName": "Nama",
+    "nameRequired": "Masukkan nama.",
+    "savedEmptyTitle": "Belum ada kolom tersimpan",
+    "savedEmptyDesc": "Pilih kolom lalu pilih Simpan di pengaturannya untuk memakainya lagi di sini.",
+    "removeField": "Hapus {name} dari kolom tersimpan",
+    "removeFieldTitle": "Hapus “{name}” dari kolom tersimpan?",
+    "removeFieldDesc": "Formulir yang sudah memakainya tetap menyimpan salinannya.",
+    "remove": "Hapus",
+    "newList": "Daftar baru",
+    "newListTitle": "Daftar baru",
+    "editList": "Edit daftar",
+    "editListTitle": "Edit daftar",
+    "deleteList": "Hapus daftar",
+    "deleteListTitle": "Hapus daftar “{name}”?",
+    "deleteListDesc": "Kolom yang sudah memakainya tetap menyimpan opsinya.",
+    "listDesc": "Opsi yang dapat dipakai ulang untuk kolom pilihan apa pun — negara, wilayah, produk, tim …",
+    "listName": "Nama",
+    "listNamePlaceholder": "mis. Wilayah",
+    "listOptions": "Opsi",
+    "listOptionsPlaceholder": "Satu opsi per baris",
+    "optionsRequired": "Tambahkan setidaknya satu opsi.",
+    "optionsTooMany": "Satu daftar dapat berisi hingga 2.000 opsi.",
+    "optionCount": "{count} opsi | {count} opsi",
+    "listsEmptyTitle": "Belum ada daftar",
+    "listsEmptyDesc": "Buat daftar sekali dan pakai di kolom dropdown, radio, atau kotak centang mana pun.",
+    "addList": "Tambahkan {name} sebagai dropdown",
+    "addAs": "Tambahkan sebagai {type}",
+    "listMenu": "Opsi untuk {name}",
+    "useList": "Isi dari daftar…",
+    "saveAsList": "Simpan sebagai daftar",
+    "toast": {
+      "fieldSaved": "“{name}” disimpan — temukan di Tersimpan",
+      "fieldRemoved": "“{name}” dihapus dari kolom tersimpan",
+      "listCreated": "Daftar “{name}” dibuat",
+      "listUpdated": "Daftar “{name}” diperbarui",
+      "listDeleted": "Daftar “{name}” dihapus"
     }
   }
 }

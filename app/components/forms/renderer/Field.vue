@@ -1,16 +1,19 @@
 <!--
   One form field as respondents see it (FRONTEND-SPEC §6: the same renderer serves the builder
-  canvas, preview, public form and embed). Label · required mark · control · help · error.
-  `builder` mode renders a faithful, non-interactive preview.
+  canvas, preview, public form and embed). Label · required mark · info icon (help text in a
+  popover) · control · error. Labels sit on top or, with `label-position="left"`, beside the
+  control when there is room (container query — phones always stack). In `builder` mode the
+  control works for trying it out; the canvas never stores what you type. `#label` lets the
+  builder swap the label for an inline editor.
 -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 
-const props = withDefaults(defineProps<{ field: FormField; mode?: 'builder' | 'live'; error?: string }>(), {
-  mode: 'live',
-  error: undefined,
-})
+const props = withDefaults(
+  defineProps<{ field: FormField; mode?: 'builder' | 'live'; error?: string; labelPosition?: 'top' | 'left' }>(),
+  { mode: 'live', error: undefined, labelPosition: 'top' },
+)
 const value = defineModel<unknown>()
 const { t } = useI18n()
 
@@ -54,16 +57,40 @@ const CONTROLS: Record<string, string> = {
   image: 'Layout',
 }
 const control = computed(() => CONTROLS[props.field.type] ?? 'Text')
+const left = computed(() => props.labelPosition === 'left' && showLabel.value)
 </script>
 
 <template>
-  <div class="flex flex-col gap-1.5" :data-field-type="field.type">
-    <label v-if="showLabel" :for="id" class="text-sm font-medium text-highlighted">
-      {{ field.label || t('builder.untitled') }}
-      <span v-if="field.required" class="text-error" aria-hidden="true">*</span>
-      <span v-if="field.required" class="sr-only">({{ t('renderer.required') }})</span>
-    </label>
+  <div
+    class="flex flex-col gap-1"
+    :class="left ? '@sm:grid @sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] @sm:items-start @sm:gap-x-4' : ''"
+    :data-field-type="field.type"
+  >
+    <div v-if="showLabel" class="flex min-w-0 items-center gap-1" :class="left ? '@sm:min-h-8' : ''">
+      <slot name="label">
+        <label :for="id" class="min-w-0 text-sm font-medium text-highlighted">
+          {{ field.label || t('builder.untitled') }}
+          <span v-if="field.required" class="text-error" aria-hidden="true">*</span>
+          <span v-if="field.required" class="sr-only">({{ t('renderer.required') }})</span>
+        </label>
+      </slot>
+      <UPopover v-if="field.help" :content="{ side: 'top', align: 'start' }" arrow>
+        <UButton
+          icon="i-lucide-info"
+          color="neutral"
+          variant="link"
+          size="xs"
+          class="shrink-0 p-0.5 text-muted"
+          :aria-label="t('renderer.moreInfo', { field: field.label || t('builder.untitled') })"
+          @click.stop
+        />
+        <template #content>
+          <p class="max-w-72 p-3 text-xs whitespace-pre-line text-default">{{ field.help }}</p>
+        </template>
+      </UPopover>
+    </div>
 
+    <div class="flex min-w-0 flex-col gap-1" :class="left && showLabel ? '' : '@sm:col-span-2'">
     <FormsRendererText v-if="control === 'Text'" :id="id" v-model="value" :field="field" :mode="mode" />
     <FormsRendererDateTime
       v-else-if="control === 'DateTime'"
@@ -114,9 +141,11 @@ const control = computed(() => CONTROLS[props.field.type] ?? 'Text')
       :field="field"
       :mode="mode"
     />
-    <FormsRendererLayout v-else :field="field" :mode="mode" />
+    <FormsRendererLayout v-else :field="field" :mode="mode">
+      <template v-if="$slots.label" #label><slot name="label" /></template>
+    </FormsRendererLayout>
 
-    <p v-if="field.help && showLabel" class="text-xs text-muted">{{ field.help }}</p>
     <p v-if="error" class="text-xs text-error" role="alert">{{ error }}</p>
+    </div>
   </div>
 </template>

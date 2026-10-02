@@ -131,6 +131,7 @@ const createSchema = z.object({
     .enum(STARTER_TEMPLATE_KEYS as [string, ...string[]])
     .nullable()
     .optional(),
+  label_position: z.enum(['top', 'left']).optional(),
 })
 const importSchema = z.object({ name, folder_id: z.string().nullable().optional(), schema: formSchemaV1 })
 
@@ -183,6 +184,8 @@ export const createForm = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(createSchema, body)
   const form = newForm(tenant, user, { ...input, folder: folderRef(tenant, input.folder_id) })
+  if (input.label_position && form.schema)
+    form.schema.settings = { ...form.schema.settings, label_position: input.label_position }
   audit(event, tenant, user, 'forms.created', form, [], {
     source: input.template_key ? 'template' : 'blank',
     ...(input.template_key ? { template: input.template_key } : {}),

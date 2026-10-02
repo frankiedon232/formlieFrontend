@@ -14,11 +14,21 @@ const single = computed(() => (selectedFields.value.length === 1 ? selectedField
 const widths = computed(() =>
   FIELD_WIDTHS.map(width => ({ value: String(width), label: t(`builder.widthShort.${width}`) })),
 )
+const saveOpen = ref(false)
 const allRequired = computed(() => selectedFields.value.every(f => f.required))
 
 function setRequiredAll(value: boolean) {
   builder.history.record()
   for (const field of selectedFields.value) field.required = value
+}
+const labelItems = computed(() => [
+  { value: 'top', label: t('builder.labels.top'), icon: 'i-lucide-panel-top' },
+  { value: 'left', label: t('builder.labels.left'), icon: 'i-lucide-panel-left' },
+])
+function setLabelPosition(value: string | number) {
+  if (!schema.value) return
+  builder.history.record()
+  schema.value.settings = { ...schema.value.settings, label_position: value === 'left' ? 'left' : 'top' }
 }
 function setSetting(key: 'progress_bar' | 'save_resume', value: boolean) {
   if (!schema.value) return
@@ -65,6 +75,18 @@ function setThankYou(key: 'title' | 'message', value: string) {
           }}
         </p>
       </div>
+      <UTooltip v-if="single" :text="t('library.saveFieldHint')">
+        <UButton
+          icon="i-lucide-bookmark-plus"
+          :label="t('library.saveShort')"
+          color="neutral"
+          variant="outline"
+          size="xs"
+          class="ms-auto shrink-0"
+          @click="saveOpen = true"
+        />
+      </UTooltip>
+      <FormsBuilderSaveFieldModal v-if="single" v-model:open="saveOpen" :field="single" />
     </div>
 
     <div class="-me-2 min-h-0 flex-1 overflow-y-auto pe-2">
@@ -121,6 +143,22 @@ function setThankYou(key: 'title' | 'message', value: string) {
       </div>
 
       <div v-else-if="schema" class="flex flex-col gap-6">
+        <section class="flex flex-col gap-3">
+          <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.labels.title') }}</h3>
+          <UFormField :description="t('builder.labels.hint')">
+            <UTabs
+              :model-value="schema.settings?.label_position ?? 'top'"
+              :items="labelItems"
+              :content="false"
+              color="neutral"
+              size="xs"
+              :ui="SEGMENTED_UI"
+              class="w-full"
+              :aria-label="t('builder.labels.title')"
+              @update:model-value="setLabelPosition"
+            />
+          </UFormField>
+        </section>
         <section class="flex flex-col gap-3">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.experience') }}</h3>
           <USwitch

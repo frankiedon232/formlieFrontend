@@ -1,5 +1,6 @@
 import type { InjectionKey } from 'vue'
-import { newId, keyFromLabel, allFields, type FormField, type FormPage } from '#shared/utils/forms/build'
+import { newId, keyFromLabel, fieldKey, allFields, type FormField, type FormPage } from '#shared/utils/forms/build'
+import type { OptionList, SavedField } from '#shared/types/forms'
 import type { FieldType } from '#shared/utils/forms/fields'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
@@ -58,10 +59,12 @@ export function useFormBuilder() {
   function createField(type: FieldType): FormField {
     const { defaults } = FIELD_REGISTRY[type]
     const label = t(`builder.field.${type}`)
+    const id = newId('fld')
     const field: FormField = {
-      id: newId('fld'),
-      key: keyFromLabel(
+      id,
+      key: fieldKey(
         label,
+        id,
         fields.value.map(f => f.key),
       ),
       type,
@@ -80,11 +83,27 @@ export function useFormBuilder() {
     return field
   }
 
-  /** Adds a field in its own row — after the selected field, else at the end of the page. */
-  function addField(type: FieldType, target?: { pageId: string; rowIndex: number }): FormField | null {
+  /** A saved field as a fresh copy: new id, unique key. */
+  function createFromSaved(saved: SavedField): FormField {
+    const id = newId('fld')
+    const field = structuredClone(toRaw(saved.field)) as Omit<FormField, 'id'>
+    return { ...field, id, key: fieldKey(field.label || field.type, id, fields.value.map(f => f.key)) }
+  }
+
+  /** A choice field filled from an option list (a copy of its options; the list id is kept). */
+  function createFromList(list: OptionList, type: FieldType = 'dropdown'): FormField {
+    const field = createField(type)
+    field.label = list.name
+    field.key = fieldKey(list.name, field.id, fields.value.map(f => f.key))
+    field.options = structuredClone(toRaw(list.options))
+    field.option_set_id = list.id
+    return field
+  }
+
+  /** Puts a field in its own row — after the selected field, else at the end of the page. */
+  function place(field: FormField, target?: { pageId: string; rowIndex: number }): FormField | null {
     if (!schema.value || !page.value) return null
     history.record()
-    const field = createField(type)
     const anchor = selected.value.length === 1 ? findField(selected.value[0]!) : null
     const destPage = target
       ? schema.value.pages.find(p => p.id === target.pageId)!
@@ -95,13 +114,33 @@ export function useFormBuilder() {
     selected.value = [field.id]
     return field
   }
+  const addField = (type: FieldType, target?: { pageId: string; rowIndex: number }) =>
+    schema.value ? place(createField(type), target) : null
 
   // ── Editing ──────────────────────────────────────────────────────────────────────
   function updateField(id: string, patch: Partial<FormField>, group?: string) {
     const found = findField(id)
     if (!found) return
     history.record(group ?? `field:${id}:${Object.keys(patch).join(',')}`)
+    const oldKey = found.field.key
     Object.assign(found.field, patch)
+    // Formulas refer to keys: follow a renamed key so calculations keep working.
+    if (patch.key && patch.key !== oldKey)
+      for (const f of fields.value)
+        if (typeof f.props?.formula === 'string' && f.props.formula.includes(`{${oldKey}}`))
+          f.props = { ...f.props, formula: f.props.formula.replaceAll(`{${oldKey}}`, `{${patch.key}}`) }
+  }
+
+  /** New label; while drafting (never published) the key follows it: "Full name" → full_name_k3x9. */
+  function renameField(id: string, label: string) {
+    const found = findField(id)
+    if (!found) return
+    const { field } = found
+    const others = fields.value.filter(f => f.id !== id).map(f => f.key)
+    const follows =
+      !keysLocked.value &&
+      (field.key === fieldKey(field.label || field.type, id, others) || field.key === keyFromLabel(field.label, others))
+    updateField(id, follows ? { label, key: fieldKey(label || field.type, id, others) } : { label }, `field:${id}:label`)
   }
 
   function updateProps(id: string, patch: Record<string, unknown>, group?: string) {
@@ -126,11 +165,13 @@ export function useFormBuilder() {
     for (const id of ids) {
       const found = findField(id)
       if (!found) continue
+      const copyId = newId('fld')
       const copy: FormField = {
         ...structuredClone(toRaw(found.field)),
-        id: newId('fld'),
-        key: keyFromLabel(
-          found.field.label || found.field.key,
+        id: copyId,
+        key: fieldKey(
+          found.field.label || found.field.type,
+          copyId,
           fields.value.map(f => f.key),
         ),
       }
@@ -298,8 +339,12 @@ export function useFormBuilder() {
     load,
     findField,
     createField,
+    createFromSaved,
+    createFromList,
+    place,
     addField,
     updateField,
+    renameField,
     updateProps,
     setWidth,
     duplicate,

@@ -90,7 +90,7 @@ Public (SSR, `layouts/public.vue`): `/f/[slug]` form renderer, `/f/[slug]/embed`
 
 ## 6. Form builder (`/forms/[id]/build`)
 
-Three panes on desktop: **Field palette** (left, searchable, categories) · **Canvas** (centre, pages as tabs/stack) · **Inspector** (right, field properties, validation, logic shortcut). On tablet: palette and inspector become slide-overs; on phone: canvas with bottom `UDrawer` for palette/inspector (editing works on phone, comfortable on desktop).
+Three panes on desktop: **Field palette** (left, searchable; tabs Fields by category · Saved fields · Lists) · **Canvas** (centre, pages as tabs/stack) · **Inspector** (right, field properties, validation, logic shortcut). On tablet: palette and inspector become slide-overs; on phone: canvas with bottom `UDrawer` for palette/inspector (editing works on phone, comfortable on desktop).
 
 - Drag from palette to canvas; reorder fields, rows, sections, pages; drop indicators; auto-scroll; multi-column rows (12-col grid widths: full, 1/2, 1/3, 2/3, 1/4).
 - Select (click/Enter), multi-select (Shift/Ctrl), duplicate (`Ctrl+D`), delete (`Del` with undo toast), move up/down (`Alt+↑/↓`), undo/redo (`Ctrl+Z`/`Ctrl+Shift+Z`).

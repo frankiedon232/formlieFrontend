@@ -54,6 +54,11 @@ export const AUDIT_EVENTS = {
   'forms.folder_created': { area: 'forms', icon: 'i-lucide-folder-plus' },
   'forms.folder_renamed': { area: 'forms', icon: 'i-lucide-folder-pen' },
   'forms.folder_deleted': { area: 'forms', icon: 'i-lucide-folder-x' },
+  'forms.field_saved': { area: 'forms', icon: 'i-lucide-bookmark-plus' },
+  'forms.field_removed': { area: 'forms', icon: 'i-lucide-bookmark-minus' },
+  'forms.list_created': { area: 'forms', icon: 'i-lucide-list-plus' },
+  'forms.list_updated': { area: 'forms', icon: 'i-lucide-list' },
+  'forms.list_deleted': { area: 'forms', icon: 'i-lucide-list-x' },
   // Responses
   'responses.updated': { area: 'responses', icon: 'i-lucide-square-pen' },
   'responses.exported': { area: 'responses', icon: 'i-lucide-file-down' },

@@ -47,6 +47,7 @@ export const ERROR_CODES = {
   'FRM-FORM-1006': { status: 409, message: 'Slug already in use.' },
   'FRM-FORM-1007': { status: 409, message: "This isn't possible while the form is in its current state." },
   'FRM-FORM-1008': { status: 409, message: 'A folder with this name already exists.' },
+  'FRM-FORM-1009': { status: 409, message: 'A list with this name already exists.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
   'FRM-FILE-1001': { status: 400, message: 'File type not allowed.' },

@@ -317,7 +317,8 @@
     "FRM-NET-1001": "İstek iptal edildi.",
     "FRM-NET-1002": "Sunucudan beklenmeyen yanıt.",
     "FRM-FORM-1007": "Formun mevcut durumunda bu mümkün değil. Yenileyip tekrar deneyin.",
-    "FRM-FORM-1008": "Bu adda bir klasör zaten var."
+    "FRM-FORM-1008": "Bu adda bir klasör zaten var.",
+    "FRM-FORM-1009": "Bu adda bir liste zaten var."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "API anahtarı",
       "export": "Dışa aktarma",
-      "folder": "Klasör"
+      "folder": "Klasör",
+      "saved_field": "Kayıtlı alan",
+      "option_list": "Seçenek listesi"
     },
     "field": {
       "name": "Ad",
@@ -635,7 +638,12 @@
       "forms_purged": "Form kalıcı olarak silindi",
       "forms_folder_created": "Klasör oluşturuldu",
       "forms_folder_renamed": "Klasör yeniden adlandırıldı",
-      "forms_folder_deleted": "Klasör silindi"
+      "forms_folder_deleted": "Klasör silindi",
+      "forms_field_saved": "Alan kitaplığa kaydedildi",
+      "forms_field_removed": "Alan kitaplıktan kaldırıldı",
+      "forms_list_created": "Liste oluşturuldu",
+      "forms_list_updated": "Liste güncellendi",
+      "forms_list_deleted": "Liste silindi"
     },
     "detail": {
       "who": "Kim",
@@ -982,12 +990,13 @@
       "no_inputs": "En az bir soru ekleyin",
       "empty_label": "Bir sorunun etiketi yok",
       "duplicate_key": "İki alan aynı anahtarı kullanıyor",
-      "no_options": "Bir seçim alanında seçenek yok"
+      "no_options": "Bir seçim alanında seçenek yok",
+      "locked_required": "Zorunlu, ancak yanıtlayanlar dolduramaz (gizli, salt okunur veya devre dışı)"
     },
     "inspector": {
       "panel": "Alan ayarları",
       "basics": "Temel",
-      "label": "Soru",
+      "label": "Etiket",
       "title": "Başlık",
       "help": "Yardım metni",
       "placeholder": "Yer tutucu",
@@ -1061,7 +1070,10 @@
       "message": "Mesaj",
       "collapsible": "Daraltılabilir",
       "collapsibleHint": "Yanıtlayanlar bu başlığın altındaki soruları daraltabilir.",
-      "startCollapsed": "Daraltılmış başlat"
+      "startCollapsed": "Daraltılmış başlat",
+      "numbered": "Seçeneklere sayı ver",
+      "numberedHint": "Hesaplamalar için: seçilen seçenek kendi sayısı olarak sayılır.",
+      "optionScore": "{label} için sayı"
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -1083,6 +1095,53 @@
       "build": "Oluştur",
       "logic": "Mantık",
       "versions": "Sürümler"
+    },
+    "renameHint": "Yeniden adlandırmak için çift tıklayın",
+    "access": {
+      "label": "Yanıt",
+      "editable": "Düzenlenebilir",
+      "readonly": "Salt okunur",
+      "disabled": "Devre dışı",
+      "editableHint": "Yanıtlayanlar bunu doldurabilir.",
+      "readonlyHint": "Gösterilir ve yanıtla gönderilir, ancak değiştirilemez — ör. önceden doldurulmuş bir referans.",
+      "disabledHint": "Soluk gösterilir ve yanıtla gönderilmez.",
+      "noRequired": "Salt okunur ve devre dışı alanlar zorunlu olamaz — kimse dolduramaz."
+    },
+    "labels": {
+      "title": "Etiket konumu",
+      "top": "Alanın üstünde",
+      "left": "Alanın yanında",
+      "hint": "Tüm form için tek ayar. Telefonlarda etiketler her zaman üstte durur."
+    },
+    "files": {
+      "hint": "Her dosyayı kabul etmek için boş bırakın. Arayın veya listede olmayan bir tür yazın (ör. .xyz).",
+      "any": "Her dosya türü",
+      "anyButton": "Tümüne izin ver",
+      "search": "Dosya türü ara…",
+      "count": "{count} türe izin verildi | {count} türe izin verildi",
+      "custom": "Sizin eklediğiniz",
+      "remove": "{type} türünü kaldır",
+      "all": {
+        "images": "Tüm görseller",
+        "audio": "Tüm sesler",
+        "video": "Tüm videolar"
+      },
+      "group": {
+        "images": "Görseller",
+        "documents": "Belgeler",
+        "spreadsheets": "Elektronik tablolar",
+        "presentations": "Sunumlar",
+        "audio": "Ses",
+        "video": "Video",
+        "archives": "Arşivler",
+        "ebooks": "E-kitaplar",
+        "data": "Veri ve e-posta",
+        "code": "Kod",
+        "design": "Tasarım ve 3D",
+        "fonts": "Yazı tipleri",
+        "security": "Anahtarlar ve sertifikalar",
+        "apps": "Uygulamalar ve yükleyiciler"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Gönder",
     "next": "İleri",
-    "thanks": "Teşekkürler!"
+    "thanks": "Teşekkürler!",
+    "moreInfo": "“{field}” hakkında daha fazla",
+    "openCalendar": "Takvimi aç",
+    "fileRejected": "Eklenmedi: {files}. İzin verilen dosya türlerini ve {mb} MB sınırını kontrol edin."
   },
   "logic": {
     "crumb": "Mantık",
@@ -1158,7 +1220,11 @@
       "field": "Silinmiş bir alan kullanıyor",
       "value": "Değer eksik",
       "target": "Hedef eksik",
-      "noAction": "Eylem yok"
+      "noAction": "Eylem yok",
+      "requireLocked": "Gizli, salt okunur veya devre dışı bir alan zorunlu yapılamaz",
+      "self": "Kontrol ettiği soruyu gizliyor veya temizliyor",
+      "backwards": "Atlamalar yalnızca ileri gidebilir",
+      "conflict": "Aynı soruyu hem gizliyor hem zorunlu yapıyor"
     },
     "op": {
       "eq": "eşittir",
@@ -1174,13 +1240,30 @@
       "true": "açık",
       "false": "kapalı",
       "before": "öncesinde",
-      "after": "sonrasında"
+      "after": "sonrasında",
+      "starts_with": "ile başlar",
+      "ends_with": "ile biter",
+      "between": "arasında",
+      "not_between": "arasında değil",
+      "in": "şunlardan biri",
+      "not_in": "şunların hiçbiri",
+      "contains_all": "şunların tümünü içerir",
+      "count_gte": "en az … seçili",
+      "count_lte": "en fazla … seçili"
     },
     "action": {
       "show": "Göster",
       "hide": "Gizle",
       "require": "Zorunlu yap",
-      "jump": "Sayfaya git"
+      "jump": "Sayfaya git",
+      "unrequire": "İsteğe bağlı yap",
+      "enable": "Etkinleştir",
+      "disable": "Devre dışı bırak",
+      "set_value": "Yanıt belirle",
+      "clear_value": "Yanıtı temizle",
+      "show_page": "Sayfayı göster",
+      "hide_page": "Sayfayı gizle",
+      "skip_to_end": "Sona atla"
     },
     "sentence": {
       "rule": "Eğer {conditions} ise {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "{target} gösterilir",
       "hide": "{target} gizlenir",
       "require": "{target} zorunlu olur",
-      "jump": "{target} sayfasına gidilir"
+      "jump": "{target} sayfasına gidilir",
+      "starts_with": "{field}, {value} ile başlıyor",
+      "ends_with": "{field}, {value} ile bitiyor",
+      "between": "{field}, {value} ile {value2} arasında",
+      "not_between": "{field}, {value} ile {value2} arasında değil",
+      "in": "{field}, {value} değerlerinden biri",
+      "not_in": "{field}, {value} değerlerinden hiçbiri değil",
+      "contains_all": "{field}, {value} değerlerinin tümünü içeriyor",
+      "count_gte": "{field} alanında en az {value} seçili",
+      "count_lte": "{field} alanında en fazla {value} seçili",
+      "unrequire": "{target} isteğe bağlı olur",
+      "enable": "{target} etkinleşir",
+      "disable": "{target} devre dışı kalır",
+      "set_value": "{target} değeri {value} olur",
+      "clear_value": "{target} temizlenir",
+      "show_page": "{target} sayfası gösterilir",
+      "hide_page": "{target} sayfası atlanır",
+      "skip_to_end": "sona atlanır"
     },
     "emptyTitle": "Henüz kural yok",
     "emptyDesc": "Önceki yanıtlara göre soruları gösterin, gizleyin veya zorunlu yapın ya da başka bir sayfaya geçin.",
@@ -1220,7 +1320,71 @@
       "use": "Ekle:",
       "empty": "Formül ekleyin",
       "unknown": "“{key}” anahtarını kullanan alan yok",
-      "self": "Bir alan kendisini kullanamaz"
+      "self": "Bir alan kendisini kullanamaz",
+      "syntax": "Bu formül eksik — parantezleri, virgülleri ve operatörleri kontrol edin",
+      "functions": "Fonksiyonlar:",
+      "choiceScored": "Seçilen seçeneğin sayısı olarak sayılır",
+      "choiceUnscored": "Toplamlarda kullanmak için seçeneklerine sayı verin (alan ayarları → Seçenekler)",
+      "guideTitle": "Formüller nasıl çalışır",
+      "guideMath": "Sayılar, + − * / ve parantez kullanın: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Seçim soruları, seçilen seçeneğe verilen sayı olarak sayılır (Seçenekler → Seçeneklere sayı ver); birden fazla seçim toplanır.",
+      "guideIf": "Koşula göre değer seçin: if({'{'}plan{'}'} = \"Premium\", 50, 10). Karşılaştırma: = != > >= < <=.",
+      "guideFunctions": "Ayrıca: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Evet",
+    "no": "Hayır",
+    "from": "Başlangıç",
+    "to": "Bitiş",
+    "pickValues": "Yanıtları seçin",
+    "typeValues": "Bir değer yazıp Enter'a basın",
+    "noValueNeeded": "Yanıt gerekmez",
+    "setValueFor": "{field} için değer",
+    "ifBadge": "1 · EĞER",
+    "thenBadge": "2 · O ZAMAN",
+    "ifTitle": "Bu yanıtları kontrol et",
+    "thenTitle": "Sonra bunu yap",
+    "ifHelp": "Bir soru, nasıl karşılaştırılacağını ve kuralı tetiklemesi gereken yanıtı seçin.",
+    "thenHelp": "Yanıtlar eşleştiğinde ne olacağını — ve hangi soru veya sayfaya uygulanacağını — seçin.",
+    "matchLead": "Kuralı şu durumda çalıştır:",
+    "andChip": "ve",
+    "orChip": "veya",
+    "colQuestion": "Soru",
+    "colCondition": "Koşul",
+    "colAnswer": "Yanıt",
+    "colAction": "İşlem",
+    "colTarget": "Soru veya sayfa",
+    "problemCount": "Düzeltilecek {count} sorun | Düzeltilecek {count} sorun",
+    "actionDesc": {
+      "show": "Bu kural eşleşene kadar soruyu gizli tut.",
+      "hide": "Bu kural eşleştiği sürece soruyu gizle.",
+      "require": "Bu kural eşleştiği sürece soruyu zorunlu yap.",
+      "unrequire": "Yanıtlayanların zorunlu bir soruyu atlamasına izin ver.",
+      "enable": "Yanıtlayanların devre dışı bir soruyu değiştirmesine izin ver.",
+      "disable": "Soruyu soluklaştır, değiştirilemesin.",
+      "set_value": "Bir yanıtı otomatik doldur.",
+      "clear_value": "Artık geçerli olmayan bir yanıtı boşalt.",
+      "show_page": "Bu kural eşleşene kadar sayfayı gizli tut.",
+      "hide_page": "Bu kural eşleştiği sürece sayfayı atla.",
+      "jump": "Bu sayfadan sonra başka bir sayfada devam et.",
+      "skip_to_end": "Bu sayfadan sonra doğrudan gönderime geç."
+    },
+    "starter": {
+      "show": {
+        "title": "Bir soru göster",
+        "text": "Ek soruyu yalnızca önceki bir yanıt gerektirdiğinde sorun."
+      },
+      "require": {
+        "title": "Bir soruyu zorunlu yap",
+        "text": "Ayrıntıları yalnızca bazı durumlarda zorunlu kılın."
+      },
+      "jump": {
+        "title": "Bir sayfaya atla",
+        "text": "Yanıtlayanları yanıtlarına uygun sayfaya gönderin."
+      },
+      "set_value": {
+        "title": "Bir yanıtı doldur",
+        "text": "Önceki yanıtlardan otomatik olarak bir yanıt belirleyin."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Kaldırıldı",
       "pages": "Sayfalar {n}",
       "rules": "Kurallar {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Alan kaynakları",
+    "tab": {
+      "fields": "Alanlar",
+      "saved": "Kayıtlı",
+      "lists": "Listeler"
+    },
+    "searchSaved": "Kayıtlı alanlarda ara…",
+    "searchLists": "Listelerde ara…",
+    "saveShort": "Kaydet",
+    "saveField": "Alanı kaydet",
+    "saveFieldHint": "Bu alanı her formda yeniden kullanmak için kaydedin",
+    "saveFieldTitle": "Alanı kaydet",
+    "saveFieldDesc": "Tüm ayarlarıyla birlikte alan listesinde Kayıtlı altında, bu çalışma alanındaki her form için görünür.",
+    "fieldName": "Ad",
+    "nameRequired": "Bir ad girin.",
+    "savedEmptyTitle": "Henüz kayıtlı alan yok",
+    "savedEmptyDesc": "Burada yeniden kullanmak için bir alan seçin ve ayarlarında Kaydet'i seçin.",
+    "removeField": "{name} alanını kayıtlı alanlardan kaldır",
+    "removeFieldTitle": "“{name}” kayıtlı alanlardan kaldırılsın mı?",
+    "removeFieldDesc": "Onu zaten kullanan formlar kendi kopyalarını korur.",
+    "remove": "Kaldır",
+    "newList": "Yeni liste",
+    "newListTitle": "Yeni liste",
+    "editList": "Listeyi düzenle",
+    "editListTitle": "Listeyi düzenle",
+    "deleteList": "Listeyi sil",
+    "deleteListTitle": "“{name}” listesi silinsin mi?",
+    "deleteListDesc": "Onu zaten kullanan alanlar seçeneklerini korur.",
+    "listDesc": "Her seçim alanı için yeniden kullanılabilir seçenekler — ülkeler, bölgeler, ürünler, ekipler …",
+    "listName": "Ad",
+    "listNamePlaceholder": "ör. Bölgeler",
+    "listOptions": "Seçenekler",
+    "listOptionsPlaceholder": "Her satıra bir seçenek",
+    "optionsRequired": "En az bir seçenek ekleyin.",
+    "optionsTooMany": "Bir listede en fazla 2.000 seçenek olabilir.",
+    "optionCount": "{count} seçenek | {count} seçenek",
+    "listsEmptyTitle": "Henüz liste yok",
+    "listsEmptyDesc": "Bir listeyi bir kez oluşturun ve her açılır liste, radyo düğmesi veya onay kutusu alanında kullanın.",
+    "addList": "{name} listesini açılır liste olarak ekle",
+    "addAs": "{type} olarak ekle",
+    "listMenu": "{name} için işlemler",
+    "useList": "Listeden doldur…",
+    "saveAsList": "Liste olarak kaydet",
+    "toast": {
+      "fieldSaved": "“{name}” kaydedildi — Kayıtlı altında bulabilirsiniz",
+      "fieldRemoved": "“{name}” kayıtlı alanlardan kaldırıldı",
+      "listCreated": "“{name}” listesi oluşturuldu",
+      "listUpdated": "“{name}” listesi güncellendi",
+      "listDeleted": "“{name}” listesi silindi"
     }
   }
 }

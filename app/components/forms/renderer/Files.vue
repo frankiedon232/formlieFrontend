@@ -3,17 +3,30 @@
   signature (draw with mouse, pen or finger; keyboard users can type their name instead), payment (soon).
 -->
 <script setup lang="ts">
-import type { FormField } from '#shared/utils/forms/build'
+import { isLocked, type FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
 const { t } = useI18n()
 
 const p = computed(() => (props.field.props ?? {}) as Record<string, number | string | undefined>)
-const disabled = computed(() => props.mode === 'builder')
+// Read-only and disabled both block changes here (Nuxt UI choice controls have no read-only state).
+const disabled = computed(() => isLocked(props.field))
 const multiple = computed(() => Number(p.value.max_files ?? 1) > 1)
 const files = ref<File[] | File | null>(null)
-watch(files, next => (value.value = next))
+// Drag and drop skips the picker's `accept` filter, so check type and size here too.
+const rejected = ref<string[]>([])
+watch(files, next => {
+  const list = next == null ? [] : Array.isArray(next) ? next : [next]
+  const maxBytes = Number(p.value.max_mb ?? 10) * 1024 * 1024
+  const ok = list.filter(file => acceptsFile(String(p.value.accept ?? ''), file) && file.size <= maxBytes)
+  rejected.value = list.filter(file => !ok.includes(file)).map(file => file.name)
+  if (ok.length !== list.length) {
+    files.value = multiple.value ? ok : (ok[0] ?? null)
+    return
+  }
+  value.value = next
+})
 
 // ── Signature ──────────────────────────────────────────────────────────────────────
 const canvas = useTemplateRef<HTMLCanvasElement>('canvas')
@@ -116,8 +129,18 @@ watch(typed, name => {
     :description="t('renderer.fileLimit', { mb: p.max_mb ?? 10 })"
     :icon="field.type === 'image_upload' ? 'i-lucide-image-up' : 'i-lucide-upload'"
     color="neutral"
+    layout="grid"
+    position="outside"
     :disabled="disabled"
     :interactive="!disabled"
-    class="min-h-28 w-full"
+    :ui="{
+      base: 'min-h-28',
+      files: 'grid w-full grid-cols-3 gap-2 @sm:grid-cols-4 @lg:grid-cols-6',
+      file: 'relative inset-auto aspect-square p-0',
+    }"
+    class="w-full"
   />
+  <p v-if="rejected.length" class="text-xs text-error" role="alert">
+    {{ t('renderer.fileRejected', { files: rejected.join(', '), mb: p.max_mb ?? 10 }) }}
+  </p>
 </template>

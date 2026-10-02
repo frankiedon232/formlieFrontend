@@ -1,3 +1,4 @@
+import type { FormField } from '../utils/forms/build'
 /** Form list shapes (docs/API-CONTRACT.md → Forms). */
 export type FormStatus = 'draft' | 'published' | 'closed' | 'archived'
 
@@ -59,4 +60,23 @@ export interface FormVersion {
   published_by: { id: string; name: string }
   change_summary: string | null
   fields_count: number
+}
+
+/** A field kept for reuse (GET /field-library). `field` has no id; inserting gives it a new one. */
+export interface SavedField {
+  id: string
+  name: string
+  field: Omit<FormField, 'id'>
+  created_by: { id: string; name: string }
+  created_at: string
+}
+
+/** A reusable list of options — countries, regions, products … (GET /option-lists). */
+export interface OptionList {
+  id: string
+  name: string
+  options: { value: string; label: string; score?: number }[]
+  created_by: { id: string; name: string }
+  created_at: string
+  updated_at: string
 }

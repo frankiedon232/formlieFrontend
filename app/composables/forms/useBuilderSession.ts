@@ -105,7 +105,7 @@ export function useBuilderSession(formId: string) {
     if (s === 'error') return t('builder.save.error')
     if (s === 'conflict') return t('builder.save.conflict')
     return autosave.savedAt.value
-      ? t('builder.save.saved', { time: relative(autosave.savedAt.value, now.value) })
+      ? t('builder.save.saved', { time: relative(autosave.savedAt.value, Math.max(now.value, autosave.savedAt.value)) })
       : t('builder.save.upToDate')
   })
 

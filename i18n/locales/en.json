@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Request cancelled.",
     "FRM-NET-1002": "Unexpected response from the server.",
     "FRM-FORM-1007": "That isn't possible while the form is in its current state. Refresh and try again.",
-    "FRM-FORM-1008": "A folder with this name already exists."
+    "FRM-FORM-1008": "A folder with this name already exists.",
+    "FRM-FORM-1009": "A list with this name already exists."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "API key",
       "export": "Export",
-      "folder": "Folder"
+      "folder": "Folder",
+      "saved_field": "Saved field",
+      "option_list": "Option list"
     },
     "field": {
       "name": "Name",
@@ -635,7 +638,12 @@
       "forms_purged": "Form deleted permanently",
       "forms_folder_created": "Folder created",
       "forms_folder_renamed": "Folder renamed",
-      "forms_folder_deleted": "Folder deleted"
+      "forms_folder_deleted": "Folder deleted",
+      "forms_field_saved": "Field saved to library",
+      "forms_field_removed": "Field removed from library",
+      "forms_list_created": "List created",
+      "forms_list_updated": "List updated",
+      "forms_list_deleted": "List deleted"
     },
     "detail": {
       "who": "Who",
@@ -990,12 +998,13 @@
       "no_inputs": "Add at least one question",
       "empty_label": "A question has no label",
       "duplicate_key": "Two fields use the same key",
-      "no_options": "A choice field has no options"
+      "no_options": "A choice field has no options",
+      "locked_required": "Required, but respondents can’t fill it in (hidden, read-only or disabled)"
     },
     "inspector": {
       "panel": "Field settings",
       "basics": "Basics",
-      "label": "Question",
+      "label": "Label",
       "title": "Title",
       "help": "Help text",
       "placeholder": "Placeholder",
@@ -1069,7 +1078,10 @@
       "message": "Message",
       "collapsible": "Collapsible",
       "collapsibleHint": "Respondents can fold the questions below this heading.",
-      "startCollapsed": "Start collapsed"
+      "startCollapsed": "Start collapsed",
+      "numbered": "Give options numbers",
+      "numberedHint": "For calculations: a chosen option counts as its number.",
+      "optionScore": "Number for {label}"
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -1083,6 +1095,53 @@
       "build": "Build",
       "logic": "Logic",
       "versions": "Versions"
+    },
+    "renameHint": "Double-click to rename",
+    "access": {
+      "label": "Answer",
+      "editable": "Editable",
+      "readonly": "Read-only",
+      "disabled": "Disabled",
+      "editableHint": "Respondents can fill this in.",
+      "readonlyHint": "Shown and sent with the response, but can’t be changed — e.g. a prefilled reference.",
+      "disabledHint": "Shown greyed out and not sent with the response.",
+      "noRequired": "Read-only and disabled fields can’t be required — nobody could fill them in."
+    },
+    "labels": {
+      "title": "Label position",
+      "top": "Above the field",
+      "left": "Beside the field",
+      "hint": "One setting for the whole form. On phones labels always sit above."
+    },
+    "files": {
+      "hint": "Leave empty to accept any file. Search, or type a type that isn’t listed (e.g. .xyz).",
+      "any": "Any file type",
+      "anyButton": "Allow any",
+      "search": "Search file types…",
+      "count": "{count} type allowed | {count} types allowed",
+      "custom": "Added by you",
+      "remove": "Remove {type}",
+      "all": {
+        "images": "All images",
+        "audio": "All audio",
+        "video": "All video"
+      },
+      "group": {
+        "images": "Images",
+        "documents": "Documents",
+        "spreadsheets": "Spreadsheets",
+        "presentations": "Presentations",
+        "audio": "Audio",
+        "video": "Video",
+        "archives": "Archives",
+        "ebooks": "E-books",
+        "data": "Data & email",
+        "code": "Code",
+        "design": "Design & 3D",
+        "fonts": "Fonts",
+        "security": "Keys & certificates",
+        "apps": "Apps & installers"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Submit",
     "next": "Next",
-    "thanks": "Thank you!"
+    "thanks": "Thank you!",
+    "moreInfo": "More about “{field}”",
+    "openCalendar": "Open calendar",
+    "fileRejected": "Not added: {files}. Check the allowed file types and the {mb} MB limit."
   },
   "logic": {
     "crumb": "Logic",
@@ -1158,7 +1220,11 @@
       "field": "Uses a deleted field",
       "value": "Missing a value",
       "target": "Target missing",
-      "noAction": "No action"
+      "noAction": "No action",
+      "requireLocked": "Can’t require a hidden, read-only or disabled field",
+      "self": "Hides or clears the question it checks",
+      "backwards": "Jumps can only go forward",
+      "conflict": "Hides and requires the same question"
     },
     "op": {
       "eq": "is",
@@ -1174,13 +1240,30 @@
       "true": "is on",
       "false": "is off",
       "before": "is before",
-      "after": "is after"
+      "after": "is after",
+      "starts_with": "starts with",
+      "ends_with": "ends with",
+      "between": "is between",
+      "not_between": "is not between",
+      "in": "is any of",
+      "not_in": "is none of",
+      "contains_all": "includes all of",
+      "count_gte": "has at least … chosen",
+      "count_lte": "has at most … chosen"
     },
     "action": {
       "show": "Show",
       "hide": "Hide",
       "require": "Make required",
-      "jump": "Go to page"
+      "jump": "Go to page",
+      "unrequire": "Make optional",
+      "enable": "Enable",
+      "disable": "Disable",
+      "set_value": "Set an answer",
+      "clear_value": "Clear the answer",
+      "show_page": "Show page",
+      "hide_page": "Hide page",
+      "skip_to_end": "Skip to the end"
     },
     "sentence": {
       "rule": "When {conditions}, {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "show {target}",
       "hide": "hide {target}",
       "require": "make {target} required",
-      "jump": "go to {target}"
+      "jump": "go to {target}",
+      "starts_with": "{field} starts with {value}",
+      "ends_with": "{field} ends with {value}",
+      "between": "{field} is between {value} and {value2}",
+      "not_between": "{field} is not between {value} and {value2}",
+      "in": "{field} is any of {value}",
+      "not_in": "{field} is none of {value}",
+      "contains_all": "{field} includes all of {value}",
+      "count_gte": "{field} has at least {value} chosen",
+      "count_lte": "{field} has at most {value} chosen",
+      "unrequire": "make {target} optional",
+      "enable": "enable {target}",
+      "disable": "disable {target}",
+      "set_value": "set {target} to {value}",
+      "clear_value": "clear {target}",
+      "show_page": "show the page {target}",
+      "hide_page": "skip the page {target}",
+      "skip_to_end": "skip to the end"
     },
     "emptyTitle": "No rules yet",
     "emptyDesc": "Show, hide or require questions based on earlier answers, or skip to another page.",
@@ -1220,7 +1320,71 @@
       "use": "Insert:",
       "empty": "Add a formula",
       "unknown": "No field uses the key “{key}”",
-      "self": "A field can’t use itself"
+      "self": "A field can’t use itself",
+      "syntax": "This formula isn’t complete — check brackets, commas and operators",
+      "functions": "Functions:",
+      "choiceScored": "Counts as the number of the chosen option",
+      "choiceUnscored": "Give its options numbers (field settings → Options) to use it in sums",
+      "guideTitle": "How formulas work",
+      "guideMath": "Use numbers, + − * / and brackets: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Choice questions count as the number given to the chosen option (Options → Give options numbers); several chosen add up.",
+      "guideIf": "Pick a value by condition: if({'{'}plan{'}'} = \"Premium\", 50, 10). Compare with = != > >= < <=.",
+      "guideFunctions": "Also: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Yes",
+    "no": "No",
+    "from": "From",
+    "to": "To",
+    "pickValues": "Choose answers",
+    "typeValues": "Type a value, press Enter",
+    "noValueNeeded": "No answer needed",
+    "setValueFor": "Value for {field}",
+    "ifBadge": "1 · IF",
+    "thenBadge": "2 · THEN",
+    "ifTitle": "Check these answers",
+    "thenTitle": "Then do this",
+    "ifHelp": "Pick a question, how to compare it, and the answer that should trigger the rule.",
+    "thenHelp": "Pick what happens when the answers match — and to which question or page.",
+    "matchLead": "Run the rule when",
+    "andChip": "and",
+    "orChip": "or",
+    "colQuestion": "Question",
+    "colCondition": "Condition",
+    "colAnswer": "Answer",
+    "colAction": "Action",
+    "colTarget": "Question or page",
+    "problemCount": "{count} thing to fix | {count} things to fix",
+    "actionDesc": {
+      "show": "Keep a question hidden until this rule matches.",
+      "hide": "Hide a question while this rule matches.",
+      "require": "Make a question required while this rule matches.",
+      "unrequire": "Let respondents skip a required question.",
+      "enable": "Let respondents change a disabled question.",
+      "disable": "Grey out a question so it can’t be changed.",
+      "set_value": "Fill in an answer automatically.",
+      "clear_value": "Empty an answer that no longer applies.",
+      "show_page": "Keep a page hidden until this rule matches.",
+      "hide_page": "Skip a page while this rule matches.",
+      "jump": "After this page, continue on another page.",
+      "skip_to_end": "After this page, go straight to submit."
+    },
+    "starter": {
+      "show": {
+        "title": "Show a question",
+        "text": "Only ask a follow-up when an earlier answer calls for it."
+      },
+      "require": {
+        "title": "Make a question required",
+        "text": "Require details only in some cases."
+      },
+      "jump": {
+        "title": "Skip to a page",
+        "text": "Send respondents to the page that fits their answers."
+      },
+      "set_value": {
+        "title": "Fill in an answer",
+        "text": "Set an answer automatically from earlier ones."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Removed",
       "pages": "Pages {n}",
       "rules": "Rules {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Field sources",
+    "tab": {
+      "fields": "Fields",
+      "saved": "Saved",
+      "lists": "Lists"
+    },
+    "searchSaved": "Search saved fields…",
+    "searchLists": "Search lists…",
+    "saveShort": "Save",
+    "saveField": "Save field",
+    "saveFieldHint": "Save this field to reuse it in any form",
+    "saveFieldTitle": "Save field",
+    "saveFieldDesc": "It appears under Saved in the field list, with all its settings, for every form in this workspace.",
+    "fieldName": "Name",
+    "nameRequired": "Enter a name.",
+    "savedEmptyTitle": "No saved fields yet",
+    "savedEmptyDesc": "Select a field and choose Save in its settings to reuse it here.",
+    "removeField": "Remove {name} from saved fields",
+    "removeFieldTitle": "Remove “{name}” from saved fields?",
+    "removeFieldDesc": "Forms that already use it keep their copy.",
+    "remove": "Remove",
+    "newList": "New list",
+    "newListTitle": "New list",
+    "editList": "Edit list",
+    "editListTitle": "Edit list",
+    "deleteList": "Delete list",
+    "deleteListTitle": "Delete the list “{name}”?",
+    "deleteListDesc": "Fields that already use it keep their options.",
+    "listDesc": "Reusable options for any choice field — countries, regions, products, teams …",
+    "listName": "Name",
+    "listNamePlaceholder": "e.g. Regions",
+    "listOptions": "Options",
+    "listOptionsPlaceholder": "One option per line",
+    "optionsRequired": "Add at least one option.",
+    "optionsTooMany": "A list can have up to 2,000 options.",
+    "optionCount": "{count} option | {count} options",
+    "listsEmptyTitle": "No lists yet",
+    "listsEmptyDesc": "Create a list once and use it in any dropdown, radio or checkbox field.",
+    "addList": "Add {name} as a dropdown",
+    "addAs": "Add as {type}",
+    "listMenu": "Options for {name}",
+    "useList": "Fill from a list…",
+    "saveAsList": "Save as list",
+    "toast": {
+      "fieldSaved": "“{name}” saved — find it under Saved",
+      "fieldRemoved": "“{name}” removed from saved fields",
+      "listCreated": "List “{name}” created",
+      "listUpdated": "List “{name}” updated",
+      "listDeleted": "List “{name}” deleted"
     }
   }
 }

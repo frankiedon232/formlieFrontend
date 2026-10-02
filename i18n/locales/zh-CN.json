@@ -317,7 +317,8 @@
     "FRM-NET-1001": "请求已取消。",
     "FRM-NET-1002": "服务器返回了意外的响应。",
     "FRM-FORM-1007": "表单当前状态下无法执行此操作。请刷新后重试。",
-    "FRM-FORM-1008": "已存在同名文件夹。"
+    "FRM-FORM-1008": "已存在同名文件夹。",
+    "FRM-FORM-1009": "已存在同名列表。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "API 密钥",
       "export": "导出",
-      "folder": "文件夹"
+      "folder": "文件夹",
+      "saved_field": "已保存的字段",
+      "option_list": "选项列表"
     },
     "field": {
       "name": "名称",
@@ -635,7 +638,12 @@
       "forms_purged": "已永久删除表单",
       "forms_folder_created": "已创建文件夹",
       "forms_folder_renamed": "已重命名文件夹",
-      "forms_folder_deleted": "已删除文件夹"
+      "forms_folder_deleted": "已删除文件夹",
+      "forms_field_saved": "字段已保存到库",
+      "forms_field_removed": "字段已从库中移除",
+      "forms_list_created": "列表已创建",
+      "forms_list_updated": "列表已更新",
+      "forms_list_deleted": "列表已删除"
     },
     "detail": {
       "who": "谁",
@@ -982,12 +990,13 @@
       "no_inputs": "请至少添加一个问题",
       "empty_label": "有问题缺少标签",
       "duplicate_key": "两个字段使用了相同的键",
-      "no_options": "有选择字段没有选项"
+      "no_options": "有选择字段没有选项",
+      "locked_required": "已设为必填，但填写者无法填写（隐藏、只读或已禁用）"
     },
     "inspector": {
       "panel": "字段设置",
       "basics": "基本",
-      "label": "问题",
+      "label": "标签",
       "title": "标题",
       "help": "帮助文字",
       "placeholder": "占位文字",
@@ -1061,7 +1070,10 @@
       "message": "消息",
       "collapsible": "可折叠",
       "collapsibleHint": "填写者可以折叠此标题下的问题。",
-      "startCollapsed": "默认折叠"
+      "startCollapsed": "默认折叠",
+      "numbered": "为选项编号",
+      "numberedHint": "用于计算：所选选项按其编号计算。",
+      "optionScore": "{label} 的编号"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -1083,6 +1095,53 @@
       "build": "构建",
       "logic": "逻辑",
       "versions": "版本"
+    },
+    "renameHint": "双击重命名",
+    "access": {
+      "label": "回答",
+      "editable": "可编辑",
+      "readonly": "只读",
+      "disabled": "已禁用",
+      "editableHint": "填写者可以填写此项。",
+      "readonlyHint": "会显示并随回复提交，但无法更改，例如预填的参考编号。",
+      "disabledHint": "以灰色显示，且不随回复提交。",
+      "noRequired": "只读和已禁用的字段不能设为必填，因为没人能填写。"
+    },
+    "labels": {
+      "title": "标签位置",
+      "top": "字段上方",
+      "left": "字段旁边",
+      "hint": "整个表单使用同一设置。在手机上，标签始终位于上方。"
+    },
+    "files": {
+      "hint": "留空即接受任何文件。可搜索，或输入未列出的类型（例如 .xyz）。",
+      "any": "任何文件类型",
+      "anyButton": "允许全部",
+      "search": "搜索文件类型…",
+      "count": "已允许 {count} 种类型 | 已允许 {count} 种类型",
+      "custom": "由你添加",
+      "remove": "移除 {type}",
+      "all": {
+        "images": "所有图片",
+        "audio": "所有音频",
+        "video": "所有视频"
+      },
+      "group": {
+        "images": "图片",
+        "documents": "文档",
+        "spreadsheets": "电子表格",
+        "presentations": "演示文稿",
+        "audio": "音频",
+        "video": "视频",
+        "archives": "压缩包",
+        "ebooks": "电子书",
+        "data": "数据和邮件",
+        "code": "代码",
+        "design": "设计和 3D",
+        "fonts": "字体",
+        "security": "密钥和证书",
+        "apps": "应用和安装程序"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "提交",
     "next": "下一步",
-    "thanks": "谢谢！"
+    "thanks": "谢谢！",
+    "moreInfo": "关于“{field}”的更多信息",
+    "openCalendar": "打开日历",
+    "fileRejected": "未添加：{files}。请检查允许的文件类型和 {mb} MB 限制。"
   },
   "logic": {
     "crumb": "逻辑",
@@ -1158,7 +1220,11 @@
       "field": "使用了已删除的字段",
       "value": "缺少值",
       "target": "缺少目标",
-      "noAction": "没有操作"
+      "noAction": "没有操作",
+      "requireLocked": "无法将隐藏、只读或已禁用的字段设为必填",
+      "self": "隐藏或清除了它所检查的问题",
+      "backwards": "只能向前跳转",
+      "conflict": "同时隐藏并要求填写同一问题"
     },
     "op": {
       "eq": "等于",
@@ -1174,13 +1240,30 @@
       "true": "已开启",
       "false": "已关闭",
       "before": "早于",
-      "after": "晚于"
+      "after": "晚于",
+      "starts_with": "开头是",
+      "ends_with": "结尾是",
+      "between": "介于",
+      "not_between": "不介于",
+      "in": "是以下任一",
+      "not_in": "不是以下任一",
+      "contains_all": "包含以下全部",
+      "count_gte": "至少选择 … 项",
+      "count_lte": "至多选择 … 项"
     },
     "action": {
       "show": "显示",
       "hide": "隐藏",
       "require": "设为必填",
-      "jump": "跳转到页面"
+      "jump": "跳转到页面",
+      "unrequire": "设为选填",
+      "enable": "启用",
+      "disable": "禁用",
+      "set_value": "设置答案",
+      "clear_value": "清除答案",
+      "show_page": "显示页面",
+      "hide_page": "隐藏页面",
+      "skip_to_end": "跳到结尾"
     },
     "sentence": {
       "rule": "当{conditions}时，{actions}。",
@@ -1201,7 +1284,24 @@
       "show": "显示 {target}",
       "hide": "隐藏 {target}",
       "require": "将 {target} 设为必填",
-      "jump": "跳转到 {target}"
+      "jump": "跳转到 {target}",
+      "starts_with": "{field} 以 {value} 开头",
+      "ends_with": "{field} 以 {value} 结尾",
+      "between": "{field} 介于 {value} 和 {value2} 之间",
+      "not_between": "{field} 不介于 {value} 和 {value2} 之间",
+      "in": "{field} 是 {value} 中的任一项",
+      "not_in": "{field} 不是 {value} 中的任一项",
+      "contains_all": "{field} 包含 {value} 中的全部",
+      "count_gte": "{field} 至少选择了 {value} 项",
+      "count_lte": "{field} 至多选择了 {value} 项",
+      "unrequire": "将 {target} 设为选填",
+      "enable": "启用 {target}",
+      "disable": "禁用 {target}",
+      "set_value": "将 {target} 设为 {value}",
+      "clear_value": "清除 {target}",
+      "show_page": "显示页面 {target}",
+      "hide_page": "跳过页面 {target}",
+      "skip_to_end": "跳到结尾"
     },
     "emptyTitle": "暂无规则",
     "emptyDesc": "根据之前的回答显示、隐藏问题或将其设为必填，或跳转到其他页面。",
@@ -1220,7 +1320,71 @@
       "use": "插入：",
       "empty": "添加公式",
       "unknown": "没有字段使用键“{key}”",
-      "self": "字段不能引用自身"
+      "self": "字段不能引用自身",
+      "syntax": "公式不完整，请检查括号、逗号和运算符",
+      "functions": "函数：",
+      "choiceScored": "按所选选项的编号计算",
+      "choiceUnscored": "为其选项编号（字段设置 → 选项）后即可用于求和",
+      "guideTitle": "公式的工作方式",
+      "guideMath": "可使用数字、+ − * / 和括号：{'{'}quantity{'}'} * {'{'}price{'}'}。",
+      "guideOptions": "选择题按所选选项的编号计算（选项 → 为选项编号）；多选时相加。",
+      "guideIf": "按条件选择值：if({'{'}plan{'}'} = \"Premium\", 50, 10)。比较运算符：= != > >= < <=。",
+      "guideFunctions": "还有：and()、or()、not()、min()、max()、sum()、round(x, 2)、floor()、ceil()、abs()。"
+    },
+    "yes": "是",
+    "no": "否",
+    "from": "从",
+    "to": "到",
+    "pickValues": "选择答案",
+    "typeValues": "输入值后按 Enter",
+    "noValueNeeded": "无需答案",
+    "setValueFor": "{field} 的值",
+    "ifBadge": "1 · 如果",
+    "thenBadge": "2 · 则",
+    "ifTitle": "检查这些答案",
+    "thenTitle": "然后执行",
+    "ifHelp": "选择一个问题、比较方式，以及触发规则的答案。",
+    "thenHelp": "选择答案匹配时要执行的操作，以及作用于哪个问题或页面。",
+    "matchLead": "在以下情况运行规则：",
+    "andChip": "且",
+    "orChip": "或",
+    "colQuestion": "问题",
+    "colCondition": "条件",
+    "colAnswer": "答案",
+    "colAction": "操作",
+    "colTarget": "问题或页面",
+    "problemCount": "{count} 个问题需修复 | {count} 个问题需修复",
+    "actionDesc": {
+      "show": "在此规则匹配前保持问题隐藏。",
+      "hide": "在此规则匹配时隐藏问题。",
+      "require": "在此规则匹配时将问题设为必填。",
+      "unrequire": "允许填写者跳过必填问题。",
+      "enable": "允许填写者更改已禁用的问题。",
+      "disable": "将问题变灰，使其无法更改。",
+      "set_value": "自动填写答案。",
+      "clear_value": "清空不再适用的答案。",
+      "show_page": "在此规则匹配前保持页面隐藏。",
+      "hide_page": "在此规则匹配时跳过页面。",
+      "jump": "完成此页后，转到另一个页面。",
+      "skip_to_end": "完成此页后，直接前往提交。"
+    },
+    "starter": {
+      "show": {
+        "title": "显示问题",
+        "text": "仅当之前的答案需要时才提出后续问题。"
+      },
+      "require": {
+        "title": "将问题设为必填",
+        "text": "仅在某些情况下要求填写详情。"
+      },
+      "jump": {
+        "title": "跳转到页面",
+        "text": "根据填写者的答案将其引导到合适的页面。"
+      },
+      "set_value": {
+        "title": "填写答案",
+        "text": "根据之前的答案自动设置答案。"
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "已移除",
       "pages": "页面 {n}",
       "rules": "规则 {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "字段来源",
+    "tab": {
+      "fields": "字段",
+      "saved": "已保存",
+      "lists": "列表"
+    },
+    "searchSaved": "搜索已保存的字段…",
+    "searchLists": "搜索列表…",
+    "saveShort": "保存",
+    "saveField": "保存字段",
+    "saveFieldHint": "保存此字段，以便在任何表单中重复使用",
+    "saveFieldTitle": "保存字段",
+    "saveFieldDesc": "它会连同所有设置出现在字段列表的“已保存”下，供此工作区的每个表单使用。",
+    "fieldName": "名称",
+    "nameRequired": "请输入名称。",
+    "savedEmptyTitle": "还没有已保存的字段",
+    "savedEmptyDesc": "选择一个字段，并在其设置中选择“保存”，即可在此重复使用。",
+    "removeField": "从已保存的字段中移除 {name}",
+    "removeFieldTitle": "要从已保存的字段中移除“{name}”吗？",
+    "removeFieldDesc": "已使用它的表单会保留各自的副本。",
+    "remove": "移除",
+    "newList": "新建列表",
+    "newListTitle": "新建列表",
+    "editList": "编辑列表",
+    "editListTitle": "编辑列表",
+    "deleteList": "删除列表",
+    "deleteListTitle": "要删除列表“{name}”吗？",
+    "deleteListDesc": "已使用它的字段会保留各自的选项。",
+    "listDesc": "可在任何选择字段中重复使用的选项，例如国家、地区、产品、团队……",
+    "listName": "名称",
+    "listNamePlaceholder": "例如：地区",
+    "listOptions": "选项",
+    "listOptionsPlaceholder": "每行一个选项",
+    "optionsRequired": "请至少添加一个选项。",
+    "optionsTooMany": "一个列表最多可包含 2,000 个选项。",
+    "optionCount": "{count} 个选项 | {count} 个选项",
+    "listsEmptyTitle": "还没有列表",
+    "listsEmptyDesc": "只需创建一次列表，即可在任何下拉、单选或复选字段中使用。",
+    "addList": "将 {name} 添加为下拉列表",
+    "addAs": "添加为{type}",
+    "listMenu": "{name} 的操作",
+    "useList": "从列表填充…",
+    "saveAsList": "另存为列表",
+    "toast": {
+      "fieldSaved": "“{name}”已保存，可在“已保存”下找到",
+      "fieldRemoved": "已从已保存的字段中移除“{name}”",
+      "listCreated": "列表“{name}”已创建",
+      "listUpdated": "列表“{name}”已更新",
+      "listDeleted": "列表“{name}”已删除"
     }
   }
 }

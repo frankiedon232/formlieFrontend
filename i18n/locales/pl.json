@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Żądanie anulowane.",
     "FRM-NET-1002": "Nieoczekiwana odpowiedź serwera.",
     "FRM-FORM-1007": "Nie jest to możliwe w obecnym stanie formularza. Odśwież i spróbuj ponownie.",
-    "FRM-FORM-1008": "Folder o tej nazwie już istnieje."
+    "FRM-FORM-1008": "Folder o tej nazwie już istnieje.",
+    "FRM-FORM-1009": "Lista o tej nazwie już istnieje."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "Klucz API",
       "export": "Eksport",
-      "folder": "Folder"
+      "folder": "Folder",
+      "saved_field": "Zapisane pole",
+      "option_list": "Lista opcji"
     },
     "field": {
       "name": "Nazwa",
@@ -635,7 +638,12 @@
       "forms_purged": "Trwale usunięto formularz",
       "forms_folder_created": "Utworzono folder",
       "forms_folder_renamed": "Zmieniono nazwę folderu",
-      "forms_folder_deleted": "Usunięto folder"
+      "forms_folder_deleted": "Usunięto folder",
+      "forms_field_saved": "Zapisano pole w bibliotece",
+      "forms_field_removed": "Usunięto pole z biblioteki",
+      "forms_list_created": "Utworzono listę",
+      "forms_list_updated": "Zaktualizowano listę",
+      "forms_list_deleted": "Usunięto listę"
     },
     "detail": {
       "who": "Kto",
@@ -982,12 +990,13 @@
       "no_inputs": "Dodaj co najmniej jedno pytanie",
       "empty_label": "Jedno z pytań nie ma etykiety",
       "duplicate_key": "Dwa pola mają ten sam klucz",
-      "no_options": "Pole wyboru nie ma opcji"
+      "no_options": "Pole wyboru nie ma opcji",
+      "locked_required": "Wymagane, ale respondenci nie mogą go wypełnić (ukryte, tylko do odczytu lub wyłączone)"
     },
     "inspector": {
       "panel": "Ustawienia pola",
       "basics": "Podstawy",
-      "label": "Pytanie",
+      "label": "Etykieta",
       "title": "Tytuł",
       "help": "Tekst pomocy",
       "placeholder": "Tekst zastępczy",
@@ -1061,7 +1070,10 @@
       "message": "Wiadomość",
       "collapsible": "Zwijana",
       "collapsibleHint": "Respondenci mogą zwinąć pytania pod tym nagłówkiem.",
-      "startCollapsed": "Na początku zwinięta"
+      "startCollapsed": "Na początku zwinięta",
+      "numbered": "Nadaj opcjom liczby",
+      "numberedHint": "Do obliczeń: wybrana opcja liczy się jako jej liczba.",
+      "optionScore": "Liczba dla {label}"
     },
     "shortcuts": {
       "title": "Skróty",
@@ -1083,6 +1095,53 @@
       "build": "Tworzenie",
       "logic": "Logika",
       "versions": "Wersje"
+    },
+    "renameHint": "Kliknij dwukrotnie, aby zmienić nazwę",
+    "access": {
+      "label": "Odpowiedź",
+      "editable": "Edytowalne",
+      "readonly": "Tylko do odczytu",
+      "disabled": "Wyłączone",
+      "editableHint": "Respondenci mogą to wypełnić.",
+      "readonlyHint": "Widoczne i wysyłane z odpowiedzią, ale bez możliwości zmiany — np. wstępnie wypełniony numer referencyjny.",
+      "disabledHint": "Wyszarzone i niewysyłane z odpowiedzią.",
+      "noRequired": "Pola tylko do odczytu i wyłączone nie mogą być wymagane — nikt nie mógłby ich wypełnić."
+    },
+    "labels": {
+      "title": "Położenie etykiet",
+      "top": "Nad polem",
+      "left": "Obok pola",
+      "hint": "Jedno ustawienie dla całego formularza. Na telefonach etykiety są zawsze nad polem."
+    },
+    "files": {
+      "hint": "Pozostaw puste, aby akceptować dowolny plik. Wyszukaj lub wpisz typ spoza listy (np. .xyz).",
+      "any": "Dowolny typ pliku",
+      "anyButton": "Zezwól na wszystkie",
+      "search": "Szukaj typów plików…",
+      "count": "Dozwolone typy: {count} | Dozwolone typy: {count}",
+      "custom": "Dodane przez Ciebie",
+      "remove": "Usuń {type}",
+      "all": {
+        "images": "Wszystkie obrazy",
+        "audio": "Wszystkie pliki audio",
+        "video": "Wszystkie wideo"
+      },
+      "group": {
+        "images": "Obrazy",
+        "documents": "Dokumenty",
+        "spreadsheets": "Arkusze kalkulacyjne",
+        "presentations": "Prezentacje",
+        "audio": "Audio",
+        "video": "Wideo",
+        "archives": "Archiwa",
+        "ebooks": "E-booki",
+        "data": "Dane i e-mail",
+        "code": "Kod",
+        "design": "Projekty i 3D",
+        "fonts": "Czcionki",
+        "security": "Klucze i certyfikaty",
+        "apps": "Aplikacje i instalatory"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Wyślij",
     "next": "Dalej",
-    "thanks": "Dziękujemy!"
+    "thanks": "Dziękujemy!",
+    "moreInfo": "Więcej o „{field}”",
+    "openCalendar": "Otwórz kalendarz",
+    "fileRejected": "Nie dodano: {files}. Sprawdź dozwolone typy plików i limit {mb} MB."
   },
   "logic": {
     "crumb": "Logika",
@@ -1158,7 +1220,11 @@
       "field": "Używa usuniętego pola",
       "value": "Brak wartości",
       "target": "Brak celu",
-      "noAction": "Brak akcji"
+      "noAction": "Brak akcji",
+      "requireLocked": "Nie można wymagać pola ukrytego, tylko do odczytu lub wyłączonego",
+      "self": "Ukrywa lub czyści pytanie, które sprawdza",
+      "backwards": "Przejścia mogą prowadzić tylko do przodu",
+      "conflict": "Ukrywa i wymaga tego samego pytania"
     },
     "op": {
       "eq": "ma wartość",
@@ -1174,13 +1240,30 @@
       "true": "jest włączone",
       "false": "jest wyłączone",
       "before": "jest przed",
-      "after": "jest po"
+      "after": "jest po",
+      "starts_with": "zaczyna się od",
+      "ends_with": "kończy się na",
+      "between": "jest między",
+      "not_between": "nie jest między",
+      "in": "jest jednym z",
+      "not_in": "nie jest żadnym z",
+      "contains_all": "zawiera wszystkie",
+      "count_gte": "ma wybrane co najmniej …",
+      "count_lte": "ma wybrane co najwyżej …"
     },
     "action": {
       "show": "Pokaż",
       "hide": "Ukryj",
       "require": "Ustaw jako wymagane",
-      "jump": "Przejdź do strony"
+      "jump": "Przejdź do strony",
+      "unrequire": "Ustaw jako opcjonalne",
+      "enable": "Włącz",
+      "disable": "Wyłącz",
+      "set_value": "Ustaw odpowiedź",
+      "clear_value": "Wyczyść odpowiedź",
+      "show_page": "Pokaż stronę",
+      "hide_page": "Ukryj stronę",
+      "skip_to_end": "Przejdź do końca"
     },
     "sentence": {
       "rule": "Gdy {conditions}, {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "pokaż {target}",
       "hide": "ukryj {target}",
       "require": "ustaw {target} jako wymagane",
-      "jump": "przejdź do {target}"
+      "jump": "przejdź do {target}",
+      "starts_with": "{field} zaczyna się od {value}",
+      "ends_with": "{field} kończy się na {value}",
+      "between": "{field} jest między {value} a {value2}",
+      "not_between": "{field} nie jest między {value} a {value2}",
+      "in": "{field} jest jednym z: {value}",
+      "not_in": "{field} nie jest żadnym z: {value}",
+      "contains_all": "{field} zawiera wszystkie z: {value}",
+      "count_gte": "{field} ma wybrane co najmniej {value}",
+      "count_lte": "{field} ma wybrane co najwyżej {value}",
+      "unrequire": "ustaw {target} jako opcjonalne",
+      "enable": "włącz {target}",
+      "disable": "wyłącz {target}",
+      "set_value": "ustaw {target} na {value}",
+      "clear_value": "wyczyść {target}",
+      "show_page": "pokaż stronę {target}",
+      "hide_page": "pomiń stronę {target}",
+      "skip_to_end": "przejdź do końca"
     },
     "emptyTitle": "Brak reguł",
     "emptyDesc": "Pokazuj, ukrywaj lub wymagaj pytań na podstawie wcześniejszych odpowiedzi albo przechodź do innej strony.",
@@ -1220,7 +1320,71 @@
       "use": "Wstaw:",
       "empty": "Dodaj formułę",
       "unknown": "Żadne pole nie używa klucza „{key}”",
-      "self": "Pole nie może używać samego siebie"
+      "self": "Pole nie może używać samego siebie",
+      "syntax": "Ta formuła jest niekompletna — sprawdź nawiasy, przecinki i operatory",
+      "functions": "Funkcje:",
+      "choiceScored": "Liczy się jako liczba wybranej opcji",
+      "choiceUnscored": "Nadaj jego opcjom liczby (ustawienia pola → Opcje), aby używać go w sumach",
+      "guideTitle": "Jak działają formuły",
+      "guideMath": "Używaj liczb, + − * / i nawiasów: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Pytania wyboru liczą się jako liczba nadana wybranej opcji (Opcje → Nadaj opcjom liczby); kilka wybranych się sumuje.",
+      "guideIf": "Wybierz wartość według warunku: if({'{'}plan{'}'} = \"Premium\", 50, 10). Porównuj za pomocą = != > >= < <=.",
+      "guideFunctions": "Także: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Tak",
+    "no": "Nie",
+    "from": "Od",
+    "to": "Do",
+    "pickValues": "Wybierz odpowiedzi",
+    "typeValues": "Wpisz wartość i naciśnij Enter",
+    "noValueNeeded": "Odpowiedź niepotrzebna",
+    "setValueFor": "Wartość dla {field}",
+    "ifBadge": "1 · GDY",
+    "thenBadge": "2 · WTEDY",
+    "ifTitle": "Sprawdź te odpowiedzi",
+    "thenTitle": "Wtedy zrób to",
+    "ifHelp": "Wybierz pytanie, sposób porównania i odpowiedź, która ma uruchomić regułę.",
+    "thenHelp": "Wybierz, co się stanie, gdy odpowiedzi pasują — i dla którego pytania lub strony.",
+    "matchLead": "Uruchom regułę, gdy",
+    "andChip": "i",
+    "orChip": "lub",
+    "colQuestion": "Pytanie",
+    "colCondition": "Warunek",
+    "colAnswer": "Odpowiedź",
+    "colAction": "Akcja",
+    "colTarget": "Pytanie lub strona",
+    "problemCount": "Do poprawy: {count} | Do poprawy: {count}",
+    "actionDesc": {
+      "show": "Ukrywaj pytanie, dopóki ta reguła nie zostanie spełniona.",
+      "hide": "Ukryj pytanie, gdy ta reguła jest spełniona.",
+      "require": "Ustaw pytanie jako wymagane, gdy ta reguła jest spełniona.",
+      "unrequire": "Pozwól respondentom pominąć wymagane pytanie.",
+      "enable": "Pozwól respondentom zmienić wyłączone pytanie.",
+      "disable": "Wyszarz pytanie, aby nie można go było zmienić.",
+      "set_value": "Wypełnij odpowiedź automatycznie.",
+      "clear_value": "Wyczyść odpowiedź, która już nie ma zastosowania.",
+      "show_page": "Ukrywaj stronę, dopóki ta reguła nie zostanie spełniona.",
+      "hide_page": "Pomiń stronę, gdy ta reguła jest spełniona.",
+      "jump": "Po tej stronie przejdź do innej strony.",
+      "skip_to_end": "Po tej stronie przejdź od razu do wysłania."
+    },
+    "starter": {
+      "show": {
+        "title": "Pokaż pytanie",
+        "text": "Zadaj pytanie uzupełniające tylko wtedy, gdy wymaga tego wcześniejsza odpowiedź."
+      },
+      "require": {
+        "title": "Ustaw pytanie jako wymagane",
+        "text": "Wymagaj szczegółów tylko w niektórych przypadkach."
+      },
+      "jump": {
+        "title": "Przejdź do strony",
+        "text": "Kieruj respondentów na stronę pasującą do ich odpowiedzi."
+      },
+      "set_value": {
+        "title": "Wypełnij odpowiedź",
+        "text": "Ustaw odpowiedź automatycznie na podstawie wcześniejszych."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Usunięte",
       "pages": "Strony {n}",
       "rules": "Reguły {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Źródła pól",
+    "tab": {
+      "fields": "Pola",
+      "saved": "Zapisane",
+      "lists": "Listy"
+    },
+    "searchSaved": "Szukaj zapisanych pól…",
+    "searchLists": "Szukaj list…",
+    "saveShort": "Zapisz",
+    "saveField": "Zapisz pole",
+    "saveFieldHint": "Zapisz to pole, aby użyć go ponownie w dowolnym formularzu",
+    "saveFieldTitle": "Zapisz pole",
+    "saveFieldDesc": "Pojawi się w sekcji Zapisane na liście pól, ze wszystkimi ustawieniami, w każdym formularzu tej przestrzeni roboczej.",
+    "fieldName": "Nazwa",
+    "nameRequired": "Wpisz nazwę.",
+    "savedEmptyTitle": "Brak zapisanych pól",
+    "savedEmptyDesc": "Wybierz pole i kliknij Zapisz w jego ustawieniach, aby używać go tutaj.",
+    "removeField": "Usuń {name} z zapisanych pól",
+    "removeFieldTitle": "Usunąć „{name}” z zapisanych pól?",
+    "removeFieldDesc": "Formularze, które już go używają, zachowają swoją kopię.",
+    "remove": "Usuń",
+    "newList": "Nowa lista",
+    "newListTitle": "Nowa lista",
+    "editList": "Edytuj listę",
+    "editListTitle": "Edytuj listę",
+    "deleteList": "Usuń listę",
+    "deleteListTitle": "Usunąć listę „{name}”?",
+    "deleteListDesc": "Pola, które już jej używają, zachowają swoje opcje.",
+    "listDesc": "Opcje wielokrotnego użytku dla każdego pola wyboru — kraje, regiony, produkty, zespoły …",
+    "listName": "Nazwa",
+    "listNamePlaceholder": "np. Regiony",
+    "listOptions": "Opcje",
+    "listOptionsPlaceholder": "Jedna opcja w wierszu",
+    "optionsRequired": "Dodaj co najmniej jedną opcję.",
+    "optionsTooMany": "Lista może mieć maksymalnie 2000 opcji.",
+    "optionCount": "Opcje: {count} | Opcje: {count}",
+    "listsEmptyTitle": "Brak list",
+    "listsEmptyDesc": "Utwórz listę raz i używaj jej w dowolnym polu listy rozwijanej, jednokrotnego lub wielokrotnego wyboru.",
+    "addList": "Dodaj {name} jako listę rozwijaną",
+    "addAs": "Dodaj jako {type}",
+    "listMenu": "Opcje dla {name}",
+    "useList": "Wypełnij z listy…",
+    "saveAsList": "Zapisz jako listę",
+    "toast": {
+      "fieldSaved": "Zapisano „{name}” — znajdziesz je w sekcji Zapisane",
+      "fieldRemoved": "Usunięto „{name}” z zapisanych pól",
+      "listCreated": "Utworzono listę „{name}”",
+      "listUpdated": "Zaktualizowano listę „{name}”",
+      "listDeleted": "Usunięto listę „{name}”"
     }
   }
 }

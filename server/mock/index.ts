@@ -6,6 +6,7 @@ import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
+import * as library from './routes/library'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
@@ -59,6 +60,13 @@ const router = createRouter()
   .post('/folders', forms.createFolder)
   .patch('/folders/:id', forms.renameFolder)
   .delete('/folders/:id', forms.deleteFolder)
+  .get('/field-library', library.listSavedFields)
+  .post('/field-library', library.saveField)
+  .delete('/field-library/:id', library.deleteSavedField)
+  .get('/option-lists', library.listOptionLists)
+  .post('/option-lists', library.createOptionList)
+  .patch('/option-lists/:id', library.updateOptionList)
+  .delete('/option-lists/:id', library.deleteOptionList)
   .get('/navigation/counts', navigationCounts)
   // onboarding + uploads
   .get('/onboarding', onboarding.getOnboarding)

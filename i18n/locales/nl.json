@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Verzoek geannuleerd.",
     "FRM-NET-1002": "Onverwacht antwoord van de server.",
     "FRM-FORM-1007": "Dat kan niet in de huidige status van het formulier. Vernieuw en probeer het opnieuw.",
-    "FRM-FORM-1008": "Er bestaat al een map met deze naam."
+    "FRM-FORM-1008": "Er bestaat al een map met deze naam.",
+    "FRM-FORM-1009": "Er bestaat al een lijst met deze naam."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "API-sleutel",
       "export": "Export",
-      "folder": "Map"
+      "folder": "Map",
+      "saved_field": "Opgeslagen veld",
+      "option_list": "Optielijst"
     },
     "field": {
       "name": "Naam",
@@ -635,7 +638,12 @@
       "forms_purged": "Formulier definitief verwijderd",
       "forms_folder_created": "Map aangemaakt",
       "forms_folder_renamed": "Map hernoemd",
-      "forms_folder_deleted": "Map verwijderd"
+      "forms_folder_deleted": "Map verwijderd",
+      "forms_field_saved": "Veld opgeslagen in bibliotheek",
+      "forms_field_removed": "Veld verwijderd uit bibliotheek",
+      "forms_list_created": "Lijst aangemaakt",
+      "forms_list_updated": "Lijst bijgewerkt",
+      "forms_list_deleted": "Lijst verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -982,12 +990,13 @@
       "no_inputs": "Voeg minstens één vraag toe",
       "empty_label": "Een vraag heeft geen label",
       "duplicate_key": "Twee velden gebruiken dezelfde sleutel",
-      "no_options": "Een keuzeveld heeft geen opties"
+      "no_options": "Een keuzeveld heeft geen opties",
+      "locked_required": "Verplicht, maar respondenten kunnen het niet invullen (verborgen, alleen-lezen of uitgeschakeld)"
     },
     "inspector": {
       "panel": "Veldinstellingen",
       "basics": "Basis",
-      "label": "Vraag",
+      "label": "Label",
       "title": "Titel",
       "help": "Helptekst",
       "placeholder": "Voorbeeldtekst",
@@ -1061,7 +1070,10 @@
       "message": "Bericht",
       "collapsible": "Inklapbaar",
       "collapsibleHint": "Respondenten kunnen de vragen onder deze kop inklappen.",
-      "startCollapsed": "Ingeklapt starten"
+      "startCollapsed": "Ingeklapt starten",
+      "numbered": "Opties nummeren",
+      "numberedHint": "Voor berekeningen: een gekozen optie telt als haar nummer.",
+      "optionScore": "Nummer voor {label}"
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -1083,6 +1095,53 @@
       "build": "Bouwen",
       "logic": "Logica",
       "versions": "Versies"
+    },
+    "renameHint": "Dubbelklik om te hernoemen",
+    "access": {
+      "label": "Antwoord",
+      "editable": "Bewerkbaar",
+      "readonly": "Alleen-lezen",
+      "disabled": "Uitgeschakeld",
+      "editableHint": "Respondenten kunnen dit invullen.",
+      "readonlyHint": "Getoond en meegestuurd met het antwoord, maar niet te wijzigen — bijv. een vooraf ingevuld kenmerk.",
+      "disabledHint": "Grijs getoond en niet meegestuurd met het antwoord.",
+      "noRequired": "Alleen-lezen en uitgeschakelde velden kunnen niet verplicht zijn — niemand kan ze invullen."
+    },
+    "labels": {
+      "title": "Positie van labels",
+      "top": "Boven het veld",
+      "left": "Naast het veld",
+      "hint": "Eén instelling voor het hele formulier. Op telefoons staan labels altijd erboven."
+    },
+    "files": {
+      "hint": "Laat leeg om elk bestand toe te staan. Zoek, of typ een type dat niet in de lijst staat (bijv. .xyz).",
+      "any": "Elk bestandstype",
+      "anyButton": "Alles toestaan",
+      "search": "Bestandstypen zoeken…",
+      "count": "{count} type toegestaan | {count} typen toegestaan",
+      "custom": "Door jou toegevoegd",
+      "remove": "{type} verwijderen",
+      "all": {
+        "images": "Alle afbeeldingen",
+        "audio": "Alle audio",
+        "video": "Alle video"
+      },
+      "group": {
+        "images": "Afbeeldingen",
+        "documents": "Documenten",
+        "spreadsheets": "Spreadsheets",
+        "presentations": "Presentaties",
+        "audio": "Audio",
+        "video": "Video",
+        "archives": "Archieven",
+        "ebooks": "E-books",
+        "data": "Data en e-mail",
+        "code": "Code",
+        "design": "Ontwerp en 3D",
+        "fonts": "Lettertypen",
+        "security": "Sleutels en certificaten",
+        "apps": "Apps en installatieprogramma’s"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Versturen",
     "next": "Volgende",
-    "thanks": "Bedankt!"
+    "thanks": "Bedankt!",
+    "moreInfo": "Meer over “{field}”",
+    "openCalendar": "Kalender openen",
+    "fileRejected": "Niet toegevoegd: {files}. Controleer de toegestane bestandstypen en de limiet van {mb} MB."
   },
   "logic": {
     "crumb": "Logica",
@@ -1158,7 +1220,11 @@
       "field": "Gebruikt een verwijderd veld",
       "value": "Waarde ontbreekt",
       "target": "Doel ontbreekt",
-      "noAction": "Geen actie"
+      "noAction": "Geen actie",
+      "requireLocked": "Een verborgen, alleen-lezen of uitgeschakeld veld kan niet verplicht zijn",
+      "self": "Verbergt of wist de vraag die het controleert",
+      "backwards": "Sprongen kunnen alleen vooruit",
+      "conflict": "Verbergt en verplicht dezelfde vraag"
     },
     "op": {
       "eq": "is",
@@ -1174,13 +1240,30 @@
       "true": "staat aan",
       "false": "staat uit",
       "before": "is vóór",
-      "after": "is na"
+      "after": "is na",
+      "starts_with": "begint met",
+      "ends_with": "eindigt op",
+      "between": "ligt tussen",
+      "not_between": "ligt niet tussen",
+      "in": "is een van",
+      "not_in": "is geen van",
+      "contains_all": "bevat alle",
+      "count_gte": "heeft minstens … gekozen",
+      "count_lte": "heeft hoogstens … gekozen"
     },
     "action": {
       "show": "Tonen",
       "hide": "Verbergen",
       "require": "Verplicht maken",
-      "jump": "Naar pagina"
+      "jump": "Naar pagina",
+      "unrequire": "Optioneel maken",
+      "enable": "Inschakelen",
+      "disable": "Uitschakelen",
+      "set_value": "Antwoord instellen",
+      "clear_value": "Antwoord wissen",
+      "show_page": "Pagina tonen",
+      "hide_page": "Pagina verbergen",
+      "skip_to_end": "Naar het einde"
     },
     "sentence": {
       "rule": "Als {conditions}, {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "toon {target}",
       "hide": "verberg {target}",
       "require": "maak {target} verplicht",
-      "jump": "ga naar {target}"
+      "jump": "ga naar {target}",
+      "starts_with": "{field} met {value} begint",
+      "ends_with": "{field} op {value} eindigt",
+      "between": "{field} tussen {value} en {value2} ligt",
+      "not_between": "{field} niet tussen {value} en {value2} ligt",
+      "in": "{field} een van {value} is",
+      "not_in": "{field} geen van {value} is",
+      "contains_all": "{field} alle van {value} bevat",
+      "count_gte": "bij {field} minstens {value} gekozen zijn",
+      "count_lte": "bij {field} hoogstens {value} gekozen zijn",
+      "unrequire": "maak {target} optioneel",
+      "enable": "schakel {target} in",
+      "disable": "schakel {target} uit",
+      "set_value": "zet {target} op {value}",
+      "clear_value": "wis {target}",
+      "show_page": "toon de pagina {target}",
+      "hide_page": "sla de pagina {target} over",
+      "skip_to_end": "ga naar het einde"
     },
     "emptyTitle": "Nog geen regels",
     "emptyDesc": "Toon, verberg of verplicht vragen op basis van eerdere antwoorden, of ga naar een andere pagina.",
@@ -1220,7 +1320,71 @@
       "use": "Invoegen:",
       "empty": "Formule toevoegen",
       "unknown": "Geen veld gebruikt de sleutel “{key}”",
-      "self": "Een veld kan zichzelf niet gebruiken"
+      "self": "Een veld kan zichzelf niet gebruiken",
+      "syntax": "Deze formule is niet compleet — controleer haakjes, komma’s en operatoren",
+      "functions": "Functies:",
+      "choiceScored": "Telt als het nummer van de gekozen optie",
+      "choiceUnscored": "Nummer de opties (veldinstellingen → Opties) om het in sommen te gebruiken",
+      "guideTitle": "Zo werken formules",
+      "guideMath": "Gebruik getallen, + − * / en haakjes: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Keuzevragen tellen als het nummer van de gekozen optie (Opties → Opties nummeren); meerdere keuzes worden opgeteld.",
+      "guideIf": "Kies een waarde op basis van een voorwaarde: if({'{'}plan{'}'} = \"Premium\", 50, 10). Vergelijk met = != > >= < <=.",
+      "guideFunctions": "Ook: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Ja",
+    "no": "Nee",
+    "from": "Van",
+    "to": "Tot",
+    "pickValues": "Kies antwoorden",
+    "typeValues": "Typ een waarde en druk op Enter",
+    "noValueNeeded": "Geen antwoord nodig",
+    "setValueFor": "Waarde voor {field}",
+    "ifBadge": "1 · ALS",
+    "thenBadge": "2 · DAN",
+    "ifTitle": "Controleer deze antwoorden",
+    "thenTitle": "Doe dan dit",
+    "ifHelp": "Kies een vraag, hoe je die vergelijkt en het antwoord dat de regel moet activeren.",
+    "thenHelp": "Kies wat er gebeurt als de antwoorden overeenkomen — en met welke vraag of pagina.",
+    "matchLead": "Voer de regel uit als",
+    "andChip": "en",
+    "orChip": "of",
+    "colQuestion": "Vraag",
+    "colCondition": "Voorwaarde",
+    "colAnswer": "Antwoord",
+    "colAction": "Actie",
+    "colTarget": "Vraag of pagina",
+    "problemCount": "{count} punt om op te lossen | {count} punten om op te lossen",
+    "actionDesc": {
+      "show": "Houd een vraag verborgen tot deze regel overeenkomt.",
+      "hide": "Verberg een vraag zolang deze regel overeenkomt.",
+      "require": "Maak een vraag verplicht zolang deze regel overeenkomt.",
+      "unrequire": "Laat respondenten een verplichte vraag overslaan.",
+      "enable": "Laat respondenten een uitgeschakelde vraag wijzigen.",
+      "disable": "Maak een vraag grijs zodat die niet te wijzigen is.",
+      "set_value": "Vul automatisch een antwoord in.",
+      "clear_value": "Maak een antwoord leeg dat niet meer van toepassing is.",
+      "show_page": "Houd een pagina verborgen tot deze regel overeenkomt.",
+      "hide_page": "Sla een pagina over zolang deze regel overeenkomt.",
+      "jump": "Ga na deze pagina verder op een andere pagina.",
+      "skip_to_end": "Ga na deze pagina direct naar verzenden."
+    },
+    "starter": {
+      "show": {
+        "title": "Een vraag tonen",
+        "text": "Stel alleen een vervolgvraag als een eerder antwoord erom vraagt."
+      },
+      "require": {
+        "title": "Een vraag verplicht maken",
+        "text": "Vraag alleen in sommige gevallen om details."
+      },
+      "jump": {
+        "title": "Naar een pagina springen",
+        "text": "Stuur respondenten naar de pagina die bij hun antwoorden past."
+      },
+      "set_value": {
+        "title": "Een antwoord invullen",
+        "text": "Stel automatisch een antwoord in op basis van eerdere antwoorden."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Verwijderd",
       "pages": "Pagina's {n}",
       "rules": "Regels {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Veldbronnen",
+    "tab": {
+      "fields": "Velden",
+      "saved": "Opgeslagen",
+      "lists": "Lijsten"
+    },
+    "searchSaved": "Opgeslagen velden zoeken…",
+    "searchLists": "Lijsten zoeken…",
+    "saveShort": "Opslaan",
+    "saveField": "Veld opslaan",
+    "saveFieldHint": "Sla dit veld op om het in elk formulier te hergebruiken",
+    "saveFieldTitle": "Veld opslaan",
+    "saveFieldDesc": "Het verschijnt onder Opgeslagen in de veldlijst, met al zijn instellingen, voor elk formulier in deze werkruimte.",
+    "fieldName": "Naam",
+    "nameRequired": "Voer een naam in.",
+    "savedEmptyTitle": "Nog geen opgeslagen velden",
+    "savedEmptyDesc": "Selecteer een veld en kies Opslaan in de instellingen om het hier te hergebruiken.",
+    "removeField": "{name} verwijderen uit opgeslagen velden",
+    "removeFieldTitle": "“{name}” verwijderen uit opgeslagen velden?",
+    "removeFieldDesc": "Formulieren die het al gebruiken, houden hun kopie.",
+    "remove": "Verwijderen",
+    "newList": "Nieuwe lijst",
+    "newListTitle": "Nieuwe lijst",
+    "editList": "Lijst bewerken",
+    "editListTitle": "Lijst bewerken",
+    "deleteList": "Lijst verwijderen",
+    "deleteListTitle": "De lijst “{name}” verwijderen?",
+    "deleteListDesc": "Velden die hem al gebruiken, houden hun opties.",
+    "listDesc": "Herbruikbare opties voor elk keuzeveld — landen, regio’s, producten, teams …",
+    "listName": "Naam",
+    "listNamePlaceholder": "bijv. Regio’s",
+    "listOptions": "Opties",
+    "listOptionsPlaceholder": "Eén optie per regel",
+    "optionsRequired": "Voeg minstens één optie toe.",
+    "optionsTooMany": "Een lijst kan maximaal 2.000 opties hebben.",
+    "optionCount": "{count} optie | {count} opties",
+    "listsEmptyTitle": "Nog geen lijsten",
+    "listsEmptyDesc": "Maak een lijst één keer en gebruik hem in elk keuzemenu-, keuzerondje- of selectievakjeveld.",
+    "addList": "{name} toevoegen als keuzemenu",
+    "addAs": "Toevoegen als {type}",
+    "listMenu": "Opties voor {name}",
+    "useList": "Vullen uit een lijst…",
+    "saveAsList": "Opslaan als lijst",
+    "toast": {
+      "fieldSaved": "“{name}” opgeslagen — je vindt het onder Opgeslagen",
+      "fieldRemoved": "“{name}” verwijderd uit opgeslagen velden",
+      "listCreated": "Lijst “{name}” aangemaakt",
+      "listUpdated": "Lijst “{name}” bijgewerkt",
+      "listDeleted": "Lijst “{name}” verwijderd"
     }
   }
 }

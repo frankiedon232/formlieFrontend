@@ -16,7 +16,6 @@ const options = computed({
   get: () => props.field.options ?? [],
   set: next => builder.updateField(props.field.id, { options: next }, `options:${props.field.id}:order`),
 })
-const rows = computed<string[]>(() => (props.field.props?.rows as string[] | undefined) ?? [])
 
 const uniqueValue = (label: string, taken: string[]) => {
   const base =
@@ -70,8 +69,32 @@ watch(pasteOpen, open => {
   if (open) pasteText.value = options.value.map(o => o.label).join('\n')
 })
 
-const setRows = (next: string[]) =>
-  builder.updateProps(props.field.id, { rows: next }, `rows:${props.field.id}`)
+// Numbers per option, for calculations (a choice counts as its option's number).
+const numbered = computed(() => options.value.some(o => typeof o.score === 'number'))
+function setNumbered(on: boolean) {
+  builder.updateField(props.field.id, {
+    options: options.value.map(({ score: _score, ...o }, i) => (on ? { ...o, score: i + 1 } : o)),
+  })
+}
+function setScore(index: number, raw: string | number) {
+  const score = raw === '' || Number.isNaN(Number(raw)) ? 0 : Number(raw)
+  builder.updateField(
+    props.field.id,
+    { options: options.value.map((o, i) => (i === index ? { ...o, score } : o)) },
+    `options:${props.field.id}:score:${index}`,
+  )
+}
+
+// Option lists: fill from a saved list, or save these options as one.
+const library = useFieldLibrary()
+onMounted(() => library.load())
+const listItems = computed(() => library.lists.value.map(l => ({ value: l.id, label: l.name, icon: 'i-lucide-list' })))
+function useList(id: string) {
+  const list = library.lists.value.find(l => l.id === id)
+  if (list) builder.updateField(props.field.id, { options: structuredClone(toRaw(list.options)), option_set_id: list.id })
+}
+const saveListOpen = ref(false)
+
 </script>
 
 <template>
@@ -88,6 +111,29 @@ const setRows = (next: string[]) =>
         size="xs"
         class="px-0"
         @click="pasteOpen = true"
+      />
+    </div>
+    <div v-if="field.type !== 'matrix'" class="flex items-center gap-2">
+      <USelectMenu
+        :model-value="undefined"
+        :items="listItems"
+        value-key="value"
+        :loading="library.loading.value"
+        :placeholder="t('library.useList')"
+        icon="i-lucide-list"
+        size="sm"
+        :search-input="{ placeholder: t('common.search') }"
+        class="min-w-0 flex-1"
+        @update:model-value="v => v && useList(String(v))"
+      />
+      <UButton
+        :label="t('library.saveAsList')"
+        icon="i-lucide-list-plus"
+        color="neutral"
+        variant="outline"
+        size="sm"
+        :disabled="!options.length"
+        @click="saveListOpen = true"
       />
     </div>
     <VueDraggable
@@ -109,6 +155,15 @@ const setRows = (next: string[]) =>
           class="min-w-0 flex-1"
           :aria-label="t('builder.inspector.optionN', { n: index + 1 })"
           @update:model-value="v => setLabel(index, String(v))"
+        />
+        <UInput
+          v-if="numbered"
+          type="number"
+          :model-value="String(option.score ?? 0)"
+          size="sm"
+          class="w-16 shrink-0"
+          :aria-label="t('builder.inspector.optionScore', { label: option.label })"
+          @update:model-value="v => setScore(index, v)"
         />
         <UButton
           icon="i-lucide-arrow-up"
@@ -150,37 +205,25 @@ const setRows = (next: string[]) =>
       class="self-start"
       @click="add()"
     />
+    <USwitch
+      v-if="field.type !== 'ranking'"
+      :model-value="numbered"
+      :label="t('builder.inspector.numbered')"
+      :description="t('builder.inspector.numberedHint')"
+      color="neutral"
+      size="sm"
+      @update:model-value="setNumbered"
+    />
 
-    <template v-if="field.type === 'matrix'">
-      <h3 class="mt-2 text-xs font-medium text-muted uppercase">{{ t('builder.inspector.rows') }}</h3>
-      <div v-for="(row, index) in rows" :key="index" class="flex items-center gap-1">
-        <UInput
-          :model-value="row"
-          size="sm"
-          class="min-w-0 flex-1"
-          :aria-label="t('builder.inspector.rowN', { n: index + 1 })"
-          @update:model-value="v => setRows(rows.map((r, i) => (i === index ? String(v) : r)))"
-        />
-        <UButton
-          icon="i-lucide-x"
-          color="neutral"
-          variant="ghost"
-          size="xs"
-          square
-          :aria-label="t('builder.inspector.removeRow', { n: index + 1 })"
-          @click="setRows(rows.filter((_, i) => i !== index))"
-        />
-      </div>
-      <UButton
-        :label="t('builder.inspector.addRow')"
-        icon="i-lucide-plus"
-        color="neutral"
-        variant="outline"
-        size="sm"
-        class="self-start"
-        @click="setRows([...rows, t('builder.defaults.row', { n: rows.length + 1 })])"
-      />
-    </template>
+    <FormsBuilderInspectorMatrixRows v-if="field.type === 'matrix'" :field="field" />
+
+    <FormsBuilderListModal
+      v-model:open="saveListOpen"
+      :list="null"
+      :initial-name="field.label"
+      :initial-options="options"
+      @saved="list => builder.updateField(field.id, { option_set_id: list.id })"
+    />
 
     <AppModal
       v-model:open="pasteOpen"

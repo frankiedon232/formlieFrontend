@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Đã hủy yêu cầu.",
     "FRM-NET-1002": "Phản hồi bất thường từ máy chủ.",
     "FRM-FORM-1007": "Không thể thực hiện ở trạng thái hiện tại của biểu mẫu. Hãy tải lại và thử lại.",
-    "FRM-FORM-1008": "Đã có thư mục cùng tên."
+    "FRM-FORM-1008": "Đã có thư mục cùng tên.",
+    "FRM-FORM-1009": "Đã có danh sách với tên này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "Khóa API",
       "export": "Bản xuất",
-      "folder": "Thư mục"
+      "folder": "Thư mục",
+      "saved_field": "Trường đã lưu",
+      "option_list": "Danh sách lựa chọn"
     },
     "field": {
       "name": "Tên",
@@ -635,7 +638,12 @@
       "forms_purged": "Đã xóa vĩnh viễn biểu mẫu",
       "forms_folder_created": "Đã tạo thư mục",
       "forms_folder_renamed": "Đã đổi tên thư mục",
-      "forms_folder_deleted": "Đã xóa thư mục"
+      "forms_folder_deleted": "Đã xóa thư mục",
+      "forms_field_saved": "Đã lưu trường vào thư viện",
+      "forms_field_removed": "Đã xóa trường khỏi thư viện",
+      "forms_list_created": "Đã tạo danh sách",
+      "forms_list_updated": "Đã cập nhật danh sách",
+      "forms_list_deleted": "Đã xóa danh sách"
     },
     "detail": {
       "who": "Ai",
@@ -982,12 +990,13 @@
       "no_inputs": "Thêm ít nhất một câu hỏi",
       "empty_label": "Có câu hỏi chưa có nhãn",
       "duplicate_key": "Hai trường dùng cùng một khóa",
-      "no_options": "Có trường lựa chọn chưa có lựa chọn nào"
+      "no_options": "Có trường lựa chọn chưa có lựa chọn nào",
+      "locked_required": "Bắt buộc, nhưng người trả lời không thể điền (ẩn, chỉ đọc hoặc đã tắt)"
     },
     "inspector": {
       "panel": "Cài đặt trường",
       "basics": "Cơ bản",
-      "label": "Câu hỏi",
+      "label": "Nhãn",
       "title": "Tiêu đề",
       "help": "Văn bản trợ giúp",
       "placeholder": "Văn bản gợi ý",
@@ -1061,7 +1070,10 @@
       "message": "Lời nhắn",
       "collapsible": "Thu gọn được",
       "collapsibleHint": "Người trả lời có thể thu gọn các câu hỏi bên dưới tiêu đề này.",
-      "startCollapsed": "Bắt đầu ở dạng thu gọn"
+      "startCollapsed": "Bắt đầu ở dạng thu gọn",
+      "numbered": "Gán số cho lựa chọn",
+      "numberedHint": "Dùng cho phép tính: lựa chọn được chọn tính bằng số của nó.",
+      "optionScore": "Số cho {label}"
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -1083,6 +1095,53 @@
       "build": "Tạo",
       "logic": "Logic",
       "versions": "Phiên bản"
+    },
+    "renameHint": "Nhấp đúp để đổi tên",
+    "access": {
+      "label": "Câu trả lời",
+      "editable": "Có thể sửa",
+      "readonly": "Chỉ đọc",
+      "disabled": "Đã tắt",
+      "editableHint": "Người trả lời có thể điền mục này.",
+      "readonlyHint": "Được hiển thị và gửi kèm câu trả lời, nhưng không thể thay đổi — ví dụ một mã tham chiếu điền sẵn.",
+      "disabledHint": "Hiển thị mờ và không gửi kèm câu trả lời.",
+      "noRequired": "Trường chỉ đọc và trường đã tắt không thể bắt buộc — không ai điền được."
+    },
+    "labels": {
+      "title": "Vị trí nhãn",
+      "top": "Phía trên trường",
+      "left": "Bên cạnh trường",
+      "hint": "Một cài đặt cho cả biểu mẫu. Trên điện thoại, nhãn luôn nằm phía trên."
+    },
+    "files": {
+      "hint": "Để trống để chấp nhận mọi tệp. Tìm kiếm, hoặc nhập một loại chưa có trong danh sách (ví dụ .xyz).",
+      "any": "Mọi loại tệp",
+      "anyButton": "Cho phép tất cả",
+      "search": "Tìm loại tệp…",
+      "count": "Cho phép {count} loại | Cho phép {count} loại",
+      "custom": "Do bạn thêm",
+      "remove": "Xóa {type}",
+      "all": {
+        "images": "Mọi hình ảnh",
+        "audio": "Mọi âm thanh",
+        "video": "Mọi video"
+      },
+      "group": {
+        "images": "Hình ảnh",
+        "documents": "Tài liệu",
+        "spreadsheets": "Bảng tính",
+        "presentations": "Bản trình bày",
+        "audio": "Âm thanh",
+        "video": "Video",
+        "archives": "Tệp nén",
+        "ebooks": "Sách điện tử",
+        "data": "Dữ liệu và email",
+        "code": "Mã",
+        "design": "Thiết kế và 3D",
+        "fonts": "Phông chữ",
+        "security": "Khóa và chứng chỉ",
+        "apps": "Ứng dụng và trình cài đặt"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Gửi",
     "next": "Tiếp",
-    "thanks": "Cảm ơn bạn!"
+    "thanks": "Cảm ơn bạn!",
+    "moreInfo": "Thêm về “{field}”",
+    "openCalendar": "Mở lịch",
+    "fileRejected": "Chưa thêm: {files}. Hãy kiểm tra loại tệp được phép và giới hạn {mb} MB."
   },
   "logic": {
     "crumb": "Logic",
@@ -1158,7 +1220,11 @@
       "field": "Dùng trường đã bị xóa",
       "value": "Thiếu giá trị",
       "target": "Thiếu đích",
-      "noAction": "Không có hành động"
+      "noAction": "Không có hành động",
+      "requireLocked": "Không thể bắt buộc trường bị ẩn, chỉ đọc hoặc đã tắt",
+      "self": "Ẩn hoặc xóa chính câu hỏi mà quy tắc kiểm tra",
+      "backwards": "Chỉ có thể chuyển tiếp về phía trước",
+      "conflict": "Vừa ẩn vừa bắt buộc cùng một câu hỏi"
     },
     "op": {
       "eq": "là",
@@ -1174,13 +1240,30 @@
       "true": "bật",
       "false": "tắt",
       "before": "trước",
-      "after": "sau"
+      "after": "sau",
+      "starts_with": "bắt đầu bằng",
+      "ends_with": "kết thúc bằng",
+      "between": "nằm trong khoảng",
+      "not_between": "không nằm trong khoảng",
+      "in": "là một trong",
+      "not_in": "không là bất kỳ",
+      "contains_all": "gồm tất cả",
+      "count_gte": "chọn ít nhất …",
+      "count_lte": "chọn nhiều nhất …"
     },
     "action": {
       "show": "Hiện",
       "hide": "Ẩn",
       "require": "Đặt bắt buộc",
-      "jump": "Chuyển đến trang"
+      "jump": "Chuyển đến trang",
+      "unrequire": "Đặt không bắt buộc",
+      "enable": "Bật",
+      "disable": "Tắt",
+      "set_value": "Đặt câu trả lời",
+      "clear_value": "Xóa câu trả lời",
+      "show_page": "Hiện trang",
+      "hide_page": "Ẩn trang",
+      "skip_to_end": "Bỏ qua đến cuối"
     },
     "sentence": {
       "rule": "Khi {conditions}, {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "hiện {target}",
       "hide": "ẩn {target}",
       "require": "đặt {target} là bắt buộc",
-      "jump": "chuyển đến {target}"
+      "jump": "chuyển đến {target}",
+      "starts_with": "{field} bắt đầu bằng {value}",
+      "ends_with": "{field} kết thúc bằng {value}",
+      "between": "{field} nằm trong khoảng {value} đến {value2}",
+      "not_between": "{field} không nằm trong khoảng {value} đến {value2}",
+      "in": "{field} là một trong {value}",
+      "not_in": "{field} không là bất kỳ giá trị nào trong {value}",
+      "contains_all": "{field} gồm tất cả {value}",
+      "count_gte": "{field} có ít nhất {value} lựa chọn",
+      "count_lte": "{field} có nhiều nhất {value} lựa chọn",
+      "unrequire": "đặt {target} là không bắt buộc",
+      "enable": "bật {target}",
+      "disable": "tắt {target}",
+      "set_value": "đặt {target} thành {value}",
+      "clear_value": "xóa {target}",
+      "show_page": "hiện trang {target}",
+      "hide_page": "bỏ qua trang {target}",
+      "skip_to_end": "bỏ qua đến cuối"
     },
     "emptyTitle": "Chưa có quy tắc",
     "emptyDesc": "Hiện, ẩn hoặc bắt buộc câu hỏi dựa trên câu trả lời trước đó, hoặc chuyển sang trang khác.",
@@ -1220,7 +1320,71 @@
       "use": "Chèn:",
       "empty": "Thêm công thức",
       "unknown": "Không có trường nào dùng khóa “{key}”",
-      "self": "Một trường không thể dùng chính nó"
+      "self": "Một trường không thể dùng chính nó",
+      "syntax": "Công thức chưa hoàn chỉnh — hãy kiểm tra dấu ngoặc, dấu phẩy và toán tử",
+      "functions": "Hàm:",
+      "choiceScored": "Tính bằng số của lựa chọn được chọn",
+      "choiceUnscored": "Gán số cho các lựa chọn (cài đặt trường → Lựa chọn) để dùng trong phép cộng",
+      "guideTitle": "Cách công thức hoạt động",
+      "guideMath": "Dùng số, + − * / và dấu ngoặc: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Câu hỏi lựa chọn được tính bằng số gán cho lựa chọn được chọn (Lựa chọn → Gán số cho lựa chọn); chọn nhiều thì cộng lại.",
+      "guideIf": "Chọn giá trị theo điều kiện: if({'{'}plan{'}'} = \"Premium\", 50, 10). So sánh bằng = != > >= < <=.",
+      "guideFunctions": "Ngoài ra: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Có",
+    "no": "Không",
+    "from": "Từ",
+    "to": "Đến",
+    "pickValues": "Chọn câu trả lời",
+    "typeValues": "Nhập giá trị, nhấn Enter",
+    "noValueNeeded": "Không cần câu trả lời",
+    "setValueFor": "Giá trị cho {field}",
+    "ifBadge": "1 · NẾU",
+    "thenBadge": "2 · THÌ",
+    "ifTitle": "Kiểm tra các câu trả lời này",
+    "thenTitle": "Sau đó làm việc này",
+    "ifHelp": "Chọn câu hỏi, cách so sánh và câu trả lời sẽ kích hoạt quy tắc.",
+    "thenHelp": "Chọn điều xảy ra khi câu trả lời khớp — và áp dụng cho câu hỏi hoặc trang nào.",
+    "matchLead": "Chạy quy tắc khi",
+    "andChip": "và",
+    "orChip": "hoặc",
+    "colQuestion": "Câu hỏi",
+    "colCondition": "Điều kiện",
+    "colAnswer": "Câu trả lời",
+    "colAction": "Hành động",
+    "colTarget": "Câu hỏi hoặc trang",
+    "problemCount": "{count} lỗi cần sửa | {count} lỗi cần sửa",
+    "actionDesc": {
+      "show": "Ẩn câu hỏi cho đến khi quy tắc này khớp.",
+      "hide": "Ẩn câu hỏi khi quy tắc này khớp.",
+      "require": "Bắt buộc câu hỏi khi quy tắc này khớp.",
+      "unrequire": "Cho phép người trả lời bỏ qua câu hỏi bắt buộc.",
+      "enable": "Cho phép người trả lời thay đổi câu hỏi đã tắt.",
+      "disable": "Làm mờ câu hỏi để không thể thay đổi.",
+      "set_value": "Tự động điền câu trả lời.",
+      "clear_value": "Xóa câu trả lời không còn phù hợp.",
+      "show_page": "Ẩn trang cho đến khi quy tắc này khớp.",
+      "hide_page": "Bỏ qua trang khi quy tắc này khớp.",
+      "jump": "Sau trang này, tiếp tục ở trang khác.",
+      "skip_to_end": "Sau trang này, đi thẳng đến bước gửi."
+    },
+    "starter": {
+      "show": {
+        "title": "Hiện một câu hỏi",
+        "text": "Chỉ hỏi thêm khi câu trả lời trước đó cần đến."
+      },
+      "require": {
+        "title": "Bắt buộc một câu hỏi",
+        "text": "Chỉ yêu cầu chi tiết trong một số trường hợp."
+      },
+      "jump": {
+        "title": "Chuyển đến một trang",
+        "text": "Đưa người trả lời đến trang phù hợp với câu trả lời của họ."
+      },
+      "set_value": {
+        "title": "Điền câu trả lời",
+        "text": "Tự động đặt câu trả lời từ các câu trả lời trước."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Đã xóa",
       "pages": "Trang {n}",
       "rules": "Quy tắc {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Nguồn trường",
+    "tab": {
+      "fields": "Trường",
+      "saved": "Đã lưu",
+      "lists": "Danh sách"
+    },
+    "searchSaved": "Tìm trường đã lưu…",
+    "searchLists": "Tìm danh sách…",
+    "saveShort": "Lưu",
+    "saveField": "Lưu trường",
+    "saveFieldHint": "Lưu trường này để dùng lại trong mọi biểu mẫu",
+    "saveFieldTitle": "Lưu trường",
+    "saveFieldDesc": "Trường sẽ xuất hiện ở mục Đã lưu trong danh sách trường, kèm mọi cài đặt, cho mọi biểu mẫu trong không gian làm việc này.",
+    "fieldName": "Tên",
+    "nameRequired": "Nhập tên.",
+    "savedEmptyTitle": "Chưa có trường đã lưu",
+    "savedEmptyDesc": "Chọn một trường và chọn Lưu trong cài đặt của nó để dùng lại ở đây.",
+    "removeField": "Xóa {name} khỏi trường đã lưu",
+    "removeFieldTitle": "Xóa “{name}” khỏi trường đã lưu?",
+    "removeFieldDesc": "Các biểu mẫu đang dùng trường này vẫn giữ bản sao của mình.",
+    "remove": "Xóa",
+    "newList": "Danh sách mới",
+    "newListTitle": "Danh sách mới",
+    "editList": "Sửa danh sách",
+    "editListTitle": "Sửa danh sách",
+    "deleteList": "Xóa danh sách",
+    "deleteListTitle": "Xóa danh sách “{name}”?",
+    "deleteListDesc": "Các trường đang dùng danh sách này vẫn giữ lựa chọn của mình.",
+    "listDesc": "Lựa chọn dùng lại cho mọi trường lựa chọn — quốc gia, khu vực, sản phẩm, nhóm …",
+    "listName": "Tên",
+    "listNamePlaceholder": "ví dụ Khu vực",
+    "listOptions": "Lựa chọn",
+    "listOptionsPlaceholder": "Mỗi dòng một lựa chọn",
+    "optionsRequired": "Thêm ít nhất một lựa chọn.",
+    "optionsTooMany": "Một danh sách có tối đa 2.000 lựa chọn.",
+    "optionCount": "{count} lựa chọn | {count} lựa chọn",
+    "listsEmptyTitle": "Chưa có danh sách",
+    "listsEmptyDesc": "Tạo danh sách một lần và dùng trong mọi trường danh sách thả xuống, nút chọn hoặc hộp kiểm.",
+    "addList": "Thêm {name} dạng danh sách thả xuống",
+    "addAs": "Thêm dạng {type}",
+    "listMenu": "Thao tác cho {name}",
+    "useList": "Điền từ danh sách…",
+    "saveAsList": "Lưu thành danh sách",
+    "toast": {
+      "fieldSaved": "Đã lưu “{name}” — xem ở mục Đã lưu",
+      "fieldRemoved": "Đã xóa “{name}” khỏi trường đã lưu",
+      "listCreated": "Đã tạo danh sách “{name}”",
+      "listUpdated": "Đã cập nhật danh sách “{name}”",
+      "listDeleted": "Đã xóa danh sách “{name}”"
     }
   }
 }

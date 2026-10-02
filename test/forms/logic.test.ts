@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { allFields, starterSchema } from '../../shared/utils/forms/build'
-import { calculate, evaluateLogic, formulaKeys, operatorsFor, type LogicRule } from '../../shared/utils/forms/logic'
+import { END_OF_FORM, evaluateLogic, operatorsFor, type LogicRule } from '../../shared/utils/forms/logic'
+import { calculate, formulaKeys, isValidFormula } from '../../shared/utils/forms/formula'
+import type { FormField } from '../../shared/utils/forms/build'
 
 describe('form logic', () => {
   const schema = starterSchema('incident_report')
@@ -37,6 +39,53 @@ describe('form logic', () => {
     expect(operatorsFor('number')).toContain('gt')
     expect(operatorsFor('toggle')).toEqual(['true', 'false'])
     expect(operatorsFor('checkbox')).toContain('contains')
+    expect(operatorsFor('dropdown')).toContain('in')
+    expect(operatorsFor('file_upload')).toEqual(['not_empty', 'empty'])
+  })
+
+  it('covers lists, ranges and text operators', () => {
+    const one = (when: LogicRule['when']) => ({
+      ...schema,
+      logic: [{ id: 'x', when, then: [{ action: 'hide' as const, target: names.id }] }],
+    })
+    const hiddenWith = (when: LogicRule['when'], answers: Record<string, unknown>) =>
+      evaluateLogic(one(when), answers).hidden.has(names.id)
+    expect(hiddenWith({ all: [{ field: severity.id, op: 'in', value: ['high', 'critical'] }] }, { severity: 'high' })).toBe(true)
+    expect(hiddenWith({ all: [{ field: severity.id, op: 'not_in', value: ['high'] }] }, { severity: 'high' })).toBe(false)
+    expect(hiddenWith({ all: [{ field: photos.id, op: 'not_empty' }] }, { photos: [new Blob(['x'])] })).toBe(true)
+    const multi = fields.find(f => f.type === 'checkbox' || f.type === 'multi_select')
+    if (multi) {
+      expect(hiddenWith({ all: [{ field: multi.id, op: 'contains_all', value: ['a', 'b'] }] }, { [multi.key]: ['a', 'b', 'c'] })).toBe(true)
+      expect(hiddenWith({ all: [{ field: multi.id, op: 'count_gte', value: 3 }] }, { [multi.key]: ['a', 'b'] })).toBe(false)
+    }
+  })
+
+  it('runs every action', () => {
+    const page2 = schema.pages[1]!.id
+    const state = evaluateLogic(
+      {
+        ...schema,
+        logic: [
+          {
+            id: 'a',
+            when: { all: [{ field: severity.id, op: 'eq', value: 'low' }] },
+            then: [
+              { action: 'disable', target: photos.id },
+              { action: 'unrequire', target: names.id },
+              { action: 'set_value', target: names.id, value: 'n/a' },
+              { action: 'hide_page', target: page2 },
+              { action: 'skip_to_end' },
+            ],
+          },
+        ],
+      },
+      { severity: 'low' },
+    )
+    expect(state.disabled.has(photos.id)).toBe(true)
+    expect(state.optional.has(names.id)).toBe(true)
+    expect(state.values.get(names.id)).toBe('n/a')
+    expect(state.hiddenPages.has(page2)).toBe(true)
+    expect(state.jumps.get(schema.pages[0]!.id)).toBe(END_OF_FORM)
   })
 })
 
@@ -50,5 +99,26 @@ describe('calculated fields', () => {
     expect(calculate('alert(1)', {})).toBeNull()
     expect(calculate('1 / 0', {})).toBeNull()
     expect(formulaKeys('{qty} * {unit_price}')).toEqual(['qty', 'unit_price'])
+  })
+
+  it('supports if, comparisons, functions and option numbers', () => {
+    const plan = {
+      id: 'f1', key: 'plan', type: 'radio', label: 'Plan',
+      options: [{ value: 'basic', label: 'Basic', score: 10 }, { value: 'premium', label: 'Premium', score: 50 }],
+    } as FormField
+    const extras = {
+      id: 'f2', key: 'extras', type: 'checkbox', label: 'Extras',
+      options: [{ value: 'a', label: 'A', score: 5 }, { value: 'b', label: 'B', score: 7 }],
+    } as FormField
+    const fields = new Map([['plan', plan], ['extras', extras]])
+    expect(calculate('{plan} + {extras}', { plan: 'premium', extras: ['a', 'b'] }, fields)).toBe(62)
+    expect(calculate('if({plan} = "premium", 1, 0)', { plan: 'premium' }, fields)).toBe(1)
+    expect(calculate('if({plan} = "Basic", 1, 0)', { plan: 'basic' }, fields)).toBe(1)
+    expect(calculate('if({age} >= 18, 100, 50)', { age: 21 })).toBe(100)
+    expect(calculate('round(max({a}, {b}) * 1.155, 2)', { a: 2, b: 3 })).toBe(3.47)
+    expect(calculate('if({x} > 0, {y} / {x}, 0)', { x: 0 })).toBe(0)
+    expect(calculate('and({a} > 1, {b} < 5)', { a: 2, b: 3 })).toBe(1)
+    expect(isValidFormula('if({a}, 1)')).toBe(true)
+    expect(isValidFormula('{a} +* 2')).toBe(false)
   })
 })

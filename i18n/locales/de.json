@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Anfrage abgebrochen.",
     "FRM-NET-1002": "Unerwartete Antwort vom Server.",
     "FRM-FORM-1007": "Das ist im aktuellen Zustand des Formulars nicht möglich. Aktualisieren und erneut versuchen.",
-    "FRM-FORM-1008": "Es gibt bereits einen Ordner mit diesem Namen."
+    "FRM-FORM-1008": "Es gibt bereits einen Ordner mit diesem Namen.",
+    "FRM-FORM-1009": "Eine Liste mit diesem Namen gibt es bereits."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "API-Schlüssel",
       "export": "Export",
-      "folder": "Ordner"
+      "folder": "Ordner",
+      "saved_field": "Gespeichertes Feld",
+      "option_list": "Optionsliste"
     },
     "field": {
       "name": "Name",
@@ -635,7 +638,12 @@
       "forms_purged": "Formular endgültig gelöscht",
       "forms_folder_created": "Ordner erstellt",
       "forms_folder_renamed": "Ordner umbenannt",
-      "forms_folder_deleted": "Ordner gelöscht"
+      "forms_folder_deleted": "Ordner gelöscht",
+      "forms_field_saved": "Feld in der Bibliothek gespeichert",
+      "forms_field_removed": "Feld aus der Bibliothek entfernt",
+      "forms_list_created": "Liste erstellt",
+      "forms_list_updated": "Liste aktualisiert",
+      "forms_list_deleted": "Liste gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -982,12 +990,13 @@
       "no_inputs": "Fügen Sie mindestens eine Frage hinzu",
       "empty_label": "Eine Frage hat keine Beschriftung",
       "duplicate_key": "Zwei Felder verwenden denselben Schlüssel",
-      "no_options": "Ein Auswahlfeld hat keine Optionen"
+      "no_options": "Ein Auswahlfeld hat keine Optionen",
+      "locked_required": "Pflichtfeld, aber Befragte können es nicht ausfüllen (ausgeblendet, schreibgeschützt oder deaktiviert)"
     },
     "inspector": {
       "panel": "Feldeinstellungen",
       "basics": "Grundlagen",
-      "label": "Frage",
+      "label": "Beschriftung",
       "title": "Titel",
       "help": "Hilfetext",
       "placeholder": "Platzhalter",
@@ -1061,7 +1070,10 @@
       "message": "Nachricht",
       "collapsible": "Einklappbar",
       "collapsibleHint": "Teilnehmende können die Fragen unter dieser Überschrift einklappen.",
-      "startCollapsed": "Eingeklappt starten"
+      "startCollapsed": "Eingeklappt starten",
+      "numbered": "Optionen nummerieren",
+      "numberedHint": "Für Berechnungen: Eine gewählte Option zählt als ihre Zahl.",
+      "optionScore": "Zahl für {label}"
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -1083,6 +1095,53 @@
       "build": "Erstellen",
       "logic": "Logik",
       "versions": "Versionen"
+    },
+    "renameHint": "Zum Umbenennen doppelklicken",
+    "access": {
+      "label": "Antwort",
+      "editable": "Bearbeitbar",
+      "readonly": "Schreibgeschützt",
+      "disabled": "Deaktiviert",
+      "editableHint": "Befragte können es ausfüllen.",
+      "readonlyHint": "Wird angezeigt und mit der Antwort gesendet, kann aber nicht geändert werden — z. B. eine vorausgefüllte Referenz.",
+      "disabledHint": "Wird ausgegraut angezeigt und nicht mit der Antwort gesendet.",
+      "noRequired": "Schreibgeschützte und deaktivierte Felder können keine Pflichtfelder sein — niemand könnte sie ausfüllen."
+    },
+    "labels": {
+      "title": "Position der Beschriftung",
+      "top": "Über dem Feld",
+      "left": "Neben dem Feld",
+      "hint": "Eine Einstellung für das ganze Formular. Auf Smartphones stehen Beschriftungen immer darüber."
+    },
+    "files": {
+      "hint": "Leer lassen, um jede Datei zu akzeptieren. Suchen Sie oder geben Sie einen nicht aufgeführten Typ ein (z. B. .xyz).",
+      "any": "Jeder Dateityp",
+      "anyButton": "Alle erlauben",
+      "search": "Dateitypen suchen…",
+      "count": "{count} Typ erlaubt | {count} Typen erlaubt",
+      "custom": "Von Ihnen hinzugefügt",
+      "remove": "{type} entfernen",
+      "all": {
+        "images": "Alle Bilder",
+        "audio": "Alle Audiodateien",
+        "video": "Alle Videos"
+      },
+      "group": {
+        "images": "Bilder",
+        "documents": "Dokumente",
+        "spreadsheets": "Tabellen",
+        "presentations": "Präsentationen",
+        "audio": "Audio",
+        "video": "Video",
+        "archives": "Archive",
+        "ebooks": "E-Books",
+        "data": "Daten & E-Mail",
+        "code": "Code",
+        "design": "Design & 3D",
+        "fonts": "Schriften",
+        "security": "Schlüssel & Zertifikate",
+        "apps": "Apps & Installer"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Absenden",
     "next": "Weiter",
-    "thanks": "Vielen Dank!"
+    "thanks": "Vielen Dank!",
+    "moreInfo": "Mehr zu „{field}“",
+    "openCalendar": "Kalender öffnen",
+    "fileRejected": "Nicht hinzugefügt: {files}. Prüfen Sie die erlaubten Dateitypen und die Grenze von {mb} MB."
   },
   "logic": {
     "crumb": "Logik",
@@ -1158,7 +1220,11 @@
       "field": "Nutzt ein gelöschtes Feld",
       "value": "Wert fehlt",
       "target": "Ziel fehlt",
-      "noAction": "Keine Aktion"
+      "noAction": "Keine Aktion",
+      "requireLocked": "Ein ausgeblendetes, schreibgeschütztes oder deaktiviertes Feld kann kein Pflichtfeld sein",
+      "self": "Blendet die geprüfte Frage aus oder leert sie",
+      "backwards": "Sprünge sind nur nach vorn möglich",
+      "conflict": "Blendet dieselbe Frage aus und macht sie zum Pflichtfeld"
     },
     "op": {
       "eq": "ist",
@@ -1174,13 +1240,30 @@
       "true": "ist an",
       "false": "ist aus",
       "before": "ist vor",
-      "after": "ist nach"
+      "after": "ist nach",
+      "starts_with": "beginnt mit",
+      "ends_with": "endet auf",
+      "between": "liegt zwischen",
+      "not_between": "liegt nicht zwischen",
+      "in": "ist einer von",
+      "not_in": "ist keiner von",
+      "contains_all": "enthält alle von",
+      "count_gte": "hat mindestens … gewählt",
+      "count_lte": "hat höchstens … gewählt"
     },
     "action": {
       "show": "Anzeigen",
       "hide": "Ausblenden",
       "require": "Pflichtfeld machen",
-      "jump": "Zu Seite springen"
+      "jump": "Zu Seite springen",
+      "unrequire": "Optional machen",
+      "enable": "Aktivieren",
+      "disable": "Deaktivieren",
+      "set_value": "Antwort setzen",
+      "clear_value": "Antwort leeren",
+      "show_page": "Seite anzeigen",
+      "hide_page": "Seite ausblenden",
+      "skip_to_end": "Zum Ende springen"
     },
     "sentence": {
       "rule": "Wenn {conditions}, dann {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "{target} anzeigen",
       "hide": "{target} ausblenden",
       "require": "{target} zum Pflichtfeld machen",
-      "jump": "zu {target} springen"
+      "jump": "zu {target} springen",
+      "starts_with": "{field} mit {value} beginnt",
+      "ends_with": "{field} auf {value} endet",
+      "between": "{field} zwischen {value} und {value2} liegt",
+      "not_between": "{field} nicht zwischen {value} und {value2} liegt",
+      "in": "{field} einer von {value} ist",
+      "not_in": "{field} keiner von {value} ist",
+      "contains_all": "{field} alle von {value} enthält",
+      "count_gte": "bei {field} mindestens {value} gewählt sind",
+      "count_lte": "bei {field} höchstens {value} gewählt sind",
+      "unrequire": "{target} optional machen",
+      "enable": "{target} aktivieren",
+      "disable": "{target} deaktivieren",
+      "set_value": "{target} auf {value} setzen",
+      "clear_value": "{target} leeren",
+      "show_page": "die Seite {target} anzeigen",
+      "hide_page": "die Seite {target} überspringen",
+      "skip_to_end": "zum Ende springen"
     },
     "emptyTitle": "Noch keine Regeln",
     "emptyDesc": "Fragen abhängig von früheren Antworten anzeigen, ausblenden oder verpflichtend machen – oder zu einer anderen Seite springen.",
@@ -1220,7 +1320,71 @@
       "use": "Einfügen:",
       "empty": "Formel hinzufügen",
       "unknown": "Kein Feld nutzt den Schlüssel „{key}“",
-      "self": "Ein Feld kann sich nicht selbst verwenden"
+      "self": "Ein Feld kann sich nicht selbst verwenden",
+      "syntax": "Diese Formel ist unvollständig — prüfen Sie Klammern, Kommas und Operatoren",
+      "functions": "Funktionen:",
+      "choiceScored": "Zählt als Zahl der gewählten Option",
+      "choiceUnscored": "Nummerieren Sie die Optionen (Feldeinstellungen → Optionen), um es in Summen zu verwenden",
+      "guideTitle": "So funktionieren Formeln",
+      "guideMath": "Verwenden Sie Zahlen, + − * / und Klammern: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Auswahlfragen zählen als die Zahl der gewählten Option (Optionen → Optionen nummerieren); mehrere gewählte werden addiert.",
+      "guideIf": "Wert nach Bedingung wählen: if({'{'}plan{'}'} = \"Premium\", 50, 10). Vergleichen mit = != > >= < <=.",
+      "guideFunctions": "Außerdem: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Ja",
+    "no": "Nein",
+    "from": "Von",
+    "to": "Bis",
+    "pickValues": "Antworten wählen",
+    "typeValues": "Wert eingeben, Enter drücken",
+    "noValueNeeded": "Keine Antwort nötig",
+    "setValueFor": "Wert für {field}",
+    "ifBadge": "1 · WENN",
+    "thenBadge": "2 · DANN",
+    "ifTitle": "Diese Antworten prüfen",
+    "thenTitle": "Dann Folgendes tun",
+    "ifHelp": "Wählen Sie eine Frage, die Art des Vergleichs und die Antwort, die die Regel auslösen soll.",
+    "thenHelp": "Wählen Sie, was passiert, wenn die Antworten zutreffen — und für welche Frage oder Seite.",
+    "matchLead": "Regel ausführen, wenn",
+    "andChip": "und",
+    "orChip": "oder",
+    "colQuestion": "Frage",
+    "colCondition": "Bedingung",
+    "colAnswer": "Antwort",
+    "colAction": "Aktion",
+    "colTarget": "Frage oder Seite",
+    "problemCount": "{count} Punkt zu beheben | {count} Punkte zu beheben",
+    "actionDesc": {
+      "show": "Eine Frage ausgeblendet lassen, bis diese Regel zutrifft.",
+      "hide": "Eine Frage ausblenden, solange diese Regel zutrifft.",
+      "require": "Eine Frage zum Pflichtfeld machen, solange diese Regel zutrifft.",
+      "unrequire": "Befragte eine Pflichtfrage überspringen lassen.",
+      "enable": "Befragte eine deaktivierte Frage ändern lassen.",
+      "disable": "Eine Frage ausgrauen, sodass sie nicht geändert werden kann.",
+      "set_value": "Eine Antwort automatisch ausfüllen.",
+      "clear_value": "Eine Antwort leeren, die nicht mehr zutrifft.",
+      "show_page": "Eine Seite ausgeblendet lassen, bis diese Regel zutrifft.",
+      "hide_page": "Eine Seite überspringen, solange diese Regel zutrifft.",
+      "jump": "Nach dieser Seite auf einer anderen Seite weitermachen.",
+      "skip_to_end": "Nach dieser Seite direkt zum Absenden."
+    },
+    "starter": {
+      "show": {
+        "title": "Eine Frage anzeigen",
+        "text": "Eine Folgefrage nur stellen, wenn eine frühere Antwort sie erfordert."
+      },
+      "require": {
+        "title": "Eine Frage zur Pflicht machen",
+        "text": "Details nur in bestimmten Fällen verlangen."
+      },
+      "jump": {
+        "title": "Zu einer Seite springen",
+        "text": "Befragte auf die Seite leiten, die zu ihren Antworten passt."
+      },
+      "set_value": {
+        "title": "Eine Antwort ausfüllen",
+        "text": "Eine Antwort automatisch aus früheren Antworten setzen."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Entfernt",
       "pages": "Seiten {n}",
       "rules": "Regeln {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Feldquellen",
+    "tab": {
+      "fields": "Felder",
+      "saved": "Gespeichert",
+      "lists": "Listen"
+    },
+    "searchSaved": "Gespeicherte Felder suchen…",
+    "searchLists": "Listen suchen…",
+    "saveShort": "Speichern",
+    "saveField": "Feld speichern",
+    "saveFieldHint": "Dieses Feld speichern, um es in jedem Formular wiederzuverwenden",
+    "saveFieldTitle": "Feld speichern",
+    "saveFieldDesc": "Es erscheint mit allen Einstellungen unter „Gespeichert“ in der Feldliste – für jedes Formular in diesem Workspace.",
+    "fieldName": "Name",
+    "nameRequired": "Geben Sie einen Namen ein.",
+    "savedEmptyTitle": "Noch keine gespeicherten Felder",
+    "savedEmptyDesc": "Wählen Sie ein Feld aus und klicken Sie in seinen Einstellungen auf „Speichern“, um es hier wiederzuverwenden.",
+    "removeField": "{name} aus den gespeicherten Feldern entfernen",
+    "removeFieldTitle": "„{name}“ aus den gespeicherten Feldern entfernen?",
+    "removeFieldDesc": "Formulare, die es bereits verwenden, behalten ihre Kopie.",
+    "remove": "Entfernen",
+    "newList": "Neue Liste",
+    "newListTitle": "Neue Liste",
+    "editList": "Liste bearbeiten",
+    "editListTitle": "Liste bearbeiten",
+    "deleteList": "Liste löschen",
+    "deleteListTitle": "Die Liste „{name}“ löschen?",
+    "deleteListDesc": "Felder, die sie bereits verwenden, behalten ihre Optionen.",
+    "listDesc": "Wiederverwendbare Optionen für jedes Auswahlfeld — Länder, Regionen, Produkte, Teams …",
+    "listName": "Name",
+    "listNamePlaceholder": "z. B. Regionen",
+    "listOptions": "Optionen",
+    "listOptionsPlaceholder": "Eine Option pro Zeile",
+    "optionsRequired": "Fügen Sie mindestens eine Option hinzu.",
+    "optionsTooMany": "Eine Liste kann bis zu 2.000 Optionen haben.",
+    "optionCount": "{count} Option | {count} Optionen",
+    "listsEmptyTitle": "Noch keine Listen",
+    "listsEmptyDesc": "Erstellen Sie eine Liste einmal und nutzen Sie sie in jedem Dropdown-, Radio- oder Checkbox-Feld.",
+    "addList": "{name} als Dropdown hinzufügen",
+    "addAs": "Als {type} hinzufügen",
+    "listMenu": "Optionen für {name}",
+    "useList": "Aus einer Liste füllen…",
+    "saveAsList": "Als Liste speichern",
+    "toast": {
+      "fieldSaved": "„{name}“ gespeichert — Sie finden es unter „Gespeichert“",
+      "fieldRemoved": "„{name}“ aus den gespeicherten Feldern entfernt",
+      "listCreated": "Liste „{name}“ erstellt",
+      "listUpdated": "Liste „{name}“ aktualisiert",
+      "listDeleted": "Liste „{name}“ gelöscht"
     }
   }
 }

@@ -1,50 +1,79 @@
 <!--
   A whole form as respondents use it: progress, one page at a time, Back / Next / Submit,
-  required-field checks per page, logic (show / hide, required-if, jump to page), calculated
-  fields, thank-you screen. Used by the builder preview now and by the
-  public form and embed (F10). `preview` never sends anything.
+  required checks per page, logic (show / hide fields and pages, required / optional, enable /
+  disable, set / clear values, jump, skip to the end), calculated fields, collapsible sections,
+  thank-you screen. Used by the builder preview and by the public form and embed. `preview`
+  never sends anything. Columns follow the form's own width (container queries).
 -->
 <script setup lang="ts">
-import { sectionOwners, type FormField } from '#shared/utils/forms/build'
+import { isLocked, sectionOwners, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
-import { calculate, evaluateLogic } from '#shared/utils/forms/logic'
+import { calculate } from '#shared/utils/forms/formula'
+import { END_OF_FORM, evaluateLogic } from '#shared/utils/forms/logic'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 const props = defineProps<{ schema: FormSchemaV1; preview?: boolean }>()
 const { t } = useI18n()
 
-const SPAN: Record<number, string> = {
-  12: 'sm:col-span-12',
-  9: 'sm:col-span-9',
-  8: 'sm:col-span-8',
-  6: 'sm:col-span-6',
-  4: 'sm:col-span-4',
-  3: 'sm:col-span-3',
-}
+const labelPosition = computed(() => props.schema.settings?.label_position ?? 'top')
+const allFieldsByKey = computed(
+  () => new Map(props.schema.pages.flatMap(p => p.rows.flatMap(r => r.fields as FormField[])).map(f => [f.key, f])),
+)
+const defaults = () =>
+  Object.fromEntries(
+    [...allFieldsByKey.value.values()].filter(f => f.default != null && f.default !== '').map(f => [f.key, f.default]),
+  )
+
 const index = ref(0)
-const answers = ref<Record<string, unknown>>({})
+const answers = ref<Record<string, unknown>>(defaults())
 const errors = ref<Record<string, string>>({})
 const done = ref(false)
-const page = computed(() => props.schema.pages[index.value])
-const last = computed(() => index.value === props.schema.pages.length - 1)
 
 const empty = (value: unknown) =>
   value == null || value === '' || (Array.isArray(value) && !value.length) || value === false
 
-// Logic + calculated fields follow the answers live.
+// Logic, set values and calculated fields follow the answers live.
 const logic = computed(() => evaluateLogic(props.schema, answers.value))
 watchEffect(() => {
-  for (const p of props.schema.pages)
-    for (const row of p.rows)
-      for (const field of row.fields as FormField[])
-        if (field.type === 'calculated') {
-          const value = calculate(String(field.props?.formula ?? ''), answers.value)
-          if (answers.value[field.key] !== value) answers.value[field.key] = value
-        }
+  for (const [id, value] of logic.value.values) {
+    const field = [...allFieldsByKey.value.values()].find(f => f.id === id)
+    if (field && JSON.stringify(answers.value[field.key] ?? null) !== JSON.stringify(value)) answers.value[field.key] = value
+  }
+  for (const field of allFieldsByKey.value.values())
+    if (field.type === 'calculated') {
+      const value = calculate(String(field.props?.formula ?? ''), answers.value, allFieldsByKey.value)
+      if (answers.value[field.key] !== value) answers.value[field.key] = value
+    }
 })
+
+// Pages: hidden pages are skipped everywhere (progress, Next, Back).
+const pages = computed(() => props.schema.pages.filter(p => !logic.value.hiddenPages.has(p.id)))
+const page = computed(() => props.schema.pages[index.value])
+const position = computed(() => Math.max(0, pages.value.findIndex(p => p.id === page.value?.id)))
+const nextIndex = computed(() => {
+  const jump = page.value && logic.value.jumps.get(page.value.id)
+  if (jump === END_OF_FORM) return -1
+  const target = jump ? props.schema.pages.findIndex(p => p.id === jump) : -1
+  const from = target > index.value ? target : index.value + 1
+  return props.schema.pages.findIndex((p, i) => i >= from && !logic.value.hiddenPages.has(p.id))
+})
+const last = computed(() => nextIndex.value < 0)
+
+/** The field as respondents get it right now (logic can disable / enable it and change "required"). */
+function effective(field: FormField): FormField {
+  const disabled = logic.value.disabled.has(field.id) ? true : logic.value.enabled.has(field.id) ? false : field.disabled
+  const wanted = logic.value.optional.has(field.id) ? false : !!field.required || logic.value.required.has(field.id)
+  // Read-only, disabled and hidden fields are never required: nobody could fill them in.
+  const required = wanted && !isLocked({ ...field, disabled }) && field.type !== 'hidden'
+  return { ...field, disabled, required }
+}
+
 const visibleRows = computed(() =>
   (page.value?.rows ?? [])
-    .map(row => ({ ...row, fields: (row.fields as FormField[]).filter(f => !logic.value.hidden.has(f.id)) }))
+    .map(row => ({
+      ...row,
+      fields: (row.fields as FormField[]).filter(f => !logic.value.hidden.has(f.id)).map(effective),
+    }))
     .filter(row => row.fields.length),
 )
 
@@ -53,22 +82,27 @@ const visibleRows = computed(() =>
 const collapsible = (field?: FormField) => field?.type === 'section' && !!field.props?.collapsible
 const folded = ref<Record<string, boolean>>({})
 watch(
-  () => props.schema.pages.flatMap(p => p.rows.flatMap(r => r.fields as FormField[])).filter(collapsible),
+  () => [...allFieldsByKey.value.values()].filter(collapsible),
   sections => {
     for (const section of sections) folded.value[section.id] ??= !!section.props?.collapsed
   },
   { immediate: true },
 )
 const ownerOf = computed(() => sectionOwners(visibleRows.value))
-const shownRows = computed(() => visibleRows.value.filter(row => !folded.value[ownerOf.value.get(row.id) ?? '']))
+/** What's on screen: hidden-type fields carry values but are never shown to respondents. */
+const shownRows = computed(() =>
+  visibleRows.value
+    .filter(row => !folded.value[ownerOf.value.get(row.id) ?? ''])
+    .map(row => ({ ...row, fields: row.fields.filter(f => f.type !== 'hidden') }))
+    .filter(row => row.fields.length),
+)
 const toggle = (id: string) => (folded.value[id] = !folded.value[id])
-const isRequired = (field: FormField) => !!field.required || logic.value.required.has(field.id)
 
 function check(): boolean {
   const next: Record<string, string> = {}
   for (const row of visibleRows.value)
     for (const field of row.fields)
-      if (isRequired(field) && isInputField(field.type) && empty(answers.value[field.key]))
+      if (field.required && isInputField(field.type) && empty(answers.value[field.key]))
         next[field.key] = t('renderer.requiredError')
   errors.value = next
   for (const row of visibleRows.value) {
@@ -82,10 +116,8 @@ const trail = ref<number[]>([])
 function next() {
   if (!check()) return
   if (last.value) return (done.value = true)
-  const jump = page.value && logic.value.jumps.get(page.value.id)
-  const target = jump ? props.schema.pages.findIndex(p => p.id === jump) : -1
   trail.value.push(index.value)
-  index.value = target > index.value ? target : index.value + 1
+  index.value = nextIndex.value
 }
 function back() {
   index.value = trail.value.pop() ?? Math.max(0, index.value - 1)
@@ -93,33 +125,30 @@ function back() {
 function restart() {
   index.value = 0
   trail.value = []
-  answers.value = {}
+  answers.value = defaults()
   errors.value = {}
   done.value = false
 }
 </script>
 
 <template>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-5 @container" :class="FORM_RADIUS">
     <template v-if="!done && page">
-      <div
-        v-if="schema.pages.length > 1 && schema.settings?.progress_bar !== false"
-        class="flex flex-col gap-1.5"
-      >
+      <div v-if="pages.length > 1 && schema.settings?.progress_bar !== false" class="flex flex-col gap-1.5">
         <div class="flex justify-between text-xs text-muted">
-          <span>{{ t('builder.page.stepOf', { n: index + 1, total: schema.pages.length }) }}</span>
-          <span>{{ Math.round(((index + 1) / schema.pages.length) * 100) }}%</span>
+          <span>{{ t('builder.page.stepOf', { n: position + 1, total: pages.length }) }}</span>
+          <span>{{ Math.round(((position + 1) / pages.length) * 100) }}%</span>
         </div>
-        <UProgress :model-value="index + 1" :max="schema.pages.length" color="neutral" size="xs" />
+        <UProgress :model-value="position + 1" :max="pages.length" color="neutral" size="xs" />
       </div>
       <h2 v-if="page.title" class="text-xl font-semibold text-highlighted">{{ page.title }}</h2>
-      <form class="flex flex-col gap-5" novalidate @submit.prevent="next">
-        <div v-for="row in shownRows" :key="row.id" class="grid grid-cols-12 gap-x-4 gap-y-5">
+      <form class="flex flex-col gap-4" novalidate @submit.prevent="next">
+        <div v-for="row in shownRows" :key="row.id" class="grid grid-cols-12 gap-x-4 gap-y-4">
           <div
             v-for="field in row.fields"
             :key="field.id"
-            class="col-span-12"
-            :class="SPAN[field.width ?? 12]"
+            class="col-span-12 @container"
+            :class="FIELD_SPAN[field.width ?? 12]"
           >
             <UButton
               v-if="collapsible(field)"
@@ -136,14 +165,15 @@ function restart() {
             <FormsRendererField
               v-else
               v-model="answers[field.key]"
-              :field="isRequired(field) && !field.required ? { ...field, required: true } : field"
+              :field="field"
+              :label-position="labelPosition"
               :error="errors[field.key]"
             />
           </div>
         </div>
         <div class="flex items-center justify-between gap-2 pt-2">
           <UButton
-            v-if="index > 0"
+            v-if="trail.length"
             :label="t('common.back')"
             icon="i-lucide-arrow-left"
             color="neutral"

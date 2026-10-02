@@ -317,7 +317,8 @@
     "FRM-NET-1001": "Richiesta annullata.",
     "FRM-NET-1002": "Risposta imprevista dal server.",
     "FRM-FORM-1007": "Non è possibile nello stato attuale del modulo. Aggiorna e riprova.",
-    "FRM-FORM-1008": "Esiste già una cartella con questo nome."
+    "FRM-FORM-1008": "Esiste già una cartella con questo nome.",
+    "FRM-FORM-1009": "Esiste già un elenco con questo nome."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "Chiave API",
       "export": "Esportazione",
-      "folder": "Cartella"
+      "folder": "Cartella",
+      "saved_field": "Campo salvato",
+      "option_list": "Elenco di opzioni"
     },
     "field": {
       "name": "Nome",
@@ -635,7 +638,12 @@
       "forms_purged": "Modulo eliminato definitivamente",
       "forms_folder_created": "Cartella creata",
       "forms_folder_renamed": "Cartella rinominata",
-      "forms_folder_deleted": "Cartella eliminata"
+      "forms_folder_deleted": "Cartella eliminata",
+      "forms_field_saved": "Campo salvato nella libreria",
+      "forms_field_removed": "Campo rimosso dalla libreria",
+      "forms_list_created": "Elenco creato",
+      "forms_list_updated": "Elenco aggiornato",
+      "forms_list_deleted": "Elenco eliminato"
     },
     "detail": {
       "who": "Chi",
@@ -982,12 +990,13 @@
       "no_inputs": "Aggiungi almeno una domanda",
       "empty_label": "Una domanda non ha etichetta",
       "duplicate_key": "Due campi usano la stessa chiave",
-      "no_options": "Un campo a scelta non ha opzioni"
+      "no_options": "Un campo a scelta non ha opzioni",
+      "locked_required": "Obbligatorio, ma chi risponde non può compilarlo (nascosto, sola lettura o disattivato)"
     },
     "inspector": {
       "panel": "Impostazioni campo",
       "basics": "Base",
-      "label": "Domanda",
+      "label": "Etichetta",
       "title": "Titolo",
       "help": "Testo di aiuto",
       "placeholder": "Testo segnaposto",
@@ -1061,7 +1070,10 @@
       "message": "Messaggio",
       "collapsible": "Comprimibile",
       "collapsibleHint": "Chi risponde può comprimere le domande sotto questo titolo.",
-      "startCollapsed": "Inizia compressa"
+      "startCollapsed": "Inizia compressa",
+      "numbered": "Assegna numeri alle opzioni",
+      "numberedHint": "Per i calcoli: un’opzione scelta vale il suo numero.",
+      "optionScore": "Numero per {label}"
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -1083,6 +1095,53 @@
       "build": "Crea",
       "logic": "Logica",
       "versions": "Versioni"
+    },
+    "renameHint": "Doppio clic per rinominare",
+    "access": {
+      "label": "Risposta",
+      "editable": "Modificabile",
+      "readonly": "Sola lettura",
+      "disabled": "Disattivato",
+      "editableHint": "Chi risponde può compilarlo.",
+      "readonlyHint": "Mostrato e inviato con la risposta, ma non modificabile — es. un riferimento precompilato.",
+      "disabledHint": "Mostrato in grigio e non inviato con la risposta.",
+      "noRequired": "I campi di sola lettura e disattivati non possono essere obbligatori — nessuno potrebbe compilarli."
+    },
+    "labels": {
+      "title": "Posizione etichette",
+      "top": "Sopra il campo",
+      "left": "Accanto al campo",
+      "hint": "Un’unica impostazione per tutto il modulo. Sui telefoni le etichette stanno sempre sopra."
+    },
+    "files": {
+      "hint": "Lascia vuoto per accettare qualsiasi file. Cerca o digita un tipo non elencato (es. .xyz).",
+      "any": "Qualsiasi tipo di file",
+      "anyButton": "Consenti tutti",
+      "search": "Cerca tipi di file…",
+      "count": "{count} tipo consentito | {count} tipi consentiti",
+      "custom": "Aggiunto da te",
+      "remove": "Rimuovi {type}",
+      "all": {
+        "images": "Tutte le immagini",
+        "audio": "Tutti gli audio",
+        "video": "Tutti i video"
+      },
+      "group": {
+        "images": "Immagini",
+        "documents": "Documenti",
+        "spreadsheets": "Fogli di calcolo",
+        "presentations": "Presentazioni",
+        "audio": "Audio",
+        "video": "Video",
+        "archives": "Archivi",
+        "ebooks": "E-book",
+        "data": "Dati ed email",
+        "code": "Codice",
+        "design": "Design e 3D",
+        "fonts": "Font",
+        "security": "Chiavi e certificati",
+        "apps": "App e installer"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "Invia",
     "next": "Avanti",
-    "thanks": "Grazie!"
+    "thanks": "Grazie!",
+    "moreInfo": "Ulteriori informazioni su “{field}”",
+    "openCalendar": "Apri calendario",
+    "fileRejected": "Non aggiunti: {files}. Controlla i tipi di file consentiti e il limite di {mb} MB."
   },
   "logic": {
     "crumb": "Logica",
@@ -1158,7 +1220,11 @@
       "field": "Usa un campo eliminato",
       "value": "Valore mancante",
       "target": "Destinazione mancante",
-      "noAction": "Nessuna azione"
+      "noAction": "Nessuna azione",
+      "requireLocked": "Non si può rendere obbligatorio un campo nascosto, di sola lettura o disattivato",
+      "self": "Nasconde o svuota la domanda che controlla",
+      "backwards": "I salti possono andare solo in avanti",
+      "conflict": "Nasconde e rende obbligatoria la stessa domanda"
     },
     "op": {
       "eq": "è",
@@ -1174,13 +1240,30 @@
       "true": "è attivo",
       "false": "è disattivo",
       "before": "è prima di",
-      "after": "è dopo"
+      "after": "è dopo",
+      "starts_with": "inizia con",
+      "ends_with": "finisce con",
+      "between": "è tra",
+      "not_between": "non è tra",
+      "in": "è uno tra",
+      "not_in": "non è nessuno tra",
+      "contains_all": "include tutti",
+      "count_gte": "ha almeno … scelte",
+      "count_lte": "ha al massimo … scelte"
     },
     "action": {
       "show": "Mostra",
       "hide": "Nascondi",
       "require": "Rendi obbligatorio",
-      "jump": "Vai alla pagina"
+      "jump": "Vai alla pagina",
+      "unrequire": "Rendi facoltativo",
+      "enable": "Attiva",
+      "disable": "Disattiva",
+      "set_value": "Imposta una risposta",
+      "clear_value": "Svuota la risposta",
+      "show_page": "Mostra pagina",
+      "hide_page": "Nascondi pagina",
+      "skip_to_end": "Salta alla fine"
     },
     "sentence": {
       "rule": "Se {conditions}, {actions}.",
@@ -1201,7 +1284,24 @@
       "show": "mostra {target}",
       "hide": "nascondi {target}",
       "require": "rendi obbligatorio {target}",
-      "jump": "vai a {target}"
+      "jump": "vai a {target}",
+      "starts_with": "{field} inizia con {value}",
+      "ends_with": "{field} finisce con {value}",
+      "between": "{field} è tra {value} e {value2}",
+      "not_between": "{field} non è tra {value} e {value2}",
+      "in": "{field} è uno tra {value}",
+      "not_in": "{field} non è nessuno tra {value}",
+      "contains_all": "{field} include tutti tra {value}",
+      "count_gte": "{field} ha almeno {value} scelte",
+      "count_lte": "{field} ha al massimo {value} scelte",
+      "unrequire": "rendi facoltativo {target}",
+      "enable": "attiva {target}",
+      "disable": "disattiva {target}",
+      "set_value": "imposta {target} a {value}",
+      "clear_value": "svuota {target}",
+      "show_page": "mostra la pagina {target}",
+      "hide_page": "salta la pagina {target}",
+      "skip_to_end": "salta alla fine"
     },
     "emptyTitle": "Ancora nessuna regola",
     "emptyDesc": "Mostra, nascondi o rendi obbligatorie le domande in base alle risposte precedenti, oppure passa a un'altra pagina.",
@@ -1220,7 +1320,71 @@
       "use": "Inserisci:",
       "empty": "Aggiungi una formula",
       "unknown": "Nessun campo usa la chiave “{key}”",
-      "self": "Un campo non può usare se stesso"
+      "self": "Un campo non può usare se stesso",
+      "syntax": "Questa formula è incompleta — controlla parentesi, virgole e operatori",
+      "functions": "Funzioni:",
+      "choiceScored": "Vale il numero dell’opzione scelta",
+      "choiceUnscored": "Assegna numeri alle sue opzioni (impostazioni campo → Opzioni) per usarlo nelle somme",
+      "guideTitle": "Come funzionano le formule",
+      "guideMath": "Usa numeri, + − * / e parentesi: {'{'}quantity{'}'} * {'{'}price{'}'}.",
+      "guideOptions": "Le domande a scelta valgono il numero assegnato all’opzione scelta (Opzioni → Assegna numeri alle opzioni); più scelte si sommano.",
+      "guideIf": "Scegli un valore in base a una condizione: if({'{'}plan{'}'} = \"Premium\", 50, 10). Confronta con = != > >= < <=.",
+      "guideFunctions": "Inoltre: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()."
+    },
+    "yes": "Sì",
+    "no": "No",
+    "from": "Da",
+    "to": "A",
+    "pickValues": "Scegli le risposte",
+    "typeValues": "Digita un valore e premi Invio",
+    "noValueNeeded": "Nessuna risposta necessaria",
+    "setValueFor": "Valore per {field}",
+    "ifBadge": "1 · SE",
+    "thenBadge": "2 · ALLORA",
+    "ifTitle": "Controlla queste risposte",
+    "thenTitle": "Poi fai questo",
+    "ifHelp": "Scegli una domanda, come confrontarla e la risposta che deve attivare la regola.",
+    "thenHelp": "Scegli cosa succede quando le risposte corrispondono — e a quale domanda o pagina.",
+    "matchLead": "Esegui la regola quando",
+    "andChip": "e",
+    "orChip": "o",
+    "colQuestion": "Domanda",
+    "colCondition": "Condizione",
+    "colAnswer": "Risposta",
+    "colAction": "Azione",
+    "colTarget": "Domanda o pagina",
+    "problemCount": "{count} cosa da correggere | {count} cose da correggere",
+    "actionDesc": {
+      "show": "Tieni nascosta una domanda finché questa regola non corrisponde.",
+      "hide": "Nascondi una domanda mentre questa regola corrisponde.",
+      "require": "Rendi obbligatoria una domanda mentre questa regola corrisponde.",
+      "unrequire": "Consenti di saltare una domanda obbligatoria.",
+      "enable": "Consenti di modificare una domanda disattivata.",
+      "disable": "Mostra una domanda in grigio così non può essere modificata.",
+      "set_value": "Compila una risposta automaticamente.",
+      "clear_value": "Svuota una risposta che non serve più.",
+      "show_page": "Tieni nascosta una pagina finché questa regola non corrisponde.",
+      "hide_page": "Salta una pagina mentre questa regola corrisponde.",
+      "jump": "Dopo questa pagina, continua su un’altra pagina.",
+      "skip_to_end": "Dopo questa pagina, vai direttamente all’invio."
+    },
+    "starter": {
+      "show": {
+        "title": "Mostra una domanda",
+        "text": "Chiedi un approfondimento solo quando una risposta precedente lo richiede."
+      },
+      "require": {
+        "title": "Rendi obbligatoria una domanda",
+        "text": "Richiedi dettagli solo in alcuni casi."
+      },
+      "jump": {
+        "title": "Salta a una pagina",
+        "text": "Porta chi risponde alla pagina adatta alle sue risposte."
+      },
+      "set_value": {
+        "title": "Compila una risposta",
+        "text": "Imposta una risposta automaticamente da quelle precedenti."
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "Rimossi",
       "pages": "Pagine {n}",
       "rules": "Regole {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "Origini dei campi",
+    "tab": {
+      "fields": "Campi",
+      "saved": "Salvati",
+      "lists": "Elenchi"
+    },
+    "searchSaved": "Cerca campi salvati…",
+    "searchLists": "Cerca elenchi…",
+    "saveShort": "Salva",
+    "saveField": "Salva campo",
+    "saveFieldHint": "Salva questo campo per riutilizzarlo in qualsiasi modulo",
+    "saveFieldTitle": "Salva campo",
+    "saveFieldDesc": "Compare in Salvati nell’elenco dei campi, con tutte le sue impostazioni, per ogni modulo di questo spazio di lavoro.",
+    "fieldName": "Nome",
+    "nameRequired": "Inserisci un nome.",
+    "savedEmptyTitle": "Ancora nessun campo salvato",
+    "savedEmptyDesc": "Seleziona un campo e scegli Salva nelle sue impostazioni per riutilizzarlo qui.",
+    "removeField": "Rimuovi {name} dai campi salvati",
+    "removeFieldTitle": "Rimuovere “{name}” dai campi salvati?",
+    "removeFieldDesc": "I moduli che lo usano già ne conservano una copia.",
+    "remove": "Rimuovi",
+    "newList": "Nuovo elenco",
+    "newListTitle": "Nuovo elenco",
+    "editList": "Modifica elenco",
+    "editListTitle": "Modifica elenco",
+    "deleteList": "Elimina elenco",
+    "deleteListTitle": "Eliminare l’elenco “{name}”?",
+    "deleteListDesc": "I campi che lo usano già conservano le loro opzioni.",
+    "listDesc": "Opzioni riutilizzabili per qualsiasi campo a scelta — paesi, regioni, prodotti, team …",
+    "listName": "Nome",
+    "listNamePlaceholder": "es. Regioni",
+    "listOptions": "Opzioni",
+    "listOptionsPlaceholder": "Un’opzione per riga",
+    "optionsRequired": "Aggiungi almeno un’opzione.",
+    "optionsTooMany": "Un elenco può avere fino a 2.000 opzioni.",
+    "optionCount": "{count} opzione | {count} opzioni",
+    "listsEmptyTitle": "Ancora nessun elenco",
+    "listsEmptyDesc": "Crea un elenco una volta e usalo in qualsiasi campo a discesa, a scelta singola o a caselle.",
+    "addList": "Aggiungi {name} come menu a discesa",
+    "addAs": "Aggiungi come {type}",
+    "listMenu": "Opzioni per {name}",
+    "useList": "Compila da un elenco…",
+    "saveAsList": "Salva come elenco",
+    "toast": {
+      "fieldSaved": "“{name}” salvato — lo trovi in Salvati",
+      "fieldRemoved": "“{name}” rimosso dai campi salvati",
+      "listCreated": "Elenco “{name}” creato",
+      "listUpdated": "Elenco “{name}” aggiornato",
+      "listDeleted": "Elenco “{name}” eliminato"
     }
   }
 }

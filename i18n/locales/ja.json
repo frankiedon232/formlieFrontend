@@ -317,7 +317,8 @@
     "FRM-NET-1001": "リクエストはキャンセルされました。",
     "FRM-NET-1002": "サーバーから予期しない応答がありました。",
     "FRM-FORM-1007": "フォームの現在の状態ではこの操作はできません。更新してもう一度お試しください。",
-    "FRM-FORM-1008": "同じ名前のフォルダーがすでにあります。"
+    "FRM-FORM-1008": "同じ名前のフォルダーがすでにあります。",
+    "FRM-FORM-1009": "この名前のリストはすでに存在します。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -570,7 +571,9 @@
       "webhook": "Webhook",
       "api_key": "API キー",
       "export": "エクスポート",
-      "folder": "フォルダー"
+      "folder": "フォルダー",
+      "saved_field": "保存済みの項目",
+      "option_list": "選択肢リスト"
     },
     "field": {
       "name": "名前",
@@ -635,7 +638,12 @@
       "forms_purged": "フォームを完全に削除しました",
       "forms_folder_created": "フォルダーを作成しました",
       "forms_folder_renamed": "フォルダー名を変更しました",
-      "forms_folder_deleted": "フォルダーを削除しました"
+      "forms_folder_deleted": "フォルダーを削除しました",
+      "forms_field_saved": "項目をライブラリに保存",
+      "forms_field_removed": "項目をライブラリから削除",
+      "forms_list_created": "リストを作成",
+      "forms_list_updated": "リストを更新",
+      "forms_list_deleted": "リストを削除"
     },
     "detail": {
       "who": "誰が",
@@ -982,12 +990,13 @@
       "no_inputs": "質問を1つ以上追加してください",
       "empty_label": "ラベルのない質問があります",
       "duplicate_key": "2つの項目が同じキーを使っています",
-      "no_options": "選択肢のない選択項目があります"
+      "no_options": "選択肢のない選択項目があります",
+      "locked_required": "必須ですが、回答者が入力できません（非表示・読み取り専用・無効）"
     },
     "inspector": {
       "panel": "項目の設定",
       "basics": "基本",
-      "label": "質問",
+      "label": "ラベル",
       "title": "タイトル",
       "help": "ヘルプテキスト",
       "placeholder": "プレースホルダー",
@@ -1061,7 +1070,10 @@
       "message": "メッセージ",
       "collapsible": "折りたたみ可能",
       "collapsibleHint": "回答者はこの見出しの下の質問を折りたためます。",
-      "startCollapsed": "折りたたんだ状態で開始"
+      "startCollapsed": "折りたたんだ状態で開始",
+      "numbered": "選択肢に数値を付ける",
+      "numberedHint": "計算用: 選んだ選択肢はその数値として扱われます。",
+      "optionScore": "{label}の数値"
     },
     "shortcuts": {
       "title": "ショートカット",
@@ -1083,6 +1095,53 @@
       "build": "作成",
       "logic": "ロジック",
       "versions": "バージョン"
+    },
+    "renameHint": "ダブルクリックで名前を変更",
+    "access": {
+      "label": "回答",
+      "editable": "編集可",
+      "readonly": "読み取り専用",
+      "disabled": "無効",
+      "editableHint": "回答者が入力できます。",
+      "readonlyHint": "表示され回答と一緒に送信されますが、変更はできません（例: 事前入力された参照番号）。",
+      "disabledHint": "グレー表示され、回答と一緒に送信されません。",
+      "noRequired": "読み取り専用や無効の項目は必須にできません（誰も入力できないため）。"
+    },
+    "labels": {
+      "title": "ラベルの位置",
+      "top": "項目の上",
+      "left": "項目の横",
+      "hint": "フォーム全体に共通の設定です。スマートフォンでは常に上に表示されます。"
+    },
+    "files": {
+      "hint": "空欄ならすべてのファイルを許可します。検索するか、一覧にない形式を入力してください（例: .xyz）。",
+      "any": "すべてのファイル形式",
+      "anyButton": "すべて許可",
+      "search": "ファイル形式を検索…",
+      "count": "{count} 種類を許可 | {count} 種類を許可",
+      "custom": "自分で追加",
+      "remove": "{type}を削除",
+      "all": {
+        "images": "すべての画像",
+        "audio": "すべての音声",
+        "video": "すべての動画"
+      },
+      "group": {
+        "images": "画像",
+        "documents": "文書",
+        "spreadsheets": "スプレッドシート",
+        "presentations": "プレゼンテーション",
+        "audio": "音声",
+        "video": "動画",
+        "archives": "アーカイブ",
+        "ebooks": "電子書籍",
+        "data": "データとメール",
+        "code": "コード",
+        "design": "デザインと3D",
+        "fonts": "フォント",
+        "security": "鍵と証明書",
+        "apps": "アプリとインストーラー"
+      }
     }
   },
   "renderer": {
@@ -1115,7 +1174,10 @@
     },
     "submit": "送信",
     "next": "次へ",
-    "thanks": "ありがとうございました！"
+    "thanks": "ありがとうございました！",
+    "moreInfo": "「{field}」の詳細",
+    "openCalendar": "カレンダーを開く",
+    "fileRejected": "追加されませんでした: {files}。許可されたファイル形式と {mb} MB の上限を確認してください。"
   },
   "logic": {
     "crumb": "ロジック",
@@ -1158,7 +1220,11 @@
       "field": "削除された項目を使用",
       "value": "値が未設定",
       "target": "対象が未設定",
-      "noAction": "アクションなし"
+      "noAction": "アクションなし",
+      "requireLocked": "非表示・読み取り専用・無効の項目は必須にできません",
+      "self": "確認対象の質問自体を非表示またはクリアしています",
+      "backwards": "移動先は後ろのページのみです",
+      "conflict": "同じ質問を非表示かつ必須にしています"
     },
     "op": {
       "eq": "が次と等しい",
@@ -1174,13 +1240,30 @@
       "true": "がオン",
       "false": "がオフ",
       "before": "が次より前",
-      "after": "が次より後"
+      "after": "が次より後",
+      "starts_with": "が次で始まる",
+      "ends_with": "が次で終わる",
+      "between": "が次の範囲内",
+      "not_between": "が次の範囲外",
+      "in": "が次のいずれか",
+      "not_in": "が次のいずれでもない",
+      "contains_all": "が次をすべて含む",
+      "count_gte": "が … 個以上選択",
+      "count_lte": "が … 個以下選択"
     },
     "action": {
       "show": "表示",
       "hide": "非表示",
       "require": "必須にする",
-      "jump": "ページへ移動"
+      "jump": "ページへ移動",
+      "unrequire": "任意にする",
+      "enable": "有効にする",
+      "disable": "無効にする",
+      "set_value": "回答を設定",
+      "clear_value": "回答をクリア",
+      "show_page": "ページを表示",
+      "hide_page": "ページを非表示",
+      "skip_to_end": "最後へスキップ"
     },
     "sentence": {
       "rule": "条件「{conditions}」を満たす場合、{actions}。",
@@ -1201,7 +1284,24 @@
       "show": "{target}を表示",
       "hide": "{target}を非表示",
       "require": "{target}を必須にする",
-      "jump": "{target}へ移動"
+      "jump": "{target}へ移動",
+      "starts_with": "{field}が{value}で始まる",
+      "ends_with": "{field}が{value}で終わる",
+      "between": "{field}が{value}〜{value2}の範囲内",
+      "not_between": "{field}が{value}〜{value2}の範囲外",
+      "in": "{field}が{value}のいずれか",
+      "not_in": "{field}が{value}のいずれでもない",
+      "contains_all": "{field}に{value}をすべて含む",
+      "count_gte": "{field}で{value}個以上を選択",
+      "count_lte": "{field}で{value}個以下を選択",
+      "unrequire": "{target}を任意にする",
+      "enable": "{target}を有効にする",
+      "disable": "{target}を無効にする",
+      "set_value": "{target}を{value}に設定",
+      "clear_value": "{target}をクリア",
+      "show_page": "ページ「{target}」を表示",
+      "hide_page": "ページ「{target}」をスキップ",
+      "skip_to_end": "最後へスキップ"
     },
     "emptyTitle": "ルールはまだありません",
     "emptyDesc": "前の回答に応じて質問を表示・非表示・必須にしたり、別のページへ移動したりできます。",
@@ -1220,7 +1320,71 @@
       "use": "挿入：",
       "empty": "数式を追加",
       "unknown": "キー「{key}」を使う項目はありません",
-      "self": "項目は自分自身を参照できません"
+      "self": "項目は自分自身を参照できません",
+      "syntax": "計算式が不完全です。かっこ、カンマ、演算子を確認してください",
+      "functions": "関数:",
+      "choiceScored": "選んだ選択肢の数値として扱われます",
+      "choiceUnscored": "合計に使うには選択肢に数値を付けてください（項目の設定 → 選択肢）",
+      "guideTitle": "計算式の使い方",
+      "guideMath": "数値、+ − * / とかっこを使えます: {'{'}quantity{'}'} * {'{'}price{'}'}。",
+      "guideOptions": "選択式の質問は、選んだ選択肢に付けた数値として扱われます（選択肢 → 選択肢に数値を付ける）。複数選択すると合計されます。",
+      "guideIf": "条件で値を選ぶ: if({'{'}plan{'}'} = \"Premium\", 50, 10)。比較には = != > >= < <= を使います。",
+      "guideFunctions": "ほかに: and(), or(), not(), min(), max(), sum(), round(x, 2), floor(), ceil(), abs()。"
+    },
+    "yes": "はい",
+    "no": "いいえ",
+    "from": "開始",
+    "to": "終了",
+    "pickValues": "回答を選択",
+    "typeValues": "値を入力して Enter",
+    "noValueNeeded": "回答は不要です",
+    "setValueFor": "{field}の値",
+    "ifBadge": "1 · 条件",
+    "thenBadge": "2 · 動作",
+    "ifTitle": "確認する回答",
+    "thenTitle": "実行する動作",
+    "ifHelp": "質問、比較方法、ルールを発動する回答を選びます。",
+    "thenHelp": "回答が一致したときの動作と、対象の質問またはページを選びます。",
+    "matchLead": "ルールを実行する条件",
+    "andChip": "かつ",
+    "orChip": "または",
+    "colQuestion": "質問",
+    "colCondition": "条件",
+    "colAnswer": "回答",
+    "colAction": "動作",
+    "colTarget": "質問またはページ",
+    "problemCount": "修正が必要な点: {count} 件 | 修正が必要な点: {count} 件",
+    "actionDesc": {
+      "show": "このルールが一致するまで質問を非表示にします。",
+      "hide": "このルールが一致している間、質問を非表示にします。",
+      "require": "このルールが一致している間、質問を必須にします。",
+      "unrequire": "必須の質問を回答者がスキップできるようにします。",
+      "enable": "無効の質問を回答者が変更できるようにします。",
+      "disable": "質問をグレー表示にして変更できなくします。",
+      "set_value": "回答を自動で入力します。",
+      "clear_value": "不要になった回答を空にします。",
+      "show_page": "このルールが一致するまでページを非表示にします。",
+      "hide_page": "このルールが一致している間、ページをスキップします。",
+      "jump": "このページの後、別のページへ進みます。",
+      "skip_to_end": "このページの後、すぐに送信へ進みます。"
+    },
+    "starter": {
+      "show": {
+        "title": "質問を表示",
+        "text": "前の回答に応じて追加の質問をします。"
+      },
+      "require": {
+        "title": "質問を必須にする",
+        "text": "特定の場合だけ詳細の入力を求めます。"
+      },
+      "jump": {
+        "title": "ページへスキップ",
+        "text": "回答に合ったページへ回答者を案内します。"
+      },
+      "set_value": {
+        "title": "回答を入力",
+        "text": "前の回答から自動で回答を設定します。"
+      }
     }
   },
   "versions": {
@@ -1254,6 +1418,58 @@
       "removed": "削除",
       "pages": "ページ {n}",
       "rules": "ルール {n}"
+    }
+  },
+  "library": {
+    "tabsLabel": "項目の追加元",
+    "tab": {
+      "fields": "項目",
+      "saved": "保存済み",
+      "lists": "リスト"
+    },
+    "searchSaved": "保存済みの項目を検索…",
+    "searchLists": "リストを検索…",
+    "saveShort": "保存",
+    "saveField": "項目を保存",
+    "saveFieldHint": "この項目を保存して、どのフォームでも再利用できます",
+    "saveFieldTitle": "項目を保存",
+    "saveFieldDesc": "このワークスペースのすべてのフォームで、項目一覧の「保存済み」にすべての設定とともに表示されます。",
+    "fieldName": "名前",
+    "nameRequired": "名前を入力してください。",
+    "savedEmptyTitle": "保存済みの項目はまだありません",
+    "savedEmptyDesc": "項目を選び、設定で「保存」を選ぶとここで再利用できます。",
+    "removeField": "{name}を保存済みの項目から削除",
+    "removeFieldTitle": "「{name}」を保存済みの項目から削除しますか？",
+    "removeFieldDesc": "すでに使用しているフォームのコピーはそのまま残ります。",
+    "remove": "削除",
+    "newList": "新しいリスト",
+    "newListTitle": "新しいリスト",
+    "editList": "リストを編集",
+    "editListTitle": "リストを編集",
+    "deleteList": "リストを削除",
+    "deleteListTitle": "リスト「{name}」を削除しますか？",
+    "deleteListDesc": "すでに使用している項目の選択肢はそのまま残ります。",
+    "listDesc": "選択式の項目で再利用できる選択肢 — 国、地域、製品、チームなど",
+    "listName": "名前",
+    "listNamePlaceholder": "例: 地域",
+    "listOptions": "選択肢",
+    "listOptionsPlaceholder": "1行に1つの選択肢",
+    "optionsRequired": "選択肢を1つ以上追加してください。",
+    "optionsTooMany": "リストの選択肢は最大 2,000 件です。",
+    "optionCount": "選択肢 {count} 件 | 選択肢 {count} 件",
+    "listsEmptyTitle": "リストはまだありません",
+    "listsEmptyDesc": "リストを一度作れば、ドロップダウン、ラジオボタン、チェックボックスの項目で使えます。",
+    "addList": "{name}をドロップダウンとして追加",
+    "addAs": "{type}として追加",
+    "listMenu": "{name}の操作",
+    "useList": "リストから入力…",
+    "saveAsList": "リストとして保存",
+    "toast": {
+      "fieldSaved": "「{name}」を保存しました（「保存済み」にあります）",
+      "fieldRemoved": "「{name}」を保存済みの項目から削除しました",
+      "listCreated": "リスト「{name}」を作成しました",
+      "listUpdated": "リスト「{name}」を更新しました",
+      "listDeleted": "リスト「{name}」を削除しました"
     }
   }
 }

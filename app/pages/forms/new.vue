@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import type { FormFolder, FormSummary } from '#shared/types/forms'
 import { STARTER_TEMPLATES, type StarterTemplateKey } from '#shared/utils/templates/starters'
-import { countFields, formImportFile, MAX_IMPORT_BYTES, type FormSchemaV1 } from '#shared/utils/forms/schema'
+import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 definePageMeta({ breadcrumb: 'nav.newForm' })
 
@@ -47,38 +47,9 @@ const folderItems = computed(() => [
   ...folders.value.map(folder => ({ value: folder.id, label: folder.name, icon: 'i-lucide-folder' })),
 ])
 
-// ── Import ────────────────────────────────────────────────────────────────────────
-const file = ref<File | null>(null)
-const reading = ref(false)
-const importError = ref<string | null>(null)
+// Import: the picked file, validated and parsed (FormsNewImport).
 const imported = ref<{ name?: string; schema: FormSchemaV1 } | null>(null)
-
-watch(file, async picked => {
-  imported.value = null
-  importError.value = null
-  if (!picked) return
-  if (picked.size > MAX_IMPORT_BYTES) return (importError.value = t('forms.new.tooBig'))
-  reading.value = true
-  try {
-    const raw: unknown = JSON.parse(await picked.text())
-    const parsed = formImportFile.safeParse(raw)
-    if (!parsed.success) {
-      // A union reports one wrapper issue; use the branch that matches the file's shape
-      // (`{ name, schema }` export vs a bare schema) so the path points at the real problem.
-      const issue = parsed.error.issues[0]
-      const wrapped = !!raw && typeof raw === 'object' && 'schema' in raw
-      const inner = issue?.code === 'invalid_union' ? issue.errors[wrapped ? 0 : 1]?.[0] : issue
-      importError.value = t('forms.new.invalid', { detail: inner?.path.join('.') || '—' })
-      return
-    }
-    imported.value = parsed.data
-    nameTouched.value = false
-  } catch {
-    importError.value = t('forms.new.notJson')
-  } finally {
-    reading.value = false
-  }
-})
+watch(imported, () => (nameTouched.value = false))
 
 // ── Name (follows the chosen template until the user types their own) ─────────────
 const name = ref('')
@@ -97,6 +68,13 @@ watchEffect(() => {
         : t('onboarding.firstForm.untitled')
 })
 
+// Where labels sit — a form-wide choice made up front (changeable later in Form settings).
+const labelPosition = ref<'top' | 'left'>('top')
+const labelItems = computed(() => [
+  { value: 'top', label: t('builder.labels.top'), icon: 'i-lucide-panel-top' },
+  { value: 'left', label: t('builder.labels.left'), icon: 'i-lucide-panel-left' },
+])
+
 const canCreate = computed(() => !!name.value.trim() && (mode.value !== 'import' || !!imported.value))
 const submitLabel = computed(() => (mode.value === 'import' ? t('forms.new.importSubmit') : t('forms.new.create')))
 const detailsHint = computed(() =>
@@ -112,12 +90,16 @@ async function create() {
         ? api.post<FormSummary>('/forms/import', {
             name: name.value.trim(),
             folder_id: folder,
-            schema: imported.value!.schema,
+            schema: {
+              ...imported.value!.schema,
+              settings: { ...imported.value!.schema.settings, label_position: labelPosition.value },
+            },
           })
         : api.post<FormSummary>('/forms', {
             name: name.value.trim(),
             folder_id: folder,
             template_key: mode.value === 'template' ? templateKey.value : null,
+            label_position: labelPosition.value,
           }),
     { success: t('forms.toast.created') },
   )
@@ -153,41 +135,7 @@ async function create() {
         <FormsNewBlankIntro v-if="mode === 'blank'" :name="name" />
         <FormsNewTemplatePicker v-if="mode === 'template'" v-model="templateKey" />
 
-        <div v-if="mode === 'import'" class="flex flex-col gap-3">
-          <UFileUpload
-            v-model="file"
-            accept="application/json,.json"
-            :label="t('forms.new.drop')"
-            :description="t('forms.new.dropHint')"
-            icon="i-lucide-file-json"
-            color="neutral"
-            layout="list"
-            class="min-h-36 w-full"
-          />
-          <p v-if="reading" class="flex items-center gap-2 text-sm text-muted" aria-live="polite">
-            <UIcon name="i-lucide-loader-circle" class="size-4 animate-spin" /> {{ t('forms.new.reading') }}
-          </p>
-          <UAlert
-            v-if="importError"
-            icon="i-lucide-file-x"
-            color="error"
-            variant="subtle"
-            :title="importError"
-          />
-          <UAlert
-            v-if="imported"
-            icon="i-lucide-file-check"
-            color="success"
-            variant="subtle"
-            :title="t('forms.new.ready')"
-            :description="
-              t('forms.new.summary', {
-                pages: imported.schema.pages.length,
-                fields: countFields(imported.schema),
-              })
-            "
-          />
-        </div>
+        <FormsNewImport v-if="mode === 'import'" v-model="imported" />
 
         <UCard
           :ui="{
@@ -220,6 +168,17 @@ async function create() {
                 :search-input="{ placeholder: t('common.search') }"
                 size="lg"
                 class="w-full"
+              />
+            </UFormField>
+            <UFormField :label="t('builder.labels.title')" :description="t('builder.labels.hint')" class="sm:col-span-2">
+              <UTabs
+                v-model="labelPosition"
+                :items="labelItems"
+                :content="false"
+                color="neutral"
+                size="sm"
+                :ui="SEGMENTED_UI"
+                :aria-label="t('builder.labels.title')"
               />
             </UFormField>
           </div>

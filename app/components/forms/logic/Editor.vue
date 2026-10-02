@@ -3,6 +3,8 @@
   page's session provides. Rules column + calculations card.
 -->
 <script setup lang="ts">
+import { LOGIC_ACTIONS, type LogicAction } from '#shared/utils/forms/logic'
+
 const { t } = useI18n()
 const logic = useLogicRules()
 const openId = ref<string | null>(null)
@@ -10,9 +12,20 @@ const openId = ref<string | null>(null)
 const problems = computed(() => logic.rules.value.filter(rule => logic.problem(rule)).length)
 const canAdd = computed(() => logic.sources.value.length > 0 && logic.rules.value.length < 500)
 
-function add() {
-  openId.value = logic.addRule()
+function add(preset: LogicAction = 'show') {
+  openId.value = logic.addRule(preset)
 }
+// Starting points shown when there are no rules yet.
+const starters = computed(() =>
+  (['show', 'require', 'jump', 'set_value'] as LogicAction[])
+    .filter(action => action !== 'jump' || logic.pages.value.length > 1)
+    .map(action => ({
+      action,
+      icon: LOGIC_ACTIONS.find(a => a.action === action)!.icon,
+      title: t(`logic.starter.${action}.title`),
+      text: t(`logic.starter.${action}.text`),
+    })),
+)
 
 defineShortcuts({ n: { handler: () => canAdd.value && add(), usingInput: false } })
 </script>
@@ -39,7 +52,7 @@ defineShortcuts({ n: { handler: () => canAdd.value && add(), usingInput: false }
           size="sm"
           class="ms-auto"
           :disabled="!canAdd"
-          @click="add"
+          @click="add()"
         >
           <template #trailing><UKbd value="N" class="hidden sm:inline-flex" /></template>
         </UButton>
@@ -54,15 +67,31 @@ defineShortcuts({ n: { handler: () => canAdd.value && add(), usingInput: false }
         variant="naked"
         class="py-10"
       />
-      <UEmpty
-        v-else-if="!logic.rules.value.length"
-        icon="i-lucide-git-branch"
-        :title="t('logic.emptyTitle')"
-        :description="t('logic.emptyDesc')"
-        :actions="[{ label: t('logic.add'), icon: 'i-lucide-plus', color: 'neutral', onClick: add }]"
-        variant="naked"
-        class="py-10"
-      />
+      <div v-else-if="!logic.rules.value.length" class="flex flex-col gap-4 py-4">
+        <div class="flex flex-col items-center gap-1 text-center">
+          <UIcon name="i-lucide-git-branch" class="size-6 text-muted" />
+          <p class="font-medium text-highlighted">{{ t('logic.emptyTitle') }}</p>
+          <p class="max-w-md text-sm text-muted">{{ t('logic.emptyDesc') }}</p>
+        </div>
+        <div class="grid gap-2 sm:grid-cols-2">
+          <UButton
+            v-for="starter in starters"
+            :key="starter.action"
+            color="neutral"
+            variant="outline"
+            class="items-start gap-3 bg-default p-3 text-start"
+            @click="add(starter.action)"
+          >
+            <span class="flex size-8 shrink-0 items-center justify-center rounded-md border border-default bg-elevated/50">
+              <UIcon :name="starter.icon" class="size-4 text-highlighted" />
+            </span>
+            <span class="flex min-w-0 flex-col">
+              <span class="text-sm font-medium text-highlighted">{{ starter.title }}</span>
+              <span class="text-xs font-normal text-muted">{{ starter.text }}</span>
+            </span>
+          </UButton>
+        </div>
+      </div>
       <FormsLogicRuleCard
         v-for="(rule, i) in logic.rules.value"
         :key="rule.id"

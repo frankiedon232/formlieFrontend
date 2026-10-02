@@ -1,50 +1,36 @@
 <!-- Inspector for one field: basics · options · rules · type settings · default & prefill · advanced. -->
 <script setup lang="ts">
-import { keyFromLabel, type FormField } from '#shared/utils/forms/build'
+import { isLocked, type FormField } from '#shared/utils/forms/build'
 import { FIELD_WIDTHS } from '#shared/utils/forms/fields'
 
 const props = defineProps<{ field: FormField }>()
 const { t } = useI18n()
 const builder = useBuilder()
-const currencies = useCurrencyOptions()
 
 const has = (control: InspectorControl) => hasControl(props.field.type, control)
 const set = (patch: Partial<FormField>) => builder.updateField(props.field.id, patch)
 const setProp = (patch: Record<string, unknown>) => builder.updateProps(props.field.id, patch)
 const p = computed(() => (props.field.props ?? {}) as Record<string, unknown>)
-const num = (value: unknown) =>
-  value === '' || value == null || Number.isNaN(Number(value)) ? undefined : Number(value)
 
 const widths = computed(() =>
   FIELD_WIDTHS.map(width => ({ value: String(width), label: t(`builder.widthShort.${width}`) })),
 )
 
-// Field key: lower-case, unique; invalid input is shown, not saved.
-const keyDraft = ref(props.field.key)
-watch(
-  () => props.field.key,
-  key => (keyDraft.value = key),
-)
-const keyError = computed(() => {
-  if (!/^[a-z][a-z0-9_]{0,63}$/.test(keyDraft.value)) return t('builder.inspector.keyInvalid')
-  if (builder.fields.value.some(f => f.id !== props.field.id && f.key === keyDraft.value))
-    return t('builder.inspector.keyTaken')
-  return null
-})
-function saveKey() {
-  if (!keyError.value) set({ key: keyDraft.value })
+const setLabel = (label: string) => builder.renameField(props.field.id, label)
+
+// Answer access: editable · read-only (shown + submitted) · disabled (greyed, not submitted).
+// Locked fields can never be required — turning one on switches "required" off.
+const access = computed(() => (props.field.disabled ? 'disabled' : props.field.readonly ? 'readonly' : 'editable'))
+const accessItems = computed(() => [
+  { value: 'editable', label: t('builder.access.editable') },
+  { value: 'readonly', label: t('builder.access.readonly') },
+  { value: 'disabled', label: t('builder.access.disabled') },
+])
+const locked = computed(() => isLocked(props.field))
+function setAccess(next: string | number) {
+  set({ readonly: next === 'readonly', disabled: next === 'disabled', ...(next !== 'editable' ? { required: false } : {}) })
 }
-/** While drafting, the key follows the label ("Full name" → full_name) unless it was edited. */
-function setLabel(label: string) {
-  const others = builder.fields.value.filter(f => f.id !== props.field.id).map(f => f.key)
-  const followsLabel =
-    !builder.keysLocked.value && props.field.key === keyFromLabel(props.field.label, others)
-  builder.updateField(
-    props.field.id,
-    followsLabel ? { label, key: keyFromLabel(label || props.field.type, others) } : { label },
-    `field:${props.field.id}:label`,
-  )
-}
+const hasAccess = computed(() => has('required') && props.field.type !== 'calculated')
 const prefillExample = computed(() => `?${String(p.value.prefill_param || props.field.key)}=…`)
 </script>
 
@@ -74,10 +60,24 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
           @update:model-value="v => set({ placeholder: String(v) })"
         />
       </UFormField>
+      <UFormField v-if="hasAccess" :label="t('builder.access.label')" :description="t(`builder.access.${access}Hint`)">
+        <UTabs
+          :model-value="access"
+          :items="accessItems"
+          :content="false"
+          color="neutral"
+          size="xs"
+          :ui="{ ...SEGMENTED_UI, trigger: `${SEGMENTED_UI.trigger} flex-1 px-1.5` }"
+          class="w-full"
+          @update:model-value="setAccess"
+        />
+      </UFormField>
       <USwitch
         v-if="has('required')"
-        :model-value="!!field.required"
+        :model-value="!!field.required && !locked"
+        :disabled="locked"
         :label="t('builder.inspector.required')"
+        :description="locked ? t('builder.access.noRequired') : undefined"
         color="neutral"
         @update:model-value="v => set({ required: v })"
       />
@@ -102,143 +102,7 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
       :field="field"
     />
 
-    <section
-      v-if="
-        has('scale') ||
-        has('rating') ||
-        has('slider') ||
-        has('currency') ||
-        has('content') ||
-        has('collapsible') ||
-        has('image') ||
-        has('formula')
-      "
-      class="flex flex-col gap-3"
-    >
-      <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.settings') }}</h3>
-      <div v-if="has('scale') || has('slider')" class="grid grid-cols-2 gap-2">
-        <UFormField :label="t('builder.inspector.min')">
-          <UInput
-            type="number"
-            :model-value="String(p.min ?? 0)"
-            class="w-full"
-            @update:model-value="v => setProp({ min: num(v) ?? 0 })"
-          />
-        </UFormField>
-        <UFormField :label="t('builder.inspector.max')">
-          <UInput
-            type="number"
-            :model-value="String(p.max ?? 10)"
-            class="w-full"
-            @update:model-value="v => setProp({ max: num(v) ?? 10 })"
-          />
-        </UFormField>
-      </div>
-      <template v-if="has('scale')">
-        <UFormField :label="t('builder.inspector.minLabel')">
-          <UInput
-            :model-value="String(p.min_label ?? '')"
-            class="w-full"
-            @update:model-value="v => setProp({ min_label: String(v) })"
-          />
-        </UFormField>
-        <UFormField :label="t('builder.inspector.maxLabel')">
-          <UInput
-            :model-value="String(p.max_label ?? '')"
-            class="w-full"
-            @update:model-value="v => setProp({ max_label: String(v) })"
-          />
-        </UFormField>
-      </template>
-      <UFormField v-if="has('slider')" :label="t('builder.inspector.step')">
-        <UInput
-          type="number"
-          min="0"
-          :model-value="String(p.step ?? 1)"
-          class="w-full"
-          @update:model-value="v => setProp({ step: num(v) ?? 1 })"
-        />
-      </UFormField>
-      <UFormField v-if="has('rating')" :label="t('builder.inspector.stars')">
-        <UInputNumber
-          :model-value="Number(p.max ?? 5)"
-          :min="3"
-          :max="10"
-          class="w-full"
-          @update:model-value="v => setProp({ max: v ?? 5 })"
-        />
-      </UFormField>
-      <UFormField v-if="has('currency')" :label="t('builder.inspector.currency')">
-        <USelectMenu
-          :model-value="String(p.currency ?? 'USD')"
-          :items="currencies"
-          value-key="value"
-          :search-input="{ placeholder: t('common.search') }"
-          class="w-full"
-          @update:model-value="v => setProp({ currency: v })"
-        />
-      </UFormField>
-      <UFormField
-        v-if="has('content')"
-        :label="field.type === 'paragraph' ? t('builder.inspector.text') : t('builder.inspector.description')"
-      >
-        <UTextarea
-          :model-value="String((field.type === 'paragraph' ? p.text : p.description) ?? '')"
-          :rows="4"
-          autoresize
-          class="w-full"
-          @update:model-value="
-            v => setProp(field.type === 'paragraph' ? { text: String(v) } : { description: String(v) })
-          "
-        />
-      </UFormField>
-      <template v-if="has('collapsible')">
-        <USwitch
-          :model-value="!!p.collapsible"
-          :label="t('builder.inspector.collapsible')"
-          :description="t('builder.inspector.collapsibleHint')"
-          color="neutral"
-          @update:model-value="v => setProp({ collapsible: v, ...(v ? {} : { collapsed: false }) })"
-        />
-        <USwitch
-          v-if="p.collapsible"
-          :model-value="!!p.collapsed"
-          :label="t('builder.inspector.startCollapsed')"
-          color="neutral"
-          @update:model-value="v => setProp({ collapsed: v })"
-        />
-      </template>
-      <template v-if="has('image')">
-        <UFormField :label="t('builder.inspector.imageUrl')" :hint="t('builder.inspector.imageHint')">
-          <UInput
-            type="url"
-            :model-value="String(p.src ?? '')"
-            placeholder="https://"
-            class="w-full"
-            @update:model-value="v => setProp({ src: String(v) })"
-          />
-        </UFormField>
-        <UFormField :label="t('builder.inspector.alt')" :description="t('builder.inspector.altHint')">
-          <UInput
-            :model-value="String(p.alt ?? '')"
-            class="w-full"
-            @update:model-value="v => setProp({ alt: String(v) })"
-          />
-        </UFormField>
-      </template>
-      <UFormField
-        v-if="has('formula')"
-        :label="t('builder.inspector.formula')"
-        :description="t('builder.inspector.formulaHint')"
-      >
-        <UInput
-          :model-value="String(p.formula ?? '')"
-          class="w-full font-mono"
-          placeholder="{quantity} * {price}"
-          @update:model-value="v => setProp({ formula: String(v) })"
-        />
-      </UFormField>
-    </section>
+    <FormsBuilderInspectorSettings :field="field" />
 
     <section
       v-if="has('default_text') || has('default_toggle') || has('prefill')"
@@ -275,13 +139,8 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
 
     <section class="flex flex-col gap-3">
       <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.advanced') }}</h3>
-      <UFormField
-        :label="t('builder.inspector.key')"
-        :description="t('builder.inspector.keyHint')"
-        :error="keyError ?? undefined"
-      >
-        <UInput v-model="keyDraft" class="w-full font-mono" @blur="saveKey" @keydown.enter="saveKey" />
-      </UFormField>
+      <AppCopyField :label="t('builder.inspector.key')" :value="field.key" monospace />
+      <p class="-mt-1 text-xs text-muted">{{ t('builder.inspector.keyHint') }}</p>
     </section>
   </div>
 </template>
