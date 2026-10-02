@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Forms that work everywhere"
+  },
+  "common": {
+    "loading": "Loading…",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "back": "Back",
+    "search": "Search",
+    "language": "Language",
+    "goHome": "Go home"
+  },
+  "placeholder": {
+    "title": "Coming soon",
+    "description": "This section is being built."
+  },
+  "forms": {
+    "title": "Forms",
+    "description": "Create, design and share your forms."
+  }
+}

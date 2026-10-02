@@ -100,10 +100,20 @@ Live preview on the right, controls on the left in collapsible groups: Layout ·
 
 DataView with dynamic columns from the form schema; filters per field type; date range; status/tags; single response slide-over with keyboard next/prev (`J`/`K`); export dialog (XLSX/CSV/PDF, selected/all/filtered) with job progress and download.
 
-## 10. Accessibility
+## 10. Languages (i18n)
+
+- `@nuxtjs/i18n`, strategy `no_prefix` (URLs stay the same in every language). Choice stored in the `formalie_locale` cookie; first visit uses the browser language, fallback English.
+- 20 languages: English, Français, Español, Português (BR), Deutsch, Italiano, Nederlands, Polski, Русский, Українська, Türkçe, العربية (RTL), हिन्दी, বাংলা, 简体中文, 日本語, 한국어, Bahasa Indonesia, Tiếng Việt, Kiswahili. Defined once in `shared/utils/i18n/locales.ts`; messages in `i18n/locales/{code}.json`.
+- `<html lang dir>` follow the active language; Nuxt UI's own component strings use the matching `@nuxt/ui/locale` (English where Nuxt UI has none, e.g. Swahili).
+- Language switch (`AppLocaleSwitch`, searchable `USelectMenu`) in the navbar and on auth pages; later also a per-user default in Profile and a tenant default in Settings → Localisation.
+- Public forms (`/f/**`): the form's own language setting (`schema.settings.language`) wins; respondents can switch when the form owner enables several languages (F8).
+- RTL: logical Tailwind utilities only (`ms-/me-/ps-/pe-/start-/end-`).
+- Dates, numbers, currency via `Intl` with the active locale and tenant timezone/currency.
+
+## 11. Accessibility
 
 WCAG 2.2 AA target: labels on every input, aria-live for toasts and async status, focus trapping in overlays (Nuxt UI does this), sufficient contrast in both themes, reduced-motion respected.
 
-## 11. Performance
+## 12. Performance
 
 Lazy-load heavy routes (builder, designer, analytics charts); `useAsyncData` with stable keys wrapping `useApi` calls (never raw `useFetch`); keep payloads paginated; virtualise very long tables and builder canvases.

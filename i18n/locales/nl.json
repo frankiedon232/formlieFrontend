@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Formulieren die overal werken"
+  },
+  "common": {
+    "loading": "Laden…",
+    "retry": "Opnieuw proberen",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "close": "Sluiten",
+    "back": "Terug",
+    "search": "Zoeken",
+    "language": "Taal",
+    "goHome": "Naar home"
+  },
+  "placeholder": {
+    "title": "Binnenkort beschikbaar",
+    "description": "Dit onderdeel wordt gebouwd."
+  },
+  "forms": {
+    "title": "Formulieren",
+    "description": "Maak, ontwerp en deel je formulieren."
+  }
+}

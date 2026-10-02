@@ -1,21 +1,29 @@
 # Frontend Roadmap — formalieFrontend
 
-Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop), keyboard check, light/dark check, loading/empty/error states present.
+Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop), keyboard check, light/dark check, RTL check (Arabic), loading/empty/error states present, all new strings in every locale. Commit + push after each verified milestone.
+
+## Progress log
+
+| Date       | Phase | Milestone                                                                      |
+| ---------- | ----- | ------------------------------------------------------------------------------ |
+| 2026-10-02 | F0    | Foundation: config, i18n (20 languages), mock API with real envelope, tooling. |
 
 ## F0 — Foundation
 
-- [ ] Fix dev env per `02-DEV-ENVIRONMENT.md` (wildcard cert, `*.formalie.dev` hosts, `vite.server.allowedHosts`, `/api` proxy with `X-Forwarded-Host`, `NODE_EXTRA_CA_CERTS`).
-- [ ] `main.css` (`@import "tailwindcss"; @import "@nuxt/ui";` + theme tokens), `app.config.ts` colours, fonts.
-- [ ] `app.vue` with `UApp`, `NuxtLoadingIndicator`, layouts.
-- [ ] `routeRules`: portal client-rendered, `/f/**` and `/s/**` SSR; security headers.
-- [ ] runtimeConfig: `public.apiBase`, `public.apiMock`, `public.rootDomain` (`formalie.dev`), `public.manageSubdomain` (`manage`).
-- [ ] Mock API scaffold in `server/mock/` following `API-CONTRACT.md`.
-- [ ] ESLint (`@nuxt/eslint`), TypeScript strict, Prettier.
+- [x] Fix dev env per `02-DEV-ENVIRONMENT.md` (wildcard cert, `*.formalie.dev` hosts, `vite.server.allowedHosts`, `/api` proxy with `X-Forwarded-Host`, `NODE_EXTRA_CA_CERTS`). _Repo side done (allowedHosts, proxy, `.env.example`); hosts + wildcard cert are on the machine._
+- [x] `main.css` (`@import "tailwindcss"; @import "@nuxt/ui";` + theme tokens), `app.config.ts` colours (primary indigo, neutral zinc), fonts (Inter via `@nuxt/fonts`).
+- [x] `app.vue` with `UApp` (Nuxt UI locale follows the app language), `NuxtLoadingIndicator`, layouts `default` · `auth` · `public` · `blank`.
+- [x] `routeRules`: portal client-rendered, `/f/**` and `/s/**` SSR; security headers (HSTS, nosniff, Referrer-Policy, Permissions-Policy, COOP, X-Frame-Options; CSP in production).
+- [x] runtimeConfig: `public.apiBase`, `public.apiMock`, `public.rootDomain` (`formalie.dev`), `public.manageSubdomain` (`manage`); server-only `apiProxyTarget`.
+- [x] Mock API scaffold in `server/mock/` following `API-CONTRACT.md`: real ECDH handshake, envelope checks (expiry, replay, integrity, method/path binding), CSRF, `/health`, `/crypto/handshake`, `/auth/csrf`, `paginate()` helper.
+- [x] ESLint (`@nuxt/eslint`, rule blocking `.vue`/composable imports), TypeScript strict, Prettier, Vitest (envelope unit tests).
+- [x] i18n (`@nuxtjs/i18n`): 20 languages — en, fr, es, pt, de, it, nl, pl, ru, uk, tr, ar (RTL), hi, bn, zh-CN, ja, ko, id, vi, sw; cookie-remembered, browser detection, `AppLocaleSwitch`.
 
 ## F1 — App shell
 
 - [ ] `layouts/default.vue` with `UDashboardGroup`, sidebar rail + menu, collapse, hover-peek when collapsed, mobile drawer.
-- [ ] Navbar: breadcrumbs (route-meta driven, all clickable), command palette, theme switch, notifications placeholder, user menu.
+- [ ] Navbar: breadcrumbs (route-meta driven, all clickable), command palette, theme switch, language switch, notifications placeholder, user menu.
+- [ ] Draggable modal pattern (`useDraggableModal` + keyboard move) used by every `UModal`.
 - [ ] Error page (`error.vue`), 404, workspace-not-found.
 - [ ] Global shortcuts and shortcut help modal (`?`).
 
@@ -23,7 +31,8 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 
 - [ ] `useCrypto` (ECDH P-256 handshake, HKDF, AES-GCM envelope) + unit tests against backend test vectors (once available).
 - [ ] `useApi` (envelope, bearer, CSRF, refresh, re-handshake, abort, try/catch/finally) and `useErrorHandler` with error-code map.
-- [ ] `useBusy`, `useBreadcrumbs`, toasts pattern.
+- [ ] `useBusy`, `useBreadcrumbs`, toasts pattern; translated error messages (`errors.FRM-*` keys in all locales).
+- [ ] Locale-aware formatters (`utils/format/`: dates, numbers, currency, relative time).
 - [ ] `DataView` (table/grid switch, FilterBar, DateRangePicker, pagination, URL sync, skeletons, empty/error), `PageHeader`, `ConfirmDialog`, `EmptyState`, `StatusBadge`, `CopyField`.
 
 ## F3 — Tenant detection + auth

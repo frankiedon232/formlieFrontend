@@ -20,7 +20,7 @@ Celery workers (separate services per queue): exports, destinations, webhooks, e
 analytics aggregation, logging pipeline, file processing, scheduled jobs (Celery Beat)
 ```
 
-**Same-origin API:** in production the API is served at `https://{sub}.formalie.com/api/...` or seperate API URL like `https://api.formalie.com/....` through Nginx, so browser requests are same-origin (simpler CSRF/cookies, no CORS). In development, Nuxt proxies `/api` to `https://formalie.dev:3550` (see 02-DEV-ENVIRONMENT.md).
+**Same-origin API:** in production the API is served at `https://{sub}.formalie.com/api/...` or seperate API URL like `https://api.formalie.com/....` through Nginx, so browser requests are same-origin (simpler CSRF/cookies, no CORS). In development, Nuxt proxies `/api` to `https://formalie.dev:5004` (see 02-DEV-ENVIRONMENT.md).
 
 ## Service style
 

@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Formularios que funcionan en todas partes"
+  },
+  "common": {
+    "loading": "Cargando…",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "search": "Buscar",
+    "language": "Idioma",
+    "goHome": "Ir al inicio"
+  },
+  "placeholder": {
+    "title": "Próximamente",
+    "description": "Esta sección está en construcción."
+  },
+  "forms": {
+    "title": "Formularios",
+    "description": "Crea, diseña y comparte tus formularios."
+  }
+}

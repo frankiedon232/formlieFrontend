@@ -1,8 +1,8 @@
-# 00 — Formly Product Overview
+# 00 — Formalie Product Overview
 
 ## One-liner
 
-A drag-and-drop form builder with ready templates, full visual design control, versioned draft → publish workflow, sharing/embedding, short links, responses stored in Formly or sent to the customer's own database, Excel export and analytics — multi-tenant, secure enough for a large enterprise, yet simple to use.
+A drag-and-drop form builder with ready templates, full visual design control, versioned draft → publish workflow, sharing/embedding, short links, responses stored in Formalie or sent to the customer's own database, Excel export and analytics — multi-tenant, secure enough for a large enterprise, yet simple to use.
 
 ## Core modules
 
@@ -40,7 +40,7 @@ System templates (platform-wide) + organisation templates. Categories: questionn
 
 ### 6. Responses
 
-- Destinations: Formly database (default), customer's own database (Postgres/MySQL/SQL Server via Celery writer), webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
+- Destinations: Formalie database (default), customer's own database (Postgres/MySQL/SQL Server via Celery writer), webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
 - Response views: table and grid (switchable), filters, search, date ranges, single response view, edit history, notes/tags/status (e.g. new, reviewed, approved), bulk actions.
 - Export: Excel (.xlsx), CSV, PDF (single and bulk) via background jobs.
 
@@ -74,4 +74,4 @@ Plans and pricing live on the product website; upgrade/renewal also available in
 
 ## Non-negotiables (summary)
 
-Clean, mobile-first Nuxt UI interface · keyboard navigable · theme switch · loading states everywhere · table/grid switch with filters and pagination · strict tenant isolation (Postgres RLS) · app-layer encryption of all API traffic on top of TLS · Fernet bearer tokens with expiry and rotation · OTP on every login · CSRF tokens · rate limiting · full request/audit/error logging with geo data · soft delete everywhere · UUIDs everywhere externally.
+Clean, mobile-first Nuxt UI interface · keyboard navigable · theme switch · 20+ languages incl. RTL · loading states everywhere · table/grid switch with filters and pagination · strict tenant isolation (Postgres RLS) · app-layer encryption of all API traffic on top of TLS · Fernet bearer tokens with expiry and rotation · OTP on every login · CSRF tokens · rate limiting · full request/audit/error logging with geo data · soft delete everywhere · UUIDs everywhere externally.

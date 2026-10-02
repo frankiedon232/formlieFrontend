@@ -51,6 +51,17 @@ Add more lines as new test tenants are created.
 
 Docker Desktop with compose services: PostgreSQL 16 (primary + 1 replica), PgBouncer, Redis 7, RabbitMQ 3 (management UI), MinIO (S3), MailHog/Mailpit (catch OTP emails). Ports to be fixed in `docker-compose.dev.yml`.
 
+## Project env (`.env`, copy from `.env.example`)
+
+| Variable                           | Purpose                                                                                   |
+| ---------------------------------- | ----------------------------------------------------------------------------------------- |
+| `NUXT_PUBLIC_API_MOCK`             | `true` = in-repo mock API, `false` = proxy to FastAPI. Restart dev after changing.        |
+| `NUXT_API_PROXY_TARGET`            | Backend for the dev proxy (default `https://formalie.dev:5004`).                          |
+| `DEV_HTTPS_CERT` / `DEV_HTTPS_KEY` | Optional: mkcert files so plain `pnpm dev` serves HTTPS on :2202.                         |
+| `NODE_EXTRA_CA_CERTS`              | mkcert `rootCA.pem` (`mkcert -CAROOT`), needed when the proxy talks HTTPS to the backend. |
+
+Quality checks: `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`. These regenerate `.nuxt`; restart a running dev server afterwards.
+
 ## Production equivalent
 
 Cloudflare wildcard DNS `*.formalie.com` → Nginx → Nuxt + FastAPI. Same subdomain logic as dev.

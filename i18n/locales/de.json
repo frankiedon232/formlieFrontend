@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Formulare, die überall funktionieren"
+  },
+  "common": {
+    "loading": "Wird geladen…",
+    "retry": "Erneut versuchen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "close": "Schließen",
+    "back": "Zurück",
+    "search": "Suchen",
+    "language": "Sprache",
+    "goHome": "Zur Startseite"
+  },
+  "placeholder": {
+    "title": "Demnächst verfügbar",
+    "description": "Dieser Bereich wird gerade erstellt."
+  },
+  "forms": {
+    "title": "Formulare",
+    "description": "Erstellen, gestalten und teilen Sie Ihre Formulare."
+  }
+}

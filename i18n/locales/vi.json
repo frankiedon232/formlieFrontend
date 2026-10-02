@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Biểu mẫu hoạt động ở mọi nơi"
+  },
+  "common": {
+    "loading": "Đang tải…",
+    "retry": "Thử lại",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "close": "Đóng",
+    "back": "Quay lại",
+    "search": "Tìm kiếm",
+    "language": "Ngôn ngữ",
+    "goHome": "Về trang chủ"
+  },
+  "placeholder": {
+    "title": "Sắp ra mắt",
+    "description": "Mục này đang được xây dựng."
+  },
+  "forms": {
+    "title": "Biểu mẫu",
+    "description": "Tạo, thiết kế và chia sẻ biểu mẫu của bạn."
+  }
+}

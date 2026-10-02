@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "نماذج تعمل في كل مكان"
+  },
+  "common": {
+    "loading": "جارٍ التحميل…",
+    "retry": "حاول مجددًا",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "search": "بحث",
+    "language": "اللغة",
+    "goHome": "الصفحة الرئيسية"
+  },
+  "placeholder": {
+    "title": "قريبًا",
+    "description": "هذا القسم قيد الإنشاء."
+  },
+  "forms": {
+    "title": "النماذج",
+    "description": "أنشئ نماذجك وصمّمها وشاركها."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Moduli che funzionano ovunque"
+  },
+  "common": {
+    "loading": "Caricamento…",
+    "retry": "Riprova",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "close": "Chiudi",
+    "back": "Indietro",
+    "search": "Cerca",
+    "language": "Lingua",
+    "goHome": "Vai alla home"
+  },
+  "placeholder": {
+    "title": "Presto disponibile",
+    "description": "Questa sezione è in costruzione."
+  },
+  "forms": {
+    "title": "Moduli",
+    "description": "Crea, progetta e condividi i tuoi moduli."
+  }
+}

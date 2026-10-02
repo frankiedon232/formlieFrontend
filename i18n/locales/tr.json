@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Her yerde çalışan formlar"
+  },
+  "common": {
+    "loading": "Yükleniyor…",
+    "retry": "Tekrar dene",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "close": "Kapat",
+    "back": "Geri",
+    "search": "Ara",
+    "language": "Dil",
+    "goHome": "Ana sayfaya git"
+  },
+  "placeholder": {
+    "title": "Çok yakında",
+    "description": "Bu bölüm hazırlanıyor."
+  },
+  "forms": {
+    "title": "Formlar",
+    "description": "Formlarınızı oluşturun, tasarlayın ve paylaşın."
+  }
+}

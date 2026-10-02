@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "随处可用的表单"
+  },
+  "common": {
+    "loading": "加载中…",
+    "retry": "重试",
+    "cancel": "取消",
+    "save": "保存",
+    "close": "关闭",
+    "back": "返回",
+    "search": "搜索",
+    "language": "语言",
+    "goHome": "返回首页"
+  },
+  "placeholder": {
+    "title": "即将推出",
+    "description": "此部分正在建设中。"
+  },
+  "forms": {
+    "title": "表单",
+    "description": "创建、设计并分享您的表单。"
+  }
+}

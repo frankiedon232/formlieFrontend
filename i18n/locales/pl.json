@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Formularze, które działają wszędzie"
+  },
+  "common": {
+    "loading": "Ładowanie…",
+    "retry": "Spróbuj ponownie",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "close": "Zamknij",
+    "back": "Wstecz",
+    "search": "Szukaj",
+    "language": "Język",
+    "goHome": "Strona główna"
+  },
+  "placeholder": {
+    "title": "Wkrótce",
+    "description": "Ta sekcja jest w budowie."
+  },
+  "forms": {
+    "title": "Formularze",
+    "description": "Twórz, projektuj i udostępniaj formularze."
+  }
+}

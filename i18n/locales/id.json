@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Formulir yang berfungsi di mana saja"
+  },
+  "common": {
+    "loading": "Memuat…",
+    "retry": "Coba lagi",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "close": "Tutup",
+    "back": "Kembali",
+    "search": "Cari",
+    "language": "Bahasa",
+    "goHome": "Ke beranda"
+  },
+  "placeholder": {
+    "title": "Segera hadir",
+    "description": "Bagian ini sedang dibangun."
+  },
+  "forms": {
+    "title": "Formulir",
+    "description": "Buat, rancang, dan bagikan formulir Anda."
+  }
+}

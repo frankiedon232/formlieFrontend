@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Formalie",
+    "tagline": "Fomu zinazofanya kazi kila mahali"
+  },
+  "common": {
+    "loading": "Inapakia…",
+    "retry": "Jaribu tena",
+    "cancel": "Ghairi",
+    "save": "Hifadhi",
+    "close": "Funga",
+    "back": "Rudi",
+    "search": "Tafuta",
+    "language": "Lugha",
+    "goHome": "Nenda mwanzo"
+  },
+  "placeholder": {
+    "title": "Inakuja hivi karibuni",
+    "description": "Sehemu hii inajengwa."
+  },
+  "forms": {
+    "title": "Fomu",
+    "description": "Unda, buni na shiriki fomu zako."
+  }
+}

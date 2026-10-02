@@ -1,75 +1,24 @@
-# Nuxt Minimal Starter
+# Formalie — portal frontend
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Multi-tenant form builder portal. Nuxt 4 · Nuxt UI 4 · Tailwind 4 · TypeScript · pnpm.
 
-## Setup
+Start with [CLAUDE.md](CLAUDE.md) (rules) and [docs/FRONTEND-ROADMAP.md](docs/FRONTEND-ROADMAP.md) (progress).
 
-Make sure to install dependencies:
+## Run
 
 ```bash
-# npm
-npm install
-
-# pnpm
+cp .env.example .env
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formaliekey.pem
 ```
 
-## Development Server
+Open `https://manage.formalie.dev:2202/` (default entry) or `https://{tenant}.formalie.dev:2202/`.
+Hosts file, wildcard certificate and backend setup: [docs/02-DEV-ENVIRONMENT.md](docs/02-DEV-ENVIRONMENT.md).
 
-Start the development server on `http://localhost:3000`:
+## Checks
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm typecheck && pnpm lint && pnpm test
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+`NUXT_PUBLIC_API_MOCK=true` serves the mock API from `server/mock` (same encrypted protocol as the real backend).
