@@ -17,7 +17,8 @@ const devices = computed(() => [
   { value: 'tablet', label: t('builder.preview.tablet'), icon: 'i-lucide-tablet' },
   { value: 'phone', label: t('builder.preview.phone'), icon: 'i-lucide-smartphone' },
 ])
-const WIDTH = { desktop: 'max-w-3xl', tablet: 'max-w-[768px]', phone: 'max-w-[390px]' }
+// Desktop fills the preview area; tablet and phone keep real device widths.
+const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[390px]' }
 // Remount on open so the preview always starts from page 1 with the latest draft.
 const key = ref(0)
 watch(open, value => {
@@ -30,7 +31,10 @@ watch(open, value => {
     v-model:open="open"
     :title="title ?? t('builder.preview.title')"
     :description="t('builder.preview.desc')"
-    :ui="{ content: 'w-full sm:max-w-5xl', body: 'bg-elevated/40' }"
+    :ui="{
+      content: device === 'desktop' ? 'w-full sm:max-w-[calc(100vw-3rem)]' : 'w-full sm:max-w-5xl',
+      body: 'bg-elevated/40',
+    }"
   >
     <template #actions>
       <UTabs
