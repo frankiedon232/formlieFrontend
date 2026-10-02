@@ -137,7 +137,8 @@ export const passwordMatches = (user: MockUser, password: string) =>
     users: [],
   })
   for (const tenant of stored.tenants)
-    if (!MOCK_TENANTS.some(t => t.id === tenant.id || t.subdomain === tenant.subdomain)) MOCK_TENANTS.push(tenant)
+    if (!MOCK_TENANTS.some(t => t.id === tenant.id || t.subdomain === tenant.subdomain))
+      MOCK_TENANTS.push(tenant)
   for (const user of stored.users) if (!MOCK_USERS.some(u => u.id === user.id)) MOCK_USERS.push(user)
 }
 

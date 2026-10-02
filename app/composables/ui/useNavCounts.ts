@@ -20,7 +20,7 @@ export function useNavCounts() {
     if (!force && Date.now() - lastLoaded < STALE_MS) return Promise.resolve()
     pending = (async () => {
       try {
-        counts.value = (await api.get<NavCounts>('/navigation/counts')).data
+        counts.value = (await api.get<NavCounts>('/navigation/counts', undefined, { background: true })).data
         lastLoaded = Date.now()
       } catch {
         // Badges are a nice-to-have: keep the last numbers (or none) and try again on the next navigation.

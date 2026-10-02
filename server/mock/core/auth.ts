@@ -196,7 +196,13 @@ function persistSessions() {
     return {
       sessions: [...sessions.values()]
         .filter(s => !s.revoked && now - s.lastActiveAt < IDLE_TIMEOUT_MS)
-        .map(s => ({ id: s.id, userId: s.user.id, tenantId: s.tenant.id, revoked: s.revoked, lastActiveAt: s.lastActiveAt })),
+        .map(s => ({
+          id: s.id,
+          userId: s.user.id,
+          tenantId: s.tenant.id,
+          revoked: s.revoked,
+          lastActiveAt: s.lastActiveAt,
+        })),
       access: [...accessTokens].filter(([, e]) => e.expiresAt > now && sessions.has(e.sid)),
       // Used tokens are kept too, so reuse is still detected after a reload.
       refresh: [...refreshTokens].filter(([, e]) => e.expiresAt > now && sessions.has(e.sid)),

@@ -45,6 +45,8 @@ export const ERROR_CODES = {
   'FRM-FORM-1004': { status: 422, message: 'Form cannot be published: fix the listed issues.' },
   'FRM-FORM-1005': { status: 403, message: 'Password required.' },
   'FRM-FORM-1006': { status: 409, message: 'Slug already in use.' },
+  'FRM-FORM-1007': { status: 409, message: "This isn't possible while the form is in its current state." },
+  'FRM-FORM-1008': { status: 409, message: 'A folder with this name already exists.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
   'FRM-FILE-1001': { status: 400, message: 'File type not allowed.' },

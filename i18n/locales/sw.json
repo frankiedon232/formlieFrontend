@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Kipengele hiki hakimo kwenye mpango wako.",
     "FRM-NET-1000": "Haiwezi kufikia seva. Kagua muunganisho wako.",
     "FRM-NET-1001": "Ombi limeghairiwa.",
-    "FRM-NET-1002": "Jibu lisilotarajiwa kutoka kwa seva."
+    "FRM-NET-1002": "Jibu lisilotarajiwa kutoka kwa seva.",
+    "FRM-FORM-1007": "Hili haliwezekani katika hali ya sasa ya fomu. Onyesha upya kisha ujaribu tena.",
+    "FRM-FORM-1008": "Tayari kuna folda yenye jina hili."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -433,7 +435,8 @@
       "destination": "Mahali pa kupeleka",
       "webhook": "Webhook",
       "api_key": "Ufunguo wa API",
-      "export": "Uhamishaji"
+      "export": "Uhamishaji",
+      "folder": "Folda"
     },
     "field": {
       "name": "Jina",
@@ -454,7 +457,8 @@
       "currency": "Sarafu",
       "date_format": "Muundo wa tarehe",
       "number_format": "Muundo wa namba",
-      "week_start": "Siku ya kwanza ya wiki"
+      "week_start": "Siku ya kwanza ya wiki",
+      "tags": "Lebo"
     },
     "action": {
       "auth_login_succeeded": "Ameingia",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Ufunguo wa API umeundwa",
       "integrations_api_key_revoked": "Ufunguo wa API umebatilishwa",
       "audit_exported": "Kumbukumbu za ukaguzi zimehamishwa",
-      "workspace_setup_completed": "Kuweka eneo la kazi kumekamilika"
+      "workspace_setup_completed": "Kuweka eneo la kazi kumekamilika",
+      "forms_unpublished": "Uchapishaji wa fomu umeondolewa",
+      "forms_reopened": "Fomu imefunguliwa tena",
+      "forms_unarchived": "Fomu imetolewa kwenye kumbukumbu",
+      "forms_purged": "Fomu imefutwa kabisa",
+      "forms_folder_created": "Folda imeundwa",
+      "forms_folder_renamed": "Folda imebadilishwa jina",
+      "forms_folder_deleted": "Folda imefutwa"
     },
     "detail": {
       "who": "Nani",

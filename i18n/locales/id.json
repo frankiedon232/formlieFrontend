@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Fitur ini tidak termasuk dalam paket Anda.",
     "FRM-NET-1000": "Tidak dapat menjangkau server. Periksa koneksi Anda.",
     "FRM-NET-1001": "Permintaan dibatalkan.",
-    "FRM-NET-1002": "Respons tak terduga dari server."
+    "FRM-NET-1002": "Respons tak terduga dari server.",
+    "FRM-FORM-1007": "Tidak bisa dilakukan pada status formulir saat ini. Muat ulang lalu coba lagi.",
+    "FRM-FORM-1008": "Folder dengan nama ini sudah ada."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -433,7 +435,8 @@
       "destination": "Tujuan",
       "webhook": "Webhook",
       "api_key": "Kunci API",
-      "export": "Ekspor"
+      "export": "Ekspor",
+      "folder": "Folder"
     },
     "field": {
       "name": "Nama",
@@ -454,7 +457,8 @@
       "currency": "Mata uang",
       "date_format": "Format tanggal",
       "number_format": "Format angka",
-      "week_start": "Hari pertama dalam minggu"
+      "week_start": "Hari pertama dalam minggu",
+      "tags": "Tag"
     },
     "action": {
       "auth_login_succeeded": "Masuk",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Kunci API dibuat",
       "integrations_api_key_revoked": "Kunci API dicabut",
       "audit_exported": "Jejak audit diekspor",
-      "workspace_setup_completed": "Penyiapan ruang kerja selesai"
+      "workspace_setup_completed": "Penyiapan ruang kerja selesai",
+      "forms_unpublished": "Publikasi formulir dibatalkan",
+      "forms_reopened": "Formulir dibuka kembali",
+      "forms_unarchived": "Formulir dikeluarkan dari arsip",
+      "forms_purged": "Formulir dihapus permanen",
+      "forms_folder_created": "Folder dibuat",
+      "forms_folder_renamed": "Folder diganti nama",
+      "forms_folder_deleted": "Folder dihapus"
     },
     "detail": {
       "who": "Siapa",

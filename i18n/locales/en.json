@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "This feature is not included in your plan.",
     "FRM-NET-1000": "Can't reach the server. Check your connection.",
     "FRM-NET-1001": "Request cancelled.",
-    "FRM-NET-1002": "Unexpected response from the server."
+    "FRM-NET-1002": "Unexpected response from the server.",
+    "FRM-FORM-1007": "That isn't possible while the form is in its current state. Refresh and try again.",
+    "FRM-FORM-1008": "A folder with this name already exists."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -433,7 +435,8 @@
       "destination": "Destination",
       "webhook": "Webhook",
       "api_key": "API key",
-      "export": "Export"
+      "export": "Export",
+      "folder": "Folder"
     },
     "field": {
       "name": "Name",
@@ -454,7 +457,8 @@
       "currency": "Currency",
       "date_format": "Date format",
       "number_format": "Number format",
-      "week_start": "First day of the week"
+      "week_start": "First day of the week",
+      "tags": "Tags"
     },
     "action": {
       "auth_login_succeeded": "Signed in",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "API key created",
       "integrations_api_key_revoked": "API key revoked",
       "audit_exported": "Audit trail exported",
-      "workspace_setup_completed": "Workspace setup finished"
+      "workspace_setup_completed": "Workspace setup finished",
+      "forms_unpublished": "Form unpublished",
+      "forms_reopened": "Form reopened",
+      "forms_unarchived": "Form unarchived",
+      "forms_purged": "Form deleted permanently",
+      "forms_folder_created": "Folder created",
+      "forms_folder_renamed": "Folder renamed",
+      "forms_folder_deleted": "Folder deleted"
     },
     "detail": {
       "who": "Who",

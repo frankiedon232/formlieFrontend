@@ -57,6 +57,8 @@ export interface RequestOptions {
   signal?: AbortSignal
   /** Internal: used by the refresh call itself so it can't loop. */
   skipAuthRefresh?: boolean
+  /** Polling / counters: don't drive the top progress bar (useApi). */
+  background?: boolean
 }
 
 interface SecureSession {

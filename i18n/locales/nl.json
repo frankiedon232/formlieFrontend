@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Deze functie zit niet in je abonnement.",
     "FRM-NET-1000": "Kan de server niet bereiken. Controleer je verbinding.",
     "FRM-NET-1001": "Verzoek geannuleerd.",
-    "FRM-NET-1002": "Onverwacht antwoord van de server."
+    "FRM-NET-1002": "Onverwacht antwoord van de server.",
+    "FRM-FORM-1007": "Dat kan niet in de huidige status van het formulier. Vernieuw en probeer het opnieuw.",
+    "FRM-FORM-1008": "Er bestaat al een map met deze naam."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -433,7 +435,8 @@
       "destination": "Bestemming",
       "webhook": "Webhook",
       "api_key": "API-sleutel",
-      "export": "Export"
+      "export": "Export",
+      "folder": "Map"
     },
     "field": {
       "name": "Naam",
@@ -454,7 +457,8 @@
       "currency": "Valuta",
       "date_format": "Datumnotatie",
       "number_format": "Getalnotatie",
-      "week_start": "Eerste dag van de week"
+      "week_start": "Eerste dag van de week",
+      "tags": "Tags"
     },
     "action": {
       "auth_login_succeeded": "Ingelogd",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "API-sleutel aangemaakt",
       "integrations_api_key_revoked": "API-sleutel ingetrokken",
       "audit_exported": "Audittrail geëxporteerd",
-      "workspace_setup_completed": "Werkruimte ingesteld"
+      "workspace_setup_completed": "Werkruimte ingesteld",
+      "forms_unpublished": "Publicatie ingetrokken",
+      "forms_reopened": "Formulier heropend",
+      "forms_unarchived": "Formulier uit archief gehaald",
+      "forms_purged": "Formulier definitief verwijderd",
+      "forms_folder_created": "Map aangemaakt",
+      "forms_folder_renamed": "Map hernoemd",
+      "forms_folder_deleted": "Map verwijderd"
     },
     "detail": {
       "who": "Wie",

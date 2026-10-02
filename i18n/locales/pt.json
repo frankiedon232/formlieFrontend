@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Este recurso não está incluído no seu plano.",
     "FRM-NET-1000": "Não foi possível acessar o servidor. Verifique sua conexão.",
     "FRM-NET-1001": "Solicitação cancelada.",
-    "FRM-NET-1002": "Resposta inesperada do servidor."
+    "FRM-NET-1002": "Resposta inesperada do servidor.",
+    "FRM-FORM-1007": "Isso não é possível no estado atual do formulário. Atualize e tente de novo.",
+    "FRM-FORM-1008": "Já existe uma pasta com este nome."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -433,7 +435,8 @@
       "destination": "Destino",
       "webhook": "Webhook",
       "api_key": "Chave de API",
-      "export": "Exportação"
+      "export": "Exportação",
+      "folder": "Pasta"
     },
     "field": {
       "name": "Nome",
@@ -454,7 +457,8 @@
       "currency": "Moeda",
       "date_format": "Formato de data",
       "number_format": "Formato de número",
-      "week_start": "Primeiro dia da semana"
+      "week_start": "Primeiro dia da semana",
+      "tags": "Tags"
     },
     "action": {
       "auth_login_succeeded": "Entrou",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Chave de API criada",
       "integrations_api_key_revoked": "Chave de API revogada",
       "audit_exported": "Trilha de auditoria exportada",
-      "workspace_setup_completed": "Configuração do espaço concluída"
+      "workspace_setup_completed": "Configuração do espaço concluída",
+      "forms_unpublished": "Formulário despublicado",
+      "forms_reopened": "Formulário reaberto",
+      "forms_unarchived": "Formulário desarquivado",
+      "forms_purged": "Formulário excluído definitivamente",
+      "forms_folder_created": "Pasta criada",
+      "forms_folder_renamed": "Pasta renomeada",
+      "forms_folder_deleted": "Pasta excluída"
     },
     "detail": {
       "who": "Quem",

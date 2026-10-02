@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Tính năng này không có trong gói của bạn.",
     "FRM-NET-1000": "Không thể kết nối máy chủ. Hãy kiểm tra kết nối.",
     "FRM-NET-1001": "Đã hủy yêu cầu.",
-    "FRM-NET-1002": "Phản hồi bất thường từ máy chủ."
+    "FRM-NET-1002": "Phản hồi bất thường từ máy chủ.",
+    "FRM-FORM-1007": "Không thể thực hiện ở trạng thái hiện tại của biểu mẫu. Hãy tải lại và thử lại.",
+    "FRM-FORM-1008": "Đã có thư mục cùng tên."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -433,7 +435,8 @@
       "destination": "Đích đến",
       "webhook": "Webhook",
       "api_key": "Khóa API",
-      "export": "Bản xuất"
+      "export": "Bản xuất",
+      "folder": "Thư mục"
     },
     "field": {
       "name": "Tên",
@@ -454,7 +457,8 @@
       "currency": "Tiền tệ",
       "date_format": "Định dạng ngày",
       "number_format": "Định dạng số",
-      "week_start": "Ngày đầu tuần"
+      "week_start": "Ngày đầu tuần",
+      "tags": "Thẻ"
     },
     "action": {
       "auth_login_succeeded": "Đã đăng nhập",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Đã tạo khóa API",
       "integrations_api_key_revoked": "Đã thu hồi khóa API",
       "audit_exported": "Đã xuất nhật ký kiểm tra",
-      "workspace_setup_completed": "Đã hoàn tất thiết lập không gian làm việc"
+      "workspace_setup_completed": "Đã hoàn tất thiết lập không gian làm việc",
+      "forms_unpublished": "Đã hủy xuất bản biểu mẫu",
+      "forms_reopened": "Đã mở lại biểu mẫu",
+      "forms_unarchived": "Đã bỏ lưu trữ biểu mẫu",
+      "forms_purged": "Đã xóa vĩnh viễn biểu mẫu",
+      "forms_folder_created": "Đã tạo thư mục",
+      "forms_folder_renamed": "Đã đổi tên thư mục",
+      "forms_folder_deleted": "Đã xóa thư mục"
     },
     "detail": {
       "who": "Ai",

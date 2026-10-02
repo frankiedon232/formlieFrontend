@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Cette fonctionnalité n'est pas incluse dans votre offre.",
     "FRM-NET-1000": "Impossible de joindre le serveur. Vérifiez votre connexion.",
     "FRM-NET-1001": "Requête annulée.",
-    "FRM-NET-1002": "Réponse inattendue du serveur."
+    "FRM-NET-1002": "Réponse inattendue du serveur.",
+    "FRM-FORM-1007": "Ce n’est pas possible dans l’état actuel du formulaire. Actualisez et réessayez.",
+    "FRM-FORM-1008": "Un dossier porte déjà ce nom."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -433,7 +435,8 @@
       "destination": "Destination",
       "webhook": "Webhook",
       "api_key": "Clé API",
-      "export": "Export"
+      "export": "Export",
+      "folder": "Dossier"
     },
     "field": {
       "name": "Nom",
@@ -454,7 +457,8 @@
       "currency": "Devise",
       "date_format": "Format de date",
       "number_format": "Format des nombres",
-      "week_start": "Premier jour de la semaine"
+      "week_start": "Premier jour de la semaine",
+      "tags": "Étiquettes"
     },
     "action": {
       "auth_login_succeeded": "Connexion",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Clé API créée",
       "integrations_api_key_revoked": "Clé API révoquée",
       "audit_exported": "Journal d’audit exporté",
-      "workspace_setup_completed": "Configuration de l’espace terminée"
+      "workspace_setup_completed": "Configuration de l’espace terminée",
+      "forms_unpublished": "Formulaire dépublié",
+      "forms_reopened": "Formulaire rouvert",
+      "forms_unarchived": "Formulaire désarchivé",
+      "forms_purged": "Formulaire supprimé définitivement",
+      "forms_folder_created": "Dossier créé",
+      "forms_folder_renamed": "Dossier renommé",
+      "forms_folder_deleted": "Dossier supprimé"
     },
     "detail": {
       "who": "Qui",

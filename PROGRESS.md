@@ -31,7 +31,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F18   | Dashboard                                         | ⬜     | 0%   |
 | F19   | Roles & access (last)                             | ⬜     | 0%   |
 
-**Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading, empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
+**Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars — CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
 ---
 
@@ -133,6 +133,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
   - ✅ Server pagination with page size; everything in the URL
 - ✅ Confirm dialog (`useConfirm()`), copy field, status badge
 - ✅ Forms list wired to the mock as the first DataView user
+- ✅ Branded first-load screen (`app/spa-loading-template.html`) — no blank page while the app starts
+- ✅ Top progress bar on every API call, not only navigation (`useApi`; polling uses `background: true`)
 
 ---
 
@@ -560,28 +562,29 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 Owner requests added during development, and where they landed.
 
-| Date       | Request                                                                          | Where       | Status |
-| ---------- | -------------------------------------------------------------------------------- | ----------- | ------ |
-| 2026-10-02 | Support many languages (at least 15) → 20 languages                              | F0          | ✅     |
-| 2026-10-02 | Organise files in sub-folders (max two levels)                                   | all         | ✅     |
-| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                          | F0          | ✅     |
-| 2026-10-02 | Match the design references exactly                                              | F1          | ✅     |
-| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design  | F1          | ✅     |
-| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                  | F1          | ✅     |
-| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                   | F1 / F2     | ✅     |
-| 2026-10-02 | Keep the table / grid / filters flow unchanged                                   | F2          | ✅     |
-| 2026-10-02 | "Wow" sign-in screen                                                             | F3          | ✅     |
-| 2026-10-02 | Test accounts in the README; realistic test people                               | F3          | ✅     |
-| 2026-10-02 | Global positioning (not one country); international sample data                  | F3 / all    | ✅     |
-| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                        | F3 / F12    | ✅     |
-| 2026-10-02 | Separate progress file with every task per phase                                 | PROGRESS.md | ✅     |
-| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace   | F3 / F12    | 🟡     |
-| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                        | F3          | ✅     |
-| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC | F12 / F18   | ✅     |
-| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                        | F4          | ✅     |
-| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome          | F3          | ✅     |
-| 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them   | F1          | ✅     |
-| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                        | F3 / F12    | ✅     |
+| Date       | Request                                                                               | Where       | Status |
+| ---------- | ------------------------------------------------------------------------------------- | ----------- | ------ |
+| 2026-10-02 | Support many languages (at least 15) → 20 languages                                   | F0          | ✅     |
+| 2026-10-02 | Organise files in sub-folders (max two levels)                                        | all         | ✅     |
+| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                               | F0          | ✅     |
+| 2026-10-02 | Match the design references exactly                                                   | F1          | ✅     |
+| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design       | F1          | ✅     |
+| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                       | F1          | ✅     |
+| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                        | F1 / F2     | ✅     |
+| 2026-10-02 | Keep the table / grid / filters flow unchanged                                        | F2          | ✅     |
+| 2026-10-02 | "Wow" sign-in screen                                                                  | F3          | ✅     |
+| 2026-10-02 | Test accounts in the README; realistic test people                                    | F3          | ✅     |
+| 2026-10-02 | Global positioning (not one country); international sample data                       | F3 / all    | ✅     |
+| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                             | F3 / F12    | ✅     |
+| 2026-10-02 | Separate progress file with every task per phase                                      | PROGRESS.md | ✅     |
+| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace        | F3 / F12    | 🟡     |
+| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                             | F3          | ✅     |
+| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC      | F12 / F18   | ✅     |
+| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                             | F4          | ✅     |
+| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome               | F3          | ✅     |
+| 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them        | F1          | ✅     |
+| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                             | F3 / F12    | ✅     |
+| 2026-10-02 | Loading feedback everywhere: page loading, progress, skeletons, top bar, busy buttons | F2 / all    | ✅     |
 
 ---
 
@@ -607,3 +610,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                         |
 | 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                      |
 | 2026-10-02 | F3    | Sessions: 60-minute sliding idle timeout (owner); mock sessions survive dev reloads (`.data/mock/`); unknown access token → silent refresh instead of sign-out. Verified: signed in → mock reloaded → still signed in.                                                                                                                 |
+| 2026-10-02 | F2    | Loading feedback (owner): branded first-load screen, top progress bar on every API call (not only navigation), busy rows for menu actions, rule 5 rewritten as a checklist and added to the definition of done.                                                                                                                        |

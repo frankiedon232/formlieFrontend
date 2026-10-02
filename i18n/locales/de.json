@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Diese Funktion ist in Ihrem Tarif nicht enthalten.",
     "FRM-NET-1000": "Server nicht erreichbar. Prüfen Sie Ihre Verbindung.",
     "FRM-NET-1001": "Anfrage abgebrochen.",
-    "FRM-NET-1002": "Unerwartete Antwort vom Server."
+    "FRM-NET-1002": "Unerwartete Antwort vom Server.",
+    "FRM-FORM-1007": "Das ist im aktuellen Zustand des Formulars nicht möglich. Aktualisieren und erneut versuchen.",
+    "FRM-FORM-1008": "Es gibt bereits einen Ordner mit diesem Namen."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -433,7 +435,8 @@
       "destination": "Ziel",
       "webhook": "Webhook",
       "api_key": "API-Schlüssel",
-      "export": "Export"
+      "export": "Export",
+      "folder": "Ordner"
     },
     "field": {
       "name": "Name",
@@ -454,7 +457,8 @@
       "currency": "Währung",
       "date_format": "Datumsformat",
       "number_format": "Zahlenformat",
-      "week_start": "Erster Wochentag"
+      "week_start": "Erster Wochentag",
+      "tags": "Tags"
     },
     "action": {
       "auth_login_succeeded": "Angemeldet",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "API-Schlüssel erstellt",
       "integrations_api_key_revoked": "API-Schlüssel widerrufen",
       "audit_exported": "Audit-Protokoll exportiert",
-      "workspace_setup_completed": "Einrichtung des Arbeitsbereichs abgeschlossen"
+      "workspace_setup_completed": "Einrichtung des Arbeitsbereichs abgeschlossen",
+      "forms_unpublished": "Veröffentlichung aufgehoben",
+      "forms_reopened": "Formular wieder geöffnet",
+      "forms_unarchived": "Formular aus dem Archiv geholt",
+      "forms_purged": "Formular endgültig gelöscht",
+      "forms_folder_created": "Ordner erstellt",
+      "forms_folder_renamed": "Ordner umbenannt",
+      "forms_folder_deleted": "Ordner gelöscht"
     },
     "detail": {
       "who": "Wer",

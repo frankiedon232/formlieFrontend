@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "이 기능은 현재 요금제에 포함되어 있지 않습니다.",
     "FRM-NET-1000": "서버에 연결할 수 없습니다. 연결 상태를 확인하세요.",
     "FRM-NET-1001": "요청이 취소되었습니다.",
-    "FRM-NET-1002": "서버에서 예상치 못한 응답을 받았습니다."
+    "FRM-NET-1002": "서버에서 예상치 못한 응답을 받았습니다.",
+    "FRM-FORM-1007": "양식의 현재 상태에서는 할 수 없습니다. 새로 고친 후 다시 시도하세요.",
+    "FRM-FORM-1008": "같은 이름의 폴더가 이미 있습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -433,7 +435,8 @@
       "destination": "대상",
       "webhook": "웹훅",
       "api_key": "API 키",
-      "export": "내보내기"
+      "export": "내보내기",
+      "folder": "폴더"
     },
     "field": {
       "name": "이름",
@@ -454,7 +457,8 @@
       "currency": "통화",
       "date_format": "날짜 형식",
       "number_format": "숫자 형식",
-      "week_start": "한 주의 시작 요일"
+      "week_start": "한 주의 시작 요일",
+      "tags": "태그"
     },
     "action": {
       "auth_login_succeeded": "로그인함",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "API 키 생성됨",
       "integrations_api_key_revoked": "API 키 취소됨",
       "audit_exported": "감사 로그 내보냄",
-      "workspace_setup_completed": "워크스페이스 설정 완료"
+      "workspace_setup_completed": "워크스페이스 설정 완료",
+      "forms_unpublished": "양식 게시 취소됨",
+      "forms_reopened": "양식 다시 열림",
+      "forms_unarchived": "양식 보관 해제됨",
+      "forms_purged": "양식 영구 삭제됨",
+      "forms_folder_created": "폴더 생성됨",
+      "forms_folder_renamed": "폴더 이름 변경됨",
+      "forms_folder_deleted": "폴더 삭제됨"
     },
     "detail": {
       "who": "누가",

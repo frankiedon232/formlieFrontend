@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Questa funzione non è inclusa nel tuo piano.",
     "FRM-NET-1000": "Impossibile raggiungere il server. Controlla la connessione.",
     "FRM-NET-1001": "Richiesta annullata.",
-    "FRM-NET-1002": "Risposta imprevista dal server."
+    "FRM-NET-1002": "Risposta imprevista dal server.",
+    "FRM-FORM-1007": "Non è possibile nello stato attuale del modulo. Aggiorna e riprova.",
+    "FRM-FORM-1008": "Esiste già una cartella con questo nome."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -433,7 +435,8 @@
       "destination": "Destinazione",
       "webhook": "Webhook",
       "api_key": "Chiave API",
-      "export": "Esportazione"
+      "export": "Esportazione",
+      "folder": "Cartella"
     },
     "field": {
       "name": "Nome",
@@ -454,7 +457,8 @@
       "currency": "Valuta",
       "date_format": "Formato data",
       "number_format": "Formato numeri",
-      "week_start": "Primo giorno della settimana"
+      "week_start": "Primo giorno della settimana",
+      "tags": "Tag"
     },
     "action": {
       "auth_login_succeeded": "Accesso effettuato",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Chiave API creata",
       "integrations_api_key_revoked": "Chiave API revocata",
       "audit_exported": "Registro di audit esportato",
-      "workspace_setup_completed": "Configurazione dello spazio completata"
+      "workspace_setup_completed": "Configurazione dello spazio completata",
+      "forms_unpublished": "Modulo non più pubblicato",
+      "forms_reopened": "Modulo riaperto",
+      "forms_unarchived": "Modulo tolto dall’archivio",
+      "forms_purged": "Modulo eliminato definitivamente",
+      "forms_folder_created": "Cartella creata",
+      "forms_folder_renamed": "Cartella rinominata",
+      "forms_folder_deleted": "Cartella eliminata"
     },
     "detail": {
       "who": "Chi",

@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "この機能はご利用のプランに含まれていません。",
     "FRM-NET-1000": "サーバーに接続できません。接続を確認してください。",
     "FRM-NET-1001": "リクエストはキャンセルされました。",
-    "FRM-NET-1002": "サーバーから予期しない応答がありました。"
+    "FRM-NET-1002": "サーバーから予期しない応答がありました。",
+    "FRM-FORM-1007": "フォームの現在の状態ではこの操作はできません。更新してもう一度お試しください。",
+    "FRM-FORM-1008": "同じ名前のフォルダーがすでにあります。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -433,7 +435,8 @@
       "destination": "送信先",
       "webhook": "Webhook",
       "api_key": "API キー",
-      "export": "エクスポート"
+      "export": "エクスポート",
+      "folder": "フォルダー"
     },
     "field": {
       "name": "名前",
@@ -454,7 +457,8 @@
       "currency": "通貨",
       "date_format": "日付の形式",
       "number_format": "数値の形式",
-      "week_start": "週の始まり"
+      "week_start": "週の始まり",
+      "tags": "タグ"
     },
     "action": {
       "auth_login_succeeded": "ログインしました",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "API キーを作成しました",
       "integrations_api_key_revoked": "API キーを取り消しました",
       "audit_exported": "監査ログをエクスポートしました",
-      "workspace_setup_completed": "ワークスペースの設定が完了しました"
+      "workspace_setup_completed": "ワークスペースの設定が完了しました",
+      "forms_unpublished": "フォームの公開を停止しました",
+      "forms_reopened": "フォームを再開しました",
+      "forms_unarchived": "フォームをアーカイブから戻しました",
+      "forms_purged": "フォームを完全に削除しました",
+      "forms_folder_created": "フォルダーを作成しました",
+      "forms_folder_renamed": "フォルダー名を変更しました",
+      "forms_folder_deleted": "フォルダーを削除しました"
     },
     "detail": {
       "who": "誰が",

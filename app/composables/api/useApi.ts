@@ -13,6 +13,24 @@ import type { ApiClient, HttpMethod, RequestOptions } from '~/utils/api/client'
  */
 let client: ApiClient | null = null
 
+// Every request (except background polling) drives the top progress bar, so saves, exports and
+// menu actions show activity just like page changes (CLAUDE.md rule 5). The bar throttles itself,
+// so very fast calls never flash.
+let inFlight = 0
+let nuxtApp: ReturnType<typeof useNuxtApp> | null = null
+
+// Looked up on every use: Nuxt recreates the shared indicator when its components remount.
+const indicator = () =>
+  nuxtApp?.runWithContext(() => useLoadingIndicator()) as ReturnType<typeof useLoadingIndicator> | undefined
+
+function track<T>(work: () => Promise<T>, background?: boolean): Promise<T> {
+  if (background || !nuxtApp) return work()
+  if (inFlight++ === 0) indicator()?.start()
+  return work().finally(() => {
+    if (--inFlight === 0) indicator()?.finish()
+  })
+}
+
 function getClient(): ApiClient {
   if (import.meta.server) {
     throw new Error('useApi() is client-only. Server-rendered pages use a server-side fetch.')
@@ -23,6 +41,7 @@ function getClient(): ApiClient {
   const session = useSession()
   const devTenant = useState<string | null>('tenant:dev', () => null)
   const router = useRouter()
+  nuxtApp = useNuxtApp()
 
   client = createApiClient({
     baseUrl: config.public.apiBase,
@@ -56,8 +75,10 @@ function getClient(): ApiClient {
 }
 
 export function useApi() {
-  const call = <T>(method: HttpMethod, path: string, options?: RequestOptions) =>
-    getClient().request<T>(method, path, options)
+  const call = <T>(method: HttpMethod, path: string, options?: RequestOptions) => {
+    const api = getClient()
+    return track(() => api.request<T>(method, path, options), options?.background)
+  }
 
   return {
     request: call,

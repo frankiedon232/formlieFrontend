@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "هذه الميزة غير متضمنة في خطتك.",
     "FRM-NET-1000": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك.",
     "FRM-NET-1001": "تم إلغاء الطلب.",
-    "FRM-NET-1002": "استجابة غير متوقعة من الخادم."
+    "FRM-NET-1002": "استجابة غير متوقعة من الخادم.",
+    "FRM-FORM-1007": "هذا غير ممكن في حالة النموذج الحالية. حدّث الصفحة وحاول مرة أخرى.",
+    "FRM-FORM-1008": "يوجد مجلد بهذا الاسم بالفعل."
   },
   "errorUi": {
     "reference": "المرجع: {id}",
@@ -433,7 +435,8 @@
       "destination": "وجهة",
       "webhook": "Webhook",
       "api_key": "مفتاح API",
-      "export": "تصدير"
+      "export": "تصدير",
+      "folder": "مجلد"
     },
     "field": {
       "name": "الاسم",
@@ -454,7 +457,8 @@
       "currency": "العملة",
       "date_format": "تنسيق التاريخ",
       "number_format": "تنسيق الأرقام",
-      "week_start": "أول أيام الأسبوع"
+      "week_start": "أول أيام الأسبوع",
+      "tags": "الوسوم"
     },
     "action": {
       "auth_login_succeeded": "سجّل الدخول",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "أُنشئ مفتاح API",
       "integrations_api_key_revoked": "أُلغي مفتاح API",
       "audit_exported": "صُدّر سجل التدقيق",
-      "workspace_setup_completed": "اكتمل إعداد مساحة العمل"
+      "workspace_setup_completed": "اكتمل إعداد مساحة العمل",
+      "forms_unpublished": "أُلغي نشر النموذج",
+      "forms_reopened": "أُعيد فتح النموذج",
+      "forms_unarchived": "أُخرج النموذج من الأرشيف",
+      "forms_purged": "حُذف النموذج نهائيًا",
+      "forms_folder_created": "أُنشئ مجلد",
+      "forms_folder_renamed": "أُعيدت تسمية المجلد",
+      "forms_folder_deleted": "حُذف المجلد"
     },
     "detail": {
       "who": "من",

@@ -32,7 +32,7 @@ function stop() {
 
 async function poll(id: string) {
   try {
-    const { data } = await api.get<ExportJob>(`/exports/${id}`)
+    const { data } = await api.get<ExportJob>(`/exports/${id}`, undefined, { background: true })
     job.value = data
     if (data.status === 'queued' || data.status === 'running') {
       timer = setTimeout(() => poll(id), 700)

@@ -9,6 +9,8 @@ export interface FormOwner {
 export interface FormFolder {
   id: string
   name: string
+  /** Forms in the folder (not counting trash). */
+  forms_count?: number
 }
 
 export interface FormSummary {
@@ -25,4 +27,26 @@ export interface FormSummary {
   completion_rate: number
   created_at: string
   updated_at: string
+  /** Optimistic locking: send it back on every change; a mismatch → FRM-GEN-1009. */
+  row_version: number
+  /** Set while the form is in Trash (kept 30 days, then removed for good). */
+  deleted_at: string | null
 }
+
+/** GET /forms/facets — options for the owner and tag filters. */
+export interface FormFacets {
+  owners: FormOwner[]
+  tags: string[]
+}
+
+export type FormLifecycleAction = 'unpublish' | 'close' | 'reopen' | 'archive' | 'unarchive' | 'restore'
+
+export type FormBulkAction = 'archive' | 'move' | 'delete' | 'restore' | 'purge'
+
+/** POST /forms/bulk → what happened to each selected form. */
+export interface FormBulkResult {
+  updated: number
+  failed: { id: string; code: string }[]
+}
+
+export const TRASH_RETENTION_DAYS = 30

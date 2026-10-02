@@ -1,0 +1,138 @@
+<!--
+  First-load screen for client-rendered portal pages (shown until the app has started: secure
+  handshake, workspace check, session restore). Plain HTML + inline CSS because Vue and Nuxt UI
+  are not loaded yet. Same monochrome look as the portal; follows the saved light / dark mode
+  (the color-mode script sets `html.dark` before this renders) and reduced motion.
+-->
+<div class="formalie-boot" role="status" aria-live="polite">
+  <div class="formalie-boot__bar"><span></span></div>
+  <div class="formalie-boot__center">
+    <div class="formalie-boot__mark" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        width="22"
+        height="22"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6" />
+        <path d="m9 15 2 2 4-4" />
+      </svg>
+    </div>
+    <div class="formalie-boot__name">Formalie</div>
+    <div class="formalie-boot__dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    <span class="formalie-boot__sr">Loading…</span>
+  </div>
+</div>
+<style>
+  .formalie-boot {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: #18181b;
+    font-family:
+      Manrope,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      sans-serif;
+    z-index: 9999;
+  }
+  html.dark .formalie-boot {
+    background: #09090b;
+    color: #fafafa;
+  }
+  .formalie-boot__bar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    overflow: hidden;
+  }
+  .formalie-boot__bar span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 40%;
+    background: currentColor;
+    animation: formalie-boot-bar 1.1s ease-in-out infinite;
+  }
+  .formalie-boot__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .formalie-boot__mark {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #18181b;
+    color: #fff;
+  }
+  html.dark .formalie-boot__mark {
+    background: #fafafa;
+    color: #18181b;
+  }
+  .formalie-boot__name {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .formalie-boot__dots {
+    display: flex;
+    gap: 6px;
+  }
+  .formalie-boot__dots i {
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: currentColor;
+    opacity: 0.25;
+    animation: formalie-boot-dot 1s ease-in-out infinite;
+  }
+  .formalie-boot__dots i:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .formalie-boot__dots i:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .formalie-boot__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  @keyframes formalie-boot-bar {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(260%);
+    }
+  }
+  @keyframes formalie-boot-dot {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .formalie-boot__bar span,
+    .formalie-boot__dots i {
+      animation: none;
+      opacity: 0.6;
+    }
+  }
+</style>

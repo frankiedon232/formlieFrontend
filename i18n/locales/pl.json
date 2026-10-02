@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Ta funkcja nie jest dostępna w Twoim planie.",
     "FRM-NET-1000": "Brak połączenia z serwerem. Sprawdź połączenie.",
     "FRM-NET-1001": "Żądanie anulowane.",
-    "FRM-NET-1002": "Nieoczekiwana odpowiedź serwera."
+    "FRM-NET-1002": "Nieoczekiwana odpowiedź serwera.",
+    "FRM-FORM-1007": "Nie jest to możliwe w obecnym stanie formularza. Odśwież i spróbuj ponownie.",
+    "FRM-FORM-1008": "Folder o tej nazwie już istnieje."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -433,7 +435,8 @@
       "destination": "Miejsce docelowe",
       "webhook": "Webhook",
       "api_key": "Klucz API",
-      "export": "Eksport"
+      "export": "Eksport",
+      "folder": "Folder"
     },
     "field": {
       "name": "Nazwa",
@@ -454,7 +457,8 @@
       "currency": "Waluta",
       "date_format": "Format daty",
       "number_format": "Format liczb",
-      "week_start": "Pierwszy dzień tygodnia"
+      "week_start": "Pierwszy dzień tygodnia",
+      "tags": "Tagi"
     },
     "action": {
       "auth_login_succeeded": "Zalogowano",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Utworzono klucz API",
       "integrations_api_key_revoked": "Unieważniono klucz API",
       "audit_exported": "Wyeksportowano dziennik audytu",
-      "workspace_setup_completed": "Zakończono konfigurację obszaru roboczego"
+      "workspace_setup_completed": "Zakończono konfigurację obszaru roboczego",
+      "forms_unpublished": "Cofnięto publikację formularza",
+      "forms_reopened": "Ponownie otwarto formularz",
+      "forms_unarchived": "Przywrócono formularz z archiwum",
+      "forms_purged": "Trwale usunięto formularz",
+      "forms_folder_created": "Utworzono folder",
+      "forms_folder_renamed": "Zmieniono nazwę folderu",
+      "forms_folder_deleted": "Usunięto folder"
     },
     "detail": {
       "who": "Kto",

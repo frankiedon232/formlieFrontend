@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Bu özellik planınıza dahil değil.",
     "FRM-NET-1000": "Sunucuya ulaşılamıyor. Bağlantınızı kontrol edin.",
     "FRM-NET-1001": "İstek iptal edildi.",
-    "FRM-NET-1002": "Sunucudan beklenmeyen yanıt."
+    "FRM-NET-1002": "Sunucudan beklenmeyen yanıt.",
+    "FRM-FORM-1007": "Formun mevcut durumunda bu mümkün değil. Yenileyip tekrar deneyin.",
+    "FRM-FORM-1008": "Bu adda bir klasör zaten var."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -433,7 +435,8 @@
       "destination": "Hedef",
       "webhook": "Webhook",
       "api_key": "API anahtarı",
-      "export": "Dışa aktarma"
+      "export": "Dışa aktarma",
+      "folder": "Klasör"
     },
     "field": {
       "name": "Ad",
@@ -454,7 +457,8 @@
       "currency": "Para birimi",
       "date_format": "Tarih biçimi",
       "number_format": "Sayı biçimi",
-      "week_start": "Haftanın ilk günü"
+      "week_start": "Haftanın ilk günü",
+      "tags": "Etiketler"
     },
     "action": {
       "auth_login_succeeded": "Giriş yapıldı",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "API anahtarı oluşturuldu",
       "integrations_api_key_revoked": "API anahtarı iptal edildi",
       "audit_exported": "Denetim kaydı dışa aktarıldı",
-      "workspace_setup_completed": "Çalışma alanı kurulumu tamamlandı"
+      "workspace_setup_completed": "Çalışma alanı kurulumu tamamlandı",
+      "forms_unpublished": "Form yayından kaldırıldı",
+      "forms_reopened": "Form yeniden açıldı",
+      "forms_unarchived": "Form arşivden çıkarıldı",
+      "forms_purged": "Form kalıcı olarak silindi",
+      "forms_folder_created": "Klasör oluşturuldu",
+      "forms_folder_renamed": "Klasör yeniden adlandırıldı",
+      "forms_folder_deleted": "Klasör silindi"
     },
     "detail": {
       "who": "Kim",

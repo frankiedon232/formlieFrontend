@@ -20,7 +20,14 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 2. **Never import composables or components.** Nuxt 4 auto-imports `app/composables/**` (configured in `imports.dirs`), `app/utils`, Vue APIs, Nuxt APIs and all components (path-prefixed names, e.g. `components/forms/builder/Canvas.vue` → `<FormsBuilderCanvas />`). Never write `import X from '...vue'`. Only import third-party libraries and types where needed.
 3. **Mobile first.** Design for small screens first, then `sm: md: lg: xl:`. Every page, table, builder panel and modal must work on phone, tablet, desktop.
 4. **Every async action uses `try / catch / finally`.** `finally` always resets loading state. Errors go through `useErrorHandler()` (maps `FRM-*` codes to friendly toasts).
-5. **Always show progress.** `<NuxtLoadingIndicator />` at the top for navigation; `USkeleton` while data loads; `:loading` on every action button (busy state, disabled while busy); progress bars for uploads/exports.
+5. **Always show progress — the user must never wonder whether something is happening** (owner, 2026-10-02: "very important"). Checklist for every page and action:
+   - **First load:** `app/spa-loading-template.html` (branded screen) until the app has started — never a blank page.
+   - **Top bar:** `<NuxtLoadingIndicator />` runs for navigation **and every API call** (wired in `useApi`); only polling / counters pass `{ background: true }`.
+   - **Data:** `USkeleton` that mirrors the final layout while a page, list, panel or card loads; keep old content dimmed while refreshing instead of blanking it.
+   - **Buttons:** `:loading` on every async button (busy + disabled, no double submit) — use `useBusy()`.
+   - **Menu / row actions:** the affected row or card shows a spinner and is disabled while its action runs; a toast confirms the result.
+   - **Long work:** `UProgress` with a percentage for uploads, imports and exports.
+   - **Empty and error states** always offer the next step (retry, create, clear filters).
 6. **Every list page offers Table and Grid views** (switch remembered per page), filters, search, sort, date range where relevant, and server-side pagination. Use the shared `DataView` component — don't rebuild per page.
 7. **Keyboard accessible everywhere.** All interactive elements reachable by Tab, visible focus rings, Enter/Space activate, Esc closes overlays, shortcuts via `defineShortcuts` and shown with `UKbd`. Every drag action has a keyboard alternative (move up/down, move to page).
 8. **Breadcrumbs on every page, every segment clickable** (`UBreadcrumb` driven by route meta). They sit in the top bar next to the search field (no extra vertical space).

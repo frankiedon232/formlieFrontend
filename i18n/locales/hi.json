@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "यह सुविधा आपकी योजना में शामिल नहीं है।",
     "FRM-NET-1000": "सर्वर तक नहीं पहुँच पा रहे। अपना कनेक्शन जाँचें।",
     "FRM-NET-1001": "अनुरोध रद्द किया गया।",
-    "FRM-NET-1002": "सर्वर से अप्रत्याशित जवाब।"
+    "FRM-NET-1002": "सर्वर से अप्रत्याशित जवाब।",
+    "FRM-FORM-1007": "फ़ॉर्म की मौजूदा स्थिति में यह संभव नहीं है। रीफ़्रेश करके फिर से कोशिश करें।",
+    "FRM-FORM-1008": "इस नाम का फ़ोल्डर पहले से मौजूद है।"
   },
   "errorUi": {
     "reference": "संदर्भ: {id}",
@@ -433,7 +435,8 @@
       "destination": "गंतव्य",
       "webhook": "वेबहुक",
       "api_key": "API कुंजी",
-      "export": "एक्सपोर्ट"
+      "export": "एक्सपोर्ट",
+      "folder": "फ़ोल्डर"
     },
     "field": {
       "name": "नाम",
@@ -454,7 +457,8 @@
       "currency": "मुद्रा",
       "date_format": "तारीख फ़ॉर्मैट",
       "number_format": "संख्या फ़ॉर्मैट",
-      "week_start": "सप्ताह का पहला दिन"
+      "week_start": "सप्ताह का पहला दिन",
+      "tags": "टैग"
     },
     "action": {
       "auth_login_succeeded": "साइन इन किया",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "API कुंजी बनाई गई",
       "integrations_api_key_revoked": "API कुंजी रद्द की गई",
       "audit_exported": "ऑडिट ट्रेल एक्सपोर्ट किया गया",
-      "workspace_setup_completed": "वर्कस्पेस सेटअप पूरा हुआ"
+      "workspace_setup_completed": "वर्कस्पेस सेटअप पूरा हुआ",
+      "forms_unpublished": "फ़ॉर्म अप्रकाशित किया गया",
+      "forms_reopened": "फ़ॉर्म फिर से खोला गया",
+      "forms_unarchived": "फ़ॉर्म संग्रह से वापस लाया गया",
+      "forms_purged": "फ़ॉर्म स्थायी रूप से हटाया गया",
+      "forms_folder_created": "फ़ोल्डर बनाया गया",
+      "forms_folder_renamed": "फ़ोल्डर का नाम बदला गया",
+      "forms_folder_deleted": "फ़ोल्डर हटाया गया"
     },
     "detail": {
       "who": "किसने",

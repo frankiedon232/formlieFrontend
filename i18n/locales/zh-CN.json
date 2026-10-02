@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "您的套餐不包含此功能。",
     "FRM-NET-1000": "无法连接服务器，请检查网络。",
     "FRM-NET-1001": "请求已取消。",
-    "FRM-NET-1002": "服务器返回了意外的响应。"
+    "FRM-NET-1002": "服务器返回了意外的响应。",
+    "FRM-FORM-1007": "表单当前状态下无法执行此操作。请刷新后重试。",
+    "FRM-FORM-1008": "已存在同名文件夹。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -433,7 +435,8 @@
       "destination": "目标",
       "webhook": "Webhook",
       "api_key": "API 密钥",
-      "export": "导出"
+      "export": "导出",
+      "folder": "文件夹"
     },
     "field": {
       "name": "名称",
@@ -454,7 +457,8 @@
       "currency": "货币",
       "date_format": "日期格式",
       "number_format": "数字格式",
-      "week_start": "每周第一天"
+      "week_start": "每周第一天",
+      "tags": "标签"
     },
     "action": {
       "auth_login_succeeded": "已登录",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "已创建 API 密钥",
       "integrations_api_key_revoked": "已撤销 API 密钥",
       "audit_exported": "已导出审计日志",
-      "workspace_setup_completed": "工作区设置已完成"
+      "workspace_setup_completed": "工作区设置已完成",
+      "forms_unpublished": "已取消发布表单",
+      "forms_reopened": "已重新开放表单",
+      "forms_unarchived": "已将表单移出归档",
+      "forms_purged": "已永久删除表单",
+      "forms_folder_created": "已创建文件夹",
+      "forms_folder_renamed": "已重命名文件夹",
+      "forms_folder_deleted": "已删除文件夹"
     },
     "detail": {
       "who": "谁",

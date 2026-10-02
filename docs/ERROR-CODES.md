@@ -40,6 +40,8 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FORM-1004 | 422  | Form cannot be published: fix the listed issues.             | INFO     |
 | FRM-FORM-1005 | 403  | Password required.                                           | INFO     |
 | FRM-FORM-1006 | 409  | Slug already in use.                                         | INFO     |
+| FRM-FORM-1007 | 409  | This isn't possible while the form is in its current state.  | INFO     |
+| FRM-FORM-1008 | 409  | A folder with this name already exists.                      | INFO     |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                       | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                               | WARNING  |
 | FRM-FILE-1001 | 400  | File type not allowed.                                       | INFO     |

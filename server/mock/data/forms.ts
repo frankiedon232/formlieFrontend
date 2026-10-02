@@ -91,5 +91,7 @@ export const MOCK_FORMS: FormSummary[] = Array.from({ length: 57 }, (_, index) =
     completion_rate: status === 'draft' ? 0 : Math.round(40 + random() * 60),
     created_at: new Date(created).toISOString(),
     updated_at: new Date(updated).toISOString(),
+    row_version: 1,
+    deleted_at: null,
   }
 })

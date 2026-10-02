@@ -5,7 +5,7 @@
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as auth from './routes/auth'
-import { listFolders, listForms } from './routes/forms'
+import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
 import * as uploads from './routes/uploads'
@@ -36,8 +36,21 @@ const router = createRouter()
   .get('/auth/oauth/:provider/start', auth.oauthStart)
   .get('/me', auth.me)
   // forms
-  .get('/forms', listForms)
-  .get('/folders', listFolders)
+  .get('/forms', forms.listForms)
+  .post('/forms', forms.createForm)
+  .get('/forms/facets', forms.formFacets)
+  .post('/forms/import', forms.importForm)
+  .post('/forms/bulk', forms.bulkForms)
+  .delete('/forms/trash', forms.emptyTrash)
+  .get('/forms/:id', forms.getForm)
+  .patch('/forms/:id', forms.patchForm)
+  .delete('/forms/:id', forms.deleteForm)
+  .post('/forms/:id/duplicate', forms.duplicateForm)
+  .post('/forms/:id/:action', forms.formLifecycle)
+  .get('/folders', forms.listFolders)
+  .post('/folders', forms.createFolder)
+  .patch('/folders/:id', forms.renameFolder)
+  .delete('/folders/:id', forms.deleteFolder)
   .get('/navigation/counts', navigationCounts)
   // onboarding + uploads
   .get('/onboarding', onboarding.getOnboarding)
@@ -63,11 +76,14 @@ const router = createRouter()
     }),
   )
 
+/** Above the top bar's 200 ms throttle, like a real network, so progress is visible while testing. */
+const MOCK_LATENCY_MS = 350
+
 const v1 = useBase('/api/v1', router.handler)
 
 export default defineEventHandler(event => {
   event.context.fullPath = event.path.split('?')[0]
   event.context.requestId = crypto.randomUUID()
-  // Small artificial latency so loading states are visible during development.
-  return new Promise(resolve => setTimeout(resolve, 150)).then(() => v1(event))
+  // Realistic latency (like a real network) so loading states are visible during development.
+  return new Promise(resolve => setTimeout(resolve, MOCK_LATENCY_MS)).then(() => v1(event))
 })

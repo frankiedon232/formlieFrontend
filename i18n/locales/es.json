@@ -181,7 +181,9 @@
     "FRM-PLAN-1002": "Esta función no está incluida en tu plan.",
     "FRM-NET-1000": "No se puede conectar con el servidor. Revisa tu conexión.",
     "FRM-NET-1001": "Solicitud cancelada.",
-    "FRM-NET-1002": "Respuesta inesperada del servidor."
+    "FRM-NET-1002": "Respuesta inesperada del servidor.",
+    "FRM-FORM-1007": "No es posible en el estado actual del formulario. Actualiza e inténtalo de nuevo.",
+    "FRM-FORM-1008": "Ya existe una carpeta con este nombre."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -433,7 +435,8 @@
       "destination": "Destino",
       "webhook": "Webhook",
       "api_key": "Clave de API",
-      "export": "Exportación"
+      "export": "Exportación",
+      "folder": "Carpeta"
     },
     "field": {
       "name": "Nombre",
@@ -454,7 +457,8 @@
       "currency": "Moneda",
       "date_format": "Formato de fecha",
       "number_format": "Formato de número",
-      "week_start": "Primer día de la semana"
+      "week_start": "Primer día de la semana",
+      "tags": "Etiquetas"
     },
     "action": {
       "auth_login_succeeded": "Sesión iniciada",
@@ -490,7 +494,14 @@
       "integrations_api_key_created": "Clave de API creada",
       "integrations_api_key_revoked": "Clave de API revocada",
       "audit_exported": "Registro de auditoría exportado",
-      "workspace_setup_completed": "Configuración del espacio terminada"
+      "workspace_setup_completed": "Configuración del espacio terminada",
+      "forms_unpublished": "Formulario despublicado",
+      "forms_reopened": "Formulario reabierto",
+      "forms_unarchived": "Formulario desarchivado",
+      "forms_purged": "Formulario eliminado definitivamente",
+      "forms_folder_created": "Carpeta creada",
+      "forms_folder_renamed": "Carpeta renombrada",
+      "forms_folder_deleted": "Carpeta eliminada"
     },
     "detail": {
       "who": "Quién",
