@@ -1,30 +1,76 @@
 <!--
-  Forms list (DataView demo for F2; create / duplicate / archive / trash arrive in F6).
-  Layout follows docs/design: page header + "All forms" table with filters, date range, sort, Table/Grid.
+  Forms list (F6): DataView (search, status / folder / owner / tag filters, date range, sort,
+  Table / Grid) · inline rename · duplicate · move · tags · lifecycle · delete to Trash · bulk.
+  Busy rows while an action runs; every action refreshes the list and the sidebar counts.
 -->
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@nuxt/ui'
-import type { FormFolder, FormSummary } from '#shared/types/forms'
+import type { FormFacets, FormFolder, FormSummary } from '#shared/types/forms'
 
 definePageMeta({ breadcrumb: 'nav.forms' })
 
 const { t } = useI18n()
 const api = useApi()
-const toast = useToast()
-const { copy } = useClipboard({ legacy: true })
-const { date, relative, number } = useFormat()
-const requestUrl = useRequestURL()
+const { relative, date, number } = useFormat()
 useHead({ title: () => t('nav.forms') })
 
+const dataView = useTemplateRef<{ refresh: () => Promise<void> }>('dataView')
 const folders = ref<FormFolder[]>([])
-onMounted(async () => {
+const facets = ref<FormFacets>({ owners: [], tags: [] })
+const foldersLoading = ref(false)
+
+async function loadMeta() {
+  foldersLoading.value = true
   try {
-    folders.value = (await api.get<FormFolder[]>('/folders')).data
+    const [folderList, facetList] = await Promise.all([
+      api.get<FormFolder[]>('/folders', undefined, { background: true }),
+      api.get<FormFacets>('/forms/facets', undefined, { background: true }),
+    ])
+    folders.value = folderList.data
+    facets.value = facetList.data
   } catch {
-    // The folder filter simply stays empty; the list itself reports its own errors.
+    // Filters simply stay empty; the list reports its own errors.
+  } finally {
+    foldersLoading.value = false
   }
+}
+onMounted(loadMeta)
+
+const refresh = async () => {
+  await Promise.all([dataView.value?.refresh(), loadMeta()])
+}
+const actions = useFormActions(refresh)
+
+// ── Inline rename, move and tags ───────────────────────────────────────────────────
+const renamingId = ref<string | null>(null)
+const moveTargets = ref<FormSummary[]>([])
+const moveOpen = ref(false)
+const tagsTarget = ref<FormSummary | null>(null)
+const tagsOpen = ref(false)
+const foldersOpen = ref(false)
+
+const rowActions = useFormMenu(actions, {
+  rename: form => (renamingId.value = form.id),
+  move: form => {
+    moveTargets.value = [form]
+    moveOpen.value = true
+  },
+  tags: form => {
+    tagsTarget.value = form
+    tagsOpen.value = true
+  },
 })
 
+async function onRename(form: FormSummary, name: string) {
+  renamingId.value = null
+  await actions.rename(form, name)
+}
+async function onMove(folderId: string | null) {
+  const targets = moveTargets.value
+  if (targets.length === 1) await actions.move(targets[0]!, folderId)
+  else await actions.bulk('move', targets, folderId)
+}
+
+// ── List definition ────────────────────────────────────────────────────────────────
 const STATUS_DOTS: Record<string, string> = {
   draft: 'bg-amber-500',
   published: 'bg-green-500',
@@ -36,17 +82,22 @@ const filters = computed<DataFilter[]>(() => [
   {
     key: 'status',
     label: t('forms.filterStatus'),
-    options: Object.keys(STATUS_DOTS).map(value => ({
-      value,
-      label: t(`status.${value}`),
-      dot: STATUS_DOTS[value],
-    })),
+    options: Object.keys(STATUS_DOTS).map(value => ({ value, label: t(`status.${value}`), dot: STATUS_DOTS[value] })),
   },
   {
     key: 'folder_id',
     label: t('forms.filterFolder'),
-    options: folders.value.map(folder => ({ value: folder.id, label: folder.name })),
+    options: [
+      { value: 'none', label: t('forms.noFolder') },
+      ...folders.value.map(folder => ({ value: folder.id, label: folder.name })),
+    ],
   },
+  {
+    key: 'owner_id',
+    label: t('forms.filterOwner'),
+    options: facets.value.owners.map(owner => ({ value: owner.id, label: owner.name })),
+  },
+  { key: 'tag', label: t('forms.filterTag'), options: facets.value.tags.map(tag => ({ value: tag, label: tag })) },
 ])
 
 const columns = computed<DataColumn[]>(() => [
@@ -54,13 +105,7 @@ const columns = computed<DataColumn[]>(() => [
   { key: 'status', label: t('forms.col.status') },
   { key: 'owner', label: t('forms.col.owner'), hideBelow: 'lg' },
   { key: 'completion_rate', label: t('forms.col.completion'), sortable: true, hideBelow: 'md' },
-  {
-    key: 'responses_count',
-    label: t('forms.col.responses'),
-    sortable: true,
-    hideBelow: 'sm',
-    class: 'text-end',
-  },
+  { key: 'responses_count', label: t('forms.col.responses'), sortable: true, hideBelow: 'sm', class: 'text-end' },
   { key: 'updated_at', label: t('forms.col.updated'), sortable: true, hideBelow: 'sm' },
 ])
 
@@ -71,46 +116,38 @@ const sortOptions = computed(() => [
   { label: t('forms.sortResponses'), value: '-responses_count' },
 ])
 
-const fetcher: DataFetcher<FormSummary> = (params, signal) =>
-  api.list<FormSummary>('/forms', params, { signal })
+const fetcher: DataFetcher<FormSummary> = (params, signal) => api.list<FormSummary>('/forms', params, { signal })
 
-function rowActions(form: FormSummary): DropdownMenuItem[][] {
-  return [
-    [
-      {
-        label: t('forms.copyLink'),
-        icon: 'i-lucide-link',
-        onSelect: () => {
-          copy(`${requestUrl.origin}/f/${form.slug}`)
-          toast.add({ title: t('forms.linkCopied'), color: 'success', icon: 'i-lucide-check' })
-        },
-      },
-      { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/responses?form=${form.id}` },
-    ],
-  ]
-}
+defineShortcuts({ n: () => navigateTo('/forms/new') })
 </script>
 
 <template>
-  <AppPanel
-    id="forms"
-    :title="t('nav.forms')"
-    :subtitle="t('forms.description')"
-    subtitle-icon="i-lucide-refresh-cw"
-  >
+  <AppPanel id="forms" :title="t('nav.forms')" :subtitle="t('forms.description')" subtitle-icon="i-lucide-refresh-cw">
     <template #actions>
+      <UButton
+        icon="i-lucide-folder-cog"
+        :label="t('forms.folders.button')"
+        color="neutral"
+        variant="outline"
+        @click="foldersOpen = true"
+      />
       <UButton
         icon="i-lucide-upload"
         :label="t('forms.import')"
         color="neutral"
         variant="outline"
-        to="/forms/new"
+        :to="{ path: '/forms/new', query: { mode: 'import' } }"
       />
-      <UButton icon="i-lucide-plus" :label="t('nav.newForm')" color="neutral" to="/forms/new" />
+      <UButton icon="i-lucide-plus" :label="t('nav.newForm')" color="neutral" to="/forms/new">
+        <template #trailing>
+          <UKbd value="N" class="hidden lg:inline-flex" />
+        </template>
+      </UButton>
     </template>
 
     <DataView
       id="forms"
+      ref="dataView"
       :columns="columns"
       :fetcher="fetcher"
       :filters="filters"
@@ -119,19 +156,20 @@ function rowActions(form: FormSummary): DropdownMenuItem[][] {
       date-range
       selectable
       :row-actions="rowActions"
+      :busy="actions.isBusy"
       :search-placeholder="t('forms.searchPlaceholder')"
       empty-icon="i-lucide-file-text"
       :empty-title="t('forms.emptyTitle')"
       :empty-description="t('forms.emptyDesc')"
     >
       <template #name-cell="{ row }">
-        <div class="min-w-0">
-          <p class="truncate font-medium text-highlighted">{{ row.original.name }}</p>
-          <p class="truncate text-xs text-muted">
-            {{ row.original.folder?.name ?? t('forms.noFolder') }}
-            <span v-if="row.original.has_unpublished_changes"> · {{ t('forms.unpublished') }}</span>
-          </p>
-        </div>
+        <FormsListNameCell
+          :form="row.original"
+          :editing="renamingId === row.original.id"
+          :busy="actions.isBusy(row.original)"
+          @save="name => onRename(row.original, name)"
+          @cancel="renamingId = null"
+        />
       </template>
       <template #status-cell="{ row }">
         <DataStatusBadge :status="row.original.status" />
@@ -156,7 +194,36 @@ function rowActions(form: FormSummary): DropdownMenuItem[][] {
       </template>
 
       <template #grid-card="{ row }">
-        <FormsListCard :form="row" :actions="rowActions(row)" />
+        <FormsListCard :form="row" :actions="rowActions(row)" :busy="actions.isBusy(row)" />
+      </template>
+
+      <template #bulk-actions="{ selected, clear }">
+        <UButton
+          :label="t('forms.actions.move')"
+          icon="i-lucide-folder-input"
+          color="neutral"
+          variant="outline"
+          size="sm"
+          @click="(moveTargets = selected), (moveOpen = true)"
+        />
+        <UButton
+          :label="t('forms.actions.archive')"
+          icon="i-lucide-archive"
+          color="neutral"
+          variant="outline"
+          size="sm"
+          :loading="selected.some(actions.isBusy)"
+          @click="actions.bulk('archive', selected).then(done => done && clear())"
+        />
+        <UButton
+          :label="t('forms.actions.delete')"
+          icon="i-lucide-trash-2"
+          color="error"
+          variant="outline"
+          size="sm"
+          :loading="selected.some(actions.isBusy)"
+          @click="actions.bulk('delete', selected).then(done => done && clear())"
+        />
       </template>
 
       <template #empty-actions>
@@ -166,9 +233,26 @@ function rowActions(form: FormSummary): DropdownMenuItem[][] {
           :label="t('nav.fromTemplate')"
           color="neutral"
           variant="outline"
-          to="/templates"
+          :to="{ path: '/forms/new', query: { mode: 'template' } }"
         />
       </template>
     </DataView>
+
+    <FormsListMoveModal
+      v-model:open="moveOpen"
+      :folders="folders"
+      :count="moveTargets.length"
+      :current="moveTargets.length === 1 ? (moveTargets[0]?.folder?.id ?? null) : undefined"
+      @move="onMove"
+      @folder-created="loadMeta"
+    />
+    <FormsListTagsModal
+      v-model:open="tagsOpen"
+      :tags="tagsTarget?.tags ?? []"
+      :suggestions="facets.tags"
+      :form-name="tagsTarget?.name ?? ''"
+      @save="tags => tagsTarget && actions.setTags(tagsTarget, tags)"
+    />
+    <FormsListFoldersModal v-model:open="foldersOpen" :folders="folders" :loading="foldersLoading" @changed="refresh" />
   </AppPanel>
 </template>

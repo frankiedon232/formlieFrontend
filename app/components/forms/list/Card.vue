@@ -3,7 +3,7 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { FormSummary } from '#shared/types/forms'
 
-const props = defineProps<{ form: FormSummary; actions: DropdownMenuItem[][] }>()
+const props = defineProps<{ form: FormSummary; actions: DropdownMenuItem[][]; busy?: boolean }>()
 const { t } = useI18n()
 const { date, number } = useFormat()
 </script>
@@ -34,9 +34,23 @@ const { date, number } = useFormat()
     <div class="min-w-0">
       <div class="flex items-center gap-2">
         <DataStatusBadge :status="props.form.status" />
-        <h3 class="truncate font-semibold text-highlighted">{{ props.form.name }}</h3>
+        <UIcon v-if="props.busy" name="i-lucide-loader-circle" class="size-4 shrink-0 animate-spin text-muted" />
+        <h3 class="truncate font-semibold text-highlighted">
+          <ULink :to="`/forms/${props.form.id}`" class="hover:underline">{{ props.form.name }}</ULink>
+        </h3>
       </div>
       <p class="mt-1 truncate text-sm text-muted">{{ props.form.folder?.name ?? t('forms.noFolder') }}</p>
+      <div v-if="props.form.tags.length" class="mt-2 flex flex-wrap gap-1">
+        <UBadge
+          v-for="tag in props.form.tags.slice(0, 4)"
+          :key="tag"
+          :label="tag"
+          color="neutral"
+          variant="outline"
+          size="sm"
+          class="rounded-md"
+        />
+      </div>
     </div>
 
     <div>

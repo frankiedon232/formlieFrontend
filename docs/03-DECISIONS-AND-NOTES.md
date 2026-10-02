@@ -70,6 +70,8 @@ Edit this file whenever a decision changes.
 
 50. **Session lifetime** (owner, 2026-10-02: "leave for at least 1 hour if idle"): 15-min access tokens refresh silently; the session itself ends only after **60 minutes of inactivity** (sliding) or 7 days at most. Early sign-outs during development came from the mock losing its in-memory sessions on every reload of server code; mock sessions and workspaces created by signup now persist in `.data/mock/` (gitignored, passwords hashed), and an unknown access token triggers a refresh instead of a sign-out.
 
+51. **Forms lifecycle** (F6): statuses Draft → Published → Closed, plus Archived (keeps the status it came from, so Unarchive puts it back) and Trash (soft delete, 30 days, then removed; permanent delete and Empty Trash ask first). Every change carries `row_version`; a conflict refreshes the list with a clear message. Actions live in one composable (`useFormActions`): busy row, toast, list + sidebar counts refreshed. A form opens on an overview page (`/forms/{id}`) with its activity until the builder (F7) adds editing. Import accepts FormSchema v1 JSON (validated and previewed first, 1 MB max).
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

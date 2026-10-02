@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F5 — Onboarding wizard (review) → next F6 — Forms list and lifecycle
+**Last updated:** 2026-10-02 · **Current phase:** F6 — Forms list and lifecycle (review) → next F7 — Form builder
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -16,7 +16,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F3    | Workspace detection + sign-in                     | ✅     | 100% |
 | F4    | Audit trail                                       | ✅     | 100% |
 | F5    | Onboarding wizard                                 | ✅     | 100% |
-| F6    | Forms list and lifecycle                          | ⬜     | 10%  |
+| F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ⬜     | 0%   |
 | F8    | Designer (themes)                                 | ⬜     | 0%   |
 | F9    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
@@ -256,23 +256,25 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F6 — Forms list and lifecycle ⬜
+## F6 — Forms list and lifecycle ✅
 
 **Goal:** everything you do _with_ forms before opening the builder.
 
-- ✅ Forms list with DataView (search, status / folder filters, date range, sort, table / grid)
-- ⬜ New form: blank / from template / import JSON
-- ⬜ Rename (inline), duplicate, move to folder
-- ⬜ Folders: create, rename, delete, filter by folder
-- ⬜ Tags: add / remove, filter by tag
-- ⬜ Owner filter
-- ⬜ Archive / unarchive; close / reopen; unpublish
-- ⬜ Delete → Trash; Trash page with restore and permanent delete (confirm)
-- ⬜ Bulk actions (archive, move, delete) on selected rows
-- ✅ Counts next to All / Drafts / Published / Closed in the sidebar (F1); ⬜ refresh them right after create / archive / delete (`useNavCounts().refresh(true)`)
-- ⬜ Optimistic locking (`row_version`) with a clear "changed by someone else" message
-- ⬜ Mock endpoints for all of the above
-- ⬜ Every form action recorded in the audit trail (create, rename, move, duplicate, archive, close, delete, restore) with before / after values
+- ✅ Forms list with DataView (search, status / folder / owner / tag filters, date range, sort, table / grid)
+- ✅ New form: blank / from a starter template / import JSON (FormSchema v1 validated + previewed, 1 MB max); `?mode=` and `?template=` preselect
+- ✅ Rename (inline in the table: Enter / blur saves, Esc cancels), duplicate, move to folder (with "new folder" on the spot)
+- ✅ Folders: create, rename, delete (forms stay, without a folder), filter by folder incl. "No folder"
+- ✅ Tags: add / remove (suggestions from the workspace), shown in rows and cards, filter by tag
+- ✅ Owner filter
+- ✅ Archive / unarchive (back to the previous status); close / reopen; unpublish — menu shows only what fits the status
+- ✅ Delete → Trash (confirm); Trash page (`/forms/trash`) with restore, permanent delete (confirm), bulk, Empty Trash, days left
+- ✅ Bulk actions (move, archive, delete; restore / delete permanently in Trash) on selected rows, with a summary toast
+- ✅ Sidebar counts refresh right after every change; Trash entry with its own count
+- ✅ Optimistic locking (`row_version`) with "changed by someone else" and a fresh list
+- ✅ Busy rows / cards while an action runs (DataView `busy`), toasts for every result
+- ✅ Form overview page (`/forms/{id}`): details, status actions, activity timeline; "Edit" arrives with the builder (F7)
+- ✅ Mock endpoints for all of the above (per workspace, persisted across reloads)
+- ✅ Every form and folder action recorded in the audit trail with before / after values
 
 ---
 
@@ -611,3 +613,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                      |
 | 2026-10-02 | F3    | Sessions: 60-minute sliding idle timeout (owner); mock sessions survive dev reloads (`.data/mock/`); unknown access token → silent refresh instead of sign-out. Verified: signed in → mock reloaded → still signed in.                                                                                                                 |
 | 2026-10-02 | F2    | Loading feedback (owner): branded first-load screen, top progress bar on every API call (not only navigation), busy rows for menu actions, rule 5 rewritten as a checklist and added to the definition of done.                                                                                                                        |
+| 2026-10-02 | F6    | Forms lifecycle: new (blank / template / import), inline rename, duplicate, move, tags, folders, unpublish / close / reopen / archive / unarchive, Trash with restore and permanent delete, bulk, row_version conflicts, busy rows, form overview with activity. Checked desktop / phone, Arabic RTL; all actions in the audit trail.  |

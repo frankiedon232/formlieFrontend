@@ -54,6 +54,13 @@ const MAIN_NAV: AppNavItem[] = [
         dot: 'bg-violet-600',
         count: c => c.forms.closed,
       },
+      {
+        key: 'formsTrash',
+        icon: 'i-lucide-trash-2',
+        to: '/forms/trash',
+        count: c => c.forms.trash,
+        hideZero: true,
+      },
     ],
   },
   {

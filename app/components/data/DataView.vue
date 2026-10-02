@@ -20,6 +20,8 @@ const props = withDefaults(
     selectable?: boolean
     rowKey?: string
     rowActions?: (row: T) => DropdownMenuItem[][]
+    /** Row / card whose action is running: dimmed, pulsing and not clickable (CLAUDE.md rule 5). */
+    busy?: (row: T) => boolean
     emptyIcon?: string
     emptyTitle?: string
     emptyDescription?: string
@@ -32,6 +34,7 @@ const props = withDefaults(
     searchPlaceholder: undefined,
     rowKey: 'id',
     rowActions: undefined,
+    busy: undefined,
     emptyIcon: 'i-lucide-inbox',
     emptyTitle: undefined,
     emptyDescription: undefined,
@@ -148,6 +151,11 @@ const tableColumns = computed<TableColumn<T>[]>(() => {
 const cellSlots = computed(() =>
   Object.keys(slots).filter(name => name.endsWith('-cell') || name.endsWith('-header')),
 )
+const BUSY_ROW = 'pointer-events-none opacity-50 motion-safe:animate-pulse'
+const tableMeta = computed(() => ({
+  class: { tr: (row: { original: T }) => (props.busy?.(row.original) ? BUSY_ROW : '') },
+}))
+
 const showSkeleton = computed(() => state.loading.value && !state.loaded.value)
 const isEmpty = computed(() => state.loaded.value && !state.error.value && state.rows.value.length === 0)
 
@@ -239,7 +247,8 @@ defineExpose({ refresh: state.refresh, state })
           <div
             v-for="row in state.rows.value"
             :key="String(row[rowKey])"
-            :class="state.loading.value ? 'opacity-60' : ''"
+            :class="state.loading.value ? 'opacity-60' : busy?.(row) ? BUSY_ROW : ''"
+            :aria-busy="busy?.(row) || undefined"
           >
             <slot name="grid-card" :row="row">
               <UCard>{{ row[columns[0]!.key] }}</UCard>
@@ -267,6 +276,7 @@ defineExpose({ refresh: state.refresh, state })
         :loading="state.loading.value"
         loading-color="neutral"
         :get-row-id="(row: T) => String(row[rowKey])"
+        :meta="tableMeta"
         sticky
         :ui="{
           base: 'min-w-full',
