@@ -1,6 +1,13 @@
 <!-- Password field with show/hide toggle (keyboard reachable, announced). -->
 <script setup lang="ts">
-defineProps<{ autocomplete?: string; placeholder?: string }>()
+import type { InputProps } from '@nuxt/ui'
+
+defineProps<{
+  autocomplete?: string
+  placeholder?: string
+  size?: InputProps['size']
+  icon?: string
+}>()
 const model = defineModel<string>({ default: '' })
 const { t } = useI18n()
 const visible = ref(false)
@@ -12,8 +19,10 @@ const visible = ref(false)
     :type="visible ? 'text' : 'password'"
     :autocomplete="autocomplete"
     :placeholder="placeholder"
+    :size="size"
+    :icon="icon"
     class="w-full"
-    :ui="{ trailing: 'pe-1' }"
+    :ui="{ trailing: 'pe-1.5' }"
   >
     <template #trailing>
       <UButton

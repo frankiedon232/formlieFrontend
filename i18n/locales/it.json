@@ -227,11 +227,18 @@
     "label": "Piè di pagina"
   },
   "authLayout": {
-    "headline": "Crea moduli che le persone amano compilare.",
-    "point1": "Editor drag-and-drop con modelli pronti.",
-    "point2": "Crittografia end-to-end, con un codice a ogni accesso.",
-    "point3": "In 20 lingue, su ogni dispositivo.",
-    "poweredBy": "Realizzato con {app}"
+    "headline": "Moduli senza fatica.",
+    "subline": "Crea, condividi e analizza moduli in pochi minuti: sicuro per impostazione predefinita, in ogni lingua.",
+    "badgeEncrypted": "Crittografia end-to-end",
+    "badgeOtp": "Codice a ogni accesso",
+    "badgeLanguages": "20 lingue",
+    "previewForm": "Feedback dei clienti",
+    "previewName": "Nome completo",
+    "previewRating": "Com’è andata la visita?",
+    "previewSubmit": "Invia",
+    "previewStat": "Risposte questa settimana",
+    "previewNotification": "Nuova risposta ricevuta",
+    "previewNotificationMeta": "Lagos · proprio ora"
   },
   "auth": {
     "or": "oppure",
@@ -244,7 +251,8 @@
       "company": "Nome dell’azienda",
       "subdomain": "Indirizzo dello spazio",
       "newPassword": "Nuova password",
-      "confirmPassword": "Conferma password"
+      "confirmPassword": "Conferma password",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Inserisci un indirizzo email valido.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Accedi",
-      "desc": "Bentornato in {workspace}.",
+      "desc": "Accedi a {workspace} per continuare.",
       "manageTitle": "Trova il tuo spazio",
       "manageDesc": "Inserisci la tua email: ti invieremo un codice per trovare i tuoi spazi.",
       "expired": "La sessione è scaduta. Accedi di nuovo.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Trova il mio spazio",
       "noWorkspace": "Nuovo su Formalie?",
       "createWorkspace": "Crea uno spazio",
-      "wrongWorkspace": "Non è il tuo spazio?"
+      "wrongWorkspace": "Non è il tuo spazio?",
+      "heading": "Bentornato",
+      "secureNote": "Protetto da crittografia end-to-end e da un codice monouso."
     },
     "otp": {
       "label": "Codice a 6 cifre",
@@ -348,6 +358,7 @@
       "desc": "Accesso in corso…",
       "failed": "Questo link è scaduto",
       "failedDesc": "Accedi con email e password."
-    }
+    },
+    "workspace": "Spazio di lavoro"
   }
 }

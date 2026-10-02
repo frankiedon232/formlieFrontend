@@ -1,6 +1,6 @@
 <!--
-  Sign in. Workspace host: tenant branding, email + password, only the providers this tenant
-  enabled → OTP. manage.*: "Continue to <last workspace>" or find your workspace by email.
+  Sign in. Workspace host: workspace chip, providers this tenant enabled, email + password → OTP.
+  manage.*: "Continue to <last workspace>" or find your workspace by email.
 -->
 <script setup lang="ts">
 import type { FormSubmitEvent } from '@nuxt/ui'
@@ -18,6 +18,7 @@ const profile = tenant.profile
 const isManage = tenant.isManage
 const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : undefined
 const usesPassword = computed(() => profile.value?.auth_providers.includes('password') ?? true)
+const hasSocial = computed(() => (profile.value?.auth_providers ?? []).some(p => p !== 'password'))
 
 const schema = computed(() => (isManage.value ? emailOnlySchema(t) : loginSchema(t)))
 const state = reactive({
@@ -26,14 +27,17 @@ const state = reactive({
 })
 
 const notice = computed(() => {
-  if (route.query.expired) return { color: 'warning' as const, title: t('auth.login.expired') }
+  if (route.query.expired)
+    return { color: 'warning' as const, icon: 'i-lucide-clock-alert', title: t('auth.login.expired') }
   if (route.query.oauth === 'unavailable') {
     return {
       color: 'neutral' as const,
+      icon: 'i-lucide-info',
       title: t('auth.login.oauthUnavailable', { provider: String(route.query.provider ?? '') }),
     }
   }
-  if (route.query.reset) return { color: 'success' as const, title: t('auth.login.passwordReset') }
+  if (route.query.reset)
+    return { color: 'success' as const, icon: 'i-lucide-circle-check', title: t('auth.login.passwordReset') }
   return null
 })
 
@@ -55,81 +59,120 @@ async function onSubmit(event: FormSubmitEvent<{ email: string; password?: strin
 </script>
 
 <template>
-  <div class="flex flex-col gap-6">
-    <div>
-      <h1 class="text-2xl font-semibold tracking-tight text-highlighted">
-        {{ isManage ? t('auth.login.manageTitle') : t('auth.login.title') }}
-      </h1>
-      <p class="mt-1 text-sm text-muted">
-        {{ isManage ? t('auth.login.manageDesc') : t('auth.login.desc', { workspace: profile?.name ?? '' }) }}
-      </p>
-    </div>
-
-    <UAlert v-if="notice" :color="notice.color" variant="subtle" :title="notice.title" icon="i-lucide-info" />
-
-    <UCard v-if="isManage && tenant.lastWorkspace.value" :ui="{ body: 'flex items-center gap-3 p-4 sm:p-4' }">
-      <UAvatar :alt="tenant.lastWorkspace.value.name" size="md" />
-      <div class="min-w-0 flex-1">
-        <p class="truncate font-medium text-highlighted">{{ tenant.lastWorkspace.value.name }}</p>
-        <p class="truncate text-xs text-muted">
-          {{ tenant.lastWorkspace.value.subdomain }}.{{ $config.public.rootDomain }}
-        </p>
-      </div>
-      <UButton
-        :label="t('auth.login.continue')"
-        trailing-icon="i-lucide-arrow-right"
-        color="neutral"
-        :to="tenant.hostUrl(tenant.lastWorkspace.value.subdomain, '/auth/login')"
-        external
-      />
-    </UCard>
-
-    <AuthProviders v-if="!isManage && profile" :providers="profile.auth_providers" />
-    <USeparator
-      v-if="!isManage && usesPassword && (profile?.auth_providers.length ?? 0) > 1"
-      :label="t('auth.or')"
+  <div>
+    <AuthHeading
+      :title="isManage ? t('auth.login.manageTitle') : t('auth.login.heading')"
+      :description="
+        isManage ? t('auth.login.manageDesc') : t('auth.login.desc', { workspace: profile?.name ?? '' })
+      "
+      workspace
     />
+
+    <UAlert
+      v-if="notice"
+      :color="notice.color"
+      :icon="notice.icon"
+      variant="subtle"
+      :title="notice.title"
+      class="mb-6"
+    />
+
+    <!-- manage.*: one-click back to the last workspace -->
+    <NuxtLink
+      v-if="isManage && tenant.lastWorkspace.value"
+      :to="tenant.hostUrl(tenant.lastWorkspace.value.subdomain, '/auth/login')"
+      external
+      class="group mb-6 flex items-center gap-3 rounded-xl p-3 ring-1 ring-default transition hover:bg-elevated/50 hover:ring-accented focus-visible:outline-2 focus-visible:outline-primary"
+    >
+      <UAvatar :alt="tenant.lastWorkspace.value.name" size="md" class="bg-inverted text-inverted" />
+      <span class="min-w-0 flex-1">
+        <span class="block truncate font-medium text-highlighted">{{ tenant.lastWorkspace.value.name }}</span>
+        <span class="block truncate font-mono text-xs text-muted">
+          {{ tenant.lastWorkspace.value.subdomain }}.{{ $config.public.rootDomain }}
+        </span>
+      </span>
+      <span class="text-sm font-medium text-highlighted">{{ t('auth.login.continue') }}</span>
+      <UIcon
+        name="i-lucide-arrow-right"
+        class="size-4 text-muted transition group-hover:translate-x-0.5 rtl:rotate-180"
+      />
+    </NuxtLink>
+
+    <template v-if="!isManage && profile">
+      <AuthProviders :providers="profile.auth_providers" />
+      <USeparator
+        v-if="usesPassword && hasSocial"
+        :label="t('auth.or')"
+        class="my-6"
+        :ui="{ label: 'text-xs text-muted' }"
+      />
+    </template>
 
     <UForm
       v-if="isManage || usesPassword"
       :schema="schema"
       :state="state"
-      class="flex flex-col gap-4"
+      class="flex flex-col gap-5"
       @submit="onSubmit"
     >
-      <UFormField :label="t('auth.fields.email')" name="email" required>
-        <UInput v-model="state.email" type="email" autocomplete="email" class="w-full" autofocus />
+      <UFormField :label="t('auth.fields.email')" name="email" size="lg">
+        <UInput
+          v-model="state.email"
+          type="email"
+          autocomplete="email"
+          icon="i-lucide-mail"
+          :placeholder="t('auth.fields.emailPlaceholder')"
+          size="xl"
+          class="w-full"
+          autofocus
+        />
       </UFormField>
 
-      <UFormField v-if="!isManage" :label="t('auth.fields.password')" name="password" required>
+      <UFormField v-if="!isManage" :label="t('auth.fields.password')" name="password" size="lg">
         <template #hint>
-          <ULink to="/auth/forgot-password" class="text-xs text-muted hover:text-highlighted">
+          <ULink to="/auth/forgot-password" class="text-sm font-medium text-muted hover:text-highlighted">
             {{ t('auth.login.forgot') }}
           </ULink>
         </template>
-        <AuthPasswordInput v-model="state.password" autocomplete="current-password" />
+        <AuthPasswordInput
+          v-model="state.password"
+          autocomplete="current-password"
+          size="xl"
+          icon="i-lucide-lock-keyhole"
+        />
       </UFormField>
 
-      <UButton
-        type="submit"
-        :label="isManage ? t('auth.login.findWorkspace') : t('auth.login.submit')"
-        color="neutral"
-        size="lg"
-        block
-        :loading="busy"
-      />
+      <UButton type="submit" color="neutral" size="xl" block class="group mt-1 font-semibold" :loading="busy">
+        {{ isManage ? t('auth.login.findWorkspace') : t('auth.login.submit') }}
+        <UIcon
+          v-if="!busy"
+          name="i-lucide-arrow-right"
+          class="size-5 transition group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"
+        />
+      </UButton>
     </UForm>
+
+    <p class="mt-6 flex items-center justify-center gap-1.5 text-xs text-muted">
+      <UIcon name="i-lucide-shield-check" class="size-3.5 shrink-0" />
+      {{ t('auth.login.secureNote') }}
+    </p>
+
+    <USeparator class="my-8" />
 
     <p class="text-center text-sm text-muted">
       <template v-if="isManage">
         {{ t('auth.login.noWorkspace') }}
-        <ULink to="/auth/signup" class="font-medium text-highlighted">{{
-          t('auth.login.createWorkspace')
-        }}</ULink>
+        <ULink to="/auth/signup" class="font-semibold text-highlighted underline-offset-4 hover:underline">
+          {{ t('auth.login.createWorkspace') }}
+        </ULink>
       </template>
       <template v-else>
         {{ t('auth.login.wrongWorkspace') }}
-        <ULink :to="tenant.manageUrl('/auth/login')" external class="font-medium text-highlighted">
+        <ULink
+          :to="tenant.manageUrl('/auth/login')"
+          external
+          class="font-semibold text-highlighted underline-offset-4 hover:underline"
+        >
           {{ t('auth.login.findWorkspace') }}
         </ULink>
       </template>

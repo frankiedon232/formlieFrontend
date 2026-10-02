@@ -1,6 +1,7 @@
 <!--
   Social sign-in buttons — only the providers this workspace enabled (tenant public profile).
-  Each goes to the backend's OAuth start endpoint (a plain redirect, not an enveloped call).
+  Full-width, stacked, roomy (never truncated). Each goes to the backend's OAuth start endpoint
+  (a plain redirect, not an enveloped call).
 -->
 <script setup lang="ts">
 import type { AuthProvider } from '#shared/types/auth'
@@ -22,7 +23,7 @@ const social = computed(() =>
 </script>
 
 <template>
-  <div v-if="social.length" class="grid gap-2" :class="social.length > 1 ? 'sm:grid-cols-2' : ''">
+  <div v-if="social.length" class="flex flex-col gap-2.5">
     <UButton
       v-for="provider in social"
       :key="provider"
@@ -32,7 +33,9 @@ const social = computed(() =>
       external
       color="neutral"
       variant="outline"
+      size="xl"
       block
+      class="justify-center font-medium"
     />
   </div>
 </template>

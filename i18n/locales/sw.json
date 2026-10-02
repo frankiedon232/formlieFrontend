@@ -227,11 +227,18 @@
     "label": "Sehemu ya chini"
   },
   "authLayout": {
-    "headline": "Unda fomu ambazo watu hupenda kujaza.",
-    "point1": "Kiunda cha buruta-na-dondosha chenye violezo tayari.",
-    "point2": "Usimbaji fiche kamili, na msimbo kila unapoingia.",
-    "point3": "Kwa lugha 20, kwenye kila kifaa.",
-    "poweredBy": "Inaendeshwa na {app}"
+    "headline": "Fomu bila usumbufu.",
+    "subline": "Unda, shiriki na changanua fomu kwa dakika — salama tangu mwanzo, kwa kila lugha.",
+    "badgeEncrypted": "Usimbaji fiche kamili",
+    "badgeOtp": "Msimbo kila unapoingia",
+    "badgeLanguages": "Lugha 20",
+    "previewForm": "Maoni ya wateja",
+    "previewName": "Jina kamili",
+    "previewRating": "Ziara yako ilikuwaje?",
+    "previewSubmit": "Tuma",
+    "previewStat": "Majibu wiki hii",
+    "previewNotification": "Jibu jipya limepokelewa",
+    "previewNotificationMeta": "Lagos · sasa hivi"
   },
   "auth": {
     "or": "au",
@@ -244,7 +251,8 @@
       "company": "Jina la kampuni",
       "subdomain": "Anwani ya eneo la kazi",
       "newPassword": "Nenosiri jipya",
-      "confirmPassword": "Thibitisha nenosiri"
+      "confirmPassword": "Thibitisha nenosiri",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Weka barua pepe sahihi.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Ingia",
-      "desc": "Karibu tena {workspace}.",
+      "desc": "Ingia kwenye {workspace} ili kuendelea.",
       "manageTitle": "Tafuta eneo lako la kazi",
       "manageDesc": "Weka barua pepe yako, tutakutumia msimbo wa kupata maeneo yako ya kazi.",
       "expired": "Kipindi chako kimeisha. Tafadhali ingia tena.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Tafuta eneo langu la kazi",
       "noWorkspace": "Mgeni kwenye Formalie?",
       "createWorkspace": "Unda eneo la kazi",
-      "wrongWorkspace": "Si eneo lako la kazi?"
+      "wrongWorkspace": "Si eneo lako la kazi?",
+      "heading": "Karibu tena",
+      "secureNote": "Imelindwa kwa usimbaji fiche kamili na msimbo wa mara moja."
     },
     "otp": {
       "label": "Msimbo wa tarakimu 6",
@@ -348,6 +358,7 @@
       "desc": "Tunakuingiza…",
       "failed": "Kiungo hiki kimeisha muda",
       "failedDesc": "Ingia kwa barua pepe na nenosiri lako."
-    }
+    },
+    "workspace": "Eneo la kazi"
   }
 }

@@ -2,7 +2,7 @@
 
 Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/FRONTEND-SPEC.md`, `docs/SECURITY-PROTOCOL.md` and `docs/API-CONTRACT.md` before starting any task. Work through `docs/FRONTEND-ROADMAP.md` in order and tick items when done.
 
-**Keep docs in sync.** Every milestone: tick it in `FRONTEND-ROADMAP.md`, add a line to its Progress log, and update any doc whose facts changed (decisions → `03-DECISIONS-AND-NOTES.md`, contract → `API-CONTRACT.md`, setup → `02-DEV-ENVIRONMENT.md`). **Commit and push** to the working branch (`formalieFrontend`) after each verified milestone (typecheck + lint + tests green); stop for review at the end of each phase.
+**Keep docs in sync.** Every milestone: tick it in `FRONTEND-ROADMAP.md`, add a line to its Progress log, update the **Progress** table in `README.md` (and the status row at the top of the roadmap), and update any doc whose facts changed (decisions → `03-DECISIONS-AND-NOTES.md`, contract → `API-CONTRACT.md`, setup → `02-DEV-ENVIRONMENT.md`). **Commit and push** to the working branch (`formalieFrontend`) after each verified milestone (typecheck + lint + tests green); stop for review at the end of each phase.
 
 **Design references:** before building any page, check `docs/design/` and `docs/design/README.md` for reference images for UI idea of what it should look and feel and notes. **The images are the exact target design** (owner's instruction, 2026-10-02): reproduce the layout, spacing, component placement and monochrome look with Nuxt UI components — only the product name, logo and domain content (tasks → forms) differ. Compare against the image before calling a page done, and re-check the images regularly while building so nothing drifts.
 

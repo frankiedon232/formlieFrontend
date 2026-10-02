@@ -227,11 +227,18 @@
     "label": "フッター"
   },
   "authLayout": {
-    "headline": "思わず入力したくなるフォームを。",
-    "point1": "テンプレート付きのドラッグ＆ドロップ ビルダー。",
-    "point2": "エンドツーエンド暗号化、ログインごとに確認コード。",
-    "point3": "20 言語、あらゆるデバイスに対応。",
-    "poweredBy": "Powered by {app}"
+    "headline": "思いのままに作れるフォーム。",
+    "subline": "フォームを数分で作成・共有・分析。最初から安全で、どの言語にも対応。",
+    "badgeEncrypted": "エンドツーエンド暗号化",
+    "badgeOtp": "ログインごとに確認コード",
+    "badgeLanguages": "20 言語",
+    "previewForm": "お客様アンケート",
+    "previewName": "氏名",
+    "previewRating": "ご来店はいかがでしたか？",
+    "previewSubmit": "送信",
+    "previewStat": "今週の回答",
+    "previewNotification": "新しい回答が届きました",
+    "previewNotificationMeta": "ラゴス · たった今"
   },
   "auth": {
     "or": "または",
@@ -244,7 +251,8 @@
       "company": "会社名",
       "subdomain": "ワークスペースのアドレス",
       "newPassword": "新しいパスワード",
-      "confirmPassword": "パスワード（確認）"
+      "confirmPassword": "パスワード（確認）",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "有効なメールアドレスを入力してください。",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "ログイン",
-      "desc": "{workspace} へようこそ。",
+      "desc": "{workspace} にログインして続けてください。",
       "manageTitle": "ワークスペースを探す",
       "manageDesc": "メールアドレスを入力すると、ワークスペースを探すためのコードをお送りします。",
       "expired": "セッションの有効期限が切れました。もう一度ログインしてください。",
@@ -269,7 +277,9 @@
       "findWorkspace": "ワークスペースを探す",
       "noWorkspace": "Formalie は初めてですか？",
       "createWorkspace": "ワークスペースを作成",
-      "wrongWorkspace": "別のワークスペースですか？"
+      "wrongWorkspace": "別のワークスペースですか？",
+      "heading": "おかえりなさい",
+      "secureNote": "エンドツーエンド暗号化とワンタイムコードで保護されています。"
     },
     "otp": {
       "label": "6 桁のコード",
@@ -348,6 +358,7 @@
       "desc": "ログインしています…",
       "failed": "このリンクは期限切れです",
       "failedDesc": "メールアドレスとパスワードでログインしてください。"
-    }
+    },
+    "workspace": "ワークスペース"
   }
 }

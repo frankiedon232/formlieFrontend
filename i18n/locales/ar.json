@@ -227,11 +227,18 @@
     "label": "التذييل"
   },
   "authLayout": {
-    "headline": "أنشئ نماذج يحب الناس تعبئتها.",
-    "point1": "محرر بالسحب والإفلات مع قوالب جاهزة.",
-    "point2": "تشفير تام مع رمز تحقق عند كل تسجيل دخول.",
-    "point3": "بـ 20 لغة وعلى كل الأجهزة.",
-    "poweredBy": "مدعوم من {app}"
+    "headline": "نماذج بلا عناء.",
+    "subline": "أنشئ النماذج وشاركها وحلّلها في دقائق — آمنة افتراضيًا وبكل اللغات.",
+    "badgeEncrypted": "تشفير تام",
+    "badgeOtp": "رمز عند كل دخول",
+    "badgeLanguages": "20 لغة",
+    "previewForm": "رأي العملاء",
+    "previewName": "الاسم الكامل",
+    "previewRating": "كيف كانت زيارتك؟",
+    "previewSubmit": "إرسال",
+    "previewStat": "الردود هذا الأسبوع",
+    "previewNotification": "تم استلام رد جديد",
+    "previewNotificationMeta": "لاغوس · الآن"
   },
   "auth": {
     "or": "أو",
@@ -244,7 +251,8 @@
       "company": "اسم الشركة",
       "subdomain": "عنوان مساحة العمل",
       "newPassword": "كلمة مرور جديدة",
-      "confirmPassword": "تأكيد كلمة المرور"
+      "confirmPassword": "تأكيد كلمة المرور",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "أدخل بريدًا إلكترونيًا صالحًا.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "تسجيل الدخول",
-      "desc": "مرحبًا بعودتك إلى {workspace}.",
+      "desc": "سجّل الدخول إلى {workspace} للمتابعة.",
       "manageTitle": "اعثر على مساحة عملك",
       "manageDesc": "أدخل بريدك وسنرسل رمزًا للعثور على مساحات عملك.",
       "expired": "انتهت جلستك. سجّل الدخول مجددًا.",
@@ -269,7 +277,9 @@
       "findWorkspace": "اعثر على مساحة عملي",
       "noWorkspace": "جديد على Formalie؟",
       "createWorkspace": "أنشئ مساحة عمل",
-      "wrongWorkspace": "ليست مساحة عملك؟"
+      "wrongWorkspace": "ليست مساحة عملك؟",
+      "heading": "مرحبًا بعودتك",
+      "secureNote": "محمي بتشفير تام ورمز لمرة واحدة."
     },
     "otp": {
       "label": "رمز من 6 أرقام",
@@ -348,6 +358,7 @@
       "desc": "جارٍ تسجيل دخولك…",
       "failed": "انتهت صلاحية هذا الرابط",
       "failedDesc": "سجّل الدخول ببريدك وكلمة المرور."
-    }
+    },
+    "workspace": "مساحة العمل"
   }
 }

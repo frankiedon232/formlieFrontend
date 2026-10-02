@@ -227,11 +227,18 @@
     "label": "Voettekst"
   },
   "authLayout": {
-    "headline": "Bouw formulieren die mensen graag invullen.",
-    "point1": "Drag-and-drop-editor met kant-en-klare sjablonen.",
-    "point2": "End-to-end versleuteld, met een code bij elke aanmelding.",
-    "point3": "In 20 talen, op elk apparaat.",
-    "poweredBy": "Mogelijk gemaakt door {app}"
+    "headline": "Formulieren zonder moeite.",
+    "subline": "Formulieren in minuten bouwen, delen en analyseren — standaard veilig, in elke taal.",
+    "badgeEncrypted": "End-to-end versleuteld",
+    "badgeOtp": "Code bij elke aanmelding",
+    "badgeLanguages": "20 talen",
+    "previewForm": "Klantfeedback",
+    "previewName": "Volledige naam",
+    "previewRating": "Hoe was je bezoek?",
+    "previewSubmit": "Versturen",
+    "previewStat": "Reacties deze week",
+    "previewNotification": "Nieuwe reactie ontvangen",
+    "previewNotificationMeta": "Lagos · zojuist"
   },
   "auth": {
     "or": "of",
@@ -244,7 +251,8 @@
       "company": "Bedrijfsnaam",
       "subdomain": "Adres van de werkruimte",
       "newPassword": "Nieuw wachtwoord",
-      "confirmPassword": "Wachtwoord bevestigen"
+      "confirmPassword": "Wachtwoord bevestigen",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Voer een geldig e-mailadres in.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Inloggen",
-      "desc": "Welkom terug bij {workspace}.",
+      "desc": "Log in bij {workspace} om verder te gaan.",
       "manageTitle": "Vind je werkruimte",
       "manageDesc": "Voer je e-mail in, dan sturen we een code om je werkruimtes te vinden.",
       "expired": "Je sessie is verlopen. Log opnieuw in.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Mijn werkruimte vinden",
       "noWorkspace": "Nieuw bij Formalie?",
       "createWorkspace": "Werkruimte maken",
-      "wrongWorkspace": "Niet jouw werkruimte?"
+      "wrongWorkspace": "Niet jouw werkruimte?",
+      "heading": "Welkom terug",
+      "secureNote": "Beschermd met end-to-end versleuteling en een eenmalige code."
     },
     "otp": {
       "label": "Code van 6 cijfers",
@@ -348,6 +358,7 @@
       "desc": "Je wordt ingelogd…",
       "failed": "Deze link is verlopen",
       "failedDesc": "Log in met je e-mailadres en wachtwoord."
-    }
+    },
+    "workspace": "Werkruimte"
   }
 }

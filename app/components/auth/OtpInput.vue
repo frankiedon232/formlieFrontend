@@ -54,7 +54,7 @@ defineExpose({ reset })
 </script>
 
 <template>
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-6">
     <UPinInput
       v-model="digits"
       :length="6"
@@ -64,8 +64,8 @@ defineExpose({ reset })
       size="xl"
       :disabled="loading"
       :aria-label="t('auth.otp.label')"
-      class="justify-between"
-      :ui="{ base: 'size-12 text-lg sm:size-13' }"
+      class="w-full justify-between"
+      :ui="{ base: 'size-12 rounded-xl text-xl font-semibold sm:size-14' }"
       @complete="onComplete"
     />
 

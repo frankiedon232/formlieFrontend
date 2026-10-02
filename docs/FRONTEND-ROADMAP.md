@@ -2,6 +2,16 @@
 
 Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop), keyboard check, light/dark check, RTL check (Arabic), loading/empty/error states present, all new strings in every locale. Commit + push after each verified milestone.
 
+## Status at a glance
+
+✅ done · 🟡 in progress · ⬜ not started — same table in the [README](../README.md#progress).
+
+| F0  | F1  | F2  | F3  | F4  | F5  | F6  | F7  | F8  | F9  | F10 | F11 | F12 | F13 | F14 | F15 | F16 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ✅  | ✅  | ✅  | 🟡  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  | ⬜  |
+
+**Currently:** F3 — sign-in redesigned and verified in the browser; remaining: polish signup / find workspace / reset screens, RTL + keyboard pass.
+
 ## Progress log
 
 | Date       | Phase | Milestone                                                                                                                                                                                                                                                                                                                 |
@@ -16,6 +26,7 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 | 2026-10-02 | F2    | Core plumbing done: API client + useApi, error handling (48 codes × 20 languages), useBusy, useFormat, DataView (forms list live on the encrypted mock), confirm dialog, copy field. Checked desktop/phone, Arabic RTL (Arabic-Indic digits), error state + retry, URL-synced search/sort/paging/date range, view memory. |
 | 2026-10-02 | F2    | Owner feedback: title/subtitle/crumbs/page buttons moved into the header bar (content area clear, phone = icons), footer added; DataView flow approved and frozen.                                                                                                                                                        |
 | 2026-10-02 | F3    | Auth built (mock + client + pages); mock flow verified live (login, OTP attempts, tokens, protected call, refresh rotation, reuse → revoke). Browser check pending dev-server restart.                                                                                                                                    |
+| 2026-10-02 | F3    | Owner feedback: sign-in redesigned (inset dark showcase with live product preview, workspace chip, roomy form, security note); verified login → code → portal → logout in browser, desktop / phone / dark. Test accounts + progress table added to README.                                                                |
 
 ## F0 — Foundation
 
@@ -47,8 +58,8 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 
 ## F3 — Tenant detection + auth
 
-- [ ] `tenant.global.ts` middleware, `useTenant` (public profile, branding, providers) — built on `resolveHostContext()` (done early, see progress log); dev-only `?tenant=` override; pass the locale along on manage → tenant redirect.
-- [ ] Login, OTP (every login), signup + subdomain availability, find workspace, forgot/reset password, social buttons per tenant config, logout, session expiry handling.
+- [x] `tenant.global.ts` middleware, `useTenant` (public profile, branding, providers) — built on `resolveHostContext()` (done early, see progress log); dev-only `?tenant=` override; pass the locale along on manage → tenant redirect. _Done: `01.tenant.global.ts`, `useTenant`, dev `?tenant=`, last-workspace cookie._
+- [ ] Login, OTP (every login), signup + subdomain availability, find workspace, forgot/reset password, social buttons per tenant config, logout, session expiry handling. _Built + flow verified (login → code → portal → logout). Login redesigned per owner. Remaining: polish signup / find workspace / reset screens, RTL + keyboard pass._
 
 ## F4 — Onboarding wizard
 

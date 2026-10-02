@@ -80,7 +80,7 @@ async function onSubmit(event: FormSubmitEvent<typeof state>) {
 <template>
   <UForm :schema="schema" :state="state" class="flex flex-col gap-4" @submit="onSubmit">
     <UFormField :label="t('auth.fields.company')" name="company_name" required>
-      <UInput v-model="state.company_name" autocomplete="organization" class="w-full" autofocus />
+      <UInput v-model="state.company_name" autocomplete="organization" size="xl" class="w-full" autofocus />
     </UFormField>
     <UFormField
       :label="t('auth.fields.subdomain')"
@@ -96,7 +96,13 @@ async function onSubmit(event: FormSubmitEvent<typeof state>) {
           :aria-describedby="hint ? 'subdomain-status' : undefined"
           @input="touchedSubdomain = true"
         />
-        <UBadge :label="`.${config.public.rootDomain}`" color="neutral" variant="outline" size="lg" />
+        <UBadge
+          :label="`.${config.public.rootDomain}`"
+          color="neutral"
+          variant="outline"
+          size="xl"
+          class="font-mono"
+        />
       </UFieldGroup>
       <p v-if="hint" id="subdomain-status" class="mt-2 flex items-center gap-1.5 text-xs" aria-live="polite">
         <UIcon :name="hint.icon" class="size-4" :class="hint.class" />
@@ -107,7 +113,7 @@ async function onSubmit(event: FormSubmitEvent<typeof state>) {
       type="submit"
       :label="t('auth.signup.create')"
       color="neutral"
-      size="lg"
+      size="xl"
       block
       :loading="busy"
       :disabled="checking || availability?.available === false"

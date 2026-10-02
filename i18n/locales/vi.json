@@ -227,11 +227,18 @@
     "label": "Chân trang"
   },
   "authLayout": {
-    "headline": "Tạo biểu mẫu mà ai cũng thích điền.",
-    "point1": "Trình tạo kéo thả với mẫu có sẵn.",
-    "point2": "Mã hóa đầu cuối, có mã xác minh mỗi lần đăng nhập.",
-    "point3": "20 ngôn ngữ, trên mọi thiết bị.",
-    "poweredBy": "Được cung cấp bởi {app}"
+    "headline": "Biểu mẫu thật nhẹ nhàng.",
+    "subline": "Tạo, chia sẻ và phân tích biểu mẫu trong vài phút — an toàn ngay từ đầu, bằng mọi ngôn ngữ.",
+    "badgeEncrypted": "Mã hóa đầu cuối",
+    "badgeOtp": "Mã xác minh mỗi lần đăng nhập",
+    "badgeLanguages": "20 ngôn ngữ",
+    "previewForm": "Phản hồi khách hàng",
+    "previewName": "Họ và tên",
+    "previewRating": "Chuyến ghé thăm thế nào?",
+    "previewSubmit": "Gửi",
+    "previewStat": "Phản hồi tuần này",
+    "previewNotification": "Có phản hồi mới",
+    "previewNotificationMeta": "Lagos · vừa xong"
   },
   "auth": {
     "or": "hoặc",
@@ -244,7 +251,8 @@
       "company": "Tên công ty",
       "subdomain": "Địa chỉ không gian làm việc",
       "newPassword": "Mật khẩu mới",
-      "confirmPassword": "Xác nhận mật khẩu"
+      "confirmPassword": "Xác nhận mật khẩu",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Nhập địa chỉ email hợp lệ.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Đăng nhập",
-      "desc": "Chào mừng bạn trở lại {workspace}.",
+      "desc": "Đăng nhập vào {workspace} để tiếp tục.",
       "manageTitle": "Tìm không gian làm việc",
       "manageDesc": "Nhập email, chúng tôi sẽ gửi mã để tìm không gian làm việc của bạn.",
       "expired": "Phiên đã hết hạn. Vui lòng đăng nhập lại.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Tìm không gian của tôi",
       "noWorkspace": "Mới dùng Formalie?",
       "createWorkspace": "Tạo không gian làm việc",
-      "wrongWorkspace": "Không phải không gian của bạn?"
+      "wrongWorkspace": "Không phải không gian của bạn?",
+      "heading": "Chào mừng trở lại",
+      "secureNote": "Được bảo vệ bằng mã hóa đầu cuối và mã dùng một lần."
     },
     "otp": {
       "label": "Mã 6 chữ số",
@@ -348,6 +358,7 @@
       "desc": "Đang đăng nhập…",
       "failed": "Liên kết này đã hết hạn",
       "failedDesc": "Hãy đăng nhập bằng email và mật khẩu."
-    }
+    },
+    "workspace": "Không gian làm việc"
   }
 }

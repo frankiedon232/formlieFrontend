@@ -227,11 +227,18 @@
     "label": "Alt bilgi"
   },
   "authLayout": {
-    "headline": "İnsanların doldurmayı sevdiği formlar oluşturun.",
-    "point1": "Hazır şablonlarla sürükle-bırak düzenleyici.",
-    "point2": "Uçtan uca şifreli, her girişte doğrulama kodu.",
-    "point3": "20 dilde, her cihazda.",
-    "poweredBy": "{app} altyapısıyla"
+    "headline": "Zahmetsiz formlar.",
+    "subline": "Formları dakikalar içinde oluşturun, paylaşın ve analiz edin — varsayılan olarak güvenli, her dilde.",
+    "badgeEncrypted": "Uçtan uca şifreli",
+    "badgeOtp": "Her girişte kod",
+    "badgeLanguages": "20 dil",
+    "previewForm": "Müşteri geri bildirimi",
+    "previewName": "Ad soyad",
+    "previewRating": "Ziyaretiniz nasıldı?",
+    "previewSubmit": "Gönder",
+    "previewStat": "Bu haftaki yanıtlar",
+    "previewNotification": "Yeni yanıt alındı",
+    "previewNotificationMeta": "Lagos · az önce"
   },
   "auth": {
     "or": "veya",
@@ -244,7 +251,8 @@
       "company": "Şirket adı",
       "subdomain": "Çalışma alanı adresi",
       "newPassword": "Yeni şifre",
-      "confirmPassword": "Şifreyi onayla"
+      "confirmPassword": "Şifreyi onayla",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Geçerli bir e-posta adresi girin.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Giriş yap",
-      "desc": "{workspace} alanına tekrar hoş geldiniz.",
+      "desc": "Devam etmek için {workspace} alanına giriş yapın.",
       "manageTitle": "Çalışma alanınızı bulun",
       "manageDesc": "E-postanızı girin, çalışma alanlarınızı bulmanız için bir kod gönderelim.",
       "expired": "Oturumunuzun süresi doldu. Tekrar giriş yapın.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Çalışma alanımı bul",
       "noWorkspace": "Formalie’de yeni misiniz?",
       "createWorkspace": "Çalışma alanı oluştur",
-      "wrongWorkspace": "Sizin çalışma alanınız değil mi?"
+      "wrongWorkspace": "Sizin çalışma alanınız değil mi?",
+      "heading": "Tekrar hoş geldiniz",
+      "secureNote": "Uçtan uca şifreleme ve tek kullanımlık kodla korunur."
     },
     "otp": {
       "label": "6 haneli kod",
@@ -348,6 +358,7 @@
       "desc": "Giriş yapılıyor…",
       "failed": "Bu bağlantının süresi doldu",
       "failedDesc": "E-posta ve şifrenizle giriş yapın."
-    }
+    },
+    "workspace": "Çalışma alanı"
   }
 }

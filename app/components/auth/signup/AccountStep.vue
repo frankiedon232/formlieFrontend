@@ -23,24 +23,36 @@ async function onSubmit(event: FormSubmitEvent<typeof state>) {
   <UForm :schema="schema" :state="state" class="flex flex-col gap-4" @submit="onSubmit">
     <div class="grid gap-4 sm:grid-cols-2">
       <UFormField :label="t('auth.fields.firstName')" name="first_name" required>
-        <UInput v-model="state.first_name" autocomplete="given-name" class="w-full" autofocus />
+        <UInput v-model="state.first_name" autocomplete="given-name" size="xl" class="w-full" autofocus />
       </UFormField>
       <UFormField :label="t('auth.fields.lastName')" name="last_name" required>
-        <UInput v-model="state.last_name" autocomplete="family-name" class="w-full" />
+        <UInput v-model="state.last_name" autocomplete="family-name" size="xl" class="w-full" />
       </UFormField>
     </div>
     <UFormField :label="t('auth.fields.workEmail')" name="email" required>
-      <UInput v-model="state.email" type="email" autocomplete="email" class="w-full" />
+      <UInput
+        v-model="state.email"
+        type="email"
+        autocomplete="email"
+        icon="i-lucide-mail"
+        size="xl"
+        class="w-full"
+      />
     </UFormField>
     <UFormField :label="t('auth.fields.password')" name="password" required>
-      <AuthPasswordInput v-model="state.password" autocomplete="new-password" />
+      <AuthPasswordInput
+        v-model="state.password"
+        autocomplete="new-password"
+        size="xl"
+        icon="i-lucide-lock-keyhole"
+      />
       <AuthPasswordStrength :value="state.password" />
     </UFormField>
     <UButton
       type="submit"
       :label="t('auth.signup.continue')"
       color="neutral"
-      size="lg"
+      size="xl"
       block
       :loading="busy"
     />

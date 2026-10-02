@@ -18,6 +18,8 @@ function flatten(messages: Messages, prefix = ''): Record<string, string> {
   }, {})
 }
 
+// vue-i18n syntax: a bare @ starts a linked message and | splits plurals — escape @ as {'@'}.
+const unescapedAt = (text: string) => /@/.test(text.replace(/{'@'}/g, ''))
 const placeholders = (text: string) => [...text.matchAll(/\{(\w+)\}/g)].map(m => m[1]).sort()
 const english = flatten(load('en'))
 
@@ -32,6 +34,10 @@ describe('locales', () => {
       .map(file => file.replace(/\.json$/, ''))
       .sort()
     expect(files).toEqual(APP_LOCALES.map(locale => locale.code).sort())
+  })
+
+  it.each(APP_LOCALES.map(locale => locale.code))('%s has no unescaped @ (vue-i18n linked syntax)', code => {
+    for (const [key, value] of Object.entries(flatten(load(code)))) expect(unescapedAt(value), key).toBe(false)
   })
 
   it.each(APP_LOCALES.filter(locale => locale.code !== 'en').map(locale => locale.code))(

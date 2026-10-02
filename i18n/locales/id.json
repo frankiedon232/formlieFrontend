@@ -227,11 +227,18 @@
     "label": "Kaki halaman"
   },
   "authLayout": {
-    "headline": "Buat formulir yang senang diisi orang.",
-    "point1": "Pembuat seret dan lepas dengan templat siap pakai.",
-    "point2": "Terenkripsi ujung ke ujung, dengan kode di setiap masuk.",
-    "point3": "Dalam 20 bahasa, di semua perangkat.",
-    "poweredBy": "Didukung oleh {app}"
+    "headline": "Formulir tanpa repot.",
+    "subline": "Buat, bagikan, dan analisis formulir dalam hitungan menit — aman sejak awal, dalam setiap bahasa.",
+    "badgeEncrypted": "Terenkripsi ujung ke ujung",
+    "badgeOtp": "Kode di setiap masuk",
+    "badgeLanguages": "20 bahasa",
+    "previewForm": "Masukan pelanggan",
+    "previewName": "Nama lengkap",
+    "previewRating": "Bagaimana kunjungan Anda?",
+    "previewSubmit": "Kirim",
+    "previewStat": "Tanggapan minggu ini",
+    "previewNotification": "Tanggapan baru diterima",
+    "previewNotificationMeta": "Lagos · baru saja"
   },
   "auth": {
     "or": "atau",
@@ -244,7 +251,8 @@
       "company": "Nama perusahaan",
       "subdomain": "Alamat ruang kerja",
       "newPassword": "Kata sandi baru",
-      "confirmPassword": "Konfirmasi kata sandi"
+      "confirmPassword": "Konfirmasi kata sandi",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Masukkan alamat email yang valid.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Masuk",
-      "desc": "Selamat datang kembali di {workspace}.",
+      "desc": "Masuk ke {workspace} untuk melanjutkan.",
       "manageTitle": "Temukan ruang kerja Anda",
       "manageDesc": "Masukkan email Anda, kami akan mengirim kode untuk menemukan ruang kerja Anda.",
       "expired": "Sesi Anda berakhir. Silakan masuk lagi.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Temukan ruang kerja saya",
       "noWorkspace": "Baru di Formalie?",
       "createWorkspace": "Buat ruang kerja",
-      "wrongWorkspace": "Bukan ruang kerja Anda?"
+      "wrongWorkspace": "Bukan ruang kerja Anda?",
+      "heading": "Selamat datang kembali",
+      "secureNote": "Dilindungi enkripsi ujung ke ujung dan kode sekali pakai."
     },
     "otp": {
       "label": "Kode 6 digit",
@@ -348,6 +358,7 @@
       "desc": "Sedang masuk…",
       "failed": "Tautan ini sudah kedaluwarsa",
       "failedDesc": "Masuk dengan email dan kata sandi Anda."
-    }
+    },
+    "workspace": "Ruang kerja"
   }
 }

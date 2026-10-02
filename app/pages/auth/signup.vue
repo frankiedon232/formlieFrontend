@@ -52,10 +52,7 @@ function finish(url: string) {
 
 <template>
   <div class="flex flex-col gap-6">
-    <div>
-      <h1 class="text-2xl font-semibold tracking-tight text-highlighted">{{ t('auth.signup.title') }}</h1>
-      <p class="mt-1 text-sm text-muted">{{ t('auth.signup.desc') }}</p>
-    </div>
+    <AuthHeading :title="t('auth.signup.title')" :description="t('auth.signup.desc')" class="!mb-2" />
 
     <UStepper
       :model-value="step"

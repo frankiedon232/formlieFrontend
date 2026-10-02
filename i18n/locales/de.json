@@ -227,11 +227,18 @@
     "label": "Fußzeile"
   },
   "authLayout": {
-    "headline": "Formulare, die man gerne ausfüllt.",
-    "point1": "Drag-and-drop-Editor mit fertigen Vorlagen.",
-    "point2": "Durchgehend verschlüsselt, mit Code bei jeder Anmeldung.",
-    "point3": "In 20 Sprachen, auf jedem Gerät.",
-    "poweredBy": "Bereitgestellt von {app}"
+    "headline": "Formulare ganz mühelos.",
+    "subline": "Formulare in Minuten erstellen, teilen und auswerten – standardmäßig sicher, in jeder Sprache.",
+    "badgeEncrypted": "Durchgehend verschlüsselt",
+    "badgeOtp": "Code bei jeder Anmeldung",
+    "badgeLanguages": "20 Sprachen",
+    "previewForm": "Kundenfeedback",
+    "previewName": "Vollständiger Name",
+    "previewRating": "Wie war Ihr Besuch?",
+    "previewSubmit": "Absenden",
+    "previewStat": "Antworten diese Woche",
+    "previewNotification": "Neue Antwort erhalten",
+    "previewNotificationMeta": "Lagos · gerade eben"
   },
   "auth": {
     "or": "oder",
@@ -244,7 +251,8 @@
       "company": "Firmenname",
       "subdomain": "Adresse des Arbeitsbereichs",
       "newPassword": "Neues Passwort",
-      "confirmPassword": "Passwort bestätigen"
+      "confirmPassword": "Passwort bestätigen",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Geben Sie eine gültige E-Mail-Adresse ein.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Anmelden",
-      "desc": "Willkommen zurück bei {workspace}.",
+      "desc": "Melden Sie sich bei {workspace} an, um fortzufahren.",
       "manageTitle": "Arbeitsbereich finden",
       "manageDesc": "Geben Sie Ihre E-Mail ein, wir senden Ihnen einen Code, um Ihre Arbeitsbereiche zu finden.",
       "expired": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Meinen Arbeitsbereich finden",
       "noWorkspace": "Neu bei Formalie?",
       "createWorkspace": "Arbeitsbereich erstellen",
-      "wrongWorkspace": "Nicht Ihr Arbeitsbereich?"
+      "wrongWorkspace": "Nicht Ihr Arbeitsbereich?",
+      "heading": "Willkommen zurück",
+      "secureNote": "Geschützt durch Ende-zu-Ende-Verschlüsselung und einen Einmalcode."
     },
     "otp": {
       "label": "6-stelliger Code",
@@ -348,6 +358,7 @@
       "desc": "Sie werden angemeldet…",
       "failed": "Dieser Link ist abgelaufen",
       "failedDesc": "Melden Sie sich mit E-Mail und Passwort an."
-    }
+    },
+    "workspace": "Arbeitsbereich"
   }
 }

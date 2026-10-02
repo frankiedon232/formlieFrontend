@@ -227,11 +227,18 @@
     "label": "Pied de page"
   },
   "authLayout": {
-    "headline": "Créez des formulaires que l’on aime remplir.",
-    "point1": "Éditeur glisser-déposer avec des modèles prêts à l’emploi.",
-    "point2": "Chiffré de bout en bout, avec un code à chaque connexion.",
-    "point3": "En 20 langues, sur tous les appareils.",
-    "poweredBy": "Propulsé par {app}"
+    "headline": "Des formulaires sans effort.",
+    "subline": "Créez, partagez et analysez vos formulaires en quelques minutes — sécurisé par défaut, dans toutes les langues.",
+    "badgeEncrypted": "Chiffré de bout en bout",
+    "badgeOtp": "Code à chaque connexion",
+    "badgeLanguages": "20 langues",
+    "previewForm": "Avis client",
+    "previewName": "Nom complet",
+    "previewRating": "Comment s’est passée votre visite ?",
+    "previewSubmit": "Envoyer",
+    "previewStat": "Réponses cette semaine",
+    "previewNotification": "Nouvelle réponse reçue",
+    "previewNotificationMeta": "Lagos · à l’instant"
   },
   "auth": {
     "or": "ou",
@@ -244,7 +251,8 @@
       "company": "Nom de l’entreprise",
       "subdomain": "Adresse de l’espace",
       "newPassword": "Nouveau mot de passe",
-      "confirmPassword": "Confirmer le mot de passe"
+      "confirmPassword": "Confirmer le mot de passe",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Saisissez une adresse e-mail valide.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Se connecter",
-      "desc": "Bon retour sur {workspace}.",
+      "desc": "Connectez-vous à {workspace} pour continuer.",
       "manageTitle": "Retrouvez votre espace",
       "manageDesc": "Saisissez votre e-mail, nous vous enverrons un code pour retrouver vos espaces.",
       "expired": "Votre session a expiré. Reconnectez-vous.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Trouver mon espace",
       "noWorkspace": "Nouveau sur Formalie ?",
       "createWorkspace": "Créer un espace",
-      "wrongWorkspace": "Ce n’est pas votre espace ?"
+      "wrongWorkspace": "Ce n’est pas votre espace ?",
+      "heading": "Bon retour",
+      "secureNote": "Protégé par un chiffrement de bout en bout et un code à usage unique."
     },
     "otp": {
       "label": "Code à 6 chiffres",
@@ -348,6 +358,7 @@
       "desc": "Connexion en cours…",
       "failed": "Ce lien a expiré",
       "failedDesc": "Connectez-vous avec votre e-mail et votre mot de passe."
-    }
+    },
+    "workspace": "Espace de travail"
   }
 }

@@ -227,11 +227,18 @@
     "label": "页脚"
   },
   "authLayout": {
-    "headline": "打造让人乐于填写的表单。",
-    "point1": "拖放式编辑器，附带现成模板。",
-    "point2": "端到端加密，每次登录都需验证码。",
-    "point3": "支持 20 种语言，适配所有设备。",
-    "poweredBy": "由 {app} 提供支持"
+    "headline": "轻松自如的表单。",
+    "subline": "几分钟内创建、分享和分析表单——默认安全，支持多种语言。",
+    "badgeEncrypted": "端到端加密",
+    "badgeOtp": "每次登录均需验证码",
+    "badgeLanguages": "20 种语言",
+    "previewForm": "客户反馈",
+    "previewName": "姓名",
+    "previewRating": "您这次的体验如何？",
+    "previewSubmit": "提交",
+    "previewStat": "本周回复",
+    "previewNotification": "收到新回复",
+    "previewNotificationMeta": "拉各斯 · 刚刚"
   },
   "auth": {
     "or": "或",
@@ -244,7 +251,8 @@
       "company": "公司名称",
       "subdomain": "工作区地址",
       "newPassword": "新密码",
-      "confirmPassword": "确认密码"
+      "confirmPassword": "确认密码",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "请输入有效的邮箱地址。",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "登录",
-      "desc": "欢迎回到 {workspace}。",
+      "desc": "登录 {workspace} 以继续。",
       "manageTitle": "找到您的工作区",
       "manageDesc": "输入邮箱，我们会发送验证码帮您找到工作区。",
       "expired": "会话已过期，请重新登录。",
@@ -269,7 +277,9 @@
       "findWorkspace": "找到我的工作区",
       "noWorkspace": "初次使用 Formalie？",
       "createWorkspace": "创建工作区",
-      "wrongWorkspace": "不是您的工作区？"
+      "wrongWorkspace": "不是您的工作区？",
+      "heading": "欢迎回来",
+      "secureNote": "由端到端加密和一次性验证码保护。"
     },
     "otp": {
       "label": "6 位验证码",
@@ -348,6 +358,7 @@
       "desc": "正在登录…",
       "failed": "该链接已过期",
       "failedDesc": "请使用邮箱和密码登录。"
-    }
+    },
+    "workspace": "工作区"
   }
 }

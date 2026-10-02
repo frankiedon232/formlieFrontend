@@ -227,11 +227,18 @@
     "label": "Pie de página"
   },
   "authLayout": {
-    "headline": "Crea formularios que a la gente le guste completar.",
-    "point1": "Editor de arrastrar y soltar con plantillas listas.",
-    "point2": "Cifrado de extremo a extremo, con un código en cada inicio de sesión.",
-    "point3": "En 20 idiomas, en cualquier dispositivo.",
-    "poweredBy": "Con la tecnología de {app}"
+    "headline": "Formularios sin esfuerzo.",
+    "subline": "Crea, comparte y analiza formularios en minutos: seguro por defecto y en cualquier idioma.",
+    "badgeEncrypted": "Cifrado de extremo a extremo",
+    "badgeOtp": "Código en cada inicio de sesión",
+    "badgeLanguages": "20 idiomas",
+    "previewForm": "Opinión del cliente",
+    "previewName": "Nombre completo",
+    "previewRating": "¿Qué tal fue tu visita?",
+    "previewSubmit": "Enviar",
+    "previewStat": "Respuestas esta semana",
+    "previewNotification": "Nueva respuesta recibida",
+    "previewNotificationMeta": "Lagos · ahora mismo"
   },
   "auth": {
     "or": "o",
@@ -244,7 +251,8 @@
       "company": "Nombre de la empresa",
       "subdomain": "Dirección del espacio",
       "newPassword": "Nueva contraseña",
-      "confirmPassword": "Confirmar contraseña"
+      "confirmPassword": "Confirmar contraseña",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Introduce un correo válido.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Iniciar sesión",
-      "desc": "Bienvenido de nuevo a {workspace}.",
+      "desc": "Inicia sesión en {workspace} para continuar.",
       "manageTitle": "Encuentra tu espacio",
       "manageDesc": "Introduce tu correo y te enviaremos un código para encontrar tus espacios.",
       "expired": "Tu sesión caducó. Vuelve a iniciar sesión.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Encontrar mi espacio",
       "noWorkspace": "¿Nuevo en Formalie?",
       "createWorkspace": "Crear un espacio",
-      "wrongWorkspace": "¿No es tu espacio?"
+      "wrongWorkspace": "¿No es tu espacio?",
+      "heading": "Bienvenido de nuevo",
+      "secureNote": "Protegido con cifrado de extremo a extremo y un código de un solo uso."
     },
     "otp": {
       "label": "Código de 6 dígitos",
@@ -348,6 +358,7 @@
       "desc": "Iniciando sesión…",
       "failed": "Este enlace caducó",
       "failedDesc": "Inicia sesión con tu correo y contraseña."
-    }
+    },
+    "workspace": "Espacio de trabajo"
   }
 }

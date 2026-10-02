@@ -46,6 +46,11 @@ async function save(event: FormSubmitEvent<typeof passwordState>) {
   }
 }
 
+function leave() {
+  auth.clearPending()
+  navigateTo('/auth/login')
+}
+
 async function resend(channel?: OtpChannel) {
   try {
     await auth.resend(channel)
@@ -57,25 +62,18 @@ async function resend(channel?: OtpChannel) {
 
 <template>
   <div class="flex flex-col gap-6">
-    <div>
-      <UButton
-        icon="i-lucide-arrow-left"
-        :label="t('auth.forgot.back')"
-        to="/auth/login"
-        color="neutral"
-        variant="link"
-        class="mb-4 px-0 rtl:[&_svg]:rotate-180"
-        @click="auth.clearPending()"
-      />
-      <h1 class="text-2xl font-semibold tracking-tight text-highlighted">{{ t('auth.forgot.title') }}</h1>
-      <p class="mt-1 text-sm text-muted">
-        {{
-          inReset && auth.pending.value
-            ? t('auth.otp.desc', { destination: auth.pending.value.challenge.masked_destination })
-            : t('auth.forgot.desc')
-        }}
-      </p>
-    </div>
+    <AuthHeading
+      :title="t('auth.forgot.title')"
+      :description="
+        inReset && auth.pending.value
+          ? t('auth.otp.desc', { destination: auth.pending.value.challenge.masked_destination })
+          : t('auth.forgot.desc')
+      "
+      :back="t('auth.forgot.back')"
+      workspace
+      class="!mb-2"
+      @back="leave"
+    />
 
     <UForm
       v-if="!inReset"
@@ -85,9 +83,25 @@ async function resend(channel?: OtpChannel) {
       @submit="sendCode"
     >
       <UFormField :label="t('auth.fields.email')" name="email" required>
-        <UInput v-model="emailState.email" type="email" autocomplete="email" class="w-full" autofocus />
+        <UInput
+          v-model="emailState.email"
+          type="email"
+          autocomplete="email"
+          icon="i-lucide-mail"
+          size="xl"
+          class="w-full"
+          autofocus
+        />
       </UFormField>
-      <UButton type="submit" :label="t('auth.forgot.send')" color="neutral" size="lg" block :loading="busy" />
+      <UButton
+        type="submit"
+        :label="t('auth.forgot.send')"
+        color="neutral"
+        size="xl"
+        block
+        :loading="busy"
+        class="justify-center font-semibold"
+      />
     </UForm>
 
     <template v-else-if="auth.pending.value">
@@ -101,17 +115,27 @@ async function resend(channel?: OtpChannel) {
       />
       <UForm :schema="passwordSchema" :state="passwordState" class="flex flex-col gap-4" @submit="save">
         <UFormField :label="t('auth.fields.newPassword')" name="password" required>
-          <AuthPasswordInput v-model="passwordState.password" autocomplete="new-password" />
+          <AuthPasswordInput
+            v-model="passwordState.password"
+            autocomplete="new-password"
+            size="xl"
+            icon="i-lucide-lock-keyhole"
+          />
           <AuthPasswordStrength :value="passwordState.password" />
         </UFormField>
         <UFormField :label="t('auth.fields.confirmPassword')" name="confirm" required>
-          <AuthPasswordInput v-model="passwordState.confirm" autocomplete="new-password" />
+          <AuthPasswordInput
+            v-model="passwordState.confirm"
+            autocomplete="new-password"
+            size="xl"
+            icon="i-lucide-lock-keyhole"
+          />
         </UFormField>
         <UButton
           type="submit"
           :label="t('auth.forgot.save')"
           color="neutral"
-          size="lg"
+          size="xl"
           block
           :loading="saving"
         />

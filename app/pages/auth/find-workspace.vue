@@ -57,16 +57,17 @@ function startOver() {
 
 <template>
   <div class="flex flex-col gap-6">
-    <div>
-      <h1 class="text-2xl font-semibold tracking-tight text-highlighted">{{ t('auth.find.title') }}</h1>
-      <p class="mt-1 text-sm text-muted">
-        <template v-if="step === 'code' && auth.pending.value">
-          {{ t('auth.otp.desc', { destination: auth.pending.value.challenge.masked_destination }) }}
-        </template>
-        <template v-else-if="step === 'results'">{{ t('auth.find.resultsDesc') }}</template>
-        <template v-else>{{ t('auth.find.desc') }}</template>
-      </p>
-    </div>
+    <AuthHeading
+      :title="t('auth.find.title')"
+      :description="
+        step === 'code' && auth.pending.value
+          ? t('auth.otp.desc', { destination: auth.pending.value.challenge.masked_destination })
+          : step === 'results'
+            ? t('auth.find.resultsDesc')
+            : t('auth.find.desc')
+      "
+      class="!mb-2"
+    />
 
     <UForm
       v-if="step === 'email'"
@@ -76,9 +77,25 @@ function startOver() {
       @submit="onSubmit"
     >
       <UFormField :label="t('auth.fields.email')" name="email" required>
-        <UInput v-model="state.email" type="email" autocomplete="email" class="w-full" autofocus />
+        <UInput
+          v-model="state.email"
+          type="email"
+          autocomplete="email"
+          icon="i-lucide-mail"
+          size="xl"
+          class="w-full"
+          autofocus
+        />
       </UFormField>
-      <UButton type="submit" :label="t('auth.find.send')" color="neutral" size="lg" block :loading="busy" />
+      <UButton
+        type="submit"
+        :label="t('auth.find.send')"
+        color="neutral"
+        size="xl"
+        block
+        :loading="busy"
+        class="justify-center font-semibold"
+      />
     </UForm>
 
     <AuthOtpInput

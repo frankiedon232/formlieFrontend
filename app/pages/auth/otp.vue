@@ -50,21 +50,18 @@ function back() {
 </script>
 
 <template>
-  <div v-if="auth.pending.value" class="flex flex-col gap-6">
-    <div>
-      <UButton
-        icon="i-lucide-arrow-left"
-        :label="t('common.back')"
-        color="neutral"
-        variant="link"
-        class="mb-4 px-0 rtl:[&_svg]:rotate-180"
-        @click="back"
-      />
-      <h1 class="text-2xl font-semibold tracking-tight text-highlighted">{{ t('auth.otp.title') }}</h1>
-      <p class="mt-1 text-sm text-muted">
-        {{ t('auth.otp.desc', { destination: auth.pending.value.challenge.masked_destination }) }}
-      </p>
-    </div>
+  <div v-if="auth.pending.value">
+    <AuthHeading :title="t('auth.otp.title')" :back="t('common.back')" workspace @back="back">
+      <template #description>
+        <i18n-t keypath="auth.otp.desc" scope="global">
+          <template #destination>
+            <span class="font-medium text-highlighted">{{
+              auth.pending.value.challenge.masked_destination
+            }}</span>
+          </template>
+        </i18n-t>
+      </template>
+    </AuthHeading>
 
     <AuthOtpInput
       ref="otp"
@@ -76,6 +73,14 @@ function back() {
       @resend="resend"
     />
 
-    <UButton v-if="verifying" :label="t('auth.otp.verifying')" color="neutral" size="lg" block loading />
+    <UButton
+      v-if="verifying"
+      :label="t('auth.otp.verifying')"
+      color="neutral"
+      size="xl"
+      block
+      loading
+      class="mt-6"
+    />
   </div>
 </template>

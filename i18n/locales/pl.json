@@ -227,11 +227,18 @@
     "label": "Stopka"
   },
   "authLayout": {
-    "headline": "Twórz formularze, które ludzie chętnie wypełniają.",
-    "point1": "Edytor „przeciągnij i upuść” z gotowymi szablonami.",
-    "point2": "Pełne szyfrowanie i kod przy każdym logowaniu.",
-    "point3": "W 20 językach, na każdym urządzeniu.",
-    "poweredBy": "Działa dzięki {app}"
+    "headline": "Formularze bez wysiłku.",
+    "subline": "Twórz, udostępniaj i analizuj formularze w kilka minut — bezpiecznie od początku, w każdym języku.",
+    "badgeEncrypted": "Pełne szyfrowanie",
+    "badgeOtp": "Kod przy każdym logowaniu",
+    "badgeLanguages": "20 języków",
+    "previewForm": "Opinie klientów",
+    "previewName": "Imię i nazwisko",
+    "previewRating": "Jak minęła wizyta?",
+    "previewSubmit": "Wyślij",
+    "previewStat": "Odpowiedzi w tym tygodniu",
+    "previewNotification": "Nowa odpowiedź",
+    "previewNotificationMeta": "Lagos · przed chwilą"
   },
   "auth": {
     "or": "lub",
@@ -244,7 +251,8 @@
       "company": "Nazwa firmy",
       "subdomain": "Adres obszaru roboczego",
       "newPassword": "Nowe hasło",
-      "confirmPassword": "Potwierdź hasło"
+      "confirmPassword": "Potwierdź hasło",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Podaj prawidłowy adres e-mail.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Zaloguj się",
-      "desc": "Witaj ponownie w {workspace}.",
+      "desc": "Zaloguj się do {workspace}, aby kontynuować.",
       "manageTitle": "Znajdź swój obszar roboczy",
       "manageDesc": "Podaj e-mail, a wyślemy kod, by znaleźć Twoje obszary robocze.",
       "expired": "Sesja wygasła. Zaloguj się ponownie.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Znajdź mój obszar roboczy",
       "noWorkspace": "Nowy w Formalie?",
       "createWorkspace": "Utwórz obszar roboczy",
-      "wrongWorkspace": "To nie Twój obszar roboczy?"
+      "wrongWorkspace": "To nie Twój obszar roboczy?",
+      "heading": "Witaj ponownie",
+      "secureNote": "Chronione pełnym szyfrowaniem i jednorazowym kodem."
     },
     "otp": {
       "label": "6-cyfrowy kod",
@@ -348,6 +358,7 @@
       "desc": "Logowanie…",
       "failed": "Ten link wygasł",
       "failedDesc": "Zaloguj się e-mailem i hasłem."
-    }
+    },
+    "workspace": "Obszar roboczy"
   }
 }

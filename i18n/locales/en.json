@@ -227,11 +227,18 @@
     "label": "Footer"
   },
   "authLayout": {
-    "headline": "Build forms people love to fill in.",
-    "point1": "Drag-and-drop builder with ready-made templates.",
-    "point2": "Encrypted end to end, with a code on every sign-in.",
-    "point3": "In 20 languages, on every device.",
-    "poweredBy": "Powered by {app}"
+    "headline": "Forms that feel effortless.",
+    "subline": "Build, share and analyse forms in minutes — secure by default, in every language.",
+    "badgeEncrypted": "End-to-end encrypted",
+    "badgeOtp": "Code on every sign-in",
+    "badgeLanguages": "20 languages",
+    "previewForm": "Customer feedback",
+    "previewName": "Full name",
+    "previewRating": "How was your visit?",
+    "previewSubmit": "Submit",
+    "previewStat": "Responses this week",
+    "previewNotification": "New response received",
+    "previewNotificationMeta": "Lagos · just now"
   },
   "auth": {
     "or": "or",
@@ -244,7 +251,8 @@
       "company": "Company name",
       "subdomain": "Workspace address",
       "newPassword": "New password",
-      "confirmPassword": "Confirm password"
+      "confirmPassword": "Confirm password",
+      "emailPlaceholder": "you{'@'}company.com"
     },
     "validation": {
       "email": "Enter a valid email address.",
@@ -257,7 +265,7 @@
     },
     "login": {
       "title": "Sign in",
-      "desc": "Welcome back to {workspace}.",
+      "desc": "Sign in to {workspace} to continue.",
       "manageTitle": "Find your workspace",
       "manageDesc": "Enter your email and we'll send you a code to find your workspaces.",
       "expired": "Your session expired. Please sign in again.",
@@ -269,7 +277,9 @@
       "findWorkspace": "Find my workspace",
       "noWorkspace": "New to Formalie?",
       "createWorkspace": "Create a workspace",
-      "wrongWorkspace": "Not your workspace?"
+      "wrongWorkspace": "Not your workspace?",
+      "heading": "Welcome back",
+      "secureNote": "Protected with end-to-end encryption and a one-time code."
     },
     "otp": {
       "label": "6-digit code",
@@ -348,6 +358,7 @@
       "desc": "Signing you in…",
       "failed": "This link has expired",
       "failedDesc": "Sign in with your email and password instead."
-    }
+    },
+    "workspace": "Workspace"
   }
 }
