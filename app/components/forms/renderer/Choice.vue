@@ -71,6 +71,6 @@ const disabled = computed(() => isLocked(props.field))
     v-model="on"
     color="neutral"
     :disabled="disabled"
-    :label="field.placeholder || undefined"
+    :aria-label="field.label"
   />
 </template>

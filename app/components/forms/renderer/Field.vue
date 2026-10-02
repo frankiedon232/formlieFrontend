@@ -59,20 +59,34 @@ const CONTROLS: Record<string, string> = {
   image: 'Layout',
 }
 const control = computed(() => CONTROLS[props.field.type] ?? 'Text')
-const left = computed(() => props.labelPosition === 'left' && showLabel.value)
+/** Yes / No: switch and label on one line (switch first, label right after, like a checkbox). */
+const inline = computed(() => props.field.type === 'toggle')
+const left = computed(() => props.labelPosition === 'left' && showLabel.value && !inline.value)
+// In "beside the field" forms the switch lines up with the other inputs (label column + gap).
 </script>
 
 <template>
   <div
     class="flex flex-col gap-1"
-    :class="left ? '@md/form:flex-row @md/form:items-start @md/form:gap-3' : ''"
+    :class="
+      inline
+        ? [
+            'flex-row flex-wrap items-center gap-x-2.5',
+            labelPosition === 'left' ? '@md/form:ps-[calc(min(var(--form-label-w,10rem),30%)_+_0.75rem)]' : '',
+          ]
+        : left
+          ? '@md/form:flex-row @md/form:items-start @md/form:gap-3'
+          : ''
+    "
     :data-field-type="field.type"
   >
     <div
       v-if="showLabel"
       class="flex min-w-0 items-center gap-1"
       :class="
-        left
+        inline
+          ? 'order-2 min-h-6'
+          : left
           ? '@md/form:min-h-8 @md/form:w-[min(var(--form-label-w,10rem),30%)] @md/form:shrink-0 @md/form:justify-end @md/form:text-end'
           : ''
       "
@@ -100,7 +114,7 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value)
       </UPopover>
     </div>
 
-    <div class="flex min-w-0 flex-1 flex-col gap-1">
+    <div class="flex min-w-0 flex-col gap-1" :class="inline ? 'order-1 flex-none' : 'flex-1'">
     <FormsRendererText v-if="control === 'Text'" :id="id" v-model="value" :field="field" :mode="mode" />
     <FormsRendererRichText v-else-if="control === 'RichText'" :id="id" v-model="value" :field="field" :mode="mode" />
     <FormsRendererDateTime
@@ -156,7 +170,8 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value)
       <template v-if="$slots.label" #label><slot name="label" /></template>
     </FormsRendererLayout>
 
-    <p v-if="error" class="text-xs text-error" role="alert">{{ error }}</p>
+    <p v-if="error && !inline" class="text-xs text-error" role="alert">{{ error }}</p>
     </div>
+    <p v-if="error && inline" class="order-3 basis-full text-xs text-error" role="alert">{{ error }}</p>
   </div>
 </template>
