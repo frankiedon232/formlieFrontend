@@ -1142,6 +1142,11 @@
         "security": "Keys & certificates",
         "apps": "Apps & installers"
       }
+    },
+    "fullscreen": {
+      "enter": "Full screen",
+      "exit": "Exit full screen",
+      "label": "Form builder, full screen"
     }
   },
   "renderer": {

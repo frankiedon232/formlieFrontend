@@ -44,18 +44,11 @@ const phoneMenu = computed<DropdownMenuItem[][]>(() => [
   [{ label: t('builder.preview.button'), icon: 'i-lucide-eye', onSelect: () => { previewOpen.value = true } }],
 ])
 
-const saveIcon = computed(() =>
-  autosave.state.value === 'saving' || autosave.state.value === 'pending'
-    ? 'i-lucide-loader-circle'
-    : autosave.state.value === 'error' || autosave.state.value === 'conflict'
-      ? 'i-lucide-cloud-alert'
-      : 'i-lucide-refresh-cw',
-)
-
 defineShortcuts({
   meta_z: () => builder.history.undo(),
   meta_shift_z: () => builder.history.redo(),
   meta_y: () => builder.history.redo(),
+  meta_shift_f: () => s.toggleFullscreen(),
 })
 </script>
 
@@ -77,12 +70,7 @@ defineShortcuts({
       <USkeleton v-else class="h-6 w-48" />
     </template>
     <template v-if="form" #meta>
-      <span class="flex min-w-0 items-center gap-1.5" aria-live="polite">
-        <DataStatusBadge :status="form.status" />
-        <UBadge v-if="form.has_unpublished_changes" :label="t('builder.unpublished')" color="warning" variant="subtle" size="sm" class="rounded-md" />
-        <UIcon :name="saveIcon" class="size-3 shrink-0" :class="autosave.state.value === 'saving' ? 'animate-spin' : ''" />
-        <span class="truncate">{{ s.statusText.value }}</span>
-      </span>
+      <FormsBuilderSaveStatus :session="s" />
     </template>
 
     <template v-if="form" #actions>
@@ -99,6 +87,9 @@ defineShortcuts({
       />
       <UButton class="hidden sm:inline-flex" icon="i-lucide-undo-2" color="neutral" variant="outline" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
       <UButton class="hidden sm:inline-flex" icon="i-lucide-redo-2" color="neutral" variant="outline" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
+      <UTooltip :text="t('builder.fullscreen.enter')" :kbds="['meta', 'shift', 'f']">
+        <UButton class="hidden lg:inline-flex" icon="i-lucide-maximize-2" color="neutral" variant="outline" square :aria-label="t('builder.fullscreen.enter')" @click="s.toggleFullscreen(true)" />
+      </UTooltip>
       <UButton class="hidden sm:inline-flex" icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" @click="previewOpen = true" />
       <!-- Phones / small tablets: modes, undo / redo and preview fold into one menu. -->
       <UDropdownMenu :items="phoneMenu" :content="{ align: 'end' }" class="md:hidden">
@@ -132,7 +123,43 @@ defineShortcuts({
         :description="t('builder.save.conflictDesc')"
         :actions="[{ label: t('builder.save.reload'), color: 'neutral', icon: 'i-lucide-rotate-cw', onClick: s.load }]"
       />
-      <slot />
+      <!-- Full screen: the same content moves into a layer over the app (state is kept), under a
+           slim bar with the name, save status and the main actions. -->
+      <Teleport to="body" :disabled="!s.fullscreen.value">
+        <div
+          :class="s.fullscreen.value ? 'fixed inset-0 z-40 flex flex-col bg-default' : 'contents'"
+          :role="s.fullscreen.value ? 'region' : undefined"
+          :aria-label="s.fullscreen.value ? t('builder.fullscreen.label') : undefined"
+        >
+          <div v-if="s.fullscreen.value" class="flex h-12 shrink-0 items-center gap-2 border-b border-default px-3 sm:px-4">
+            <p class="min-w-0 truncate text-sm font-semibold text-highlighted">{{ form?.name }}</p>
+            <FormsBuilderSaveStatus :session="s" class="min-w-0" />
+            <div class="ms-auto flex shrink-0 items-center gap-1.5">
+              <UTabs
+                :model-value="mode"
+                :items="modes"
+                :content="false"
+                color="neutral"
+                size="xs"
+                :ui="{ ...SEGMENTED_UI, label: 'hidden xl:inline' }"
+                class="hidden md:flex"
+                :aria-label="t('builder.mode.label')"
+                @update:model-value="go"
+              />
+              <UButton icon="i-lucide-undo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
+              <UButton icon="i-lucide-redo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
+              <UButton icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" size="sm" class="hidden sm:inline-flex" @click="previewOpen = true" />
+              <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" @click="publishOpen = true" />
+              <UTooltip :text="t('builder.fullscreen.exit')" :kbds="['esc']">
+                <UButton icon="i-lucide-minimize-2" color="neutral" variant="outline" size="sm" square :aria-label="t('builder.fullscreen.exit')" @click="s.toggleFullscreen(false)" />
+              </UTooltip>
+            </div>
+          </div>
+          <div :class="s.fullscreen.value ? 'min-h-0 flex-1 overflow-y-auto p-3 sm:p-4' : 'contents'">
+            <slot />
+          </div>
+        </div>
+      </Teleport>
     </template>
 
     <LazyFormsBuilderPublishModal v-if="publishUsed" v-model:open="publishOpen" :busy="s.publishing.value" :republish="form?.status === 'published'" @publish="publish" />

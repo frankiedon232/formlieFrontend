@@ -1142,6 +1142,11 @@
         "security": "Chaves e certificados",
         "apps": "Apps e instaladores"
       }
+    },
+    "fullscreen": {
+      "enter": "Tela cheia",
+      "exit": "Sair da tela cheia",
+      "label": "Editor de formulário, tela cheia"
     }
   },
   "renderer": {

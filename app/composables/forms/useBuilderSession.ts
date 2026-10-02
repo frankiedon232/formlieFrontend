@@ -109,9 +109,32 @@ export function useBuilderSession(formId: string) {
       : t('builder.save.upToDate')
   })
 
+  // Full screen: only fields · canvas · settings with a slim bar (FormsBuilderFrame). Uses the
+  // browser's full screen when allowed; leaving it (Esc) leaves our mode too.
+  const fullscreen = ref(false)
+  const browser = useFullscreen()
+  async function toggleFullscreen(next = !fullscreen.value) {
+    fullscreen.value = next
+    try {
+      if (next && browser.isSupported.value) await browser.enter()
+      else if (!next && browser.isFullscreen.value) await browser.exit()
+    } catch {
+      // Not allowed (e.g. inside an iframe): the in-app full screen still works.
+    }
+  }
+  watch(browser.isFullscreen, active => {
+    if (!active && fullscreen.value) fullscreen.value = false
+  })
+  onBeforeRouteLeave(() => {
+    if (fullscreen.value) void toggleFullscreen(false)
+  })
+
   onMounted(load)
 
-  return { formId, builder, form, rowVersion, loading, failed, autosave, statusText, publishing, load, rename, publish, replaceDraft }
+  return {
+    formId, builder, form, rowVersion, loading, failed, autosave, statusText, publishing,
+    fullscreen, toggleFullscreen, load, rename, publish, replaceDraft,
+  }
 }
 
 export type BuilderSession = ReturnType<typeof useBuilderSession>

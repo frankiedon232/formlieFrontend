@@ -1142,6 +1142,11 @@
         "security": "Khóa và chứng chỉ",
         "apps": "Ứng dụng và trình cài đặt"
       }
+    },
+    "fullscreen": {
+      "enter": "Toàn màn hình",
+      "exit": "Thoát toàn màn hình",
+      "label": "Trình tạo biểu mẫu, toàn màn hình"
     }
   },
   "renderer": {

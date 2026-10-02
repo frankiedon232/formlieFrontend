@@ -1142,6 +1142,11 @@
         "security": "Kunci & sertifikat",
         "apps": "Aplikasi & penginstal"
       }
+    },
+    "fullscreen": {
+      "enter": "Layar penuh",
+      "exit": "Keluar dari layar penuh",
+      "label": "Pembuat formulir, layar penuh"
     }
   },
   "renderer": {

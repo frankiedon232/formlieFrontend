@@ -1142,6 +1142,11 @@
         "security": "Sleutels en certificaten",
         "apps": "Apps en installatieprogramma’s"
       }
+    },
+    "fullscreen": {
+      "enter": "Volledig scherm",
+      "exit": "Volledig scherm sluiten",
+      "label": "Formulierbouwer, volledig scherm"
     }
   },
   "renderer": {

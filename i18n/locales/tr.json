@@ -1142,6 +1142,11 @@
         "security": "Anahtarlar ve sertifikalar",
         "apps": "Uygulamalar ve yükleyiciler"
       }
+    },
+    "fullscreen": {
+      "enter": "Tam ekran",
+      "exit": "Tam ekrandan çık",
+      "label": "Form oluşturucu, tam ekran"
     }
   },
   "renderer": {

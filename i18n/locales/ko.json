@@ -1142,6 +1142,11 @@
         "security": "키 및 인증서",
         "apps": "앱 및 설치 파일"
       }
+    },
+    "fullscreen": {
+      "enter": "전체 화면",
+      "exit": "전체 화면 종료",
+      "label": "양식 빌더, 전체 화면"
     }
   },
   "renderer": {

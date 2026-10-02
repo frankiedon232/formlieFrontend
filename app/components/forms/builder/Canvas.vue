@@ -113,10 +113,10 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
 
     <UCard
       v-if="page"
-      class="mx-auto w-full max-w-3xl @container/form"
+      class="w-full @container/form"
       :class="FORM_RADIUS"
       :style="{ '--form-label-w': labelWidth }"
-      :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-8' }"
+      :ui="{ body: 'flex flex-col gap-4 p-3 sm:p-5' }"
     >
       <div v-if="pages.length > 1" class="flex flex-col gap-1.5" @click.stop>
         <div class="flex justify-between text-xs text-muted">

@@ -1142,6 +1142,11 @@
         "security": "Schlüssel & Zertifikate",
         "apps": "Apps & Installer"
       }
+    },
+    "fullscreen": {
+      "enter": "Vollbild",
+      "exit": "Vollbild beenden",
+      "label": "Formular-Editor, Vollbild"
     }
   },
   "renderer": {

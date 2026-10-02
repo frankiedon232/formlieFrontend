@@ -1142,6 +1142,11 @@
         "security": "Clés et certificats",
         "apps": "Applications et installeurs"
       }
+    },
+    "fullscreen": {
+      "enter": "Plein écran",
+      "exit": "Quitter le plein écran",
+      "label": "Éditeur de formulaire, plein écran"
     }
   },
   "renderer": {

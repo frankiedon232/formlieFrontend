@@ -1142,6 +1142,11 @@
         "security": "Claves y certificados",
         "apps": "Apps e instaladores"
       }
+    },
+    "fullscreen": {
+      "enter": "Pantalla completa",
+      "exit": "Salir de pantalla completa",
+      "label": "Editor de formularios, pantalla completa"
     }
   },
   "renderer": {

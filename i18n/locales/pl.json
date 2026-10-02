@@ -1142,6 +1142,11 @@
         "security": "Klucze i certyfikaty",
         "apps": "Aplikacje i instalatory"
       }
+    },
+    "fullscreen": {
+      "enter": "Pełny ekran",
+      "exit": "Zamknij pełny ekran",
+      "label": "Kreator formularza, pełny ekran"
     }
   },
   "renderer": {

@@ -1142,6 +1142,11 @@
         "security": "密钥和证书",
         "apps": "应用和安装程序"
       }
+    },
+    "fullscreen": {
+      "enter": "全屏",
+      "exit": "退出全屏",
+      "label": "表单编辑器（全屏）"
     }
   },
   "renderer": {

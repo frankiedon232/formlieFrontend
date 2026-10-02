@@ -24,6 +24,8 @@ const issues = computed(() =>
 
 const large = useMediaQuery('(min-width: 1024px)')
 const tablet = useMediaQuery('(min-width: 768px)')
+// Side panes fill the height left under the page header — or under the slim bar in full screen.
+const paneHeight = computed(() => (session.fullscreen.value ? 'h-[calc(100dvh-5.5rem)]' : 'h-[calc(100dvh-11rem)]'))
 const paletteOpen = ref(false)
 const inspectorOpen = ref(false)
 /** "Add field" from the canvas: the drawer / slide-over below laptop width, else the palette search. */
@@ -38,7 +40,11 @@ defineShortcuts({
   backspace: () => builder.removeWithUndo(),
   alt_arrowup: () => builder.selected.value.length === 1 && builder.move(builder.selected.value[0]!, -1),
   alt_arrowdown: () => builder.selected.value.length === 1 && builder.move(builder.selected.value[0]!, 1),
-  escape: () => (builder.selected.value = []),
+  escape: () => {
+    // Esc: first clears the selection, then leaves full screen.
+    if (builder.selected.value.length) builder.selected.value = []
+    else if (session.fullscreen.value) void session.toggleFullscreen(false)
+  },
 })
 </script>
 
@@ -47,19 +53,19 @@ defineShortcuts({
     <template #loading>
       <div class="grid gap-4 lg:grid-cols-[240px_minmax(0,1fr)_300px]" :aria-label="t('common.loading')">
         <USkeleton class="hidden h-[70vh] lg:block" />
-        <USkeleton class="mx-auto h-[70vh] w-full max-w-3xl" />
+        <USkeleton class="h-[70vh] w-full" />
         <USkeleton class="hidden h-[70vh] lg:block" />
       </div>
     </template>
 
     <div class="grid items-start gap-4 lg:grid-cols-[240px_minmax(0,1fr)_300px]">
-      <UCard v-if="large" class="sticky top-0" :ui="{ body: 'p-3 sm:p-3 h-[calc(100dvh-11rem)]' }">
+      <UCard v-if="large" class="sticky top-0" :ui="{ body: `p-3 sm:p-3 ${paneHeight}` }">
         <FormsBuilderPalette id="builder-palette" />
       </UCard>
-      <div class="min-w-0 rounded-xl bg-elevated/40 p-3 sm:p-5">
+      <div class="min-w-0 rounded-xl bg-elevated/40 p-2 sm:p-3">
         <FormsBuilderCanvas :issues="issues" @add-field="showFieldList" />
       </div>
-      <UCard v-if="large" class="sticky top-0" :ui="{ body: 'p-4 sm:p-4 h-[calc(100dvh-11rem)]' }">
+      <UCard v-if="large" class="sticky top-0" :ui="{ body: `p-4 sm:p-4 ${paneHeight}` }">
         <FormsBuilderInspector />
       </UCard>
     </div>

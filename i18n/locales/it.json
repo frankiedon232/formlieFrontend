@@ -1142,6 +1142,11 @@
         "security": "Chiavi e certificati",
         "apps": "App e installer"
       }
+    },
+    "fullscreen": {
+      "enter": "Schermo intero",
+      "exit": "Esci da schermo intero",
+      "label": "Editor del modulo, schermo intero"
     }
   },
   "renderer": {

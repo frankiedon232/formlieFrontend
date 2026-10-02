@@ -1142,6 +1142,11 @@
         "security": "Funguo na vyeti",
         "apps": "Programu na visakinishi"
       }
+    },
+    "fullscreen": {
+      "enter": "Skrini nzima",
+      "exit": "Toka kwenye skrini nzima",
+      "label": "Kiunda fomu, skrini nzima"
     }
   },
   "renderer": {
