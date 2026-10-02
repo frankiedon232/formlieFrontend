@@ -2,6 +2,9 @@ import { describe, expect, it } from 'vitest'
 import {
   allFields,
   blankSchema,
+  diffSchemas,
+  sectionOwners,
+  type FormField,
   keyFromLabel,
   publishIssues,
   starterSchema,
@@ -54,5 +57,36 @@ describe('form schema helpers', () => {
     const bad = structuredClone(schema)
     bad.pages[0]!.rows[0]!.fields[0]!.width = 20
     expect(formSchemaV1.safeParse(bad).success).toBe(false)
+  })
+})
+
+describe('diffSchemas', () => {
+  it('lists added, removed and changed fields', () => {
+    const before = starterSchema('incident_report')
+    const after = structuredClone(before)
+    const first = allFields(after)[0]
+    const second = allFields(after).at(-1)
+    first!.label = 'Renamed'
+    for (const page of after.pages) page.rows = page.rows.filter(row => !row.fields.some(f => f.id === second!.id))
+    after.pages[0]!.rows.push({ id: 'row_x', fields: [{ ...structuredClone(first!), id: 'fld_new', key: 'extra' }] })
+    const diff = diffSchemas(before, after)
+    expect(diff.changed.map(f => f.id)).toEqual([first!.id])
+    expect(diff.removed.map(f => f.id)).toContain(second!.id)
+    expect(diff.added.map(f => f.id)).toEqual(['fld_new'])
+    expect(diffSchemas(before, before)).toMatchObject({ added: [], removed: [], changed: [], pages: 0, rules: 0 })
+  })
+})
+
+describe('sectionOwners', () => {
+  const f = (id: string, type: string, props?: Record<string, unknown>) => ({ id, key: id, type, label: id, props }) as FormField
+  it('assigns rows to the collapsible section above them', () => {
+    const owners = sectionOwners([
+      { id: 'r0', fields: [f('a', 'short_text')] },
+      { id: 'r1', fields: [f('s1', 'section', { collapsible: true })] },
+      { id: 'r2', fields: [f('b', 'email')] },
+      { id: 'r3', fields: [f('s2', 'section')] },
+      { id: 'r4', fields: [f('c', 'phone')] },
+    ])
+    expect([...owners.values()]).toEqual([null, null, 's1', null, null])
   })
 })

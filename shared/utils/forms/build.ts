@@ -288,3 +288,44 @@ export function publishIssues(schema: FormSchemaV1): PublishIssue[] {
   }
   return issues
 }
+
+export interface SchemaDiff {
+  added: FormField[]
+  removed: FormField[]
+  changed: FormField[]
+  pages: number
+  rules: number
+}
+
+/**
+ * What changed from `before` to `after`, by field id: added, removed, changed (any property,
+ * incl. position width), plus the change in page and rule count. Drives version compare.
+ */
+export function diffSchemas(before: FormSchemaV1, after: FormSchemaV1): SchemaDiff {
+  const old = new Map(allFields(before).map(f => [f.id, f]))
+  const next = new Map(allFields(after).map(f => [f.id, f]))
+  return {
+    added: [...next.values()].filter(f => !old.has(f.id)),
+    removed: [...old.values()].filter(f => !next.has(f.id)),
+    changed: [...next.values()].filter(f => old.has(f.id) && JSON.stringify(old.get(f.id)) !== JSON.stringify(f)),
+    pages: after.pages.length - before.pages.length,
+    rules: (after.logic?.length ?? 0) - (before.logic?.length ?? 0),
+  }
+}
+
+/**
+ * For collapsible sections: row id → id of the collapsible section heading it sits under (or
+ * null). A section row owns the rows after it up to the next section row.
+ */
+export function sectionOwners(rows: { id: string; fields: FormField[] }[]): Map<string, string | null> {
+  const owners = new Map<string, string | null>()
+  let owner: string | null = null
+  for (const row of rows) {
+    const first = row.fields[0]
+    if (first?.type === 'section') {
+      owner = first.props?.collapsible ? first.id : null
+      owners.set(row.id, null)
+    } else owners.set(row.id, owner)
+  }
+  return owners
+}

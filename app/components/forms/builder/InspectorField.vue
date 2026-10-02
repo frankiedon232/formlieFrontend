@@ -109,6 +109,7 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
         has('slider') ||
         has('currency') ||
         has('content') ||
+        has('collapsible') ||
         has('image') ||
         has('formula')
       "
@@ -191,6 +192,22 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
           "
         />
       </UFormField>
+      <template v-if="has('collapsible')">
+        <USwitch
+          :model-value="!!p.collapsible"
+          :label="t('builder.inspector.collapsible')"
+          :description="t('builder.inspector.collapsibleHint')"
+          color="neutral"
+          @update:model-value="v => setProp({ collapsible: v, ...(v ? {} : { collapsed: false }) })"
+        />
+        <USwitch
+          v-if="p.collapsible"
+          :model-value="!!p.collapsed"
+          :label="t('builder.inspector.startCollapsed')"
+          color="neutral"
+          @update:model-value="v => setProp({ collapsed: v })"
+        />
+      </template>
       <template v-if="has('image')">
         <UFormField :label="t('builder.inspector.imageUrl')" :hint="t('builder.inspector.imageHint')">
           <UInput

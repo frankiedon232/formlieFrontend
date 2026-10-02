@@ -28,6 +28,7 @@ export type InspectorControl =
   | 'currency'
   | 'matrix_rows'
   | 'content'
+  | 'collapsible'
   | 'image'
   | 'formula'
   | 'prefill'
@@ -111,7 +112,7 @@ export const FIELD_REGISTRY: Record<FieldType, RegistryEntry> = {
   hidden: { controls: ['label', 'default_text', 'prefill'], defaults: { props: { param: '' } } },
   calculated: { controls: ['label', 'help', 'width', 'formula'], defaults: { props: { formula: '' } } },
   payment: { controls: ['label', 'help', 'required'], defaults: {} },
-  section: { controls: ['label', 'content'], defaults: { props: { description: '' } } },
+  section: { controls: ['label', 'content', 'collapsible'], defaults: { props: { description: '' } } },
   paragraph: { controls: ['content', 'width'], defaults: { props: { text: '' } } },
   divider: { controls: [], defaults: {} },
   image: { controls: ['image', 'width'], defaults: { props: { src: '', alt: '' } } },

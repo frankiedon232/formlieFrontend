@@ -178,7 +178,8 @@ export const restoreVersion = defineMockRoute(({ event }) => {
   const version = form.versions?.find(item => item.id === getRouterParam(event, 'vid'))
   if (!version) throw new MockError('FRM-GEN-1004')
   form.schema = structuredClone(version.schema)
-  form.has_unpublished_changes = form.status !== 'draft'
+  form.has_unpublished_changes =
+    !!form.published_schema && JSON.stringify(version.schema) !== JSON.stringify(form.published_schema)
   form.row_version++
   form.updated_at = new Date().toISOString()
   saveForms()

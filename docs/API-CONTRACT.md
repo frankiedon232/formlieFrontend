@@ -208,4 +208,8 @@ Field types: `shared/utils/forms/fields.ts` (text, dates, choice, rating, files,
 }
 ```
 
+Logic rules (`logic[]`): `when` holds **either** `all` or `any` (1–20 conditions); `field` and `target` are field ids (`jump` targets a page id). Operators: `eq neq contains not_contains empty not_empty gt gte lt lte true false before after` (the editor offers the ones that fit the field type; `empty`, `not_empty`, `true`, `false` take no `value`). Actions: `show` (hidden until the rule matches), `hide`, `require`, `jump` (after the page holding the first condition's field; first match wins). The server must evaluate rules with the same semantics (`shared/utils/forms/logic.ts`) and skip validation of hidden fields. Calculated fields keep their formula in `props.formula` (numbers, `{field_key}`, `+ - * /`, brackets); the server recomputes the value on submit and ignores the posted one. Section headings may carry `props.collapsible` / `props.collapsed` (display only).
+
+Version list item (`GET /forms/{id}/versions`): `{ id, number, published_at, published_by: { id, name }, change_summary|null, fields_count }`; restore sets `has_unpublished_changes` to whether the restored schema differs from the live one.
+
 Theme tokens (`themes.tokens`): `{ layout, page: { bg, bg_image, overlay }, container: { width, padding, radius, border, shadow, bg }, typography: { font, base_size, heading_weight }, colors: { primary, text, muted, input_bg, input_border, error }, inputs: { radius, size, style }, buttons: { radius, variant, full_width }, header: { image, logo, align } }`.

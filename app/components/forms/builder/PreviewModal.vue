@@ -1,8 +1,15 @@
-<!-- Live preview of the draft: fill it in like a respondent, on desktop / tablet / phone widths. Nothing is sent. -->
+<!--
+  Live preview of the draft (or of a published version via `schema`): fill it in like a
+  respondent, on desktop / tablet / phone widths. Nothing is sent.
+-->
 <script setup lang="ts">
+import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+
+const props = defineProps<{ schema?: FormSchemaV1 | null; title?: string }>()
 const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const builder = useBuilder()
+const shown = computed(() => props.schema ?? builder.schema.value)
 
 const device = ref<'desktop' | 'tablet' | 'phone'>('desktop')
 const devices = computed(() => [
@@ -21,7 +28,7 @@ watch(open, value => {
 <template>
   <USlideover
     v-model:open="open"
-    :title="t('builder.preview.title')"
+    :title="title ?? t('builder.preview.title')"
     :description="t('builder.preview.desc')"
     :ui="{ content: 'w-full sm:max-w-5xl', body: 'bg-elevated/40' }"
   >
@@ -40,7 +47,7 @@ watch(open, value => {
     <template #body>
       <div class="mx-auto w-full transition-[max-width] duration-300" :class="WIDTH[device]">
         <UCard :ui="{ body: 'p-4 sm:p-8' }">
-          <FormsRendererForm v-if="builder.schema.value" :key="key" :schema="builder.schema.value" preview />
+          <FormsRendererForm v-if="shown" :key="key" :schema="shown" preview />
         </UCard>
       </div>
     </template>

@@ -50,3 +50,13 @@ export interface FormBulkResult {
 }
 
 export const TRASH_RETENTION_DAYS = 30
+
+/** GET /forms/:id/versions item — a published snapshot (the schema comes from GET …/versions/:vid). */
+export interface FormVersion {
+  id: string
+  number: number
+  published_at: string
+  published_by: { id: string; name: string }
+  change_summary: string | null
+  fields_count: number
+}

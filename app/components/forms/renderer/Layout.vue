@@ -9,7 +9,10 @@ const p = computed(() => (props.field.props ?? {}) as Record<string, string | un
 
 <template>
   <div v-if="field.type === 'section'" class="flex flex-col gap-1 pt-2">
-    <h2 class="text-lg font-semibold text-highlighted">{{ field.label || t('builder.field.section') }}</h2>
+    <h2 class="flex items-center gap-2 text-lg font-semibold text-highlighted">
+      {{ field.label || t('builder.field.section') }}
+      <UIcon v-if="mode === 'builder' && p.collapsible" name="i-lucide-chevrons-up-down" class="size-4 text-muted" />
+    </h2>
     <p v-if="p.description" class="text-sm text-muted">{{ p.description }}</p>
   </div>
   <p v-else-if="field.type === 'paragraph'" class="text-sm whitespace-pre-line text-default">

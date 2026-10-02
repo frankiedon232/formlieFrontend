@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F7 — Form builder
+**Last updated:** 2026-10-02 · **Current phase:** F7 — Form builder (review) → next F8 Designer
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -17,7 +17,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F4    | Audit trail                                       | ✅     | 100% |
 | F5    | Onboarding wizard                                 | ✅     | 100% |
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
-| F7    | Form builder                                      | 🟡     | ~70% |
+| F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ⬜     | 0%   |
 | F9    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F10   | Responses                                         | ⬜     | 0%   |
@@ -279,14 +279,14 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F7 — Form builder 🟡
+## F7 — Form builder ✅
 
 **Goal:** a robust drag-and-drop builder that works on desktop and stays usable on tablet and phone.
 
 ### Fields (one registry entry each: palette item, defaults, inspector, renderer, validation)
 
 - ✅ Text: short text, long text, email, phone, URL, number, currency (amount with the currency symbol)
-- 🟡 Rich text — multi-line input for now; a real editor needs a dependency (ask first)
+- 🟡 Rich text — multi-line input for now; a real editor needs a dependency (**awaiting owner approval**)
 - ✅ Dates: date, time, date-time, date range
 - ✅ Choice: dropdown, multi-select, radio, checkbox, toggle, ranking (drag + ↑ / ↓), matrix / grid
 - ✅ Rating: star rating, scale / NPS (with end labels), slider
@@ -304,22 +304,22 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Select (click / Enter), multi-select (Shift / Ctrl), duplicate (`Ctrl+D`), delete (`Del`) with an Undo toast
 - ✅ Undo / redo (`Ctrl+Z` / `Ctrl+Shift+Z`), typing grouped into one step
 - ✅ Multi-page forms (page tabs, add / rename / move / delete with confirm) with progress bar
-- ⬜ Collapsible sections that group the fields below them (today: section heading block)
+- ✅ Collapsible sections: a section heading can fold the rows below it (optionally folded at start); folded required fields unfold on submit
 
 ### Inspector
 
 - ✅ Field properties: label, help, placeholder, required, width, default value, field key (follows the label until first publish)
 - ✅ Validation rules: length, number range, pattern + message, choices min / max, file types / count / size
 - ✅ Options: add, rename, reorder (drag or ↑ / ↓), remove, paste a list; matrix rows
-- ⬜ Reusable option sets in the inspector (with F13 Option sets)
+- ➡️ Reusable option sets in the inspector — moved to F13 Option sets (needs the option-set library first)
 - ✅ Prefill from URL parameters (example link shown)
 - ✅ Nothing selected → form settings (progress bar, save & resume, thank-you screen); several → bulk width / required / move / duplicate / delete
 
 ### Logic (`/forms/[id]/logic`)
 
-- ⬜ Show / hide, skip / jump to page, required-if
-- ⬜ Calculated values
-- ⬜ Visual rule editor with a plain-language summary
+- ✅ Show / hide, skip / jump to page, required-if — one evaluator (`shared/utils/forms/logic.ts`) for preview, public form and API; Back follows the path actually taken
+- ✅ Calculated values — safe arithmetic parser (never `eval`), formula editor with key chips and checks (unknown key, self-reference)
+- ✅ Visual rule editor with a plain-language summary ("When Severity is High, require Photos."), All / Any, reorder, duplicate, delete with undo, broken-rule badges
 
 ### Saving and publishing
 
@@ -327,12 +327,14 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Top bar: inline name, status badge, "Changes not published", undo / redo, Preview, Publish (with change summary and blocking issues that jump to the field)
 - ✅ Editing a published form creates a draft; published version stays live
 - ✅ Live preview: fill it in like a respondent (required checks, pages, thank-you screen) on desktop / tablet / phone widths
-- ⬜ Versions page: history, compare, restore (API ready: versions, restore, discard)
+- ✅ Versions page: timeline of the draft + published versions, view any version in the preview, compare draft vs version (added / changed / removed), restore (confirm), discard draft changes
+- ✅ Build / Logic / Versions share one frame (`FormsBuilderFrame` + `useBuilderSession`); switching saves first
 
 ### Devices
 
 - ✅ Laptop+: three panes; tablet: palette and settings as slide-overs; phone: bottom drawers, floating "Add field / Field settings" bar, header folds undo / redo / preview into ⋯
-- ⬜ Heavy parts lazy-loaded; long canvases virtualised
+- ✅ Heavy parts lazy-loaded (preview, publish dialogs load on first use)
+- ➡️ Canvas virtualisation deferred: it conflicts with drag and drop; revisit if forms > 200 fields feel slow (measured, not guessed)
 
 ---
 
@@ -624,3 +626,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F6    | Forms lifecycle: new (blank / template / import), inline rename, duplicate, move, tags, folders, unpublish / close / reopen / archive / unarchive, Trash with restore and permanent delete, bulk, row_version conflicts, busy rows, form overview with activity. Checked desktop / phone, Arabic RTL; all actions in the audit trail.                                                                                                                 |
 | 2026-10-02 | F2    | In-app navigation progress (owner): one activity counter for navigation + API calls drives the top bar and a new sweeping bar under each page header; starts on click, runs until the new page's data has arrived.                                                                                                                                                                                                                                    |
 | 2026-10-02 | F7    | Builder milestone 1–2: field catalogue (34 types) + registry, renderer for every type, three-pane builder (palette · real form on a page card · inspector), drag and drop (palette → canvas, within / between rows), keyboard moves, multi-select, undo / redo, delete with undo, autosave with conflict pause, publish with checks + change summary, live preview with device sizes, phone / tablet layout; segmented controls now match the design. |
+| 2026-10-02 | F7    | Milestone 3 — phase done: logic editor (`/forms/[id]/logic`: rules with plain-language summaries, All / Any, show / hide / require / jump, calculations), versions page (timeline, view, compare, restore, discard), shared builder frame with Build / Logic / Versions switch (saves before switching), collapsible sections, lazy dialogs; 20 languages; 86 tests. Stopped for review.                                                              |

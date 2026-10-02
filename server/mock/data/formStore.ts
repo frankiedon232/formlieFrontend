@@ -3,7 +3,7 @@
  * (a copy each); a new workspace starts empty. Persisted across dev reloads (../core/persist.ts).
  * Trash is emptied automatically after TRASH_RETENTION_DAYS.
  */
-import { TRASH_RETENTION_DAYS, type FormFolder, type FormStatus, type FormSummary } from '#shared/types/forms'
+import { TRASH_RETENTION_DAYS, type FormFolder, type FormStatus, type FormSummary, type FormVersion } from '#shared/types/forms'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_FOLDERS, MOCK_FORMS } from './forms'
@@ -19,13 +19,7 @@ export interface StoredForm extends FormSummary {
   versions?: StoredVersion[]
 }
 
-export interface StoredVersion {
-  id: string
-  number: number
-  published_at: string
-  published_by: { id: string; name: string }
-  change_summary: string | null
-  fields_count: number
+export interface StoredVersion extends FormVersion {
   schema: FormSchemaV1
 }
 

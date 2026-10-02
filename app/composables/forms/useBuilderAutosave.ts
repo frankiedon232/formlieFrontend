@@ -25,9 +25,10 @@ export function useBuilderAutosave(
   const savedAt = ref<number | null>(null)
   let paused = true
   let again = false
+  let disposed = false
 
   async function save() {
-    if (!schema.value || state.value === 'conflict') return
+    if (disposed || !schema.value || state.value === 'conflict') return
     if (state.value === 'saving') {
       again = true
       return
@@ -67,8 +68,9 @@ export function useBuilderAutosave(
     { deep: true },
   )
 
-  /** Start watching after the first load (so loading isn't saved back). */
+  /** Start watching after a load (so the loaded schema isn't saved straight back). */
   function start() {
+    paused = true
     nextTick(() => (paused = false))
   }
 
@@ -78,6 +80,15 @@ export function useBuilderAutosave(
   useEventListener(window, 'beforeunload', event => {
     if (unsaved.value) event.preventDefault()
   })
+
+  // Moving between Build / Logic / Versions (or anywhere else) saves first, then stops: a stale
+  // debounced save after unmount would bump row_version under the next page.
+  onBeforeRouteLeave(async () => {
+    if (state.value === 'pending') await save()
+    await until(state).not.toBe('saving')
+    disposed = true
+  })
+  onScopeDispose(() => (disposed = true))
 
   return { state, savedAt, unsaved, saveNow: save, start }
 }
