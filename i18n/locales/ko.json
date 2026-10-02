@@ -1193,7 +1193,11 @@
       "imageWidth": "이미지 크기",
       "href": "클릭 시 링크",
       "hrefHint": "선택 사항 — 새 탭에서 열립니다.",
-      "rounded": "둥근 모서리"
+      "rounded": "둥근 모서리",
+      "fill": "채우기",
+      "height": "높이",
+      "heightHint": "자동은 이미지 전체를 보여 주고, 고정 높이는 배너처럼 잘라 냅니다.",
+      "heightAuto": "자동"
     }
   },
   "renderer": {

@@ -1193,7 +1193,11 @@
       "imageWidth": "Bildgröße",
       "href": "Link beim Klicken",
       "hrefHint": "Optional — öffnet sich in einem neuen Tab.",
-      "rounded": "Abgerundete Ecken"
+      "rounded": "Abgerundete Ecken",
+      "fill": "Füllen",
+      "height": "Höhe",
+      "heightHint": "Automatisch zeigt das ganze Bild; eine feste Höhe schneidet es wie ein Banner zu.",
+      "heightAuto": "Automatisch"
     }
   },
   "renderer": {

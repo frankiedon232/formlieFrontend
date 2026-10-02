@@ -1193,7 +1193,11 @@
       "imageWidth": "Ukubwa wa picha",
       "href": "Kiungo kinapobofywa",
       "hrefHint": "Si lazima — hufunguka kwenye kichupo kipya.",
-      "rounded": "Pembe za mviringo"
+      "rounded": "Pembe za mviringo",
+      "fill": "Jaza",
+      "height": "Urefu",
+      "heightHint": "Otomatiki huonyesha picha yote; urefu maalum huikata kama bango.",
+      "heightAuto": "Otomatiki"
     }
   },
   "renderer": {

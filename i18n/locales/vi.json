@@ -1193,7 +1193,11 @@
       "imageWidth": "Kích thước hình ảnh",
       "href": "Liên kết khi nhấp",
       "hrefHint": "Không bắt buộc — mở trong thẻ mới.",
-      "rounded": "Bo góc"
+      "rounded": "Bo góc",
+      "fill": "Lấp đầy",
+      "height": "Chiều cao",
+      "heightHint": "Tự động hiển thị toàn bộ ảnh; chiều cao cố định sẽ cắt ảnh như biểu ngữ.",
+      "heightAuto": "Tự động"
     }
   },
   "renderer": {

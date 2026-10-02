@@ -1193,7 +1193,11 @@
       "imageWidth": "Tamanho da imagem",
       "href": "Link ao clicar",
       "hrefHint": "Opcional — abre em uma nova aba.",
-      "rounded": "Cantos arredondados"
+      "rounded": "Cantos arredondados",
+      "fill": "Preencher",
+      "height": "Altura",
+      "heightHint": "Automática mostra a imagem inteira; uma altura fixa a recorta como um banner.",
+      "heightAuto": "Automática"
     }
   },
   "renderer": {

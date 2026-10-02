@@ -4,7 +4,8 @@
   - paragraph: rich text (HTML, shown through the read-only editor — never v-html); old plain text still works.
   - divider: solid / dashed / dotted line with small / medium / large spacing.
   - image: uploaded or linked picture at 25–100 % width, aligned start / centre / end, optional
-    caption, rounded corners and a link (http / https only, opens in a new tab).
+    caption, rounded corners and a link (http / https only, opens in a new tab). "Fill" spans the
+    field; with a height (small / medium / large) the picture is cropped like a banner.
   Slots `label` / `description` let the builder swap in inline editors.
 -->
 <script setup lang="ts">
@@ -19,8 +20,12 @@ const SECTION_SIZE: Record<string, string> = { lg: 'text-xl', md: 'text-lg', sm:
 const centred = computed(() => p.value.align === 'center')
 const dividerType = computed(() => (['dashed', 'dotted'].includes(str('style')) ? str('style') : 'solid') as 'solid' | 'dashed' | 'dotted')
 const DIVIDER_SPACE: Record<string, string> = { sm: 'py-1', md: 'py-3', lg: 'py-6' }
-const IMAGE_ALIGN: Record<string, string> = { start: 'items-start', center: 'items-center', end: 'items-end' }
-const imageWidth = computed(() => `${Math.min(100, Math.max(10, Number(p.value.size ?? 100)))}%`)
+const IMAGE_ALIGN: Record<string, string> = { start: 'items-start', center: 'items-center', end: 'items-end', fill: 'items-stretch' }
+/** "Fill" spans the field; with a height the picture is cropped to cover it, like a banner. */
+const fill = computed(() => str('align') === 'fill')
+const IMAGE_HEIGHT: Record<string, string> = { sm: 'h-40', md: 'h-60', lg: 'h-90' }
+const banner = computed(() => (fill.value && IMAGE_HEIGHT[str('height')]) || '')
+const imageWidth = computed(() => (fill.value ? '100%' : `${Math.min(100, Math.max(10, Number(p.value.size ?? 100)))}%`))
 /** Only web links — never javascript: or data: URLs. */
 const safeHref = computed(() => (/^https?:\/\//i.test(str('href')) ? str('href') : ''))
 const html = computed(() => str('html'))
@@ -66,8 +71,8 @@ const html = computed(() => str('html'))
         :src="str('src')"
         :alt="str('alt')"
         loading="lazy"
-        class="h-auto w-full object-contain"
-        :class="p.rounded === false ? '' : 'rounded-md'"
+        class="w-full"
+        :class="[p.rounded === false ? '' : 'rounded-md', banner ? `${banner} object-cover` : 'h-auto object-contain']"
       >
     </component>
     <figcaption v-if="str('caption')" class="text-xs text-muted" :style="{ width: imageWidth }">{{ str('caption') }}</figcaption>

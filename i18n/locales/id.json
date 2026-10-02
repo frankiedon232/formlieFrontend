@@ -1193,7 +1193,11 @@
       "imageWidth": "Ukuran gambar",
       "href": "Tautan saat diklik",
       "hrefHint": "Opsional — terbuka di tab baru.",
-      "rounded": "Sudut membulat"
+      "rounded": "Sudut membulat",
+      "fill": "Penuhi",
+      "height": "Tinggi",
+      "heightHint": "Otomatis menampilkan seluruh gambar; tinggi tetap memotongnya seperti banner.",
+      "heightAuto": "Otomatis"
     }
   },
   "renderer": {

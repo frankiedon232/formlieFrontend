@@ -1193,7 +1193,11 @@
       "imageWidth": "Afbeeldingsgrootte",
       "href": "Link bij klikken",
       "hrefHint": "Optioneel — opent in een nieuw tabblad.",
-      "rounded": "Afgeronde hoeken"
+      "rounded": "Afgeronde hoeken",
+      "fill": "Vullen",
+      "height": "Hoogte",
+      "heightHint": "Automatisch toont de hele afbeelding; een vaste hoogte snijdt hem bij als een banner.",
+      "heightAuto": "Automatisch"
     }
   },
   "renderer": {

@@ -1193,7 +1193,11 @@
       "imageWidth": "Dimensione immagine",
       "href": "Link al clic",
       "hrefHint": "Facoltativo — si apre in una nuova scheda.",
-      "rounded": "Angoli arrotondati"
+      "rounded": "Angoli arrotondati",
+      "fill": "Riempi",
+      "height": "Altezza",
+      "heightHint": "Automatica mostra l’immagine intera; un’altezza fissa la ritaglia come un banner.",
+      "heightAuto": "Automatica"
     }
   },
   "renderer": {

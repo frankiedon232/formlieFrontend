@@ -1193,7 +1193,11 @@
       "imageWidth": "Taille de l’image",
       "href": "Lien au clic",
       "hrefHint": "Facultatif — s’ouvre dans un nouvel onglet.",
-      "rounded": "Coins arrondis"
+      "rounded": "Coins arrondis",
+      "fill": "Remplir",
+      "height": "Hauteur",
+      "heightHint": "Auto affiche toute l’image ; une hauteur fixe la recadre comme une bannière.",
+      "heightAuto": "Auto"
     }
   },
   "renderer": {

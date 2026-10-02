@@ -1193,7 +1193,11 @@
       "imageWidth": "Image size",
       "href": "Link when clicked",
       "hrefHint": "Optional — opens in a new tab.",
-      "rounded": "Rounded corners"
+      "rounded": "Rounded corners",
+      "fill": "Fill",
+      "height": "Height",
+      "heightHint": "Auto keeps the whole picture; a fixed height crops it like a banner.",
+      "heightAuto": "Auto"
     }
   },
   "renderer": {

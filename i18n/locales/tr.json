@@ -1193,7 +1193,11 @@
       "imageWidth": "Görsel boyutu",
       "href": "Tıklandığında bağlantı",
       "hrefHint": "İsteğe bağlı — yeni sekmede açılır.",
-      "rounded": "Yuvarlatılmış köşeler"
+      "rounded": "Yuvarlatılmış köşeler",
+      "fill": "Doldur",
+      "height": "Yükseklik",
+      "heightHint": "Otomatik tüm resmi gösterir; sabit yükseklik onu afiş gibi kırpar.",
+      "heightAuto": "Otomatik"
     }
   },
   "renderer": {

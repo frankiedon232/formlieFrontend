@@ -1193,7 +1193,11 @@
       "imageWidth": "画像のサイズ",
       "href": "クリック時のリンク",
       "hrefHint": "任意 — 新しいタブで開きます。",
-      "rounded": "角丸"
+      "rounded": "角丸",
+      "fill": "全幅",
+      "height": "高さ",
+      "heightHint": "自動は画像全体を表示し、固定の高さではバナーのようにトリミングします。",
+      "heightAuto": "自動"
     }
   },
   "renderer": {

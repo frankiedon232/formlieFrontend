@@ -1193,7 +1193,11 @@
       "imageWidth": "Rozmiar obrazu",
       "href": "Link po kliknięciu",
       "hrefHint": "Opcjonalnie — otwiera się w nowej karcie.",
-      "rounded": "Zaokrąglone rogi"
+      "rounded": "Zaokrąglone rogi",
+      "fill": "Wypełnij",
+      "height": "Wysokość",
+      "heightHint": "Automatycznie pokazuje cały obraz; stała wysokość przycina go jak baner.",
+      "heightAuto": "Automatycznie"
     }
   },
   "renderer": {

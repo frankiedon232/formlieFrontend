@@ -29,6 +29,14 @@ const imageAlign = computed(() => [
   { value: 'start', label: t('builder.blocks.alignStart') },
   { value: 'center', label: t('builder.blocks.alignCenter') },
   { value: 'end', label: t('builder.blocks.alignEnd') },
+  { value: 'fill', label: t('builder.blocks.fill') },
+])
+const fill = computed(() => p.value.align === 'fill')
+const imageHeights = computed(() => [
+  { value: 'auto', label: t('builder.blocks.heightAuto') },
+  { value: 'sm', label: t('builder.blocks.sizeSmall') },
+  { value: 'md', label: t('builder.blocks.sizeMedium') },
+  { value: 'lg', label: t('builder.blocks.sizeLarge') },
 ])
 const imageSizes = [25, 50, 75, 100].map(n => ({ value: String(n), label: `${n}%` }))
 const dividerStyles = computed(() => [
@@ -99,7 +107,7 @@ const srcError = computed(() => (text('src') && !text('upload_id') && !/^https:\
       <UFormField :label="t('builder.blocks.caption')">
         <UInput :model-value="text('caption')" class="w-full" @update:model-value="v => setProp({ caption: String(v) }, `image:${field.id}:caption`)" />
       </UFormField>
-      <UFormField :label="t('builder.blocks.imageWidth')" :hint="`${Number(p.size ?? 100)}%`">
+      <UFormField v-if="!fill" :label="t('builder.blocks.imageWidth')" :hint="`${Number(p.size ?? 100)}%`">
         <UTabs
           :model-value="String(p.size ?? 100)"
           :items="imageSizes"
@@ -113,6 +121,9 @@ const srcError = computed(() => (text('src') && !text('upload_id') && !/^https:\
       </UFormField>
       <UFormField :label="t('builder.blocks.align')">
         <UTabs :model-value="text('align') || 'center'" :items="imageAlign" :content="false" color="neutral" size="xs" :ui="tabsUi" class="w-full" @update:model-value="v => setProp({ align: v })" />
+      </UFormField>
+      <UFormField v-if="fill" :label="t('builder.blocks.height')" :description="t('builder.blocks.heightHint')">
+        <UTabs :model-value="text('height') || 'auto'" :items="imageHeights" :content="false" color="neutral" size="xs" :ui="tabsUi" class="w-full" @update:model-value="v => setProp({ height: v })" />
       </UFormField>
       <UFormField :label="t('builder.blocks.href')" :description="t('builder.blocks.hrefHint')" :error="hrefError || undefined">
         <UInput type="url" :model-value="text('href')" placeholder="https://" icon="i-lucide-external-link" class="w-full" @update:model-value="v => setProp({ href: String(v) }, `image:${field.id}:href`)" />

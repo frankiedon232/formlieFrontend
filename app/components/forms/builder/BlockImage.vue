@@ -82,7 +82,11 @@ function keyResize(event: KeyboardEvent) {
   const rtl = getComputedStyle(event.currentTarget as HTMLElement).direction === 'rtl'
   set({ size: snap(size.value + (rtl && (event.key === 'ArrowLeft' || event.key === 'ArrowRight') ? -step : step)) }, `image:${props.field.id}:size`)
 }
-const ALIGN: Record<string, string> = { start: 'items-start', center: 'items-center', end: 'items-end' }
+const ALIGN: Record<string, string> = { start: 'items-start', center: 'items-center', end: 'items-end', fill: 'items-stretch' }
+const fill = computed(() => p.value.align === 'fill')
+const HEIGHT: Record<string, string> = { sm: 'h-40', md: 'h-60', lg: 'h-90' }
+const banner = computed(() => (fill.value && HEIGHT[String(p.value.height ?? '')]) || '')
+const width = computed(() => (fill.value ? '100%' : `${shown.value}%`))
 </script>
 
 <template>
@@ -123,12 +127,12 @@ const ALIGN: Record<string, string> = { start: 'items-start', center: 'items-cen
 
   <!-- With an image -->
   <div v-else ref="frame" class="flex flex-col gap-2" :class="ALIGN[String(p.align ?? 'center')]">
-    <div class="group/img relative max-w-full" :style="{ width: `${shown}%` }">
+    <div class="group/img relative max-w-full" :style="{ width }">
       <img
         :src="src"
         :alt="String(p.alt ?? '')"
-        class="h-auto w-full object-contain"
-        :class="p.rounded === false ? '' : 'rounded-md'"
+        class="w-full"
+        :class="[p.rounded === false ? '' : 'rounded-md', banner ? `${banner} object-cover` : 'h-auto object-contain']"
         draggable="false"
       >
       <span
@@ -144,8 +148,9 @@ const ALIGN: Record<string, string> = { start: 'items-start', center: 'items-cen
         <UButton icon="i-lucide-replace" :label="t('builder.blocks.replace')" color="neutral" variant="outline" size="xs" class="bg-default" :loading="uploading" @click="picker?.click()" />
         <UButton icon="i-lucide-trash-2" color="neutral" variant="outline" size="xs" square class="bg-default" :aria-label="t('builder.blocks.removeImage')" @click="set({ src: '', upload_id: null })" />
       </div>
-      <!-- Resize handle on the end edge -->
+      <!-- Resize handle on the end edge (not for "Fill": it always spans the field) -->
       <button
+        v-if="!fill"
         type="button"
         role="slider"
         :aria-label="t('builder.blocks.resize')"
@@ -162,7 +167,7 @@ const ALIGN: Record<string, string> = { start: 'items-start', center: 'items-cen
       <UProgress v-if="uploading" :model-value="progress" color="neutral" size="xs" class="absolute inset-x-2 bottom-2" />
     </div>
     <input ref="picker" type="file" :accept="TYPES.join(',')" class="hidden" @change="take(($event.target as HTMLInputElement).files?.[0])">
-    <p v-if="p.caption" class="text-xs text-muted" :style="{ width: `${shown}%` }">{{ p.caption }}</p>
+    <p v-if="p.caption" class="text-xs text-muted" :style="{ width }">{{ p.caption }}</p>
     <UInput
       v-if="selected && !p.alt"
       size="sm"

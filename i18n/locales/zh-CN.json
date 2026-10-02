@@ -1193,7 +1193,11 @@
       "imageWidth": "图片大小",
       "href": "点击时打开的链接",
       "hrefHint": "可选 — 在新标签页中打开。",
-      "rounded": "圆角"
+      "rounded": "圆角",
+      "fill": "填满",
+      "height": "高度",
+      "heightHint": "自动显示完整图片；固定高度会像横幅一样裁剪。",
+      "heightAuto": "自动"
     }
   },
   "renderer": {
