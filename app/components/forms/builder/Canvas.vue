@@ -198,8 +198,8 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
         icon="i-lucide-plus"
         color="neutral"
         variant="outline"
-        block
-        class="border border-dashed border-accented bg-transparent text-muted ring-0 hover:text-highlighted"
+        size="sm"
+        class="self-end border border-dashed border-accented bg-transparent text-muted ring-0 hover:text-highlighted"
         @click.stop="emit('addField')"
       />
 
