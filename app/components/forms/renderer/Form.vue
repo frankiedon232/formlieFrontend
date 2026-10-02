@@ -16,6 +16,7 @@ const props = defineProps<{ schema: FormSchemaV1; preview?: boolean }>()
 const { t } = useI18n()
 
 const labelPosition = computed(() => props.schema.settings?.label_position ?? 'top')
+const labelWidth = computed(() => labelColumnWidth([...allFieldsByKey.value.values()]))
 const allFieldsByKey = computed(
   () => new Map(props.schema.pages.flatMap(p => p.rows.flatMap(r => r.fields as FormField[])).map(f => [f.key, f])),
 )
@@ -132,7 +133,7 @@ function restart() {
 </script>
 
 <template>
-  <div class="flex flex-col gap-5 @container/form" :class="FORM_RADIUS">
+  <div class="flex flex-col gap-5 @container/form" :class="FORM_RADIUS" :style="{ '--form-label-w': labelWidth }">
     <template v-if="!done && page">
       <div v-if="pages.length > 1 && schema.settings?.progress_bar !== false" class="flex flex-col gap-1.5">
         <div class="flex justify-between text-xs text-muted">

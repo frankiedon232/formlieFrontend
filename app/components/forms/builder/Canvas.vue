@@ -17,6 +17,7 @@ const builder = useBuilder()
 const { page, pages, pageId, selected } = builder
 
 const labelPosition = computed(() => builder.schema.value?.settings?.label_position ?? 'top')
+const labelWidth = computed(() => labelColumnWidth(builder.fields.value))
 const tabs = computed(() =>
   pages.value.map((p, i) => ({ value: p.id, label: p.title || t('builder.page.default', { n: i + 1 }) })),
 )
@@ -114,6 +115,7 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
       v-if="page"
       class="mx-auto w-full max-w-3xl @container/form"
       :class="FORM_RADIUS"
+      :style="{ '--form-label-w': labelWidth }"
       :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-8' }"
     >
       <div v-if="pages.length > 1" class="flex flex-col gap-1.5" @click.stop>

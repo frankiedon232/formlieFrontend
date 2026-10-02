@@ -2,8 +2,8 @@
   One form field as respondents see it (FRONTEND-SPEC §6: the same renderer serves the builder
   canvas, preview, public form and embed). Label · required mark · info icon (help text in a
   popover) · control · error. Labels sit on top or, with `label-position="left"`, beside the
-  control, right next to it (the label is only as wide as its text, up to 45 %; the control takes
-  the rest) — decided by the width of the whole form (`@container/form`), so half-width fields
+  control, right next to it: every label has the same width (the form's `--form-label-w`, from its
+  longest label, max 45 %) and is end-aligned, so labels hug their inputs and all inputs line up — decided by the width of the whole form (`@container/form`), so half-width fields
   keep their label beside too; a phone-width form stacks. In `builder` mode the
   control works for trying it out; the canvas never stores what you type. `#label` lets the
   builder swap the label for an inline editor.
@@ -71,7 +71,11 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value)
     <div
       v-if="showLabel"
       class="flex min-w-0 items-center gap-1"
-      :class="left ? '@md/form:min-h-8 @md/form:max-w-[45%] @md/form:shrink-0' : ''"
+      :class="
+        left
+          ? '@md/form:min-h-8 @md/form:w-[min(var(--form-label-w,10rem),45%)] @md/form:shrink-0 @md/form:justify-end @md/form:text-end'
+          : ''
+      "
     >
       <slot name="label">
         <label :for="id" class="min-w-0 text-sm font-medium text-highlighted">
