@@ -1202,7 +1202,6 @@
       "numbers": "Danh sách đánh số",
       "quote": "Trích dẫn",
       "link": "Liên kết",
-      "alignStart": "Căn đầu dòng",
       "alignCenter": "Căn giữa",
       "code": "Mã",
       "clear": "Xóa định dạng",
@@ -1211,7 +1210,10 @@
       "textStyle": "Kiểu chữ",
       "paragraph": "Đoạn văn",
       "headingN": "Tiêu đề {n}",
-      "codeBlock": "Khối mã"
+      "codeBlock": "Khối mã",
+      "alignLeft": "Căn trái",
+      "alignRight": "Căn phải",
+      "justify": "Căn đều"
     },
     "requiredNamed": "{field} là bắt buộc."
   },

@@ -1,11 +1,13 @@
 <!--
-  Rich text answer — Nuxt UI editor (UEditor + UEditorToolbar, TipTap inside). The answer is
-  stored as Markdown (safe to show again, readable in exports). Toolbar: "basic" (marks, lists,
-  quote, link, undo) or "full" (+ paragraph / heading 1–6 menu, inline code, code block). Read-only / disabled hide the toolbar
-  and stop editing. Max length counts the Markdown text.
+  Rich text answer — Nuxt UI editor (UEditor + UEditorToolbar, TipTap inside, plus the TipTap
+  text-align extension). The answer is HTML (Markdown can't keep alignment); the server sanitises
+  it on submit and wherever it is shown again. Toolbar: "basic" (marks, lists, quote, link, undo)
+  or "full" (+ paragraph / heading 1–6 menu, inline code, code block, alignment). Read-only / disabled hide the toolbar
+  and stop editing. Max length counts the visible text, not the HTML.
 -->
 <script setup lang="ts">
 import type { EditorToolbarItem } from '@nuxt/ui'
+import TextAlign from '@tiptap/extension-text-align'
 import type { FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
@@ -16,11 +18,20 @@ const locked = computed(() => !!props.field.readonly || !!props.field.disabled)
 const full = computed(() => props.field.props?.toolbar !== 'basic')
 const max = computed(() => (props.field.validation?.max_length as number | undefined) ?? undefined)
 
-const text = computed({
+// Alignment works on headings and paragraphs (left / centre / right / justify).
+const extensions = [TextAlign.configure({ types: ['heading', 'paragraph'] })]
+
+/** The answer is HTML (alignment can't be kept in Markdown); empty editors store ''. */
+const html = computed({
   get: () => (typeof value.value === 'string' ? value.value : ''),
-  set: next => (value.value = next.trim() ? next : ''),
+  set: next => (value.value = plain(next).trim() ? next : ''),
 })
-const tooLong = computed(() => !!max.value && text.value.length > max.value)
+/** Visible text only — what "max characters" counts. */
+function plain(source: string) {
+  return source.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/&[a-z]+;|&#\d+;/gi, 'x')
+}
+const length = computed(() => plain(html.value).length)
+const tooLong = computed(() => !!max.value && length.value > max.value)
 
 const HEADINGS = [1, 2, 3, 4, 5, 6] as const
 const items = computed<EditorToolbarItem[][]>(() => [
@@ -63,6 +74,14 @@ const items = computed<EditorToolbarItem[][]>(() => [
       : []),
     { kind: 'link', icon: 'i-lucide-link', tooltip: { text: t('renderer.rich.link') } },
   ],
+  ...(full.value
+    ? [[
+        { kind: 'textAlign', align: 'left', icon: 'i-lucide-align-left', tooltip: { text: t('renderer.rich.alignLeft') } },
+        { kind: 'textAlign', align: 'center', icon: 'i-lucide-align-center', tooltip: { text: t('renderer.rich.alignCenter') } },
+        { kind: 'textAlign', align: 'right', icon: 'i-lucide-align-right', tooltip: { text: t('renderer.rich.alignRight') } },
+        { kind: 'textAlign', align: 'justify', icon: 'i-lucide-align-justify', tooltip: { text: t('renderer.rich.justify') } },
+      ] as EditorToolbarItem[]]
+    : []),
   [
     { kind: 'clearFormatting', icon: 'i-lucide-remove-formatting', tooltip: { text: t('renderer.rich.clear') } },
     { kind: 'undo', icon: 'i-lucide-undo-2', tooltip: { text: t('builder.undo') } },
@@ -81,8 +100,9 @@ const items = computed<EditorToolbarItem[][]>(() => [
   >
     <UEditor
       v-slot="{ editor }"
-      v-model="text"
-      content-type="markdown"
+      v-model="html"
+      content-type="html"
+      :extensions="extensions"
       :editable="!locked"
       :placeholder="field.placeholder || t('renderer.rich.placeholder')"
       :image="false"
@@ -101,7 +121,7 @@ const items = computed<EditorToolbarItem[][]>(() => [
       />
     </UEditor>
     <p v-if="max" class="border-t border-default px-3 py-1 text-end text-xs" :class="tooLong ? 'text-error' : 'text-muted'">
-      {{ t('renderer.rich.count', { n: text.length, max }) }}
+      {{ t('renderer.rich.count', { n: length, max }) }}
     </p>
   </div>
 </template>

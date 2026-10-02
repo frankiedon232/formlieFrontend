@@ -1202,7 +1202,6 @@
       "numbers": "번호 목록",
       "quote": "인용",
       "link": "링크",
-      "alignStart": "시작 정렬",
       "alignCenter": "가운데 정렬",
       "code": "코드",
       "clear": "서식 지우기",
@@ -1211,7 +1210,10 @@
       "textStyle": "텍스트 스타일",
       "paragraph": "단락",
       "headingN": "제목 {n}",
-      "codeBlock": "코드 블록"
+      "codeBlock": "코드 블록",
+      "alignLeft": "왼쪽 정렬",
+      "alignRight": "오른쪽 정렬",
+      "justify": "양쪽 정렬"
     },
     "requiredNamed": "{field}은(는) 필수입니다."
   },

@@ -23,6 +23,7 @@
     "@internationalized/date": "^3.12.4",
     "@nuxt/ui": "^4.11.2",
     "@nuxtjs/i18n": "^10.6.0",
+    "@tiptap/extension-text-align": "^3.31.4",
     "@vueuse/core": "^15.0.0",
     "@vueuse/nuxt": "^15.0.0",
     "nuxt": "^4.5.2",

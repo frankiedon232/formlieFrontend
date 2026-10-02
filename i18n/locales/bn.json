@@ -1202,7 +1202,6 @@
       "numbers": "নম্বর তালিকা",
       "quote": "উদ্ধৃতি",
       "link": "লিংক",
-      "alignStart": "শুরুতে সারিবদ্ধ",
       "alignCenter": "মাঝখানে",
       "code": "কোড",
       "clear": "ফরম্যাট মুছুন",
@@ -1211,7 +1210,10 @@
       "textStyle": "লেখার ধরন",
       "paragraph": "অনুচ্ছেদ",
       "headingN": "শিরোনাম {n}",
-      "codeBlock": "কোড ব্লক"
+      "codeBlock": "কোড ব্লক",
+      "alignLeft": "বাঁয়ে সারিবদ্ধ",
+      "alignRight": "ডানে সারিবদ্ধ",
+      "justify": "দুই পাশে সমান"
     },
     "requiredNamed": "{field} আবশ্যক।"
   },

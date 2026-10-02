@@ -1202,7 +1202,6 @@
       "numbers": "Daftar bernomor",
       "quote": "Kutipan",
       "link": "Tautan",
-      "alignStart": "Rata awal",
       "alignCenter": "Tengah",
       "code": "Kode",
       "clear": "Hapus format",
@@ -1211,7 +1210,10 @@
       "textStyle": "Gaya teks",
       "paragraph": "Paragraf",
       "headingN": "Judul {n}",
-      "codeBlock": "Blok kode"
+      "codeBlock": "Blok kode",
+      "alignLeft": "Rata kiri",
+      "alignRight": "Rata kanan",
+      "justify": "Rata kiri-kanan"
     },
     "requiredNamed": "{field} wajib diisi."
   },

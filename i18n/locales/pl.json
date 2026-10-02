@@ -1202,7 +1202,6 @@
       "numbers": "Lista numerowana",
       "quote": "Cytat",
       "link": "Link",
-      "alignStart": "Wyrównaj do początku",
       "alignCenter": "Wyśrodkuj",
       "code": "Kod",
       "clear": "Wyczyść formatowanie",
@@ -1211,7 +1210,10 @@
       "textStyle": "Styl tekstu",
       "paragraph": "Akapit",
       "headingN": "Nagłówek {n}",
-      "codeBlock": "Blok kodu"
+      "codeBlock": "Blok kodu",
+      "alignLeft": "Wyrównaj do lewej",
+      "alignRight": "Wyrównaj do prawej",
+      "justify": "Wyjustuj"
     },
     "requiredNamed": "Pole „{field}” jest wymagane."
   },

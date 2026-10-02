@@ -1202,7 +1202,6 @@
       "numbers": "Numbered list",
       "quote": "Quote",
       "link": "Link",
-      "alignStart": "Align to start",
       "alignCenter": "Centre",
       "code": "Code",
       "clear": "Clear formatting",
@@ -1211,7 +1210,10 @@
       "textStyle": "Text style",
       "paragraph": "Paragraph",
       "headingN": "Heading {n}",
-      "codeBlock": "Code block"
+      "codeBlock": "Code block",
+      "alignLeft": "Align left",
+      "alignRight": "Align right",
+      "justify": "Justify"
     },
     "requiredNamed": "{field} is required."
   },

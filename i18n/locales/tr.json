@@ -1202,7 +1202,6 @@
       "numbers": "Numaralı liste",
       "quote": "Alıntı",
       "link": "Bağlantı",
-      "alignStart": "Başa hizala",
       "alignCenter": "Ortala",
       "code": "Kod",
       "clear": "Biçimi temizle",
@@ -1211,7 +1210,10 @@
       "textStyle": "Metin stili",
       "paragraph": "Paragraf",
       "headingN": "Başlık {n}",
-      "codeBlock": "Kod bloğu"
+      "codeBlock": "Kod bloğu",
+      "alignLeft": "Sola hizala",
+      "alignRight": "Sağa hizala",
+      "justify": "İki yana yasla"
     },
     "requiredNamed": "{field} zorunludur."
   },

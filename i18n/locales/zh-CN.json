@@ -1202,7 +1202,6 @@
       "numbers": "编号列表",
       "quote": "引用",
       "link": "链接",
-      "alignStart": "起始对齐",
       "alignCenter": "居中",
       "code": "代码",
       "clear": "清除格式",
@@ -1211,7 +1210,10 @@
       "textStyle": "文本样式",
       "paragraph": "正文",
       "headingN": "标题 {n}",
-      "codeBlock": "代码块"
+      "codeBlock": "代码块",
+      "alignLeft": "左对齐",
+      "alignRight": "右对齐",
+      "justify": "两端对齐"
     },
     "requiredNamed": "请填写{field}。"
   },

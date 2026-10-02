@@ -1202,7 +1202,6 @@
       "numbers": "Lista numerada",
       "quote": "Cita",
       "link": "Enlace",
-      "alignStart": "Alinear al inicio",
       "alignCenter": "Centrar",
       "code": "Código",
       "clear": "Quitar formato",
@@ -1211,7 +1210,10 @@
       "textStyle": "Estilo de texto",
       "paragraph": "Párrafo",
       "headingN": "Título {n}",
-      "codeBlock": "Bloque de código"
+      "codeBlock": "Bloque de código",
+      "alignLeft": "Alinear a la izquierda",
+      "alignRight": "Alinear a la derecha",
+      "justify": "Justificar"
     },
     "requiredNamed": "{field} es obligatorio."
   },

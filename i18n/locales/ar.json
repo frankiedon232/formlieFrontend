@@ -1202,7 +1202,6 @@
       "numbers": "قائمة مرقمة",
       "quote": "اقتباس",
       "link": "رابط",
-      "alignStart": "محاذاة إلى البداية",
       "alignCenter": "توسيط",
       "code": "شيفرة",
       "clear": "مسح التنسيق",
@@ -1211,7 +1210,10 @@
       "textStyle": "نمط النص",
       "paragraph": "فقرة",
       "headingN": "عنوان {n}",
-      "codeBlock": "كتلة شيفرة"
+      "codeBlock": "كتلة شيفرة",
+      "alignLeft": "محاذاة لليسار",
+      "alignRight": "محاذاة لليمين",
+      "justify": "ضبط"
     },
     "requiredNamed": "{field} مطلوب."
   },

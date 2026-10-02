@@ -1202,7 +1202,6 @@
       "numbers": "क्रमांकित सूची",
       "quote": "उद्धरण",
       "link": "लिंक",
-      "alignStart": "शुरुआत में संरेखित करें",
       "alignCenter": "बीच में",
       "code": "कोड",
       "clear": "फ़ॉर्मेटिंग हटाएँ",
@@ -1211,7 +1210,10 @@
       "textStyle": "टेक्स्ट शैली",
       "paragraph": "अनुच्छेद",
       "headingN": "शीर्षक {n}",
-      "codeBlock": "कोड ब्लॉक"
+      "codeBlock": "कोड ब्लॉक",
+      "alignLeft": "बाएँ संरेखित करें",
+      "alignRight": "दाएँ संरेखित करें",
+      "justify": "दोनों ओर संरेखित करें"
     },
     "requiredNamed": "{field} आवश्यक है।"
   },

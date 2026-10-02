@@ -1202,7 +1202,6 @@
       "numbers": "Nummerierte Liste",
       "quote": "Zitat",
       "link": "Link",
-      "alignStart": "Am Anfang ausrichten",
       "alignCenter": "Zentrieren",
       "code": "Code",
       "clear": "Formatierung entfernen",
@@ -1211,7 +1210,10 @@
       "textStyle": "Textstil",
       "paragraph": "Absatz",
       "headingN": "Überschrift {n}",
-      "codeBlock": "Codeblock"
+      "codeBlock": "Codeblock",
+      "alignLeft": "Linksbündig",
+      "alignRight": "Rechtsbündig",
+      "justify": "Blocksatz"
     },
     "requiredNamed": "{field} ist erforderlich."
   },

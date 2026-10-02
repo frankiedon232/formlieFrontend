@@ -1202,7 +1202,6 @@
       "numbers": "Orodha ya namba",
       "quote": "Nukuu",
       "link": "Kiungo",
-      "alignStart": "Panga mwanzoni",
       "alignCenter": "Katikati",
       "code": "Msimbo",
       "clear": "Futa mpangilio",
@@ -1211,7 +1210,10 @@
       "textStyle": "Mtindo wa maandishi",
       "paragraph": "Aya",
       "headingN": "Kichwa {n}",
-      "codeBlock": "Kizuizi cha msimbo"
+      "codeBlock": "Kizuizi cha msimbo",
+      "alignLeft": "Panga kushoto",
+      "alignRight": "Panga kulia",
+      "justify": "Panga pande zote"
     },
     "requiredNamed": "{field} kinahitajika."
   },

@@ -1202,7 +1202,6 @@
       "numbers": "Genummerde lijst",
       "quote": "Citaat",
       "link": "Link",
-      "alignStart": "Uitlijnen aan begin",
       "alignCenter": "Centreren",
       "code": "Code",
       "clear": "Opmaak wissen",
@@ -1211,7 +1210,10 @@
       "textStyle": "Tekststijl",
       "paragraph": "Alinea",
       "headingN": "Kop {n}",
-      "codeBlock": "Codeblok"
+      "codeBlock": "Codeblok",
+      "alignLeft": "Links uitlijnen",
+      "alignRight": "Rechts uitlijnen",
+      "justify": "Uitvullen"
     },
     "requiredNamed": "{field} is verplicht."
   },
