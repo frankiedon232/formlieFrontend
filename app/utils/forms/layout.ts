@@ -46,3 +46,7 @@ export const DROP_ZONE = [
 ].join(' ')
 /** In a row (next to other fields) the placeholder takes half the row on wider forms. */
 export const DROP_ZONE_ROW = '[&>.drop-ghost]:col-span-12 @md:[&>.drop-ghost]:col-span-6'
+
+/** Rich text content look (editor, read-only view, paragraph block): standard line height, small gaps. */
+export const RICH_TEXT_BASE =
+  'text-sm leading-5 *:my-0.5 sm:px-0 [&_p]:leading-5 [&_li]:leading-5 [&_pre]:my-1.5 px-0 py-0'

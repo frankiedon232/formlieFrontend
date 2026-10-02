@@ -24,7 +24,6 @@ const num = (value: unknown) =>
       has('content') ||
       has('collapsible') ||
       has('rich_toolbar') ||
-      has('image') ||
       has('formula')
     "
     class="flex flex-col gap-3"
@@ -136,24 +135,6 @@ const num = (value: unknown) =>
         color="neutral"
         @update:model-value="v => setProp({ collapsed: v })"
       />
-    </template>
-    <template v-if="has('image')">
-      <UFormField :label="t('builder.inspector.imageUrl')" :hint="t('builder.inspector.imageHint')">
-        <UInput
-          type="url"
-          :model-value="String(p.src ?? '')"
-          placeholder="https://"
-          class="w-full"
-          @update:model-value="v => setProp({ src: String(v) })"
-        />
-      </UFormField>
-      <UFormField :label="t('builder.inspector.alt')" :description="t('builder.inspector.altHint')">
-        <UInput
-          :model-value="String(p.alt ?? '')"
-          class="w-full"
-          @update:model-value="v => setProp({ alt: String(v) })"
-        />
-      </UFormField>
     </template>
     <UFormField
       v-if="has('formula')"

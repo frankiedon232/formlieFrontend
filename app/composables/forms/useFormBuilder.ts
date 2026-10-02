@@ -60,12 +60,13 @@ export function useFormBuilder() {
   // ── Creating ─────────────────────────────────────────────────────────────────────
   function createField(type: FieldType): FormField {
     const { defaults } = FIELD_REGISTRY[type]
-    const label = t(`builder.field.${type}`)
+    // Sections start untitled so the canvas shows the "Section title" placeholder.
+    const label = type === 'section' ? '' : t(`builder.field.${type}`)
     const id = newId('fld')
     const field: FormField = {
       id,
       key: fieldKey(
-        label,
+        label || type,
         id,
         fields.value.map(f => f.key),
       ),

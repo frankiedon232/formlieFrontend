@@ -103,6 +103,7 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
     />
 
     <FormsBuilderInspectorSettings :field="field" />
+    <FormsBuilderInspectorBlocks :field="field" />
 
     <section
       v-if="has('default_text') || has('default_toggle') || has('prefill')"

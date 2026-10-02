@@ -30,6 +30,9 @@ export type InspectorControl =
   | 'content'
   | 'collapsible'
   | 'rich_toolbar'
+  | 'section_style'
+  | 'paragraph'
+  | 'divider_style'
   | 'image'
   | 'formula'
   | 'prefill'
@@ -116,10 +119,16 @@ export const FIELD_REGISTRY: Record<FieldType, RegistryEntry> = {
   hidden: { controls: ['label', 'default_text', 'prefill'], defaults: { props: { param: '' } } },
   calculated: { controls: ['label', 'help', 'width', 'formula'], defaults: { props: { formula: '' } } },
   payment: { controls: ['label', 'help', 'required'], defaults: {} },
-  section: { controls: ['label', 'content', 'collapsible'], defaults: { props: { description: '' } } },
-  paragraph: { controls: ['content', 'width'], defaults: { props: { text: '' } } },
-  divider: { controls: [], defaults: {} },
-  image: { controls: ['image', 'width'], defaults: { props: { src: '', alt: '' } } },
+  section: {
+    controls: ['label', 'content', 'section_style', 'collapsible'],
+    defaults: { props: { description: '', size: 'lg', divider: true, align: 'start' } },
+  },
+  paragraph: { controls: ['paragraph', 'width'], defaults: { props: { html: '' } } },
+  divider: { controls: ['divider_style'], defaults: { props: { style: 'solid', spacing: 'md' } } },
+  image: {
+    controls: ['image', 'width'],
+    defaults: { props: { src: '', alt: '', caption: '', size: 100, align: 'center', href: '', rounded: true } },
+  },
 }
 
 export const fieldIcon = (type: string) =>

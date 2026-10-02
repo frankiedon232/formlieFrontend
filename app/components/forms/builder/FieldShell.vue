@@ -2,14 +2,12 @@
   One field on the canvas: the real field inside a selectable frame. The field works, so you can
   try it while designing (what you type is never saved); double-click its label (or press F2)
   to rename it in place.
-  Hover → hairline border; selected → dark outline (monochrome, docs/design). Type pill and the
-  small outline icon buttons (drag · duplicate · delete · ⋯) show on hover / selection / focus.
+  Hover → hairline border; selected → dark outline (monochrome, docs/design). The type pill and
+  the drag · duplicate · delete · ⋯ buttons live in FieldToolbar.
   Click selects, Ctrl/⌘ toggles, Shift selects a range; Enter / Space select from the keyboard.
 -->
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@nuxt/ui'
 import type { FormField } from '#shared/utils/forms/build'
-import { FIELD_WIDTHS } from '#shared/utils/forms/fields'
 
 const props = defineProps<{
   field: FormField
@@ -54,60 +52,24 @@ function commitRename() {
 }
 defineExpose({ startRename })
 
-const WIDTH_LABEL: Record<number, string> = { 12: '1/1', 6: '1/2', 4: '1/3', 8: '2/3', 3: '1/4', 9: '3/4' }
-const menu = computed<DropdownMenuItem[][]>(() => [
-  [
-    {
-      label: t('builder.actions.moveUp'),
-      icon: 'i-lucide-arrow-up',
-      kbds: ['alt', 'arrowup'],
-      onSelect: () => builder.move(props.field.id, -1),
-    },
-    {
-      label: t('builder.actions.moveDown'),
-      icon: 'i-lucide-arrow-down',
-      kbds: ['alt', 'arrowdown'],
-      onSelect: () => builder.move(props.field.id, 1),
-    },
-    {
-      label: t('builder.actions.moveToPage'),
-      icon: 'i-lucide-file-symlink',
-      disabled: builder.pages.value.length < 2,
-      children: builder.pages.value.map((p, i) => ({
-        label: p.title || t('builder.page.default', { n: i + 1 }),
-        disabled: p.id === builder.findField(props.field.id)?.page.id,
-        onSelect: () => builder.moveToPage([props.field.id], p.id),
-      })),
-    },
-  ],
-  [
-    {
-      label: t('builder.actions.width'),
-      icon: 'i-lucide-columns-3',
-      children: FIELD_WIDTHS.map(width => ({
-        label: `${WIDTH_LABEL[width]} · ${t(`builder.width.${width}`)}`,
-        type: 'checkbox' as const,
-        checked: (props.field.width ?? 12) === width,
-        onSelect: () => builder.setWidth([props.field.id], width),
-      })),
-    },
-    {
-      label: t('builder.actions.duplicate'),
-      icon: 'i-lucide-copy',
-      kbds: ['meta', 'd'],
-      onSelect: () => builder.duplicate([props.field.id]),
-    },
-  ],
-  [
-    {
-      label: t('builder.actions.delete'),
-      icon: 'i-lucide-trash-2',
-      color: 'error' as const,
-      kbds: ['delete'],
-      onSelect: () => emit('remove'),
-    },
-  ],
-])
+// Section description: double-click to edit in place (Enter on a new line, Esc to cancel).
+const editingDesc = ref(false)
+const descDraft = ref('')
+const descInput = useTemplateRef<{ textareaRef?: HTMLTextAreaElement }>('desc')
+async function startDesc() {
+  builder.select(props.field.id)
+  descDraft.value = String(props.field.props?.description ?? '')
+  editingDesc.value = true
+  await nextTick()
+  descInput.value?.textareaRef?.focus()
+}
+function commitDesc() {
+  if (!editingDesc.value) return
+  editingDesc.value = false
+  if (descDraft.value !== (props.field.props?.description ?? ''))
+    builder.updateProps(props.field.id, { description: descDraft.value.trim() })
+}
+
 </script>
 
 <template>
@@ -135,97 +97,22 @@ const menu = computed<DropdownMenuItem[][]>(() => [
     @keydown.space.self.prevent="onSelect"
     @keydown.f2.self.prevent="startRename"
   >
-    <div
-      class="absolute -top-3 start-3 z-10 flex items-center gap-1 transition-opacity"
-      :class="
-        selected
-          ? 'opacity-100'
-          : 'opacity-0 group-hover/field:opacity-100 group-focus-within/field:opacity-100'
-      "
-    >
-      <UBadge
-        :icon="fieldIcon(field.type)"
-        :label="t(`builder.field.${field.type}`)"
-        color="neutral"
-        variant="outline"
-        size="sm"
-        class="rounded-md bg-default"
-      />
-      <UBadge
-        v-if="issue"
-        :label="issue"
-        icon="i-lucide-triangle-alert"
-        color="warning"
-        variant="subtle"
-        size="sm"
-        class="rounded-md"
-      />
-    </div>
+    <FormsBuilderFieldToolbar :field="field" :selected="selected" :issue="issue" @remove="emit('remove')" />
 
-    <div
-      class="absolute -top-3.5 end-2 z-10 flex items-center gap-1 transition-opacity"
-      :class="
-        selected
-          ? 'opacity-100'
-          : 'opacity-0 group-hover/field:opacity-100 group-focus-within/field:opacity-100'
-      "
-      @click.stop
-    >
-      <UTooltip :text="t('builder.actions.drag')">
-        <UButton
-          icon="i-lucide-grip-vertical"
-          color="neutral"
-          variant="outline"
-          size="xs"
-          square
-          class="cursor-grab bg-default active:cursor-grabbing"
-          data-drag-handle
-          :aria-label="t('builder.actions.drag')"
-        />
-      </UTooltip>
-      <UButton
-        icon="i-lucide-copy"
-        color="neutral"
-        variant="outline"
-        size="xs"
-        square
-        class="bg-default"
-        :aria-label="t('builder.actions.duplicate')"
-        @click="builder.duplicate([field.id])"
-      />
-      <UButton
-        icon="i-lucide-trash-2"
-        color="neutral"
-        variant="outline"
-        size="xs"
-        square
-        class="bg-default"
-        :aria-label="t('builder.actions.delete')"
-        @click="emit('remove')"
-      />
-      <UDropdownMenu :items="menu" :content="{ align: 'end' }">
-        <UButton
-          icon="i-lucide-ellipsis"
-          color="neutral"
-          variant="outline"
-          size="xs"
-          square
-          class="bg-default"
-          :aria-label="t('builder.actions.more')"
-        />
-      </UDropdownMenu>
-    </div>
+    <!-- Paragraph and image blocks are edited right on the canvas. -->
+    <FormsBuilderBlockParagraph v-if="field.type === 'paragraph'" :field="field" />
+    <FormsBuilderBlockImage v-else-if="field.type === 'image'" :field="field" :selected="selected" />
 
-    <!-- The real field, as respondents see it — and it works, so it can be tried out. -->
-    <FormsRendererField v-model="trial" :field="field" mode="builder" :label-position="labelPosition">
+    <!-- Everything else: the real field, as respondents see it — and it works, so it can be tried out. -->
+    <FormsRendererField v-else v-model="trial" :field="field" mode="builder" :label-position="labelPosition">
       <template v-if="renaming" #label>
         <UInput
           ref="rename"
           v-model="draft"
-          size="sm"
+          :size="field.type === 'section' ? 'md' : 'sm'"
           maxlength="500"
           class="min-w-0 flex-1"
-          :aria-label="t('builder.inspector.label')"
+          :aria-label="field.type === 'section' ? t('builder.inspector.title') : t('builder.inspector.label')"
           @click.stop
           @keydown.enter.prevent="commitRename"
           @keydown.esc.stop.prevent="renaming = false"
@@ -234,14 +121,44 @@ const menu = computed<DropdownMenuItem[][]>(() => [
       </template>
       <template v-else-if="hasControl(field.type, 'label')" #label>
         <span
-          class="min-w-0 cursor-text text-sm font-medium text-highlighted"
-          :class="field.type === 'section' ? 'text-lg font-semibold' : ''"
+          class="min-w-0 cursor-text"
+          :class="[
+            field.type === 'section' ? '' : 'text-sm font-medium text-highlighted',
+            field.type === 'section' && !field.label ? 'text-dimmed' : '',
+          ]"
           :title="t('builder.renameHint')"
           @dblclick.stop="startRename"
         >
-          {{ field.label || (field.type === 'section' ? t('builder.field.section') : t('builder.untitled')) }}
+          {{
+            field.label ||
+            (field.type === 'section' ? t('builder.blocks.sectionPlaceholder') : t('builder.untitled'))
+          }}
           <span v-if="field.required" class="text-error" aria-hidden="true">*</span>
         </span>
+      </template>
+      <template v-if="field.type === 'section'" #description>
+        <UTextarea
+          v-if="editingDesc"
+          ref="desc"
+          v-model="descDraft"
+          :rows="2"
+          autoresize
+          size="sm"
+          class="w-full"
+          :aria-label="t('builder.inspector.description')"
+          @click.stop
+          @keydown.esc.stop.prevent="editingDesc = false"
+          @blur="commitDesc"
+        />
+        <p
+          v-else
+          class="cursor-text text-sm whitespace-pre-line"
+          :class="field.props?.description ? 'text-muted' : 'text-dimmed italic'"
+          :title="t('builder.renameHint')"
+          @dblclick.stop="startDesc"
+        >
+          {{ field.props?.description || t('builder.blocks.descriptionPlaceholder') }}
+        </p>
       </template>
     </FormsRendererField>
   </div>

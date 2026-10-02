@@ -89,7 +89,8 @@ export type OnboardingPatch =
   | { step: 'first_form'; action: 'save'; data: OnboardingFirstForm }
   | { step: OnboardingStep; action: 'skip' }
 
-export type UploadPurpose = 'logo'
+/** logo (onboarding / settings, admins) · form_image (image blocks in forms, any member). */
+export type UploadPurpose = 'logo' | 'form_image'
 
 /** POST /uploads → where to PUT the file (pre-signed, SECURITY-PROTOCOL.md). */
 export interface UploadTicket {

@@ -168,6 +168,7 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value &&
     />
     <FormsRendererLayout v-else :field="field" :mode="mode">
       <template v-if="$slots.label" #label><slot name="label" /></template>
+      <template v-if="$slots.description" #description><slot name="description" /></template>
     </FormsRendererLayout>
 
     <p v-if="error && !inline" class="text-xs text-error" role="alert">{{ error }}</p>
