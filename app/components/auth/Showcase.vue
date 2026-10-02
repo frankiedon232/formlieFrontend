@@ -5,15 +5,20 @@
   Floats gently (motion-safe only). Decorative: hidden from assistive tech except the copy.
 -->
 <script setup lang="ts">
+// Explicit import: shared constant (a new shared/utils folder is only auto-imported after a dev restart).
+import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
+
 const props = defineProps<{ brand: string }>()
 const { t } = useI18n()
 const { number } = useFormat()
 
 const bars = [38, 52, 44, 70, 58, 86, 74]
+const DATABASES = SUPPORTED_DATABASES.map(db => db.name)
+const databaseCount = SUPPORTED_DATABASES.length
 const badges = computed(() => [
   { icon: 'i-lucide-lock-keyhole', label: t('authLayout.badgeEncrypted') },
   { icon: 'i-lucide-scale', label: t('authLayout.badgeCompliance') },
-  { icon: 'i-lucide-database', label: t('authLayout.badgeDatabase') },
+  { icon: 'i-lucide-database', label: t('authLayout.badgeDatabase', { count: databaseCount }) },
   { icon: 'i-lucide-users-round', label: t('authLayout.badgeAccess') },
   { icon: 'i-lucide-globe', label: t('authLayout.badgeLanguages') },
 ])
@@ -44,7 +49,7 @@ const badges = computed(() => [
       <span class="text-lg font-semibold tracking-tight">{{ props.brand }}</span>
     </div>
 
-    <div class="relative mt-12 max-w-lg">
+    <div class="relative mt-10 max-w-lg">
       <h2 class="text-4xl leading-[1.08] font-semibold tracking-tight xl:text-[44px]">
         {{ t('authLayout.headline') }}
       </h2>
@@ -52,7 +57,7 @@ const badges = computed(() => [
     </div>
 
     <!-- product preview: build · collect · connect · control -->
-    <div aria-hidden="true" class="relative mt-10 min-h-[360px] flex-1">
+    <div aria-hidden="true" class="relative mt-8 min-h-[390px] flex-1">
       <UCard
         class="absolute top-0 left-0 w-[310px] -rotate-2 shadow-2xl shadow-black/40 motion-safe:animate-float"
         :ui="{ body: 'space-y-4 p-5 sm:p-5' }"
@@ -92,7 +97,7 @@ const badges = computed(() => [
       </UCard>
 
       <UCard
-        class="absolute top-12 right-0 w-[240px] rotate-3 shadow-2xl shadow-black/40 motion-safe:animate-float-delayed"
+        class="absolute top-6 right-0 w-[240px] rotate-3 shadow-2xl shadow-black/40 motion-safe:animate-float-delayed"
         :ui="{ body: 'p-5 sm:p-5' }"
       >
         <p class="text-xs text-muted">{{ t('authLayout.previewStat') }}</p>
@@ -116,21 +121,39 @@ const badges = computed(() => [
       </UCard>
 
       <UCard
-        class="absolute bottom-2 left-20 w-[310px] shadow-2xl shadow-black/40 motion-safe:animate-float"
-        :ui="{ body: 'flex items-center gap-3 p-4 sm:p-4' }"
+        class="absolute right-4 bottom-0 w-[340px] -rotate-1 shadow-2xl shadow-black/40 motion-safe:animate-float"
+        :ui="{ body: 'space-y-3 p-4 sm:p-4' }"
       >
-        <span
-          class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-elevated text-highlighted"
-        >
-          <UIcon name="i-lucide-database-zap" class="size-5" />
-        </span>
-        <div class="min-w-0 flex-1">
-          <p class="truncate text-sm font-semibold text-highlighted">{{ t('authLayout.previewSync') }}</p>
-          <p class="truncate text-xs text-muted">
-            {{ t('authLayout.previewSyncMeta', { rows: number(12840) }) }}
-          </p>
+        <div class="flex items-center gap-3">
+          <span
+            class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-elevated text-highlighted"
+          >
+            <UIcon name="i-lucide-database-zap" class="size-5" />
+          </span>
+          <div class="min-w-0 flex-1">
+            <p class="truncate text-sm font-semibold text-highlighted">{{ t('authLayout.previewSync') }}</p>
+            <p class="truncate text-xs text-muted">
+              {{ t('authLayout.previewSyncCount', { count: databaseCount }) }}
+            </p>
+          </div>
+          <UIcon name="i-lucide-circle-check" class="size-5 text-success" />
         </div>
-        <UIcon name="i-lucide-circle-check" class="size-5 text-success" />
+        <!-- Product names: not translated. -->
+        <div class="flex flex-wrap gap-1">
+          <UBadge
+            v-for="db in DATABASES"
+            :key="db"
+            :label="db"
+            color="neutral"
+            variant="outline"
+            size="sm"
+            class="rounded-md"
+          />
+        </div>
+        <p class="flex items-center gap-1.5 border-t border-default pt-2.5 text-xs text-muted">
+          <UIcon name="i-lucide-shield-check" class="size-3.5 shrink-0" />
+          {{ t('authLayout.previewSyncAlt', { app: t('app.name') }) }}
+        </p>
       </UCard>
     </div>
 

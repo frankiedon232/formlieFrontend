@@ -231,7 +231,7 @@
     "subline": "一个安全、灵活的平台：创建任意表单，收集和管理数据，连接您的系统，并控制谁能看到什么——适用于全球各地、各种规模的组织。",
     "badgeEncrypted": "端到端加密",
     "badgeCompliance": "隐私与合规控制",
-    "badgeDatabase": "连接您自己的数据库",
+    "badgeDatabase": "{count}+ 种数据库或安全存储",
     "badgeAccess": "基于角色的访问",
     "badgeLanguages": "20 种语言，覆盖各地区",
     "previewForm": "供应商入驻",
@@ -242,7 +242,8 @@
     "previewStat": "本月回复",
     "previewAccess": "可见范围：合规团队",
     "previewSync": "已同步到您的数据库",
-    "previewSyncMeta": "PostgreSQL · {rows} 行 · 刚刚"
+    "previewSyncCount": "支持 {count}+ 种数据库",
+    "previewSyncAlt": "或保存在 {app} 加密存储中"
   },
   "auth": {
     "or": "或",

@@ -231,7 +231,7 @@
     "subline": "Jukwaa salama na linalonyumbulika la kuunda fomu yoyote, kukusanya na kusimamia data, kuunganisha mifumo yako na kudhibiti nani anaona nini — kwa mashirika ya ukubwa wowote, popote duniani.",
     "badgeEncrypted": "Usimbaji fiche kamili",
     "badgeCompliance": "Udhibiti wa faragha na uzingatiaji",
-    "badgeDatabase": "Unganisha hifadhidata yako mwenyewe",
+    "badgeDatabase": "Hifadhidata {count}+ au hifadhi salama",
     "badgeAccess": "Ufikiaji kwa majukumu",
     "badgeLanguages": "Lugha 20, kila eneo",
     "previewForm": "Usajili wa wasambazaji",
@@ -242,7 +242,8 @@
     "previewStat": "Majibu mwezi huu",
     "previewAccess": "Wanaoona: timu ya Uzingatiaji",
     "previewSync": "Imesawazishwa na hifadhidata yako",
-    "previewSyncMeta": "PostgreSQL · safu {rows} · sasa hivi"
+    "previewSyncCount": "Hifadhidata {count}+ zinatumika",
+    "previewSyncAlt": "Au ihifadhi kwenye hifadhi fiche ya {app}"
   },
   "auth": {
     "or": "au",

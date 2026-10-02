@@ -231,7 +231,7 @@
     "subline": "あらゆるフォームを作成し、データを収集・管理し、システムを連携し、誰が何を見られるかを管理できる、安全で柔軟なプラットフォーム。世界中のあらゆる規模の組織のために。",
     "badgeEncrypted": "エンドツーエンド暗号化",
     "badgeCompliance": "プライバシーとコンプライアンスの管理",
-    "badgeDatabase": "自社データベースと連携",
+    "badgeDatabase": "{count} 種類以上のデータベース、または安全なストレージ",
     "badgeAccess": "ロールベースのアクセス",
     "badgeLanguages": "20 言語・全地域対応",
     "previewForm": "取引先登録",
@@ -242,7 +242,8 @@
     "previewStat": "今月の回答",
     "previewAccess": "閲覧可能: コンプライアンスチーム",
     "previewSync": "データベースに同期しました",
-    "previewSyncMeta": "PostgreSQL · {rows} 行 · たった今"
+    "previewSyncCount": "{count} 種類以上のデータベースに対応",
+    "previewSyncAlt": "または {app} の暗号化ストレージに保存"
   },
   "auth": {
     "or": "または",

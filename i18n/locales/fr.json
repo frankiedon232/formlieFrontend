@@ -231,7 +231,7 @@
     "subline": "Une plateforme sûre et flexible pour créer tout type de formulaire, collecter et gérer vos données, connecter vos systèmes et décider qui voit quoi — pour les organisations de toute taille, partout dans le monde.",
     "badgeEncrypted": "Chiffré de bout en bout",
     "badgeCompliance": "Contrôles de confidentialité et de conformité",
-    "badgeDatabase": "Connectez votre propre base de données",
+    "badgeDatabase": "{count}+ bases de données ou stockage sécurisé",
     "badgeAccess": "Accès par rôles",
     "badgeLanguages": "20 langues, toutes régions",
     "previewForm": "Référencement fournisseur",
@@ -242,7 +242,8 @@
     "previewStat": "Réponses ce mois-ci",
     "previewAccess": "Visible par : équipe Conformité",
     "previewSync": "Synchronisé avec votre base de données",
-    "previewSyncMeta": "PostgreSQL · {rows} lignes · à l’instant"
+    "previewSyncCount": "{count}+ bases de données prises en charge",
+    "previewSyncAlt": "Ou conservez-les dans le stockage chiffré de {app}"
   },
   "auth": {
     "or": "ou",

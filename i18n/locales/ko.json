@@ -231,7 +231,7 @@
     "subline": "어떤 양식이든 만들고, 데이터를 수집·관리하고, 시스템을 연결하고, 누가 무엇을 볼지 통제하는 안전하고 유연한 플랫폼 — 전 세계 모든 규모의 조직을 위해.",
     "badgeEncrypted": "종단 간 암호화",
     "badgeCompliance": "개인정보 보호 및 규정 준수 관리",
-    "badgeDatabase": "자체 데이터베이스 연결",
+    "badgeDatabase": "{count}개 이상의 데이터베이스 또는 안전한 저장소",
     "badgeAccess": "역할 기반 접근",
     "badgeLanguages": "20개 언어, 모든 지역",
     "previewForm": "공급업체 등록",
@@ -242,7 +242,8 @@
     "previewStat": "이번 달 응답",
     "previewAccess": "공개 대상: 컴플라이언스 팀",
     "previewSync": "데이터베이스에 동기화됨",
-    "previewSyncMeta": "PostgreSQL · {rows}행 · 방금"
+    "previewSyncCount": "{count}개 이상의 데이터베이스 지원",
+    "previewSyncAlt": "또는 {app}의 암호화된 저장소에 보관"
   },
   "auth": {
     "or": "또는",

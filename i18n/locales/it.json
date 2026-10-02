@@ -231,7 +231,7 @@
     "subline": "Una piattaforma sicura e flessibile per creare qualsiasi modulo, raccogliere e gestire dati, collegare i tuoi sistemi e decidere chi vede cosa, per organizzazioni di ogni dimensione, ovunque nel mondo.",
     "badgeEncrypted": "Crittografia end-to-end",
     "badgeCompliance": "Controlli di privacy e conformità",
-    "badgeDatabase": "Collega il tuo database",
+    "badgeDatabase": "{count}+ database o archiviazione sicura",
     "badgeAccess": "Accesso basato sui ruoli",
     "badgeLanguages": "20 lingue, ogni regione",
     "previewForm": "Onboarding fornitori",
@@ -242,7 +242,8 @@
     "previewStat": "Risposte questo mese",
     "previewAccess": "Visibile a: team Compliance",
     "previewSync": "Sincronizzato con il tuo database",
-    "previewSyncMeta": "PostgreSQL · {rows} righe · proprio ora"
+    "previewSyncCount": "{count}+ database supportati",
+    "previewSyncAlt": "Oppure conservali nell’archivio crittografato di {app}"
   },
   "auth": {
     "or": "oppure",

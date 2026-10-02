@@ -46,7 +46,7 @@ System templates (platform-wide) + organisation templates. Categories: questionn
 
 ### 6. Responses
 
-- Destinations: Formalie database (default), customer's own database (Postgres/MySQL/SQL Server via Celery writer), webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
+- Destinations: Formalie database (default), customer's own database — launch set: **MySQL, MariaDB, Oracle, PostgreSQL, SQL Server** (via Celery writer; list in `shared/utils/integrations/databases.ts`), or Formalie's own encrypted storage, webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
 - Response views: table and grid (switchable), filters, search, date ranges, single response view, edit history, notes/tags/status (e.g. new, reviewed, approved), bulk actions.
 - Export: Excel (.xlsx), CSV, PDF (single and bulk) via background jobs.
 

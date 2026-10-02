@@ -58,6 +58,8 @@ Edit this file whenever a decision changes.
 
 44. **Global positioning everywhere** (owner, 2026-10-02): the sign-in showcase tells the platform story — any form, your data, your database, access control, privacy & compliance controls, 20 languages, any region. Mock data uses international names (no country-specific people, cities or phone numbers).
 
+45. **Customer databases — launch set:** MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (single list: `shared/utils/integrations/databases.ts`, with default ports for F11), or Formalie's own encrypted storage. Copy says "{count}+ databases" from that list so it never implies a single engine.
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

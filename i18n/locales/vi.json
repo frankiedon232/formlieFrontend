@@ -231,7 +231,7 @@
     "subline": "Nền tảng an toàn, linh hoạt để tạo mọi loại biểu mẫu, thu thập và quản lý dữ liệu, kết nối hệ thống và kiểm soát ai được xem gì — cho tổ chức mọi quy mô, ở bất kỳ đâu trên thế giới.",
     "badgeEncrypted": "Mã hóa đầu cuối",
     "badgeCompliance": "Kiểm soát quyền riêng tư và tuân thủ",
-    "badgeDatabase": "Kết nối cơ sở dữ liệu riêng",
+    "badgeDatabase": "{count}+ cơ sở dữ liệu hoặc lưu trữ an toàn",
     "badgeAccess": "Phân quyền theo vai trò",
     "badgeLanguages": "20 ngôn ngữ, mọi khu vực",
     "previewForm": "Đăng ký nhà cung cấp",
@@ -242,7 +242,8 @@
     "previewStat": "Phản hồi tháng này",
     "previewAccess": "Hiển thị cho: nhóm Tuân thủ",
     "previewSync": "Đã đồng bộ với cơ sở dữ liệu của bạn",
-    "previewSyncMeta": "PostgreSQL · {rows} dòng · vừa xong"
+    "previewSyncCount": "Hỗ trợ {count}+ cơ sở dữ liệu",
+    "previewSyncAlt": "Hoặc lưu trong bộ nhớ mã hóa của {app}"
   },
   "auth": {
     "or": "hoặc",

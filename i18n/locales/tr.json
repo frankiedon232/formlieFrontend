@@ -231,7 +231,7 @@
     "subline": "Her türlü formu oluşturmak, verileri toplamak ve yönetmek, sistemlerinizi bağlamak ve kimin neyi göreceğini belirlemek için güvenli, esnek bir platform — dünyanın her yerinde, her ölçekten kuruluş için.",
     "badgeEncrypted": "Uçtan uca şifreli",
     "badgeCompliance": "Gizlilik ve uyumluluk kontrolleri",
-    "badgeDatabase": "Kendi veritabanınızı bağlayın",
+    "badgeDatabase": "{count}+ veritabanı veya güvenli depolama",
     "badgeAccess": "Rol tabanlı erişim",
     "badgeLanguages": "20 dil, her bölge",
     "previewForm": "Tedarikçi kaydı",
@@ -242,7 +242,8 @@
     "previewStat": "Bu ayki yanıtlar",
     "previewAccess": "Görebilenler: Uyum ekibi",
     "previewSync": "Veritabanınızla senkronize edildi",
-    "previewSyncMeta": "PostgreSQL · {rows} satır · az önce"
+    "previewSyncCount": "{count}+ veritabanı desteği",
+    "previewSyncAlt": "Ya da şifreli {app} depolamasında tutun"
   },
   "auth": {
     "or": "veya",

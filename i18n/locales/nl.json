@@ -231,7 +231,7 @@
     "subline": "Een veilig, flexibel platform om elk formulier te bouwen, data te verzamelen en te beheren, je systemen te koppelen en te bepalen wie wat ziet — voor organisaties van elke omvang, waar ook ter wereld.",
     "badgeEncrypted": "End-to-end versleuteld",
     "badgeCompliance": "Privacy- en compliancecontroles",
-    "badgeDatabase": "Koppel je eigen database",
+    "badgeDatabase": "{count}+ databases of veilige opslag",
     "badgeAccess": "Toegang op basis van rollen",
     "badgeLanguages": "20 talen, elke regio",
     "previewForm": "Leveranciers onboarden",
@@ -242,7 +242,8 @@
     "previewStat": "Reacties deze maand",
     "previewAccess": "Zichtbaar voor: complianceteam",
     "previewSync": "Gesynchroniseerd met je database",
-    "previewSyncMeta": "PostgreSQL · {rows} rijen · zojuist"
+    "previewSyncCount": "{count}+ databases ondersteund",
+    "previewSyncAlt": "Of bewaar het in de versleutelde opslag van {app}"
   },
   "auth": {
     "or": "of",

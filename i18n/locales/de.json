@@ -231,7 +231,7 @@
     "subline": "Eine sichere, flexible Plattform, um beliebige Formulare zu erstellen, Daten zu erfassen und zu verwalten, Ihre Systeme anzubinden und festzulegen, wer was sieht – für Organisationen jeder Größe, überall auf der Welt.",
     "badgeEncrypted": "Durchgehend verschlüsselt",
     "badgeCompliance": "Datenschutz- und Compliance-Kontrollen",
-    "badgeDatabase": "Eigene Datenbank anbinden",
+    "badgeDatabase": "{count}+ Datenbanken oder sicherer Speicher",
     "badgeAccess": "Rollenbasierter Zugriff",
     "badgeLanguages": "20 Sprachen, jede Region",
     "previewForm": "Lieferanten-Onboarding",
@@ -242,7 +242,8 @@
     "previewStat": "Antworten diesen Monat",
     "previewAccess": "Sichtbar für: Compliance-Team",
     "previewSync": "Mit Ihrer Datenbank synchronisiert",
-    "previewSyncMeta": "PostgreSQL · {rows} Zeilen · gerade eben"
+    "previewSyncCount": "{count}+ Datenbanken unterstützt",
+    "previewSyncAlt": "Oder im verschlüsselten {app}-Speicher behalten"
   },
   "auth": {
     "or": "oder",
