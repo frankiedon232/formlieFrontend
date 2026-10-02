@@ -13,22 +13,13 @@ import type { ApiClient, HttpMethod, RequestOptions } from '~/utils/api/client'
  */
 let client: ApiClient | null = null
 
-// Every request (except background polling) drives the top progress bar, so saves, exports and
-// menu actions show activity just like page changes (CLAUDE.md rule 5). The bar throttles itself,
-// so very fast calls never flash.
-let inFlight = 0
-let nuxtApp: ReturnType<typeof useNuxtApp> | null = null
-
-// Looked up on every use: Nuxt recreates the shared indicator when its components remount.
-const indicator = () =>
-  nuxtApp?.runWithContext(() => useLoadingIndicator()) as ReturnType<typeof useLoadingIndicator> | undefined
+// Every request (except background polling) counts as activity: top bar + in-page bar
+// (useActivity, CLAUDE.md rule 5). The top bar throttles itself, so very fast calls never flash.
+let activity: ReturnType<typeof useActivity> | null = null
 
 function track<T>(work: () => Promise<T>, background?: boolean): Promise<T> {
-  if (background || !nuxtApp) return work()
-  if (inFlight++ === 0) indicator()?.start()
-  return work().finally(() => {
-    if (--inFlight === 0) indicator()?.finish()
-  })
+  if (background || !activity) return work()
+  return work().finally(activity.begin())
 }
 
 function getClient(): ApiClient {
@@ -41,7 +32,7 @@ function getClient(): ApiClient {
   const session = useSession()
   const devTenant = useState<string | null>('tenant:dev', () => null)
   const router = useRouter()
-  nuxtApp = useNuxtApp()
+  activity = useActivity()
 
   client = createApiClient({
     baseUrl: config.public.apiBase,

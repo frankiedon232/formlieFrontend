@@ -22,7 +22,7 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 4. **Every async action uses `try / catch / finally`.** `finally` always resets loading state. Errors go through `useErrorHandler()` (maps `FRM-*` codes to friendly toasts).
 5. **Always show progress — the user must never wonder whether something is happening** (owner, 2026-10-02: "very important"). Checklist for every page and action:
    - **First load:** `app/spa-loading-template.html` (branded screen) until the app has started — never a blank page.
-   - **Top bar:** `<NuxtLoadingIndicator />` runs for navigation **and every API call** (wired in `useApi`); only polling / counters pass `{ background: true }`.
+   - **Top bar + in-page bar:** one activity counter (`useActivity`) drives both the top-of-window bar (`<NuxtLoadingIndicator />`) and the sweeping left-to-right bar on the bottom edge of every page header (`AppPanel`). It starts **immediately on every in-app navigation** (plugin `navigation-progress.client.ts`) and runs until the new page has its data; **every API call** counts too (`useApi`). Only polling / counters pass `{ background: true }`.
    - **Data:** `USkeleton` that mirrors the final layout while a page, list, panel or card loads; keep old content dimmed while refreshing instead of blanking it.
    - **Buttons:** `:loading` on every async button (busy + disabled, no double submit) — use `useBusy()`.
    - **Menu / row actions:** the affected row or card shows a spinner and is disabled while its action runs; a toast confirms the result.
