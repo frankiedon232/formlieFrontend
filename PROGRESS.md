@@ -21,12 +21,14 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F8    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F9    | Responses                                         | ⬜     | 0%   |
 | F10   | Templates gallery                                 | ⬜     | 0%   |
-| F11   | Settings, option sets, integrations               | ⬜     | 0%   |
-| F12   | Profile                                           | ⬜     | 0%   |
-| F13   | Users                                             | ⬜     | 0%   |
-| F14   | Analytics                                         | ⬜     | 0%   |
-| F15   | Live collaboration (optional)                     | ⬜     | 0%   |
-| F16   | Roles & access, audit trail, dashboard            | ⬜     | 0%   |
+| F11   | Settings                                          | ⬜     | 0%   |
+| F12   | Option sets & integrations                        | ⬜     | 0%   |
+| F13   | Profile                                           | ⬜     | 0%   |
+| F14   | Users                                             | ⬜     | 0%   |
+| F15   | Analytics                                         | ⬜     | 0%   |
+| F16   | Live collaboration (optional)                     | ⬜     | 0%   |
+| F17   | Dashboard                                         | ⬜     | 0%   |
+| F18   | Roles & access, audit trail (last)                | ⬜     | 0%   |
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · loading, empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -337,34 +339,108 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F11 — Settings, option sets, integrations ⬜
+## F11 — Settings ⬜
 
-### Settings
+**Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
-- ⬜ Company profile, branding
-- ⬜ Domain & subdomain (custom domain later)
-- ⬜ Authentication: enable / disable sign-in methods per workspace (Google, Microsoft, Apple, Facebook, email; SSO later) — only enabled ones appear on the workspace sign-in page; new workspaces start with email + the method used at signup
-- ⬜ Code policy (channels, attempts)
-- ⬜ Security: password rules, session timeout, IP allowlist
-- ⬜ Localisation: language, timezone, date / number format, currency
-- ⬜ Notifications and email templates
-- ⬜ Themes, data retention, embed defaults
-- ⬜ Billing / subscription
-- ⬜ Organisations (several per workspace) + switcher in the rail
+### Settings shell
 
-### Option sets
+- ⬜ `/settings` overview: section cards with a one-line status each (e.g. "2 sign-in methods enabled")
+- ⬜ Section navigation (desktop list, phone select), breadcrumbs, unsaved-changes guard
+- ⬜ Search inside settings (also from the command palette)
 
-- ⬜ Create / edit lists; items with bulk paste, reorder (drag + keyboard)
+### Company & branding
 
-### Integrations
+- ⬜ Company profile: legal name, display name, industry, size, address, country, tax / registration number, support email and phone
+- ⬜ Branding: logo (light + dark), favicon, brand colour, sign-in page image and message; live preview of the workspace sign-in page
 
-- ⬜ Destinations: connect MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (test connection, field mapping) or built-in storage
-- ⬜ Webhooks (signed, retries, delivery log)
-- ⬜ API keys (create, show once, revoke)
+### Domain & workspace address
+
+- ⬜ Workspace subdomain (change with availability check, redirect from the old one)
+- ⬜ Custom domain (DNS records to add, verification status, HTTPS status)
+- ⬜ Custom short-link domain (later)
+
+### Organisations
+
+- ⬜ Several organisations per workspace (subsidiaries, branches): create, rename, archive
+- ⬜ Organisation switcher in the rail (design: workspace avatars)
+
+### Authentication
+
+- ⬜ Sign-in methods: enable / disable email + password, Google, Microsoft, Apple, Facebook — only enabled ones appear on the workspace sign-in page
+- ⬜ Single sign-on: SAML / OIDC set-up (metadata, certificates, test sign-in) — later
+- ⬜ One-time code policy: channels (email, SMS, authenticator app), code length / expiry, attempts
+- ⬜ Enforce multi-factor authentication for admins / everyone
+- ⬜ Allowed email domains for invites and self-signup (optional)
+
+### Security
+
+- ⬜ Password rules (length, character types, reuse, expiry)
+- ⬜ Session timeout and maximum session length, sign out everywhere
+- ⬜ IP allowlist (CIDR ranges, test my IP)
+- ⬜ Security events overview (recent sign-ins, blocked attempts) — links to audit trail
+
+### Localisation
+
+- ⬜ Default language, timezone, date and number format, first day of week, currency
+- ⬜ Languages offered on public forms
+
+### Notifications & email templates
+
+- ⬜ Which events notify whom (new response, export ready, form closing, security alerts)
+- ⬜ Email templates (sign-in code, invitation, response receipt, notification) with preview and test send, per language
+- ⬜ Sender name and reply-to address (custom sending domain later)
+
+### Privacy & data
+
+- ⬜ Data retention per form / default (auto-delete responses after N days)
+- ⬜ Consent texts and privacy notice link shown on forms
+- ⬜ Data requests: export or delete a respondent's data
+- ⬜ Data residency / storage region (if offered by the plan)
+
+### Themes & form defaults
+
+- ⬜ Themes library (created in the designer, F7): list, rename, set default, delete
+- ⬜ Embed defaults (allowed domains, size), default form settings (progress bar, save and resume)
+
+### Billing & subscription
+
+- ⬜ Current plan, usage against limits (forms, responses per month, seats, destinations)
+- ⬜ Upgrade / change plan, payment method, invoices
+- ⬜ Plan-limit messages wherever a limit is hit (FRM-PLAN-1001 / 1002)
 
 ---
 
-## F12 — Profile ⬜
+## F12 — Option sets & integrations ⬜
+
+### Option sets (reusable choice lists)
+
+- ⬜ List (DataView), create, rename, delete (confirm when used by forms)
+- ⬜ Items: add, edit, bulk paste, import CSV, reorder (drag + keyboard), values vs labels, translations
+- ⬜ "Used in" list of forms
+
+### Destinations (where responses go)
+
+- ⬜ Built-in encrypted storage (default)
+- ⬜ Connect MySQL, MariaDB, Oracle, PostgreSQL, SQL Server: connection form, test connection, SSL options
+- ⬜ Table and field mapping per form, sync status and error log, retry
+
+### Webhooks
+
+- ⬜ Create (URL, events, secret), signed payloads, test delivery
+- ⬜ Delivery log with retries and response details
+
+### API keys
+
+- ⬜ Create (name, scopes, expiry), show once, copy, revoke, last used
+
+### Other integrations (later)
+
+- ⬜ Google Sheets, Slack, email notifications to external addresses
+
+---
+
+## F13 — Profile ⬜
 
 - ⬜ My profile (name, photo, language, timezone)
 - ⬜ Change password
@@ -373,7 +449,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F13 — Users ⬜
+## F14 — Users ⬜
 
 - ⬜ Users list (DataView), invite by email with role, resend / revoke invites
 - ⬜ Enable / disable, reset password or MFA
@@ -381,7 +457,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F14 — Analytics ⬜
+## F15 — Analytics ⬜
 
 - ⬜ Per form: views, starts, completions, completion rate, average time
 - ⬜ Drop-off per page and field
@@ -390,7 +466,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F15 — Live collaboration (optional) ⬜
+## F16 — Live collaboration (optional) ⬜
 
 - ⬜ Presence, cursors and selections in the builder
 - ⬜ Conflict-free editing
@@ -398,11 +474,27 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F16 — Roles & access, audit trail, dashboard ⬜
+## F17 — Dashboard ⬜
 
-- ⬜ Roles and permissions editor, role assignment
-- ⬜ Audit trail (who, what, when, where, before / after)
-- ⬜ Dashboard: KPIs, date ranges, filters, charts (design reference 2)
+**Goal:** the workspace home, built after everything else so it shows what matters (design reference 2). Replaces the Forms redirect on `/` once done.
+
+- ⬜ KPI cards with trend vs previous period (active forms, responses, completion rate, pending reviews, overdue / closing soon)
+- ⬜ Date range + Daily / Weekly / Monthly / Yearly switch
+- ⬜ Responses over time chart with tooltip
+- ⬜ Top forms / form overview card with progress
+- ⬜ Recent responses table (DataView) and activity timeline
+- ⬜ Filters (organisation, folder, owner)
+- ⬜ Empty state for new workspaces (links to onboarding / first form)
+- ⬜ Dashboard entry in the sidebar MAIN MENU (first item, as in the design)
+
+---
+
+## F18 — Roles & access, audit trail ⬜ (last)
+
+- ⬜ Roles and permissions editor (permission catalogue, custom roles)
+- ⬜ Role assignment per user and per organisation; form-level access
+- ⬜ Access overview ("who can see what")
+- ⬜ Audit trail (who, what, when, where — IP / location — before / after), filters, export
 
 ---
 
@@ -418,24 +510,25 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 Owner requests added during development, and where they landed.
 
-| Date       | Request                                                                         | Where       | Status |
-| ---------- | ------------------------------------------------------------------------------- | ----------- | ------ |
-| 2026-10-02 | Support many languages (at least 15) → 20 languages                             | F0          | ✅     |
-| 2026-10-02 | Organise files in sub-folders (max two levels)                                  | all         | ✅     |
-| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                         | F0          | ✅     |
-| 2026-10-02 | Match the design references exactly                                             | F1          | ✅     |
-| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design | F1          | ✅     |
-| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                 | F1          | ✅     |
-| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                  | F1 / F2     | ✅     |
-| 2026-10-02 | Keep the table / grid / filters flow unchanged                                  | F2          | ✅     |
-| 2026-10-02 | "Wow" sign-in screen                                                            | F3          | ✅     |
-| 2026-10-02 | Test accounts in the README; realistic test people                              | F3          | ✅     |
-| 2026-10-02 | Global positioning (not one country); international sample data                 | F3 / all    | ✅     |
-| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                       | F3 / F11    | ✅     |
-| 2026-10-02 | Separate progress file with every task per phase                                | PROGRESS.md | ✅     |
-| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace  | F3 / F11    | 🟡     |
-| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                       | F3          | ✅     |
-| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome         | F3          | ✅     |
+| Date       | Request                                                                          | Where       | Status |
+| ---------- | -------------------------------------------------------------------------------- | ----------- | ------ |
+| 2026-10-02 | Support many languages (at least 15) → 20 languages                              | F0          | ✅     |
+| 2026-10-02 | Organise files in sub-folders (max two levels)                                   | all         | ✅     |
+| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                          | F0          | ✅     |
+| 2026-10-02 | Match the design references exactly                                              | F1          | ✅     |
+| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design  | F1          | ✅     |
+| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                  | F1          | ✅     |
+| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                   | F1 / F2     | ✅     |
+| 2026-10-02 | Keep the table / grid / filters flow unchanged                                   | F2          | ✅     |
+| 2026-10-02 | "Wow" sign-in screen                                                             | F3          | ✅     |
+| 2026-10-02 | Test accounts in the README; realistic test people                               | F3          | ✅     |
+| 2026-10-02 | Global positioning (not one country); international sample data                  | F3 / all    | ✅     |
+| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                        | F3 / F11    | ✅     |
+| 2026-10-02 | Separate progress file with every task per phase                                 | PROGRESS.md | ✅     |
+| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace   | F3 / F11    | 🟡     |
+| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                        | F3          | ✅     |
+| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC | F11 / F17   | ✅     |
+| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome          | F3          | ✅     |
 
 ---
 
