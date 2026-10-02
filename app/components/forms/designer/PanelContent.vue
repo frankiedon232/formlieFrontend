@@ -1,6 +1,6 @@
 <!-- Designer groups: Header (cover, logo, title, subtitle, alignment) · Footer (text, links, logo) · Thank-you page. -->
 <script setup lang="ts">
-import type { FormTheme } from '#shared/utils/forms/theme'
+import { isHttpsLink, type FormTheme } from '#shared/utils/forms/theme'
 
 defineProps<{ group: 'header' | 'footer' | 'thank_you' }>()
 const { t } = useI18n()
@@ -26,7 +26,8 @@ const heights = computed(() => ['sm', 'md', 'lg'].map(value => ({ value, label: 
 // Footer links: label + https link, up to 6.
 type Link = FormTheme['footer']['links'][number]
 const links = computed(() => theme.value.footer.links)
-const linkError = (href: string) => (href && !/^https:\/\/\S+$/i.test(href) ? t('builder.blocks.linkInvalid') : undefined)
+// No error on a fresh, untouched link ("https://"); the form only shows complete links.
+const linkError = (href: string) => (href.trim() !== 'https://' && !isHttpsLink(href) ? t('builder.blocks.linkInvalid') : undefined)
 function setLink(index: number, patch: Partial<Link>) {
   d.set('footer', 'links', links.value.map((link, i) => (i === index ? { ...link, ...patch } : link)))
 }

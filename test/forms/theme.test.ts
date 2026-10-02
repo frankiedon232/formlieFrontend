@@ -6,6 +6,7 @@ import {
   pageBackground,
   readableOn,
   resolveTheme,
+  visibleLinks,
   themeSchema,
   themeVars,
 } from '../../shared/utils/forms/theme'
@@ -22,7 +23,8 @@ describe('form themes', () => {
     const theme = resolveTheme({ colors: { primary: '#123456' }, layout: 'nope', footer: { links: [{ label: 'x', href: 'javascript:alert(1)' }] } })
     expect(theme.colors.primary).toBe('#123456')
     expect(theme.layout).toBe('card')
-    expect(theme.footer.links).toEqual([])
+    expect(theme.footer.links).toEqual([{ label: 'x', href: '' }])
+    expect(visibleLinks(theme)).toEqual([])
   })
 
   it('every starting point is a valid theme', () => {
@@ -58,5 +60,23 @@ describe('structural starting points', () => {
     expect(theme.header.subtitle).toBe('Hello')
     expect(theme.split.panel).toBe('image')
     expect(theme.footer.style).toBe('plain')
+  })
+})
+
+describe('footer links', () => {
+  it('keeps the footer while a link is half written and only shows complete links', () => {
+    const theme = resolveTheme({
+      footer: {
+        enabled: true,
+        links: [
+          { label: 'New link', href: 'https://' },
+          { label: '', href: 'https://example.org' },
+          { label: 'Privacy', href: 'https://example.org/privacy' },
+        ],
+      },
+    })
+    expect(theme.footer.enabled).toBe(true)
+    expect(theme.footer.links).toHaveLength(3)
+    expect(visibleLinks(theme).map(l => l.label)).toEqual(['Privacy'])
   })
 })

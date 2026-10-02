@@ -78,7 +78,20 @@ export const themeSchema = z.object({
   footer: z.object({
     enabled: z.boolean(),
     text: z.string().max(500),
-    links: z.array(z.object({ label: z.string().min(1).max(60), href: httpsUrl })).max(6),
+    /** Stored as typed (a half-written link must not reset the footer); only complete links render — see visibleLinks. */
+    links: z
+      .array(
+        z.object({
+          label: z.string().max(60).catch(''),
+          // https only (or on its way to it while typing); anything else is emptied, never kept.
+          href: z
+            .string()
+            .max(2000)
+            .refine(v => 'https://'.startsWith(v.toLowerCase()) || /^https:\/\//i.test(v))
+            .catch(''),
+        }),
+      )
+      .max(6),
     show_logo: z.boolean(),
     align: z.enum(['start', 'center']),
     /** plain = small text under the form · band = coloured bar (attached to the card). */
@@ -248,6 +261,11 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
     },
   },
 ]
+
+/** A complete https address with a host (example.org/…). */
+export const isHttpsLink = (href: string) => /^https:\/\/[^\s/.]+(\.[^\s/.]+)+(\/\S*)?$/i.test(href.trim())
+/** Footer links that are complete: a label and an https address. */
+export const visibleLinks = (theme: FormTheme) => theme.footer.links.filter(link => link.label.trim() && isHttpsLink(link.href))
 
 /** CSS background for a colour / gradient fill (header band, side panel). */
 export const fillBackground = (type: string, from: string, to: string, angle = 135) =>

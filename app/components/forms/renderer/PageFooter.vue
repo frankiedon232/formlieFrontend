@@ -3,13 +3,14 @@
   coloured bar — attached to the bottom of the card, or full width under plain / full layouts.
 -->
 <script setup lang="ts">
-import type { FormTheme } from '#shared/utils/forms/theme'
+import { visibleLinks, type FormTheme } from '#shared/utils/forms/theme'
 
 const props = defineProps<{ theme: FormTheme; logo: string | null; attached?: boolean; widthClass?: string }>()
 const { t } = useI18n()
 const footer = computed(() => props.theme.footer)
 const band = computed(() => footer.value.style === 'band')
-const empty = computed(() => !footer.value.text && !footer.value.links.length && !props.logo)
+const links = computed(() => visibleLinks(props.theme))
+const empty = computed(() => !footer.value.text && !links.value.length && !props.logo)
 </script>
 
 <template>
@@ -31,9 +32,9 @@ const empty = computed(() => !footer.value.text && !footer.value.links.length &&
         <UIcon name="i-lucide-lock" class="size-3.5" />
         {{ t('renderer.page.secure') }}
       </p>
-      <nav v-if="footer.links.length" class="flex flex-wrap gap-x-4 gap-y-1" :aria-label="t('renderer.page.footerLinks')">
+      <nav v-if="links.length" class="flex flex-wrap gap-x-4 gap-y-1" :aria-label="t('renderer.page.footerLinks')">
         <a
-          v-for="link in footer.links"
+          v-for="link in links"
           :key="link.href + link.label"
           :href="link.href"
           target="_blank"
