@@ -248,16 +248,15 @@
   "auth": {
     "or": "或",
     "fields": {
-      "email": "邮箱",
+      "email": "电子邮箱地址",
       "password": "密码",
       "firstName": "名",
       "lastName": "姓",
-      "workEmail": "工作邮箱",
       "company": "公司名称",
       "subdomain": "工作区地址",
       "newPassword": "新密码",
       "confirmPassword": "确认密码",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "请输入有效的邮箱地址。",
@@ -344,11 +343,11 @@
       "redirecting": "正在打开新工作区…",
       "haveAccount": "已有工作区？",
       "orEmail": "或使用邮箱注册",
-      "oauthUnavailable": "使用 {provider} 注册尚未接通，请暂时使用工作邮箱。"
+      "oauthUnavailable": "使用 {provider} 注册尚未接通，请暂时使用电子邮箱地址。"
     },
     "find": {
       "title": "找到您的工作区",
-      "desc": "输入工作邮箱，我们会给您发送验证码。",
+      "desc": "输入您的电子邮箱地址，我们会给您发送验证码。",
       "resultsDesc": "选择要登录的工作区。",
       "send": "发送验证码",
       "none": "未找到工作区",

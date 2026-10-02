@@ -248,16 +248,15 @@
   "auth": {
     "or": "ou",
     "fields": {
-      "email": "E-mail",
+      "email": "Endereço de e-mail",
       "password": "Senha",
       "firstName": "Nome",
       "lastName": "Sobrenome",
-      "workEmail": "E-mail de trabalho",
       "company": "Nome da empresa",
       "subdomain": "Endereço do espaço",
       "newPassword": "Nova senha",
       "confirmPassword": "Confirmar senha",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Informe um e-mail válido.",
@@ -344,11 +343,11 @@
       "redirecting": "Abrindo seu novo espaço…",
       "haveAccount": "Já tem um espaço?",
       "orEmail": "ou cadastre-se com e-mail",
-      "oauthUnavailable": "O cadastro com {provider} ainda não está conectado. Use seu e-mail de trabalho por enquanto."
+      "oauthUnavailable": "O cadastro com {provider} ainda não está conectado. Use seu endereço de e-mail por enquanto."
     },
     "find": {
       "title": "Encontre seu espaço",
-      "desc": "Informe o e-mail que você usa no trabalho. Enviaremos um código.",
+      "desc": "Informe seu endereço de e-mail. Enviaremos um código.",
       "resultsDesc": "Escolha o espaço em que deseja entrar.",
       "send": "Enviar código",
       "none": "Nenhum espaço encontrado",

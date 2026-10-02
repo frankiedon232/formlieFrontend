@@ -248,16 +248,15 @@
   "auth": {
     "or": "lub",
     "fields": {
-      "email": "E-mail",
+      "email": "Adres e-mail",
       "password": "Hasło",
       "firstName": "Imię",
       "lastName": "Nazwisko",
-      "workEmail": "Służbowy e-mail",
       "company": "Nazwa firmy",
       "subdomain": "Adres obszaru roboczego",
       "newPassword": "Nowe hasło",
       "confirmPassword": "Potwierdź hasło",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Podaj prawidłowy adres e-mail.",
@@ -344,11 +343,11 @@
       "redirecting": "Otwieranie nowego obszaru roboczego…",
       "haveAccount": "Masz już obszar roboczy?",
       "orEmail": "lub zarejestruj się e-mailem",
-      "oauthUnavailable": "Rejestracja przez {provider} nie jest jeszcze podłączona. Na razie użyj służbowego e-maila."
+      "oauthUnavailable": "Rejestracja przez {provider} nie jest jeszcze podłączona. Na razie użyj adresu e-mail."
     },
     "find": {
       "title": "Znajdź swój obszar roboczy",
-      "desc": "Podaj służbowy e-mail. Wyślemy Ci kod.",
+      "desc": "Podaj swój adres e-mail. Wyślemy Ci kod.",
       "resultsDesc": "Wybierz obszar roboczy, do którego chcesz się zalogować.",
       "send": "Wyślij kod",
       "none": "Nie znaleziono obszarów roboczych",

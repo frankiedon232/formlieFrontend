@@ -248,16 +248,15 @@
   "auth": {
     "or": "або",
     "fields": {
-      "email": "Email",
+      "email": "Адреса електронної пошти",
       "password": "Пароль",
       "firstName": "Ім’я",
       "lastName": "Прізвище",
-      "workEmail": "Робочий email",
       "company": "Назва компанії",
       "subdomain": "Адреса робочого простору",
       "newPassword": "Новий пароль",
       "confirmPassword": "Підтвердьте пароль",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Введіть коректний email.",
@@ -344,11 +343,11 @@
       "redirecting": "Відкриваємо новий простір…",
       "haveAccount": "Уже маєте простір?",
       "orEmail": "або зареєструйтеся через email",
-      "oauthUnavailable": "Реєстрацію через {provider} ще не під’єднано. Поки що використайте робочий email."
+      "oauthUnavailable": "Реєстрацію через {provider} ще не під’єднано. Поки що використайте адресу електронної пошти."
     },
     "find": {
       "title": "Знайдіть робочий простір",
-      "desc": "Введіть робочий email. Ми надішлемо вам код.",
+      "desc": "Введіть адресу електронної пошти. Ми надішлемо вам код.",
       "resultsDesc": "Оберіть простір для входу.",
       "send": "Надіслати код",
       "none": "Простори не знайдено",

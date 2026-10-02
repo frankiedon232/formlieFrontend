@@ -252,12 +252,11 @@
       "password": "Contraseña",
       "firstName": "Nombre",
       "lastName": "Apellido",
-      "workEmail": "Correo del trabajo",
       "company": "Nombre de la empresa",
       "subdomain": "Dirección del espacio",
       "newPassword": "Nueva contraseña",
       "confirmPassword": "Confirmar contraseña",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Introduce un correo válido.",
@@ -344,11 +343,11 @@
       "redirecting": "Abriendo tu nuevo espacio…",
       "haveAccount": "¿Ya tienes un espacio?",
       "orEmail": "o regístrate con tu correo",
-      "oauthUnavailable": "El registro con {provider} aún no está conectado. Usa tu correo del trabajo por ahora."
+      "oauthUnavailable": "El registro con {provider} aún no está conectado. Usa tu correo electrónico por ahora."
     },
     "find": {
       "title": "Encuentra tu espacio",
-      "desc": "Introduce el correo que usas en el trabajo. Te enviaremos un código.",
+      "desc": "Introduce tu correo electrónico. Te enviaremos un código.",
       "resultsDesc": "Elige el espacio en el que quieres entrar.",
       "send": "Enviar código",
       "none": "No se encontraron espacios",

@@ -248,16 +248,15 @@
   "auth": {
     "or": "veya",
     "fields": {
-      "email": "E-posta",
+      "email": "E-posta adresi",
       "password": "Şifre",
       "firstName": "Ad",
       "lastName": "Soyad",
-      "workEmail": "İş e-postası",
       "company": "Şirket adı",
       "subdomain": "Çalışma alanı adresi",
       "newPassword": "Yeni şifre",
       "confirmPassword": "Şifreyi onayla",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Geçerli bir e-posta adresi girin.",
@@ -344,11 +343,11 @@
       "redirecting": "Yeni çalışma alanınız açılıyor…",
       "haveAccount": "Zaten bir çalışma alanınız var mı?",
       "orEmail": "ya da e-postayla kaydolun",
-      "oauthUnavailable": "{provider} ile kayıt henüz bağlı değil. Şimdilik iş e-postanızı kullanın."
+      "oauthUnavailable": "{provider} ile kayıt henüz bağlı değil. Şimdilik e-posta adresinizi kullanın."
     },
     "find": {
       "title": "Çalışma alanınızı bulun",
-      "desc": "İş e-postanızı girin. Size bir kod gönderelim.",
+      "desc": "E-posta adresinizi girin. Size bir kod gönderelim.",
       "resultsDesc": "Giriş yapmak istediğiniz çalışma alanını seçin.",
       "send": "Kod gönder",
       "none": "Çalışma alanı bulunamadı",

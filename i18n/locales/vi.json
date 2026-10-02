@@ -248,16 +248,15 @@
   "auth": {
     "or": "hoặc",
     "fields": {
-      "email": "Email",
+      "email": "Địa chỉ email",
       "password": "Mật khẩu",
       "firstName": "Tên",
       "lastName": "Họ",
-      "workEmail": "Email công việc",
       "company": "Tên công ty",
       "subdomain": "Địa chỉ không gian làm việc",
       "newPassword": "Mật khẩu mới",
       "confirmPassword": "Xác nhận mật khẩu",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Nhập địa chỉ email hợp lệ.",
@@ -344,11 +343,11 @@
       "redirecting": "Đang mở không gian làm việc mới…",
       "haveAccount": "Đã có không gian làm việc?",
       "orEmail": "hoặc đăng ký bằng email",
-      "oauthUnavailable": "Đăng ký bằng {provider} chưa được kết nối. Tạm thời hãy dùng email công việc."
+      "oauthUnavailable": "Đăng ký bằng {provider} chưa được kết nối. Tạm thời hãy dùng địa chỉ email."
     },
     "find": {
       "title": "Tìm không gian làm việc",
-      "desc": "Nhập email công việc. Chúng tôi sẽ gửi mã cho bạn.",
+      "desc": "Nhập địa chỉ email của bạn. Chúng tôi sẽ gửi mã cho bạn.",
       "resultsDesc": "Chọn không gian làm việc để đăng nhập.",
       "send": "Gửi mã",
       "none": "Không tìm thấy không gian làm việc",

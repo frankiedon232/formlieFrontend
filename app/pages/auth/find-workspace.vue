@@ -81,6 +81,7 @@ function startOver() {
           v-model="state.email"
           type="email"
           autocomplete="email"
+          :placeholder="t('auth.fields.emailPlaceholder')"
           icon="i-lucide-mail"
           size="xl"
           class="w-full"

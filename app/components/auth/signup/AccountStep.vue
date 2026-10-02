@@ -29,11 +29,12 @@ async function onSubmit(event: FormSubmitEvent<typeof state>) {
         <UInput v-model="state.last_name" autocomplete="family-name" size="xl" class="w-full" />
       </UFormField>
     </div>
-    <UFormField :label="t('auth.fields.workEmail')" name="email" required>
+    <UFormField :label="t('auth.fields.email')" name="email" required>
       <UInput
         v-model="state.email"
         type="email"
         autocomplete="email"
+        :placeholder="t('auth.fields.emailPlaceholder')"
         icon="i-lucide-mail"
         size="xl"
         class="w-full"

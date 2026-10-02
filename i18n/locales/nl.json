@@ -248,16 +248,15 @@
   "auth": {
     "or": "of",
     "fields": {
-      "email": "E-mail",
+      "email": "E-mailadres",
       "password": "Wachtwoord",
       "firstName": "Voornaam",
       "lastName": "Achternaam",
-      "workEmail": "Werk-e-mail",
       "company": "Bedrijfsnaam",
       "subdomain": "Adres van de werkruimte",
       "newPassword": "Nieuw wachtwoord",
       "confirmPassword": "Wachtwoord bevestigen",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Voer een geldig e-mailadres in.",
@@ -344,11 +343,11 @@
       "redirecting": "Je nieuwe werkruimte wordt geopend…",
       "haveAccount": "Heb je al een werkruimte?",
       "orEmail": "of meld je aan met e-mail",
-      "oauthUnavailable": "Aanmelden met {provider} is nog niet gekoppeld. Gebruik voorlopig je werk-e-mail."
+      "oauthUnavailable": "Aanmelden met {provider} is nog niet gekoppeld. Gebruik voorlopig je e-mailadres."
     },
     "find": {
       "title": "Vind je werkruimte",
-      "desc": "Voer het e-mailadres in dat je op je werk gebruikt. We sturen je een code.",
+      "desc": "Voer je e-mailadres in. We sturen je een code.",
       "resultsDesc": "Kies de werkruimte waarbij je wilt inloggen.",
       "send": "Code sturen",
       "none": "Geen werkruimtes gevonden",

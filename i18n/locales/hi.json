@@ -248,16 +248,15 @@
   "auth": {
     "or": "या",
     "fields": {
-      "email": "ईमेल",
+      "email": "ईमेल पता",
       "password": "पासवर्ड",
       "firstName": "पहला नाम",
       "lastName": "उपनाम",
-      "workEmail": "ऑफ़िस ईमेल",
       "company": "कंपनी का नाम",
       "subdomain": "वर्कस्पेस का पता",
       "newPassword": "नया पासवर्ड",
       "confirmPassword": "पासवर्ड की पुष्टि करें",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "मान्य ईमेल पता दर्ज करें।",
@@ -344,11 +343,11 @@
       "redirecting": "आपका नया वर्कस्पेस खुल रहा है…",
       "haveAccount": "पहले से वर्कस्पेस है?",
       "orEmail": "या ईमेल से साइन अप करें",
-      "oauthUnavailable": "{provider} से साइन-अप अभी जुड़ा नहीं है। फ़िलहाल अपना ऑफ़िस ईमेल इस्तेमाल करें।"
+      "oauthUnavailable": "{provider} से साइन-अप अभी जुड़ा नहीं है। फ़िलहाल अपना ईमेल पता इस्तेमाल करें।"
     },
     "find": {
       "title": "अपना वर्कस्पेस खोजें",
-      "desc": "काम वाला ईमेल दर्ज करें। हम आपको कोड भेजेंगे।",
+      "desc": "अपना ईमेल पता दर्ज करें। हम आपको एक कोड भेजेंगे।",
       "resultsDesc": "साइन इन के लिए वर्कस्पेस चुनें।",
       "send": "कोड भेजें",
       "none": "कोई वर्कस्पेस नहीं मिला",

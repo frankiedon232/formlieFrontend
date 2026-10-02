@@ -248,16 +248,15 @@
   "auth": {
     "or": "oder",
     "fields": {
-      "email": "E-Mail",
+      "email": "E-Mail-Adresse",
       "password": "Passwort",
       "firstName": "Vorname",
       "lastName": "Nachname",
-      "workEmail": "Geschäftliche E-Mail",
       "company": "Firmenname",
       "subdomain": "Adresse des Arbeitsbereichs",
       "newPassword": "Neues Passwort",
       "confirmPassword": "Passwort bestätigen",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Geben Sie eine gültige E-Mail-Adresse ein.",
@@ -344,11 +343,11 @@
       "redirecting": "Ihr neuer Arbeitsbereich wird geöffnet…",
       "haveAccount": "Sie haben schon einen Arbeitsbereich?",
       "orEmail": "oder mit E-Mail registrieren",
-      "oauthUnavailable": "Die Registrierung mit {provider} ist noch nicht verbunden. Nutzen Sie vorerst Ihre geschäftliche E-Mail."
+      "oauthUnavailable": "Die Registrierung mit {provider} ist noch nicht verbunden. Nutzen Sie vorerst Ihre E-Mail-Adresse."
     },
     "find": {
       "title": "Arbeitsbereich finden",
-      "desc": "Geben Sie Ihre geschäftliche E-Mail ein. Wir senden Ihnen einen Code.",
+      "desc": "Geben Sie Ihre E-Mail-Adresse ein. Wir senden Ihnen einen Code.",
       "resultsDesc": "Wählen Sie den Arbeitsbereich, bei dem Sie sich anmelden möchten.",
       "send": "Code senden",
       "none": "Keine Arbeitsbereiche gefunden",

@@ -248,16 +248,15 @@
   "auth": {
     "or": "atau",
     "fields": {
-      "email": "Email",
+      "email": "Alamat email",
       "password": "Kata sandi",
       "firstName": "Nama depan",
       "lastName": "Nama belakang",
-      "workEmail": "Email kerja",
       "company": "Nama perusahaan",
       "subdomain": "Alamat ruang kerja",
       "newPassword": "Kata sandi baru",
       "confirmPassword": "Konfirmasi kata sandi",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Masukkan alamat email yang valid.",
@@ -344,11 +343,11 @@
       "redirecting": "Membuka ruang kerja baru Anda…",
       "haveAccount": "Sudah punya ruang kerja?",
       "orEmail": "atau daftar dengan email",
-      "oauthUnavailable": "Pendaftaran dengan {provider} belum terhubung. Untuk sementara gunakan email kerja Anda."
+      "oauthUnavailable": "Pendaftaran dengan {provider} belum terhubung. Untuk sementara gunakan alamat email Anda."
     },
     "find": {
       "title": "Temukan ruang kerja Anda",
-      "desc": "Masukkan email kerja Anda. Kami akan mengirimkan kode.",
+      "desc": "Masukkan alamat email Anda. Kami akan mengirimkan kode.",
       "resultsDesc": "Pilih ruang kerja yang ingin Anda masuki.",
       "send": "Kirim kode",
       "none": "Ruang kerja tidak ditemukan",

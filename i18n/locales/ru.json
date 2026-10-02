@@ -248,16 +248,15 @@
   "auth": {
     "or": "или",
     "fields": {
-      "email": "Email",
+      "email": "Адрес электронной почты",
       "password": "Пароль",
       "firstName": "Имя",
       "lastName": "Фамилия",
-      "workEmail": "Рабочий email",
       "company": "Название компании",
       "subdomain": "Адрес рабочего пространства",
       "newPassword": "Новый пароль",
       "confirmPassword": "Подтвердите пароль",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Введите корректный email.",
@@ -344,11 +343,11 @@
       "redirecting": "Открываем новое пространство…",
       "haveAccount": "Уже есть пространство?",
       "orEmail": "или зарегистрируйтесь по email",
-      "oauthUnavailable": "Регистрация через {provider} пока не подключена. Используйте рабочий email."
+      "oauthUnavailable": "Регистрация через {provider} пока не подключена. Пока используйте адрес электронной почты."
     },
     "find": {
       "title": "Найдите рабочее пространство",
-      "desc": "Введите рабочий email. Мы пришлём вам код.",
+      "desc": "Введите адрес электронной почты. Мы пришлём вам код.",
       "resultsDesc": "Выберите пространство для входа.",
       "send": "Отправить код",
       "none": "Пространства не найдены",

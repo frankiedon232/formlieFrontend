@@ -252,12 +252,11 @@
       "password": "パスワード",
       "firstName": "名",
       "lastName": "姓",
-      "workEmail": "勤務先メールアドレス",
       "company": "会社名",
       "subdomain": "ワークスペースのアドレス",
       "newPassword": "新しいパスワード",
       "confirmPassword": "パスワード（確認）",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "有効なメールアドレスを入力してください。",
@@ -344,11 +343,11 @@
       "redirecting": "新しいワークスペースを開いています…",
       "haveAccount": "すでにワークスペースをお持ちですか？",
       "orEmail": "またはメールアドレスで登録",
-      "oauthUnavailable": "{provider} での登録はまだ接続されていません。当面は勤務先のメールアドレスをご利用ください。"
+      "oauthUnavailable": "{provider} での登録はまだ接続されていません。当面はメールアドレスをご利用ください。"
     },
     "find": {
       "title": "ワークスペースを探す",
-      "desc": "勤務先のメールアドレスを入力してください。コードをお送りします。",
+      "desc": "メールアドレスを入力してください。コードをお送りします。",
       "resultsDesc": "ログインするワークスペースを選んでください。",
       "send": "コードを送信",
       "none": "ワークスペースが見つかりません",

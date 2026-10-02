@@ -248,16 +248,15 @@
   "auth": {
     "or": "au",
     "fields": {
-      "email": "Barua pepe",
+      "email": "Anwani ya barua pepe",
       "password": "Nenosiri",
       "firstName": "Jina la kwanza",
       "lastName": "Jina la mwisho",
-      "workEmail": "Barua pepe ya kazini",
       "company": "Jina la kampuni",
       "subdomain": "Anwani ya eneo la kazi",
       "newPassword": "Nenosiri jipya",
       "confirmPassword": "Thibitisha nenosiri",
-      "emailPlaceholder": "you{'@'}company.com"
+      "emailPlaceholder": "name{'@'}example.com"
     },
     "validation": {
       "email": "Weka barua pepe sahihi.",
@@ -344,11 +343,11 @@
       "redirecting": "Inafungua eneo lako jipya la kazi…",
       "haveAccount": "Tayari una eneo la kazi?",
       "orEmail": "au jisajili kwa barua pepe",
-      "oauthUnavailable": "Usajili kwa {provider} bado haujaunganishwa. Kwa sasa tumia barua pepe ya kazini."
+      "oauthUnavailable": "Usajili kwa {provider} bado haujaunganishwa. Kwa sasa tumia anwani yako ya barua pepe."
     },
     "find": {
       "title": "Tafuta eneo lako la kazi",
-      "desc": "Weka barua pepe ya kazini. Tutakutumia msimbo.",
+      "desc": "Weka anwani yako ya barua pepe. Tutakutumia msimbo.",
       "resultsDesc": "Chagua eneo la kazi la kuingia.",
       "send": "Tuma msimbo",
       "none": "Hakuna maeneo ya kazi yaliyopatikana",

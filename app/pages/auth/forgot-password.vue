@@ -87,6 +87,7 @@ async function resend(channel?: OtpChannel) {
           v-model="emailState.email"
           type="email"
           autocomplete="email"
+          :placeholder="t('auth.fields.emailPlaceholder')"
           icon="i-lucide-mail"
           size="xl"
           class="w-full"
