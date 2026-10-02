@@ -1,8 +1,9 @@
 <!-- Address (street, city, region, postal code, country — international) and country picker. -->
 <script setup lang="ts">
 import { isLocked, type FormField } from '#shared/utils/forms/build'
+import { requiredAddressParts, type AddressPart } from '#shared/utils/forms/validate'
 
-const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
+const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live'; errorParts?: string[] }>()
 const value = defineModel<unknown>()
 const { t } = useI18n()
 const countries = useCountryOptions()
@@ -26,6 +27,12 @@ const country = computed({
 })
 // Read-only and disabled both block changes here (Nuxt UI choice controls have no read-only state).
 const readonly = computed(() => isLocked(props.field))
+// Missing parts after a failed submit are highlighted; parts that aren't asked for say "(optional)".
+const bad = (part: string) => !!props.errorParts?.includes(part)
+const state = (part: string) => (bad(part) ? { color: 'error' as const, highlight: true, 'aria-invalid': true } : {})
+const asked = computed(() => requiredAddressParts(props.field))
+const optional = (part: AddressPart, label: string) =>
+  asked.value.includes(part) ? label : t('renderer.address.optional', { part: label })
 const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` : 'i-lucide-globe')
 </script>
 
@@ -45,6 +52,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
   <div v-else :id="id" class="grid gap-2 sm:grid-cols-2">
     <UInput
       :model-value="address.line1 ?? ''"
+      v-bind="state('line1')"
       :placeholder="t('renderer.address.line1')"
       autocomplete="address-line1"
       :readonly="readonly"
@@ -61,6 +69,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
     />
     <UInput
       :model-value="address.city ?? ''"
+      v-bind="state('city')"
       :placeholder="t('renderer.address.city')"
       autocomplete="address-level2"
       :readonly="readonly"
@@ -69,7 +78,8 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
     />
     <UInput
       :model-value="address.region ?? ''"
-      :placeholder="t('renderer.address.region')"
+      v-bind="state('region')"
+      :placeholder="optional('region', t('renderer.address.region'))"
       autocomplete="address-level1"
       :readonly="readonly"
       class="w-full"
@@ -77,7 +87,8 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
     />
     <UInput
       :model-value="address.postal_code ?? ''"
-      :placeholder="t('renderer.address.postalCode')"
+      v-bind="state('postal_code')"
+      :placeholder="optional('postal_code', t('renderer.address.postalCode'))"
       autocomplete="postal-code"
       :readonly="readonly"
       class="w-full"
@@ -88,6 +99,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       :items="countries"
       value-key="value"
       :icon="flag(address.country)"
+      v-bind="state('country')"
       :placeholder="t('renderer.address.country')"
       :search-input="{ placeholder: t('common.search') }"
       :disabled="readonly"

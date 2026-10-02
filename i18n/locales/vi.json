@@ -1077,7 +1077,11 @@
       "toolbar": "Thanh công cụ",
       "toolbarHint": "Những gì người trả lời có thể định dạng.",
       "toolbarBasic": "Cơ bản",
-      "toolbarFull": "Đầy đủ"
+      "toolbarFull": "Đầy đủ",
+      "addressParts": "Khi địa chỉ là bắt buộc, đường, thành phố và quốc gia luôn được yêu cầu.",
+      "requirePostal": "Bắt buộc mã bưu chính",
+      "requirePostalHint": "Tắt đối với các quốc gia không có mã bưu chính.",
+      "requireRegion": "Bắt buộc tỉnh / bang / vùng"
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -1226,7 +1230,8 @@
       "city": "Thành phố",
       "region": "Tỉnh / bang / vùng",
       "postalCode": "Mã bưu chính",
-      "country": "Quốc gia"
+      "country": "Quốc gia",
+      "optional": "{part} (không bắt buộc)"
     },
     "submit": "Gửi",
     "next": "Tiếp",
@@ -1258,7 +1263,23 @@
       "alignRight": "Căn phải",
       "justify": "Căn đều"
     },
-    "requiredNamed": "{field} là bắt buộc."
+    "requiredNamed": "{field} là bắt buộc.",
+    "invalid": {
+      "email": "Nhập địa chỉ email hợp lệ cho {field}, ví dụ name{'@'}example.com.",
+      "url": "Nhập địa chỉ web đầy đủ cho {field}, bắt đầu bằng https://.",
+      "phone": "Nhập số điện thoại hợp lệ cho {field}, kèm mã quốc gia (ví dụ +44).",
+      "number": "{field} phải là một số.",
+      "min": "{field} phải ít nhất là {min}.",
+      "max": "{field} không được lớn hơn {max}.",
+      "min_length": "{field} cần ít nhất {n} ký tự.",
+      "max_length": "{field} chỉ được tối đa {n} ký tự.",
+      "pattern": "{field} không đúng định dạng.",
+      "min_selected": "Chọn ít nhất {n} cho {field}.",
+      "max_selected": "Chọn tối đa {n} cho {field}.",
+      "max_files": "{field} chỉ nhận tối đa {n} tệp.",
+      "date_range": "Chọn cả hai ngày cho {field}, ngày kết thúc phải trùng hoặc sau ngày bắt đầu.",
+      "address": "{field} còn thiếu: {parts}."
+    }
   },
   "logic": {
     "crumb": "Logic",

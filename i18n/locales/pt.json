@@ -1077,7 +1077,11 @@
       "toolbar": "Barra de ferramentas",
       "toolbarHint": "O que os respondentes podem formatar.",
       "toolbarBasic": "Básica",
-      "toolbarFull": "Completa"
+      "toolbarFull": "Completa",
+      "addressParts": "Rua, cidade e país são sempre solicitados quando o endereço é obrigatório.",
+      "requirePostal": "Código postal obrigatório",
+      "requirePostalHint": "Desative para países sem código postal.",
+      "requireRegion": "Estado / província / região obrigatório"
     },
     "shortcuts": {
       "title": "Atalhos",
@@ -1226,7 +1230,8 @@
       "city": "Cidade",
       "region": "Estado / província / região",
       "postalCode": "Código postal",
-      "country": "País"
+      "country": "País",
+      "optional": "{part} (opcional)"
     },
     "submit": "Enviar",
     "next": "Próximo",
@@ -1258,7 +1263,23 @@
       "alignRight": "Alinhar à direita",
       "justify": "Justificar"
     },
-    "requiredNamed": "{field} é obrigatório."
+    "requiredNamed": "{field} é obrigatório.",
+    "invalid": {
+      "email": "Digite um e-mail válido em {field}, como name{'@'}example.com.",
+      "url": "Digite um endereço web completo em {field}, começando com https://.",
+      "phone": "Digite um telefone válido em {field}, com o código do país (ex.: +44).",
+      "number": "{field} deve ser um número.",
+      "min": "{field} deve ser no mínimo {min}.",
+      "max": "{field} deve ser no máximo {max}.",
+      "min_length": "{field} precisa ter pelo menos {n} caracteres.",
+      "max_length": "{field} pode ter no máximo {n} caracteres.",
+      "pattern": "{field} não está no formato esperado.",
+      "min_selected": "Escolha pelo menos {n} em {field}.",
+      "max_selected": "Escolha no máximo {n} em {field}.",
+      "max_files": "{field} aceita no máximo {n} arquivos.",
+      "date_range": "Escolha as duas datas em {field}, com a data final igual ou posterior à inicial.",
+      "address": "Falta em {field}: {parts}."
+    }
   },
   "logic": {
     "crumb": "Lógica",

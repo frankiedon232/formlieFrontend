@@ -1077,7 +1077,11 @@
       "toolbar": "Barre d’outils",
       "toolbarHint": "Ce que les répondants peuvent mettre en forme.",
       "toolbarBasic": "Simple",
-      "toolbarFull": "Complète"
+      "toolbarFull": "Complète",
+      "addressParts": "La rue, la ville et le pays sont toujours demandés lorsque l’adresse est obligatoire.",
+      "requirePostal": "Code postal obligatoire",
+      "requirePostalHint": "Désactivez cette option pour les pays sans code postal.",
+      "requireRegion": "État / province / région obligatoire"
     },
     "shortcuts": {
       "title": "Raccourcis",
@@ -1226,7 +1230,8 @@
       "city": "Ville",
       "region": "État / province / région",
       "postalCode": "Code postal",
-      "country": "Pays"
+      "country": "Pays",
+      "optional": "{part} (facultatif)"
     },
     "submit": "Envoyer",
     "next": "Suivant",
@@ -1258,7 +1263,23 @@
       "alignRight": "Aligner à droite",
       "justify": "Justifier"
     },
-    "requiredNamed": "{field} est obligatoire."
+    "requiredNamed": "{field} est obligatoire.",
+    "invalid": {
+      "email": "Saisissez une adresse e-mail valide pour {field}, par exemple name{'@'}example.com.",
+      "url": "Saisissez une adresse web complète pour {field}, commençant par https://.",
+      "phone": "Saisissez un numéro de téléphone valide pour {field}, avec l’indicatif du pays (par ex. +44).",
+      "number": "{field} doit être un nombre.",
+      "min": "{field} doit être au moins égal à {min}.",
+      "max": "{field} doit être au plus égal à {max}.",
+      "min_length": "{field} doit contenir au moins {n} caractères.",
+      "max_length": "{field} peut contenir au plus {n} caractères.",
+      "pattern": "{field} n’est pas au format attendu.",
+      "min_selected": "Choisissez au moins {n} réponses pour {field}.",
+      "max_selected": "Choisissez au plus {n} réponses pour {field}.",
+      "max_files": "{field} accepte au plus {n} fichiers.",
+      "date_range": "Choisissez les deux dates pour {field}, la date de fin étant égale ou postérieure à la date de début.",
+      "address": "Il manque dans {field} : {parts}."
+    }
   },
   "logic": {
     "crumb": "Logique",

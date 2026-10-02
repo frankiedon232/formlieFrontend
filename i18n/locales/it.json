@@ -1077,7 +1077,11 @@
       "toolbar": "Barra degli strumenti",
       "toolbarHint": "Cosa possono formattare i rispondenti.",
       "toolbarBasic": "Base",
-      "toolbarFull": "Completa"
+      "toolbarFull": "Completa",
+      "addressParts": "Via, città e paese vengono sempre richiesti quando l’indirizzo è obbligatorio.",
+      "requirePostal": "CAP obbligatorio",
+      "requirePostalHint": "Disattiva per i paesi senza codice postale.",
+      "requireRegion": "Stato / provincia / regione obbligatorio"
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -1226,7 +1230,8 @@
       "city": "Città",
       "region": "Stato / provincia / regione",
       "postalCode": "CAP",
-      "country": "Paese"
+      "country": "Paese",
+      "optional": "{part} (facoltativo)"
     },
     "submit": "Invia",
     "next": "Avanti",
@@ -1258,7 +1263,23 @@
       "alignRight": "Allinea a destra",
       "justify": "Giustifica"
     },
-    "requiredNamed": "{field} è obbligatorio."
+    "requiredNamed": "{field} è obbligatorio.",
+    "invalid": {
+      "email": "Inserisci un indirizzo email valido per {field}, ad esempio name{'@'}example.com.",
+      "url": "Inserisci un indirizzo web completo per {field}, che inizi con https://.",
+      "phone": "Inserisci un numero di telefono valido per {field}, con il prefisso internazionale (ad es. +44).",
+      "number": "{field} deve essere un numero.",
+      "min": "{field} deve essere almeno {min}.",
+      "max": "{field} deve essere al massimo {max}.",
+      "min_length": "{field} richiede almeno {n} caratteri.",
+      "max_length": "{field} può contenere al massimo {n} caratteri.",
+      "pattern": "{field} non è nel formato previsto.",
+      "min_selected": "Scegli almeno {n} opzioni per {field}.",
+      "max_selected": "Scegli al massimo {n} opzioni per {field}.",
+      "max_files": "{field} accetta al massimo {n} file.",
+      "date_range": "Scegli entrambe le date per {field}, con la data di fine uguale o successiva a quella di inizio.",
+      "address": "In {field} manca: {parts}."
+    }
   },
   "logic": {
     "crumb": "Logica",

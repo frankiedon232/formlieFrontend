@@ -1077,7 +1077,11 @@
       "toolbar": "工具栏",
       "toolbarHint": "填写者可以使用的格式。",
       "toolbarBasic": "基础",
-      "toolbarFull": "完整"
+      "toolbarFull": "完整",
+      "addressParts": "地址为必填时，始终会要求填写街道、城市和国家。",
+      "requirePostal": "邮政编码必填",
+      "requirePostalHint": "对于没有邮政编码的国家，请关闭此项。",
+      "requireRegion": "州 / 省 / 地区必填"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -1226,7 +1230,8 @@
       "city": "城市",
       "region": "州 / 省 / 地区",
       "postalCode": "邮政编码",
-      "country": "国家/地区"
+      "country": "国家/地区",
+      "optional": "{part}（选填）"
     },
     "submit": "提交",
     "next": "下一步",
@@ -1258,7 +1263,23 @@
       "alignRight": "右对齐",
       "justify": "两端对齐"
     },
-    "requiredNamed": "请填写{field}。"
+    "requiredNamed": "请填写{field}。",
+    "invalid": {
+      "email": "请为{field}填写有效的电子邮件地址，例如 name{'@'}example.com。",
+      "url": "请为{field}填写以 https:// 开头的完整网址。",
+      "phone": "请为{field}填写包含国家代码的有效电话号码（例如 +44）。",
+      "number": "{field}必须是数字。",
+      "min": "{field}不能小于 {min}。",
+      "max": "{field}不能大于 {max}。",
+      "min_length": "{field}至少需要 {n} 个字符。",
+      "max_length": "{field}最多只能有 {n} 个字符。",
+      "pattern": "{field}的格式不正确。",
+      "min_selected": "请为{field}至少选择 {n} 项。",
+      "max_selected": "请为{field}最多选择 {n} 项。",
+      "max_files": "{field}最多接受 {n} 个文件。",
+      "date_range": "请为{field}选择开始和结束日期，结束日期不能早于开始日期。",
+      "address": "{field}缺少：{parts}。"
+    }
   },
   "logic": {
     "crumb": "逻辑",

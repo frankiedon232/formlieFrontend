@@ -10,6 +10,7 @@ import { isLocked, sectionOwners, type FormField } from '#shared/utils/forms/bui
 import { isInputField } from '#shared/utils/forms/fields'
 import { calculate } from '#shared/utils/forms/formula'
 import { END_OF_FORM, evaluateLogic } from '#shared/utils/forms/logic'
+import { validateAnswer, type AddressPart, type ValidationIssue } from '#shared/utils/forms/validate'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 const props = defineProps<{ schema: FormSchemaV1; preview?: boolean }>()
@@ -30,8 +31,6 @@ const answers = ref<Record<string, unknown>>(defaults())
 const errors = ref<Record<string, string>>({})
 const done = ref(false)
 
-const empty = (value: unknown) =>
-  value == null || value === '' || (Array.isArray(value) && !value.length) || value === false
 
 // Logic, set values and calculated fields follow the answers live.
 const logic = computed(() => evaluateLogic(props.schema, answers.value))
@@ -99,25 +98,54 @@ const shownRows = computed(() =>
 )
 const toggle = (id: string) => (folded.value[id] = !folded.value[id])
 
-function check(): boolean {
+// Validation (shared/utils/forms/validate.ts — the API runs the same rules). After a first
+// failed Next / Submit, errors update live as respondents fix their answers.
+const errorParts = ref<Record<string, AddressPart[]>>({})
+const attempted = ref(false)
+const PART_LABEL: Record<AddressPart, string> = {
+  line1: 'renderer.address.line1',
+  city: 'renderer.address.city',
+  region: 'renderer.address.region',
+  postal_code: 'renderer.address.postalCode',
+  country: 'renderer.address.country',
+}
+function message(field: FormField, issue: ValidationIssue) {
+  const name = field.label?.trim() || t('builder.untitled')
+  if (issue.code === 'required')
+    return field.label?.trim() ? t('renderer.requiredNamed', { field: name }) : t('renderer.requiredError')
+  if (issue.code === 'address')
+    return t('renderer.invalid.address', { field: name, parts: (issue.parts ?? []).map(part => t(PART_LABEL[part])).join(', ') })
+  const custom = field.validation?.pattern_message
+  if (issue.code === 'pattern' && typeof custom === 'string' && custom.trim()) return custom
+  return t(`renderer.invalid.${issue.code}`, { field: name, ...issue.params })
+}
+function check(unfold = true): boolean {
   const next: Record<string, string> = {}
+  const parts: Record<string, AddressPart[]> = {}
   for (const row of visibleRows.value)
-    for (const field of row.fields)
-      if (field.required && isInputField(field.type) && empty(answers.value[field.key]))
-        next[field.key] = field.label?.trim()
-          ? t('renderer.requiredNamed', { field: field.label.trim() })
-          : t('renderer.requiredError')
+    for (const field of row.fields) {
+      if (!isInputField(field.type) || field.type === 'hidden' || field.type === 'calculated' || isLocked(field)) continue
+      const issue = validateAnswer(field, answers.value[field.key], !!field.required)
+      if (!issue) continue
+      next[field.key] = message(field, issue)
+      if (issue.parts) parts[field.key] = issue.parts
+    }
   errors.value = next
-  for (const row of visibleRows.value) {
-    const owner = ownerOf.value.get(row.id)
-    if (owner && row.fields.some(f => next[f.key])) folded.value[owner] = false
-  }
+  errorParts.value = parts
+  if (unfold)
+    for (const row of visibleRows.value) {
+      const owner = ownerOf.value.get(row.id)
+      if (owner && row.fields.some(f => next[f.key])) folded.value[owner] = false
+    }
   return !Object.keys(next).length
 }
+watch(answers, () => attempted.value && check(false), { deep: true })
 // Pages visited, so Back follows the path the respondent actually took (jumps included).
 const trail = ref<number[]>([])
 function next() {
+  attempted.value = true
   if (!check()) return
+  attempted.value = false
   if (last.value) return (done.value = true)
   trail.value.push(index.value)
   index.value = nextIndex.value
@@ -130,6 +158,8 @@ function restart() {
   trail.value = []
   answers.value = defaults()
   errors.value = {}
+  errorParts.value = {}
+  attempted.value = false
   done.value = false
 }
 </script>
@@ -171,6 +201,7 @@ function restart() {
               :field="field"
               :label-position="labelPosition"
               :error="errors[field.key]"
+              :error-parts="errorParts[field.key]"
             />
           </div>
         </div>

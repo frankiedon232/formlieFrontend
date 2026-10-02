@@ -1077,7 +1077,11 @@
       "toolbar": "Araç çubuğu",
       "toolbarHint": "Yanıtlayanların biçimlendirebilecekleri.",
       "toolbarBasic": "Temel",
-      "toolbarFull": "Tam"
+      "toolbarFull": "Tam",
+      "addressParts": "Adres zorunlu olduğunda sokak, şehir ve ülke her zaman sorulur.",
+      "requirePostal": "Posta kodu zorunlu",
+      "requirePostalHint": "Posta kodu olmayan ülkeler için kapatın.",
+      "requireRegion": "Eyalet / il / bölge zorunlu"
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -1226,7 +1230,8 @@
       "city": "Şehir",
       "region": "Eyalet / il / bölge",
       "postalCode": "Posta kodu",
-      "country": "Ülke"
+      "country": "Ülke",
+      "optional": "{part} (isteğe bağlı)"
     },
     "submit": "Gönder",
     "next": "İleri",
@@ -1258,7 +1263,23 @@
       "alignRight": "Sağa hizala",
       "justify": "İki yana yasla"
     },
-    "requiredNamed": "{field} zorunludur."
+    "requiredNamed": "{field} zorunludur.",
+    "invalid": {
+      "email": "{field} için geçerli bir e-posta adresi girin, örneğin name{'@'}example.com.",
+      "url": "{field} için https:// ile başlayan tam bir web adresi girin.",
+      "phone": "{field} için ülke koduyla birlikte geçerli bir telefon numarası girin (ör. +44).",
+      "number": "{field} bir sayı olmalıdır.",
+      "min": "{field} en az {min} olmalıdır.",
+      "max": "{field} en fazla {max} olabilir.",
+      "min_length": "{field} en az {n} karakter olmalıdır.",
+      "max_length": "{field} en fazla {n} karakter içerebilir.",
+      "pattern": "{field} beklenen biçimde değil.",
+      "min_selected": "{field} için en az {n} seçim yapın.",
+      "max_selected": "{field} için en fazla {n} seçim yapın.",
+      "max_files": "{field} en fazla {n} dosya kabul eder.",
+      "date_range": "{field} için iki tarihi de seçin; bitiş tarihi başlangıçla aynı gün veya sonrası olmalıdır.",
+      "address": "{field} için eksik: {parts}."
+    }
   },
   "logic": {
     "crumb": "Mantık",

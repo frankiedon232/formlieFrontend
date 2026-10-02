@@ -1077,7 +1077,11 @@
       "toolbar": "ツールバー",
       "toolbarHint": "回答者が使える書式。",
       "toolbarBasic": "ベーシック",
-      "toolbarFull": "フル"
+      "toolbarFull": "フル",
+      "addressParts": "住所が必須の場合、番地・通り、市区町村、国は常に入力が求められます。",
+      "requirePostal": "郵便番号を必須にする",
+      "requirePostalHint": "郵便番号のない国ではオフにしてください。",
+      "requireRegion": "都道府県・州・地域を必須にする"
     },
     "shortcuts": {
       "title": "ショートカット",
@@ -1226,7 +1230,8 @@
       "city": "市区町村",
       "region": "都道府県・州・地域",
       "postalCode": "郵便番号",
-      "country": "国"
+      "country": "国",
+      "optional": "{part}（任意）"
     },
     "submit": "送信",
     "next": "次へ",
@@ -1258,7 +1263,23 @@
       "alignRight": "右揃え",
       "justify": "両端揃え"
     },
-    "requiredNamed": "{field}は必須です。"
+    "requiredNamed": "{field}は必須です。",
+    "invalid": {
+      "email": "{field}に有効なメールアドレスを入力してください（例：name{'@'}example.com）。",
+      "url": "{field}に https:// で始まる完全なウェブアドレスを入力してください。",
+      "phone": "{field}に国番号付きの有効な電話番号を入力してください（例：+44）。",
+      "number": "{field}には数値を入力してください。",
+      "min": "{field}は{min}以上にしてください。",
+      "max": "{field}は{max}以下にしてください。",
+      "min_length": "{field}は{n}文字以上で入力してください。",
+      "max_length": "{field}は{n}文字以内で入力してください。",
+      "pattern": "{field}の形式が正しくありません。",
+      "min_selected": "{field}で{n}個以上選択してください。",
+      "max_selected": "{field}で選択できるのは{n}個までです。",
+      "max_files": "{field}にアップロードできるファイルは{n}個までです。",
+      "date_range": "{field}で開始日と終了日の両方を選択してください。終了日は開始日以降にしてください。",
+      "address": "{field}に未入力の項目があります：{parts}。"
+    }
   },
   "logic": {
     "crumb": "ロジック",

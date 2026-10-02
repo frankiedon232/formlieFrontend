@@ -13,8 +13,15 @@ import type { FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 
 const props = withDefaults(
-  defineProps<{ field: FormField; mode?: 'builder' | 'live'; error?: string; labelPosition?: 'top' | 'left' }>(),
-  { mode: 'live', error: undefined, labelPosition: 'top' },
+  defineProps<{
+    field: FormField
+    mode?: 'builder' | 'live'
+    error?: string
+    /** Address: the parts to highlight. */
+    errorParts?: string[]
+    labelPosition?: 'top' | 'left'
+  }>(),
+  { mode: 'live', error: undefined, errorParts: undefined, labelPosition: 'top' },
 )
 const value = defineModel<unknown>()
 const { t } = useI18n()
@@ -165,6 +172,7 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value &&
       v-model="value"
       :field="field"
       :mode="mode"
+      :error-parts="errorParts"
     />
     <FormsRendererLayout v-else :field="field" :mode="mode">
       <template v-if="$slots.label" #label><slot name="label" /></template>

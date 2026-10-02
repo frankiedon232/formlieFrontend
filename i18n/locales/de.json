@@ -1077,7 +1077,11 @@
       "toolbar": "Symbolleiste",
       "toolbarHint": "Was Teilnehmende formatieren können.",
       "toolbarBasic": "Einfach",
-      "toolbarFull": "Vollständig"
+      "toolbarFull": "Vollständig",
+      "addressParts": "Straße, Ort und Land werden immer abgefragt, wenn die Adresse erforderlich ist.",
+      "requirePostal": "Postleitzahl erforderlich",
+      "requirePostalHint": "Für Länder ohne Postleitzahlen deaktivieren.",
+      "requireRegion": "Bundesland / Provinz / Region erforderlich"
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -1226,7 +1230,8 @@
       "city": "Ort",
       "region": "Bundesland / Provinz / Region",
       "postalCode": "Postleitzahl",
-      "country": "Land"
+      "country": "Land",
+      "optional": "{part} (optional)"
     },
     "submit": "Absenden",
     "next": "Weiter",
@@ -1258,7 +1263,23 @@
       "alignRight": "Rechtsbündig",
       "justify": "Blocksatz"
     },
-    "requiredNamed": "{field} ist erforderlich."
+    "requiredNamed": "{field} ist erforderlich.",
+    "invalid": {
+      "email": "Bitte geben Sie bei {field} eine gültige E-Mail-Adresse ein, z. B. name{'@'}example.com.",
+      "url": "Bitte geben Sie bei {field} eine vollständige Webadresse ein, die mit https:// beginnt.",
+      "phone": "Bitte geben Sie bei {field} eine gültige Telefonnummer mit Ländervorwahl ein (z. B. +44).",
+      "number": "{field} muss eine Zahl sein.",
+      "min": "{field} muss mindestens {min} sein.",
+      "max": "{field} darf höchstens {max} sein.",
+      "min_length": "{field} benötigt mindestens {n} Zeichen.",
+      "max_length": "{field} darf höchstens {n} Zeichen haben.",
+      "pattern": "{field} hat nicht das erwartete Format.",
+      "min_selected": "Bitte wählen Sie bei {field} mindestens {n} aus.",
+      "max_selected": "Bitte wählen Sie bei {field} höchstens {n} aus.",
+      "max_files": "{field} akzeptiert höchstens {n} Dateien.",
+      "date_range": "Bitte wählen Sie bei {field} beide Daten; das Enddatum muss am oder nach dem Startdatum liegen.",
+      "address": "Bei {field} fehlt: {parts}."
+    }
   },
   "logic": {
     "crumb": "Logik",

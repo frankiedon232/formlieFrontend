@@ -1077,7 +1077,11 @@
       "toolbar": "Pasek narzędzi",
       "toolbarHint": "Co respondenci mogą formatować.",
       "toolbarBasic": "Podstawowy",
-      "toolbarFull": "Pełny"
+      "toolbarFull": "Pełny",
+      "addressParts": "Ulica, miasto i kraj są zawsze wymagane, gdy adres jest obowiązkowy.",
+      "requirePostal": "Kod pocztowy wymagany",
+      "requirePostalHint": "Wyłącz dla krajów bez kodów pocztowych.",
+      "requireRegion": "Stan / prowincja / region wymagane"
     },
     "shortcuts": {
       "title": "Skróty",
@@ -1226,7 +1230,8 @@
       "city": "Miasto",
       "region": "Stan / prowincja / region",
       "postalCode": "Kod pocztowy",
-      "country": "Kraj"
+      "country": "Kraj",
+      "optional": "{part} (opcjonalnie)"
     },
     "submit": "Wyślij",
     "next": "Dalej",
@@ -1258,7 +1263,23 @@
       "alignRight": "Wyrównaj do prawej",
       "justify": "Wyjustuj"
     },
-    "requiredNamed": "Pole „{field}” jest wymagane."
+    "requiredNamed": "Pole „{field}” jest wymagane.",
+    "invalid": {
+      "email": "Wpisz prawidłowy adres e-mail w polu „{field}”, np. name{'@'}example.com.",
+      "url": "Wpisz pełny adres internetowy w polu „{field}”, zaczynający się od https://.",
+      "phone": "Wpisz prawidłowy numer telefonu w polu „{field}”, z numerem kierunkowym kraju (np. +44).",
+      "number": "Pole „{field}” musi zawierać liczbę.",
+      "min": "Wartość pola „{field}” musi wynosić co najmniej {min}.",
+      "max": "Wartość pola „{field}” może wynosić najwyżej {max}.",
+      "min_length": "Pole „{field}” wymaga co najmniej {n} znaków.",
+      "max_length": "Pole „{field}” może mieć najwyżej {n} znaków.",
+      "pattern": "Pole „{field}” ma nieprawidłowy format.",
+      "min_selected": "Wybierz co najmniej {n} w polu „{field}”.",
+      "max_selected": "Wybierz najwyżej {n} w polu „{field}”.",
+      "max_files": "Pole „{field}” przyjmuje najwyżej {n} plików.",
+      "date_range": "Wybierz obie daty w polu „{field}”; data końcowa nie może być wcześniejsza niż początkowa.",
+      "address": "W polu „{field}” brakuje: {parts}."
+    }
   },
   "logic": {
     "crumb": "Logika",

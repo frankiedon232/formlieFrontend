@@ -23,6 +23,7 @@ const num = (value: unknown) =>
       has('currency') ||
       has('content') ||
       has('collapsible') ||
+      has('address_parts') ||
       has('rich_toolbar') ||
       has('formula')
     "
@@ -120,6 +121,22 @@ const num = (value: unknown) =>
         @update:model-value="v => setProp({ toolbar: v })"
       />
     </UFormField>
+    <template v-if="has('address_parts')">
+      <p class="text-xs text-muted">{{ t('builder.inspector.addressParts') }}</p>
+      <USwitch
+        :model-value="p.require_postal_code !== false"
+        :label="t('builder.inspector.requirePostal')"
+        :description="t('builder.inspector.requirePostalHint')"
+        color="neutral"
+        @update:model-value="v => setProp({ require_postal_code: v })"
+      />
+      <USwitch
+        :model-value="p.require_region === true"
+        :label="t('builder.inspector.requireRegion')"
+        color="neutral"
+        @update:model-value="v => setProp({ require_region: v })"
+      />
+    </template>
     <template v-if="has('collapsible')">
       <USwitch
         :model-value="!!p.collapsible"

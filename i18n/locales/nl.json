@@ -1077,7 +1077,11 @@
       "toolbar": "Werkbalk",
       "toolbarHint": "Wat respondenten kunnen opmaken.",
       "toolbarBasic": "Basis",
-      "toolbarFull": "Volledig"
+      "toolbarFull": "Volledig",
+      "addressParts": "Straat, plaats en land worden altijd gevraagd als het adres verplicht is.",
+      "requirePostal": "Postcode verplicht",
+      "requirePostalHint": "Zet dit uit voor landen zonder postcodes.",
+      "requireRegion": "Staat / provincie / regio verplicht"
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -1226,7 +1230,8 @@
       "city": "Plaats",
       "region": "Staat / provincie / regio",
       "postalCode": "Postcode",
-      "country": "Land"
+      "country": "Land",
+      "optional": "{part} (optioneel)"
     },
     "submit": "Versturen",
     "next": "Volgende",
@@ -1258,7 +1263,23 @@
       "alignRight": "Rechts uitlijnen",
       "justify": "Uitvullen"
     },
-    "requiredNamed": "{field} is verplicht."
+    "requiredNamed": "{field} is verplicht.",
+    "invalid": {
+      "email": "Vul bij {field} een geldig e-mailadres in, zoals name{'@'}example.com.",
+      "url": "Vul bij {field} een volledig webadres in dat begint met https://.",
+      "phone": "Vul bij {field} een geldig telefoonnummer in met landcode (bijv. +44).",
+      "number": "{field} moet een getal zijn.",
+      "min": "{field} moet minimaal {min} zijn.",
+      "max": "{field} mag maximaal {max} zijn.",
+      "min_length": "{field} moet minimaal {n} tekens bevatten.",
+      "max_length": "{field} mag maximaal {n} tekens bevatten.",
+      "pattern": "{field} heeft niet de verwachte notatie.",
+      "min_selected": "Kies bij {field} minimaal {n} opties.",
+      "max_selected": "Kies bij {field} maximaal {n} opties.",
+      "max_files": "{field} accepteert maximaal {n} bestanden.",
+      "date_range": "Kies bij {field} beide datums, met de einddatum op of na de begindatum.",
+      "address": "Bij {field} ontbreekt: {parts}."
+    }
   },
   "logic": {
     "crumb": "Logica",

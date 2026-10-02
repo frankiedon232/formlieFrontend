@@ -1077,7 +1077,11 @@
       "toolbar": "شريط الأدوات",
       "toolbarHint": "ما يمكن للمستجيبين تنسيقه.",
       "toolbarBasic": "أساسي",
-      "toolbarFull": "كامل"
+      "toolbarFull": "كامل",
+      "addressParts": "يُطلب الشارع والمدينة والدولة دائمًا عندما يكون العنوان مطلوبًا.",
+      "requirePostal": "الرمز البريدي مطلوب",
+      "requirePostalHint": "أوقف هذا الخيار للدول التي لا تستخدم رموزًا بريدية.",
+      "requireRegion": "الولاية / المحافظة / المنطقة مطلوبة"
     },
     "shortcuts": {
       "title": "الاختصارات",
@@ -1226,7 +1230,8 @@
       "city": "المدينة",
       "region": "الولاية / المحافظة / المنطقة",
       "postalCode": "الرمز البريدي",
-      "country": "الدولة"
+      "country": "الدولة",
+      "optional": "{part} (اختياري)"
     },
     "submit": "إرسال",
     "next": "التالي",
@@ -1258,7 +1263,23 @@
       "alignRight": "محاذاة لليمين",
       "justify": "ضبط"
     },
-    "requiredNamed": "{field} مطلوب."
+    "requiredNamed": "{field} مطلوب.",
+    "invalid": {
+      "email": "أدخل عنوان بريد إلكتروني صالحًا في {field}، مثل name{'@'}example.com.",
+      "url": "أدخل عنوان ويب كاملًا في {field} يبدأ بـ https://.",
+      "phone": "أدخل رقم هاتف صالحًا في {field} مع رمز الدولة (مثل +44).",
+      "number": "يجب أن يكون {field} رقمًا.",
+      "min": "يجب ألا يقل {field} عن {min}.",
+      "max": "يجب ألا يزيد {field} عن {max}.",
+      "min_length": "يحتاج {field} إلى {n} أحرف على الأقل.",
+      "max_length": "يمكن أن يحتوي {field} على {n} أحرف كحد أقصى.",
+      "pattern": "{field} ليس بالتنسيق المتوقع.",
+      "min_selected": "اختر {n} على الأقل في {field}.",
+      "max_selected": "اختر {n} كحد أقصى في {field}.",
+      "max_files": "يقبل {field} {n} ملفات كحد أقصى.",
+      "date_range": "اختر التاريخين في {field}، على أن يكون تاريخ النهاية في يوم البداية أو بعده.",
+      "address": "ينقص {field}: {parts}."
+    }
   },
   "logic": {
     "crumb": "المنطق",

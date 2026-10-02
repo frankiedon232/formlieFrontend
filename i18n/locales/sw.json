@@ -1077,7 +1077,11 @@
       "toolbar": "Upau wa zana",
       "toolbarHint": "Kile wanaojibu wanaweza kupanga.",
       "toolbarBasic": "Msingi",
-      "toolbarFull": "Kamili"
+      "toolbarFull": "Kamili",
+      "addressParts": "Mtaa, jiji na nchi huulizwa kila mara anwani inapohitajika.",
+      "requirePostal": "Msimbo wa posta unahitajika",
+      "requirePostalHint": "Zima kwa nchi zisizo na misimbo ya posta.",
+      "requireRegion": "Jimbo / mkoa / eneo linahitajika"
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -1226,7 +1230,8 @@
       "city": "Mji",
       "region": "Jimbo / mkoa / eneo",
       "postalCode": "Msimbo wa posta",
-      "country": "Nchi"
+      "country": "Nchi",
+      "optional": "{part} (si lazima)"
     },
     "submit": "Tuma",
     "next": "Endelea",
@@ -1258,7 +1263,23 @@
       "alignRight": "Panga kulia",
       "justify": "Panga pande zote"
     },
-    "requiredNamed": "{field} kinahitajika."
+    "requiredNamed": "{field} kinahitajika.",
+    "invalid": {
+      "email": "Weka anwani sahihi ya barua pepe kwa {field}, kama name{'@'}example.com.",
+      "url": "Weka anwani kamili ya tovuti kwa {field}, inayoanza na https://.",
+      "phone": "Weka namba sahihi ya simu kwa {field}, pamoja na msimbo wa nchi (k.m. +44).",
+      "number": "{field} lazima iwe namba.",
+      "min": "{field} lazima iwe angalau {min}.",
+      "max": "{field} lazima isizidi {max}.",
+      "min_length": "{field} inahitaji angalau herufi {n}.",
+      "max_length": "{field} inaweza kuwa na herufi zisizozidi {n}.",
+      "pattern": "{field} haiko katika muundo unaotarajiwa.",
+      "min_selected": "Chagua angalau {n} kwa {field}.",
+      "max_selected": "Chagua zisizozidi {n} kwa {field}.",
+      "max_files": "{field} inakubali faili zisizozidi {n}.",
+      "date_range": "Chagua tarehe zote mbili kwa {field}, na tarehe ya mwisho iwe siku ya kuanza au baadaye.",
+      "address": "Kwenye {field} kinakosekana: {parts}."
+    }
   },
   "logic": {
     "crumb": "Mantiki",

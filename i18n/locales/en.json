@@ -1085,7 +1085,11 @@
       "toolbar": "Toolbar",
       "toolbarHint": "What respondents can format.",
       "toolbarBasic": "Basic",
-      "toolbarFull": "Full"
+      "toolbarFull": "Full",
+      "addressParts": "Street, city and country are always asked for when the address is required.",
+      "requirePostal": "Postal code required",
+      "requirePostalHint": "Turn off for countries without postal codes.",
+      "requireRegion": "State / province / region required"
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -1226,7 +1230,8 @@
       "city": "City",
       "region": "State / province / region",
       "postalCode": "Postal code",
-      "country": "Country"
+      "country": "Country",
+      "optional": "{part} (optional)"
     },
     "submit": "Submit",
     "next": "Next",
@@ -1258,7 +1263,23 @@
       "alignRight": "Align right",
       "justify": "Justify"
     },
-    "requiredNamed": "{field} is required."
+    "requiredNamed": "{field} is required.",
+    "invalid": {
+      "email": "Enter a valid email address for {field}, like name{'@'}example.com.",
+      "url": "Enter a full web address for {field}, starting with https://.",
+      "phone": "Enter a valid phone number for {field}, with the country code (e.g. +44).",
+      "number": "{field} must be a number.",
+      "min": "{field} must be at least {min}.",
+      "max": "{field} must be at most {max}.",
+      "min_length": "{field} needs at least {n} characters.",
+      "max_length": "{field} can have at most {n} characters.",
+      "pattern": "{field} isn’t in the expected format.",
+      "min_selected": "Choose at least {n} for {field}.",
+      "max_selected": "Choose at most {n} for {field}.",
+      "max_files": "{field} accepts at most {n} files.",
+      "date_range": "Choose both dates for {field}, with the end on or after the start.",
+      "address": "{field} is missing: {parts}."
+    }
   },
   "logic": {
     "crumb": "Logic",

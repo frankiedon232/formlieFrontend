@@ -33,6 +33,7 @@ export type InspectorControl =
   | 'section_style'
   | 'paragraph'
   | 'divider_style'
+  | 'address_parts'
   | 'image'
   | 'formula'
   | 'prefill'
@@ -114,7 +115,10 @@ export const FIELD_REGISTRY: Record<FieldType, RegistryEntry> = {
     defaults: { props: { max_files: 1, max_mb: 10, accept: 'image/*' } },
   },
   signature: { controls: ['label', 'help', 'required', 'width'], defaults: {} },
-  address: { controls: ['label', 'help', 'required', 'width'], defaults: {} },
+  address: {
+    controls: ['label', 'help', 'required', 'width', 'address_parts'],
+    defaults: { props: { require_postal_code: true, require_region: false } },
+  },
   country: { controls: ['label', 'help', 'required', 'width', 'placeholder', 'prefill'], defaults: {} },
   hidden: { controls: ['label', 'default_text', 'prefill'], defaults: { props: { param: '' } } },
   calculated: { controls: ['label', 'help', 'width', 'formula'], defaults: { props: { formula: '' } } },

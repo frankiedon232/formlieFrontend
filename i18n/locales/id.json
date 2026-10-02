@@ -1077,7 +1077,11 @@
       "toolbar": "Bilah alat",
       "toolbarHint": "Apa yang dapat diformat responden.",
       "toolbarBasic": "Dasar",
-      "toolbarFull": "Lengkap"
+      "toolbarFull": "Lengkap",
+      "addressParts": "Jalan, kota, dan negara selalu ditanyakan jika alamat wajib diisi.",
+      "requirePostal": "Kode pos wajib",
+      "requirePostalHint": "Matikan untuk negara yang tidak memakai kode pos.",
+      "requireRegion": "Provinsi / negara bagian / wilayah wajib"
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -1226,7 +1230,8 @@
       "city": "Kota",
       "region": "Provinsi / negara bagian / wilayah",
       "postalCode": "Kode pos",
-      "country": "Negara"
+      "country": "Negara",
+      "optional": "{part} (opsional)"
     },
     "submit": "Kirim",
     "next": "Berikutnya",
@@ -1258,7 +1263,23 @@
       "alignRight": "Rata kanan",
       "justify": "Rata kiri-kanan"
     },
-    "requiredNamed": "{field} wajib diisi."
+    "requiredNamed": "{field} wajib diisi.",
+    "invalid": {
+      "email": "Masukkan alamat email yang valid untuk {field}, misalnya name{'@'}example.com.",
+      "url": "Masukkan alamat web lengkap untuk {field}, diawali dengan https://.",
+      "phone": "Masukkan nomor telepon yang valid untuk {field}, dengan kode negara (mis. +44).",
+      "number": "{field} harus berupa angka.",
+      "min": "{field} minimal {min}.",
+      "max": "{field} maksimal {max}.",
+      "min_length": "{field} memerlukan minimal {n} karakter.",
+      "max_length": "{field} boleh berisi maksimal {n} karakter.",
+      "pattern": "{field} tidak sesuai format yang diharapkan.",
+      "min_selected": "Pilih minimal {n} untuk {field}.",
+      "max_selected": "Pilih maksimal {n} untuk {field}.",
+      "max_files": "{field} menerima maksimal {n} file.",
+      "date_range": "Pilih kedua tanggal untuk {field}, dengan tanggal akhir sama dengan atau setelah tanggal mulai.",
+      "address": "{field} belum lengkap: {parts}."
+    }
   },
   "logic": {
     "crumb": "Logika",

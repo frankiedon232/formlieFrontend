@@ -1077,7 +1077,11 @@
       "toolbar": "Barra de herramientas",
       "toolbarHint": "Lo que los encuestados pueden formatear.",
       "toolbarBasic": "Básica",
-      "toolbarFull": "Completa"
+      "toolbarFull": "Completa",
+      "addressParts": "La calle, la ciudad y el país siempre se piden cuando la dirección es obligatoria.",
+      "requirePostal": "Código postal obligatorio",
+      "requirePostalHint": "Desactívalo para países sin código postal.",
+      "requireRegion": "Estado / provincia / región obligatorio"
     },
     "shortcuts": {
       "title": "Atajos",
@@ -1226,7 +1230,8 @@
       "city": "Ciudad",
       "region": "Estado / provincia / región",
       "postalCode": "Código postal",
-      "country": "País"
+      "country": "País",
+      "optional": "{part} (opcional)"
     },
     "submit": "Enviar",
     "next": "Siguiente",
@@ -1258,7 +1263,23 @@
       "alignRight": "Alinear a la derecha",
       "justify": "Justificar"
     },
-    "requiredNamed": "{field} es obligatorio."
+    "requiredNamed": "{field} es obligatorio.",
+    "invalid": {
+      "email": "Introduce un correo electrónico válido en {field}, por ejemplo name{'@'}example.com.",
+      "url": "Introduce una dirección web completa en {field}, que empiece por https://.",
+      "phone": "Introduce un número de teléfono válido en {field}, con el prefijo del país (p. ej., +44).",
+      "number": "{field} debe ser un número.",
+      "min": "{field} debe ser como mínimo {min}.",
+      "max": "{field} debe ser como máximo {max}.",
+      "min_length": "{field} necesita al menos {n} caracteres.",
+      "max_length": "{field} admite como máximo {n} caracteres.",
+      "pattern": "{field} no tiene el formato esperado.",
+      "min_selected": "Elige al menos {n} en {field}.",
+      "max_selected": "Elige como máximo {n} en {field}.",
+      "max_files": "{field} admite como máximo {n} archivos.",
+      "date_range": "Elige ambas fechas en {field}; la final debe ser igual o posterior a la inicial.",
+      "address": "En {field} falta: {parts}."
+    }
   },
   "logic": {
     "crumb": "Lógica",
