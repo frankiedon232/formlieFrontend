@@ -34,6 +34,9 @@ export type InspectorControl =
   | 'paragraph'
   | 'divider_style'
   | 'address_parts'
+  | 'ip_version'
+  | 'name_parts'
+  | 'consent_text'
   | 'image'
   | 'formula'
   | 'prefill'
@@ -68,6 +71,25 @@ export const FIELD_REGISTRY: Record<FieldType, RegistryEntry> = {
   url: { controls: TEXT, defaults: { placeholder: 'https://' } },
   number: { controls: [...TEXT, 'range'], defaults: {} },
   currency: { controls: [...TEXT, 'range', 'currency'], defaults: { props: { currency: 'USD' } } },
+  full_name: {
+    controls: ['label', 'help', 'required', 'width', 'name_parts'],
+    defaults: { props: { show_title: false, show_middle: false } },
+  },
+  percentage: { controls: [...TEXT, 'range'], defaults: { validation: { min: 0, max: 100 } } },
+  duration: { controls: ['label', 'help', 'required', 'width'], defaults: {} },
+  consent: {
+    controls: ['label', 'required', 'width', 'consent_text'],
+    defaults: { required: true, props: { text: '', link_label: '', link_href: '' } },
+  },
+  language: { controls: ['label', 'help', 'required', 'width', 'placeholder', 'prefill'], defaults: {} },
+  timezone: { controls: ['label', 'help', 'required', 'width', 'placeholder', 'prefill'], defaults: {} },
+  currency_code: { controls: ['label', 'help', 'required', 'width', 'placeholder', 'prefill'], defaults: {} },
+  ip_address: { controls: [...TEXT, 'ip_version'], defaults: { placeholder: '192.0.2.10', props: { ip_version: 'any' } } },
+  domain: { controls: TEXT, defaults: { placeholder: 'example.org' } },
+  mac_address: { controls: TEXT, defaults: { placeholder: '00:1A:2B:3C:4D:5E' } },
+  color: { controls: ['label', 'help', 'required', 'width', 'default_text', 'prefill'], defaults: {} },
+  iban: { controls: TEXT, defaults: { placeholder: 'GB82 WEST 1234 5698 7654 32' } },
+  bic: { controls: TEXT, defaults: { placeholder: 'ABCDGB2LXXX' } },
   date: { controls: ['label', 'help', 'required', 'width', 'prefill'], defaults: {} },
   time: { controls: ['label', 'help', 'required', 'width', 'prefill'], defaults: {} },
   datetime: { controls: ['label', 'help', 'required', 'width', 'prefill'], defaults: {} },

@@ -1,4 +1,4 @@
-<!-- Text-like fields: short / long text, email, phone, URL, number, currency, calculated, hidden. -->
+<!-- Text-like fields: short / long text, IP address, domain, MAC address, IBAN, BIC, percentage, email, phone, URL, number, currency, calculated, hidden. -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
 
@@ -20,6 +20,7 @@ const INPUT_TYPES: Record<string, string> = {
   url: 'url',
   number: 'number',
   currency: 'number',
+  percentage: 'number',
 }
 const MODES: Record<string, 'email' | 'tel' | 'url' | 'decimal'> = {
   email: 'email',
@@ -27,12 +28,20 @@ const MODES: Record<string, 'email' | 'tel' | 'url' | 'decimal'> = {
   url: 'url',
   number: 'decimal',
   currency: 'decimal',
+  percentage: 'decimal',
 }
 const ICONS: Record<string, string> = {
   email: 'i-lucide-mail',
   phone: 'i-lucide-phone',
   url: 'i-lucide-link',
+  ip_address: 'i-lucide-network',
+  domain: 'i-lucide-globe-lock',
+  mac_address: 'i-lucide-cpu',
+  iban: 'i-lucide-landmark',
+  bic: 'i-lucide-building-2',
 }
+/** Codes are written in capitals and without spell-checking (IBAN, BIC, MAC). */
+const CODE_TYPES = ['iban', 'bic', 'mac_address', 'ip_address', 'domain']
 
 const currencySymbol = computed(() => {
   const code = String(props_.value.currency ?? 'USD')
@@ -88,9 +97,15 @@ const disabled = computed(() => !!props.field.disabled)
     :readonly="readonly"
     :disabled="disabled"
     :icon="field.type === 'calculated' ? 'i-lucide-calculator' : ICONS[field.type]"
-    :autocomplete="field.type === 'email' ? 'email' : field.type === 'phone' ? 'tel' : undefined"
+    :autocomplete="field.type === 'email' ? 'email' : field.type === 'phone' ? 'tel' : CODE_TYPES.includes(field.type) ? 'off' : undefined"
+    :spellcheck="CODE_TYPES.includes(field.type) ? false : undefined"
+    :autocapitalize="['iban', 'bic', 'mac_address'].includes(field.type) ? 'characters' : CODE_TYPES.includes(field.type) ? 'none' : undefined"
+    :class="['iban', 'bic', 'mac_address'].includes(field.type) ? 'font-mono uppercase' : ''"
     class="w-full"
   >
+    <template v-if="field.type === 'percentage'" #trailing>
+      <span class="text-sm text-muted">%</span>
+    </template>
     <template v-if="field.type === 'currency'" #leading>
       <span class="text-sm text-muted">{{ currencySymbol }}</span>
     </template>

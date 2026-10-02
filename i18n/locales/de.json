@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Unerwartete Antwort vom Server.",
     "FRM-FORM-1007": "Das ist im aktuellen Zustand des Formulars nicht möglich. Aktualisieren und erneut versuchen.",
     "FRM-FORM-1008": "Es gibt bereits einen Ordner mit diesem Namen.",
-    "FRM-FORM-1009": "Eine Liste mit diesem Namen gibt es bereits."
+    "FRM-FORM-1009": "Eine Liste mit diesem Namen gibt es bereits.",
+    "FRM-FORM-1010": "Ein Design mit diesem Namen existiert bereits."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -573,7 +574,8 @@
       "export": "Export",
       "folder": "Ordner",
       "saved_field": "Gespeichertes Feld",
-      "option_list": "Optionsliste"
+      "option_list": "Optionsliste",
+      "theme": "Design"
     },
     "field": {
       "name": "Name",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Feld aus der Bibliothek entfernt",
       "forms_list_created": "Liste erstellt",
       "forms_list_updated": "Liste aktualisiert",
-      "forms_list_deleted": "Liste gelöscht"
+      "forms_list_deleted": "Liste gelöscht",
+      "forms_theme_created": "Design gespeichert",
+      "forms_theme_updated": "Design aktualisiert",
+      "forms_theme_deleted": "Design gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -883,7 +888,20 @@
       "section": "Abschnitt",
       "paragraph": "Absatz",
       "divider": "Trennlinie",
-      "image": "Bild"
+      "image": "Bild",
+      "full_name": "Vollständiger Name",
+      "percentage": "Prozentsatz",
+      "duration": "Dauer",
+      "consent": "Einwilligung / Bedingungen",
+      "language": "Sprache",
+      "timezone": "Zeitzone",
+      "currency_code": "Währung",
+      "ip_address": "IP-Adresse",
+      "domain": "Domainname",
+      "mac_address": "MAC-Adresse",
+      "color": "Farbe",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Text",
@@ -893,7 +911,8 @@
       "files": "Dateien & Unterschrift",
       "location": "Ort",
       "advanced": "Erweitert",
-      "layout": "Layout"
+      "layout": "Layout",
+      "technical": "Technik & IDs"
     },
     "defaults": {
       "option": "Option {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "Straße, Ort und Land werden immer abgefragt, wenn die Adresse erforderlich ist.",
       "requirePostal": "Postleitzahl erforderlich",
       "requirePostalHint": "Für Länder ohne Postleitzahlen deaktivieren.",
-      "requireRegion": "Bundesland / Provinz / Region erforderlich"
+      "requireRegion": "Bundesland / Provinz / Region erforderlich",
+      "ipVersion": "Zulässige Adressen",
+      "ipAny": "IPv4 oder IPv6",
+      "nameTitle": "Nach Titel fragen (z. B. Dr., Frau)",
+      "nameMiddle": "Nach zweitem Vornamen fragen",
+      "nameHint": "Vor- und Nachname werden immer abgefragt.",
+      "consentText": "Einwilligungstext",
+      "consentTextHint": "Wozu die Teilnehmenden zustimmen, z. B. „Ich stimme den Bedingungen und der Datenschutzerklärung zu.“",
+      "consentLink": "Link zu den Bedingungen (optional)",
+      "consentLinkLabel": "Linktext"
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -1279,11 +1307,45 @@
       "max_selected": "Bitte wählen Sie bei {field} höchstens {n} aus.",
       "max_files": "{field} akzeptiert höchstens {n} Dateien.",
       "date_range": "Bitte wählen Sie bei {field} beide Daten; das Enddatum muss am oder nach dem Startdatum liegen.",
-      "address": "Bei {field} fehlt: {parts}."
+      "address": "Bei {field} fehlt: {parts}.",
+      "ip": "Geben Sie für {field} eine gültige IP-Adresse ein.",
+      "domain": "Geben Sie für {field} einen Domainnamen ein, z. B. example.org.",
+      "mac": "Geben Sie für {field} eine MAC-Adresse ein, z. B. 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} ist keine gültige IBAN — bitte prüfen Sie die Nummer.",
+      "bic": "Geben Sie für {field} einen SWIFT-/BIC-Code mit 8 oder 11 Zeichen ein.",
+      "color": "Wählen Sie eine Farbe für {field}.",
+      "duration": "Geben Sie für {field} eine Dauer ein (Minuten 0–59).",
+      "name": "Geben Sie für {field} Vor- und Nachnamen ein.",
+      "consent": "Bitte bestätigen Sie {field}, um fortzufahren.",
+      "choice": "Wählen Sie für {field} eine Option aus der Liste."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Fußzeilen-Links"
+    },
+    "name": {
+      "title": "Titel",
+      "first": "Vorname",
+      "middle": "Zweiter Vorname",
+      "last": "Nachname"
+    },
+    "consent": {
+      "default": "Ich stimme den Bedingungen zu.",
+      "link": "Bedingungen lesen"
+    },
+    "color": {
+      "pick": "Farbe wählen"
+    },
+    "duration": {
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "h": "Std.",
+      "m": "Min."
+    },
+    "pick": {
+      "language": "Sprache wählen",
+      "timezone": "Zeitzone wählen",
+      "currency_code": "Währung wählen"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Titel und Nachricht legen Sie unter Erstellen → Formulareinstellungen fest. Die Seite nutzt dieses Design.",
     "showTick": "Häkchen-Symbol anzeigen"
+  },
+  "themes": {
+    "subtitle": "Gespeicherte Designs, die Sie in jedem Formular verwenden können",
+    "yours": "Ihre Designs",
+    "save": "Als Design speichern",
+    "noneYet": "Speichern Sie dieses Design, um es in anderen Formularen wiederzuverwenden.",
+    "apply": "Design „{name}“ verwenden",
+    "saveTitle": "Als Design speichern",
+    "saveDesc": "Alle in diesem Arbeitsbereich können es in ihren Formularen verwenden.",
+    "updateExisting": "„{name}“ aktualisieren",
+    "saveNew": "Als neues Design speichern",
+    "name": "Name",
+    "namePlaceholder": "z. B. Marke — hell",
+    "renameTitle": "Design umbenennen",
+    "rename": "Umbenennen",
+    "duplicate": "Duplizieren",
+    "delete": "Design löschen",
+    "deleteTitle": "„{name}“ löschen?",
+    "deleteDesc": "Es verschwindet aus der Liste der Designs.",
+    "deleteUsed": "{count} Formular verwendet es und behält sein Design. | {count} Formulare verwenden es und behalten ihr Design.",
+    "goToForms": "Zu den Formularen",
+    "search": "Designs durchsuchen…",
+    "sortRecent": "Zuletzt geändert",
+    "sortName": "Name",
+    "col": {
+      "name": "Design",
+      "forms": "Verwendet in",
+      "createdBy": "Erstellt von",
+      "updated": "Geändert"
+    },
+    "formsCount": "{count} Formular | {count} Formulare",
+    "emptyTitle": "Noch keine gespeicherten Designs",
+    "emptyDesc": "Öffnen Sie ein Formular, gestalten Sie es unter „Design“ und wählen Sie „Als Design speichern“, um es hier wiederzuverwenden.",
+    "toast": {
+      "saved": "Design „{name}“ gespeichert",
+      "updated": "Design „{name}“ aktualisiert",
+      "duplicated": "„{name}“ erstellt",
+      "deleted": "Design „{name}“ gelöscht"
+    }
   }
 }

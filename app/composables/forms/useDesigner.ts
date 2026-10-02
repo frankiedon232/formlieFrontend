@@ -1,3 +1,4 @@
+import type { SavedTheme } from '#shared/types/forms'
 import type { FormTheme, ThemePatch } from '#shared/utils/forms/theme'
 
 /**
@@ -29,13 +30,22 @@ export function useDesigner() {
   /** Apply a starting point over the workspace default (keeps nothing of the old design). */
   function applyPreset(patch: ThemePatch) {
     write(applyPatch(resolveTheme(undefined, branding.value), patch))
+    if (builder.schema.value) builder.schema.value.theme_id = null
   }
+
+  /** Apply a saved theme: copy its tokens and remember where they came from. */
+  function applySaved(saved: SavedTheme) {
+    write(resolveTheme(saved.tokens, branding.value))
+    if (builder.schema.value) builder.schema.value.theme_id = saved.id
+  }
+  const themeId = computed(() => builder.schema.value?.theme_id ?? null)
 
   function reset() {
     if (!builder.schema.value?.theme) return
     builder.history.record()
     delete builder.schema.value.theme
+    delete builder.schema.value.theme_id
   }
 
-  return { theme, customised, set, setLayout, applyPreset, reset, write }
+  return { theme, customised, themeId, set, setLayout, applyPreset, applySaved, reset, write }
 }

@@ -318,7 +318,8 @@
     "FRM-NET-1002": "서버에서 예상치 못한 응답을 받았습니다.",
     "FRM-FORM-1007": "양식의 현재 상태에서는 할 수 없습니다. 새로 고친 후 다시 시도하세요.",
     "FRM-FORM-1008": "같은 이름의 폴더가 이미 있습니다.",
-    "FRM-FORM-1009": "같은 이름의 목록이 이미 있습니다."
+    "FRM-FORM-1009": "같은 이름의 목록이 이미 있습니다.",
+    "FRM-FORM-1010": "이 이름의 테마가 이미 있습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -573,7 +574,8 @@
       "export": "내보내기",
       "folder": "폴더",
       "saved_field": "저장된 항목",
-      "option_list": "옵션 목록"
+      "option_list": "옵션 목록",
+      "theme": "테마"
     },
     "field": {
       "name": "이름",
@@ -643,7 +645,10 @@
       "forms_field_removed": "항목을 라이브러리에서 제거함",
       "forms_list_created": "목록 생성됨",
       "forms_list_updated": "목록 업데이트됨",
-      "forms_list_deleted": "목록 삭제됨"
+      "forms_list_deleted": "목록 삭제됨",
+      "forms_theme_created": "테마 저장됨",
+      "forms_theme_updated": "테마 업데이트됨",
+      "forms_theme_deleted": "테마 삭제됨"
     },
     "detail": {
       "who": "누가",
@@ -883,7 +888,20 @@
       "section": "섹션",
       "paragraph": "단락",
       "divider": "구분선",
-      "image": "이미지"
+      "image": "이미지",
+      "full_name": "전체 이름",
+      "percentage": "백분율",
+      "duration": "기간",
+      "consent": "동의 / 약관",
+      "language": "언어",
+      "timezone": "시간대",
+      "currency_code": "통화",
+      "ip_address": "IP 주소",
+      "domain": "도메인 이름",
+      "mac_address": "MAC 주소",
+      "color": "색상",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "텍스트",
@@ -893,7 +911,8 @@
       "files": "파일 및 서명",
       "location": "위치",
       "advanced": "고급",
-      "layout": "레이아웃"
+      "layout": "레이아웃",
+      "technical": "기술 정보 및 ID"
     },
     "defaults": {
       "option": "옵션 {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "주소가 필수이면 도로명, 시/군/구, 국가는 항상 입력받습니다.",
       "requirePostal": "우편번호 필수",
       "requirePostalHint": "우편번호가 없는 국가에서는 끄세요.",
-      "requireRegion": "시/도/주 필수"
+      "requireRegion": "시/도/주 필수",
+      "ipVersion": "허용되는 주소",
+      "ipAny": "IPv4 또는 IPv6",
+      "nameTitle": "호칭 요청 (예: Dr, Ms)",
+      "nameMiddle": "중간 이름 요청",
+      "nameHint": "이름과 성은 항상 요청됩니다.",
+      "consentText": "동의 문구",
+      "consentTextHint": "응답자가 동의하는 내용, 예: “약관 및 개인정보 고지에 동의합니다.”",
+      "consentLink": "약관 링크 (선택 사항)",
+      "consentLinkLabel": "링크 텍스트"
     },
     "shortcuts": {
       "title": "단축키",
@@ -1279,11 +1307,45 @@
       "max_selected": "{field}에서 최대 {n}개까지 선택하세요.",
       "max_files": "{field}에는 최대 {n}개의 파일을 올릴 수 있습니다.",
       "date_range": "{field}에서 두 날짜를 모두 선택하세요. 종료일은 시작일과 같거나 이후여야 합니다.",
-      "address": "{field}에 누락된 항목: {parts}."
+      "address": "{field}에 누락된 항목: {parts}.",
+      "ip": "{field}에 유효한 IP 주소를 입력하세요.",
+      "domain": "{field}에 도메인 이름을 입력하세요(예: example.org).",
+      "mac": "{field}에 MAC 주소를 입력하세요(예: 00:1A:2B:3C:4D:5E).",
+      "iban": "{field}은(는) 유효한 IBAN이 아닙니다 — 번호를 확인하세요.",
+      "bic": "{field}에 8자 또는 11자의 SWIFT / BIC 코드를 입력하세요.",
+      "color": "{field}의 색상을 선택하세요.",
+      "duration": "{field}에 기간을 입력하세요(분은 0–59).",
+      "name": "{field}에 이름과 성을 모두 입력하세요.",
+      "consent": "계속하려면 {field}을(를) 확인하세요.",
+      "choice": "{field}에 대해 목록에서 옵션을 선택하세요."
     },
     "page": {
       "logo": "로고",
       "footerLinks": "푸터 링크"
+    },
+    "name": {
+      "title": "호칭",
+      "first": "이름",
+      "middle": "중간 이름",
+      "last": "성"
+    },
+    "consent": {
+      "default": "약관에 동의합니다.",
+      "link": "약관 읽기"
+    },
+    "color": {
+      "pick": "색상 선택"
+    },
+    "duration": {
+      "hours": "시간",
+      "minutes": "분",
+      "h": "시간",
+      "m": "분"
+    },
+    "pick": {
+      "language": "언어 선택",
+      "timezone": "시간대 선택",
+      "currency_code": "통화 선택"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "제목과 메시지는 만들기 → 양식 설정에서 지정합니다. 이 페이지에는 이 디자인이 적용됩니다.",
     "showTick": "체크 아이콘 표시"
+  },
+  "themes": {
+    "subtitle": "어떤 양식에서든 사용할 수 있는 저장된 디자인",
+    "yours": "내 테마",
+    "save": "테마로 저장",
+    "noneYet": "이 디자인을 저장하면 다른 양식에서도 다시 사용할 수 있습니다.",
+    "apply": "“{name}” 테마 사용",
+    "saveTitle": "테마로 저장",
+    "saveDesc": "이 워크스페이스의 모든 사용자가 자신의 양식에서 사용할 수 있습니다.",
+    "updateExisting": "“{name}” 업데이트",
+    "saveNew": "새 테마로 저장",
+    "name": "이름",
+    "namePlaceholder": "예: 브랜드 — 라이트",
+    "renameTitle": "테마 이름 변경",
+    "rename": "이름 변경",
+    "duplicate": "복제",
+    "delete": "테마 삭제",
+    "deleteTitle": "“{name}”을(를) 삭제하시겠습니까?",
+    "deleteDesc": "테마 목록에서 사라집니다.",
+    "deleteUsed": "양식 {count}개가 사용 중이며 해당 디자인은 유지됩니다. | 양식 {count}개가 사용 중이며 해당 디자인은 유지됩니다.",
+    "goToForms": "양식으로 이동",
+    "search": "테마 검색…",
+    "sortRecent": "최근 변경순",
+    "sortName": "이름",
+    "col": {
+      "name": "테마",
+      "forms": "사용 위치",
+      "createdBy": "만든 사람",
+      "updated": "변경일"
+    },
+    "formsCount": "양식 {count}개 | 양식 {count}개",
+    "emptyTitle": "저장된 테마가 아직 없습니다",
+    "emptyDesc": "아무 양식이나 열어 디자인에서 꾸민 다음 “테마로 저장”을 선택하면 여기서 다시 사용할 수 있습니다.",
+    "toast": {
+      "saved": "“{name}” 테마가 저장되었습니다",
+      "updated": "“{name}” 테마가 업데이트되었습니다",
+      "duplicated": "“{name}”이(가) 생성되었습니다",
+      "deleted": "“{name}” 테마가 삭제되었습니다"
+    }
   }
 }

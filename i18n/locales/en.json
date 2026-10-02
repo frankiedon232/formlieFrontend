@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Unexpected response from the server.",
     "FRM-FORM-1007": "That isn't possible while the form is in its current state. Refresh and try again.",
     "FRM-FORM-1008": "A folder with this name already exists.",
-    "FRM-FORM-1009": "A list with this name already exists."
+    "FRM-FORM-1009": "A list with this name already exists.",
+    "FRM-FORM-1010": "A theme with this name already exists."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -573,7 +574,8 @@
       "export": "Export",
       "folder": "Folder",
       "saved_field": "Saved field",
-      "option_list": "Option list"
+      "option_list": "Option list",
+      "theme": "Theme"
     },
     "field": {
       "name": "Name",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Field removed from library",
       "forms_list_created": "List created",
       "forms_list_updated": "List updated",
-      "forms_list_deleted": "List deleted"
+      "forms_list_deleted": "List deleted",
+      "forms_theme_created": "Theme saved",
+      "forms_theme_updated": "Theme updated",
+      "forms_theme_deleted": "Theme deleted"
     },
     "detail": {
       "who": "Who",
@@ -883,7 +888,20 @@
       "section": "Section",
       "paragraph": "Paragraph",
       "divider": "Divider",
-      "image": "Image"
+      "image": "Image",
+      "full_name": "Full name",
+      "percentage": "Percentage",
+      "duration": "Duration",
+      "consent": "Consent / terms",
+      "language": "Language",
+      "timezone": "Time zone",
+      "currency_code": "Currency",
+      "ip_address": "IP address",
+      "domain": "Domain name",
+      "mac_address": "MAC address",
+      "color": "Colour",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Text",
@@ -893,7 +911,8 @@
       "files": "Files & signature",
       "location": "Location",
       "advanced": "Advanced",
-      "layout": "Layout"
+      "layout": "Layout",
+      "technical": "Technical & IDs"
     },
     "defaults": {
       "option": "Option {n}",
@@ -1089,7 +1108,16 @@
       "addressParts": "Street, city and country are always asked for when the address is required.",
       "requirePostal": "Postal code required",
       "requirePostalHint": "Turn off for countries without postal codes.",
-      "requireRegion": "State / province / region required"
+      "requireRegion": "State / province / region required",
+      "ipVersion": "Accepted addresses",
+      "ipAny": "IPv4 or IPv6",
+      "nameTitle": "Ask for a title (e.g. Dr, Ms)",
+      "nameMiddle": "Ask for a middle name",
+      "nameHint": "First and last name are always asked for.",
+      "consentText": "Consent text",
+      "consentTextHint": "What respondents agree to, e.g. “I agree to the terms and the privacy notice.”",
+      "consentLink": "Link to the terms (optional)",
+      "consentLinkLabel": "Link text"
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -1279,11 +1307,45 @@
       "max_selected": "Choose at most {n} for {field}.",
       "max_files": "{field} accepts at most {n} files.",
       "date_range": "Choose both dates for {field}, with the end on or after the start.",
-      "address": "{field} is missing: {parts}."
+      "address": "{field} is missing: {parts}.",
+      "ip": "Enter a valid IP address for {field}.",
+      "domain": "Enter a domain name for {field}, like example.org.",
+      "mac": "Enter a MAC address for {field}, like 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} isn’t a valid IBAN — check the number.",
+      "bic": "Enter an 8- or 11-character SWIFT / BIC code for {field}.",
+      "color": "Choose a colour for {field}.",
+      "duration": "Enter a duration for {field} (minutes 0–59).",
+      "name": "Enter both first and last name for {field}.",
+      "consent": "Please confirm {field} to continue.",
+      "choice": "Choose an option from the list for {field}."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Footer links"
+    },
+    "name": {
+      "title": "Title",
+      "first": "First name",
+      "middle": "Middle name",
+      "last": "Last name"
+    },
+    "consent": {
+      "default": "I agree to the terms.",
+      "link": "Read the terms"
+    },
+    "color": {
+      "pick": "Pick a colour"
+    },
+    "duration": {
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "h": "h",
+      "m": "min"
+    },
+    "pick": {
+      "language": "Choose a language",
+      "timezone": "Choose a time zone",
+      "currency_code": "Choose a currency"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "The title and message are set in Build → Form settings. The page uses this design.",
     "showTick": "Show the tick icon"
+  },
+  "themes": {
+    "subtitle": "Saved designs you can use on any form",
+    "yours": "Your themes",
+    "save": "Save as theme",
+    "noneYet": "Save this design to reuse it on other forms.",
+    "apply": "Use the theme “{name}”",
+    "saveTitle": "Save as theme",
+    "saveDesc": "Everyone in this workspace can use it on their forms.",
+    "updateExisting": "Update “{name}”",
+    "saveNew": "Save as a new theme",
+    "name": "Name",
+    "namePlaceholder": "e.g. Brand — light",
+    "renameTitle": "Rename theme",
+    "rename": "Rename",
+    "duplicate": "Duplicate",
+    "delete": "Delete theme",
+    "deleteTitle": "Delete “{name}”?",
+    "deleteDesc": "It disappears from the list of themes.",
+    "deleteUsed": "{count} form uses it and keeps its design. | {count} forms use it and keep their design.",
+    "goToForms": "Go to forms",
+    "search": "Search themes…",
+    "sortRecent": "Recently changed",
+    "sortName": "Name",
+    "col": {
+      "name": "Theme",
+      "forms": "Used in",
+      "createdBy": "Created by",
+      "updated": "Changed"
+    },
+    "formsCount": "{count} form | {count} forms",
+    "emptyTitle": "No saved themes yet",
+    "emptyDesc": "Open any form, design it in Design, and choose “Save as theme” to reuse it here.",
+    "toast": {
+      "saved": "Theme “{name}” saved",
+      "updated": "Theme “{name}” updated",
+      "duplicated": "“{name}” created",
+      "deleted": "Theme “{name}” deleted"
+    }
   }
 }

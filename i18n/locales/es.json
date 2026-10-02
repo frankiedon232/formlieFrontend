@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Respuesta inesperada del servidor.",
     "FRM-FORM-1007": "No es posible en el estado actual del formulario. Actualiza e inténtalo de nuevo.",
     "FRM-FORM-1008": "Ya existe una carpeta con este nombre.",
-    "FRM-FORM-1009": "Ya existe una lista con este nombre."
+    "FRM-FORM-1009": "Ya existe una lista con este nombre.",
+    "FRM-FORM-1010": "Ya existe un tema con este nombre."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -573,7 +574,8 @@
       "export": "Exportación",
       "folder": "Carpeta",
       "saved_field": "Campo guardado",
-      "option_list": "Lista de opciones"
+      "option_list": "Lista de opciones",
+      "theme": "Tema"
     },
     "field": {
       "name": "Nombre",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Campo quitado de la biblioteca",
       "forms_list_created": "Lista creada",
       "forms_list_updated": "Lista actualizada",
-      "forms_list_deleted": "Lista eliminada"
+      "forms_list_deleted": "Lista eliminada",
+      "forms_theme_created": "Tema guardado",
+      "forms_theme_updated": "Tema actualizado",
+      "forms_theme_deleted": "Tema eliminado"
     },
     "detail": {
       "who": "Quién",
@@ -883,7 +888,20 @@
       "section": "Sección",
       "paragraph": "Párrafo",
       "divider": "Separador",
-      "image": "Imagen"
+      "image": "Imagen",
+      "full_name": "Nombre completo",
+      "percentage": "Porcentaje",
+      "duration": "Duración",
+      "consent": "Consentimiento / términos",
+      "language": "Idioma",
+      "timezone": "Zona horaria",
+      "currency_code": "Moneda",
+      "ip_address": "Dirección IP",
+      "domain": "Nombre de dominio",
+      "mac_address": "Dirección MAC",
+      "color": "Color",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Texto",
@@ -893,7 +911,8 @@
       "files": "Archivos y firma",
       "location": "Ubicación",
       "advanced": "Avanzado",
-      "layout": "Diseño"
+      "layout": "Diseño",
+      "technical": "Técnico e identificadores"
     },
     "defaults": {
       "option": "Opción {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "La calle, la ciudad y el país siempre se piden cuando la dirección es obligatoria.",
       "requirePostal": "Código postal obligatorio",
       "requirePostalHint": "Desactívalo para países sin código postal.",
-      "requireRegion": "Estado / provincia / región obligatorio"
+      "requireRegion": "Estado / provincia / región obligatorio",
+      "ipVersion": "Direcciones aceptadas",
+      "ipAny": "IPv4 o IPv6",
+      "nameTitle": "Pedir tratamiento (p. ej., Dr., Sra.)",
+      "nameMiddle": "Pedir segundo nombre",
+      "nameHint": "El nombre y el apellido se piden siempre.",
+      "consentText": "Texto de consentimiento",
+      "consentTextHint": "Lo que aceptan los encuestados, p. ej., «Acepto los términos y el aviso de privacidad.»",
+      "consentLink": "Enlace a los términos (opcional)",
+      "consentLinkLabel": "Texto del enlace"
     },
     "shortcuts": {
       "title": "Atajos",
@@ -1279,11 +1307,45 @@
       "max_selected": "Elige como máximo {n} en {field}.",
       "max_files": "{field} admite como máximo {n} archivos.",
       "date_range": "Elige ambas fechas en {field}; la final debe ser igual o posterior a la inicial.",
-      "address": "En {field} falta: {parts}."
+      "address": "En {field} falta: {parts}.",
+      "ip": "Introduzca una dirección IP válida en {field}.",
+      "domain": "Introduzca un nombre de dominio en {field}, como example.org.",
+      "mac": "Introduzca una dirección MAC en {field}, como 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} no es un IBAN válido; revise el número.",
+      "bic": "Introduzca un código SWIFT / BIC de 8 u 11 caracteres en {field}.",
+      "color": "Elija un color para {field}.",
+      "duration": "Introduzca una duración en {field} (minutos 0–59).",
+      "name": "Introduzca el nombre y el apellido en {field}.",
+      "consent": "Confirme {field} para continuar.",
+      "choice": "Elija una opción de la lista para {field}."
     },
     "page": {
       "logo": "Logotipo",
       "footerLinks": "Enlaces del pie"
+    },
+    "name": {
+      "title": "Tratamiento",
+      "first": "Nombre",
+      "middle": "Segundo nombre",
+      "last": "Apellido"
+    },
+    "consent": {
+      "default": "Acepto los términos.",
+      "link": "Leer los términos"
+    },
+    "color": {
+      "pick": "Elija un color"
+    },
+    "duration": {
+      "hours": "Horas",
+      "minutes": "Minutos",
+      "h": "h",
+      "m": "min"
+    },
+    "pick": {
+      "language": "Elija un idioma",
+      "timezone": "Elija una zona horaria",
+      "currency_code": "Elija una moneda"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "El título y el mensaje se configuran en Crear → Ajustes del formulario. La página usa este diseño.",
     "showTick": "Mostrar el icono de marca de verificación"
+  },
+  "themes": {
+    "subtitle": "Diseños guardados que puede usar en cualquier formulario",
+    "yours": "Sus temas",
+    "save": "Guardar como tema",
+    "noneYet": "Guarde este diseño para reutilizarlo en otros formularios.",
+    "apply": "Usar el tema «{name}»",
+    "saveTitle": "Guardar como tema",
+    "saveDesc": "Todas las personas de este espacio de trabajo pueden usarlo en sus formularios.",
+    "updateExisting": "Actualizar «{name}»",
+    "saveNew": "Guardar como tema nuevo",
+    "name": "Nombre",
+    "namePlaceholder": "p. ej., Marca — claro",
+    "renameTitle": "Cambiar nombre del tema",
+    "rename": "Cambiar nombre",
+    "duplicate": "Duplicar",
+    "delete": "Eliminar tema",
+    "deleteTitle": "¿Eliminar «{name}»?",
+    "deleteDesc": "Desaparecerá de la lista de temas.",
+    "deleteUsed": "{count} formulario lo usa y conserva su diseño. | {count} formularios lo usan y conservan su diseño.",
+    "goToForms": "Ir a formularios",
+    "search": "Buscar temas…",
+    "sortRecent": "Modificados recientemente",
+    "sortName": "Nombre",
+    "col": {
+      "name": "Tema",
+      "forms": "Usado en",
+      "createdBy": "Creado por",
+      "updated": "Modificado"
+    },
+    "formsCount": "{count} formulario | {count} formularios",
+    "emptyTitle": "Aún no hay temas guardados",
+    "emptyDesc": "Abra cualquier formulario, diséñelo en Diseño y elija «Guardar como tema» para reutilizarlo aquí.",
+    "toast": {
+      "saved": "Tema «{name}» guardado",
+      "updated": "Tema «{name}» actualizado",
+      "duplicated": "«{name}» creado",
+      "deleted": "Tema «{name}» eliminado"
+    }
   }
 }

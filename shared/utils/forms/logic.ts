@@ -48,12 +48,13 @@ export interface LogicRule {
 export type FieldKind = 'text' | 'number' | 'choice' | 'multi' | 'toggle' | 'date' | 'presence'
 const KIND: Record<string, FieldKind> = {
   number: 'number', currency: 'number', rating: 'number', scale: 'number', slider: 'number', calculated: 'number',
-  dropdown: 'choice', radio: 'choice', country: 'choice',
+  percentage: 'number',
+  dropdown: 'choice', radio: 'choice', country: 'choice', language: 'choice', timezone: 'choice', currency_code: 'choice',
   multi_select: 'multi', checkbox: 'multi', ranking: 'multi',
-  toggle: 'toggle',
+  toggle: 'toggle', consent: 'toggle',
   date: 'date', datetime: 'date', time: 'date',
   file_upload: 'presence', image_upload: 'presence', signature: 'presence', address: 'presence',
-  matrix: 'presence', date_range: 'presence',
+  matrix: 'presence', date_range: 'presence', full_name: 'presence', duration: 'presence',
 }
 export const fieldKind = (type: string): FieldKind => KIND[type] ?? 'text'
 

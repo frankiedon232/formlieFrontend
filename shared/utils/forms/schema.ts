@@ -56,6 +56,8 @@ export const formSchemaV1 = z.object({
   logic: z.array(z.unknown()).max(500).optional(),
   /** Design tokens (shared/utils/forms/theme.ts); missing or invalid tokens use the workspace default. */
   theme: z.record(z.string(), z.unknown()).optional(),
+  /** The saved theme this design came from (the tokens above are a copy). */
+  theme_id: z.string().max(64).nullable().optional(),
   calculations: z.array(z.unknown()).max(200).optional(),
   thank_you: z
     .object({

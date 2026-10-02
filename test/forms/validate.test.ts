@@ -47,3 +47,41 @@ describe('answer validation', () => {
     expect(code(field('date_range'), { from: '2026-10-01', to: '2026-10-05' })).toBeNull()
   })
 })
+
+describe('technical and global fields', () => {
+  it('checks IP addresses, domains, MAC addresses', () => {
+    expect(code(field('ip_address'), '192.0.2.10')).toBeNull()
+    expect(code(field('ip_address'), '2001:db8::1')).toBeNull()
+    expect(code(field('ip_address'), '::ffff:192.0.2.1')).toBeNull()
+    expect(code(field('ip_address'), '256.1.1.1')).toBe('ip')
+    expect(code(field('ip_address', { props: { ip_version: 'v4' } }), '2001:db8::1')).toBe('ip')
+    expect(code(field('ip_address', { props: { ip_version: 'v6' } }), '192.0.2.10')).toBe('ip')
+    expect(code(field('domain'), 'sub.example.org')).toBeNull()
+    expect(code(field('domain'), 'not a domain')).toBe('domain')
+    expect(code(field('mac_address'), '00:1A:2B:3C:4D:5E')).toBeNull()
+    expect(code(field('mac_address'), '00:1A:2B')).toBe('mac')
+  })
+
+  it('checks IBAN, BIC, colours, percentages', () => {
+    expect(code(field('iban'), 'GB82 WEST 1234 5698 7654 32')).toBeNull()
+    expect(code(field('iban'), 'GB82 WEST 1234 5698 7654 33')).toBe('iban')
+    expect(code(field('bic'), 'ABCDGB2LXXX')).toBeNull()
+    expect(code(field('bic'), 'AB12')).toBe('bic')
+    expect(code(field('color'), '#1a2b3c')).toBeNull()
+    expect(code(field('color'), 'blue')).toBe('color')
+    expect(code(field('percentage', { validation: { min: 0, max: 100 } }), 120)).toBe('max')
+  })
+
+  it('checks names, consent, durations and picks', () => {
+    expect(code(field('full_name'), { first: 'Ada' }, true)).toBe('name')
+    expect(code(field('full_name'), { first: 'Ada', last: 'Okafor' }, true)).toBeNull()
+    expect(code(field('consent'), false, true)).toBe('consent')
+    expect(code(field('consent'), true, true)).toBeNull()
+    expect(code(field('duration'), { hours: 1, minutes: 75 })).toBe('duration')
+    expect(code(field('duration'), { hours: 1, minutes: 30 })).toBeNull()
+    expect(code(field('language'), 'sw')).toBeNull()
+    expect(code(field('language'), 'xx')).toBe('choice')
+    expect(code(field('timezone'), 'Asia/Kolkata')).toBeNull()
+    expect(code(field('timezone'), 'Mars/Base')).toBe('choice')
+  })
+})

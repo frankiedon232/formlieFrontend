@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Sunucudan beklenmeyen yanıt.",
     "FRM-FORM-1007": "Formun mevcut durumunda bu mümkün değil. Yenileyip tekrar deneyin.",
     "FRM-FORM-1008": "Bu adda bir klasör zaten var.",
-    "FRM-FORM-1009": "Bu adda bir liste zaten var."
+    "FRM-FORM-1009": "Bu adda bir liste zaten var.",
+    "FRM-FORM-1010": "Bu ada sahip bir tema zaten var."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -573,7 +574,8 @@
       "export": "Dışa aktarma",
       "folder": "Klasör",
       "saved_field": "Kayıtlı alan",
-      "option_list": "Seçenek listesi"
+      "option_list": "Seçenek listesi",
+      "theme": "Tema"
     },
     "field": {
       "name": "Ad",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Alan kitaplıktan kaldırıldı",
       "forms_list_created": "Liste oluşturuldu",
       "forms_list_updated": "Liste güncellendi",
-      "forms_list_deleted": "Liste silindi"
+      "forms_list_deleted": "Liste silindi",
+      "forms_theme_created": "Tema kaydedildi",
+      "forms_theme_updated": "Tema güncellendi",
+      "forms_theme_deleted": "Tema silindi"
     },
     "detail": {
       "who": "Kim",
@@ -883,7 +888,20 @@
       "section": "Bölüm",
       "paragraph": "Paragraf",
       "divider": "Ayırıcı",
-      "image": "Görsel"
+      "image": "Görsel",
+      "full_name": "Ad soyad",
+      "percentage": "Yüzde",
+      "duration": "Süre",
+      "consent": "Onay / koşullar",
+      "language": "Dil",
+      "timezone": "Saat dilimi",
+      "currency_code": "Para birimi",
+      "ip_address": "IP adresi",
+      "domain": "Alan adı",
+      "mac_address": "MAC adresi",
+      "color": "Renk",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Metin",
@@ -893,7 +911,8 @@
       "files": "Dosyalar ve imza",
       "location": "Konum",
       "advanced": "Gelişmiş",
-      "layout": "Düzen"
+      "layout": "Düzen",
+      "technical": "Teknik ve kimlikler"
     },
     "defaults": {
       "option": "Seçenek {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "Adres zorunlu olduğunda sokak, şehir ve ülke her zaman sorulur.",
       "requirePostal": "Posta kodu zorunlu",
       "requirePostalHint": "Posta kodu olmayan ülkeler için kapatın.",
-      "requireRegion": "Eyalet / il / bölge zorunlu"
+      "requireRegion": "Eyalet / il / bölge zorunlu",
+      "ipVersion": "Kabul edilen adresler",
+      "ipAny": "IPv4 veya IPv6",
+      "nameTitle": "Unvan sor (örn. Dr., Bayan)",
+      "nameMiddle": "İkinci ad sor",
+      "nameHint": "Ad ve soyad her zaman sorulur.",
+      "consentText": "Onay metni",
+      "consentTextHint": "Yanıtlayanların kabul ettiği şey, örn. “Koşulları ve gizlilik bildirimini kabul ediyorum.”",
+      "consentLink": "Koşulların bağlantısı (isteğe bağlı)",
+      "consentLinkLabel": "Bağlantı metni"
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -1279,11 +1307,45 @@
       "max_selected": "{field} için en fazla {n} seçim yapın.",
       "max_files": "{field} en fazla {n} dosya kabul eder.",
       "date_range": "{field} için iki tarihi de seçin; bitiş tarihi başlangıçla aynı gün veya sonrası olmalıdır.",
-      "address": "{field} için eksik: {parts}."
+      "address": "{field} için eksik: {parts}.",
+      "ip": "{field} için geçerli bir IP adresi girin.",
+      "domain": "{field} için example.org gibi bir alan adı girin.",
+      "mac": "{field} için 00:1A:2B:3C:4D:5E gibi bir MAC adresi girin.",
+      "iban": "{field} geçerli bir IBAN değil — numarayı kontrol edin.",
+      "bic": "{field} için 8 veya 11 karakterli bir SWIFT / BIC kodu girin.",
+      "color": "{field} için bir renk seçin.",
+      "duration": "{field} için bir süre girin (dakika 0–59).",
+      "name": "{field} için hem adı hem soyadı girin.",
+      "consent": "Devam etmek için lütfen {field} alanını onaylayın.",
+      "choice": "{field} için listeden bir seçenek seçin."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Alt bilgi bağlantıları"
+    },
+    "name": {
+      "title": "Unvan",
+      "first": "Ad",
+      "middle": "İkinci ad",
+      "last": "Soyad"
+    },
+    "consent": {
+      "default": "Koşulları kabul ediyorum.",
+      "link": "Koşulları okuyun"
+    },
+    "color": {
+      "pick": "Bir renk seçin"
+    },
+    "duration": {
+      "hours": "Saat",
+      "minutes": "Dakika",
+      "h": "sa",
+      "m": "dk"
+    },
+    "pick": {
+      "language": "Bir dil seçin",
+      "timezone": "Bir saat dilimi seçin",
+      "currency_code": "Bir para birimi seçin"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Başlık ve mesaj Oluştur → Form ayarları bölümünden belirlenir. Sayfa bu tasarımı kullanır.",
     "showTick": "Onay simgesini göster"
+  },
+  "themes": {
+    "subtitle": "Herhangi bir formda kullanabileceğiniz kayıtlı tasarımlar",
+    "yours": "Temalarınız",
+    "save": "Tema olarak kaydet",
+    "noneYet": "Bu tasarımı diğer formlarda yeniden kullanmak için kaydedin.",
+    "apply": "“{name}” temasını kullan",
+    "saveTitle": "Tema olarak kaydet",
+    "saveDesc": "Bu çalışma alanındaki herkes bunu kendi formlarında kullanabilir.",
+    "updateExisting": "“{name}” temasını güncelle",
+    "saveNew": "Yeni tema olarak kaydet",
+    "name": "Ad",
+    "namePlaceholder": "örn. Marka — açık",
+    "renameTitle": "Temayı yeniden adlandır",
+    "rename": "Yeniden adlandır",
+    "duplicate": "Çoğalt",
+    "delete": "Temayı sil",
+    "deleteTitle": "“{name}” silinsin mi?",
+    "deleteDesc": "Tema listesinden kaldırılır.",
+    "deleteUsed": "{count} form bunu kullanıyor ve tasarımını korur. | {count} form bunu kullanıyor ve tasarımlarını korur.",
+    "goToForms": "Formlara git",
+    "search": "Tema ara…",
+    "sortRecent": "Son değiştirilenler",
+    "sortName": "Ad",
+    "col": {
+      "name": "Tema",
+      "forms": "Kullanıldığı yer",
+      "createdBy": "Oluşturan",
+      "updated": "Değiştirilme"
+    },
+    "formsCount": "{count} form | {count} form",
+    "emptyTitle": "Henüz kayıtlı tema yok",
+    "emptyDesc": "Herhangi bir formu açın, Tasarım bölümünde tasarlayın ve burada yeniden kullanmak için “Tema olarak kaydet”i seçin.",
+    "toast": {
+      "saved": "“{name}” teması kaydedildi",
+      "updated": "“{name}” teması güncellendi",
+      "duplicated": "“{name}” oluşturuldu",
+      "deleted": "“{name}” teması silindi"
+    }
   }
 }

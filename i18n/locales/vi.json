@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Phản hồi bất thường từ máy chủ.",
     "FRM-FORM-1007": "Không thể thực hiện ở trạng thái hiện tại của biểu mẫu. Hãy tải lại và thử lại.",
     "FRM-FORM-1008": "Đã có thư mục cùng tên.",
-    "FRM-FORM-1009": "Đã có danh sách với tên này."
+    "FRM-FORM-1009": "Đã có danh sách với tên này.",
+    "FRM-FORM-1010": "Đã có chủ đề giao diện với tên này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -573,7 +574,8 @@
       "export": "Bản xuất",
       "folder": "Thư mục",
       "saved_field": "Trường đã lưu",
-      "option_list": "Danh sách lựa chọn"
+      "option_list": "Danh sách lựa chọn",
+      "theme": "Chủ đề"
     },
     "field": {
       "name": "Tên",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Đã xóa trường khỏi thư viện",
       "forms_list_created": "Đã tạo danh sách",
       "forms_list_updated": "Đã cập nhật danh sách",
-      "forms_list_deleted": "Đã xóa danh sách"
+      "forms_list_deleted": "Đã xóa danh sách",
+      "forms_theme_created": "Đã lưu chủ đề",
+      "forms_theme_updated": "Đã cập nhật chủ đề",
+      "forms_theme_deleted": "Đã xóa chủ đề"
     },
     "detail": {
       "who": "Ai",
@@ -883,7 +888,20 @@
       "section": "Phần",
       "paragraph": "Đoạn văn",
       "divider": "Đường phân cách",
-      "image": "Hình ảnh"
+      "image": "Hình ảnh",
+      "full_name": "Họ và tên",
+      "percentage": "Phần trăm",
+      "duration": "Thời lượng",
+      "consent": "Đồng ý / điều khoản",
+      "language": "Ngôn ngữ",
+      "timezone": "Múi giờ",
+      "currency_code": "Tiền tệ",
+      "ip_address": "Địa chỉ IP",
+      "domain": "Tên miền",
+      "mac_address": "Địa chỉ MAC",
+      "color": "Màu",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Văn bản",
@@ -893,7 +911,8 @@
       "files": "Tệp và chữ ký",
       "location": "Vị trí",
       "advanced": "Nâng cao",
-      "layout": "Bố cục"
+      "layout": "Bố cục",
+      "technical": "Kỹ thuật & ID"
     },
     "defaults": {
       "option": "Lựa chọn {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "Khi địa chỉ là bắt buộc, đường, thành phố và quốc gia luôn được yêu cầu.",
       "requirePostal": "Bắt buộc mã bưu chính",
       "requirePostalHint": "Tắt đối với các quốc gia không có mã bưu chính.",
-      "requireRegion": "Bắt buộc tỉnh / bang / vùng"
+      "requireRegion": "Bắt buộc tỉnh / bang / vùng",
+      "ipVersion": "Địa chỉ được chấp nhận",
+      "ipAny": "IPv4 hoặc IPv6",
+      "nameTitle": "Hỏi danh xưng (vd. TS, Bà)",
+      "nameMiddle": "Hỏi tên đệm",
+      "nameHint": "Luôn hỏi tên và họ.",
+      "consentText": "Nội dung đồng ý",
+      "consentTextHint": "Điều người trả lời đồng ý, vd. “Tôi đồng ý với điều khoản và thông báo quyền riêng tư.”",
+      "consentLink": "Liên kết đến điều khoản (không bắt buộc)",
+      "consentLinkLabel": "Văn bản liên kết"
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -1279,11 +1307,45 @@
       "max_selected": "Chọn tối đa {n} cho {field}.",
       "max_files": "{field} chỉ nhận tối đa {n} tệp.",
       "date_range": "Chọn cả hai ngày cho {field}, ngày kết thúc phải trùng hoặc sau ngày bắt đầu.",
-      "address": "{field} còn thiếu: {parts}."
+      "address": "{field} còn thiếu: {parts}.",
+      "ip": "Nhập địa chỉ IP hợp lệ cho {field}.",
+      "domain": "Nhập tên miền cho {field}, như example.org.",
+      "mac": "Nhập địa chỉ MAC cho {field}, như 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} không phải IBAN hợp lệ — hãy kiểm tra số.",
+      "bic": "Nhập mã SWIFT / BIC gồm 8 hoặc 11 ký tự cho {field}.",
+      "color": "Chọn màu cho {field}.",
+      "duration": "Nhập thời lượng cho {field} (phút 0–59).",
+      "name": "Nhập cả tên và họ cho {field}.",
+      "consent": "Vui lòng xác nhận {field} để tiếp tục.",
+      "choice": "Chọn một tùy chọn trong danh sách cho {field}."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Liên kết chân trang"
+    },
+    "name": {
+      "title": "Danh xưng",
+      "first": "Tên",
+      "middle": "Tên đệm",
+      "last": "Họ"
+    },
+    "consent": {
+      "default": "Tôi đồng ý với điều khoản.",
+      "link": "Đọc điều khoản"
+    },
+    "color": {
+      "pick": "Chọn màu"
+    },
+    "duration": {
+      "hours": "Giờ",
+      "minutes": "Phút",
+      "h": "giờ",
+      "m": "phút"
+    },
+    "pick": {
+      "language": "Chọn ngôn ngữ",
+      "timezone": "Chọn múi giờ",
+      "currency_code": "Chọn tiền tệ"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Tiêu đề và lời nhắn được đặt trong Tạo → Cài đặt biểu mẫu. Trang dùng thiết kế này.",
     "showTick": "Hiện biểu tượng dấu tích"
+  },
+  "themes": {
+    "subtitle": "Các thiết kế đã lưu mà bạn có thể dùng cho mọi biểu mẫu",
+    "yours": "Chủ đề của bạn",
+    "save": "Lưu thành chủ đề",
+    "noneYet": "Lưu thiết kế này để dùng lại cho các biểu mẫu khác.",
+    "apply": "Dùng chủ đề “{name}”",
+    "saveTitle": "Lưu thành chủ đề",
+    "saveDesc": "Mọi người trong không gian làm việc này đều có thể dùng nó cho biểu mẫu của mình.",
+    "updateExisting": "Cập nhật “{name}”",
+    "saveNew": "Lưu thành chủ đề mới",
+    "name": "Tên",
+    "namePlaceholder": "vd. Thương hiệu — sáng",
+    "renameTitle": "Đổi tên chủ đề",
+    "rename": "Đổi tên",
+    "duplicate": "Nhân bản",
+    "delete": "Xóa chủ đề",
+    "deleteTitle": "Xóa “{name}”?",
+    "deleteDesc": "Chủ đề sẽ biến mất khỏi danh sách chủ đề.",
+    "deleteUsed": "{count} biểu mẫu đang dùng và sẽ giữ nguyên thiết kế. | {count} biểu mẫu đang dùng và sẽ giữ nguyên thiết kế.",
+    "goToForms": "Đến biểu mẫu",
+    "search": "Tìm chủ đề…",
+    "sortRecent": "Thay đổi gần đây",
+    "sortName": "Tên",
+    "col": {
+      "name": "Chủ đề",
+      "forms": "Được dùng trong",
+      "createdBy": "Người tạo",
+      "updated": "Đã thay đổi"
+    },
+    "formsCount": "{count} biểu mẫu | {count} biểu mẫu",
+    "emptyTitle": "Chưa có chủ đề nào được lưu",
+    "emptyDesc": "Mở một biểu mẫu bất kỳ, thiết kế trong phần Thiết kế và chọn “Lưu thành chủ đề” để dùng lại tại đây.",
+    "toast": {
+      "saved": "Đã lưu chủ đề “{name}”",
+      "updated": "Đã cập nhật chủ đề “{name}”",
+      "duplicated": "Đã tạo “{name}”",
+      "deleted": "Đã xóa chủ đề “{name}”"
+    }
   }
 }

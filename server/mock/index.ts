@@ -7,6 +7,7 @@ import * as audit from './routes/audit'
 import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
 import * as library from './routes/library'
+import * as themes from './routes/themes'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
@@ -67,6 +68,11 @@ const router = createRouter()
   .post('/option-lists', library.createOptionList)
   .patch('/option-lists/:id', library.updateOptionList)
   .delete('/option-lists/:id', library.deleteOptionList)
+  .get('/themes', themes.listThemes)
+  .post('/themes', themes.createTheme)
+  .patch('/themes/:id', themes.updateTheme)
+  .post('/themes/:id/duplicate', themes.duplicateTheme)
+  .delete('/themes/:id', themes.deleteTheme)
   .get('/navigation/counts', navigationCounts)
   // onboarding + uploads
   .get('/onboarding', onboarding.getOnboarding)

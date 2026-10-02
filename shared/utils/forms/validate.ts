@@ -7,11 +7,13 @@
  *   switched off, region when switched on — also when an optional address is only partly filled).
  */
 import type { FormField } from './build'
+import { isCurrencyCode, isLanguageCode, isTimeZone } from './catalogues'
 
 export type AnswerProblem =
   | 'required' | 'email' | 'url' | 'phone' | 'number' | 'min' | 'max'
   | 'min_length' | 'max_length' | 'pattern' | 'min_selected' | 'max_selected'
   | 'max_files' | 'date_range' | 'address'
+  | 'ip' | 'domain' | 'mac' | 'iban' | 'bic' | 'color' | 'duration' | 'name' | 'consent' | 'choice'
 
 export interface ValidationIssue {
   code: AnswerProblem
@@ -23,8 +25,41 @@ export interface ValidationIssue {
 export type AddressPart = 'line1' | 'city' | 'region' | 'postal_code' | 'country'
 
 const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[^\s@.]{2,}$/
-const NUMERIC_TYPES = ['number', 'currency', 'slider', 'scale', 'rating']
+const NUMERIC_TYPES = ['number', 'currency', 'slider', 'scale', 'rating', 'percentage']
 const TEXT_TYPES = ['short_text', 'long_text', 'email', 'url', 'phone']
+
+const IPV4 = /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/
+/** IPv6 incl. "::" shortening and an IPv4 tail. */
+export function isIpv6(value: string): boolean {
+  if (!/^[0-9a-f:.]+$/i.test(value) || (value.match(/::/g)?.length ?? 0) > 1) return false
+  let parts = value.split(':')
+  let groups = 8
+  const tail = parts.at(-1) ?? ''
+  if (tail.includes('.')) {
+    if (!IPV4.test(tail)) return false
+    parts = parts.slice(0, -1)
+    groups = 6
+  }
+  const filled = parts.filter(Boolean)
+  if (!filled.every(group => /^[0-9a-f]{1,4}$/i.test(group))) return false
+  return value.includes('::') ? filled.length < groups : filled.length === groups && parts.length === groups
+}
+export const isIpv4 = (value: string) => IPV4.test(value)
+const DOMAIN = /^(?=.{1,253}$)(?!-)([a-z0-9-]{1,63}(?<!-)\.)+[a-z]{2,63}$/i
+const MAC = /^([0-9a-f]{2}[:-]){5}[0-9a-f]{2}$|^([0-9a-f]{4}\.){2}[0-9a-f]{4}$/i
+const BIC = /^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$/
+/** IBAN: country, check digits, then the ISO 7064 mod-97 checksum. */
+export function isIban(value: string): boolean {
+  const iban = value.replace(/\s+/g, '').toUpperCase()
+  if (!/^[A-Z]{2}\d{2}[A-Z0-9]{10,30}$/.test(iban)) return false
+  const moved = iban.slice(4) + iban.slice(0, 4)
+  let rest = 0
+  for (const char of moved) {
+    const code = /[A-Z]/.test(char) ? String(char.charCodeAt(0) - 55) : char
+    for (const digit of code) rest = (rest * 10 + Number(digit)) % 97
+  }
+  return rest === 1
+}
 
 export const isBlank = (value: unknown): boolean =>
   value == null ||
@@ -63,6 +98,20 @@ export function validateAnswer(field: FormField, value: unknown, required: boole
     return parts.length ? { code: 'address', parts } : null
   }
 
+  if (field.type === 'full_name') {
+    const name = (value && typeof value === 'object' ? value : {}) as Record<string, unknown>
+    if (isBlank(name)) return required ? { code: 'required' } : null
+    return isBlank(name.first) || isBlank(name.last) ? { code: 'name' } : null
+  }
+  if (field.type === 'consent') return required && value !== true ? { code: 'consent' } : null
+  if (field.type === 'duration') {
+    const d = (value && typeof value === 'object' ? value : {}) as { hours?: unknown; minutes?: unknown }
+    if (isBlank(d)) return required ? { code: 'required' } : null
+    const h = num(d.hours ?? 0)
+    const m = num(d.minutes ?? 0)
+    return Number.isNaN(h) || Number.isNaN(m) || h < 0 || m < 0 || m > 59 || h + m === 0 ? { code: 'duration' } : null
+  }
+
   if (field.type === 'date_range') {
     const range = (value && typeof value === 'object' ? value : {}) as { from?: string; to?: string }
     if (!range.from && !range.to) return required ? { code: 'required' } : null
@@ -87,6 +136,20 @@ export function validateAnswer(field: FormField, value: unknown, required: boole
     const digits = text.replace(/[\s().-]/g, '')
     if (!/^\+?\d{6,15}$/.test(digits)) return { code: 'phone' }
   }
+
+  if (field.type === 'ip_address') {
+    const version = String(field.props?.ip_version ?? 'any')
+    const ok = (version !== 'v6' && isIpv4(text)) || (version !== 'v4' && isIpv6(text))
+    if (!ok) return { code: 'ip', params: { version } }
+  }
+  if (field.type === 'domain' && !DOMAIN.test(text.replace(/\.$/, ''))) return { code: 'domain' }
+  if (field.type === 'mac_address' && !MAC.test(text)) return { code: 'mac' }
+  if (field.type === 'iban' && !isIban(text)) return { code: 'iban' }
+  if (field.type === 'bic' && !BIC.test(text.replace(/\s+/g, '').toUpperCase())) return { code: 'bic' }
+  if (field.type === 'color' && !/^#[0-9a-f]{6}$/i.test(text)) return { code: 'color' }
+  if (field.type === 'language' && !isLanguageCode(text)) return { code: 'choice' }
+  if (field.type === 'timezone' && !isTimeZone(text)) return { code: 'choice' }
+  if (field.type === 'currency_code' && !isCurrencyCode(text)) return { code: 'choice' }
 
   if (NUMERIC_TYPES.includes(field.type)) {
     const n = num(value)

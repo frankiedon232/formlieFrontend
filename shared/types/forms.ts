@@ -1,4 +1,5 @@
 import type { FormField } from '../utils/forms/build'
+import type { FormTheme } from '../utils/forms/theme'
 /** Form list shapes (docs/API-CONTRACT.md → Forms). */
 export type FormStatus = 'draft' | 'published' | 'closed' | 'archived'
 
@@ -76,6 +77,17 @@ export interface OptionList {
   id: string
   name: string
   options: { value: string; label: string; score?: number }[]
+  created_by: { id: string; name: string }
+  created_at: string
+  updated_at: string
+}
+
+/** A saved design (GET /themes) — reusable on any form; forms keep a copy of the tokens. */
+export interface SavedTheme {
+  id: string
+  name: string
+  tokens: FormTheme
+  forms_count: number
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string

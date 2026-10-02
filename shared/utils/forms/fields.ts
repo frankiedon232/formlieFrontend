@@ -10,6 +10,7 @@ export const FIELD_CATEGORIES = [
   'rating',
   'files',
   'location',
+  'technical',
   'advanced',
   'layout',
 ] as const
@@ -36,11 +37,14 @@ export const FIELD_TYPES = {
   url: { category: 'text', icon: 'i-lucide-link', input: true },
   number: { category: 'text', icon: 'i-lucide-hash', input: true },
   currency: { category: 'text', icon: 'i-lucide-banknote', input: true },
+  full_name: { category: 'text', icon: 'i-lucide-id-card', input: true },
+  percentage: { category: 'text', icon: 'i-lucide-percent', input: true },
   // Dates
   date: { category: 'dates', icon: 'i-lucide-calendar', input: true },
   time: { category: 'dates', icon: 'i-lucide-clock', input: true },
   datetime: { category: 'dates', icon: 'i-lucide-calendar-clock', input: true },
   date_range: { category: 'dates', icon: 'i-lucide-calendar-range', input: true },
+  duration: { category: 'dates', icon: 'i-lucide-timer', input: true },
   // Choice
   dropdown: { category: 'choice', icon: 'i-lucide-chevron-down-square', input: true, options: true },
   multi_select: { category: 'choice', icon: 'i-lucide-list-checks', input: true, options: true },
@@ -49,6 +53,7 @@ export const FIELD_TYPES = {
   toggle: { category: 'choice', icon: 'i-lucide-toggle-right', input: true },
   ranking: { category: 'choice', icon: 'i-lucide-list-ordered', input: true, options: true },
   matrix: { category: 'choice', icon: 'i-lucide-grid-3x3', input: true, options: true },
+  consent: { category: 'choice', icon: 'i-lucide-shield-check', input: true },
   // Rating
   rating: { category: 'rating', icon: 'i-lucide-star', input: true },
   scale: { category: 'rating', icon: 'i-lucide-gauge', input: true },
@@ -60,6 +65,16 @@ export const FIELD_TYPES = {
   // Location
   address: { category: 'location', icon: 'i-lucide-map-pin', input: true },
   country: { category: 'location', icon: 'i-lucide-globe', input: true },
+  language: { category: 'location', icon: 'i-lucide-languages', input: true },
+  timezone: { category: 'location', icon: 'i-lucide-clock-4', input: true },
+  currency_code: { category: 'location', icon: 'i-lucide-coins', input: true },
+  // Technical & IDs
+  ip_address: { category: 'technical', icon: 'i-lucide-network', input: true },
+  domain: { category: 'technical', icon: 'i-lucide-globe-lock', input: true },
+  mac_address: { category: 'technical', icon: 'i-lucide-cpu', input: true },
+  color: { category: 'technical', icon: 'i-lucide-palette', input: true },
+  iban: { category: 'technical', icon: 'i-lucide-landmark', input: true },
+  bic: { category: 'technical', icon: 'i-lucide-building-2', input: true },
   // Advanced
   hidden: { category: 'advanced', icon: 'i-lucide-eye-off', input: true },
   calculated: { category: 'advanced', icon: 'i-lucide-calculator', input: true },

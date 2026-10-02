@@ -43,6 +43,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FORM-1007 | 409  | This isn't possible while the form is in its current state.  | INFO     |
 | FRM-FORM-1008 | 409  | A folder with this name already exists.                      | INFO     |
 | FRM-FORM-1009 | 409  | A list with this name already exists.                        | INFO     |
+| FRM-FORM-1010 | 409  | A theme with this name already exists.                       | INFO     |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                       | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                               | WARNING  |
 | FRM-FILE-1001 | 400  | File type not allowed.                                       | INFO     |

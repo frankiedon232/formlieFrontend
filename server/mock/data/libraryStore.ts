@@ -2,13 +2,15 @@
  * Per-workspace reusable building blocks for the mock: saved fields and option lists.
  * Seeded workspaces start with a few neutral sample lists. Persisted across dev reloads.
  */
-import type { OptionList, SavedField } from '#shared/types/forms'
+import type { OptionList, SavedField, SavedTheme } from '#shared/types/forms'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
 
 interface TenantLibrary {
   fields: SavedField[]
   lists: OptionList[]
+  /** Saved designs; `forms_count` is computed when listing. */
+  themes?: Omit<SavedTheme, 'forms_count'>[]
 }
 
 const stores = new Map<string, TenantLibrary>(

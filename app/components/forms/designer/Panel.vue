@@ -49,6 +49,8 @@ async function reset() {
       <p v-if="!d.customised.value" class="text-xs text-muted">{{ t('designer.usingDefault') }}</p>
     </section>
 
+    <FormsDesignerSavedThemes />
+
     <UAccordion v-model="open" type="multiple" :items="groups" :ui="{ trigger: 'text-sm font-medium', body: 'pb-4' }">
       <template #layout><FormsDesignerPanelLayout group="layout" /></template>
       <template #background><FormsDesignerPanelLayout group="background" /></template>

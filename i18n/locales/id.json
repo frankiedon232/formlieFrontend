@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Respons tak terduga dari server.",
     "FRM-FORM-1007": "Tidak bisa dilakukan pada status formulir saat ini. Muat ulang lalu coba lagi.",
     "FRM-FORM-1008": "Folder dengan nama ini sudah ada.",
-    "FRM-FORM-1009": "Daftar dengan nama ini sudah ada."
+    "FRM-FORM-1009": "Daftar dengan nama ini sudah ada.",
+    "FRM-FORM-1010": "Tema dengan nama ini sudah ada."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -573,7 +574,8 @@
       "export": "Ekspor",
       "folder": "Folder",
       "saved_field": "Kolom tersimpan",
-      "option_list": "Daftar opsi"
+      "option_list": "Daftar opsi",
+      "theme": "Tema"
     },
     "field": {
       "name": "Nama",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Kolom dihapus dari pustaka",
       "forms_list_created": "Daftar dibuat",
       "forms_list_updated": "Daftar diperbarui",
-      "forms_list_deleted": "Daftar dihapus"
+      "forms_list_deleted": "Daftar dihapus",
+      "forms_theme_created": "Tema disimpan",
+      "forms_theme_updated": "Tema diperbarui",
+      "forms_theme_deleted": "Tema dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -883,7 +888,20 @@
       "section": "Bagian",
       "paragraph": "Paragraf",
       "divider": "Pemisah",
-      "image": "Gambar"
+      "image": "Gambar",
+      "full_name": "Nama lengkap",
+      "percentage": "Persentase",
+      "duration": "Durasi",
+      "consent": "Persetujuan / ketentuan",
+      "language": "Bahasa",
+      "timezone": "Zona waktu",
+      "currency_code": "Mata uang",
+      "ip_address": "Alamat IP",
+      "domain": "Nama domain",
+      "mac_address": "Alamat MAC",
+      "color": "Warna",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Teks",
@@ -893,7 +911,8 @@
       "files": "File & tanda tangan",
       "location": "Lokasi",
       "advanced": "Lanjutan",
-      "layout": "Tata letak"
+      "layout": "Tata letak",
+      "technical": "Teknis & ID"
     },
     "defaults": {
       "option": "Opsi {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "Jalan, kota, dan negara selalu ditanyakan jika alamat wajib diisi.",
       "requirePostal": "Kode pos wajib",
       "requirePostalHint": "Matikan untuk negara yang tidak memakai kode pos.",
-      "requireRegion": "Provinsi / negara bagian / wilayah wajib"
+      "requireRegion": "Provinsi / negara bagian / wilayah wajib",
+      "ipVersion": "Alamat yang diterima",
+      "ipAny": "IPv4 atau IPv6",
+      "nameTitle": "Minta gelar (mis. Dr, Ibu)",
+      "nameMiddle": "Minta nama tengah",
+      "nameHint": "Nama depan dan belakang selalu diminta.",
+      "consentText": "Teks persetujuan",
+      "consentTextHint": "Hal yang disetujui responden, mis. “Saya menyetujui ketentuan dan pemberitahuan privasi.”",
+      "consentLink": "Tautan ke ketentuan (opsional)",
+      "consentLinkLabel": "Teks tautan"
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -1279,11 +1307,45 @@
       "max_selected": "Pilih maksimal {n} untuk {field}.",
       "max_files": "{field} menerima maksimal {n} file.",
       "date_range": "Pilih kedua tanggal untuk {field}, dengan tanggal akhir sama dengan atau setelah tanggal mulai.",
-      "address": "{field} belum lengkap: {parts}."
+      "address": "{field} belum lengkap: {parts}.",
+      "ip": "Masukkan alamat IP yang valid untuk {field}.",
+      "domain": "Masukkan nama domain untuk {field}, seperti example.org.",
+      "mac": "Masukkan alamat MAC untuk {field}, seperti 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} bukan IBAN yang valid — periksa nomornya.",
+      "bic": "Masukkan kode SWIFT / BIC 8 atau 11 karakter untuk {field}.",
+      "color": "Pilih warna untuk {field}.",
+      "duration": "Masukkan durasi untuk {field} (menit 0–59).",
+      "name": "Masukkan nama depan dan belakang untuk {field}.",
+      "consent": "Konfirmasikan {field} untuk melanjutkan.",
+      "choice": "Pilih opsi dari daftar untuk {field}."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Tautan footer"
+    },
+    "name": {
+      "title": "Gelar",
+      "first": "Nama depan",
+      "middle": "Nama tengah",
+      "last": "Nama belakang"
+    },
+    "consent": {
+      "default": "Saya menyetujui ketentuan.",
+      "link": "Baca ketentuan"
+    },
+    "color": {
+      "pick": "Pilih warna"
+    },
+    "duration": {
+      "hours": "Jam",
+      "minutes": "Menit",
+      "h": "j",
+      "m": "mnt"
+    },
+    "pick": {
+      "language": "Pilih bahasa",
+      "timezone": "Pilih zona waktu",
+      "currency_code": "Pilih mata uang"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Judul dan pesan diatur di Buat → Pengaturan formulir. Halaman ini memakai desain ini.",
     "showTick": "Tampilkan ikon centang"
+  },
+  "themes": {
+    "subtitle": "Desain tersimpan yang dapat Anda gunakan di formulir mana pun",
+    "yours": "Tema Anda",
+    "save": "Simpan sebagai tema",
+    "noneYet": "Simpan desain ini untuk digunakan kembali di formulir lain.",
+    "apply": "Gunakan tema “{name}”",
+    "saveTitle": "Simpan sebagai tema",
+    "saveDesc": "Semua orang di ruang kerja ini dapat menggunakannya di formulir mereka.",
+    "updateExisting": "Perbarui “{name}”",
+    "saveNew": "Simpan sebagai tema baru",
+    "name": "Nama",
+    "namePlaceholder": "mis. Merek — terang",
+    "renameTitle": "Ganti nama tema",
+    "rename": "Ganti nama",
+    "duplicate": "Duplikat",
+    "delete": "Hapus tema",
+    "deleteTitle": "Hapus “{name}”?",
+    "deleteDesc": "Tema ini akan hilang dari daftar tema.",
+    "deleteUsed": "{count} formulir menggunakannya dan tetap mempertahankan desainnya. | {count} formulir menggunakannya dan tetap mempertahankan desainnya.",
+    "goToForms": "Buka formulir",
+    "search": "Cari tema…",
+    "sortRecent": "Baru diubah",
+    "sortName": "Nama",
+    "col": {
+      "name": "Tema",
+      "forms": "Digunakan di",
+      "createdBy": "Dibuat oleh",
+      "updated": "Diubah"
+    },
+    "formsCount": "{count} formulir | {count} formulir",
+    "emptyTitle": "Belum ada tema tersimpan",
+    "emptyDesc": "Buka formulir mana pun, rancang di Desain, lalu pilih “Simpan sebagai tema” untuk menggunakannya kembali di sini.",
+    "toast": {
+      "saved": "Tema “{name}” disimpan",
+      "updated": "Tema “{name}” diperbarui",
+      "duplicated": "“{name}” dibuat",
+      "deleted": "Tema “{name}” dihapus"
+    }
   }
 }

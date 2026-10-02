@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Jibu lisilotarajiwa kutoka kwa seva.",
     "FRM-FORM-1007": "Hili haliwezekani katika hali ya sasa ya fomu. Onyesha upya kisha ujaribu tena.",
     "FRM-FORM-1008": "Tayari kuna folda yenye jina hili.",
-    "FRM-FORM-1009": "Orodha yenye jina hili tayari ipo."
+    "FRM-FORM-1009": "Orodha yenye jina hili tayari ipo.",
+    "FRM-FORM-1010": "Mandhari yenye jina hili tayari ipo."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -573,7 +574,8 @@
       "export": "Uhamishaji",
       "folder": "Folda",
       "saved_field": "Sehemu iliyohifadhiwa",
-      "option_list": "Orodha ya chaguo"
+      "option_list": "Orodha ya chaguo",
+      "theme": "Mandhari"
     },
     "field": {
       "name": "Jina",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Sehemu imeondolewa kwenye maktaba",
       "forms_list_created": "Orodha imeundwa",
       "forms_list_updated": "Orodha imesasishwa",
-      "forms_list_deleted": "Orodha imefutwa"
+      "forms_list_deleted": "Orodha imefutwa",
+      "forms_theme_created": "Mandhari imehifadhiwa",
+      "forms_theme_updated": "Mandhari imesasishwa",
+      "forms_theme_deleted": "Mandhari imefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -883,7 +888,20 @@
       "section": "Sehemu kuu",
       "paragraph": "Aya",
       "divider": "Kitenganishi",
-      "image": "Picha"
+      "image": "Picha",
+      "full_name": "Jina kamili",
+      "percentage": "Asilimia",
+      "duration": "Muda",
+      "consent": "Idhini / masharti",
+      "language": "Lugha",
+      "timezone": "Saa za eneo",
+      "currency_code": "Sarafu",
+      "ip_address": "Anwani ya IP",
+      "domain": "Jina la kikoa",
+      "mac_address": "Anwani ya MAC",
+      "color": "Rangi",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Maandishi",
@@ -893,7 +911,8 @@
       "files": "Faili na sahihi",
       "location": "Mahali",
       "advanced": "Za kina",
-      "layout": "Mpangilio"
+      "layout": "Mpangilio",
+      "technical": "Kiufundi na vitambulisho"
     },
     "defaults": {
       "option": "Chaguo {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "Mtaa, jiji na nchi huulizwa kila mara anwani inapohitajika.",
       "requirePostal": "Msimbo wa posta unahitajika",
       "requirePostalHint": "Zima kwa nchi zisizo na misimbo ya posta.",
-      "requireRegion": "Jimbo / mkoa / eneo linahitajika"
+      "requireRegion": "Jimbo / mkoa / eneo linahitajika",
+      "ipVersion": "Anwani zinazokubaliwa",
+      "ipAny": "IPv4 au IPv6",
+      "nameTitle": "Uliza cheo (mf. Dkt, Bi)",
+      "nameMiddle": "Uliza jina la kati",
+      "nameHint": "Jina la kwanza na la mwisho huulizwa kila wakati.",
+      "consentText": "Maandishi ya idhini",
+      "consentTextHint": "Kile wanachokubali wajibuji, mf. “Ninakubali masharti na taarifa ya faragha.”",
+      "consentLink": "Kiungo cha masharti (si lazima)",
+      "consentLinkLabel": "Maandishi ya kiungo"
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -1279,11 +1307,45 @@
       "max_selected": "Chagua zisizozidi {n} kwa {field}.",
       "max_files": "{field} inakubali faili zisizozidi {n}.",
       "date_range": "Chagua tarehe zote mbili kwa {field}, na tarehe ya mwisho iwe siku ya kuanza au baadaye.",
-      "address": "Kwenye {field} kinakosekana: {parts}."
+      "address": "Kwenye {field} kinakosekana: {parts}.",
+      "ip": "Weka anwani sahihi ya IP kwa {field}.",
+      "domain": "Weka jina la kikoa kwa {field}, kama example.org.",
+      "mac": "Weka anwani ya MAC kwa {field}, kama 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} si IBAN sahihi — kagua nambari.",
+      "bic": "Weka msimbo wa SWIFT / BIC wenye herufi 8 au 11 kwa {field}.",
+      "color": "Chagua rangi kwa {field}.",
+      "duration": "Weka muda kwa {field} (dakika 0–59).",
+      "name": "Weka jina la kwanza na la mwisho kwa {field}.",
+      "consent": "Tafadhali thibitisha {field} ili kuendelea.",
+      "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}."
     },
     "page": {
       "logo": "Nembo",
       "footerLinks": "Viungo vya chini"
+    },
+    "name": {
+      "title": "Cheo",
+      "first": "Jina la kwanza",
+      "middle": "Jina la kati",
+      "last": "Jina la mwisho"
+    },
+    "consent": {
+      "default": "Ninakubali masharti.",
+      "link": "Soma masharti"
+    },
+    "color": {
+      "pick": "Chagua rangi"
+    },
+    "duration": {
+      "hours": "Saa",
+      "minutes": "Dakika",
+      "h": "s",
+      "m": "dk"
+    },
+    "pick": {
+      "language": "Chagua lugha",
+      "timezone": "Chagua saa za eneo",
+      "currency_code": "Chagua sarafu"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Kichwa na ujumbe huwekwa katika Jenga → Mipangilio ya fomu. Ukurasa unatumia muundo huu.",
     "showTick": "Onyesha aikoni ya tiki"
+  },
+  "themes": {
+    "subtitle": "Miundo iliyohifadhiwa unayoweza kutumia kwenye fomu yoyote",
+    "yours": "Mandhari zako",
+    "save": "Hifadhi kama mandhari",
+    "noneYet": "Hifadhi muundo huu ili uutumie tena kwenye fomu nyingine.",
+    "apply": "Tumia mandhari “{name}”",
+    "saveTitle": "Hifadhi kama mandhari",
+    "saveDesc": "Kila mtu katika eneo hili la kazi anaweza kuitumia kwenye fomu zao.",
+    "updateExisting": "Sasisha “{name}”",
+    "saveNew": "Hifadhi kama mandhari mpya",
+    "name": "Jina",
+    "namePlaceholder": "mf. Chapa — angavu",
+    "renameTitle": "Badilisha jina la mandhari",
+    "rename": "Badilisha jina",
+    "duplicate": "Nakili",
+    "delete": "Futa mandhari",
+    "deleteTitle": "Futa “{name}”?",
+    "deleteDesc": "Itaondolewa kwenye orodha ya mandhari.",
+    "deleteUsed": "Fomu {count} inaitumia na itabaki na muundo wake. | Fomu {count} zinaitumia na zitabaki na muundo wake.",
+    "goToForms": "Nenda kwenye fomu",
+    "search": "Tafuta mandhari…",
+    "sortRecent": "Zilizobadilishwa hivi karibuni",
+    "sortName": "Jina",
+    "col": {
+      "name": "Mandhari",
+      "forms": "Inatumika katika",
+      "createdBy": "Imeundwa na",
+      "updated": "Imebadilishwa"
+    },
+    "formsCount": "Fomu {count} | Fomu {count}",
+    "emptyTitle": "Bado hakuna mandhari zilizohifadhiwa",
+    "emptyDesc": "Fungua fomu yoyote, iunde katika Muundo, kisha chagua “Hifadhi kama mandhari” ili uitumie tena hapa.",
+    "toast": {
+      "saved": "Mandhari “{name}” imehifadhiwa",
+      "updated": "Mandhari “{name}” imesasishwa",
+      "duplicated": "“{name}” imeundwa",
+      "deleted": "Mandhari “{name}” imefutwa"
+    }
   }
 }

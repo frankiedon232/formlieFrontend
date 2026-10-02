@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Risposta imprevista dal server.",
     "FRM-FORM-1007": "Non è possibile nello stato attuale del modulo. Aggiorna e riprova.",
     "FRM-FORM-1008": "Esiste già una cartella con questo nome.",
-    "FRM-FORM-1009": "Esiste già un elenco con questo nome."
+    "FRM-FORM-1009": "Esiste già un elenco con questo nome.",
+    "FRM-FORM-1010": "Esiste già un tema con questo nome."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -573,7 +574,8 @@
       "export": "Esportazione",
       "folder": "Cartella",
       "saved_field": "Campo salvato",
-      "option_list": "Elenco di opzioni"
+      "option_list": "Elenco di opzioni",
+      "theme": "Tema"
     },
     "field": {
       "name": "Nome",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Campo rimosso dalla libreria",
       "forms_list_created": "Elenco creato",
       "forms_list_updated": "Elenco aggiornato",
-      "forms_list_deleted": "Elenco eliminato"
+      "forms_list_deleted": "Elenco eliminato",
+      "forms_theme_created": "Tema salvato",
+      "forms_theme_updated": "Tema aggiornato",
+      "forms_theme_deleted": "Tema eliminato"
     },
     "detail": {
       "who": "Chi",
@@ -883,7 +888,20 @@
       "section": "Sezione",
       "paragraph": "Paragrafo",
       "divider": "Separatore",
-      "image": "Immagine"
+      "image": "Immagine",
+      "full_name": "Nome completo",
+      "percentage": "Percentuale",
+      "duration": "Durata",
+      "consent": "Consenso / termini",
+      "language": "Lingua",
+      "timezone": "Fuso orario",
+      "currency_code": "Valuta",
+      "ip_address": "Indirizzo IP",
+      "domain": "Nome di dominio",
+      "mac_address": "Indirizzo MAC",
+      "color": "Colore",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Testo",
@@ -893,7 +911,8 @@
       "files": "File e firma",
       "location": "Luogo",
       "advanced": "Avanzate",
-      "layout": "Layout"
+      "layout": "Layout",
+      "technical": "Tecnici e ID"
     },
     "defaults": {
       "option": "Opzione {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "Via, città e paese vengono sempre richiesti quando l’indirizzo è obbligatorio.",
       "requirePostal": "CAP obbligatorio",
       "requirePostalHint": "Disattiva per i paesi senza codice postale.",
-      "requireRegion": "Stato / provincia / regione obbligatorio"
+      "requireRegion": "Stato / provincia / regione obbligatorio",
+      "ipVersion": "Indirizzi accettati",
+      "ipAny": "IPv4 o IPv6",
+      "nameTitle": "Chiedi il titolo (es. Dott., Sig.ra)",
+      "nameMiddle": "Chiedi il secondo nome",
+      "nameHint": "Nome e cognome vengono sempre richiesti.",
+      "consentText": "Testo del consenso",
+      "consentTextHint": "Ciò che i rispondenti accettano, es. «Accetto i termini e l’informativa sulla privacy.»",
+      "consentLink": "Link ai termini (facoltativo)",
+      "consentLinkLabel": "Testo del link"
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -1279,11 +1307,45 @@
       "max_selected": "Scegli al massimo {n} opzioni per {field}.",
       "max_files": "{field} accetta al massimo {n} file.",
       "date_range": "Scegli entrambe le date per {field}, con la data di fine uguale o successiva a quella di inizio.",
-      "address": "In {field} manca: {parts}."
+      "address": "In {field} manca: {parts}.",
+      "ip": "Inserisca un indirizzo IP valido per {field}.",
+      "domain": "Inserisca un nome di dominio per {field}, come example.org.",
+      "mac": "Inserisca un indirizzo MAC per {field}, come 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} non è un IBAN valido — controlli il numero.",
+      "bic": "Inserisca un codice SWIFT / BIC di 8 o 11 caratteri per {field}.",
+      "color": "Scelga un colore per {field}.",
+      "duration": "Inserisca una durata per {field} (minuti 0–59).",
+      "name": "Inserisca nome e cognome per {field}.",
+      "consent": "Confermi {field} per continuare.",
+      "choice": "Scelga un’opzione dall’elenco per {field}."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Link del piè di pagina"
+    },
+    "name": {
+      "title": "Titolo",
+      "first": "Nome",
+      "middle": "Secondo nome",
+      "last": "Cognome"
+    },
+    "consent": {
+      "default": "Accetto i termini.",
+      "link": "Leggi i termini"
+    },
+    "color": {
+      "pick": "Scelga un colore"
+    },
+    "duration": {
+      "hours": "Ore",
+      "minutes": "Minuti",
+      "h": "h",
+      "m": "min"
+    },
+    "pick": {
+      "language": "Scelga una lingua",
+      "timezone": "Scelga un fuso orario",
+      "currency_code": "Scelga una valuta"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Titolo e messaggio si impostano in Crea → Impostazioni modulo. La pagina usa questo design.",
     "showTick": "Mostra l’icona di spunta"
+  },
+  "themes": {
+    "subtitle": "Design salvati da usare in qualsiasi modulo",
+    "yours": "I suoi temi",
+    "save": "Salva come tema",
+    "noneYet": "Salvi questo design per riutilizzarlo in altri moduli.",
+    "apply": "Usa il tema «{name}»",
+    "saveTitle": "Salva come tema",
+    "saveDesc": "Tutti in questo spazio di lavoro possono usarlo nei propri moduli.",
+    "updateExisting": "Aggiorna «{name}»",
+    "saveNew": "Salva come nuovo tema",
+    "name": "Nome",
+    "namePlaceholder": "es. Brand — chiaro",
+    "renameTitle": "Rinomina tema",
+    "rename": "Rinomina",
+    "duplicate": "Duplica",
+    "delete": "Elimina tema",
+    "deleteTitle": "Eliminare «{name}»?",
+    "deleteDesc": "Scompare dall’elenco dei temi.",
+    "deleteUsed": "{count} modulo lo usa e mantiene il proprio design. | {count} moduli lo usano e mantengono il proprio design.",
+    "goToForms": "Vai ai moduli",
+    "search": "Cerca temi…",
+    "sortRecent": "Modificati di recente",
+    "sortName": "Nome",
+    "col": {
+      "name": "Tema",
+      "forms": "Usato in",
+      "createdBy": "Creato da",
+      "updated": "Modificato"
+    },
+    "formsCount": "{count} modulo | {count} moduli",
+    "emptyTitle": "Ancora nessun tema salvato",
+    "emptyDesc": "Apra un modulo, lo progetti in Design e scelga «Salva come tema» per riutilizzarlo qui.",
+    "toast": {
+      "saved": "Tema «{name}» salvato",
+      "updated": "Tema «{name}» aggiornato",
+      "duplicated": "«{name}» creato",
+      "deleted": "Tema «{name}» eliminato"
+    }
   }
 }

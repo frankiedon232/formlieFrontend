@@ -174,8 +174,8 @@ export function useLogicRules() {
   const calculated = computed(() => fields.value.filter(f => f.type === 'calculated'))
   /** Fields a formula can use: numbers, choices (via option numbers), toggles, other calculations. */
   const FORMULA_TYPES = [
-    'number', 'currency', 'rating', 'scale', 'slider', 'calculated',
-    'dropdown', 'radio', 'checkbox', 'multi_select', 'toggle',
+    'number', 'currency', 'rating', 'scale', 'slider', 'calculated', 'percentage',
+    'dropdown', 'radio', 'checkbox', 'multi_select', 'toggle', 'consent',
   ]
   const formulaSources = computed(() => fields.value.filter(f => FORMULA_TYPES.includes(f.type)))
   function formulaProblem(field: FormField): string | null {

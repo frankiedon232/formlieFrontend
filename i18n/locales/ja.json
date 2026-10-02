@@ -318,7 +318,8 @@
     "FRM-NET-1002": "サーバーから予期しない応答がありました。",
     "FRM-FORM-1007": "フォームの現在の状態ではこの操作はできません。更新してもう一度お試しください。",
     "FRM-FORM-1008": "同じ名前のフォルダーがすでにあります。",
-    "FRM-FORM-1009": "この名前のリストはすでに存在します。"
+    "FRM-FORM-1009": "この名前のリストはすでに存在します。",
+    "FRM-FORM-1010": "この名前のテーマはすでに存在します。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -573,7 +574,8 @@
       "export": "エクスポート",
       "folder": "フォルダー",
       "saved_field": "保存済みの項目",
-      "option_list": "選択肢リスト"
+      "option_list": "選択肢リスト",
+      "theme": "テーマ"
     },
     "field": {
       "name": "名前",
@@ -643,7 +645,10 @@
       "forms_field_removed": "項目をライブラリから削除",
       "forms_list_created": "リストを作成",
       "forms_list_updated": "リストを更新",
-      "forms_list_deleted": "リストを削除"
+      "forms_list_deleted": "リストを削除",
+      "forms_theme_created": "テーマを保存しました",
+      "forms_theme_updated": "テーマを更新しました",
+      "forms_theme_deleted": "テーマを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -883,7 +888,20 @@
       "section": "セクション",
       "paragraph": "段落",
       "divider": "区切り線",
-      "image": "画像"
+      "image": "画像",
+      "full_name": "氏名",
+      "percentage": "パーセンテージ",
+      "duration": "所要時間",
+      "consent": "同意 / 利用規約",
+      "language": "言語",
+      "timezone": "タイムゾーン",
+      "currency_code": "通貨",
+      "ip_address": "IP アドレス",
+      "domain": "ドメイン名",
+      "mac_address": "MAC アドレス",
+      "color": "色",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "テキスト",
@@ -893,7 +911,8 @@
       "files": "ファイルと署名",
       "location": "所在地",
       "advanced": "詳細",
-      "layout": "レイアウト"
+      "layout": "レイアウト",
+      "technical": "技術情報・ID"
     },
     "defaults": {
       "option": "選択肢 {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "住所が必須の場合、番地・通り、市区町村、国は常に入力が求められます。",
       "requirePostal": "郵便番号を必須にする",
       "requirePostalHint": "郵便番号のない国ではオフにしてください。",
-      "requireRegion": "都道府県・州・地域を必須にする"
+      "requireRegion": "都道府県・州・地域を必須にする",
+      "ipVersion": "受け付けるアドレス",
+      "ipAny": "IPv4 または IPv6",
+      "nameTitle": "敬称を尋ねる（例: Dr、Ms）",
+      "nameMiddle": "ミドルネームを尋ねる",
+      "nameHint": "名と姓は常に入力を求めます。",
+      "consentText": "同意文",
+      "consentTextHint": "回答者が同意する内容。例:「利用規約とプライバシー通知に同意します。」",
+      "consentLink": "利用規約へのリンク（任意）",
+      "consentLinkLabel": "リンクのテキスト"
     },
     "shortcuts": {
       "title": "ショートカット",
@@ -1279,11 +1307,45 @@
       "max_selected": "{field}で選択できるのは{n}個までです。",
       "max_files": "{field}にアップロードできるファイルは{n}個までです。",
       "date_range": "{field}で開始日と終了日の両方を選択してください。終了日は開始日以降にしてください。",
-      "address": "{field}に未入力の項目があります：{parts}。"
+      "address": "{field}に未入力の項目があります：{parts}。",
+      "ip": "{field} に有効な IP アドレスを入力してください。",
+      "domain": "{field} にドメイン名を入力してください（例: example.org）。",
+      "mac": "{field} に MAC アドレスを入力してください（例: 00:1A:2B:3C:4D:5E）。",
+      "iban": "{field} は有効な IBAN ではありません。番号を確認してください。",
+      "bic": "{field} に 8 文字または 11 文字の SWIFT / BIC コードを入力してください。",
+      "color": "{field} の色を選択してください。",
+      "duration": "{field} に所要時間を入力してください（分は 0–59）。",
+      "name": "{field} に名と姓の両方を入力してください。",
+      "consent": "続行するには {field} を確認してください。",
+      "choice": "{field} は一覧から選択してください。"
     },
     "page": {
       "logo": "ロゴ",
       "footerLinks": "フッターのリンク"
+    },
+    "name": {
+      "title": "敬称",
+      "first": "名",
+      "middle": "ミドルネーム",
+      "last": "姓"
+    },
+    "consent": {
+      "default": "利用規約に同意します。",
+      "link": "利用規約を読む"
+    },
+    "color": {
+      "pick": "色を選択"
+    },
+    "duration": {
+      "hours": "時間",
+      "minutes": "分",
+      "h": "時間",
+      "m": "分"
+    },
+    "pick": {
+      "language": "言語を選択",
+      "timezone": "タイムゾーンを選択",
+      "currency_code": "通貨を選択"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "タイトルとメッセージは 作成 → フォームの設定 で設定します。ページにはこのデザインが使われます。",
     "showTick": "チェックアイコンを表示"
+  },
+  "themes": {
+    "subtitle": "どのフォームでも使える保存済みデザイン",
+    "yours": "あなたのテーマ",
+    "save": "テーマとして保存",
+    "noneYet": "このデザインを保存すると、ほかのフォームでも再利用できます。",
+    "apply": "テーマ「{name}」を使用",
+    "saveTitle": "テーマとして保存",
+    "saveDesc": "このワークスペースの全員が自分のフォームで使用できます。",
+    "updateExisting": "「{name}」を更新",
+    "saveNew": "新しいテーマとして保存",
+    "name": "名前",
+    "namePlaceholder": "例: ブランド — ライト",
+    "renameTitle": "テーマの名前を変更",
+    "rename": "名前を変更",
+    "duplicate": "複製",
+    "delete": "テーマを削除",
+    "deleteTitle": "「{name}」を削除しますか？",
+    "deleteDesc": "テーマの一覧から削除されます。",
+    "deleteUsed": "{count} 件のフォームが使用しており、そのデザインは保持されます。 | {count} 件のフォームが使用しており、それらのデザインは保持されます。",
+    "goToForms": "フォームへ移動",
+    "search": "テーマを検索…",
+    "sortRecent": "最近の変更順",
+    "sortName": "名前",
+    "col": {
+      "name": "テーマ",
+      "forms": "使用先",
+      "createdBy": "作成者",
+      "updated": "変更日"
+    },
+    "formsCount": "{count} 件のフォーム | {count} 件のフォーム",
+    "emptyTitle": "保存済みのテーマはまだありません",
+    "emptyDesc": "任意のフォームを開いて「デザイン」で整え、「テーマとして保存」を選ぶとここで再利用できます。",
+    "toast": {
+      "saved": "テーマ「{name}」を保存しました",
+      "updated": "テーマ「{name}」を更新しました",
+      "duplicated": "「{name}」を作成しました",
+      "deleted": "テーマ「{name}」を削除しました"
+    }
   }
 }

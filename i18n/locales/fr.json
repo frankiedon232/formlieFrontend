@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Réponse inattendue du serveur.",
     "FRM-FORM-1007": "Ce n’est pas possible dans l’état actuel du formulaire. Actualisez et réessayez.",
     "FRM-FORM-1008": "Un dossier porte déjà ce nom.",
-    "FRM-FORM-1009": "Une liste portant ce nom existe déjà."
+    "FRM-FORM-1009": "Une liste portant ce nom existe déjà.",
+    "FRM-FORM-1010": "Un thème portant ce nom existe déjà."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -573,7 +574,8 @@
       "export": "Export",
       "folder": "Dossier",
       "saved_field": "Champ enregistré",
-      "option_list": "Liste d’options"
+      "option_list": "Liste d’options",
+      "theme": "Thème"
     },
     "field": {
       "name": "Nom",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Champ retiré de la bibliothèque",
       "forms_list_created": "Liste créée",
       "forms_list_updated": "Liste mise à jour",
-      "forms_list_deleted": "Liste supprimée"
+      "forms_list_deleted": "Liste supprimée",
+      "forms_theme_created": "Thème enregistré",
+      "forms_theme_updated": "Thème mis à jour",
+      "forms_theme_deleted": "Thème supprimé"
     },
     "detail": {
       "who": "Qui",
@@ -883,7 +888,20 @@
       "section": "Section",
       "paragraph": "Paragraphe",
       "divider": "Séparateur",
-      "image": "Image"
+      "image": "Image",
+      "full_name": "Nom complet",
+      "percentage": "Pourcentage",
+      "duration": "Durée",
+      "consent": "Consentement / conditions",
+      "language": "Langue",
+      "timezone": "Fuseau horaire",
+      "currency_code": "Devise",
+      "ip_address": "Adresse IP",
+      "domain": "Nom de domaine",
+      "mac_address": "Adresse MAC",
+      "color": "Couleur",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Texte",
@@ -893,7 +911,8 @@
       "files": "Fichiers et signature",
       "location": "Lieu",
       "advanced": "Avancé",
-      "layout": "Mise en page"
+      "layout": "Mise en page",
+      "technical": "Technique et identifiants"
     },
     "defaults": {
       "option": "Option {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "La rue, la ville et le pays sont toujours demandés lorsque l’adresse est obligatoire.",
       "requirePostal": "Code postal obligatoire",
       "requirePostalHint": "Désactivez cette option pour les pays sans code postal.",
-      "requireRegion": "État / province / région obligatoire"
+      "requireRegion": "État / province / région obligatoire",
+      "ipVersion": "Adresses acceptées",
+      "ipAny": "IPv4 ou IPv6",
+      "nameTitle": "Demander la civilité (p. ex. Dr, Mme)",
+      "nameMiddle": "Demander le deuxième prénom",
+      "nameHint": "Le prénom et le nom sont toujours demandés.",
+      "consentText": "Texte de consentement",
+      "consentTextHint": "Ce que les répondants acceptent, p. ex. « J’accepte les conditions et la politique de confidentialité. »",
+      "consentLink": "Lien vers les conditions (facultatif)",
+      "consentLinkLabel": "Texte du lien"
     },
     "shortcuts": {
       "title": "Raccourcis",
@@ -1279,11 +1307,45 @@
       "max_selected": "Choisissez au plus {n} réponses pour {field}.",
       "max_files": "{field} accepte au plus {n} fichiers.",
       "date_range": "Choisissez les deux dates pour {field}, la date de fin étant égale ou postérieure à la date de début.",
-      "address": "Il manque dans {field} : {parts}."
+      "address": "Il manque dans {field} : {parts}.",
+      "ip": "Saisissez une adresse IP valide pour {field}.",
+      "domain": "Saisissez un nom de domaine pour {field}, comme example.org.",
+      "mac": "Saisissez une adresse MAC pour {field}, comme 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} n’est pas un IBAN valide — vérifiez le numéro.",
+      "bic": "Saisissez un code SWIFT / BIC de 8 ou 11 caractères pour {field}.",
+      "color": "Choisissez une couleur pour {field}.",
+      "duration": "Saisissez une durée pour {field} (minutes 0–59).",
+      "name": "Saisissez le prénom et le nom pour {field}.",
+      "consent": "Veuillez confirmer {field} pour continuer.",
+      "choice": "Choisissez une option dans la liste pour {field}."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Liens du pied de page"
+    },
+    "name": {
+      "title": "Civilité",
+      "first": "Prénom",
+      "middle": "Deuxième prénom",
+      "last": "Nom"
+    },
+    "consent": {
+      "default": "J’accepte les conditions.",
+      "link": "Lire les conditions"
+    },
+    "color": {
+      "pick": "Choisir une couleur"
+    },
+    "duration": {
+      "hours": "Heures",
+      "minutes": "Minutes",
+      "h": "h",
+      "m": "min"
+    },
+    "pick": {
+      "language": "Choisir une langue",
+      "timezone": "Choisir un fuseau horaire",
+      "currency_code": "Choisir une devise"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Le titre et le message se règlent dans Créer → Réglages du formulaire. La page utilise ce design.",
     "showTick": "Afficher l’icône de coche"
+  },
+  "themes": {
+    "subtitle": "Des designs enregistrés à utiliser sur n’importe quel formulaire",
+    "yours": "Vos thèmes",
+    "save": "Enregistrer comme thème",
+    "noneYet": "Enregistrez ce design pour le réutiliser sur d’autres formulaires.",
+    "apply": "Utiliser le thème « {name} »",
+    "saveTitle": "Enregistrer comme thème",
+    "saveDesc": "Tous les membres de cet espace de travail peuvent l’utiliser sur leurs formulaires.",
+    "updateExisting": "Mettre à jour « {name} »",
+    "saveNew": "Enregistrer comme nouveau thème",
+    "name": "Nom",
+    "namePlaceholder": "p. ex. Marque — clair",
+    "renameTitle": "Renommer le thème",
+    "rename": "Renommer",
+    "duplicate": "Dupliquer",
+    "delete": "Supprimer le thème",
+    "deleteTitle": "Supprimer « {name} » ?",
+    "deleteDesc": "Il disparaît de la liste des thèmes.",
+    "deleteUsed": "{count} formulaire l’utilise et conserve son design. | {count} formulaires l’utilisent et conservent leur design.",
+    "goToForms": "Aller aux formulaires",
+    "search": "Rechercher des thèmes…",
+    "sortRecent": "Modifiés récemment",
+    "sortName": "Nom",
+    "col": {
+      "name": "Thème",
+      "forms": "Utilisé dans",
+      "createdBy": "Créé par",
+      "updated": "Modifié"
+    },
+    "formsCount": "{count} formulaire | {count} formulaires",
+    "emptyTitle": "Aucun thème enregistré pour l’instant",
+    "emptyDesc": "Ouvrez un formulaire, concevez-le dans Design, puis choisissez « Enregistrer comme thème » pour le réutiliser ici.",
+    "toast": {
+      "saved": "Thème « {name} » enregistré",
+      "updated": "Thème « {name} » mis à jour",
+      "duplicated": "« {name} » créé",
+      "deleted": "Thème « {name} » supprimé"
+    }
   }
 }

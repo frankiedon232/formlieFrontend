@@ -40,6 +40,19 @@ const CONTROLS: Record<string, string> = {
   currency: 'Text',
   calculated: 'Text',
   hidden: 'Text',
+  percentage: 'Text',
+  ip_address: 'Text',
+  domain: 'Text',
+  mac_address: 'Text',
+  iban: 'Text',
+  bic: 'Text',
+  full_name: 'Extra',
+  consent: 'Extra',
+  color: 'Extra',
+  duration: 'Extra',
+  language: 'Extra',
+  timezone: 'Extra',
+  currency_code: 'Extra',
   date: 'DateTime',
   time: 'DateTime',
   datetime: 'DateTime',
@@ -124,6 +137,7 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value &&
     <div class="flex min-w-0 flex-col gap-1" :class="inline ? 'order-1 flex-none' : 'flex-1'">
     <FormsRendererText v-if="control === 'Text'" :id="id" v-model="value" :field="field" :mode="mode" />
     <FormsRendererRichText v-else-if="control === 'RichText'" :id="id" v-model="value" :field="field" :mode="mode" />
+    <FormsRendererExtra v-else-if="control === 'Extra'" :id="id" v-model="value" :field="field" :mode="mode" />
     <FormsRendererDateTime
       v-else-if="control === 'DateTime'"
       :id="id"

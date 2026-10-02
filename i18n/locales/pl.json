@@ -318,7 +318,8 @@
     "FRM-NET-1002": "Nieoczekiwana odpowiedź serwera.",
     "FRM-FORM-1007": "Nie jest to możliwe w obecnym stanie formularza. Odśwież i spróbuj ponownie.",
     "FRM-FORM-1008": "Folder o tej nazwie już istnieje.",
-    "FRM-FORM-1009": "Lista o tej nazwie już istnieje."
+    "FRM-FORM-1009": "Lista o tej nazwie już istnieje.",
+    "FRM-FORM-1010": "Motyw o tej nazwie już istnieje."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -573,7 +574,8 @@
       "export": "Eksport",
       "folder": "Folder",
       "saved_field": "Zapisane pole",
-      "option_list": "Lista opcji"
+      "option_list": "Lista opcji",
+      "theme": "Motyw"
     },
     "field": {
       "name": "Nazwa",
@@ -643,7 +645,10 @@
       "forms_field_removed": "Usunięto pole z biblioteki",
       "forms_list_created": "Utworzono listę",
       "forms_list_updated": "Zaktualizowano listę",
-      "forms_list_deleted": "Usunięto listę"
+      "forms_list_deleted": "Usunięto listę",
+      "forms_theme_created": "Zapisano motyw",
+      "forms_theme_updated": "Zaktualizowano motyw",
+      "forms_theme_deleted": "Usunięto motyw"
     },
     "detail": {
       "who": "Kto",
@@ -883,7 +888,20 @@
       "section": "Sekcja",
       "paragraph": "Akapit",
       "divider": "Separator",
-      "image": "Obraz"
+      "image": "Obraz",
+      "full_name": "Imię i nazwisko",
+      "percentage": "Procent",
+      "duration": "Czas trwania",
+      "consent": "Zgoda / regulamin",
+      "language": "Język",
+      "timezone": "Strefa czasowa",
+      "currency_code": "Waluta",
+      "ip_address": "Adres IP",
+      "domain": "Nazwa domeny",
+      "mac_address": "Adres MAC",
+      "color": "Kolor",
+      "iban": "IBAN",
+      "bic": "SWIFT / BIC"
     },
     "category": {
       "text": "Tekst",
@@ -893,7 +911,8 @@
       "files": "Pliki i podpis",
       "location": "Lokalizacja",
       "advanced": "Zaawansowane",
-      "layout": "Układ"
+      "layout": "Układ",
+      "technical": "Techniczne i identyfikatory"
     },
     "defaults": {
       "option": "Opcja {n}",
@@ -1081,7 +1100,16 @@
       "addressParts": "Ulica, miasto i kraj są zawsze wymagane, gdy adres jest obowiązkowy.",
       "requirePostal": "Kod pocztowy wymagany",
       "requirePostalHint": "Wyłącz dla krajów bez kodów pocztowych.",
-      "requireRegion": "Stan / prowincja / region wymagane"
+      "requireRegion": "Stan / prowincja / region wymagane",
+      "ipVersion": "Akceptowane adresy",
+      "ipAny": "IPv4 lub IPv6",
+      "nameTitle": "Pytaj o tytuł (np. dr, pani)",
+      "nameMiddle": "Pytaj o drugie imię",
+      "nameHint": "Imię i nazwisko są zawsze wymagane.",
+      "consentText": "Treść zgody",
+      "consentTextHint": "Na co zgadzają się respondenci, np. „Akceptuję regulamin i informację o prywatności.”",
+      "consentLink": "Link do regulaminu (opcjonalnie)",
+      "consentLinkLabel": "Tekst linku"
     },
     "shortcuts": {
       "title": "Skróty",
@@ -1279,11 +1307,45 @@
       "max_selected": "Wybierz najwyżej {n} w polu „{field}”.",
       "max_files": "Pole „{field}” przyjmuje najwyżej {n} plików.",
       "date_range": "Wybierz obie daty w polu „{field}”; data końcowa nie może być wcześniejsza niż początkowa.",
-      "address": "W polu „{field}” brakuje: {parts}."
+      "address": "W polu „{field}” brakuje: {parts}.",
+      "ip": "Wpisz prawidłowy adres IP w polu {field}.",
+      "domain": "Wpisz nazwę domeny w polu {field}, np. example.org.",
+      "mac": "Wpisz adres MAC w polu {field}, np. 00:1A:2B:3C:4D:5E.",
+      "iban": "{field} nie jest prawidłowym numerem IBAN — sprawdź numer.",
+      "bic": "Wpisz 8- lub 11-znakowy kod SWIFT / BIC w polu {field}.",
+      "color": "Wybierz kolor w polu {field}.",
+      "duration": "Wpisz czas trwania w polu {field} (minuty 0–59).",
+      "name": "Wpisz imię i nazwisko w polu {field}.",
+      "consent": "Potwierdź {field}, aby kontynuować.",
+      "choice": "Wybierz opcję z listy w polu {field}."
     },
     "page": {
       "logo": "Logo",
       "footerLinks": "Linki w stopce"
+    },
+    "name": {
+      "title": "Tytuł",
+      "first": "Imię",
+      "middle": "Drugie imię",
+      "last": "Nazwisko"
+    },
+    "consent": {
+      "default": "Akceptuję regulamin.",
+      "link": "Przeczytaj regulamin"
+    },
+    "color": {
+      "pick": "Wybierz kolor"
+    },
+    "duration": {
+      "hours": "Godziny",
+      "minutes": "Minuty",
+      "h": "godz.",
+      "m": "min"
+    },
+    "pick": {
+      "language": "Wybierz język",
+      "timezone": "Wybierz strefę czasową",
+      "currency_code": "Wybierz walutę"
     }
   },
   "logic": {
@@ -1723,5 +1785,44 @@
     },
     "thankYouHint": "Tytuł i wiadomość ustawisz w Tworzenie → Ustawienia formularza. Strona używa tego wyglądu.",
     "showTick": "Pokaż ikonę znacznika"
+  },
+  "themes": {
+    "subtitle": "Zapisane projekty, których można użyć w dowolnym formularzu",
+    "yours": "Twoje motywy",
+    "save": "Zapisz jako motyw",
+    "noneYet": "Zapisz ten projekt, aby użyć go ponownie w innych formularzach.",
+    "apply": "Użyj motywu „{name}”",
+    "saveTitle": "Zapisz jako motyw",
+    "saveDesc": "Każdy w tym obszarze roboczym może go używać w swoich formularzach.",
+    "updateExisting": "Zaktualizuj „{name}”",
+    "saveNew": "Zapisz jako nowy motyw",
+    "name": "Nazwa",
+    "namePlaceholder": "np. Marka — jasny",
+    "renameTitle": "Zmień nazwę motywu",
+    "rename": "Zmień nazwę",
+    "duplicate": "Duplikuj",
+    "delete": "Usuń motyw",
+    "deleteTitle": "Usunąć „{name}”?",
+    "deleteDesc": "Zniknie z listy motywów.",
+    "deleteUsed": "{count} formularz go używa i zachowa swój wygląd. | Formularze używające go ({count}) zachowają swój wygląd.",
+    "goToForms": "Przejdź do formularzy",
+    "search": "Szukaj motywów…",
+    "sortRecent": "Ostatnio zmienione",
+    "sortName": "Nazwa",
+    "col": {
+      "name": "Motyw",
+      "forms": "Używany w",
+      "createdBy": "Utworzył(a)",
+      "updated": "Zmieniono"
+    },
+    "formsCount": "Formularze: {count} | Formularze: {count}",
+    "emptyTitle": "Brak zapisanych motywów",
+    "emptyDesc": "Otwórz dowolny formularz, zaprojektuj go w zakładce Projekt i wybierz „Zapisz jako motyw”, aby użyć go tutaj ponownie.",
+    "toast": {
+      "saved": "Zapisano motyw „{name}”",
+      "updated": "Zaktualizowano motyw „{name}”",
+      "duplicated": "Utworzono „{name}”",
+      "deleted": "Usunięto motyw „{name}”"
+    }
   }
 }

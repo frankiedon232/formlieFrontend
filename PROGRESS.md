@@ -18,7 +18,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F5    | Onboarding wizard                                 | ✅     | 100% |
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
-| F8    | Designer (themes)                                 | 🟡     | ~75% |
+| F8    | Designer (themes)                                 | 🟡     | ~90% |
 | F9    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F10   | Responses                                         | ⬜     | 0%   |
 | F11   | Templates gallery                                 | ⬜     | 0%   |
@@ -357,7 +357,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Footer (text, up to 6 https links, logo, alignment) (owner request 2026-10-02)
 - ✅ Default theme: a form without a design uses the workspace default (brand colour + logo from onboarding)
 - ✅ Applied as CSS variables on the renderer only (Nuxt UI controls follow; portal untouched); theme stored on the form schema (versioned with publishing); builder Preview and Versions preview show the themed page
-- ⬜ Save as theme, apply theme; themes library (Resources → Themes, Settings) — milestone 2
+- ✅ Save as theme (new or update), apply a saved theme in the designer; themes library page (Resources → Themes): Table / Grid, search, rename, duplicate, delete with usage count; audited (`forms.theme_*`) — milestone 2
+- ✅ New global and IT field types (owner request): full name (title / middle optional), percentage, duration, consent with terms link, language, time zone, currency (all from `Intl`, in the respondent's language), IP address (any / IPv4 / IPv6), domain, MAC address, colour, IBAN (checksum), SWIFT / BIC — new palette group "Technical & IDs", validated by the shared validator
 - ⬜ More fonts (self-hosted web fonts — needs a font package, ask first)
 - ⬜ Custom CSS (paid plans, sanitised) — with billing
 
@@ -477,7 +478,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Themes & form defaults
 
-- ⬜ Themes library (created in the designer, F8): list, rename, set default, delete
+- 🟡 Themes library (created in the designer, F8): list, rename, delete done in F8; set workspace default ⬜
 - ⬜ Embed defaults (allowed domains, size), default form settings (progress bar, save and resume)
 
 ### Billing & subscription
@@ -631,7 +632,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Rich text: headings 1–6, paragraph, text alignment, code block                                                                                                                                                                                                                                                                                                    | F7          | ✅     |
 | 2026-10-02 | Layout blocks: nicer section, inline paragraph editing, image upload + resize, divider options                                                                                                                                                                                                                                                                    | F7          | ✅     |
 | 2026-10-02 | Validate email and all address parts (not only the first line)                                                                                                                                                                                                                                                                                                    | F7          | ✅     |
-| 2026-10-02 | IT / technical field types later (IP address and others — owner will list them)                                                                                                                                                                                                                                                                                   | F7 (later)  | ⬜     |
+| 2026-10-02 | IT / technical field types: IP address, domain, MAC, IBAN, SWIFT / BIC, colour + global types (full name, consent, duration, percentage, language, time zone, currency) — first set built; owner may add more                                                                                                                                                     | F7 (later)  | ⬜     |
 
 ---
 
@@ -682,3 +683,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F7    | Image "Fill": spans the whole field; optional height (small / medium / large) crops it like a banner.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 2026-10-02 | F7    | Answer validation: email, web address, phone, number range, length, pattern, choice counts, files, date range and every required address part (postal code / region switchable); errors name the field, update live, missing address parts highlighted. One shared validator for renderer and API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 2026-10-02 | F8    | Milestone 1: Design view with live preview (devices, thank-you page), starting points, layout / background / container / typography / colours / inputs / buttons / header + cover / footer / thank-you; themes stored on the form, applied as CSS variables on the form page only, workspace default from brand colour + logo; builder Preview themed.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 2026-10-02 | F8    | Milestone 2: save / update / apply themes from the designer, themes library page (rename, duplicate, delete with usage count), audit + `FRM-FORM-1010`. 13 new field types (global + technical) with validation (IP v4/v6, domain, MAC, IBAN mod-97, BIC, colour, duration, name parts, consent, catalogue picks); all 20 languages.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
