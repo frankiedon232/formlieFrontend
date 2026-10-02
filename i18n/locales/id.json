@@ -227,18 +227,22 @@
     "label": "Kaki halaman"
   },
   "authLayout": {
-    "headline": "Formulir tanpa repot.",
-    "subline": "Buat, bagikan, dan analisis formulir dalam hitungan menit — aman sejak awal, dalam setiap bahasa.",
+    "headline": "Formulir, data, dan akses — dalam kendali Anda.",
+    "subline": "Platform yang aman dan fleksibel untuk membuat formulir apa pun, mengumpulkan dan mengelola data, menghubungkan sistem Anda, serta mengatur siapa melihat apa — untuk organisasi segala ukuran, di mana pun di dunia.",
     "badgeEncrypted": "Terenkripsi ujung ke ujung",
-    "badgeOtp": "Kode di setiap masuk",
-    "badgeLanguages": "20 bahasa",
-    "previewForm": "Masukan pelanggan",
-    "previewName": "Nama lengkap",
-    "previewRating": "Bagaimana kunjungan Anda?",
+    "badgeCompliance": "Kontrol privasi & kepatuhan",
+    "badgeDatabase": "Hubungkan basis data Anda sendiri",
+    "badgeAccess": "Akses berbasis peran",
+    "badgeLanguages": "20 bahasa, semua wilayah",
+    "previewForm": "Pendaftaran pemasok",
+    "previewCompany": "Nama perusahaan",
+    "previewConsent": "Persetujuan pemrosesan data",
+    "previewConsentText": "Saya menyetujui pemberitahuan privasi",
     "previewSubmit": "Kirim",
-    "previewStat": "Tanggapan minggu ini",
-    "previewNotification": "Tanggapan baru diterima",
-    "previewNotificationMeta": "Lagos · baru saja"
+    "previewStat": "Tanggapan bulan ini",
+    "previewAccess": "Terlihat oleh: tim Kepatuhan",
+    "previewSync": "Tersinkron ke basis data Anda",
+    "previewSyncMeta": "PostgreSQL · {rows} baris · baru saja"
   },
   "auth": {
     "or": "atau",

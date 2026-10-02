@@ -22,11 +22,11 @@ function uuid(): string {
 }
 
 export const MOCK_OWNERS: FormOwner[] = [
-  { id: uuid(), name: 'Qonita Kamal' },
-  { id: uuid(), name: 'Azhar Gbenga' },
-  { id: uuid(), name: 'Arbian Mensah' },
+  { id: uuid(), name: 'Sofia Martins' },
+  { id: uuid(), name: 'Kenji Watanabe' },
+  { id: uuid(), name: 'Priya Raman' },
   { id: uuid(), name: 'Alex Novak' },
-  { id: uuid(), name: 'Yelisa Eze' },
+  { id: uuid(), name: 'Lukas Becker' },
 ]
 
 export const MOCK_FOLDERS: FormFolder[] = [

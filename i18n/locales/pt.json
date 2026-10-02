@@ -227,18 +227,22 @@
     "label": "Rodapé"
   },
   "authLayout": {
-    "headline": "Formulários sem esforço.",
-    "subline": "Crie, compartilhe e analise formulários em minutos — seguro por padrão, em qualquer idioma.",
+    "headline": "Formulários, dados e acesso — sob o seu controle.",
+    "subline": "Uma plataforma segura e flexível para criar qualquer formulário, coletar e gerenciar dados, conectar seus sistemas e controlar quem vê o quê — para organizações de qualquer porte, em qualquer lugar do mundo.",
     "badgeEncrypted": "Criptografia de ponta a ponta",
-    "badgeOtp": "Código em cada login",
-    "badgeLanguages": "20 idiomas",
-    "previewForm": "Feedback do cliente",
-    "previewName": "Nome completo",
-    "previewRating": "Como foi sua visita?",
+    "badgeCompliance": "Controles de privacidade e conformidade",
+    "badgeDatabase": "Conecte seu próprio banco de dados",
+    "badgeAccess": "Acesso por funções",
+    "badgeLanguages": "20 idiomas, qualquer região",
+    "previewForm": "Cadastro de fornecedores",
+    "previewCompany": "Nome da empresa",
+    "previewConsent": "Consentimento para tratamento de dados",
+    "previewConsentText": "Concordo com o aviso de privacidade",
     "previewSubmit": "Enviar",
-    "previewStat": "Respostas nesta semana",
-    "previewNotification": "Nova resposta recebida",
-    "previewNotificationMeta": "Lagos · agora mesmo"
+    "previewStat": "Respostas neste mês",
+    "previewAccess": "Visível para: equipe de Compliance",
+    "previewSync": "Sincronizado com seu banco de dados",
+    "previewSyncMeta": "PostgreSQL · {rows} linhas · agora mesmo"
   },
   "auth": {
     "or": "ou",

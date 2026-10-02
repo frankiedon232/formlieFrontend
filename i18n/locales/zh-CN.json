@@ -227,18 +227,22 @@
     "label": "页脚"
   },
   "authLayout": {
-    "headline": "轻松自如的表单。",
-    "subline": "几分钟内创建、分享和分析表单——默认安全，支持多种语言。",
+    "headline": "表单、数据与权限，尽在掌控。",
+    "subline": "一个安全、灵活的平台：创建任意表单，收集和管理数据，连接您的系统，并控制谁能看到什么——适用于全球各地、各种规模的组织。",
     "badgeEncrypted": "端到端加密",
-    "badgeOtp": "每次登录均需验证码",
-    "badgeLanguages": "20 种语言",
-    "previewForm": "客户反馈",
-    "previewName": "姓名",
-    "previewRating": "您这次的体验如何？",
+    "badgeCompliance": "隐私与合规控制",
+    "badgeDatabase": "连接您自己的数据库",
+    "badgeAccess": "基于角色的访问",
+    "badgeLanguages": "20 种语言，覆盖各地区",
+    "previewForm": "供应商入驻",
+    "previewCompany": "公司名称",
+    "previewConsent": "数据处理同意",
+    "previewConsentText": "我同意隐私声明",
     "previewSubmit": "提交",
-    "previewStat": "本周回复",
-    "previewNotification": "收到新回复",
-    "previewNotificationMeta": "拉各斯 · 刚刚"
+    "previewStat": "本月回复",
+    "previewAccess": "可见范围：合规团队",
+    "previewSync": "已同步到您的数据库",
+    "previewSyncMeta": "PostgreSQL · {rows} 行 · 刚刚"
   },
   "auth": {
     "or": "或",

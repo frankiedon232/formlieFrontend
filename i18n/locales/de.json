@@ -227,18 +227,22 @@
     "label": "Fußzeile"
   },
   "authLayout": {
-    "headline": "Formulare ganz mühelos.",
-    "subline": "Formulare in Minuten erstellen, teilen und auswerten – standardmäßig sicher, in jeder Sprache.",
+    "headline": "Formulare, Daten und Zugriffe – unter Ihrer Kontrolle.",
+    "subline": "Eine sichere, flexible Plattform, um beliebige Formulare zu erstellen, Daten zu erfassen und zu verwalten, Ihre Systeme anzubinden und festzulegen, wer was sieht – für Organisationen jeder Größe, überall auf der Welt.",
     "badgeEncrypted": "Durchgehend verschlüsselt",
-    "badgeOtp": "Code bei jeder Anmeldung",
-    "badgeLanguages": "20 Sprachen",
-    "previewForm": "Kundenfeedback",
-    "previewName": "Vollständiger Name",
-    "previewRating": "Wie war Ihr Besuch?",
+    "badgeCompliance": "Datenschutz- und Compliance-Kontrollen",
+    "badgeDatabase": "Eigene Datenbank anbinden",
+    "badgeAccess": "Rollenbasierter Zugriff",
+    "badgeLanguages": "20 Sprachen, jede Region",
+    "previewForm": "Lieferanten-Onboarding",
+    "previewCompany": "Firmenname",
+    "previewConsent": "Einwilligung zur Datenverarbeitung",
+    "previewConsentText": "Ich stimme der Datenschutzerklärung zu",
     "previewSubmit": "Absenden",
-    "previewStat": "Antworten diese Woche",
-    "previewNotification": "Neue Antwort erhalten",
-    "previewNotificationMeta": "Lagos · gerade eben"
+    "previewStat": "Antworten diesen Monat",
+    "previewAccess": "Sichtbar für: Compliance-Team",
+    "previewSync": "Mit Ihrer Datenbank synchronisiert",
+    "previewSyncMeta": "PostgreSQL · {rows} Zeilen · gerade eben"
   },
   "auth": {
     "or": "oder",

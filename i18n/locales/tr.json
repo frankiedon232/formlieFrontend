@@ -227,18 +227,22 @@
     "label": "Alt bilgi"
   },
   "authLayout": {
-    "headline": "Zahmetsiz formlar.",
-    "subline": "Formları dakikalar içinde oluşturun, paylaşın ve analiz edin — varsayılan olarak güvenli, her dilde.",
+    "headline": "Formlar, veriler ve erişim — sizin kontrolünüzde.",
+    "subline": "Her türlü formu oluşturmak, verileri toplamak ve yönetmek, sistemlerinizi bağlamak ve kimin neyi göreceğini belirlemek için güvenli, esnek bir platform — dünyanın her yerinde, her ölçekten kuruluş için.",
     "badgeEncrypted": "Uçtan uca şifreli",
-    "badgeOtp": "Her girişte kod",
-    "badgeLanguages": "20 dil",
-    "previewForm": "Müşteri geri bildirimi",
-    "previewName": "Ad soyad",
-    "previewRating": "Ziyaretiniz nasıldı?",
+    "badgeCompliance": "Gizlilik ve uyumluluk kontrolleri",
+    "badgeDatabase": "Kendi veritabanınızı bağlayın",
+    "badgeAccess": "Rol tabanlı erişim",
+    "badgeLanguages": "20 dil, her bölge",
+    "previewForm": "Tedarikçi kaydı",
+    "previewCompany": "Şirket adı",
+    "previewConsent": "Veri işleme onayı",
+    "previewConsentText": "Gizlilik bildirimini kabul ediyorum",
     "previewSubmit": "Gönder",
-    "previewStat": "Bu haftaki yanıtlar",
-    "previewNotification": "Yeni yanıt alındı",
-    "previewNotificationMeta": "Lagos · az önce"
+    "previewStat": "Bu ayki yanıtlar",
+    "previewAccess": "Görebilenler: Uyum ekibi",
+    "previewSync": "Veritabanınızla senkronize edildi",
+    "previewSyncMeta": "PostgreSQL · {rows} satır · az önce"
   },
   "auth": {
     "or": "veya",

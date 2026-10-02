@@ -227,18 +227,22 @@
     "label": "التذييل"
   },
   "authLayout": {
-    "headline": "نماذج بلا عناء.",
-    "subline": "أنشئ النماذج وشاركها وحلّلها في دقائق — آمنة افتراضيًا وبكل اللغات.",
+    "headline": "النماذج والبيانات والصلاحيات — تحت سيطرتك.",
+    "subline": "منصة آمنة ومرنة لإنشاء أي نموذج، وجمع البيانات وإدارتها، وربط أنظمتك، والتحكم في من يرى ماذا — للمؤسسات بجميع أحجامها، في أي مكان في العالم.",
     "badgeEncrypted": "تشفير تام",
-    "badgeOtp": "رمز عند كل دخول",
-    "badgeLanguages": "20 لغة",
-    "previewForm": "رأي العملاء",
-    "previewName": "الاسم الكامل",
-    "previewRating": "كيف كانت زيارتك؟",
+    "badgeCompliance": "ضوابط الخصوصية والامتثال",
+    "badgeDatabase": "اربط قاعدة بياناتك الخاصة",
+    "badgeAccess": "صلاحيات حسب الأدوار",
+    "badgeLanguages": "20 لغة، لكل المناطق",
+    "previewForm": "تسجيل الموردين",
+    "previewCompany": "اسم الشركة",
+    "previewConsent": "الموافقة على معالجة البيانات",
+    "previewConsentText": "أوافق على إشعار الخصوصية",
     "previewSubmit": "إرسال",
-    "previewStat": "الردود هذا الأسبوع",
-    "previewNotification": "تم استلام رد جديد",
-    "previewNotificationMeta": "لاغوس · الآن"
+    "previewStat": "الردود هذا الشهر",
+    "previewAccess": "مرئي لـ: فريق الامتثال",
+    "previewSync": "تمت المزامنة مع قاعدة بياناتك",
+    "previewSyncMeta": "PostgreSQL · {rows} صف · الآن"
   },
   "auth": {
     "or": "أو",

@@ -227,18 +227,22 @@
     "label": "Sehemu ya chini"
   },
   "authLayout": {
-    "headline": "Fomu bila usumbufu.",
-    "subline": "Unda, shiriki na changanua fomu kwa dakika — salama tangu mwanzo, kwa kila lugha.",
+    "headline": "Fomu, data na ufikiaji — chini ya udhibiti wako.",
+    "subline": "Jukwaa salama na linalonyumbulika la kuunda fomu yoyote, kukusanya na kusimamia data, kuunganisha mifumo yako na kudhibiti nani anaona nini — kwa mashirika ya ukubwa wowote, popote duniani.",
     "badgeEncrypted": "Usimbaji fiche kamili",
-    "badgeOtp": "Msimbo kila unapoingia",
-    "badgeLanguages": "Lugha 20",
-    "previewForm": "Maoni ya wateja",
-    "previewName": "Jina kamili",
-    "previewRating": "Ziara yako ilikuwaje?",
+    "badgeCompliance": "Udhibiti wa faragha na uzingatiaji",
+    "badgeDatabase": "Unganisha hifadhidata yako mwenyewe",
+    "badgeAccess": "Ufikiaji kwa majukumu",
+    "badgeLanguages": "Lugha 20, kila eneo",
+    "previewForm": "Usajili wa wasambazaji",
+    "previewCompany": "Jina la kampuni",
+    "previewConsent": "Idhini ya kuchakata data",
+    "previewConsentText": "Nakubali taarifa ya faragha",
     "previewSubmit": "Tuma",
-    "previewStat": "Majibu wiki hii",
-    "previewNotification": "Jibu jipya limepokelewa",
-    "previewNotificationMeta": "Lagos · sasa hivi"
+    "previewStat": "Majibu mwezi huu",
+    "previewAccess": "Wanaoona: timu ya Uzingatiaji",
+    "previewSync": "Imesawazishwa na hifadhidata yako",
+    "previewSyncMeta": "PostgreSQL · safu {rows} · sasa hivi"
   },
   "auth": {
     "or": "au",

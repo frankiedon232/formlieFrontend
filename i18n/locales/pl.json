@@ -227,18 +227,22 @@
     "label": "Stopka"
   },
   "authLayout": {
-    "headline": "Formularze bez wysiłku.",
-    "subline": "Twórz, udostępniaj i analizuj formularze w kilka minut — bezpiecznie od początku, w każdym języku.",
+    "headline": "Formularze, dane i dostęp — pod Twoją kontrolą.",
+    "subline": "Bezpieczna, elastyczna platforma do tworzenia dowolnych formularzy, zbierania danych i zarządzania nimi, łączenia systemów oraz decydowania, kto co widzi — dla organizacji każdej wielkości, na całym świecie.",
     "badgeEncrypted": "Pełne szyfrowanie",
-    "badgeOtp": "Kod przy każdym logowaniu",
-    "badgeLanguages": "20 języków",
-    "previewForm": "Opinie klientów",
-    "previewName": "Imię i nazwisko",
-    "previewRating": "Jak minęła wizyta?",
+    "badgeCompliance": "Kontrola prywatności i zgodności",
+    "badgeDatabase": "Podłącz własną bazę danych",
+    "badgeAccess": "Dostęp oparty na rolach",
+    "badgeLanguages": "20 języków, każdy region",
+    "previewForm": "Rejestracja dostawcy",
+    "previewCompany": "Nazwa firmy",
+    "previewConsent": "Zgoda na przetwarzanie danych",
+    "previewConsentText": "Akceptuję informację o prywatności",
     "previewSubmit": "Wyślij",
-    "previewStat": "Odpowiedzi w tym tygodniu",
-    "previewNotification": "Nowa odpowiedź",
-    "previewNotificationMeta": "Lagos · przed chwilą"
+    "previewStat": "Odpowiedzi w tym miesiącu",
+    "previewAccess": "Widoczne dla: zespół compliance",
+    "previewSync": "Zsynchronizowano z Twoją bazą danych",
+    "previewSyncMeta": "PostgreSQL · {rows} wierszy · przed chwilą"
   },
   "auth": {
     "or": "lub",

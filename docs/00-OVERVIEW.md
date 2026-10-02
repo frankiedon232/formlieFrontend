@@ -1,5 +1,11 @@
 # 00 — Formalie Product Overview
 
+## Positioning (owner, 2026-10-02)
+
+**A secure, flexible platform for creating forms, collecting and managing data, connecting systems and controlling access — built for organisations of any size, anywhere in the world.** Companies and organisations can build any form, design it as they want, share it, connect their own database, stay privacy-compliant and keep data secure.
+
+Formalie is a **global** product: copy, examples, sample data and visuals are international and neutral — never tied to one country.
+
 ## One-liner
 
 A drag-and-drop form builder with ready templates, full visual design control, versioned draft → publish workflow, sharing/embedding, short links, responses stored in Formalie or sent to the customer's own database, Excel export and analytics — multi-tenant, secure enough for a large enterprise, yet simple to use.

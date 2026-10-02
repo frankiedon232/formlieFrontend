@@ -227,18 +227,22 @@
     "label": "Pied de page"
   },
   "authLayout": {
-    "headline": "Des formulaires sans effort.",
-    "subline": "Créez, partagez et analysez vos formulaires en quelques minutes — sécurisé par défaut, dans toutes les langues.",
+    "headline": "Formulaires, données et accès — sous votre contrôle.",
+    "subline": "Une plateforme sûre et flexible pour créer tout type de formulaire, collecter et gérer vos données, connecter vos systèmes et décider qui voit quoi — pour les organisations de toute taille, partout dans le monde.",
     "badgeEncrypted": "Chiffré de bout en bout",
-    "badgeOtp": "Code à chaque connexion",
-    "badgeLanguages": "20 langues",
-    "previewForm": "Avis client",
-    "previewName": "Nom complet",
-    "previewRating": "Comment s’est passée votre visite ?",
+    "badgeCompliance": "Contrôles de confidentialité et de conformité",
+    "badgeDatabase": "Connectez votre propre base de données",
+    "badgeAccess": "Accès par rôles",
+    "badgeLanguages": "20 langues, toutes régions",
+    "previewForm": "Référencement fournisseur",
+    "previewCompany": "Nom de l’entreprise",
+    "previewConsent": "Consentement au traitement des données",
+    "previewConsentText": "J’accepte la politique de confidentialité",
     "previewSubmit": "Envoyer",
-    "previewStat": "Réponses cette semaine",
-    "previewNotification": "Nouvelle réponse reçue",
-    "previewNotificationMeta": "Lagos · à l’instant"
+    "previewStat": "Réponses ce mois-ci",
+    "previewAccess": "Visible par : équipe Conformité",
+    "previewSync": "Synchronisé avec votre base de données",
+    "previewSyncMeta": "PostgreSQL · {rows} lignes · à l’instant"
   },
   "auth": {
     "or": "ou",

@@ -227,18 +227,22 @@
     "label": "Pie de página"
   },
   "authLayout": {
-    "headline": "Formularios sin esfuerzo.",
-    "subline": "Crea, comparte y analiza formularios en minutos: seguro por defecto y en cualquier idioma.",
+    "headline": "Formularios, datos y accesos, bajo tu control.",
+    "subline": "Una plataforma segura y flexible para crear cualquier formulario, recopilar y gestionar datos, conectar tus sistemas y decidir quién ve qué, para organizaciones de cualquier tamaño, en cualquier lugar del mundo.",
     "badgeEncrypted": "Cifrado de extremo a extremo",
-    "badgeOtp": "Código en cada inicio de sesión",
-    "badgeLanguages": "20 idiomas",
-    "previewForm": "Opinión del cliente",
-    "previewName": "Nombre completo",
-    "previewRating": "¿Qué tal fue tu visita?",
+    "badgeCompliance": "Controles de privacidad y cumplimiento",
+    "badgeDatabase": "Conecta tu propia base de datos",
+    "badgeAccess": "Acceso por roles",
+    "badgeLanguages": "20 idiomas, cualquier región",
+    "previewForm": "Alta de proveedores",
+    "previewCompany": "Nombre de la empresa",
+    "previewConsent": "Consentimiento de tratamiento de datos",
+    "previewConsentText": "Acepto el aviso de privacidad",
     "previewSubmit": "Enviar",
-    "previewStat": "Respuestas esta semana",
-    "previewNotification": "Nueva respuesta recibida",
-    "previewNotificationMeta": "Lagos · ahora mismo"
+    "previewStat": "Respuestas este mes",
+    "previewAccess": "Visible para: equipo de Cumplimiento",
+    "previewSync": "Sincronizado con tu base de datos",
+    "previewSyncMeta": "PostgreSQL · {rows} filas · ahora mismo"
   },
   "auth": {
     "or": "o",

@@ -227,18 +227,22 @@
     "label": "바닥글"
   },
   "authLayout": {
-    "headline": "손쉽게 만드는 양식.",
-    "subline": "몇 분 만에 양식을 만들고 공유하고 분석하세요. 기본부터 안전하고, 모든 언어로.",
+    "headline": "양식, 데이터, 접근 권한을 내 손안에.",
+    "subline": "어떤 양식이든 만들고, 데이터를 수집·관리하고, 시스템을 연결하고, 누가 무엇을 볼지 통제하는 안전하고 유연한 플랫폼 — 전 세계 모든 규모의 조직을 위해.",
     "badgeEncrypted": "종단 간 암호화",
-    "badgeOtp": "로그인마다 인증 코드",
-    "badgeLanguages": "20개 언어",
-    "previewForm": "고객 피드백",
-    "previewName": "이름",
-    "previewRating": "방문은 어떠셨나요?",
+    "badgeCompliance": "개인정보 보호 및 규정 준수 관리",
+    "badgeDatabase": "자체 데이터베이스 연결",
+    "badgeAccess": "역할 기반 접근",
+    "badgeLanguages": "20개 언어, 모든 지역",
+    "previewForm": "공급업체 등록",
+    "previewCompany": "회사 이름",
+    "previewConsent": "데이터 처리 동의",
+    "previewConsentText": "개인정보 처리방침에 동의합니다",
     "previewSubmit": "제출",
-    "previewStat": "이번 주 응답",
-    "previewNotification": "새 응답 도착",
-    "previewNotificationMeta": "라고스 · 방금"
+    "previewStat": "이번 달 응답",
+    "previewAccess": "공개 대상: 컴플라이언스 팀",
+    "previewSync": "데이터베이스에 동기화됨",
+    "previewSyncMeta": "PostgreSQL · {rows}행 · 방금"
   },
   "auth": {
     "or": "또는",

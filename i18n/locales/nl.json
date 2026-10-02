@@ -227,18 +227,22 @@
     "label": "Voettekst"
   },
   "authLayout": {
-    "headline": "Formulieren zonder moeite.",
-    "subline": "Formulieren in minuten bouwen, delen en analyseren — standaard veilig, in elke taal.",
+    "headline": "Formulieren, data en toegang — onder jouw regie.",
+    "subline": "Een veilig, flexibel platform om elk formulier te bouwen, data te verzamelen en te beheren, je systemen te koppelen en te bepalen wie wat ziet — voor organisaties van elke omvang, waar ook ter wereld.",
     "badgeEncrypted": "End-to-end versleuteld",
-    "badgeOtp": "Code bij elke aanmelding",
-    "badgeLanguages": "20 talen",
-    "previewForm": "Klantfeedback",
-    "previewName": "Volledige naam",
-    "previewRating": "Hoe was je bezoek?",
+    "badgeCompliance": "Privacy- en compliancecontroles",
+    "badgeDatabase": "Koppel je eigen database",
+    "badgeAccess": "Toegang op basis van rollen",
+    "badgeLanguages": "20 talen, elke regio",
+    "previewForm": "Leveranciers onboarden",
+    "previewCompany": "Bedrijfsnaam",
+    "previewConsent": "Toestemming voor gegevensverwerking",
+    "previewConsentText": "Ik ga akkoord met de privacyverklaring",
     "previewSubmit": "Versturen",
-    "previewStat": "Reacties deze week",
-    "previewNotification": "Nieuwe reactie ontvangen",
-    "previewNotificationMeta": "Lagos · zojuist"
+    "previewStat": "Reacties deze maand",
+    "previewAccess": "Zichtbaar voor: complianceteam",
+    "previewSync": "Gesynchroniseerd met je database",
+    "previewSyncMeta": "PostgreSQL · {rows} rijen · zojuist"
   },
   "auth": {
     "or": "of",

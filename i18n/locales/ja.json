@@ -227,18 +227,22 @@
     "label": "フッター"
   },
   "authLayout": {
-    "headline": "思いのままに作れるフォーム。",
-    "subline": "フォームを数分で作成・共有・分析。最初から安全で、どの言語にも対応。",
+    "headline": "フォーム、データ、アクセスを思いのままに。",
+    "subline": "あらゆるフォームを作成し、データを収集・管理し、システムを連携し、誰が何を見られるかを管理できる、安全で柔軟なプラットフォーム。世界中のあらゆる規模の組織のために。",
     "badgeEncrypted": "エンドツーエンド暗号化",
-    "badgeOtp": "ログインごとに確認コード",
-    "badgeLanguages": "20 言語",
-    "previewForm": "お客様アンケート",
-    "previewName": "氏名",
-    "previewRating": "ご来店はいかがでしたか？",
+    "badgeCompliance": "プライバシーとコンプライアンスの管理",
+    "badgeDatabase": "自社データベースと連携",
+    "badgeAccess": "ロールベースのアクセス",
+    "badgeLanguages": "20 言語・全地域対応",
+    "previewForm": "取引先登録",
+    "previewCompany": "会社名",
+    "previewConsent": "データ処理への同意",
+    "previewConsentText": "プライバシーポリシーに同意します",
     "previewSubmit": "送信",
-    "previewStat": "今週の回答",
-    "previewNotification": "新しい回答が届きました",
-    "previewNotificationMeta": "ラゴス · たった今"
+    "previewStat": "今月の回答",
+    "previewAccess": "閲覧可能: コンプライアンスチーム",
+    "previewSync": "データベースに同期しました",
+    "previewSyncMeta": "PostgreSQL · {rows} 行 · たった今"
   },
   "auth": {
     "or": "または",

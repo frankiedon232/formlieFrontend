@@ -27,6 +27,7 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 | 2026-10-02 | F2    | Owner feedback: title/subtitle/crumbs/page buttons moved into the header bar (content area clear, phone = icons), footer added; DataView flow approved and frozen.                                                                                                                                                        |
 | 2026-10-02 | F3    | Auth built (mock + client + pages); mock flow verified live (login, OTP attempts, tokens, protected call, refresh rotation, reuse → revoke). Browser check pending dev-server restart.                                                                                                                                    |
 | 2026-10-02 | F3    | Owner feedback: sign-in redesigned (inset dark showcase with live product preview, workspace chip, roomy form, security note); verified login → code → portal → logout in browser, desktop / phone / dark. Test accounts + progress table added to README.                                                                |
+| 2026-10-02 | F3    | Owner feedback: global positioning on the sign-in showcase (headline + platform description, supplier-onboarding form with consent, "synced to your database", access visibility, compliance/database/access badges); mock data made international; CLAUDE.md rule 20 (global product).                                   |
 
 ## F0 — Foundation
 

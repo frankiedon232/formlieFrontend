@@ -227,18 +227,22 @@
     "label": "Footer"
   },
   "authLayout": {
-    "headline": "Forms that feel effortless.",
-    "subline": "Build, share and analyse forms in minutes — secure by default, in every language.",
+    "headline": "Forms, data and access — under your control.",
+    "subline": "A secure, flexible platform to build any form, collect and manage data, connect your systems and control who sees what — for organisations of any size, anywhere in the world.",
     "badgeEncrypted": "End-to-end encrypted",
-    "badgeOtp": "Code on every sign-in",
-    "badgeLanguages": "20 languages",
-    "previewForm": "Customer feedback",
-    "previewName": "Full name",
-    "previewRating": "How was your visit?",
+    "badgeCompliance": "Privacy & compliance controls",
+    "badgeDatabase": "Connect your own database",
+    "badgeAccess": "Role-based access",
+    "badgeLanguages": "20 languages, any region",
+    "previewForm": "Supplier onboarding",
+    "previewCompany": "Company name",
+    "previewConsent": "Data processing consent",
+    "previewConsentText": "I agree to the privacy notice",
     "previewSubmit": "Submit",
-    "previewStat": "Responses this week",
-    "previewNotification": "New response received",
-    "previewNotificationMeta": "Lagos · just now"
+    "previewStat": "Responses this month",
+    "previewAccess": "Visible to: Compliance team",
+    "previewSync": "Synced to your database",
+    "previewSyncMeta": "PostgreSQL · {rows} rows · just now"
   },
   "auth": {
     "or": "or",

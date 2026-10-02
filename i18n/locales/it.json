@@ -227,18 +227,22 @@
     "label": "Piè di pagina"
   },
   "authLayout": {
-    "headline": "Moduli senza fatica.",
-    "subline": "Crea, condividi e analizza moduli in pochi minuti: sicuro per impostazione predefinita, in ogni lingua.",
+    "headline": "Moduli, dati e accessi: sotto il tuo controllo.",
+    "subline": "Una piattaforma sicura e flessibile per creare qualsiasi modulo, raccogliere e gestire dati, collegare i tuoi sistemi e decidere chi vede cosa, per organizzazioni di ogni dimensione, ovunque nel mondo.",
     "badgeEncrypted": "Crittografia end-to-end",
-    "badgeOtp": "Codice a ogni accesso",
-    "badgeLanguages": "20 lingue",
-    "previewForm": "Feedback dei clienti",
-    "previewName": "Nome completo",
-    "previewRating": "Com’è andata la visita?",
+    "badgeCompliance": "Controlli di privacy e conformità",
+    "badgeDatabase": "Collega il tuo database",
+    "badgeAccess": "Accesso basato sui ruoli",
+    "badgeLanguages": "20 lingue, ogni regione",
+    "previewForm": "Onboarding fornitori",
+    "previewCompany": "Ragione sociale",
+    "previewConsent": "Consenso al trattamento dei dati",
+    "previewConsentText": "Accetto l’informativa sulla privacy",
     "previewSubmit": "Invia",
-    "previewStat": "Risposte questa settimana",
-    "previewNotification": "Nuova risposta ricevuta",
-    "previewNotificationMeta": "Lagos · proprio ora"
+    "previewStat": "Risposte questo mese",
+    "previewAccess": "Visibile a: team Compliance",
+    "previewSync": "Sincronizzato con il tuo database",
+    "previewSyncMeta": "PostgreSQL · {rows} righe · proprio ora"
   },
   "auth": {
     "or": "oppure",
