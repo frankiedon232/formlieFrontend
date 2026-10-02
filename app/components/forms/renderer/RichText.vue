@@ -72,7 +72,7 @@ const items = computed<EditorToolbarItem[][]>(() => [
       :placeholder="field.placeholder || t('renderer.rich.placeholder')"
       :image="false"
       :mention="false"
-      :ui="{ base: 'min-h-28 px-3 py-2 text-sm *:my-2 sm:px-3 [&_p]:leading-6' }"
+      :ui="{ base: 'min-h-28 px-3 py-2 text-sm leading-5 *:my-0.5 sm:px-3 [&_p]:leading-5 [&_li]:leading-5' }"
       class="w-full"
     >
       <UEditorToolbar
