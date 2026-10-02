@@ -31,10 +31,7 @@ watch(open, value => {
     v-model:open="open"
     :title="title ?? t('builder.preview.title')"
     :description="t('builder.preview.desc')"
-    :ui="{
-      content: device === 'desktop' ? 'w-full sm:max-w-[calc(100vw-3rem)]' : 'w-full sm:max-w-5xl',
-      body: 'bg-elevated/40',
-    }"
+    :ui="{ content: 'w-full sm:max-w-5xl', body: 'bg-elevated/40' }"
   >
     <template #actions>
       <UTabs
