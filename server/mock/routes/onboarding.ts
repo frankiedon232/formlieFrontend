@@ -22,7 +22,7 @@ import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
-import { MOCK_USERS, type MockTenant } from '../data/tenants'
+import { MOCK_USERS, SEEDED_TENANT_IDS, type MockTenant } from '../data/tenants'
 import { completedUploadUrl } from './uploads'
 
 const states = new Map<string, Onboarding>()
@@ -31,7 +31,7 @@ function stateOf(tenant: MockTenant): Onboarding {
   let state = states.get(tenant.id)
   if (!state) {
     // Seeded workspaces (they have history) count as set up; new signups start fresh.
-    const seeded = MOCK_USERS.some(user => user.tenant_id === tenant.id && user.id.startsWith('a1b2c3d4-'))
+    const seeded = SEEDED_TENANT_IDS.has(tenant.id)
     state = {
       status: seeded ? 'completed' : 'not_started',
       current_step: 'company',

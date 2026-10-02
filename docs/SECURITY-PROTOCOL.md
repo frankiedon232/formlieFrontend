@@ -49,6 +49,8 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 
 - **Access token:** Fernet token, sent as `Authorization: Bearer <token>`. Payload: `{ sub (user uuid), tid (tenant uuid), oid (organisation uuid), sid (session uuid), jti, roles_ver, mfa: true, iat }`. Valid **15 min** (Fernet `decrypt(ttl=900)`).
 - **Refresh token:** Fernet token, valid **7 days** (configurable per tenant), **single use and rotated** on every refresh. Stored server-side as a hash with a `family_id`; reuse of an old refresh token revokes the whole family (`FRM-AUTH-1012`).
+- **Idle timeout:** a session ends after **60 minutes without activity** (sliding: every API call and every refresh counts as activity; owner, 2026-10-02 — at least 1 hour). Absolute limit = refresh-token lifetime (7 days). Default per workspace, adjustable in Settings → Security. An idle-expired refresh answers `FRM-AUTH-1001`, and the client shows sign-in with "Your session expired".
+- An unknown or expired access token answers `FRM-AUTH-1001` (never `1010`), so the client always tries the refresh cookie before signing anyone out.
 - Fernet tokens include a timestamp and random IV, so **two tokens are never identical even for the same payload**.
 - Access tokens can be revoked early via a session (`sid`) deny-list in Redis (logout, password change, admin reset).
 - Browser storage: access token in memory; refresh token in an `HttpOnly; Secure; SameSite=Strict` cookie scoped to the tenant subdomain, path `/api/v1/auth/refresh`.

@@ -426,7 +426,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 ### Security
 
 - ⬜ Password rules (length, character types, reuse, expiry)
-- ⬜ Session timeout and maximum session length, sign out everywhere
+- ⬜ Session timeout (idle, default 60 min — never shorter than the owner's 1-hour minimum without a warning) and maximum session length, sign out everywhere
 - ⬜ IP allowlist (CIDR ranges, test my IP)
 - ⬜ Security events overview (recent sign-ins, blocked attempts) — links to audit trail
 
@@ -581,6 +581,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Audit trail early (its own phase after sign-in), not last                        | F4          | ✅     |
 | 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome          | F3          | ✅     |
 | 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them   | F1          | ✅     |
+| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                        | F3 / F12    | ✅     |
 
 ---
 
@@ -605,3 +606,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access. |
 | 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                         |
 | 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                      |
+| 2026-10-02 | F3    | Sessions: 60-minute sliding idle timeout (owner); mock sessions survive dev reloads (`.data/mock/`); unknown access token → silent refresh instead of sign-out. Verified: signed in → mock reloaded → still signed in.                                                                                                                 |

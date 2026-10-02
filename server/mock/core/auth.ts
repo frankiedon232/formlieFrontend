@@ -7,11 +7,14 @@ import type { H3Event } from 'h3'
 import type { AuthTokens, LoginChallenge, OtpChannel } from '#shared/types/auth'
 import { resolveHostContext, type HostContext } from '#shared/utils/tenant/host'
 import { actorOf, recordAudit } from './audit'
+import { loadPersisted, savePersisted } from './persist'
 import { MockError } from './respond'
 import { MOCK_TENANTS, MOCK_USERS, type MockTenant, type MockUser } from '../data/tenants'
 
 const ACCESS_TTL_S = 15 * 60
 const REFRESH_TTL_S = 7 * 24 * 60 * 60
+/** Signed out after this long without any activity (owner, 2026-10-02: at least 1 hour). Configurable in Settings → Security later. */
+export const IDLE_TIMEOUT_MS = 60 * 60 * 1000
 const OTP_TTL_MS = 5 * 60 * 1000
 const OTP_MAX_ATTEMPTS = 5
 const OTP_RESEND_AFTER_S = 60
@@ -157,11 +160,62 @@ export interface Session {
   user: MockUser
   tenant: MockTenant
   revoked: boolean
+  /** Last request or refresh; the idle timeout counts from here. */
+  lastActiveAt: number
+}
+
+interface StoredSessions {
+  sessions: { id: string; userId: string; tenantId: string; revoked: boolean; lastActiveAt: number }[]
+  access: [string, { sid: string; expiresAt: number }][]
+  refresh: [string, { sid: string; used: boolean; expiresAt: number }][]
 }
 
 const sessions = new Map<string, Session>()
 const accessTokens = new Map<string, { sid: string; expiresAt: number }>()
 const refreshTokens = new Map<string, { sid: string; used: boolean; expiresAt: number }>()
+
+// Restore sessions saved before the last dev reload (see ./persist.ts).
+{
+  const stored = loadPersisted<StoredSessions>('sessions', { sessions: [], access: [], refresh: [] })
+  const now = Date.now()
+  for (const item of stored.sessions) {
+    const user = MOCK_USERS.find(u => u.id === item.userId)
+    const tenant = MOCK_TENANTS.find(t => t.id === item.tenantId)
+    if (user && tenant && !item.revoked && now - item.lastActiveAt < IDLE_TIMEOUT_MS)
+      sessions.set(item.id, { id: item.id, user, tenant, revoked: false, lastActiveAt: item.lastActiveAt })
+  }
+  for (const [token, entry] of stored.access)
+    if (sessions.has(entry.sid) && entry.expiresAt > now) accessTokens.set(token, entry)
+  for (const [token, entry] of stored.refresh)
+    if (sessions.has(entry.sid) && entry.expiresAt > now) refreshTokens.set(token, entry)
+}
+
+function persistSessions() {
+  savePersisted('sessions', (): StoredSessions => {
+    const now = Date.now()
+    return {
+      sessions: [...sessions.values()]
+        .filter(s => !s.revoked && now - s.lastActiveAt < IDLE_TIMEOUT_MS)
+        .map(s => ({ id: s.id, userId: s.user.id, tenantId: s.tenant.id, revoked: s.revoked, lastActiveAt: s.lastActiveAt })),
+      access: [...accessTokens].filter(([, e]) => e.expiresAt > now && sessions.has(e.sid)),
+      // Used tokens are kept too, so reuse is still detected after a reload.
+      refresh: [...refreshTokens].filter(([, e]) => e.expiresAt > now && sessions.has(e.sid)),
+    }
+  })
+}
+
+/** True (and the session ends) when nothing happened for longer than the idle timeout. */
+function idleExpired(session: Session): boolean {
+  if (Date.now() - session.lastActiveAt <= IDLE_TIMEOUT_MS) return false
+  session.revoked = true
+  persistSessions()
+  return true
+}
+
+function touch(session: Session) {
+  session.lastActiveAt = Date.now()
+  persistSessions()
+}
 const tickets = new Map<string, { user: MockUser; tenant: MockTenant; expiresAt: number }>()
 
 function setRefreshCookie(event: H3Event, token: string) {
@@ -180,6 +234,7 @@ function tokensFor(event: H3Event, session: Session): AuthTokens {
   const refresh = randomToken()
   refreshTokens.set(refresh, { sid: session.id, used: false, expiresAt: Date.now() + REFRESH_TTL_S * 1000 })
   setRefreshCookie(event, refresh)
+  touch(session)
   const { user, tenant } = session
   return {
     access_token: access,
@@ -198,7 +253,7 @@ function tokensFor(event: H3Event, session: Session): AuthTokens {
 }
 
 export function startSession(event: H3Event, user: MockUser, tenant: MockTenant): AuthTokens {
-  const session: Session = { id: crypto.randomUUID(), user, tenant, revoked: false }
+  const session: Session = { id: crypto.randomUUID(), user, tenant, revoked: false, lastActiveAt: Date.now() }
   sessions.set(session.id, session)
   return tokensFor(event, session)
 }
@@ -210,6 +265,8 @@ export function rotateRefresh(event: H3Event): AuthTokens {
   if (!token || !entry || entry.expiresAt < Date.now()) throw new MockError('FRM-AUTH-1010')
   const session = sessions.get(entry.sid)
   if (!session || session.revoked) throw new MockError('FRM-AUTH-1011')
+  // Idle too long → plain "session expired" (the client then shows the sign-in page with that notice).
+  if (idleExpired(session)) throw new MockError('FRM-AUTH-1001')
   if (entry.used) {
     session.revoked = true
     deleteCookie(event, REFRESH_COOKIE, { path: REFRESH_COOKIE_PATH })
@@ -242,6 +299,7 @@ export function endSession(event: H3Event): Session | null {
     }
   }
   deleteCookie(event, REFRESH_COOKIE, { path: REFRESH_COOKIE_PATH })
+  persistSessions()
   return ended
 }
 
@@ -250,11 +308,14 @@ export function requireAuth(event: H3Event): { user: MockUser; tenant: MockTenan
   const bearer = getHeader(event, 'authorization')?.replace(/^Bearer /, '')
   if (!bearer) throw new MockError('FRM-AUTH-1001')
   const entry = accessTokens.get(bearer)
-  if (!entry) throw new MockError('FRM-AUTH-1010')
-  if (entry.expiresAt < Date.now()) throw new MockError('FRM-AUTH-1001')
+  // Unknown or expired access token → 1001, so the client tries the refresh cookie before signing out.
+  if (!entry || entry.expiresAt < Date.now()) throw new MockError('FRM-AUTH-1001')
   const session = sessions.get(entry.sid)
   if (!session || session.revoked) throw new MockError('FRM-AUTH-1011')
+  if (idleExpired(session)) throw new MockError('FRM-AUTH-1001')
   if (session.tenant.id !== requireTenant(event).id) throw new MockError('FRM-TEN-1003')
+  // Throttled: activity is recorded at most once a minute per session.
+  if (Date.now() - session.lastActiveAt > 60_000) touch(session)
   return { user: session.user, tenant: session.tenant }
 }
 

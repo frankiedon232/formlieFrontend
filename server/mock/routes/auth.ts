@@ -22,7 +22,13 @@ import { actorOf, anonymousActor, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
-import { MOCK_TENANTS, MOCK_USERS, type MockTenant } from '../data/tenants'
+import {
+  MOCK_TENANTS,
+  MOCK_USERS,
+  passwordMatches,
+  saveCreatedWorkspaces,
+  type MockTenant,
+} from '../data/tenants'
 import type { H3Event } from 'h3'
 import type { Challenge, ChallengePurpose } from '../core/auth'
 
@@ -66,7 +72,7 @@ export const login = defineMockRoute(({ event, body }) => {
   if (!tenant.auth_providers.includes('password')) throw new MockError('FRM-AUTH-1008')
   const input = parseBody(loginSchema, body)
   const user = findUser(input.email, tenant.id)
-  if (!user || user.password !== input.password) {
+  if (!user || !passwordMatches(user, input.password)) {
     recordAudit(event, tenant, {
       action: 'auth.login.failed',
       actor: user ? actorOf(user) : anonymousActor(input.email),
@@ -226,6 +232,7 @@ export const signupComplete = defineMockRoute(({ event, body }) => {
     role: 'owner' as const,
   }
   MOCK_USERS.push(user)
+  saveCreatedWorkspaces()
   consumeChallenge(challenge.id)
   recordAudit(event, tenant, {
     action: 'workspace.created',
@@ -289,6 +296,7 @@ export const resetPassword = defineMockRoute(({ event, body }) => {
   consumeChallenge(challenge.id)
   if (challenge.user) {
     challenge.user.password = input.password
+    saveCreatedWorkspaces()
     recordAudit(event, challenge.tenant!, { action: 'auth.password.reset', actor: actorOf(challenge.user) })
   }
   return ok({ reset: true })

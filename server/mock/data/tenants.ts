@@ -4,7 +4,9 @@
  *   password  Formalie!2026
  *   OTP       shown on the code screen in dev (mock returns `dev_code`) and logged to the server console
  */
+import { createHash } from 'node:crypto'
 import type { AuthProvider, TenantStatus, WorkspaceRole } from '#shared/types/auth'
+import { loadPersisted, savePersisted } from '../core/persist'
 
 export const MOCK_PASSWORD = 'Formalie!2026'
 
@@ -117,3 +119,34 @@ export const MOCK_USERS: MockUser[] = [
     role: 'member',
   },
 ]
+
+// ── Workspaces created by signup survive dev reloads (../core/persist.ts) ─────────────
+
+export const SEEDED_TENANT_IDS: ReadonlySet<string> = new Set(MOCK_TENANTS.map(tenant => tenant.id))
+const SEEDED_USER_IDS = new Set(MOCK_USERS.map(user => user.id))
+
+/** Never write a typed password to disk, even in dev: persisted users keep a SHA-256 hash only. */
+export const hashPassword = (password: string) =>
+  `sha256:${createHash('sha256').update(password).digest('hex')}`
+export const passwordMatches = (user: MockUser, password: string) =>
+  user.password === password || user.password === hashPassword(password)
+
+{
+  const stored = loadPersisted<{ tenants: MockTenant[]; users: MockUser[] }>('workspaces', {
+    tenants: [],
+    users: [],
+  })
+  for (const tenant of stored.tenants)
+    if (!MOCK_TENANTS.some(t => t.id === tenant.id || t.subdomain === tenant.subdomain)) MOCK_TENANTS.push(tenant)
+  for (const user of stored.users) if (!MOCK_USERS.some(u => u.id === user.id)) MOCK_USERS.push(user)
+}
+
+export function saveCreatedWorkspaces() {
+  savePersisted('workspaces', () => ({
+    tenants: MOCK_TENANTS.filter(tenant => !SEEDED_TENANT_IDS.has(tenant.id)),
+    users: MOCK_USERS.filter(user => !SEEDED_USER_IDS.has(user.id)).map(user => ({
+      ...user,
+      password: user.password.startsWith('sha256:') ? user.password : hashPassword(user.password),
+    })),
+  }))
+}

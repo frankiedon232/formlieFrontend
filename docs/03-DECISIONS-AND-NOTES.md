@@ -68,6 +68,8 @@ Edit this file whenever a decision changes.
 
 49. **Onboarding** (F5): a full-screen wizard (`/onboarding`, own layout) with five optional steps — company, branding, regional settings, team, first form — and a live preview. The server stores progress per workspace so it resumes anywhere; the stepper is non-linear (any step can be opened). Defaults come from the device and country (country from the browser language, timezone from the device, currency / date / number / week start from the country) and are only suggestions. Shown after signup (welcome hand-off) and reachable later from Settings and the user menu (owners / admins). Finishing opens the chosen template or a blank form. Logos go through pre-signed uploads (PNG / JPEG / WebP ≤ 2 MB, magic-byte check, no SVG).
 
+50. **Session lifetime** (owner, 2026-10-02: "leave for at least 1 hour if idle"): 15-min access tokens refresh silently; the session itself ends only after **60 minutes of inactivity** (sliding) or 7 days at most. Early sign-outs during development came from the mock losing its in-memory sessions on every reload of server code; mock sessions and workspaces created by signup now persist in `.data/mock/` (gitignored, passwords hashed), and an unknown access token triggers a refresh instead of a sign-out.
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).
