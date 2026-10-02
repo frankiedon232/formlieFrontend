@@ -45,14 +45,14 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 | POST | `/auth/password/reset` | `{ challenge_id, code, password }` → `{ reset: true }` |
 | GET | `/me` · PATCH `/me` · POST `/me/password` · `/me/mfa/totp/*` · GET/DELETE `/me/sessions/{id}` | |
 
-**`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F19); owner and admin manage the workspace (e.g. the audit trail).
+**`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F20); owner and admin manage the workspace (e.g. the audit trail).
 
 **Refresh cookie:** `formalie_rt`, `HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth` (covers refresh + logout).
 **Mock only:** challenge responses carry `meta.dev_code` so the dev code screen can show it; the real API never returns codes. The mock honours the dev header `X-Formalie-Dev-Tenant` (localhost / LAN-IP testing).
 
 ## Audit trail
 
-Owners / admins only (members → FRM-PERM-1001) until permissions arrive with Roles & access (F19). Every state-changing endpoint and every sign-in event writes one entry; action keys and areas are listed once in `shared/utils/audit/events.ts`.
+Owners / admins only (members → FRM-PERM-1001) until permissions arrive with Roles & access (F20). Every state-changing endpoint and every sign-in event writes one entry; action keys and areas are listed once in `shared/utils/audit/events.ts`.
 
 | Method | Path                 | Notes                                                                                                                                                                                                                                                           |
 | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -124,7 +124,7 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 
 | CRUD | `/themes` | `{ name, tokens }` |
 | GET | `/templates` (system + org; filter category) · POST `/templates` (save as) · POST `/templates/{id}/use` | |
-| CRUD | `/option-lists`, `/option-lists/{id}/items` (search / paging / levels, bulk upsert, reorder, import, refresh, usage) | planned (F13) — see [OPTION-LISTS.md](OPTION-LISTS.md); replaces the earlier `/option-sets` name |
+| CRUD | `/option-lists`, `/option-lists/{id}/items` (search / paging / levels, bulk upsert, reorder, import, refresh, usage) | planned (F14) — see [OPTION-LISTS.md](OPTION-LISTS.md); replaces the earlier `/option-sets` name |
 
 ## Sharing, links, embed
 
@@ -154,7 +154,13 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 
 ## Integrations, settings, analytics
 
-| CRUD | `/destinations` (+ POST `/destinations/test`) · `/webhooks` · `/api-keys` | |
+| CRUD | `/datasources` (+ POST `/datasources/test`, `/datasources/{id}/health`, `/datasources/{id}/credentials`) — credentials write-only, never returned | planned (F12) |
+| GET | `/datasources/{id}/schema` (schemas → tables / views → columns, keys, indexes, row counts) | planned (F12) |
+| CRUD | `/datasources/{id}/tables/{table}/rows` (paged list with sort / filters; insert / update / delete on read + write connections; import; export job) | planned (F12) |
+| POST | `/datasources/{id}/query` `{ sql, params, limit }` → `{ columns, rows, rows_affected, duration_ms }` (+ `/query/{run_id}/cancel`); read-only unless the connection allows changes; every run audited | planned (F12) |
+| CRUD | `/saved-queries` (personal / shared) | planned (F12) |
+| CRUD | `/forms/{id}/destinations` (+ mapping, create table, backfill, deliveries, retry) | planned (F12) |
+| CRUD | `/webhooks` · `/api-keys` | planned (F14) |
 | GET/PATCH | `/settings/{section}` | company, branding, auth, security, localisation, notifications, retention, embed |
 | GET | `/forms/{id}/analytics?from=&to=` | summary, timeseries, per-field stats, drop-off |
 | GET | `/platform/countries`, `/platform/states?country=`, `/platform/timezones`, `/platform/currencies` | |

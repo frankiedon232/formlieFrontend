@@ -1,7 +1,7 @@
 <!--
   Audit trail (PROGRESS.md F4): every action — who, what, when, where, before / after.
   DataView list (table / grid, filters, date range, server paging) · `?event=<id>` opens the detail
-  slide-over (shareable) · export with progress. Workspace owners / admins only until F19.
+  slide-over (shareable) · export with progress. Workspace owners / admins only until F20.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'

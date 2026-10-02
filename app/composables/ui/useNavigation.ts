@@ -17,7 +17,7 @@ export interface AppNavItem {
   count?: (counts: NavCounts) => number
   /** Hide the badge at 0 (e.g. "new" items); status counts always show. */
   hideZero?: boolean
-  /** Workspace owners / admins only (until Roles & access, F19). */
+  /** Workspace owners / admins only (until Roles & access, F20). */
   adminOnly?: boolean
 }
 

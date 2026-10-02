@@ -4,7 +4,7 @@
 
 ## Phase order
 
-F0 Foundation → F1 App shell → F2 Core plumbing → F3 Workspace detection + sign-in → F4 Audit trail → F5 Onboarding → F6 Forms list and lifecycle → F7 Builder → F8 Designer → F9 Templates → F10 Renderer, share, embed, SEO → F11 Responses → F12 Settings → F13 Option sets & integrations → F14 Profile → F15 Users → F16 Analytics → F17 Live collaboration (optional) → F18 Dashboard → F19 Roles & access (last).
+F0 Foundation → F1 App shell → F2 Core plumbing → F3 Workspace detection + sign-in → F4 Audit trail → F5 Onboarding → F6 Forms list and lifecycle → F7 Builder → F8 Designer → F9 Templates → F10 Renderer, share, embed, SEO → F11 Responses → F12 Data sources & databases → F13 Settings → F14 Option sets & integrations → F15 Profile → F16 Users → F17 Analytics → F18 Live collaboration (optional) → F19 Dashboard → F20 Roles & access (last).
 
 ## How we work through it
 

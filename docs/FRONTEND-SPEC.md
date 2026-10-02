@@ -23,7 +23,7 @@ Built with `UDashboardGroup` → `UDashboardSidebar` + `UDashboardPanel`.
 
 ### Menu structure
 
-Forms · Templates · Responses · Analytics · Option Sets · Integrations (destinations, webhooks, API keys) · Settings · Audit Trail (early, F4) · (later) Users · Dashboard · Roles & Access.
+Forms · Templates · Responses · Analytics · Option Sets · Integrations (data sources, database explorer, query editor, destinations, webhooks, API keys) · Settings · Audit Trail (early, F4) · (later) Users · Dashboard · Roles & Access.
 
 ### Navbar (`UDashboardNavbar`) and page header
 
@@ -62,29 +62,31 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 
 ## 5. Page map (portal)
 
-| Route                            | Page                                                                                                                                                            |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/`                              | redirect → `/forms` (Dashboard later)                                                                                                                           |
-| `/forms`                         | All forms — DataView; filters: status, folder, owner, tags, date range; actions: new, duplicate, move, archive, delete (trash)                                  |
-| `/forms/new`                     | Start blank / from template / import JSON                                                                                                                       |
-| `/forms/[id]/build`              | Builder                                                                                                                                                         |
-| `/forms/[id]/design`             | Designer (theme)                                                                                                                                                |
-| `/forms/[id]/logic`              | Logic rules                                                                                                                                                     |
-| `/forms/[id]/settings`           | Form settings (submission rules, notifications, destinations, limits, schedule, thank-you, SEO)                                                                 |
-| `/forms/[id]/share`              | Share, links, short URL, QR, embed (iframe), access grants                                                                                                      |
-| `/forms/[id]/responses`          | Responses DataView + single response slide-over                                                                                                                 |
-| `/forms/[id]/analytics`          | Form analytics                                                                                                                                                  |
-| `/forms/[id]/versions`           | Version history, compare, restore                                                                                                                               |
-| `/forms/[id]/preview`            | Preview (desktop/tablet/mobile frames)                                                                                                                          |
-| `/forms/trash`                   | Soft-deleted forms, restore                                                                                                                                     |
-| `/templates`                     | Template gallery (system + organisation), preview, use                                                                                                          |
-| `/responses`                     | Cross-form responses inbox                                                                                                                                      |
-| `/option-sets`                   | Predefined select lists                                                                                                                                         |
-| `/integrations/*`                | Destinations (own DB), webhooks, API keys                                                                                                                       |
-| `/settings/*`                    | Company, branding, domain & subdomain, authentication, security, localisation, notifications & email templates, themes, data retention, embed defaults, billing |
-| `/profile/*`                     | My profile, password, MFA, sessions/devices                                                                                                                     |
-| `/audit`                         | Audit trail: every action (who, what, when, where, before / after), filters, export — **early (F4)**                                                            |
-| `/users`, `/roles`, `/dashboard` | **Last**                                                                                                                                                        |
+| Route                             | Page                                                                                                                                                            |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                               | redirect → `/forms` (Dashboard later)                                                                                                                           |
+| `/forms`                          | All forms — DataView; filters: status, folder, owner, tags, date range; actions: new, duplicate, move, archive, delete (trash)                                  |
+| `/forms/new`                      | Start blank / from template / import JSON                                                                                                                       |
+| `/forms/[id]/build`               | Builder                                                                                                                                                         |
+| `/forms/[id]/design`              | Designer (theme)                                                                                                                                                |
+| `/forms/[id]/logic`               | Logic rules                                                                                                                                                     |
+| `/forms/[id]/settings`            | Form settings (submission rules, notifications, destinations, limits, schedule, thank-you, SEO)                                                                 |
+| `/forms/[id]/share`               | Share, links, short URL, QR, embed (iframe), access grants                                                                                                      |
+| `/forms/[id]/responses`           | Responses DataView + single response slide-over                                                                                                                 |
+| `/forms/[id]/analytics`           | Form analytics                                                                                                                                                  |
+| `/forms/[id]/versions`            | Version history, compare, restore                                                                                                                               |
+| `/forms/[id]/preview`             | Preview (desktop/tablet/mobile frames)                                                                                                                          |
+| `/forms/trash`                    | Soft-deleted forms, restore                                                                                                                                     |
+| `/templates`                      | Template gallery (system + organisation), preview, use                                                                                                          |
+| `/responses`                      | Cross-form responses inbox                                                                                                                                      |
+| `/option-sets`                    | Predefined select lists                                                                                                                                         |
+| `/integrations/*`                 | Data sources (own databases), destinations, webhooks, API keys (F12 / F14)                                                                                      |
+| `/integrations/data-sources/[id]` | Database explorer: schema tree, table data, structure, export (F12)                                                                                             |
+| `/integrations/query`             | Query editor: SQL tabs, results grid, history, saved queries (F12)                                                                                              |
+| `/settings/*`                     | Company, branding, domain & subdomain, authentication, security, localisation, notifications & email templates, themes, data retention, embed defaults, billing |
+| `/profile/*`                      | My profile, password, MFA, sessions/devices                                                                                                                     |
+| `/audit`                          | Audit trail: every action (who, what, when, where, before / after), filters, export — **early (F4)**                                                            |
+| `/users`, `/roles`, `/dashboard`  | **Last**                                                                                                                                                        |
 
 Public (SSR, `layouts/public.vue`): `/f/[slug]` form renderer, `/f/[slug]/embed` (chrome-less for iframe), `/s/[code]` short link redirect, closed/expired/not-found states.
 

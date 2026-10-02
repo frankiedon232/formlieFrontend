@@ -1,4 +1,4 @@
-<!-- Dropdown, multi-select, radio, checkboxes and toggle. Options come from the field (option sets in F13). -->
+<!-- Dropdown, multi-select, radio, checkboxes and toggle. Options come from the field (option sets in F14). -->
 <script setup lang="ts">
 import { isLocked, type FormField } from '#shared/utils/forms/build'
 

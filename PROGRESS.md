@@ -22,14 +22,15 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ⬜     | 0%   |
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
-| F12   | Settings                                          | ⬜     | 0%   |
-| F13   | Option sets & integrations                        | ⬜     | 0%   |
-| F14   | Profile                                           | ⬜     | 0%   |
-| F15   | Users                                             | ⬜     | 0%   |
-| F16   | Analytics                                         | ⬜     | 0%   |
-| F17   | Live collaboration (optional)                     | ⬜     | 0%   |
-| F18   | Dashboard                                         | ⬜     | 0%   |
-| F19   | Roles & access (last)                             | ⬜     | 0%   |
+| F12   | Data sources & databases                          | ⬜     | 0%   |
+| F13   | Settings                                          | ⬜     | 0%   |
+| F14   | Option sets, webhooks & API keys                  | ⬜     | 0%   |
+| F15   | Profile                                           | ⬜     | 0%   |
+| F16   | Users                                             | ⬜     | 0%   |
+| F17   | Analytics                                         | ⬜     | 0%   |
+| F18   | Live collaboration (optional)                     | ⬜     | 0%   |
+| F19   | Dashboard                                         | ⬜     | 0%   |
+| F20   | Roles & access (last)                             | ⬜     | 0%   |
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars — CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -213,10 +214,10 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Audit trail page (`/audit`)
 
-- ✅ DataView: table and grid, search, filters (area, result, person, country), date range, sort, server pagination; organisation filter arrives with several organisations per workspace (F12)
+- ✅ DataView: table and grid, search, filters (area, result, person, country), date range, sort, server pagination; organisation filter arrives with several organisations per workspace (F13)
 - ✅ Event detail slide-over: shareable link `/audit?event=<id>`; result + reason, who / when / where / device, item, before → after changes side by side, technical details, request id with copy, related activity
 - ✅ Export to Excel / CSV with progress; search, filters and dates carried into the export (mock writes CSV; real .xlsx from the backend)
-- ✅ Links from an event to its item (forms, settings, integrations); user pages follow in F15
+- ✅ Links from an event to its item (forms, settings, integrations); user pages follow in F16
 - ✅ "Audit trail" in the sidebar (SYSTEM), breadcrumbs, header title / subtitle / export button
 - ✅ Empty, loading and error states; phone layout (cards) and keyboard access
 
@@ -227,7 +228,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Access
 
-- ✅ Workspace admins only for now; a proper `audit.read` permission arrives with Roles & access (F19)
+- ✅ Workspace admins only for now; a proper `audit.read` permission arrives with Roles & access (F20)
 
 ### Waiting on backend
 
@@ -252,8 +253,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Mock endpoints `GET / PATCH /onboarding`, `POST /onboarding/finish`, uploads (`POST /uploads` → PUT to storage → `POST /uploads/{id}/complete`)
 - ✅ Every saved step recorded in the audit trail (workspace / branding / localisation changes with before → after, invitations, setup finished)
 - ✅ Shown after signup (welcome hand-off); reachable later from Settings and the user menu (owners / admins); members are sent to Forms
-- ⬜ Workspace logo in the rail and on the sign-in page (the public profile already returns `logo_url` and brand colour) → F12 Branding
-- ⏸ Real invitation emails (F15 Users), real object storage
+- ⬜ Workspace logo in the rail and on the sign-in page (the public profile already returns `logo_url` and brand colour) → F13 Branding
+- ⏸ Real invitation emails (F16 Users), real object storage
 
 ---
 
@@ -311,7 +312,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Field properties: label, help, placeholder, required, width, default value, field key (follows the label until first publish)
 - ✅ Validation rules: length, number range, pattern + message, choices min / max, file types / count / size
 - ✅ Options: add, rename, reorder (drag or ↑ / ↓), remove, paste a list; matrix rows
-- ✅ Reusable option lists: palette **Lists** tab, "Fill from a list" / "Save as list" in the options editor (full option-set management page stays in F13)
+- ✅ Reusable option lists: palette **Lists** tab, "Fill from a list" / "Save as list" in the options editor (full option-set management page stays in F14)
 - ✅ Saved fields: "Save" in field settings → palette **Saved** tab, click or drag to reuse
 - ✅ Prefill from URL parameters (example link shown)
 - ✅ Nothing selected → form settings (progress bar, save & resume, thank-you screen); several → bulk width / required / move / duplicate / delete
@@ -432,7 +433,69 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F12 — Settings ⬜
+## F12 — Data sources & databases ⬜
+
+**Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal — browse it, query it and manage it — safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F14e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
+
+### 1. Connections (Integrations → Data sources)
+
+- ⬜ Data sources page in DataView (Table / Grid): engine logo, name, host, database, access mode, status (connected · failing · disabled), last checked, used by N forms; filters, search, sort
+- ⬜ Add connection (step by step): engine (default port filled in) → host, port, database / service name → username + password → security (SSL / TLS mode, CA certificate upload, optional SSH tunnel: host, user, key) → access (read only / read + write, allowed schemas) → name and test
+- ⬜ Test connection with live progress (reach host → sign in → read schema → write check when read + write) and a clear, actionable error per step (`FRM-DEST-*`)
+- ⬜ Credentials are write-only: never shown or returned again, encrypted at rest on the server, sent in the encrypted envelope; "Change password" and "last changed"; Formalie's outgoing IP addresses shown to allow-list
+- ⬜ Edit, disable / enable, duplicate, delete (confirm; warns with the forms that send to it); health check every few minutes with status history
+- ⬜ Audit: `datasource.created · updated · tested · disabled · deleted · credentials_changed`
+
+### 2. Sending form data (destinations)
+
+- ⬜ Per form (form settings → Destination): built-in storage (default) or one of the connections; several destinations allowed
+- ⬜ Table: choose an existing table, or create one from the form — generated table preview (column names from field keys, types from field types), confirm, then create
+- ⬜ Field → column mapping: auto-match by key, type-mismatch warnings, required-column check, extra columns (response id, submitted at, form version, language, respondent details), multi-value fields (JSON / joined / child table), files as secure links
+- ⬜ Write mode: insert, or update-or-insert on a key column
+- ⬜ Delivery runs in the background: queued per response, retries with back-off, status per response (sent · pending · failed), error log with retry / retry all, pause / resume
+- ⬜ Backfill: send existing responses (date range) with a progress bar
+- ⬜ A form gains a field → offer "Add column" with a preview; a removed field is never dropped from the table automatically
+
+### 3. Database explorer
+
+- ⬜ Explorer page per connection: tree of schemas → tables / views → columns (type, nullable, default, primary / foreign keys, indexes) with row counts; search tables and columns; keyboard navigation of the tree
+- ⬜ Table data tab: rows with server-side paging, sort, filters per column type, search, column picker, Table / Grid (record cards), copy cell / row, row detail slide-over
+- ⬜ Structure tab: columns, keys, indexes, relations and the table definition (read only)
+- ⬜ Export a table or the filtered rows to CSV / XLSX with a progress bar
+- ⬜ Skeletons that mirror the tree and the grid; empty / error states with retry and "check connection"
+
+### 4. Query editor
+
+- ⬜ SQL editor with syntax highlighting, table / column completion from the explorer, format query, multiple tabs — **needs a code editor package (e.g. CodeMirror 6) — ask before adding**
+- ⬜ Run all or the selection (Ctrl / ⌘ + Enter), cancel a running query, time limit and row limit, results grid with paging, run time, rows affected, errors pointing at the line
+- ⬜ Read-only by default: on read-only connections only reading statements run; on read + write connections a changing statement shows what it will do and needs a confirm; structure changes (create / alter / drop) blocked unless the connection allows them
+- ⬜ Parameters (`:name` → input boxes), query history, saved queries (personal or shared with the workspace), export results (CSV / XLSX)
+- ⬜ Use a saved read query as a dynamic option list source (F14e) and, later, on the dashboard (F19)
+
+### 5. Other database operations
+
+- ⬜ Insert, edit and delete rows from the table view (form generated from the columns, type-checked, confirm on delete; read + write connections only)
+- ⬜ Create a table from a form; add columns for new fields (preview + confirm)
+- ⬜ Import CSV / XLSX into a table: column mapping, preview, validation, progress, error report
+- ⬜ Per-connection activity: delivery queue, failures, throughput, recent queries
+- ⬜ Scheduled exports and saved-query snapshots (later)
+
+### 6. Safety (enforced by the backend, visible in the UI)
+
+- ⬜ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps — never from the browser
+- ⬜ Every query, row change, import and export is recorded in the audit trail (who, connection, statement, rows affected, duration)
+- ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data) — wired up in F20; until then admins only
+- ⬜ Rate limits; no credentials or result data in logs; results never stored in the browser
+- ⬜ Clear wording: we provide controls (encryption, audit, least privilege), never certifications
+
+### 7. Navigation, API and docs
+
+- ⬜ Integrations menu: Data sources · Database explorer · Query editor · Destinations · Webhooks · API keys
+- ⬜ Mock first, then API: `/datasources` (CRUD, test, health, change credentials) · `/datasources/{id}/schema` · `/datasources/{id}/tables/{table}/rows` (list, insert, update, delete, import, export) · `/datasources/{id}/query` (+ cancel) · `/saved-queries` · `/forms/{id}/destinations` (+ mapping, create table, backfill, deliveries, retry); error codes `FRM-DEST-*`; contract updated
+
+---
+
+## F13 — Settings ⬜
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
@@ -504,26 +567,24 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F13 — Option sets & integrations ⬜
+## F14 — Option sets, webhooks & API keys ⬜
 
 ### Option sets (reusable choice lists)
 
 Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-02). Simple saved lists already exist (F7).
 
-- ⬜ **F13a List manager:** Option sets page (DataView), create, rename, delete (confirm when used by forms)
+- ⬜ **F14a List manager:** Option sets page (DataView), create, rename, delete (confirm when used by forms)
 - ⬜ Items: add, edit, retire, bulk paste, import CSV / XLSX with column mapping, reorder (drag + keyboard), values vs labels, translations
 - ⬜ "Used in" list of forms and fields
-- ⬜ **F13b Large lists + autocomplete:** items on the server, "search as you type" field mode, paging
-- ⬜ **F13c Cascading lists (levels):** tree lists (e.g. State → City → Location, up to 5 levels), "Cascading choice" field group, child opens with the parent's items only, changing the parent clears children
-- ⬜ **F13d Details + auto-fill:** extra columns on items; choosing an item fills other fields (optionally read-only); columns usable in formulas and logic
-- ⬜ **F13e Dynamic lists:** live sources — another form's responses, a connected database (read-only query), a JSON URL, a refreshed CSV; refresh schedule and sync log
+- ⬜ **F14b Large lists + autocomplete:** items on the server, "search as you type" field mode, paging
+- ⬜ **F14c Cascading lists (levels):** tree lists (e.g. State → City → Location, up to 5 levels), "Cascading choice" field group, child opens with the parent's items only, changing the parent clears children
+- ⬜ **F14d Details + auto-fill:** extra columns on items; choosing an item fills other fields (optionally read-only); columns usable in formulas and logic
+- ⬜ **F14e Dynamic lists:** live sources — another form's responses, a connected database (read-only query), a JSON URL, a refreshed CSV; refresh schedule and sync log
 - ⬜ Public option lookups for respondents (rate limited, published lists only); answers store value + label (+ path)
 
 ### Destinations (where responses go)
 
-- ⬜ Built-in encrypted storage (default)
-- ⬜ Connect MySQL, MariaDB, Oracle, PostgreSQL, SQL Server: connection form, test connection, SSL options
-- ⬜ Table and field mapping per form, sync status and error log, retry
+- Moved to **F12 — Data sources & databases** (connections, sending form data, explorer, query editor, other database operations).
 
 ### Webhooks
 
@@ -540,7 +601,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F14 — Profile ⬜
+## F15 — Profile ⬜
 
 - ⬜ My profile (name, photo, language, timezone)
 - ⬜ Change password
@@ -549,7 +610,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F15 — Users ⬜
+## F16 — Users ⬜
 
 - ⬜ Users list (DataView), invite by email with role, resend / revoke invites
 - ⬜ Enable / disable, reset password or MFA
@@ -557,7 +618,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F16 — Analytics ⬜
+## F17 — Analytics ⬜
 
 - ⬜ Per form: views, starts, completions, completion rate, average time
 - ⬜ Drop-off per page and field
@@ -566,7 +627,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F17 — Live collaboration (optional) ⬜
+## F18 — Live collaboration (optional) ⬜
 
 - ⬜ Presence, cursors and selections in the builder
 - ⬜ Conflict-free editing
@@ -574,7 +635,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F18 — Dashboard ⬜
+## F19 — Dashboard ⬜
 
 **Goal:** the workspace home, built after everything else so it shows what matters (design reference 2). Replaces the Forms redirect on `/` once done.
 
@@ -589,7 +650,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F19 — Roles & access ⬜ (last)
+## F20 — Roles & access ⬜ (last)
 
 - ⬜ Roles and permissions editor (permission catalogue, custom roles)
 - ⬜ Role assignment per user and per organisation; form-level access
@@ -610,47 +671,48 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 Owner requests added during development, and where they landed.
 
-| Date       | Request                                                                                                                                                                                                                                                                                                                                                           | Where       | Status |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ------ |
-| 2026-10-02 | Support many languages (at least 15) → 20 languages                                                                                                                                                                                                                                                                                                               | F0          | ✅     |
-| 2026-10-02 | Organise files in sub-folders (max two levels)                                                                                                                                                                                                                                                                                                                    | all         | ✅     |
-| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                                                                                                                                                                                                                                                                                                           | F0          | ✅     |
-| 2026-10-02 | Match the design references exactly                                                                                                                                                                                                                                                                                                                               | F1          | ✅     |
-| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design                                                                                                                                                                                                                                                                                   | F1          | ✅     |
-| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                                                                                                                                                                                                                                                                                                   | F1          | ✅     |
-| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                                                                                                                                                                                                                                                                                                    | F1 / F2     | ✅     |
-| 2026-10-02 | Keep the table / grid / filters flow unchanged                                                                                                                                                                                                                                                                                                                    | F2          | ✅     |
-| 2026-10-02 | "Wow" sign-in screen                                                                                                                                                                                                                                                                                                                                              | F3          | ✅     |
-| 2026-10-02 | Test accounts in the README; realistic test people                                                                                                                                                                                                                                                                                                                | F3          | ✅     |
-| 2026-10-02 | Global positioning (not one country); international sample data                                                                                                                                                                                                                                                                                                   | F3 / all    | ✅     |
-| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                                                                                                                                                                                                                                                                                                         | F3 / F12    | ✅     |
-| 2026-10-02 | Separate progress file with every task per phase                                                                                                                                                                                                                                                                                                                  | PROGRESS.md | ✅     |
-| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace                                                                                                                                                                                                                                                                                    | F3 / F12    | 🟡     |
-| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                                                                                                                                                                                                                                                                                                         | F3          | ✅     |
-| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC                                                                                                                                                                                                                                                                                  | F12 / F18   | ✅     |
-| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                                                                                                                                                                                                                                                                                                         | F4          | ✅     |
-| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome                                                                                                                                                                                                                                                                                           | F3          | ✅     |
-| 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them                                                                                                                                                                                                                                                                                    | F1          | ✅     |
-| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                                                                                                                                                                                                                                                                                                         | F3 / F12    | ✅     |
-| 2026-10-02 | Loading feedback everywhere: page loading, progress, skeletons, top bar, busy buttons                                                                                                                                                                                                                                                                             | F2 / all    | ✅     |
-| 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload                                                                                                                                                                                                                                                                           | F2 / all    | ✅     |
-| 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets                                                                                                                                                                                                                                                                               | all         | ✅     |
-| 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab                                                                                                                                                                                                                                                 | F6          | ✅     |
-| 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F11         | ⬜     |
-| 2026-10-02 | Builder feedback (18 points): inline rename, try fields on the canvas, read-only keys with suffix, help as info icon, smaller radius, tighter spacing, label position, Nuxt UI dates, saved fields + lists, file-type picker, thumbnails, option numbers in formulas, clearer + complete logic, read-only / disabled with required guards, phone preview stacking | F7          | ✅     |
-| 2026-10-02 | Form themes: header, footer, body, images and text design carried on shared forms; default theme when none is chosen                                                                                                                                                                                                                                              | F8          | ⬜     |
-| 2026-10-02 | Builder canvas uses the full width; full-screen toggle with fields · canvas · settings and visible save status                                                                                                                                                                                                                                                    | F7          | ✅     |
-| 2026-10-02 | Lists later: static, large / autocomplete, dynamic sources, cascading levels (State → City → Location) and auto-fill of other fields — plan in docs/OPTION-LISTS.md                                                                                                                                                                                               | F13         | ⬜     |
-| 2026-10-02 | Drop indicator while dragging fields (dashed placeholder + label)                                                                                                                                                                                                                                                                                                 | F7          | ✅     |
-| 2026-10-02 | Rich text field (real editor)                                                                                                                                                                                                                                                                                                                                     | F7          | ✅     |
-| 2026-10-02 | New fields default to ½ width; required messages use the field label                                                                                                                                                                                                                                                                                              | F7          | ✅     |
-| 2026-10-02 | Rich text: headings 1–6, paragraph, text alignment, code block                                                                                                                                                                                                                                                                                                    | F7          | ✅     |
-| 2026-10-02 | Layout blocks: nicer section, inline paragraph editing, image upload + resize, divider options                                                                                                                                                                                                                                                                    | F7          | ✅     |
-| 2026-10-02 | Validate email and all address parts (not only the first line)                                                                                                                                                                                                                                                                                                    | F7          | ✅     |
-| 2026-10-02 | IT / technical field types: IP address, domain, MAC, IBAN, SWIFT / BIC, colour + global types (full name, consent, duration, percentage, language, time zone, currency) — first set built; owner may add more                                                                                                                                                     | F7 (later)  | ⬜     |
-| 2026-10-02 | More theme designs: header-only, footer-only and side designs — at least 5 more now, more later                                                                                                                                                                                                                                                                   | F8          | ✅     |
-| 2026-10-02 | Form workspace header too full: search as an icon, Preview as an icon                                                                                                                                                                                                                                                                                             | F8          | ✅     |
-| 2026-10-02 | Templates before the renderer (both serve form creation) — phases renumbered: F9 Templates, F10 Renderer, F11 Responses                                                                                                                                                                                                                                           | Roadmap     | ✅     |
+| Date       | Request                                                                                                                                                                                                                                                                                                                                                           | Where           | Status |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------ |
+| 2026-10-02 | Support many languages (at least 15) → 20 languages                                                                                                                                                                                                                                                                                                               | F0              | ✅     |
+| 2026-10-02 | Organise files in sub-folders (max two levels)                                                                                                                                                                                                                                                                                                                    | all             | ✅     |
+| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                                                                                                                                                                                                                                                                                                           | F0              | ✅     |
+| 2026-10-02 | Match the design references exactly                                                                                                                                                                                                                                                                                                                               | F1              | ✅     |
+| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design                                                                                                                                                                                                                                                                                   | F1              | ✅     |
+| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                                                                                                                                                                                                                                                                                                   | F1              | ✅     |
+| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                                                                                                                                                                                                                                                                                                    | F1 / F2         | ✅     |
+| 2026-10-02 | Keep the table / grid / filters flow unchanged                                                                                                                                                                                                                                                                                                                    | F2              | ✅     |
+| 2026-10-02 | "Wow" sign-in screen                                                                                                                                                                                                                                                                                                                                              | F3              | ✅     |
+| 2026-10-02 | Test accounts in the README; realistic test people                                                                                                                                                                                                                                                                                                                | F3              | ✅     |
+| 2026-10-02 | Global positioning (not one country); international sample data                                                                                                                                                                                                                                                                                                   | F3 / all        | ✅     |
+| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                                                                                                                                                                                                                                                                                                         | F3 / F13        | ✅     |
+| 2026-10-02 | Separate progress file with every task per phase                                                                                                                                                                                                                                                                                                                  | PROGRESS.md     | ✅     |
+| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace                                                                                                                                                                                                                                                                                    | F3 / F13        | 🟡     |
+| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                                                                                                                                                                                                                                                                                                         | F3              | ✅     |
+| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC                                                                                                                                                                                                                                                                                  | F13 / F19       | ✅     |
+| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                                                                                                                                                                                                                                                                                                         | F4              | ✅     |
+| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome                                                                                                                                                                                                                                                                                           | F3              | ✅     |
+| 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them                                                                                                                                                                                                                                                                                    | F1              | ✅     |
+| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                                                                                                                                                                                                                                                                                                         | F3 / F13        | ✅     |
+| 2026-10-02 | Loading feedback everywhere: page loading, progress, skeletons, top bar, busy buttons                                                                                                                                                                                                                                                                             | F2 / all        | ✅     |
+| 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload                                                                                                                                                                                                                                                                           | F2 / all        | ✅     |
+| 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets                                                                                                                                                                                                                                                                               | all             | ✅     |
+| 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab                                                                                                                                                                                                                                                 | F6              | ✅     |
+| 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F11             | ⬜     |
+| 2026-10-02 | Builder feedback (18 points): inline rename, try fields on the canvas, read-only keys with suffix, help as info icon, smaller radius, tighter spacing, label position, Nuxt UI dates, saved fields + lists, file-type picker, thumbnails, option numbers in formulas, clearer + complete logic, read-only / disabled with required guards, phone preview stacking | F7              | ✅     |
+| 2026-10-02 | Form themes: header, footer, body, images and text design carried on shared forms; default theme when none is chosen                                                                                                                                                                                                                                              | F8              | ⬜     |
+| 2026-10-02 | Builder canvas uses the full width; full-screen toggle with fields · canvas · settings and visible save status                                                                                                                                                                                                                                                    | F7              | ✅     |
+| 2026-10-02 | Lists later: static, large / autocomplete, dynamic sources, cascading levels (State → City → Location) and auto-fill of other fields — plan in docs/OPTION-LISTS.md                                                                                                                                                                                               | F14             | ⬜     |
+| 2026-10-02 | Drop indicator while dragging fields (dashed placeholder + label)                                                                                                                                                                                                                                                                                                 | F7              | ✅     |
+| 2026-10-02 | Rich text field (real editor)                                                                                                                                                                                                                                                                                                                                     | F7              | ✅     |
+| 2026-10-02 | New fields default to ½ width; required messages use the field label                                                                                                                                                                                                                                                                                              | F7              | ✅     |
+| 2026-10-02 | Rich text: headings 1–6, paragraph, text alignment, code block                                                                                                                                                                                                                                                                                                    | F7              | ✅     |
+| 2026-10-02 | Layout blocks: nicer section, inline paragraph editing, image upload + resize, divider options                                                                                                                                                                                                                                                                    | F7              | ✅     |
+| 2026-10-02 | Validate email and all address parts (not only the first line)                                                                                                                                                                                                                                                                                                    | F7              | ✅     |
+| 2026-10-02 | IT / technical field types: IP address, domain, MAC, IBAN, SWIFT / BIC, colour + global types (full name, consent, duration, percentage, language, time zone, currency) — first set built; owner may add more                                                                                                                                                     | F7 (later)      | ⬜     |
+| 2026-10-02 | More theme designs: header-only, footer-only and side designs — at least 5 more now, more later                                                                                                                                                                                                                                                                   | F8              | ✅     |
+| 2026-10-02 | Form workspace header too full: search as an icon, Preview as an icon                                                                                                                                                                                                                                                                                             | F8              | ✅     |
+| 2026-10-02 | Templates before the renderer (both serve form creation) — phases renumbered: F9 Templates, F10 Renderer, F11 Responses                                                                                                                                                                                                                                           | Roadmap         | ✅     |
+| 2026-10-02 | Integrations for data sources: add their databases to send form data, database explorer, query editor, other database operations                                                                                                                                                                                                                                  | F12 (new phase) | ⬜     |
 
 ---
 
@@ -667,11 +729,11 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F12). Provider callback waits on the backend.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F13). Provider callback waits on the backend.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | 2026-10-02 | F3    | "Work email" → "Email address" everywhere, neutral placeholder name@example.com, no "work email" wording (any organisation, any email provider).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F20 (last).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -704,3 +766,5 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F8    | Milestone 2: save / update / apply themes from the designer, themes library page (rename, duplicate, delete with usage count), audit + `FRM-FORM-1010`. 13 new field types (global + technical) with validation (IP v4/v6, domain, MAC, IBAN mod-97, BIC, colour, duration, name parts, consent, catalogue picks); all 20 languages.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | 2026-10-02 | F8    | Six more starting points (Banner, Ribbon, Grounded, Side panel, Aurora, Corporate) with header bands, footer bars and colour / gradient side panels; designer controls for each; swatches show the structure. Form workspace header: search and Preview as icons. Confirm dialogs now always open above drawers (they were hidden behind the designer drawer on phones). Roadmap: Templates moved before the renderer (F9 Templates · F10 Renderer · F11 Responses).                                                                                                                                                                                                                                                                                                             |
 | 2026-10-02 | F8    | Fix: “Add link” in the footer reset the footer (a new link starts as an incomplete https:// address, which failed the theme check and switched the footer off). Links are now kept while being typed; only complete https links with a label show on the form; other schemes are emptied.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+
+| 2026-10-02 | Roadmap | New phase **F12 — Data sources & databases** (connections, sending form data, database explorer, query editor, other database operations, safety); later phases renumbered F13–F20 (Settings → Roles & access). |

@@ -33,7 +33,7 @@ const createItems = computed<DropdownMenuItem[][]>(() => [
   ],
 ])
 
-// Current workspace; the organisation switcher (several orgs per tenant) joins in F12.
+// Current workspace; the organisation switcher (several orgs per tenant) joins in F13.
 const tenant = useTenant()
 const workspaces = computed(() => [
   { name: tenant.profile.value?.name ?? t('app.name'), icon: 'i-lucide-building-2', active: true },

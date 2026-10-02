@@ -53,7 +53,7 @@ const matches = (event: AuditEvent, q: string) =>
     event.action,
   ].some(value => value?.toLowerCase().includes(q))
 
-/** GET /audit-logs — admins only until Roles & access (F19). */
+/** GET /audit-logs — admins only until Roles & access (F20). */
 export const listAuditLogs = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAdmin(event)
   const { data, meta } = paginate(
