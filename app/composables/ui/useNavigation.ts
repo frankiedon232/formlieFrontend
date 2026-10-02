@@ -12,6 +12,8 @@ export interface AppNavItem {
   dot?: string
   iconClass?: string
   children?: AppNavItem[]
+  /** Workspace owners / admins only (until Roles & access, F19). */
+  adminOnly?: boolean
 }
 
 /**
@@ -65,12 +67,15 @@ const RESOURCE_NAV: AppNavItem[] = [
 
 const SYSTEM_NAV: AppNavItem[] = [
   { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s' },
+  { key: 'audit', icon: 'i-lucide-scroll-text', to: '/audit', shortcut: 'g-l', adminOnly: true },
   { key: 'help', icon: 'i-lucide-circle-help', to: '/help' },
 ]
 
 export function useNavigation() {
   const { t } = useI18n()
   const route = useRoute()
+  const session = useSession()
+  const allowed = (item: AppNavItem) => !item.adminOnly || session.user.value?.role !== 'member'
 
   function isActive(item: AppNavItem): boolean {
     if (item.query)
@@ -113,13 +118,13 @@ export function useNavigation() {
 
   const mainItems = computed(() => MAIN_NAV.map(item => toMenuItem(item)))
   const resourceItems = computed(() => RESOURCE_NAV.map(item => toMenuItem(item)))
-  const systemItems = computed(() => SYSTEM_NAV.map(item => toMenuItem(item)))
+  const systemItems = computed(() => SYSTEM_NAV.filter(allowed).map(item => toMenuItem(item)))
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
-    [...MAIN_NAV, ...RESOURCE_NAV, ...SYSTEM_NAV].flatMap(item =>
-      item.children && !item.children[0]?.dot ? item.children : [item],
-    ),
+    [...MAIN_NAV, ...RESOURCE_NAV, ...SYSTEM_NAV]
+      .filter(allowed)
+      .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
 
   return { mainItems, resourceItems, systemItems, destinations, isActive }

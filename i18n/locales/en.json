@@ -79,7 +79,8 @@
     "fromTemplate": "From a template",
     "workspaces": "Workspaces",
     "expand": "Expand menu",
-    "collapse": "Collapse menu"
+    "collapse": "Collapse menu",
+    "audit": "Audit trail"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -368,5 +369,159 @@
       "failedDesc": "Sign in with your email and password instead."
     },
     "workspace": "Workspace"
+  },
+  "audit": {
+    "description": "Every action in your workspace — who, what, when and where.",
+    "security": "Security events",
+    "searchPlaceholder": "Search people, items, IP addresses…",
+    "emptyTitle": "Nothing recorded yet",
+    "emptyDesc": "Actions in your workspace appear here as they happen.",
+    "noAccessTitle": "Only workspace admins can see the audit trail",
+    "noAccessDesc": "Ask an owner or admin of this workspace if you need this information.",
+    "sortNewest": "Newest first",
+    "sortOldest": "Oldest first",
+    "notSignedIn": "Not signed in",
+    "unknownLocation": "Unknown location",
+    "yes": "Yes",
+    "no": "No",
+    "col": {
+      "when": "When",
+      "person": "Person",
+      "action": "Action",
+      "result": "Result",
+      "location": "Location",
+      "device": "Device"
+    },
+    "filter": {
+      "area": "Area",
+      "outcome": "Result",
+      "person": "Person",
+      "country": "Country"
+    },
+    "outcome": {
+      "success": "Success",
+      "failure": "Failed",
+      "blocked": "Blocked"
+    },
+    "area": {
+      "auth": "Sign-in & security",
+      "workspace": "Workspace",
+      "forms": "Forms",
+      "responses": "Responses",
+      "settings": "Settings",
+      "users": "Users",
+      "integrations": "Integrations",
+      "audit": "Audit trail"
+    },
+    "actorType": {
+      "user": "Person",
+      "api_key": "API key",
+      "system": "System"
+    },
+    "device": {
+      "desktop": "Computer",
+      "mobile": "Phone",
+      "tablet": "Tablet",
+      "unknown": "Unknown device"
+    },
+    "resource": {
+      "form": "Form",
+      "response": "Response",
+      "user": "User",
+      "workspace": "Workspace",
+      "setting": "Setting",
+      "destination": "Destination",
+      "webhook": "Webhook",
+      "api_key": "API key",
+      "export": "Export"
+    },
+    "field": {
+      "name": "Name",
+      "status": "Status",
+      "folder": "Folder",
+      "role": "Role",
+      "brand_colour": "Brand colour",
+      "session_timeout_minutes": "Session timeout (minutes)",
+      "sign_in_methods": "Sign-in methods",
+      "response_status": "Response status"
+    },
+    "action": {
+      "auth_login_succeeded": "Signed in",
+      "auth_login_failed": "Sign-in failed",
+      "auth_login_blocked": "Sign-in blocked",
+      "auth_otp_sent": "Sign-in code sent",
+      "auth_otp_failed": "Wrong sign-in code",
+      "auth_otp_locked": "Too many wrong codes",
+      "auth_logout": "Signed out",
+      "auth_session_revoked": "Session revoked",
+      "auth_password_reset_requested": "Password reset requested",
+      "auth_password_reset": "Password changed",
+      "workspace_created": "Workspace created",
+      "workspace_updated": "Workspace updated",
+      "forms_created": "Form created",
+      "forms_updated": "Form edited",
+      "forms_published": "Form published",
+      "forms_closed": "Form closed",
+      "forms_shared": "Form shared",
+      "forms_archived": "Form archived",
+      "forms_deleted": "Form moved to trash",
+      "forms_restored": "Form restored",
+      "responses_updated": "Response updated",
+      "responses_exported": "Responses exported",
+      "responses_deleted": "Response deleted",
+      "settings_updated": "Settings changed",
+      "users_invited": "Person invited",
+      "users_role_changed": "Role changed",
+      "users_disabled": "Account disabled",
+      "users_enabled": "Account enabled",
+      "integrations_destination_connected": "Database connected",
+      "integrations_webhook_created": "Webhook added",
+      "integrations_api_key_created": "API key created",
+      "integrations_api_key_revoked": "API key revoked",
+      "audit_exported": "Audit trail exported"
+    },
+    "detail": {
+      "who": "Who",
+      "when": "When",
+      "where": "Where",
+      "item": "Item",
+      "changes": "Changes",
+      "before": "Before",
+      "after": "After",
+      "empty": "(empty)",
+      "technical": "Technical details",
+      "requestId": "Request ID",
+      "utc": "UTC",
+      "open": "Open",
+      "viewDetails": "View details",
+      "byPerson": "Show this person's activity",
+      "copyRequestId": "Copy request ID",
+      "copied": "Request ID copied",
+      "moreItem": "More on this item",
+      "morePerson": "More by this person",
+      "showAll": "Show all"
+    },
+    "timeline": {
+      "empty": "No other activity yet.",
+      "viewAll": "View all activity"
+    },
+    "export": {
+      "button": "Export",
+      "title": "Export audit trail",
+      "desc": "Download the events that match your current search, filters and dates.",
+      "format": "File format",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Opens in Excel, Numbers or Google Sheets.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "Plain text, for other tools and imports.",
+      "applied": "{count} filter applied | {count} filters applied",
+      "none": "All events (no filters applied)",
+      "start": "Start export",
+      "preparing": "Preparing your file…",
+      "rows": "{n} event | {n} events",
+      "ready": "Your file is ready",
+      "download": "Download",
+      "expires": "The download link works once and expires {time}."
+    }
   }
 }

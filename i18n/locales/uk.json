@@ -79,7 +79,8 @@
     "fromTemplate": "Із шаблону",
     "workspaces": "Робочі простори",
     "expand": "Розгорнути меню",
-    "collapse": "Згорнути меню"
+    "collapse": "Згорнути меню",
+    "audit": "Журнал аудиту"
   },
   "navbar": {
     "breadcrumb": "Навігаційний ланцюжок",
@@ -368,5 +369,159 @@
       "failedDesc": "Увійдіть за допомогою email і пароля."
     },
     "workspace": "Робочий простір"
+  },
+  "audit": {
+    "description": "Кожна дія у вашому робочому просторі: хто, що, коли й де.",
+    "security": "Події безпеки",
+    "searchPlaceholder": "Пошук людей, об’єктів, IP-адрес…",
+    "emptyTitle": "Поки нічого не записано",
+    "emptyDesc": "Дії у вашому робочому просторі з’являються тут, щойно відбуваються.",
+    "noAccessTitle": "Журнал аудиту бачать лише адміністратори робочого простору",
+    "noAccessDesc": "Якщо вам потрібна ця інформація, зверніться до власника або адміністратора цього простору.",
+    "sortNewest": "Спершу нові",
+    "sortOldest": "Спершу старі",
+    "notSignedIn": "Вхід не виконано",
+    "unknownLocation": "Невідоме місце",
+    "yes": "Так",
+    "no": "Ні",
+    "col": {
+      "when": "Коли",
+      "person": "Користувач",
+      "action": "Дія",
+      "result": "Результат",
+      "location": "Місце",
+      "device": "Пристрій"
+    },
+    "filter": {
+      "area": "Розділ",
+      "outcome": "Результат",
+      "person": "Користувач",
+      "country": "Країна"
+    },
+    "outcome": {
+      "success": "Успішно",
+      "failure": "Помилка",
+      "blocked": "Заблоковано"
+    },
+    "area": {
+      "auth": "Вхід і безпека",
+      "workspace": "Робочий простір",
+      "forms": "Форми",
+      "responses": "Відповіді",
+      "settings": "Налаштування",
+      "users": "Користувачі",
+      "integrations": "Інтеграції",
+      "audit": "Журнал аудиту"
+    },
+    "actorType": {
+      "user": "Користувач",
+      "api_key": "API-ключ",
+      "system": "Система"
+    },
+    "device": {
+      "desktop": "Комп’ютер",
+      "mobile": "Телефон",
+      "tablet": "Планшет",
+      "unknown": "Невідомий пристрій"
+    },
+    "resource": {
+      "form": "Форма",
+      "response": "Відповідь",
+      "user": "Користувач",
+      "workspace": "Робочий простір",
+      "setting": "Налаштування",
+      "destination": "Призначення",
+      "webhook": "Вебхук",
+      "api_key": "API-ключ",
+      "export": "Експорт"
+    },
+    "field": {
+      "name": "Назва",
+      "status": "Статус",
+      "folder": "Папка",
+      "role": "Роль",
+      "brand_colour": "Фірмовий колір",
+      "session_timeout_minutes": "Тайм-аут сеансу (хвилини)",
+      "sign_in_methods": "Способи входу",
+      "response_status": "Статус відповіді"
+    },
+    "action": {
+      "auth_login_succeeded": "Вхід виконано",
+      "auth_login_failed": "Помилка входу",
+      "auth_login_blocked": "Вхід заблоковано",
+      "auth_otp_sent": "Код для входу надіслано",
+      "auth_otp_failed": "Неправильний код для входу",
+      "auth_otp_locked": "Забагато неправильних кодів",
+      "auth_logout": "Вихід виконано",
+      "auth_session_revoked": "Сеанс відкликано",
+      "auth_password_reset_requested": "Запитано скидання пароля",
+      "auth_password_reset": "Пароль змінено",
+      "workspace_created": "Робочий простір створено",
+      "workspace_updated": "Робочий простір оновлено",
+      "forms_created": "Форму створено",
+      "forms_updated": "Форму змінено",
+      "forms_published": "Форму опубліковано",
+      "forms_closed": "Форму закрито",
+      "forms_shared": "Доступ до форми надано",
+      "forms_archived": "Форму архівовано",
+      "forms_deleted": "Форму переміщено в кошик",
+      "forms_restored": "Форму відновлено",
+      "responses_updated": "Відповідь оновлено",
+      "responses_exported": "Відповіді експортовано",
+      "responses_deleted": "Відповідь видалено",
+      "settings_updated": "Налаштування змінено",
+      "users_invited": "Користувача запрошено",
+      "users_role_changed": "Роль змінено",
+      "users_disabled": "Обліковий запис вимкнено",
+      "users_enabled": "Обліковий запис увімкнено",
+      "integrations_destination_connected": "Базу даних підключено",
+      "integrations_webhook_created": "Вебхук додано",
+      "integrations_api_key_created": "API-ключ створено",
+      "integrations_api_key_revoked": "API-ключ відкликано",
+      "audit_exported": "Журнал аудиту експортовано"
+    },
+    "detail": {
+      "who": "Хто",
+      "when": "Коли",
+      "where": "Де",
+      "item": "Об’єкт",
+      "changes": "Зміни",
+      "before": "До",
+      "after": "Після",
+      "empty": "(порожньо)",
+      "technical": "Технічні відомості",
+      "requestId": "ID запиту",
+      "utc": "UTC",
+      "open": "Відкрити",
+      "viewDetails": "Докладніше",
+      "byPerson": "Показати дії цього користувача",
+      "copyRequestId": "Копіювати ID запиту",
+      "copied": "ID запиту скопійовано",
+      "moreItem": "Ще щодо цього об’єкта",
+      "morePerson": "Ще від цього користувача",
+      "showAll": "Показати все"
+    },
+    "timeline": {
+      "empty": "Інших дій поки немає.",
+      "viewAll": "Усі дії"
+    },
+    "export": {
+      "button": "Експорт",
+      "title": "Експорт журналу аудиту",
+      "desc": "Завантажте події, що відповідають поточному пошуку, фільтрам і датам.",
+      "format": "Формат файлу",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Відкривається в Excel, Numbers або Google Таблицях.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "Звичайний текст — для інших інструментів та імпорту.",
+      "applied": "Застосовано фільтрів: {count} | Застосовано фільтрів: {count}",
+      "none": "Усі події (без фільтрів)",
+      "start": "Почати експорт",
+      "preparing": "Готуємо файл…",
+      "rows": "Подій: {n} | Подій: {n}",
+      "ready": "Файл готовий",
+      "download": "Завантажити",
+      "expires": "Посилання для завантаження працює один раз і спливає {time}."
+    }
   }
 }

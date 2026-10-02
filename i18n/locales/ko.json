@@ -79,7 +79,8 @@
     "fromTemplate": "템플릿에서",
     "workspaces": "워크스페이스",
     "expand": "메뉴 펼치기",
-    "collapse": "메뉴 접기"
+    "collapse": "메뉴 접기",
+    "audit": "감사 로그"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -368,5 +369,159 @@
       "failedDesc": "이메일과 비밀번호로 로그인하세요."
     },
     "workspace": "워크스페이스"
+  },
+  "audit": {
+    "description": "워크스페이스의 모든 작업 — 누가, 무엇을, 언제, 어디서.",
+    "security": "보안 이벤트",
+    "searchPlaceholder": "사람, 항목, IP 주소 검색…",
+    "emptyTitle": "아직 기록이 없습니다",
+    "emptyDesc": "워크스페이스의 작업이 발생하는 즉시 여기에 표시됩니다.",
+    "noAccessTitle": "감사 로그는 워크스페이스 관리자만 볼 수 있습니다",
+    "noAccessDesc": "이 정보가 필요하면 이 워크스페이스의 소유자나 관리자에게 문의하세요.",
+    "sortNewest": "최신순",
+    "sortOldest": "오래된순",
+    "notSignedIn": "로그인하지 않음",
+    "unknownLocation": "알 수 없는 위치",
+    "yes": "예",
+    "no": "아니요",
+    "col": {
+      "when": "일시",
+      "person": "사용자",
+      "action": "작업",
+      "result": "결과",
+      "location": "위치",
+      "device": "기기"
+    },
+    "filter": {
+      "area": "분류",
+      "outcome": "결과",
+      "person": "사용자",
+      "country": "국가"
+    },
+    "outcome": {
+      "success": "성공",
+      "failure": "실패",
+      "blocked": "차단됨"
+    },
+    "area": {
+      "auth": "로그인 및 보안",
+      "workspace": "워크스페이스",
+      "forms": "양식",
+      "responses": "응답",
+      "settings": "설정",
+      "users": "사용자",
+      "integrations": "연동",
+      "audit": "감사 로그"
+    },
+    "actorType": {
+      "user": "사용자",
+      "api_key": "API 키",
+      "system": "시스템"
+    },
+    "device": {
+      "desktop": "컴퓨터",
+      "mobile": "휴대폰",
+      "tablet": "태블릿",
+      "unknown": "알 수 없는 기기"
+    },
+    "resource": {
+      "form": "양식",
+      "response": "응답",
+      "user": "사용자",
+      "workspace": "워크스페이스",
+      "setting": "설정",
+      "destination": "대상",
+      "webhook": "웹훅",
+      "api_key": "API 키",
+      "export": "내보내기"
+    },
+    "field": {
+      "name": "이름",
+      "status": "상태",
+      "folder": "폴더",
+      "role": "역할",
+      "brand_colour": "브랜드 색상",
+      "session_timeout_minutes": "세션 시간 제한(분)",
+      "sign_in_methods": "로그인 방법",
+      "response_status": "응답 상태"
+    },
+    "action": {
+      "auth_login_succeeded": "로그인함",
+      "auth_login_failed": "로그인 실패",
+      "auth_login_blocked": "로그인 차단됨",
+      "auth_otp_sent": "로그인 코드 보냄",
+      "auth_otp_failed": "잘못된 로그인 코드",
+      "auth_otp_locked": "잘못된 코드가 너무 많음",
+      "auth_logout": "로그아웃함",
+      "auth_session_revoked": "세션 취소됨",
+      "auth_password_reset_requested": "비밀번호 재설정 요청",
+      "auth_password_reset": "비밀번호 변경됨",
+      "workspace_created": "워크스페이스 생성됨",
+      "workspace_updated": "워크스페이스 업데이트됨",
+      "forms_created": "양식 생성됨",
+      "forms_updated": "양식 수정됨",
+      "forms_published": "양식 게시됨",
+      "forms_closed": "양식 마감됨",
+      "forms_shared": "양식 공유됨",
+      "forms_archived": "양식 보관됨",
+      "forms_deleted": "양식을 휴지통으로 이동함",
+      "forms_restored": "양식 복원됨",
+      "responses_updated": "응답 업데이트됨",
+      "responses_exported": "응답 내보냄",
+      "responses_deleted": "응답 삭제됨",
+      "settings_updated": "설정 변경됨",
+      "users_invited": "사용자 초대됨",
+      "users_role_changed": "역할 변경됨",
+      "users_disabled": "계정 비활성화됨",
+      "users_enabled": "계정 활성화됨",
+      "integrations_destination_connected": "데이터베이스 연결됨",
+      "integrations_webhook_created": "웹훅 추가됨",
+      "integrations_api_key_created": "API 키 생성됨",
+      "integrations_api_key_revoked": "API 키 취소됨",
+      "audit_exported": "감사 로그 내보냄"
+    },
+    "detail": {
+      "who": "누가",
+      "when": "일시",
+      "where": "위치",
+      "item": "항목",
+      "changes": "변경 사항",
+      "before": "변경 전",
+      "after": "변경 후",
+      "empty": "(비어 있음)",
+      "technical": "기술 정보",
+      "requestId": "요청 ID",
+      "utc": "UTC",
+      "open": "열기",
+      "viewDetails": "세부 정보 보기",
+      "byPerson": "이 사용자의 활동 보기",
+      "copyRequestId": "요청 ID 복사",
+      "copied": "요청 ID를 복사했습니다",
+      "moreItem": "이 항목의 다른 기록",
+      "morePerson": "이 사용자의 다른 기록",
+      "showAll": "모두 보기"
+    },
+    "timeline": {
+      "empty": "아직 다른 활동이 없습니다.",
+      "viewAll": "모든 활동 보기"
+    },
+    "export": {
+      "button": "내보내기",
+      "title": "감사 로그 내보내기",
+      "desc": "현재 검색, 필터, 날짜와 일치하는 이벤트를 다운로드합니다.",
+      "format": "파일 형식",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Excel, Numbers, Google 스프레드시트에서 열립니다.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "일반 텍스트. 다른 도구와 가져오기용.",
+      "applied": "필터 {count}개 적용됨 | 필터 {count}개 적용됨",
+      "none": "모든 이벤트(필터 없음)",
+      "start": "내보내기 시작",
+      "preparing": "파일을 준비하는 중…",
+      "rows": "이벤트 {n}개 | 이벤트 {n}개",
+      "ready": "파일이 준비되었습니다",
+      "download": "다운로드",
+      "expires": "다운로드 링크는 한 번만 사용할 수 있으며 {time} 만료됩니다."
+    }
   }
 }

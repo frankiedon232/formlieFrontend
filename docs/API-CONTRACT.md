@@ -43,8 +43,27 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 | POST | `/auth/password/reset` | `{ challenge_id, code, password }` → `{ reset: true }` |
 | GET | `/me` · PATCH `/me` · POST `/me/password` · `/me/mfa/totp/*` · GET/DELETE `/me/sessions/{id}` | |
 
+**`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F19); owner and admin manage the workspace (e.g. the audit trail).
+
 **Refresh cookie:** `formalie_rt`, `HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth` (covers refresh + logout).
 **Mock only:** challenge responses carry `meta.dev_code` so the dev code screen can show it; the real API never returns codes. The mock honours the dev header `X-Formalie-Dev-Tenant` (localhost / LAN-IP testing).
+
+## Audit trail
+
+Owners / admins only (members → FRM-PERM-1001) until permissions arrive with Roles & access (F19). Every state-changing endpoint and every sign-in event writes one entry; action keys and areas are listed once in `shared/utils/audit/events.ts`.
+
+| Method | Path                 | Notes                                                                                                                                                                                                                                                           |
+| ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/audit-logs`        | list, default `sort=-occurred_at`; filters `area`, `action`, `outcome`, `actor_id`, `country`, `resource_type`, `resource_id` (comma = any of); `from` / `to` on `occurred_at`; `q` searches person, email, item, IP, city, request id, action → `AuditEvent[]` |
+| GET    | `/audit-logs/{id}`   | one `AuditEvent`                                                                                                                                                                                                                                                |
+| GET    | `/audit-logs/facets` | `{ actors: [{ id, name }], countries: [ISO-2] }` for the filter menus                                                                                                                                                                                           |
+| POST   | `/audit-logs/export` | `{ format: xlsx\|csv, filters: { q?, from?, to?, "filter[…]"? } }` → 202 `ExportJob`; the export itself is recorded (`audit.exported`)                                                                                                                          |
+| GET    | `/exports/{id}`      | `ExportJob { id, status: queued\|running\|done\|failed, progress (0–100), rows, format, file_name, download_url\|null, expires_at\|null }` — poll until `done`                                                                                                  |
+| GET    | `/downloads/{token}` | **plain** file response (a browser download cannot carry the envelope). The token is the permission: random 256-bit, single use, 10 minutes, bound to the workspace host that created it; `Cache-Control: no-store`; expired / used → 410                       |
+
+`AuditEvent`: `{ id, occurred_at, action, area, outcome: success|failure|blocked, severity: info|notice|warning|critical, actor: { type: user|api_key|system, id|null, name, email|null }, resource: { type, id|null, name|null }|null, organisation: { id, name }|null, location: { ip, city|null, country|null }, device: { type: desktop|mobile|tablet|unknown, browser|null, os|null }, changes: [{ field, before, after }], metadata: { [key]: string }, reason: FRM-code|null, request_id }`. `actor.id` is null for attempts by someone who is not signed in (name = the email typed). CSV / Excel exports neutralise cells starting with `= + - @` (formula injection) and are UTF-8 with a byte-order mark.
+
+**Mock only:** the mock writes CSV for both formats (the backend produces a real .xlsx); local / private IPs have no city or country (the backend resolves them with GeoIP).
 
 ## Forms
 
@@ -100,7 +119,7 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 
 ## Later (last phases)
 
-`/users`, `/invitations`, `/roles`, `/permissions`, `/audit-logs`, `/dashboard?from=&to=`, `/billing/*`.
+`/users`, `/invitations`, `/roles`, `/permissions`, `/dashboard?from=&to=`, `/billing/*`. (The audit trail moved up — see Audit trail.)
 
 ## FormSchema (v1)
 

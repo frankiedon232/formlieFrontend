@@ -64,6 +64,8 @@ Edit this file whenever a decision changes.
 
 47. **Audit trail early** (owner, 2026-10-02): the audit trail is its own phase (F4) right after sign-in, not grouped with RBAC at the end. Every later phase records its actions (mock first, backend later) and shows them in `/audit`; only the `audit.read` / `audit.export` permissions wait for Roles & access (F19).
 
+48. **Audit trail details** (F4): one event catalogue (`shared/utils/audit/events.ts`) feeds the mock, filters, labels and exports. Users carry a simple `role` (owner / admin / member) until Roles & access (F19); members get FRM-PERM-1001 and the menu entry is hidden. Failed sign-ins by unknown emails are recorded with `actor.id = null`. Exports run as background jobs; the file is fetched from a plain, single-use, 10-minute download link (a browser download cannot carry the envelope). The detail panel is addressable (`/audit?event=<id>`) so an event can be shared. Mock IPs come from the reserved documentation ranges.
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

@@ -79,7 +79,8 @@
     "fromTemplate": "Z szablonu",
     "workspaces": "Obszary robocze",
     "expand": "Rozwiń menu",
-    "collapse": "Zwiń menu"
+    "collapse": "Zwiń menu",
+    "audit": "Dziennik audytu"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -368,5 +369,159 @@
       "failedDesc": "Zaloguj się e-mailem i hasłem."
     },
     "workspace": "Obszar roboczy"
+  },
+  "audit": {
+    "description": "Każda akcja w Twoim obszarze roboczym: kto, co, kiedy i gdzie.",
+    "security": "Zdarzenia bezpieczeństwa",
+    "searchPlaceholder": "Szukaj osób, elementów, adresów IP…",
+    "emptyTitle": "Nic jeszcze nie zarejestrowano",
+    "emptyDesc": "Akcje w Twoim obszarze roboczym pojawiają się tutaj na bieżąco.",
+    "noAccessTitle": "Tylko administratorzy obszaru roboczego widzą dziennik audytu",
+    "noAccessDesc": "Jeśli potrzebujesz tych informacji, poproś właściciela lub administratora tego obszaru.",
+    "sortNewest": "Najnowsze najpierw",
+    "sortOldest": "Najstarsze najpierw",
+    "notSignedIn": "Niezalogowany",
+    "unknownLocation": "Nieznana lokalizacja",
+    "yes": "Tak",
+    "no": "Nie",
+    "col": {
+      "when": "Kiedy",
+      "person": "Osoba",
+      "action": "Akcja",
+      "result": "Wynik",
+      "location": "Lokalizacja",
+      "device": "Urządzenie"
+    },
+    "filter": {
+      "area": "Obszar",
+      "outcome": "Wynik",
+      "person": "Osoba",
+      "country": "Kraj"
+    },
+    "outcome": {
+      "success": "Powodzenie",
+      "failure": "Niepowodzenie",
+      "blocked": "Zablokowano"
+    },
+    "area": {
+      "auth": "Logowanie i bezpieczeństwo",
+      "workspace": "Obszar roboczy",
+      "forms": "Formularze",
+      "responses": "Odpowiedzi",
+      "settings": "Ustawienia",
+      "users": "Użytkownicy",
+      "integrations": "Integracje",
+      "audit": "Dziennik audytu"
+    },
+    "actorType": {
+      "user": "Osoba",
+      "api_key": "Klucz API",
+      "system": "System"
+    },
+    "device": {
+      "desktop": "Komputer",
+      "mobile": "Telefon",
+      "tablet": "Tablet",
+      "unknown": "Nieznane urządzenie"
+    },
+    "resource": {
+      "form": "Formularz",
+      "response": "Odpowiedź",
+      "user": "Użytkownik",
+      "workspace": "Obszar roboczy",
+      "setting": "Ustawienie",
+      "destination": "Miejsce docelowe",
+      "webhook": "Webhook",
+      "api_key": "Klucz API",
+      "export": "Eksport"
+    },
+    "field": {
+      "name": "Nazwa",
+      "status": "Status",
+      "folder": "Folder",
+      "role": "Rola",
+      "brand_colour": "Kolor marki",
+      "session_timeout_minutes": "Limit czasu sesji (minuty)",
+      "sign_in_methods": "Metody logowania",
+      "response_status": "Status odpowiedzi"
+    },
+    "action": {
+      "auth_login_succeeded": "Zalogowano",
+      "auth_login_failed": "Nieudane logowanie",
+      "auth_login_blocked": "Logowanie zablokowane",
+      "auth_otp_sent": "Wysłano kod logowania",
+      "auth_otp_failed": "Błędny kod logowania",
+      "auth_otp_locked": "Zbyt wiele błędnych kodów",
+      "auth_logout": "Wylogowano",
+      "auth_session_revoked": "Sesja unieważniona",
+      "auth_password_reset_requested": "Poproszono o reset hasła",
+      "auth_password_reset": "Zmieniono hasło",
+      "workspace_created": "Utworzono obszar roboczy",
+      "workspace_updated": "Zaktualizowano obszar roboczy",
+      "forms_created": "Utworzono formularz",
+      "forms_updated": "Edytowano formularz",
+      "forms_published": "Opublikowano formularz",
+      "forms_closed": "Zamknięto formularz",
+      "forms_shared": "Udostępniono formularz",
+      "forms_archived": "Zarchiwizowano formularz",
+      "forms_deleted": "Przeniesiono formularz do kosza",
+      "forms_restored": "Przywrócono formularz",
+      "responses_updated": "Zaktualizowano odpowiedź",
+      "responses_exported": "Wyeksportowano odpowiedzi",
+      "responses_deleted": "Usunięto odpowiedź",
+      "settings_updated": "Zmieniono ustawienia",
+      "users_invited": "Zaproszono osobę",
+      "users_role_changed": "Zmieniono rolę",
+      "users_disabled": "Wyłączono konto",
+      "users_enabled": "Włączono konto",
+      "integrations_destination_connected": "Połączono bazę danych",
+      "integrations_webhook_created": "Dodano webhook",
+      "integrations_api_key_created": "Utworzono klucz API",
+      "integrations_api_key_revoked": "Unieważniono klucz API",
+      "audit_exported": "Wyeksportowano dziennik audytu"
+    },
+    "detail": {
+      "who": "Kto",
+      "when": "Kiedy",
+      "where": "Gdzie",
+      "item": "Element",
+      "changes": "Zmiany",
+      "before": "Przed",
+      "after": "Po",
+      "empty": "(puste)",
+      "technical": "Szczegóły techniczne",
+      "requestId": "ID żądania",
+      "utc": "UTC",
+      "open": "Otwórz",
+      "viewDetails": "Pokaż szczegóły",
+      "byPerson": "Pokaż aktywność tej osoby",
+      "copyRequestId": "Kopiuj ID żądania",
+      "copied": "Skopiowano ID żądania",
+      "moreItem": "Więcej o tym elemencie",
+      "morePerson": "Więcej od tej osoby",
+      "showAll": "Pokaż wszystko"
+    },
+    "timeline": {
+      "empty": "Brak innej aktywności.",
+      "viewAll": "Zobacz całą aktywność"
+    },
+    "export": {
+      "button": "Eksportuj",
+      "title": "Eksportuj dziennik audytu",
+      "desc": "Pobierz zdarzenia pasujące do bieżącego wyszukiwania, filtrów i dat.",
+      "format": "Format pliku",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Otwiera się w Excelu, Numbers lub Arkuszach Google.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "Zwykły tekst, dla innych narzędzi i importów.",
+      "applied": "Zastosowane filtry: {count} | Zastosowane filtry: {count}",
+      "none": "Wszystkie zdarzenia (bez filtrów)",
+      "start": "Rozpocznij eksport",
+      "preparing": "Przygotowywanie pliku…",
+      "rows": "Zdarzenia: {n} | Zdarzenia: {n}",
+      "ready": "Plik jest gotowy",
+      "download": "Pobierz",
+      "expires": "Link do pobrania działa raz i wygasa {time}."
+    }
   }
 }

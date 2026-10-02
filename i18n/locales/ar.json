@@ -79,7 +79,8 @@
     "fromTemplate": "من قالب",
     "workspaces": "مساحات العمل",
     "expand": "توسيع القائمة",
-    "collapse": "طي القائمة"
+    "collapse": "طي القائمة",
+    "audit": "سجل التدقيق"
   },
   "navbar": {
     "breadcrumb": "مسار التنقل",
@@ -368,5 +369,159 @@
       "failedDesc": "سجّل الدخول ببريدك وكلمة المرور."
     },
     "workspace": "مساحة العمل"
+  },
+  "audit": {
+    "description": "كل إجراء في مساحة عملك: من وماذا ومتى وأين.",
+    "security": "أحداث الأمان",
+    "searchPlaceholder": "ابحث عن أشخاص أو عناصر أو عناوين IP…",
+    "emptyTitle": "لم يُسجَّل شيء بعد",
+    "emptyDesc": "تظهر الإجراءات في مساحة عملك هنا فور حدوثها.",
+    "noAccessTitle": "لا يرى سجل التدقيق إلا مسؤولو مساحة العمل",
+    "noAccessDesc": "اطلب من مالك مساحة العمل هذه أو أحد مسؤوليها إذا كنت تحتاج إلى هذه المعلومات.",
+    "sortNewest": "الأحدث أولًا",
+    "sortOldest": "الأقدم أولًا",
+    "notSignedIn": "لم يسجّل الدخول",
+    "unknownLocation": "موقع غير معروف",
+    "yes": "نعم",
+    "no": "لا",
+    "col": {
+      "when": "متى",
+      "person": "الشخص",
+      "action": "الإجراء",
+      "result": "النتيجة",
+      "location": "الموقع",
+      "device": "الجهاز"
+    },
+    "filter": {
+      "area": "القسم",
+      "outcome": "النتيجة",
+      "person": "الشخص",
+      "country": "الدولة"
+    },
+    "outcome": {
+      "success": "ناجح",
+      "failure": "فشل",
+      "blocked": "محظور"
+    },
+    "area": {
+      "auth": "تسجيل الدخول والأمان",
+      "workspace": "مساحة العمل",
+      "forms": "النماذج",
+      "responses": "الردود",
+      "settings": "الإعدادات",
+      "users": "المستخدمون",
+      "integrations": "التكاملات",
+      "audit": "سجل التدقيق"
+    },
+    "actorType": {
+      "user": "شخص",
+      "api_key": "مفتاح API",
+      "system": "النظام"
+    },
+    "device": {
+      "desktop": "حاسوب",
+      "mobile": "هاتف",
+      "tablet": "جهاز لوحي",
+      "unknown": "جهاز غير معروف"
+    },
+    "resource": {
+      "form": "نموذج",
+      "response": "رد",
+      "user": "مستخدم",
+      "workspace": "مساحة عمل",
+      "setting": "إعداد",
+      "destination": "وجهة",
+      "webhook": "Webhook",
+      "api_key": "مفتاح API",
+      "export": "تصدير"
+    },
+    "field": {
+      "name": "الاسم",
+      "status": "الحالة",
+      "folder": "المجلد",
+      "role": "الدور",
+      "brand_colour": "لون العلامة التجارية",
+      "session_timeout_minutes": "مهلة الجلسة (دقائق)",
+      "sign_in_methods": "طرق تسجيل الدخول",
+      "response_status": "حالة الرد"
+    },
+    "action": {
+      "auth_login_succeeded": "سجّل الدخول",
+      "auth_login_failed": "فشل تسجيل الدخول",
+      "auth_login_blocked": "حُظر تسجيل الدخول",
+      "auth_otp_sent": "أُرسل رمز الدخول",
+      "auth_otp_failed": "رمز دخول خاطئ",
+      "auth_otp_locked": "رموز خاطئة كثيرة",
+      "auth_logout": "سجّل الخروج",
+      "auth_session_revoked": "أُلغيت الجلسة",
+      "auth_password_reset_requested": "طُلبت إعادة تعيين كلمة المرور",
+      "auth_password_reset": "تغيّرت كلمة المرور",
+      "workspace_created": "أُنشئت مساحة العمل",
+      "workspace_updated": "حُدّثت مساحة العمل",
+      "forms_created": "أُنشئ نموذج",
+      "forms_updated": "عُدّل نموذج",
+      "forms_published": "نُشر نموذج",
+      "forms_closed": "أُغلق نموذج",
+      "forms_shared": "شورك نموذج",
+      "forms_archived": "أُرشف نموذج",
+      "forms_deleted": "نُقل نموذج إلى سلة المهملات",
+      "forms_restored": "استُعيد نموذج",
+      "responses_updated": "حُدّث رد",
+      "responses_exported": "صُدّرت الردود",
+      "responses_deleted": "حُذف رد",
+      "settings_updated": "تغيّرت الإعدادات",
+      "users_invited": "دُعي شخص",
+      "users_role_changed": "تغيّر الدور",
+      "users_disabled": "عُطّل الحساب",
+      "users_enabled": "فُعّل الحساب",
+      "integrations_destination_connected": "رُبطت قاعدة بيانات",
+      "integrations_webhook_created": "أُضيف Webhook",
+      "integrations_api_key_created": "أُنشئ مفتاح API",
+      "integrations_api_key_revoked": "أُلغي مفتاح API",
+      "audit_exported": "صُدّر سجل التدقيق"
+    },
+    "detail": {
+      "who": "من",
+      "when": "متى",
+      "where": "أين",
+      "item": "العنصر",
+      "changes": "التغييرات",
+      "before": "قبل",
+      "after": "بعد",
+      "empty": "(فارغ)",
+      "technical": "تفاصيل تقنية",
+      "requestId": "معرّف الطلب",
+      "utc": "UTC",
+      "open": "فتح",
+      "viewDetails": "عرض التفاصيل",
+      "byPerson": "عرض نشاط هذا الشخص",
+      "copyRequestId": "نسخ معرّف الطلب",
+      "copied": "نُسخ معرّف الطلب",
+      "moreItem": "المزيد عن هذا العنصر",
+      "morePerson": "المزيد من هذا الشخص",
+      "showAll": "عرض الكل"
+    },
+    "timeline": {
+      "empty": "لا يوجد نشاط آخر بعد.",
+      "viewAll": "عرض كل النشاط"
+    },
+    "export": {
+      "button": "تصدير",
+      "title": "تصدير سجل التدقيق",
+      "desc": "نزّل الأحداث المطابقة لبحثك وعوامل التصفية والتواريخ الحالية.",
+      "format": "تنسيق الملف",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "يُفتح في Excel أو Numbers أو جداول بيانات Google.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "نص عادي، للأدوات الأخرى وعمليات الاستيراد.",
+      "applied": "عامل تصفية مطبّق ({count}) | عوامل تصفية مطبّقة: {count}",
+      "none": "كل الأحداث (دون تصفية)",
+      "start": "بدء التصدير",
+      "preparing": "جارٍ تجهيز ملفك…",
+      "rows": "حدث واحد ({n}) | عدد الأحداث: {n}",
+      "ready": "ملفك جاهز",
+      "download": "تنزيل",
+      "expires": "يعمل رابط التنزيل مرة واحدة وتنتهي صلاحيته {time}."
+    }
   }
 }

@@ -79,7 +79,8 @@
     "fromTemplate": "Từ mẫu",
     "workspaces": "Không gian làm việc",
     "expand": "Mở rộng menu",
-    "collapse": "Thu gọn menu"
+    "collapse": "Thu gọn menu",
+    "audit": "Nhật ký kiểm tra"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -368,5 +369,159 @@
       "failedDesc": "Hãy đăng nhập bằng email và mật khẩu."
     },
     "workspace": "Không gian làm việc"
+  },
+  "audit": {
+    "description": "Mọi thao tác trong không gian làm việc của bạn — ai, làm gì, khi nào và ở đâu.",
+    "security": "Sự kiện bảo mật",
+    "searchPlaceholder": "Tìm người, mục, địa chỉ IP…",
+    "emptyTitle": "Chưa có gì được ghi lại",
+    "emptyDesc": "Các thao tác trong không gian làm việc xuất hiện ở đây ngay khi diễn ra.",
+    "noAccessTitle": "Chỉ quản trị viên của không gian làm việc mới xem được nhật ký kiểm tra",
+    "noAccessDesc": "Hãy hỏi chủ sở hữu hoặc quản trị viên của không gian này nếu bạn cần thông tin này.",
+    "sortNewest": "Mới nhất trước",
+    "sortOldest": "Cũ nhất trước",
+    "notSignedIn": "Chưa đăng nhập",
+    "unknownLocation": "Vị trí không xác định",
+    "yes": "Có",
+    "no": "Không",
+    "col": {
+      "when": "Thời gian",
+      "person": "Người",
+      "action": "Thao tác",
+      "result": "Kết quả",
+      "location": "Vị trí",
+      "device": "Thiết bị"
+    },
+    "filter": {
+      "area": "Mục",
+      "outcome": "Kết quả",
+      "person": "Người",
+      "country": "Quốc gia"
+    },
+    "outcome": {
+      "success": "Thành công",
+      "failure": "Thất bại",
+      "blocked": "Bị chặn"
+    },
+    "area": {
+      "auth": "Đăng nhập và bảo mật",
+      "workspace": "Không gian làm việc",
+      "forms": "Biểu mẫu",
+      "responses": "Phản hồi",
+      "settings": "Cài đặt",
+      "users": "Người dùng",
+      "integrations": "Tích hợp",
+      "audit": "Nhật ký kiểm tra"
+    },
+    "actorType": {
+      "user": "Người",
+      "api_key": "Khóa API",
+      "system": "Hệ thống"
+    },
+    "device": {
+      "desktop": "Máy tính",
+      "mobile": "Điện thoại",
+      "tablet": "Máy tính bảng",
+      "unknown": "Thiết bị không xác định"
+    },
+    "resource": {
+      "form": "Biểu mẫu",
+      "response": "Phản hồi",
+      "user": "Người dùng",
+      "workspace": "Không gian làm việc",
+      "setting": "Cài đặt",
+      "destination": "Đích đến",
+      "webhook": "Webhook",
+      "api_key": "Khóa API",
+      "export": "Bản xuất"
+    },
+    "field": {
+      "name": "Tên",
+      "status": "Trạng thái",
+      "folder": "Thư mục",
+      "role": "Vai trò",
+      "brand_colour": "Màu thương hiệu",
+      "session_timeout_minutes": "Thời gian chờ phiên (phút)",
+      "sign_in_methods": "Phương thức đăng nhập",
+      "response_status": "Trạng thái phản hồi"
+    },
+    "action": {
+      "auth_login_succeeded": "Đã đăng nhập",
+      "auth_login_failed": "Đăng nhập thất bại",
+      "auth_login_blocked": "Đăng nhập bị chặn",
+      "auth_otp_sent": "Đã gửi mã đăng nhập",
+      "auth_otp_failed": "Sai mã đăng nhập",
+      "auth_otp_locked": "Nhập sai mã quá nhiều lần",
+      "auth_logout": "Đã đăng xuất",
+      "auth_session_revoked": "Phiên đã bị thu hồi",
+      "auth_password_reset_requested": "Đã yêu cầu đặt lại mật khẩu",
+      "auth_password_reset": "Đã đổi mật khẩu",
+      "workspace_created": "Đã tạo không gian làm việc",
+      "workspace_updated": "Đã cập nhật không gian làm việc",
+      "forms_created": "Đã tạo biểu mẫu",
+      "forms_updated": "Đã sửa biểu mẫu",
+      "forms_published": "Đã xuất bản biểu mẫu",
+      "forms_closed": "Đã đóng biểu mẫu",
+      "forms_shared": "Đã chia sẻ biểu mẫu",
+      "forms_archived": "Đã lưu trữ biểu mẫu",
+      "forms_deleted": "Đã chuyển biểu mẫu vào thùng rác",
+      "forms_restored": "Đã khôi phục biểu mẫu",
+      "responses_updated": "Đã cập nhật phản hồi",
+      "responses_exported": "Đã xuất phản hồi",
+      "responses_deleted": "Đã xóa phản hồi",
+      "settings_updated": "Đã thay đổi cài đặt",
+      "users_invited": "Đã mời người dùng",
+      "users_role_changed": "Đã đổi vai trò",
+      "users_disabled": "Đã vô hiệu hóa tài khoản",
+      "users_enabled": "Đã kích hoạt tài khoản",
+      "integrations_destination_connected": "Đã kết nối cơ sở dữ liệu",
+      "integrations_webhook_created": "Đã thêm webhook",
+      "integrations_api_key_created": "Đã tạo khóa API",
+      "integrations_api_key_revoked": "Đã thu hồi khóa API",
+      "audit_exported": "Đã xuất nhật ký kiểm tra"
+    },
+    "detail": {
+      "who": "Ai",
+      "when": "Thời gian",
+      "where": "Ở đâu",
+      "item": "Mục",
+      "changes": "Thay đổi",
+      "before": "Trước",
+      "after": "Sau",
+      "empty": "(trống)",
+      "technical": "Chi tiết kỹ thuật",
+      "requestId": "Mã yêu cầu",
+      "utc": "UTC",
+      "open": "Mở",
+      "viewDetails": "Xem chi tiết",
+      "byPerson": "Xem hoạt động của người này",
+      "copyRequestId": "Sao chép mã yêu cầu",
+      "copied": "Đã sao chép mã yêu cầu",
+      "moreItem": "Thêm về mục này",
+      "morePerson": "Thêm từ người này",
+      "showAll": "Hiện tất cả"
+    },
+    "timeline": {
+      "empty": "Chưa có hoạt động nào khác.",
+      "viewAll": "Xem tất cả hoạt động"
+    },
+    "export": {
+      "button": "Xuất",
+      "title": "Xuất nhật ký kiểm tra",
+      "desc": "Tải xuống các sự kiện khớp với tìm kiếm, bộ lọc và ngày hiện tại của bạn.",
+      "format": "Định dạng tệp",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Mở được bằng Excel, Numbers hoặc Google Trang tính.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "Văn bản thuần, cho các công cụ khác và nhập dữ liệu.",
+      "applied": "Đang áp dụng {count} bộ lọc | Đang áp dụng {count} bộ lọc",
+      "none": "Tất cả sự kiện (không có bộ lọc)",
+      "start": "Bắt đầu xuất",
+      "preparing": "Đang chuẩn bị tệp…",
+      "rows": "{n} sự kiện | {n} sự kiện",
+      "ready": "Tệp của bạn đã sẵn sàng",
+      "download": "Tải xuống",
+      "expires": "Liên kết tải xuống chỉ dùng được một lần và hết hạn {time}."
+    }
   }
 }

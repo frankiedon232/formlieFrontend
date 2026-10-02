@@ -2,10 +2,11 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { notificationsOpen } = useAppUi()
+const { endSide } = useAppLocale()
 </script>
 
 <template>
-  <USlideover v-model:open="notificationsOpen" :title="t('navbar.notifications')">
+  <USlideover v-model:open="notificationsOpen" :title="t('navbar.notifications')" :side="endSide">
     <template #body>
       <UEmpty
         icon="i-lucide-bell"

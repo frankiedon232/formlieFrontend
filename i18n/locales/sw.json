@@ -79,7 +79,8 @@
     "fromTemplate": "Kutoka kiolezo",
     "workspaces": "Maeneo ya kazi",
     "expand": "Panua menyu",
-    "collapse": "Kunja menyu"
+    "collapse": "Kunja menyu",
+    "audit": "Kumbukumbu za ukaguzi"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -368,5 +369,159 @@
       "failedDesc": "Ingia kwa barua pepe na nenosiri lako."
     },
     "workspace": "Eneo la kazi"
+  },
+  "audit": {
+    "description": "Kila kitendo katika eneo lako la kazi — nani, nini, lini na wapi.",
+    "security": "Matukio ya usalama",
+    "searchPlaceholder": "Tafuta watu, vipengee, anwani za IP…",
+    "emptyTitle": "Bado hakuna kilichorekodiwa",
+    "emptyDesc": "Vitendo katika eneo lako la kazi huonekana hapa vinapotokea.",
+    "noAccessTitle": "Ni wasimamizi wa eneo la kazi pekee wanaoweza kuona kumbukumbu za ukaguzi",
+    "noAccessDesc": "Muulize mmiliki au msimamizi wa eneo hili la kazi ikiwa unahitaji taarifa hii.",
+    "sortNewest": "Mpya kwanza",
+    "sortOldest": "Za zamani kwanza",
+    "notSignedIn": "Hajaingia",
+    "unknownLocation": "Mahali pasipojulikana",
+    "yes": "Ndiyo",
+    "no": "Hapana",
+    "col": {
+      "when": "Lini",
+      "person": "Mtu",
+      "action": "Kitendo",
+      "result": "Matokeo",
+      "location": "Mahali",
+      "device": "Kifaa"
+    },
+    "filter": {
+      "area": "Sehemu",
+      "outcome": "Matokeo",
+      "person": "Mtu",
+      "country": "Nchi"
+    },
+    "outcome": {
+      "success": "Imefaulu",
+      "failure": "Imeshindikana",
+      "blocked": "Imezuiwa"
+    },
+    "area": {
+      "auth": "Kuingia na usalama",
+      "workspace": "Eneo la kazi",
+      "forms": "Fomu",
+      "responses": "Majibu",
+      "settings": "Mipangilio",
+      "users": "Watumiaji",
+      "integrations": "Miunganisho",
+      "audit": "Kumbukumbu za ukaguzi"
+    },
+    "actorType": {
+      "user": "Mtu",
+      "api_key": "Ufunguo wa API",
+      "system": "Mfumo"
+    },
+    "device": {
+      "desktop": "Kompyuta",
+      "mobile": "Simu",
+      "tablet": "Kompyuta kibao",
+      "unknown": "Kifaa kisichojulikana"
+    },
+    "resource": {
+      "form": "Fomu",
+      "response": "Jibu",
+      "user": "Mtumiaji",
+      "workspace": "Eneo la kazi",
+      "setting": "Mpangilio",
+      "destination": "Mahali pa kupeleka",
+      "webhook": "Webhook",
+      "api_key": "Ufunguo wa API",
+      "export": "Uhamishaji"
+    },
+    "field": {
+      "name": "Jina",
+      "status": "Hali",
+      "folder": "Folda",
+      "role": "Jukumu",
+      "brand_colour": "Rangi ya chapa",
+      "session_timeout_minutes": "Muda wa kikao kuisha (dakika)",
+      "sign_in_methods": "Njia za kuingia",
+      "response_status": "Hali ya jibu"
+    },
+    "action": {
+      "auth_login_succeeded": "Ameingia",
+      "auth_login_failed": "Kuingia kumeshindikana",
+      "auth_login_blocked": "Kuingia kumezuiwa",
+      "auth_otp_sent": "Msimbo wa kuingia umetumwa",
+      "auth_otp_failed": "Msimbo wa kuingia si sahihi",
+      "auth_otp_locked": "Misimbo mingi isiyo sahihi",
+      "auth_logout": "Ametoka",
+      "auth_session_revoked": "Kikao kimebatilishwa",
+      "auth_password_reset_requested": "Ombi la kuweka upya nenosiri",
+      "auth_password_reset": "Nenosiri limebadilishwa",
+      "workspace_created": "Eneo la kazi limeundwa",
+      "workspace_updated": "Eneo la kazi limesasishwa",
+      "forms_created": "Fomu imeundwa",
+      "forms_updated": "Fomu imehaririwa",
+      "forms_published": "Fomu imechapishwa",
+      "forms_closed": "Fomu imefungwa",
+      "forms_shared": "Fomu imeshirikiwa",
+      "forms_archived": "Fomu imehifadhiwa kwenye kumbukumbu",
+      "forms_deleted": "Fomu imehamishiwa kwenye tupio",
+      "forms_restored": "Fomu imerejeshwa",
+      "responses_updated": "Jibu limesasishwa",
+      "responses_exported": "Majibu yamehamishwa",
+      "responses_deleted": "Jibu limefutwa",
+      "settings_updated": "Mipangilio imebadilishwa",
+      "users_invited": "Mtu amealikwa",
+      "users_role_changed": "Jukumu limebadilishwa",
+      "users_disabled": "Akaunti imezimwa",
+      "users_enabled": "Akaunti imewashwa",
+      "integrations_destination_connected": "Hifadhidata imeunganishwa",
+      "integrations_webhook_created": "Webhook imeongezwa",
+      "integrations_api_key_created": "Ufunguo wa API umeundwa",
+      "integrations_api_key_revoked": "Ufunguo wa API umebatilishwa",
+      "audit_exported": "Kumbukumbu za ukaguzi zimehamishwa"
+    },
+    "detail": {
+      "who": "Nani",
+      "when": "Lini",
+      "where": "Wapi",
+      "item": "Kipengee",
+      "changes": "Mabadiliko",
+      "before": "Kabla",
+      "after": "Baada",
+      "empty": "(tupu)",
+      "technical": "Maelezo ya kiufundi",
+      "requestId": "Kitambulisho cha ombi",
+      "utc": "UTC",
+      "open": "Fungua",
+      "viewDetails": "Angalia maelezo",
+      "byPerson": "Onyesha shughuli za mtu huyu",
+      "copyRequestId": "Nakili kitambulisho cha ombi",
+      "copied": "Kitambulisho cha ombi kimenakiliwa",
+      "moreItem": "Zaidi kuhusu kipengee hiki",
+      "morePerson": "Zaidi kutoka kwa mtu huyu",
+      "showAll": "Onyesha zote"
+    },
+    "timeline": {
+      "empty": "Bado hakuna shughuli nyingine.",
+      "viewAll": "Angalia shughuli zote"
+    },
+    "export": {
+      "button": "Hamisha",
+      "title": "Hamisha kumbukumbu za ukaguzi",
+      "desc": "Pakua matukio yanayolingana na utafutaji, vichujio na tarehe zako za sasa.",
+      "format": "Muundo wa faili",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Hufunguka katika Excel, Numbers au Google Sheets.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "Maandishi matupu, kwa zana nyingine na uingizaji.",
+      "applied": "Kichujio {count} kimetumika | Vichujio {count} vimetumika",
+      "none": "Matukio yote (hakuna kichujio)",
+      "start": "Anza kuhamisha",
+      "preparing": "Tunaandaa faili lako…",
+      "rows": "Tukio {n} | Matukio {n}",
+      "ready": "Faili lako liko tayari",
+      "download": "Pakua",
+      "expires": "Kiungo cha kupakua hufanya kazi mara moja na kitaisha muda {time}."
+    }
   }
 }

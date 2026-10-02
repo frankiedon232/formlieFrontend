@@ -79,7 +79,8 @@
     "fromTemplate": "Dari templat",
     "workspaces": "Ruang kerja",
     "expand": "Bentangkan menu",
-    "collapse": "Ciutkan menu"
+    "collapse": "Ciutkan menu",
+    "audit": "Jejak audit"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -368,5 +369,159 @@
       "failedDesc": "Masuk dengan email dan kata sandi Anda."
     },
     "workspace": "Ruang kerja"
+  },
+  "audit": {
+    "description": "Setiap tindakan di ruang kerja Anda — siapa, apa, kapan, dan di mana.",
+    "security": "Peristiwa keamanan",
+    "searchPlaceholder": "Cari orang, item, alamat IP…",
+    "emptyTitle": "Belum ada yang tercatat",
+    "emptyDesc": "Tindakan di ruang kerja Anda muncul di sini begitu terjadi.",
+    "noAccessTitle": "Hanya admin ruang kerja yang dapat melihat jejak audit",
+    "noAccessDesc": "Hubungi pemilik atau admin ruang kerja ini jika Anda memerlukan informasi ini.",
+    "sortNewest": "Terbaru dulu",
+    "sortOldest": "Terlama dulu",
+    "notSignedIn": "Belum masuk",
+    "unknownLocation": "Lokasi tidak diketahui",
+    "yes": "Ya",
+    "no": "Tidak",
+    "col": {
+      "when": "Kapan",
+      "person": "Orang",
+      "action": "Tindakan",
+      "result": "Hasil",
+      "location": "Lokasi",
+      "device": "Perangkat"
+    },
+    "filter": {
+      "area": "Bagian",
+      "outcome": "Hasil",
+      "person": "Orang",
+      "country": "Negara"
+    },
+    "outcome": {
+      "success": "Berhasil",
+      "failure": "Gagal",
+      "blocked": "Diblokir"
+    },
+    "area": {
+      "auth": "Masuk & keamanan",
+      "workspace": "Ruang kerja",
+      "forms": "Formulir",
+      "responses": "Respons",
+      "settings": "Pengaturan",
+      "users": "Pengguna",
+      "integrations": "Integrasi",
+      "audit": "Jejak audit"
+    },
+    "actorType": {
+      "user": "Orang",
+      "api_key": "Kunci API",
+      "system": "Sistem"
+    },
+    "device": {
+      "desktop": "Komputer",
+      "mobile": "Ponsel",
+      "tablet": "Tablet",
+      "unknown": "Perangkat tidak dikenal"
+    },
+    "resource": {
+      "form": "Formulir",
+      "response": "Respons",
+      "user": "Pengguna",
+      "workspace": "Ruang kerja",
+      "setting": "Pengaturan",
+      "destination": "Tujuan",
+      "webhook": "Webhook",
+      "api_key": "Kunci API",
+      "export": "Ekspor"
+    },
+    "field": {
+      "name": "Nama",
+      "status": "Status",
+      "folder": "Folder",
+      "role": "Peran",
+      "brand_colour": "Warna merek",
+      "session_timeout_minutes": "Batas waktu sesi (menit)",
+      "sign_in_methods": "Metode masuk",
+      "response_status": "Status respons"
+    },
+    "action": {
+      "auth_login_succeeded": "Masuk",
+      "auth_login_failed": "Gagal masuk",
+      "auth_login_blocked": "Masuk diblokir",
+      "auth_otp_sent": "Kode masuk dikirim",
+      "auth_otp_failed": "Kode masuk salah",
+      "auth_otp_locked": "Terlalu banyak kode salah",
+      "auth_logout": "Keluar",
+      "auth_session_revoked": "Sesi dicabut",
+      "auth_password_reset_requested": "Permintaan atur ulang kata sandi",
+      "auth_password_reset": "Kata sandi diubah",
+      "workspace_created": "Ruang kerja dibuat",
+      "workspace_updated": "Ruang kerja diperbarui",
+      "forms_created": "Formulir dibuat",
+      "forms_updated": "Formulir diedit",
+      "forms_published": "Formulir diterbitkan",
+      "forms_closed": "Formulir ditutup",
+      "forms_shared": "Formulir dibagikan",
+      "forms_archived": "Formulir diarsipkan",
+      "forms_deleted": "Formulir dipindahkan ke sampah",
+      "forms_restored": "Formulir dipulihkan",
+      "responses_updated": "Respons diperbarui",
+      "responses_exported": "Respons diekspor",
+      "responses_deleted": "Respons dihapus",
+      "settings_updated": "Pengaturan diubah",
+      "users_invited": "Orang diundang",
+      "users_role_changed": "Peran diubah",
+      "users_disabled": "Akun dinonaktifkan",
+      "users_enabled": "Akun diaktifkan",
+      "integrations_destination_connected": "Database terhubung",
+      "integrations_webhook_created": "Webhook ditambahkan",
+      "integrations_api_key_created": "Kunci API dibuat",
+      "integrations_api_key_revoked": "Kunci API dicabut",
+      "audit_exported": "Jejak audit diekspor"
+    },
+    "detail": {
+      "who": "Siapa",
+      "when": "Kapan",
+      "where": "Di mana",
+      "item": "Item",
+      "changes": "Perubahan",
+      "before": "Sebelum",
+      "after": "Sesudah",
+      "empty": "(kosong)",
+      "technical": "Detail teknis",
+      "requestId": "ID permintaan",
+      "utc": "UTC",
+      "open": "Buka",
+      "viewDetails": "Lihat detail",
+      "byPerson": "Tampilkan aktivitas orang ini",
+      "copyRequestId": "Salin ID permintaan",
+      "copied": "ID permintaan disalin",
+      "moreItem": "Lainnya untuk item ini",
+      "morePerson": "Lainnya dari orang ini",
+      "showAll": "Tampilkan semua"
+    },
+    "timeline": {
+      "empty": "Belum ada aktivitas lain.",
+      "viewAll": "Lihat semua aktivitas"
+    },
+    "export": {
+      "button": "Ekspor",
+      "title": "Ekspor jejak audit",
+      "desc": "Unduh peristiwa yang sesuai dengan pencarian, filter, dan tanggal Anda saat ini.",
+      "format": "Format file",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Terbuka di Excel, Numbers, atau Google Spreadsheet.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "Teks biasa, untuk alat lain dan impor.",
+      "applied": "{count} filter diterapkan | {count} filter diterapkan",
+      "none": "Semua peristiwa (tanpa filter)",
+      "start": "Mulai ekspor",
+      "preparing": "Menyiapkan file Anda…",
+      "rows": "{n} peristiwa | {n} peristiwa",
+      "ready": "File Anda siap",
+      "download": "Unduh",
+      "expires": "Tautan unduhan hanya berfungsi sekali dan kedaluwarsa {time}."
+    }
   }
 }

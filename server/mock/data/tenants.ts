@@ -4,7 +4,7 @@
  *   password  Formalie!2026
  *   OTP       shown on the code screen in dev (mock returns `dev_code`) and logged to the server console
  */
-import type { AuthProvider, TenantStatus } from '#shared/types/auth'
+import type { AuthProvider, TenantStatus, WorkspaceRole } from '#shared/types/auth'
 
 export const MOCK_PASSWORD = 'Formalie!2026'
 
@@ -26,6 +26,7 @@ export interface MockUser {
   password: string
   phone: string | null
   disabled: boolean
+  role: WorkspaceRole
 }
 
 export const MOCK_TENANTS: MockTenant[] = [
@@ -65,6 +66,7 @@ export const MOCK_USERS: MockUser[] = [
     password: MOCK_PASSWORD,
     phone: '+447700900001',
     disabled: false,
+    role: 'owner',
   },
   {
     id: 'a1b2c3d4-0002-4000-8000-000000000002',
@@ -75,6 +77,7 @@ export const MOCK_USERS: MockUser[] = [
     password: MOCK_PASSWORD,
     phone: null,
     disabled: false,
+    role: 'owner',
   },
   {
     // External consultant who works with both companies → "find my workspace" lists both.
@@ -86,6 +89,7 @@ export const MOCK_USERS: MockUser[] = [
     password: MOCK_PASSWORD,
     phone: null,
     disabled: false,
+    role: 'member',
   },
   {
     id: 'a1b2c3d4-0005-4000-8000-000000000005',
@@ -96,6 +100,7 @@ export const MOCK_USERS: MockUser[] = [
     password: MOCK_PASSWORD,
     phone: null,
     disabled: false,
+    role: 'member',
   },
   {
     id: 'a1b2c3d4-0004-4000-8000-000000000004',
@@ -106,5 +111,6 @@ export const MOCK_USERS: MockUser[] = [
     password: MOCK_PASSWORD,
     phone: null,
     disabled: true,
+    role: 'member',
   },
 ]

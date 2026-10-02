@@ -3,6 +3,7 @@
  * Shapes follow docs/API-CONTRACT.md exactly; add one file per domain in ./routes.
  */
 import { fail } from './core/respond'
+import * as audit from './routes/audit'
 import * as auth from './routes/auth'
 import { listFolders, listForms } from './routes/forms'
 import { csrf, handshake, health } from './routes/system'
@@ -34,6 +35,13 @@ const router = createRouter()
   // forms
   .get('/forms', listForms)
   .get('/folders', listFolders)
+  // audit trail
+  .get('/audit-logs', audit.listAuditLogs)
+  .get('/audit-logs/facets', audit.auditFacets)
+  .post('/audit-logs/export', audit.exportAuditLogs)
+  .get('/audit-logs/:id', audit.getAuditLog)
+  .get('/exports/:id', audit.getExportJob)
+  .get('/downloads/:token', audit.download)
   .use(
     '/**',
     defineEventHandler(event => {
@@ -47,6 +55,7 @@ const v1 = useBase('/api/v1', router.handler)
 
 export default defineEventHandler(event => {
   event.context.fullPath = event.path.split('?')[0]
+  event.context.requestId = crypto.randomUUID()
   // Small artificial latency so loading states are visible during development.
   return new Promise(resolve => setTimeout(resolve, 150)).then(() => v1(event))
 })

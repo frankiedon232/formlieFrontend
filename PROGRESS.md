@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F4 — Audit trail
+**Last updated:** 2026-10-02 · **Current phase:** F4 — Audit trail (review) → next F5 — Onboarding wizard
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -14,7 +14,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F1    | App shell                                         | ✅     | 100% |
 | F2    | Core plumbing                                     | ✅     | 100% |
 | F3    | Workspace detection + sign-in                     | ✅     | 100% |
-| F4    | Audit trail                                       | ⬜     | 0%   |
+| F4    | Audit trail                                       | ✅     | 100% |
 | F5    | Onboarding wizard                                 | ⬜     | 0%   |
 | F6    | Forms list and lifecycle                          | ⬜     | 10%  |
 | F7    | Form builder                                      | ⬜     | 0%   |
@@ -190,40 +190,40 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F4 — Audit trail ⬜
+## F4 — Audit trail ✅
 
 **Goal:** every action in a workspace is recorded — who, what, when, where (IP, location, device) and before / after values — and admins can search, filter and export it. Built now so every later phase records its own actions as it is built (owner request, product overview §11).
 
 ### Event model
 
-- ⬜ Event shape in `API-CONTRACT.md`: id, time, actor (user / API key / system), action, resource (type, id, name), organisation, IP, location (city, country), device / browser, outcome (success / failed / blocked), before / after changes, request id
-- ⬜ Event catalogue in one place (`shared/utils/audit/events.ts`): action keys grouped by area (sign-in, workspace, forms, responses, settings, users, integrations), each with an icon, severity and a translated label in all 20 languages
-- ⬜ Shared types in `shared/types/audit.ts`
+- ✅ Event shape in `API-CONTRACT.md`: id, time, actor (user / API key / system), action, resource (type, id, name), organisation, IP, location (city, country), device / browser, outcome (success / failed / blocked), before / after changes, request id
+- ✅ Event catalogue in one place (`shared/utils/audit/events.ts`): action keys grouped by area (sign-in, workspace, forms, responses, settings, users, integrations), each with an icon, severity and a translated label in all 20 languages
+- ✅ Shared types in `shared/types/audit.ts`
 
 ### Mock backend
 
-- ⬜ Audit store with realistic international sample history (several people, countries, devices)
-- ⬜ Record what already exists: sign-in success / failure, code sent / verified / failed, too many attempts, sign-out, session expired, refresh reuse (session revoked), password reset, signup, workspace created, find workspace
-- ⬜ Record form actions in the mock (create, rename, move, archive, delete, restore) — later phases add theirs
-- ⬜ `GET /audit-logs` (search, filters, date range, sort, server pagination), `GET /audit-logs/{id}`, `POST /audit-logs/export` (background job with progress)
+- ✅ Audit store with realistic international sample history (several people, countries, devices)
+- ✅ Record what already exists: sign-in success / failure / blocked (disabled account), code sent / failed, too many attempts, sign-out, refresh reuse (session revoked), password reset requested / done, workspace created, sign-in after signup. (Find my workspace runs on manage.* before any workspace is known, so it is not a workspace event.)
+- ✅ Sample history already covers form, response, settings, user and integration actions; live recording is added with each endpoint as it is built (form actions → F6)
+- ✅ `GET /audit-logs` (search, filters, date range, sort, server pagination), `GET /audit-logs/{id}`, `GET /audit-logs/facets`, `POST /audit-logs/export` → `GET /exports/{id}` (background job with progress) → single-use download link
 
 ### Audit trail page (`/audit`)
 
-- ⬜ DataView: table and grid, search, filters (person, action / area, resource type, outcome, organisation, country), date range, sort, server pagination
-- ⬜ Event detail slide-over: summary sentence ("Sofia Martins archived the form Supplier onboarding"), who / when / where / device, before → after changes side by side, request id with copy
-- ⬜ Export to Excel / CSV with progress; filters carried into the export
-- ⬜ Links from an event to the resource (form, user, setting) when it still exists
-- ⬜ "Audit trail" in the sidebar (SYSTEM), breadcrumbs, header title / subtitle / export button
-- ⬜ Empty, loading and error states; phone layout (cards) and keyboard access
+- ✅ DataView: table and grid, search, filters (area, result, person, country), date range, sort, server pagination; organisation filter arrives with several organisations per workspace (F12)
+- ✅ Event detail slide-over: shareable link `/audit?event=<id>`; result + reason, who / when / where / device, item, before → after changes side by side, technical details, request id with copy, related activity
+- ✅ Export to Excel / CSV with progress; search, filters and dates carried into the export (mock writes CSV; real .xlsx from the backend)
+- ✅ Links from an event to its item (forms, settings, integrations); user pages follow in F15
+- ✅ "Audit trail" in the sidebar (SYSTEM), breadcrumbs, header title / subtitle / export button
+- ✅ Empty, loading and error states; phone layout (cards) and keyboard access
 
 ### Reusable activity
 
-- ⬜ `AuditTimeline` component (latest events for one resource) to drop into forms, responses, users and settings pages as they are built
-- ⬜ Security view filter preset (failed / blocked sign-ins, revoked sessions) used later by Settings → Security
+- ✅ `AuditTimeline` component (latest events for one resource) to drop into forms, responses, users and settings pages as they are built
+- ✅ Security view filter preset (failed / blocked sign-ins, revoked sessions) used later by Settings → Security
 
 ### Access
 
-- ⬜ Workspace admins only for now; a proper `audit.read` permission arrives with Roles & access (F19)
+- ✅ Workspace admins only for now; a proper `audit.read` permission arrives with Roles & access (F19)
 
 ### Waiting on backend
 
@@ -265,6 +265,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ⬜ Live counts next to Drafts / Published / Closed in the sidebar
 - ⬜ Optimistic locking (`row_version`) with a clear "changed by someone else" message
 - ⬜ Mock endpoints for all of the above
+- ⬜ Every form action recorded in the audit trail (create, rename, move, duplicate, archive, close, delete, restore) with before / after values
 
 ---
 
@@ -572,26 +573,27 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace   | F3 / F12    | 🟡     |
 | 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                        | F3          | ✅     |
 | 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC | F12 / F18   | ✅     |
-| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                        | F4          | ⬜     |
+| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                        | F4          | ✅     |
 | 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome          | F3          | ✅     |
 
 ---
 
 ## Progress log
 
-| Date       | Phase | What happened                                                                                                                                                                                    |
-| ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 2026-10-02 | F0    | Foundation: config, 20 languages, mock API with real encryption, tooling. Checked phone / desktop, light / dark, Arabic, keyboard.                                                               |
-| 2026-10-02 | F0    | Access matrix verified on every host; shared host resolver with tests.                                                                                                                           |
-| 2026-10-02 | F1    | App shell built, then rebuilt to match the design exactly (rail + menu, header, monochrome).                                                                                                     |
-| 2026-10-02 | F1    | Flags, breadcrumbs in the header, Manrope font, menu timeline / square bullets / dark text.                                                                                                      |
-| 2026-10-02 | F2    | Core plumbing: secure API client, error handling in 20 languages, DataView live on the mock, confirm dialog, formatters.                                                                         |
-| 2026-10-02 | F2    | Header carries title / subtitle / crumbs / buttons; footer added; DataView flow approved.                                                                                                        |
-| 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                                                                      |
-| 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                            |
-| 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                 |
-| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F12). Provider callback waits on the backend. |
-| 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                        |
-| 2026-10-02 | F3    | "Work email" → "Email address" everywhere, neutral placeholder name@example.com, no "work email" wording (any organisation, any email provider).                                                 |
-| 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                       |
-| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                    |
+| Date       | Phase | What happened                                                                                                                                                                                                                                                                                                                          |
+| ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-02 | F0    | Foundation: config, 20 languages, mock API with real encryption, tooling. Checked phone / desktop, light / dark, Arabic, keyboard.                                                                                                                                                                                                     |
+| 2026-10-02 | F0    | Access matrix verified on every host; shared host resolver with tests.                                                                                                                                                                                                                                                                 |
+| 2026-10-02 | F1    | App shell built, then rebuilt to match the design exactly (rail + menu, header, monochrome).                                                                                                                                                                                                                                           |
+| 2026-10-02 | F1    | Flags, breadcrumbs in the header, Manrope font, menu timeline / square bullets / dark text.                                                                                                                                                                                                                                            |
+| 2026-10-02 | F2    | Core plumbing: secure API client, error handling in 20 languages, DataView live on the mock, confirm dialog, formatters.                                                                                                                                                                                                               |
+| 2026-10-02 | F2    | Header carries title / subtitle / crumbs / buttons; footer added; DataView flow approved.                                                                                                                                                                                                                                              |
+| 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                                                                                                                                                                                                            |
+| 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                                                                                                                                                                  |
+| 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                                                                                                                                                       |
+| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F12). Provider callback waits on the backend.                                                                                                                                       |
+| 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                                                                                                                                                              |
+| 2026-10-02 | F3    | "Work email" → "Email address" everywhere, neutral placeholder name@example.com, no "work email" wording (any organisation, any email provider).                                                                                                                                                                                       |
+| 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                                                                                                                                                             |
+| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                                                                                                                                                          |
+| 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access. |

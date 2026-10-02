@@ -79,7 +79,8 @@
     "fromTemplate": "A partir de um modelo",
     "workspaces": "Espaços de trabalho",
     "expand": "Expandir menu",
-    "collapse": "Recolher menu"
+    "collapse": "Recolher menu",
+    "audit": "Trilha de auditoria"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -368,5 +369,159 @@
       "failedDesc": "Entre com seu e-mail e senha."
     },
     "workspace": "Espaço de trabalho"
+  },
+  "audit": {
+    "description": "Cada ação no seu espaço de trabalho: quem, o quê, quando e onde.",
+    "security": "Eventos de segurança",
+    "searchPlaceholder": "Pesquisar pessoas, itens, endereços IP…",
+    "emptyTitle": "Nada registrado ainda",
+    "emptyDesc": "As ações do seu espaço de trabalho aparecem aqui assim que acontecem.",
+    "noAccessTitle": "Apenas administradores do espaço de trabalho podem ver a trilha de auditoria",
+    "noAccessDesc": "Peça a um proprietário ou administrador deste espaço se precisar dessas informações.",
+    "sortNewest": "Mais recentes primeiro",
+    "sortOldest": "Mais antigos primeiro",
+    "notSignedIn": "Sem sessão iniciada",
+    "unknownLocation": "Local desconhecido",
+    "yes": "Sim",
+    "no": "Não",
+    "col": {
+      "when": "Quando",
+      "person": "Pessoa",
+      "action": "Ação",
+      "result": "Resultado",
+      "location": "Local",
+      "device": "Dispositivo"
+    },
+    "filter": {
+      "area": "Área",
+      "outcome": "Resultado",
+      "person": "Pessoa",
+      "country": "País"
+    },
+    "outcome": {
+      "success": "Sucesso",
+      "failure": "Falhou",
+      "blocked": "Bloqueado"
+    },
+    "area": {
+      "auth": "Acesso e segurança",
+      "workspace": "Espaço de trabalho",
+      "forms": "Formulários",
+      "responses": "Respostas",
+      "settings": "Configurações",
+      "users": "Usuários",
+      "integrations": "Integrações",
+      "audit": "Trilha de auditoria"
+    },
+    "actorType": {
+      "user": "Pessoa",
+      "api_key": "Chave de API",
+      "system": "Sistema"
+    },
+    "device": {
+      "desktop": "Computador",
+      "mobile": "Telefone",
+      "tablet": "Tablet",
+      "unknown": "Dispositivo desconhecido"
+    },
+    "resource": {
+      "form": "Formulário",
+      "response": "Resposta",
+      "user": "Usuário",
+      "workspace": "Espaço de trabalho",
+      "setting": "Configuração",
+      "destination": "Destino",
+      "webhook": "Webhook",
+      "api_key": "Chave de API",
+      "export": "Exportação"
+    },
+    "field": {
+      "name": "Nome",
+      "status": "Status",
+      "folder": "Pasta",
+      "role": "Função",
+      "brand_colour": "Cor da marca",
+      "session_timeout_minutes": "Tempo limite da sessão (minutos)",
+      "sign_in_methods": "Métodos de acesso",
+      "response_status": "Status da resposta"
+    },
+    "action": {
+      "auth_login_succeeded": "Entrou",
+      "auth_login_failed": "Falha ao entrar",
+      "auth_login_blocked": "Acesso bloqueado",
+      "auth_otp_sent": "Código de acesso enviado",
+      "auth_otp_failed": "Código de acesso incorreto",
+      "auth_otp_locked": "Códigos incorretos demais",
+      "auth_logout": "Saiu",
+      "auth_session_revoked": "Sessão revogada",
+      "auth_password_reset_requested": "Redefinição de senha solicitada",
+      "auth_password_reset": "Senha alterada",
+      "workspace_created": "Espaço de trabalho criado",
+      "workspace_updated": "Espaço de trabalho atualizado",
+      "forms_created": "Formulário criado",
+      "forms_updated": "Formulário editado",
+      "forms_published": "Formulário publicado",
+      "forms_closed": "Formulário encerrado",
+      "forms_shared": "Formulário compartilhado",
+      "forms_archived": "Formulário arquivado",
+      "forms_deleted": "Formulário movido para a lixeira",
+      "forms_restored": "Formulário restaurado",
+      "responses_updated": "Resposta atualizada",
+      "responses_exported": "Respostas exportadas",
+      "responses_deleted": "Resposta excluída",
+      "settings_updated": "Configurações alteradas",
+      "users_invited": "Pessoa convidada",
+      "users_role_changed": "Função alterada",
+      "users_disabled": "Conta desativada",
+      "users_enabled": "Conta ativada",
+      "integrations_destination_connected": "Banco de dados conectado",
+      "integrations_webhook_created": "Webhook adicionado",
+      "integrations_api_key_created": "Chave de API criada",
+      "integrations_api_key_revoked": "Chave de API revogada",
+      "audit_exported": "Trilha de auditoria exportada"
+    },
+    "detail": {
+      "who": "Quem",
+      "when": "Quando",
+      "where": "Onde",
+      "item": "Item",
+      "changes": "Alterações",
+      "before": "Antes",
+      "after": "Depois",
+      "empty": "(vazio)",
+      "technical": "Detalhes técnicos",
+      "requestId": "ID da solicitação",
+      "utc": "UTC",
+      "open": "Abrir",
+      "viewDetails": "Ver detalhes",
+      "byPerson": "Ver a atividade desta pessoa",
+      "copyRequestId": "Copiar ID da solicitação",
+      "copied": "ID da solicitação copiado",
+      "moreItem": "Mais sobre este item",
+      "morePerson": "Mais desta pessoa",
+      "showAll": "Mostrar tudo"
+    },
+    "timeline": {
+      "empty": "Nenhuma outra atividade ainda.",
+      "viewAll": "Ver toda a atividade"
+    },
+    "export": {
+      "button": "Exportar",
+      "title": "Exportar trilha de auditoria",
+      "desc": "Baixe os eventos que correspondem à sua pesquisa, filtros e datas atuais.",
+      "format": "Formato do arquivo",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Abre no Excel, Numbers ou Google Sheets.",
+      "csv": "CSV (.csv)",
+      "csvDesc": "Texto simples, para outras ferramentas e importações.",
+      "applied": "{count} filtro aplicado | {count} filtros aplicados",
+      "none": "Todos os eventos (sem filtros)",
+      "start": "Iniciar exportação",
+      "preparing": "Preparando seu arquivo…",
+      "rows": "{n} evento | {n} eventos",
+      "ready": "Seu arquivo está pronto",
+      "download": "Baixar",
+      "expires": "O link de download funciona uma vez e expira {time}."
+    }
   }
 }

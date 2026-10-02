@@ -5,11 +5,13 @@ export function useAppLocale() {
   const current = computed(() => APP_LOCALES.find(item => item.code === locale.value) ?? APP_LOCALES[0]!)
 
   const uiLocale = computed(() => resolveUiLocale(current.value.uiLocale))
+  /** Side panels open from the reading end: right in LTR, left in RTL (USlideover `side`). */
+  const endSide = computed(() => (current.value.dir === 'rtl' ? 'left' : 'right') as 'left' | 'right')
 
   async function changeLocale(code: string) {
     if (code === locale.value || !APP_LOCALES.some(item => item.code === code)) return
     await setLocale(code as typeof locale.value)
   }
 
-  return { locale, current, uiLocale, locales: APP_LOCALES, changeLocale }
+  return { locale, current, uiLocale, endSide, locales: APP_LOCALES, changeLocale }
 }

@@ -79,7 +79,8 @@
     "fromTemplate": "टेम्पलेट से",
     "workspaces": "वर्कस्पेस",
     "expand": "मेनू फैलाएँ",
-    "collapse": "मेनू छोटा करें"
+    "collapse": "मेनू छोटा करें",
+    "audit": "ऑडिट ट्रेल"
   },
   "navbar": {
     "breadcrumb": "ब्रेडक्रंब",
@@ -368,5 +369,159 @@
       "failedDesc": "अपने ईमेल और पासवर्ड से साइन इन करें।"
     },
     "workspace": "वर्कस्पेस"
+  },
+  "audit": {
+    "description": "आपके वर्कस्पेस की हर कार्रवाई — किसने, क्या, कब और कहाँ।",
+    "security": "सुरक्षा घटनाएँ",
+    "searchPlaceholder": "लोग, आइटम, IP पते खोजें…",
+    "emptyTitle": "अभी तक कुछ दर्ज नहीं हुआ",
+    "emptyDesc": "आपके वर्कस्पेस की कार्रवाइयाँ होते ही यहाँ दिखती हैं।",
+    "noAccessTitle": "ऑडिट ट्रेल सिर्फ़ वर्कस्पेस एडमिन देख सकते हैं",
+    "noAccessDesc": "यह जानकारी चाहिए तो इस वर्कस्पेस के मालिक या किसी एडमिन से पूछें।",
+    "sortNewest": "नए पहले",
+    "sortOldest": "पुराने पहले",
+    "notSignedIn": "साइन इन नहीं",
+    "unknownLocation": "अज्ञात स्थान",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "col": {
+      "when": "कब",
+      "person": "व्यक्ति",
+      "action": "कार्रवाई",
+      "result": "परिणाम",
+      "location": "स्थान",
+      "device": "डिवाइस"
+    },
+    "filter": {
+      "area": "क्षेत्र",
+      "outcome": "परिणाम",
+      "person": "व्यक्ति",
+      "country": "देश"
+    },
+    "outcome": {
+      "success": "सफल",
+      "failure": "विफल",
+      "blocked": "अवरुद्ध"
+    },
+    "area": {
+      "auth": "साइन-इन और सुरक्षा",
+      "workspace": "वर्कस्पेस",
+      "forms": "फ़ॉर्म",
+      "responses": "जवाब",
+      "settings": "सेटिंग्स",
+      "users": "उपयोगकर्ता",
+      "integrations": "इंटीग्रेशन",
+      "audit": "ऑडिट ट्रेल"
+    },
+    "actorType": {
+      "user": "व्यक्ति",
+      "api_key": "API कुंजी",
+      "system": "सिस्टम"
+    },
+    "device": {
+      "desktop": "कंप्यूटर",
+      "mobile": "फ़ोन",
+      "tablet": "टैबलेट",
+      "unknown": "अज्ञात डिवाइस"
+    },
+    "resource": {
+      "form": "फ़ॉर्म",
+      "response": "जवाब",
+      "user": "उपयोगकर्ता",
+      "workspace": "वर्कस्पेस",
+      "setting": "सेटिंग",
+      "destination": "गंतव्य",
+      "webhook": "वेबहुक",
+      "api_key": "API कुंजी",
+      "export": "एक्सपोर्ट"
+    },
+    "field": {
+      "name": "नाम",
+      "status": "स्थिति",
+      "folder": "फ़ोल्डर",
+      "role": "भूमिका",
+      "brand_colour": "ब्रांड रंग",
+      "session_timeout_minutes": "सेशन टाइमआउट (मिनट)",
+      "sign_in_methods": "साइन-इन तरीके",
+      "response_status": "जवाब की स्थिति"
+    },
+    "action": {
+      "auth_login_succeeded": "साइन इन किया",
+      "auth_login_failed": "साइन-इन विफल",
+      "auth_login_blocked": "साइन-इन अवरुद्ध",
+      "auth_otp_sent": "साइन-इन कोड भेजा गया",
+      "auth_otp_failed": "गलत साइन-इन कोड",
+      "auth_otp_locked": "बहुत सारे गलत कोड",
+      "auth_logout": "साइन आउट किया",
+      "auth_session_revoked": "सेशन रद्द किया गया",
+      "auth_password_reset_requested": "पासवर्ड रीसेट का अनुरोध",
+      "auth_password_reset": "पासवर्ड बदला गया",
+      "workspace_created": "वर्कस्पेस बनाया गया",
+      "workspace_updated": "वर्कस्पेस अपडेट किया गया",
+      "forms_created": "फ़ॉर्म बनाया गया",
+      "forms_updated": "फ़ॉर्म संपादित किया गया",
+      "forms_published": "फ़ॉर्म प्रकाशित किया गया",
+      "forms_closed": "फ़ॉर्म बंद किया गया",
+      "forms_shared": "फ़ॉर्म साझा किया गया",
+      "forms_archived": "फ़ॉर्म संग्रहीत किया गया",
+      "forms_deleted": "फ़ॉर्म ट्रैश में ले जाया गया",
+      "forms_restored": "फ़ॉर्म पुनर्स्थापित किया गया",
+      "responses_updated": "जवाब अपडेट किया गया",
+      "responses_exported": "जवाब एक्सपोर्ट किए गए",
+      "responses_deleted": "जवाब हटाया गया",
+      "settings_updated": "सेटिंग्स बदली गईं",
+      "users_invited": "व्यक्ति को आमंत्रित किया गया",
+      "users_role_changed": "भूमिका बदली गई",
+      "users_disabled": "खाता अक्षम किया गया",
+      "users_enabled": "खाता सक्षम किया गया",
+      "integrations_destination_connected": "डेटाबेस जोड़ा गया",
+      "integrations_webhook_created": "वेबहुक जोड़ा गया",
+      "integrations_api_key_created": "API कुंजी बनाई गई",
+      "integrations_api_key_revoked": "API कुंजी रद्द की गई",
+      "audit_exported": "ऑडिट ट्रेल एक्सपोर्ट किया गया"
+    },
+    "detail": {
+      "who": "किसने",
+      "when": "कब",
+      "where": "कहाँ",
+      "item": "आइटम",
+      "changes": "बदलाव",
+      "before": "पहले",
+      "after": "बाद में",
+      "empty": "(खाली)",
+      "technical": "तकनीकी विवरण",
+      "requestId": "अनुरोध ID",
+      "utc": "UTC",
+      "open": "खोलें",
+      "viewDetails": "विवरण देखें",
+      "byPerson": "इस व्यक्ति की गतिविधि दिखाएँ",
+      "copyRequestId": "अनुरोध ID कॉपी करें",
+      "copied": "अनुरोध ID कॉपी हो गई",
+      "moreItem": "इस आइटम पर और",
+      "morePerson": "इस व्यक्ति की और गतिविधि",
+      "showAll": "सभी दिखाएँ"
+    },
+    "timeline": {
+      "empty": "अभी कोई और गतिविधि नहीं।",
+      "viewAll": "पूरी गतिविधि देखें"
+    },
+    "export": {
+      "button": "एक्सपोर्ट",
+      "title": "ऑडिट ट्रेल एक्सपोर्ट करें",
+      "desc": "अपनी मौजूदा खोज, फ़िल्टर और तारीखों से मेल खाने वाली घटनाएँ डाउनलोड करें।",
+      "format": "फ़ाइल फ़ॉर्मैट",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Excel, Numbers या Google Sheets में खुलती है।",
+      "csv": "CSV (.csv)",
+      "csvDesc": "सादा टेक्स्ट, दूसरे टूल और इंपोर्ट के लिए।",
+      "applied": "{count} फ़िल्टर लागू | {count} फ़िल्टर लागू",
+      "none": "सभी घटनाएँ (कोई फ़िल्टर नहीं)",
+      "start": "एक्सपोर्ट शुरू करें",
+      "preparing": "आपकी फ़ाइल तैयार हो रही है…",
+      "rows": "{n} घटना | {n} घटनाएँ",
+      "ready": "आपकी फ़ाइल तैयार है",
+      "download": "डाउनलोड करें",
+      "expires": "डाउनलोड लिंक एक बार चलता है और {time} समाप्त हो जाता है।"
+    }
   }
 }

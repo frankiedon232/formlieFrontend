@@ -6,6 +6,7 @@
 import type { H3Event } from 'h3'
 import type { AuthTokens, LoginChallenge, OtpChannel } from '#shared/types/auth'
 import { resolveHostContext, type HostContext } from '#shared/utils/tenant/host'
+import { actorOf, recordAudit } from './audit'
 import { MockError } from './respond'
 import { MOCK_TENANTS, MOCK_USERS, type MockTenant, type MockUser } from '../data/tenants'
 
@@ -151,7 +152,7 @@ export const consumeChallenge = (id: string) => challenges.delete(id)
 
 // ── Sessions and tokens ─────────────────────────────────────────────────────────────
 
-interface Session {
+export interface Session {
   id: string
   user: MockUser
   tenant: MockTenant
@@ -189,6 +190,7 @@ function tokensFor(event: H3Event, session: Session): AuthTokens {
       last_name: user.last_name,
       email: user.email,
       avatar_url: null,
+      role: user.role,
     },
     tenant: { id: tenant.id, name: tenant.name, subdomain: tenant.subdomain },
     organisation: tenant.organisation,
@@ -211,6 +213,13 @@ export function rotateRefresh(event: H3Event): AuthTokens {
   if (entry.used) {
     session.revoked = true
     deleteCookie(event, REFRESH_COOKIE, { path: REFRESH_COOKIE_PATH })
+    recordAudit(event, session.tenant, {
+      action: 'auth.session.revoked',
+      actor: actorOf(session.user),
+      outcome: 'blocked',
+      reason: 'FRM-AUTH-1012',
+      metadata: { cause: 'refresh_token_reuse' },
+    })
     throw new MockError('FRM-AUTH-1012')
   }
   if (session.tenant.id !== requireTenant(event).id) throw new MockError('FRM-TEN-1003')
@@ -218,20 +227,22 @@ export function rotateRefresh(event: H3Event): AuthTokens {
   return tokensFor(event, session)
 }
 
-export function endSession(event: H3Event) {
+/** Revokes the session behind the refresh cookie and / or bearer; returns it (for the audit trail). */
+export function endSession(event: H3Event): Session | null {
   const token = getCookie(event, REFRESH_COOKIE)
-  const entry = token ? refreshTokens.get(token) : undefined
-  if (entry) {
-    const session = sessions.get(entry.sid)
-    if (session) session.revoked = true
-  }
+  const refreshEntry = token ? refreshTokens.get(token) : undefined
   const bearer = getHeader(event, 'authorization')?.replace(/^Bearer /, '')
-  const access = bearer ? accessTokens.get(bearer) : undefined
-  if (access) {
-    const session = sessions.get(access.sid)
-    if (session) session.revoked = true
+  const accessEntry = bearer ? accessTokens.get(bearer) : undefined
+  let ended: Session | null = null
+  for (const sid of [refreshEntry?.sid, accessEntry?.sid]) {
+    const session = sid ? sessions.get(sid) : undefined
+    if (session && !session.revoked) {
+      session.revoked = true
+      ended = session
+    }
   }
   deleteCookie(event, REFRESH_COOKIE, { path: REFRESH_COOKIE_PATH })
+  return ended
 }
 
 /** Protected routes: valid bearer for this host's tenant, else FRM-AUTH-1001 / 1010 / 1011 / TEN-1003. */
@@ -245,6 +256,13 @@ export function requireAuth(event: H3Event): { user: MockUser; tenant: MockTenan
   if (!session || session.revoked) throw new MockError('FRM-AUTH-1011')
   if (session.tenant.id !== requireTenant(event).id) throw new MockError('FRM-TEN-1003')
   return { user: session.user, tenant: session.tenant }
+}
+
+/** Workspace owner / admin only (until Roles & access, F19). */
+export function requireAdmin(event: H3Event): { user: MockUser; tenant: MockTenant } {
+  const auth = requireAuth(event)
+  if (auth.user.role === 'member') throw new MockError('FRM-PERM-1001')
+  return auth
 }
 
 export function issueTicket(user: MockUser, tenant: MockTenant): string {

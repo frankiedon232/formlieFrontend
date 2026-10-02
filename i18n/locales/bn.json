@@ -79,7 +79,8 @@
     "fromTemplate": "টেমপ্লেট থেকে",
     "workspaces": "ওয়ার্কস্পেস",
     "expand": "মেনু বড় করুন",
-    "collapse": "মেনু ছোট করুন"
+    "collapse": "মেনু ছোট করুন",
+    "audit": "অডিট ট্রেইল"
   },
   "navbar": {
     "breadcrumb": "ব্রেডক্রাম্ব",
@@ -368,5 +369,159 @@
       "failedDesc": "ইমেইল ও পাসওয়ার্ড দিয়ে সাইন ইন করুন।"
     },
     "workspace": "ওয়ার্কস্পেস"
+  },
+  "audit": {
+    "description": "আপনার ওয়ার্কস্পেসের প্রতিটি কাজ — কে, কী, কখন এবং কোথায়।",
+    "security": "নিরাপত্তা ইভেন্ট",
+    "searchPlaceholder": "মানুষ, আইটেম, IP ঠিকানা খুঁজুন…",
+    "emptyTitle": "এখনো কিছু রেকর্ড হয়নি",
+    "emptyDesc": "আপনার ওয়ার্কস্পেসের কাজগুলো ঘটার সঙ্গে সঙ্গে এখানে দেখা যায়।",
+    "noAccessTitle": "শুধু ওয়ার্কস্পেস অ্যাডমিনরা অডিট ট্রেইল দেখতে পারেন",
+    "noAccessDesc": "এই তথ্য দরকার হলে এই ওয়ার্কস্পেসের মালিক বা কোনো অ্যাডমিনকে বলুন।",
+    "sortNewest": "নতুনগুলো আগে",
+    "sortOldest": "পুরোনোগুলো আগে",
+    "notSignedIn": "সাইন ইন করা নেই",
+    "unknownLocation": "অজানা অবস্থান",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "col": {
+      "when": "কখন",
+      "person": "ব্যক্তি",
+      "action": "কাজ",
+      "result": "ফলাফল",
+      "location": "অবস্থান",
+      "device": "ডিভাইস"
+    },
+    "filter": {
+      "area": "বিভাগ",
+      "outcome": "ফলাফল",
+      "person": "ব্যক্তি",
+      "country": "দেশ"
+    },
+    "outcome": {
+      "success": "সফল",
+      "failure": "ব্যর্থ",
+      "blocked": "আটকানো হয়েছে"
+    },
+    "area": {
+      "auth": "সাইন-ইন ও নিরাপত্তা",
+      "workspace": "ওয়ার্কস্পেস",
+      "forms": "ফর্ম",
+      "responses": "উত্তর",
+      "settings": "সেটিংস",
+      "users": "ব্যবহারকারী",
+      "integrations": "ইন্টিগ্রেশন",
+      "audit": "অডিট ট্রেইল"
+    },
+    "actorType": {
+      "user": "ব্যক্তি",
+      "api_key": "API কী",
+      "system": "সিস্টেম"
+    },
+    "device": {
+      "desktop": "কম্পিউটার",
+      "mobile": "ফোন",
+      "tablet": "ট্যাবলেট",
+      "unknown": "অজানা ডিভাইস"
+    },
+    "resource": {
+      "form": "ফর্ম",
+      "response": "উত্তর",
+      "user": "ব্যবহারকারী",
+      "workspace": "ওয়ার্কস্পেস",
+      "setting": "সেটিং",
+      "destination": "গন্তব্য",
+      "webhook": "ওয়েবহুক",
+      "api_key": "API কী",
+      "export": "এক্সপোর্ট"
+    },
+    "field": {
+      "name": "নাম",
+      "status": "অবস্থা",
+      "folder": "ফোল্ডার",
+      "role": "ভূমিকা",
+      "brand_colour": "ব্র্যান্ড রং",
+      "session_timeout_minutes": "সেশন টাইমআউট (মিনিট)",
+      "sign_in_methods": "সাইন-ইন পদ্ধতি",
+      "response_status": "উত্তরের অবস্থা"
+    },
+    "action": {
+      "auth_login_succeeded": "সাইন ইন করেছেন",
+      "auth_login_failed": "সাইন-ইন ব্যর্থ",
+      "auth_login_blocked": "সাইন-ইন আটকানো হয়েছে",
+      "auth_otp_sent": "সাইন-ইন কোড পাঠানো হয়েছে",
+      "auth_otp_failed": "ভুল সাইন-ইন কোড",
+      "auth_otp_locked": "অনেকগুলো ভুল কোড",
+      "auth_logout": "সাইন আউট করেছেন",
+      "auth_session_revoked": "সেশন বাতিল করা হয়েছে",
+      "auth_password_reset_requested": "পাসওয়ার্ড রিসেটের অনুরোধ",
+      "auth_password_reset": "পাসওয়ার্ড বদলানো হয়েছে",
+      "workspace_created": "ওয়ার্কস্পেস তৈরি হয়েছে",
+      "workspace_updated": "ওয়ার্কস্পেস আপডেট হয়েছে",
+      "forms_created": "ফর্ম তৈরি হয়েছে",
+      "forms_updated": "ফর্ম সম্পাদিত হয়েছে",
+      "forms_published": "ফর্ম প্রকাশিত হয়েছে",
+      "forms_closed": "ফর্ম বন্ধ হয়েছে",
+      "forms_shared": "ফর্ম শেয়ার করা হয়েছে",
+      "forms_archived": "ফর্ম আর্কাইভ করা হয়েছে",
+      "forms_deleted": "ফর্ম ট্র্যাশে সরানো হয়েছে",
+      "forms_restored": "ফর্ম পুনরুদ্ধার হয়েছে",
+      "responses_updated": "উত্তর আপডেট হয়েছে",
+      "responses_exported": "উত্তর এক্সপোর্ট হয়েছে",
+      "responses_deleted": "উত্তর মুছে ফেলা হয়েছে",
+      "settings_updated": "সেটিংস বদলানো হয়েছে",
+      "users_invited": "ব্যক্তিকে আমন্ত্রণ জানানো হয়েছে",
+      "users_role_changed": "ভূমিকা বদলানো হয়েছে",
+      "users_disabled": "অ্যাকাউন্ট নিষ্ক্রিয় করা হয়েছে",
+      "users_enabled": "অ্যাকাউন্ট সক্রিয় করা হয়েছে",
+      "integrations_destination_connected": "ডেটাবেস যুক্ত হয়েছে",
+      "integrations_webhook_created": "ওয়েবহুক যোগ হয়েছে",
+      "integrations_api_key_created": "API কী তৈরি হয়েছে",
+      "integrations_api_key_revoked": "API কী বাতিল হয়েছে",
+      "audit_exported": "অডিট ট্রেইল এক্সপোর্ট হয়েছে"
+    },
+    "detail": {
+      "who": "কে",
+      "when": "কখন",
+      "where": "কোথায়",
+      "item": "আইটেম",
+      "changes": "পরিবর্তন",
+      "before": "আগে",
+      "after": "পরে",
+      "empty": "(খালি)",
+      "technical": "প্রযুক্তিগত বিবরণ",
+      "requestId": "অনুরোধ ID",
+      "utc": "UTC",
+      "open": "খুলুন",
+      "viewDetails": "বিবরণ দেখুন",
+      "byPerson": "এই ব্যক্তির কার্যকলাপ দেখান",
+      "copyRequestId": "অনুরোধ ID কপি করুন",
+      "copied": "অনুরোধ ID কপি হয়েছে",
+      "moreItem": "এই আইটেম নিয়ে আরও",
+      "morePerson": "এই ব্যক্তির আরও কাজ",
+      "showAll": "সব দেখান"
+    },
+    "timeline": {
+      "empty": "এখনো অন্য কোনো কার্যকলাপ নেই।",
+      "viewAll": "সব কার্যকলাপ দেখুন"
+    },
+    "export": {
+      "button": "এক্সপোর্ট",
+      "title": "অডিট ট্রেইল এক্সপোর্ট করুন",
+      "desc": "আপনার বর্তমান সার্চ, ফিল্টার ও তারিখের সঙ্গে মেলে এমন ইভেন্ট ডাউনলোড করুন।",
+      "format": "ফাইল ফরম্যাট",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Excel, Numbers বা Google Sheets-এ খোলে।",
+      "csv": "CSV (.csv)",
+      "csvDesc": "সাধারণ টেক্সট, অন্য টুল ও ইমপোর্টের জন্য।",
+      "applied": "{count}টি ফিল্টার প্রয়োগ হয়েছে | {count}টি ফিল্টার প্রয়োগ হয়েছে",
+      "none": "সব ইভেন্ট (কোনো ফিল্টার নেই)",
+      "start": "এক্সপোর্ট শুরু করুন",
+      "preparing": "আপনার ফাইল তৈরি হচ্ছে…",
+      "rows": "{n}টি ইভেন্ট | {n}টি ইভেন্ট",
+      "ready": "আপনার ফাইল তৈরি",
+      "download": "ডাউনলোড করুন",
+      "expires": "ডাউনলোড লিংকটি একবারই কাজ করে এবং {time} মেয়াদ শেষ হয়।"
+    }
   }
 }

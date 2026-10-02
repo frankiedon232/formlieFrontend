@@ -37,7 +37,8 @@ describe('locales', () => {
   })
 
   it.each(APP_LOCALES.map(locale => locale.code))('%s has no unescaped @ (vue-i18n linked syntax)', code => {
-    for (const [key, value] of Object.entries(flatten(load(code)))) expect(unescapedAt(value), key).toBe(false)
+    for (const [key, value] of Object.entries(flatten(load(code))))
+      expect(unescapedAt(value), key).toBe(false)
   })
 
   it.each(APP_LOCALES.filter(locale => locale.code !== 'en').map(locale => locale.code))(

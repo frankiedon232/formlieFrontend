@@ -79,7 +79,8 @@
     "fromTemplate": "テンプレートから",
     "workspaces": "ワークスペース",
     "expand": "メニューを展開",
-    "collapse": "メニューを折りたたむ"
+    "collapse": "メニューを折りたたむ",
+    "audit": "監査ログ"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -368,5 +369,159 @@
       "failedDesc": "メールアドレスとパスワードでログインしてください。"
     },
     "workspace": "ワークスペース"
+  },
+  "audit": {
+    "description": "ワークスペース内のすべての操作 — 誰が、何を、いつ、どこで。",
+    "security": "セキュリティイベント",
+    "searchPlaceholder": "人、項目、IP アドレスを検索…",
+    "emptyTitle": "まだ記録はありません",
+    "emptyDesc": "ワークスペースでの操作は、発生するとすぐにここに表示されます。",
+    "noAccessTitle": "監査ログを表示できるのはワークスペースの管理者のみです",
+    "noAccessDesc": "この情報が必要な場合は、このワークスペースのオーナーまたは管理者にお問い合わせください。",
+    "sortNewest": "新しい順",
+    "sortOldest": "古い順",
+    "notSignedIn": "未ログイン",
+    "unknownLocation": "不明な場所",
+    "yes": "はい",
+    "no": "いいえ",
+    "col": {
+      "when": "日時",
+      "person": "ユーザー",
+      "action": "操作",
+      "result": "結果",
+      "location": "場所",
+      "device": "デバイス"
+    },
+    "filter": {
+      "area": "分類",
+      "outcome": "結果",
+      "person": "ユーザー",
+      "country": "国"
+    },
+    "outcome": {
+      "success": "成功",
+      "failure": "失敗",
+      "blocked": "ブロック"
+    },
+    "area": {
+      "auth": "ログインとセキュリティ",
+      "workspace": "ワークスペース",
+      "forms": "フォーム",
+      "responses": "回答",
+      "settings": "設定",
+      "users": "ユーザー",
+      "integrations": "連携",
+      "audit": "監査ログ"
+    },
+    "actorType": {
+      "user": "ユーザー",
+      "api_key": "API キー",
+      "system": "システム"
+    },
+    "device": {
+      "desktop": "パソコン",
+      "mobile": "スマートフォン",
+      "tablet": "タブレット",
+      "unknown": "不明なデバイス"
+    },
+    "resource": {
+      "form": "フォーム",
+      "response": "回答",
+      "user": "ユーザー",
+      "workspace": "ワークスペース",
+      "setting": "設定",
+      "destination": "送信先",
+      "webhook": "Webhook",
+      "api_key": "API キー",
+      "export": "エクスポート"
+    },
+    "field": {
+      "name": "名前",
+      "status": "ステータス",
+      "folder": "フォルダー",
+      "role": "ロール",
+      "brand_colour": "ブランドカラー",
+      "session_timeout_minutes": "セッションのタイムアウト（分）",
+      "sign_in_methods": "ログイン方法",
+      "response_status": "回答のステータス"
+    },
+    "action": {
+      "auth_login_succeeded": "ログインしました",
+      "auth_login_failed": "ログインに失敗しました",
+      "auth_login_blocked": "ログインがブロックされました",
+      "auth_otp_sent": "ログインコードを送信しました",
+      "auth_otp_failed": "ログインコードが違います",
+      "auth_otp_locked": "誤ったコードが多すぎます",
+      "auth_logout": "ログアウトしました",
+      "auth_session_revoked": "セッションが取り消されました",
+      "auth_password_reset_requested": "パスワードの再設定を依頼しました",
+      "auth_password_reset": "パスワードを変更しました",
+      "workspace_created": "ワークスペースを作成しました",
+      "workspace_updated": "ワークスペースを更新しました",
+      "forms_created": "フォームを作成しました",
+      "forms_updated": "フォームを編集しました",
+      "forms_published": "フォームを公開しました",
+      "forms_closed": "フォームを締め切りました",
+      "forms_shared": "フォームを共有しました",
+      "forms_archived": "フォームをアーカイブしました",
+      "forms_deleted": "フォームをゴミ箱に移動しました",
+      "forms_restored": "フォームを復元しました",
+      "responses_updated": "回答を更新しました",
+      "responses_exported": "回答をエクスポートしました",
+      "responses_deleted": "回答を削除しました",
+      "settings_updated": "設定を変更しました",
+      "users_invited": "ユーザーを招待しました",
+      "users_role_changed": "ロールを変更しました",
+      "users_disabled": "アカウントを無効にしました",
+      "users_enabled": "アカウントを有効にしました",
+      "integrations_destination_connected": "データベースを接続しました",
+      "integrations_webhook_created": "Webhook を追加しました",
+      "integrations_api_key_created": "API キーを作成しました",
+      "integrations_api_key_revoked": "API キーを取り消しました",
+      "audit_exported": "監査ログをエクスポートしました"
+    },
+    "detail": {
+      "who": "誰が",
+      "when": "日時",
+      "where": "場所",
+      "item": "項目",
+      "changes": "変更内容",
+      "before": "変更前",
+      "after": "変更後",
+      "empty": "（空）",
+      "technical": "技術的な詳細",
+      "requestId": "リクエスト ID",
+      "utc": "UTC",
+      "open": "開く",
+      "viewDetails": "詳細を表示",
+      "byPerson": "このユーザーの操作を表示",
+      "copyRequestId": "リクエスト ID をコピー",
+      "copied": "リクエスト ID をコピーしました",
+      "moreItem": "この項目の他の記録",
+      "morePerson": "このユーザーの他の記録",
+      "showAll": "すべて表示"
+    },
+    "timeline": {
+      "empty": "他の操作はまだありません。",
+      "viewAll": "すべての操作を表示"
+    },
+    "export": {
+      "button": "エクスポート",
+      "title": "監査ログをエクスポート",
+      "desc": "現在の検索、フィルター、期間に一致するイベントをダウンロードします。",
+      "format": "ファイル形式",
+      "xlsx": "Excel (.xlsx)",
+      "xlsxDesc": "Excel、Numbers、Google スプレッドシートで開けます。",
+      "csv": "CSV (.csv)",
+      "csvDesc": "プレーンテキスト。他のツールや取り込み用。",
+      "applied": "{count} 件のフィルターを適用中 | {count} 件のフィルターを適用中",
+      "none": "すべてのイベント（フィルターなし）",
+      "start": "エクスポートを開始",
+      "preparing": "ファイルを準備しています…",
+      "rows": "{n} 件のイベント | {n} 件のイベント",
+      "ready": "ファイルの準備ができました",
+      "download": "ダウンロード",
+      "expires": "ダウンロードリンクは 1 回だけ使え、{time}に期限切れになります。"
+    }
   }
 }
