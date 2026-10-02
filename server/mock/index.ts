@@ -6,6 +6,7 @@ import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as auth from './routes/auth'
 import { listFolders, listForms } from './routes/forms'
+import { navigationCounts } from './routes/navigation'
 import { csrf, handshake, health } from './routes/system'
 import * as tenants from './routes/tenants'
 
@@ -35,6 +36,7 @@ const router = createRouter()
   // forms
   .get('/forms', listForms)
   .get('/folders', listFolders)
+  .get('/navigation/counts', navigationCounts)
   // audit trail
   .get('/audit-logs', audit.listAuditLogs)
   .get('/audit-logs/facets', audit.auditFacets)

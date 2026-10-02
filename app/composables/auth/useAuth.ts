@@ -147,6 +147,7 @@ export function useAuth() {
       // Signing out locally must work even if the server is unreachable.
     } finally {
       session.clear()
+      useNavCounts().clear()
       api.resetSecureSession()
       restored = true
     }

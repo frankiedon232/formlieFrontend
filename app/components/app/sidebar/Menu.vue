@@ -33,15 +33,15 @@ const systemWithTheme = computed<NavigationMenuItem[]>(() => [
 
 /** Status colour dot for `slot: 'status'` items (see useNavigation). */
 const dotClass = (item: unknown) => (item as { dot?: string }).dot
-const labelOf = (item: unknown) => (item as { label?: string }).label
 
 // Shared look for every list, matched to docs/design:
-// clean dark labels and icons, chevron right after the label, children on a timeline
+// clean dark labels and icons; chevron and count badge on the right (owner, 2026-10-02); children on a timeline
 // (vertical line under the parent icon with a small node per row).
 const menuUi = {
   link: 'py-2 text-default hover:text-highlighted',
   linkLeadingIcon: 'text-default',
-  linkTrailingIcon: 'hidden',
+  linkTrailingIcon: 'size-4 text-muted',
+  linkTrailingBadge: 'min-w-5 justify-center px-1 font-normal text-muted',
   childList: 'ms-5 border-s border-default',
   childItem: [
     'relative ps-3 -ms-px',
@@ -82,13 +82,6 @@ const menuUi = {
       <nav :aria-label="t('nav.main')">
         <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ t('nav.main') }}</p>
         <UNavigationMenu :items="mainItems" orientation="vertical" color="neutral" :ui="menuUi">
-          <template #group-label="{ item }">
-            <span class="truncate">{{ labelOf(item) }}</span>
-            <UIcon
-              name="i-lucide-chevron-down"
-              class="ms-1 inline-block size-3.5 align-middle text-muted transition-transform group-data-[state=open]:rotate-180"
-            />
-          </template>
           <template #status-leading="{ item }">
             <span class="size-2 shrink-0 rounded-[1px]" :class="dotClass(item)" aria-hidden="true" />
           </template>

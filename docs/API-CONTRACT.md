@@ -65,6 +65,12 @@ Owners / admins only (members → FRM-PERM-1001) until permissions arrive with R
 
 **Mock only:** the mock writes CSV for both formats (the backend produces a real .xlsx); local / private IPs have no city or country (the backend resolves them with GeoIP).
 
+## Navigation
+
+| Method | Path                 | Notes                                                                                                                                                                                                                  |
+| ------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/navigation/counts` | sidebar badges: `{ forms: { all, draft, published, closed }, responses: { new } }` (`all` excludes archived, like the forms list). Cheap; the client refreshes it on navigation (at most every 20 s) and after changes |
+
 ## Forms
 
 | GET | `/forms` | list (filters: status, folder_id, owner_id, tag — comma = any of; from/to on `updated_at`; archived only when `filter[status]` asks) → `FormSummary[]`: `{ id, name, slug, status, has_unpublished_changes, folder: {id,name}\|null, owner: {id,name}, tags[], responses_count, completion_rate (0–100), created_at, updated_at }` |

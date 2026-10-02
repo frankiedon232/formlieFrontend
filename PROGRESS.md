@@ -94,6 +94,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Active item: grey pill + black edge bar; active child bold
 - ✅ Dark mode switch, Settings, Help & support, user card (name, email, menu)
 - ✅ Collapse to rail (`[`), remembered; hover / keyboard peek of the full menu; phone drawer
+- ✅ Expand chevron and count badges on the right of each row (owner request); counts for All / Drafts / Published / Closed forms and new responses (`GET /navigation/counts`, refreshed on navigation); menu column widened to fit them
 
 ### Header bar (= page header)
 
@@ -262,7 +263,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ⬜ Archive / unarchive; close / reopen; unpublish
 - ⬜ Delete → Trash; Trash page with restore and permanent delete (confirm)
 - ⬜ Bulk actions (archive, move, delete) on selected rows
-- ⬜ Live counts next to Drafts / Published / Closed in the sidebar
+- ✅ Counts next to All / Drafts / Published / Closed in the sidebar (F1); ⬜ refresh them right after create / archive / delete (`useNavCounts().refresh(true)`)
 - ⬜ Optimistic locking (`row_version`) with a clear "changed by someone else" message
 - ⬜ Mock endpoints for all of the above
 - ⬜ Every form action recorded in the audit trail (create, rename, move, duplicate, archive, close, delete, restore) with before / after values
@@ -575,6 +576,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC | F12 / F18   | ✅     |
 | 2026-10-02 | Audit trail early (its own phase after sign-in), not last                        | F4          | ✅     |
 | 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome          | F3          | ✅     |
+| 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them   | F1          | ✅     |
 
 ---
 
@@ -597,3 +599,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                                                                                                                                                             |
 | 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                                                                                                                                                          |
 | 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access. |
+| 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                         |

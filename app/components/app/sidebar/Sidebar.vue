@@ -53,9 +53,9 @@ defineShortcuts({
     v-model:collapsed="collapsed"
     collapsible
     resizable
-    :min-size="15"
-    :default-size="16"
-    :max-size="20"
+    :min-size="16"
+    :default-size="17.5"
+    :max-size="22"
     :collapsed-size="4.25"
     :menu="{ title: t('nav.menu'), description: t('nav.menuDescription') }"
     :ui="{ body: 'flex-row gap-0 p-0 overflow-hidden', root: 'bg-default' }"

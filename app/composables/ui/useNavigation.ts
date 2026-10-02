@@ -1,4 +1,5 @@
-import type { NavigationMenuItem } from '@nuxt/ui'
+import type { BadgeProps, NavigationMenuItem } from '@nuxt/ui'
+import type { NavCounts } from '#shared/types/navigation'
 
 export interface AppNavItem {
   /** i18n key under `nav.` */
@@ -12,6 +13,10 @@ export interface AppNavItem {
   dot?: string
   iconClass?: string
   children?: AppNavItem[]
+  /** Badge number on the right (design: count next to the item). */
+  count?: (counts: NavCounts) => number
+  /** Hide the badge at 0 (e.g. "new" items); status counts always show. */
+  hideZero?: boolean
   /** Workspace owners / admins only (until Roles & access, F19). */
   adminOnly?: boolean
 }
@@ -27,13 +32,38 @@ const MAIN_NAV: AppNavItem[] = [
     to: '/forms',
     shortcut: 'g-f',
     children: [
-      { key: 'formsAll', to: '/forms', dot: 'bg-(--ui-text-dimmed)' },
-      { key: 'formsDraft', to: '/forms', query: { status: 'draft' }, dot: 'bg-amber-500' },
-      { key: 'formsPublished', to: '/forms', query: { status: 'published' }, dot: 'bg-green-500' },
-      { key: 'formsClosed', to: '/forms', query: { status: 'closed' }, dot: 'bg-violet-600' },
+      { key: 'formsAll', to: '/forms', dot: 'bg-(--ui-text-dimmed)', count: c => c.forms.all },
+      {
+        key: 'formsDraft',
+        to: '/forms',
+        query: { status: 'draft' },
+        dot: 'bg-amber-500',
+        count: c => c.forms.draft,
+      },
+      {
+        key: 'formsPublished',
+        to: '/forms',
+        query: { status: 'published' },
+        dot: 'bg-green-500',
+        count: c => c.forms.published,
+      },
+      {
+        key: 'formsClosed',
+        to: '/forms',
+        query: { status: 'closed' },
+        dot: 'bg-violet-600',
+        count: c => c.forms.closed,
+      },
     ],
   },
-  { key: 'responses', icon: 'i-lucide-inbox', to: '/responses', shortcut: 'g-r' },
+  {
+    key: 'responses',
+    icon: 'i-lucide-inbox',
+    to: '/responses',
+    shortcut: 'g-r',
+    count: c => c.responses.new,
+    hideZero: true,
+  },
   { key: 'analytics', icon: 'i-lucide-chart-column', to: '/analytics', shortcut: 'g-a' },
   {
     key: 'integrations',
@@ -75,6 +105,8 @@ export function useNavigation() {
   const { t } = useI18n()
   const route = useRoute()
   const session = useSession()
+  const { counts } = useNavCounts()
+  const { compact } = useFormat()
   const allowed = (item: AppNavItem) => !item.adminOnly || session.user.value?.role !== 'member'
 
   function isActive(item: AppNavItem): boolean {
@@ -93,6 +125,14 @@ export function useNavigation() {
     'before:ring before:ring-default text-highlighted',
   ].join(' ')
 
+  // Design: small grey count on the right of the row.
+  function badgeFor(item: AppNavItem): BadgeProps | undefined {
+    if (!item.count || !counts.value) return undefined
+    const value = item.count(counts.value)
+    if (item.hideZero && !value) return undefined
+    return { label: compact(value), color: 'neutral', variant: 'outline', class: 'rounded-md tabular-nums' }
+  }
+
   function toMenuItem(item: AppNavItem, level = 0): NavigationMenuItem {
     const label = t(`nav.${item.key}`)
     const active = isActive(item)
@@ -109,7 +149,8 @@ export function useNavigation() {
         : undefined,
       defaultOpen: item.children ? active : undefined,
       tooltip: { text: label },
-      slot: item.dot ? 'status' : item.children ? 'group' : undefined,
+      slot: item.dot ? 'status' : undefined,
+      badge: badgeFor(item),
       dot: item.dot,
       ui: item.iconClass ? { linkLeadingIcon: item.iconClass } : undefined,
       children: item.children?.map(child => toMenuItem(child, level + 1)),
