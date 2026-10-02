@@ -1,0 +1,448 @@
+# Formalie Portal — Progress
+
+The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
+
+**Last updated:** 2026-10-02 · **Current phase:** F3 — Workspace detection + sign-in
+
+Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
+
+## Overview
+
+| Phase | Name                                              | Status | Done |
+| ----- | ------------------------------------------------- | ------ | ---- |
+| F0    | Foundation                                        | ✅     | 100% |
+| F1    | App shell                                         | ✅     | 100% |
+| F2    | Core plumbing                                     | ✅     | 100% |
+| F3    | Workspace detection + sign-in                     | 🟡     | ~85% |
+| F4    | Onboarding wizard                                 | ⬜     | 0%   |
+| F5    | Forms list and lifecycle                          | ⬜     | 10%  |
+| F6    | Form builder                                      | ⬜     | 0%   |
+| F7    | Designer (themes)                                 | ⬜     | 0%   |
+| F8    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
+| F9    | Responses                                         | ⬜     | 0%   |
+| F10   | Templates gallery                                 | ⬜     | 0%   |
+| F11   | Settings, option sets, integrations               | ⬜     | 0%   |
+| F12   | Profile                                           | ⬜     | 0%   |
+| F13   | Users                                             | ⬜     | 0%   |
+| F14   | Analytics                                         | ⬜     | 0%   |
+| F15   | Live collaboration (optional)                     | ⬜     | 0%   |
+| F16   | Roles & access, audit trail, dashboard            | ⬜     | 0%   |
+
+**Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · loading, empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
+
+---
+
+## F0 — Foundation ✅
+
+**Goal:** a correctly configured Nuxt 4 project that runs on every dev host, speaks the secure protocol and supports 20 languages.
+
+### Dev environment
+
+- ✅ Wildcard certificate covering `formalie.dev`, `*.formalie.dev`, `localhost`, `*.localhost`, `127.0.0.1`, `::1`, LAN IP
+- ✅ Hosts entries for `manage.` and test workspaces
+- ✅ `vite.server.allowedHosts` for `.formalie.dev`
+- ✅ `/api/**` dev proxy to FastAPI with `X-Forwarded-Host` (when the mock is off)
+- ✅ `.env.example` (mock switch, proxy target, certificate paths, `NODE_EXTRA_CA_CERTS`)
+- ✅ Access matrix verified on every host (manage, root, workspaces, localhost, 127.0.0.1, LAN IP)
+
+### Look and feel
+
+- ✅ `main.css` with Tailwind + Nuxt UI imports and `@theme` tokens only
+- ✅ Monochrome primary (black in light, white in dark), violet secondary, zinc neutrals
+- ✅ Font Manrope 300–700 (identified from the design), motion tokens (motion-safe)
+
+### App setup
+
+- ✅ `app.vue` with `UApp`, top loading bar, route announcer, layouts
+- ✅ Layouts: `default` (portal), `auth`, `public`, `blank`
+- ✅ Rendering: portal client-side, `/f/**` and `/s/**` server-side
+- ✅ Security headers (HSTS, nosniff, Referrer-Policy, Permissions-Policy, COOP, frame options; CSP in production)
+- ✅ Runtime config: API base, mock switch, root domain, manage subdomain, app version
+
+### Mock API (until FastAPI exists)
+
+- ✅ Real ECDH handshake + encrypted envelopes (expiry, replay, integrity, method/path binding)
+- ✅ CSRF tokens bound to the session key
+- ✅ Standard response / error helpers with `FRM-*` codes, server-side pagination helper
+
+### Tooling
+
+- ✅ TypeScript strict, ESLint (blocks component/composable imports), Prettier, Vitest
+- ✅ `pnpm typecheck:dev` that does not disturb a running dev server
+
+### Languages
+
+- ✅ 20 languages (en, fr, es, pt, de, it, nl, pl, ru, uk, tr, ar, hi, bn, zh-CN, ja, ko, id, vi, sw)
+- ✅ Arabic right-to-left, Nuxt UI component strings follow the language
+- ✅ Language switchers with country flags and English names (searchable)
+- ✅ Test: every language has every key, same placeholders, no empty strings, no broken `@`
+
+---
+
+## F1 — App shell ✅
+
+**Goal:** the portal frame exactly as in the design references.
+
+### Sidebar
+
+- ✅ Rail: more menu, black **+** create menu, workspace avatar(s)
+- ✅ Menu column: brand + collapse, MAIN MENU / RESOURCES / SYSTEM
+- ✅ Forms status children on a timeline with square colour bullets
+- ✅ Active item: grey pill + black edge bar; active child bold
+- ✅ Dark mode switch, Settings, Help & support, user card (name, email, menu)
+- ✅ Collapse to rail (`[`), remembered; hover / keyboard peek of the full menu; phone drawer
+
+### Header bar (= page header)
+
+- ✅ Page title, subtitle, breadcrumbs (nested pages) on the left
+- ✅ Search (`Ctrl/⌘+K`), page buttons (outline + solid), language, notifications, theme on the right
+- ✅ Phones: title only, buttons collapse to icons
+
+### Everything else in the frame
+
+- ✅ Command palette: pages, actions, language, theme
+- ✅ Keyboard shortcuts + help dialog (`?`, `g` then a letter, `Esc`)
+- ✅ Draggable dialogs (`AppModal`: mouse, touch, arrow keys; docked on phones)
+- ✅ Notifications panel (empty state until the backend sends notifications)
+- ✅ Footer (© · version · help · shortcuts)
+- ✅ Error page (404 / generic), workspace not found / suspended
+- ✅ Placeholder page for every menu entry (no dead links)
+
+---
+
+## F2 — Core plumbing ✅
+
+**Goal:** the shared building blocks every feature uses.
+
+- ✅ Framework-free API client: envelope, CSRF, re-handshake, token refresh, abort, network errors (8 tests)
+- ✅ `useApi()` (get / post / put / patch / delete / list), client-only, memory-only token
+- ✅ `useErrorHandler()`: translated toasts for all 48 error codes, copyable support reference, form field errors
+- ✅ `useBusy()`: loading state, no double submit, success toast
+- ✅ `useFormat()`: dates, relative time, numbers, percent, currency, file sizes in the active language
+- ✅ **DataView** — owner-approved, keep unchanged:
+  - ✅ Table / Grid switch remembered per page
+  - ✅ Search (`/`), Filter popover, filter chips, clear all
+  - ✅ Date range with presets + calendar
+  - ✅ Sort menu + sortable headers
+  - ✅ Row selection + bulk bar, ⋯ row actions
+  - ✅ Skeletons, empty, no-results, error + retry
+  - ✅ Server pagination with page size; everything in the URL
+- ✅ Confirm dialog (`useConfirm()`), copy field, status badge
+- ✅ Forms list wired to the mock as the first DataView user
+
+---
+
+## F3 — Workspace detection + sign-in 🟡
+
+**Goal:** every way of reaching the app lands in the right workspace, and signing in is secure, simple and beautiful.
+
+### Workspace detection
+
+- ✅ Host → manage entry / workspace / not found (shared resolver, 11 tests)
+- ✅ Workspace public profile (name, enabled sign-in methods, status)
+- ✅ Unknown / reserved / suspended workspace pages
+- ✅ Dev-only `?tenant=` for localhost and phones on Wi-Fi
+- ✅ "Continue to <last workspace>" on `manage.`
+
+### Mock backend for auth
+
+- ✅ Test workspaces and people (see README → Test accounts)
+- ✅ One-time codes: 5 min, 5 attempts, resend after 60 s (max 3)
+- ✅ 15-min access token; single-use rotating refresh cookie; reuse revokes the session
+- ✅ Workspace check on every protected call
+- ✅ One-time ticket for the new workspace after signup
+
+### Screens
+
+- ✅ Sign in (workspace) — redesigned: dark showcase panel + roomy form
+- ✅ Sign in on `manage.` (find workspace / continue / create)
+- ✅ One-time code screen (paste, auto-submit, resend countdown, email/SMS switch, attempts left)
+- ✅ Social sign-in buttons for the providers the workspace enabled
+- ✅ Signup in 3 steps with password strength and live subdomain check
+- ✅ Find my workspace (email → code → list)
+- ✅ Forgot / reset password (email → code + new password)
+- ✅ Welcome hand-off on the new workspace
+- 🟡 Visual polish of signup, find workspace and reset screens to the new sign-in standard
+- ⬜ Arabic RTL pass on every auth screen
+- ⬜ Keyboard-only pass on every auth screen
+- ⬜ Phone pass on signup, find workspace and reset
+
+### Session
+
+- ✅ Session restored after reload; logout; "session expired" redirect back to sign-in
+
+### Showcase message (global platform)
+
+- ✅ Headline + platform description (any form, data, systems, access, any organisation, anywhere)
+- ✅ Preview: supplier onboarding form with consent, responses visible to compliance, database sync
+- ✅ "5+ databases" (MySQL, MariaDB, Oracle, PostgreSQL, SQL Server) or built-in encrypted storage
+
+### Waiting on backend
+
+- ⏸ Real Google / Microsoft / Apple / Facebook sign-in (OAuth)
+- ⏸ SAML / OIDC single sign-on (later)
+- ⏸ Real email / SMS delivery of codes; authenticator-app (TOTP) codes
+
+---
+
+## F4 — Onboarding wizard ⬜
+
+**Goal:** a new workspace is ready to use in a few skippable steps.
+
+- ⬜ Wizard page with stepper and progress (resume where the user left off)
+- ⬜ Step: company details (legal name, industry, size, country)
+- ⬜ Step: branding (logo upload with progress, brand colour, preview)
+- ⬜ Step: localisation (country, timezone, currency, language, date / number format)
+- ⬜ Step: invite team (optional; emails + role)
+- ⬜ Step: first form (pick a template or start blank)
+- ⬜ Skip / back on every step, finish → Forms
+- ⬜ Mock endpoints `GET/PATCH /onboarding`
+- ⬜ Shown after signup; reachable later from Settings
+
+---
+
+## F5 — Forms list and lifecycle ⬜
+
+**Goal:** everything you do _with_ forms before opening the builder.
+
+- ✅ Forms list with DataView (search, status / folder filters, date range, sort, table / grid)
+- ⬜ New form: blank / from template / import JSON
+- ⬜ Rename (inline), duplicate, move to folder
+- ⬜ Folders: create, rename, delete, filter by folder
+- ⬜ Tags: add / remove, filter by tag
+- ⬜ Owner filter
+- ⬜ Archive / unarchive; close / reopen; unpublish
+- ⬜ Delete → Trash; Trash page with restore and permanent delete (confirm)
+- ⬜ Bulk actions (archive, move, delete) on selected rows
+- ⬜ Live counts next to Drafts / Published / Closed in the sidebar
+- ⬜ Optimistic locking (`row_version`) with a clear "changed by someone else" message
+- ⬜ Mock endpoints for all of the above
+
+---
+
+## F6 — Form builder ⬜
+
+**Goal:** a robust drag-and-drop builder that works on desktop and stays usable on tablet and phone.
+
+### Fields (one registry entry each: palette item, defaults, inspector, renderer, validation)
+
+- ⬜ Text: short text, long text, rich text, email, phone, URL, number, currency
+- ⬜ Dates: date, time, date-time, date range
+- ⬜ Choice: dropdown, multi-select, radio, checkbox, toggle, ranking, matrix / grid
+- ⬜ Rating: rating, scale / NPS, slider
+- ⬜ Files: file upload, image upload, signature
+- ⬜ Location: address (with map), country / state
+- ⬜ Advanced: hidden field, calculated field, payment (later)
+- ⬜ Layout: section header, paragraph / HTML block, divider, image, page break
+
+### Canvas
+
+- ⬜ Palette with search and categories
+- ⬜ Drag from palette to canvas; reorder fields, rows, sections, pages (drop indicators, auto-scroll)
+- ⬜ Multi-column rows on a 12-column grid (full, ½, ⅓, ⅔, ¼)
+- ⬜ Keyboard alternatives for every move (move up / down, move to page)
+- ⬜ Select, multi-select (Shift / Ctrl), duplicate (`Ctrl+D`), delete with undo
+- ⬜ Undo / redo (`Ctrl+Z` / `Ctrl+Shift+Z`)
+- ⬜ Multi-page forms with progress bar; nested sections
+
+### Inspector
+
+- ⬜ Field properties, width, required, help text, placeholder, default value
+- ⬜ Validation rules (min / max, length, pattern, file type / size)
+- ⬜ Options or reusable option sets
+- ⬜ Prefill from URL parameters
+
+### Logic (`/forms/[id]/logic`)
+
+- ⬜ Show / hide, skip / jump to page, required-if
+- ⬜ Calculated values
+- ⬜ Visual rule editor with a plain-language summary
+
+### Saving and publishing
+
+- ⬜ Autosave to draft with "Saved · 2s ago", conflict detection
+- ⬜ Top bar: inline name, status badge, Preview, Publish (with change summary)
+- ⬜ Editing a published form creates a draft; published version stays live
+- ⬜ Versions page: history, compare, restore
+
+### Devices
+
+- ⬜ Tablet: palette and inspector as slide-overs; phone: bottom drawer
+- ⬜ Heavy parts lazy-loaded; long canvases virtualised
+
+---
+
+## F7 — Designer (themes) ⬜
+
+**Goal:** organisations design their form pages as they want.
+
+- ⬜ Live preview with desktop / tablet / phone toggle
+- ⬜ Layout (single, two-column, card, full-bleed, split with image)
+- ⬜ Background (colour, gradient, image, overlay)
+- ⬜ Form container (width, padding, border, radius, shadow)
+- ⬜ Typography (font, sizes, weights)
+- ⬜ Colours (primary, text, inputs, errors), inputs and buttons style
+- ⬜ Header / banner, logo, cover page, thank-you page
+- ⬜ Custom CSS (paid plans, sanitised)
+- ⬜ Save as theme, apply theme; themes library in Settings
+- ⬜ Applied as CSS variables on the renderer only
+
+---
+
+## F8 — Renderer, preview, share, embed, short links, SEO ⬜
+
+### Renderer
+
+- ⬜ One renderer for preview, public page and embed
+- ⬜ Public page `/f/[slug]` server-rendered with SEO (title, description, image, canonical, noindex)
+- ⬜ Secure server-side fetch for server-rendered pages
+- ⬜ Closed / expired / not found / password-protected / response-limit states
+- ⬜ Multi-page with progress, save and resume
+- ⬜ File uploads to secure upload links with progress
+- ⬜ Spam protection (captcha)
+- ⬜ Thank-you page or redirect
+- ⬜ Preview page with device frames
+
+### Share
+
+- ⬜ Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons
+- ⬜ Access: public, password, invite-only, organisation-only; expiry, response limit, schedule
+- ⬜ People access: edit / view / responses
+- ⬜ Embed: iframe snippet with auto-resize, size options, allowed domains, live preview
+- ⬜ SEO settings with link-card preview
+- ⬜ Short link redirect `/s/[code]`
+
+---
+
+## F9 — Responses ⬜
+
+- ⬜ Per-form responses (DataView, columns from the form)
+- ⬜ Inbox across all forms
+- ⬜ Filters per field type, date range, status, tags
+- ⬜ Response detail slide-over with next / previous (`J` / `K`)
+- ⬜ Status (new, reviewed, approved…), tags, notes, edit history
+- ⬜ Bulk actions
+- ⬜ Export XLSX / CSV / PDF (all, filtered, selected) with progress and download
+
+---
+
+## F10 — Templates gallery ⬜
+
+- ⬜ System + organisation templates, categories, search
+- ⬜ Template preview
+- ⬜ Use a template → new form
+- ⬜ Save any form as a template
+
+---
+
+## F11 — Settings, option sets, integrations ⬜
+
+### Settings
+
+- ⬜ Company profile, branding
+- ⬜ Domain & subdomain (custom domain later)
+- ⬜ Authentication: enabled sign-in methods, code policy
+- ⬜ Security: password rules, session timeout, IP allowlist
+- ⬜ Localisation: language, timezone, date / number format, currency
+- ⬜ Notifications and email templates
+- ⬜ Themes, data retention, embed defaults
+- ⬜ Billing / subscription
+- ⬜ Organisations (several per workspace) + switcher in the rail
+
+### Option sets
+
+- ⬜ Create / edit lists; items with bulk paste, reorder (drag + keyboard)
+
+### Integrations
+
+- ⬜ Destinations: connect MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (test connection, field mapping) or built-in storage
+- ⬜ Webhooks (signed, retries, delivery log)
+- ⬜ API keys (create, show once, revoke)
+
+---
+
+## F12 — Profile ⬜
+
+- ⬜ My profile (name, photo, language, timezone)
+- ⬜ Change password
+- ⬜ Authenticator app (QR, recovery codes), SMS number
+- ⬜ Sessions and devices (see and sign out)
+
+---
+
+## F13 — Users ⬜
+
+- ⬜ Users list (DataView), invite by email with role, resend / revoke invites
+- ⬜ Enable / disable, reset password or MFA
+- ⬜ Team avatars + "Invite member" in the header (design reference)
+
+---
+
+## F14 — Analytics ⬜
+
+- ⬜ Per form: views, starts, completions, completion rate, average time
+- ⬜ Drop-off per page and field
+- ⬜ Per-question charts, NPS
+- ⬜ Date range, export
+
+---
+
+## F15 — Live collaboration (optional) ⬜
+
+- ⬜ Presence, cursors and selections in the builder
+- ⬜ Conflict-free editing
+- ⬜ Comments on fields (later)
+
+---
+
+## F16 — Roles & access, audit trail, dashboard ⬜
+
+- ⬜ Roles and permissions editor, role assignment
+- ⬜ Audit trail (who, what, when, where, before / after)
+- ⬜ Dashboard: KPIs, date ranges, filters, charts (design reference 2)
+
+---
+
+## Switching to the real backend ⏸
+
+- ⏸ Turn off the mock and point the proxy at FastAPI
+- ⏸ Run the encryption tests against backend test vectors
+- ⏸ Compare `API-CONTRACT.md` with the backend's generated contract
+
+---
+
+## New requests log
+
+Owner requests added during development, and where they landed.
+
+| Date       | Request                                                                         | Where       | Status |
+| ---------- | ------------------------------------------------------------------------------- | ----------- | ------ |
+| 2026-10-02 | Support many languages (at least 15) → 20 languages                             | F0          | ✅     |
+| 2026-10-02 | Organise files in sub-folders (max two levels)                                  | all         | ✅     |
+| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                         | F0          | ✅     |
+| 2026-10-02 | Match the design references exactly                                             | F1          | ✅     |
+| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design | F1          | ✅     |
+| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                 | F1          | ✅     |
+| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                  | F1 / F2     | ✅     |
+| 2026-10-02 | Keep the table / grid / filters flow unchanged                                  | F2          | ✅     |
+| 2026-10-02 | "Wow" sign-in screen                                                            | F3          | ✅     |
+| 2026-10-02 | Test accounts in the README; realistic test people                              | F3          | ✅     |
+| 2026-10-02 | Global positioning (not one country); international sample data                 | F3 / all    | ✅     |
+| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                       | F3 / F11    | ✅     |
+| 2026-10-02 | Separate progress file with every task per phase                                | PROGRESS.md | ✅     |
+
+---
+
+## Progress log
+
+| Date       | Phase | What happened                                                                                                                                    |
+| ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2026-10-02 | F0    | Foundation: config, 20 languages, mock API with real encryption, tooling. Checked phone / desktop, light / dark, Arabic, keyboard.               |
+| 2026-10-02 | F0    | Access matrix verified on every host; shared host resolver with tests.                                                                           |
+| 2026-10-02 | F1    | App shell built, then rebuilt to match the design exactly (rail + menu, header, monochrome).                                                     |
+| 2026-10-02 | F1    | Flags, breadcrumbs in the header, Manrope font, menu timeline / square bullets / dark text.                                                      |
+| 2026-10-02 | F2    | Core plumbing: secure API client, error handling in 20 languages, DataView live on the mock, confirm dialog, formatters.                         |
+| 2026-10-02 | F2    | Header carries title / subtitle / crumbs / buttons; footer added; DataView flow approved.                                                        |
+| 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                      |
+| 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                            |
+| 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file. |

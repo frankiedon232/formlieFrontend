@@ -243,7 +243,7 @@
     "previewAccess": "Zichtbaar voor: complianceteam",
     "previewSync": "Gesynchroniseerd met je database",
     "previewSyncCount": "{count}+ databases ondersteund",
-    "previewSyncAlt": "Of bewaar het in de versleutelde opslag van {app}"
+    "previewSyncAlt": "Of gebruik de ingebouwde versleutelde opslag van {app}"
   },
   "auth": {
     "or": "of",

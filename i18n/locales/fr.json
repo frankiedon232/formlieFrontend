@@ -243,7 +243,7 @@
     "previewAccess": "Visible par : équipe Conformité",
     "previewSync": "Synchronisé avec votre base de données",
     "previewSyncCount": "{count}+ bases de données prises en charge",
-    "previewSyncAlt": "Ou conservez-les dans le stockage chiffré de {app}"
+    "previewSyncAlt": "Ou utilisez le stockage chiffré intégré de {app}"
   },
   "auth": {
     "or": "ou",

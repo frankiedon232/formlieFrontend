@@ -243,7 +243,7 @@
     "previewAccess": "공개 대상: 컴플라이언스 팀",
     "previewSync": "데이터베이스에 동기화됨",
     "previewSyncCount": "{count}개 이상의 데이터베이스 지원",
-    "previewSyncAlt": "또는 {app}의 암호화된 저장소에 보관"
+    "previewSyncAlt": "또는 {app}의 내장 암호화 저장소 사용"
   },
   "auth": {
     "or": "또는",

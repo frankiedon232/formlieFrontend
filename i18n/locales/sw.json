@@ -243,7 +243,7 @@
     "previewAccess": "Wanaoona: timu ya Uzingatiaji",
     "previewSync": "Imesawazishwa na hifadhidata yako",
     "previewSyncCount": "Hifadhidata {count}+ zinatumika",
-    "previewSyncAlt": "Au ihifadhi kwenye hifadhi fiche ya {app}"
+    "previewSyncAlt": "Au tumia hifadhi fiche iliyojengwa ndani ya {app}"
   },
   "auth": {
     "or": "au",

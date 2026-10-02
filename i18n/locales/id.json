@@ -243,7 +243,7 @@
     "previewAccess": "Terlihat oleh: tim Kepatuhan",
     "previewSync": "Tersinkron ke basis data Anda",
     "previewSyncCount": "Mendukung {count}+ basis data",
-    "previewSyncAlt": "Atau simpan di penyimpanan terenkripsi {app}"
+    "previewSyncAlt": "Atau gunakan penyimpanan terenkripsi bawaan {app}"
   },
   "auth": {
     "or": "atau",

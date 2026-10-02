@@ -22,6 +22,6 @@ and stop at the end of each phase for my review.
 ## Continuing in a new session
 
 ```
-Read CLAUDE.md and docs/FRONTEND-ROADMAP.md. Tell me which phase we are on
+Read CLAUDE.md and PROGRESS.md. Tell me which phase we are on
 and what is left in it, then continue from there.
 ```

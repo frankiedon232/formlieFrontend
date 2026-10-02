@@ -243,7 +243,7 @@
     "previewAccess": "Visible para: equipo de Cumplimiento",
     "previewSync": "Sincronizado con tu base de datos",
     "previewSyncCount": "{count}+ bases de datos compatibles",
-    "previewSyncAlt": "O guárdalos en el almacenamiento cifrado de {app}"
+    "previewSyncAlt": "O usa el almacenamiento cifrado integrado de {app}"
   },
   "auth": {
     "or": "o",

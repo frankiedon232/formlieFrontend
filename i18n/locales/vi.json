@@ -243,7 +243,7 @@
     "previewAccess": "Hiển thị cho: nhóm Tuân thủ",
     "previewSync": "Đã đồng bộ với cơ sở dữ liệu của bạn",
     "previewSyncCount": "Hỗ trợ {count}+ cơ sở dữ liệu",
-    "previewSyncAlt": "Hoặc lưu trong bộ nhớ mã hóa của {app}"
+    "previewSyncAlt": "Hoặc dùng bộ lưu trữ mã hóa tích hợp của {app}"
   },
   "auth": {
     "or": "hoặc",

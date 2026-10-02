@@ -243,7 +243,7 @@
     "previewAccess": "Visibile a: team Compliance",
     "previewSync": "Sincronizzato con il tuo database",
     "previewSyncCount": "{count}+ database supportati",
-    "previewSyncAlt": "Oppure conservali nell’archivio crittografato di {app}"
+    "previewSyncAlt": "Oppure usa l’archiviazione crittografata integrata di {app}"
   },
   "auth": {
     "or": "oppure",

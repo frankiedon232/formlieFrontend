@@ -243,7 +243,7 @@
     "previewAccess": "閲覧可能: コンプライアンスチーム",
     "previewSync": "データベースに同期しました",
     "previewSyncCount": "{count} 種類以上のデータベースに対応",
-    "previewSyncAlt": "または {app} の暗号化ストレージに保存"
+    "previewSyncAlt": "または {app} の組み込み暗号化ストレージを利用"
   },
   "auth": {
     "or": "または",

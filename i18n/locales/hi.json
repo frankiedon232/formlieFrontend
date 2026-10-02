@@ -243,7 +243,7 @@
     "previewAccess": "किसे दिखेगा: अनुपालन टीम",
     "previewSync": "आपके डेटाबेस से सिंक हुआ",
     "previewSyncCount": "{count}+ डेटाबेस समर्थित",
-    "previewSyncAlt": "या {app} के एन्क्रिप्टेड स्टोरेज में रखें"
+    "previewSyncAlt": "या {app} का इन-बिल्ट एन्क्रिप्टेड स्टोरेज इस्तेमाल करें"
   },
   "auth": {
     "or": "या",

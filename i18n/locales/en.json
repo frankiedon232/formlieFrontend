@@ -243,7 +243,7 @@
     "previewAccess": "Visible to: Compliance team",
     "previewSync": "Synced to your database",
     "previewSyncCount": "{count}+ databases supported",
-    "previewSyncAlt": "Or keep it in encrypted {app} storage"
+    "previewSyncAlt": "Or use {app}'s built-in encrypted storage"
   },
   "auth": {
     "or": "or",

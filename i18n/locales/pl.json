@@ -243,7 +243,7 @@
     "previewAccess": "Widoczne dla: zespół compliance",
     "previewSync": "Zsynchronizowano z Twoją bazą danych",
     "previewSyncCount": "Obsługa {count}+ baz danych",
-    "previewSyncAlt": "Albo przechowuj w szyfrowanym magazynie {app}"
+    "previewSyncAlt": "Albo użyj wbudowanego szyfrowanego magazynu {app}"
   },
   "auth": {
     "or": "lub",

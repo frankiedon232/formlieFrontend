@@ -75,7 +75,7 @@ Phones need the mkcert root CA installed to trust it (`mkcert -CAROOT` → `root
 
 ## Test accounts (mock API)
 
-Seeded in `server/mock/data/tenants.ts` (mock only, in memory): workspaces **remedylegal** and **samathtax** (active), **oldco** (suspended). Sign-in: `admin@remedylegal.test` / `admin@samathtax.test`, password in that file. The code screen shows the mock's code in dev; it is also logged in the dev-server console (`[mock-otp]`). On localhost / an IP use `?tenant=remedylegal` (dev only).
+Seeded in `server/mock/data/tenants.ts` (mock only, in memory): workspaces **remedylegal** and **samathtax** (active), **oldco** (suspended). Accounts and password: see README → Test accounts. The code screen shows the mock's code in dev; it is also logged in the dev-server console (`[mock-otp]`). On localhost / an IP use `?tenant=remedylegal` (dev only).
 
 ## Project env (`.env`, copy from `.env.example`)
 

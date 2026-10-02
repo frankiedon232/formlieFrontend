@@ -243,7 +243,7 @@
     "previewAccess": "Görebilenler: Uyum ekibi",
     "previewSync": "Veritabanınızla senkronize edildi",
     "previewSyncCount": "{count}+ veritabanı desteği",
-    "previewSyncAlt": "Ya da şifreli {app} depolamasında tutun"
+    "previewSyncAlt": "Ya da {app} yerleşik şifreli depolamasını kullanın"
   },
   "auth": {
     "or": "veya",

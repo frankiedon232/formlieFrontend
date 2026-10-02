@@ -243,7 +243,7 @@
     "previewAccess": "可见范围：合规团队",
     "previewSync": "已同步到您的数据库",
     "previewSyncCount": "支持 {count}+ 种数据库",
-    "previewSyncAlt": "或保存在 {app} 加密存储中"
+    "previewSyncAlt": "或使用 {app} 内置的加密存储"
   },
   "auth": {
     "or": "或",
