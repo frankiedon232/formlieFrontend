@@ -4,7 +4,7 @@ Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/FRONTEND-SPEC.md`, 
 
 **Keep docs in sync.** Every milestone: tick it in `FRONTEND-ROADMAP.md`, add a line to its Progress log, and update any doc whose facts changed (decisions → `03-DECISIONS-AND-NOTES.md`, contract → `API-CONTRACT.md`, setup → `02-DEV-ENVIRONMENT.md`). **Commit and push** to the working branch (`formalieFrontend`) after each verified milestone (typecheck + lint + tests green); stop for review at the end of each phase.
 
-**Design references:** before building any page, check `docs/design/` and `docs/design/README.md` for reference images for UI idea of what it should look and feel and notes. **The images are the exact target design** (owner's instruction, 2026-10-02): reproduce the layout, spacing, component placement and monochrome look with Nuxt UI components — only the product name, logo and domain content (tasks → forms) differ. Compare against the image before calling a page done.
+**Design references:** before building any page, check `docs/design/` and `docs/design/README.md` for reference images for UI idea of what it should look and feel and notes. **The images are the exact target design** (owner's instruction, 2026-10-02): reproduce the layout, spacing, component placement and monochrome look with Nuxt UI components — only the product name, logo and domain content (tasks → forms) differ. Compare against the image before calling a page done, and re-check the images regularly while building so nothing drifts.
 
 ## Stack (fixed)
 
@@ -33,7 +33,7 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 15. **Rendering:** portal routes are client-rendered (`routeRules: { '/**': { ssr: false } }`); public form routes `/f/**` and `/s/**` are server-rendered for SEO and fast first paint.
 16. Dashboard, users/roles/RBAC and audit UI come **last** (see roadmap).
 17. **Every user-facing string is translated** (`@nuxtjs/i18n`, `const { t } = useI18n()`). No hard-coded copy in templates. Add each new key to **all** files in `i18n/locales/` (English is the fallback so a missing key never breaks the UI, but ship real translations). Languages are defined once in `shared/utils/i18n/locales.ts`. Layouts must work in RTL (Arabic): use logical Tailwind utilities (`ms-/me-/ps-/pe-/start-/end-`) instead of `ml-/mr-/left-/right-`. Format dates, numbers and currency with `Intl` / `useI18n().d/n` in the active locale.
-18. **Page frame:** every portal page renders inside `<AppPanel id="…" :title="…">` (shared top bar with search + breadcrumbs, page header with title, meta line and `#actions`: secondary = outline, primary = solid) and declares `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only (sidebar, search and `g`-shortcuts follow).
+18. **Page frame:** every portal page renders inside `<AppPanel id="…" :title="…" :subtitle="…">` and puts its buttons in `#actions` (secondary = outline, primary = solid). **Title, subtitle, breadcrumbs and page buttons always live in the header bar** — never in the content area, which stays clear for the page's real content (owner, 2026-10-02). Phones: title only, button labels collapse to icons. Footer (`AppFooter`) is part of the frame. Pages declare `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only. **Keep the DataView flow (toolbar, filters, chips, Table/Grid, pagination) unchanged** — owner-approved.
 19. **Patterns to reuse:** data lists = `<DataView>` (columns, fetcher via `api.list`, filters, sort options, `#<key>-cell` / `#grid-card` slots); actions = `const { busy, run } = useBusy()`; confirm = `await useConfirm()({ title, danger })`; formatting = `useFormat()`; copy = `<AppCopyField>`; status = `<DataStatusBadge>`.
 
 ## Folder conventions (Nuxt 4 `app/` dir)
@@ -47,7 +47,7 @@ app/
   layouts/  default.vue (dashboard shell) · auth.vue · public.vue (form renderer) · blank.vue
   pages/    (see FRONTEND-SPEC.md page map)
   components/
-    app/      shell: Panel, PageHeader, Modal, Breadcrumbs, Search, ShortcutsModal, UserMenu, LocaleSwitch, ComingSoon
+    app/      shell: Panel, Footer, Modal, Breadcrumbs, Search, ShortcutsModal, UserMenu, LocaleSwitch, ComingSoon
               sidebar/ (Sidebar, Rail, Menu, Peek) · navbar/ (Navbar, Notifications)
     data/     DataView, Toolbar (search/filter/sort/view), DateRangePicker, Pagination, StatusBadge
     forms/    builder/, designer/, renderer/, logic/, share/, responses/

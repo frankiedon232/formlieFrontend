@@ -92,7 +92,12 @@ function rowActions(form: FormSummary): DropdownMenuItem[][] {
 </script>
 
 <template>
-  <AppPanel id="forms" :title="t('nav.forms')" :meta="t('forms.description')" meta-icon="i-lucide-refresh-cw">
+  <AppPanel
+    id="forms"
+    :title="t('nav.forms')"
+    :subtitle="t('forms.description')"
+    subtitle-icon="i-lucide-refresh-cw"
+  >
     <template #actions>
       <UButton
         icon="i-lucide-upload"

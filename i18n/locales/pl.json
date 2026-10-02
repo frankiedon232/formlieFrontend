@@ -219,5 +219,10 @@
     "published": "Opublikowany",
     "closed": "Zamknięty",
     "archived": "Zarchiwizowany"
+  },
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "version": "Wersja {version}",
+    "label": "Stopka"
   }
 }

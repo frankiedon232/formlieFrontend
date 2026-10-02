@@ -219,5 +219,10 @@
     "published": "Đã xuất bản",
     "closed": "Đã đóng",
     "archived": "Đã lưu trữ"
+  },
+  "footer": {
+    "rights": "Bảo lưu mọi quyền.",
+    "version": "Phiên bản {version}",
+    "label": "Chân trang"
   }
 }

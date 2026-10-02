@@ -20,5 +20,6 @@ const { t } = useI18n()
         <slot />
       </div>
     </main>
+    <AppFooter minimal />
   </div>
 </template>

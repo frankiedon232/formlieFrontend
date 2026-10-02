@@ -27,7 +27,11 @@ Forms · Templates · Responses · Analytics · Option Sets · Integrations (des
 
 ### Navbar (`UDashboardNavbar`) and page header
 
-Top bar: search field and breadcrumbs on the left; language, notifications and the global **New form** action on the right (outlined icon buttons as in the design). Page header (`AppPageHeader`): large semibold title, small meta line with icon, actions on the right — outline secondary, solid black primary.
+Header bar = page header (owner, 2026-10-02): **left** page title with a small line under it (breadcrumbs on nested pages · subtitle); **right** search (`Ctrl/⌘+K`), the page's own buttons (outline secondary, solid black primary), language, notifications, theme (below `lg`). The content area holds only content. Phones: ☰ + title, search icon, page buttons as icons, notifications, theme.
+
+### Footer
+
+`AppFooter` at the bottom of every page (and auth pages): © year · version; Help & support, Keyboard shortcuts. Phones: one line (© · version).
 
 Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` via `UDashboardSearch`: pages, actions, language, theme), notifications, language switch (`sm`+; on phones via user menu / search), theme switch (`UColorModeButton`). User menu sits at the bottom of the sidebar (design reference).
 

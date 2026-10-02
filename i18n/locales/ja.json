@@ -219,5 +219,10 @@
     "published": "公開中",
     "closed": "終了",
     "archived": "アーカイブ済み"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "version": "バージョン {version}",
+    "label": "フッター"
   }
 }

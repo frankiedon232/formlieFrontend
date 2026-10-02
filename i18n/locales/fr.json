@@ -219,5 +219,10 @@
     "published": "Publié",
     "closed": "Fermé",
     "archived": "Archivé"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "version": "Version {version}",
+    "label": "Pied de page"
   }
 }

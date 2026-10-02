@@ -219,5 +219,10 @@
     "published": "Gepubliceerd",
     "closed": "Gesloten",
     "archived": "Gearchiveerd"
+  },
+  "footer": {
+    "rights": "Alle rechten voorbehouden.",
+    "version": "Versie {version}",
+    "label": "Voettekst"
   }
 }

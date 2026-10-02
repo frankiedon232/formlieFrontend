@@ -219,5 +219,10 @@
     "published": "प्रकाशित",
     "closed": "बंद",
     "archived": "संग्रहीत"
+  },
+  "footer": {
+    "rights": "सर्वाधिकार सुरक्षित।",
+    "version": "संस्करण {version}",
+    "label": "फ़ुटर"
   }
 }

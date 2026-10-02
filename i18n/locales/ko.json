@@ -219,5 +219,10 @@
     "published": "게시됨",
     "closed": "마감됨",
     "archived": "보관됨"
+  },
+  "footer": {
+    "rights": "모든 권리 보유.",
+    "version": "버전 {version}",
+    "label": "바닥글"
   }
 }

@@ -219,5 +219,10 @@
     "published": "Imechapishwa",
     "closed": "Imefungwa",
     "archived": "Imehifadhiwa"
+  },
+  "footer": {
+    "rights": "Haki zote zimehifadhiwa.",
+    "version": "Toleo {version}",
+    "label": "Sehemu ya chini"
   }
 }

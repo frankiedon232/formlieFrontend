@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { APP_LOCALES, DEFAULT_LOCALE, LOCALE_COOKIE } from './shared/utils/i18n/locales'
+import pkg from './package.json'
 
 const isDev = process.env.NODE_ENV !== 'production'
 // Read at build/start time: switching mock ↔ real backend needs a dev-server restart.
@@ -55,6 +56,7 @@ export default defineNuxtConfig({
     apiProxyTarget: 'https://formalie.dev:5004',
     public: {
       apiBase: '/api/v1',
+      appVersion: pkg.version,
       apiMock,
       rootDomain: 'formalie.dev',
       manageSubdomain: 'manage',

@@ -219,5 +219,10 @@
     "published": "Yayında",
     "closed": "Kapalı",
     "archived": "Arşivlendi"
+  },
+  "footer": {
+    "rights": "Tüm hakları saklıdır.",
+    "version": "Sürüm {version}",
+    "label": "Alt bilgi"
   }
 }

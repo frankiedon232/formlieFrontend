@@ -219,5 +219,10 @@
     "published": "Publicado",
     "closed": "Encerrado",
     "archived": "Arquivado"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "version": "Versão {version}",
+    "label": "Rodapé"
   }
 }

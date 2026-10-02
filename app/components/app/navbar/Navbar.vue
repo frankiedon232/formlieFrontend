@@ -1,12 +1,23 @@
 <!--
-  Top bar (docs/design): search field + breadcrumbs on the left; language, notifications and the global
-  "New form" action on the right. Phones: menu toggle + compact icons (+ theme, since the
-  sidebar's Dark mode switch lives in the drawer).
+  Page header bar (owner, 2026-10-02: titles, subtitles, crumbs and page buttons live here so the
+  content area stays clear). Left: title + (breadcrumbs · subtitle). Right: search, page actions,
+  language, notifications, theme (below lg, where the sidebar's Dark mode switch is hidden).
+  Phones: title only; page action buttons collapse to icons.
 -->
 <script setup lang="ts">
+const props = defineProps<{
+  title: string
+  subtitle?: string
+  subtitleIcon?: string
+}>()
+
 const { t } = useI18n()
 const { notificationsOpen } = useAppUi()
+const { items: crumbs } = useBreadcrumbs()
 const { current, locales, locale, changeLocale } = useAppLocale()
+
+/** On a top-level page the only crumb is the title itself, so show the trail from depth 2. */
+const showCrumbs = computed(() => crumbs.value.length > 1)
 
 const languageItems = computed(() =>
   locales.map(item => ({
@@ -21,21 +32,47 @@ const languageItems = computed(() =>
 </script>
 
 <template>
-  <UDashboardNavbar :ui="{ root: 'gap-3', left: 'min-w-0 flex-1', right: 'gap-2' }">
-    <template #leading>
+  <UDashboardNavbar :ui="{ root: 'gap-3', left: 'min-w-0 flex-1', right: 'gap-2 shrink-0' }">
+    <template #title>
+      <div class="min-w-0">
+        <h1 class="truncate text-base font-semibold text-highlighted sm:text-lg">{{ props.title }}</h1>
+        <div
+          v-if="showCrumbs || props.subtitle"
+          class="hidden min-w-0 items-center gap-1.5 text-xs text-muted sm:flex"
+        >
+          <AppBreadcrumbs v-if="showCrumbs" class="min-w-0 shrink-0" compact />
+          <span v-if="showCrumbs && props.subtitle" aria-hidden="true">·</span>
+          <span v-if="props.subtitle" class="flex min-w-0 items-center gap-1 truncate">
+            <UIcon v-if="props.subtitleIcon" :name="props.subtitleIcon" class="size-3 shrink-0" />
+            <span class="truncate">{{ props.subtitle }}</span>
+          </span>
+        </div>
+      </div>
+    </template>
+
+    <template #right>
       <UDashboardSearchButton
         :label="t('search.anything')"
         color="neutral"
         variant="outline"
-        class="hidden w-64 justify-start text-dimmed sm:inline-flex"
+        class="hidden w-48 justify-start text-dimmed lg:inline-flex xl:w-60"
         :ui="{ trailing: 'ms-auto' }"
       />
-      <UDashboardSearchButton collapsed class="sm:hidden" :aria-label="t('search.button')" />
-      <USeparator orientation="vertical" class="mx-1 hidden h-6 sm:block" />
-      <AppBreadcrumbs class="min-w-0" />
-    </template>
+      <UDashboardSearchButton
+        collapsed
+        color="neutral"
+        variant="outline"
+        class="lg:hidden"
+        :aria-label="t('search.button')"
+      />
 
-    <template #right>
+      <!-- Page actions: labels hide on phones, icons stay (layout utility only). -->
+      <div v-if="$slots.actions" class="flex items-center gap-2 max-sm:[&_[data-slot=label]]:hidden">
+        <USeparator orientation="vertical" class="hidden h-6 sm:block" />
+        <slot name="actions" />
+        <USeparator orientation="vertical" class="hidden h-6 sm:block" />
+      </div>
+
       <UDropdownMenu
         :items="languageItems"
         :content="{ align: 'end' }"
@@ -47,6 +84,7 @@ const languageItems = computed(() =>
             color="neutral"
             variant="outline"
             square
+            class="hidden sm:inline-flex"
             :aria-label="`${t('common.language')}: ${current.name}`"
           />
         </UTooltip>
@@ -64,17 +102,6 @@ const languageItems = computed(() =>
       </UTooltip>
 
       <UColorModeButton color="neutral" variant="outline" class="lg:hidden" />
-
-      <USeparator orientation="vertical" class="hidden h-6 sm:block" />
-
-      <UButton
-        icon="i-lucide-plus"
-        :label="t('nav.newForm')"
-        color="neutral"
-        variant="outline"
-        to="/forms/new"
-        class="hidden sm:inline-flex"
-      />
     </template>
   </UDashboardNavbar>
 </template>

@@ -219,5 +219,10 @@
     "published": "প্রকাশিত",
     "closed": "বন্ধ",
     "archived": "আর্কাইভ"
+  },
+  "footer": {
+    "rights": "সর্বস্বত্ব সংরক্ষিত।",
+    "version": "সংস্করণ {version}",
+    "label": "ফুটার"
   }
 }

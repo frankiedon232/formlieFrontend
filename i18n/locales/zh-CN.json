@@ -219,5 +219,10 @@
     "published": "已发布",
     "closed": "已关闭",
     "archived": "已归档"
+  },
+  "footer": {
+    "rights": "保留所有权利。",
+    "version": "版本 {version}",
+    "label": "页脚"
   }
 }

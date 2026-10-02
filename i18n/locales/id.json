@@ -219,5 +219,10 @@
     "published": "Diterbitkan",
     "closed": "Ditutup",
     "archived": "Diarsipkan"
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi.",
+    "version": "Versi {version}",
+    "label": "Kaki halaman"
   }
 }

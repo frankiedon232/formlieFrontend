@@ -219,5 +219,10 @@
     "published": "منشور",
     "closed": "مغلق",
     "archived": "مؤرشف"
+  },
+  "footer": {
+    "rights": "جميع الحقوق محفوظة.",
+    "version": "الإصدار {version}",
+    "label": "التذييل"
   }
 }

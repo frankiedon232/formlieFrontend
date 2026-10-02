@@ -45,6 +45,9 @@ Edit this file whenever a decision changes.
 33. **`secondary` colour = violet** (closed status, as the design's purple badges); status → colour: draft warning/amber, published success/green, closed secondary/violet, archived neutral.
 34. **`@internationalized/date`** added as a direct dependency: Nuxt UI's `UCalendar` needs its date objects and pnpm's strict layout requires the direct install.
 
+35. **Header bar is the page header** (owner, 2026-10-02): title, subtitle, breadcrumbs and page buttons live in the top bar; `AppPageHeader` removed. The global "New form" button left the top bar (the rail's **+** and the Forms page actions cover it).
+36. **Footer** added (`AppFooter`): © · version (`runtimeConfig.public.appVersion` from package.json) · Help · Shortcuts. Privacy/Terms links once the website URLs are known.
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).
