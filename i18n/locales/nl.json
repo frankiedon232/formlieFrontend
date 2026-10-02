@@ -214,7 +214,16 @@
     "expand": "Menu uitklappen",
     "collapse": "Menu inklappen",
     "audit": "Audittrail",
-    "formsTrash": "Prullenbak"
+    "formsTrash": "Prullenbak",
+    "areas": "Onderdelen",
+    "dataSources": "Gegevensbronnen",
+    "dataOverview": "Overzicht",
+    "dataConnections": "Verbindingen",
+    "dataExplorer": "Database-verkenner",
+    "dataQuery": "Query-editor",
+    "dataSavedQueries": "Opgeslagen query’s",
+    "dataTransfers": "Import & export",
+    "dataActivity": "Activiteit"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -1842,6 +1851,22 @@
       "updated": "Thema “{name}” bijgewerkt",
       "duplicated": "“{name}” aangemaakt",
       "deleted": "Thema “{name}” verwijderd"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Koppel uw eigen databases, stuur formuliergegevens ernaartoe en werk ermee",
+    "back": "Overzicht gegevensbronnen",
+    "engines": "Ondersteunde databases",
+    "enginesHint": "Koppel een van deze, of blijf de ingebouwde versleutelde opslag van Formalie gebruiken.",
+    "builtIn": "Ingebouwde versleutelde opslag",
+    "section": {
+      "connections": "Voeg uw databases toe, test ze en bewaar hun inloggegevens veilig.",
+      "explorer": "Blader door schema’s, tabellen en rijen en exporteer wat u nodig hebt.",
+      "query": "Voer SQL uit op uw databases — standaard alleen-lezen, elke uitvoering wordt vastgelegd.",
+      "savedQueries": "Bewaar en deel de query’s die uw team het meest gebruikt.",
+      "destinations": "Kies waar elk formulier zijn reacties naartoe stuurt en koppel velden aan kolommen.",
+      "transfers": "Importeer bestanden in tabellen en exporteer tabellen of queryresultaten.",
+      "activity": "Leveringen, fouten en recente query’s voor elke verbinding."
     }
   }
 }

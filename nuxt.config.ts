@@ -72,6 +72,8 @@ export default defineNuxtConfig({
     '/**': { ssr: false, headers: securityHeaders },
     '/f/**': { ssr: true },
     '/s/**': { ssr: true },
+    // Destinations moved to the Data sources area (F12).
+    '/integrations/destinations': { redirect: '/data-sources/destinations' },
   },
 
   devServer: {

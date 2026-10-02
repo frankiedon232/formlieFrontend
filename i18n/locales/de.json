@@ -214,7 +214,16 @@
     "expand": "Menü ausklappen",
     "collapse": "Menü einklappen",
     "audit": "Audit-Protokoll",
-    "formsTrash": "Papierkorb"
+    "formsTrash": "Papierkorb",
+    "areas": "Bereiche",
+    "dataSources": "Datenquellen",
+    "dataOverview": "Übersicht",
+    "dataConnections": "Verbindungen",
+    "dataExplorer": "Datenbank-Explorer",
+    "dataQuery": "Abfrage-Editor",
+    "dataSavedQueries": "Gespeicherte Abfragen",
+    "dataTransfers": "Import & Export",
+    "dataActivity": "Aktivität"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -1842,6 +1851,22 @@
       "updated": "Design „{name}“ aktualisiert",
       "duplicated": "„{name}“ erstellt",
       "deleted": "Design „{name}“ gelöscht"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Verbinden Sie Ihre eigenen Datenbanken, senden Sie Formulardaten dorthin und arbeiten Sie damit",
+    "back": "Übersicht der Datenquellen",
+    "engines": "Unterstützte Datenbanken",
+    "enginesHint": "Verbinden Sie eine davon oder nutzen Sie weiterhin den integrierten verschlüsselten Speicher von Formalie.",
+    "builtIn": "Integrierter verschlüsselter Speicher",
+    "section": {
+      "connections": "Fügen Sie Ihre Datenbanken hinzu, testen Sie sie und bewahren Sie die Zugangsdaten sicher auf.",
+      "explorer": "Durchsuchen Sie Schemas, Tabellen und Zeilen und exportieren Sie, was Sie benötigen.",
+      "query": "Führen Sie SQL auf Ihren Datenbanken aus – standardmäßig schreibgeschützt, jede Ausführung wird protokolliert.",
+      "savedQueries": "Speichern und teilen Sie die Abfragen, die Ihr Team am häufigsten nutzt.",
+      "destinations": "Legen Sie fest, wohin jedes Formular seine Antworten sendet, und ordnen Sie Felder den Spalten zu.",
+      "transfers": "Importieren Sie Dateien in Tabellen und exportieren Sie Tabellen oder Abfrageergebnisse.",
+      "activity": "Zustellungen, Fehler und letzte Abfragen für jede Verbindung."
     }
   }
 }

@@ -214,7 +214,16 @@
     "expand": "Rozwiń menu",
     "collapse": "Zwiń menu",
     "audit": "Dziennik audytu",
-    "formsTrash": "Kosz"
+    "formsTrash": "Kosz",
+    "areas": "Obszary",
+    "dataSources": "Źródła danych",
+    "dataOverview": "Przegląd",
+    "dataConnections": "Połączenia",
+    "dataExplorer": "Eksplorator baz",
+    "dataQuery": "Edytor zapytań",
+    "dataSavedQueries": "Zapisane zapytania",
+    "dataTransfers": "Import i eksport",
+    "dataActivity": "Aktywność"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -1842,6 +1851,22 @@
       "updated": "Zaktualizowano motyw „{name}”",
       "duplicated": "Utworzono „{name}”",
       "deleted": "Usunięto motyw „{name}”"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Połącz własne bazy danych, wysyłaj do nich dane z formularzy i pracuj z nimi",
+    "back": "Przegląd źródeł danych",
+    "engines": "Obsługiwane bazy danych",
+    "enginesHint": "Połącz dowolną z nich lub nadal korzystaj z wbudowanego szyfrowanego magazynu Formalie.",
+    "builtIn": "Wbudowany szyfrowany magazyn",
+    "section": {
+      "connections": "Dodawaj bazy danych, testuj je i bezpiecznie przechowuj ich dane logowania.",
+      "explorer": "Przeglądaj schematy, tabele i wiersze oraz eksportuj potrzebne dane.",
+      "query": "Uruchamiaj SQL na swoich bazach danych — domyślnie tylko do odczytu, każde wykonanie jest rejestrowane.",
+      "savedQueries": "Zapisuj i udostępniaj zapytania najczęściej używane przez zespół.",
+      "destinations": "Wybierz, dokąd każdy formularz wysyła odpowiedzi, i przypisz pola do kolumn.",
+      "transfers": "Importuj pliki do tabel i eksportuj tabele lub wyniki zapytań.",
+      "activity": "Dostarczenia, błędy i ostatnie zapytania dla każdego połączenia."
     }
   }
 }

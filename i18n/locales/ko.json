@@ -214,7 +214,16 @@
     "expand": "메뉴 펼치기",
     "collapse": "메뉴 접기",
     "audit": "감사 로그",
-    "formsTrash": "휴지통"
+    "formsTrash": "휴지통",
+    "areas": "영역",
+    "dataSources": "데이터 소스",
+    "dataOverview": "개요",
+    "dataConnections": "연결",
+    "dataExplorer": "DB 탐색기",
+    "dataQuery": "쿼리 편집기",
+    "dataSavedQueries": "저장된 쿼리",
+    "dataTransfers": "가져오기 및 내보내기",
+    "dataActivity": "활동"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -1842,6 +1851,22 @@
       "updated": "“{name}” 테마가 업데이트되었습니다",
       "duplicated": "“{name}”이(가) 생성되었습니다",
       "deleted": "“{name}” 테마가 삭제되었습니다"
+    }
+  },
+  "dataSources": {
+    "subtitle": "자체 데이터베이스를 연결하고, 양식 데이터를 보내고, 해당 데이터로 작업하세요",
+    "back": "데이터 소스 개요",
+    "engines": "지원되는 데이터베이스",
+    "enginesHint": "이 중 하나를 연결하거나 Formalie의 기본 제공 암호화 스토리지를 계속 사용하세요.",
+    "builtIn": "기본 제공 암호화 스토리지",
+    "section": {
+      "connections": "데이터베이스를 추가하고 테스트하며 자격 증명을 안전하게 보관하세요.",
+      "explorer": "스키마, 테이블, 행을 탐색하고 필요한 항목을 내보내세요.",
+      "query": "데이터베이스에서 SQL을 실행하세요. 기본값은 읽기 전용이며 모든 실행이 기록됩니다.",
+      "savedQueries": "팀에서 가장 많이 사용하는 쿼리를 저장하고 공유하세요.",
+      "destinations": "각 양식이 응답을 보낼 위치를 선택하고 필드를 열에 매핑하세요.",
+      "transfers": "파일을 테이블로 가져오고 테이블이나 쿼리 결과를 내보내세요.",
+      "activity": "각 연결의 전송, 실패 및 최근 쿼리."
     }
   }
 }

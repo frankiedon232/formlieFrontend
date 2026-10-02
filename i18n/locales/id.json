@@ -214,7 +214,16 @@
     "expand": "Bentangkan menu",
     "collapse": "Ciutkan menu",
     "audit": "Jejak audit",
-    "formsTrash": "Sampah"
+    "formsTrash": "Sampah",
+    "areas": "Area",
+    "dataSources": "Sumber data",
+    "dataOverview": "Ikhtisar",
+    "dataConnections": "Koneksi",
+    "dataExplorer": "Penjelajah database",
+    "dataQuery": "Editor kueri",
+    "dataSavedQueries": "Kueri tersimpan",
+    "dataTransfers": "Impor & ekspor",
+    "dataActivity": "Aktivitas"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -1842,6 +1851,22 @@
       "updated": "Tema “{name}” diperbarui",
       "duplicated": "“{name}” dibuat",
       "deleted": "Tema “{name}” dihapus"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Hubungkan database Anda sendiri, kirim data formulir ke sana, dan kelola datanya",
+    "back": "Ikhtisar sumber data",
+    "engines": "Database yang didukung",
+    "enginesHint": "Hubungkan salah satunya, atau tetap gunakan penyimpanan terenkripsi bawaan Formalie.",
+    "builtIn": "Penyimpanan terenkripsi bawaan",
+    "section": {
+      "connections": "Tambahkan database Anda, uji koneksinya, dan jaga keamanan kredensialnya.",
+      "explorer": "Jelajahi skema, tabel, dan baris, lalu ekspor yang Anda perlukan.",
+      "query": "Jalankan SQL di database Anda — hanya-baca secara default, setiap eksekusi tercatat.",
+      "savedQueries": "Simpan dan bagikan kueri yang paling sering digunakan tim Anda.",
+      "destinations": "Pilih ke mana setiap formulir mengirim responsnya dan cocokkan kolom isian dengan kolom tabel.",
+      "transfers": "Impor file ke tabel dan ekspor tabel atau hasil kueri.",
+      "activity": "Pengiriman, kegagalan, dan kueri terbaru untuk setiap koneksi."
     }
   }
 }

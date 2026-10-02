@@ -214,7 +214,16 @@
     "expand": "Expandir menu",
     "collapse": "Recolher menu",
     "audit": "Trilha de auditoria",
-    "formsTrash": "Lixeira"
+    "formsTrash": "Lixeira",
+    "areas": "Áreas",
+    "dataSources": "Fontes de dados",
+    "dataOverview": "Visão geral",
+    "dataConnections": "Conexões",
+    "dataExplorer": "Explorador de BD",
+    "dataQuery": "Editor de consultas",
+    "dataSavedQueries": "Consultas salvas",
+    "dataTransfers": "Importar e exportar",
+    "dataActivity": "Atividade"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -1842,6 +1851,22 @@
       "updated": "Tema “{name}” atualizado",
       "duplicated": "“{name}” criado",
       "deleted": "Tema “{name}” eliminado"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Conecte seus próprios bancos de dados, envie dados de formulários para eles e trabalhe com esses dados",
+    "back": "Visão geral das fontes de dados",
+    "engines": "Bancos de dados compatíveis",
+    "enginesHint": "Conecte qualquer um deles ou continue usando o armazenamento criptografado integrado do Formalie.",
+    "builtIn": "Armazenamento criptografado integrado",
+    "section": {
+      "connections": "Adicione seus bancos de dados, teste-os e mantenha suas credenciais seguras.",
+      "explorer": "Navegue por esquemas, tabelas e linhas e exporte o que precisar.",
+      "query": "Execute SQL nos seus bancos de dados — somente leitura por padrão, com cada execução registrada.",
+      "savedQueries": "Guarde e compartilhe as consultas mais usadas pela sua equipe.",
+      "destinations": "Escolha para onde cada formulário envia suas respostas e associe os campos às colunas.",
+      "transfers": "Importe arquivos para tabelas e exporte tabelas ou resultados de consultas.",
+      "activity": "Entregas, falhas e consultas recentes de cada conexão."
     }
   }
 }

@@ -214,7 +214,16 @@
     "expand": "メニューを展開",
     "collapse": "メニューを折りたたむ",
     "audit": "監査ログ",
-    "formsTrash": "ゴミ箱"
+    "formsTrash": "ゴミ箱",
+    "areas": "エリア",
+    "dataSources": "データソース",
+    "dataOverview": "概要",
+    "dataConnections": "接続",
+    "dataExplorer": "DBエクスプローラー",
+    "dataQuery": "クエリエディター",
+    "dataSavedQueries": "保存済みクエリ",
+    "dataTransfers": "インポート/エクスポート",
+    "dataActivity": "アクティビティ"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -1842,6 +1851,22 @@
       "updated": "テーマ「{name}」を更新しました",
       "duplicated": "「{name}」を作成しました",
       "deleted": "テーマ「{name}」を削除しました"
+    }
+  },
+  "dataSources": {
+    "subtitle": "独自のデータベースを接続し、フォームデータを送信して活用できます",
+    "back": "データソースの概要",
+    "engines": "対応データベース",
+    "enginesHint": "これらのいずれかを接続するか、Formalie の組み込み暗号化ストレージを引き続きご利用ください。",
+    "builtIn": "組み込み暗号化ストレージ",
+    "section": {
+      "connections": "データベースを追加してテストし、認証情報を安全に保管します。",
+      "explorer": "スキーマ、テーブル、行を閲覧し、必要なデータをエクスポートします。",
+      "query": "データベースで SQL を実行します。既定は読み取り専用で、すべての実行が記録されます。",
+      "savedQueries": "チームがよく使うクエリを保存して共有します。",
+      "destinations": "各フォームの回答の送信先を選び、フィールドを列に対応付けます。",
+      "transfers": "ファイルをテーブルにインポートし、テーブルやクエリ結果をエクスポートします。",
+      "activity": "各接続の配信、失敗、最近のクエリ。"
     }
   }
 }

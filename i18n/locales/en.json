@@ -214,7 +214,16 @@
     "expand": "Expand menu",
     "collapse": "Collapse menu",
     "audit": "Audit trail",
-    "formsTrash": "Trash"
+    "formsTrash": "Trash",
+    "areas": "Areas",
+    "dataSources": "Data sources",
+    "dataOverview": "Overview",
+    "dataConnections": "Connections",
+    "dataExplorer": "Database explorer",
+    "dataQuery": "Query editor",
+    "dataSavedQueries": "Saved queries",
+    "dataTransfers": "Imports & exports",
+    "dataActivity": "Activity"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -1842,6 +1851,22 @@
       "updated": "Theme “{name}” updated",
       "duplicated": "“{name}” created",
       "deleted": "Theme “{name}” deleted"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Connect your own databases, send form data to them and work with it",
+    "back": "Data sources overview",
+    "engines": "Supported databases",
+    "enginesHint": "Connect any of these, or keep using Formalie's built-in encrypted storage.",
+    "builtIn": "Built-in encrypted storage",
+    "section": {
+      "connections": "Add your databases, test them and keep their credentials safe.",
+      "explorer": "Browse schemas, tables and rows, and export what you need.",
+      "query": "Run SQL on your databases — read-only by default, every run recorded.",
+      "savedQueries": "Keep and share the queries your team uses most.",
+      "destinations": "Choose where each form sends its responses and match fields to columns.",
+      "transfers": "Import files into tables and export tables or query results.",
+      "activity": "Deliveries, failures and recent queries for every connection."
     }
   }
 }

@@ -214,7 +214,16 @@
     "expand": "Panua menyu",
     "collapse": "Kunja menyu",
     "audit": "Kumbukumbu za ukaguzi",
-    "formsTrash": "Tupio"
+    "formsTrash": "Tupio",
+    "areas": "Maeneo",
+    "dataSources": "Vyanzo vya data",
+    "dataOverview": "Muhtasari",
+    "dataConnections": "Miunganisho",
+    "dataExplorer": "Kivinjari cha hifadhidata",
+    "dataQuery": "Kihariri cha hoja",
+    "dataSavedQueries": "Hoja zilizohifadhiwa",
+    "dataTransfers": "Kuingiza na kuhamisha",
+    "dataActivity": "Shughuli"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -1842,6 +1851,22 @@
       "updated": "Mandhari “{name}” imesasishwa",
       "duplicated": "“{name}” imeundwa",
       "deleted": "Mandhari “{name}” imefutwa"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Unganisha hifadhidata zako mwenyewe, tuma data ya fomu kwazo na uifanyie kazi",
+    "back": "Muhtasari wa vyanzo vya data",
+    "engines": "Hifadhidata zinazotumika",
+    "enginesHint": "Unganisha yoyote kati ya hizi, au endelea kutumia hifadhi iliyosimbwa iliyojengewa ndani ya Formalie.",
+    "builtIn": "Hifadhi iliyosimbwa iliyojengewa ndani",
+    "section": {
+      "connections": "Ongeza hifadhidata zako, zijaribu na uweke vitambulisho vyake salama.",
+      "explorer": "Vinjari skima, majedwali na safu, na uhamishe unachohitaji.",
+      "query": "Endesha SQL kwenye hifadhidata zako — kusoma tu kwa chaguo-msingi, kila uendeshaji hurekodiwa.",
+      "savedQueries": "Hifadhi na ushiriki hoja ambazo timu yako hutumia zaidi.",
+      "destinations": "Chagua mahali kila fomu inapotuma majibu yake na ulinganishe sehemu na safuwima.",
+      "transfers": "Ingiza faili kwenye majedwali na uhamishe majedwali au matokeo ya hoja.",
+      "activity": "Uwasilishaji, hitilafu na hoja za hivi karibuni kwa kila muunganisho."
     }
   }
 }

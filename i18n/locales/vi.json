@@ -214,7 +214,16 @@
     "expand": "Mở rộng menu",
     "collapse": "Thu gọn menu",
     "audit": "Nhật ký kiểm tra",
-    "formsTrash": "Thùng rác"
+    "formsTrash": "Thùng rác",
+    "areas": "Khu vực",
+    "dataSources": "Nguồn dữ liệu",
+    "dataOverview": "Tổng quan",
+    "dataConnections": "Kết nối",
+    "dataExplorer": "Trình duyệt CSDL",
+    "dataQuery": "Trình soạn truy vấn",
+    "dataSavedQueries": "Truy vấn đã lưu",
+    "dataTransfers": "Nhập & xuất",
+    "dataActivity": "Hoạt động"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -1842,6 +1851,22 @@
       "updated": "Đã cập nhật chủ đề “{name}”",
       "duplicated": "Đã tạo “{name}”",
       "deleted": "Đã xóa chủ đề “{name}”"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Kết nối cơ sở dữ liệu của riêng bạn, gửi dữ liệu biểu mẫu đến đó và làm việc với dữ liệu",
+    "back": "Tổng quan nguồn dữ liệu",
+    "engines": "Cơ sở dữ liệu được hỗ trợ",
+    "enginesHint": "Kết nối bất kỳ cơ sở dữ liệu nào trong số này, hoặc tiếp tục dùng bộ lưu trữ mã hóa tích hợp của Formalie.",
+    "builtIn": "Bộ lưu trữ mã hóa tích hợp",
+    "section": {
+      "connections": "Thêm cơ sở dữ liệu, kiểm tra và giữ an toàn thông tin xác thực.",
+      "explorer": "Duyệt lược đồ, bảng và hàng, rồi xuất những gì bạn cần.",
+      "query": "Chạy SQL trên cơ sở dữ liệu của bạn — mặc định chỉ đọc, mọi lần chạy đều được ghi lại.",
+      "savedQueries": "Lưu và chia sẻ các truy vấn nhóm của bạn dùng nhiều nhất.",
+      "destinations": "Chọn nơi mỗi biểu mẫu gửi phản hồi và ánh xạ trường với cột.",
+      "transfers": "Nhập tệp vào bảng và xuất bảng hoặc kết quả truy vấn.",
+      "activity": "Lượt gửi, lỗi và truy vấn gần đây của mọi kết nối."
     }
   }
 }

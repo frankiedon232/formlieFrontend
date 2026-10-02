@@ -8,7 +8,8 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 const props = defineProps<{ collapsible?: boolean }>()
 const emit = defineEmits<{ collapse: [] }>()
 const { t } = useI18n()
-const { mainItems, resourceItems, systemItems } = useNavigation()
+const { mainItems, resourceItems, systemItems, area } = useNavigation()
+const mainHeading = computed(() => (area.value === 'data' ? t('nav.dataSources') : t('nav.main')))
 const colorMode = useColorMode()
 
 const isDark = computed({
@@ -79,8 +80,8 @@ const menuUi = {
     </div>
 
     <div class="flex flex-1 flex-col gap-5 overflow-y-auto px-3 py-4">
-      <nav :aria-label="t('nav.main')">
-        <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ t('nav.main') }}</p>
+      <nav :aria-label="mainHeading">
+        <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ mainHeading }}</p>
         <UNavigationMenu :items="mainItems" orientation="vertical" color="neutral" :ui="menuUi">
           <template #status-leading="{ item }">
             <span class="size-2 shrink-0 rounded-[1px]" :class="dotClass(item)" aria-hidden="true" />
@@ -88,9 +89,9 @@ const menuUi = {
         </UNavigationMenu>
       </nav>
 
-      <USeparator />
+      <USeparator v-if="resourceItems.length" />
 
-      <nav :aria-label="t('nav.resources')">
+      <nav v-if="resourceItems.length" :aria-label="t('nav.resources')">
         <div class="mb-1 flex items-center justify-between ps-2.5">
           <p class="text-xs font-medium text-muted uppercase">{{ t('nav.resources') }}</p>
           <UButton

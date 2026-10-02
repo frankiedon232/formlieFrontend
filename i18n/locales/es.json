@@ -214,7 +214,16 @@
     "expand": "Expandir menú",
     "collapse": "Contraer menú",
     "audit": "Registro de auditoría",
-    "formsTrash": "Papelera"
+    "formsTrash": "Papelera",
+    "areas": "Áreas",
+    "dataSources": "Fuentes de datos",
+    "dataOverview": "Resumen",
+    "dataConnections": "Conexiones",
+    "dataExplorer": "Explorador de BD",
+    "dataQuery": "Editor de consultas",
+    "dataSavedQueries": "Consultas guardadas",
+    "dataTransfers": "Importar y exportar",
+    "dataActivity": "Actividad"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -1842,6 +1851,22 @@
       "updated": "Tema «{name}» actualizado",
       "duplicated": "«{name}» creado",
       "deleted": "Tema «{name}» eliminado"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Conecte sus propias bases de datos, envíeles los datos de los formularios y trabaje con ellos",
+    "back": "Resumen de fuentes de datos",
+    "engines": "Bases de datos compatibles",
+    "enginesHint": "Conecte cualquiera de ellas o siga usando el almacenamiento cifrado integrado de Formalie.",
+    "builtIn": "Almacenamiento cifrado integrado",
+    "section": {
+      "connections": "Añada sus bases de datos, pruébelas y mantenga sus credenciales a salvo.",
+      "explorer": "Explore esquemas, tablas y filas, y exporte lo que necesite.",
+      "query": "Ejecute SQL en sus bases de datos: de solo lectura por defecto y con cada ejecución registrada.",
+      "savedQueries": "Guarde y comparta las consultas que su equipo usa más.",
+      "destinations": "Elija adónde envía cada formulario sus respuestas y asocie los campos con las columnas.",
+      "transfers": "Importe archivos a tablas y exporte tablas o resultados de consultas.",
+      "activity": "Entregas, errores y consultas recientes de cada conexión."
     }
   }
 }

@@ -20,7 +20,7 @@ const RESOURCE_PAGES: Record<string, (resource: NonNullable<AuditEvent['resource
   form: resource => `/forms?q=${encodeURIComponent(resource.name ?? '')}`,
   setting: () => '/settings',
   workspace: () => '/settings',
-  destination: () => '/integrations/destinations',
+  destination: () => '/data-sources/destinations',
   webhook: () => '/integrations/webhooks',
   api_key: () => '/integrations/api-keys',
 }

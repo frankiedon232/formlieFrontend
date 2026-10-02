@@ -22,7 +22,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ⬜     | 0%   |
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
-| F12   | Data sources & databases                          | ⬜     | 0%   |
+| F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | Settings                                          | ⬜     | 0%   |
 | F14   | Option sets, webhooks & API keys                  | ⬜     | 0%   |
 | F15   | Profile                                           | ⬜     | 0%   |
@@ -490,7 +490,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### 7. Navigation, API and docs
 
-- ⬜ Integrations menu: Data sources · Database explorer · Query editor · Destinations · Webhooks · API keys
+- ✅ Own rail area (owner, 2026-10-02): Data sources icon under the workspace button, with its own menu — Overview · Connections · Database explorer · Query editor · Saved queries · Destinations · Imports & exports · Activity; placeholder pages in place (`/data-sources/**`), old `/integrations/destinations` redirects; Integrations keeps Webhooks · API keys
 - ⬜ Mock first, then API: `/datasources` (CRUD, test, health, change credentials) · `/datasources/{id}/schema` · `/datasources/{id}/tables/{table}/rows` (list, insert, update, delete, import, export) · `/datasources/{id}/query` (+ cancel) · `/saved-queries` · `/forms/{id}/destinations` (+ mapping, create table, backfill, deliveries, retry); error codes `FRM-DEST-*`; contract updated
 
 ---
@@ -713,6 +713,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Form workspace header too full: search as an icon, Preview as an icon                                                                                                                                                                                                                                                                                             | F8              | ✅     |
 | 2026-10-02 | Templates before the renderer (both serve form creation) — phases renumbered: F9 Templates, F10 Renderer, F11 Responses                                                                                                                                                                                                                                           | Roadmap         | ✅     |
 | 2026-10-02 | Integrations for data sources: add their databases to send form data, database explorer, query editor, other database operations                                                                                                                                                                                                                                  | F12 (new phase) | ⬜     |
+| 2026-10-02 | Data sources as its own rail area with its own menu; placeholder pages now (no extra Forms icon — the workspace button is Forms)                                                                                                                                                                                                                                  | F12             | ✅     |
 
 ---
 
@@ -768,3 +769,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F8    | Fix: “Add link” in the footer reset the footer (a new link starts as an incomplete https:// address, which failed the theme check and switched the footer off). Links are now kept while being typed; only complete https links with a label show on the form; other schemes are emptied.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 | 2026-10-02 | Roadmap | New phase **F12 — Data sources & databases** (connections, sending form data, database explorer, query editor, other database operations, safety); later phases renumbered F13–F20 (Settings → Roles & access). |
+| 2026-10-02 | F12 | Placeholder shell: Data sources rail area (icon under the workspace button), own sidebar menu, overview with section cards and supported databases, seven placeholder pages; destinations moved from Integrations (redirect kept). |

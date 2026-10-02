@@ -1,6 +1,7 @@
 <!--
-  Far-left rail (design: ⋯ · + · workspaces). When the menu is collapsed it also carries the
-  section icons with tooltips, an expand button and the account avatar.
+  Far-left rail (design: ⋯ · + · workspaces), then the other areas (Data sources) — each with
+  its own menu; the workspace button is the Forms area. When the menu is collapsed it also carries the current area's section icons
+  with tooltips, an expand button and the account avatar.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -8,7 +9,7 @@ import type { DropdownMenuItem } from '@nuxt/ui'
 const props = defineProps<{ collapsed?: boolean }>()
 const emit = defineEmits<{ expand: [] }>()
 const { t } = useI18n()
-const { destinations, isActive } = useNavigation()
+const { areaDestinations, area, areas, isActive } = useNavigation()
 const { shortcutsOpen } = useAppUi()
 const railNavId = RAIL_NAV_ID
 
@@ -74,8 +75,24 @@ const workspaces = computed(() => [
           size="lg"
           square
           :aria-label="workspace.name"
-          :aria-current="workspace.active ? 'true' : undefined"
-          :class="workspace.active ? 'ring-2 ring-inverted' : ''"
+          :aria-current="area === 'forms' ? 'true' : undefined"
+          :class="area === 'forms' ? 'ring-2 ring-inverted' : ''"
+        />
+      </UTooltip>
+    </nav>
+
+    <nav :aria-label="t('nav.areas')" class="flex flex-col items-center gap-3">
+      <UTooltip v-for="item in areas" :key="item.key" :text="t(item.label)" :content="{ side: 'right' }">
+        <UButton
+          :to="item.to"
+          :icon="item.icon"
+          color="neutral"
+          variant="outline"
+          size="lg"
+          square
+          :aria-label="t(item.label)"
+          :aria-current="area === item.key ? 'page' : undefined"
+          :class="area === item.key ? 'ring-2 ring-inverted' : ''"
         />
       </UTooltip>
     </nav>
@@ -88,7 +105,7 @@ const workspaces = computed(() => [
         class="flex flex-1 flex-col items-center gap-1 overflow-y-auto"
       >
         <UTooltip
-          v-for="item in destinations"
+          v-for="item in areaDestinations"
           :key="item.key"
           :text="t(`nav.${item.key}`)"
           :content="{ side: 'right' }"

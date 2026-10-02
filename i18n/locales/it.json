@@ -214,7 +214,16 @@
     "expand": "Espandi menu",
     "collapse": "Comprimi menu",
     "audit": "Registro di audit",
-    "formsTrash": "Cestino"
+    "formsTrash": "Cestino",
+    "areas": "Aree",
+    "dataSources": "Origini dati",
+    "dataOverview": "Panoramica",
+    "dataConnections": "Connessioni",
+    "dataExplorer": "Esplora database",
+    "dataQuery": "Editor di query",
+    "dataSavedQueries": "Query salvate",
+    "dataTransfers": "Importa ed esporta",
+    "dataActivity": "Attività"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -1842,6 +1851,22 @@
       "updated": "Tema «{name}» aggiornato",
       "duplicated": "«{name}» creato",
       "deleted": "Tema «{name}» eliminato"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Collegate i vostri database, inviate loro i dati dei moduli e lavorateci",
+    "back": "Panoramica delle origini dati",
+    "engines": "Database supportati",
+    "enginesHint": "Collegatene uno qualsiasi, oppure continuate a usare l’archiviazione crittografata integrata di Formalie.",
+    "builtIn": "Archiviazione crittografata integrata",
+    "section": {
+      "connections": "Aggiungete i vostri database, testateli e proteggete le loro credenziali.",
+      "explorer": "Sfogliate schemi, tabelle e righe ed esportate ciò che vi serve.",
+      "query": "Eseguite SQL sui vostri database: in sola lettura per impostazione predefinita, ogni esecuzione viene registrata.",
+      "savedQueries": "Conservate e condividete le query più usate dal vostro team.",
+      "destinations": "Scegliete dove ogni modulo invia le risposte e associate i campi alle colonne.",
+      "transfers": "Importate file nelle tabelle ed esportate tabelle o risultati delle query.",
+      "activity": "Consegne, errori e query recenti per ogni connessione."
     }
   }
 }

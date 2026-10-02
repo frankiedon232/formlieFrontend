@@ -214,7 +214,16 @@
     "expand": "展开菜单",
     "collapse": "收起菜单",
     "audit": "审计日志",
-    "formsTrash": "回收站"
+    "formsTrash": "回收站",
+    "areas": "区域",
+    "dataSources": "数据源",
+    "dataOverview": "概览",
+    "dataConnections": "连接",
+    "dataExplorer": "数据库浏览器",
+    "dataQuery": "查询编辑器",
+    "dataSavedQueries": "已保存的查询",
+    "dataTransfers": "导入与导出",
+    "dataActivity": "活动"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -1842,6 +1851,22 @@
       "updated": "主题“{name}”已更新",
       "duplicated": "已创建“{name}”",
       "deleted": "主题“{name}”已删除"
+    }
+  },
+  "dataSources": {
+    "subtitle": "连接您自己的数据库，将表单数据发送到其中并进行处理",
+    "back": "数据源概览",
+    "engines": "支持的数据库",
+    "enginesHint": "连接其中任意一种，或继续使用 Formalie 内置的加密存储。",
+    "builtIn": "内置加密存储",
+    "section": {
+      "connections": "添加数据库、测试连接，并妥善保管其凭据。",
+      "explorer": "浏览架构、表和行，并导出所需内容。",
+      "query": "在数据库上运行 SQL — 默认只读，每次运行均有记录。",
+      "savedQueries": "保存并共享团队最常用的查询。",
+      "destinations": "选择每个表单发送回复的位置，并将字段映射到列。",
+      "transfers": "将文件导入表中，并导出表或查询结果。",
+      "activity": "每个连接的投递、失败和最近查询。"
     }
   }
 }

@@ -214,7 +214,16 @@
     "expand": "Développer le menu",
     "collapse": "Réduire le menu",
     "audit": "Journal d’audit",
-    "formsTrash": "Corbeille"
+    "formsTrash": "Corbeille",
+    "areas": "Espaces",
+    "dataSources": "Sources de données",
+    "dataOverview": "Vue d’ensemble",
+    "dataConnections": "Connexions",
+    "dataExplorer": "Explorateur de BDD",
+    "dataQuery": "Éditeur de requêtes",
+    "dataSavedQueries": "Requêtes enregistrées",
+    "dataTransfers": "Imports et exports",
+    "dataActivity": "Activité"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -1842,6 +1851,22 @@
       "updated": "Thème « {name} » mis à jour",
       "duplicated": "« {name} » créé",
       "deleted": "Thème « {name} » supprimé"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Connectez vos propres bases de données, envoyez-y les données de vos formulaires et exploitez-les",
+    "back": "Vue d’ensemble des sources de données",
+    "engines": "Bases de données prises en charge",
+    "enginesHint": "Connectez l’une d’elles ou continuez à utiliser le stockage chiffré intégré de Formalie.",
+    "builtIn": "Stockage chiffré intégré",
+    "section": {
+      "connections": "Ajoutez vos bases de données, testez-les et protégez leurs identifiants.",
+      "explorer": "Parcourez les schémas, tables et lignes, et exportez ce dont vous avez besoin.",
+      "query": "Exécutez du SQL sur vos bases de données — en lecture seule par défaut, chaque exécution est journalisée.",
+      "savedQueries": "Conservez et partagez les requêtes les plus utilisées par votre équipe.",
+      "destinations": "Choisissez où chaque formulaire envoie ses réponses et associez les champs aux colonnes.",
+      "transfers": "Importez des fichiers dans des tables et exportez des tables ou des résultats de requêtes.",
+      "activity": "Livraisons, échecs et requêtes récentes pour chaque connexion."
     }
   }
 }

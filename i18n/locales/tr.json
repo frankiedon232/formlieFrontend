@@ -214,7 +214,16 @@
     "expand": "Menüyü genişlet",
     "collapse": "Menüyü daralt",
     "audit": "Denetim kaydı",
-    "formsTrash": "Çöp kutusu"
+    "formsTrash": "Çöp kutusu",
+    "areas": "Alanlar",
+    "dataSources": "Veri kaynakları",
+    "dataOverview": "Genel bakış",
+    "dataConnections": "Bağlantılar",
+    "dataExplorer": "Veritabanı gezgini",
+    "dataQuery": "Sorgu düzenleyici",
+    "dataSavedQueries": "Kayıtlı sorgular",
+    "dataTransfers": "İçe ve dışa aktarma",
+    "dataActivity": "Etkinlik"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -1842,6 +1851,22 @@
       "updated": "“{name}” teması güncellendi",
       "duplicated": "“{name}” oluşturuldu",
       "deleted": "“{name}” teması silindi"
+    }
+  },
+  "dataSources": {
+    "subtitle": "Kendi veritabanlarınızı bağlayın, form verilerini onlara gönderin ve bu verilerle çalışın",
+    "back": "Veri kaynaklarına genel bakış",
+    "engines": "Desteklenen veritabanları",
+    "enginesHint": "Bunlardan herhangi birini bağlayın veya Formalie’nin yerleşik şifreli depolamasını kullanmaya devam edin.",
+    "builtIn": "Yerleşik şifreli depolama",
+    "section": {
+      "connections": "Veritabanlarınızı ekleyin, test edin ve kimlik bilgilerini güvende tutun.",
+      "explorer": "Şemalara, tablolara ve satırlara göz atın, ihtiyacınız olanı dışa aktarın.",
+      "query": "Veritabanlarınızda SQL çalıştırın — varsayılan olarak salt okunur, her çalıştırma kaydedilir.",
+      "savedQueries": "Ekibinizin en çok kullandığı sorguları saklayın ve paylaşın.",
+      "destinations": "Her formun yanıtlarını nereye göndereceğini seçin ve alanları sütunlarla eşleştirin.",
+      "transfers": "Dosyaları tablolara içe aktarın, tabloları veya sorgu sonuçlarını dışa aktarın.",
+      "activity": "Her bağlantı için teslimatlar, hatalar ve son sorgular."
     }
   }
 }

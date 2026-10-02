@@ -1,5 +1,5 @@
 <script setup lang="ts">
-definePageMeta({ breadcrumb: 'nav.integrations', redirect: '/integrations/destinations' })
+definePageMeta({ breadcrumb: 'nav.integrations', redirect: '/integrations/webhooks' })
 </script>
 
 <template>
