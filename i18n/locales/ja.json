@@ -1208,7 +1208,8 @@
       "clear": "書式をクリア",
       "placeholder": "回答を入力…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field}は必須です。"
   },
   "logic": {
     "crumb": "ロジック",

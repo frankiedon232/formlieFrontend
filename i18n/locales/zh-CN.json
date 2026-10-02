@@ -1208,7 +1208,8 @@
       "clear": "清除格式",
       "placeholder": "输入你的回答…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "请填写{field}。"
   },
   "logic": {
     "crumb": "逻辑",

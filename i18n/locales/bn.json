@@ -1208,7 +1208,8 @@
       "clear": "ফরম্যাট মুছুন",
       "placeholder": "আপনার উত্তর লিখুন…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} আবশ্যক।"
   },
   "logic": {
     "crumb": "লজিক",

@@ -1208,7 +1208,8 @@
       "clear": "Hapus format",
       "placeholder": "Tulis jawaban Anda…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} wajib diisi."
   },
   "logic": {
     "crumb": "Logika",

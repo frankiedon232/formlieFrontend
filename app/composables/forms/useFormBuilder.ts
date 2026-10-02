@@ -1,7 +1,7 @@
 import type { InjectionKey } from 'vue'
 import { newId, keyFromLabel, fieldKey, allFields, type FormField, type FormPage } from '#shared/utils/forms/build'
 import type { OptionList, SavedField } from '#shared/types/forms'
-import type { FieldType } from '#shared/utils/forms/fields'
+import { isInputField, type FieldType } from '#shared/utils/forms/fields'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 /**
@@ -71,7 +71,9 @@ export function useFormBuilder() {
       ),
       type,
       label,
-      width: 12,
+      // New fields start at half width (owner) so they pair up when dropped side by side; layout
+      // blocks (heading, paragraph, divider, image) span the row. The width stays adjustable.
+      width: isInputField(type) ? 6 : 12,
       required: false,
       ...structuredClone(defaults),
     }

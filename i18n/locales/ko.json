@@ -1208,7 +1208,8 @@
       "clear": "서식 지우기",
       "placeholder": "답변을 입력하세요…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field}은(는) 필수입니다."
   },
   "logic": {
     "crumb": "로직",

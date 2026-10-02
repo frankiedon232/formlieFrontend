@@ -1208,7 +1208,8 @@
       "clear": "Opmaak wissen",
       "placeholder": "Schrijf je antwoord…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} is verplicht."
   },
   "logic": {
     "crumb": "Logica",

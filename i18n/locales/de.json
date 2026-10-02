@@ -1208,7 +1208,8 @@
       "clear": "Formatierung entfernen",
       "placeholder": "Ihre Antwort…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} ist erforderlich."
   },
   "logic": {
     "crumb": "Logik",

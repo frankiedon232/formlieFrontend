@@ -1208,7 +1208,8 @@
       "clear": "مسح التنسيق",
       "placeholder": "اكتب إجابتك…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} مطلوب."
   },
   "logic": {
     "crumb": "المنطق",

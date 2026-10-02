@@ -1208,7 +1208,8 @@
       "clear": "Quitar formato",
       "placeholder": "Escribe tu respuesta…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} es obligatorio."
   },
   "logic": {
     "crumb": "Lógica",

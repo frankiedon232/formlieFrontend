@@ -1208,7 +1208,8 @@
       "clear": "फ़ॉर्मेटिंग हटाएँ",
       "placeholder": "अपना उत्तर लिखें…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} आवश्यक है।"
   },
   "logic": {
     "crumb": "लॉजिक",

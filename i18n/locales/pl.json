@@ -1208,7 +1208,8 @@
       "clear": "Wyczyść formatowanie",
       "placeholder": "Wpisz odpowiedź…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "Pole „{field}” jest wymagane."
   },
   "logic": {
     "crumb": "Logika",

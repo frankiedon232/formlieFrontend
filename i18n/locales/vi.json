@@ -1208,7 +1208,8 @@
       "clear": "Xóa định dạng",
       "placeholder": "Viết câu trả lời…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} là bắt buộc."
   },
   "logic": {
     "crumb": "Logic",

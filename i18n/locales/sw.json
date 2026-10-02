@@ -1208,7 +1208,8 @@
       "clear": "Futa mpangilio",
       "placeholder": "Andika jibu lako…",
       "count": "{n} / {max}"
-    }
+    },
+    "requiredNamed": "{field} kinahitajika."
   },
   "logic": {
     "crumb": "Mantiki",

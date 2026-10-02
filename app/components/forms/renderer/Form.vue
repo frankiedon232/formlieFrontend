@@ -104,7 +104,9 @@ function check(): boolean {
   for (const row of visibleRows.value)
     for (const field of row.fields)
       if (field.required && isInputField(field.type) && empty(answers.value[field.key]))
-        next[field.key] = t('renderer.requiredError')
+        next[field.key] = field.label?.trim()
+          ? t('renderer.requiredNamed', { field: field.label.trim() })
+          : t('renderer.requiredError')
   errors.value = next
   for (const row of visibleRows.value) {
     const owner = ownerOf.value.get(row.id)
