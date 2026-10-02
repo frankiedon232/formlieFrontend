@@ -1102,7 +1102,8 @@
       "label": "빌더 보기",
       "build": "만들기",
       "logic": "로직",
-      "versions": "버전"
+      "versions": "버전",
+      "design": "디자인"
     },
     "renameHint": "두 번 클릭하여 이름 변경",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field}에는 최대 {n}개의 파일을 올릴 수 있습니다.",
       "date_range": "{field}에서 두 날짜를 모두 선택하세요. 종료일은 시작일과 같거나 이후여야 합니다.",
       "address": "{field}에 누락된 항목: {parts}."
+    },
+    "page": {
+      "logo": "로고",
+      "footerLinks": "푸터 링크"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "‘{name}’ 목록 업데이트됨",
       "listDeleted": "‘{name}’ 목록 삭제됨"
     }
+  },
+  "designer": {
+    "crumb": "디자인",
+    "startingPoints": "시작 템플릿",
+    "usingDefault": "이 양식은 워크스페이스 기본값(브랜드 색상과 로고)을 사용합니다. 무엇이든 변경하면 고유한 디자인이 됩니다.",
+    "applyPreset": "“{name}”에서 시작",
+    "replaceTitle": "현재 디자인을 바꿀까요?",
+    "replaceDesc": "시작 템플릿이 이 양식의 디자인을 대체합니다. 실행 취소할 수 있습니다.",
+    "replace": "바꾸기",
+    "reset": "워크스페이스 기본값으로 재설정",
+    "resetTitle": "디자인을 재설정할까요?",
+    "resetDesc": "양식이 워크스페이스 기본값으로 돌아갑니다. 실행 취소할 수 있습니다.",
+    "preset": {
+      "workspace": "워크스페이스 기본값",
+      "minimal": "미니멀",
+      "soft": "부드럽게",
+      "bold": "강렬하게",
+      "dark": "다크",
+      "elegant": "우아하게"
+    },
+    "screen": {
+      "label": "미리보기 화면",
+      "form": "질문",
+      "thanks": "감사 페이지"
+    },
+    "group": {
+      "layout": "레이아웃",
+      "background": "배경",
+      "container": "양식 컨테이너",
+      "typography": "글꼴",
+      "colors": "색상",
+      "inputs": "입력란",
+      "buttons": "버튼",
+      "header": "헤더",
+      "footer": "푸터",
+      "thankYou": "감사 페이지"
+    },
+    "layout": {
+      "card": "카드",
+      "plain": "기본",
+      "split": "분할",
+      "full": "전체 너비"
+    },
+    "layoutHint": {
+      "card": "양식이 페이지 가운데의 카드 위에 표시됩니다.",
+      "plain": "카드 없음 — 양식이 페이지 배경 위에 바로 표시됩니다.",
+      "split": "양식 옆에 이미지 표시(휴대폰에서는 위쪽).",
+      "full": "양식이 페이지 전체 너비를 차지합니다."
+    },
+    "splitImage": "측면 이미지",
+    "imageSide": "이미지 위치",
+    "side": {
+      "start": "시작",
+      "end": "끝"
+    },
+    "bg": {
+      "type": "채우기",
+      "color": "색상",
+      "gradient": "그라데이션",
+      "image": "이미지",
+      "from": "시작",
+      "to": "끝",
+      "angle": "각도",
+      "overlay": "이미지 어둡게",
+      "overlayHint": "이미지 위의 텍스트를 읽기 쉽게 합니다."
+    },
+    "container": {
+      "width": "너비",
+      "padding": "안쪽 여백",
+      "radius": "모서리",
+      "shadow": "그림자",
+      "border": "테두리",
+      "bg": "배경"
+    },
+    "size": {
+      "label": "크기",
+      "none": "없음",
+      "sm": "작게",
+      "md": "보통",
+      "lg": "크게",
+      "xl": "아주 크게",
+      "full": "둥글게"
+    },
+    "font": {
+      "label": "글꼴",
+      "sans": "깔끔한 산세리프",
+      "system": "기기 기본값",
+      "serif": "세리프",
+      "rounded": "둥근 글꼴",
+      "mono": "고정폭"
+    },
+    "textSize": "텍스트 크기",
+    "headingWeight": "제목 굵기",
+    "weight": {
+      "medium": "가늘게",
+      "semibold": "보통",
+      "bold": "굵게"
+    },
+    "color": {
+      "primary": "강조색(버튼, 포커스)",
+      "text": "텍스트",
+      "muted": "보조 텍스트",
+      "inputBg": "입력란 배경",
+      "inputBorder": "입력란 테두리",
+      "error": "오류"
+    },
+    "colorInvalid": "#1a2b3c 같은 16진수 색상을 사용하세요.",
+    "lowContrast": "낮은 대비({ratio} : 1) — 읽기 어려울 수 있습니다.",
+    "pickColor": "{name} 색상 선택",
+    "inputStyle": "스타일",
+    "style": {
+      "outline": "외곽선",
+      "soft": "부드럽게",
+      "underline": "밑줄",
+      "solid": "채움"
+    },
+    "corners": "모서리",
+    "buttonStyle": "스타일",
+    "fullWidth": "전체 너비 버튼",
+    "upload": "이미지 업로드",
+    "header": {
+      "cover": "커버 이미지",
+      "coverHint": "양식 상단의 넓은 이미지입니다.",
+      "coverHeight": "커버 높이",
+      "showLogo": "로고 표시",
+      "logo": "로고",
+      "logoHint": "다른 로고를 업로드하지 않으면 워크스페이스 로고가 사용됩니다.",
+      "logoNone": "이 양식의 로고를 업로드하세요(워크스페이스에 아직 로고가 없습니다).",
+      "showTitle": "양식 이름 표시",
+      "subtitle": "소개 문구"
+    },
+    "footer": {
+      "show": "푸터 표시",
+      "text": "푸터 텍스트",
+      "textHint": "예: 개인정보 안내 또는 연락처 정보.",
+      "links": "링크",
+      "newLink": "개인정보",
+      "linkLabel": "링크 {n} 텍스트",
+      "linkUrl": "링크 {n} 주소",
+      "removeLink": "링크 {n} 삭제",
+      "addLink": "링크 추가",
+      "showLogo": "로고 표시"
+    },
+    "thankYouHint": "제목과 메시지는 만들기 → 양식 설정에서 지정합니다. 이 페이지에는 이 디자인이 적용됩니다.",
+    "showTick": "체크 아이콘 표시"
   }
 }

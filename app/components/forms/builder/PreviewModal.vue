@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
-const props = defineProps<{ schema?: FormSchemaV1 | null; title?: string }>()
+const props = defineProps<{ schema?: FormSchemaV1 | null; title?: string; formName?: string }>()
 const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const builder = useBuilder()
@@ -31,7 +31,7 @@ watch(open, value => {
     v-model:open="open"
     :title="title ?? t('builder.preview.title')"
     :description="t('builder.preview.desc')"
-    :ui="{ content: 'w-full sm:max-w-5xl', body: 'bg-elevated/40' }"
+    :ui="{ content: 'w-full sm:max-w-5xl', body: 'bg-elevated/40 p-3 sm:p-4' }"
   >
     <template #actions>
       <UTabs
@@ -46,10 +46,9 @@ watch(open, value => {
       />
     </template>
     <template #body>
-      <div class="mx-auto w-full transition-[max-width] duration-300" :class="WIDTH[device]">
-        <UCard :ui="{ body: 'p-4 sm:p-8' }">
-          <FormsRendererForm v-if="shown" :key="key" :schema="shown" preview />
-        </UCard>
+      <div class="mx-auto w-full overflow-hidden rounded-lg border border-default transition-[max-width] duration-300 @container" :class="WIDTH[device]">
+        <!-- The form page with its theme (background, header, footer), exactly as respondents see it. -->
+        <FormsRendererPage v-if="shown" :key="key" :schema="shown" :title="formName ?? ''" preview />
       </div>
     </template>
   </USlideover>

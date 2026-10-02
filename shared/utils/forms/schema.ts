@@ -54,6 +54,8 @@ export const formSchemaV1 = z.object({
     .min(1)
     .max(50),
   logic: z.array(z.unknown()).max(500).optional(),
+  /** Design tokens (shared/utils/forms/theme.ts); missing or invalid tokens use the workspace default. */
+  theme: z.record(z.string(), z.unknown()).optional(),
   calculations: z.array(z.unknown()).max(200).optional(),
   thank_you: z
     .object({

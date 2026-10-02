@@ -189,6 +189,6 @@ const hasDraftChanges = computed(() => !versions.value.length || !!form.value?.h
       @select="id => (compareId = id)"
     />
 
-    <LazyFormsBuilderPreviewModal v-if="preview" v-model:open="previewOpen" :schema="preview?.schema" :title="preview?.title" />
+    <LazyFormsBuilderPreviewModal v-if="preview" v-model:open="previewOpen" :schema="preview?.schema" :title="preview?.title" :form-name="form?.name" />
   </div>
 </template>

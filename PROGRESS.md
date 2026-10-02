@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F7 — Form builder (review) → next F8 Designer
+**Last updated:** 2026-10-02 · **Current phase:** F8 — Designer (themes)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -18,7 +18,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F5    | Onboarding wizard                                 | ✅     | 100% |
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
-| F8    | Designer (themes)                                 | ⬜     | 0%   |
+| F8    | Designer (themes)                                 | 🟡     | ~75% |
 | F9    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F10   | Responses                                         | ⬜     | 0%   |
 | F11   | Templates gallery                                 | ⬜     | 0%   |
@@ -340,22 +340,26 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F8 — Designer (themes) ⬜
+## F8 — Designer (themes) 🟡
 
 **Goal:** organisations design their form pages as they want.
 
-- ⬜ Live preview with desktop / tablet / phone toggle
-- ⬜ Layout (single, two-column, card, full-bleed, split with image)
-- ⬜ Background (colour, gradient, image, overlay)
-- ⬜ Form container (width, padding, border, radius, shadow)
-- ⬜ Typography (font, sizes, weights)
-- ⬜ Colours (primary, text, inputs, errors), inputs and buttons style
-- ⬜ Header / banner, logo, cover page, thank-you page
-- ⬜ Footer (text, links, logo — e.g. privacy note, contact) (owner request 2026-10-02)
-- ⬜ Default theme: a form without a chosen theme uses the workspace default (brand colours + logo from onboarding), so every shared form looks finished
-- ⬜ Custom CSS (paid plans, sanitised)
-- ⬜ Save as theme, apply theme; themes library in Settings
-- ⬜ Applied as CSS variables on the renderer only
+- ✅ Design view (`/forms/[id]/design`) next to Build / Logic / Versions: controls on the left (collapsible groups), live form page on the right; phones / tablets: preview full width, controls in a drawer / slide-over
+- ✅ Live preview with desktop / tablet / phone toggle, and questions / thank-you page
+- ✅ Starting points: workspace default, minimal, soft, bold, dark, elegant (replace with confirm, undo); reset to workspace default
+- ✅ Layout (card, plain, split with image, full width)
+- ✅ Background (colour, gradient with angle, image with darkening overlay)
+- ✅ Form container (width, spacing, corners, shadow, border, background)
+- ✅ Typography (font: clean sans, device, serif, rounded, mono; text size; heading weight)
+- ✅ Colours (accent, text, secondary text, input background / border, errors) with colour picker, hex box and contrast warning; button text colour picked automatically
+- ✅ Inputs (outline / soft / underline, size, corners) and buttons (solid / outline / soft, corners, full width)
+- ✅ Header / cover (cover image + height, logo — workspace or uploaded, form name, intro text, alignment), thank-you page (tick icon; title / message from form settings)
+- ✅ Footer (text, up to 6 https links, logo, alignment) (owner request 2026-10-02)
+- ✅ Default theme: a form without a design uses the workspace default (brand colour + logo from onboarding)
+- ✅ Applied as CSS variables on the renderer only (Nuxt UI controls follow; portal untouched); theme stored on the form schema (versioned with publishing); builder Preview and Versions preview show the themed page
+- ⬜ Save as theme, apply theme; themes library (Resources → Themes, Settings) — milestone 2
+- ⬜ More fonts (self-hosted web fonts — needs a font package, ask first)
+- ⬜ Custom CSS (paid plans, sanitised) — with billing
 
 ---
 
@@ -627,6 +631,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Rich text: headings 1–6, paragraph, text alignment, code block                                                                                                                                                                                                                                                                                                    | F7          | ✅     |
 | 2026-10-02 | Layout blocks: nicer section, inline paragraph editing, image upload + resize, divider options                                                                                                                                                                                                                                                                    | F7          | ✅     |
 | 2026-10-02 | Validate email and all address parts (not only the first line)                                                                                                                                                                                                                                                                                                    | F7          | ✅     |
+| 2026-10-02 | IT / technical field types later (IP address and others — owner will list them)                                                                                                                                                                                                                                                                                   | F7 (later)  | ⬜     |
 
 ---
 
@@ -676,3 +681,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F7    | Layout blocks upgraded: section heading block with placeholders and inline title / description editing; paragraph written on the canvas (bubble toolbar, HTML, shown read-only to respondents); image upload (drop / browse, progress, 5 MB, safe SVG) or link, drag / keyboard resize, presets, alignment, caption, link, rounded, alt-text prompt; divider style and spacing.                                                                                                                                                                                                                                                                                                                                                                                                  |
 | 2026-10-02 | F7    | Image "Fill": spans the whole field; optional height (small / medium / large) crops it like a banner.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 2026-10-02 | F7    | Answer validation: email, web address, phone, number range, length, pattern, choice counts, files, date range and every required address part (postal code / region switchable); errors name the field, update live, missing address parts highlighted. One shared validator for renderer and API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 2026-10-02 | F8    | Milestone 1: Design view with live preview (devices, thank-you page), starting points, layout / background / container / typography / colours / inputs / buttons / header + cover / footer / thank-you; themes stored on the form, applied as CSS variables on the form page only, workspace default from brand colour + logo; builder Preview themed.                                                                                                                                                                                                                                                                                                                                                                                                                           |

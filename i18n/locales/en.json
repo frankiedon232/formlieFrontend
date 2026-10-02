@@ -1102,7 +1102,8 @@
       "label": "Builder view",
       "build": "Build",
       "logic": "Logic",
-      "versions": "Versions"
+      "versions": "Versions",
+      "design": "Design"
     },
     "renameHint": "Double-click to rename",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} accepts at most {n} files.",
       "date_range": "Choose both dates for {field}, with the end on or after the start.",
       "address": "{field} is missing: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Footer links"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "List “{name}” updated",
       "listDeleted": "List “{name}” deleted"
     }
+  },
+  "designer": {
+    "crumb": "Design",
+    "startingPoints": "Starting points",
+    "usingDefault": "This form uses your workspace default (brand colour and logo). Change anything to give it its own design.",
+    "applyPreset": "Start from “{name}”",
+    "replaceTitle": "Replace the current design?",
+    "replaceDesc": "The starting point replaces this form's design. You can undo this.",
+    "replace": "Replace",
+    "reset": "Reset to workspace default",
+    "resetTitle": "Reset the design?",
+    "resetDesc": "The form goes back to your workspace default. You can undo this.",
+    "preset": {
+      "workspace": "Workspace default",
+      "minimal": "Minimal",
+      "soft": "Soft",
+      "bold": "Bold",
+      "dark": "Dark",
+      "elegant": "Elegant"
+    },
+    "screen": {
+      "label": "Preview screen",
+      "form": "Questions",
+      "thanks": "Thank-you page"
+    },
+    "group": {
+      "layout": "Layout",
+      "background": "Background",
+      "container": "Form container",
+      "typography": "Typography",
+      "colors": "Colours",
+      "inputs": "Inputs",
+      "buttons": "Buttons",
+      "header": "Header",
+      "footer": "Footer",
+      "thankYou": "Thank-you page"
+    },
+    "layout": {
+      "card": "Card",
+      "plain": "Plain",
+      "split": "Split",
+      "full": "Full width"
+    },
+    "layoutHint": {
+      "card": "The form sits on a card in the middle of the page.",
+      "plain": "No card — the form sits right on the page background.",
+      "split": "An image beside the form (above it on phones).",
+      "full": "The form spans the whole page width."
+    },
+    "splitImage": "Side image",
+    "imageSide": "Image side",
+    "side": {
+      "start": "Start",
+      "end": "End"
+    },
+    "bg": {
+      "type": "Fill",
+      "color": "Colour",
+      "gradient": "Gradient",
+      "image": "Image",
+      "from": "From",
+      "to": "To",
+      "angle": "Angle",
+      "overlay": "Darken image",
+      "overlayHint": "Makes text on top of the image easier to read."
+    },
+    "container": {
+      "width": "Width",
+      "padding": "Spacing inside",
+      "radius": "Corners",
+      "shadow": "Shadow",
+      "border": "Border",
+      "bg": "Background"
+    },
+    "size": {
+      "label": "Size",
+      "none": "None",
+      "sm": "Small",
+      "md": "Medium",
+      "lg": "Large",
+      "xl": "Extra large",
+      "full": "Round"
+    },
+    "font": {
+      "label": "Font",
+      "sans": "Clean sans",
+      "system": "Device default",
+      "serif": "Serif",
+      "rounded": "Rounded",
+      "mono": "Monospace"
+    },
+    "textSize": "Text size",
+    "headingWeight": "Heading weight",
+    "weight": {
+      "medium": "Light",
+      "semibold": "Medium",
+      "bold": "Bold"
+    },
+    "color": {
+      "primary": "Accent (buttons, focus)",
+      "text": "Text",
+      "muted": "Secondary text",
+      "inputBg": "Input background",
+      "inputBorder": "Input border",
+      "error": "Errors"
+    },
+    "colorInvalid": "Use a hex colour like #1a2b3c.",
+    "lowContrast": "Low contrast ({ratio} : 1) — may be hard to read.",
+    "pickColor": "Pick a colour for {name}",
+    "inputStyle": "Style",
+    "style": {
+      "outline": "Outline",
+      "soft": "Soft",
+      "underline": "Underline",
+      "solid": "Solid"
+    },
+    "corners": "Corners",
+    "buttonStyle": "Style",
+    "fullWidth": "Full-width buttons",
+    "upload": "Upload an image",
+    "header": {
+      "cover": "Cover image",
+      "coverHint": "A wide picture at the top of the form.",
+      "coverHeight": "Cover height",
+      "showLogo": "Show logo",
+      "logo": "Logo",
+      "logoHint": "Your workspace logo is used unless you upload another one.",
+      "logoNone": "Upload a logo for this form (your workspace has none yet).",
+      "showTitle": "Show the form name",
+      "subtitle": "Intro text"
+    },
+    "footer": {
+      "show": "Show a footer",
+      "text": "Footer text",
+      "textHint": "For example a privacy note or contact details.",
+      "links": "Links",
+      "newLink": "Privacy",
+      "linkLabel": "Text of link {n}",
+      "linkUrl": "Address of link {n}",
+      "removeLink": "Remove link {n}",
+      "addLink": "Add link",
+      "showLogo": "Show logo"
+    },
+    "thankYouHint": "The title and message are set in Build → Form settings. The page uses this design.",
+    "showTick": "Show the tick icon"
   }
 }

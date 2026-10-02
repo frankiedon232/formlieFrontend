@@ -1102,7 +1102,8 @@
       "label": "Vista editor",
       "build": "Crea",
       "logic": "Logica",
-      "versions": "Versioni"
+      "versions": "Versioni",
+      "design": "Design"
     },
     "renameHint": "Doppio clic per rinominare",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} accetta al massimo {n} file.",
       "date_range": "Scegli entrambe le date per {field}, con la data di fine uguale o successiva a quella di inizio.",
       "address": "In {field} manca: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Link del piè di pagina"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Elenco “{name}” aggiornato",
       "listDeleted": "Elenco “{name}” eliminato"
     }
+  },
+  "designer": {
+    "crumb": "Design",
+    "startingPoints": "Punti di partenza",
+    "usingDefault": "Questo modulo usa lo stile predefinito del tuo spazio di lavoro (colore del brand e logo). Modifica qualsiasi elemento per dargli un design proprio.",
+    "applyPreset": "Parti da «{name}»",
+    "replaceTitle": "Sostituire il design attuale?",
+    "replaceDesc": "Il punto di partenza sostituisce il design di questo modulo. Puoi annullare.",
+    "replace": "Sostituisci",
+    "reset": "Ripristina lo stile dello spazio",
+    "resetTitle": "Ripristinare il design?",
+    "resetDesc": "Il modulo torna allo stile predefinito del tuo spazio di lavoro. Puoi annullare.",
+    "preset": {
+      "workspace": "Predefinito dello spazio",
+      "minimal": "Minimal",
+      "soft": "Morbido",
+      "bold": "Deciso",
+      "dark": "Scuro",
+      "elegant": "Elegante"
+    },
+    "screen": {
+      "label": "Schermata di anteprima",
+      "form": "Domande",
+      "thanks": "Pagina di ringraziamento"
+    },
+    "group": {
+      "layout": "Layout",
+      "background": "Sfondo",
+      "container": "Contenitore del modulo",
+      "typography": "Tipografia",
+      "colors": "Colori",
+      "inputs": "Campi",
+      "buttons": "Pulsanti",
+      "header": "Intestazione",
+      "footer": "Piè di pagina",
+      "thankYou": "Pagina di ringraziamento"
+    },
+    "layout": {
+      "card": "Scheda",
+      "plain": "Semplice",
+      "split": "Diviso",
+      "full": "Larghezza piena"
+    },
+    "layoutHint": {
+      "card": "Il modulo è su una scheda al centro della pagina.",
+      "plain": "Nessuna scheda: il modulo è direttamente sullo sfondo della pagina.",
+      "split": "Un’immagine accanto al modulo (sopra sui telefoni).",
+      "full": "Il modulo occupa tutta la larghezza della pagina."
+    },
+    "splitImage": "Immagine laterale",
+    "imageSide": "Lato immagine",
+    "side": {
+      "start": "Inizio",
+      "end": "Fine"
+    },
+    "bg": {
+      "type": "Riempimento",
+      "color": "Colore",
+      "gradient": "Sfumatura",
+      "image": "Immagine",
+      "from": "Da",
+      "to": "A",
+      "angle": "Angolo",
+      "overlay": "Scurisci immagine",
+      "overlayHint": "Rende più leggibile il testo sopra l’immagine."
+    },
+    "container": {
+      "width": "Larghezza",
+      "padding": "Spaziatura interna",
+      "radius": "Angoli",
+      "shadow": "Ombra",
+      "border": "Bordo",
+      "bg": "Sfondo"
+    },
+    "size": {
+      "label": "Dimensione",
+      "none": "Nessuna",
+      "sm": "Piccola",
+      "md": "Media",
+      "lg": "Grande",
+      "xl": "Molto grande",
+      "full": "Tondo"
+    },
+    "font": {
+      "label": "Carattere",
+      "sans": "Sans pulito",
+      "system": "Del dispositivo",
+      "serif": "Serif",
+      "rounded": "Arrotondato",
+      "mono": "Monospazio"
+    },
+    "textSize": "Dimensione testo",
+    "headingWeight": "Spessore titoli",
+    "weight": {
+      "medium": "Leggero",
+      "semibold": "Medio",
+      "bold": "Grassetto"
+    },
+    "color": {
+      "primary": "Accento (pulsanti, focus)",
+      "text": "Testo",
+      "muted": "Testo secondario",
+      "inputBg": "Sfondo campi",
+      "inputBorder": "Bordo campi",
+      "error": "Errori"
+    },
+    "colorInvalid": "Usa un colore esadecimale come #1a2b3c.",
+    "lowContrast": "Contrasto basso ({ratio} : 1) — potrebbe essere difficile da leggere.",
+    "pickColor": "Scegli un colore per {name}",
+    "inputStyle": "Stile",
+    "style": {
+      "outline": "Contorno",
+      "soft": "Morbido",
+      "underline": "Sottolineato",
+      "solid": "Pieno"
+    },
+    "corners": "Angoli",
+    "buttonStyle": "Stile",
+    "fullWidth": "Pulsanti a larghezza piena",
+    "upload": "Carica un’immagine",
+    "header": {
+      "cover": "Immagine di copertina",
+      "coverHint": "Un’immagine ampia in cima al modulo.",
+      "coverHeight": "Altezza copertina",
+      "showLogo": "Mostra logo",
+      "logo": "Logo",
+      "logoHint": "Viene usato il logo del tuo spazio di lavoro, a meno che tu non ne carichi un altro.",
+      "logoNone": "Carica un logo per questo modulo (il tuo spazio di lavoro non ne ha ancora uno).",
+      "showTitle": "Mostra il nome del modulo",
+      "subtitle": "Testo introduttivo"
+    },
+    "footer": {
+      "show": "Mostra un piè di pagina",
+      "text": "Testo del piè di pagina",
+      "textHint": "Ad esempio una nota sulla privacy o i recapiti.",
+      "links": "Link",
+      "newLink": "Privacy",
+      "linkLabel": "Testo del link {n}",
+      "linkUrl": "Indirizzo del link {n}",
+      "removeLink": "Rimuovi link {n}",
+      "addLink": "Aggiungi link",
+      "showLogo": "Mostra logo"
+    },
+    "thankYouHint": "Titolo e messaggio si impostano in Crea → Impostazioni modulo. La pagina usa questo design.",
+    "showTick": "Mostra l’icona di spunta"
   }
 }

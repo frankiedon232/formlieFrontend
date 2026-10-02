@@ -1102,7 +1102,8 @@
       "label": "Widok kreatora",
       "build": "Tworzenie",
       "logic": "Logika",
-      "versions": "Wersje"
+      "versions": "Wersje",
+      "design": "Wygląd"
     },
     "renameHint": "Kliknij dwukrotnie, aby zmienić nazwę",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "Pole „{field}” przyjmuje najwyżej {n} plików.",
       "date_range": "Wybierz obie daty w polu „{field}”; data końcowa nie może być wcześniejsza niż początkowa.",
       "address": "W polu „{field}” brakuje: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Linki w stopce"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Zaktualizowano listę „{name}”",
       "listDeleted": "Usunięto listę „{name}”"
     }
+  },
+  "designer": {
+    "crumb": "Wygląd",
+    "startingPoints": "Punkty wyjścia",
+    "usingDefault": "Ten formularz używa ustawień domyślnych obszaru roboczego (kolor marki i logo). Zmień cokolwiek, aby nadać mu własny wygląd.",
+    "applyPreset": "Zacznij od „{name}”",
+    "replaceTitle": "Zastąpić obecny wygląd?",
+    "replaceDesc": "Punkt wyjścia zastąpi wygląd tego formularza. Możesz to cofnąć.",
+    "replace": "Zastąp",
+    "reset": "Przywróć domyślne obszaru roboczego",
+    "resetTitle": "Zresetować wygląd?",
+    "resetDesc": "Formularz wróci do ustawień domyślnych obszaru roboczego. Możesz to cofnąć.",
+    "preset": {
+      "workspace": "Domyślny obszaru",
+      "minimal": "Minimalny",
+      "soft": "Łagodny",
+      "bold": "Wyrazisty",
+      "dark": "Ciemny",
+      "elegant": "Elegancki"
+    },
+    "screen": {
+      "label": "Ekran podglądu",
+      "form": "Pytania",
+      "thanks": "Strona podziękowania"
+    },
+    "group": {
+      "layout": "Układ",
+      "background": "Tło",
+      "container": "Kontener formularza",
+      "typography": "Typografia",
+      "colors": "Kolory",
+      "inputs": "Pola",
+      "buttons": "Przyciski",
+      "header": "Nagłówek",
+      "footer": "Stopka",
+      "thankYou": "Strona podziękowania"
+    },
+    "layout": {
+      "card": "Karta",
+      "plain": "Prosty",
+      "split": "Dzielony",
+      "full": "Pełna szerokość"
+    },
+    "layoutHint": {
+      "card": "Formularz leży na karcie na środku strony.",
+      "plain": "Bez karty — formularz leży bezpośrednio na tle strony.",
+      "split": "Obraz obok formularza (nad nim na telefonach).",
+      "full": "Formularz zajmuje całą szerokość strony."
+    },
+    "splitImage": "Obraz boczny",
+    "imageSide": "Strona obrazu",
+    "side": {
+      "start": "Początek",
+      "end": "Koniec"
+    },
+    "bg": {
+      "type": "Wypełnienie",
+      "color": "Kolor",
+      "gradient": "Gradient",
+      "image": "Obraz",
+      "from": "Od",
+      "to": "Do",
+      "angle": "Kąt",
+      "overlay": "Przyciemnij obraz",
+      "overlayHint": "Ułatwia czytanie tekstu na obrazie."
+    },
+    "container": {
+      "width": "Szerokość",
+      "padding": "Odstęp wewnętrzny",
+      "radius": "Narożniki",
+      "shadow": "Cień",
+      "border": "Obramowanie",
+      "bg": "Tło"
+    },
+    "size": {
+      "label": "Rozmiar",
+      "none": "Brak",
+      "sm": "Mały",
+      "md": "Średni",
+      "lg": "Duży",
+      "xl": "Bardzo duży",
+      "full": "Okrągły"
+    },
+    "font": {
+      "label": "Czcionka",
+      "sans": "Czysty bezszeryfowy",
+      "system": "Domyślna urządzenia",
+      "serif": "Szeryfowa",
+      "rounded": "Zaokrąglona",
+      "mono": "Stałej szerokości"
+    },
+    "textSize": "Rozmiar tekstu",
+    "headingWeight": "Grubość nagłówków",
+    "weight": {
+      "medium": "Cienka",
+      "semibold": "Średnia",
+      "bold": "Gruba"
+    },
+    "color": {
+      "primary": "Akcent (przyciski, fokus)",
+      "text": "Tekst",
+      "muted": "Tekst pomocniczy",
+      "inputBg": "Tło pola",
+      "inputBorder": "Obramowanie pola",
+      "error": "Błędy"
+    },
+    "colorInvalid": "Użyj koloru szesnastkowego, np. #1a2b3c.",
+    "lowContrast": "Niski kontrast ({ratio} : 1) — może być trudny do odczytania.",
+    "pickColor": "Wybierz kolor dla {name}",
+    "inputStyle": "Styl",
+    "style": {
+      "outline": "Kontur",
+      "soft": "Łagodny",
+      "underline": "Podkreślenie",
+      "solid": "Wypełniony"
+    },
+    "corners": "Narożniki",
+    "buttonStyle": "Styl",
+    "fullWidth": "Przyciski na całą szerokość",
+    "upload": "Prześlij obraz",
+    "header": {
+      "cover": "Obraz okładki",
+      "coverHint": "Szeroki obraz u góry formularza.",
+      "coverHeight": "Wysokość okładki",
+      "showLogo": "Pokaż logo",
+      "logo": "Logo",
+      "logoHint": "Używane jest logo obszaru roboczego, chyba że prześlesz inne.",
+      "logoNone": "Prześlij logo dla tego formularza (obszar roboczy nie ma jeszcze logo).",
+      "showTitle": "Pokaż nazwę formularza",
+      "subtitle": "Tekst wstępu"
+    },
+    "footer": {
+      "show": "Pokaż stopkę",
+      "text": "Tekst stopki",
+      "textHint": "Na przykład informacja o prywatności lub dane kontaktowe.",
+      "links": "Linki",
+      "newLink": "Prywatność",
+      "linkLabel": "Tekst linku {n}",
+      "linkUrl": "Adres linku {n}",
+      "removeLink": "Usuń link {n}",
+      "addLink": "Dodaj link",
+      "showLogo": "Pokaż logo"
+    },
+    "thankYouHint": "Tytuł i wiadomość ustawisz w Tworzenie → Ustawienia formularza. Strona używa tego wyglądu.",
+    "showTick": "Pokaż ikonę znacznika"
   }
 }

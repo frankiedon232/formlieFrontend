@@ -18,6 +18,8 @@ import type { FormField } from '#shared/utils/forms/build'
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
 const { t } = useI18n()
+// Size and style follow the form theme (F8); plain defaults elsewhere.
+const control = useControlStyle()
 const isWide = useMediaQuery('(min-width: 640px)')
 
 const readonly = computed(() => !!props.field.readonly)
@@ -89,6 +91,7 @@ const setRange = (next: unknown) => {
 <template>
   <UInputTime
     v-if="field.type === 'time'"
+    v-bind="control"
     :id="id"
     v-model="time"
     :disabled="disabled"
@@ -100,6 +103,7 @@ const setRange = (next: unknown) => {
 
   <UInputDate
     v-else-if="field.type === 'date_range'"
+    v-bind="control"
     :id="id"
     :model-value="range"
     range
@@ -137,6 +141,7 @@ const setRange = (next: unknown) => {
 
   <UInputDate
     v-else
+    v-bind="control"
     :id="id"
     v-model="date"
     :granularity="withTime ? 'minute' : 'day'"

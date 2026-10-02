@@ -1102,7 +1102,8 @@
       "label": "Vista del editor",
       "build": "Crear",
       "logic": "Lógica",
-      "versions": "Versiones"
+      "versions": "Versiones",
+      "design": "Diseño"
     },
     "renameHint": "Doble clic para cambiar el nombre",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} admite como máximo {n} archivos.",
       "date_range": "Elige ambas fechas en {field}; la final debe ser igual o posterior a la inicial.",
       "address": "En {field} falta: {parts}."
+    },
+    "page": {
+      "logo": "Logotipo",
+      "footerLinks": "Enlaces del pie"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Lista “{name}” actualizada",
       "listDeleted": "Lista “{name}” eliminada"
     }
+  },
+  "designer": {
+    "crumb": "Diseño",
+    "startingPoints": "Puntos de partida",
+    "usingDefault": "Este formulario usa el predeterminado de tu espacio de trabajo (color de marca y logotipo). Cambia cualquier cosa para darle un diseño propio.",
+    "applyPreset": "Empezar desde «{name}»",
+    "replaceTitle": "¿Reemplazar el diseño actual?",
+    "replaceDesc": "El punto de partida reemplaza el diseño de este formulario. Puedes deshacerlo.",
+    "replace": "Reemplazar",
+    "reset": "Restablecer al predeterminado del espacio",
+    "resetTitle": "¿Restablecer el diseño?",
+    "resetDesc": "El formulario vuelve al predeterminado de tu espacio de trabajo. Puedes deshacerlo.",
+    "preset": {
+      "workspace": "Predeterminado del espacio",
+      "minimal": "Minimalista",
+      "soft": "Suave",
+      "bold": "Intenso",
+      "dark": "Oscuro",
+      "elegant": "Elegante"
+    },
+    "screen": {
+      "label": "Pantalla de vista previa",
+      "form": "Preguntas",
+      "thanks": "Página de agradecimiento"
+    },
+    "group": {
+      "layout": "Disposición",
+      "background": "Fondo",
+      "container": "Contenedor del formulario",
+      "typography": "Tipografía",
+      "colors": "Colores",
+      "inputs": "Campos",
+      "buttons": "Botones",
+      "header": "Encabezado",
+      "footer": "Pie de página",
+      "thankYou": "Página de agradecimiento"
+    },
+    "layout": {
+      "card": "Tarjeta",
+      "plain": "Simple",
+      "split": "Dividido",
+      "full": "Ancho completo"
+    },
+    "layoutHint": {
+      "card": "El formulario se muestra en una tarjeta en el centro de la página.",
+      "plain": "Sin tarjeta: el formulario se muestra directamente sobre el fondo de la página.",
+      "split": "Una imagen junto al formulario (encima en móviles).",
+      "full": "El formulario ocupa todo el ancho de la página."
+    },
+    "splitImage": "Imagen lateral",
+    "imageSide": "Lado de la imagen",
+    "side": {
+      "start": "Inicio",
+      "end": "Final"
+    },
+    "bg": {
+      "type": "Relleno",
+      "color": "Color",
+      "gradient": "Degradado",
+      "image": "Imagen",
+      "from": "Desde",
+      "to": "Hasta",
+      "angle": "Ángulo",
+      "overlay": "Oscurecer imagen",
+      "overlayHint": "Hace que el texto sobre la imagen sea más fácil de leer."
+    },
+    "container": {
+      "width": "Ancho",
+      "padding": "Espacio interior",
+      "radius": "Esquinas",
+      "shadow": "Sombra",
+      "border": "Borde",
+      "bg": "Fondo"
+    },
+    "size": {
+      "label": "Tamaño",
+      "none": "Ninguno",
+      "sm": "Pequeño",
+      "md": "Mediano",
+      "lg": "Grande",
+      "xl": "Muy grande",
+      "full": "Redondo"
+    },
+    "font": {
+      "label": "Fuente",
+      "sans": "Sans limpia",
+      "system": "Del dispositivo",
+      "serif": "Serif",
+      "rounded": "Redondeada",
+      "mono": "Monoespaciada"
+    },
+    "textSize": "Tamaño del texto",
+    "headingWeight": "Grosor de títulos",
+    "weight": {
+      "medium": "Ligero",
+      "semibold": "Medio",
+      "bold": "Negrita"
+    },
+    "color": {
+      "primary": "Acento (botones, foco)",
+      "text": "Texto",
+      "muted": "Texto secundario",
+      "inputBg": "Fondo del campo",
+      "inputBorder": "Borde del campo",
+      "error": "Errores"
+    },
+    "colorInvalid": "Usa un color hexadecimal como #1a2b3c.",
+    "lowContrast": "Contraste bajo ({ratio} : 1): puede ser difícil de leer.",
+    "pickColor": "Elige un color para {name}",
+    "inputStyle": "Estilo",
+    "style": {
+      "outline": "Contorno",
+      "soft": "Suave",
+      "underline": "Subrayado",
+      "solid": "Sólido"
+    },
+    "corners": "Esquinas",
+    "buttonStyle": "Estilo",
+    "fullWidth": "Botones de ancho completo",
+    "upload": "Subir una imagen",
+    "header": {
+      "cover": "Imagen de portada",
+      "coverHint": "Una imagen ancha en la parte superior del formulario.",
+      "coverHeight": "Altura de la portada",
+      "showLogo": "Mostrar logotipo",
+      "logo": "Logotipo",
+      "logoHint": "Se usa el logotipo de tu espacio de trabajo, salvo que subas otro.",
+      "logoNone": "Sube un logotipo para este formulario (tu espacio de trabajo aún no tiene).",
+      "showTitle": "Mostrar el nombre del formulario",
+      "subtitle": "Texto de introducción"
+    },
+    "footer": {
+      "show": "Mostrar un pie de página",
+      "text": "Texto del pie",
+      "textHint": "Por ejemplo, un aviso de privacidad o datos de contacto.",
+      "links": "Enlaces",
+      "newLink": "Privacidad",
+      "linkLabel": "Texto del enlace {n}",
+      "linkUrl": "Dirección del enlace {n}",
+      "removeLink": "Quitar enlace {n}",
+      "addLink": "Añadir enlace",
+      "showLogo": "Mostrar logotipo"
+    },
+    "thankYouHint": "El título y el mensaje se configuran en Crear → Ajustes del formulario. La página usa este diseño.",
+    "showTick": "Mostrar el icono de marca de verificación"
   }
 }

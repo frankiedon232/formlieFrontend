@@ -6,6 +6,8 @@ import { requiredAddressParts, type AddressPart } from '#shared/utils/forms/vali
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live'; errorParts?: string[] }>()
 const value = defineModel<unknown>()
 const { t } = useI18n()
+// Size and style follow the form theme (F8); plain defaults elsewhere.
+const control = useControlStyle()
 const countries = useCountryOptions()
 
 type AddressValue = {
@@ -39,6 +41,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
 <template>
   <USelectMenu
     v-if="field.type === 'country'"
+    v-bind="control"
     :id="id"
     v-model="country"
     :items="countries"
@@ -51,8 +54,8 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
   />
   <div v-else :id="id" class="grid gap-2 sm:grid-cols-2">
     <UInput
+      v-bind="{ ...control, ...state('line1') }"
       :model-value="address.line1 ?? ''"
-      v-bind="state('line1')"
       :placeholder="t('renderer.address.line1')"
       autocomplete="address-line1"
       :readonly="readonly"
@@ -60,6 +63,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       @update:model-value="v => set('line1', v)"
     />
     <UInput
+      v-bind="control"
       :model-value="address.line2 ?? ''"
       :placeholder="t('renderer.address.line2')"
       autocomplete="address-line2"
@@ -68,8 +72,8 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       @update:model-value="v => set('line2', v)"
     />
     <UInput
+      v-bind="{ ...control, ...state('city') }"
       :model-value="address.city ?? ''"
-      v-bind="state('city')"
       :placeholder="t('renderer.address.city')"
       autocomplete="address-level2"
       :readonly="readonly"
@@ -77,8 +81,8 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       @update:model-value="v => set('city', v)"
     />
     <UInput
+      v-bind="{ ...control, ...state('region') }"
       :model-value="address.region ?? ''"
-      v-bind="state('region')"
       :placeholder="optional('region', t('renderer.address.region'))"
       autocomplete="address-level1"
       :readonly="readonly"
@@ -86,8 +90,8 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       @update:model-value="v => set('region', v)"
     />
     <UInput
+      v-bind="{ ...control, ...state('postal_code') }"
       :model-value="address.postal_code ?? ''"
-      v-bind="state('postal_code')"
       :placeholder="optional('postal_code', t('renderer.address.postalCode'))"
       autocomplete="postal-code"
       :readonly="readonly"
@@ -95,11 +99,11 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       @update:model-value="v => set('postal_code', v)"
     />
     <USelectMenu
+      v-bind="{ ...control, ...state('country') }"
       :model-value="address.country"
       :items="countries"
       value-key="value"
       :icon="flag(address.country)"
-      v-bind="state('country')"
       :placeholder="t('renderer.address.country')"
       :search-input="{ placeholder: t('common.search') }"
       :disabled="readonly"

@@ -1102,7 +1102,8 @@
       "label": "构建器视图",
       "build": "构建",
       "logic": "逻辑",
-      "versions": "版本"
+      "versions": "版本",
+      "design": "设计"
     },
     "renameHint": "双击重命名",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field}最多接受 {n} 个文件。",
       "date_range": "请为{field}选择开始和结束日期，结束日期不能早于开始日期。",
       "address": "{field}缺少：{parts}。"
+    },
+    "page": {
+      "logo": "徽标",
+      "footerLinks": "页脚链接"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "列表“{name}”已更新",
       "listDeleted": "列表“{name}”已删除"
     }
+  },
+  "designer": {
+    "crumb": "设计",
+    "startingPoints": "起始模板",
+    "usingDefault": "此表单使用工作区默认设置（品牌颜色和徽标）。更改任意一项即可为其设置专属设计。",
+    "applyPreset": "从“{name}”开始",
+    "replaceTitle": "替换当前设计？",
+    "replaceDesc": "起始模板将替换此表单的设计。你可以撤销此操作。",
+    "replace": "替换",
+    "reset": "重置为工作区默认",
+    "resetTitle": "重置设计？",
+    "resetDesc": "表单将恢复为工作区默认设置。你可以撤销此操作。",
+    "preset": {
+      "workspace": "工作区默认",
+      "minimal": "简约",
+      "soft": "柔和",
+      "bold": "醒目",
+      "dark": "深色",
+      "elegant": "优雅"
+    },
+    "screen": {
+      "label": "预览界面",
+      "form": "问题",
+      "thanks": "感谢页"
+    },
+    "group": {
+      "layout": "布局",
+      "background": "背景",
+      "container": "表单容器",
+      "typography": "文字排版",
+      "colors": "颜色",
+      "inputs": "输入框",
+      "buttons": "按钮",
+      "header": "页眉",
+      "footer": "页脚",
+      "thankYou": "感谢页"
+    },
+    "layout": {
+      "card": "卡片",
+      "plain": "简洁",
+      "split": "分栏",
+      "full": "全宽"
+    },
+    "layoutHint": {
+      "card": "表单位于页面中央的卡片上。",
+      "plain": "无卡片 — 表单直接显示在页面背景上。",
+      "split": "表单旁显示一张图片（手机上显示在上方）。",
+      "full": "表单占满整个页面宽度。"
+    },
+    "splitImage": "侧边图片",
+    "imageSide": "图片位置",
+    "side": {
+      "start": "起始侧",
+      "end": "结束侧"
+    },
+    "bg": {
+      "type": "填充",
+      "color": "颜色",
+      "gradient": "渐变",
+      "image": "图片",
+      "from": "起始",
+      "to": "结束",
+      "angle": "角度",
+      "overlay": "调暗图片",
+      "overlayHint": "让图片上的文字更易阅读。"
+    },
+    "container": {
+      "width": "宽度",
+      "padding": "内边距",
+      "radius": "圆角",
+      "shadow": "阴影",
+      "border": "边框",
+      "bg": "背景"
+    },
+    "size": {
+      "label": "大小",
+      "none": "无",
+      "sm": "小",
+      "md": "中",
+      "lg": "大",
+      "xl": "特大",
+      "full": "全圆"
+    },
+    "font": {
+      "label": "字体",
+      "sans": "简洁无衬线",
+      "system": "设备默认",
+      "serif": "衬线",
+      "rounded": "圆体",
+      "mono": "等宽"
+    },
+    "textSize": "文字大小",
+    "headingWeight": "标题粗细",
+    "weight": {
+      "medium": "细",
+      "semibold": "中",
+      "bold": "粗"
+    },
+    "color": {
+      "primary": "强调色（按钮、焦点）",
+      "text": "文字",
+      "muted": "次要文字",
+      "inputBg": "输入框背景",
+      "inputBorder": "输入框边框",
+      "error": "错误"
+    },
+    "colorInvalid": "请使用十六进制颜色，例如 #1a2b3c。",
+    "lowContrast": "对比度低（{ratio} : 1）— 可能难以阅读。",
+    "pickColor": "为{name}选择颜色",
+    "inputStyle": "样式",
+    "style": {
+      "outline": "描边",
+      "soft": "柔和",
+      "underline": "下划线",
+      "solid": "实心"
+    },
+    "corners": "圆角",
+    "buttonStyle": "样式",
+    "fullWidth": "全宽按钮",
+    "upload": "上传图片",
+    "header": {
+      "cover": "封面图片",
+      "coverHint": "表单顶部的一张宽幅图片。",
+      "coverHeight": "封面高度",
+      "showLogo": "显示徽标",
+      "logo": "徽标",
+      "logoHint": "除非你上传其他徽标，否则使用工作区徽标。",
+      "logoNone": "为此表单上传徽标（你的工作区尚无徽标）。",
+      "showTitle": "显示表单名称",
+      "subtitle": "简介文字"
+    },
+    "footer": {
+      "show": "显示页脚",
+      "text": "页脚文字",
+      "textHint": "例如隐私说明或联系方式。",
+      "links": "链接",
+      "newLink": "隐私",
+      "linkLabel": "链接 {n} 的文字",
+      "linkUrl": "链接 {n} 的地址",
+      "removeLink": "移除链接 {n}",
+      "addLink": "添加链接",
+      "showLogo": "显示徽标"
+    },
+    "thankYouHint": "标题和消息在 构建 → 表单设置 中设置。此页面使用当前设计。",
+    "showTick": "显示对勾图标"
   }
 }

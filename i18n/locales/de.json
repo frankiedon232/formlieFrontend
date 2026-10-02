@@ -1102,7 +1102,8 @@
       "label": "Builder-Ansicht",
       "build": "Erstellen",
       "logic": "Logik",
-      "versions": "Versionen"
+      "versions": "Versionen",
+      "design": "Design"
     },
     "renameHint": "Zum Umbenennen doppelklicken",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} akzeptiert höchstens {n} Dateien.",
       "date_range": "Bitte wählen Sie bei {field} beide Daten; das Enddatum muss am oder nach dem Startdatum liegen.",
       "address": "Bei {field} fehlt: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Fußzeilen-Links"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Liste „{name}“ aktualisiert",
       "listDeleted": "Liste „{name}“ gelöscht"
     }
+  },
+  "designer": {
+    "crumb": "Design",
+    "startingPoints": "Startdesigns",
+    "usingDefault": "Dieses Formular nutzt den Standard Ihres Arbeitsbereichs (Markenfarbe und Logo). Ändern Sie etwas, um ihm ein eigenes Design zu geben.",
+    "applyPreset": "Mit „{name}“ beginnen",
+    "replaceTitle": "Aktuelles Design ersetzen?",
+    "replaceDesc": "Die Vorlage ersetzt das Design dieses Formulars. Sie können dies rückgängig machen.",
+    "replace": "Ersetzen",
+    "reset": "Auf Standard des Arbeitsbereichs zurücksetzen",
+    "resetTitle": "Design zurücksetzen?",
+    "resetDesc": "Das Formular kehrt zum Standard Ihres Arbeitsbereichs zurück. Sie können dies rückgängig machen.",
+    "preset": {
+      "workspace": "Arbeitsbereich-Standard",
+      "minimal": "Minimal",
+      "soft": "Sanft",
+      "bold": "Kräftig",
+      "dark": "Dunkel",
+      "elegant": "Elegant"
+    },
+    "screen": {
+      "label": "Vorschau-Ansicht",
+      "form": "Fragen",
+      "thanks": "Dankesseite"
+    },
+    "group": {
+      "layout": "Layout",
+      "background": "Hintergrund",
+      "container": "Formular-Container",
+      "typography": "Typografie",
+      "colors": "Farben",
+      "inputs": "Eingabefelder",
+      "buttons": "Schaltflächen",
+      "header": "Kopfzeile",
+      "footer": "Fußzeile",
+      "thankYou": "Dankesseite"
+    },
+    "layout": {
+      "card": "Karte",
+      "plain": "Schlicht",
+      "split": "Geteilt",
+      "full": "Volle Breite"
+    },
+    "layoutHint": {
+      "card": "Das Formular liegt auf einer Karte in der Seitenmitte.",
+      "plain": "Keine Karte – das Formular liegt direkt auf dem Seitenhintergrund.",
+      "split": "Ein Bild neben dem Formular (auf Smartphones darüber).",
+      "full": "Das Formular nutzt die gesamte Seitenbreite."
+    },
+    "splitImage": "Seitenbild",
+    "imageSide": "Bildseite",
+    "side": {
+      "start": "Anfang",
+      "end": "Ende"
+    },
+    "bg": {
+      "type": "Füllung",
+      "color": "Farbe",
+      "gradient": "Verlauf",
+      "image": "Bild",
+      "from": "Von",
+      "to": "Bis",
+      "angle": "Winkel",
+      "overlay": "Bild abdunkeln",
+      "overlayHint": "Macht Text auf dem Bild besser lesbar."
+    },
+    "container": {
+      "width": "Breite",
+      "padding": "Innenabstand",
+      "radius": "Ecken",
+      "shadow": "Schatten",
+      "border": "Rahmen",
+      "bg": "Hintergrund"
+    },
+    "size": {
+      "label": "Größe",
+      "none": "Keine",
+      "sm": "Klein",
+      "md": "Mittel",
+      "lg": "Groß",
+      "xl": "Sehr groß",
+      "full": "Rund"
+    },
+    "font": {
+      "label": "Schrift",
+      "sans": "Klare Sans",
+      "system": "Gerätestandard",
+      "serif": "Serif",
+      "rounded": "Abgerundet",
+      "mono": "Monospace"
+    },
+    "textSize": "Textgröße",
+    "headingWeight": "Überschriftenstärke",
+    "weight": {
+      "medium": "Leicht",
+      "semibold": "Mittel",
+      "bold": "Fett"
+    },
+    "color": {
+      "primary": "Akzent (Schaltflächen, Fokus)",
+      "text": "Text",
+      "muted": "Sekundärtext",
+      "inputBg": "Feldhintergrund",
+      "inputBorder": "Feldrahmen",
+      "error": "Fehler"
+    },
+    "colorInvalid": "Verwenden Sie eine Hex-Farbe wie #1a2b3c.",
+    "lowContrast": "Geringer Kontrast ({ratio} : 1) – möglicherweise schwer lesbar.",
+    "pickColor": "Farbe für {name} wählen",
+    "inputStyle": "Stil",
+    "style": {
+      "outline": "Umriss",
+      "soft": "Sanft",
+      "underline": "Unterstrichen",
+      "solid": "Gefüllt"
+    },
+    "corners": "Ecken",
+    "buttonStyle": "Stil",
+    "fullWidth": "Schaltflächen in voller Breite",
+    "upload": "Bild hochladen",
+    "header": {
+      "cover": "Titelbild",
+      "coverHint": "Ein breites Bild oben im Formular.",
+      "coverHeight": "Höhe des Titelbilds",
+      "showLogo": "Logo anzeigen",
+      "logo": "Logo",
+      "logoHint": "Das Logo Ihres Arbeitsbereichs wird verwendet, sofern Sie kein anderes hochladen.",
+      "logoNone": "Laden Sie ein Logo für dieses Formular hoch (Ihr Arbeitsbereich hat noch keins).",
+      "showTitle": "Formularnamen anzeigen",
+      "subtitle": "Einleitungstext"
+    },
+    "footer": {
+      "show": "Fußzeile anzeigen",
+      "text": "Fußzeilentext",
+      "textHint": "Zum Beispiel ein Datenschutzhinweis oder Kontaktdaten.",
+      "links": "Links",
+      "newLink": "Datenschutz",
+      "linkLabel": "Text von Link {n}",
+      "linkUrl": "Adresse von Link {n}",
+      "removeLink": "Link {n} entfernen",
+      "addLink": "Link hinzufügen",
+      "showLogo": "Logo anzeigen"
+    },
+    "thankYouHint": "Titel und Nachricht legen Sie unter Erstellen → Formulareinstellungen fest. Die Seite nutzt dieses Design.",
+    "showTick": "Häkchen-Symbol anzeigen"
   }
 }

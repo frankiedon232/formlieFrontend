@@ -1102,7 +1102,8 @@
       "label": "Mwonekano wa kijenzi",
       "build": "Jenga",
       "logic": "Mantiki",
-      "versions": "Matoleo"
+      "versions": "Matoleo",
+      "design": "Muundo"
     },
     "renameHint": "Bofya mara mbili ili kubadilisha jina",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} inakubali faili zisizozidi {n}.",
       "date_range": "Chagua tarehe zote mbili kwa {field}, na tarehe ya mwisho iwe siku ya kuanza au baadaye.",
       "address": "Kwenye {field} kinakosekana: {parts}."
+    },
+    "page": {
+      "logo": "Nembo",
+      "footerLinks": "Viungo vya chini"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Orodha “{name}” imesasishwa",
       "listDeleted": "Orodha “{name}” imefutwa"
     }
+  },
+  "designer": {
+    "crumb": "Muundo",
+    "startingPoints": "Mahali pa kuanzia",
+    "usingDefault": "Fomu hii inatumia chaguo-msingi la eneo lako la kazi (rangi ya chapa na nembo). Badilisha chochote ili kuipa muundo wake.",
+    "applyPreset": "Anza kutoka “{name}”",
+    "replaceTitle": "Badilisha muundo wa sasa?",
+    "replaceDesc": "Mahali pa kuanzia patachukua nafasi ya muundo wa fomu hii. Unaweza kutendua hili.",
+    "replace": "Badilisha",
+    "reset": "Rudisha chaguo-msingi la eneo la kazi",
+    "resetTitle": "Weka upya muundo?",
+    "resetDesc": "Fomu inarudi kwenye chaguo-msingi la eneo lako la kazi. Unaweza kutendua hili.",
+    "preset": {
+      "workspace": "Chaguo-msingi la eneo",
+      "minimal": "Rahisi",
+      "soft": "Laini",
+      "bold": "Imara",
+      "dark": "Giza",
+      "elegant": "Maridadi"
+    },
+    "screen": {
+      "label": "Skrini ya onyesho",
+      "form": "Maswali",
+      "thanks": "Ukurasa wa shukrani"
+    },
+    "group": {
+      "layout": "Mpangilio",
+      "background": "Mandharinyuma",
+      "container": "Kisanduku cha fomu",
+      "typography": "Maandishi",
+      "colors": "Rangi",
+      "inputs": "Sehemu za kuingiza",
+      "buttons": "Vitufe",
+      "header": "Kichwa",
+      "footer": "Sehemu ya chini",
+      "thankYou": "Ukurasa wa shukrani"
+    },
+    "layout": {
+      "card": "Kadi",
+      "plain": "Wazi",
+      "split": "Iliyogawanywa",
+      "full": "Upana kamili"
+    },
+    "layoutHint": {
+      "card": "Fomu iko juu ya kadi katikati ya ukurasa.",
+      "plain": "Hakuna kadi — fomu iko moja kwa moja kwenye mandharinyuma ya ukurasa.",
+      "split": "Picha kando ya fomu (juu yake kwenye simu).",
+      "full": "Fomu inachukua upana wote wa ukurasa."
+    },
+    "splitImage": "Picha ya kando",
+    "imageSide": "Upande wa picha",
+    "side": {
+      "start": "Mwanzo",
+      "end": "Mwisho"
+    },
+    "bg": {
+      "type": "Ujazo",
+      "color": "Rangi",
+      "gradient": "Mchanganyiko",
+      "image": "Picha",
+      "from": "Kutoka",
+      "to": "Hadi",
+      "angle": "Pembe",
+      "overlay": "Fifisha picha",
+      "overlayHint": "Hurahisisha kusoma maandishi yaliyo juu ya picha."
+    },
+    "container": {
+      "width": "Upana",
+      "padding": "Nafasi ya ndani",
+      "radius": "Pembe",
+      "shadow": "Kivuli",
+      "border": "Mpaka",
+      "bg": "Mandharinyuma"
+    },
+    "size": {
+      "label": "Ukubwa",
+      "none": "Hakuna",
+      "sm": "Ndogo",
+      "md": "Wastani",
+      "lg": "Kubwa",
+      "xl": "Kubwa sana",
+      "full": "Mviringo"
+    },
+    "font": {
+      "label": "Fonti",
+      "sans": "Sans safi",
+      "system": "Ya kifaa",
+      "serif": "Serif",
+      "rounded": "Mviringo",
+      "mono": "Monospace"
+    },
+    "textSize": "Ukubwa wa maandishi",
+    "headingWeight": "Unene wa vichwa",
+    "weight": {
+      "medium": "Nyembamba",
+      "semibold": "Wastani",
+      "bold": "Nzito"
+    },
+    "color": {
+      "primary": "Rangi kuu (vitufe, mwelekeo)",
+      "text": "Maandishi",
+      "muted": "Maandishi ya pili",
+      "inputBg": "Mandharinyuma ya sehemu",
+      "inputBorder": "Mpaka wa sehemu",
+      "error": "Hitilafu"
+    },
+    "colorInvalid": "Tumia rangi ya hex kama #1a2b3c.",
+    "lowContrast": "Utofautishaji mdogo ({ratio} : 1) — huenda ikawa vigumu kusoma.",
+    "pickColor": "Chagua rangi ya {name}",
+    "inputStyle": "Mtindo",
+    "style": {
+      "outline": "Mstari wa nje",
+      "soft": "Laini",
+      "underline": "Mstari chini",
+      "solid": "Imejazwa"
+    },
+    "corners": "Pembe",
+    "buttonStyle": "Mtindo",
+    "fullWidth": "Vitufe vya upana kamili",
+    "upload": "Pakia picha",
+    "header": {
+      "cover": "Picha ya jalada",
+      "coverHint": "Picha pana juu ya fomu.",
+      "coverHeight": "Urefu wa jalada",
+      "showLogo": "Onyesha nembo",
+      "logo": "Nembo",
+      "logoHint": "Nembo ya eneo lako la kazi hutumika isipokuwa upakie nyingine.",
+      "logoNone": "Pakia nembo ya fomu hii (eneo lako la kazi bado halina nembo).",
+      "showTitle": "Onyesha jina la fomu",
+      "subtitle": "Maandishi ya utangulizi"
+    },
+    "footer": {
+      "show": "Onyesha sehemu ya chini",
+      "text": "Maandishi ya chini",
+      "textHint": "Kwa mfano taarifa ya faragha au maelezo ya mawasiliano.",
+      "links": "Viungo",
+      "newLink": "Faragha",
+      "linkLabel": "Maandishi ya kiungo {n}",
+      "linkUrl": "Anwani ya kiungo {n}",
+      "removeLink": "Ondoa kiungo {n}",
+      "addLink": "Ongeza kiungo",
+      "showLogo": "Onyesha nembo"
+    },
+    "thankYouHint": "Kichwa na ujumbe huwekwa katika Jenga → Mipangilio ya fomu. Ukurasa unatumia muundo huu.",
+    "showTick": "Onyesha aikoni ya tiki"
   }
 }

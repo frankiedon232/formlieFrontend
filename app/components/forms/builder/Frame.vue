@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 
-const props = defineProps<{ session: BuilderSession; mode: 'build' | 'logic' | 'versions' }>()
+const props = defineProps<{ session: BuilderSession; mode: 'build' | 'logic' | 'design' | 'versions' }>()
 const { t } = useI18n()
 const s = props.session
 const { builder, form, autosave } = s
@@ -20,6 +20,7 @@ async function saveName() {
 const modes = computed(() => [
   { value: 'build', label: t('builder.mode.build'), icon: 'i-lucide-layout-panel-top' },
   { value: 'logic', label: t('builder.mode.logic'), icon: 'i-lucide-git-branch' },
+  { value: 'design', label: t('builder.mode.design'), icon: 'i-lucide-palette' },
   { value: 'versions', label: t('builder.mode.versions'), icon: 'i-lucide-history' },
 ])
 const go = (mode: string | number) => navigateTo(`/forms/${s.formId}/${mode === 'build' ? 'build' : mode}`)
@@ -163,6 +164,6 @@ defineShortcuts({
     </template>
 
     <LazyFormsBuilderPublishModal v-if="publishUsed" v-model:open="publishOpen" :busy="s.publishing.value" :republish="form?.status === 'published'" @publish="publish" />
-    <LazyFormsBuilderPreviewModal v-if="previewUsed" v-model:open="previewOpen" />
+    <LazyFormsBuilderPreviewModal v-if="previewUsed" v-model:open="previewOpen" :form-name="form?.name" />
   </AppPanel>
 </template>

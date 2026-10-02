@@ -1102,7 +1102,8 @@
       "label": "Oluşturucu görünümü",
       "build": "Oluştur",
       "logic": "Mantık",
-      "versions": "Sürümler"
+      "versions": "Sürümler",
+      "design": "Tasarım"
     },
     "renameHint": "Yeniden adlandırmak için çift tıklayın",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} en fazla {n} dosya kabul eder.",
       "date_range": "{field} için iki tarihi de seçin; bitiş tarihi başlangıçla aynı gün veya sonrası olmalıdır.",
       "address": "{field} için eksik: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Alt bilgi bağlantıları"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "“{name}” listesi güncellendi",
       "listDeleted": "“{name}” listesi silindi"
     }
+  },
+  "designer": {
+    "crumb": "Tasarım",
+    "startingPoints": "Başlangıç noktaları",
+    "usingDefault": "Bu form çalışma alanınızın varsayılanını (marka rengi ve logo) kullanıyor. Kendine ait bir tasarım vermek için herhangi bir şeyi değiştirin.",
+    "applyPreset": "“{name}” ile başla",
+    "replaceTitle": "Mevcut tasarım değiştirilsin mi?",
+    "replaceDesc": "Başlangıç noktası bu formun tasarımının yerini alır. Bunu geri alabilirsiniz.",
+    "replace": "Değiştir",
+    "reset": "Çalışma alanı varsayılanına sıfırla",
+    "resetTitle": "Tasarım sıfırlansın mı?",
+    "resetDesc": "Form, çalışma alanınızın varsayılanına döner. Bunu geri alabilirsiniz.",
+    "preset": {
+      "workspace": "Çalışma alanı varsayılanı",
+      "minimal": "Minimal",
+      "soft": "Yumuşak",
+      "bold": "Belirgin",
+      "dark": "Koyu",
+      "elegant": "Zarif"
+    },
+    "screen": {
+      "label": "Önizleme ekranı",
+      "form": "Sorular",
+      "thanks": "Teşekkür sayfası"
+    },
+    "group": {
+      "layout": "Düzen",
+      "background": "Arka plan",
+      "container": "Form kapsayıcısı",
+      "typography": "Tipografi",
+      "colors": "Renkler",
+      "inputs": "Giriş alanları",
+      "buttons": "Düğmeler",
+      "header": "Üst bilgi",
+      "footer": "Alt bilgi",
+      "thankYou": "Teşekkür sayfası"
+    },
+    "layout": {
+      "card": "Kart",
+      "plain": "Sade",
+      "split": "Bölünmüş",
+      "full": "Tam genişlik"
+    },
+    "layoutHint": {
+      "card": "Form, sayfanın ortasındaki bir kartın üzerinde durur.",
+      "plain": "Kart yok — form doğrudan sayfa arka planında durur.",
+      "split": "Formun yanında bir görsel (telefonlarda üstünde).",
+      "full": "Form sayfanın tüm genişliğini kaplar."
+    },
+    "splitImage": "Yan görsel",
+    "imageSide": "Görsel tarafı",
+    "side": {
+      "start": "Başlangıç",
+      "end": "Bitiş"
+    },
+    "bg": {
+      "type": "Dolgu",
+      "color": "Renk",
+      "gradient": "Gradyan",
+      "image": "Görsel",
+      "from": "Başlangıç",
+      "to": "Bitiş",
+      "angle": "Açı",
+      "overlay": "Görseli karart",
+      "overlayHint": "Görselin üzerindeki metnin okunmasını kolaylaştırır."
+    },
+    "container": {
+      "width": "Genişlik",
+      "padding": "İç boşluk",
+      "radius": "Köşeler",
+      "shadow": "Gölge",
+      "border": "Kenarlık",
+      "bg": "Arka plan"
+    },
+    "size": {
+      "label": "Boyut",
+      "none": "Yok",
+      "sm": "Küçük",
+      "md": "Orta",
+      "lg": "Büyük",
+      "xl": "Çok büyük",
+      "full": "Yuvarlak"
+    },
+    "font": {
+      "label": "Yazı tipi",
+      "sans": "Sade sans",
+      "system": "Cihaz varsayılanı",
+      "serif": "Serif",
+      "rounded": "Yuvarlak",
+      "mono": "Eş aralıklı"
+    },
+    "textSize": "Metin boyutu",
+    "headingWeight": "Başlık kalınlığı",
+    "weight": {
+      "medium": "İnce",
+      "semibold": "Orta",
+      "bold": "Kalın"
+    },
+    "color": {
+      "primary": "Vurgu (düğmeler, odak)",
+      "text": "Metin",
+      "muted": "İkincil metin",
+      "inputBg": "Alan arka planı",
+      "inputBorder": "Alan kenarlığı",
+      "error": "Hatalar"
+    },
+    "colorInvalid": "#1a2b3c gibi bir hex renk kullanın.",
+    "lowContrast": "Düşük kontrast ({ratio} : 1) — okunması zor olabilir.",
+    "pickColor": "{name} için renk seçin",
+    "inputStyle": "Stil",
+    "style": {
+      "outline": "Çerçeveli",
+      "soft": "Yumuşak",
+      "underline": "Alt çizgili",
+      "solid": "Dolgulu"
+    },
+    "corners": "Köşeler",
+    "buttonStyle": "Stil",
+    "fullWidth": "Tam genişlikte düğmeler",
+    "upload": "Görsel yükle",
+    "header": {
+      "cover": "Kapak görseli",
+      "coverHint": "Formun üstünde geniş bir görsel.",
+      "coverHeight": "Kapak yüksekliği",
+      "showLogo": "Logoyu göster",
+      "logo": "Logo",
+      "logoHint": "Başka bir logo yüklemediğiniz sürece çalışma alanınızın logosu kullanılır.",
+      "logoNone": "Bu form için bir logo yükleyin (çalışma alanınızın henüz logosu yok).",
+      "showTitle": "Form adını göster",
+      "subtitle": "Giriş metni"
+    },
+    "footer": {
+      "show": "Alt bilgi göster",
+      "text": "Alt bilgi metni",
+      "textHint": "Örneğin bir gizlilik notu veya iletişim bilgileri.",
+      "links": "Bağlantılar",
+      "newLink": "Gizlilik",
+      "linkLabel": "{n}. bağlantının metni",
+      "linkUrl": "{n}. bağlantının adresi",
+      "removeLink": "{n}. bağlantıyı kaldır",
+      "addLink": "Bağlantı ekle",
+      "showLogo": "Logoyu göster"
+    },
+    "thankYouHint": "Başlık ve mesaj Oluştur → Form ayarları bölümünden belirlenir. Sayfa bu tasarımı kullanır.",
+    "showTick": "Onay simgesini göster"
   }
 }

@@ -1102,7 +1102,8 @@
       "label": "Builderweergave",
       "build": "Bouwen",
       "logic": "Logica",
-      "versions": "Versies"
+      "versions": "Versies",
+      "design": "Ontwerp"
     },
     "renameHint": "Dubbelklik om te hernoemen",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} accepteert maximaal {n} bestanden.",
       "date_range": "Kies bij {field} beide datums, met de einddatum op of na de begindatum.",
       "address": "Bij {field} ontbreekt: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Voettekstlinks"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Lijst “{name}” bijgewerkt",
       "listDeleted": "Lijst “{name}” verwijderd"
     }
+  },
+  "designer": {
+    "crumb": "Ontwerp",
+    "startingPoints": "Startpunten",
+    "usingDefault": "Dit formulier gebruikt de standaard van je werkruimte (merkkleur en logo). Wijzig iets om het een eigen ontwerp te geven.",
+    "applyPreset": "Beginnen met ‘{name}’",
+    "replaceTitle": "Huidig ontwerp vervangen?",
+    "replaceDesc": "Het startpunt vervangt het ontwerp van dit formulier. Je kunt dit ongedaan maken.",
+    "replace": "Vervangen",
+    "reset": "Terug naar werkruimtestandaard",
+    "resetTitle": "Ontwerp herstellen?",
+    "resetDesc": "Het formulier gaat terug naar de standaard van je werkruimte. Je kunt dit ongedaan maken.",
+    "preset": {
+      "workspace": "Werkruimtestandaard",
+      "minimal": "Minimaal",
+      "soft": "Zacht",
+      "bold": "Krachtig",
+      "dark": "Donker",
+      "elegant": "Elegant"
+    },
+    "screen": {
+      "label": "Voorbeeldscherm",
+      "form": "Vragen",
+      "thanks": "Bedankpagina"
+    },
+    "group": {
+      "layout": "Indeling",
+      "background": "Achtergrond",
+      "container": "Formuliercontainer",
+      "typography": "Typografie",
+      "colors": "Kleuren",
+      "inputs": "Invoervelden",
+      "buttons": "Knoppen",
+      "header": "Koptekst",
+      "footer": "Voettekst",
+      "thankYou": "Bedankpagina"
+    },
+    "layout": {
+      "card": "Kaart",
+      "plain": "Eenvoudig",
+      "split": "Gesplitst",
+      "full": "Volle breedte"
+    },
+    "layoutHint": {
+      "card": "Het formulier staat op een kaart midden op de pagina.",
+      "plain": "Geen kaart — het formulier staat direct op de pagina-achtergrond.",
+      "split": "Een afbeelding naast het formulier (erboven op telefoons).",
+      "full": "Het formulier beslaat de volle paginabreedte."
+    },
+    "splitImage": "Zijafbeelding",
+    "imageSide": "Kant van afbeelding",
+    "side": {
+      "start": "Begin",
+      "end": "Eind"
+    },
+    "bg": {
+      "type": "Vulling",
+      "color": "Kleur",
+      "gradient": "Verloop",
+      "image": "Afbeelding",
+      "from": "Van",
+      "to": "Naar",
+      "angle": "Hoek",
+      "overlay": "Afbeelding verdonkeren",
+      "overlayHint": "Maakt tekst op de afbeelding beter leesbaar."
+    },
+    "container": {
+      "width": "Breedte",
+      "padding": "Binnenruimte",
+      "radius": "Hoeken",
+      "shadow": "Schaduw",
+      "border": "Rand",
+      "bg": "Achtergrond"
+    },
+    "size": {
+      "label": "Grootte",
+      "none": "Geen",
+      "sm": "Klein",
+      "md": "Middel",
+      "lg": "Groot",
+      "xl": "Extra groot",
+      "full": "Rond"
+    },
+    "font": {
+      "label": "Lettertype",
+      "sans": "Strakke sans",
+      "system": "Apparaatstandaard",
+      "serif": "Serif",
+      "rounded": "Afgerond",
+      "mono": "Monospace"
+    },
+    "textSize": "Tekstgrootte",
+    "headingWeight": "Dikte van koppen",
+    "weight": {
+      "medium": "Licht",
+      "semibold": "Middel",
+      "bold": "Vet"
+    },
+    "color": {
+      "primary": "Accent (knoppen, focus)",
+      "text": "Tekst",
+      "muted": "Secundaire tekst",
+      "inputBg": "Veldachtergrond",
+      "inputBorder": "Veldrand",
+      "error": "Fouten"
+    },
+    "colorInvalid": "Gebruik een hexkleur zoals #1a2b3c.",
+    "lowContrast": "Laag contrast ({ratio} : 1) — mogelijk slecht leesbaar.",
+    "pickColor": "Kies een kleur voor {name}",
+    "inputStyle": "Stijl",
+    "style": {
+      "outline": "Omlijnd",
+      "soft": "Zacht",
+      "underline": "Onderstreept",
+      "solid": "Gevuld"
+    },
+    "corners": "Hoeken",
+    "buttonStyle": "Stijl",
+    "fullWidth": "Knoppen over volle breedte",
+    "upload": "Afbeelding uploaden",
+    "header": {
+      "cover": "Omslagafbeelding",
+      "coverHint": "Een brede afbeelding boven aan het formulier.",
+      "coverHeight": "Hoogte van omslag",
+      "showLogo": "Logo tonen",
+      "logo": "Logo",
+      "logoHint": "Het logo van je werkruimte wordt gebruikt, tenzij je een ander uploadt.",
+      "logoNone": "Upload een logo voor dit formulier (je werkruimte heeft er nog geen).",
+      "showTitle": "Formuliernaam tonen",
+      "subtitle": "Introductietekst"
+    },
+    "footer": {
+      "show": "Voettekst tonen",
+      "text": "Voettekst",
+      "textHint": "Bijvoorbeeld een privacyvermelding of contactgegevens.",
+      "links": "Links",
+      "newLink": "Privacy",
+      "linkLabel": "Tekst van link {n}",
+      "linkUrl": "Adres van link {n}",
+      "removeLink": "Link {n} verwijderen",
+      "addLink": "Link toevoegen",
+      "showLogo": "Logo tonen"
+    },
+    "thankYouHint": "Titel en bericht stel je in bij Bouwen → Formulierinstellingen. De pagina gebruikt dit ontwerp.",
+    "showTick": "Vinkje tonen"
   }
 }

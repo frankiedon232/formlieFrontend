@@ -1102,7 +1102,8 @@
       "label": "Tampilan pembuat",
       "build": "Buat",
       "logic": "Logika",
-      "versions": "Versi"
+      "versions": "Versi",
+      "design": "Desain"
     },
     "renameHint": "Klik dua kali untuk mengganti nama",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} menerima maksimal {n} file.",
       "date_range": "Pilih kedua tanggal untuk {field}, dengan tanggal akhir sama dengan atau setelah tanggal mulai.",
       "address": "{field} belum lengkap: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Tautan footer"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Daftar “{name}” diperbarui",
       "listDeleted": "Daftar “{name}” dihapus"
     }
+  },
+  "designer": {
+    "crumb": "Desain",
+    "startingPoints": "Titik awal",
+    "usingDefault": "Formulir ini memakai default ruang kerja Anda (warna merek dan logo). Ubah apa saja untuk memberinya desain sendiri.",
+    "applyPreset": "Mulai dari “{name}”",
+    "replaceTitle": "Ganti desain saat ini?",
+    "replaceDesc": "Titik awal akan mengganti desain formulir ini. Anda bisa membatalkannya.",
+    "replace": "Ganti",
+    "reset": "Kembalikan ke default ruang kerja",
+    "resetTitle": "Atur ulang desain?",
+    "resetDesc": "Formulir kembali ke default ruang kerja Anda. Anda bisa membatalkannya.",
+    "preset": {
+      "workspace": "Default ruang kerja",
+      "minimal": "Minimal",
+      "soft": "Lembut",
+      "bold": "Tegas",
+      "dark": "Gelap",
+      "elegant": "Elegan"
+    },
+    "screen": {
+      "label": "Layar pratinjau",
+      "form": "Pertanyaan",
+      "thanks": "Halaman terima kasih"
+    },
+    "group": {
+      "layout": "Tata letak",
+      "background": "Latar",
+      "container": "Wadah formulir",
+      "typography": "Tipografi",
+      "colors": "Warna",
+      "inputs": "Isian",
+      "buttons": "Tombol",
+      "header": "Header",
+      "footer": "Footer",
+      "thankYou": "Halaman terima kasih"
+    },
+    "layout": {
+      "card": "Kartu",
+      "plain": "Polos",
+      "split": "Terbagi",
+      "full": "Lebar penuh"
+    },
+    "layoutHint": {
+      "card": "Formulir berada di atas kartu di tengah halaman.",
+      "plain": "Tanpa kartu — formulir langsung berada di latar halaman.",
+      "split": "Gambar di samping formulir (di atasnya pada ponsel).",
+      "full": "Formulir membentang selebar halaman."
+    },
+    "splitImage": "Gambar samping",
+    "imageSide": "Sisi gambar",
+    "side": {
+      "start": "Awal",
+      "end": "Akhir"
+    },
+    "bg": {
+      "type": "Isi",
+      "color": "Warna",
+      "gradient": "Gradien",
+      "image": "Gambar",
+      "from": "Dari",
+      "to": "Ke",
+      "angle": "Sudut",
+      "overlay": "Gelapkan gambar",
+      "overlayHint": "Membuat teks di atas gambar lebih mudah dibaca."
+    },
+    "container": {
+      "width": "Lebar",
+      "padding": "Jarak dalam",
+      "radius": "Sudut",
+      "shadow": "Bayangan",
+      "border": "Garis tepi",
+      "bg": "Latar"
+    },
+    "size": {
+      "label": "Ukuran",
+      "none": "Tidak ada",
+      "sm": "Kecil",
+      "md": "Sedang",
+      "lg": "Besar",
+      "xl": "Sangat besar",
+      "full": "Bulat"
+    },
+    "font": {
+      "label": "Font",
+      "sans": "Sans bersih",
+      "system": "Default perangkat",
+      "serif": "Serif",
+      "rounded": "Membulat",
+      "mono": "Monospace"
+    },
+    "textSize": "Ukuran teks",
+    "headingWeight": "Ketebalan judul",
+    "weight": {
+      "medium": "Tipis",
+      "semibold": "Sedang",
+      "bold": "Tebal"
+    },
+    "color": {
+      "primary": "Aksen (tombol, fokus)",
+      "text": "Teks",
+      "muted": "Teks sekunder",
+      "inputBg": "Latar isian",
+      "inputBorder": "Garis isian",
+      "error": "Kesalahan"
+    },
+    "colorInvalid": "Gunakan warna hex seperti #1a2b3c.",
+    "lowContrast": "Kontras rendah ({ratio} : 1) — mungkin sulit dibaca.",
+    "pickColor": "Pilih warna untuk {name}",
+    "inputStyle": "Gaya",
+    "style": {
+      "outline": "Garis luar",
+      "soft": "Lembut",
+      "underline": "Garis bawah",
+      "solid": "Solid"
+    },
+    "corners": "Sudut",
+    "buttonStyle": "Gaya",
+    "fullWidth": "Tombol lebar penuh",
+    "upload": "Unggah gambar",
+    "header": {
+      "cover": "Gambar sampul",
+      "coverHint": "Gambar lebar di bagian atas formulir.",
+      "coverHeight": "Tinggi sampul",
+      "showLogo": "Tampilkan logo",
+      "logo": "Logo",
+      "logoHint": "Logo ruang kerja Anda dipakai kecuali Anda mengunggah logo lain.",
+      "logoNone": "Unggah logo untuk formulir ini (ruang kerja Anda belum punya logo).",
+      "showTitle": "Tampilkan nama formulir",
+      "subtitle": "Teks pengantar"
+    },
+    "footer": {
+      "show": "Tampilkan footer",
+      "text": "Teks footer",
+      "textHint": "Misalnya catatan privasi atau detail kontak.",
+      "links": "Tautan",
+      "newLink": "Privasi",
+      "linkLabel": "Teks tautan {n}",
+      "linkUrl": "Alamat tautan {n}",
+      "removeLink": "Hapus tautan {n}",
+      "addLink": "Tambah tautan",
+      "showLogo": "Tampilkan logo"
+    },
+    "thankYouHint": "Judul dan pesan diatur di Buat → Pengaturan formulir. Halaman ini memakai desain ini.",
+    "showTick": "Tampilkan ikon centang"
   }
 }

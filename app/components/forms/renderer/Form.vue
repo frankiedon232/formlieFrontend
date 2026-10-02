@@ -12,11 +12,28 @@ import { calculate } from '#shared/utils/forms/formula'
 import { END_OF_FORM, evaluateLogic } from '#shared/utils/forms/logic'
 import { validateAnswer, type AddressPart, type ValidationIssue } from '#shared/utils/forms/validate'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+import type { FormTheme } from '#shared/utils/forms/theme'
 
-const props = defineProps<{ schema: FormSchemaV1; preview?: boolean }>()
+const props = defineProps<{
+  schema: FormSchemaV1
+  preview?: boolean
+  theme?: FormTheme
+  /** Designer: show the thank-you page instead of the questions. */
+  showThankYou?: boolean
+}>()
 const { t } = useI18n()
 
 const labelPosition = computed(() => props.schema.settings?.label_position ?? 'top')
+// Themed buttons (F8): primary colour, style, corners, full width. Unthemed: the portal's black.
+const button = computed(() => {
+  const b = props.theme?.buttons
+  return {
+    color: (props.theme ? 'primary' : 'neutral') as 'primary' | 'neutral',
+    variant: (b?.variant ?? 'solid') as 'solid' | 'outline' | 'soft',
+    block: !!b?.full_width,
+    class: props.theme ? 'rounded-[var(--form-button-radius)] justify-center' : '',
+  }
+})
 const labelWidth = computed(() => labelColumnWidth([...allFieldsByKey.value.values()]))
 const allFieldsByKey = computed(
   () => new Map(props.schema.pages.flatMap(p => p.rows.flatMap(r => r.fields as FormField[])).map(f => [f.key, f])),
@@ -29,7 +46,11 @@ const defaults = () =>
 const index = ref(0)
 const answers = ref<Record<string, unknown>>(defaults())
 const errors = ref<Record<string, string>>({})
-const done = ref(false)
+const done = ref(!!props.showThankYou)
+watch(
+  () => props.showThankYou,
+  value => (done.value = !!value),
+)
 
 
 // Logic, set values and calculated fields follow the answers live.
@@ -165,7 +186,7 @@ function restart() {
 </script>
 
 <template>
-  <div class="flex flex-col gap-5 @container/form" :class="FORM_RADIUS" :style="{ '--form-label-w': labelWidth }">
+  <div class="flex flex-col gap-5 @container/form" :style="{ '--form-label-w': labelWidth }">
     <template v-if="!done && page">
       <div v-if="pages.length > 1 && schema.settings?.progress_bar !== false" class="flex flex-col gap-1.5">
         <div class="flex justify-between text-xs text-muted">
@@ -205,22 +226,27 @@ function restart() {
             />
           </div>
         </div>
-        <div class="flex items-center justify-between gap-2 pt-2">
+        <div class="flex items-center gap-2 pt-2" :class="button.block ? 'flex-col-reverse' : 'justify-between'">
           <UButton
             v-if="trail.length"
             :label="t('common.back')"
             icon="i-lucide-arrow-left"
-            color="neutral"
-            variant="outline"
+            :color="button.color"
+            variant="ghost"
+            :block="button.block"
+            :class="button.class"
             class="rtl:[&_svg]:rotate-180"
             @click="back"
           />
-          <span v-else />
+          <span v-else-if="!button.block" />
           <UButton
             type="submit"
             :label="last ? t('renderer.submit') : t('renderer.next')"
             :trailing-icon="last ? undefined : 'i-lucide-arrow-right'"
-            color="neutral"
+            :color="button.color"
+            :variant="button.variant"
+            :block="button.block"
+            :class="button.class"
             class="rtl:[&_svg]:rotate-180"
           />
         </div>
@@ -228,7 +254,7 @@ function restart() {
     </template>
 
     <div v-else class="flex flex-col items-center gap-3 py-10 text-center">
-      <UIcon name="i-lucide-circle-check" class="size-10 text-success" />
+      <UIcon v-if="theme?.thank_you.show_icon !== false" name="i-lucide-circle-check" class="size-10" :class="theme ? 'text-(--ui-primary)' : 'text-success'" />
       <h2 class="text-xl font-semibold text-highlighted">
         {{ schema.thank_you?.title || t('renderer.thanks') }}
       </h2>

@@ -1102,7 +1102,8 @@
       "label": "ビルダー表示",
       "build": "作成",
       "logic": "ロジック",
-      "versions": "バージョン"
+      "versions": "バージョン",
+      "design": "デザイン"
     },
     "renameHint": "ダブルクリックで名前を変更",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field}にアップロードできるファイルは{n}個までです。",
       "date_range": "{field}で開始日と終了日の両方を選択してください。終了日は開始日以降にしてください。",
       "address": "{field}に未入力の項目があります：{parts}。"
+    },
+    "page": {
+      "logo": "ロゴ",
+      "footerLinks": "フッターのリンク"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "リスト「{name}」を更新しました",
       "listDeleted": "リスト「{name}」を削除しました"
     }
+  },
+  "designer": {
+    "crumb": "デザイン",
+    "startingPoints": "スタートデザイン",
+    "usingDefault": "このフォームはワークスペースの既定（ブランドカラーとロゴ）を使用しています。何か変更すると独自のデザインになります。",
+    "applyPreset": "「{name}」から始める",
+    "replaceTitle": "現在のデザインを置き換えますか？",
+    "replaceDesc": "選択したテンプレートでこのフォームのデザインが置き換えられます。元に戻すこともできます。",
+    "replace": "置き換える",
+    "reset": "ワークスペースの既定に戻す",
+    "resetTitle": "デザインをリセットしますか？",
+    "resetDesc": "フォームはワークスペースの既定に戻ります。元に戻すこともできます。",
+    "preset": {
+      "workspace": "ワークスペースの既定",
+      "minimal": "ミニマル",
+      "soft": "ソフト",
+      "bold": "ボールド",
+      "dark": "ダーク",
+      "elegant": "エレガント"
+    },
+    "screen": {
+      "label": "プレビュー画面",
+      "form": "質問",
+      "thanks": "完了ページ"
+    },
+    "group": {
+      "layout": "レイアウト",
+      "background": "背景",
+      "container": "フォームコンテナ",
+      "typography": "文字",
+      "colors": "色",
+      "inputs": "入力欄",
+      "buttons": "ボタン",
+      "header": "ヘッダー",
+      "footer": "フッター",
+      "thankYou": "完了ページ"
+    },
+    "layout": {
+      "card": "カード",
+      "plain": "プレーン",
+      "split": "分割",
+      "full": "全幅"
+    },
+    "layoutHint": {
+      "card": "フォームはページ中央のカード上に表示されます。",
+      "plain": "カードなし — フォームはページの背景に直接表示されます。",
+      "split": "フォームの横に画像を表示（スマートフォンでは上）。",
+      "full": "フォームがページの幅いっぱいに広がります。"
+    },
+    "splitImage": "サイド画像",
+    "imageSide": "画像の位置",
+    "side": {
+      "start": "先頭側",
+      "end": "末尾側"
+    },
+    "bg": {
+      "type": "塗り",
+      "color": "色",
+      "gradient": "グラデーション",
+      "image": "画像",
+      "from": "開始",
+      "to": "終了",
+      "angle": "角度",
+      "overlay": "画像を暗くする",
+      "overlayHint": "画像の上の文字が読みやすくなります。"
+    },
+    "container": {
+      "width": "幅",
+      "padding": "内側の余白",
+      "radius": "角",
+      "shadow": "影",
+      "border": "枠線",
+      "bg": "背景"
+    },
+    "size": {
+      "label": "サイズ",
+      "none": "なし",
+      "sm": "小",
+      "md": "中",
+      "lg": "大",
+      "xl": "特大",
+      "full": "丸"
+    },
+    "font": {
+      "label": "フォント",
+      "sans": "ゴシック",
+      "system": "端末の既定",
+      "serif": "明朝・セリフ",
+      "rounded": "丸ゴシック",
+      "mono": "等幅"
+    },
+    "textSize": "文字サイズ",
+    "headingWeight": "見出しの太さ",
+    "weight": {
+      "medium": "細め",
+      "semibold": "標準",
+      "bold": "太字"
+    },
+    "color": {
+      "primary": "アクセント（ボタン、フォーカス）",
+      "text": "文字",
+      "muted": "補足テキスト",
+      "inputBg": "入力欄の背景",
+      "inputBorder": "入力欄の枠線",
+      "error": "エラー"
+    },
+    "colorInvalid": "#1a2b3c のような16進カラーを使用してください。",
+    "lowContrast": "コントラストが低い（{ratio} : 1）— 読みにくい可能性があります。",
+    "pickColor": "{name}の色を選択",
+    "inputStyle": "スタイル",
+    "style": {
+      "outline": "枠線",
+      "soft": "ソフト",
+      "underline": "下線",
+      "solid": "塗りつぶし"
+    },
+    "corners": "角",
+    "buttonStyle": "スタイル",
+    "fullWidth": "全幅のボタン",
+    "upload": "画像をアップロード",
+    "header": {
+      "cover": "カバー画像",
+      "coverHint": "フォーム上部に表示する横長の画像。",
+      "coverHeight": "カバーの高さ",
+      "showLogo": "ロゴを表示",
+      "logo": "ロゴ",
+      "logoHint": "別のロゴをアップロードしない限り、ワークスペースのロゴが使われます。",
+      "logoNone": "このフォーム用のロゴをアップロードしてください（ワークスペースにはまだロゴがありません）。",
+      "showTitle": "フォーム名を表示",
+      "subtitle": "紹介文"
+    },
+    "footer": {
+      "show": "フッターを表示",
+      "text": "フッターのテキスト",
+      "textHint": "例：プライバシーに関する注記や連絡先。",
+      "links": "リンク",
+      "newLink": "プライバシー",
+      "linkLabel": "リンク {n} のテキスト",
+      "linkUrl": "リンク {n} のアドレス",
+      "removeLink": "リンク {n} を削除",
+      "addLink": "リンクを追加",
+      "showLogo": "ロゴを表示"
+    },
+    "thankYouHint": "タイトルとメッセージは 作成 → フォームの設定 で設定します。ページにはこのデザインが使われます。",
+    "showTick": "チェックアイコンを表示"
   }
 }

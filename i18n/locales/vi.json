@@ -1102,7 +1102,8 @@
       "label": "Chế độ trình tạo",
       "build": "Tạo",
       "logic": "Logic",
-      "versions": "Phiên bản"
+      "versions": "Phiên bản",
+      "design": "Thiết kế"
     },
     "renameHint": "Nhấp đúp để đổi tên",
     "access": {
@@ -1279,6 +1280,10 @@
       "max_files": "{field} chỉ nhận tối đa {n} tệp.",
       "date_range": "Chọn cả hai ngày cho {field}, ngày kết thúc phải trùng hoặc sau ngày bắt đầu.",
       "address": "{field} còn thiếu: {parts}."
+    },
+    "page": {
+      "logo": "Logo",
+      "footerLinks": "Liên kết chân trang"
     }
   },
   "logic": {
@@ -1573,5 +1578,150 @@
       "listUpdated": "Đã cập nhật danh sách “{name}”",
       "listDeleted": "Đã xóa danh sách “{name}”"
     }
+  },
+  "designer": {
+    "crumb": "Thiết kế",
+    "startingPoints": "Mẫu khởi đầu",
+    "usingDefault": "Biểu mẫu này dùng mặc định của không gian làm việc (màu thương hiệu và logo). Thay đổi bất kỳ mục nào để tạo thiết kế riêng.",
+    "applyPreset": "Bắt đầu từ “{name}”",
+    "replaceTitle": "Thay thế thiết kế hiện tại?",
+    "replaceDesc": "Mẫu khởi đầu sẽ thay thế thiết kế của biểu mẫu này. Bạn có thể hoàn tác.",
+    "replace": "Thay thế",
+    "reset": "Đặt lại về mặc định không gian",
+    "resetTitle": "Đặt lại thiết kế?",
+    "resetDesc": "Biểu mẫu sẽ trở về mặc định của không gian làm việc. Bạn có thể hoàn tác.",
+    "preset": {
+      "workspace": "Mặc định không gian",
+      "minimal": "Tối giản",
+      "soft": "Dịu nhẹ",
+      "bold": "Nổi bật",
+      "dark": "Tối",
+      "elegant": "Thanh lịch"
+    },
+    "screen": {
+      "label": "Màn hình xem trước",
+      "form": "Câu hỏi",
+      "thanks": "Trang cảm ơn"
+    },
+    "group": {
+      "layout": "Bố cục",
+      "background": "Nền",
+      "container": "Khung biểu mẫu",
+      "typography": "Kiểu chữ",
+      "colors": "Màu sắc",
+      "inputs": "Ô nhập",
+      "buttons": "Nút",
+      "header": "Đầu trang",
+      "footer": "Chân trang",
+      "thankYou": "Trang cảm ơn"
+    },
+    "layout": {
+      "card": "Thẻ",
+      "plain": "Trơn",
+      "split": "Chia đôi",
+      "full": "Toàn chiều rộng"
+    },
+    "layoutHint": {
+      "card": "Biểu mẫu nằm trên một thẻ ở giữa trang.",
+      "plain": "Không có thẻ — biểu mẫu nằm ngay trên nền trang.",
+      "split": "Một hình ảnh bên cạnh biểu mẫu (phía trên trên điện thoại).",
+      "full": "Biểu mẫu trải rộng toàn bộ chiều rộng trang."
+    },
+    "splitImage": "Ảnh bên",
+    "imageSide": "Phía của ảnh",
+    "side": {
+      "start": "Đầu",
+      "end": "Cuối"
+    },
+    "bg": {
+      "type": "Tô",
+      "color": "Màu",
+      "gradient": "Chuyển màu",
+      "image": "Hình ảnh",
+      "from": "Từ",
+      "to": "Đến",
+      "angle": "Góc",
+      "overlay": "Làm tối ảnh",
+      "overlayHint": "Giúp chữ trên ảnh dễ đọc hơn."
+    },
+    "container": {
+      "width": "Chiều rộng",
+      "padding": "Khoảng cách trong",
+      "radius": "Góc",
+      "shadow": "Đổ bóng",
+      "border": "Viền",
+      "bg": "Nền"
+    },
+    "size": {
+      "label": "Kích thước",
+      "none": "Không",
+      "sm": "Nhỏ",
+      "md": "Vừa",
+      "lg": "Lớn",
+      "xl": "Rất lớn",
+      "full": "Tròn"
+    },
+    "font": {
+      "label": "Phông chữ",
+      "sans": "Sans gọn gàng",
+      "system": "Mặc định thiết bị",
+      "serif": "Có chân",
+      "rounded": "Bo tròn",
+      "mono": "Đơn cách"
+    },
+    "textSize": "Cỡ chữ",
+    "headingWeight": "Độ đậm tiêu đề",
+    "weight": {
+      "medium": "Nhẹ",
+      "semibold": "Vừa",
+      "bold": "Đậm"
+    },
+    "color": {
+      "primary": "Màu nhấn (nút, tiêu điểm)",
+      "text": "Chữ",
+      "muted": "Chữ phụ",
+      "inputBg": "Nền ô nhập",
+      "inputBorder": "Viền ô nhập",
+      "error": "Lỗi"
+    },
+    "colorInvalid": "Dùng mã màu hex như #1a2b3c.",
+    "lowContrast": "Độ tương phản thấp ({ratio} : 1) — có thể khó đọc.",
+    "pickColor": "Chọn màu cho {name}",
+    "inputStyle": "Kiểu",
+    "style": {
+      "outline": "Viền",
+      "soft": "Dịu",
+      "underline": "Gạch chân",
+      "solid": "Đặc"
+    },
+    "corners": "Góc",
+    "buttonStyle": "Kiểu",
+    "fullWidth": "Nút toàn chiều rộng",
+    "upload": "Tải ảnh lên",
+    "header": {
+      "cover": "Ảnh bìa",
+      "coverHint": "Một ảnh rộng ở đầu biểu mẫu.",
+      "coverHeight": "Chiều cao ảnh bìa",
+      "showLogo": "Hiện logo",
+      "logo": "Logo",
+      "logoHint": "Logo của không gian làm việc sẽ được dùng trừ khi bạn tải lên logo khác.",
+      "logoNone": "Tải logo lên cho biểu mẫu này (không gian làm việc của bạn chưa có logo).",
+      "showTitle": "Hiện tên biểu mẫu",
+      "subtitle": "Văn bản giới thiệu"
+    },
+    "footer": {
+      "show": "Hiện chân trang",
+      "text": "Văn bản chân trang",
+      "textHint": "Ví dụ: ghi chú quyền riêng tư hoặc thông tin liên hệ.",
+      "links": "Liên kết",
+      "newLink": "Quyền riêng tư",
+      "linkLabel": "Văn bản liên kết {n}",
+      "linkUrl": "Địa chỉ liên kết {n}",
+      "removeLink": "Xóa liên kết {n}",
+      "addLink": "Thêm liên kết",
+      "showLogo": "Hiện logo"
+    },
+    "thankYouHint": "Tiêu đề và lời nhắn được đặt trong Tạo → Cài đặt biểu mẫu. Trang dùng thiết kế này.",
+    "showTick": "Hiện biểu tượng dấu tích"
   }
 }

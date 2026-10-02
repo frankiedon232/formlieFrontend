@@ -5,6 +5,8 @@ import { isLocked, type FormField } from '#shared/utils/forms/build'
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
 const { t } = useI18n()
+// Size and style follow the form theme (F8); plain defaults elsewhere.
+const control = useControlStyle()
 
 const items = computed(() =>
   (props.field.options ?? []).map(option => ({ value: option.value, label: option.label })),
@@ -28,6 +30,7 @@ const disabled = computed(() => isLocked(props.field))
 <template>
   <USelect
     v-if="field.type === 'dropdown'"
+    v-bind="control"
     :id="id"
     v-model="one"
     :items="items"
@@ -38,6 +41,7 @@ const disabled = computed(() => isLocked(props.field))
   />
   <USelectMenu
     v-else-if="field.type === 'multi_select'"
+    v-bind="control"
     :id="id"
     v-model="many"
     :items="items"

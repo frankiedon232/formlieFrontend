@@ -5,6 +5,8 @@ import type { FormField } from '#shared/utils/forms/build'
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
 const { t } = useI18n()
+// Size and style follow the form theme (F8); plain defaults elsewhere.
+const control = useControlStyle()
 const { current } = useAppLocale()
 
 const text = computed({
@@ -62,6 +64,7 @@ const disabled = computed(() => !!props.field.disabled)
   </div>
   <UTextarea
     v-else-if="field.type === 'long_text'"
+    v-bind="control"
     :id="id"
     v-model="text"
     :rows="Number(props_.rows ?? 4)"
@@ -75,6 +78,7 @@ const disabled = computed(() => !!props.field.disabled)
   />
   <UInput
     v-else
+    v-bind="control"
     :id="id"
     v-model="text"
     :type="INPUT_TYPES[field.type] ?? 'text'"
