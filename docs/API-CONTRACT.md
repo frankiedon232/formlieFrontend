@@ -26,7 +26,9 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 | GET | `/tenants/subdomain-availability?subdomain=` | `{ available, reason: taken\|reserved\|invalid\|null }` |
 | POST | `/tenants/find-workspace` | `{ email }` → challenge (same answer whether or not the email exists) |
 | POST | `/tenants/find-workspace/verify` | `{ challenge_id, code }` → `[{ name, subdomain, url }]` (url = that workspace's `/auth/login?email=`) |
-| GET/PATCH | `/onboarding` | progress + steps data |
+| GET | `/onboarding` | owners / admins. `Onboarding { status: not_started\|in_progress\|completed, current_step: company\|branding\|localisation\|team\|first_form, steps: { [step]: todo\|done\|skipped }, company: { name, industry\|null, size\|null, country (ISO-2)\|null, website\|null }, branding: { logo_url\|null, brand_color (#RRGGBB)\|null }, localisation: { language, timezone (IANA), currency (ISO 4217), date_format: DD/MM/YYYY\|MM/DD/YYYY\|YYYY-MM-DD\|DD.MM.YYYY, number_format: "1,234.56"\|"1.234,56"\|"1 234,56"\|"1'234.56", week_start: monday\|sunday\|saturday }, invites: [{ email, role: admin\|member }], first_form: { choice: blank\|template\|null, template_key\|null } }` |
+| PATCH | `/onboarding` | `{ step, action: save, data }` (data = that step's shape; branding sends `{ logo_upload_id\|null, brand_color }`, team sends `{ invites }`) or `{ step, action: skip }` → `Onboarding` with `current_step` moved on. Saved changes are recorded in the audit trail (`workspace.updated`, `settings.updated`, `users.invited`) with before / after values |
+| POST | `/onboarding/finish` | marks it `completed` → `Onboarding`; first time records `workspace.setup_completed` |
 
 ## Auth
 
@@ -64,6 +66,18 @@ Owners / admins only (members → FRM-PERM-1001) until permissions arrive with R
 `AuditEvent`: `{ id, occurred_at, action, area, outcome: success|failure|blocked, severity: info|notice|warning|critical, actor: { type: user|api_key|system, id|null, name, email|null }, resource: { type, id|null, name|null }|null, organisation: { id, name }|null, location: { ip, city|null, country|null }, device: { type: desktop|mobile|tablet|unknown, browser|null, os|null }, changes: [{ field, before, after }], metadata: { [key]: string }, reason: FRM-code|null, request_id }`. `actor.id` is null for attempts by someone who is not signed in (name = the email typed). CSV / Excel exports neutralise cells starting with `= + - @` (formula injection) and are UTF-8 with a byte-order mark.
 
 **Mock only:** the mock writes CSV for both formats (the backend produces a real .xlsx); local / private IPs have no city or country (the backend resolves them with GeoIP).
+
+## Uploads
+
+Files never pass through the enveloped API (SECURITY-PROTOCOL.md): the API hands out a pre-signed, expiring storage URL, the browser uploads straight to it (with progress), then confirms.
+
+| Method | Path                     | Notes                                                                                                                                                                                                                                     |
+| ------ | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | `/uploads`               | `{ purpose: logo, file_name, content_type: image/png\|image/jpeg\|image/webp, size }` → `UploadTicket { upload_id, upload_url, method: PUT, headers, max_bytes, expires_at }` (5 min). Logos ≤ 2 MB; SVG is refused (it can carry script) |
+| PUT    | `upload_url`             | the raw file with the ticket's `headers`; storage checks size and that the bytes really are the declared image type                                                                                                                       |
+| POST   | `/uploads/{id}/complete` | → `UploadedFile { id, url, content_type, size }`; the id is what other endpoints take (e.g. onboarding branding `logo_upload_id`)                                                                                                         |
+
+**Mock only:** "storage" is `PUT /api/v1/storage/{token}` and files are served from `GET /api/v1/files/{id}` with `X-Content-Type-Options: nosniff`; production uses object storage + CDN URLs.
 
 ## Navigation
 

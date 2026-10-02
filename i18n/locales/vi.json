@@ -443,7 +443,18 @@
       "brand_colour": "Màu thương hiệu",
       "session_timeout_minutes": "Thời gian chờ phiên (phút)",
       "sign_in_methods": "Phương thức đăng nhập",
-      "response_status": "Trạng thái phản hồi"
+      "response_status": "Trạng thái phản hồi",
+      "industry": "Ngành",
+      "size": "Quy mô tổ chức",
+      "country": "Quốc gia",
+      "website": "Trang web",
+      "logo": "Logo",
+      "language": "Ngôn ngữ",
+      "timezone": "Múi giờ",
+      "currency": "Tiền tệ",
+      "date_format": "Định dạng ngày",
+      "number_format": "Định dạng số",
+      "week_start": "Ngày đầu tuần"
     },
     "action": {
       "auth_login_succeeded": "Đã đăng nhập",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Đã thêm webhook",
       "integrations_api_key_created": "Đã tạo khóa API",
       "integrations_api_key_revoked": "Đã thu hồi khóa API",
-      "audit_exported": "Đã xuất nhật ký kiểm tra"
+      "audit_exported": "Đã xuất nhật ký kiểm tra",
+      "workspace_setup_completed": "Đã hoàn tất thiết lập không gian làm việc"
     },
     "detail": {
       "who": "Ai",
@@ -522,6 +534,164 @@
       "ready": "Tệp của bạn đã sẵn sàng",
       "download": "Tải xuống",
       "expires": "Liên kết tải xuống chỉ dùng được một lần và hết hạn {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Thiết lập không gian làm việc",
+    "later": "Hoàn tất sau",
+    "heading": "Thiết lập {name}",
+    "subheading": "Vài bước nhanh để không gian làm việc phù hợp với bạn. Bỏ qua bước nào cũng được và quay lại sau trong Cài đặt.",
+    "stepOf": "Bước {n}/{total}",
+    "progress": "Đã xong {done}/{total} bước",
+    "skip": "Tạm bỏ qua",
+    "continue": "Tiếp tục",
+    "finish": "Hoàn tất thiết lập",
+    "choose": "Chọn…",
+    "optional": "Không bắt buộc",
+    "menu": "Thiết lập không gian làm việc",
+    "settingsCard": {
+      "title": "Thiết lập không gian làm việc",
+      "desc": "Công ty, thương hiệu, cài đặt khu vực, nhóm và biểu mẫu đầu tiên — quay lại bất kỳ bước nào.",
+      "open": "Mở"
+    },
+    "steps": {
+      "company": {
+        "title": "Công ty",
+        "desc": "Cho chúng tôi biết đôi chút về tổ chức của bạn."
+      },
+      "branding": {
+        "title": "Thương hiệu",
+        "desc": "Logo và màu sắc trên trang đăng nhập và biểu mẫu."
+      },
+      "localisation": {
+        "title": "Cài đặt khu vực",
+        "desc": "Ngôn ngữ, thời gian và định dạng dùng trong không gian làm việc."
+      },
+      "team": {
+        "title": "Mời nhóm của bạn",
+        "desc": "Thêm những người bạn làm việc cùng. Bạn cũng có thể làm sau."
+      },
+      "first_form": {
+        "title": "Biểu mẫu đầu tiên",
+        "desc": "Bắt đầu từ mẫu có sẵn hoặc biểu mẫu trống."
+      }
+    },
+    "company": {
+      "name": "Tên công ty hoặc tổ chức",
+      "nameHint": "Hiển thị cho nhóm và người trả lời",
+      "nameRequired": "Nhập ít nhất 2 ký tự.",
+      "industry": "Ngành",
+      "country": "Quốc gia",
+      "size": "Quy mô tổ chức",
+      "people": "{range} người",
+      "website": "Trang web",
+      "websiteInvalid": "Nhập địa chỉ web hợp lệ."
+    },
+    "industry": {
+      "professional_services": "Dịch vụ chuyên nghiệp",
+      "legal": "Pháp lý",
+      "finance": "Tài chính & bảo hiểm",
+      "healthcare": "Y tế",
+      "education": "Giáo dục",
+      "government": "Chính phủ & khu vực công",
+      "non_profit": "Phi lợi nhuận",
+      "technology": "Công nghệ",
+      "retail": "Bán lẻ & thương mại điện tử",
+      "manufacturing": "Sản xuất",
+      "hospitality": "Khách sạn & du lịch",
+      "real_estate": "Bất động sản",
+      "logistics": "Vận tải & logistics",
+      "energy": "Năng lượng & tiện ích",
+      "media": "Truyền thông & tiếp thị",
+      "other": "Khác"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Ảnh vuông hiển thị đẹp nhất. PNG, JPG hoặc WebP, tối đa 2 MB.",
+      "logoAlt": "Logo không gian làm việc",
+      "current": "Logo hiện tại",
+      "remove": "Xóa",
+      "drop": "Thả logo vào đây hoặc nhấp để chọn",
+      "types": "PNG, JPG hoặc WebP · tối đa 2 MB",
+      "badType": "Hãy dùng ảnh PNG, JPG hoặc WebP.",
+      "tooBig": "Tệp lớn hơn 2 MB.",
+      "uploadFailed": "Tải lên không thành công. Hãy thử lại.",
+      "colour": "Màu thương hiệu",
+      "colourHint": "Dùng cho nút và điểm nhấn trên trang đăng nhập và biểu mẫu.",
+      "custom": "Tùy chỉnh",
+      "hex": "Mã màu hex",
+      "reset": "Dùng mặc định"
+    },
+    "localisation": {
+      "language": "Ngôn ngữ không gian làm việc",
+      "languageHint": "Mặc định cho email và biểu mẫu mới. Mỗi người vẫn tự chọn ngôn ngữ ứng dụng của mình.",
+      "currency": "Tiền tệ",
+      "currencyHint": "Cho giá và trường thanh toán",
+      "timezone": "Múi giờ",
+      "timezoneHint": "Dùng cho ngày trong bản xuất, lịch và lời nhắc",
+      "dateFormat": "Định dạng ngày",
+      "numberFormat": "Định dạng số",
+      "weekStart": "Ngày đầu tuần",
+      "week": {
+        "monday": "Thứ Hai",
+        "sunday": "Chủ Nhật",
+        "saturday": "Thứ Bảy"
+      }
+    },
+    "team": {
+      "member": "Thành viên",
+      "admin": "Quản trị viên",
+      "owner": "Chủ sở hữu",
+      "invalid": "Nhập địa chỉ email hợp lệ.",
+      "self": "Đó là bạn — bạn đã ở trong đây.",
+      "duplicate": "Email này đã có trong danh sách.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "Email {n}",
+      "roleLabel": "Vai trò {n}",
+      "remove": "Xóa dòng {n}",
+      "add": "Thêm người khác",
+      "pasteHint": "Mẹo: dán danh sách email vào bất kỳ dòng nào.",
+      "rolesHint": "Quản trị viên quản lý cài đặt, người dùng và nhật ký kiểm tra. Thành viên tạo biểu mẫu và xử lý phản hồi."
+    },
+    "firstForm": {
+      "blank": "Biểu mẫu trống",
+      "blankDesc": "Bắt đầu từ đầu",
+      "fields": "{count} trường | {count} trường",
+      "hint": "Bạn có thể thay đổi mọi thứ sau trong trình tạo.",
+      "untitled": "Biểu mẫu chưa đặt tên"
+    },
+    "preview": {
+      "title": "Xem trước",
+      "date": "Ngày",
+      "time": "Giờ hiện tại",
+      "number": "Số",
+      "price": "Giá",
+      "week": "Tuần bắt đầu vào",
+      "pending": "Lời mời đang chờ",
+      "noInvites": "Những người bạn mời sẽ xuất hiện ở đây.",
+      "submit": "Gửi"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Phản hồi khách hàng"
+      },
+      "event_registration": {
+        "name": "Đăng ký sự kiện"
+      },
+      "job_application": {
+        "name": "Đơn ứng tuyển"
+      },
+      "employee_onboarding": {
+        "name": "Tiếp nhận nhân viên"
+      },
+      "contact_lead": {
+        "name": "Liên hệ / khách hàng tiềm năng"
+      },
+      "incident_report": {
+        "name": "Báo cáo sự cố"
+      }
     }
   }
 }

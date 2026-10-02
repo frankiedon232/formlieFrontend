@@ -5,7 +5,11 @@ const router = useRouter()
 const route = useRoute()
 const navCounts = useNavCounts()
 // Sidebar badges: load now, then refresh on navigation when stale.
-watch(() => route.path, () => navCounts.refresh(), { immediate: true })
+watch(
+  () => route.path,
+  () => navCounts.refresh(),
+  { immediate: true },
+)
 const { destinations } = useNavigation()
 const { shortcutsOpen } = useAppUi()
 const peek = ref<{ focusEdge: (edge: 'first' | 'last') => void } | null>(null)

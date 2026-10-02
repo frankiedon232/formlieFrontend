@@ -443,7 +443,18 @@
       "brand_colour": "Warna merek",
       "session_timeout_minutes": "Batas waktu sesi (menit)",
       "sign_in_methods": "Metode masuk",
-      "response_status": "Status respons"
+      "response_status": "Status respons",
+      "industry": "Industri",
+      "size": "Ukuran organisasi",
+      "country": "Negara",
+      "website": "Situs web",
+      "logo": "Logo",
+      "language": "Bahasa",
+      "timezone": "Zona waktu",
+      "currency": "Mata uang",
+      "date_format": "Format tanggal",
+      "number_format": "Format angka",
+      "week_start": "Hari pertama dalam minggu"
     },
     "action": {
       "auth_login_succeeded": "Masuk",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook ditambahkan",
       "integrations_api_key_created": "Kunci API dibuat",
       "integrations_api_key_revoked": "Kunci API dicabut",
-      "audit_exported": "Jejak audit diekspor"
+      "audit_exported": "Jejak audit diekspor",
+      "workspace_setup_completed": "Penyiapan ruang kerja selesai"
     },
     "detail": {
       "who": "Siapa",
@@ -522,6 +534,164 @@
       "ready": "File Anda siap",
       "download": "Unduh",
       "expires": "Tautan unduhan hanya berfungsi sekali dan kedaluwarsa {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Penyiapan ruang kerja",
+    "later": "Selesaikan nanti",
+    "heading": "Siapkan {name}",
+    "subheading": "Beberapa langkah singkat agar ruang kerja sesuai kebutuhan Anda. Lewati yang mana saja dan lanjutkan nanti dari Pengaturan.",
+    "stepOf": "Langkah {n} dari {total}",
+    "progress": "{done} dari {total} langkah selesai",
+    "skip": "Lewati dulu",
+    "continue": "Lanjut",
+    "finish": "Selesaikan penyiapan",
+    "choose": "Pilih…",
+    "optional": "Opsional",
+    "menu": "Penyiapan ruang kerja",
+    "settingsCard": {
+      "title": "Penyiapan ruang kerja",
+      "desc": "Perusahaan, merek, pengaturan regional, tim, dan formulir pertama — buka kembali langkah mana pun.",
+      "open": "Buka"
+    },
+    "steps": {
+      "company": {
+        "title": "Perusahaan",
+        "desc": "Ceritakan sedikit tentang organisasi Anda."
+      },
+      "branding": {
+        "title": "Merek",
+        "desc": "Logo dan warna Anda di halaman masuk dan formulir."
+      },
+      "localisation": {
+        "title": "Pengaturan regional",
+        "desc": "Bahasa, waktu, dan format di seluruh ruang kerja."
+      },
+      "team": {
+        "title": "Undang tim Anda",
+        "desc": "Tambahkan orang yang bekerja dengan Anda. Bisa juga nanti."
+      },
+      "first_form": {
+        "title": "Formulir pertama",
+        "desc": "Mulai dari templat atau formulir kosong."
+      }
+    },
+    "company": {
+      "name": "Nama perusahaan atau organisasi",
+      "nameHint": "Terlihat oleh tim dan responden",
+      "nameRequired": "Masukkan minimal 2 karakter.",
+      "industry": "Industri",
+      "country": "Negara",
+      "size": "Ukuran organisasi",
+      "people": "{range} orang",
+      "website": "Situs web",
+      "websiteInvalid": "Masukkan alamat web yang valid."
+    },
+    "industry": {
+      "professional_services": "Jasa profesional",
+      "legal": "Hukum",
+      "finance": "Keuangan & asuransi",
+      "healthcare": "Kesehatan",
+      "education": "Pendidikan",
+      "government": "Pemerintahan & sektor publik",
+      "non_profit": "Nirlaba",
+      "technology": "Teknologi",
+      "retail": "Ritel & e-commerce",
+      "manufacturing": "Manufaktur",
+      "hospitality": "Perhotelan & perjalanan",
+      "real_estate": "Properti",
+      "logistics": "Transportasi & logistik",
+      "energy": "Energi & utilitas",
+      "media": "Media & pemasaran",
+      "other": "Lainnya"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Gambar persegi terlihat paling baik. PNG, JPG, atau WebP, hingga 2 MB.",
+      "logoAlt": "Logo ruang kerja",
+      "current": "Logo saat ini",
+      "remove": "Hapus",
+      "drop": "Letakkan logo di sini atau klik untuk memilih",
+      "types": "PNG, JPG, atau WebP · hingga 2 MB",
+      "badType": "Gunakan gambar PNG, JPG, atau WebP.",
+      "tooBig": "Ukuran file lebih dari 2 MB.",
+      "uploadFailed": "Unggahan gagal. Coba lagi.",
+      "colour": "Warna merek",
+      "colourHint": "Dipakai untuk tombol dan aksen di halaman masuk dan formulir.",
+      "custom": "Kustom",
+      "hex": "Warna hex",
+      "reset": "Gunakan bawaan"
+    },
+    "localisation": {
+      "language": "Bahasa ruang kerja",
+      "languageHint": "Bawaan untuk email dan formulir baru. Setiap orang tetap memilih bahasa aplikasinya sendiri.",
+      "currency": "Mata uang",
+      "currencyHint": "Untuk harga dan kolom pembayaran",
+      "timezone": "Zona waktu",
+      "timezoneHint": "Untuk tanggal di ekspor, jadwal, dan pengingat",
+      "dateFormat": "Format tanggal",
+      "numberFormat": "Format angka",
+      "weekStart": "Hari pertama dalam minggu",
+      "week": {
+        "monday": "Senin",
+        "sunday": "Minggu",
+        "saturday": "Sabtu"
+      }
+    },
+    "team": {
+      "member": "Anggota",
+      "admin": "Admin",
+      "owner": "Pemilik",
+      "invalid": "Masukkan alamat email yang valid.",
+      "self": "Itu Anda — Anda sudah bergabung.",
+      "duplicate": "Email ini sudah ada di daftar.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "Email {n}",
+      "roleLabel": "Peran {n}",
+      "remove": "Hapus baris {n}",
+      "add": "Tambah orang lain",
+      "pasteHint": "Tips: tempel daftar email di baris mana saja.",
+      "rolesHint": "Admin mengelola pengaturan, orang, dan jejak audit. Anggota membuat formulir dan mengolah respons."
+    },
+    "firstForm": {
+      "blank": "Formulir kosong",
+      "blankDesc": "Mulai dari awal",
+      "fields": "{count} kolom | {count} kolom",
+      "hint": "Semua bisa diubah nanti di pembuat formulir.",
+      "untitled": "Formulir tanpa judul"
+    },
+    "preview": {
+      "title": "Pratinjau",
+      "date": "Tanggal",
+      "time": "Waktu sekarang",
+      "number": "Angka",
+      "price": "Harga",
+      "week": "Minggu dimulai hari",
+      "pending": "Undangan tertunda",
+      "noInvites": "Orang yang Anda undang muncul di sini.",
+      "submit": "Kirim"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Masukan pelanggan"
+      },
+      "event_registration": {
+        "name": "Pendaftaran acara"
+      },
+      "job_application": {
+        "name": "Lamaran kerja"
+      },
+      "employee_onboarding": {
+        "name": "Orientasi karyawan"
+      },
+      "contact_lead": {
+        "name": "Kontak / prospek"
+      },
+      "incident_report": {
+        "name": "Laporan insiden"
+      }
     }
   }
 }

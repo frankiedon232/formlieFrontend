@@ -15,6 +15,9 @@ export interface MockTenant {
   status: TenantStatus
   auth_providers: AuthProvider[]
   organisation: { id: string; name: string }
+  /** Set from Settings / onboarding → Branding. */
+  logo_url?: string | null
+  brand_color?: string | null
 }
 
 export interface MockUser {

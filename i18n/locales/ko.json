@@ -443,7 +443,18 @@
       "brand_colour": "브랜드 색상",
       "session_timeout_minutes": "세션 시간 제한(분)",
       "sign_in_methods": "로그인 방법",
-      "response_status": "응답 상태"
+      "response_status": "응답 상태",
+      "industry": "업종",
+      "size": "조직 규모",
+      "country": "국가",
+      "website": "웹사이트",
+      "logo": "로고",
+      "language": "언어",
+      "timezone": "시간대",
+      "currency": "통화",
+      "date_format": "날짜 형식",
+      "number_format": "숫자 형식",
+      "week_start": "한 주의 시작 요일"
     },
     "action": {
       "auth_login_succeeded": "로그인함",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "웹훅 추가됨",
       "integrations_api_key_created": "API 키 생성됨",
       "integrations_api_key_revoked": "API 키 취소됨",
-      "audit_exported": "감사 로그 내보냄"
+      "audit_exported": "감사 로그 내보냄",
+      "workspace_setup_completed": "워크스페이스 설정 완료"
     },
     "detail": {
       "who": "누가",
@@ -522,6 +534,164 @@
       "ready": "파일이 준비되었습니다",
       "download": "다운로드",
       "expires": "다운로드 링크는 한 번만 사용할 수 있으며 {time} 만료됩니다."
+    }
+  },
+  "onboarding": {
+    "title": "워크스페이스 설정",
+    "later": "나중에 마치기",
+    "heading": "{name} 설정",
+    "subheading": "워크스페이스를 내게 맞게 만드는 몇 가지 간단한 단계입니다. 원하는 단계는 건너뛰고 나중에 설정에서 이어서 하세요.",
+    "stepOf": "{total}단계 중 {n}단계",
+    "progress": "{total}단계 중 {done}단계 완료",
+    "skip": "지금은 건너뛰기",
+    "continue": "계속",
+    "finish": "설정 완료",
+    "choose": "선택…",
+    "optional": "선택 사항",
+    "menu": "워크스페이스 설정",
+    "settingsCard": {
+      "title": "워크스페이스 설정",
+      "desc": "회사 정보, 브랜딩, 지역 설정, 팀, 첫 양식 — 언제든 원하는 단계로 돌아가세요.",
+      "open": "열기"
+    },
+    "steps": {
+      "company": {
+        "title": "회사",
+        "desc": "조직에 대해 간단히 알려 주세요."
+      },
+      "branding": {
+        "title": "브랜딩",
+        "desc": "로그인 페이지와 양식에 표시되는 로고와 색상입니다."
+      },
+      "localisation": {
+        "title": "지역 설정",
+        "desc": "워크스페이스 전체에서 쓰는 언어, 시간, 형식입니다."
+      },
+      "team": {
+        "title": "팀 초대",
+        "desc": "함께 일하는 사람들을 추가하세요. 나중에 해도 됩니다."
+      },
+      "first_form": {
+        "title": "첫 양식",
+        "desc": "템플릿이나 빈 양식으로 시작하세요."
+      }
+    },
+    "company": {
+      "name": "회사 또는 조직 이름",
+      "nameHint": "팀원과 응답자에게 표시됩니다",
+      "nameRequired": "2자 이상 입력하세요.",
+      "industry": "업종",
+      "country": "국가",
+      "size": "조직 규모",
+      "people": "{range}명",
+      "website": "웹사이트",
+      "websiteInvalid": "올바른 웹 주소를 입력하세요."
+    },
+    "industry": {
+      "professional_services": "전문 서비스",
+      "legal": "법률",
+      "finance": "금융 및 보험",
+      "healthcare": "의료",
+      "education": "교육",
+      "government": "정부 및 공공",
+      "non_profit": "비영리",
+      "technology": "기술",
+      "retail": "소매 및 전자상거래",
+      "manufacturing": "제조",
+      "hospitality": "숙박 및 여행",
+      "real_estate": "부동산",
+      "logistics": "운송 및 물류",
+      "energy": "에너지 및 공공 설비",
+      "media": "미디어 및 마케팅",
+      "other": "기타"
+    },
+    "branding": {
+      "logo": "로고",
+      "logoHint": "정사각형 이미지가 가장 보기 좋습니다. PNG, JPG, WebP, 최대 2MB.",
+      "logoAlt": "워크스페이스 로고",
+      "current": "현재 로고",
+      "remove": "삭제",
+      "drop": "로고를 여기에 놓거나 클릭해 선택하세요",
+      "types": "PNG, JPG, WebP · 최대 2MB",
+      "badType": "PNG, JPG, WebP 이미지를 사용하세요.",
+      "tooBig": "파일이 2MB보다 큽니다.",
+      "uploadFailed": "업로드하지 못했습니다. 다시 시도하세요.",
+      "colour": "브랜드 색상",
+      "colourHint": "로그인 페이지와 양식의 버튼과 강조 색상에 사용됩니다.",
+      "custom": "사용자 지정",
+      "hex": "HEX 색상",
+      "reset": "기본값 사용"
+    },
+    "localisation": {
+      "language": "워크스페이스 언어",
+      "languageHint": "이메일과 새 양식의 기본 언어입니다. 앱 언어는 각자 선택합니다.",
+      "currency": "통화",
+      "currencyHint": "가격 및 결제 항목용",
+      "timezone": "시간대",
+      "timezoneHint": "내보내기, 일정, 알림의 날짜에 사용됩니다",
+      "dateFormat": "날짜 형식",
+      "numberFormat": "숫자 형식",
+      "weekStart": "한 주의 시작 요일",
+      "week": {
+        "monday": "월요일",
+        "sunday": "일요일",
+        "saturday": "토요일"
+      }
+    },
+    "team": {
+      "member": "멤버",
+      "admin": "관리자",
+      "owner": "소유자",
+      "invalid": "올바른 이메일 주소를 입력하세요.",
+      "self": "본인입니다 — 이미 참여 중입니다.",
+      "duplicate": "이 이메일은 이미 목록에 있습니다.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "이메일 {n}",
+      "roleLabel": "역할 {n}",
+      "remove": "{n}번째 줄 삭제",
+      "add": "한 명 더 추가",
+      "pasteHint": "팁: 아무 줄에나 이메일 목록을 붙여 넣으세요.",
+      "rolesHint": "관리자는 설정, 사람, 감사 로그를 관리합니다. 멤버는 양식을 만들고 응답을 다룹니다."
+    },
+    "firstForm": {
+      "blank": "빈 양식",
+      "blankDesc": "처음부터 시작",
+      "fields": "항목 {count}개 | 항목 {count}개",
+      "hint": "나중에 빌더에서 모두 바꿀 수 있습니다.",
+      "untitled": "제목 없는 양식"
+    },
+    "preview": {
+      "title": "미리보기",
+      "date": "날짜",
+      "time": "현재 시각",
+      "number": "숫자",
+      "price": "가격",
+      "week": "한 주의 시작",
+      "pending": "초대 대기 중",
+      "noInvites": "초대한 사람이 여기에 표시됩니다.",
+      "submit": "제출"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "고객 피드백"
+      },
+      "event_registration": {
+        "name": "행사 등록"
+      },
+      "job_application": {
+        "name": "입사 지원"
+      },
+      "employee_onboarding": {
+        "name": "직원 온보딩"
+      },
+      "contact_lead": {
+        "name": "문의 / 리드"
+      },
+      "incident_report": {
+        "name": "사고 보고"
+      }
     }
   }
 }

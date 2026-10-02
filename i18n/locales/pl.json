@@ -443,7 +443,18 @@
       "brand_colour": "Kolor marki",
       "session_timeout_minutes": "Limit czasu sesji (minuty)",
       "sign_in_methods": "Metody logowania",
-      "response_status": "Status odpowiedzi"
+      "response_status": "Status odpowiedzi",
+      "industry": "Branża",
+      "size": "Wielkość organizacji",
+      "country": "Kraj",
+      "website": "Strona internetowa",
+      "logo": "Logo",
+      "language": "Język",
+      "timezone": "Strefa czasowa",
+      "currency": "Waluta",
+      "date_format": "Format daty",
+      "number_format": "Format liczb",
+      "week_start": "Pierwszy dzień tygodnia"
     },
     "action": {
       "auth_login_succeeded": "Zalogowano",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Dodano webhook",
       "integrations_api_key_created": "Utworzono klucz API",
       "integrations_api_key_revoked": "Unieważniono klucz API",
-      "audit_exported": "Wyeksportowano dziennik audytu"
+      "audit_exported": "Wyeksportowano dziennik audytu",
+      "workspace_setup_completed": "Zakończono konfigurację obszaru roboczego"
     },
     "detail": {
       "who": "Kto",
@@ -522,6 +534,164 @@
       "ready": "Plik jest gotowy",
       "download": "Pobierz",
       "expires": "Link do pobrania działa raz i wygasa {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Konfiguracja obszaru roboczego",
+    "later": "Dokończ później",
+    "heading": "Skonfiguruj {name}",
+    "subheading": "Kilka szybkich kroków, aby dopasować obszar roboczy do siebie. Pomiń, co chcesz, i wróć później w Ustawieniach.",
+    "stepOf": "Krok {n} z {total}",
+    "progress": "Ukończone kroki: {done} z {total}",
+    "skip": "Pomiń na razie",
+    "continue": "Dalej",
+    "finish": "Zakończ konfigurację",
+    "choose": "Wybierz…",
+    "optional": "Opcjonalne",
+    "menu": "Konfiguracja obszaru roboczego",
+    "settingsCard": {
+      "title": "Konfiguracja obszaru roboczego",
+      "desc": "Firma, marka, ustawienia regionalne, zespół i pierwszy formularz — wróć do dowolnego kroku.",
+      "open": "Otwórz"
+    },
+    "steps": {
+      "company": {
+        "title": "Firma",
+        "desc": "Opowiedz nam trochę o swojej organizacji."
+      },
+      "branding": {
+        "title": "Marka",
+        "desc": "Twoje logo i kolor na stronach logowania i w formularzach."
+      },
+      "localisation": {
+        "title": "Ustawienia regionalne",
+        "desc": "Język, czas i formaty używane w obszarze roboczym."
+      },
+      "team": {
+        "title": "Zaproś zespół",
+        "desc": "Dodaj osoby, z którymi pracujesz. Możesz to zrobić też później."
+      },
+      "first_form": {
+        "title": "Pierwszy formularz",
+        "desc": "Zacznij od szablonu lub pustego formularza."
+      }
+    },
+    "company": {
+      "name": "Nazwa firmy lub organizacji",
+      "nameHint": "Widoczna dla zespołu i respondentów",
+      "nameRequired": "Wpisz co najmniej 2 znaki.",
+      "industry": "Branża",
+      "country": "Kraj",
+      "size": "Wielkość organizacji",
+      "people": "Osoby: {range}",
+      "website": "Strona internetowa",
+      "websiteInvalid": "Wpisz prawidłowy adres strony."
+    },
+    "industry": {
+      "professional_services": "Usługi profesjonalne",
+      "legal": "Prawo",
+      "finance": "Finanse i ubezpieczenia",
+      "healthcare": "Opieka zdrowotna",
+      "education": "Edukacja",
+      "government": "Administracja i sektor publiczny",
+      "non_profit": "Organizacje non-profit",
+      "technology": "Technologie",
+      "retail": "Handel i e-commerce",
+      "manufacturing": "Produkcja",
+      "hospitality": "Hotelarstwo i turystyka",
+      "real_estate": "Nieruchomości",
+      "logistics": "Transport i logistyka",
+      "energy": "Energetyka i media",
+      "media": "Media i marketing",
+      "other": "Inne"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Najlepiej wyglądają kwadratowe obrazy. PNG, JPG lub WebP, do 2 MB.",
+      "logoAlt": "Logo obszaru roboczego",
+      "current": "Bieżące logo",
+      "remove": "Usuń",
+      "drop": "Upuść logo tutaj lub kliknij, aby wybrać",
+      "types": "PNG, JPG lub WebP · do 2 MB",
+      "badType": "Użyj obrazu PNG, JPG lub WebP.",
+      "tooBig": "Plik jest większy niż 2 MB.",
+      "uploadFailed": "Przesyłanie nie powiodło się. Spróbuj ponownie.",
+      "colour": "Kolor marki",
+      "colourHint": "Używany na przyciskach i akcentach strony logowania i formularzy.",
+      "custom": "Własny",
+      "hex": "Kolor szesnastkowy",
+      "reset": "Użyj domyślnego"
+    },
+    "localisation": {
+      "language": "Język obszaru roboczego",
+      "languageHint": "Domyślny dla e-maili i nowych formularzy. Każdy nadal wybiera własny język aplikacji.",
+      "currency": "Waluta",
+      "currencyHint": "Dla cen i pól płatności",
+      "timezone": "Strefa czasowa",
+      "timezoneHint": "Dla dat w eksportach, harmonogramach i przypomnieniach",
+      "dateFormat": "Format daty",
+      "numberFormat": "Format liczb",
+      "weekStart": "Pierwszy dzień tygodnia",
+      "week": {
+        "monday": "Poniedziałek",
+        "sunday": "Niedziela",
+        "saturday": "Sobota"
+      }
+    },
+    "team": {
+      "member": "Członek",
+      "admin": "Administrator",
+      "owner": "Właściciel",
+      "invalid": "Wpisz prawidłowy adres e-mail.",
+      "self": "To Ty — już tu jesteś.",
+      "duplicate": "Ten adres jest już na liście.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "E-mail {n}",
+      "roleLabel": "Rola {n}",
+      "remove": "Usuń wiersz {n}",
+      "add": "Dodaj kolejną osobę",
+      "pasteHint": "Wskazówka: wklej listę adresów e-mail do dowolnego wiersza.",
+      "rolesHint": "Administratorzy zarządzają ustawieniami, osobami i dziennikiem audytu. Członkowie tworzą formularze i pracują z odpowiedziami."
+    },
+    "firstForm": {
+      "blank": "Pusty formularz",
+      "blankDesc": "Zacznij od zera",
+      "fields": "Pola: {count} | Pola: {count}",
+      "hint": "Wszystko możesz później zmienić w edytorze.",
+      "untitled": "Formularz bez tytułu"
+    },
+    "preview": {
+      "title": "Podgląd",
+      "date": "Data",
+      "time": "Aktualna godzina",
+      "number": "Liczba",
+      "price": "Cena",
+      "week": "Tydzień zaczyna się w",
+      "pending": "Zaproszenie oczekuje",
+      "noInvites": "Zaproszone osoby pojawią się tutaj.",
+      "submit": "Wyślij"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Opinie klientów"
+      },
+      "event_registration": {
+        "name": "Rejestracja na wydarzenie"
+      },
+      "job_application": {
+        "name": "Aplikacja o pracę"
+      },
+      "employee_onboarding": {
+        "name": "Wdrożenie pracownika"
+      },
+      "contact_lead": {
+        "name": "Kontakt / lead"
+      },
+      "incident_report": {
+        "name": "Zgłoszenie incydentu"
+      }
     }
   }
 }

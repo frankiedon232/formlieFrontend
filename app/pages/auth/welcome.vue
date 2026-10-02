@@ -14,8 +14,8 @@ onMounted(async () => {
   try {
     if (!ticket) throw new ApiError('FRM-AUTH-1010', 'Invalid token.')
     await auth.exchangeTicket(ticket)
-    // F5: onboarding wizard goes here.
-    await navigateTo('/forms', { replace: true })
+    // A brand-new workspace continues with the set-up wizard (F5).
+    await navigateTo('/onboarding', { replace: true })
   } catch (error) {
     handle(error)
     failed.value = true

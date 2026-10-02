@@ -443,7 +443,18 @@
       "brand_colour": "Brand colour",
       "session_timeout_minutes": "Session timeout (minutes)",
       "sign_in_methods": "Sign-in methods",
-      "response_status": "Response status"
+      "response_status": "Response status",
+      "industry": "Industry",
+      "size": "Organisation size",
+      "country": "Country",
+      "website": "Website",
+      "logo": "Logo",
+      "language": "Language",
+      "timezone": "Time zone",
+      "currency": "Currency",
+      "date_format": "Date format",
+      "number_format": "Number format",
+      "week_start": "First day of the week"
     },
     "action": {
       "auth_login_succeeded": "Signed in",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook added",
       "integrations_api_key_created": "API key created",
       "integrations_api_key_revoked": "API key revoked",
-      "audit_exported": "Audit trail exported"
+      "audit_exported": "Audit trail exported",
+      "workspace_setup_completed": "Workspace setup finished"
     },
     "detail": {
       "who": "Who",
@@ -522,6 +534,164 @@
       "ready": "Your file is ready",
       "download": "Download",
       "expires": "The download link works once and expires {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Workspace setup",
+    "later": "Finish later",
+    "heading": "Set up {name}",
+    "subheading": "A few quick steps to make the workspace yours. Skip anything and come back later from Settings.",
+    "stepOf": "Step {n} of {total}",
+    "progress": "{done} of {total} steps done",
+    "skip": "Skip for now",
+    "continue": "Continue",
+    "finish": "Finish setup",
+    "choose": "Choose…",
+    "optional": "Optional",
+    "menu": "Workspace setup",
+    "settingsCard": {
+      "title": "Workspace setup",
+      "desc": "Company details, branding, regional settings, team and a first form — revisit any step.",
+      "open": "Open"
+    },
+    "steps": {
+      "company": {
+        "title": "Company",
+        "desc": "Tell us a little about your organisation."
+      },
+      "branding": {
+        "title": "Branding",
+        "desc": "Your logo and colour on sign-in pages and forms."
+      },
+      "localisation": {
+        "title": "Regional settings",
+        "desc": "Language, time and formats used across the workspace."
+      },
+      "team": {
+        "title": "Invite your team",
+        "desc": "Add the people you work with. You can also do this later."
+      },
+      "first_form": {
+        "title": "First form",
+        "desc": "Start from a template or a blank form."
+      }
+    },
+    "company": {
+      "name": "Company or organisation name",
+      "nameHint": "Shown to your team and respondents",
+      "nameRequired": "Enter at least 2 characters.",
+      "industry": "Industry",
+      "country": "Country",
+      "size": "Organisation size",
+      "people": "{range} people",
+      "website": "Website",
+      "websiteInvalid": "Enter a valid web address."
+    },
+    "industry": {
+      "professional_services": "Professional services",
+      "legal": "Legal",
+      "finance": "Finance & insurance",
+      "healthcare": "Healthcare",
+      "education": "Education",
+      "government": "Government & public sector",
+      "non_profit": "Non-profit",
+      "technology": "Technology",
+      "retail": "Retail & e-commerce",
+      "manufacturing": "Manufacturing",
+      "hospitality": "Hospitality & travel",
+      "real_estate": "Real estate",
+      "logistics": "Transport & logistics",
+      "energy": "Energy & utilities",
+      "media": "Media & marketing",
+      "other": "Other"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Square images look best. PNG, JPG or WebP, up to 2 MB.",
+      "logoAlt": "Workspace logo",
+      "current": "Current logo",
+      "remove": "Remove",
+      "drop": "Drop your logo here or click to browse",
+      "types": "PNG, JPG or WebP · up to 2 MB",
+      "badType": "Use a PNG, JPG or WebP image.",
+      "tooBig": "The file is larger than 2 MB.",
+      "uploadFailed": "The upload didn't go through. Try again.",
+      "colour": "Brand colour",
+      "colourHint": "Used for buttons and accents on your sign-in page and forms.",
+      "custom": "Custom",
+      "hex": "Hex colour",
+      "reset": "Use default"
+    },
+    "localisation": {
+      "language": "Workspace language",
+      "languageHint": "Default for emails and new forms. Everyone still picks their own app language.",
+      "currency": "Currency",
+      "currencyHint": "For prices and payment fields",
+      "timezone": "Time zone",
+      "timezoneHint": "Used for dates in exports, schedules and reminders",
+      "dateFormat": "Date format",
+      "numberFormat": "Number format",
+      "weekStart": "First day of the week",
+      "week": {
+        "monday": "Monday",
+        "sunday": "Sunday",
+        "saturday": "Saturday"
+      }
+    },
+    "team": {
+      "member": "Member",
+      "admin": "Admin",
+      "owner": "Owner",
+      "invalid": "Enter a valid email address.",
+      "self": "That's you — you're already in.",
+      "duplicate": "This email is already in the list.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "Email {n}",
+      "roleLabel": "Role {n}",
+      "remove": "Remove row {n}",
+      "add": "Add another",
+      "pasteHint": "Tip: paste a list of emails into any row.",
+      "rolesHint": "Admins manage settings, people and the audit trail. Members create forms and work with responses."
+    },
+    "firstForm": {
+      "blank": "Blank form",
+      "blankDesc": "Start from scratch",
+      "fields": "{count} field | {count} fields",
+      "hint": "You can change everything later in the builder.",
+      "untitled": "Untitled form"
+    },
+    "preview": {
+      "title": "Preview",
+      "date": "Date",
+      "time": "Time now",
+      "number": "Number",
+      "price": "Price",
+      "week": "Week starts on",
+      "pending": "Invitation pending",
+      "noInvites": "People you invite appear here.",
+      "submit": "Submit"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Customer feedback"
+      },
+      "event_registration": {
+        "name": "Event registration"
+      },
+      "job_application": {
+        "name": "Job application"
+      },
+      "employee_onboarding": {
+        "name": "Employee onboarding"
+      },
+      "contact_lead": {
+        "name": "Contact / lead form"
+      },
+      "incident_report": {
+        "name": "Incident report"
+      }
     }
   }
 }

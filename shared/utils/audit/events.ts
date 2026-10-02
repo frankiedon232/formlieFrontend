@@ -37,6 +37,7 @@ export const AUDIT_EVENTS = {
   // Workspace
   'workspace.created': { area: 'workspace', icon: 'i-lucide-building-2' },
   'workspace.updated': { area: 'workspace', icon: 'i-lucide-building' },
+  'workspace.setup_completed': { area: 'workspace', icon: 'i-lucide-party-popper' },
   // Forms
   'forms.created': { area: 'forms', icon: 'i-lucide-file-plus' },
   'forms.updated': { area: 'forms', icon: 'i-lucide-file-pen' },
@@ -83,4 +84,15 @@ export const AUDIT_FIELDS = [
   'session_timeout_minutes',
   'sign_in_methods',
   'response_status',
+  'industry',
+  'size',
+  'country',
+  'website',
+  'logo',
+  'language',
+  'timezone',
+  'currency',
+  'date_format',
+  'number_format',
+  'week_start',
 ] as const

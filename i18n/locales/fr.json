@@ -443,7 +443,18 @@
       "brand_colour": "Couleur de marque",
       "session_timeout_minutes": "Expiration de session (minutes)",
       "sign_in_methods": "Méthodes de connexion",
-      "response_status": "Statut de la réponse"
+      "response_status": "Statut de la réponse",
+      "industry": "Secteur",
+      "size": "Taille de l’organisation",
+      "country": "Pays",
+      "website": "Site web",
+      "logo": "Logo",
+      "language": "Langue",
+      "timezone": "Fuseau horaire",
+      "currency": "Devise",
+      "date_format": "Format de date",
+      "number_format": "Format des nombres",
+      "week_start": "Premier jour de la semaine"
     },
     "action": {
       "auth_login_succeeded": "Connexion",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook ajouté",
       "integrations_api_key_created": "Clé API créée",
       "integrations_api_key_revoked": "Clé API révoquée",
-      "audit_exported": "Journal d’audit exporté"
+      "audit_exported": "Journal d’audit exporté",
+      "workspace_setup_completed": "Configuration de l’espace terminée"
     },
     "detail": {
       "who": "Qui",
@@ -522,6 +534,164 @@
       "ready": "Votre fichier est prêt",
       "download": "Télécharger",
       "expires": "Le lien de téléchargement ne fonctionne qu’une fois et expire {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Configuration de l’espace",
+    "later": "Terminer plus tard",
+    "heading": "Configurer {name}",
+    "subheading": "Quelques étapes rapides pour personnaliser l’espace de travail. Passez ce que vous voulez et revenez plus tard depuis les Paramètres.",
+    "stepOf": "Étape {n} sur {total}",
+    "progress": "{done} étapes sur {total} terminées",
+    "skip": "Passer pour l’instant",
+    "continue": "Continuer",
+    "finish": "Terminer la configuration",
+    "choose": "Choisir…",
+    "optional": "Facultatif",
+    "menu": "Configuration de l’espace",
+    "settingsCard": {
+      "title": "Configuration de l’espace",
+      "desc": "Entreprise, image de marque, paramètres régionaux, équipe et premier formulaire — revenez sur n’importe quelle étape.",
+      "open": "Ouvrir"
+    },
+    "steps": {
+      "company": {
+        "title": "Entreprise",
+        "desc": "Parlez-nous un peu de votre organisation."
+      },
+      "branding": {
+        "title": "Image de marque",
+        "desc": "Votre logo et votre couleur sur les pages de connexion et les formulaires."
+      },
+      "localisation": {
+        "title": "Paramètres régionaux",
+        "desc": "Langue, heure et formats utilisés dans l’espace de travail."
+      },
+      "team": {
+        "title": "Inviter votre équipe",
+        "desc": "Ajoutez les personnes avec qui vous travaillez. Vous pourrez aussi le faire plus tard."
+      },
+      "first_form": {
+        "title": "Premier formulaire",
+        "desc": "Partez d’un modèle ou d’un formulaire vierge."
+      }
+    },
+    "company": {
+      "name": "Nom de l’entreprise ou de l’organisation",
+      "nameHint": "Visible par votre équipe et les répondants",
+      "nameRequired": "Saisissez au moins 2 caractères.",
+      "industry": "Secteur",
+      "country": "Pays",
+      "size": "Taille de l’organisation",
+      "people": "{range} personnes",
+      "website": "Site web",
+      "websiteInvalid": "Saisissez une adresse web valide."
+    },
+    "industry": {
+      "professional_services": "Services professionnels",
+      "legal": "Juridique",
+      "finance": "Finance et assurance",
+      "healthcare": "Santé",
+      "education": "Éducation",
+      "government": "Administration et secteur public",
+      "non_profit": "Associatif",
+      "technology": "Technologie",
+      "retail": "Commerce et e-commerce",
+      "manufacturing": "Industrie",
+      "hospitality": "Hôtellerie et voyage",
+      "real_estate": "Immobilier",
+      "logistics": "Transport et logistique",
+      "energy": "Énergie et services publics",
+      "media": "Médias et marketing",
+      "other": "Autre"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Les images carrées rendent mieux. PNG, JPG ou WebP, 2 Mo max.",
+      "logoAlt": "Logo de l’espace de travail",
+      "current": "Logo actuel",
+      "remove": "Supprimer",
+      "drop": "Déposez votre logo ici ou cliquez pour parcourir",
+      "types": "PNG, JPG ou WebP · 2 Mo max.",
+      "badType": "Utilisez une image PNG, JPG ou WebP.",
+      "tooBig": "Le fichier dépasse 2 Mo.",
+      "uploadFailed": "L’envoi n’a pas abouti. Réessayez.",
+      "colour": "Couleur de marque",
+      "colourHint": "Utilisée pour les boutons et les accents de votre page de connexion et de vos formulaires.",
+      "custom": "Personnalisée",
+      "hex": "Couleur hexadécimale",
+      "reset": "Par défaut"
+    },
+    "localisation": {
+      "language": "Langue de l’espace",
+      "languageHint": "Par défaut pour les e-mails et les nouveaux formulaires. Chacun choisit toujours la langue de son application.",
+      "currency": "Devise",
+      "currencyHint": "Pour les prix et les champs de paiement",
+      "timezone": "Fuseau horaire",
+      "timezoneHint": "Utilisé pour les dates des exports, plannings et rappels",
+      "dateFormat": "Format de date",
+      "numberFormat": "Format des nombres",
+      "weekStart": "Premier jour de la semaine",
+      "week": {
+        "monday": "Lundi",
+        "sunday": "Dimanche",
+        "saturday": "Samedi"
+      }
+    },
+    "team": {
+      "member": "Membre",
+      "admin": "Administrateur",
+      "owner": "Propriétaire",
+      "invalid": "Saisissez une adresse e-mail valide.",
+      "self": "C’est vous — vous en faites déjà partie.",
+      "duplicate": "Cette adresse est déjà dans la liste.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "E-mail {n}",
+      "roleLabel": "Rôle {n}",
+      "remove": "Supprimer la ligne {n}",
+      "add": "Ajouter une personne",
+      "pasteHint": "Astuce : collez une liste d’e-mails dans n’importe quelle ligne.",
+      "rolesHint": "Les administrateurs gèrent les paramètres, les personnes et le journal d’audit. Les membres créent des formulaires et traitent les réponses."
+    },
+    "firstForm": {
+      "blank": "Formulaire vierge",
+      "blankDesc": "Partir de zéro",
+      "fields": "{count} champ | {count} champs",
+      "hint": "Vous pourrez tout modifier ensuite dans l’éditeur.",
+      "untitled": "Formulaire sans titre"
+    },
+    "preview": {
+      "title": "Aperçu",
+      "date": "Date",
+      "time": "Heure actuelle",
+      "number": "Nombre",
+      "price": "Prix",
+      "week": "La semaine commence le",
+      "pending": "Invitation en attente",
+      "noInvites": "Les personnes invitées apparaissent ici.",
+      "submit": "Envoyer"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Avis clients"
+      },
+      "event_registration": {
+        "name": "Inscription à un événement"
+      },
+      "job_application": {
+        "name": "Candidature"
+      },
+      "employee_onboarding": {
+        "name": "Intégration des employés"
+      },
+      "contact_lead": {
+        "name": "Contact / prospect"
+      },
+      "incident_report": {
+        "name": "Déclaration d’incident"
+      }
     }
   }
 }

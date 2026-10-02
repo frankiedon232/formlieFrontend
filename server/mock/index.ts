@@ -7,6 +7,8 @@ import * as audit from './routes/audit'
 import * as auth from './routes/auth'
 import { listFolders, listForms } from './routes/forms'
 import { navigationCounts } from './routes/navigation'
+import * as onboarding from './routes/onboarding'
+import * as uploads from './routes/uploads'
 import { csrf, handshake, health } from './routes/system'
 import * as tenants from './routes/tenants'
 
@@ -37,6 +39,14 @@ const router = createRouter()
   .get('/forms', listForms)
   .get('/folders', listFolders)
   .get('/navigation/counts', navigationCounts)
+  // onboarding + uploads
+  .get('/onboarding', onboarding.getOnboarding)
+  .patch('/onboarding', onboarding.patchOnboarding)
+  .post('/onboarding/finish', onboarding.finishOnboarding)
+  .post('/uploads', uploads.createUpload)
+  .post('/uploads/:id/complete', uploads.completeUpload)
+  .put('/storage/:token', uploads.storeUpload)
+  .get('/files/:id', uploads.serveFile)
   // audit trail
   .get('/audit-logs', audit.listAuditLogs)
   .get('/audit-logs/facets', audit.auditFacets)

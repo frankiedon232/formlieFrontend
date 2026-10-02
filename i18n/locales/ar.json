@@ -443,7 +443,18 @@
       "brand_colour": "لون العلامة التجارية",
       "session_timeout_minutes": "مهلة الجلسة (دقائق)",
       "sign_in_methods": "طرق تسجيل الدخول",
-      "response_status": "حالة الرد"
+      "response_status": "حالة الرد",
+      "industry": "القطاع",
+      "size": "حجم المؤسسة",
+      "country": "الدولة",
+      "website": "الموقع الإلكتروني",
+      "logo": "الشعار",
+      "language": "اللغة",
+      "timezone": "المنطقة الزمنية",
+      "currency": "العملة",
+      "date_format": "تنسيق التاريخ",
+      "number_format": "تنسيق الأرقام",
+      "week_start": "أول أيام الأسبوع"
     },
     "action": {
       "auth_login_succeeded": "سجّل الدخول",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "أُضيف Webhook",
       "integrations_api_key_created": "أُنشئ مفتاح API",
       "integrations_api_key_revoked": "أُلغي مفتاح API",
-      "audit_exported": "صُدّر سجل التدقيق"
+      "audit_exported": "صُدّر سجل التدقيق",
+      "workspace_setup_completed": "اكتمل إعداد مساحة العمل"
     },
     "detail": {
       "who": "من",
@@ -522,6 +534,164 @@
       "ready": "ملفك جاهز",
       "download": "تنزيل",
       "expires": "يعمل رابط التنزيل مرة واحدة وتنتهي صلاحيته {time}."
+    }
+  },
+  "onboarding": {
+    "title": "إعداد مساحة العمل",
+    "later": "إنهاء لاحقًا",
+    "heading": "إعداد {name}",
+    "subheading": "خطوات سريعة قليلة لتجعل مساحة العمل مناسبة لك. تخطَّ ما تشاء وعُد لاحقًا من الإعدادات.",
+    "stepOf": "الخطوة {n} من {total}",
+    "progress": "اكتملت {done} من {total} خطوات",
+    "skip": "تخطٍّ الآن",
+    "continue": "متابعة",
+    "finish": "إنهاء الإعداد",
+    "choose": "اختر…",
+    "optional": "اختياري",
+    "menu": "إعداد مساحة العمل",
+    "settingsCard": {
+      "title": "إعداد مساحة العمل",
+      "desc": "الشركة والعلامة التجارية والإعدادات الإقليمية والفريق وأول نموذج — ارجع إلى أي خطوة.",
+      "open": "فتح"
+    },
+    "steps": {
+      "company": {
+        "title": "الشركة",
+        "desc": "أخبرنا قليلًا عن مؤسستك."
+      },
+      "branding": {
+        "title": "العلامة التجارية",
+        "desc": "شعارك ولونك في صفحات تسجيل الدخول والنماذج."
+      },
+      "localisation": {
+        "title": "الإعدادات الإقليمية",
+        "desc": "اللغة والوقت والتنسيقات المستخدمة في مساحة العمل."
+      },
+      "team": {
+        "title": "ادعُ فريقك",
+        "desc": "أضف الأشخاص الذين تعمل معهم. يمكنك فعل ذلك لاحقًا أيضًا."
+      },
+      "first_form": {
+        "title": "أول نموذج",
+        "desc": "ابدأ بقالب أو بنموذج فارغ."
+      }
+    },
+    "company": {
+      "name": "اسم الشركة أو المؤسسة",
+      "nameHint": "يظهر لفريقك وللمستجيبين",
+      "nameRequired": "أدخل حرفين على الأقل.",
+      "industry": "القطاع",
+      "country": "الدولة",
+      "size": "حجم المؤسسة",
+      "people": "{range} أشخاص",
+      "website": "الموقع الإلكتروني",
+      "websiteInvalid": "أدخل عنوان ويب صالحًا."
+    },
+    "industry": {
+      "professional_services": "الخدمات المهنية",
+      "legal": "القانون",
+      "finance": "المالية والتأمين",
+      "healthcare": "الرعاية الصحية",
+      "education": "التعليم",
+      "government": "الحكومة والقطاع العام",
+      "non_profit": "غير ربحي",
+      "technology": "التقنية",
+      "retail": "التجزئة والتجارة الإلكترونية",
+      "manufacturing": "التصنيع",
+      "hospitality": "الضيافة والسفر",
+      "real_estate": "العقارات",
+      "logistics": "النقل والخدمات اللوجستية",
+      "energy": "الطاقة والمرافق",
+      "media": "الإعلام والتسويق",
+      "other": "أخرى"
+    },
+    "branding": {
+      "logo": "الشعار",
+      "logoHint": "الصور المربعة تبدو أفضل. PNG أو JPG أو WebP، حتى 2 ميغابايت.",
+      "logoAlt": "شعار مساحة العمل",
+      "current": "الشعار الحالي",
+      "remove": "إزالة",
+      "drop": "أفلت شعارك هنا أو انقر للاستعراض",
+      "types": "PNG أو JPG أو WebP · حتى 2 ميغابايت",
+      "badType": "استخدم صورة PNG أو JPG أو WebP.",
+      "tooBig": "حجم الملف أكبر من 2 ميغابايت.",
+      "uploadFailed": "لم يكتمل الرفع. حاول مرة أخرى.",
+      "colour": "لون العلامة التجارية",
+      "colourHint": "يُستخدم للأزرار والتفاصيل في صفحة تسجيل الدخول والنماذج.",
+      "custom": "مخصص",
+      "hex": "لون سداسي عشري",
+      "reset": "استخدام الافتراضي"
+    },
+    "localisation": {
+      "language": "لغة مساحة العمل",
+      "languageHint": "الافتراضية للرسائل والنماذج الجديدة. يختار كل شخص لغة تطبيقه كما هو.",
+      "currency": "العملة",
+      "currencyHint": "للأسعار وحقول الدفع",
+      "timezone": "المنطقة الزمنية",
+      "timezoneHint": "للتواريخ في التصدير والجداول والتذكيرات",
+      "dateFormat": "تنسيق التاريخ",
+      "numberFormat": "تنسيق الأرقام",
+      "weekStart": "أول أيام الأسبوع",
+      "week": {
+        "monday": "الاثنين",
+        "sunday": "الأحد",
+        "saturday": "السبت"
+      }
+    },
+    "team": {
+      "member": "عضو",
+      "admin": "مسؤول",
+      "owner": "المالك",
+      "invalid": "أدخل بريدًا إلكترونيًا صالحًا.",
+      "self": "هذا أنت — أنت موجود بالفعل.",
+      "duplicate": "هذا البريد موجود في القائمة بالفعل.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "البريد {n}",
+      "roleLabel": "الدور {n}",
+      "remove": "إزالة الصف {n}",
+      "add": "إضافة شخص آخر",
+      "pasteHint": "نصيحة: الصق قائمة رسائل بريد في أي صف.",
+      "rolesHint": "يدير المسؤولون الإعدادات والأشخاص وسجل التدقيق. ينشئ الأعضاء النماذج ويعملون على الردود."
+    },
+    "firstForm": {
+      "blank": "نموذج فارغ",
+      "blankDesc": "البدء من الصفر",
+      "fields": "حقل واحد ({count}) | عدد الحقول: {count}",
+      "hint": "يمكنك تغيير كل شيء لاحقًا في المحرر.",
+      "untitled": "نموذج بلا عنوان"
+    },
+    "preview": {
+      "title": "معاينة",
+      "date": "التاريخ",
+      "time": "الوقت الآن",
+      "number": "رقم",
+      "price": "السعر",
+      "week": "يبدأ الأسبوع يوم",
+      "pending": "الدعوة قيد الانتظار",
+      "noInvites": "يظهر هنا من تدعوهم.",
+      "submit": "إرسال"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "آراء العملاء"
+      },
+      "event_registration": {
+        "name": "التسجيل في فعالية"
+      },
+      "job_application": {
+        "name": "طلب توظيف"
+      },
+      "employee_onboarding": {
+        "name": "تهيئة الموظفين"
+      },
+      "contact_lead": {
+        "name": "تواصل / عميل محتمل"
+      },
+      "incident_report": {
+        "name": "بلاغ عن حادث"
+      }
     }
   }
 }

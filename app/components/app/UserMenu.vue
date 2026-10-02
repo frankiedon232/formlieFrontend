@@ -39,6 +39,9 @@ const items = computed<DropdownMenuItem[][]>(() => [
   [
     { label: t('user.profile'), icon: 'i-lucide-circle-user', to: '/profile' },
     { label: t('nav.settings'), icon: 'i-lucide-settings', to: '/settings' },
+    ...(session.user.value?.role === 'member'
+      ? []
+      : [{ label: t('onboarding.menu'), icon: 'i-lucide-list-checks', to: '/onboarding' }]),
   ],
   [
     {

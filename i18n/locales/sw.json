@@ -443,7 +443,18 @@
       "brand_colour": "Rangi ya chapa",
       "session_timeout_minutes": "Muda wa kikao kuisha (dakika)",
       "sign_in_methods": "Njia za kuingia",
-      "response_status": "Hali ya jibu"
+      "response_status": "Hali ya jibu",
+      "industry": "Sekta",
+      "size": "Ukubwa wa shirika",
+      "country": "Nchi",
+      "website": "Tovuti",
+      "logo": "Nembo",
+      "language": "Lugha",
+      "timezone": "Saa za eneo",
+      "currency": "Sarafu",
+      "date_format": "Muundo wa tarehe",
+      "number_format": "Muundo wa namba",
+      "week_start": "Siku ya kwanza ya wiki"
     },
     "action": {
       "auth_login_succeeded": "Ameingia",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook imeongezwa",
       "integrations_api_key_created": "Ufunguo wa API umeundwa",
       "integrations_api_key_revoked": "Ufunguo wa API umebatilishwa",
-      "audit_exported": "Kumbukumbu za ukaguzi zimehamishwa"
+      "audit_exported": "Kumbukumbu za ukaguzi zimehamishwa",
+      "workspace_setup_completed": "Kuweka eneo la kazi kumekamilika"
     },
     "detail": {
       "who": "Nani",
@@ -522,6 +534,164 @@
       "ready": "Faili lako liko tayari",
       "download": "Pakua",
       "expires": "Kiungo cha kupakua hufanya kazi mara moja na kitaisha muda {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Kuweka eneo la kazi",
+    "later": "Maliza baadaye",
+    "heading": "Weka {name}",
+    "subheading": "Hatua chache za haraka ili eneo la kazi liwe lako. Ruka yoyote na urudi baadaye kupitia Mipangilio.",
+    "stepOf": "Hatua {n} kati ya {total}",
+    "progress": "Hatua {done} kati ya {total} zimekamilika",
+    "skip": "Ruka kwa sasa",
+    "continue": "Endelea",
+    "finish": "Maliza kuweka",
+    "choose": "Chagua…",
+    "optional": "Si lazima",
+    "menu": "Kuweka eneo la kazi",
+    "settingsCard": {
+      "title": "Kuweka eneo la kazi",
+      "desc": "Kampuni, chapa, mipangilio ya eneo, timu na fomu ya kwanza — rudi kwenye hatua yoyote.",
+      "open": "Fungua"
+    },
+    "steps": {
+      "company": {
+        "title": "Kampuni",
+        "desc": "Tueleze kidogo kuhusu shirika lako."
+      },
+      "branding": {
+        "title": "Chapa",
+        "desc": "Nembo na rangi yako kwenye kurasa za kuingia na fomu."
+      },
+      "localisation": {
+        "title": "Mipangilio ya eneo",
+        "desc": "Lugha, saa na miundo inayotumika katika eneo la kazi."
+      },
+      "team": {
+        "title": "Alika timu yako",
+        "desc": "Ongeza watu unaofanya kazi nao. Unaweza pia kufanya hivi baadaye."
+      },
+      "first_form": {
+        "title": "Fomu ya kwanza",
+        "desc": "Anza na kiolezo au fomu tupu."
+      }
+    },
+    "company": {
+      "name": "Jina la kampuni au shirika",
+      "nameHint": "Huonekana kwa timu yako na wanaojibu",
+      "nameRequired": "Weka angalau herufi 2.",
+      "industry": "Sekta",
+      "country": "Nchi",
+      "size": "Ukubwa wa shirika",
+      "people": "Watu {range}",
+      "website": "Tovuti",
+      "websiteInvalid": "Weka anwani sahihi ya tovuti."
+    },
+    "industry": {
+      "professional_services": "Huduma za kitaalamu",
+      "legal": "Sheria",
+      "finance": "Fedha na bima",
+      "healthcare": "Afya",
+      "education": "Elimu",
+      "government": "Serikali na sekta ya umma",
+      "non_profit": "Isiyo ya faida",
+      "technology": "Teknolojia",
+      "retail": "Rejareja na biashara mtandaoni",
+      "manufacturing": "Utengenezaji",
+      "hospitality": "Ukarimu na usafiri",
+      "real_estate": "Majengo",
+      "logistics": "Usafirishaji na lojistiki",
+      "energy": "Nishati na huduma",
+      "media": "Vyombo vya habari na masoko",
+      "other": "Nyingine"
+    },
+    "branding": {
+      "logo": "Nembo",
+      "logoHint": "Picha za mraba huonekana vizuri zaidi. PNG, JPG au WebP, hadi MB 2.",
+      "logoAlt": "Nembo ya eneo la kazi",
+      "current": "Nembo ya sasa",
+      "remove": "Ondoa",
+      "drop": "Dondosha nembo yako hapa au bofya kuchagua",
+      "types": "PNG, JPG au WebP · hadi MB 2",
+      "badType": "Tumia picha ya PNG, JPG au WebP.",
+      "tooBig": "Faili ni kubwa kuliko MB 2.",
+      "uploadFailed": "Upakiaji haukufaulu. Jaribu tena.",
+      "colour": "Rangi ya chapa",
+      "colourHint": "Hutumika kwa vitufe na mapambo kwenye ukurasa wa kuingia na fomu.",
+      "custom": "Maalum",
+      "hex": "Rangi ya hex",
+      "reset": "Tumia chaguo-msingi"
+    },
+    "localisation": {
+      "language": "Lugha ya eneo la kazi",
+      "languageHint": "Chaguo-msingi kwa barua pepe na fomu mpya. Kila mtu bado huchagua lugha ya programu yake.",
+      "currency": "Sarafu",
+      "currencyHint": "Kwa bei na sehemu za malipo",
+      "timezone": "Saa za eneo",
+      "timezoneHint": "Kwa tarehe katika uhamishaji, ratiba na vikumbusho",
+      "dateFormat": "Muundo wa tarehe",
+      "numberFormat": "Muundo wa namba",
+      "weekStart": "Siku ya kwanza ya wiki",
+      "week": {
+        "monday": "Jumatatu",
+        "sunday": "Jumapili",
+        "saturday": "Jumamosi"
+      }
+    },
+    "team": {
+      "member": "Mwanachama",
+      "admin": "Msimamizi",
+      "owner": "Mmiliki",
+      "invalid": "Weka anwani sahihi ya barua pepe.",
+      "self": "Huyo ni wewe — tayari uko ndani.",
+      "duplicate": "Barua pepe hii tayari iko kwenye orodha.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "Barua pepe {n}",
+      "roleLabel": "Jukumu {n}",
+      "remove": "Ondoa safu {n}",
+      "add": "Ongeza mwingine",
+      "pasteHint": "Kidokezo: bandika orodha ya barua pepe kwenye safu yoyote.",
+      "rolesHint": "Wasimamizi husimamia mipangilio, watu na kumbukumbu za ukaguzi. Wanachama huunda fomu na kushughulikia majibu."
+    },
+    "firstForm": {
+      "blank": "Fomu tupu",
+      "blankDesc": "Anza mwanzo",
+      "fields": "Sehemu {count} | Sehemu {count}",
+      "hint": "Unaweza kubadilisha kila kitu baadaye kwenye kijenzi.",
+      "untitled": "Fomu isiyo na jina"
+    },
+    "preview": {
+      "title": "Onyesho la awali",
+      "date": "Tarehe",
+      "time": "Saa ya sasa",
+      "number": "Namba",
+      "price": "Bei",
+      "week": "Wiki huanza",
+      "pending": "Mwaliko unasubiri",
+      "noInvites": "Watu unaowaalika wataonekana hapa.",
+      "submit": "Tuma"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Maoni ya wateja"
+      },
+      "event_registration": {
+        "name": "Usajili wa tukio"
+      },
+      "job_application": {
+        "name": "Ombi la kazi"
+      },
+      "employee_onboarding": {
+        "name": "Kuwakaribisha wafanyakazi"
+      },
+      "contact_lead": {
+        "name": "Mawasiliano / mteja mtarajiwa"
+      },
+      "incident_report": {
+        "name": "Ripoti ya tukio"
+      }
     }
   }
 }

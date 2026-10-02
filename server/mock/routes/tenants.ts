@@ -34,8 +34,8 @@ export const publicProfile = defineMockRoute(({ event }) => {
     mode: 'tenant',
     name: tenant.name,
     subdomain: tenant.subdomain,
-    logo_url: null,
-    colors: { primary: null },
+    logo_url: tenant.logo_url ?? null,
+    colors: { primary: tenant.brand_color ?? null },
     auth_providers: tenant.auth_providers,
     status: tenant.status,
   })

@@ -443,7 +443,18 @@
       "brand_colour": "品牌颜色",
       "session_timeout_minutes": "会话超时（分钟）",
       "sign_in_methods": "登录方式",
-      "response_status": "回复状态"
+      "response_status": "回复状态",
+      "industry": "行业",
+      "size": "组织规模",
+      "country": "国家/地区",
+      "website": "网站",
+      "logo": "徽标",
+      "language": "语言",
+      "timezone": "时区",
+      "currency": "货币",
+      "date_format": "日期格式",
+      "number_format": "数字格式",
+      "week_start": "每周第一天"
     },
     "action": {
       "auth_login_succeeded": "已登录",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "已添加 Webhook",
       "integrations_api_key_created": "已创建 API 密钥",
       "integrations_api_key_revoked": "已撤销 API 密钥",
-      "audit_exported": "已导出审计日志"
+      "audit_exported": "已导出审计日志",
+      "workspace_setup_completed": "工作区设置已完成"
     },
     "detail": {
       "who": "谁",
@@ -522,6 +534,164 @@
       "ready": "文件已就绪",
       "download": "下载",
       "expires": "下载链接仅可使用一次，将于{time}失效。"
+    }
+  },
+  "onboarding": {
+    "title": "工作区设置",
+    "later": "稍后完成",
+    "heading": "设置 {name}",
+    "subheading": "只需几个简单步骤即可完成工作区设置。可跳过任意步骤，稍后在“设置”中继续。",
+    "stepOf": "第 {n} 步，共 {total} 步",
+    "progress": "已完成 {done}/{total} 步",
+    "skip": "暂时跳过",
+    "continue": "继续",
+    "finish": "完成设置",
+    "choose": "请选择…",
+    "optional": "可选",
+    "menu": "工作区设置",
+    "settingsCard": {
+      "title": "工作区设置",
+      "desc": "公司信息、品牌、区域设置、团队和首个表单——可随时返回任一步骤。",
+      "open": "打开"
+    },
+    "steps": {
+      "company": {
+        "title": "公司",
+        "desc": "简单介绍一下您的组织。"
+      },
+      "branding": {
+        "title": "品牌",
+        "desc": "登录页面和表单上的徽标与颜色。"
+      },
+      "localisation": {
+        "title": "区域设置",
+        "desc": "工作区使用的语言、时间和格式。"
+      },
+      "team": {
+        "title": "邀请团队",
+        "desc": "添加与您共事的人。也可以稍后再做。"
+      },
+      "first_form": {
+        "title": "首个表单",
+        "desc": "从模板或空白表单开始。"
+      }
+    },
+    "company": {
+      "name": "公司或组织名称",
+      "nameHint": "团队成员和填写者可见",
+      "nameRequired": "请至少输入 2 个字符。",
+      "industry": "行业",
+      "country": "国家/地区",
+      "size": "组织规模",
+      "people": "{range} 人",
+      "website": "网站",
+      "websiteInvalid": "请输入有效的网址。"
+    },
+    "industry": {
+      "professional_services": "专业服务",
+      "legal": "法律",
+      "finance": "金融与保险",
+      "healthcare": "医疗健康",
+      "education": "教育",
+      "government": "政府与公共部门",
+      "non_profit": "非营利组织",
+      "technology": "科技",
+      "retail": "零售与电商",
+      "manufacturing": "制造业",
+      "hospitality": "酒店与旅游",
+      "real_estate": "房地产",
+      "logistics": "运输与物流",
+      "energy": "能源与公用事业",
+      "media": "媒体与营销",
+      "other": "其他"
+    },
+    "branding": {
+      "logo": "徽标",
+      "logoHint": "方形图片效果最佳。PNG、JPG 或 WebP，最大 2 MB。",
+      "logoAlt": "工作区徽标",
+      "current": "当前徽标",
+      "remove": "移除",
+      "drop": "将徽标拖到此处或点击选择",
+      "types": "PNG、JPG 或 WebP · 最大 2 MB",
+      "badType": "请使用 PNG、JPG 或 WebP 图片。",
+      "tooBig": "文件超过 2 MB。",
+      "uploadFailed": "上传未成功，请重试。",
+      "colour": "品牌颜色",
+      "colourHint": "用于登录页面和表单中的按钮与强调色。",
+      "custom": "自定义",
+      "hex": "十六进制颜色",
+      "reset": "使用默认"
+    },
+    "localisation": {
+      "language": "工作区语言",
+      "languageHint": "邮件和新表单的默认语言。每个人仍可选择自己的应用语言。",
+      "currency": "货币",
+      "currencyHint": "用于价格和付款字段",
+      "timezone": "时区",
+      "timezoneHint": "用于导出、日程和提醒中的日期",
+      "dateFormat": "日期格式",
+      "numberFormat": "数字格式",
+      "weekStart": "每周第一天",
+      "week": {
+        "monday": "星期一",
+        "sunday": "星期日",
+        "saturday": "星期六"
+      }
+    },
+    "team": {
+      "member": "成员",
+      "admin": "管理员",
+      "owner": "所有者",
+      "invalid": "请输入有效的电子邮箱地址。",
+      "self": "这是您本人——您已在工作区中。",
+      "duplicate": "此邮箱已在列表中。",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "邮箱 {n}",
+      "roleLabel": "角色 {n}",
+      "remove": "删除第 {n} 行",
+      "add": "再添加一位",
+      "pasteHint": "提示：可在任意一行粘贴邮箱列表。",
+      "rolesHint": "管理员管理设置、人员和审计日志。成员创建表单并处理回复。"
+    },
+    "firstForm": {
+      "blank": "空白表单",
+      "blankDesc": "从零开始",
+      "fields": "{count} 个字段 | {count} 个字段",
+      "hint": "之后可在编辑器中修改所有内容。",
+      "untitled": "未命名表单"
+    },
+    "preview": {
+      "title": "预览",
+      "date": "日期",
+      "time": "当前时间",
+      "number": "数字",
+      "price": "价格",
+      "week": "每周开始于",
+      "pending": "邀请待接受",
+      "noInvites": "您邀请的人会显示在这里。",
+      "submit": "提交"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "客户反馈"
+      },
+      "event_registration": {
+        "name": "活动报名"
+      },
+      "job_application": {
+        "name": "职位申请"
+      },
+      "employee_onboarding": {
+        "name": "员工入职"
+      },
+      "contact_lead": {
+        "name": "联系 / 潜在客户"
+      },
+      "incident_report": {
+        "name": "事件报告"
+      }
     }
   }
 }

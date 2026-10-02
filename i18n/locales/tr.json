@@ -443,7 +443,18 @@
       "brand_colour": "Marka rengi",
       "session_timeout_minutes": "Oturum zaman aşımı (dakika)",
       "sign_in_methods": "Giriş yöntemleri",
-      "response_status": "Yanıt durumu"
+      "response_status": "Yanıt durumu",
+      "industry": "Sektör",
+      "size": "Kuruluş büyüklüğü",
+      "country": "Ülke",
+      "website": "Web sitesi",
+      "logo": "Logo",
+      "language": "Dil",
+      "timezone": "Saat dilimi",
+      "currency": "Para birimi",
+      "date_format": "Tarih biçimi",
+      "number_format": "Sayı biçimi",
+      "week_start": "Haftanın ilk günü"
     },
     "action": {
       "auth_login_succeeded": "Giriş yapıldı",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook eklendi",
       "integrations_api_key_created": "API anahtarı oluşturuldu",
       "integrations_api_key_revoked": "API anahtarı iptal edildi",
-      "audit_exported": "Denetim kaydı dışa aktarıldı"
+      "audit_exported": "Denetim kaydı dışa aktarıldı",
+      "workspace_setup_completed": "Çalışma alanı kurulumu tamamlandı"
     },
     "detail": {
       "who": "Kim",
@@ -522,6 +534,164 @@
       "ready": "Dosyanız hazır",
       "download": "İndir",
       "expires": "İndirme bağlantısı bir kez çalışır ve {time} süresi dolar."
+    }
+  },
+  "onboarding": {
+    "title": "Çalışma alanı kurulumu",
+    "later": "Sonra bitir",
+    "heading": "{name} kurulumu",
+    "subheading": "Çalışma alanını size göre ayarlamak için birkaç kısa adım. İstediğinizi atlayın, sonra Ayarlar’dan devam edin.",
+    "stepOf": "Adım {n}/{total}",
+    "progress": "{done}/{total} adım tamamlandı",
+    "skip": "Şimdilik atla",
+    "continue": "Devam",
+    "finish": "Kurulumu bitir",
+    "choose": "Seçin…",
+    "optional": "İsteğe bağlı",
+    "menu": "Çalışma alanı kurulumu",
+    "settingsCard": {
+      "title": "Çalışma alanı kurulumu",
+      "desc": "Şirket, marka, bölge ayarları, ekip ve ilk form — istediğiniz adıma geri dönün.",
+      "open": "Aç"
+    },
+    "steps": {
+      "company": {
+        "title": "Şirket",
+        "desc": "Bize kuruluşunuzdan biraz bahsedin."
+      },
+      "branding": {
+        "title": "Marka",
+        "desc": "Giriş sayfalarında ve formlarda logonuz ve renginiz."
+      },
+      "localisation": {
+        "title": "Bölge ayarları",
+        "desc": "Çalışma alanında kullanılan dil, saat ve biçimler."
+      },
+      "team": {
+        "title": "Ekibinizi davet edin",
+        "desc": "Birlikte çalıştığınız kişileri ekleyin. Bunu sonra da yapabilirsiniz."
+      },
+      "first_form": {
+        "title": "İlk form",
+        "desc": "Bir şablonla veya boş bir formla başlayın."
+      }
+    },
+    "company": {
+      "name": "Şirket veya kuruluş adı",
+      "nameHint": "Ekibiniz ve yanıtlayanlar görür",
+      "nameRequired": "En az 2 karakter girin.",
+      "industry": "Sektör",
+      "country": "Ülke",
+      "size": "Kuruluş büyüklüğü",
+      "people": "{range} kişi",
+      "website": "Web sitesi",
+      "websiteInvalid": "Geçerli bir web adresi girin."
+    },
+    "industry": {
+      "professional_services": "Profesyonel hizmetler",
+      "legal": "Hukuk",
+      "finance": "Finans ve sigorta",
+      "healthcare": "Sağlık",
+      "education": "Eğitim",
+      "government": "Kamu sektörü",
+      "non_profit": "Kâr amacı gütmeyen",
+      "technology": "Teknoloji",
+      "retail": "Perakende ve e-ticaret",
+      "manufacturing": "Üretim",
+      "hospitality": "Konaklama ve seyahat",
+      "real_estate": "Gayrimenkul",
+      "logistics": "Ulaşım ve lojistik",
+      "energy": "Enerji ve altyapı",
+      "media": "Medya ve pazarlama",
+      "other": "Diğer"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Kare görseller en iyi görünür. PNG, JPG veya WebP, en fazla 2 MB.",
+      "logoAlt": "Çalışma alanı logosu",
+      "current": "Mevcut logo",
+      "remove": "Kaldır",
+      "drop": "Logonuzu buraya bırakın veya seçmek için tıklayın",
+      "types": "PNG, JPG veya WebP · en fazla 2 MB",
+      "badType": "PNG, JPG veya WebP görseli kullanın.",
+      "tooBig": "Dosya 2 MB’tan büyük.",
+      "uploadFailed": "Yükleme tamamlanamadı. Tekrar deneyin.",
+      "colour": "Marka rengi",
+      "colourHint": "Giriş sayfanızdaki ve formlarınızdaki düğme ve vurgularda kullanılır.",
+      "custom": "Özel",
+      "hex": "Hex renk",
+      "reset": "Varsayılanı kullan"
+    },
+    "localisation": {
+      "language": "Çalışma alanı dili",
+      "languageHint": "E-postalar ve yeni formlar için varsayılan. Herkes yine kendi uygulama dilini seçer.",
+      "currency": "Para birimi",
+      "currencyHint": "Fiyatlar ve ödeme alanları için",
+      "timezone": "Saat dilimi",
+      "timezoneHint": "Dışa aktarma, zamanlama ve hatırlatmalardaki tarihler için",
+      "dateFormat": "Tarih biçimi",
+      "numberFormat": "Sayı biçimi",
+      "weekStart": "Haftanın ilk günü",
+      "week": {
+        "monday": "Pazartesi",
+        "sunday": "Pazar",
+        "saturday": "Cumartesi"
+      }
+    },
+    "team": {
+      "member": "Üye",
+      "admin": "Yönetici",
+      "owner": "Sahip",
+      "invalid": "Geçerli bir e-posta adresi girin.",
+      "self": "Bu sizsiniz — zaten buradasınız.",
+      "duplicate": "Bu e-posta zaten listede.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "E-posta {n}",
+      "roleLabel": "Rol {n}",
+      "remove": "{n}. satırı kaldır",
+      "add": "Başka birini ekle",
+      "pasteHint": "İpucu: herhangi bir satıra e-posta listesi yapıştırın.",
+      "rolesHint": "Yöneticiler ayarları, kişileri ve denetim kaydını yönetir. Üyeler form oluşturur ve yanıtlarla çalışır."
+    },
+    "firstForm": {
+      "blank": "Boş form",
+      "blankDesc": "Sıfırdan başla",
+      "fields": "{count} alan | {count} alan",
+      "hint": "Her şeyi daha sonra düzenleyicide değiştirebilirsiniz.",
+      "untitled": "Adsız form"
+    },
+    "preview": {
+      "title": "Önizleme",
+      "date": "Tarih",
+      "time": "Şu anki saat",
+      "number": "Sayı",
+      "price": "Fiyat",
+      "week": "Hafta şu gün başlar",
+      "pending": "Davet bekliyor",
+      "noInvites": "Davet ettiğiniz kişiler burada görünür.",
+      "submit": "Gönder"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Müşteri geri bildirimi"
+      },
+      "event_registration": {
+        "name": "Etkinlik kaydı"
+      },
+      "job_application": {
+        "name": "İş başvurusu"
+      },
+      "employee_onboarding": {
+        "name": "Çalışan oryantasyonu"
+      },
+      "contact_lead": {
+        "name": "İletişim / potansiyel müşteri"
+      },
+      "incident_report": {
+        "name": "Olay bildirimi"
+      }
     }
   }
 }

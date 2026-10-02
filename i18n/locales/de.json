@@ -443,7 +443,18 @@
       "brand_colour": "Markenfarbe",
       "session_timeout_minutes": "Sitzungs-Timeout (Minuten)",
       "sign_in_methods": "Anmeldemethoden",
-      "response_status": "Antwortstatus"
+      "response_status": "Antwortstatus",
+      "industry": "Branche",
+      "size": "Größe der Organisation",
+      "country": "Land",
+      "website": "Website",
+      "logo": "Logo",
+      "language": "Sprache",
+      "timezone": "Zeitzone",
+      "currency": "Währung",
+      "date_format": "Datumsformat",
+      "number_format": "Zahlenformat",
+      "week_start": "Erster Wochentag"
     },
     "action": {
       "auth_login_succeeded": "Angemeldet",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook hinzugefügt",
       "integrations_api_key_created": "API-Schlüssel erstellt",
       "integrations_api_key_revoked": "API-Schlüssel widerrufen",
-      "audit_exported": "Audit-Protokoll exportiert"
+      "audit_exported": "Audit-Protokoll exportiert",
+      "workspace_setup_completed": "Einrichtung des Arbeitsbereichs abgeschlossen"
     },
     "detail": {
       "who": "Wer",
@@ -522,6 +534,164 @@
       "ready": "Ihre Datei ist bereit",
       "download": "Herunterladen",
       "expires": "Der Download-Link funktioniert einmal und läuft {time} ab."
+    }
+  },
+  "onboarding": {
+    "title": "Einrichtung des Arbeitsbereichs",
+    "later": "Später fertigstellen",
+    "heading": "{name} einrichten",
+    "subheading": "Ein paar kurze Schritte, damit der Arbeitsbereich zu Ihnen passt. Überspringen Sie, was Sie möchten, und machen Sie später in den Einstellungen weiter.",
+    "stepOf": "Schritt {n} von {total}",
+    "progress": "{done} von {total} Schritten erledigt",
+    "skip": "Vorerst überspringen",
+    "continue": "Weiter",
+    "finish": "Einrichtung abschließen",
+    "choose": "Auswählen…",
+    "optional": "Optional",
+    "menu": "Einrichtung des Arbeitsbereichs",
+    "settingsCard": {
+      "title": "Einrichtung des Arbeitsbereichs",
+      "desc": "Unternehmen, Branding, Regionaleinstellungen, Team und erstes Formular – jeden Schritt erneut aufrufen.",
+      "open": "Öffnen"
+    },
+    "steps": {
+      "company": {
+        "title": "Unternehmen",
+        "desc": "Erzählen Sie uns kurz etwas über Ihre Organisation."
+      },
+      "branding": {
+        "title": "Branding",
+        "desc": "Ihr Logo und Ihre Farbe auf Anmeldeseiten und Formularen."
+      },
+      "localisation": {
+        "title": "Regionaleinstellungen",
+        "desc": "Sprache, Zeit und Formate im gesamten Arbeitsbereich."
+      },
+      "team": {
+        "title": "Team einladen",
+        "desc": "Fügen Sie die Menschen hinzu, mit denen Sie arbeiten. Das geht auch später."
+      },
+      "first_form": {
+        "title": "Erstes Formular",
+        "desc": "Mit einer Vorlage oder einem leeren Formular beginnen."
+      }
+    },
+    "company": {
+      "name": "Name des Unternehmens oder der Organisation",
+      "nameHint": "Für Ihr Team und Antwortende sichtbar",
+      "nameRequired": "Geben Sie mindestens 2 Zeichen ein.",
+      "industry": "Branche",
+      "country": "Land",
+      "size": "Größe der Organisation",
+      "people": "{range} Personen",
+      "website": "Website",
+      "websiteInvalid": "Geben Sie eine gültige Webadresse ein."
+    },
+    "industry": {
+      "professional_services": "Beratung & Dienstleistungen",
+      "legal": "Recht",
+      "finance": "Finanzen & Versicherungen",
+      "healthcare": "Gesundheitswesen",
+      "education": "Bildung",
+      "government": "Verwaltung & öffentlicher Sektor",
+      "non_profit": "Gemeinnützig",
+      "technology": "Technologie",
+      "retail": "Handel & E-Commerce",
+      "manufacturing": "Produktion",
+      "hospitality": "Gastgewerbe & Reisen",
+      "real_estate": "Immobilien",
+      "logistics": "Transport & Logistik",
+      "energy": "Energie & Versorgung",
+      "media": "Medien & Marketing",
+      "other": "Sonstiges"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Quadratische Bilder wirken am besten. PNG, JPG oder WebP, bis 2 MB.",
+      "logoAlt": "Logo des Arbeitsbereichs",
+      "current": "Aktuelles Logo",
+      "remove": "Entfernen",
+      "drop": "Logo hier ablegen oder zum Auswählen klicken",
+      "types": "PNG, JPG oder WebP · bis 2 MB",
+      "badType": "Verwenden Sie ein PNG-, JPG- oder WebP-Bild.",
+      "tooBig": "Die Datei ist größer als 2 MB.",
+      "uploadFailed": "Der Upload hat nicht geklappt. Versuchen Sie es erneut.",
+      "colour": "Markenfarbe",
+      "colourHint": "Für Schaltflächen und Akzente auf Ihrer Anmeldeseite und Ihren Formularen.",
+      "custom": "Eigene",
+      "hex": "Hex-Farbe",
+      "reset": "Standard verwenden"
+    },
+    "localisation": {
+      "language": "Sprache des Arbeitsbereichs",
+      "languageHint": "Standard für E-Mails und neue Formulare. Jede Person wählt weiterhin ihre eigene App-Sprache.",
+      "currency": "Währung",
+      "currencyHint": "Für Preise und Zahlungsfelder",
+      "timezone": "Zeitzone",
+      "timezoneHint": "Für Datumsangaben in Exporten, Zeitplänen und Erinnerungen",
+      "dateFormat": "Datumsformat",
+      "numberFormat": "Zahlenformat",
+      "weekStart": "Erster Wochentag",
+      "week": {
+        "monday": "Montag",
+        "sunday": "Sonntag",
+        "saturday": "Samstag"
+      }
+    },
+    "team": {
+      "member": "Mitglied",
+      "admin": "Administrator",
+      "owner": "Inhaber",
+      "invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+      "self": "Das sind Sie – Sie sind schon dabei.",
+      "duplicate": "Diese E-Mail steht schon in der Liste.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "E-Mail {n}",
+      "roleLabel": "Rolle {n}",
+      "remove": "Zeile {n} entfernen",
+      "add": "Weitere Person hinzufügen",
+      "pasteHint": "Tipp: Fügen Sie eine Liste von E-Mails in eine beliebige Zeile ein.",
+      "rolesHint": "Administratoren verwalten Einstellungen, Personen und das Audit-Protokoll. Mitglieder erstellen Formulare und bearbeiten Antworten."
+    },
+    "firstForm": {
+      "blank": "Leeres Formular",
+      "blankDesc": "Von Grund auf beginnen",
+      "fields": "{count} Feld | {count} Felder",
+      "hint": "Im Editor können Sie später alles ändern.",
+      "untitled": "Unbenanntes Formular"
+    },
+    "preview": {
+      "title": "Vorschau",
+      "date": "Datum",
+      "time": "Aktuelle Uhrzeit",
+      "number": "Zahl",
+      "price": "Preis",
+      "week": "Die Woche beginnt am",
+      "pending": "Einladung ausstehend",
+      "noInvites": "Eingeladene Personen erscheinen hier.",
+      "submit": "Absenden"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Kundenfeedback"
+      },
+      "event_registration": {
+        "name": "Veranstaltungsanmeldung"
+      },
+      "job_application": {
+        "name": "Bewerbung"
+      },
+      "employee_onboarding": {
+        "name": "Mitarbeiter-Onboarding"
+      },
+      "contact_lead": {
+        "name": "Kontakt / Lead"
+      },
+      "incident_report": {
+        "name": "Vorfallmeldung"
+      }
     }
   }
 }

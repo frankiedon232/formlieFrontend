@@ -443,7 +443,18 @@
       "brand_colour": "ブランドカラー",
       "session_timeout_minutes": "セッションのタイムアウト（分）",
       "sign_in_methods": "ログイン方法",
-      "response_status": "回答のステータス"
+      "response_status": "回答のステータス",
+      "industry": "業種",
+      "size": "組織の規模",
+      "country": "国",
+      "website": "ウェブサイト",
+      "logo": "ロゴ",
+      "language": "言語",
+      "timezone": "タイムゾーン",
+      "currency": "通貨",
+      "date_format": "日付の形式",
+      "number_format": "数値の形式",
+      "week_start": "週の始まり"
     },
     "action": {
       "auth_login_succeeded": "ログインしました",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook を追加しました",
       "integrations_api_key_created": "API キーを作成しました",
       "integrations_api_key_revoked": "API キーを取り消しました",
-      "audit_exported": "監査ログをエクスポートしました"
+      "audit_exported": "監査ログをエクスポートしました",
+      "workspace_setup_completed": "ワークスペースの設定が完了しました"
     },
     "detail": {
       "who": "誰が",
@@ -522,6 +534,164 @@
       "ready": "ファイルの準備ができました",
       "download": "ダウンロード",
       "expires": "ダウンロードリンクは 1 回だけ使え、{time}に期限切れになります。"
+    }
+  },
+  "onboarding": {
+    "title": "ワークスペースの設定",
+    "later": "あとで完了する",
+    "heading": "{name} を設定",
+    "subheading": "ワークスペースを使いやすくするための簡単なステップです。スキップしても、あとで設定から再開できます。",
+    "stepOf": "ステップ {n} / {total}",
+    "progress": "{total} 件中 {done} 件完了",
+    "skip": "今はスキップ",
+    "continue": "続ける",
+    "finish": "設定を完了",
+    "choose": "選択…",
+    "optional": "任意",
+    "menu": "ワークスペースの設定",
+    "settingsCard": {
+      "title": "ワークスペースの設定",
+      "desc": "会社情報、ブランド、地域設定、チーム、最初のフォーム — どのステップにも戻れます。",
+      "open": "開く"
+    },
+    "steps": {
+      "company": {
+        "title": "会社",
+        "desc": "組織について少し教えてください。"
+      },
+      "branding": {
+        "title": "ブランド",
+        "desc": "ログインページとフォームに表示するロゴと色。"
+      },
+      "localisation": {
+        "title": "地域設定",
+        "desc": "ワークスペースで使う言語、時刻、表示形式。"
+      },
+      "team": {
+        "title": "チームを招待",
+        "desc": "一緒に働くメンバーを追加します。あとからでも追加できます。"
+      },
+      "first_form": {
+        "title": "最初のフォーム",
+        "desc": "テンプレートか空のフォームから始めます。"
+      }
+    },
+    "company": {
+      "name": "会社名または組織名",
+      "nameHint": "チームと回答者に表示されます",
+      "nameRequired": "2 文字以上入力してください。",
+      "industry": "業種",
+      "country": "国",
+      "size": "組織の規模",
+      "people": "{range} 人",
+      "website": "ウェブサイト",
+      "websiteInvalid": "有効なウェブアドレスを入力してください。"
+    },
+    "industry": {
+      "professional_services": "専門サービス",
+      "legal": "法律",
+      "finance": "金融・保険",
+      "healthcare": "医療",
+      "education": "教育",
+      "government": "行政・公共",
+      "non_profit": "非営利",
+      "technology": "テクノロジー",
+      "retail": "小売・EC",
+      "manufacturing": "製造",
+      "hospitality": "宿泊・旅行",
+      "real_estate": "不動産",
+      "logistics": "運輸・物流",
+      "energy": "エネルギー・インフラ",
+      "media": "メディア・マーケティング",
+      "other": "その他"
+    },
+    "branding": {
+      "logo": "ロゴ",
+      "logoHint": "正方形の画像がきれいに表示されます。PNG、JPG、WebP、最大 2 MB。",
+      "logoAlt": "ワークスペースのロゴ",
+      "current": "現在のロゴ",
+      "remove": "削除",
+      "drop": "ここにロゴをドロップするか、クリックして選択",
+      "types": "PNG、JPG、WebP · 最大 2 MB",
+      "badType": "PNG、JPG、WebP の画像を使用してください。",
+      "tooBig": "ファイルが 2 MB を超えています。",
+      "uploadFailed": "アップロードできませんでした。もう一度お試しください。",
+      "colour": "ブランドカラー",
+      "colourHint": "ログインページやフォームのボタン、アクセントに使われます。",
+      "custom": "カスタム",
+      "hex": "16 進カラー",
+      "reset": "デフォルトを使用"
+    },
+    "localisation": {
+      "language": "ワークスペースの言語",
+      "languageHint": "メールと新しいフォームの既定の言語です。アプリの表示言語は各自が選べます。",
+      "currency": "通貨",
+      "currencyHint": "価格と支払い項目に使用",
+      "timezone": "タイムゾーン",
+      "timezoneHint": "エクスポート、スケジュール、リマインダーの日付に使用",
+      "dateFormat": "日付の形式",
+      "numberFormat": "数値の形式",
+      "weekStart": "週の始まり",
+      "week": {
+        "monday": "月曜日",
+        "sunday": "日曜日",
+        "saturday": "土曜日"
+      }
+    },
+    "team": {
+      "member": "メンバー",
+      "admin": "管理者",
+      "owner": "オーナー",
+      "invalid": "有効なメールアドレスを入力してください。",
+      "self": "ご本人です — すでに参加しています。",
+      "duplicate": "このメールアドレスはすでにリストにあります。",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "メール {n}",
+      "roleLabel": "ロール {n}",
+      "remove": "{n} 行目を削除",
+      "add": "さらに追加",
+      "pasteHint": "ヒント: メールアドレスの一覧を任意の行に貼り付けられます。",
+      "rolesHint": "管理者は設定、メンバー、監査ログを管理します。メンバーはフォームを作成し、回答を扱います。"
+    },
+    "firstForm": {
+      "blank": "空のフォーム",
+      "blankDesc": "ゼロから作成",
+      "fields": "{count} 項目 | {count} 項目",
+      "hint": "あとからビルダーですべて変更できます。",
+      "untitled": "無題のフォーム"
+    },
+    "preview": {
+      "title": "プレビュー",
+      "date": "日付",
+      "time": "現在時刻",
+      "number": "数値",
+      "price": "価格",
+      "week": "週の始まり",
+      "pending": "招待中",
+      "noInvites": "招待したメンバーがここに表示されます。",
+      "submit": "送信"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "顧客フィードバック"
+      },
+      "event_registration": {
+        "name": "イベント申し込み"
+      },
+      "job_application": {
+        "name": "求人応募"
+      },
+      "employee_onboarding": {
+        "name": "入社手続き"
+      },
+      "contact_lead": {
+        "name": "お問い合わせ / リード"
+      },
+      "incident_report": {
+        "name": "インシデント報告"
+      }
     }
   }
 }

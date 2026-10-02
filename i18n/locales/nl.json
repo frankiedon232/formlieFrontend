@@ -443,7 +443,18 @@
       "brand_colour": "Merkkleur",
       "session_timeout_minutes": "Sessietime-out (minuten)",
       "sign_in_methods": "Inlogmethoden",
-      "response_status": "Reactiestatus"
+      "response_status": "Reactiestatus",
+      "industry": "Branche",
+      "size": "Grootte van de organisatie",
+      "country": "Land",
+      "website": "Website",
+      "logo": "Logo",
+      "language": "Taal",
+      "timezone": "Tijdzone",
+      "currency": "Valuta",
+      "date_format": "Datumnotatie",
+      "number_format": "Getalnotatie",
+      "week_start": "Eerste dag van de week"
     },
     "action": {
       "auth_login_succeeded": "Ingelogd",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook toegevoegd",
       "integrations_api_key_created": "API-sleutel aangemaakt",
       "integrations_api_key_revoked": "API-sleutel ingetrokken",
-      "audit_exported": "Audittrail geëxporteerd"
+      "audit_exported": "Audittrail geëxporteerd",
+      "workspace_setup_completed": "Werkruimte ingesteld"
     },
     "detail": {
       "who": "Wie",
@@ -522,6 +534,164 @@
       "ready": "Je bestand is klaar",
       "download": "Downloaden",
       "expires": "De downloadlink werkt één keer en verloopt {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Werkruimte instellen",
+    "later": "Later afronden",
+    "heading": "{name} instellen",
+    "subheading": "Een paar korte stappen om de werkruimte eigen te maken. Sla over wat je wilt en ga later verder via Instellingen.",
+    "stepOf": "Stap {n} van {total}",
+    "progress": "{done} van {total} stappen klaar",
+    "skip": "Nu overslaan",
+    "continue": "Doorgaan",
+    "finish": "Instellen afronden",
+    "choose": "Kiezen…",
+    "optional": "Optioneel",
+    "menu": "Werkruimte instellen",
+    "settingsCard": {
+      "title": "Werkruimte instellen",
+      "desc": "Bedrijf, huisstijl, regionale instellingen, team en eerste formulier — open elke stap opnieuw.",
+      "open": "Openen"
+    },
+    "steps": {
+      "company": {
+        "title": "Bedrijf",
+        "desc": "Vertel ons iets over je organisatie."
+      },
+      "branding": {
+        "title": "Huisstijl",
+        "desc": "Je logo en kleur op inlogpagina’s en formulieren."
+      },
+      "localisation": {
+        "title": "Regionale instellingen",
+        "desc": "Taal, tijd en notaties in de hele werkruimte."
+      },
+      "team": {
+        "title": "Nodig je team uit",
+        "desc": "Voeg de mensen toe met wie je werkt. Dat kan ook later."
+      },
+      "first_form": {
+        "title": "Eerste formulier",
+        "desc": "Begin met een sjabloon of een leeg formulier."
+      }
+    },
+    "company": {
+      "name": "Naam van bedrijf of organisatie",
+      "nameHint": "Zichtbaar voor je team en respondenten",
+      "nameRequired": "Vul minstens 2 tekens in.",
+      "industry": "Branche",
+      "country": "Land",
+      "size": "Grootte van de organisatie",
+      "people": "{range} personen",
+      "website": "Website",
+      "websiteInvalid": "Vul een geldig webadres in."
+    },
+    "industry": {
+      "professional_services": "Zakelijke dienstverlening",
+      "legal": "Juridisch",
+      "finance": "Financiën en verzekeringen",
+      "healthcare": "Zorg",
+      "education": "Onderwijs",
+      "government": "Overheid en publieke sector",
+      "non_profit": "Non-profit",
+      "technology": "Technologie",
+      "retail": "Retail en e-commerce",
+      "manufacturing": "Productie",
+      "hospitality": "Horeca en reizen",
+      "real_estate": "Vastgoed",
+      "logistics": "Transport en logistiek",
+      "energy": "Energie en nutsvoorzieningen",
+      "media": "Media en marketing",
+      "other": "Overig"
+    },
+    "branding": {
+      "logo": "Logo",
+      "logoHint": "Vierkante afbeeldingen werken het best. PNG, JPG of WebP, tot 2 MB.",
+      "logoAlt": "Logo van de werkruimte",
+      "current": "Huidig logo",
+      "remove": "Verwijderen",
+      "drop": "Sleep je logo hierheen of klik om te bladeren",
+      "types": "PNG, JPG of WebP · tot 2 MB",
+      "badType": "Gebruik een PNG-, JPG- of WebP-afbeelding.",
+      "tooBig": "Het bestand is groter dan 2 MB.",
+      "uploadFailed": "Uploaden is niet gelukt. Probeer het opnieuw.",
+      "colour": "Merkkleur",
+      "colourHint": "Voor knoppen en accenten op je inlogpagina en formulieren.",
+      "custom": "Aangepast",
+      "hex": "Hexkleur",
+      "reset": "Standaard gebruiken"
+    },
+    "localisation": {
+      "language": "Taal van de werkruimte",
+      "languageHint": "Standaard voor e-mails en nieuwe formulieren. Iedereen kiest nog steeds zijn eigen app-taal.",
+      "currency": "Valuta",
+      "currencyHint": "Voor prijzen en betaalvelden",
+      "timezone": "Tijdzone",
+      "timezoneHint": "Voor datums in exports, planningen en herinneringen",
+      "dateFormat": "Datumnotatie",
+      "numberFormat": "Getalnotatie",
+      "weekStart": "Eerste dag van de week",
+      "week": {
+        "monday": "Maandag",
+        "sunday": "Zondag",
+        "saturday": "Zaterdag"
+      }
+    },
+    "team": {
+      "member": "Lid",
+      "admin": "Beheerder",
+      "owner": "Eigenaar",
+      "invalid": "Vul een geldig e-mailadres in.",
+      "self": "Dat ben jij — je doet al mee.",
+      "duplicate": "Dit e-mailadres staat al in de lijst.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "E-mail {n}",
+      "roleLabel": "Rol {n}",
+      "remove": "Rij {n} verwijderen",
+      "add": "Nog iemand toevoegen",
+      "pasteHint": "Tip: plak een lijst met e-mailadressen in een willekeurige rij.",
+      "rolesHint": "Beheerders beheren instellingen, mensen en de audittrail. Leden maken formulieren en werken met reacties."
+    },
+    "firstForm": {
+      "blank": "Leeg formulier",
+      "blankDesc": "Vanaf nul beginnen",
+      "fields": "{count} veld | {count} velden",
+      "hint": "Je kunt later alles aanpassen in de editor.",
+      "untitled": "Naamloos formulier"
+    },
+    "preview": {
+      "title": "Voorbeeld",
+      "date": "Datum",
+      "time": "Huidige tijd",
+      "number": "Getal",
+      "price": "Prijs",
+      "week": "De week begint op",
+      "pending": "Uitnodiging openstaand",
+      "noInvites": "Mensen die je uitnodigt verschijnen hier.",
+      "submit": "Versturen"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Klantfeedback"
+      },
+      "event_registration": {
+        "name": "Evenementregistratie"
+      },
+      "job_application": {
+        "name": "Sollicitatie"
+      },
+      "employee_onboarding": {
+        "name": "Onboarding van medewerkers"
+      },
+      "contact_lead": {
+        "name": "Contact / lead"
+      },
+      "incident_report": {
+        "name": "Incidentmelding"
+      }
     }
   }
 }

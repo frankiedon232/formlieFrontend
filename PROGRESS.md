@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F4 — Audit trail (review) → next F5 — Onboarding wizard
+**Last updated:** 2026-10-02 · **Current phase:** F5 — Onboarding wizard (review) → next F6 — Forms list and lifecycle
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -15,7 +15,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F2    | Core plumbing                                     | ✅     | 100% |
 | F3    | Workspace detection + sign-in                     | ✅     | 100% |
 | F4    | Audit trail                                       | ✅     | 100% |
-| F5    | Onboarding wizard                                 | ⬜     | 0%   |
+| F5    | Onboarding wizard                                 | ✅     | 100% |
 | F6    | Forms list and lifecycle                          | ⬜     | 10%  |
 | F7    | Form builder                                      | ⬜     | 0%   |
 | F8    | Designer (themes)                                 | ⬜     | 0%   |
@@ -234,19 +234,23 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F5 — Onboarding wizard ⬜
+## F5 — Onboarding wizard ✅
 
 **Goal:** a new workspace is ready to use in a few skippable steps.
 
-- ⬜ Wizard page with stepper and progress (resume where the user left off)
-- ⬜ Step: company details (legal name, industry, size, country)
-- ⬜ Step: branding (logo upload with progress, brand colour, preview)
-- ⬜ Step: localisation (country, timezone, currency, language, date / number format)
-- ⬜ Step: invite team (optional; emails + role)
-- ⬜ Step: first form (pick a template or start blank)
-- ⬜ Skip / back on every step, finish → Forms
-- ⬜ Mock endpoints `GET/PATCH /onboarding`
-- ⬜ Shown after signup; reachable later from Settings
+- ✅ Full-screen wizard (`/onboarding`, own layout: brand · language · theme · Finish later) with stepper (any step can be opened), phone progress bar and live preview (sign-in page, regional samples, team, form)
+- ✅ Resume where the admin left off (progress stored on the server per workspace)
+- ✅ Step: company details (name, industry, size, country with flags, website — `https://` added automatically)
+- ✅ Step: branding (logo upload with real progress via pre-signed URL, brand colour presets + custom picker, live preview)
+- ✅ Step: regional settings (workspace language, timezone with UTC offsets, currency, date / number format with live examples, first day of the week) — defaults from the device and the company's country
+- ✅ Step: invite team (email + role rows, paste a list, duplicates / own email caught)
+- ✅ Step: first form (blank or one of 6 starter templates) — finishing opens it in `/forms/new`
+- ✅ Skip / back on every step, finish → chosen form (or Forms)
+- ✅ Mock endpoints `GET / PATCH /onboarding`, `POST /onboarding/finish`, uploads (`POST /uploads` → PUT to storage → `POST /uploads/{id}/complete`)
+- ✅ Every saved step recorded in the audit trail (workspace / branding / localisation changes with before → after, invitations, setup finished)
+- ✅ Shown after signup (welcome hand-off); reachable later from Settings and the user menu (owners / admins); members are sent to Forms
+- ⬜ Workspace logo in the rail and on the sign-in page (the public profile already returns `logo_url` and brand colour) → F12 Branding
+- ⏸ Real invitation emails (F15 Users), real object storage
 
 ---
 
@@ -600,3 +604,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                                                                                                                                                          |
 | 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access. |
 | 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                         |
+| 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                      |

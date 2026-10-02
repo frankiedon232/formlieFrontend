@@ -66,6 +66,8 @@ Edit this file whenever a decision changes.
 
 48. **Audit trail details** (F4): one event catalogue (`shared/utils/audit/events.ts`) feeds the mock, filters, labels and exports. Users carry a simple `role` (owner / admin / member) until Roles & access (F19); members get FRM-PERM-1001 and the menu entry is hidden. Failed sign-ins by unknown emails are recorded with `actor.id = null`. Exports run as background jobs; the file is fetched from a plain, single-use, 10-minute download link (a browser download cannot carry the envelope). The detail panel is addressable (`/audit?event=<id>`) so an event can be shared. Mock IPs come from the reserved documentation ranges.
 
+49. **Onboarding** (F5): a full-screen wizard (`/onboarding`, own layout) with five optional steps — company, branding, regional settings, team, first form — and a live preview. The server stores progress per workspace so it resumes anywhere; the stepper is non-linear (any step can be opened). Defaults come from the device and country (country from the browser language, timezone from the device, currency / date / number / week start from the country) and are only suggestions. Shown after signup (welcome hand-off) and reachable later from Settings and the user menu (owners / admins). Finishing opens the chosen template or a blank form. Logos go through pre-signed uploads (PNG / JPEG / WebP ≤ 2 MB, magic-byte check, no SVG).
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

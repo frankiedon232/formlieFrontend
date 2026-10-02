@@ -443,7 +443,18 @@
       "brand_colour": "Color de marca",
       "session_timeout_minutes": "Tiempo de espera de sesión (minutos)",
       "sign_in_methods": "Métodos de inicio de sesión",
-      "response_status": "Estado de la respuesta"
+      "response_status": "Estado de la respuesta",
+      "industry": "Sector",
+      "size": "Tamaño de la organización",
+      "country": "País",
+      "website": "Sitio web",
+      "logo": "Logotipo",
+      "language": "Idioma",
+      "timezone": "Zona horaria",
+      "currency": "Moneda",
+      "date_format": "Formato de fecha",
+      "number_format": "Formato de número",
+      "week_start": "Primer día de la semana"
     },
     "action": {
       "auth_login_succeeded": "Sesión iniciada",
@@ -478,7 +489,8 @@
       "integrations_webhook_created": "Webhook añadido",
       "integrations_api_key_created": "Clave de API creada",
       "integrations_api_key_revoked": "Clave de API revocada",
-      "audit_exported": "Registro de auditoría exportado"
+      "audit_exported": "Registro de auditoría exportado",
+      "workspace_setup_completed": "Configuración del espacio terminada"
     },
     "detail": {
       "who": "Quién",
@@ -522,6 +534,164 @@
       "ready": "Tu archivo está listo",
       "download": "Descargar",
       "expires": "El enlace de descarga funciona una sola vez y caduca {time}."
+    }
+  },
+  "onboarding": {
+    "title": "Configuración del espacio",
+    "later": "Terminar más tarde",
+    "heading": "Configura {name}",
+    "subheading": "Unos pasos rápidos para hacer tuyo el espacio de trabajo. Omite lo que quieras y vuelve más tarde desde Configuración.",
+    "stepOf": "Paso {n} de {total}",
+    "progress": "{done} de {total} pasos completados",
+    "skip": "Omitir por ahora",
+    "continue": "Continuar",
+    "finish": "Terminar configuración",
+    "choose": "Elegir…",
+    "optional": "Opcional",
+    "menu": "Configuración del espacio",
+    "settingsCard": {
+      "title": "Configuración del espacio",
+      "desc": "Empresa, marca, configuración regional, equipo y primer formulario: vuelve a cualquier paso.",
+      "open": "Abrir"
+    },
+    "steps": {
+      "company": {
+        "title": "Empresa",
+        "desc": "Cuéntanos un poco sobre tu organización."
+      },
+      "branding": {
+        "title": "Marca",
+        "desc": "Tu logotipo y color en las páginas de acceso y formularios."
+      },
+      "localisation": {
+        "title": "Configuración regional",
+        "desc": "Idioma, hora y formatos usados en el espacio de trabajo."
+      },
+      "team": {
+        "title": "Invita a tu equipo",
+        "desc": "Añade a las personas con las que trabajas. También puedes hacerlo más tarde."
+      },
+      "first_form": {
+        "title": "Primer formulario",
+        "desc": "Empieza con una plantilla o un formulario en blanco."
+      }
+    },
+    "company": {
+      "name": "Nombre de la empresa u organización",
+      "nameHint": "Visible para tu equipo y quienes responden",
+      "nameRequired": "Escribe al menos 2 caracteres.",
+      "industry": "Sector",
+      "country": "País",
+      "size": "Tamaño de la organización",
+      "people": "{range} personas",
+      "website": "Sitio web",
+      "websiteInvalid": "Escribe una dirección web válida."
+    },
+    "industry": {
+      "professional_services": "Servicios profesionales",
+      "legal": "Legal",
+      "finance": "Finanzas y seguros",
+      "healthcare": "Salud",
+      "education": "Educación",
+      "government": "Gobierno y sector público",
+      "non_profit": "Sin ánimo de lucro",
+      "technology": "Tecnología",
+      "retail": "Comercio y e-commerce",
+      "manufacturing": "Industria",
+      "hospitality": "Hostelería y viajes",
+      "real_estate": "Inmobiliario",
+      "logistics": "Transporte y logística",
+      "energy": "Energía y suministros",
+      "media": "Medios y marketing",
+      "other": "Otro"
+    },
+    "branding": {
+      "logo": "Logotipo",
+      "logoHint": "Las imágenes cuadradas quedan mejor. PNG, JPG o WebP, hasta 2 MB.",
+      "logoAlt": "Logotipo del espacio de trabajo",
+      "current": "Logotipo actual",
+      "remove": "Quitar",
+      "drop": "Suelta tu logotipo aquí o haz clic para buscarlo",
+      "types": "PNG, JPG o WebP · hasta 2 MB",
+      "badType": "Usa una imagen PNG, JPG o WebP.",
+      "tooBig": "El archivo supera los 2 MB.",
+      "uploadFailed": "No se pudo subir. Inténtalo de nuevo.",
+      "colour": "Color de marca",
+      "colourHint": "Se usa en botones y detalles de tu página de acceso y formularios.",
+      "custom": "Personalizado",
+      "hex": "Color hexadecimal",
+      "reset": "Usar predeterminado"
+    },
+    "localisation": {
+      "language": "Idioma del espacio",
+      "languageHint": "Predeterminado para correos y formularios nuevos. Cada persona sigue eligiendo el idioma de su aplicación.",
+      "currency": "Moneda",
+      "currencyHint": "Para precios y campos de pago",
+      "timezone": "Zona horaria",
+      "timezoneHint": "Se usa en las fechas de exportaciones, calendarios y recordatorios",
+      "dateFormat": "Formato de fecha",
+      "numberFormat": "Formato de número",
+      "weekStart": "Primer día de la semana",
+      "week": {
+        "monday": "Lunes",
+        "sunday": "Domingo",
+        "saturday": "Sábado"
+      }
+    },
+    "team": {
+      "member": "Miembro",
+      "admin": "Administrador",
+      "owner": "Propietario",
+      "invalid": "Escribe un correo electrónico válido.",
+      "self": "Eres tú: ya formas parte.",
+      "duplicate": "Este correo ya está en la lista.",
+      "placeholder": "colleague{'@'}example.com",
+      "emailLabel": "Correo {n}",
+      "roleLabel": "Rol {n}",
+      "remove": "Quitar fila {n}",
+      "add": "Añadir otra persona",
+      "pasteHint": "Consejo: pega una lista de correos en cualquier fila.",
+      "rolesHint": "Los administradores gestionan la configuración, las personas y el registro de auditoría. Los miembros crean formularios y trabajan con las respuestas."
+    },
+    "firstForm": {
+      "blank": "Formulario en blanco",
+      "blankDesc": "Empezar desde cero",
+      "fields": "{count} campo | {count} campos",
+      "hint": "Podrás cambiarlo todo después en el editor.",
+      "untitled": "Formulario sin título"
+    },
+    "preview": {
+      "title": "Vista previa",
+      "date": "Fecha",
+      "time": "Hora actual",
+      "number": "Número",
+      "price": "Precio",
+      "week": "La semana empieza el",
+      "pending": "Invitación pendiente",
+      "noInvites": "Las personas que invites aparecen aquí.",
+      "submit": "Enviar"
+    }
+  },
+  "templates": {
+    "starter": {
+      "customer_feedback": {
+        "name": "Opinión de clientes"
+      },
+      "event_registration": {
+        "name": "Registro a eventos"
+      },
+      "job_application": {
+        "name": "Solicitud de empleo"
+      },
+      "employee_onboarding": {
+        "name": "Incorporación de empleados"
+      },
+      "contact_lead": {
+        "name": "Contacto / cliente potencial"
+      },
+      "incident_report": {
+        "name": "Informe de incidencias"
+      }
     }
   }
 }
