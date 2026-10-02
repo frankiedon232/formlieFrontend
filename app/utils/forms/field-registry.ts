@@ -29,6 +29,7 @@ export type InspectorControl =
   | 'matrix_rows'
   | 'content'
   | 'collapsible'
+  | 'rich_toolbar'
   | 'image'
   | 'formula'
   | 'prefill'
@@ -54,7 +55,10 @@ const sample = (...labels: string[]) => labels.map((label, i) => ({ value: `opti
 export const FIELD_REGISTRY: Record<FieldType, RegistryEntry> = {
   short_text: { controls: [...TEXT, 'length', 'pattern'], defaults: {} },
   long_text: { controls: [...TEXT, 'length'], defaults: { props: { rows: 4 } } },
-  rich_text: { controls: ['label', 'help', 'required', 'width', 'length'], defaults: {} },
+  rich_text: {
+    controls: ['label', 'help', 'placeholder', 'required', 'width', 'length', 'rich_toolbar'],
+    defaults: { props: { toolbar: 'basic' } },
+  },
   email: { controls: TEXT, defaults: { placeholder: 'name@example.com' } },
   phone: { controls: TEXT, defaults: { placeholder: '+44 7700 900123' } },
   url: { controls: TEXT, defaults: { placeholder: 'https://' } },

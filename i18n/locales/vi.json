@@ -1073,7 +1073,11 @@
       "startCollapsed": "Bắt đầu ở dạng thu gọn",
       "numbered": "Gán số cho lựa chọn",
       "numberedHint": "Dùng cho phép tính: lựa chọn được chọn tính bằng số của nó.",
-      "optionScore": "Số cho {label}"
+      "optionScore": "Số cho {label}",
+      "toolbar": "Thanh công cụ",
+      "toolbarHint": "Những gì người trả lời có thể định dạng.",
+      "toolbarBasic": "Cơ bản",
+      "toolbarFull": "Đầy đủ"
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -1186,7 +1190,25 @@
     "thanks": "Cảm ơn bạn!",
     "moreInfo": "Thêm về “{field}”",
     "openCalendar": "Mở lịch",
-    "fileRejected": "Chưa thêm: {files}. Hãy kiểm tra loại tệp được phép và giới hạn {mb} MB."
+    "fileRejected": "Chưa thêm: {files}. Hãy kiểm tra loại tệp được phép và giới hạn {mb} MB.",
+    "rich": {
+      "heading": "Tiêu đề",
+      "subheading": "Tiêu đề phụ",
+      "bold": "In đậm",
+      "italic": "In nghiêng",
+      "underline": "Gạch chân",
+      "strike": "Gạch ngang",
+      "bullets": "Danh sách dấu đầu dòng",
+      "numbers": "Danh sách đánh số",
+      "quote": "Trích dẫn",
+      "link": "Liên kết",
+      "alignStart": "Căn đầu dòng",
+      "alignCenter": "Căn giữa",
+      "code": "Mã",
+      "clear": "Xóa định dạng",
+      "placeholder": "Viết câu trả lời…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Logic",

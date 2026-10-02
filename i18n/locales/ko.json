@@ -1073,7 +1073,11 @@
       "startCollapsed": "접힌 상태로 시작",
       "numbered": "옵션에 번호 지정",
       "numberedHint": "계산용: 선택한 옵션은 해당 번호로 계산됩니다.",
-      "optionScore": "{label}의 번호"
+      "optionScore": "{label}의 번호",
+      "toolbar": "도구 모음",
+      "toolbarHint": "응답자가 사용할 수 있는 서식입니다.",
+      "toolbarBasic": "기본",
+      "toolbarFull": "전체"
     },
     "shortcuts": {
       "title": "단축키",
@@ -1186,7 +1190,25 @@
     "thanks": "감사합니다!",
     "moreInfo": "‘{field}’ 자세히 보기",
     "openCalendar": "달력 열기",
-    "fileRejected": "추가되지 않음: {files}. 허용된 파일 형식과 {mb} MB 제한을 확인하세요."
+    "fileRejected": "추가되지 않음: {files}. 허용된 파일 형식과 {mb} MB 제한을 확인하세요.",
+    "rich": {
+      "heading": "제목",
+      "subheading": "부제목",
+      "bold": "굵게",
+      "italic": "기울임꼴",
+      "underline": "밑줄",
+      "strike": "취소선",
+      "bullets": "글머리 기호 목록",
+      "numbers": "번호 목록",
+      "quote": "인용",
+      "link": "링크",
+      "alignStart": "시작 정렬",
+      "alignCenter": "가운데 정렬",
+      "code": "코드",
+      "clear": "서식 지우기",
+      "placeholder": "답변을 입력하세요…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "로직",

@@ -1073,7 +1073,11 @@
       "startCollapsed": "Empezar plegada",
       "numbered": "Numerar las opciones",
       "numberedHint": "Para cálculos: una opción elegida cuenta como su número.",
-      "optionScore": "Número para {label}"
+      "optionScore": "Número para {label}",
+      "toolbar": "Barra de herramientas",
+      "toolbarHint": "Lo que los encuestados pueden formatear.",
+      "toolbarBasic": "Básica",
+      "toolbarFull": "Completa"
     },
     "shortcuts": {
       "title": "Atajos",
@@ -1186,7 +1190,25 @@
     "thanks": "¡Gracias!",
     "moreInfo": "Más sobre “{field}”",
     "openCalendar": "Abrir calendario",
-    "fileRejected": "No se añadió: {files}. Revisa los tipos de archivo permitidos y el límite de {mb} MB."
+    "fileRejected": "No se añadió: {files}. Revisa los tipos de archivo permitidos y el límite de {mb} MB.",
+    "rich": {
+      "heading": "Título",
+      "subheading": "Subtítulo",
+      "bold": "Negrita",
+      "italic": "Cursiva",
+      "underline": "Subrayado",
+      "strike": "Tachado",
+      "bullets": "Lista con viñetas",
+      "numbers": "Lista numerada",
+      "quote": "Cita",
+      "link": "Enlace",
+      "alignStart": "Alinear al inicio",
+      "alignCenter": "Centrar",
+      "code": "Código",
+      "clear": "Quitar formato",
+      "placeholder": "Escribe tu respuesta…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Lógica",

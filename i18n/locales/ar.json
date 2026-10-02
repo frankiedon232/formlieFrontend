@@ -1073,7 +1073,11 @@
       "startCollapsed": "يبدأ مطويًا",
       "numbered": "إعطاء الخيارات أرقامًا",
       "numberedHint": "للحسابات: يُحتسب الخيار المحدد برقمه.",
-      "optionScore": "رقم {label}"
+      "optionScore": "رقم {label}",
+      "toolbar": "شريط الأدوات",
+      "toolbarHint": "ما يمكن للمستجيبين تنسيقه.",
+      "toolbarBasic": "أساسي",
+      "toolbarFull": "كامل"
     },
     "shortcuts": {
       "title": "الاختصارات",
@@ -1186,7 +1190,25 @@
     "thanks": "شكرًا لك!",
     "moreInfo": "المزيد عن «{field}»",
     "openCalendar": "فتح التقويم",
-    "fileRejected": "لم تتم الإضافة: {files}. تحقق من أنواع الملفات المسموحة والحد الأقصى {mb} ميغابايت."
+    "fileRejected": "لم تتم الإضافة: {files}. تحقق من أنواع الملفات المسموحة والحد الأقصى {mb} ميغابايت.",
+    "rich": {
+      "heading": "عنوان",
+      "subheading": "عنوان فرعي",
+      "bold": "غامق",
+      "italic": "مائل",
+      "underline": "تسطير",
+      "strike": "يتوسطه خط",
+      "bullets": "قائمة نقطية",
+      "numbers": "قائمة مرقمة",
+      "quote": "اقتباس",
+      "link": "رابط",
+      "alignStart": "محاذاة إلى البداية",
+      "alignCenter": "توسيط",
+      "code": "شيفرة",
+      "clear": "مسح التنسيق",
+      "placeholder": "اكتب إجابتك…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "المنطق",

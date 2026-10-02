@@ -1073,7 +1073,11 @@
       "startCollapsed": "Ingeklapt starten",
       "numbered": "Opties nummeren",
       "numberedHint": "Voor berekeningen: een gekozen optie telt als haar nummer.",
-      "optionScore": "Nummer voor {label}"
+      "optionScore": "Nummer voor {label}",
+      "toolbar": "Werkbalk",
+      "toolbarHint": "Wat respondenten kunnen opmaken.",
+      "toolbarBasic": "Basis",
+      "toolbarFull": "Volledig"
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -1186,7 +1190,25 @@
     "thanks": "Bedankt!",
     "moreInfo": "Meer over “{field}”",
     "openCalendar": "Kalender openen",
-    "fileRejected": "Niet toegevoegd: {files}. Controleer de toegestane bestandstypen en de limiet van {mb} MB."
+    "fileRejected": "Niet toegevoegd: {files}. Controleer de toegestane bestandstypen en de limiet van {mb} MB.",
+    "rich": {
+      "heading": "Kop",
+      "subheading": "Subkop",
+      "bold": "Vet",
+      "italic": "Cursief",
+      "underline": "Onderstrepen",
+      "strike": "Doorhalen",
+      "bullets": "Opsomming",
+      "numbers": "Genummerde lijst",
+      "quote": "Citaat",
+      "link": "Link",
+      "alignStart": "Uitlijnen aan begin",
+      "alignCenter": "Centreren",
+      "code": "Code",
+      "clear": "Opmaak wissen",
+      "placeholder": "Schrijf je antwoord…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Logica",

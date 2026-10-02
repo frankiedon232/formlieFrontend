@@ -1073,7 +1073,11 @@
       "startCollapsed": "Na początku zwinięta",
       "numbered": "Nadaj opcjom liczby",
       "numberedHint": "Do obliczeń: wybrana opcja liczy się jako jej liczba.",
-      "optionScore": "Liczba dla {label}"
+      "optionScore": "Liczba dla {label}",
+      "toolbar": "Pasek narzędzi",
+      "toolbarHint": "Co respondenci mogą formatować.",
+      "toolbarBasic": "Podstawowy",
+      "toolbarFull": "Pełny"
     },
     "shortcuts": {
       "title": "Skróty",
@@ -1186,7 +1190,25 @@
     "thanks": "Dziękujemy!",
     "moreInfo": "Więcej o „{field}”",
     "openCalendar": "Otwórz kalendarz",
-    "fileRejected": "Nie dodano: {files}. Sprawdź dozwolone typy plików i limit {mb} MB."
+    "fileRejected": "Nie dodano: {files}. Sprawdź dozwolone typy plików i limit {mb} MB.",
+    "rich": {
+      "heading": "Nagłówek",
+      "subheading": "Podtytuł",
+      "bold": "Pogrubienie",
+      "italic": "Kursywa",
+      "underline": "Podkreślenie",
+      "strike": "Przekreślenie",
+      "bullets": "Lista punktowana",
+      "numbers": "Lista numerowana",
+      "quote": "Cytat",
+      "link": "Link",
+      "alignStart": "Wyrównaj do początku",
+      "alignCenter": "Wyśrodkuj",
+      "code": "Kod",
+      "clear": "Wyczyść formatowanie",
+      "placeholder": "Wpisz odpowiedź…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Logika",

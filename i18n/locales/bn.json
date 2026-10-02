@@ -1073,7 +1073,11 @@
       "startCollapsed": "ভাঁজ করা অবস্থায় শুরু",
       "numbered": "বিকল্পগুলোকে নম্বর দিন",
       "numberedHint": "হিসাবের জন্য: বেছে নেওয়া বিকল্প তার নম্বর হিসেবে গণ্য হয়।",
-      "optionScore": "{label}-এর নম্বর"
+      "optionScore": "{label}-এর নম্বর",
+      "toolbar": "টুলবার",
+      "toolbarHint": "উত্তরদাতারা যা ফরম্যাট করতে পারবেন।",
+      "toolbarBasic": "মৌলিক",
+      "toolbarFull": "সম্পূর্ণ"
     },
     "shortcuts": {
       "title": "শর্টকাট",
@@ -1186,7 +1190,25 @@
     "thanks": "ধন্যবাদ!",
     "moreInfo": "“{field}” সম্পর্কে আরও",
     "openCalendar": "ক্যালেন্ডার খুলুন",
-    "fileRejected": "যোগ হয়নি: {files}। অনুমোদিত ফাইলের ধরন ও {mb} MB সীমা দেখে নিন।"
+    "fileRejected": "যোগ হয়নি: {files}। অনুমোদিত ফাইলের ধরন ও {mb} MB সীমা দেখে নিন।",
+    "rich": {
+      "heading": "শিরোনাম",
+      "subheading": "উপশিরোনাম",
+      "bold": "বোল্ড",
+      "italic": "ইটালিক",
+      "underline": "আন্ডারলাইন",
+      "strike": "কাটা দাগ",
+      "bullets": "বুলেট তালিকা",
+      "numbers": "নম্বর তালিকা",
+      "quote": "উদ্ধৃতি",
+      "link": "লিংক",
+      "alignStart": "শুরুতে সারিবদ্ধ",
+      "alignCenter": "মাঝখানে",
+      "code": "কোড",
+      "clear": "ফরম্যাট মুছুন",
+      "placeholder": "আপনার উত্তর লিখুন…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "লজিক",

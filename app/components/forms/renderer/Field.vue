@@ -25,7 +25,7 @@ const showLabel = computed(() => isInputField(props.field.type) && props.field.t
 const CONTROLS: Record<string, string> = {
   short_text: 'Text',
   long_text: 'Text',
-  rich_text: 'Text',
+  rich_text: 'RichText',
   email: 'Text',
   phone: 'Text',
   url: 'Text',
@@ -102,6 +102,7 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value)
 
     <div class="flex min-w-0 flex-1 flex-col gap-1">
     <FormsRendererText v-if="control === 'Text'" :id="id" v-model="value" :field="field" :mode="mode" />
+    <FormsRendererRichText v-else-if="control === 'RichText'" :id="id" v-model="value" :field="field" :mode="mode" />
     <FormsRendererDateTime
       v-else-if="control === 'DateTime'"
       :id="id"

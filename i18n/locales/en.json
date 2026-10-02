@@ -1081,7 +1081,11 @@
       "startCollapsed": "Start collapsed",
       "numbered": "Give options numbers",
       "numberedHint": "For calculations: a chosen option counts as its number.",
-      "optionScore": "Number for {label}"
+      "optionScore": "Number for {label}",
+      "toolbar": "Toolbar",
+      "toolbarHint": "What respondents can format.",
+      "toolbarBasic": "Basic",
+      "toolbarFull": "Full"
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -1186,7 +1190,25 @@
     "thanks": "Thank you!",
     "moreInfo": "More about “{field}”",
     "openCalendar": "Open calendar",
-    "fileRejected": "Not added: {files}. Check the allowed file types and the {mb} MB limit."
+    "fileRejected": "Not added: {files}. Check the allowed file types and the {mb} MB limit.",
+    "rich": {
+      "heading": "Heading",
+      "subheading": "Subheading",
+      "bold": "Bold",
+      "italic": "Italic",
+      "underline": "Underline",
+      "strike": "Strikethrough",
+      "bullets": "Bulleted list",
+      "numbers": "Numbered list",
+      "quote": "Quote",
+      "link": "Link",
+      "alignStart": "Align to start",
+      "alignCenter": "Centre",
+      "code": "Code",
+      "clear": "Clear formatting",
+      "placeholder": "Write your answer…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Logic",

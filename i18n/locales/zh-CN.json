@@ -1073,7 +1073,11 @@
       "startCollapsed": "默认折叠",
       "numbered": "为选项编号",
       "numberedHint": "用于计算：所选选项按其编号计算。",
-      "optionScore": "{label} 的编号"
+      "optionScore": "{label} 的编号",
+      "toolbar": "工具栏",
+      "toolbarHint": "填写者可以使用的格式。",
+      "toolbarBasic": "基础",
+      "toolbarFull": "完整"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -1186,7 +1190,25 @@
     "thanks": "谢谢！",
     "moreInfo": "关于“{field}”的更多信息",
     "openCalendar": "打开日历",
-    "fileRejected": "未添加：{files}。请检查允许的文件类型和 {mb} MB 限制。"
+    "fileRejected": "未添加：{files}。请检查允许的文件类型和 {mb} MB 限制。",
+    "rich": {
+      "heading": "标题",
+      "subheading": "副标题",
+      "bold": "加粗",
+      "italic": "斜体",
+      "underline": "下划线",
+      "strike": "删除线",
+      "bullets": "项目符号列表",
+      "numbers": "编号列表",
+      "quote": "引用",
+      "link": "链接",
+      "alignStart": "起始对齐",
+      "alignCenter": "居中",
+      "code": "代码",
+      "clear": "清除格式",
+      "placeholder": "输入你的回答…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "逻辑",

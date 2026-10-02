@@ -1073,7 +1073,11 @@
       "startCollapsed": "折りたたんだ状態で開始",
       "numbered": "選択肢に数値を付ける",
       "numberedHint": "計算用: 選んだ選択肢はその数値として扱われます。",
-      "optionScore": "{label}の数値"
+      "optionScore": "{label}の数値",
+      "toolbar": "ツールバー",
+      "toolbarHint": "回答者が使える書式。",
+      "toolbarBasic": "ベーシック",
+      "toolbarFull": "フル"
     },
     "shortcuts": {
       "title": "ショートカット",
@@ -1186,7 +1190,25 @@
     "thanks": "ありがとうございました！",
     "moreInfo": "「{field}」の詳細",
     "openCalendar": "カレンダーを開く",
-    "fileRejected": "追加されませんでした: {files}。許可されたファイル形式と {mb} MB の上限を確認してください。"
+    "fileRejected": "追加されませんでした: {files}。許可されたファイル形式と {mb} MB の上限を確認してください。",
+    "rich": {
+      "heading": "見出し",
+      "subheading": "小見出し",
+      "bold": "太字",
+      "italic": "斜体",
+      "underline": "下線",
+      "strike": "取り消し線",
+      "bullets": "箇条書き",
+      "numbers": "番号付きリスト",
+      "quote": "引用",
+      "link": "リンク",
+      "alignStart": "先頭揃え",
+      "alignCenter": "中央揃え",
+      "code": "コード",
+      "clear": "書式をクリア",
+      "placeholder": "回答を入力…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "ロジック",

@@ -1073,7 +1073,11 @@
       "startCollapsed": "Mulai dalam keadaan terlipat",
       "numbered": "Beri nomor pada opsi",
       "numberedHint": "Untuk perhitungan: opsi yang dipilih dihitung sebagai nomornya.",
-      "optionScore": "Nomor untuk {label}"
+      "optionScore": "Nomor untuk {label}",
+      "toolbar": "Bilah alat",
+      "toolbarHint": "Apa yang dapat diformat responden.",
+      "toolbarBasic": "Dasar",
+      "toolbarFull": "Lengkap"
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -1186,7 +1190,25 @@
     "thanks": "Terima kasih!",
     "moreInfo": "Selengkapnya tentang “{field}”",
     "openCalendar": "Buka kalender",
-    "fileRejected": "Tidak ditambahkan: {files}. Periksa jenis file yang diizinkan dan batas {mb} MB."
+    "fileRejected": "Tidak ditambahkan: {files}. Periksa jenis file yang diizinkan dan batas {mb} MB.",
+    "rich": {
+      "heading": "Judul",
+      "subheading": "Subjudul",
+      "bold": "Tebal",
+      "italic": "Miring",
+      "underline": "Garis bawah",
+      "strike": "Coret",
+      "bullets": "Daftar berpoin",
+      "numbers": "Daftar bernomor",
+      "quote": "Kutipan",
+      "link": "Tautan",
+      "alignStart": "Rata awal",
+      "alignCenter": "Tengah",
+      "code": "Kode",
+      "clear": "Hapus format",
+      "placeholder": "Tulis jawaban Anda…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Logika",

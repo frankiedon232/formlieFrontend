@@ -23,6 +23,7 @@ const num = (value: unknown) =>
       has('currency') ||
       has('content') ||
       has('collapsible') ||
+      has('rich_toolbar') ||
       has('image') ||
       has('formula')
     "
@@ -103,6 +104,21 @@ const num = (value: unknown) =>
         @update:model-value="
           v => setProp(field.type === 'paragraph' ? { text: String(v) } : { description: String(v) })
         "
+      />
+    </UFormField>
+    <UFormField v-if="has('rich_toolbar')" :label="t('builder.inspector.toolbar')" :description="t('builder.inspector.toolbarHint')">
+      <UTabs
+        :model-value="String(p.toolbar ?? 'basic')"
+        :items="[
+          { value: 'basic', label: t('builder.inspector.toolbarBasic') },
+          { value: 'full', label: t('builder.inspector.toolbarFull') },
+        ]"
+        :content="false"
+        color="neutral"
+        size="xs"
+        :ui="{ ...SEGMENTED_UI, trigger: `${SEGMENTED_UI.trigger} flex-1` }"
+        class="w-full"
+        @update:model-value="v => setProp({ toolbar: v })"
       />
     </UFormField>
     <template v-if="has('collapsible')">

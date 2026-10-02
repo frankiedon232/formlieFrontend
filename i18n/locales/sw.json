@@ -1073,7 +1073,11 @@
       "startCollapsed": "Anza ikiwa imekunjwa",
       "numbered": "Pa chaguo namba",
       "numberedHint": "Kwa hesabu: chaguo lililochaguliwa huhesabiwa kama namba yake.",
-      "optionScore": "Namba ya {label}"
+      "optionScore": "Namba ya {label}",
+      "toolbar": "Upau wa zana",
+      "toolbarHint": "Kile wanaojibu wanaweza kupanga.",
+      "toolbarBasic": "Msingi",
+      "toolbarFull": "Kamili"
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -1186,7 +1190,25 @@
     "thanks": "Asante!",
     "moreInfo": "Zaidi kuhusu “{field}”",
     "openCalendar": "Fungua kalenda",
-    "fileRejected": "Haijaongezwa: {files}. Angalia aina za faili zinazoruhusiwa na kikomo cha MB {mb}."
+    "fileRejected": "Haijaongezwa: {files}. Angalia aina za faili zinazoruhusiwa na kikomo cha MB {mb}.",
+    "rich": {
+      "heading": "Kichwa",
+      "subheading": "Kichwa kidogo",
+      "bold": "Herufi nzito",
+      "italic": "Italiki",
+      "underline": "Pigia mstari",
+      "strike": "Kata kwa mstari",
+      "bullets": "Orodha ya vitone",
+      "numbers": "Orodha ya namba",
+      "quote": "Nukuu",
+      "link": "Kiungo",
+      "alignStart": "Panga mwanzoni",
+      "alignCenter": "Katikati",
+      "code": "Msimbo",
+      "clear": "Futa mpangilio",
+      "placeholder": "Andika jibu lako…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Mantiki",

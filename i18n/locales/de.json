@@ -1073,7 +1073,11 @@
       "startCollapsed": "Eingeklappt starten",
       "numbered": "Optionen nummerieren",
       "numberedHint": "Für Berechnungen: Eine gewählte Option zählt als ihre Zahl.",
-      "optionScore": "Zahl für {label}"
+      "optionScore": "Zahl für {label}",
+      "toolbar": "Symbolleiste",
+      "toolbarHint": "Was Teilnehmende formatieren können.",
+      "toolbarBasic": "Einfach",
+      "toolbarFull": "Vollständig"
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -1186,7 +1190,25 @@
     "thanks": "Vielen Dank!",
     "moreInfo": "Mehr zu „{field}“",
     "openCalendar": "Kalender öffnen",
-    "fileRejected": "Nicht hinzugefügt: {files}. Prüfen Sie die erlaubten Dateitypen und die Grenze von {mb} MB."
+    "fileRejected": "Nicht hinzugefügt: {files}. Prüfen Sie die erlaubten Dateitypen und die Grenze von {mb} MB.",
+    "rich": {
+      "heading": "Überschrift",
+      "subheading": "Zwischenüberschrift",
+      "bold": "Fett",
+      "italic": "Kursiv",
+      "underline": "Unterstrichen",
+      "strike": "Durchgestrichen",
+      "bullets": "Aufzählung",
+      "numbers": "Nummerierte Liste",
+      "quote": "Zitat",
+      "link": "Link",
+      "alignStart": "Am Anfang ausrichten",
+      "alignCenter": "Zentrieren",
+      "code": "Code",
+      "clear": "Formatierung entfernen",
+      "placeholder": "Ihre Antwort…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Logik",

@@ -1073,7 +1073,11 @@
       "startCollapsed": "Inizia compressa",
       "numbered": "Assegna numeri alle opzioni",
       "numberedHint": "Per i calcoli: un’opzione scelta vale il suo numero.",
-      "optionScore": "Numero per {label}"
+      "optionScore": "Numero per {label}",
+      "toolbar": "Barra degli strumenti",
+      "toolbarHint": "Cosa possono formattare i rispondenti.",
+      "toolbarBasic": "Base",
+      "toolbarFull": "Completa"
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -1186,7 +1190,25 @@
     "thanks": "Grazie!",
     "moreInfo": "Ulteriori informazioni su “{field}”",
     "openCalendar": "Apri calendario",
-    "fileRejected": "Non aggiunti: {files}. Controlla i tipi di file consentiti e il limite di {mb} MB."
+    "fileRejected": "Non aggiunti: {files}. Controlla i tipi di file consentiti e il limite di {mb} MB.",
+    "rich": {
+      "heading": "Titolo",
+      "subheading": "Sottotitolo",
+      "bold": "Grassetto",
+      "italic": "Corsivo",
+      "underline": "Sottolineato",
+      "strike": "Barrato",
+      "bullets": "Elenco puntato",
+      "numbers": "Elenco numerato",
+      "quote": "Citazione",
+      "link": "Link",
+      "alignStart": "Allinea all’inizio",
+      "alignCenter": "Centra",
+      "code": "Codice",
+      "clear": "Cancella formattazione",
+      "placeholder": "Scrivi la tua risposta…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Logica",

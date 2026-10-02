@@ -1,4 +1,4 @@
-<!-- Text-like fields: short / long / rich text, email, phone, URL, number, currency, calculated, hidden. -->
+<!-- Text-like fields: short / long text, email, phone, URL, number, currency, calculated, hidden. -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
 
@@ -61,7 +61,7 @@ const disabled = computed(() => !!props.field.disabled)
     {{ t('renderer.hidden', { key: field.key }) }}
   </div>
   <UTextarea
-    v-else-if="field.type === 'long_text' || field.type === 'rich_text'"
+    v-else-if="field.type === 'long_text'"
     :id="id"
     v-model="text"
     :rows="Number(props_.rows ?? 4)"

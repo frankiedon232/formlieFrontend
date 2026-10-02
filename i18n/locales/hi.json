@@ -1073,7 +1073,11 @@
       "startCollapsed": "समेटा हुआ शुरू करें",
       "numbered": "विकल्पों को नंबर दें",
       "numberedHint": "गणना के लिए: चुना गया विकल्प अपने नंबर के रूप में गिना जाता है।",
-      "optionScore": "{label} के लिए नंबर"
+      "optionScore": "{label} के लिए नंबर",
+      "toolbar": "टूलबार",
+      "toolbarHint": "उत्तरदाता क्या फ़ॉर्मेट कर सकते हैं।",
+      "toolbarBasic": "बुनियादी",
+      "toolbarFull": "पूर्ण"
     },
     "shortcuts": {
       "title": "शॉर्टकट",
@@ -1186,7 +1190,25 @@
     "thanks": "धन्यवाद!",
     "moreInfo": "“{field}” के बारे में और",
     "openCalendar": "कैलेंडर खोलें",
-    "fileRejected": "नहीं जोड़ा गया: {files}। अनुमत फ़ाइल प्रकार और {mb} MB की सीमा जाँचें।"
+    "fileRejected": "नहीं जोड़ा गया: {files}। अनुमत फ़ाइल प्रकार और {mb} MB की सीमा जाँचें।",
+    "rich": {
+      "heading": "शीर्षक",
+      "subheading": "उपशीर्षक",
+      "bold": "बोल्ड",
+      "italic": "इटैलिक",
+      "underline": "रेखांकित",
+      "strike": "काटा हुआ",
+      "bullets": "बुलेट सूची",
+      "numbers": "क्रमांकित सूची",
+      "quote": "उद्धरण",
+      "link": "लिंक",
+      "alignStart": "शुरुआत में संरेखित करें",
+      "alignCenter": "बीच में",
+      "code": "कोड",
+      "clear": "फ़ॉर्मेटिंग हटाएँ",
+      "placeholder": "अपना उत्तर लिखें…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "लॉजिक",

@@ -1073,7 +1073,11 @@
       "startCollapsed": "Daraltılmış başlat",
       "numbered": "Seçeneklere sayı ver",
       "numberedHint": "Hesaplamalar için: seçilen seçenek kendi sayısı olarak sayılır.",
-      "optionScore": "{label} için sayı"
+      "optionScore": "{label} için sayı",
+      "toolbar": "Araç çubuğu",
+      "toolbarHint": "Yanıtlayanların biçimlendirebilecekleri.",
+      "toolbarBasic": "Temel",
+      "toolbarFull": "Tam"
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -1186,7 +1190,25 @@
     "thanks": "Teşekkürler!",
     "moreInfo": "“{field}” hakkında daha fazla",
     "openCalendar": "Takvimi aç",
-    "fileRejected": "Eklenmedi: {files}. İzin verilen dosya türlerini ve {mb} MB sınırını kontrol edin."
+    "fileRejected": "Eklenmedi: {files}. İzin verilen dosya türlerini ve {mb} MB sınırını kontrol edin.",
+    "rich": {
+      "heading": "Başlık",
+      "subheading": "Alt başlık",
+      "bold": "Kalın",
+      "italic": "İtalik",
+      "underline": "Altı çizili",
+      "strike": "Üstü çizili",
+      "bullets": "Madde işaretli liste",
+      "numbers": "Numaralı liste",
+      "quote": "Alıntı",
+      "link": "Bağlantı",
+      "alignStart": "Başa hizala",
+      "alignCenter": "Ortala",
+      "code": "Kod",
+      "clear": "Biçimi temizle",
+      "placeholder": "Yanıtınızı yazın…",
+      "count": "{n} / {max}"
+    }
   },
   "logic": {
     "crumb": "Mantık",
