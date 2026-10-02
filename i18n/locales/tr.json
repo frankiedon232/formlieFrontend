@@ -1207,7 +1207,11 @@
       "code": "Kod",
       "clear": "Biçimi temizle",
       "placeholder": "Yanıtınızı yazın…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Metin stili",
+      "paragraph": "Paragraf",
+      "headingN": "Başlık {n}",
+      "codeBlock": "Kod bloğu"
     },
     "requiredNamed": "{field} zorunludur."
   },

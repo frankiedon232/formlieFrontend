@@ -1207,7 +1207,11 @@
       "code": "コード",
       "clear": "書式をクリア",
       "placeholder": "回答を入力…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "テキストスタイル",
+      "paragraph": "段落",
+      "headingN": "見出し {n}",
+      "codeBlock": "コードブロック"
     },
     "requiredNamed": "{field}は必須です。"
   },

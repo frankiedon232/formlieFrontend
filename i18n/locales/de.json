@@ -1207,7 +1207,11 @@
       "code": "Code",
       "clear": "Formatierung entfernen",
       "placeholder": "Ihre Antwort…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Textstil",
+      "paragraph": "Absatz",
+      "headingN": "Überschrift {n}",
+      "codeBlock": "Codeblock"
     },
     "requiredNamed": "{field} ist erforderlich."
   },

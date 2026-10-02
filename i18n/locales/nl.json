@@ -1207,7 +1207,11 @@
       "code": "Code",
       "clear": "Opmaak wissen",
       "placeholder": "Schrijf je antwoord…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Tekststijl",
+      "paragraph": "Alinea",
+      "headingN": "Kop {n}",
+      "codeBlock": "Codeblok"
     },
     "requiredNamed": "{field} is verplicht."
   },

@@ -1207,7 +1207,11 @@
       "code": "কোড",
       "clear": "ফরম্যাট মুছুন",
       "placeholder": "আপনার উত্তর লিখুন…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "লেখার ধরন",
+      "paragraph": "অনুচ্ছেদ",
+      "headingN": "শিরোনাম {n}",
+      "codeBlock": "কোড ব্লক"
     },
     "requiredNamed": "{field} আবশ্যক।"
   },

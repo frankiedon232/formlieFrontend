@@ -1207,7 +1207,11 @@
       "code": "Code",
       "clear": "Clear formatting",
       "placeholder": "Write your answer…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Text style",
+      "paragraph": "Paragraph",
+      "headingN": "Heading {n}",
+      "codeBlock": "Code block"
     },
     "requiredNamed": "{field} is required."
   },

@@ -1207,7 +1207,11 @@
       "code": "Kod",
       "clear": "Wyczyść formatowanie",
       "placeholder": "Wpisz odpowiedź…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Styl tekstu",
+      "paragraph": "Akapit",
+      "headingN": "Nagłówek {n}",
+      "codeBlock": "Blok kodu"
     },
     "requiredNamed": "Pole „{field}” jest wymagane."
   },

@@ -1207,7 +1207,11 @@
       "code": "Código",
       "clear": "Quitar formato",
       "placeholder": "Escribe tu respuesta…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Estilo de texto",
+      "paragraph": "Párrafo",
+      "headingN": "Título {n}",
+      "codeBlock": "Bloque de código"
     },
     "requiredNamed": "{field} es obligatorio."
   },

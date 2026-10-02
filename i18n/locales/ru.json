@@ -1207,7 +1207,11 @@
       "code": "Код",
       "clear": "Очистить форматирование",
       "placeholder": "Напишите ответ…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Стиль текста",
+      "paragraph": "Абзац",
+      "headingN": "Заголовок {n}",
+      "codeBlock": "Блок кода"
     },
     "requiredNamed": "Поле «{field}» обязательно."
   },

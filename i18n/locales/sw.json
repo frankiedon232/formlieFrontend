@@ -1207,7 +1207,11 @@
       "code": "Msimbo",
       "clear": "Futa mpangilio",
       "placeholder": "Andika jibu lako…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Mtindo wa maandishi",
+      "paragraph": "Aya",
+      "headingN": "Kichwa {n}",
+      "codeBlock": "Kizuizi cha msimbo"
     },
     "requiredNamed": "{field} kinahitajika."
   },

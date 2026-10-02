@@ -1207,7 +1207,11 @@
       "code": "شيفرة",
       "clear": "مسح التنسيق",
       "placeholder": "اكتب إجابتك…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "نمط النص",
+      "paragraph": "فقرة",
+      "headingN": "عنوان {n}",
+      "codeBlock": "كتلة شيفرة"
     },
     "requiredNamed": "{field} مطلوب."
   },

@@ -1207,7 +1207,11 @@
       "code": "Kode",
       "clear": "Hapus format",
       "placeholder": "Tulis jawaban Anda…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Gaya teks",
+      "paragraph": "Paragraf",
+      "headingN": "Judul {n}",
+      "codeBlock": "Blok kode"
     },
     "requiredNamed": "{field} wajib diisi."
   },

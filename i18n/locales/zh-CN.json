@@ -1207,7 +1207,11 @@
       "code": "代码",
       "clear": "清除格式",
       "placeholder": "输入你的回答…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "文本样式",
+      "paragraph": "正文",
+      "headingN": "标题 {n}",
+      "codeBlock": "代码块"
     },
     "requiredNamed": "请填写{field}。"
   },

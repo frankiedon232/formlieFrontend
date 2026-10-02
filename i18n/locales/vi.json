@@ -1207,7 +1207,11 @@
       "code": "Mã",
       "clear": "Xóa định dạng",
       "placeholder": "Viết câu trả lời…",
-      "count": "{n} / {max}"
+      "count": "{n} / {max}",
+      "textStyle": "Kiểu chữ",
+      "paragraph": "Đoạn văn",
+      "headingN": "Tiêu đề {n}",
+      "codeBlock": "Khối mã"
     },
     "requiredNamed": "{field} là bắt buộc."
   },

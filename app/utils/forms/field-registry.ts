@@ -57,7 +57,7 @@ export const FIELD_REGISTRY: Record<FieldType, RegistryEntry> = {
   long_text: { controls: [...TEXT, 'length'], defaults: { props: { rows: 4 } } },
   rich_text: {
     controls: ['label', 'help', 'placeholder', 'required', 'width', 'length', 'rich_toolbar'],
-    defaults: { props: { toolbar: 'basic' } },
+    defaults: { props: { toolbar: 'full' } },
   },
   email: { controls: TEXT, defaults: { placeholder: 'name@example.com' } },
   phone: { controls: TEXT, defaults: { placeholder: '+44 7700 900123' } },

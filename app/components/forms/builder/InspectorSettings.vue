@@ -108,7 +108,7 @@ const num = (value: unknown) =>
     </UFormField>
     <UFormField v-if="has('rich_toolbar')" :label="t('builder.inspector.toolbar')" :description="t('builder.inspector.toolbarHint')">
       <UTabs
-        :model-value="String(p.toolbar ?? 'basic')"
+        :model-value="String(p.toolbar ?? 'full')"
         :items="[
           { value: 'basic', label: t('builder.inspector.toolbarBasic') },
           { value: 'full', label: t('builder.inspector.toolbarFull') },
