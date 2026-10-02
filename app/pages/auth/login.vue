@@ -12,6 +12,15 @@ const route = useRoute()
 const tenant = useTenant()
 const auth = useAuth()
 const { busy, run } = useBusy()
+// Brand names (not translated).
+const PROVIDER_NAMES: Record<string, string> = {
+  google: 'Google',
+  microsoft: 'Microsoft',
+  apple: 'Apple',
+  facebook: 'Facebook',
+}
+const providerName = (value: unknown) => PROVIDER_NAMES[String(value ?? '')] ?? String(value ?? '')
+
 useHead({ title: () => t('auth.login.title') })
 
 const profile = tenant.profile
@@ -33,7 +42,7 @@ const notice = computed(() => {
     return {
       color: 'neutral' as const,
       icon: 'i-lucide-info',
-      title: t('auth.login.oauthUnavailable', { provider: String(route.query.provider ?? '') }),
+      title: t('auth.login.oauthUnavailable', { provider: providerName(route.query.provider) }),
     }
   }
   if (route.query.reset)

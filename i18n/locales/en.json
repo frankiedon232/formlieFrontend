@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Your team signs in here. You can add a custom domain later.",
       "redirecting": "Opening your new workspace…",
-      "haveAccount": "Already have a workspace?"
+      "haveAccount": "Already have a workspace?",
+      "orEmail": "or sign up with email",
+      "oauthUnavailable": "Sign-up with {provider} isn't connected yet. Use your work email for now."
     },
     "find": {
       "title": "Find your workspace",

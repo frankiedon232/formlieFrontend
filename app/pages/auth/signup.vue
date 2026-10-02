@@ -1,4 +1,8 @@
-<!-- Create a workspace (manage.* only): Account → Verify email → Workspace → new subdomain. -->
+<!--
+  Create a workspace (manage.* only): Account (Google / Microsoft / Apple / Facebook or email) →
+  Verify email → Workspace → new subdomain. Social signup skips the code step (provider-verified
+  email, backend). The new workspace then enables more sign-in methods in Settings → Authentication.
+-->
 <script setup lang="ts">
 import type { OtpChannel } from '#shared/types/auth'
 
@@ -6,7 +10,24 @@ definePageMeta({ layout: 'auth', auth: 'guest', manage: 'only' })
 
 const { t } = useI18n()
 const auth = useAuth()
+const route = useRoute()
+const tenant = useTenant()
+const providers = computed(() => tenant.profile.value?.auth_providers ?? [])
+const oauthNotice = computed(() =>
+  route.query.oauth === 'unavailable'
+    ? t('auth.signup.oauthUnavailable', { provider: providerName(route.query.provider) })
+    : null,
+)
 const { handle } = useErrorHandler()
+// Brand names (not translated).
+const PROVIDER_NAMES: Record<string, string> = {
+  google: 'Google',
+  microsoft: 'Microsoft',
+  apple: 'Apple',
+  facebook: 'Facebook',
+}
+const providerName = (value: unknown) => PROVIDER_NAMES[String(value ?? '')] ?? String(value ?? '')
+
 useHead({ title: () => t('auth.signup.title') })
 
 const step = ref(0)
@@ -63,7 +84,12 @@ function finish(url: string) {
       :ui="{ title: 'text-xs', description: 'hidden' }"
     />
 
-    <AuthSignupAccountStep v-if="step === 0" @done="step = 1" />
+    <template v-if="step === 0">
+      <UAlert v-if="oauthNotice" color="neutral" icon="i-lucide-info" variant="subtle" :title="oauthNotice" />
+      <AuthProviders :providers="providers" intent="signup" />
+      <USeparator :label="t('auth.signup.orEmail')" :ui="{ label: 'text-xs text-muted' }" />
+      <AuthSignupAccountStep @done="step = 1" />
+    </template>
 
     <div v-else-if="step === 1 && auth.pending.value" class="flex flex-col gap-4">
       <p class="text-sm text-muted">

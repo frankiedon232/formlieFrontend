@@ -34,7 +34,7 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 | POST | `/auth/signup/complete` | `{ challenge_id, company_name, subdomain }` (challenge already verified via `/auth/otp/verify`) → `{ redirect_url }` on the new subdomain carrying a one-time `ticket` |
 | POST | `/auth/exchange-ticket` | `{ ticket }` (≤ 2 min, single use, must match the host's tenant) → tokens + refresh cookie |
 | POST | `/auth/login` | `{ email, password }` → challenge `{ challenge_id, channels[], channel, masked_destination, resend_after, expires_at }` |
-| GET | `/auth/oauth/{provider}/start` | redirect; `/auth/oauth/{provider}/callback` → challenge |
+| GET | `/auth/oauth/{provider}/start?intent=login\|signup` | plain redirect to the provider. `login` (workspace host): callback → challenge as for password login. `signup` (manage.* only, any of google / microsoft / apple / facebook): callback redirects to manage `/auth/signup?social=<one-time token>`; the email is provider-verified, so the Verify step is skipped and `/auth/signup/complete` accepts `{ social_token, company_name, subdomain }` instead of `challenge_id`. The new workspace enables `password` + the provider used; admins enable more in Settings → Authentication |
 | POST | `/auth/otp/verify` | `{ challenge_id, code }` → login: `{ access_token, expires_in, user, tenant, organisation }` + refresh cookie; signup: `{ verified: true }`. Wrong code → FRM-AUTH-1003 with `details: [{ field: "attempts_left", message: "<n>" }]`; out of attempts → FRM-AUTH-1004 |
 | POST | `/auth/otp/resend` | `{ challenge_id, channel }` |
 | POST | `/auth/refresh` | cookie → same shape as otp/verify (tokens + user/tenant/organisation), rotated cookie; reused token → FRM-AUTH-1012 (family revoked) |

@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Timu yako itaingia hapa. Unaweza kuongeza kikoa chako baadaye.",
       "redirecting": "Inafungua eneo lako jipya la kazi…",
-      "haveAccount": "Tayari una eneo la kazi?"
+      "haveAccount": "Tayari una eneo la kazi?",
+      "orEmail": "au jisajili kwa barua pepe",
+      "oauthUnavailable": "Usajili kwa {provider} bado haujaunganishwa. Kwa sasa tumia barua pepe ya kazini."
     },
     "find": {
       "title": "Tafuta eneo lako la kazi",

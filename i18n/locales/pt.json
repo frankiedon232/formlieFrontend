@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Sua equipe entra por aqui. Você pode adicionar um domínio próprio depois.",
       "redirecting": "Abrindo seu novo espaço…",
-      "haveAccount": "Já tem um espaço?"
+      "haveAccount": "Já tem um espaço?",
+      "orEmail": "ou cadastre-se com e-mail",
+      "oauthUnavailable": "O cadastro com {provider} ainda não está conectado. Use seu e-mail de trabalho por enquanto."
     },
     "find": {
       "title": "Encontre seu espaço",

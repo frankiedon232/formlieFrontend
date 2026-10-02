@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Nhóm của bạn sẽ đăng nhập tại đây. Bạn có thể thêm tên miền riêng sau.",
       "redirecting": "Đang mở không gian làm việc mới…",
-      "haveAccount": "Đã có không gian làm việc?"
+      "haveAccount": "Đã có không gian làm việc?",
+      "orEmail": "hoặc đăng ký bằng email",
+      "oauthUnavailable": "Đăng ký bằng {provider} chưa được kết nối. Tạm thời hãy dùng email công việc."
     },
     "find": {
       "title": "Tìm không gian làm việc",

@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "您的团队将在此登录。之后可添加自定义域名。",
       "redirecting": "正在打开新工作区…",
-      "haveAccount": "已有工作区？"
+      "haveAccount": "已有工作区？",
+      "orEmail": "或使用邮箱注册",
+      "oauthUnavailable": "使用 {provider} 注册尚未接通，请暂时使用工作邮箱。"
     },
     "find": {
       "title": "找到您的工作区",

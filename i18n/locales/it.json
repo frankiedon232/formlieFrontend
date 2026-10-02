@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Il tuo team accederà da qui. Potrai aggiungere un dominio personalizzato in seguito.",
       "redirecting": "Apertura del tuo nuovo spazio…",
-      "haveAccount": "Hai già uno spazio?"
+      "haveAccount": "Hai già uno spazio?",
+      "orEmail": "oppure registrati con l’email",
+      "oauthUnavailable": "La registrazione con {provider} non è ancora collegata. Per ora usa la tua email di lavoro."
     },
     "find": {
       "title": "Trova il tuo spazio",

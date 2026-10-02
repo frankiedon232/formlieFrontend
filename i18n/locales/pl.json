@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Tutaj loguje się Twój zespół. Własną domenę dodasz później.",
       "redirecting": "Otwieranie nowego obszaru roboczego…",
-      "haveAccount": "Masz już obszar roboczy?"
+      "haveAccount": "Masz już obszar roboczy?",
+      "orEmail": "lub zarejestruj się e-mailem",
+      "oauthUnavailable": "Rejestracja przez {provider} nie jest jeszcze podłączona. Na razie użyj służbowego e-maila."
     },
     "find": {
       "title": "Znajdź swój obszar roboczy",

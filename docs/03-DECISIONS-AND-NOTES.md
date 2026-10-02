@@ -60,6 +60,8 @@ Edit this file whenever a decision changes.
 
 45. **Customer databases — launch set:** MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (single list: `shared/utils/integrations/databases.ts`, with default ports for F11), or Formalie's own encrypted storage. Copy says "{count}+ databases" from that list so it never implies a single engine.
 
+46. **Social signup** (owner, 2026-10-02): manage.* offers every provider on the first signup; a workspace's sign-in page shows only the methods its admin enabled (Settings → Authentication, F11). New workspaces start with email + password (+ the provider used to sign up, backend).
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

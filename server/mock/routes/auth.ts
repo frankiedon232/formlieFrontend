@@ -144,7 +144,9 @@ export const signupComplete = defineMockRoute(({ event, body }) => {
     name: input.company_name,
     subdomain: input.subdomain,
     status: 'active',
-    auth_providers: ['password', 'google', 'microsoft'],
+    // New workspaces start with email + password; the admin enables more in Settings → Authentication (F11).
+    // (Social signup will also enable the provider used — backend.)
+    auth_providers: ['password'],
     organisation: { id: crypto.randomUUID(), name: input.company_name },
   }
   MOCK_TENANTS.push(tenant)
@@ -207,5 +209,6 @@ export const resetPassword = defineMockRoute(({ body }) => {
 /** GET /auth/oauth/:provider/start — the mock has no identity providers configured. */
 export const oauthStart = defineEventHandler(event => {
   const provider = getRouterParam(event, 'provider') ?? ''
-  return sendRedirect(event, `/auth/login?oauth=unavailable&provider=${encodeURIComponent(provider)}`, 302)
+  const page = getQuery(event).intent === 'signup' ? '/auth/signup' : '/auth/login'
+  return sendRedirect(event, `${page}?oauth=unavailable&provider=${encodeURIComponent(provider)}`, 302)
 })

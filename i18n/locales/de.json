@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Hier meldet sich Ihr Team an. Eine eigene Domain können Sie später hinzufügen.",
       "redirecting": "Ihr neuer Arbeitsbereich wird geöffnet…",
-      "haveAccount": "Sie haben schon einen Arbeitsbereich?"
+      "haveAccount": "Sie haben schon einen Arbeitsbereich?",
+      "orEmail": "oder mit E-Mail registrieren",
+      "oauthUnavailable": "Die Registrierung mit {provider} ist noch nicht verbunden. Nutzen Sie vorerst Ihre geschäftliche E-Mail."
     },
     "find": {
       "title": "Arbeitsbereich finden",

@@ -24,7 +24,8 @@ export const publicProfile = defineMockRoute(({ event }) => {
       subdomain: 'manage',
       logo_url: null,
       colors: { primary: null },
-      auth_providers: ['password', 'google', 'microsoft', 'apple'],
+      // manage.* offers every provider for the first signup.
+      auth_providers: ['password', 'google', 'microsoft', 'apple', 'facebook'],
       status: 'active',
     })
   }

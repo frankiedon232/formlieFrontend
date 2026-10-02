@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Votre équipe se connecte ici. Vous pourrez ajouter un domaine personnalisé plus tard.",
       "redirecting": "Ouverture de votre nouvel espace…",
-      "haveAccount": "Vous avez déjà un espace ?"
+      "haveAccount": "Vous avez déjà un espace ?",
+      "orEmail": "ou inscrivez-vous par e-mail",
+      "oauthUnavailable": "L’inscription avec {provider} n’est pas encore connectée. Utilisez votre e-mail professionnel pour le moment."
     },
     "find": {
       "title": "Retrouvez votre espace",

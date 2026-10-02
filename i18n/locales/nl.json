@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Hier logt je team in. Een eigen domein kun je later toevoegen.",
       "redirecting": "Je nieuwe werkruimte wordt geopend…",
-      "haveAccount": "Heb je al een werkruimte?"
+      "haveAccount": "Heb je al een werkruimte?",
+      "orEmail": "of meld je aan met e-mail",
+      "oauthUnavailable": "Aanmelden met {provider} is nog niet gekoppeld. Gebruik voorlopig je werk-e-mail."
     },
     "find": {
       "title": "Vind je werkruimte",

@@ -158,6 +158,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Sign in on `manage.` (find workspace / continue / create)
 - ✅ One-time code screen (paste, auto-submit, resend countdown, email/SMS switch, attempts left)
 - ✅ Social sign-in buttons for the providers the workspace enabled
+- ✅ First signup on `manage.` offers Google, Microsoft, Apple and Facebook as well as email (owner request)
 - ✅ Signup in 3 steps with password strength and live subdomain check
 - ✅ Find my workspace (email → code → list)
 - ✅ Forgot / reset password (email → code + new password)
@@ -180,6 +181,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 ### Waiting on backend
 
 - ⏸ Real Google / Microsoft / Apple / Facebook sign-in (OAuth)
+- ⏸ Social signup callback: skip the code step, go straight to the workspace step
 - ⏸ SAML / OIDC single sign-on (later)
 - ⏸ Real email / SMS delivery of codes; authenticator-app (TOTP) codes
 
@@ -341,7 +343,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 - ⬜ Company profile, branding
 - ⬜ Domain & subdomain (custom domain later)
-- ⬜ Authentication: enabled sign-in methods, code policy
+- ⬜ Authentication: enable / disable sign-in methods per workspace (Google, Microsoft, Apple, Facebook, email; SSO later) — only enabled ones appear on the workspace sign-in page; new workspaces start with email + the method used at signup
+- ⬜ Code policy (channels, attempts)
 - ⬜ Security: password rules, session timeout, IP allowlist
 - ⬜ Localisation: language, timezone, date / number format, currency
 - ⬜ Notifications and email templates
@@ -430,19 +433,21 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Global positioning (not one country); international sample data                 | F3 / all    | ✅     |
 | 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                       | F3 / F11    | ✅     |
 | 2026-10-02 | Separate progress file with every task per phase                                | PROGRESS.md | ✅     |
+| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace  | F3 / F11    | 🟡     |
 
 ---
 
 ## Progress log
 
-| Date       | Phase | What happened                                                                                                                                    |
-| ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 2026-10-02 | F0    | Foundation: config, 20 languages, mock API with real encryption, tooling. Checked phone / desktop, light / dark, Arabic, keyboard.               |
-| 2026-10-02 | F0    | Access matrix verified on every host; shared host resolver with tests.                                                                           |
-| 2026-10-02 | F1    | App shell built, then rebuilt to match the design exactly (rail + menu, header, monochrome).                                                     |
-| 2026-10-02 | F1    | Flags, breadcrumbs in the header, Manrope font, menu timeline / square bullets / dark text.                                                      |
-| 2026-10-02 | F2    | Core plumbing: secure API client, error handling in 20 languages, DataView live on the mock, confirm dialog, formatters.                         |
-| 2026-10-02 | F2    | Header carries title / subtitle / crumbs / buttons; footer added; DataView flow approved.                                                        |
-| 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                      |
-| 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                            |
-| 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file. |
+| Date       | Phase | What happened                                                                                                                                                                                    |
+| ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2026-10-02 | F0    | Foundation: config, 20 languages, mock API with real encryption, tooling. Checked phone / desktop, light / dark, Arabic, keyboard.                                                               |
+| 2026-10-02 | F0    | Access matrix verified on every host; shared host resolver with tests.                                                                                                                           |
+| 2026-10-02 | F1    | App shell built, then rebuilt to match the design exactly (rail + menu, header, monochrome).                                                                                                     |
+| 2026-10-02 | F1    | Flags, breadcrumbs in the header, Manrope font, menu timeline / square bullets / dark text.                                                                                                      |
+| 2026-10-02 | F2    | Core plumbing: secure API client, error handling in 20 languages, DataView live on the mock, confirm dialog, formatters.                                                                         |
+| 2026-10-02 | F2    | Header carries title / subtitle / crumbs / buttons; footer added; DataView flow approved.                                                                                                        |
+| 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                                                                      |
+| 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                            |
+| 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                 |
+| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F11). Provider callback waits on the backend. |

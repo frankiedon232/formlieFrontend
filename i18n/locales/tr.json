@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Ekibiniz buradan giriş yapar. Daha sonra özel alan adı ekleyebilirsiniz.",
       "redirecting": "Yeni çalışma alanınız açılıyor…",
-      "haveAccount": "Zaten bir çalışma alanınız var mı?"
+      "haveAccount": "Zaten bir çalışma alanınız var mı?",
+      "orEmail": "ya da e-postayla kaydolun",
+      "oauthUnavailable": "{provider} ile kayıt henüz bağlı değil. Şimdilik iş e-postanızı kullanın."
     },
     "find": {
       "title": "Çalışma alanınızı bulun",

@@ -340,7 +340,9 @@
       },
       "subdomainHelp": "Tim Anda masuk di sini. Anda bisa menambahkan domain khusus nanti.",
       "redirecting": "Membuka ruang kerja baru Anda…",
-      "haveAccount": "Sudah punya ruang kerja?"
+      "haveAccount": "Sudah punya ruang kerja?",
+      "orEmail": "atau daftar dengan email",
+      "oauthUnavailable": "Pendaftaran dengan {provider} belum terhubung. Untuk sementara gunakan email kerja Anda."
     },
     "find": {
       "title": "Temukan ruang kerja Anda",
