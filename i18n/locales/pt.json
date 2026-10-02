@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formulários",
     "description": "Crie, desenhe e compartilhe seus formulários."
+  },
+  "nav": {
+    "main": "Menu principal",
+    "menu": "Menu",
+    "menuDescription": "Navegue entre as seções do seu espaço.",
+    "forms": "Formulários",
+    "templates": "Modelos",
+    "responses": "Respostas",
+    "analytics": "Análises",
+    "optionSets": "Listas de opções",
+    "integrations": "Integrações",
+    "destinations": "Destinos",
+    "webhooks": "Webhooks",
+    "apiKeys": "Chaves de API",
+    "settings": "Configurações"
+  },
+  "navbar": {
+    "breadcrumb": "Trilha de navegação",
+    "notifications": "Notificações",
+    "noNotifications": "Tudo em dia",
+    "noNotificationsDesc": "Novas atividades aparecerão aqui."
+  },
+  "user": {
+    "account": "Conta",
+    "guest": "Convidado",
+    "profile": "Meu perfil",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema",
+    "logout": "Sair"
+  },
+  "search": {
+    "button": "Pesquisar…",
+    "title": "Pesquisa",
+    "placeholder": "Pesquisar páginas e ações…",
+    "pages": "Ir para",
+    "actions": "Ações",
+    "changeLanguage": "Mudar idioma"
+  },
+  "shortcuts": {
+    "title": "Atalhos de teclado",
+    "description": "Trabalhe mais rápido com estas teclas.",
+    "general": "Geral",
+    "navigation": "Navegação",
+    "search": "Abrir pesquisa",
+    "help": "Mostrar atalhos",
+    "toggleSidebar": "Recolher ou expandir a barra lateral",
+    "closeOverlay": "Fechar diálogo ou painel",
+    "then": "depois"
+  },
+  "modal": {
+    "move": "Mover diálogo",
+    "moveHint": "Arraste para mover ou use as setas. Home centraliza."
+  },
+  "error": {
+    "notFoundTitle": "Página não encontrada",
+    "notFoundDesc": "A página que você procura não existe ou foi movida.",
+    "genericTitle": "Algo deu errado",
+    "genericDesc": "Tente novamente. Se continuar, fale com o suporte.",
+    "workspaceTitle": "Espaço de trabalho não encontrado",
+    "workspaceDesc": "Não há espaço de trabalho em {host}. Verifique o endereço ou encontre seu espaço.",
+    "findWorkspace": "Encontrar meu espaço"
   }
 }

@@ -1,0 +1,11 @@
+<script setup lang="ts">
+definePageMeta({ breadcrumb: 'nav.apiKeys' })
+const { t } = useI18n()
+useHead({ title: () => t('nav.apiKeys') })
+</script>
+
+<template>
+  <AppPanel id="api-keys">
+    <AppComingSoon icon="i-lucide-key-round" title-key="nav.apiKeys" />
+  </AppPanel>
+</template>

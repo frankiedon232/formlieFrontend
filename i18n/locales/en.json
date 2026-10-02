@@ -21,5 +21,68 @@
   "forms": {
     "title": "Forms",
     "description": "Create, design and share your forms."
+  },
+  "nav": {
+    "main": "Main menu",
+    "menu": "Menu",
+    "forms": "Forms",
+    "templates": "Templates",
+    "responses": "Responses",
+    "analytics": "Analytics",
+    "optionSets": "Option sets",
+    "integrations": "Integrations",
+    "destinations": "Destinations",
+    "webhooks": "Webhooks",
+    "apiKeys": "API keys",
+    "settings": "Settings",
+    "menuDescription": "Move between sections of your workspace."
+  },
+  "navbar": {
+    "breadcrumb": "Breadcrumb",
+    "notifications": "Notifications",
+    "noNotifications": "You're all caught up",
+    "noNotificationsDesc": "New activity will show up here."
+  },
+  "user": {
+    "account": "Account",
+    "guest": "Guest",
+    "profile": "My profile",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "logout": "Log out"
+  },
+  "search": {
+    "button": "Search…",
+    "placeholder": "Search pages and actions…",
+    "pages": "Go to",
+    "actions": "Actions",
+    "changeLanguage": "Change language",
+    "title": "Search"
+  },
+  "shortcuts": {
+    "title": "Keyboard shortcuts",
+    "description": "Work faster with these keys.",
+    "general": "General",
+    "navigation": "Navigation",
+    "search": "Open search",
+    "help": "Show shortcuts",
+    "toggleSidebar": "Collapse or expand sidebar",
+    "closeOverlay": "Close dialog or panel",
+    "then": "then"
+  },
+  "modal": {
+    "move": "Move dialog",
+    "moveHint": "Drag to move, or use the arrow keys. Home re-centres."
+  },
+  "error": {
+    "notFoundTitle": "Page not found",
+    "notFoundDesc": "The page you're looking for doesn't exist or has moved.",
+    "genericTitle": "Something went wrong",
+    "genericDesc": "Please try again. If it keeps happening, contact support.",
+    "workspaceTitle": "Workspace not found",
+    "workspaceDesc": "There is no workspace at {host}. Check the address, or find your workspace.",
+    "findWorkspace": "Find my workspace"
   }
 }

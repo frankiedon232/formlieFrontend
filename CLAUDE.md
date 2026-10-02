@@ -33,6 +33,7 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 15. **Rendering:** portal routes are client-rendered (`routeRules: { '/**': { ssr: false } }`); public form routes `/f/**` and `/s/**` are server-rendered for SEO and fast first paint.
 16. Dashboard, users/roles/RBAC and audit UI come **last** (see roadmap).
 17. **Every user-facing string is translated** (`@nuxtjs/i18n`, `const { t } = useI18n()`). No hard-coded copy in templates. Add each new key to **all** files in `i18n/locales/` (English is the fallback so a missing key never breaks the UI, but ship real translations). Languages are defined once in `shared/utils/i18n/locales.ts`. Layouts must work in RTL (Arabic): use logical Tailwind utilities (`ms-/me-/ps-/pe-/start-/end-`) instead of `ml-/mr-/left-/right-`. Format dates, numbers and currency with `Intl` / `useI18n().d/n` in the active locale.
+18. **Page frame:** every portal page renders inside `<AppPanel id="…">` (shared navbar with breadcrumbs, search, notifications, language, theme) and declares `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only (sidebar, search and `g`-shortcuts follow).
 
 ## Folder conventions (Nuxt 4 `app/` dir)
 
@@ -45,7 +46,8 @@ app/
   layouts/  default.vue (dashboard shell) · auth.vue · public.vue (form renderer) · blank.vue
   pages/    (see FRONTEND-SPEC.md page map)
   components/
-    app/      shell: Sidebar, Navbar, Breadcrumbs, ThemeSwitch, UserMenu
+    app/      shell: Panel, Modal, Breadcrumbs, Search, ShortcutsModal, UserMenu, LocaleSwitch, ComingSoon
+              sidebar/ (Sidebar, Brand, Nav, Footer, Peek) · navbar/ (Navbar, Notifications)
     data/     DataView, FilterBar, DateRangePicker, ViewSwitch, EmptyState
     forms/    builder/, designer/, renderer/, logic/, share/, responses/
     settings/ auth/ templates/
@@ -53,7 +55,7 @@ app/
     api/      useApi, useCrypto, useCsrf
     auth/     useAuth, useSession, useOtp
     tenant/   useTenant
-    ui/       useDataView, useBusy, useErrorHandler, useBreadcrumbs
+    ui/       useNavigation, useBreadcrumbs, useAppUi, useSidebarPeek, useDraggableModal · (F2) useDataView, useBusy, useErrorHandler
     i18n/     useAppLocale
     forms/    useFormBuilder, useFormHistory (undo/redo), useFormTheme
   middleware/ tenant.global.ts · auth.ts · guest.ts

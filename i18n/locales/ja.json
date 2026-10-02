@@ -21,5 +21,68 @@
   "forms": {
     "title": "フォーム",
     "description": "フォームを作成、デザイン、共有しましょう。"
+  },
+  "nav": {
+    "main": "メインメニュー",
+    "menu": "メニュー",
+    "menuDescription": "ワークスペースのセクション間を移動します。",
+    "forms": "フォーム",
+    "templates": "テンプレート",
+    "responses": "回答",
+    "analytics": "分析",
+    "optionSets": "選択肢リスト",
+    "integrations": "連携",
+    "destinations": "送信先",
+    "webhooks": "Webhook",
+    "apiKeys": "API キー",
+    "settings": "設定"
+  },
+  "navbar": {
+    "breadcrumb": "パンくずリスト",
+    "notifications": "通知",
+    "noNotifications": "新しい通知はありません",
+    "noNotificationsDesc": "新しいアクティビティはここに表示されます。"
+  },
+  "user": {
+    "account": "アカウント",
+    "guest": "ゲスト",
+    "profile": "マイプロフィール",
+    "theme": "テーマ",
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム",
+    "logout": "ログアウト"
+  },
+  "search": {
+    "button": "検索…",
+    "title": "検索",
+    "placeholder": "ページと操作を検索…",
+    "pages": "移動",
+    "actions": "操作",
+    "changeLanguage": "言語を変更"
+  },
+  "shortcuts": {
+    "title": "キーボードショートカット",
+    "description": "これらのキーで素早く操作できます。",
+    "general": "一般",
+    "navigation": "ナビゲーション",
+    "search": "検索を開く",
+    "help": "ショートカットを表示",
+    "toggleSidebar": "サイドバーを折りたたむ／展開する",
+    "closeOverlay": "ダイアログやパネルを閉じる",
+    "then": "次に"
+  },
+  "modal": {
+    "move": "ダイアログを移動",
+    "moveHint": "ドラッグするか矢印キーで移動します。Home で中央に戻ります。"
+  },
+  "error": {
+    "notFoundTitle": "ページが見つかりません",
+    "notFoundDesc": "お探しのページは存在しないか、移動されました。",
+    "genericTitle": "問題が発生しました",
+    "genericDesc": "もう一度お試しください。解決しない場合はサポートにお問い合わせください。",
+    "workspaceTitle": "ワークスペースが見つかりません",
+    "workspaceDesc": "{host} にワークスペースはありません。アドレスを確認するか、ワークスペースを探してください。",
+    "findWorkspace": "ワークスペースを探す"
   }
 }

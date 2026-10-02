@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formularios",
     "description": "Crea, diseña y comparte tus formularios."
+  },
+  "nav": {
+    "main": "Menú principal",
+    "menu": "Menú",
+    "menuDescription": "Muévete entre las secciones de tu espacio.",
+    "forms": "Formularios",
+    "templates": "Plantillas",
+    "responses": "Respuestas",
+    "analytics": "Analítica",
+    "optionSets": "Listas de opciones",
+    "integrations": "Integraciones",
+    "destinations": "Destinos",
+    "webhooks": "Webhooks",
+    "apiKeys": "Claves API",
+    "settings": "Configuración"
+  },
+  "navbar": {
+    "breadcrumb": "Ruta de navegación",
+    "notifications": "Notificaciones",
+    "noNotifications": "Estás al día",
+    "noNotificationsDesc": "La nueva actividad aparecerá aquí."
+  },
+  "user": {
+    "account": "Cuenta",
+    "guest": "Invitado",
+    "profile": "Mi perfil",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "logout": "Cerrar sesión"
+  },
+  "search": {
+    "button": "Buscar…",
+    "title": "Buscar",
+    "placeholder": "Buscar páginas y acciones…",
+    "pages": "Ir a",
+    "actions": "Acciones",
+    "changeLanguage": "Cambiar idioma"
+  },
+  "shortcuts": {
+    "title": "Atajos de teclado",
+    "description": "Trabaja más rápido con estas teclas.",
+    "general": "General",
+    "navigation": "Navegación",
+    "search": "Abrir búsqueda",
+    "help": "Mostrar atajos",
+    "toggleSidebar": "Contraer o expandir la barra lateral",
+    "closeOverlay": "Cerrar diálogo o panel",
+    "then": "luego"
+  },
+  "modal": {
+    "move": "Mover diálogo",
+    "moveHint": "Arrastra para mover o usa las flechas. Inicio lo centra."
+  },
+  "error": {
+    "notFoundTitle": "Página no encontrada",
+    "notFoundDesc": "La página que buscas no existe o se ha movido.",
+    "genericTitle": "Algo salió mal",
+    "genericDesc": "Inténtalo de nuevo. Si sigue ocurriendo, contacta con soporte.",
+    "workspaceTitle": "Espacio de trabajo no encontrado",
+    "workspaceDesc": "No hay ningún espacio en {host}. Revisa la dirección o busca tu espacio.",
+    "findWorkspace": "Buscar mi espacio"
   }
 }

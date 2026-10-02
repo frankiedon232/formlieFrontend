@@ -21,5 +21,68 @@
   "forms": {
     "title": "النماذج",
     "description": "أنشئ نماذجك وصمّمها وشاركها."
+  },
+  "nav": {
+    "main": "القائمة الرئيسية",
+    "menu": "القائمة",
+    "menuDescription": "انتقل بين أقسام مساحة العمل.",
+    "forms": "النماذج",
+    "templates": "القوالب",
+    "responses": "الردود",
+    "analytics": "التحليلات",
+    "optionSets": "قوائم الخيارات",
+    "integrations": "التكاملات",
+    "destinations": "الوجهات",
+    "webhooks": "خطافات الويب",
+    "apiKeys": "مفاتيح API",
+    "settings": "الإعدادات"
+  },
+  "navbar": {
+    "breadcrumb": "مسار التنقل",
+    "notifications": "الإشعارات",
+    "noNotifications": "لا جديد",
+    "noNotificationsDesc": "سيظهر النشاط الجديد هنا."
+  },
+  "user": {
+    "account": "الحساب",
+    "guest": "ضيف",
+    "profile": "ملفي الشخصي",
+    "theme": "المظهر",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام",
+    "logout": "تسجيل الخروج"
+  },
+  "search": {
+    "button": "بحث…",
+    "title": "بحث",
+    "placeholder": "ابحث في الصفحات والإجراءات…",
+    "pages": "انتقل إلى",
+    "actions": "الإجراءات",
+    "changeLanguage": "تغيير اللغة"
+  },
+  "shortcuts": {
+    "title": "اختصارات لوحة المفاتيح",
+    "description": "اعمل بسرعة أكبر باستخدام هذه المفاتيح.",
+    "general": "عام",
+    "navigation": "التنقل",
+    "search": "فتح البحث",
+    "help": "عرض الاختصارات",
+    "toggleSidebar": "طي الشريط الجانبي أو توسيعه",
+    "closeOverlay": "إغلاق النافذة أو اللوحة",
+    "then": "ثم"
+  },
+  "modal": {
+    "move": "تحريك النافذة",
+    "moveHint": "اسحب للتحريك أو استخدم مفاتيح الأسهم. Home يعيدها للوسط."
+  },
+  "error": {
+    "notFoundTitle": "الصفحة غير موجودة",
+    "notFoundDesc": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "genericTitle": "حدث خطأ ما",
+    "genericDesc": "يرجى المحاولة مرة أخرى. إذا تكرر ذلك، تواصل مع الدعم.",
+    "workspaceTitle": "مساحة العمل غير موجودة",
+    "workspaceDesc": "لا توجد مساحة عمل على {host}. تحقّق من العنوان أو ابحث عن مساحة عملك.",
+    "findWorkspace": "ابحث عن مساحة عملي"
   }
 }

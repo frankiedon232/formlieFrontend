@@ -14,6 +14,7 @@ Built with `UDashboardGroup` → `UDashboardSidebar` + `UDashboardPanel`.
 - **Collapsed:** only the **rail** (icons with tooltips) remains.
 - **Hover-to-peek:** only when collapsed, hovering the rail opens the full menu as an overlay; leaving it closes it again. Clicking the pin/collapse button switches between expanded and collapsed permanently (remembered in a cookie).
 - Implementation: `UDashboardSidebar` with `collapsible` and `v-model:collapsed`; a `peek` state set on `mouseenter`/`mouseleave` (with ~150 ms delay to avoid flicker) renders the expanded content over the page without shifting layout. Keyboard: `[` toggles collapse; focus entering the rail also opens the peek.
+- While the peek is open the rail behind it is `inert`, so Tab goes peek → page and Shift+Tab from the page lands on the peek's last item. Esc closes the top-most layer first (dialog/menu before peek).
 - **Mobile:** sidebar becomes a slide-over drawer opened from the navbar menu button.
 - Top: tenant logo/name switcher (organisation switcher if several). Bottom: help, theme switch, user menu.
 
@@ -23,7 +24,11 @@ Forms · Templates · Responses · Analytics · Option Sets · Integrations (des
 
 ### Navbar (`UDashboardNavbar`)
 
-Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` via `UDashboardSearch`), notifications, theme switch (`UColorModeButton`), user menu.
+Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` via `UDashboardSearch`: pages, actions, language, theme), notifications, language switch (`sm`+; on phones via user menu / search), theme switch (`UColorModeButton`). User menu sits at the bottom of the sidebar (design reference).
+
+### Keyboard shortcuts
+
+`?` help · `Ctrl/⌘+K` search · `[` collapse sidebar · `g` then `f` Forms, `t` Templates, `r` Responses, `a` Analytics, `o` Option sets, `s` Settings · `Esc` close. Shortcuts never fire while typing in an input.
 
 ### Global loading and feedback
 

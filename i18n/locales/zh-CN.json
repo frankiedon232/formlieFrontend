@@ -21,5 +21,68 @@
   "forms": {
     "title": "表单",
     "description": "创建、设计并分享您的表单。"
+  },
+  "nav": {
+    "main": "主菜单",
+    "menu": "菜单",
+    "menuDescription": "在工作区的各个部分之间切换。",
+    "forms": "表单",
+    "templates": "模板",
+    "responses": "回复",
+    "analytics": "分析",
+    "optionSets": "选项列表",
+    "integrations": "集成",
+    "destinations": "目标",
+    "webhooks": "Webhook",
+    "apiKeys": "API 密钥",
+    "settings": "设置"
+  },
+  "navbar": {
+    "breadcrumb": "面包屑导航",
+    "notifications": "通知",
+    "noNotifications": "暂无新通知",
+    "noNotificationsDesc": "新的动态会显示在这里。"
+  },
+  "user": {
+    "account": "账户",
+    "guest": "访客",
+    "profile": "我的资料",
+    "theme": "主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统",
+    "logout": "退出登录"
+  },
+  "search": {
+    "button": "搜索…",
+    "title": "搜索",
+    "placeholder": "搜索页面和操作…",
+    "pages": "前往",
+    "actions": "操作",
+    "changeLanguage": "切换语言"
+  },
+  "shortcuts": {
+    "title": "键盘快捷键",
+    "description": "使用这些按键更快地工作。",
+    "general": "常规",
+    "navigation": "导航",
+    "search": "打开搜索",
+    "help": "显示快捷键",
+    "toggleSidebar": "折叠或展开侧边栏",
+    "closeOverlay": "关闭对话框或面板",
+    "then": "然后"
+  },
+  "modal": {
+    "move": "移动对话框",
+    "moveHint": "拖动以移动，或使用方向键。Home 键居中。"
+  },
+  "error": {
+    "notFoundTitle": "页面未找到",
+    "notFoundDesc": "您要找的页面不存在或已被移动。",
+    "genericTitle": "出了点问题",
+    "genericDesc": "请重试。如果问题持续存在，请联系支持。",
+    "workspaceTitle": "未找到工作区",
+    "workspaceDesc": "{host} 上没有工作区。请检查地址或查找您的工作区。",
+    "findWorkspace": "查找我的工作区"
   }
 }

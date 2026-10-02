@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formulieren",
     "description": "Maak, ontwerp en deel je formulieren."
+  },
+  "nav": {
+    "main": "Hoofdmenu",
+    "menu": "Menu",
+    "menuDescription": "Wissel tussen de onderdelen van je werkruimte.",
+    "forms": "Formulieren",
+    "templates": "Sjablonen",
+    "responses": "Reacties",
+    "analytics": "Analyses",
+    "optionSets": "Optielijsten",
+    "integrations": "Integraties",
+    "destinations": "Bestemmingen",
+    "webhooks": "Webhooks",
+    "apiKeys": "API-sleutels",
+    "settings": "Instellingen"
+  },
+  "navbar": {
+    "breadcrumb": "Kruimelpad",
+    "notifications": "Meldingen",
+    "noNotifications": "Je bent helemaal bij",
+    "noNotificationsDesc": "Nieuwe activiteit verschijnt hier."
+  },
+  "user": {
+    "account": "Account",
+    "guest": "Gast",
+    "profile": "Mijn profiel",
+    "theme": "Thema",
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Systeem",
+    "logout": "Uitloggen"
+  },
+  "search": {
+    "button": "Zoeken…",
+    "title": "Zoeken",
+    "placeholder": "Zoek pagina's en acties…",
+    "pages": "Ga naar",
+    "actions": "Acties",
+    "changeLanguage": "Taal wijzigen"
+  },
+  "shortcuts": {
+    "title": "Sneltoetsen",
+    "description": "Werk sneller met deze toetsen.",
+    "general": "Algemeen",
+    "navigation": "Navigatie",
+    "search": "Zoeken openen",
+    "help": "Sneltoetsen tonen",
+    "toggleSidebar": "Zijbalk in- of uitklappen",
+    "closeOverlay": "Venster of paneel sluiten",
+    "then": "dan"
+  },
+  "modal": {
+    "move": "Venster verplaatsen",
+    "moveHint": "Sleep om te verplaatsen of gebruik de pijltjestoetsen. Home centreert."
+  },
+  "error": {
+    "notFoundTitle": "Pagina niet gevonden",
+    "notFoundDesc": "De pagina die je zoekt bestaat niet of is verplaatst.",
+    "genericTitle": "Er ging iets mis",
+    "genericDesc": "Probeer het opnieuw. Blijft het gebeuren, neem dan contact op met support.",
+    "workspaceTitle": "Werkruimte niet gevonden",
+    "workspaceDesc": "Er is geen werkruimte op {host}. Controleer het adres of zoek je werkruimte.",
+    "findWorkspace": "Mijn werkruimte zoeken"
   }
 }

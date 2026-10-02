@@ -21,5 +21,68 @@
   "forms": {
     "title": "양식",
     "description": "양식을 만들고, 디자인하고, 공유하세요."
+  },
+  "nav": {
+    "main": "메인 메뉴",
+    "menu": "메뉴",
+    "menuDescription": "워크스페이스의 섹션 사이를 이동합니다.",
+    "forms": "양식",
+    "templates": "템플릿",
+    "responses": "응답",
+    "analytics": "분석",
+    "optionSets": "옵션 목록",
+    "integrations": "연동",
+    "destinations": "대상",
+    "webhooks": "웹훅",
+    "apiKeys": "API 키",
+    "settings": "설정"
+  },
+  "navbar": {
+    "breadcrumb": "이동 경로",
+    "notifications": "알림",
+    "noNotifications": "새 알림이 없습니다",
+    "noNotificationsDesc": "새로운 활동이 여기에 표시됩니다."
+  },
+  "user": {
+    "account": "계정",
+    "guest": "게스트",
+    "profile": "내 프로필",
+    "theme": "테마",
+    "light": "라이트",
+    "dark": "다크",
+    "system": "시스템",
+    "logout": "로그아웃"
+  },
+  "search": {
+    "button": "검색…",
+    "title": "검색",
+    "placeholder": "페이지와 작업 검색…",
+    "pages": "이동",
+    "actions": "작업",
+    "changeLanguage": "언어 변경"
+  },
+  "shortcuts": {
+    "title": "키보드 단축키",
+    "description": "이 키로 더 빠르게 작업하세요.",
+    "general": "일반",
+    "navigation": "탐색",
+    "search": "검색 열기",
+    "help": "단축키 보기",
+    "toggleSidebar": "사이드바 접기 또는 펼치기",
+    "closeOverlay": "대화상자 또는 패널 닫기",
+    "then": "다음"
+  },
+  "modal": {
+    "move": "대화상자 이동",
+    "moveHint": "드래그하거나 화살표 키로 이동하세요. Home은 가운데로 돌립니다."
+  },
+  "error": {
+    "notFoundTitle": "페이지를 찾을 수 없습니다",
+    "notFoundDesc": "찾으시는 페이지가 없거나 이동되었습니다.",
+    "genericTitle": "문제가 발생했습니다",
+    "genericDesc": "다시 시도해 주세요. 계속 발생하면 지원팀에 문의하세요.",
+    "workspaceTitle": "워크스페이스를 찾을 수 없습니다",
+    "workspaceDesc": "{host}에는 워크스페이스가 없습니다. 주소를 확인하거나 워크스페이스를 찾아보세요.",
+    "findWorkspace": "내 워크스페이스 찾기"
   }
 }

@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formulare",
     "description": "Erstellen, gestalten und teilen Sie Ihre Formulare."
+  },
+  "nav": {
+    "main": "Hauptmenü",
+    "menu": "Menü",
+    "menuDescription": "Wechseln Sie zwischen den Bereichen Ihres Arbeitsbereichs.",
+    "forms": "Formulare",
+    "templates": "Vorlagen",
+    "responses": "Antworten",
+    "analytics": "Analysen",
+    "optionSets": "Optionslisten",
+    "integrations": "Integrationen",
+    "destinations": "Ziele",
+    "webhooks": "Webhooks",
+    "apiKeys": "API-Schlüssel",
+    "settings": "Einstellungen"
+  },
+  "navbar": {
+    "breadcrumb": "Brotkrümelnavigation",
+    "notifications": "Benachrichtigungen",
+    "noNotifications": "Alles erledigt",
+    "noNotificationsDesc": "Neue Aktivitäten erscheinen hier."
+  },
+  "user": {
+    "account": "Konto",
+    "guest": "Gast",
+    "profile": "Mein Profil",
+    "theme": "Design",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "logout": "Abmelden"
+  },
+  "search": {
+    "button": "Suchen…",
+    "title": "Suche",
+    "placeholder": "Seiten und Aktionen suchen…",
+    "pages": "Gehe zu",
+    "actions": "Aktionen",
+    "changeLanguage": "Sprache ändern"
+  },
+  "shortcuts": {
+    "title": "Tastenkürzel",
+    "description": "Arbeiten Sie schneller mit diesen Tasten.",
+    "general": "Allgemein",
+    "navigation": "Navigation",
+    "search": "Suche öffnen",
+    "help": "Tastenkürzel anzeigen",
+    "toggleSidebar": "Seitenleiste ein- oder ausklappen",
+    "closeOverlay": "Dialog oder Bereich schließen",
+    "then": "dann"
+  },
+  "modal": {
+    "move": "Dialog verschieben",
+    "moveHint": "Zum Verschieben ziehen oder Pfeiltasten nutzen. Pos1 zentriert."
+  },
+  "error": {
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundDesc": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "genericTitle": "Etwas ist schiefgelaufen",
+    "genericDesc": "Bitte versuchen Sie es erneut. Wenn es weiterhin passiert, wenden Sie sich an den Support.",
+    "workspaceTitle": "Arbeitsbereich nicht gefunden",
+    "workspaceDesc": "Unter {host} gibt es keinen Arbeitsbereich. Prüfen Sie die Adresse oder finden Sie Ihren Arbeitsbereich.",
+    "findWorkspace": "Meinen Arbeitsbereich finden"
   }
 }

@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formlar",
     "description": "Formlarınızı oluşturun, tasarlayın ve paylaşın."
+  },
+  "nav": {
+    "main": "Ana menü",
+    "menu": "Menü",
+    "menuDescription": "Çalışma alanınızın bölümleri arasında geçiş yapın.",
+    "forms": "Formlar",
+    "templates": "Şablonlar",
+    "responses": "Yanıtlar",
+    "analytics": "Analizler",
+    "optionSets": "Seçenek listeleri",
+    "integrations": "Entegrasyonlar",
+    "destinations": "Hedefler",
+    "webhooks": "Webhook’lar",
+    "apiKeys": "API anahtarları",
+    "settings": "Ayarlar"
+  },
+  "navbar": {
+    "breadcrumb": "İçerik haritası",
+    "notifications": "Bildirimler",
+    "noNotifications": "Her şey güncel",
+    "noNotificationsDesc": "Yeni etkinlikler burada görünecek."
+  },
+  "user": {
+    "account": "Hesap",
+    "guest": "Misafir",
+    "profile": "Profilim",
+    "theme": "Tema",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Sistem",
+    "logout": "Çıkış yap"
+  },
+  "search": {
+    "button": "Ara…",
+    "title": "Arama",
+    "placeholder": "Sayfa ve işlem ara…",
+    "pages": "Git",
+    "actions": "İşlemler",
+    "changeLanguage": "Dili değiştir"
+  },
+  "shortcuts": {
+    "title": "Klavye kısayolları",
+    "description": "Bu tuşlarla daha hızlı çalışın.",
+    "general": "Genel",
+    "navigation": "Gezinme",
+    "search": "Aramayı aç",
+    "help": "Kısayolları göster",
+    "toggleSidebar": "Kenar çubuğunu daralt veya genişlet",
+    "closeOverlay": "İletişim kutusunu veya paneli kapat",
+    "then": "sonra"
+  },
+  "modal": {
+    "move": "Pencereyi taşı",
+    "moveHint": "Taşımak için sürükleyin veya ok tuşlarını kullanın. Home ortalar."
+  },
+  "error": {
+    "notFoundTitle": "Sayfa bulunamadı",
+    "notFoundDesc": "Aradığınız sayfa yok veya taşınmış.",
+    "genericTitle": "Bir şeyler ters gitti",
+    "genericDesc": "Lütfen tekrar deneyin. Sorun devam ederse destekle iletişime geçin.",
+    "workspaceTitle": "Çalışma alanı bulunamadı",
+    "workspaceDesc": "{host} adresinde bir çalışma alanı yok. Adresi kontrol edin veya çalışma alanınızı bulun.",
+    "findWorkspace": "Çalışma alanımı bul"
   }
 }

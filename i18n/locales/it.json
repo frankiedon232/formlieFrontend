@@ -21,5 +21,68 @@
   "forms": {
     "title": "Moduli",
     "description": "Crea, progetta e condividi i tuoi moduli."
+  },
+  "nav": {
+    "main": "Menu principale",
+    "menu": "Menu",
+    "menuDescription": "Spostati tra le sezioni del tuo spazio.",
+    "forms": "Moduli",
+    "templates": "Modelli",
+    "responses": "Risposte",
+    "analytics": "Analisi",
+    "optionSets": "Elenchi di opzioni",
+    "integrations": "Integrazioni",
+    "destinations": "Destinazioni",
+    "webhooks": "Webhook",
+    "apiKeys": "Chiavi API",
+    "settings": "Impostazioni"
+  },
+  "navbar": {
+    "breadcrumb": "Percorso di navigazione",
+    "notifications": "Notifiche",
+    "noNotifications": "Sei aggiornato",
+    "noNotificationsDesc": "Le nuove attività appariranno qui."
+  },
+  "user": {
+    "account": "Account",
+    "guest": "Ospite",
+    "profile": "Il mio profilo",
+    "theme": "Tema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "system": "Sistema",
+    "logout": "Esci"
+  },
+  "search": {
+    "button": "Cerca…",
+    "title": "Ricerca",
+    "placeholder": "Cerca pagine e azioni…",
+    "pages": "Vai a",
+    "actions": "Azioni",
+    "changeLanguage": "Cambia lingua"
+  },
+  "shortcuts": {
+    "title": "Scorciatoie da tastiera",
+    "description": "Lavora più velocemente con questi tasti.",
+    "general": "Generale",
+    "navigation": "Navigazione",
+    "search": "Apri la ricerca",
+    "help": "Mostra scorciatoie",
+    "toggleSidebar": "Comprimi o espandi la barra laterale",
+    "closeOverlay": "Chiudi finestra o pannello",
+    "then": "poi"
+  },
+  "modal": {
+    "move": "Sposta finestra",
+    "moveHint": "Trascina per spostare o usa le frecce. Home la ricentra."
+  },
+  "error": {
+    "notFoundTitle": "Pagina non trovata",
+    "notFoundDesc": "La pagina che cerchi non esiste o è stata spostata.",
+    "genericTitle": "Qualcosa è andato storto",
+    "genericDesc": "Riprova. Se il problema persiste, contatta l'assistenza.",
+    "workspaceTitle": "Spazio di lavoro non trovato",
+    "workspaceDesc": "Non esiste uno spazio su {host}. Controlla l'indirizzo o trova il tuo spazio.",
+    "findWorkspace": "Trova il mio spazio"
   }
 }

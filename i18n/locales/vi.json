@@ -21,5 +21,68 @@
   "forms": {
     "title": "Biểu mẫu",
     "description": "Tạo, thiết kế và chia sẻ biểu mẫu của bạn."
+  },
+  "nav": {
+    "main": "Menu chính",
+    "menu": "Menu",
+    "menuDescription": "Chuyển giữa các mục trong không gian làm việc.",
+    "forms": "Biểu mẫu",
+    "templates": "Mẫu",
+    "responses": "Phản hồi",
+    "analytics": "Phân tích",
+    "optionSets": "Danh sách tùy chọn",
+    "integrations": "Tích hợp",
+    "destinations": "Đích đến",
+    "webhooks": "Webhook",
+    "apiKeys": "Khóa API",
+    "settings": "Cài đặt"
+  },
+  "navbar": {
+    "breadcrumb": "Đường dẫn",
+    "notifications": "Thông báo",
+    "noNotifications": "Không có gì mới",
+    "noNotificationsDesc": "Hoạt động mới sẽ hiển thị ở đây."
+  },
+  "user": {
+    "account": "Tài khoản",
+    "guest": "Khách",
+    "profile": "Hồ sơ của tôi",
+    "theme": "Giao diện",
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Hệ thống",
+    "logout": "Đăng xuất"
+  },
+  "search": {
+    "button": "Tìm kiếm…",
+    "title": "Tìm kiếm",
+    "placeholder": "Tìm trang và thao tác…",
+    "pages": "Đi tới",
+    "actions": "Thao tác",
+    "changeLanguage": "Đổi ngôn ngữ"
+  },
+  "shortcuts": {
+    "title": "Phím tắt",
+    "description": "Làm việc nhanh hơn với các phím này.",
+    "general": "Chung",
+    "navigation": "Điều hướng",
+    "search": "Mở tìm kiếm",
+    "help": "Hiện phím tắt",
+    "toggleSidebar": "Thu gọn hoặc mở rộng thanh bên",
+    "closeOverlay": "Đóng hộp thoại hoặc bảng",
+    "then": "rồi"
+  },
+  "modal": {
+    "move": "Di chuyển hộp thoại",
+    "moveHint": "Kéo để di chuyển hoặc dùng phím mũi tên. Home đưa về giữa."
+  },
+  "error": {
+    "notFoundTitle": "Không tìm thấy trang",
+    "notFoundDesc": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
+    "genericTitle": "Đã xảy ra lỗi",
+    "genericDesc": "Vui lòng thử lại. Nếu vẫn tiếp diễn, hãy liên hệ bộ phận hỗ trợ.",
+    "workspaceTitle": "Không tìm thấy không gian làm việc",
+    "workspaceDesc": "Không có không gian làm việc tại {host}. Hãy kiểm tra địa chỉ hoặc tìm không gian của bạn.",
+    "findWorkspace": "Tìm không gian của tôi"
   }
 }

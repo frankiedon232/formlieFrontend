@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formulaires",
     "description": "Créez, concevez et partagez vos formulaires."
+  },
+  "nav": {
+    "main": "Menu principal",
+    "menu": "Menu",
+    "menuDescription": "Naviguez entre les sections de votre espace.",
+    "forms": "Formulaires",
+    "templates": "Modèles",
+    "responses": "Réponses",
+    "analytics": "Statistiques",
+    "optionSets": "Listes d'options",
+    "integrations": "Intégrations",
+    "destinations": "Destinations",
+    "webhooks": "Webhooks",
+    "apiKeys": "Clés API",
+    "settings": "Paramètres"
+  },
+  "navbar": {
+    "breadcrumb": "Fil d'Ariane",
+    "notifications": "Notifications",
+    "noNotifications": "Vous êtes à jour",
+    "noNotificationsDesc": "Les nouvelles activités apparaîtront ici."
+  },
+  "user": {
+    "account": "Compte",
+    "guest": "Invité",
+    "profile": "Mon profil",
+    "theme": "Thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système",
+    "logout": "Se déconnecter"
+  },
+  "search": {
+    "button": "Rechercher…",
+    "title": "Recherche",
+    "placeholder": "Rechercher des pages et des actions…",
+    "pages": "Aller à",
+    "actions": "Actions",
+    "changeLanguage": "Changer de langue"
+  },
+  "shortcuts": {
+    "title": "Raccourcis clavier",
+    "description": "Travaillez plus vite avec ces touches.",
+    "general": "Général",
+    "navigation": "Navigation",
+    "search": "Ouvrir la recherche",
+    "help": "Afficher les raccourcis",
+    "toggleSidebar": "Réduire ou développer la barre latérale",
+    "closeOverlay": "Fermer la fenêtre ou le panneau",
+    "then": "puis"
+  },
+  "modal": {
+    "move": "Déplacer la fenêtre",
+    "moveHint": "Faites glisser, ou utilisez les flèches. Début recentre."
+  },
+  "error": {
+    "notFoundTitle": "Page introuvable",
+    "notFoundDesc": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "genericTitle": "Une erreur est survenue",
+    "genericDesc": "Veuillez réessayer. Si le problème persiste, contactez le support.",
+    "workspaceTitle": "Espace de travail introuvable",
+    "workspaceDesc": "Aucun espace de travail à l'adresse {host}. Vérifiez l'adresse ou retrouvez votre espace.",
+    "findWorkspace": "Trouver mon espace"
   }
 }

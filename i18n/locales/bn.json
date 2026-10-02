@@ -21,5 +21,68 @@
   "forms": {
     "title": "ফর্ম",
     "description": "আপনার ফর্ম তৈরি, ডিজাইন ও শেয়ার করুন।"
+  },
+  "nav": {
+    "main": "প্রধান মেনু",
+    "menu": "মেনু",
+    "menuDescription": "আপনার ওয়ার্কস্পেসের বিভাগগুলোর মধ্যে যান।",
+    "forms": "ফর্ম",
+    "templates": "টেমপ্লেট",
+    "responses": "উত্তর",
+    "analytics": "অ্যানালিটিক্স",
+    "optionSets": "বিকল্প তালিকা",
+    "integrations": "ইন্টিগ্রেশন",
+    "destinations": "গন্তব্য",
+    "webhooks": "ওয়েবহুক",
+    "apiKeys": "API কী",
+    "settings": "সেটিংস"
+  },
+  "navbar": {
+    "breadcrumb": "ব্রেডক্রাম্ব",
+    "notifications": "বিজ্ঞপ্তি",
+    "noNotifications": "নতুন কিছু নেই",
+    "noNotificationsDesc": "নতুন কার্যকলাপ এখানে দেখা যাবে।"
+  },
+  "user": {
+    "account": "অ্যাকাউন্ট",
+    "guest": "অতিথি",
+    "profile": "আমার প্রোফাইল",
+    "theme": "থিম",
+    "light": "লাইট",
+    "dark": "ডার্ক",
+    "system": "সিস্টেম",
+    "logout": "লগ আউট"
+  },
+  "search": {
+    "button": "খুঁজুন…",
+    "title": "অনুসন্ধান",
+    "placeholder": "পৃষ্ঠা ও কাজ খুঁজুন…",
+    "pages": "যান",
+    "actions": "কাজ",
+    "changeLanguage": "ভাষা পরিবর্তন"
+  },
+  "shortcuts": {
+    "title": "কীবোর্ড শর্টকাট",
+    "description": "এই কীগুলো দিয়ে দ্রুত কাজ করুন।",
+    "general": "সাধারণ",
+    "navigation": "নেভিগেশন",
+    "search": "অনুসন্ধান খুলুন",
+    "help": "শর্টকাট দেখান",
+    "toggleSidebar": "সাইডবার ছোট বা বড় করুন",
+    "closeOverlay": "ডায়ালগ বা প্যানেল বন্ধ করুন",
+    "then": "তারপর"
+  },
+  "modal": {
+    "move": "ডায়ালগ সরান",
+    "moveHint": "সরাতে টেনে আনুন বা তীর কী ব্যবহার করুন। Home মাঝে আনে।"
+  },
+  "error": {
+    "notFoundTitle": "পৃষ্ঠা পাওয়া যায়নি",
+    "notFoundDesc": "আপনি যে পৃষ্ঠাটি খুঁজছেন তা নেই বা সরানো হয়েছে।",
+    "genericTitle": "কিছু ভুল হয়েছে",
+    "genericDesc": "আবার চেষ্টা করুন। সমস্যা চলতে থাকলে সহায়তার সাথে যোগাযোগ করুন।",
+    "workspaceTitle": "ওয়ার্কস্পেস পাওয়া যায়নি",
+    "workspaceDesc": "{host}-এ কোনো ওয়ার্কস্পেস নেই। ঠিকানা যাচাই করুন বা আপনার ওয়ার্কস্পেস খুঁজুন।",
+    "findWorkspace": "আমার ওয়ার্কস্পেস খুঁজুন"
   }
 }

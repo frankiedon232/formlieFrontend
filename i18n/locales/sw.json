@@ -21,5 +21,68 @@
   "forms": {
     "title": "Fomu",
     "description": "Unda, buni na shiriki fomu zako."
+  },
+  "nav": {
+    "main": "Menyu kuu",
+    "menu": "Menyu",
+    "menuDescription": "Hamia kati ya sehemu za eneo lako la kazi.",
+    "forms": "Fomu",
+    "templates": "Violezo",
+    "responses": "Majibu",
+    "analytics": "Takwimu",
+    "optionSets": "Orodha za chaguo",
+    "integrations": "Miunganisho",
+    "destinations": "Mahali pa kupeleka",
+    "webhooks": "Webhooks",
+    "apiKeys": "Funguo za API",
+    "settings": "Mipangilio"
+  },
+  "navbar": {
+    "breadcrumb": "Njia ya urambazaji",
+    "notifications": "Arifa",
+    "noNotifications": "Hakuna jipya",
+    "noNotificationsDesc": "Shughuli mpya zitaonekana hapa."
+  },
+  "user": {
+    "account": "Akaunti",
+    "guest": "Mgeni",
+    "profile": "Wasifu wangu",
+    "theme": "Mandhari",
+    "light": "Angavu",
+    "dark": "Giza",
+    "system": "Mfumo",
+    "logout": "Toka"
+  },
+  "search": {
+    "button": "Tafuta…",
+    "title": "Utafutaji",
+    "placeholder": "Tafuta kurasa na vitendo…",
+    "pages": "Nenda",
+    "actions": "Vitendo",
+    "changeLanguage": "Badilisha lugha"
+  },
+  "shortcuts": {
+    "title": "Njia za mkato za kibodi",
+    "description": "Fanya kazi haraka kwa vitufe hivi.",
+    "general": "Jumla",
+    "navigation": "Urambazaji",
+    "search": "Fungua utafutaji",
+    "help": "Onyesha njia za mkato",
+    "toggleSidebar": "Kunja au panua upau wa pembeni",
+    "closeOverlay": "Funga kidirisha au paneli",
+    "then": "kisha"
+  },
+  "modal": {
+    "move": "Sogeza kidirisha",
+    "moveHint": "Buruta kusogeza, au tumia vitufe vya mishale. Home hurudisha katikati."
+  },
+  "error": {
+    "notFoundTitle": "Ukurasa haukupatikana",
+    "notFoundDesc": "Ukurasa unaoutafuta haupo au umehamishwa.",
+    "genericTitle": "Hitilafu imetokea",
+    "genericDesc": "Tafadhali jaribu tena. Ikiendelea, wasiliana na msaada.",
+    "workspaceTitle": "Eneo la kazi halikupatikana",
+    "workspaceDesc": "Hakuna eneo la kazi kwenye {host}. Kagua anwani au tafuta eneo lako la kazi.",
+    "findWorkspace": "Tafuta eneo langu la kazi"
   }
 }

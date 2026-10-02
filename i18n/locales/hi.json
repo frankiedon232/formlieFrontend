@@ -21,5 +21,68 @@
   "forms": {
     "title": "फ़ॉर्म",
     "description": "अपने फ़ॉर्म बनाएँ, डिज़ाइन करें और साझा करें।"
+  },
+  "nav": {
+    "main": "मुख्य मेनू",
+    "menu": "मेनू",
+    "menuDescription": "अपने वर्कस्पेस के अनुभागों के बीच जाएँ।",
+    "forms": "फ़ॉर्म",
+    "templates": "टेम्पलेट",
+    "responses": "जवाब",
+    "analytics": "एनालिटिक्स",
+    "optionSets": "विकल्प सूचियाँ",
+    "integrations": "इंटीग्रेशन",
+    "destinations": "गंतव्य",
+    "webhooks": "वेबहुक",
+    "apiKeys": "API कुंजियाँ",
+    "settings": "सेटिंग्स"
+  },
+  "navbar": {
+    "breadcrumb": "ब्रेडक्रंब",
+    "notifications": "सूचनाएँ",
+    "noNotifications": "कोई नई सूचना नहीं",
+    "noNotificationsDesc": "नई गतिविधि यहाँ दिखेगी।"
+  },
+  "user": {
+    "account": "खाता",
+    "guest": "अतिथि",
+    "profile": "मेरी प्रोफ़ाइल",
+    "theme": "थीम",
+    "light": "लाइट",
+    "dark": "डार्क",
+    "system": "सिस्टम",
+    "logout": "लॉग आउट"
+  },
+  "search": {
+    "button": "खोजें…",
+    "title": "खोज",
+    "placeholder": "पेज और क्रियाएँ खोजें…",
+    "pages": "यहाँ जाएँ",
+    "actions": "क्रियाएँ",
+    "changeLanguage": "भाषा बदलें"
+  },
+  "shortcuts": {
+    "title": "कीबोर्ड शॉर्टकट",
+    "description": "इन कुंजियों से तेज़ी से काम करें।",
+    "general": "सामान्य",
+    "navigation": "नेविगेशन",
+    "search": "खोज खोलें",
+    "help": "शॉर्टकट दिखाएँ",
+    "toggleSidebar": "साइडबार छोटा या बड़ा करें",
+    "closeOverlay": "डायलॉग या पैनल बंद करें",
+    "then": "फिर"
+  },
+  "modal": {
+    "move": "डायलॉग खिसकाएँ",
+    "moveHint": "खिसकाने के लिए खींचें या तीर कुंजियाँ दबाएँ। Home बीच में लाता है।"
+  },
+  "error": {
+    "notFoundTitle": "पेज नहीं मिला",
+    "notFoundDesc": "आप जो पेज ढूँढ रहे हैं वह मौजूद नहीं है या हटा दिया गया है।",
+    "genericTitle": "कुछ गलत हो गया",
+    "genericDesc": "कृपया फिर से कोशिश करें। अगर ऐसा होता रहे, तो सहायता से संपर्क करें।",
+    "workspaceTitle": "वर्कस्पेस नहीं मिला",
+    "workspaceDesc": "{host} पर कोई वर्कस्पेस नहीं है। पता जाँचें या अपना वर्कस्पेस ढूँढें।",
+    "findWorkspace": "मेरा वर्कस्पेस ढूँढें"
   }
 }

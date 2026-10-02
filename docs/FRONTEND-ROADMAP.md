@@ -4,11 +4,12 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 
 ## Progress log
 
-| Date       | Phase | Milestone                                                                      |
-| ---------- | ----- | ------------------------------------------------------------------------------ |
-| 2026-10-02 | F0    | Foundation: config, i18n (20 languages), mock API with real envelope, tooling. |
-| 2026-10-02 | F0 | Phase check passed: phone/desktop, light/dark, Arabic RTL, keyboard-only language switch, live encrypted mock round-trip. Locale search by English name. |
-| 2026-10-02 | F0 | Access matrix verified on every host (manage., root, tenants, localhost, 127.0.0.1, *.localhost, LAN IP); shared `resolveHostContext()` + 11 tests ready for F3. |
+| Date       | Phase | Milestone                                                                                                                                                                                                                                                                          |
+| ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-02 | F0    | Foundation: config, i18n (20 languages), mock API with real envelope, tooling.                                                                                                                                                                                                     |
+| 2026-10-02 | F0    | Phase check passed: phone/desktop, light/dark, Arabic RTL, keyboard-only language switch, live encrypted mock round-trip. Locale search by English name.                                                                                                                           |
+| 2026-10-02 | F0    | Access matrix verified on every host (manage., root, tenants, localhost, 127.0.0.1, *.localhost, LAN IP); shared `resolveHostContext()` + 11 tests ready for F3.                                                                                                                   |
+| 2026-10-02 | F1    | App shell done: sidebar rail/peek/drawer, navbar, breadcrumbs, command palette, shortcuts, draggable `AppModal`, error + workspace-not-found pages, 49 new strings × 20 languages. Checked desktop/phone, light/dark, Arabic RTL, keyboard-only (peek tab order), real mouse drag. |
 
 ## F0 — Foundation
 
@@ -23,11 +24,12 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 
 ## F1 — App shell
 
-- [ ] `layouts/default.vue` with `UDashboardGroup`, sidebar rail + menu, collapse, hover-peek when collapsed, mobile drawer.
-- [ ] Navbar: breadcrumbs (route-meta driven, all clickable), command palette, theme switch, language switch, notifications placeholder, user menu.
-- [ ] Draggable modal pattern (`useDraggableModal` + keyboard move) used by every `UModal`.
-- [ ] Error page (`error.vue`), 404, workspace-not-found.
-- [ ] Global shortcuts and shortcut help modal (`?`).
+- [x] `layouts/default.vue` with `UDashboardGroup`, sidebar rail + menu, collapse (cookie), hover/focus-peek when collapsed (rail `inert` while open), mobile drawer. One nav definition (`useNavigation`) feeds sidebar, search and shortcuts.
+- [x] Navbar (`AppNavbar` inside `AppPanel`): breadcrumbs (`definePageMeta({ breadcrumb })`, all clickable, no dead links), command palette (`Ctrl/⌘+K`: pages, actions, language, theme), theme switch, language switch (+ in user menu for phones), notifications slide-over (empty state), user menu (profile, settings, theme, language, shortcuts, log out — wired in F3).
+- [x] Draggable modal pattern: `AppModal` (mouse/touch drag by header, grip button with arrow keys / Shift = big steps / Home re-centres, docked below `sm`). Use `AppModal`, never bare `UModal`.
+- [x] Error page (`error.vue`, translated 404 / generic), `/workspace-not-found` (links to manage. on the same port).
+- [x] Global shortcuts and help modal: `?` help, `Ctrl/⌘+K` search, `[` sidebar, `g` then `f/t/r/a/o/s` go to section, `Esc` closes the top-most layer.
+- [x] Placeholder pages for every menu entry (`AppComingSoon`) so no link 404s; locale completeness test (`test/i18n/locales.test.ts`).
 
 ## F2 — Core plumbing
 

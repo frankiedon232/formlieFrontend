@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formulir",
     "description": "Buat, rancang, dan bagikan formulir Anda."
+  },
+  "nav": {
+    "main": "Menu utama",
+    "menu": "Menu",
+    "menuDescription": "Berpindah antarbagian ruang kerja Anda.",
+    "forms": "Formulir",
+    "templates": "Templat",
+    "responses": "Tanggapan",
+    "analytics": "Analitik",
+    "optionSets": "Daftar opsi",
+    "integrations": "Integrasi",
+    "destinations": "Tujuan",
+    "webhooks": "Webhook",
+    "apiKeys": "Kunci API",
+    "settings": "Pengaturan"
+  },
+  "navbar": {
+    "breadcrumb": "Jejak navigasi",
+    "notifications": "Notifikasi",
+    "noNotifications": "Tidak ada yang baru",
+    "noNotificationsDesc": "Aktivitas baru akan muncul di sini."
+  },
+  "user": {
+    "account": "Akun",
+    "guest": "Tamu",
+    "profile": "Profil saya",
+    "theme": "Tema",
+    "light": "Terang",
+    "dark": "Gelap",
+    "system": "Sistem",
+    "logout": "Keluar"
+  },
+  "search": {
+    "button": "Cari…",
+    "title": "Pencarian",
+    "placeholder": "Cari halaman dan tindakan…",
+    "pages": "Buka",
+    "actions": "Tindakan",
+    "changeLanguage": "Ganti bahasa"
+  },
+  "shortcuts": {
+    "title": "Pintasan keyboard",
+    "description": "Bekerja lebih cepat dengan tombol ini.",
+    "general": "Umum",
+    "navigation": "Navigasi",
+    "search": "Buka pencarian",
+    "help": "Tampilkan pintasan",
+    "toggleSidebar": "Ciutkan atau bentangkan bilah samping",
+    "closeOverlay": "Tutup dialog atau panel",
+    "then": "lalu"
+  },
+  "modal": {
+    "move": "Pindahkan dialog",
+    "moveHint": "Seret untuk memindahkan, atau gunakan tombol panah. Home mengembalikan ke tengah."
+  },
+  "error": {
+    "notFoundTitle": "Halaman tidak ditemukan",
+    "notFoundDesc": "Halaman yang Anda cari tidak ada atau telah dipindahkan.",
+    "genericTitle": "Terjadi kesalahan",
+    "genericDesc": "Silakan coba lagi. Jika terus terjadi, hubungi dukungan.",
+    "workspaceTitle": "Ruang kerja tidak ditemukan",
+    "workspaceDesc": "Tidak ada ruang kerja di {host}. Periksa alamatnya atau temukan ruang kerja Anda.",
+    "findWorkspace": "Temukan ruang kerja saya"
   }
 }

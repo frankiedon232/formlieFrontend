@@ -21,5 +21,68 @@
   "forms": {
     "title": "Formularze",
     "description": "Twórz, projektuj i udostępniaj formularze."
+  },
+  "nav": {
+    "main": "Menu główne",
+    "menu": "Menu",
+    "menuDescription": "Przechodź między sekcjami obszaru roboczego.",
+    "forms": "Formularze",
+    "templates": "Szablony",
+    "responses": "Odpowiedzi",
+    "analytics": "Analityka",
+    "optionSets": "Listy opcji",
+    "integrations": "Integracje",
+    "destinations": "Miejsca docelowe",
+    "webhooks": "Webhooki",
+    "apiKeys": "Klucze API",
+    "settings": "Ustawienia"
+  },
+  "navbar": {
+    "breadcrumb": "Ścieżka nawigacji",
+    "notifications": "Powiadomienia",
+    "noNotifications": "Wszystko przeczytane",
+    "noNotificationsDesc": "Nowa aktywność pojawi się tutaj."
+  },
+  "user": {
+    "account": "Konto",
+    "guest": "Gość",
+    "profile": "Mój profil",
+    "theme": "Motyw",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "system": "Systemowy",
+    "logout": "Wyloguj"
+  },
+  "search": {
+    "button": "Szukaj…",
+    "title": "Wyszukiwanie",
+    "placeholder": "Szukaj stron i akcji…",
+    "pages": "Przejdź do",
+    "actions": "Akcje",
+    "changeLanguage": "Zmień język"
+  },
+  "shortcuts": {
+    "title": "Skróty klawiszowe",
+    "description": "Pracuj szybciej z tymi klawiszami.",
+    "general": "Ogólne",
+    "navigation": "Nawigacja",
+    "search": "Otwórz wyszukiwanie",
+    "help": "Pokaż skróty",
+    "toggleSidebar": "Zwiń lub rozwiń pasek boczny",
+    "closeOverlay": "Zamknij okno lub panel",
+    "then": "potem"
+  },
+  "modal": {
+    "move": "Przesuń okno",
+    "moveHint": "Przeciągnij lub użyj strzałek. Home wyśrodkowuje."
+  },
+  "error": {
+    "notFoundTitle": "Nie znaleziono strony",
+    "notFoundDesc": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "genericTitle": "Coś poszło nie tak",
+    "genericDesc": "Spróbuj ponownie. Jeśli problem się powtarza, skontaktuj się z pomocą.",
+    "workspaceTitle": "Nie znaleziono obszaru roboczego",
+    "workspaceDesc": "Pod adresem {host} nie ma obszaru roboczego. Sprawdź adres lub znajdź swój obszar.",
+    "findWorkspace": "Znajdź mój obszar roboczy"
   }
 }
