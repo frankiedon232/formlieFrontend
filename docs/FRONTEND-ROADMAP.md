@@ -8,6 +8,7 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 | ---------- | ----- | ------------------------------------------------------------------------------ |
 | 2026-10-02 | F0    | Foundation: config, i18n (20 languages), mock API with real envelope, tooling. |
 | 2026-10-02 | F0 | Phase check passed: phone/desktop, light/dark, Arabic RTL, keyboard-only language switch, live encrypted mock round-trip. Locale search by English name. |
+| 2026-10-02 | F0 | Access matrix verified on every host (manage., root, tenants, localhost, 127.0.0.1, *.localhost, LAN IP); shared `resolveHostContext()` + 11 tests ready for F3. |
 
 ## F0 — Foundation
 
@@ -38,7 +39,7 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 
 ## F3 — Tenant detection + auth
 
-- [ ] `tenant.global.ts` middleware, `useTenant` (public profile, branding, providers).
+- [ ] `tenant.global.ts` middleware, `useTenant` (public profile, branding, providers) — built on `resolveHostContext()` (done early, see progress log); dev-only `?tenant=` override; pass the locale along on manage → tenant redirect.
 - [ ] Login, OTP (every login), signup + subdomain availability, find workspace, forgot/reset password, social buttons per tenant config, logout, session expiry handling.
 
 ## F4 — Onboarding wizard

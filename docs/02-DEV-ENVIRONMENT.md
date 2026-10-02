@@ -51,6 +51,28 @@ Add more lines as new test tenants are created.
 
 Docker Desktop with compose services: PostgreSQL 16 (primary + 1 replica), PgBouncer, Redis 7, RabbitMQ 3 (management UI), MinIO (S3), MailHog/Mailpit (catch OTP emails). Ports to be fixed in `docker-compose.dev.yml`.
 
+## Access matrix (verified 2026-10-02)
+
+Every way of opening the dev server must work. Host classification is one shared function, `resolveHostContext()` in `shared/utils/tenant/host.ts` (unit-tested), used by the tenant middleware, SSR and the mock API.
+
+| How you open it | Served | Trusted TLS | Resolves to |
+| --- | --- | --- | --- |
+| `https://manage.formalie.dev:2202` | ✅ | ✅ | manage (default entry) |
+| `https://formalie.dev:2202` | ✅ | ✅ | manage (root) |
+| `https://{sub}.formalie.dev:2202` (needs hosts line) | ✅ | ✅ | tenant `{sub}` |
+| `https://localhost:2202` / `https://127.0.0.1:2202` | ✅ | ✅ | manage (local); `?tenant={sub}` in dev opens a tenant |
+| `https://{sub}.localhost:2202` (no hosts line, Chrome/Edge/Firefox resolve it) | ✅ | ⚠ until cert includes `*.localhost` | tenant `{sub}` |
+| `https://192.168.x.x:2202` (phone on Wi-Fi) | ✅ | ⚠ until cert includes the LAN IP | manage; `?tenant={sub}` in dev |
+| `https://[::1]:2202` | ❌ with `--host 0.0.0.0` (IPv4 only) | ✅ | manage — start with `--host ::` to listen on IPv4 + IPv6 |
+
+To remove the ⚠ rows, regenerate the cert once (add your current LAN IP):
+
+```powershell
+mkcert -cert-file C:\devcerts\formalie.dev+4.pem -key-file C:\devcerts\formalie.dev+4-key.pem formalie.dev "*.formalie.dev" localhost "*.localhost" 127.0.0.1 ::1 192.168.0.180
+```
+
+Phones need the mkcert root CA installed to trust it (`mkcert -CAROOT` → `rootCA.pem`). The language cookie is per host, so a language chosen on `localhost` is not carried to `manage.formalie.dev` (F3: the manage → tenant redirect passes the locale along).
+
 ## Project env (`.env`, copy from `.env.example`)
 
 | Variable                           | Purpose                                                                                   |

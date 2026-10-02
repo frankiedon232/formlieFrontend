@@ -65,7 +65,7 @@ i18n/
   locales/{code}.json       # one file per language (20 today)
 shared/                     # used by BOTH app and server (Nuxt 4 shared dir)
   types/    api.ts, crypto.ts
-  utils/    crypto/ (envelope, encoding) · errors/ (FRM-* codes) · i18n/ (locale list)
+  utils/    crypto/ (envelope, encoding) · errors/ (FRM-* codes) · i18n/ (locale list) · tenant/ (host resolution)
 server/
   mock/     index.ts (router) · core/ (envelope route wrapper, respond, store) · routes/ (one file per domain)
   proxy/    api.ts (dev proxy to FastAPI when the mock is off)
