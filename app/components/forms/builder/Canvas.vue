@@ -112,7 +112,7 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
 
     <UCard
       v-if="page"
-      class="mx-auto w-full max-w-3xl @container"
+      class="mx-auto w-full max-w-3xl @container/form"
       :class="FORM_RADIUS"
       :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-8' }"
     >

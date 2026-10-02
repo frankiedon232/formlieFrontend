@@ -132,7 +132,7 @@ function restart() {
 </script>
 
 <template>
-  <div class="flex flex-col gap-5 @container" :class="FORM_RADIUS">
+  <div class="flex flex-col gap-5 @container/form" :class="FORM_RADIUS">
     <template v-if="!done && page">
       <div v-if="pages.length > 1 && schema.settings?.progress_bar !== false" class="flex flex-col gap-1.5">
         <div class="flex justify-between text-xs text-muted">

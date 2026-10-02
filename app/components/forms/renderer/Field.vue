@@ -2,7 +2,8 @@
   One form field as respondents see it (FRONTEND-SPEC §6: the same renderer serves the builder
   canvas, preview, public form and embed). Label · required mark · info icon (help text in a
   popover) · control · error. Labels sit on top or, with `label-position="left"`, beside the
-  control when there is room (container query — phones always stack). In `builder` mode the
+  control — decided by the width of the whole form (`@container/form`), so half-width fields keep
+  their label beside too; a phone-width form stacks. In `builder` mode the
   control works for trying it out; the canvas never stores what you type. `#label` lets the
   builder swap the label for an inline editor.
 -->
@@ -63,10 +64,10 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value)
 <template>
   <div
     class="flex flex-col gap-1"
-    :class="left ? '@sm:grid @sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] @sm:items-start @sm:gap-x-4' : ''"
+    :class="left ? '@md/form:grid @md/form:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] @md/form:items-start @md/form:gap-x-3' : ''"
     :data-field-type="field.type"
   >
-    <div v-if="showLabel" class="flex min-w-0 items-center gap-1" :class="left ? '@sm:min-h-8' : ''">
+    <div v-if="showLabel" class="flex min-w-0 items-center gap-1" :class="left ? '@md/form:min-h-8' : ''">
       <slot name="label">
         <label :for="id" class="min-w-0 text-sm font-medium text-highlighted">
           {{ field.label || t('builder.untitled') }}
@@ -90,7 +91,7 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value)
       </UPopover>
     </div>
 
-    <div class="flex min-w-0 flex-col gap-1" :class="left && showLabel ? '' : '@sm:col-span-2'">
+    <div class="flex min-w-0 flex-col gap-1" :class="left && showLabel ? '' : '@md/form:col-span-2'">
     <FormsRendererText v-if="control === 'Text'" :id="id" v-model="value" :field="field" :mode="mode" />
     <FormsRendererDateTime
       v-else-if="control === 'DateTime'"
