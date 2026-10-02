@@ -26,5 +26,5 @@ export function labelColumnWidth(fields: { type: string; label?: string; require
   const longest = fields
     .filter(f => !['hidden', 'section', 'paragraph', 'divider', 'image'].includes(f.type))
     .reduce((max, f) => Math.max(max, (f.label?.trim().length ?? 0) + (f.required ? 2 : 0) + (f.help ? 3 : 0)), 8)
-  return `${Math.min(longest, 26) + 1}ch`
+  return `${Math.min(longest, 22) + 1}ch`
 }
