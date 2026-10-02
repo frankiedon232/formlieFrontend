@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "로고",
-      "footerLinks": "푸터 링크"
+      "footerLinks": "푸터 링크",
+      "secure": "응답은 안전하게 전송됩니다."
     },
     "name": {
       "title": "호칭",
@@ -1658,7 +1659,13 @@
       "soft": "부드럽게",
       "bold": "강렬하게",
       "dark": "다크",
-      "elegant": "우아하게"
+      "elegant": "우아하게",
+      "banner": "배너",
+      "ribbon": "리본",
+      "grounded": "베이스",
+      "sidebar": "사이드 패널",
+      "aurora": "오로라",
+      "corporate": "비즈니스"
     },
     "screen": {
       "label": "미리보기 화면",
@@ -1769,7 +1776,11 @@
       "logoHint": "다른 로고를 업로드하지 않으면 워크스페이스 로고가 사용됩니다.",
       "logoNone": "이 양식의 로고를 업로드하세요(워크스페이스에 아직 로고가 없습니다).",
       "showTitle": "양식 이름 표시",
-      "subtitle": "소개 문구"
+      "subtitle": "소개 문구",
+      "band": "헤더 배경",
+      "plain": "기본",
+      "bandColor": "띠 색상",
+      "bandInPanel": "색상 사이드 패널을 사용하면 헤더가 패널 안에 표시됩니다."
     },
     "footer": {
       "show": "푸터 표시",
@@ -1781,10 +1792,18 @@
       "linkUrl": "링크 {n} 주소",
       "removeLink": "링크 {n} 삭제",
       "addLink": "링크 추가",
-      "showLogo": "로고 표시"
+      "showLogo": "로고 표시",
+      "style": "푸터 스타일",
+      "bar": "컬러 바",
+      "barColor": "바 색상"
     },
     "thankYouHint": "제목과 메시지는 만들기 → 양식 설정에서 지정합니다. 이 페이지에는 이 디자인이 적용됩니다.",
-    "showTick": "체크 아이콘 표시"
+    "showTick": "체크 아이콘 표시",
+    "split": {
+      "panel": "사이드 패널",
+      "panelHint": "로고, 양식 이름, 소개 문구가 패널에 표시됩니다.",
+      "side": "패널 위치"
+    }
   },
   "themes": {
     "subtitle": "어떤 양식에서든 사용할 수 있는 저장된 디자인",

@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Linki w stopce"
+      "footerLinks": "Linki w stopce",
+      "secure": "Odpowiedzi są przesyłane w bezpieczny sposób."
     },
     "name": {
       "title": "Tytuł",
@@ -1658,7 +1659,13 @@
       "soft": "Łagodny",
       "bold": "Wyrazisty",
       "dark": "Ciemny",
-      "elegant": "Elegancki"
+      "elegant": "Elegancki",
+      "banner": "Baner",
+      "ribbon": "Wstęga",
+      "grounded": "Podstawa",
+      "sidebar": "Panel boczny",
+      "aurora": "Zorza",
+      "corporate": "Firmowy"
     },
     "screen": {
       "label": "Ekran podglądu",
@@ -1769,7 +1776,11 @@
       "logoHint": "Używane jest logo obszaru roboczego, chyba że prześlesz inne.",
       "logoNone": "Prześlij logo dla tego formularza (obszar roboczy nie ma jeszcze logo).",
       "showTitle": "Pokaż nazwę formularza",
-      "subtitle": "Tekst wstępu"
+      "subtitle": "Tekst wstępu",
+      "band": "Tło nagłówka",
+      "plain": "Zwykły",
+      "bandColor": "Kolor pasa",
+      "bandInPanel": "Przy kolorowym panelu bocznym nagłówek znajduje się w panelu."
     },
     "footer": {
       "show": "Pokaż stopkę",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Adres linku {n}",
       "removeLink": "Usuń link {n}",
       "addLink": "Dodaj link",
-      "showLogo": "Pokaż logo"
+      "showLogo": "Pokaż logo",
+      "style": "Styl stopki",
+      "bar": "Kolorowy pasek",
+      "barColor": "Kolor paska"
     },
     "thankYouHint": "Tytuł i wiadomość ustawisz w Tworzenie → Ustawienia formularza. Strona używa tego wyglądu.",
-    "showTick": "Pokaż ikonę znacznika"
+    "showTick": "Pokaż ikonę znacznika",
+    "split": {
+      "panel": "Panel boczny",
+      "panelHint": "Logo, nazwa formularza i tekst wprowadzający pojawiają się w panelu.",
+      "side": "Strona panelu"
+    }
   },
   "themes": {
     "subtitle": "Zapisane projekty, których można użyć w dowolnym formularzu",

@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logotipo",
-      "footerLinks": "Enlaces del pie"
+      "footerLinks": "Enlaces del pie",
+      "secure": "Sus respuestas se envían de forma segura."
     },
     "name": {
       "title": "Tratamiento",
@@ -1658,7 +1659,13 @@
       "soft": "Suave",
       "bold": "Intenso",
       "dark": "Oscuro",
-      "elegant": "Elegante"
+      "elegant": "Elegante",
+      "banner": "Banner",
+      "ribbon": "Cinta",
+      "grounded": "Base",
+      "sidebar": "Panel lateral",
+      "aurora": "Aurora",
+      "corporate": "Corporativo"
     },
     "screen": {
       "label": "Pantalla de vista previa",
@@ -1769,7 +1776,11 @@
       "logoHint": "Se usa el logotipo de tu espacio de trabajo, salvo que subas otro.",
       "logoNone": "Sube un logotipo para este formulario (tu espacio de trabajo aún no tiene).",
       "showTitle": "Mostrar el nombre del formulario",
-      "subtitle": "Texto de introducción"
+      "subtitle": "Texto de introducción",
+      "band": "Fondo del encabezado",
+      "plain": "Sencillo",
+      "bandColor": "Color de la franja",
+      "bandInPanel": "Con un panel lateral de color, el encabezado se sitúa en el panel."
     },
     "footer": {
       "show": "Mostrar un pie de página",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Dirección del enlace {n}",
       "removeLink": "Quitar enlace {n}",
       "addLink": "Añadir enlace",
-      "showLogo": "Mostrar logotipo"
+      "showLogo": "Mostrar logotipo",
+      "style": "Estilo del pie",
+      "bar": "Barra de color",
+      "barColor": "Color de la barra"
     },
     "thankYouHint": "El título y el mensaje se configuran en Crear → Ajustes del formulario. La página usa este diseño.",
-    "showTick": "Mostrar el icono de marca de verificación"
+    "showTick": "Mostrar el icono de marca de verificación",
+    "split": {
+      "panel": "Panel lateral",
+      "panelHint": "El logotipo, el nombre del formulario y el texto de introducción aparecen en el panel.",
+      "side": "Lado del panel"
+    }
   },
   "themes": {
     "subtitle": "Diseños guardados que puede usar en cualquier formulario",

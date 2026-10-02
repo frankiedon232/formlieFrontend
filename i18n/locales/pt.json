@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logotipo",
-      "footerLinks": "Links do rodapé"
+      "footerLinks": "Links do rodapé",
+      "secure": "Suas respostas são enviadas com segurança."
     },
     "name": {
       "title": "Título",
@@ -1658,7 +1659,13 @@
       "soft": "Suave",
       "bold": "Marcante",
       "dark": "Escuro",
-      "elegant": "Elegante"
+      "elegant": "Elegante",
+      "banner": "Banner",
+      "ribbon": "Faixa",
+      "grounded": "Base",
+      "sidebar": "Painel lateral",
+      "aurora": "Aurora",
+      "corporate": "Corporativo"
     },
     "screen": {
       "label": "Tela de pré-visualização",
@@ -1769,7 +1776,11 @@
       "logoHint": "O logotipo do seu espaço de trabalho é usado, a menos que você envie outro.",
       "logoNone": "Envie um logotipo para este formulário (seu espaço de trabalho ainda não tem um).",
       "showTitle": "Mostrar o nome do formulário",
-      "subtitle": "Texto de introdução"
+      "subtitle": "Texto de introdução",
+      "band": "Fundo do cabeçalho",
+      "plain": "Simples",
+      "bandColor": "Cor da faixa",
+      "bandInPanel": "Com um painel lateral colorido, o cabeçalho fica no painel."
     },
     "footer": {
       "show": "Mostrar um rodapé",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Endereço do link {n}",
       "removeLink": "Remover link {n}",
       "addLink": "Adicionar link",
-      "showLogo": "Mostrar logotipo"
+      "showLogo": "Mostrar logotipo",
+      "style": "Estilo do rodapé",
+      "bar": "Barra de cor",
+      "barColor": "Cor da barra"
     },
     "thankYouHint": "O título e a mensagem são definidos em Criar → Configurações do formulário. A página usa este design.",
-    "showTick": "Mostrar o ícone de confirmação"
+    "showTick": "Mostrar o ícone de confirmação",
+    "split": {
+      "panel": "Painel lateral",
+      "panelHint": "O logotipo, o nome do formulário e o texto de introdução aparecem no painel.",
+      "side": "Lado do painel"
+    }
   },
   "themes": {
     "subtitle": "Designs guardados que pode usar em qualquer formulário",

@@ -1,5 +1,5 @@
 <!--
-  File / image upload (Nuxt UI file upload; real uploads go through pre-signed URLs, F9),
+  File / image upload (Nuxt UI file upload; real uploads go through pre-signed URLs, F10),
   signature (draw with mouse, pen or finger; keyboard users can type their name instead), payment (soon).
 -->
 <script setup lang="ts">

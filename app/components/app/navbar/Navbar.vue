@@ -9,6 +9,8 @@ const props = defineProps<{
   title: string
   subtitle?: string
   subtitleIcon?: string
+  /** Search as an icon button at every width (headers with many actions). */
+  compactSearch?: boolean
 }>()
 
 const { t } = useI18n()
@@ -62,14 +64,15 @@ const languageItems = computed(() =>
         :label="t('search.anything')"
         color="neutral"
         variant="outline"
-        class="hidden w-48 justify-start text-dimmed lg:inline-flex xl:w-60"
+        class="hidden w-48 justify-start text-dimmed xl:w-60"
+        :class="props.compactSearch ? '' : 'lg:inline-flex'"
         :ui="{ trailing: 'ms-auto' }"
       />
       <UDashboardSearchButton
         collapsed
         color="neutral"
         variant="outline"
-        class="lg:hidden"
+        :class="props.compactSearch ? '' : 'lg:hidden'"
         :aria-label="t('search.button')"
       />
 

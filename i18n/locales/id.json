@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Tautan footer"
+      "footerLinks": "Tautan footer",
+      "secure": "Jawaban Anda dikirim dengan aman."
     },
     "name": {
       "title": "Gelar",
@@ -1658,7 +1659,13 @@
       "soft": "Lembut",
       "bold": "Tegas",
       "dark": "Gelap",
-      "elegant": "Elegan"
+      "elegant": "Elegan",
+      "banner": "Spanduk",
+      "ribbon": "Pita",
+      "grounded": "Berpijak",
+      "sidebar": "Panel samping",
+      "aurora": "Aurora",
+      "corporate": "Korporat"
     },
     "screen": {
       "label": "Layar pratinjau",
@@ -1769,7 +1776,11 @@
       "logoHint": "Logo ruang kerja Anda dipakai kecuali Anda mengunggah logo lain.",
       "logoNone": "Unggah logo untuk formulir ini (ruang kerja Anda belum punya logo).",
       "showTitle": "Tampilkan nama formulir",
-      "subtitle": "Teks pengantar"
+      "subtitle": "Teks pengantar",
+      "band": "Latar header",
+      "plain": "Polos",
+      "bandColor": "Warna pita",
+      "bandInPanel": "Dengan panel samping berwarna, header berada di dalam panel."
     },
     "footer": {
       "show": "Tampilkan footer",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Alamat tautan {n}",
       "removeLink": "Hapus tautan {n}",
       "addLink": "Tambah tautan",
-      "showLogo": "Tampilkan logo"
+      "showLogo": "Tampilkan logo",
+      "style": "Gaya footer",
+      "bar": "Bilah warna",
+      "barColor": "Warna bilah"
     },
     "thankYouHint": "Judul dan pesan diatur di Buat → Pengaturan formulir. Halaman ini memakai desain ini.",
-    "showTick": "Tampilkan ikon centang"
+    "showTick": "Tampilkan ikon centang",
+    "split": {
+      "panel": "Panel samping",
+      "panelHint": "Logo, nama formulir, dan teks pengantar tampil di panel.",
+      "side": "Sisi panel"
+    }
   },
   "themes": {
     "subtitle": "Desain tersimpan yang dapat Anda gunakan di formulir mana pun",

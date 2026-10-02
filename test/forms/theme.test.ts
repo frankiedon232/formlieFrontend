@@ -37,3 +37,26 @@ describe('form themes', () => {
     expect(pageBackground(applyPatch(defaultTheme(), { page: { bg_type: 'gradient' } }))).toContain('linear-gradient')
   })
 })
+
+describe('structural starting points', () => {
+  it('every preset is a valid theme with distinct keys', () => {
+    const keys = THEME_PRESETS.map(p => p.key)
+    expect(new Set(keys).size).toBe(keys.length)
+    for (const preset of THEME_PRESETS) {
+      const theme = applyPatch(defaultTheme(), preset.patch)
+      expect(resolveTheme(theme)).toEqual(theme)
+    }
+  })
+
+  it('fills new tokens for themes saved before they existed', () => {
+    const old = structuredClone(defaultTheme()) as unknown as Record<string, Record<string, unknown>>
+    delete old.header!.band
+    delete old.split!.panel
+    delete old.footer!.style
+    const theme = resolveTheme({ ...old, header: { ...old.header, subtitle: 'Hello' } })
+    expect(theme.header.band).toBe('none')
+    expect(theme.header.subtitle).toBe('Hello')
+    expect(theme.split.panel).toBe('image')
+    expect(theme.footer.style).toBe('plain')
+  })
+})

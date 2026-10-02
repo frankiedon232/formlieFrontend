@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "徽标",
-      "footerLinks": "页脚链接"
+      "footerLinks": "页脚链接",
+      "secure": "您的回答将安全发送。"
     },
     "name": {
       "title": "称谓",
@@ -1658,7 +1659,13 @@
       "soft": "柔和",
       "bold": "醒目",
       "dark": "深色",
-      "elegant": "优雅"
+      "elegant": "优雅",
+      "banner": "横幅",
+      "ribbon": "色带",
+      "grounded": "底栏",
+      "sidebar": "侧边面板",
+      "aurora": "极光",
+      "corporate": "商务"
     },
     "screen": {
       "label": "预览界面",
@@ -1769,7 +1776,11 @@
       "logoHint": "除非你上传其他徽标，否则使用工作区徽标。",
       "logoNone": "为此表单上传徽标（你的工作区尚无徽标）。",
       "showTitle": "显示表单名称",
-      "subtitle": "简介文字"
+      "subtitle": "简介文字",
+      "band": "页眉背景",
+      "plain": "简洁",
+      "bandColor": "色带颜色",
+      "bandInPanel": "使用彩色侧边面板时，页眉位于面板内。"
     },
     "footer": {
       "show": "显示页脚",
@@ -1781,10 +1792,18 @@
       "linkUrl": "链接 {n} 的地址",
       "removeLink": "移除链接 {n}",
       "addLink": "添加链接",
-      "showLogo": "显示徽标"
+      "showLogo": "显示徽标",
+      "style": "页脚样式",
+      "bar": "色条",
+      "barColor": "色条颜色"
     },
     "thankYouHint": "标题和消息在 构建 → 表单设置 中设置。此页面使用当前设计。",
-    "showTick": "显示对勾图标"
+    "showTick": "显示对勾图标",
+    "split": {
+      "panel": "侧边面板",
+      "panelHint": "徽标、表单名称和介绍文字显示在面板中。",
+      "side": "面板位置"
+    }
   },
   "themes": {
     "subtitle": "可用于任意表单的已保存设计",

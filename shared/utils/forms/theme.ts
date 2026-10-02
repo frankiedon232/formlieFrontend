@@ -62,14 +62,28 @@ export const themeSchema = z.object({
     show_title: z.boolean(),
     subtitle: z.string().max(300),
     align: z.enum(['start', 'center']),
+    /** A coloured band behind logo / title / intro (no image needed). */
+    band: z.enum(['none', 'color', 'gradient']),
+    band_bg: hex,
+    band_to: hex,
   }),
-  split: z.object({ image: imageRef, side: z.enum(['start', 'end']) }),
+  split: z.object({
+    image: imageRef,
+    side: z.enum(['start', 'end']),
+    /** Side panel fill; colour / gradient panels carry the logo, title and intro. */
+    panel: z.enum(['image', 'color', 'gradient']),
+    bg: hex,
+    bg_to: hex,
+  }),
   footer: z.object({
     enabled: z.boolean(),
     text: z.string().max(500),
     links: z.array(z.object({ label: z.string().min(1).max(60), href: httpsUrl })).max(6),
     show_logo: z.boolean(),
     align: z.enum(['start', 'center']),
+    /** plain = small text under the form · band = coloured bar (attached to the card). */
+    style: z.enum(['plain', 'band']),
+    bg: hex,
   }),
   thank_you: z.object({ show_icon: z.boolean() }),
 })
@@ -97,9 +111,9 @@ export function defaultTheme(branding: WorkspaceBranding = { logo_url: null, pri
     },
     inputs: { radius: 'sm', size: 'md', style: 'outline' },
     buttons: { radius: 'sm', variant: 'solid', full_width: false },
-    header: { show_logo: !!branding.logo_url, logo: null, cover: null, cover_height: 'md', show_title: true, subtitle: '', align: 'start' },
-    split: { image: null, side: 'start' },
-    footer: { enabled: false, text: '', links: [], show_logo: false, align: 'center' },
+    header: { show_logo: !!branding.logo_url, logo: null, cover: null, cover_height: 'md', show_title: true, subtitle: '', align: 'start', band: 'none', band_bg: '#18181b', band_to: '#3f3f46' },
+    split: { image: null, side: 'start', panel: 'image', bg: '#18181b', bg_to: '#3f3f46' },
+    footer: { enabled: false, text: '', links: [], show_logo: false, align: 'center', style: 'plain', bg: '#18181b' },
     thank_you: { show_icon: true },
   }
 }
@@ -162,7 +176,82 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
       header: { align: 'center' },
     },
   },
+  // Header designs
+  {
+    key: 'banner',
+    patch: {
+      page: { bg_type: 'color', bg: '#f5f3ff' },
+      container: { radius: 'xl', shadow: 'md', border: false },
+      colors: { primary: '#6d28d9', input_border: '#ddd6fe' },
+      inputs: { radius: 'md' },
+      buttons: { radius: 'md' },
+      header: { band: 'gradient', band_bg: '#6d28d9', band_to: '#db2777', align: 'center' },
+    },
+  },
+  {
+    key: 'ribbon',
+    patch: {
+      page: { bg_type: 'color', bg: '#f1f5f9' },
+      container: { radius: 'sm', shadow: 'sm', border: true },
+      colors: { primary: '#1d4ed8', input_border: '#cbd5e1' },
+      typography: { font: 'system', heading_weight: 'bold' },
+      header: { band: 'color', band_bg: '#1e3a8a' },
+    },
+  },
+  // Footer design
+  {
+    key: 'grounded',
+    patch: {
+      layout: 'plain',
+      page: { bg_type: 'color', bg: '#fafaf9' },
+      colors: { primary: '#15803d', input_border: '#d6d3d1' },
+      inputs: { style: 'soft', radius: 'md' },
+      buttons: { radius: 'full', full_width: true },
+      footer: { enabled: true, style: 'band', bg: '#14532d', align: 'center', show_logo: true },
+    },
+  },
+  // Side designs
+  {
+    key: 'sidebar',
+    patch: {
+      layout: 'split',
+      page: { bg_type: 'color', bg: '#e2e8f0' },
+      container: { width: 'xl', radius: 'lg', shadow: 'lg', border: false },
+      colors: { primary: '#0f172a' },
+      split: { panel: 'color', bg: '#0f172a', side: 'start' },
+    },
+  },
+  {
+    key: 'aurora',
+    patch: {
+      layout: 'split',
+      page: { bg_type: 'gradient', bg: '#ecfeff', bg_to: '#f0fdf4', gradient_angle: 160 },
+      container: { width: 'xl', radius: 'xl', shadow: 'md', border: false },
+      typography: { font: 'rounded' },
+      colors: { primary: '#0e7490', input_bg: '#f8fafc', input_border: '#cbd5e1' },
+      inputs: { style: 'soft', radius: 'lg' },
+      buttons: { radius: 'full' },
+      split: { panel: 'gradient', bg: '#0e7490', bg_to: '#10b981', side: 'end' },
+    },
+  },
+  // Header + footer together
+  {
+    key: 'corporate',
+    patch: {
+      page: { bg_type: 'color', bg: '#f4f4f5' },
+      container: { width: 'lg', radius: 'md', shadow: 'sm', border: true },
+      colors: { primary: '#b45309' },
+      typography: { heading_weight: 'bold' },
+      buttons: { radius: 'sm' },
+      header: { band: 'color', band_bg: '#27272a' },
+      footer: { enabled: true, style: 'band', bg: '#27272a', align: 'start' },
+    },
+  },
 ]
+
+/** CSS background for a colour / gradient fill (header band, side panel). */
+export const fillBackground = (type: string, from: string, to: string, angle = 135) =>
+  type === 'gradient' ? `linear-gradient(${angle}deg, ${from}, ${to})` : from
 
 const isObject = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v)
 function merge<T>(base: T, patch: unknown): T {

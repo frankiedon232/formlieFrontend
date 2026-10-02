@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Liens du pied de page"
+      "footerLinks": "Liens du pied de page",
+      "secure": "Vos réponses sont envoyées de manière sécurisée."
     },
     "name": {
       "title": "Civilité",
@@ -1658,7 +1659,13 @@
       "soft": "Doux",
       "bold": "Affirmé",
       "dark": "Sombre",
-      "elegant": "Élégant"
+      "elegant": "Élégant",
+      "banner": "Bannière",
+      "ribbon": "Ruban",
+      "grounded": "Ancré",
+      "sidebar": "Panneau latéral",
+      "aurora": "Aurore",
+      "corporate": "Entreprise"
     },
     "screen": {
       "label": "Écran d’aperçu",
@@ -1769,7 +1776,11 @@
       "logoHint": "Le logo de votre espace est utilisé, sauf si vous en importez un autre.",
       "logoNone": "Importez un logo pour ce formulaire (votre espace n’en a pas encore).",
       "showTitle": "Afficher le nom du formulaire",
-      "subtitle": "Texte d’introduction"
+      "subtitle": "Texte d’introduction",
+      "band": "Arrière-plan de l’en-tête",
+      "plain": "Simple",
+      "bandColor": "Couleur du bandeau",
+      "bandInPanel": "Avec un panneau latéral coloré, l’en-tête se place dans le panneau."
     },
     "footer": {
       "show": "Afficher un pied de page",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Adresse du lien {n}",
       "removeLink": "Supprimer le lien {n}",
       "addLink": "Ajouter un lien",
-      "showLogo": "Afficher le logo"
+      "showLogo": "Afficher le logo",
+      "style": "Style du pied de page",
+      "bar": "Barre de couleur",
+      "barColor": "Couleur de la barre"
     },
     "thankYouHint": "Le titre et le message se règlent dans Créer → Réglages du formulaire. La page utilise ce design.",
-    "showTick": "Afficher l’icône de coche"
+    "showTick": "Afficher l’icône de coche",
+    "split": {
+      "panel": "Panneau latéral",
+      "panelHint": "Le logo, le nom du formulaire et le texte d’introduction apparaissent dans le panneau.",
+      "side": "Côté du panneau"
+    }
   },
   "themes": {
     "subtitle": "Des designs enregistrés à utiliser sur n’importe quel formulaire",

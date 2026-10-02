@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Link del piè di pagina"
+      "footerLinks": "Link del piè di pagina",
+      "secure": "Le sue risposte vengono inviate in modo sicuro."
     },
     "name": {
       "title": "Titolo",
@@ -1658,7 +1659,13 @@
       "soft": "Morbido",
       "bold": "Deciso",
       "dark": "Scuro",
-      "elegant": "Elegante"
+      "elegant": "Elegante",
+      "banner": "Banner",
+      "ribbon": "Nastro",
+      "grounded": "Base",
+      "sidebar": "Pannello laterale",
+      "aurora": "Aurora",
+      "corporate": "Aziendale"
     },
     "screen": {
       "label": "Schermata di anteprima",
@@ -1769,7 +1776,11 @@
       "logoHint": "Viene usato il logo del tuo spazio di lavoro, a meno che tu non ne carichi un altro.",
       "logoNone": "Carica un logo per questo modulo (il tuo spazio di lavoro non ne ha ancora uno).",
       "showTitle": "Mostra il nome del modulo",
-      "subtitle": "Testo introduttivo"
+      "subtitle": "Testo introduttivo",
+      "band": "Sfondo dell’intestazione",
+      "plain": "Semplice",
+      "bandColor": "Colore della fascia",
+      "bandInPanel": "Con un pannello laterale colorato, l’intestazione si trova nel pannello."
     },
     "footer": {
       "show": "Mostra un piè di pagina",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Indirizzo del link {n}",
       "removeLink": "Rimuovi link {n}",
       "addLink": "Aggiungi link",
-      "showLogo": "Mostra logo"
+      "showLogo": "Mostra logo",
+      "style": "Stile del piè di pagina",
+      "bar": "Barra colorata",
+      "barColor": "Colore della barra"
     },
     "thankYouHint": "Titolo e messaggio si impostano in Crea → Impostazioni modulo. La pagina usa questo design.",
-    "showTick": "Mostra l’icona di spunta"
+    "showTick": "Mostra l’icona di spunta",
+    "split": {
+      "panel": "Pannello laterale",
+      "panelHint": "Il logo, il nome del modulo e il testo introduttivo compaiono nel pannello.",
+      "side": "Lato del pannello"
+    }
   },
   "themes": {
     "subtitle": "Design salvati da usare in qualsiasi modulo",

@@ -14,6 +14,11 @@ const bgTypes = computed(() => [
   { value: 'gradient', label: t('designer.bg.gradient') },
   { value: 'image', label: t('designer.bg.image') },
 ])
+const panels = computed(() => [
+  { value: 'image', label: t('designer.bg.image') },
+  { value: 'color', label: t('designer.bg.color') },
+  { value: 'gradient', label: t('designer.bg.gradient') },
+])
 const sides = computed(() => [
   { value: 'start', label: t('designer.side.start') },
   { value: 'end', label: t('designer.side.end') },
@@ -41,8 +46,13 @@ const sides = computed(() => [
       </div>
       <p class="text-xs text-muted">{{ t(`designer.layoutHint.${theme.layout}`) }}</p>
       <template v-if="theme.layout === 'split'">
-        <FormsDesignerImageField :label="t('designer.splitImage')" :model-value="theme.split.image" @update:model-value="v => d.set('split', 'image', v)" />
-        <FormsDesignerChoice :label="t('designer.imageSide')" :model-value="theme.split.side" :items="sides" @update:model-value="v => d.set('split', 'side', v as 'start' | 'end')" />
+        <FormsDesignerChoice :label="t('designer.split.panel')" :description="theme.split.panel === 'image' ? undefined : t('designer.split.panelHint')" :model-value="theme.split.panel" :items="panels" @update:model-value="v => d.set('split', 'panel', v as 'image' | 'color' | 'gradient')" />
+        <FormsDesignerImageField v-if="theme.split.panel === 'image'" :label="t('designer.splitImage')" :model-value="theme.split.image" @update:model-value="v => d.set('split', 'image', v)" />
+        <template v-else>
+          <FormsDesignerColorField :label="theme.split.panel === 'gradient' ? t('designer.bg.from') : t('designer.bg.color')" :model-value="theme.split.bg" @update:model-value="v => d.set('split', 'bg', v)" />
+          <FormsDesignerColorField v-if="theme.split.panel === 'gradient'" :label="t('designer.bg.to')" :model-value="theme.split.bg_to" @update:model-value="v => d.set('split', 'bg_to', v)" />
+        </template>
+        <FormsDesignerChoice :label="t('designer.split.side')" :model-value="theme.split.side" :items="sides" @update:model-value="v => d.set('split', 'side', v as 'start' | 'end')" />
       </template>
     </template>
 

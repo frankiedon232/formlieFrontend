@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Nembo",
-      "footerLinks": "Viungo vya chini"
+      "footerLinks": "Viungo vya chini",
+      "secure": "Majibu yako yanatumwa kwa usalama."
     },
     "name": {
       "title": "Cheo",
@@ -1658,7 +1659,13 @@
       "soft": "Laini",
       "bold": "Imara",
       "dark": "Giza",
-      "elegant": "Maridadi"
+      "elegant": "Maridadi",
+      "banner": "Bango",
+      "ribbon": "Utepe",
+      "grounded": "Msingi",
+      "sidebar": "Paneli ya pembeni",
+      "aurora": "Aurora",
+      "corporate": "Kikampuni"
     },
     "screen": {
       "label": "Skrini ya onyesho",
@@ -1769,7 +1776,11 @@
       "logoHint": "Nembo ya eneo lako la kazi hutumika isipokuwa upakie nyingine.",
       "logoNone": "Pakia nembo ya fomu hii (eneo lako la kazi bado halina nembo).",
       "showTitle": "Onyesha jina la fomu",
-      "subtitle": "Maandishi ya utangulizi"
+      "subtitle": "Maandishi ya utangulizi",
+      "band": "Mandharinyuma ya kichwa",
+      "plain": "Wazi",
+      "bandColor": "Rangi ya utepe",
+      "bandInPanel": "Ukiwa na paneli ya pembeni yenye rangi, kichwa hukaa ndani ya paneli."
     },
     "footer": {
       "show": "Onyesha sehemu ya chini",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Anwani ya kiungo {n}",
       "removeLink": "Ondoa kiungo {n}",
       "addLink": "Ongeza kiungo",
-      "showLogo": "Onyesha nembo"
+      "showLogo": "Onyesha nembo",
+      "style": "Mtindo wa sehemu ya chini",
+      "bar": "Upau wa rangi",
+      "barColor": "Rangi ya upau"
     },
     "thankYouHint": "Kichwa na ujumbe huwekwa katika Jenga → Mipangilio ya fomu. Ukurasa unatumia muundo huu.",
-    "showTick": "Onyesha aikoni ya tiki"
+    "showTick": "Onyesha aikoni ya tiki",
+    "split": {
+      "panel": "Paneli ya pembeni",
+      "panelHint": "Nembo, jina la fomu na maandishi ya utangulizi huonekana kwenye paneli.",
+      "side": "Upande wa paneli"
+    }
   },
   "themes": {
     "subtitle": "Miundo iliyohifadhiwa unayoweza kutumia kwenye fomu yoyote",

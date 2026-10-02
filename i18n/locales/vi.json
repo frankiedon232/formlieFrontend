@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Liên kết chân trang"
+      "footerLinks": "Liên kết chân trang",
+      "secure": "Câu trả lời của bạn được gửi an toàn."
     },
     "name": {
       "title": "Danh xưng",
@@ -1658,7 +1659,13 @@
       "soft": "Dịu nhẹ",
       "bold": "Nổi bật",
       "dark": "Tối",
-      "elegant": "Thanh lịch"
+      "elegant": "Thanh lịch",
+      "banner": "Biểu ngữ",
+      "ribbon": "Dải băng",
+      "grounded": "Nền tảng",
+      "sidebar": "Bảng bên",
+      "aurora": "Cực quang",
+      "corporate": "Doanh nghiệp"
     },
     "screen": {
       "label": "Màn hình xem trước",
@@ -1769,7 +1776,11 @@
       "logoHint": "Logo của không gian làm việc sẽ được dùng trừ khi bạn tải lên logo khác.",
       "logoNone": "Tải logo lên cho biểu mẫu này (không gian làm việc của bạn chưa có logo).",
       "showTitle": "Hiện tên biểu mẫu",
-      "subtitle": "Văn bản giới thiệu"
+      "subtitle": "Văn bản giới thiệu",
+      "band": "Nền tiêu đề",
+      "plain": "Đơn giản",
+      "bandColor": "Màu dải",
+      "bandInPanel": "Khi có bảng bên có màu, phần tiêu đề nằm trong bảng."
     },
     "footer": {
       "show": "Hiện chân trang",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Địa chỉ liên kết {n}",
       "removeLink": "Xóa liên kết {n}",
       "addLink": "Thêm liên kết",
-      "showLogo": "Hiện logo"
+      "showLogo": "Hiện logo",
+      "style": "Kiểu chân trang",
+      "bar": "Thanh màu",
+      "barColor": "Màu thanh"
     },
     "thankYouHint": "Tiêu đề và lời nhắn được đặt trong Tạo → Cài đặt biểu mẫu. Trang dùng thiết kế này.",
-    "showTick": "Hiện biểu tượng dấu tích"
+    "showTick": "Hiện biểu tượng dấu tích",
+    "split": {
+      "panel": "Bảng bên",
+      "panelHint": "Logo, tên biểu mẫu và văn bản giới thiệu hiển thị trong bảng.",
+      "side": "Vị trí bảng"
+    }
   },
   "themes": {
     "subtitle": "Các thiết kế đã lưu mà bạn có thể dùng cho mọi biểu mẫu",

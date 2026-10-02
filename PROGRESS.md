@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F8 — Designer (themes)
+**Last updated:** 2026-10-02 · **Current phase:** F8 — Designer (themes) · next: F9 Templates
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -18,10 +18,10 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F5    | Onboarding wizard                                 | ✅     | 100% |
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
-| F8    | Designer (themes)                                 | 🟡     | ~90% |
-| F9    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
-| F10   | Responses                                         | ⬜     | 0%   |
-| F11   | Templates gallery                                 | ⬜     | 0%   |
+| F8    | Designer (themes)                                 | 🟡     | ~92% |
+| F9    | Templates gallery                                 | ⬜     | 0%   |
+| F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
+| F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Settings                                          | ⬜     | 0%   |
 | F13   | Option sets & integrations                        | ⬜     | 0%   |
 | F14   | Profile                                           | ⬜     | 0%   |
@@ -359,12 +359,36 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Applied as CSS variables on the renderer only (Nuxt UI controls follow; portal untouched); theme stored on the form schema (versioned with publishing); builder Preview and Versions preview show the themed page
 - ✅ Save as theme (new or update), apply a saved theme in the designer; themes library page (Resources → Themes): Table / Grid, search, rename, duplicate, delete with usage count; audited (`forms.theme_*`) — milestone 2
 - ✅ New global and IT field types (owner request): full name (title / middle optional), percentage, duration, consent with terms link, language, time zone, currency (all from `Intl`, in the respondent's language), IP address (any / IPv4 / IPv6), domain, MAC address, colour, IBAN (checksum), SWIFT / BIC — new palette group "Technical & IDs", validated by the shared validator
+- ✅ Six more starting points with different structures (owner request): Banner (gradient header band), Ribbon (colour header band), Grounded (footer bar), Side panel (colour panel carrying logo / title), Aurora (gradient side panel), Corporate (header band + footer bar); new tokens `header.band`, `footer.style`, `split.panel`, all editable in the designer
 - ⬜ More fonts (self-hosted web fonts — needs a font package, ask first)
 - ⬜ Custom CSS (paid plans, sanitised) — with billing
 
 ---
 
-## F9 — Renderer, preview, share, embed, short links, SEO ⬜
+## F9 — Templates gallery ⬜
+
+**Goal:** nobody starts from an empty page — pick a ready form (fields, logic, design) and adapt it. Comes before the renderer (owner, 2026-10-02): templates and the renderer both serve form creation, and the gallery's previews are the first real use of the themed form page.
+
+### Gallery
+
+- ⬜ Templates page (Resources → Templates) in DataView: Table / Grid with themed thumbnails, categories, search, sort, filters (category, field count, language), pagination
+- ⬜ System templates — global and neutral, built with the full field set (incl. global / technical fields) and a theme each: HR (job application, leave request, onboarding), IT (access request, incident report, asset check-out), events (registration, RSVP), feedback (customer satisfaction, NPS), operations (visitor sign-in, inspection checklist), education (enrolment, course feedback), health (patient intake — controls, no compliance claims), finance (expense claim, supplier sign-up)
+- ⬜ Organisation templates: save any form as a template (forms list row action + builder menu), rename, edit description / category, duplicate, delete with confirm; audited (`templates.*`)
+- ⬜ A template carries fields, pages, logic, calculations, settings and theme; never responses
+
+### Preview and use
+
+- ⬜ Template preview: themed form page (desktop / tablet / phone), fields list, what's included (pages, logic rules, theme)
+- ⬜ Use a template → new form (name, folder) opened in the builder; the New form modal's Templates tab reads from the gallery
+- ⬜ Onboarding starter templates become full schemas (`shared/utils/templates/starters.ts`)
+
+### API (mock first)
+
+- ⬜ `/templates` list / get / create (from a form) / update / duplicate / delete; `/forms/from-template`; contract + error codes
+
+---
+
+## F10 — Renderer, preview, share, embed, short links, SEO ⬜
 
 ### Renderer
 
@@ -389,7 +413,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F10 — Responses ⬜
+## F11 — Responses ⬜
 
 - ⬜ Per-form responses (DataView, columns from the form)
 - ⬜ Inbox across all forms
@@ -405,15 +429,6 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ⬜ Folder colour chosen when creating / editing a folder
 - ⬜ Folder page `/folders/[id]`: name + actions in the header, KPI cards (forms, published, responses, avg. completion, last activity), the folder's forms in DataView
 - ⬜ All folders `/folders`: every folder with the same stats, Table / Grid, sort
-
----
-
-## F11 — Templates gallery ⬜
-
-- ⬜ System + organisation templates, categories, search
-- ⬜ Template preview
-- ⬜ Use a template → new form
-- ⬜ Save any form as a template
 
 ---
 
@@ -621,7 +636,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload                                                                                                                                                                                                                                                                           | F2 / all    | ✅     |
 | 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets                                                                                                                                                                                                                                                                               | all         | ✅     |
 | 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab                                                                                                                                                                                                                                                 | F6          | ✅     |
-| 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F10         | ⬜     |
+| 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F11         | ⬜     |
 | 2026-10-02 | Builder feedback (18 points): inline rename, try fields on the canvas, read-only keys with suffix, help as info icon, smaller radius, tighter spacing, label position, Nuxt UI dates, saved fields + lists, file-type picker, thumbnails, option numbers in formulas, clearer + complete logic, read-only / disabled with required guards, phone preview stacking | F7          | ✅     |
 | 2026-10-02 | Form themes: header, footer, body, images and text design carried on shared forms; default theme when none is chosen                                                                                                                                                                                                                                              | F8          | ⬜     |
 | 2026-10-02 | Builder canvas uses the full width; full-screen toggle with fields · canvas · settings and visible save status                                                                                                                                                                                                                                                    | F7          | ✅     |
@@ -633,6 +648,9 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Layout blocks: nicer section, inline paragraph editing, image upload + resize, divider options                                                                                                                                                                                                                                                                    | F7          | ✅     |
 | 2026-10-02 | Validate email and all address parts (not only the first line)                                                                                                                                                                                                                                                                                                    | F7          | ✅     |
 | 2026-10-02 | IT / technical field types: IP address, domain, MAC, IBAN, SWIFT / BIC, colour + global types (full name, consent, duration, percentage, language, time zone, currency) — first set built; owner may add more                                                                                                                                                     | F7 (later)  | ⬜     |
+| 2026-10-02 | More theme designs: header-only, footer-only and side designs — at least 5 more now, more later                                                                                                                                                                                                                                                                   | F8          | ✅     |
+| 2026-10-02 | Form workspace header too full: search as an icon, Preview as an icon                                                                                                                                                                                                                                                                                             | F8          | ✅     |
+| 2026-10-02 | Templates before the renderer (both serve form creation) — phases renumbered: F9 Templates, F10 Renderer, F11 Responses                                                                                                                                                                                                                                           | Roadmap     | ✅     |
 
 ---
 
@@ -684,3 +702,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F7    | Answer validation: email, web address, phone, number range, length, pattern, choice counts, files, date range and every required address part (postal code / region switchable); errors name the field, update live, missing address parts highlighted. One shared validator for renderer and API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 2026-10-02 | F8    | Milestone 1: Design view with live preview (devices, thank-you page), starting points, layout / background / container / typography / colours / inputs / buttons / header + cover / footer / thank-you; themes stored on the form, applied as CSS variables on the form page only, workspace default from brand colour + logo; builder Preview themed.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 2026-10-02 | F8    | Milestone 2: save / update / apply themes from the designer, themes library page (rename, duplicate, delete with usage count), audit + `FRM-FORM-1010`. 13 new field types (global + technical) with validation (IP v4/v6, domain, MAC, IBAN mod-97, BIC, colour, duration, name parts, consent, catalogue picks); all 20 languages.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 2026-10-02 | F8    | Six more starting points (Banner, Ribbon, Grounded, Side panel, Aurora, Corporate) with header bands, footer bars and colour / gradient side panels; designer controls for each; swatches show the structure. Form workspace header: search and Preview as icons. Confirm dialogs now always open above drawers (they were hidden behind the designer drawer on phones). Roadmap: Templates moved before the renderer (F9 Templates · F10 Renderer · F11 Responses).                                                                                                                                                                                                                                                                                                             |

@@ -1,6 +1,6 @@
 /**
- * Starter templates offered in onboarding (and later at the top of the Templates gallery, F11).
- * Names / descriptions live in i18n under `templates.starter.<key>`; the full schemas arrive with F11.
+ * Starter templates offered in onboarding (and later at the top of the Templates gallery, F9).
+ * Names / descriptions live in i18n under `templates.starter.<key>`; the full schemas arrive with F9.
  */
 export const STARTER_TEMPLATES = [
   { key: 'customer_feedback', icon: 'i-lucide-message-square-heart', fields: 8 },

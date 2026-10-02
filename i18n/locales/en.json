@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Footer links"
+      "footerLinks": "Footer links",
+      "secure": "Your answers are sent securely."
     },
     "name": {
       "title": "Title",
@@ -1658,7 +1659,13 @@
       "soft": "Soft",
       "bold": "Bold",
       "dark": "Dark",
-      "elegant": "Elegant"
+      "elegant": "Elegant",
+      "banner": "Banner",
+      "ribbon": "Ribbon",
+      "grounded": "Grounded",
+      "sidebar": "Side panel",
+      "aurora": "Aurora",
+      "corporate": "Corporate"
     },
     "screen": {
       "label": "Preview screen",
@@ -1769,7 +1776,11 @@
       "logoHint": "Your workspace logo is used unless you upload another one.",
       "logoNone": "Upload a logo for this form (your workspace has none yet).",
       "showTitle": "Show the form name",
-      "subtitle": "Intro text"
+      "subtitle": "Intro text",
+      "band": "Header background",
+      "plain": "Plain",
+      "bandColor": "Band colour",
+      "bandInPanel": "With a coloured side panel, the header sits in the panel."
     },
     "footer": {
       "show": "Show a footer",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Address of link {n}",
       "removeLink": "Remove link {n}",
       "addLink": "Add link",
-      "showLogo": "Show logo"
+      "showLogo": "Show logo",
+      "style": "Footer style",
+      "bar": "Colour bar",
+      "barColor": "Bar colour"
     },
     "thankYouHint": "The title and message are set in Build → Form settings. The page uses this design.",
-    "showTick": "Show the tick icon"
+    "showTick": "Show the tick icon",
+    "split": {
+      "panel": "Side panel",
+      "panelHint": "The logo, form name and intro text appear in the panel.",
+      "side": "Panel side"
+    }
   },
   "themes": {
     "subtitle": "Saved designs you can use on any form",

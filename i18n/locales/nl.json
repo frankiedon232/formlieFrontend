@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Voettekstlinks"
+      "footerLinks": "Voettekstlinks",
+      "secure": "Uw antwoorden worden veilig verzonden."
     },
     "name": {
       "title": "Aanhef",
@@ -1658,7 +1659,13 @@
       "soft": "Zacht",
       "bold": "Krachtig",
       "dark": "Donker",
-      "elegant": "Elegant"
+      "elegant": "Elegant",
+      "banner": "Banner",
+      "ribbon": "Lint",
+      "grounded": "Basis",
+      "sidebar": "Zijpaneel",
+      "aurora": "Noorderlicht",
+      "corporate": "Zakelijk"
     },
     "screen": {
       "label": "Voorbeeldscherm",
@@ -1769,7 +1776,11 @@
       "logoHint": "Het logo van je werkruimte wordt gebruikt, tenzij je een ander uploadt.",
       "logoNone": "Upload een logo voor dit formulier (je werkruimte heeft er nog geen).",
       "showTitle": "Formuliernaam tonen",
-      "subtitle": "Introductietekst"
+      "subtitle": "Introductietekst",
+      "band": "Achtergrond koptekst",
+      "plain": "Eenvoudig",
+      "bandColor": "Kleur van de band",
+      "bandInPanel": "Met een gekleurd zijpaneel staat de koptekst in het paneel."
     },
     "footer": {
       "show": "Voettekst tonen",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Adres van link {n}",
       "removeLink": "Link {n} verwijderen",
       "addLink": "Link toevoegen",
-      "showLogo": "Logo tonen"
+      "showLogo": "Logo tonen",
+      "style": "Voettekststijl",
+      "bar": "Kleurbalk",
+      "barColor": "Kleur van de balk"
     },
     "thankYouHint": "Titel en bericht stel je in bij Bouwen → Formulierinstellingen. De pagina gebruikt dit ontwerp.",
-    "showTick": "Vinkje tonen"
+    "showTick": "Vinkje tonen",
+    "split": {
+      "panel": "Zijpaneel",
+      "panelHint": "Het logo, de formuliernaam en de introtekst verschijnen in het paneel.",
+      "side": "Kant van het paneel"
+    }
   },
   "themes": {
     "subtitle": "Opgeslagen ontwerpen die u op elk formulier kunt gebruiken",

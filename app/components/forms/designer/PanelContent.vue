@@ -12,6 +12,15 @@ const align = computed(() => [
   { value: 'start', label: t('builder.blocks.alignStart') },
   { value: 'center', label: t('builder.blocks.alignCenter') },
 ])
+const bands = computed(() => [
+  { value: 'none', label: t('designer.header.plain') },
+  { value: 'color', label: t('designer.bg.color') },
+  { value: 'gradient', label: t('designer.bg.gradient') },
+])
+const footerStyles = computed(() => [
+  { value: 'plain', label: t('designer.header.plain') },
+  { value: 'band', label: t('designer.footer.bar') },
+])
 const heights = computed(() => ['sm', 'md', 'lg'].map(value => ({ value, label: t(`designer.size.${value}`) })))
 
 // Footer links: label + https link, up to 6.
@@ -28,6 +37,11 @@ const removeLink = (index: number) => d.set('footer', 'links', links.value.filte
 <template>
   <div class="flex flex-col gap-4">
     <template v-if="group === 'header'">
+      <FormsDesignerChoice :label="t('designer.header.band')" :description="theme.layout === 'split' && theme.split.panel !== 'image' ? t('designer.header.bandInPanel') : undefined" :model-value="theme.header.band" :items="bands" @update:model-value="v => d.set('header', 'band', v as 'none' | 'color' | 'gradient')" />
+      <template v-if="theme.header.band !== 'none'">
+        <FormsDesignerColorField :label="theme.header.band === 'gradient' ? t('designer.bg.from') : t('designer.header.bandColor')" :model-value="theme.header.band_bg" @update:model-value="v => d.set('header', 'band_bg', v)" />
+        <FormsDesignerColorField v-if="theme.header.band === 'gradient'" :label="t('designer.bg.to')" :model-value="theme.header.band_to" @update:model-value="v => d.set('header', 'band_to', v)" />
+      </template>
       <FormsDesignerImageField :label="t('designer.header.cover')" :hint="t('designer.header.coverHint')" :model-value="theme.header.cover" @update:model-value="v => d.set('header', 'cover', v)" />
       <FormsDesignerChoice v-if="theme.header.cover" :label="t('designer.header.coverHeight')" :model-value="theme.header.cover_height" :items="heights" @update:model-value="v => d.set('header', 'cover_height', v as 'sm' | 'md' | 'lg')" />
       <USwitch :model-value="theme.header.show_logo" :label="t('designer.header.showLogo')" color="neutral" @update:model-value="v => d.set('header', 'show_logo', v)" />
@@ -48,6 +62,8 @@ const removeLink = (index: number) => d.set('footer', 'links', links.value.filte
     <template v-if="group === 'footer'">
       <USwitch :model-value="theme.footer.enabled" :label="t('designer.footer.show')" color="neutral" @update:model-value="v => d.set('footer', 'enabled', v)" />
       <template v-if="theme.footer.enabled">
+        <FormsDesignerChoice :label="t('designer.footer.style')" :model-value="theme.footer.style" :items="footerStyles" @update:model-value="v => d.set('footer', 'style', v as 'plain' | 'band')" />
+        <FormsDesignerColorField v-if="theme.footer.style === 'band'" :label="t('designer.footer.barColor')" :model-value="theme.footer.bg" @update:model-value="v => d.set('footer', 'bg', v)" />
         <UFormField :label="t('designer.footer.text')" :description="t('designer.footer.textHint')">
           <UTextarea :model-value="theme.footer.text" :rows="2" autoresize maxlength="500" class="w-full" @update:model-value="v => d.set('footer', 'text', String(v))" />
         </UFormField>

@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Alt bilgi bağlantıları"
+      "footerLinks": "Alt bilgi bağlantıları",
+      "secure": "Yanıtlarınız güvenli şekilde gönderilir."
     },
     "name": {
       "title": "Unvan",
@@ -1658,7 +1659,13 @@
       "soft": "Yumuşak",
       "bold": "Belirgin",
       "dark": "Koyu",
-      "elegant": "Zarif"
+      "elegant": "Zarif",
+      "banner": "Afiş",
+      "ribbon": "Şerit",
+      "grounded": "Zemin",
+      "sidebar": "Yan panel",
+      "aurora": "Kutup ışığı",
+      "corporate": "Kurumsal"
     },
     "screen": {
       "label": "Önizleme ekranı",
@@ -1769,7 +1776,11 @@
       "logoHint": "Başka bir logo yüklemediğiniz sürece çalışma alanınızın logosu kullanılır.",
       "logoNone": "Bu form için bir logo yükleyin (çalışma alanınızın henüz logosu yok).",
       "showTitle": "Form adını göster",
-      "subtitle": "Giriş metni"
+      "subtitle": "Giriş metni",
+      "band": "Üst bilgi arka planı",
+      "plain": "Sade",
+      "bandColor": "Şerit rengi",
+      "bandInPanel": "Renkli bir yan panelde üst bilgi panelin içinde yer alır."
     },
     "footer": {
       "show": "Alt bilgi göster",
@@ -1781,10 +1792,18 @@
       "linkUrl": "{n}. bağlantının adresi",
       "removeLink": "{n}. bağlantıyı kaldır",
       "addLink": "Bağlantı ekle",
-      "showLogo": "Logoyu göster"
+      "showLogo": "Logoyu göster",
+      "style": "Alt bilgi stili",
+      "bar": "Renk çubuğu",
+      "barColor": "Çubuk rengi"
     },
     "thankYouHint": "Başlık ve mesaj Oluştur → Form ayarları bölümünden belirlenir. Sayfa bu tasarımı kullanır.",
-    "showTick": "Onay simgesini göster"
+    "showTick": "Onay simgesini göster",
+    "split": {
+      "panel": "Yan panel",
+      "panelHint": "Logo, form adı ve giriş metni panelde görünür.",
+      "side": "Panel tarafı"
+    }
   },
   "themes": {
     "subtitle": "Herhangi bir formda kullanabileceğiniz kayıtlı tasarımlar",

@@ -54,7 +54,7 @@ defineShortcuts({
 </script>
 
 <template>
-  <AppPanel :id="`form-${mode}`" :title="form?.name ?? t('builder.crumb')">
+  <AppPanel :id="`form-${mode}`" :title="form?.name ?? t('builder.crumb')" compact-search>
     <template #title>
       <UInput
         v-if="form"
@@ -91,7 +91,9 @@ defineShortcuts({
       <UTooltip :text="t('builder.fullscreen.enter')" :kbds="['meta', 'shift', 'f']">
         <UButton class="hidden lg:inline-flex" icon="i-lucide-maximize-2" color="neutral" variant="outline" square :aria-label="t('builder.fullscreen.enter')" @click="s.toggleFullscreen(true)" />
       </UTooltip>
-      <UButton class="hidden sm:inline-flex" icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" @click="previewOpen = true" />
+      <UTooltip :text="t('builder.preview.button')">
+        <UButton class="hidden sm:inline-flex" icon="i-lucide-eye" color="neutral" variant="outline" square :aria-label="t('builder.preview.button')" @click="previewOpen = true" />
+      </UTooltip>
       <!-- Phones / small tablets: modes, undo / redo and preview fold into one menu. -->
       <UDropdownMenu :items="phoneMenu" :content="{ align: 'end' }" class="md:hidden">
         <UButton class="md:hidden" icon="i-lucide-ellipsis" color="neutral" variant="outline" square :aria-label="t('builder.actions.more')" />

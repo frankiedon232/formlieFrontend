@@ -1,6 +1,7 @@
 <!--
   Confirmation for destructive / important actions (CLAUDE.md rule 13). Mounted once in the
   layouts and driven by useConfirm(). Draggable like every AppModal; Esc / outside = cancel.
+  Always the top layer — it can open from a drawer or slide-over (designer controls on phones).
 -->
 <script setup lang="ts">
 const { t } = useI18n()
@@ -15,7 +16,7 @@ const open = computed({
 </script>
 
 <template>
-  <AppModal v-model:open="open" :title="pending?.title ?? ''" :description="pending?.description">
+  <AppModal v-model:open="open" :title="pending?.title ?? ''" :description="pending?.description" :ui="{ overlay: 'z-[60]', content: 'z-[60]' }">
     <template #footer>
       <div class="flex w-full flex-col-reverse gap-2 sm:flex-row sm:justify-end">
         <UButton

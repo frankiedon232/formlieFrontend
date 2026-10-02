@@ -1321,7 +1321,8 @@
     },
     "page": {
       "logo": "Logo",
-      "footerLinks": "Fußzeilen-Links"
+      "footerLinks": "Fußzeilen-Links",
+      "secure": "Ihre Antworten werden sicher übermittelt."
     },
     "name": {
       "title": "Titel",
@@ -1658,7 +1659,13 @@
       "soft": "Sanft",
       "bold": "Kräftig",
       "dark": "Dunkel",
-      "elegant": "Elegant"
+      "elegant": "Elegant",
+      "banner": "Banner",
+      "ribbon": "Band",
+      "grounded": "Fundament",
+      "sidebar": "Seitenleiste",
+      "aurora": "Polarlicht",
+      "corporate": "Geschäftlich"
     },
     "screen": {
       "label": "Vorschau-Ansicht",
@@ -1769,7 +1776,11 @@
       "logoHint": "Das Logo Ihres Arbeitsbereichs wird verwendet, sofern Sie kein anderes hochladen.",
       "logoNone": "Laden Sie ein Logo für dieses Formular hoch (Ihr Arbeitsbereich hat noch keins).",
       "showTitle": "Formularnamen anzeigen",
-      "subtitle": "Einleitungstext"
+      "subtitle": "Einleitungstext",
+      "band": "Hintergrund der Kopfzeile",
+      "plain": "Schlicht",
+      "bandColor": "Bandfarbe",
+      "bandInPanel": "Mit einer farbigen Seitenleiste sitzt die Kopfzeile in der Leiste."
     },
     "footer": {
       "show": "Fußzeile anzeigen",
@@ -1781,10 +1792,18 @@
       "linkUrl": "Adresse von Link {n}",
       "removeLink": "Link {n} entfernen",
       "addLink": "Link hinzufügen",
-      "showLogo": "Logo anzeigen"
+      "showLogo": "Logo anzeigen",
+      "style": "Fußzeilenstil",
+      "bar": "Farbleiste",
+      "barColor": "Leistenfarbe"
     },
     "thankYouHint": "Titel und Nachricht legen Sie unter Erstellen → Formulareinstellungen fest. Die Seite nutzt dieses Design.",
-    "showTick": "Häkchen-Symbol anzeigen"
+    "showTick": "Häkchen-Symbol anzeigen",
+    "split": {
+      "panel": "Seitenleiste",
+      "panelHint": "Logo, Formularname und Einleitungstext erscheinen in der Seitenleiste.",
+      "side": "Position der Seitenleiste"
+    }
   },
   "themes": {
     "subtitle": "Gespeicherte Designs, die Sie in jedem Formular verwenden können",

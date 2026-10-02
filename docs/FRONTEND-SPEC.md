@@ -121,7 +121,7 @@ DataView with dynamic columns from the form schema; filters per field type; date
 - 20 languages: English, Français, Español, Português (BR), Deutsch, Italiano, Nederlands, Polski, Русский, Українська, Türkçe, العربية (RTL), हिन्दी, বাংলা, 简体中文, 日本語, 한국어, Bahasa Indonesia, Tiếng Việt, Kiswahili. Defined once in `shared/utils/i18n/locales.ts`; messages in `i18n/locales/{code}.json`.
 - `<html lang dir>` follow the active language; Nuxt UI's own component strings use the matching `@nuxt/ui/locale` (English where Nuxt UI has none, e.g. Swahili).
 - Language switch (`AppLocaleSwitch`, searchable `USelectMenu`) in the navbar and on auth pages; later also a per-user default in Profile and a tenant default in Settings → Localisation.
-- Public forms (`/f/**`): the form's own language setting (`schema.settings.language`) wins; respondents can switch when the form owner enables several languages (F9).
+- Public forms (`/f/**`): the form's own language setting (`schema.settings.language`) wins; respondents can switch when the form owner enables several languages (F10).
 - RTL: logical Tailwind utilities only (`ms-/me-/ps-/pe-/start-/end-`).
 - Dates, numbers, currency via `Intl` with the active locale and tenant timezone/currency.
 
