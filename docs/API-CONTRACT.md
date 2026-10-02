@@ -124,7 +124,7 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 
 | CRUD | `/themes` | `{ name, tokens }` |
 | GET | `/templates` (system + org; filter category) · POST `/templates` (save as) · POST `/templates/{id}/use` | |
-| CRUD | `/option-sets`, `/option-sets/{id}/items` (bulk upsert, reorder) | |
+| CRUD | `/option-lists`, `/option-lists/{id}/items` (search / paging / levels, bulk upsert, reorder, import, refresh, usage) | planned (F13) — see [OPTION-LISTS.md](OPTION-LISTS.md); replaces the earlier `/option-sets` name |
 
 ## Sharing, links, embed
 
