@@ -20,7 +20,9 @@ const trashCount = computed(() => counts.value?.forms.trash ?? 0)
 const daysLeft = (form: FormSummary) =>
   Math.max(
     0,
-    Math.ceil((Date.parse(form.deleted_at ?? '') + TRASH_RETENTION_DAYS * 86_400_000 - Date.now()) / 86_400_000),
+    Math.ceil(
+      (Date.parse(form.deleted_at ?? '') + TRASH_RETENTION_DAYS * 86_400_000 - Date.now()) / 86_400_000,
+    ),
   )
 
 const columns = computed<DataColumn[]>(() => [
@@ -126,10 +128,19 @@ const rowActions = (form: FormSummary): DropdownMenuItem[][] => [
           <div class="flex items-start justify-between gap-2">
             <p class="min-w-0 truncate font-semibold text-highlighted">{{ row.name }}</p>
             <UDropdownMenu :items="rowActions(row)" :content="{ align: 'end' }">
-              <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" size="xs" square :aria-label="t('dataView.actions')" />
+              <UButton
+                icon="i-lucide-ellipsis"
+                color="neutral"
+                variant="ghost"
+                size="xs"
+                square
+                :aria-label="t('dataView.actions')"
+              />
             </UDropdownMenu>
           </div>
-          <p class="text-sm text-muted">{{ t('forms.trash.deletedAgo', { time: relative(row.deleted_at) }) }}</p>
+          <p class="text-sm text-muted">
+            {{ t('forms.trash.deletedAgo', { time: relative(row.deleted_at) }) }}
+          </p>
           <UBadge
             :label="t('forms.trash.days', { count: daysLeft(row) }, daysLeft(row))"
             :color="daysLeft(row) <= 3 ? 'warning' : 'neutral'"

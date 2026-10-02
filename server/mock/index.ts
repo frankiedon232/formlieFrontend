@@ -5,6 +5,7 @@
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import * as auth from './routes/auth'
+import * as formDraft from './routes/formDraft'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
@@ -46,6 +47,13 @@ const router = createRouter()
   .patch('/forms/:id', forms.patchForm)
   .delete('/forms/:id', forms.deleteForm)
   .post('/forms/:id/duplicate', forms.duplicateForm)
+  .get('/forms/:id/builder', formDraft.getBuilder)
+  .put('/forms/:id/draft', formDraft.saveDraft)
+  .post('/forms/:id/publish', formDraft.publishForm)
+  .post('/forms/:id/discard', formDraft.discardDraft)
+  .get('/forms/:id/versions', formDraft.listVersions)
+  .get('/forms/:id/versions/:vid', formDraft.getVersion)
+  .post('/forms/:id/versions/:vid/restore', formDraft.restoreVersion)
   .post('/forms/:id/:action', forms.formLifecycle)
   .get('/folders', forms.listFolders)
   .post('/folders', forms.createFolder)

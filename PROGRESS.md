@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F6 — Forms list and lifecycle (review) → next F7 — Form builder
+**Last updated:** 2026-10-02 · **Current phase:** F7 — Form builder
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -17,7 +17,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F4    | Audit trail                                       | ✅     | 100% |
 | F5    | Onboarding wizard                                 | ✅     | 100% |
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
-| F7    | Form builder                                      | ⬜     | 0%   |
+| F7    | Form builder                                      | 🟡     | ~70% |
 | F8    | Designer (themes)                                 | ⬜     | 0%   |
 | F9    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F10   | Responses                                         | ⬜     | 0%   |
@@ -279,37 +279,41 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F7 — Form builder ⬜
+## F7 — Form builder 🟡
 
 **Goal:** a robust drag-and-drop builder that works on desktop and stays usable on tablet and phone.
 
 ### Fields (one registry entry each: palette item, defaults, inspector, renderer, validation)
 
-- ⬜ Text: short text, long text, rich text, email, phone, URL, number, currency
-- ⬜ Dates: date, time, date-time, date range
-- ⬜ Choice: dropdown, multi-select, radio, checkbox, toggle, ranking, matrix / grid
-- ⬜ Rating: rating, scale / NPS, slider
-- ⬜ Files: file upload, image upload, signature
-- ⬜ Location: address (with map), country / state
-- ⬜ Advanced: hidden field, calculated field, payment (later)
-- ⬜ Layout: section header, paragraph / HTML block, divider, image, page break
+- ✅ Text: short text, long text, email, phone, URL, number, currency (amount with the currency symbol)
+- 🟡 Rich text — multi-line input for now; a real editor needs a dependency (ask first)
+- ✅ Dates: date, time, date-time, date range
+- ✅ Choice: dropdown, multi-select, radio, checkbox, toggle, ranking (drag + ↑ / ↓), matrix / grid
+- ✅ Rating: star rating, scale / NPS (with end labels), slider
+- ✅ Files: file upload, image upload (types, count, size), signature (draw or type the name)
+- ✅ Location: international address, country with flags
+- ✅ Advanced: hidden field (prefill), calculated field (formula), payment listed as "soon"
+- ✅ Layout: section heading, paragraph, divider, image; pages instead of a page-break field
 
 ### Canvas
 
-- ⬜ Palette with search and categories
-- ⬜ Drag from palette to canvas; reorder fields, rows, sections, pages (drop indicators, auto-scroll)
-- ⬜ Multi-column rows on a 12-column grid (full, ½, ⅓, ⅔, ¼)
-- ⬜ Keyboard alternatives for every move (move up / down, move to page)
-- ⬜ Select, multi-select (Shift / Ctrl), duplicate (`Ctrl+D`), delete with undo
-- ⬜ Undo / redo (`Ctrl+Z` / `Ctrl+Shift+Z`)
-- ⬜ Multi-page forms with progress bar; nested sections
+- ✅ Palette with search and categories (click / Enter adds below the selected field; drag drops anywhere)
+- ✅ Drag from palette to canvas; reorder fields within a row, between rows, out to their own row (SortableJS, auto-scroll)
+- ✅ Multi-column rows on a 12-column grid (full, ½, ⅓, ⅔, ¼, ¾); dropping next to a field shares the row evenly
+- ✅ Keyboard alternatives for every move (Alt+↑ / ↓ across rows and pages, Move to page, width menu)
+- ✅ Select (click / Enter), multi-select (Shift / Ctrl), duplicate (`Ctrl+D`), delete (`Del`) with an Undo toast
+- ✅ Undo / redo (`Ctrl+Z` / `Ctrl+Shift+Z`), typing grouped into one step
+- ✅ Multi-page forms (page tabs, add / rename / move / delete with confirm) with progress bar
+- ⬜ Collapsible sections that group the fields below them (today: section heading block)
 
 ### Inspector
 
-- ⬜ Field properties, width, required, help text, placeholder, default value
-- ⬜ Validation rules (min / max, length, pattern, file type / size)
-- ⬜ Options or reusable option sets
-- ⬜ Prefill from URL parameters
+- ✅ Field properties: label, help, placeholder, required, width, default value, field key (follows the label until first publish)
+- ✅ Validation rules: length, number range, pattern + message, choices min / max, file types / count / size
+- ✅ Options: add, rename, reorder (drag or ↑ / ↓), remove, paste a list; matrix rows
+- ⬜ Reusable option sets in the inspector (with F13 Option sets)
+- ✅ Prefill from URL parameters (example link shown)
+- ✅ Nothing selected → form settings (progress bar, save & resume, thank-you screen); several → bulk width / required / move / duplicate / delete
 
 ### Logic (`/forms/[id]/logic`)
 
@@ -319,14 +323,15 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Saving and publishing
 
-- ⬜ Autosave to draft with "Saved · 2s ago", conflict detection
-- ⬜ Top bar: inline name, status badge, Preview, Publish (with change summary)
-- ⬜ Editing a published form creates a draft; published version stays live
-- ⬜ Versions page: history, compare, restore
+- ✅ Autosave to draft with "Saved · 2 minutes ago", conflict detection (saving pauses, Reload offered), warning before leaving with unsaved changes
+- ✅ Top bar: inline name, status badge, "Changes not published", undo / redo, Preview, Publish (with change summary and blocking issues that jump to the field)
+- ✅ Editing a published form creates a draft; published version stays live
+- ✅ Live preview: fill it in like a respondent (required checks, pages, thank-you screen) on desktop / tablet / phone widths
+- ⬜ Versions page: history, compare, restore (API ready: versions, restore, discard)
 
 ### Devices
 
-- ⬜ Tablet: palette and inspector as slide-overs; phone: bottom drawer
+- ✅ Laptop+: three panes; tablet: palette and settings as slide-overs; phone: bottom drawers, floating "Add field / Field settings" bar, header folds undo / redo / preview into ⋯
 - ⬜ Heavy parts lazy-loaded; long canvases virtualised
 
 ---
@@ -589,31 +594,33 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                               | F3 / F12    | ✅     |
 | 2026-10-02 | Loading feedback everywhere: page loading, progress, skeletons, top bar, busy buttons   | F2 / all    | ✅     |
 | 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload | F2 / all    | ✅     |
+| 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets     | all         | ✅     |
 
 ---
 
 ## Progress log
 
-| Date       | Phase | What happened                                                                                                                                                                                                                                                                                                                          |
-| ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-10-02 | F0    | Foundation: config, 20 languages, mock API with real encryption, tooling. Checked phone / desktop, light / dark, Arabic, keyboard.                                                                                                                                                                                                     |
-| 2026-10-02 | F0    | Access matrix verified on every host; shared host resolver with tests.                                                                                                                                                                                                                                                                 |
-| 2026-10-02 | F1    | App shell built, then rebuilt to match the design exactly (rail + menu, header, monochrome).                                                                                                                                                                                                                                           |
-| 2026-10-02 | F1    | Flags, breadcrumbs in the header, Manrope font, menu timeline / square bullets / dark text.                                                                                                                                                                                                                                            |
-| 2026-10-02 | F2    | Core plumbing: secure API client, error handling in 20 languages, DataView live on the mock, confirm dialog, formatters.                                                                                                                                                                                                               |
-| 2026-10-02 | F2    | Header carries title / subtitle / crumbs / buttons; footer added; DataView flow approved.                                                                                                                                                                                                                                              |
-| 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                                                                                                                                                                                                            |
-| 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                                                                                                                                                                  |
-| 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                                                                                                                                                       |
-| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F12). Provider callback waits on the backend.                                                                                                                                       |
-| 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                                                                                                                                                              |
-| 2026-10-02 | F3    | "Work email" → "Email address" everywhere, neutral placeholder name@example.com, no "work email" wording (any organisation, any email provider).                                                                                                                                                                                       |
-| 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                                                                                                                                                             |
-| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                                                                                                                                                          |
-| 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access. |
-| 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                         |
-| 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                      |
-| 2026-10-02 | F3    | Sessions: 60-minute sliding idle timeout (owner); mock sessions survive dev reloads (`.data/mock/`); unknown access token → silent refresh instead of sign-out. Verified: signed in → mock reloaded → still signed in.                                                                                                                 |
-| 2026-10-02 | F2    | Loading feedback (owner): branded first-load screen, top progress bar on every API call (not only navigation), busy rows for menu actions, rule 5 rewritten as a checklist and added to the definition of done.                                                                                                                        |
-| 2026-10-02 | F6    | Forms lifecycle: new (blank / template / import), inline rename, duplicate, move, tags, folders, unpublish / close / reopen / archive / unarchive, Trash with restore and permanent delete, bulk, row_version conflicts, busy rows, form overview with activity. Checked desktop / phone, Arabic RTL; all actions in the audit trail.  |
-| 2026-10-02 | F2    | In-app navigation progress (owner): one activity counter for navigation + API calls drives the top bar and a new sweeping bar under each page header; starts on click, runs until the new page's data has arrived.                                                                                                                     |
+| Date       | Phase | What happened                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-02 | F0    | Foundation: config, 20 languages, mock API with real encryption, tooling. Checked phone / desktop, light / dark, Arabic, keyboard.                                                                                                                                                                                                                                                                                                                    |
+| 2026-10-02 | F0    | Access matrix verified on every host; shared host resolver with tests.                                                                                                                                                                                                                                                                                                                                                                                |
+| 2026-10-02 | F1    | App shell built, then rebuilt to match the design exactly (rail + menu, header, monochrome).                                                                                                                                                                                                                                                                                                                                                          |
+| 2026-10-02 | F1    | Flags, breadcrumbs in the header, Manrope font, menu timeline / square bullets / dark text.                                                                                                                                                                                                                                                                                                                                                           |
+| 2026-10-02 | F2    | Core plumbing: secure API client, error handling in 20 languages, DataView live on the mock, confirm dialog, formatters.                                                                                                                                                                                                                                                                                                                              |
+| 2026-10-02 | F2    | Header carries title / subtitle / crumbs / buttons; footer added; DataView flow approved.                                                                                                                                                                                                                                                                                                                                                             |
+| 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                                                                                                                                                                                                                                                                                                                           |
+| 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                                                                                                                                                                                                                                                                                 |
+| 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                                                                                                                                                                                                                                                                      |
+| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F12). Provider callback waits on the backend.                                                                                                                                                                                                                                                      |
+| 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                                                                                                                                                                                                                                                                             |
+| 2026-10-02 | F3    | "Work email" → "Email address" everywhere, neutral placeholder name@example.com, no "work email" wording (any organisation, any email provider).                                                                                                                                                                                                                                                                                                      |
+| 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                                                                                                                                                                                                                                                                            |
+| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                                                                                                                                                                                                                                                                         |
+| 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access.                                                                                                                |
+| 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                                                                                                                                        |
+| 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                                                                                                                                     |
+| 2026-10-02 | F3    | Sessions: 60-minute sliding idle timeout (owner); mock sessions survive dev reloads (`.data/mock/`); unknown access token → silent refresh instead of sign-out. Verified: signed in → mock reloaded → still signed in.                                                                                                                                                                                                                                |
+| 2026-10-02 | F2    | Loading feedback (owner): branded first-load screen, top progress bar on every API call (not only navigation), busy rows for menu actions, rule 5 rewritten as a checklist and added to the definition of done.                                                                                                                                                                                                                                       |
+| 2026-10-02 | F6    | Forms lifecycle: new (blank / template / import), inline rename, duplicate, move, tags, folders, unpublish / close / reopen / archive / unarchive, Trash with restore and permanent delete, bulk, row_version conflicts, busy rows, form overview with activity. Checked desktop / phone, Arabic RTL; all actions in the audit trail.                                                                                                                 |
+| 2026-10-02 | F2    | In-app navigation progress (owner): one activity counter for navigation + API calls drives the top bar and a new sweeping bar under each page header; starts on click, runs until the new page's data has arrived.                                                                                                                                                                                                                                    |
+| 2026-10-02 | F7    | Builder milestone 1–2: field catalogue (34 types) + registry, renderer for every type, three-pane builder (palette · real form on a page card · inspector), drag and drop (palette → canvas, within / between rows), keyboard moves, multi-select, undo / redo, delete with undo, autosave with conflict pause, publish with checks + change summary, live preview with device sizes, phone / tablet layout; segmented controls now match the design. |

@@ -34,7 +34,11 @@ const { date, number } = useFormat()
     <div class="min-w-0">
       <div class="flex items-center gap-2">
         <DataStatusBadge :status="props.form.status" />
-        <UIcon v-if="props.busy" name="i-lucide-loader-circle" class="size-4 shrink-0 animate-spin text-muted" />
+        <UIcon
+          v-if="props.busy"
+          name="i-lucide-loader-circle"
+          class="size-4 shrink-0 animate-spin text-muted"
+        />
         <h3 class="truncate font-semibold text-highlighted">
           <ULink :to="`/forms/${props.form.id}`" class="hover:underline">{{ props.form.name }}</ULink>
         </h3>

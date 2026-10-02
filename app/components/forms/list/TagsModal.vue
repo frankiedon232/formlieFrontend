@@ -25,7 +25,12 @@ function save() {
     <template #body>
       <div class="flex flex-col gap-4">
         <UFormField :label="t('forms.tags.label')" :hint="t('forms.tags.hint')">
-          <UInputTags v-model="value" :max-length="30" :placeholder="t('forms.tags.placeholder')" class="w-full" />
+          <UInputTags
+            v-model="value"
+            :max-length="30"
+            :placeholder="t('forms.tags.placeholder')"
+            class="w-full"
+          />
         </UFormField>
         <div v-if="unused.length" class="flex flex-wrap items-center gap-1.5">
           <span class="me-1 text-xs text-muted">{{ t('forms.tags.existing') }}</span>
@@ -44,8 +49,20 @@ function save() {
     </template>
     <template #footer>
       <div class="flex w-full flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-        <UButton :label="t('common.cancel')" color="neutral" variant="outline" class="justify-center" @click="open = false" />
-        <UButton :label="t('common.save')" icon="i-lucide-check" color="neutral" class="justify-center" @click="save" />
+        <UButton
+          :label="t('common.cancel')"
+          color="neutral"
+          variant="outline"
+          class="justify-center"
+          @click="open = false"
+        />
+        <UButton
+          :label="t('common.save')"
+          icon="i-lucide-check"
+          color="neutral"
+          class="justify-center"
+          @click="save"
+        />
       </div>
     </template>
   </AppModal>

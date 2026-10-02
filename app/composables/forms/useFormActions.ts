@@ -37,7 +37,11 @@ export function useFormActions(onChanged: () => void | Promise<void>) {
   }
 
   const patch = (form: FormSummary, body: Record<string, unknown>, success: string) =>
-    run([form.id], () => api.patch<FormSummary>(`/forms/${form.id}`, { row_version: form.row_version, ...body }), success)
+    run(
+      [form.id],
+      () => api.patch<FormSummary>(`/forms/${form.id}`, { row_version: form.row_version, ...body }),
+      success,
+    )
 
   const rename = (form: FormSummary, name: string) =>
     name.trim() && name.trim() !== form.name
@@ -74,11 +78,20 @@ export function useFormActions(onChanged: () => void | Promise<void>) {
       confirmLabel: t('forms.actions.purge'),
       danger: true,
     })
-    if (ok) await run([form.id], () => api.del(`/forms/${form.id}`, { query: { permanent: '1' } }), t('forms.toast.purged'))
+    if (ok)
+      await run(
+        [form.id],
+        () => api.del(`/forms/${form.id}`, { query: { permanent: '1' } }),
+        t('forms.toast.purged'),
+      )
   }
 
   /** Bulk action on selected forms; deletes ask first. Resolves true when it ran. */
-  async function bulk(action: FormBulkAction, forms: FormSummary[], folderId?: string | null): Promise<boolean> {
+  async function bulk(
+    action: FormBulkAction,
+    forms: FormSummary[],
+    folderId?: string | null,
+  ): Promise<boolean> {
     if (!forms.length) return false
     if (action === 'delete' || action === 'purge') {
       const ok = await confirm({
@@ -91,13 +104,20 @@ export function useFormActions(onChanged: () => void | Promise<void>) {
     }
     const result = await run(
       forms.map(form => form.id),
-      () => api.post<FormBulkResult>('/forms/bulk', { action, ids: forms.map(form => form.id), folder_id: folderId ?? null }),
+      () =>
+        api.post<FormBulkResult>('/forms/bulk', {
+          action,
+          ids: forms.map(form => form.id),
+          folder_id: folderId ?? null,
+        }),
     )
     if (!result) return false
     const { updated, failed } = result.data
     toast.add({
       title: t('forms.toast.bulk', { count: updated }, updated),
-      description: failed.length ? t('forms.toast.bulkFailed', { count: failed.length }, failed.length) : undefined,
+      description: failed.length
+        ? t('forms.toast.bulkFailed', { count: failed.length }, failed.length)
+        : undefined,
       color: failed.length ? 'warning' : 'success',
       icon: failed.length ? 'i-lucide-triangle-alert' : 'i-lucide-circle-check',
     })

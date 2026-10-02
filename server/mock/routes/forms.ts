@@ -12,7 +12,9 @@ import type {
   FormLifecycleAction,
   FormStatus,
 } from '#shared/types/forms'
+import { blankSchema, starterSchema } from '#shared/utils/forms/build'
 import { formSchemaV1 } from '#shared/utils/forms/schema'
+import type { StarterTemplateKey } from '#shared/utils/templates/starters'
 import { STARTER_TEMPLATE_KEYS } from '#shared/utils/templates/starters'
 import type { AuditAction } from '#shared/utils/audit/events'
 import { requireAuth } from '../core/auth'
@@ -167,7 +169,9 @@ function newForm(
     row_version: 1,
     deleted_at: null,
     previous_status: null,
-    schema: input.schema ?? null,
+    schema:
+      input.schema ??
+      (input.template_key ? starterSchema(input.template_key as StarterTemplateKey) : blankSchema()),
     template_key: input.template_key ?? null,
   }
   store.forms.unshift(form)

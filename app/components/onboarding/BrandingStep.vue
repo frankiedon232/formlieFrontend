@@ -78,7 +78,7 @@ const colorModel = computed({
           :src="branding.logo_url"
           :alt="t('onboarding.branding.logoAlt')"
           class="size-14 rounded-md border border-default bg-elevated object-contain p-1"
-        >
+        />
         <p class="min-w-0 flex-1 truncate text-sm text-default">
           {{ file?.name ?? t('onboarding.branding.current') }}
         </p>

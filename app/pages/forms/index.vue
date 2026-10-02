@@ -82,7 +82,11 @@ const filters = computed<DataFilter[]>(() => [
   {
     key: 'status',
     label: t('forms.filterStatus'),
-    options: Object.keys(STATUS_DOTS).map(value => ({ value, label: t(`status.${value}`), dot: STATUS_DOTS[value] })),
+    options: Object.keys(STATUS_DOTS).map(value => ({
+      value,
+      label: t(`status.${value}`),
+      dot: STATUS_DOTS[value],
+    })),
   },
   {
     key: 'folder_id',
@@ -97,7 +101,11 @@ const filters = computed<DataFilter[]>(() => [
     label: t('forms.filterOwner'),
     options: facets.value.owners.map(owner => ({ value: owner.id, label: owner.name })),
   },
-  { key: 'tag', label: t('forms.filterTag'), options: facets.value.tags.map(tag => ({ value: tag, label: tag })) },
+  {
+    key: 'tag',
+    label: t('forms.filterTag'),
+    options: facets.value.tags.map(tag => ({ value: tag, label: tag })),
+  },
 ])
 
 const columns = computed<DataColumn[]>(() => [
@@ -105,7 +113,13 @@ const columns = computed<DataColumn[]>(() => [
   { key: 'status', label: t('forms.col.status') },
   { key: 'owner', label: t('forms.col.owner'), hideBelow: 'lg' },
   { key: 'completion_rate', label: t('forms.col.completion'), sortable: true, hideBelow: 'md' },
-  { key: 'responses_count', label: t('forms.col.responses'), sortable: true, hideBelow: 'sm', class: 'text-end' },
+  {
+    key: 'responses_count',
+    label: t('forms.col.responses'),
+    sortable: true,
+    hideBelow: 'sm',
+    class: 'text-end',
+  },
   { key: 'updated_at', label: t('forms.col.updated'), sortable: true, hideBelow: 'sm' },
 ])
 
@@ -116,13 +130,19 @@ const sortOptions = computed(() => [
   { label: t('forms.sortResponses'), value: '-responses_count' },
 ])
 
-const fetcher: DataFetcher<FormSummary> = (params, signal) => api.list<FormSummary>('/forms', params, { signal })
+const fetcher: DataFetcher<FormSummary> = (params, signal) =>
+  api.list<FormSummary>('/forms', params, { signal })
 
 defineShortcuts({ n: () => navigateTo('/forms/new') })
 </script>
 
 <template>
-  <AppPanel id="forms" :title="t('nav.forms')" :subtitle="t('forms.description')" subtitle-icon="i-lucide-refresh-cw">
+  <AppPanel
+    id="forms"
+    :title="t('nav.forms')"
+    :subtitle="t('forms.description')"
+    subtitle-icon="i-lucide-refresh-cw"
+  >
     <template #actions>
       <UButton
         icon="i-lucide-folder-cog"
@@ -204,7 +224,7 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
           color="neutral"
           variant="outline"
           size="sm"
-          @click="(moveTargets = selected), (moveOpen = true)"
+          @click="((moveTargets = selected), (moveOpen = true))"
         />
         <UButton
           :label="t('forms.actions.archive')"
@@ -253,6 +273,11 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
       :form-name="tagsTarget?.name ?? ''"
       @save="tags => tagsTarget && actions.setTags(tagsTarget, tags)"
     />
-    <FormsListFoldersModal v-model:open="foldersOpen" :folders="folders" :loading="foldersLoading" @changed="refresh" />
+    <FormsListFoldersModal
+      v-model:open="foldersOpen"
+      :folders="folders"
+      :loading="foldersLoading"
+      @changed="refresh"
+    />
   </AppPanel>
 </template>

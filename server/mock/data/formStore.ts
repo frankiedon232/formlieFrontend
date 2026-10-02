@@ -14,6 +14,19 @@ export interface StoredForm extends FormSummary {
   previous_status: FormStatus | null
   schema: FormSchemaV1 | null
   template_key: string | null
+  /** What respondents see (null until first publish). */
+  published_schema?: FormSchemaV1 | null
+  versions?: StoredVersion[]
+}
+
+export interface StoredVersion {
+  id: string
+  number: number
+  published_at: string
+  published_by: { id: string; name: string }
+  change_summary: string | null
+  fields_count: number
+  schema: FormSchemaV1
 }
 
 interface TenantForms {
@@ -55,7 +68,14 @@ export function saveForms() {
 
 /** The public view of a stored form (internal fields removed). */
 export function summaryOf(form: StoredForm): FormSummary {
-  const { previous_status: _p, schema: _s, template_key: _t, ...summary } = form
+  const {
+    previous_status: _p,
+    schema: _s,
+    template_key: _t,
+    published_schema: _ps,
+    versions: _v,
+    ...summary
+  } = form
   return summary
 }
 

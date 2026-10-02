@@ -164,7 +164,7 @@ const viewItems = computed(() => [
         size="sm"
         color="neutral"
         :aria-label="t('dataView.view')"
-        :ui="{ list: 'rounded-md', trigger: 'px-2.5' }"
+        :ui="SEGMENTED_UI"
         @update:model-value="setView"
       />
     </div>

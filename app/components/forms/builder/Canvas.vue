@@ -1,0 +1,193 @@
+<!--
+  Builder canvas (FRONTEND-SPEC §6, centre): page tabs (design segmented control) + the page as
+  respondents will see it, rows on a 12-column grid. Drag fields by their handle — within a row,
+  between rows, or between rows to give them their own row; drop palette fields anywhere.
+-->
+<script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui'
+import { VueDraggable } from 'vue-draggable-plus'
+import type { FieldType } from '#shared/utils/forms/fields'
+
+defineProps<{ issues?: Record<string, string> }>()
+const { t } = useI18n()
+const confirm = useConfirm()
+const builder = useBuilder()
+const { page, pages, pageId, selected } = builder
+
+const SPAN: Record<number, string> = {
+  12: 'sm:col-span-12',
+  9: 'sm:col-span-9',
+  8: 'sm:col-span-8',
+  6: 'sm:col-span-6',
+  4: 'sm:col-span-4',
+  3: 'sm:col-span-3',
+}
+const tabs = computed(() =>
+  pages.value.map((p, i) => ({ value: p.id, label: p.title || t('builder.page.default', { n: i + 1 }) })),
+)
+const pageIndex = computed(() => pages.value.findIndex(p => p.id === page.value?.id))
+
+const pageMenu = computed<DropdownMenuItem[][]>(() => [
+  [
+    {
+      label: t('builder.page.moveLeft'),
+      icon: 'i-lucide-arrow-left',
+      disabled: pageIndex.value <= 0,
+      onSelect: () => page.value && builder.movePage(page.value.id, -1),
+    },
+    {
+      label: t('builder.page.moveRight'),
+      icon: 'i-lucide-arrow-right',
+      disabled: pageIndex.value >= pages.value.length - 1,
+      onSelect: () => page.value && builder.movePage(page.value.id, 1),
+    },
+  ],
+  [
+    {
+      label: t('builder.page.delete'),
+      icon: 'i-lucide-trash-2',
+      color: 'error',
+      disabled: pages.value.length < 2,
+      onSelect: removePage,
+    },
+  ],
+])
+
+async function removePage() {
+  if (!page.value) return
+  const count = page.value.rows.reduce((n, row) => n + row.fields.length, 0)
+  if (
+    count &&
+    !(await confirm({
+      title: t('builder.page.deleteTitle'),
+      description: t('builder.page.deleteDesc', { count }, count),
+      danger: true,
+      confirmLabel: t('builder.page.delete'),
+    }))
+  )
+    return
+  builder.removePage(page.value.id)
+}
+
+const QUICK: FieldType[] = ['short_text', 'email', 'radio', 'long_text']
+const afterDrop = () => page.value && builder.normaliseRows(page.value)
+</script>
+
+<template>
+  <div class="flex min-h-full flex-col gap-4" @click="selected = []">
+    <div class="flex flex-wrap items-center gap-2" @click.stop>
+      <UTabs
+        :model-value="pageId ?? undefined"
+        :items="tabs"
+        :content="false"
+        color="neutral"
+        size="sm"
+        :ui="{ ...SEGMENTED_UI, list: `${SEGMENTED_UI.list} max-w-full overflow-x-auto` }"
+        :aria-label="t('builder.page.tabs')"
+        class="min-w-0"
+        @update:model-value="v => (pageId = String(v))"
+      />
+      <UButton
+        :label="t('builder.page.add')"
+        icon="i-lucide-plus"
+        color="neutral"
+        variant="outline"
+        size="sm"
+        @click="builder.addPage()"
+      />
+      <UDropdownMenu :items="pageMenu" :content="{ align: 'start' }">
+        <UButton
+          icon="i-lucide-ellipsis"
+          color="neutral"
+          variant="outline"
+          size="sm"
+          square
+          :aria-label="t('builder.page.menu')"
+        />
+      </UDropdownMenu>
+    </div>
+
+    <UCard v-if="page" class="mx-auto w-full max-w-3xl" :ui="{ body: 'flex flex-col gap-5 p-4 sm:p-8' }">
+      <div v-if="pages.length > 1" class="flex flex-col gap-1.5" @click.stop>
+        <div class="flex justify-between text-xs text-muted">
+          <span>{{ t('builder.page.stepOf', { n: pageIndex + 1, total: pages.length }) }}</span>
+          <span>{{ Math.round(((pageIndex + 1) / pages.length) * 100) }}%</span>
+        </div>
+        <UProgress :model-value="pageIndex + 1" :max="pages.length" color="neutral" size="xs" />
+      </div>
+
+      <UInput
+        :model-value="page.title"
+        variant="ghost"
+        size="xl"
+        :placeholder="t('builder.page.default', { n: pageIndex + 1 })"
+        :aria-label="t('builder.page.title')"
+        :ui="{ base: 'px-0 text-xl font-semibold text-highlighted' }"
+        @click.stop
+        @update:model-value="v => builder.renamePage(page!.id, String(v))"
+      />
+
+      <VueDraggable
+        v-model="page.rows"
+        :group="{ name: 'fields', pull: false, put: true }"
+        handle="[data-no-row-drag]"
+        :animation="150"
+        ghost-class="opacity-40"
+        class="flex min-h-24 flex-col gap-5"
+        @add="afterDrop"
+        @end="afterDrop"
+      >
+        <VueDraggable
+          v-for="row in page.rows"
+          :key="row.id"
+          v-model="row.fields"
+          group="fields"
+          handle="[data-drag-handle]"
+          :animation="150"
+          ghost-class="opacity-40"
+          class="grid grid-cols-12 gap-x-4 gap-y-5"
+          @start="builder.history.record()"
+          @end="afterDrop"
+        >
+          <div
+            v-for="field in row.fields"
+            :key="field.id"
+            class="col-span-12"
+            :class="SPAN[field.width ?? 12]"
+          >
+            <FormsBuilderFieldShell
+              :field="field"
+              :selected="selected.includes(field.id)"
+              :issue="issues?.[field.id]"
+              @remove="builder.removeWithUndo([field.id])"
+            />
+          </div>
+        </VueDraggable>
+      </VueDraggable>
+
+      <div
+        v-if="!page.rows.length"
+        class="pointer-events-none -mt-29 flex flex-col items-center gap-3 rounded-lg border border-dashed border-default px-4 py-10 text-center"
+      >
+        <!-- Lets drags pass through to the drop area underneath; only the buttons take clicks. -->
+        <UIcon name="i-lucide-mouse-pointer-click" class="size-6 text-muted" />
+        <div>
+          <p class="font-medium text-highlighted">{{ t('builder.empty.title') }}</p>
+          <p class="text-sm text-muted">{{ t('builder.empty.desc') }}</p>
+        </div>
+        <div class="pointer-events-auto flex flex-wrap justify-center gap-2" @click.stop>
+          <UButton
+            v-for="type in QUICK"
+            :key="type"
+            :icon="fieldIcon(type)"
+            :label="t(`builder.field.${type}`)"
+            color="neutral"
+            variant="outline"
+            size="sm"
+            @click="builder.addField(type)"
+          />
+        </div>
+      </div>
+    </UCard>
+  </div>
+</template>

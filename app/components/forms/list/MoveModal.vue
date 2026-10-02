@@ -84,7 +84,13 @@ function submit() {
     </template>
     <template #footer>
       <div class="flex w-full flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-        <UButton :label="t('common.cancel')" color="neutral" variant="outline" class="justify-center" @click="open = false" />
+        <UButton
+          :label="t('common.cancel')"
+          color="neutral"
+          variant="outline"
+          class="justify-center"
+          @click="open = false"
+        />
         <UButton
           :label="t('forms.move.submit')"
           icon="i-lucide-folder-input"

@@ -19,7 +19,8 @@ useHead({ title: () => t('nav.newForm') })
 
 type Mode = 'blank' | 'template' | 'import'
 const mode = computed<Mode>({
-  get: () => (['template', 'import'].includes(String(route.query.mode)) ? (route.query.mode as Mode) : 'blank'),
+  get: () =>
+    ['template', 'import'].includes(String(route.query.mode)) ? (route.query.mode as Mode) : 'blank',
   set: value => router.replace({ query: { ...route.query, mode: value === 'blank' ? undefined : value } }),
 })
 const tabs = computed(() => [
@@ -83,7 +84,8 @@ watch(file, async picked => {
 const name = ref('')
 const nameTouched = ref(false)
 const templateKey = ref<StarterTemplateKey>(
-  (STARTER_TEMPLATES.find(item => item.key === route.query.template)?.key ?? 'customer_feedback') as StarterTemplateKey,
+  (STARTER_TEMPLATES.find(item => item.key === route.query.template)?.key ??
+    'customer_feedback') as StarterTemplateKey,
 )
 const templates = computed(() =>
   STARTER_TEMPLATES.map(item => ({
@@ -111,7 +113,11 @@ async function create() {
   const created = await run(
     () =>
       mode.value === 'import'
-        ? api.post<FormSummary>('/forms/import', { name: name.value.trim(), folder_id: folder, schema: imported.value!.schema })
+        ? api.post<FormSummary>('/forms/import', {
+            name: name.value.trim(),
+            folder_id: folder,
+            schema: imported.value!.schema,
+          })
         : api.post<FormSummary>('/forms', {
             name: name.value.trim(),
             folder_id: folder,
@@ -121,12 +127,17 @@ async function create() {
   )
   if (!created) return
   counts.refresh(true)
-  await navigateTo(`/forms/${created.data.id}`)
+  await navigateTo(`/forms/${created.data.id}/build`)
 }
 </script>
 
 <template>
-  <AppPanel id="forms-new" :title="t('nav.newForm')" :subtitle="t('forms.new.subtitle')" subtitle-icon="i-lucide-sparkles">
+  <AppPanel
+    id="forms-new"
+    :title="t('nav.newForm')"
+    :subtitle="t('forms.new.subtitle')"
+    subtitle-icon="i-lucide-sparkles"
+  >
     <template #actions>
       <UButton :label="t('common.cancel')" color="neutral" variant="outline" to="/forms" />
       <UButton
@@ -151,11 +162,17 @@ async function create() {
             color="neutral"
             indicator="hidden"
             :aria-label="t('forms.new.template')"
-            :ui="{ fieldset: 'grid gap-2 sm:grid-cols-2', item: 'items-start', wrapper: 'w-full items-start text-start' }"
+            :ui="{
+              fieldset: 'grid gap-2 sm:grid-cols-2',
+              item: 'items-start',
+              wrapper: 'w-full items-start text-start',
+            }"
           >
             <template #label="{ item }">
               <span class="flex items-center gap-3">
-                <span class="flex size-9 shrink-0 items-center justify-center rounded-md border border-default bg-elevated/50">
+                <span
+                  class="flex size-9 shrink-0 items-center justify-center rounded-md border border-default bg-elevated/50"
+                >
                   <UIcon :name="item.iconName" class="size-4 text-highlighted" />
                 </span>
                 <span class="font-medium text-highlighted">{{ item.label }}</span>
@@ -181,7 +198,13 @@ async function create() {
           <p v-if="reading" class="flex items-center gap-2 text-sm text-muted" aria-live="polite">
             <UIcon name="i-lucide-loader-circle" class="size-4 animate-spin" /> {{ t('forms.new.reading') }}
           </p>
-          <UAlert v-if="importError" icon="i-lucide-file-x" color="error" variant="subtle" :title="importError" />
+          <UAlert
+            v-if="importError"
+            icon="i-lucide-file-x"
+            color="error"
+            variant="subtle"
+            :title="importError"
+          />
           <UAlert
             v-if="imported"
             icon="i-lucide-file-check"

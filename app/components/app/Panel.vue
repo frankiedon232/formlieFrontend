@@ -24,6 +24,12 @@ const visible = computed(() => busy.value && showBar.value)
     <template #header>
       <div class="relative">
         <AppNavbar :title="title" :subtitle="subtitle" :subtitle-icon="subtitleIcon">
+          <template v-if="$slots.title" #title>
+            <slot name="title" />
+          </template>
+          <template v-if="$slots.meta" #meta>
+            <slot name="meta" />
+          </template>
           <template v-if="$slots.actions" #actions>
             <slot name="actions" />
           </template>

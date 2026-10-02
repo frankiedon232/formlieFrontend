@@ -35,17 +35,24 @@ const languageItems = computed(() =>
   <UDashboardNavbar :ui="{ root: 'gap-3', left: 'min-w-0 flex-1', right: 'gap-2 shrink-0' }">
     <template #title>
       <div class="min-w-0">
-        <h1 class="truncate text-base font-semibold text-highlighted sm:text-lg">{{ props.title }}</h1>
+        <!-- #title: e.g. an inline-editable name (builder); defaults to the plain title. -->
+        <slot name="title">
+          <h1 class="truncate text-base font-semibold text-highlighted sm:text-lg">{{ props.title }}</h1>
+        </slot>
         <div
-          v-if="showCrumbs || props.subtitle"
+          v-if="showCrumbs || props.subtitle || $slots.meta"
           class="hidden min-w-0 items-center gap-1.5 text-xs text-muted sm:flex"
         >
           <AppBreadcrumbs v-if="showCrumbs" class="min-w-0 shrink-0" compact />
           <span v-if="showCrumbs && props.subtitle" aria-hidden="true">·</span>
-          <span v-if="props.subtitle" class="flex min-w-0 items-center gap-1 truncate">
-            <UIcon v-if="props.subtitleIcon" :name="props.subtitleIcon" class="size-3 shrink-0" />
-            <span class="truncate">{{ props.subtitle }}</span>
-          </span>
+          <span v-if="showCrumbs && $slots.meta" aria-hidden="true">·</span>
+          <!-- #meta: live status line (design: "Last sync: Just now"), e.g. "Draft · Saved just now". -->
+          <slot name="meta">
+            <span v-if="props.subtitle" class="flex min-w-0 items-center gap-1 truncate">
+              <UIcon v-if="props.subtitleIcon" :name="props.subtitleIcon" class="size-3 shrink-0" />
+              <span class="truncate">{{ props.subtitle }}</span>
+            </span>
+          </slot>
         </div>
       </div>
     </template>

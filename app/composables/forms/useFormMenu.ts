@@ -17,7 +17,11 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
   return (form: FormSummary): DropdownMenuItem[][] => {
     const lifecycle: DropdownMenuItem[] = []
     const add = (action: Parameters<typeof actions.lifecycle>[1], icon: string) =>
-      lifecycle.push({ label: t(`forms.actions.${action}`), icon, onSelect: () => actions.lifecycle(form, action) })
+      lifecycle.push({
+        label: t(`forms.actions.${action}`),
+        icon,
+        onSelect: () => actions.lifecycle(form, action),
+      })
     if (form.status === 'published') {
       add('unpublish', 'i-lucide-globe-lock')
       add('close', 'i-lucide-circle-stop')
@@ -28,10 +32,22 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
 
     return [
       [
-        { label: t('forms.actions.open'), icon: 'i-lucide-square-arrow-out-up-right', to: `/forms/${form.id}` },
+        {
+          label: t('forms.actions.open'),
+          icon: 'i-lucide-square-arrow-out-up-right',
+          to: `/forms/${form.id}`,
+        },
         { label: t('forms.actions.rename'), icon: 'i-lucide-pencil', onSelect: () => handlers.rename(form) },
-        { label: t('forms.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => actions.duplicate(form) },
-        { label: t('forms.actions.move'), icon: 'i-lucide-folder-input', onSelect: () => handlers.move(form) },
+        {
+          label: t('forms.actions.duplicate'),
+          icon: 'i-lucide-copy',
+          onSelect: () => actions.duplicate(form),
+        },
+        {
+          label: t('forms.actions.move'),
+          icon: 'i-lucide-folder-input',
+          onSelect: () => handlers.move(form),
+        },
         { label: t('forms.actions.tags'), icon: 'i-lucide-tags', onSelect: () => handlers.tags(form) },
       ],
       [
@@ -42,7 +58,11 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
                 icon: 'i-lucide-link',
                 onSelect: () => {
                   copy(`${origin}/f/${form.slug}`)
-                  toast.add({ title: t('forms.linkCopied'), color: 'success' as const, icon: 'i-lucide-check' })
+                  toast.add({
+                    title: t('forms.linkCopied'),
+                    color: 'success' as const,
+                    icon: 'i-lucide-check',
+                  })
                 },
               },
             ]

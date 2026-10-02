@@ -72,6 +72,8 @@ Edit this file whenever a decision changes.
 
 51. **Forms lifecycle** (F6): statuses Draft → Published → Closed, plus Archived (keeps the status it came from, so Unarchive puts it back) and Trash (soft delete, 30 days, then removed; permanent delete and Empty Trash ask first). Every change carries `row_version`; a conflict refreshes the list with a clear message. Actions live in one composable (`useFormActions`): busy row, toast, list + sidebar counts refreshed. A form opens on an overview page (`/forms/{id}`) with its activity until the builder (F7) adds editing. Import accepts FormSchema v1 JSON (validated and previewed first, 1 MB max).
 
+52. **Form builder** (F7): three panes on laptops and up (palette · the real form on a page card · inspector); below that the canvas with a floating “Add field / Field settings” bar opening slide-overs (tablet) or bottom drawers (phone). The canvas shows fields exactly as respondents see them (one renderer for builder, preview, public form and embed), dressed in the reference style — the design images are **look and feel, not features** (owner). Rows on a 12-column grid; dropping next to a field shares the row evenly. Every edit is undoable (snapshots, typing grouped). Autosave ~1 s after the last change with `row_version`; a conflict pauses saving. Field keys follow the label until the form is first published, then stay fixed. Payment is listed as “soon”; rich text uses a plain multi-line input until an editor dependency is approved.
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

@@ -66,7 +66,7 @@ const formTitle = computed(() =>
           :src="draft.branding.logo_url"
           alt=""
           class="size-10 rounded-lg border border-default bg-default object-contain p-0.5"
-        >
+        />
         <span
           v-else
           class="flex size-10 items-center justify-center rounded-lg text-lg font-semibold text-white"
