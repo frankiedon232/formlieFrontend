@@ -1,5 +1,5 @@
 <!--
-  Top bar (docs/design): search field on the left; language, notifications and the global
+  Top bar (docs/design): search field + breadcrumbs on the left; language, notifications and the global
   "New form" action on the right. Phones: menu toggle + compact icons (+ theme, since the
   sidebar's Dark mode switch lives in the drawer).
 -->
@@ -12,6 +12,7 @@ const languageItems = computed(() =>
   locales.map(item => ({
     label: item.name,
     description: item.englishName,
+    icon: item.flag,
     type: 'checkbox' as const,
     checked: locale.value === item.code,
     onSelect: () => changeLocale(item.code),
@@ -30,6 +31,8 @@ const languageItems = computed(() =>
         :ui="{ trailing: 'ms-auto' }"
       />
       <UDashboardSearchButton collapsed class="sm:hidden" :aria-label="t('search.button')" />
+      <USeparator orientation="vertical" class="mx-1 hidden h-6 sm:block" />
+      <AppBreadcrumbs class="min-w-0" />
     </template>
 
     <template #right>
@@ -40,7 +43,7 @@ const languageItems = computed(() =>
       >
         <UTooltip :text="current.name">
           <UButton
-            icon="i-lucide-languages"
+            :icon="current.flag"
             color="neutral"
             variant="outline"
             square

@@ -2,7 +2,7 @@
 
 ## 1. Design principles
 
-Clean, calm, professional. Generous spacing, clear hierarchy, one primary action per screen, consistent placement (primary action top-right of the panel header), human copy, no clutter. Everything from Nuxt UI; brand primary colour set in `app.config.ts` (`ui.colors.primary`), neutral `zinc`/`slate`. Font: Inter or Geist via `@nuxt/fonts` (ships with Nuxt UI).
+Clean, calm, professional. Font: Manrope (300–700). Generous spacing, clear hierarchy, one primary action per screen, consistent placement (primary action top-right of the panel header), human copy, no clutter. Everything from Nuxt UI; brand primary colour set in `app.config.ts` (`ui.colors.primary`), neutral `zinc`/`slate`. Font via `@nuxt/fonts` (ships with Nuxt UI).
 
 ## 2. App shell (`layouts/default.vue`)
 
@@ -27,7 +27,7 @@ Forms · Templates · Responses · Analytics · Option Sets · Integrations (des
 
 ### Navbar (`UDashboardNavbar`) and page header
 
-Top bar: search field on the left; language, notifications and the global **New form** action on the right (outlined icon buttons as in the design). Page header (`AppPageHeader`): breadcrumbs (nested pages), large bold title, small meta line with icon, actions on the right — outline secondary, solid black primary.
+Top bar: search field and breadcrumbs on the left; language, notifications and the global **New form** action on the right (outlined icon buttons as in the design). Page header (`AppPageHeader`): large semibold title, small meta line with icon, actions on the right — outline secondary, solid black primary.
 
 Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` via `UDashboardSearch`: pages, actions, language, theme), notifications, language switch (`sm`+; on phones via user menu / search), theme switch (`UColorModeButton`). User menu sits at the bottom of the sidebar (design reference).
 

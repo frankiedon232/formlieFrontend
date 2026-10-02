@@ -36,6 +36,7 @@ const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
         children: locales.map(locale => ({
           label: locale.name,
           suffix: locale.englishName,
+          icon: locale.flag,
           onSelect: () => changeLocale(locale.code),
         })),
       },

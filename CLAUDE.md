@@ -8,7 +8,7 @@ Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/FRONTEND-SPEC.md`, 
 
 ## Stack (fixed)
 
-Nuxt 4.5 · Nuxt UI 4 · Tailwind CSS 4 · Vue 3.5 · TypeScript 6 (strict; TS 7 not yet supported by typescript-eslint) · pnpm. Extra deps allowed only when Nuxt UI has no equivalent: `vue-draggable-plus` (drag and drop), `zod` (schemas), `@vueuse/core` + `@vueuse/nuxt`, `@nuxtjs/i18n` (languages). Dev tooling: `@nuxt/eslint`, `prettier`, `vitest`, `@nuxt/test-utils`, `vue-tsc`. Ask before adding anything else.
+Nuxt 4.5 · Nuxt UI 4 · Tailwind CSS 4 · Vue 3.5 · TypeScript 6 (strict; TS 7 not yet supported by typescript-eslint) · pnpm. Extra deps allowed only when Nuxt UI has no equivalent: `vue-draggable-plus` (drag and drop), `zod` (schemas), `@vueuse/core` + `@vueuse/nuxt`, `@nuxtjs/i18n` (languages), `@iconify-json/circle-flags` (language flags — emoji flags do not render on Windows). Dev tooling: `@nuxt/eslint`, `prettier`, `vitest`, `@nuxt/test-utils`, `vue-tsc`. Ask before adding anything else.
 
 Scripts: `pnpm dev` · `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`. While the dev server runs use `pnpm typecheck:dev` (reuses `.nuxt`); `nuxt prepare`/`typecheck`/`build` regenerate `.nuxt` and need a dev-server restart afterwards.
 
@@ -23,7 +23,7 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 5. **Always show progress.** `<NuxtLoadingIndicator />` at the top for navigation; `USkeleton` while data loads; `:loading` on every action button (busy state, disabled while busy); progress bars for uploads/exports.
 6. **Every list page offers Table and Grid views** (switch remembered per page), filters, search, sort, date range where relevant, and server-side pagination. Use the shared `DataView` component — don't rebuild per page.
 7. **Keyboard accessible everywhere.** All interactive elements reachable by Tab, visible focus rings, Enter/Space activate, Esc closes overlays, shortcuts via `defineShortcuts` and shown with `UKbd`. Every drag action has a keyboard alternative (move up/down, move to page).
-8. **Breadcrumbs on every page, every segment clickable** (`UBreadcrumb` driven by route meta). Per the design they sit in the page header above the title on nested pages; on a top-level page the title is the single segment.
+8. **Breadcrumbs on every page, every segment clickable** (`UBreadcrumb` driven by route meta). They sit in the top bar next to the search field (no extra vertical space).
 9. **Theme switch** always available: Dark mode switch in the sidebar SYSTEM group (design); on phones/tablets (sidebar hidden) a theme button in the navbar; light/dark/system in the user menu and command palette.
 10. **All API calls go through `useApi()`** which applies the encryption envelope, bearer token, CSRF header, refresh-on-401, retry-on-key-expiry. Never call `$fetch`/`fetch` directly in pages or components.
 11. **Secure every form** (zod validation client-side, CSRF, enveloped submission, disabled double submit).
@@ -33,7 +33,7 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 15. **Rendering:** portal routes are client-rendered (`routeRules: { '/**': { ssr: false } }`); public form routes `/f/**` and `/s/**` are server-rendered for SEO and fast first paint.
 16. Dashboard, users/roles/RBAC and audit UI come **last** (see roadmap).
 17. **Every user-facing string is translated** (`@nuxtjs/i18n`, `const { t } = useI18n()`). No hard-coded copy in templates. Add each new key to **all** files in `i18n/locales/` (English is the fallback so a missing key never breaks the UI, but ship real translations). Languages are defined once in `shared/utils/i18n/locales.ts`. Layouts must work in RTL (Arabic): use logical Tailwind utilities (`ms-/me-/ps-/pe-/start-/end-`) instead of `ml-/mr-/left-/right-`. Format dates, numbers and currency with `Intl` / `useI18n().d/n` in the active locale.
-18. **Page frame:** every portal page renders inside `<AppPanel id="…" :title="…">` (shared top bar + page header with breadcrumbs, title, meta line and `#actions`: secondary = outline, primary = solid) and declares `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only (sidebar, search and `g`-shortcuts follow).
+18. **Page frame:** every portal page renders inside `<AppPanel id="…" :title="…">` (shared top bar with search + breadcrumbs, page header with title, meta line and `#actions`: secondary = outline, primary = solid) and declares `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only (sidebar, search and `g`-shortcuts follow).
 
 ## Folder conventions (Nuxt 4 `app/` dir)
 

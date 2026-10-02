@@ -2,7 +2,8 @@
 @import '@nuxt/ui';
 
 @theme static {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Closest match to docs/design: slim geometric sans (Onest is the runner-up). */
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 

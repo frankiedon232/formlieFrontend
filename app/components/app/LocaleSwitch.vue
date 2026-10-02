@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const { locale, locales, changeLocale } = useAppLocale()
+const { locale, locales, current, changeLocale } = useAppLocale()
+const items = computed(() => locales.map(item => ({ ...item, icon: item.flag })))
 
 const loading = ref(false)
 
@@ -22,7 +23,7 @@ const selected = computed({
 <template>
   <USelectMenu
     v-model="selected"
-    :items="locales"
+    :items="items"
     value-key="code"
     label-key="name"
     description-key="englishName"
@@ -30,7 +31,7 @@ const selected = computed({
     :search-input="{ placeholder: t('common.search') }"
     :loading="loading"
     :aria-label="t('common.language')"
-    icon="i-lucide-languages"
+    :icon="current.flag"
     color="neutral"
     variant="ghost"
     :content="{ align: 'end' }"

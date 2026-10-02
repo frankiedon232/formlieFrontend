@@ -9,7 +9,7 @@ const props = defineProps<{ compact?: boolean }>()
 const { t } = useI18n()
 const colorMode = useColorMode()
 const { shortcutsOpen } = useAppUi()
-const { locale, locales, changeLocale } = useAppLocale()
+const { locale, locales, current, changeLocale } = useAppLocale()
 
 const user = computed(() => ({ name: t('user.guest'), email: t('user.notSignedIn') }))
 const avatar = computed(() => ({ alt: user.value.name, icon: 'i-lucide-user' }))
@@ -43,10 +43,11 @@ const items = computed<DropdownMenuItem[][]>(() => [
     },
     {
       label: t('common.language'),
-      icon: 'i-lucide-languages',
+      icon: current.value.flag,
       children: locales.map(item => ({
         label: item.name,
         description: item.englishName,
+        icon: item.flag,
         type: 'checkbox' as const,
         checked: locale.value === item.code,
         onSelect: () => changeLocale(item.code),

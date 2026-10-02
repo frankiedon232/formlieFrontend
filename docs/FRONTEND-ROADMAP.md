@@ -11,6 +11,7 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 | 2026-10-02 | F0    | Access matrix verified on every host (manage., root, tenants, localhost, 127.0.0.1, *.localhost, LAN IP); shared `resolveHostContext()` + 11 tests ready for F3.                                                                                                                                |
 | 2026-10-02 | F1    | App shell done: sidebar rail/peek/drawer, navbar, breadcrumbs, command palette, shortcuts, draggable `AppModal`, error + workspace-not-found pages, 49 new strings × 20 languages. Checked desktop/phone, light/dark, Arabic RTL, keyboard-only (peek tab order), real mouse drag.              |
 | 2026-10-02 | F1    | Shell rebuilt to match docs/design exactly: rail (⋯, +, workspaces) + menu column (MAIN MENU / RESOURCES / SYSTEM, status dots, Dark mode switch, user card), search-left top bar, `AppPageHeader` (title, meta, outline + black actions), monochrome primary; icon endpoint moved out of /api. |
+| 2026-10-02 | F1    | Owner feedback: language flags (circle-flags) on every switcher, breadcrumbs moved into the top bar, font Manrope (identified from the design).                                                                                                                                                 |
 
 ## F0 — Foundation
 

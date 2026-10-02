@@ -110,11 +110,21 @@ export default defineNuxtConfig({
     },
   },
 
+  fonts: {
+    // Manrope (main.css) — light 300 to bold 700; titles use 600, body 400/500.
+    defaults: { weights: [300, 400, 500, 600, 700] },
+  },
+
   icon: {
     // /api/** belongs to the backend (mock, dev proxy, Nginx in production) — keep icons out of it.
     localApiEndpoint: '/_nuxt_icon',
     // Bundle every icon used in the source so menus never render blank while icons load.
-    clientBundle: { scan: true, sizeLimitKb: 256 },
+    clientBundle: {
+      scan: true,
+      // Flag names are built at runtime, so the scanner cannot see them.
+      icons: APP_LOCALES.map(locale => locale.flag.replace(/^i-circle-flags-/, 'circle-flags:')),
+      sizeLimitKb: 256,
+    },
   },
 
   eslint: {

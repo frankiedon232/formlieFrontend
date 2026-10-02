@@ -1,10 +1,11 @@
 /**
  * Single source of truth for supported UI languages.
- * Used by nuxt.config.ts (i18n module), the locale switcher and the
+ * Used by nuxt.config.ts (i18n module), the locale switchers and the
  * Nuxt UI component locale mapping in app.vue.
  *
  * `uiLocale` is the key in `@nuxt/ui/locale`; when Nuxt UI has no translation
  * for a language we fall back to `en` for component-internal strings only.
+ * `flag` is an icon (circle-flags set) — emoji flags don't render on Windows.
  */
 export interface AppLocale {
   code: string
@@ -13,6 +14,8 @@ export interface AppLocale {
   name: string
   /** English name, shown as description and used for search. */
   englishName: string
+  /** Flag icon of the main country for this language variant. */
+  flag: string
   dir: 'ltr' | 'rtl'
   uiLocale: string
 }
@@ -21,53 +24,39 @@ export const DEFAULT_LOCALE = 'en'
 
 export const LOCALE_COOKIE = 'formalie_locale'
 
-export const APP_LOCALES: AppLocale[] = [
-  { code: 'en', language: 'en-US', name: 'English', englishName: 'English', dir: 'ltr', uiLocale: 'en' },
-  { code: 'fr', language: 'fr-FR', name: 'Français', englishName: 'French', dir: 'ltr', uiLocale: 'fr' },
-  { code: 'es', language: 'es-ES', name: 'Español', englishName: 'Spanish', dir: 'ltr', uiLocale: 'es' },
-  {
-    code: 'pt',
-    language: 'pt-BR',
-    name: 'Português',
-    englishName: 'Portuguese',
-    dir: 'ltr',
-    uiLocale: 'pt_br',
-  },
-  { code: 'de', language: 'de-DE', name: 'Deutsch', englishName: 'German', dir: 'ltr', uiLocale: 'de' },
-  { code: 'it', language: 'it-IT', name: 'Italiano', englishName: 'Italian', dir: 'ltr', uiLocale: 'it' },
-  { code: 'nl', language: 'nl-NL', name: 'Nederlands', englishName: 'Dutch', dir: 'ltr', uiLocale: 'nl' },
-  { code: 'pl', language: 'pl-PL', name: 'Polski', englishName: 'Polish', dir: 'ltr', uiLocale: 'pl' },
-  { code: 'ru', language: 'ru-RU', name: 'Русский', englishName: 'Russian', dir: 'ltr', uiLocale: 'ru' },
-  { code: 'uk', language: 'uk-UA', name: 'Українська', englishName: 'Ukrainian', dir: 'ltr', uiLocale: 'uk' },
-  { code: 'tr', language: 'tr-TR', name: 'Türkçe', englishName: 'Turkish', dir: 'ltr', uiLocale: 'tr' },
-  { code: 'ar', language: 'ar-SA', name: 'العربية', englishName: 'Arabic', dir: 'rtl', uiLocale: 'ar' },
-  { code: 'hi', language: 'hi-IN', name: 'हिन्दी', englishName: 'Hindi', dir: 'ltr', uiLocale: 'hi' },
-  { code: 'bn', language: 'bn-BD', name: 'বাংলা', englishName: 'Bengali', dir: 'ltr', uiLocale: 'bn' },
-  {
-    code: 'zh-CN',
-    language: 'zh-CN',
-    name: '简体中文',
-    englishName: 'Chinese (Simplified)',
-    dir: 'ltr',
-    uiLocale: 'zh_cn',
-  },
-  { code: 'ja', language: 'ja-JP', name: '日本語', englishName: 'Japanese', dir: 'ltr', uiLocale: 'ja' },
-  { code: 'ko', language: 'ko-KR', name: '한국어', englishName: 'Korean', dir: 'ltr', uiLocale: 'ko' },
-  {
-    code: 'id',
-    language: 'id-ID',
-    name: 'Bahasa Indonesia',
-    englishName: 'Indonesian',
-    dir: 'ltr',
-    uiLocale: 'id',
-  },
-  {
-    code: 'vi',
-    language: 'vi-VN',
-    name: 'Tiếng Việt',
-    englishName: 'Vietnamese',
-    dir: 'ltr',
-    uiLocale: 'vi',
-  },
-  { code: 'sw', language: 'sw-KE', name: 'Kiswahili', englishName: 'Swahili', dir: 'ltr', uiLocale: 'en' },
+type Row = [code: string, language: string, name: string, englishName: string, flag: string, uiLocale: string]
+
+const ROWS: Row[] = [
+  ['en', 'en-US', 'English', 'English', 'us', 'en'],
+  ['fr', 'fr-FR', 'Français', 'French', 'fr', 'fr'],
+  ['es', 'es-ES', 'Español', 'Spanish', 'es', 'es'],
+  ['pt', 'pt-BR', 'Português', 'Portuguese', 'br', 'pt_br'],
+  ['de', 'de-DE', 'Deutsch', 'German', 'de', 'de'],
+  ['it', 'it-IT', 'Italiano', 'Italian', 'it', 'it'],
+  ['nl', 'nl-NL', 'Nederlands', 'Dutch', 'nl', 'nl'],
+  ['pl', 'pl-PL', 'Polski', 'Polish', 'pl', 'pl'],
+  ['ru', 'ru-RU', 'Русский', 'Russian', 'ru', 'ru'],
+  ['uk', 'uk-UA', 'Українська', 'Ukrainian', 'ua', 'uk'],
+  ['tr', 'tr-TR', 'Türkçe', 'Turkish', 'tr', 'tr'],
+  ['ar', 'ar-SA', 'العربية', 'Arabic', 'sa', 'ar'],
+  ['hi', 'hi-IN', 'हिन्दी', 'Hindi', 'in', 'hi'],
+  ['bn', 'bn-BD', 'বাংলা', 'Bengali', 'bd', 'bn'],
+  ['zh-CN', 'zh-CN', '简体中文', 'Chinese (Simplified)', 'cn', 'zh_cn'],
+  ['ja', 'ja-JP', '日本語', 'Japanese', 'jp', 'ja'],
+  ['ko', 'ko-KR', '한국어', 'Korean', 'kr', 'ko'],
+  ['id', 'id-ID', 'Bahasa Indonesia', 'Indonesian', 'id', 'id'],
+  ['vi', 'vi-VN', 'Tiếng Việt', 'Vietnamese', 'vn', 'vi'],
+  ['sw', 'sw-KE', 'Kiswahili', 'Swahili', 'ke', 'en'],
 ]
+
+const RTL = new Set(['ar'])
+
+export const APP_LOCALES: AppLocale[] = ROWS.map(([code, language, name, englishName, flag, uiLocale]) => ({
+  code,
+  language,
+  name,
+  englishName,
+  flag: `i-circle-flags-${flag}`,
+  dir: RTL.has(code) ? 'rtl' : 'ltr',
+  uiLocale,
+}))
