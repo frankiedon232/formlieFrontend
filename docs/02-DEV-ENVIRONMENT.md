@@ -2,22 +2,22 @@
 
 ## Current setup (as done by Frankie)
 
-| Item             | Value                                                                                                                              |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Frontend project | `formalieFrontend` (Nuxt 4.5.2, @nuxt/ui 4.11.1, tailwindcss 4.3.3, vue 3.5.43, vue-router 5.3.1), pnpm                            |
-| Frontend URL     | `https://formalie.dev:2202/`                                                                                                       |
-| Frontend run     | `pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formaliekey.pem`        |
-| Backend project  | `formalieBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                 |
-| Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formaliekey.pem` |
-| API docs         | `https://formalie.dev:5004/docs`, `https://formalie.dev:5004/redoc`                                                                |
-| Certificate      | mkcert for `localhost 127.0.0.1 formalie.dev`                                                                                      |
+| Item             | Value                                                                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Frontend project | `formalieFrontend` (Nuxt 4.5.2, @nuxt/ui 4.11.1, tailwindcss 4.3.3, vue 3.5.43, vue-router 5.3.1), pnpm                             |
+| Frontend URL     | `https://formalie.dev:2202/`                                                                                                        |
+| Frontend run     | `pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formalie-key.pem`        |
+| Backend project  | `formalieBackend`, Python 3.11.9, venv, `pip install fastapi[all]`                                                                  |
+| Backend run      | `uvicorn app.run:app --host 0.0.0.0 --port 5004 --ssl-certfile C:\devcerts\formalie.pem --ssl-keyfile C:\devcerts\formalie-key.pem` |
+| API docs         | `https://formalie.dev:5004/docs`, `https://formalie.dev:5004/redoc`                                                                 |
+| Certificate      | mkcert: `formalie.dev *.formalie.dev localhost *.localhost 127.0.0.1 ::1 <LAN IP>` (see Access matrix)                              |
 
-## ⚠ Fixes needed before subdomain work
+## Fixes before subdomain work (1–2 done 2026-10-02)
 
 1. **Domain mismatch.** The hosts entries use `manage.medique.dev`, `remedylegal.medique.dev`, `samathtax.medique.dev`, but the portal runs on `formalie.dev`. Use `formalie.dev` subdomains so cookies, CORS and tenant detection all line up.
 2. **Certificate does not cover subdomains.** The current cert is only for `formalie.dev`. Regenerate it with a wildcard:
    ```powershell
-   mkcert -cert-file C:\devcerts\formalie.pem -key-file C:\devcerts\formaliekey.pem formalie.dev "*.formalie.dev" localhost 127.0.0.1
+   mkcert -cert-file C:\devcerts\formalie.pem -key-file C:\devcerts\formalie-key.pem formalie.dev "*.formalie.dev" localhost 127.0.0.1
    ```
 3. **Venv name.** It was created as `mdq` but activated as `fmly\scripts\activate.ps1`. Pick one name (suggest `fmly`) and use it consistently.
 
@@ -55,20 +55,20 @@ Docker Desktop with compose services: PostgreSQL 16 (primary + 1 replica), PgBou
 
 Every way of opening the dev server must work. Host classification is one shared function, `resolveHostContext()` in `shared/utils/tenant/host.ts` (unit-tested), used by the tenant middleware, SSR and the mock API.
 
-| How you open it | Served | Trusted TLS | Resolves to |
-| --- | --- | --- | --- |
-| `https://manage.formalie.dev:2202` | ✅ | ✅ | manage (default entry) |
-| `https://formalie.dev:2202` | ✅ | ✅ | manage (root) |
-| `https://{sub}.formalie.dev:2202` (needs hosts line) | ✅ | ✅ | tenant `{sub}` |
-| `https://localhost:2202` / `https://127.0.0.1:2202` | ✅ | ✅ | manage (local); `?tenant={sub}` in dev opens a tenant |
-| `https://{sub}.localhost:2202` (no hosts line, Chrome/Edge/Firefox resolve it) | ✅ | ⚠ until cert includes `*.localhost` | tenant `{sub}` |
-| `https://192.168.x.x:2202` (phone on Wi-Fi) | ✅ | ⚠ until cert includes the LAN IP | manage; `?tenant={sub}` in dev |
-| `https://[::1]:2202` | ❌ with `--host 0.0.0.0` (IPv4 only) | ✅ | manage — start with `--host ::` to listen on IPv4 + IPv6 |
+| How you open it                                                                | Served                               | Trusted TLS                                                                                                                                             | Resolves to                                              |
+| ------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `https://manage.formalie.dev:2202`                                             | ✅                                   | ✅                                                                                                                                                      | manage (default entry)                                   |
+| `https://formalie.dev:2202`                                                    | ✅                                   | ✅                                                                                                                                                      | manage (root)                                            |
+| `https://{sub}.formalie.dev:2202` (needs hosts line)                           | ✅                                   | ✅                                                                                                                                                      | tenant `{sub}`                                           |
+| `https://localhost:2202` / `https://127.0.0.1:2202`                            | ✅                                   | ✅                                                                                                                                                      | manage (local); `?tenant={sub}` in dev opens a tenant    |
+| `https://{sub}.localhost:2202` (no hosts line, Chrome/Edge/Firefox resolve it) | ✅                                   | ⚠ wildcards over single-label `localhost` are rejected by Windows/Chrome — add explicit names (`acme.localhost`) to mkcert, or use `{sub}.formalie.dev` | tenant `{sub}`                                           |
+| `https://192.168.x.x:2202` (phone on Wi-Fi)                                    | ✅                                   | ✅ (cert includes 192.168.0.180; phone needs the mkcert root CA)                                                                                        | manage; `?tenant={sub}` in dev                           |
+| `https://[::1]:2202`                                                           | ❌ with `--host 0.0.0.0` (IPv4 only) | ✅                                                                                                                                                      | manage — start with `--host ::` to listen on IPv4 + IPv6 |
 
-To remove the ⚠ rows, regenerate the cert once (add your current LAN IP):
+Current cert (regenerated 2026-10-02) covers all of the above; regenerate when your LAN IP changes:
 
 ```powershell
-mkcert -cert-file C:\devcerts\formalie.dev+4.pem -key-file C:\devcerts\formalie.dev+4-key.pem formalie.dev "*.formalie.dev" localhost "*.localhost" 127.0.0.1 ::1 192.168.0.180
+mkcert -cert-file C:\devcerts\formalie.pem -key-file C:\devcerts\formalie-key.pem formalie.dev "*.formalie.dev" localhost "*.localhost" 127.0.0.1 ::1 192.168.0.180
 ```
 
 Phones need the mkcert root CA installed to trust it (`mkcert -CAROOT` → `rootCA.pem`). The language cookie is per host, so a language chosen on `localhost` is not carried to `manage.formalie.dev` (F3: the manage → tenant redirect passes the locale along).

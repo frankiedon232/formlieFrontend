@@ -9,7 +9,7 @@ Start with [CLAUDE.md](CLAUDE.md) (rules) and [docs/FRONTEND-ROADMAP.md](docs/FR
 ```bash
 cp .env.example .env
 pnpm install
-pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formaliekey.pem
+pnpm dev --host 0.0.0.0 --port 2202 --https --https.cert=C:\devcerts\formalie.pem --https.key=C:\devcerts\formalie-key.pem
 ```
 
 Open `https://manage.formalie.dev:2202/` (default entry) or `https://{tenant}.formalie.dev:2202/`.
