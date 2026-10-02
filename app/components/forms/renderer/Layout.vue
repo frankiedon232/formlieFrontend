@@ -17,7 +17,7 @@ const p = computed(() => (props.field.props ?? {}) as Record<string, string | un
   </p>
   <USeparator v-else-if="field.type === 'divider'" class="py-2" />
   <figure v-else-if="field.type === 'image'" class="flex flex-col gap-1">
-    <img v-if="p.src" :src="p.src" :alt="p.alt ?? ''" class="max-h-80 w-full rounded-md object-contain" />
+    <img v-if="p.src" :src="p.src" :alt="p.alt ?? ''" class="max-h-80 w-full rounded-md object-contain" >
     <div
       v-else-if="mode === 'builder'"
       class="flex h-32 items-center justify-center gap-2 rounded-md border border-dashed border-default text-sm text-muted"
