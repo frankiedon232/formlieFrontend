@@ -152,7 +152,23 @@
       "notJson": "Das ist keine JSON-Datei.",
       "invalid": "Diese Datei ist kein gültiger Formular-Export (Problem bei: {detail}).",
       "ready": "Bereit zum Import",
-      "summary": "Seiten: {pages} · Felder: {fields}"
+      "summary": "Seiten: {pages} · Felder: {fields}",
+      "continue": "Weiter",
+      "details": "Formulardetails",
+      "detailsDesc": "Geben Sie ihm einen Namen und wählen Sie den Ordner.",
+      "later": "Sie können beides später ändern.",
+      "pickFile": "Wählen Sie zuerst eine Datei zum Importieren.",
+      "blankTitle": "Von Grund auf neu",
+      "blankDesc": "Ein leeres Formular mit einer Seite – fügen Sie die Fragen hinzu, die Sie brauchen, in Ihrer Reihenfolge.",
+      "previewAdd": "Erste Frage hinzufügen",
+      "points": {
+        "fieldsTitle": "Über 30 Feldtypen",
+        "fieldsText": "Text, Auswahl, Datum, Bewertung, Dateien, Unterschriften und mehr.",
+        "logicTitle": "Logik und Berechnungen",
+        "logicText": "Fragen ein- oder ausblenden, zur Pflicht machen und Antworten summieren.",
+        "saveTitle": "Speichert automatisch",
+        "saveText": "Jede Änderung wird als Entwurf gespeichert, bis Sie veröffentlichen."
+      }
     },
     "detail": {
       "created": "Erstellt",

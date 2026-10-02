@@ -152,7 +152,23 @@
       "notJson": "To nie jest plik JSON.",
       "invalid": "Ten plik nie jest prawidłowym eksportem formularza (problem: {detail}).",
       "ready": "Gotowe do importu",
-      "summary": "Strony: {pages} · Pola: {fields}"
+      "summary": "Strony: {pages} · Pola: {fields}",
+      "continue": "Dalej",
+      "details": "Szczegóły formularza",
+      "detailsDesc": "Nadaj nazwę i wybierz, gdzie ma się znaleźć.",
+      "later": "Oba możesz zmienić później.",
+      "pickFile": "Najpierw wybierz plik do zaimportowania.",
+      "blankTitle": "Zacznij od zera",
+      "blankDesc": "Pusty formularz z jedną stroną — dodaj potrzebne pytania w wybranej kolejności.",
+      "previewAdd": "Dodaj pierwsze pytanie",
+      "points": {
+        "fieldsTitle": "Ponad 30 typów pól",
+        "fieldsText": "Tekst, wybór, daty, oceny, pliki, podpisy i więcej.",
+        "logicTitle": "Logika i obliczenia",
+        "logicText": "Pokazuj, ukrywaj lub wymagaj pytań i sumuj odpowiedzi.",
+        "saveTitle": "Zapisuje na bieżąco",
+        "saveText": "Każda zmiana jest zapisywana jako wersja robocza do publikacji."
+      }
     },
     "detail": {
       "created": "Utworzono",

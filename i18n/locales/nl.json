@@ -152,7 +152,23 @@
       "notJson": "Dit is geen JSON-bestand.",
       "invalid": "Dit bestand is geen geldige formulierexport (probleem bij: {detail}).",
       "ready": "Klaar om te importeren",
-      "summary": "Pagina’s: {pages} · Velden: {fields}"
+      "summary": "Pagina’s: {pages} · Velden: {fields}",
+      "continue": "Doorgaan",
+      "details": "Formuliergegevens",
+      "detailsDesc": "Geef het een naam en kies waar het komt.",
+      "later": "Je kunt beide later wijzigen.",
+      "pickFile": "Kies eerst een bestand om te importeren.",
+      "blankTitle": "Begin vanaf nul",
+      "blankDesc": "Een leeg formulier met één pagina — voeg de vragen toe die je nodig hebt, in jouw volgorde.",
+      "previewAdd": "Voeg je eerste vraag toe",
+      "points": {
+        "fieldsTitle": "Meer dan 30 veldtypen",
+        "fieldsText": "Tekst, keuzes, datums, beoordelingen, bestanden, handtekeningen en meer.",
+        "logicTitle": "Logica en berekeningen",
+        "logicText": "Toon, verberg of verplicht vragen en tel antwoorden op.",
+        "saveTitle": "Slaat automatisch op",
+        "saveText": "Elke wijziging wordt als concept bewaard tot je publiceert."
+      }
     },
     "detail": {
       "created": "Gemaakt",

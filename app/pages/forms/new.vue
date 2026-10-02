@@ -87,14 +87,6 @@ const templateKey = ref<StarterTemplateKey>(
   (STARTER_TEMPLATES.find(item => item.key === route.query.template)?.key ??
     'customer_feedback') as StarterTemplateKey,
 )
-const templates = computed(() =>
-  STARTER_TEMPLATES.map(item => ({
-    value: item.key,
-    label: t(`templates.starter.${item.key}.name`),
-    description: t('onboarding.firstForm.fields', { count: item.fields }, item.fields),
-    iconName: item.icon,
-  })),
-)
 watchEffect(() => {
   if (nameTouched.value) return
   name.value =
@@ -106,6 +98,10 @@ watchEffect(() => {
 })
 
 const canCreate = computed(() => !!name.value.trim() && (mode.value !== 'import' || !!imported.value))
+const submitLabel = computed(() => (mode.value === 'import' ? t('forms.new.importSubmit') : t('forms.new.create')))
+const detailsHint = computed(() =>
+  mode.value === 'import' && !imported.value ? t('forms.new.pickFile') : t('forms.new.later'),
+)
 
 async function create() {
   if (!canCreate.value) return
@@ -141,7 +137,7 @@ async function create() {
     <template #actions>
       <UButton :label="t('common.cancel')" color="neutral" variant="outline" to="/forms" />
       <UButton
-        :label="mode === 'import' ? t('forms.new.importSubmit') : t('forms.new.create')"
+:label="submitLabel"
         :icon="mode === 'import' ? 'i-lucide-file-down' : 'i-lucide-plus'"
         color="neutral"
         :loading="busy"
@@ -154,35 +150,8 @@ async function create() {
       <UTabs v-model="mode" :items="tabs" :content="false" color="neutral" variant="link" class="w-full" />
 
       <form class="flex flex-col gap-6" @submit.prevent="create">
-        <div v-if="mode === 'template'">
-          <URadioGroup
-            v-model="templateKey"
-            :items="templates"
-            variant="card"
-            color="neutral"
-            indicator="hidden"
-            :aria-label="t('forms.new.template')"
-            :ui="{
-              fieldset: 'grid gap-2 sm:grid-cols-2',
-              item: 'items-start',
-              wrapper: 'w-full items-start text-start',
-            }"
-          >
-            <template #label="{ item }">
-              <span class="flex items-center gap-3">
-                <span
-                  class="flex size-9 shrink-0 items-center justify-center rounded-md border border-default bg-elevated/50"
-                >
-                  <UIcon :name="item.iconName" class="size-4 text-highlighted" />
-                </span>
-                <span class="font-medium text-highlighted">{{ item.label }}</span>
-              </span>
-            </template>
-            <template #description="{ item }">
-              <span class="ms-12 block text-xs text-muted">{{ item.description }}</span>
-            </template>
-          </URadioGroup>
-        </div>
+        <FormsNewBlankIntro v-if="mode === 'blank'" :name="name" />
+        <FormsNewTemplatePicker v-if="mode === 'template'" v-model="templateKey" />
 
         <div v-if="mode === 'import'" class="flex flex-col gap-3">
           <UFileUpload
@@ -220,30 +189,58 @@ async function create() {
           />
         </div>
 
-        <div class="grid gap-5 sm:grid-cols-2">
-          <UFormField :label="t('forms.new.name')" required>
-            <UInput
-              v-model="name"
-              maxlength="120"
+        <UCard
+          :ui="{
+            header: 'p-4 sm:px-6',
+            body: 'p-4 sm:p-6',
+            footer: 'flex flex-col-reverse gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6',
+          }"
+        >
+          <template #header>
+            <h2 class="text-sm font-semibold text-highlighted">{{ t('forms.new.details') }}</h2>
+            <p class="text-xs text-muted">{{ t('forms.new.detailsDesc') }}</p>
+          </template>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <UFormField :label="t('forms.new.name')" required>
+              <UInput
+                v-model="name"
+                maxlength="120"
+                size="lg"
+                class="w-full"
+                :disabled="mode === 'import' && !imported"
+                @update:model-value="nameTouched = true"
+              />
+            </UFormField>
+            <UFormField :label="t('forms.move.folder')">
+              <USelectMenu
+                v-model="folderId"
+                :items="folderItems"
+                value-key="value"
+                :loading="foldersLoading"
+                :search-input="{ placeholder: t('common.search') }"
+                size="lg"
+                class="w-full"
+              />
+            </UFormField>
+          </div>
+          <template #footer>
+            <p class="flex items-center gap-1.5 text-xs text-muted" aria-live="polite">
+              <UIcon name="i-lucide-info" class="size-3.5 shrink-0" />{{ detailsHint }}
+            </p>
+            <UButton
+              type="submit"
+              :label="t('forms.new.continue')"
+              trailing-icon="i-lucide-arrow-right"
+              color="neutral"
               size="lg"
-              class="w-full"
-              :disabled="mode === 'import' && !imported"
-              @update:model-value="nameTouched = true"
+              :loading="busy"
+              :disabled="!canCreate"
+              :aria-label="`${t('forms.new.continue')} — ${submitLabel}`"
+              class="justify-center sm:w-auto rtl:[&_svg]:rotate-180"
+              block
             />
-          </UFormField>
-          <UFormField :label="t('forms.move.folder')">
-            <USelectMenu
-              v-model="folderId"
-              :items="folderItems"
-              value-key="value"
-              :loading="foldersLoading"
-              :search-input="{ placeholder: t('common.search') }"
-              size="lg"
-              class="w-full"
-            />
-          </UFormField>
-        </div>
-        <button type="submit" class="hidden" tabindex="-1" aria-hidden="true" />
+          </template>
+        </UCard>
       </form>
     </div>
   </AppPanel>

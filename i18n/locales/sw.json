@@ -152,7 +152,23 @@
       "notJson": "Hili si faili la JSON.",
       "invalid": "Faili hili si fomu halali iliyohamishwa (tatizo: {detail}).",
       "ready": "Iko tayari kuletwa",
-      "summary": "Kurasa: {pages} · Sehemu: {fields}"
+      "summary": "Kurasa: {pages} · Sehemu: {fields}",
+      "continue": "Endelea",
+      "details": "Maelezo ya fomu",
+      "detailsDesc": "Ipe jina na uchague mahali itakapokaa.",
+      "later": "Unaweza kubadilisha vyote baadaye.",
+      "pickFile": "Chagua kwanza faili ya kuleta.",
+      "blankTitle": "Anza mwanzo kabisa",
+      "blankDesc": "Fomu tupu yenye ukurasa mmoja — ongeza maswali unayohitaji, kwa mpangilio unaotaka.",
+      "previewAdd": "Ongeza swali lako la kwanza",
+      "points": {
+        "fieldsTitle": "Zaidi ya aina 30 za sehemu",
+        "fieldsText": "Maandishi, chaguo, tarehe, ukadiriaji, faili, sahihi na zaidi.",
+        "logicTitle": "Mantiki na hesabu",
+        "logicText": "Onyesha, ficha au lazimisha maswali na ujumlishe majibu.",
+        "saveTitle": "Huhifadhi unapoendelea",
+        "saveText": "Kila badiliko huhifadhiwa kama rasimu hadi uchapishe."
+      }
     },
     "detail": {
       "created": "Iliundwa",

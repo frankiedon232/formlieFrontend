@@ -152,7 +152,23 @@
       "notJson": "Bu bir JSON dosyası değil.",
       "invalid": "Bu dosya geçerli bir form dışa aktarımı değil (sorun: {detail}).",
       "ready": "İçe aktarmaya hazır",
-      "summary": "Sayfa: {pages} · Alan: {fields}"
+      "summary": "Sayfa: {pages} · Alan: {fields}",
+      "continue": "Devam",
+      "details": "Form ayrıntıları",
+      "detailsDesc": "Bir ad verin ve nerede duracağını seçin.",
+      "later": "İkisini de sonra değiştirebilirsiniz.",
+      "pickFile": "Önce içe aktarılacak bir dosya seçin.",
+      "blankTitle": "Sıfırdan başla",
+      "blankDesc": "Tek sayfalık boş bir form — ihtiyacınız olan soruları istediğiniz sırayla ekleyin.",
+      "previewAdd": "İlk sorunuzu ekleyin",
+      "points": {
+        "fieldsTitle": "30’dan fazla alan türü",
+        "fieldsText": "Metin, seçenekler, tarihler, puanlar, dosyalar, imzalar ve daha fazlası.",
+        "logicTitle": "Mantık ve hesaplamalar",
+        "logicText": "Soruları gösterin, gizleyin veya zorunlu yapın ve yanıtları toplayın.",
+        "saveTitle": "Siz çalışırken kaydeder",
+        "saveText": "Yayınlayana kadar her değişiklik taslak olarak kaydedilir."
+      }
     },
     "detail": {
       "created": "Oluşturulma",

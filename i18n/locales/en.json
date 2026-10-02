@@ -152,7 +152,23 @@
       "notJson": "This isn't a JSON file.",
       "invalid": "This file isn't a valid form export (problem at: {detail}).",
       "ready": "Ready to import",
-      "summary": "Pages: {pages} · Fields: {fields}"
+      "summary": "Pages: {pages} · Fields: {fields}",
+      "continue": "Continue",
+      "details": "Form details",
+      "detailsDesc": "Name it and choose where it lives.",
+      "later": "You can change both later.",
+      "pickFile": "Choose a file to import first.",
+      "blankTitle": "Start from scratch",
+      "blankDesc": "An empty form with one page — add the questions you need, in the order you want.",
+      "previewAdd": "Add your first question",
+      "points": {
+        "fieldsTitle": "More than 30 field types",
+        "fieldsText": "Text, choices, dates, ratings, files, signatures and more.",
+        "logicTitle": "Logic and calculations",
+        "logicText": "Show, hide or require questions and total up answers.",
+        "saveTitle": "Saves as you go",
+        "saveText": "Every change is saved as a draft until you publish."
+      }
     },
     "detail": {
       "created": "Created",

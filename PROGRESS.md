@@ -572,31 +572,32 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 Owner requests added during development, and where they landed.
 
-| Date       | Request                                                                                 | Where       | Status |
-| ---------- | --------------------------------------------------------------------------------------- | ----------- | ------ |
-| 2026-10-02 | Support many languages (at least 15) → 20 languages                                     | F0          | ✅     |
-| 2026-10-02 | Organise files in sub-folders (max two levels)                                          | all         | ✅     |
-| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                                 | F0          | ✅     |
-| 2026-10-02 | Match the design references exactly                                                     | F1          | ✅     |
-| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design         | F1          | ✅     |
-| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                         | F1          | ✅     |
-| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                          | F1 / F2     | ✅     |
-| 2026-10-02 | Keep the table / grid / filters flow unchanged                                          | F2          | ✅     |
-| 2026-10-02 | "Wow" sign-in screen                                                                    | F3          | ✅     |
-| 2026-10-02 | Test accounts in the README; realistic test people                                      | F3          | ✅     |
-| 2026-10-02 | Global positioning (not one country); international sample data                         | F3 / all    | ✅     |
-| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                               | F3 / F12    | ✅     |
-| 2026-10-02 | Separate progress file with every task per phase                                        | PROGRESS.md | ✅     |
-| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace          | F3 / F12    | 🟡     |
-| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                               | F3          | ✅     |
-| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC        | F12 / F18   | ✅     |
-| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                               | F4          | ✅     |
-| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome                 | F3          | ✅     |
-| 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them          | F1          | ✅     |
-| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                               | F3 / F12    | ✅     |
-| 2026-10-02 | Loading feedback everywhere: page loading, progress, skeletons, top bar, busy buttons   | F2 / all    | ✅     |
-| 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload | F2 / all    | ✅     |
-| 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets     | all         | ✅     |
+| Date       | Request                                                                                                           | Where       | Status |
+| ---------- | ----------------------------------------------------------------------------------------------------------------- | ----------- | ------ |
+| 2026-10-02 | Support many languages (at least 15) → 20 languages                                                               | F0          | ✅     |
+| 2026-10-02 | Organise files in sub-folders (max two levels)                                                                    | all         | ✅     |
+| 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                                                           | F0          | ✅     |
+| 2026-10-02 | Match the design references exactly                                                                               | F1          | ✅     |
+| 2026-10-02 | Flags on the language switcher, breadcrumbs in the header, font from the design                                   | F1          | ✅     |
+| 2026-10-02 | Menu detail: timeline children, square bullets, clean dark text                                                   | F1          | ✅     |
+| 2026-10-02 | Title, subtitle, breadcrumbs and buttons in the header; footer                                                    | F1 / F2     | ✅     |
+| 2026-10-02 | Keep the table / grid / filters flow unchanged                                                                    | F2          | ✅     |
+| 2026-10-02 | "Wow" sign-in screen                                                                                              | F3          | ✅     |
+| 2026-10-02 | Test accounts in the README; realistic test people                                                                | F3          | ✅     |
+| 2026-10-02 | Global positioning (not one country); international sample data                                                   | F3 / all    | ✅     |
+| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                                                         | F3 / F12    | ✅     |
+| 2026-10-02 | Separate progress file with every task per phase                                                                  | PROGRESS.md | ✅     |
+| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace                                    | F3 / F12    | 🟡     |
+| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                                                         | F3          | ✅     |
+| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC                                  | F12 / F18   | ✅     |
+| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                                                         | F4          | ✅     |
+| 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome                                           | F3          | ✅     |
+| 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them                                    | F1          | ✅     |
+| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                                                         | F3 / F12    | ✅     |
+| 2026-10-02 | Loading feedback everywhere: page loading, progress, skeletons, top bar, busy buttons                             | F2 / all    | ✅     |
+| 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload                           | F2 / all    | ✅     |
+| 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets                               | all         | ✅     |
+| 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab | F6          | ✅     |
 
 ---
 
@@ -627,3 +628,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F2    | In-app navigation progress (owner): one activity counter for navigation + API calls drives the top bar and a new sweeping bar under each page header; starts on click, runs until the new page's data has arrived.                                                                                                                                                                                                                                    |
 | 2026-10-02 | F7    | Builder milestone 1–2: field catalogue (34 types) + registry, renderer for every type, three-pane builder (palette · real form on a page card · inspector), drag and drop (palette → canvas, within / between rows), keyboard moves, multi-select, undo / redo, delete with undo, autosave with conflict pause, publish with checks + change summary, live preview with device sizes, phone / tablet layout; segmented controls now match the design. |
 | 2026-10-02 | F7    | Milestone 3 — phase done: logic editor (`/forms/[id]/logic`: rules with plain-language summaries, All / Any, show / hide / require / jump, calculations), versions page (timeline, view, compare, restore, discard), shared builder frame with Build / Logic / Versions switch (saves before switching), collapsible sections, lazy dialogs; 20 languages; 87 tests. Stopped for review.                                                              |
+| 2026-10-02 | F6    | New form page polish (owner): Blank tab shows a live mini preview of the empty form and what a blank form offers; name + folder sit in a "Form details" card whose footer has **Continue** (same as Create form, closer to the fields) on Blank, Template and Import.                                                                                                                                                                                 |

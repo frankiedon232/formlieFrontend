@@ -152,7 +152,23 @@
       "notJson": "Non è un file JSON.",
       "invalid": "Questo file non è un’esportazione di modulo valida (problema in: {detail}).",
       "ready": "Pronto per l’importazione",
-      "summary": "Pagine: {pages} · Campi: {fields}"
+      "summary": "Pagine: {pages} · Campi: {fields}",
+      "continue": "Continua",
+      "details": "Dettagli del modulo",
+      "detailsDesc": "Dagli un nome e scegli dove salvarlo.",
+      "later": "Puoi modificarli entrambi in seguito.",
+      "pickFile": "Scegli prima un file da importare.",
+      "blankTitle": "Parti da zero",
+      "blankDesc": "Un modulo vuoto con una pagina: aggiungi le domande che ti servono, nell’ordine che vuoi.",
+      "previewAdd": "Aggiungi la prima domanda",
+      "points": {
+        "fieldsTitle": "Oltre 30 tipi di campo",
+        "fieldsText": "Testo, scelte, date, valutazioni, file, firme e altro.",
+        "logicTitle": "Logica e calcoli",
+        "logicText": "Mostra, nascondi o rendi obbligatorie le domande e somma le risposte.",
+        "saveTitle": "Salvataggio automatico",
+        "saveText": "Ogni modifica viene salvata come bozza finché non pubblichi."
+      }
     },
     "detail": {
       "created": "Creato",

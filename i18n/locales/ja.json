@@ -152,7 +152,23 @@
       "notJson": "JSON ファイルではありません。",
       "invalid": "有効なフォームのエクスポートではありません（問題箇所: {detail}）。",
       "ready": "取り込みの準備ができました",
-      "summary": "ページ: {pages} · 項目: {fields}"
+      "summary": "ページ: {pages} · 項目: {fields}",
+      "continue": "続行",
+      "details": "フォームの詳細",
+      "detailsDesc": "名前を付けて、保存先を選びます。",
+      "later": "どちらも後で変更できます。",
+      "pickFile": "先にインポートするファイルを選んでください。",
+      "blankTitle": "ゼロから作成",
+      "blankDesc": "1ページの空のフォームです。必要な質問を好きな順番で追加しましょう。",
+      "previewAdd": "最初の質問を追加",
+      "points": {
+        "fieldsTitle": "30種類以上のフィールド",
+        "fieldsText": "テキスト、選択肢、日付、評価、ファイル、署名など。",
+        "logicTitle": "ロジックと計算",
+        "logicText": "質問の表示・非表示・必須を切り替え、回答を合計できます。",
+        "saveTitle": "自動で保存",
+        "saveText": "公開するまで、すべての変更は下書きとして保存されます。"
+      }
     },
     "detail": {
       "created": "作成日時",

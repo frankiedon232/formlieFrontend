@@ -152,7 +152,23 @@
       "notJson": "Este não é um arquivo JSON.",
       "invalid": "Este arquivo não é uma exportação de formulário válida (problema em: {detail}).",
       "ready": "Pronto para importar",
-      "summary": "Páginas: {pages} · Campos: {fields}"
+      "summary": "Páginas: {pages} · Campos: {fields}",
+      "continue": "Continuar",
+      "details": "Detalhes do formulário",
+      "detailsDesc": "Dê um nome e escolha onde ele fica.",
+      "later": "Você pode alterar ambos depois.",
+      "pickFile": "Escolha primeiro um arquivo para importar.",
+      "blankTitle": "Começar do zero",
+      "blankDesc": "Um formulário vazio com uma página — adicione as perguntas de que precisa, na ordem que quiser.",
+      "previewAdd": "Adicione sua primeira pergunta",
+      "points": {
+        "fieldsTitle": "Mais de 30 tipos de campo",
+        "fieldsText": "Texto, opções, datas, avaliações, arquivos, assinaturas e mais.",
+        "logicTitle": "Lógica e cálculos",
+        "logicText": "Mostre, oculte ou torne obrigatórias perguntas e some respostas.",
+        "saveTitle": "Salva enquanto você trabalha",
+        "saveText": "Cada alteração é salva como rascunho até você publicar."
+      }
     },
     "detail": {
       "created": "Criado",

@@ -152,7 +152,23 @@
       "notJson": "Ini bukan file JSON.",
       "invalid": "File ini bukan ekspor formulir yang valid (masalah di: {detail}).",
       "ready": "Siap diimpor",
-      "summary": "Halaman: {pages} · Kolom: {fields}"
+      "summary": "Halaman: {pages} · Kolom: {fields}",
+      "continue": "Lanjutkan",
+      "details": "Detail formulir",
+      "detailsDesc": "Beri nama dan pilih tempat menyimpannya.",
+      "later": "Keduanya bisa diubah nanti.",
+      "pickFile": "Pilih file untuk diimpor terlebih dahulu.",
+      "blankTitle": "Mulai dari awal",
+      "blankDesc": "Formulir kosong dengan satu halaman — tambahkan pertanyaan yang Anda perlukan, sesuai urutan Anda.",
+      "previewAdd": "Tambahkan pertanyaan pertama",
+      "points": {
+        "fieldsTitle": "Lebih dari 30 jenis kolom",
+        "fieldsText": "Teks, pilihan, tanggal, penilaian, file, tanda tangan, dan lainnya.",
+        "logicTitle": "Logika dan perhitungan",
+        "logicText": "Tampilkan, sembunyikan, atau wajibkan pertanyaan dan jumlahkan jawaban.",
+        "saveTitle": "Tersimpan otomatis",
+        "saveText": "Setiap perubahan disimpan sebagai draf sampai Anda menerbitkan."
+      }
     },
     "detail": {
       "created": "Dibuat",

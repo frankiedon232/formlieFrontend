@@ -152,7 +152,23 @@
       "notJson": "JSON 파일이 아닙니다.",
       "invalid": "올바른 양식 내보내기 파일이 아닙니다(문제 위치: {detail}).",
       "ready": "가져올 준비가 됐습니다",
-      "summary": "페이지: {pages} · 항목: {fields}"
+      "summary": "페이지: {pages} · 항목: {fields}",
+      "continue": "계속",
+      "details": "양식 세부 정보",
+      "detailsDesc": "이름을 정하고 저장할 위치를 선택하세요.",
+      "later": "둘 다 나중에 바꿀 수 있습니다.",
+      "pickFile": "먼저 가져올 파일을 선택하세요.",
+      "blankTitle": "처음부터 시작",
+      "blankDesc": "한 페이지짜리 빈 양식입니다. 필요한 질문을 원하는 순서로 추가하세요.",
+      "previewAdd": "첫 질문 추가",
+      "points": {
+        "fieldsTitle": "30가지 이상의 필드 유형",
+        "fieldsText": "텍스트, 선택, 날짜, 평점, 파일, 서명 등.",
+        "logicTitle": "로직과 계산",
+        "logicText": "질문을 표시·숨김·필수로 만들고 답변을 합산합니다.",
+        "saveTitle": "작업 중 자동 저장",
+        "saveText": "게시할 때까지 모든 변경 사항이 초안으로 저장됩니다."
+      }
     },
     "detail": {
       "created": "만든 날짜",

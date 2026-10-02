@@ -152,7 +152,23 @@
       "notJson": "Đây không phải tệp JSON.",
       "invalid": "Tệp này không phải bản xuất biểu mẫu hợp lệ (lỗi tại: {detail}).",
       "ready": "Sẵn sàng nhập",
-      "summary": "Trang: {pages} · Trường: {fields}"
+      "summary": "Trang: {pages} · Trường: {fields}",
+      "continue": "Tiếp tục",
+      "details": "Thông tin biểu mẫu",
+      "detailsDesc": "Đặt tên và chọn nơi lưu.",
+      "later": "Bạn có thể đổi cả hai sau.",
+      "pickFile": "Hãy chọn tệp cần nhập trước.",
+      "blankTitle": "Bắt đầu từ đầu",
+      "blankDesc": "Một biểu mẫu trống có một trang — thêm các câu hỏi bạn cần theo thứ tự bạn muốn.",
+      "previewAdd": "Thêm câu hỏi đầu tiên",
+      "points": {
+        "fieldsTitle": "Hơn 30 loại trường",
+        "fieldsText": "Văn bản, lựa chọn, ngày, đánh giá, tệp, chữ ký và nhiều hơn.",
+        "logicTitle": "Logic và phép tính",
+        "logicText": "Hiện, ẩn hoặc bắt buộc câu hỏi và cộng tổng câu trả lời.",
+        "saveTitle": "Tự lưu khi bạn làm",
+        "saveText": "Mọi thay đổi được lưu dưới dạng bản nháp cho đến khi bạn xuất bản."
+      }
     },
     "detail": {
       "created": "Ngày tạo",

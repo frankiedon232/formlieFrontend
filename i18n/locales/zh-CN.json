@@ -152,7 +152,23 @@
       "notJson": "这不是 JSON 文件。",
       "invalid": "此文件不是有效的表单导出（问题位置：{detail}）。",
       "ready": "可以导入",
-      "summary": "页面：{pages} · 字段：{fields}"
+      "summary": "页面：{pages} · 字段：{fields}",
+      "continue": "继续",
+      "details": "表单详情",
+      "detailsDesc": "为表单命名并选择存放位置。",
+      "later": "两者都可以稍后更改。",
+      "pickFile": "请先选择要导入的文件。",
+      "blankTitle": "从空白开始",
+      "blankDesc": "一个只有一页的空白表单——按你想要的顺序添加所需的问题。",
+      "previewAdd": "添加第一个问题",
+      "points": {
+        "fieldsTitle": "30 多种字段类型",
+        "fieldsText": "文本、选项、日期、评分、文件、签名等。",
+        "logicTitle": "逻辑与计算",
+        "logicText": "显示、隐藏或设为必填问题，并汇总答案。",
+        "saveTitle": "边做边保存",
+        "saveText": "在发布之前，每次更改都会保存为草稿。"
+      }
     },
     "detail": {
       "created": "创建时间",
