@@ -129,7 +129,8 @@
     "genericDesc": "Lütfen tekrar deneyin. Sorun devam ederse destekle iletişime geçin.",
     "workspaceTitle": "Çalışma alanı bulunamadı",
     "workspaceDesc": "{host} adresinde bir çalışma alanı yok. Adresi kontrol edin veya çalışma alanınızı bulun.",
-    "findWorkspace": "Çalışma alanımı bul"
+    "findWorkspace": "Çalışma alanımı bul",
+    "workspaceSuspendedDesc": "Bu çalışma alanı duraklatıldı. Yöneticinize veya destek ekibimize başvurun."
   },
   "errors": {
     "FRM-GEN-1001": "Geçersiz istek.",
@@ -224,5 +225,129 @@
     "rights": "Tüm hakları saklıdır.",
     "version": "Sürüm {version}",
     "label": "Alt bilgi"
+  },
+  "authLayout": {
+    "headline": "İnsanların doldurmayı sevdiği formlar oluşturun.",
+    "point1": "Hazır şablonlarla sürükle-bırak düzenleyici.",
+    "point2": "Uçtan uca şifreli, her girişte doğrulama kodu.",
+    "point3": "20 dilde, her cihazda.",
+    "poweredBy": "{app} altyapısıyla"
+  },
+  "auth": {
+    "or": "veya",
+    "fields": {
+      "email": "E-posta",
+      "password": "Şifre",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "workEmail": "İş e-postası",
+      "company": "Şirket adı",
+      "subdomain": "Çalışma alanı adresi",
+      "newPassword": "Yeni şifre",
+      "confirmPassword": "Şifreyi onayla"
+    },
+    "validation": {
+      "email": "Geçerli bir e-posta adresi girin.",
+      "password": "Şifrenizi girin.",
+      "required": "Zorunlu.",
+      "passwordPolicy": "Büyük ve küçük harf ile rakam içeren en az {min} karakter kullanın.",
+      "companyName": "Şirket adınızı girin.",
+      "subdomain": "3–63 küçük harf, rakam veya tire kullanın.",
+      "passwordMatch": "Şifreler eşleşmiyor."
+    },
+    "login": {
+      "title": "Giriş yap",
+      "desc": "{workspace} alanına tekrar hoş geldiniz.",
+      "manageTitle": "Çalışma alanınızı bulun",
+      "manageDesc": "E-postanızı girin, çalışma alanlarınızı bulmanız için bir kod gönderelim.",
+      "expired": "Oturumunuzun süresi doldu. Tekrar giriş yapın.",
+      "oauthUnavailable": "{provider} ile giriş henüz kullanılamıyor. E-postanızı kullanın.",
+      "passwordReset": "Şifreniz değiştirildi. Yeni şifrenizle giriş yapın.",
+      "continue": "Devam",
+      "forgot": "Şifrenizi mi unuttunuz?",
+      "submit": "Giriş yap",
+      "findWorkspace": "Çalışma alanımı bul",
+      "noWorkspace": "Formalie’de yeni misiniz?",
+      "createWorkspace": "Çalışma alanı oluştur",
+      "wrongWorkspace": "Sizin çalışma alanınız değil mi?"
+    },
+    "otp": {
+      "label": "6 haneli kod",
+      "title": "E-postanızı kontrol edin",
+      "desc": "{destination} adresine 6 haneli bir kod gönderdik.",
+      "attemptsLeft": "{count} deneme hakkınız kaldı | {count} deneme hakkınız kaldı",
+      "devCode": "Geliştirme kodu: {code}",
+      "resendIn": "{seconds} sn sonra yeniden gönder",
+      "resend": "Kodu yeniden gönder",
+      "channel": {
+        "email": "E-postayla gönder",
+        "sms": "SMS ile gönder",
+        "totp": "Doğrulama uygulamasını kullan"
+      },
+      "verifying": "Doğrulanıyor…"
+    },
+    "password": {
+      "weak": "Zayıf",
+      "fair": "Orta",
+      "good": "İyi",
+      "strong": "Güçlü",
+      "hide": "Şifreyi gizle",
+      "show": "Şifreyi göster",
+      "rule": {
+        "length": "{min}+ karakter",
+        "lower": "Küçük harf",
+        "upper": "Büyük harf",
+        "number": "Rakam",
+        "symbol": "Sembol (isteğe bağlı)"
+      }
+    },
+    "providers": {
+      "google": "Google ile devam et",
+      "microsoft": "Microsoft ile devam et",
+      "apple": "Apple ile devam et",
+      "facebook": "Facebook ile devam et"
+    },
+    "signup": {
+      "title": "Çalışma alanınızı oluşturun",
+      "desc": "Ücretsiz başlayın. Bir dakikadan kısa sürede hazır.",
+      "stepAccount": "Hesap",
+      "stepVerify": "Doğrula",
+      "stepWorkspace": "Çalışma alanı",
+      "continue": "Devam",
+      "changeEmail": "Başka bir e-posta kullan",
+      "create": "Çalışma alanı oluştur",
+      "checking": "Kontrol ediliyor…",
+      "available": "Kullanılabilir",
+      "unavailable": {
+        "taken": "Zaten alınmış",
+        "reserved": "Ayrılmış — başka birini seçin",
+        "invalid": "Geçerli bir adres değil"
+      },
+      "subdomainHelp": "Ekibiniz buradan giriş yapar. Daha sonra özel alan adı ekleyebilirsiniz.",
+      "redirecting": "Yeni çalışma alanınız açılıyor…",
+      "haveAccount": "Zaten bir çalışma alanınız var mı?"
+    },
+    "find": {
+      "title": "Çalışma alanınızı bulun",
+      "desc": "İş e-postanızı girin. Size bir kod gönderelim.",
+      "resultsDesc": "Giriş yapmak istediğiniz çalışma alanını seçin.",
+      "send": "Kod gönder",
+      "none": "Çalışma alanı bulunamadı",
+      "noneDesc": "Bu e-posta henüz hiçbir çalışma alanına ait değil.",
+      "other": "Başka bir e-posta dene"
+    },
+    "forgot": {
+      "title": "Şifrenizi sıfırlayın",
+      "desc": "E-postanızı girin, yeni şifre belirlemeniz için bir kod gönderelim.",
+      "back": "Girişe dön",
+      "send": "Kod gönder",
+      "save": "Yeni şifreyi kaydet"
+    },
+    "welcome": {
+      "title": "Çalışma alanınız hazırlanıyor",
+      "desc": "Giriş yapılıyor…",
+      "failed": "Bu bağlantının süresi doldu",
+      "failedDesc": "E-posta ve şifrenizle giriş yapın."
+    }
   }
 }

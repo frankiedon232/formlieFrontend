@@ -1,4 +1,5 @@
 import type { FormSummary } from '#shared/types/forms'
+import { requireAuth } from '../core/auth'
 import { defineMockRoute } from '../core/route'
 import { ok, paginate } from '../core/respond'
 import { MOCK_FOLDERS, MOCK_FORMS } from '../data/forms'
@@ -9,7 +10,8 @@ const filterValue = (query: Record<string, unknown>, key: string) => {
 }
 
 /** GET /forms — filters: status, folder_id, owner_id, tag (comma = any of), from/to on updated_at. */
-export const listForms = defineMockRoute(({ query }) => {
+export const listForms = defineMockRoute(({ event, query }) => {
+  requireAuth(event)
   const status = filterValue(query, 'status')
   const folder = filterValue(query, 'folder_id')
   const owner = filterValue(query, 'owner_id')
@@ -39,4 +41,7 @@ export const listForms = defineMockRoute(({ query }) => {
 })
 
 /** GET /folders — the tenant's form folders. */
-export const listFolders = defineMockRoute(() => ok(MOCK_FOLDERS))
+export const listFolders = defineMockRoute(({ event }) => {
+  requireAuth(event)
+  return ok(MOCK_FOLDERS)
+})

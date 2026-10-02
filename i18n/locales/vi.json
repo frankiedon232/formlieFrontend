@@ -129,7 +129,8 @@
     "genericDesc": "Vui lòng thử lại. Nếu vẫn tiếp diễn, hãy liên hệ bộ phận hỗ trợ.",
     "workspaceTitle": "Không tìm thấy không gian làm việc",
     "workspaceDesc": "Không có không gian làm việc tại {host}. Hãy kiểm tra địa chỉ hoặc tìm không gian của bạn.",
-    "findWorkspace": "Tìm không gian của tôi"
+    "findWorkspace": "Tìm không gian của tôi",
+    "workspaceSuspendedDesc": "Không gian làm việc này đang tạm dừng. Hãy liên hệ quản trị viên hoặc bộ phận hỗ trợ."
   },
   "errors": {
     "FRM-GEN-1001": "Yêu cầu không hợp lệ.",
@@ -224,5 +225,129 @@
     "rights": "Bảo lưu mọi quyền.",
     "version": "Phiên bản {version}",
     "label": "Chân trang"
+  },
+  "authLayout": {
+    "headline": "Tạo biểu mẫu mà ai cũng thích điền.",
+    "point1": "Trình tạo kéo thả với mẫu có sẵn.",
+    "point2": "Mã hóa đầu cuối, có mã xác minh mỗi lần đăng nhập.",
+    "point3": "20 ngôn ngữ, trên mọi thiết bị.",
+    "poweredBy": "Được cung cấp bởi {app}"
+  },
+  "auth": {
+    "or": "hoặc",
+    "fields": {
+      "email": "Email",
+      "password": "Mật khẩu",
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "workEmail": "Email công việc",
+      "company": "Tên công ty",
+      "subdomain": "Địa chỉ không gian làm việc",
+      "newPassword": "Mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu"
+    },
+    "validation": {
+      "email": "Nhập địa chỉ email hợp lệ.",
+      "password": "Nhập mật khẩu của bạn.",
+      "required": "Bắt buộc.",
+      "passwordPolicy": "Tối thiểu {min} ký tự gồm chữ hoa, chữ thường và số.",
+      "companyName": "Nhập tên công ty của bạn.",
+      "subdomain": "Dùng 3–63 chữ thường, số hoặc dấu gạch nối.",
+      "passwordMatch": "Mật khẩu không khớp."
+    },
+    "login": {
+      "title": "Đăng nhập",
+      "desc": "Chào mừng bạn trở lại {workspace}.",
+      "manageTitle": "Tìm không gian làm việc",
+      "manageDesc": "Nhập email, chúng tôi sẽ gửi mã để tìm không gian làm việc của bạn.",
+      "expired": "Phiên đã hết hạn. Vui lòng đăng nhập lại.",
+      "oauthUnavailable": "Chưa hỗ trợ đăng nhập bằng {provider}. Hãy dùng email.",
+      "passwordReset": "Mật khẩu đã được đổi. Hãy đăng nhập bằng mật khẩu mới.",
+      "continue": "Tiếp tục",
+      "forgot": "Quên mật khẩu?",
+      "submit": "Đăng nhập",
+      "findWorkspace": "Tìm không gian của tôi",
+      "noWorkspace": "Mới dùng Formalie?",
+      "createWorkspace": "Tạo không gian làm việc",
+      "wrongWorkspace": "Không phải không gian của bạn?"
+    },
+    "otp": {
+      "label": "Mã 6 chữ số",
+      "title": "Kiểm tra email của bạn",
+      "desc": "Chúng tôi đã gửi mã 6 chữ số tới {destination}.",
+      "attemptsLeft": "Còn {count} lần thử | Còn {count} lần thử",
+      "devCode": "Mã phát triển: {code}",
+      "resendIn": "Gửi lại sau {seconds} giây",
+      "resend": "Gửi lại mã",
+      "channel": {
+        "email": "Gửi qua email",
+        "sms": "Gửi qua SMS",
+        "totp": "Dùng ứng dụng xác thực"
+      },
+      "verifying": "Đang xác minh…"
+    },
+    "password": {
+      "weak": "Yếu",
+      "fair": "Tạm được",
+      "good": "Tốt",
+      "strong": "Mạnh",
+      "hide": "Ẩn mật khẩu",
+      "show": "Hiện mật khẩu",
+      "rule": {
+        "length": "{min}+ ký tự",
+        "lower": "Chữ thường",
+        "upper": "Chữ hoa",
+        "number": "Số",
+        "symbol": "Ký hiệu (tùy chọn)"
+      }
+    },
+    "providers": {
+      "google": "Tiếp tục với Google",
+      "microsoft": "Tiếp tục với Microsoft",
+      "apple": "Tiếp tục với Apple",
+      "facebook": "Tiếp tục với Facebook"
+    },
+    "signup": {
+      "title": "Tạo không gian làm việc",
+      "desc": "Miễn phí để bắt đầu. Thiết lập dưới một phút.",
+      "stepAccount": "Tài khoản",
+      "stepVerify": "Xác minh",
+      "stepWorkspace": "Không gian",
+      "continue": "Tiếp tục",
+      "changeEmail": "Dùng email khác",
+      "create": "Tạo không gian làm việc",
+      "checking": "Đang kiểm tra…",
+      "available": "Có thể dùng",
+      "unavailable": {
+        "taken": "Đã có người dùng",
+        "reserved": "Đã được giữ chỗ — hãy chọn tên khác",
+        "invalid": "Địa chỉ không hợp lệ"
+      },
+      "subdomainHelp": "Nhóm của bạn sẽ đăng nhập tại đây. Bạn có thể thêm tên miền riêng sau.",
+      "redirecting": "Đang mở không gian làm việc mới…",
+      "haveAccount": "Đã có không gian làm việc?"
+    },
+    "find": {
+      "title": "Tìm không gian làm việc",
+      "desc": "Nhập email công việc. Chúng tôi sẽ gửi mã cho bạn.",
+      "resultsDesc": "Chọn không gian làm việc để đăng nhập.",
+      "send": "Gửi mã",
+      "none": "Không tìm thấy không gian làm việc",
+      "noneDesc": "Email này chưa thuộc không gian làm việc nào.",
+      "other": "Thử email khác"
+    },
+    "forgot": {
+      "title": "Đặt lại mật khẩu",
+      "desc": "Nhập email, chúng tôi sẽ gửi mã để đặt mật khẩu mới.",
+      "back": "Quay lại đăng nhập",
+      "send": "Gửi mã",
+      "save": "Lưu mật khẩu mới"
+    },
+    "welcome": {
+      "title": "Đang chuẩn bị không gian làm việc",
+      "desc": "Đang đăng nhập…",
+      "failed": "Liên kết này đã hết hạn",
+      "failedDesc": "Hãy đăng nhập bằng email và mật khẩu."
+    }
   }
 }

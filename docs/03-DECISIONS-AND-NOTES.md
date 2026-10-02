@@ -48,6 +48,14 @@ Edit this file whenever a decision changes.
 35. **Header bar is the page header** (owner, 2026-10-02): title, subtitle, breadcrumbs and page buttons live in the top bar; `AppPageHeader` removed. The global "New form" button left the top bar (the rail's **+** and the Forms page actions cover it).
 36. **Footer** added (`AppFooter`): © · version (`runtimeConfig.public.appVersion` from package.json) · Help · Shortcuts. Privacy/Terms links once the website URLs are known.
 
+37. **Cross-subdomain signup hand-off:** tokens live in memory and the refresh cookie is host-scoped, so signup returns a one-time `ticket` URL on the new subdomain (`/auth/welcome?ticket=`), exchanged there for a session.
+38. **Codes everywhere instead of links:** find-workspace and password reset use the same 6-digit OTP UI as login; no enumeration (same answer for unknown emails).
+39. **Pending challenge in memory only:** reloading the code screen starts over (no challenge ids in storage).
+40. **Middleware order:** `01.tenant.global` (host → workspace, manage-only pages) then `02.auth.global` (restore via refresh cookie, then guard). Page meta: `auth: 'guest' | false`, `manage: true | 'only'`.
+41. **Last workspace** is remembered in a non-sensitive cookie on the root domain (`formalie_ws`, name + subdomain) so manage.* can offer "Continue to …".
+42. **Brand icons** for sign-in providers come from `@iconify-json/simple-icons`.
+43. **Installing packages while dev runs** breaks the running server (`postinstall` regenerates `.nuxt`): restart `pnpm dev` after `pnpm add`.
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

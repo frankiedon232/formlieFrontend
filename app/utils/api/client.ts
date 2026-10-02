@@ -41,6 +41,8 @@ export interface ApiClientOptions {
   baseUrl: string
   transport: Transport
   getAccessToken: () => string | null
+  /** Extra headers on every request (e.g. the dev-only tenant override). */
+  getExtraHeaders?: () => Record<string, string>
   /** Exchange the refresh cookie for a new access token. Resolves true on success. */
   refreshAccessToken?: () => Promise<boolean>
   /** Called when the session can't be recovered (refresh failed / revoked). */
@@ -105,7 +107,11 @@ export function createApiClient(options: ApiClientOptions) {
     const keys = await generateEcdhKeyPair()
     const response = await send(`${options.baseUrl}/crypto/handshake`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json', accept: 'application/json' },
+      headers: {
+        ...options.getExtraHeaders?.(),
+        'content-type': 'application/json',
+        accept: 'application/json',
+      },
       body: JSON.stringify({
         client_public_key: await exportRawPublicKey(keys.publicKey),
         client_ts: Date.now(),
@@ -173,7 +179,10 @@ export function createApiClient(options: ApiClientOptions) {
       body: opts.body ?? null,
     }
     const envelope = await sealEnvelope(secure.key, secure.kid, payload)
-    const headers: Record<string, string> = { accept: `${ENVELOPE_CONTENT_TYPE}, application/json` }
+    const headers: Record<string, string> = {
+      ...options.getExtraHeaders?.(),
+      accept: `${ENVELOPE_CONTENT_TYPE}, application/json`,
+    }
 
     const token = options.getAccessToken()
     if (token) headers.authorization = `Bearer ${token}`

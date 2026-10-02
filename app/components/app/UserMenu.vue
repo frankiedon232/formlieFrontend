@@ -1,6 +1,5 @@
 <!--
   Account card (design: avatar · name · email · ⇅). `compact` = avatar only (collapsed rail).
-  Name, email and log out are wired to the session in F3.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -11,8 +10,18 @@ const colorMode = useColorMode()
 const { shortcutsOpen } = useAppUi()
 const { locale, locales, current, changeLocale } = useAppLocale()
 
-const user = computed(() => ({ name: t('user.guest'), email: t('user.notSignedIn') }))
-const avatar = computed(() => ({ alt: user.value.name, icon: 'i-lucide-user' }))
+const session = useSession()
+const auth = useAuth()
+const user = computed(() => ({
+  name: session.displayName.value || t('user.guest'),
+  email: session.user.value?.email ?? t('user.notSignedIn'),
+}))
+
+async function logout() {
+  await auth.logout()
+  await navigateTo('/auth/login')
+}
+const avatar = computed(() => ({ alt: user.value.name }))
 
 const themeItem = (value: 'light' | 'dark' | 'system', icon: string): DropdownMenuItem => ({
   label: t(`user.${value}`),
@@ -63,7 +72,7 @@ const items = computed<DropdownMenuItem[][]>(() => [
       },
     },
   ],
-  [{ label: t('user.logout'), icon: 'i-lucide-log-out', color: 'error', disabled: true }],
+  [{ label: t('user.logout'), icon: 'i-lucide-log-out', color: 'error', onSelect: logout }],
 ])
 </script>
 

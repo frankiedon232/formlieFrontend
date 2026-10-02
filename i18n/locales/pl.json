@@ -129,7 +129,8 @@
     "genericDesc": "Spróbuj ponownie. Jeśli problem się powtarza, skontaktuj się z pomocą.",
     "workspaceTitle": "Nie znaleziono obszaru roboczego",
     "workspaceDesc": "Pod adresem {host} nie ma obszaru roboczego. Sprawdź adres lub znajdź swój obszar.",
-    "findWorkspace": "Znajdź mój obszar roboczy"
+    "findWorkspace": "Znajdź mój obszar roboczy",
+    "workspaceSuspendedDesc": "Ten obszar roboczy jest wstrzymany. Skontaktuj się z administratorem lub pomocą."
   },
   "errors": {
     "FRM-GEN-1001": "Nieprawidłowe żądanie.",
@@ -224,5 +225,129 @@
     "rights": "Wszelkie prawa zastrzeżone.",
     "version": "Wersja {version}",
     "label": "Stopka"
+  },
+  "authLayout": {
+    "headline": "Twórz formularze, które ludzie chętnie wypełniają.",
+    "point1": "Edytor „przeciągnij i upuść” z gotowymi szablonami.",
+    "point2": "Pełne szyfrowanie i kod przy każdym logowaniu.",
+    "point3": "W 20 językach, na każdym urządzeniu.",
+    "poweredBy": "Działa dzięki {app}"
+  },
+  "auth": {
+    "or": "lub",
+    "fields": {
+      "email": "E-mail",
+      "password": "Hasło",
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "workEmail": "Służbowy e-mail",
+      "company": "Nazwa firmy",
+      "subdomain": "Adres obszaru roboczego",
+      "newPassword": "Nowe hasło",
+      "confirmPassword": "Potwierdź hasło"
+    },
+    "validation": {
+      "email": "Podaj prawidłowy adres e-mail.",
+      "password": "Podaj hasło.",
+      "required": "Wymagane.",
+      "passwordPolicy": "Co najmniej {min} znaków, wielkie i małe litery oraz cyfra.",
+      "companyName": "Podaj nazwę firmy.",
+      "subdomain": "Od 3 do 63 małych liter, cyfr lub łączników.",
+      "passwordMatch": "Hasła się różnią."
+    },
+    "login": {
+      "title": "Zaloguj się",
+      "desc": "Witaj ponownie w {workspace}.",
+      "manageTitle": "Znajdź swój obszar roboczy",
+      "manageDesc": "Podaj e-mail, a wyślemy kod, by znaleźć Twoje obszary robocze.",
+      "expired": "Sesja wygasła. Zaloguj się ponownie.",
+      "oauthUnavailable": "Logowanie przez {provider} nie jest jeszcze dostępne. Użyj e-maila.",
+      "passwordReset": "Hasło zostało zmienione. Zaloguj się nowym hasłem.",
+      "continue": "Dalej",
+      "forgot": "Nie pamiętasz hasła?",
+      "submit": "Zaloguj się",
+      "findWorkspace": "Znajdź mój obszar roboczy",
+      "noWorkspace": "Nowy w Formalie?",
+      "createWorkspace": "Utwórz obszar roboczy",
+      "wrongWorkspace": "To nie Twój obszar roboczy?"
+    },
+    "otp": {
+      "label": "6-cyfrowy kod",
+      "title": "Sprawdź pocztę",
+      "desc": "Wysłaliśmy 6-cyfrowy kod na {destination}.",
+      "attemptsLeft": "Pozostało prób: {count} | Pozostało prób: {count}",
+      "devCode": "Kod deweloperski: {code}",
+      "resendIn": "Wyślij ponownie za {seconds} s",
+      "resend": "Wyślij kod ponownie",
+      "channel": {
+        "email": "Wyślij e-mailem",
+        "sms": "Wyślij SMS-em",
+        "totp": "Użyj aplikacji uwierzytelniającej"
+      },
+      "verifying": "Weryfikacja…"
+    },
+    "password": {
+      "weak": "Słabe",
+      "fair": "Średnie",
+      "good": "Dobre",
+      "strong": "Silne",
+      "hide": "Ukryj hasło",
+      "show": "Pokaż hasło",
+      "rule": {
+        "length": "{min}+ znaków",
+        "lower": "Mała litera",
+        "upper": "Wielka litera",
+        "number": "Cyfra",
+        "symbol": "Symbol (opcjonalnie)"
+      }
+    },
+    "providers": {
+      "google": "Kontynuuj z Google",
+      "microsoft": "Kontynuuj z Microsoft",
+      "apple": "Kontynuuj z Apple",
+      "facebook": "Kontynuuj z Facebookiem"
+    },
+    "signup": {
+      "title": "Utwórz obszar roboczy",
+      "desc": "Darmowy start. Gotowe w niecałą minutę.",
+      "stepAccount": "Konto",
+      "stepVerify": "Weryfikacja",
+      "stepWorkspace": "Obszar",
+      "continue": "Dalej",
+      "changeEmail": "Użyj innego e-maila",
+      "create": "Utwórz obszar roboczy",
+      "checking": "Sprawdzanie…",
+      "available": "Dostępny",
+      "unavailable": {
+        "taken": "Już zajęty",
+        "reserved": "Zarezerwowany — wybierz inny",
+        "invalid": "Nieprawidłowy adres"
+      },
+      "subdomainHelp": "Tutaj loguje się Twój zespół. Własną domenę dodasz później.",
+      "redirecting": "Otwieranie nowego obszaru roboczego…",
+      "haveAccount": "Masz już obszar roboczy?"
+    },
+    "find": {
+      "title": "Znajdź swój obszar roboczy",
+      "desc": "Podaj służbowy e-mail. Wyślemy Ci kod.",
+      "resultsDesc": "Wybierz obszar roboczy, do którego chcesz się zalogować.",
+      "send": "Wyślij kod",
+      "none": "Nie znaleziono obszarów roboczych",
+      "noneDesc": "Ten e-mail nie należy jeszcze do żadnego obszaru.",
+      "other": "Spróbuj innego e-maila"
+    },
+    "forgot": {
+      "title": "Zresetuj hasło",
+      "desc": "Podaj e-mail, a wyślemy kod do ustawienia nowego hasła.",
+      "back": "Wróć do logowania",
+      "send": "Wyślij kod",
+      "save": "Zapisz nowe hasło"
+    },
+    "welcome": {
+      "title": "Przygotowujemy Twój obszar roboczy",
+      "desc": "Logowanie…",
+      "failed": "Ten link wygasł",
+      "failedDesc": "Zaloguj się e-mailem i hasłem."
+    }
   }
 }

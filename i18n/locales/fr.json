@@ -129,7 +129,8 @@
     "genericDesc": "Veuillez réessayer. Si le problème persiste, contactez le support.",
     "workspaceTitle": "Espace de travail introuvable",
     "workspaceDesc": "Aucun espace de travail à l'adresse {host}. Vérifiez l'adresse ou retrouvez votre espace.",
-    "findWorkspace": "Trouver mon espace"
+    "findWorkspace": "Trouver mon espace",
+    "workspaceSuspendedDesc": "Cet espace est suspendu. Contactez votre administrateur ou notre support."
   },
   "errors": {
     "FRM-GEN-1001": "Requête invalide.",
@@ -224,5 +225,129 @@
     "rights": "Tous droits réservés.",
     "version": "Version {version}",
     "label": "Pied de page"
+  },
+  "authLayout": {
+    "headline": "Créez des formulaires que l’on aime remplir.",
+    "point1": "Éditeur glisser-déposer avec des modèles prêts à l’emploi.",
+    "point2": "Chiffré de bout en bout, avec un code à chaque connexion.",
+    "point3": "En 20 langues, sur tous les appareils.",
+    "poweredBy": "Propulsé par {app}"
+  },
+  "auth": {
+    "or": "ou",
+    "fields": {
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "workEmail": "E-mail professionnel",
+      "company": "Nom de l’entreprise",
+      "subdomain": "Adresse de l’espace",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe"
+    },
+    "validation": {
+      "email": "Saisissez une adresse e-mail valide.",
+      "password": "Saisissez votre mot de passe.",
+      "required": "Obligatoire.",
+      "passwordPolicy": "Au moins {min} caractères, avec majuscules, minuscules et un chiffre.",
+      "companyName": "Saisissez le nom de votre entreprise.",
+      "subdomain": "3 à 63 lettres minuscules, chiffres ou tirets.",
+      "passwordMatch": "Les mots de passe ne correspondent pas."
+    },
+    "login": {
+      "title": "Se connecter",
+      "desc": "Bon retour sur {workspace}.",
+      "manageTitle": "Retrouvez votre espace",
+      "manageDesc": "Saisissez votre e-mail, nous vous enverrons un code pour retrouver vos espaces.",
+      "expired": "Votre session a expiré. Reconnectez-vous.",
+      "oauthUnavailable": "La connexion avec {provider} n’est pas encore disponible. Utilisez votre e-mail.",
+      "passwordReset": "Votre mot de passe a été modifié. Connectez-vous avec le nouveau.",
+      "continue": "Continuer",
+      "forgot": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "findWorkspace": "Trouver mon espace",
+      "noWorkspace": "Nouveau sur Formalie ?",
+      "createWorkspace": "Créer un espace",
+      "wrongWorkspace": "Ce n’est pas votre espace ?"
+    },
+    "otp": {
+      "label": "Code à 6 chiffres",
+      "title": "Vérifiez vos e-mails",
+      "desc": "Nous avons envoyé un code à 6 chiffres à {destination}.",
+      "attemptsLeft": "{count} tentative restante | {count} tentatives restantes",
+      "devCode": "Code de développement : {code}",
+      "resendIn": "Renvoyer le code dans {seconds} s",
+      "resend": "Renvoyer le code",
+      "channel": {
+        "email": "Envoyer par e-mail",
+        "sms": "Envoyer par SMS",
+        "totp": "Utiliser une app d’authentification"
+      },
+      "verifying": "Vérification…"
+    },
+    "password": {
+      "weak": "Faible",
+      "fair": "Moyen",
+      "good": "Bon",
+      "strong": "Fort",
+      "hide": "Masquer le mot de passe",
+      "show": "Afficher le mot de passe",
+      "rule": {
+        "length": "{min} caractères ou plus",
+        "lower": "Une minuscule",
+        "upper": "Une majuscule",
+        "number": "Un chiffre",
+        "symbol": "Un symbole (facultatif)"
+      }
+    },
+    "providers": {
+      "google": "Continuer avec Google",
+      "microsoft": "Continuer avec Microsoft",
+      "apple": "Continuer avec Apple",
+      "facebook": "Continuer avec Facebook"
+    },
+    "signup": {
+      "title": "Créez votre espace",
+      "desc": "Gratuit pour commencer. Prêt en moins d’une minute.",
+      "stepAccount": "Compte",
+      "stepVerify": "Vérification",
+      "stepWorkspace": "Espace",
+      "continue": "Continuer",
+      "changeEmail": "Utiliser une autre adresse",
+      "create": "Créer l’espace",
+      "checking": "Vérification…",
+      "available": "Disponible",
+      "unavailable": {
+        "taken": "Déjà pris",
+        "reserved": "Réservé — choisissez-en un autre",
+        "invalid": "Adresse invalide"
+      },
+      "subdomainHelp": "Votre équipe se connecte ici. Vous pourrez ajouter un domaine personnalisé plus tard.",
+      "redirecting": "Ouverture de votre nouvel espace…",
+      "haveAccount": "Vous avez déjà un espace ?"
+    },
+    "find": {
+      "title": "Retrouvez votre espace",
+      "desc": "Saisissez votre e-mail professionnel, nous vous enverrons un code.",
+      "resultsDesc": "Choisissez l’espace auquel vous connecter.",
+      "send": "Envoyer le code",
+      "none": "Aucun espace trouvé",
+      "noneDesc": "Cet e-mail ne fait encore partie d’aucun espace.",
+      "other": "Essayer un autre e-mail"
+    },
+    "forgot": {
+      "title": "Réinitialiser le mot de passe",
+      "desc": "Saisissez votre e-mail, nous vous enverrons un code pour choisir un nouveau mot de passe.",
+      "back": "Retour à la connexion",
+      "send": "Envoyer le code",
+      "save": "Enregistrer le mot de passe"
+    },
+    "welcome": {
+      "title": "Préparation de votre espace",
+      "desc": "Connexion en cours…",
+      "failed": "Ce lien a expiré",
+      "failedDesc": "Connectez-vous avec votre e-mail et votre mot de passe."
+    }
   }
 }

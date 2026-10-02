@@ -129,7 +129,8 @@
     "genericDesc": "Probeer het opnieuw. Blijft het gebeuren, neem dan contact op met support.",
     "workspaceTitle": "Werkruimte niet gevonden",
     "workspaceDesc": "Er is geen werkruimte op {host}. Controleer het adres of zoek je werkruimte.",
-    "findWorkspace": "Mijn werkruimte zoeken"
+    "findWorkspace": "Mijn werkruimte zoeken",
+    "workspaceSuspendedDesc": "Deze werkruimte is gepauzeerd. Neem contact op met je beheerder of onze support."
   },
   "errors": {
     "FRM-GEN-1001": "Ongeldig verzoek.",
@@ -224,5 +225,129 @@
     "rights": "Alle rechten voorbehouden.",
     "version": "Versie {version}",
     "label": "Voettekst"
+  },
+  "authLayout": {
+    "headline": "Bouw formulieren die mensen graag invullen.",
+    "point1": "Drag-and-drop-editor met kant-en-klare sjablonen.",
+    "point2": "End-to-end versleuteld, met een code bij elke aanmelding.",
+    "point3": "In 20 talen, op elk apparaat.",
+    "poweredBy": "Mogelijk gemaakt door {app}"
+  },
+  "auth": {
+    "or": "of",
+    "fields": {
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "workEmail": "Werk-e-mail",
+      "company": "Bedrijfsnaam",
+      "subdomain": "Adres van de werkruimte",
+      "newPassword": "Nieuw wachtwoord",
+      "confirmPassword": "Wachtwoord bevestigen"
+    },
+    "validation": {
+      "email": "Voer een geldig e-mailadres in.",
+      "password": "Voer je wachtwoord in.",
+      "required": "Verplicht.",
+      "passwordPolicy": "Minstens {min} tekens met hoofdletters, kleine letters en een cijfer.",
+      "companyName": "Voer je bedrijfsnaam in.",
+      "subdomain": "3–63 kleine letters, cijfers of streepjes.",
+      "passwordMatch": "Wachtwoorden komen niet overeen."
+    },
+    "login": {
+      "title": "Inloggen",
+      "desc": "Welkom terug bij {workspace}.",
+      "manageTitle": "Vind je werkruimte",
+      "manageDesc": "Voer je e-mail in, dan sturen we een code om je werkruimtes te vinden.",
+      "expired": "Je sessie is verlopen. Log opnieuw in.",
+      "oauthUnavailable": "Inloggen met {provider} is nog niet beschikbaar. Gebruik je e-mail.",
+      "passwordReset": "Je wachtwoord is gewijzigd. Log in met het nieuwe.",
+      "continue": "Doorgaan",
+      "forgot": "Wachtwoord vergeten?",
+      "submit": "Inloggen",
+      "findWorkspace": "Mijn werkruimte vinden",
+      "noWorkspace": "Nieuw bij Formalie?",
+      "createWorkspace": "Werkruimte maken",
+      "wrongWorkspace": "Niet jouw werkruimte?"
+    },
+    "otp": {
+      "label": "Code van 6 cijfers",
+      "title": "Controleer je e-mail",
+      "desc": "We hebben een code van 6 cijfers gestuurd naar {destination}.",
+      "attemptsLeft": "Nog {count} poging | Nog {count} pogingen",
+      "devCode": "Ontwikkelcode: {code}",
+      "resendIn": "Code opnieuw sturen over {seconds} s",
+      "resend": "Code opnieuw sturen",
+      "channel": {
+        "email": "Via e-mail sturen",
+        "sms": "Via sms sturen",
+        "totp": "Authenticator-app gebruiken"
+      },
+      "verifying": "Bezig met controleren…"
+    },
+    "password": {
+      "weak": "Zwak",
+      "fair": "Redelijk",
+      "good": "Goed",
+      "strong": "Sterk",
+      "hide": "Wachtwoord verbergen",
+      "show": "Wachtwoord tonen",
+      "rule": {
+        "length": "{min}+ tekens",
+        "lower": "Kleine letter",
+        "upper": "Hoofdletter",
+        "number": "Cijfer",
+        "symbol": "Symbool (optioneel)"
+      }
+    },
+    "providers": {
+      "google": "Doorgaan met Google",
+      "microsoft": "Doorgaan met Microsoft",
+      "apple": "Doorgaan met Apple",
+      "facebook": "Doorgaan met Facebook"
+    },
+    "signup": {
+      "title": "Maak je werkruimte",
+      "desc": "Gratis beginnen. In minder dan een minuut klaar.",
+      "stepAccount": "Account",
+      "stepVerify": "Bevestigen",
+      "stepWorkspace": "Werkruimte",
+      "continue": "Doorgaan",
+      "changeEmail": "Ander e-mailadres gebruiken",
+      "create": "Werkruimte maken",
+      "checking": "Bezig met controleren…",
+      "available": "Beschikbaar",
+      "unavailable": {
+        "taken": "Al in gebruik",
+        "reserved": "Gereserveerd — kies een ander",
+        "invalid": "Geen geldig adres"
+      },
+      "subdomainHelp": "Hier logt je team in. Een eigen domein kun je later toevoegen.",
+      "redirecting": "Je nieuwe werkruimte wordt geopend…",
+      "haveAccount": "Heb je al een werkruimte?"
+    },
+    "find": {
+      "title": "Vind je werkruimte",
+      "desc": "Voer het e-mailadres in dat je op je werk gebruikt. We sturen je een code.",
+      "resultsDesc": "Kies de werkruimte waarbij je wilt inloggen.",
+      "send": "Code sturen",
+      "none": "Geen werkruimtes gevonden",
+      "noneDesc": "Dit e-mailadres hoort nog bij geen enkele werkruimte.",
+      "other": "Ander e-mailadres proberen"
+    },
+    "forgot": {
+      "title": "Wachtwoord opnieuw instellen",
+      "desc": "Voer je e-mail in, dan sturen we een code om een nieuw wachtwoord in te stellen.",
+      "back": "Terug naar inloggen",
+      "send": "Code sturen",
+      "save": "Nieuw wachtwoord opslaan"
+    },
+    "welcome": {
+      "title": "Je werkruimte wordt ingericht",
+      "desc": "Je wordt ingelogd…",
+      "failed": "Deze link is verlopen",
+      "failedDesc": "Log in met je e-mailadres en wachtwoord."
+    }
   }
 }

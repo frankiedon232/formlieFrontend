@@ -22,24 +22,29 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 
 ## Tenants and onboarding
 
-| GET | `/tenants/public` | public profile of current host: `{ name, subdomain, logo_url, colors, auth_providers[], status }` |
-| GET | `/tenants/subdomain-availability?subdomain=` | `{ available, reason }` |
-| POST | `/tenants/find-workspace` | `{ email }` → OTP sent |
-| POST | `/tenants/find-workspace/verify` | `{ challenge_id, code }` → `[{ name, subdomain, url }]` |
+| GET | `/tenants/public` | public profile of current host: `{ mode: manage\|tenant, name, subdomain, logo_url, colors: { primary }, auth_providers[], status }`; unknown host → FRM-TEN-1001, suspended → FRM-TEN-1002 |
+| GET | `/tenants/subdomain-availability?subdomain=` | `{ available, reason: taken\|reserved\|invalid\|null }` |
+| POST | `/tenants/find-workspace` | `{ email }` → challenge (same answer whether or not the email exists) |
+| POST | `/tenants/find-workspace/verify` | `{ challenge_id, code }` → `[{ name, subdomain, url }]` (url = that workspace's `/auth/login?email=`) |
 | GET/PATCH | `/onboarding` | progress + steps data |
 
 ## Auth
 
-| POST | `/auth/signup` | `{ first_name, last_name, email, password }` or provider token → `{ challenge_id, channels }` |
-| POST | `/auth/signup/complete` | `{ challenge_id, code, company_name, subdomain }` → tokens + redirect url |
-| POST | `/auth/login` | `{ email, password }` → `{ challenge_id, channels, masked_destination }` |
+| POST | `/auth/signup` | manage.* only. `{ first_name, last_name, email, password }` or provider token → challenge |
+| POST | `/auth/signup/complete` | `{ challenge_id, company_name, subdomain }` (challenge already verified via `/auth/otp/verify`) → `{ redirect_url }` on the new subdomain carrying a one-time `ticket` |
+| POST | `/auth/exchange-ticket` | `{ ticket }` (≤ 2 min, single use, must match the host's tenant) → tokens + refresh cookie |
+| POST | `/auth/login` | `{ email, password }` → challenge `{ challenge_id, channels[], channel, masked_destination, resend_after, expires_at }` |
 | GET | `/auth/oauth/{provider}/start` | redirect; `/auth/oauth/{provider}/callback` → challenge |
-| POST | `/auth/otp/verify` | `{ challenge_id, code }` → `{ access_token, expires_in, user, tenant, organisation }` + refresh cookie |
+| POST | `/auth/otp/verify` | `{ challenge_id, code }` → login: `{ access_token, expires_in, user, tenant, organisation }` + refresh cookie; signup: `{ verified: true }`. Wrong code → FRM-AUTH-1003 with `details: [{ field: "attempts_left", message: "<n>" }]`; out of attempts → FRM-AUTH-1004 |
 | POST | `/auth/otp/resend` | `{ challenge_id, channel }` |
-| POST | `/auth/refresh` | cookie → new access token, rotated refresh cookie |
+| POST | `/auth/refresh` | cookie → same shape as otp/verify (tokens + user/tenant/organisation), rotated cookie; reused token → FRM-AUTH-1012 (family revoked) |
 | POST | `/auth/logout` | revokes session |
-| POST | `/auth/password/forgot` · `/auth/password/reset` | |
+| POST | `/auth/password/forgot` | `{ email }` → challenge (same answer whether or not the email exists) |
+| POST | `/auth/password/reset` | `{ challenge_id, code, password }` → `{ reset: true }` |
 | GET | `/me` · PATCH `/me` · POST `/me/password` · `/me/mfa/totp/*` · GET/DELETE `/me/sessions/{id}` | |
+
+**Refresh cookie:** `formalie_rt`, `HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth` (covers refresh + logout).
+**Mock only:** challenge responses carry `meta.dev_code` so the dev code screen can show it; the real API never returns codes. The mock honours the dev header `X-Formalie-Dev-Tenant` (localhost / LAN-IP testing).
 
 ## Forms
 

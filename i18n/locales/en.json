@@ -129,7 +129,8 @@
     "genericDesc": "Please try again. If it keeps happening, contact support.",
     "workspaceTitle": "Workspace not found",
     "workspaceDesc": "There is no workspace at {host}. Check the address, or find your workspace.",
-    "findWorkspace": "Find my workspace"
+    "findWorkspace": "Find my workspace",
+    "workspaceSuspendedDesc": "This workspace is paused. Contact your administrator or our support team."
   },
   "errors": {
     "FRM-GEN-1001": "Invalid request.",
@@ -224,5 +225,129 @@
     "rights": "All rights reserved.",
     "version": "Version {version}",
     "label": "Footer"
+  },
+  "authLayout": {
+    "headline": "Build forms people love to fill in.",
+    "point1": "Drag-and-drop builder with ready-made templates.",
+    "point2": "Encrypted end to end, with a code on every sign-in.",
+    "point3": "In 20 languages, on every device.",
+    "poweredBy": "Powered by {app}"
+  },
+  "auth": {
+    "or": "or",
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "workEmail": "Work email",
+      "company": "Company name",
+      "subdomain": "Workspace address",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password"
+    },
+    "validation": {
+      "email": "Enter a valid email address.",
+      "password": "Enter your password.",
+      "required": "Required.",
+      "passwordPolicy": "Use at least {min} characters with upper and lower case letters and a number.",
+      "companyName": "Enter your company name.",
+      "subdomain": "Use 3–63 lowercase letters, numbers or hyphens.",
+      "passwordMatch": "Passwords don't match."
+    },
+    "login": {
+      "title": "Sign in",
+      "desc": "Welcome back to {workspace}.",
+      "manageTitle": "Find your workspace",
+      "manageDesc": "Enter your email and we'll send you a code to find your workspaces.",
+      "expired": "Your session expired. Please sign in again.",
+      "oauthUnavailable": "Sign-in with {provider} isn't available yet. Use your email instead.",
+      "passwordReset": "Your password was changed. Sign in with the new one.",
+      "continue": "Continue",
+      "forgot": "Forgot password?",
+      "submit": "Sign in",
+      "findWorkspace": "Find my workspace",
+      "noWorkspace": "New to Formalie?",
+      "createWorkspace": "Create a workspace",
+      "wrongWorkspace": "Not your workspace?"
+    },
+    "otp": {
+      "label": "6-digit code",
+      "title": "Check your email",
+      "desc": "We sent a 6-digit code to {destination}.",
+      "attemptsLeft": "{count} attempt left | {count} attempts left",
+      "devCode": "Development code: {code}",
+      "resendIn": "Resend code in {seconds}s",
+      "resend": "Resend code",
+      "channel": {
+        "email": "Send by email",
+        "sms": "Send by SMS",
+        "totp": "Use authenticator app"
+      },
+      "verifying": "Verifying…"
+    },
+    "password": {
+      "weak": "Weak",
+      "fair": "Fair",
+      "good": "Good",
+      "strong": "Strong",
+      "hide": "Hide password",
+      "show": "Show password",
+      "rule": {
+        "length": "{min}+ characters",
+        "lower": "Lowercase letter",
+        "upper": "Uppercase letter",
+        "number": "Number",
+        "symbol": "Symbol (optional)"
+      }
+    },
+    "providers": {
+      "google": "Continue with Google",
+      "microsoft": "Continue with Microsoft",
+      "apple": "Continue with Apple",
+      "facebook": "Continue with Facebook"
+    },
+    "signup": {
+      "title": "Create your workspace",
+      "desc": "Free to start. Set up in under a minute.",
+      "stepAccount": "Account",
+      "stepVerify": "Verify",
+      "stepWorkspace": "Workspace",
+      "continue": "Continue",
+      "changeEmail": "Use a different email",
+      "create": "Create workspace",
+      "checking": "Checking…",
+      "available": "Available",
+      "unavailable": {
+        "taken": "Already taken",
+        "reserved": "Reserved — choose another",
+        "invalid": "Not a valid address"
+      },
+      "subdomainHelp": "Your team signs in here. You can add a custom domain later.",
+      "redirecting": "Opening your new workspace…",
+      "haveAccount": "Already have a workspace?"
+    },
+    "find": {
+      "title": "Find your workspace",
+      "desc": "Enter the email you use at work. We'll send you a code.",
+      "resultsDesc": "Choose the workspace to sign in to.",
+      "send": "Send code",
+      "none": "No workspaces found",
+      "noneDesc": "This email isn't part of any workspace yet.",
+      "other": "Try another email"
+    },
+    "forgot": {
+      "title": "Reset your password",
+      "desc": "Enter your email and we'll send you a code to set a new password.",
+      "back": "Back to sign in",
+      "send": "Send code",
+      "save": "Save new password"
+    },
+    "welcome": {
+      "title": "Setting up your workspace",
+      "desc": "Signing you in…",
+      "failed": "This link has expired",
+      "failedDesc": "Sign in with your email and password instead."
+    }
   }
 }

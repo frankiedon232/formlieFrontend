@@ -129,7 +129,8 @@
     "genericDesc": "Bitte versuchen Sie es erneut. Wenn es weiterhin passiert, wenden Sie sich an den Support.",
     "workspaceTitle": "Arbeitsbereich nicht gefunden",
     "workspaceDesc": "Unter {host} gibt es keinen Arbeitsbereich. Prüfen Sie die Adresse oder finden Sie Ihren Arbeitsbereich.",
-    "findWorkspace": "Meinen Arbeitsbereich finden"
+    "findWorkspace": "Meinen Arbeitsbereich finden",
+    "workspaceSuspendedDesc": "Dieser Arbeitsbereich ist pausiert. Wenden Sie sich an Ihren Administrator oder unseren Support."
   },
   "errors": {
     "FRM-GEN-1001": "Ungültige Anfrage.",
@@ -224,5 +225,129 @@
     "rights": "Alle Rechte vorbehalten.",
     "version": "Version {version}",
     "label": "Fußzeile"
+  },
+  "authLayout": {
+    "headline": "Formulare, die man gerne ausfüllt.",
+    "point1": "Drag-and-drop-Editor mit fertigen Vorlagen.",
+    "point2": "Durchgehend verschlüsselt, mit Code bei jeder Anmeldung.",
+    "point3": "In 20 Sprachen, auf jedem Gerät.",
+    "poweredBy": "Bereitgestellt von {app}"
+  },
+  "auth": {
+    "or": "oder",
+    "fields": {
+      "email": "E-Mail",
+      "password": "Passwort",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "workEmail": "Geschäftliche E-Mail",
+      "company": "Firmenname",
+      "subdomain": "Adresse des Arbeitsbereichs",
+      "newPassword": "Neues Passwort",
+      "confirmPassword": "Passwort bestätigen"
+    },
+    "validation": {
+      "email": "Geben Sie eine gültige E-Mail-Adresse ein.",
+      "password": "Geben Sie Ihr Passwort ein.",
+      "required": "Pflichtfeld.",
+      "passwordPolicy": "Mindestens {min} Zeichen mit Groß- und Kleinbuchstaben und einer Zahl.",
+      "companyName": "Geben Sie Ihren Firmennamen ein.",
+      "subdomain": "3–63 Kleinbuchstaben, Ziffern oder Bindestriche.",
+      "passwordMatch": "Die Passwörter stimmen nicht überein."
+    },
+    "login": {
+      "title": "Anmelden",
+      "desc": "Willkommen zurück bei {workspace}.",
+      "manageTitle": "Arbeitsbereich finden",
+      "manageDesc": "Geben Sie Ihre E-Mail ein, wir senden Ihnen einen Code, um Ihre Arbeitsbereiche zu finden.",
+      "expired": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+      "oauthUnavailable": "Die Anmeldung mit {provider} ist noch nicht verfügbar. Nutzen Sie Ihre E-Mail.",
+      "passwordReset": "Ihr Passwort wurde geändert. Melden Sie sich mit dem neuen an.",
+      "continue": "Weiter",
+      "forgot": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "findWorkspace": "Meinen Arbeitsbereich finden",
+      "noWorkspace": "Neu bei Formalie?",
+      "createWorkspace": "Arbeitsbereich erstellen",
+      "wrongWorkspace": "Nicht Ihr Arbeitsbereich?"
+    },
+    "otp": {
+      "label": "6-stelliger Code",
+      "title": "Prüfen Sie Ihre E-Mails",
+      "desc": "Wir haben einen 6-stelligen Code an {destination} gesendet.",
+      "attemptsLeft": "Noch {count} Versuch | Noch {count} Versuche",
+      "devCode": "Entwicklungscode: {code}",
+      "resendIn": "Code erneut senden in {seconds} s",
+      "resend": "Code erneut senden",
+      "channel": {
+        "email": "Per E-Mail senden",
+        "sms": "Per SMS senden",
+        "totp": "Authenticator-App verwenden"
+      },
+      "verifying": "Wird geprüft…"
+    },
+    "password": {
+      "weak": "Schwach",
+      "fair": "Mittel",
+      "good": "Gut",
+      "strong": "Stark",
+      "hide": "Passwort verbergen",
+      "show": "Passwort anzeigen",
+      "rule": {
+        "length": "{min}+ Zeichen",
+        "lower": "Kleinbuchstabe",
+        "upper": "Großbuchstabe",
+        "number": "Zahl",
+        "symbol": "Sonderzeichen (optional)"
+      }
+    },
+    "providers": {
+      "google": "Weiter mit Google",
+      "microsoft": "Weiter mit Microsoft",
+      "apple": "Weiter mit Apple",
+      "facebook": "Weiter mit Facebook"
+    },
+    "signup": {
+      "title": "Arbeitsbereich erstellen",
+      "desc": "Kostenlos starten. In unter einer Minute eingerichtet.",
+      "stepAccount": "Konto",
+      "stepVerify": "Bestätigen",
+      "stepWorkspace": "Arbeitsbereich",
+      "continue": "Weiter",
+      "changeEmail": "Andere E-Mail verwenden",
+      "create": "Arbeitsbereich erstellen",
+      "checking": "Wird geprüft…",
+      "available": "Verfügbar",
+      "unavailable": {
+        "taken": "Bereits vergeben",
+        "reserved": "Reserviert – bitte eine andere wählen",
+        "invalid": "Keine gültige Adresse"
+      },
+      "subdomainHelp": "Hier meldet sich Ihr Team an. Eine eigene Domain können Sie später hinzufügen.",
+      "redirecting": "Ihr neuer Arbeitsbereich wird geöffnet…",
+      "haveAccount": "Sie haben schon einen Arbeitsbereich?"
+    },
+    "find": {
+      "title": "Arbeitsbereich finden",
+      "desc": "Geben Sie Ihre geschäftliche E-Mail ein. Wir senden Ihnen einen Code.",
+      "resultsDesc": "Wählen Sie den Arbeitsbereich, bei dem Sie sich anmelden möchten.",
+      "send": "Code senden",
+      "none": "Keine Arbeitsbereiche gefunden",
+      "noneDesc": "Diese E-Mail gehört noch zu keinem Arbeitsbereich.",
+      "other": "Andere E-Mail versuchen"
+    },
+    "forgot": {
+      "title": "Passwort zurücksetzen",
+      "desc": "Geben Sie Ihre E-Mail ein, wir senden Ihnen einen Code für ein neues Passwort.",
+      "back": "Zurück zur Anmeldung",
+      "send": "Code senden",
+      "save": "Neues Passwort speichern"
+    },
+    "welcome": {
+      "title": "Ihr Arbeitsbereich wird eingerichtet",
+      "desc": "Sie werden angemeldet…",
+      "failed": "Dieser Link ist abgelaufen",
+      "failedDesc": "Melden Sie sich mit E-Mail und Passwort an."
+    }
   }
 }

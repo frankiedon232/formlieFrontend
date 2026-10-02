@@ -129,7 +129,8 @@
     "genericDesc": "请重试。如果问题持续存在，请联系支持。",
     "workspaceTitle": "未找到工作区",
     "workspaceDesc": "{host} 上没有工作区。请检查地址或查找您的工作区。",
-    "findWorkspace": "查找我的工作区"
+    "findWorkspace": "查找我的工作区",
+    "workspaceSuspendedDesc": "该工作区已暂停。请联系管理员或我们的支持团队。"
   },
   "errors": {
     "FRM-GEN-1001": "请求无效。",
@@ -224,5 +225,129 @@
     "rights": "保留所有权利。",
     "version": "版本 {version}",
     "label": "页脚"
+  },
+  "authLayout": {
+    "headline": "打造让人乐于填写的表单。",
+    "point1": "拖放式编辑器，附带现成模板。",
+    "point2": "端到端加密，每次登录都需验证码。",
+    "point3": "支持 20 种语言，适配所有设备。",
+    "poweredBy": "由 {app} 提供支持"
+  },
+  "auth": {
+    "or": "或",
+    "fields": {
+      "email": "邮箱",
+      "password": "密码",
+      "firstName": "名",
+      "lastName": "姓",
+      "workEmail": "工作邮箱",
+      "company": "公司名称",
+      "subdomain": "工作区地址",
+      "newPassword": "新密码",
+      "confirmPassword": "确认密码"
+    },
+    "validation": {
+      "email": "请输入有效的邮箱地址。",
+      "password": "请输入密码。",
+      "required": "必填。",
+      "passwordPolicy": "至少 {min} 个字符，包含大小写字母和数字。",
+      "companyName": "请输入公司名称。",
+      "subdomain": "使用 3–63 个小写字母、数字或连字符。",
+      "passwordMatch": "两次输入的密码不一致。"
+    },
+    "login": {
+      "title": "登录",
+      "desc": "欢迎回到 {workspace}。",
+      "manageTitle": "找到您的工作区",
+      "manageDesc": "输入邮箱，我们会发送验证码帮您找到工作区。",
+      "expired": "会话已过期，请重新登录。",
+      "oauthUnavailable": "暂不支持使用 {provider} 登录，请使用邮箱。",
+      "passwordReset": "密码已修改，请使用新密码登录。",
+      "continue": "继续",
+      "forgot": "忘记密码？",
+      "submit": "登录",
+      "findWorkspace": "找到我的工作区",
+      "noWorkspace": "初次使用 Formalie？",
+      "createWorkspace": "创建工作区",
+      "wrongWorkspace": "不是您的工作区？"
+    },
+    "otp": {
+      "label": "6 位验证码",
+      "title": "请查收邮件",
+      "desc": "我们已向 {destination} 发送了 6 位验证码。",
+      "attemptsLeft": "还剩 {count} 次机会 | 还剩 {count} 次机会",
+      "devCode": "开发验证码：{code}",
+      "resendIn": "{seconds} 秒后可重新发送",
+      "resend": "重新发送验证码",
+      "channel": {
+        "email": "通过邮件发送",
+        "sms": "通过短信发送",
+        "totp": "使用身份验证器应用"
+      },
+      "verifying": "正在验证…"
+    },
+    "password": {
+      "weak": "弱",
+      "fair": "一般",
+      "good": "良好",
+      "strong": "强",
+      "hide": "隐藏密码",
+      "show": "显示密码",
+      "rule": {
+        "length": "{min} 个以上字符",
+        "lower": "小写字母",
+        "upper": "大写字母",
+        "number": "数字",
+        "symbol": "符号（可选）"
+      }
+    },
+    "providers": {
+      "google": "使用 Google 继续",
+      "microsoft": "使用 Microsoft 继续",
+      "apple": "使用 Apple 继续",
+      "facebook": "使用 Facebook 继续"
+    },
+    "signup": {
+      "title": "创建您的工作区",
+      "desc": "免费开始，一分钟内完成设置。",
+      "stepAccount": "账户",
+      "stepVerify": "验证",
+      "stepWorkspace": "工作区",
+      "continue": "继续",
+      "changeEmail": "使用其他邮箱",
+      "create": "创建工作区",
+      "checking": "检查中…",
+      "available": "可用",
+      "unavailable": {
+        "taken": "已被占用",
+        "reserved": "保留地址，请换一个",
+        "invalid": "地址无效"
+      },
+      "subdomainHelp": "您的团队将在此登录。之后可添加自定义域名。",
+      "redirecting": "正在打开新工作区…",
+      "haveAccount": "已有工作区？"
+    },
+    "find": {
+      "title": "找到您的工作区",
+      "desc": "输入工作邮箱，我们会给您发送验证码。",
+      "resultsDesc": "选择要登录的工作区。",
+      "send": "发送验证码",
+      "none": "未找到工作区",
+      "noneDesc": "该邮箱尚未加入任何工作区。",
+      "other": "换个邮箱试试"
+    },
+    "forgot": {
+      "title": "重置密码",
+      "desc": "输入邮箱，我们会发送验证码以设置新密码。",
+      "back": "返回登录",
+      "send": "发送验证码",
+      "save": "保存新密码"
+    },
+    "welcome": {
+      "title": "正在准备您的工作区",
+      "desc": "正在登录…",
+      "failed": "该链接已过期",
+      "failedDesc": "请使用邮箱和密码登录。"
+    }
   }
 }

@@ -129,7 +129,8 @@
     "genericDesc": "もう一度お試しください。解決しない場合はサポートにお問い合わせください。",
     "workspaceTitle": "ワークスペースが見つかりません",
     "workspaceDesc": "{host} にワークスペースはありません。アドレスを確認するか、ワークスペースを探してください。",
-    "findWorkspace": "ワークスペースを探す"
+    "findWorkspace": "ワークスペースを探す",
+    "workspaceSuspendedDesc": "このワークスペースは一時停止中です。管理者またはサポートにお問い合わせください。"
   },
   "errors": {
     "FRM-GEN-1001": "無効なリクエストです。",
@@ -224,5 +225,129 @@
     "rights": "All rights reserved.",
     "version": "バージョン {version}",
     "label": "フッター"
+  },
+  "authLayout": {
+    "headline": "思わず入力したくなるフォームを。",
+    "point1": "テンプレート付きのドラッグ＆ドロップ ビルダー。",
+    "point2": "エンドツーエンド暗号化、ログインごとに確認コード。",
+    "point3": "20 言語、あらゆるデバイスに対応。",
+    "poweredBy": "Powered by {app}"
+  },
+  "auth": {
+    "or": "または",
+    "fields": {
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "firstName": "名",
+      "lastName": "姓",
+      "workEmail": "勤務先メールアドレス",
+      "company": "会社名",
+      "subdomain": "ワークスペースのアドレス",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "パスワード（確認）"
+    },
+    "validation": {
+      "email": "有効なメールアドレスを入力してください。",
+      "password": "パスワードを入力してください。",
+      "required": "必須です。",
+      "passwordPolicy": "大文字・小文字・数字を含む {min} 文字以上にしてください。",
+      "companyName": "会社名を入力してください。",
+      "subdomain": "小文字・数字・ハイフンで 3〜63 文字にしてください。",
+      "passwordMatch": "パスワードが一致しません。"
+    },
+    "login": {
+      "title": "ログイン",
+      "desc": "{workspace} へようこそ。",
+      "manageTitle": "ワークスペースを探す",
+      "manageDesc": "メールアドレスを入力すると、ワークスペースを探すためのコードをお送りします。",
+      "expired": "セッションの有効期限が切れました。もう一度ログインしてください。",
+      "oauthUnavailable": "{provider} でのログインはまだ利用できません。メールアドレスをご利用ください。",
+      "passwordReset": "パスワードを変更しました。新しいパスワードでログインしてください。",
+      "continue": "続ける",
+      "forgot": "パスワードをお忘れですか？",
+      "submit": "ログイン",
+      "findWorkspace": "ワークスペースを探す",
+      "noWorkspace": "Formalie は初めてですか？",
+      "createWorkspace": "ワークスペースを作成",
+      "wrongWorkspace": "別のワークスペースですか？"
+    },
+    "otp": {
+      "label": "6 桁のコード",
+      "title": "メールを確認してください",
+      "desc": "{destination} に 6 桁のコードを送信しました。",
+      "attemptsLeft": "残り {count} 回 | 残り {count} 回",
+      "devCode": "開発用コード: {code}",
+      "resendIn": "{seconds} 秒後に再送できます",
+      "resend": "コードを再送",
+      "channel": {
+        "email": "メールで送信",
+        "sms": "SMS で送信",
+        "totp": "認証アプリを使う"
+      },
+      "verifying": "確認中…"
+    },
+    "password": {
+      "weak": "弱い",
+      "fair": "普通",
+      "good": "良い",
+      "strong": "強い",
+      "hide": "パスワードを隠す",
+      "show": "パスワードを表示",
+      "rule": {
+        "length": "{min} 文字以上",
+        "lower": "小文字",
+        "upper": "大文字",
+        "number": "数字",
+        "symbol": "記号（任意）"
+      }
+    },
+    "providers": {
+      "google": "Google で続ける",
+      "microsoft": "Microsoft で続ける",
+      "apple": "Apple で続ける",
+      "facebook": "Facebook で続ける"
+    },
+    "signup": {
+      "title": "ワークスペースを作成",
+      "desc": "無料で開始。1 分以内に設定完了。",
+      "stepAccount": "アカウント",
+      "stepVerify": "確認",
+      "stepWorkspace": "ワークスペース",
+      "continue": "続ける",
+      "changeEmail": "別のメールアドレスを使う",
+      "create": "ワークスペースを作成",
+      "checking": "確認中…",
+      "available": "利用できます",
+      "unavailable": {
+        "taken": "すでに使われています",
+        "reserved": "予約済みです。別のものを選んでください",
+        "invalid": "無効なアドレスです"
+      },
+      "subdomainHelp": "チームはここからログインします。独自ドメインは後から追加できます。",
+      "redirecting": "新しいワークスペースを開いています…",
+      "haveAccount": "すでにワークスペースをお持ちですか？"
+    },
+    "find": {
+      "title": "ワークスペースを探す",
+      "desc": "勤務先のメールアドレスを入力してください。コードをお送りします。",
+      "resultsDesc": "ログインするワークスペースを選んでください。",
+      "send": "コードを送信",
+      "none": "ワークスペースが見つかりません",
+      "noneDesc": "このメールアドレスはまだどのワークスペースにも所属していません。",
+      "other": "別のメールアドレスを試す"
+    },
+    "forgot": {
+      "title": "パスワードをリセット",
+      "desc": "メールアドレスを入力すると、新しいパスワードを設定するためのコードをお送りします。",
+      "back": "ログインに戻る",
+      "send": "コードを送信",
+      "save": "新しいパスワードを保存"
+    },
+    "welcome": {
+      "title": "ワークスペースを準備しています",
+      "desc": "ログインしています…",
+      "failed": "このリンクは期限切れです",
+      "failedDesc": "メールアドレスとパスワードでログインしてください。"
+    }
   }
 }

@@ -1,4 +1,5 @@
 import type { ApiSuccess, ListMeta } from '#shared/types/api'
+import type { AuthTokens } from '#shared/types/auth'
 import type { ApiClient, HttpMethod, RequestOptions } from '~/utils/api/client'
 
 /**
@@ -20,6 +21,8 @@ function getClient(): ApiClient {
 
   const config = useRuntimeConfig()
   const session = useSession()
+  const devTenant = useState<string | null>('tenant:dev', () => null)
+  const router = useRouter()
 
   client = createApiClient({
     baseUrl: config.public.apiBase,
@@ -28,22 +31,25 @@ function getClient(): ApiClient {
       return { status: response.status, json: await response.json().catch(() => null) }
     },
     getAccessToken: () => session.accessToken.value,
+    // Dev only: tenant chosen with ?tenant= on localhost / LAN IP (decision 19). The mock honours it.
+    getExtraHeaders: (): Record<string, string> =>
+      import.meta.dev && devTenant.value ? { 'x-formalie-dev-tenant': devTenant.value } : {},
     refreshAccessToken: async () => {
       try {
-        const { data } = await client!.request<{ access_token: string; expires_in?: number }>(
-          'POST',
-          '/auth/refresh',
-          { skipAuthRefresh: true },
-        )
-        session.setAccessToken(data.access_token, data.expires_in)
+        const { data } = await client!.request<AuthTokens>('POST', '/auth/refresh', { skipAuthRefresh: true })
+        session.applyTokens(data)
         return true
       } catch {
         return false
       }
     },
     onUnauthenticated: () => {
+      const wasSignedIn = session.isAuthenticated.value
       session.clear()
-      // F3: redirect to /auth/login with a "session expired" notice.
+      const route = router.currentRoute.value
+      if (wasSignedIn && route.meta.auth !== 'guest' && route.meta.auth !== false) {
+        router.replace({ path: '/auth/login', query: { expired: '1', redirect: route.fullPath } })
+      }
     },
   })
   return client

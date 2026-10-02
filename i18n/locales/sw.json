@@ -129,7 +129,8 @@
     "genericDesc": "Tafadhali jaribu tena. Ikiendelea, wasiliana na msaada.",
     "workspaceTitle": "Eneo la kazi halikupatikana",
     "workspaceDesc": "Hakuna eneo la kazi kwenye {host}. Kagua anwani au tafuta eneo lako la kazi.",
-    "findWorkspace": "Tafuta eneo langu la kazi"
+    "findWorkspace": "Tafuta eneo langu la kazi",
+    "workspaceSuspendedDesc": "Eneo hili la kazi limesitishwa. Wasiliana na msimamizi au timu yetu ya msaada."
   },
   "errors": {
     "FRM-GEN-1001": "Ombi si sahihi.",
@@ -224,5 +225,129 @@
     "rights": "Haki zote zimehifadhiwa.",
     "version": "Toleo {version}",
     "label": "Sehemu ya chini"
+  },
+  "authLayout": {
+    "headline": "Unda fomu ambazo watu hupenda kujaza.",
+    "point1": "Kiunda cha buruta-na-dondosha chenye violezo tayari.",
+    "point2": "Usimbaji fiche kamili, na msimbo kila unapoingia.",
+    "point3": "Kwa lugha 20, kwenye kila kifaa.",
+    "poweredBy": "Inaendeshwa na {app}"
+  },
+  "auth": {
+    "or": "au",
+    "fields": {
+      "email": "Barua pepe",
+      "password": "Nenosiri",
+      "firstName": "Jina la kwanza",
+      "lastName": "Jina la mwisho",
+      "workEmail": "Barua pepe ya kazini",
+      "company": "Jina la kampuni",
+      "subdomain": "Anwani ya eneo la kazi",
+      "newPassword": "Nenosiri jipya",
+      "confirmPassword": "Thibitisha nenosiri"
+    },
+    "validation": {
+      "email": "Weka barua pepe sahihi.",
+      "password": "Weka nenosiri lako.",
+      "required": "Inahitajika.",
+      "passwordPolicy": "Tumia angalau herufi {min} zenye herufi kubwa, ndogo na namba.",
+      "companyName": "Weka jina la kampuni yako.",
+      "subdomain": "Tumia herufi ndogo, namba au vistari 3–63.",
+      "passwordMatch": "Manenosiri hayalingani."
+    },
+    "login": {
+      "title": "Ingia",
+      "desc": "Karibu tena {workspace}.",
+      "manageTitle": "Tafuta eneo lako la kazi",
+      "manageDesc": "Weka barua pepe yako, tutakutumia msimbo wa kupata maeneo yako ya kazi.",
+      "expired": "Kipindi chako kimeisha. Tafadhali ingia tena.",
+      "oauthUnavailable": "Kuingia kwa {provider} bado hakupatikani. Tumia barua pepe yako.",
+      "passwordReset": "Nenosiri lako limebadilishwa. Ingia kwa jipya.",
+      "continue": "Endelea",
+      "forgot": "Umesahau nenosiri?",
+      "submit": "Ingia",
+      "findWorkspace": "Tafuta eneo langu la kazi",
+      "noWorkspace": "Mgeni kwenye Formalie?",
+      "createWorkspace": "Unda eneo la kazi",
+      "wrongWorkspace": "Si eneo lako la kazi?"
+    },
+    "otp": {
+      "label": "Msimbo wa tarakimu 6",
+      "title": "Angalia barua pepe yako",
+      "desc": "Tumetuma msimbo wa tarakimu 6 kwa {destination}.",
+      "attemptsLeft": "Jaribio {count} limebaki | Majaribio {count} yamebaki",
+      "devCode": "Msimbo wa majaribio: {code}",
+      "resendIn": "Tuma tena baada ya sekunde {seconds}",
+      "resend": "Tuma msimbo tena",
+      "channel": {
+        "email": "Tuma kwa barua pepe",
+        "sms": "Tuma kwa SMS",
+        "totp": "Tumia programu ya uthibitishaji"
+      },
+      "verifying": "Inathibitisha…"
+    },
+    "password": {
+      "weak": "Dhaifu",
+      "fair": "Wastani",
+      "good": "Nzuri",
+      "strong": "Imara",
+      "hide": "Ficha nenosiri",
+      "show": "Onyesha nenosiri",
+      "rule": {
+        "length": "Herufi {min}+",
+        "lower": "Herufi ndogo",
+        "upper": "Herufi kubwa",
+        "number": "Namba",
+        "symbol": "Alama (si lazima)"
+      }
+    },
+    "providers": {
+      "google": "Endelea na Google",
+      "microsoft": "Endelea na Microsoft",
+      "apple": "Endelea na Apple",
+      "facebook": "Endelea na Facebook"
+    },
+    "signup": {
+      "title": "Unda eneo lako la kazi",
+      "desc": "Anza bure. Tayari kwa chini ya dakika moja.",
+      "stepAccount": "Akaunti",
+      "stepVerify": "Thibitisha",
+      "stepWorkspace": "Eneo la kazi",
+      "continue": "Endelea",
+      "changeEmail": "Tumia barua pepe nyingine",
+      "create": "Unda eneo la kazi",
+      "checking": "Inakagua…",
+      "available": "Inapatikana",
+      "unavailable": {
+        "taken": "Tayari imechukuliwa",
+        "reserved": "Imehifadhiwa — chagua nyingine",
+        "invalid": "Si anwani sahihi"
+      },
+      "subdomainHelp": "Timu yako itaingia hapa. Unaweza kuongeza kikoa chako baadaye.",
+      "redirecting": "Inafungua eneo lako jipya la kazi…",
+      "haveAccount": "Tayari una eneo la kazi?"
+    },
+    "find": {
+      "title": "Tafuta eneo lako la kazi",
+      "desc": "Weka barua pepe ya kazini. Tutakutumia msimbo.",
+      "resultsDesc": "Chagua eneo la kazi la kuingia.",
+      "send": "Tuma msimbo",
+      "none": "Hakuna maeneo ya kazi yaliyopatikana",
+      "noneDesc": "Barua pepe hii bado haimo kwenye eneo lolote la kazi.",
+      "other": "Jaribu barua pepe nyingine"
+    },
+    "forgot": {
+      "title": "Weka upya nenosiri",
+      "desc": "Weka barua pepe yako, tutakutumia msimbo wa kuweka nenosiri jipya.",
+      "back": "Rudi kwenye kuingia",
+      "send": "Tuma msimbo",
+      "save": "Hifadhi nenosiri jipya"
+    },
+    "welcome": {
+      "title": "Tunaandaa eneo lako la kazi",
+      "desc": "Tunakuingiza…",
+      "failed": "Kiungo hiki kimeisha muda",
+      "failedDesc": "Ingia kwa barua pepe na nenosiri lako."
+    }
   }
 }

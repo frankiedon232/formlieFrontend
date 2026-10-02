@@ -33,8 +33,11 @@ const createItems = computed<DropdownMenuItem[][]>(() => [
   ],
 ])
 
-// F3: the tenant's organisations; for now the current workspace only.
-const workspaces = computed(() => [{ name: t('app.name'), icon: 'i-lucide-file-check-2', active: true }])
+// Current workspace; the organisation switcher (several orgs per tenant) joins in F11.
+const tenant = useTenant()
+const workspaces = computed(() => [
+  { name: tenant.profile.value?.name ?? t('app.name'), icon: 'i-lucide-building-2', active: true },
+])
 </script>
 
 <template>

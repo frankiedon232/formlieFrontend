@@ -15,6 +15,7 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 | 2026-10-02 | F1    | Menu detail per owner: timeline children, square bullets, clean dark text.                                                                                                                                                                                                                                                |
 | 2026-10-02 | F2    | Core plumbing done: API client + useApi, error handling (48 codes × 20 languages), useBusy, useFormat, DataView (forms list live on the encrypted mock), confirm dialog, copy field. Checked desktop/phone, Arabic RTL (Arabic-Indic digits), error state + retry, URL-synced search/sort/paging/date range, view memory. |
 | 2026-10-02 | F2    | Owner feedback: title/subtitle/crumbs/page buttons moved into the header bar (content area clear, phone = icons), footer added; DataView flow approved and frozen.                                                                                                                                                        |
+| 2026-10-02 | F3    | Auth built (mock + client + pages); mock flow verified live (login, OTP attempts, tokens, protected call, refresh rotation, reuse → revoke). Browser check pending dev-server restart.                                                                                                                                    |
 
 ## F0 — Foundation
 

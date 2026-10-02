@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@iconify-json/circle-flags": "^1.2.12",
+    "@iconify-json/simple-icons": "^1.2.98",
     "@internationalized/date": "^3.12.4",
     "@nuxt/ui": "^4.11.2",
     "@nuxtjs/i18n": "^10.6.0",

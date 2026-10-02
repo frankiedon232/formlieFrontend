@@ -73,6 +73,10 @@ mkcert -cert-file C:\devcerts\formalie.pem -key-file C:\devcerts\formalie-key.pe
 
 Phones need the mkcert root CA installed to trust it (`mkcert -CAROOT` → `rootCA.pem`). The language cookie is per host, so a language chosen on `localhost` is not carried to `manage.formalie.dev` (F3: the manage → tenant redirect passes the locale along).
 
+## Test accounts (mock API)
+
+Seeded in `server/mock/data/tenants.ts` (mock only, in memory): workspaces **remedylegal** and **samathtax** (active), **oldco** (suspended). Sign-in: `admin@remedylegal.test` / `admin@samathtax.test`, password in that file. The code screen shows the mock's code in dev; it is also logged in the dev-server console (`[mock-otp]`). On localhost / an IP use `?tenant=remedylegal` (dev only).
+
 ## Project env (`.env`, copy from `.env.example`)
 
 | Variable                           | Purpose                                                                                   |

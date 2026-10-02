@@ -129,7 +129,8 @@
     "genericDesc": "Inténtalo de nuevo. Si sigue ocurriendo, contacta con soporte.",
     "workspaceTitle": "Espacio de trabajo no encontrado",
     "workspaceDesc": "No hay ningún espacio en {host}. Revisa la dirección o busca tu espacio.",
-    "findWorkspace": "Buscar mi espacio"
+    "findWorkspace": "Buscar mi espacio",
+    "workspaceSuspendedDesc": "Este espacio está en pausa. Contacta con tu administrador o con soporte."
   },
   "errors": {
     "FRM-GEN-1001": "Solicitud no válida.",
@@ -224,5 +225,129 @@
     "rights": "Todos los derechos reservados.",
     "version": "Versión {version}",
     "label": "Pie de página"
+  },
+  "authLayout": {
+    "headline": "Crea formularios que a la gente le guste completar.",
+    "point1": "Editor de arrastrar y soltar con plantillas listas.",
+    "point2": "Cifrado de extremo a extremo, con un código en cada inicio de sesión.",
+    "point3": "En 20 idiomas, en cualquier dispositivo.",
+    "poweredBy": "Con la tecnología de {app}"
+  },
+  "auth": {
+    "or": "o",
+    "fields": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "workEmail": "Correo del trabajo",
+      "company": "Nombre de la empresa",
+      "subdomain": "Dirección del espacio",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar contraseña"
+    },
+    "validation": {
+      "email": "Introduce un correo válido.",
+      "password": "Introduce tu contraseña.",
+      "required": "Obligatorio.",
+      "passwordPolicy": "Usa al menos {min} caracteres con mayúsculas, minúsculas y un número.",
+      "companyName": "Introduce el nombre de tu empresa.",
+      "subdomain": "De 3 a 63 letras minúsculas, números o guiones.",
+      "passwordMatch": "Las contraseñas no coinciden."
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "desc": "Bienvenido de nuevo a {workspace}.",
+      "manageTitle": "Encuentra tu espacio",
+      "manageDesc": "Introduce tu correo y te enviaremos un código para encontrar tus espacios.",
+      "expired": "Tu sesión caducó. Vuelve a iniciar sesión.",
+      "oauthUnavailable": "El inicio de sesión con {provider} aún no está disponible. Usa tu correo.",
+      "passwordReset": "Tu contraseña se cambió. Inicia sesión con la nueva.",
+      "continue": "Continuar",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "submit": "Iniciar sesión",
+      "findWorkspace": "Encontrar mi espacio",
+      "noWorkspace": "¿Nuevo en Formalie?",
+      "createWorkspace": "Crear un espacio",
+      "wrongWorkspace": "¿No es tu espacio?"
+    },
+    "otp": {
+      "label": "Código de 6 dígitos",
+      "title": "Revisa tu correo",
+      "desc": "Enviamos un código de 6 dígitos a {destination}.",
+      "attemptsLeft": "Te queda {count} intento | Te quedan {count} intentos",
+      "devCode": "Código de desarrollo: {code}",
+      "resendIn": "Reenviar código en {seconds} s",
+      "resend": "Reenviar código",
+      "channel": {
+        "email": "Enviar por correo",
+        "sms": "Enviar por SMS",
+        "totp": "Usar app de autenticación"
+      },
+      "verifying": "Verificando…"
+    },
+    "password": {
+      "weak": "Débil",
+      "fair": "Aceptable",
+      "good": "Buena",
+      "strong": "Fuerte",
+      "hide": "Ocultar contraseña",
+      "show": "Mostrar contraseña",
+      "rule": {
+        "length": "{min}+ caracteres",
+        "lower": "Letra minúscula",
+        "upper": "Letra mayúscula",
+        "number": "Número",
+        "symbol": "Símbolo (opcional)"
+      }
+    },
+    "providers": {
+      "google": "Continuar con Google",
+      "microsoft": "Continuar con Microsoft",
+      "apple": "Continuar con Apple",
+      "facebook": "Continuar con Facebook"
+    },
+    "signup": {
+      "title": "Crea tu espacio",
+      "desc": "Gratis para empezar. Listo en menos de un minuto.",
+      "stepAccount": "Cuenta",
+      "stepVerify": "Verificar",
+      "stepWorkspace": "Espacio",
+      "continue": "Continuar",
+      "changeEmail": "Usar otro correo",
+      "create": "Crear espacio",
+      "checking": "Comprobando…",
+      "available": "Disponible",
+      "unavailable": {
+        "taken": "Ya está en uso",
+        "reserved": "Reservado: elige otro",
+        "invalid": "Dirección no válida"
+      },
+      "subdomainHelp": "Tu equipo iniciará sesión aquí. Más adelante podrás añadir un dominio propio.",
+      "redirecting": "Abriendo tu nuevo espacio…",
+      "haveAccount": "¿Ya tienes un espacio?"
+    },
+    "find": {
+      "title": "Encuentra tu espacio",
+      "desc": "Introduce el correo que usas en el trabajo. Te enviaremos un código.",
+      "resultsDesc": "Elige el espacio en el que quieres entrar.",
+      "send": "Enviar código",
+      "none": "No se encontraron espacios",
+      "noneDesc": "Este correo aún no pertenece a ningún espacio.",
+      "other": "Probar con otro correo"
+    },
+    "forgot": {
+      "title": "Restablece tu contraseña",
+      "desc": "Introduce tu correo y te enviaremos un código para crear una nueva contraseña.",
+      "back": "Volver a iniciar sesión",
+      "send": "Enviar código",
+      "save": "Guardar nueva contraseña"
+    },
+    "welcome": {
+      "title": "Preparando tu espacio",
+      "desc": "Iniciando sesión…",
+      "failed": "Este enlace caducó",
+      "failedDesc": "Inicia sesión con tu correo y contraseña."
+    }
   }
 }

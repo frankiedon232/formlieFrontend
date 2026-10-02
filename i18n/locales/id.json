@@ -129,7 +129,8 @@
     "genericDesc": "Silakan coba lagi. Jika terus terjadi, hubungi dukungan.",
     "workspaceTitle": "Ruang kerja tidak ditemukan",
     "workspaceDesc": "Tidak ada ruang kerja di {host}. Periksa alamatnya atau temukan ruang kerja Anda.",
-    "findWorkspace": "Temukan ruang kerja saya"
+    "findWorkspace": "Temukan ruang kerja saya",
+    "workspaceSuspendedDesc": "Ruang kerja ini dijeda. Hubungi administrator atau tim dukungan kami."
   },
   "errors": {
     "FRM-GEN-1001": "Permintaan tidak valid.",
@@ -224,5 +225,129 @@
     "rights": "Hak cipta dilindungi.",
     "version": "Versi {version}",
     "label": "Kaki halaman"
+  },
+  "authLayout": {
+    "headline": "Buat formulir yang senang diisi orang.",
+    "point1": "Pembuat seret dan lepas dengan templat siap pakai.",
+    "point2": "Terenkripsi ujung ke ujung, dengan kode di setiap masuk.",
+    "point3": "Dalam 20 bahasa, di semua perangkat.",
+    "poweredBy": "Didukung oleh {app}"
+  },
+  "auth": {
+    "or": "atau",
+    "fields": {
+      "email": "Email",
+      "password": "Kata sandi",
+      "firstName": "Nama depan",
+      "lastName": "Nama belakang",
+      "workEmail": "Email kerja",
+      "company": "Nama perusahaan",
+      "subdomain": "Alamat ruang kerja",
+      "newPassword": "Kata sandi baru",
+      "confirmPassword": "Konfirmasi kata sandi"
+    },
+    "validation": {
+      "email": "Masukkan alamat email yang valid.",
+      "password": "Masukkan kata sandi Anda.",
+      "required": "Wajib.",
+      "passwordPolicy": "Minimal {min} karakter dengan huruf besar, huruf kecil, dan angka.",
+      "companyName": "Masukkan nama perusahaan Anda.",
+      "subdomain": "Gunakan 3–63 huruf kecil, angka, atau tanda hubung.",
+      "passwordMatch": "Kata sandi tidak cocok."
+    },
+    "login": {
+      "title": "Masuk",
+      "desc": "Selamat datang kembali di {workspace}.",
+      "manageTitle": "Temukan ruang kerja Anda",
+      "manageDesc": "Masukkan email Anda, kami akan mengirim kode untuk menemukan ruang kerja Anda.",
+      "expired": "Sesi Anda berakhir. Silakan masuk lagi.",
+      "oauthUnavailable": "Masuk dengan {provider} belum tersedia. Gunakan email Anda.",
+      "passwordReset": "Kata sandi Anda telah diubah. Masuk dengan kata sandi baru.",
+      "continue": "Lanjutkan",
+      "forgot": "Lupa kata sandi?",
+      "submit": "Masuk",
+      "findWorkspace": "Temukan ruang kerja saya",
+      "noWorkspace": "Baru di Formalie?",
+      "createWorkspace": "Buat ruang kerja",
+      "wrongWorkspace": "Bukan ruang kerja Anda?"
+    },
+    "otp": {
+      "label": "Kode 6 digit",
+      "title": "Periksa email Anda",
+      "desc": "Kami mengirim kode 6 digit ke {destination}.",
+      "attemptsLeft": "Sisa {count} percobaan | Sisa {count} percobaan",
+      "devCode": "Kode pengembangan: {code}",
+      "resendIn": "Kirim ulang dalam {seconds} dtk",
+      "resend": "Kirim ulang kode",
+      "channel": {
+        "email": "Kirim lewat email",
+        "sms": "Kirim lewat SMS",
+        "totp": "Gunakan aplikasi autentikator"
+      },
+      "verifying": "Memverifikasi…"
+    },
+    "password": {
+      "weak": "Lemah",
+      "fair": "Cukup",
+      "good": "Bagus",
+      "strong": "Kuat",
+      "hide": "Sembunyikan kata sandi",
+      "show": "Tampilkan kata sandi",
+      "rule": {
+        "length": "{min}+ karakter",
+        "lower": "Huruf kecil",
+        "upper": "Huruf besar",
+        "number": "Angka",
+        "symbol": "Simbol (opsional)"
+      }
+    },
+    "providers": {
+      "google": "Lanjutkan dengan Google",
+      "microsoft": "Lanjutkan dengan Microsoft",
+      "apple": "Lanjutkan dengan Apple",
+      "facebook": "Lanjutkan dengan Facebook"
+    },
+    "signup": {
+      "title": "Buat ruang kerja Anda",
+      "desc": "Gratis untuk memulai. Siap dalam kurang dari semenit.",
+      "stepAccount": "Akun",
+      "stepVerify": "Verifikasi",
+      "stepWorkspace": "Ruang kerja",
+      "continue": "Lanjutkan",
+      "changeEmail": "Gunakan email lain",
+      "create": "Buat ruang kerja",
+      "checking": "Memeriksa…",
+      "available": "Tersedia",
+      "unavailable": {
+        "taken": "Sudah dipakai",
+        "reserved": "Dicadangkan — pilih yang lain",
+        "invalid": "Alamat tidak valid"
+      },
+      "subdomainHelp": "Tim Anda masuk di sini. Anda bisa menambahkan domain khusus nanti.",
+      "redirecting": "Membuka ruang kerja baru Anda…",
+      "haveAccount": "Sudah punya ruang kerja?"
+    },
+    "find": {
+      "title": "Temukan ruang kerja Anda",
+      "desc": "Masukkan email kerja Anda. Kami akan mengirimkan kode.",
+      "resultsDesc": "Pilih ruang kerja yang ingin Anda masuki.",
+      "send": "Kirim kode",
+      "none": "Ruang kerja tidak ditemukan",
+      "noneDesc": "Email ini belum menjadi bagian dari ruang kerja mana pun.",
+      "other": "Coba email lain"
+    },
+    "forgot": {
+      "title": "Atur ulang kata sandi",
+      "desc": "Masukkan email Anda, kami akan mengirim kode untuk mengatur kata sandi baru.",
+      "back": "Kembali ke halaman masuk",
+      "send": "Kirim kode",
+      "save": "Simpan kata sandi baru"
+    },
+    "welcome": {
+      "title": "Menyiapkan ruang kerja Anda",
+      "desc": "Sedang masuk…",
+      "failed": "Tautan ini sudah kedaluwarsa",
+      "failedDesc": "Masuk dengan email dan kata sandi Anda."
+    }
   }
 }

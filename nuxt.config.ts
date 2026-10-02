@@ -117,6 +117,7 @@ export default defineNuxtConfig({
     defaults: { weights: [300, 400, 500, 600, 700] },
   },
 
+  // Icon sets: lucide (UI), circle-flags (languages), simple-icons (sign-in providers).
   icon: {
     // /api/** belongs to the backend (mock, dev proxy, Nginx in production) — keep icons out of it.
     localApiEndpoint: '/_nuxt_icon',
