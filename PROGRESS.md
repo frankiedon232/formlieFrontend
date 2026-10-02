@@ -350,6 +350,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ⬜ Typography (font, sizes, weights)
 - ⬜ Colours (primary, text, inputs, errors), inputs and buttons style
 - ⬜ Header / banner, logo, cover page, thank-you page
+- ⬜ Footer (text, links, logo — e.g. privacy note, contact) (owner request 2026-10-02)
+- ⬜ Default theme: a form without a chosen theme uses the workspace default (brand colours + logo from onboarding), so every shared form looks finished
 - ⬜ Custom CSS (paid plans, sanitised)
 - ⬜ Save as theme, apply theme; themes library in Settings
 - ⬜ Applied as CSS variables on the renderer only
@@ -608,6 +610,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab                                                                                                                                                                                                                                                 | F6          | ✅     |
 | 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F10         | ⬜     |
 | 2026-10-02 | Builder feedback (18 points): inline rename, try fields on the canvas, read-only keys with suffix, help as info icon, smaller radius, tighter spacing, label position, Nuxt UI dates, saved fields + lists, file-type picker, thumbnails, option numbers in formulas, clearer + complete logic, read-only / disabled with required guards, phone preview stacking | F7          | ✅     |
+| 2026-10-02 | Form themes: header, footer, body, images and text design carried on shared forms; default theme when none is chosen                                                                                                                                                                                                                                              | F8          | ⬜     |
 
 ---
 
