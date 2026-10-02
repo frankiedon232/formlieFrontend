@@ -1,12 +1,12 @@
 <!--
-  Sidebar: expanded menu ↔ collapsed icon rail (remembered in a cookie by UDashboardGroup).
-  Collapsed + hover/keyboard focus → full menu peeks over the page (AppSidebarPeek, a sibling
-  in the layout). Phones: slide-over drawer. `[` toggles collapse.
+  Sidebar = rail + menu column (docs/design). Expanded ↔ collapsed (rail only) is remembered in a
+  cookie by UDashboardGroup; `[` toggles. Collapsed + hover/keyboard focus on the rail's section
+  icons → the menu column peeks over the page (AppSidebarPeek). Phones: slide-over drawer with both.
 -->
 <script setup lang="ts">
 const emit = defineEmits<{ peekFocus: [edge: 'first' | 'last'] }>()
 const { t } = useI18n()
-const { open: peekOpen, collapsed: sharedCollapsed, available, schedule, close } = useSidebarPeek()
+const { open: peekOpen, mode, collapsed: sharedCollapsed, available, schedule, close } = useSidebarPeek()
 const collapsed = ref(false)
 
 watch(
@@ -18,22 +18,24 @@ watch(
   { immediate: true },
 )
 
-const sidebarEl = ref<HTMLElement | null>(null)
+const railNav = ref<HTMLElement | null>(null)
 onMounted(() => {
-  sidebarEl.value = document.getElementById(SIDEBAR_ELEMENT_ID)
+  railNav.value = document.getElementById(RAIL_NAV_ID)
 })
+watch(collapsed, () => nextTick(() => (railNav.value = document.getElementById(RAIL_NAV_ID))))
 
-useEventListener(sidebarEl, 'mouseenter', () => schedule(true))
-useEventListener(sidebarEl, 'mouseleave', () => schedule(false))
-useEventListener(sidebarEl, 'focusin', (event: FocusEvent) => {
+useEventListener(railNav, 'mouseenter', () => schedule(true))
+useEventListener(railNav, 'mouseleave', () => schedule(false))
+useEventListener(railNav, 'focusin', (event: FocusEvent) => {
   if (!available.value || peekOpen.value) return
   if (!(event.target as HTMLElement).matches(':focus-visible')) return
   const from = event.relatedTarget as Node | null
   // Coming back with Shift+Tab from the page → land on the peek's last item.
   const fromAfter =
     !!from &&
-    !!sidebarEl.value &&
-    !!(sidebarEl.value.compareDocumentPosition(from) & Node.DOCUMENT_POSITION_FOLLOWING)
+    !!railNav.value &&
+    !!(railNav.value.compareDocumentPosition(from) & Node.DOCUMENT_POSITION_FOLLOWING)
+  mode.value = 'focus'
   peekOpen.value = true
   emit('peekFocus', fromAfter ? 'last' : 'first')
 })
@@ -51,23 +53,16 @@ defineShortcuts({
     v-model:collapsed="collapsed"
     collapsible
     resizable
-    :min-size="14"
+    :min-size="15"
     :default-size="16"
-    :max-size="22"
-    :collapsed-size="4.5"
+    :max-size="20"
+    :collapsed-size="4.25"
     :menu="{ title: t('nav.menu'), description: t('nav.menuDescription') }"
-    :ui="{ footer: 'border-t border-default', header: collapsed ? 'justify-center' : '' }"
+    :ui="{ body: 'flex-row gap-0 p-0 overflow-hidden', root: 'bg-default' }"
   >
-    <template #header="{ collapsed: isCollapsed }">
-      <AppSidebarBrand :collapsed="isCollapsed" />
-    </template>
-
     <template #default="{ collapsed: isCollapsed }">
-      <AppSidebarNav :collapsed="isCollapsed" />
-    </template>
-
-    <template #footer="{ collapsed: isCollapsed }">
-      <AppSidebarFooter :collapsed="isCollapsed" />
+      <AppSidebarRail :collapsed="isCollapsed" @expand="collapsed = false" />
+      <AppSidebarMenu v-if="!isCollapsed" collapsible @collapse="collapsed = true" />
     </template>
   </UDashboardSidebar>
 </template>

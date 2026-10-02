@@ -5,7 +5,7 @@ useHead({ title: () => t('nav.templates') })
 </script>
 
 <template>
-  <AppPanel id="templates">
+  <AppPanel id="templates" :title="t('nav.templates')">
     <AppComingSoon icon="i-lucide-layout-template" title-key="nav.templates" />
   </AppPanel>
 </template>

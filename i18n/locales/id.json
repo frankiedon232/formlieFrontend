@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Formulir",
-    "description": "Buat, rancang, dan bagikan formulir Anda."
+    "description": "Buat, rancang, dan bagikan formulir Anda.",
+    "import": "Impor"
   },
   "nav": {
     "main": "Menu utama",
@@ -35,7 +36,23 @@
     "destinations": "Tujuan",
     "webhooks": "Webhook",
     "apiKeys": "Kunci API",
-    "settings": "Pengaturan"
+    "settings": "Pengaturan",
+    "resources": "Sumber daya",
+    "system": "Sistem",
+    "darkMode": "Mode gelap",
+    "help": "Bantuan & dukungan",
+    "themes": "Tema",
+    "formsAll": "Semua formulir",
+    "formsDraft": "Draf",
+    "formsPublished": "Diterbitkan",
+    "formsClosed": "Ditutup",
+    "more": "Lainnya",
+    "create": "Buat",
+    "newForm": "Formulir baru",
+    "fromTemplate": "Dari templat",
+    "workspaces": "Ruang kerja",
+    "expand": "Bentangkan menu",
+    "collapse": "Ciutkan menu"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -51,7 +68,8 @@
     "light": "Terang",
     "dark": "Gelap",
     "system": "Sistem",
-    "logout": "Keluar"
+    "logout": "Keluar",
+    "notSignedIn": "Belum masuk"
   },
   "search": {
     "button": "Cari…",
@@ -59,7 +77,8 @@
     "placeholder": "Cari halaman dan tindakan…",
     "pages": "Buka",
     "actions": "Tindakan",
-    "changeLanguage": "Ganti bahasa"
+    "changeLanguage": "Ganti bahasa",
+    "anything": "Cari apa saja"
   },
   "shortcuts": {
     "title": "Pintasan keyboard",

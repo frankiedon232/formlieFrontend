@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "ফর্ম",
-    "description": "আপনার ফর্ম তৈরি, ডিজাইন ও শেয়ার করুন।"
+    "description": "আপনার ফর্ম তৈরি, ডিজাইন ও শেয়ার করুন।",
+    "import": "ইমপোর্ট"
   },
   "nav": {
     "main": "প্রধান মেনু",
@@ -35,7 +36,23 @@
     "destinations": "গন্তব্য",
     "webhooks": "ওয়েবহুক",
     "apiKeys": "API কী",
-    "settings": "সেটিংস"
+    "settings": "সেটিংস",
+    "resources": "রিসোর্স",
+    "system": "সিস্টেম",
+    "darkMode": "ডার্ক মোড",
+    "help": "সহায়তা ও সাপোর্ট",
+    "themes": "থিম",
+    "formsAll": "সব ফর্ম",
+    "formsDraft": "খসড়া",
+    "formsPublished": "প্রকাশিত",
+    "formsClosed": "বন্ধ",
+    "more": "আরও",
+    "create": "তৈরি করুন",
+    "newForm": "নতুন ফর্ম",
+    "fromTemplate": "টেমপ্লেট থেকে",
+    "workspaces": "ওয়ার্কস্পেস",
+    "expand": "মেনু বড় করুন",
+    "collapse": "মেনু ছোট করুন"
   },
   "navbar": {
     "breadcrumb": "ব্রেডক্রাম্ব",
@@ -51,7 +68,8 @@
     "light": "লাইট",
     "dark": "ডার্ক",
     "system": "সিস্টেম",
-    "logout": "লগ আউট"
+    "logout": "লগ আউট",
+    "notSignedIn": "সাইন ইন করা নেই"
   },
   "search": {
     "button": "খুঁজুন…",
@@ -59,7 +77,8 @@
     "placeholder": "পৃষ্ঠা ও কাজ খুঁজুন…",
     "pages": "যান",
     "actions": "কাজ",
-    "changeLanguage": "ভাষা পরিবর্তন"
+    "changeLanguage": "ভাষা পরিবর্তন",
+    "anything": "যেকোনো কিছু খুঁজুন"
   },
   "shortcuts": {
     "title": "কীবোর্ড শর্টকাট",

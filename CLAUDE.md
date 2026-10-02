@@ -4,7 +4,7 @@ Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/FRONTEND-SPEC.md`, 
 
 **Keep docs in sync.** Every milestone: tick it in `FRONTEND-ROADMAP.md`, add a line to its Progress log, and update any doc whose facts changed (decisions → `03-DECISIONS-AND-NOTES.md`, contract → `API-CONTRACT.md`, setup → `02-DEV-ENVIRONMENT.md`). **Commit and push** to the working branch (`formalieFrontend`) after each verified milestone (typecheck + lint + tests green); stop for review at the end of each phase.
 
-**Design references:** before building any page, check `docs/design/` and `docs/design/README.md` for reference images for UI idea of what it should look and feel and notes. Match the layout and feel with Nuxt UI components; don't copy colours or branding unless the note says so.
+**Design references:** before building any page, check `docs/design/` and `docs/design/README.md` for reference images for UI idea of what it should look and feel and notes. **The images are the exact target design** (owner's instruction, 2026-10-02): reproduce the layout, spacing, component placement and monochrome look with Nuxt UI components — only the product name, logo and domain content (tasks → forms) differ. Compare against the image before calling a page done.
 
 ## Stack (fixed)
 
@@ -23,8 +23,8 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 5. **Always show progress.** `<NuxtLoadingIndicator />` at the top for navigation; `USkeleton` while data loads; `:loading` on every action button (busy state, disabled while busy); progress bars for uploads/exports.
 6. **Every list page offers Table and Grid views** (switch remembered per page), filters, search, sort, date range where relevant, and server-side pagination. Use the shared `DataView` component — don't rebuild per page.
 7. **Keyboard accessible everywhere.** All interactive elements reachable by Tab, visible focus rings, Enter/Space activate, Esc closes overlays, shortcuts via `defineShortcuts` and shown with `UKbd`. Every drag action has a keyboard alternative (move up/down, move to page).
-8. **Breadcrumbs on every page, every segment clickable** (`UBreadcrumb` driven by route meta).
-9. **Theme switch** (light/dark/system) always available in the navbar.
+8. **Breadcrumbs on every page, every segment clickable** (`UBreadcrumb` driven by route meta). Per the design they sit in the page header above the title on nested pages; on a top-level page the title is the single segment.
+9. **Theme switch** always available: Dark mode switch in the sidebar SYSTEM group (design); on phones/tablets (sidebar hidden) a theme button in the navbar; light/dark/system in the user menu and command palette.
 10. **All API calls go through `useApi()`** which applies the encryption envelope, bearer token, CSRF header, refresh-on-401, retry-on-key-expiry. Never call `$fetch`/`fetch` directly in pages or components.
 11. **Secure every form** (zod validation client-side, CSRF, enveloped submission, disabled double submit).
 12. **No secrets or tokens in localStorage.** Access token and session key live in client-only in-memory state (a plain module-level ref in `useSession`, never `useState`, so they are never serialised into an SSR payload); the refresh token is an HttpOnly cookie set by the server.
@@ -33,7 +33,7 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 15. **Rendering:** portal routes are client-rendered (`routeRules: { '/**': { ssr: false } }`); public form routes `/f/**` and `/s/**` are server-rendered for SEO and fast first paint.
 16. Dashboard, users/roles/RBAC and audit UI come **last** (see roadmap).
 17. **Every user-facing string is translated** (`@nuxtjs/i18n`, `const { t } = useI18n()`). No hard-coded copy in templates. Add each new key to **all** files in `i18n/locales/` (English is the fallback so a missing key never breaks the UI, but ship real translations). Languages are defined once in `shared/utils/i18n/locales.ts`. Layouts must work in RTL (Arabic): use logical Tailwind utilities (`ms-/me-/ps-/pe-/start-/end-`) instead of `ml-/mr-/left-/right-`. Format dates, numbers and currency with `Intl` / `useI18n().d/n` in the active locale.
-18. **Page frame:** every portal page renders inside `<AppPanel id="…">` (shared navbar with breadcrumbs, search, notifications, language, theme) and declares `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only (sidebar, search and `g`-shortcuts follow).
+18. **Page frame:** every portal page renders inside `<AppPanel id="…" :title="…">` (shared top bar + page header with breadcrumbs, title, meta line and `#actions`: secondary = outline, primary = solid) and declares `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only (sidebar, search and `g`-shortcuts follow).
 
 ## Folder conventions (Nuxt 4 `app/` dir)
 
@@ -46,8 +46,8 @@ app/
   layouts/  default.vue (dashboard shell) · auth.vue · public.vue (form renderer) · blank.vue
   pages/    (see FRONTEND-SPEC.md page map)
   components/
-    app/      shell: Panel, Modal, Breadcrumbs, Search, ShortcutsModal, UserMenu, LocaleSwitch, ComingSoon
-              sidebar/ (Sidebar, Brand, Nav, Footer, Peek) · navbar/ (Navbar, Notifications)
+    app/      shell: Panel, PageHeader, Modal, Breadcrumbs, Search, ShortcutsModal, UserMenu, LocaleSwitch, ComingSoon
+              sidebar/ (Sidebar, Rail, Menu, Peek) · navbar/ (Navbar, Notifications)
     data/     DataView, FilterBar, DateRangePicker, ViewSwitch, EmptyState
     forms/    builder/, designer/, renderer/, logic/, share/, responses/
     settings/ auth/ templates/

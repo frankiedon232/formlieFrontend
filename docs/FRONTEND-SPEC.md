@@ -8,7 +8,10 @@ Clean, calm, professional. Generous spacing, clear hierarchy, one primary action
 
 Built with `UDashboardGroup` → `UDashboardSidebar` + `UDashboardPanel`.
 
-### Sidebar: rail + menu
+### Sidebar: rail + menu (exactly as docs/design)
+
+- **Rail** (68 px, always visible on desktop): ⋯ more menu, black **+** create menu, separator, workspace avatars (active has a ring). Collapsed: also section icons with tooltips, » expand, account avatar.
+- **Menu column**: logo + name + « collapse; MAIN MENU (Forms with status children + colour dots, Responses, Analytics, Integrations); separator; RESOURCES with **+** (coloured folder icons); SYSTEM pinned to the bottom (Dark mode switch, Settings, Help & support); user card (avatar, name, email, ⇅). Active top-level item: grey row + black bar on the rail border; active child: bold text.
 
 - **Expanded:** full menu (icon + label + groups), resizable within limits.
 - **Collapsed:** only the **rail** (icons with tooltips) remains.
@@ -22,7 +25,9 @@ Built with `UDashboardGroup` → `UDashboardSidebar` + `UDashboardPanel`.
 
 Forms · Templates · Responses · Analytics · Option Sets · Integrations (destinations, webhooks, API keys) · Settings · (later) Users · Roles & Access · Audit Trail · Dashboard.
 
-### Navbar (`UDashboardNavbar`)
+### Navbar (`UDashboardNavbar`) and page header
+
+Top bar: search field on the left; language, notifications and the global **New form** action on the right (outlined icon buttons as in the design). Page header (`AppPageHeader`): breadcrumbs (nested pages), large bold title, small meta line with icon, actions on the right — outline secondary, solid black primary.
 
 Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` via `UDashboardSearch`: pages, actions, language, theme), notifications, language switch (`sm`+; on phones via user menu / search), theme switch (`UColorModeButton`). User menu sits at the bottom of the sidebar (design reference).
 

@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "النماذج",
-    "description": "أنشئ نماذجك وصمّمها وشاركها."
+    "description": "أنشئ نماذجك وصمّمها وشاركها.",
+    "import": "استيراد"
   },
   "nav": {
     "main": "القائمة الرئيسية",
@@ -35,7 +36,23 @@
     "destinations": "الوجهات",
     "webhooks": "خطافات الويب",
     "apiKeys": "مفاتيح API",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "resources": "الموارد",
+    "system": "النظام",
+    "darkMode": "الوضع الداكن",
+    "help": "المساعدة والدعم",
+    "themes": "السمات",
+    "formsAll": "كل النماذج",
+    "formsDraft": "المسودات",
+    "formsPublished": "المنشورة",
+    "formsClosed": "المغلقة",
+    "more": "المزيد",
+    "create": "إنشاء",
+    "newForm": "نموذج جديد",
+    "fromTemplate": "من قالب",
+    "workspaces": "مساحات العمل",
+    "expand": "توسيع القائمة",
+    "collapse": "طي القائمة"
   },
   "navbar": {
     "breadcrumb": "مسار التنقل",
@@ -51,7 +68,8 @@
     "light": "فاتح",
     "dark": "داكن",
     "system": "النظام",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "notSignedIn": "لم يتم تسجيل الدخول"
   },
   "search": {
     "button": "بحث…",
@@ -59,7 +77,8 @@
     "placeholder": "ابحث في الصفحات والإجراءات…",
     "pages": "انتقل إلى",
     "actions": "الإجراءات",
-    "changeLanguage": "تغيير اللغة"
+    "changeLanguage": "تغيير اللغة",
+    "anything": "ابحث عن أي شيء"
   },
   "shortcuts": {
     "title": "اختصارات لوحة المفاتيح",

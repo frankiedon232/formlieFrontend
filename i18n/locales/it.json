@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Moduli",
-    "description": "Crea, progetta e condividi i tuoi moduli."
+    "description": "Crea, progetta e condividi i tuoi moduli.",
+    "import": "Importa"
   },
   "nav": {
     "main": "Menu principale",
@@ -35,7 +36,23 @@
     "destinations": "Destinazioni",
     "webhooks": "Webhook",
     "apiKeys": "Chiavi API",
-    "settings": "Impostazioni"
+    "settings": "Impostazioni",
+    "resources": "Risorse",
+    "system": "Sistema",
+    "darkMode": "Modalità scura",
+    "help": "Aiuto e supporto",
+    "themes": "Temi",
+    "formsAll": "Tutti i moduli",
+    "formsDraft": "Bozze",
+    "formsPublished": "Pubblicati",
+    "formsClosed": "Chiusi",
+    "more": "Altro",
+    "create": "Crea",
+    "newForm": "Nuovo modulo",
+    "fromTemplate": "Da un modello",
+    "workspaces": "Spazi di lavoro",
+    "expand": "Espandi menu",
+    "collapse": "Comprimi menu"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -51,7 +68,8 @@
     "light": "Chiaro",
     "dark": "Scuro",
     "system": "Sistema",
-    "logout": "Esci"
+    "logout": "Esci",
+    "notSignedIn": "Non connesso"
   },
   "search": {
     "button": "Cerca…",
@@ -59,7 +77,8 @@
     "placeholder": "Cerca pagine e azioni…",
     "pages": "Vai a",
     "actions": "Azioni",
-    "changeLanguage": "Cambia lingua"
+    "changeLanguage": "Cambia lingua",
+    "anything": "Cerca qualsiasi cosa"
   },
   "shortcuts": {
     "title": "Scorciatoie da tastiera",

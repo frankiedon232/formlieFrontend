@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Biểu mẫu",
-    "description": "Tạo, thiết kế và chia sẻ biểu mẫu của bạn."
+    "description": "Tạo, thiết kế và chia sẻ biểu mẫu của bạn.",
+    "import": "Nhập"
   },
   "nav": {
     "main": "Menu chính",
@@ -35,7 +36,23 @@
     "destinations": "Đích đến",
     "webhooks": "Webhook",
     "apiKeys": "Khóa API",
-    "settings": "Cài đặt"
+    "settings": "Cài đặt",
+    "resources": "Tài nguyên",
+    "system": "Hệ thống",
+    "darkMode": "Chế độ tối",
+    "help": "Trợ giúp & hỗ trợ",
+    "themes": "Giao diện",
+    "formsAll": "Tất cả biểu mẫu",
+    "formsDraft": "Bản nháp",
+    "formsPublished": "Đã xuất bản",
+    "formsClosed": "Đã đóng",
+    "more": "Thêm",
+    "create": "Tạo",
+    "newForm": "Biểu mẫu mới",
+    "fromTemplate": "Từ mẫu",
+    "workspaces": "Không gian làm việc",
+    "expand": "Mở rộng menu",
+    "collapse": "Thu gọn menu"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -51,7 +68,8 @@
     "light": "Sáng",
     "dark": "Tối",
     "system": "Hệ thống",
-    "logout": "Đăng xuất"
+    "logout": "Đăng xuất",
+    "notSignedIn": "Chưa đăng nhập"
   },
   "search": {
     "button": "Tìm kiếm…",
@@ -59,7 +77,8 @@
     "placeholder": "Tìm trang và thao tác…",
     "pages": "Đi tới",
     "actions": "Thao tác",
-    "changeLanguage": "Đổi ngôn ngữ"
+    "changeLanguage": "Đổi ngôn ngữ",
+    "anything": "Tìm bất cứ thứ gì"
   },
   "shortcuts": {
     "title": "Phím tắt",

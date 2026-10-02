@@ -5,3 +5,13 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
+
+/* Theme tokens: monochrome primary as in docs/design (black actions in light, white in dark). */
+:root {
+  --ui-primary: var(--ui-color-neutral-900);
+  --ui-radius: 0.5rem;
+}
+
+.dark {
+  --ui-primary: var(--ui-color-neutral-100);
+}

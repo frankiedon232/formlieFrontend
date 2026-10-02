@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Формы",
-    "description": "Создавайте, оформляйте и публикуйте формы."
+    "description": "Создавайте, оформляйте и публикуйте формы.",
+    "import": "Импорт"
   },
   "nav": {
     "main": "Главное меню",
@@ -35,7 +36,23 @@
     "destinations": "Назначения",
     "webhooks": "Вебхуки",
     "apiKeys": "API-ключи",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "resources": "Ресурсы",
+    "system": "Система",
+    "darkMode": "Тёмная тема",
+    "help": "Помощь и поддержка",
+    "themes": "Темы",
+    "formsAll": "Все формы",
+    "formsDraft": "Черновики",
+    "formsPublished": "Опубликованные",
+    "formsClosed": "Закрытые",
+    "more": "Ещё",
+    "create": "Создать",
+    "newForm": "Новая форма",
+    "fromTemplate": "Из шаблона",
+    "workspaces": "Рабочие пространства",
+    "expand": "Развернуть меню",
+    "collapse": "Свернуть меню"
   },
   "navbar": {
     "breadcrumb": "Навигационная цепочка",
@@ -51,7 +68,8 @@
     "light": "Светлая",
     "dark": "Тёмная",
     "system": "Системная",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "notSignedIn": "Вход не выполнен"
   },
   "search": {
     "button": "Поиск…",
@@ -59,7 +77,8 @@
     "placeholder": "Поиск страниц и действий…",
     "pages": "Перейти",
     "actions": "Действия",
-    "changeLanguage": "Сменить язык"
+    "changeLanguage": "Сменить язык",
+    "anything": "Искать что угодно"
   },
   "shortcuts": {
     "title": "Сочетания клавиш",

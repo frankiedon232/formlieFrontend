@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Форми",
-    "description": "Створюйте, оформлюйте та поширюйте форми."
+    "description": "Створюйте, оформлюйте та поширюйте форми.",
+    "import": "Імпорт"
   },
   "nav": {
     "main": "Головне меню",
@@ -35,7 +36,23 @@
     "destinations": "Призначення",
     "webhooks": "Вебхуки",
     "apiKeys": "API-ключі",
-    "settings": "Налаштування"
+    "settings": "Налаштування",
+    "resources": "Ресурси",
+    "system": "Система",
+    "darkMode": "Темна тема",
+    "help": "Допомога й підтримка",
+    "themes": "Теми",
+    "formsAll": "Усі форми",
+    "formsDraft": "Чернетки",
+    "formsPublished": "Опубліковані",
+    "formsClosed": "Закриті",
+    "more": "Більше",
+    "create": "Створити",
+    "newForm": "Нова форма",
+    "fromTemplate": "Із шаблону",
+    "workspaces": "Робочі простори",
+    "expand": "Розгорнути меню",
+    "collapse": "Згорнути меню"
   },
   "navbar": {
     "breadcrumb": "Навігаційний ланцюжок",
@@ -51,7 +68,8 @@
     "light": "Світла",
     "dark": "Темна",
     "system": "Системна",
-    "logout": "Вийти"
+    "logout": "Вийти",
+    "notSignedIn": "Вхід не виконано"
   },
   "search": {
     "button": "Пошук…",
@@ -59,7 +77,8 @@
     "placeholder": "Пошук сторінок і дій…",
     "pages": "Перейти",
     "actions": "Дії",
-    "changeLanguage": "Змінити мову"
+    "changeLanguage": "Змінити мову",
+    "anything": "Шукати будь-що"
   },
   "shortcuts": {
     "title": "Комбінації клавіш",

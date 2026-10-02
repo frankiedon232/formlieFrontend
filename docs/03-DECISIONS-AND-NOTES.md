@@ -30,6 +30,11 @@ Edit this file whenever a decision changes.
 21. **Nuxt UI 4.11 missing locale strings:** `dashboardSearch.title/description` and `dashboardSidebar.description` are absent from Nuxt UI's messages, so we pass our own translated `title`/`description` props. Re-check when upgrading Nuxt UI.
 22. **User menu lives at the bottom of the sidebar** (as in the design reference); the navbar keeps search, notifications, language and theme.
 
+23. **Design images are the exact target** (owner, 2026-10-02) — supersedes "don't copy colours": monochrome primary (`--ui-primary` = neutral-900 light / neutral-100 dark in `main.css`), rail + menu sidebar, search left in the top bar.
+24. **Theme toggle placement** follows the design (sidebar SYSTEM → Dark mode); navbar theme button only below `lg` where the sidebar is hidden.
+25. **Breadcrumbs** live in the page header above the title (nested pages only), since the design's top bar holds the search field.
+26. **Nuxt Icon endpoint moved to `/_nuxt_icon`** and icons are client-bundled: `/api/**` belongs to the backend (mock, dev proxy, Nginx in production).
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

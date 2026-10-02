@@ -5,7 +5,7 @@ useHead({ title: () => t('nav.optionSets') })
 </script>
 
 <template>
-  <AppPanel id="option-sets">
+  <AppPanel id="option-sets" :title="t('nav.optionSets')">
     <AppComingSoon icon="i-lucide-list-checks" title-key="nav.optionSets" />
   </AppPanel>
 </template>

@@ -5,7 +5,7 @@ useHead({ title: () => t('nav.webhooks') })
 </script>
 
 <template>
-  <AppPanel id="webhooks">
+  <AppPanel id="webhooks" :title="t('nav.webhooks')">
     <AppComingSoon icon="i-lucide-webhook" title-key="nav.webhooks" />
   </AppPanel>
 </template>

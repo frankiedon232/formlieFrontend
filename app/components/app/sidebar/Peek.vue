@@ -1,10 +1,10 @@
 <!--
-  Expanded menu shown over the page while the sidebar is collapsed (hover or keyboard focus).
-  Fixed-positioned, so the page layout never shifts. While open, the rail behind it is `inert`,
-  so Tab moves peek → page content and never lands on hidden rail items.
+  Menu column shown next to the rail, over the page, while the sidebar is collapsed.
+  Fixed-positioned, so the page layout never shifts. Opened by keyboard focus → the sidebar is
+  `inert` while open, so Tab moves peek → page content and never lands on hidden items.
 -->
 <script setup lang="ts">
-const { open, schedule, close } = useSidebarPeek()
+const { open, mode, schedule, close } = useSidebarPeek()
 const root = ref<HTMLElement | null>(null)
 
 const focusables = () => [
@@ -20,7 +20,7 @@ function focusEdge(edge: 'first' | 'last') {
 }
 
 watch(open, value => {
-  document.getElementById(SIDEBAR_ELEMENT_ID)?.toggleAttribute('inert', value)
+  document.getElementById(SIDEBAR_ELEMENT_ID)?.toggleAttribute('inert', value && mode.value === 'focus')
 })
 
 onKeyStroke('Escape', () => {
@@ -33,7 +33,7 @@ function onFocusOut(event: FocusEvent) {
   const next = event.relatedTarget as HTMLElement | null
   // Menus/popovers opened from inside the peek render in a portal; keep the peek open for them.
   if (next && (root.value?.contains(next) || next.closest('[data-reka-popper-content-wrapper]'))) return
-  close()
+  if (mode.value === 'focus') close()
 }
 
 onBeforeUnmount(() => document.getElementById(SIDEBAR_ELEMENT_ID)?.removeAttribute('inert'))
@@ -51,15 +51,13 @@ defineExpose({ focusEdge })
     <div
       v-if="open"
       ref="root"
-      class="fixed inset-y-0 start-0 z-50 flex w-64 flex-col gap-4 border-e border-default bg-default p-4 shadow-xl"
+      class="fixed inset-y-0 start-17 z-50 flex w-60 border-e border-default bg-default shadow-xl"
       data-sidebar-peek
       @mouseenter="schedule(true)"
       @mouseleave="schedule(false)"
       @focusout="onFocusOut"
     >
-      <AppSidebarBrand />
-      <AppSidebarNav class="flex-1 overflow-y-auto" />
-      <AppSidebarFooter />
+      <AppSidebarMenu />
     </div>
   </Transition>
 </template>

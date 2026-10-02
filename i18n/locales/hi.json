@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "फ़ॉर्म",
-    "description": "अपने फ़ॉर्म बनाएँ, डिज़ाइन करें और साझा करें।"
+    "description": "अपने फ़ॉर्म बनाएँ, डिज़ाइन करें और साझा करें।",
+    "import": "आयात करें"
   },
   "nav": {
     "main": "मुख्य मेनू",
@@ -35,7 +36,23 @@
     "destinations": "गंतव्य",
     "webhooks": "वेबहुक",
     "apiKeys": "API कुंजियाँ",
-    "settings": "सेटिंग्स"
+    "settings": "सेटिंग्स",
+    "resources": "संसाधन",
+    "system": "सिस्टम",
+    "darkMode": "डार्क मोड",
+    "help": "सहायता और समर्थन",
+    "themes": "थीम",
+    "formsAll": "सभी फ़ॉर्म",
+    "formsDraft": "ड्राफ़्ट",
+    "formsPublished": "प्रकाशित",
+    "formsClosed": "बंद",
+    "more": "और",
+    "create": "बनाएँ",
+    "newForm": "नया फ़ॉर्म",
+    "fromTemplate": "टेम्पलेट से",
+    "workspaces": "वर्कस्पेस",
+    "expand": "मेनू फैलाएँ",
+    "collapse": "मेनू छोटा करें"
   },
   "navbar": {
     "breadcrumb": "ब्रेडक्रंब",
@@ -51,7 +68,8 @@
     "light": "लाइट",
     "dark": "डार्क",
     "system": "सिस्टम",
-    "logout": "लॉग आउट"
+    "logout": "लॉग आउट",
+    "notSignedIn": "साइन इन नहीं"
   },
   "search": {
     "button": "खोजें…",
@@ -59,7 +77,8 @@
     "placeholder": "पेज और क्रियाएँ खोजें…",
     "pages": "यहाँ जाएँ",
     "actions": "क्रियाएँ",
-    "changeLanguage": "भाषा बदलें"
+    "changeLanguage": "भाषा बदलें",
+    "anything": "कुछ भी खोजें"
   },
   "shortcuts": {
     "title": "कीबोर्ड शॉर्टकट",

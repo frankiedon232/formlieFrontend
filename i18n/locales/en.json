@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Forms",
-    "description": "Create, design and share your forms."
+    "description": "Create, design and share your forms.",
+    "import": "Import"
   },
   "nav": {
     "main": "Main menu",
@@ -35,7 +36,23 @@
     "webhooks": "Webhooks",
     "apiKeys": "API keys",
     "settings": "Settings",
-    "menuDescription": "Move between sections of your workspace."
+    "menuDescription": "Move between sections of your workspace.",
+    "resources": "Resources",
+    "system": "System",
+    "darkMode": "Dark mode",
+    "help": "Help & support",
+    "themes": "Themes",
+    "formsAll": "All forms",
+    "formsDraft": "Drafts",
+    "formsPublished": "Published",
+    "formsClosed": "Closed",
+    "more": "More",
+    "create": "Create",
+    "newForm": "New form",
+    "fromTemplate": "From a template",
+    "workspaces": "Workspaces",
+    "expand": "Expand menu",
+    "collapse": "Collapse menu"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -51,7 +68,8 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System",
-    "logout": "Log out"
+    "logout": "Log out",
+    "notSignedIn": "Not signed in"
   },
   "search": {
     "button": "Search…",
@@ -59,7 +77,8 @@
     "pages": "Go to",
     "actions": "Actions",
     "changeLanguage": "Change language",
-    "title": "Search"
+    "title": "Search",
+    "anything": "Search anything"
   },
   "shortcuts": {
     "title": "Keyboard shortcuts",

@@ -1,14 +1,18 @@
-<!-- Account menu. Name/avatar and log out are wired to the session in F3. -->
+<!--
+  Account card (design: avatar · name · email · ⇅). `compact` = avatar only (collapsed rail).
+  Name, email and log out are wired to the session in F3.
+-->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 
-defineProps<{ collapsed?: boolean }>()
+const props = defineProps<{ compact?: boolean }>()
 const { t } = useI18n()
 const colorMode = useColorMode()
 const { shortcutsOpen } = useAppUi()
 const { locale, locales, changeLocale } = useAppLocale()
 
-const user = computed(() => ({ name: t('user.guest'), email: '' }))
+const user = computed(() => ({ name: t('user.guest'), email: t('user.notSignedIn') }))
+const avatar = computed(() => ({ alt: user.value.name, icon: 'i-lucide-user' }))
 
 const themeItem = (value: 'light' | 'dark' | 'system', icon: string): DropdownMenuItem => ({
   label: t(`user.${value}`),
@@ -22,7 +26,7 @@ const themeItem = (value: 'light' | 'dark' | 'system', icon: string): DropdownMe
 })
 
 const items = computed<DropdownMenuItem[][]>(() => [
-  [{ type: 'label', label: user.value.name, avatar: { alt: user.value.name, icon: 'i-lucide-user' } }],
+  [{ type: 'label', label: user.value.name, description: user.value.email, avatar: avatar.value }],
   [
     { label: t('user.profile'), icon: 'i-lucide-circle-user', to: '/profile' },
     { label: t('nav.settings'), icon: 'i-lucide-settings', to: '/settings' },
@@ -38,7 +42,6 @@ const items = computed<DropdownMenuItem[][]>(() => [
       ],
     },
     {
-      // Also here so phones (no navbar language switch below sm) can change language.
       label: t('common.language'),
       icon: 'i-lucide-languages',
       children: locales.map(item => ({
@@ -66,20 +69,42 @@ const items = computed<DropdownMenuItem[][]>(() => [
 <template>
   <UDropdownMenu
     :items="items"
-    :content="{ align: 'center', collisionPadding: 12 }"
-    :ui="{ content: collapsed ? 'w-48' : 'w-(--reka-dropdown-menu-trigger-width)' }"
+    :content="{
+      side: props.compact ? 'right' : 'top',
+      align: props.compact ? 'end' : 'start',
+      collisionPadding: 12,
+    }"
+    :ui="{ content: 'w-60' }"
   >
     <UButton
-      :avatar="{ alt: user.name, icon: 'i-lucide-user' }"
-      :label="collapsed ? undefined : user.name"
-      :trailing-icon="collapsed ? undefined : 'i-lucide-chevrons-up-down'"
+      v-if="props.compact"
+      :avatar="avatar"
+      color="neutral"
+      variant="ghost"
+      square
       :aria-label="t('user.account')"
+    />
+    <UButton
+      v-else
       color="neutral"
       variant="ghost"
       block
-      :square="collapsed"
-      class="data-[state=open]:bg-elevated"
-      :ui="{ trailingIcon: 'text-dimmed' }"
-    />
+      class="justify-between gap-2 p-1.5 text-start"
+      :aria-label="t('user.account')"
+    >
+      <UUser
+        :name="user.name"
+        :description="user.email"
+        :avatar="avatar"
+        size="md"
+        class="min-w-0"
+        :ui="{ wrapper: 'min-w-0 text-start', name: 'truncate', description: 'truncate' }"
+      />
+      <UIcon
+        name="i-lucide-chevrons-up-down"
+        class="size-6 shrink-0 rounded-md p-1 text-muted ring ring-default"
+        aria-hidden="true"
+      />
+    </UButton>
   </UDropdownMenu>
 </template>

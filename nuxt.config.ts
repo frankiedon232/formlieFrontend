@@ -110,6 +110,13 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    // /api/** belongs to the backend (mock, dev proxy, Nginx in production) — keep icons out of it.
+    localApiEndpoint: '/_nuxt_icon',
+    // Bundle every icon used in the source so menus never render blank while icons load.
+    clientBundle: { scan: true, sizeLimitKb: 256 },
+  },
+
   eslint: {
     config: {
       // Formatting is Prettier's job.

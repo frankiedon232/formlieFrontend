@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Formulaires",
-    "description": "Créez, concevez et partagez vos formulaires."
+    "description": "Créez, concevez et partagez vos formulaires.",
+    "import": "Importer"
   },
   "nav": {
     "main": "Menu principal",
@@ -35,7 +36,23 @@
     "destinations": "Destinations",
     "webhooks": "Webhooks",
     "apiKeys": "Clés API",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "resources": "Ressources",
+    "system": "Système",
+    "darkMode": "Mode sombre",
+    "help": "Aide et support",
+    "themes": "Thèmes",
+    "formsAll": "Tous les formulaires",
+    "formsDraft": "Brouillons",
+    "formsPublished": "Publiés",
+    "formsClosed": "Fermés",
+    "more": "Plus",
+    "create": "Créer",
+    "newForm": "Nouveau formulaire",
+    "fromTemplate": "À partir d'un modèle",
+    "workspaces": "Espaces de travail",
+    "expand": "Développer le menu",
+    "collapse": "Réduire le menu"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -51,7 +68,8 @@
     "light": "Clair",
     "dark": "Sombre",
     "system": "Système",
-    "logout": "Se déconnecter"
+    "logout": "Se déconnecter",
+    "notSignedIn": "Non connecté"
   },
   "search": {
     "button": "Rechercher…",
@@ -59,7 +77,8 @@
     "placeholder": "Rechercher des pages et des actions…",
     "pages": "Aller à",
     "actions": "Actions",
-    "changeLanguage": "Changer de langue"
+    "changeLanguage": "Changer de langue",
+    "anything": "Rechercher"
   },
   "shortcuts": {
     "title": "Raccourcis clavier",

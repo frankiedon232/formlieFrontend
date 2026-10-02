@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Formlar",
-    "description": "Formlarınızı oluşturun, tasarlayın ve paylaşın."
+    "description": "Formlarınızı oluşturun, tasarlayın ve paylaşın.",
+    "import": "İçe aktar"
   },
   "nav": {
     "main": "Ana menü",
@@ -35,7 +36,23 @@
     "destinations": "Hedefler",
     "webhooks": "Webhook’lar",
     "apiKeys": "API anahtarları",
-    "settings": "Ayarlar"
+    "settings": "Ayarlar",
+    "resources": "Kaynaklar",
+    "system": "Sistem",
+    "darkMode": "Karanlık mod",
+    "help": "Yardım ve destek",
+    "themes": "Temalar",
+    "formsAll": "Tüm formlar",
+    "formsDraft": "Taslaklar",
+    "formsPublished": "Yayınlananlar",
+    "formsClosed": "Kapalı",
+    "more": "Daha fazla",
+    "create": "Oluştur",
+    "newForm": "Yeni form",
+    "fromTemplate": "Şablondan",
+    "workspaces": "Çalışma alanları",
+    "expand": "Menüyü genişlet",
+    "collapse": "Menüyü daralt"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -51,7 +68,8 @@
     "light": "Açık",
     "dark": "Koyu",
     "system": "Sistem",
-    "logout": "Çıkış yap"
+    "logout": "Çıkış yap",
+    "notSignedIn": "Giriş yapılmadı"
   },
   "search": {
     "button": "Ara…",
@@ -59,7 +77,8 @@
     "placeholder": "Sayfa ve işlem ara…",
     "pages": "Git",
     "actions": "İşlemler",
-    "changeLanguage": "Dili değiştir"
+    "changeLanguage": "Dili değiştir",
+    "anything": "Herhangi bir şey ara"
   },
   "shortcuts": {
     "title": "Klavye kısayolları",

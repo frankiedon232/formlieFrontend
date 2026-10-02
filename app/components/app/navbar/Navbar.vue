@@ -1,33 +1,77 @@
-<!-- Shared navbar: breadcrumbs, search, notifications, language and theme switches (rules 8, 9). -->
+<!--
+  Top bar (docs/design): search field on the left; language, notifications and the global
+  "New form" action on the right. Phones: menu toggle + compact icons (+ theme, since the
+  sidebar's Dark mode switch lives in the drawer).
+-->
 <script setup lang="ts">
 const { t } = useI18n()
 const { notificationsOpen } = useAppUi()
+const { current, locales, locale, changeLocale } = useAppLocale()
+
+const languageItems = computed(() =>
+  locales.map(item => ({
+    label: item.name,
+    description: item.englishName,
+    type: 'checkbox' as const,
+    checked: locale.value === item.code,
+    onSelect: () => changeLocale(item.code),
+  })),
+)
 </script>
 
 <template>
-  <UDashboardNavbar :ui="{ title: 'min-w-0' }">
+  <UDashboardNavbar :ui="{ root: 'gap-3', left: 'min-w-0 flex-1', right: 'gap-2' }">
     <template #leading>
-      <UDashboardSidebarCollapse class="hidden lg:inline-flex" />
-    </template>
-
-    <template #title>
-      <AppBreadcrumbs />
+      <UDashboardSearchButton
+        :label="t('search.anything')"
+        color="neutral"
+        variant="outline"
+        class="hidden w-64 justify-start text-dimmed sm:inline-flex"
+        :ui="{ trailing: 'ms-auto' }"
+      />
+      <UDashboardSearchButton collapsed class="sm:hidden" :aria-label="t('search.button')" />
     </template>
 
     <template #right>
-      <UDashboardSearchButton :label="t('search.button')" class="hidden md:inline-flex" />
-      <UDashboardSearchButton collapsed class="md:hidden" :aria-label="t('search.button')" />
+      <UDropdownMenu
+        :items="languageItems"
+        :content="{ align: 'end' }"
+        :ui="{ content: 'max-h-80 w-56 overflow-y-auto' }"
+      >
+        <UTooltip :text="current.name">
+          <UButton
+            icon="i-lucide-languages"
+            color="neutral"
+            variant="outline"
+            square
+            :aria-label="`${t('common.language')}: ${current.name}`"
+          />
+        </UTooltip>
+      </UDropdownMenu>
+
       <UTooltip :text="t('navbar.notifications')">
         <UButton
           icon="i-lucide-bell"
           color="neutral"
-          variant="ghost"
+          variant="outline"
+          square
           :aria-label="t('navbar.notifications')"
           @click="notificationsOpen = true"
         />
       </UTooltip>
-      <AppLocaleSwitch class="hidden sm:inline-flex" />
-      <UColorModeButton />
+
+      <UColorModeButton color="neutral" variant="outline" class="lg:hidden" />
+
+      <USeparator orientation="vertical" class="hidden h-6 sm:block" />
+
+      <UButton
+        icon="i-lucide-plus"
+        :label="t('nav.newForm')"
+        color="neutral"
+        variant="outline"
+        to="/forms/new"
+        class="hidden sm:inline-flex"
+      />
     </template>
   </UDashboardNavbar>
 </template>

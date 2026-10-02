@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Fomu",
-    "description": "Unda, buni na shiriki fomu zako."
+    "description": "Unda, buni na shiriki fomu zako.",
+    "import": "Leta"
   },
   "nav": {
     "main": "Menyu kuu",
@@ -35,7 +36,23 @@
     "destinations": "Mahali pa kupeleka",
     "webhooks": "Webhooks",
     "apiKeys": "Funguo za API",
-    "settings": "Mipangilio"
+    "settings": "Mipangilio",
+    "resources": "Rasilimali",
+    "system": "Mfumo",
+    "darkMode": "Hali ya giza",
+    "help": "Msaada",
+    "themes": "Mandhari",
+    "formsAll": "Fomu zote",
+    "formsDraft": "Rasimu",
+    "formsPublished": "Zilizochapishwa",
+    "formsClosed": "Zilizofungwa",
+    "more": "Zaidi",
+    "create": "Unda",
+    "newForm": "Fomu mpya",
+    "fromTemplate": "Kutoka kiolezo",
+    "workspaces": "Maeneo ya kazi",
+    "expand": "Panua menyu",
+    "collapse": "Kunja menyu"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -51,7 +68,8 @@
     "light": "Angavu",
     "dark": "Giza",
     "system": "Mfumo",
-    "logout": "Toka"
+    "logout": "Toka",
+    "notSignedIn": "Hujaingia"
   },
   "search": {
     "button": "Tafuta…",
@@ -59,7 +77,8 @@
     "placeholder": "Tafuta kurasa na vitendo…",
     "pages": "Nenda",
     "actions": "Vitendo",
-    "changeLanguage": "Badilisha lugha"
+    "changeLanguage": "Badilisha lugha",
+    "anything": "Tafuta chochote"
   },
   "shortcuts": {
     "title": "Njia za mkato za kibodi",

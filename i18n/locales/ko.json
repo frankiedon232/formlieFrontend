@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "양식",
-    "description": "양식을 만들고, 디자인하고, 공유하세요."
+    "description": "양식을 만들고, 디자인하고, 공유하세요.",
+    "import": "가져오기"
   },
   "nav": {
     "main": "메인 메뉴",
@@ -35,7 +36,23 @@
     "destinations": "대상",
     "webhooks": "웹훅",
     "apiKeys": "API 키",
-    "settings": "설정"
+    "settings": "설정",
+    "resources": "리소스",
+    "system": "시스템",
+    "darkMode": "다크 모드",
+    "help": "도움말 및 지원",
+    "themes": "테마",
+    "formsAll": "모든 양식",
+    "formsDraft": "초안",
+    "formsPublished": "게시됨",
+    "formsClosed": "마감됨",
+    "more": "더 보기",
+    "create": "만들기",
+    "newForm": "새 양식",
+    "fromTemplate": "템플릿에서",
+    "workspaces": "워크스페이스",
+    "expand": "메뉴 펼치기",
+    "collapse": "메뉴 접기"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -51,7 +68,8 @@
     "light": "라이트",
     "dark": "다크",
     "system": "시스템",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "notSignedIn": "로그인 안 됨"
   },
   "search": {
     "button": "검색…",
@@ -59,7 +77,8 @@
     "placeholder": "페이지와 작업 검색…",
     "pages": "이동",
     "actions": "작업",
-    "changeLanguage": "언어 변경"
+    "changeLanguage": "언어 변경",
+    "anything": "무엇이든 검색"
   },
   "shortcuts": {
     "title": "키보드 단축키",

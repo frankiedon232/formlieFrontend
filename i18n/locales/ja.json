@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "フォーム",
-    "description": "フォームを作成、デザイン、共有しましょう。"
+    "description": "フォームを作成、デザイン、共有しましょう。",
+    "import": "インポート"
   },
   "nav": {
     "main": "メインメニュー",
@@ -35,7 +36,23 @@
     "destinations": "送信先",
     "webhooks": "Webhook",
     "apiKeys": "API キー",
-    "settings": "設定"
+    "settings": "設定",
+    "resources": "リソース",
+    "system": "システム",
+    "darkMode": "ダークモード",
+    "help": "ヘルプとサポート",
+    "themes": "テーマ",
+    "formsAll": "すべてのフォーム",
+    "formsDraft": "下書き",
+    "formsPublished": "公開済み",
+    "formsClosed": "終了",
+    "more": "その他",
+    "create": "作成",
+    "newForm": "新しいフォーム",
+    "fromTemplate": "テンプレートから",
+    "workspaces": "ワークスペース",
+    "expand": "メニューを展開",
+    "collapse": "メニューを折りたたむ"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -51,7 +68,8 @@
     "light": "ライト",
     "dark": "ダーク",
     "system": "システム",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "notSignedIn": "未ログイン"
   },
   "search": {
     "button": "検索…",
@@ -59,7 +77,8 @@
     "placeholder": "ページと操作を検索…",
     "pages": "移動",
     "actions": "操作",
-    "changeLanguage": "言語を変更"
+    "changeLanguage": "言語を変更",
+    "anything": "何でも検索"
   },
   "shortcuts": {
     "title": "キーボードショートカット",

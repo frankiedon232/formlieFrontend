@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "表单",
-    "description": "创建、设计并分享您的表单。"
+    "description": "创建、设计并分享您的表单。",
+    "import": "导入"
   },
   "nav": {
     "main": "主菜单",
@@ -35,7 +36,23 @@
     "destinations": "目标",
     "webhooks": "Webhook",
     "apiKeys": "API 密钥",
-    "settings": "设置"
+    "settings": "设置",
+    "resources": "资源",
+    "system": "系统",
+    "darkMode": "深色模式",
+    "help": "帮助与支持",
+    "themes": "主题",
+    "formsAll": "全部表单",
+    "formsDraft": "草稿",
+    "formsPublished": "已发布",
+    "formsClosed": "已关闭",
+    "more": "更多",
+    "create": "创建",
+    "newForm": "新建表单",
+    "fromTemplate": "从模板创建",
+    "workspaces": "工作区",
+    "expand": "展开菜单",
+    "collapse": "收起菜单"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -51,7 +68,8 @@
     "light": "浅色",
     "dark": "深色",
     "system": "跟随系统",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "notSignedIn": "未登录"
   },
   "search": {
     "button": "搜索…",
@@ -59,7 +77,8 @@
     "placeholder": "搜索页面和操作…",
     "pages": "前往",
     "actions": "操作",
-    "changeLanguage": "切换语言"
+    "changeLanguage": "切换语言",
+    "anything": "搜索任意内容"
   },
   "shortcuts": {
     "title": "键盘快捷键",

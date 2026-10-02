@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Formularze",
-    "description": "Twórz, projektuj i udostępniaj formularze."
+    "description": "Twórz, projektuj i udostępniaj formularze.",
+    "import": "Importuj"
   },
   "nav": {
     "main": "Menu główne",
@@ -35,7 +36,23 @@
     "destinations": "Miejsca docelowe",
     "webhooks": "Webhooki",
     "apiKeys": "Klucze API",
-    "settings": "Ustawienia"
+    "settings": "Ustawienia",
+    "resources": "Zasoby",
+    "system": "System",
+    "darkMode": "Tryb ciemny",
+    "help": "Pomoc i wsparcie",
+    "themes": "Motywy",
+    "formsAll": "Wszystkie formularze",
+    "formsDraft": "Szkice",
+    "formsPublished": "Opublikowane",
+    "formsClosed": "Zamknięte",
+    "more": "Więcej",
+    "create": "Utwórz",
+    "newForm": "Nowy formularz",
+    "fromTemplate": "Z szablonu",
+    "workspaces": "Obszary robocze",
+    "expand": "Rozwiń menu",
+    "collapse": "Zwiń menu"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -51,7 +68,8 @@
     "light": "Jasny",
     "dark": "Ciemny",
     "system": "Systemowy",
-    "logout": "Wyloguj"
+    "logout": "Wyloguj",
+    "notSignedIn": "Niezalogowany"
   },
   "search": {
     "button": "Szukaj…",
@@ -59,7 +77,8 @@
     "placeholder": "Szukaj stron i akcji…",
     "pages": "Przejdź do",
     "actions": "Akcje",
-    "changeLanguage": "Zmień język"
+    "changeLanguage": "Zmień język",
+    "anything": "Szukaj czegokolwiek"
   },
   "shortcuts": {
     "title": "Skróty klawiszowe",

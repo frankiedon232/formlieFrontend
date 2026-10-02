@@ -20,7 +20,8 @@
   },
   "forms": {
     "title": "Formulieren",
-    "description": "Maak, ontwerp en deel je formulieren."
+    "description": "Maak, ontwerp en deel je formulieren.",
+    "import": "Importeren"
   },
   "nav": {
     "main": "Hoofdmenu",
@@ -35,7 +36,23 @@
     "destinations": "Bestemmingen",
     "webhooks": "Webhooks",
     "apiKeys": "API-sleutels",
-    "settings": "Instellingen"
+    "settings": "Instellingen",
+    "resources": "Bronnen",
+    "system": "Systeem",
+    "darkMode": "Donkere modus",
+    "help": "Hulp & support",
+    "themes": "Thema's",
+    "formsAll": "Alle formulieren",
+    "formsDraft": "Concepten",
+    "formsPublished": "Gepubliceerd",
+    "formsClosed": "Gesloten",
+    "more": "Meer",
+    "create": "Maken",
+    "newForm": "Nieuw formulier",
+    "fromTemplate": "Vanuit een sjabloon",
+    "workspaces": "Werkruimtes",
+    "expand": "Menu uitklappen",
+    "collapse": "Menu inklappen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -51,7 +68,8 @@
     "light": "Licht",
     "dark": "Donker",
     "system": "Systeem",
-    "logout": "Uitloggen"
+    "logout": "Uitloggen",
+    "notSignedIn": "Niet ingelogd"
   },
   "search": {
     "button": "Zoeken…",
@@ -59,7 +77,8 @@
     "placeholder": "Zoek pagina's en acties…",
     "pages": "Ga naar",
     "actions": "Acties",
-    "changeLanguage": "Taal wijzigen"
+    "changeLanguage": "Taal wijzigen",
+    "anything": "Zoek alles"
   },
   "shortcuts": {
     "title": "Sneltoetsen",
