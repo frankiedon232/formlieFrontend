@@ -82,8 +82,11 @@ export function useNavigation() {
   }
 
   // Design: black bar on the rail border next to the active top-level item.
-  const ACTIVE_BAR =
-    'after:absolute after:-start-3 after:inset-y-1 after:w-0.5 after:rounded-full after:bg-inverted'
+  // Active row = grey pill with a hairline border (design).
+  const ACTIVE_BAR = [
+    'after:absolute after:-start-3 after:inset-y-1 after:w-0.5 after:rounded-full after:bg-inverted',
+    'before:ring before:ring-default text-highlighted',
+  ].join(' ')
 
   function toMenuItem(item: AppNavItem, level = 0): NavigationMenuItem {
     const label = t(`nav.${item.key}`)
