@@ -22,8 +22,8 @@ function setRequiredAll(value: boolean) {
   for (const field of selectedFields.value) field.required = value
 }
 const labelItems = computed(() => [
-  { value: 'top', label: t('builder.labels.top'), icon: 'i-lucide-panel-top' },
-  { value: 'left', label: t('builder.labels.left'), icon: 'i-lucide-panel-left' },
+  { value: 'top', label: t('builder.labels.top') },
+  { value: 'left', label: t('builder.labels.left') },
 ])
 function setLabelPosition(value: string | number) {
   if (!schema.value) return
@@ -152,7 +152,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
               :content="false"
               color="neutral"
               size="xs"
-              :ui="SEGMENTED_UI"
+              :ui="{ ...SEGMENTED_UI, trigger: `${SEGMENTED_UI.trigger} flex-1 px-1.5` }"
               class="w-full"
               :aria-label="t('builder.labels.title')"
               @update:model-value="setLabelPosition"
