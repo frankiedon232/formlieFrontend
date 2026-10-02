@@ -1147,6 +1147,10 @@
       "enter": "Layar penuh",
       "exit": "Keluar dari layar penuh",
       "label": "Pembuat formulir, layar penuh"
+    },
+    "drop": {
+      "newRow": "Lepas di sini — baris baru",
+      "beside": "Lepas di sini — di samping"
     }
   },
   "renderer": {

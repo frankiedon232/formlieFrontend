@@ -1147,6 +1147,10 @@
       "enter": "Pełny ekran",
       "exit": "Zamknij pełny ekran",
       "label": "Kreator formularza, pełny ekran"
+    },
+    "drop": {
+      "newRow": "Upuść tutaj — nowy wiersz",
+      "beside": "Upuść tutaj — obok"
     }
   },
   "renderer": {

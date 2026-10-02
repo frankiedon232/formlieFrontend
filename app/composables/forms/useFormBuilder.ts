@@ -17,6 +17,8 @@ export function useFormBuilder() {
   const pageId = ref<string | null>(null)
   /** Keys stop following labels once the form has been published (responses are stored by key). */
   const keysLocked = ref(false)
+  /** A field is being dragged (the canvas shows where it can land). */
+  const dragging = ref(false)
 
   const history = useFormHistory(
     () => schema.value,
@@ -336,6 +338,7 @@ export function useFormBuilder() {
     selectedFields,
     history,
     keysLocked,
+    dragging,
     load,
     findField,
     createField,

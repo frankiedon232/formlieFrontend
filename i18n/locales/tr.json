@@ -1147,6 +1147,10 @@
       "enter": "Tam ekran",
       "exit": "Tam ekrandan çık",
       "label": "Form oluşturucu, tam ekran"
+    },
+    "drop": {
+      "newRow": "Buraya bırakın — yeni satır",
+      "beside": "Buraya bırakın — yanına"
     }
   },
   "renderer": {

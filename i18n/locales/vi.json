@@ -1147,6 +1147,10 @@
       "enter": "Toàn màn hình",
       "exit": "Thoát toàn màn hình",
       "label": "Trình tạo biểu mẫu, toàn màn hình"
+    },
+    "drop": {
+      "newRow": "Thả vào đây — hàng mới",
+      "beside": "Thả vào đây — bên cạnh"
     }
   },
   "renderer": {

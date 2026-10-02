@@ -57,10 +57,11 @@ async function remove(item: SavedField) {
       :clone="clone"
       :sort="false"
       :animation="150"
+        :ghost-class="DROP_GHOST"
       filter="[data-no-drag]"
       :prevent-on-filter="false"
       class="flex flex-col gap-0.5"
-      @start="builder.history.record()"
+      @start="drag.start"
       @end="drag.end"
     >
       <div

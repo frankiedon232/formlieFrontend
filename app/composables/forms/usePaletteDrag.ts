@@ -13,12 +13,17 @@ export function usePaletteDrag(onPlaced: () => void) {
     dragged = field.id
     return field
   }
+  function start() {
+    builder.history.record()
+    builder.dragging.value = true
+  }
   function end() {
+    builder.dragging.value = false
     if (dragged && builder.findField(dragged)) {
       builder.select(dragged)
       onPlaced()
     }
     dragged = null
   }
-  return { track, end }
+  return { start, track, end }
 }

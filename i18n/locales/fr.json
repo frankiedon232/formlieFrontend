@@ -1147,6 +1147,10 @@
       "enter": "Plein écran",
       "exit": "Quitter le plein écran",
       "label": "Éditeur de formulaire, plein écran"
+    },
+    "drop": {
+      "newRow": "Déposer ici — nouvelle ligne",
+      "beside": "Déposer ici — à côté"
     }
   },
   "renderer": {

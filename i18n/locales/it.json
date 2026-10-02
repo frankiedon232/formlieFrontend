@@ -1147,6 +1147,10 @@
       "enter": "Schermo intero",
       "exit": "Esci da schermo intero",
       "label": "Editor del modulo, schermo intero"
+    },
+    "drop": {
+      "newRow": "Rilascia qui — nuova riga",
+      "beside": "Rilascia qui — accanto"
     }
   },
   "renderer": {

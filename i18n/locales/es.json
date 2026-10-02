@@ -1147,6 +1147,10 @@
       "enter": "Pantalla completa",
       "exit": "Salir de pantalla completa",
       "label": "Editor de formularios, pantalla completa"
+    },
+    "drop": {
+      "newRow": "Suelta aquí: nueva fila",
+      "beside": "Suelta aquí: al lado"
     }
   },
   "renderer": {

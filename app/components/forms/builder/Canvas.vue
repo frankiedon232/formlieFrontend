@@ -18,6 +18,17 @@ const { page, pages, pageId, selected } = builder
 
 const labelPosition = computed(() => builder.schema.value?.settings?.label_position ?? 'top')
 const labelWidth = computed(() => labelColumnWidth(builder.fields.value))
+// Drop placeholder labels (CSS `content` needs a quoted string).
+const dropNewRow = computed(() => JSON.stringify(`↓ ${t('builder.drop.newRow')}`))
+const dropBeside = computed(() => JSON.stringify(`→ ${t('builder.drop.beside')}`))
+function dragStart() {
+  builder.history.record()
+  builder.dragging.value = true
+}
+function dragEnd() {
+  builder.dragging.value = false
+  afterDrop()
+}
 const tabs = computed(() =>
   pages.value.map((p, i) => ({ value: p.id, label: p.title || t('builder.page.default', { n: i + 1 }) })),
 )
@@ -113,8 +124,8 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
 
     <UCard
       v-if="page"
-      class="w-full @container/form"
-      :class="FORM_RADIUS"
+      class="w-full transition-[outline-color] @container/form"
+      :class="[FORM_RADIUS, builder.dragging.value ? 'outline-2 outline-offset-4 outline-(--ui-border-accented) outline-dashed' : '']"
       :style="{ '--form-label-w': labelWidth }"
       :ui="{ body: 'flex flex-col gap-4 p-3 sm:p-5' }"
     >
@@ -142,10 +153,13 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
         :group="{ name: 'fields', pull: false, put: true }"
         handle="[data-no-row-drag]"
         :animation="150"
-        ghost-class="opacity-40"
+        :ghost-class="DROP_GHOST"
         class="flex min-h-24 flex-col gap-1"
+        :class="DROP_ZONE"
+        :style="{ '--drop-label': dropNewRow }"
+        @start="dragStart"
         @add="afterDrop"
-        @end="afterDrop"
+        @end="dragEnd"
       >
         <VueDraggable
           v-for="row in page.rows"
@@ -154,10 +168,12 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
           group="fields"
           handle="[data-drag-handle]"
           :animation="150"
-          ghost-class="opacity-40"
+          :ghost-class="DROP_GHOST"
           class="grid grid-cols-12 gap-x-2 gap-y-1"
-          @start="builder.history.record()"
-          @end="afterDrop"
+          :class="DROP_ZONE_ROW"
+          :style="{ '--drop-label': dropBeside }"
+          @start="dragStart"
+          @end="dragEnd"
         >
           <div
             v-for="field in row.fields"

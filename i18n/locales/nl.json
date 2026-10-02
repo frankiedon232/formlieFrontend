@@ -1147,6 +1147,10 @@
       "enter": "Volledig scherm",
       "exit": "Volledig scherm sluiten",
       "label": "Formulierbouwer, volledig scherm"
+    },
+    "drop": {
+      "newRow": "Hier neerzetten — nieuwe rij",
+      "beside": "Hier neerzetten — ernaast"
     }
   },
   "renderer": {

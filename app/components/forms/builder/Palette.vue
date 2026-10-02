@@ -74,9 +74,10 @@ const cloneField = (item: { type: FieldType }) => drag.track(builder.createField
           :clone="cloneField"
           :sort="false"
           :animation="150"
+          :ghost-class="DROP_GHOST"
           filter="[data-soon]"
           class="grid grid-cols-1 gap-0.5"
-          @start="builder.history.record()"
+          @start="drag.start"
           @end="drag.end"
         >
           <UButton

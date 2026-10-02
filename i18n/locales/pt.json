@@ -1147,6 +1147,10 @@
       "enter": "Tela cheia",
       "exit": "Sair da tela cheia",
       "label": "Editor de formulário, tela cheia"
+    },
+    "drop": {
+      "newRow": "Solte aqui — nova linha",
+      "beside": "Solte aqui — ao lado"
     }
   },
   "renderer": {

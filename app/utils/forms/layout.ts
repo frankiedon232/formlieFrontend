@@ -28,3 +28,21 @@ export function labelColumnWidth(fields: { type: string; label?: string; require
     .reduce((max, f) => Math.max(max, (f.label?.trim().length ?? 0) + (f.required ? 2 : 0) + (f.help ? 3 : 0)), 8)
   return `${Math.min(longest, 22) + 1}ch`
 }
+
+/**
+ * Drag and drop placeholder: SortableJS marks the spot where the field will land with
+ * `ghost-class="drop-ghost"`; the drop area (canvas) styles it as a dashed, tinted box with a
+ * label from `--drop-label` ("Drop here — new row" / "… beside"). Literal classes for Tailwind.
+ */
+export const DROP_GHOST = 'drop-ghost'
+export const DROP_ZONE = [
+  '[&_.drop-ghost]:relative [&_.drop-ghost]:min-h-14 [&_.drop-ghost]:overflow-hidden [&_.drop-ghost]:rounded-lg',
+  '[&_.drop-ghost]:border-2 [&_.drop-ghost]:border-dashed [&_.drop-ghost]:border-(--ui-border-inverted)',
+  '[&_.drop-ghost]:bg-elevated [&_.drop-ghost]:opacity-100 [&_.drop-ghost]:shadow-none',
+  '[&_.drop-ghost]:text-transparent [&_.drop-ghost>*]:invisible',
+  '[&_.drop-ghost]:after:absolute [&_.drop-ghost]:after:inset-0 [&_.drop-ghost]:after:flex [&_.drop-ghost]:after:items-center',
+  '[&_.drop-ghost]:after:justify-center [&_.drop-ghost]:after:gap-1 [&_.drop-ghost]:after:text-xs [&_.drop-ghost]:after:font-medium',
+  '[&_.drop-ghost]:after:text-highlighted [&_.drop-ghost]:after:content-(--drop-label)',
+].join(' ')
+/** In a row (next to other fields) the placeholder takes half the row on wider forms. */
+export const DROP_ZONE_ROW = '[&>.drop-ghost]:col-span-12 @md:[&>.drop-ghost]:col-span-6'
