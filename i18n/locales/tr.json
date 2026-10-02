@@ -320,7 +320,9 @@
       "google": "Google ile devam et",
       "microsoft": "Microsoft ile devam et",
       "apple": "Apple ile devam et",
-      "facebook": "Facebook ile devam et"
+      "facebook": "Facebook ile devam et",
+      "signUpWith": "Şununla kaydol",
+      "signInWith": "Şununla giriş yap"
     },
     "signup": {
       "title": "Çalışma alanınızı oluşturun",

@@ -320,7 +320,9 @@
       "google": "Continua con Google",
       "microsoft": "Continua con Microsoft",
       "apple": "Continua con Apple",
-      "facebook": "Continua con Facebook"
+      "facebook": "Continua con Facebook",
+      "signUpWith": "Registrati con",
+      "signInWith": "Accedi con"
     },
     "signup": {
       "title": "Crea il tuo spazio",

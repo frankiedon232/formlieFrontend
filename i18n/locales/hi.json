@@ -320,7 +320,9 @@
       "google": "Google से जारी रखें",
       "microsoft": "Microsoft से जारी रखें",
       "apple": "Apple से जारी रखें",
-      "facebook": "Facebook से जारी रखें"
+      "facebook": "Facebook से जारी रखें",
+      "signUpWith": "इससे साइन अप करें",
+      "signInWith": "इससे साइन इन करें"
     },
     "signup": {
       "title": "अपना वर्कस्पेस बनाएँ",

@@ -320,7 +320,9 @@
       "google": "Weiter mit Google",
       "microsoft": "Weiter mit Microsoft",
       "apple": "Weiter mit Apple",
-      "facebook": "Weiter mit Facebook"
+      "facebook": "Weiter mit Facebook",
+      "signUpWith": "Registrieren mit",
+      "signInWith": "Anmelden mit"
     },
     "signup": {
       "title": "Arbeitsbereich erstellen",

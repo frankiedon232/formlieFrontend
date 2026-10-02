@@ -320,7 +320,9 @@
       "google": "Doorgaan met Google",
       "microsoft": "Doorgaan met Microsoft",
       "apple": "Doorgaan met Apple",
-      "facebook": "Doorgaan met Facebook"
+      "facebook": "Doorgaan met Facebook",
+      "signUpWith": "Aanmelden met",
+      "signInWith": "Inloggen met"
     },
     "signup": {
       "title": "Maak je werkruimte",

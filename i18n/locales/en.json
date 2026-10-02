@@ -320,7 +320,9 @@
       "google": "Continue with Google",
       "microsoft": "Continue with Microsoft",
       "apple": "Continue with Apple",
-      "facebook": "Continue with Facebook"
+      "facebook": "Continue with Facebook",
+      "signUpWith": "Sign up with",
+      "signInWith": "Sign in with"
     },
     "signup": {
       "title": "Create your workspace",

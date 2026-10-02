@@ -320,7 +320,9 @@
       "google": "Google로 계속",
       "microsoft": "Microsoft로 계속",
       "apple": "Apple로 계속",
-      "facebook": "Facebook으로 계속"
+      "facebook": "Facebook으로 계속",
+      "signUpWith": "다음으로 가입",
+      "signInWith": "다음으로 로그인"
     },
     "signup": {
       "title": "워크스페이스 만들기",

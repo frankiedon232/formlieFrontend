@@ -320,7 +320,9 @@
       "google": "Google で続ける",
       "microsoft": "Microsoft で続ける",
       "apple": "Apple で続ける",
-      "facebook": "Facebook で続ける"
+      "facebook": "Facebook で続ける",
+      "signUpWith": "次の方法で登録",
+      "signInWith": "次の方法でログイン"
     },
     "signup": {
       "title": "ワークスペースを作成",

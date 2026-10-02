@@ -320,7 +320,9 @@
       "google": "Google দিয়ে চালিয়ে যান",
       "microsoft": "Microsoft দিয়ে চালিয়ে যান",
       "apple": "Apple দিয়ে চালিয়ে যান",
-      "facebook": "Facebook দিয়ে চালিয়ে যান"
+      "facebook": "Facebook দিয়ে চালিয়ে যান",
+      "signUpWith": "যা দিয়ে সাইন আপ করুন",
+      "signInWith": "যা দিয়ে সাইন ইন করুন"
     },
     "signup": {
       "title": "আপনার ওয়ার্কস্পেস তৈরি করুন",

@@ -320,7 +320,9 @@
       "google": "Продолжить с Google",
       "microsoft": "Продолжить с Microsoft",
       "apple": "Продолжить с Apple",
-      "facebook": "Продолжить с Facebook"
+      "facebook": "Продолжить с Facebook",
+      "signUpWith": "Регистрация через",
+      "signInWith": "Войти через"
     },
     "signup": {
       "title": "Создайте рабочее пространство",

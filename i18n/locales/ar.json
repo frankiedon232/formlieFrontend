@@ -320,7 +320,9 @@
       "google": "المتابعة باستخدام Google",
       "microsoft": "المتابعة باستخدام Microsoft",
       "apple": "المتابعة باستخدام Apple",
-      "facebook": "المتابعة باستخدام Facebook"
+      "facebook": "المتابعة باستخدام Facebook",
+      "signUpWith": "سجّل باستخدام",
+      "signInWith": "سجّل الدخول باستخدام"
     },
     "signup": {
       "title": "أنشئ مساحة عملك",

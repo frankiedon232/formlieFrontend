@@ -434,6 +434,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                       | F3 / F11    | ✅     |
 | 2026-10-02 | Separate progress file with every task per phase                                | PROGRESS.md | ✅     |
 | 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace  | F3 / F11    | 🟡     |
+| 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                       | F3          | ✅     |
 
 ---
 
@@ -451,3 +452,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                            |
 | 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                 |
 | 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F11). Provider callback waits on the backend. |
+| 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                        |

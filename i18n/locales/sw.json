@@ -320,7 +320,9 @@
       "google": "Endelea na Google",
       "microsoft": "Endelea na Microsoft",
       "apple": "Endelea na Apple",
-      "facebook": "Endelea na Facebook"
+      "facebook": "Endelea na Facebook",
+      "signUpWith": "Jisajili kwa",
+      "signInWith": "Ingia kwa"
     },
     "signup": {
       "title": "Unda eneo lako la kazi",

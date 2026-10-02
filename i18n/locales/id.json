@@ -320,7 +320,9 @@
       "google": "Lanjutkan dengan Google",
       "microsoft": "Lanjutkan dengan Microsoft",
       "apple": "Lanjutkan dengan Apple",
-      "facebook": "Lanjutkan dengan Facebook"
+      "facebook": "Lanjutkan dengan Facebook",
+      "signUpWith": "Daftar dengan",
+      "signInWith": "Masuk dengan"
     },
     "signup": {
       "title": "Buat ruang kerja Anda",

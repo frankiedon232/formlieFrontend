@@ -320,7 +320,9 @@
       "google": "Kontynuuj z Google",
       "microsoft": "Kontynuuj z Microsoft",
       "apple": "Kontynuuj z Apple",
-      "facebook": "Kontynuuj z Facebookiem"
+      "facebook": "Kontynuuj z Facebookiem",
+      "signUpWith": "Zarejestruj się przez",
+      "signInWith": "Zaloguj się przez"
     },
     "signup": {
       "title": "Utwórz obszar roboczy",

@@ -320,7 +320,9 @@
       "google": "Tiếp tục với Google",
       "microsoft": "Tiếp tục với Microsoft",
       "apple": "Tiếp tục với Apple",
-      "facebook": "Tiếp tục với Facebook"
+      "facebook": "Tiếp tục với Facebook",
+      "signUpWith": "Đăng ký bằng",
+      "signInWith": "Đăng nhập bằng"
     },
     "signup": {
       "title": "Tạo không gian làm việc",
