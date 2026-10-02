@@ -59,6 +59,7 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 - `GET /api/v1/auth/csrf` returns a CSRF token = Fernet token `{ sid, nonce, iat }`, **TTL 2 h**.
 - Sent in header `X-CSRF-Token` on every state-changing request; must match the session; expired → `FRM-SEC-1006`.
 - Pre-login forms (login, signup, OTP, forgot password, public form submit) use a pre-session CSRF token bound to the handshake `kid`.
+- Client order: obtain the CSRF token **before** sealing a state-changing envelope (fetching it may re-handshake; the envelope must use the final key).
 
 ## 7. Login and OTP
 

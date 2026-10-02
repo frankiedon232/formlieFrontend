@@ -8,7 +8,7 @@ Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/FRONTEND-SPEC.md`, 
 
 ## Stack (fixed)
 
-Nuxt 4.5 · Nuxt UI 4 · Tailwind CSS 4 · Vue 3.5 · TypeScript 6 (strict; TS 7 not yet supported by typescript-eslint) · pnpm. Extra deps allowed only when Nuxt UI has no equivalent: `vue-draggable-plus` (drag and drop), `zod` (schemas), `@vueuse/core` + `@vueuse/nuxt`, `@nuxtjs/i18n` (languages), `@iconify-json/circle-flags` (language flags — emoji flags do not render on Windows). Dev tooling: `@nuxt/eslint`, `prettier`, `vitest`, `@nuxt/test-utils`, `vue-tsc`. Ask before adding anything else.
+Nuxt 4.5 · Nuxt UI 4 · Tailwind CSS 4 · Vue 3.5 · TypeScript 6 (strict; TS 7 not yet supported by typescript-eslint) · pnpm. Extra deps allowed only when Nuxt UI has no equivalent: `vue-draggable-plus` (drag and drop), `zod` (schemas), `@vueuse/core` + `@vueuse/nuxt`, `@nuxtjs/i18n` (languages), `@iconify-json/circle-flags` (language flags — emoji flags do not render on Windows), `@internationalized/date` (date values for Nuxt UI `UCalendar`). Dev tooling: `@nuxt/eslint`, `prettier`, `vitest`, `@nuxt/test-utils`, `vue-tsc`. Ask before adding anything else.
 
 Scripts: `pnpm dev` · `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`. While the dev server runs use `pnpm typecheck:dev` (reuses `.nuxt`); `nuxt prepare`/`typecheck`/`build` regenerate `.nuxt` and need a dev-server restart afterwards.
 
@@ -34,6 +34,7 @@ Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202
 16. Dashboard, users/roles/RBAC and audit UI come **last** (see roadmap).
 17. **Every user-facing string is translated** (`@nuxtjs/i18n`, `const { t } = useI18n()`). No hard-coded copy in templates. Add each new key to **all** files in `i18n/locales/` (English is the fallback so a missing key never breaks the UI, but ship real translations). Languages are defined once in `shared/utils/i18n/locales.ts`. Layouts must work in RTL (Arabic): use logical Tailwind utilities (`ms-/me-/ps-/pe-/start-/end-`) instead of `ml-/mr-/left-/right-`. Format dates, numbers and currency with `Intl` / `useI18n().d/n` in the active locale.
 18. **Page frame:** every portal page renders inside `<AppPanel id="…" :title="…">` (shared top bar with search + breadcrumbs, page header with title, meta line and `#actions`: secondary = outline, primary = solid) and declares `definePageMeta({ breadcrumb: 'nav.…' })`; dynamic labels via `useBreadcrumbs().setLabel(path, label)`. Dialogs use `<AppModal>` (draggable), never bare `UModal`. New menu entries go in `useNavigation` only (sidebar, search and `g`-shortcuts follow).
+19. **Patterns to reuse:** data lists = `<DataView>` (columns, fetcher via `api.list`, filters, sort options, `#<key>-cell` / `#grid-card` slots); actions = `const { busy, run } = useBusy()`; confirm = `await useConfirm()({ title, danger })`; formatting = `useFormat()`; copy = `<AppCopyField>`; status = `<DataStatusBadge>`.
 
 ## Folder conventions (Nuxt 4 `app/` dir)
 
@@ -48,19 +49,20 @@ app/
   components/
     app/      shell: Panel, PageHeader, Modal, Breadcrumbs, Search, ShortcutsModal, UserMenu, LocaleSwitch, ComingSoon
               sidebar/ (Sidebar, Rail, Menu, Peek) · navbar/ (Navbar, Notifications)
-    data/     DataView, FilterBar, DateRangePicker, ViewSwitch, EmptyState
+    data/     DataView, Toolbar (search/filter/sort/view), DateRangePicker, Pagination, StatusBadge
     forms/    builder/, designer/, renderer/, logic/, share/, responses/
     settings/ auth/ templates/
   composables/
-    api/      useApi, useCrypto, useCsrf
-    auth/     useAuth, useSession, useOtp
+    api/      useApi (wraps utils/api/client.ts: envelope, CSRF, refresh)
+    data/     useDataView
+    auth/     useSession (memory-only token) · (F3) useAuth, useOtp
     tenant/   useTenant
-    ui/       useNavigation, useBreadcrumbs, useAppUi, useSidebarPeek, useDraggableModal · (F2) useDataView, useBusy, useErrorHandler
+    ui/       useNavigation, useBreadcrumbs, useAppUi, useSidebarPeek, useDraggableModal, useBusy, useErrorHandler, useConfirm, useFormat
     i18n/     useAppLocale
     forms/    useFormBuilder, useFormHistory (undo/redo), useFormTheme
   middleware/ tenant.global.ts · auth.ts · guest.ts
   plugins/    crypto.client.ts
-  utils/      grouped: i18n/, format/, forms/ (field-registry) …
+  utils/      grouped: api/ (client, errors), i18n/ (ui-locales), forms/ (field-registry, F6) …
   types/
 i18n/
   i18n.config.ts            # vue-i18n options (fallback = en)

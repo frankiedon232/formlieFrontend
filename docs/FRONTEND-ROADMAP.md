@@ -4,14 +4,16 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 
 ## Progress log
 
-| Date       | Phase | Milestone                                                                                                                                                                                                                                                                                       |
-| ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-10-02 | F0    | Foundation: config, i18n (20 languages), mock API with real envelope, tooling.                                                                                                                                                                                                                  |
-| 2026-10-02 | F0    | Phase check passed: phone/desktop, light/dark, Arabic RTL, keyboard-only language switch, live encrypted mock round-trip. Locale search by English name.                                                                                                                                        |
-| 2026-10-02 | F0    | Access matrix verified on every host (manage., root, tenants, localhost, 127.0.0.1, *.localhost, LAN IP); shared `resolveHostContext()` + 11 tests ready for F3.                                                                                                                                |
-| 2026-10-02 | F1    | App shell done: sidebar rail/peek/drawer, navbar, breadcrumbs, command palette, shortcuts, draggable `AppModal`, error + workspace-not-found pages, 49 new strings × 20 languages. Checked desktop/phone, light/dark, Arabic RTL, keyboard-only (peek tab order), real mouse drag.              |
-| 2026-10-02 | F1    | Shell rebuilt to match docs/design exactly: rail (⋯, +, workspaces) + menu column (MAIN MENU / RESOURCES / SYSTEM, status dots, Dark mode switch, user card), search-left top bar, `AppPageHeader` (title, meta, outline + black actions), monochrome primary; icon endpoint moved out of /api. |
-| 2026-10-02 | F1    | Owner feedback: language flags (circle-flags) on every switcher, breadcrumbs moved into the top bar, font Manrope (identified from the design).                                                                                                                                                 |
+| Date       | Phase | Milestone                                                                                                                                                                                                                                                                                                                 |
+| ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-02 | F0    | Foundation: config, i18n (20 languages), mock API with real envelope, tooling.                                                                                                                                                                                                                                            |
+| 2026-10-02 | F0    | Phase check passed: phone/desktop, light/dark, Arabic RTL, keyboard-only language switch, live encrypted mock round-trip. Locale search by English name.                                                                                                                                                                  |
+| 2026-10-02 | F0    | Access matrix verified on every host (manage., root, tenants, localhost, 127.0.0.1, *.localhost, LAN IP); shared `resolveHostContext()` + 11 tests ready for F3.                                                                                                                                                          |
+| 2026-10-02 | F1    | App shell done: sidebar rail/peek/drawer, navbar, breadcrumbs, command palette, shortcuts, draggable `AppModal`, error + workspace-not-found pages, 49 new strings × 20 languages. Checked desktop/phone, light/dark, Arabic RTL, keyboard-only (peek tab order), real mouse drag.                                        |
+| 2026-10-02 | F1    | Shell rebuilt to match docs/design exactly: rail (⋯, +, workspaces) + menu column (MAIN MENU / RESOURCES / SYSTEM, status dots, Dark mode switch, user card), search-left top bar, `AppPageHeader` (title, meta, outline + black actions), monochrome primary; icon endpoint moved out of /api.                           |
+| 2026-10-02 | F1    | Owner feedback: language flags (circle-flags) on every switcher, breadcrumbs moved into the top bar, font Manrope (identified from the design).                                                                                                                                                                           |
+| 2026-10-02 | F1    | Menu detail per owner: timeline children, square bullets, clean dark text.                                                                                                                                                                                                                                                |
+| 2026-10-02 | F2    | Core plumbing done: API client + useApi, error handling (48 codes × 20 languages), useBusy, useFormat, DataView (forms list live on the encrypted mock), confirm dialog, copy field. Checked desktop/phone, Arabic RTL (Arabic-Indic digits), error state + retry, URL-synced search/sort/paging/date range, view memory. |
 
 ## F0 — Foundation
 
@@ -35,11 +37,11 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 
 ## F2 — Core plumbing
 
-- [ ] `useCrypto` (ECDH P-256 handshake, HKDF, AES-GCM envelope) + unit tests against backend test vectors (once available).
-- [ ] `useApi` (envelope, bearer, CSRF, refresh, re-handshake, abort, try/catch/finally) and `useErrorHandler` with error-code map.
-- [ ] `useBusy`, `useBreadcrumbs`, toasts pattern; translated error messages (`errors.FRM-*` keys in all locales).
-- [ ] Locale-aware formatters (`utils/format/`: dates, numbers, currency, relative time).
-- [ ] `DataView` (table/grid switch, FilterBar, DateRangePicker, pagination, URL sync, skeletons, empty/error), `PageHeader`, `ConfirmDialog`, `EmptyState`, `StatusBadge`, `CopyField`.
+- [x] Envelope crypto (ECDH P-256, HKDF, AES-GCM) in `shared/utils/crypto/` + framework-free client `utils/api/client.ts` (handshake, envelope, CSRF, re-handshake, refresh, abort); 13 unit tests incl. a fake protocol server. _Backend test vectors: add when FastAPI exists._
+- [x] `useApi` (get/post/put/patch/del/list, bearer from `useSession` memory ref, client-only) and `useErrorHandler` (translated `FRM-*` toasts, copyable trace reference, `fieldErrors()` for UForm).
+- [x] `useBusy` (busy + no double submit + try/catch/finally + success toast), `useBreadcrumbs`, toasts pattern; 48 error messages × 20 languages (test keeps catalogue and translations in sync).
+- [x] Locale-aware formatters `useFormat()` (date, dateTime, relative, number, compact, percent, currency, fileSize) via Intl.
+- [x] `DataView` + `useDataView` (Table/Grid remembered per page, toolbar: search with `/`, Filter popover + chips, date range presets + calendar, Sort; sortable headers, row selection + bulk bar, ⋯ row actions, skeletons, empty / no-results / error + retry, server pagination, URL sync), `AppPageHeader`, `AppConfirmDialog` + `useConfirm()`, empty states via `UEmpty`, `DataStatusBadge`, `AppCopyField`. Demo: `/forms` list on mock `GET /forms` + `/folders`.
 
 ## F3 — Tenant detection + auth
 

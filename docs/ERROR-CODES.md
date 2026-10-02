@@ -49,3 +49,13 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-DEST-1001 | 400  | Could not connect to destination database.                   | WARNING  |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.       | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                   | INFO     |
+
+### Client-side codes (raised by the portal, never sent by the server)
+
+| Code         | When                                     | Message                                        |
+| ------------ | ---------------------------------------- | ---------------------------------------------- |
+| FRM-NET-1000 | fetch failed (offline, DNS, TLS)         | Can't reach the server. Check your connection. |
+| FRM-NET-1001 | request aborted (navigation, new query)  | Request cancelled. (never shown)               |
+| FRM-NET-1002 | response is neither an envelope nor JSON | Unexpected response from the server.           |
+
+Every code (server + client) needs `errors.<code>` in all `i18n/locales/*.json`; `test/i18n/locales.test.ts` enforces it.

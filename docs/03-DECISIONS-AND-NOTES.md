@@ -38,6 +38,13 @@ Edit this file whenever a decision changes.
 27. **Font: Manrope** (Google, via `@nuxt/fonts`), weights 300–700; titles 600, body 400/500. Identified by comparing the design's glyphs (straight-tailed y, descending J, single-storey g, flagged 1, round geometric o) against candidates; Onest was the runner-up. Swap = one line in `main.css`.
 28. **Language flags** come from the `circle-flags` icon set (`@iconify-json/circle-flags`), one flag per language variant (en → US, pt → BR, ar → SA, sw → KE …), shown on every language switcher.
 
+29. **API client is framework-free** (`app/utils/api/client.ts`, transport injected) so the protocol is unit-tested against a fake server; `useApi()` only adds Nuxt bits. Session key, CSRF token and access token live in closures / module refs (memory only).
+30. **Recovery policy** (once each per request): FRM-SEC-1004 → re-handshake, FRM-SEC-1006 → new CSRF, FRM-SEC-1002 → resend, FRM-AUTH-1001 → refresh; FRM-AUTH-1010/1011/1012 or failed refresh → session cleared (F3 redirects to login).
+31. **Confirm dialogs** use one `<AppConfirmDialog>` in the layout driven by `useConfirm()` state — no component imports (CLAUDE.md rule 2).
+32. **DataView: the URL is the source of truth**; table/grid preference is the only thing in localStorage (`formalie:view:<id>`, non-sensitive).
+33. **`secondary` colour = violet** (closed status, as the design's purple badges); status → colour: draft warning/amber, published success/green, closed secondary/violet, archived neutral.
+34. **`@internationalized/date`** added as a direct dependency: Nuxt UI's `UCalendar` needs its date objects and pnpm's strict layout requires the direct install.
+
 ## Corrections to the dev setup
 
 - Hosts use `*.medique.dev` but the app runs on `formalie.dev` → switch to `*.formalie.dev` (see 02-DEV-ENVIRONMENT.md).

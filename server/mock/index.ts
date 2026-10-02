@@ -3,12 +3,15 @@
  * Shapes follow docs/API-CONTRACT.md exactly; add one file per domain in ./routes.
  */
 import { fail } from './core/respond'
+import { listFolders, listForms } from './routes/forms'
 import { csrf, handshake, health } from './routes/system'
 
 const router = createRouter()
   .get('/health', health)
   .post('/crypto/handshake', handshake)
   .get('/auth/csrf', csrf)
+  .get('/forms', listForms)
+  .get('/folders', listFolders)
   .use(
     '/**',
     defineEventHandler(event => {

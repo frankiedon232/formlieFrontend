@@ -43,7 +43,7 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 
 ## Forms
 
-| GET | `/forms` | list (filters: status, folder_id, owner_id, tag, from, to) |
+| GET | `/forms` | list (filters: status, folder_id, owner_id, tag — comma = any of; from/to on `updated_at`; archived only when `filter[status]` asks) → `FormSummary[]`: `{ id, name, slug, status, has_unpublished_changes, folder: {id,name}\|null, owner: {id,name}, tags[], responses_count, completion_rate (0–100), created_at, updated_at }` |
 | POST | `/forms` | `{ name, folder_id?, template_id?, schema? }` |
 | GET | `/forms/{id}` | `{ id, name, slug, status, has_unpublished_changes, draft: FormSchema, row_version, theme_id, settings, seo, published_version, updated_at }` |
 | PATCH | `/forms/{id}` | name, folder, tags, settings, seo |

@@ -29,5 +29,6 @@ defineShortcuts({
     <AppSearch />
     <AppShortcutsModal />
     <AppNavbarNotifications />
+    <AppConfirmDialog />
   </UDashboardGroup>
 </template>

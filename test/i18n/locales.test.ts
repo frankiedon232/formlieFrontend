@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
+import { ERROR_CODES } from '../../shared/utils/errors/codes'
 import { APP_LOCALES } from '../../shared/utils/i18n/locales'
 
 // CLAUDE.md rule 17: every string exists in every language, with the same {placeholders}.
@@ -21,6 +22,11 @@ const placeholders = (text: string) => [...text.matchAll(/\{(\w+)\}/g)].map(m =>
 const english = flatten(load('en'))
 
 describe('locales', () => {
+  it('translates every FRM-* error code (server catalogue + client network codes)', () => {
+    const codes = [...Object.keys(ERROR_CODES), 'FRM-NET-1000', 'FRM-NET-1001', 'FRM-NET-1002']
+    for (const code of codes) expect(english[`errors.${code}`], code).toBeTruthy()
+  })
+
   it('has one file per configured language and nothing else', () => {
     const files = readdirSync(dir)
       .map(file => file.replace(/\.json$/, ''))

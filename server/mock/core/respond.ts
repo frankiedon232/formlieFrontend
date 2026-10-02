@@ -16,8 +16,8 @@ export class MockError extends Error {
   }
 }
 
-export function ok<T>(data: T, meta: Record<string, unknown> = {}, status = 200): MockReply {
-  return { status, body: { success: true, data, meta } }
+export function ok<T>(data: T, meta: object = {}, status = 200): MockReply {
+  return { status, body: { success: true, data, meta: meta as Record<string, unknown> } }
 }
 
 export function fail(code: ErrorCode, details: ApiErrorDetail[] = []): MockReply {

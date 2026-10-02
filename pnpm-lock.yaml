@@ -11,6 +11,9 @@ importers:
       '@iconify-json/circle-flags':
         specifier: ^1.2.12
         version: 1.2.12
+      '@internationalized/date':
+        specifier: ^3.12.4
+        version: 3.12.4
       '@nuxt/ui':
         specifier: ^4.11.2
         version: 4.11.2(8273a8d83bab97c2db0a0c9abb47c347)
