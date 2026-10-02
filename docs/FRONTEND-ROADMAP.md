@@ -7,6 +7,7 @@ Work top to bottom. Each phase ends with: responsive check (phone/tablet/desktop
 | Date       | Phase | Milestone                                                                      |
 | ---------- | ----- | ------------------------------------------------------------------------------ |
 | 2026-10-02 | F0    | Foundation: config, i18n (20 languages), mock API with real envelope, tooling. |
+| 2026-10-02 | F0 | Phase check passed: phone/desktop, light/dark, Arabic RTL, keyboard-only language switch, live encrypted mock round-trip. Locale search by English name. |
 
 ## F0 — Foundation
 

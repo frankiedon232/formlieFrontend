@@ -10,7 +10,7 @@ Read `docs/00-OVERVIEW.md`, `docs/01-ARCHITECTURE.md`, `docs/FRONTEND-SPEC.md`, 
 
 Nuxt 4.5 · Nuxt UI 4 · Tailwind CSS 4 · Vue 3.5 · TypeScript 6 (strict; TS 7 not yet supported by typescript-eslint) · pnpm. Extra deps allowed only when Nuxt UI has no equivalent: `vue-draggable-plus` (drag and drop), `zod` (schemas), `@vueuse/core` + `@vueuse/nuxt`, `@nuxtjs/i18n` (languages). Dev tooling: `@nuxt/eslint`, `prettier`, `vitest`, `@nuxt/test-utils`, `vue-tsc`. Ask before adding anything else.
 
-Scripts: `pnpm dev` · `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`. Never run `nuxt prepare`/`typecheck`/`build` while the dev server runs without restarting it afterwards (they regenerate `.nuxt`).
+Scripts: `pnpm dev` · `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`. While the dev server runs use `pnpm typecheck:dev` (reuses `.nuxt`); `nuxt prepare`/`typecheck`/`build` regenerate `.nuxt` and need a dev-server restart afterwards.
 
 Dev URL: `https://formalie.dev:2202/` (tenants: `https://{sub}.formalie.dev:2202/`, default entry `https://manage.formalie.dev:2202/`).
 

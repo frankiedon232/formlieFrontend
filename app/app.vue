@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const { uiLocale } = useAppLocale()
-const localeHead = useLocaleHead()
+const { current, uiLocale } = useAppLocale()
 
+// URLs are the same in every language (no_prefix), so no hreflang alternates — just lang/dir.
 useHead({
   htmlAttrs: {
-    lang: () => localeHead.value.htmlAttrs.lang,
-    dir: () => localeHead.value.htmlAttrs.dir,
+    lang: () => current.value.language,
+    dir: () => current.value.dir,
   },
   titleTemplate: title => (title ? `${title} · ${t('app.name')}` : t('app.name')),
 })

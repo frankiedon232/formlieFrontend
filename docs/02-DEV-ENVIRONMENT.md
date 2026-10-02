@@ -60,7 +60,7 @@ Docker Desktop with compose services: PostgreSQL 16 (primary + 1 replica), PgBou
 | `DEV_HTTPS_CERT` / `DEV_HTTPS_KEY` | Optional: mkcert files so plain `pnpm dev` serves HTTPS on :2202.                         |
 | `NODE_EXTRA_CA_CERTS`              | mkcert `rootCA.pem` (`mkcert -CAROOT`), needed when the proxy talks HTTPS to the backend. |
 
-Quality checks: `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`. These regenerate `.nuxt`; restart a running dev server afterwards.
+Quality checks: `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`. `typecheck`/`build` regenerate `.nuxt` (restart a running dev server afterwards); `pnpm typecheck:dev` reuses it and is safe while dev runs.
 
 ## Production equivalent
 
