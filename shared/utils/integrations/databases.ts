@@ -1,7 +1,7 @@
 /**
  * Customer databases a form's responses can be written to (00-OVERVIEW → Responses → Destinations).
  * Launch set; the alternative is Formalie's own encrypted storage. Used by the sign-in showcase
- * and, in F11, by Integrations → Destinations.
+ * and, in F12, by Integrations → Destinations.
  */
 export interface SupportedDatabase {
   key: 'mysql' | 'mariadb' | 'oracle' | 'postgresql' | 'sqlserver'

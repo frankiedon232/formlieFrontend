@@ -1,6 +1,6 @@
 /**
  * Locale-aware formatting (CLAUDE.md rule 17) via Intl, following the active language.
- * Tenant timezone/currency defaults arrive with Settings → Localisation (F11).
+ * Tenant timezone/currency defaults arrive with Settings → Localisation (F12).
  */
 const RELATIVE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
   ['year', 31_536_000],

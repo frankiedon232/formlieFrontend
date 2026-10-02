@@ -1,5 +1,5 @@
 <!--
-  Forms list (DataView demo for F2; create / duplicate / archive / trash arrive in F5).
+  Forms list (DataView demo for F2; create / duplicate / archive / trash arrive in F6).
   Layout follows docs/design: page header + "All forms" table with filters, date range, sort, Table/Grid.
 -->
 <script setup lang="ts">

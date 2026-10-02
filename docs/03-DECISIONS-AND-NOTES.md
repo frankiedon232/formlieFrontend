@@ -18,7 +18,7 @@ Edit this file whenever a decision changes.
 11. **Backend dev port:** `https://formalie.dev:5004` (configurable via `NUXT_API_PROXY_TARGET`).
 12. **Mock API speaks the real protocol:** the Nitro mock performs the ECDH handshake and checks/produces real envelopes (expiry, nonce replay, AAD, method/path binding, CSRF). Envelope code lives in `shared/utils/crypto/` and is shared by browser and mock, so switching to FastAPI only needs both sides to match SECURITY-PROTOCOL.md.
 13. **Mock vs proxy:** `NUXT_PUBLIC_API_MOCK=true` mounts `server/mock` at `/api/**`; otherwise `server/proxy/api.ts` forwards `/api/**` to the backend with `X-Forwarded-Host`. Read at startup — restart dev after changing it.
-14. **SSR public forms and the envelope:** for server-rendered `/f/**`, Nitro performs its own handshake with the API (acting as a client, same protocol, scoped to the tenant host) to fetch the published schema; the browser then does its own handshake for submit. Finalised in F8.
+14. **SSR public forms and the envelope:** for server-rendered `/f/**`, Nitro performs its own handshake with the API (acting as a client, same protocol, scoped to the tenant host) to fetch the published schema; the browser then does its own handshake for submit. Finalised in F9.
 15. **Draggable modals:** Nuxt UI modals have no drag; we use `@vueuse/core` `useDraggable` on the modal header plus arrow-key moves (F1). On phones modals stay docked.
 16. **Languages:** `@nuxtjs/i18n` with 20 languages (see FRONTEND-SPEC §10). Strategy `no_prefix`; cookie `formalie_locale`. Yoruba, Hausa, Igbo, Amharic etc. can be added by one entry in `shared/utils/i18n/locales.ts` + one JSON file.
 17. **TypeScript 6.0** pinned: typescript-eslint does not support TS 7 yet.
@@ -58,9 +58,11 @@ Edit this file whenever a decision changes.
 
 44. **Global positioning everywhere** (owner, 2026-10-02): the sign-in showcase tells the platform story — any form, your data, your database, access control, privacy & compliance controls, 20 languages, any region. Mock data uses international names (no country-specific people, cities or phone numbers).
 
-45. **Customer databases — launch set:** MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (single list: `shared/utils/integrations/databases.ts`, with default ports for F11), or Formalie's own encrypted storage. Copy says "{count}+ databases" from that list so it never implies a single engine.
+45. **Customer databases — launch set:** MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (single list: `shared/utils/integrations/databases.ts`, with default ports for F12), or Formalie's own encrypted storage. Copy says "{count}+ databases" from that list so it never implies a single engine.
 
-46. **Social signup** (owner, 2026-10-02): manage.* offers every provider on the first signup; a workspace's sign-in page shows only the methods its admin enabled (Settings → Authentication, F11). New workspaces start with email + password (+ the provider used to sign up, backend).
+46. **Social signup** (owner, 2026-10-02): manage.* offers every provider on the first signup; a workspace's sign-in page shows only the methods its admin enabled (Settings → Authentication, F12). New workspaces start with email + password (+ the provider used to sign up, backend).
+
+47. **Audit trail early** (owner, 2026-10-02): the audit trail is its own phase (F4) right after sign-in, not grouped with RBAC at the end. Every later phase records its actions (mock first, backend later) and shows them in `/audit`; only the `audit.read` / `audit.export` permissions wait for Roles & access (F19).
 
 ## Corrections to the dev setup
 

@@ -16,7 +16,7 @@ const securityHeaders: Record<string, string> = {
 }
 
 // Vite HMR needs eval + websockets, so the CSP is production-only.
-// Embeds (/f/**/embed) get a per-form frame-ancestors from the server in F8.
+// Embeds (/f/**/embed) get a per-form frame-ancestors from the server in F9.
 if (!isDev) {
   securityHeaders['Content-Security-Policy'] = [
     "default-src 'self'",

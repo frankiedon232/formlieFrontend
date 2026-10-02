@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F3 — Workspace detection + sign-in
+**Last updated:** 2026-10-02 · **Current phase:** F4 — Audit trail
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -13,24 +13,25 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F0    | Foundation                                        | ✅     | 100% |
 | F1    | App shell                                         | ✅     | 100% |
 | F2    | Core plumbing                                     | ✅     | 100% |
-| F3    | Workspace detection + sign-in                     | 🟡     | ~85% |
-| F4    | Onboarding wizard                                 | ⬜     | 0%   |
-| F5    | Forms list and lifecycle                          | ⬜     | 10%  |
-| F6    | Form builder                                      | ⬜     | 0%   |
-| F7    | Designer (themes)                                 | ⬜     | 0%   |
-| F8    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
-| F9    | Responses                                         | ⬜     | 0%   |
-| F10   | Templates gallery                                 | ⬜     | 0%   |
-| F11   | Settings                                          | ⬜     | 0%   |
-| F12   | Option sets & integrations                        | ⬜     | 0%   |
-| F13   | Profile                                           | ⬜     | 0%   |
-| F14   | Users                                             | ⬜     | 0%   |
-| F15   | Analytics                                         | ⬜     | 0%   |
-| F16   | Live collaboration (optional)                     | ⬜     | 0%   |
-| F17   | Dashboard                                         | ⬜     | 0%   |
-| F18   | Roles & access, audit trail (last)                | ⬜     | 0%   |
+| F3    | Workspace detection + sign-in                     | ✅     | 100% |
+| F4    | Audit trail                                       | ⬜     | 0%   |
+| F5    | Onboarding wizard                                 | ⬜     | 0%   |
+| F6    | Forms list and lifecycle                          | ⬜     | 10%  |
+| F7    | Form builder                                      | ⬜     | 0%   |
+| F8    | Designer (themes)                                 | ⬜     | 0%   |
+| F9    | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
+| F10   | Responses                                         | ⬜     | 0%   |
+| F11   | Templates gallery                                 | ⬜     | 0%   |
+| F12   | Settings                                          | ⬜     | 0%   |
+| F13   | Option sets & integrations                        | ⬜     | 0%   |
+| F14   | Profile                                           | ⬜     | 0%   |
+| F15   | Users                                             | ⬜     | 0%   |
+| F16   | Analytics                                         | ⬜     | 0%   |
+| F17   | Live collaboration (optional)                     | ⬜     | 0%   |
+| F18   | Dashboard                                         | ⬜     | 0%   |
+| F19   | Roles & access (last)                             | ⬜     | 0%   |
 
-**Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · loading, empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
+**Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading, empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
 ---
 
@@ -134,7 +135,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F3 — Workspace detection + sign-in 🟡
+## F3 — Workspace detection + sign-in ✅
 
 **Goal:** every way of reaching the app lands in the right workspace, and signing in is secure, simple and beautiful.
 
@@ -165,10 +166,10 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Find my workspace (email → code → list)
 - ✅ Forgot / reset password (email → code + new password)
 - ✅ Welcome hand-off on the new workspace
-- 🟡 Visual polish of signup, find workspace and reset screens to the new sign-in standard
-- ⬜ Arabic RTL pass on every auth screen
-- ⬜ Keyboard-only pass on every auth screen
-- ⬜ Phone pass on signup, find workspace and reset
+- ✅ Visual polish of signup, find workspace and reset screens to the new sign-in standard
+- ✅ Arabic RTL pass on every auth screen
+- ✅ Keyboard-only pass on every auth screen
+- ✅ Phone pass on signup, find workspace and reset
 
 ### Session
 
@@ -189,7 +190,50 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F4 — Onboarding wizard ⬜
+## F4 — Audit trail ⬜
+
+**Goal:** every action in a workspace is recorded — who, what, when, where (IP, location, device) and before / after values — and admins can search, filter and export it. Built now so every later phase records its own actions as it is built (owner request, product overview §11).
+
+### Event model
+
+- ⬜ Event shape in `API-CONTRACT.md`: id, time, actor (user / API key / system), action, resource (type, id, name), organisation, IP, location (city, country), device / browser, outcome (success / failed / blocked), before / after changes, request id
+- ⬜ Event catalogue in one place (`shared/utils/audit/events.ts`): action keys grouped by area (sign-in, workspace, forms, responses, settings, users, integrations), each with an icon, severity and a translated label in all 20 languages
+- ⬜ Shared types in `shared/types/audit.ts`
+
+### Mock backend
+
+- ⬜ Audit store with realistic international sample history (several people, countries, devices)
+- ⬜ Record what already exists: sign-in success / failure, code sent / verified / failed, too many attempts, sign-out, session expired, refresh reuse (session revoked), password reset, signup, workspace created, find workspace
+- ⬜ Record form actions in the mock (create, rename, move, archive, delete, restore) — later phases add theirs
+- ⬜ `GET /audit-logs` (search, filters, date range, sort, server pagination), `GET /audit-logs/{id}`, `POST /audit-logs/export` (background job with progress)
+
+### Audit trail page (`/audit`)
+
+- ⬜ DataView: table and grid, search, filters (person, action / area, resource type, outcome, organisation, country), date range, sort, server pagination
+- ⬜ Event detail slide-over: summary sentence ("Sofia Martins archived the form Supplier onboarding"), who / when / where / device, before → after changes side by side, request id with copy
+- ⬜ Export to Excel / CSV with progress; filters carried into the export
+- ⬜ Links from an event to the resource (form, user, setting) when it still exists
+- ⬜ "Audit trail" in the sidebar (SYSTEM), breadcrumbs, header title / subtitle / export button
+- ⬜ Empty, loading and error states; phone layout (cards) and keyboard access
+
+### Reusable activity
+
+- ⬜ `AuditTimeline` component (latest events for one resource) to drop into forms, responses, users and settings pages as they are built
+- ⬜ Security view filter preset (failed / blocked sign-ins, revoked sessions) used later by Settings → Security
+
+### Access
+
+- ⬜ Workspace admins only for now; a proper `audit.read` permission arrives with Roles & access (F19)
+
+### Waiting on backend
+
+- ⏸ Real IP geolocation and device detection
+- ⏸ Tamper-evident storage (hash chain) and retention period per plan
+- ⏸ Audit events for API-key and webhook calls
+
+---
+
+## F5 — Onboarding wizard ⬜
 
 **Goal:** a new workspace is ready to use in a few skippable steps.
 
@@ -205,7 +249,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F5 — Forms list and lifecycle ⬜
+## F6 — Forms list and lifecycle ⬜
 
 **Goal:** everything you do _with_ forms before opening the builder.
 
@@ -224,7 +268,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F6 — Form builder ⬜
+## F7 — Form builder ⬜
 
 **Goal:** a robust drag-and-drop builder that works on desktop and stays usable on tablet and phone.
 
@@ -276,7 +320,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F7 — Designer (themes) ⬜
+## F8 — Designer (themes) ⬜
 
 **Goal:** organisations design their form pages as they want.
 
@@ -293,7 +337,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F8 — Renderer, preview, share, embed, short links, SEO ⬜
+## F9 — Renderer, preview, share, embed, short links, SEO ⬜
 
 ### Renderer
 
@@ -318,7 +362,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F9 — Responses ⬜
+## F10 — Responses ⬜
 
 - ⬜ Per-form responses (DataView, columns from the form)
 - ⬜ Inbox across all forms
@@ -330,7 +374,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F10 — Templates gallery ⬜
+## F11 — Templates gallery ⬜
 
 - ⬜ System + organisation templates, categories, search
 - ⬜ Template preview
@@ -339,7 +383,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F11 — Settings ⬜
+## F12 — Settings ⬜
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
@@ -400,7 +444,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Themes & form defaults
 
-- ⬜ Themes library (created in the designer, F7): list, rename, set default, delete
+- ⬜ Themes library (created in the designer, F8): list, rename, set default, delete
 - ⬜ Embed defaults (allowed domains, size), default form settings (progress bar, save and resume)
 
 ### Billing & subscription
@@ -411,7 +455,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F12 — Option sets & integrations ⬜
+## F13 — Option sets & integrations ⬜
 
 ### Option sets (reusable choice lists)
 
@@ -440,7 +484,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F13 — Profile ⬜
+## F14 — Profile ⬜
 
 - ⬜ My profile (name, photo, language, timezone)
 - ⬜ Change password
@@ -449,7 +493,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F14 — Users ⬜
+## F15 — Users ⬜
 
 - ⬜ Users list (DataView), invite by email with role, resend / revoke invites
 - ⬜ Enable / disable, reset password or MFA
@@ -457,7 +501,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F15 — Analytics ⬜
+## F16 — Analytics ⬜
 
 - ⬜ Per form: views, starts, completions, completion rate, average time
 - ⬜ Drop-off per page and field
@@ -466,7 +510,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F16 — Live collaboration (optional) ⬜
+## F17 — Live collaboration (optional) ⬜
 
 - ⬜ Presence, cursors and selections in the builder
 - ⬜ Conflict-free editing
@@ -474,7 +518,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F17 — Dashboard ⬜
+## F18 — Dashboard ⬜
 
 **Goal:** the workspace home, built after everything else so it shows what matters (design reference 2). Replaces the Forms redirect on `/` once done.
 
@@ -489,12 +533,12 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F18 — Roles & access, audit trail ⬜ (last)
+## F19 — Roles & access ⬜ (last)
 
 - ⬜ Roles and permissions editor (permission catalogue, custom roles)
 - ⬜ Role assignment per user and per organisation; form-level access
 - ⬜ Access overview ("who can see what")
-- ⬜ Audit trail (who, what, when, where — IP / location — before / after), filters, export
+- ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
 
 ---
 
@@ -523,11 +567,12 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | "Wow" sign-in screen                                                             | F3          | ✅     |
 | 2026-10-02 | Test accounts in the README; realistic test people                               | F3          | ✅     |
 | 2026-10-02 | Global positioning (not one country); international sample data                  | F3 / all    | ✅     |
-| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                        | F3 / F11    | ✅     |
+| 2026-10-02 | Show 5+ supported databases or built-in encrypted storage                        | F3 / F12    | ✅     |
 | 2026-10-02 | Separate progress file with every task per phase                                 | PROGRESS.md | ✅     |
-| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace   | F3 / F11    | 🟡     |
+| 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace   | F3 / F12    | 🟡     |
 | 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                        | F3          | ✅     |
-| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC | F11 / F17   | ✅     |
+| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC | F12 / F18   | ✅     |
+| 2026-10-02 | Audit trail early (its own phase after sign-in), not last                        | F4          | ⬜     |
 | 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome          | F3          | ✅     |
 
 ---
@@ -545,6 +590,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F3    | Auth built end to end; mock flow verified (codes, tokens, refresh rotation, reuse revokes).                                                                                                      |
 | 2026-10-02 | F3    | Sign-in redesigned; full flow verified in the browser (sign in → code → portal → log out) on desktop, phone and dark.                                                                            |
 | 2026-10-02 | F3    | Global positioning on sign-in; international sample data; 5+ databases or built-in encrypted storage; realistic test people; this progress file.                                                 |
-| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F11). Provider callback waits on the backend. |
+| 2026-10-02 | F3    | Signup offers Google, Microsoft, Apple, Facebook (manage.*) plus email; new workspaces start with email sign-in, more methods enabled in Settings (F12). Provider callback waits on the backend. |
 | 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                        |
 | 2026-10-02 | F3    | "Work email" → "Email address" everywhere, neutral placeholder name@example.com, no "work email" wording (any organisation, any email provider).                                                 |
+| 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                       |
+| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F19 (last).                                                                                    |
