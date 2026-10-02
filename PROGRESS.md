@@ -390,6 +390,13 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ⬜ Bulk actions
 - ⬜ Export XLSX / CSV / PDF (all, filtered, selected) with progress and download
 
+### Folders workspace (owner request 2026-10-02 — built here because the stats need response data)
+
+- ⬜ Sidebar "Folders" group (design RESOURCES style): coloured folder icons, form count on the end, **+** to create, "Show all" when long
+- ⬜ Folder colour chosen when creating / editing a folder
+- ⬜ Folder page `/folders/[id]`: name + actions in the header, KPI cards (forms, published, responses, avg. completion, last activity), the folder's forms in DataView
+- ⬜ All folders `/folders`: every folder with the same stats, Table / Grid, sort
+
 ---
 
 ## F11 — Templates gallery ⬜
@@ -598,6 +605,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload                           | F2 / all    | ✅     |
 | 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets                               | all         | ✅     |
 | 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab | F6          | ✅     |
+| 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                          | F10         | ⬜     |
 
 ---
 
