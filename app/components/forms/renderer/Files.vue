@@ -159,7 +159,14 @@ watch(typed, name => {
     :disabled="disabled"
     :interactive="!disabled && count < maxFiles"
     :file-delete="{ color: 'neutral', variant: 'outline', size: 'xs', class: 'rounded-full bg-default shadow-sm text-highlighted' }"
-    :ui="{ base: 'min-h-28', files: 'grid w-full grid-cols-3 gap-2 @sm:grid-cols-5 @lg:grid-cols-6', file: 'size-auto w-full aspect-square' }"
+    :ui="{
+      base: 'min-h-28',
+      // Thumbnails inside the zone (owner, 2026-10-03) — a single image must not cover the whole box
+      // (Nuxt UI places a lone grid file `absolute inset-0`; `relative inset-auto` undoes that).
+      files: 'flex w-full flex-wrap gap-2',
+      file: 'relative inset-auto size-20 shrink-0 overflow-visible p-0 @sm:size-24',
+      fileLeadingAvatar: 'size-full rounded-lg object-cover',
+    }"
     class="w-full"
   >
     <!-- Inside the zone: how many of the allowed files, and "Add more" while there is room. -->
