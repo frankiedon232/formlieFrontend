@@ -1,0 +1,183 @@
+<!--
+  Themes library (Resources → Themes): three kinds in the shared DataView — System (Formalie's
+  designs, read-only: duplicate to change), Saved (from a form's design) and Created (theme editor).
+  Table or grid with page-shaped previews, filter by kind, search, sort; edit, rename, duplicate,
+  delete (forms keep their copy).
+-->
+<script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui'
+import type { SavedTheme } from '#shared/types/forms'
+
+definePageMeta({ breadcrumb: 'nav.themes' })
+const { t } = useI18n()
+const api = useApi()
+const { relative, dateTime } = useFormat()
+const confirm = useConfirm()
+const library = useThemes()
+useHead({ title: () => t('nav.themes') })
+
+const dataView = useTemplateRef<{ refresh: () => Promise<void> }>('dataView')
+const busy = ref(new Set<string>())
+async function act(theme: SavedTheme, work: () => Promise<unknown>) {
+  busy.value = new Set(busy.value).add(theme.id)
+  try {
+    await work()
+    await dataView.value?.refresh()
+  } finally {
+    const next = new Set(busy.value)
+    next.delete(theme.id)
+    busy.value = next
+  }
+}
+
+const columns = computed<DataColumn[]>(() => [
+  { key: 'name', label: t('themes.col.name'), sortable: true },
+  { key: 'forms_count', label: t('themes.col.forms'), hideBelow: 'sm' },
+  { key: 'created_by', label: t('themes.col.createdBy'), hideBelow: 'md' },
+  { key: 'updated_at', label: t('themes.col.updated'), sortable: true, hideBelow: 'sm' },
+])
+const sortOptions = computed(() => [
+  { label: t('themes.sortRecent'), value: '-updated_at' },
+  { label: t('themes.sortName'), value: 'name' },
+])
+const fetcher: DataFetcher<SavedTheme> = (params, signal) => api.list<SavedTheme>('/themes', params, { signal })
+const SOURCE_ICON: Record<SavedTheme['source'], string> = { system: 'i-lucide-sparkles', saved: 'i-lucide-bookmark', created: 'i-lucide-paintbrush' }
+const sourceIcon = (source: string) => SOURCE_ICON[source as SavedTheme['source']] ?? 'i-lucide-palette'
+const filters = computed<DataFilter[]>(() => [
+  {
+    key: 'source',
+    label: t('themes.filterSource'),
+    icon: 'i-lucide-library',
+    options: (['system', 'saved', 'created'] as const).map(value => ({ value, label: t(`themes.source.${value}`) })),
+  },
+])
+const name = (theme: SavedTheme) => library.nameOf(theme)
+const preview = computed(() => [t('themes.previewName'), t('themes.previewEmail'), t('themes.previewMessage')])
+
+const renaming = ref<SavedTheme | null>(null)
+const renameOpen = ref(false)
+function rename(theme: SavedTheme) {
+  renaming.value = theme
+  renameOpen.value = true
+}
+async function remove(theme: SavedTheme) {
+  const ok = await confirm({
+    title: t('themes.deleteTitle', { name: name(theme) }),
+    description: theme.forms_count ? t('themes.deleteUsed', { count: theme.forms_count }, theme.forms_count) : t('themes.deleteDesc'),
+    danger: true,
+    confirmLabel: t('themes.delete'),
+  })
+  if (ok) await act(theme, () => library.remove(theme))
+}
+
+async function duplicateToEdit(theme: SavedTheme) {
+  busy.value = new Set(busy.value).add(theme.id)
+  try {
+    const copy = await library.duplicate({ ...theme, name: name(theme) })
+    if (copy) await navigateTo(`/settings/themes/${copy.id}`)
+  } finally {
+    const next = new Set(busy.value)
+    next.delete(theme.id)
+    busy.value = next
+  }
+}
+const rowActions = (theme: SavedTheme): DropdownMenuItem[][] =>
+  theme.source === 'system'
+    ? [
+        [
+          { label: t('themes.view'), icon: 'i-lucide-eye', to: `/settings/themes/${theme.id}` },
+          { label: t('themes.duplicateToEdit'), icon: 'i-lucide-copy-plus', onSelect: () => void duplicateToEdit(theme) },
+        ],
+      ]
+    : [
+        [
+          { label: t('themes.editDesign'), icon: 'i-lucide-paintbrush', to: `/settings/themes/${theme.id}` },
+          { label: t('themes.rename'), icon: 'i-lucide-pencil', onSelect: () => rename(theme) },
+          { label: t('themes.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(theme, () => library.duplicate(theme)) },
+        ],
+        [{ label: t('themes.delete'), icon: 'i-lucide-trash-2', color: 'error', onSelect: () => void remove(theme) }],
+      ]
+const isBusy = (theme: SavedTheme) => busy.value.has(theme.id)
+</script>
+
+<template>
+  <AppPanel id="themes" :title="t('nav.themes')" :subtitle="t('themes.subtitle')" subtitle-icon="i-lucide-palette">
+    <template #actions>
+      <UButton :label="t('themes.goToForms')" icon="i-lucide-file-text" color="neutral" variant="outline" to="/forms" />
+      <UButton :label="t('themes.newTheme')" icon="i-lucide-plus" color="neutral" to="/settings/themes/new" />
+    </template>
+
+    <DataView
+      id="themes"
+      ref="dataView"
+      :columns="columns"
+      :fetcher="fetcher"
+      :filters="filters"
+      :sort-options="sortOptions"
+      default-sort="-updated_at"
+      :row-actions="rowActions"
+      :busy="isBusy"
+      :search-placeholder="t('themes.search')"
+      empty-icon="i-lucide-palette"
+      :empty-title="t('themes.emptyTitle')"
+      :empty-description="t('themes.emptyDesc')"
+    >
+      <template #name-cell="{ row }">
+        <NuxtLink
+          :to="`/settings/themes/${row.original.id}`"
+          class="flex min-w-0 items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+        >
+          <span class="w-16 shrink-0 overflow-hidden rounded-sm border border-default">
+            <TemplatesThumb :theme="row.original.tokens" :title="name(row.original)" :labels="preview" mini />
+          </span>
+          <span class="flex min-w-0 flex-col">
+            <span class="flex min-w-0 items-center gap-1.5 truncate font-medium text-highlighted">
+              <UIcon v-if="isBusy(row.original)" name="i-lucide-loader-circle" class="size-3.5 shrink-0 animate-spin text-muted" />
+              {{ name(row.original) }}
+            </span>
+            <span class="flex items-center gap-1 text-xs text-muted">
+              <UIcon :name="sourceIcon(row.original.source)" class="size-3" />{{ t(`themes.source.${row.original.source}`) }}
+            </span>
+          </span>
+        </NuxtLink>
+      </template>
+      <template #forms_count-cell="{ row }">
+        <span class="text-muted">{{ t('themes.formsCount', { count: row.original.forms_count }, row.original.forms_count) }}</span>
+      </template>
+      <template #created_by-cell="{ row }">
+        <UUser :name="row.original.created_by.name" :avatar="{ alt: row.original.created_by.name }" size="xs" />
+      </template>
+      <template #updated_at-cell="{ row }">
+        <UTooltip :text="dateTime(row.original.updated_at)">
+          <span class="whitespace-nowrap">{{ relative(row.original.updated_at) }}</span>
+        </UTooltip>
+      </template>
+
+      <template #grid-card="{ row }">
+        <UCard :ui="{ body: 'flex flex-col gap-3 p-0 sm:p-0' }" class="h-full overflow-hidden" :class="isBusy(row) ? 'opacity-60' : ''">
+          <NuxtLink
+            :to="`/settings/themes/${row.id}`"
+            class="block focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--ui-border-inverted)"
+            :aria-label="t('themes.open', { name: name(row) })"
+          >
+            <TemplatesThumb :theme="row.tokens" :title="name(row)" :labels="preview" />
+          </NuxtLink>
+          <div class="flex items-start justify-between gap-2 px-3 pb-3">
+            <div class="min-w-0">
+              <NuxtLink :to="`/settings/themes/${row.id}`" class="block truncate font-semibold text-highlighted hover:underline">{{ name(row) }}</NuxtLink>
+              <p class="flex items-center gap-1 truncate text-xs text-muted">
+                <UIcon :name="sourceIcon(row.source)" class="size-3 shrink-0" />{{ t(`themes.source.${row.source}`) }}
+                · {{ t('themes.formsCount', { count: row.forms_count }, row.forms_count) }}
+              </p>
+            </div>
+            <UDropdownMenu :items="rowActions(row)" :content="{ align: 'end' }">
+              <UButton icon="i-lucide-ellipsis" color="neutral" variant="ghost" size="xs" square :loading="isBusy(row)" :aria-label="t('dataView.actions')" />
+            </UDropdownMenu>
+          </div>
+        </UCard>
+      </template>
+    </DataView>
+
+    <FormsDesignerRenameThemeModal v-model:open="renameOpen" :theme="renaming" @saved="dataView?.refresh()" />
+  </AppPanel>
+</template>

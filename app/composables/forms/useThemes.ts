@@ -17,7 +17,8 @@ export function useThemes() {
     if (loading.value || (loaded.value && !force)) return
     loading.value = true
     try {
-      themes.value = (await api.list<SavedTheme>('/themes', { page_size: 100 }, { background: true })).data
+      // The designer's "Your themes": the workspace's own (system designs are its starting points).
+      themes.value = (await api.list<SavedTheme>('/themes', { page_size: 100, 'filter[source]': 'saved,created' }, { background: true })).data
       loaded.value = true
     } catch (error) {
       handle(error)
@@ -28,9 +29,10 @@ export function useThemes() {
 
   const upsert = (theme: SavedTheme) => (themes.value = [theme, ...themes.value.filter(item => item.id !== theme.id)])
 
-  async function create(name: string, tokens: FormTheme): Promise<SavedTheme | null> {
+  /** `saved` from a form's design (designer) · `created` in the theme editor. */
+  async function create(name: string, tokens: FormTheme, source: 'saved' | 'created' = 'saved'): Promise<SavedTheme | null> {
     try {
-      const { data } = await api.post<SavedTheme>('/themes', { name, tokens })
+      const { data } = await api.post<SavedTheme>('/themes', { name, tokens, source })
       upsert(data)
       toast.add({ title: t('themes.toast.saved', { name: data.name }), icon: 'i-lucide-palette', color: 'success' })
       return data
@@ -52,9 +54,10 @@ export function useThemes() {
     }
   }
 
-  async function duplicate(theme: SavedTheme): Promise<SavedTheme | null> {
+  async function duplicate(theme: Pick<SavedTheme, 'id' | 'name'>): Promise<SavedTheme | null> {
     try {
-      const { data } = await api.post<SavedTheme>(`/themes/${theme.id}/duplicate`)
+      // The name as shown (system themes in the person's language) becomes the copy's name.
+      const { data } = await api.post<SavedTheme>(`/themes/${theme.id}/duplicate`, { name: `${theme.name} (${t('themes.copySuffix')})` })
       upsert(data)
       toast.add({ title: t('themes.toast.duplicated', { name: data.name }), icon: 'i-lucide-copy', color: 'success' })
       return data
@@ -76,5 +79,15 @@ export function useThemes() {
     }
   }
 
-  return { themes, loading, loaded, load, create, update, duplicate, remove }
+  /** One theme (system ones included) — the theme editor. */
+  const get = async (id: string) => (await api.get<SavedTheme>(`/themes/${encodeURIComponent(id)}`)).data
+
+  /** System themes show their name in the person's language; others as written. */
+  const { te } = useI18n()
+  const nameOf = (theme: Pick<SavedTheme, 'name' | 'name_key' | 'id'>) => {
+    if (!theme.name_key || !te(theme.name_key)) return theme.name
+    return theme.id.startsWith('sys_category_') ? t('themes.categoryDesign', { name: t(theme.name_key) }) : t(theme.name_key)
+  }
+
+  return { themes, loading, loaded, load, create, update, duplicate, remove, get, nameOf }
 }

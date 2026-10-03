@@ -1,0 +1,268 @@
+/** Health & Safety templates (F9 milestone 2). Controls only — no compliance claims. */
+import { opts, page, q, row, rule, scored, type TemplateDef } from '../kit'
+
+const passFail = scored(['Pass', 1], ['Fail', 0])
+const yesNo = scored(['Yes', 1], ['No', 0])
+
+export const HEALTH_SAFETY_TEMPLATES: TemplateDef[] = [
+  {
+    key: 'risk_assessment',
+    category: 'health_safety',
+    icon: 'i-lucide-shield-alert',
+    minutes: 8,
+    name: 'Risk Assessment',
+    description: 'Score each hazard by likelihood × severity; the risk level is worked out and an action plan appears when the risk is medium or high.',
+    tags: ['risk', 'hazard', 'safety'],
+    pages: [
+      page('Assessment', [
+        row(q('short_text', 'Activity or area assessed', { required: true }), q('date', 'Date of assessment', { required: true })),
+        row(q('full_name', 'Assessor', { required: true }), q('dropdown', 'Department', { options: opts('Operations', 'Warehouse', 'Office', 'Site', 'Laboratory', 'Other') })),
+      ]),
+      page('Hazard and risk', [
+        q('short_text', 'Hazard', { required: true, placeholder: 'For example: wet floor at the loading bay' }),
+        q('dropdown', 'Type of hazard', {
+          options: opts('Slips, trips and falls', 'Manual handling', 'Chemical', 'Electrical', 'Fire', 'Working at height', 'Machinery', 'Noise', 'Biological', 'Other'),
+        }),
+        q('checkbox', 'Who might be harmed?', { options: opts('Employees', 'Contractors', 'Visitors', 'Members of the public', 'Vulnerable people') }),
+        q('long_text', 'Controls already in place'),
+        row(
+          q('radio', 'Likelihood', { key: 'likelihood', required: true, options: scored(['Rare', 1], ['Unlikely', 2], ['Possible', 3], ['Likely', 4], ['Almost certain', 5]) }),
+          q('radio', 'Severity', { key: 'severity', required: true, options: scored(['Insignificant', 1], ['Minor', 2], ['Moderate', 3], ['Major', 4], ['Catastrophic', 5]) }),
+        ),
+        row(
+          q('calculated', 'Risk score (1–25)', { key: 'risk_score', formula: '{likelihood} * {severity}' }),
+          q('calculated', 'Risk level', { key: 'risk_level', formula: 'if({risk_score} >= 15, "High", if({risk_score} >= 8, "Medium", "Low"))' }),
+        ),
+        q('paragraph', 'High risk notice', {
+          key: 'high_risk_notice',
+          props: { html: '<p><strong>High risk.</strong> Stop the activity until further controls are in place, and tell the person responsible today.</p>' },
+        }),
+      ]),
+      page('Action plan', [
+        q('long_text', 'Further actions to reduce the risk', { key: 'action_plan' }),
+        row(q('short_text', 'Action owner', { key: 'action_owner' }), q('date', 'Complete by', { key: 'complete_by' })),
+        q('date', 'Next review date'),
+        q('signature', 'Assessor signature', { required: true }),
+      ]),
+    ],
+    logic: [
+      rule([['risk_score', 'gte', 15]], [['show', 'high_risk_notice']]),
+      rule([['risk_score', 'gte', 8]], [['require', 'action_plan'], ['require', 'action_owner'], ['require', 'complete_by']]),
+    ],
+  },
+  {
+    key: 'incident_report',
+    category: 'health_safety',
+    icon: 'i-lucide-triangle-alert',
+    minutes: 6,
+    name: 'Incident / Accident Report',
+    description: 'Record what happened, who was hurt and the first actions taken — serious incidents are flagged for urgent review.',
+    tags: ['incident', 'accident', 'injury'],
+    pages: [
+      page('What happened', [
+        row(q('datetime', 'When did it happen?', { required: true }), q('short_text', 'Where did it happen?', { required: true })),
+        q('radio', 'Type of incident', { required: true, options: opts('Injury', 'Ill health', 'Property damage', 'Environmental', 'Security', 'Other') }),
+        q('radio', 'Severity', { key: 'severity', required: true, options: scored(['Minor', 1], ['Moderate', 2], ['Major', 3], ['Critical', 4]) }),
+        q('calculated', 'Review priority', {
+          key: 'review_priority',
+          formula: 'if({severity} >= 3, "Urgent review", "Standard review")',
+          props: { internal: true },
+        }),
+        q('long_text', 'Describe what happened', { required: true, validation: { min_length: 20 } }),
+        q('long_text', 'Immediate actions taken'),
+        q('image_upload', 'Photos', { props: { max_files: 6 } }),
+      ]),
+      page('People involved', [
+        q('toggle', 'Was anyone injured?', { key: 'injured' }),
+        q('long_text', 'Injuries and who was affected', { key: 'injury_details' }),
+        q('radio', 'Treatment given', { key: 'treatment', options: opts('First aid', 'Medical treatment', 'Hospital', 'None') }),
+        q('long_text', 'Witnesses (names and contact details)'),
+        row(q('full_name', 'Reported by', { required: true }), q('email', 'Your email')),
+      ]),
+    ],
+    logic: [rule([['injured', 'true']], [['show', 'injury_details'], ['require', 'injury_details'], ['show', 'treatment']])],
+  },
+  {
+    key: 'near_miss_report',
+    category: 'health_safety',
+    icon: 'i-lucide-octagon-alert',
+    minutes: 3,
+    name: 'Near-Miss Report',
+    description: 'Report close calls quickly — potential severity and recurrence give a priority so prevention comes first.',
+    tags: ['near miss', 'prevention'],
+    design: { header: { band_bg: '#9a3412' }, colors: { primary: '#c2410c' } },
+    pages: [
+      page('Near miss', [
+        row(q('datetime', 'When?', { required: true }), q('short_text', 'Where?', { required: true })),
+        q('dropdown', 'Category', { options: opts('Slip or trip', 'Falling object', 'Vehicle or equipment', 'Electrical', 'Fire', 'Chemical', 'Other') }),
+        q('long_text', 'What nearly happened?', { required: true }),
+        row(
+          q('radio', 'How bad could it have been?', { key: 'potential', required: true, options: scored(['Low', 1], ['Medium', 2], ['High', 3], ['Critical', 4]) }),
+          q('radio', 'Could it happen again?', { key: 'recurrence', required: true, options: scored(['Unlikely', 1], ['Possible', 2], ['Likely', 3]) }),
+        ),
+        row(
+          q('calculated', 'Potential risk', { key: 'potential_risk', formula: '{potential} * {recurrence}' }),
+          q('calculated', 'Priority', { key: 'priority', formula: 'if({potential_risk} >= 9, "High", if({potential_risk} >= 4, "Medium", "Low"))' }),
+        ),
+        q('long_text', 'How could it be prevented?'),
+        q('image_upload', 'Photo', { props: { max_files: 3 } }),
+        q('toggle', 'Report anonymously', { key: 'anonymous' }),
+        q('full_name', 'Your name', { key: 'reporter' }),
+      ]),
+    ],
+    logic: [rule([['anonymous', 'true']], [['hide', 'reporter']])],
+  },
+  {
+    key: 'safety_inspection',
+    category: 'health_safety',
+    icon: 'i-lucide-clipboard-check',
+    minutes: 10,
+    name: 'Safety Inspection Checklist',
+    description: 'Pass / fail checks with a compliance percentage and result; failed checks ask for details and photos.',
+    tags: ['inspection', 'checklist', 'audit'],
+    pages: [
+      page('Inspection', [
+        row(q('short_text', 'Site or area', { required: true }), q('date', 'Date', { required: true })),
+        q('full_name', 'Inspector', { required: true }),
+      ]),
+      page('Checks', [
+        ...[
+          'Walkways and exits are clear',
+          'Fire extinguishers are in place and in date',
+          'Emergency lighting works',
+          'First-aid kit is stocked',
+          'Electrical cables and plugs are undamaged',
+          'Chemicals are stored and labelled correctly',
+          'Personal protective equipment is available',
+          'Safety signage is visible',
+        ].map((label, i) => q('radio', label, { key: `check_${i + 1}`, required: true, options: passFail })),
+        row(
+          q('calculated', 'Compliance (%)', {
+            key: 'compliance',
+            formula: 'round(sum({check_1}, {check_2}, {check_3}, {check_4}, {check_5}, {check_6}, {check_7}, {check_8}) / 8 * 100)',
+          }),
+          q('calculated', 'Result', { key: 'result', formula: 'if({compliance} >= 90, "Compliant", if({compliance} >= 70, "Needs attention", "Not compliant"))' }),
+        ),
+        q('long_text', 'Failed checks: what was found and what was done', { key: 'findings' }),
+        q('image_upload', 'Photos of issues', { key: 'issue_photos', props: { max_files: 8 } }),
+        q('signature', 'Inspector signature', { required: true }),
+      ]),
+    ],
+    logic: [rule([['compliance', 'lt', 100]], [['require', 'findings'], ['show', 'issue_photos']])],
+  },
+  {
+    key: 'patient_intake',
+    category: 'health_safety',
+    icon: 'i-lucide-stethoscope',
+    minutes: 7,
+    name: 'Patient Intake',
+    description: 'New-patient details, reason for visit, pain level, allergies and BMI worked out from height and weight.',
+    tags: ['patient', 'clinic', 'intake'],
+    design: { colors: { primary: '#0e7490' }, header: { band_bg: '#155e75' }, footer: { bg: '#164e63' } },
+    pages: [
+      page('About you', [
+        q('full_name', 'Full name', { required: true }),
+        row(q('date', 'Date of birth', { required: true }), q('radio', 'Gender', { options: opts('Female', 'Male', 'Non-binary', 'Prefer not to say') })),
+        row(q('phone', 'Phone', { required: true }), q('email', 'Email')),
+        q('address', 'Address'),
+        row(q('short_text', 'Emergency contact'), q('phone', 'Emergency contact phone')),
+      ]),
+      page('Your visit', [
+        q('long_text', 'Reason for your visit', { required: true }),
+        q('date', 'When did it start?'),
+        q('scale', 'Pain level right now', { props: { min: 0, max: 10, min_label: 'No pain', max_label: 'Worst pain' } }),
+        row(q('number', 'Height (cm)', { key: 'height_cm', validation: { min: 50, max: 250 } }), q('number', 'Weight (kg)', { key: 'weight_kg', validation: { min: 2, max: 400 } })),
+        q('calculated', 'BMI', { key: 'bmi', formula: 'round({weight_kg} / (({height_cm} / 100) * ({height_cm} / 100)), 1)' }),
+        q('toggle', 'Do you have any allergies?', { key: 'has_allergies' }),
+        q('long_text', 'Allergies and reactions', { key: 'allergies' }),
+        q('long_text', 'Medicines you take'),
+        row(q('short_text', 'Insurance provider (if any)'), q('short_text', 'Policy number')),
+        q('consent', 'Consent', { required: true, props: { text: 'I agree that my information is used for my care and kept securely.' } }),
+      ]),
+    ],
+    logic: [rule([['has_allergies', 'true']], [['show', 'allergies'], ['require', 'allergies']])],
+  },
+  {
+    key: 'medical_history',
+    category: 'health_safety',
+    icon: 'i-lucide-file-heart',
+    minutes: 8,
+    name: 'Medical History',
+    description: 'Conditions, operations, medicines, family history and lifestyle — with a count of conditions for the clinician.',
+    tags: ['medical', 'history', 'clinic'],
+    design: { colors: { primary: '#0e7490' }, header: { band_bg: '#155e75' }, footer: { bg: '#164e63' } },
+    pages: [
+      page('Your health', [
+        q('full_name', 'Full name', { required: true }),
+        q('date', 'Date of birth', { required: true }),
+        q('checkbox', 'Do you have, or have you had, any of these?', {
+          key: 'conditions',
+          options: opts('Diabetes', 'High blood pressure', 'Asthma', 'Heart disease', 'Cancer', 'Thyroid condition', 'Epilepsy', 'Mental health condition'),
+        }),
+        q('calculated', 'Conditions reported', { key: 'conditions_count', formula: 'if(count({conditions}) > 0, {conditions}, 0)', props: { internal: true } }),
+        q('long_text', 'Operations or hospital stays (with years)'),
+        q('long_text', 'Medicines you take (name and dose)'),
+        q('long_text', 'Allergies'),
+        q('checkbox', 'Family history', { options: opts('Diabetes', 'Heart disease', 'Cancer', 'Stroke', 'None that I know of') }),
+      ]),
+      page('Lifestyle', [
+        q('radio', 'Smoking', { options: opts('Never', 'Former', 'Current') }),
+        row(q('number', 'Alcohol units per week', { validation: { min: 0, max: 200 } }), q('number', 'Days with exercise per week', { validation: { min: 0, max: 7 } })),
+        q('radio', 'Are your vaccinations up to date?', { options: opts('Yes', 'No', 'Not sure') }),
+        q('signature', 'Signature', { required: true }),
+      ]),
+    ],
+  },
+  {
+    key: 'health_screening',
+    category: 'health_safety',
+    icon: 'i-lucide-thermometer',
+    minutes: 2,
+    name: 'Health Screening / Declaration',
+    description: 'A quick yes / no screening before entry; any "yes" refers the person for review before they go in.',
+    tags: ['screening', 'declaration', 'visitor'],
+    pages: [
+      page('Health declaration', [
+        row(q('full_name', 'Full name', { required: true }), q('date', 'Date', { required: true })),
+        q('short_text', 'Site you are visiting'),
+        ...[
+          'Do you have a fever or feel unwell today?',
+          'Do you have a new cough or difficulty breathing?',
+          'Have you been in close contact with someone who is ill with an infectious disease in the last 10 days?',
+          'Have you been told to stay at home by a health professional?',
+        ].map((label, i) => q('radio', label, { key: `s${i + 1}`, required: true, options: yesNo })),
+        q('calculated', 'Answers needing review', { key: 'flags', formula: 'sum({s1}, {s2}, {s3}, {s4})', props: { internal: true } }),
+        q('calculated', 'Result', { key: 'screening_result', formula: 'if({flags} > 0, "Refer for review", "Clear to enter")' }),
+        q('paragraph', 'Refer notice', { key: 'refer_notice', props: { html: '<p>Please speak to reception or your contact before going in.</p>' } }),
+        q('consent', 'Declaration', { required: true, props: { text: 'The answers I have given are true.' } }),
+      ]),
+    ],
+    logic: [rule([['flags', 'gt', 0]], [['show', 'refer_notice']])],
+  },
+  {
+    key: 'consent_form',
+    category: 'health_safety',
+    icon: 'i-lucide-file-signature',
+    minutes: 4,
+    name: 'Consent Form',
+    description: 'Clear consent statements with signature; a parent or guardian signs for anyone under 18.',
+    tags: ['consent', 'signature', 'guardian'],
+    pages: [
+      page('Consent', [
+        q('paragraph', 'About this consent', {
+          props: { html: '<p>Please read each statement. You can withdraw your consent at any time by contacting us.</p>' },
+        }),
+        row(q('full_name', 'Participant name', { required: true }), q('date', 'Date of birth', { required: true })),
+        q('consent', 'Taking part', { required: true, props: { text: 'I agree to take part and understand what is involved.' } }),
+        q('consent', 'Information', { required: true, props: { text: 'I agree that my information is recorded and kept securely.' } }),
+        q('consent', 'Photos', { props: { text: 'I agree that photos may be taken (optional).' } }),
+        q('toggle', 'The participant is under 18', { key: 'minor' }),
+        q('full_name', 'Parent or guardian name', { key: 'guardian_name' }),
+        q('signature', 'Parent or guardian signature', { key: 'guardian_signature' }),
+        q('signature', 'Participant signature', { required: true }),
+        q('date', 'Date signed', { required: true }),
+      ]),
+    ],
+    logic: [rule([['minor', 'true']], [['show', 'guardian_name'], ['require', 'guardian_name'], ['show', 'guardian_signature'], ['require', 'guardian_signature']])],
+  },
+]

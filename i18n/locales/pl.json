@@ -232,6 +232,29 @@
       "detailsTitle": "Szczegóły",
       "tags": "Tagi",
       "noHistory": "Opublikowano przed prowadzeniem historii wersji — zacznie się ona przy następnej publikacji."
+    },
+    "qr": {
+      "title": "Kod QR",
+      "desc": "Proszę go wydrukować lub wyświetlić na ekranach — zeskanowanie otwiera formularz.",
+      "accent": "Kolor formularza",
+      "black": "Czarny",
+      "colour": "Kolorowy",
+      "pngSize": "Rozmiar PNG",
+      "png": "Pobierz PNG",
+      "svg": "Pobierz SVG",
+      "downloaded": "Pobrano kod QR",
+      "alt": "Kod QR dla {name}",
+      "notLive": "Kod otworzy formularz po jego opublikowaniu.",
+      "style": "Styl",
+      "branded": "Z marką",
+      "plain": "Prosty",
+      "brandedOrg": "Nazwa i logo Państwa organizacji wraz z nazwą formularza; Formalie w stopce.",
+      "brandedFormalie": "Oznakowanie Formalie wraz z nazwą formularza.",
+      "plainHint": "Sam kod — do małych przestrzeni.",
+      "brand": "Kolor marki",
+      "custom": "Dowolny kolor",
+      "scan": "Zeskanuj, aby otworzyć",
+      "failed": "Nie udało się zapisać kodu QR. Proszę spróbować ponownie."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Wybierz z listy…",
       "selected": "Tylko wybrane ({n}) mogą widzieć i wypełniać to pole.",
       "noRequired": "Pola z ograniczonym dostępem nie mogą być wymagane — osoby, dla których pole nie jest przeznaczone, nadal muszą móc wysłać formularz. Ich odpowiedzi są widoczne tylko dla tych samych osób."
+    },
+    "language": {
+      "title": "Język formularza",
+      "hint": "Respondenci widzą formularz w tym języku — również przyciski, komunikaty i daty. Więcej języków na formularz pojawi się wraz z publicznymi stronami formularzy."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Zaktualizowano motyw „{name}”",
       "duplicated": "Utworzono „{name}”",
       "deleted": "Usunięto motyw „{name}”"
+    },
+    "view": "Wyświetl",
+    "open": "Otwórz {name}",
+    "editor": {
+      "systemTitle": "Projekt Formalie",
+      "systemHint": "Ten motyw jest częścią Formalie i nie można go zmienić. Proszę go zduplikować, aby utworzyć własną wersję.",
+      "systemDesc": "Projekt Formalie — tylko do odczytu"
     }
   },
   "dataSources": {

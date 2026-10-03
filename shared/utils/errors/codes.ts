@@ -52,6 +52,7 @@ export const ERROR_CODES = {
   'FRM-FORM-1011': { status: 403, message: 'System templates can’t be changed. Duplicate it to make your own.' },
   'FRM-FORM-1012': { status: 409, message: 'A template with this name already exists.' },
   'FRM-FORM-1013': { status: 409, message: 'This folder still has forms. Move them to another folder first.' },
+  'FRM-FORM-1014': { status: 403, message: 'System themes can’t be changed. Duplicate it to make your own.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
   'FRM-RESP-1003': { status: 409, message: 'This form was already submitted from this session.' },

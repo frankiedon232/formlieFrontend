@@ -232,6 +232,29 @@
       "detailsTitle": "详情",
       "tags": "标签",
       "noHistory": "发布时尚未记录版本历史，下次发布时开始记录。"
+    },
+    "qr": {
+      "title": "二维码",
+      "desc": "可打印或显示在屏幕上，扫描即可打开表单。",
+      "accent": "表单颜色",
+      "black": "黑色",
+      "colour": "彩色",
+      "pngSize": "PNG 尺寸",
+      "png": "下载 PNG",
+      "svg": "下载 SVG",
+      "downloaded": "二维码已下载",
+      "alt": "{name} 的二维码",
+      "notLive": "表单发布后，扫描此码即可打开表单。",
+      "style": "样式",
+      "branded": "品牌样式",
+      "plain": "简洁",
+      "brandedOrg": "显示贵组织的名称和徽标以及表单名称；页脚显示 Formalie。",
+      "brandedFormalie": "显示 Formalie 品牌和表单名称。",
+      "plainHint": "仅显示二维码，适合空间较小的场景。",
+      "brand": "品牌颜色",
+      "custom": "任意颜色",
+      "scan": "扫码打开",
+      "failed": "无法保存二维码，请重试。"
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "从列表中选择…",
       "selected": "仅选中的 {n} 项可以查看和填写此字段。",
       "noRequired": "受限字段不能设为必填——字段不面向的人员也必须能够提交。其答案仅对相同人员可见。"
+    },
+    "language": {
+      "title": "表单语言",
+      "hint": "填写者将以此语言查看表单，包括按钮、提示信息和日期。每个表单支持多种语言的功能将随公开表单页面一同推出。"
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "主题“{name}”已更新",
       "duplicated": "已创建“{name}”",
       "deleted": "主题“{name}”已删除"
+    },
+    "view": "查看",
+    "open": "打开 {name}",
+    "editor": {
+      "systemTitle": "Formalie 设计",
+      "systemHint": "此主题是 Formalie 自带的，无法更改。复制它即可创建您自己的版本。",
+      "systemDesc": "Formalie 设计 — 只读"
     }
   },
   "dataSources": {

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-02 · **Current phase:** F9 — Templates gallery (F8 reviewed by the owner)
+**Last updated:** 2026-10-03 · **Current phase:** F9 — Templates gallery (F8 reviewed by the owner)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -19,7 +19,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
-| F9    | Templates gallery                                 | 🟡     | ~35% |
+| F9    | Templates gallery                                 | 🟡     | ~70% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
@@ -406,19 +406,26 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Gallery cards: page-shaped thumbnails with a fixed proportion (no stretching at any card width)
 - ✅ Folders: create / rename / delete under Forms → Folders (also created from "Move to folder"); a folder that still holds forms can't be deleted (`FRM-FORM-1013`) — its forms are one click away
 
-### Milestone 2 — Health & Safety · Events & Bookings · Hospitality
+### Milestone 2 — Health & Safety · Events & Bookings · Hospitality ✅
 
-- ⬜ **Themes catalogue** (owner, 2026-10-03): the themes library shows three kinds — **System** (Formalie's designs: the starting points and every category design), **Saved** (saved from a form's design) and **Created** (made from scratch in a theme editor: the designer controls on a sample form, no form needed); filters and badges per kind; system themes can be duplicated, not changed; Themes submenu keeps the 6 most recent
+- ✅ **Themes catalogue** (owner, 2026-10-03): the themes library shows three kinds — **System** (Formalie's designs: the starting points and every category design), **Saved** (saved from a form's design) and **Created** (made from scratch in a theme editor: the designer controls on a sample form, no form needed); filters and badges per kind; system themes can be duplicated, not changed; Themes submenu keeps the 6 most recent
 
-- ⬜ Health & Safety (8): Risk Assessment (likelihood × severity = risk score, risk level, action required when high) · Incident / Accident Report (severity score) · Near-Miss Report (potential severity) · Safety Inspection Checklist (compliance %) · Patient Intake · Medical History · Health Screening / Declaration (flag when any "yes") · Consent Form — controls only, no compliance claims
-- ⬜ Events & Bookings (7): Event Registration (ticket total) · RSVP (party size) · Appointment Booking · Venue / Room Reservation (hours × rate) · Volunteer Signup · Speaker / Sponsor Application · Post-Event Feedback (average)
-- ⬜ Hospitality (8): Guest Registration · Hotel Booking Request (nights × rate) · Guest Feedback (average) · Service Evaluation (score) · Special Requirements · Event Catering Request (guests × price per head) · Restaurant Reservation Request · Hospitality Complaint
+- ✅ Health & Safety (8): Risk Assessment (likelihood × severity = risk score, risk level, action required when high) · Incident / Accident Report (severity score) · Near-Miss Report (potential severity) · Safety Inspection Checklist (compliance %) · Patient Intake · Medical History · Health Screening / Declaration (flag when any "yes") · Consent Form — controls only, no compliance claims
+- ✅ Events & Bookings (7): Event Registration (ticket total) · RSVP (party size) · Appointment Booking · Venue / Room Reservation (hours × rate) · Volunteer Signup · Speaker / Sponsor Application · Post-Event Feedback (average)
+- ✅ Hospitality (8): Guest Registration · Hotel Booking Request (nights × rate) · Guest Feedback (average) · Service Evaluation (score) · Special Requirements · Event Catering Request (guests × price per head) · Restaurant Reservation Request · Hospitality Complaint
 
-### Milestone 3 — Education · Operations & IT · Finance & Legal
+### Milestone 2 follow-ups (2026-10-03)
 
-- ⬜ Education (7): Student Enrolment / Admission · Course Evaluation (average) · Quiz / Assessment (score from answers, pass / fail) · Scholarship Application (eligibility score) · Parent Consent / Permission Slip · Attendance Register (present count) · Academic Survey
-- ⬜ Operations & IT (9): IT Support Ticket (priority from impact × urgency) · Change Request (risk score) · Asset Check-out / Inventory · Maintenance / Work Order · Purchase Requisition (line totals, total) · Vendor / Supplier Registration · Site / Field Inspection Report (pass rate) · Delivery Confirmation / Proof of Delivery · Quality Control Checklist (pass rate, result)
-- ⬜ Finance & Legal (5): Loan / Credit Application (debt-to-income ratio, estimated monthly payment) · KYC / Identity Verification · Invoice Submission (subtotal, tax, total) · Insurance Claim (claim total) · NDA / Agreement Sign-off
+- ✅ Form overview KPI cards match the design (dark title, ↗ link, icon · number · trend · caption)
+- ✅ QR code for the form link (`uqr`, owner-approved): branded card (organisation name + logo / initials in the centre, form name, Formalie footer; Formalie branding without own subdomain) or plain; colours: form, brand, black, presets, any colour; PNG sizes and SVG
+- ✅ Form language: main language of the form in Form settings (20 languages)
+- ✅ Themes clickable everywhere: workspace themes open the editor, Formalie themes open read-only with "Duplicate to edit"
+
+### Milestone 3 — Education · Operations & IT · Finance & Legal ✅
+
+- ✅ Education (7): Student Enrolment / Admission · Course Evaluation (average) · Quiz / Assessment (score from answers, pass / fail) · Scholarship Application (eligibility score) · Parent Consent / Permission Slip · Attendance Register (present count) · Academic Survey
+- ✅ Operations & IT (9): IT Support Ticket (priority from impact × urgency) · Change Request (risk score) · Asset Check-out / Inventory · Maintenance / Work Order · Purchase Requisition (line totals, total) · Vendor / Supplier Registration · Site / Field Inspection Report (pass rate) · Delivery Confirmation / Proof of Delivery · Quality Control Checklist (pass rate, result)
+- ✅ Finance & Legal (5): Loan / Credit Application (debt-to-income ratio, flat-rate monthly payment estimate — labelled as an estimate) · KYC / Identity Verification · Invoice Submission (subtotal, tax, total) · Insurance Claim (claim total) · NDA / Agreement Sign-off
 
 ### Milestone 4 — Community & Other · Real Estate · Sales
 
@@ -451,10 +458,12 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ⬜ Spam protection (captcha)
 - ⬜ Thank-you page or redirect
 - ⬜ Preview page with device frames
+- ⬜ **Form languages** (owner, 2026-10-03, see 03-DECISIONS → 73): the form opens in the respondent's browser language when the form offers it, otherwise its main language; `?lang=xx` forces one (shareable per-language links, embeds and QR codes); a language switcher when a form has several; translated questions / options / help / messages per language; the language is saved with each response; buttons, messages, dates, numbers and right-to-left follow it
+- ⬜ Embed: the Share card offers the ready `<iframe>` code (with sizes and auto-resize) instead of a bare embed address
 
 ### Share
 
-- ⬜ Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons
+- 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
 - ⬜ Access: public, password, invite-only, organisation-only; expiry, response limit, schedule
 - ⬜ People access: edit / view / responses
 - ⬜ Embed: iframe snippet with auto-resize, size options, allowed domains, live preview
@@ -901,6 +910,12 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Folders: where to add / rename / remove; block removing folders with forms                                                                                                                                                                                                                                                                                        | F6 / F9                                                                           | ✅         |
 | 2026-10-03 | Max files / max size not enforced, no notification                                                                                                                                                                                                                                                                                                                | F9                                                                                | ✅         |
 | 2026-10-03 | Themes like templates: system, saved and created themes                                                                                                                                                                                                                                                                                                           | F9 milestone 2                                                                    | ⬜         |
+| 2026-10-03 | Form overview KPI cards like the design (title colour and position)                                                                                                                                                                                                                                                                                               | F9                                                                                | ✅         |
+| 2026-10-03 | Form link vs embed link — same or different? (advice: different; embed as code)                                                                                                                                                                                                                                                                                   | F10                                                                               | ✅ decided |
+| 2026-10-03 | QR code for form links                                                                                                                                                                                                                                                                                                                                            | F9 / F10                                                                          | ✅         |
+| 2026-10-03 | Languages go with the forms (links, embeds, QR, respondent language)                                                                                                                                                                                                                                                                                              | F9 (picker) / F10 (public pages)                                                  | 🟡         |
+| 2026-10-03 | Themes clickable to view or edit                                                                                                                                                                                                                                                                                                                                  | F9                                                                                | ✅         |
+| 2026-10-03 | Branded QR codes (organisation, form name, logo in the centre, Formalie mark), several colours, branding on / off | F9 | ✅ |
 
 ---
 
@@ -963,3 +978,6 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | Milestone 1: template authoring kit (`shared/templates/`), 11 categories with their own designs, 20 templates (Business & Customer, HR & Workplace) with calculations (totals, averages, days, rating bands, loyalty group) and logic — all tested as valid, publishable forms; formula additions `avg` / `count` / `days` / text results, internal calculations; gallery (Grid of themed cards / Table, category chips with counts, filters, sorts), template page (live preview, what’s included, formulas, usage, forms made from it), Use template, Save as template, workspace templates (duplicate, delete), New form catalogue picker; seeded sample forms linked to templates; mock `/templates`; 20 languages. Also: confirm dialog keeps its text while closing. |
 | 2026-10-03 | F9 | Owner review round: form overview redesign (KPIs, 30-day chart, share, structure, versions, details, activity; mock `/forms/:id/overview`), template page side panel (tiles, formula snippets, forms slider), mini table thumbnails, sidebar submenus (Templates / Themes recent 6 + All, Responses statuses), integrations moved to the API service (pages + redirects; F13 renamed "API service & integrations", F15 "Option sets & payments"), forms list Template filter, field access list fix. Duplicate-submission protection planned (F10). |
 | 2026-10-03 | F9 | Owner review fixes: file uploads (inside the zone, limits enforced with notifications, visible remove), live error clearing for duration, page-shaped gallery thumbnails, folders with forms can't be deleted (`FRM-FORM-1013`); themes catalogue (system / saved / created) planned into milestone 2. |
+| 2026-10-03 | F9 | Milestone 2: 23 templates — Health & Safety (risk score / level with action plan, incident priority, near-miss priority, inspection compliance %, BMI, screening result, guardian consent), Events & Bookings (ticket totals, room cost, sponsorship totals, speaker / sponsor page logic), Hospitality (nights from dates, nightly-rate estimate, service score, catering per guest); 43 templates in total, every onboarding starter now from the catalogue. Themes catalogue: system (starting points + category designs, read-only), saved and created themes; theme editor (`/settings/themes/new`, `/settings/themes/:id`) with live preview, Cmd/Ctrl+S and a leave guard. |
+| 2026-10-03 | F9 | KPI cards aligned with the design; QR codes for form links (`uqr` added, owner-approved); form language setting; themes open in the editor (workspace) or read-only (Formalie) from list and grid; Settings no longer highlighted on theme pages. Language plan for public forms recorded (decision 73). |
+| 2026-10-03 | F9 | Milestone 3: 21 templates — Education (course score, quiz score / percentage / pass, scholarship eligibility for the panel only, attendance count and rate), Operations & IT (ticket priority from impact × urgency, change risk, requisition totals, inspection and QC pass rates), Finance & Legal (debt-to-income and a flat-rate monthly estimate, invoice subtotal / tax / total, claim total, company details when signing for a company); 64 templates in total; new calculation checks; 20 languages. |

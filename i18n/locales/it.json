@@ -232,6 +232,29 @@
       "detailsTitle": "Dettagli",
       "tags": "Tag",
       "noHistory": "Pubblicato prima che venisse tenuta la cronologia delle versioni: inizia con la prossima pubblicazione."
+    },
+    "qr": {
+      "title": "Codice QR",
+      "desc": "Stampalo o mostralo sugli schermi: scansionandolo si apre il modulo.",
+      "accent": "Colore del modulo",
+      "black": "Nero",
+      "colour": "Colore",
+      "pngSize": "Dimensione PNG",
+      "png": "Scarica PNG",
+      "svg": "Scarica SVG",
+      "downloaded": "Codice QR scaricato",
+      "alt": "Codice QR per {name}",
+      "notLive": "Il codice aprirà il modulo una volta pubblicato.",
+      "style": "Stile",
+      "branded": "Con brand",
+      "plain": "Semplice",
+      "brandedOrg": "Nome e logo della tua organizzazione con il nome del modulo; Formalie nel piè di pagina.",
+      "brandedFormalie": "Branding Formalie con il nome del modulo.",
+      "plainHint": "Solo il codice, per spazi ridotti.",
+      "brand": "Colore del brand",
+      "custom": "Qualsiasi colore",
+      "scan": "Scansiona per aprire",
+      "failed": "Impossibile salvare il codice QR. Riprova."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Scegli dall'elenco…",
       "selected": "Solo i {n} selezionati possono vedere e compilare questo campo.",
       "noRequired": "I campi riservati non possono essere obbligatori: chi non è destinatario del campo deve comunque poter inviare il modulo. Le risposte sono mostrate solo a quelle stesse persone."
+    },
+    "language": {
+      "title": "Lingua del modulo",
+      "hint": "I rispondenti vedono il modulo in questa lingua, inclusi pulsanti, messaggi e date. Più lingue per modulo arriveranno con le pagine pubbliche dei moduli."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Tema «{name}» aggiornato",
       "duplicated": "«{name}» creato",
       "deleted": "Tema «{name}» eliminato"
+    },
+    "view": "Visualizza",
+    "open": "Apri {name}",
+    "editor": {
+      "systemTitle": "Un design Formalie",
+      "systemHint": "Questo tema fa parte di Formalie e non può essere modificato. Duplicalo per creare la tua versione.",
+      "systemDesc": "Design Formalie: sola lettura"
     }
   },
   "dataSources": {

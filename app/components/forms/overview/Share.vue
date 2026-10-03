@@ -1,13 +1,13 @@
 <!--
   Form overview → sharing: the public link and the embed link (built by shared/utils/urls/public.ts)
-  with copy buttons, and what each channel is for. Live once the form is published; QR codes,
-  access rules and the embed snippet arrive with F10.
+  with copy buttons and a QR code (PNG / SVG). Live once the form is published; access rules and
+  the embed snippet arrive with F10.
 -->
 <script setup lang="ts">
 import type { FormSummary } from '#shared/types/forms'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
 
-const props = defineProps<{ form: FormSummary }>()
+const props = defineProps<{ form: FormSummary; accent?: string }>()
 const { t } = useI18n()
 const config = useRuntimeConfig().public
 const tenant = useTenant()
@@ -18,6 +18,7 @@ const sub = computed(() => tenant.profile.value?.subdomain ?? null)
 const fill = computed(() => formLink(hosts.value, props.form.slug, 'fill', sub.value))
 const embed = computed(() => formLink(hosts.value, props.form.slug, 'embed', sub.value))
 const live = computed(() => props.form.status === 'published')
+const qrOpen = ref(false)
 </script>
 
 <template>
@@ -35,9 +36,8 @@ const live = computed(() => props.form.status === 'published')
     </div>
     <div class="mt-3 flex flex-wrap gap-2">
       <UButton :label="t('forms.overview.openLink')" icon="i-lucide-external-link" color="neutral" variant="outline" size="sm" :to="fill" target="_blank" :disabled="!live" />
-      <UButton :label="t('forms.overview.qr')" icon="i-lucide-qr-code" color="neutral" variant="ghost" size="sm" disabled>
-        <template #trailing><UBadge :label="t('forms.overview.soon')" color="neutral" variant="soft" size="sm" /></template>
-      </UButton>
+      <UButton :label="t('forms.overview.qr')" icon="i-lucide-qr-code" color="neutral" variant="outline" size="sm" @click="qrOpen = true" />
     </div>
+    <FormsShareQrModal v-model:open="qrOpen" :url="fill" :form-name="form.name" :accent="accent" :live="live" />
   </UCard>
 </template>

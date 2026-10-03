@@ -6,6 +6,7 @@ import { defineMockRoute } from '../core/route'
 import { formsOf } from '../data/formStore'
 import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
+import { SYSTEM_THEME_COUNT } from './themes'
 
 /** GET /navigation/counts — cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
@@ -38,6 +39,6 @@ export const navigationCounts = defineMockRoute(({ event }) => {
     },
     responses: { all: total, new: unread, reviewed, approved: total - unread - reviewed - rejected, rejected },
     templates: { total: templates.length || SYSTEM_TEMPLATES.length, recent },
-    themes: { total: themes.length, recent: themes.slice(0, 6).map(theme => ({ id: theme.id, name: theme.name })) },
+    themes: { total: themes.length + SYSTEM_THEME_COUNT, recent: themes.slice(0, 6).map(theme => ({ id: theme.id, name: theme.name })) },
   })
 })

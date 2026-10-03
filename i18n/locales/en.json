@@ -232,6 +232,29 @@
       "detailsTitle": "Details",
       "tags": "Tags",
       "noHistory": "Published before version history was kept — the next publish starts it."
+    },
+    "qr": {
+      "title": "QR code",
+      "desc": "Print it or put it on screens — scanning opens the form.",
+      "accent": "Form colour",
+      "black": "Black",
+      "colour": "Colour",
+      "pngSize": "PNG size",
+      "png": "Download PNG",
+      "svg": "Download SVG",
+      "downloaded": "QR code downloaded",
+      "alt": "QR code for {name}",
+      "notLive": "The code opens the form once it is published.",
+      "style": "Style",
+      "branded": "Branded",
+      "plain": "Plain",
+      "brandedOrg": "Your organisation's name and logo with the form name; Formalie in the footer.",
+      "brandedFormalie": "Formalie branding with the form name.",
+      "plainHint": "Just the code — for small spaces.",
+      "brand": "Brand colour",
+      "custom": "Any colour",
+      "scan": "Scan to open",
+      "failed": "The QR code couldn't be saved. Please try again."
     }
   },
   "nav": {
@@ -410,7 +433,8 @@
     "FRM-FORM-1011": "System templates can’t be changed. Duplicate it to make your own.",
     "FRM-FORM-1012": "A template with this name already exists.",
     "FRM-RESP-1003": "This form was already submitted from this session.",
-    "FRM-FORM-1013": "This folder still has forms. Move them to another folder first."
+    "FRM-FORM-1013": "This folder still has forms. Move them to another folder first.",
+    "FRM-FORM-1014": "System themes can't be changed. Duplicate it to make your own."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1125,6 +1149,182 @@
       "reference_check": {
         "name": "Reference Check",
         "description": "Structured questions for referees, rated skills with an average and a clear hire-again answer."
+      },
+      "risk_assessment": {
+        "name": "Risk Assessment",
+        "description": "Score each hazard by likelihood × severity; the risk level is worked out and an action plan appears when the risk is medium or high."
+      },
+      "incident_report": {
+        "name": "Incident / Accident Report",
+        "description": "Record what happened, who was hurt and the first actions taken — serious incidents are flagged for urgent review."
+      },
+      "near_miss_report": {
+        "name": "Near-Miss Report",
+        "description": "Report close calls quickly — potential severity and recurrence give a priority so prevention comes first."
+      },
+      "safety_inspection": {
+        "name": "Safety Inspection Checklist",
+        "description": "Pass / fail checks with a compliance percentage and result; failed checks ask for details and photos."
+      },
+      "patient_intake": {
+        "name": "Patient Intake",
+        "description": "New-patient details, reason for visit, pain level, allergies and BMI worked out from height and weight."
+      },
+      "medical_history": {
+        "name": "Medical History",
+        "description": "Conditions, operations, medicines, family history and lifestyle — with a count of conditions for the clinician."
+      },
+      "health_screening": {
+        "name": "Health Screening / Declaration",
+        "description": "A quick yes / no screening before entry; any \"yes\" refers the person for review before they go in."
+      },
+      "consent_form": {
+        "name": "Consent Form",
+        "description": "Clear consent statements with signature; a parent or guardian signs for anyone under 18."
+      },
+      "event_registration": {
+        "name": "Event Registration",
+        "description": "Register attendees with ticket type, quantity and a running total, sessions and access needs."
+      },
+      "rsvp": {
+        "name": "RSVP",
+        "description": "Simple yes / no / maybe replies with party size and dietary needs only for those coming."
+      },
+      "appointment_booking": {
+        "name": "Appointment Booking",
+        "description": "Book a service on a preferred date and time, with a second choice and reminders."
+      },
+      "venue_booking": {
+        "name": "Venue / Room Reservation",
+        "description": "Reserve a room by the hour with equipment add-ons and a cost worked out as you choose."
+      },
+      "volunteer_signup": {
+        "name": "Volunteer Signup",
+        "description": "Collect volunteers, their interests and availability — with guardian consent for under-18s."
+      },
+      "speaker_sponsor_application": {
+        "name": "Speaker / Sponsor Application",
+        "description": "One form for both: speakers propose a session, sponsors pick a package and add-ons with a total."
+      },
+      "post_event_feedback": {
+        "name": "Post-Event Feedback",
+        "description": "Ratings for content, speakers, venue and organisation with an average score and a recommendation."
+      },
+      "guest_registration": {
+        "name": "Guest Registration Form",
+        "description": "Check-in details with the number of nights worked out from arrival and departure."
+      },
+      "hotel_booking_request": {
+        "name": "Hotel Booking Request Form",
+        "description": "Dates, room type and rooms give the nights and an estimated price; extras and special requests too."
+      },
+      "guest_feedback": {
+        "name": "Guest Feedback Form",
+        "description": "Rate cleanliness, comfort, staff, food and value with an average and a recommendation."
+      },
+      "service_evaluation": {
+        "name": "Service Evaluation Form",
+        "description": "Evaluate a department or team member on four qualities; the service score is shown as a percentage."
+      },
+      "special_requirements": {
+        "name": "Special Requirements Form",
+        "description": "Dietary and access needs, allergies and celebrations — so the stay is ready before arrival."
+      },
+      "event_catering_request": {
+        "name": "Event Catering Request",
+        "description": "Menu and extras per head times the number of guests give an estimate straight away."
+      },
+      "restaurant_reservation": {
+        "name": "Restaurant Reservation Request",
+        "description": "Date, time, party size, seating and the occasion — everything the host needs."
+      },
+      "hospitality_complaint": {
+        "name": "Hospitality Complaint Form",
+        "description": "Let guests tell you what went wrong, where and how they would like it put right."
+      },
+      "student_enrolment": {
+        "name": "Student Enrolment / Admission",
+        "description": "Student and guardian details, programme choice, previous education, documents and consent."
+      },
+      "course_evaluation": {
+        "name": "Course Evaluation",
+        "description": "Students rate the course on six statements; an overall score shows how the course is landing."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Assessment",
+        "description": "Multiple-choice questions scored automatically, with a percentage and a pass mark."
+      },
+      "scholarship_application": {
+        "name": "Scholarship Application",
+        "description": "Academic record, financial need and a personal statement — with an eligibility score for the panel."
+      },
+      "permission_slip": {
+        "name": "Parent Consent / Permission Slip",
+        "description": "Permission for a trip or activity with medical notes, emergency contact and a guardian signature."
+      },
+      "attendance_register": {
+        "name": "Attendance Register",
+        "description": "Mark up to eight learners present, late or absent; the present count and rate add up automatically."
+      },
+      "academic_survey": {
+        "name": "Academic Survey",
+        "description": "A short survey on study experience, support and wellbeing for students of any level."
+      },
+      "it_support_ticket": {
+        "name": "IT Support Ticket",
+        "description": "Report an IT problem; impact × urgency sets the priority so the right tickets go first."
+      },
+      "change_request": {
+        "name": "Change Request",
+        "description": "Describe a planned change with a risk score from impact and likelihood, a rollback plan and approval."
+      },
+      "asset_checkout": {
+        "name": "Asset Check-out / Inventory",
+        "description": "Check equipment in or out with asset tag, condition, return date and signature."
+      },
+      "work_order": {
+        "name": "Maintenance / Work Order",
+        "description": "Request maintenance with location, priority and photos; hours and parts give the job cost."
+      },
+      "purchase_requisition": {
+        "name": "Purchase Requisition",
+        "description": "Request up to four items with quantity and price; the total decides which approval is needed."
+      },
+      "vendor_registration": {
+        "name": "Vendor / Supplier Registration",
+        "description": "Company, contacts, tax and bank details (IBAN / SWIFT) and documents for supplier onboarding."
+      },
+      "site_inspection": {
+        "name": "Site / Field Inspection Report",
+        "description": "On-site pass / fail checks with a pass rate, an outcome, findings and photos."
+      },
+      "proof_of_delivery": {
+        "name": "Delivery Confirmation / Proof of Delivery",
+        "description": "Confirm what arrived, its condition, a photo and the receiver’s signature — damage asks for details."
+      },
+      "quality_control": {
+        "name": "Quality Control Checklist",
+        "description": "Batch details, pass / fail criteria and measurements; the pass rate gives a release decision."
+      },
+      "loan_application": {
+        "name": "Loan / Credit Application",
+        "description": "Applicant, employment and finances, with a debt-to-income ratio and an estimated monthly payment."
+      },
+      "kyc_verification": {
+        "name": "KYC / Identity Verification",
+        "description": "Identity details, ID document and proof of address, with clear purpose and consent."
+      },
+      "invoice_submission": {
+        "name": "Invoice Submission",
+        "description": "Suppliers submit an invoice with line items; subtotal, tax and total are worked out."
+      },
+      "insurance_claim": {
+        "name": "Insurance Claim",
+        "description": "Policy, incident, evidence and itemised losses; the claim total adds up as items are entered."
+      },
+      "nda_signoff": {
+        "name": "NDA / Agreement Sign-off",
+        "description": "Show the agreement, confirm each key point and sign — with company details when signing for one."
       }
     },
     "openGallery": "Open the full gallery",
@@ -1537,6 +1737,10 @@
       "placeholder": "Choose from the list…",
       "selected": "Only the {n} selected can see and fill this field.",
       "noRequired": "Restricted fields can't be required — people the field isn't meant for must still be able to submit. Their answers are shown only to the same people."
+    },
+    "language": {
+      "title": "Form language",
+      "hint": "Respondents see the form in this language — buttons, messages and dates too. More languages per form come with the public form pages."
     }
   },
   "renderer": {
@@ -2158,7 +2362,42 @@
       "updated": "Theme “{name}” updated",
       "duplicated": "“{name}” created",
       "deleted": "Theme “{name}” deleted"
-    }
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Saved from a form",
+      "created": "Created"
+    },
+    "filterSource": "Made by",
+    "newTheme": "New theme",
+    "editDesign": "Edit design",
+    "duplicateToEdit": "Duplicate to edit",
+    "copySuffix": "copy",
+    "categoryDesign": "{name} design",
+    "previewName": "Full name",
+    "previewEmail": "Email",
+    "previewMessage": "Message",
+    "editor": {
+      "crumb": "Theme editor",
+      "newTitle": "New theme",
+      "untitled": "Untitled theme",
+      "newDesc": "Design it once, use it on any form",
+      "savedState": "All changes saved",
+      "unsaved": "Unsaved changes",
+      "save": "Save theme",
+      "name": "Theme name",
+      "sample": "Shown on a sample form",
+      "sampleTitle": "Contact us",
+      "notFound": "This theme isn't available",
+      "leaveTitle": "Leave without saving?",
+      "leaveDesc": "Your changes to this theme will be lost.",
+      "leave": "Leave",
+      "systemTitle": "A Formalie design",
+      "systemHint": "This theme is part of Formalie and can't be changed. Duplicate it to make your own version.",
+      "systemDesc": "Formalie design — read-only"
+    },
+    "view": "View",
+    "open": "Open {name}"
   },
   "dataSources": {
     "subtitle": "Connect your own databases, send form data to them and work with it",

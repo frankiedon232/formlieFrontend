@@ -11,7 +11,7 @@ interface TenantLibrary {
   fields: SavedField[]
   lists: OptionList[]
   /** Saved designs; `forms_count` is computed when listing. */
-  themes?: Omit<SavedTheme, 'forms_count'>[]
+  themes?: (Omit<SavedTheme, 'forms_count' | 'source' | 'name_key'> & { source?: SavedTheme['source'] })[]
   /** Workspace templates (F9): a snapshot of a form, its design included. */
   templates?: WorkspaceTemplate[]
 }

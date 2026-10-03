@@ -21,6 +21,8 @@ export interface AppNavItem {
   adminOnly?: boolean
   /** Active on its own path only (an overview whose sections live under it). */
   exact?: boolean
+  /** Paths under this item that belong to another menu entry (e.g. themes under settings). */
+  except?: string[]
   /** Text as is (data such as a template name) instead of the `nav.<key>` translation. */
   label?: string
   /** Children built from the sidebar data (recent templates / themes), before the static ones. */
@@ -178,7 +180,7 @@ const areaOf = (path: string): NavArea =>
   NAV_AREAS.find(a => path === a.to || path.startsWith(`${a.to}/`))?.key ?? 'forms'
 
 const SYSTEM_NAV: AppNavItem[] = [
-  { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s' },
+  { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s', except: ['/settings/themes'] },
   { key: 'audit', icon: 'i-lucide-scroll-text', to: '/audit', shortcut: 'g-l', adminOnly: true },
   { key: 'help', icon: 'i-lucide-circle-help', to: '/help' },
 ]
@@ -192,6 +194,7 @@ export function useNavigation() {
   const allowed = (item: AppNavItem) => !item.adminOnly || session.user.value?.role !== 'member'
 
   function isActive(item: AppNavItem): boolean {
+    if (item.except?.some(path => route.path === path || route.path.startsWith(`${path}/`))) return false
     if (item.query)
       return route.path === item.to && Object.entries(item.query).every(([k, v]) => route.query[k] === v)
     if (item.dot) return route.path === item.to && !route.query.status

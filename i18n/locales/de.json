@@ -232,6 +232,29 @@
       "detailsTitle": "Details",
       "tags": "Tags",
       "noHistory": "Veröffentlicht, bevor der Versionsverlauf geführt wurde – er beginnt mit der nächsten Veröffentlichung."
+    },
+    "qr": {
+      "title": "QR-Code",
+      "desc": "Drucken Sie ihn aus oder zeigen Sie ihn auf Bildschirmen — beim Scannen öffnet sich das Formular.",
+      "accent": "Formularfarbe",
+      "black": "Schwarz",
+      "colour": "Farbig",
+      "pngSize": "PNG-Größe",
+      "png": "PNG herunterladen",
+      "svg": "SVG herunterladen",
+      "downloaded": "QR-Code heruntergeladen",
+      "alt": "QR-Code für {name}",
+      "notLive": "Der Code öffnet das Formular, sobald es veröffentlicht ist.",
+      "style": "Stil",
+      "branded": "Mit Branding",
+      "plain": "Schlicht",
+      "brandedOrg": "Name und Logo Ihrer Organisation mit dem Formularnamen; Formalie in der Fußzeile.",
+      "brandedFormalie": "Formalie-Branding mit dem Formularnamen.",
+      "plainHint": "Nur der Code — für kleine Flächen.",
+      "brand": "Markenfarbe",
+      "custom": "Beliebige Farbe",
+      "scan": "Zum Öffnen scannen",
+      "failed": "Der QR-Code konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Aus der Liste auswählen…",
       "selected": "Nur die {n} ausgewählten können dieses Feld sehen und ausfüllen.",
       "noRequired": "Eingeschränkte Felder können keine Pflichtfelder sein — Personen, für die das Feld nicht gedacht ist, müssen trotzdem absenden können. Ihre Antworten sind nur für dieselben Personen sichtbar."
+    },
+    "language": {
+      "title": "Formularsprache",
+      "hint": "Teilnehmende sehen das Formular in dieser Sprache — auch Schaltflächen, Meldungen und Datumsangaben. Mehrere Sprachen pro Formular kommen mit den öffentlichen Formularseiten."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Design „{name}“ aktualisiert",
       "duplicated": "„{name}“ erstellt",
       "deleted": "Design „{name}“ gelöscht"
+    },
+    "view": "Ansehen",
+    "open": "{name} öffnen",
+    "editor": {
+      "systemTitle": "Ein Formalie-Design",
+      "systemHint": "Dieses Design gehört zu Formalie und kann nicht geändert werden. Duplizieren Sie es, um Ihre eigene Version zu erstellen.",
+      "systemDesc": "Formalie-Design — schreibgeschützt"
     }
   },
   "dataSources": {

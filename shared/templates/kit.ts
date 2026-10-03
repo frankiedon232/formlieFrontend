@@ -165,7 +165,7 @@ export function buildSchema(def: TemplateDef): FormSchemaV1 {
   }))
 
   const pageIds = new Map(def.pages.map((pageSeed, p) => [slug(pageSeed.title), `p${p + 1}`]))
-  const target = (name?: string) => (name === undefined ? undefined : name === END_OF_FORM ? END_OF_FORM : (idOf.get(name) ?? pageIds.get(name) ?? name))
+  const target = (name?: string) => (name === undefined ? undefined : name === END_OF_FORM ? END_OF_FORM : (idOf.get(name) ?? pageIds.get(slug(name)) ?? name))
   const logic: LogicRule[] = (def.logic ?? []).map((rule, index) => {
     const conditions: LogicCondition[] = rule.when.map(c => ({ field: idOf.get(c.key) ?? c.key, op: c.op, value: c.value ?? null }))
     return {

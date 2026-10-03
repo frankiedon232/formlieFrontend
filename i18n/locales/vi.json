@@ -232,6 +232,29 @@
       "detailsTitle": "Chi tiết",
       "tags": "Thẻ",
       "noHistory": "Đã xuất bản trước khi lịch sử phiên bản được lưu — lịch sử bắt đầu từ lần xuất bản tiếp theo."
+    },
+    "qr": {
+      "title": "Mã QR",
+      "desc": "In ra hoặc hiển thị trên màn hình — quét mã sẽ mở biểu mẫu.",
+      "accent": "Màu biểu mẫu",
+      "black": "Đen",
+      "colour": "Màu",
+      "pngSize": "Kích thước PNG",
+      "png": "Tải xuống PNG",
+      "svg": "Tải xuống SVG",
+      "downloaded": "Đã tải xuống mã QR",
+      "alt": "Mã QR cho {name}",
+      "notLive": "Mã sẽ mở biểu mẫu sau khi biểu mẫu được xuất bản.",
+      "style": "Kiểu",
+      "branded": "Có thương hiệu",
+      "plain": "Đơn giản",
+      "brandedOrg": "Tên và logo tổ chức của bạn cùng tên biểu mẫu; Formalie ở chân trang.",
+      "brandedFormalie": "Thương hiệu Formalie cùng tên biểu mẫu.",
+      "plainHint": "Chỉ có mã — cho không gian nhỏ.",
+      "brand": "Màu thương hiệu",
+      "custom": "Màu bất kỳ",
+      "scan": "Quét để mở",
+      "failed": "Không thể lưu mã QR. Vui lòng thử lại."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Chọn từ danh sách…",
       "selected": "Chỉ {n} mục đã chọn mới có thể xem và điền trường này.",
       "noRequired": "Trường bị giới hạn không thể bắt buộc — những người không thuộc đối tượng của trường vẫn phải gửi được biểu mẫu. Câu trả lời chỉ hiển thị với chính những người đó."
+    },
+    "language": {
+      "title": "Ngôn ngữ biểu mẫu",
+      "hint": "Người trả lời thấy biểu mẫu bằng ngôn ngữ này — cả nút, thông báo và ngày tháng. Nhiều ngôn ngữ cho mỗi biểu mẫu sẽ có cùng với các trang biểu mẫu công khai."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Đã cập nhật chủ đề “{name}”",
       "duplicated": "Đã tạo “{name}”",
       "deleted": "Đã xóa chủ đề “{name}”"
+    },
+    "view": "Xem",
+    "open": "Mở {name}",
+    "editor": {
+      "systemTitle": "Một thiết kế của Formalie",
+      "systemHint": "Chủ đề này thuộc Formalie và không thể thay đổi. Hãy nhân bản để tạo phiên bản của riêng bạn.",
+      "systemDesc": "Thiết kế của Formalie — chỉ đọc"
     }
   },
   "dataSources": {

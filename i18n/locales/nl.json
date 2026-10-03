@@ -232,6 +232,29 @@
       "detailsTitle": "Details",
       "tags": "Tags",
       "noHistory": "Gepubliceerd voordat de versiegeschiedenis werd bijgehouden — die begint bij de volgende publicatie."
+    },
+    "qr": {
+      "title": "QR-code",
+      "desc": "Print hem of toon hem op schermen — scannen opent het formulier.",
+      "accent": "Formulierkleur",
+      "black": "Zwart",
+      "colour": "Kleur",
+      "pngSize": "PNG-formaat",
+      "png": "PNG downloaden",
+      "svg": "SVG downloaden",
+      "downloaded": "QR-code gedownload",
+      "alt": "QR-code voor {name}",
+      "notLive": "De code opent het formulier zodra het is gepubliceerd.",
+      "style": "Stijl",
+      "branded": "Met huisstijl",
+      "plain": "Eenvoudig",
+      "brandedOrg": "De naam en het logo van je organisatie met de formuliernaam; Formalie in de voettekst.",
+      "brandedFormalie": "Formalie-huisstijl met de formuliernaam.",
+      "plainHint": "Alleen de code — voor kleine ruimtes.",
+      "brand": "Merkkleur",
+      "custom": "Elke kleur",
+      "scan": "Scan om te openen",
+      "failed": "De QR-code kon niet worden opgeslagen. Probeer het opnieuw."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Kies uit de lijst…",
       "selected": "Alleen de {n} geselecteerde kunnen dit veld zien en invullen.",
       "noRequired": "Beperkte velden kunnen niet verplicht zijn — personen voor wie het veld niet bedoeld is, moeten het formulier nog steeds kunnen verzenden. Hun antwoorden zijn alleen zichtbaar voor dezelfde personen."
+    },
+    "language": {
+      "title": "Formuliertaal",
+      "hint": "Respondenten zien het formulier in deze taal — ook knoppen, meldingen en datums. Meer talen per formulier komen met de openbare formulierpagina's."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Thema “{name}” bijgewerkt",
       "duplicated": "“{name}” aangemaakt",
       "deleted": "Thema “{name}” verwijderd"
+    },
+    "view": "Bekijken",
+    "open": "{name} openen",
+    "editor": {
+      "systemTitle": "Een Formalie-ontwerp",
+      "systemHint": "Dit thema hoort bij Formalie en kan niet worden gewijzigd. Dupliceer het om je eigen versie te maken.",
+      "systemDesc": "Formalie-ontwerp — alleen-lezen"
     }
   },
   "dataSources": {

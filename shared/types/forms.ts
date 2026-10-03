@@ -85,10 +85,16 @@ export interface OptionList {
 }
 
 /** A saved design (GET /themes) — reusable on any form; forms keep a copy of the tokens. */
+/** system = Formalie's designs (read-only) · saved = from a form's design · created = in the theme editor. */
+export type ThemeSource = 'system' | 'saved' | 'created'
+
 export interface SavedTheme {
   id: string
   name: string
   tokens: FormTheme
+  source: ThemeSource
+  /** System themes: i18n key of the name, so it shows in the person's language. */
+  name_key?: string
   forms_count: number
   created_by: { id: string; name: string }
   created_at: string

@@ -6,6 +6,8 @@
 <script setup lang="ts">
 import type { AccordionItem } from '@nuxt/ui'
 
+/** standalone: the theme editor (no "Your themes" — you are editing one). */
+const props = defineProps<{ standalone?: boolean }>()
 const { t } = useI18n()
 const d = useDesigner()
 const confirm = useConfirm()
@@ -49,7 +51,7 @@ async function reset() {
       <p v-if="!d.customised.value" class="text-xs text-muted">{{ t('designer.usingDefault') }}</p>
     </section>
 
-    <FormsDesignerSavedThemes />
+    <FormsDesignerSavedThemes v-if="!props.standalone" />
 
     <UAccordion v-model="open" type="multiple" :items="groups" :ui="{ trigger: 'text-sm font-medium', body: 'pb-4' }">
       <template #layout><FormsDesignerPanelLayout group="layout" /></template>

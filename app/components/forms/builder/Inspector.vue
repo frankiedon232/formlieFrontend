@@ -4,6 +4,7 @@
   move / duplicate / delete.
 -->
 <script setup lang="ts">
+import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { FIELD_WIDTHS } from '#shared/utils/forms/fields'
 
 const { t } = useI18n()
@@ -29,6 +30,16 @@ function setLabelPosition(value: string | number) {
   if (!schema.value) return
   builder.history.record()
   schema.value.settings = { ...schema.value.settings, label_position: value === 'left' ? 'left' : 'top' }
+}
+/** The form's main language (decision 73): respondents get it unless the form offers theirs too. */
+const languageItems = computed(() =>
+  APP_LOCALES.map(item => ({ value: item.code, label: item.name, description: item.englishName, icon: item.flag })),
+)
+const languageFlag = computed(() => APP_LOCALES.find(item => item.code === (schema.value?.settings?.language ?? 'en'))?.flag)
+function setLanguage(value: string) {
+  if (!schema.value) return
+  builder.history.record()
+  schema.value.settings = { ...schema.value.settings, language: value }
 }
 function setSetting(key: 'progress_bar' | 'save_resume', value: boolean) {
   if (!schema.value) return
@@ -156,6 +167,21 @@ function setThankYou(key: 'title' | 'message', value: string) {
               class="w-full"
               :aria-label="t('builder.labels.title')"
               @update:model-value="setLabelPosition"
+            />
+          </UFormField>
+        </section>
+        <section class="flex flex-col gap-3">
+          <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.language.title') }}</h3>
+          <UFormField :description="t('builder.language.hint')">
+            <USelectMenu
+              :model-value="schema.settings?.language ?? 'en'"
+              :items="languageItems"
+              value-key="value"
+              :search-input="{ placeholder: t('common.search') }"
+              :icon="languageFlag"
+              class="w-full"
+              :aria-label="t('builder.language.title')"
+              @update:model-value="v => setLanguage(String(v))"
             />
           </UFormField>
         </section>

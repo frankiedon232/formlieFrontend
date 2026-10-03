@@ -58,7 +58,6 @@ const lifecycleItems = computed(() => {
   ]
 })
 const canSeeActivity = computed(() => useSession().user.value?.role !== 'member')
-const recent = computed(() => overview.value?.daily.reduce((sum, day) => sum + day.count, 0) ?? 0)
 const subtitle = computed(() =>
   form.value ? t('forms.overview.subtitle', { status: t(`status.${form.value.status}`), updated: relative(form.value.updated_at) }) : undefined,
 )
@@ -122,7 +121,7 @@ const subtitle = computed(() =>
         :actions="[{ label: t('forms.trash.title'), to: '/forms/trash', color: 'neutral', variant: 'outline' }]"
       />
 
-      <FormsOverviewKpis :stats="overview.stats" :recent="recent" />
+      <FormsOverviewKpis :form-id="form.id" :stats="overview.stats" :daily="overview.daily" />
 
       <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div class="flex min-w-0 flex-col gap-4">
@@ -130,7 +129,7 @@ const subtitle = computed(() =>
           <FormsOverviewStructure :form="form" :overview="overview" />
         </div>
         <div class="flex min-w-0 flex-col gap-4">
-          <FormsOverviewShare :form="form" />
+          <FormsOverviewShare :form="form" :accent="(overview.theme.colors as { primary?: string } | undefined)?.primary" />
           <FormsOverviewDetails :form="form" :template="overview.template" />
           <UCard v-if="canSeeActivity" variant="outline" :ui="{ body: 'p-4 sm:p-5' }">
             <h2 class="mb-4 text-sm font-semibold text-highlighted">{{ t('forms.detail.activity') }}</h2>

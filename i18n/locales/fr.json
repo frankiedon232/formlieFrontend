@@ -232,6 +232,29 @@
       "detailsTitle": "Détails",
       "tags": "Étiquettes",
       "noHistory": "Publié avant la tenue de l’historique des versions — il commence à la prochaine publication."
+    },
+    "qr": {
+      "title": "Code QR",
+      "desc": "Imprimez-le ou affichez-le sur des écrans — le scanner ouvre le formulaire.",
+      "accent": "Couleur du formulaire",
+      "black": "Noir",
+      "colour": "Couleur",
+      "pngSize": "Taille du PNG",
+      "png": "Télécharger en PNG",
+      "svg": "Télécharger en SVG",
+      "downloaded": "Code QR téléchargé",
+      "alt": "Code QR pour {name}",
+      "notLive": "Le code ouvrira le formulaire une fois celui-ci publié.",
+      "style": "Style",
+      "branded": "Personnalisé",
+      "plain": "Simple",
+      "brandedOrg": "Le nom et le logo de votre organisation avec le nom du formulaire ; Formalie en pied de page.",
+      "brandedFormalie": "Image de marque Formalie avec le nom du formulaire.",
+      "plainHint": "Uniquement le code — pour les petits espaces.",
+      "brand": "Couleur de la marque",
+      "custom": "Couleur libre",
+      "scan": "Scannez pour ouvrir",
+      "failed": "Impossible d’enregistrer le code QR. Veuillez réessayer."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Choisissez dans la liste…",
       "selected": "Seuls les {n} sélectionnés peuvent voir et remplir ce champ.",
       "noRequired": "Les champs restreints ne peuvent pas être obligatoires : les personnes auxquelles le champ n'est pas destiné doivent tout de même pouvoir envoyer le formulaire. Leurs réponses ne sont visibles que par ces mêmes personnes."
+    },
+    "language": {
+      "title": "Langue du formulaire",
+      "hint": "Les répondants voient le formulaire dans cette langue — boutons, messages et dates compris. Plusieurs langues par formulaire arriveront avec les pages publiques des formulaires."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Thème « {name} » mis à jour",
       "duplicated": "« {name} » créé",
       "deleted": "Thème « {name} » supprimé"
+    },
+    "view": "Voir",
+    "open": "Ouvrir {name}",
+    "editor": {
+      "systemTitle": "Un design Formalie",
+      "systemHint": "Ce thème fait partie de Formalie et ne peut pas être modifié. Dupliquez-le pour créer votre propre version.",
+      "systemDesc": "Design Formalie — lecture seule"
     }
   },
   "dataSources": {

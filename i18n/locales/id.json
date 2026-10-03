@@ -232,6 +232,29 @@
       "detailsTitle": "Detail",
       "tags": "Tag",
       "noHistory": "Diterbitkan sebelum riwayat versi dicatat — riwayat dimulai pada penerbitan berikutnya."
+    },
+    "qr": {
+      "title": "Kode QR",
+      "desc": "Cetak atau tampilkan di layar — memindainya akan membuka formulir.",
+      "accent": "Warna formulir",
+      "black": "Hitam",
+      "colour": "Berwarna",
+      "pngSize": "Ukuran PNG",
+      "png": "Unduh PNG",
+      "svg": "Unduh SVG",
+      "downloaded": "Kode QR diunduh",
+      "alt": "Kode QR untuk {name}",
+      "notLive": "Kode akan membuka formulir setelah formulir dipublikasikan.",
+      "style": "Gaya",
+      "branded": "Bermerek",
+      "plain": "Polos",
+      "brandedOrg": "Nama dan logo organisasi Anda beserta nama formulir; Formalie di bagian bawah.",
+      "brandedFormalie": "Merek Formalie beserta nama formulir.",
+      "plainHint": "Hanya kodenya — untuk ruang sempit.",
+      "brand": "Warna merek",
+      "custom": "Warna apa saja",
+      "scan": "Pindai untuk membuka",
+      "failed": "Kode QR tidak dapat disimpan. Silakan coba lagi."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Pilih dari daftar…",
       "selected": "Hanya {n} yang dipilih yang dapat melihat dan mengisi kolom ini.",
       "noRequired": "Kolom terbatas tidak dapat diwajibkan — orang yang tidak dituju oleh kolom ini tetap harus dapat mengirim. Jawaban mereka hanya ditampilkan kepada orang yang sama."
+    },
+    "language": {
+      "title": "Bahasa formulir",
+      "hint": "Responden melihat formulir dalam bahasa ini — termasuk tombol, pesan, dan tanggal. Dukungan beberapa bahasa per formulir hadir bersama halaman formulir publik."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Tema “{name}” diperbarui",
       "duplicated": "“{name}” dibuat",
       "deleted": "Tema “{name}” dihapus"
+    },
+    "view": "Lihat",
+    "open": "Buka {name}",
+    "editor": {
+      "systemTitle": "Desain Formalie",
+      "systemHint": "Tema ini bagian dari Formalie dan tidak dapat diubah. Duplikat tema ini untuk membuat versi Anda sendiri.",
+      "systemDesc": "Desain Formalie — hanya baca"
     }
   },
   "dataSources": {

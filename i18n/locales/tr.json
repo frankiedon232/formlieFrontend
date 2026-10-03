@@ -232,6 +232,29 @@
       "detailsTitle": "Ayrıntılar",
       "tags": "Etiketler",
       "noHistory": "Sürüm geçmişi tutulmadan önce yayımlandı — geçmiş bir sonraki yayımlamayla başlar."
+    },
+    "qr": {
+      "title": "QR kodu",
+      "desc": "Yazdırın veya ekranlarda gösterin — taratıldığında form açılır.",
+      "accent": "Form rengi",
+      "black": "Siyah",
+      "colour": "Renkli",
+      "pngSize": "PNG boyutu",
+      "png": "PNG indir",
+      "svg": "SVG indir",
+      "downloaded": "QR kodu indirildi",
+      "alt": "{name} için QR kodu",
+      "notLive": "Kod, form yayımlandığında formu açar.",
+      "style": "Stil",
+      "branded": "Markalı",
+      "plain": "Sade",
+      "brandedOrg": "Kuruluşunuzun adı ve logosu ile form adı; alt bilgide Formalie.",
+      "brandedFormalie": "Form adıyla birlikte Formalie markası.",
+      "plainHint": "Yalnızca kod — küçük alanlar için.",
+      "brand": "Marka rengi",
+      "custom": "Herhangi bir renk",
+      "scan": "Açmak için tarayın",
+      "failed": "QR kodu kaydedilemedi. Lütfen tekrar deneyin."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Listeden seçin…",
       "selected": "Bu alanı yalnızca seçilen {n} kişi/grup görebilir ve doldurabilir.",
       "noRequired": "Kısıtlı alanlar zorunlu olamaz — alanın hitap etmediği kişiler de formu gönderebilmelidir. Yanıtlar yalnızca aynı kişilere gösterilir."
+    },
+    "language": {
+      "title": "Form dili",
+      "hint": "Yanıtlayanlar formu bu dilde görür — düğmeler, mesajlar ve tarihler de dahil. Form başına birden fazla dil, herkese açık form sayfalarıyla birlikte gelecek."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "“{name}” teması güncellendi",
       "duplicated": "“{name}” oluşturuldu",
       "deleted": "“{name}” teması silindi"
+    },
+    "view": "Görüntüle",
+    "open": "{name} öğesini aç",
+    "editor": {
+      "systemTitle": "Bir Formalie tasarımı",
+      "systemHint": "Bu tema Formalie'nin bir parçasıdır ve değiştirilemez. Kendi sürümünüzü oluşturmak için çoğaltın.",
+      "systemDesc": "Formalie tasarımı — salt okunur"
     }
   },
   "dataSources": {

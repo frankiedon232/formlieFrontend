@@ -232,6 +232,29 @@
       "detailsTitle": "Maelezo",
       "tags": "Lebo",
       "noHistory": "Ilichapishwa kabla historia ya matoleo kuanza kuhifadhiwa — itaanza na uchapishaji unaofuata."
+    },
+    "qr": {
+      "title": "Msimbo wa QR",
+      "desc": "Uchapishe au uweke kwenye skrini — kuuskani hufungua fomu.",
+      "accent": "Rangi ya fomu",
+      "black": "Nyeusi",
+      "colour": "Rangi",
+      "pngSize": "Ukubwa wa PNG",
+      "png": "Pakua PNG",
+      "svg": "Pakua SVG",
+      "downloaded": "Msimbo wa QR umepakuliwa",
+      "alt": "Msimbo wa QR wa {name}",
+      "notLive": "Msimbo utafungua fomu baada ya kuchapishwa.",
+      "style": "Mtindo",
+      "branded": "Yenye chapa",
+      "plain": "Wa kawaida",
+      "brandedOrg": "Jina na nembo ya shirika lako pamoja na jina la fomu; Formalie chini.",
+      "brandedFormalie": "Chapa ya Formalie pamoja na jina la fomu.",
+      "plainHint": "Msimbo pekee — kwa nafasi ndogo.",
+      "brand": "Rangi ya chapa",
+      "custom": "Rangi yoyote",
+      "scan": "Skani ili kufungua",
+      "failed": "Msimbo wa QR haukuweza kuhifadhiwa. Tafadhali jaribu tena."
     }
   },
   "nav": {
@@ -1537,6 +1560,10 @@
       "placeholder": "Chagua kutoka kwenye orodha…",
       "selected": "Ni {n} waliochaguliwa pekee wanaoweza kuona na kujaza sehemu hii.",
       "noRequired": "Sehemu zenye vikwazo haziwezi kuwa za lazima — watu ambao sehemu hii si yao lazima bado waweze kuwasilisha. Majibu yao yanaonyeshwa kwa watu hao hao pekee."
+    },
+    "language": {
+      "title": "Lugha ya fomu",
+      "hint": "Wajibuji wanaona fomu kwa lugha hii — pamoja na vitufe, ujumbe na tarehe. Lugha zaidi kwa kila fomu zitakuja pamoja na kurasa za fomu za umma."
     }
   },
   "renderer": {
@@ -2158,6 +2185,13 @@
       "updated": "Mandhari “{name}” imesasishwa",
       "duplicated": "“{name}” imeundwa",
       "deleted": "Mandhari “{name}” imefutwa"
+    },
+    "view": "Tazama",
+    "open": "Fungua {name}",
+    "editor": {
+      "systemTitle": "Muundo wa Formalie",
+      "systemHint": "Mandhari haya ni sehemu ya Formalie na hayawezi kubadilishwa. Yanakili ili kuunda toleo lako mwenyewe.",
+      "systemDesc": "Muundo wa Formalie — kusoma tu"
     }
   },
   "dataSources": {
