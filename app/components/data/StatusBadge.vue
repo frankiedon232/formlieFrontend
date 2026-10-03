@@ -12,11 +12,22 @@ const COLORS: Record<string, BadgeProps['color']> = {
   archived: 'neutral',
 }
 
+// Deeper text than Nuxt UI's subtle default (500 shade), so status reads crisply (owner, 2026-10-03; docs/design).
+const TEXT: Record<string, string> = {
+  warning: 'text-(--ui-color-warning-700) dark:text-(--ui-color-warning-300)',
+  success: 'text-(--ui-color-success-700) dark:text-(--ui-color-success-300)',
+  secondary: 'text-(--ui-color-secondary-700) dark:text-(--ui-color-secondary-300)',
+  error: 'text-(--ui-color-error-700) dark:text-(--ui-color-error-300)',
+  info: 'text-(--ui-color-info-700) dark:text-(--ui-color-info-300)',
+  neutral: 'text-default',
+}
+const color = computed(() => COLORS[props.status] ?? 'neutral')
+
 const text = computed(
   () => props.label ?? (te(`status.${props.status}`) ? t(`status.${props.status}`) : props.status),
 )
 </script>
 
 <template>
-  <UBadge :label="text" :color="COLORS[status] ?? 'neutral'" variant="subtle" size="sm" class="rounded-md" />
+  <UBadge :label="text" :color="color" variant="subtle" size="sm" class="rounded-md font-medium" :class="TEXT[color ?? 'neutral']" />
 </template>

@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "dev",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "2202",
+        "--https",
+        "--https.cert=C:\\devcerts\\formalie.pem",
+        "--https.key=C:\\devcerts\\formalie-key.pem"
+      ],
+      "port": 2202,
+      "url": "https://localhost:2202"
+    },
+    {
+      "name": "attach",
+      "url": "https://localhost:2202"
+    }
+  ]
+}

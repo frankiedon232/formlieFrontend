@@ -12,6 +12,12 @@ const { t } = useI18n()
 const { date, dateTime } = useFormat()
 
 const DAY = 86_400_000
+const DEEP: Record<string, string> = {
+  warning: 'text-(--ui-color-warning-700) dark:text-(--ui-color-warning-300)',
+  error: 'text-(--ui-color-error-700) dark:text-(--ui-color-error-300)',
+  info: 'text-(--ui-color-info-700) dark:text-(--ui-color-info-300)',
+  neutral: 'text-default',
+}
 const badge = computed(() => {
   if (props.form.status !== 'published') return null
   const state = availabilityOf(props.form)
@@ -38,6 +44,6 @@ const badge = computed(() => {
 </script>
 
 <template>
-  <UBadge v-if="badge" :label="badge.label" :icon="badge.icon" :color="badge.color" :variant="badge.variant" size="sm" :title="badge.title || undefined" class="whitespace-nowrap" />
+  <UBadge v-if="badge" :label="badge.label" :icon="badge.icon" :color="badge.color" :variant="badge.variant" size="sm" :title="badge.title || undefined" class="font-medium whitespace-nowrap" :class="DEEP[badge.color]" />
   <span v-else class="text-dimmed" aria-hidden="true">—</span>
 </template>

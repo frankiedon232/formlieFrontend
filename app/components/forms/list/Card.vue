@@ -41,7 +41,7 @@ const { date, number } = useFormat()
           class="size-4 shrink-0 animate-spin text-muted"
         />
         <h3 class="truncate font-semibold text-highlighted">
-          <ULink :to="`/forms/${props.form.id}`" class="hover:underline">{{ props.form.name }}</ULink>
+          <ULink :to="`/forms/${props.form.id}`" class="text-highlighted hover:text-highlighted hover:underline">{{ props.form.name }}</ULink>
         </h3>
       </div>
       <p class="mt-1 truncate text-sm text-muted">{{ props.form.folder?.name ?? t('forms.noFolder') }}</p>

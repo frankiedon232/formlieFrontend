@@ -50,7 +50,7 @@ function cancel() {
     <template v-else>
       <p class="flex items-center gap-1.5 truncate font-medium text-highlighted">
         <UIcon v-if="busy" name="i-lucide-loader-circle" class="size-3.5 shrink-0 animate-spin text-muted" />
-        <ULink :to="`/forms/${form.id}`" class="truncate hover:underline">{{ form.name }}</ULink>
+        <ULink :to="`/forms/${form.id}`" class="truncate text-highlighted hover:text-highlighted hover:underline">{{ form.name }}</ULink>
       </p>
       <p class="flex min-w-0 items-center gap-1.5 truncate text-xs text-muted">
         <span class="truncate">{{ form.folder?.name ?? t('forms.noFolder') }}</span>
