@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-03 · **Current phase:** F9 — Templates gallery (F8 reviewed by the owner)
+**Last updated:** 2026-10-03 · **Current phase:** F9 — Templates gallery (waiting for the owner's end-of-phase review)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -19,7 +19,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
-| F9    | Templates gallery                                 | 🟡     | ~85% |
+| F9    | Templates gallery                                 | 🟡     | ~95% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
@@ -435,8 +435,10 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 ### Milestone 5 — Languages, polish, review
 
-- ⬜ Template content (labels, options, help, messages) in all 20 languages — per-template message files, so a template opens in the person's language
-- ⬜ Phone / tablet / desktop, keyboard, light / dark, Arabic RTL checks; loading feedback; empty / error states
+- ✅ **Categories first, own templates apart** (owner, 2026-10-03, decision 78): `/templates` lists Formalie's categories (Grid / Table: templates, with calculations / logic, forms made, responses, last used); a category opens its templates (`/templates/category/{key}`); the workspace's own templates under "Your templates" (`/templates/mine`); menu: six most used categories, All categories, Your templates; a template page links back to its category
+
+- ✅ Template content (labels, options, help, page titles, consent / paragraph text, thank-you messages, text results) in all 20 languages — one dictionary per language (`shared/templates/messages/<code>.json`, decision 77); preview and new forms open in the person's language; keys, values, scores, logic and formulas unchanged
+- ✅ Phone / desktop, dark, Arabic RTL checked on the categories page, a category, Your templates and a template in Arabic; skeletons from DataView; empty state for Your templates offers next steps; keyboard: cards and rows are links, actions are buttons
 - ⬜ End-of-phase review with the owner
 
 Total at launch: **84 templates in 11 categories** (a few names appear in two categories on purpose, framed for each — e.g. Lead Capture, Quote Request, Order, Maintenance). More later (owner: "just the tip of the iceberg"); the AI assistant (F19) can generate more.
@@ -918,6 +920,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Branded QR codes (organisation, form name, logo in the centre, Formalie mark), several colours, branding on / off | F9 | ✅ |
 | 2026-10-03 | Folder explanation behind an info icon (click to read) instead of text under the field — new form page and "Use template" dialog | F9 | ✅ |
 | 2026-10-03 | Templates: category chips removed from the top — categories (with counts) only in the Filter menu, like every other list | F9 | ✅ |
+| 2026-10-03 | Templates by category: gallery lists categories (counts + analytics) instead of all 84 templates; a category opens its templates; menu shows the top 6 categories then All; Formalie templates and your own (saved) templates kept apart | F9 | ✅ |
 
 ---
 
@@ -985,3 +988,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | Milestone 3: 21 templates — Education (course score, quiz score / percentage / pass, scholarship eligibility for the panel only, attendance count and rate), Operations & IT (ticket priority from impact × urgency, change risk, requisition totals, inspection and QC pass rates), Finance & Legal (debt-to-income and a flat-rate monthly estimate, invoice subtotal / tax / total, claim total, company details when signing for a company); 64 templates in total; new calculation checks; 20 languages. |
 | 2026-10-03 | F9 | Milestone 2 + 3 languages complete: template names, theme library and errors in all 20 languages; Spanish wording aligned to "tú" throughout; 188 tests green. |
 | 2026-10-03 | F9 | Milestone 4: 20 templates — Community (membership fee, donation with optional 3% cost cover, petition, ranked ballot), Real Estate (income-to-rent ratio with an internal affordability band, room-by-room condition score, emergency note on urgent repairs), Sales (B2B lead capture with hidden source fields, seat-based quote, BANT-style qualification hot / warm / cold, trade order with volume discount); all 84 templates in 11 categories; 20 languages. |
+| 2026-10-03 | F9 | Milestone 5: template content (1,411 texts) in all 20 languages — previews and new forms open in the person's language, logic / scores / formulas unchanged (compared values like "yes" kept); templates gallery reorganised by category (overview with counts and use, category pages, Your templates apart, menu: top 6 categories + All + Your templates); 228 tests green. Stopped for the owner's end-of-phase review. |

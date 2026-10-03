@@ -9,7 +9,7 @@ import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 definePageMeta({ breadcrumb: 'nav.newForm' })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const api = useApi()
 const route = useRoute()
 const router = useRouter()
@@ -99,6 +99,7 @@ async function create() {
             folder_id: folder,
             template_key: mode.value === 'template' ? templateKey.value : null,
             label_position: labelPosition.value,
+            language: locale.value,
           }),
     { success: t('forms.toast.created') },
   )

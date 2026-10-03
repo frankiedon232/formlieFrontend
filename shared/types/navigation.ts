@@ -5,7 +5,8 @@ export interface NavCounts {
   /** Responses by review status; `new` = nobody has opened them yet. */
   responses: { all: number; new: number; reviewed: number; approved: number; rejected: number }
   /** Most recently used templates (by the forms made from them), then the most popular — up to 6. */
-  templates: { total: number; recent: { key: string; name: string }[] }
+  /** Formalie templates (total), the workspace's own, and the categories most used first. */
+  templates: { total: number; mine: number; categories: { key: string; count: number }[] }
   /** Most recently updated saved themes — up to 6. */
   themes: { total: number; recent: { id: string; name: string }[] }
 }

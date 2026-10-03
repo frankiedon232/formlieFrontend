@@ -23,6 +23,7 @@ import { buildSchema, type TemplateDef } from './kit'
 export { TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS, categoryOf } from './categories'
 export type { TemplateCategoryKey } from './categories'
 export type { TemplateDef } from './kit'
+export { localiseSchema, schemaTexts } from './localise'
 
 export const SYSTEM_TEMPLATES: TemplateDef[] = [
   ...BUSINESS_TEMPLATES,

@@ -316,7 +316,7 @@
     "aiTranslate": "अनुवाद",
     "aiHistory": "इतिहास",
     "aiSettings": "सेटिंग्स और उपयोग",
-    "templatesAll": "सभी टेम्पलेट",
+    "templatesAll": "सभी श्रेणियाँ",
     "themesAll": "सभी थीम",
     "responsesAll": "सभी जवाब",
     "responsesNew": "नए",
@@ -324,7 +324,8 @@
     "responsesApproved": "स्वीकृत",
     "responsesRejected": "अस्वीकृत",
     "responsesExports": "एक्सपोर्ट",
-    "apiApps": "ऐप इंटीग्रेशन"
+    "apiApps": "ऐप इंटीग्रेशन",
+    "templatesMine": "आपके टेम्पलेट"
   },
   "navbar": {
     "breadcrumb": "ब्रेडक्रंब",
@@ -1021,14 +1022,16 @@
       "questions": "प्रश्न",
       "forms": "फ़ॉर्म",
       "responses": "जवाब",
-      "lastUsed": "अंतिम उपयोग"
+      "lastUsed": "अंतिम उपयोग",
+      "templates": "टेम्पलेट"
     },
     "sort": {
       "popular": "सबसे ज़्यादा इस्तेमाल",
       "responses": "सबसे ज़्यादा जवाब",
       "name": "नाम (A–Z)",
       "short": "सबसे जल्दी भरने योग्य",
-      "recent": "हाल ही में अपडेट"
+      "recent": "हाल ही में अपडेट",
+      "largest": "सबसे ज़्यादा टेम्पलेट"
     },
     "emptyTitle": "कोई मेल खाता टेम्पलेट नहीं",
     "emptyDesc": "कोई दूसरी श्रेणी या खोज आज़माएँ, या फ़िल्टर साफ़ करें।",
@@ -1410,7 +1413,22 @@
     "openGallery": "पूरी गैलरी खोलें",
     "teamOnlyHint": "गणना करके सहेजा जाता है, पर उत्तरदाताओं को नहीं दिखाया जाता।",
     "copyFormula": "{name} का फ़ॉर्मूला कॉपी करें",
-    "viewAll": "सभी देखें"
+    "viewAll": "सभी देखें",
+    "searchCategories": "श्रेणियाँ या टेम्पलेट खोजें…",
+    "categoryCard": {
+      "templates": "{count} टेम्पलेट | {count} टेम्पलेट",
+      "browse": "टेम्पलेट देखें"
+    },
+    "categoryPage": {
+      "subtitle": "इस श्रेणी के Formalie टेम्पलेट — हर एक का अपना डिज़ाइन, इस्तेमाल के लिए तैयार"
+    },
+    "mine": {
+      "subtitle": "वे टेम्पलेट जिन्हें आपके वर्कस्पेस ने अपने फ़ॉर्म से सहेजा या Formalie से कॉपी किया",
+      "emptyTitle": "अभी तक आपका कोई अपना टेम्पलेट नहीं है",
+      "emptyDesc": "कोई फ़ॉर्म खोलें और “टेम्पलेट के रूप में सहेजें” चुनें, या बदलाव करने के लिए Formalie का कोई टेम्पलेट डुप्लिकेट करें।",
+      "openForms": "फ़ॉर्म खोलें",
+      "browse": "Formalie टेम्पलेट देखें"
+    }
   },
   "builder": {
     "crumb": "बिल्डर",

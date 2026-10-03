@@ -51,6 +51,13 @@ async function duplicate() {
     :subtitle-icon="template?.icon"
   >
     <template v-if="template" #actions>
+      <UButton
+        :label="template.source === 'workspace' ? t('nav.templatesMine') : t(`templates.categories.${template.category}`)"
+        :icon="template.source === 'workspace' ? 'i-lucide-bookmark' : 'i-lucide-shapes'"
+        color="neutral"
+        variant="ghost"
+        :to="template.source === 'workspace' ? '/templates/mine' : `/templates/category/${template.category}`"
+      />
       <UButton :label="t('templates.duplicate')" icon="i-lucide-copy" color="neutral" variant="outline" :loading="duplicating" @click="duplicate" />
       <UButton :label="t('templates.use')" icon="i-lucide-file-plus" color="neutral" @click="useOpen = true" />
     </template>

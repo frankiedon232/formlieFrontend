@@ -316,7 +316,7 @@
     "aiTranslate": "번역",
     "aiHistory": "기록",
     "aiSettings": "설정 및 사용량",
-    "templatesAll": "모든 템플릿",
+    "templatesAll": "모든 카테고리",
     "themesAll": "모든 테마",
     "responsesAll": "모든 응답",
     "responsesNew": "신규",
@@ -324,7 +324,8 @@
     "responsesApproved": "승인됨",
     "responsesRejected": "거부됨",
     "responsesExports": "내보내기",
-    "apiApps": "앱 연동"
+    "apiApps": "앱 연동",
+    "templatesMine": "내 템플릿"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -1021,14 +1022,16 @@
       "questions": "질문",
       "forms": "양식",
       "responses": "응답",
-      "lastUsed": "마지막 사용"
+      "lastUsed": "마지막 사용",
+      "templates": "템플릿"
     },
     "sort": {
       "popular": "가장 많이 사용됨",
       "responses": "응답 많은 순",
       "name": "이름(A–Z)",
       "short": "작성 시간 짧은 순",
-      "recent": "최근 업데이트됨"
+      "recent": "최근 업데이트됨",
+      "largest": "템플릿 많은 순"
     },
     "emptyTitle": "일치하는 템플릿이 없습니다",
     "emptyDesc": "다른 카테고리나 검색어를 시도하거나 필터를 지우세요.",
@@ -1410,7 +1413,22 @@
     "openGallery": "전체 갤러리 열기",
     "teamOnlyHint": "계산·저장되지만 응답자에게는 표시되지 않습니다.",
     "copyFormula": "{name}의 수식 복사",
-    "viewAll": "모두 보기"
+    "viewAll": "모두 보기",
+    "searchCategories": "카테고리 또는 템플릿 검색…",
+    "categoryCard": {
+      "templates": "템플릿 {count}개 | 템플릿 {count}개",
+      "browse": "템플릿 둘러보기"
+    },
+    "categoryPage": {
+      "subtitle": "이 카테고리의 Formalie 템플릿 — 각각 고유한 디자인으로 바로 사용할 수 있습니다"
+    },
+    "mine": {
+      "subtitle": "워크스페이스가 자체 양식에서 저장했거나 Formalie에서 복사한 템플릿",
+      "emptyTitle": "아직 내 템플릿이 없습니다",
+      "emptyDesc": "양식을 열고 “템플릿으로 저장”을 선택하거나, Formalie 템플릿을 복제해 수정하세요.",
+      "openForms": "양식 열기",
+      "browse": "Formalie 템플릿 둘러보기"
+    }
   },
   "builder": {
     "crumb": "빌더",

@@ -1,5 +1,6 @@
 import type { BadgeProps, NavigationMenuItem } from '@nuxt/ui'
 import type { NavCounts } from '#shared/types/navigation'
+import { categoryOf } from '#shared/templates/categories'
 
 export interface AppNavItem {
   /** i18n key under `nav.` */
@@ -95,9 +96,18 @@ const RESOURCE_NAV: AppNavItem[] = [
     iconClass: 'text-teal-500',
     to: '/templates',
     shortcut: 'g-t',
-    // The six most recently used templates, then the gallery.
-    recent: c => c.templates.recent.map(item => ({ key: `tpl_${item.key}`, label: item.name, to: `/templates/${item.key}`, exact: true })),
-    children: [{ key: 'templatesAll', icon: 'i-lucide-layout-grid', to: '/templates', exact: true, count: c => c.templates.total }],
+    // Owner, 2026-10-03: the six most used categories, then all categories, then the workspace's own.
+    recent: c =>
+      c.templates.categories.slice(0, 6).map(item => ({
+        key: `tplcat_${item.key}`,
+        to: `/templates/category/${item.key}`,
+        dot: categoryOf(item.key)?.dot,
+        count: () => item.count,
+      })),
+    children: [
+      { key: 'templatesAll', icon: 'i-lucide-shapes', to: '/templates', exact: true, count: c => c.templates.total },
+      { key: 'templatesMine', icon: 'i-lucide-bookmark', to: '/templates/mine', count: c => c.templates.mine },
+    ],
   },
   {
     key: 'optionSets',
@@ -225,8 +235,8 @@ export function useNavigation() {
     item.recent && counts.value ? [...item.recent(counts.value as NavCounts), ...(item.children ?? [])] : item.children
 
   function toMenuItem(item: AppNavItem, level = 0): NavigationMenuItem {
-    // System templates show their translated name; other data (workspace templates, themes) as written.
-    const templateKey = item.key.startsWith('tpl_') ? `templates.items.${item.key.slice(4)}.name` : null
+    // Template categories show their translated name; other data (themes) as written.
+    const templateKey = item.key.startsWith('tplcat_') ? `templates.categories.${item.key.slice(7)}` : null
     const label = templateKey && te(templateKey) ? t(templateKey) : (item.label ?? t(`nav.${item.key}`))
     const children = childrenOf(item)
     const active = isActive(item)

@@ -316,7 +316,7 @@
     "aiTranslate": "Bản dịch",
     "aiHistory": "Lịch sử",
     "aiSettings": "Cài đặt & mức sử dụng",
-    "templatesAll": "Tất cả mẫu",
+    "templatesAll": "Tất cả danh mục",
     "themesAll": "Tất cả giao diện",
     "responsesAll": "Tất cả phản hồi",
     "responsesNew": "Mới",
@@ -324,7 +324,8 @@
     "responsesApproved": "Đã duyệt",
     "responsesRejected": "Đã từ chối",
     "responsesExports": "Xuất dữ liệu",
-    "apiApps": "Tích hợp ứng dụng"
+    "apiApps": "Tích hợp ứng dụng",
+    "templatesMine": "Mẫu của bạn"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -1021,14 +1022,16 @@
       "questions": "Câu hỏi",
       "forms": "Biểu mẫu",
       "responses": "Phản hồi",
-      "lastUsed": "Dùng lần cuối"
+      "lastUsed": "Dùng lần cuối",
+      "templates": "Mẫu"
     },
     "sort": {
       "popular": "Dùng nhiều nhất",
       "responses": "Nhiều phản hồi nhất",
       "name": "Tên (A–Z)",
       "short": "Điền nhanh nhất",
-      "recent": "Cập nhật gần đây"
+      "recent": "Cập nhật gần đây",
+      "largest": "Nhiều mẫu nhất"
     },
     "emptyTitle": "Không có mẫu phù hợp",
     "emptyDesc": "Hãy thử danh mục hoặc từ khóa khác, hoặc xóa bộ lọc.",
@@ -1410,7 +1413,22 @@
     "openGallery": "Mở toàn bộ thư viện",
     "teamOnlyHint": "Được tính và lưu, nhưng không hiển thị cho người trả lời.",
     "copyFormula": "Sao chép công thức của {name}",
-    "viewAll": "Xem tất cả"
+    "viewAll": "Xem tất cả",
+    "searchCategories": "Tìm danh mục hoặc mẫu…",
+    "categoryCard": {
+      "templates": "{count} mẫu | {count} mẫu",
+      "browse": "Xem mẫu"
+    },
+    "categoryPage": {
+      "subtitle": "Các mẫu Formalie trong danh mục này — mỗi mẫu có thiết kế riêng, sẵn sàng sử dụng"
+    },
+    "mine": {
+      "subtitle": "Các mẫu mà không gian làm việc của bạn đã lưu từ biểu mẫu của mình hoặc sao chép từ Formalie",
+      "emptyTitle": "Bạn chưa có mẫu riêng nào",
+      "emptyDesc": "Mở một biểu mẫu và chọn “Lưu thành mẫu”, hoặc nhân bản một mẫu của Formalie để chỉnh sửa.",
+      "openForms": "Mở biểu mẫu",
+      "browse": "Xem mẫu Formalie"
+    }
   },
   "builder": {
     "crumb": "Trình tạo",

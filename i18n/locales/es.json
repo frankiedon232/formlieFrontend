@@ -316,7 +316,7 @@
     "aiTranslate": "Traducciones",
     "aiHistory": "Historial",
     "aiSettings": "Ajustes y uso",
-    "templatesAll": "Todas las plantillas",
+    "templatesAll": "Todas las categorías",
     "themesAll": "Todos los temas",
     "responsesAll": "Todas las respuestas",
     "responsesNew": "Nuevas",
@@ -324,7 +324,8 @@
     "responsesApproved": "Aprobadas",
     "responsesRejected": "Rechazadas",
     "responsesExports": "Exportaciones",
-    "apiApps": "Integraciones de apps"
+    "apiApps": "Integraciones de apps",
+    "templatesMine": "Tus plantillas"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -1021,14 +1022,16 @@
       "questions": "Preguntas",
       "forms": "Formularios",
       "responses": "Respuestas",
-      "lastUsed": "Último uso"
+      "lastUsed": "Último uso",
+      "templates": "Plantillas"
     },
     "sort": {
       "popular": "Más usadas",
       "responses": "Más respuestas",
       "name": "Nombre (A–Z)",
       "short": "Más rápidas de completar",
-      "recent": "Actualizadas recientemente"
+      "recent": "Actualizadas recientemente",
+      "largest": "Más plantillas"
     },
     "emptyTitle": "Ninguna plantilla coincide",
     "emptyDesc": "Pruebe otra categoría o búsqueda, o borre los filtros.",
@@ -1410,7 +1413,22 @@
     "openGallery": "Abrir la galería completa",
     "teamOnlyHint": "Calculado y guardado, pero no se muestra a los encuestados.",
     "copyFormula": "Copiar la fórmula de {name}",
-    "viewAll": "Ver todo"
+    "viewAll": "Ver todo",
+    "searchCategories": "Busca categorías o plantillas…",
+    "categoryCard": {
+      "templates": "{count} plantilla | {count} plantillas",
+      "browse": "Ver plantillas"
+    },
+    "categoryPage": {
+      "subtitle": "Plantillas de Formalie en esta categoría: cada una con su propio diseño, lista para usar"
+    },
+    "mine": {
+      "subtitle": "Plantillas que tu espacio de trabajo guardó de sus propios formularios o copió de Formalie",
+      "emptyTitle": "Aún no tienes plantillas propias",
+      "emptyDesc": "Abre un formulario y elige «Guardar como plantilla», o duplica una plantilla de Formalie para cambiarla.",
+      "openForms": "Abrir formularios",
+      "browse": "Ver plantillas de Formalie"
+    }
   },
   "builder": {
     "crumb": "Editor",

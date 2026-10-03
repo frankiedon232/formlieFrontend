@@ -1,5 +1,5 @@
 import type { NavCounts } from '#shared/types/navigation'
-import { SYSTEM_TEMPLATES } from '#shared/templates'
+import { SYSTEM_TEMPLATES, TEMPLATE_CATEGORY_KEYS } from '#shared/templates'
 import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -21,12 +21,16 @@ export const navigationCounts = defineMockRoute(({ event }) => {
   const reviewed = Math.round((total - unread) * 0.22)
   const rejected = Math.round((total - unread) * 0.06)
 
-  // Templates: last used first (forms made from them), then the most used, then the catalogue order.
+  // Templates: Formalie's categories, most used first (forms made from them), then the largest.
   const templates = allTemplates(tenant, 'en')
-  const recent = [...templates]
-    .sort((a, b) => (b.last_used_at ?? '').localeCompare(a.last_used_at ?? '') || b.forms_count - a.forms_count)
-    .slice(0, 6)
-    .map(item => ({ key: item.key, name: item.name }))
+  const system = templates.filter(item => item.source === 'system')
+  const categories = TEMPLATE_CATEGORY_KEYS.map(key => {
+    const inside = system.filter(item => item.category === key)
+    return { key, count: inside.length, forms: inside.reduce((sum, item) => sum + item.forms_count, 0) }
+  })
+    .filter(item => item.count > 0)
+    .sort((a, b) => b.forms - a.forms || b.count - a.count)
+    .map(({ key, count }) => ({ key, count }))
   const themes = [...(libraryOf(tenant).themes ?? [])].sort((a, b) => b.updated_at.localeCompare(a.updated_at))
 
   return ok<NavCounts>({
@@ -38,7 +42,7 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       trash: all.length - live.length,
     },
     responses: { all: total, new: unread, reviewed, approved: total - unread - reviewed - rejected, rejected },
-    templates: { total: templates.length || SYSTEM_TEMPLATES.length, recent },
+    templates: { total: system.length || SYSTEM_TEMPLATES.length, mine: templates.length - system.length, categories },
     themes: { total: themes.length + SYSTEM_THEME_COUNT, recent: themes.slice(0, 6).map(theme => ({ id: theme.id, name: theme.name })) },
   })
 })

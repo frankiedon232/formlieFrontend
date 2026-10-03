@@ -316,7 +316,7 @@
     "aiTranslate": "Übersetzungen",
     "aiHistory": "Verlauf",
     "aiSettings": "Einstellungen & Nutzung",
-    "templatesAll": "Alle Vorlagen",
+    "templatesAll": "Alle Kategorien",
     "themesAll": "Alle Designs",
     "responsesAll": "Alle Antworten",
     "responsesNew": "Neu",
@@ -324,7 +324,8 @@
     "responsesApproved": "Genehmigt",
     "responsesRejected": "Abgelehnt",
     "responsesExports": "Exporte",
-    "apiApps": "App-Integrationen"
+    "apiApps": "App-Integrationen",
+    "templatesMine": "Eigene Vorlagen"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -1021,14 +1022,16 @@
       "questions": "Fragen",
       "forms": "Formulare",
       "responses": "Antworten",
-      "lastUsed": "Zuletzt verwendet"
+      "lastUsed": "Zuletzt verwendet",
+      "templates": "Vorlagen"
     },
     "sort": {
       "popular": "Am häufigsten verwendet",
       "responses": "Die meisten Antworten",
       "name": "Name (A–Z)",
       "short": "Am schnellsten auszufüllen",
-      "recent": "Zuletzt aktualisiert"
+      "recent": "Zuletzt aktualisiert",
+      "largest": "Meiste Vorlagen"
     },
     "emptyTitle": "Keine passenden Vorlagen",
     "emptyDesc": "Versuchen Sie eine andere Kategorie oder Suche, oder setzen Sie die Filter zurück.",
@@ -1410,7 +1413,22 @@
     "openGallery": "Ganze Galerie öffnen",
     "teamOnlyHint": "Berechnet und gespeichert, aber den Antwortenden nicht angezeigt.",
     "copyFormula": "Formel von {name} kopieren",
-    "viewAll": "Alle anzeigen"
+    "viewAll": "Alle anzeigen",
+    "searchCategories": "Kategorien oder Vorlagen suchen…",
+    "categoryCard": {
+      "templates": "{count} Vorlage | {count} Vorlagen",
+      "browse": "Vorlagen ansehen"
+    },
+    "categoryPage": {
+      "subtitle": "Formalie-Vorlagen in dieser Kategorie – jede mit eigenem Design, sofort einsatzbereit"
+    },
+    "mine": {
+      "subtitle": "Vorlagen, die der Arbeitsbereich aus eigenen Formularen gespeichert oder von Formalie kopiert hat",
+      "emptyTitle": "Noch keine eigenen Vorlagen",
+      "emptyDesc": "Formular öffnen und „Als Vorlage speichern“ wählen – oder eine Formalie-Vorlage duplizieren, um sie anzupassen.",
+      "openForms": "Formulare öffnen",
+      "browse": "Formalie-Vorlagen ansehen"
+    }
   },
   "builder": {
     "crumb": "Editor",

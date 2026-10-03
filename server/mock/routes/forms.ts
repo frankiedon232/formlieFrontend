@@ -136,6 +136,8 @@ const createSchema = z.object({
   /** A system template key or a workspace template (`ws_…`); checked against the catalogue. */
   template_key: z.string().max(80).nullable().optional(),
   label_position: z.enum(['top', 'left']).optional(),
+  /** The creator's language: a system template starts in it (F9). */
+  language: z.string().regex(/^[a-z]{2}(-[A-Z]{2})?$/).optional(),
 })
 const importSchema = z.object({ name, folder_id: z.string().nullable().optional(), schema: formSchemaV1 })
 
@@ -154,6 +156,8 @@ function newForm(
     folder: FormFolder | null
     template_key?: string | null
     schema?: StoredForm['schema']
+    /** Language of the person creating it: templates start in that language. */
+    language?: string
   },
 ): StoredForm {
   const store = formsOf(tenant)
@@ -174,7 +178,7 @@ function newForm(
     row_version: 1,
     deleted_at: null,
     previous_status: null,
-    schema: input.schema ?? (input.template_key ? schemaForTemplate(tenant, input.template_key) : null) ?? blankSchema(),
+    schema: input.schema ?? (input.template_key ? schemaForTemplate(tenant, input.template_key, input.language) : null) ?? blankSchema(),
     template_key: input.template_key ?? null,
   }
   store.forms.unshift(form)

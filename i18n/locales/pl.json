@@ -316,7 +316,7 @@
     "aiTranslate": "Tłumaczenia",
     "aiHistory": "Historia",
     "aiSettings": "Ustawienia i użycie",
-    "templatesAll": "Wszystkie szablony",
+    "templatesAll": "Wszystkie kategorie",
     "themesAll": "Wszystkie motywy",
     "responsesAll": "Wszystkie odpowiedzi",
     "responsesNew": "Nowe",
@@ -324,7 +324,8 @@
     "responsesApproved": "Zatwierdzone",
     "responsesRejected": "Odrzucone",
     "responsesExports": "Eksporty",
-    "apiApps": "Integracje aplikacji"
+    "apiApps": "Integracje aplikacji",
+    "templatesMine": "Twoje szablony"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -1021,14 +1022,16 @@
       "questions": "Pytania",
       "forms": "Formularze",
       "responses": "Odpowiedzi",
-      "lastUsed": "Ostatnio użyty"
+      "lastUsed": "Ostatnio użyty",
+      "templates": "Szablony"
     },
     "sort": {
       "popular": "Najczęściej używane",
       "responses": "Najwięcej odpowiedzi",
       "name": "Nazwa (A–Z)",
       "short": "Najszybsze do wypełnienia",
-      "recent": "Ostatnio zaktualizowane"
+      "recent": "Ostatnio zaktualizowane",
+      "largest": "Najwięcej szablonów"
     },
     "emptyTitle": "Brak pasujących szablonów",
     "emptyDesc": "Spróbuj innej kategorii lub wyszukiwania albo wyczyść filtry.",
@@ -1410,7 +1413,22 @@
     "openGallery": "Otwórz pełną galerię",
     "teamOnlyHint": "Obliczone i zapisane, ale niewidoczne dla respondentów.",
     "copyFormula": "Kopiuj formułę pola {name}",
-    "viewAll": "Zobacz wszystkie"
+    "viewAll": "Zobacz wszystkie",
+    "searchCategories": "Szukaj kategorii lub szablonów…",
+    "categoryCard": {
+      "templates": "{count} szablon | {count} szablonów",
+      "browse": "Przeglądaj szablony"
+    },
+    "categoryPage": {
+      "subtitle": "Szablony Formalie w tej kategorii — każdy z własnym projektem, gotowy do użycia"
+    },
+    "mine": {
+      "subtitle": "Szablony zapisane przez Twój obszar roboczy z jego formularzy lub skopiowane z Formalie",
+      "emptyTitle": "Nie masz jeszcze własnych szablonów",
+      "emptyDesc": "Otwórz formularz i wybierz „Zapisz jako szablon” albo zduplikuj szablon Formalie, aby go zmienić.",
+      "openForms": "Otwórz formularze",
+      "browse": "Przeglądaj szablony Formalie"
+    }
   },
   "builder": {
     "crumb": "Kreator",

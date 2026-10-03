@@ -1,7 +1,8 @@
 /**
  * Templates for the mock (F9): the system catalogue (shared/templates) plus each workspace's own
  * templates (library store), usage from the forms made with them, and names in the person's
- * language (read from the app's locale files — the real API keeps translations in its database).
+ * language (read from the app's locale files) and template content in that language
+ * (shared/templates/messages) — the real API keeps translations in its database.
  */
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -12,6 +13,7 @@ import { STARTER_TEMPLATE_KEYS, type StarterTemplateKey } from '#shared/utils/te
 import {
   SYSTEM_TEMPLATES,
   categoryOf,
+  localiseSchema,
   previewLabels,
   schemaStats,
   systemTemplate,
@@ -41,6 +43,36 @@ function itemText(lang: string, key: string, part: 'name' | 'description'): stri
   return items?.[key]?.[part] ?? null
 }
 
+/** A category's name in the person's language. */
+export function categoryName(lang: string, key: string): string {
+  itemText(lang, '', 'name') // loads the language's messages
+  const code = /^[a-z]{2}(-[A-Z]{2})?$/.test(lang) ? lang : 'en'
+  const pick = (messages: Record<string, unknown> | undefined) =>
+    (messages?.templates as { categories?: Record<string, string> } | undefined)?.categories?.[key]
+  if (code !== 'en') itemText('en', '', 'name')
+  return pick(messages.get(code)) ?? pick(messages.get('en')) ?? key
+}
+
+// ── Template content in the person's language (F9 milestone 5) ───────────────────────
+const contents = new Map<string, Record<string, string> | null>()
+function contentDict(code: string): Record<string, string> | null {
+  if (code === 'en') return null
+  if (!contents.has(code)) {
+    try {
+      contents.set(code, JSON.parse(readFileSync(join(process.cwd(), 'shared', 'templates', 'messages', `${code}.json`), 'utf8')))
+    } catch {
+      contents.set(code, null)
+    }
+  }
+  return contents.get(code) ?? null
+}
+const langCode = (lang: string) => (/^[a-z]{2}(-[A-Z]{2})?$/.test(lang) ? lang : 'en')
+/** A system template's form in the person's language (English when there is no translation). */
+function systemSchema(tenant: MockTenant, def: TemplateDef, lang: string) {
+  const code = langCode(lang)
+  return localiseSchema(templateSchema(def, { logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null }), contentDict(code), code)
+}
+
 // ── Workspace templates ────────────────────────────────────────────────────────────
 export function workspaceTemplates(tenant: MockTenant): WorkspaceTemplate[] {
   const store = libraryOf(tenant)
@@ -52,9 +84,9 @@ export const findWorkspaceTemplate = (tenant: MockTenant, key: string) =>
   key.startsWith('ws_') ? workspaceTemplates(tenant).find(item => workspaceKey(item.id) === key) : undefined
 
 /** The form a template creates, or null when the key is unknown. */
-export function schemaForTemplate(tenant: MockTenant, key: string): FormSchemaV1 | null {
+export function schemaForTemplate(tenant: MockTenant, key: string, lang = 'en'): FormSchemaV1 | null {
   const def = systemTemplate(key)
-  if (def) return templateSchema(def, { logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null })
+  if (def) return systemSchema(tenant, def, lang)
   const own = findWorkspaceTemplate(tenant, key)
   if (own) return structuredClone(own.schema)
   // Starters not yet in the catalogue (built in a later milestone).
@@ -110,7 +142,7 @@ function systemSummary(tenant: MockTenant, def: TemplateDef, lang: string, used:
       created_by: SYSTEM_AUTHOR,
       updated_at: CATALOGUE_DATE,
     },
-    templateSchema(def, { logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null }),
+    systemSchema(tenant, def, lang),
     used.get(def.key),
   )
 }
@@ -149,7 +181,7 @@ export function templateDetail(tenant: MockTenant, key: string, lang: string): T
   const own = def ? undefined : findWorkspaceTemplate(tenant, key)
   if (!def && !own) return null
   const base = def ? systemSummary(tenant, def, lang, used) : workspaceSummary(own!, used)
-  const schema = def ? templateSchema(def, { logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null }) : structuredClone(own!.schema)
+  const schema = def ? systemSchema(tenant, def, lang) : structuredClone(own!.schema)
   const calculations: TemplateCalculation[] = allFields(schema)
     .filter(field => field.type === 'calculated')
     .map(field => ({ label: field.label, formula: String(field.props?.formula ?? ''), internal: !!field.props?.internal }))

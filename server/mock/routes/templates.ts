@@ -5,8 +5,8 @@
  * Every change is in the audit trail.
  */
 import { z } from 'zod'
-import type { TemplateFacets, TemplateSummary } from '#shared/types/templates'
-import { TEMPLATE_CATEGORY_KEYS, categoryOf } from '#shared/templates'
+import type { TemplateCategorySummary, TemplateFacets, TemplateSummary } from '#shared/types/templates'
+import { TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS, categoryOf, templateTheme, type TemplateDef } from '#shared/templates'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok, paginate } from '../core/respond'
@@ -14,7 +14,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
 import { saveLibrary } from '../data/libraryStore'
-import { allTemplates, findWorkspaceTemplate, templateDetail, workspaceKey, workspaceTemplates } from '../data/templateStore'
+import { allTemplates, categoryName, findWorkspaceTemplate, templateDetail, workspaceKey, workspaceTemplates } from '../data/templateStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 
@@ -67,6 +67,35 @@ export const listTemplates = defineMockRoute(({ event, query }) => {
       item.description.toLowerCase().includes(q) ||
       item.tags.some(tag => tag.includes(q)) ||
       item.key.includes(q.replace(/\s+/g, '_')),
+  )
+  return ok(data, meta)
+})
+
+/** GET /templates/categories — Formalie's categories with counts and use of the templates inside. */
+export const listTemplateCategories = defineMockRoute(({ event, query }) => {
+  const { tenant } = requireAuth(event)
+  const lang = langOf(query)
+  const system = allTemplates(tenant, lang).filter(item => item.source === 'system')
+  const rows: TemplateCategorySummary[] = TEMPLATE_CATEGORIES.map(category => {
+    const inside = system.filter(item => item.category === category.key).sort((a, b) => b.forms_count - a.forms_count)
+    return {
+      key: category.key,
+      name: categoryName(lang, category.key),
+      icon: category.icon,
+      templates_count: inside.length,
+      calculations_count: inside.filter(item => item.calculations_count > 0).length,
+      logic_count: inside.filter(item => item.logic_count > 0).length,
+      forms_count: inside.reduce((sum, item) => sum + item.forms_count, 0),
+      responses_count: inside.reduce((sum, item) => sum + item.responses_count, 0),
+      last_used_at: inside.reduce<string | null>((last, item) => (item.last_used_at && (!last || item.last_used_at > last) ? item.last_used_at : last), null),
+      theme: templateTheme({ category: category.key } as TemplateDef, { logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null }) as unknown as Record<string, unknown>,
+      examples: inside.slice(0, 3).map(item => item.name),
+    }
+  }).filter(row => row.templates_count > 0)
+  const { data, meta } = paginate<TemplateCategorySummary>(
+    rows,
+    { sort: '-forms_count', ...query },
+    (row, q) => row.name.toLowerCase().includes(q) || row.examples.some(name => name.toLowerCase().includes(q)),
   )
   return ok(data, meta)
 })

@@ -48,3 +48,23 @@ export interface TemplateFacets {
   categories: Record<string, number>
   workspace: number
 }
+
+/** GET /templates/categories — Formalie's categories with what's inside (owner, 2026-10-03). */
+export interface TemplateCategorySummary {
+  key: string
+  /** In the requested language. */
+  name: string
+  icon: string
+  templates_count: number
+  /** Templates with calculations / with logic. */
+  calculations_count: number
+  logic_count: number
+  /** Forms made from this category's templates, their responses and the last use. */
+  forms_count: number
+  responses_count: number
+  last_used_at: string | null
+  /** The category's design (full tokens) for the card preview. */
+  theme: Record<string, unknown>
+  /** A few template names in the category, most used first. */
+  examples: string[]
+}
