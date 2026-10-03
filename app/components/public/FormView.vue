@@ -16,7 +16,8 @@ const config = useRuntimeConfig()
 const url = useRequestURL()
 
 const { form, errorCode } = await usePublicForm(props.formKey)
-const { submit } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link')
+const { submit, alreadySent, another } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link')
+const respondent = computed(() => ({ alreadySent: alreadySent.value, another }))
 
 // Development only: `?frame=spotlight` previews another page style without changing the form.
 const devFrame = import.meta.dev && THEME_FRAMES.includes(route.query.frame as ThemeFrame) ? (route.query.frame as ThemeFrame) : null
@@ -46,16 +47,19 @@ watch(language, code => void useLanguage(code))
 const dir = computed(() => APP_LOCALES.find(locale => locale.code === language.value)?.dir ?? 'ltr')
 
 // ── State, status code, SEO ──────────────────────────────────────────────────────────
-type View = 'open' | 'closed' | 'not_published' | 'not_found' | 'error'
+type View = 'open' | 'closed' | 'not_published' | 'expired' | 'scheduled' | 'not_found' | 'error'
 const view = computed<View>(() => {
   if (errorCode.value === 'FRM-FORM-1001') return 'not_found'
   if (errorCode.value || !form.value) return 'error'
   return form.value.state
 })
-if (import.meta.server && (view.value === 'not_found' || view.value === 'error')) {
+if (import.meta.server && ['not_found', 'error', 'expired'].includes(view.value)) {
   const event = useRequestEvent()
-  if (event) setResponseStatus(event, view.value === 'not_found' ? 404 : 503)
+  if (event) setResponseStatus(event, view.value === 'not_found' ? 404 : view.value === 'expired' ? 410 : 503)
 }
+const { locale } = useI18n()
+const longDate = (iso: string | null | undefined) =>
+  iso ? new Intl.DateTimeFormat(locale.value, { dateStyle: 'long', timeStyle: 'short' }).format(new Date(iso)) : ''
 
 const canonical = computed(() =>
   form.value ? formLink(publicHosts(config.public, url.port), form.value.key, 'fill', form.value.workspace.subdomain) : undefined,
@@ -112,6 +116,10 @@ const message = computed(() => {
       return { icon: 'i-lucide-lock', title: t('public.closed.title'), description: t('public.closed.desc') }
     case 'not_published':
       return { icon: 'i-lucide-file-clock', title: t('public.notPublished.title'), description: t('public.notPublished.desc') }
+    case 'expired':
+      return { icon: 'i-lucide-calendar-x-2', title: t('public.expired.title'), description: t('public.expired.desc', { date: longDate(form.value?.closes_at) }) }
+    case 'scheduled':
+      return { icon: 'i-lucide-calendar-clock', title: t('public.scheduled.title'), description: t('public.scheduled.desc', { date: longDate(form.value?.opens_at) }) }
     case 'error':
       return { icon: 'i-lucide-cloud-off', title: t('public.error.title'), description: t('public.error.desc') }
     default:
@@ -122,7 +130,7 @@ const message = computed(() => {
 
 <template>
   <div ref="root" :class="embed ? '' : 'flex min-h-dvh flex-col'">
-    <FormsRendererPage v-if="view === 'open' && schema" :schema="schema" :title="form?.name ?? ''" :submit="submit" :framed="!embed" :class="embed ? '' : 'flex-1'" />
+    <FormsRendererPage v-if="view === 'open' && schema" :schema="schema" :title="form?.name ?? ''" :submit="submit" :respondent="respondent" :framed="!embed" :class="embed ? '' : 'flex-1'" />
 
     <!-- Closed / not open yet: still the organisation's page (bar + footer); unknown links stay neutral. -->
     <header v-if="view !== 'open' && form && !embed" class="border-b border-default bg-default">

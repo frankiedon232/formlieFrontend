@@ -2,5 +2,7 @@
 <template>
   <div class="min-h-dvh">
     <slot />
+    <!-- Confirmations on public pages (e.g. "fill in for someone else"). -->
+    <AppConfirmDialog />
   </div>
 </template>

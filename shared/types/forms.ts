@@ -35,6 +35,9 @@ export interface FormSummary {
   row_version: number
   /** Set while the form is in Trash (kept 30 days, then removed for good). */
   deleted_at: string | null
+  /** Availability (F10): responses only from / until these times (null = no limit). */
+  opens_at: string | null
+  closes_at: string | null
 }
 
 /** GET /forms/facets — options for the owner and tag filters. */

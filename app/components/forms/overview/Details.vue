@@ -3,6 +3,7 @@
 import type { FormOverview, FormSummary } from '#shared/types/forms'
 
 defineProps<{ form: FormSummary; template: FormOverview['template'] }>()
+const emit = defineEmits<{ availability: [] }>()
 const { t } = useI18n()
 const { dateTime, relative } = useFormat()
 </script>
@@ -14,6 +15,14 @@ const { dateTime, relative } = useFormat()
       <div class="flex items-center justify-between gap-3">
         <dt class="text-muted">{{ t('forms.col.status') }}</dt>
         <dd><DataStatusBadge :status="form.status" /></dd>
+      </div>
+      <div class="flex items-center justify-between gap-3">
+        <dt class="text-muted">{{ t('forms.col.availability') }}</dt>
+        <dd class="flex items-center gap-1.5">
+          <FormsListAvailabilityBadge v-if="form.status === 'published'" :form="form" />
+          <span v-else class="text-highlighted">{{ form.opens_at || form.closes_at ? t('forms.availability.set') : t('forms.availability.notSet') }}</span>
+          <UButton icon="i-lucide-pencil" color="neutral" variant="ghost" size="xs" :aria-label="t('forms.availability.menu')" :disabled="!!form.deleted_at" @click="emit('availability')" />
+        </dd>
       </div>
       <div class="flex items-center justify-between gap-3">
         <dt class="text-muted">{{ t('forms.col.owner') }}</dt>

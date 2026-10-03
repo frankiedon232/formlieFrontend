@@ -17,6 +17,10 @@ export interface StoredResponse {
   data: Record<string, unknown>
   /** The fill-in session's submission id (Idempotency-Key). */
   submission_id: string
+  /** The browser it came from (device cookie) — "already submitted from this browser" (F10). */
+  device_id?: string
+  /** SHA-256 of the answers — the exact same response twice is refused. */
+  fingerprint?: string
   /** How it came in. */
   channel: 'link' | 'embed'
   meta: { ip: string; user_agent: string }

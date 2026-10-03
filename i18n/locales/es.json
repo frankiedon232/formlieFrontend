@@ -31,7 +31,8 @@
       "owner": "Propietario",
       "completion": "Finalización",
       "responses": "Respuestas",
-      "updated": "Actualizado"
+      "updated": "Actualizado",
+      "availability": "Disponibilidad"
     },
     "searchPlaceholder": "Buscar formularios…",
     "emptyTitle": "Aún no hay formularios",
@@ -255,6 +256,32 @@
       "custom": "Cualquier color",
       "scan": "Escanea para abrir",
       "failed": "No se pudo guardar el código QR. Inténtalo de nuevo."
+    },
+    "availability": {
+      "always": "Siempre abierto",
+      "until": "Hasta el {date}",
+      "from": "Desde el {date}",
+      "opens": "Abre el {date}",
+      "expired": "Caducó el {date}",
+      "set": "Fechas definidas",
+      "notSet": "Sin fechas",
+      "menu": "Disponibilidad",
+      "title": "Cuándo acepta respuestas este formulario",
+      "desc": "Deja ambos vacíos para mantenerlo abierto. Tras el final, el enlace indica que el formulario ha caducado; antes del inicio, indica cuándo abre.",
+      "opensAt": "Abierto desde",
+      "opensAtHint": "Opcional: antes de esta fecha, el enlace muestra cuándo abre el formulario.",
+      "closesAt": "Abierto hasta",
+      "closesAtHint": "Opcional: después de esta fecha no se aceptan más respuestas; el enlace indica que el formulario ha caducado.",
+      "preset": {
+        "week": "1 semana",
+        "twoWeeks": "2 semanas",
+        "month": "1 mes",
+        "endOfMonth": "Fin de mes",
+        "noEnd": "Sin fecha de fin"
+      },
+      "endBeforeStart": "Elige un final posterior al inicio.",
+      "pastWarning": "Esta fecha de fin ya ha pasado: el formulario dejará de aceptar respuestas en cuanto guardes.",
+      "saved": "Disponibilidad guardada"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "Ya existe una plantilla con este nombre.",
     "FRM-RESP-1003": "Este formulario ya se envió desde esta sesión.",
     "FRM-FORM-1013": "Esta carpeta todavía tiene formularios. Muévelos primero a otra carpeta.",
-    "FRM-FORM-1014": "Los temas del sistema no se pueden cambiar. Duplícalo para crear el tuyo."
+    "FRM-FORM-1014": "Los temas del sistema no se pueden cambiar. Duplícalo para crear el tuyo.",
+    "FRM-FORM-1015": "Este formulario ha caducado.",
+    "FRM-FORM-1016": "Este formulario aún no está abierto.",
+    "FRM-RESP-1004": "Este formulario ya se envió desde este navegador.",
+    "FRM-RESP-1005": "Ya se envió una respuesta con exactamente estas respuestas.",
+    "FRM-RESP-1006": "Ya se envió una respuesta con este valor."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "Enlace a los términos (opcional)",
       "consentLinkLabel": "Texto del enlace",
       "showResult": "Mostrar el resultado a quienes responden",
-      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad)."
+      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad).",
+      "unique": "Una respuesta por valor",
+      "uniqueHint": "Rechazar una segunda respuesta con el mismo valor en esta pregunta (p. ej., el mismo correo).",
+      "uniqueNone": "Desactivado: permitir repeticiones"
     },
     "shortcuts": {
       "title": "Atajos",
@@ -1939,7 +1974,8 @@
       "duration": "Introduce una duración en {field} (minutos 0–59).",
       "name": "Introduce el nombre y el apellido en {field}.",
       "consent": "Confirme {field} para continuar.",
-      "choice": "Elige una opción de la lista para {field}."
+      "choice": "Elige una opción de la lista para {field}.",
+      "unique": "Ya se envió una respuesta con este valor de {field}."
     },
     "page": {
       "logo": "Logotipo",
@@ -1979,6 +2015,22 @@
       "limits": "Hasta {max} archivos, {mb} MB cada uno",
       "count": "{n} de {max}",
       "addMore": "Añadir más"
+    },
+    "after": {
+      "another": "Rellenar otro",
+      "forSomeoneElse": "Rellenar para otra persona",
+      "close": "Cerrar esta página",
+      "closeHint": "Ya puedes cerrar esta pestaña.",
+      "alreadyTitle": "Ya has rellenado este formulario",
+      "alreadyDesc": "Tu respuesta se recibió desde este navegador. Rellénalo de nuevo solo para otra persona: la respuesta de cada persona se acepta una vez.",
+      "askTitle": "¿Es para otra persona?",
+      "askDesc": "Ya has enviado una respuesta desde este navegador.",
+      "askPoint1": "Continúa solo si esta respuesta es para otra persona.",
+      "askPoint2": "La respuesta de la misma persona, o exactamente las mismas respuestas, no se aceptará dos veces.",
+      "confirm": "Sí, para otra persona",
+      "stay": "No, quedarme aquí",
+      "duplicate": "Estas mismas respuestas ya se enviaron",
+      "duplicateDesc": "Ya existe una respuesta con las mismas respuestas. Si es otra persona, revisa sus datos."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "¿Tarda demasiado? Algunos sitios no se pueden mostrar dentro de otra página: ábrelo en una pestaña nueva.",
       "safe": "Tus respuestas se conservan: cierra esta ventana para continuar con el formulario.",
       "backToForm": "Volver al formulario"
+    },
+    "expired": {
+      "title": "Este formulario ha caducado",
+      "desc": "Dejó de aceptar respuestas el {date}. Gracias por tu interés."
+    },
+    "scheduled": {
+      "title": "Este formulario aún no está abierto",
+      "desc": "Abre el {date}. Vuelve entonces, por favor."
     }
   }
 }

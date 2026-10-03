@@ -31,7 +31,8 @@
       "owner": "Sahibi",
       "completion": "Tamamlanma",
       "responses": "Yanıtlar",
-      "updated": "Güncellendi"
+      "updated": "Güncellendi",
+      "availability": "Erişilebilirlik"
     },
     "searchPlaceholder": "Form ara…",
     "emptyTitle": "Henüz form yok",
@@ -255,6 +256,32 @@
       "custom": "Herhangi bir renk",
       "scan": "Açmak için tarayın",
       "failed": "QR kodu kaydedilemedi. Lütfen tekrar deneyin."
+    },
+    "availability": {
+      "always": "Her zaman açık",
+      "until": "{date} tarihine kadar",
+      "from": "{date} itibarıyla",
+      "opens": "{date} açılır",
+      "expired": "{date} sona erdi",
+      "set": "Tarihler ayarlı",
+      "notSet": "Tarih yok",
+      "menu": "Erişilebilirlik",
+      "title": "Bu form ne zaman yanıt kabul eder",
+      "desc": "Açık kalması için ikisini de boş bırakın. Bitişten sonra bağlantı formun süresinin dolduğunu, başlangıçtan önce ne zaman açılacağını belirtir.",
+      "opensAt": "Açılış",
+      "opensAtHint": "İsteğe bağlı — bu tarihten önce bağlantı formun ne zaman açılacağını gösterir.",
+      "closesAt": "Kapanış",
+      "closesAtHint": "İsteğe bağlı — bu tarihten sonra yanıt alınmaz; bağlantı formun süresinin dolduğunu belirtir.",
+      "preset": {
+        "week": "1 hafta",
+        "twoWeeks": "2 hafta",
+        "month": "1 ay",
+        "endOfMonth": "Ay sonu",
+        "noEnd": "Bitiş tarihi yok"
+      },
+      "endBeforeStart": "Başlangıçtan sonra bir bitiş seçin.",
+      "pastWarning": "Bu bitiş tarihi geçti — form, kaydeder kaydetmez yanıt almayı durdurur.",
+      "saved": "Erişilebilirlik kaydedildi"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "Bu ada sahip bir şablon zaten var.",
     "FRM-RESP-1003": "Bu form bu oturumdan zaten gönderildi.",
     "FRM-FORM-1013": "Bu klasörde hâlâ formlar var. Önce bunları başka bir klasöre taşıyın.",
-    "FRM-FORM-1014": "Sistem temaları değiştirilemez. Kendinizinkini oluşturmak için çoğaltın."
+    "FRM-FORM-1014": "Sistem temaları değiştirilemez. Kendinizinkini oluşturmak için çoğaltın.",
+    "FRM-FORM-1015": "Bu formun süresi doldu.",
+    "FRM-FORM-1016": "Bu form henüz açık değil.",
+    "FRM-RESP-1004": "Bu form bu tarayıcıdan zaten gönderildi.",
+    "FRM-RESP-1005": "Birebir aynı yanıtları içeren bir yanıt zaten gönderildi.",
+    "FRM-RESP-1006": "Bu yanıtı içeren bir kayıt zaten gönderildi."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "Koşulların bağlantısı (isteğe bağlı)",
       "consentLinkLabel": "Bağlantı metni",
       "showResult": "Sonucu yanıtlayanlara göster",
-      "internalHint": "Her yanıtla hesaplanır ve kaydedilir, ancak yalnızca ekibiniz görür (ör. bir risk düzeyi veya sadakat grubu)."
+      "internalHint": "Her yanıtla hesaplanır ve kaydedilir, ancak yalnızca ekibiniz görür (ör. bir risk düzeyi veya sadakat grubu).",
+      "unique": "Yanıt başına tek kayıt",
+      "uniqueHint": "Bu soruya aynı yanıtı veren ikinci bir yanıtı reddet (ör. aynı e-posta).",
+      "uniqueNone": "Kapalı — tekrarlara izin ver"
     },
     "shortcuts": {
       "title": "Kısayollar",
@@ -1939,7 +1974,8 @@
       "duration": "{field} için bir süre girin (dakika 0–59).",
       "name": "{field} için hem adı hem soyadı girin.",
       "consent": "Devam etmek için lütfen {field} alanını onaylayın.",
-      "choice": "{field} için listeden bir seçenek seçin."
+      "choice": "{field} için listeden bir seçenek seçin.",
+      "unique": "Bu {field} değerine sahip bir yanıt zaten gönderildi."
     },
     "page": {
       "logo": "Logo",
@@ -1979,6 +2015,22 @@
       "limits": "En fazla {max} dosya, her biri {mb} MB",
       "count": "{n} / {max}",
       "addMore": "Daha fazla ekle"
+    },
+    "after": {
+      "another": "Bir tane daha doldur",
+      "forSomeoneElse": "Başka biri için doldur",
+      "close": "Bu sayfayı kapat",
+      "closeHint": "Bu sekmeyi artık kapatabilirsiniz.",
+      "alreadyTitle": "Bu formu zaten doldurdunuz",
+      "alreadyDesc": "Yanıtınız bu tarayıcıdan alındı. Yalnızca başka bir kişi için tekrar doldurun — her kişinin yanıtı bir kez kabul edilir.",
+      "askTitle": "Bu başka biri için mi?",
+      "askDesc": "Bu tarayıcıdan zaten bir yanıt gönderdiniz.",
+      "askPoint1": "Yalnızca bu yanıt başka bir kişi içinse devam edin.",
+      "askPoint2": "Aynı kişinin yanıtı — ya da birebir aynı yanıtlar — iki kez kabul edilmez.",
+      "confirm": "Evet, başka biri için",
+      "stay": "Hayır, burada kal",
+      "duplicate": "Birebir aynı yanıtlar zaten gönderildi",
+      "duplicateDesc": "Aynı yanıtları içeren bir yanıt zaten var. Başka biriyse bilgilerini kontrol edin."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "Uzun mu sürüyor? Bazı siteler başka bir sayfanın içinde gösterilemez — bunun yerine yeni bir sekmede açın.",
       "safe": "Yanıtlarınız korunuyor — forma devam etmek için bu pencereyi kapatın.",
       "backToForm": "Forma dön"
+    },
+    "expired": {
+      "title": "Bu formun süresi doldu",
+      "desc": "{date} tarihinde yanıt almayı durdurdu. İlginiz için teşekkür ederiz."
+    },
+    "scheduled": {
+      "title": "Bu form henüz açık değil",
+      "desc": "{date} tarihinde açılacak. Lütfen o zaman tekrar gelin."
     }
   }
 }

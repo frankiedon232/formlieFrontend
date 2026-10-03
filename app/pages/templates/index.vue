@@ -74,16 +74,16 @@ const rowActions = (category: TemplateCategorySummary) => [[{ label: t('template
         <span class="tabular-nums">{{ number(row.original.templates_count) }}</span>
       </template>
       <template #calculations_count-cell="{ row }">
-        <span class="text-muted tabular-nums">{{ number(row.original.calculations_count) }}</span>
+        <span class="tabular-nums">{{ number(row.original.calculations_count) }}</span>
       </template>
       <template #forms_count-cell="{ row }">
         <span class="tabular-nums">{{ number(row.original.forms_count) }}</span>
       </template>
       <template #responses_count-cell="{ row }">
-        <span class="text-muted tabular-nums">{{ number(row.original.responses_count) }}</span>
+        <span class="tabular-nums">{{ number(row.original.responses_count) }}</span>
       </template>
       <template #last_used_at-cell="{ row }">
-        <span class="text-muted">{{ row.original.last_used_at ? relative(row.original.last_used_at) : t('templates.neverUsed') }}</span>
+        <span>{{ row.original.last_used_at ? relative(row.original.last_used_at) : t('templates.neverUsed') }}</span>
       </template>
       <template #grid-card="{ row }">
         <TemplatesCategoryCard :category="row" />

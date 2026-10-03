@@ -22,6 +22,8 @@ const props = defineProps<{
   submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
   /** Show the page frame around the form (public link and previews; never in embeds). */
   framed?: boolean
+  /** Public page: already sent from this browser / start one for someone else (renderer Form). */
+  respondent?: { alreadySent: boolean; another: () => void }
 }>()
 const branding = useWorkspaceBranding()
 const theme = useFormTheme(() => props.schema.theme)
@@ -120,7 +122,7 @@ const containerClass = computed(() => [
 
             <div class="flex-1" :class="inner">
               <FormsRendererPageHeader v-if="!band && !panel && hasHeader" class="mb-6" :theme="theme" :title="title" :logo="logo" />
-              <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" />
+              <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" :respondent="respondent" />
             </div>
 
             <FormsRendererPageFooter v-if="attachedFooter" :theme="theme" :logo="footerLogo" attached />

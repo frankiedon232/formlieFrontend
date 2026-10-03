@@ -31,7 +31,8 @@
       "owner": "负责人",
       "completion": "完成率",
       "responses": "回复",
-      "updated": "更新时间"
+      "updated": "更新时间",
+      "availability": "开放时间"
     },
     "searchPlaceholder": "搜索表单…",
     "emptyTitle": "还没有表单",
@@ -255,6 +256,32 @@
       "custom": "任意颜色",
       "scan": "扫码打开",
       "failed": "无法保存二维码，请重试。"
+    },
+    "availability": {
+      "always": "始终开放",
+      "until": "截至 {date}",
+      "from": "{date} 起",
+      "opens": "{date} 开放",
+      "expired": "{date} 已截止",
+      "set": "已设日期",
+      "notSet": "无日期",
+      "menu": "开放时间",
+      "title": "此表单接收回复的时间",
+      "desc": "两项都留空则保持开放。结束后，链接会显示表单已截止；开始前，会显示开放时间。",
+      "opensAt": "开放开始",
+      "opensAtHint": "可选 — 在此之前，链接会显示表单的开放时间。",
+      "closesAt": "开放截止",
+      "closesAtHint": "可选 — 在此之后不再接收回复；链接会显示表单已截止。",
+      "preset": {
+        "week": "1 周",
+        "twoWeeks": "2 周",
+        "month": "1 个月",
+        "endOfMonth": "月底",
+        "noEnd": "无截止日期"
+      },
+      "endBeforeStart": "请选择晚于开始时间的截止时间。",
+      "pastWarning": "该截止日期已过 — 保存后表单将立即停止接收回复。",
+      "saved": "开放时间已保存"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "已存在同名模板。",
     "FRM-RESP-1003": "此表单已在本次会话中提交过。",
     "FRM-FORM-1013": "此文件夹中仍有表单。请先将它们移到其他文件夹。",
-    "FRM-FORM-1014": "系统主题无法修改。请复制一份来创建你自己的主题。"
+    "FRM-FORM-1014": "系统主题无法修改。请复制一份来创建你自己的主题。",
+    "FRM-FORM-1015": "此表单已截止。",
+    "FRM-FORM-1016": "此表单尚未开放。",
+    "FRM-RESP-1004": "此表单已从此浏览器提交过。",
+    "FRM-RESP-1005": "已有答案完全相同的回复提交过。",
+    "FRM-RESP-1006": "已有使用此答案的回复提交过。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "条款链接（可选）",
       "consentLinkLabel": "链接文本",
       "showResult": "向填写者显示结果",
-      "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。"
+      "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。",
+      "unique": "每个答案仅限一份回复",
+      "uniqueHint": "拒绝此问题答案相同的第二份回复（例如相同的邮箱）。",
+      "uniqueNone": "关闭 — 允许重复"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -1939,7 +1974,8 @@
       "duration": "请为{field}输入时长（分钟 0–59）。",
       "name": "请为{field}输入名字和姓氏。",
       "consent": "请确认{field}以继续。",
-      "choice": "请从列表中为{field}选择一个选项。"
+      "choice": "请从列表中为{field}选择一个选项。",
+      "unique": "已有使用此{field}的回复提交过。"
     },
     "page": {
       "logo": "徽标",
@@ -1979,6 +2015,22 @@
       "limits": "最多 {max} 个文件，每个 {mb} MB",
       "count": "{n} / {max}",
       "addMore": "继续添加"
+    },
+    "after": {
+      "another": "再填一份",
+      "forSomeoneElse": "为他人填写",
+      "close": "关闭此页面",
+      "closeHint": "你现在可以关闭此标签页。",
+      "alreadyTitle": "你已填写过此表单",
+      "alreadyDesc": "已从此浏览器收到你的回复。仅在为他人填写时再次填写 — 每人的回复只接受一次。",
+      "askTitle": "这是为他人填写吗？",
+      "askDesc": "你已从此浏览器提交过回复。",
+      "askPoint1": "仅当此回复属于他人时才继续。",
+      "askPoint2": "同一人的回复或完全相同的答案不会被接受两次。",
+      "confirm": "是，为他人填写",
+      "stay": "否，留在此页",
+      "duplicate": "完全相同的答案已提交过",
+      "duplicateDesc": "已有一份答案相同的回复。如果是他人，请核对其信息。"
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "加载时间较长？部分网站无法在其他页面内显示，请改为在新标签页中打开。",
       "safe": "你的答案已保留，关闭此窗口即可继续填写表单。",
       "backToForm": "返回表单"
+    },
+    "expired": {
+      "title": "此表单已截止",
+      "desc": "此表单已于 {date} 停止接收回复。感谢你的关注。"
+    },
+    "scheduled": {
+      "title": "此表单尚未开放",
+      "desc": "将于 {date} 开放，届时欢迎再来。"
     }
   }
 }

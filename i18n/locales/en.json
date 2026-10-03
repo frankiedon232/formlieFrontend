@@ -31,7 +31,8 @@
       "owner": "Owner",
       "completion": "Completion",
       "responses": "Responses",
-      "updated": "Updated"
+      "updated": "Updated",
+      "availability": "Availability"
     },
     "searchPlaceholder": "Search forms…",
     "emptyTitle": "No forms yet",
@@ -255,6 +256,32 @@
       "custom": "Any colour",
       "scan": "Scan to open",
       "failed": "The QR code couldn't be saved. Please try again."
+    },
+    "availability": {
+      "always": "Always open",
+      "until": "Until {date}",
+      "from": "From {date}",
+      "opens": "Opens {date}",
+      "expired": "Expired {date}",
+      "set": "Dates set",
+      "notSet": "No dates",
+      "menu": "Availability",
+      "title": "When this form takes responses",
+      "desc": "Leave both empty to keep it open. After the end, the link says the form has expired; before the start, it says when it opens.",
+      "opensAt": "Open from",
+      "opensAtHint": "Optional — before this, the link shows when the form opens.",
+      "closesAt": "Open until",
+      "closesAtHint": "Optional — after this, no more responses; the link says the form has expired.",
+      "preset": {
+        "week": "1 week",
+        "twoWeeks": "2 weeks",
+        "month": "1 month",
+        "endOfMonth": "End of month",
+        "noEnd": "No end date"
+      },
+      "endBeforeStart": "Choose an end after the start.",
+      "pastWarning": "This end date has already passed — the form stops taking responses as soon as you save.",
+      "saved": "Availability saved"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "A template with this name already exists.",
     "FRM-RESP-1003": "This form was already submitted from this session.",
     "FRM-FORM-1013": "This folder still has forms. Move them to another folder first.",
-    "FRM-FORM-1014": "System themes can't be changed. Duplicate it to make your own."
+    "FRM-FORM-1014": "System themes can't be changed. Duplicate it to make your own.",
+    "FRM-FORM-1015": "This form has expired.",
+    "FRM-FORM-1016": "This form isn’t open yet.",
+    "FRM-RESP-1004": "This form was already submitted from this browser.",
+    "FRM-RESP-1005": "A response with exactly these answers was already submitted.",
+    "FRM-RESP-1006": "A response with this answer was already submitted."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1701,7 +1733,10 @@
       "consentLink": "Link to the terms (optional)",
       "consentLinkLabel": "Link text",
       "showResult": "Show the result to respondents",
-      "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group)."
+      "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group).",
+      "unique": "One response per answer",
+      "uniqueHint": "Refuse a second response with the same answer to this question (e.g. the same email).",
+      "uniqueNone": "Off — allow repeats"
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -1939,7 +1974,8 @@
       "duration": "Enter a duration for {field} (minutes 0–59).",
       "name": "Enter both first and last name for {field}.",
       "consent": "Please confirm {field} to continue.",
-      "choice": "Choose an option from the list for {field}."
+      "choice": "Choose an option from the list for {field}.",
+      "unique": "A response with this {field} was already sent."
     },
     "page": {
       "logo": "Logo",
@@ -1979,6 +2015,22 @@
       "limits": "Up to {max} files, {mb} MB each",
       "count": "{n} of {max}",
       "addMore": "Add more"
+    },
+    "after": {
+      "another": "Fill in another",
+      "forSomeoneElse": "Fill in for someone else",
+      "close": "Close this page",
+      "closeHint": "You can close this tab now.",
+      "alreadyTitle": "You’ve already filled in this form",
+      "alreadyDesc": "Your response was received from this browser. Fill it in again only for another person — each person’s response is accepted once.",
+      "askTitle": "Is this for someone else?",
+      "askDesc": "You’ve already sent a response from this browser.",
+      "askPoint1": "Continue only if this response is for another person.",
+      "askPoint2": "The same person’s response — or the exact same answers — won’t be accepted twice.",
+      "confirm": "Yes, for someone else",
+      "stay": "No, stay here",
+      "duplicate": "These exact answers were already sent",
+      "duplicateDesc": "A response with the same answers is already in. If this is someone else, check their details."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "Taking a while? Some sites can’t be shown inside another page — open it in a new tab instead.",
       "safe": "Your answers are kept — close this window to carry on with the form.",
       "backToForm": "Back to the form"
+    },
+    "expired": {
+      "title": "This form has expired",
+      "desc": "It stopped taking responses on {date}. Thank you for your interest."
+    },
+    "scheduled": {
+      "title": "This form isn’t open yet",
+      "desc": "It opens on {date}. Please come back then."
     }
   }
 }

@@ -168,6 +168,8 @@ function newForm(
     name: input.name,
     slug: uniqueSlug(store, input.name),
     public_key: newPublicKey(),
+    opens_at: null,
+    closes_at: null,
     status: 'draft',
     has_unpublished_changes: false,
     folder: input.folder,
@@ -243,6 +245,9 @@ const patchSchema = z.object({
     )
     .max(20)
     .optional(),
+  /** Availability (F10): ISO date-times or null for no limit. */
+  opens_at: z.iso.datetime({ offset: true }).nullable().optional(),
+  closes_at: z.iso.datetime({ offset: true }).nullable().optional(),
 })
 
 export const patchForm = defineMockRoute(({ event, body }) => {
@@ -260,6 +265,14 @@ export const patchForm = defineMockRoute(({ event, body }) => {
     changes.push({ field: 'folder', before: form.folder?.name ?? null, after: folder?.name ?? null })
     form.folder = folder
   }
+  for (const field of ['opens_at', 'closes_at'] as const) {
+    const value = input[field]
+    if (value === undefined || value === form[field]) continue
+    changes.push({ field, before: form[field], after: value })
+    form[field] = value
+  }
+  if (form.opens_at && form.closes_at && Date.parse(form.closes_at) <= Date.parse(form.opens_at))
+    throw new MockError('FRM-GEN-1002', [{ field: 'closes_at', message: 'Choose an end after the start.' }])
   if (input.tags !== undefined) {
     const tags = [...new Set(input.tags)].sort()
     if (tags.join(',') !== form.tags.join(',')) {

@@ -31,7 +31,8 @@
       "owner": "Chủ sở hữu",
       "completion": "Hoàn thành",
       "responses": "Phản hồi",
-      "updated": "Cập nhật"
+      "updated": "Cập nhật",
+      "availability": "Thời gian mở"
     },
     "searchPlaceholder": "Tìm biểu mẫu…",
     "emptyTitle": "Chưa có biểu mẫu",
@@ -255,6 +256,32 @@
       "custom": "Màu bất kỳ",
       "scan": "Quét để mở",
       "failed": "Không thể lưu mã QR. Vui lòng thử lại."
+    },
+    "availability": {
+      "always": "Luôn mở",
+      "until": "Đến {date}",
+      "from": "Từ {date}",
+      "opens": "Mở {date}",
+      "expired": "Hết hạn {date}",
+      "set": "Đã đặt ngày",
+      "notSet": "Không có ngày",
+      "menu": "Thời gian mở",
+      "title": "Khi nào biểu mẫu này nhận phản hồi",
+      "desc": "Để trống cả hai để biểu mẫu luôn mở. Sau ngày kết thúc, liên kết báo biểu mẫu đã hết hạn; trước ngày bắt đầu, liên kết cho biết khi nào mở.",
+      "opensAt": "Mở từ",
+      "opensAtHint": "Không bắt buộc — trước thời điểm này, liên kết hiển thị khi nào biểu mẫu mở.",
+      "closesAt": "Mở đến",
+      "closesAtHint": "Không bắt buộc — sau thời điểm này không nhận thêm phản hồi; liên kết báo biểu mẫu đã hết hạn.",
+      "preset": {
+        "week": "1 tuần",
+        "twoWeeks": "2 tuần",
+        "month": "1 tháng",
+        "endOfMonth": "Cuối tháng",
+        "noEnd": "Không có ngày kết thúc"
+      },
+      "endBeforeStart": "Hãy chọn ngày kết thúc sau ngày bắt đầu.",
+      "pastWarning": "Ngày kết thúc này đã qua — biểu mẫu sẽ ngừng nhận phản hồi ngay khi bạn lưu.",
+      "saved": "Đã lưu thời gian mở"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "Đã có mẫu với tên này.",
     "FRM-RESP-1003": "Biểu mẫu này đã được gửi từ phiên này.",
     "FRM-FORM-1013": "Thư mục này vẫn còn biểu mẫu. Hãy chuyển chúng sang thư mục khác trước.",
-    "FRM-FORM-1014": "Không thể thay đổi giao diện hệ thống. Hãy nhân bản để tạo giao diện của riêng bạn."
+    "FRM-FORM-1014": "Không thể thay đổi giao diện hệ thống. Hãy nhân bản để tạo giao diện của riêng bạn.",
+    "FRM-FORM-1015": "Biểu mẫu này đã hết hạn.",
+    "FRM-FORM-1016": "Biểu mẫu này chưa mở.",
+    "FRM-RESP-1004": "Biểu mẫu này đã được gửi từ trình duyệt này.",
+    "FRM-RESP-1005": "Đã có phản hồi với đúng các câu trả lời này được gửi.",
+    "FRM-RESP-1006": "Đã có phản hồi với câu trả lời này được gửi."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "Liên kết đến điều khoản (không bắt buộc)",
       "consentLinkLabel": "Văn bản liên kết",
       "showResult": "Hiển thị kết quả cho người trả lời",
-      "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành)."
+      "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành).",
+      "unique": "Một phản hồi cho mỗi câu trả lời",
+      "uniqueHint": "Từ chối phản hồi thứ hai có cùng câu trả lời cho câu hỏi này (ví dụ cùng email).",
+      "uniqueNone": "Tắt — cho phép trùng lặp"
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -1939,7 +1974,8 @@
       "duration": "Nhập thời lượng cho {field} (phút 0–59).",
       "name": "Nhập cả tên và họ cho {field}.",
       "consent": "Vui lòng xác nhận {field} để tiếp tục.",
-      "choice": "Chọn một tùy chọn trong danh sách cho {field}."
+      "choice": "Chọn một tùy chọn trong danh sách cho {field}.",
+      "unique": "Đã có phản hồi với {field} này được gửi."
     },
     "page": {
       "logo": "Logo",
@@ -1979,6 +2015,22 @@
       "limits": "Tối đa {max} tệp, mỗi tệp {mb} MB",
       "count": "{n}/{max}",
       "addMore": "Thêm nữa"
+    },
+    "after": {
+      "another": "Điền thêm",
+      "forSomeoneElse": "Điền cho người khác",
+      "close": "Đóng trang này",
+      "closeHint": "Bây giờ bạn có thể đóng tab này.",
+      "alreadyTitle": "Bạn đã điền biểu mẫu này",
+      "alreadyDesc": "Phản hồi của bạn đã được nhận từ trình duyệt này. Chỉ điền lại cho người khác — phản hồi của mỗi người chỉ được nhận một lần.",
+      "askTitle": "Đây là cho người khác phải không?",
+      "askDesc": "Bạn đã gửi một phản hồi từ trình duyệt này.",
+      "askPoint1": "Chỉ tiếp tục nếu phản hồi này là của người khác.",
+      "askPoint2": "Phản hồi của cùng một người — hoặc các câu trả lời giống hệt — sẽ không được nhận hai lần.",
+      "confirm": "Có, cho người khác",
+      "stay": "Không, ở lại đây",
+      "duplicate": "Các câu trả lời giống hệt này đã được gửi",
+      "duplicateDesc": "Đã có phản hồi với cùng các câu trả lời. Nếu đây là người khác, hãy kiểm tra thông tin của họ."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "Mất nhiều thời gian? Một số trang web không thể hiển thị bên trong trang khác — hãy mở trong thẻ mới.",
       "safe": "Câu trả lời của bạn vẫn được giữ lại — đóng cửa sổ này để tiếp tục điền biểu mẫu.",
       "backToForm": "Quay lại biểu mẫu"
+    },
+    "expired": {
+      "title": "Biểu mẫu này đã hết hạn",
+      "desc": "Biểu mẫu đã ngừng nhận phản hồi vào {date}. Cảm ơn bạn đã quan tâm."
+    },
+    "scheduled": {
+      "title": "Biểu mẫu này chưa mở",
+      "desc": "Biểu mẫu sẽ mở vào {date}. Vui lòng quay lại khi đó."
     }
   }
 }

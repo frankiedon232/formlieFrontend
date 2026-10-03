@@ -31,7 +31,8 @@
       "owner": "Pemilik",
       "completion": "Penyelesaian",
       "responses": "Tanggapan",
-      "updated": "Diperbarui"
+      "updated": "Diperbarui",
+      "availability": "Ketersediaan"
     },
     "searchPlaceholder": "Cari formulir…",
     "emptyTitle": "Belum ada formulir",
@@ -255,6 +256,32 @@
       "custom": "Warna apa saja",
       "scan": "Pindai untuk membuka",
       "failed": "Kode QR tidak dapat disimpan. Silakan coba lagi."
+    },
+    "availability": {
+      "always": "Selalu terbuka",
+      "until": "Sampai {date}",
+      "from": "Mulai {date}",
+      "opens": "Dibuka {date}",
+      "expired": "Berakhir {date}",
+      "set": "Tanggal diatur",
+      "notSet": "Tanpa tanggal",
+      "menu": "Ketersediaan",
+      "title": "Kapan formulir ini menerima respons",
+      "desc": "Biarkan keduanya kosong agar tetap terbuka. Setelah berakhir, tautan menyatakan formulir sudah kedaluwarsa; sebelum dimulai, tautan menyebutkan kapan dibuka.",
+      "opensAt": "Terbuka mulai",
+      "opensAtHint": "Opsional — sebelum ini, tautan menampilkan kapan formulir dibuka.",
+      "closesAt": "Terbuka sampai",
+      "closesAtHint": "Opsional — setelah ini, tidak ada respons lagi; tautan menyatakan formulir sudah kedaluwarsa.",
+      "preset": {
+        "week": "1 minggu",
+        "twoWeeks": "2 minggu",
+        "month": "1 bulan",
+        "endOfMonth": "Akhir bulan",
+        "noEnd": "Tanpa tanggal akhir"
+      },
+      "endBeforeStart": "Pilih akhir setelah tanggal mulai.",
+      "pastWarning": "Tanggal akhir ini sudah lewat — formulir berhenti menerima respons begitu Anda menyimpan.",
+      "saved": "Ketersediaan disimpan"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "Templat dengan nama ini sudah ada.",
     "FRM-RESP-1003": "Formulir ini sudah dikirim dari sesi ini.",
     "FRM-FORM-1013": "Folder ini masih berisi formulir. Pindahkan dulu ke folder lain.",
-    "FRM-FORM-1014": "Tema sistem tidak dapat diubah. Duplikat tema ini untuk membuat milik Anda sendiri."
+    "FRM-FORM-1014": "Tema sistem tidak dapat diubah. Duplikat tema ini untuk membuat milik Anda sendiri.",
+    "FRM-FORM-1015": "Formulir ini sudah kedaluwarsa.",
+    "FRM-FORM-1016": "Formulir ini belum dibuka.",
+    "FRM-RESP-1004": "Formulir ini sudah dikirim dari browser ini.",
+    "FRM-RESP-1005": "Respons dengan jawaban yang persis sama sudah dikirim.",
+    "FRM-RESP-1006": "Respons dengan jawaban ini sudah dikirim."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "Tautan ke ketentuan (opsional)",
       "consentLinkLabel": "Teks tautan",
       "showResult": "Tampilkan hasil kepada responden",
-      "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas)."
+      "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas).",
+      "unique": "Satu respons per jawaban",
+      "uniqueHint": "Tolak respons kedua dengan jawaban yang sama untuk pertanyaan ini (mis. email yang sama).",
+      "uniqueNone": "Nonaktif — izinkan pengulangan"
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -1939,7 +1974,8 @@
       "duration": "Masukkan durasi untuk {field} (menit 0–59).",
       "name": "Masukkan nama depan dan belakang untuk {field}.",
       "consent": "Konfirmasikan {field} untuk melanjutkan.",
-      "choice": "Pilih opsi dari daftar untuk {field}."
+      "choice": "Pilih opsi dari daftar untuk {field}.",
+      "unique": "Respons dengan {field} ini sudah pernah dikirim."
     },
     "page": {
       "logo": "Logo",
@@ -1979,6 +2015,22 @@
       "limits": "Hingga {max} file, masing-masing {mb} MB",
       "count": "{n} dari {max}",
       "addMore": "Tambah lagi"
+    },
+    "after": {
+      "another": "Isi lagi",
+      "forSomeoneElse": "Isi untuk orang lain",
+      "close": "Tutup halaman ini",
+      "closeHint": "Anda dapat menutup tab ini sekarang.",
+      "alreadyTitle": "Anda sudah mengisi formulir ini",
+      "alreadyDesc": "Respons Anda diterima dari browser ini. Isi lagi hanya untuk orang lain — respons setiap orang diterima satu kali.",
+      "askTitle": "Apakah ini untuk orang lain?",
+      "askDesc": "Anda sudah mengirim respons dari browser ini.",
+      "askPoint1": "Lanjutkan hanya jika respons ini untuk orang lain.",
+      "askPoint2": "Respons dari orang yang sama — atau jawaban yang persis sama — tidak akan diterima dua kali.",
+      "confirm": "Ya, untuk orang lain",
+      "stay": "Tidak, tetap di sini",
+      "duplicate": "Jawaban yang persis sama sudah dikirim",
+      "duplicateDesc": "Respons dengan jawaban yang sama sudah ada. Jika ini orang lain, periksa datanya."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "Butuh waktu lama? Beberapa situs tidak dapat ditampilkan di dalam halaman lain — buka di tab baru saja.",
       "safe": "Jawaban Anda tetap tersimpan — tutup jendela ini untuk melanjutkan formulir.",
       "backToForm": "Kembali ke formulir"
+    },
+    "expired": {
+      "title": "Formulir ini sudah kedaluwarsa",
+      "desc": "Formulir berhenti menerima respons pada {date}. Terima kasih atas minat Anda."
+    },
+    "scheduled": {
+      "title": "Formulir ini belum dibuka",
+      "desc": "Formulir dibuka pada {date}. Silakan kembali saat itu."
     }
   }
 }

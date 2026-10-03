@@ -53,6 +53,8 @@ export const formSchemaV1 = z.object({
       language: text(10).optional(),
       /** Where labels sit, for the whole form: above the field (default) or beside it. */
       label_position: z.enum(['top', 'left']).optional(),
+      /** One response per answer to this question (e.g. an email) — a second one is refused (F10). */
+      unique_field: text(64).nullable().optional(),
     })
     .optional(),
   pages: z

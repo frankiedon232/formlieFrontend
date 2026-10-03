@@ -8,6 +8,8 @@ interface FormMenuHandlers {
   tags: (form: FormSummary) => void
   /** Save the form as a workspace template (F9). */
   saveTemplate: (form: FormSummary) => void
+  /** Open from / open until (F10). */
+  availability: (form: FormSummary) => void
 }
 
 /** Row / card menu for a form: open & edit · share · lifecycle for its status · delete. */
@@ -57,6 +59,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
           onSelect: () => handlers.move(form),
         },
         { label: t('forms.actions.tags'), icon: 'i-lucide-tags', onSelect: () => handlers.tags(form) },
+        { label: t('forms.availability.menu'), icon: 'i-lucide-calendar-range', onSelect: () => handlers.availability(form) },
       ],
       [
         ...(form.status === 'published'

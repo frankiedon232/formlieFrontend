@@ -24,6 +24,8 @@ const props = defineProps<{
   showThankYou?: boolean
   /** Public page: send the answers; the button stays busy until it reports back (no double submit). */
   submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
+  /** Public page: this browser already sent the form, and how to start one for someone else. */
+  respondent?: { alreadySent: boolean; another: () => void }
 }>()
 const { t } = useI18n()
 
@@ -161,11 +163,25 @@ const trail = ref<number[]>([])
 const submitting = ref(false)
 /** Thank-you text from the server (it may differ from the schema's, e.g. per language). */
 const thanks = ref<{ title: string; message: string } | null>(null)
+// After sending (public page): "already sent from this browser" and exact-duplicate notices.
+const blocked = ref(false)
+const startedAgain = ref(false)
+const duplicateNotice = ref(false)
+const showAlready = computed(() => !done.value && !props.preview && (blocked.value || (!!props.respondent?.alreadySent && !startedAgain.value)))
+function onAnother() {
+  props.respondent?.another()
+  restart()
+  startedAgain.value = true
+  blocked.value = false
+}
+
 async function send() {
   if (!props.submit || props.preview) return (done.value = true)
   submitting.value = true
   try {
     const outcome = await props.submit({ ...answers.value })
+    duplicateNotice.value = outcome.done ? false : outcome.reason === 'duplicate'
+    if (!outcome.done && outcome.reason === 'already') return void (blocked.value = true)
     if (outcome.done) {
       if (outcome.thank_you?.redirect_url) return void (await navigateTo(outcome.thank_you.redirect_url, { external: true }))
       if (outcome.thank_you) thanks.value = { title: outcome.thank_you.title, message: outcome.thank_you.message }
@@ -209,7 +225,8 @@ function restart() {
 
 <template>
   <div class="flex flex-col gap-5 @container/form" :style="{ '--form-label-w': labelWidth }">
-    <template v-if="!done && page">
+    <FormsRendererAfter v-if="showAlready" mode="already" class="py-10 text-center" @another="onAnother" />
+    <template v-else-if="!done && page">
       <div v-if="pages.length > 1 && schema.settings?.progress_bar !== false" class="flex flex-col gap-1.5">
         <div class="flex justify-between text-xs text-muted">
           <span>{{ t('builder.page.stepOf', { n: position + 1, total: pages.length }) }}</span>
@@ -248,6 +265,7 @@ function restart() {
             />
           </div>
         </div>
+        <UAlert v-if="duplicateNotice" icon="i-lucide-copy-x" color="warning" variant="subtle" :title="t('renderer.after.duplicate')" :description="t('renderer.after.duplicateDesc')" />
         <div class="flex items-center gap-2 pt-2" :class="button.block ? 'flex-col-reverse' : 'justify-between'">
           <UButton
             v-if="trail.length"
@@ -285,6 +303,7 @@ function restart() {
         {{ thanks?.message || schema.thank_you?.message }}
       </p>
       <p v-if="preview" class="text-xs text-muted">{{ t('builder.preview.nothingSent') }}</p>
+      <FormsRendererAfter v-if="respondent && !preview" mode="thanks" class="pt-2" @another="onAnother" />
       <UButton
         v-if="preview"
         :label="t('builder.preview.restart')"

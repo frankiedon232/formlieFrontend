@@ -29,6 +29,8 @@ interface TenantForms {
   folders: FormFolder[]
   /** Sample forms linked to their templates (F9 migration done). */
   templatesSeeded?: boolean
+  /** Sample forms given their availability dates (F10 migration done). */
+  availabilitySeeded?: boolean
 }
 
 const DAY = 86_400_000
@@ -60,8 +62,25 @@ export function formsOf(tenant: MockTenant): TenantForms {
     saveForms()
   }
   // Stores saved before F10: give every form its public key once.
-  if (store.forms.some(form => !form.public_key)) {
-    for (const form of store.forms) form.public_key ||= newPublicKey()
+  if (store.forms.some(form => !form.public_key || form.closes_at === undefined)) {
+    // Sample forms take their seeded availability dates once (so every state shows up).
+    const seeds = new Map(MOCK_FORMS.map(seed => [seed.id, seed]))
+    for (const form of store.forms) {
+      form.public_key ||= newPublicKey()
+      form.opens_at ??= seeds.get(form.id)?.opens_at ?? null
+      form.closes_at ??= seeds.get(form.id)?.closes_at ?? null
+    }
+    saveForms()
+  }
+  if (SEEDED_TENANT_IDS.has(tenant.id) && !store.availabilitySeeded) {
+    const seeds = new Map(MOCK_FORMS.map(seed => [seed.id, seed]))
+    for (const form of store.forms) {
+      const seed = seeds.get(form.id)
+      if (!seed || form.opens_at || form.closes_at) continue
+      form.opens_at = seed.opens_at
+      form.closes_at = seed.closes_at
+    }
+    store.availabilitySeeded = true
     saveForms()
   }
   const cutoff = Date.now() - TRASH_RETENTION_DAYS * DAY

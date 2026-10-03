@@ -31,7 +31,8 @@
       "owner": "Mmiliki",
       "completion": "Ukamilishaji",
       "responses": "Majibu",
-      "updated": "Imesasishwa"
+      "updated": "Imesasishwa",
+      "availability": "Upatikanaji"
     },
     "searchPlaceholder": "Tafuta fomu…",
     "emptyTitle": "Bado hakuna fomu",
@@ -255,6 +256,32 @@
       "custom": "Rangi yoyote",
       "scan": "Skani ili kufungua",
       "failed": "Msimbo wa QR haukuweza kuhifadhiwa. Tafadhali jaribu tena."
+    },
+    "availability": {
+      "always": "Wazi kila wakati",
+      "until": "Hadi {date}",
+      "from": "Kuanzia {date}",
+      "opens": "Inafunguliwa {date}",
+      "expired": "Iliisha {date}",
+      "set": "Tarehe zimewekwa",
+      "notSet": "Hakuna tarehe",
+      "menu": "Upatikanaji",
+      "title": "Fomu hii inapokea majibu lini",
+      "desc": "Acha zote mbili wazi ili iendelee kuwa wazi. Baada ya mwisho, kiungo kinaeleza kuwa muda wa fomu umeisha; kabla ya kuanza, kinaeleza itafunguliwa lini.",
+      "opensAt": "Wazi kuanzia",
+      "opensAtHint": "Si lazima — kabla ya hapo, kiungo kinaonyesha fomu itafunguliwa lini.",
+      "closesAt": "Wazi hadi",
+      "closesAtHint": "Si lazima — baada ya hapo, hakuna majibu zaidi; kiungo kinaeleza kuwa muda wa fomu umeisha.",
+      "preset": {
+        "week": "Wiki 1",
+        "twoWeeks": "Wiki 2",
+        "month": "Mwezi 1",
+        "endOfMonth": "Mwisho wa mwezi",
+        "noEnd": "Hakuna tarehe ya mwisho"
+      },
+      "endBeforeStart": "Chagua mwisho ulio baada ya mwanzo.",
+      "pastWarning": "Tarehe hii ya mwisho imeshapita — fomu itaacha kupokea majibu mara tu utakapohifadhi.",
+      "saved": "Upatikanaji umehifadhiwa"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "Tayari kuna kiolezo chenye jina hili.",
     "FRM-RESP-1003": "Fomu hii tayari imetumwa kutoka kipindi hiki.",
     "FRM-FORM-1013": "Folda hii bado ina fomu. Zihamishe kwanza kwenye folda nyingine.",
-    "FRM-FORM-1014": "Mandhari za mfumo haziwezi kubadilishwa. Inakili ili utengeneze yako."
+    "FRM-FORM-1014": "Mandhari za mfumo haziwezi kubadilishwa. Inakili ili utengeneze yako.",
+    "FRM-FORM-1015": "Muda wa fomu hii umeisha.",
+    "FRM-FORM-1016": "Fomu hii bado haijafunguliwa.",
+    "FRM-RESP-1004": "Fomu hii imeshatumwa kutoka kivinjari hiki.",
+    "FRM-RESP-1005": "Jibu lenye majibu haya hayo kabisa limeshatumwa.",
+    "FRM-RESP-1006": "Jibu lenye thamani hii limeshatumwa."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "Kiungo cha masharti (si lazima)",
       "consentLinkLabel": "Maandishi ya kiungo",
       "showResult": "Waonyeshe wajibuji matokeo",
-      "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu)."
+      "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu).",
+      "unique": "Jibu moja kwa kila thamani",
+      "uniqueHint": "Kataa jibu la pili lenye thamani ile ile kwa swali hili (k.m. barua pepe ile ile).",
+      "uniqueNone": "Imezimwa — ruhusu marudio"
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -1939,7 +1974,8 @@
       "duration": "Weka muda kwa {field} (dakika 0–59).",
       "name": "Weka jina la kwanza na la mwisho kwa {field}.",
       "consent": "Tafadhali thibitisha {field} ili kuendelea.",
-      "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}."
+      "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}.",
+      "unique": "Jibu lenye {field} hii limeshatumwa."
     },
     "page": {
       "logo": "Nembo",
@@ -1979,6 +2015,22 @@
       "limits": "Hadi faili {max}, MB {mb} kila moja",
       "count": "{n} kati ya {max}",
       "addMore": "Ongeza zaidi"
+    },
+    "after": {
+      "another": "Jaza nyingine",
+      "forSomeoneElse": "Jaza kwa ajili ya mtu mwingine",
+      "close": "Funga ukurasa huu",
+      "closeHint": "Sasa unaweza kufunga kichupo hiki.",
+      "alreadyTitle": "Umeshajaza fomu hii",
+      "alreadyDesc": "Jibu lako lilipokelewa kutoka kivinjari hiki. Ijaze tena kwa ajili ya mtu mwingine tu — jibu la kila mtu linakubaliwa mara moja.",
+      "askTitle": "Je, hii ni kwa ajili ya mtu mwingine?",
+      "askDesc": "Umeshatuma jibu kutoka kivinjari hiki.",
+      "askPoint1": "Endelea tu ikiwa jibu hili ni la mtu mwingine.",
+      "askPoint2": "Jibu la mtu yule yule — au majibu yanayofanana kabisa — halitakubaliwa mara mbili.",
+      "confirm": "Ndiyo, kwa mtu mwingine",
+      "stay": "Hapana, baki hapa",
+      "duplicate": "Majibu haya hayo yameshatumwa",
+      "duplicateDesc": "Jibu lenye majibu yale yale tayari lipo. Ikiwa ni mtu mwingine, kagua taarifa zake."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "Inachukua muda? Baadhi ya tovuti haziwezi kuonyeshwa ndani ya ukurasa mwingine — ifungue kwenye kichupo kipya badala yake.",
       "safe": "Majibu yako yamehifadhiwa — funga dirisha hili ili kuendelea na fomu.",
       "backToForm": "Rudi kwenye fomu"
+    },
+    "expired": {
+      "title": "Muda wa fomu hii umeisha",
+      "desc": "Iliacha kupokea majibu tarehe {date}. Asante kwa nia yako."
+    },
+    "scheduled": {
+      "title": "Fomu hii bado haijafunguliwa",
+      "desc": "Itafunguliwa tarehe {date}. Tafadhali rudi wakati huo."
     }
   }
 }

@@ -49,6 +49,8 @@ const tagsOpen = ref(false)
 const foldersOpen = ref(false)
 const templateSource = ref<FormSummary | null>(null)
 const templateOpen = ref(false)
+const availabilityTarget = ref<FormSummary | null>(null)
+const availabilityOpen = ref(false)
 
 const rowActions = useFormMenu(actions, {
   rename: form => (renamingId.value = form.id),
@@ -63,6 +65,10 @@ const rowActions = useFormMenu(actions, {
   saveTemplate: form => {
     templateSource.value = form
     templateOpen.value = true
+  },
+  availability: form => {
+    availabilityTarget.value = form
+    availabilityOpen.value = true
   },
 })
 
@@ -126,6 +132,7 @@ const filters = computed<DataFilter[]>(() => [
 const columns = computed<DataColumn[]>(() => [
   { key: 'name', label: t('forms.col.name'), sortable: true },
   { key: 'status', label: t('forms.col.status') },
+  { key: 'availability', label: t('forms.col.availability'), hideBelow: 'md' },
   { key: 'owner', label: t('forms.col.owner'), hideBelow: 'lg' },
   { key: 'completion_rate', label: t('forms.col.completion'), sortable: true, hideBelow: 'md' },
   {
@@ -209,13 +216,16 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
       <template #status-cell="{ row }">
         <DataStatusBadge :status="row.original.status" />
       </template>
+      <template #availability-cell="{ row }">
+        <FormsListAvailabilityBadge :form="row.original" />
+      </template>
       <template #owner-cell="{ row }">
         <UUser :name="row.original.owner.name" :avatar="{ alt: row.original.owner.name }" size="xs" />
       </template>
       <template #completion_rate-cell="{ row }">
         <div v-if="row.original.status !== 'draft'" class="flex min-w-32 items-center gap-2">
           <UProgress :model-value="row.original.completion_rate" color="neutral" size="sm" class="flex-1" />
-          <span class="w-9 text-end text-xs text-muted">{{ row.original.completion_rate }}%</span>
+          <span class="w-9 text-end text-xs text-default tabular-nums">{{ row.original.completion_rate }}%</span>
         </div>
         <span v-else class="text-xs text-muted">{{ t('forms.notStarted') }}</span>
       </template>
@@ -282,6 +292,7 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
       @folder-created="loadMeta"
     />
     <TemplatesSaveModal v-model:open="templateOpen" :form="templateSource" />
+    <FormsListAvailabilityModal v-model:open="availabilityOpen" :form="availabilityTarget" @saved="refresh()" />
     <FormsListTagsModal
       v-model:open="tagsOpen"
       :tags="tagsTarget?.tags ?? []"

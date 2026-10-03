@@ -31,7 +31,8 @@
       "owner": "Właściciel",
       "completion": "Ukończenie",
       "responses": "Odpowiedzi",
-      "updated": "Zaktualizowano"
+      "updated": "Zaktualizowano",
+      "availability": "Dostępność"
     },
     "searchPlaceholder": "Szukaj formularzy…",
     "emptyTitle": "Nie masz jeszcze formularzy",
@@ -255,6 +256,32 @@
       "custom": "Dowolny kolor",
       "scan": "Zeskanuj, aby otworzyć",
       "failed": "Nie udało się zapisać kodu QR. Proszę spróbować ponownie."
+    },
+    "availability": {
+      "always": "Zawsze otwarty",
+      "until": "Do {date}",
+      "from": "Od {date}",
+      "opens": "Otwarcie {date}",
+      "expired": "Wygasł {date}",
+      "set": "Daty ustawione",
+      "notSet": "Brak dat",
+      "menu": "Dostępność",
+      "title": "Kiedy ten formularz przyjmuje odpowiedzi",
+      "desc": "Zostaw oba pola puste, aby formularz był stale otwarty. Po terminie końcowym link informuje, że formularz wygasł; przed startem – kiedy zostanie otwarty.",
+      "opensAt": "Otwarty od",
+      "opensAtHint": "Opcjonalnie – wcześniej link pokazuje, kiedy formularz zostanie otwarty.",
+      "closesAt": "Otwarty do",
+      "closesAtHint": "Opcjonalnie – później odpowiedzi nie są przyjmowane; link informuje, że formularz wygasł.",
+      "preset": {
+        "week": "1 tydzień",
+        "twoWeeks": "2 tygodnie",
+        "month": "1 miesiąc",
+        "endOfMonth": "Koniec miesiąca",
+        "noEnd": "Bez daty końcowej"
+      },
+      "endBeforeStart": "Wybierz koniec późniejszy niż start.",
+      "pastWarning": "Ta data końcowa już minęła – formularz przestanie przyjmować odpowiedzi zaraz po zapisaniu.",
+      "saved": "Zapisano dostępność"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "Szablon o tej nazwie już istnieje.",
     "FRM-RESP-1003": "Ten formularz został już wysłany w tej sesji.",
     "FRM-FORM-1013": "Ten folder nadal zawiera formularze. Proszę najpierw przenieść je do innego folderu.",
-    "FRM-FORM-1014": "Motywów systemowych nie można zmieniać. Zduplikuj motyw, aby stworzyć własny."
+    "FRM-FORM-1014": "Motywów systemowych nie można zmieniać. Zduplikuj motyw, aby stworzyć własny.",
+    "FRM-FORM-1015": "Ten formularz wygasł.",
+    "FRM-FORM-1016": "Ten formularz nie jest jeszcze otwarty.",
+    "FRM-RESP-1004": "Ten formularz został już wysłany z tej przeglądarki.",
+    "FRM-RESP-1005": "Odpowiedź z dokładnie tymi danymi została już wysłana.",
+    "FRM-RESP-1006": "Odpowiedź z tą wartością została już wysłana."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "Link do regulaminu (opcjonalnie)",
       "consentLinkLabel": "Tekst linku",
       "showResult": "Pokaż wynik respondentom",
-      "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności)."
+      "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności).",
+      "unique": "Jedna odpowiedź na wartość",
+      "uniqueHint": "Odrzucaj drugą odpowiedź z tą samą wartością w tym pytaniu (np. ten sam e-mail).",
+      "uniqueNone": "Wyłączone – zezwalaj na powtórzenia"
     },
     "shortcuts": {
       "title": "Skróty",
@@ -1939,7 +1974,8 @@
       "duration": "Wpisz czas trwania w polu {field} (minuty 0–59).",
       "name": "Wpisz imię i nazwisko w polu {field}.",
       "consent": "Potwierdź {field}, aby kontynuować.",
-      "choice": "Wybierz opcję z listy w polu {field}."
+      "choice": "Wybierz opcję z listy w polu {field}.",
+      "unique": "Odpowiedź z tą wartością pola {field} została już wysłana."
     },
     "page": {
       "logo": "Logo",
@@ -1979,6 +2015,22 @@
       "limits": "Maks. liczba plików: {max}, do {mb} MB każdy",
       "count": "{n} z {max}",
       "addMore": "Dodaj więcej"
+    },
+    "after": {
+      "another": "Wypełnij kolejny",
+      "forSomeoneElse": "Wypełnij dla innej osoby",
+      "close": "Zamknij tę stronę",
+      "closeHint": "Możesz teraz zamknąć tę kartę.",
+      "alreadyTitle": "Ten formularz został już wypełniony",
+      "alreadyDesc": "Odpowiedź z tej przeglądarki została odebrana. Wypełnij go ponownie tylko dla innej osoby – odpowiedź każdej osoby jest przyjmowana raz.",
+      "askTitle": "Czy to dla innej osoby?",
+      "askDesc": "Z tej przeglądarki wysłano już odpowiedź.",
+      "askPoint1": "Kontynuuj tylko wtedy, gdy ta odpowiedź dotyczy innej osoby.",
+      "askPoint2": "Odpowiedź tej samej osoby – ani identyczne odpowiedzi – nie zostanie przyjęta dwukrotnie.",
+      "confirm": "Tak, dla innej osoby",
+      "stay": "Nie, zostań tutaj",
+      "duplicate": "Te same odpowiedzi zostały już wysłane",
+      "duplicateDesc": "Odpowiedź z takimi samymi danymi już istnieje. Jeśli to inna osoba, sprawdź jej dane."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "Trwa to długo? Niektórych stron nie można wyświetlić wewnątrz innej strony — otwórz ją w nowej karcie.",
       "safe": "Twoje odpowiedzi są zachowane — zamknij to okno, aby kontynuować wypełnianie formularza.",
       "backToForm": "Wróć do formularza"
+    },
+    "expired": {
+      "title": "Ten formularz wygasł",
+      "desc": "Przestał przyjmować odpowiedzi {date}. Dziękujemy za zainteresowanie."
+    },
+    "scheduled": {
+      "title": "Ten formularz nie jest jeszcze otwarty",
+      "desc": "Zostanie otwarty {date}. Zapraszamy wtedy ponownie."
     }
   }
 }

@@ -41,11 +41,13 @@ onMounted(load)
 const actions = useFormActions(load)
 const busy = computed(() => !!form.value && actions.isBusy(form.value))
 const templateOpen = ref(false)
+const availabilityOpen = ref(false)
 const menu = useFormMenu(actions, {
   rename: () => {},
   move: () => {},
   tags: () => {},
   saveTemplate: () => (templateOpen.value = true),
+  availability: () => (availabilityOpen.value = true),
 })
 // Header menu: save as template + lifecycle + delete (rename / move / tags live in the list).
 const lifecycleItems = computed(() => {
@@ -130,7 +132,7 @@ const subtitle = computed(() =>
         </div>
         <div class="flex min-w-0 flex-col gap-4">
           <FormsOverviewShare :form="form" :accent="(overview.theme.colors as { primary?: string } | undefined)?.primary" />
-          <FormsOverviewDetails :form="form" :template="overview.template" />
+          <FormsOverviewDetails :form="form" :template="overview.template" @availability="availabilityOpen = true" />
           <UCard v-if="canSeeActivity" variant="outline" :ui="{ body: 'p-4 sm:p-5' }">
             <h2 class="mb-4 text-sm font-semibold text-highlighted">{{ t('forms.detail.activity') }}</h2>
             <AuditTimeline
@@ -144,5 +146,6 @@ const subtitle = computed(() =>
       </div>
     </div>
     <TemplatesSaveModal v-model:open="templateOpen" :form="form" />
+    <FormsListAvailabilityModal v-model:open="availabilityOpen" :form="form" @saved="load" />
   </AppPanel>
 </template>

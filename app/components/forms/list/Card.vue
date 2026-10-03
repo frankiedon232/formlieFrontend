@@ -32,8 +32,9 @@ const { date, number } = useFormat()
     </div>
 
     <div class="min-w-0">
-      <div class="flex items-center gap-2">
+      <div class="flex flex-wrap items-center gap-2">
         <DataStatusBadge :status="props.form.status" />
+        <FormsListAvailabilityBadge v-if="props.form.status === 'published'" :form="props.form" />
         <UIcon
           v-if="props.busy"
           name="i-lucide-loader-circle"

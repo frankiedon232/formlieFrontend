@@ -59,49 +59,86 @@ export async function usePublicForm(key: string) {
 }
 
 /**
- * Sending a public form: one submission id per fill-in session (kept in sessionStorage so a reload
- * or a retry sends the same id — the API answers repeats with the same response, never a second one).
+ * Sending a public form (F10):
+ *   - one submission id per fill-in session (sessionStorage) — a reload or retry sends the same id,
+ *     and the API answers repeats with the same response, never a second one;
+ *   - this browser remembers it has sent the form (localStorage receipt, not personal data) so a
+ *     return visit says so; a new response from the same browser only "for someone else";
+ *   - refusals become outcomes the form can show: already sent · exact duplicate · answer taken.
  */
 export function usePublicSubmit(key: string, channel: 'link' | 'embed') {
   const api = useApi()
   const { locale } = useI18n()
   const { handle } = useErrorHandler()
-  const storageKey = `formalie:submission:${key}`
+  const sessionKey = `formalie:submission:${key}`
+  const receiptKey = `formalie:sent:${key}`
+  let memoryId: string | undefined
+
+  const alreadySent = ref(false)
+  onMounted(() => {
+    try {
+      alreadySent.value = !!localStorage.getItem(receiptKey)
+    } catch {
+      alreadySent.value = false
+    }
+  })
+  /** Set when the respondent confirmed the next response is for another person. */
+  const forSomeoneElse = ref(false)
 
   function submissionId(): string {
     try {
-      const existing = sessionStorage.getItem(storageKey)
+      const existing = sessionStorage.getItem(sessionKey)
       if (existing) return existing
       const fresh = crypto.randomUUID()
-      sessionStorage.setItem(storageKey, fresh)
+      sessionStorage.setItem(sessionKey, fresh)
       return fresh
     } catch {
       return (memoryId ??= crypto.randomUUID())
     }
   }
-  let memoryId: string | undefined
+  function newSession() {
+    try {
+      sessionStorage.removeItem(sessionKey)
+    } catch {
+      // memory fallback below
+    }
+    memoryId = undefined
+  }
 
   async function submit(answers: Record<string, unknown>): Promise<RendererSubmitOutcome> {
     try {
       const { data } = await api.post<PublicSubmitResult>(
         `/public/forms/${encodeURIComponent(key)}/submit`,
-        { data: answers, channel, language: locale.value },
+        { data: answers, channel, language: locale.value, for_someone_else: forSomeoneElse.value || undefined },
         { headers: { 'Idempotency-Key': submissionId() } },
       )
+      newSession() // A next fill-in is a new session.
+      forSomeoneElse.value = false
       try {
-        sessionStorage.removeItem(storageKey) // A next fill-in is a new session.
+        localStorage.setItem(receiptKey, new Date().toISOString())
       } catch {
-        memoryId = undefined
+        // Without storage the API still refuses a second response from this browser.
       }
+      alreadySent.value = true
       return { done: true, thank_you: data.thank_you }
     } catch (error) {
       const failure = error as { code?: string; details?: { field?: string; message: string }[] }
       if (failure.code === 'FRM-RESP-1001' && failure.details?.length)
         return { done: false, issues: failure.details.filter(d => d.field).map(d => ({ key: d.field!, code: d.message })) }
+      if (failure.code === 'FRM-RESP-1006' && failure.details?.length)
+        return { done: false, issues: failure.details.filter(d => d.field).map(d => ({ key: d.field!, code: 'unique' })) }
+      if (failure.code === 'FRM-RESP-1004') return { done: false, reason: 'already' }
+      if (failure.code === 'FRM-RESP-1005') return { done: false, reason: 'duplicate' }
       handle(error)
       return { done: false }
     }
   }
 
-  return { submit }
+  /** "Fill in another" / "for someone else": a fresh session that may be sent from this browser. */
+  function another() {
+    forSomeoneElse.value = true
+    newSession()
+  }
+
+  return { submit, alreadySent, another }
 }

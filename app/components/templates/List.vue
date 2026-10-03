@@ -141,7 +141,7 @@ const mine = computed(() => props.source === 'workspace')
       </NuxtLink>
     </template>
     <template #category-cell="{ row }">
-      <span class="flex items-center gap-1.5 text-muted">
+      <span class="flex items-center gap-1.5">
         <span class="size-2 rounded-[1px]" :class="categoryOf(row.original.category)?.dot" aria-hidden="true" />
         {{ categoryLabel(row.original.category) }}
       </span>
@@ -150,10 +150,10 @@ const mine = computed(() => props.source === 'workspace')
       <span class="tabular-nums">{{ number(row.original.forms_count) }}</span>
     </template>
     <template #responses_count-cell="{ row }">
-      <span class="text-muted tabular-nums">{{ number(row.original.responses_count) }}</span>
+      <span class="tabular-nums">{{ number(row.original.responses_count) }}</span>
     </template>
     <template #last_used_at-cell="{ row }">
-      <span class="text-muted">{{ row.original.last_used_at ? relative(row.original.last_used_at) : t('templates.neverUsed') }}</span>
+      <span>{{ row.original.last_used_at ? relative(row.original.last_used_at) : t('templates.neverUsed') }}</span>
     </template>
     <template #grid-card="{ row }">
       <TemplatesCard :template="row" :busy="isBusy(row)" @use="startUse" />

@@ -142,7 +142,7 @@ const isBusy = (theme: SavedTheme) => busy.value.has(theme.id)
         </NuxtLink>
       </template>
       <template #forms_count-cell="{ row }">
-        <span class="text-muted">{{ t('themes.formsCount', { count: row.original.forms_count }, row.original.forms_count) }}</span>
+        <span class="text-default">{{ t('themes.formsCount', { count: row.original.forms_count }, row.original.forms_count) }}</span>
       </template>
       <template #created_by-cell="{ row }">
         <UUser :name="row.original.created_by.name" :avatar="{ alt: row.original.created_by.name }" size="xs" />

@@ -31,7 +31,8 @@
       "owner": "Proprietario",
       "completion": "Completamento",
       "responses": "Risposte",
-      "updated": "Aggiornato"
+      "updated": "Aggiornato",
+      "availability": "Disponibilità"
     },
     "searchPlaceholder": "Cerca moduli…",
     "emptyTitle": "Ancora nessun modulo",
@@ -255,6 +256,32 @@
       "custom": "Qualsiasi colore",
       "scan": "Scansiona per aprire",
       "failed": "Impossibile salvare il codice QR. Riprova."
+    },
+    "availability": {
+      "always": "Sempre aperto",
+      "until": "Fino al {date}",
+      "from": "Dal {date}",
+      "opens": "Apre il {date}",
+      "expired": "Scaduto il {date}",
+      "set": "Date impostate",
+      "notSet": "Nessuna data",
+      "menu": "Disponibilità",
+      "title": "Quando questo modulo accetta risposte",
+      "desc": "Lascia entrambi vuoti per tenerlo aperto. Dopo la fine, il link indica che il modulo è scaduto; prima dell’inizio, indica quando apre.",
+      "opensAt": "Aperto dal",
+      "opensAtHint": "Facoltativo: prima di questa data, il link mostra quando apre il modulo.",
+      "closesAt": "Aperto fino al",
+      "closesAtHint": "Facoltativo: dopo questa data non si accettano più risposte; il link indica che il modulo è scaduto.",
+      "preset": {
+        "week": "1 settimana",
+        "twoWeeks": "2 settimane",
+        "month": "1 mese",
+        "endOfMonth": "Fine mese",
+        "noEnd": "Nessuna scadenza"
+      },
+      "endBeforeStart": "Scegli una fine successiva all’inizio.",
+      "pastWarning": "Questa data di fine è già passata: il modulo smetterà di accettare risposte appena salvi.",
+      "saved": "Disponibilità salvata"
     }
   },
   "nav": {
@@ -438,7 +465,12 @@
     "FRM-FORM-1012": "Esiste già un modello con questo nome.",
     "FRM-RESP-1003": "Questo modulo è già stato inviato da questa sessione.",
     "FRM-FORM-1013": "Questa cartella contiene ancora moduli. Spostali prima in un'altra cartella.",
-    "FRM-FORM-1014": "I temi di sistema non si possono modificare. Duplicalo per crearne uno tuo."
+    "FRM-FORM-1014": "I temi di sistema non si possono modificare. Duplicalo per crearne uno tuo.",
+    "FRM-FORM-1015": "Questo modulo è scaduto.",
+    "FRM-FORM-1016": "Questo modulo non è ancora aperto.",
+    "FRM-RESP-1004": "Questo modulo è già stato inviato da questo browser.",
+    "FRM-RESP-1005": "È già stata inviata una risposta con esattamente queste risposte.",
+    "FRM-RESP-1006": "È già stata inviata una risposta con questo valore."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1693,7 +1725,10 @@
       "consentLink": "Link ai termini (facoltativo)",
       "consentLinkLabel": "Testo del link",
       "showResult": "Mostra il risultato a chi risponde",
-      "internalHint": "Calcolato e salvato con ogni risposta, ma visibile solo al tuo team (ad es. un livello di rischio o un gruppo di fedeltà)."
+      "internalHint": "Calcolato e salvato con ogni risposta, ma visibile solo al tuo team (ad es. un livello di rischio o un gruppo di fedeltà).",
+      "unique": "Una risposta per valore",
+      "uniqueHint": "Rifiuta una seconda risposta con lo stesso valore a questa domanda (ad es. la stessa email).",
+      "uniqueNone": "Disattivato: consenti ripetizioni"
     },
     "shortcuts": {
       "title": "Scorciatoie",
@@ -1939,7 +1974,8 @@
       "duration": "Inserisca una durata per {field} (minuti 0–59).",
       "name": "Inserisca nome e cognome per {field}.",
       "consent": "Confermi {field} per continuare.",
-      "choice": "Scelga un’opzione dall’elenco per {field}."
+      "choice": "Scelga un’opzione dall’elenco per {field}.",
+      "unique": "È già stata inviata una risposta con questo valore di {field}."
     },
     "page": {
       "logo": "Logo",
@@ -1979,6 +2015,22 @@
       "limits": "Fino a {max} file, {mb} MB ciascuno",
       "count": "{n} di {max}",
       "addMore": "Aggiungi altri"
+    },
+    "after": {
+      "another": "Compilane un altro",
+      "forSomeoneElse": "Compila per un’altra persona",
+      "close": "Chiudi questa pagina",
+      "closeHint": "Ora puoi chiudere questa scheda.",
+      "alreadyTitle": "Hai già compilato questo modulo",
+      "alreadyDesc": "La tua risposta è stata ricevuta da questo browser. Compilalo di nuovo solo per un’altra persona: la risposta di ogni persona viene accettata una sola volta.",
+      "askTitle": "È per un’altra persona?",
+      "askDesc": "Hai già inviato una risposta da questo browser.",
+      "askPoint1": "Continua solo se questa risposta è per un’altra persona.",
+      "askPoint2": "La risposta della stessa persona, o le stesse identiche risposte, non verrà accettata due volte.",
+      "confirm": "Sì, per un’altra persona",
+      "stay": "No, resto qui",
+      "duplicate": "Queste stesse risposte sono già state inviate",
+      "duplicateDesc": "Esiste già una risposta con le stesse risposte. Se si tratta di un’altra persona, controlla i suoi dati."
     }
   },
   "logic": {
@@ -2633,6 +2685,14 @@
       "slow": "Ci vuole troppo? Alcuni siti non possono essere mostrati all’interno di un’altra pagina: aprilo in una nuova scheda.",
       "safe": "Le tue risposte sono salvate: chiudi questa finestra per continuare con il modulo.",
       "backToForm": "Torna al modulo"
+    },
+    "expired": {
+      "title": "Questo modulo è scaduto",
+      "desc": "Non accetta più risposte dal {date}. Grazie per l’interesse."
+    },
+    "scheduled": {
+      "title": "Questo modulo non è ancora aperto",
+      "desc": "Apre il {date}. Torna pure allora."
     }
   }
 }

@@ -6,7 +6,7 @@ import type { FormSchemaV1 } from '../utils/forms/schema'
  * open · closed (closed or archived by the workspace) · not_published (never published yet).
  * Later (Share settings, M3): expired · limit_reached · scheduled · password.
  */
-export type PublicFormState = 'open' | 'closed' | 'not_published'
+export type PublicFormState = 'open' | 'closed' | 'not_published' | 'expired' | 'scheduled'
 
 export interface PublicWorkspace {
   name: string
@@ -31,6 +31,9 @@ export interface PublicForm {
   key: string
   name: string
   state: PublicFormState
+  /** Availability: open from / until (state expired / scheduled follows from them). */
+  opens_at: string | null
+  closes_at: string | null
   /** The published form (theme resolved) — only when `state` is `open`. */
   schema: FormSchemaV1 | null
   workspace: PublicWorkspace
@@ -53,4 +56,9 @@ export interface PublicSubmitResult {
 /** What the renderer's `submit` handler reports back (public page, F10). */
 export type RendererSubmitOutcome =
   | { done: true; thank_you?: PublicSubmitResult['thank_you'] }
-  | { done: false; issues?: { key: string; code: string; params?: Record<string, unknown> }[] }
+  | {
+      done: false
+      issues?: { key: string; code: string; params?: Record<string, unknown> }[]
+      /** already — this browser already sent one (offer "for someone else") · duplicate — the exact same answers were already sent. */
+      reason?: 'already' | 'duplicate'
+    }

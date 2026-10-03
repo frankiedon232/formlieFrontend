@@ -111,5 +111,13 @@ export const MOCK_FORMS: Omit<FormSummary, 'public_key'>[] = Array.from({ length
     updated_at: new Date(updated).toISOString(),
     row_version: 1,
     deleted_at: null,
+    // A few sample forms with availability dates, so every state shows up (F10).
+    opens_at: status === 'published' && index % 13 === 5 ? new Date(now + 5 * 86_400_000).toISOString() : null,
+    closes_at:
+      status === 'published' && index % 7 === 3
+        ? new Date(now + 14 * 86_400_000).toISOString()
+        : status === 'published' && index % 11 === 4
+          ? new Date(now - 3 * 86_400_000).toISOString()
+          : null,
   }
 })
