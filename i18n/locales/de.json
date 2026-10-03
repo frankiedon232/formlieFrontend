@@ -1900,6 +1900,24 @@
       "suggested": "empfohlen",
       "off": "Aus",
       "none": "Ohne E-Mail-Adresse oder ID kann Formalie nur denselben Browser erkennen (Personen können ein anderes Gerät verwenden)."
+    },
+    "guide": {
+      "title": "Hilfe-Anleitung",
+      "enable": "Hilfe-Schaltfläche im Formular anzeigen",
+      "enableHint": "Eine „?“-Schaltfläche in der Ecke öffnet Ihre Anleitung zum Ausfüllen dieses Formulars.",
+      "write": "Anleitung schreiben",
+      "edit": "Anleitung bearbeiten",
+      "empty": "Noch keine Anleitung",
+      "untitled": "Anleitung ohne Titel",
+      "summary": "{title} · {n} Wort | {title} · {n} Wörter",
+      "noContent": "Schreiben Sie die Anleitung – die Schaltfläche erscheint erst, wenn sie Inhalt hat.",
+      "editTitle": "Hilfe-Anleitung",
+      "editDesc": "Erklären Sie, wie dieses Formular ausgefüllt wird: was bereitliegen sollte, knifflige Fragen und wie es danach weitergeht.",
+      "titleLabel": "Titel",
+      "titlePlaceholder": "So füllen Sie dieses Formular aus",
+      "content": "Anleitung",
+      "contentHint": "Überschriften, Listen und Links helfen, das Gesuchte schnell zu finden.",
+      "save": "Anleitung speichern"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "6-stelliger Code",
       "resend": "Neuen Code senden",
       "confirm": "Bestätigen und senden"
+    },
+    "guide": {
+      "open": "So füllen Sie dieses Formular aus",
+      "close": "Anleitung schließen",
+      "defaultTitle": "So füllen Sie dieses Formular aus",
+      "subtitle": "Anleitung der Veranstaltenden"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Hintergrund der Kopfzeile",
       "plain": "Schlicht",
       "bandColor": "Bandfarbe",
-      "bandInPanel": "Mit einer farbigen Seitenleiste sitzt die Kopfzeile in der Leiste."
+      "bandInPanel": "Mit einer farbigen Seitenleiste sitzt die Kopfzeile in der Leiste.",
+      "accent": "Akzent",
+      "accentColor": "Akzentfarbe"
     },
     "footer": {
       "show": "Fußzeile anzeigen",

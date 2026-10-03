@@ -1900,6 +1900,24 @@
       "suggested": "aanbevolen",
       "off": "Uit",
       "none": "Zonder e-mailadres of ID kan Formalie alleen dezelfde browser herkennen (mensen kunnen een ander apparaat gebruiken)."
+    },
+    "guide": {
+      "title": "Hulphandleiding",
+      "enable": "Hulpknop op het formulier tonen",
+      "enableHint": "Een ‘?’-knop in de hoek opent je handleiding over het invullen van dit formulier.",
+      "write": "Handleiding schrijven",
+      "edit": "Handleiding bewerken",
+      "empty": "Nog geen handleiding",
+      "untitled": "Naamloze handleiding",
+      "summary": "{title} · {n} woord | {title} · {n} woorden",
+      "noContent": "Schrijf de handleiding — de knop verschijnt pas als er iets in staat.",
+      "editTitle": "Hulphandleiding",
+      "editDesc": "Leg uit hoe je dit formulier invult: wat je klaar moet hebben, lastige vragen en wat er daarna gebeurt.",
+      "titleLabel": "Titel",
+      "titlePlaceholder": "Zo vul je dit formulier in",
+      "content": "Handleiding",
+      "contentHint": "Kopjes, lijsten en links helpen mensen snel te vinden wat ze zoeken.",
+      "save": "Handleiding opslaan"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Code van 6 cijfers",
       "resend": "Nieuwe code sturen",
       "confirm": "Bevestigen en versturen"
+    },
+    "guide": {
+      "open": "Zo vul je dit formulier in",
+      "close": "Handleiding sluiten",
+      "defaultTitle": "Zo vul je dit formulier in",
+      "subtitle": "Handleiding van de organisator"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Achtergrond koptekst",
       "plain": "Eenvoudig",
       "bandColor": "Kleur van de band",
-      "bandInPanel": "Met een gekleurd zijpaneel staat de koptekst in het paneel."
+      "bandInPanel": "Met een gekleurd zijpaneel staat de koptekst in het paneel.",
+      "accent": "Accent",
+      "accentColor": "Accentkleur"
     },
     "footer": {
       "show": "Voettekst tonen",

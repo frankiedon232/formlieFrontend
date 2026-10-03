@@ -1900,6 +1900,24 @@
       "suggested": "önerilen",
       "off": "Kapalı",
       "none": "E-posta veya kimlik olmadan Formalie yalnızca aynı tarayıcıyı tanıyabilir (kişiler başka bir cihaz kullanabilir)."
+    },
+    "guide": {
+      "title": "Yardım kılavuzu",
+      "enable": "Formda yardım düğmesi göster",
+      "enableHint": "Köşedeki “?” düğmesi, bu formun nasıl doldurulacağını anlatan kılavuzunuzu açar.",
+      "write": "Kılavuz yaz",
+      "edit": "Kılavuzu düzenle",
+      "empty": "Henüz kılavuz yok",
+      "untitled": "Adsız kılavuz",
+      "summary": "{title} · {n} kelime | {title} · {n} kelime",
+      "noContent": "Kılavuzu yazın — düğme yalnızca içinde bir şey olduğunda görünür.",
+      "editTitle": "Yardım kılavuzu",
+      "editDesc": "Bu formun nasıl doldurulacağını açıklayın: neleri hazır bulundurmalı, zor sorular ve sonrasında ne olacağı.",
+      "titleLabel": "Başlık",
+      "titlePlaceholder": "Bu form nasıl doldurulur",
+      "content": "Kılavuz",
+      "contentHint": "Başlıklar, listeler ve bağlantılar, aranan bilgiyi hızla bulmaya yardımcı olur.",
+      "save": "Kılavuzu kaydet"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "6 haneli kod",
       "resend": "Yeni kod gönder",
       "confirm": "Onayla ve gönder"
+    },
+    "guide": {
+      "open": "Bu form nasıl doldurulur",
+      "close": "Kılavuzu kapat",
+      "defaultTitle": "Bu form nasıl doldurulur",
+      "subtitle": "Düzenleyicinin kılavuzu"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Üst bilgi arka planı",
       "plain": "Sade",
       "bandColor": "Şerit rengi",
-      "bandInPanel": "Renkli bir yan panelde üst bilgi panelin içinde yer alır."
+      "bandInPanel": "Renkli bir yan panelde üst bilgi panelin içinde yer alır.",
+      "accent": "Vurgu",
+      "accentColor": "Vurgu rengi"
     },
     "footer": {
       "show": "Alt bilgi göster",

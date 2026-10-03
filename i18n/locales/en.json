@@ -1900,6 +1900,24 @@
       "suggested": "suggested",
       "off": "Off",
       "none": "Without an email or ID, Formalie can only recognise the same browser (people can use another device)."
+    },
+    "guide": {
+      "title": "Help guide",
+      "enable": "Show a help button on the form",
+      "enableHint": "A “?” button in the corner opens your guide on how to fill in this form.",
+      "write": "Write guide",
+      "edit": "Edit guide",
+      "empty": "No guide yet",
+      "untitled": "Untitled guide",
+      "summary": "{title} · {n} word | {title} · {n} words",
+      "noContent": "Write the guide — the button only shows once there’s something in it.",
+      "editTitle": "Help guide",
+      "editDesc": "Explain how to fill in this form: what to have ready, tricky questions, what happens next.",
+      "titleLabel": "Title",
+      "titlePlaceholder": "How to fill in this form",
+      "content": "Guide",
+      "contentHint": "Headings, lists and links help people find what they need quickly.",
+      "save": "Save guide"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "6-digit code",
       "resend": "Send a new code",
       "confirm": "Confirm and send"
+    },
+    "guide": {
+      "open": "How to fill in this form",
+      "close": "Close the guide",
+      "defaultTitle": "How to fill in this form",
+      "subtitle": "Guide from the organiser"
     }
   },
   "logic": {

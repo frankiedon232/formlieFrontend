@@ -1900,6 +1900,24 @@
       "suggested": "consigliato",
       "off": "Disattivato",
       "none": "Senza email o ID, Formalie può riconoscere solo lo stesso browser (si può usare un altro dispositivo)."
+    },
+    "guide": {
+      "title": "Guida di aiuto",
+      "enable": "Mostra un pulsante di aiuto nel modulo",
+      "enableHint": "Un pulsante «?» nell’angolo apre la tua guida su come compilare questo modulo.",
+      "write": "Scrivi la guida",
+      "edit": "Modifica la guida",
+      "empty": "Ancora nessuna guida",
+      "untitled": "Guida senza titolo",
+      "summary": "{title} · {n} parola | {title} · {n} parole",
+      "noContent": "Scrivi la guida: il pulsante compare solo quando contiene qualcosa.",
+      "editTitle": "Guida di aiuto",
+      "editDesc": "Spiega come compilare questo modulo: cosa tenere a portata di mano, le domande difficili e cosa succede dopo.",
+      "titleLabel": "Titolo",
+      "titlePlaceholder": "Come compilare questo modulo",
+      "content": "Guida",
+      "contentHint": "Titoli, elenchi e link aiutano a trovare in fretta ciò che serve.",
+      "save": "Salva la guida"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Codice di 6 cifre",
       "resend": "Invia un nuovo codice",
       "confirm": "Conferma e invia"
+    },
+    "guide": {
+      "open": "Come compilare questo modulo",
+      "close": "Chiudi la guida",
+      "defaultTitle": "Come compilare questo modulo",
+      "subtitle": "Guida dell’organizzatore"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Sfondo dell’intestazione",
       "plain": "Semplice",
       "bandColor": "Colore della fascia",
-      "bandInPanel": "Con un pannello laterale colorato, l’intestazione si trova nel pannello."
+      "bandInPanel": "Con un pannello laterale colorato, l’intestazione si trova nel pannello.",
+      "accent": "Accento",
+      "accentColor": "Colore d’accento"
     },
     "footer": {
       "show": "Mostra un piè di pagina",

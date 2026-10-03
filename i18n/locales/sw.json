@@ -1900,6 +1900,24 @@
       "suggested": "inapendekezwa",
       "off": "Imezimwa",
       "none": "Bila barua pepe au kitambulisho, Formalie inaweza kutambua kivinjari kilekile tu (watu wanaweza kutumia kifaa kingine)."
+    },
+    "guide": {
+      "title": "Mwongozo wa usaidizi",
+      "enable": "Onyesha kitufe cha usaidizi kwenye fomu",
+      "enableHint": "Kitufe cha “?” kwenye kona hufungua mwongozo wako wa jinsi ya kujaza fomu hii.",
+      "write": "Andika mwongozo",
+      "edit": "Hariri mwongozo",
+      "empty": "Bado hakuna mwongozo",
+      "untitled": "Mwongozo usio na kichwa",
+      "summary": "{title} · neno {n} | {title} · maneno {n}",
+      "noContent": "Andika mwongozo — kitufe kitaonekana tu ukiwa na maudhui.",
+      "editTitle": "Mwongozo wa usaidizi",
+      "editDesc": "Eleza jinsi ya kujaza fomu hii: vitu vya kuandaa, maswali magumu, na kinachofuata baadaye.",
+      "titleLabel": "Kichwa",
+      "titlePlaceholder": "Jinsi ya kujaza fomu hii",
+      "content": "Mwongozo",
+      "contentHint": "Vichwa, orodha na viungo huwasaidia watu kupata wanachohitaji haraka.",
+      "save": "Hifadhi mwongozo"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Msimbo wa tarakimu 6",
       "resend": "Tuma msimbo mpya",
       "confirm": "Thibitisha na utume"
+    },
+    "guide": {
+      "open": "Jinsi ya kujaza fomu hii",
+      "close": "Funga mwongozo",
+      "defaultTitle": "Jinsi ya kujaza fomu hii",
+      "subtitle": "Mwongozo kutoka kwa mratibu"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Mandharinyuma ya kichwa",
       "plain": "Wazi",
       "bandColor": "Rangi ya utepe",
-      "bandInPanel": "Ukiwa na paneli ya pembeni yenye rangi, kichwa hukaa ndani ya paneli."
+      "bandInPanel": "Ukiwa na paneli ya pembeni yenye rangi, kichwa hukaa ndani ya paneli.",
+      "accent": "Msisitizo",
+      "accentColor": "Rangi ya msisitizo"
     },
     "footer": {
       "show": "Onyesha sehemu ya chini",

@@ -1900,6 +1900,24 @@
       "suggested": "sugerowane",
       "off": "Wył.",
       "none": "Bez adresu e-mail lub identyfikatora Formalie rozpozna tylko tę samą przeglądarkę (można użyć innego urządzenia)."
+    },
+    "guide": {
+      "title": "Przewodnik pomocy",
+      "enable": "Pokaż przycisk pomocy w formularzu",
+      "enableHint": "Przycisk „?” w rogu otwiera Twój przewodnik po wypełnianiu tego formularza.",
+      "write": "Napisz przewodnik",
+      "edit": "Edytuj przewodnik",
+      "empty": "Brak przewodnika",
+      "untitled": "Przewodnik bez tytułu",
+      "summary": "{title} · słowa: {n} | {title} · słowa: {n}",
+      "noContent": "Napisz przewodnik — przycisk pojawi się dopiero, gdy będzie miał treść.",
+      "editTitle": "Przewodnik pomocy",
+      "editDesc": "Wyjaśnij, jak wypełnić ten formularz: co przygotować, trudne pytania i co dzieje się dalej.",
+      "titleLabel": "Tytuł",
+      "titlePlaceholder": "Jak wypełnić ten formularz",
+      "content": "Przewodnik",
+      "contentHint": "Nagłówki, listy i linki pomagają szybko znaleźć potrzebne informacje.",
+      "save": "Zapisz przewodnik"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "6-cyfrowy kod",
       "resend": "Wyślij nowy kod",
       "confirm": "Potwierdź i wyślij"
+    },
+    "guide": {
+      "open": "Jak wypełnić ten formularz",
+      "close": "Zamknij przewodnik",
+      "defaultTitle": "Jak wypełnić ten formularz",
+      "subtitle": "Przewodnik od organizatora"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Tło nagłówka",
       "plain": "Zwykły",
       "bandColor": "Kolor pasa",
-      "bandInPanel": "Przy kolorowym panelu bocznym nagłówek znajduje się w panelu."
+      "bandInPanel": "Przy kolorowym panelu bocznym nagłówek znajduje się w panelu.",
+      "accent": "Akcent",
+      "accentColor": "Kolor akcentu"
     },
     "footer": {
       "show": "Pokaż stopkę",

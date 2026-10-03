@@ -1900,6 +1900,24 @@
       "suggested": "disarankan",
       "off": "Nonaktif",
       "none": "Tanpa email atau ID, Formalie hanya dapat mengenali browser yang sama (orang dapat menggunakan perangkat lain)."
+    },
+    "guide": {
+      "title": "Panduan bantuan",
+      "enable": "Tampilkan tombol bantuan di formulir",
+      "enableHint": "Tombol “?” di sudut membuka panduan Anda tentang cara mengisi formulir ini.",
+      "write": "Tulis panduan",
+      "edit": "Edit panduan",
+      "empty": "Belum ada panduan",
+      "untitled": "Panduan tanpa judul",
+      "summary": "{title} · {n} kata | {title} · {n} kata",
+      "noContent": "Tulis panduannya — tombol hanya muncul jika panduan sudah berisi.",
+      "editTitle": "Panduan bantuan",
+      "editDesc": "Jelaskan cara mengisi formulir ini: apa yang perlu disiapkan, pertanyaan yang sulit, dan apa yang terjadi selanjutnya.",
+      "titleLabel": "Judul",
+      "titlePlaceholder": "Cara mengisi formulir ini",
+      "content": "Panduan",
+      "contentHint": "Judul, daftar, dan tautan membantu orang menemukan yang mereka butuhkan dengan cepat.",
+      "save": "Simpan panduan"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Kode 6 digit",
       "resend": "Kirim kode baru",
       "confirm": "Konfirmasi dan kirim"
+    },
+    "guide": {
+      "open": "Cara mengisi formulir ini",
+      "close": "Tutup panduan",
+      "defaultTitle": "Cara mengisi formulir ini",
+      "subtitle": "Panduan dari penyelenggara"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Latar header",
       "plain": "Polos",
       "bandColor": "Warna pita",
-      "bandInPanel": "Dengan panel samping berwarna, header berada di dalam panel."
+      "bandInPanel": "Dengan panel samping berwarna, header berada di dalam panel.",
+      "accent": "Aksen",
+      "accentColor": "Warna aksen"
     },
     "footer": {
       "show": "Tampilkan footer",

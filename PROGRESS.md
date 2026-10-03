@@ -459,6 +459,8 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - 🟡 Closed / expired / not found / password-protected / response-limit states — ✅ not found (404), not published, closed, **expired (410) and not-open-yet** (availability dates, owner 2026-10-03), load error; password / limit come with the Share settings (M3)
 - ⬜ Multi-page with progress, save and resume
 - ⬜ File uploads to secure upload links with progress
+- ✅ **Help guide** (owner, 2026-10-03, decision 86): Form settings → Help guide (off by default, rich editor in a window); a floating "?" on the form opens it in a chat-style panel
+- ✅ **Accent header** (decision 86): quote-like header style; Events & bookings and Operations & IT designs use it instead of the side panel
 - ✅ **Recognising respondents** (owner, 2026-10-03, decision 85): the respondent's own email (suggested, never someone else's) and / or ID; same → refused, near match → "different person?" + flagged possible duplicate; optional email verification with a code; masked hints only
 - ✅ **Duplicate protection** (owner, 2026-10-03, decision 84): per session, per browser (with "for someone else" after confirming), exact same answers never twice, optional one response per answer (e.g. email); thank-you page: Fill in another · Close this page
 - ✅ **Availability** (decision 84): open from / open until per form, set from the list menu or the overview; badge in table and grid
@@ -974,6 +976,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Super admin console for the owner to manage everything — starting with the Terms / Data Privacy Policy URLs (served now as platform settings, config fallback) | F23 (new phase) | ⬜ planned |
 | 2026-10-03 | Prevent duplicate submissions (also when someone fills in for a friend on the same computer); thank-you buttons Fill in another (confirm it's for someone else) and Close this page; form availability period (expired page after it); show the period in table and grid | F10 | ✅ |
 | 2026-10-03 | Still possible to send twice (one-letter email change): identify the person by their own email (not other emails in the form) or ID; smart matching; optional verification; never mistake another person | F10 | ✅ |
+| 2026-10-03 | Events & bookings and Operations & IT designs: side panel squeezed the form — use a smaller quote-like header instead | F9 follow-up | ✅ |
+| 2026-10-03 | Help guide per form: written in Form settings (rich editor, opened from a button), shown from a floating "?" in a chat-style panel; on / off, off by default | F10 | ✅ |
 | 2026-10-03 | Portal text still looked faded: dark-mode headline colour fixed, body text darker, list values in the main text colour like the design image | F1 follow-up | ✅ |
 | 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
 

@@ -1900,6 +1900,24 @@
       "suggested": "sugerido",
       "off": "Desactivado",
       "none": "Sin correo ni ID, Formalie solo puede reconocer el mismo navegador (se puede usar otro dispositivo)."
+    },
+    "guide": {
+      "title": "Guía de ayuda",
+      "enable": "Mostrar un botón de ayuda en el formulario",
+      "enableHint": "Un botón «?» en la esquina abre tu guía sobre cómo rellenar este formulario.",
+      "write": "Escribir guía",
+      "edit": "Editar guía",
+      "empty": "Aún no hay guía",
+      "untitled": "Guía sin título",
+      "summary": "{title} · {n} palabra | {title} · {n} palabras",
+      "noContent": "Escribe la guía: el botón solo aparece cuando tenga contenido.",
+      "editTitle": "Guía de ayuda",
+      "editDesc": "Explica cómo rellenar este formulario: qué tener a mano, las preguntas difíciles y qué pasa después.",
+      "titleLabel": "Título",
+      "titlePlaceholder": "Cómo rellenar este formulario",
+      "content": "Guía",
+      "contentHint": "Los títulos, las listas y los enlaces ayudan a encontrar rápido lo que se necesita.",
+      "save": "Guardar guía"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Código de 6 dígitos",
       "resend": "Enviar un código nuevo",
       "confirm": "Confirmar y enviar"
+    },
+    "guide": {
+      "open": "Cómo rellenar este formulario",
+      "close": "Cerrar la guía",
+      "defaultTitle": "Cómo rellenar este formulario",
+      "subtitle": "Guía de la organización"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Fondo del encabezado",
       "plain": "Sencillo",
       "bandColor": "Color de la franja",
-      "bandInPanel": "Con un panel lateral de color, el encabezado se sitúa en el panel."
+      "bandInPanel": "Con un panel lateral de color, el encabezado se sitúa en el panel.",
+      "accent": "Acento",
+      "accentColor": "Color de acento"
     },
     "footer": {
       "show": "Mostrar un pie de página",

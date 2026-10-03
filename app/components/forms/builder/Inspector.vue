@@ -203,6 +203,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
           />
         </section>
         <FormsBuilderIdentitySetting />
+        <FormsBuilderGuideSetting />
         <FormsBuilderTemplateSetting />
         <section class="flex flex-col gap-3">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.thankYou') }}</h3>

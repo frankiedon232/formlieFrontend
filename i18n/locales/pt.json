@@ -1900,6 +1900,24 @@
       "suggested": "sugerido",
       "off": "Desativado",
       "none": "Sem e-mail ou ID, o Formalie só consegue reconhecer o mesmo navegador (as pessoas podem usar outro dispositivo)."
+    },
+    "guide": {
+      "title": "Guia de ajuda",
+      "enable": "Mostrar um botão de ajuda no formulário",
+      "enableHint": "Um botão “?” no canto abre o seu guia sobre como preencher este formulário.",
+      "write": "Escrever guia",
+      "edit": "Editar guia",
+      "empty": "Nenhum guia ainda",
+      "untitled": "Guia sem título",
+      "summary": "{title} · {n} palavra | {title} · {n} palavras",
+      "noContent": "Escreva o guia — o botão só aparece quando houver algum conteúdo.",
+      "editTitle": "Guia de ajuda",
+      "editDesc": "Explique como preencher este formulário: o que ter em mãos, as perguntas difíceis e o que acontece depois.",
+      "titleLabel": "Título",
+      "titlePlaceholder": "Como preencher este formulário",
+      "content": "Guia",
+      "contentHint": "Títulos, listas e links ajudam as pessoas a encontrar rápido o que precisam.",
+      "save": "Salvar guia"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Código de 6 dígitos",
       "resend": "Enviar novo código",
       "confirm": "Confirmar e enviar"
+    },
+    "guide": {
+      "open": "Como preencher este formulário",
+      "close": "Fechar o guia",
+      "defaultTitle": "Como preencher este formulário",
+      "subtitle": "Guia da organização"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Fundo do cabeçalho",
       "plain": "Simples",
       "bandColor": "Cor da faixa",
-      "bandInPanel": "Com um painel lateral colorido, o cabeçalho fica no painel."
+      "bandInPanel": "Com um painel lateral colorido, o cabeçalho fica no painel.",
+      "accent": "Destaque",
+      "accentColor": "Cor de destaque"
     },
     "footer": {
       "show": "Mostrar um rodapé",

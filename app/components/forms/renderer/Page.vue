@@ -59,6 +59,10 @@ const frameOrg = computed(() => ({
 const questions = computed(
   () => allFields(props.schema).filter(f => isInputField(f.type) && f.type !== 'hidden' && f.type !== 'calculated').length,
 )
+const guide = computed(() => {
+  const value = props.schema.settings?.guide
+  return value?.enabled && value.html.replace(/<[^>]*>/g, '').trim() ? value : null
+})
 /** About 20 seconds a question, at least a minute. */
 const minutes = computed(() => Math.max(1, Math.round((questions.value * 20) / 60)))
 
@@ -136,6 +140,8 @@ const containerClass = computed(() => [
     <!-- Full-width footer bar under plain / full layouts -->
     <FormsRendererPageFooter v-if="footerBand && !attachedFooter" :theme="theme" :logo="footerLogo" :width-class="width" />
     </component>
+    <!-- Help guide (creator turned it on and wrote one): floating "?" button. -->
+    <FormsRendererGuide v-if="guide" :title="guide.title" :html="guide.html" />
     <!-- Public page: a small line on the form's own background. -->
     <slot name="after" />
   </div>

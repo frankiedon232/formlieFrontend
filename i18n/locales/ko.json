@@ -1900,6 +1900,24 @@
       "suggested": "추천",
       "off": "끄기",
       "none": "이메일이나 ID가 없으면 Formalie는 같은 브라우저만 식별할 수 있습니다(다른 기기를 사용할 수 있음)."
+    },
+    "guide": {
+      "title": "도움말 가이드",
+      "enable": "양식에 도움말 버튼 표시",
+      "enableHint": "모서리의 “?” 버튼을 누르면 이 양식 작성 방법에 대한 가이드가 열립니다.",
+      "write": "가이드 작성",
+      "edit": "가이드 편집",
+      "empty": "아직 가이드가 없습니다",
+      "untitled": "제목 없는 가이드",
+      "summary": "{title} · {n}단어 | {title} · {n}단어",
+      "noContent": "가이드를 작성하세요. 내용이 있어야 버튼이 표시됩니다.",
+      "editTitle": "도움말 가이드",
+      "editDesc": "이 양식을 작성하는 방법을 설명하세요. 미리 준비할 것, 헷갈리는 질문, 제출 후 진행 과정 등.",
+      "titleLabel": "제목",
+      "titlePlaceholder": "이 양식 작성 방법",
+      "content": "가이드",
+      "contentHint": "제목, 목록, 링크를 활용하면 필요한 내용을 빠르게 찾을 수 있습니다.",
+      "save": "가이드 저장"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "6자리 코드",
       "resend": "새 코드 보내기",
       "confirm": "확인하고 보내기"
+    },
+    "guide": {
+      "open": "이 양식 작성 방법",
+      "close": "가이드 닫기",
+      "defaultTitle": "이 양식 작성 방법",
+      "subtitle": "주최 측 안내"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "헤더 배경",
       "plain": "기본",
       "bandColor": "띠 색상",
-      "bandInPanel": "색상 사이드 패널을 사용하면 헤더가 패널 안에 표시됩니다."
+      "bandInPanel": "색상 사이드 패널을 사용하면 헤더가 패널 안에 표시됩니다.",
+      "accent": "강조",
+      "accentColor": "강조 색상"
     },
     "footer": {
       "show": "푸터 표시",

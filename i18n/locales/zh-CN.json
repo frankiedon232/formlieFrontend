@@ -1900,6 +1900,24 @@
       "suggested": "建议",
       "off": "关闭",
       "none": "没有邮箱或 ID 时，Formalie 只能识别同一浏览器（人们可以换用其他设备）。"
+    },
+    "guide": {
+      "title": "帮助指南",
+      "enable": "在表单上显示帮助按钮",
+      "enableHint": "角落里的“?”按钮会打开你编写的表单填写指南。",
+      "write": "编写指南",
+      "edit": "编辑指南",
+      "empty": "暂无指南",
+      "untitled": "未命名指南",
+      "summary": "{title} · {n} 个字 | {title} · {n} 个字",
+      "noContent": "请编写指南——只有在指南有内容时才会显示按钮。",
+      "editTitle": "帮助指南",
+      "editDesc": "说明如何填写此表单：需要提前准备什么、容易出错的问题，以及提交后会发生什么。",
+      "titleLabel": "标题",
+      "titlePlaceholder": "如何填写此表单",
+      "content": "指南",
+      "contentHint": "使用标题、列表和链接，帮助大家快速找到所需内容。",
+      "save": "保存指南"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "6 位验证码",
       "resend": "发送新验证码",
       "confirm": "确认并发送"
+    },
+    "guide": {
+      "open": "如何填写此表单",
+      "close": "关闭指南",
+      "defaultTitle": "如何填写此表单",
+      "subtitle": "组织者提供的指南"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "页眉背景",
       "plain": "简洁",
       "bandColor": "色带颜色",
-      "bandInPanel": "使用彩色侧边面板时，页眉位于面板内。"
+      "bandInPanel": "使用彩色侧边面板时，页眉位于面板内。",
+      "accent": "强调",
+      "accentColor": "强调色"
     },
     "footer": {
       "show": "显示页脚",

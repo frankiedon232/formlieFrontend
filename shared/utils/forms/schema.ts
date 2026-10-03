@@ -59,6 +59,8 @@ export const formSchemaV1 = z.object({
       identity: z
         .object({ email: text(64).nullable(), id: text(64).nullable(), verify: z.boolean() })
         .optional(),
+      /** Help guide (F10, owner 2026-10-03): opened from a "?" button on the form; off by default. */
+      guide: z.object({ enabled: z.boolean(), title: text(120), html: text(50_000) }).optional(),
     })
     .optional(),
   pages: z

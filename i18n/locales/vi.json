@@ -1900,6 +1900,24 @@
       "suggested": "đề xuất",
       "off": "Tắt",
       "none": "Không có email hoặc ID, Formalie chỉ có thể nhận diện cùng một trình duyệt (mọi người có thể dùng thiết bị khác)."
+    },
+    "guide": {
+      "title": "Hướng dẫn trợ giúp",
+      "enable": "Hiển thị nút trợ giúp trên biểu mẫu",
+      "enableHint": "Nút “?” ở góc sẽ mở hướng dẫn của bạn về cách điền biểu mẫu này.",
+      "write": "Viết hướng dẫn",
+      "edit": "Sửa hướng dẫn",
+      "empty": "Chưa có hướng dẫn",
+      "untitled": "Hướng dẫn chưa có tiêu đề",
+      "summary": "{title} · {n} từ | {title} · {n} từ",
+      "noContent": "Hãy viết hướng dẫn — nút chỉ hiển thị khi đã có nội dung.",
+      "editTitle": "Hướng dẫn trợ giúp",
+      "editDesc": "Giải thích cách điền biểu mẫu này: cần chuẩn bị gì, những câu hỏi khó và điều gì xảy ra tiếp theo.",
+      "titleLabel": "Tiêu đề",
+      "titlePlaceholder": "Cách điền biểu mẫu này",
+      "content": "Hướng dẫn",
+      "contentHint": "Tiêu đề, danh sách và liên kết giúp mọi người nhanh chóng tìm thấy thứ họ cần.",
+      "save": "Lưu hướng dẫn"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Mã 6 chữ số",
       "resend": "Gửi mã mới",
       "confirm": "Xác nhận và gửi"
+    },
+    "guide": {
+      "open": "Cách điền biểu mẫu này",
+      "close": "Đóng hướng dẫn",
+      "defaultTitle": "Cách điền biểu mẫu này",
+      "subtitle": "Hướng dẫn từ ban tổ chức"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Nền tiêu đề",
       "plain": "Đơn giản",
       "bandColor": "Màu dải",
-      "bandInPanel": "Khi có bảng bên có màu, phần tiêu đề nằm trong bảng."
+      "bandInPanel": "Khi có bảng bên có màu, phần tiêu đề nằm trong bảng.",
+      "accent": "Điểm nhấn",
+      "accentColor": "Màu điểm nhấn"
     },
     "footer": {
       "show": "Hiện chân trang",

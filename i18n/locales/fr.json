@@ -1900,6 +1900,24 @@
       "suggested": "suggéré",
       "off": "Désactivé",
       "none": "Sans adresse e-mail ni identifiant, Formalie ne peut reconnaître que le même navigateur (les personnes peuvent utiliser un autre appareil)."
+    },
+    "guide": {
+      "title": "Guide d’aide",
+      "enable": "Afficher un bouton d’aide sur le formulaire",
+      "enableHint": "Un bouton « ? » dans le coin ouvre votre guide expliquant comment remplir ce formulaire.",
+      "write": "Rédiger le guide",
+      "edit": "Modifier le guide",
+      "empty": "Aucun guide pour l’instant",
+      "untitled": "Guide sans titre",
+      "summary": "{title} · {n} mot | {title} · {n} mots",
+      "noContent": "Rédigez le guide : le bouton n’apparaît que lorsqu’il contient quelque chose.",
+      "editTitle": "Guide d’aide",
+      "editDesc": "Expliquez comment remplir ce formulaire : ce qu’il faut avoir sous la main, les questions délicates et la suite.",
+      "titleLabel": "Titre",
+      "titlePlaceholder": "Comment remplir ce formulaire",
+      "content": "Guide",
+      "contentHint": "Les titres, listes et liens aident chacun à trouver rapidement ce qu’il cherche.",
+      "save": "Enregistrer le guide"
     }
   },
   "renderer": {
@@ -2059,6 +2077,12 @@
       "codeLabel": "Code à 6 chiffres",
       "resend": "Envoyer un nouveau code",
       "confirm": "Confirmer et envoyer"
+    },
+    "guide": {
+      "open": "Comment remplir ce formulaire",
+      "close": "Fermer le guide",
+      "defaultTitle": "Comment remplir ce formulaire",
+      "subtitle": "Guide de l’organisateur"
     }
   },
   "logic": {
@@ -2493,7 +2517,9 @@
       "band": "Arrière-plan de l’en-tête",
       "plain": "Simple",
       "bandColor": "Couleur du bandeau",
-      "bandInPanel": "Avec un panneau latéral coloré, l’en-tête se place dans le panneau."
+      "bandInPanel": "Avec un panneau latéral coloré, l’en-tête se place dans le panneau.",
+      "accent": "Accent",
+      "accentColor": "Couleur d’accent"
     },
     "footer": {
       "show": "Afficher un pied de page",
