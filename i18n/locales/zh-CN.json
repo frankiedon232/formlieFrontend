@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "背景调查",
         "description": "面向推荐人的结构化问题、带平均分的技能评分，以及是否愿意再次雇用的明确回答。"
+      },
+      "student_enrolment": {
+        "name": "学生报名 / 入学",
+        "description": "收集学生和监护人信息、所选课程、教育背景、证明材料及同意书。"
+      },
+      "course_evaluation": {
+        "name": "课程评价",
+        "description": "学生对六项陈述进行评分，总分反映课程的受欢迎程度。"
+      },
+      "quiz_assessment": {
+        "name": "测验 / 考核",
+        "description": "自动评分的选择题，显示得分率和及格线。"
+      },
+      "scholarship_application": {
+        "name": "奖学金申请",
+        "description": "学业成绩、经济需求和个人陈述，并为评审组提供资格评分。"
+      },
+      "permission_slip": {
+        "name": "家长同意书 / 许可单",
+        "description": "外出或活动许可，附健康备注、紧急联系人和监护人签名。"
+      },
+      "attendance_register": {
+        "name": "考勤登记",
+        "description": "最多标记八名学员出勤、迟到或缺勤，出勤人数和出勤率自动统计。"
+      },
+      "academic_survey": {
+        "name": "学业调查",
+        "description": "面向各阶段学生的简短调查，了解学习体验、支持与身心状况。"
+      },
+      "it_support_ticket": {
+        "name": "IT 支持工单",
+        "description": "报告 IT 问题；按影响 × 紧急程度确定优先级，让重要工单优先处理。"
+      },
+      "change_request": {
+        "name": "变更申请",
+        "description": "描述计划变更，根据影响和可能性计算风险分，并附回滚计划和审批。"
+      },
+      "asset_checkout": {
+        "name": "资产借用 / 盘点",
+        "description": "记录设备借出或归还，包括资产标签、状况、归还日期和签名。"
+      },
+      "work_order": {
+        "name": "维修 / 工单",
+        "description": "提交维修请求，附位置、优先级和照片；工时和配件得出作业成本。"
+      },
+      "purchase_requisition": {
+        "name": "采购申请",
+        "description": "最多申请四项物品并填写数量和价格，总额决定所需的审批级别。"
+      },
+      "vendor_registration": {
+        "name": "供应商注册",
+        "description": "收集公司信息、联系人、税务和银行信息（IBAN / SWIFT）及相关文件，用于供应商准入。"
+      },
+      "site_inspection": {
+        "name": "现场 / 实地检查报告",
+        "description": "现场合格 / 不合格检查，附合格率、结论、发现问题和照片。"
+      },
+      "proof_of_delivery": {
+        "name": "交付确认 / 签收证明",
+        "description": "确认到货内容、状况、照片和收货人签名；如有损坏需填写详情。"
+      },
+      "quality_control": {
+        "name": "质量控制检查表",
+        "description": "批次信息、合格 / 不合格标准和测量值，合格率决定是否放行。"
+      },
+      "loan_application": {
+        "name": "贷款 / 信贷申请",
+        "description": "申请人、就业和财务信息，并计算负债收入比和预估月供。"
+      },
+      "kyc_verification": {
+        "name": "KYC / 身份验证",
+        "description": "在明确用途并获得同意的前提下，收集身份信息、身份证件和地址证明。"
+      },
+      "invoice_submission": {
+        "name": "发票提交",
+        "description": "供应商提交含明细的发票，自动计算小计、税额和总额。"
+      },
+      "insurance_claim": {
+        "name": "保险理赔",
+        "description": "保单、事故、证据和逐项损失；录入各项时理赔总额随之累加。"
+      },
+      "nda_signoff": {
+        "name": "NDA / 协议签署",
+        "description": "展示协议，逐项确认要点后签署；代表公司签署时需填写公司信息。"
       }
     },
     "openGallery": "打开完整模板库",

@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Verificação de referências",
         "description": "Perguntas estruturadas para referências, habilidades avaliadas com média e uma resposta clara sobre recontratar."
+      },
+      "student_enrolment": {
+        "name": "Matrícula / Admissão de alunos",
+        "description": "Dados do aluno e do responsável, curso escolhido, formação anterior, documentos e consentimento."
+      },
+      "course_evaluation": {
+        "name": "Avaliação do curso",
+        "description": "Os alunos avaliam o curso em seis afirmações; uma nota geral mostra como o curso está sendo recebido."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Avaliação",
+        "description": "Questões de múltipla escolha corrigidas automaticamente, com porcentagem e nota mínima de aprovação."
+      },
+      "scholarship_application": {
+        "name": "Solicitação de bolsa de estudos",
+        "description": "Histórico escolar, necessidade financeira e carta pessoal — com uma pontuação de elegibilidade para a banca."
+      },
+      "permission_slip": {
+        "name": "Autorização / Consentimento dos pais",
+        "description": "Autorização para passeio ou atividade com observações médicas, contato de emergência e assinatura do responsável."
+      },
+      "attendance_register": {
+        "name": "Lista de presença",
+        "description": "Marque até oito alunos como presentes, atrasados ou ausentes; o total e a taxa de presença são calculados automaticamente."
+      },
+      "academic_survey": {
+        "name": "Pesquisa acadêmica",
+        "description": "Uma pesquisa rápida sobre experiência de estudo, apoio e bem-estar para alunos de qualquer nível."
+      },
+      "it_support_ticket": {
+        "name": "Chamado de suporte de TI",
+        "description": "Relate um problema de TI; impacto × urgência define a prioridade para os chamados certos serem atendidos primeiro."
+      },
+      "change_request": {
+        "name": "Solicitação de mudança",
+        "description": "Descreva uma mudança planejada com pontuação de risco por impacto e probabilidade, plano de rollback e aprovação."
+      },
+      "asset_checkout": {
+        "name": "Empréstimo de ativos / Inventário",
+        "description": "Registre a retirada ou devolução de equipamentos com etiqueta do ativo, estado, data de devolução e assinatura."
+      },
+      "work_order": {
+        "name": "Manutenção / Ordem de serviço",
+        "description": "Solicite manutenção com local, prioridade e fotos; horas e peças definem o custo do serviço."
+      },
+      "purchase_requisition": {
+        "name": "Requisição de compra",
+        "description": "Peça até quatro itens com quantidade e preço; o total define qual aprovação é necessária."
+      },
+      "vendor_registration": {
+        "name": "Cadastro de fornecedores",
+        "description": "Empresa, contatos, dados fiscais e bancários (IBAN / SWIFT) e documentos para cadastrar fornecedores."
+      },
+      "site_inspection": {
+        "name": "Relatório de inspeção de local / campo",
+        "description": "Verificações aprovado / reprovado no local, com taxa de aprovação, resultado, constatações e fotos."
+      },
+      "proof_of_delivery": {
+        "name": "Confirmação / Comprovante de entrega",
+        "description": "Confirme o que chegou, o estado, uma foto e a assinatura do recebedor — avarias pedem detalhes."
+      },
+      "quality_control": {
+        "name": "Checklist de controle de qualidade",
+        "description": "Dados do lote, critérios aprovado / reprovado e medições; a taxa de aprovação define a liberação."
+      },
+      "loan_application": {
+        "name": "Solicitação de empréstimo / crédito",
+        "description": "Solicitante, emprego e finanças, com índice de endividamento e parcela mensal estimada."
+      },
+      "kyc_verification": {
+        "name": "KYC / Verificação de identidade",
+        "description": "Dados de identidade, documento de identificação e comprovante de endereço, com finalidade clara e consentimento."
+      },
+      "invoice_submission": {
+        "name": "Envio de faturas",
+        "description": "Fornecedores enviam uma fatura com itens; subtotal, impostos e total são calculados."
+      },
+      "insurance_claim": {
+        "name": "Solicitação de sinistro",
+        "description": "Apólice, ocorrência, provas e perdas detalhadas; o total do sinistro é somado conforme os itens são inseridos."
+      },
+      "nda_signoff": {
+        "name": "NDA / Assinatura de acordo",
+        "description": "Mostre o acordo, confirme cada ponto principal e assine — com os dados da empresa ao assinar em nome dela."
       }
     },
     "openGallery": "Abrir a galeria completa",

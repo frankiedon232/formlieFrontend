@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "평판 조회",
         "description": "추천인을 위한 구조화된 질문, 평균이 포함된 역량 평가, 재고용 의사에 대한 명확한 답변."
+      },
+      "student_enrolment": {
+        "name": "학생 등록 / 입학",
+        "description": "학생 및 보호자 정보, 프로그램 선택, 이전 학력, 서류, 동의를 받습니다."
+      },
+      "course_evaluation": {
+        "name": "강의 평가",
+        "description": "학생이 6개 문항으로 강의를 평가하며, 종합 점수로 강의 반응을 확인합니다."
+      },
+      "quiz_assessment": {
+        "name": "퀴즈 / 평가",
+        "description": "자동 채점되는 객관식 문항으로, 백분율과 합격 기준을 제공합니다."
+      },
+      "scholarship_application": {
+        "name": "장학금 신청",
+        "description": "학업 성적, 경제적 필요, 자기소개서와 함께 심사위원회를 위한 자격 점수를 제공합니다."
+      },
+      "permission_slip": {
+        "name": "보호자 동의서 / 참가 허가서",
+        "description": "견학이나 활동 참가 허가를 의료 메모, 비상 연락처, 보호자 서명과 함께 받습니다."
+      },
+      "attendance_register": {
+        "name": "출석부",
+        "description": "최대 8명을 출석, 지각, 결석으로 표시하면 출석 인원과 출석률이 자동으로 계산됩니다."
+      },
+      "academic_survey": {
+        "name": "학업 설문",
+        "description": "모든 수준의 학생을 위한 학습 경험, 지원, 웰빙에 관한 짧은 설문입니다."
+      },
+      "it_support_ticket": {
+        "name": "IT 지원 티켓",
+        "description": "IT 문제를 신고하면 영향도 × 긴급도로 우선순위가 정해져 중요한 티켓부터 처리됩니다."
+      },
+      "change_request": {
+        "name": "변경 요청",
+        "description": "계획된 변경 사항을 영향도와 발생 가능성 기반 위험 점수, 롤백 계획, 승인과 함께 작성합니다."
+      },
+      "asset_checkout": {
+        "name": "자산 대여 / 재고",
+        "description": "자산 태그, 상태, 반납일, 서명과 함께 장비 대여 및 반납을 기록합니다."
+      },
+      "work_order": {
+        "name": "유지보수 / 작업 지시",
+        "description": "위치, 우선순위, 사진과 함께 유지보수를 요청하며, 작업 시간과 부품으로 작업 비용을 산출합니다."
+      },
+      "purchase_requisition": {
+        "name": "구매 요청",
+        "description": "수량과 가격으로 최대 4개 품목을 요청하며, 합계에 따라 필요한 승인이 결정됩니다."
+      },
+      "vendor_registration": {
+        "name": "거래처 / 공급업체 등록",
+        "description": "공급업체 온보딩을 위한 회사 정보, 담당자, 세금 및 은행 정보(IBAN / SWIFT), 서류를 받습니다."
+      },
+      "site_inspection": {
+        "name": "현장 / 실사 점검 보고서",
+        "description": "현장 합격 / 불합격 점검을 합격률, 결과, 지적 사항, 사진과 함께 기록합니다."
+      },
+      "proof_of_delivery": {
+        "name": "배송 확인 / 인수증",
+        "description": "도착한 물품, 상태, 사진, 수령인 서명을 확인하며, 파손 시 세부 정보를 요청합니다."
+      },
+      "quality_control": {
+        "name": "품질 관리 체크리스트",
+        "description": "배치 정보, 합격 / 불합격 기준, 측정값을 기록하고 합격률로 출하 여부를 결정합니다."
+      },
+      "loan_application": {
+        "name": "대출 / 신용 신청",
+        "description": "신청인, 고용 및 재무 정보와 함께 소득 대비 부채 비율과 예상 월 상환액을 제공합니다."
+      },
+      "kyc_verification": {
+        "name": "KYC / 신원 확인",
+        "description": "명확한 목적 안내와 동의를 바탕으로 신원 정보, 신분증, 주소 증빙을 받습니다."
+      },
+      "invoice_submission": {
+        "name": "송장 제출",
+        "description": "공급업체가 항목별 송장을 제출하면 소계, 세금, 합계가 계산됩니다."
+      },
+      "insurance_claim": {
+        "name": "보험금 청구",
+        "description": "보험 증권, 사고 내용, 증빙, 항목별 손실을 받으며, 항목 입력에 따라 청구 합계가 계산됩니다."
+      },
+      "nda_signoff": {
+        "name": "NDA / 계약서 서명",
+        "description": "계약서를 보여 주고 주요 항목을 하나씩 확인한 뒤 서명합니다. 회사를 대표해 서명하면 회사 정보도 받습니다."
       }
     },
     "openGallery": "전체 갤러리 열기",

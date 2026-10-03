@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Vérification des références",
         "description": "Questions structurées pour les référents, compétences notées avec une moyenne et une réponse claire sur une réembauche."
+      },
+      "student_enrolment": {
+        "name": "Inscription / Admission des étudiants",
+        "description": "Coordonnées de l’étudiant et du responsable légal, choix du programme, parcours antérieur, documents et consentement."
+      },
+      "course_evaluation": {
+        "name": "Évaluation du cours",
+        "description": "Les étudiants notent le cours sur six affirmations ; un score global montre comment il est perçu."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Évaluation",
+        "description": "Questions à choix multiples corrigées automatiquement, avec pourcentage et seuil de réussite."
+      },
+      "scholarship_application": {
+        "name": "Demande de bourse",
+        "description": "Dossier scolaire, besoin financier et lettre de motivation — avec un score d’éligibilité pour le jury."
+      },
+      "permission_slip": {
+        "name": "Autorisation parentale",
+        "description": "Autorisation pour une sortie ou une activité, avec informations médicales, contact d’urgence et signature du responsable."
+      },
+      "attendance_register": {
+        "name": "Registre de présence",
+        "description": "Indiquez jusqu’à huit apprenants présents, en retard ou absents ; le nombre et le taux de présence se calculent automatiquement."
+      },
+      "academic_survey": {
+        "name": "Enquête pédagogique",
+        "description": "Une courte enquête sur l’expérience d’études, l’accompagnement et le bien-être, pour tous les niveaux."
+      },
+      "it_support_ticket": {
+        "name": "Ticket de support IT",
+        "description": "Signalez un problème IT ; impact × urgence fixe la priorité pour traiter d’abord les bons tickets."
+      },
+      "change_request": {
+        "name": "Demande de changement",
+        "description": "Décrivez un changement prévu avec un score de risque (impact et probabilité), un plan de retour arrière et une approbation."
+      },
+      "asset_checkout": {
+        "name": "Prêt de matériel / Inventaire",
+        "description": "Enregistrez la sortie ou le retour du matériel avec numéro d’inventaire, état, date de retour et signature."
+      },
+      "work_order": {
+        "name": "Maintenance / Bon de travail",
+        "description": "Demandez une intervention avec lieu, priorité et photos ; heures et pièces donnent le coût du travail."
+      },
+      "purchase_requisition": {
+        "name": "Demande d’achat",
+        "description": "Demandez jusqu’à quatre articles avec quantité et prix ; le total détermine l’approbation nécessaire."
+      },
+      "vendor_registration": {
+        "name": "Référencement fournisseur",
+        "description": "Société, contacts, données fiscales et bancaires (IBAN / SWIFT) et documents pour référencer un fournisseur."
+      },
+      "site_inspection": {
+        "name": "Rapport d’inspection de site / terrain",
+        "description": "Contrôles conforme / non conforme sur site, avec taux de réussite, résultat, constats et photos."
+      },
+      "proof_of_delivery": {
+        "name": "Confirmation / Preuve de livraison",
+        "description": "Confirmez ce qui est arrivé, son état, une photo et la signature du destinataire — les dommages appellent des détails."
+      },
+      "quality_control": {
+        "name": "Checklist de contrôle qualité",
+        "description": "Infos du lot, critères conforme / non conforme et mesures ; le taux de réussite décide de la libération."
+      },
+      "loan_application": {
+        "name": "Demande de prêt / crédit",
+        "description": "Demandeur, emploi et finances, avec taux d’endettement et mensualité estimée."
+      },
+      "kyc_verification": {
+        "name": "KYC / Vérification d’identité",
+        "description": "Identité, pièce d’identité et justificatif de domicile, avec une finalité claire et un consentement."
+      },
+      "invoice_submission": {
+        "name": "Dépôt de facture",
+        "description": "Les fournisseurs déposent une facture détaillée ; sous-total, taxes et total sont calculés."
+      },
+      "insurance_claim": {
+        "name": "Déclaration de sinistre",
+        "description": "Contrat, incident, justificatifs et pertes détaillées ; le montant total se met à jour à chaque ligne saisie."
+      },
+      "nda_signoff": {
+        "name": "NDA / Signature d’accord",
+        "description": "Affichez l’accord, confirmez chaque point clé et signez — avec les infos de la société en cas de signature pour elle."
       }
     },
     "openGallery": "Ouvrir la galerie complète",

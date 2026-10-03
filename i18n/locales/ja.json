@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "リファレンスチェック",
         "description": "推薦者向けの構造化された質問、平均付きのスキル評価、再雇用についての明確な回答。"
+      },
+      "student_enrolment": {
+        "name": "入学 / 入学申込",
+        "description": "学生と保護者の情報、希望プログラム、学歴、書類、同意を収集します。"
+      },
+      "course_evaluation": {
+        "name": "授業評価",
+        "description": "学生が6つの項目で授業を評価。総合スコアで授業の受け止められ方がわかります。"
+      },
+      "quiz_assessment": {
+        "name": "クイズ / テスト",
+        "description": "自動採点される選択式問題。正答率と合格ラインを表示します。"
+      },
+      "scholarship_application": {
+        "name": "奨学金申請",
+        "description": "成績、経済的必要性、志望理由書を収集し、審査委員会向けの適格性スコアを算出します。"
+      },
+      "permission_slip": {
+        "name": "保護者同意書 / 参加許可書",
+        "description": "遠足や活動への参加許可。健康上の注意事項、緊急連絡先、保護者の署名付き。"
+      },
+      "attendance_register": {
+        "name": "出席簿",
+        "description": "最大8名を出席・遅刻・欠席で記録。出席人数と出席率は自動で集計されます。"
+      },
+      "academic_survey": {
+        "name": "学習アンケート",
+        "description": "学習体験、サポート、ウェルビーイングに関する短いアンケート。どの学年の学生にも使えます。"
+      },
+      "it_support_ticket": {
+        "name": "IT サポートチケット",
+        "description": "IT の問題を報告。影響度 × 緊急度で優先度を決め、重要なチケットから対応できます。"
+      },
+      "change_request": {
+        "name": "変更申請",
+        "description": "予定している変更を記述。影響度と発生可能性によるリスクスコア、ロールバック計画、承認付き。"
+      },
+      "asset_checkout": {
+        "name": "備品の貸出 / 棚卸",
+        "description": "資産タグ、状態、返却日、署名とともに機器の貸出・返却を記録します。"
+      },
+      "work_order": {
+        "name": "保守 / 作業指示",
+        "description": "場所、優先度、写真を添えて保守を依頼。作業時間と部品から作業費用を算出します。"
+      },
+      "purchase_requisition": {
+        "name": "購買申請",
+        "description": "数量と価格を指定して最大4品目を申請。合計金額で必要な承認が決まります。"
+      },
+      "vendor_registration": {
+        "name": "取引先 / サプライヤー登録",
+        "description": "サプライヤー登録用に、会社情報、担当者、税務・銀行情報（IBAN / SWIFT）、書類を収集します。"
+      },
+      "site_inspection": {
+        "name": "現場 / 実地点検報告",
+        "description": "現場での合格 / 不合格チェック。合格率、判定、指摘事項、写真付き。"
+      },
+      "proof_of_delivery": {
+        "name": "納品確認 / 受領証明",
+        "description": "届いた品物、状態、写真、受取人の署名を確認。破損がある場合は詳細を入力します。"
+      },
+      "quality_control": {
+        "name": "品質管理チェックリスト",
+        "description": "ロット情報、合格 / 不合格基準、測定値を記録。合格率で出荷可否を判定します。"
+      },
+      "loan_application": {
+        "name": "ローン / 融資申込",
+        "description": "申込者、勤務先、財務状況を収集し、返済負担率と月々の返済見込額を算出します。"
+      },
+      "kyc_verification": {
+        "name": "KYC / 本人確認",
+        "description": "本人情報、身分証明書、住所確認書類を、利用目的の明示と同意のもとで収集します。"
+      },
+      "invoice_submission": {
+        "name": "請求書の提出",
+        "description": "サプライヤーが明細付きの請求書を提出。小計、税額、合計を自動計算します。"
+      },
+      "insurance_claim": {
+        "name": "保険金請求",
+        "description": "保険証券、事故内容、証拠、損害明細を収集。項目を入力するたびに請求合計が更新されます。"
+      },
+      "nda_signoff": {
+        "name": "NDA / 契約書への署名",
+        "description": "契約書を表示し、主要事項を一つずつ確認して署名。法人として署名する場合は会社情報も入力します。"
       }
     },
     "openGallery": "ギャラリー全体を開く",

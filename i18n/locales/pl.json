@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Weryfikacja referencji",
         "description": "Ustrukturyzowane pytania dla osób polecających, ocenione umiejętności ze średnią i jasna odpowiedź o ponownym zatrudnieniu."
+      },
+      "student_enrolment": {
+        "name": "Zapisy / Rekrutacja uczniów",
+        "description": "Dane ucznia i opiekuna, wybór programu, wcześniejsza edukacja, dokumenty i zgoda."
+      },
+      "course_evaluation": {
+        "name": "Ocena kursu",
+        "description": "Uczestnicy oceniają kurs w sześciu stwierdzeniach; wynik ogólny pokazuje, jak kurs jest odbierany."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Test",
+        "description": "Pytania jednokrotnego wyboru oceniane automatycznie, z wynikiem procentowym i progiem zaliczenia."
+      },
+      "scholarship_application": {
+        "name": "Wniosek o stypendium",
+        "description": "Wyniki w nauce, sytuacja finansowa i list motywacyjny — z oceną kwalifikowalności dla komisji."
+      },
+      "permission_slip": {
+        "name": "Zgoda rodzica / opiekuna",
+        "description": "Zgoda na wycieczkę lub zajęcia z informacjami medycznymi, kontaktem alarmowym i podpisem opiekuna."
+      },
+      "attendance_register": {
+        "name": "Lista obecności",
+        "description": "Oznacz do ośmiu uczestników jako obecnych, spóźnionych lub nieobecnych; liczba i odsetek obecności liczą się automatycznie."
+      },
+      "academic_survey": {
+        "name": "Ankieta akademicka",
+        "description": "Krótka ankieta o doświadczeniach w nauce, wsparciu i samopoczuciu dla uczniów na każdym poziomie."
+      },
+      "it_support_ticket": {
+        "name": "Zgłoszenie do wsparcia IT",
+        "description": "Zgłoś problem IT; wpływ × pilność wyznacza priorytet, by najważniejsze zgłoszenia trafiały na początek."
+      },
+      "change_request": {
+        "name": "Wniosek o zmianę",
+        "description": "Opisz planowaną zmianę z oceną ryzyka z wpływu i prawdopodobieństwa, planem wycofania i zatwierdzeniem."
+      },
+      "asset_checkout": {
+        "name": "Wydanie sprzętu / Inwentaryzacja",
+        "description": "Rejestruj wydanie lub zwrot sprzętu z numerem inwentarzowym, stanem, datą zwrotu i podpisem."
+      },
+      "work_order": {
+        "name": "Konserwacja / Zlecenie pracy",
+        "description": "Zgłoś potrzebę konserwacji z lokalizacją, priorytetem i zdjęciami; godziny i części dają koszt prac."
+      },
+      "purchase_requisition": {
+        "name": "Zapotrzebowanie zakupowe",
+        "description": "Zamów do czterech pozycji z ilością i ceną; suma decyduje, jakie zatwierdzenie jest potrzebne."
+      },
+      "vendor_registration": {
+        "name": "Rejestracja dostawcy",
+        "description": "Firma, kontakty, dane podatkowe i bankowe (IBAN / SWIFT) oraz dokumenty do wdrożenia dostawcy."
+      },
+      "site_inspection": {
+        "name": "Raport z inspekcji obiektu / terenu",
+        "description": "Kontrole zaliczone / niezaliczone na miejscu ze wskaźnikiem zgodności, wynikiem, ustaleniami i zdjęciami."
+      },
+      "proof_of_delivery": {
+        "name": "Potwierdzenie / Dowód dostawy",
+        "description": "Potwierdź, co dotarło, w jakim stanie, ze zdjęciem i podpisem odbiorcy — przy uszkodzeniu formularz prosi o szczegóły."
+      },
+      "quality_control": {
+        "name": "Lista kontrolna jakości",
+        "description": "Dane partii, kryteria zaliczone / niezaliczone i pomiary; wskaźnik zgodności daje decyzję o zwolnieniu."
+      },
+      "loan_application": {
+        "name": "Wniosek o pożyczkę / kredyt",
+        "description": "Wnioskodawca, zatrudnienie i finanse, ze wskaźnikiem zadłużenia do dochodu i szacowaną ratą miesięczną."
+      },
+      "kyc_verification": {
+        "name": "KYC / Weryfikacja tożsamości",
+        "description": "Dane osobowe, dokument tożsamości i potwierdzenie adresu, z jasnym celem i zgodą."
+      },
+      "invoice_submission": {
+        "name": "Przesyłanie faktur",
+        "description": "Dostawcy przesyłają fakturę z pozycjami; suma częściowa, podatek i razem są wyliczane."
+      },
+      "insurance_claim": {
+        "name": "Zgłoszenie szkody",
+        "description": "Polisa, zdarzenie, dowody i wyszczególnione straty; łączna kwota rośnie wraz z wpisywanymi pozycjami."
+      },
+      "nda_signoff": {
+        "name": "NDA / Podpisanie umowy",
+        "description": "Pokaż umowę, potwierdź każdy kluczowy punkt i podpisz — z danymi firmy przy podpisie w jej imieniu."
       }
     },
     "openGallery": "Otwórz pełną galerię",

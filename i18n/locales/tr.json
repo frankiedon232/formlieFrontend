@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Referans Kontrolü",
         "description": "Referanslar için yapılandırılmış sorular, ortalamalı beceri puanları ve yeniden işe alım hakkında net bir yanıt."
+      },
+      "student_enrolment": {
+        "name": "Öğrenci Kaydı / Kabul",
+        "description": "Öğrenci ve veli bilgileri, program seçimi, önceki eğitim, belgeler ve onay."
+      },
+      "course_evaluation": {
+        "name": "Ders Değerlendirmesi",
+        "description": "Öğrenciler dersi altı ifadeyle puanlar; genel puan dersin nasıl karşılandığını gösterir."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Sınav",
+        "description": "Otomatik puanlanan çoktan seçmeli sorular; yüzde ve geçme notuyla."
+      },
+      "scholarship_application": {
+        "name": "Burs Başvurusu",
+        "description": "Akademik geçmiş, maddi ihtiyaç ve kişisel beyan — kurul için uygunluk puanıyla."
+      },
+      "permission_slip": {
+        "name": "Veli Onayı / İzin Belgesi",
+        "description": "Gezi veya etkinlik izni; sağlık notları, acil durum kişisi ve veli imzasıyla."
+      },
+      "attendance_register": {
+        "name": "Yoklama Listesi",
+        "description": "En fazla sekiz öğrenciyi var, geç veya yok olarak işaretleyin; katılım sayısı ve oranı otomatik hesaplanır."
+      },
+      "academic_survey": {
+        "name": "Akademik Anket",
+        "description": "Her düzeydeki öğrenciler için öğrenim deneyimi, destek ve iyi oluş üzerine kısa bir anket."
+      },
+      "it_support_ticket": {
+        "name": "IT Destek Talebi",
+        "description": "Bir IT sorunu bildirin; etki × aciliyet önceliği belirler, böylece doğru talepler önce ele alınır."
+      },
+      "change_request": {
+        "name": "Değişiklik Talebi",
+        "description": "Planlanan bir değişikliği etki ve olasılıktan gelen risk puanı, geri alma planı ve onayla açıklayın."
+      },
+      "asset_checkout": {
+        "name": "Demirbaş Zimmeti / Envanter",
+        "description": "Ekipman teslim ve iadesini demirbaş etiketi, durum, iade tarihi ve imzayla kaydedin."
+      },
+      "work_order": {
+        "name": "Bakım / İş Emri",
+        "description": "Konum, öncelik ve fotoğraflarla bakım talep edin; saat ve parçalar iş maliyetini verir."
+      },
+      "purchase_requisition": {
+        "name": "Satın Alma Talebi",
+        "description": "Miktar ve fiyatla en fazla dört kalem talep edin; toplam, hangi onayın gerektiğini belirler."
+      },
+      "vendor_registration": {
+        "name": "Tedarikçi Kaydı",
+        "description": "Tedarikçi kaydı için şirket, iletişim kişileri, vergi ve banka bilgileri (IBAN / SWIFT) ve belgeler."
+      },
+      "site_inspection": {
+        "name": "Saha / Yerinde Denetim Raporu",
+        "description": "Yerinde geçti / kaldı kontrolleri; başarı oranı, sonuç, bulgular ve fotoğraflarla."
+      },
+      "proof_of_delivery": {
+        "name": "Teslimat Onayı / Teslim Belgesi",
+        "description": "Neyin geldiğini, durumunu, fotoğrafı ve teslim alanın imzasını onaylayın — hasar varsa ayrıntı istenir."
+      },
+      "quality_control": {
+        "name": "Kalite Kontrol Listesi",
+        "description": "Parti bilgileri, geçti / kaldı kriterleri ve ölçümler; başarı oranı sevk kararını verir."
+      },
+      "loan_application": {
+        "name": "Kredi Başvurusu",
+        "description": "Başvuru sahibi, istihdam ve mali durum; borç-gelir oranı ve tahmini aylık taksitle."
+      },
+      "kyc_verification": {
+        "name": "KYC / Kimlik Doğrulama",
+        "description": "Kimlik bilgileri, kimlik belgesi ve adres kanıtı; açık bir amaç ve onayla."
+      },
+      "invoice_submission": {
+        "name": "Fatura Gönderimi",
+        "description": "Tedarikçiler kalemli fatura gönderir; ara toplam, vergi ve genel toplam hesaplanır."
+      },
+      "insurance_claim": {
+        "name": "Sigorta Hasar Talebi",
+        "description": "Poliçe, olay, kanıtlar ve kalem kalem kayıplar; kalemler girildikçe talep toplamı güncellenir."
+      },
+      "nda_signoff": {
+        "name": "NDA / Sözleşme Onayı",
+        "description": "Sözleşmeyi gösterin, her ana maddeyi onaylayın ve imzalayın — şirket adına imzalanıyorsa şirket bilgileriyle."
       }
     },
     "openGallery": "Galerinin tamamını aç",

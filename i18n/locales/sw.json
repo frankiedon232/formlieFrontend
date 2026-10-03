@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Uhakiki wa Wadhamini",
         "description": "Maswali yaliyopangwa kwa wadhamini, ujuzi uliopimwa wenye wastani na jibu wazi kuhusu kumwajiri tena."
+      },
+      "student_enrolment": {
+        "name": "Usajili / Udahili wa Wanafunzi",
+        "description": "Taarifa za mwanafunzi na mlezi, programu iliyochaguliwa, elimu ya awali, nyaraka na idhini."
+      },
+      "course_evaluation": {
+        "name": "Tathmini ya Kozi",
+        "description": "Wanafunzi wanakadiria kozi kwa kauli sita; alama ya jumla inaonyesha jinsi kozi inavyopokelewa."
+      },
+      "quiz_assessment": {
+        "name": "Jaribio / Tathmini",
+        "description": "Maswali ya kuchagua yanayosahihishwa kiotomatiki, yenye asilimia na alama ya kufaulu."
+      },
+      "scholarship_application": {
+        "name": "Ombi la Ufadhili wa Masomo",
+        "description": "Rekodi ya kitaaluma, hitaji la kifedha na maelezo binafsi — pamoja na alama ya ustahiki kwa jopo."
+      },
+      "permission_slip": {
+        "name": "Idhini ya Mzazi / Fomu ya Ruhusa",
+        "description": "Ruhusa ya safari au shughuli pamoja na maelezo ya kiafya, mawasiliano ya dharura na sahihi ya mlezi."
+      },
+      "attendance_register": {
+        "name": "Daftari la Mahudhurio",
+        "description": "Weka alama kwa hadi wanafunzi wanane kama wapo, wamechelewa au hawapo; idadi na kiwango cha mahudhurio hujumlishwa kiotomatiki."
+      },
+      "academic_survey": {
+        "name": "Utafiti wa Kitaaluma",
+        "description": "Utafiti mfupi kuhusu uzoefu wa masomo, msaada na ustawi kwa wanafunzi wa ngazi yoyote."
+      },
+      "it_support_ticket": {
+        "name": "Tiketi ya Msaada wa IT",
+        "description": "Ripoti tatizo la IT; athari × uharaka huweka kipaumbele ili tiketi muhimu zishughulikiwe kwanza."
+      },
+      "change_request": {
+        "name": "Ombi la Mabadiliko",
+        "description": "Eleza mabadiliko yaliyopangwa pamoja na alama ya hatari kutokana na athari na uwezekano, mpango wa kurejesha na idhini."
+      },
+      "asset_checkout": {
+        "name": "Utoaji wa Mali / Orodha ya Mali",
+        "description": "Rekodi utoaji au urejeshaji wa vifaa pamoja na lebo ya mali, hali, tarehe ya kurejesha na sahihi."
+      },
+      "work_order": {
+        "name": "Matengenezo / Agizo la Kazi",
+        "description": "Omba matengenezo pamoja na mahali, kipaumbele na picha; saa na vipuri hutoa gharama ya kazi."
+      },
+      "purchase_requisition": {
+        "name": "Ombi la Ununuzi",
+        "description": "Omba hadi bidhaa nne pamoja na idadi na bei; jumla huamua idhini inayohitajika."
+      },
+      "vendor_registration": {
+        "name": "Usajili wa Muuzaji / Msambazaji",
+        "description": "Kampuni, watu wa mawasiliano, taarifa za kodi na benki (IBAN / SWIFT) na nyaraka za kusajili wasambazaji."
+      },
+      "site_inspection": {
+        "name": "Ripoti ya Ukaguzi wa Eneo / Uwandani",
+        "description": "Ukaguzi wa kufaulu / kushindwa eneo la kazi pamoja na kiwango cha kufaulu, matokeo, matokeo ya uchunguzi na picha."
+      },
+      "proof_of_delivery": {
+        "name": "Uthibitisho wa Uwasilishaji / Ushahidi wa Kupokea",
+        "description": "Thibitisha kilichofika, hali yake, picha na sahihi ya mpokeaji — uharibifu huomba maelezo zaidi."
+      },
+      "quality_control": {
+        "name": "Orodha ya Ukaguzi wa Ubora",
+        "description": "Taarifa za bechi, vigezo vya kufaulu / kushindwa na vipimo; kiwango cha kufaulu hutoa uamuzi wa kuachilia."
+      },
+      "loan_application": {
+        "name": "Ombi la Mkopo / Mikopo",
+        "description": "Mwombaji, ajira na fedha, pamoja na uwiano wa deni kwa mapato na makadirio ya malipo ya kila mwezi."
+      },
+      "kyc_verification": {
+        "name": "KYC / Uthibitishaji wa Utambulisho",
+        "description": "Taarifa za utambulisho, hati ya utambulisho na uthibitisho wa anwani, kwa madhumuni wazi na idhini."
+      },
+      "invoice_submission": {
+        "name": "Uwasilishaji wa Ankara",
+        "description": "Wasambazaji huwasilisha ankara yenye bidhaa; jumla ndogo, kodi na jumla kuu hukokotolewa."
+      },
+      "insurance_claim": {
+        "name": "Dai la Bima",
+        "description": "Sera, tukio, ushahidi na hasara kwa kila kipengele; jumla ya dai huongezeka kadri vipengele vinavyoingizwa."
+      },
+      "nda_signoff": {
+        "name": "NDA / Kusaini Makubaliano",
+        "description": "Onyesha makubaliano, thibitisha kila hoja kuu na usaini — pamoja na taarifa za kampuni unaposaini kwa niaba yake."
       }
     },
     "openGallery": "Fungua matunzio yote",

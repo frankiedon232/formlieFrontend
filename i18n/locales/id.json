@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Pemeriksaan Referensi",
         "description": "Pertanyaan terstruktur untuk pemberi referensi, penilaian keterampilan dengan rata-rata, dan jawaban jelas soal mempekerjakan kembali."
+      },
+      "student_enrolment": {
+        "name": "Pendaftaran / Penerimaan Siswa",
+        "description": "Data siswa dan wali, pilihan program, pendidikan sebelumnya, dokumen, dan persetujuan."
+      },
+      "course_evaluation": {
+        "name": "Evaluasi Kursus",
+        "description": "Siswa menilai kursus melalui enam pernyataan; skor keseluruhan menunjukkan bagaimana kursus diterima."
+      },
+      "quiz_assessment": {
+        "name": "Kuis / Penilaian",
+        "description": "Soal pilihan ganda yang dinilai otomatis, dengan persentase dan nilai kelulusan."
+      },
+      "scholarship_application": {
+        "name": "Pengajuan Beasiswa",
+        "description": "Catatan akademik, kebutuhan finansial, dan pernyataan pribadi — dengan skor kelayakan untuk panel."
+      },
+      "permission_slip": {
+        "name": "Persetujuan / Surat Izin Orang Tua",
+        "description": "Izin untuk perjalanan atau kegiatan dengan catatan medis, kontak darurat, dan tanda tangan wali."
+      },
+      "attendance_register": {
+        "name": "Daftar Hadir",
+        "description": "Tandai hingga delapan peserta sebagai hadir, terlambat, atau absen; jumlah dan tingkat kehadiran dihitung otomatis."
+      },
+      "academic_survey": {
+        "name": "Survei Akademik",
+        "description": "Survei singkat tentang pengalaman belajar, dukungan, dan kesejahteraan untuk siswa di semua jenjang."
+      },
+      "it_support_ticket": {
+        "name": "Tiket Dukungan IT",
+        "description": "Laporkan masalah IT; dampak × urgensi menentukan prioritas agar tiket yang tepat ditangani lebih dulu."
+      },
+      "change_request": {
+        "name": "Permintaan Perubahan",
+        "description": "Jelaskan perubahan yang direncanakan dengan skor risiko dari dampak dan kemungkinan, rencana rollback, dan persetujuan."
+      },
+      "asset_checkout": {
+        "name": "Peminjaman Aset / Inventaris",
+        "description": "Catat peminjaman atau pengembalian peralatan dengan tag aset, kondisi, tanggal kembali, dan tanda tangan."
+      },
+      "work_order": {
+        "name": "Pemeliharaan / Perintah Kerja",
+        "description": "Ajukan pemeliharaan dengan lokasi, prioritas, dan foto; jam kerja dan suku cadang menentukan biaya pekerjaan."
+      },
+      "purchase_requisition": {
+        "name": "Permintaan Pembelian",
+        "description": "Minta hingga empat barang dengan jumlah dan harga; total menentukan persetujuan yang diperlukan."
+      },
+      "vendor_registration": {
+        "name": "Registrasi Vendor / Pemasok",
+        "description": "Data perusahaan, kontak, pajak dan bank (IBAN / SWIFT), serta dokumen untuk onboarding pemasok."
+      },
+      "site_inspection": {
+        "name": "Laporan Inspeksi Lokasi / Lapangan",
+        "description": "Pemeriksaan lulus / gagal di lokasi dengan tingkat kelulusan, hasil, temuan, dan foto."
+      },
+      "proof_of_delivery": {
+        "name": "Konfirmasi / Bukti Pengiriman",
+        "description": "Konfirmasi barang yang diterima, kondisinya, foto, dan tanda tangan penerima — jika rusak, detail akan diminta."
+      },
+      "quality_control": {
+        "name": "Checklist Kontrol Kualitas",
+        "description": "Detail batch, kriteria lulus / gagal, dan pengukuran; tingkat kelulusan menentukan keputusan rilis."
+      },
+      "loan_application": {
+        "name": "Pengajuan Pinjaman / Kredit",
+        "description": "Data pemohon, pekerjaan, dan keuangan, dengan rasio utang terhadap pendapatan dan perkiraan cicilan bulanan."
+      },
+      "kyc_verification": {
+        "name": "KYC / Verifikasi Identitas",
+        "description": "Data identitas, dokumen identitas, dan bukti alamat, dengan tujuan yang jelas dan persetujuan."
+      },
+      "invoice_submission": {
+        "name": "Pengajuan Faktur",
+        "description": "Pemasok mengajukan faktur dengan rincian item; subtotal, pajak, dan total dihitung otomatis."
+      },
+      "insurance_claim": {
+        "name": "Klaim Asuransi",
+        "description": "Polis, insiden, bukti, dan rincian kerugian; total klaim bertambah seiring item dimasukkan."
+      },
+      "nda_signoff": {
+        "name": "NDA / Penandatanganan Perjanjian",
+        "description": "Tampilkan perjanjian, konfirmasi setiap poin utama, lalu tanda tangani — dengan data perusahaan jika menandatangani atas namanya."
       }
     },
     "openGallery": "Buka galeri lengkap",

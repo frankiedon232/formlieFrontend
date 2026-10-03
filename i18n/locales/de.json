@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Referenzprüfung",
         "description": "Strukturierte Fragen für Referenzgeber, bewertete Fähigkeiten mit Durchschnitt und eine klare Antwort zur Wiedereinstellung."
+      },
+      "student_enrolment": {
+        "name": "Einschreibung / Aufnahme",
+        "description": "Angaben zu Lernenden und Erziehungsberechtigten, Studiengang, bisheriger Ausbildung, Unterlagen und Einwilligung."
+      },
+      "course_evaluation": {
+        "name": "Kursbewertung",
+        "description": "Lernende bewerten den Kurs anhand von sechs Aussagen; ein Gesamtwert zeigt, wie der Kurs ankommt."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Leistungstest",
+        "description": "Automatisch bewertete Multiple-Choice-Fragen mit Prozentwert und Bestehensgrenze."
+      },
+      "scholarship_application": {
+        "name": "Stipendienantrag",
+        "description": "Studienleistungen, finanzieller Bedarf und Motivationsschreiben – mit Eignungswert für das Auswahlgremium."
+      },
+      "permission_slip": {
+        "name": "Einverständniserklärung der Eltern",
+        "description": "Erlaubnis für Ausflug oder Aktivität mit medizinischen Hinweisen, Notfallkontakt und Unterschrift der Erziehungsberechtigten."
+      },
+      "attendance_register": {
+        "name": "Anwesenheitsliste",
+        "description": "Bis zu acht Lernende als anwesend, verspätet oder abwesend erfassen; Anzahl und Quote werden automatisch berechnet."
+      },
+      "academic_survey": {
+        "name": "Umfrage zum Studium",
+        "description": "Kurze Umfrage zu Lernerfahrung, Unterstützung und Wohlbefinden für Lernende aller Stufen."
+      },
+      "it_support_ticket": {
+        "name": "IT-Support-Ticket",
+        "description": "IT-Problem melden; Auswirkung × Dringlichkeit bestimmt die Priorität, damit Wichtiges zuerst bearbeitet wird."
+      },
+      "change_request": {
+        "name": "Änderungsantrag",
+        "description": "Geplante Änderung beschreiben – mit Risikowert aus Auswirkung und Wahrscheinlichkeit, Rollback-Plan und Freigabe."
+      },
+      "asset_checkout": {
+        "name": "Geräteausgabe / Inventar",
+        "description": "Ausgabe und Rückgabe von Geräten mit Inventarnummer, Zustand, Rückgabedatum und Unterschrift erfassen."
+      },
+      "work_order": {
+        "name": "Wartung / Arbeitsauftrag",
+        "description": "Wartung mit Ort, Priorität und Fotos anfordern; Stunden und Material ergeben die Auftragskosten."
+      },
+      "purchase_requisition": {
+        "name": "Bestellanforderung",
+        "description": "Bis zu vier Artikel mit Menge und Preis anfordern; die Gesamtsumme bestimmt die nötige Freigabe."
+      },
+      "vendor_registration": {
+        "name": "Lieferanten- / Anbieterregistrierung",
+        "description": "Firma, Kontakte, Steuer- und Bankdaten (IBAN / SWIFT) sowie Unterlagen für das Lieferanten-Onboarding."
+      },
+      "site_inspection": {
+        "name": "Standort- / Vor-Ort-Prüfbericht",
+        "description": "Bestanden-/Nicht-bestanden-Prüfungen vor Ort mit Erfolgsquote, Ergebnis, Befunden und Fotos."
+      },
+      "proof_of_delivery": {
+        "name": "Lieferbestätigung / Liefernachweis",
+        "description": "Erhaltene Ware, Zustand, Foto und Unterschrift des Empfängers bestätigen – bei Schäden werden Details abgefragt."
+      },
+      "quality_control": {
+        "name": "Checkliste Qualitätskontrolle",
+        "description": "Chargendaten, Bestanden-/Nicht-bestanden-Kriterien und Messwerte; die Erfolgsquote ergibt die Freigabeentscheidung."
+      },
+      "loan_application": {
+        "name": "Kredit- / Darlehensantrag",
+        "description": "Antragsteller, Beschäftigung und Finanzen – mit Schulden-Einkommens-Quote und geschätzter Monatsrate."
+      },
+      "kyc_verification": {
+        "name": "KYC / Identitätsprüfung",
+        "description": "Personalien, Ausweisdokument und Adressnachweis – mit klarem Zweck und Einwilligung."
+      },
+      "invoice_submission": {
+        "name": "Rechnungseinreichung",
+        "description": "Lieferanten reichen eine Rechnung mit Positionen ein; Zwischensumme, Steuer und Gesamtbetrag werden berechnet."
+      },
+      "insurance_claim": {
+        "name": "Schadensmeldung",
+        "description": "Police, Vorfall, Nachweise und einzelne Schäden; die Schadenssumme wird bei jeder Position aktualisiert."
+      },
+      "nda_signoff": {
+        "name": "NDA / Vereinbarung unterzeichnen",
+        "description": "Vereinbarung anzeigen, jeden Kernpunkt bestätigen und unterschreiben – mit Firmendaten bei Unterzeichnung für ein Unternehmen."
       }
     },
     "openGallery": "Ganze Galerie öffnen",

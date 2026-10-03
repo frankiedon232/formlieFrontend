@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Kiểm tra người tham chiếu",
         "description": "Câu hỏi có cấu trúc cho người tham chiếu, chấm điểm kỹ năng với điểm trung bình và câu trả lời rõ ràng về việc tuyển lại."
+      },
+      "student_enrolment": {
+        "name": "Ghi danh / Tuyển sinh",
+        "description": "Thông tin học sinh và phụ huynh, chương trình chọn học, quá trình học trước, giấy tờ và sự đồng ý."
+      },
+      "course_evaluation": {
+        "name": "Đánh giá khóa học",
+        "description": "Học viên chấm khóa học qua sáu nhận định; điểm tổng cho thấy khóa học được đón nhận thế nào."
+      },
+      "quiz_assessment": {
+        "name": "Câu đố / Bài kiểm tra",
+        "description": "Câu hỏi trắc nghiệm chấm điểm tự động, có tỷ lệ phần trăm và điểm đạt."
+      },
+      "scholarship_application": {
+        "name": "Đơn xin học bổng",
+        "description": "Thành tích học tập, nhu cầu tài chính và bài luận cá nhân — kèm điểm đủ điều kiện cho hội đồng."
+      },
+      "permission_slip": {
+        "name": "Giấy đồng ý / Cho phép của phụ huynh",
+        "description": "Cho phép tham gia chuyến đi hoặc hoạt động, kèm ghi chú y tế, liên hệ khẩn cấp và chữ ký phụ huynh."
+      },
+      "attendance_register": {
+        "name": "Sổ điểm danh",
+        "description": "Đánh dấu tối đa tám học viên có mặt, đi muộn hoặc vắng; số người và tỷ lệ có mặt được tính tự động."
+      },
+      "academic_survey": {
+        "name": "Khảo sát học tập",
+        "description": "Khảo sát ngắn về trải nghiệm học tập, hỗ trợ và sức khỏe tinh thần cho học viên mọi cấp độ."
+      },
+      "it_support_ticket": {
+        "name": "Phiếu hỗ trợ IT",
+        "description": "Báo cáo sự cố IT; mức ảnh hưởng × mức khẩn cấp xác định ưu tiên để xử lý đúng phiếu trước."
+      },
+      "change_request": {
+        "name": "Yêu cầu thay đổi",
+        "description": "Mô tả thay đổi dự kiến với điểm rủi ro từ mức ảnh hưởng và khả năng xảy ra, kế hoạch khôi phục và phê duyệt."
+      },
+      "asset_checkout": {
+        "name": "Mượn tài sản / Kiểm kê",
+        "description": "Ghi nhận cho mượn hoặc trả thiết bị với mã tài sản, tình trạng, ngày trả và chữ ký."
+      },
+      "work_order": {
+        "name": "Bảo trì / Lệnh công việc",
+        "description": "Yêu cầu bảo trì với vị trí, mức ưu tiên và ảnh; giờ công và phụ tùng cho ra chi phí công việc."
+      },
+      "purchase_requisition": {
+        "name": "Đề nghị mua hàng",
+        "description": "Đề nghị tối đa bốn mặt hàng với số lượng và giá; tổng tiền quyết định cấp phê duyệt cần thiết."
+      },
+      "vendor_registration": {
+        "name": "Đăng ký nhà cung cấp",
+        "description": "Thông tin công ty, người liên hệ, thuế và ngân hàng (IBAN / SWIFT) cùng giấy tờ để tiếp nhận nhà cung cấp."
+      },
+      "site_inspection": {
+        "name": "Báo cáo kiểm tra công trường / hiện trường",
+        "description": "Kiểm tra đạt / không đạt tại chỗ, kèm tỷ lệ đạt, kết luận, phát hiện và ảnh."
+      },
+      "proof_of_delivery": {
+        "name": "Xác nhận giao hàng / Bằng chứng giao hàng",
+        "description": "Xác nhận hàng đã đến, tình trạng, ảnh và chữ ký người nhận — nếu hư hỏng sẽ yêu cầu chi tiết."
+      },
+      "quality_control": {
+        "name": "Danh sách kiểm tra chất lượng",
+        "description": "Thông tin lô, tiêu chí đạt / không đạt và số đo; tỷ lệ đạt cho ra quyết định xuất xưởng."
+      },
+      "loan_application": {
+        "name": "Đơn vay / Tín dụng",
+        "description": "Người vay, việc làm và tài chính, kèm tỷ lệ nợ trên thu nhập và khoản trả hàng tháng ước tính."
+      },
+      "kyc_verification": {
+        "name": "KYC / Xác minh danh tính",
+        "description": "Thông tin danh tính, giấy tờ tùy thân và bằng chứng địa chỉ, với mục đích rõ ràng và sự đồng ý."
+      },
+      "invoice_submission": {
+        "name": "Gửi hóa đơn",
+        "description": "Nhà cung cấp gửi hóa đơn kèm từng dòng hàng; tạm tính, thuế và tổng cộng được tính sẵn."
+      },
+      "insurance_claim": {
+        "name": "Yêu cầu bồi thường bảo hiểm",
+        "description": "Hợp đồng, sự cố, bằng chứng và tổn thất từng khoản; tổng yêu cầu được cộng dần khi nhập các khoản."
+      },
+      "nda_signoff": {
+        "name": "NDA / Ký thỏa thuận",
+        "description": "Hiển thị thỏa thuận, xác nhận từng điểm chính và ký — kèm thông tin công ty khi ký thay mặt công ty."
       }
     },
     "openGallery": "Mở toàn bộ thư viện",

@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Verifica delle referenze",
         "description": "Domande strutturate per i referenti, competenze valutate con una media e una risposta chiara sulla riassunzione."
+      },
+      "student_enrolment": {
+        "name": "Iscrizione / Ammissione studenti",
+        "description": "Dati dello studente e del genitore o tutore, corso scelto, studi precedenti, documenti e consenso."
+      },
+      "course_evaluation": {
+        "name": "Valutazione del corso",
+        "description": "Gli studenti valutano il corso su sei affermazioni; un punteggio complessivo mostra come viene accolto."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Verifica",
+        "description": "Domande a scelta multipla corrette in automatico, con percentuale e soglia di superamento."
+      },
+      "scholarship_application": {
+        "name": "Domanda di borsa di studio",
+        "description": "Curriculum accademico, bisogno economico e lettera personale, con un punteggio di idoneità per la commissione."
+      },
+      "permission_slip": {
+        "name": "Consenso / Autorizzazione dei genitori",
+        "description": "Autorizzazione per gita o attività con note mediche, contatto di emergenza e firma del genitore o tutore."
+      },
+      "attendance_register": {
+        "name": "Registro presenze",
+        "description": "Segna fino a otto studenti come presenti, in ritardo o assenti; numero e percentuale di presenze si calcolano da soli."
+      },
+      "academic_survey": {
+        "name": "Sondaggio accademico",
+        "description": "Un breve sondaggio su esperienza di studio, supporto e benessere per studenti di ogni livello."
+      },
+      "it_support_ticket": {
+        "name": "Ticket di supporto IT",
+        "description": "Segnala un problema IT; impatto × urgenza stabilisce la priorità così i ticket giusti passano per primi."
+      },
+      "change_request": {
+        "name": "Richiesta di modifica",
+        "description": "Descrivi una modifica pianificata con punteggio di rischio da impatto e probabilità, piano di rollback e approvazione."
+      },
+      "asset_checkout": {
+        "name": "Prestito attrezzature / Inventario",
+        "description": "Registra consegna o restituzione dell’attrezzatura con codice cespite, condizioni, data di rientro e firma."
+      },
+      "work_order": {
+        "name": "Manutenzione / Ordine di lavoro",
+        "description": "Richiedi un intervento con luogo, priorità e foto; ore e ricambi danno il costo del lavoro."
+      },
+      "purchase_requisition": {
+        "name": "Richiesta di acquisto",
+        "description": "Richiedi fino a quattro articoli con quantità e prezzo; il totale decide quale approvazione serve."
+      },
+      "vendor_registration": {
+        "name": "Registrazione fornitori",
+        "description": "Azienda, contatti, dati fiscali e bancari (IBAN / SWIFT) e documenti per l’accreditamento dei fornitori."
+      },
+      "site_inspection": {
+        "name": "Rapporto di ispezione in sito / sul campo",
+        "description": "Controlli superato / non superato in loco con percentuale di successo, esito, rilievi e foto."
+      },
+      "proof_of_delivery": {
+        "name": "Conferma / Prova di consegna",
+        "description": "Conferma cosa è arrivato, in che condizioni, con foto e firma del destinatario; in caso di danni vengono chiesti i dettagli."
+      },
+      "quality_control": {
+        "name": "Checklist controllo qualità",
+        "description": "Dati del lotto, criteri superato / non superato e misurazioni; la percentuale di successo decide il rilascio."
+      },
+      "loan_application": {
+        "name": "Richiesta di prestito / credito",
+        "description": "Richiedente, lavoro e situazione finanziaria, con rapporto debito/reddito e rata mensile stimata."
+      },
+      "kyc_verification": {
+        "name": "KYC / Verifica dell’identità",
+        "description": "Dati anagrafici, documento d’identità e prova di residenza, con finalità chiara e consenso."
+      },
+      "invoice_submission": {
+        "name": "Invio fatture",
+        "description": "I fornitori inviano una fattura con le singole voci; imponibile, imposte e totale vengono calcolati."
+      },
+      "insurance_claim": {
+        "name": "Denuncia di sinistro",
+        "description": "Polizza, evento, prove e danni voce per voce; il totale si aggiorna man mano che inserisci le voci."
+      },
+      "nda_signoff": {
+        "name": "NDA / Firma dell’accordo",
+        "description": "Mostra l’accordo, conferma ogni punto chiave e firma, con i dati aziendali se firmi per conto di un’azienda."
       }
     },
     "openGallery": "Apri la galleria completa",

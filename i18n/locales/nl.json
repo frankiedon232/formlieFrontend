@@ -1148,6 +1148,90 @@
       "reference_check": {
         "name": "Referentiecheck",
         "description": "Gestructureerde vragen voor referenten, beoordeelde vaardigheden met een gemiddelde en een duidelijk antwoord over opnieuw aannemen."
+      },
+      "student_enrolment": {
+        "name": "Inschrijving / Toelating studenten",
+        "description": "Gegevens van student en ouder/voogd, gekozen opleiding, eerdere opleiding, documenten en toestemming."
+      },
+      "course_evaluation": {
+        "name": "Cursusevaluatie",
+        "description": "Studenten beoordelen de cursus op zes stellingen; een totaalscore laat zien hoe de cursus valt."
+      },
+      "quiz_assessment": {
+        "name": "Quiz / Toets",
+        "description": "Meerkeuzevragen die automatisch worden nagekeken, met percentage en slaaggrens."
+      },
+      "scholarship_application": {
+        "name": "Beursaanvraag",
+        "description": "Studieresultaten, financiële behoefte en een motivatie — met een geschiktheidsscore voor de commissie."
+      },
+      "permission_slip": {
+        "name": "Toestemmingsformulier ouders",
+        "description": "Toestemming voor een uitstap of activiteit met medische info, noodcontact en handtekening van ouder/voogd."
+      },
+      "attendance_register": {
+        "name": "Presentielijst",
+        "description": "Markeer tot acht deelnemers als aanwezig, te laat of afwezig; aantal en percentage worden automatisch berekend."
+      },
+      "academic_survey": {
+        "name": "Onderwijsenquête",
+        "description": "Een korte enquête over studie-ervaring, begeleiding en welzijn voor studenten van elk niveau."
+      },
+      "it_support_ticket": {
+        "name": "IT-supportticket",
+        "description": "Meld een IT-probleem; impact × urgentie bepaalt de prioriteit, zodat de juiste tickets eerst gaan."
+      },
+      "change_request": {
+        "name": "Wijzigingsverzoek",
+        "description": "Beschrijf een geplande wijziging met een risicoscore uit impact en kans, een rollbackplan en goedkeuring."
+      },
+      "asset_checkout": {
+        "name": "Uitlenen middelen / Inventaris",
+        "description": "Registreer uitgifte of inname van apparatuur met assettag, staat, retourdatum en handtekening."
+      },
+      "work_order": {
+        "name": "Onderhoud / Werkorder",
+        "description": "Vraag onderhoud aan met locatie, prioriteit en foto’s; uren en onderdelen bepalen de kosten."
+      },
+      "purchase_requisition": {
+        "name": "Inkoopaanvraag",
+        "description": "Vraag tot vier artikelen aan met aantal en prijs; het totaal bepaalt welke goedkeuring nodig is."
+      },
+      "vendor_registration": {
+        "name": "Registratie leverancier",
+        "description": "Bedrijf, contactpersonen, fiscale en bankgegevens (IBAN / SWIFT) en documenten voor het onboarden van leveranciers."
+      },
+      "site_inspection": {
+        "name": "Inspectierapport locatie / veld",
+        "description": "Goed/fout-controles ter plaatse met slagingspercentage, uitkomst, bevindingen en foto’s."
+      },
+      "proof_of_delivery": {
+        "name": "Leveringsbevestiging / Afleverbewijs",
+        "description": "Bevestig wat er is aangekomen, de staat, een foto en de handtekening van de ontvanger — bij schade worden details gevraagd."
+      },
+      "quality_control": {
+        "name": "Checklist kwaliteitscontrole",
+        "description": "Batchgegevens, goed/fout-criteria en metingen; het slagingspercentage bepaalt of de batch wordt vrijgegeven."
+      },
+      "loan_application": {
+        "name": "Lening- / Kredietaanvraag",
+        "description": "Aanvrager, werk en financiën, met schuld-inkomenratio en een geschat maandbedrag."
+      },
+      "kyc_verification": {
+        "name": "KYC / Identiteitsverificatie",
+        "description": "Identiteitsgegevens, identiteitsbewijs en adresbewijs, met een duidelijk doel en toestemming."
+      },
+      "invoice_submission": {
+        "name": "Factuur indienen",
+        "description": "Leveranciers dienen een factuur met regels in; subtotaal, btw en totaal worden berekend."
+      },
+      "insurance_claim": {
+        "name": "Schadeclaim",
+        "description": "Polis, incident, bewijs en gespecificeerde schade; het totaal loopt op terwijl je posten invoert."
+      },
+      "nda_signoff": {
+        "name": "NDA / Overeenkomst ondertekenen",
+        "description": "Toon de overeenkomst, bevestig elk kernpunt en teken — met bedrijfsgegevens als je namens een bedrijf tekent."
       }
     },
     "openGallery": "Volledige galerij openen",
