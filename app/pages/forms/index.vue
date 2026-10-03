@@ -47,6 +47,8 @@ const moveOpen = ref(false)
 const tagsTarget = ref<FormSummary | null>(null)
 const tagsOpen = ref(false)
 const foldersOpen = ref(false)
+const templateSource = ref<FormSummary | null>(null)
+const templateOpen = ref(false)
 
 const rowActions = useFormMenu(actions, {
   rename: form => (renamingId.value = form.id),
@@ -57,6 +59,10 @@ const rowActions = useFormMenu(actions, {
   tags: form => {
     tagsTarget.value = form
     tagsOpen.value = true
+  },
+  saveTemplate: form => {
+    templateSource.value = form
+    templateOpen.value = true
   },
 })
 
@@ -266,6 +272,7 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
       @move="onMove"
       @folder-created="loadMeta"
     />
+    <TemplatesSaveModal v-model:open="templateOpen" :form="templateSource" />
     <FormsListTagsModal
       v-model:open="tagsOpen"
       :tags="tagsTarget?.tags ?? []"

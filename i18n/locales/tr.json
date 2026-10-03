@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Formun mevcut durumunda bu mümkün değil. Yenileyip tekrar deneyin.",
     "FRM-FORM-1008": "Bu adda bir klasör zaten var.",
     "FRM-FORM-1009": "Bu adda bir liste zaten var.",
-    "FRM-FORM-1010": "Bu ada sahip bir tema zaten var."
+    "FRM-FORM-1010": "Bu ada sahip bir tema zaten var.",
+    "FRM-FORM-1011": "Sistem şablonları değiştirilemez. Kendinizinkini oluşturmak için çoğaltın.",
+    "FRM-FORM-1012": "Bu ada sahip bir şablon zaten var."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -603,7 +605,8 @@
       "folder": "Klasör",
       "saved_field": "Kayıtlı alan",
       "option_list": "Seçenek listesi",
-      "theme": "Tema"
+      "theme": "Tema",
+      "template": "Şablon"
     },
     "field": {
       "name": "Ad",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Liste silindi",
       "forms_theme_created": "Tema kaydedildi",
       "forms_theme_updated": "Tema güncellendi",
-      "forms_theme_deleted": "Tema silindi"
+      "forms_theme_deleted": "Tema silindi",
+      "forms_template_created": "Şablon oluşturuldu",
+      "forms_template_updated": "Şablon güncellendi",
+      "forms_template_duplicated": "Şablon çoğaltıldı",
+      "forms_template_deleted": "Şablon silindi"
     },
     "detail": {
       "who": "Kim",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Olay bildirimi"
       }
-    }
+    },
+    "subtitle": "Hazır bir formla başlayın — her şablonun kendi tasarımı vardır ve yayınlamadan önce her şeyi değiştirebilirsiniz",
+    "blank": "Boş form",
+    "all": "Tümü",
+    "search": "Şablonlarda ara…",
+    "use": "Şablonu kullan",
+    "open": "Aç",
+    "duplicate": "Çoğalt",
+    "delete": "Sil",
+    "view": "Şablonu görüntüle",
+    "preview": "Şablon önizlemesi",
+    "minutes": "{n} dk",
+    "questions": "{count} soru | {count} soru",
+    "usedTitle": "Bu şablondan oluşturulan formlar",
+    "neverUsed": "Henüz kullanılmadı",
+    "nameRequired": "Bir ad verin.",
+    "description": "Açıklama",
+    "descriptionPlaceholder": "Bu şablon ne için?",
+    "categories": {
+      "business": "İş ve müşteri",
+      "hr": "İK ve çalışma ortamı",
+      "health_safety": "Sağlık ve güvenlik",
+      "events": "Etkinlikler ve rezervasyonlar",
+      "hospitality": "Konaklama ve ağırlama",
+      "education": "Eğitim",
+      "operations_it": "Operasyon ve BT",
+      "finance_legal": "Finans ve hukuk",
+      "community": "Topluluk ve diğer",
+      "real_estate": "Gayrimenkul",
+      "sales": "Satış"
+    },
+    "filter": {
+      "category": "Kategori",
+      "source": "Oluşturan",
+      "features": "İçerik"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Çalışma alanınız"
+    },
+    "badge": {
+      "calculations": "Hesaplamalar",
+      "logic": "Mantık",
+      "workspace": "Çalışma alanı"
+    },
+    "col": {
+      "name": "Ad",
+      "category": "Kategori",
+      "questions": "Sorular",
+      "forms": "Formlar",
+      "responses": "Yanıtlar",
+      "lastUsed": "Son kullanım"
+    },
+    "sort": {
+      "popular": "En çok kullanılan",
+      "responses": "En çok yanıt alan",
+      "name": "Ad (A–Z)",
+      "short": "En hızlı doldurulan",
+      "recent": "Son güncellenen"
+    },
+    "emptyTitle": "Eşleşen şablon yok",
+    "emptyDesc": "Başka bir kategori veya arama deneyin ya da filtreleri temizleyin.",
+    "useTitle": "Şablonu kullan",
+    "useDesc": "Yeni formunuz düzenleyicide açılır — yayınlamadan önce istediğiniz soruyu, kuralı, hesaplamayı veya tasarımı değiştirin.",
+    "saveAs": "Şablon olarak kaydet",
+    "saveTitle": "Şablon olarak kaydet",
+    "saveDesc": "Sorular, mantık, hesaplamalar ve tasarım çalışma alanınız için bir şablona dönüşür. Yanıtlar asla dahil edilmez.",
+    "saveButton": "Şablonu kaydet",
+    "deleteTitle": "“{name}” silinsin mi?",
+    "deleteDesc": "Bu şablondan oluşturulan formlar sorularını ve tasarımlarını korur.",
+    "included": "Neler dahil",
+    "calculationsTitle": "Hesaplamalar",
+    "teamOnly": "Yalnızca ekip",
+    "usage": "Çalışma alanınızdaki kullanım",
+    "facts": {
+      "pages": "{count} sayfa | {count} sayfa",
+      "logic": "{count} mantık kuralı | {count} mantık kuralı",
+      "calculations": "{count} hesaplama | {count} hesaplama"
+    },
+    "stats": {
+      "forms": "Formlar",
+      "responses": "Yanıtlar",
+      "lastUsed": "Son kullanım"
+    },
+    "editableHint": "Kullandıktan sonra her şey değiştirilebilir: sorular, mantık, hesaplamalar ve tasarım.",
+    "formsFrom": "Bu şablondan oluşturulan formlar ({count})",
+    "noFormsTitle": "Bu şablondan henüz form yok",
+    "noFormsDesc": "İlk formu oluşturmak için şablonu kullanın.",
+    "notFound": "Bu şablon kullanılamıyor",
+    "notFoundDesc": "Silinmiş olabilir. Galeriden başka bir şablon seçin.",
+    "backToGallery": "Şablonlara dön",
+    "toast": {
+      "created": "“{name}” şablondan oluşturuldu",
+      "duplicated": "“{name}” şablonlarınıza eklendi",
+      "deleted": "“{name}” silindi",
+      "saved": "“{name}” şablon olarak kaydedildi",
+      "updated": "“{name}” güncellendi"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Müşteri Geri Bildirimi",
+        "description": "Müşterilerin hizmetiniz hakkında ne düşündüğünü öğrenin — memnun olmayanlar için ek bir soruyla."
+      },
+      "csat_nps": {
+        "name": "Müşteri Memnuniyeti (CSAT / NPS) Anketi",
+        "description": "Memnuniyeti (CSAT), çabayı ve sadakati (NPS) ölçün — her yanıt destekçi, pasif veya eleştirmen olarak gruplanır."
+      },
+      "product_review": {
+        "name": "Ürün Değerlendirmesi",
+        "description": "Yıldız puanları, ortalama skor, fotoğraflar ve yayın onayıyla ayrıntılı ürün değerlendirmeleri toplayın."
+      },
+      "contact_lead": {
+        "name": "İletişim / Bilgi Talep Formu",
+        "description": "Her talebi konusuna göre yönlendiren basit ve samimi bir iletişim formu."
+      },
+      "quote_request": {
+        "name": "Teklif / Fiyat Talebi",
+        "description": "Müşteriler talebini oluşturur ve paket, ek hizmetler ve miktara göre tahmini bir fiyat görür."
+      },
+      "order_form": {
+        "name": "Sipariş Formu",
+        "description": "En fazla üç ürün satırı, teslimat seçimi ve anlık toplamla sipariş alın."
+      },
+      "complaint_dispute": {
+        "name": "Şikâyet / İtiraz Formu",
+        "description": "Şikâyetleri ve itirazları kanıtlar, istenen sonuç ve önceki iletişimle kaydedin."
+      },
+      "service_request": {
+        "name": "Servis Talebi",
+        "description": "Öncelik, tercih edilen zaman ve sorunun fotoğraflarıyla servis ziyareti planlayın."
+      },
+      "lead_capture_newsletter": {
+        "name": "Potansiyel Müşteri Toplama / Bülten Kaydı",
+        "description": "Onay, ilgi alanları ve kampanya takibi yerleşik olarak listenizi büyütün."
+      },
+      "return_refund": {
+        "name": "İade / Para İadesi Talebi",
+        "description": "İadeleri neden, fotoğraflar, istenen sonuç ve hesaplanan iade tutarıyla yönetin."
+      },
+      "job_application": {
+        "name": "İş Başvurusu",
+        "description": "Eksiksiz bir başvuru: kişisel bilgiler, pozisyon, özgeçmiş yükleme, maaş beklentisi ve onay."
+      },
+      "employee_onboarding": {
+        "name": "Çalışan İşe Alıştırma",
+        "description": "Yeni çalışanın ilk günden önce paylaştığı her şey: bilgiler, acil durum kişisi, ekipman ve ödeme."
+      },
+      "exit_interview": {
+        "name": "Çıkış Görüşmesi",
+        "description": "Çalışanların neden ayrıldığını ve onları neyin tutacağını, tüm çalışan deneyimine dair puanlarla öğrenin."
+      },
+      "leave_request": {
+        "name": "İzin Talebi",
+        "description": "Gün sayısı tarihlerden hesaplanarak, yerine bakacak kişi ve destekleyici belgelerle izin talep edin."
+      },
+      "performance_review": {
+        "name": "Performans Değerlendirmesi",
+        "description": "Altı yetkinliği puanlayın; ortalama skor ve değerlendirme seviyesi sizin için hesaplanır."
+      },
+      "engagement_survey": {
+        "name": "Çalışan Bağlılığı Anketi",
+        "description": "Gurur, amaç, gelişim ve destek üzerine anonim bir nabız anketi — 0 ile 100 arasında bağlılık endeksiyle."
+      },
+      "expense_reimbursement": {
+        "name": "Masraf Beyanı",
+        "description": "Fişleriyle birlikte en fazla üç masraf bildirin; toplam kendiliğinden hesaplanır."
+      },
+      "timesheet": {
+        "name": "Puantaj Formu",
+        "description": "Günlük olarak haftalık saatler, toplam ve sözleşmedeki saatlere göre fazla mesai."
+      },
+      "training_feedback": {
+        "name": "Eğitim Değerlendirmesi",
+        "description": "Bir kursun içeriğini, eğitmenini, materyallerini ve uygunluğunu puanlayın — ortalama skorla."
+      },
+      "reference_check": {
+        "name": "Referans Kontrolü",
+        "description": "Referanslar için yapılandırılmış sorular, ortalamalı beceri puanları ve yeniden işe alım hakkında net bir yanıt."
+      }
+    },
+    "openGallery": "Galerinin tamamını aç"
   },
   "builder": {
     "crumb": "Düzenleyici",
@@ -1137,7 +1324,9 @@
       "consentText": "Onay metni",
       "consentTextHint": "Yanıtlayanların kabul ettiği şey, örn. “Koşulları ve gizlilik bildirimini kabul ediyorum.”",
       "consentLink": "Koşulların bağlantısı (isteğe bağlı)",
-      "consentLinkLabel": "Bağlantı metni"
+      "consentLinkLabel": "Bağlantı metni",
+      "showResult": "Sonucu yanıtlayanlara göster",
+      "internalHint": "Her yanıtla hesaplanır ve kaydedilir, ancak yalnızca ekibiniz görür (ör. bir risk düzeyi veya sadakat grubu)."
     },
     "shortcuts": {
       "title": "Kısayollar",

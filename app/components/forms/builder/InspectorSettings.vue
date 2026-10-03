@@ -200,6 +200,15 @@ const num = (value: unknown) =>
         @update:model-value="v => setProp({ formula: String(v) })"
       />
     </UFormField>
+    <!-- Internal results (risk level, loyalty group…) are worked out but not shown to respondents. -->
+    <USwitch
+      v-if="has('formula')"
+      :model-value="!p.internal"
+      :label="t('builder.inspector.showResult')"
+      :description="p.internal ? t('builder.inspector.internalHint') : undefined"
+      color="neutral"
+      @update:model-value="v => setProp({ internal: !v })"
+    />
   </section>
 
 </template>

@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Ce n’est pas possible dans l’état actuel du formulaire. Actualisez et réessayez.",
     "FRM-FORM-1008": "Un dossier porte déjà ce nom.",
     "FRM-FORM-1009": "Une liste portant ce nom existe déjà.",
-    "FRM-FORM-1010": "Un thème portant ce nom existe déjà."
+    "FRM-FORM-1010": "Un thème portant ce nom existe déjà.",
+    "FRM-FORM-1011": "Les modèles système ne peuvent pas être modifiés. Dupliquez-le pour créer le vôtre.",
+    "FRM-FORM-1012": "Un modèle portant ce nom existe déjà."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -603,7 +605,8 @@
       "folder": "Dossier",
       "saved_field": "Champ enregistré",
       "option_list": "Liste d’options",
-      "theme": "Thème"
+      "theme": "Thème",
+      "template": "Modèle"
     },
     "field": {
       "name": "Nom",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Liste supprimée",
       "forms_theme_created": "Thème enregistré",
       "forms_theme_updated": "Thème mis à jour",
-      "forms_theme_deleted": "Thème supprimé"
+      "forms_theme_deleted": "Thème supprimé",
+      "forms_template_created": "Modèle créé",
+      "forms_template_updated": "Modèle mis à jour",
+      "forms_template_duplicated": "Modèle dupliqué",
+      "forms_template_deleted": "Modèle supprimé"
     },
     "detail": {
       "who": "Qui",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Déclaration d’incident"
       }
-    }
+    },
+    "subtitle": "Partez d’un formulaire prêt à l’emploi – chaque modèle a son propre design, et vous pouvez tout modifier avant de publier",
+    "blank": "Formulaire vierge",
+    "all": "Tous",
+    "search": "Rechercher des modèles…",
+    "use": "Utiliser le modèle",
+    "open": "Ouvrir",
+    "duplicate": "Dupliquer",
+    "delete": "Supprimer",
+    "view": "Voir le modèle",
+    "preview": "Aperçu du modèle",
+    "minutes": "{n} min",
+    "questions": "{count} question | {count} questions",
+    "usedTitle": "Formulaires créés à partir de ce modèle",
+    "neverUsed": "Pas encore utilisé",
+    "nameRequired": "Donnez-lui un nom.",
+    "description": "Description",
+    "descriptionPlaceholder": "À quoi sert ce modèle ?",
+    "categories": {
+      "business": "Entreprise et clients",
+      "hr": "RH et vie au travail",
+      "health_safety": "Santé et sécurité",
+      "events": "Événements et réservations",
+      "hospitality": "Hôtellerie et restauration",
+      "education": "Éducation",
+      "operations_it": "Opérations et informatique",
+      "finance_legal": "Finance et juridique",
+      "community": "Associations et autres",
+      "real_estate": "Immobilier",
+      "sales": "Ventes"
+    },
+    "filter": {
+      "category": "Catégorie",
+      "source": "Créé par",
+      "features": "Comprend"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Votre espace de travail"
+    },
+    "badge": {
+      "calculations": "Calculs",
+      "logic": "Logique",
+      "workspace": "Espace de travail"
+    },
+    "col": {
+      "name": "Nom",
+      "category": "Catégorie",
+      "questions": "Questions",
+      "forms": "Formulaires",
+      "responses": "Réponses",
+      "lastUsed": "Dernière utilisation"
+    },
+    "sort": {
+      "popular": "Les plus utilisés",
+      "responses": "Le plus de réponses",
+      "name": "Nom (A–Z)",
+      "short": "Les plus rapides à remplir",
+      "recent": "Mis à jour récemment"
+    },
+    "emptyTitle": "Aucun modèle ne correspond",
+    "emptyDesc": "Essayez une autre catégorie ou recherche, ou effacez les filtres.",
+    "useTitle": "Utiliser le modèle",
+    "useDesc": "Votre nouveau formulaire s’ouvre dans l’éditeur – modifiez n’importe quelle question, règle, calcul ou le design avant de publier.",
+    "saveAs": "Enregistrer comme modèle",
+    "saveTitle": "Enregistrer comme modèle",
+    "saveDesc": "Les questions, la logique, les calculs et le design deviennent un modèle pour votre espace de travail. Les réponses ne sont jamais incluses.",
+    "saveButton": "Enregistrer le modèle",
+    "deleteTitle": "Supprimer « {name} » ?",
+    "deleteDesc": "Les formulaires créés à partir de celui-ci conservent leurs questions et leur design.",
+    "included": "Ce qui est inclus",
+    "calculationsTitle": "Calculs",
+    "teamOnly": "Équipe uniquement",
+    "usage": "Utilisation dans votre espace de travail",
+    "facts": {
+      "pages": "{count} page | {count} pages",
+      "logic": "{count} règle logique | {count} règles logiques",
+      "calculations": "{count} calcul | {count} calculs"
+    },
+    "stats": {
+      "forms": "Formulaires",
+      "responses": "Réponses",
+      "lastUsed": "Dernière utilisation"
+    },
+    "editableHint": "Tout peut être modifié après utilisation : questions, logique, calculs et design.",
+    "formsFrom": "Formulaires créés à partir de ce modèle ({count})",
+    "noFormsTitle": "Aucun formulaire créé à partir de ce modèle",
+    "noFormsDesc": "Utilisez le modèle pour créer le premier.",
+    "notFound": "Ce modèle n’est pas disponible",
+    "notFoundDesc": "Il a peut-être été supprimé. Choisissez-en un autre dans la galerie.",
+    "backToGallery": "Retour aux modèles",
+    "toast": {
+      "created": "« {name} » créé à partir du modèle",
+      "duplicated": "« {name} » ajouté à vos modèles",
+      "deleted": "« {name} » supprimé",
+      "saved": "« {name} » enregistré comme modèle",
+      "updated": "« {name} » mis à jour"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Avis clients",
+        "description": "Découvrez ce que vos clients pensent de votre service – avec un suivi lorsqu’une personne est mécontente."
+      },
+      "csat_nps": {
+        "name": "Enquête de satisfaction client (CSAT / NPS)",
+        "description": "Mesurez la satisfaction (CSAT), l’effort et la fidélité (NPS) – chaque réponse est classée en promoteur, passif ou détracteur."
+      },
+      "product_review": {
+        "name": "Avis produit",
+        "description": "Recueillez des avis produits détaillés avec notes en étoiles, score moyen, photos et consentement à la publication."
+      },
+      "contact_lead": {
+        "name": "Formulaire de contact / demande",
+        "description": "Un formulaire de contact simple et convivial qui oriente chaque demande selon son sujet."
+      },
+      "quote_request": {
+        "name": "Demande de devis",
+        "description": "Vos clients composent leur demande et voient une estimation indicative selon la formule, les options et la quantité."
+      },
+      "order_form": {
+        "name": "Bon de commande",
+        "description": "Prenez des commandes avec jusqu’à trois lignes de produits, le choix de livraison et un total en temps réel."
+      },
+      "complaint_dispute": {
+        "name": "Formulaire de réclamation / litige",
+        "description": "Enregistrez réclamations et litiges avec justificatifs, solution souhaitée et contacts précédents."
+      },
+      "service_request": {
+        "name": "Demande d’intervention",
+        "description": "Planifiez une intervention avec priorité, créneau préféré et photos du problème."
+      },
+      "lead_capture_newsletter": {
+        "name": "Collecte de prospects / inscription à la newsletter",
+        "description": "Développez votre liste avec consentement, centres d’intérêt et suivi des campagnes intégrés."
+      },
+      "return_refund": {
+        "name": "Demande de retour / remboursement",
+        "description": "Traitez les retours avec le motif, des photos, la solution souhaitée et le montant du remboursement calculé."
+      },
+      "job_application": {
+        "name": "Candidature",
+        "description": "Une candidature complète : informations personnelles, poste, CV, prétentions salariales et consentement."
+      },
+      "employee_onboarding": {
+        "name": "Intégration des nouveaux employés",
+        "description": "Tout ce qu’un nouvel arrivant communique avant son premier jour : coordonnées, contact d’urgence, équipement et paiement."
+      },
+      "exit_interview": {
+        "name": "Entretien de départ",
+        "description": "Comprenez pourquoi les personnes partent et ce qui les ferait rester, avec des notes sur toute l’expérience collaborateur."
+      },
+      "leave_request": {
+        "name": "Demande de congé",
+        "description": "Demandez un congé – le nombre de jours est calculé à partir des dates, avec remplaçant et justificatifs."
+      },
+      "performance_review": {
+        "name": "Entretien annuel d’évaluation",
+        "description": "Évaluez six compétences ; le score moyen et le niveau de performance sont calculés pour vous."
+      },
+      "engagement_survey": {
+        "name": "Enquête d’engagement des employés",
+        "description": "Un baromètre anonyme sur la fierté, le sens, l’évolution et le soutien – avec un indice d’engagement de 0 à 100."
+      },
+      "expense_reimbursement": {
+        "name": "Note de frais",
+        "description": "Déclarez jusqu’à trois dépenses avec justificatifs ; le total se calcule automatiquement."
+      },
+      "timesheet": {
+        "name": "Feuille de temps",
+        "description": "Heures hebdomadaires par jour avec total et heures supplémentaires par rapport aux heures contractuelles."
+      },
+      "training_feedback": {
+        "name": "Évaluation de formation",
+        "description": "Évaluez le contenu, le formateur, les supports et la pertinence d’une formation – avec un score moyen."
+      },
+      "reference_check": {
+        "name": "Vérification des références",
+        "description": "Questions structurées pour les référents, compétences notées avec une moyenne et une réponse claire sur une réembauche."
+      }
+    },
+    "openGallery": "Ouvrir la galerie complète"
   },
   "builder": {
     "crumb": "Éditeur",
@@ -1137,7 +1324,9 @@
       "consentText": "Texte de consentement",
       "consentTextHint": "Ce que les répondants acceptent, p. ex. « J’accepte les conditions et la politique de confidentialité. »",
       "consentLink": "Lien vers les conditions (facultatif)",
-      "consentLinkLabel": "Texte du lien"
+      "consentLinkLabel": "Texte du lien",
+      "showResult": "Afficher le résultat aux répondants",
+      "internalHint": "Calculé et enregistré avec chaque réponse, mais visible uniquement par votre équipe (p. ex. un niveau de risque ou un groupe de fidélité)."
     },
     "shortcuts": {
       "title": "Raccourcis",

@@ -8,6 +8,7 @@ import { z } from 'zod'
 import { allFields, publishIssues, starterSchema } from '#shared/utils/forms/build'
 import { formSchemaV1, type FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { StarterTemplateKey } from '#shared/utils/templates/starters'
+import { schemaForTemplate } from '../data/templateStore'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -25,12 +26,10 @@ const GUESS: [RegExp, StarterTemplateKey][] = [
 ]
 
 /** Sample forms were seeded without fields: give them a fitting starter the first time they're opened. */
-export function ensureSchema(form: StoredForm): FormSchemaV1 {
+export function ensureSchema(form: StoredForm, tenant: MockTenant): FormSchemaV1 {
   if (!form.schema) {
     const key = GUESS.find(([pattern]) => pattern.test(form.name))?.[1] ?? 'contact_lead'
-    form.schema = form.template_key
-      ? starterSchema(form.template_key as StarterTemplateKey)
-      : starterSchema(key)
+    form.schema = (form.template_key ? schemaForTemplate(tenant, form.template_key) : null) ?? starterSchema(key)
     if (form.status !== 'draft' && !form.published_schema)
       form.published_schema = structuredClone(form.schema)
     saveForms()
@@ -50,7 +49,7 @@ const versionView = ({ schema: _schema, ...version }: StoredVersion) => version
 export const getBuilder = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
-  const schema = ensureSchema(form)
+  const schema = ensureSchema(form, tenant)
   return ok({
     form: summaryOf(form),
     schema,
@@ -101,7 +100,7 @@ export const publishForm = defineMockRoute(({ event, body }) => {
   const input = parseBody(publishSchema, body)
   if (input.row_version !== form.row_version) throw new MockError('FRM-GEN-1009')
   if (!['draft', 'published'].includes(form.status)) throw new MockError('FRM-FORM-1007')
-  const schema = ensureSchema(form)
+  const schema = ensureSchema(form, tenant)
   const issues = publishIssues(schema)
   if (issues.length)
     throw new MockError(

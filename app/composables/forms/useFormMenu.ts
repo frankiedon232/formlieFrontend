@@ -6,6 +6,8 @@ interface FormMenuHandlers {
   rename: (form: FormSummary) => void
   move: (form: FormSummary) => void
   tags: (form: FormSummary) => void
+  /** Save the form as a workspace template (F9). */
+  saveTemplate: (form: FormSummary) => void
 }
 
 /** Row / card menu for a form: open & edit · share · lifecycle for its status · delete. */
@@ -74,6 +76,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
             ]
           : []),
         { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/responses?form=${form.id}` },
+        { label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => handlers.saveTemplate(form) },
       ],
       lifecycle,
       [

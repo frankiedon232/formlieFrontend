@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Không thể thực hiện ở trạng thái hiện tại của biểu mẫu. Hãy tải lại và thử lại.",
     "FRM-FORM-1008": "Đã có thư mục cùng tên.",
     "FRM-FORM-1009": "Đã có danh sách với tên này.",
-    "FRM-FORM-1010": "Đã có chủ đề giao diện với tên này."
+    "FRM-FORM-1010": "Đã có chủ đề giao diện với tên này.",
+    "FRM-FORM-1011": "Không thể thay đổi mẫu hệ thống. Hãy nhân bản để tạo mẫu của riêng bạn.",
+    "FRM-FORM-1012": "Đã có mẫu với tên này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -603,7 +605,8 @@
       "folder": "Thư mục",
       "saved_field": "Trường đã lưu",
       "option_list": "Danh sách lựa chọn",
-      "theme": "Chủ đề"
+      "theme": "Chủ đề",
+      "template": "Mẫu"
     },
     "field": {
       "name": "Tên",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Đã xóa danh sách",
       "forms_theme_created": "Đã lưu chủ đề",
       "forms_theme_updated": "Đã cập nhật chủ đề",
-      "forms_theme_deleted": "Đã xóa chủ đề"
+      "forms_theme_deleted": "Đã xóa chủ đề",
+      "forms_template_created": "Đã tạo mẫu",
+      "forms_template_updated": "Đã cập nhật mẫu",
+      "forms_template_duplicated": "Đã nhân bản mẫu",
+      "forms_template_deleted": "Đã xóa mẫu"
     },
     "detail": {
       "who": "Ai",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Báo cáo sự cố"
       }
-    }
+    },
+    "subtitle": "Bắt đầu từ một biểu mẫu có sẵn — mỗi mẫu có thiết kế riêng và bạn có thể thay đổi mọi thứ trước khi xuất bản",
+    "blank": "Biểu mẫu trống",
+    "all": "Tất cả",
+    "search": "Tìm mẫu…",
+    "use": "Dùng mẫu",
+    "open": "Mở",
+    "duplicate": "Nhân bản",
+    "delete": "Xóa",
+    "view": "Xem mẫu",
+    "preview": "Xem trước mẫu",
+    "minutes": "{n} phút",
+    "questions": "{count} câu hỏi | {count} câu hỏi",
+    "usedTitle": "Biểu mẫu tạo từ mẫu này",
+    "neverUsed": "Chưa được dùng",
+    "nameRequired": "Hãy đặt tên.",
+    "description": "Mô tả",
+    "descriptionPlaceholder": "Mẫu này dùng để làm gì?",
+    "categories": {
+      "business": "Kinh doanh & khách hàng",
+      "hr": "Nhân sự & nơi làm việc",
+      "health_safety": "Sức khỏe & an toàn",
+      "events": "Sự kiện & đặt chỗ",
+      "hospitality": "Nhà hàng – khách sạn",
+      "education": "Giáo dục",
+      "operations_it": "Vận hành & CNTT",
+      "finance_legal": "Tài chính & pháp lý",
+      "community": "Cộng đồng & khác",
+      "real_estate": "Bất động sản",
+      "sales": "Bán hàng"
+    },
+    "filter": {
+      "category": "Danh mục",
+      "source": "Tạo bởi",
+      "features": "Bao gồm"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Không gian làm việc của bạn"
+    },
+    "badge": {
+      "calculations": "Phép tính",
+      "logic": "Logic",
+      "workspace": "Không gian làm việc"
+    },
+    "col": {
+      "name": "Tên",
+      "category": "Danh mục",
+      "questions": "Câu hỏi",
+      "forms": "Biểu mẫu",
+      "responses": "Phản hồi",
+      "lastUsed": "Dùng lần cuối"
+    },
+    "sort": {
+      "popular": "Dùng nhiều nhất",
+      "responses": "Nhiều phản hồi nhất",
+      "name": "Tên (A–Z)",
+      "short": "Điền nhanh nhất",
+      "recent": "Cập nhật gần đây"
+    },
+    "emptyTitle": "Không có mẫu phù hợp",
+    "emptyDesc": "Hãy thử danh mục hoặc từ khóa khác, hoặc xóa bộ lọc.",
+    "useTitle": "Dùng mẫu",
+    "useDesc": "Biểu mẫu mới mở trong trình tạo — hãy thay đổi bất kỳ câu hỏi, quy tắc, phép tính hoặc thiết kế nào trước khi xuất bản.",
+    "saveAs": "Lưu thành mẫu",
+    "saveTitle": "Lưu thành mẫu",
+    "saveDesc": "Câu hỏi, logic, phép tính và thiết kế sẽ trở thành một mẫu cho không gian làm việc của bạn. Phản hồi không bao giờ được đưa vào.",
+    "saveButton": "Lưu mẫu",
+    "deleteTitle": "Xóa “{name}”?",
+    "deleteDesc": "Các biểu mẫu tạo từ mẫu này vẫn giữ nguyên câu hỏi và thiết kế.",
+    "included": "Bao gồm những gì",
+    "calculationsTitle": "Phép tính",
+    "teamOnly": "Chỉ nhóm",
+    "usage": "Mức sử dụng trong không gian làm việc của bạn",
+    "facts": {
+      "pages": "{count} trang | {count} trang",
+      "logic": "{count} quy tắc logic | {count} quy tắc logic",
+      "calculations": "{count} phép tính | {count} phép tính"
+    },
+    "stats": {
+      "forms": "Biểu mẫu",
+      "responses": "Phản hồi",
+      "lastUsed": "Dùng lần cuối"
+    },
+    "editableHint": "Mọi thứ đều có thể thay đổi sau khi dùng: câu hỏi, logic, phép tính và thiết kế.",
+    "formsFrom": "Biểu mẫu tạo từ mẫu này ({count})",
+    "noFormsTitle": "Chưa có biểu mẫu nào từ mẫu này",
+    "noFormsDesc": "Dùng mẫu để tạo biểu mẫu đầu tiên.",
+    "notFound": "Mẫu này không khả dụng",
+    "notFoundDesc": "Có thể mẫu đã bị xóa. Hãy chọn mẫu khác trong thư viện.",
+    "backToGallery": "Quay lại danh sách mẫu",
+    "toast": {
+      "created": "Đã tạo “{name}” từ mẫu",
+      "duplicated": "Đã thêm “{name}” vào mẫu của bạn",
+      "deleted": "Đã xóa “{name}”",
+      "saved": "Đã lưu “{name}” thành mẫu",
+      "updated": "Đã cập nhật “{name}”"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Phản hồi của khách hàng",
+        "description": "Lắng nghe khách hàng nghĩ gì về dịch vụ của bạn — kèm câu hỏi tiếp theo khi ai đó không hài lòng."
+      },
+      "csat_nps": {
+        "name": "Khảo sát mức độ hài lòng của khách hàng (CSAT / NPS)",
+        "description": "Đo mức độ hài lòng (CSAT), công sức và lòng trung thành (NPS) — mỗi câu trả lời được xếp nhóm ủng hộ, trung lập hoặc phản đối."
+      },
+      "product_review": {
+        "name": "Đánh giá sản phẩm",
+        "description": "Thu thập đánh giá sản phẩm chi tiết với điểm sao, điểm trung bình, ảnh và sự đồng ý công khai."
+      },
+      "contact_lead": {
+        "name": "Biểu mẫu liên hệ / yêu cầu thông tin",
+        "description": "Biểu mẫu liên hệ đơn giản, thân thiện, chuyển từng yêu cầu theo chủ đề."
+      },
+      "quote_request": {
+        "name": "Yêu cầu báo giá",
+        "description": "Khách hàng tự tạo yêu cầu và xem báo giá ước tính theo gói, dịch vụ bổ sung và số lượng."
+      },
+      "order_form": {
+        "name": "Phiếu đặt hàng",
+        "description": "Nhận đơn hàng với tối đa ba dòng sản phẩm, lựa chọn giao hàng và tổng tiền cập nhật liên tục."
+      },
+      "complaint_dispute": {
+        "name": "Biểu mẫu khiếu nại / tranh chấp",
+        "description": "Ghi nhận khiếu nại và tranh chấp kèm bằng chứng, kết quả mong muốn và lần liên hệ trước."
+      },
+      "service_request": {
+        "name": "Yêu cầu dịch vụ",
+        "description": "Đặt lịch dịch vụ với mức ưu tiên, thời gian mong muốn và ảnh về sự cố."
+      },
+      "lead_capture_newsletter": {
+        "name": "Thu thập khách hàng tiềm năng / đăng ký bản tin",
+        "description": "Mở rộng danh sách với sự đồng ý, sở thích và theo dõi chiến dịch được tích hợp sẵn."
+      },
+      "return_refund": {
+        "name": "Yêu cầu đổi trả / hoàn tiền",
+        "description": "Xử lý đổi trả với lý do, ảnh, kết quả mong muốn và số tiền hoàn được tính sẵn."
+      },
+      "job_application": {
+        "name": "Đơn ứng tuyển",
+        "description": "Một đơn ứng tuyển đầy đủ: thông tin cá nhân, vị trí, tải lên CV, mức lương mong muốn và sự đồng ý."
+      },
+      "employee_onboarding": {
+        "name": "Tiếp nhận nhân viên mới",
+        "description": "Mọi thông tin nhân viên mới cung cấp trước ngày đầu tiên: thông tin cá nhân, liên hệ khẩn cấp, thiết bị và thanh toán."
+      },
+      "exit_interview": {
+        "name": "Phỏng vấn nghỉ việc",
+        "description": "Tìm hiểu lý do mọi người rời đi và điều gì giữ họ ở lại, với đánh giá toàn bộ trải nghiệm nhân viên."
+      },
+      "leave_request": {
+        "name": "Đơn xin nghỉ phép",
+        "description": "Xin nghỉ phép với số ngày được tính từ ngày bắt đầu và kết thúc, người thay thế và giấy tờ kèm theo."
+      },
+      "performance_review": {
+        "name": "Đánh giá hiệu suất",
+        "description": "Chấm điểm sáu năng lực; điểm trung bình và mức xếp loại được tính sẵn cho bạn."
+      },
+      "engagement_survey": {
+        "name": "Khảo sát mức độ gắn kết của nhân viên",
+        "description": "Khảo sát nhanh ẩn danh về niềm tự hào, mục đích, phát triển và hỗ trợ — với chỉ số gắn kết từ 0 đến 100."
+      },
+      "expense_reimbursement": {
+        "name": "Hoàn ứng chi phí",
+        "description": "Kê khai tối đa ba khoản chi kèm hóa đơn; tổng số tiền được tự động cộng."
+      },
+      "timesheet": {
+        "name": "Bảng chấm công",
+        "description": "Số giờ mỗi ngày trong tuần với tổng giờ và giờ làm thêm so với giờ theo hợp đồng."
+      },
+      "training_feedback": {
+        "name": "Phản hồi về đào tạo",
+        "description": "Đánh giá nội dung, giảng viên, tài liệu và mức độ phù hợp của khóa học — kèm điểm trung bình."
+      },
+      "reference_check": {
+        "name": "Kiểm tra người tham chiếu",
+        "description": "Câu hỏi có cấu trúc cho người tham chiếu, chấm điểm kỹ năng với điểm trung bình và câu trả lời rõ ràng về việc tuyển lại."
+      }
+    },
+    "openGallery": "Mở toàn bộ thư viện"
   },
   "builder": {
     "crumb": "Trình tạo",
@@ -1137,7 +1324,9 @@
       "consentText": "Nội dung đồng ý",
       "consentTextHint": "Điều người trả lời đồng ý, vd. “Tôi đồng ý với điều khoản và thông báo quyền riêng tư.”",
       "consentLink": "Liên kết đến điều khoản (không bắt buộc)",
-      "consentLinkLabel": "Văn bản liên kết"
+      "consentLinkLabel": "Văn bản liên kết",
+      "showResult": "Hiển thị kết quả cho người trả lời",
+      "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành)."
     },
     "shortcuts": {
       "title": "Phím tắt",

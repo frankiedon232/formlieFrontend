@@ -3,6 +3,7 @@
  * Seeded workspaces start with a few neutral sample lists. Persisted across dev reloads.
  */
 import type { OptionList, SavedField, SavedTheme } from '#shared/types/forms'
+import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
 
@@ -11,6 +12,20 @@ interface TenantLibrary {
   lists: OptionList[]
   /** Saved designs; `forms_count` is computed when listing. */
   themes?: Omit<SavedTheme, 'forms_count'>[]
+  /** Workspace templates (F9): a snapshot of a form, its design included. */
+  templates?: WorkspaceTemplate[]
+}
+
+export interface WorkspaceTemplate {
+  id: string
+  name: string
+  description: string
+  category: string
+  icon: string
+  schema: FormSchemaV1
+  created_by: { id: string; name: string }
+  created_at: string
+  updated_at: string
 }
 
 const stores = new Map<string, TenantLibrary>(

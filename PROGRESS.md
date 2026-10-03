@@ -19,7 +19,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
-| F9    | Templates gallery                                 | ⬜     | 0%   |
+| F9    | Templates gallery                                 | 🟡     | ~35% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
@@ -371,7 +371,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 ---
 
-## F9 — Templates gallery ⬜
+## F9 — Templates gallery 🟡
 
 **Goal:** nobody starts from an empty page — a catalogue full of beautiful, ready templates (fields, pages, logic, calculations **and a design**) that people pick, adapt and publish; plus their own workspace templates. Comes before the renderer (owner, 2026-10-02). Stays in the **Forms area** (Resources → Templates) — no own rail icon: templates are a way to start a form.
 
@@ -379,17 +379,17 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 ### Milestone 1 — Framework + Business & Customer + HR & Workplace
 
-- ⬜ Template model: key, category, icon, name / description / tags (i18n), schema (pages, fields, logic, calculations, settings), theme, estimated time, field / page counts, "includes calculations / logic" flags, version; system vs workspace templates
-- ⬜ Authoring kit (`shared/templates/`): one small definition per template (fields by type, options, validation, logic, formulas, theme), validated against the form schema in tests — every template must pass the publish checks
-- ⬜ **Gallery** (`/templates`) in DataView: Grid of themed cards (mini preview in the template's own design, category, fields, time, "Calculations" / "Logic" badges, uses) and Table (name, category, fields, uses, forms, responses, updated); category chips with counts, search, sort (popular, newest, name, most used), filters (category, has calculations, field count, system / workspace)
-- ⬜ **Template page** (`/templates/[key]`): live themed preview (desktop / tablet / phone, questions / thank-you), what's included (pages, fields, logic rules, calculations with their formulas in plain words, design), statistics (forms created, responses collected, last used), and **all forms created from it** (DataView filtered by template)
-- ⬜ **Use template** → name + folder → new form opened in the builder; everything editable (fields, logic, design) before publishing; the form remembers its template
-- ⬜ New form → "From a template" tab and onboarding starters read the catalogue (`shared/utils/templates/starters.ts` → full schemas)
-- ⬜ Workspace templates: save any form as a template (forms list row action + builder menu), edit name / description / category, duplicate, delete with confirm; audited (`templates.*`)
-- ⬜ Formula additions for templates: `avg()`, `count()`, `days(from, to)`, text results (e.g. risk level "High")
-- ⬜ Mock + contract: `/templates` (list with stats, get, create from form, update, duplicate, delete), `/templates/{key}/forms`, `/forms/from-template`; error codes
-- ⬜ Business & Customer (10): Customer Feedback · Customer Satisfaction (CSAT / NPS — NPS group calculated) · Product Review · Contact / Inquiry · Quote / Estimate Request (line totals, tax, total) · Order Form (line totals, subtotal, tax, total) · Complaint / Dispute · Service Request · Lead Capture / Newsletter Signup · Return / Refund Request (refund amount)
-- ⬜ HR & Workplace (10): Job Application · Employee Onboarding · Exit Interview · Leave / Time-Off Request (days requested) · Performance Review / Appraisal (average score, rating band) · Employee Engagement Survey (engagement index) · Expense Reimbursement (claim total) · Timesheet (hours, overtime) · Training Feedback (average) · Reference Check
+- ✅ Template model: key, category, icon, name / description / tags (i18n), schema (pages, fields, logic, calculations, settings), theme, estimated time, field / page counts, "includes calculations / logic" flags, version; system vs workspace templates
+- ✅ Authoring kit (`shared/templates/`): one small definition per template (fields by type, options, validation, logic, formulas, theme), validated against the form schema in tests — every template must pass the publish checks
+- ✅ **Gallery** (`/templates`) in DataView: Grid of themed cards (mini preview in the template's own design, category, fields, time, "Calculations" / "Logic" badges, uses) and Table (name, category, fields, uses, forms, responses, updated); category chips with counts, search, sort (popular, newest, name, most used), filters (category, has calculations, field count, system / workspace)
+- ✅ **Template page** (`/templates/[key]`): live themed preview (desktop / tablet / phone, questions / thank-you), what's included (pages, fields, logic rules, calculations with their formulas in plain words, design), statistics (forms created, responses collected, last used), and **all forms created from it** (DataView filtered by template)
+- ✅ **Use template** → name + folder → new form opened in the builder; everything editable (fields, logic, design) before publishing; the form remembers its template
+- ✅ New form → "From a template" tab reads the catalogue (search, category, design previews); onboarding starters use the catalogue where built (event registration and incident report follow with their categories in milestone 2)
+- ✅ Workspace templates: save any form as a template (forms list row action + form overview menu; builder menu ⬜ with the builder header rework), edit name / description / category, duplicate, delete with confirm; audited (`forms.template_*`)
+- ✅ Formula additions for templates: `avg()`, `count()`, `days(from, to)`, text results (e.g. risk level "High")
+- ✅ Mock + contract: `/templates` (list with stats, get, create from form, update, duplicate, delete), `/templates/{key}/forms`, `/forms/from-template`; error codes
+- ✅ Business & Customer (10): Customer Feedback · Customer Satisfaction (CSAT / NPS — NPS group calculated) · Product Review · Contact / Inquiry · Quote / Estimate Request (line totals, tax, total) · Order Form (line totals, subtotal, tax, total) · Complaint / Dispute · Service Request · Lead Capture / Newsletter Signup · Return / Refund Request (refund amount)
+- ✅ HR & Workplace (10): Job Application · Employee Onboarding · Exit Interview · Leave / Time-Off Request (days requested) · Performance Review / Appraisal (average score, rating band) · Employee Engagement Survey (engagement index) · Expense Reimbursement (claim total) · Timesheet (hours, overtime) · Training Feedback (average) · Reference Check
 
 ### Milestone 2 — Health & Safety · Events & Bookings · Hospitality
 
@@ -928,3 +928,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F13 | New phase **F13 — API service** (own rail area + placeholder pages); later phases renumbered F14–F22. Public URL scheme decided: API `https://api.formalie.dev/{apiKey}/{endpoint}`, forms `https://{forms | sub}.formalie.dev/{formKey}/fill · /embed`; `forms` subdomain reserved; copy-link and the form overview use the new links. F8 closed after owner review. |
 | 2026-10-03 | F8 | Owner follow-ups: folder hint, IP / MAC typing masks, field access (audience) with directory picker and "never required" rule (editor, form, publish check, logic). |
 | 2026-10-03 | F19 | New phase **F19 — AI assistant** (own rail area + placeholder pages); later phases renumbered F20–F22. F9 plan written: framework + 84 templates in 5 milestones. Payments planned in F15. |
+| 2026-10-03 | F9 | Milestone 1: template authoring kit (`shared/templates/`), 11 categories with their own designs, 20 templates (Business & Customer, HR & Workplace) with calculations (totals, averages, days, rating bands, loyalty group) and logic — all tested as valid, publishable forms; formula additions `avg` / `count` / `days` / text results, internal calculations; gallery (Grid of themed cards / Table, category chips with counts, filters, sorts), template page (live preview, what’s included, formulas, usage, forms made from it), Use template, Save as template, workspace templates (duplicate, delete), New form catalogue picker; seeded sample forms linked to templates; mock `/templates`; 20 languages. Also: confirm dialog keeps its text while closing. |

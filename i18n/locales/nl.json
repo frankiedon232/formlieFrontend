@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Dat kan niet in de huidige status van het formulier. Vernieuw en probeer het opnieuw.",
     "FRM-FORM-1008": "Er bestaat al een map met deze naam.",
     "FRM-FORM-1009": "Er bestaat al een lijst met deze naam.",
-    "FRM-FORM-1010": "Er bestaat al een thema met deze naam."
+    "FRM-FORM-1010": "Er bestaat al een thema met deze naam.",
+    "FRM-FORM-1011": "Systeemsjablonen kunnen niet worden gewijzigd. Dupliceer het om je eigen versie te maken.",
+    "FRM-FORM-1012": "Er bestaat al een sjabloon met deze naam."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -603,7 +605,8 @@
       "folder": "Map",
       "saved_field": "Opgeslagen veld",
       "option_list": "Optielijst",
-      "theme": "Thema"
+      "theme": "Thema",
+      "template": "Sjabloon"
     },
     "field": {
       "name": "Naam",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Lijst verwijderd",
       "forms_theme_created": "Thema opgeslagen",
       "forms_theme_updated": "Thema bijgewerkt",
-      "forms_theme_deleted": "Thema verwijderd"
+      "forms_theme_deleted": "Thema verwijderd",
+      "forms_template_created": "Sjabloon gemaakt",
+      "forms_template_updated": "Sjabloon bijgewerkt",
+      "forms_template_duplicated": "Sjabloon gedupliceerd",
+      "forms_template_deleted": "Sjabloon verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Incidentmelding"
       }
-    }
+    },
+    "subtitle": "Begin met een kant-en-klaar formulier — elk sjabloon heeft een eigen ontwerp en je kunt alles aanpassen voordat je publiceert",
+    "blank": "Leeg formulier",
+    "all": "Alle",
+    "search": "Sjablonen zoeken…",
+    "use": "Sjabloon gebruiken",
+    "open": "Openen",
+    "duplicate": "Dupliceren",
+    "delete": "Verwijderen",
+    "view": "Sjabloon bekijken",
+    "preview": "Voorbeeld van sjabloon",
+    "minutes": "{n} min",
+    "questions": "{count} vraag | {count} vragen",
+    "usedTitle": "Formulieren gemaakt met dit sjabloon",
+    "neverUsed": "Nog niet gebruikt",
+    "nameRequired": "Geef het een naam.",
+    "description": "Beschrijving",
+    "descriptionPlaceholder": "Waarvoor is dit sjabloon bedoeld?",
+    "categories": {
+      "business": "Zakelijk & klanten",
+      "hr": "HR & werkplek",
+      "health_safety": "Gezondheid & veiligheid",
+      "events": "Evenementen & boekingen",
+      "hospitality": "Horeca",
+      "education": "Onderwijs",
+      "operations_it": "Operaties & IT",
+      "finance_legal": "Financiën & juridisch",
+      "community": "Gemeenschap & overig",
+      "real_estate": "Vastgoed",
+      "sales": "Verkoop"
+    },
+    "filter": {
+      "category": "Categorie",
+      "source": "Gemaakt door",
+      "features": "Bevat"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Jouw werkruimte"
+    },
+    "badge": {
+      "calculations": "Berekeningen",
+      "logic": "Logica",
+      "workspace": "Werkruimte"
+    },
+    "col": {
+      "name": "Naam",
+      "category": "Categorie",
+      "questions": "Vragen",
+      "forms": "Formulieren",
+      "responses": "Reacties",
+      "lastUsed": "Laatst gebruikt"
+    },
+    "sort": {
+      "popular": "Meest gebruikt",
+      "responses": "Meeste reacties",
+      "name": "Naam (A–Z)",
+      "short": "Snelst in te vullen",
+      "recent": "Onlangs bijgewerkt"
+    },
+    "emptyTitle": "Geen sjablonen gevonden",
+    "emptyDesc": "Probeer een andere categorie of zoekterm, of wis de filters.",
+    "useTitle": "Sjabloon gebruiken",
+    "useDesc": "Je nieuwe formulier opent in de editor — pas elke vraag, regel, berekening of het ontwerp aan voordat je publiceert.",
+    "saveAs": "Opslaan als sjabloon",
+    "saveTitle": "Opslaan als sjabloon",
+    "saveDesc": "De vragen, logica, berekeningen en het ontwerp worden een sjabloon voor je werkruimte. Reacties worden nooit meegenomen.",
+    "saveButton": "Sjabloon opslaan",
+    "deleteTitle": "“{name}” verwijderen?",
+    "deleteDesc": "Formulieren die ermee zijn gemaakt, behouden hun vragen en ontwerp.",
+    "included": "Wat is inbegrepen",
+    "calculationsTitle": "Berekeningen",
+    "teamOnly": "Alleen team",
+    "usage": "Gebruik in je werkruimte",
+    "facts": {
+      "pages": "{count} pagina | {count} pagina’s",
+      "logic": "{count} logicaregel | {count} logicaregels",
+      "calculations": "{count} berekening | {count} berekeningen"
+    },
+    "stats": {
+      "forms": "Formulieren",
+      "responses": "Reacties",
+      "lastUsed": "Laatst gebruikt"
+    },
+    "editableHint": "Alles is na gebruik aan te passen: vragen, logica, berekeningen en ontwerp.",
+    "formsFrom": "Formulieren gemaakt met dit sjabloon ({count})",
+    "noFormsTitle": "Nog geen formulieren met dit sjabloon",
+    "noFormsDesc": "Gebruik het sjabloon om het eerste te maken.",
+    "notFound": "Dit sjabloon is niet beschikbaar",
+    "notFoundDesc": "Het is mogelijk verwijderd. Kies een ander uit de galerie.",
+    "backToGallery": "Terug naar sjablonen",
+    "toast": {
+      "created": "“{name}” gemaakt met het sjabloon",
+      "duplicated": "“{name}” toegevoegd aan je sjablonen",
+      "deleted": "“{name}” verwijderd",
+      "saved": "“{name}” opgeslagen als sjabloon",
+      "updated": "“{name}” bijgewerkt"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Klantfeedback",
+        "description": "Ontdek wat klanten van je service vinden — met een vervolgvraag als iemand ontevreden is."
+      },
+      "csat_nps": {
+        "name": "Klanttevredenheidsonderzoek (CSAT / NPS)",
+        "description": "Meet tevredenheid (CSAT), inspanning en loyaliteit (NPS) — elk antwoord wordt ingedeeld als promotor, passief of criticaster."
+      },
+      "product_review": {
+        "name": "Productbeoordeling",
+        "description": "Verzamel uitgebreide productbeoordelingen met sterren, een gemiddelde score, foto’s en toestemming voor publicatie."
+      },
+      "contact_lead": {
+        "name": "Contact- / informatieformulier",
+        "description": "Een eenvoudig, vriendelijk contactformulier dat elke vraag op onderwerp doorstuurt."
+      },
+      "quote_request": {
+        "name": "Offerteaanvraag",
+        "description": "Klanten stellen hun aanvraag samen en zien een indicatieve prijs op basis van pakket, extra’s en aantal."
+      },
+      "order_form": {
+        "name": "Bestelformulier",
+        "description": "Neem bestellingen op met maximaal drie productregels, bezorgkeuze en een lopend totaal."
+      },
+      "complaint_dispute": {
+        "name": "Klachten- / geschillenformulier",
+        "description": "Leg klachten en geschillen vast met bewijs, de gewenste uitkomst en eerder contact."
+      },
+      "service_request": {
+        "name": "Serviceaanvraag",
+        "description": "Plan een servicebezoek met prioriteit, voorkeurstijd en foto’s van het probleem."
+      },
+      "lead_capture_newsletter": {
+        "name": "Leads verzamelen / aanmelding nieuwsbrief",
+        "description": "Laat je lijst groeien met ingebouwde toestemming, interesses en campagnetracking."
+      },
+      "return_refund": {
+        "name": "Retour- / terugbetalingsverzoek",
+        "description": "Verwerk retouren met de reden, foto’s, de gewenste uitkomst en het berekende terugbetalingsbedrag."
+      },
+      "job_application": {
+        "name": "Sollicitatie",
+        "description": "Een complete sollicitatie: persoonlijke gegevens, functie, cv-upload, salarisindicatie en toestemming."
+      },
+      "employee_onboarding": {
+        "name": "Onboarding van medewerkers",
+        "description": "Alles wat een nieuwe medewerker vóór de eerste dag doorgeeft: gegevens, noodcontact, uitrusting en betaling."
+      },
+      "exit_interview": {
+        "name": "Exitgesprek",
+        "description": "Ontdek waarom mensen vertrekken en wat hen zou laten blijven, met beoordelingen van de hele medewerkerservaring."
+      },
+      "leave_request": {
+        "name": "Verlofaanvraag",
+        "description": "Vraag verlof aan — het aantal dagen wordt berekend uit de data, met vervanging en onderbouwende documenten."
+      },
+      "performance_review": {
+        "name": "Beoordelingsgesprek",
+        "description": "Beoordeel zes competenties; de gemiddelde score en beoordelingsklasse worden voor je berekend."
+      },
+      "engagement_survey": {
+        "name": "Medewerkersbetrokkenheidsonderzoek",
+        "description": "Een anonieme pulsmeting over trots, zingeving, groei en steun — met een betrokkenheidsindex van 0 tot 100."
+      },
+      "expense_reimbursement": {
+        "name": "Onkostendeclaratie",
+        "description": "Declareer tot drie uitgaven met bonnetjes; het totaal wordt automatisch opgeteld."
+      },
+      "timesheet": {
+        "name": "Urenregistratie",
+        "description": "Wekelijkse uren per dag met totaal en overuren ten opzichte van de contracturen."
+      },
+      "training_feedback": {
+        "name": "Trainingsevaluatie",
+        "description": "Beoordeel de inhoud, trainer, materialen en relevantie van een cursus — met een gemiddelde score."
+      },
+      "reference_check": {
+        "name": "Referentiecheck",
+        "description": "Gestructureerde vragen voor referenten, beoordeelde vaardigheden met een gemiddelde en een duidelijk antwoord over opnieuw aannemen."
+      }
+    },
+    "openGallery": "Volledige galerij openen"
   },
   "builder": {
     "crumb": "Editor",
@@ -1137,7 +1324,9 @@
       "consentText": "Toestemmingstekst",
       "consentTextHint": "Waarmee respondenten akkoord gaan, bijv. “Ik ga akkoord met de voorwaarden en de privacyverklaring.”",
       "consentLink": "Link naar de voorwaarden (optioneel)",
-      "consentLinkLabel": "Linktekst"
+      "consentLinkLabel": "Linktekst",
+      "showResult": "Resultaat tonen aan respondenten",
+      "internalHint": "Berekend en opgeslagen bij elke reactie, maar alleen zichtbaar voor je team (bijv. een risiconiveau of loyaliteitsgroep)."
     },
     "shortcuts": {
       "title": "Sneltoetsen",

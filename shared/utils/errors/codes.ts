@@ -49,6 +49,8 @@ export const ERROR_CODES = {
   'FRM-FORM-1008': { status: 409, message: 'A folder with this name already exists.' },
   'FRM-FORM-1009': { status: 409, message: 'A list with this name already exists.' },
   'FRM-FORM-1010': { status: 409, message: 'A theme with this name already exists.' },
+  'FRM-FORM-1011': { status: 403, message: 'System templates can’t be changed. Duplicate it to make your own.' },
+  'FRM-FORM-1012': { status: 409, message: 'A template with this name already exists.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
   'FRM-FILE-1001': { status: 400, message: 'File type not allowed.' },

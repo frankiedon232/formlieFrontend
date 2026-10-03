@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Nie jest to możliwe w obecnym stanie formularza. Odśwież i spróbuj ponownie.",
     "FRM-FORM-1008": "Folder o tej nazwie już istnieje.",
     "FRM-FORM-1009": "Lista o tej nazwie już istnieje.",
-    "FRM-FORM-1010": "Motyw o tej nazwie już istnieje."
+    "FRM-FORM-1010": "Motyw o tej nazwie już istnieje.",
+    "FRM-FORM-1011": "Szablonów systemowych nie można zmieniać. Zduplikuj szablon, aby utworzyć własny.",
+    "FRM-FORM-1012": "Szablon o tej nazwie już istnieje."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -603,7 +605,8 @@
       "folder": "Folder",
       "saved_field": "Zapisane pole",
       "option_list": "Lista opcji",
-      "theme": "Motyw"
+      "theme": "Motyw",
+      "template": "Szablon"
     },
     "field": {
       "name": "Nazwa",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Usunięto listę",
       "forms_theme_created": "Zapisano motyw",
       "forms_theme_updated": "Zaktualizowano motyw",
-      "forms_theme_deleted": "Usunięto motyw"
+      "forms_theme_deleted": "Usunięto motyw",
+      "forms_template_created": "Utworzono szablon",
+      "forms_template_updated": "Zaktualizowano szablon",
+      "forms_template_duplicated": "Zduplikowano szablon",
+      "forms_template_deleted": "Usunięto szablon"
     },
     "detail": {
       "who": "Kto",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Zgłoszenie incydentu"
       }
-    }
+    },
+    "subtitle": "Zacznij od gotowego formularza — każdy szablon ma własny wygląd, a przed publikacją możesz zmienić wszystko",
+    "blank": "Pusty formularz",
+    "all": "Wszystkie",
+    "search": "Szukaj szablonów…",
+    "use": "Użyj szablonu",
+    "open": "Otwórz",
+    "duplicate": "Duplikuj",
+    "delete": "Usuń",
+    "view": "Zobacz szablon",
+    "preview": "Podgląd szablonu",
+    "minutes": "{n} min",
+    "questions": "Pytania: {count} | Pytania: {count}",
+    "usedTitle": "Formularze utworzone z tego szablonu",
+    "neverUsed": "Jeszcze nieużywany",
+    "nameRequired": "Nadaj nazwę.",
+    "description": "Opis",
+    "descriptionPlaceholder": "Do czego służy ten szablon?",
+    "categories": {
+      "business": "Biznes i klienci",
+      "hr": "Kadry i miejsce pracy",
+      "health_safety": "Zdrowie i bezpieczeństwo",
+      "events": "Wydarzenia i rezerwacje",
+      "hospitality": "Hotelarstwo i gastronomia",
+      "education": "Edukacja",
+      "operations_it": "Operacje i IT",
+      "finance_legal": "Finanse i prawo",
+      "community": "Społeczność i inne",
+      "real_estate": "Nieruchomości",
+      "sales": "Sprzedaż"
+    },
+    "filter": {
+      "category": "Kategoria",
+      "source": "Autor",
+      "features": "Zawiera"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Twój obszar roboczy"
+    },
+    "badge": {
+      "calculations": "Obliczenia",
+      "logic": "Logika",
+      "workspace": "Obszar roboczy"
+    },
+    "col": {
+      "name": "Nazwa",
+      "category": "Kategoria",
+      "questions": "Pytania",
+      "forms": "Formularze",
+      "responses": "Odpowiedzi",
+      "lastUsed": "Ostatnio użyty"
+    },
+    "sort": {
+      "popular": "Najczęściej używane",
+      "responses": "Najwięcej odpowiedzi",
+      "name": "Nazwa (A–Z)",
+      "short": "Najszybsze do wypełnienia",
+      "recent": "Ostatnio zaktualizowane"
+    },
+    "emptyTitle": "Brak pasujących szablonów",
+    "emptyDesc": "Spróbuj innej kategorii lub wyszukiwania albo wyczyść filtry.",
+    "useTitle": "Użyj szablonu",
+    "useDesc": "Nowy formularz otworzy się w kreatorze — przed publikacją zmień dowolne pytanie, regułę, obliczenie lub wygląd.",
+    "saveAs": "Zapisz jako szablon",
+    "saveTitle": "Zapisz jako szablon",
+    "saveDesc": "Pytania, logika, obliczenia i wygląd staną się szablonem dla Twojego obszaru roboczego. Odpowiedzi nigdy nie są dołączane.",
+    "saveButton": "Zapisz szablon",
+    "deleteTitle": "Usunąć „{name}”?",
+    "deleteDesc": "Formularze utworzone z tego szablonu zachowają swoje pytania i wygląd.",
+    "included": "Co zawiera",
+    "calculationsTitle": "Obliczenia",
+    "teamOnly": "Tylko zespół",
+    "usage": "Użycie w Twoim obszarze roboczym",
+    "facts": {
+      "pages": "Strony: {count} | Strony: {count}",
+      "logic": "Reguły logiki: {count} | Reguły logiki: {count}",
+      "calculations": "Obliczenia: {count} | Obliczenia: {count}"
+    },
+    "stats": {
+      "forms": "Formularze",
+      "responses": "Odpowiedzi",
+      "lastUsed": "Ostatnio użyty"
+    },
+    "editableHint": "Po użyciu możesz zmienić wszystko: pytania, logikę, obliczenia i wygląd.",
+    "formsFrom": "Formularze utworzone z tego szablonu ({count})",
+    "noFormsTitle": "Brak formularzy z tego szablonu",
+    "noFormsDesc": "Użyj szablonu, aby utworzyć pierwszy.",
+    "notFound": "Ten szablon jest niedostępny",
+    "notFoundDesc": "Mógł zostać usunięty. Wybierz inny z galerii.",
+    "backToGallery": "Powrót do szablonów",
+    "toast": {
+      "created": "Utworzono „{name}” z szablonu",
+      "duplicated": "Dodano „{name}” do Twoich szablonów",
+      "deleted": "Usunięto „{name}”",
+      "saved": "Zapisano „{name}” jako szablon",
+      "updated": "Zaktualizowano „{name}”"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Opinie klientów",
+        "description": "Dowiedz się, co klienci myślą o Twojej usłudze — z dodatkowym pytaniem, gdy ktoś jest niezadowolony."
+      },
+      "csat_nps": {
+        "name": "Ankieta satysfakcji klienta (CSAT / NPS)",
+        "description": "Mierz satysfakcję (CSAT), wysiłek i lojalność (NPS) — każda odpowiedź jest klasyfikowana jako promotor, pasywny lub krytyk."
+      },
+      "product_review": {
+        "name": "Recenzja produktu",
+        "description": "Zbieraj szczegółowe recenzje z ocenami w gwiazdkach, średnią oceną, zdjęciami i zgodą na publikację."
+      },
+      "contact_lead": {
+        "name": "Formularz kontaktowy / zapytanie",
+        "description": "Prosty, przyjazny formularz kontaktowy, który kieruje każde zapytanie według tematu."
+      },
+      "quote_request": {
+        "name": "Zapytanie ofertowe / wycena",
+        "description": "Klienci składają zapytanie i widzą orientacyjną wycenę na podstawie pakietu, dodatków i ilości."
+      },
+      "order_form": {
+        "name": "Formularz zamówienia",
+        "description": "Przyjmuj zamówienia z maksymalnie trzema pozycjami, wyborem dostawy i bieżącą sumą."
+      },
+      "complaint_dispute": {
+        "name": "Formularz reklamacji / sporu",
+        "description": "Rejestruj reklamacje i spory z dowodami, oczekiwanym rozwiązaniem i wcześniejszym kontaktem."
+      },
+      "service_request": {
+        "name": "Zgłoszenie serwisowe",
+        "description": "Umów wizytę serwisową z priorytetem, preferowanym terminem i zdjęciami problemu."
+      },
+      "lead_capture_newsletter": {
+        "name": "Pozyskiwanie leadów / zapis do newslettera",
+        "description": "Powiększaj listę z wbudowaną zgodą, zainteresowaniami i śledzeniem kampanii."
+      },
+      "return_refund": {
+        "name": "Wniosek o zwrot towaru / pieniędzy",
+        "description": "Obsługuj zwroty z przyczyną, zdjęciami, oczekiwanym rozwiązaniem i wyliczoną kwotą zwrotu."
+      },
+      "job_application": {
+        "name": "Aplikacja o pracę",
+        "description": "Kompletna aplikacja: dane osobowe, stanowisko, przesłanie CV, oczekiwania finansowe i zgoda."
+      },
+      "employee_onboarding": {
+        "name": "Wdrożenie pracownika",
+        "description": "Wszystko, co nowy pracownik przekazuje przed pierwszym dniem: dane, kontakt awaryjny, sprzęt i wynagrodzenie."
+      },
+      "exit_interview": {
+        "name": "Rozmowa końcowa",
+        "description": "Dowiedz się, dlaczego ludzie odchodzą i co skłoniłoby ich do pozostania, z ocenami całego doświadczenia pracownika."
+      },
+      "leave_request": {
+        "name": "Wniosek urlopowy",
+        "description": "Złóż wniosek o urlop — liczba dni jest wyliczana z dat, z zastępstwem i dokumentami."
+      },
+      "performance_review": {
+        "name": "Ocena okresowa pracownika",
+        "description": "Oceń sześć kompetencji; średnia ocena i poziom są obliczane automatycznie."
+      },
+      "engagement_survey": {
+        "name": "Badanie zaangażowania pracowników",
+        "description": "Anonimowe badanie dumy, sensu, rozwoju i wsparcia — z indeksem zaangażowania od 0 do 100."
+      },
+      "expense_reimbursement": {
+        "name": "Rozliczenie wydatków",
+        "description": "Zgłoś do trzech wydatków z paragonami; suma liczy się sama."
+      },
+      "timesheet": {
+        "name": "Karta czasu pracy",
+        "description": "Tygodniowe godziny dla każdego dnia z sumą i nadgodzinami względem wymiaru z umowy."
+      },
+      "training_feedback": {
+        "name": "Ocena szkolenia",
+        "description": "Oceń treść, prowadzącego, materiały i przydatność kursu — ze średnią oceną."
+      },
+      "reference_check": {
+        "name": "Weryfikacja referencji",
+        "description": "Ustrukturyzowane pytania dla osób polecających, ocenione umiejętności ze średnią i jasna odpowiedź o ponownym zatrudnieniu."
+      }
+    },
+    "openGallery": "Otwórz pełną galerię"
   },
   "builder": {
     "crumb": "Kreator",
@@ -1137,7 +1324,9 @@
       "consentText": "Treść zgody",
       "consentTextHint": "Na co zgadzają się respondenci, np. „Akceptuję regulamin i informację o prywatności.”",
       "consentLink": "Link do regulaminu (opcjonalnie)",
-      "consentLinkLabel": "Tekst linku"
+      "consentLinkLabel": "Tekst linku",
+      "showResult": "Pokaż wynik respondentom",
+      "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności)."
     },
     "shortcuts": {
       "title": "Skróty",

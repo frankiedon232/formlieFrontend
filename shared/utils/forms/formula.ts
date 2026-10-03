@@ -5,7 +5,10 @@
  *   if({plan} = "premium", 50, 10)                  conditions: = != > >= < <=, "text" literals
  *   {size} + {extras}                               choice fields count as the number given to the
  *                                                   chosen option (several chosen → their sum)
- *   round(max({a}, {b}) * 1.2, 2)                   if and or not min max sum round floor ceil abs
+ *   round(max({a}, {b}) * 1.2, 2)                   if and or not min max sum avg count round floor ceil abs
+ *   avg({q1}, {q2}, {q3})                           sum / min / max / avg / count skip unanswered fields
+ *   days({check_in}, {check_out})                   whole days between two dates (or date-times)
+ *   if({score} >= 15, "High", "Low")                a calculation may also give a text (calculateResult)
  *
  * Returns null when the formula is invalid or needs an answer that is still missing.
  */
@@ -19,7 +22,7 @@ type Node =
   | { k: 'bin'; op: string; a: Node; b: Node }
   | { k: 'call'; name: string; args: Node[] }
 
-export const FORMULA_FUNCTIONS = ['if', 'and', 'or', 'not', 'min', 'max', 'sum', 'round', 'floor', 'ceil', 'abs'] as const
+export const FORMULA_FUNCTIONS = ['if', 'and', 'or', 'not', 'min', 'max', 'sum', 'avg', 'count', 'days', 'round', 'floor', 'ceil', 'abs'] as const
 const COMPARE = new Set(['=', '==', '!=', '<>', '>', '>=', '<', '<='])
 
 function tokenize(formula: string): string[] {
@@ -131,6 +134,22 @@ function evaluate(node: Node, answers: Record<string, unknown>, fields?: Map<str
     if (value === null) throw new Error('not a number')
     return value
   }
+  /** Numbers of the answered arguments (unanswered ones are skipped). */
+  const answered = (nodes: Node[]) =>
+    nodes.flatMap(n => {
+      try {
+        const value = ev(n).n
+        return value === null ? [] : [value]
+      } catch (error) {
+        if (error instanceof Missing) return []
+        throw error
+      }
+    })
+  const some = (nodes: Node[]) => {
+    const values = answered(nodes)
+    if (!values.length) throw new Missing('all')
+    return values
+  }
   switch (node.k) {
     case 'num': return num(node.v)
     case 'str': return { n: Number.isNaN(Number(node.v)) || node.v === '' ? null : Number(node.v), s: [node.v], literal: true }
@@ -168,9 +187,20 @@ function evaluate(node: Node, answers: Record<string, unknown>, fields?: Map<str
         case 'and': return num(args.every(truthy) ? 1 : 0)
         case 'or': return num(args.some(truthy) ? 1 : 0)
         case 'not': return num(args[0] && truthy(args[0]) ? 0 : 1)
-        case 'min': return num(Math.min(...args.map(number)))
-        case 'max': return num(Math.max(...args.map(number)))
-        case 'sum': return num(args.map(number).reduce((a, b) => a + b, 0))
+        case 'min': return num(Math.min(...some(args)))
+        case 'max': return num(Math.max(...some(args)))
+        case 'sum': return num(some(args).reduce((a, b) => a + b, 0))
+        case 'avg': {
+          const values = some(args)
+          return num(values.reduce((a, b) => a + b, 0) / values.length)
+        }
+        case 'count': return num(answered(args).length)
+        case 'days': {
+          if (args.length !== 2) throw new Error('days needs 2')
+          const [from, to] = args.map(n => Date.parse(String(ev(n).s[0] ?? '').slice(0, 10)))
+          if (Number.isNaN(from) || Number.isNaN(to)) throw new Error('not a date')
+          return num(Math.round((to! - from!) / 86_400_000))
+        }
         case 'abs': return num(Math.abs(number(args[0]!)))
         case 'floor': return num(Math.floor(number(args[0]!)))
         case 'ceil': return num(Math.ceil(number(args[0]!)))
@@ -190,10 +220,21 @@ function evaluate(node: Node, answers: Record<string, unknown>, fields?: Map<str
  * the numbers given to their options.
  */
 export function calculate(formula: string, answers: Record<string, unknown>, fields?: Map<string, FormField>): number | null {
+  const result = calculateResult(formula, answers, fields)
+  return typeof result === 'number' ? result : null
+}
+
+/** Like calculate, but a formula may also give a text — e.g. a risk level "High". */
+export function calculateResult(
+  formula: string,
+  answers: Record<string, unknown>,
+  fields?: Map<string, FormField>,
+): number | string | null {
   try {
-    const value = evaluate(parseFormula(formula), answers, fields).n
-    if (value === null || !Number.isFinite(value)) return null
-    return Math.round(value * 1e6) / 1e6
+    const value = evaluate(parseFormula(formula), answers, fields)
+    if (value.n === null) return value.literal && value.s[0] ? value.s[0] : null
+    if (!Number.isFinite(value.n)) return null
+    return Math.round(value.n * 1e6) / 1e6
   } catch {
     return null
   }

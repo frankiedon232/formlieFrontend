@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { cannotBeRequired, isLocked, sectionOwners, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
-import { calculate } from '#shared/utils/forms/formula'
+import { calculateResult } from '#shared/utils/forms/formula'
 import { END_OF_FORM, evaluateLogic } from '#shared/utils/forms/logic'
 import { validateAnswer, type AddressPart, type ValidationIssue } from '#shared/utils/forms/validate'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
@@ -62,7 +62,7 @@ watchEffect(() => {
   }
   for (const field of allFieldsByKey.value.values())
     if (field.type === 'calculated') {
-      const value = calculate(String(field.props?.formula ?? ''), answers.value, allFieldsByKey.value)
+      const value = calculateResult(String(field.props?.formula ?? ''), answers.value, allFieldsByKey.value)
       if (answers.value[field.key] !== value) answers.value[field.key] = value
     }
 })
@@ -93,7 +93,10 @@ const visibleRows = computed(() =>
   (page.value?.rows ?? [])
     .map(row => ({
       ...row,
-      fields: (row.fields as FormField[]).filter(f => !logic.value.hidden.has(f.id)).map(effective),
+      // Internal calculations (e.g. a loyalty group) are worked out and saved, but not shown.
+      fields: (row.fields as FormField[])
+        .filter(f => !logic.value.hidden.has(f.id) && !(f.type === 'calculated' && f.props?.internal))
+        .map(effective),
     }))
     .filter(row => row.fields.length),
 )

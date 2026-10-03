@@ -6,7 +6,7 @@
 import { TRASH_RETENTION_DAYS, type FormFolder, type FormStatus, type FormSummary, type FormVersion } from '#shared/types/forms'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { loadPersisted, savePersisted } from '../core/persist'
-import { MOCK_FOLDERS, MOCK_FORMS } from './forms'
+import { MOCK_FOLDERS, MOCK_FORMS, SEED_TEMPLATES, seedBaseName } from './forms'
 import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
 
 export interface StoredForm extends FormSummary {
@@ -26,6 +26,8 @@ export interface StoredVersion extends FormVersion {
 interface TenantForms {
   forms: StoredForm[]
   folders: FormFolder[]
+  /** Sample forms linked to their templates (F9 migration done). */
+  templatesSeeded?: boolean
 }
 
 const DAY = 86_400_000
@@ -42,12 +44,18 @@ export function formsOf(tenant: MockTenant): TenantForms {
             ...structuredClone(form),
             previous_status: form.status === 'archived' ? 'closed' : null,
             schema: null,
-            template_key: null,
+            template_key: SEED_TEMPLATES[seedBaseName(form.name)] ?? null,
           })),
           folders: MOCK_FOLDERS.map(folder => ({ ...folder })),
         }
       : { forms: [], folders: [] }
     stores.set(tenant.id, store)
+  } else if (SEEDED_TENANT_IDS.has(tenant.id) && !store.templatesSeeded) {
+    // Stores saved before F9: link untouched sample forms to their template once.
+    for (const form of store.forms)
+      if (!form.template_key && !form.schema) form.template_key = SEED_TEMPLATES[seedBaseName(form.name)] ?? null
+    store.templatesSeeded = true
+    saveForms()
   }
   const cutoff = Date.now() - TRASH_RETENTION_DAYS * DAY
   const before = store.forms.length

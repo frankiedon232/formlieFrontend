@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Tidak bisa dilakukan pada status formulir saat ini. Muat ulang lalu coba lagi.",
     "FRM-FORM-1008": "Folder dengan nama ini sudah ada.",
     "FRM-FORM-1009": "Daftar dengan nama ini sudah ada.",
-    "FRM-FORM-1010": "Tema dengan nama ini sudah ada."
+    "FRM-FORM-1010": "Tema dengan nama ini sudah ada.",
+    "FRM-FORM-1011": "Templat sistem tidak dapat diubah. Duplikat templat untuk membuat milik Anda sendiri.",
+    "FRM-FORM-1012": "Templat dengan nama ini sudah ada."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -603,7 +605,8 @@
       "folder": "Folder",
       "saved_field": "Kolom tersimpan",
       "option_list": "Daftar opsi",
-      "theme": "Tema"
+      "theme": "Tema",
+      "template": "Templat"
     },
     "field": {
       "name": "Nama",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Daftar dihapus",
       "forms_theme_created": "Tema disimpan",
       "forms_theme_updated": "Tema diperbarui",
-      "forms_theme_deleted": "Tema dihapus"
+      "forms_theme_deleted": "Tema dihapus",
+      "forms_template_created": "Templat dibuat",
+      "forms_template_updated": "Templat diperbarui",
+      "forms_template_duplicated": "Templat diduplikat",
+      "forms_template_deleted": "Templat dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Laporan insiden"
       }
-    }
+    },
+    "subtitle": "Mulai dari formulir siap pakai — setiap templat punya desainnya sendiri, dan Anda bisa mengubah apa pun sebelum memublikasikan",
+    "blank": "Formulir kosong",
+    "all": "Semua",
+    "search": "Cari templat…",
+    "use": "Gunakan templat",
+    "open": "Buka",
+    "duplicate": "Duplikat",
+    "delete": "Hapus",
+    "view": "Lihat templat",
+    "preview": "Pratinjau templat",
+    "minutes": "{n} mnt",
+    "questions": "{count} pertanyaan | {count} pertanyaan",
+    "usedTitle": "Formulir yang dibuat dari templat ini",
+    "neverUsed": "Belum pernah digunakan",
+    "nameRequired": "Beri nama.",
+    "description": "Deskripsi",
+    "descriptionPlaceholder": "Untuk apa templat ini?",
+    "categories": {
+      "business": "Bisnis & pelanggan",
+      "hr": "SDM & tempat kerja",
+      "health_safety": "Kesehatan & keselamatan",
+      "events": "Acara & pemesanan",
+      "hospitality": "Perhotelan",
+      "education": "Pendidikan",
+      "operations_it": "Operasional & TI",
+      "finance_legal": "Keuangan & hukum",
+      "community": "Komunitas & lainnya",
+      "real_estate": "Properti",
+      "sales": "Penjualan"
+    },
+    "filter": {
+      "category": "Kategori",
+      "source": "Dibuat oleh",
+      "features": "Mencakup"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Ruang kerja Anda"
+    },
+    "badge": {
+      "calculations": "Perhitungan",
+      "logic": "Logika",
+      "workspace": "Ruang kerja"
+    },
+    "col": {
+      "name": "Nama",
+      "category": "Kategori",
+      "questions": "Pertanyaan",
+      "forms": "Formulir",
+      "responses": "Tanggapan",
+      "lastUsed": "Terakhir digunakan"
+    },
+    "sort": {
+      "popular": "Paling sering digunakan",
+      "responses": "Tanggapan terbanyak",
+      "name": "Nama (A–Z)",
+      "short": "Tercepat diisi",
+      "recent": "Baru diperbarui"
+    },
+    "emptyTitle": "Tidak ada templat yang cocok",
+    "emptyDesc": "Coba kategori atau pencarian lain, atau hapus filter.",
+    "useTitle": "Gunakan templat",
+    "useDesc": "Formulir baru Anda terbuka di pembuat formulir — ubah pertanyaan, aturan, perhitungan, atau desain apa pun sebelum memublikasikan.",
+    "saveAs": "Simpan sebagai templat",
+    "saveTitle": "Simpan sebagai templat",
+    "saveDesc": "Pertanyaan, logika, perhitungan, dan desain menjadi templat untuk ruang kerja Anda. Tanggapan tidak pernah disertakan.",
+    "saveButton": "Simpan templat",
+    "deleteTitle": "Hapus “{name}”?",
+    "deleteDesc": "Formulir yang dibuat darinya tetap mempertahankan pertanyaan dan desainnya.",
+    "included": "Yang disertakan",
+    "calculationsTitle": "Perhitungan",
+    "teamOnly": "Hanya tim",
+    "usage": "Penggunaan di ruang kerja Anda",
+    "facts": {
+      "pages": "{count} halaman | {count} halaman",
+      "logic": "{count} aturan logika | {count} aturan logika",
+      "calculations": "{count} perhitungan | {count} perhitungan"
+    },
+    "stats": {
+      "forms": "Formulir",
+      "responses": "Tanggapan",
+      "lastUsed": "Terakhir digunakan"
+    },
+    "editableHint": "Semuanya bisa diubah setelah digunakan: pertanyaan, logika, perhitungan, dan desain.",
+    "formsFrom": "Formulir yang dibuat dari templat ini ({count})",
+    "noFormsTitle": "Belum ada formulir dari templat ini",
+    "noFormsDesc": "Gunakan templat untuk membuat yang pertama.",
+    "notFound": "Templat ini tidak tersedia",
+    "notFoundDesc": "Templat mungkin telah dihapus. Pilih yang lain dari galeri.",
+    "backToGallery": "Kembali ke templat",
+    "toast": {
+      "created": "“{name}” dibuat dari templat",
+      "duplicated": "“{name}” ditambahkan ke templat Anda",
+      "deleted": "“{name}” dihapus",
+      "saved": "“{name}” disimpan sebagai templat",
+      "updated": "“{name}” diperbarui"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Umpan Balik Pelanggan",
+        "description": "Ketahui pendapat pelanggan tentang layanan Anda — dengan pertanyaan lanjutan saat ada yang tidak puas."
+      },
+      "csat_nps": {
+        "name": "Survei Kepuasan Pelanggan (CSAT / NPS)",
+        "description": "Ukur kepuasan (CSAT), usaha, dan loyalitas (NPS) — setiap jawaban dikelompokkan sebagai promotor, pasif, atau detraktor."
+      },
+      "product_review": {
+        "name": "Ulasan Produk",
+        "description": "Kumpulkan ulasan produk terperinci dengan rating bintang, skor rata-rata, foto, dan persetujuan publikasi."
+      },
+      "contact_lead": {
+        "name": "Formulir Kontak / Pertanyaan",
+        "description": "Formulir kontak yang sederhana dan ramah, yang meneruskan setiap pertanyaan sesuai topiknya."
+      },
+      "quote_request": {
+        "name": "Permintaan Penawaran Harga",
+        "description": "Pelanggan menyusun permintaan dan melihat perkiraan harga berdasarkan paket, tambahan, dan jumlah."
+      },
+      "order_form": {
+        "name": "Formulir Pemesanan",
+        "description": "Terima pesanan dengan hingga tiga baris produk, pilihan pengiriman, dan total berjalan."
+      },
+      "complaint_dispute": {
+        "name": "Formulir Keluhan / Sengketa",
+        "description": "Catat keluhan dan sengketa dengan bukti, hasil yang diinginkan, dan kontak sebelumnya."
+      },
+      "service_request": {
+        "name": "Permintaan Layanan",
+        "description": "Jadwalkan kunjungan layanan dengan prioritas, waktu pilihan, dan foto masalah."
+      },
+      "lead_capture_newsletter": {
+        "name": "Pengumpulan Prospek / Pendaftaran Buletin",
+        "description": "Kembangkan daftar Anda dengan persetujuan, minat, dan pelacakan kampanye bawaan."
+      },
+      "return_refund": {
+        "name": "Permintaan Retur / Pengembalian Dana",
+        "description": "Tangani retur dengan alasan, foto, hasil yang diinginkan, dan jumlah pengembalian dana yang dihitung."
+      },
+      "job_application": {
+        "name": "Lamaran Kerja",
+        "description": "Lamaran lengkap: data pribadi, posisi, unggah CV, ekspektasi gaji, dan persetujuan."
+      },
+      "employee_onboarding": {
+        "name": "Orientasi Karyawan Baru",
+        "description": "Semua yang dibagikan karyawan baru sebelum hari pertama: data diri, kontak darurat, perlengkapan, dan pembayaran."
+      },
+      "exit_interview": {
+        "name": "Wawancara Keluar",
+        "description": "Pahami alasan orang keluar dan apa yang membuat mereka bertahan, dengan penilaian atas seluruh pengalaman karyawan."
+      },
+      "leave_request": {
+        "name": "Permohonan Cuti",
+        "description": "Ajukan cuti dengan jumlah hari yang dihitung dari tanggal, pengganti, dan dokumen pendukung."
+      },
+      "performance_review": {
+        "name": "Penilaian Kinerja",
+        "description": "Nilai enam kompetensi; skor rata-rata dan kategori penilaian dihitung untuk Anda."
+      },
+      "engagement_survey": {
+        "name": "Survei Keterlibatan Karyawan",
+        "description": "Survei singkat anonim tentang kebanggaan, tujuan, pengembangan, dan dukungan — dengan indeks keterlibatan 0 hingga 100."
+      },
+      "expense_reimbursement": {
+        "name": "Penggantian Biaya",
+        "description": "Ajukan hingga tiga pengeluaran beserta kuitansi; totalnya dijumlahkan otomatis."
+      },
+      "timesheet": {
+        "name": "Lembar Jam Kerja",
+        "description": "Jam mingguan per hari dengan total dan lembur dibandingkan jam kerja kontrak."
+      },
+      "training_feedback": {
+        "name": "Umpan Balik Pelatihan",
+        "description": "Nilai materi, pelatih, bahan, dan relevansi kursus — dengan skor rata-rata."
+      },
+      "reference_check": {
+        "name": "Pemeriksaan Referensi",
+        "description": "Pertanyaan terstruktur untuk pemberi referensi, penilaian keterampilan dengan rata-rata, dan jawaban jelas soal mempekerjakan kembali."
+      }
+    },
+    "openGallery": "Buka galeri lengkap"
   },
   "builder": {
     "crumb": "Pembuat",
@@ -1137,7 +1324,9 @@
       "consentText": "Teks persetujuan",
       "consentTextHint": "Hal yang disetujui responden, mis. “Saya menyetujui ketentuan dan pemberitahuan privasi.”",
       "consentLink": "Tautan ke ketentuan (opsional)",
-      "consentLinkLabel": "Teks tautan"
+      "consentLinkLabel": "Teks tautan",
+      "showResult": "Tampilkan hasil kepada responden",
+      "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas)."
     },
     "shortcuts": {
       "title": "Pintasan",

@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Hili haliwezekani katika hali ya sasa ya fomu. Onyesha upya kisha ujaribu tena.",
     "FRM-FORM-1008": "Tayari kuna folda yenye jina hili.",
     "FRM-FORM-1009": "Orodha yenye jina hili tayari ipo.",
-    "FRM-FORM-1010": "Mandhari yenye jina hili tayari ipo."
+    "FRM-FORM-1010": "Mandhari yenye jina hili tayari ipo.",
+    "FRM-FORM-1011": "Violezo vya mfumo haviwezi kubadilishwa. Kinakili ili kutengeneza chako.",
+    "FRM-FORM-1012": "Tayari kuna kiolezo chenye jina hili."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -603,7 +605,8 @@
       "folder": "Folda",
       "saved_field": "Sehemu iliyohifadhiwa",
       "option_list": "Orodha ya chaguo",
-      "theme": "Mandhari"
+      "theme": "Mandhari",
+      "template": "Kiolezo"
     },
     "field": {
       "name": "Jina",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Orodha imefutwa",
       "forms_theme_created": "Mandhari imehifadhiwa",
       "forms_theme_updated": "Mandhari imesasishwa",
-      "forms_theme_deleted": "Mandhari imefutwa"
+      "forms_theme_deleted": "Mandhari imefutwa",
+      "forms_template_created": "Kiolezo kimetengenezwa",
+      "forms_template_updated": "Kiolezo kimesasishwa",
+      "forms_template_duplicated": "Kiolezo kimenakiliwa",
+      "forms_template_deleted": "Kiolezo kimefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Ripoti ya tukio"
       }
-    }
+    },
+    "subtitle": "Anza na fomu iliyo tayari — kila kiolezo kina muundo wake, na unaweza kubadilisha chochote kabla ya kuchapisha",
+    "blank": "Fomu tupu",
+    "all": "Zote",
+    "search": "Tafuta violezo…",
+    "use": "Tumia kiolezo",
+    "open": "Fungua",
+    "duplicate": "Nakili",
+    "delete": "Futa",
+    "view": "Tazama kiolezo",
+    "preview": "Hakiki ya kiolezo",
+    "minutes": "Dak {n}",
+    "questions": "Swali {count} | Maswali {count}",
+    "usedTitle": "Fomu zilizotengenezwa kwa kiolezo hiki",
+    "neverUsed": "Bado hakijatumika",
+    "nameRequired": "Kipe jina.",
+    "description": "Maelezo",
+    "descriptionPlaceholder": "Kiolezo hiki ni cha nini?",
+    "categories": {
+      "business": "Biashara na wateja",
+      "hr": "Rasilimali watu na kazini",
+      "health_safety": "Afya na usalama",
+      "events": "Matukio na uhifadhi",
+      "hospitality": "Ukarimu",
+      "education": "Elimu",
+      "operations_it": "Uendeshaji na TEHAMA",
+      "finance_legal": "Fedha na sheria",
+      "community": "Jamii na mengineyo",
+      "real_estate": "Mali isiyohamishika",
+      "sales": "Mauzo"
+    },
+    "filter": {
+      "category": "Aina",
+      "source": "Kimetengenezwa na",
+      "features": "Kinajumuisha"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Eneo lako la kazi"
+    },
+    "badge": {
+      "calculations": "Hesabu",
+      "logic": "Mantiki",
+      "workspace": "Eneo la kazi"
+    },
+    "col": {
+      "name": "Jina",
+      "category": "Aina",
+      "questions": "Maswali",
+      "forms": "Fomu",
+      "responses": "Majibu",
+      "lastUsed": "Kilitumika mwisho"
+    },
+    "sort": {
+      "popular": "Vinavyotumika zaidi",
+      "responses": "Majibu mengi zaidi",
+      "name": "Jina (A–Z)",
+      "short": "Haraka zaidi kujaza",
+      "recent": "Vilivyosasishwa karibuni"
+    },
+    "emptyTitle": "Hakuna violezo vinavyolingana",
+    "emptyDesc": "Jaribu aina au utafutaji mwingine, au futa vichujio.",
+    "useTitle": "Tumia kiolezo",
+    "useDesc": "Fomu yako mpya inafunguka kwenye kijenzi — badilisha swali, kanuni, hesabu au muundo wowote kabla ya kuchapisha.",
+    "saveAs": "Hifadhi kama kiolezo",
+    "saveTitle": "Hifadhi kama kiolezo",
+    "saveDesc": "Maswali, mantiki, hesabu na muundo vinakuwa kiolezo cha eneo lako la kazi. Majibu hayajumuishwi kamwe.",
+    "saveButton": "Hifadhi kiolezo",
+    "deleteTitle": "Futa “{name}”?",
+    "deleteDesc": "Fomu zilizotengenezwa kwacho zinabaki na maswali na muundo wake.",
+    "included": "Kilichojumuishwa",
+    "calculationsTitle": "Hesabu",
+    "teamOnly": "Timu pekee",
+    "usage": "Matumizi katika eneo lako la kazi",
+    "facts": {
+      "pages": "Ukurasa {count} | Kurasa {count}",
+      "logic": "Kanuni {count} ya mantiki | Kanuni {count} za mantiki",
+      "calculations": "Hesabu {count} | Hesabu {count}"
+    },
+    "stats": {
+      "forms": "Fomu",
+      "responses": "Majibu",
+      "lastUsed": "Kilitumika mwisho"
+    },
+    "editableHint": "Kila kitu kinaweza kubadilishwa baada ya kukitumia: maswali, mantiki, hesabu na muundo.",
+    "formsFrom": "Fomu zilizotengenezwa kwa kiolezo hiki ({count})",
+    "noFormsTitle": "Bado hakuna fomu kutoka kiolezo hiki",
+    "noFormsDesc": "Tumia kiolezo kutengeneza ya kwanza.",
+    "notFound": "Kiolezo hiki hakipatikani",
+    "notFoundDesc": "Huenda kimefutwa. Chagua kingine kwenye matunzio.",
+    "backToGallery": "Rudi kwenye violezo",
+    "toast": {
+      "created": "“{name}” imetengenezwa kutoka kiolezo",
+      "duplicated": "“{name}” kimeongezwa kwenye violezo vyako",
+      "deleted": "“{name}” kimefutwa",
+      "saved": "“{name}” imehifadhiwa kama kiolezo",
+      "updated": "“{name}” kimesasishwa"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Maoni ya Wateja",
+        "description": "Sikia wateja wanavyofikiri kuhusu huduma yako — pamoja na swali la ufuatiliaji mtu asiporidhika."
+      },
+      "csat_nps": {
+        "name": "Utafiti wa Kuridhika kwa Wateja (CSAT / NPS)",
+        "description": "Pima kuridhika (CSAT), juhudi na uaminifu (NPS) — kila jibu linapangwa kama mtetezi, wa kati au mkosoaji."
+      },
+      "product_review": {
+        "name": "Tathmini ya Bidhaa",
+        "description": "Kusanya tathmini za kina za bidhaa zenye nyota, wastani wa alama, picha na idhini ya kuchapisha."
+      },
+      "contact_lead": {
+        "name": "Fomu ya Mawasiliano / Maulizo",
+        "description": "Fomu rahisi na ya kirafiki ya mawasiliano inayoelekeza kila ulizo kulingana na mada."
+      },
+      "quote_request": {
+        "name": "Ombi la Bei / Makadirio",
+        "description": "Wateja wanaandaa ombi lao na kuona makadirio ya awali kulingana na kifurushi, nyongeza na idadi."
+      },
+      "order_form": {
+        "name": "Fomu ya Oda",
+        "description": "Pokea oda zenye hadi mistari mitatu ya bidhaa, chaguo la usafirishaji na jumla inayojisasisha."
+      },
+      "complaint_dispute": {
+        "name": "Fomu ya Malalamiko / Mzozo",
+        "description": "Rekodi malalamiko na mizozo pamoja na ushahidi, matokeo yanayotakiwa na mawasiliano ya awali."
+      },
+      "service_request": {
+        "name": "Ombi la Huduma",
+        "description": "Panga ziara ya huduma kwa kipaumbele, muda unaopendelewa na picha za tatizo."
+      },
+      "lead_capture_newsletter": {
+        "name": "Kukusanya Wateja Watarajiwa / Kujisajili kwa Jarida",
+        "description": "Kuza orodha yako ukiwa na idhini, mambo yanayowavutia na ufuatiliaji wa kampeni vilivyojengwa ndani."
+      },
+      "return_refund": {
+        "name": "Ombi la Kurejesha Bidhaa / Fedha",
+        "description": "Shughulikia urejeshaji kwa sababu, picha, matokeo yanayotakiwa na kiasi cha marejesho kilichokokotolewa."
+      },
+      "job_application": {
+        "name": "Maombi ya Kazi",
+        "description": "Maombi kamili: taarifa binafsi, nafasi, kupakia CV, matarajio ya mshahara na idhini."
+      },
+      "employee_onboarding": {
+        "name": "Kumkaribisha Mfanyakazi Mpya",
+        "description": "Kila kitu mfanyakazi mpya hushiriki kabla ya siku ya kwanza: taarifa, mtu wa dharura, vifaa na malipo."
+      },
+      "exit_interview": {
+        "name": "Mahojiano ya Kuondoka Kazini",
+        "description": "Jua kwa nini watu wanaondoka na nini kingewabakiza, kwa tathmini za uzoefu mzima wa mfanyakazi."
+      },
+      "leave_request": {
+        "name": "Ombi la Likizo",
+        "description": "Omba likizo huku idadi ya siku ikikokotolewa kutoka tarehe, pamoja na mbadala na nyaraka za kuunga mkono."
+      },
+      "performance_review": {
+        "name": "Tathmini ya Utendaji Kazi",
+        "description": "Pima umahiri sita; wastani wa alama na kiwango cha tathmini vinakokotolewa kwa ajili yako."
+      },
+      "engagement_survey": {
+        "name": "Utafiti wa Ushiriki wa Wafanyakazi",
+        "description": "Utafiti mfupi usio na majina kuhusu fahari, kusudi, ukuaji na usaidizi — pamoja na fahirisi ya ushiriki kutoka 0 hadi 100."
+      },
+      "expense_reimbursement": {
+        "name": "Kurejeshewa Gharama",
+        "description": "Dai hadi gharama tatu pamoja na risiti; jumla ya dai inajumlishwa yenyewe."
+      },
+      "timesheet": {
+        "name": "Jedwali la Saa za Kazi",
+        "description": "Saa za kila siku za wiki pamoja na jumla na saa za ziada ikilinganishwa na saa za mkataba."
+      },
+      "training_feedback": {
+        "name": "Maoni ya Mafunzo",
+        "description": "Pima maudhui, mkufunzi, nyenzo na umuhimu wa kozi — pamoja na wastani wa alama."
+      },
+      "reference_check": {
+        "name": "Uhakiki wa Wadhamini",
+        "description": "Maswali yaliyopangwa kwa wadhamini, ujuzi uliopimwa wenye wastani na jibu wazi kuhusu kumwajiri tena."
+      }
+    },
+    "openGallery": "Fungua matunzio yote"
   },
   "builder": {
     "crumb": "Kijenzi",
@@ -1137,7 +1324,9 @@
       "consentText": "Maandishi ya idhini",
       "consentTextHint": "Kile wanachokubali wajibuji, mf. “Ninakubali masharti na taarifa ya faragha.”",
       "consentLink": "Kiungo cha masharti (si lazima)",
-      "consentLinkLabel": "Maandishi ya kiungo"
+      "consentLinkLabel": "Maandishi ya kiungo",
+      "showResult": "Waonyeshe wajibuji matokeo",
+      "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu)."
     },
     "shortcuts": {
       "title": "Njia za mkato",

@@ -1,10 +1,10 @@
 <!--
-  New form (F6): blank · from a starter template · import a JSON export (FormSchema v1, validated
+  New form (F6): blank · from a template (catalogue, F9) · import a JSON export (FormSchema v1, validated
   and previewed before anything is created). `?mode=template|import` and `?template=<key>` preselect.
 -->
 <script setup lang="ts">
 import type { FormFolder, FormSummary } from '#shared/types/forms'
-import { STARTER_TEMPLATES, type StarterTemplateKey } from '#shared/utils/templates/starters'
+import { systemTemplate } from '#shared/templates'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 definePageMeta({ breadcrumb: 'nav.newForm' })
@@ -54,15 +54,14 @@ watch(imported, () => (nameTouched.value = false))
 // ── Name (follows the chosen template until the user types their own) ─────────────
 const name = ref('')
 const nameTouched = ref(false)
-const templateKey = ref<StarterTemplateKey>(
-  (STARTER_TEMPLATES.find(item => item.key === route.query.template)?.key ??
-    'customer_feedback') as StarterTemplateKey,
+const templateKey = ref<string>(
+  systemTemplate(String(route.query.template ?? ''))?.key ?? 'customer_feedback',
 )
 watchEffect(() => {
   if (nameTouched.value) return
   name.value =
     mode.value === 'template'
-      ? t(`templates.starter.${templateKey.value}.name`)
+      ? t(`templates.items.${templateKey.value}.name`)
       : mode.value === 'import'
         ? (imported.value?.name ?? '')
         : t('onboarding.firstForm.untitled')

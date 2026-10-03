@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "That isn't possible while the form is in its current state. Refresh and try again.",
     "FRM-FORM-1008": "A folder with this name already exists.",
     "FRM-FORM-1009": "A list with this name already exists.",
-    "FRM-FORM-1010": "A theme with this name already exists."
+    "FRM-FORM-1010": "A theme with this name already exists.",
+    "FRM-FORM-1011": "System templates can’t be changed. Duplicate it to make your own.",
+    "FRM-FORM-1012": "A template with this name already exists."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -603,7 +605,8 @@
       "folder": "Folder",
       "saved_field": "Saved field",
       "option_list": "Option list",
-      "theme": "Theme"
+      "theme": "Theme",
+      "template": "Template"
     },
     "field": {
       "name": "Name",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "List deleted",
       "forms_theme_created": "Theme saved",
       "forms_theme_updated": "Theme updated",
-      "forms_theme_deleted": "Theme deleted"
+      "forms_theme_deleted": "Theme deleted",
+      "forms_template_created": "Template created",
+      "forms_template_updated": "Template updated",
+      "forms_template_duplicated": "Template duplicated",
+      "forms_template_deleted": "Template deleted"
     },
     "detail": {
       "who": "Who",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Incident report"
       }
-    }
+    },
+    "subtitle": "Start from a ready form — every template has its own design, and you can change anything before publishing",
+    "blank": "Blank form",
+    "all": "All",
+    "search": "Search templates…",
+    "use": "Use template",
+    "open": "Open",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "view": "View template",
+    "preview": "Template preview",
+    "minutes": "{n} min",
+    "questions": "{count} question | {count} questions",
+    "usedTitle": "Forms made from this template",
+    "neverUsed": "Not used yet",
+    "nameRequired": "Give it a name.",
+    "description": "Description",
+    "descriptionPlaceholder": "What is this template for?",
+    "categories": {
+      "business": "Business & customer",
+      "hr": "HR & workplace",
+      "health_safety": "Health & safety",
+      "events": "Events & bookings",
+      "hospitality": "Hospitality",
+      "education": "Education",
+      "operations_it": "Operations & IT",
+      "finance_legal": "Finance & legal",
+      "community": "Community & other",
+      "real_estate": "Real estate",
+      "sales": "Sales"
+    },
+    "filter": {
+      "category": "Category",
+      "source": "Made by",
+      "features": "Includes"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Your workspace"
+    },
+    "badge": {
+      "calculations": "Calculations",
+      "logic": "Logic",
+      "workspace": "Workspace"
+    },
+    "col": {
+      "name": "Name",
+      "category": "Category",
+      "questions": "Questions",
+      "forms": "Forms",
+      "responses": "Responses",
+      "lastUsed": "Last used"
+    },
+    "sort": {
+      "popular": "Most used",
+      "responses": "Most responses",
+      "name": "Name (A–Z)",
+      "short": "Quickest to fill in",
+      "recent": "Recently updated"
+    },
+    "emptyTitle": "No templates match",
+    "emptyDesc": "Try another category or search, or clear the filters.",
+    "useTitle": "Use template",
+    "useDesc": "Your new form opens in the builder — change any question, rule, calculation or the design before publishing.",
+    "saveAs": "Save as template",
+    "saveTitle": "Save as template",
+    "saveDesc": "The questions, logic, calculations and design become a template for your workspace. Responses are never included.",
+    "saveButton": "Save template",
+    "deleteTitle": "Delete “{name}”?",
+    "deleteDesc": "Forms made from it keep their questions and design.",
+    "included": "What’s included",
+    "calculationsTitle": "Calculations",
+    "teamOnly": "Team only",
+    "usage": "Usage in your workspace",
+    "facts": {
+      "pages": "{count} page | {count} pages",
+      "logic": "{count} logic rule | {count} logic rules",
+      "calculations": "{count} calculation | {count} calculations"
+    },
+    "stats": {
+      "forms": "Forms",
+      "responses": "Responses",
+      "lastUsed": "Last used"
+    },
+    "editableHint": "Everything can be changed after you use it: questions, logic, calculations and design.",
+    "formsFrom": "Forms made from this template ({count})",
+    "noFormsTitle": "No forms from this template yet",
+    "noFormsDesc": "Use the template to create the first one.",
+    "notFound": "This template isn’t available",
+    "notFoundDesc": "It may have been deleted. Pick another one from the gallery.",
+    "backToGallery": "Back to templates",
+    "toast": {
+      "created": "“{name}” created from the template",
+      "duplicated": "“{name}” added to your templates",
+      "deleted": "“{name}” deleted",
+      "saved": "“{name}” saved as a template",
+      "updated": "“{name}” updated"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Customer Feedback",
+        "description": "Hear what customers think of your service — with a follow-up when someone is unhappy."
+      },
+      "csat_nps": {
+        "name": "Customer Satisfaction (CSAT / NPS) Survey",
+        "description": "Measure satisfaction (CSAT), effort and loyalty (NPS) — each answer is grouped as promoter, passive or detractor."
+      },
+      "product_review": {
+        "name": "Product Review",
+        "description": "Collect detailed product reviews with star ratings, an average score, photos and publishing consent."
+      },
+      "contact_lead": {
+        "name": "Contact / Inquiry Form",
+        "description": "A simple, friendly contact form that routes each inquiry by topic."
+      },
+      "quote_request": {
+        "name": "Quote / Estimate Request",
+        "description": "Let customers build a request and see an indicative estimate from package, add-ons and quantity."
+      },
+      "order_form": {
+        "name": "Order Form",
+        "description": "Take orders with up to three product lines, delivery choice and a running total."
+      },
+      "complaint_dispute": {
+        "name": "Complaint / Dispute Form",
+        "description": "Record complaints and disputes with evidence, the outcome wanted and earlier contact."
+      },
+      "service_request": {
+        "name": "Service Request",
+        "description": "Book a service visit with priority, preferred time and photos of the problem."
+      },
+      "lead_capture_newsletter": {
+        "name": "Lead Capture / Newsletter Signup",
+        "description": "Grow your list with consent, interests and campaign tracking built in."
+      },
+      "return_refund": {
+        "name": "Return / Refund Request",
+        "description": "Handle returns with the reason, photos, the outcome wanted and the refund amount worked out."
+      },
+      "job_application": {
+        "name": "Job Application",
+        "description": "A complete application: personal details, the role, CV upload, salary expectation and consent."
+      },
+      "employee_onboarding": {
+        "name": "Employee Onboarding",
+        "description": "Everything a new starter shares before day one: details, emergency contact, equipment and payment."
+      },
+      "exit_interview": {
+        "name": "Exit Interview",
+        "description": "Learn why people leave and what would make them stay, with ratings across the employee experience."
+      },
+      "leave_request": {
+        "name": "Leave / Time-Off Request",
+        "description": "Request leave with the number of days worked out from the dates, cover and supporting documents."
+      },
+      "performance_review": {
+        "name": "Performance Review / Appraisal",
+        "description": "Rate six competencies; the average score and rating band are calculated for you."
+      },
+      "engagement_survey": {
+        "name": "Employee Engagement Survey",
+        "description": "An anonymous pulse on pride, purpose, growth and support — with an engagement index from 0 to 100."
+      },
+      "expense_reimbursement": {
+        "name": "Expense Reimbursement",
+        "description": "Claim up to three expenses with receipts; the claim total adds itself up."
+      },
+      "timesheet": {
+        "name": "Timesheet",
+        "description": "Weekly hours per day with total and overtime against contracted hours."
+      },
+      "training_feedback": {
+        "name": "Training Feedback",
+        "description": "Rate the content, trainer, materials and relevance of a course — with an average score."
+      },
+      "reference_check": {
+        "name": "Reference Check",
+        "description": "Structured questions for referees, rated skills with an average and a clear hire-again answer."
+      }
+    },
+    "openGallery": "Open the full gallery"
   },
   "builder": {
     "crumb": "Builder",
@@ -1145,7 +1332,9 @@
       "consentText": "Consent text",
       "consentTextHint": "What respondents agree to, e.g. “I agree to the terms and the privacy notice.”",
       "consentLink": "Link to the terms (optional)",
-      "consentLinkLabel": "Link text"
+      "consentLinkLabel": "Link text",
+      "showResult": "Show the result to respondents",
+      "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group)."
     },
     "shortcuts": {
       "title": "Shortcuts",

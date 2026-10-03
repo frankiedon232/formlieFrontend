@@ -12,10 +12,10 @@ import type {
   FormLifecycleAction,
   FormStatus,
 } from '#shared/types/forms'
-import { blankSchema, starterSchema } from '#shared/utils/forms/build'
+import { blankSchema } from '#shared/utils/forms/build'
 import { formSchemaV1 } from '#shared/utils/forms/schema'
-import type { StarterTemplateKey } from '#shared/utils/templates/starters'
-import { STARTER_TEMPLATE_KEYS } from '#shared/utils/templates/starters'
+import { schemaForTemplate } from '../data/templateStore'
+
 import type { AuditAction } from '#shared/utils/audit/events'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
@@ -78,6 +78,7 @@ export const listForms = defineMockRoute(({ event, query }) => {
   const folder = list(query, 'folder_id')
   const owner = list(query, 'owner_id')
   const tag = list(query, 'tag')
+  const template = list(query, 'template')
   const trash = query['filter[trash]'] === '1'
   const from = day(query.from, false)
   const to = day(query.to, true)
@@ -91,6 +92,7 @@ export const listForms = defineMockRoute(({ event, query }) => {
       (!folder || folder.includes(form.folder?.id ?? 'none')) &&
       (!owner || owner.includes(form.owner.id)) &&
       (!tag || form.tags.some(t => tag.includes(t))) &&
+      (!template || template.includes(form.template_key ?? '')) &&
       (from === null || updated >= from) &&
       (to === null || updated <= to)
     )
@@ -127,10 +129,8 @@ const name = z.string().trim().min(1, 'Give the form a name.').max(120)
 const createSchema = z.object({
   name,
   folder_id: z.string().nullable().optional(),
-  template_key: z
-    .enum(STARTER_TEMPLATE_KEYS as [string, ...string[]])
-    .nullable()
-    .optional(),
+  /** A system template key or a workspace template (`ws_…`); checked against the catalogue. */
+  template_key: z.string().max(80).nullable().optional(),
   label_position: z.enum(['top', 'left']).optional(),
 })
 const importSchema = z.object({ name, folder_id: z.string().nullable().optional(), schema: formSchemaV1 })
@@ -170,9 +170,7 @@ function newForm(
     row_version: 1,
     deleted_at: null,
     previous_status: null,
-    schema:
-      input.schema ??
-      (input.template_key ? starterSchema(input.template_key as StarterTemplateKey) : blankSchema()),
+    schema: input.schema ?? (input.template_key ? schemaForTemplate(tenant, input.template_key) : null) ?? blankSchema(),
     template_key: input.template_key ?? null,
   }
   store.forms.unshift(form)
@@ -183,6 +181,8 @@ function newForm(
 export const createForm = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(createSchema, body)
+  if (input.template_key && !schemaForTemplate(tenant, input.template_key))
+    throw new MockError('FRM-GEN-1002', [{ field: 'template_key', message: 'Choose a template from the gallery.' }])
   const form = newForm(tenant, user, { ...input, folder: folderRef(tenant, input.folder_id) })
   if (input.label_position && form.schema)
     form.schema.settings = { ...form.schema.settings, label_position: input.label_position }

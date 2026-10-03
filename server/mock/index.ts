@@ -5,6 +5,7 @@
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import { getDirectory } from './routes/directory'
+import * as templates from './routes/templates'
 import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
 import * as library from './routes/library'
@@ -71,6 +72,13 @@ const router = createRouter()
   .delete('/option-lists/:id', library.deleteOptionList)
   .get('/themes', themes.listThemes)
   .get('/directory', getDirectory)
+  .get('/templates', templates.listTemplates)
+  .get('/templates/facets', templates.templateFacets)
+  .post('/templates', templates.createTemplate)
+  .get('/templates/:key', templates.getTemplate)
+  .patch('/templates/:key', templates.updateTemplate)
+  .post('/templates/:key/duplicate', templates.duplicateTemplate)
+  .delete('/templates/:key', templates.deleteTemplate)
   .post('/themes', themes.createTheme)
   .patch('/themes/:id', themes.updateTheme)
   .post('/themes/:id/duplicate', themes.duplicateTheme)

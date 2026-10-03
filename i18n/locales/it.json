@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "Non è possibile nello stato attuale del modulo. Aggiorna e riprova.",
     "FRM-FORM-1008": "Esiste già una cartella con questo nome.",
     "FRM-FORM-1009": "Esiste già un elenco con questo nome.",
-    "FRM-FORM-1010": "Esiste già un tema con questo nome."
+    "FRM-FORM-1010": "Esiste già un tema con questo nome.",
+    "FRM-FORM-1011": "I modelli di sistema non possono essere modificati. Duplicalo per crearne uno tuo.",
+    "FRM-FORM-1012": "Esiste già un modello con questo nome."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -603,7 +605,8 @@
       "folder": "Cartella",
       "saved_field": "Campo salvato",
       "option_list": "Elenco di opzioni",
-      "theme": "Tema"
+      "theme": "Tema",
+      "template": "Modello"
     },
     "field": {
       "name": "Nome",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Elenco eliminato",
       "forms_theme_created": "Tema salvato",
       "forms_theme_updated": "Tema aggiornato",
-      "forms_theme_deleted": "Tema eliminato"
+      "forms_theme_deleted": "Tema eliminato",
+      "forms_template_created": "Modello creato",
+      "forms_template_updated": "Modello aggiornato",
+      "forms_template_duplicated": "Modello duplicato",
+      "forms_template_deleted": "Modello eliminato"
     },
     "detail": {
       "who": "Chi",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Segnalazione di incidente"
       }
-    }
+    },
+    "subtitle": "Parti da un modulo pronto: ogni modello ha il suo design e puoi modificare tutto prima di pubblicare",
+    "blank": "Modulo vuoto",
+    "all": "Tutti",
+    "search": "Cerca modelli…",
+    "use": "Usa modello",
+    "open": "Apri",
+    "duplicate": "Duplica",
+    "delete": "Elimina",
+    "view": "Visualizza modello",
+    "preview": "Anteprima del modello",
+    "minutes": "{n} min",
+    "questions": "{count} domanda | {count} domande",
+    "usedTitle": "Moduli creati da questo modello",
+    "neverUsed": "Non ancora usato",
+    "nameRequired": "Assegna un nome.",
+    "description": "Descrizione",
+    "descriptionPlaceholder": "A cosa serve questo modello?",
+    "categories": {
+      "business": "Aziende e clienti",
+      "hr": "Risorse umane e lavoro",
+      "health_safety": "Salute e sicurezza",
+      "events": "Eventi e prenotazioni",
+      "hospitality": "Ospitalità",
+      "education": "Istruzione",
+      "operations_it": "Operazioni e IT",
+      "finance_legal": "Finanza e legale",
+      "community": "Comunità e altro",
+      "real_estate": "Immobiliare",
+      "sales": "Vendite"
+    },
+    "filter": {
+      "category": "Categoria",
+      "source": "Creato da",
+      "features": "Include"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Il tuo spazio di lavoro"
+    },
+    "badge": {
+      "calculations": "Calcoli",
+      "logic": "Logica",
+      "workspace": "Spazio di lavoro"
+    },
+    "col": {
+      "name": "Nome",
+      "category": "Categoria",
+      "questions": "Domande",
+      "forms": "Moduli",
+      "responses": "Risposte",
+      "lastUsed": "Ultimo utilizzo"
+    },
+    "sort": {
+      "popular": "Più usati",
+      "responses": "Più risposte",
+      "name": "Nome (A–Z)",
+      "short": "Più rapidi da compilare",
+      "recent": "Aggiornati di recente"
+    },
+    "emptyTitle": "Nessun modello corrispondente",
+    "emptyDesc": "Prova un’altra categoria o ricerca, oppure cancella i filtri.",
+    "useTitle": "Usa modello",
+    "useDesc": "Il nuovo modulo si apre nell’editor: modifica qualsiasi domanda, regola, calcolo o il design prima di pubblicare.",
+    "saveAs": "Salva come modello",
+    "saveTitle": "Salva come modello",
+    "saveDesc": "Domande, logica, calcoli e design diventano un modello per il tuo spazio di lavoro. Le risposte non vengono mai incluse.",
+    "saveButton": "Salva modello",
+    "deleteTitle": "Eliminare «{name}»?",
+    "deleteDesc": "I moduli creati da questo modello mantengono domande e design.",
+    "included": "Cosa include",
+    "calculationsTitle": "Calcoli",
+    "teamOnly": "Solo il team",
+    "usage": "Utilizzo nel tuo spazio di lavoro",
+    "facts": {
+      "pages": "{count} pagina | {count} pagine",
+      "logic": "{count} regola logica | {count} regole logiche",
+      "calculations": "{count} calcolo | {count} calcoli"
+    },
+    "stats": {
+      "forms": "Moduli",
+      "responses": "Risposte",
+      "lastUsed": "Ultimo utilizzo"
+    },
+    "editableHint": "Dopo l’uso puoi modificare tutto: domande, logica, calcoli e design.",
+    "formsFrom": "Moduli creati da questo modello ({count})",
+    "noFormsTitle": "Ancora nessun modulo da questo modello",
+    "noFormsDesc": "Usa il modello per creare il primo.",
+    "notFound": "Questo modello non è disponibile",
+    "notFoundDesc": "Potrebbe essere stato eliminato. Scegline un altro dalla galleria.",
+    "backToGallery": "Torna ai modelli",
+    "toast": {
+      "created": "«{name}» creato dal modello",
+      "duplicated": "«{name}» aggiunto ai tuoi modelli",
+      "deleted": "«{name}» eliminato",
+      "saved": "«{name}» salvato come modello",
+      "updated": "«{name}» aggiornato"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Feedback dei clienti",
+        "description": "Scopri cosa pensano i clienti del tuo servizio, con una domanda di approfondimento quando qualcuno è insoddisfatto."
+      },
+      "csat_nps": {
+        "name": "Sondaggio sulla soddisfazione dei clienti (CSAT / NPS)",
+        "description": "Misura soddisfazione (CSAT), impegno e fedeltà (NPS): ogni risposta viene classificata come promotore, passivo o detrattore."
+      },
+      "product_review": {
+        "name": "Recensione del prodotto",
+        "description": "Raccogli recensioni dettagliate con valutazioni a stelle, punteggio medio, foto e consenso alla pubblicazione."
+      },
+      "contact_lead": {
+        "name": "Modulo di contatto / richiesta informazioni",
+        "description": "Un modulo di contatto semplice e cordiale che smista ogni richiesta per argomento."
+      },
+      "quote_request": {
+        "name": "Richiesta di preventivo",
+        "description": "I clienti compongono la richiesta e vedono una stima indicativa in base a pacchetto, extra e quantità."
+      },
+      "order_form": {
+        "name": "Modulo d’ordine",
+        "description": "Ricevi ordini con fino a tre righe di prodotto, scelta della consegna e totale aggiornato."
+      },
+      "complaint_dispute": {
+        "name": "Modulo di reclamo / contestazione",
+        "description": "Registra reclami e contestazioni con prove, la soluzione desiderata e i contatti precedenti."
+      },
+      "service_request": {
+        "name": "Richiesta di assistenza",
+        "description": "Prenota un intervento con priorità, orario preferito e foto del problema."
+      },
+      "lead_capture_newsletter": {
+        "name": "Raccolta contatti / iscrizione alla newsletter",
+        "description": "Fai crescere la tua lista con consenso, interessi e tracciamento delle campagne integrati."
+      },
+      "return_refund": {
+        "name": "Richiesta di reso / rimborso",
+        "description": "Gestisci i resi con motivo, foto, soluzione desiderata e importo del rimborso calcolato."
+      },
+      "job_application": {
+        "name": "Candidatura di lavoro",
+        "description": "Una candidatura completa: dati personali, posizione, caricamento del CV, aspettativa salariale e consenso."
+      },
+      "employee_onboarding": {
+        "name": "Onboarding dei dipendenti",
+        "description": "Tutto ciò che un nuovo assunto comunica prima del primo giorno: dati, contatto di emergenza, attrezzatura e pagamento."
+      },
+      "exit_interview": {
+        "name": "Colloquio di uscita",
+        "description": "Scopri perché le persone se ne vanno e cosa le farebbe restare, con valutazioni sull’intera esperienza del dipendente."
+      },
+      "leave_request": {
+        "name": "Richiesta di ferie / permesso",
+        "description": "Richiedi un permesso con i giorni calcolati dalle date, sostituto e documenti giustificativi."
+      },
+      "performance_review": {
+        "name": "Valutazione delle prestazioni",
+        "description": "Valuta sei competenze; punteggio medio e fascia di valutazione vengono calcolati per te."
+      },
+      "engagement_survey": {
+        "name": "Sondaggio sul coinvolgimento dei dipendenti",
+        "description": "Un sondaggio anonimo su orgoglio, scopo, crescita e supporto, con un indice di coinvolgimento da 0 a 100."
+      },
+      "expense_reimbursement": {
+        "name": "Rimborso spese",
+        "description": "Richiedi fino a tre spese con ricevute; il totale si calcola da solo."
+      },
+      "timesheet": {
+        "name": "Foglio presenze",
+        "description": "Ore settimanali per giorno con totale e straordinari rispetto all’orario contrattuale."
+      },
+      "training_feedback": {
+        "name": "Valutazione della formazione",
+        "description": "Valuta contenuti, formatore, materiali e pertinenza di un corso, con un punteggio medio."
+      },
+      "reference_check": {
+        "name": "Verifica delle referenze",
+        "description": "Domande strutturate per i referenti, competenze valutate con una media e una risposta chiara sulla riassunzione."
+      }
+    },
+    "openGallery": "Apri la galleria completa"
   },
   "builder": {
     "crumb": "Editor",
@@ -1137,7 +1324,9 @@
       "consentText": "Testo del consenso",
       "consentTextHint": "Ciò che i rispondenti accettano, es. «Accetto i termini e l’informativa sulla privacy.»",
       "consentLink": "Link ai termini (facoltativo)",
-      "consentLinkLabel": "Testo del link"
+      "consentLinkLabel": "Testo del link",
+      "showResult": "Mostra il risultato a chi risponde",
+      "internalHint": "Calcolato e salvato con ogni risposta, ma visibile solo al tuo team (ad es. un livello di rischio o un gruppo di fedeltà)."
     },
     "shortcuts": {
       "title": "Scorciatoie",

@@ -124,6 +124,20 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 
 | GET | `/directory` | `{ departments: [{ id, name }], roles: [{ id, name }], users: [{ id, name, detail }] }` — for field access pickers; members and admins |
 
+## Templates (F9)
+
+| Method | Path                         | Notes                                                                                                                                                                                        |
+| ------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | `/templates`                 | `?q&sort&page&page_size&lang&filter[category]&filter[source]=system                                                                                                                          | workspace&filter[features]=calculations | logic`→`TemplateSummary[]` (`shared/types/templates.ts`): key, source, category, icon, name / description (in `lang`for system templates), tags, minutes, pages / fields / logic / calculations counts, theme tokens, preview labels, forms_count, responses_count, last_used_at, created_by, updated_at. Default sort`-forms_count` |
+| GET    | `/templates/facets`          | `{ total, categories: { <key>: count }, workspace }`                                                                                                                                         |
+| GET    | `/templates/{key}`           | `TemplateDetail` = summary + `schema` (theme included) + `calculations: [{ label, formula, internal }]`                                                                                      |
+| POST   | `/templates`                 | `{ form_id, name, description, category }` → workspace template (snapshot of the form's draft incl. design; never responses) — name unique → `FRM-FORM-1012`; audit `forms.template_created` |
+| PATCH  | `/templates/{key}`           | `{ name?, description?, category? }` — workspace templates only (system → `FRM-FORM-1011`); audit `forms.template_updated`                                                                   |
+| POST   | `/templates/{key}/duplicate` | any template → workspace copy; audit `forms.template_duplicated`                                                                                                                             |
+| DELETE | `/templates/{key}`           | workspace templates only; forms made from it keep their content; audit `forms.template_deleted`                                                                                              |
+
+`POST /forms` takes `template_key` (system key or `ws_…`); the form remembers it (`template_key`) and `GET /forms?filter[template]=<key>` lists the forms made from a template. Calculated fields may set `props.internal: true` (worked out and saved, not shown to respondents); formulas support `avg`, `count`, `days(from, to)` and text results.
+
 ## Design, templates, option sets
 
 | CRUD | `/themes` | `{ name, tokens }` |

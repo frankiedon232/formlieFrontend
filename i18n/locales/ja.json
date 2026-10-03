@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "フォームの現在の状態ではこの操作はできません。更新してもう一度お試しください。",
     "FRM-FORM-1008": "同じ名前のフォルダーがすでにあります。",
     "FRM-FORM-1009": "この名前のリストはすでに存在します。",
-    "FRM-FORM-1010": "この名前のテーマはすでに存在します。"
+    "FRM-FORM-1010": "この名前のテーマはすでに存在します。",
+    "FRM-FORM-1011": "システムテンプレートは変更できません。複製して独自のテンプレートを作成してください。",
+    "FRM-FORM-1012": "この名前のテンプレートはすでに存在します。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -603,7 +605,8 @@
       "folder": "フォルダー",
       "saved_field": "保存済みの項目",
       "option_list": "選択肢リスト",
-      "theme": "テーマ"
+      "theme": "テーマ",
+      "template": "テンプレート"
     },
     "field": {
       "name": "名前",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "リストを削除",
       "forms_theme_created": "テーマを保存しました",
       "forms_theme_updated": "テーマを更新しました",
-      "forms_theme_deleted": "テーマを削除しました"
+      "forms_theme_deleted": "テーマを削除しました",
+      "forms_template_created": "テンプレートを作成",
+      "forms_template_updated": "テンプレートを更新",
+      "forms_template_duplicated": "テンプレートを複製",
+      "forms_template_deleted": "テンプレートを削除"
     },
     "detail": {
       "who": "誰が",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "インシデント報告"
       }
-    }
+    },
+    "subtitle": "完成済みのフォームから始めましょう。各テンプレートには独自のデザインがあり、公開前に何でも変更できます",
+    "blank": "空のフォーム",
+    "all": "すべて",
+    "search": "テンプレートを検索…",
+    "use": "テンプレートを使用",
+    "open": "開く",
+    "duplicate": "複製",
+    "delete": "削除",
+    "view": "テンプレートを表示",
+    "preview": "テンプレートのプレビュー",
+    "minutes": "{n} 分",
+    "questions": "{count} 問 | {count} 問",
+    "usedTitle": "このテンプレートから作成したフォーム",
+    "neverUsed": "未使用",
+    "nameRequired": "名前を入力してください。",
+    "description": "説明",
+    "descriptionPlaceholder": "このテンプレートの用途は？",
+    "categories": {
+      "business": "ビジネス・顧客",
+      "hr": "人事・職場",
+      "health_safety": "安全衛生",
+      "events": "イベント・予約",
+      "hospitality": "ホスピタリティ",
+      "education": "教育",
+      "operations_it": "業務・IT",
+      "finance_legal": "財務・法務",
+      "community": "コミュニティ・その他",
+      "real_estate": "不動産",
+      "sales": "営業"
+    },
+    "filter": {
+      "category": "カテゴリ",
+      "source": "作成元",
+      "features": "含まれる機能"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "あなたのワークスペース"
+    },
+    "badge": {
+      "calculations": "計算",
+      "logic": "ロジック",
+      "workspace": "ワークスペース"
+    },
+    "col": {
+      "name": "名前",
+      "category": "カテゴリ",
+      "questions": "質問",
+      "forms": "フォーム",
+      "responses": "回答",
+      "lastUsed": "最終使用日"
+    },
+    "sort": {
+      "popular": "使用回数が多い順",
+      "responses": "回答数が多い順",
+      "name": "名前（A–Z）",
+      "short": "入力が早い順",
+      "recent": "最近更新した順"
+    },
+    "emptyTitle": "一致するテンプレートがありません",
+    "emptyDesc": "別のカテゴリや検索語を試すか、フィルターをクリアしてください。",
+    "useTitle": "テンプレートを使用",
+    "useDesc": "新しいフォームがビルダーで開きます。公開前に質問、ルール、計算、デザインを自由に変更できます。",
+    "saveAs": "テンプレートとして保存",
+    "saveTitle": "テンプレートとして保存",
+    "saveDesc": "質問、ロジック、計算、デザインがワークスペースのテンプレートになります。回答は含まれません。",
+    "saveButton": "テンプレートを保存",
+    "deleteTitle": "「{name}」を削除しますか？",
+    "deleteDesc": "このテンプレートから作成したフォームの質問とデザインはそのまま残ります。",
+    "included": "含まれる内容",
+    "calculationsTitle": "計算",
+    "teamOnly": "チームのみ",
+    "usage": "ワークスペースでの使用状況",
+    "facts": {
+      "pages": "{count} ページ | {count} ページ",
+      "logic": "ロジックルール {count} 件 | ロジックルール {count} 件",
+      "calculations": "計算 {count} 件 | 計算 {count} 件"
+    },
+    "stats": {
+      "forms": "フォーム",
+      "responses": "回答",
+      "lastUsed": "最終使用日"
+    },
+    "editableHint": "使用後も質問、ロジック、計算、デザインのすべてを変更できます。",
+    "formsFrom": "このテンプレートから作成したフォーム（{count}）",
+    "noFormsTitle": "このテンプレートから作成したフォームはまだありません",
+    "noFormsDesc": "テンプレートを使って最初のフォームを作成しましょう。",
+    "notFound": "このテンプレートは利用できません",
+    "notFoundDesc": "削除された可能性があります。ギャラリーから別のテンプレートを選んでください。",
+    "backToGallery": "テンプレートに戻る",
+    "toast": {
+      "created": "テンプレートから「{name}」を作成しました",
+      "duplicated": "「{name}」をテンプレートに追加しました",
+      "deleted": "「{name}」を削除しました",
+      "saved": "「{name}」をテンプレートとして保存しました",
+      "updated": "「{name}」を更新しました"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "顧客フィードバック",
+        "description": "サービスに対するお客様の声を集めます。不満がある場合は追加の質問でフォローします。"
+      },
+      "csat_nps": {
+        "name": "顧客満足度（CSAT / NPS）アンケート",
+        "description": "満足度（CSAT）、労力、ロイヤルティ（NPS）を測定。各回答は推奨者・中立者・批判者に分類されます。"
+      },
+      "product_review": {
+        "name": "製品レビュー",
+        "description": "星評価、平均スコア、写真、掲載の同意付きで詳細な製品レビューを収集します。"
+      },
+      "contact_lead": {
+        "name": "お問い合わせフォーム",
+        "description": "トピックごとに問い合わせを振り分ける、シンプルで親しみやすいお問い合わせフォーム。"
+      },
+      "quote_request": {
+        "name": "見積依頼",
+        "description": "お客様がプラン、オプション、数量を選ぶと概算見積が表示されます。"
+      },
+      "order_form": {
+        "name": "注文フォーム",
+        "description": "最大 3 つの商品明細、配送方法、合計金額の自動表示で注文を受け付けます。"
+      },
+      "complaint_dispute": {
+        "name": "苦情・異議申し立てフォーム",
+        "description": "証拠、希望する対応、これまでの連絡履歴とともに苦情や異議を記録します。"
+      },
+      "service_request": {
+        "name": "サービス依頼",
+        "description": "優先度、希望日時、問題の写真を添えて訪問サービスを予約します。"
+      },
+      "lead_capture_newsletter": {
+        "name": "リード獲得・ニュースレター登録",
+        "description": "同意、関心分野、キャンペーン追跡を組み込んでリストを拡大します。"
+      },
+      "return_refund": {
+        "name": "返品・返金申請",
+        "description": "理由、写真、希望する対応、計算済みの返金額で返品を処理します。"
+      },
+      "job_application": {
+        "name": "応募フォーム",
+        "description": "個人情報、応募職種、履歴書のアップロード、希望給与、同意を含む完全な応募書類。"
+      },
+      "employee_onboarding": {
+        "name": "入社手続き",
+        "description": "新入社員が初日までに提出する情報：個人情報、緊急連絡先、備品、給与振込。"
+      },
+      "exit_interview": {
+        "name": "退職者面談",
+        "description": "退職の理由と定着につながる要因を、従業員体験全体の評価とともに把握します。"
+      },
+      "leave_request": {
+        "name": "休暇申請",
+        "description": "日付から日数を自動計算し、代理担当者と添付書類を付けて休暇を申請します。"
+      },
+      "performance_review": {
+        "name": "人事評価",
+        "description": "6 つのコンピテンシーを評価。平均スコアと評価ランクは自動で算出されます。"
+      },
+      "engagement_survey": {
+        "name": "従業員エンゲージメント調査",
+        "description": "誇り、目的、成長、支援についての匿名パルス調査。0〜100 のエンゲージメント指数付き。"
+      },
+      "expense_reimbursement": {
+        "name": "経費精算",
+        "description": "領収書付きで最大 3 件の経費を申請。合計は自動で集計されます。"
+      },
+      "timesheet": {
+        "name": "勤務表",
+        "description": "曜日ごとの週間勤務時間と合計、契約時間に対する残業時間。"
+      },
+      "training_feedback": {
+        "name": "研修アンケート",
+        "description": "講座の内容、講師、教材、有用性を評価。平均スコア付き。"
+      },
+      "reference_check": {
+        "name": "リファレンスチェック",
+        "description": "推薦者向けの構造化された質問、平均付きのスキル評価、再雇用についての明確な回答。"
+      }
+    },
+    "openGallery": "ギャラリー全体を開く"
   },
   "builder": {
     "crumb": "ビルダー",
@@ -1137,7 +1324,9 @@
       "consentText": "同意文",
       "consentTextHint": "回答者が同意する内容。例:「利用規約とプライバシー通知に同意します。」",
       "consentLink": "利用規約へのリンク（任意）",
-      "consentLinkLabel": "リンクのテキスト"
+      "consentLinkLabel": "リンクのテキスト",
+      "showResult": "回答者に結果を表示",
+      "internalHint": "回答ごとに計算・保存されますが、表示されるのはチームのみです（例：リスクレベルやロイヤルティグループ）。"
     },
     "shortcuts": {
       "title": "ショートカット",

@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "表单当前状态下无法执行此操作。请刷新后重试。",
     "FRM-FORM-1008": "已存在同名文件夹。",
     "FRM-FORM-1009": "已存在同名列表。",
-    "FRM-FORM-1010": "已存在同名主题。"
+    "FRM-FORM-1010": "已存在同名主题。",
+    "FRM-FORM-1011": "系统模板无法更改。请复制后创建您自己的模板。",
+    "FRM-FORM-1012": "已存在同名模板。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -603,7 +605,8 @@
       "folder": "文件夹",
       "saved_field": "已保存的字段",
       "option_list": "选项列表",
-      "theme": "主题"
+      "theme": "主题",
+      "template": "模板"
     },
     "field": {
       "name": "名称",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "列表已删除",
       "forms_theme_created": "主题已保存",
       "forms_theme_updated": "主题已更新",
-      "forms_theme_deleted": "主题已删除"
+      "forms_theme_deleted": "主题已删除",
+      "forms_template_created": "已创建模板",
+      "forms_template_updated": "已更新模板",
+      "forms_template_duplicated": "已复制模板",
+      "forms_template_deleted": "已删除模板"
     },
     "detail": {
       "who": "谁",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "事件报告"
       }
-    }
+    },
+    "subtitle": "从现成的表单开始——每个模板都有自己的设计，发布前您可以修改任何内容",
+    "blank": "空白表单",
+    "all": "全部",
+    "search": "搜索模板…",
+    "use": "使用模板",
+    "open": "打开",
+    "duplicate": "复制",
+    "delete": "删除",
+    "view": "查看模板",
+    "preview": "模板预览",
+    "minutes": "{n} 分钟",
+    "questions": "{count} 个问题 | {count} 个问题",
+    "usedTitle": "基于此模板创建的表单",
+    "neverUsed": "尚未使用",
+    "nameRequired": "请输入名称。",
+    "description": "描述",
+    "descriptionPlaceholder": "此模板的用途是什么？",
+    "categories": {
+      "business": "商业与客户",
+      "hr": "人力资源与职场",
+      "health_safety": "健康与安全",
+      "events": "活动与预订",
+      "hospitality": "酒店与餐饮",
+      "education": "教育",
+      "operations_it": "运营与 IT",
+      "finance_legal": "财务与法务",
+      "community": "社区及其他",
+      "real_estate": "房地产",
+      "sales": "销售"
+    },
+    "filter": {
+      "category": "类别",
+      "source": "创建者",
+      "features": "包含"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "您的工作区"
+    },
+    "badge": {
+      "calculations": "计算",
+      "logic": "逻辑",
+      "workspace": "工作区"
+    },
+    "col": {
+      "name": "名称",
+      "category": "类别",
+      "questions": "问题",
+      "forms": "表单",
+      "responses": "回复",
+      "lastUsed": "上次使用"
+    },
+    "sort": {
+      "popular": "最常用",
+      "responses": "回复最多",
+      "name": "名称（A–Z）",
+      "short": "填写最快",
+      "recent": "最近更新"
+    },
+    "emptyTitle": "没有匹配的模板",
+    "emptyDesc": "请尝试其他类别或搜索词，或清除筛选条件。",
+    "useTitle": "使用模板",
+    "useDesc": "新表单将在构建器中打开——发布前可修改任何问题、规则、计算或设计。",
+    "saveAs": "另存为模板",
+    "saveTitle": "另存为模板",
+    "saveDesc": "问题、逻辑、计算和设计将成为您工作区的模板。回复永远不会包含在内。",
+    "saveButton": "保存模板",
+    "deleteTitle": "删除“{name}”？",
+    "deleteDesc": "基于它创建的表单会保留其问题和设计。",
+    "included": "包含内容",
+    "calculationsTitle": "计算",
+    "teamOnly": "仅团队可见",
+    "usage": "在您工作区中的使用情况",
+    "facts": {
+      "pages": "{count} 页 | {count} 页",
+      "logic": "{count} 条逻辑规则 | {count} 条逻辑规则",
+      "calculations": "{count} 项计算 | {count} 项计算"
+    },
+    "stats": {
+      "forms": "表单",
+      "responses": "回复",
+      "lastUsed": "上次使用"
+    },
+    "editableHint": "使用后仍可修改所有内容：问题、逻辑、计算和设计。",
+    "formsFrom": "基于此模板创建的表单（{count}）",
+    "noFormsTitle": "尚无基于此模板的表单",
+    "noFormsDesc": "使用此模板创建第一个表单。",
+    "notFound": "此模板不可用",
+    "notFoundDesc": "它可能已被删除。请从模板库中选择其他模板。",
+    "backToGallery": "返回模板",
+    "toast": {
+      "created": "已基于模板创建“{name}”",
+      "duplicated": "已将“{name}”添加到您的模板",
+      "deleted": "已删除“{name}”",
+      "saved": "已将“{name}”保存为模板",
+      "updated": "已更新“{name}”"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "客户反馈",
+        "description": "了解客户对您服务的看法——客户不满意时会追加提问。"
+      },
+      "csat_nps": {
+        "name": "客户满意度（CSAT / NPS）调查",
+        "description": "衡量满意度（CSAT）、费力度和忠诚度（NPS）——每个回答都会归入推荐者、被动者或贬损者。"
+      },
+      "product_review": {
+        "name": "产品评价",
+        "description": "收集详细的产品评价，包含星级评分、平均分、照片和发布同意。"
+      },
+      "contact_lead": {
+        "name": "联系 / 咨询表",
+        "description": "简单友好的联系表单，按主题分派每条咨询。"
+      },
+      "quote_request": {
+        "name": "报价申请",
+        "description": "客户自行组合需求，并根据套餐、附加项和数量查看参考报价。"
+      },
+      "order_form": {
+        "name": "订购单",
+        "description": "接收订单，最多三个商品行，可选配送方式并实时显示合计。"
+      },
+      "complaint_dispute": {
+        "name": "投诉 / 争议表",
+        "description": "记录投诉和争议，附带证据、期望结果和此前的联系记录。"
+      },
+      "service_request": {
+        "name": "服务申请",
+        "description": "预约上门服务，注明优先级、偏好时间并附上问题照片。"
+      },
+      "lead_capture_newsletter": {
+        "name": "潜在客户收集 / 订阅新闻通讯",
+        "description": "内置同意、兴趣和营销活动追踪，帮您扩大名单。"
+      },
+      "return_refund": {
+        "name": "退货 / 退款申请",
+        "description": "处理退货，包括原因、照片、期望结果和自动计算的退款金额。"
+      },
+      "job_application": {
+        "name": "求职申请表",
+        "description": "完整的申请：个人信息、应聘职位、简历上传、期望薪资和同意。"
+      },
+      "employee_onboarding": {
+        "name": "新员工入职",
+        "description": "新员工在入职前需提供的一切：个人信息、紧急联系人、设备和薪资发放。"
+      },
+      "exit_interview": {
+        "name": "离职面谈",
+        "description": "了解员工离职的原因以及什么能让他们留下，并对整体员工体验进行评分。"
+      },
+      "leave_request": {
+        "name": "请假申请",
+        "description": "申请休假，根据日期自动计算天数，并填写代理人和证明材料。"
+      },
+      "performance_review": {
+        "name": "绩效考核",
+        "description": "对六项能力进行评分；平均分和评级档次会自动计算。"
+      },
+      "engagement_survey": {
+        "name": "员工敬业度调查",
+        "description": "关于自豪感、使命感、成长和支持的匿名脉搏调查——附 0 至 100 的敬业度指数。"
+      },
+      "expense_reimbursement": {
+        "name": "费用报销",
+        "description": "附收据报销最多三笔费用；报销总额自动合计。"
+      },
+      "timesheet": {
+        "name": "工时表",
+        "description": "按天记录每周工时，显示合计以及相对合同工时的加班时长。"
+      },
+      "training_feedback": {
+        "name": "培训反馈",
+        "description": "对课程内容、讲师、资料和实用性进行评分——附平均分。"
+      },
+      "reference_check": {
+        "name": "背景调查",
+        "description": "面向推荐人的结构化问题、带平均分的技能评分，以及是否愿意再次雇用的明确回答。"
+      }
+    },
+    "openGallery": "打开完整模板库"
   },
   "builder": {
     "crumb": "编辑器",
@@ -1137,7 +1324,9 @@
       "consentText": "同意文本",
       "consentTextHint": "填写者同意的内容，例如“我同意条款和隐私声明。”",
       "consentLink": "条款链接（可选）",
-      "consentLinkLabel": "链接文本"
+      "consentLinkLabel": "链接文本",
+      "showResult": "向填写者显示结果",
+      "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。"
     },
     "shortcuts": {
       "title": "快捷键",

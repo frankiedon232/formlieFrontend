@@ -58,6 +58,23 @@ const NAMES = [
   'Bug report',
   'Venue booking',
 ]
+/** Sample forms that were made from a catalogue template (template statistics, F9). */
+export const SEED_TEMPLATES: Record<string, string> = {
+  'Customer feedback survey': 'customer_feedback',
+  'Event registration': 'event_registration',
+  'Job application': 'job_application',
+  'Employee onboarding': 'employee_onboarding',
+  'Incident report': 'incident_report',
+  'NPS quarterly': 'csat_nps',
+  'Contact us': 'contact_lead',
+  'Order form': 'order_form',
+  'Product return request': 'return_refund',
+  'Lead capture': 'lead_capture_newsletter',
+  'Exit interview': 'exit_interview',
+}
+/** "Order form 3" → "Order form". */
+export const seedBaseName = (name: string) => name.replace(/ \d+$/, '')
+
 const TAGS = ['internal', 'public', 'q4', 'priority', 'pilot', 'hr', 'sales']
 const STATUSES: FormStatus[] = ['draft', 'published', 'published', 'published', 'closed', 'archived']
 

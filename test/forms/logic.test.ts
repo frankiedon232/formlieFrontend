@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { allFields, starterSchema } from '../../shared/utils/forms/build'
 import { END_OF_FORM, evaluateLogic, operatorsFor, type LogicRule } from '../../shared/utils/forms/logic'
-import { calculate, formulaKeys, isValidFormula } from '../../shared/utils/forms/formula'
+import { calculate, calculateResult, formulaKeys, isValidFormula } from '../../shared/utils/forms/formula'
 import type { FormField } from '../../shared/utils/forms/build'
 
 describe('form logic', () => {
@@ -120,5 +120,29 @@ describe('calculated fields', () => {
     expect(calculate('and({a} > 1, {b} < 5)', { a: 2, b: 3 })).toBe(1)
     expect(isValidFormula('if({a}, 1)')).toBe(true)
     expect(isValidFormula('{a} +* 2')).toBe(false)
+  })
+})
+
+describe('formula additions for templates', () => {
+  it('averages and counts answered fields only', () => {
+    expect(calculate('avg({a}, {b}, {c})', { a: 4, b: 2 })).toBe(3)
+    expect(calculate('count({a}, {b}, {c})', { a: 4 })).toBe(1)
+    expect(calculate('sum({a}, {b})', { a: 5 })).toBe(5)
+    expect(calculate('sum({a}, {b})', {})).toBeNull()
+  })
+
+  it('counts days between dates', () => {
+    expect(calculate('days({in}, {out})', { in: '2026-10-01', out: '2026-10-04' })).toBe(3)
+    expect(calculate('days({in}, {out}) * 120', { in: '2026-10-01T14:00', out: '2026-10-03T10:00' })).toBe(240)
+    expect(calculate('days({in}, {out})', { in: 'soon', out: '2026-10-04' })).toBeNull()
+  })
+
+  it('can give a text result', () => {
+    const level = 'if({l} * {s} >= 15, "High", if({l} * {s} >= 8, "Medium", "Low"))'
+    expect(calculateResult(level, { l: 5, s: 4 })).toBe('High')
+    expect(calculateResult(level, { l: 2, s: 4 })).toBe('Medium')
+    expect(calculateResult(level, { l: 1, s: 2 })).toBe('Low')
+    expect(calculate(level, { l: 5, s: 4 })).toBeNull()
+    expect(calculateResult('{l} * {s}', { l: 5, s: 4 })).toBe(20)
   })
 })

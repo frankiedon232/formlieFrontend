@@ -5,10 +5,14 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
-const { pending, settle } = useConfirmState()
+const { pending: request, settle } = useConfirmState()
+// Keep the last request on screen while the dialog fades out (no blank title / default labels).
+const shown = shallowRef(request.value)
+watch(request, value => value && (shown.value = value))
+const pending = computed(() => shown.value)
 
 const open = computed({
-  get: () => !!pending.value,
+  get: () => !!request.value,
   set: value => {
     if (!value) settle(false)
   },

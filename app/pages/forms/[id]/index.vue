@@ -43,10 +43,12 @@ onMounted(load)
 
 const actions = useFormActions(load)
 const busy = computed(() => !!form.value && actions.isBusy(form.value))
+const templateOpen = ref(false)
 const menu = useFormMenu(actions, {
   rename: () => {},
   move: () => {},
   tags: () => {},
+  saveTemplate: () => (templateOpen.value = true),
 })
 // Overview: lifecycle + delete only (rename / move / tags live in the list for now).
 const lifecycleItems = computed(() => {
@@ -61,7 +63,10 @@ const lifecycleItems = computed(() => {
         },
       ],
     ]
-  return menu(form.value).slice(2)
+  return [
+    [{ label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => (templateOpen.value = true) }],
+    ...menu(form.value).slice(2),
+  ]
 })
 const canSeeActivity = computed(() => useSession().user.value?.role !== 'member')
 
@@ -187,5 +192,6 @@ const details = computed(() =>
         />
       </UCard>
     </div>
+    <TemplatesSaveModal v-model:open="templateOpen" :form="form" />
   </AppPanel>
 </template>

@@ -347,7 +347,9 @@
     "FRM-FORM-1007": "No es posible en el estado actual del formulario. Actualiza e inténtalo de nuevo.",
     "FRM-FORM-1008": "Ya existe una carpeta con este nombre.",
     "FRM-FORM-1009": "Ya existe una lista con este nombre.",
-    "FRM-FORM-1010": "Ya existe un tema con este nombre."
+    "FRM-FORM-1010": "Ya existe un tema con este nombre.",
+    "FRM-FORM-1011": "Las plantillas del sistema no se pueden cambiar. Duplíquela para crear la suya.",
+    "FRM-FORM-1012": "Ya existe una plantilla con este nombre."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -603,7 +605,8 @@
       "folder": "Carpeta",
       "saved_field": "Campo guardado",
       "option_list": "Lista de opciones",
-      "theme": "Tema"
+      "theme": "Tema",
+      "template": "Plantilla"
     },
     "field": {
       "name": "Nombre",
@@ -676,7 +679,11 @@
       "forms_list_deleted": "Lista eliminada",
       "forms_theme_created": "Tema guardado",
       "forms_theme_updated": "Tema actualizado",
-      "forms_theme_deleted": "Tema eliminado"
+      "forms_theme_deleted": "Tema eliminado",
+      "forms_template_created": "Plantilla creada",
+      "forms_template_updated": "Plantilla actualizada",
+      "forms_template_duplicated": "Plantilla duplicada",
+      "forms_template_deleted": "Plantilla eliminada"
     },
     "detail": {
       "who": "Quién",
@@ -878,7 +885,187 @@
       "incident_report": {
         "name": "Informe de incidencias"
       }
-    }
+    },
+    "subtitle": "Empiece con un formulario listo: cada plantilla tiene su propio diseño y puede cambiar cualquier cosa antes de publicar",
+    "blank": "Formulario en blanco",
+    "all": "Todas",
+    "search": "Buscar plantillas…",
+    "use": "Usar plantilla",
+    "open": "Abrir",
+    "duplicate": "Duplicar",
+    "delete": "Eliminar",
+    "view": "Ver plantilla",
+    "preview": "Vista previa de la plantilla",
+    "minutes": "{n} min",
+    "questions": "{count} pregunta | {count} preguntas",
+    "usedTitle": "Formularios creados con esta plantilla",
+    "neverUsed": "Aún no se ha usado",
+    "nameRequired": "Asígnele un nombre.",
+    "description": "Descripción",
+    "descriptionPlaceholder": "¿Para qué sirve esta plantilla?",
+    "categories": {
+      "business": "Negocio y clientes",
+      "hr": "RR. HH. y trabajo",
+      "health_safety": "Salud y seguridad",
+      "events": "Eventos y reservas",
+      "hospitality": "Hostelería",
+      "education": "Educación",
+      "operations_it": "Operaciones y TI",
+      "finance_legal": "Finanzas y legal",
+      "community": "Comunidad y otros",
+      "real_estate": "Inmobiliaria",
+      "sales": "Ventas"
+    },
+    "filter": {
+      "category": "Categoría",
+      "source": "Creada por",
+      "features": "Incluye"
+    },
+    "source": {
+      "system": "Formalie",
+      "workspace": "Su espacio de trabajo"
+    },
+    "badge": {
+      "calculations": "Cálculos",
+      "logic": "Lógica",
+      "workspace": "Espacio de trabajo"
+    },
+    "col": {
+      "name": "Nombre",
+      "category": "Categoría",
+      "questions": "Preguntas",
+      "forms": "Formularios",
+      "responses": "Respuestas",
+      "lastUsed": "Último uso"
+    },
+    "sort": {
+      "popular": "Más usadas",
+      "responses": "Más respuestas",
+      "name": "Nombre (A–Z)",
+      "short": "Más rápidas de completar",
+      "recent": "Actualizadas recientemente"
+    },
+    "emptyTitle": "Ninguna plantilla coincide",
+    "emptyDesc": "Pruebe otra categoría o búsqueda, o borre los filtros.",
+    "useTitle": "Usar plantilla",
+    "useDesc": "Su nuevo formulario se abre en el editor: cambie cualquier pregunta, regla, cálculo o el diseño antes de publicar.",
+    "saveAs": "Guardar como plantilla",
+    "saveTitle": "Guardar como plantilla",
+    "saveDesc": "Las preguntas, la lógica, los cálculos y el diseño se convierten en una plantilla para su espacio de trabajo. Las respuestas nunca se incluyen.",
+    "saveButton": "Guardar plantilla",
+    "deleteTitle": "¿Eliminar «{name}»?",
+    "deleteDesc": "Los formularios creados con ella conservan sus preguntas y su diseño.",
+    "included": "Qué incluye",
+    "calculationsTitle": "Cálculos",
+    "teamOnly": "Solo el equipo",
+    "usage": "Uso en su espacio de trabajo",
+    "facts": {
+      "pages": "{count} página | {count} páginas",
+      "logic": "{count} regla lógica | {count} reglas lógicas",
+      "calculations": "{count} cálculo | {count} cálculos"
+    },
+    "stats": {
+      "forms": "Formularios",
+      "responses": "Respuestas",
+      "lastUsed": "Último uso"
+    },
+    "editableHint": "Todo se puede cambiar después de usarla: preguntas, lógica, cálculos y diseño.",
+    "formsFrom": "Formularios creados con esta plantilla ({count})",
+    "noFormsTitle": "Aún no hay formularios de esta plantilla",
+    "noFormsDesc": "Use la plantilla para crear el primero.",
+    "notFound": "Esta plantilla no está disponible",
+    "notFoundDesc": "Puede que se haya eliminado. Elija otra de la galería.",
+    "backToGallery": "Volver a las plantillas",
+    "toast": {
+      "created": "«{name}» creado a partir de la plantilla",
+      "duplicated": "«{name}» añadida a sus plantillas",
+      "deleted": "«{name}» eliminada",
+      "saved": "«{name}» guardado como plantilla",
+      "updated": "«{name}» actualizada"
+    },
+    "items": {
+      "customer_feedback": {
+        "name": "Opiniones de clientes",
+        "description": "Descubra qué piensan los clientes de su servicio, con un seguimiento cuando alguien no está satisfecho."
+      },
+      "csat_nps": {
+        "name": "Encuesta de satisfacción del cliente (CSAT / NPS)",
+        "description": "Mida la satisfacción (CSAT), el esfuerzo y la lealtad (NPS): cada respuesta se clasifica como promotor, pasivo o detractor."
+      },
+      "product_review": {
+        "name": "Reseña de producto",
+        "description": "Recopile reseñas detalladas con valoración por estrellas, puntuación media, fotos y consentimiento de publicación."
+      },
+      "contact_lead": {
+        "name": "Formulario de contacto / consulta",
+        "description": "Un formulario de contacto sencillo y cercano que dirige cada consulta según el tema."
+      },
+      "quote_request": {
+        "name": "Solicitud de presupuesto",
+        "description": "Los clientes arman su solicitud y ven un presupuesto orientativo según el paquete, los extras y la cantidad."
+      },
+      "order_form": {
+        "name": "Formulario de pedido",
+        "description": "Reciba pedidos con hasta tres líneas de producto, opción de entrega y total acumulado."
+      },
+      "complaint_dispute": {
+        "name": "Formulario de reclamación / disputa",
+        "description": "Registre reclamaciones y disputas con pruebas, la solución deseada y los contactos previos."
+      },
+      "service_request": {
+        "name": "Solicitud de servicio",
+        "description": "Reserve una visita técnica con prioridad, horario preferido y fotos del problema."
+      },
+      "lead_capture_newsletter": {
+        "name": "Captación de leads / suscripción al boletín",
+        "description": "Haga crecer su lista con consentimiento, intereses y seguimiento de campañas integrados."
+      },
+      "return_refund": {
+        "name": "Solicitud de devolución / reembolso",
+        "description": "Gestione devoluciones con el motivo, fotos, la solución deseada y el importe del reembolso calculado."
+      },
+      "job_application": {
+        "name": "Solicitud de empleo",
+        "description": "Una solicitud completa: datos personales, puesto, carga del CV, expectativa salarial y consentimiento."
+      },
+      "employee_onboarding": {
+        "name": "Incorporación de empleados",
+        "description": "Todo lo que comparte una nueva incorporación antes del primer día: datos, contacto de emergencia, equipo y pago."
+      },
+      "exit_interview": {
+        "name": "Entrevista de salida",
+        "description": "Descubra por qué se van las personas y qué las haría quedarse, con valoraciones de toda la experiencia del empleado."
+      },
+      "leave_request": {
+        "name": "Solicitud de vacaciones / permiso",
+        "description": "Solicite un permiso con los días calculados a partir de las fechas, sustituto y documentos justificativos."
+      },
+      "performance_review": {
+        "name": "Evaluación del desempeño",
+        "description": "Valore seis competencias; la puntuación media y el nivel de desempeño se calculan automáticamente."
+      },
+      "engagement_survey": {
+        "name": "Encuesta de compromiso de los empleados",
+        "description": "Un pulso anónimo sobre orgullo, propósito, crecimiento y apoyo, con un índice de compromiso de 0 a 100."
+      },
+      "expense_reimbursement": {
+        "name": "Reembolso de gastos",
+        "description": "Declare hasta tres gastos con recibos; el total se suma automáticamente."
+      },
+      "timesheet": {
+        "name": "Hoja de horas",
+        "description": "Horas semanales por día con total y horas extra respecto a las horas contratadas."
+      },
+      "training_feedback": {
+        "name": "Evaluación de la formación",
+        "description": "Valore el contenido, el formador, los materiales y la utilidad de un curso, con una puntuación media."
+      },
+      "reference_check": {
+        "name": "Verificación de referencias",
+        "description": "Preguntas estructuradas para referencias, habilidades valoradas con una media y una respuesta clara sobre volver a contratar."
+      }
+    },
+    "openGallery": "Abrir la galería completa"
   },
   "builder": {
     "crumb": "Editor",
@@ -1137,7 +1324,9 @@
       "consentText": "Texto de consentimiento",
       "consentTextHint": "Lo que aceptan los encuestados, p. ej., «Acepto los términos y el aviso de privacidad.»",
       "consentLink": "Enlace a los términos (opcional)",
-      "consentLinkLabel": "Texto del enlace"
+      "consentLinkLabel": "Texto del enlace",
+      "showResult": "Mostrar el resultado a quienes responden",
+      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve su equipo (p. ej., un nivel de riesgo o un grupo de lealtad)."
     },
     "shortcuts": {
       "title": "Atajos",

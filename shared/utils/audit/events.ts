@@ -62,6 +62,10 @@ export const AUDIT_EVENTS = {
   'forms.theme_created': { area: 'forms', icon: 'i-lucide-palette' },
   'forms.theme_updated': { area: 'forms', icon: 'i-lucide-paintbrush' },
   'forms.theme_deleted': { area: 'forms', icon: 'i-lucide-trash-2' },
+  'forms.template_created': { area: 'forms', icon: 'i-lucide-layout-template' },
+  'forms.template_updated': { area: 'forms', icon: 'i-lucide-pencil' },
+  'forms.template_duplicated': { area: 'forms', icon: 'i-lucide-copy' },
+  'forms.template_deleted': { area: 'forms', icon: 'i-lucide-trash-2' },
   // Responses
   'responses.updated': { area: 'responses', icon: 'i-lucide-square-pen' },
   'responses.exported': { area: 'responses', icon: 'i-lucide-file-down' },
