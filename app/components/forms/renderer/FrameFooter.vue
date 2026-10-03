@@ -11,7 +11,13 @@ defineProps<{
   slim?: boolean
 }>()
 const { t } = useI18n()
-const legal = useRuntimeConfig().public.legal
+// Platform settings (super admin) when the public page loaded them; the app's config otherwise.
+const config = useRuntimeConfig().public.legal
+const fromPlatform = useState<{ terms_url: string; privacy_url: string } | null>('public:legal', () => null)
+const legal = computed(() => ({
+  termsUrl: fromPlatform.value?.terms_url || config.termsUrl,
+  privacyUrl: fromPlatform.value?.privacy_url || config.privacyUrl,
+}))
 const linkClass = 'font-medium text-(--ui-text) underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-primary)'
 </script>
 

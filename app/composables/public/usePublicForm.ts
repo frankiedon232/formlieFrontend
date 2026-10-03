@@ -17,6 +17,8 @@ export async function usePublicForm(key: string) {
   // The renderer takes the workspace's logo and brand colour from the tenant profile.
   // (Composables first: after an await this function no longer has Nuxt's context.)
   const profile = useState<import('#shared/types/auth').TenantPublicProfile | null>('tenant:profile')
+  // Footer legal links from the platform settings (super admin), shared with the page frame.
+  const legal = useState<PublicForm['legal'] | null>('public:legal', () => null)
 
   const { data, refresh } = await useAsyncData(`public-form:${key}`, async () => {
     if (import.meta.server && requestFetch) {
@@ -35,6 +37,9 @@ export async function usePublicForm(key: string) {
   const form = computed(() => data.value?.data ?? null)
   const errorCode = computed(() => data.value?.error?.code ?? null)
 
+  watchEffect(() => {
+    if (form.value?.legal) legal.value = form.value.legal
+  })
   watchEffect(() => {
     const workspace = form.value?.workspace
     if (!workspace || profile.value?.mode === 'tenant') return

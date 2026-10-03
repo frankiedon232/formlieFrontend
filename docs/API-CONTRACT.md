@@ -162,7 +162,7 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 
 ## Public (respondent, no login; tenant from host)
 
-| GET | `/public/forms/{key}` | `PublicForm` (`shared/types/public.ts`): `{ key, name, state: open|closed|not_published, schema (published, theme resolved — only when open), workspace: { name, logo_url, primary, subdomain, website }, seo: { title, description, image, noindex }, languages[], language }`; unknown key on this host → `FRM-FORM-1001` (404). A workspace host serves only its own forms; `forms.*` finds the workspace from the key (cached) |
+| GET | `/public/forms/{key}` | `PublicForm` (`shared/types/public.ts`): `{ key, name, state: open|closed|not_published, schema (published, theme resolved — only when open), workspace: { name, logo_url, primary, subdomain, website }, legal: { terms_url, privacy_url } (platform settings, managed in the super-admin console F23; app config as fallback), seo: { title, description, image, noindex }, languages[], language }`; unknown key on this host → `FRM-FORM-1001` (404). A workspace host serves only its own forms; `forms.*` finds the workspace from the key (cached) |
 | POST | `/public/forms/{slug}/unlock` | password-protected |
 | POST | `/public/forms/{slug}/sessions` | start/resume → `resume_token` |
 | POST | `/public/forms/{slug}/uploads` | pre-signed upload URL |

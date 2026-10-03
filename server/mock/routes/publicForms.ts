@@ -22,6 +22,7 @@ import { responseForSubmission, responsesOf, saveResponses } from '../data/respo
 import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 import { websiteOf } from './onboarding'
+import { platformLegal } from '../data/platformStore'
 
 const RESPONDENT = { type: 'user' as const, id: null, name: 'Respondent', email: null }
 
@@ -82,6 +83,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
       image: null,
       noindex: state !== 'open',
     },
+    legal: platformLegal(event),
     languages: [language],
     language,
   }

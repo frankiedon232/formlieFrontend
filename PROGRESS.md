@@ -33,6 +33,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F20   | Live collaboration (optional)                     | ⬜     | 0%   |
 | F21   | Dashboard                                         | ⬜     | 0%   |
 | F22   | Roles & access (last)                             | ⬜     | 0%   |
+| F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%   |
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars — CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -844,6 +845,27 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ Access overview ("who can see what")
 - ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
 
+
+## F23 — Platform admin (super admin) ⬜
+
+The Formalie team's own console (owner, 2026-10-03: "a place for me to manage everything") — separate from any workspace, on its own host (`admin.formalie.com`), signed in with platform staff accounts and strong second factor; every action audited.
+
+### Platform settings
+
+- ⬜ **Legal links** on every public form: Terms and Data Privacy Policy URLs (already served by the API as platform settings with the app config as fallback — `PublicForm.legal`, mock `server/mock/data/platformStore.ts`); change once, applies to every form without a redeploy
+- ⬜ Marketing site, support email / help-centre links, status page link
+- ⬜ Platform branding on Formalie-branded surfaces (forms host, QR codes, emails)
+- ⬜ Feature switches and announcements (banner in the portal)
+
+### Workspaces and people
+
+- ⬜ Workspaces list (DataView): plan, status, usage, created; suspend / restore (FRM-TEN-1002), change subdomain
+- ⬜ Platform staff accounts and their roles; impersonation only with the workspace's consent, time-limited and audited
+
+### Catalogue
+
+- ⬜ System templates and themes (publish, retire), template content languages
+- ⬜ Platform audit trail and security events
 ---
 
 ## Switching to the real backend ⏸
@@ -945,6 +967,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Text colours sharp and dark everywhere (tables, grids, cards like the navigation) | F1 follow-up | ✅ |
 | 2026-10-03 | No real ids anywhere in URLs, parameters or responses — encrypted references only the API can decrypt (globally) | F2 follow-up (security) | ✅ |
 | 2026-10-03 | Public form footer: © organisation · Terms · Data Privacy Policy; every link on a public form opens in an in-app browser window over the form (branded, 80%, rounded, clear close) so nothing typed is lost | F10 | ✅ |
+| 2026-10-03 | Super admin console for the owner to manage everything — starting with the Terms / Data Privacy Policy URLs (served now as platform settings, config fallback) | F23 (new phase) | ⬜ planned |
 | 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
 
 ---

@@ -35,6 +35,8 @@ export interface PublicForm {
   schema: FormSchemaV1 | null
   workspace: PublicWorkspace
   seo: PublicFormSeo
+  /** Formalie's legal pages for the footer — platform settings (super admin, F23), config as fallback. */
+  legal: { terms_url: string; privacy_url: string }
   /** Languages the form offers (its main language first) and the one served. */
   languages: string[]
   language: string
