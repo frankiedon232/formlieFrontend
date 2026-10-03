@@ -1,4 +1,7 @@
-<!-- Manage folders: create, rename inline, delete (its forms stay, without a folder). -->
+<!--
+  Manage folders: create, rename inline, delete. A folder that still holds forms can't be deleted
+  (owner, 2026-10-03) — its forms are one click away to move them first.
+-->
 <script setup lang="ts">
 import type { FormFolder } from '#shared/types/forms'
 
@@ -44,7 +47,7 @@ async function saveRename(folder: FormFolder) {
 async function remove(folder: FormFolder) {
   const ok = await confirm({
     title: t('forms.folders.deleteTitle', { name: folder.name }),
-    description: t('forms.folders.deleteDesc', { count: folder.forms_count ?? 0 }, folder.forms_count ?? 0),
+    description: t('forms.folders.deleteEmpty'),
     confirmLabel: t('forms.actions.delete'),
     danger: true,
   })
@@ -100,14 +103,27 @@ async function create() {
                 @click="startRename(folder)"
               />
               <UButton
-                icon="i-lucide-trash-2"
+                v-if="folder.forms_count"
+                icon="i-lucide-arrow-up-right"
                 color="neutral"
                 variant="ghost"
                 size="xs"
-                :loading="busyId === folder.id"
-                :aria-label="t('forms.folders.deleteNamed', { name: folder.name })"
-                @click="remove(folder)"
+                :to="`/forms?folder_id=${folder.id}`"
+                :aria-label="t('forms.folders.viewForms', { name: folder.name })"
+                @click="open = false"
               />
+              <UTooltip :text="folder.forms_count ? t('forms.folders.notEmpty') : t('forms.folders.deleteNamed', { name: folder.name })">
+                <UButton
+                  icon="i-lucide-trash-2"
+                  color="neutral"
+                  variant="ghost"
+                  size="xs"
+                  :disabled="!!folder.forms_count"
+                  :loading="busyId === folder.id"
+                  :aria-label="t('forms.folders.deleteNamed', { name: folder.name })"
+                  @click="remove(folder)"
+                />
+              </UTooltip>
             </template>
           </li>
         </ul>

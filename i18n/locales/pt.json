@@ -116,7 +116,10 @@
       "deleteTitle": "Excluir a pasta “{name}”?",
       "deleteDesc": "O formulário ({count}) continua, sem pasta. | Os {count} formulários continuam, sem pasta.",
       "count": "{count} formulário | {count} formulários",
-      "empty": "Ainda não há pastas. Crie uma abaixo."
+      "empty": "Ainda não há pastas. Crie uma abaixo.",
+      "viewForms": "Mostrar os formulários em {name}",
+      "notEmpty": "Mova primeiro os formulários para outra pasta — depois ela poderá ser excluída.",
+      "deleteEmpty": "A pasta está vazia, então nenhum formulário é afetado."
     },
     "tags": {
       "title": "Editar tags",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Já existe um tema com este nome.",
     "FRM-FORM-1011": "Modelos do sistema não podem ser alterados. Duplique-o para criar o seu.",
     "FRM-FORM-1012": "Já existe um modelo com este nome.",
-    "FRM-RESP-1003": "Este formulário já foi enviado nesta sessão."
+    "FRM-RESP-1003": "Este formulário já foi enviado nesta sessão.",
+    "FRM-FORM-1013": "Esta pasta ainda tem formulários. Mova-os primeiro para outra pasta."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Escolha um fuso horário",
       "currency_code": "Escolha uma moeda"
     },
-    "restricted": "Somente para algumas pessoas (acesso ao campo)"
+    "restricted": "Somente para algumas pessoas (acesso ao campo)",
+    "files": {
+      "notAdded": "Arquivo não adicionado",
+      "wrongType": "Tipo de arquivo inválido: {files}. Escolha um dos tipos permitidos.",
+      "tooBig": "Muito grande (mais de {mb} MB): {files}",
+      "tooMany": "Só são permitidos {max} arquivos — {n} arquivo não foi adicionado. | Só são permitidos {max} arquivos — {n} arquivos não foram adicionados.",
+      "limits": "Até {max} arquivos, {mb} MB cada",
+      "count": "{n} de {max}",
+      "addMore": "Adicionar mais"
+    }
   },
   "logic": {
     "crumb": "Lógica",

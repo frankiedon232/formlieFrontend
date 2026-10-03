@@ -12,19 +12,44 @@ const { t } = useI18n()
 const p = computed(() => (props.field.props ?? {}) as Record<string, number | string | undefined>)
 // Read-only and disabled both block changes here (Nuxt UI choice controls have no read-only state).
 const disabled = computed(() => isLocked(props.field))
-const multiple = computed(() => Number(p.value.max_files ?? 1) > 1)
+const maxFiles = computed(() => Math.max(1, Number(p.value.max_files ?? 1)))
+const maxMb = computed(() => Number(p.value.max_mb ?? 10))
+const multiple = computed(() => maxFiles.value > 1)
 const files = ref<File[] | File | null>(null)
-// Drag and drop skips the picker's `accept` filter, so check type and size here too.
+const count = computed(() => (files.value == null ? 0 : Array.isArray(files.value) ? files.value.length : 1))
+const toast = useToast()
+
+/**
+ * Every pick or drop is checked here (drag and drop skips the picker's `accept` filter): wrong
+ * type, too big, or over the file limit is taken out again, said under the field and in a toast,
+ * so nobody wonders why a file "didn't work".
+ */
 const rejected = ref<string[]>([])
+let trimming = false
 watch(files, next => {
   const list = next == null ? [] : Array.isArray(next) ? next : [next]
-  const maxBytes = Number(p.value.max_mb ?? 10) * 1024 * 1024
-  const ok = list.filter(file => acceptsFile(String(p.value.accept ?? ''), file) && file.size <= maxBytes)
-  rejected.value = list.filter(file => !ok.includes(file)).map(file => file.name)
-  if (ok.length !== list.length) {
-    files.value = multiple.value ? ok : (ok[0] ?? null)
+  const maxBytes = maxMb.value * 1024 * 1024
+  const wrongType = list.filter(file => !acceptsFile(String(p.value.accept ?? ''), file))
+  const tooBig = list.filter(file => !wrongType.includes(file) && file.size > maxBytes)
+  const fitting = list.filter(file => !wrongType.includes(file) && !tooBig.includes(file))
+  const kept = fitting.slice(0, maxFiles.value)
+  const overLimit = fitting.slice(maxFiles.value)
+
+  const problems: string[] = []
+  if (wrongType.length) problems.push(t('renderer.files.wrongType', { files: wrongType.map(f => f.name).join(', ') }))
+  if (tooBig.length) problems.push(t('renderer.files.tooBig', { files: tooBig.map(f => f.name).join(', '), mb: maxMb.value }))
+  if (overLimit.length) problems.push(t('renderer.files.tooMany', { max: maxFiles.value, n: overLimit.length }, overLimit.length))
+  if (problems.length) {
+    rejected.value = problems
+    for (const description of problems)
+      toast.add({ title: t('renderer.files.notAdded'), description, color: 'warning', icon: 'i-lucide-file-x' })
+    trimming = true
+    files.value = multiple.value ? kept : (kept[0] ?? null)
     return
   }
+  // The message under the field stays until the next pick that is fully fine.
+  if (!trimming) rejected.value = []
+  trimming = false
   value.value = next
 })
 
@@ -126,21 +151,36 @@ watch(typed, name => {
     :multiple="multiple"
     :accept="String(p.accept || '') || undefined"
     :label="field.type === 'image_upload' ? t('renderer.dropImages') : t('renderer.dropFiles')"
-    :description="t('renderer.fileLimit', { mb: p.max_mb ?? 10 })"
+    :description="multiple ? t('renderer.files.limits', { max: maxFiles, mb: maxMb }) : t('renderer.fileLimit', { mb: maxMb })"
     :icon="field.type === 'image_upload' ? 'i-lucide-image-up' : 'i-lucide-upload'"
     color="neutral"
     layout="grid"
-    position="outside"
+    position="inside"
     :disabled="disabled"
-    :interactive="!disabled"
-    :ui="{
-      base: 'min-h-28',
-      files: 'grid w-full grid-cols-3 gap-2 @sm:grid-cols-4 @lg:grid-cols-6',
-      file: 'relative inset-auto aspect-square p-0',
-    }"
+    :interactive="!disabled && count < maxFiles"
+    :file-delete="{ color: 'neutral', variant: 'outline', size: 'xs', class: 'rounded-full bg-default shadow-sm text-highlighted' }"
+    :ui="{ base: 'min-h-28', files: 'grid w-full grid-cols-3 gap-2 @sm:grid-cols-5 @lg:grid-cols-6', file: 'size-auto w-full aspect-square' }"
     class="w-full"
-  />
-  <p v-if="rejected.length" class="text-xs text-error" role="alert">
-    {{ t('renderer.fileRejected', { files: rejected.join(', '), mb: p.max_mb ?? 10 }) }}
-  </p>
+  >
+    <!-- Inside the zone: how many of the allowed files, and "Add more" while there is room. -->
+    <template #files-bottom="{ open }">
+      <div v-if="count" class="flex w-full flex-wrap items-center justify-between gap-2 pt-1">
+        <span class="text-xs text-muted tabular-nums">{{ t('renderer.files.count', { n: count, max: maxFiles }) }}</span>
+        <UButton
+          v-if="multiple && count < maxFiles && !disabled"
+          :label="t('renderer.files.addMore')"
+          icon="i-lucide-plus"
+          color="neutral"
+          variant="outline"
+          size="xs"
+          @click.stop="open()"
+        />
+      </div>
+    </template>
+  </UFileUpload>
+  <ul v-if="rejected.length" class="flex flex-col gap-0.5 text-xs text-warning" role="alert">
+    <li v-for="problem in rejected" :key="problem" class="flex items-start gap-1">
+      <UIcon name="i-lucide-file-x" class="mt-0.5 size-3.5 shrink-0" />{{ problem }}
+    </li>
+  </ul>
 </template>

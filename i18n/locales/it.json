@@ -116,7 +116,10 @@
       "deleteTitle": "Eliminare la cartella «{name}»?",
       "deleteDesc": "Il suo modulo ({count}) resta, senza cartella. | I suoi {count} moduli restano, senza cartella.",
       "count": "{count} modulo | {count} moduli",
-      "empty": "Ancora nessuna cartella. Creane una qui sotto."
+      "empty": "Ancora nessuna cartella. Creane una qui sotto.",
+      "viewForms": "Mostra i moduli in {name}",
+      "notEmpty": "Sposta prima i suoi moduli in un'altra cartella — poi potrà essere eliminata.",
+      "deleteEmpty": "La cartella è vuota, quindi nessun modulo è interessato."
     },
     "tags": {
       "title": "Modifica tag",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Esiste già un tema con questo nome.",
     "FRM-FORM-1011": "I modelli di sistema non possono essere modificati. Duplicalo per crearne uno tuo.",
     "FRM-FORM-1012": "Esiste già un modello con questo nome.",
-    "FRM-RESP-1003": "Questo modulo è già stato inviato da questa sessione."
+    "FRM-RESP-1003": "Questo modulo è già stato inviato da questa sessione.",
+    "FRM-FORM-1013": "Questa cartella contiene ancora moduli. Spostali prima in un'altra cartella."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Scelga un fuso orario",
       "currency_code": "Scelga una valuta"
     },
-    "restricted": "Solo per alcune persone (accesso al campo)"
+    "restricted": "Solo per alcune persone (accesso al campo)",
+    "files": {
+      "notAdded": "File non aggiunto",
+      "wrongType": "Tipo di file non valido: {files}. Scegli uno dei tipi consentiti.",
+      "tooBig": "Troppo grande (oltre {mb} MB): {files}",
+      "tooMany": "Sono consentiti solo {max} file — {n} file non è stato aggiunto. | Sono consentiti solo {max} file — {n} file non sono stati aggiunti.",
+      "limits": "Fino a {max} file, {mb} MB ciascuno",
+      "count": "{n} di {max}",
+      "addMore": "Aggiungi altri"
+    }
   },
   "logic": {
     "crumb": "Logica",

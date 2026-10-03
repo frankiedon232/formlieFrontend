@@ -18,19 +18,19 @@ const footerBar = computed(() => th.value.footer.enabled && th.value.footer.styl
 const RADIUS: Record<string, string> = { none: '0', sm: '3px', md: '5px', lg: '8px', xl: '12px', full: '999px' }
 const INPUT_RADIUS = computed(() => RADIUS[th.value.inputs.radius] ?? '4px')
 const centred = computed(() => th.value.header.align === 'center')
-const shown = computed(() => props.labels.slice(0, props.mini ? 2 : props.compact ? 2 : 3))
+const shown = computed(() => props.labels.slice(0, props.mini || props.compact ? 2 : 3))
 </script>
 
 <template>
   <div
     class="flex w-full overflow-hidden"
-    :class="[mini ? 'h-10' : compact ? 'h-24' : 'h-40', th.layout === 'full' ? '' : mini ? 'p-1' : compact ? 'p-2' : 'p-3']"
+    :class="[mini ? 'h-10' : compact ? 'aspect-[16/9]' : 'aspect-[16/10]', th.layout === 'full' ? '' : mini ? 'p-1' : compact ? 'p-2' : 'p-3']"
     :style="{ background }"
     aria-hidden="true"
   >
     <div
       class="mx-auto flex h-full w-full overflow-hidden"
-      :class="[th.layout === 'full' ? '' : panel ? 'max-w-[92%]' : 'max-w-[82%]', panel?.side === 'end' ? 'flex-row-reverse' : '']"
+      :class="[th.layout === 'full' || mini ? '' : panel ? 'max-w-[78%]' : 'max-w-[62%]', panel?.side === 'end' ? 'flex-row-reverse' : '']"
       :style="{
         background: th.layout === 'plain' ? 'transparent' : th.container.bg,
         borderRadius: mini ? '2px' : RADIUS[th.container.radius],

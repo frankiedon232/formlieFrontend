@@ -71,26 +71,31 @@ const safeHref = computed(() => (typeof p.value.link_href === 'string' && /^http
 
   <!-- Duration -->
   <div v-else-if="field.type === 'duration'" :id="id" class="flex items-center gap-2">
-    <UInputNumber
+    <!-- Plain number inputs: they report every keystroke, so a fixed error clears while typing. -->
+    <UInput
       v-bind="control"
-      :model-value="obj.hours == null ? undefined : Number(obj.hours)"
-      :min="0"
-      :max="9999"
-      :disabled="locked"
-      class="w-32"
-      :aria-label="t('renderer.duration.hours')"
-      @update:model-value="v => setPart('hours', v ?? undefined)"
-    />
-    <span class="text-sm text-muted">{{ t('renderer.duration.h') }}</span>
-    <UInputNumber
-      v-bind="control"
-      :model-value="obj.minutes == null ? undefined : Number(obj.minutes)"
-      :min="0"
-      :max="59"
+      type="number"
+      inputmode="numeric"
+      :model-value="obj.hours == null ? '' : String(obj.hours)"
+      min="0"
+      max="9999"
       :disabled="locked"
       class="w-28"
+      :aria-label="t('renderer.duration.hours')"
+      @update:model-value="v => setPart('hours', v === '' ? undefined : Number(v))"
+    />
+    <span class="text-sm text-muted">{{ t('renderer.duration.h') }}</span>
+    <UInput
+      v-bind="control"
+      type="number"
+      inputmode="numeric"
+      :model-value="obj.minutes == null ? '' : String(obj.minutes)"
+      min="0"
+      max="59"
+      :disabled="locked"
+      class="w-24"
       :aria-label="t('renderer.duration.minutes')"
-      @update:model-value="v => setPart('minutes', v ?? undefined)"
+      @update:model-value="v => setPart('minutes', v === '' ? undefined : Number(v))"
     />
     <span class="text-sm text-muted">{{ t('renderer.duration.m') }}</span>
   </div>

@@ -116,7 +116,10 @@
       "deleteTitle": "Hapus folder “{name}”?",
       "deleteDesc": "{count} formulir di dalamnya tetap ada, tanpa folder. | {count} formulir di dalamnya tetap ada, tanpa folder.",
       "count": "{count} formulir | {count} formulir",
-      "empty": "Belum ada folder. Buat satu di bawah."
+      "empty": "Belum ada folder. Buat satu di bawah.",
+      "viewForms": "Tampilkan formulir di {name}",
+      "notEmpty": "Pindahkan dulu formulirnya ke folder lain — setelah itu folder ini dapat dihapus.",
+      "deleteEmpty": "Folder ini kosong, jadi tidak ada formulir yang terpengaruh."
     },
     "tags": {
       "title": "Edit tag",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Tema dengan nama ini sudah ada.",
     "FRM-FORM-1011": "Templat sistem tidak dapat diubah. Duplikat templat untuk membuat milik Anda sendiri.",
     "FRM-FORM-1012": "Templat dengan nama ini sudah ada.",
-    "FRM-RESP-1003": "Formulir ini sudah dikirim dari sesi ini."
+    "FRM-RESP-1003": "Formulir ini sudah dikirim dari sesi ini.",
+    "FRM-FORM-1013": "Folder ini masih berisi formulir. Pindahkan dulu ke folder lain."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Pilih zona waktu",
       "currency_code": "Pilih mata uang"
     },
-    "restricted": "Hanya untuk orang tertentu (akses kolom)"
+    "restricted": "Hanya untuk orang tertentu (akses kolom)",
+    "files": {
+      "notAdded": "File tidak ditambahkan",
+      "wrongType": "Jenis file salah: {files}. Pilih salah satu jenis yang diizinkan.",
+      "tooBig": "Terlalu besar (lebih dari {mb} MB): {files}",
+      "tooMany": "Hanya {max} file yang diizinkan — {n} file tidak ditambahkan. | Hanya {max} file yang diizinkan — {n} file tidak ditambahkan.",
+      "limits": "Hingga {max} file, masing-masing {mb} MB",
+      "count": "{n} dari {max}",
+      "addMore": "Tambah lagi"
+    }
   },
   "logic": {
     "crumb": "Logika",

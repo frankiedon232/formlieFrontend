@@ -116,7 +116,10 @@
       "deleteTitle": "Supprimer le dossier « {name} » ?",
       "deleteDesc": "Son formulaire ({count}) est conservé, sans dossier. | Ses {count} formulaires sont conservés, sans dossier.",
       "count": "{count} formulaire | {count} formulaires",
-      "empty": "Aucun dossier pour l’instant. Créez-en un ci-dessous."
+      "empty": "Aucun dossier pour l’instant. Créez-en un ci-dessous.",
+      "viewForms": "Afficher les formulaires de {name}",
+      "notEmpty": "Déplacez d’abord ses formulaires vers un autre dossier — il pourra ensuite être supprimé.",
+      "deleteEmpty": "Le dossier est vide, aucun formulaire n’est donc concerné."
     },
     "tags": {
       "title": "Modifier les étiquettes",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Un thème portant ce nom existe déjà.",
     "FRM-FORM-1011": "Les modèles système ne peuvent pas être modifiés. Dupliquez-le pour créer le vôtre.",
     "FRM-FORM-1012": "Un modèle portant ce nom existe déjà.",
-    "FRM-RESP-1003": "Ce formulaire a déjà été envoyé depuis cette session."
+    "FRM-RESP-1003": "Ce formulaire a déjà été envoyé depuis cette session.",
+    "FRM-FORM-1013": "Ce dossier contient encore des formulaires. Déplacez-les d’abord vers un autre dossier."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Choisir un fuseau horaire",
       "currency_code": "Choisir une devise"
     },
-    "restricted": "Réservé à certaines personnes (accès au champ)"
+    "restricted": "Réservé à certaines personnes (accès au champ)",
+    "files": {
+      "notAdded": "Fichier non ajouté",
+      "wrongType": "Type de fichier non valide : {files}. Choisissez l’un des types autorisés.",
+      "tooBig": "Trop volumineux (plus de {mb} Mo) : {files}",
+      "tooMany": "Seuls {max} fichiers sont autorisés — {n} fichier n’a pas été ajouté. | Seuls {max} fichiers sont autorisés — {n} fichiers n’ont pas été ajoutés.",
+      "limits": "Jusqu’à {max} fichiers, {mb} Mo chacun",
+      "count": "{n} sur {max}",
+      "addMore": "Ajouter d’autres"
+    }
   },
   "logic": {
     "crumb": "Logique",

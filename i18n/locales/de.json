@@ -116,7 +116,10 @@
       "deleteTitle": "Ordner „{name}“ löschen?",
       "deleteDesc": "Das Formular ({count}) bleibt erhalten, ohne Ordner. | Die {count} Formulare bleiben erhalten, ohne Ordner.",
       "count": "{count} Formular | {count} Formulare",
-      "empty": "Noch keine Ordner. Legen Sie unten einen an."
+      "empty": "Noch keine Ordner. Legen Sie unten einen an.",
+      "viewForms": "Formulare in {name} anzeigen",
+      "notEmpty": "Verschieben Sie zuerst die Formulare in einen anderen Ordner – dann kann er gelöscht werden.",
+      "deleteEmpty": "Der Ordner ist leer, daher ist kein Formular betroffen."
     },
     "tags": {
       "title": "Tags bearbeiten",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Ein Design mit diesem Namen existiert bereits.",
     "FRM-FORM-1011": "Systemvorlagen können nicht geändert werden. Duplizieren Sie sie, um Ihre eigene zu erstellen.",
     "FRM-FORM-1012": "Eine Vorlage mit diesem Namen existiert bereits.",
-    "FRM-RESP-1003": "Dieses Formular wurde in dieser Sitzung bereits gesendet."
+    "FRM-RESP-1003": "Dieses Formular wurde in dieser Sitzung bereits gesendet.",
+    "FRM-FORM-1013": "Dieser Ordner enthält noch Formulare. Verschieben Sie sie zuerst in einen anderen Ordner."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Zeitzone wählen",
       "currency_code": "Währung wählen"
     },
-    "restricted": "Nur für bestimmte Personen (Feldzugriff)"
+    "restricted": "Nur für bestimmte Personen (Feldzugriff)",
+    "files": {
+      "notAdded": "Datei nicht hinzugefügt",
+      "wrongType": "Falscher Dateityp: {files}. Wählen Sie einen der erlaubten Typen.",
+      "tooBig": "Zu groß (über {mb} MB): {files}",
+      "tooMany": "Es sind nur {max} Dateien erlaubt – {n} Datei wurde nicht hinzugefügt. | Es sind nur {max} Dateien erlaubt – {n} Dateien wurden nicht hinzugefügt.",
+      "limits": "Bis zu {max} Dateien, je {mb} MB",
+      "count": "{n} von {max}",
+      "addMore": "Weitere hinzufügen"
+    }
   },
   "logic": {
     "crumb": "Logik",

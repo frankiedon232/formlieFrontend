@@ -481,12 +481,14 @@ export const renameFolder = defineMockRoute(({ event, body }) => {
   return ok(folder)
 })
 
-/** DELETE /folders/:id — its forms stay, without a folder. */
+/** DELETE /folders/:id — only empty folders (forms in Trash just lose the folder). */
 export const deleteFolder = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const store = formsOf(tenant)
   const folder = store.folders.find(item => item.id === getRouterParam(event, 'id'))
   if (!folder) throw new MockError('FRM-GEN-1004')
+  const holding = store.forms.filter(form => !form.deleted_at && form.folder?.id === folder.id).length
+  if (holding) throw new MockError('FRM-FORM-1013', [{ field: 'folder', message: `${holding} forms` }])
   store.folders = store.folders.filter(item => item.id !== folder.id)
   let moved = 0
   for (const form of store.forms)

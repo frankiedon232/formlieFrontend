@@ -116,7 +116,10 @@
       "deleteTitle": "Map “{name}” verwijderen?",
       "deleteDesc": "Het formulier ({count}) blijft bestaan, zonder map. | De {count} formulieren blijven bestaan, zonder map.",
       "count": "{count} formulier | {count} formulieren",
-      "empty": "Nog geen mappen. Maak er hieronder een."
+      "empty": "Nog geen mappen. Maak er hieronder een.",
+      "viewForms": "Formulieren in {name} tonen",
+      "notEmpty": "Verplaats eerst de formulieren naar een andere map — daarna kan deze worden verwijderd.",
+      "deleteEmpty": "De map is leeg, dus er wordt geen formulier geraakt."
     },
     "tags": {
       "title": "Tags bewerken",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Er bestaat al een thema met deze naam.",
     "FRM-FORM-1011": "Systeemsjablonen kunnen niet worden gewijzigd. Dupliceer het om je eigen versie te maken.",
     "FRM-FORM-1012": "Er bestaat al een sjabloon met deze naam.",
-    "FRM-RESP-1003": "Dit formulier is in deze sessie al verzonden."
+    "FRM-RESP-1003": "Dit formulier is in deze sessie al verzonden.",
+    "FRM-FORM-1013": "Deze map bevat nog formulieren. Verplaats ze eerst naar een andere map."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Kies een tijdzone",
       "currency_code": "Kies een valuta"
     },
-    "restricted": "Alleen voor bepaalde personen (veldtoegang)"
+    "restricted": "Alleen voor bepaalde personen (veldtoegang)",
+    "files": {
+      "notAdded": "Bestand niet toegevoegd",
+      "wrongType": "Verkeerd bestandstype: {files}. Kies een van de toegestane typen.",
+      "tooBig": "Te groot (meer dan {mb} MB): {files}",
+      "tooMany": "Er zijn maar {max} bestanden toegestaan — {n} bestand is niet toegevoegd. | Er zijn maar {max} bestanden toegestaan — {n} bestanden zijn niet toegevoegd.",
+      "limits": "Tot {max} bestanden, elk {mb} MB",
+      "count": "{n} van {max}",
+      "addMore": "Meer toevoegen"
+    }
   },
   "logic": {
     "crumb": "Logica",

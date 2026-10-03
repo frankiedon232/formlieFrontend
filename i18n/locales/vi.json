@@ -116,7 +116,10 @@
       "deleteTitle": "Xóa thư mục “{name}”?",
       "deleteDesc": "{count} biểu mẫu bên trong vẫn được giữ, không thuộc thư mục nào. | {count} biểu mẫu bên trong vẫn được giữ, không thuộc thư mục nào.",
       "count": "{count} biểu mẫu | {count} biểu mẫu",
-      "empty": "Chưa có thư mục. Hãy tạo một thư mục bên dưới."
+      "empty": "Chưa có thư mục. Hãy tạo một thư mục bên dưới.",
+      "viewForms": "Hiển thị biểu mẫu trong {name}",
+      "notEmpty": "Hãy chuyển biểu mẫu của thư mục sang thư mục khác trước — sau đó có thể xóa thư mục.",
+      "deleteEmpty": "Thư mục trống nên không biểu mẫu nào bị ảnh hưởng."
     },
     "tags": {
       "title": "Sửa thẻ",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Đã có chủ đề giao diện với tên này.",
     "FRM-FORM-1011": "Không thể thay đổi mẫu hệ thống. Hãy nhân bản để tạo mẫu của riêng bạn.",
     "FRM-FORM-1012": "Đã có mẫu với tên này.",
-    "FRM-RESP-1003": "Biểu mẫu này đã được gửi từ phiên này."
+    "FRM-RESP-1003": "Biểu mẫu này đã được gửi từ phiên này.",
+    "FRM-FORM-1013": "Thư mục này vẫn còn biểu mẫu. Hãy chuyển chúng sang thư mục khác trước."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Chọn múi giờ",
       "currency_code": "Chọn tiền tệ"
     },
-    "restricted": "Chỉ dành cho một số người (quyền truy cập trường)"
+    "restricted": "Chỉ dành cho một số người (quyền truy cập trường)",
+    "files": {
+      "notAdded": "Chưa thêm tệp",
+      "wrongType": "Sai loại tệp: {files}. Hãy chọn một trong các loại được phép.",
+      "tooBig": "Quá lớn (trên {mb} MB): {files}",
+      "tooMany": "Chỉ cho phép {max} tệp — {n} tệp chưa được thêm. | Chỉ cho phép {max} tệp — {n} tệp chưa được thêm.",
+      "limits": "Tối đa {max} tệp, mỗi tệp {mb} MB",
+      "count": "{n}/{max}",
+      "addMore": "Thêm nữa"
+    }
   },
   "logic": {
     "crumb": "Logic",

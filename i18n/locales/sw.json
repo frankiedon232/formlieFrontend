@@ -116,7 +116,10 @@
       "deleteTitle": "Futa folda “{name}”?",
       "deleteDesc": "Fomu {count} iliyomo itabaki, bila folda. | Fomu {count} zilizomo zitabaki, bila folda.",
       "count": "Fomu {count} | Fomu {count}",
-      "empty": "Bado hakuna folda. Unda moja hapa chini."
+      "empty": "Bado hakuna folda. Unda moja hapa chini.",
+      "viewForms": "Onyesha fomu zilizo katika {name}",
+      "notEmpty": "Hamisha kwanza fomu zake kwenye folda nyingine — kisha inaweza kufutwa.",
+      "deleteEmpty": "Folda ni tupu, kwa hiyo hakuna fomu inayoathiriwa."
     },
     "tags": {
       "title": "Hariri lebo",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Mandhari yenye jina hili tayari ipo.",
     "FRM-FORM-1011": "Violezo vya mfumo haviwezi kubadilishwa. Kinakili ili kutengeneza chako.",
     "FRM-FORM-1012": "Tayari kuna kiolezo chenye jina hili.",
-    "FRM-RESP-1003": "Fomu hii tayari imetumwa kutoka kipindi hiki."
+    "FRM-RESP-1003": "Fomu hii tayari imetumwa kutoka kipindi hiki.",
+    "FRM-FORM-1013": "Folda hii bado ina fomu. Zihamishe kwanza kwenye folda nyingine."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Chagua saa za eneo",
       "currency_code": "Chagua sarafu"
     },
-    "restricted": "Kwa baadhi ya watu pekee (ufikiaji wa sehemu)"
+    "restricted": "Kwa baadhi ya watu pekee (ufikiaji wa sehemu)",
+    "files": {
+      "notAdded": "Faili halikuongezwa",
+      "wrongType": "Aina ya faili si sahihi: {files}. Chagua mojawapo ya aina zinazoruhusiwa.",
+      "tooBig": "Kubwa mno (zaidi ya MB {mb}): {files}",
+      "tooMany": "Faili {max} tu zinaruhusiwa — faili {n} halikuongezwa. | Faili {max} tu zinaruhusiwa — faili {n} hazikuongezwa.",
+      "limits": "Hadi faili {max}, MB {mb} kila moja",
+      "count": "{n} kati ya {max}",
+      "addMore": "Ongeza zaidi"
+    }
   },
   "logic": {
     "crumb": "Mantiki",

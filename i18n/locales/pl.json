@@ -116,7 +116,10 @@
       "deleteTitle": "Usunąć folder „{name}”?",
       "deleteDesc": "Formularze ({count}) zostaną, bez folderu. | Formularze ({count}) zostaną, bez folderu.",
       "count": "Formularze: {count} | Formularze: {count}",
-      "empty": "Brak folderów. Utwórz pierwszy poniżej."
+      "empty": "Brak folderów. Utwórz pierwszy poniżej.",
+      "viewForms": "Pokaż formularze w {name}",
+      "notEmpty": "Proszę najpierw przenieść formularze do innego folderu — wtedy będzie można go usunąć.",
+      "deleteEmpty": "Folder jest pusty, więc nie dotyczy to żadnego formularza."
     },
     "tags": {
       "title": "Edytuj tagi",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Motyw o tej nazwie już istnieje.",
     "FRM-FORM-1011": "Szablonów systemowych nie można zmieniać. Zduplikuj szablon, aby utworzyć własny.",
     "FRM-FORM-1012": "Szablon o tej nazwie już istnieje.",
-    "FRM-RESP-1003": "Ten formularz został już wysłany w tej sesji."
+    "FRM-RESP-1003": "Ten formularz został już wysłany w tej sesji.",
+    "FRM-FORM-1013": "Ten folder nadal zawiera formularze. Proszę najpierw przenieść je do innego folderu."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Wybierz strefę czasową",
       "currency_code": "Wybierz walutę"
     },
-    "restricted": "Tylko dla wybranych osób (dostęp do pola)"
+    "restricted": "Tylko dla wybranych osób (dostęp do pola)",
+    "files": {
+      "notAdded": "Nie dodano pliku",
+      "wrongType": "Nieprawidłowy typ pliku: {files}. Proszę wybrać jeden z dozwolonych typów.",
+      "tooBig": "Za duże (ponad {mb} MB): {files}",
+      "tooMany": "Dozwolona liczba plików: {max} — nie dodano pliku ({n}). | Dozwolona liczba plików: {max} — nie dodane pliki: {n}.",
+      "limits": "Maks. liczba plików: {max}, do {mb} MB każdy",
+      "count": "{n} z {max}",
+      "addMore": "Dodaj więcej"
+    }
   },
   "logic": {
     "crumb": "Logika",

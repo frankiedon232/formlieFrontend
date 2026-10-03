@@ -116,7 +116,10 @@
       "deleteTitle": "删除文件夹“{name}”？",
       "deleteDesc": "其中 {count} 个表单会保留，不再属于任何文件夹。 | 其中 {count} 个表单会保留，不再属于任何文件夹。",
       "count": "{count} 个表单 | {count} 个表单",
-      "empty": "还没有文件夹，在下方新建一个。"
+      "empty": "还没有文件夹，在下方新建一个。",
+      "viewForms": "显示 {name} 中的表单",
+      "notEmpty": "请先将其中的表单移到其他文件夹，然后才能删除。",
+      "deleteEmpty": "文件夹为空，不会影响任何表单。"
     },
     "tags": {
       "title": "编辑标签",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "已存在同名主题。",
     "FRM-FORM-1011": "系统模板无法更改。请复制后创建您自己的模板。",
     "FRM-FORM-1012": "已存在同名模板。",
-    "FRM-RESP-1003": "此表单已在本次会话中提交过。"
+    "FRM-RESP-1003": "此表单已在本次会话中提交过。",
+    "FRM-FORM-1013": "此文件夹中仍有表单。请先将它们移到其他文件夹。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1650,7 +1654,16 @@
       "timezone": "选择时区",
       "currency_code": "选择货币"
     },
-    "restricted": "仅限部分人员（字段访问权限）"
+    "restricted": "仅限部分人员（字段访问权限）",
+    "files": {
+      "notAdded": "未添加文件",
+      "wrongType": "文件类型不正确：{files}。请选择允许的类型之一。",
+      "tooBig": "文件过大（超过 {mb} MB）：{files}",
+      "tooMany": "最多允许 {max} 个文件 — 有 {n} 个文件未添加。 | 最多允许 {max} 个文件 — 有 {n} 个文件未添加。",
+      "limits": "最多 {max} 个文件，每个 {mb} MB",
+      "count": "{n} / {max}",
+      "addMore": "继续添加"
+    }
   },
   "logic": {
     "crumb": "逻辑",

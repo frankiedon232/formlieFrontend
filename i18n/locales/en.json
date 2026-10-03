@@ -116,7 +116,10 @@
       "deleteTitle": "Delete the folder “{name}”?",
       "deleteDesc": "Its {count} form stays, without a folder. | Its {count} forms stay, without a folder.",
       "count": "{count} form | {count} forms",
-      "empty": "No folders yet. Create one below."
+      "empty": "No folders yet. Create one below.",
+      "viewForms": "Show the forms in {name}",
+      "notEmpty": "Move its forms to another folder first — then it can be deleted.",
+      "deleteEmpty": "The folder is empty, so no form is affected."
     },
     "tags": {
       "title": "Edit tags",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "A theme with this name already exists.",
     "FRM-FORM-1011": "System templates can’t be changed. Duplicate it to make your own.",
     "FRM-FORM-1012": "A template with this name already exists.",
-    "FRM-RESP-1003": "This form was already submitted from this session."
+    "FRM-RESP-1003": "This form was already submitted from this session.",
+    "FRM-FORM-1013": "This folder still has forms. Move them to another folder first."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Choose a time zone",
       "currency_code": "Choose a currency"
     },
-    "restricted": "Only for some people (field access)"
+    "restricted": "Only for some people (field access)",
+    "files": {
+      "notAdded": "File not added",
+      "wrongType": "Wrong file type: {files}. Choose one of the allowed types.",
+      "tooBig": "Too large (over {mb} MB): {files}",
+      "tooMany": "Only {max} files are allowed — {n} file wasn't added. | Only {max} files are allowed — {n} files weren't added.",
+      "limits": "Up to {max} files, {mb} MB each",
+      "count": "{n} of {max}",
+      "addMore": "Add more"
+    }
   },
   "logic": {
     "crumb": "Logic",

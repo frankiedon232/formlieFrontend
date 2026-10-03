@@ -116,7 +116,10 @@
       "deleteTitle": "“{name}” klasörü silinsin mi?",
       "deleteDesc": "İçindeki {count} form klasörsüz olarak kalır. | İçindeki {count} form klasörsüz olarak kalır.",
       "count": "{count} form | {count} form",
-      "empty": "Henüz klasör yok. Aşağıdan bir tane oluşturun."
+      "empty": "Henüz klasör yok. Aşağıdan bir tane oluşturun.",
+      "viewForms": "{name} içindeki formları göster",
+      "notEmpty": "Önce formlarını başka bir klasöre taşıyın — ardından silinebilir.",
+      "deleteEmpty": "Klasör boş, bu yüzden hiçbir form etkilenmez."
     },
     "tags": {
       "title": "Etiketleri düzenle",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Bu ada sahip bir tema zaten var.",
     "FRM-FORM-1011": "Sistem şablonları değiştirilemez. Kendinizinkini oluşturmak için çoğaltın.",
     "FRM-FORM-1012": "Bu ada sahip bir şablon zaten var.",
-    "FRM-RESP-1003": "Bu form bu oturumdan zaten gönderildi."
+    "FRM-RESP-1003": "Bu form bu oturumdan zaten gönderildi.",
+    "FRM-FORM-1013": "Bu klasörde hâlâ formlar var. Önce bunları başka bir klasöre taşıyın."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Bir saat dilimi seçin",
       "currency_code": "Bir para birimi seçin"
     },
-    "restricted": "Yalnızca bazı kişiler için (alan erişimi)"
+    "restricted": "Yalnızca bazı kişiler için (alan erişimi)",
+    "files": {
+      "notAdded": "Dosya eklenmedi",
+      "wrongType": "Yanlış dosya türü: {files}. İzin verilen türlerden birini seçin.",
+      "tooBig": "Çok büyük ({mb} MB üzeri): {files}",
+      "tooMany": "Yalnızca {max} dosyaya izin veriliyor — {n} dosya eklenmedi. | Yalnızca {max} dosyaya izin veriliyor — {n} dosya eklenmedi.",
+      "limits": "En fazla {max} dosya, her biri {mb} MB",
+      "count": "{n} / {max}",
+      "addMore": "Daha fazla ekle"
+    }
   },
   "logic": {
     "crumb": "Mantık",

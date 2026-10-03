@@ -116,7 +116,10 @@
       "deleteTitle": "¿Eliminar la carpeta «{name}»?",
       "deleteDesc": "Su formulario ({count}) se conserva, sin carpeta. | Sus {count} formularios se conservan, sin carpeta.",
       "count": "{count} formulario | {count} formularios",
-      "empty": "Aún no hay carpetas. Crea una abajo."
+      "empty": "Aún no hay carpetas. Crea una abajo.",
+      "viewForms": "Mostrar los formularios de {name}",
+      "notEmpty": "Mueve primero sus formularios a otra carpeta; después podrás eliminarla.",
+      "deleteEmpty": "La carpeta está vacía, así que no afecta a ningún formulario."
     },
     "tags": {
       "title": "Editar etiquetas",
@@ -406,7 +409,8 @@
     "FRM-FORM-1010": "Ya existe un tema con este nombre.",
     "FRM-FORM-1011": "Las plantillas del sistema no se pueden cambiar. Duplíquela para crear la suya.",
     "FRM-FORM-1012": "Ya existe una plantilla con este nombre.",
-    "FRM-RESP-1003": "Este formulario ya se envió desde esta sesión."
+    "FRM-RESP-1003": "Este formulario ya se envió desde esta sesión.",
+    "FRM-FORM-1013": "Esta carpeta todavía tiene formularios. Muévelos primero a otra carpeta."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -1650,7 +1654,16 @@
       "timezone": "Elija una zona horaria",
       "currency_code": "Elija una moneda"
     },
-    "restricted": "Solo para algunas personas (acceso al campo)"
+    "restricted": "Solo para algunas personas (acceso al campo)",
+    "files": {
+      "notAdded": "Archivo no añadido",
+      "wrongType": "Tipo de archivo incorrecto: {files}. Elige uno de los tipos permitidos.",
+      "tooBig": "Demasiado grande (más de {mb} MB): {files}",
+      "tooMany": "Solo se permiten {max} archivos — {n} archivo no se añadió. | Solo se permiten {max} archivos — {n} archivos no se añadieron.",
+      "limits": "Hasta {max} archivos, {mb} MB cada uno",
+      "count": "{n} de {max}",
+      "addMore": "Añadir más"
+    }
   },
   "logic": {
     "crumb": "Lógica",
