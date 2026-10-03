@@ -223,7 +223,16 @@
     "dataQuery": "Editor de consultas",
     "dataSavedQueries": "Consultas guardadas",
     "dataTransfers": "Importar y exportar",
-    "dataActivity": "Actividad"
+    "dataActivity": "Actividad",
+    "apiService": "Servicio API",
+    "apiOverview": "Resumen",
+    "apiServices": "Servicios",
+    "apiEndpoints": "Endpoints",
+    "apiAuth": "Tokens y encabezados",
+    "apiAccess": "Reglas de acceso",
+    "apiLogs": "Registros",
+    "apiAnalytics": "Analítica",
+    "apiDocs": "Docs y pruebas"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -1867,6 +1876,27 @@
       "destinations": "Elija adónde envía cada formulario sus respuestas y asocie los campos con las columnas.",
       "transfers": "Importe archivos a tablas y exporte tablas o resultados de consultas.",
       "activity": "Entregas, errores y consultas recientes de cada conexión."
+    }
+  },
+  "apiService": {
+    "subtitle": "Convierta cualquier formulario en una API para que sus aplicaciones puedan enviar y leer sus datos",
+    "back": "Resumen del servicio API",
+    "example": "Así es un endpoint (ejemplo)",
+    "channels": {
+      "title": "Reciba datos desde todos los frentes",
+      "hint": "Cada formulario puede recibir respuestas mediante su enlace, una inserción en su sitio y su propia API, y todas llegan al mismo lugar.",
+      "link": "Enlace para compartir",
+      "embed": "Formulario insertado",
+      "api": "Endpoints de API"
+    },
+    "section": {
+      "services": "Agrupe endpoints en servicios y active o desactive un servicio completo.",
+      "endpoints": "Cree endpoints a partir de un formulario y elija los métodos y los campos que cada uno acepta o devuelve.",
+      "auth": "Tokens estáticos o rotativos, encabezados obligatorios y respuestas JSON.",
+      "access": "Permita o bloquee llamadas por dirección IP, dominio, región o país.",
+      "logs": "Cada llamada con su estado, duración y origen.",
+      "analytics": "Llamadas, errores y tiempos de respuesta por servicio y endpoint.",
+      "docs": "Documentación lista para usar y un lugar para probar cada endpoint."
     }
   }
 }

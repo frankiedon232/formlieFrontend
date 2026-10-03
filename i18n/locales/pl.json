@@ -223,7 +223,16 @@
     "dataQuery": "Edytor zapytań",
     "dataSavedQueries": "Zapisane zapytania",
     "dataTransfers": "Import i eksport",
-    "dataActivity": "Aktywność"
+    "dataActivity": "Aktywność",
+    "apiService": "Usługa API",
+    "apiOverview": "Przegląd",
+    "apiServices": "Usługi",
+    "apiEndpoints": "Endpointy",
+    "apiAuth": "Tokeny i nagłówki",
+    "apiAccess": "Reguły dostępu",
+    "apiLogs": "Logi żądań",
+    "apiAnalytics": "Analityka",
+    "apiDocs": "Dokumentacja i testy"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -1867,6 +1876,27 @@
       "destinations": "Wybierz, dokąd każdy formularz wysyła odpowiedzi, i przypisz pola do kolumn.",
       "transfers": "Importuj pliki do tabel i eksportuj tabele lub wyniki zapytań.",
       "activity": "Dostarczenia, błędy i ostatnie zapytania dla każdego połączenia."
+    }
+  },
+  "apiService": {
+    "subtitle": "Zamień dowolny formularz w API, aby Państwa aplikacje mogły wysyłać i odczytywać jego dane",
+    "back": "Przegląd usługi API",
+    "example": "Jak wygląda endpoint (przykład)",
+    "channels": {
+      "title": "Zbieraj dane ze wszystkich stron",
+      "hint": "Każdy formularz może przyjmować odpowiedzi przez swój link, osadzenie na Państwa stronie i własne API — wszystko trafia w to samo miejsce.",
+      "link": "Link do udostępnienia",
+      "embed": "Osadzony formularz",
+      "api": "Endpointy API"
+    },
+    "section": {
+      "services": "Grupuj endpointy w usługi; włączaj lub wyłączaj całą usługę.",
+      "endpoints": "Twórz endpointy z formularza, wybieraj metody i pola, które każdy z nich przyjmuje lub zwraca.",
+      "auth": "Tokeny statyczne lub rotowane, wymagane nagłówki i odpowiedzi JSON.",
+      "access": "Zezwalaj lub blokuj wywołujących według adresu IP, domeny, regionu lub kraju.",
+      "logs": "Każde wywołanie ze statusem, czasem trwania i wywołującym.",
+      "analytics": "Wywołania, błędy i czasy odpowiedzi według usługi i endpointu.",
+      "docs": "Gotowa dokumentacja i miejsce do testowania każdego endpointu."
     }
   }
 }

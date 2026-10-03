@@ -223,7 +223,16 @@
     "dataQuery": "查询编辑器",
     "dataSavedQueries": "已保存的查询",
     "dataTransfers": "导入与导出",
-    "dataActivity": "活动"
+    "dataActivity": "活动",
+    "apiService": "API 服务",
+    "apiOverview": "概览",
+    "apiServices": "服务",
+    "apiEndpoints": "端点",
+    "apiAuth": "令牌与请求头",
+    "apiAccess": "访问规则",
+    "apiLogs": "请求日志",
+    "apiAnalytics": "分析",
+    "apiDocs": "文档与测试"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -1867,6 +1876,27 @@
       "destinations": "选择每个表单发送回复的位置，并将字段映射到列。",
       "transfers": "将文件导入表中，并导出表或查询结果。",
       "activity": "每个连接的投递、失败和最近查询。"
+    }
+  },
+  "apiService": {
+    "subtitle": "将任意表单变成 API，让您的应用程序发送和读取其数据",
+    "back": "API 服务概览",
+    "example": "端点示例",
+    "channels": {
+      "title": "从各个渠道收集数据",
+      "hint": "每个表单都可以通过其链接、嵌入到您网站以及自身的 API 接收回复——全部汇集到同一处。",
+      "link": "可分享链接",
+      "embed": "嵌入式表单",
+      "api": "API 端点"
+    },
+    "section": {
+      "services": "将端点分组为服务；可整体启用或停用某个服务。",
+      "endpoints": "从表单创建端点，选择请求方法以及每个端点接收或返回的字段。",
+      "auth": "静态或轮换令牌、必需请求头和 JSON 响应。",
+      "access": "按 IP 地址、域名、地区或国家允许或阻止调用方。",
+      "logs": "每次调用及其状态、耗时和调用方。",
+      "analytics": "按服务和端点统计的调用量、错误和响应时间。",
+      "docs": "现成的文档，以及试用每个端点的地方。"
     }
   }
 }

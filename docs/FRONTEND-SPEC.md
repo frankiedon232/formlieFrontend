@@ -23,7 +23,7 @@ Built with `UDashboardGroup` → `UDashboardSidebar` + `UDashboardPanel`.
 
 ### Menu structure
 
-Forms · Templates · Responses · Analytics · Option Sets · Integrations (data sources, database explorer, query editor, destinations, webhooks, API keys) · Settings · Audit Trail (early, F4) · (later) Users · Dashboard · Roles & Access.
+Forms · Templates · Responses · Analytics · Option Sets · Data sources (own rail area) · API service (own rail area) · Integrations (webhooks, API keys) · Settings · Audit Trail (early, F4) · (later) Users · Dashboard · Roles & Access.
 
 ### Navbar (`UDashboardNavbar`) and page header
 
@@ -80,15 +80,17 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 | `/templates`                                                                                                           | Template gallery (system + organisation), preview, use                                                                                                          |
 | `/responses`                                                                                                           | Cross-form responses inbox                                                                                                                                      |
 | `/option-sets`                                                                                                         | Predefined select lists                                                                                                                                         |
-| `/integrations/*`                                                                                                      | Webhooks, API keys (F14)                                                                                                                                        |
+| `/integrations/*`                                                                                                      | Webhooks, API keys (F15)                                                                                                                                        |
 | `/data-sources`                                                                                                        | Data sources area (own rail icon, own menu, F12): overview of the sections                                                                                      |
 | `/data-sources/connections` · `/explorer` · `/query` · `/saved-queries` · `/destinations` · `/transfers` · `/activity` | Connections, database explorer, query editor, saved queries, destinations (form data → tables), imports & exports, activity (placeholders until F12)            |
+| `/api-service`                                                                                                         | API service area (own rail icon, own menu, F13): overview — link · embed · API channels, example endpoint                                                       |
+| `/api-service/services` · `/endpoints` · `/auth` · `/access` · `/logs` · `/analytics` · `/docs`                        | Services (containers), endpoints from forms, tokens & headers, allow / block rules, request logs, analytics, docs & testing (placeholders until F13)            |
 | `/settings/*`                                                                                                          | Company, branding, domain & subdomain, authentication, security, localisation, notifications & email templates, themes, data retention, embed defaults, billing |
 | `/profile/*`                                                                                                           | My profile, password, MFA, sessions/devices                                                                                                                     |
 | `/audit`                                                                                                               | Audit trail: every action (who, what, when, where, before / after), filters, export — **early (F4)**                                                            |
 | `/users`, `/roles`, `/dashboard`                                                                                       | **Last**                                                                                                                                                        |
 
-Public (SSR, `layouts/public.vue`): `/f/[slug]` form renderer, `/f/[slug]/embed` (chrome-less for iframe), `/s/[code]` short link redirect, closed/expired/not-found states.
+Public (SSR, `layouts/public.vue`) on `forms.formalie.*` and workspace subdomains: `/[formKey]/fill` form renderer, `/[formKey]/embed` (chrome-less for iframe), `/s/[code]` short link redirect, closed/expired/not-found states.
 
 ## 6. Form builder (`/forms/[id]/build`)
 
@@ -123,7 +125,7 @@ DataView with dynamic columns from the form schema; filters per field type; date
 - 20 languages: English, Français, Español, Português (BR), Deutsch, Italiano, Nederlands, Polski, Русский, Українська, Türkçe, العربية (RTL), हिन्दी, বাংলা, 简体中文, 日本語, 한국어, Bahasa Indonesia, Tiếng Việt, Kiswahili. Defined once in `shared/utils/i18n/locales.ts`; messages in `i18n/locales/{code}.json`.
 - `<html lang dir>` follow the active language; Nuxt UI's own component strings use the matching `@nuxt/ui/locale` (English where Nuxt UI has none, e.g. Swahili).
 - Language switch (`AppLocaleSwitch`, searchable `USelectMenu`) in the navbar and on auth pages; later also a per-user default in Profile and a tenant default in Settings → Localisation.
-- Public forms (`/f/**`): the form's own language setting (`schema.settings.language`) wins; respondents can switch when the form owner enables several languages (F10).
+- Public forms (`/{formKey}/fill` · `/embed`): the form's own language setting (`schema.settings.language`) wins; respondents can switch when the form owner enables several languages (F10).
 - RTL: logical Tailwind utilities only (`ms-/me-/ps-/pe-/start-/end-`).
 - Dates, numbers, currency via `Intl` with the active locale and tenant timezone/currency.
 

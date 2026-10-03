@@ -223,7 +223,16 @@
     "dataQuery": "쿼리 편집기",
     "dataSavedQueries": "저장된 쿼리",
     "dataTransfers": "가져오기 및 내보내기",
-    "dataActivity": "활동"
+    "dataActivity": "활동",
+    "apiService": "API 서비스",
+    "apiOverview": "개요",
+    "apiServices": "서비스",
+    "apiEndpoints": "엔드포인트",
+    "apiAuth": "토큰 및 헤더",
+    "apiAccess": "접근 규칙",
+    "apiLogs": "요청 로그",
+    "apiAnalytics": "분석",
+    "apiDocs": "문서 및 테스트"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -1867,6 +1876,27 @@
       "destinations": "각 양식이 응답을 보낼 위치를 선택하고 필드를 열에 매핑하세요.",
       "transfers": "파일을 테이블로 가져오고 테이블이나 쿼리 결과를 내보내세요.",
       "activity": "각 연결의 전송, 실패 및 최근 쿼리."
+    }
+  },
+  "apiService": {
+    "subtitle": "어떤 양식이든 API로 바꿔 애플리케이션에서 데이터를 보내고 읽을 수 있게 하세요",
+    "back": "API 서비스 개요",
+    "example": "엔드포인트 예시",
+    "channels": {
+      "title": "모든 경로에서 데이터 수집",
+      "hint": "각 양식은 링크, 사이트 임베드, 자체 API를 통해 응답을 받을 수 있으며 모두 같은 곳에 모입니다.",
+      "link": "공유 링크",
+      "embed": "임베드된 양식",
+      "api": "API 엔드포인트"
+    },
+    "section": {
+      "services": "엔드포인트를 서비스로 묶고 서비스 전체를 켜거나 끌 수 있습니다.",
+      "endpoints": "양식에서 엔드포인트를 만들고 메서드와 각 엔드포인트가 받거나 반환할 필드를 선택하세요.",
+      "auth": "고정 또는 순환 토큰, 필수 헤더, JSON 응답.",
+      "access": "IP 주소, 도메인, 지역 또는 국가별로 호출자를 허용하거나 차단합니다.",
+      "logs": "모든 호출의 상태, 소요 시간, 호출자.",
+      "analytics": "서비스 및 엔드포인트별 호출 수, 오류, 응답 시간.",
+      "docs": "바로 쓸 수 있는 문서와 각 엔드포인트를 테스트할 공간."
     }
   }
 }

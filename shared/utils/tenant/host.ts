@@ -7,7 +7,8 @@
  *   acme.formalie.dev                                   → tenant "acme"
  *   localhost, 127.0.0.1, [::1], 192.168.x.x            → manage (local dev), or tenant via override
  *   acme.localhost                                       → tenant "acme" (no hosts-file entry needed)
- *   api.formalie.dev, a.b.formalie.dev, "-x-"            → invalid (workspace not found)
+ *   api.formalie.dev, forms.formalie.dev, a.b…, "-x-"    → invalid workspace (api. and forms. are
+ *                                                         Formalie's own hosts: API service, shared form links)
  *   forms.customer.com                                   → custom (resolved by the API, later)
  */
 
@@ -15,6 +16,7 @@ export const RESERVED_SUBDOMAINS: readonly string[] = [
   'www',
   'manage',
   'api',
+  'forms',
   'app',
   'admin',
   'mail',

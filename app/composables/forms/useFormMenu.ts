@@ -1,4 +1,5 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
+import { formLink, publicHosts } from '#shared/utils/urls/public'
 import type { FormSummary } from '#shared/types/forms'
 
 interface FormMenuHandlers {
@@ -12,7 +13,12 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
   const { t } = useI18n()
   const toast = useToast()
   const { copy } = useClipboard({ legacy: true })
-  const origin = useRequestURL().origin
+  const config = useRuntimeConfig().public
+  const tenant = useTenant()
+  const request = useRequestURL()
+  /** Public fill link: https://{forms | sub}.formalie.com/{formKey}/fill (docs/01-ARCHITECTURE.md). */
+  const fillLink = (key: string) =>
+    formLink(publicHosts(config, request.port), key, 'fill', tenant.profile.value?.subdomain ?? null)
 
   return (form: FormSummary): DropdownMenuItem[][] => {
     const lifecycle: DropdownMenuItem[] = []
@@ -57,7 +63,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
                 label: t('forms.copyLink'),
                 icon: 'i-lucide-link',
                 onSelect: () => {
-                  copy(`${origin}/f/${form.slug}`)
+                  copy(fillLink(form.slug))
                   toast.add({
                     title: t('forms.linkCopied'),
                     color: 'success' as const,

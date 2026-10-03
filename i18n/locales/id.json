@@ -223,7 +223,16 @@
     "dataQuery": "Editor kueri",
     "dataSavedQueries": "Kueri tersimpan",
     "dataTransfers": "Impor & ekspor",
-    "dataActivity": "Aktivitas"
+    "dataActivity": "Aktivitas",
+    "apiService": "Layanan API",
+    "apiOverview": "Ringkasan",
+    "apiServices": "Layanan",
+    "apiEndpoints": "Endpoint",
+    "apiAuth": "Token & header",
+    "apiAccess": "Aturan akses",
+    "apiLogs": "Log permintaan",
+    "apiAnalytics": "Analitik",
+    "apiDocs": "Dokumen & uji"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -1867,6 +1876,27 @@
       "destinations": "Pilih ke mana setiap formulir mengirim responsnya dan cocokkan kolom isian dengan kolom tabel.",
       "transfers": "Impor file ke tabel dan ekspor tabel atau hasil kueri.",
       "activity": "Pengiriman, kegagalan, dan kueri terbaru untuk setiap koneksi."
+    }
+  },
+  "apiService": {
+    "subtitle": "Ubah formulir apa pun menjadi API agar aplikasi Anda dapat mengirim dan membaca datanya",
+    "back": "Ringkasan layanan API",
+    "example": "Seperti apa sebuah endpoint (contoh)",
+    "channels": {
+      "title": "Kumpulkan data dari segala arah",
+      "hint": "Setiap formulir dapat menerima jawaban melalui tautannya, sematan di situs Anda, dan API-nya sendiri — semuanya masuk ke tempat yang sama.",
+      "link": "Tautan yang dapat dibagikan",
+      "embed": "Formulir tersemat",
+      "api": "Endpoint API"
+    },
+    "section": {
+      "services": "Kelompokkan endpoint ke dalam layanan; aktifkan atau nonaktifkan seluruh layanan.",
+      "endpoints": "Buat endpoint dari formulir, pilih metode dan kolom yang diterima atau dikembalikan setiap endpoint.",
+      "auth": "Token statis atau bergilir, header wajib, dan respons JSON.",
+      "access": "Izinkan atau blokir pemanggil berdasarkan alamat IP, domain, wilayah, atau negara.",
+      "logs": "Setiap panggilan beserta status, durasi, dan pemanggilnya.",
+      "analytics": "Panggilan, galat, dan waktu respons per layanan dan endpoint.",
+      "docs": "Dokumentasi siap pakai dan tempat untuk mencoba setiap endpoint."
     }
   }
 }

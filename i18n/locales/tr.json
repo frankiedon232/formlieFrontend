@@ -223,7 +223,16 @@
     "dataQuery": "Sorgu düzenleyici",
     "dataSavedQueries": "Kayıtlı sorgular",
     "dataTransfers": "İçe ve dışa aktarma",
-    "dataActivity": "Etkinlik"
+    "dataActivity": "Etkinlik",
+    "apiService": "API hizmeti",
+    "apiOverview": "Genel bakış",
+    "apiServices": "Hizmetler",
+    "apiEndpoints": "Uç noktalar",
+    "apiAuth": "Token ve başlıklar",
+    "apiAccess": "Erişim kuralları",
+    "apiLogs": "İstek kayıtları",
+    "apiAnalytics": "Analitik",
+    "apiDocs": "Belgeler ve test"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -1867,6 +1876,27 @@
       "destinations": "Her formun yanıtlarını nereye göndereceğini seçin ve alanları sütunlarla eşleştirin.",
       "transfers": "Dosyaları tablolara içe aktarın, tabloları veya sorgu sonuçlarını dışa aktarın.",
       "activity": "Her bağlantı için teslimatlar, hatalar ve son sorgular."
+    }
+  },
+  "apiService": {
+    "subtitle": "Uygulamalarınızın verilerini gönderip okuyabilmesi için herhangi bir formu API’ye dönüştürün",
+    "back": "API hizmeti genel bakış",
+    "example": "Bir uç nokta nasıl görünür (örnek)",
+    "channels": {
+      "title": "Her yönden veri toplayın",
+      "hint": "Her form; bağlantısı, sitenize yerleştirme ve kendi API’si üzerinden yanıt alabilir — hepsi aynı yere ulaşır.",
+      "link": "Paylaşılabilir bağlantı",
+      "embed": "Yerleştirilmiş form",
+      "api": "API uç noktaları"
+    },
+    "section": {
+      "services": "Uç noktaları hizmetlerde gruplayın; bir hizmetin tamamını açın veya kapatın.",
+      "endpoints": "Bir formdan uç noktalar oluşturun, yöntemleri ve her birinin kabul ettiği veya döndürdüğü alanları seçin.",
+      "auth": "Sabit veya dönüşümlü token’lar, zorunlu başlıklar ve JSON yanıtları.",
+      "access": "Çağıranlara IP adresi, alan adı, bölge veya ülkeye göre izin verin ya da engelleyin.",
+      "logs": "Her çağrı; durumu, süresi ve çağıranıyla birlikte.",
+      "analytics": "Hizmet ve uç nokta başına çağrılar, hatalar ve yanıt süreleri.",
+      "docs": "Hazır belgeler ve her uç noktayı denemek için bir alan."
     }
   }
 }

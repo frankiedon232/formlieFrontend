@@ -16,7 +16,7 @@ const securityHeaders: Record<string, string> = {
 }
 
 // Vite HMR needs eval + websockets, so the CSP is production-only.
-// Embeds (/f/**/embed) get a per-form frame-ancestors from the server in F9.
+// Embeds (/{formKey}/embed) get a per-form frame-ancestors from the server in F10.
 if (!isDev) {
   securityHeaders['Content-Security-Policy'] = [
     "default-src 'self'",
@@ -60,6 +60,9 @@ export default defineNuxtConfig({
       apiMock,
       rootDomain: 'formalie.dev',
       manageSubdomain: 'manage',
+      // Public links (docs/01-ARCHITECTURE.md → Public URLs). Production: forms.formalie.com / https://api.formalie.com
+      formsHost: 'forms.formalie.dev',
+      apiServiceUrl: 'https://api.formalie.dev',
     },
   },
 
@@ -68,9 +71,10 @@ export default defineNuxtConfig({
   ],
 
   routeRules: {
-    // Portal: client-rendered. Public forms and short links: server-rendered for SEO.
+    // Portal: client-rendered. Public forms (/{formKey}/fill · /embed) and short links: server-rendered for SEO.
     '/**': { ssr: false, headers: securityHeaders },
-    '/f/**': { ssr: true },
+    '/*/fill': { ssr: true },
+    '/*/embed': { ssr: true },
     '/s/**': { ssr: true },
     // Destinations moved to the Data sources area (F12).
     '/integrations/destinations': { redirect: '/data-sources/destinations' },

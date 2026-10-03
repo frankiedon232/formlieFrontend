@@ -45,14 +45,14 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 | POST | `/auth/password/reset` | `{ challenge_id, code, password }` → `{ reset: true }` |
 | GET | `/me` · PATCH `/me` · POST `/me/password` · `/me/mfa/totp/*` · GET/DELETE `/me/sessions/{id}` | |
 
-**`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F20); owner and admin manage the workspace (e.g. the audit trail).
+**`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F21); owner and admin manage the workspace (e.g. the audit trail).
 
 **Refresh cookie:** `formalie_rt`, `HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth` (covers refresh + logout).
 **Mock only:** challenge responses carry `meta.dev_code` so the dev code screen can show it; the real API never returns codes. The mock honours the dev header `X-Formalie-Dev-Tenant` (localhost / LAN-IP testing).
 
 ## Audit trail
 
-Owners / admins only (members → FRM-PERM-1001) until permissions arrive with Roles & access (F20). Every state-changing endpoint and every sign-in event writes one entry; action keys and areas are listed once in `shared/utils/audit/events.ts`.
+Owners / admins only (members → FRM-PERM-1001) until permissions arrive with Roles & access (F21). Every state-changing endpoint and every sign-in event writes one entry; action keys and areas are listed once in `shared/utils/audit/events.ts`.
 
 | Method | Path                 | Notes                                                                                                                                                                                                                                                           |
 | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -124,7 +124,7 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 
 | CRUD | `/themes` | `{ name, tokens }` |
 | GET | `/templates` (system + org; filter category) · POST `/templates` (save as) · POST `/templates/{id}/use` | |
-| CRUD | `/option-lists`, `/option-lists/{id}/items` (search / paging / levels, bulk upsert, reorder, import, refresh, usage) | planned (F14) — see [OPTION-LISTS.md](OPTION-LISTS.md); replaces the earlier `/option-sets` name |
+| CRUD | `/option-lists`, `/option-lists/{id}/items` (search / paging / levels, bulk upsert, reorder, import, refresh, usage) | planned (F15) — see [OPTION-LISTS.md](OPTION-LISTS.md); replaces the earlier `/option-sets` name |
 
 ## Sharing, links, embed
 
@@ -141,7 +141,26 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 | POST | `/public/forms/{slug}/sessions` | start/resume → `resume_token` |
 | POST | `/public/forms/{slug}/uploads` | pre-signed upload URL |
 | POST | `/public/forms/{slug}/submit` | `{ data, resume_token?, captcha_token }` → `{ response_id, thank_you }` |
-| GET | `/public/s/{code}` | short link resolve (root domain) |
+| GET | `/public/s/{code}` | short link resolve (`forms.formalie.com/s/{code}`) |
+
+Public form pages live at `https://{forms | sub}.formalie.com/{formKey}/fill` and `/embed` (01-ARCHITECTURE → Public URLs); the `{slug}` in the paths above is that `{formKey}`.
+
+## API service (F13, planned)
+
+Public endpoints for applications (not the portal API): `https://api.formalie.dev/{apiKey}/{endpoint}` (production `api.formalie.com`) — see 01-ARCHITECTURE → Public URLs and SECURITY-PROTOCOL §9.
+
+| Method | Path                              | Notes                                                                            |
+| ------ | --------------------------------- | -------------------------------------------------------------------------------- |
+| POST   | `/{apiKey}/token`                 | `{ client_id, client_secret }` → `{ access_token, expires_in }` (dynamic tokens) |
+| POST   | `/{apiKey}/{endpoint}`            | create a response with the accepted fields → `201 { data: { id, … } }`           |
+| GET    | `/{apiKey}/{endpoint}`            | list with the returned fields, `?page`, `?per_page`, `?sort`, allowed filters    |
+| GET    | `/{apiKey}/{endpoint}/{recordId}` | one record                                                                       |
+| PUT    | `/{apiKey}/{endpoint}/{recordId}` | update the accepted fields                                                       |
+| DELETE | `/{apiKey}/{endpoint}/{recordId}` | delete (soft; audited)                                                           |
+
+Headers: `Authorization: Bearer …` (required) · `Content-Type: application/json` · `Idempotency-Key` (optional, POST) · `X-Formalie-Destination` (optional, one of the endpoint's allowed destinations) · custom headers required by the endpoint. Responses: `{ data, meta }` or `{ error: { code: "FRM-API-…", message, details } }`.
+
+Portal management (enveloped like the rest of the portal API): `/api-services`, `/api-services/{id}/endpoints`, `/api-tokens`, `/api-access-rules`, `/api-logs`, `/api-analytics` — shapes defined when F13 starts.
 
 ## Responses
 
@@ -160,7 +179,7 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 | POST | `/datasources/{id}/query` `{ sql, params, limit }` → `{ columns, rows, rows_affected, duration_ms }` (+ `/query/{run_id}/cancel`); read-only unless the connection allows changes; every run audited | planned (F12) |
 | CRUD | `/saved-queries` (personal / shared) | planned (F12) |
 | CRUD | `/forms/{id}/destinations` (+ mapping, create table, backfill, deliveries, retry) | planned (F12) |
-| CRUD | `/webhooks` · `/api-keys` | planned (F14) |
+| CRUD | `/webhooks` · `/api-keys` | planned (F15) |
 | GET/PATCH | `/settings/{section}` | company, branding, auth, security, localisation, notifications, retention, embed |
 | GET | `/forms/{id}/analytics?from=&to=` | summary, timeseries, per-field stats, drop-off |
 | GET | `/platform/countries`, `/platform/states?country=`, `/platform/timezones`, `/platform/currencies` | |

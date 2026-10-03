@@ -223,7 +223,16 @@
     "dataQuery": "Abfrage-Editor",
     "dataSavedQueries": "Gespeicherte Abfragen",
     "dataTransfers": "Import & Export",
-    "dataActivity": "Aktivität"
+    "dataActivity": "Aktivität",
+    "apiService": "API-Dienst",
+    "apiOverview": "Übersicht",
+    "apiServices": "Dienste",
+    "apiEndpoints": "Endpunkte",
+    "apiAuth": "Tokens & Header",
+    "apiAccess": "Zugriffsregeln",
+    "apiLogs": "Anfrageprotokolle",
+    "apiAnalytics": "Analysen",
+    "apiDocs": "Doku & Tests"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -1867,6 +1876,27 @@
       "destinations": "Legen Sie fest, wohin jedes Formular seine Antworten sendet, und ordnen Sie Felder den Spalten zu.",
       "transfers": "Importieren Sie Dateien in Tabellen und exportieren Sie Tabellen oder Abfrageergebnisse.",
       "activity": "Zustellungen, Fehler und letzte Abfragen für jede Verbindung."
+    }
+  },
+  "apiService": {
+    "subtitle": "Machen Sie aus jedem Formular eine API, damit Ihre Anwendungen seine Daten senden und lesen können",
+    "back": "Übersicht API-Dienst",
+    "example": "So sieht ein Endpunkt aus (Beispiel)",
+    "channels": {
+      "title": "Daten aus allen Richtungen erfassen",
+      "hint": "Jedes Formular nimmt Antworten über seinen Link, eine Einbettung auf Ihrer Website und seine eigene API entgegen – alles landet am selben Ort.",
+      "link": "Teilbarer Link",
+      "embed": "Eingebettetes Formular",
+      "api": "API-Endpunkte"
+    },
+    "section": {
+      "services": "Fassen Sie Endpunkte zu Diensten zusammen und schalten Sie einen ganzen Dienst ein oder aus.",
+      "endpoints": "Erstellen Sie Endpunkte aus einem Formular und wählen Sie Methoden sowie die Felder, die jeder Endpunkt annimmt oder zurückgibt.",
+      "auth": "Statische oder rotierende Tokens, Pflicht-Header und JSON-Antworten.",
+      "access": "Erlauben oder sperren Sie Aufrufer nach IP-Adresse, Domain, Region oder Land.",
+      "logs": "Jeder Aufruf mit Status, Dauer und Aufrufer.",
+      "analytics": "Aufrufe, Fehler und Antwortzeiten pro Dienst und Endpunkt.",
+      "docs": "Fertige Dokumentation und ein Ort zum Testen jedes Endpunkts."
     }
   }
 }

@@ -4,6 +4,7 @@
 -->
 <script setup lang="ts">
 import type { FormSummary } from '#shared/types/forms'
+import { formLink, publicHosts } from '#shared/utils/urls/public'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -11,6 +12,13 @@ const api = useApi()
 const { setLabel } = useBreadcrumbs()
 const { dateTime, relative, number } = useFormat()
 const { handle } = useErrorHandler()
+const config = useRuntimeConfig().public
+const tenant = useTenant()
+const request = useRequestURL()
+/** Public fill link (docs/01-ARCHITECTURE.md → Public URLs). */
+const fillLink = computed(() =>
+  form.value ? formLink(publicHosts(config, request.port), form.value.slug, 'fill', tenant.profile.value?.subdomain ?? null) : undefined,
+)
 
 const form = ref<(FormSummary & { template_key: string | null }) | null>(null)
 const loading = ref(true)
@@ -84,7 +92,7 @@ const details = computed(() =>
   <AppPanel
     id="form-overview"
     :title="form?.name ?? t('nav.forms')"
-    :subtitle="form ? `/f/${form.slug}` : undefined"
+    :subtitle="fillLink"
     subtitle-icon="i-lucide-link"
   >
     <template v-if="form" #actions>

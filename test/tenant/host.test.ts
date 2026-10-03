@@ -44,6 +44,7 @@ describe('resolveHostContext', () => {
 
   it('reserved, nested and malformed subdomains are invalid', () => {
     expect(resolve('api.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'reserved' })
+    expect(resolve('forms.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'reserved' })
     expect(resolve('a.b.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'nested' })
     expect(resolve('-bad-.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'malformed' })
   })

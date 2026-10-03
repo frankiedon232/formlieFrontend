@@ -1,5 +1,5 @@
 <!--
-  Far-left rail (design: ⋯ · + · workspaces), then the other areas (Data sources) — each with
+  Far-left rail (design: ⋯ · + · workspaces), then the other areas (Data sources, API service) — each with
   its own menu; the workspace button is the Forms area. When the menu is collapsed it also carries the current area's section icons
   with tooltips, an expand button and the account avatar.
 -->
@@ -34,7 +34,7 @@ const createItems = computed<DropdownMenuItem[][]>(() => [
   ],
 ])
 
-// Current workspace; the organisation switcher (several orgs per tenant) joins in F13.
+// Current workspace; the organisation switcher (several orgs per tenant) joins in F14.
 const tenant = useTenant()
 const workspaces = computed(() => [
   { name: tenant.profile.value?.name ?? t('app.name'), icon: 'i-lucide-building-2', active: true },

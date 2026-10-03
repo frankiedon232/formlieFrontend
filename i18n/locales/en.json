@@ -223,7 +223,16 @@
     "dataQuery": "Query editor",
     "dataSavedQueries": "Saved queries",
     "dataTransfers": "Imports & exports",
-    "dataActivity": "Activity"
+    "dataActivity": "Activity",
+    "apiService": "API service",
+    "apiOverview": "Overview",
+    "apiServices": "Services",
+    "apiEndpoints": "Endpoints",
+    "apiAuth": "Tokens & headers",
+    "apiAccess": "Access rules",
+    "apiLogs": "Request logs",
+    "apiAnalytics": "Analytics",
+    "apiDocs": "Docs & testing"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -1867,6 +1876,27 @@
       "destinations": "Choose where each form sends its responses and match fields to columns.",
       "transfers": "Import files into tables and export tables or query results.",
       "activity": "Deliveries, failures and recent queries for every connection."
+    }
+  },
+  "apiService": {
+    "subtitle": "Turn any form into an API so your applications can send and read its data",
+    "back": "API service overview",
+    "example": "What an endpoint looks like (example)",
+    "channels": {
+      "title": "Collect data from every side",
+      "hint": "Each form can take answers through its link, an embed on your site and its own API — all landing in the same place.",
+      "link": "Shareable link",
+      "embed": "Embedded form",
+      "api": "API endpoints"
+    },
+    "section": {
+      "services": "Group endpoints into services; switch a whole service on or off.",
+      "endpoints": "Create endpoints from a form, choose methods and the fields each one accepts or returns.",
+      "auth": "Static or rotating tokens, required headers and JSON responses.",
+      "access": "Allow or block callers by IP address, domain, region or country.",
+      "logs": "Every call with its status, time taken and caller.",
+      "analytics": "Calls, errors and response times per service and endpoint.",
+      "docs": "Ready-made documentation and a place to try each endpoint."
     }
   }
 }

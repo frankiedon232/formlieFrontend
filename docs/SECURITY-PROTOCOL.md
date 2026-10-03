@@ -76,6 +76,18 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 - Security headers: HSTS, CSP (per-form `frame-ancestors` for embeds), X-Content-Type-Options, Referrer-Policy, Permissions-Policy.
 - Secrets never logged (passwords, OTPs, tokens, keys, plaintext of sensitive fields).
 
-## 9. Honest note
+## 9. API service (third-party callers, F13)
+
+Applications call form endpoints at `https://api.formalie.com/{apiKey}/{endpoint}` (development `api.formalie.dev`). These callers are other organisations' software, so the API service uses standard, widely supported protections instead of the portal envelope:
+
+- **TLS only** (HSTS); plain HTTP refused.
+- **Address ≠ secret.** `{apiKey}` is a random public routing handle (not an id, not encrypted — 03-DECISIONS → 61).
+- **Bearer tokens:** static tokens (shown once, stored as a hash, test / live prefix, expiry, scopes) or dynamic tokens (client id + secret → short-lived signed token from `/{apiKey}/token`). Token and URL must belong to the same organisation.
+- **Optional request signing:** HMAC-SHA256 of method, path, timestamp and body with a per-client secret; requests older than 5 minutes or replayed are refused.
+- **Access rules:** allow / block by IP / range, domain (browser callers via Origin), region and country; block wins. Rate limits per token, IP and endpoint (`429` with `Retry-After`).
+- **Least data:** POST / PUT accept only the chosen fields (validated with the form's own rules); GET returns only the chosen fields.
+- **Audit and logs:** every management change audited (`api.*`); request logs never store tokens; bodies only when switched on, with sensitive fields masked.
+
+## 10. Honest note
 
 App-layer encryption protects against TLS-terminating proxies, logging leaks and traffic inspection; it does not protect against a compromised browser or device. It adds CPU cost, so keep payloads lean and paginate.

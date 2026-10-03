@@ -223,7 +223,16 @@
     "dataQuery": "Editor de consultas",
     "dataSavedQueries": "Consultas salvas",
     "dataTransfers": "Importar e exportar",
-    "dataActivity": "Atividade"
+    "dataActivity": "Atividade",
+    "apiService": "Serviço de API",
+    "apiOverview": "Visão geral",
+    "apiServices": "Serviços",
+    "apiEndpoints": "Endpoints",
+    "apiAuth": "Tokens e cabeçalhos",
+    "apiAccess": "Regras de acesso",
+    "apiLogs": "Logs de pedidos",
+    "apiAnalytics": "Análises",
+    "apiDocs": "Docs e testes"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -1867,6 +1876,27 @@
       "destinations": "Escolha para onde cada formulário envia suas respostas e associe os campos às colunas.",
       "transfers": "Importe arquivos para tabelas e exporte tabelas ou resultados de consultas.",
       "activity": "Entregas, falhas e consultas recentes de cada conexão."
+    }
+  },
+  "apiService": {
+    "subtitle": "Transforme qualquer formulário em uma API para que seus aplicativos possam enviar e ler os dados",
+    "back": "Visão geral do serviço de API",
+    "example": "Como é um endpoint (exemplo)",
+    "channels": {
+      "title": "Colete dados de todos os lados",
+      "hint": "Cada formulário pode receber respostas pelo seu link, por uma incorporação no seu site e pela sua própria API — tudo chega ao mesmo lugar.",
+      "link": "Link compartilhável",
+      "embed": "Formulário incorporado",
+      "api": "Endpoints de API"
+    },
+    "section": {
+      "services": "Agrupe endpoints em serviços; ative ou desative um serviço inteiro.",
+      "endpoints": "Crie endpoints a partir de um formulário e escolha os métodos e os campos que cada um aceita ou devolve.",
+      "auth": "Tokens estáticos ou rotativos, cabeçalhos obrigatórios e respostas JSON.",
+      "access": "Permita ou bloqueie chamadores por endereço IP, domínio, região ou país.",
+      "logs": "Cada chamada com o seu estado, duração e chamador.",
+      "analytics": "Chamadas, erros e tempos de resposta por serviço e endpoint.",
+      "docs": "Documentação pronta e um espaço para testar cada endpoint."
     }
   }
 }

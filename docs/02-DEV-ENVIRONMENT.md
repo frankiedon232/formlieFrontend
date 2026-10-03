@@ -28,6 +28,8 @@ Windows hosts does not support wildcards, so add one line per test subdomain:
 ```
 127.0.0.1   formalie.dev
 127.0.0.1   manage.formalie.dev
+127.0.0.1   forms.formalie.dev
+127.0.0.1   api.formalie.dev
 127.0.0.1   remedylegal.formalie.dev
 127.0.0.1   samathtax.formalie.dev
 ```
@@ -37,6 +39,8 @@ Add more lines as new test tenants are created.
 ## Dev URLs
 
 - Default entry: `https://manage.formalie.dev:2202/`
+- Public form links (from F10): `https://forms.formalie.dev:2202/{formKey}/fill` · `/embed`, or `https://{sub}.formalie.dev:2202/{formKey}/fill` (production drops the port; see 01-ARCHITECTURE → Public URLs)
+- API service (from F13): `https://api.formalie.dev/{apiKey}/{endpoint}` — served by the backend API service; the wildcard certificate already covers `api.` and `forms.`
 - Tenant workspaces: `https://remedylegal.formalie.dev:2202/`, `https://samathtax.formalie.dev:2202/`
 - API (direct): `https://formalie.dev:5004/` — the browser should call `/api/...` on its own origin; Nuxt proxies it (below).
 

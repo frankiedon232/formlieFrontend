@@ -40,7 +40,8 @@ System templates (platform-wide) + organisation templates. Categories: questionn
 
 - Share with people inside the organisation with **edit** or **view** access; share responses view separately.
 - Public link options: open, password-protected, invite-only, expiry date, response limit, one response per person, schedule open/close.
-- Designated URL (custom slug per form) + **short URL** (`/s/{code}`) + QR code.
+- Form link `https://{forms | sub}.formalie.com/{formKey}/fill` and embed `…/{formKey}/embed` (`forms.formalie.com` for workspaces without their own subdomain) + **short URL** (`/s/{code}`) + QR code.
+- **API service** (F13): any form can also become API endpoints (`https://api.formalie.com/{apiKey}/{endpoint}`, GET / POST / PUT / DELETE) so applications send and read its data — links, embeds and API all land in the same storage.
 - Embed via **iframe** (primary, with auto-resize script) and popup/slide-in later. Per-form allowed embed domains.
 - **SEO on every shared form link**: title, description, Open Graph/Twitter image, canonical URL, favicon, `noindex` toggle (default noindex for private forms).
 
@@ -50,6 +51,10 @@ System templates (platform-wide) + organisation templates. Categories: questionn
 - Destinations: Formalie database (default), customer's own database — launch set: **MySQL, MariaDB, Oracle, PostgreSQL, SQL Server** (via Celery writer; list in `shared/utils/integrations/databases.ts`), or Formalie's own encrypted storage, webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
 - Response views: table and grid (switchable), filters, search, date ranges, single response view, edit history, notes/tags/status (e.g. new, reviewed, approved), bulk actions.
 - Export: Excel (.xlsx), CSV, PDF (single and bulk) via background jobs.
+
+### 6b. API service (developer option)
+
+Build API endpoints from forms (one form per endpoint, as many as needed), grouped into services that can be switched on / off as a whole. Per endpoint: methods (GET, POST, PUT, DELETE), the fields accepted (POST / PUT) and returned (GET), static or dynamic bearer tokens, required headers, allow / block lists (IP, domain, region, country), rate limits, request logs and its own analytics; generated docs and a try-it console. Runs as its own backend service. Forms, Data sources and API service each get their own dashboard.
 
 ### 7. Analytics
 

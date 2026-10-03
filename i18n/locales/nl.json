@@ -223,7 +223,16 @@
     "dataQuery": "Query-editor",
     "dataSavedQueries": "Opgeslagen query’s",
     "dataTransfers": "Import & export",
-    "dataActivity": "Activiteit"
+    "dataActivity": "Activiteit",
+    "apiService": "API-service",
+    "apiOverview": "Overzicht",
+    "apiServices": "Services",
+    "apiEndpoints": "Endpoints",
+    "apiAuth": "Tokens & headers",
+    "apiAccess": "Toegangsregels",
+    "apiLogs": "Verzoeklogs",
+    "apiAnalytics": "Analyses",
+    "apiDocs": "Docs & testen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -1867,6 +1876,27 @@
       "destinations": "Kies waar elk formulier zijn reacties naartoe stuurt en koppel velden aan kolommen.",
       "transfers": "Importeer bestanden in tabellen en exporteer tabellen of queryresultaten.",
       "activity": "Leveringen, fouten en recente query’s voor elke verbinding."
+    }
+  },
+  "apiService": {
+    "subtitle": "Maak van elk formulier een API, zodat uw applicaties de gegevens kunnen versturen en lezen",
+    "back": "Overzicht API-service",
+    "example": "Zo ziet een endpoint eruit (voorbeeld)",
+    "channels": {
+      "title": "Verzamel gegevens van alle kanten",
+      "hint": "Elk formulier kan antwoorden ontvangen via de link, een insluiting op uw site en een eigen API — alles komt op dezelfde plek terecht.",
+      "link": "Deelbare link",
+      "embed": "Ingesloten formulier",
+      "api": "API-endpoints"
+    },
+    "section": {
+      "services": "Groepeer endpoints in services; zet een hele service aan of uit.",
+      "endpoints": "Maak endpoints vanuit een formulier en kies methoden en de velden die elk endpoint accepteert of teruggeeft.",
+      "auth": "Vaste of roterende tokens, verplichte headers en JSON-antwoorden.",
+      "access": "Sta aanroepers toe of blokkeer ze op IP-adres, domein, regio of land.",
+      "logs": "Elke aanroep met status, duur en aanroeper.",
+      "analytics": "Aanroepen, fouten en responstijden per service en endpoint.",
+      "docs": "Kant-en-klare documentatie en een plek om elk endpoint te testen."
     }
   }
 }

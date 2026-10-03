@@ -17,7 +17,7 @@ export interface AppNavItem {
   count?: (counts: NavCounts) => number
   /** Hide the badge at 0 (e.g. "new" items); status counts always show. */
   hideZero?: boolean
-  /** Workspace owners / admins only (until Roles & access, F20). */
+  /** Workspace owners / admins only (until Roles & access, F21). */
   adminOnly?: boolean
   /** Active on its own path only (an overview whose sections live under it). */
   exact?: boolean
@@ -119,13 +119,31 @@ const DATA_NAV: AppNavItem[] = [
 ]
 
 /**
+ * API service area (F13, owner 2026-10-02) — build API endpoints from a form so applications can
+ * send and read its data. Placeholders until F13; plan in PROGRESS.md → F13.
+ */
+const API_NAV: AppNavItem[] = [
+  { key: 'apiOverview', icon: 'i-lucide-layout-grid', to: '/api-service', shortcut: 'g-i', exact: true },
+  { key: 'apiServices', icon: 'i-lucide-boxes', to: '/api-service/services' },
+  { key: 'apiEndpoints', icon: 'i-lucide-route', to: '/api-service/endpoints' },
+  { key: 'apiAuth', icon: 'i-lucide-key-round', to: '/api-service/auth' },
+  { key: 'apiAccess', icon: 'i-lucide-shield-check', to: '/api-service/access' },
+  { key: 'apiLogs', icon: 'i-lucide-scroll-text', to: '/api-service/logs' },
+  { key: 'apiAnalytics', icon: 'i-lucide-chart-line', to: '/api-service/analytics' },
+  { key: 'apiDocs', icon: 'i-lucide-book-open', to: '/api-service/docs' },
+]
+
+/**
  * Areas on the rail; each brings its own menu. The workspace button is the Forms area, so only
  * the extra areas are listed here.
  */
-export type NavArea = 'forms' | 'data'
-const NAV_AREAS: { key: Exclude<NavArea, 'forms'>; label: string; icon: string; to: string }[] = [
-  { key: 'data', label: 'nav.dataSources', icon: 'i-lucide-database', to: '/data-sources' },
+export type NavArea = 'forms' | 'data' | 'api'
+const NAV_AREAS: { key: Exclude<NavArea, 'forms'>; label: string; icon: string; to: string; menu: AppNavItem[] }[] = [
+  { key: 'data', label: 'nav.dataSources', icon: 'i-lucide-database', to: '/data-sources', menu: DATA_NAV },
+  { key: 'api', label: 'nav.apiService', icon: 'i-lucide-code-xml', to: '/api-service', menu: API_NAV },
 ]
+const areaOf = (path: string): NavArea =>
+  NAV_AREAS.find(a => path === a.to || path.startsWith(`${a.to}/`))?.key ?? 'forms'
 
 const SYSTEM_NAV: AppNavItem[] = [
   { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s' },
@@ -191,23 +209,27 @@ export function useNavigation() {
   }
 
   /** The rail area the current page belongs to. */
-  const area = computed<NavArea>(() => (route.path === '/data-sources' || route.path.startsWith('/data-sources/') ? 'data' : 'forms'))
-  const mainItems = computed(() => (area.value === 'data' ? DATA_NAV : MAIN_NAV).map(item => toMenuItem(item)))
-  const resourceItems = computed(() => (area.value === 'data' ? [] : RESOURCE_NAV.map(item => toMenuItem(item))))
+  const area = computed<NavArea>(() => areaOf(route.path))
+  /** The current area's own menu (Forms: MAIN MENU + RESOURCES). */
+  const areaMenu = computed(() => NAV_AREAS.find(a => a.key === area.value)?.menu)
+  const mainItems = computed(() => (areaMenu.value ?? MAIN_NAV).map(item => toMenuItem(item)))
+  const resourceItems = computed(() => (areaMenu.value ? [] : RESOURCE_NAV.map(item => toMenuItem(item))))
+  /** Sidebar heading for the main list: the area's name, or "Main menu" for Forms. */
+  const areaLabel = computed(() => NAV_AREAS.find(a => a.key === area.value)?.label ?? 'nav.main')
   const systemItems = computed(() => SYSTEM_NAV.filter(allowed).map(item => toMenuItem(item)))
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
-    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...SYSTEM_NAV]
+    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...SYSTEM_NAV]
       .filter(allowed)
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
   /** Collapsed rail: the current area's sections plus System. */
   const areaDestinations = computed(() =>
-    [...(area.value === 'data' ? DATA_NAV : [...MAIN_NAV, ...RESOURCE_NAV]), ...SYSTEM_NAV]
+    [...(areaMenu.value ?? [...MAIN_NAV, ...RESOURCE_NAV]), ...SYSTEM_NAV]
       .filter(allowed)
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
 
-  return { mainItems, resourceItems, systemItems, destinations, areaDestinations, area, areas: NAV_AREAS, isActive }
+  return { mainItems, resourceItems, systemItems, destinations, areaDestinations, area, areaLabel, areas: NAV_AREAS, isActive }
 }

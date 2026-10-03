@@ -1,4 +1,4 @@
-# Option lists — plan (F14)
+# Option lists — plan (F15)
 
 Status: **planned** (owner request 2026-10-02). Today (F7) a workspace has simple saved lists: the
 palette **Lists** tab, "Fill from a list" / "Save as list" in a choice field, `GET/POST/PATCH/DELETE
@@ -101,8 +101,8 @@ Deleting or retiring items never breaks old responses.
 
 ## Phasing
 
-1. **F14a — List manager:** the Option sets page (DataView), items editor, bulk paste, CSV import, translations, "used in".
-2. **F14b — Large lists + autocomplete:** server-side items, search-as-you-type field mode, paging.
-3. **F14c — Cascading lists:** tree lists with levels, "Cascading choice" field group, parent → child loading.
-4. **F14d — Details + auto-fill:** columns on items, "Fill other fields", formulas / logic on columns.
-5. **F14e — Dynamic lists:** sources from forms, connected databases (after F12 Data sources), JSON URL, refreshed CSV; sync log.
+1. **F15a — List manager:** the Option sets page (DataView), items editor, bulk paste, CSV import, translations, "used in".
+2. **F15b — Large lists + autocomplete:** server-side items, search-as-you-type field mode, paging.
+3. **F15c — Cascading lists:** tree lists with levels, "Cascading choice" field group, parent → child loading.
+4. **F15d — Details + auto-fill:** columns on items, "Fill other fields", formulas / logic on columns.
+5. **F15e — Dynamic lists:** sources from forms, connected databases (after F12 Data sources), JSON URL, refreshed CSV; sync log.

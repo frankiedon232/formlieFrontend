@@ -8,8 +8,8 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 const props = defineProps<{ collapsible?: boolean }>()
 const emit = defineEmits<{ collapse: [] }>()
 const { t } = useI18n()
-const { mainItems, resourceItems, systemItems, area } = useNavigation()
-const mainHeading = computed(() => (area.value === 'data' ? t('nav.dataSources') : t('nav.main')))
+const { mainItems, resourceItems, systemItems, areaLabel } = useNavigation()
+const mainHeading = computed(() => t(areaLabel.value))
 const colorMode = useColorMode()
 
 const isDark = computed({

@@ -223,7 +223,16 @@
     "dataQuery": "Éditeur de requêtes",
     "dataSavedQueries": "Requêtes enregistrées",
     "dataTransfers": "Imports et exports",
-    "dataActivity": "Activité"
+    "dataActivity": "Activité",
+    "apiService": "Service API",
+    "apiOverview": "Vue d’ensemble",
+    "apiServices": "Services",
+    "apiEndpoints": "Endpoints",
+    "apiAuth": "Jetons et en-têtes",
+    "apiAccess": "Règles d’accès",
+    "apiLogs": "Journaux",
+    "apiAnalytics": "Statistiques",
+    "apiDocs": "Docs et tests"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -1867,6 +1876,27 @@
       "destinations": "Choisissez où chaque formulaire envoie ses réponses et associez les champs aux colonnes.",
       "transfers": "Importez des fichiers dans des tables et exportez des tables ou des résultats de requêtes.",
       "activity": "Livraisons, échecs et requêtes récentes pour chaque connexion."
+    }
+  },
+  "apiService": {
+    "subtitle": "Transformez n’importe quel formulaire en API pour que vos applications puissent envoyer et lire ses données",
+    "back": "Vue d’ensemble du service API",
+    "example": "À quoi ressemble un endpoint (exemple)",
+    "channels": {
+      "title": "Collectez des données de toutes parts",
+      "hint": "Chaque formulaire peut recevoir des réponses via son lien, une intégration sur votre site et sa propre API — tout arrive au même endroit.",
+      "link": "Lien partageable",
+      "embed": "Formulaire intégré",
+      "api": "Endpoints API"
+    },
+    "section": {
+      "services": "Regroupez les endpoints en services ; activez ou désactivez un service entier.",
+      "endpoints": "Créez des endpoints à partir d’un formulaire, choisissez les méthodes et les champs que chacun accepte ou renvoie.",
+      "auth": "Jetons statiques ou tournants, en-têtes obligatoires et réponses JSON.",
+      "access": "Autorisez ou bloquez les appelants par adresse IP, domaine, région ou pays.",
+      "logs": "Chaque appel avec son statut, sa durée et son appelant.",
+      "analytics": "Appels, erreurs et temps de réponse par service et par endpoint.",
+      "docs": "Une documentation prête à l’emploi et un espace pour tester chaque endpoint."
     }
   }
 }

@@ -223,7 +223,16 @@
     "dataQuery": "Trình soạn truy vấn",
     "dataSavedQueries": "Truy vấn đã lưu",
     "dataTransfers": "Nhập & xuất",
-    "dataActivity": "Hoạt động"
+    "dataActivity": "Hoạt động",
+    "apiService": "Dịch vụ API",
+    "apiOverview": "Tổng quan",
+    "apiServices": "Dịch vụ",
+    "apiEndpoints": "Endpoint",
+    "apiAuth": "Token & header",
+    "apiAccess": "Quy tắc truy cập",
+    "apiLogs": "Nhật ký yêu cầu",
+    "apiAnalytics": "Phân tích",
+    "apiDocs": "Tài liệu & kiểm thử"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -1867,6 +1876,27 @@
       "destinations": "Chọn nơi mỗi biểu mẫu gửi phản hồi và ánh xạ trường với cột.",
       "transfers": "Nhập tệp vào bảng và xuất bảng hoặc kết quả truy vấn.",
       "activity": "Lượt gửi, lỗi và truy vấn gần đây của mọi kết nối."
+    }
+  },
+  "apiService": {
+    "subtitle": "Biến bất kỳ biểu mẫu nào thành API để ứng dụng của bạn có thể gửi và đọc dữ liệu",
+    "back": "Tổng quan dịch vụ API",
+    "example": "Một endpoint trông như thế nào (ví dụ)",
+    "channels": {
+      "title": "Thu thập dữ liệu từ mọi phía",
+      "hint": "Mỗi biểu mẫu có thể nhận câu trả lời qua liên kết, bản nhúng trên trang web của bạn và API riêng — tất cả đều về cùng một nơi.",
+      "link": "Liên kết chia sẻ",
+      "embed": "Biểu mẫu nhúng",
+      "api": "Endpoint API"
+    },
+    "section": {
+      "services": "Nhóm endpoint thành dịch vụ; bật hoặc tắt toàn bộ một dịch vụ.",
+      "endpoints": "Tạo endpoint từ biểu mẫu, chọn phương thức và các trường mà mỗi endpoint nhận hoặc trả về.",
+      "auth": "Token cố định hoặc xoay vòng, header bắt buộc và phản hồi JSON.",
+      "access": "Cho phép hoặc chặn bên gọi theo địa chỉ IP, tên miền, khu vực hoặc quốc gia.",
+      "logs": "Mọi lượt gọi kèm trạng thái, thời gian xử lý và bên gọi.",
+      "analytics": "Lượt gọi, lỗi và thời gian phản hồi theo dịch vụ và endpoint.",
+      "docs": "Tài liệu sẵn có và nơi để thử từng endpoint."
     }
   }
 }

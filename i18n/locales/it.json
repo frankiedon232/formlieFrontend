@@ -223,7 +223,16 @@
     "dataQuery": "Editor di query",
     "dataSavedQueries": "Query salvate",
     "dataTransfers": "Importa ed esporta",
-    "dataActivity": "Attività"
+    "dataActivity": "Attività",
+    "apiService": "Servizio API",
+    "apiOverview": "Panoramica",
+    "apiServices": "Servizi",
+    "apiEndpoints": "Endpoint",
+    "apiAuth": "Token e header",
+    "apiAccess": "Regole di accesso",
+    "apiLogs": "Log richieste",
+    "apiAnalytics": "Statistiche",
+    "apiDocs": "Docs e test"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -1867,6 +1876,27 @@
       "destinations": "Scegliete dove ogni modulo invia le risposte e associate i campi alle colonne.",
       "transfers": "Importate file nelle tabelle ed esportate tabelle o risultati delle query.",
       "activity": "Consegne, errori e query recenti per ogni connessione."
+    }
+  },
+  "apiService": {
+    "subtitle": "Trasformi qualsiasi modulo in un’API, così le Sue applicazioni possono inviarne e leggerne i dati",
+    "back": "Panoramica servizio API",
+    "example": "Com’è fatto un endpoint (esempio)",
+    "channels": {
+      "title": "Raccolga dati da ogni direzione",
+      "hint": "Ogni modulo può ricevere risposte tramite il suo link, un’incorporazione sul Suo sito e la sua API — tutto arriva nello stesso posto.",
+      "link": "Link condivisibile",
+      "embed": "Modulo incorporato",
+      "api": "Endpoint API"
+    },
+    "section": {
+      "services": "Raggruppi gli endpoint in servizi; attivi o disattivi un intero servizio.",
+      "endpoints": "Crei endpoint da un modulo, scelga i metodi e i campi che ciascuno accetta o restituisce.",
+      "auth": "Token statici o a rotazione, header obbligatori e risposte JSON.",
+      "access": "Consenta o blocchi i chiamanti per indirizzo IP, dominio, regione o paese.",
+      "logs": "Ogni chiamata con stato, durata e chiamante.",
+      "analytics": "Chiamate, errori e tempi di risposta per servizio ed endpoint.",
+      "docs": "Documentazione pronta e uno spazio per provare ogni endpoint."
     }
   }
 }

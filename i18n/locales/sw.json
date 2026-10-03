@@ -223,7 +223,16 @@
     "dataQuery": "Kihariri cha hoja",
     "dataSavedQueries": "Hoja zilizohifadhiwa",
     "dataTransfers": "Kuingiza na kuhamisha",
-    "dataActivity": "Shughuli"
+    "dataActivity": "Shughuli",
+    "apiService": "Huduma ya API",
+    "apiOverview": "Muhtasari",
+    "apiServices": "Huduma",
+    "apiEndpoints": "Endpoints",
+    "apiAuth": "Tokeni na vichwa",
+    "apiAccess": "Sheria za ufikiaji",
+    "apiLogs": "Kumbukumbu za maombi",
+    "apiAnalytics": "Takwimu",
+    "apiDocs": "Nyaraka na majaribio"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -1867,6 +1876,27 @@
       "destinations": "Chagua mahali kila fomu inapotuma majibu yake na ulinganishe sehemu na safuwima.",
       "transfers": "Ingiza faili kwenye majedwali na uhamishe majedwali au matokeo ya hoja.",
       "activity": "Uwasilishaji, hitilafu na hoja za hivi karibuni kwa kila muunganisho."
+    }
+  },
+  "apiService": {
+    "subtitle": "Geuza fomu yoyote kuwa API ili programu zako ziweze kutuma na kusoma data yake",
+    "back": "Muhtasari wa huduma ya API",
+    "example": "Jinsi endpoint inavyoonekana (mfano)",
+    "channels": {
+      "title": "Kusanya data kutoka kila upande",
+      "hint": "Kila fomu inaweza kupokea majibu kupitia kiungo chake, kupachikwa kwenye tovuti yako na API yake yenyewe — yote yanafika mahali pamoja.",
+      "link": "Kiungo cha kushiriki",
+      "embed": "Fomu iliyopachikwa",
+      "api": "Endpoints za API"
+    },
+    "section": {
+      "services": "Panga endpoints katika huduma; washa au zima huduma nzima.",
+      "endpoints": "Unda endpoints kutoka kwa fomu, chagua mbinu na sehemu ambazo kila moja inapokea au kurudisha.",
+      "auth": "Tokeni za kudumu au zinazobadilika, vichwa vinavyohitajika na majibu ya JSON.",
+      "access": "Ruhusu au zuia wapigaji kwa anwani ya IP, kikoa, eneo au nchi.",
+      "logs": "Kila mwito pamoja na hali yake, muda uliotumika na mpigaji.",
+      "analytics": "Miito, hitilafu na muda wa majibu kwa kila huduma na endpoint.",
+      "docs": "Nyaraka zilizo tayari na mahali pa kujaribu kila endpoint."
     }
   }
 }

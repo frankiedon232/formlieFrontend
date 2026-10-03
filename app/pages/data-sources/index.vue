@@ -39,7 +39,7 @@ const sections = [
       </UPageCard>
     </div>
 
-    <UCard variant="outline">
+    <UCard variant="outline" class="shrink-0">
       <div class="flex flex-col gap-3">
         <div>
           <p class="text-sm font-medium text-highlighted">{{ t('dataSources.engines') }}</p>
