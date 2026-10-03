@@ -246,6 +246,8 @@ export function useNavigation() {
     const active = isActive(item)
     return {
       label,
+      // Unique across the three menu lists, so one shared value can keep a single group open.
+      value: item.key,
       icon: item.icon,
       to: item.children ? undefined : { path: item.to, query: item.query },
       active,

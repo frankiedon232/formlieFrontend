@@ -1,3 +1,4 @@
+import type { InjectionKey } from 'vue'
 import type { FormSummary } from '#shared/types/forms'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
@@ -138,3 +139,8 @@ export function useBuilderSession(formId: string) {
 }
 
 export type BuilderSession = ReturnType<typeof useBuilderSession>
+
+const SESSION_KEY: InjectionKey<BuilderSession> = Symbol('builder-session')
+/** The builder frame shares its session (form id, autosave) with the panels inside it. */
+export const provideBuilderSession = (session: BuilderSession) => provide(SESSION_KEY, session)
+export const injectBuilderSession = () => inject(SESSION_KEY, null)

@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Bahasa formulir",
       "hint": "Responden melihat formulir dalam bahasa ini — termasuk tombol, pesan, dan tanggal. Dukungan beberapa bahasa per formulir hadir bersama halaman formulir publik."
+    },
+    "template": {
+      "title": "Templat",
+      "hint": "Gunakan kembali pertanyaan, logika, perhitungan, dan desain formulir ini untuk memulai formulir baru. Respons tidak pernah disertakan.",
+      "savedAs": "Sudah disimpan sebagai templat “{name}”",
+      "savedAsHint": "Terakhir diperbarui {when}. Perubahan Anda di sini masuk ke templat saat Anda memperbaruinya.",
+      "update": "Perbarui templat",
+      "updatedToast": "Templat “{name}” diperbarui dengan perubahan terbaru formulir ini",
+      "saveNew": "Simpan sebagai templat baru saja",
+      "saveNewHint": "Membuat salinan terpisah — templat yang ada tetap seperti semula."
     }
   },
   "renderer": {

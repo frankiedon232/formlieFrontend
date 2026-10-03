@@ -77,6 +77,33 @@ export function useTemplates() {
     }
   }
 
+  /** The workspace template saved from this form (most recently updated), or null. */
+  async function fromForm(formId: string, signal?: AbortSignal): Promise<TemplateSummary | null> {
+    const { data } = await api.list<TemplateSummary>(
+      '/templates',
+      { source: 'workspace', form: formId, sort: '-updated_at', page: 1, page_size: 1 },
+      { signal, background: true },
+    )
+    return data[0] ?? null
+  }
+
+  /** Update a template with its form's current draft (no new template). */
+  async function syncFromForm(template: Pick<TemplateSummary, 'key' | 'name'>): Promise<TemplateDetail | null> {
+    try {
+      const { data } = await api.post<TemplateDetail>(`/templates/${encodeURIComponent(template.key)}/sync`)
+      toast.add({
+        title: t('builder.template.updatedToast', { name: data.name }),
+        icon: 'i-lucide-refresh-cw',
+        color: 'success',
+        actions: [{ label: t('templates.view'), to: `/templates/${data.key}` }],
+      })
+      return data
+    } catch (error) {
+      handle(error)
+      return null
+    }
+  }
+
   async function update(key: string, patch: { name?: string; description?: string; category?: string }) {
     try {
       const { data } = await api.patch<TemplateDetail>(`/templates/${encodeURIComponent(key)}`, patch)
@@ -88,5 +115,5 @@ export function useTemplates() {
     }
   }
 
-  return { list, categories, facets, get, use, duplicate, remove, saveFromForm, update }
+  return { list, categories, facets, fromForm, syncFromForm, get, use, duplicate, remove, saveFromForm, update }
 }

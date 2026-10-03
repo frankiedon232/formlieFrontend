@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Form dili",
       "hint": "Yanıtlayanlar formu bu dilde görür — düğmeler, mesajlar ve tarihler de dahil. Form başına birden fazla dil, herkese açık form sayfalarıyla birlikte gelecek."
+    },
+    "template": {
+      "title": "Şablon",
+      "hint": "Yeni formlar başlatmak için bu formun sorularını, mantığını, hesaplamalarını ve tasarımını yeniden kullanın. Yanıtlar asla dahil edilmez.",
+      "savedAs": "Zaten “{name}” şablonu olarak kaydedildi",
+      "savedAsHint": "Son güncelleme {when}. Buradaki değişiklikleriniz, şablonu güncellediğinizde şablona aktarılır.",
+      "update": "Şablonu güncelle",
+      "updatedToast": "“{name}” şablonu bu formun son değişiklikleriyle güncellendi",
+      "saveNew": "Bunun yerine yeni şablon olarak kaydet",
+      "saveNewHint": "Ayrı bir kopya oluşturur — mevcut şablon olduğu gibi kalır."
     }
   },
   "renderer": {

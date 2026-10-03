@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Lingua del modulo",
       "hint": "I rispondenti vedono il modulo in questa lingua, inclusi pulsanti, messaggi e date. Più lingue per modulo arriveranno con le pagine pubbliche dei moduli."
+    },
+    "template": {
+      "title": "Modello",
+      "hint": "Riusa domande, logica, calcoli e design di questo modulo per creare nuovi moduli. Le risposte non vengono mai incluse.",
+      "savedAs": "Già salvato come modello «{name}»",
+      "savedAsHint": "Ultimo aggiornamento {when}. Le tue modifiche qui arrivano al modello quando lo aggiorni.",
+      "update": "Aggiorna modello",
+      "updatedToast": "Modello «{name}» aggiornato con le ultime modifiche di questo modulo",
+      "saveNew": "Salva invece come nuovo modello",
+      "saveNewHint": "Crea una copia separata: il modello esistente resta com'è."
     }
   },
   "renderer": {

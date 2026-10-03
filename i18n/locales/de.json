@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Formularsprache",
       "hint": "Teilnehmende sehen das Formular in dieser Sprache — auch Schaltflächen, Meldungen und Datumsangaben. Mehrere Sprachen pro Formular kommen mit den öffentlichen Formularseiten."
+    },
+    "template": {
+      "title": "Vorlage",
+      "hint": "Fragen, Logik, Berechnungen und Design dieses Formulars wiederverwenden, um neue Formulare zu starten. Antworten werden nie übernommen.",
+      "savedAs": "Bereits als Vorlage „{name}“ gespeichert",
+      "savedAsHint": "Zuletzt aktualisiert {when}. Änderungen hier gelangen erst beim Aktualisieren in die Vorlage.",
+      "update": "Vorlage aktualisieren",
+      "updatedToast": "Vorlage „{name}“ mit den neuesten Änderungen dieses Formulars aktualisiert",
+      "saveNew": "Stattdessen als neue Vorlage speichern",
+      "saveNewHint": "Erstellt eine separate Kopie – die bestehende Vorlage bleibt unverändert."
     }
   },
   "renderer": {

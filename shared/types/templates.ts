@@ -28,6 +28,8 @@ export interface TemplateSummary {
   last_used_at: string | null
   created_by: { id: string; name: string } | null
   updated_at: string
+  /** Workspace templates: the form it was saved from (null for copies and system templates). */
+  source_form_id: string | null
 }
 
 export interface TemplateCalculation {

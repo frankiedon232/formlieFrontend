@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Formuliertaal",
       "hint": "Respondenten zien het formulier in deze taal — ook knoppen, meldingen en datums. Meer talen per formulier komen met de openbare formulierpagina's."
+    },
+    "template": {
+      "title": "Sjabloon",
+      "hint": "Hergebruik de vragen, logica, berekeningen en het ontwerp van dit formulier om nieuwe formulieren te starten. Antwoorden worden nooit meegenomen.",
+      "savedAs": "Al opgeslagen als sjabloon ‘{name}’",
+      "savedAsHint": "Laatst bijgewerkt {when}. Je wijzigingen hier komen in het sjabloon zodra je het bijwerkt.",
+      "update": "Sjabloon bijwerken",
+      "updatedToast": "Sjabloon ‘{name}’ bijgewerkt met de laatste wijzigingen van dit formulier",
+      "saveNew": "Liever opslaan als nieuw sjabloon",
+      "saveNewHint": "Maakt een aparte kopie — het bestaande sjabloon blijft zoals het is."
     }
   },
   "renderer": {

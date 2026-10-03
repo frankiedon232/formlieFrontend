@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Język formularza",
       "hint": "Respondenci widzą formularz w tym języku — również przyciski, komunikaty i daty. Więcej języków na formularz pojawi się wraz z publicznymi stronami formularzy."
+    },
+    "template": {
+      "title": "Szablon",
+      "hint": "Użyj ponownie pytań, logiki, obliczeń i wyglądu tego formularza, aby tworzyć nowe formularze. Odpowiedzi nigdy nie są dołączane.",
+      "savedAs": "Już zapisano jako szablon „{name}”",
+      "savedAsHint": "Ostatnia aktualizacja {when}. Zmiany wprowadzone tutaj trafią do szablonu po jego aktualizacji.",
+      "update": "Zaktualizuj szablon",
+      "updatedToast": "Szablon „{name}” zaktualizowano o najnowsze zmiany tego formularza",
+      "saveNew": "Zapisz zamiast tego jako nowy szablon",
+      "saveNewHint": "Tworzy osobną kopię — istniejący szablon pozostaje bez zmian."
     }
   },
   "renderer": {

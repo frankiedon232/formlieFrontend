@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Langue du formulaire",
       "hint": "Les répondants voient le formulaire dans cette langue — boutons, messages et dates compris. Plusieurs langues par formulaire arriveront avec les pages publiques des formulaires."
+    },
+    "template": {
+      "title": "Modèle",
+      "hint": "Réutilisez les questions, la logique, les calculs et le design de ce formulaire pour créer de nouveaux formulaires. Les réponses ne sont jamais incluses.",
+      "savedAs": "Déjà enregistré comme modèle « {name} »",
+      "savedAsHint": "Dernière mise à jour {when}. Vos modifications ici sont appliquées au modèle lorsque vous le mettez à jour.",
+      "update": "Mettre à jour le modèle",
+      "updatedToast": "Modèle « {name} » mis à jour avec les dernières modifications de ce formulaire",
+      "saveNew": "Enregistrer plutôt comme nouveau modèle",
+      "saveNewHint": "Crée une copie distincte — le modèle existant reste inchangé."
     }
   },
   "renderer": {

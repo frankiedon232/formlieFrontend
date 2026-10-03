@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Idioma del formulario",
       "hint": "Los encuestados ven el formulario en este idioma, incluidos botones, mensajes y fechas. Varios idiomas por formulario llegarán con las páginas públicas de formularios."
+    },
+    "template": {
+      "title": "Plantilla",
+      "hint": "Reutiliza las preguntas, la lógica, los cálculos y el diseño de este formulario para crear formularios nuevos. Las respuestas nunca se incluyen.",
+      "savedAs": "Ya guardado como plantilla «{name}»",
+      "savedAsHint": "Última actualización: {when}. Tus cambios aquí llegan a la plantilla cuando la actualizas.",
+      "update": "Actualizar plantilla",
+      "updatedToast": "Plantilla «{name}» actualizada con los últimos cambios de este formulario",
+      "saveNew": "Guardar como plantilla nueva",
+      "saveNewHint": "Crea una copia aparte; la plantilla existente se queda como está."
     }
   },
   "renderer": {

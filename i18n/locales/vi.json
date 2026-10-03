@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Ngôn ngữ biểu mẫu",
       "hint": "Người trả lời thấy biểu mẫu bằng ngôn ngữ này — cả nút, thông báo và ngày tháng. Nhiều ngôn ngữ cho mỗi biểu mẫu sẽ có cùng với các trang biểu mẫu công khai."
+    },
+    "template": {
+      "title": "Mẫu",
+      "hint": "Dùng lại câu hỏi, logic, phép tính và thiết kế của biểu mẫu này để bắt đầu biểu mẫu mới. Câu trả lời không bao giờ được đưa vào.",
+      "savedAs": "Đã lưu thành mẫu “{name}”",
+      "savedAsHint": "Cập nhật lần cuối {when}. Thay đổi của bạn ở đây sẽ được đưa vào mẫu khi bạn cập nhật mẫu.",
+      "update": "Cập nhật mẫu",
+      "updatedToast": "Đã cập nhật mẫu “{name}” với các thay đổi mới nhất của biểu mẫu này",
+      "saveNew": "Lưu thành mẫu mới",
+      "saveNewHint": "Tạo một bản sao riêng — mẫu hiện có vẫn giữ nguyên."
     }
   },
   "renderer": {

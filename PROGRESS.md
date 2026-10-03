@@ -935,7 +935,9 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Departments, roles and other organisation data (and lists) are set up per workspace in Settings; the builder only shows what the workspace has | F14 (Organisation data) · F15 | ⬜ planned |
 | 2026-10-03 | Preview: Desktop mode fills the whole screen edge to edge (was a box); the design page's preview fills its pane | F10 | ✅ |
 | 2026-10-03 | Themes menu like Templates: kinds with counts (All themes · Formalie · Saved · Created) instead of every saved theme | F8 follow-up | ✅ |
-| 2026-10-03 | Save as template from the builder / designer header too (not only from the forms list); unsaved edits are saved first | F9 follow-up | ✅ |
+| 2026-10-03 | Save as template lives in Form settings → Template (after Save and resume), not the header; a form already saved as a template shows that and offers "Update template" (same template, latest changes) or a separate copy | F9 follow-up | ✅ |
+| 2026-10-03 | Sidebar: one menu group open at a time (opening one closes the others) | F1 follow-up | ✅ |
+| 2026-10-03 | Preview side panel: Desktop fills the panel edge to edge (panel keeps its width) | F10 | ✅ |
 
 ---
 
@@ -1006,3 +1008,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | Milestone 5: template content (1,411 texts) in all 20 languages — previews and new forms open in the person's language, logic / scores / formulas unchanged (compared values like "yes" kept); templates gallery reorganised by category (overview with counts and use, category pages, Your templates apart, menu: top 6 categories + All + Your templates); 228 tests green. Stopped for the owner's end-of-phase review. |
 | 2026-10-03 | F9 | Owner review passed — F9 closed. Preview fix (Desktop full screen, Tablet / Phone device frames that fill the height; design page preview fills its pane); organisation data (departments, roles, lists) planned into Settings (F14). |
 | 2026-10-03 | F9 | Follow-ups: Themes menu by kind with counts; "Save as template" in the builder header (Build / Logic / Design, phone menu, full screen) — saves pending edits first, name pre-filled, menu counts refresh. |
+| 2026-10-03 | F9 | Follow-ups: "Save as template" moved into Form settings → Template; templates remember their source form (`source_form_id`) — an already-saved form offers "Update template" (`POST /templates/{key}/sync`, audited) or a separate copy; sidebar keeps one group open; preview side panel Desktop fills edge to edge. |

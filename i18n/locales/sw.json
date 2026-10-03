@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Lugha ya fomu",
       "hint": "Wajibuji wanaona fomu kwa lugha hii — pamoja na vitufe, ujumbe na tarehe. Lugha zaidi kwa kila fomu zitakuja pamoja na kurasa za fomu za umma."
+    },
+    "template": {
+      "title": "Kiolezo",
+      "hint": "Tumia tena maswali, mantiki, hesabu na muundo wa fomu hii kuanzisha fomu mpya. Majibu hayajumuishwi kamwe.",
+      "savedAs": "Tayari imehifadhiwa kama kiolezo “{name}”",
+      "savedAsHint": "Ilisasishwa mwisho {when}. Mabadiliko yako hapa yanafika kwenye kiolezo unapokisasisha.",
+      "update": "Sasisha kiolezo",
+      "updatedToast": "Kiolezo “{name}” kimesasishwa kwa mabadiliko ya hivi karibuni ya fomu hii",
+      "saveNew": "Badala yake hifadhi kama kiolezo kipya",
+      "saveNewHint": "Hutengeneza nakala tofauti — kiolezo kilichopo kinabaki kama kilivyo."
     }
   },
   "renderer": {

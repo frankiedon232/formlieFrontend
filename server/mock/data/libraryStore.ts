@@ -23,6 +23,8 @@ export interface WorkspaceTemplate {
   category: string
   icon: string
   schema: FormSchemaV1
+  /** The form it was saved from (updates come from that form; owner, 2026-10-03). */
+  source_form_id?: string
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string

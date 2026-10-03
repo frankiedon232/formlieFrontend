@@ -109,7 +109,8 @@ function usage(tenant: MockTenant) {
 }
 
 function summary(
-  base: Pick<TemplateSummary, 'key' | 'source' | 'category' | 'icon' | 'name' | 'description' | 'tags' | 'minutes' | 'created_by' | 'updated_at'>,
+  base: Pick<TemplateSummary, 'key' | 'source' | 'category' | 'icon' | 'name' | 'description' | 'tags' | 'minutes' | 'created_by' | 'updated_at'> &
+    Partial<Pick<TemplateSummary, 'source_form_id'>>,
   schema: FormSchemaV1,
   used?: { forms: number; responses: number; last: string | null },
 ): TemplateSummary {
@@ -125,6 +126,7 @@ function summary(
     forms_count: used?.forms ?? 0,
     responses_count: used?.responses ?? 0,
     last_used_at: used?.last ?? null,
+    source_form_id: base.source_form_id ?? null,
   }
 }
 
@@ -161,6 +163,7 @@ function workspaceSummary(item: WorkspaceTemplate, used: ReturnType<typeof usage
       minutes: Math.max(1, Math.round(schemaStats(item.schema).fields / 3)),
       created_by: item.created_by,
       updated_at: item.updated_at,
+      source_form_id: item.source_form_id ?? null,
     },
     item.schema,
     used.get(key),

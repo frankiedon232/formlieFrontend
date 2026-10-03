@@ -17,9 +17,9 @@ const devices = computed(() => [
   { value: 'tablet', label: t('builder.preview.tablet'), icon: 'i-lucide-tablet' },
   { value: 'phone', label: t('builder.preview.phone'), icon: 'i-lucide-smartphone' },
 ])
-// Desktop is the real thing: the whole screen, edge to edge (owner, 2026-10-03 — not a box).
-// Tablet and phone show a device-sized frame in a panel that fits it.
-const PANEL = { desktop: 'w-full sm:max-w-none', tablet: 'w-full sm:max-w-[52rem]', phone: 'w-full sm:max-w-lg' }
+// Desktop fills the side panel edge to edge — no frame, no padding (owner, 2026-10-03); the panel
+// keeps its size. Tablet and phone show a device-sized frame in a panel that fits it.
+const PANEL = { desktop: 'w-full sm:max-w-5xl', tablet: 'w-full sm:max-w-[52rem]', phone: 'w-full sm:max-w-lg' }
 const FRAME = {
   desktop: 'h-full',
   tablet: 'max-w-[768px] min-h-full rounded-lg border border-default',

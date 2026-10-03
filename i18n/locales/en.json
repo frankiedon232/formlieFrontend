@@ -1842,6 +1842,16 @@
     "language": {
       "title": "Form language",
       "hint": "Respondents see the form in this language — buttons, messages and dates too. More languages per form come with the public form pages."
+    },
+    "template": {
+      "title": "Template",
+      "hint": "Reuse this form's questions, logic, calculations and design to start new forms. Responses are never included.",
+      "savedAs": "Already saved as template “{name}”",
+      "savedAsHint": "Last updated {when}. Your changes here reach the template when you update it.",
+      "update": "Update template",
+      "updatedToast": "Template “{name}” updated with this form's latest changes",
+      "saveNew": "Save as a new template instead",
+      "saveNewHint": "Makes a separate copy — the existing template stays as it is."
     }
   },
   "renderer": {

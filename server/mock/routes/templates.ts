@@ -52,9 +52,11 @@ export const listTemplates = defineMockRoute(({ event, query }) => {
   const category = filterList(query, 'category')
   const source = filterList(query, 'source')
   const features = filterList(query, 'features')
+  const fromForm = filterList(query, 'form')
   const items = allTemplates(tenant, langOf(query)).filter(
     item =>
       (!category || category.includes(item.category)) &&
+      (!fromForm || (!!item.source_form_id && fromForm.includes(item.source_form_id))) &&
       (!source || source.includes(item.source)) &&
       (!features ||
         features.every(feature => (feature === 'calculations' ? item.calculations_count > 0 : feature === 'logic' ? item.logic_count > 0 : true))),
@@ -142,6 +144,7 @@ export const createTemplate = defineMockRoute(({ event, body: raw }) => {
     category: input.category,
     icon: categoryOf(input.category)?.icon ?? 'i-lucide-layout-template',
     schema: structuredClone(ensureSchema(form, tenant)),
+    source_form_id: form.id,
     created_by: authorOf(user),
     created_at: now,
     updated_at: now,
@@ -164,6 +167,22 @@ export const updateTemplate = defineMockRoute(({ event, body: raw }) => {
   Object.assign(item, input, input.category ? { icon: categoryOf(input.category)?.icon ?? item.icon } : {}, { updated_at: new Date().toISOString() })
   saveLibrary()
   audit(event, tenant, user, 'forms.template_updated', item, changes)
+  return ok(templateDetail(tenant, workspaceKey(item.id), 'en'))
+})
+
+/**
+ * POST /templates/:key/sync — update a workspace template with the current draft of the form it was
+ * saved from (questions, logic, calculations, design); name, description and category stay.
+ */
+export const syncTemplate = defineMockRoute(({ event }) => {
+  const { user, tenant } = requireAuth(event)
+  const item = ownTemplate(tenant, getRouterParam(event, 'key'))
+  const form = item.source_form_id ? formsOf(tenant).forms.find(entry => entry.id === item.source_form_id && !entry.deleted_at) : undefined
+  if (!form) throw new MockError('FRM-GEN-1004')
+  item.schema = structuredClone(ensureSchema(form, tenant))
+  item.updated_at = new Date().toISOString()
+  saveLibrary()
+  audit(event, tenant, user, 'forms.template_updated', item, [{ field: 'content', before: null, after: form.name }])
   return ok(templateDetail(tenant, workspaceKey(item.id), 'en'))
 })
 

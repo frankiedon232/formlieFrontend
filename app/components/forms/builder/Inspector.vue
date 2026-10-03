@@ -202,6 +202,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
             @update:model-value="v => setSetting('save_resume', v)"
           />
         </section>
+        <FormsBuilderTemplateSetting />
         <section class="flex flex-col gap-3">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.thankYou') }}</h3>
           <UFormField :label="t('builder.inspector.title')">

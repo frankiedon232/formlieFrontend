@@ -32,6 +32,19 @@ const systemWithTheme = computed<NavigationMenuItem[]>(() => [
   ...systemItems.value,
 ])
 
+// One group open at a time across all three lists (owner, 2026-10-03): opening a group closes the
+// others; the current page's group opens on navigation.
+const openGroup = ref<string | undefined>()
+const activeGroup = computed(
+  () => [...mainItems.value, ...resourceItems.value, ...systemItems.value].find(item => item.children?.length && item.active)?.value as string | undefined,
+)
+watch(activeGroup, value => (openGroup.value = value), { immediate: true })
+const accordion = computed(() => ({
+  type: 'single' as const,
+  modelValue: openGroup.value,
+  'onUpdate:modelValue': (value: unknown) => (openGroup.value = typeof value === 'string' ? value : undefined),
+}))
+
 /** Status colour dot for `slot: 'status'` items (see useNavigation). */
 const dotClass = (item: unknown) => (item as { dot?: string }).dot
 
@@ -82,7 +95,7 @@ const menuUi = {
     <div class="flex flex-1 flex-col gap-5 overflow-y-auto px-3 py-4">
       <nav :aria-label="mainHeading">
         <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ mainHeading }}</p>
-        <UNavigationMenu :items="mainItems" orientation="vertical" color="neutral" :ui="menuUi">
+        <UNavigationMenu :items="mainItems" orientation="vertical" color="neutral" :ui="menuUi" v-bind="accordion">
           <template #status-leading="{ item }">
             <span class="size-2 shrink-0 rounded-[1px]" :class="dotClass(item)" aria-hidden="true" />
           </template>
@@ -104,12 +117,12 @@ const menuUi = {
             :aria-label="t('nav.fromTemplate')"
           />
         </div>
-        <UNavigationMenu :items="resourceItems" orientation="vertical" color="neutral" :ui="menuUi" />
+        <UNavigationMenu :items="resourceItems" orientation="vertical" color="neutral" :ui="menuUi" v-bind="accordion" />
       </nav>
 
       <nav :aria-label="t('nav.system')" class="mt-auto">
         <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ t('nav.system') }}</p>
-        <UNavigationMenu :items="systemWithTheme" orientation="vertical" color="neutral" :ui="menuUi">
+        <UNavigationMenu :items="systemWithTheme" orientation="vertical" color="neutral" :ui="menuUi" v-bind="accordion">
           <template #theme-trailing>
             <USwitch
               :model-value="isDark"
