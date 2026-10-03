@@ -1899,7 +1899,9 @@
       "verifyHint": "Yanıtlayanlar e-postalarına gönderilen kodu girer — doğrulanmış her e-posta için bir yanıt.",
       "suggested": "önerilen",
       "off": "Kapalı",
-      "none": "E-posta veya kimlik olmadan Formalie yalnızca aynı tarayıcıyı tanıyabilir (kişiler başka bir cihaz kullanabilir)."
+      "none": "E-posta veya kimlik olmadan Formalie yalnızca aynı tarayıcıyı tanıyabilir (kişiler başka bir cihaz kullanabilir).",
+      "verifyLost": "E-posta doğrulaması açık, ancak formda artık yanıtlayanın e-posta sorusu yok — yukarıdan bir soru seçene kadar doğrulama duraklatıldı.",
+      "verifyRequired": "Doğrulama açıkken e-posta sorusu zorunludur — kodu göndermek için buna ihtiyacımız var."
     },
     "guide": {
       "title": "Yardım kılavuzu",

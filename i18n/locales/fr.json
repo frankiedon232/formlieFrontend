@@ -1899,7 +1899,9 @@
       "verifyHint": "Les répondants saisissent un code envoyé à leur adresse e-mail — une réponse par adresse vérifiée.",
       "suggested": "suggéré",
       "off": "Désactivé",
-      "none": "Sans adresse e-mail ni identifiant, Formalie ne peut reconnaître que le même navigateur (les personnes peuvent utiliser un autre appareil)."
+      "none": "Sans adresse e-mail ni identifiant, Formalie ne peut reconnaître que le même navigateur (les personnes peuvent utiliser un autre appareil).",
+      "verifyLost": "La vérification de l’adresse e-mail est activée, mais le formulaire ne contient plus la question de l’adresse e-mail du répondant — elle est suspendue jusqu’à ce que vous en choisissiez une ci-dessus.",
+      "verifyRequired": "La question de l’adresse e-mail est obligatoire tant que la vérification est activée — nous en avons besoin pour envoyer le code."
     },
     "guide": {
       "title": "Guide d’aide",

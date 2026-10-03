@@ -166,7 +166,9 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   const identity = identityOf(schema)
   if (identity.verify && identity.email) {
     const email = normaliseEmail(answers[identity.email])
-    if (!email || !useVerification(form.id, email, input.verification_token))
+    // Nothing to send a code to: the email is required when the form verifies it.
+    if (!email) throw new MockError('FRM-RESP-1001', [{ field: identity.email, message: 'required' }])
+    if (!useVerification(form.id, email, input.verification_token))
       throw new MockError('FRM-RESP-1008', [{ field: identity.email, message: maskEmail(answers[identity.email]) }])
   }
   let possibleDuplicate: { of: string; reason: string } | undefined

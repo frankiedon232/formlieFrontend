@@ -1899,7 +1899,9 @@
       "verifyHint": "Quienes responden introducen un código enviado a su correo: una respuesta por correo verificado.",
       "suggested": "sugerido",
       "off": "Desactivado",
-      "none": "Sin correo ni ID, Formalie solo puede reconocer el mismo navegador (se puede usar otro dispositivo)."
+      "none": "Sin correo ni ID, Formalie solo puede reconocer el mismo navegador (se puede usar otro dispositivo).",
+      "verifyLost": "La verificación del correo está activada, pero el formulario ya no tiene la pregunta del correo de quien responde: queda en pausa hasta que elijas una arriba.",
+      "verifyRequired": "La pregunta del correo es obligatoria mientras la verificación esté activada: la necesitamos para enviar el código."
     },
     "guide": {
       "title": "Guía de ayuda",

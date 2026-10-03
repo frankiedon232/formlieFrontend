@@ -1899,7 +1899,9 @@
       "verifyHint": "Wajibuji huweka msimbo uliotumwa kwa barua pepe yao — jibu moja kwa kila barua pepe iliyothibitishwa.",
       "suggested": "inapendekezwa",
       "off": "Imezimwa",
-      "none": "Bila barua pepe au kitambulisho, Formalie inaweza kutambua kivinjari kilekile tu (watu wanaweza kutumia kifaa kingine)."
+      "none": "Bila barua pepe au kitambulisho, Formalie inaweza kutambua kivinjari kilekile tu (watu wanaweza kutumia kifaa kingine).",
+      "verifyLost": "Uthibitishaji wa barua pepe umewashwa, lakini fomu haina tena swali la barua pepe ya mjibuji — umesitishwa hadi uchague swali hapo juu.",
+      "verifyRequired": "Swali la barua pepe ni la lazima wakati uthibitishaji umewashwa — tunalihitaji ili kutuma msimbo."
     },
     "guide": {
       "title": "Mwongozo wa usaidizi",

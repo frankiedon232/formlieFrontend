@@ -1899,7 +1899,9 @@
       "verifyHint": "Respondenci wpisują kod wysłany na ich adres e-mail — jedna odpowiedź na zweryfikowany adres.",
       "suggested": "sugerowane",
       "off": "Wył.",
-      "none": "Bez adresu e-mail lub identyfikatora Formalie rozpozna tylko tę samą przeglądarkę (można użyć innego urządzenia)."
+      "none": "Bez adresu e-mail lub identyfikatora Formalie rozpozna tylko tę samą przeglądarkę (można użyć innego urządzenia).",
+      "verifyLost": "Weryfikacja adresu e-mail jest włączona, ale formularz nie zawiera już pytania o adres e-mail respondenta — jest wstrzymana, dopóki nie wybierzesz pytania powyżej.",
+      "verifyRequired": "Pytanie o adres e-mail jest wymagane, dopóki weryfikacja jest włączona — potrzebujemy go, aby wysłać kod."
     },
     "guide": {
       "title": "Przewodnik pomocy",

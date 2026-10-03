@@ -1899,7 +1899,9 @@
       "verifyHint": "Os respondentes digitam um código enviado ao e-mail deles — uma resposta por e-mail verificado.",
       "suggested": "sugerido",
       "off": "Desativado",
-      "none": "Sem e-mail ou ID, o Formalie só consegue reconhecer o mesmo navegador (as pessoas podem usar outro dispositivo)."
+      "none": "Sem e-mail ou ID, o Formalie só consegue reconhecer o mesmo navegador (as pessoas podem usar outro dispositivo).",
+      "verifyLost": "A verificação de e-mail está ativada, mas o formulário não tem mais a pergunta de e-mail do respondente — ela fica pausada até você escolher uma acima.",
+      "verifyRequired": "A pergunta de e-mail é obrigatória enquanto a verificação estiver ativada — precisamos dela para enviar o código."
     },
     "guide": {
       "title": "Guia de ajuda",

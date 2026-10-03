@@ -1899,7 +1899,9 @@
       "verifyHint": "Respondenten vullen een code in die naar hun e-mailadres is gestuurd — één reactie per geverifieerd e-mailadres.",
       "suggested": "aanbevolen",
       "off": "Uit",
-      "none": "Zonder e-mailadres of ID kan Formalie alleen dezelfde browser herkennen (mensen kunnen een ander apparaat gebruiken)."
+      "none": "Zonder e-mailadres of ID kan Formalie alleen dezelfde browser herkennen (mensen kunnen een ander apparaat gebruiken).",
+      "verifyLost": "E-mailverificatie staat aan, maar het formulier heeft de e-mailvraag van de respondent niet meer — de verificatie is gepauzeerd tot je hierboven een vraag kiest.",
+      "verifyRequired": "De e-mailvraag is verplicht zolang verificatie aanstaat — we hebben die nodig om de code te sturen."
     },
     "guide": {
       "title": "Hulphandleiding",

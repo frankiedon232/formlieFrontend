@@ -1899,7 +1899,9 @@
       "verifyHint": "Chi risponde inserisce un codice inviato alla propria email: una risposta per email verificata.",
       "suggested": "consigliato",
       "off": "Disattivato",
-      "none": "Senza email o ID, Formalie può riconoscere solo lo stesso browser (si può usare un altro dispositivo)."
+      "none": "Senza email o ID, Formalie può riconoscere solo lo stesso browser (si può usare un altro dispositivo).",
+      "verifyLost": "La verifica dell’email è attiva, ma il modulo non ha più la domanda sull’email di chi risponde: è in pausa finché non ne scegli una qui sopra.",
+      "verifyRequired": "La domanda sull’email è obbligatoria finché la verifica è attiva: ci serve per inviare il codice."
     },
     "guide": {
       "title": "Guida di aiuto",

@@ -39,7 +39,14 @@ function update(patch: Partial<IdentitySettings>) {
   const next = { ...current.value, ...patch }
   if (!next.email) next.verify = false
   schema.value.settings = { ...schema.value.settings, identity: next }
+  // Verification needs an email to send the code to: that question becomes required.
+  if (next.verify && next.email) {
+    const field = fields.value.find(f => f.key === next.email)
+    if (field && !field.required) field.required = true
+  }
 }
+/** Verification was turned on, but its email question was removed (or turned off). */
+const verifyLost = computed(() => !!schema.value?.settings?.identity?.verify && !current.value.email)
 </script>
 
 <template>
@@ -76,6 +83,17 @@ function update(patch: Partial<IdentitySettings>) {
       color="neutral"
       @update:model-value="v => update({ verify: v })"
     />
+    <UAlert
+      v-if="verifyLost"
+      icon="i-lucide-triangle-alert"
+      color="warning"
+      variant="subtle"
+      :description="t('builder.identity.verifyLost')"
+      :ui="{ description: 'text-xs' }"
+    />
+    <p v-else-if="current.verify" class="flex items-center gap-1.5 text-xs text-muted">
+      <UIcon name="i-lucide-asterisk" class="size-3 shrink-0" />{{ t('builder.identity.verifyRequired') }}
+    </p>
     <UAlert v-if="!current.email && !current.id" icon="i-lucide-info" color="neutral" variant="subtle" :description="t('builder.identity.none')" :ui="{ description: 'text-xs' }" />
   </section>
 </template>

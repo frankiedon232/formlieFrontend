@@ -1899,7 +1899,9 @@
       "verifyHint": "Respondents enter a code sent to their email — one response per verified email.",
       "suggested": "suggested",
       "off": "Off",
-      "none": "Without an email or ID, Formalie can only recognise the same browser (people can use another device)."
+      "none": "Without an email or ID, Formalie can only recognise the same browser (people can use another device).",
+      "verifyLost": "Email verification is on, but the form no longer has the respondent’s email question — it’s paused until you choose one above.",
+      "verifyRequired": "The email question is required while verification is on — we need it to send the code."
     },
     "guide": {
       "title": "Help guide",

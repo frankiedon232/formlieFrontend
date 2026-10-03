@@ -1899,7 +1899,9 @@
       "verifyHint": "Responden memasukkan kode yang dikirim ke email mereka — satu respons per email terverifikasi.",
       "suggested": "disarankan",
       "off": "Nonaktif",
-      "none": "Tanpa email atau ID, Formalie hanya dapat mengenali browser yang sama (orang dapat menggunakan perangkat lain)."
+      "none": "Tanpa email atau ID, Formalie hanya dapat mengenali browser yang sama (orang dapat menggunakan perangkat lain).",
+      "verifyLost": "Verifikasi email aktif, tetapi formulir tidak lagi memiliki pertanyaan email responden — verifikasi dijeda sampai Anda memilih salah satu di atas.",
+      "verifyRequired": "Pertanyaan email wajib diisi selama verifikasi aktif — kami memerlukannya untuk mengirim kode."
     },
     "guide": {
       "title": "Panduan bantuan",

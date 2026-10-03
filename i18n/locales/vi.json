@@ -1899,7 +1899,9 @@
       "verifyHint": "Người phản hồi nhập mã được gửi đến email của họ — mỗi email đã xác minh một phản hồi.",
       "suggested": "đề xuất",
       "off": "Tắt",
-      "none": "Không có email hoặc ID, Formalie chỉ có thể nhận diện cùng một trình duyệt (mọi người có thể dùng thiết bị khác)."
+      "none": "Không có email hoặc ID, Formalie chỉ có thể nhận diện cùng một trình duyệt (mọi người có thể dùng thiết bị khác).",
+      "verifyLost": "Xác minh email đang bật, nhưng biểu mẫu không còn câu hỏi email của người phản hồi — tính năng này tạm dừng cho đến khi bạn chọn một câu hỏi ở trên.",
+      "verifyRequired": "Câu hỏi email là bắt buộc khi xác minh đang bật — chúng tôi cần nó để gửi mã."
     },
     "guide": {
       "title": "Hướng dẫn trợ giúp",
