@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "Fomu hii bado haijafunguliwa.",
     "FRM-RESP-1004": "Fomu hii imeshatumwa kutoka kivinjari hiki.",
     "FRM-RESP-1005": "Jibu lenye majibu haya hayo kabisa limeshatumwa.",
-    "FRM-RESP-1006": "Jibu lenye thamani hii limeshatumwa."
+    "FRM-RESP-1006": "Jibu kutoka kwa mtu huyu tayari limetumwa.",
+    "FRM-RESP-1007": "Hili linaonekana kama jibu lililokwisha tumwa. Thibitisha kuwa huyu ni mtu mwingine.",
+    "FRM-RESP-1008": "Thibitisha barua pepe yako ili kutuma fomu hii."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "Kiungo cha masharti (si lazima)",
       "consentLinkLabel": "Maandishi ya kiungo",
       "showResult": "Waonyeshe wajibuji matokeo",
-      "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu).",
-      "unique": "Jibu moja kwa kila thamani",
-      "uniqueHint": "Kataa jibu la pili lenye thamani ile ile kwa swali hili (k.m. barua pepe ile ile).",
-      "uniqueNone": "Imezimwa — ruhusu marudio"
+      "internalHint": "Hukokotolewa na kuhifadhiwa pamoja na kila jibu, lakini timu yako pekee ndiyo huona (k.m. kiwango cha hatari au kundi la uaminifu)."
     },
     "shortcuts": {
       "title": "Njia za mkato",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Kiolezo “{name}” kimesasishwa kwa mabadiliko ya hivi karibuni ya fomu hii",
       "saveNew": "Badala yake hifadhi kama kiolezo kipya",
       "saveNewHint": "Hutengeneza nakala tofauti — kiolezo kilichopo kinabaki kama kilivyo."
+    },
+    "identity": {
+      "title": "Tambua wajibuji",
+      "hint": "Jinsi Formalie inavyotofautisha watu, ili mtu mmoja asijibu mara mbili — na mtu mwingine asidhaniwe kuwa yeye kamwe.",
+      "email": "Barua pepe ya mjibuji mwenyewe",
+      "emailHint": "Barua pepe ya mtu anayejaza — si ya mdhamini, meneja au mlezi. Jibu la pili kwa barua pepe hiyo linakataliwa; linalofanana sana linakaguliwa.",
+      "id": "Kitambulisho au nambari ya akaunti",
+      "idHint": "Si lazima: k.m. nambari ya uanachama, ya mfanyakazi au ya mteja.",
+      "verify": "Thibitisha barua pepe kabla ya kutuma",
+      "verifyHint": "Wajibuji huweka msimbo uliotumwa kwa barua pepe yao — jibu moja kwa kila barua pepe iliyothibitishwa.",
+      "suggested": "inapendekezwa",
+      "off": "Imezimwa",
+      "none": "Bila barua pepe au kitambulisho, Formalie inaweza kutambua kivinjari kilekile tu (watu wanaweza kutumia kifaa kingine)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Weka muda kwa {field} (dakika 0–59).",
       "name": "Weka jina la kwanza na la mwisho kwa {field}.",
       "consent": "Tafadhali thibitisha {field} ili kuendelea.",
-      "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}.",
-      "unique": "Jibu lenye {field} hii limeshatumwa."
+      "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}."
     },
     "page": {
       "logo": "Nembo",
@@ -2031,6 +2042,23 @@
       "stay": "Hapana, baki hapa",
       "duplicate": "Majibu haya hayo yameshatumwa",
       "duplicateDesc": "Jibu lenye majibu yale yale tayari lipo. Ikiwa ni mtu mwingine, kagua taarifa zake."
+    },
+    "identity": {
+      "registeredTitle": "Tayari umejibu",
+      "registeredDesc": "Jibu lako (kwa barua pepe au kitambulisho hiki) lilipokelewa tarehe {date}. Ikiwa hukuwa wewe, tafadhali wasiliana na mwandaaji.",
+      "registeredDescNoDate": "Jibu lako (kwa barua pepe au kitambulisho hiki) tayari limepokelewa. Ikiwa hukuwa wewe, tafadhali wasiliana na mwandaaji.",
+      "registeredField": "Tayari kimetumika kwa jibu.",
+      "possibleTitle": "Je, huyu ni mtu mwingine?",
+      "possibleDesc": "Hili linaonekana kama jibu ambalo tayari tunalo ({email}, {date}).",
+      "possiblePoint1": "Ikiwa wewe ni mtu mwingine, endelea — timu itaona majibu yote mawili.",
+      "possiblePoint2": "Ikiwa ni wewe, kagua majibu yako badala yake — jibu la pili kutoka kwa mtu yuleyule halitahesabiwa.",
+      "different": "Ndiyo, mimi ni mtu mwingine",
+      "review": "Hapana, nikague majibu yangu",
+      "verifyTitle": "Thibitisha barua pepe yako",
+      "verifyDesc": "Tumetuma msimbo wa tarakimu 6 kwa {email}. Uweke ili kutuma jibu lako.",
+      "codeLabel": "Msimbo wa tarakimu 6",
+      "resend": "Tuma msimbo mpya",
+      "confirm": "Thibitisha na utume"
     }
   },
   "logic": {

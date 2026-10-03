@@ -21,6 +21,8 @@ export interface StoredResponse {
   device_id?: string
   /** SHA-256 of the answers — the exact same response twice is refused. */
   fingerprint?: string
+  /** A similar earlier response (respondent said they're a different person) — for the team to review (F11). */
+  possible_duplicate?: { of: string; reason: string }
   /** How it came in. */
   channel: 'link' | 'embed'
   meta: { ip: string; user_agent: string }

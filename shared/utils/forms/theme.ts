@@ -74,7 +74,8 @@ export const themeSchema = z.object({
     subtitle: z.string().max(300),
     align: z.enum(['start', 'center']),
     /** A coloured band behind logo / title / intro (no image needed). */
-    band: z.enum(['none', 'color', 'gradient']),
+    /** none · color / gradient band across the top · accent = a quote-like block with a coloured edge (owner, 2026-10-03). */
+    band: z.enum(['none', 'color', 'gradient', 'accent']),
     band_bg: hex,
     band_to: hex,
   }),

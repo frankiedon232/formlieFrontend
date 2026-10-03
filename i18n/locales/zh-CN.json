@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "此表单尚未开放。",
     "FRM-RESP-1004": "此表单已从此浏览器提交过。",
     "FRM-RESP-1005": "已有答案完全相同的回复提交过。",
-    "FRM-RESP-1006": "已有使用此答案的回复提交过。"
+    "FRM-RESP-1006": "此人已提交过回复。",
+    "FRM-RESP-1007": "这看起来与一份已提交的回复相似。请确认这是另一个人。",
+    "FRM-RESP-1008": "请验证你的邮箱以提交此表单。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "条款链接（可选）",
       "consentLinkLabel": "链接文本",
       "showResult": "向填写者显示结果",
-      "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。",
-      "unique": "每个答案仅限一份回复",
-      "uniqueHint": "拒绝此问题答案相同的第二份回复（例如相同的邮箱）。",
-      "uniqueNone": "关闭 — 允许重复"
+      "internalHint": "随每条回复计算并保存，但仅您的团队可见（例如风险等级或忠诚度分组）。"
     },
     "shortcuts": {
       "title": "快捷键",
@@ -1888,6 +1887,19 @@
       "updatedToast": "已用此表单的最新更改更新模板“{name}”",
       "saveNew": "改为另存为新模板",
       "saveNewHint": "创建一个单独的副本，现有模板保持不变。"
+    },
+    "identity": {
+      "title": "识别回复者",
+      "hint": "Formalie 如何区分不同的人：同一人无法回复两次，也绝不会把其他人误认为此人。",
+      "email": "回复者本人的邮箱",
+      "emailHint": "填写者本人的邮箱 — 而不是推荐人、上级或监护人的邮箱。使用该邮箱的第二份回复会被拒绝；非常相似的回复会被核查。",
+      "id": "ID 或账号",
+      "idHint": "可选：例如会员号、员工号或客户号。",
+      "verify": "提交前验证邮箱",
+      "verifyHint": "回复者需输入发送到其邮箱的验证码 — 每个已验证邮箱仅一份回复。",
+      "suggested": "建议",
+      "off": "关闭",
+      "none": "没有邮箱或 ID 时，Formalie 只能识别同一浏览器（人们可以换用其他设备）。"
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "请为{field}输入时长（分钟 0–59）。",
       "name": "请为{field}输入名字和姓氏。",
       "consent": "请确认{field}以继续。",
-      "choice": "请从列表中为{field}选择一个选项。",
-      "unique": "已有使用此{field}的回复提交过。"
+      "choice": "请从列表中为{field}选择一个选项。"
     },
     "page": {
       "logo": "徽标",
@@ -2031,6 +2042,23 @@
       "stay": "否，留在此页",
       "duplicate": "完全相同的答案已提交过",
       "duplicateDesc": "已有一份答案相同的回复。如果是他人，请核对其信息。"
+    },
+    "identity": {
+      "registeredTitle": "你已提交过回复",
+      "registeredDesc": "已于 {date} 收到你（使用此邮箱或 ID）的回复。如果那不是你本人，请联系组织方。",
+      "registeredDescNoDate": "已收到你（使用此邮箱或 ID）的回复。如果那不是你本人，请联系组织方。",
+      "registeredField": "已用于一份回复。",
+      "possibleTitle": "这是另一个人吗？",
+      "possibleDesc": "这看起来与我们已有的一份回复相似（{email}，{date}）。",
+      "possiblePoint1": "如果你是另一个人，请继续 — 团队会看到两份回复。",
+      "possiblePoint2": "如果是你本人，请改为核对你的答案 — 同一人的第二份回复不会被计入。",
+      "different": "是，我是另一个人",
+      "review": "否，核对我的答案",
+      "verifyTitle": "确认你的邮箱",
+      "verifyDesc": "我们已向 {email} 发送了 6 位验证码。输入验证码即可发送你的回复。",
+      "codeLabel": "6 位验证码",
+      "resend": "发送新验证码",
+      "confirm": "确认并发送"
     }
   },
   "logic": {

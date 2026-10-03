@@ -4,7 +4,6 @@
   move / duplicate / delete.
 -->
 <script setup lang="ts">
-import { allFields } from '#shared/utils/forms/build'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { FIELD_WIDTHS } from '#shared/utils/forms/fields'
 
@@ -47,20 +46,6 @@ function setSetting(key: 'progress_bar' | 'save_resume', value: boolean) {
   builder.history.record()
   schema.value.settings = { ...schema.value.settings, [key]: value }
 }
-// One response per answer (F10): the questions that can identify a person.
-const UNIQUE_TYPES = new Set(['email', 'phone', 'short_text', 'number', 'full_name'])
-const uniqueItems = computed(() => [
-  { value: '', label: t('builder.inspector.uniqueNone') },
-  ...(schema.value ? allFields(schema.value) : [])
-    .filter(f => UNIQUE_TYPES.has(f.type))
-    .map(f => ({ value: f.key, label: f.label?.trim() || t('builder.untitled') })),
-])
-function setUnique(value: string) {
-  if (!schema.value) return
-  builder.history.record()
-  schema.value.settings = { ...schema.value.settings, unique_field: value || null }
-}
-
 function setThankYou(key: 'title' | 'message', value: string) {
   if (!schema.value) return
   builder.history.record(`thank_you:${key}`)
@@ -216,17 +201,8 @@ function setThankYou(key: 'title' | 'message', value: string) {
             color="neutral"
             @update:model-value="v => setSetting('save_resume', v)"
           />
-          <UFormField :label="t('builder.inspector.unique')" :description="t('builder.inspector.uniqueHint')">
-            <USelectMenu
-              :model-value="schema.settings?.unique_field ?? ''"
-              :items="uniqueItems"
-              value-key="value"
-              :search-input="false"
-              class="w-full"
-              @update:model-value="v => setUnique(String(v ?? ''))"
-            />
-          </UFormField>
         </section>
+        <FormsBuilderIdentitySetting />
         <FormsBuilderTemplateSetting />
         <section class="flex flex-col gap-3">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.thankYou') }}</h3>

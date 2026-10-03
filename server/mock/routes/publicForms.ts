@@ -9,6 +9,7 @@
 import { createHash } from 'node:crypto'
 import { z } from 'zod'
 import { availabilityOf } from '#shared/utils/forms/availability'
+import { identityOf, maskEmail, matchIdentity, normaliseEmail } from '#shared/utils/forms/identity'
 import type { PublicForm, PublicFormState, PublicSubmitResult } from '#shared/types/public'
 import { checkSubmission } from '#shared/utils/forms/submission'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
@@ -37,7 +38,6 @@ function deviceOf(event: Parameters<typeof tenantOf>[0]): string {
   setCookie(event, DEVICE_COOKIE, fresh, { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 60 * 60 * 24 * 365 })
   return fresh
 }
-const normalised = (value: unknown) => (typeof value === 'string' ? value.trim().toLowerCase() : JSON.stringify(value ?? null))
 /** The answers in a stable order, hashed: the same response twice has the same fingerprint. */
 function fingerprintOf(answers: Record<string, unknown>): string {
   const stable = Object.keys(answers)
@@ -123,6 +123,10 @@ const submitBody = z.object({
   language: z.string().max(10).optional(),
   /** The respondent confirmed this response is for another person (same browser, F10). */
   for_someone_else: z.boolean().optional(),
+  /** The respondent confirmed they are not the person of a similar earlier response. */
+  confirmed_different: z.boolean().optional(),
+  /** From /verify/confirm when the form verifies the respondent's email. */
+  verification_token: z.string().max(80).optional(),
 })
 const SUBMISSION_ID = /^[A-Za-z0-9-]{16,64}$/
 
@@ -154,19 +158,30 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   const { issues, answers } = checkSubmission(schema, input.data)
   if (issues.length) throw new MockError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
 
-  // Duplicates (owner, 2026-10-03): one response per browser unless it's for someone else; the
-  // exact same answers never twice; optionally one response per answer to a chosen question.
+  // Telling people apart (owner, 2026-10-03; shared/utils/forms/identity.ts). With the respondent's
+  // own email or an ID: same → refused, a typo away → asked + flagged. Without: one per browser.
+  // The exact same answers are never accepted twice.
   const deviceId = deviceOf(event)
   const earlierResponses = responsesOf(tenant).responses.filter(item => item.form_id === form.id)
-  if (!input.for_someone_else && earlierResponses.some(item => item.device_id === deviceId)) throw new MockError('FRM-RESP-1004')
+  const identity = identityOf(schema)
+  if (identity.verify && identity.email) {
+    const email = normaliseEmail(answers[identity.email])
+    if (!email || !useVerification(form.id, email, input.verification_token))
+      throw new MockError('FRM-RESP-1008', [{ field: identity.email, message: maskEmail(answers[identity.email]) }])
+  }
+  let possibleDuplicate: { of: string; reason: string } | undefined
+  if (identity.email || identity.id) {
+    const match = matchIdentity(schema, answers, earlierResponses, identity)
+    const key = (match.reason === 'id' || match.reason === 'id_similar' ? identity.id : identity.email) ?? ''
+    const hint = JSON.stringify({ at: match.record?.submitted_at, email: identity.email ? maskEmail(match.record?.data[identity.email]) : '' })
+    if (match.level === 'clear') throw new MockError('FRM-RESP-1006', [{ field: key, message: hint }])
+    if (match.level === 'likely') {
+      if (!input.confirmed_different) throw new MockError('FRM-RESP-1007', [{ field: key, message: hint }])
+      possibleDuplicate = { of: match.record!.id, reason: match.reason! }
+    }
+  } else if (!input.for_someone_else && earlierResponses.some(item => item.device_id === deviceId)) throw new MockError('FRM-RESP-1004')
   const fingerprint = fingerprintOf(answers)
   if (earlierResponses.some(item => item.fingerprint === fingerprint)) throw new MockError('FRM-RESP-1005')
-  const uniqueKey = schema.settings?.unique_field
-  if (uniqueKey && answers[uniqueKey] != null && answers[uniqueKey] !== '') {
-    const wanted = normalised(answers[uniqueKey])
-    if (earlierResponses.some(item => normalised(item.data[uniqueKey]) === wanted))
-      throw new MockError('FRM-RESP-1006', [{ field: uniqueKey, message: 'unique' }])
-  }
 
   const response = {
     id: crypto.randomUUID(),
@@ -178,6 +193,7 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
     submission_id: submissionId,
     device_id: deviceId,
     fingerprint,
+    ...(possibleDuplicate ? { possible_duplicate: possibleDuplicate } : {}),
     channel: input.channel,
     meta: { ip: getRequestIP(event, { xForwardedFor: true }) ?? 'unknown', user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 300) },
   }
@@ -195,4 +211,62 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
     changes: [{ field: 'channel', before: null, after: input.channel }],
   })
   return ok<PublicSubmitResult>({ response_id: response.id, duplicate: false, thank_you: thankYou }, {}, 201)
+})
+
+// ── Verify the respondent's email (optional per form) ───────────────────────────────────
+interface Verification {
+  formId: string
+  email: string
+  code: string
+  expiresAt: number
+  attempts: number
+  token?: string
+  tokenExpiresAt?: number
+}
+const verifications = new Map<string, Verification>()
+const sentAt = new Map<string, number[]>()
+const VERIFY_TTL = 10 * 60_000
+const TOKEN_TTL = 30 * 60_000
+const slot = (formId: string, email: string) => `${formId}:${email}`
+
+/** A confirmed email for this form (the token from /verify/confirm), used once. */
+function useVerification(formId: string, email: string, token: string | undefined): boolean {
+  const entry = verifications.get(slot(formId, email))
+  if (!entry?.token || !token || entry.token !== token || (entry.tokenExpiresAt ?? 0) < Date.now()) return false
+  verifications.delete(slot(formId, email))
+  return true
+}
+
+const verifyBody = z.object({ email: z.email().max(200) })
+/** POST /public/forms/:key/verify — send a 6-digit code to the respondent's email. */
+export const sendVerification = defineMockRoute(({ event, body }) => {
+  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const email = normaliseEmail(parseBody(verifyBody, body).email)
+  if (!email) throw new MockError('FRM-GEN-1002', [{ field: 'email', message: 'Enter a valid email.' }])
+  // At most 5 codes an hour for one email on one form.
+  const recent = (sentAt.get(slot(form.id, email)) ?? []).filter(at => at > Date.now() - 3_600_000)
+  if (recent.length >= 5) throw new MockError('FRM-AUTH-1004')
+  sentAt.set(slot(form.id, email), [...recent, Date.now()])
+  const code = String(Math.floor(100000 + Math.random() * 900000))
+  verifications.set(slot(form.id, email), { formId: form.id, email, code, expiresAt: Date.now() + VERIFY_TTL, attempts: 0 })
+  // A real backend emails the code; the mock hands it to the dev screen only.
+  return ok({ sent_to: maskEmail(email), expires_in: VERIFY_TTL / 1000 }, import.meta.dev ? { dev_code: code } : {})
+})
+
+const confirmBody = z.object({ email: z.email().max(200), code: z.string().regex(/^\d{6}$/) })
+/** POST /public/forms/:key/verify/confirm — the code → a short-lived token for the submission. */
+export const confirmVerification = defineMockRoute(({ event, body }) => {
+  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const input = parseBody(confirmBody, body)
+  const email = normaliseEmail(input.email) ?? ''
+  const entry = verifications.get(slot(form.id, email))
+  if (!entry || entry.expiresAt < Date.now()) throw new MockError('FRM-AUTH-1003')
+  if (entry.attempts >= 5) throw new MockError('FRM-AUTH-1004')
+  if (entry.code !== input.code) {
+    entry.attempts += 1
+    throw new MockError('FRM-AUTH-1003')
+  }
+  entry.token = crypto.randomUUID()
+  entry.tokenExpiresAt = Date.now() + TOKEN_TTL
+  return ok({ token: entry.token })
 })

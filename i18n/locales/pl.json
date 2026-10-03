@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "Ten formularz nie jest jeszcze otwarty.",
     "FRM-RESP-1004": "Ten formularz został już wysłany z tej przeglądarki.",
     "FRM-RESP-1005": "Odpowiedź z dokładnie tymi danymi została już wysłana.",
-    "FRM-RESP-1006": "Odpowiedź z tą wartością została już wysłana."
+    "FRM-RESP-1006": "Odpowiedź od tej osoby została już wysłana.",
+    "FRM-RESP-1007": "Wygląda to na odpowiedź, która została już wysłana. Potwierdź, że to inna osoba.",
+    "FRM-RESP-1008": "Zweryfikuj adres e-mail, aby wysłać ten formularz."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "Link do regulaminu (opcjonalnie)",
       "consentLinkLabel": "Tekst linku",
       "showResult": "Pokaż wynik respondentom",
-      "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności).",
-      "unique": "Jedna odpowiedź na wartość",
-      "uniqueHint": "Odrzucaj drugą odpowiedź z tą samą wartością w tym pytaniu (np. ten sam e-mail).",
-      "uniqueNone": "Wyłączone – zezwalaj na powtórzenia"
+      "internalHint": "Obliczany i zapisywany z każdą odpowiedzią, ale widoczny tylko dla Twojego zespołu (np. poziom ryzyka lub grupa lojalności)."
     },
     "shortcuts": {
       "title": "Skróty",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Szablon „{name}” zaktualizowano o najnowsze zmiany tego formularza",
       "saveNew": "Zapisz zamiast tego jako nowy szablon",
       "saveNewHint": "Tworzy osobną kopię — istniejący szablon pozostaje bez zmian."
+    },
+    "identity": {
+      "title": "Rozpoznawanie respondentów",
+      "hint": "Jak Formalie odróżnia osoby, aby nikt nie mógł odpowiedzieć dwa razy — i aby nikogo innego nie pomylono z tą osobą.",
+      "email": "Własny adres e-mail respondenta",
+      "emailHint": "Adres e-mail osoby wypełniającej — nie osoby polecającej, przełożonego ani opiekuna. Druga odpowiedź z tym adresem jest odrzucana; bardzo podobna jest sprawdzana.",
+      "id": "Identyfikator lub numer konta",
+      "idHint": "Opcjonalnie: np. numer członkowski, pracowniczy lub klienta.",
+      "verify": "Weryfikuj adres e-mail przed wysłaniem",
+      "verifyHint": "Respondenci wpisują kod wysłany na ich adres e-mail — jedna odpowiedź na zweryfikowany adres.",
+      "suggested": "sugerowane",
+      "off": "Wył.",
+      "none": "Bez adresu e-mail lub identyfikatora Formalie rozpozna tylko tę samą przeglądarkę (można użyć innego urządzenia)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Wpisz czas trwania w polu {field} (minuty 0–59).",
       "name": "Wpisz imię i nazwisko w polu {field}.",
       "consent": "Potwierdź {field}, aby kontynuować.",
-      "choice": "Wybierz opcję z listy w polu {field}.",
-      "unique": "Odpowiedź z tą wartością pola {field} została już wysłana."
+      "choice": "Wybierz opcję z listy w polu {field}."
     },
     "page": {
       "logo": "Logo",
@@ -2031,6 +2042,23 @@
       "stay": "Nie, zostań tutaj",
       "duplicate": "Te same odpowiedzi zostały już wysłane",
       "duplicateDesc": "Odpowiedź z takimi samymi danymi już istnieje. Jeśli to inna osoba, sprawdź jej dane."
+    },
+    "identity": {
+      "registeredTitle": "Twoja odpowiedź już do nas dotarła",
+      "registeredDesc": "Odpowiedź od Ciebie (z tym adresem e-mail lub identyfikatorem) dotarła {date}. Jeśli to nie Ty, skontaktuj się z organizatorem.",
+      "registeredDescNoDate": "Odpowiedź od Ciebie (z tym adresem e-mail lub identyfikatorem) już dotarła. Jeśli to nie Ty, skontaktuj się z organizatorem.",
+      "registeredField": "Już użyto w odpowiedzi.",
+      "possibleTitle": "Czy to inna osoba?",
+      "possibleDesc": "Wygląda to na odpowiedź, którą już mamy ({email}, {date}).",
+      "possiblePoint1": "Jeśli jesteś kimś innym, kontynuuj — zespół zobaczy obie odpowiedzi.",
+      "possiblePoint2": "Jeśli to Ty, sprawdź raczej swoje odpowiedzi — druga odpowiedź od tej samej osoby nie zostanie uwzględniona.",
+      "different": "Tak, jestem inną osobą",
+      "review": "Nie, sprawdzę odpowiedzi",
+      "verifyTitle": "Potwierdź adres e-mail",
+      "verifyDesc": "Wysłaliśmy 6-cyfrowy kod na adres {email}. Wpisz go, aby wysłać odpowiedź.",
+      "codeLabel": "6-cyfrowy kod",
+      "resend": "Wyślij nowy kod",
+      "confirm": "Potwierdź i wyślij"
     }
   },
   "logic": {

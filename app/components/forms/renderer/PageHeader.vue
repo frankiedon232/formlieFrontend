@@ -9,13 +9,23 @@ const props = defineProps<{ theme: FormTheme; title: string; logo: string | null
 const { t } = useI18n()
 const WEIGHT: Record<string, string> = { medium: 'font-medium', semibold: 'font-semibold', bold: 'font-bold' }
 const color = computed(() => (props.on ? readableOn(props.on) : null))
+// Accent: a compact, quote-like block — coloured edge, soft tint — so the form keeps its full width.
+const accent = computed(() => !props.on && props.theme.header.band === 'accent')
+const accentStyle = computed(() =>
+  accent.value
+    ? {
+        borderInlineStartColor: props.theme.header.band_bg,
+        background: `color-mix(in oklab, ${props.theme.header.band_bg} 7%, transparent)`,
+      }
+    : undefined,
+)
 </script>
 
 <template>
   <header
     class="flex flex-col gap-3"
-    :class="theme.header.align === 'center' ? 'items-center text-center' : 'items-start'"
-    :style="color ? { color } : undefined"
+    :class="[theme.header.align === 'center' ? 'items-center text-center' : 'items-start', accent ? 'rounded-lg border-s-4 px-4 py-3 sm:px-5 sm:py-4' : '']"
+    :style="color ? { color } : accentStyle"
   >
     <img v-if="logo" :src="logo" :alt="t('renderer.page.logo')" class="max-h-12 w-auto max-w-48 object-contain" >
     <div v-if="theme.header.show_title || theme.header.subtitle" class="flex flex-col gap-1">

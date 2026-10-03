@@ -14,7 +14,7 @@ import { effectiveField, nextPageIndex } from '#shared/utils/forms/submission'
 import { validateAnswer, type AddressPart, type ValidationIssue } from '#shared/utils/forms/validate'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { FormTheme } from '#shared/utils/forms/theme'
-import type { RendererSubmitOutcome } from '#shared/types/public'
+import type { RendererRespondent, RendererSubmitOutcome } from '#shared/types/public'
 
 const props = defineProps<{
   schema: FormSchemaV1
@@ -25,7 +25,7 @@ const props = defineProps<{
   /** Public page: send the answers; the button stays busy until it reports back (no double submit). */
   submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
   /** Public page: this browser already sent the form, and how to start one for someone else. */
-  respondent?: { alreadySent: boolean; another: () => void }
+  respondent?: RendererRespondent
 }>()
 const { t } = useI18n()
 
@@ -160,6 +160,7 @@ function check(unfold = true): boolean {
 watch(answers, () => attempted.value && check(false), { deep: true })
 // Pages visited, so Back follows the path the respondent actually took (jumps included).
 const trail = ref<number[]>([])
+const { date: formatDate } = useFormat()
 const submitting = ref(false)
 /** Thank-you text from the server (it may differ from the schema's, e.g. per language). */
 const thanks = ref<{ title: string; message: string } | null>(null)
@@ -167,6 +168,14 @@ const thanks = ref<{ title: string; message: string } | null>(null)
 const blocked = ref(false)
 const startedAgain = ref(false)
 const duplicateNotice = ref(false)
+// Telling people apart (F10): "already registered" notice, and the "different person?" / email-code dialogs.
+const registered = ref<{ at?: string } | null>(null)
+const identityPrompt = ref<{ reason: 'possible' | 'verify'; field?: string; hint?: { at?: string; email?: string } } | null>(null)
+const identityEmail = computed(() => String(identityPrompt.value?.field ? (answers.value[identityPrompt.value.field] ?? '') : ''))
+function identityContinue() {
+  identityPrompt.value = null
+  void send()
+}
 const showAlready = computed(() => !done.value && !props.preview && (blocked.value || (!!props.respondent?.alreadySent && !startedAgain.value)))
 function onAnother() {
   props.respondent?.another()
@@ -181,7 +190,12 @@ async function send() {
   try {
     const outcome = await props.submit({ ...answers.value })
     duplicateNotice.value = outcome.done ? false : outcome.reason === 'duplicate'
+    registered.value = !outcome.done && outcome.reason === 'registered' ? { at: outcome.hint?.at } : null
     if (!outcome.done && outcome.reason === 'already') return void (blocked.value = true)
+    if (!outcome.done && (outcome.reason === 'possible' || outcome.reason === 'verify'))
+      return void (identityPrompt.value = { reason: outcome.reason, field: outcome.field, hint: outcome.hint })
+    if (!outcome.done && outcome.reason === 'registered' && outcome.field)
+      errors.value = { [outcome.field]: t('renderer.identity.registeredField') }
     if (outcome.done) {
       if (outcome.thank_you?.redirect_url) return void (await navigateTo(outcome.thank_you.redirect_url, { external: true }))
       if (outcome.thank_you) thanks.value = { title: outcome.thank_you.title, message: outcome.thank_you.message }
@@ -265,6 +279,14 @@ function restart() {
             />
           </div>
         </div>
+        <UAlert
+          v-if="registered"
+          icon="i-lucide-user-round-check"
+          color="warning"
+          variant="subtle"
+          :title="t('renderer.identity.registeredTitle')"
+          :description="registered.at ? t('renderer.identity.registeredDesc', { date: formatDate(registered.at) }) : t('renderer.identity.registeredDescNoDate')"
+        />
         <UAlert v-if="duplicateNotice" icon="i-lucide-copy-x" color="warning" variant="subtle" :title="t('renderer.after.duplicate')" :description="t('renderer.after.duplicateDesc')" />
         <div class="flex items-center gap-2 pt-2" :class="button.block ? 'flex-col-reverse' : 'justify-between'">
           <UButton
@@ -314,5 +336,14 @@ function restart() {
         @click="restart"
       />
     </div>
+    <FormsRendererIdentity
+      v-if="respondent && !preview"
+      :reason="identityPrompt?.reason ?? null"
+      :hint="identityPrompt?.hint"
+      :email="identityEmail"
+      :respondent="respondent"
+      @continue="identityContinue"
+      @cancel="identityPrompt = null"
+    />
   </div>
 </template>

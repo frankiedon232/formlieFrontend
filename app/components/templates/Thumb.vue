@@ -13,7 +13,8 @@ const th = computed(() => resolveTheme(props.theme))
 const background = computed(() => pageBackground(th.value))
 const panel = computed(() => (th.value.layout === 'split' ? th.value.split : null))
 const colourPanel = computed(() => !!panel.value && panel.value.panel !== 'image')
-const band = computed(() => (!colourPanel.value && th.value.header.band !== 'none' ? th.value.header : null))
+const band = computed(() => (!colourPanel.value && th.value.header.band !== 'none' && th.value.header.band !== 'accent' ? th.value.header : null))
+const accent = computed(() => (!colourPanel.value && th.value.header.band === 'accent' ? th.value.header.band_bg : null))
 const footerBar = computed(() => th.value.footer.enabled && th.value.footer.style === 'band')
 const RADIUS: Record<string, string> = { none: '0', sm: '3px', md: '5px', lg: '8px', xl: '12px', full: '999px' }
 const INPUT_RADIUS = computed(() => RADIUS[th.value.inputs.radius] ?? '4px')
@@ -58,7 +59,13 @@ const shown = computed(() => props.labels.slice(0, props.mini || props.compact ?
         </div>
 
         <div class="flex min-h-0 flex-1 flex-col" :class="mini ? 'gap-0.5 px-1 py-0.5' : 'gap-1.5 px-2.5 py-2'" :style="{ color: th.colors.text }">
-          <span v-if="!band && !colourPanel && !mini" class="line-clamp-1 text-[9px] font-semibold" :class="centred ? 'text-center' : ''">{{ title }}</span>
+          <span
+            v-if="!band && !colourPanel && !mini"
+            class="line-clamp-1 text-[9px] font-semibold"
+            :class="[centred ? 'text-center' : '', accent ? 'rounded-sm border-s-2 px-1 py-0.5' : '']"
+            :style="accent ? { borderInlineStartColor: accent, background: `color-mix(in oklab, ${accent} 8%, transparent)` } : undefined"
+            >{{ title }}</span
+          >
           <div v-for="label in shown" :key="label" class="flex flex-col gap-0.5">
             <span v-if="!mini" class="line-clamp-1 text-[7px] leading-tight opacity-80">{{ label }}</span>
             <span

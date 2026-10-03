@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "Formulir ini belum dibuka.",
     "FRM-RESP-1004": "Formulir ini sudah dikirim dari browser ini.",
     "FRM-RESP-1005": "Respons dengan jawaban yang persis sama sudah dikirim.",
-    "FRM-RESP-1006": "Respons dengan jawaban ini sudah dikirim."
+    "FRM-RESP-1006": "Respons dari orang ini sudah dikirim.",
+    "FRM-RESP-1007": "Ini tampak seperti respons yang sudah dikirim. Konfirmasi bahwa ini orang yang berbeda.",
+    "FRM-RESP-1008": "Verifikasi email Anda untuk mengirim formulir ini."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "Tautan ke ketentuan (opsional)",
       "consentLinkLabel": "Teks tautan",
       "showResult": "Tampilkan hasil kepada responden",
-      "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas).",
-      "unique": "Satu respons per jawaban",
-      "uniqueHint": "Tolak respons kedua dengan jawaban yang sama untuk pertanyaan ini (mis. email yang sama).",
-      "uniqueNone": "Nonaktif — izinkan pengulangan"
+      "internalHint": "Dihitung dan disimpan bersama setiap tanggapan, tetapi hanya tim Anda yang dapat melihatnya (mis. tingkat risiko atau kelompok loyalitas)."
     },
     "shortcuts": {
       "title": "Pintasan",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Templat “{name}” diperbarui dengan perubahan terbaru formulir ini",
       "saveNew": "Simpan sebagai templat baru saja",
       "saveNewHint": "Membuat salinan terpisah — templat yang ada tetap seperti semula."
+    },
+    "identity": {
+      "title": "Kenali responden",
+      "hint": "Cara Formalie membedakan orang, agar satu orang tidak bisa merespons dua kali — dan orang lain tidak pernah dikira sebagai dirinya.",
+      "email": "Email milik responden sendiri",
+      "emailHint": "Email orang yang mengisi — bukan email referensi, atasan, atau wali. Respons kedua dengan email ini ditolak; respons yang sangat mirip akan diperiksa.",
+      "id": "ID atau nomor akun",
+      "idHint": "Opsional: mis. nomor anggota, karyawan, atau pelanggan.",
+      "verify": "Verifikasi email sebelum mengirim",
+      "verifyHint": "Responden memasukkan kode yang dikirim ke email mereka — satu respons per email terverifikasi.",
+      "suggested": "disarankan",
+      "off": "Nonaktif",
+      "none": "Tanpa email atau ID, Formalie hanya dapat mengenali browser yang sama (orang dapat menggunakan perangkat lain)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Masukkan durasi untuk {field} (menit 0–59).",
       "name": "Masukkan nama depan dan belakang untuk {field}.",
       "consent": "Konfirmasikan {field} untuk melanjutkan.",
-      "choice": "Pilih opsi dari daftar untuk {field}.",
-      "unique": "Respons dengan {field} ini sudah pernah dikirim."
+      "choice": "Pilih opsi dari daftar untuk {field}."
     },
     "page": {
       "logo": "Logo",
@@ -2031,6 +2042,23 @@
       "stay": "Tidak, tetap di sini",
       "duplicate": "Jawaban yang persis sama sudah dikirim",
       "duplicateDesc": "Respons dengan jawaban yang sama sudah ada. Jika ini orang lain, periksa datanya."
+    },
+    "identity": {
+      "registeredTitle": "Anda sudah merespons",
+      "registeredDesc": "Respons dari Anda (dengan email atau ID ini) telah diterima pada {date}. Jika itu bukan Anda, silakan hubungi penyelenggara.",
+      "registeredDescNoDate": "Respons dari Anda (dengan email atau ID ini) sudah diterima. Jika itu bukan Anda, silakan hubungi penyelenggara.",
+      "registeredField": "Sudah digunakan untuk sebuah respons.",
+      "possibleTitle": "Apakah ini orang yang berbeda?",
+      "possibleDesc": "Ini tampak seperti respons yang sudah kami terima ({email}, {date}).",
+      "possiblePoint1": "Jika Anda orang lain, lanjutkan — tim akan melihat kedua respons.",
+      "possiblePoint2": "Jika itu Anda, periksa jawaban Anda saja — respons kedua dari orang yang sama tidak akan dihitung.",
+      "different": "Ya, saya orang yang berbeda",
+      "review": "Tidak, periksa jawaban saya",
+      "verifyTitle": "Konfirmasi email Anda",
+      "verifyDesc": "Kami telah mengirim kode 6 digit ke {email}. Masukkan kode tersebut untuk mengirim respons Anda.",
+      "codeLabel": "Kode 6 digit",
+      "resend": "Kirim kode baru",
+      "confirm": "Konfirmasi dan kirim"
     }
   },
   "logic": {

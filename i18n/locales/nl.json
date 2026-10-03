@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "Dit formulier is nog niet open.",
     "FRM-RESP-1004": "Dit formulier is al vanuit deze browser verzonden.",
     "FRM-RESP-1005": "Er is al een antwoord met exact deze antwoorden verzonden.",
-    "FRM-RESP-1006": "Er is al een antwoord met deze waarde verzonden."
+    "FRM-RESP-1006": "Er is al een reactie van deze persoon verstuurd.",
+    "FRM-RESP-1007": "Dit lijkt op een reactie die al is verstuurd. Bevestig dat dit iemand anders is.",
+    "FRM-RESP-1008": "Verifieer je e-mailadres om dit formulier te versturen."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "Link naar de voorwaarden (optioneel)",
       "consentLinkLabel": "Linktekst",
       "showResult": "Resultaat tonen aan respondenten",
-      "internalHint": "Berekend en opgeslagen bij elke reactie, maar alleen zichtbaar voor je team (bijv. een risiconiveau of loyaliteitsgroep).",
-      "unique": "Eén antwoord per waarde",
-      "uniqueHint": "Weiger een tweede antwoord met dezelfde waarde voor deze vraag (bijv. hetzelfde e-mailadres).",
-      "uniqueNone": "Uit: herhalingen toestaan"
+      "internalHint": "Berekend en opgeslagen bij elke reactie, maar alleen zichtbaar voor je team (bijv. een risiconiveau of loyaliteitsgroep)."
     },
     "shortcuts": {
       "title": "Sneltoetsen",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Sjabloon ‘{name}’ bijgewerkt met de laatste wijzigingen van dit formulier",
       "saveNew": "Liever opslaan als nieuw sjabloon",
       "saveNewHint": "Maakt een aparte kopie — het bestaande sjabloon blijft zoals het is."
+    },
+    "identity": {
+      "title": "Respondenten herkennen",
+      "hint": "Hoe Formalie mensen uit elkaar houdt, zodat iemand niet twee keer kan reageren — en niemand anders ooit voor diegene wordt aangezien.",
+      "email": "Eigen e-mailadres van de respondent",
+      "emailHint": "Het e-mailadres van de persoon die invult — niet dat van een referentie, leidinggevende of voogd. Een tweede reactie ermee wordt geweigerd; een sterk gelijkende wordt gecontroleerd.",
+      "id": "ID of rekeningnummer",
+      "idHint": "Optioneel: bijv. een lid-, personeels- of klantnummer.",
+      "verify": "E-mailadres verifiëren vóór verzenden",
+      "verifyHint": "Respondenten vullen een code in die naar hun e-mailadres is gestuurd — één reactie per geverifieerd e-mailadres.",
+      "suggested": "aanbevolen",
+      "off": "Uit",
+      "none": "Zonder e-mailadres of ID kan Formalie alleen dezelfde browser herkennen (mensen kunnen een ander apparaat gebruiken)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Voer een duur in voor {field} (minuten 0–59).",
       "name": "Voer zowel voor- als achternaam in voor {field}.",
       "consent": "Bevestig {field} om door te gaan.",
-      "choice": "Kies een optie uit de lijst voor {field}.",
-      "unique": "Er is al een antwoord met deze waarde voor {field} verzonden."
+      "choice": "Kies een optie uit de lijst voor {field}."
     },
     "page": {
       "logo": "Logo",
@@ -2031,6 +2042,23 @@
       "stay": "Nee, hier blijven",
       "duplicate": "Exact deze antwoorden zijn al verzonden",
       "duplicateDesc": "Er is al een antwoord met dezelfde antwoorden. Is dit iemand anders, controleer dan diens gegevens."
+    },
+    "identity": {
+      "registeredTitle": "Je hebt al gereageerd",
+      "registeredDesc": "Er is op {date} een reactie van jou (met dit e-mailadres of deze ID) ontvangen. Was jij dat niet? Neem dan contact op met de organisator.",
+      "registeredDescNoDate": "Er is al een reactie van jou (met dit e-mailadres of deze ID) ontvangen. Was jij dat niet? Neem dan contact op met de organisator.",
+      "registeredField": "Al gebruikt voor een reactie.",
+      "possibleTitle": "Is dit iemand anders?",
+      "possibleDesc": "Dit lijkt op een reactie die we al hebben ({email}, {date}).",
+      "possiblePoint1": "Ben je iemand anders, ga dan verder — het team ziet beide reacties.",
+      "possiblePoint2": "Ben jij het zelf, controleer dan liever je antwoorden — een tweede reactie van dezelfde persoon telt niet.",
+      "different": "Ja, ik ben iemand anders",
+      "review": "Nee, mijn antwoorden controleren",
+      "verifyTitle": "Bevestig je e-mailadres",
+      "verifyDesc": "We hebben een code van 6 cijfers gestuurd naar {email}. Vul die in om je reactie te versturen.",
+      "codeLabel": "Code van 6 cijfers",
+      "resend": "Nieuwe code sturen",
+      "confirm": "Bevestigen en versturen"
     }
   },
   "logic": {

@@ -38,7 +38,7 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
     name: 'RSVP',
     description: 'Simple yes / no / maybe replies with party size and dietary needs only for those coming.',
     tags: ['rsvp', 'invitation'],
-    design: { split: { bg: '#7c3aed', bg_to: '#db2777' } },
+    design: { header: { band_bg: '#7c3aed' } },
     pages: [
       page('Will you join us?', [
         q('full_name', 'Your name', { required: true }),
@@ -60,7 +60,7 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
     name: 'Appointment Booking',
     description: 'Book a service on a preferred date and time, with a second choice and reminders.',
     tags: ['appointment', 'booking'],
-    design: { split: { bg: '#0f766e', bg_to: '#0891b2' }, colors: { primary: '#0f766e' } },
+    design: { header: { band_bg: '#0f766e' }, colors: { primary: '#0f766e' } },
     pages: [
       page('Book an appointment', [
         q('full_name', 'Name', { required: true }),
@@ -82,7 +82,7 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
     name: 'Venue / Room Reservation',
     description: 'Reserve a room by the hour with equipment add-ons and a cost worked out as you choose.',
     tags: ['venue', 'room', 'reservation'],
-    design: { split: { bg: '#1d4ed8', bg_to: '#7c3aed' }, colors: { primary: '#1d4ed8' } },
+    design: { header: { band_bg: '#1d4ed8' }, colors: { primary: '#1d4ed8' } },
     pages: [
       page('Reservation', [
         row(q('full_name', 'Name', { required: true }), q('email', 'Email', { required: true })),
@@ -107,7 +107,7 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
     name: 'Volunteer Signup',
     description: 'Collect volunteers, their interests and availability — with guardian consent for under-18s.',
     tags: ['volunteer', 'availability'],
-    design: { split: { bg: '#15803d', bg_to: '#65a30d' }, colors: { primary: '#15803d' } },
+    design: { header: { band_bg: '#15803d' }, colors: { primary: '#15803d' } },
     pages: [
       page('About you', [
         q('full_name', 'Full name', { required: true }),

@@ -459,10 +459,12 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - 🟡 Closed / expired / not found / password-protected / response-limit states — ✅ not found (404), not published, closed, **expired (410) and not-open-yet** (availability dates, owner 2026-10-03), load error; password / limit come with the Share settings (M3)
 - ⬜ Multi-page with progress, save and resume
 - ⬜ File uploads to secure upload links with progress
+- ✅ **Recognising respondents** (owner, 2026-10-03, decision 85): the respondent's own email (suggested, never someone else's) and / or ID; same → refused, near match → "different person?" + flagged possible duplicate; optional email verification with a code; masked hints only
 - ✅ **Duplicate protection** (owner, 2026-10-03, decision 84): per session, per browser (with "for someone else" after confirming), exact same answers never twice, optional one response per answer (e.g. email); thank-you page: Fill in another · Close this page
 - ✅ **Availability** (decision 84): open from / open until per form, set from the list menu or the overview; badge in table and grid
 - ✅ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key` — the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
 - ⬜ Spam protection (captcha)
+- ⬜ F11: show "Possible duplicate" on responses with a link to the earlier one; merge / reject
 - ✅ Thank-you page or redirect
 - ✅ **In-app browser** (owner, 2026-10-03, decision 83): website, Terms and Data Privacy Policy open in a branded window over the form; answers stay
 - ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles — Branded · Spotlight · Side panel · Minimal — tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
@@ -971,6 +973,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Public form footer: © organisation · Terms · Data Privacy Policy; every link on a public form opens in an in-app browser window over the form (branded, 80%, rounded, clear close) so nothing typed is lost | F10 | ✅ |
 | 2026-10-03 | Super admin console for the owner to manage everything — starting with the Terms / Data Privacy Policy URLs (served now as platform settings, config fallback) | F23 (new phase) | ⬜ planned |
 | 2026-10-03 | Prevent duplicate submissions (also when someone fills in for a friend on the same computer); thank-you buttons Fill in another (confirm it's for someone else) and Close this page; form availability period (expired page after it); show the period in table and grid | F10 | ✅ |
+| 2026-10-03 | Still possible to send twice (one-letter email change): identify the person by their own email (not other emails in the form) or ID; smart matching; optional verification; never mistake another person | F10 | ✅ |
 | 2026-10-03 | Portal text still looked faded: dark-mode headline colour fixed, body text darker, list values in the main text colour like the design image | F1 follow-up | ✅ |
 | 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
 

@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "Este formulario aún no está abierto.",
     "FRM-RESP-1004": "Este formulario ya se envió desde este navegador.",
     "FRM-RESP-1005": "Ya se envió una respuesta con exactamente estas respuestas.",
-    "FRM-RESP-1006": "Ya se envió una respuesta con este valor."
+    "FRM-RESP-1006": "Esta persona ya envió una respuesta.",
+    "FRM-RESP-1007": "Parece una respuesta que ya se envió. Confirma que se trata de otra persona.",
+    "FRM-RESP-1008": "Verifica tu correo para enviar este formulario."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "Enlace a los términos (opcional)",
       "consentLinkLabel": "Texto del enlace",
       "showResult": "Mostrar el resultado a quienes responden",
-      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad).",
-      "unique": "Una respuesta por valor",
-      "uniqueHint": "Rechazar una segunda respuesta con el mismo valor en esta pregunta (p. ej., el mismo correo).",
-      "uniqueNone": "Desactivado: permitir repeticiones"
+      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad)."
     },
     "shortcuts": {
       "title": "Atajos",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Plantilla «{name}» actualizada con los últimos cambios de este formulario",
       "saveNew": "Guardar como plantilla nueva",
       "saveNewHint": "Crea una copia aparte; la plantilla existente se queda como está."
+    },
+    "identity": {
+      "title": "Reconocer a quienes responden",
+      "hint": "Cómo distingue Formalie a las personas, para que nadie responda dos veces y nunca se confunda a otra persona con ella.",
+      "email": "Correo propio de quien responde",
+      "emailHint": "El correo de la persona que rellena el formulario, no el de una referencia, responsable o tutor. Una segunda respuesta con él se rechaza; una muy parecida se revisa.",
+      "id": "ID o número de cuenta",
+      "idHint": "Opcional: p. ej., número de socio, de empleado o de cliente.",
+      "verify": "Verificar el correo antes de enviar",
+      "verifyHint": "Quienes responden introducen un código enviado a su correo: una respuesta por correo verificado.",
+      "suggested": "sugerido",
+      "off": "Desactivado",
+      "none": "Sin correo ni ID, Formalie solo puede reconocer el mismo navegador (se puede usar otro dispositivo)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Introduce una duración en {field} (minutos 0–59).",
       "name": "Introduce el nombre y el apellido en {field}.",
       "consent": "Confirme {field} para continuar.",
-      "choice": "Elige una opción de la lista para {field}.",
-      "unique": "Ya se envió una respuesta con este valor de {field}."
+      "choice": "Elige una opción de la lista para {field}."
     },
     "page": {
       "logo": "Logotipo",
@@ -2031,6 +2042,23 @@
       "stay": "No, quedarme aquí",
       "duplicate": "Estas mismas respuestas ya se enviaron",
       "duplicateDesc": "Ya existe una respuesta con las mismas respuestas. Si es otra persona, revisa sus datos."
+    },
+    "identity": {
+      "registeredTitle": "Ya has respondido",
+      "registeredDesc": "Recibimos una respuesta tuya (con este correo o ID) el {date}. Si no fuiste tú, ponte en contacto con quien organiza.",
+      "registeredDescNoDate": "Ya recibimos una respuesta tuya (con este correo o ID). Si no fuiste tú, ponte en contacto con quien organiza.",
+      "registeredField": "Ya se usó en una respuesta.",
+      "possibleTitle": "¿Eres otra persona?",
+      "possibleDesc": "Parece una respuesta que ya tenemos ({email}, {date}).",
+      "possiblePoint1": "Si eres otra persona, continúa: el equipo verá ambas respuestas.",
+      "possiblePoint2": "Si eres tú, revisa tus respuestas: una segunda respuesta de la misma persona no contará.",
+      "different": "Sí, soy otra persona",
+      "review": "No, revisar mis respuestas",
+      "verifyTitle": "Confirma tu correo",
+      "verifyDesc": "Enviamos un código de 6 dígitos a {email}. Introdúcelo para enviar tu respuesta.",
+      "codeLabel": "Código de 6 dígitos",
+      "resend": "Enviar un código nuevo",
+      "confirm": "Confirmar y enviar"
     }
   },
   "logic": {

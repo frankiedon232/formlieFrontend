@@ -72,14 +72,15 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-calendar-heart',
     dot: 'bg-pink-500',
     design: {
-      layout: 'split',
+      // Card with an accent header (owner, 2026-10-03: the side panel squeezed the form).
+      layout: 'card',
       page: { bg_type: 'gradient', bg: '#fdf2f8', bg_to: '#eef2ff', gradient_angle: 135 },
-      container: { width: 'xl', radius: 'xl', shadow: 'md', border: false },
+      container: { width: 'lg', radius: 'xl', shadow: 'md', border: false },
       colors: { primary: '#db2777', input_bg: '#fdf4ff', input_border: '#f5d0fe' },
       typography: { font: 'rounded' },
       inputs: { style: 'soft', radius: 'lg' },
       buttons: { radius: 'full' },
-      split: { panel: 'gradient', bg: '#db2777', bg_to: '#7c3aed', side: 'start' },
+      header: { band: 'accent', band_bg: '#db2777' },
     },
   },
   {
@@ -115,12 +116,13 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-server-cog',
     dot: 'bg-slate-600',
     design: {
-      layout: 'split',
+      // Card with an accent header (owner, 2026-10-03: the side panel squeezed the form).
+      layout: 'card',
       page: { bg_type: 'color', bg: '#e2e8f0' },
-      container: { width: 'xl', radius: 'lg', shadow: 'lg', border: false },
+      container: { width: 'lg', radius: 'lg', shadow: 'lg', border: false },
       colors: { primary: '#0f172a', input_border: '#cbd5e1' },
       typography: { font: 'system' },
-      split: { panel: 'color', bg: '#0f172a', side: 'start' },
+      header: { band: 'accent', band_bg: '#0f172a' },
     },
   },
   {

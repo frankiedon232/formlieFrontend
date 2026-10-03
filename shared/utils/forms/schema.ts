@@ -53,8 +53,12 @@ export const formSchemaV1 = z.object({
       language: text(10).optional(),
       /** Where labels sit, for the whole form: above the field (default) or beside it. */
       label_position: z.enum(['top', 'left']).optional(),
-      /** One response per answer to this question (e.g. an email) — a second one is refused (F10). */
+      /** Earlier "one response per answer" setting (read as the ID field when identity isn't set). */
       unique_field: text(64).nullable().optional(),
+      /** Telling respondents apart (F10, shared/utils/forms/identity.ts): their own email, an ID, verification. */
+      identity: z
+        .object({ email: text(64).nullable(), id: text(64).nullable(), verify: z.boolean() })
+        .optional(),
     })
     .optional(),
   pages: z

@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "Biểu mẫu này chưa mở.",
     "FRM-RESP-1004": "Biểu mẫu này đã được gửi từ trình duyệt này.",
     "FRM-RESP-1005": "Đã có phản hồi với đúng các câu trả lời này được gửi.",
-    "FRM-RESP-1006": "Đã có phản hồi với câu trả lời này được gửi."
+    "FRM-RESP-1006": "Người này đã gửi một phản hồi.",
+    "FRM-RESP-1007": "Phản hồi này trông giống một phản hồi đã được gửi. Hãy xác nhận đây là một người khác.",
+    "FRM-RESP-1008": "Xác minh email của bạn để gửi biểu mẫu này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "Liên kết đến điều khoản (không bắt buộc)",
       "consentLinkLabel": "Văn bản liên kết",
       "showResult": "Hiển thị kết quả cho người trả lời",
-      "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành).",
-      "unique": "Một phản hồi cho mỗi câu trả lời",
-      "uniqueHint": "Từ chối phản hồi thứ hai có cùng câu trả lời cho câu hỏi này (ví dụ cùng email).",
-      "uniqueNone": "Tắt — cho phép trùng lặp"
+      "internalHint": "Được tính và lưu cùng mỗi phản hồi, nhưng chỉ nhóm của bạn thấy (ví dụ: mức rủi ro hoặc nhóm trung thành)."
     },
     "shortcuts": {
       "title": "Phím tắt",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Đã cập nhật mẫu “{name}” với các thay đổi mới nhất của biểu mẫu này",
       "saveNew": "Lưu thành mẫu mới",
       "saveNewHint": "Tạo một bản sao riêng — mẫu hiện có vẫn giữ nguyên."
+    },
+    "identity": {
+      "title": "Nhận diện người phản hồi",
+      "hint": "Cách Formalie phân biệt mọi người, để một người không thể phản hồi hai lần — và người khác không bao giờ bị nhầm là họ.",
+      "email": "Email của chính người phản hồi",
+      "emailHint": "Email của người đang điền — không phải của người giới thiệu, quản lý hay người giám hộ. Phản hồi thứ hai với email này bị từ chối; phản hồi rất giống sẽ được kiểm tra.",
+      "id": "ID hoặc số tài khoản",
+      "idHint": "Không bắt buộc: ví dụ số thành viên, mã nhân viên hoặc mã khách hàng.",
+      "verify": "Xác minh email trước khi gửi",
+      "verifyHint": "Người phản hồi nhập mã được gửi đến email của họ — mỗi email đã xác minh một phản hồi.",
+      "suggested": "đề xuất",
+      "off": "Tắt",
+      "none": "Không có email hoặc ID, Formalie chỉ có thể nhận diện cùng một trình duyệt (mọi người có thể dùng thiết bị khác)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Nhập thời lượng cho {field} (phút 0–59).",
       "name": "Nhập cả tên và họ cho {field}.",
       "consent": "Vui lòng xác nhận {field} để tiếp tục.",
-      "choice": "Chọn một tùy chọn trong danh sách cho {field}.",
-      "unique": "Đã có phản hồi với {field} này được gửi."
+      "choice": "Chọn một tùy chọn trong danh sách cho {field}."
     },
     "page": {
       "logo": "Logo",
@@ -2031,6 +2042,23 @@
       "stay": "Không, ở lại đây",
       "duplicate": "Các câu trả lời giống hệt này đã được gửi",
       "duplicateDesc": "Đã có phản hồi với cùng các câu trả lời. Nếu đây là người khác, hãy kiểm tra thông tin của họ."
+    },
+    "identity": {
+      "registeredTitle": "Bạn đã phản hồi rồi",
+      "registeredDesc": "Chúng tôi đã nhận được một phản hồi từ bạn (với email hoặc ID này) vào {date}. Nếu đó không phải là bạn, vui lòng liên hệ ban tổ chức.",
+      "registeredDescNoDate": "Chúng tôi đã nhận được một phản hồi từ bạn (với email hoặc ID này). Nếu đó không phải là bạn, vui lòng liên hệ ban tổ chức.",
+      "registeredField": "Đã được dùng cho một phản hồi.",
+      "possibleTitle": "Đây có phải là một người khác không?",
+      "possibleDesc": "Phản hồi này trông giống một phản hồi chúng tôi đã có ({email}, {date}).",
+      "possiblePoint1": "Nếu bạn là người khác, hãy tiếp tục — nhóm sẽ thấy cả hai phản hồi.",
+      "possiblePoint2": "Nếu đó là bạn, hãy kiểm tra lại câu trả lời — phản hồi thứ hai từ cùng một người sẽ không được tính.",
+      "different": "Có, tôi là một người khác",
+      "review": "Không, xem lại câu trả lời",
+      "verifyTitle": "Xác nhận email của bạn",
+      "verifyDesc": "Chúng tôi đã gửi mã 6 chữ số đến {email}. Nhập mã để gửi phản hồi của bạn.",
+      "codeLabel": "Mã 6 chữ số",
+      "resend": "Gửi mã mới",
+      "confirm": "Xác nhận và gửi"
     }
   },
   "logic": {

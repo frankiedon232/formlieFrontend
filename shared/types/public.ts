@@ -59,6 +59,26 @@ export type RendererSubmitOutcome =
   | {
       done: false
       issues?: { key: string; code: string; params?: Record<string, unknown> }[]
-      /** already — this browser already sent one (offer "for someone else") · duplicate — the exact same answers were already sent. */
-      reason?: 'already' | 'duplicate'
+      /**
+       * already — this browser already sent one (offer "for someone else") · duplicate — the exact same
+       * answers were already sent · registered — this person (their email / ID) already responded ·
+       * possible — looks like an earlier response: ask "different person?" · verify — confirm the email first.
+       */
+      reason?: 'already' | 'duplicate' | 'registered' | 'possible' | 'verify'
+      /** The identity question concerned, and a masked hint of the earlier response (never its details). */
+      field?: string
+      hint?: { at?: string; email?: string }
     }
+
+/** What the public page lets the renderer do for the respondent (F10). */
+export interface RendererRespondent {
+  /** This browser already sent the form. */
+  alreadySent: boolean
+  /** Start a new response for someone else. */
+  another: () => void
+  /** "Yes, I'm a different person" (a similar earlier response exists). */
+  confirmDifferent: () => void
+  /** Email code step (forms that verify the respondent's email). */
+  sendCode: (email: string) => Promise<{ sentTo: string; devCode: string | null } | null>
+  confirmCode: (email: string, code: string) => Promise<boolean>
+}

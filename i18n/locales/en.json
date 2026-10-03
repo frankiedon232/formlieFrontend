@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "This form isn’t open yet.",
     "FRM-RESP-1004": "This form was already submitted from this browser.",
     "FRM-RESP-1005": "A response with exactly these answers was already submitted.",
-    "FRM-RESP-1006": "A response with this answer was already submitted."
+    "FRM-RESP-1006": "A response from this person was already submitted.",
+    "FRM-RESP-1007": "This looks like a response that was already submitted. Confirm this is a different person.",
+    "FRM-RESP-1008": "Verify your email to submit this form."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1733,10 +1735,7 @@
       "consentLink": "Link to the terms (optional)",
       "consentLinkLabel": "Link text",
       "showResult": "Show the result to respondents",
-      "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group).",
-      "unique": "One response per answer",
-      "uniqueHint": "Refuse a second response with the same answer to this question (e.g. the same email).",
-      "uniqueNone": "Off — allow repeats"
+      "internalHint": "Worked out and saved with each response, but only your team sees it (e.g. a risk level or loyalty group)."
     },
     "shortcuts": {
       "title": "Shortcuts",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Template “{name}” updated with this form's latest changes",
       "saveNew": "Save as a new template instead",
       "saveNewHint": "Makes a separate copy — the existing template stays as it is."
+    },
+    "identity": {
+      "title": "Recognise respondents",
+      "hint": "How Formalie tells people apart, so one person can’t respond twice — and someone else is never mistaken for them.",
+      "email": "Respondent’s own email",
+      "emailHint": "The email of the person filling in — not a reference’s, manager’s or guardian’s. A second response with it is refused; a very similar one is checked.",
+      "id": "ID or account number",
+      "idHint": "Optional: e.g. a membership, employee or customer number.",
+      "verify": "Verify the email before submitting",
+      "verifyHint": "Respondents enter a code sent to their email — one response per verified email.",
+      "suggested": "suggested",
+      "off": "Off",
+      "none": "Without an email or ID, Formalie can only recognise the same browser (people can use another device)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Enter a duration for {field} (minutes 0–59).",
       "name": "Enter both first and last name for {field}.",
       "consent": "Please confirm {field} to continue.",
-      "choice": "Choose an option from the list for {field}.",
-      "unique": "A response with this {field} was already sent."
+      "choice": "Choose an option from the list for {field}."
     },
     "page": {
       "logo": "Logo",
@@ -2031,6 +2042,23 @@
       "stay": "No, stay here",
       "duplicate": "These exact answers were already sent",
       "duplicateDesc": "A response with the same answers is already in. If this is someone else, check their details."
+    },
+    "identity": {
+      "registeredTitle": "You’ve already responded",
+      "registeredDesc": "A response from you (this email or ID) was received on {date}. If that wasn’t you, please contact the organiser.",
+      "registeredDescNoDate": "A response from you (this email or ID) was already received. If that wasn’t you, please contact the organiser.",
+      "registeredField": "Already used for a response.",
+      "possibleTitle": "Is this a different person?",
+      "possibleDesc": "This looks like a response we already have ({email}, {date}).",
+      "possiblePoint1": "If you’re someone else, continue — the team will see both responses.",
+      "possiblePoint2": "If it’s you, check your answers instead — a second response from the same person won’t count.",
+      "different": "Yes, I’m a different person",
+      "review": "No, review my answers",
+      "verifyTitle": "Confirm your email",
+      "verifyDesc": "We sent a 6-digit code to {email}. Enter it to send your response.",
+      "codeLabel": "6-digit code",
+      "resend": "Send a new code",
+      "confirm": "Confirm and send"
     }
   },
   "logic": {
@@ -2465,7 +2493,9 @@
       "band": "Header background",
       "plain": "Plain",
       "bandColor": "Band colour",
-      "bandInPanel": "With a coloured side panel, the header sits in the panel."
+      "bandInPanel": "With a coloured side panel, the header sits in the panel.",
+      "accent": "Accent",
+      "accentColor": "Accent colour"
     },
     "footer": {
       "show": "Show a footer",

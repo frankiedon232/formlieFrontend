@@ -84,6 +84,10 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed') {
   })
   /** Set when the respondent confirmed the next response is for another person. */
   const forSomeoneElse = ref(false)
+  /** Set when the respondent confirmed they are not the person of a similar earlier response. */
+  const confirmedDifferent = ref(false)
+  /** From the email code step, when the form verifies the respondent's email. */
+  const verificationToken = ref<string | null>(null)
 
   function submissionId(): string {
     try {
@@ -109,11 +113,20 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed') {
     try {
       const { data } = await api.post<PublicSubmitResult>(
         `/public/forms/${encodeURIComponent(key)}/submit`,
-        { data: answers, channel, language: locale.value, for_someone_else: forSomeoneElse.value || undefined },
+        {
+          data: answers,
+          channel,
+          language: locale.value,
+          for_someone_else: forSomeoneElse.value || undefined,
+          confirmed_different: confirmedDifferent.value || undefined,
+          verification_token: verificationToken.value ?? undefined,
+        },
         { headers: { 'Idempotency-Key': submissionId() } },
       )
       newSession() // A next fill-in is a new session.
       forSomeoneElse.value = false
+      confirmedDifferent.value = false
+      verificationToken.value = null
       try {
         localStorage.setItem(receiptKey, new Date().toISOString())
       } catch {
@@ -125,8 +138,17 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed') {
       const failure = error as { code?: string; details?: { field?: string; message: string }[] }
       if (failure.code === 'FRM-RESP-1001' && failure.details?.length)
         return { done: false, issues: failure.details.filter(d => d.field).map(d => ({ key: d.field!, code: d.message })) }
-      if (failure.code === 'FRM-RESP-1006' && failure.details?.length)
-        return { done: false, issues: failure.details.filter(d => d.field).map(d => ({ key: d.field!, code: 'unique' })) }
+      const detail = failure.details?.[0]
+      const hint = (() => {
+        try {
+          return detail?.message ? (JSON.parse(detail.message) as { at?: string; email?: string }) : undefined
+        } catch {
+          return undefined
+        }
+      })()
+      if (failure.code === 'FRM-RESP-1006') return { done: false, reason: 'registered', field: detail?.field, hint }
+      if (failure.code === 'FRM-RESP-1007') return { done: false, reason: 'possible', field: detail?.field, hint }
+      if (failure.code === 'FRM-RESP-1008') return { done: false, reason: 'verify', field: detail?.field, hint: { email: detail?.message } }
       if (failure.code === 'FRM-RESP-1004') return { done: false, reason: 'already' }
       if (failure.code === 'FRM-RESP-1005') return { done: false, reason: 'duplicate' }
       handle(error)
@@ -140,5 +162,29 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed') {
     newSession()
   }
 
-  return { submit, alreadySent, another }
+  /** "Yes, I'm a different person" — send again; the team sees it flagged as a possible duplicate. */
+  const confirmDifferent = () => (confirmedDifferent.value = true)
+
+  /** Email code step: send a code, then trade it for a short-lived token. Dev mock returns the code. */
+  async function sendCode(email: string): Promise<{ sentTo: string; devCode: string | null } | null> {
+    try {
+      const { data, meta } = await api.post<{ sent_to: string }>(`/public/forms/${encodeURIComponent(key)}/verify`, { email })
+      return { sentTo: data.sent_to, devCode: typeof meta?.dev_code === 'string' ? meta.dev_code : null }
+    } catch (error) {
+      handle(error)
+      return null
+    }
+  }
+  async function confirmCode(email: string, code: string): Promise<boolean> {
+    try {
+      const { data } = await api.post<{ token: string }>(`/public/forms/${encodeURIComponent(key)}/verify/confirm`, { email, code })
+      verificationToken.value = data.token
+      return true
+    } catch (error) {
+      handle(error)
+      return false
+    }
+  }
+
+  return { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode }
 }

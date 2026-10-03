@@ -79,6 +79,8 @@ const router = createRouter()
   // Public form pages (F10) — no sign-in.
   .get('/public/forms/:key', publicForms.getPublicForm)
   .post('/public/forms/:key/submit', publicForms.submitPublicForm)
+  .post('/public/forms/:key/verify', publicForms.sendVerification)
+  .post('/public/forms/:key/verify/confirm', publicForms.confirmVerification)
   .get('/templates', templates.listTemplates)
   .get('/templates/facets', templates.templateFacets)
   .get('/templates/categories', templates.listTemplateCategories)

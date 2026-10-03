@@ -16,8 +16,8 @@ const config = useRuntimeConfig()
 const url = useRequestURL()
 
 const { form, errorCode } = await usePublicForm(props.formKey)
-const { submit, alreadySent, another } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link')
-const respondent = computed(() => ({ alreadySent: alreadySent.value, another }))
+const { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link')
+const respondent = computed(() => ({ alreadySent: alreadySent.value, another, confirmDifferent, sendCode, confirmCode }))
 
 // Development only: `?frame=spotlight` previews another page style without changing the form.
 const devFrame = import.meta.dev && THEME_FRAMES.includes(route.query.frame as ThemeFrame) ? (route.query.frame as ThemeFrame) : null

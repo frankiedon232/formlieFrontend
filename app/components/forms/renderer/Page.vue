@@ -7,7 +7,7 @@
   Used by the designer preview, the builder preview and the public form (F10).
 -->
 <script setup lang="ts">
-import type { RendererSubmitOutcome } from '#shared/types/public'
+import type { RendererRespondent, RendererSubmitOutcome } from '#shared/types/public'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { allFields } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
@@ -23,7 +23,7 @@ const props = defineProps<{
   /** Show the page frame around the form (public link and previews; never in embeds). */
   framed?: boolean
   /** Public page: already sent from this browser / start one for someone else (renderer Form). */
-  respondent?: { alreadySent: boolean; another: () => void }
+  respondent?: RendererRespondent
 }>()
 const branding = useWorkspaceBranding()
 const theme = useFormTheme(() => props.schema.theme)
@@ -64,7 +64,7 @@ const minutes = computed(() => Math.max(1, Math.round((questions.value * 20) / 6
 
 // Where the header goes: in a coloured side panel, on a band, or plain above the form.
 const panel = computed(() => (layout.value === 'split' && theme.value.split.panel !== 'image' ? theme.value.split : null))
-const band = computed(() => (!panel.value && theme.value.header.band !== 'none' ? theme.value.header : null))
+const band = computed(() => (!panel.value && theme.value.header.band !== 'none' && theme.value.header.band !== 'accent' ? theme.value.header : null))
 const footerBand = computed(() => theme.value.footer.enabled && theme.value.footer.style === 'band')
 const attachedFooter = computed(() => footerBand.value && boxed.value)
 

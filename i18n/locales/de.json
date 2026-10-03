@@ -470,7 +470,9 @@
     "FRM-FORM-1016": "Dieses Formular ist noch nicht geöffnet.",
     "FRM-RESP-1004": "Dieses Formular wurde von diesem Browser bereits gesendet.",
     "FRM-RESP-1005": "Eine Antwort mit genau diesen Angaben wurde bereits gesendet.",
-    "FRM-RESP-1006": "Eine Antwort mit diesem Wert wurde bereits gesendet."
+    "FRM-RESP-1006": "Von dieser Person wurde bereits eine Antwort gesendet.",
+    "FRM-RESP-1007": "Das sieht nach einer bereits gesendeten Antwort aus. Bestätigen Sie, dass es sich um eine andere Person handelt.",
+    "FRM-RESP-1008": "Bestätigen Sie Ihre E-Mail-Adresse, um dieses Formular zu senden."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1725,10 +1727,7 @@
       "consentLink": "Link zu den Bedingungen (optional)",
       "consentLinkLabel": "Linktext",
       "showResult": "Ergebnis den Antwortenden anzeigen",
-      "internalHint": "Wird mit jeder Antwort berechnet und gespeichert, ist aber nur für Ihr Team sichtbar (z. B. eine Risikostufe oder Loyalitätsgruppe).",
-      "unique": "Eine Antwort pro Wert",
-      "uniqueHint": "Eine zweite Antwort mit demselben Wert für diese Frage ablehnen (z. B. dieselbe E-Mail).",
-      "uniqueNone": "Aus – Wiederholungen erlauben"
+      "internalHint": "Wird mit jeder Antwort berechnet und gespeichert, ist aber nur für Ihr Team sichtbar (z. B. eine Risikostufe oder Loyalitätsgruppe)."
     },
     "shortcuts": {
       "title": "Tastenkürzel",
@@ -1888,6 +1887,19 @@
       "updatedToast": "Vorlage „{name}“ mit den neuesten Änderungen dieses Formulars aktualisiert",
       "saveNew": "Stattdessen als neue Vorlage speichern",
       "saveNewHint": "Erstellt eine separate Kopie – die bestehende Vorlage bleibt unverändert."
+    },
+    "identity": {
+      "title": "Antwortende erkennen",
+      "hint": "Wie Formalie Personen unterscheidet, damit niemand zweimal antworten kann – und niemand anderes mit dieser Person verwechselt wird.",
+      "email": "Eigene E-Mail-Adresse der antwortenden Person",
+      "emailHint": "Die E-Mail-Adresse der Person, die ausfüllt – nicht die einer Referenz, Führungskraft oder erziehungsberechtigten Person. Eine zweite Antwort damit wird abgelehnt; eine sehr ähnliche wird geprüft.",
+      "id": "ID oder Kontonummer",
+      "idHint": "Optional: z. B. Mitglieds-, Personal- oder Kundennummer.",
+      "verify": "E-Mail-Adresse vor dem Absenden bestätigen",
+      "verifyHint": "Antwortende geben einen Code ein, der an ihre E-Mail-Adresse gesendet wird – eine Antwort pro bestätigter E-Mail-Adresse.",
+      "suggested": "empfohlen",
+      "off": "Aus",
+      "none": "Ohne E-Mail-Adresse oder ID kann Formalie nur denselben Browser erkennen (Personen können ein anderes Gerät verwenden)."
     }
   },
   "renderer": {
@@ -1974,8 +1986,7 @@
       "duration": "Geben Sie für {field} eine Dauer ein (Minuten 0–59).",
       "name": "Geben Sie für {field} Vor- und Nachnamen ein.",
       "consent": "Bitte bestätigen Sie {field}, um fortzufahren.",
-      "choice": "Wählen Sie für {field} eine Option aus der Liste.",
-      "unique": "Eine Antwort mit diesem Wert für {field} wurde bereits gesendet."
+      "choice": "Wählen Sie für {field} eine Option aus der Liste."
     },
     "page": {
       "logo": "Logo",
@@ -2031,6 +2042,23 @@
       "stay": "Nein, hierbleiben",
       "duplicate": "Genau diese Antworten wurden bereits gesendet",
       "duplicateDesc": "Eine Antwort mit denselben Angaben liegt bereits vor. Wenn es sich um eine andere Person handelt, prüfen Sie deren Angaben."
+    },
+    "identity": {
+      "registeredTitle": "Sie haben bereits geantwortet",
+      "registeredDesc": "Eine Antwort von Ihnen (mit dieser E-Mail-Adresse oder ID) ist am {date} eingegangen. Falls das nicht Sie waren, wenden Sie sich bitte an die Organisatoren.",
+      "registeredDescNoDate": "Eine Antwort von Ihnen (mit dieser E-Mail-Adresse oder ID) ist bereits eingegangen. Falls das nicht Sie waren, wenden Sie sich bitte an die Organisatoren.",
+      "registeredField": "Bereits für eine Antwort verwendet.",
+      "possibleTitle": "Ist das eine andere Person?",
+      "possibleDesc": "Das sieht nach einer Antwort aus, die bereits vorliegt ({email}, {date}).",
+      "possiblePoint1": "Wenn Sie eine andere Person sind, fahren Sie fort – das Team sieht beide Antworten.",
+      "possiblePoint2": "Wenn Sie es selbst sind, prüfen Sie stattdessen Ihre Angaben – eine zweite Antwort derselben Person zählt nicht.",
+      "different": "Ja, ich bin eine andere Person",
+      "review": "Nein, Angaben prüfen",
+      "verifyTitle": "E-Mail-Adresse bestätigen",
+      "verifyDesc": "Wir haben einen 6-stelligen Code an {email} gesendet. Geben Sie ihn ein, um Ihre Antwort zu senden.",
+      "codeLabel": "6-stelliger Code",
+      "resend": "Neuen Code senden",
+      "confirm": "Bestätigen und senden"
     }
   },
   "logic": {
