@@ -2314,7 +2314,8 @@
       "buttons": "Knoppen",
       "header": "Koptekst",
       "footer": "Voettekst",
-      "thankYou": "Bedankpagina"
+      "thankYou": "Bedankpagina",
+      "frame": "Pagina"
     },
     "layout": {
       "card": "Kaart",
@@ -2435,6 +2436,32 @@
       "panel": "Zijpaneel",
       "panelHint": "Het logo, de formuliernaam en de introtekst verschijnen in het paneel.",
       "side": "Kant van het paneel"
+    },
+    "frame": {
+      "hint": "De pagina rond het formulier op de link: je huisstijl, een link naar je website en een veilige voettekst. Insluitingen tonen alleen het formulier.",
+      "style": {
+        "branded": "Huisstijl",
+        "spotlight": "Spotlight",
+        "side": "Zijpaneel",
+        "minimal": "Minimaal"
+      },
+      "styleHint": {
+        "branded": "Bovenbalk met je logo en website, het formulier en een voettekst.",
+        "spotlight": "Een banner in je merkkleur met de titel en korte info; het formulier schuift erin omhoog.",
+        "side": "Een paneel in je huisstijl naast het formulier — op telefoons onder elkaar.",
+        "minimal": "Alleen het formulier en een smalle voettekst."
+      },
+      "tone": "Kleur van balk en paneel",
+      "toneValue": {
+        "light": "Licht",
+        "dark": "Donker",
+        "brand": "Merk"
+      },
+      "showWebsite": "Link naar je website",
+      "showWebsiteHint": "De eigen site van je organisatie (Instellingen → Bedrijf), niet het portaal.",
+      "noWebsite": "Voeg je website toe in Instellingen → Bedrijf om de link te tonen.",
+      "showFacts": "Korte info",
+      "showFactsHint": "Hoe lang het duurt, hoeveel vragen er zijn en dat antwoorden versleuteld zijn."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "We konden dit formulier niet laden",
       "desc": "Er ging iets mis aan onze kant. Probeer het zo meteen opnieuw."
+    },
+    "frame": {
+      "minutes": "Ongeveer {n} minuut | Ongeveer {n} minuten",
+      "questions": "{n} vraag | {n} vragen",
+      "encrypted": "Versleuteld",
+      "website": "Website bezoeken",
+      "websiteOf": "Website van {name} bezoeken",
+      "secured": "{icon} Versleuteld · Beveiligd door {brand}"
     }
   }
 }

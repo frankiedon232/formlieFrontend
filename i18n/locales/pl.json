@@ -2314,7 +2314,8 @@
       "buttons": "Przyciski",
       "header": "Nagłówek",
       "footer": "Stopka",
-      "thankYou": "Strona podziękowania"
+      "thankYou": "Strona podziękowania",
+      "frame": "Strona"
     },
     "layout": {
       "card": "Karta",
@@ -2435,6 +2436,32 @@
       "panel": "Panel boczny",
       "panelHint": "Logo, nazwa formularza i tekst wprowadzający pojawiają się w panelu.",
       "side": "Strona panelu"
+    },
+    "frame": {
+      "hint": "Strona wokół formularza pod jego linkiem: Twoja marka, link do Twojej witryny i bezpieczna stopka. Osadzenia pokazują tylko formularz.",
+      "style": {
+        "branded": "Z marką",
+        "spotlight": "Wyróżnienie",
+        "side": "Panel boczny",
+        "minimal": "Minimalny"
+      },
+      "styleHint": {
+        "branded": "Górny pasek z logo i witryną, formularz i stopka.",
+        "spotlight": "Baner w kolorze marki z tytułem i krótkimi informacjami; formularz na niego nachodzi.",
+        "side": "Panel z marką obok formularza — na telefonach jeden pod drugim.",
+        "minimal": "Tylko formularz i wąska stopka."
+      },
+      "tone": "Kolor paska i panelu",
+      "toneValue": {
+        "light": "Jasny",
+        "dark": "Ciemny",
+        "brand": "Marka"
+      },
+      "showWebsite": "Link do Twojej witryny",
+      "showWebsiteHint": "Własna witryna organizacji (Ustawienia → Firma), nie portal.",
+      "noWebsite": "Dodaj witrynę w Ustawienia → Firma, aby pokazać link.",
+      "showFacts": "Krótkie informacje",
+      "showFactsHint": "Ile to trwa, ile jest pytań i że odpowiedzi są szyfrowane."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Nie udało się wczytać formularza",
       "desc": "Wystąpił problem po naszej stronie. Spróbuj ponownie za chwilę."
+    },
+    "frame": {
+      "minutes": "Około {n} minuty | Około {n} minut",
+      "questions": "Pytania: {n} | Pytania: {n}",
+      "encrypted": "Szyfrowane",
+      "website": "Odwiedź stronę",
+      "websiteOf": "Odwiedź stronę {name}",
+      "secured": "{icon} Szyfrowane · Zabezpieczone przez {brand}"
     }
   }
 }

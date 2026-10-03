@@ -2314,7 +2314,8 @@
       "buttons": "按钮",
       "header": "页眉",
       "footer": "页脚",
-      "thankYou": "感谢页"
+      "thankYou": "感谢页",
+      "frame": "页面"
     },
     "layout": {
       "card": "卡片",
@@ -2435,6 +2436,32 @@
       "panel": "侧边面板",
       "panelHint": "徽标、表单名称和介绍文字显示在面板中。",
       "side": "面板位置"
+    },
+    "frame": {
+      "hint": "通过链接打开时表单周围的页面：你的品牌、指向你网站的链接和安全页脚。嵌入时仅显示表单。",
+      "style": {
+        "branded": "品牌",
+        "spotlight": "聚焦",
+        "side": "侧边面板",
+        "minimal": "极简"
+      },
+      "styleHint": {
+        "branded": "带有你的徽标和网站的顶栏、表单和页脚。",
+        "spotlight": "品牌色横幅，展示标题和概要信息；表单向上叠入其中。",
+        "side": "表单旁的品牌面板——在手机上上下排列。",
+        "minimal": "仅表单和一条细页脚。"
+      },
+      "tone": "顶栏和面板颜色",
+      "toneValue": {
+        "light": "浅色",
+        "dark": "深色",
+        "brand": "品牌色"
+      },
+      "showWebsite": "链接到你的网站",
+      "showWebsiteHint": "你组织自己的网站（设置 → 公司），而非门户。",
+      "noWebsite": "在 设置 → 公司 中添加网站即可显示链接。",
+      "showFacts": "概要信息",
+      "showFactsHint": "所需时间、问题数量，以及回答已加密。"
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "无法加载此表单",
       "desc": "我们这边出了点问题。请稍后再试。"
+    },
+    "frame": {
+      "minutes": "约 {n} 分钟 | 约 {n} 分钟",
+      "questions": "{n} 个问题 | {n} 个问题",
+      "encrypted": "已加密",
+      "website": "访问网站",
+      "websiteOf": "访问 {name} 网站",
+      "secured": "{icon} 已加密 · 由 {brand} 提供安全保护"
     }
   }
 }

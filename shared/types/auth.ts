@@ -14,6 +14,8 @@ export interface TenantPublicProfile {
   subdomain: string
   logo_url: string | null
   colors: { primary: string | null }
+  /** The organisation's own website (public form pages link to it); null on manage.*. */
+  website?: string | null
   auth_providers: AuthProvider[]
   status: TenantStatus
 }

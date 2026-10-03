@@ -14,6 +14,8 @@ export interface PublicWorkspace {
   primary: string | null
   /** Own subdomain, or null for workspaces served from forms.formalie.com. */
   subdomain: string | null
+  /** The organisation's own website (https), or null. */
+  website: string | null
 }
 
 export interface PublicFormSeo {

@@ -2314,7 +2314,8 @@
       "buttons": "Pulsanti",
       "header": "Intestazione",
       "footer": "Piè di pagina",
-      "thankYou": "Pagina di ringraziamento"
+      "thankYou": "Pagina di ringraziamento",
+      "frame": "Pagina"
     },
     "layout": {
       "card": "Scheda",
@@ -2435,6 +2436,32 @@
       "panel": "Pannello laterale",
       "panelHint": "Il logo, il nome del modulo e il testo introduttivo compaiono nel pannello.",
       "side": "Lato del pannello"
+    },
+    "frame": {
+      "hint": "La pagina attorno al modulo sul suo link: il tuo brand, un link al tuo sito e un piè di pagina sicuro. Gli incorporamenti mostrano solo il modulo.",
+      "style": {
+        "branded": "Con brand",
+        "spotlight": "In evidenza",
+        "side": "Pannello laterale",
+        "minimal": "Minimale"
+      },
+      "styleHint": {
+        "branded": "Barra superiore con il tuo logo e sito, il modulo e un piè di pagina.",
+        "spotlight": "Un banner nel colore del tuo brand con titolo e info rapide; il modulo vi si sovrappone.",
+        "side": "Un pannello con il tuo brand accanto al modulo, impilato sui telefoni.",
+        "minimal": "Solo il modulo e un piè di pagina sottile."
+      },
+      "tone": "Colore di barra e pannello",
+      "toneValue": {
+        "light": "Chiaro",
+        "dark": "Scuro",
+        "brand": "Brand"
+      },
+      "showWebsite": "Link al tuo sito",
+      "showWebsiteHint": "Il sito della tua organizzazione (Impostazioni → Azienda), non il portale.",
+      "noWebsite": "Aggiungi il tuo sito in Impostazioni → Azienda per mostrare il link.",
+      "showFacts": "Info rapide",
+      "showFactsHint": "Quanto tempo serve, quante domande ci sono e che le risposte sono crittografate."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Impossibile caricare questo modulo",
       "desc": "Qualcosa è andato storto da parte nostra. Riprova tra un momento."
+    },
+    "frame": {
+      "minutes": "Circa {n} minuto | Circa {n} minuti",
+      "questions": "{n} domanda | {n} domande",
+      "encrypted": "Crittografato",
+      "website": "Visita il sito",
+      "websiteOf": "Visita il sito di {name}",
+      "secured": "{icon} Crittografato · Protetto da {brand}"
     }
   }
 }

@@ -20,6 +20,8 @@ export interface MockTenant {
   /** Set from Settings / onboarding → Branding. */
   logo_url?: string | null
   brand_color?: string | null
+  /** The organisation's own website (Settings → Company); sample workspaces use reserved .example domains. */
+  website?: string | null
 }
 
 export interface MockUser {
@@ -39,6 +41,7 @@ export const MOCK_TENANTS: MockTenant[] = [
     id: '6f0e2a14-3c2b-4d55-9a0f-1b2c3d4e5f60',
     name: 'Remedy Legal',
     subdomain: 'remedylegal',
+    website: 'https://www.remedylegal.example',
     status: 'active',
     auth_providers: ['password', 'google', 'microsoft'],
     organisation: { id: '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d', name: 'Remedy Legal' },
@@ -47,6 +50,7 @@ export const MOCK_TENANTS: MockTenant[] = [
     id: '7a1f3b25-4d3c-4e66-8b10-2c3d4e5f6071',
     name: 'Samath Tax',
     subdomain: 'samathtax',
+    website: 'https://www.samathtax.example',
     status: 'active',
     auth_providers: ['password', 'google', 'apple', 'facebook'],
     organisation: { id: '1b2c3d4e-5f60-4b7c-9d8e-0f1a2b3c4d5e', name: 'Samath Tax' },

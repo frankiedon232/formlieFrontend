@@ -2314,7 +2314,8 @@
       "buttons": "Tombol",
       "header": "Header",
       "footer": "Footer",
-      "thankYou": "Halaman terima kasih"
+      "thankYou": "Halaman terima kasih",
+      "frame": "Halaman"
     },
     "layout": {
       "card": "Kartu",
@@ -2435,6 +2436,32 @@
       "panel": "Panel samping",
       "panelHint": "Logo, nama formulir, dan teks pengantar tampil di panel.",
       "side": "Sisi panel"
+    },
+    "frame": {
+      "hint": "Halaman di sekitar formulir pada tautannya: branding Anda, tautan ke situs web Anda, dan footer yang aman. Sematan hanya menampilkan formulir.",
+      "style": {
+        "branded": "Bermerek",
+        "spotlight": "Sorotan",
+        "side": "Panel samping",
+        "minimal": "Minimal"
+      },
+      "styleHint": {
+        "branded": "Bilah atas dengan logo dan situs web Anda, formulir, dan footer.",
+        "spotlight": "Banner berwarna merek dengan judul dan info singkat; formulir naik ke dalamnya.",
+        "side": "Panel bermerek di samping formulir — bertumpuk di ponsel.",
+        "minimal": "Hanya formulir dan footer tipis."
+      },
+      "tone": "Warna bilah dan panel",
+      "toneValue": {
+        "light": "Terang",
+        "dark": "Gelap",
+        "brand": "Merek"
+      },
+      "showWebsite": "Tautan ke situs web Anda",
+      "showWebsiteHint": "Situs milik organisasi Anda (Pengaturan → Perusahaan), bukan portal.",
+      "noWebsite": "Tambahkan situs web Anda di Pengaturan → Perusahaan untuk menampilkan tautan.",
+      "showFacts": "Info singkat",
+      "showFactsHint": "Berapa lama waktunya, berapa banyak pertanyaan, dan bahwa jawaban dienkripsi."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Formulir ini tidak dapat dimuat",
       "desc": "Terjadi kesalahan di pihak kami. Silakan coba lagi sebentar lagi."
+    },
+    "frame": {
+      "minutes": "Sekitar {n} menit | Sekitar {n} menit",
+      "questions": "{n} pertanyaan | {n} pertanyaan",
+      "encrypted": "Terenkripsi",
+      "website": "Kunjungi situs web",
+      "websiteOf": "Kunjungi situs web {name}",
+      "secured": "{icon} Terenkripsi · Diamankan oleh {brand}"
     }
   }
 }

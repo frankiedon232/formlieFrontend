@@ -57,7 +57,7 @@ watch(open, value => {
     <template #body>
       <div class="mx-auto w-full overflow-hidden transition-[max-width] duration-300 @container" :class="FRAME[device]">
         <!-- The form page with its theme (background, header, footer), exactly as respondents see it. -->
-        <FormsRendererPage v-if="shown" :key="key" :schema="shown" :title="formName ?? ''" preview />
+        <FormsRendererPage v-if="shown" :key="key" :schema="shown" :title="formName ?? ''" preview framed />
       </div>
     </template>
   </USlideover>

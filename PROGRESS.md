@@ -461,6 +461,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key` — the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
 - ⬜ Spam protection (captcha)
 - ✅ Thank-you page or redirect
+- ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles — Branded · Spotlight · Side panel · Minimal — tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
 - ⬜ Preview page with device frames
 - ⬜ **Form languages** (owner, 2026-10-03, see 03-DECISIONS → 73): the form opens in the respondent's browser language when the form offers it, otherwise its main language; `?lang=xx` forces one (shareable per-language links, embeds and QR codes); a language switcher when a form has several; translated questions / options / help / messages per language; the language is saved with each response; buttons, messages, dates, numbers and right-to-left follow it
 - ⬜ Embed: the Share card offers the ready `<iframe>` code (with sizes and auto-resize) instead of a bare embed address
@@ -942,7 +943,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Preview side panel: Desktop fills the panel edge to edge (panel keeps its width) | F10 | ✅ |
 | 2026-10-03 | Text colours sharp and dark everywhere (tables, grids, cards like the navigation) | F1 follow-up | ✅ |
 | 2026-10-03 | No real ids anywhere in URLs, parameters or responses — encrypted references only the API can decrypt (globally) | F2 follow-up (security) | ✅ |
-| 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | 🟡 |
+| 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
 
 ---
 

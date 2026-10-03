@@ -9,7 +9,10 @@
 <script setup lang="ts">
 import type { RendererSubmitOutcome } from '#shared/types/public'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+import { allFields } from '#shared/utils/forms/build'
+import { isInputField } from '#shared/utils/forms/fields'
 
+const FormFrame = resolveComponent('FormsRendererFrame')
 const props = defineProps<{
   schema: FormSchemaV1
   title: string
@@ -17,6 +20,8 @@ const props = defineProps<{
   showThankYou?: boolean
   /** Public page: sends the answers (see renderer Form). */
   submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
+  /** Show the page frame around the form (public link and previews; never in embeds). */
+  framed?: boolean
 }>()
 const branding = useWorkspaceBranding()
 const theme = useFormTheme(() => props.schema.theme)
@@ -34,9 +39,26 @@ const boxed = computed(() => layout.value === 'card' || layout.value === 'split'
 const width = computed(() => WIDTH[theme.value.container.width])
 /** Inner padding; full-width layouts keep their content at the chosen width. */
 const inner = computed(() => (layout.value === 'full' ? `mx-auto w-full ${width.value} ${PAD[theme.value.container.padding]}` : PAD[theme.value.container.padding]))
-const logo = computed(() => (theme.value.header.show_logo ? theme.value.header.logo || branding.value.logo_url : null))
+// The page frame (public link) shows the organisation; spotlight and side also show the title,
+// so the form card doesn't repeat them.
+const frameStyle = computed(() => (props.framed ? theme.value.frame.style : null))
+const frameOwnsLogo = computed(() => !!frameStyle.value && frameStyle.value !== 'minimal')
+const frameOwnsTitle = computed(() => frameStyle.value === 'spotlight' || frameStyle.value === 'side')
+const logo = computed(() => (!frameOwnsLogo.value && theme.value.header.show_logo ? theme.value.header.logo || branding.value.logo_url : null))
 const footerLogo = computed(() => (theme.value.footer.show_logo ? theme.value.header.logo || branding.value.logo_url : null))
-const hasHeader = computed(() => !!(logo.value || theme.value.header.show_title || theme.value.header.subtitle))
+const hasHeader = computed(() => !frameOwnsTitle.value && !!(logo.value || theme.value.header.show_title || theme.value.header.subtitle))
+
+const { profile } = useTenant()
+const frameOrg = computed(() => ({
+  name: profile.value?.name ?? '',
+  logo: theme.value.header.logo || branding.value.logo_url,
+  website: profile.value?.website ?? null,
+}))
+const questions = computed(
+  () => allFields(props.schema).filter(f => isInputField(f.type) && f.type !== 'hidden' && f.type !== 'calculated').length,
+)
+/** About 20 seconds a question, at least a minute. */
+const minutes = computed(() => Math.max(1, Math.round((questions.value * 20) / 60)))
 
 // Where the header goes: in a coloured side panel, on a band, or plain above the form.
 const panel = computed(() => (layout.value === 'split' && theme.value.split.panel !== 'image' ? theme.value.split : null))
@@ -56,6 +78,11 @@ const containerClass = computed(() => [
     class="flex min-h-full w-full flex-col text-default"
     :style="{ ...vars, background: pageBackground(theme), fontFamily: 'var(--form-font)', fontSize: 'var(--form-font-size)' }"
   >
+    <component
+      :is="framed ? FormFrame : 'div'"
+      v-bind="framed ? { theme, title, intro: theme.header.subtitle, questions, minutes, org: frameOrg } : {}"
+      :class="framed ? 'flex-1' : 'contents'"
+    >
     <div class="flex w-full flex-1 flex-col items-center" :class="layout === 'full' ? '' : 'px-3 py-6 sm:px-6 sm:py-10'">
       <main :class="containerClass" :style="{ background: layout === 'plain' ? 'transparent' : 'var(--form-container-bg)' }">
         <div :class="layout === 'split' ? 'grid @container md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]' : ''">
@@ -106,7 +133,8 @@ const containerClass = computed(() => [
 
     <!-- Full-width footer bar under plain / full layouts -->
     <FormsRendererPageFooter v-if="footerBand && !attachedFooter" :theme="theme" :logo="footerLogo" :width-class="width" />
-    <!-- Public page: a small line on the form's own background (e.g. "Made with Formalie"). -->
+    </component>
+    <!-- Public page: a small line on the form's own background. -->
     <slot name="after" />
   </div>
 </template>

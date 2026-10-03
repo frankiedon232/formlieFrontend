@@ -13,6 +13,7 @@ import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { MOCK_TENANTS, MOCK_USERS } from '../data/tenants'
+import { websiteOf } from './onboarding'
 
 /** GET /tenants/public — branding + enabled sign-in methods for this host. */
 export const publicProfile = defineMockRoute(({ event }) => {
@@ -36,6 +37,7 @@ export const publicProfile = defineMockRoute(({ event }) => {
     subdomain: tenant.subdomain,
     logo_url: tenant.logo_url ?? null,
     colors: { primary: tenant.brand_color ?? null },
+    website: websiteOf(tenant),
     auth_providers: tenant.auth_providers,
     status: tenant.status,
   })

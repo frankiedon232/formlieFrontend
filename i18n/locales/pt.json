@@ -2314,7 +2314,8 @@
       "buttons": "Botões",
       "header": "Cabeçalho",
       "footer": "Rodapé",
-      "thankYou": "Página de agradecimento"
+      "thankYou": "Página de agradecimento",
+      "frame": "Página"
     },
     "layout": {
       "card": "Cartão",
@@ -2435,6 +2436,32 @@
       "panel": "Painel lateral",
       "panelHint": "O logotipo, o nome do formulário e o texto de introdução aparecem no painel.",
       "side": "Lado do painel"
+    },
+    "frame": {
+      "hint": "A página ao redor do formulário no link: sua marca, um link para seu site e um rodapé seguro. Incorporações mostram só o formulário.",
+      "style": {
+        "branded": "Com marca",
+        "spotlight": "Destaque",
+        "side": "Painel lateral",
+        "minimal": "Mínimo"
+      },
+      "styleHint": {
+        "branded": "Barra superior com seu logo e site, o formulário e um rodapé.",
+        "spotlight": "Um banner na cor da marca com o título e informações rápidas; o formulário sobe sobre ele.",
+        "side": "Um painel com sua marca ao lado do formulário — empilhado no celular.",
+        "minimal": "Só o formulário e um rodapé fino."
+      },
+      "tone": "Cor da barra e do painel",
+      "toneValue": {
+        "light": "Claro",
+        "dark": "Escuro",
+        "brand": "Marca"
+      },
+      "showWebsite": "Link para seu site",
+      "showWebsiteHint": "O site da sua organização (Configurações → Empresa), não o portal.",
+      "noWebsite": "Adicione seu site em Configurações → Empresa para mostrar o link.",
+      "showFacts": "Informações rápidas",
+      "showFactsHint": "Quanto tempo leva, quantas perguntas há e que as respostas são criptografadas."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Não conseguimos carregar este formulário",
       "desc": "Algo deu errado do nosso lado. Tente novamente em instantes."
+    },
+    "frame": {
+      "minutes": "Cerca de {n} minuto | Cerca de {n} minutos",
+      "questions": "{n} pergunta | {n} perguntas",
+      "encrypted": "Criptografado",
+      "website": "Visitar site",
+      "websiteOf": "Visitar o site de {name}",
+      "secured": "{icon} Criptografado · Protegido por {brand}"
     }
   }
 }

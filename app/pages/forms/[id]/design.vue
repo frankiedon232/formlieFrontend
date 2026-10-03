@@ -71,6 +71,7 @@ const paneHeight = computed(() => (session.fullscreen.value ? 'h-[calc(100dvh-5.
             :title="form?.name ?? ''"
             :show-thank-you="screen === 'thanks'"
             preview
+            framed
           />
         </div>
       </div>

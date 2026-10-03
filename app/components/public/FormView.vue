@@ -6,6 +6,7 @@
   sent once per fill-in session (usePublicSubmit).
 -->
 <script setup lang="ts">
+import { THEME_FRAMES, type ThemeFrame } from '#shared/utils/forms/theme'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
 
 const props = defineProps<{ formKey: string; embed?: boolean }>()
@@ -16,6 +17,15 @@ const url = useRequestURL()
 
 const { form, errorCode } = await usePublicForm(props.formKey)
 const { submit } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link')
+
+// Development only: `?frame=spotlight` previews another page style without changing the form.
+const devFrame = import.meta.dev && THEME_FRAMES.includes(route.query.frame as ThemeFrame) ? (route.query.frame as ThemeFrame) : null
+const schema = computed(() => {
+  const value = form.value?.schema
+  if (!value || !devFrame) return value ?? null
+  const theme = (value.theme ?? {}) as { frame?: Record<string, unknown> }
+  return { ...value, theme: { ...theme, frame: { ...theme.frame, style: devFrame } } }
+})
 
 // ── Language ─────────────────────────────────────────────────────────────────────────
 const nuxtApp = useNuxtApp()
@@ -78,6 +88,22 @@ if (import.meta.client && props.embed) {
   })
 }
 
+const year = new Date().getFullYear()
+const websiteHost = computed(() => {
+  try {
+    return form.value?.workspace.website ? new URL(form.value.workspace.website).hostname.replace(/^www\./, '') : ''
+  } catch {
+    return ''
+  }
+})
+const orgInitials = computed(() =>
+  (form.value?.workspace.name ?? '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map(word => word[0]!.toUpperCase())
+    .join(''),
+)
 const message = computed(() => {
   switch (view.value) {
     case 'not_found':
@@ -96,15 +122,27 @@ const message = computed(() => {
 
 <template>
   <div ref="root" :class="embed ? '' : 'flex min-h-dvh flex-col'">
-    <FormsRendererPage v-if="view === 'open' && form?.schema" :schema="form.schema" :title="form.name" :submit="submit" :class="embed ? '' : 'flex-1'">
-      <template v-if="!embed" #after>
-        <i18n-t keypath="public.madeWith" tag="p" scope="global" class="pb-4 text-center text-xs opacity-70">
-          <template #brand><span class="font-semibold">Formalie</span></template>
-        </i18n-t>
-      </template>
-    </FormsRendererPage>
+    <FormsRendererPage v-if="view === 'open' && schema" :schema="schema" :title="form?.name ?? ''" :submit="submit" :framed="!embed" :class="embed ? '' : 'flex-1'" />
 
-    <div v-else class="flex flex-1 items-center justify-center bg-elevated/40 px-4 py-16">
+    <!-- Closed / not open yet: still the organisation's page (bar + footer); unknown links stay neutral. -->
+    <header v-if="view !== 'open' && form && !embed" class="border-b border-default bg-default">
+      <div class="mx-auto flex h-16 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
+        <FormsRendererFrameOrg :org="{ name: form.workspace.name, logo: form.workspace.logo_url }" :initials="orgInitials" accent="var(--ui-bg-inverted)" on-accent="var(--ui-bg)" />
+        <UButton
+          v-if="form.workspace.website"
+          :to="form.workspace.website"
+          target="_blank"
+          external
+          :label="t('public.frame.website')"
+          trailing-icon="i-lucide-arrow-up-right"
+          color="neutral"
+          variant="outline"
+          size="sm"
+          class="rounded-full max-sm:[&>span:first-child]:sr-only"
+        />
+      </div>
+    </header>
+    <div v-if="view !== 'open' || !schema" class="flex flex-1 items-center justify-center bg-elevated/40 px-4 py-16">
       <UCard class="w-full max-w-md" :ui="{ body: 'p-6 sm:p-8' }">
         <div class="flex flex-col items-center gap-3 text-center">
           <span class="flex size-12 items-center justify-center rounded-full bg-elevated">
@@ -118,8 +156,14 @@ const message = computed(() => {
       </UCard>
     </div>
 
-    <i18n-t v-if="!embed && view !== 'open'" keypath="public.madeWith" tag="p" scope="global" class="bg-elevated/40 py-4 text-center text-xs text-dimmed">
-      <template #brand><span class="font-semibold text-muted">Formalie</span></template>
-    </i18n-t>
+    <FormsRendererFrameFooter
+      v-if="!embed && view !== 'open'"
+      class="bg-default"
+      :org="{ name: form?.workspace.name ?? 'Formalie' }"
+      :website="form?.workspace.website ?? null"
+      :website-host="websiteHost"
+      :year="year"
+      :slim="!form"
+    />
   </div>
 </template>

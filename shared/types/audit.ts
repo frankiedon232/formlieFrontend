@@ -1,7 +1,6 @@
 /** Audit trail shapes (docs/API-CONTRACT.md → Audit trail). */
 import type { AuditAction, AuditArea } from '../utils/audit/events'
 
-export type { AuditAction, AuditArea }
 export type AuditOutcome = 'success' | 'failure' | 'blocked'
 export type AuditSeverity = 'info' | 'notice' | 'warning' | 'critical'
 

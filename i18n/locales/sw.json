@@ -2314,7 +2314,8 @@
       "buttons": "Vitufe",
       "header": "Kichwa",
       "footer": "Sehemu ya chini",
-      "thankYou": "Ukurasa wa shukrani"
+      "thankYou": "Ukurasa wa shukrani",
+      "frame": "Ukurasa"
     },
     "layout": {
       "card": "Kadi",
@@ -2435,6 +2436,32 @@
       "panel": "Paneli ya pembeni",
       "panelHint": "Nembo, jina la fomu na maandishi ya utangulizi huonekana kwenye paneli.",
       "side": "Upande wa paneli"
+    },
+    "frame": {
+      "hint": "Ukurasa unaozunguka fomu kwenye kiungo chake: chapa yako, kiungo cha tovuti yako na sehemu ya chini salama. Fomu zilizopachikwa huonyesha fomu pekee.",
+      "style": {
+        "branded": "Yenye chapa",
+        "spotlight": "Kivutio",
+        "side": "Paneli ya pembeni",
+        "minimal": "Rahisi"
+      },
+      "styleHint": {
+        "branded": "Upau wa juu wenye nembo na tovuti yako, fomu, na sehemu ya chini.",
+        "spotlight": "Bango la rangi ya chapa lenye kichwa na taarifa fupi; fomu inapanda ndani yake.",
+        "side": "Paneli yenye chapa kando ya fomu — hupangwa juu na chini kwenye simu.",
+        "minimal": "Fomu pekee na sehemu ya chini nyembamba."
+      },
+      "tone": "Rangi ya upau na paneli",
+      "toneValue": {
+        "light": "Angavu",
+        "dark": "Giza",
+        "brand": "Chapa"
+      },
+      "showWebsite": "Kiungo cha tovuti yako",
+      "showWebsiteHint": "Tovuti ya shirika lako (Mipangilio → Kampuni), si lango.",
+      "noWebsite": "Ongeza tovuti yako katika Mipangilio → Kampuni ili kuonyesha kiungo.",
+      "showFacts": "Taarifa fupi",
+      "showFactsHint": "Inachukua muda gani, maswali mangapi, na kwamba majibu yamesimbwa."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Hatukuweza kupakia fomu hii",
       "desc": "Hitilafu imetokea upande wetu. Tafadhali jaribu tena baada ya muda mfupi."
+    },
+    "frame": {
+      "minutes": "Takriban dakika {n} | Takriban dakika {n}",
+      "questions": "Swali {n} | Maswali {n}",
+      "encrypted": "Imesimbwa",
+      "website": "Tembelea tovuti",
+      "websiteOf": "Tembelea tovuti ya {name}",
+      "secured": "{icon} Imesimbwa · Inalindwa na {brand}"
     }
   }
 }

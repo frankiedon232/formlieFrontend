@@ -106,7 +106,7 @@ Three panes on desktop: **Field palette** (left, searchable; tabs Fields by cate
 
 ## 7. Designer (`/forms/[id]/design`)
 
-Live preview on the right, controls on the left in collapsible groups: Layout · Background · Form container (border, radius, shadow, padding, max width) · Typography · Colours · Inputs · Buttons · Header/cover · Thank-you page · Custom CSS (paid plans, sanitised). Device preview toggle. Save as theme / apply theme. Implemented as CSS variables applied on the renderer root only.
+Live preview on the right, controls on the left in collapsible groups: Page (frame around the form on its link: branded · spotlight · side panel · minimal) · Layout · Background · Form container (border, radius, shadow, padding, max width) · Typography · Colours · Inputs · Buttons · Header/cover · Thank-you page · Custom CSS (paid plans, sanitised). Device preview toggle. Save as theme / apply theme. Implemented as CSS variables applied on the renderer root only.
 
 ## 8. Share and embed (`/forms/[id]/share`)
 

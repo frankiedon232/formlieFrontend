@@ -2314,7 +2314,8 @@
       "buttons": "Nút",
       "header": "Đầu trang",
       "footer": "Chân trang",
-      "thankYou": "Trang cảm ơn"
+      "thankYou": "Trang cảm ơn",
+      "frame": "Trang"
     },
     "layout": {
       "card": "Thẻ",
@@ -2435,6 +2436,32 @@
       "panel": "Bảng bên",
       "panelHint": "Logo, tên biểu mẫu và văn bản giới thiệu hiển thị trong bảng.",
       "side": "Vị trí bảng"
+    },
+    "frame": {
+      "hint": "Trang bao quanh biểu mẫu khi mở bằng liên kết: thương hiệu của bạn, liên kết đến trang web của bạn và chân trang bảo mật. Bản nhúng chỉ hiển thị biểu mẫu.",
+      "style": {
+        "branded": "Thương hiệu",
+        "spotlight": "Nổi bật",
+        "side": "Bảng bên",
+        "minimal": "Tối giản"
+      },
+      "styleHint": {
+        "branded": "Thanh trên cùng có logo và trang web của bạn, biểu mẫu và chân trang.",
+        "spotlight": "Biểu ngữ màu thương hiệu với tiêu đề và thông tin nhanh; biểu mẫu nổi lên trên đó.",
+        "side": "Bảng thương hiệu bên cạnh biểu mẫu — xếp chồng trên điện thoại.",
+        "minimal": "Chỉ biểu mẫu và một chân trang mảnh."
+      },
+      "tone": "Màu thanh và bảng",
+      "toneValue": {
+        "light": "Sáng",
+        "dark": "Tối",
+        "brand": "Thương hiệu"
+      },
+      "showWebsite": "Liên kết đến trang web của bạn",
+      "showWebsiteHint": "Trang web riêng của tổ chức bạn (Cài đặt → Công ty), không phải cổng thông tin.",
+      "noWebsite": "Thêm trang web của bạn trong Cài đặt → Công ty để hiển thị liên kết.",
+      "showFacts": "Thông tin nhanh",
+      "showFactsHint": "Mất bao lâu, có bao nhiêu câu hỏi và câu trả lời được mã hóa."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Không thể tải biểu mẫu này",
       "desc": "Đã xảy ra sự cố từ phía chúng tôi. Vui lòng thử lại sau giây lát."
+    },
+    "frame": {
+      "minutes": "Khoảng {n} phút | Khoảng {n} phút",
+      "questions": "{n} câu hỏi | {n} câu hỏi",
+      "encrypted": "Đã mã hóa",
+      "website": "Truy cập trang web",
+      "websiteOf": "Truy cập trang web của {name}",
+      "secured": "{icon} Đã mã hóa · Bảo mật bởi {brand}"
     }
   }
 }

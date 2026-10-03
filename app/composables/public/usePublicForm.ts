@@ -44,6 +44,7 @@ export async function usePublicForm(key: string) {
       subdomain: workspace.subdomain ?? '',
       logo_url: workspace.logo_url,
       colors: { primary: workspace.primary },
+      website: workspace.website,
       auth_providers: [],
       status: 'active',
     }

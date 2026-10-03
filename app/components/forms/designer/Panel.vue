@@ -1,6 +1,6 @@
 <!--
   Designer controls (FRONTEND-SPEC §7): starting points on top, then collapsible groups —
-  Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
+  Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
   Footer · Thank-you page. "Reset" goes back to the workspace default.
 -->
 <script setup lang="ts">
@@ -13,6 +13,8 @@ const d = useDesigner()
 const confirm = useConfirm()
 
 const groups = computed<AccordionItem[]>(() => [
+  // The page around the form on its link (F10) — first, because it's what people see first.
+  { value: 'frame', label: t('designer.group.frame'), icon: 'i-lucide-app-window', slot: 'frame' },
   { value: 'layout', label: t('designer.group.layout'), icon: 'i-lucide-layout-template', slot: 'layout' },
   { value: 'background', label: t('designer.group.background'), icon: 'i-lucide-paint-bucket', slot: 'background' },
   { value: 'container', label: t('designer.group.container'), icon: 'i-lucide-square-dashed', slot: 'container' },
@@ -54,6 +56,7 @@ async function reset() {
     <FormsDesignerSavedThemes v-if="!props.standalone" />
 
     <UAccordion v-model="open" type="multiple" :items="groups" :ui="{ trigger: 'text-sm font-medium', body: 'pb-4' }">
+      <template #frame><FormsDesignerPanelFrame /></template>
       <template #layout><FormsDesignerPanelLayout group="layout" /></template>
       <template #background><FormsDesignerPanelLayout group="background" /></template>
       <template #container><FormsDesignerPanelLayout group="container" /></template>

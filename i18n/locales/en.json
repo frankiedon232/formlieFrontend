@@ -2314,7 +2314,8 @@
       "buttons": "Buttons",
       "header": "Header",
       "footer": "Footer",
-      "thankYou": "Thank-you page"
+      "thankYou": "Thank-you page",
+      "frame": "Page"
     },
     "layout": {
       "card": "Card",
@@ -2435,6 +2436,32 @@
       "panel": "Side panel",
       "panelHint": "The logo, form name and intro text appear in the panel.",
       "side": "Panel side"
+    },
+    "frame": {
+      "hint": "The page around the form on its link: your branding, a link to your website and a secure footer. Embeds show the form only.",
+      "style": {
+        "branded": "Branded",
+        "spotlight": "Spotlight",
+        "side": "Side panel",
+        "minimal": "Minimal"
+      },
+      "styleHint": {
+        "branded": "Top bar with your logo and website, the form, and a footer.",
+        "spotlight": "A brand-colour banner with the title and quick facts; the form rises into it.",
+        "side": "A branded panel beside the form — stacks on phones.",
+        "minimal": "Just the form and a slim footer."
+      },
+      "tone": "Bar and panel colour",
+      "toneValue": {
+        "light": "Light",
+        "dark": "Dark",
+        "brand": "Brand"
+      },
+      "showWebsite": "Link to your website",
+      "showWebsiteHint": "Your organisation's own site (Settings → Company), not the portal.",
+      "noWebsite": "Add your website in Settings → Company to show the link.",
+      "showFacts": "Quick facts",
+      "showFactsHint": "How long it takes, how many questions, and that answers are encrypted."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "We couldn’t load this form",
       "desc": "Something went wrong on our side. Please try again in a moment."
+    },
+    "frame": {
+      "minutes": "About {n} minute | About {n} minutes",
+      "questions": "{n} question | {n} questions",
+      "encrypted": "Encrypted",
+      "website": "Visit website",
+      "websiteOf": "Visit the {name} website",
+      "secured": "{icon} Encrypted · Secured by {brand}"
     }
   }
 }

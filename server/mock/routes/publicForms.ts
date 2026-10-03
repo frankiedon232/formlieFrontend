@@ -21,6 +21,7 @@ import { findByPublicKey, formsOf, saveForms, type StoredForm } from '../data/fo
 import { responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
 import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
+import { websiteOf } from './onboarding'
 
 const RESPONDENT = { type: 'user' as const, id: null, name: 'Respondent', email: null }
 
@@ -74,7 +75,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
     name: form.name,
     state: schema ? state : state === 'open' ? 'not_published' : state,
     schema,
-    workspace: { name: tenant.name, logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null, subdomain: tenant.subdomain ?? null },
+    workspace: { name: tenant.name, logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null, subdomain: tenant.subdomain ?? null, website: websiteOf(tenant) },
     seo: {
       title: form.name,
       description: summaryText(published) || String((published?.theme as { header?: { subtitle?: string } } | undefined)?.header?.subtitle ?? ''),

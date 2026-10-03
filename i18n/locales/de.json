@@ -2314,7 +2314,8 @@
       "buttons": "Schaltflächen",
       "header": "Kopfzeile",
       "footer": "Fußzeile",
-      "thankYou": "Dankesseite"
+      "thankYou": "Dankesseite",
+      "frame": "Seite"
     },
     "layout": {
       "card": "Karte",
@@ -2435,6 +2436,32 @@
       "panel": "Seitenleiste",
       "panelHint": "Logo, Formularname und Einleitungstext erscheinen in der Seitenleiste.",
       "side": "Position der Seitenleiste"
+    },
+    "frame": {
+      "hint": "Die Seite rund um das Formular unter seinem Link: Branding, ein Link zur Website und eine sichere Fußzeile. Einbettungen zeigen nur das Formular.",
+      "style": {
+        "branded": "Gebrandet",
+        "spotlight": "Spotlight",
+        "side": "Seitenleiste",
+        "minimal": "Minimal"
+      },
+      "styleHint": {
+        "branded": "Obere Leiste mit Logo und Website, das Formular und eine Fußzeile.",
+        "spotlight": "Ein Banner in Markenfarbe mit Titel und Kurzinfos; das Formular ragt hinein.",
+        "side": "Ein gebrandetes Panel neben dem Formular – auf Smartphones untereinander.",
+        "minimal": "Nur das Formular und eine schmale Fußzeile."
+      },
+      "tone": "Farbe von Leiste und Panel",
+      "toneValue": {
+        "light": "Hell",
+        "dark": "Dunkel",
+        "brand": "Marke"
+      },
+      "showWebsite": "Link zur Website",
+      "showWebsiteHint": "Die eigene Website der Organisation (Einstellungen → Unternehmen), nicht das Portal.",
+      "noWebsite": "Website unter Einstellungen → Unternehmen hinzufügen, um den Link anzuzeigen.",
+      "showFacts": "Kurzinfos",
+      "showFactsHint": "Wie lange es dauert, wie viele Fragen es gibt und dass Antworten verschlüsselt sind."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Formular konnte nicht geladen werden",
       "desc": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es gleich noch einmal."
+    },
+    "frame": {
+      "minutes": "Etwa {n} Minute | Etwa {n} Minuten",
+      "questions": "{n} Frage | {n} Fragen",
+      "encrypted": "Verschlüsselt",
+      "website": "Website besuchen",
+      "websiteOf": "Website von {name} besuchen",
+      "secured": "{icon} Verschlüsselt · Geschützt durch {brand}"
     }
   }
 }

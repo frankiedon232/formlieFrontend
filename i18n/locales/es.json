@@ -2314,7 +2314,8 @@
       "buttons": "Botones",
       "header": "Encabezado",
       "footer": "Pie de página",
-      "thankYou": "Página de agradecimiento"
+      "thankYou": "Página de agradecimiento",
+      "frame": "Página"
     },
     "layout": {
       "card": "Tarjeta",
@@ -2435,6 +2436,32 @@
       "panel": "Panel lateral",
       "panelHint": "El logotipo, el nombre del formulario y el texto de introducción aparecen en el panel.",
       "side": "Lado del panel"
+    },
+    "frame": {
+      "hint": "La página que rodea el formulario en su enlace: tu marca, un enlace a tu sitio web y un pie de página seguro. Los formularios insertados muestran solo el formulario.",
+      "style": {
+        "branded": "Con marca",
+        "spotlight": "Destacado",
+        "side": "Panel lateral",
+        "minimal": "Mínimo"
+      },
+      "styleHint": {
+        "branded": "Barra superior con tu logo y sitio web, el formulario y un pie de página.",
+        "spotlight": "Un banner con el color de tu marca, el título y datos rápidos; el formulario se eleva sobre él.",
+        "side": "Un panel con tu marca junto al formulario; en móviles se apila.",
+        "minimal": "Solo el formulario y un pie de página fino."
+      },
+      "tone": "Color de la barra y el panel",
+      "toneValue": {
+        "light": "Claro",
+        "dark": "Oscuro",
+        "brand": "Marca"
+      },
+      "showWebsite": "Enlace a tu sitio web",
+      "showWebsiteHint": "El sitio propio de tu organización (Configuración → Empresa), no el portal.",
+      "noWebsite": "Añade tu sitio web en Configuración → Empresa para mostrar el enlace.",
+      "showFacts": "Datos rápidos",
+      "showFactsHint": "Cuánto tarda, cuántas preguntas tiene y que las respuestas están cifradas."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "No pudimos cargar este formulario",
       "desc": "Algo salió mal por nuestra parte. Vuelve a intentarlo en un momento."
+    },
+    "frame": {
+      "minutes": "Unos {n} minuto | Unos {n} minutos",
+      "questions": "{n} pregunta | {n} preguntas",
+      "encrypted": "Cifrado",
+      "website": "Visitar sitio web",
+      "websiteOf": "Visitar el sitio web de {name}",
+      "secured": "{icon} Cifrado · Protegido por {brand}"
     }
   }
 }

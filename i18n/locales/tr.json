@@ -2314,7 +2314,8 @@
       "buttons": "Düğmeler",
       "header": "Üst bilgi",
       "footer": "Alt bilgi",
-      "thankYou": "Teşekkür sayfası"
+      "thankYou": "Teşekkür sayfası",
+      "frame": "Sayfa"
     },
     "layout": {
       "card": "Kart",
@@ -2435,6 +2436,32 @@
       "panel": "Yan panel",
       "panelHint": "Logo, form adı ve giriş metni panelde görünür.",
       "side": "Panel tarafı"
+    },
+    "frame": {
+      "hint": "Bağlantısında formu çevreleyen sayfa: markanız, web sitenize bir bağlantı ve güvenli bir alt bilgi. Yerleştirmeler yalnızca formu gösterir.",
+      "style": {
+        "branded": "Markalı",
+        "spotlight": "Öne çıkan",
+        "side": "Yan panel",
+        "minimal": "Sade"
+      },
+      "styleHint": {
+        "branded": "Logonuz ve web sitenizle üst çubuk, form ve alt bilgi.",
+        "spotlight": "Başlık ve kısa bilgilerle marka renginde bir afiş; form onun içine doğru yükselir.",
+        "side": "Formun yanında markalı bir panel — telefonlarda alt alta dizilir.",
+        "minimal": "Yalnızca form ve ince bir alt bilgi."
+      },
+      "tone": "Çubuk ve panel rengi",
+      "toneValue": {
+        "light": "Açık",
+        "dark": "Koyu",
+        "brand": "Marka"
+      },
+      "showWebsite": "Web sitenize bağlantı",
+      "showWebsiteHint": "Kuruluşunuzun kendi sitesi (Ayarlar → Şirket), portal değil.",
+      "noWebsite": "Bağlantıyı göstermek için Ayarlar → Şirket bölümünden web sitenizi ekleyin.",
+      "showFacts": "Kısa bilgiler",
+      "showFactsHint": "Ne kadar sürdüğü, kaç soru olduğu ve yanıtların şifrelendiği."
     }
   },
   "themes": {
@@ -2587,6 +2614,14 @@
     "error": {
       "title": "Bu form yüklenemedi",
       "desc": "Bizim tarafımızda bir sorun oluştu. Lütfen birazdan tekrar deneyin."
+    },
+    "frame": {
+      "minutes": "Yaklaşık {n} dakika | Yaklaşık {n} dakika",
+      "questions": "{n} soru | {n} soru",
+      "encrypted": "Şifreli",
+      "website": "Web sitesini ziyaret et",
+      "websiteOf": "{name} web sitesini ziyaret et",
+      "secured": "{icon} Şifreli · {brand} ile güvende"
     }
   }
 }

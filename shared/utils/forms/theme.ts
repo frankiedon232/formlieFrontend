@@ -12,6 +12,17 @@ const imageRef = httpsUrl.nullable()
 
 export const THEME_FONTS = ['sans', 'system', 'serif', 'rounded', 'mono'] as const
 export const THEME_LAYOUTS = ['card', 'plain', 'split', 'full'] as const
+/**
+ * The page around the form on its public link (F10, owner 2026-10-03): the organisation's
+ * branding, a link to its website, quick facts and a secure-by-Formalie footer.
+ *   branded   — top bar (logo, name, website) · form · footer
+ *   spotlight — brand-colour hero with title, intro and facts; the form card overlaps it
+ *   side      — branded side panel (sticky on wide screens) next to the form
+ *   minimal   — the form with a slim footer
+ * Embeds never show the page frame.
+ */
+export const THEME_FRAMES = ['branded', 'spotlight', 'side', 'minimal'] as const
+export type ThemeFrame = (typeof THEME_FRAMES)[number]
 
 export const themeSchema = z.object({
   layout: z.enum(THEME_LAYOUTS),
@@ -99,6 +110,15 @@ export const themeSchema = z.object({
     bg: hex,
   }),
   thank_you: z.object({ show_icon: z.boolean() }),
+  frame: z.object({
+    style: z.enum(THEME_FRAMES),
+    /** "Visit website" — the organisation's site (Settings → Company), never the portal. */
+    show_website: z.boolean(),
+    /** About N minutes · N questions · encrypted. */
+    show_facts: z.boolean(),
+    /** Top bar / side panel colour: the page's surface, dark, or the brand colour. */
+    tone: z.enum(['light', 'dark', 'brand']),
+  }),
 })
 export type FormTheme = z.infer<typeof themeSchema>
 
@@ -128,6 +148,7 @@ export function defaultTheme(branding: WorkspaceBranding = { logo_url: null, pri
     split: { image: null, side: 'start', panel: 'image', bg: '#18181b', bg_to: '#3f3f46' },
     footer: { enabled: false, text: '', links: [], show_logo: false, align: 'center', style: 'plain', bg: '#18181b' },
     thank_you: { show_icon: true },
+    frame: { style: 'branded', show_website: true, show_facts: true, tone: 'light' },
   }
 }
 

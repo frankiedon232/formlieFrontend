@@ -27,6 +27,9 @@ import { completedUploadUrl } from './uploads'
 
 const states = new Map<string, Onboarding>()
 
+/** The organisation's website as set in onboarding / Settings → Company (public pages, F10). */
+export const websiteOf = (tenant: MockTenant): string | null => stateOf(tenant).company.website ?? tenant.website ?? null
+
 function stateOf(tenant: MockTenant): Onboarding {
   let state = states.get(tenant.id)
   if (!state) {
@@ -38,7 +41,7 @@ function stateOf(tenant: MockTenant): Onboarding {
       steps: Object.fromEntries(
         ONBOARDING_STEPS.map(step => [step, seeded ? 'done' : 'todo']),
       ) as Onboarding['steps'],
-      company: { name: tenant.organisation.name, industry: null, size: null, country: null, website: null },
+      company: { name: tenant.organisation.name, industry: null, size: null, country: null, website: tenant.website ?? null },
       branding: { logo_url: tenant.logo_url ?? null, brand_color: tenant.brand_color ?? null },
       localisation: {
         language: 'en',
