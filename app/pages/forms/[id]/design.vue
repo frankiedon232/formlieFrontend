@@ -46,7 +46,8 @@ const paneHeight = computed(() => (session.fullscreen.value ? 'h-[calc(100dvh-5.
         <FormsDesignerPanel />
       </UCard>
 
-      <div class="mb-20 flex min-w-0 flex-col gap-3 rounded-xl bg-elevated/40 p-2 sm:p-3 lg:mb-0">
+      <!-- The preview fills the pane like a real page (owner, 2026-10-03): the form's background reaches the bottom, the page scrolls inside. -->
+      <div class="mb-20 flex min-w-0 flex-col gap-3 rounded-xl bg-elevated/40 p-2 sm:p-3 lg:mb-0" :class="large ? paneHeight : 'min-h-[70dvh]'">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <UTabs v-model="screen" :items="screens" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" :aria-label="t('designer.screen.label')" />
           <UTabs
@@ -61,7 +62,7 @@ const paneHeight = computed(() => (session.fullscreen.value ? 'h-[calc(100dvh-5.
           />
         </div>
         <div
-          class="mx-auto w-full overflow-hidden rounded-lg border border-default transition-[max-width] duration-300 @container"
+          class="mx-auto flex min-h-0 w-full flex-1 flex-col overflow-y-auto rounded-lg border border-default transition-[max-width] duration-300 @container"
           :class="WIDTH[device]"
         >
           <FormsRendererPage

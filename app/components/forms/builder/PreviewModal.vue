@@ -17,8 +17,14 @@ const devices = computed(() => [
   { value: 'tablet', label: t('builder.preview.tablet'), icon: 'i-lucide-tablet' },
   { value: 'phone', label: t('builder.preview.phone'), icon: 'i-lucide-smartphone' },
 ])
-// Desktop fills the preview area; tablet and phone keep real device widths.
-const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[390px]' }
+// Desktop is the real thing: the whole screen, edge to edge (owner, 2026-10-03 — not a box).
+// Tablet and phone show a device-sized frame in a panel that fits it.
+const PANEL = { desktop: 'w-full sm:max-w-none', tablet: 'w-full sm:max-w-[52rem]', phone: 'w-full sm:max-w-lg' }
+const FRAME = {
+  desktop: 'h-full',
+  tablet: 'max-w-[768px] min-h-full rounded-lg border border-default',
+  phone: 'max-w-[390px] min-h-full rounded-lg border border-default',
+}
 // Remount on open so the preview always starts from page 1 with the latest draft.
 const key = ref(0)
 watch(open, value => {
@@ -31,7 +37,10 @@ watch(open, value => {
     v-model:open="open"
     :title="title ?? t('builder.preview.title')"
     :description="t('builder.preview.desc')"
-    :ui="{ content: 'w-full sm:max-w-5xl', body: 'bg-elevated/40 p-3 sm:p-4' }"
+    :ui="{
+      content: `${PANEL[device]} transition-[max-width] duration-300`,
+      body: device === 'desktop' ? 'p-0 sm:p-0' : 'bg-elevated/40 p-3 sm:p-4',
+    }"
   >
     <template #actions>
       <UTabs
@@ -46,7 +55,7 @@ watch(open, value => {
       />
     </template>
     <template #body>
-      <div class="mx-auto w-full overflow-hidden rounded-lg border border-default transition-[max-width] duration-300 @container" :class="WIDTH[device]">
+      <div class="mx-auto w-full overflow-hidden transition-[max-width] duration-300 @container" :class="FRAME[device]">
         <!-- The form page with its theme (background, header, footer), exactly as respondents see it. -->
         <FormsRendererPage v-if="shown" :key="key" :schema="shown" :title="formName ?? ''" preview />
       </div>

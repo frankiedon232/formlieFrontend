@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-03 · **Current phase:** F9 — Templates gallery (waiting for the owner's end-of-phase review)
+**Last updated:** 2026-10-03 · **Current phase:** F10 — Renderer, preview, share, embed (F9 reviewed by the owner)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -19,7 +19,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
-| F9    | Templates gallery                                 | 🟡     | ~95% |
+| F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
@@ -371,7 +371,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 ---
 
-## F9 — Templates gallery 🟡
+## F9 — Templates gallery ✅
 
 **Goal:** nobody starts from an empty page — a catalogue full of beautiful, ready templates (fields, pages, logic, calculations **and a design**) that people pick, adapt and publish; plus their own workspace templates. Comes before the renderer (owner, 2026-10-02). Stays in the **Forms area** (Resources → Templates) — no own rail icon: templates are a way to start a form.
 
@@ -439,7 +439,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 - ✅ Template content (labels, options, help, page titles, consent / paragraph text, thank-you messages, text results) in all 20 languages — one dictionary per language (`shared/templates/messages/<code>.json`, decision 77); preview and new forms open in the person's language; keys, values, scores, logic and formulas unchanged
 - ✅ Phone / desktop, dark, Arabic RTL checked on the categories page, a category, Your templates and a template in Arabic; skeletons from DataView; empty state for Your templates offers next steps; keyboard: cards and rows are links, actions are buttons
-- ⬜ End-of-phase review with the owner
+- ✅ End-of-phase review with the owner (2026-10-03: "all is good")
 
 Total at launch: **84 templates in 11 categories** (a few names appear in two categories on purpose, framed for each — e.g. Lead Capture, Quote Request, Order, Maintenance). More later (owner: "just the tip of the iceberg"); the AI assistant (F19) can generate more.
 
@@ -646,6 +646,17 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 - ⬜ Company profile: legal name, display name, industry, size, address, country, tax / registration number, support email and phone
 - ⬜ Branding: logo (light + dark), favicon, brand colour, sign-in page image and message; live preview of the workspace sign-in page
+
+### Organisation data (owner, 2026-10-03 — decision 79)
+
+Every workspace sets up its own reference data here; the builder, field access and logic only ever offer what the workspace has (no built-in samples once Settings exist), with an empty state that links straight to the right settings page.
+
+- ⬜ **Departments:** create, rename, merge, archive (forms keep their history); members per department; import from CSV
+- ⬜ **Roles / job titles:** the workspace's own list (separate from the permission roles of F22); people can hold several
+- ⬜ **Teams, locations / sites, cost centres** (optional lists, same pattern)
+- ⬜ **Lists (option sets):** reachable from Settings as well as Resources → Option sets (F15) — every list and its kinds (simple, large / searchable, cascading, with details, dynamic)
+- ⬜ Builder pickers read these live: field access (departments, roles, people), choice fields "from a list", logic conditions; removed / archived entries are flagged on forms that still use them
+- ⬜ Mock: replace the fixed sample departments / roles in `server/mock/routes/directory.ts` with per-workspace data managed here
 
 ### Domain & workspace address
 
@@ -921,6 +932,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Folder explanation behind an info icon (click to read) instead of text under the field — new form page and "Use template" dialog | F9 | ✅ |
 | 2026-10-03 | Templates: category chips removed from the top — categories (with counts) only in the Filter menu, like every other list | F9 | ✅ |
 | 2026-10-03 | Templates by category: gallery lists categories (counts + analytics) instead of all 84 templates; a category opens its templates; menu shows the top 6 categories then All; Formalie templates and your own (saved) templates kept apart | F9 | ✅ |
+| 2026-10-03 | Departments, roles and other organisation data (and lists) are set up per workspace in Settings; the builder only shows what the workspace has | F14 (Organisation data) · F15 | ⬜ planned |
+| 2026-10-03 | Preview: Desktop mode fills the whole screen edge to edge (was a box); the design page's preview fills its pane | F10 | ✅ |
 
 ---
 
@@ -989,3 +1002,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | Milestone 2 + 3 languages complete: template names, theme library and errors in all 20 languages; Spanish wording aligned to "tú" throughout; 188 tests green. |
 | 2026-10-03 | F9 | Milestone 4: 20 templates — Community (membership fee, donation with optional 3% cost cover, petition, ranked ballot), Real Estate (income-to-rent ratio with an internal affordability band, room-by-room condition score, emergency note on urgent repairs), Sales (B2B lead capture with hidden source fields, seat-based quote, BANT-style qualification hot / warm / cold, trade order with volume discount); all 84 templates in 11 categories; 20 languages. |
 | 2026-10-03 | F9 | Milestone 5: template content (1,411 texts) in all 20 languages — previews and new forms open in the person's language, logic / scores / formulas unchanged (compared values like "yes" kept); templates gallery reorganised by category (overview with counts and use, category pages, Your templates apart, menu: top 6 categories + All + Your templates); 228 tests green. Stopped for the owner's end-of-phase review. |
+| 2026-10-03 | F9 | Owner review passed — F9 closed. Preview fix (Desktop full screen, Tablet / Phone device frames that fill the height; design page preview fills its pane); organisation data (departments, roles, lists) planned into Settings (F14). |
