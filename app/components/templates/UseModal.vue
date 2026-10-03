@@ -55,7 +55,10 @@ async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
         <UFormField name="name" :label="t('forms.new.name')" required>
           <UInput v-model="state.name" maxlength="120" class="w-full" autofocus />
         </UFormField>
-        <UFormField name="folder" :label="t('forms.move.folder')" :description="t('forms.new.folderHint')">
+        <UFormField name="folder" :label="t('forms.move.folder')">
+          <template #label>
+            <AppInfoLabel :label="t('forms.move.folder')" :info="t('forms.new.folderHint')" />
+          </template>
           <USelectMenu
             v-model="state.folder"
             :items="folderItems"

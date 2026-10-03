@@ -158,7 +158,10 @@ async function create() {
                 @update:model-value="nameTouched = true"
               />
             </UFormField>
-            <UFormField :label="t('forms.move.folder')" :description="t('forms.new.folderHint')">
+            <UFormField :label="t('forms.move.folder')">
+              <template #label>
+                <AppInfoLabel :label="t('forms.move.folder')" :info="t('forms.new.folderHint')" />
+              </template>
               <USelectMenu
                 v-model="folderId"
                 :items="folderItems"

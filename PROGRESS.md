@@ -916,6 +916,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Languages go with the forms (links, embeds, QR, respondent language)                                                                                                                                                                                                                                                                                              | F9 (picker) / F10 (public pages)                                                  | 🟡         |
 | 2026-10-03 | Themes clickable to view or edit                                                                                                                                                                                                                                                                                                                                  | F9                                                                                | ✅         |
 | 2026-10-03 | Branded QR codes (organisation, form name, logo in the centre, Formalie mark), several colours, branding on / off | F9 | ✅ |
+| 2026-10-03 | Folder explanation behind an info icon (click to read) instead of text under the field — new form page and "Use template" dialog | F9 | ✅ |
 
 ---
 
