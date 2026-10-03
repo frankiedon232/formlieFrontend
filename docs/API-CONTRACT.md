@@ -2,6 +2,9 @@
 
 Shared by frontend (mocks) and backend (implementation). Bump the version and update this file on every change. Final contract is generated from FastAPI OpenAPI at hand-over.
 
+
+> **Ids are encrypted references** (SECURITY-PROTOCOL §10): every `id` / `*_id` the API returns is a 27-character opaque reference, never a database id; send it back as it is. Raw ids are rejected.
+
 ## Conventions
 
 - Base: `/api/v1`. All requests/responses use the encryption envelope (SECURITY-PROTOCOL.md); shapes below are the **decrypted** payloads.

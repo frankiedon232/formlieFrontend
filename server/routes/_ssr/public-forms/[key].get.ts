@@ -37,9 +37,13 @@ export default defineEventHandler(async event => {
     }
   }
 
-  const [{ publicFormView }, { MockError }] = await Promise.all([import('../../../mock/routes/publicForms'), import('../../../mock/core/respond')])
+  const [{ publicFormView }, { MockError }, { encodeIds }] = await Promise.all([
+    import('../../../mock/routes/publicForms'),
+    import('../../../mock/core/respond'),
+    import('../../../mock/core/ids'),
+  ])
   try {
-    return { data: publicFormView(event, key) }
+    return { data: encodeIds(publicFormView(event, key)) }
   } catch (error) {
     const code = error instanceof MockError ? error.code : 'FRM-GEN-5000'
     setResponseStatus(event, code === 'FRM-FORM-1001' ? 404 : 500)

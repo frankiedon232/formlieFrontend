@@ -5,6 +5,7 @@
  *   GET /files/:id serves the stored file (a CDN URL in production).
  */
 import { z } from 'zod'
+import { decodeId } from '../core/ids'
 import type { UploadedFile, UploadTicket } from '#shared/types/onboarding'
 import { requireAdmin, requireAuth } from '../core/auth'
 import { loadPersisted, savePersisted } from '../core/persist'
@@ -142,7 +143,8 @@ export const completeUpload = defineMockRoute(({ event }) => {
 
 /** The public URL of a completed upload (logos are shown on the public sign-in page anyway). */
 export const serveFile = defineEventHandler(event => {
-  const upload = uploads.get(getRouterParam(event, 'id') ?? '')
+  // Image addresses carry an encrypted reference (core/ids.ts), never the file's id.
+  const upload = uploads.get(decodeId(getRouterParam(event, 'id') ?? '') ?? '')
   if (!upload?.completed || !upload.data) {
     setResponseStatus(event, 404)
     return 'Not found'

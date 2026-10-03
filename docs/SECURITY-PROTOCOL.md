@@ -88,6 +88,15 @@ Applications call form endpoints at `https://api.formalie.com/{apiKey}/{endpoint
 - **Least data:** POST / PUT accept only the chosen fields (validated with the form's own rules); GET returns only the chosen fields.
 - **Audit and logs:** every management change audited (`api.*`); request logs never store tokens; bodies only when switched on, with sensitive fields masked.
 
-## 10. Honest note
+## 10. Encrypted references — no real ids outside the server (owner, 2026-10-03)
+
+- The API never sends a database id to a browser. Every id in every response (`id`, `*_id`, ids inside lists, file addresses such as `/files/{ref}`) is an **encrypted reference**: one AES-256 block of the id under a server-only key plus a 4-byte HMAC-SHA256 tag, base64url → 27 characters (`server/mock/core/ids.ts` is the reference implementation).
+- Stable: the same record always has the same reference, so bookmarks and shared portal links keep working. Opaque: a reference reveals nothing about the id, and without the key nobody can make one for another record.
+- Requests: references in route params, query and body are decrypted at the API edge; a reference with a wrong tag is rejected before any lookup; a raw id typed into an address is **never** accepted.
+- Public form links use a separate random `public_key` (decision 80) — not an encrypted id.
+- Keys live only on the API (managed secret, versioned for rotation). Access checks still run on every request — references stop guessing and leaking ids; permissions decide access.
+- Not secret on purpose: catalogue names (`risk_assessment`, `sys_preset_soft`) and plain list options in the address bar (`?status=draft`, `?view=table`) — they carry no record ids or personal data.
+
+## 11. Honest note
 
 App-layer encryption protects against TLS-terminating proxies, logging leaks and traffic inspection; it does not protect against a compromised browser or device. It adds CPU cost, so keep payloads lean and paginate.

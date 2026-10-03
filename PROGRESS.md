@@ -941,6 +941,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Sidebar: one menu group open at a time (opening one closes the others) | F1 follow-up | ✅ |
 | 2026-10-03 | Preview side panel: Desktop fills the panel edge to edge (panel keeps its width) | F10 | ✅ |
 | 2026-10-03 | Text colours sharp and dark everywhere (tables, grids, cards like the navigation) | F1 follow-up | ✅ |
+| 2026-10-03 | No real ids anywhere in URLs, parameters or responses — encrypted references only the API can decrypt (globally) | F2 follow-up (security) | ✅ |
+| 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | 🟡 |
 
 ---
 

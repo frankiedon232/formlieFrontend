@@ -10,6 +10,7 @@ import {
   sealEnvelope,
 } from '#shared/utils/crypto/envelope'
 import { MockError, fail, type MockReply } from './respond'
+import { decodeIds, decodeRouteParams, encodeIds } from './ids'
 import { claimNonce, isCsrfTokenValid, useSessionKey } from './store'
 
 export interface MockRouteContext {
@@ -73,10 +74,11 @@ export function defineMockRoute(
     // Unknown key: we cannot encrypt the reply, so this one stays plaintext.
     if (!session) return sendPlain(event, fail('FRM-SEC-1004'))
 
+    // Real ids never leave the server: every id in the reply becomes an encrypted reference (core/ids.ts).
     const reply = async (result: MockReply) => {
       setResponseStatus(event, result.status)
       setHeader(event, 'content-type', ENVELOPE_CONTENT_TYPE)
-      return sealEnvelope(session.key, envelope.kid, result.body)
+      return sealEnvelope(session.key, envelope.kid, encodeIds(result.body))
     }
 
     if (!isEnvelopeFresh(envelope)) return reply(fail('FRM-SEC-1002'))
@@ -97,9 +99,11 @@ export function defineMockRoute(
       return reply(fail('FRM-SEC-1006'))
     }
 
+    // …and references coming in are turned back into the real ids before the route runs.
+    decodeRouteParams(event.context.params)
     try {
       return reply(
-        await handler({ event, kid: envelope.kid, query: payload.query ?? {}, body: payload.body }),
+        await handler({ event, kid: envelope.kid, query: decodeIds(payload.query ?? {}), body: decodeIds(payload.body) }),
       )
     } catch (error) {
       if (error instanceof MockError) return reply(fail(error.code, error.details))
