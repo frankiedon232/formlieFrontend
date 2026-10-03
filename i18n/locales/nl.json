@@ -2621,7 +2621,18 @@
       "encrypted": "Versleuteld",
       "website": "Website bezoeken",
       "websiteOf": "Website van {name} bezoeken",
-      "secured": "{icon} Versleuteld · Beveiligd door {brand}"
+      "secured": "{icon} Versleuteld · Beveiligd door {brand}",
+      "terms": "Voorwaarden",
+      "privacy": "Privacybeleid"
+    },
+    "browser": {
+      "reload": "Opnieuw laden",
+      "newTab": "Openen in een nieuw tabblad",
+      "close": "Sluiten",
+      "loading": "{host} laden…",
+      "slow": "Duurt het lang? Sommige sites kunnen niet binnen een andere pagina worden getoond — open hem in een nieuw tabblad.",
+      "safe": "Je antwoorden blijven bewaard — sluit dit venster om verder te gaan met het formulier.",
+      "backToForm": "Terug naar het formulier"
     }
   }
 }

@@ -2621,7 +2621,18 @@
       "encrypted": "Encrypted",
       "website": "Visit website",
       "websiteOf": "Visit the {name} website",
-      "secured": "{icon} Encrypted · Secured by {brand}"
+      "secured": "{icon} Encrypted · Secured by {brand}",
+      "terms": "Terms",
+      "privacy": "Data Privacy Policy"
+    },
+    "browser": {
+      "reload": "Reload",
+      "newTab": "Open in a new tab",
+      "close": "Close",
+      "loading": "Loading {host}…",
+      "slow": "Taking a while? Some sites can’t be shown inside another page — open it in a new tab instead.",
+      "safe": "Your answers are kept — close this window to carry on with the form.",
+      "backToForm": "Back to the form"
     }
   }
 }

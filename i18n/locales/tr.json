@@ -2621,7 +2621,18 @@
       "encrypted": "Şifreli",
       "website": "Web sitesini ziyaret et",
       "websiteOf": "{name} web sitesini ziyaret et",
-      "secured": "{icon} Şifreli · {brand} ile güvende"
+      "secured": "{icon} Şifreli · {brand} ile güvende",
+      "terms": "Koşullar",
+      "privacy": "Veri Gizliliği Politikası"
+    },
+    "browser": {
+      "reload": "Yeniden yükle",
+      "newTab": "Yeni sekmede aç",
+      "close": "Kapat",
+      "loading": "{host} yükleniyor…",
+      "slow": "Uzun mu sürüyor? Bazı siteler başka bir sayfanın içinde gösterilemez — bunun yerine yeni bir sekmede açın.",
+      "safe": "Yanıtlarınız korunuyor — forma devam etmek için bu pencereyi kapatın.",
+      "backToForm": "Forma dön"
     }
   }
 }

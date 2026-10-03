@@ -2621,7 +2621,18 @@
       "encrypted": "Crittografato",
       "website": "Visita il sito",
       "websiteOf": "Visita il sito di {name}",
-      "secured": "{icon} Crittografato · Protetto da {brand}"
+      "secured": "{icon} Crittografato · Protetto da {brand}",
+      "terms": "Termini",
+      "privacy": "Informativa sulla privacy"
+    },
+    "browser": {
+      "reload": "Ricarica",
+      "newTab": "Apri in una nuova scheda",
+      "close": "Chiudi",
+      "loading": "Caricamento di {host}…",
+      "slow": "Ci vuole troppo? Alcuni siti non possono essere mostrati all’interno di un’altra pagina: aprilo in una nuova scheda.",
+      "safe": "Le tue risposte sono salvate: chiudi questa finestra per continuare con il modulo.",
+      "backToForm": "Torna al modulo"
     }
   }
 }

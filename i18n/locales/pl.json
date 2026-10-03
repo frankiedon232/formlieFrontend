@@ -2621,7 +2621,18 @@
       "encrypted": "Szyfrowane",
       "website": "Odwiedź stronę",
       "websiteOf": "Odwiedź stronę {name}",
-      "secured": "{icon} Szyfrowane · Zabezpieczone przez {brand}"
+      "secured": "{icon} Szyfrowane · Zabezpieczone przez {brand}",
+      "terms": "Warunki",
+      "privacy": "Polityka prywatności danych"
+    },
+    "browser": {
+      "reload": "Odśwież",
+      "newTab": "Otwórz w nowej karcie",
+      "close": "Zamknij",
+      "loading": "Wczytywanie {host}…",
+      "slow": "Trwa to długo? Niektórych stron nie można wyświetlić wewnątrz innej strony — otwórz ją w nowej karcie.",
+      "safe": "Twoje odpowiedzi są zachowane — zamknij to okno, aby kontynuować wypełnianie formularza.",
+      "backToForm": "Wróć do formularza"
     }
   }
 }

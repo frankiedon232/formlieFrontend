@@ -26,6 +26,8 @@ if (!isDev) {
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
     "connect-src 'self'",
+    // The in-app browser on public forms shows https pages (website, terms, privacy) in a frame (F10).
+    "frame-src 'self' https:",
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -67,6 +69,8 @@ export default defineNuxtConfig({
       // Public links (docs/01-ARCHITECTURE.md → Public URLs). Production: forms.formalie.com / https://api.formalie.com
       formsHost: 'forms.formalie.dev',
       apiServiceUrl: 'https://api.formalie.dev',
+      // Formalie's legal pages, linked in the footer of every public form (owner, 2026-10-03).
+      legal: { termsUrl: 'https://formalie.com/terms', privacyUrl: 'https://formalie.com/privacy' },
     },
   },
 

@@ -2621,7 +2621,18 @@
       "encrypted": "Terenkripsi",
       "website": "Kunjungi situs web",
       "websiteOf": "Kunjungi situs web {name}",
-      "secured": "{icon} Terenkripsi · Diamankan oleh {brand}"
+      "secured": "{icon} Terenkripsi · Diamankan oleh {brand}",
+      "terms": "Ketentuan",
+      "privacy": "Kebijakan Privasi Data"
+    },
+    "browser": {
+      "reload": "Muat ulang",
+      "newTab": "Buka di tab baru",
+      "close": "Tutup",
+      "loading": "Memuat {host}…",
+      "slow": "Butuh waktu lama? Beberapa situs tidak dapat ditampilkan di dalam halaman lain — buka di tab baru saja.",
+      "safe": "Jawaban Anda tetap tersimpan — tutup jendela ini untuk melanjutkan formulir.",
+      "backToForm": "Kembali ke formulir"
     }
   }
 }

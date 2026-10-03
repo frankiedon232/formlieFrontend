@@ -2621,7 +2621,18 @@
       "encrypted": "Đã mã hóa",
       "website": "Truy cập trang web",
       "websiteOf": "Truy cập trang web của {name}",
-      "secured": "{icon} Đã mã hóa · Bảo mật bởi {brand}"
+      "secured": "{icon} Đã mã hóa · Bảo mật bởi {brand}",
+      "terms": "Điều khoản",
+      "privacy": "Chính sách quyền riêng tư dữ liệu"
+    },
+    "browser": {
+      "reload": "Tải lại",
+      "newTab": "Mở trong thẻ mới",
+      "close": "Đóng",
+      "loading": "Đang tải {host}…",
+      "slow": "Mất nhiều thời gian? Một số trang web không thể hiển thị bên trong trang khác — hãy mở trong thẻ mới.",
+      "safe": "Câu trả lời của bạn vẫn được giữ lại — đóng cửa sổ này để tiếp tục điền biểu mẫu.",
+      "backToForm": "Quay lại biểu mẫu"
     }
   }
 }

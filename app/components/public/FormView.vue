@@ -89,13 +89,13 @@ if (import.meta.client && props.embed) {
 }
 
 const year = new Date().getFullYear()
-const websiteHost = computed(() => {
-  try {
-    return form.value?.workspace.website ? new URL(form.value.workspace.website).hostname.replace(/^www\./, '') : ''
-  } catch {
-    return ''
-  }
-})
+const browser = useInAppBrowser()
+function visit(event: MouseEvent) {
+  const site = form.value?.workspace.website
+  if (!site || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+  event.preventDefault()
+  browser.open(site, form.value?.workspace.name)
+}
 const orgInitials = computed(() =>
   (form.value?.workspace.name ?? '')
     .split(/\s+/)
@@ -139,6 +139,7 @@ const message = computed(() => {
           variant="outline"
           size="sm"
           class="rounded-full max-sm:[&>span:first-child]:sr-only"
+          @click="visit"
         />
       </div>
     </header>
@@ -160,10 +161,10 @@ const message = computed(() => {
       v-if="!embed && view !== 'open'"
       class="bg-default"
       :org="{ name: form?.workspace.name ?? 'Formalie' }"
-      :website="form?.workspace.website ?? null"
-      :website-host="websiteHost"
       :year="year"
       :slim="!form"
     />
+    <!-- Website, terms and privacy open here, over the form (nothing typed in is lost). -->
+    <ClientOnly><PublicBrowser /></ClientOnly>
   </div>
 </template>

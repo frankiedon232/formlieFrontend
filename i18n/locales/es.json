@@ -2621,7 +2621,18 @@
       "encrypted": "Cifrado",
       "website": "Visitar sitio web",
       "websiteOf": "Visitar el sitio web de {name}",
-      "secured": "{icon} Cifrado · Protegido por {brand}"
+      "secured": "{icon} Cifrado · Protegido por {brand}",
+      "terms": "Términos",
+      "privacy": "Política de privacidad de datos"
+    },
+    "browser": {
+      "reload": "Recargar",
+      "newTab": "Abrir en una pestaña nueva",
+      "close": "Cerrar",
+      "loading": "Cargando {host}…",
+      "slow": "¿Tarda demasiado? Algunos sitios no se pueden mostrar dentro de otra página: ábrelo en una pestaña nueva.",
+      "safe": "Tus respuestas se conservan: cierra esta ventana para continuar con el formulario.",
+      "backToForm": "Volver al formulario"
     }
   }
 }

@@ -2621,7 +2621,18 @@
       "encrypted": "암호화됨",
       "website": "웹사이트 방문",
       "websiteOf": "{name} 웹사이트 방문",
-      "secured": "{icon} 암호화됨 · {brand} 보안"
+      "secured": "{icon} 암호화됨 · {brand} 보안",
+      "terms": "이용약관",
+      "privacy": "개인정보 처리방침"
+    },
+    "browser": {
+      "reload": "새로고침",
+      "newTab": "새 탭에서 열기",
+      "close": "닫기",
+      "loading": "{host} 불러오는 중…",
+      "slow": "시간이 걸리나요? 일부 사이트는 다른 페이지 안에 표시할 수 없습니다. 대신 새 탭에서 열어 주세요.",
+      "safe": "답변은 그대로 유지됩니다. 이 창을 닫고 양식을 계속 작성하세요.",
+      "backToForm": "양식으로 돌아가기"
     }
   }
 }

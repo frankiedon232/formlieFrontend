@@ -1,38 +1,32 @@
-<!-- Public form page footer: © organisation · its website, and the secure-by-Formalie line. -->
+<!--
+  Public form page footer: © organisation · Terms · Data Privacy Policy (Formalie's legal pages,
+  runtimeConfig.public.legal), and the secure-by-Formalie line. Links open in the in-app browser
+  so the form stays.
+-->
 <script setup lang="ts">
 defineProps<{
   org: { name: string }
-  website: string | null
-  websiteHost: string
   year: number
-  /** Minimal style: one centred line. */
+  /** Minimal style: centred lines. */
   slim?: boolean
 }>()
+const { t } = useI18n()
+const legal = useRuntimeConfig().public.legal
+const linkClass = 'font-medium text-(--ui-text) underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-primary)'
 </script>
 
 <template>
   <footer class="border-t border-(--ui-border) text-xs text-(--ui-text-muted)">
     <div
       class="mx-auto flex max-w-5xl gap-2 px-4 py-5 @xl:px-6"
-      :class="
-        slim
-          ? 'flex-col items-center text-center'
-          : 'flex-col items-center text-center @xl:flex-row @xl:justify-between @xl:text-start'
-      "
+      :class="slim ? 'flex-col items-center text-center' : 'flex-col items-center text-center @xl:flex-row @xl:justify-between @xl:text-start'"
     >
-      <p v-if="!slim" class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+      <p class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
         <span>© {{ year }} {{ org.name }}</span>
-        <template v-if="website">
-          <span aria-hidden="true">·</span>
-          <a
-            :href="website"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1 font-medium text-(--ui-text) underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-primary)"
-          >
-            {{ websiteHost }}<UIcon name="i-lucide-arrow-up-right" class="size-3" />
-          </a>
-        </template>
+        <span aria-hidden="true">·</span>
+        <FormsRendererFrameLink :href="legal.termsUrl" :title="t('public.frame.terms')" :class="linkClass">{{ t('public.frame.terms') }}</FormsRendererFrameLink>
+        <span aria-hidden="true">·</span>
+        <FormsRendererFrameLink :href="legal.privacyUrl" :title="t('public.frame.privacy')" :class="linkClass">{{ t('public.frame.privacy') }}</FormsRendererFrameLink>
       </p>
       <FormsRendererFrameSecured />
     </div>

@@ -2621,7 +2621,18 @@
       "encrypted": "Imesimbwa",
       "website": "Tembelea tovuti",
       "websiteOf": "Tembelea tovuti ya {name}",
-      "secured": "{icon} Imesimbwa · Inalindwa na {brand}"
+      "secured": "{icon} Imesimbwa · Inalindwa na {brand}",
+      "terms": "Masharti",
+      "privacy": "Sera ya Faragha ya Data"
+    },
+    "browser": {
+      "reload": "Pakia upya",
+      "newTab": "Fungua kwenye kichupo kipya",
+      "close": "Funga",
+      "loading": "Inapakia {host}…",
+      "slow": "Inachukua muda? Baadhi ya tovuti haziwezi kuonyeshwa ndani ya ukurasa mwingine — ifungue kwenye kichupo kipya badala yake.",
+      "safe": "Majibu yako yamehifadhiwa — funga dirisha hili ili kuendelea na fomu.",
+      "backToForm": "Rudi kwenye fomu"
     }
   }
 }

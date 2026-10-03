@@ -81,6 +81,13 @@ const facts = computed(() =>
     : [],
 )
 const year = new Date().getFullYear()
+// The website opens in the in-app browser over the form (Ctrl / Cmd / middle click: a new tab).
+const browser = useInAppBrowser()
+function visit(event: MouseEvent) {
+  if (!website.value || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+  event.preventDefault()
+  browser.open(website.value, props.org.name)
+}
 const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in oklab, ${primary.value} 14%, transparent), transparent)`)
 </script>
 
@@ -110,16 +117,15 @@ const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in ok
           </ul>
         </div>
         <div class="hidden flex-col gap-3 text-xs opacity-80 @4xl:flex">
-          <a
+          <FormsRendererFrameLink
             v-if="website"
             :href="website"
-            target="_blank"
-            rel="noopener noreferrer"
+            :title="org.name"
             class="inline-flex items-center gap-1.5 font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-current"
           >
             <UIcon name="i-lucide-globe" class="size-3.5" />{{ websiteHost
             }}<UIcon name="i-lucide-arrow-up-right" class="size-3.5" />
-          </a>
+          </FormsRendererFrameLink>
           <FormsRendererFrameSecured />
         </div>
       </aside>
@@ -128,8 +134,6 @@ const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in ok
         <FormsRendererFrameFooter
           class="@4xl:hidden"
           :org="org"
-          :website="website"
-          :website-host="websiteHost"
           :year="year"
         />
       </div>
@@ -172,6 +176,7 @@ const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in ok
             size="sm"
             class="shrink-0 rounded-full border-current/25 bg-transparent text-current ring-current/25 hover:bg-current/10 @max-xl:[&>span:first-child]:sr-only"
             :aria-label="t('public.frame.websiteOf', { name: org.name })"
+            @click="visit"
           />
         </div>
       </header>
@@ -220,8 +225,6 @@ const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in ok
 
       <FormsRendererFrameFooter
         :org="org"
-        :website="website"
-        :website-host="websiteHost"
         :year="year"
         :slim="frame.style === 'minimal'"
       />

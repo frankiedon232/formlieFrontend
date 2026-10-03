@@ -2621,7 +2621,18 @@
       "encrypted": "Verschlüsselt",
       "website": "Website besuchen",
       "websiteOf": "Website von {name} besuchen",
-      "secured": "{icon} Verschlüsselt · Geschützt durch {brand}"
+      "secured": "{icon} Verschlüsselt · Geschützt durch {brand}",
+      "terms": "Nutzungsbedingungen",
+      "privacy": "Datenschutzerklärung"
+    },
+    "browser": {
+      "reload": "Neu laden",
+      "newTab": "In neuem Tab öffnen",
+      "close": "Schließen",
+      "loading": "{host} wird geladen…",
+      "slow": "Dauert es länger? Manche Websites lassen sich nicht innerhalb einer anderen Seite anzeigen – öffnen Sie sie stattdessen in einem neuen Tab.",
+      "safe": "Ihre Antworten bleiben erhalten – schließen Sie dieses Fenster, um mit dem Formular fortzufahren.",
+      "backToForm": "Zurück zum Formular"
     }
   }
 }

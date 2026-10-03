@@ -2621,7 +2621,18 @@
       "encrypted": "已加密",
       "website": "访问网站",
       "websiteOf": "访问 {name} 网站",
-      "secured": "{icon} 已加密 · 由 {brand} 提供安全保护"
+      "secured": "{icon} 已加密 · 由 {brand} 提供安全保护",
+      "terms": "条款",
+      "privacy": "数据隐私政策"
+    },
+    "browser": {
+      "reload": "重新加载",
+      "newTab": "在新标签页中打开",
+      "close": "关闭",
+      "loading": "正在加载 {host}…",
+      "slow": "加载时间较长？部分网站无法在其他页面内显示，请改为在新标签页中打开。",
+      "safe": "你的答案已保留，关闭此窗口即可继续填写表单。",
+      "backToForm": "返回表单"
     }
   }
 }

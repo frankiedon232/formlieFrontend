@@ -34,7 +34,16 @@ watch(open, value => {
     :dismissible="props.dismissible"
     :ui="ui"
   >
+    <template v-if="$slots.title" #title>
+      <slot name="title" />
+    </template>
+    <template v-if="$slots.description" #description>
+      <slot name="description" />
+    </template>
+
     <template #actions>
+      <!-- Extra header buttons (e.g. reload / open in a new tab) before the move grip. -->
+      <slot name="actions" />
       <span ref="handle" class="contents">
         <UTooltip v-if="enabled" :text="t('modal.moveHint')">
           <UButton
@@ -47,6 +56,10 @@ watch(open, value => {
           />
         </UTooltip>
       </span>
+    </template>
+
+    <template v-if="$slots.close" #close="slotProps">
+      <slot name="close" v-bind="slotProps" />
     </template>
 
     <template v-if="$slots.body" #body>
