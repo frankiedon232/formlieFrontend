@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "I modelli di sistema non possono essere modificati. Duplicalo per crearne uno tuo.",
     "FRM-FORM-1012": "Esiste già un modello con questo nome.",
     "FRM-RESP-1003": "Questo modulo è già stato inviato da questa sessione.",
-    "FRM-FORM-1013": "Questa cartella contiene ancora moduli. Spostali prima in un'altra cartella."
+    "FRM-FORM-1013": "Questa cartella contiene ancora moduli. Spostali prima in un'altra cartella.",
+    "FRM-FORM-1014": "I temi di sistema non si possono modificare. Duplicalo per crearne uno tuo."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Firma dell’accordo",
         "description": "Mostra l’accordo, conferma ogni punto chiave e firma, con i dati aziendali se firmi per conto di un’azienda."
+      },
+      "risk_assessment": {
+        "name": "Valutazione dei rischi",
+        "description": "Assegna a ogni pericolo un punteggio per probabilità × gravità; il livello di rischio viene calcolato e compare un piano d'azione se il rischio è medio o alto."
+      },
+      "incident_report": {
+        "name": "Rapporto di incidente / infortunio",
+        "description": "Registra cosa è successo, chi si è ferito e le prime azioni intraprese: gli incidenti gravi vengono segnalati per una revisione urgente."
+      },
+      "near_miss_report": {
+        "name": "Segnalazione di quasi incidente",
+        "description": "Segnala subito i quasi incidenti: gravità potenziale e ricorrenza danno una priorità, così la prevenzione viene prima."
+      },
+      "safety_inspection": {
+        "name": "Checklist ispezione di sicurezza",
+        "description": "Controlli superato / non superato con percentuale di conformità ed esito; i controlli non superati chiedono dettagli e foto."
+      },
+      "patient_intake": {
+        "name": "Accettazione paziente",
+        "description": "Dati del nuovo paziente, motivo della visita, livello di dolore, allergie e IMC calcolato da altezza e peso."
+      },
+      "medical_history": {
+        "name": "Anamnesi",
+        "description": "Patologie, interventi, farmaci, storia familiare e stile di vita, con il conteggio delle patologie per il medico."
+      },
+      "health_screening": {
+        "name": "Screening / dichiarazione sanitaria",
+        "description": "Un rapido screening sì / no prima dell'ingresso; qualsiasi «sì» rimanda la persona a una verifica prima di entrare."
+      },
+      "consent_form": {
+        "name": "Modulo di consenso",
+        "description": "Dichiarazioni di consenso chiare con firma; per i minori di 18 anni firma un genitore o tutore."
+      },
+      "event_registration": {
+        "name": "Iscrizione all'evento",
+        "description": "Iscrivi i partecipanti con tipo di biglietto, quantità e totale aggiornato, sessioni ed esigenze di accessibilità."
+      },
+      "rsvp": {
+        "name": "Conferma di partecipazione",
+        "description": "Risposte semplici sì / no / forse, con numero di persone ed esigenze alimentari solo per chi partecipa."
+      },
+      "appointment_booking": {
+        "name": "Prenotazione appuntamenti",
+        "description": "Prenota un servizio nella data e nell'ora preferite, con una seconda scelta e promemoria."
+      },
+      "venue_booking": {
+        "name": "Prenotazione sede / sala",
+        "description": "Prenota una sala a ore con attrezzature extra e un costo calcolato mentre scegli."
+      },
+      "volunteer_signup": {
+        "name": "Iscrizione volontari",
+        "description": "Raccogli volontari, interessi e disponibilità, con il consenso del tutore per i minori di 18 anni."
+      },
+      "speaker_sponsor_application": {
+        "name": "Candidatura relatore / sponsor",
+        "description": "Un modulo per entrambi: i relatori propongono una sessione, gli sponsor scelgono un pacchetto ed extra con totale."
+      },
+      "post_event_feedback": {
+        "name": "Feedback post-evento",
+        "description": "Valutazioni su contenuti, relatori, sede e organizzazione con punteggio medio e consiglio."
+      },
+      "guest_registration": {
+        "name": "Modulo di registrazione ospiti",
+        "description": "Dati di check-in con il numero di notti calcolato da arrivo e partenza."
+      },
+      "hotel_booking_request": {
+        "name": "Richiesta di prenotazione hotel",
+        "description": "Date, tipo e numero di camere danno le notti e un prezzo stimato; anche extra e richieste speciali."
+      },
+      "guest_feedback": {
+        "name": "Feedback degli ospiti",
+        "description": "Valuta pulizia, comfort, personale, cibo e rapporto qualità-prezzo con media e consiglio."
+      },
+      "service_evaluation": {
+        "name": "Valutazione del servizio",
+        "description": "Valuta un reparto o un membro del team su quattro qualità; il punteggio del servizio è mostrato in percentuale."
+      },
+      "special_requirements": {
+        "name": "Esigenze particolari",
+        "description": "Esigenze alimentari e di accessibilità, allergie e ricorrenze, per avere tutto pronto prima dell'arrivo."
+      },
+      "event_catering_request": {
+        "name": "Richiesta catering per eventi",
+        "description": "Menu ed extra a persona per il numero di ospiti danno subito un preventivo."
+      },
+      "restaurant_reservation": {
+        "name": "Richiesta di prenotazione al ristorante",
+        "description": "Data, ora, numero di persone, posto e occasione: tutto ciò che serve a chi accoglie."
+      },
+      "hospitality_complaint": {
+        "name": "Modulo reclami",
+        "description": "Lascia che gli ospiti ti dicano cosa è andato storto, dove e come vorrebbero che si rimediasse."
       }
     },
     "openGallery": "Apri la galleria completa",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Un design Formalie",
       "systemHint": "Questo tema fa parte di Formalie e non può essere modificato. Duplicalo per creare la tua versione.",
-      "systemDesc": "Design Formalie: sola lettura"
-    }
+      "systemDesc": "Design Formalie: sola lettura",
+      "crumb": "Editor tema",
+      "newTitle": "Nuovo tema",
+      "untitled": "Tema senza titolo",
+      "newDesc": "Progettalo una volta, usalo in qualsiasi modulo",
+      "savedState": "Tutte le modifiche salvate",
+      "unsaved": "Modifiche non salvate",
+      "save": "Salva tema",
+      "name": "Nome del tema",
+      "sample": "Mostrato su un modulo di esempio",
+      "sampleTitle": "Contattaci",
+      "notFound": "Questo tema non è disponibile",
+      "leaveTitle": "Uscire senza salvare?",
+      "leaveDesc": "Le modifiche a questo tema andranno perse.",
+      "leave": "Esci"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Salvato da un modulo",
+      "created": "Creato"
+    },
+    "filterSource": "Creato da",
+    "newTheme": "Nuovo tema",
+    "editDesign": "Modifica design",
+    "duplicateToEdit": "Duplica per modificare",
+    "copySuffix": "copia",
+    "categoryDesign": "Design {name}",
+    "previewName": "Nome completo",
+    "previewEmail": "Email",
+    "previewMessage": "Messaggio"
   },
   "dataSources": {
     "subtitle": "Collegate i vostri database, inviate loro i dati dei moduli e lavorateci",

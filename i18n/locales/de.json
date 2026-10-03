@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Systemvorlagen können nicht geändert werden. Duplizieren Sie sie, um Ihre eigene zu erstellen.",
     "FRM-FORM-1012": "Eine Vorlage mit diesem Namen existiert bereits.",
     "FRM-RESP-1003": "Dieses Formular wurde in dieser Sitzung bereits gesendet.",
-    "FRM-FORM-1013": "Dieser Ordner enthält noch Formulare. Verschieben Sie sie zuerst in einen anderen Ordner."
+    "FRM-FORM-1013": "Dieser Ordner enthält noch Formulare. Verschieben Sie sie zuerst in einen anderen Ordner.",
+    "FRM-FORM-1014": "System-Themes können nicht geändert werden. Zum Anpassen ein Duplikat erstellen."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Vereinbarung unterzeichnen",
         "description": "Vereinbarung anzeigen, jeden Kernpunkt bestätigen und unterschreiben – mit Firmendaten bei Unterzeichnung für ein Unternehmen."
+      },
+      "risk_assessment": {
+        "name": "Gefährdungsbeurteilung",
+        "description": "Jede Gefährdung nach Wahrscheinlichkeit × Schwere bewerten; die Risikostufe wird berechnet, bei mittlerem oder hohem Risiko erscheint ein Maßnahmenplan."
+      },
+      "incident_report": {
+        "name": "Vorfall- / Unfallbericht",
+        "description": "Erfassen, was passiert ist, wer verletzt wurde und welche Sofortmaßnahmen ergriffen wurden – schwere Vorfälle werden zur dringenden Prüfung markiert."
+      },
+      "near_miss_report": {
+        "name": "Beinahe-Unfall-Meldung",
+        "description": "Beinahe-Unfälle schnell melden – mögliche Schwere und Wiederholung ergeben eine Priorität, damit Vorbeugung an erster Stelle steht."
+      },
+      "safety_inspection": {
+        "name": "Sicherheitsprüfung (Checkliste)",
+        "description": "Bestanden-/Nicht-bestanden-Prüfungen mit Erfüllungsquote und Ergebnis; bei nicht bestandenen Punkten werden Details und Fotos abgefragt."
+      },
+      "patient_intake": {
+        "name": "Patientenaufnahme",
+        "description": "Angaben zu neuen Patienten, Grund des Besuchs, Schmerzstärke, Allergien und der BMI aus Größe und Gewicht."
+      },
+      "medical_history": {
+        "name": "Anamnese",
+        "description": "Erkrankungen, Operationen, Medikamente, Familiengeschichte und Lebensstil – mit Anzahl der Erkrankungen für das Behandlungsteam."
+      },
+      "health_screening": {
+        "name": "Gesundheitsabfrage / -erklärung",
+        "description": "Kurze Ja-/Nein-Abfrage vor dem Zutritt; jedes „Ja“ führt vor dem Zutritt zu einer Prüfung."
+      },
+      "consent_form": {
+        "name": "Einwilligungserklärung",
+        "description": "Klare Einwilligungserklärungen mit Unterschrift; für Personen unter 18 unterschreibt ein Elternteil oder Vormund."
+      },
+      "event_registration": {
+        "name": "Veranstaltungsanmeldung",
+        "description": "Teilnehmende mit Ticketart, Anzahl und laufender Summe, Sessions und Barrierefreiheitsbedarf anmelden."
+      },
+      "rsvp": {
+        "name": "Zu- / Absage",
+        "description": "Einfache Antworten mit Ja / Nein / Vielleicht – Gruppengröße und Ernährungswünsche nur bei Zusage."
+      },
+      "appointment_booking": {
+        "name": "Terminbuchung",
+        "description": "Eine Leistung zum Wunschtermin buchen, mit Alternativtermin und Erinnerungen."
+      },
+      "venue_booking": {
+        "name": "Raum- / Veranstaltungsort-Reservierung",
+        "description": "Räume stundenweise reservieren, mit Zusatzausstattung und sofort berechneten Kosten."
+      },
+      "volunteer_signup": {
+        "name": "Anmeldung für Freiwillige",
+        "description": "Freiwillige mit Interessen und Verfügbarkeit erfassen – mit Einwilligung der Erziehungsberechtigten für unter 18-Jährige."
+      },
+      "speaker_sponsor_application": {
+        "name": "Bewerbung für Speaker / Sponsoren",
+        "description": "Ein Formular für beide: Speaker schlagen eine Session vor, Sponsoren wählen ein Paket und Extras mit Gesamtsumme."
+      },
+      "post_event_feedback": {
+        "name": "Feedback nach der Veranstaltung",
+        "description": "Bewertungen für Inhalte, Speaker, Ort und Organisation mit Durchschnittswert und Weiterempfehlung."
+      },
+      "guest_registration": {
+        "name": "Gästeregistrierung",
+        "description": "Check-in-Daten, die Anzahl der Nächte wird aus An- und Abreise berechnet."
+      },
+      "hotel_booking_request": {
+        "name": "Hotelbuchungsanfrage",
+        "description": "Daten, Zimmertyp und Zimmeranzahl ergeben die Nächte und einen geschätzten Preis; dazu Extras und Sonderwünsche."
+      },
+      "guest_feedback": {
+        "name": "Gästefeedback",
+        "description": "Sauberkeit, Komfort, Personal, Essen und Preis-Leistung bewerten – mit Durchschnitt und Weiterempfehlung."
+      },
+      "service_evaluation": {
+        "name": "Servicebewertung",
+        "description": "Eine Abteilung oder ein Teammitglied in vier Kriterien bewerten; der Servicewert wird in Prozent angezeigt."
+      },
+      "special_requirements": {
+        "name": "Besondere Wünsche",
+        "description": "Ernährungs- und Barrierefreiheitsbedarf, Allergien und Anlässe – damit vor der Ankunft alles bereit ist."
+      },
+      "event_catering_request": {
+        "name": "Catering-Anfrage für Veranstaltungen",
+        "description": "Menü und Extras pro Person mal Gästeanzahl ergeben sofort eine Schätzung."
+      },
+      "restaurant_reservation": {
+        "name": "Tischreservierung",
+        "description": "Datum, Uhrzeit, Personenzahl, Sitzplatz und Anlass – alles, was der Gastgeber braucht."
+      },
+      "hospitality_complaint": {
+        "name": "Gästebeschwerde",
+        "description": "Gäste schildern lassen, was schiefgelaufen ist, wo, und wie es wiedergutgemacht werden soll."
       }
     },
     "openGallery": "Ganze Galerie öffnen",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Ein Formalie-Design",
       "systemHint": "Dieses Design gehört zu Formalie und kann nicht geändert werden. Duplizieren Sie es, um Ihre eigene Version zu erstellen.",
-      "systemDesc": "Formalie-Design — schreibgeschützt"
-    }
+      "systemDesc": "Formalie-Design — schreibgeschützt",
+      "crumb": "Theme-Editor",
+      "newTitle": "Neues Theme",
+      "untitled": "Unbenanntes Theme",
+      "newDesc": "Einmal gestalten, in jedem Formular nutzen",
+      "savedState": "Alle Änderungen gespeichert",
+      "unsaved": "Ungespeicherte Änderungen",
+      "save": "Theme speichern",
+      "name": "Name des Themes",
+      "sample": "Angezeigt auf einem Beispielformular",
+      "sampleTitle": "Kontakt",
+      "notFound": "Dieses Theme ist nicht verfügbar",
+      "leaveTitle": "Ohne Speichern verlassen?",
+      "leaveDesc": "Die Änderungen an diesem Theme gehen verloren.",
+      "leave": "Verlassen"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Aus einem Formular gespeichert",
+      "created": "Erstellt"
+    },
+    "filterSource": "Erstellt von",
+    "newTheme": "Neues Theme",
+    "editDesign": "Design bearbeiten",
+    "duplicateToEdit": "Zum Bearbeiten duplizieren",
+    "copySuffix": "Kopie",
+    "categoryDesign": "Design {name}",
+    "previewName": "Vollständiger Name",
+    "previewEmail": "E-Mail",
+    "previewMessage": "Nachricht"
   },
   "dataSources": {
     "subtitle": "Verbinden Sie Ihre eigenen Datenbanken, senden Sie Formulardaten dorthin und arbeiten Sie damit",

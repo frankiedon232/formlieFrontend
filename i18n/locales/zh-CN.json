@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "系统模板无法更改。请复制后创建您自己的模板。",
     "FRM-FORM-1012": "已存在同名模板。",
     "FRM-RESP-1003": "此表单已在本次会话中提交过。",
-    "FRM-FORM-1013": "此文件夹中仍有表单。请先将它们移到其他文件夹。"
+    "FRM-FORM-1013": "此文件夹中仍有表单。请先将它们移到其他文件夹。",
+    "FRM-FORM-1014": "系统主题无法修改。请复制一份来创建你自己的主题。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / 协议签署",
         "description": "展示协议，逐项确认要点后签署；代表公司签署时需填写公司信息。"
+      },
+      "risk_assessment": {
+        "name": "风险评估",
+        "description": "按可能性 × 严重程度为每项危害打分；自动算出风险等级，风险为中或高时显示行动计划。"
+      },
+      "incident_report": {
+        "name": "事件 / 事故报告",
+        "description": "记录发生了什么、谁受了伤以及采取的初步措施——严重事件会被标记以便紧急审查。"
+      },
+      "near_miss_report": {
+        "name": "未遂事件报告",
+        "description": "快速上报险情——根据潜在严重程度和复发可能确定优先级，让预防先行。"
+      },
+      "safety_inspection": {
+        "name": "安全检查清单",
+        "description": "通过 / 不通过检查项，附合规百分比和结果；不通过的项目需填写详情并上传照片。"
+      },
+      "patient_intake": {
+        "name": "患者登记",
+        "description": "新患者信息、就诊原因、疼痛程度、过敏情况，以及根据身高体重算出的 BMI。"
+      },
+      "medical_history": {
+        "name": "病史",
+        "description": "疾病、手术、用药、家族史和生活方式——并为临床医生统计病症数量。"
+      },
+      "health_screening": {
+        "name": "健康筛查 / 声明",
+        "description": "入场前的快速是 / 否筛查；任何一项回答“是”，都需先经审核才能进入。"
+      },
+      "consent_form": {
+        "name": "知情同意书",
+        "description": "清晰的同意声明并附签名；未满 18 岁者由父母或监护人签字。"
+      },
+      "event_registration": {
+        "name": "活动报名",
+        "description": "登记参会者的票种、数量和实时总额，以及场次和无障碍需求。"
+      },
+      "rsvp": {
+        "name": "出席回复",
+        "description": "简单的参加 / 不参加 / 待定回复，仅对参加者询问人数和饮食需求。"
+      },
+      "appointment_booking": {
+        "name": "预约服务",
+        "description": "按首选日期和时间预约服务，可填备选时间并接收提醒。"
+      },
+      "venue_booking": {
+        "name": "场地 / 会议室预订",
+        "description": "按小时预订房间并加选设备，费用随选择实时计算。"
+      },
+      "volunteer_signup": {
+        "name": "志愿者报名",
+        "description": "收集志愿者信息、兴趣和可用时间——未满 18 岁需监护人同意。"
+      },
+      "speaker_sponsor_application": {
+        "name": "演讲嘉宾 / 赞助商申请",
+        "description": "一张表单两用：演讲嘉宾提交议题，赞助商选择套餐和附加项并显示总额。"
+      },
+      "post_event_feedback": {
+        "name": "活动反馈",
+        "description": "对内容、嘉宾、场地和组织进行评分，给出平均分和推荐意愿。"
+      },
+      "guest_registration": {
+        "name": "住客登记表",
+        "description": "入住信息，并根据抵达和离开日期算出入住晚数。"
+      },
+      "hotel_booking_request": {
+        "name": "酒店预订申请",
+        "description": "根据日期、房型和房间数算出晚数和预估价格；还可填写附加服务和特殊要求。"
+      },
+      "guest_feedback": {
+        "name": "住客反馈表",
+        "description": "为清洁、舒适度、员工、餐饮和性价比打分，给出平均分和推荐意愿。"
+      },
+      "service_evaluation": {
+        "name": "服务评估表",
+        "description": "从四个方面评估某个部门或员工；服务得分以百分比显示。"
+      },
+      "special_requirements": {
+        "name": "特殊需求表",
+        "description": "饮食与无障碍需求、过敏情况和庆祝活动——在客人抵达前准备就绪。"
+      },
+      "event_catering_request": {
+        "name": "活动餐饮申请",
+        "description": "按人均菜单和附加项乘以宾客人数，立即得出估价。"
+      },
+      "restaurant_reservation": {
+        "name": "餐厅订位申请",
+        "description": "日期、时间、人数、座位和用餐场合——接待所需的一切信息。"
+      },
+      "hospitality_complaint": {
+        "name": "服务投诉表",
+        "description": "让客人说明哪里出了问题、在哪里，以及希望如何解决。"
       }
     },
     "openGallery": "打开完整模板库",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Formalie 设计",
       "systemHint": "此主题是 Formalie 自带的，无法更改。复制它即可创建您自己的版本。",
-      "systemDesc": "Formalie 设计 — 只读"
-    }
+      "systemDesc": "Formalie 设计 — 只读",
+      "crumb": "主题编辑器",
+      "newTitle": "新建主题",
+      "untitled": "未命名主题",
+      "newDesc": "设计一次，即可用于任何表单",
+      "savedState": "所有更改已保存",
+      "unsaved": "有未保存的更改",
+      "save": "保存主题",
+      "name": "主题名称",
+      "sample": "在示例表单上展示",
+      "sampleTitle": "联系我们",
+      "notFound": "此主题不可用",
+      "leaveTitle": "不保存就离开？",
+      "leaveDesc": "你对此主题的更改将会丢失。",
+      "leave": "离开"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "从表单保存",
+      "created": "自建"
+    },
+    "filterSource": "创建者",
+    "newTheme": "新建主题",
+    "editDesign": "编辑设计",
+    "duplicateToEdit": "复制后编辑",
+    "copySuffix": "副本",
+    "categoryDesign": "{name}设计",
+    "previewName": "姓名",
+    "previewEmail": "邮箱",
+    "previewMessage": "留言"
   },
   "dataSources": {
     "subtitle": "连接您自己的数据库，将表单数据发送到其中并进行处理",

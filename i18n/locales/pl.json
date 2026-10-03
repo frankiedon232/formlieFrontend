@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Szablonów systemowych nie można zmieniać. Zduplikuj szablon, aby utworzyć własny.",
     "FRM-FORM-1012": "Szablon o tej nazwie już istnieje.",
     "FRM-RESP-1003": "Ten formularz został już wysłany w tej sesji.",
-    "FRM-FORM-1013": "Ten folder nadal zawiera formularze. Proszę najpierw przenieść je do innego folderu."
+    "FRM-FORM-1013": "Ten folder nadal zawiera formularze. Proszę najpierw przenieść je do innego folderu.",
+    "FRM-FORM-1014": "Motywów systemowych nie można zmieniać. Zduplikuj motyw, aby stworzyć własny."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Podpisanie umowy",
         "description": "Pokaż umowę, potwierdź każdy kluczowy punkt i podpisz — z danymi firmy przy podpisie w jej imieniu."
+      },
+      "risk_assessment": {
+        "name": "Ocena ryzyka",
+        "description": "Oceń każde zagrożenie według prawdopodobieństwa × skutków; poziom ryzyka zostanie obliczony, a przy średnim lub wysokim ryzyku pojawi się plan działań."
+      },
+      "incident_report": {
+        "name": "Raport z incydentu / wypadku",
+        "description": "Zapisz, co się stało, kto został poszkodowany i jakie podjęto pierwsze działania — poważne incydenty są oznaczane do pilnej weryfikacji."
+      },
+      "near_miss_report": {
+        "name": "Zgłoszenie zdarzenia potencjalnie wypadkowego",
+        "description": "Szybko zgłaszaj sytuacje o włos od wypadku — potencjalna waga i powtarzalność wyznaczają priorytet, by zapobieganie było na pierwszym miejscu."
+      },
+      "safety_inspection": {
+        "name": "Lista kontrolna inspekcji BHP",
+        "description": "Kontrole zaliczone/niezaliczone z procentem zgodności i wynikiem; przy niezaliczonych pojawia się prośba o szczegóły i zdjęcia."
+      },
+      "patient_intake": {
+        "name": "Rejestracja pacjenta",
+        "description": "Dane nowego pacjenta, powód wizyty, poziom bólu, alergie i BMI obliczane ze wzrostu i wagi."
+      },
+      "medical_history": {
+        "name": "Wywiad medyczny",
+        "description": "Choroby, operacje, leki, historia rodzinna i styl życia — z liczbą schorzeń dla lekarza."
+      },
+      "health_screening": {
+        "name": "Ankieta / oświadczenie o stanie zdrowia",
+        "description": "Szybka ankieta tak/nie przed wejściem; każde „tak” kieruje osobę do weryfikacji przed wejściem."
+      },
+      "consent_form": {
+        "name": "Formularz zgody",
+        "description": "Jasne oświadczenia o zgodzie z podpisem; za osoby poniżej 18 lat podpisuje rodzic lub opiekun."
+      },
+      "event_registration": {
+        "name": "Rejestracja na wydarzenie",
+        "description": "Rejestruj uczestników z rodzajem biletu, liczbą i bieżącą sumą, sesjami oraz potrzebami w zakresie dostępności."
+      },
+      "rsvp": {
+        "name": "Potwierdzenie obecności",
+        "description": "Proste odpowiedzi tak/nie/może, z liczbą osób i wymaganiami dietetycznymi tylko dla przychodzących."
+      },
+      "appointment_booking": {
+        "name": "Rezerwacja wizyty",
+        "description": "Zarezerwuj usługę w wybranym dniu i godzinie, z drugim terminem i przypomnieniami."
+      },
+      "venue_booking": {
+        "name": "Rezerwacja sali / miejsca",
+        "description": "Zarezerwuj salę na godziny z dodatkowym sprzętem; koszt liczy się na bieżąco podczas wyboru."
+      },
+      "volunteer_signup": {
+        "name": "Zapisy wolontariuszy",
+        "description": "Zbieraj wolontariuszy, ich zainteresowania i dostępność — ze zgodą opiekuna dla osób poniżej 18 lat."
+      },
+      "speaker_sponsor_application": {
+        "name": "Zgłoszenie prelegenta / sponsora",
+        "description": "Jeden formularz dla obu: prelegenci proponują sesję, sponsorzy wybierają pakiet i dodatki z sumą."
+      },
+      "post_event_feedback": {
+        "name": "Opinia po wydarzeniu",
+        "description": "Oceny treści, prelegentów, miejsca i organizacji ze średnią oceną i rekomendacją."
+      },
+      "guest_registration": {
+        "name": "Formularz rejestracji gościa",
+        "description": "Dane zameldowania z liczbą nocy obliczaną z dat przyjazdu i wyjazdu."
+      },
+      "hotel_booking_request": {
+        "name": "Zapytanie o rezerwację hotelu",
+        "description": "Daty, typ i liczba pokoi dają liczbę nocy i szacunkową cenę; do tego dodatki i specjalne życzenia."
+      },
+      "guest_feedback": {
+        "name": "Formularz opinii gościa",
+        "description": "Oceń czystość, komfort, obsługę, jedzenie i stosunek jakości do ceny ze średnią i rekomendacją."
+      },
+      "service_evaluation": {
+        "name": "Formularz oceny obsługi",
+        "description": "Oceń dział lub pracownika w czterech obszarach; wynik obsługi jest pokazywany w procentach."
+      },
+      "special_requirements": {
+        "name": "Formularz specjalnych wymagań",
+        "description": "Potrzeby dietetyczne i w zakresie dostępności, alergie i okazje do świętowania — by wszystko było gotowe przed przyjazdem."
+      },
+      "event_catering_request": {
+        "name": "Zamówienie cateringu na wydarzenie",
+        "description": "Menu i dodatki na osobę razy liczba gości od razu dają wycenę."
+      },
+      "restaurant_reservation": {
+        "name": "Rezerwacja stolika",
+        "description": "Data, godzina, liczba osób, miejsce i okazja — wszystko, czego potrzebuje obsługa."
+      },
+      "hospitality_complaint": {
+        "name": "Formularz reklamacji gościa",
+        "description": "Pozwól gościom opisać, co poszło nie tak, gdzie i jak chcieliby to naprawić."
       }
     },
     "openGallery": "Otwórz pełną galerię",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Projekt Formalie",
       "systemHint": "Ten motyw jest częścią Formalie i nie można go zmienić. Proszę go zduplikować, aby utworzyć własną wersję.",
-      "systemDesc": "Projekt Formalie — tylko do odczytu"
-    }
+      "systemDesc": "Projekt Formalie — tylko do odczytu",
+      "crumb": "Edytor motywu",
+      "newTitle": "Nowy motyw",
+      "untitled": "Motyw bez nazwy",
+      "newDesc": "Zaprojektuj raz, używaj w każdym formularzu",
+      "savedState": "Wszystkie zmiany zapisane",
+      "unsaved": "Niezapisane zmiany",
+      "save": "Zapisz motyw",
+      "name": "Nazwa motywu",
+      "sample": "Pokazany na przykładowym formularzu",
+      "sampleTitle": "Skontaktuj się z nami",
+      "notFound": "Ten motyw jest niedostępny",
+      "leaveTitle": "Wyjść bez zapisywania?",
+      "leaveDesc": "Zmiany w tym motywie zostaną utracone.",
+      "leave": "Wyjdź"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Zapisany z formularza",
+      "created": "Utworzony"
+    },
+    "filterSource": "Autor",
+    "newTheme": "Nowy motyw",
+    "editDesign": "Edytuj wygląd",
+    "duplicateToEdit": "Duplikuj, aby edytować",
+    "copySuffix": "kopia",
+    "categoryDesign": "Wygląd: {name}",
+    "previewName": "Imię i nazwisko",
+    "previewEmail": "E-mail",
+    "previewMessage": "Wiadomość"
   },
   "dataSources": {
     "subtitle": "Połącz własne bazy danych, wysyłaj do nich dane z formularzy i pracuj z nimi",

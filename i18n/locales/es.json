@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Las plantillas del sistema no se pueden cambiar. Duplíquela para crear la suya.",
     "FRM-FORM-1012": "Ya existe una plantilla con este nombre.",
     "FRM-RESP-1003": "Este formulario ya se envió desde esta sesión.",
-    "FRM-FORM-1013": "Esta carpeta todavía tiene formularios. Muévelos primero a otra carpeta."
+    "FRM-FORM-1013": "Esta carpeta todavía tiene formularios. Muévelos primero a otra carpeta.",
+    "FRM-FORM-1014": "Los temas del sistema no se pueden cambiar. Duplícalo para crear el tuyo."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -970,7 +971,7 @@
         "name": "Informe de incidencias"
       }
     },
-    "subtitle": "Empiece con un formulario listo: cada plantilla tiene su propio diseño y puede cambiar cualquier cosa antes de publicar",
+    "subtitle": "Empieza con un formulario listo: cada plantilla tiene su propio diseño y puedes cambiar cualquier cosa antes de publicar",
     "blank": "Formulario en blanco",
     "all": "Todas",
     "search": "Buscar plantillas…",
@@ -1035,14 +1036,14 @@
     "useDesc": "Su nuevo formulario se abre en el editor: cambie cualquier pregunta, regla, cálculo o el diseño antes de publicar.",
     "saveAs": "Guardar como plantilla",
     "saveTitle": "Guardar como plantilla",
-    "saveDesc": "Las preguntas, la lógica, los cálculos y el diseño se convierten en una plantilla para su espacio de trabajo. Las respuestas nunca se incluyen.",
+    "saveDesc": "Las preguntas, la lógica, los cálculos y el diseño se convierten en una plantilla para tu espacio de trabajo. Las respuestas nunca se incluyen.",
     "saveButton": "Guardar plantilla",
     "deleteTitle": "¿Eliminar «{name}»?",
     "deleteDesc": "Los formularios creados con ella conservan sus preguntas y su diseño.",
     "included": "Qué incluye",
     "calculationsTitle": "Cálculos",
     "teamOnly": "Solo el equipo",
-    "usage": "Uso en su espacio de trabajo",
+    "usage": "Uso en tu espacio de trabajo",
     "facts": {
       "pages": "{count} página | {count} páginas",
       "logic": "{count} regla lógica | {count} reglas lógicas",
@@ -1059,11 +1060,11 @@
     "noFormsTitle": "Aún no hay formularios de esta plantilla",
     "noFormsDesc": "Use la plantilla para crear el primero.",
     "notFound": "Esta plantilla no está disponible",
-    "notFoundDesc": "Puede que se haya eliminado. Elija otra de la galería.",
+    "notFoundDesc": "Puede que se haya eliminado. Elige otra de la galería.",
     "backToGallery": "Volver a las plantillas",
     "toast": {
       "created": "«{name}» creado a partir de la plantilla",
-      "duplicated": "«{name}» añadida a sus plantillas",
+      "duplicated": "«{name}» añadida a tus plantillas",
       "deleted": "«{name}» eliminada",
       "saved": "«{name}» guardado como plantilla",
       "updated": "«{name}» actualizada"
@@ -1071,7 +1072,7 @@
     "items": {
       "customer_feedback": {
         "name": "Opiniones de clientes",
-        "description": "Descubra qué piensan los clientes de su servicio, con un seguimiento cuando alguien no está satisfecho."
+        "description": "Descubre qué piensan los clientes de tu servicio, con un seguimiento cuando alguien no está satisfecho."
       },
       "csat_nps": {
         "name": "Encuesta de satisfacción del cliente (CSAT / NPS)",
@@ -1103,7 +1104,7 @@
       },
       "lead_capture_newsletter": {
         "name": "Captación de leads / suscripción al boletín",
-        "description": "Haga crecer su lista con consentimiento, intereses y seguimiento de campañas integrados."
+        "description": "Haz crecer tu lista con consentimiento, intereses y seguimiento de campañas integrados."
       },
       "return_refund": {
         "name": "Solicitud de devolución / reembolso",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Firma de acuerdo",
         "description": "Muestra el acuerdo, confirma cada punto clave y firma, con los datos de la empresa si firmas en su nombre."
+      },
+      "risk_assessment": {
+        "name": "Evaluación de riesgos",
+        "description": "Puntúa cada peligro por probabilidad × gravedad; el nivel de riesgo se calcula solo y aparece un plan de acción si el riesgo es medio o alto."
+      },
+      "incident_report": {
+        "name": "Informe de incidente / accidente",
+        "description": "Registra qué pasó, quién resultó herido y las primeras medidas tomadas; los incidentes graves se marcan para revisión urgente."
+      },
+      "near_miss_report": {
+        "name": "Informe de casi accidente",
+        "description": "Informa rápido de los casi accidentes: la gravedad potencial y la repetición fijan una prioridad para que la prevención vaya primero."
+      },
+      "safety_inspection": {
+        "name": "Lista de inspección de seguridad",
+        "description": "Controles de apto / no apto con porcentaje de cumplimiento y resultado; los controles no superados piden detalles y fotos."
+      },
+      "patient_intake": {
+        "name": "Admisión de pacientes",
+        "description": "Datos del nuevo paciente, motivo de la visita, nivel de dolor, alergias e IMC calculado a partir de la altura y el peso."
+      },
+      "medical_history": {
+        "name": "Historial médico",
+        "description": "Enfermedades, operaciones, medicamentos, antecedentes familiares y estilo de vida, con un recuento de enfermedades para el profesional sanitario."
+      },
+      "health_screening": {
+        "name": "Cribado / declaración de salud",
+        "description": "Un cribado rápido de sí / no antes de entrar; cualquier «sí» envía a la persona a revisión antes de pasar."
+      },
+      "consent_form": {
+        "name": "Formulario de consentimiento",
+        "description": "Declaraciones de consentimiento claras con firma; un padre, madre o tutor firma por los menores de 18."
+      },
+      "event_registration": {
+        "name": "Inscripción a eventos",
+        "description": "Inscribe asistentes con tipo de entrada, cantidad y total acumulado, sesiones y necesidades de accesibilidad."
+      },
+      "rsvp": {
+        "name": "Confirmación de asistencia",
+        "description": "Respuestas sencillas de sí / no / quizá, con número de acompañantes y necesidades alimentarias solo para quienes vienen."
+      },
+      "appointment_booking": {
+        "name": "Reserva de citas",
+        "description": "Reserva un servicio en la fecha y hora que prefieras, con una segunda opción y recordatorios."
+      },
+      "venue_booking": {
+        "name": "Reserva de espacio / sala",
+        "description": "Reserva una sala por horas con equipamiento adicional y un coste calculado mientras eliges."
+      },
+      "volunteer_signup": {
+        "name": "Inscripción de voluntarios",
+        "description": "Reúne voluntarios, sus intereses y disponibilidad, con consentimiento del tutor para menores de 18."
+      },
+      "speaker_sponsor_application": {
+        "name": "Solicitud de ponente / patrocinador",
+        "description": "Un formulario para ambos: los ponentes proponen una sesión y los patrocinadores eligen un paquete y extras con total."
+      },
+      "post_event_feedback": {
+        "name": "Opinión tras el evento",
+        "description": "Valoraciones de contenido, ponentes, lugar y organización con puntuación media y recomendación."
+      },
+      "guest_registration": {
+        "name": "Formulario de registro de huéspedes",
+        "description": "Datos de check-in con el número de noches calculado a partir de la llegada y la salida."
+      },
+      "hotel_booking_request": {
+        "name": "Solicitud de reserva de hotel",
+        "description": "Fechas, tipo y número de habitaciones dan las noches y un precio estimado; también extras y peticiones especiales."
+      },
+      "guest_feedback": {
+        "name": "Opinión de huéspedes",
+        "description": "Valora limpieza, comodidad, personal, comida y relación calidad-precio con una media y una recomendación."
+      },
+      "service_evaluation": {
+        "name": "Evaluación del servicio",
+        "description": "Evalúa a un departamento o miembro del equipo en cuatro cualidades; la puntuación del servicio se muestra en porcentaje."
+      },
+      "special_requirements": {
+        "name": "Necesidades especiales",
+        "description": "Necesidades alimentarias y de accesibilidad, alergias y celebraciones, para tener todo listo antes de la llegada."
+      },
+      "event_catering_request": {
+        "name": "Solicitud de catering para eventos",
+        "description": "Menú y extras por persona multiplicados por el número de invitados dan un presupuesto al instante."
+      },
+      "restaurant_reservation": {
+        "name": "Solicitud de reserva en restaurante",
+        "description": "Fecha, hora, número de personas, ubicación y ocasión: todo lo que necesita el anfitrión."
+      },
+      "hospitality_complaint": {
+        "name": "Formulario de reclamación",
+        "description": "Deja que los huéspedes te cuenten qué salió mal, dónde y cómo les gustaría que se solucionara."
       }
     },
     "openGallery": "Abrir la galería completa",
@@ -1498,7 +1591,7 @@
       "consentLink": "Enlace a los términos (opcional)",
       "consentLinkLabel": "Texto del enlace",
       "showResult": "Mostrar el resultado a quienes responden",
-      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve su equipo (p. ej., un nivel de riesgo o un grupo de lealtad)."
+      "internalHint": "Se calcula y se guarda con cada respuesta, pero solo lo ve tu equipo (p. ej., un nivel de riesgo o un grupo de lealtad)."
     },
     "shortcuts": {
       "title": "Atajos",
@@ -1725,16 +1818,16 @@
       "max_files": "{field} admite como máximo {n} archivos.",
       "date_range": "Elige ambas fechas en {field}; la final debe ser igual o posterior a la inicial.",
       "address": "En {field} falta: {parts}.",
-      "ip": "Introduzca una dirección IP válida en {field}.",
-      "domain": "Introduzca un nombre de dominio en {field}, como example.org.",
-      "mac": "Introduzca una dirección MAC en {field}, como 00:1A:2B:3C:4D:5E.",
+      "ip": "Introduce una dirección IP válida en {field}.",
+      "domain": "Introduce un nombre de dominio en {field}, como example.org.",
+      "mac": "Introduce una dirección MAC en {field}, como 00:1A:2B:3C:4D:5E.",
       "iban": "{field} no es un IBAN válido; revise el número.",
-      "bic": "Introduzca un código SWIFT / BIC de 8 u 11 caracteres en {field}.",
-      "color": "Elija un color para {field}.",
-      "duration": "Introduzca una duración en {field} (minutos 0–59).",
-      "name": "Introduzca el nombre y el apellido en {field}.",
+      "bic": "Introduce un código SWIFT / BIC de 8 u 11 caracteres en {field}.",
+      "color": "Elige un color para {field}.",
+      "duration": "Introduce una duración en {field} (minutos 0–59).",
+      "name": "Introduce el nombre y el apellido en {field}.",
       "consent": "Confirme {field} para continuar.",
-      "choice": "Elija una opción de la lista para {field}."
+      "choice": "Elige una opción de la lista para {field}."
     },
     "page": {
       "logo": "Logotipo",
@@ -1752,7 +1845,7 @@
       "link": "Leer los términos"
     },
     "color": {
-      "pick": "Elija un color"
+      "pick": "Elige un color"
     },
     "duration": {
       "hours": "Horas",
@@ -1761,9 +1854,9 @@
       "m": "min"
     },
     "pick": {
-      "language": "Elija un idioma",
-      "timezone": "Elija una zona horaria",
-      "currency_code": "Elija una moneda"
+      "language": "Elige un idioma",
+      "timezone": "Elige una zona horaria",
+      "currency_code": "Elige una moneda"
     },
     "restricted": "Solo para algunas personas (acceso al campo)",
     "files": {
@@ -2275,32 +2368,60 @@
     "editor": {
       "systemTitle": "Un diseño de Formalie",
       "systemHint": "Este tema forma parte de Formalie y no se puede cambiar. Duplícalo para crear tu propia versión.",
-      "systemDesc": "Diseño de Formalie: solo lectura"
-    }
+      "systemDesc": "Diseño de Formalie: solo lectura",
+      "crumb": "Editor de temas",
+      "newTitle": "Nuevo tema",
+      "untitled": "Tema sin título",
+      "newDesc": "Diséñalo una vez y úsalo en cualquier formulario",
+      "savedState": "Todos los cambios guardados",
+      "unsaved": "Cambios sin guardar",
+      "save": "Guardar tema",
+      "name": "Nombre del tema",
+      "sample": "Se muestra en un formulario de ejemplo",
+      "sampleTitle": "Contáctanos",
+      "notFound": "Este tema no está disponible",
+      "leaveTitle": "¿Salir sin guardar?",
+      "leaveDesc": "Perderás los cambios en este tema.",
+      "leave": "Salir"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Guardado desde un formulario",
+      "created": "Creado"
+    },
+    "filterSource": "Creado por",
+    "newTheme": "Nuevo tema",
+    "editDesign": "Editar diseño",
+    "duplicateToEdit": "Duplicar para editar",
+    "copySuffix": "copia",
+    "categoryDesign": "Diseño {name}",
+    "previewName": "Nombre completo",
+    "previewEmail": "Correo electrónico",
+    "previewMessage": "Mensaje"
   },
   "dataSources": {
-    "subtitle": "Conecte sus propias bases de datos, envíeles los datos de los formularios y trabaje con ellos",
+    "subtitle": "Conecta tus propias bases de datos, envíales los datos de los formularios y trabaja con ellos",
     "back": "Resumen de fuentes de datos",
     "engines": "Bases de datos compatibles",
     "enginesHint": "Conecte cualquiera de ellas o siga usando el almacenamiento cifrado integrado de Formalie.",
     "builtIn": "Almacenamiento cifrado integrado",
     "section": {
-      "connections": "Añada sus bases de datos, pruébelas y mantenga sus credenciales a salvo.",
+      "connections": "Añade tus bases de datos, pruébalas y mantén tus credenciales a salvo.",
       "explorer": "Explore esquemas, tablas y filas, y exporte lo que necesite.",
-      "query": "Ejecute SQL en sus bases de datos: de solo lectura por defecto y con cada ejecución registrada.",
-      "savedQueries": "Guarde y comparta las consultas que su equipo usa más.",
-      "destinations": "Elija adónde envía cada formulario sus respuestas y asocie los campos con las columnas.",
+      "query": "Ejecuta SQL en tus bases de datos: de solo lectura por defecto y con cada ejecución registrada.",
+      "savedQueries": "Guarda y comparte las consultas que tu equipo usa más.",
+      "destinations": "Elige adónde envía cada formulario sus respuestas y asocia los campos con las columnas.",
       "transfers": "Importe archivos a tablas y exporte tablas o resultados de consultas.",
       "activity": "Entregas, errores y consultas recientes de cada conexión."
     }
   },
   "apiService": {
-    "subtitle": "Convierta cualquier formulario en una API para que sus aplicaciones puedan enviar y leer sus datos",
+    "subtitle": "Convierte cualquier formulario en una API para que tus aplicaciones puedan enviar y leer sus datos",
     "back": "Resumen del servicio API",
     "example": "Así es un endpoint (ejemplo)",
     "channels": {
       "title": "Reciba datos desde todos los frentes",
-      "hint": "Cada formulario puede recibir respuestas mediante su enlace, una inserción en su sitio y su propia API, y todas llegan al mismo lugar.",
+      "hint": "Cada formulario puede recibir respuestas mediante su enlace, una inserción en tu sitio y su propia API, y todas llegan al mismo lugar.",
       "link": "Enlace para compartir",
       "embed": "Formulario insertado",
       "api": "Endpoints de API"
@@ -2313,8 +2434,8 @@
       "logs": "Cada llamada con su estado, duración y origen.",
       "analytics": "Llamadas, errores y tiempos de respuesta por servicio y endpoint.",
       "docs": "Documentación lista para usar y un lugar para probar cada endpoint.",
-      "webhooks": "Envíe cada nueva respuesta a sus propios sistemas en cuanto llegue, firmada y con reintentos.",
-      "apiKeys": "Claves para la API de Formalie: gestione formularios y respuestas desde su código.",
+      "webhooks": "Envía cada nueva respuesta a tus propios sistemas en cuanto llega, firmada y con reintentos.",
+      "apiKeys": "Claves para la API de Formalie: gestiona formularios y respuestas desde tu código.",
       "apps": "Conecte apps como hojas de cálculo y chat de equipo."
     }
   },

@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Modelos do sistema não podem ser alterados. Duplique-o para criar o seu.",
     "FRM-FORM-1012": "Já existe um modelo com este nome.",
     "FRM-RESP-1003": "Este formulário já foi enviado nesta sessão.",
-    "FRM-FORM-1013": "Esta pasta ainda tem formulários. Mova-os primeiro para outra pasta."
+    "FRM-FORM-1013": "Esta pasta ainda tem formulários. Mova-os primeiro para outra pasta.",
+    "FRM-FORM-1014": "Temas do sistema não podem ser alterados. Duplique-o para criar o seu."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Assinatura de acordo",
         "description": "Mostre o acordo, confirme cada ponto principal e assine — com os dados da empresa ao assinar em nome dela."
+      },
+      "risk_assessment": {
+        "name": "Avaliação de riscos",
+        "description": "Pontue cada perigo por probabilidade × gravidade; o nível de risco é calculado e um plano de ação aparece quando o risco é médio ou alto."
+      },
+      "incident_report": {
+        "name": "Relatório de incidente / acidente",
+        "description": "Registre o que aconteceu, quem se feriu e as primeiras ações tomadas — incidentes graves são sinalizados para análise urgente."
+      },
+      "near_miss_report": {
+        "name": "Relato de quase acidente",
+        "description": "Relate quase acidentes rapidamente — a gravidade potencial e a recorrência definem a prioridade para que a prevenção venha primeiro."
+      },
+      "safety_inspection": {
+        "name": "Checklist de inspeção de segurança",
+        "description": "Verificações aprovado/reprovado com percentual de conformidade e resultado; itens reprovados pedem detalhes e fotos."
+      },
+      "patient_intake": {
+        "name": "Cadastro de paciente",
+        "description": "Dados do novo paciente, motivo da consulta, nível de dor, alergias e IMC calculado a partir da altura e do peso."
+      },
+      "medical_history": {
+        "name": "Histórico médico",
+        "description": "Doenças, cirurgias, medicamentos, histórico familiar e estilo de vida — com a contagem de condições para o profissional de saúde."
+      },
+      "health_screening": {
+        "name": "Triagem / declaração de saúde",
+        "description": "Uma triagem rápida de sim/não antes da entrada; qualquer \"sim\" encaminha a pessoa para avaliação antes de entrar."
+      },
+      "consent_form": {
+        "name": "Termo de consentimento",
+        "description": "Declarações de consentimento claras com assinatura; um responsável assina por menores de 18 anos."
+      },
+      "event_registration": {
+        "name": "Inscrição em evento",
+        "description": "Inscreva participantes com tipo de ingresso, quantidade e total atualizado, sessões e necessidades de acessibilidade."
+      },
+      "rsvp": {
+        "name": "Confirmação de presença",
+        "description": "Respostas simples sim/não/talvez, com número de acompanhantes e restrições alimentares só para quem vem."
+      },
+      "appointment_booking": {
+        "name": "Agendamento",
+        "description": "Agende um serviço na data e hora preferidas, com uma segunda opção e lembretes."
+      },
+      "venue_booking": {
+        "name": "Reserva de espaço / sala",
+        "description": "Reserve uma sala por hora com equipamentos extras e o custo calculado conforme você escolhe."
+      },
+      "volunteer_signup": {
+        "name": "Inscrição de voluntários",
+        "description": "Reúna voluntários, seus interesses e disponibilidade — com consentimento do responsável para menores de 18."
+      },
+      "speaker_sponsor_application": {
+        "name": "Inscrição de palestrante / patrocinador",
+        "description": "Um formulário para os dois: palestrantes propõem uma sessão, patrocinadores escolhem um pacote e extras com o total."
+      },
+      "post_event_feedback": {
+        "name": "Feedback pós-evento",
+        "description": "Notas para conteúdo, palestrantes, local e organização, com média e recomendação."
+      },
+      "guest_registration": {
+        "name": "Ficha de registro de hóspede",
+        "description": "Dados de check-in com o número de noites calculado pela chegada e saída."
+      },
+      "hotel_booking_request": {
+        "name": "Solicitação de reserva de hotel",
+        "description": "Datas, tipo e quantidade de quartos geram as noites e um preço estimado; extras e pedidos especiais também."
+      },
+      "guest_feedback": {
+        "name": "Formulário de avaliação do hóspede",
+        "description": "Avalie limpeza, conforto, equipe, comida e custo-benefício com média e recomendação."
+      },
+      "service_evaluation": {
+        "name": "Avaliação de atendimento",
+        "description": "Avalie um departamento ou colaborador em quatro qualidades; a nota do atendimento aparece em percentual."
+      },
+      "special_requirements": {
+        "name": "Formulário de necessidades especiais",
+        "description": "Restrições alimentares, acessibilidade, alergias e comemorações — para tudo estar pronto antes da chegada."
+      },
+      "event_catering_request": {
+        "name": "Pedido de buffet para evento",
+        "description": "Cardápio e extras por pessoa vezes o número de convidados geram uma estimativa na hora."
+      },
+      "restaurant_reservation": {
+        "name": "Reserva de restaurante",
+        "description": "Data, horário, número de pessoas, lugar e ocasião — tudo de que o anfitrião precisa."
+      },
+      "hospitality_complaint": {
+        "name": "Formulário de reclamação de hospitalidade",
+        "description": "Deixe os hóspedes contarem o que deu errado, onde e como gostariam que fosse resolvido."
       }
     },
     "openGallery": "Abrir a galeria completa",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Um design da Formalie",
       "systemHint": "Este tema faz parte da Formalie e não pode ser alterado. Duplique-o para criar sua própria versão.",
-      "systemDesc": "Design da Formalie — somente leitura"
-    }
+      "systemDesc": "Design da Formalie — somente leitura",
+      "crumb": "Editor de tema",
+      "newTitle": "Novo tema",
+      "untitled": "Tema sem título",
+      "newDesc": "Crie uma vez, use em qualquer formulário",
+      "savedState": "Todas as alterações salvas",
+      "unsaved": "Alterações não salvas",
+      "save": "Salvar tema",
+      "name": "Nome do tema",
+      "sample": "Exibido em um formulário de exemplo",
+      "sampleTitle": "Fale conosco",
+      "notFound": "Este tema não está disponível",
+      "leaveTitle": "Sair sem salvar?",
+      "leaveDesc": "Suas alterações neste tema serão perdidas.",
+      "leave": "Sair"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Salvo de um formulário",
+      "created": "Criado"
+    },
+    "filterSource": "Criado por",
+    "newTheme": "Novo tema",
+    "editDesign": "Editar design",
+    "duplicateToEdit": "Duplicar para editar",
+    "copySuffix": "cópia",
+    "categoryDesign": "Design {name}",
+    "previewName": "Nome completo",
+    "previewEmail": "E-mail",
+    "previewMessage": "Mensagem"
   },
   "dataSources": {
     "subtitle": "Conecte seus próprios bancos de dados, envie dados de formulários para eles e trabalhe com esses dados",

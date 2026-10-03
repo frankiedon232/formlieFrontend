@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "시스템 템플릿은 변경할 수 없습니다. 복제하여 나만의 템플릿을 만드세요.",
     "FRM-FORM-1012": "같은 이름의 템플릿이 이미 있습니다.",
     "FRM-RESP-1003": "이 세션에서 이미 이 양식을 제출했습니다.",
-    "FRM-FORM-1013": "이 폴더에 아직 양식이 있습니다. 먼저 다른 폴더로 옮기세요."
+    "FRM-FORM-1013": "이 폴더에 아직 양식이 있습니다. 먼저 다른 폴더로 옮기세요.",
+    "FRM-FORM-1014": "시스템 테마는 변경할 수 없습니다. 복제해서 나만의 테마를 만드세요."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / 계약서 서명",
         "description": "계약서를 보여 주고 주요 항목을 하나씩 확인한 뒤 서명합니다. 회사를 대표해 서명하면 회사 정보도 받습니다."
+      },
+      "risk_assessment": {
+        "name": "위험성 평가",
+        "description": "각 위험 요소를 발생 가능성 × 심각도로 평가하세요. 위험 수준이 자동 계산되고 위험이 중간 이상이면 조치 계획이 나타납니다."
+      },
+      "incident_report": {
+        "name": "사건 / 사고 보고서",
+        "description": "무슨 일이 있었는지, 누가 다쳤는지, 어떤 초기 조치를 했는지 기록하세요. 중대한 사건은 긴급 검토 대상으로 표시됩니다."
+      },
+      "near_miss_report": {
+        "name": "아차사고 보고서",
+        "description": "아차사고를 빠르게 보고하세요. 예상 심각도와 재발 가능성으로 우선순위를 정해 예방을 먼저 챙깁니다."
+      },
+      "safety_inspection": {
+        "name": "안전 점검 체크리스트",
+        "description": "합격 / 불합격 점검과 함께 준수율과 결과를 표시합니다. 불합격 항목은 세부 내용과 사진을 요청합니다."
+      },
+      "patient_intake": {
+        "name": "환자 접수",
+        "description": "신규 환자 정보, 방문 사유, 통증 정도, 알레르기, 키와 몸무게로 계산한 BMI."
+      },
+      "medical_history": {
+        "name": "병력",
+        "description": "질환, 수술, 복용 약, 가족력, 생활 습관 — 의료진을 위한 질환 수 포함."
+      },
+      "health_screening": {
+        "name": "건강 문진 / 신고서",
+        "description": "입장 전 예 / 아니요로 답하는 간단한 문진입니다. \"예\"가 하나라도 있으면 입장 전에 확인을 받습니다."
+      },
+      "consent_form": {
+        "name": "동의서",
+        "description": "서명이 포함된 명확한 동의 문구. 18세 미만은 부모나 보호자가 서명합니다."
+      },
+      "event_registration": {
+        "name": "행사 등록",
+        "description": "티켓 유형, 수량과 실시간 합계, 세션, 접근성 요구 사항과 함께 참가자를 등록하세요."
+      },
+      "rsvp": {
+        "name": "참석 여부 회신",
+        "description": "참석 / 불참 / 미정의 간단한 회신. 인원과 식단 요구 사항은 참석자에게만 묻습니다."
+      },
+      "appointment_booking": {
+        "name": "예약 신청",
+        "description": "원하는 날짜와 시간에 서비스를 예약하세요. 2순위 선택과 알림도 제공합니다."
+      },
+      "venue_booking": {
+        "name": "장소 / 회의실 예약",
+        "description": "회의실을 시간 단위로 예약하고 장비를 추가하세요. 선택하는 즉시 비용이 계산됩니다."
+      },
+      "volunteer_signup": {
+        "name": "자원봉사자 모집",
+        "description": "자원봉사자와 관심 분야, 가능한 시간을 받으세요. 18세 미만은 보호자 동의가 필요합니다."
+      },
+      "speaker_sponsor_application": {
+        "name": "연사 / 후원사 신청",
+        "description": "하나의 양식으로 둘 다: 연사는 세션을 제안하고, 후원사는 패키지와 추가 옵션을 골라 합계를 확인합니다."
+      },
+      "post_event_feedback": {
+        "name": "행사 후 피드백",
+        "description": "콘텐츠, 연사, 장소, 운영에 대한 평가와 평균 점수, 추천 의향."
+      },
+      "guest_registration": {
+        "name": "투숙객 등록 양식",
+        "description": "체크인 정보와 함께 도착일과 출발일로 숙박 일수를 계산합니다."
+      },
+      "hotel_booking_request": {
+        "name": "호텔 예약 요청 양식",
+        "description": "날짜, 객실 유형, 객실 수로 숙박 일수와 예상 요금을 계산합니다. 추가 옵션과 특별 요청도 받습니다."
+      },
+      "guest_feedback": {
+        "name": "투숙객 피드백 양식",
+        "description": "청결, 편안함, 직원, 음식, 가성비를 평가하고 평균과 추천 의향을 확인하세요."
+      },
+      "service_evaluation": {
+        "name": "서비스 평가 양식",
+        "description": "부서나 팀원을 네 가지 항목으로 평가합니다. 서비스 점수는 백분율로 표시됩니다."
+      },
+      "special_requirements": {
+        "name": "특별 요청 양식",
+        "description": "식단 및 접근성 요구 사항, 알레르기, 기념일 — 도착 전에 모든 준비를 마칩니다."
+      },
+      "event_catering_request": {
+        "name": "행사 케이터링 요청",
+        "description": "1인당 메뉴와 추가 옵션 × 인원 수로 바로 견적을 확인하세요."
+      },
+      "restaurant_reservation": {
+        "name": "레스토랑 예약 요청",
+        "description": "날짜, 시간, 인원, 좌석, 방문 목적 — 매장에 필요한 모든 정보."
+      },
+      "hospitality_complaint": {
+        "name": "고객 불만 접수 양식",
+        "description": "무엇이, 어디서 잘못되었는지, 어떻게 해결되길 원하는지 고객이 알려 줄 수 있습니다."
       }
     },
     "openGallery": "전체 갤러리 열기",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Formalie 디자인",
       "systemHint": "이 테마는 Formalie에 포함되어 있어 변경할 수 없습니다. 복제하여 나만의 버전을 만드세요.",
-      "systemDesc": "Formalie 디자인 — 읽기 전용"
-    }
+      "systemDesc": "Formalie 디자인 — 읽기 전용",
+      "crumb": "테마 편집기",
+      "newTitle": "새 테마",
+      "untitled": "제목 없는 테마",
+      "newDesc": "한 번 디자인하고 모든 양식에 사용하세요",
+      "savedState": "모든 변경 사항 저장됨",
+      "unsaved": "저장되지 않은 변경 사항",
+      "save": "테마 저장",
+      "name": "테마 이름",
+      "sample": "샘플 양식에 표시됨",
+      "sampleTitle": "문의하기",
+      "notFound": "이 테마를 사용할 수 없습니다",
+      "leaveTitle": "저장하지 않고 나갈까요?",
+      "leaveDesc": "이 테마의 변경 사항이 사라집니다.",
+      "leave": "나가기"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "양식에서 저장됨",
+      "created": "직접 만듦"
+    },
+    "filterSource": "만든 곳",
+    "newTheme": "새 테마",
+    "editDesign": "디자인 편집",
+    "duplicateToEdit": "복제하여 편집",
+    "copySuffix": "사본",
+    "categoryDesign": "{name} 디자인",
+    "previewName": "이름",
+    "previewEmail": "이메일",
+    "previewMessage": "메시지"
   },
   "dataSources": {
     "subtitle": "자체 데이터베이스를 연결하고, 양식 데이터를 보내고, 해당 데이터로 작업하세요",

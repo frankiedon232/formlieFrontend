@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "システムテンプレートは変更できません。複製して独自のテンプレートを作成してください。",
     "FRM-FORM-1012": "この名前のテンプレートはすでに存在します。",
     "FRM-RESP-1003": "このフォームはこのセッションから既に送信されています。",
-    "FRM-FORM-1013": "このフォルダーにはまだフォームがあります。先に別のフォルダーに移動してください。"
+    "FRM-FORM-1013": "このフォルダーにはまだフォームがあります。先に別のフォルダーに移動してください。",
+    "FRM-FORM-1014": "システムテーマは変更できません。複製して独自のテーマを作成してください。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / 契約書への署名",
         "description": "契約書を表示し、主要事項を一つずつ確認して署名。法人として署名する場合は会社情報も入力します。"
+      },
+      "risk_assessment": {
+        "name": "リスクアセスメント",
+        "description": "各危険源を発生可能性 × 重大度で評価。リスクレベルが自動計算され、中・高リスクでは対策計画が表示されます。"
+      },
+      "incident_report": {
+        "name": "インシデント / 事故報告",
+        "description": "発生内容、負傷者、初動対応を記録。重大なインシデントは緊急レビュー対象として通知されます。"
+      },
+      "near_miss_report": {
+        "name": "ヒヤリハット報告",
+        "description": "ヒヤリハットをすばやく報告。想定される重大度と再発可能性から優先度を決め、予防を最優先にします。"
+      },
+      "safety_inspection": {
+        "name": "安全点検チェックリスト",
+        "description": "合格 / 不合格のチェックで適合率と結果を表示。不合格の項目には詳細と写真を求めます。"
+      },
+      "patient_intake": {
+        "name": "患者受付",
+        "description": "新規患者の情報、来院理由、痛みの程度、アレルギー、身長と体重から計算した BMI。"
+      },
+      "medical_history": {
+        "name": "既往歴",
+        "description": "疾患、手術歴、服薬、家族歴、生活習慣。医療者向けに疾患数も表示します。"
+      },
+      "health_screening": {
+        "name": "健康チェック / 申告",
+        "description": "入場前のはい / いいえ形式の簡単なチェック。「はい」が1つでもあれば入場前に確認へ回します。"
+      },
+      "consent_form": {
+        "name": "同意書",
+        "description": "署名付きのわかりやすい同意事項。18歳未満の場合は保護者が署名します。"
+      },
+      "event_registration": {
+        "name": "イベント参加登録",
+        "description": "チケット種別、枚数と合計金額、セッション、アクセシビリティの要望とともに参加者を登録。"
+      },
+      "rsvp": {
+        "name": "出欠確認",
+        "description": "出席 / 欠席 / 未定のシンプルな回答。人数と食事の要望は出席者のみに尋ねます。"
+      },
+      "appointment_booking": {
+        "name": "予約受付",
+        "description": "希望の日時でサービスを予約。第2希望とリマインダーにも対応。"
+      },
+      "venue_booking": {
+        "name": "会場 / 会議室予約",
+        "description": "会議室を時間単位で予約。備品オプションを選ぶと費用がすぐに計算されます。"
+      },
+      "volunteer_signup": {
+        "name": "ボランティア募集",
+        "description": "ボランティアの関心分野と都合の良い日時を集めます。18歳未満は保護者の同意付き。"
+      },
+      "speaker_sponsor_application": {
+        "name": "登壇者 / スポンサー申込",
+        "description": "両方に使える1つのフォーム。登壇者はセッションを提案し、スポンサーはプランとオプションを選んで合計を確認します。"
+      },
+      "post_event_feedback": {
+        "name": "イベント後アンケート",
+        "description": "内容、登壇者、会場、運営の評価と平均スコア、おすすめ度。"
+      },
+      "guest_registration": {
+        "name": "宿泊者登録フォーム",
+        "description": "チェックイン情報。到着日と出発日から宿泊数を計算します。"
+      },
+      "hotel_booking_request": {
+        "name": "ホテル予約リクエストフォーム",
+        "description": "日付、客室タイプ、部屋数から泊数と概算料金を算出。オプションや特別なリクエストも。"
+      },
+      "guest_feedback": {
+        "name": "宿泊者アンケート",
+        "description": "清潔さ、快適さ、スタッフ、食事、価格を評価し、平均とおすすめ度を表示。"
+      },
+      "service_evaluation": {
+        "name": "サービス評価フォーム",
+        "description": "部署やスタッフを4つの観点で評価。サービススコアはパーセントで表示されます。"
+      },
+      "special_requirements": {
+        "name": "特別なご要望フォーム",
+        "description": "食事やアクセシビリティの要望、アレルギー、お祝い事など。到着前に準備を整えます。"
+      },
+      "event_catering_request": {
+        "name": "イベントケータリング依頼",
+        "description": "1人あたりのメニューとオプション × 人数で、すぐに見積もりを表示。"
+      },
+      "restaurant_reservation": {
+        "name": "レストラン予約リクエスト",
+        "description": "日付、時間、人数、席の希望、利用目的など、お店に必要な情報をすべて。"
+      },
+      "hospitality_complaint": {
+        "name": "ご意見・苦情フォーム",
+        "description": "何が、どこで問題だったのか、どう対応してほしいのかをお客様から伺います。"
       }
     },
     "openGallery": "ギャラリー全体を開く",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Formalieのデザイン",
       "systemHint": "このテーマはFormalieに含まれているため変更できません。複製すると独自のバージョンを作成できます。",
-      "systemDesc": "Formalieのデザイン — 読み取り専用"
-    }
+      "systemDesc": "Formalieのデザイン — 読み取り専用",
+      "crumb": "テーマエディター",
+      "newTitle": "新しいテーマ",
+      "untitled": "無題のテーマ",
+      "newDesc": "一度デザインすれば、どのフォームでも使えます",
+      "savedState": "すべての変更を保存しました",
+      "unsaved": "未保存の変更",
+      "save": "テーマを保存",
+      "name": "テーマ名",
+      "sample": "サンプルフォームで表示",
+      "sampleTitle": "お問い合わせ",
+      "notFound": "このテーマは利用できません",
+      "leaveTitle": "保存せずに移動しますか？",
+      "leaveDesc": "このテーマへの変更は失われます。",
+      "leave": "移動する"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "フォームから保存",
+      "created": "作成"
+    },
+    "filterSource": "作成元",
+    "newTheme": "新しいテーマ",
+    "editDesign": "デザインを編集",
+    "duplicateToEdit": "複製して編集",
+    "copySuffix": "コピー",
+    "categoryDesign": "{name}デザイン",
+    "previewName": "氏名",
+    "previewEmail": "メールアドレス",
+    "previewMessage": "メッセージ"
   },
   "dataSources": {
     "subtitle": "独自のデータベースを接続し、フォームデータを送信して活用できます",

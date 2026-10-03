@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Violezo vya mfumo haviwezi kubadilishwa. Kinakili ili kutengeneza chako.",
     "FRM-FORM-1012": "Tayari kuna kiolezo chenye jina hili.",
     "FRM-RESP-1003": "Fomu hii tayari imetumwa kutoka kipindi hiki.",
-    "FRM-FORM-1013": "Folda hii bado ina fomu. Zihamishe kwanza kwenye folda nyingine."
+    "FRM-FORM-1013": "Folda hii bado ina fomu. Zihamishe kwanza kwenye folda nyingine.",
+    "FRM-FORM-1014": "Mandhari za mfumo haziwezi kubadilishwa. Inakili ili utengeneze yako."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Kusaini Makubaliano",
         "description": "Onyesha makubaliano, thibitisha kila hoja kuu na usaini — pamoja na taarifa za kampuni unaposaini kwa niaba yake."
+      },
+      "risk_assessment": {
+        "name": "Tathmini ya Hatari",
+        "description": "Pima kila hatari kwa uwezekano × ukubwa; kiwango cha hatari kinakokotolewa na mpango wa hatua unaonekana hatari ikiwa ya wastani au ya juu."
+      },
+      "incident_report": {
+        "name": "Ripoti ya Tukio / Ajali",
+        "description": "Rekodi kilichotokea, aliyeumia na hatua za kwanza zilizochukuliwa — matukio makubwa yanawekewa alama kwa ukaguzi wa haraka."
+      },
+      "near_miss_report": {
+        "name": "Ripoti ya Karibu Ajali",
+        "description": "Ripoti matukio ya karibu ajali haraka — ukubwa unaowezekana na kujirudia hutoa kipaumbele ili kinga ije kwanza."
+      },
+      "safety_inspection": {
+        "name": "Orodha ya Ukaguzi wa Usalama",
+        "description": "Ukaguzi wa imepita / imeshindwa wenye asilimia ya utiifu na matokeo; ukaguzi ulioshindwa huomba maelezo na picha."
+      },
+      "patient_intake": {
+        "name": "Usajili wa Mgonjwa",
+        "description": "Taarifa za mgonjwa mpya, sababu ya kuja, kiwango cha maumivu, mzio na BMI inayokokotolewa kutoka urefu na uzito."
+      },
+      "medical_history": {
+        "name": "Historia ya Matibabu",
+        "description": "Magonjwa, upasuaji, dawa, historia ya familia na mtindo wa maisha — pamoja na idadi ya magonjwa kwa mtaalamu wa afya."
+      },
+      "health_screening": {
+        "name": "Uchunguzi / Tamko la Afya",
+        "description": "Uchunguzi wa haraka wa ndiyo / hapana kabla ya kuingia; \"ndiyo\" yoyote humpeleka mtu kukaguliwa kabla ya kuingia."
+      },
+      "consent_form": {
+        "name": "Fomu ya Idhini",
+        "description": "Kauli za idhini zilizo wazi pamoja na sahihi; mzazi au mlezi husaini kwa yeyote aliye chini ya miaka 18."
+      },
+      "event_registration": {
+        "name": "Usajili wa Tukio",
+        "description": "Sajili washiriki kwa aina ya tiketi, idadi na jumla inayosasishwa, vipindi na mahitaji ya ufikiaji."
+      },
+      "rsvp": {
+        "name": "Uthibitisho wa Kuhudhuria",
+        "description": "Majibu rahisi ya ndiyo / hapana / labda, pamoja na idadi ya watu na mahitaji ya chakula kwa wanaokuja tu."
+      },
+      "appointment_booking": {
+        "name": "Kuweka Miadi",
+        "description": "Weka huduma kwa tarehe na saa unayopendelea, pamoja na chaguo la pili na vikumbusho."
+      },
+      "venue_booking": {
+        "name": "Kuhifadhi Ukumbi / Chumba",
+        "description": "Hifadhi chumba kwa saa pamoja na vifaa vya ziada; gharama inakokotolewa unapochagua."
+      },
+      "volunteer_signup": {
+        "name": "Usajili wa Wajitolea",
+        "description": "Kusanya wajitolea, mambo wanayopenda na upatikanaji wao — kwa idhini ya mlezi kwa walio chini ya miaka 18."
+      },
+      "speaker_sponsor_application": {
+        "name": "Ombi la Mzungumzaji / Mfadhili",
+        "description": "Fomu moja kwa wote: wazungumzaji wanapendekeza kipindi, wafadhili wanachagua kifurushi na ziada pamoja na jumla."
+      },
+      "post_event_feedback": {
+        "name": "Maoni Baada ya Tukio",
+        "description": "Alama za maudhui, wazungumzaji, ukumbi na uandaaji pamoja na wastani na pendekezo."
+      },
+      "guest_registration": {
+        "name": "Fomu ya Usajili wa Mgeni",
+        "description": "Taarifa za kuingia pamoja na idadi ya usiku inayokokotolewa kutoka kuwasili na kuondoka."
+      },
+      "hotel_booking_request": {
+        "name": "Ombi la Kuhifadhi Hoteli",
+        "description": "Tarehe, aina na idadi ya vyumba hutoa usiku na bei inayokadiriwa; pia ziada na maombi maalum."
+      },
+      "guest_feedback": {
+        "name": "Fomu ya Maoni ya Mgeni",
+        "description": "Pima usafi, starehe, wafanyakazi, chakula na thamani kwa wastani na pendekezo."
+      },
+      "service_evaluation": {
+        "name": "Fomu ya Tathmini ya Huduma",
+        "description": "Tathmini idara au mfanyakazi kwa sifa nne; alama ya huduma inaonyeshwa kwa asilimia."
+      },
+      "special_requirements": {
+        "name": "Fomu ya Mahitaji Maalum",
+        "description": "Mahitaji ya chakula na ufikiaji, mzio na sherehe — ili kila kitu kiwe tayari kabla ya kuwasili."
+      },
+      "event_catering_request": {
+        "name": "Ombi la Huduma ya Chakula kwa Tukio",
+        "description": "Menyu na ziada kwa kila mtu mara idadi ya wageni hutoa makadirio papo hapo."
+      },
+      "restaurant_reservation": {
+        "name": "Kuhifadhi Meza ya Mgahawa",
+        "description": "Tarehe, saa, idadi ya watu, mahali pa kukaa na tukio — kila kitu mwenyeji anachohitaji."
+      },
+      "hospitality_complaint": {
+        "name": "Fomu ya Malalamiko ya Huduma",
+        "description": "Waache wageni waeleze kilichoharibika, wapi na jinsi wangependa kirekebishwe."
       }
     },
     "openGallery": "Fungua matunzio yote",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Muundo wa Formalie",
       "systemHint": "Mandhari haya ni sehemu ya Formalie na hayawezi kubadilishwa. Yanakili ili kuunda toleo lako mwenyewe.",
-      "systemDesc": "Muundo wa Formalie — kusoma tu"
-    }
+      "systemDesc": "Muundo wa Formalie — kusoma tu",
+      "crumb": "Kihariri cha mandhari",
+      "newTitle": "Mandhari mpya",
+      "untitled": "Mandhari isiyo na jina",
+      "newDesc": "Iunde mara moja, itumie kwenye fomu yoyote",
+      "savedState": "Mabadiliko yote yamehifadhiwa",
+      "unsaved": "Mabadiliko hayajahifadhiwa",
+      "save": "Hifadhi mandhari",
+      "name": "Jina la mandhari",
+      "sample": "Inaonyeshwa kwenye fomu ya mfano",
+      "sampleTitle": "Wasiliana nasi",
+      "notFound": "Mandhari hii haipatikani",
+      "leaveTitle": "Ondoka bila kuhifadhi?",
+      "leaveDesc": "Mabadiliko yako kwenye mandhari hii yatapotea.",
+      "leave": "Ondoka"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Imehifadhiwa kutoka fomu",
+      "created": "Imeundwa"
+    },
+    "filterSource": "Imetengenezwa na",
+    "newTheme": "Mandhari mpya",
+    "editDesign": "Hariri muundo",
+    "duplicateToEdit": "Nakili ili kuhariri",
+    "copySuffix": "nakala",
+    "categoryDesign": "Muundo wa {name}",
+    "previewName": "Jina kamili",
+    "previewEmail": "Barua pepe",
+    "previewMessage": "Ujumbe"
   },
   "dataSources": {
     "subtitle": "Unganisha hifadhidata zako mwenyewe, tuma data ya fomu kwazo na uifanyie kazi",

@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Không thể thay đổi mẫu hệ thống. Hãy nhân bản để tạo mẫu của riêng bạn.",
     "FRM-FORM-1012": "Đã có mẫu với tên này.",
     "FRM-RESP-1003": "Biểu mẫu này đã được gửi từ phiên này.",
-    "FRM-FORM-1013": "Thư mục này vẫn còn biểu mẫu. Hãy chuyển chúng sang thư mục khác trước."
+    "FRM-FORM-1013": "Thư mục này vẫn còn biểu mẫu. Hãy chuyển chúng sang thư mục khác trước.",
+    "FRM-FORM-1014": "Không thể thay đổi giao diện hệ thống. Hãy nhân bản để tạo giao diện của riêng bạn."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Ký thỏa thuận",
         "description": "Hiển thị thỏa thuận, xác nhận từng điểm chính và ký — kèm thông tin công ty khi ký thay mặt công ty."
+      },
+      "risk_assessment": {
+        "name": "Đánh giá rủi ro",
+        "description": "Chấm điểm từng mối nguy theo khả năng × mức độ nghiêm trọng; mức rủi ro được tính tự động và kế hoạch hành động hiện ra khi rủi ro ở mức trung bình hoặc cao."
+      },
+      "incident_report": {
+        "name": "Báo cáo sự cố / tai nạn",
+        "description": "Ghi lại sự việc, ai bị thương và các biện pháp ban đầu — sự cố nghiêm trọng được đánh dấu để xem xét khẩn."
+      },
+      "near_miss_report": {
+        "name": "Báo cáo suýt xảy ra sự cố",
+        "description": "Báo cáo nhanh các tình huống suýt xảy ra — mức độ tiềm ẩn và khả năng lặp lại xác định mức ưu tiên để phòng ngừa đi trước."
+      },
+      "safety_inspection": {
+        "name": "Danh sách kiểm tra an toàn",
+        "description": "Các mục đạt / không đạt với tỷ lệ tuân thủ và kết quả; mục không đạt yêu cầu thêm chi tiết và ảnh."
+      },
+      "patient_intake": {
+        "name": "Tiếp nhận bệnh nhân",
+        "description": "Thông tin bệnh nhân mới, lý do khám, mức độ đau, dị ứng và BMI tính từ chiều cao, cân nặng."
+      },
+      "medical_history": {
+        "name": "Tiền sử bệnh",
+        "description": "Bệnh lý, phẫu thuật, thuốc, tiền sử gia đình và lối sống — kèm số bệnh lý cho bác sĩ."
+      },
+      "health_screening": {
+        "name": "Sàng lọc / khai báo y tế",
+        "description": "Sàng lọc có / không nhanh trước khi vào; bất kỳ câu \"có\" nào sẽ chuyển người đó đi xem xét trước khi vào."
+      },
+      "consent_form": {
+        "name": "Mẫu đồng ý",
+        "description": "Các điều khoản đồng ý rõ ràng có chữ ký; cha mẹ hoặc người giám hộ ký thay cho người dưới 18 tuổi."
+      },
+      "event_registration": {
+        "name": "Đăng ký sự kiện",
+        "description": "Đăng ký người tham dự với loại vé, số lượng và tổng tiền cập nhật, phiên tham dự và nhu cầu hỗ trợ tiếp cận."
+      },
+      "rsvp": {
+        "name": "Xác nhận tham dự",
+        "description": "Trả lời có / không / có thể đơn giản, số người đi cùng và nhu cầu ăn uống chỉ dành cho người tham dự."
+      },
+      "appointment_booking": {
+        "name": "Đặt lịch hẹn",
+        "description": "Đặt dịch vụ vào ngày giờ mong muốn, kèm lựa chọn thứ hai và lời nhắc."
+      },
+      "venue_booking": {
+        "name": "Đặt địa điểm / phòng",
+        "description": "Đặt phòng theo giờ cùng thiết bị bổ sung; chi phí được tính ngay khi bạn chọn."
+      },
+      "volunteer_signup": {
+        "name": "Đăng ký tình nguyện viên",
+        "description": "Thu thập tình nguyện viên, sở thích và thời gian rảnh — có sự đồng ý của người giám hộ cho người dưới 18 tuổi."
+      },
+      "speaker_sponsor_application": {
+        "name": "Đăng ký diễn giả / nhà tài trợ",
+        "description": "Một biểu mẫu cho cả hai: diễn giả đề xuất phiên, nhà tài trợ chọn gói và hạng mục bổ sung kèm tổng tiền."
+      },
+      "post_event_feedback": {
+        "name": "Phản hồi sau sự kiện",
+        "description": "Đánh giá nội dung, diễn giả, địa điểm và khâu tổ chức với điểm trung bình và mức độ giới thiệu."
+      },
+      "guest_registration": {
+        "name": "Phiếu đăng ký khách",
+        "description": "Thông tin nhận phòng với số đêm tính từ ngày đến và ngày đi."
+      },
+      "hotel_booking_request": {
+        "name": "Yêu cầu đặt phòng khách sạn",
+        "description": "Ngày, loại phòng và số phòng cho ra số đêm và giá ước tính; kèm dịch vụ thêm và yêu cầu đặc biệt."
+      },
+      "guest_feedback": {
+        "name": "Phiếu góp ý của khách",
+        "description": "Đánh giá sự sạch sẽ, tiện nghi, nhân viên, đồ ăn và giá trị với điểm trung bình và mức độ giới thiệu."
+      },
+      "service_evaluation": {
+        "name": "Phiếu đánh giá dịch vụ",
+        "description": "Đánh giá một bộ phận hoặc nhân viên theo bốn tiêu chí; điểm dịch vụ hiển thị dưới dạng phần trăm."
+      },
+      "special_requirements": {
+        "name": "Phiếu yêu cầu đặc biệt",
+        "description": "Nhu cầu ăn uống và hỗ trợ tiếp cận, dị ứng và dịp kỷ niệm — để mọi thứ sẵn sàng trước khi khách đến."
+      },
+      "event_catering_request": {
+        "name": "Yêu cầu tiệc cho sự kiện",
+        "description": "Thực đơn và món thêm theo đầu người nhân với số khách cho ra ước tính ngay lập tức."
+      },
+      "restaurant_reservation": {
+        "name": "Đặt bàn nhà hàng",
+        "description": "Ngày, giờ, số người, chỗ ngồi và dịp đặc biệt — mọi thứ nhà hàng cần."
+      },
+      "hospitality_complaint": {
+        "name": "Phiếu khiếu nại dịch vụ",
+        "description": "Để khách cho bạn biết điều gì chưa ổn, ở đâu và họ muốn được khắc phục thế nào."
       }
     },
     "openGallery": "Mở toàn bộ thư viện",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Một thiết kế của Formalie",
       "systemHint": "Chủ đề này thuộc Formalie và không thể thay đổi. Hãy nhân bản để tạo phiên bản của riêng bạn.",
-      "systemDesc": "Thiết kế của Formalie — chỉ đọc"
-    }
+      "systemDesc": "Thiết kế của Formalie — chỉ đọc",
+      "crumb": "Trình chỉnh sửa giao diện",
+      "newTitle": "Giao diện mới",
+      "untitled": "Giao diện chưa đặt tên",
+      "newDesc": "Thiết kế một lần, dùng cho mọi biểu mẫu",
+      "savedState": "Đã lưu mọi thay đổi",
+      "unsaved": "Thay đổi chưa lưu",
+      "save": "Lưu giao diện",
+      "name": "Tên giao diện",
+      "sample": "Hiển thị trên một biểu mẫu mẫu",
+      "sampleTitle": "Liên hệ với chúng tôi",
+      "notFound": "Giao diện này không khả dụng",
+      "leaveTitle": "Rời đi mà không lưu?",
+      "leaveDesc": "Các thay đổi của bạn với giao diện này sẽ bị mất.",
+      "leave": "Rời đi"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Lưu từ biểu mẫu",
+      "created": "Đã tạo"
+    },
+    "filterSource": "Tạo bởi",
+    "newTheme": "Giao diện mới",
+    "editDesign": "Chỉnh sửa thiết kế",
+    "duplicateToEdit": "Nhân bản để chỉnh sửa",
+    "copySuffix": "bản sao",
+    "categoryDesign": "Thiết kế {name}",
+    "previewName": "Họ và tên",
+    "previewEmail": "Email",
+    "previewMessage": "Lời nhắn"
   },
   "dataSources": {
     "subtitle": "Kết nối cơ sở dữ liệu của riêng bạn, gửi dữ liệu biểu mẫu đến đó và làm việc với dữ liệu",

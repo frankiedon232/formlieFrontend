@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Templat sistem tidak dapat diubah. Duplikat templat untuk membuat milik Anda sendiri.",
     "FRM-FORM-1012": "Templat dengan nama ini sudah ada.",
     "FRM-RESP-1003": "Formulir ini sudah dikirim dari sesi ini.",
-    "FRM-FORM-1013": "Folder ini masih berisi formulir. Pindahkan dulu ke folder lain."
+    "FRM-FORM-1013": "Folder ini masih berisi formulir. Pindahkan dulu ke folder lain.",
+    "FRM-FORM-1014": "Tema sistem tidak dapat diubah. Duplikat tema ini untuk membuat milik Anda sendiri."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Penandatanganan Perjanjian",
         "description": "Tampilkan perjanjian, konfirmasi setiap poin utama, lalu tanda tangani — dengan data perusahaan jika menandatangani atas namanya."
+      },
+      "risk_assessment": {
+        "name": "Penilaian Risiko",
+        "description": "Beri skor setiap bahaya berdasarkan kemungkinan × keparahan; tingkat risiko dihitung otomatis dan rencana tindakan muncul saat risikonya sedang atau tinggi."
+      },
+      "incident_report": {
+        "name": "Laporan Insiden / Kecelakaan",
+        "description": "Catat apa yang terjadi, siapa yang terluka, dan tindakan pertama yang diambil — insiden serius ditandai untuk ditinjau segera."
+      },
+      "near_miss_report": {
+        "name": "Laporan Nyaris Celaka",
+        "description": "Laporkan kejadian nyaris celaka dengan cepat — potensi keparahan dan kemungkinan terulang menentukan prioritas agar pencegahan didahulukan."
+      },
+      "safety_inspection": {
+        "name": "Daftar Periksa Inspeksi Keselamatan",
+        "description": "Pemeriksaan lulus / gagal dengan persentase kepatuhan dan hasil; pemeriksaan yang gagal meminta detail dan foto."
+      },
+      "patient_intake": {
+        "name": "Pendaftaran Pasien",
+        "description": "Data pasien baru, alasan kunjungan, tingkat nyeri, alergi, dan BMI yang dihitung dari tinggi dan berat badan."
+      },
+      "medical_history": {
+        "name": "Riwayat Medis",
+        "description": "Penyakit, operasi, obat, riwayat keluarga, dan gaya hidup — dengan jumlah penyakit untuk tenaga medis."
+      },
+      "health_screening": {
+        "name": "Skrining / Pernyataan Kesehatan",
+        "description": "Skrining ya / tidak singkat sebelum masuk; jawaban \"ya\" mana pun membuat orang tersebut ditinjau dulu sebelum masuk."
+      },
+      "consent_form": {
+        "name": "Formulir Persetujuan",
+        "description": "Pernyataan persetujuan yang jelas dengan tanda tangan; orang tua atau wali menandatangani untuk yang berusia di bawah 18 tahun."
+      },
+      "event_registration": {
+        "name": "Pendaftaran Acara",
+        "description": "Daftarkan peserta dengan jenis tiket, jumlah, dan total berjalan, sesi, serta kebutuhan aksesibilitas."
+      },
+      "rsvp": {
+        "name": "RSVP",
+        "description": "Balasan ya / tidak / mungkin yang sederhana, dengan jumlah rombongan dan kebutuhan makanan hanya untuk yang hadir."
+      },
+      "appointment_booking": {
+        "name": "Pemesanan Janji Temu",
+        "description": "Pesan layanan pada tanggal dan jam pilihan, dengan pilihan kedua dan pengingat."
+      },
+      "venue_booking": {
+        "name": "Reservasi Tempat / Ruangan",
+        "description": "Pesan ruangan per jam dengan tambahan peralatan dan biaya yang dihitung saat Anda memilih."
+      },
+      "volunteer_signup": {
+        "name": "Pendaftaran Relawan",
+        "description": "Kumpulkan relawan, minat, dan ketersediaan mereka — dengan izin wali untuk yang di bawah 18 tahun."
+      },
+      "speaker_sponsor_application": {
+        "name": "Pengajuan Pembicara / Sponsor",
+        "description": "Satu formulir untuk keduanya: pembicara mengusulkan sesi, sponsor memilih paket dan tambahan beserta totalnya."
+      },
+      "post_event_feedback": {
+        "name": "Umpan Balik Pascaacara",
+        "description": "Penilaian untuk materi, pembicara, tempat, dan penyelenggaraan dengan skor rata-rata dan rekomendasi."
+      },
+      "guest_registration": {
+        "name": "Formulir Registrasi Tamu",
+        "description": "Data check-in dengan jumlah malam yang dihitung dari tanggal kedatangan dan keberangkatan."
+      },
+      "hotel_booking_request": {
+        "name": "Formulir Permintaan Pemesanan Hotel",
+        "description": "Tanggal, tipe kamar, dan jumlah kamar menghasilkan jumlah malam dan perkiraan harga; juga tambahan dan permintaan khusus."
+      },
+      "guest_feedback": {
+        "name": "Formulir Umpan Balik Tamu",
+        "description": "Nilai kebersihan, kenyamanan, staf, makanan, dan harga dengan rata-rata dan rekomendasi."
+      },
+      "service_evaluation": {
+        "name": "Formulir Evaluasi Layanan",
+        "description": "Evaluasi departemen atau anggota tim pada empat kualitas; skor layanan ditampilkan dalam persen."
+      },
+      "special_requirements": {
+        "name": "Formulir Kebutuhan Khusus",
+        "description": "Kebutuhan makanan dan aksesibilitas, alergi, dan perayaan — agar semuanya siap sebelum kedatangan."
+      },
+      "event_catering_request": {
+        "name": "Permintaan Katering Acara",
+        "description": "Menu dan tambahan per orang dikali jumlah tamu langsung memberi perkiraan biaya."
+      },
+      "restaurant_reservation": {
+        "name": "Permintaan Reservasi Restoran",
+        "description": "Tanggal, jam, jumlah orang, tempat duduk, dan acaranya — semua yang dibutuhkan tuan rumah."
+      },
+      "hospitality_complaint": {
+        "name": "Formulir Keluhan Layanan Tamu",
+        "description": "Biarkan tamu memberi tahu apa yang salah, di mana, dan bagaimana mereka ingin hal itu diperbaiki."
       }
     },
     "openGallery": "Buka galeri lengkap",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Desain Formalie",
       "systemHint": "Tema ini bagian dari Formalie dan tidak dapat diubah. Duplikat tema ini untuk membuat versi Anda sendiri.",
-      "systemDesc": "Desain Formalie — hanya baca"
-    }
+      "systemDesc": "Desain Formalie — hanya baca",
+      "crumb": "Editor tema",
+      "newTitle": "Tema baru",
+      "untitled": "Tema tanpa judul",
+      "newDesc": "Desain sekali, pakai di formulir mana pun",
+      "savedState": "Semua perubahan tersimpan",
+      "unsaved": "Perubahan belum disimpan",
+      "save": "Simpan tema",
+      "name": "Nama tema",
+      "sample": "Ditampilkan pada formulir contoh",
+      "sampleTitle": "Hubungi kami",
+      "notFound": "Tema ini tidak tersedia",
+      "leaveTitle": "Keluar tanpa menyimpan?",
+      "leaveDesc": "Perubahan Anda pada tema ini akan hilang.",
+      "leave": "Keluar"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Disimpan dari formulir",
+      "created": "Dibuat"
+    },
+    "filterSource": "Dibuat oleh",
+    "newTheme": "Tema baru",
+    "editDesign": "Edit desain",
+    "duplicateToEdit": "Duplikat untuk diedit",
+    "copySuffix": "salinan",
+    "categoryDesign": "Desain {name}",
+    "previewName": "Nama lengkap",
+    "previewEmail": "Email",
+    "previewMessage": "Pesan"
   },
   "dataSources": {
     "subtitle": "Hubungkan database Anda sendiri, kirim data formulir ke sana, dan kelola datanya",

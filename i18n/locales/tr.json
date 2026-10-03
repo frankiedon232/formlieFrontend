@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Sistem şablonları değiştirilemez. Kendinizinkini oluşturmak için çoğaltın.",
     "FRM-FORM-1012": "Bu ada sahip bir şablon zaten var.",
     "FRM-RESP-1003": "Bu form bu oturumdan zaten gönderildi.",
-    "FRM-FORM-1013": "Bu klasörde hâlâ formlar var. Önce bunları başka bir klasöre taşıyın."
+    "FRM-FORM-1013": "Bu klasörde hâlâ formlar var. Önce bunları başka bir klasöre taşıyın.",
+    "FRM-FORM-1014": "Sistem temaları değiştirilemez. Kendinizinkini oluşturmak için çoğaltın."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Sözleşme Onayı",
         "description": "Sözleşmeyi gösterin, her ana maddeyi onaylayın ve imzalayın — şirket adına imzalanıyorsa şirket bilgileriyle."
+      },
+      "risk_assessment": {
+        "name": "Risk Değerlendirmesi",
+        "description": "Her tehlikeyi olasılık × şiddete göre puanlayın; risk seviyesi hesaplanır ve risk orta veya yüksekse bir eylem planı görünür."
+      },
+      "incident_report": {
+        "name": "Olay / Kaza Raporu",
+        "description": "Ne olduğunu, kimin yaralandığını ve alınan ilk önlemleri kaydedin — ciddi olaylar acil inceleme için işaretlenir."
+      },
+      "near_miss_report": {
+        "name": "Ramak Kala Bildirimi",
+        "description": "Ramak kala olayları hızla bildirin — olası şiddet ve tekrarlanma önceliği belirler, böylece önleme önce gelir."
+      },
+      "safety_inspection": {
+        "name": "Güvenlik Denetimi Kontrol Listesi",
+        "description": "Uygunluk yüzdesi ve sonuçla geçti / kaldı kontrolleri; kalan kontroller ayrıntı ve fotoğraf ister."
+      },
+      "patient_intake": {
+        "name": "Hasta Kabul Formu",
+        "description": "Yeni hasta bilgileri, geliş nedeni, ağrı düzeyi, alerjiler ve boy ile kilodan hesaplanan VKİ."
+      },
+      "medical_history": {
+        "name": "Tıbbi Geçmiş",
+        "description": "Hastalıklar, ameliyatlar, ilaçlar, aile geçmişi ve yaşam tarzı — hekim için hastalık sayısıyla birlikte."
+      },
+      "health_screening": {
+        "name": "Sağlık Taraması / Beyanı",
+        "description": "Girişten önce hızlı bir evet / hayır taraması; herhangi bir \"evet\" kişiyi içeri girmeden önce incelemeye yönlendirir."
+      },
+      "consent_form": {
+        "name": "Onam Formu",
+        "description": "İmzalı, açık onay beyanları; 18 yaş altındakiler için ebeveyn veya vasi imzalar."
+      },
+      "event_registration": {
+        "name": "Etkinlik Kaydı",
+        "description": "Katılımcıları bilet türü, adet ve güncel toplamla, oturumlar ve erişim ihtiyaçlarıyla kaydedin."
+      },
+      "rsvp": {
+        "name": "Katılım Bildirimi",
+        "description": "Basit evet / hayır / belki yanıtları; kişi sayısı ve beslenme ihtiyaçları yalnızca gelenler için."
+      },
+      "appointment_booking": {
+        "name": "Randevu Alma",
+        "description": "Tercih edilen tarih ve saatte bir hizmet ayırtın; ikinci seçenek ve hatırlatıcılarla."
+      },
+      "venue_booking": {
+        "name": "Mekân / Salon Rezervasyonu",
+        "description": "Ek ekipmanlarla saatlik salon ayırtın; maliyet siz seçtikçe hesaplanır."
+      },
+      "volunteer_signup": {
+        "name": "Gönüllü Kaydı",
+        "description": "Gönüllüleri, ilgi alanlarını ve uygunluklarını toplayın — 18 yaş altı için vasi onayıyla."
+      },
+      "speaker_sponsor_application": {
+        "name": "Konuşmacı / Sponsor Başvurusu",
+        "description": "İkisi için tek form: konuşmacılar oturum önerir, sponsorlar paket ve ekleri toplamla seçer."
+      },
+      "post_event_feedback": {
+        "name": "Etkinlik Sonrası Geri Bildirim",
+        "description": "İçerik, konuşmacılar, mekân ve organizasyon için puanlar; ortalama puan ve tavsiye ile."
+      },
+      "guest_registration": {
+        "name": "Misafir Kayıt Formu",
+        "description": "Varış ve ayrılıştan hesaplanan gece sayısıyla giriş bilgileri."
+      },
+      "hotel_booking_request": {
+        "name": "Otel Rezervasyon Talebi",
+        "description": "Tarihler, oda türü ve oda sayısı geceleri ve tahmini fiyatı verir; ekstralar ve özel istekler de dahil."
+      },
+      "guest_feedback": {
+        "name": "Misafir Geri Bildirim Formu",
+        "description": "Temizlik, konfor, personel, yemek ve fiyat-performansı ortalama ve tavsiyeyle puanlayın."
+      },
+      "service_evaluation": {
+        "name": "Hizmet Değerlendirme Formu",
+        "description": "Bir departmanı veya çalışanı dört nitelikte değerlendirin; hizmet puanı yüzde olarak gösterilir."
+      },
+      "special_requirements": {
+        "name": "Özel İstekler Formu",
+        "description": "Beslenme ve erişim ihtiyaçları, alerjiler ve kutlamalar — konaklama varıştan önce hazır olsun."
+      },
+      "event_catering_request": {
+        "name": "Etkinlik İkram Talebi",
+        "description": "Kişi başı menü ve ekstralar, misafir sayısıyla çarpılarak anında tahmin verir."
+      },
+      "restaurant_reservation": {
+        "name": "Restoran Rezervasyon Talebi",
+        "description": "Tarih, saat, kişi sayısı, oturma yeri ve vesile — ev sahibinin ihtiyacı olan her şey."
+      },
+      "hospitality_complaint": {
+        "name": "Konaklama Şikâyet Formu",
+        "description": "Misafirlerin neyin, nerede ters gittiğini ve nasıl düzeltilmesini istediklerini anlatmasını sağlayın."
       }
     },
     "openGallery": "Galerinin tamamını aç",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Bir Formalie tasarımı",
       "systemHint": "Bu tema Formalie'nin bir parçasıdır ve değiştirilemez. Kendi sürümünüzü oluşturmak için çoğaltın.",
-      "systemDesc": "Formalie tasarımı — salt okunur"
-    }
+      "systemDesc": "Formalie tasarımı — salt okunur",
+      "crumb": "Tema düzenleyici",
+      "newTitle": "Yeni tema",
+      "untitled": "Adsız tema",
+      "newDesc": "Bir kez tasarlayın, her formda kullanın",
+      "savedState": "Tüm değişiklikler kaydedildi",
+      "unsaved": "Kaydedilmemiş değişiklikler",
+      "save": "Temayı kaydet",
+      "name": "Tema adı",
+      "sample": "Örnek bir formda gösterilir",
+      "sampleTitle": "Bize ulaşın",
+      "notFound": "Bu tema kullanılamıyor",
+      "leaveTitle": "Kaydetmeden çıkılsın mı?",
+      "leaveDesc": "Bu temadaki değişiklikleriniz kaybolacak.",
+      "leave": "Çık"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Bir formdan kaydedildi",
+      "created": "Oluşturuldu"
+    },
+    "filterSource": "Oluşturan",
+    "newTheme": "Yeni tema",
+    "editDesign": "Tasarımı düzenle",
+    "duplicateToEdit": "Düzenlemek için çoğalt",
+    "copySuffix": "kopya",
+    "categoryDesign": "{name} tasarımı",
+    "previewName": "Ad soyad",
+    "previewEmail": "E-posta",
+    "previewMessage": "Mesaj"
   },
   "dataSources": {
     "subtitle": "Kendi veritabanlarınızı bağlayın, form verilerini onlara gönderin ve bu verilerle çalışın",

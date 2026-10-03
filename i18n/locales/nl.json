@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Systeemsjablonen kunnen niet worden gewijzigd. Dupliceer het om je eigen versie te maken.",
     "FRM-FORM-1012": "Er bestaat al een sjabloon met deze naam.",
     "FRM-RESP-1003": "Dit formulier is in deze sessie al verzonden.",
-    "FRM-FORM-1013": "Deze map bevat nog formulieren. Verplaats ze eerst naar een andere map."
+    "FRM-FORM-1013": "Deze map bevat nog formulieren. Verplaats ze eerst naar een andere map.",
+    "FRM-FORM-1014": "Systeemthema's kun je niet wijzigen. Dupliceer het om er je eigen thema van te maken."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Overeenkomst ondertekenen",
         "description": "Toon de overeenkomst, bevestig elk kernpunt en teken — met bedrijfsgegevens als je namens een bedrijf tekent."
+      },
+      "risk_assessment": {
+        "name": "Risicobeoordeling",
+        "description": "Beoordeel elk gevaar op kans × ernst; het risiconiveau wordt berekend en bij een gemiddeld of hoog risico verschijnt een actieplan."
+      },
+      "incident_report": {
+        "name": "Incident- / ongevalsrapport",
+        "description": "Leg vast wat er gebeurde, wie gewond raakte en welke eerste acties zijn genomen — ernstige incidenten worden gemarkeerd voor spoedige beoordeling."
+      },
+      "near_miss_report": {
+        "name": "Bijna-ongevalmelding",
+        "description": "Meld bijna-ongevallen snel — mogelijke ernst en herhaling bepalen de prioriteit, zodat preventie voorop staat."
+      },
+      "safety_inspection": {
+        "name": "Checklist veiligheidsinspectie",
+        "description": "Goed/fout-controles met een nalevingspercentage en uitslag; bij afgekeurde punten vraag je om details en foto's."
+      },
+      "patient_intake": {
+        "name": "Patiëntintake",
+        "description": "Gegevens van nieuwe patiënten, reden van bezoek, pijnniveau, allergieën en BMI berekend uit lengte en gewicht."
+      },
+      "medical_history": {
+        "name": "Medische voorgeschiedenis",
+        "description": "Aandoeningen, operaties, medicijnen, familiegeschiedenis en leefstijl — met het aantal aandoeningen voor de zorgverlener."
+      },
+      "health_screening": {
+        "name": "Gezondheidscheck / -verklaring",
+        "description": "Een snelle ja/nee-check vooraf; bij een 'ja' wordt de persoon eerst beoordeeld voordat hij of zij naar binnen gaat."
+      },
+      "consent_form": {
+        "name": "Toestemmingsformulier",
+        "description": "Duidelijke toestemmingsverklaringen met handtekening; een ouder of voogd tekent voor iedereen onder de 18."
+      },
+      "event_registration": {
+        "name": "Evenementregistratie",
+        "description": "Registreer deelnemers met tickettype, aantal en een lopend totaal, sessies en toegankelijkheidsbehoeften."
+      },
+      "rsvp": {
+        "name": "RSVP",
+        "description": "Eenvoudige antwoorden ja/nee/misschien, met groepsgrootte en dieetwensen alleen voor wie komt."
+      },
+      "appointment_booking": {
+        "name": "Afspraak boeken",
+        "description": "Boek een dienst op een gewenste datum en tijd, met een tweede keus en herinneringen."
+      },
+      "venue_booking": {
+        "name": "Locatie- / zaalreservering",
+        "description": "Reserveer een zaal per uur met extra apparatuur; de kosten worden berekend terwijl je kiest."
+      },
+      "volunteer_signup": {
+        "name": "Aanmelding vrijwilligers",
+        "description": "Verzamel vrijwilligers, hun interesses en beschikbaarheid — met toestemming van een voogd voor minderjarigen."
+      },
+      "speaker_sponsor_application": {
+        "name": "Aanmelding spreker / sponsor",
+        "description": "Eén formulier voor beide: sprekers stellen een sessie voor, sponsors kiezen een pakket en extra's met een totaal."
+      },
+      "post_event_feedback": {
+        "name": "Feedback na evenement",
+        "description": "Beoordelingen voor inhoud, sprekers, locatie en organisatie met een gemiddelde score en een aanbeveling."
+      },
+      "guest_registration": {
+        "name": "Gastregistratieformulier",
+        "description": "Incheckgegevens met het aantal nachten berekend uit aankomst en vertrek."
+      },
+      "hotel_booking_request": {
+        "name": "Aanvraag hotelboeking",
+        "description": "Data, kamertype en aantal kamers geven de nachten en een geschatte prijs; ook extra's en speciale wensen."
+      },
+      "guest_feedback": {
+        "name": "Gastfeedbackformulier",
+        "description": "Beoordeel netheid, comfort, personeel, eten en prijs-kwaliteit met een gemiddelde en een aanbeveling."
+      },
+      "service_evaluation": {
+        "name": "Evaluatie dienstverlening",
+        "description": "Beoordeel een afdeling of medewerker op vier kwaliteiten; de servicescore wordt als percentage getoond."
+      },
+      "special_requirements": {
+        "name": "Formulier speciale wensen",
+        "description": "Dieet- en toegankelijkheidswensen, allergieën en feestelijke gelegenheden — zodat alles klaarstaat vóór aankomst."
+      },
+      "event_catering_request": {
+        "name": "Cateringaanvraag evenement",
+        "description": "Menu en extra's per persoon maal het aantal gasten geven direct een schatting."
+      },
+      "restaurant_reservation": {
+        "name": "Restaurantreservering",
+        "description": "Datum, tijd, groepsgrootte, zitplaats en gelegenheid — alles wat de gastheer nodig heeft."
+      },
+      "hospitality_complaint": {
+        "name": "Klachtenformulier gastvrijheid",
+        "description": "Laat gasten vertellen wat er misging, waar, en hoe ze het graag opgelost zien."
       }
     },
     "openGallery": "Volledige galerij openen",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Een Formalie-ontwerp",
       "systemHint": "Dit thema hoort bij Formalie en kan niet worden gewijzigd. Dupliceer het om je eigen versie te maken.",
-      "systemDesc": "Formalie-ontwerp — alleen-lezen"
-    }
+      "systemDesc": "Formalie-ontwerp — alleen-lezen",
+      "crumb": "Thema-editor",
+      "newTitle": "Nieuw thema",
+      "untitled": "Naamloos thema",
+      "newDesc": "Eén keer ontwerpen, op elk formulier gebruiken",
+      "savedState": "Alle wijzigingen opgeslagen",
+      "unsaved": "Niet-opgeslagen wijzigingen",
+      "save": "Thema opslaan",
+      "name": "Themanaam",
+      "sample": "Getoond op een voorbeeldformulier",
+      "sampleTitle": "Neem contact op",
+      "notFound": "Dit thema is niet beschikbaar",
+      "leaveTitle": "Weggaan zonder opslaan?",
+      "leaveDesc": "Je wijzigingen aan dit thema gaan verloren.",
+      "leave": "Weggaan"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Opgeslagen uit een formulier",
+      "created": "Zelf gemaakt"
+    },
+    "filterSource": "Gemaakt door",
+    "newTheme": "Nieuw thema",
+    "editDesign": "Ontwerp bewerken",
+    "duplicateToEdit": "Dupliceren om te bewerken",
+    "copySuffix": "kopie",
+    "categoryDesign": "Ontwerp {name}",
+    "previewName": "Volledige naam",
+    "previewEmail": "E-mail",
+    "previewMessage": "Bericht"
   },
   "dataSources": {
     "subtitle": "Koppel uw eigen databases, stuur formuliergegevens ernaartoe en werk ermee",

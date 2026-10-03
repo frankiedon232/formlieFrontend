@@ -433,7 +433,8 @@
     "FRM-FORM-1011": "Les modèles système ne peuvent pas être modifiés. Dupliquez-le pour créer le vôtre.",
     "FRM-FORM-1012": "Un modèle portant ce nom existe déjà.",
     "FRM-RESP-1003": "Ce formulaire a déjà été envoyé depuis cette session.",
-    "FRM-FORM-1013": "Ce dossier contient encore des formulaires. Déplacez-les d’abord vers un autre dossier."
+    "FRM-FORM-1013": "Ce dossier contient encore des formulaires. Déplacez-les d’abord vers un autre dossier.",
+    "FRM-FORM-1014": "Les thèmes système ne peuvent pas être modifiés. Dupliquez-le pour créer le vôtre."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1232,6 +1233,98 @@
       "nda_signoff": {
         "name": "NDA / Signature d’accord",
         "description": "Affichez l’accord, confirmez chaque point clé et signez — avec les infos de la société en cas de signature pour elle."
+      },
+      "risk_assessment": {
+        "name": "Évaluation des risques",
+        "description": "Notez chaque danger par probabilité × gravité ; le niveau de risque est calculé et un plan d'action apparaît si le risque est moyen ou élevé."
+      },
+      "incident_report": {
+        "name": "Rapport d'incident / d'accident",
+        "description": "Consignez ce qui s'est passé, qui a été blessé et les premières mesures prises — les incidents graves sont signalés pour examen urgent."
+      },
+      "near_miss_report": {
+        "name": "Signalement de presque-accident",
+        "description": "Signalez vite les presque-accidents — la gravité potentielle et la récurrence donnent une priorité pour privilégier la prévention."
+      },
+      "safety_inspection": {
+        "name": "Checklist d'inspection de sécurité",
+        "description": "Contrôles conforme / non conforme avec taux de conformité et résultat ; les contrôles échoués demandent détails et photos."
+      },
+      "patient_intake": {
+        "name": "Admission patient",
+        "description": "Informations du nouveau patient, motif de la visite, niveau de douleur, allergies et IMC calculé à partir de la taille et du poids."
+      },
+      "medical_history": {
+        "name": "Antécédents médicaux",
+        "description": "Pathologies, opérations, médicaments, antécédents familiaux et mode de vie — avec le nombre de pathologies pour le praticien."
+      },
+      "health_screening": {
+        "name": "Dépistage / déclaration de santé",
+        "description": "Un dépistage rapide oui / non avant l'entrée ; tout « oui » oriente la personne vers un examen avant d'entrer."
+      },
+      "consent_form": {
+        "name": "Formulaire de consentement",
+        "description": "Des déclarations de consentement claires avec signature ; un parent ou tuteur signe pour les moins de 18 ans."
+      },
+      "event_registration": {
+        "name": "Inscription à un événement",
+        "description": "Inscrivez les participants avec type de billet, quantité et total en direct, sessions et besoins d'accessibilité."
+      },
+      "rsvp": {
+        "name": "Réponse à une invitation",
+        "description": "Réponses simples oui / non / peut-être, avec nombre de personnes et régimes alimentaires seulement pour ceux qui viennent."
+      },
+      "appointment_booking": {
+        "name": "Prise de rendez-vous",
+        "description": "Réservez un service à la date et à l'heure souhaitées, avec un second choix et des rappels."
+      },
+      "venue_booking": {
+        "name": "Réservation de lieu / salle",
+        "description": "Réservez une salle à l'heure avec équipements en option et un coût calculé au fil de vos choix."
+      },
+      "volunteer_signup": {
+        "name": "Inscription des bénévoles",
+        "description": "Recueillez les bénévoles, leurs centres d'intérêt et disponibilités — avec l'accord d'un tuteur pour les moins de 18 ans."
+      },
+      "speaker_sponsor_application": {
+        "name": "Candidature intervenant / sponsor",
+        "description": "Un seul formulaire pour les deux : les intervenants proposent une session, les sponsors choisissent une offre et des options avec un total."
+      },
+      "post_event_feedback": {
+        "name": "Avis après l'événement",
+        "description": "Notes sur le contenu, les intervenants, le lieu et l'organisation, avec note moyenne et recommandation."
+      },
+      "guest_registration": {
+        "name": "Fiche d'enregistrement client",
+        "description": "Informations d'arrivée avec le nombre de nuits calculé à partir des dates d'arrivée et de départ."
+      },
+      "hotel_booking_request": {
+        "name": "Demande de réservation d'hôtel",
+        "description": "Dates, type et nombre de chambres donnent les nuits et un prix estimé ; options et demandes spéciales aussi."
+      },
+      "guest_feedback": {
+        "name": "Avis des clients",
+        "description": "Notez propreté, confort, personnel, restauration et rapport qualité-prix, avec moyenne et recommandation."
+      },
+      "service_evaluation": {
+        "name": "Évaluation du service",
+        "description": "Évaluez un service ou un membre de l'équipe sur quatre critères ; la note du service s'affiche en pourcentage."
+      },
+      "special_requirements": {
+        "name": "Besoins particuliers",
+        "description": "Régimes alimentaires, accessibilité, allergies et célébrations — pour que tout soit prêt avant l'arrivée."
+      },
+      "event_catering_request": {
+        "name": "Demande de traiteur pour événement",
+        "description": "Menu et options par personne multipliés par le nombre d'invités donnent une estimation immédiate."
+      },
+      "restaurant_reservation": {
+        "name": "Demande de réservation au restaurant",
+        "description": "Date, heure, nombre de personnes, placement et occasion — tout ce dont l'hôte a besoin."
+      },
+      "hospitality_complaint": {
+        "name": "Formulaire de réclamation",
+        "description": "Permettez aux clients de dire ce qui n'a pas été, où et comment ils souhaitent que ce soit réparé."
       }
     },
     "openGallery": "Ouvrir la galerie complète",
@@ -2275,8 +2368,36 @@
     "editor": {
       "systemTitle": "Un design Formalie",
       "systemHint": "Ce thème fait partie de Formalie et ne peut pas être modifié. Dupliquez-le pour créer votre propre version.",
-      "systemDesc": "Design Formalie — lecture seule"
-    }
+      "systemDesc": "Design Formalie — lecture seule",
+      "crumb": "Éditeur de thème",
+      "newTitle": "Nouveau thème",
+      "untitled": "Thème sans titre",
+      "newDesc": "Concevez-le une fois, utilisez-le sur n'importe quel formulaire",
+      "savedState": "Toutes les modifications sont enregistrées",
+      "unsaved": "Modifications non enregistrées",
+      "save": "Enregistrer le thème",
+      "name": "Nom du thème",
+      "sample": "Affiché sur un formulaire d'exemple",
+      "sampleTitle": "Nous contacter",
+      "notFound": "Ce thème n'est pas disponible",
+      "leaveTitle": "Quitter sans enregistrer ?",
+      "leaveDesc": "Vos modifications de ce thème seront perdues.",
+      "leave": "Quitter"
+    },
+    "source": {
+      "system": "Formalie",
+      "saved": "Enregistré depuis un formulaire",
+      "created": "Créé"
+    },
+    "filterSource": "Créé par",
+    "newTheme": "Nouveau thème",
+    "editDesign": "Modifier le design",
+    "duplicateToEdit": "Dupliquer pour modifier",
+    "copySuffix": "copie",
+    "categoryDesign": "Design {name}",
+    "previewName": "Nom complet",
+    "previewEmail": "E-mail",
+    "previewMessage": "Message"
   },
   "dataSources": {
     "subtitle": "Connectez vos propres bases de données, envoyez-y les données de vos formulaires et exploitez-les",
