@@ -1,7 +1,7 @@
 <!--
-  Templates gallery (F9): a catalogue of ready forms, each in its own design. Category chips
-  (with counts) drive the same URL filter as the DataView filter, so the DataView flow stays as it
-  is; Grid shows themed cards, Table shows usage numbers. Use → name + folder → builder.
+  Templates gallery (F9): a catalogue of ready forms, each in its own design. Categories
+  (with counts) live in the DataView filter like every other list (owner, 2026-10-03);
+  Grid shows themed cards, Table shows usage numbers. Use → name + folder → builder.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -12,7 +12,6 @@ definePageMeta({ breadcrumb: 'nav.templates' })
 const { t } = useI18n()
 useHead({ title: () => t('nav.templates') })
 const route = useRoute()
-const router = useRouter()
 const templates = useTemplates()
 const confirm = useConfirm()
 const { number, relative } = useFormat()
@@ -23,7 +22,7 @@ async function loadFacets() {
   try {
     facets.value = await templates.facets()
   } catch {
-    // Chips and filter simply show no counts.
+    // The filter simply shows no counts.
   }
 }
 onMounted(loadFacets)
@@ -55,10 +54,16 @@ const filters = reactive<DataFilter[]>([
     ],
   },
 ])
-// Counts arrive after the first paint: put them on the filter options as they come.
+// Counts arrive after the first paint: put them on the category options as they come. Categories
+// without templates yet stay hidden (the catalogue grows in milestones) unless one is selected.
 watch(facets, value => {
   if (!value) return
-  for (const option of filters[0]!.options) option.label = `${categoryLabel(option.value)} (${value.categories[option.value] ?? 0})`
+  const selected = String(route.query.category ?? '').split(',')
+  filters[0]!.options = TEMPLATE_CATEGORIES.filter(c => (value.categories[c.key] ?? 0) > 0 || selected.includes(c.key)).map(c => ({
+    value: c.key,
+    label: `${categoryLabel(c.key)} (${value.categories[c.key] ?? 0})`,
+    dot: c.dot,
+  }))
 })
 
 const columns = computed<DataColumn[]>(() => [
@@ -77,20 +82,6 @@ const sortOptions = computed(() => [
   { label: t('templates.sort.recent'), value: '-updated_at' },
 ])
 const fetcher: DataFetcher<TemplateSummary> = (params, signal) => templates.list(params, signal)
-
-// Chips: one category at a time (or all), shared with the filter through the URL. Categories
-// without templates yet stay hidden (the catalogue grows in milestones).
-const visibleCategories = computed(() =>
-  TEMPLATE_CATEGORIES.filter(c => !facets.value || (facets.value.categories[c.key] ?? 0) > 0 || activeCategory.value.includes(c.key)),
-)
-const activeCategory = computed(() => String(route.query.category ?? '').split(',').filter(Boolean))
-function pickCategory(key: string | null) {
-  const query = { ...route.query }
-  delete query.page
-  if (key && !(activeCategory.value.length === 1 && activeCategory.value[0] === key)) query.category = key
-  else delete query.category
-  router.replace({ query })
-}
 
 // Use / duplicate / delete
 const using = ref<TemplateSummary | null>(null)
@@ -138,38 +129,6 @@ const isBusy = (template: TemplateSummary) => busyKeys.value.has(template.key)
     <template #actions>
       <UButton :label="t('templates.blank')" icon="i-lucide-file" color="neutral" variant="outline" to="/forms/new" />
     </template>
-
-    <!-- Category chips (horizontal scroll on phones) -->
-    <nav :aria-label="t('templates.filter.category')" class="-mx-1 flex shrink-0 gap-1.5 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible">
-      <UButton
-        :label="t('templates.all')"
-        :trailing="false"
-        color="neutral"
-        :variant="activeCategory.length ? 'outline' : 'solid'"
-        size="sm"
-        class="shrink-0 rounded-full"
-        :aria-pressed="!activeCategory.length"
-        @click="pickCategory(null)"
-      >
-        <template #trailing>
-          <span v-if="facets" class="text-xs opacity-70 tabular-nums">{{ number(facets.total) }}</span>
-        </template>
-      </UButton>
-      <UButton
-        v-for="category in visibleCategories"
-        :key="category.key"
-        color="neutral"
-        :variant="activeCategory.includes(category.key) ? 'solid' : 'outline'"
-        size="sm"
-        class="shrink-0 rounded-full"
-        :aria-pressed="activeCategory.includes(category.key)"
-        @click="pickCategory(category.key)"
-      >
-        <span class="size-2 rounded-[1px]" :class="category.dot" aria-hidden="true" />
-        {{ categoryLabel(category.key) }}
-        <span v-if="facets" class="text-xs opacity-70 tabular-nums">{{ number(facets.categories[category.key] ?? 0) }}</span>
-      </UButton>
-    </nav>
 
     <DataView
       id="templates"
