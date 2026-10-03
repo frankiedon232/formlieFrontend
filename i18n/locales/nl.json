@@ -772,7 +772,8 @@
       "forms_template_created": "Sjabloon gemaakt",
       "forms_template_updated": "Sjabloon bijgewerkt",
       "forms_template_duplicated": "Sjabloon gedupliceerd",
-      "forms_template_deleted": "Sjabloon verwijderd"
+      "forms_template_deleted": "Sjabloon verwijderd",
+      "responses_submitted": "Reactie ontvangen"
     },
     "detail": {
       "who": "Wie",
@@ -2567,6 +2568,25 @@
       "translate": "Vertaal formulieren naar een van de 20 talen en vergelijk ze naast elkaar.",
       "history": "Alles wat aan de assistent is gevraagd, door wie en wanneer.",
       "settings": "Zet de assistent aan of uit, kies wat hij mag lezen en bekijk het gebruik."
+    }
+  },
+  "public": {
+    "madeWith": "Gemaakt met {brand}",
+    "notFound": {
+      "title": "Dit formulier bestaat niet",
+      "desc": "De link is misschien verkeerd getypt of het formulier is verwijderd. Controleer het adres bij degene die het heeft gedeeld."
+    },
+    "notPublished": {
+      "title": "Dit formulier is nog niet open",
+      "desc": "Het is nog niet gepubliceerd. Probeer het later opnieuw of vraag het aan degene die het heeft gedeeld."
+    },
+    "closed": {
+      "title": "Dit formulier is gesloten",
+      "desc": "Het accepteert geen reacties meer. Bedankt voor je interesse."
+    },
+    "error": {
+      "title": "We konden dit formulier niet laden",
+      "desc": "Er ging iets mis aan onze kant. Probeer het zo meteen opnieuw."
     }
   }
 }

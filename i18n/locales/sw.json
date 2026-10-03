@@ -772,7 +772,8 @@
       "forms_template_created": "Kiolezo kimetengenezwa",
       "forms_template_updated": "Kiolezo kimesasishwa",
       "forms_template_duplicated": "Kiolezo kimenakiliwa",
-      "forms_template_deleted": "Kiolezo kimefutwa"
+      "forms_template_deleted": "Kiolezo kimefutwa",
+      "responses_submitted": "Jibu limepokelewa"
     },
     "detail": {
       "who": "Nani",
@@ -2567,6 +2568,25 @@
       "translate": "Tafsiri fomu katika lugha yoyote kati ya 20 na uzikague bega kwa bega.",
       "history": "Kila kitu msaidizi aliulizwa, na nani na lini.",
       "settings": "Washa au zima msaidizi, chagua anachoweza kusoma na uone matumizi."
+    }
+  },
+  "public": {
+    "madeWith": "Imetengenezwa kwa {brand}",
+    "notFound": {
+      "title": "Fomu hii haipo",
+      "desc": "Huenda kiungo kimeandikwa vibaya, au fomu imeondolewa. Thibitisha anwani na aliyeishiriki."
+    },
+    "notPublished": {
+      "title": "Fomu hii bado haijafunguliwa",
+      "desc": "Bado haijachapishwa. Jaribu tena baadaye, au muulize aliyeishiriki."
+    },
+    "closed": {
+      "title": "Fomu hii imefungwa",
+      "desc": "Haipokei majibu tena. Asante kwa kupendezwa."
+    },
+    "error": {
+      "title": "Hatukuweza kupakia fomu hii",
+      "desc": "Hitilafu imetokea upande wetu. Tafadhali jaribu tena baada ya muda mfupi."
     }
   }
 }

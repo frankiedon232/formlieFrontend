@@ -4,7 +4,8 @@
  * workspace hosts never serve manage-only pages.
  */
 export default defineNuxtRouteMiddleware(async to => {
-  if (import.meta.server) return
+  // Public form pages find their workspace from the form key / host themselves (F10).
+  if (import.meta.server || to.meta.public) return
   const tenant = useTenant()
   await tenant.ensure()
 

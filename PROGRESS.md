@@ -20,7 +20,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
-| F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
+| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~30% |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
@@ -445,20 +445,22 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ---
 
-## F10 — Renderer, preview, share, embed, short links, SEO ⬜
+## F10 — Renderer, preview, share, embed, short links, SEO 🟡
+
+**Plan (2026-10-03, milestones):** **M1** public page core — public key per form, `/{formKey}/fill` + `/embed` server-rendered with SEO, `forms.*` host, secure server-side fetch, not found / not published / closed states, submit with one response per fill-in session (`Idempotency-Key`), thank-you or redirect, respondent language (`?lang`, browser language). **M2** save & resume, file uploads with progress, spam protection, embed auto-resize. **M3** Share card: access (password, invite-only, organisation-only, expiry, response limit, schedule), custom link, short links `/s/{code}`, embed code builder, SEO settings with link-card preview, preview page with device frames. **M4** form translations (questions in several languages + switcher), polish, review.
 
 ### Renderer
 
-- ⬜ One renderer for preview, public page and embed
-- ⬜ Public form links (decided 2026-10-03): `https://{forms | subdomain}.formalie.com/{formKey}/fill` and `…/{formKey}/embed` — `forms.formalie.dev` / `forms.formalie.com` for workspaces without their own subdomain; `{formKey}` is the form's short public key (custom slug optional); helper `shared/utils/urls/public.ts`
-- ⬜ Public page server-rendered with SEO (title, description, image, canonical, noindex); `forms.*` host served without a workspace (tenant from the form key)
-- ⬜ Secure server-side fetch for server-rendered pages
-- ⬜ Closed / expired / not found / password-protected / response-limit states
+- ✅ One renderer for preview, public page and embed (submit hook, same rules as the API)
+- ✅ Public form links (decided 2026-10-03; built M1 with a 10-character `public_key` per form): `https://{forms | subdomain}.formalie.com/{formKey}/fill` and `…/{formKey}/embed` — `forms.formalie.dev` / `forms.formalie.com` for workspaces without their own subdomain; `{formKey}` is the form's short public key (custom slug optional); helper `shared/utils/urls/public.ts`
+- ✅ Public page server-rendered with SEO (title, description, image, canonical, noindex); `forms.*` host served without a workspace (tenant from the form key)
+- ✅ Secure server-side fetch for server-rendered pages (internal route + server-only `NUXT_INTERNAL_TOKEN`)
+- 🟡 Closed / expired / not found / password-protected / response-limit states — ✅ not found (404), not published, closed, load error; expired / password / limit come with the Share settings (M3)
 - ⬜ Multi-page with progress, save and resume
 - ⬜ File uploads to secure upload links with progress
-- ⬜ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key` — the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
+- ✅ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key` — the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
 - ⬜ Spam protection (captcha)
-- ⬜ Thank-you page or redirect
+- ✅ Thank-you page or redirect
 - ⬜ Preview page with device frames
 - ⬜ **Form languages** (owner, 2026-10-03, see 03-DECISIONS → 73): the form opens in the respondent's browser language when the form offers it, otherwise its main language; `?lang=xx` forces one (shareable per-language links, embeds and QR codes); a language switcher when a form has several; translated questions / options / help / messages per language; the language is saved with each response; buttons, messages, dates, numbers and right-to-left follow it
 - ⬜ Embed: the Share card offers the ready `<iframe>` code (with sizes and auto-resize) instead of a bare embed address
@@ -938,6 +940,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Save as template lives in Form settings → Template (after Save and resume), not the header; a form already saved as a template shows that and offers "Update template" (same template, latest changes) or a separate copy | F9 follow-up | ✅ |
 | 2026-10-03 | Sidebar: one menu group open at a time (opening one closes the others) | F1 follow-up | ✅ |
 | 2026-10-03 | Preview side panel: Desktop fills the panel edge to edge (panel keeps its width) | F10 | ✅ |
+| 2026-10-03 | Text colours sharp and dark everywhere (tables, grids, cards like the navigation) | F1 follow-up | ✅ |
 
 ---
 
@@ -1009,3 +1012,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | Owner review passed — F9 closed. Preview fix (Desktop full screen, Tablet / Phone device frames that fill the height; design page preview fills its pane); organisation data (departments, roles, lists) planned into Settings (F14). |
 | 2026-10-03 | F9 | Follow-ups: Themes menu by kind with counts; "Save as template" in the builder header (Build / Logic / Design, phone menu, full screen) — saves pending edits first, name pre-filled, menu counts refresh. |
 | 2026-10-03 | F9 | Follow-ups: "Save as template" moved into Form settings → Template; templates remember their source form (`source_form_id`) — an already-saved form offers "Update template" (`POST /templates/{key}/sync`, audited) or a separate copy; sidebar keeps one group open; preview side panel Desktop fills edge to edge. |
+| 2026-10-03 | F10 | Milestone 1: public form pages `/{key}/fill` and `/embed` (server-rendered, SEO tags, canonical, 404 for unknown keys, noindex for embeds / closed forms), `forms.*` host, `public_key` per form, secure server-side fetch (server-only token), states (not found · not published · closed · error), submit through the encrypted API with one response per fill-in session (Idempotency-Key, verified: a retry stores nothing new), server re-checks answers and recomputes calculations (`shared/utils/forms/submission.ts`), thank-you or redirect, page language without touching the portal cookie, embed height messages; audit "Response received". Text colours one step sharper everywhere (owner). |

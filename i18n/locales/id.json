@@ -772,7 +772,8 @@
       "forms_template_created": "Templat dibuat",
       "forms_template_updated": "Templat diperbarui",
       "forms_template_duplicated": "Templat diduplikat",
-      "forms_template_deleted": "Templat dihapus"
+      "forms_template_deleted": "Templat dihapus",
+      "responses_submitted": "Respons diterima"
     },
     "detail": {
       "who": "Siapa",
@@ -2567,6 +2568,25 @@
       "translate": "Terjemahkan formulir ke salah satu dari 20 bahasa dan tinjau berdampingan.",
       "history": "Semua yang ditanyakan kepada asisten, oleh siapa dan kapan.",
       "settings": "Aktifkan atau nonaktifkan asisten, pilih apa yang boleh dibacanya, dan lihat penggunaan."
+    }
+  },
+  "public": {
+    "madeWith": "Dibuat dengan {brand}",
+    "notFound": {
+      "title": "Formulir ini tidak ada",
+      "desc": "Tautannya mungkin salah ketik, atau formulir telah dihapus. Periksa alamatnya dengan orang yang membagikannya."
+    },
+    "notPublished": {
+      "title": "Formulir ini belum dibuka",
+      "desc": "Formulir ini belum dipublikasikan. Coba lagi nanti, atau tanyakan kepada orang yang membagikannya."
+    },
+    "closed": {
+      "title": "Formulir ini sudah ditutup",
+      "desc": "Formulir ini tidak lagi menerima respons. Terima kasih atas minat Anda."
+    },
+    "error": {
+      "title": "Formulir ini tidak dapat dimuat",
+      "desc": "Terjadi kesalahan di pihak kami. Silakan coba lagi sebentar lagi."
     }
   }
 }

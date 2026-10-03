@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { APP_LOCALES, DEFAULT_LOCALE, LOCALE_COOKIE } from './shared/utils/i18n/locales'
 import pkg from './package.json'
@@ -54,6 +55,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Server-only: where the dev proxy forwards /api/** when the mock is off.
     apiProxyTarget: 'https://formalie.dev:5004',
+    // Server-only: lets the Nuxt server read published forms for server-rendered pages (F10).
+    // Production sets NUXT_INTERNAL_TOKEN (shared with the API); development makes one per start.
+    internalToken: randomUUID(),
     public: {
       apiBase: '/api/v1',
       appVersion: pkg.version,

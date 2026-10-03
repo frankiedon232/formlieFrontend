@@ -95,3 +95,7 @@ Quality checks: `pnpm typecheck` · `pnpm lint` · `pnpm format` · `pnpm test`.
 ## Production equivalent
 
 Cloudflare wildcard DNS `*.formalie.com` → Nginx → Nuxt + FastAPI. Same subdomain logic as dev.
+
+## Server-only secrets (F10)
+
+- `NUXT_INTERNAL_TOKEN` — shared between the Nuxt server and the API for the server-rendered public form pages (`/_ssr/public-forms/{key}` → API `/internal/public-forms/{key}`). Development makes a random one per start; production must set the same value on both sides. Never exposed to browsers.

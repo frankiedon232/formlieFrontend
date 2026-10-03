@@ -772,7 +772,8 @@
       "forms_template_created": "Modelo criado",
       "forms_template_updated": "Modelo atualizado",
       "forms_template_duplicated": "Modelo duplicado",
-      "forms_template_deleted": "Modelo excluído"
+      "forms_template_deleted": "Modelo excluído",
+      "responses_submitted": "Resposta recebida"
     },
     "detail": {
       "who": "Quem",
@@ -2567,6 +2568,25 @@
       "translate": "Traduza formulários para qualquer um dos 20 idiomas e revise lado a lado.",
       "history": "Tudo o que foi pedido ao assistente, por quem e quando.",
       "settings": "Ative ou desative o assistente, escolha o que ele pode ler e veja o uso."
+    }
+  },
+  "public": {
+    "madeWith": "Feito com {brand}",
+    "notFound": {
+      "title": "Este formulário não existe",
+      "desc": "O link pode estar digitado errado, ou o formulário foi removido. Confira o endereço com quem o compartilhou."
+    },
+    "notPublished": {
+      "title": "Este formulário ainda não está aberto",
+      "desc": "Ele ainda não foi publicado. Tente novamente mais tarde ou pergunte a quem o compartilhou."
+    },
+    "closed": {
+      "title": "Este formulário está encerrado",
+      "desc": "Ele não aceita mais respostas. Obrigado pelo seu interesse."
+    },
+    "error": {
+      "title": "Não conseguimos carregar este formulário",
+      "desc": "Algo deu errado do nosso lado. Tente novamente em instantes."
     }
   }
 }

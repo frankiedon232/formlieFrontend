@@ -772,7 +772,8 @@
       "forms_template_created": "템플릿 생성됨",
       "forms_template_updated": "템플릿 업데이트됨",
       "forms_template_duplicated": "템플릿 복제됨",
-      "forms_template_deleted": "템플릿 삭제됨"
+      "forms_template_deleted": "템플릿 삭제됨",
+      "responses_submitted": "응답 접수됨"
     },
     "detail": {
       "who": "누가",
@@ -2567,6 +2568,25 @@
       "translate": "양식을 20개 언어 중 원하는 언어로 번역하고 나란히 검토하세요.",
       "history": "어시스턴트에게 요청된 모든 내용과 요청자, 시간.",
       "settings": "어시스턴트를 켜거나 끄고, 읽을 수 있는 항목을 선택하고, 사용량을 확인하세요."
+    }
+  },
+  "public": {
+    "madeWith": "{brand}로 제작",
+    "notFound": {
+      "title": "존재하지 않는 양식입니다",
+      "desc": "링크를 잘못 입력했거나 양식이 삭제되었을 수 있습니다. 공유한 분께 주소를 확인해 주세요."
+    },
+    "notPublished": {
+      "title": "아직 열리지 않은 양식입니다",
+      "desc": "아직 게시되지 않았습니다. 나중에 다시 시도하거나 공유한 분께 문의해 주세요."
+    },
+    "closed": {
+      "title": "마감된 양식입니다",
+      "desc": "더 이상 응답을 받지 않습니다. 관심을 가져 주셔서 감사합니다."
+    },
+    "error": {
+      "title": "양식을 불러오지 못했습니다",
+      "desc": "저희 쪽에 문제가 발생했습니다. 잠시 후 다시 시도해 주세요."
     }
   }
 }

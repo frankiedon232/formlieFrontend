@@ -772,7 +772,8 @@
       "forms_template_created": "Modello creato",
       "forms_template_updated": "Modello aggiornato",
       "forms_template_duplicated": "Modello duplicato",
-      "forms_template_deleted": "Modello eliminato"
+      "forms_template_deleted": "Modello eliminato",
+      "responses_submitted": "Risposta ricevuta"
     },
     "detail": {
       "who": "Chi",
@@ -2567,6 +2568,25 @@
       "translate": "Traduci i moduli in una qualsiasi delle 20 lingue e confrontali affiancati.",
       "history": "Tutto ciò che è stato chiesto all'assistente, da chi e quando.",
       "settings": "Attiva o disattiva l'assistente, scegli cosa può leggere e consulta l'utilizzo."
+    }
+  },
+  "public": {
+    "madeWith": "Creato con {brand}",
+    "notFound": {
+      "title": "Questo modulo non esiste",
+      "desc": "Il link potrebbe essere scritto male o il modulo è stato rimosso. Controlla l’indirizzo con chi te l’ha condiviso."
+    },
+    "notPublished": {
+      "title": "Questo modulo non è ancora aperto",
+      "desc": "Non è ancora stato pubblicato. Riprova più tardi o chiedi a chi te l’ha condiviso."
+    },
+    "closed": {
+      "title": "Questo modulo è chiuso",
+      "desc": "Non accetta più risposte. Grazie per l’interesse."
+    },
+    "error": {
+      "title": "Impossibile caricare questo modulo",
+      "desc": "Qualcosa è andato storto da parte nostra. Riprova tra un momento."
     }
   }
 }

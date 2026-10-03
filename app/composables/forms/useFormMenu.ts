@@ -65,7 +65,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
                 label: t('forms.copyLink'),
                 icon: 'i-lucide-link',
                 onSelect: () => {
-                  copy(fillLink(form.slug))
+                  copy(fillLink(form.public_key))
                   toast.add({
                     title: t('forms.linkCopied'),
                     color: 'success' as const,

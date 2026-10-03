@@ -1,0 +1,125 @@
+<!--
+  A public form (F10) — `/{formKey}/fill` (full page) and `/{formKey}/embed` (no page chrome, for
+  iframes). Server-rendered: the first response holds the whole form, its SEO tags and the right
+  status code. States: not found · not published yet · closed · open. The respondent's language:
+  `?lang=xx` when the form offers it, otherwise the form's main language (decision 73). Answers are
+  sent once per fill-in session (usePublicSubmit).
+-->
+<script setup lang="ts">
+import { formLink, publicHosts } from '#shared/utils/urls/public'
+
+const props = defineProps<{ formKey: string; embed?: boolean }>()
+const { t } = useI18n()
+const route = useRoute()
+const config = useRuntimeConfig()
+const url = useRequestURL()
+
+const { form, errorCode } = await usePublicForm(props.formKey)
+const { submit } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link')
+
+// ── Language ─────────────────────────────────────────────────────────────────────────
+const nuxtApp = useNuxtApp()
+const language = computed(() => {
+  const wanted = typeof route.query.lang === 'string' ? route.query.lang : null
+  const offered = form.value?.languages ?? []
+  return wanted && offered.includes(wanted) ? wanted : (form.value?.language ?? 'en')
+})
+/** Switch the interface language for this page only (no cookie: a signed-in person's portal language stays). */
+async function useLanguage(code: string) {
+  const i18n = nuxtApp.$i18n
+  if (i18n.locale.value === code) return
+  await i18n.loadLocaleMessages(code as Parameters<typeof i18n.loadLocaleMessages>[0])
+  ;(i18n.locale as unknown as { value: string }).value = code
+}
+await useLanguage(language.value)
+watch(language, code => void useLanguage(code))
+const dir = computed(() => APP_LOCALES.find(locale => locale.code === language.value)?.dir ?? 'ltr')
+
+// ── State, status code, SEO ──────────────────────────────────────────────────────────
+type View = 'open' | 'closed' | 'not_published' | 'not_found' | 'error'
+const view = computed<View>(() => {
+  if (errorCode.value === 'FRM-FORM-1001') return 'not_found'
+  if (errorCode.value || !form.value) return 'error'
+  return form.value.state
+})
+if (import.meta.server && (view.value === 'not_found' || view.value === 'error')) {
+  const event = useRequestEvent()
+  if (event) setResponseStatus(event, view.value === 'not_found' ? 404 : 503)
+}
+
+const canonical = computed(() =>
+  form.value ? formLink(publicHosts(config.public, url.port), form.value.key, 'fill', form.value.workspace.subdomain) : undefined,
+)
+const title = computed(() => (form.value ? `${form.value.seo.title} · ${form.value.workspace.name}` : t('public.notFound.title')))
+useHead({
+  htmlAttrs: { lang: language, dir },
+  link: computed(() => (canonical.value && !props.embed ? [{ rel: 'canonical', href: canonical.value }] : [])),
+})
+useSeoMeta({
+  title,
+  description: () => form.value?.seo.description || undefined,
+  ogTitle: () => form.value?.seo.title,
+  ogDescription: () => form.value?.seo.description || undefined,
+  ogImage: () => form.value?.seo.image ?? undefined,
+  ogUrl: () => canonical.value,
+  ogType: 'website',
+  ogSiteName: () => form.value?.workspace.name,
+  twitterCard: () => (form.value?.seo.image ? 'summary_large_image' : 'summary'),
+  // Embeds, closed and unpublished forms are never listed; open forms follow their SEO setting.
+  robots: () => (props.embed || view.value !== 'open' || form.value?.seo.noindex ? 'noindex, nofollow' : 'index, follow'),
+})
+
+// ── Embed: tell the parent page how tall the form is (auto-resize). ──────────────────
+const root = useTemplateRef<HTMLElement>('root')
+if (import.meta.client && props.embed) {
+  useResizeObserver(root, entries => {
+    const height = Math.ceil(entries[0]?.contentRect.height ?? 0)
+    if (height && window.parent !== window) window.parent.postMessage({ type: 'formalie:resize', key: props.formKey, height }, '*')
+  })
+}
+
+const message = computed(() => {
+  switch (view.value) {
+    case 'not_found':
+      return { icon: 'i-lucide-file-question', title: t('public.notFound.title'), description: t('public.notFound.desc') }
+    case 'closed':
+      return { icon: 'i-lucide-lock', title: t('public.closed.title'), description: t('public.closed.desc') }
+    case 'not_published':
+      return { icon: 'i-lucide-file-clock', title: t('public.notPublished.title'), description: t('public.notPublished.desc') }
+    case 'error':
+      return { icon: 'i-lucide-cloud-off', title: t('public.error.title'), description: t('public.error.desc') }
+    default:
+      return null
+  }
+})
+</script>
+
+<template>
+  <div ref="root" :class="embed ? '' : 'flex min-h-dvh flex-col'">
+    <FormsRendererPage v-if="view === 'open' && form?.schema" :schema="form.schema" :title="form.name" :submit="submit" :class="embed ? '' : 'flex-1'">
+      <template v-if="!embed" #after>
+        <i18n-t keypath="public.madeWith" tag="p" scope="global" class="pb-4 text-center text-xs opacity-70">
+          <template #brand><span class="font-semibold">Formalie</span></template>
+        </i18n-t>
+      </template>
+    </FormsRendererPage>
+
+    <div v-else class="flex flex-1 items-center justify-center bg-elevated/40 px-4 py-16">
+      <UCard class="w-full max-w-md" :ui="{ body: 'p-6 sm:p-8' }">
+        <div class="flex flex-col items-center gap-3 text-center">
+          <span class="flex size-12 items-center justify-center rounded-full bg-elevated">
+            <UIcon :name="message?.icon ?? 'i-lucide-info'" class="size-6 text-muted" />
+          </span>
+          <h1 class="text-lg font-semibold text-highlighted">{{ message?.title }}</h1>
+          <p class="text-sm text-muted">{{ message?.description }}</p>
+          <p v-if="form && view !== 'not_found'" class="text-xs text-dimmed">{{ form.name }} · {{ form.workspace.name }}</p>
+          <UButton v-if="view === 'error'" :label="t('common.retry')" icon="i-lucide-rotate-cw" color="neutral" variant="outline" @click="reloadNuxtApp()" />
+        </div>
+      </UCard>
+    </div>
+
+    <i18n-t v-if="!embed && view !== 'open'" keypath="public.madeWith" tag="p" scope="global" class="bg-elevated/40 py-4 text-center text-xs text-dimmed">
+      <template #brand><span class="font-semibold text-muted">Formalie</span></template>
+    </i18n-t>
+  </div>
+</template>

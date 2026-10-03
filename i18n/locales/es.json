@@ -772,7 +772,8 @@
       "forms_template_created": "Plantilla creada",
       "forms_template_updated": "Plantilla actualizada",
       "forms_template_duplicated": "Plantilla duplicada",
-      "forms_template_deleted": "Plantilla eliminada"
+      "forms_template_deleted": "Plantilla eliminada",
+      "responses_submitted": "Respuesta recibida"
     },
     "detail": {
       "who": "Quién",
@@ -2567,6 +2568,25 @@
       "translate": "Traduce formularios a cualquiera de los 20 idiomas y revísalos en paralelo.",
       "history": "Todo lo que se le preguntó al asistente, quién y cuándo.",
       "settings": "Activa o desactiva el asistente, elige qué puede leer y consulta el uso."
+    }
+  },
+  "public": {
+    "madeWith": "Hecho con {brand}",
+    "notFound": {
+      "title": "Este formulario no existe",
+      "desc": "Puede que el enlace esté mal escrito o que el formulario se haya eliminado. Comprueba la dirección con quien te lo compartió."
+    },
+    "notPublished": {
+      "title": "Este formulario aún no está abierto",
+      "desc": "Todavía no se ha publicado. Vuelve a intentarlo más tarde o pregunta a quien te lo compartió."
+    },
+    "closed": {
+      "title": "Este formulario está cerrado",
+      "desc": "Ya no acepta respuestas. Gracias por tu interés."
+    },
+    "error": {
+      "title": "No pudimos cargar este formulario",
+      "desc": "Algo salió mal por nuestra parte. Vuelve a intentarlo en un momento."
     }
   }
 }

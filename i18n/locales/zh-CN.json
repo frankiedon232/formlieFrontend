@@ -772,7 +772,8 @@
       "forms_template_created": "已创建模板",
       "forms_template_updated": "已更新模板",
       "forms_template_duplicated": "已复制模板",
-      "forms_template_deleted": "已删除模板"
+      "forms_template_deleted": "已删除模板",
+      "responses_submitted": "已收到回复"
     },
     "detail": {
       "who": "谁",
@@ -2567,6 +2568,25 @@
       "translate": "将表单翻译为 20 种语言中的任意一种，并并排审阅。",
       "history": "向助手提出的所有请求，以及提出者和时间。",
       "settings": "开启或关闭助手，选择它可以读取的内容，并查看用量。"
+    }
+  },
+  "public": {
+    "madeWith": "由 {brand} 提供支持",
+    "notFound": {
+      "title": "此表单不存在",
+      "desc": "链接可能输入有误，或表单已被删除。请向分享者核实地址。"
+    },
+    "notPublished": {
+      "title": "此表单尚未开放",
+      "desc": "表单尚未发布。请稍后再试，或询问分享者。"
+    },
+    "closed": {
+      "title": "此表单已关闭",
+      "desc": "表单已不再接受回复。感谢您的关注。"
+    },
+    "error": {
+      "title": "无法加载此表单",
+      "desc": "我们这边出了点问题。请稍后再试。"
     }
   }
 }

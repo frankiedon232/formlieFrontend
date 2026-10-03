@@ -159,14 +159,16 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 
 ## Public (respondent, no login; tenant from host)
 
-| GET | `/public/forms/{slug}` | published schema + theme + seo (cached) |
+| GET | `/public/forms/{key}` | `PublicForm` (`shared/types/public.ts`): `{ key, name, state: open|closed|not_published, schema (published, theme resolved — only when open), workspace: { name, logo_url, primary, subdomain }, seo: { title, description, image, noindex }, languages[], language }`; unknown key on this host → `FRM-FORM-1001` (404). A workspace host serves only its own forms; `forms.*` finds the workspace from the key (cached) |
 | POST | `/public/forms/{slug}/unlock` | password-protected |
 | POST | `/public/forms/{slug}/sessions` | start/resume → `resume_token` |
 | POST | `/public/forms/{slug}/uploads` | pre-signed upload URL |
-| POST | `/public/forms/{slug}/submit` | `{ data, resume_token?, captcha_token }` + header `Idempotency-Key: <submission id of the fill-in session>` → `{ response_id, thank_you }`; a repeat with the same key returns the same `response_id` (no second response); a closed session → `FRM-RESP-1003` |
+| POST | `/public/forms/{key}/submit` | `{ data, channel: link|embed, language?, resume_token?, captcha_token }` + header `Idempotency-Key: <submission id of the fill-in session>` (16–64 letters, digits, hyphens) → 201 `{ response_id, duplicate: false, thank_you: { title, message, redirect_url } }`; the server re-checks the answers with the form's rules (`shared/utils/forms/submission.ts`: respondent's path only, calculated fields recomputed, unknown answers dropped) → `FRM-RESP-1001` with `details: [{ field: <key>, message: <issue code> }]`; closed → `FRM-FORM-1002`; audit `responses.submitted` (actor: Respondent); a repeat with the same key returns the same `response_id` (no second response); a closed session → `FRM-RESP-1003` |
 | GET | `/public/s/{code}` | short link resolve (`forms.formalie.com/s/{code}`) |
 
-Public form pages live at `https://{forms | sub}.formalie.com/{formKey}/fill` and `/embed` (01-ARCHITECTURE → Public URLs); the `{slug}` in the paths above is that `{formKey}`.
+**Server-rendered pages:** the Nuxt server reads `GET /internal/public-forms/{key}` (service-to-service, header `x-formalie-internal: <NUXT_INTERNAL_TOKEN>`, `x-forwarded-host`) through its own route `/_ssr/public-forms/{key}` — never callable without the server-only token. Same `PublicForm` body.
+
+Public form pages live at `https://{forms | sub}.formalie.com/{formKey}/fill` and `/embed` (01-ARCHITECTURE → Public URLs); the `{key}` / `{slug}` in the paths above is that `{formKey}` — the form's `public_key` (10 letters / digits, in `FormSummary`).
 
 ## API service (F13, planned)
 

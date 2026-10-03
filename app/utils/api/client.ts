@@ -59,6 +59,8 @@ export interface RequestOptions {
   skipAuthRefresh?: boolean
   /** Polling / counters: don't drive the top progress bar (useApi). */
   background?: boolean
+  /** Extra plain headers for this request only (e.g. `Idempotency-Key` on a form submission). */
+  headers?: Record<string, string>
 }
 
 interface SecureSession {
@@ -183,6 +185,7 @@ export function createApiClient(options: ApiClientOptions) {
     const envelope = await sealEnvelope(secure.key, secure.kid, payload)
     const headers: Record<string, string> = {
       ...options.getExtraHeaders?.(),
+      ...opts.headers,
       accept: `${ENVELOPE_CONTENT_TYPE}, application/json`,
     }
 

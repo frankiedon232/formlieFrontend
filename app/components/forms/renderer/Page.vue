@@ -7,9 +7,17 @@
   Used by the designer preview, the builder preview and the public form (F10).
 -->
 <script setup lang="ts">
+import type { RendererSubmitOutcome } from '#shared/types/public'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
-const props = defineProps<{ schema: FormSchemaV1; title: string; preview?: boolean; showThankYou?: boolean }>()
+const props = defineProps<{
+  schema: FormSchemaV1
+  title: string
+  preview?: boolean
+  showThankYou?: boolean
+  /** Public page: sends the answers (see renderer Form). */
+  submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
+}>()
 const branding = useWorkspaceBranding()
 const theme = useFormTheme(() => props.schema.theme)
 provideControlStyle(theme)
@@ -85,7 +93,7 @@ const containerClass = computed(() => [
 
             <div class="flex-1" :class="inner">
               <FormsRendererPageHeader v-if="!band && !panel && hasHeader" class="mb-6" :theme="theme" :title="title" :logo="logo" />
-              <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" />
+              <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" />
             </div>
 
             <FormsRendererPageFooter v-if="attachedFooter" :theme="theme" :logo="footerLogo" attached />
@@ -98,5 +106,7 @@ const containerClass = computed(() => [
 
     <!-- Full-width footer bar under plain / full layouts -->
     <FormsRendererPageFooter v-if="footerBand && !attachedFooter" :theme="theme" :logo="footerLogo" :width-class="width" />
+    <!-- Public page: a small line on the form's own background (e.g. "Made with Formalie"). -->
+    <slot name="after" />
   </div>
 </template>

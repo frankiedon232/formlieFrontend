@@ -3,6 +3,7 @@
  * (mismatch → FRM-GEN-1009) and is recorded in the audit trail with before / after values.
  */
 import type { H3Event } from 'h3'
+import { newPublicKey } from '#shared/utils/urls/public'
 import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
 import type {
@@ -166,6 +167,7 @@ function newForm(
     id: crypto.randomUUID(),
     name: input.name,
     slug: uniqueSlug(store, input.name),
+    public_key: newPublicKey(),
     status: 'draft',
     has_unpublished_changes: false,
     folder: input.folder,

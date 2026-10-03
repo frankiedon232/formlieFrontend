@@ -772,7 +772,8 @@
       "forms_template_created": "Vorlage erstellt",
       "forms_template_updated": "Vorlage aktualisiert",
       "forms_template_duplicated": "Vorlage dupliziert",
-      "forms_template_deleted": "Vorlage gelöscht"
+      "forms_template_deleted": "Vorlage gelöscht",
+      "responses_submitted": "Antwort eingegangen"
     },
     "detail": {
       "who": "Wer",
@@ -2567,6 +2568,25 @@
       "translate": "Übersetzen Sie Formulare in jede der 20 Sprachen und prüfen Sie sie nebeneinander.",
       "history": "Alles, was der Assistent gefragt wurde, von wem und wann.",
       "settings": "Schalten Sie den Assistenten ein oder aus, legen Sie fest, was er lesen darf, und sehen Sie die Nutzung."
+    }
+  },
+  "public": {
+    "madeWith": "Erstellt mit {brand}",
+    "notFound": {
+      "title": "Dieses Formular existiert nicht",
+      "desc": "Der Link ist möglicherweise falsch geschrieben oder das Formular wurde entfernt. Bitte prüfen Sie die Adresse mit der Person, die es geteilt hat."
+    },
+    "notPublished": {
+      "title": "Dieses Formular ist noch nicht geöffnet",
+      "desc": "Es wurde noch nicht veröffentlicht. Bitte versuchen Sie es später erneut oder fragen Sie die Person, die es geteilt hat."
+    },
+    "closed": {
+      "title": "Dieses Formular ist geschlossen",
+      "desc": "Es nimmt keine Antworten mehr an. Vielen Dank für Ihr Interesse."
+    },
+    "error": {
+      "title": "Formular konnte nicht geladen werden",
+      "desc": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es gleich noch einmal."
     }
   }
 }

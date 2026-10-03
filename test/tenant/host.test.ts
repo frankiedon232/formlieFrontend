@@ -42,9 +42,14 @@ describe('resolveHostContext', () => {
     expect(resolve('manage.localhost:2202')).toMatchObject({ kind: 'manage', reason: 'manage' })
   })
 
+  it('forms.* is the shared public forms host', () => {
+    expect(resolve('forms.formalie.dev')).toEqual({ kind: 'forms', host: 'forms.formalie.dev' })
+    expect(isValidSubdomain('forms')).toBe(false)
+  })
+
   it('reserved, nested and malformed subdomains are invalid', () => {
     expect(resolve('api.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'reserved' })
-    expect(resolve('forms.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'reserved' })
+    expect(resolve('www2.forms.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'nested' })
     expect(resolve('a.b.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'nested' })
     expect(resolve('-bad-.formalie.dev')).toMatchObject({ kind: 'invalid', reason: 'malformed' })
   })

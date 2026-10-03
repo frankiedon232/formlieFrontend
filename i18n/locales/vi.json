@@ -772,7 +772,8 @@
       "forms_template_created": "Đã tạo mẫu",
       "forms_template_updated": "Đã cập nhật mẫu",
       "forms_template_duplicated": "Đã nhân bản mẫu",
-      "forms_template_deleted": "Đã xóa mẫu"
+      "forms_template_deleted": "Đã xóa mẫu",
+      "responses_submitted": "Đã nhận phản hồi"
     },
     "detail": {
       "who": "Ai",
@@ -2567,6 +2568,25 @@
       "translate": "Dịch biểu mẫu sang bất kỳ ngôn ngữ nào trong 20 ngôn ngữ và xem song song.",
       "history": "Mọi điều trợ lý được yêu cầu, bởi ai và khi nào.",
       "settings": "Bật hoặc tắt trợ lý, chọn những gì trợ lý được đọc và xem mức sử dụng."
+    }
+  },
+  "public": {
+    "madeWith": "Được tạo bằng {brand}",
+    "notFound": {
+      "title": "Biểu mẫu này không tồn tại",
+      "desc": "Có thể đường liên kết bị gõ sai, hoặc biểu mẫu đã bị xóa. Hãy kiểm tra lại địa chỉ với người đã chia sẻ."
+    },
+    "notPublished": {
+      "title": "Biểu mẫu này chưa mở",
+      "desc": "Biểu mẫu chưa được xuất bản. Hãy thử lại sau, hoặc hỏi người đã chia sẻ."
+    },
+    "closed": {
+      "title": "Biểu mẫu này đã đóng",
+      "desc": "Biểu mẫu không còn nhận phản hồi. Cảm ơn bạn đã quan tâm."
+    },
+    "error": {
+      "title": "Không thể tải biểu mẫu này",
+      "desc": "Đã xảy ra sự cố từ phía chúng tôi. Vui lòng thử lại sau giây lát."
     }
   }
 }

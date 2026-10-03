@@ -15,8 +15,8 @@ const request = useRequestURL()
 
 const hosts = computed(() => publicHosts(config, request.port))
 const sub = computed(() => tenant.profile.value?.subdomain ?? null)
-const fill = computed(() => formLink(hosts.value, props.form.slug, 'fill', sub.value))
-const embed = computed(() => formLink(hosts.value, props.form.slug, 'embed', sub.value))
+const fill = computed(() => formLink(hosts.value, props.form.public_key, 'fill', sub.value))
+const embed = computed(() => formLink(hosts.value, props.form.public_key, 'embed', sub.value))
 const live = computed(() => props.form.status === 'published')
 const qrOpen = ref(false)
 </script>

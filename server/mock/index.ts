@@ -6,6 +6,7 @@ import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
+import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
 import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
@@ -75,6 +76,9 @@ const router = createRouter()
   .get('/themes', themes.listThemes)
   .get('/themes/:id', themes.getTheme)
   .get('/directory', getDirectory)
+  // Public form pages (F10) — no sign-in.
+  .get('/public/forms/:key', publicForms.getPublicForm)
+  .post('/public/forms/:key/submit', publicForms.submitPublicForm)
   .get('/templates', templates.listTemplates)
   .get('/templates/facets', templates.templateFacets)
   .get('/templates/categories', templates.listTemplateCategories)

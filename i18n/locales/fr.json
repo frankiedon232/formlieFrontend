@@ -772,7 +772,8 @@
       "forms_template_created": "Modèle créé",
       "forms_template_updated": "Modèle mis à jour",
       "forms_template_duplicated": "Modèle dupliqué",
-      "forms_template_deleted": "Modèle supprimé"
+      "forms_template_deleted": "Modèle supprimé",
+      "responses_submitted": "Réponse reçue"
     },
     "detail": {
       "who": "Qui",
@@ -2567,6 +2568,25 @@
       "translate": "Traduisez vos formulaires dans l'une des 20 langues et comparez côte à côte.",
       "history": "Tout ce qui a été demandé à l'assistant, par qui et quand.",
       "settings": "Activez ou désactivez l'assistant, choisissez ce qu'il peut lire et consultez l'utilisation."
+    }
+  },
+  "public": {
+    "madeWith": "Créé avec {brand}",
+    "notFound": {
+      "title": "Ce formulaire n’existe pas",
+      "desc": "Le lien est peut-être mal saisi, ou le formulaire a été supprimé. Vérifiez l’adresse auprès de la personne qui vous l’a partagé."
+    },
+    "notPublished": {
+      "title": "Ce formulaire n’est pas encore ouvert",
+      "desc": "Il n’a pas encore été publié. Réessayez plus tard, ou demandez à la personne qui vous l’a partagé."
+    },
+    "closed": {
+      "title": "Ce formulaire est fermé",
+      "desc": "Il n’accepte plus de réponses. Merci de votre intérêt."
+    },
+    "error": {
+      "title": "Impossible de charger ce formulaire",
+      "desc": "Un problème est survenu de notre côté. Veuillez réessayer dans un instant."
     }
   }
 }

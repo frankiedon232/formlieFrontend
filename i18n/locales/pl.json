@@ -772,7 +772,8 @@
       "forms_template_created": "Utworzono szablon",
       "forms_template_updated": "Zaktualizowano szablon",
       "forms_template_duplicated": "Zduplikowano szablon",
-      "forms_template_deleted": "Usunięto szablon"
+      "forms_template_deleted": "Usunięto szablon",
+      "responses_submitted": "Otrzymano odpowiedź"
     },
     "detail": {
       "who": "Kto",
@@ -2567,6 +2568,25 @@
       "translate": "Tłumacz formularze na dowolny z 20 języków i porównuj obok siebie.",
       "history": "Wszystko, o co proszono asystenta, kto i kiedy.",
       "settings": "Włącz lub wyłącz asystenta, wybierz, co może czytać, i sprawdź użycie."
+    }
+  },
+  "public": {
+    "madeWith": "Utworzono w {brand}",
+    "notFound": {
+      "title": "Ten formularz nie istnieje",
+      "desc": "Link może zawierać literówkę albo formularz został usunięty. Sprawdź adres u osoby, która go udostępniła."
+    },
+    "notPublished": {
+      "title": "Ten formularz nie jest jeszcze otwarty",
+      "desc": "Nie został jeszcze opublikowany. Spróbuj ponownie później lub zapytaj osobę, która go udostępniła."
+    },
+    "closed": {
+      "title": "Ten formularz jest zamknięty",
+      "desc": "Nie przyjmuje już odpowiedzi. Dziękujemy za zainteresowanie."
+    },
+    "error": {
+      "title": "Nie udało się wczytać formularza",
+      "desc": "Wystąpił problem po naszej stronie. Spróbuj ponownie za chwilę."
     }
   }
 }

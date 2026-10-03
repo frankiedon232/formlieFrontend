@@ -19,6 +19,8 @@ export interface FormSummary {
   id: string
   name: string
   slug: string
+  /** Public address of the form: `/{public_key}/fill` (01-ARCHITECTURE → Public URLs). */
+  public_key: string
   status: FormStatus
   has_unpublished_changes: boolean
   folder: FormFolder | null

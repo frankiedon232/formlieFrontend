@@ -86,7 +86,8 @@ const slugify = (value: string) =>
 
 const now = Date.parse('2026-10-02T09:00:00Z')
 
-export const MOCK_FORMS: FormSummary[] = Array.from({ length: 57 }, (_, index) => {
+/** Seed forms (copied into each sample workspace, which gives every copy its own public key). */
+export const MOCK_FORMS: Omit<FormSummary, 'public_key'>[] = Array.from({ length: 57 }, (_, index) => {
   const base = NAMES[index % NAMES.length]!
   const name = index < NAMES.length ? base : `${base} ${Math.floor(index / NAMES.length) + 1}`
   const status = pick(STATUSES)

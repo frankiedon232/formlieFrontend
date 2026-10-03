@@ -6,13 +6,15 @@
   never sends anything. Columns follow the form's own width (container queries).
 -->
 <script setup lang="ts">
-import { cannotBeRequired, isLocked, sectionOwners, type FormField } from '#shared/utils/forms/build'
+import { isLocked, sectionOwners, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 import { calculateResult } from '#shared/utils/forms/formula'
-import { END_OF_FORM, evaluateLogic } from '#shared/utils/forms/logic'
+import { evaluateLogic } from '#shared/utils/forms/logic'
+import { effectiveField, nextPageIndex } from '#shared/utils/forms/submission'
 import { validateAnswer, type AddressPart, type ValidationIssue } from '#shared/utils/forms/validate'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { FormTheme } from '#shared/utils/forms/theme'
+import type { RendererSubmitOutcome } from '#shared/types/public'
 
 const props = defineProps<{
   schema: FormSchemaV1
@@ -20,6 +22,8 @@ const props = defineProps<{
   theme?: FormTheme
   /** Designer: show the thank-you page instead of the questions. */
   showThankYou?: boolean
+  /** Public page: send the answers; the button stays busy until it reports back (no double submit). */
+  submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
 }>()
 const { t } = useI18n()
 
@@ -71,23 +75,11 @@ watchEffect(() => {
 const pages = computed(() => props.schema.pages.filter(p => !logic.value.hiddenPages.has(p.id)))
 const page = computed(() => props.schema.pages[index.value])
 const position = computed(() => Math.max(0, pages.value.findIndex(p => p.id === page.value?.id)))
-const nextIndex = computed(() => {
-  const jump = page.value && logic.value.jumps.get(page.value.id)
-  if (jump === END_OF_FORM) return -1
-  const target = jump ? props.schema.pages.findIndex(p => p.id === jump) : -1
-  const from = target > index.value ? target : index.value + 1
-  return props.schema.pages.findIndex((p, i) => i >= from && !logic.value.hiddenPages.has(p.id))
-})
+const nextIndex = computed(() => nextPageIndex(props.schema, logic.value, index.value))
 const last = computed(() => nextIndex.value < 0)
 
-/** The field as respondents get it right now (logic can disable / enable it and change "required"). */
-function effective(field: FormField): FormField {
-  const disabled = logic.value.disabled.has(field.id) ? true : logic.value.enabled.has(field.id) ? false : field.disabled
-  const wanted = logic.value.optional.has(field.id) ? false : !!field.required || logic.value.required.has(field.id)
-  // Read-only, disabled, restricted and hidden fields are never required (someone could never submit).
-  const required = wanted && !cannotBeRequired({ ...field, disabled })
-  return { ...field, disabled, required }
-}
+/** The field as respondents get it right now — same rules as the API (shared/utils/forms/submission.ts). */
+const effective = (field: FormField) => effectiveField(field, logic.value)
 
 const visibleRows = computed(() =>
   (page.value?.rows ?? [])
@@ -166,11 +158,38 @@ function check(unfold = true): boolean {
 watch(answers, () => attempted.value && check(false), { deep: true })
 // Pages visited, so Back follows the path the respondent actually took (jumps included).
 const trail = ref<number[]>([])
+const submitting = ref(false)
+/** Thank-you text from the server (it may differ from the schema's, e.g. per language). */
+const thanks = ref<{ title: string; message: string } | null>(null)
+async function send() {
+  if (!props.submit || props.preview) return (done.value = true)
+  submitting.value = true
+  try {
+    const outcome = await props.submit({ ...answers.value })
+    if (outcome.done) {
+      if (outcome.thank_you?.redirect_url) return void (await navigateTo(outcome.thank_you.redirect_url, { external: true }))
+      if (outcome.thank_you) thanks.value = { title: outcome.thank_you.title, message: outcome.thank_you.message }
+      done.value = true
+      return
+    }
+    // The server found problems (it runs the same rules): show them on the questions.
+    const next: Record<string, string> = {}
+    for (const issue of outcome.issues ?? []) {
+      const field = allFieldsByKey.value.get(issue.key)
+      if (field) next[issue.key] = message(field, { code: issue.code, params: issue.params } as ValidationIssue)
+    }
+    errors.value = next
+    attempted.value = true
+  } finally {
+    submitting.value = false
+  }
+}
 function next() {
+  if (submitting.value) return
   attempted.value = true
   if (!check()) return
   attempted.value = false
-  if (last.value) return (done.value = true)
+  if (last.value) return void send()
   trail.value.push(index.value)
   index.value = nextIndex.value
 }
@@ -244,6 +263,7 @@ function restart() {
           <span v-else-if="!button.block" />
           <UButton
             type="submit"
+            :loading="submitting"
             :label="last ? t('renderer.submit') : t('renderer.next')"
             :trailing-icon="last ? undefined : 'i-lucide-arrow-right'"
             :color="button.color"
@@ -259,10 +279,10 @@ function restart() {
     <div v-else class="flex flex-col items-center gap-3 py-10 text-center">
       <UIcon v-if="theme?.thank_you.show_icon !== false" name="i-lucide-circle-check" class="size-10" :class="theme ? 'text-(--ui-primary)' : 'text-success'" />
       <h2 class="text-xl font-semibold text-highlighted">
-        {{ schema.thank_you?.title || t('renderer.thanks') }}
+        {{ thanks?.title || schema.thank_you?.title || t('renderer.thanks') }}
       </h2>
-      <p v-if="schema.thank_you?.message" class="max-w-md text-sm text-muted">
-        {{ schema.thank_you.message }}
+      <p v-if="thanks?.message || schema.thank_you?.message" class="max-w-md text-sm text-muted">
+        {{ thanks?.message || schema.thank_you?.message }}
       </p>
       <p v-if="preview" class="text-xs text-muted">{{ t('builder.preview.nothingSent') }}</p>
       <UButton

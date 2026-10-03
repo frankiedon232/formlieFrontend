@@ -772,7 +772,8 @@
       "forms_template_created": "Template created",
       "forms_template_updated": "Template updated",
       "forms_template_duplicated": "Template duplicated",
-      "forms_template_deleted": "Template deleted"
+      "forms_template_deleted": "Template deleted",
+      "responses_submitted": "Response received"
     },
     "detail": {
       "who": "Who",
@@ -2567,6 +2568,25 @@
       "translate": "Translate forms into any of the 20 languages and review side by side.",
       "history": "Everything the assistant was asked, by whom and when.",
       "settings": "Switch the assistant on or off, choose what it may read and see usage."
+    }
+  },
+  "public": {
+    "madeWith": "Made with {brand}",
+    "notFound": {
+      "title": "This form doesn’t exist",
+      "desc": "The link may be mistyped, or the form was removed. Check the address with whoever shared it."
+    },
+    "notPublished": {
+      "title": "This form isn’t open yet",
+      "desc": "It hasn’t been published. Try again later, or ask whoever shared it."
+    },
+    "closed": {
+      "title": "This form is closed",
+      "desc": "It no longer accepts responses. Thank you for your interest."
+    },
+    "error": {
+      "title": "We couldn’t load this form",
+      "desc": "Something went wrong on our side. Please try again in a moment."
     }
   }
 }

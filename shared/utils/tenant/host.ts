@@ -42,6 +42,8 @@ export type HostContext =
   | { kind: 'manage'; host: string; reason: 'manage' | 'root' | 'local' }
   | { kind: 'tenant'; host: string; subdomain: string }
   | { kind: 'custom'; host: string }
+  /** forms.formalie.com — public forms of workspaces without their own subdomain (F10). */
+  | { kind: 'forms'; host: string }
   | { kind: 'invalid'; host: string; reason: 'reserved' | 'nested' | 'malformed' }
 
 export interface HostResolveOptions {
@@ -71,6 +73,7 @@ function classifySubdomain(host: string, sub: string, manageSubdomain: string): 
   if (sub.includes('.')) return { kind: 'invalid', host, reason: 'nested' }
   if (sub === manageSubdomain) return { kind: 'manage', host, reason: 'manage' }
   if (sub === 'www') return { kind: 'manage', host, reason: 'root' }
+  if (sub === 'forms') return { kind: 'forms', host }
   if (RESERVED_SUBDOMAINS.includes(sub)) return { kind: 'invalid', host, reason: 'reserved' }
   if (!SUBDOMAIN_PATTERN.test(sub)) return { kind: 'invalid', host, reason: 'malformed' }
   return { kind: 'tenant', host, subdomain: sub }

@@ -67,6 +67,7 @@ export const AUDIT_EVENTS = {
   'forms.template_duplicated': { area: 'forms', icon: 'i-lucide-copy' },
   'forms.template_deleted': { area: 'forms', icon: 'i-lucide-trash-2' },
   // Responses
+  'responses.submitted': { area: 'responses', icon: 'i-lucide-inbox' },
   'responses.updated': { area: 'responses', icon: 'i-lucide-square-pen' },
   'responses.exported': { area: 'responses', icon: 'i-lucide-file-down' },
   'responses.deleted': { area: 'responses', icon: 'i-lucide-trash' },

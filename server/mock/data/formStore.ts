@@ -5,6 +5,7 @@
  */
 import { TRASH_RETENTION_DAYS, type FormFolder, type FormStatus, type FormSummary, type FormVersion } from '#shared/types/forms'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+import { newPublicKey } from '#shared/utils/urls/public'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MOCK_FOLDERS, MOCK_FORMS, SEED_TEMPLATES, seedBaseName } from './forms'
 import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
@@ -42,6 +43,7 @@ export function formsOf(tenant: MockTenant): TenantForms {
       ? {
           forms: MOCK_FORMS.map(form => ({
             ...structuredClone(form),
+            public_key: newPublicKey(),
             previous_status: form.status === 'archived' ? 'closed' : null,
             schema: null,
             template_key: SEED_TEMPLATES[seedBaseName(form.name)] ?? null,
@@ -55,6 +57,11 @@ export function formsOf(tenant: MockTenant): TenantForms {
     for (const form of store.forms)
       if (!form.template_key && !form.schema) form.template_key = SEED_TEMPLATES[seedBaseName(form.name)] ?? null
     store.templatesSeeded = true
+    saveForms()
+  }
+  // Stores saved before F10: give every form its public key once.
+  if (store.forms.some(form => !form.public_key)) {
+    for (const form of store.forms) form.public_key ||= newPublicKey()
     saveForms()
   }
   const cutoff = Date.now() - TRASH_RETENTION_DAYS * DAY
@@ -98,4 +105,13 @@ export function uniqueSlug(store: TenantForms, name: string, exceptId?: string):
   let n = 2
   while (taken.has(`${base}-${n}`)) n++
   return `${base}-${n}`
+}
+
+/** A form by its public key, across workspaces (public pages, F10). */
+export function findByPublicKey(tenants: MockTenant[], key: string): { tenant: MockTenant; form: StoredForm } | null {
+  for (const tenant of tenants) {
+    const form = formsOf(tenant).forms.find(item => item.public_key === key && !item.deleted_at)
+    if (form) return { tenant, form }
+  }
+  return null
 }

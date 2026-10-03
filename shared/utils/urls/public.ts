@@ -32,6 +32,15 @@ export function formLink(hosts: PublicHosts, formKey: string, kind: FormLinkKind
   return `https://${formsHostFor(hosts, subdomain)}${hosts.port ?? ''}/${encodeURIComponent(formKey)}/${kind}`
 }
 
+/** A form's public key: 10 random letters / digits (never a database id; 01-ARCHITECTURE → Public URLs). */
+export const FORM_KEY_PATTERN = /^[A-Za-z0-9]{10}$/
+const KEY_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'
+/** A new random public key (unambiguous letters and digits; ≈ 58 bits). */
+export function newPublicKey(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(10))
+  return Array.from(bytes, byte => KEY_ALPHABET[byte % KEY_ALPHABET.length]).join('')
+}
+
 // ── API service ─────────────────────────────────────────────────────────────────────
 
 /** Organisation API key in the URL: 10 characters, letters and digits (≈ 59 bits, random). */

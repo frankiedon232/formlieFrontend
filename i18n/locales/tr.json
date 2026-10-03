@@ -772,7 +772,8 @@
       "forms_template_created": "Şablon oluşturuldu",
       "forms_template_updated": "Şablon güncellendi",
       "forms_template_duplicated": "Şablon çoğaltıldı",
-      "forms_template_deleted": "Şablon silindi"
+      "forms_template_deleted": "Şablon silindi",
+      "responses_submitted": "Yanıt alındı"
     },
     "detail": {
       "who": "Kim",
@@ -2567,6 +2568,25 @@
       "translate": "Formları 20 dilden herhangi birine çevirin ve yan yana inceleyin.",
       "history": "Asistana sorulan her şey, kimin tarafından ve ne zaman.",
       "settings": "Asistanı açın veya kapatın, neleri okuyabileceğini seçin ve kullanımı görün."
+    }
+  },
+  "public": {
+    "madeWith": "{brand} ile yapıldı",
+    "notFound": {
+      "title": "Bu form mevcut değil",
+      "desc": "Bağlantı yanlış yazılmış ya da form kaldırılmış olabilir. Adresi formu paylaşan kişiyle kontrol edin."
+    },
+    "notPublished": {
+      "title": "Bu form henüz açık değil",
+      "desc": "Henüz yayınlanmadı. Daha sonra tekrar deneyin veya formu paylaşan kişiye sorun."
+    },
+    "closed": {
+      "title": "Bu form kapandı",
+      "desc": "Artık yanıt kabul etmiyor. İlginiz için teşekkür ederiz."
+    },
+    "error": {
+      "title": "Bu form yüklenemedi",
+      "desc": "Bizim tarafımızda bir sorun oluştu. Lütfen birazdan tekrar deneyin."
     }
   }
 }

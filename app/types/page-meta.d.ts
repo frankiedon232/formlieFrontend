@@ -12,6 +12,8 @@ declare module '#app' {
      * 'only' = manage.* only (signup, find workspace).
      */
     manage?: boolean | 'only'
+    /** Public form pages (F10): served on any host (forms.*, workspace hosts); no workspace check. */
+    public?: boolean
   }
 }
 
