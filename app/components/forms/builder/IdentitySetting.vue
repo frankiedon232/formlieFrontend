@@ -17,17 +17,19 @@ const current = computed<IdentitySettings>(() => (schema.value ? identityOf(sche
 const suggestedEmail = computed(() => suggestEmailField(fields.value))
 const suggestedId = computed(() => suggestIdField(fields.value))
 
+/** "Off" needs a real value: the select menu doesn't accept an empty one (the menu wouldn't open). */
+const OFF = '__off'
 const label = (key: string, suggested: string | null) => {
   const field = fields.value.find(f => f.key === key)
   const name = field?.label?.trim() || t('builder.untitled')
   return key === suggested ? `${name} · ${t('builder.identity.suggested')}` : name
 }
 const emailItems = computed(() => [
-  { value: '', label: t('builder.identity.off') },
+  { value: OFF, label: t('builder.identity.off') },
   ...fields.value.filter(f => f.type === 'email').map(f => ({ value: f.key, label: label(f.key, suggestedEmail.value) })),
 ])
 const idItems = computed(() => [
-  { value: '', label: t('builder.identity.off') },
+  { value: OFF, label: t('builder.identity.off') },
   ...fields.value.filter(f => f.type === 'short_text' || f.type === 'number').map(f => ({ value: f.key, label: label(f.key, suggestedId.value) })),
 ])
 
@@ -46,24 +48,24 @@ function update(patch: Partial<IdentitySettings>) {
     <p class="text-xs text-muted">{{ t('builder.identity.hint') }}</p>
     <UFormField :label="t('builder.identity.email')" :description="t('builder.identity.emailHint')">
       <USelectMenu
-        :model-value="current.email ?? ''"
+        :model-value="current.email ?? OFF"
         :items="emailItems"
         value-key="value"
         :search-input="false"
         icon="i-lucide-at-sign"
         class="w-full"
-        @update:model-value="v => update({ email: String(v || '') || null })"
+        @update:model-value="v => update({ email: v && v !== OFF ? String(v) : null })"
       />
     </UFormField>
     <UFormField :label="t('builder.identity.id')" :description="t('builder.identity.idHint')">
       <USelectMenu
-        :model-value="current.id ?? ''"
+        :model-value="current.id ?? OFF"
         :items="idItems"
         value-key="value"
         :search-input="false"
         icon="i-lucide-id-card"
         class="w-full"
-        @update:model-value="v => update({ id: String(v || '') || null })"
+        @update:model-value="v => update({ id: v && v !== OFF ? String(v) : null })"
       />
     </UFormField>
     <USwitch
