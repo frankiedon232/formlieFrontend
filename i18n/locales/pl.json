@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Formularz reklamacji gościa",
         "description": "Pozwól gościom opisać, co poszło nie tak, gdzie i jak chcieliby to naprawić."
+      },
+      "membership_application": {
+        "name": "Deklaracja członkowska",
+        "description": "Dołącz do klubu lub stowarzyszenia: dane członka, rodzaj członkostwa, dodatki i roczna składka."
+      },
+      "donation_form": {
+        "name": "Formularz darowizny",
+        "description": "Wybrana lub własna kwota, co miesiąc lub jednorazowo, z opcją pokrycia opłaty transakcyjnej."
+      },
+      "petition": {
+        "name": "Petycja",
+        "description": "Przedstaw sprawę, zbierz nazwiska i miejscowości, a ludzie napiszą, dlaczego to dla nich ważne."
+      },
+      "poll_ballot": {
+        "name": "Ankieta / Karta do głosowania",
+        "description": "Jeden głos na osobę w pytaniu i ranking opcji, z opcjonalnym komentarzem."
+      },
+      "property_viewing": {
+        "name": "Prośba o oglądanie nieruchomości",
+        "description": "Umów oglądanie: nieruchomość, dwa preferowane terminy, kto przyjdzie i jak się z nim skontaktować."
+      },
+      "tenant_application": {
+        "name": "Wniosek najemcy",
+        "description": "Wnioskodawca, zatrudnienie, dochód i referencje, ze stosunkiem dochodu do czynszu dla wynajmującego."
+      },
+      "rental_application": {
+        "name": "Wniosek o wynajem",
+        "description": "Krótszy wniosek dla konkretnej oferty: data wprowadzenia, okres, gospodarstwo domowe i zdolność płatnicza."
+      },
+      "property_inspection": {
+        "name": "Inspekcja nieruchomości",
+        "description": "Stan każdego pomieszczenia (dobry / średni / zły), odczyty liczników i zdjęcia, z oceną stanu."
+      },
+      "property_maintenance": {
+        "name": "Zgłoszenie naprawy",
+        "description": "Najemcy zgłaszają usterkę: miejsce, pilność, zdjęcia i kiedy ktoś może przyjść."
+      },
+      "property_information": {
+        "name": "Informacje o nieruchomości",
+        "description": "Właściciele opisują nieruchomość do ogłoszenia: typ, metraż, pokoje, udogodnienia, cena i zdjęcia."
+      },
+      "landlord_information": {
+        "name": "Dane wynajmującego",
+        "description": "Kontakt, dane do płatności, preferencje dotyczące najemców i kto zajmuje się naprawami."
+      },
+      "tenant_feedback": {
+        "name": "Opinie najemców",
+        "description": "Najemcy oceniają mieszkanie, naprawy, komunikację i stosunek ceny do jakości; średnia pokazuje zadowolenie."
+      },
+      "sales_lead_capture": {
+        "name": "Pozyskiwanie leadów",
+        "description": "Imię, firma, wielkość i zainteresowanie — na tyle krótko, by pasowało na landing page, ze śledzeniem źródła."
+      },
+      "sales_quote_request": {
+        "name": "Zapytanie ofertowe",
+        "description": "Wybierz plan, liczbę stanowisk i usługi; orientacyjna kwota roczna jest wyliczana dla działu sprzedaży."
+      },
+      "sales_qualification": {
+        "name": "Kwalifikacja sprzedażowa",
+        "description": "Budżet, decyzyjność, potrzeba i termin oceniane dla zespołu, z wynikiem gorący / ciepły / zimny."
+      },
+      "demo_request": {
+        "name": "Prośba o prezentację produktu",
+        "description": "Umów prezentację na żywo: kto weźmie udział, na czym się skupić, strefa czasowa i preferowane terminy."
+      },
+      "customer_discovery": {
+        "name": "Rozpoznanie potrzeb klienta",
+        "description": "Poznaj cele, obecne narzędzia, problemy i definicję sukcesu, zanim przygotujesz propozycję."
+      },
+      "proposal_request": {
+        "name": "Prośba o ofertę",
+        "description": "Zakres, rezultaty, budżet, termin i proces decyzyjny dla oferty szytej na miarę."
+      },
+      "order_request": {
+        "name": "Zamówienie",
+        "description": "Klienci hurtowi zamawiają po kodzie produktu i ilości, z rabatem ilościowym i sumą zamówienia."
+      },
+      "sales_follow_up": {
+        "name": "Działania po kontakcie",
+        "description": "Zapisz rozmowę lub spotkanie: wynik, etap transakcji, następny krok i jego datę — szybko, także na telefonie."
       }
     },
     "openGallery": "Otwórz pełną galerię",

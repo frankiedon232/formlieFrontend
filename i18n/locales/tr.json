@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Konaklama Şikâyet Formu",
         "description": "Misafirlerin neyin, nerede ters gittiğini ve nasıl düzeltilmesini istediklerini anlatmasını sağlayın."
+      },
+      "membership_application": {
+        "name": "Üyelik Başvurusu",
+        "description": "Bir kulübe veya derneğe katılın: üye bilgileri, üyelik türü, ekstralar ve yıllık aidat."
+      },
+      "donation_form": {
+        "name": "Bağış Formu",
+        "description": "Önerilen ya da kendi belirlediğiniz tutar, aylık veya tek seferlik, işlem ücretini karşılama seçeneğiyle."
+      },
+      "petition": {
+        "name": "Dilekçe Kampanyası",
+        "description": "Amacı anlatın, isim ve konum toplayın, insanlar bunun neden önemli olduğunu yazsın."
+      },
+      "poll_ballot": {
+        "name": "Anket / Oy Pusulası",
+        "description": "Bir soru ve sıralı tercih için kişi başı tek oy, isteğe bağlı yorumla."
+      },
+      "property_viewing": {
+        "name": "Mülk Görme Talebi",
+        "description": "Görme randevusu alın: mülk, tercih edilen iki zaman, kimin geleceği ve nasıl ulaşılacağı."
+      },
+      "tenant_application": {
+        "name": "Kiracı Başvurusu",
+        "description": "Başvuran, iş, gelir ve referanslar; ev sahibi için gelir-kira oranıyla."
+      },
+      "rental_application": {
+        "name": "Kiralama Başvurusu",
+        "description": "Belirli bir ilan için kısa başvuru: taşınma tarihi, süre, hane ve ödeme gücü."
+      },
+      "property_inspection": {
+        "name": "Mülk Denetimi",
+        "description": "Oda oda durum (iyi / orta / kötü), sayaç okumaları ve fotoğraflar, durum puanıyla."
+      },
+      "property_maintenance": {
+        "name": "Bakım Talebi",
+        "description": "Kiracılar arızayı alan, aciliyet, fotoğraf ve ne zaman gelinebileceğiyle bildirir."
+      },
+      "property_information": {
+        "name": "Mülk Bilgileri",
+        "description": "Mülk sahipleri ilan için mülkü tanımlar: tür, büyüklük, odalar, özellikler, fiyat ve fotoğraflar."
+      },
+      "landlord_information": {
+        "name": "Ev Sahibi Bilgileri",
+        "description": "İletişim, ödeme bilgileri, kiracı tercihleri ve onarımlarla kimin ilgilendiği."
+      },
+      "tenant_feedback": {
+        "name": "Kiracı Geri Bildirimi",
+        "description": "Kiracılar evi, onarımları, iletişimi ve fiyat-değeri puanlar; ortalama genel memnuniyeti gösterir."
+      },
+      "sales_lead_capture": {
+        "name": "Potansiyel Müşteri Toplama",
+        "description": "Ad, şirket, büyüklük ve ilgi alanı — açılış sayfası için yeterince kısa, kaynak takibiyle."
+      },
+      "sales_quote_request": {
+        "name": "Teklif Talebi",
+        "description": "Plan, kullanıcı sayısı ve hizmet seçin; satış ekibi için tahmini yıllık toplam hesaplanır."
+      },
+      "sales_qualification": {
+        "name": "Satış Niteliklendirme",
+        "description": "Bütçe, yetki, ihtiyaç ve zamanlama ekip için puanlanır; sonuç sıcak / ılık / soğuk."
+      },
+      "demo_request": {
+        "name": "Ürün Demosu Talebi",
+        "description": "Canlı demo planlayın: kimler katılacak, odak konusu, saat dilimi ve tercih edilen zamanlar."
+      },
+      "customer_discovery": {
+        "name": "Müşteri Keşfi",
+        "description": "Teklif sunmadan önce hedefleri, mevcut araçları, sorunları ve başarının tanımını anlayın."
+      },
+      "proposal_request": {
+        "name": "Teklif Dosyası Talebi",
+        "description": "Kişiye özel teklif için kapsam, çıktılar, bütçe, son tarih ve karar süreci."
+      },
+      "order_request": {
+        "name": "Sipariş Talebi",
+        "description": "Kurumsal müşteriler ürün kodu ve adetle sipariş verir; hacim indirimi ve sipariş toplamıyla."
+      },
+      "sales_follow_up": {
+        "name": "Satış Takibi",
+        "description": "Bir görüşmeyi veya toplantıyı kaydedin: sonuç, satış aşaması, sonraki adım ve tarihi — telefonda bile hızlı."
       }
     },
     "openGallery": "Galerinin tamamını aç",

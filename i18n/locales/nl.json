@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Klachtenformulier gastvrijheid",
         "description": "Laat gasten vertellen wat er misging, waar, en hoe ze het graag opgelost zien."
+      },
+      "membership_application": {
+        "name": "Lidmaatschapsaanvraag",
+        "description": "Word lid van een club of vereniging: gegevens, type lidmaatschap, extra's en de jaarlijkse contributie."
+      },
+      "donation_form": {
+        "name": "Donatieformulier",
+        "description": "Een vast of eigen bedrag, maandelijks of eenmalig, met de optie om de transactiekosten te dekken."
+      },
+      "petition": {
+        "name": "Petitie",
+        "description": "Beschrijf het doel, verzamel namen en woonplaatsen en laat mensen vertellen waarom het voor hen telt."
+      },
+      "poll_ballot": {
+        "name": "Peiling / Stembiljet",
+        "description": "Eén stem per persoon op een vraag en een rangschikking, met een optionele opmerking."
+      },
+      "property_viewing": {
+        "name": "Aanvraag bezichtiging",
+        "description": "Plan een bezichtiging: de woning, twee voorkeurstijden, wie er komt en hoe je diegene bereikt."
+      },
+      "tenant_application": {
+        "name": "Huurdersaanvraag",
+        "description": "Aanvrager, werk, inkomen en referenties, met een verhouding inkomen-huur voor de verhuurder."
+      },
+      "rental_application": {
+        "name": "Huuraanvraag",
+        "description": "Een kortere aanvraag voor een specifieke woning: ingangsdatum, looptijd, huishouden en betaalbaarheid."
+      },
+      "property_inspection": {
+        "name": "Woninginspectie",
+        "description": "Staat per kamer (goed / redelijk / slecht), meterstanden en foto's, met een conditiescore."
+      },
+      "property_maintenance": {
+        "name": "Onderhoudsverzoek",
+        "description": "Huurders melden een reparatie met ruimte, urgentie, foto's en wanneer iemand langs kan komen."
+      },
+      "property_information": {
+        "name": "Woninginformatie",
+        "description": "Eigenaren beschrijven een woning voor de advertentie: type, oppervlakte, kamers, kenmerken, prijs en foto's."
+      },
+      "landlord_information": {
+        "name": "Gegevens verhuurder",
+        "description": "Contactgegevens, betaalgegevens, voorkeuren voor huurders en wie reparaties regelt."
+      },
+      "tenant_feedback": {
+        "name": "Huurdersfeedback",
+        "description": "Huurders beoordelen woning, reparaties, communicatie en prijs-kwaliteit; een gemiddelde toont de tevredenheid."
+      },
+      "sales_lead_capture": {
+        "name": "Leads verzamelen",
+        "description": "Naam, bedrijf, omvang en interesse: kort genoeg voor een landingspagina, met de bron bijgehouden."
+      },
+      "sales_quote_request": {
+        "name": "Offerteaanvraag",
+        "description": "Kies een abonnement, gebruikers en diensten; er wordt een indicatief jaartotaal berekend voor het salesteam."
+      },
+      "sales_qualification": {
+        "name": "Salesqualificatie",
+        "description": "Budget, beslissingsbevoegdheid, behoefte en timing gescoord voor het team, met een uitkomst heet / warm / koud."
+      },
+      "demo_request": {
+        "name": "Productdemo aanvragen",
+        "description": "Plan een live demo: wie er meedoet, waar de focus ligt, tijdzone en voorkeurstijden."
+      },
+      "customer_discovery": {
+        "name": "Klantverkenning",
+        "description": "Breng doelen, huidige tools, knelpunten en succescriteria in kaart voordat je een voorstel doet."
+      },
+      "proposal_request": {
+        "name": "Voorstel aanvragen",
+        "description": "Scope, opleveringen, budget, deadline en besluitvorming voor een voorstel op maat."
+      },
+      "order_request": {
+        "name": "Bestelaanvraag",
+        "description": "Zakelijke klanten bestellen op productcode en aantal, met staffelkorting en ordertotaal."
+      },
+      "sales_follow_up": {
+        "name": "Sales-opvolging",
+        "description": "Leg een gesprek of afspraak vast: resultaat, dealfase, volgende stap en datum — snel genoeg voor mobiel."
       }
     },
     "openGallery": "Volledige galerij openen",

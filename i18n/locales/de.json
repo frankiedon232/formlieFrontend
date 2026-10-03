@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Gästebeschwerde",
         "description": "Gäste schildern lassen, was schiefgelaufen ist, wo, und wie es wiedergutgemacht werden soll."
+      },
+      "membership_application": {
+        "name": "Mitgliedsantrag",
+        "description": "Einem Verein oder Verband beitreten: Mitgliedsdaten, Mitgliedschaftsstufe, Extras und Jahresbeitrag."
+      },
+      "donation_form": {
+        "name": "Spendenformular",
+        "description": "Spendenbetrag (oder ein eigener), monatlich oder einmalig, mit Option zur Übernahme der Transaktionsgebühr."
+      },
+      "petition": {
+        "name": "Petition",
+        "description": "Das Anliegen darstellen, Namen und Orte sammeln und Unterstützende sagen lassen, warum es ihnen wichtig ist."
+      },
+      "poll_ballot": {
+        "name": "Umfrage / Stimmzettel",
+        "description": "Eine Stimme pro Person zu einer Frage und einer Rangfolge, mit optionalem Kommentar."
+      },
+      "property_viewing": {
+        "name": "Besichtigungsanfrage",
+        "description": "Eine Besichtigung buchen: Objekt, zwei Wunschtermine, wer kommt und wie die Personen erreichbar sind."
+      },
+      "tenant_application": {
+        "name": "Mieterbewerbung",
+        "description": "Bewerbende, Beschäftigung, Einkommen und Referenzen, mit Verhältnis von Einkommen zu Miete für die Vermietung."
+      },
+      "rental_application": {
+        "name": "Mietantrag",
+        "description": "Ein kürzerer Antrag für ein bestimmtes Inserat — Einzugsdatum, Laufzeit, Haushalt und Bezahlbarkeit."
+      },
+      "property_inspection": {
+        "name": "Objektbegehung",
+        "description": "Zustand Raum für Raum (gut / mittel / schlecht), Zählerstände und Fotos, mit Zustandswert."
+      },
+      "property_maintenance": {
+        "name": "Reparaturmeldung",
+        "description": "Mietende melden eine Reparatur mit Bereich, Dringlichkeit, Fotos und Zeitfenster für den Zugang."
+      },
+      "property_information": {
+        "name": "Objektangaben",
+        "description": "Eigentümer beschreiben ein Objekt für das Inserat: Art, Größe, Zimmer, Ausstattung, Preis und Fotos."
+      },
+      "landlord_information": {
+        "name": "Vermieterangaben",
+        "description": "Kontakt, Zahlungsdaten, Wünsche an Mietende und Zuständigkeit für Reparaturen."
+      },
+      "tenant_feedback": {
+        "name": "Mieterfeedback",
+        "description": "Mietende bewerten Wohnung, Reparaturen, Kommunikation und Preis-Leistung; ein Durchschnitt zeigt die Gesamtzufriedenheit."
+      },
+      "sales_lead_capture": {
+        "name": "Lead-Erfassung",
+        "description": "Name, Unternehmen, Größe und Interesse — kurz genug für eine Landingpage, mit erfasster Quelle."
+      },
+      "sales_quote_request": {
+        "name": "Angebotsanfrage",
+        "description": "Tarif, Nutzerzahl und Leistungen wählen; ein unverbindlicher Jahresbetrag wird für den Vertrieb berechnet."
+      },
+      "sales_qualification": {
+        "name": "Vertriebsqualifizierung",
+        "description": "Budget, Entscheidungsbefugnis, Bedarf und Zeitrahmen bewertet, mit Ergebnis heiß / warm / kalt."
+      },
+      "demo_request": {
+        "name": "Produktdemo anfragen",
+        "description": "Eine Live-Demo buchen: Teilnehmende, Schwerpunkte, Zeitzone und Wunschtermine."
+      },
+      "customer_discovery": {
+        "name": "Bedarfsanalyse",
+        "description": "Ziele, aktuelle Tools, Schwachstellen und Erfolgskriterien verstehen, bevor ein Angebot erstellt wird."
+      },
+      "proposal_request": {
+        "name": "Anfrage für ein Angebotskonzept",
+        "description": "Umfang, Ergebnisse, Budget, Frist und Entscheidungsprozess für ein maßgeschneidertes Angebot."
+      },
+      "order_request": {
+        "name": "Bestellanfrage",
+        "description": "Geschäftskunden bestellen per Artikelnummer und Menge, mit Mengenrabatt und Bestellsumme."
+      },
+      "sales_follow_up": {
+        "name": "Vertriebs-Follow-up",
+        "description": "Anruf oder Termin festhalten: Ergebnis, Verkaufsphase, nächster Schritt und Datum — schnell auch am Handy."
       }
     },
     "openGallery": "Ganze Galerie öffnen",

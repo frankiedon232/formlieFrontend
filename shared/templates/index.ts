@@ -7,6 +7,7 @@ import { isInputField } from '../utils/forms/fields'
 import type { FormSchemaV1 } from '../utils/forms/schema'
 import { applyPatch, defaultTheme, type FormTheme, type WorkspaceBranding } from '../utils/forms/theme'
 import { BUSINESS_TEMPLATES } from './catalogue/business'
+import { COMMUNITY_TEMPLATES } from './catalogue/community'
 import { EDUCATION_TEMPLATES } from './catalogue/education'
 import { EVENTS_TEMPLATES } from './catalogue/events'
 import { FINANCE_LEGAL_TEMPLATES } from './catalogue/finance-legal'
@@ -14,6 +15,8 @@ import { HEALTH_SAFETY_TEMPLATES } from './catalogue/health-safety'
 import { HOSPITALITY_TEMPLATES } from './catalogue/hospitality'
 import { HR_TEMPLATES } from './catalogue/hr'
 import { OPERATIONS_IT_TEMPLATES } from './catalogue/operations-it'
+import { REAL_ESTATE_TEMPLATES } from './catalogue/real-estate'
+import { SALES_TEMPLATES } from './catalogue/sales'
 import { TEMPLATE_CATEGORIES, categoryOf, type TemplateCategoryKey } from './categories'
 import { buildSchema, type TemplateDef } from './kit'
 
@@ -30,6 +33,9 @@ export const SYSTEM_TEMPLATES: TemplateDef[] = [
   ...EDUCATION_TEMPLATES,
   ...OPERATIONS_IT_TEMPLATES,
   ...FINANCE_LEGAL_TEMPLATES,
+  ...COMMUNITY_TEMPLATES,
+  ...REAL_ESTATE_TEMPLATES,
+  ...SALES_TEMPLATES,
 ]
 
 const byKey = new Map(SYSTEM_TEMPLATES.map(def => [def.key, def]))

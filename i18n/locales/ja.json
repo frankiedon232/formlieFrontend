@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "ご意見・苦情フォーム",
         "description": "何が、どこで問題だったのか、どう対応してほしいのかをお客様から伺います。"
+      },
+      "membership_application": {
+        "name": "入会申込書",
+        "description": "クラブや団体への入会：会員情報、会員区分、オプション、年会費。"
+      },
+      "donation_form": {
+        "name": "寄付フォーム",
+        "description": "寄付額（または任意の金額）、毎月または1回のみ。決済手数料の負担も選べます。"
+      },
+      "petition": {
+        "name": "署名活動",
+        "description": "趣旨を伝え、名前と地域を集め、賛同する理由を書いてもらえます。"
+      },
+      "poll_ballot": {
+        "name": "アンケート / 投票用紙",
+        "description": "1人1票で質問に投票し、順位付きで選択。コメントは任意です。"
+      },
+      "property_viewing": {
+        "name": "内見申込",
+        "description": "内見の予約：物件、希望日時2つ、参加者、連絡方法。"
+      },
+      "tenant_application": {
+        "name": "入居申込書",
+        "description": "申込者、勤務先、収入、身元保証・推薦人。貸主向けに収入と家賃の比率を表示します。"
+      },
+      "rental_application": {
+        "name": "賃貸申込",
+        "description": "特定の物件向けの簡易申込：入居日、契約期間、世帯、支払い能力。"
+      },
+      "property_inspection": {
+        "name": "物件点検",
+        "description": "部屋ごとの状態（良好 / 普通 / 不良）、メーター値、写真と状態スコア。"
+      },
+      "property_maintenance": {
+        "name": "修繕依頼",
+        "description": "入居者が箇所、緊急度、写真、立ち入り可能な時間を添えて修繕を依頼します。"
+      },
+      "property_information": {
+        "name": "物件情報",
+        "description": "オーナーが掲載用に物件を説明：種別、広さ、部屋数、設備、価格、写真。"
+      },
+      "landlord_information": {
+        "name": "貸主情報",
+        "description": "貸主の連絡先、支払い情報、入居者の希望条件、修繕の担当者。"
+      },
+      "tenant_feedback": {
+        "name": "入居者アンケート",
+        "description": "住まい、修繕、対応、コストを入居者が評価。平均値で全体の満足度がわかります。"
+      },
+      "sales_lead_capture": {
+        "name": "リード獲得",
+        "description": "氏名、会社名、規模、関心事項。ランディングページ向けの短さで、流入元も記録します。"
+      },
+      "sales_quote_request": {
+        "name": "見積依頼",
+        "description": "プラン、ユーザー数、サービスを選択。営業チーム向けに年間の概算合計を算出します。"
+      },
+      "sales_qualification": {
+        "name": "商談の見極め",
+        "description": "予算、決裁権、ニーズ、時期をスコア化し、ホット / ウォーム / コールドで判定します。"
+      },
+      "demo_request": {
+        "name": "製品デモ依頼",
+        "description": "ライブデモの予約：参加者、重点内容、タイムゾーン、希望日時。"
+      },
+      "customer_discovery": {
+        "name": "顧客ヒアリング",
+        "description": "提案の前に、目標、現在のツール、課題、成功の姿を把握します。"
+      },
+      "proposal_request": {
+        "name": "提案依頼",
+        "description": "個別提案のための範囲、成果物、予算、期限、意思決定プロセス。"
+      },
+      "order_request": {
+        "name": "注文依頼",
+        "description": "法人顧客が商品コードと数量で注文。数量割引と注文合計を表示します。"
+      },
+      "sales_follow_up": {
+        "name": "営業フォローアップ",
+        "description": "電話や商談を記録：結果、商談ステージ、次のアクションと日付。スマホでもすばやく入力。"
       }
     },
     "openGallery": "ギャラリー全体を開く",

@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Modulo reclami",
         "description": "Lascia che gli ospiti ti dicano cosa è andato storto, dove e come vorrebbero che si rimediasse."
+      },
+      "membership_application": {
+        "name": "Domanda di iscrizione",
+        "description": "Iscriviti a un club o associazione: dati del socio, livello di iscrizione, extra e quota annuale."
+      },
+      "donation_form": {
+        "name": "Modulo di donazione",
+        "description": "Un importo (o quello che preferisci), mensile o una tantum, con l'opzione di coprire le commissioni."
+      },
+      "petition": {
+        "name": "Petizione",
+        "description": "Presenta la causa, raccogli nomi e località e lascia che le persone dicano perché per loro è importante."
+      },
+      "poll_ballot": {
+        "name": "Sondaggio / Scheda di voto",
+        "description": "Un voto a persona su una domanda e una scelta in ordine di preferenza, con commento facoltativo."
+      },
+      "property_viewing": {
+        "name": "Richiesta di visita immobile",
+        "description": "Prenota una visita: l'immobile, due orari preferiti, chi partecipa e come contattarli."
+      },
+      "tenant_application": {
+        "name": "Candidatura inquilino",
+        "description": "Richiedente, impiego, reddito e referenze, con il rapporto reddito/affitto per il proprietario."
+      },
+      "rental_application": {
+        "name": "Richiesta di affitto",
+        "description": "Una richiesta più breve per un annuncio specifico: data di ingresso, durata, nucleo familiare e sostenibilità."
+      },
+      "property_inspection": {
+        "name": "Ispezione immobile",
+        "description": "Stato stanza per stanza (buono / discreto / scarso), letture dei contatori e foto, con un punteggio."
+      },
+      "property_maintenance": {
+        "name": "Richiesta di manutenzione",
+        "description": "Gli inquilini segnalano una riparazione con zona, urgenza, foto e quando si può entrare."
+      },
+      "property_information": {
+        "name": "Informazioni immobile",
+        "description": "I proprietari descrivono l'immobile da pubblicare: tipo, superficie, locali, caratteristiche, prezzo e foto."
+      },
+      "landlord_information": {
+        "name": "Informazioni proprietario",
+        "description": "Contatti del proprietario, dati di pagamento, preferenze sugli inquilini e chi gestisce le riparazioni."
+      },
+      "tenant_feedback": {
+        "name": "Feedback inquilini",
+        "description": "Gli inquilini valutano casa, riparazioni, comunicazione e rapporto qualità-prezzo; una media mostra la soddisfazione generale."
+      },
+      "sales_lead_capture": {
+        "name": "Raccolta lead",
+        "description": "Nome, azienda, dimensioni e interesse: abbastanza breve per una landing page, con la fonte tracciata."
+      },
+      "sales_quote_request": {
+        "name": "Richiesta di preventivo",
+        "description": "Scegli piano, utenti e servizi; viene calcolato un totale annuo indicativo per il team vendite."
+      },
+      "sales_qualification": {
+        "name": "Qualificazione commerciale",
+        "description": "Budget, potere decisionale, esigenza e tempistiche valutati per il team, con esito caldo / tiepido / freddo."
+      },
+      "demo_request": {
+        "name": "Richiesta demo prodotto",
+        "description": "Prenota una demo dal vivo: chi partecipa, su cosa concentrarsi, fuso orario e orari preferiti."
+      },
+      "customer_discovery": {
+        "name": "Analisi delle esigenze",
+        "description": "Capisci obiettivi, strumenti attuali, criticità e cosa significa successo prima di fare una proposta."
+      },
+      "proposal_request": {
+        "name": "Richiesta di proposta",
+        "description": "Ambito, deliverable, budget, scadenza e processo decisionale per una proposta su misura."
+      },
+      "order_request": {
+        "name": "Richiesta d'ordine",
+        "description": "I clienti business ordinano per codice prodotto e quantità, con sconto sui volumi e totale dell'ordine."
+      },
+      "sales_follow_up": {
+        "name": "Follow-up commerciale",
+        "description": "Registra una chiamata o un incontro: esito, fase della trattativa, prossimo passo e data, veloce anche da telefono."
       }
     },
     "openGallery": "Apri la galleria completa",

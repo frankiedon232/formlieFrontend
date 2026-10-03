@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Phiếu khiếu nại dịch vụ",
         "description": "Để khách cho bạn biết điều gì chưa ổn, ở đâu và họ muốn được khắc phục thế nào."
+      },
+      "membership_application": {
+        "name": "Đơn đăng ký hội viên",
+        "description": "Tham gia câu lạc bộ hoặc hiệp hội: thông tin hội viên, hạng hội viên, dịch vụ thêm và phí hằng năm."
+      },
+      "donation_form": {
+        "name": "Mẫu quyên góp",
+        "description": "Số tiền gợi ý (hoặc tự nhập), hằng tháng hoặc một lần, có tùy chọn chi trả phí giao dịch."
+      },
+      "petition": {
+        "name": "Kiến nghị",
+        "description": "Nêu mục đích, thu thập tên và địa điểm, để mọi người chia sẻ vì sao điều này quan trọng với họ."
+      },
+      "poll_ballot": {
+        "name": "Thăm dò / Phiếu bầu",
+        "description": "Mỗi người một phiếu cho một câu hỏi và một lựa chọn xếp hạng, kèm nhận xét tùy chọn."
+      },
+      "property_viewing": {
+        "name": "Yêu cầu xem nhà",
+        "description": "Đặt lịch xem nhà: bất động sản, hai khung giờ mong muốn, ai sẽ đến và cách liên hệ."
+      },
+      "tenant_application": {
+        "name": "Hồ sơ người thuê",
+        "description": "Người nộp đơn, công việc, thu nhập và người tham chiếu, kèm tỷ lệ thu nhập trên tiền thuê cho chủ nhà."
+      },
+      "rental_application": {
+        "name": "Đơn xin thuê nhà",
+        "description": "Đơn ngắn hơn cho một tin đăng cụ thể: ngày dọn vào, thời hạn, hộ gia đình và khả năng chi trả."
+      },
+      "property_inspection": {
+        "name": "Kiểm tra nhà",
+        "description": "Tình trạng từng phòng (tốt / trung bình / kém), chỉ số đồng hồ và ảnh, kèm điểm tình trạng."
+      },
+      "property_maintenance": {
+        "name": "Yêu cầu bảo trì",
+        "description": "Người thuê báo sửa chữa kèm khu vực, mức độ khẩn, ảnh và thời gian có thể đến."
+      },
+      "property_information": {
+        "name": "Thông tin bất động sản",
+        "description": "Chủ nhà mô tả bất động sản để đăng tin: loại, diện tích, số phòng, tiện ích, giá và ảnh."
+      },
+      "landlord_information": {
+        "name": "Thông tin chủ nhà",
+        "description": "Liên hệ, thông tin thanh toán, yêu cầu về người thuê và ai phụ trách sửa chữa."
+      },
+      "tenant_feedback": {
+        "name": "Phản hồi người thuê",
+        "description": "Người thuê đánh giá nhà, sửa chữa, giao tiếp và giá trị; điểm trung bình cho thấy mức hài lòng chung."
+      },
+      "sales_lead_capture": {
+        "name": "Thu thập khách hàng tiềm năng",
+        "description": "Tên, công ty, quy mô và nhu cầu — đủ ngắn cho trang đích, có theo dõi nguồn."
+      },
+      "sales_quote_request": {
+        "name": "Yêu cầu báo giá",
+        "description": "Chọn gói, số người dùng và dịch vụ; tổng chi phí năm dự kiến được tính cho đội bán hàng."
+      },
+      "sales_qualification": {
+        "name": "Đánh giá khách hàng tiềm năng",
+        "description": "Ngân sách, thẩm quyền, nhu cầu và thời điểm được chấm điểm cho đội, với kết quả nóng / ấm / lạnh."
+      },
+      "demo_request": {
+        "name": "Yêu cầu demo sản phẩm",
+        "description": "Đặt lịch demo trực tiếp: ai tham dự, nội dung cần tập trung, múi giờ và thời gian mong muốn."
+      },
+      "customer_discovery": {
+        "name": "Tìm hiểu khách hàng",
+        "description": "Nắm rõ mục tiêu, công cụ hiện tại, vấn đề và tiêu chí thành công trước khi đề xuất."
+      },
+      "proposal_request": {
+        "name": "Yêu cầu đề xuất",
+        "description": "Phạm vi, sản phẩm bàn giao, ngân sách, hạn chót và quy trình ra quyết định cho đề xuất riêng."
+      },
+      "order_request": {
+        "name": "Yêu cầu đặt hàng",
+        "description": "Khách hàng doanh nghiệp đặt theo mã sản phẩm và số lượng, có chiết khấu theo số lượng và tổng đơn."
+      },
+      "sales_follow_up": {
+        "name": "Theo dõi bán hàng",
+        "description": "Ghi lại cuộc gọi hoặc cuộc họp: kết quả, giai đoạn giao dịch, bước tiếp theo và ngày — nhanh cả trên điện thoại."
       }
     },
     "openGallery": "Mở toàn bộ thư viện",

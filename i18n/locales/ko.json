@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "고객 불만 접수 양식",
         "description": "무엇이, 어디서 잘못되었는지, 어떻게 해결되길 원하는지 고객이 알려 줄 수 있습니다."
+      },
+      "membership_application": {
+        "name": "회원 가입 신청서",
+        "description": "클럽이나 협회 가입: 회원 정보, 회원 등급, 추가 옵션, 연회비."
+      },
+      "donation_form": {
+        "name": "기부 양식",
+        "description": "기부 금액(또는 직접 입력), 정기 또는 일시, 결제 수수료 부담 옵션 포함."
+      },
+      "petition": {
+        "name": "청원",
+        "description": "취지를 알리고 이름과 지역을 모으며, 참여자가 왜 중요한지 직접 말할 수 있습니다."
+      },
+      "poll_ballot": {
+        "name": "설문 / 투표용지",
+        "description": "질문 하나에 1인 1표와 순위 선택, 선택 사항으로 의견 입력."
+      },
+      "property_viewing": {
+        "name": "매물 방문 신청",
+        "description": "방문 예약: 매물, 희망 시간 2개, 방문 인원, 연락 방법."
+      },
+      "tenant_application": {
+        "name": "임차인 신청서",
+        "description": "신청자, 직장, 소득, 추천인 정보와 임대인을 위한 소득 대비 임대료 비율."
+      },
+      "rental_application": {
+        "name": "임대 신청서",
+        "description": "특정 매물을 위한 간단한 신청서: 입주일, 계약 기간, 가구 구성, 지불 능력."
+      },
+      "property_inspection": {
+        "name": "매물 점검",
+        "description": "방별 상태(양호 / 보통 / 불량), 계량기 수치와 사진, 상태 점수 포함."
+      },
+      "property_maintenance": {
+        "name": "수리 요청",
+        "description": "임차인이 위치, 긴급도, 사진, 방문 가능 시간과 함께 수리를 요청합니다."
+      },
+      "property_information": {
+        "name": "매물 정보",
+        "description": "소유자가 등록할 매물을 설명합니다: 유형, 면적, 방, 특징, 가격, 사진."
+      },
+      "landlord_information": {
+        "name": "임대인 정보",
+        "description": "임대인 연락처, 결제 정보, 선호하는 임차인 조건, 수리 담당자."
+      },
+      "tenant_feedback": {
+        "name": "임차인 피드백",
+        "description": "임차인이 주거, 수리, 소통, 가성비를 평가하며 평균으로 전체 만족도를 보여 줍니다."
+      },
+      "sales_lead_capture": {
+        "name": "리드 수집",
+        "description": "이름, 회사, 규모, 관심 분야 — 랜딩 페이지에 맞게 짧고 유입 경로도 추적합니다."
+      },
+      "sales_quote_request": {
+        "name": "견적 요청",
+        "description": "요금제, 사용자 수, 서비스를 선택하면 영업팀을 위한 예상 연간 합계가 계산됩니다."
+      },
+      "sales_qualification": {
+        "name": "영업 기회 평가",
+        "description": "예산, 결정 권한, 필요성, 시기를 점수화하여 핫 / 웜 / 콜드로 판정합니다."
+      },
+      "demo_request": {
+        "name": "제품 데모 요청",
+        "description": "라이브 데모 예약: 참석자, 중점 내용, 시간대, 희망 시간."
+      },
+      "customer_discovery": {
+        "name": "고객 니즈 파악",
+        "description": "제안 전에 목표, 현재 사용하는 도구, 어려움, 성공의 기준을 파악합니다."
+      },
+      "proposal_request": {
+        "name": "제안서 요청",
+        "description": "맞춤 제안을 위한 범위, 산출물, 예산, 마감일, 의사 결정 과정."
+      },
+      "order_request": {
+        "name": "주문 요청",
+        "description": "기업 고객이 제품 코드와 수량으로 주문하며 수량 할인과 주문 합계가 표시됩니다."
+      },
+      "sales_follow_up": {
+        "name": "영업 후속 조치",
+        "description": "통화나 미팅 기록: 결과, 거래 단계, 다음 단계와 날짜 — 휴대폰에서도 빠르게."
       }
     },
     "openGallery": "전체 갤러리 열기",

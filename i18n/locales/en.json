@@ -1325,6 +1325,86 @@
       "nda_signoff": {
         "name": "NDA / Agreement Sign-off",
         "description": "Show the agreement, confirm each key point and sign — with company details when signing for one."
+      },
+      "membership_application": {
+        "name": "Membership Application",
+        "description": "Join a club or association: member details, membership level, extras and the yearly fee."
+      },
+      "donation_form": {
+        "name": "Donation Form",
+        "description": "A gift amount (or your own), monthly or once, with an option to cover the processing fee."
+      },
+      "petition": {
+        "name": "Petition",
+        "description": "State the cause, collect names and locations, and let people say why it matters to them."
+      },
+      "poll_ballot": {
+        "name": "Poll / Voting Ballot",
+        "description": "One vote per person on a question and a ranked choice, with an optional comment."
+      },
+      "property_viewing": {
+        "name": "Property Viewing Request",
+        "description": "Book a viewing: the property, two preferred times, who is coming and how to reach them."
+      },
+      "tenant_application": {
+        "name": "Tenant Application",
+        "description": "Applicant, employment, income and references, with an income-to-rent ratio for the landlord."
+      },
+      "rental_application": {
+        "name": "Rental Application",
+        "description": "A shorter application for a specific listing — move-in date, term, household and affordability."
+      },
+      "property_inspection": {
+        "name": "Property Inspection",
+        "description": "Room-by-room condition (good / fair / poor), meter readings and photos, with a condition score."
+      },
+      "property_maintenance": {
+        "name": "Maintenance Request",
+        "description": "Tenants report a repair with the area, urgency, photos and when someone can come in."
+      },
+      "property_information": {
+        "name": "Property Information",
+        "description": "Owners describe a property for listing: type, size, rooms, features, price and photos."
+      },
+      "landlord_information": {
+        "name": "Landlord Information",
+        "description": "Landlord contact, payment details, preferences for tenants and who handles repairs."
+      },
+      "tenant_feedback": {
+        "name": "Tenant Feedback",
+        "description": "Tenants rate the home, repairs, communication and value; an average shows overall satisfaction."
+      },
+      "sales_lead_capture": {
+        "name": "Lead Capture",
+        "description": "Name, company, size and interest — short enough for a landing page, with the source tracked."
+      },
+      "sales_quote_request": {
+        "name": "Quote Request",
+        "description": "Pick a plan, seats and services; an indicative yearly total is worked out for the sales team."
+      },
+      "sales_qualification": {
+        "name": "Sales Qualification",
+        "description": "Budget, authority, need and timing scored for the team, with a hot / warm / cold result."
+      },
+      "demo_request": {
+        "name": "Product Demo Request",
+        "description": "Book a live demo: who is attending, what to focus on, time zone and preferred times."
+      },
+      "customer_discovery": {
+        "name": "Customer Discovery",
+        "description": "Understand goals, current tools, pain points and what success looks like before proposing."
+      },
+      "proposal_request": {
+        "name": "Proposal Request",
+        "description": "Scope, deliverables, budget, deadline and decision process for a tailored proposal."
+      },
+      "order_request": {
+        "name": "Order Request",
+        "description": "Trade customers order by product code and quantity, with a volume discount and order total."
+      },
+      "sales_follow_up": {
+        "name": "Sales Follow-up",
+        "description": "Log a call or meeting: outcome, deal stage, next step and its date — quick enough for phones."
       }
     },
     "openGallery": "Open the full gallery",

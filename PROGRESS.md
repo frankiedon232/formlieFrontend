@@ -19,7 +19,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F6    | Forms list and lifecycle                          | ✅     | 100% |
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
-| F9    | Templates gallery                                 | 🟡     | ~70% |
+| F9    | Templates gallery                                 | 🟡     | ~85% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
@@ -427,11 +427,11 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Operations & IT (9): IT Support Ticket (priority from impact × urgency) · Change Request (risk score) · Asset Check-out / Inventory · Maintenance / Work Order · Purchase Requisition (line totals, total) · Vendor / Supplier Registration · Site / Field Inspection Report (pass rate) · Delivery Confirmation / Proof of Delivery · Quality Control Checklist (pass rate, result)
 - ✅ Finance & Legal (5): Loan / Credit Application (debt-to-income ratio, flat-rate monthly payment estimate — labelled as an estimate) · KYC / Identity Verification · Invoice Submission (subtotal, tax, total) · Insurance Claim (claim total) · NDA / Agreement Sign-off
 
-### Milestone 4 — Community & Other · Real Estate · Sales
+### Milestone 4 — Community & Other · Real Estate · Sales ✅
 
-- ⬜ Community & Other (4): Membership Application (fee) · Donation Form (gift + optional fee cover) · Petition · Poll / Voting Ballot
-- ⬜ Real Estate (8): Property Viewing Request · Tenant Application (income-to-rent ratio) · Rental Application (income-to-rent ratio) · Property Inspection (condition score) · Maintenance Request · Property Information · Landlord Information · Tenant Feedback (average)
-- ⬜ Sales (8): Lead Capture · Quote Request (total) · Sales Qualification (qualification score, e.g. budget / authority / need / timing) · Product Demo Request · Customer Discovery · Proposal Request · Order Request (total) · Sales Follow-up
+- ✅ Community & Other (4): Membership Application (fee) · Donation Form (gift + optional fee cover) · Petition · Poll / Voting Ballot
+- ✅ Real Estate (8): Property Viewing Request · Tenant Application (income-to-rent ratio) · Rental Application (income-to-rent ratio) · Property Inspection (condition score) · Maintenance Request · Property Information · Landlord Information · Tenant Feedback (average)
+- ✅ Sales (8): Lead Capture · Quote Request (total) · Sales Qualification (qualification score, e.g. budget / authority / need / timing) · Product Demo Request · Customer Discovery · Proposal Request · Order Request (total) · Sales Follow-up
 
 ### Milestone 5 — Languages, polish, review
 
@@ -984,3 +984,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | KPI cards aligned with the design; QR codes for form links (`uqr` added, owner-approved); form language setting; themes open in the editor (workspace) or read-only (Formalie) from list and grid; Settings no longer highlighted on theme pages. Language plan for public forms recorded (decision 73). |
 | 2026-10-03 | F9 | Milestone 3: 21 templates — Education (course score, quiz score / percentage / pass, scholarship eligibility for the panel only, attendance count and rate), Operations & IT (ticket priority from impact × urgency, change risk, requisition totals, inspection and QC pass rates), Finance & Legal (debt-to-income and a flat-rate monthly estimate, invoice subtotal / tax / total, claim total, company details when signing for a company); 64 templates in total; new calculation checks; 20 languages. |
 | 2026-10-03 | F9 | Milestone 2 + 3 languages complete: template names, theme library and errors in all 20 languages; Spanish wording aligned to "tú" throughout; 188 tests green. |
+| 2026-10-03 | F9 | Milestone 4: 20 templates — Community (membership fee, donation with optional 3% cost cover, petition, ranked ballot), Real Estate (income-to-rent ratio with an internal affordability band, room-by-room condition score, emergency note on urgent repairs), Sales (B2B lead capture with hidden source fields, seat-based quote, BANT-style qualification hot / warm / cold, trade order with volume discount); all 84 templates in 11 categories; 20 languages. |

@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "服务投诉表",
         "description": "让客人说明哪里出了问题、在哪里，以及希望如何解决。"
+      },
+      "membership_application": {
+        "name": "会员申请",
+        "description": "加入俱乐部或协会：会员信息、会员级别、附加项目和年费。"
+      },
+      "donation_form": {
+        "name": "捐款表",
+        "description": "选择金额或自定义，按月或一次性捐款，可选择承担手续费。"
+      },
+      "petition": {
+        "name": "请愿书",
+        "description": "说明诉求，收集姓名和所在地，并让大家写下这件事对他们为何重要。"
+      },
+      "poll_ballot": {
+        "name": "投票 / 选票",
+        "description": "每人一票：一个问题加一项排序选择，可附评论。"
+      },
+      "property_viewing": {
+        "name": "看房预约",
+        "description": "预约看房：房源、两个偏好时间、到访人员及联系方式。"
+      },
+      "tenant_application": {
+        "name": "租客申请",
+        "description": "申请人、工作、收入和推荐人，并为房东计算收入与租金比。"
+      },
+      "rental_application": {
+        "name": "租房申请",
+        "description": "针对具体房源的简短申请：入住日期、租期、同住人员和支付能力。"
+      },
+      "property_inspection": {
+        "name": "房屋检查",
+        "description": "逐个房间记录状况（良好 / 一般 / 较差）、表计读数和照片，并给出状况评分。"
+      },
+      "property_maintenance": {
+        "name": "维修申请",
+        "description": "租客报修：位置、紧急程度、照片以及可上门的时间。"
+      },
+      "property_information": {
+        "name": "房源信息",
+        "description": "业主为挂牌描述房源：类型、面积、房间、配套、价格和照片。"
+      },
+      "landlord_information": {
+        "name": "房东信息",
+        "description": "联系方式、收款信息、对租客的要求以及维修负责人。"
+      },
+      "tenant_feedback": {
+        "name": "租客反馈",
+        "description": "租客为房屋、维修、沟通和性价比打分；平均分体现整体满意度。"
+      },
+      "sales_lead_capture": {
+        "name": "潜在客户收集",
+        "description": "姓名、公司、规模和意向——简短到可放在落地页上，并记录来源。"
+      },
+      "sales_quote_request": {
+        "name": "询价",
+        "description": "选择方案、席位和服务；系统为销售团队估算年度总价。"
+      },
+      "sales_qualification": {
+        "name": "销售线索评估",
+        "description": "为团队对预算、决策权、需求和时间打分，得出热 / 温 / 冷的结果。"
+      },
+      "demo_request": {
+        "name": "产品演示预约",
+        "description": "预约在线演示：参加人员、重点内容、时区和偏好时间。"
+      },
+      "customer_discovery": {
+        "name": "客户需求调研",
+        "description": "在提出方案前，了解目标、现有工具、痛点以及成功的标准。"
+      },
+      "proposal_request": {
+        "name": "方案申请",
+        "description": "范围、交付物、预算、截止日期和决策流程，用于定制方案。"
+      },
+      "order_request": {
+        "name": "订购申请",
+        "description": "企业客户按产品编码和数量下单，含批量折扣和订单总额。"
+      },
+      "sales_follow_up": {
+        "name": "销售跟进",
+        "description": "记录电话或会议：结果、商机阶段、下一步及日期——手机上也能快速填写。"
       }
     },
     "openGallery": "打开完整模板库",

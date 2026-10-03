@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Formulario de reclamación",
         "description": "Deja que los huéspedes te cuenten qué salió mal, dónde y cómo les gustaría que se solucionara."
+      },
+      "membership_application": {
+        "name": "Solicitud de membresía",
+        "description": "Únete a un club o asociación: datos del miembro, nivel de membresía, extras y cuota anual."
+      },
+      "donation_form": {
+        "name": "Formulario de donación",
+        "description": "Un importe (o el que tú elijas), mensual o único, con la opción de cubrir la comisión de pago."
+      },
+      "petition": {
+        "name": "Petición",
+        "description": "Explica la causa, recoge nombres y ubicaciones, y deja que la gente diga por qué le importa."
+      },
+      "poll_ballot": {
+        "name": "Encuesta / Papeleta de votación",
+        "description": "Un voto por persona sobre una pregunta y una elección por orden de preferencia, con comentario opcional."
+      },
+      "property_viewing": {
+        "name": "Solicitud de visita a inmueble",
+        "description": "Reserva una visita: el inmueble, dos horarios preferidos, quién viene y cómo contactarle."
+      },
+      "tenant_application": {
+        "name": "Solicitud de inquilino",
+        "description": "Solicitante, empleo, ingresos y referencias, con la relación ingresos-alquiler para el propietario."
+      },
+      "rental_application": {
+        "name": "Solicitud de alquiler",
+        "description": "Una solicitud más breve para un anuncio concreto: fecha de entrada, plazo, hogar y capacidad de pago."
+      },
+      "property_inspection": {
+        "name": "Inspección de inmueble",
+        "description": "Estado de cada estancia (bueno / regular / malo), lecturas de contadores y fotos, con una puntuación."
+      },
+      "property_maintenance": {
+        "name": "Solicitud de mantenimiento",
+        "description": "Los inquilinos informan de una reparación con la zona, la urgencia, fotos y cuándo se puede entrar."
+      },
+      "property_information": {
+        "name": "Información del inmueble",
+        "description": "Los propietarios describen el inmueble para publicarlo: tipo, tamaño, habitaciones, características, precio y fotos."
+      },
+      "landlord_information": {
+        "name": "Información del propietario",
+        "description": "Contacto del propietario, datos de pago, preferencias sobre inquilinos y quién se encarga de las reparaciones."
+      },
+      "tenant_feedback": {
+        "name": "Opinión de inquilinos",
+        "description": "Los inquilinos valoran la vivienda, las reparaciones, la comunicación y la relación calidad-precio; una media muestra la satisfacción general."
+      },
+      "sales_lead_capture": {
+        "name": "Captación de leads",
+        "description": "Nombre, empresa, tamaño e interés: lo bastante corto para una landing page, con la fuente registrada."
+      },
+      "sales_quote_request": {
+        "name": "Solicitud de presupuesto",
+        "description": "Elige un plan, usuarios y servicios; se calcula un total anual orientativo para el equipo de ventas."
+      },
+      "sales_qualification": {
+        "name": "Calificación de ventas",
+        "description": "Presupuesto, autoridad, necesidad y plazo puntuados para el equipo, con un resultado caliente / templado / frío."
+      },
+      "demo_request": {
+        "name": "Solicitud de demo del producto",
+        "description": "Reserva una demo en directo: quién asiste, en qué centrarse, zona horaria y horarios preferidos."
+      },
+      "customer_discovery": {
+        "name": "Descubrimiento del cliente",
+        "description": "Conoce objetivos, herramientas actuales, problemas y cómo se ve el éxito antes de proponer."
+      },
+      "proposal_request": {
+        "name": "Solicitud de propuesta",
+        "description": "Alcance, entregables, presupuesto, plazo y proceso de decisión para una propuesta a medida."
+      },
+      "order_request": {
+        "name": "Solicitud de pedido",
+        "description": "Los clientes profesionales piden por código de producto y cantidad, con descuento por volumen y total del pedido."
+      },
+      "sales_follow_up": {
+        "name": "Seguimiento de ventas",
+        "description": "Registra una llamada o reunión: resultado, etapa del trato, siguiente paso y su fecha; rápido desde el móvil."
       }
     },
     "openGallery": "Abrir la galería completa",

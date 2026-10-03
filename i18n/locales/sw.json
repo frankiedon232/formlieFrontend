@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Fomu ya Malalamiko ya Huduma",
         "description": "Waache wageni waeleze kilichoharibika, wapi na jinsi wangependa kirekebishwe."
+      },
+      "membership_application": {
+        "name": "Ombi la Uanachama",
+        "description": "Jiunge na klabu au chama: taarifa za mwanachama, kiwango cha uanachama, nyongeza na ada ya mwaka."
+      },
+      "donation_form": {
+        "name": "Fomu ya Mchango",
+        "description": "Kiasi kilichopendekezwa (au chako), kila mwezi au mara moja, na chaguo la kulipia ada ya muamala."
+      },
+      "petition": {
+        "name": "Ombi la Pamoja",
+        "description": "Eleza lengo, kusanya majina na maeneo, na waache watu waseme kwa nini jambo hili ni muhimu kwao."
+      },
+      "poll_ballot": {
+        "name": "Kura ya Maoni / Karatasi ya Kura",
+        "description": "Kura moja kwa kila mtu kwenye swali na chaguo kwa mpangilio, pamoja na maoni ya hiari."
+      },
+      "property_viewing": {
+        "name": "Ombi la Kuona Nyumba",
+        "description": "Panga kuona nyumba: mali husika, nyakati mbili unazopendelea, nani anakuja na jinsi ya kuwafikia."
+      },
+      "tenant_application": {
+        "name": "Ombi la Mpangaji",
+        "description": "Mwombaji, ajira, kipato na wadhamini, pamoja na uwiano wa kipato na kodi kwa mwenye nyumba."
+      },
+      "rental_application": {
+        "name": "Ombi la Kupanga",
+        "description": "Ombi fupi kwa tangazo mahususi: tarehe ya kuhamia, muda, kaya na uwezo wa kulipa."
+      },
+      "property_inspection": {
+        "name": "Ukaguzi wa Nyumba",
+        "description": "Hali ya kila chumba (nzuri / wastani / mbaya), usomaji wa mita na picha, pamoja na alama ya hali."
+      },
+      "property_maintenance": {
+        "name": "Ombi la Matengenezo",
+        "description": "Wapangaji huripoti tatizo pamoja na eneo, uharaka, picha na lini mtu anaweza kuja."
+      },
+      "property_information": {
+        "name": "Taarifa za Nyumba",
+        "description": "Wamiliki huelezea nyumba kwa ajili ya tangazo: aina, ukubwa, vyumba, sifa, bei na picha."
+      },
+      "landlord_information": {
+        "name": "Taarifa za Mwenye Nyumba",
+        "description": "Mawasiliano, taarifa za malipo, mapendeleo kuhusu wapangaji na nani anashughulikia matengenezo."
+      },
+      "tenant_feedback": {
+        "name": "Maoni ya Mpangaji",
+        "description": "Wapangaji hupima nyumba, matengenezo, mawasiliano na thamani; wastani huonyesha kuridhika kwa jumla."
+      },
+      "sales_lead_capture": {
+        "name": "Kukusanya Wateja Watarajiwa",
+        "description": "Jina, kampuni, ukubwa na hamu — fupi kwa ukurasa wa kutua, na chanzo kinafuatiliwa."
+      },
+      "sales_quote_request": {
+        "name": "Ombi la Bei",
+        "description": "Chagua mpango, idadi ya watumiaji na huduma; jumla ya makadirio ya mwaka hukokotolewa kwa timu ya mauzo."
+      },
+      "sales_qualification": {
+        "name": "Tathmini ya Mauzo",
+        "description": "Bajeti, mamlaka, hitaji na muda hupimwa kwa timu, na matokeo ya moto / vuguvugu / baridi."
+      },
+      "demo_request": {
+        "name": "Ombi la Maonyesho ya Bidhaa",
+        "description": "Panga maonyesho ya moja kwa moja: nani atahudhuria, kipaumbele, saa za eneo na nyakati unazopendelea."
+      },
+      "customer_discovery": {
+        "name": "Kuelewa Mahitaji ya Mteja",
+        "description": "Elewa malengo, zana za sasa, changamoto na mafanikio yanavyoonekana kabla ya kupendekeza."
+      },
+      "proposal_request": {
+        "name": "Ombi la Pendekezo",
+        "description": "Wigo, matokeo, bajeti, tarehe ya mwisho na mchakato wa uamuzi kwa pendekezo maalum."
+      },
+      "order_request": {
+        "name": "Ombi la Oda",
+        "description": "Wateja wa jumla huagiza kwa msimbo wa bidhaa na idadi, na punguzo la wingi na jumla ya oda."
+      },
+      "sales_follow_up": {
+        "name": "Ufuatiliaji wa Mauzo",
+        "description": "Rekodi simu au mkutano: matokeo, hatua ya mauzo, hatua inayofuata na tarehe yake — haraka hata kwa simu."
       }
     },
     "openGallery": "Fungua matunzio yote",

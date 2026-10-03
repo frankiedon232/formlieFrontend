@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Formulir Keluhan Layanan Tamu",
         "description": "Biarkan tamu memberi tahu apa yang salah, di mana, dan bagaimana mereka ingin hal itu diperbaiki."
+      },
+      "membership_application": {
+        "name": "Pendaftaran Anggota",
+        "description": "Bergabung dengan klub atau asosiasi: data anggota, tingkat keanggotaan, tambahan, dan iuran tahunan."
+      },
+      "donation_form": {
+        "name": "Formulir Donasi",
+        "description": "Nominal donasi (atau nominal sendiri), bulanan atau sekali, dengan opsi menanggung biaya pemrosesan."
+      },
+      "petition": {
+        "name": "Petisi",
+        "description": "Jelaskan tujuannya, kumpulkan nama dan lokasi, dan biarkan orang menyampaikan mengapa hal ini penting bagi mereka."
+      },
+      "poll_ballot": {
+        "name": "Jajak Pendapat / Surat Suara",
+        "description": "Satu suara per orang untuk sebuah pertanyaan dan pilihan berperingkat, dengan komentar opsional."
+      },
+      "property_viewing": {
+        "name": "Permintaan Kunjungan Properti",
+        "description": "Jadwalkan kunjungan: properti, dua waktu pilihan, siapa yang datang, dan cara menghubungi mereka."
+      },
+      "tenant_application": {
+        "name": "Aplikasi Penyewa",
+        "description": "Pemohon, pekerjaan, penghasilan, dan referensi, dengan rasio penghasilan terhadap sewa untuk pemilik."
+      },
+      "rental_application": {
+        "name": "Aplikasi Sewa",
+        "description": "Aplikasi singkat untuk listing tertentu — tanggal pindah, jangka waktu, anggota rumah tangga, dan kemampuan bayar."
+      },
+      "property_inspection": {
+        "name": "Inspeksi Properti",
+        "description": "Kondisi tiap ruangan (baik / cukup / buruk), angka meteran, dan foto, dengan skor kondisi."
+      },
+      "property_maintenance": {
+        "name": "Permintaan Perbaikan",
+        "description": "Penyewa melaporkan perbaikan beserta area, tingkat urgensi, foto, dan kapan petugas bisa datang."
+      },
+      "property_information": {
+        "name": "Informasi Properti",
+        "description": "Pemilik menjelaskan properti untuk dipasarkan: jenis, luas, ruangan, fasilitas, harga, dan foto."
+      },
+      "landlord_information": {
+        "name": "Informasi Pemilik",
+        "description": "Kontak pemilik, detail pembayaran, preferensi penyewa, dan siapa yang menangani perbaikan."
+      },
+      "tenant_feedback": {
+        "name": "Masukan Penyewa",
+        "description": "Penyewa menilai hunian, perbaikan, komunikasi, dan nilai; rata-rata menunjukkan kepuasan keseluruhan."
+      },
+      "sales_lead_capture": {
+        "name": "Pengumpulan Prospek",
+        "description": "Nama, perusahaan, ukuran, dan minat — cukup singkat untuk landing page, dengan sumber yang tercatat."
+      },
+      "sales_quote_request": {
+        "name": "Permintaan Penawaran Harga",
+        "description": "Pilih paket, jumlah pengguna, dan layanan; perkiraan total tahunan dihitung untuk tim penjualan."
+      },
+      "sales_qualification": {
+        "name": "Kualifikasi Penjualan",
+        "description": "Skor anggaran, wewenang, kebutuhan, dan waktu untuk tim, dengan hasil panas / hangat / dingin."
+      },
+      "demo_request": {
+        "name": "Permintaan Demo Produk",
+        "description": "Jadwalkan demo langsung: siapa yang hadir, fokus pembahasan, zona waktu, dan waktu pilihan."
+      },
+      "customer_discovery": {
+        "name": "Penggalian Kebutuhan Pelanggan",
+        "description": "Pahami tujuan, alat yang dipakai, kendala, dan seperti apa keberhasilan sebelum mengajukan penawaran."
+      },
+      "proposal_request": {
+        "name": "Permintaan Proposal",
+        "description": "Cakupan, hasil kerja, anggaran, tenggat, dan proses keputusan untuk proposal yang disesuaikan."
+      },
+      "order_request": {
+        "name": "Permintaan Pesanan",
+        "description": "Pelanggan bisnis memesan dengan kode produk dan jumlah, dengan diskon volume dan total pesanan."
+      },
+      "sales_follow_up": {
+        "name": "Tindak Lanjut Penjualan",
+        "description": "Catat panggilan atau rapat: hasil, tahap kesepakatan, langkah berikutnya, dan tanggalnya — cepat di ponsel."
       }
     },
     "openGallery": "Buka galeri lengkap",

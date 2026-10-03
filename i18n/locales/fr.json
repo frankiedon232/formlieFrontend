@@ -1325,6 +1325,86 @@
       "hospitality_complaint": {
         "name": "Formulaire de réclamation",
         "description": "Permettez aux clients de dire ce qui n'a pas été, où et comment ils souhaitent que ce soit réparé."
+      },
+      "membership_application": {
+        "name": "Demande d'adhésion",
+        "description": "Rejoindre un club ou une association : coordonnées du membre, formule d'adhésion, options et cotisation annuelle."
+      },
+      "donation_form": {
+        "name": "Formulaire de don",
+        "description": "Un montant (ou le vôtre), mensuel ou ponctuel, avec la possibilité de couvrir les frais de transaction."
+      },
+      "petition": {
+        "name": "Pétition",
+        "description": "Présentez la cause, recueillez noms et lieux, et laissez chacun dire pourquoi elle compte pour lui."
+      },
+      "poll_ballot": {
+        "name": "Sondage / Bulletin de vote",
+        "description": "Un vote par personne sur une question et un choix par ordre de préférence, avec commentaire facultatif."
+      },
+      "property_viewing": {
+        "name": "Demande de visite",
+        "description": "Réservez une visite : le bien, deux créneaux préférés, les participants et comment les joindre."
+      },
+      "tenant_application": {
+        "name": "Dossier de locataire",
+        "description": "Candidat, emploi, revenus et références, avec le rapport revenus/loyer pour le propriétaire."
+      },
+      "rental_application": {
+        "name": "Demande de location",
+        "description": "Une demande plus courte pour une annonce précise : date d'entrée, durée, foyer et solvabilité."
+      },
+      "property_inspection": {
+        "name": "État des lieux",
+        "description": "État pièce par pièce (bon / moyen / mauvais), relevés de compteurs et photos, avec une note d'état."
+      },
+      "property_maintenance": {
+        "name": "Demande d'intervention",
+        "description": "Les locataires signalent une réparation avec la zone, l'urgence, des photos et les disponibilités d'accès."
+      },
+      "property_information": {
+        "name": "Informations sur le bien",
+        "description": "Les propriétaires décrivent un bien à mettre en ligne : type, surface, pièces, équipements, prix et photos."
+      },
+      "landlord_information": {
+        "name": "Informations propriétaire",
+        "description": "Coordonnées du propriétaire, informations de paiement, critères pour les locataires et gestion des réparations."
+      },
+      "tenant_feedback": {
+        "name": "Avis des locataires",
+        "description": "Les locataires notent le logement, les réparations, la communication et le rapport qualité-prix ; une moyenne indique la satisfaction globale."
+      },
+      "sales_lead_capture": {
+        "name": "Capture de prospects",
+        "description": "Nom, entreprise, taille et intérêt — assez court pour une page d'atterrissage, avec suivi de la source."
+      },
+      "sales_quote_request": {
+        "name": "Demande de devis",
+        "description": "Choisissez une offre, le nombre d'utilisateurs et des services ; un total annuel indicatif est calculé pour l'équipe commerciale."
+      },
+      "sales_qualification": {
+        "name": "Qualification commerciale",
+        "description": "Budget, pouvoir de décision, besoin et délai notés pour l'équipe, avec un résultat chaud / tiède / froid."
+      },
+      "demo_request": {
+        "name": "Demande de démo produit",
+        "description": "Réservez une démo en direct : participants, points à aborder, fuseau horaire et créneaux préférés."
+      },
+      "customer_discovery": {
+        "name": "Découverte client",
+        "description": "Comprendre les objectifs, les outils actuels, les difficultés et les critères de réussite avant de proposer."
+      },
+      "proposal_request": {
+        "name": "Demande de proposition",
+        "description": "Périmètre, livrables, budget, échéance et processus de décision pour une proposition sur mesure."
+      },
+      "order_request": {
+        "name": "Demande de commande",
+        "description": "Les clients professionnels commandent par référence et quantité, avec remise sur volume et total de la commande."
+      },
+      "sales_follow_up": {
+        "name": "Suivi commercial",
+        "description": "Consignez un appel ou un rendez-vous : résultat, étape de l'affaire, prochaine action et sa date — rapide sur mobile."
       }
     },
     "openGallery": "Ouvrir la galerie complète",
