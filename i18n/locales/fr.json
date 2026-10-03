@@ -182,6 +182,53 @@
       "activity": "Activité",
       "openBuilder": "Questions, pages et règles",
       "openBuilderDesc": "Ouvrez l’éditeur pour ajouter ou modifier des questions. Les modifications restent en brouillon jusqu’à la publication."
+    },
+    "filterTemplate": "Modèle",
+    "overview": {
+      "subtitle": "{status} · mis à jour {updated}",
+      "trendTitle": "Réponses — 30 derniers jours",
+      "trendDesc": "Envois par jour",
+      "trendAria": "Réponses par jour sur les 30 derniers jours, {total} au total",
+      "responsesCount": "{count} réponse | {count} réponses",
+      "noTrend": "Aucune réponse au cours des 30 derniers jours",
+      "noTrendDesc": "Partagez le formulaire pour commencer à recueillir des réponses.",
+      "responses": "Réponses",
+      "last30": "{n} au cours des 30 derniers jours",
+      "completion": "Taux de complétion",
+      "funnel": "{starts} commencées · {views} vues",
+      "time": "Durée médiane de remplissage",
+      "timeHint": "De la première réponse à l'envoi",
+      "seconds": "{n} s",
+      "minutesShort": "{n} min",
+      "lastResponse": "Dernière réponse",
+      "lastResponseHint": "Envoi le plus récent",
+      "noResponses": "Aucune réponse pour l'instant",
+      "shareTitle": "Partager",
+      "shareLive": "Toute personne disposant du lien peut le remplir.",
+      "shareNotLive": "Les liens fonctionnent dès que le formulaire est publié.",
+      "live": "En ligne",
+      "link": "Lien du formulaire",
+      "embed": "Lien d'intégration",
+      "openLink": "Ouvrir le formulaire",
+      "qr": "Code QR",
+      "soon": "Bientôt",
+      "structureTitle": "Contenu de ce formulaire",
+      "pages": "{count} page | {count} pages",
+      "rules": "règles",
+      "formulas": "formules",
+      "part": {
+        "questions": "Questions",
+        "logic": "Règles logiques",
+        "calculations": "Calculs"
+      },
+      "editDesign": "Modifier le design",
+      "design": "Design",
+      "versions": "Versions",
+      "allVersions": "Toutes les versions",
+      "noVersions": "Pas encore publié — les versions apparaissent lors de la publication.",
+      "detailsTitle": "Détails",
+      "tags": "Étiquettes",
+      "noHistory": "Publié avant la tenue de l’historique des versions — il commence à la prochaine publication."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Analyses & synthèses",
     "aiTranslate": "Traductions",
     "aiHistory": "Historique",
-    "aiSettings": "Paramètres & utilisation"
+    "aiSettings": "Paramètres & utilisation",
+    "templatesAll": "Tous les modèles",
+    "themesAll": "Tous les thèmes",
+    "responsesAll": "Toutes les réponses",
+    "responsesNew": "Nouvelles",
+    "responsesReviewed": "Examinées",
+    "responsesApproved": "Approuvées",
+    "responsesRejected": "Rejetées",
+    "responsesExports": "Exports",
+    "apiApps": "Intégrations d'apps"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Une liste portant ce nom existe déjà.",
     "FRM-FORM-1010": "Un thème portant ce nom existe déjà.",
     "FRM-FORM-1011": "Les modèles système ne peuvent pas être modifiés. Dupliquez-le pour créer le vôtre.",
-    "FRM-FORM-1012": "Un modèle portant ce nom existe déjà."
+    "FRM-FORM-1012": "Un modèle portant ce nom existe déjà.",
+    "FRM-RESP-1003": "Ce formulaire a déjà été envoyé depuis cette session."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} page | {count} pages",
       "logic": "{count} règle logique | {count} règles logiques",
-      "calculations": "{count} calcul | {count} calculs"
+      "calculations": "{count} calcul | {count} calculs",
+      "pagesLabel": "Pages"
     },
     "stats": {
       "forms": "Formulaires",
@@ -1065,7 +1123,10 @@
         "description": "Questions structurées pour les référents, compétences notées avec une moyenne et une réponse claire sur une réembauche."
       }
     },
-    "openGallery": "Ouvrir la galerie complète"
+    "openGallery": "Ouvrir la galerie complète",
+    "teamOnlyHint": "Calculé et enregistré, mais non affiché aux répondants.",
+    "copyFormula": "Copier la formule de {name}",
+    "viewAll": "Tout voir"
   },
   "builder": {
     "crumb": "Éditeur",
@@ -2120,7 +2181,10 @@
       "access": "Autorisez ou bloquez les appelants par adresse IP, domaine, région ou pays.",
       "logs": "Chaque appel avec son statut, sa durée et son appelant.",
       "analytics": "Appels, erreurs et temps de réponse par service et par endpoint.",
-      "docs": "Une documentation prête à l’emploi et un espace pour tester chaque endpoint."
+      "docs": "Une documentation prête à l’emploi et un espace pour tester chaque endpoint.",
+      "webhooks": "Envoyez chaque nouvelle réponse à vos propres systèmes dès son arrivée — signée et relancée en cas d'échec.",
+      "apiKeys": "Clés pour l'API de Formalie : gérez formulaires et réponses depuis votre code.",
+      "apps": "Connectez des apps comme des tableurs et une messagerie d'équipe."
     }
   },
   "ai": {

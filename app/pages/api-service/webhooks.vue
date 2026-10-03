@@ -6,6 +6,6 @@ useHead({ title: () => t('nav.webhooks') })
 
 <template>
   <AppPanel id="webhooks" :title="t('nav.webhooks')">
-    <AppComingSoon icon="i-lucide-webhook" title-key="nav.webhooks" />
+    <AppComingSoon icon="i-lucide-webhook" title-key="nav.webhooks" description-key="apiService.section.webhooks" :back="{ labelKey: 'apiService.back', icon: 'i-lucide-layout-grid', to: '/api-service' }" />
   </AppPanel>
 </template>

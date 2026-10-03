@@ -182,6 +182,53 @@
       "activity": "Aktivitas",
       "openBuilder": "Pertanyaan, halaman, dan aturan",
       "openBuilderDesc": "Buka pembuat untuk menambah atau mengubah pertanyaan. Perubahan tetap menjadi draf sampai Anda menerbitkan."
+    },
+    "filterTemplate": "Templat",
+    "overview": {
+      "subtitle": "{status} · diperbarui {updated}",
+      "trendTitle": "Tanggapan — 30 hari terakhir",
+      "trendDesc": "Kiriman per hari",
+      "trendAria": "Tanggapan per hari selama 30 hari terakhir, total {total}",
+      "responsesCount": "{count} tanggapan | {count} tanggapan",
+      "noTrend": "Tidak ada tanggapan dalam 30 hari terakhir",
+      "noTrendDesc": "Bagikan formulir untuk mulai mengumpulkan jawaban.",
+      "responses": "Tanggapan",
+      "last30": "{n} dalam 30 hari terakhir",
+      "completion": "Tingkat penyelesaian",
+      "funnel": "{starts} dimulai · {views} dilihat",
+      "time": "Median waktu pengisian",
+      "timeHint": "Dari jawaban pertama hingga dikirim",
+      "seconds": "{n} dtk",
+      "minutesShort": "{n} mnt",
+      "lastResponse": "Tanggapan terakhir",
+      "lastResponseHint": "Kiriman terbaru",
+      "noResponses": "Belum ada tanggapan",
+      "shareTitle": "Bagikan",
+      "shareLive": "Siapa pun yang memiliki tautan dapat mengisinya.",
+      "shareNotLive": "Tautan berfungsi setelah formulir diterbitkan.",
+      "live": "Aktif",
+      "link": "Tautan formulir",
+      "embed": "Tautan sematan",
+      "openLink": "Buka formulir",
+      "qr": "Kode QR",
+      "soon": "Segera",
+      "structureTitle": "Isi formulir ini",
+      "pages": "{count} halaman | {count} halaman",
+      "rules": "aturan",
+      "formulas": "rumus",
+      "part": {
+        "questions": "Pertanyaan",
+        "logic": "Aturan logika",
+        "calculations": "Perhitungan"
+      },
+      "editDesign": "Edit desain",
+      "design": "Desain",
+      "versions": "Versi",
+      "allVersions": "Semua versi",
+      "noVersions": "Belum diterbitkan — versi muncul saat Anda menerbitkan.",
+      "detailsTitle": "Detail",
+      "tags": "Tag",
+      "noHistory": "Diterbitkan sebelum riwayat versi dicatat — riwayat dimulai pada penerbitan berikutnya."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Wawasan & ringkasan",
     "aiTranslate": "Terjemahan",
     "aiHistory": "Riwayat",
-    "aiSettings": "Pengaturan & penggunaan"
+    "aiSettings": "Pengaturan & penggunaan",
+    "templatesAll": "Semua templat",
+    "themesAll": "Semua tema",
+    "responsesAll": "Semua tanggapan",
+    "responsesNew": "Baru",
+    "responsesReviewed": "Ditinjau",
+    "responsesApproved": "Disetujui",
+    "responsesRejected": "Ditolak",
+    "responsesExports": "Ekspor",
+    "apiApps": "Integrasi aplikasi"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Daftar dengan nama ini sudah ada.",
     "FRM-FORM-1010": "Tema dengan nama ini sudah ada.",
     "FRM-FORM-1011": "Templat sistem tidak dapat diubah. Duplikat templat untuk membuat milik Anda sendiri.",
-    "FRM-FORM-1012": "Templat dengan nama ini sudah ada."
+    "FRM-FORM-1012": "Templat dengan nama ini sudah ada.",
+    "FRM-RESP-1003": "Formulir ini sudah dikirim dari sesi ini."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} halaman | {count} halaman",
       "logic": "{count} aturan logika | {count} aturan logika",
-      "calculations": "{count} perhitungan | {count} perhitungan"
+      "calculations": "{count} perhitungan | {count} perhitungan",
+      "pagesLabel": "Halaman"
     },
     "stats": {
       "forms": "Formulir",
@@ -1065,7 +1123,10 @@
         "description": "Pertanyaan terstruktur untuk pemberi referensi, penilaian keterampilan dengan rata-rata, dan jawaban jelas soal mempekerjakan kembali."
       }
     },
-    "openGallery": "Buka galeri lengkap"
+    "openGallery": "Buka galeri lengkap",
+    "teamOnlyHint": "Dihitung dan disimpan, tetapi tidak ditampilkan kepada responden.",
+    "copyFormula": "Salin rumus {name}",
+    "viewAll": "Lihat semua"
   },
   "builder": {
     "crumb": "Pembuat",
@@ -2120,7 +2181,10 @@
       "access": "Izinkan atau blokir pemanggil berdasarkan alamat IP, domain, wilayah, atau negara.",
       "logs": "Setiap panggilan beserta status, durasi, dan pemanggilnya.",
       "analytics": "Panggilan, galat, dan waktu respons per layanan dan endpoint.",
-      "docs": "Dokumentasi siap pakai dan tempat untuk mencoba setiap endpoint."
+      "docs": "Dokumentasi siap pakai dan tempat untuk mencoba setiap endpoint.",
+      "webhooks": "Kirim setiap tanggapan baru ke sistem Anda sendiri begitu masuk — ditandatangani dan dicoba ulang.",
+      "apiKeys": "Kunci untuk API Formalie: kelola formulir dan tanggapan dari kode Anda.",
+      "apps": "Hubungkan aplikasi seperti spreadsheet dan obrolan tim."
     }
   },
   "ai": {

@@ -21,6 +21,10 @@ export interface AppNavItem {
   adminOnly?: boolean
   /** Active on its own path only (an overview whose sections live under it). */
   exact?: boolean
+  /** Text as is (data such as a template name) instead of the `nav.<key>` translation. */
+  label?: string
+  /** Children built from the sidebar data (recent templates / themes), before the static ones. */
+  recent?: (counts: NavCounts) => AppNavItem[]
 }
 
 /**
@@ -70,28 +74,28 @@ const MAIN_NAV: AppNavItem[] = [
     icon: 'i-lucide-inbox',
     to: '/responses',
     shortcut: 'g-r',
-    count: c => c.responses.new,
-    hideZero: true,
-  },
-  { key: 'analytics', icon: 'i-lucide-chart-column', to: '/analytics', shortcut: 'g-a' },
-  {
-    key: 'integrations',
-    icon: 'i-lucide-plug',
-    to: '/integrations',
     children: [
-      { key: 'webhooks', icon: 'i-lucide-webhook', to: '/integrations/webhooks' },
-      { key: 'apiKeys', icon: 'i-lucide-key-round', to: '/integrations/api-keys' },
+      { key: 'responsesAll', to: '/responses', dot: 'bg-(--ui-text-dimmed)', count: c => c.responses.all },
+      { key: 'responsesNew', to: '/responses', query: { status: 'new' }, dot: 'bg-sky-500', count: c => c.responses.new },
+      { key: 'responsesReviewed', to: '/responses', query: { status: 'reviewed' }, dot: 'bg-amber-500', count: c => c.responses.reviewed },
+      { key: 'responsesApproved', to: '/responses', query: { status: 'approved' }, dot: 'bg-green-500', count: c => c.responses.approved },
+      { key: 'responsesRejected', to: '/responses', query: { status: 'rejected' }, dot: 'bg-red-500', count: c => c.responses.rejected },
+      { key: 'responsesExports', icon: 'i-lucide-file-down', to: '/responses/exports' },
     ],
   },
+  { key: 'analytics', icon: 'i-lucide-chart-column', to: '/analytics', shortcut: 'g-a' },
 ]
 
 const RESOURCE_NAV: AppNavItem[] = [
   {
     key: 'templates',
-    icon: 'i-lucide-folder',
+    icon: 'i-lucide-layout-template',
     iconClass: 'text-teal-500',
     to: '/templates',
     shortcut: 'g-t',
+    // The six most recently used templates, then the gallery.
+    recent: c => c.templates.recent.map(item => ({ key: `tpl_${item.key}`, label: item.name, to: `/templates/${item.key}`, exact: true })),
+    children: [{ key: 'templatesAll', icon: 'i-lucide-layout-grid', to: '/templates', exact: true, count: c => c.templates.total }],
   },
   {
     key: 'optionSets',
@@ -100,7 +104,15 @@ const RESOURCE_NAV: AppNavItem[] = [
     to: '/option-sets',
     shortcut: 'g-o',
   },
-  { key: 'themes', icon: 'i-lucide-folder', iconClass: 'text-amber-500', to: '/settings/themes' },
+  {
+    key: 'themes',
+    icon: 'i-lucide-palette',
+    iconClass: 'text-amber-500',
+    to: '/settings/themes',
+    // The six most recently updated saved themes, then the library.
+    recent: c => c.themes.recent.map(item => ({ key: `thm_${item.id}`, label: item.name, to: '/settings/themes', query: { q: item.name } })),
+    children: [{ key: 'themesAll', icon: 'i-lucide-swatch-book', to: '/settings/themes', exact: true, count: c => c.themes.total }],
+  },
 ]
 
 /**
@@ -131,6 +143,10 @@ const API_NAV: AppNavItem[] = [
   { key: 'apiLogs', icon: 'i-lucide-scroll-text', to: '/api-service/logs' },
   { key: 'apiAnalytics', icon: 'i-lucide-chart-line', to: '/api-service/analytics' },
   { key: 'apiDocs', icon: 'i-lucide-book-open', to: '/api-service/docs' },
+  // Integrations (owner, 2026-10-03: they belong to the API service).
+  { key: 'webhooks', icon: 'i-lucide-webhook', to: '/api-service/webhooks' },
+  { key: 'apiKeys', icon: 'i-lucide-key-round', to: '/api-service/api-keys' },
+  { key: 'apiApps', icon: 'i-lucide-blocks', to: '/api-service/apps' },
 ]
 
 /**
@@ -168,7 +184,7 @@ const SYSTEM_NAV: AppNavItem[] = [
 ]
 
 export function useNavigation() {
-  const { t } = useI18n()
+  const { t, te } = useI18n()
   const route = useRoute()
   const session = useSession()
   const { counts } = useNavCounts()
@@ -179,7 +195,8 @@ export function useNavigation() {
     if (item.query)
       return route.path === item.to && Object.entries(item.query).every(([k, v]) => route.query[k] === v)
     if (item.dot) return route.path === item.to && !route.query.status
-    if (item.exact) return route.path === item.to
+    // "All …" entries stay unhighlighted while a single item (a search) is open.
+    if (item.exact) return route.path === item.to && !route.query.q
     if (item.children)
       return item.children.some(isActive) || route.path.startsWith(`${item.to}/`) || route.path === item.to
     return route.path === item.to || route.path.startsWith(`${item.to}/`)
@@ -195,13 +212,20 @@ export function useNavigation() {
   // Design: small grey count on the right of the row.
   function badgeFor(item: AppNavItem): BadgeProps | undefined {
     if (!item.count || !counts.value) return undefined
-    const value = item.count(counts.value)
+    const value = item.count(counts.value as NavCounts)
     if (item.hideZero && !value) return undefined
     return { label: compact(value), color: 'neutral', variant: 'outline', class: 'rounded-md tabular-nums' }
   }
 
+  /** Static children plus the ones built from the sidebar data (recent templates / themes). */
+  const childrenOf = (item: AppNavItem) =>
+    item.recent && counts.value ? [...item.recent(counts.value as NavCounts), ...(item.children ?? [])] : item.children
+
   function toMenuItem(item: AppNavItem, level = 0): NavigationMenuItem {
-    const label = t(`nav.${item.key}`)
+    // System templates show their translated name; other data (workspace templates, themes) as written.
+    const templateKey = item.key.startsWith('tpl_') ? `templates.items.${item.key.slice(4)}.name` : null
+    const label = templateKey && te(templateKey) ? t(templateKey) : (item.label ?? t(`nav.${item.key}`))
+    const children = childrenOf(item)
     const active = isActive(item)
     return {
       label,
@@ -220,7 +244,7 @@ export function useNavigation() {
       badge: badgeFor(item),
       dot: item.dot,
       ui: item.iconClass ? { linkLeadingIcon: item.iconClass } : undefined,
-      children: item.children?.map(child => toMenuItem(child, level + 1)),
+      children: children?.map(child => toMenuItem(child, level + 1)),
     }
   }
 

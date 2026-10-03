@@ -1,0 +1,43 @@
+<!--
+  Form overview → sharing: the public link and the embed link (built by shared/utils/urls/public.ts)
+  with copy buttons, and what each channel is for. Live once the form is published; QR codes,
+  access rules and the embed snippet arrive with F10.
+-->
+<script setup lang="ts">
+import type { FormSummary } from '#shared/types/forms'
+import { formLink, publicHosts } from '#shared/utils/urls/public'
+
+const props = defineProps<{ form: FormSummary }>()
+const { t } = useI18n()
+const config = useRuntimeConfig().public
+const tenant = useTenant()
+const request = useRequestURL()
+
+const hosts = computed(() => publicHosts(config, request.port))
+const sub = computed(() => tenant.profile.value?.subdomain ?? null)
+const fill = computed(() => formLink(hosts.value, props.form.slug, 'fill', sub.value))
+const embed = computed(() => formLink(hosts.value, props.form.slug, 'embed', sub.value))
+const live = computed(() => props.form.status === 'published')
+</script>
+
+<template>
+  <UCard variant="outline" :ui="{ body: 'p-4 sm:p-5' }">
+    <div class="mb-3 flex items-start justify-between gap-2">
+      <div>
+        <h2 class="text-sm font-semibold text-highlighted">{{ t('forms.overview.shareTitle') }}</h2>
+        <p class="text-xs text-muted">{{ live ? t('forms.overview.shareLive') : t('forms.overview.shareNotLive') }}</p>
+      </div>
+      <UBadge :label="live ? t('forms.overview.live') : t(`status.${form.status}`)" :color="live ? 'success' : 'neutral'" variant="subtle" :icon="live ? 'i-lucide-radio' : 'i-lucide-circle-dashed'" />
+    </div>
+    <div class="flex flex-col gap-3" :class="live ? '' : 'opacity-60'">
+      <AppCopyField :label="t('forms.overview.link')" :value="fill" monospace />
+      <AppCopyField :label="t('forms.overview.embed')" :value="embed" monospace />
+    </div>
+    <div class="mt-3 flex flex-wrap gap-2">
+      <UButton :label="t('forms.overview.openLink')" icon="i-lucide-external-link" color="neutral" variant="outline" size="sm" :to="fill" target="_blank" :disabled="!live" />
+      <UButton :label="t('forms.overview.qr')" icon="i-lucide-qr-code" color="neutral" variant="ghost" size="sm" disabled>
+        <template #trailing><UBadge :label="t('forms.overview.soon')" color="neutral" variant="soft" size="sm" /></template>
+      </UButton>
+    </div>
+  </UCard>
+</template>

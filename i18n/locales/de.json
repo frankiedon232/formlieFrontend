@@ -182,6 +182,53 @@
       "activity": "Aktivität",
       "openBuilder": "Fragen, Seiten und Regeln",
       "openBuilderDesc": "Öffnen Sie den Editor, um Fragen hinzuzufügen oder zu ändern. Änderungen bleiben ein Entwurf, bis Sie veröffentlichen."
+    },
+    "filterTemplate": "Vorlage",
+    "overview": {
+      "subtitle": "{status} · aktualisiert {updated}",
+      "trendTitle": "Antworten – letzte 30 Tage",
+      "trendDesc": "Einsendungen pro Tag",
+      "trendAria": "Antworten pro Tag in den letzten 30 Tagen, insgesamt {total}",
+      "responsesCount": "{count} Antwort | {count} Antworten",
+      "noTrend": "Keine Antworten in den letzten 30 Tagen",
+      "noTrendDesc": "Teilen Sie das Formular, um Antworten zu sammeln.",
+      "responses": "Antworten",
+      "last30": "{n} in den letzten 30 Tagen",
+      "completion": "Abschlussquote",
+      "funnel": "{starts} begonnen · {views} Aufrufe",
+      "time": "Ausfülldauer (Median)",
+      "timeHint": "Von der ersten Antwort bis zum Absenden",
+      "seconds": "{n} s",
+      "minutesShort": "{n} Min.",
+      "lastResponse": "Letzte Antwort",
+      "lastResponseHint": "Neueste Einsendung",
+      "noResponses": "Noch keine Antworten",
+      "shareTitle": "Teilen",
+      "shareLive": "Jeder mit dem Link kann es ausfüllen.",
+      "shareNotLive": "Die Links funktionieren, sobald das Formular veröffentlicht ist.",
+      "live": "Live",
+      "link": "Formular-Link",
+      "embed": "Einbettungslink",
+      "openLink": "Formular öffnen",
+      "qr": "QR-Code",
+      "soon": "Bald",
+      "structureTitle": "Inhalt dieses Formulars",
+      "pages": "{count} Seite | {count} Seiten",
+      "rules": "Regeln",
+      "formulas": "Formeln",
+      "part": {
+        "questions": "Fragen",
+        "logic": "Logikregeln",
+        "calculations": "Berechnungen"
+      },
+      "editDesign": "Design bearbeiten",
+      "design": "Design",
+      "versions": "Versionen",
+      "allVersions": "Alle Versionen",
+      "noVersions": "Noch nicht veröffentlicht – Versionen erscheinen beim Veröffentlichen.",
+      "detailsTitle": "Details",
+      "tags": "Tags",
+      "noHistory": "Veröffentlicht, bevor der Versionsverlauf geführt wurde – er beginnt mit der nächsten Veröffentlichung."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Einblicke & Zusammenfassungen",
     "aiTranslate": "Übersetzungen",
     "aiHistory": "Verlauf",
-    "aiSettings": "Einstellungen & Nutzung"
+    "aiSettings": "Einstellungen & Nutzung",
+    "templatesAll": "Alle Vorlagen",
+    "themesAll": "Alle Designs",
+    "responsesAll": "Alle Antworten",
+    "responsesNew": "Neu",
+    "responsesReviewed": "Geprüft",
+    "responsesApproved": "Genehmigt",
+    "responsesRejected": "Abgelehnt",
+    "responsesExports": "Exporte",
+    "apiApps": "App-Integrationen"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Eine Liste mit diesem Namen gibt es bereits.",
     "FRM-FORM-1010": "Ein Design mit diesem Namen existiert bereits.",
     "FRM-FORM-1011": "Systemvorlagen können nicht geändert werden. Duplizieren Sie sie, um Ihre eigene zu erstellen.",
-    "FRM-FORM-1012": "Eine Vorlage mit diesem Namen existiert bereits."
+    "FRM-FORM-1012": "Eine Vorlage mit diesem Namen existiert bereits.",
+    "FRM-RESP-1003": "Dieses Formular wurde in dieser Sitzung bereits gesendet."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} Seite | {count} Seiten",
       "logic": "{count} Logikregel | {count} Logikregeln",
-      "calculations": "{count} Berechnung | {count} Berechnungen"
+      "calculations": "{count} Berechnung | {count} Berechnungen",
+      "pagesLabel": "Seiten"
     },
     "stats": {
       "forms": "Formulare",
@@ -1065,7 +1123,10 @@
         "description": "Strukturierte Fragen für Referenzgeber, bewertete Fähigkeiten mit Durchschnitt und eine klare Antwort zur Wiedereinstellung."
       }
     },
-    "openGallery": "Ganze Galerie öffnen"
+    "openGallery": "Ganze Galerie öffnen",
+    "teamOnlyHint": "Berechnet und gespeichert, aber den Antwortenden nicht angezeigt.",
+    "copyFormula": "Formel von {name} kopieren",
+    "viewAll": "Alle anzeigen"
   },
   "builder": {
     "crumb": "Editor",
@@ -2120,7 +2181,10 @@
       "access": "Erlauben oder sperren Sie Aufrufer nach IP-Adresse, Domain, Region oder Land.",
       "logs": "Jeder Aufruf mit Status, Dauer und Aufrufer.",
       "analytics": "Aufrufe, Fehler und Antwortzeiten pro Dienst und Endpunkt.",
-      "docs": "Fertige Dokumentation und ein Ort zum Testen jedes Endpunkts."
+      "docs": "Fertige Dokumentation und ein Ort zum Testen jedes Endpunkts.",
+      "webhooks": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme – signiert und mit Wiederholungsversuchen.",
+      "apiKeys": "Schlüssel für die Formalie-API: Verwalten Sie Formulare und Antworten aus Ihrem Code.",
+      "apps": "Verbinden Sie Apps wie Tabellenkalkulationen und Team-Chat."
     }
   },
   "ai": {

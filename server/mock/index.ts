@@ -5,6 +5,7 @@
 import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import { getDirectory } from './routes/directory'
+import { getFormOverview } from './routes/formOverview'
 import * as templates from './routes/templates'
 import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
@@ -48,6 +49,7 @@ const router = createRouter()
   .post('/forms/bulk', forms.bulkForms)
   .delete('/forms/trash', forms.emptyTrash)
   .get('/forms/:id', forms.getForm)
+  .get('/forms/:id/overview', getFormOverview)
   .patch('/forms/:id', forms.patchForm)
   .delete('/forms/:id', forms.deleteForm)
   .post('/forms/:id/duplicate', forms.duplicateForm)

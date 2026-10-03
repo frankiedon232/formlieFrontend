@@ -182,6 +182,53 @@
       "activity": "Activity",
       "openBuilder": "Questions, pages and rules",
       "openBuilderDesc": "Open the builder to add or change questions. Changes stay in a draft until you publish."
+    },
+    "filterTemplate": "Template",
+    "overview": {
+      "subtitle": "{status} · updated {updated}",
+      "trendTitle": "Responses — last 30 days",
+      "trendDesc": "Submissions per day",
+      "trendAria": "Responses per day for the last 30 days, {total} in total",
+      "responsesCount": "{count} response | {count} responses",
+      "noTrend": "No responses in the last 30 days",
+      "noTrendDesc": "Share the form to start collecting answers.",
+      "responses": "Responses",
+      "last30": "{n} in the last 30 days",
+      "completion": "Completion rate",
+      "funnel": "{starts} started · {views} views",
+      "time": "Median time to complete",
+      "timeHint": "From the first answer to submit",
+      "seconds": "{n} s",
+      "minutesShort": "{n} min",
+      "lastResponse": "Last response",
+      "lastResponseHint": "Most recent submission",
+      "noResponses": "No responses yet",
+      "shareTitle": "Share",
+      "shareLive": "Anyone with the link can fill it in.",
+      "shareNotLive": "The links work once the form is published.",
+      "live": "Live",
+      "link": "Form link",
+      "embed": "Embed link",
+      "openLink": "Open form",
+      "qr": "QR code",
+      "soon": "Soon",
+      "structureTitle": "What's in this form",
+      "pages": "{count} page | {count} pages",
+      "rules": "rules",
+      "formulas": "formulas",
+      "part": {
+        "questions": "Questions",
+        "logic": "Logic rules",
+        "calculations": "Calculations"
+      },
+      "editDesign": "Edit the design",
+      "design": "Design",
+      "versions": "Versions",
+      "allVersions": "All versions",
+      "noVersions": "Not published yet — versions appear when you publish.",
+      "detailsTitle": "Details",
+      "tags": "Tags",
+      "noHistory": "Published before version history was kept — the next publish starts it."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Insights & summaries",
     "aiTranslate": "Translations",
     "aiHistory": "History",
-    "aiSettings": "Settings & usage"
+    "aiSettings": "Settings & usage",
+    "templatesAll": "All templates",
+    "themesAll": "All themes",
+    "responsesAll": "All responses",
+    "responsesNew": "New",
+    "responsesReviewed": "Reviewed",
+    "responsesApproved": "Approved",
+    "responsesRejected": "Rejected",
+    "responsesExports": "Exports",
+    "apiApps": "App integrations"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "A list with this name already exists.",
     "FRM-FORM-1010": "A theme with this name already exists.",
     "FRM-FORM-1011": "System templates can’t be changed. Duplicate it to make your own.",
-    "FRM-FORM-1012": "A template with this name already exists."
+    "FRM-FORM-1012": "A template with this name already exists.",
+    "FRM-RESP-1003": "This form was already submitted from this session."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} page | {count} pages",
       "logic": "{count} logic rule | {count} logic rules",
-      "calculations": "{count} calculation | {count} calculations"
+      "calculations": "{count} calculation | {count} calculations",
+      "pagesLabel": "Pages"
     },
     "stats": {
       "forms": "Forms",
@@ -1065,7 +1123,10 @@
         "description": "Structured questions for referees, rated skills with an average and a clear hire-again answer."
       }
     },
-    "openGallery": "Open the full gallery"
+    "openGallery": "Open the full gallery",
+    "teamOnlyHint": "Worked out and saved, but not shown to respondents.",
+    "copyFormula": "Copy the formula of {name}",
+    "viewAll": "View all"
   },
   "builder": {
     "crumb": "Builder",
@@ -2120,7 +2181,10 @@
       "access": "Allow or block callers by IP address, domain, region or country.",
       "logs": "Every call with its status, time taken and caller.",
       "analytics": "Calls, errors and response times per service and endpoint.",
-      "docs": "Ready-made documentation and a place to try each endpoint."
+      "docs": "Ready-made documentation and a place to try each endpoint.",
+      "webhooks": "Send each new response to your own systems as it arrives — signed and retried.",
+      "apiKeys": "Keys for Formalie's own API: manage forms and responses from your code.",
+      "apps": "Connect apps such as spreadsheets and team chat."
     }
   },
   "ai": {

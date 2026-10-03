@@ -182,6 +182,53 @@
       "activity": "활동",
       "openBuilder": "질문, 페이지, 규칙",
       "openBuilderDesc": "빌더를 열어 질문을 추가하거나 변경하세요. 게시할 때까지 변경 사항은 초안에 남습니다."
+    },
+    "filterTemplate": "템플릿",
+    "overview": {
+      "subtitle": "{status} · {updated} 업데이트",
+      "trendTitle": "응답 — 최근 30일",
+      "trendDesc": "일별 제출 수",
+      "trendAria": "최근 30일간 일별 응답, 총 {total}개",
+      "responsesCount": "응답 {count}개 | 응답 {count}개",
+      "noTrend": "최근 30일간 응답이 없습니다",
+      "noTrendDesc": "양식을 공유해 응답 수집을 시작하세요.",
+      "responses": "응답",
+      "last30": "최근 30일간 {n}개",
+      "completion": "완료율",
+      "funnel": "시작 {starts} · 조회 {views}",
+      "time": "작성 시간 중앙값",
+      "timeHint": "첫 답변부터 제출까지",
+      "seconds": "{n}초",
+      "minutesShort": "{n}분",
+      "lastResponse": "마지막 응답",
+      "lastResponseHint": "가장 최근 제출",
+      "noResponses": "아직 응답이 없습니다",
+      "shareTitle": "공유",
+      "shareLive": "링크가 있는 누구나 작성할 수 있습니다.",
+      "shareNotLive": "양식을 게시하면 링크가 작동합니다.",
+      "live": "게시됨",
+      "link": "양식 링크",
+      "embed": "임베드 링크",
+      "openLink": "양식 열기",
+      "qr": "QR 코드",
+      "soon": "곧 제공",
+      "structureTitle": "이 양식의 구성",
+      "pages": "{count}페이지 | {count}페이지",
+      "rules": "규칙",
+      "formulas": "수식",
+      "part": {
+        "questions": "질문",
+        "logic": "로직 규칙",
+        "calculations": "계산"
+      },
+      "editDesign": "디자인 편집",
+      "design": "디자인",
+      "versions": "버전",
+      "allVersions": "모든 버전",
+      "noVersions": "아직 게시되지 않았습니다 — 게시하면 버전이 표시됩니다.",
+      "detailsTitle": "세부 정보",
+      "tags": "태그",
+      "noHistory": "버전 기록이 시작되기 전에 게시되었습니다. 다음 게시부터 기록이 시작됩니다."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "인사이트 및 요약",
     "aiTranslate": "번역",
     "aiHistory": "기록",
-    "aiSettings": "설정 및 사용량"
+    "aiSettings": "설정 및 사용량",
+    "templatesAll": "모든 템플릿",
+    "themesAll": "모든 테마",
+    "responsesAll": "모든 응답",
+    "responsesNew": "신규",
+    "responsesReviewed": "검토됨",
+    "responsesApproved": "승인됨",
+    "responsesRejected": "거부됨",
+    "responsesExports": "내보내기",
+    "apiApps": "앱 연동"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "같은 이름의 목록이 이미 있습니다.",
     "FRM-FORM-1010": "이 이름의 테마가 이미 있습니다.",
     "FRM-FORM-1011": "시스템 템플릿은 변경할 수 없습니다. 복제하여 나만의 템플릿을 만드세요.",
-    "FRM-FORM-1012": "같은 이름의 템플릿이 이미 있습니다."
+    "FRM-FORM-1012": "같은 이름의 템플릿이 이미 있습니다.",
+    "FRM-RESP-1003": "이 세션에서 이미 이 양식을 제출했습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count}페이지 | {count}페이지",
       "logic": "로직 규칙 {count}개 | 로직 규칙 {count}개",
-      "calculations": "계산 {count}개 | 계산 {count}개"
+      "calculations": "계산 {count}개 | 계산 {count}개",
+      "pagesLabel": "페이지"
     },
     "stats": {
       "forms": "양식",
@@ -1065,7 +1123,10 @@
         "description": "추천인을 위한 구조화된 질문, 평균이 포함된 역량 평가, 재고용 의사에 대한 명확한 답변."
       }
     },
-    "openGallery": "전체 갤러리 열기"
+    "openGallery": "전체 갤러리 열기",
+    "teamOnlyHint": "계산·저장되지만 응답자에게는 표시되지 않습니다.",
+    "copyFormula": "{name}의 수식 복사",
+    "viewAll": "모두 보기"
   },
   "builder": {
     "crumb": "빌더",
@@ -2120,7 +2181,10 @@
       "access": "IP 주소, 도메인, 지역 또는 국가별로 호출자를 허용하거나 차단합니다.",
       "logs": "모든 호출의 상태, 소요 시간, 호출자.",
       "analytics": "서비스 및 엔드포인트별 호출 수, 오류, 응답 시간.",
-      "docs": "바로 쓸 수 있는 문서와 각 엔드포인트를 테스트할 공간."
+      "docs": "바로 쓸 수 있는 문서와 각 엔드포인트를 테스트할 공간.",
+      "webhooks": "새 응답이 도착하는 즉시 자체 시스템으로 전송합니다 — 서명 및 재시도 포함.",
+      "apiKeys": "Formalie API 키: 코드에서 양식과 응답을 관리하세요.",
+      "apps": "스프레드시트, 팀 채팅 같은 앱을 연결하세요."
     }
   },
   "ai": {

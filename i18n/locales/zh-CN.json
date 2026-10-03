@@ -182,6 +182,53 @@
       "activity": "动态",
       "openBuilder": "问题、页面和规则",
       "openBuilderDesc": "打开编辑器添加或修改问题。发布前，更改都保存在草稿中。"
+    },
+    "filterTemplate": "模板",
+    "overview": {
+      "subtitle": "{status} · 更新于 {updated}",
+      "trendTitle": "回复 — 最近 30 天",
+      "trendDesc": "每日提交数",
+      "trendAria": "最近 30 天每日回复数，共 {total} 条",
+      "responsesCount": "{count} 条回复 | {count} 条回复",
+      "noTrend": "最近 30 天没有回复",
+      "noTrendDesc": "分享表单即可开始收集答案。",
+      "responses": "回复",
+      "last30": "最近 30 天 {n} 条",
+      "completion": "完成率",
+      "funnel": "{starts} 次开始 · {views} 次浏览",
+      "time": "填写时间中位数",
+      "timeHint": "从首次作答到提交",
+      "seconds": "{n} 秒",
+      "minutesShort": "{n} 分钟",
+      "lastResponse": "最新回复",
+      "lastResponseHint": "最近一次提交",
+      "noResponses": "暂无回复",
+      "shareTitle": "分享",
+      "shareLive": "任何拥有链接的人都可以填写。",
+      "shareNotLive": "表单发布后链接即可使用。",
+      "live": "已上线",
+      "link": "表单链接",
+      "embed": "嵌入链接",
+      "openLink": "打开表单",
+      "qr": "二维码",
+      "soon": "即将推出",
+      "structureTitle": "此表单包含的内容",
+      "pages": "{count} 页 | {count} 页",
+      "rules": "规则",
+      "formulas": "公式",
+      "part": {
+        "questions": "问题",
+        "logic": "逻辑规则",
+        "calculations": "计算"
+      },
+      "editDesign": "编辑设计",
+      "design": "设计",
+      "versions": "版本",
+      "allVersions": "全部版本",
+      "noVersions": "尚未发布 — 发布后会显示版本。",
+      "detailsTitle": "详情",
+      "tags": "标签",
+      "noHistory": "发布时尚未记录版本历史，下次发布时开始记录。"
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "洞察与摘要",
     "aiTranslate": "翻译",
     "aiHistory": "历史记录",
-    "aiSettings": "设置与用量"
+    "aiSettings": "设置与用量",
+    "templatesAll": "全部模板",
+    "themesAll": "全部主题",
+    "responsesAll": "全部回复",
+    "responsesNew": "新回复",
+    "responsesReviewed": "已审阅",
+    "responsesApproved": "已批准",
+    "responsesRejected": "已拒绝",
+    "responsesExports": "导出",
+    "apiApps": "应用集成"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "已存在同名列表。",
     "FRM-FORM-1010": "已存在同名主题。",
     "FRM-FORM-1011": "系统模板无法更改。请复制后创建您自己的模板。",
-    "FRM-FORM-1012": "已存在同名模板。"
+    "FRM-FORM-1012": "已存在同名模板。",
+    "FRM-RESP-1003": "此表单已在本次会话中提交过。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} 页 | {count} 页",
       "logic": "{count} 条逻辑规则 | {count} 条逻辑规则",
-      "calculations": "{count} 项计算 | {count} 项计算"
+      "calculations": "{count} 项计算 | {count} 项计算",
+      "pagesLabel": "页数"
     },
     "stats": {
       "forms": "表单",
@@ -1065,7 +1123,10 @@
         "description": "面向推荐人的结构化问题、带平均分的技能评分，以及是否愿意再次雇用的明确回答。"
       }
     },
-    "openGallery": "打开完整模板库"
+    "openGallery": "打开完整模板库",
+    "teamOnlyHint": "已计算并保存，但不向填写者显示。",
+    "copyFormula": "复制 {name} 的公式",
+    "viewAll": "查看全部"
   },
   "builder": {
     "crumb": "编辑器",
@@ -2120,7 +2181,10 @@
       "access": "按 IP 地址、域名、地区或国家允许或阻止调用方。",
       "logs": "每次调用及其状态、耗时和调用方。",
       "analytics": "按服务和端点统计的调用量、错误和响应时间。",
-      "docs": "现成的文档，以及试用每个端点的地方。"
+      "docs": "现成的文档，以及试用每个端点的地方。",
+      "webhooks": "每条新回复到达后立即发送到您自己的系统 — 已签名并自动重试。",
+      "apiKeys": "Formalie 自有 API 的密钥：通过代码管理表单和回复。",
+      "apps": "连接电子表格、团队聊天等应用。"
     }
   },
   "ai": {

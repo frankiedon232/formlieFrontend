@@ -182,6 +182,53 @@
       "activity": "Etkinlik",
       "openBuilder": "Sorular, sayfalar ve kurallar",
       "openBuilderDesc": "Soru eklemek veya değiştirmek için düzenleyiciyi açın. Değişiklikler siz yayınlayana kadar taslakta kalır."
+    },
+    "filterTemplate": "Şablon",
+    "overview": {
+      "subtitle": "{status} · {updated} güncellendi",
+      "trendTitle": "Yanıtlar — son 30 gün",
+      "trendDesc": "Günlük gönderimler",
+      "trendAria": "Son 30 günde günlük yanıtlar, toplam {total}",
+      "responsesCount": "{count} yanıt | {count} yanıt",
+      "noTrend": "Son 30 günde yanıt yok",
+      "noTrendDesc": "Yanıt toplamaya başlamak için formu paylaşın.",
+      "responses": "Yanıtlar",
+      "last30": "Son 30 günde {n}",
+      "completion": "Tamamlanma oranı",
+      "funnel": "{starts} başlatıldı · {views} görüntüleme",
+      "time": "Ortanca doldurma süresi",
+      "timeHint": "İlk yanıttan gönderime kadar",
+      "seconds": "{n} sn",
+      "minutesShort": "{n} dk",
+      "lastResponse": "Son yanıt",
+      "lastResponseHint": "En son gönderim",
+      "noResponses": "Henüz yanıt yok",
+      "shareTitle": "Paylaş",
+      "shareLive": "Bağlantıya sahip herkes doldurabilir.",
+      "shareNotLive": "Bağlantılar form yayımlandığında çalışır.",
+      "live": "Yayında",
+      "link": "Form bağlantısı",
+      "embed": "Yerleştirme bağlantısı",
+      "openLink": "Formu aç",
+      "qr": "QR kodu",
+      "soon": "Yakında",
+      "structureTitle": "Bu formda neler var",
+      "pages": "{count} sayfa | {count} sayfa",
+      "rules": "kural",
+      "formulas": "formül",
+      "part": {
+        "questions": "Sorular",
+        "logic": "Mantık kuralları",
+        "calculations": "Hesaplamalar"
+      },
+      "editDesign": "Tasarımı düzenle",
+      "design": "Tasarım",
+      "versions": "Sürümler",
+      "allVersions": "Tüm sürümler",
+      "noVersions": "Henüz yayımlanmadı — sürümler yayımladığınızda görünür.",
+      "detailsTitle": "Ayrıntılar",
+      "tags": "Etiketler",
+      "noHistory": "Sürüm geçmişi tutulmadan önce yayımlandı — geçmiş bir sonraki yayımlamayla başlar."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "İçgörüler ve özetler",
     "aiTranslate": "Çeviriler",
     "aiHistory": "Geçmiş",
-    "aiSettings": "Ayarlar ve kullanım"
+    "aiSettings": "Ayarlar ve kullanım",
+    "templatesAll": "Tüm şablonlar",
+    "themesAll": "Tüm temalar",
+    "responsesAll": "Tüm yanıtlar",
+    "responsesNew": "Yeni",
+    "responsesReviewed": "İncelendi",
+    "responsesApproved": "Onaylandı",
+    "responsesRejected": "Reddedildi",
+    "responsesExports": "Dışa aktarımlar",
+    "apiApps": "Uygulama entegrasyonları"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Bu adda bir liste zaten var.",
     "FRM-FORM-1010": "Bu ada sahip bir tema zaten var.",
     "FRM-FORM-1011": "Sistem şablonları değiştirilemez. Kendinizinkini oluşturmak için çoğaltın.",
-    "FRM-FORM-1012": "Bu ada sahip bir şablon zaten var."
+    "FRM-FORM-1012": "Bu ada sahip bir şablon zaten var.",
+    "FRM-RESP-1003": "Bu form bu oturumdan zaten gönderildi."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} sayfa | {count} sayfa",
       "logic": "{count} mantık kuralı | {count} mantık kuralı",
-      "calculations": "{count} hesaplama | {count} hesaplama"
+      "calculations": "{count} hesaplama | {count} hesaplama",
+      "pagesLabel": "Sayfalar"
     },
     "stats": {
       "forms": "Formlar",
@@ -1065,7 +1123,10 @@
         "description": "Referanslar için yapılandırılmış sorular, ortalamalı beceri puanları ve yeniden işe alım hakkında net bir yanıt."
       }
     },
-    "openGallery": "Galerinin tamamını aç"
+    "openGallery": "Galerinin tamamını aç",
+    "teamOnlyHint": "Hesaplanır ve kaydedilir, ancak yanıtlayanlara gösterilmez.",
+    "copyFormula": "{name} formülünü kopyala",
+    "viewAll": "Tümünü gör"
   },
   "builder": {
     "crumb": "Düzenleyici",
@@ -2120,7 +2181,10 @@
       "access": "Çağıranlara IP adresi, alan adı, bölge veya ülkeye göre izin verin ya da engelleyin.",
       "logs": "Her çağrı; durumu, süresi ve çağıranıyla birlikte.",
       "analytics": "Hizmet ve uç nokta başına çağrılar, hatalar ve yanıt süreleri.",
-      "docs": "Hazır belgeler ve her uç noktayı denemek için bir alan."
+      "docs": "Hazır belgeler ve her uç noktayı denemek için bir alan.",
+      "webhooks": "Her yeni yanıtı geldiği anda kendi sistemlerinize gönderin — imzalı ve yeniden denemeli.",
+      "apiKeys": "Formalie API'si için anahtarlar: formları ve yanıtları kodunuzdan yönetin.",
+      "apps": "E-tablolar ve ekip sohbeti gibi uygulamaları bağlayın."
     }
   },
   "ai": {

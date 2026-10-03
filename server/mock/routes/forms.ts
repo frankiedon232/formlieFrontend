@@ -14,7 +14,7 @@ import type {
 } from '#shared/types/forms'
 import { blankSchema } from '#shared/utils/forms/build'
 import { formSchemaV1 } from '#shared/utils/forms/schema'
-import { schemaForTemplate } from '../data/templateStore'
+import { allTemplates, schemaForTemplate } from '../data/templateStore'
 
 import type { AuditAction } from '#shared/utils/audit/events'
 import { requireAuth } from '../core/auth'
@@ -113,6 +113,10 @@ export const formFacets = defineMockRoute(({ event }) => {
   return ok<FormFacets>({
     owners: [...owners.values()].sort((a, b) => a.name.localeCompare(b.name)),
     tags: [...new Set(forms.flatMap(form => form.tags))].sort(),
+    templates: allTemplates(tenant, 'en')
+      .filter(item => forms.some(form => form.template_key === item.key))
+      .map(item => ({ key: item.key, name: item.name }))
+      .sort((a, b) => a.name.localeCompare(b.name)),
   })
 })
 

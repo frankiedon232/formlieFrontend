@@ -182,6 +182,53 @@
       "activity": "Atividade",
       "openBuilder": "Perguntas, páginas e regras",
       "openBuilderDesc": "Abra o editor para adicionar ou alterar perguntas. As alterações ficam em rascunho até você publicar."
+    },
+    "filterTemplate": "Modelo",
+    "overview": {
+      "subtitle": "{status} · atualizado {updated}",
+      "trendTitle": "Respostas — últimos 30 dias",
+      "trendDesc": "Envios por dia",
+      "trendAria": "Respostas por dia nos últimos 30 dias, {total} no total",
+      "responsesCount": "{count} resposta | {count} respostas",
+      "noTrend": "Nenhuma resposta nos últimos 30 dias",
+      "noTrendDesc": "Compartilhe o formulário para começar a coletar respostas.",
+      "responses": "Respostas",
+      "last30": "{n} nos últimos 30 dias",
+      "completion": "Taxa de conclusão",
+      "funnel": "{starts} iniciadas · {views} visualizações",
+      "time": "Tempo mediano de preenchimento",
+      "timeHint": "Da primeira resposta ao envio",
+      "seconds": "{n} s",
+      "minutesShort": "{n} min",
+      "lastResponse": "Última resposta",
+      "lastResponseHint": "Envio mais recente",
+      "noResponses": "Nenhuma resposta ainda",
+      "shareTitle": "Compartilhar",
+      "shareLive": "Qualquer pessoa com o link pode preencher.",
+      "shareNotLive": "Os links funcionam assim que o formulário for publicado.",
+      "live": "No ar",
+      "link": "Link do formulário",
+      "embed": "Link de incorporação",
+      "openLink": "Abrir formulário",
+      "qr": "Código QR",
+      "soon": "Em breve",
+      "structureTitle": "O que há neste formulário",
+      "pages": "{count} página | {count} páginas",
+      "rules": "regras",
+      "formulas": "fórmulas",
+      "part": {
+        "questions": "Perguntas",
+        "logic": "Regras de lógica",
+        "calculations": "Cálculos"
+      },
+      "editDesign": "Editar o design",
+      "design": "Design",
+      "versions": "Versões",
+      "allVersions": "Todas as versões",
+      "noVersions": "Ainda não publicado — as versões aparecem quando você publica.",
+      "detailsTitle": "Detalhes",
+      "tags": "Tags",
+      "noHistory": "Publicado antes de o histórico de versões ser mantido — ele começa na próxima publicação."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Insights e resumos",
     "aiTranslate": "Traduções",
     "aiHistory": "Histórico",
-    "aiSettings": "Configurações e uso"
+    "aiSettings": "Configurações e uso",
+    "templatesAll": "Todos os modelos",
+    "themesAll": "Todos os temas",
+    "responsesAll": "Todas as respostas",
+    "responsesNew": "Novas",
+    "responsesReviewed": "Revisadas",
+    "responsesApproved": "Aprovadas",
+    "responsesRejected": "Rejeitadas",
+    "responsesExports": "Exportações",
+    "apiApps": "Integrações de apps"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Já existe uma lista com este nome.",
     "FRM-FORM-1010": "Já existe um tema com este nome.",
     "FRM-FORM-1011": "Modelos do sistema não podem ser alterados. Duplique-o para criar o seu.",
-    "FRM-FORM-1012": "Já existe um modelo com este nome."
+    "FRM-FORM-1012": "Já existe um modelo com este nome.",
+    "FRM-RESP-1003": "Este formulário já foi enviado nesta sessão."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} página | {count} páginas",
       "logic": "{count} regra lógica | {count} regras lógicas",
-      "calculations": "{count} cálculo | {count} cálculos"
+      "calculations": "{count} cálculo | {count} cálculos",
+      "pagesLabel": "Páginas"
     },
     "stats": {
       "forms": "Formulários",
@@ -1065,7 +1123,10 @@
         "description": "Perguntas estruturadas para referências, habilidades avaliadas com média e uma resposta clara sobre recontratar."
       }
     },
-    "openGallery": "Abrir a galeria completa"
+    "openGallery": "Abrir a galeria completa",
+    "teamOnlyHint": "Calculado e salvo, mas não exibido aos respondentes.",
+    "copyFormula": "Copiar a fórmula de {name}",
+    "viewAll": "Ver tudo"
   },
   "builder": {
     "crumb": "Editor",
@@ -2120,7 +2181,10 @@
       "access": "Permita ou bloqueie chamadores por endereço IP, domínio, região ou país.",
       "logs": "Cada chamada com o seu estado, duração e chamador.",
       "analytics": "Chamadas, erros e tempos de resposta por serviço e endpoint.",
-      "docs": "Documentação pronta e um espaço para testar cada endpoint."
+      "docs": "Documentação pronta e um espaço para testar cada endpoint.",
+      "webhooks": "Envie cada nova resposta para seus próprios sistemas assim que chegar — assinada e com novas tentativas.",
+      "apiKeys": "Chaves da API da Formalie: gerencie formulários e respostas pelo seu código.",
+      "apps": "Conecte apps como planilhas e chat da equipe."
     }
   },
   "ai": {

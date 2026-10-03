@@ -182,6 +182,53 @@
       "activity": "Shughuli",
       "openBuilder": "Maswali, kurasa na kanuni",
       "openBuilderDesc": "Fungua kijenzi ili kuongeza au kubadilisha maswali. Mabadiliko hubaki kwenye rasimu hadi uchapishe."
+    },
+    "filterTemplate": "Kiolezo",
+    "overview": {
+      "subtitle": "{status} · imesasishwa {updated}",
+      "trendTitle": "Majibu — siku 30 zilizopita",
+      "trendDesc": "Mawasilisho kwa siku",
+      "trendAria": "Majibu kwa siku katika siku 30 zilizopita, jumla {total}",
+      "responsesCount": "Jibu {count} | Majibu {count}",
+      "noTrend": "Hakuna majibu katika siku 30 zilizopita",
+      "noTrendDesc": "Shiriki fomu ili kuanza kukusanya majibu.",
+      "responses": "Majibu",
+      "last30": "{n} katika siku 30 zilizopita",
+      "completion": "Kiwango cha ukamilishaji",
+      "funnel": "{starts} yameanzishwa · mitazamo {views}",
+      "time": "Muda wa kati wa kujaza",
+      "timeHint": "Kutoka jibu la kwanza hadi kuwasilisha",
+      "seconds": "Sek {n}",
+      "minutesShort": "Dak {n}",
+      "lastResponse": "Jibu la mwisho",
+      "lastResponseHint": "Wasilisho la hivi karibuni",
+      "noResponses": "Bado hakuna majibu",
+      "shareTitle": "Shiriki",
+      "shareLive": "Yeyote mwenye kiungo anaweza kuijaza.",
+      "shareNotLive": "Viungo vitafanya kazi fomu ikishachapishwa.",
+      "live": "Hai",
+      "link": "Kiungo cha fomu",
+      "embed": "Kiungo cha kupachika",
+      "openLink": "Fungua fomu",
+      "qr": "Msimbo wa QR",
+      "soon": "Hivi karibuni",
+      "structureTitle": "Kilichomo kwenye fomu hii",
+      "pages": "Ukurasa {count} | Kurasa {count}",
+      "rules": "kanuni",
+      "formulas": "fomula",
+      "part": {
+        "questions": "Maswali",
+        "logic": "Kanuni za mantiki",
+        "calculations": "Hesabu"
+      },
+      "editDesign": "Hariri muundo",
+      "design": "Muundo",
+      "versions": "Matoleo",
+      "allVersions": "Matoleo yote",
+      "noVersions": "Bado haijachapishwa — matoleo yataonekana utakapochapisha.",
+      "detailsTitle": "Maelezo",
+      "tags": "Lebo",
+      "noHistory": "Ilichapishwa kabla historia ya matoleo kuanza kuhifadhiwa — itaanza na uchapishaji unaofuata."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Maarifa na muhtasari",
     "aiTranslate": "Tafsiri",
     "aiHistory": "Historia",
-    "aiSettings": "Mipangilio na matumizi"
+    "aiSettings": "Mipangilio na matumizi",
+    "templatesAll": "Violezo vyote",
+    "themesAll": "Mandhari yote",
+    "responsesAll": "Majibu yote",
+    "responsesNew": "Mapya",
+    "responsesReviewed": "Yamekaguliwa",
+    "responsesApproved": "Yameidhinishwa",
+    "responsesRejected": "Yamekataliwa",
+    "responsesExports": "Uhamishaji",
+    "apiApps": "Miunganisho ya programu"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Orodha yenye jina hili tayari ipo.",
     "FRM-FORM-1010": "Mandhari yenye jina hili tayari ipo.",
     "FRM-FORM-1011": "Violezo vya mfumo haviwezi kubadilishwa. Kinakili ili kutengeneza chako.",
-    "FRM-FORM-1012": "Tayari kuna kiolezo chenye jina hili."
+    "FRM-FORM-1012": "Tayari kuna kiolezo chenye jina hili.",
+    "FRM-RESP-1003": "Fomu hii tayari imetumwa kutoka kipindi hiki."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "Ukurasa {count} | Kurasa {count}",
       "logic": "Kanuni {count} ya mantiki | Kanuni {count} za mantiki",
-      "calculations": "Hesabu {count} | Hesabu {count}"
+      "calculations": "Hesabu {count} | Hesabu {count}",
+      "pagesLabel": "Kurasa"
     },
     "stats": {
       "forms": "Fomu",
@@ -1065,7 +1123,10 @@
         "description": "Maswali yaliyopangwa kwa wadhamini, ujuzi uliopimwa wenye wastani na jibu wazi kuhusu kumwajiri tena."
       }
     },
-    "openGallery": "Fungua matunzio yote"
+    "openGallery": "Fungua matunzio yote",
+    "teamOnlyHint": "Imekokotolewa na kuhifadhiwa, lakini haionyeshwi kwa wanaojibu.",
+    "copyFormula": "Nakili fomula ya {name}",
+    "viewAll": "Tazama yote"
   },
   "builder": {
     "crumb": "Kijenzi",
@@ -2120,7 +2181,10 @@
       "access": "Ruhusu au zuia wapigaji kwa anwani ya IP, kikoa, eneo au nchi.",
       "logs": "Kila mwito pamoja na hali yake, muda uliotumika na mpigaji.",
       "analytics": "Miito, hitilafu na muda wa majibu kwa kila huduma na endpoint.",
-      "docs": "Nyaraka zilizo tayari na mahali pa kujaribu kila endpoint."
+      "docs": "Nyaraka zilizo tayari na mahali pa kujaribu kila endpoint.",
+      "webhooks": "Tuma kila jibu jipya kwa mifumo yako mara linapofika — limesainiwa na hujaribiwa tena.",
+      "apiKeys": "Funguo za API ya Formalie: dhibiti fomu na majibu kutoka kwenye msimbo wako.",
+      "apps": "Unganisha programu kama lahajedwali na gumzo la timu."
     }
   },
   "ai": {

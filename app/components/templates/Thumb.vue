@@ -6,7 +6,8 @@
 <script setup lang="ts">
 import { fillBackground, pageBackground, readableOn, resolveTheme } from '#shared/utils/forms/theme'
 
-const props = defineProps<{ theme: Record<string, unknown>; title: string; labels: string[]; compact?: boolean }>()
+/** card: gallery · compact: pickers · mini: table rows (shapes only, no text). */
+const props = defineProps<{ theme: Record<string, unknown>; title: string; labels: string[]; compact?: boolean; mini?: boolean }>()
 
 const th = computed(() => resolveTheme(props.theme))
 const background = computed(() => pageBackground(th.value))
@@ -17,13 +18,13 @@ const footerBar = computed(() => th.value.footer.enabled && th.value.footer.styl
 const RADIUS: Record<string, string> = { none: '0', sm: '3px', md: '5px', lg: '8px', xl: '12px', full: '999px' }
 const INPUT_RADIUS = computed(() => RADIUS[th.value.inputs.radius] ?? '4px')
 const centred = computed(() => th.value.header.align === 'center')
-const shown = computed(() => props.labels.slice(0, props.compact ? 2 : 3))
+const shown = computed(() => props.labels.slice(0, props.mini ? 2 : props.compact ? 2 : 3))
 </script>
 
 <template>
   <div
     class="flex w-full overflow-hidden"
-    :class="[compact ? 'h-24' : 'h-40', th.layout === 'full' ? '' : compact ? 'p-2' : 'p-3']"
+    :class="[mini ? 'h-10' : compact ? 'h-24' : 'h-40', th.layout === 'full' ? '' : mini ? 'p-1' : compact ? 'p-2' : 'p-3']"
     :style="{ background }"
     aria-hidden="true"
   >
@@ -32,7 +33,7 @@ const shown = computed(() => props.labels.slice(0, props.compact ? 2 : 3))
       :class="[th.layout === 'full' ? '' : panel ? 'max-w-[92%]' : 'max-w-[82%]', panel?.side === 'end' ? 'flex-row-reverse' : '']"
       :style="{
         background: th.layout === 'plain' ? 'transparent' : th.container.bg,
-        borderRadius: RADIUS[th.container.radius],
+        borderRadius: mini ? '2px' : RADIUS[th.container.radius],
         boxShadow: th.layout === 'plain' || th.container.shadow === 'none' ? undefined : '0 2px 8px rgb(0 0 0 / 0.08)',
         fontFamily: th.typography.font === 'serif' ? 'Georgia, serif' : th.typography.font === 'mono' ? 'monospace' : undefined,
       }"
@@ -43,25 +44,26 @@ const shown = computed(() => props.labels.slice(0, props.compact ? 2 : 3))
         class="flex w-2/5 shrink-0 flex-col justify-center p-2"
         :style="{ background: colourPanel ? fillBackground(panel.panel, panel.bg, panel.bg_to, 160) : th.colors.muted, opacity: colourPanel ? 1 : 0.35 }"
       >
-        <span v-if="colourPanel" class="line-clamp-3 text-[9px] leading-tight font-semibold" :style="{ color: readableOn(panel.bg) }">{{ title }}</span>
+        <span v-if="colourPanel && !mini" class="line-clamp-3 text-[9px] leading-tight font-semibold" :style="{ color: readableOn(panel.bg) }">{{ title }}</span>
       </div>
 
       <div class="flex min-w-0 flex-1 flex-col">
         <div
           v-if="band"
-          class="shrink-0 px-2.5 py-1.5"
-          :class="centred ? 'text-center' : ''"
+          class="shrink-0"
+          :class="[mini ? 'h-1.5' : 'px-2.5 py-1.5', centred ? 'text-center' : '']"
           :style="{ background: fillBackground(band.band, band.band_bg, band.band_to) }"
         >
-          <span class="line-clamp-1 text-[9px] font-semibold" :style="{ color: readableOn(band.band_bg) }">{{ title }}</span>
+          <span v-if="!mini" class="line-clamp-1 text-[9px] font-semibold" :style="{ color: readableOn(band.band_bg) }">{{ title }}</span>
         </div>
 
-        <div class="flex min-h-0 flex-1 flex-col gap-1.5 px-2.5 py-2" :style="{ color: th.colors.text }">
-          <span v-if="!band && !colourPanel" class="line-clamp-1 text-[9px] font-semibold" :class="centred ? 'text-center' : ''">{{ title }}</span>
+        <div class="flex min-h-0 flex-1 flex-col" :class="mini ? 'gap-0.5 px-1 py-0.5' : 'gap-1.5 px-2.5 py-2'" :style="{ color: th.colors.text }">
+          <span v-if="!band && !colourPanel && !mini" class="line-clamp-1 text-[9px] font-semibold" :class="centred ? 'text-center' : ''">{{ title }}</span>
           <div v-for="label in shown" :key="label" class="flex flex-col gap-0.5">
-            <span class="line-clamp-1 text-[7px] leading-tight opacity-80">{{ label }}</span>
+            <span v-if="!mini" class="line-clamp-1 text-[7px] leading-tight opacity-80">{{ label }}</span>
             <span
-              class="block h-2.5 w-full"
+              class="block w-full"
+              :class="mini ? 'h-1' : 'h-2.5'"
               :style="{
                 background: th.inputs.style === 'soft' ? th.colors.input_border : th.colors.input_bg,
                 border: th.inputs.style === 'underline' ? 'none' : `1px solid ${th.colors.input_border}`,
@@ -71,8 +73,8 @@ const shown = computed(() => props.labels.slice(0, props.compact ? 2 : 3))
             />
           </div>
           <span
-            class="mt-auto h-2.5 shrink-0"
-            :class="th.buttons.full_width ? 'w-full' : 'w-1/3 self-end'"
+            class="mt-auto shrink-0"
+            :class="[mini ? 'h-1' : 'h-2.5', th.buttons.full_width ? 'w-full' : 'w-1/3 self-end']"
             :style="{
               background: th.buttons.variant === 'solid' ? th.colors.primary : 'transparent',
               border: `1px solid ${th.colors.primary}`,

@@ -182,6 +182,53 @@
       "activity": "Aktywność",
       "openBuilder": "Pytania, strony i reguły",
       "openBuilderDesc": "Otwórz kreator, aby dodać lub zmienić pytania. Zmiany pozostają w wersji roboczej do publikacji."
+    },
+    "filterTemplate": "Szablon",
+    "overview": {
+      "subtitle": "{status} · zaktualizowano {updated}",
+      "trendTitle": "Odpowiedzi — ostatnie 30 dni",
+      "trendDesc": "Przesłania dziennie",
+      "trendAria": "Odpowiedzi dziennie w ostatnich 30 dniach, łącznie {total}",
+      "responsesCount": "Odpowiedzi: {count} | Odpowiedzi: {count}",
+      "noTrend": "Brak odpowiedzi w ostatnich 30 dniach",
+      "noTrendDesc": "Proszę udostępnić formularz, aby zacząć zbierać odpowiedzi.",
+      "responses": "Odpowiedzi",
+      "last30": "W ostatnich 30 dniach: {n}",
+      "completion": "Wskaźnik ukończenia",
+      "funnel": "Rozpoczęte: {starts} · wyświetlenia: {views}",
+      "time": "Mediana czasu wypełniania",
+      "timeHint": "Od pierwszej odpowiedzi do wysłania",
+      "seconds": "{n} s",
+      "minutesShort": "{n} min",
+      "lastResponse": "Ostatnia odpowiedź",
+      "lastResponseHint": "Najnowsze przesłanie",
+      "noResponses": "Brak odpowiedzi",
+      "shareTitle": "Udostępnij",
+      "shareLive": "Każdy, kto ma link, może go wypełnić.",
+      "shareNotLive": "Linki zadziałają po opublikowaniu formularza.",
+      "live": "Aktywny",
+      "link": "Link do formularza",
+      "embed": "Link do osadzenia",
+      "openLink": "Otwórz formularz",
+      "qr": "Kod QR",
+      "soon": "Wkrótce",
+      "structureTitle": "Zawartość formularza",
+      "pages": "Strony: {count} | Strony: {count}",
+      "rules": "reguły",
+      "formulas": "formuły",
+      "part": {
+        "questions": "Pytania",
+        "logic": "Reguły logiki",
+        "calculations": "Obliczenia"
+      },
+      "editDesign": "Edytuj wygląd",
+      "design": "Wygląd",
+      "versions": "Wersje",
+      "allVersions": "Wszystkie wersje",
+      "noVersions": "Jeszcze nie opublikowano — wersje pojawią się po publikacji.",
+      "detailsTitle": "Szczegóły",
+      "tags": "Tagi",
+      "noHistory": "Opublikowano przed prowadzeniem historii wersji — zacznie się ona przy następnej publikacji."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Wnioski i podsumowania",
     "aiTranslate": "Tłumaczenia",
     "aiHistory": "Historia",
-    "aiSettings": "Ustawienia i użycie"
+    "aiSettings": "Ustawienia i użycie",
+    "templatesAll": "Wszystkie szablony",
+    "themesAll": "Wszystkie motywy",
+    "responsesAll": "Wszystkie odpowiedzi",
+    "responsesNew": "Nowe",
+    "responsesReviewed": "Sprawdzone",
+    "responsesApproved": "Zatwierdzone",
+    "responsesRejected": "Odrzucone",
+    "responsesExports": "Eksporty",
+    "apiApps": "Integracje aplikacji"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Lista o tej nazwie już istnieje.",
     "FRM-FORM-1010": "Motyw o tej nazwie już istnieje.",
     "FRM-FORM-1011": "Szablonów systemowych nie można zmieniać. Zduplikuj szablon, aby utworzyć własny.",
-    "FRM-FORM-1012": "Szablon o tej nazwie już istnieje."
+    "FRM-FORM-1012": "Szablon o tej nazwie już istnieje.",
+    "FRM-RESP-1003": "Ten formularz został już wysłany w tej sesji."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "Strony: {count} | Strony: {count}",
       "logic": "Reguły logiki: {count} | Reguły logiki: {count}",
-      "calculations": "Obliczenia: {count} | Obliczenia: {count}"
+      "calculations": "Obliczenia: {count} | Obliczenia: {count}",
+      "pagesLabel": "Strony"
     },
     "stats": {
       "forms": "Formularze",
@@ -1065,7 +1123,10 @@
         "description": "Ustrukturyzowane pytania dla osób polecających, ocenione umiejętności ze średnią i jasna odpowiedź o ponownym zatrudnieniu."
       }
     },
-    "openGallery": "Otwórz pełną galerię"
+    "openGallery": "Otwórz pełną galerię",
+    "teamOnlyHint": "Obliczone i zapisane, ale niewidoczne dla respondentów.",
+    "copyFormula": "Kopiuj formułę pola {name}",
+    "viewAll": "Zobacz wszystkie"
   },
   "builder": {
     "crumb": "Kreator",
@@ -2120,7 +2181,10 @@
       "access": "Zezwalaj lub blokuj wywołujących według adresu IP, domeny, regionu lub kraju.",
       "logs": "Każde wywołanie ze statusem, czasem trwania i wywołującym.",
       "analytics": "Wywołania, błędy i czasy odpowiedzi według usługi i endpointu.",
-      "docs": "Gotowa dokumentacja i miejsce do testowania każdego endpointu."
+      "docs": "Gotowa dokumentacja i miejsce do testowania każdego endpointu.",
+      "webhooks": "Każda nowa odpowiedź trafia od razu do Państwa systemów — podpisana i ponawiana w razie błędu.",
+      "apiKeys": "Klucze do API Formalie: zarządzanie formularzami i odpowiedziami z poziomu kodu.",
+      "apps": "Połączenie z aplikacjami, takimi jak arkusze kalkulacyjne i czat zespołu."
     }
   },
   "ai": {

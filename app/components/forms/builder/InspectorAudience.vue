@@ -56,7 +56,7 @@ function write(next: FormField['audience']) {
     ...(next && next.mode !== 'everyone' ? { required: false } : {}),
   })
 }
-const setMode = (value: string | number) => write({ mode: value as Mode, all: value !== 'user', ids: [] })
+const setMode = (value: string | number) => write({ mode: value as Mode, all: false, ids: [] })
 const setAll = (all: boolean) => write({ ...audience.value, all, ids: all ? [] : audience.value.ids ?? [] })
 const setIds = (ids: string[]) => write({ ...audience.value, all: false, ids })
 

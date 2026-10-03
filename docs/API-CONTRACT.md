@@ -81,6 +81,8 @@ Files never pass through the enveloped API (SECURITY-PROTOCOL.md): the API hands
 
 ## Navigation
 
+`GET /navigation/counts` → `NavCounts` (`shared/types/navigation.ts`): forms by status, responses by review status (all, new, reviewed, approved, rejected), templates `{ total, recent: [{ key, name }] }` (6 most recently used) and themes `{ total, recent: [{ id, name }] }` (6 most recently updated).
+
 | Method | Path                 | Notes                                                                                                                                                                                                                         |
 | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GET    | `/navigation/counts` | sidebar badges: `{ forms: { all, draft, published, closed, trash }, responses: { new } }` (`all` excludes archived, like the forms list). Cheap; the client refreshes it on navigation (at most every 20 s) and after changes |
@@ -136,7 +138,7 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 | POST   | `/templates/{key}/duplicate` | any template → workspace copy; audit `forms.template_duplicated`                                                                                                                             |
 | DELETE | `/templates/{key}`           | workspace templates only; forms made from it keep their content; audit `forms.template_deleted`                                                                                              |
 
-`POST /forms` takes `template_key` (system key or `ws_…`); the form remembers it (`template_key`) and `GET /forms?filter[template]=<key>` lists the forms made from a template. Calculated fields may set `props.internal: true` (worked out and saved, not shown to respondents); formulas support `avg`, `count`, `days(from, to)` and text results.
+`POST /forms` takes `template_key` (system key or `ws_…`); the form remembers it (`template_key`) and `GET /forms?filter[template]=<key>` lists the forms made from a template; `GET /forms/facets` also returns `templates: [{ key, name }]` for that filter. Calculated fields may set `props.internal: true` (worked out and saved, not shown to respondents); formulas support `avg`, `count`, `days(from, to)` and text results.
 
 ## Design, templates, option sets
 
@@ -158,7 +160,7 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 | POST | `/public/forms/{slug}/unlock` | password-protected |
 | POST | `/public/forms/{slug}/sessions` | start/resume → `resume_token` |
 | POST | `/public/forms/{slug}/uploads` | pre-signed upload URL |
-| POST | `/public/forms/{slug}/submit` | `{ data, resume_token?, captcha_token }` → `{ response_id, thank_you }` |
+| POST | `/public/forms/{slug}/submit` | `{ data, resume_token?, captcha_token }` + header `Idempotency-Key: <submission id of the fill-in session>` → `{ response_id, thank_you }`; a repeat with the same key returns the same `response_id` (no second response); a closed session → `FRM-RESP-1003` |
 | GET | `/public/s/{code}` | short link resolve (`forms.formalie.com/s/{code}`) |
 
 Public form pages live at `https://{forms | sub}.formalie.com/{formKey}/fill` and `/embed` (01-ARCHITECTURE → Public URLs); the `{slug}` in the paths above is that `{formKey}`.

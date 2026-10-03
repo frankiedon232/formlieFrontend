@@ -182,6 +182,53 @@
       "activity": "Hoạt động",
       "openBuilder": "Câu hỏi, trang và quy tắc",
       "openBuilderDesc": "Mở trình tạo để thêm hoặc sửa câu hỏi. Thay đổi vẫn ở bản nháp cho đến khi bạn xuất bản."
+    },
+    "filterTemplate": "Mẫu",
+    "overview": {
+      "subtitle": "{status} · cập nhật {updated}",
+      "trendTitle": "Phản hồi — 30 ngày qua",
+      "trendDesc": "Lượt gửi mỗi ngày",
+      "trendAria": "Phản hồi mỗi ngày trong 30 ngày qua, tổng cộng {total}",
+      "responsesCount": "{count} phản hồi | {count} phản hồi",
+      "noTrend": "Không có phản hồi trong 30 ngày qua",
+      "noTrendDesc": "Chia sẻ biểu mẫu để bắt đầu thu thập câu trả lời.",
+      "responses": "Phản hồi",
+      "last30": "{n} trong 30 ngày qua",
+      "completion": "Tỷ lệ hoàn thành",
+      "funnel": "{starts} bắt đầu · {views} lượt xem",
+      "time": "Thời gian hoàn thành trung vị",
+      "timeHint": "Từ câu trả lời đầu tiên đến khi gửi",
+      "seconds": "{n} giây",
+      "minutesShort": "{n} phút",
+      "lastResponse": "Phản hồi gần nhất",
+      "lastResponseHint": "Lượt gửi mới nhất",
+      "noResponses": "Chưa có phản hồi",
+      "shareTitle": "Chia sẻ",
+      "shareLive": "Bất kỳ ai có liên kết đều có thể điền.",
+      "shareNotLive": "Các liên kết hoạt động khi biểu mẫu được xuất bản.",
+      "live": "Đang hoạt động",
+      "link": "Liên kết biểu mẫu",
+      "embed": "Liên kết nhúng",
+      "openLink": "Mở biểu mẫu",
+      "qr": "Mã QR",
+      "soon": "Sắp có",
+      "structureTitle": "Nội dung biểu mẫu này",
+      "pages": "{count} trang | {count} trang",
+      "rules": "quy tắc",
+      "formulas": "công thức",
+      "part": {
+        "questions": "Câu hỏi",
+        "logic": "Quy tắc logic",
+        "calculations": "Phép tính"
+      },
+      "editDesign": "Chỉnh sửa thiết kế",
+      "design": "Thiết kế",
+      "versions": "Phiên bản",
+      "allVersions": "Tất cả phiên bản",
+      "noVersions": "Chưa xuất bản — phiên bản sẽ xuất hiện khi bạn xuất bản.",
+      "detailsTitle": "Chi tiết",
+      "tags": "Thẻ",
+      "noHistory": "Đã xuất bản trước khi lịch sử phiên bản được lưu — lịch sử bắt đầu từ lần xuất bản tiếp theo."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Thông tin chi tiết & tóm tắt",
     "aiTranslate": "Bản dịch",
     "aiHistory": "Lịch sử",
-    "aiSettings": "Cài đặt & mức sử dụng"
+    "aiSettings": "Cài đặt & mức sử dụng",
+    "templatesAll": "Tất cả mẫu",
+    "themesAll": "Tất cả giao diện",
+    "responsesAll": "Tất cả phản hồi",
+    "responsesNew": "Mới",
+    "responsesReviewed": "Đã xem xét",
+    "responsesApproved": "Đã duyệt",
+    "responsesRejected": "Đã từ chối",
+    "responsesExports": "Xuất dữ liệu",
+    "apiApps": "Tích hợp ứng dụng"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Đã có danh sách với tên này.",
     "FRM-FORM-1010": "Đã có chủ đề giao diện với tên này.",
     "FRM-FORM-1011": "Không thể thay đổi mẫu hệ thống. Hãy nhân bản để tạo mẫu của riêng bạn.",
-    "FRM-FORM-1012": "Đã có mẫu với tên này."
+    "FRM-FORM-1012": "Đã có mẫu với tên này.",
+    "FRM-RESP-1003": "Biểu mẫu này đã được gửi từ phiên này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} trang | {count} trang",
       "logic": "{count} quy tắc logic | {count} quy tắc logic",
-      "calculations": "{count} phép tính | {count} phép tính"
+      "calculations": "{count} phép tính | {count} phép tính",
+      "pagesLabel": "Trang"
     },
     "stats": {
       "forms": "Biểu mẫu",
@@ -1065,7 +1123,10 @@
         "description": "Câu hỏi có cấu trúc cho người tham chiếu, chấm điểm kỹ năng với điểm trung bình và câu trả lời rõ ràng về việc tuyển lại."
       }
     },
-    "openGallery": "Mở toàn bộ thư viện"
+    "openGallery": "Mở toàn bộ thư viện",
+    "teamOnlyHint": "Được tính và lưu, nhưng không hiển thị cho người trả lời.",
+    "copyFormula": "Sao chép công thức của {name}",
+    "viewAll": "Xem tất cả"
   },
   "builder": {
     "crumb": "Trình tạo",
@@ -2120,7 +2181,10 @@
       "access": "Cho phép hoặc chặn bên gọi theo địa chỉ IP, tên miền, khu vực hoặc quốc gia.",
       "logs": "Mọi lượt gọi kèm trạng thái, thời gian xử lý và bên gọi.",
       "analytics": "Lượt gọi, lỗi và thời gian phản hồi theo dịch vụ và endpoint.",
-      "docs": "Tài liệu sẵn có và nơi để thử từng endpoint."
+      "docs": "Tài liệu sẵn có và nơi để thử từng endpoint.",
+      "webhooks": "Gửi từng phản hồi mới đến hệ thống của bạn ngay khi có — được ký và tự thử lại.",
+      "apiKeys": "Khóa cho API của Formalie: quản lý biểu mẫu và phản hồi từ mã của bạn.",
+      "apps": "Kết nối các ứng dụng như bảng tính và trò chuyện nhóm."
     }
   },
   "ai": {

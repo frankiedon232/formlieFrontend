@@ -78,6 +78,10 @@ export default defineNuxtConfig({
     '/s/**': { ssr: true },
     // Destinations moved to the Data sources area (F12).
     '/integrations/destinations': { redirect: '/data-sources/destinations' },
+    // Integrations moved to the API service area (owner, 2026-10-03).
+    '/integrations': { redirect: '/api-service/webhooks' },
+    '/integrations/webhooks': { redirect: '/api-service/webhooks' },
+    '/integrations/api-keys': { redirect: '/api-service/api-keys' },
   },
 
   devServer: {

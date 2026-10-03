@@ -182,6 +182,53 @@
       "activity": "Activiteit",
       "openBuilder": "Vragen, pagina’s en regels",
       "openBuilderDesc": "Open de editor om vragen toe te voegen of te wijzigen. Wijzigingen blijven een concept tot je publiceert."
+    },
+    "filterTemplate": "Sjabloon",
+    "overview": {
+      "subtitle": "{status} · bijgewerkt {updated}",
+      "trendTitle": "Reacties — laatste 30 dagen",
+      "trendDesc": "Inzendingen per dag",
+      "trendAria": "Reacties per dag in de laatste 30 dagen, {total} in totaal",
+      "responsesCount": "{count} reactie | {count} reacties",
+      "noTrend": "Geen reacties in de laatste 30 dagen",
+      "noTrendDesc": "Deel het formulier om antwoorden te verzamelen.",
+      "responses": "Reacties",
+      "last30": "{n} in de laatste 30 dagen",
+      "completion": "Voltooiingspercentage",
+      "funnel": "{starts} gestart · {views} weergaven",
+      "time": "Mediane invultijd",
+      "timeHint": "Van het eerste antwoord tot verzenden",
+      "seconds": "{n} s",
+      "minutesShort": "{n} min",
+      "lastResponse": "Laatste reactie",
+      "lastResponseHint": "Meest recente inzending",
+      "noResponses": "Nog geen reacties",
+      "shareTitle": "Delen",
+      "shareLive": "Iedereen met de link kan het invullen.",
+      "shareNotLive": "De links werken zodra het formulier is gepubliceerd.",
+      "live": "Live",
+      "link": "Formulierlink",
+      "embed": "Insluitlink",
+      "openLink": "Formulier openen",
+      "qr": "QR-code",
+      "soon": "Binnenkort",
+      "structureTitle": "Wat zit er in dit formulier",
+      "pages": "{count} pagina | {count} pagina's",
+      "rules": "regels",
+      "formulas": "formules",
+      "part": {
+        "questions": "Vragen",
+        "logic": "Logicaregels",
+        "calculations": "Berekeningen"
+      },
+      "editDesign": "Ontwerp bewerken",
+      "design": "Ontwerp",
+      "versions": "Versies",
+      "allVersions": "Alle versies",
+      "noVersions": "Nog niet gepubliceerd — versies verschijnen zodra je publiceert.",
+      "detailsTitle": "Details",
+      "tags": "Tags",
+      "noHistory": "Gepubliceerd voordat de versiegeschiedenis werd bijgehouden — die begint bij de volgende publicatie."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Inzichten & samenvattingen",
     "aiTranslate": "Vertalingen",
     "aiHistory": "Geschiedenis",
-    "aiSettings": "Instellingen & gebruik"
+    "aiSettings": "Instellingen & gebruik",
+    "templatesAll": "Alle sjablonen",
+    "themesAll": "Alle thema's",
+    "responsesAll": "Alle reacties",
+    "responsesNew": "Nieuw",
+    "responsesReviewed": "Beoordeeld",
+    "responsesApproved": "Goedgekeurd",
+    "responsesRejected": "Afgewezen",
+    "responsesExports": "Exports",
+    "apiApps": "App-koppelingen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Er bestaat al een lijst met deze naam.",
     "FRM-FORM-1010": "Er bestaat al een thema met deze naam.",
     "FRM-FORM-1011": "Systeemsjablonen kunnen niet worden gewijzigd. Dupliceer het om je eigen versie te maken.",
-    "FRM-FORM-1012": "Er bestaat al een sjabloon met deze naam."
+    "FRM-FORM-1012": "Er bestaat al een sjabloon met deze naam.",
+    "FRM-RESP-1003": "Dit formulier is in deze sessie al verzonden."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} pagina | {count} pagina’s",
       "logic": "{count} logicaregel | {count} logicaregels",
-      "calculations": "{count} berekening | {count} berekeningen"
+      "calculations": "{count} berekening | {count} berekeningen",
+      "pagesLabel": "Pagina's"
     },
     "stats": {
       "forms": "Formulieren",
@@ -1065,7 +1123,10 @@
         "description": "Gestructureerde vragen voor referenten, beoordeelde vaardigheden met een gemiddelde en een duidelijk antwoord over opnieuw aannemen."
       }
     },
-    "openGallery": "Volledige galerij openen"
+    "openGallery": "Volledige galerij openen",
+    "teamOnlyHint": "Berekend en opgeslagen, maar niet getoond aan invullers.",
+    "copyFormula": "Kopieer de formule van {name}",
+    "viewAll": "Alles bekijken"
   },
   "builder": {
     "crumb": "Editor",
@@ -2120,7 +2181,10 @@
       "access": "Sta aanroepers toe of blokkeer ze op IP-adres, domein, regio of land.",
       "logs": "Elke aanroep met status, duur en aanroeper.",
       "analytics": "Aanroepen, fouten en responstijden per service en endpoint.",
-      "docs": "Kant-en-klare documentatie en een plek om elk endpoint te testen."
+      "docs": "Kant-en-klare documentatie en een plek om elk endpoint te testen.",
+      "webhooks": "Stuur elke nieuwe reactie direct naar je eigen systemen — ondertekend en met herhaalpogingen.",
+      "apiKeys": "Sleutels voor de API van Formalie: beheer formulieren en reacties vanuit je code.",
+      "apps": "Koppel apps zoals spreadsheets en teamchat."
     }
   },
   "ai": {

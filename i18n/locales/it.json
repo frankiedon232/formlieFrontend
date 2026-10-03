@@ -182,6 +182,53 @@
       "activity": "Attività",
       "openBuilder": "Domande, pagine e regole",
       "openBuilderDesc": "Apri l’editor per aggiungere o modificare le domande. Le modifiche restano in bozza finché non pubblichi."
+    },
+    "filterTemplate": "Modello",
+    "overview": {
+      "subtitle": "{status} · aggiornato {updated}",
+      "trendTitle": "Risposte — ultimi 30 giorni",
+      "trendDesc": "Invii al giorno",
+      "trendAria": "Risposte al giorno negli ultimi 30 giorni, {total} in totale",
+      "responsesCount": "{count} risposta | {count} risposte",
+      "noTrend": "Nessuna risposta negli ultimi 30 giorni",
+      "noTrendDesc": "Condividi il modulo per iniziare a raccogliere risposte.",
+      "responses": "Risposte",
+      "last30": "{n} negli ultimi 30 giorni",
+      "completion": "Tasso di completamento",
+      "funnel": "{starts} iniziate · {views} visualizzazioni",
+      "time": "Tempo mediano di compilazione",
+      "timeHint": "Dalla prima risposta all'invio",
+      "seconds": "{n} s",
+      "minutesShort": "{n} min",
+      "lastResponse": "Ultima risposta",
+      "lastResponseHint": "Invio più recente",
+      "noResponses": "Ancora nessuna risposta",
+      "shareTitle": "Condividi",
+      "shareLive": "Chiunque abbia il link può compilarlo.",
+      "shareNotLive": "I link funzionano quando il modulo è pubblicato.",
+      "live": "Online",
+      "link": "Link del modulo",
+      "embed": "Link di incorporamento",
+      "openLink": "Apri modulo",
+      "qr": "Codice QR",
+      "soon": "Presto",
+      "structureTitle": "Cosa contiene questo modulo",
+      "pages": "{count} pagina | {count} pagine",
+      "rules": "regole",
+      "formulas": "formule",
+      "part": {
+        "questions": "Domande",
+        "logic": "Regole logiche",
+        "calculations": "Calcoli"
+      },
+      "editDesign": "Modifica il design",
+      "design": "Design",
+      "versions": "Versioni",
+      "allVersions": "Tutte le versioni",
+      "noVersions": "Non ancora pubblicato: le versioni compaiono quando pubblichi.",
+      "detailsTitle": "Dettagli",
+      "tags": "Tag",
+      "noHistory": "Pubblicato prima che venisse tenuta la cronologia delle versioni: inizia con la prossima pubblicazione."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Approfondimenti e sintesi",
     "aiTranslate": "Traduzioni",
     "aiHistory": "Cronologia",
-    "aiSettings": "Impostazioni e utilizzo"
+    "aiSettings": "Impostazioni e utilizzo",
+    "templatesAll": "Tutti i modelli",
+    "themesAll": "Tutti i temi",
+    "responsesAll": "Tutte le risposte",
+    "responsesNew": "Nuove",
+    "responsesReviewed": "Revisionate",
+    "responsesApproved": "Approvate",
+    "responsesRejected": "Rifiutate",
+    "responsesExports": "Esportazioni",
+    "apiApps": "Integrazioni app"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Esiste già un elenco con questo nome.",
     "FRM-FORM-1010": "Esiste già un tema con questo nome.",
     "FRM-FORM-1011": "I modelli di sistema non possono essere modificati. Duplicalo per crearne uno tuo.",
-    "FRM-FORM-1012": "Esiste già un modello con questo nome."
+    "FRM-FORM-1012": "Esiste già un modello con questo nome.",
+    "FRM-RESP-1003": "Questo modulo è già stato inviato da questa sessione."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} pagina | {count} pagine",
       "logic": "{count} regola logica | {count} regole logiche",
-      "calculations": "{count} calcolo | {count} calcoli"
+      "calculations": "{count} calcolo | {count} calcoli",
+      "pagesLabel": "Pagine"
     },
     "stats": {
       "forms": "Moduli",
@@ -1065,7 +1123,10 @@
         "description": "Domande strutturate per i referenti, competenze valutate con una media e una risposta chiara sulla riassunzione."
       }
     },
-    "openGallery": "Apri la galleria completa"
+    "openGallery": "Apri la galleria completa",
+    "teamOnlyHint": "Calcolato e salvato, ma non mostrato a chi risponde.",
+    "copyFormula": "Copia la formula di {name}",
+    "viewAll": "Vedi tutti"
   },
   "builder": {
     "crumb": "Editor",
@@ -2120,7 +2181,10 @@
       "access": "Consenta o blocchi i chiamanti per indirizzo IP, dominio, regione o paese.",
       "logs": "Ogni chiamata con stato, durata e chiamante.",
       "analytics": "Chiamate, errori e tempi di risposta per servizio ed endpoint.",
-      "docs": "Documentazione pronta e uno spazio per provare ogni endpoint."
+      "docs": "Documentazione pronta e uno spazio per provare ogni endpoint.",
+      "webhooks": "Invia ogni nuova risposta ai tuoi sistemi appena arriva, firmata e con nuovi tentativi.",
+      "apiKeys": "Chiavi per l'API di Formalie: gestisci moduli e risposte dal tuo codice.",
+      "apps": "Collega app come fogli di calcolo e chat del team."
     }
   },
   "ai": {

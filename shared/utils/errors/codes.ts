@@ -53,6 +53,7 @@ export const ERROR_CODES = {
   'FRM-FORM-1012': { status: 409, message: 'A template with this name already exists.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
+  'FRM-RESP-1003': { status: 409, message: 'This form was already submitted from this session.' },
   'FRM-FILE-1001': { status: 400, message: 'File type not allowed.' },
   'FRM-FILE-1002': { status: 413, message: 'File too large.' },
   'FRM-FILE-1003': { status: 400, message: 'File failed security scan.' },

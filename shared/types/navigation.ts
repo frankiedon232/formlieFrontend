@@ -1,7 +1,11 @@
-/** GET /navigation/counts — the numbers next to sidebar items (docs/API-CONTRACT.md → Navigation). */
+/** GET /navigation/counts — the numbers and short lists next to sidebar items (docs/API-CONTRACT.md → Navigation). */
 export interface NavCounts {
   /** `all` excludes archived forms, like the forms list. */
   forms: { all: number; draft: number; published: number; closed: number; trash: number }
-  /** Responses nobody has opened yet. */
-  responses: { new: number }
+  /** Responses by review status; `new` = nobody has opened them yet. */
+  responses: { all: number; new: number; reviewed: number; approved: number; rejected: number }
+  /** Most recently used templates (by the forms made from them), then the most popular — up to 6. */
+  templates: { total: number; recent: { key: string; name: string }[] }
+  /** Most recently updated saved themes — up to 6. */
+  themes: { total: number; recent: { id: string; name: string }[] }
 }

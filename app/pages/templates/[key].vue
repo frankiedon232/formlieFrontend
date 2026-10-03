@@ -1,18 +1,15 @@
 <!--
-  Template page (F9): live preview in the template's design, what's included (calculations with
-  their formulas), usage, and every form made from it. Use → name + folder → builder.
+  Template page (F9): live preview in the template's design beside what's included, the formulas
+  as snippets, usage and the latest forms made from it (slider + "View all"). Use → builder.
 -->
 <script setup lang="ts">
-import type { FormSummary } from '#shared/types/forms'
 import type { TemplateDetail } from '#shared/types/templates'
 
 definePageMeta({ breadcrumb: 'nav.templates' })
 const { t } = useI18n()
 const route = useRoute()
-const api = useApi()
 const templates = useTemplates()
 const { setLabel } = useBreadcrumbs()
-const { relative, number } = useFormat()
 const { handle } = useErrorHandler()
 
 const key = computed(() => String(route.params.key ?? ''))
@@ -44,15 +41,6 @@ async function duplicate() {
   if (copy) await navigateTo(`/templates/${copy.key}`)
 }
 
-// Forms made from this template (same columns as the forms list, filtered by template).
-const columns = computed<DataColumn[]>(() => [
-  { key: 'name', label: t('forms.col.name'), sortable: true },
-  { key: 'status', label: t('forms.col.status') },
-  { key: 'responses_count', label: t('forms.col.responses'), sortable: true, hideBelow: 'sm' },
-  { key: 'updated_at', label: t('forms.col.updated'), sortable: true, hideBelow: 'md' },
-])
-const fetcher: DataFetcher<FormSummary> = (params, signal) =>
-  api.list<FormSummary>('/forms', { ...params, 'filter[template]': key.value }, { signal })
 </script>
 
 <template>
@@ -89,42 +77,9 @@ const fetcher: DataFetcher<FormSummary> = (params, signal) =>
       <p class="-mb-2 max-w-3xl text-sm text-muted">{{ template.description }}</p>
       <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
         <TemplatesPreview :schema="template.schema" :title="template.name" />
-        <TemplatesIncluded :template="template" />
+        <TemplatesIncluded :template="template" @use="useOpen = true" />
       </div>
 
-      <section class="flex flex-col gap-3">
-        <h2 class="text-sm font-semibold text-highlighted">{{ t('templates.formsFrom', { count: template.forms_count }, template.forms_count) }}</h2>
-        <DataView
-          :id="`template-forms`"
-          :columns="columns"
-          :fetcher="fetcher"
-          default-sort="-updated_at"
-          :search-placeholder="t('forms.searchPlaceholder')"
-          empty-icon="i-lucide-file-text"
-          :empty-title="t('templates.noFormsTitle')"
-          :empty-description="t('templates.noFormsDesc')"
-        >
-          <template #name-cell="{ row }">
-            <NuxtLink :to="`/forms/${row.original.id}`" class="font-medium text-highlighted hover:underline">{{ row.original.name }}</NuxtLink>
-          </template>
-          <template #status-cell="{ row }">
-            <DataStatusBadge :status="row.original.status" />
-          </template>
-          <template #responses_count-cell="{ row }">
-            <span class="tabular-nums">{{ number(row.original.responses_count) }}</span>
-          </template>
-          <template #updated_at-cell="{ row }">
-            <span class="text-muted">{{ relative(row.original.updated_at) }}</span>
-          </template>
-          <template #grid-card="{ row }">
-            <NuxtLink :to="`/forms/${row.id}`" class="flex h-full flex-col gap-2 rounded-lg border border-default p-3 hover:border-accented">
-              <span class="font-medium text-highlighted">{{ row.name }}</span>
-              <DataStatusBadge :status="row.status" class="self-start" />
-              <span class="mt-auto text-xs text-muted">{{ t('forms.col.responses') }}: {{ number(row.responses_count) }} · {{ relative(row.updated_at) }}</span>
-            </NuxtLink>
-          </template>
-        </DataView>
-      </section>
 
       <TemplatesUseModal v-model:open="useOpen" :template="template" />
     </template>

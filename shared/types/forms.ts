@@ -39,6 +39,8 @@ export interface FormSummary {
 export interface FormFacets {
   owners: FormOwner[]
   tags: string[]
+  /** Templates the forms were made from (for the Template filter). */
+  templates: { key: string; name: string }[]
 }
 
 export type FormLifecycleAction = 'unpublish' | 'close' | 'reopen' | 'archive' | 'unarchive' | 'restore'
@@ -91,4 +93,27 @@ export interface SavedTheme {
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
+}
+
+/** GET /forms/:id/overview — everything the form overview page shows (F9 redesign). */
+export interface FormOverview {
+  stats: {
+    views: number
+    starts: number
+    responses: number
+    /** 0–100 */
+    completion_rate: number
+    /** Median time to complete, in seconds (null until there are responses). */
+    avg_seconds: number | null
+    last_response_at: string | null
+  }
+  /** Responses per day for the last 30 days, oldest first (ISO date). */
+  daily: { date: string; count: number }[]
+  structure: { pages: number; fields: number; logic: number; calculations: number }
+  /** Latest published versions, newest first (up to 3). */
+  versions: Omit<FormVersion, 'change_summary'>[]
+  template: { key: string; name: string } | null
+  /** Design tokens and first questions, for the themed mini preview. */
+  theme: Record<string, unknown>
+  preview: string[]
 }

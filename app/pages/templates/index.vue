@@ -189,8 +189,8 @@ const isBusy = (template: TemplateSummary) => busyKeys.value.has(template.key)
     >
       <template #name-cell="{ row }">
         <NuxtLink :to="`/templates/${row.original.key}`" class="flex min-w-0 items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">
-          <span class="w-20 shrink-0 overflow-hidden rounded-md border border-default">
-            <TemplatesThumb :theme="row.original.theme" :title="row.original.name" :labels="row.original.preview" compact />
+          <span class="w-16 shrink-0 overflow-hidden rounded-sm border border-default">
+            <TemplatesThumb :theme="row.original.theme" :title="row.original.name" :labels="row.original.preview" mini />
           </span>
           <span class="flex min-w-0 flex-col">
             <span class="flex min-w-0 items-center gap-1.5 truncate font-medium text-highlighted">

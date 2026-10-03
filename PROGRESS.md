@@ -23,9 +23,9 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F10   | Renderer, preview, share, embed, short links, SEO | ⬜     | 0%   |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
-| F13   | API service                                       | 🟡     | ~2%  |
+| F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
-| F15   | Option sets, webhooks & API keys                  | ⬜     | 0%   |
+| F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
 | F18   | Analytics                                         | ⬜     | 0%   |
@@ -391,6 +391,14 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Business & Customer (10): Customer Feedback · Customer Satisfaction (CSAT / NPS — NPS group calculated) · Product Review · Contact / Inquiry · Quote / Estimate Request (line totals, tax, total) · Order Form (line totals, subtotal, tax, total) · Complaint / Dispute · Service Request · Lead Capture / Newsletter Signup · Return / Refund Request (refund amount)
 - ✅ HR & Workplace (10): Job Application · Employee Onboarding · Exit Interview · Leave / Time-Off Request (days requested) · Performance Review / Appraisal (average score, rating band) · Employee Engagement Survey (engagement index) · Expense Reimbursement (claim total) · Timesheet (hours, overtime) · Training Feedback (average) · Reference Check
 
+### Milestone 1 follow-ups (owner review 2026-10-03)
+
+- ✅ Template page: "What's included" as tiles; calculations as code snippets (coloured field references, functions, text, numbers; copy button; team-only marked); usage + the latest forms made from the template in a slider with "View all" (forms list → Template filter) — moved from below the preview to the side
+- ✅ Table view: small even thumbnails (64 × 40, small radius, shapes only)
+- ✅ Sidebar: Templates (new icon) and Themes (palette icon) open submenus with the 6 most recent + "All …"; Responses opens status submenus (All, New, Reviewed, Approved, Rejected, Exports) with counts
+- ✅ Form overview redesigned: KPI tiles (responses, completion with views → starts, median time, last response), 30-day response chart with hover / keyboard tooltips, share links (fill + embed), structure tiles linked to Build / Logic / Design, versions timeline, details with the template it came from, activity
+- ✅ Field access: Departments and Roles open with the list to pick from ("All …" is a switch, off by default)
+
 ### Milestone 2 — Health & Safety · Events & Bookings · Hospitality
 
 - ⬜ Health & Safety (8): Risk Assessment (likelihood × severity = risk score, risk level, action required when high) · Incident / Accident Report (severity score) · Near-Miss Report (potential severity) · Safety Inspection Checklist (compliance %) · Patient Intake · Medical History · Health Screening / Declaration (flag when any "yes") · Consent Form — controls only, no compliance claims
@@ -430,6 +438,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ⬜ Closed / expired / not found / password-protected / response-limit states
 - ⬜ Multi-page with progress, save and resume
 - ⬜ File uploads to secure upload links with progress
+- ⬜ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key` — the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
 - ⬜ Spam protection (captcha)
 - ⬜ Thank-you page or redirect
 - ⬜ Preview page with device frames
@@ -526,7 +535,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ---
 
-## F13 — API service 🟡
+## F13 — API service & integrations 🟡
 
 **Goal:** turn any form into an API so organisations collect data from every side — **links, embeds and API** — all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
@@ -590,7 +599,14 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ⬜ TLS only; CORS per endpoint for browser callers; request size limits; no secrets or bodies in logs by default
 - ⬜ Permissions per role in F22; admins only until then
 
-### 9. API (mock first)
+### 9. Integrations (moved here from F15, owner 2026-10-03)
+
+- ✅ Menu entries in the API service area: Webhooks · API keys · App integrations (placeholders; old `/integrations/*` links redirect)
+- ⬜ Webhooks: create (URL, events, secret), signed payloads, test delivery; delivery log with retries and response details
+- ⬜ API keys (Formalie's own management API): create (name, scopes, expiry), show once, copy, revoke, last used
+- ⬜ App integrations: Google Sheets, Slack / team chat, email notifications to external addresses
+
+### 10. API (mock first)
 
 - ⬜ Portal management API: `/api-services` · `/api-services/{id}/endpoints` · `/api-tokens` · `/api-access-rules` · `/api-logs` · `/api-analytics`; error codes `FRM-API-*`; contract updated
 
@@ -668,7 +684,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ---
 
-## F15 — Option sets, webhooks & API keys ⬜
+## F15 — Option sets & payments ⬜
 
 ### Option sets (reusable choice lists)
 
@@ -687,15 +703,6 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 - Moved to **F12 — Data sources & databases** (connections, sending form data, explorer, query editor, other database operations).
 
-### Webhooks
-
-- ⬜ Create (URL, events, secret), signed payloads, test delivery
-- ⬜ Delivery log with retries and response details
-
-### API keys
-
-- ⬜ Create (name, scopes, expiry), show once, copy, revoke, last used
-
 ### Payments (Payment field — shown as "soon" in the builder until then)
 
 - ⬜ Payment providers per workspace (connect with the provider's own sign-in; e.g. Stripe, PayPal, Adyen, Mollie, Razorpay, Flutterwave, Paystack — global and regional), test / live mode
@@ -703,9 +710,9 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ Card details never touch Formalie: the provider's secure checkout / hosted fields; we keep only the payment status, reference and amount
 - ⬜ Response shows paid / pending / failed / refunded; receipts by email; refunds from the response (audited); webhooks from the provider confirm payment before the response counts as complete
 
-### Other integrations (later)
+### Webhooks, API keys, other integrations
 
-- ⬜ Google Sheets, Slack, email notifications to external addresses
+- Moved to **F13 — API service & integrations** (owner, 2026-10-03: integrations belong to the API service).
 
 ---
 
@@ -869,6 +876,14 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | IP address and MAC address typing masks (MAC: other notations allowed)                                                                                                                                                                                                                                                                                            | F8                                                                                | ✅         |
 | 2026-10-03 | Field access: Everyone / Departments / Roles / People; restricted fields never required                                                                                                                                                                                                                                                                           | F8 (answers visibility in F11)                                                    | ✅         |
 | 2026-10-03 | Payment field — intention                                                                                                                                                                                                                                                                                                                                         | F15 (Payments)                                                                    | ⬜         |
+| 2026-10-03 | How duplicate submissions are prevented                                                                                                                                                                                                                                                                                                                           | F10                                                                               | ⬜ planned |
+| 2026-10-03 | Field access: Departments / Roles showed no list to pick from                                                                                                                                                                                                                                                                                                     | F8                                                                                | ✅         |
+| 2026-10-03 | Templates table: smaller, even thumbnails                                                                                                                                                                                                                                                                                                                         | F9                                                                                | ✅         |
+| 2026-10-03 | Form overview page: a much richer, connected design                                                                                                                                                                                                                                                                                                               | F9 (owner request)                                                                | ✅         |
+| 2026-10-03 | Templates and Themes menus: new icons, submenus with the 6 most recent + "All"                                                                                                                                                                                                                                                                                    | F9                                                                                | ✅         |
+| 2026-10-03 | Integrations belong to the API service (menu + phase)                                                                                                                                                                                                                                                                                                             | F13                                                                               | ✅ moved   |
+| 2026-10-03 | Responses menu with submenus (statuses, exports)                                                                                                                                                                                                                                                                                                                  | F11                                                                               | ✅ menu    |
+| 2026-10-03 | Template page side panel: better tiles, calculations as code snippets, forms made from it as a slider with "View all"                                                                                                                                                                                                                                             | F9                                                                                | ✅         |
 
 ---
 
@@ -929,3 +944,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F8 | Owner follow-ups: folder hint, IP / MAC typing masks, field access (audience) with directory picker and "never required" rule (editor, form, publish check, logic). |
 | 2026-10-03 | F19 | New phase **F19 — AI assistant** (own rail area + placeholder pages); later phases renumbered F20–F22. F9 plan written: framework + 84 templates in 5 milestones. Payments planned in F15. |
 | 2026-10-03 | F9 | Milestone 1: template authoring kit (`shared/templates/`), 11 categories with their own designs, 20 templates (Business & Customer, HR & Workplace) with calculations (totals, averages, days, rating bands, loyalty group) and logic — all tested as valid, publishable forms; formula additions `avg` / `count` / `days` / text results, internal calculations; gallery (Grid of themed cards / Table, category chips with counts, filters, sorts), template page (live preview, what’s included, formulas, usage, forms made from it), Use template, Save as template, workspace templates (duplicate, delete), New form catalogue picker; seeded sample forms linked to templates; mock `/templates`; 20 languages. Also: confirm dialog keeps its text while closing. |
+| 2026-10-03 | F9 | Owner review round: form overview redesign (KPIs, 30-day chart, share, structure, versions, details, activity; mock `/forms/:id/overview`), template page side panel (tiles, formula snippets, forms slider), mini table thumbnails, sidebar submenus (Templates / Themes recent 6 + All, Responses statuses), integrations moved to the API service (pages + redirects; F13 renamed "API service & integrations", F15 "Option sets & payments"), forms list Template filter, field access list fix. Duplicate-submission protection planned (F10). |

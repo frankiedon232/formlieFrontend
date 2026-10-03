@@ -182,6 +182,53 @@
       "activity": "Actividad",
       "openBuilder": "Preguntas, páginas y reglas",
       "openBuilderDesc": "Abre el editor para añadir o cambiar preguntas. Los cambios quedan en borrador hasta que publiques."
+    },
+    "filterTemplate": "Plantilla",
+    "overview": {
+      "subtitle": "{status} · actualizado {updated}",
+      "trendTitle": "Respuestas: últimos 30 días",
+      "trendDesc": "Envíos por día",
+      "trendAria": "Respuestas por día en los últimos 30 días, {total} en total",
+      "responsesCount": "{count} respuesta | {count} respuestas",
+      "noTrend": "Sin respuestas en los últimos 30 días",
+      "noTrendDesc": "Comparta el formulario para empezar a recopilar respuestas.",
+      "responses": "Respuestas",
+      "last30": "{n} en los últimos 30 días",
+      "completion": "Tasa de finalización",
+      "funnel": "{starts} iniciadas · {views} visitas",
+      "time": "Tiempo mediano para completar",
+      "timeHint": "Desde la primera respuesta hasta el envío",
+      "seconds": "{n} s",
+      "minutesShort": "{n} min",
+      "lastResponse": "Última respuesta",
+      "lastResponseHint": "Envío más reciente",
+      "noResponses": "Aún no hay respuestas",
+      "shareTitle": "Compartir",
+      "shareLive": "Cualquier persona con el enlace puede rellenarlo.",
+      "shareNotLive": "Los enlaces funcionan cuando se publica el formulario.",
+      "live": "Activo",
+      "link": "Enlace del formulario",
+      "embed": "Enlace para insertar",
+      "openLink": "Abrir formulario",
+      "qr": "Código QR",
+      "soon": "Pronto",
+      "structureTitle": "Contenido de este formulario",
+      "pages": "{count} página | {count} páginas",
+      "rules": "reglas",
+      "formulas": "fórmulas",
+      "part": {
+        "questions": "Preguntas",
+        "logic": "Reglas lógicas",
+        "calculations": "Cálculos"
+      },
+      "editDesign": "Editar el diseño",
+      "design": "Diseño",
+      "versions": "Versiones",
+      "allVersions": "Todas las versiones",
+      "noVersions": "Aún no publicado: las versiones aparecen al publicar.",
+      "detailsTitle": "Detalles",
+      "tags": "Etiquetas",
+      "noHistory": "Publicado antes de que se guardara el historial de versiones; empieza con la próxima publicación."
     }
   },
   "nav": {
@@ -242,7 +289,16 @@
     "aiInsights": "Información y resúmenes",
     "aiTranslate": "Traducciones",
     "aiHistory": "Historial",
-    "aiSettings": "Ajustes y uso"
+    "aiSettings": "Ajustes y uso",
+    "templatesAll": "Todas las plantillas",
+    "themesAll": "Todos los temas",
+    "responsesAll": "Todas las respuestas",
+    "responsesNew": "Nuevas",
+    "responsesReviewed": "Revisadas",
+    "responsesApproved": "Aprobadas",
+    "responsesRejected": "Rechazadas",
+    "responsesExports": "Exportaciones",
+    "apiApps": "Integraciones de apps"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -349,7 +405,8 @@
     "FRM-FORM-1009": "Ya existe una lista con este nombre.",
     "FRM-FORM-1010": "Ya existe un tema con este nombre.",
     "FRM-FORM-1011": "Las plantillas del sistema no se pueden cambiar. Duplíquela para crear la suya.",
-    "FRM-FORM-1012": "Ya existe una plantilla con este nombre."
+    "FRM-FORM-1012": "Ya existe una plantilla con este nombre.",
+    "FRM-RESP-1003": "Este formulario ya se envió desde esta sesión."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -962,7 +1019,8 @@
     "facts": {
       "pages": "{count} página | {count} páginas",
       "logic": "{count} regla lógica | {count} reglas lógicas",
-      "calculations": "{count} cálculo | {count} cálculos"
+      "calculations": "{count} cálculo | {count} cálculos",
+      "pagesLabel": "Páginas"
     },
     "stats": {
       "forms": "Formularios",
@@ -1065,7 +1123,10 @@
         "description": "Preguntas estructuradas para referencias, habilidades valoradas con una media y una respuesta clara sobre volver a contratar."
       }
     },
-    "openGallery": "Abrir la galería completa"
+    "openGallery": "Abrir la galería completa",
+    "teamOnlyHint": "Calculado y guardado, pero no se muestra a los encuestados.",
+    "copyFormula": "Copiar la fórmula de {name}",
+    "viewAll": "Ver todo"
   },
   "builder": {
     "crumb": "Editor",
@@ -2120,7 +2181,10 @@
       "access": "Permita o bloquee llamadas por dirección IP, dominio, región o país.",
       "logs": "Cada llamada con su estado, duración y origen.",
       "analytics": "Llamadas, errores y tiempos de respuesta por servicio y endpoint.",
-      "docs": "Documentación lista para usar y un lugar para probar cada endpoint."
+      "docs": "Documentación lista para usar y un lugar para probar cada endpoint.",
+      "webhooks": "Envíe cada nueva respuesta a sus propios sistemas en cuanto llegue, firmada y con reintentos.",
+      "apiKeys": "Claves para la API de Formalie: gestione formularios y respuestas desde su código.",
+      "apps": "Conecte apps como hojas de cálculo y chat de equipo."
     }
   },
   "ai": {

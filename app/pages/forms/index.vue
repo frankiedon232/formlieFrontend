@@ -8,14 +8,14 @@ import type { FormFacets, FormFolder, FormSummary } from '#shared/types/forms'
 
 definePageMeta({ breadcrumb: 'nav.forms' })
 
-const { t } = useI18n()
+const { t, te } = useI18n()
 const api = useApi()
 const { relative, date, number } = useFormat()
 useHead({ title: () => t('nav.forms') })
 
 const dataView = useTemplateRef<{ refresh: () => Promise<void> }>('dataView')
 const folders = ref<FormFolder[]>([])
-const facets = ref<FormFacets>({ owners: [], tags: [] })
+const facets = ref<FormFacets>({ owners: [], tags: [], templates: [] })
 const foldersLoading = ref(false)
 
 async function loadMeta() {
@@ -111,6 +111,15 @@ const filters = computed<DataFilter[]>(() => [
     key: 'tag',
     label: t('forms.filterTag'),
     options: facets.value.tags.map(tag => ({ value: tag, label: tag })),
+  },
+  {
+    // Forms made from a template (template page → "View all").
+    key: 'template',
+    label: t('forms.filterTemplate'),
+    options: facets.value.templates.map(item => ({
+      value: item.key,
+      label: te(`templates.items.${item.key}.name`) ? t(`templates.items.${item.key}.name`) : item.name,
+    })),
   },
 ])
 

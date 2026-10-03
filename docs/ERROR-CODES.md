@@ -48,6 +48,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FORM-1012 | 409  | A template with this name already exists.                         | INFO     |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                            | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                                    | WARNING  |
+| FRM-RESP-1003 | 409  | This form was already submitted from this session.                | WARNING  |
 | FRM-FILE-1001 | 400  | File type not allowed.                                            | INFO     |
 | FRM-FILE-1002 | 413  | File too large.                                                   | INFO     |
 | FRM-FILE-1003 | 400  | File failed security scan.                                        | WARNING  |
