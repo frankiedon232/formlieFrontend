@@ -2085,6 +2085,24 @@
       "close": "Anleitung schließen",
       "defaultTitle": "So füllen Sie dieses Formular aus",
       "subtitle": "Anleitung der Veranstaltenden"
+    },
+    "resume": {
+      "auto": "Ihre Antworten werden laufend gespeichert",
+      "saving": "Wird gespeichert…",
+      "saved": "Gespeichert {when}",
+      "notSaved": "Nicht gespeichert – prüfen Sie Ihre Verbindung",
+      "later": "Speichern und später fortsetzen",
+      "title": "Später fortsetzen",
+      "desc": "Wir senden Ihnen einen persönlichen Link, der Ihre Antworten wiederherstellt – auf jedem Gerät, 30 Tage lang.",
+      "email": "Ihre E-Mail-Adresse",
+      "emailHint": "Der Link geht nur an diese Adresse. Geben Sie ihn nicht weiter: Wer ihn hat, kann Ihr Formular fortsetzen.",
+      "send": "Link senden",
+      "sent": "Link an {email} gesendet",
+      "sentHint": "Öffnen Sie ihn jederzeit in den nächsten 30 Tagen, um dort weiterzumachen, wo Sie aufgehört haben.",
+      "devLink": "Entwicklung: der Link, der per E-Mail gesendet würde",
+      "copy": "Link kopieren",
+      "copied": "Link kopiert",
+      "keepGoing": "Weiter ausfüllen"
     }
   },
   "logic": {

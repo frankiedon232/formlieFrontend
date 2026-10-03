@@ -2085,6 +2085,24 @@
       "close": "Funga mwongozo",
       "defaultTitle": "Jinsi ya kujaza fomu hii",
       "subtitle": "Mwongozo kutoka kwa mratibu"
+    },
+    "resume": {
+      "auto": "Majibu yako yanahifadhiwa unapoendelea",
+      "saving": "Inahifadhi…",
+      "saved": "Imehifadhiwa {when}",
+      "notSaved": "Haijahifadhiwa — angalia muunganisho wako",
+      "later": "Hifadhi na uendelee baadaye",
+      "title": "Endelea baadaye",
+      "desc": "Tutakutumia kiungo binafsi kinachorejesha majibu yako — kwenye kifaa chochote, kwa siku 30.",
+      "email": "Barua pepe yako",
+      "emailHint": "Kiungo kitatumwa kwa anwani hii pekee. Kiweke siri: yeyote aliye nacho anaweza kuendelea na fomu yako.",
+      "send": "Nitumie kiungo",
+      "sent": "Kiungo kimetumwa kwa {email}",
+      "sentHint": "Kifungue wakati wowote ndani ya siku 30 zijazo ili uendelee ulipoachia.",
+      "devLink": "Usanidi: kiungo ambacho kingetumwa kwa barua pepe",
+      "copy": "Nakili kiungo",
+      "copied": "Kiungo kimenakiliwa",
+      "keepGoing": "Endelea kujaza"
     }
   },
   "logic": {

@@ -66,7 +66,7 @@ export async function usePublicForm(key: string) {
  *     return visit says so; a new response from the same browser only "for someone else";
  *   - refusals become outcomes the form can show: already sent · exact duplicate · answer taken.
  */
-export function usePublicSubmit(key: string, channel: 'link' | 'embed') {
+export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?: { token: Ref<string | null>; finished: () => void }) {
   const api = useApi()
   const { locale } = useI18n()
   const { handle } = useErrorHandler()
@@ -120,10 +120,12 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed') {
           for_someone_else: forSomeoneElse.value || undefined,
           confirmed_different: confirmedDifferent.value || undefined,
           verification_token: verificationToken.value ?? undefined,
+          resume_token: resume?.token.value ?? undefined,
         },
         { headers: { 'Idempotency-Key': submissionId() } },
       )
       newSession() // A next fill-in is a new session.
+      resume?.finished()
       forSomeoneElse.value = false
       confirmedDifferent.value = false
       verificationToken.value = null

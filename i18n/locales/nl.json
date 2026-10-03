@@ -2085,6 +2085,24 @@
       "close": "Handleiding sluiten",
       "defaultTitle": "Zo vul je dit formulier in",
       "subtitle": "Handleiding van de organisator"
+    },
+    "resume": {
+      "auto": "Je antwoorden worden onderweg opgeslagen",
+      "saving": "Opslaan…",
+      "saved": "Opgeslagen {when}",
+      "notSaved": "Niet opgeslagen — controleer je verbinding",
+      "later": "Opslaan en later verdergaan",
+      "title": "Later verdergaan",
+      "desc": "We sturen je een persoonlijke link waarmee je je antwoorden terugkrijgt — op elk apparaat, 30 dagen lang.",
+      "email": "Je e-mailadres",
+      "emailHint": "De link gaat alleen naar dit adres. Houd hem privé: iedereen met de link kan je formulier verder invullen.",
+      "send": "Stuur mijn link",
+      "sent": "Link verstuurd naar {email}",
+      "sentHint": "Open hem wanneer je wilt in de komende 30 dagen om verder te gaan waar je gebleven was.",
+      "devLink": "Ontwikkeling: de link die gemaild zou worden",
+      "copy": "Link kopiëren",
+      "copied": "Link gekopieerd",
+      "keepGoing": "Verder invullen"
     }
   },
   "logic": {

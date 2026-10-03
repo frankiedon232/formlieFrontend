@@ -2085,6 +2085,24 @@
       "close": "Kılavuzu kapat",
       "defaultTitle": "Bu form nasıl doldurulur",
       "subtitle": "Düzenleyicinin kılavuzu"
+    },
+    "resume": {
+      "auto": "Yanıtlarınız siz doldurdukça kaydedilir",
+      "saving": "Kaydediliyor…",
+      "saved": "Kaydedildi: {when}",
+      "notSaved": "Kaydedilmedi — bağlantınızı kontrol edin",
+      "later": "Kaydet ve sonra devam et",
+      "title": "Sonra devam et",
+      "desc": "Yanıtlarınızı geri getiren kişisel bir bağlantı göndereceğiz — her cihazda, 30 gün boyunca.",
+      "email": "E-posta adresiniz",
+      "emailHint": "Bağlantı yalnızca bu adrese gönderilir. Kimseyle paylaşmayın: bağlantıya sahip olan herkes formunuza devam edebilir.",
+      "send": "Bağlantımı gönder",
+      "sent": "Bağlantı {email} adresine gönderildi",
+      "sentHint": "Kaldığınız yerden devam etmek için önümüzdeki 30 gün içinde istediğiniz zaman açın.",
+      "devLink": "Geliştirme: e-postayla gönderilecek bağlantı",
+      "copy": "Bağlantıyı kopyala",
+      "copied": "Bağlantı kopyalandı",
+      "keepGoing": "Doldurmaya devam et"
     }
   },
   "logic": {

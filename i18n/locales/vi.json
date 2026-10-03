@@ -2085,6 +2085,24 @@
       "close": "Đóng hướng dẫn",
       "defaultTitle": "Cách điền biểu mẫu này",
       "subtitle": "Hướng dẫn từ ban tổ chức"
+    },
+    "resume": {
+      "auto": "Câu trả lời của bạn được lưu trong lúc bạn điền",
+      "saving": "Đang lưu…",
+      "saved": "Đã lưu {when}",
+      "notSaved": "Chưa lưu — hãy kiểm tra kết nối của bạn",
+      "later": "Lưu và tiếp tục sau",
+      "title": "Tiếp tục sau",
+      "desc": "Chúng tôi sẽ gửi cho bạn một liên kết cá nhân để khôi phục câu trả lời — trên mọi thiết bị, trong 30 ngày.",
+      "email": "Email của bạn",
+      "emailHint": "Liên kết chỉ được gửi đến địa chỉ này. Hãy giữ kín: bất kỳ ai có liên kết đều có thể tiếp tục biểu mẫu của bạn.",
+      "send": "Gửi liên kết cho tôi",
+      "sent": "Đã gửi liên kết đến {email}",
+      "sentHint": "Mở bất cứ lúc nào trong 30 ngày tới để tiếp tục từ chỗ bạn đã dừng.",
+      "devLink": "Phát triển: liên kết sẽ được gửi qua email",
+      "copy": "Sao chép liên kết",
+      "copied": "Đã sao chép liên kết",
+      "keepGoing": "Tiếp tục điền"
     }
   },
   "logic": {

@@ -2085,6 +2085,24 @@
       "close": "Close the guide",
       "defaultTitle": "How to fill in this form",
       "subtitle": "Guide from the organiser"
+    },
+    "resume": {
+      "auto": "Your answers are saved as you go",
+      "saving": "Saving…",
+      "saved": "Saved {when}",
+      "notSaved": "Not saved — check your connection",
+      "later": "Save and continue later",
+      "title": "Continue later",
+      "desc": "We’ll send you a personal link that brings back your answers — on any device, for 30 days.",
+      "email": "Your email",
+      "emailHint": "The link goes only to this address. Keep it private: anyone with it can continue your form.",
+      "send": "Send my link",
+      "sent": "Link sent to {email}",
+      "sentHint": "Open it any time in the next 30 days to carry on where you left off.",
+      "devLink": "Development: the link that would be emailed",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "keepGoing": "Keep filling in"
     }
   },
   "logic": {

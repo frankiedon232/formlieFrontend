@@ -11,6 +11,7 @@ import { isInputField } from '#shared/utils/forms/fields'
 import { calculateResult } from '#shared/utils/forms/formula'
 import { evaluateLogic } from '#shared/utils/forms/logic'
 import { effectiveField, nextPageIndex } from '#shared/utils/forms/submission'
+import { identityOf } from '#shared/utils/forms/identity'
 import { validateAnswer, type AddressPart, type ValidationIssue } from '#shared/utils/forms/validate'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { FormTheme } from '#shared/utils/forms/theme'
@@ -226,6 +227,33 @@ function next() {
 function back() {
   index.value = trail.value.pop() ?? Math.max(0, index.value - 1)
 }
+// Save and resume (F10 M2): restore saved answers + page, then save after every change.
+const resume = computed(() => (props.preview ? undefined : props.respondent?.resume))
+const resumeOpen = ref(false)
+watch(
+  () => resume.value?.initial,
+  saved => {
+    if (!saved) return
+    answers.value = { ...defaults(), ...saved.data }
+    index.value = Math.min(Math.max(0, saved.page), props.schema.pages.length - 1)
+    trail.value = []
+  },
+  { immediate: true },
+)
+watch(
+  [answers, index],
+  () => {
+    if (resume.value && !done.value) resume.value.save({ ...answers.value }, index.value)
+  },
+  { deep: true },
+)
+const resumeEmail = computed(() => {
+  const key = identityOf(props.schema).email ?? [...allFieldsByKey.value.values()].find(f => f.type === 'email')?.key
+  const value = key ? answers.value[key] : ''
+  return typeof value === 'string' ? value : ''
+})
+const { relative } = useFormat()
+
 function restart() {
   index.value = 0
   trail.value = []
@@ -313,7 +341,28 @@ function restart() {
             class="rtl:[&_svg]:rotate-180"
           />
         </div>
+        <!-- Save and resume: saved status + "continue later". -->
+        <div v-if="resume" class="flex flex-wrap items-center justify-between gap-2 border-t border-(--ui-border) pt-3 text-xs text-muted">
+          <span class="flex items-center gap-1.5" role="status" aria-live="polite">
+            <UIcon
+              :name="resume.state === 'saving' ? 'i-lucide-loader-circle' : resume.state === 'error' ? 'i-lucide-cloud-alert' : 'i-lucide-cloud-check'"
+              class="size-3.5 shrink-0"
+              :class="resume.state === 'saving' ? 'animate-spin' : resume.state === 'error' ? 'text-(--ui-error)' : ''"
+            />
+            {{
+              resume.state === 'saving'
+                ? t('renderer.resume.saving')
+                : resume.state === 'error'
+                  ? t('renderer.resume.notSaved')
+                  : resume.savedAt
+                    ? t('renderer.resume.saved', { when: relative(resume.savedAt) })
+                    : t('renderer.resume.auto')
+            }}
+          </span>
+          <UButton :label="t('renderer.resume.later')" icon="i-lucide-bookmark" :color="button.color" variant="link" size="xs" class="px-0" @click="resumeOpen = true" />
+        </div>
       </form>
+      <FormsRendererResume v-if="resume" v-model:open="resumeOpen" :default-email="resumeEmail" :later="resume.later" />
     </template>
 
     <div v-else class="flex flex-col items-center gap-3 py-10 text-center">

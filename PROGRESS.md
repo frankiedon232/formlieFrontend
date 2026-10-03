@@ -457,7 +457,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Public page server-rendered with SEO (title, description, image, canonical, noindex); `forms.*` host served without a workspace (tenant from the form key)
 - ✅ Secure server-side fetch for server-rendered pages (internal route + server-only `NUXT_INTERNAL_TOKEN`)
 - 🟡 Closed / expired / not found / password-protected / response-limit states — ✅ not found (404), not published, closed, **expired (410) and not-open-yet** (availability dates, owner 2026-10-03), load error; password / limit come with the Share settings (M3)
-- ⬜ Multi-page with progress, save and resume
+- ✅ Multi-page with progress, **save and resume** (decision 87): autosave to a server draft, "Save and continue later" emails a 30-day resume link, the link restores answers and page, submitting closes the draft
 - ⬜ File uploads to secure upload links with progress
 - ✅ **Help guide** (owner, 2026-10-03, decision 86): Form settings → Help guide (off by default, rich editor in a window); a floating "?" on the form opens it in a chat-style panel
 - ✅ **Accent header** (decision 86): quote-like header style; Events & bookings and Operations & IT designs use it instead of the side panel
@@ -978,6 +978,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Still possible to send twice (one-letter email change): identify the person by their own email (not other emails in the form) or ID; smart matching; optional verification; never mistake another person | F10 | ✅ |
 | 2026-10-03 | Events & bookings and Operations & IT designs: side panel squeezed the form — use a smaller quote-like header instead | F9 follow-up | ✅ |
 | 2026-10-03 | Help guide per form: written in Form settings (rich editor, opened from a button), shown from a floating "?" in a chat-style panel; on / off, off by default | F10 | ✅ |
+| 2026-10-03 | Save and resume: how and where it works — built (autosave + "Save and continue later" link) | F10 M2 | ✅ |
 | 2026-10-03 | Portal text still looked faded: dark-mode headline colour fixed, body text darker, list values in the main text colour like the design image | F1 follow-up | ✅ |
 | 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
 

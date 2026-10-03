@@ -2085,6 +2085,24 @@
       "close": "Cerrar la guía",
       "defaultTitle": "Cómo rellenar este formulario",
       "subtitle": "Guía de la organización"
+    },
+    "resume": {
+      "auto": "Tus respuestas se guardan mientras avanzas",
+      "saving": "Guardando…",
+      "saved": "Guardado {when}",
+      "notSaved": "No se guardó — revisa tu conexión",
+      "later": "Guardar y continuar más tarde",
+      "title": "Continuar más tarde",
+      "desc": "Te enviaremos un enlace personal que recupera tus respuestas — en cualquier dispositivo, durante 30 días.",
+      "email": "Tu correo electrónico",
+      "emailHint": "El enlace solo se envía a esta dirección. Guárdalo en privado: cualquiera que lo tenga puede continuar tu formulario.",
+      "send": "Enviar mi enlace",
+      "sent": "Enlace enviado a {email}",
+      "sentHint": "Ábrelo cuando quieras en los próximos 30 días para seguir donde lo dejaste.",
+      "devLink": "Desarrollo: el enlace que se enviaría por correo",
+      "copy": "Copiar enlace",
+      "copied": "Enlace copiado",
+      "keepGoing": "Seguir completando"
     }
   },
   "logic": {

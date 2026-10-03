@@ -25,6 +25,7 @@ import { responseForSubmission, responsesOf, saveResponses } from '../data/respo
 import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 import { websiteOf } from './onboarding'
+import { draftOf, newResumeToken, putDraft, RESUME_TTL_DAYS } from '../data/resumeStore'
 import { platformLegal } from '../data/platformStore'
 
 const RESPONDENT = { type: 'user' as const, id: null, name: 'Respondent', email: null }
@@ -127,6 +128,8 @@ const submitBody = z.object({
   confirmed_different: z.boolean().optional(),
   /** From /verify/confirm when the form verifies the respondent's email. */
   verification_token: z.string().max(80).optional(),
+  /** Save and resume: the draft this response finishes (closed on success). */
+  resume_token: z.string().max(80).optional(),
 })
 const SUBMISSION_ID = /^[A-Za-z0-9-]{16,64}$/
 
@@ -201,6 +204,10 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   }
   responsesOf(tenant).responses.unshift(response)
   saveResponses()
+  if (input.resume_token) {
+    const draft = draftOf(input.resume_token, form.id)
+    if (draft) putDraft(input.resume_token, { ...draft, closed: true, data: {}, updated_at: new Date().toISOString() })
+  }
   const stored = formsOf(tenant).forms.find(item => item.id === form.id)
   if (stored) {
     stored.responses_count += 1
@@ -271,4 +278,67 @@ export const confirmVerification = defineMockRoute(({ event, body }) => {
   entry.token = crypto.randomUUID()
   entry.tokenExpiresAt = Date.now() + TOKEN_TTL
   return ok({ token: entry.token })
+})
+
+// ── Save and resume (F10 M2) ────────────────────────────────────────────────────────────
+const draftBody = z.object({
+  data: z.record(z.string(), z.unknown()),
+  page: z.number().int().min(0).max(500).default(0),
+  /** Send the resume link to this address ("Save and continue later"). */
+  email: z.email().max(200).optional(),
+})
+
+/** The form must take responses and have Save and resume on. */
+function resumable(event: Parameters<typeof tenantOf>[0]) {
+  const { tenant, form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const schema = stateOf(form) === 'open' ? publishedSchema(tenant, form) : null
+  if (!schema) throw new MockError(stateOf(form) === 'expired' ? 'FRM-FORM-1015' : 'FRM-FORM-1002')
+  if (!schema.settings?.save_resume) throw new MockError('FRM-PERM-1001')
+  return { tenant, form }
+}
+/** The resume link — sent by email (a real backend); the mock returns it to the dev screen. */
+const resumeLink = (event: Parameters<typeof tenantOf>[0], key: string, token: string) =>
+  `https://${getRequestHost(event, { xForwardedHost: true })}/${key}/fill?resume=${encodeURIComponent(token)}`
+
+/** POST /public/forms/:key/sessions — start a draft → its resume token. */
+export const startDraft = defineMockRoute(({ event, body }) => {
+  const { tenant, form } = resumable(event)
+  const input = parseBody(draftBody, body)
+  const now = new Date()
+  const token = newResumeToken()
+  putDraft(token, {
+    tenantId: tenant.id,
+    formId: form.id,
+    data: input.data,
+    page: input.page,
+    email: input.email ?? null,
+    created_at: now.toISOString(),
+    updated_at: now.toISOString(),
+    expires_at: new Date(now.getTime() + RESUME_TTL_DAYS * 86_400_000).toISOString(),
+    closed: false,
+  })
+  const meta = import.meta.dev && input.email ? { dev_resume_url: resumeLink(event, form.public_key, token) } : {}
+  return ok({ resume_token: token, expires_at: new Date(now.getTime() + RESUME_TTL_DAYS * 86_400_000).toISOString(), sent_to: input.email ? maskEmail(input.email) : null }, meta, 201)
+})
+
+/** PUT /public/forms/:key/sessions/:token — save the answers so far (and send the link when an email is given). */
+export const saveDraft = defineMockRoute(({ event, body }) => {
+  const { form } = resumable(event)
+  const token = getRouterParam(event, 'token') ?? ''
+  const draft = draftOf(token, form.id)
+  if (!draft) throw new MockError('FRM-GEN-1004')
+  if (draft.closed) throw new MockError('FRM-RESP-1003')
+  const input = parseBody(draftBody, body)
+  putDraft(token, { ...draft, data: input.data, page: input.page, email: input.email ?? draft.email, updated_at: new Date().toISOString() })
+  const meta = import.meta.dev && input.email ? { dev_resume_url: resumeLink(event, form.public_key, token) } : {}
+  return ok({ saved_at: new Date().toISOString(), expires_at: draft.expires_at, sent_to: input.email ? maskEmail(input.email) : null }, meta)
+})
+
+/** GET /public/forms/:key/sessions/:token — the saved answers and page. */
+export const getDraft = defineMockRoute(({ event }) => {
+  const { form } = resumable(event)
+  const draft = draftOf(getRouterParam(event, 'token') ?? '', form.id)
+  if (!draft) throw new MockError('FRM-GEN-1004')
+  if (draft.closed) throw new MockError('FRM-RESP-1003')
+  return ok({ data: draft.data, page: draft.page, updated_at: draft.updated_at, expires_at: draft.expires_at })
 })

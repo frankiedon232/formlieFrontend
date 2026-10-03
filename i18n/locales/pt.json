@@ -2085,6 +2085,24 @@
       "close": "Fechar o guia",
       "defaultTitle": "Como preencher este formulário",
       "subtitle": "Guia da organização"
+    },
+    "resume": {
+      "auto": "Suas respostas são salvas conforme você avança",
+      "saving": "Salvando…",
+      "saved": "Salvo {when}",
+      "notSaved": "Não salvo — verifique sua conexão",
+      "later": "Salvar e continuar depois",
+      "title": "Continuar depois",
+      "desc": "Vamos enviar um link pessoal que recupera suas respostas — em qualquer dispositivo, por 30 dias.",
+      "email": "Seu e-mail",
+      "emailHint": "O link vai somente para este endereço. Mantenha-o em sigilo: qualquer pessoa com ele pode continuar seu formulário.",
+      "send": "Enviar meu link",
+      "sent": "Link enviado para {email}",
+      "sentHint": "Abra quando quiser nos próximos 30 dias para continuar de onde parou.",
+      "devLink": "Desenvolvimento: o link que seria enviado por e-mail",
+      "copy": "Copiar link",
+      "copied": "Link copiado",
+      "keepGoing": "Continuar preenchendo"
     }
   },
   "logic": {

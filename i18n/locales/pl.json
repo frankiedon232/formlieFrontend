@@ -2085,6 +2085,24 @@
       "close": "Zamknij przewodnik",
       "defaultTitle": "Jak wypełnić ten formularz",
       "subtitle": "Przewodnik od organizatora"
+    },
+    "resume": {
+      "auto": "Twoje odpowiedzi są zapisywane na bieżąco",
+      "saving": "Zapisywanie…",
+      "saved": "Zapisano {when}",
+      "notSaved": "Nie zapisano — sprawdź połączenie",
+      "later": "Zapisz i dokończ później",
+      "title": "Dokończ później",
+      "desc": "Wyślemy Ci osobisty link, który przywróci Twoje odpowiedzi — na dowolnym urządzeniu, przez 30 dni.",
+      "email": "Twój e-mail",
+      "emailHint": "Link trafi tylko na ten adres. Nie udostępniaj go: każdy, kto go ma, może kontynuować Twój formularz.",
+      "send": "Wyślij mój link",
+      "sent": "Link wysłany na adres {email}",
+      "sentHint": "Otwórz go w dowolnym momencie w ciągu najbliższych 30 dni, aby kontynuować od miejsca, w którym przerwano.",
+      "devLink": "Tryb deweloperski: link, który zostałby wysłany e-mailem",
+      "copy": "Kopiuj link",
+      "copied": "Skopiowano link",
+      "keepGoing": "Wypełniaj dalej"
     }
   },
   "logic": {

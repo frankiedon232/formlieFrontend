@@ -81,4 +81,12 @@ export interface RendererRespondent {
   /** Email code step (forms that verify the respondent's email). */
   sendCode: (email: string) => Promise<{ sentTo: string; devCode: string | null } | null>
   confirmCode: (email: string, code: string) => Promise<boolean>
+  /** Save and resume (forms that have it on). */
+  resume?: {
+    initial: { data: Record<string, unknown>; page: number } | null
+    state: 'idle' | 'saving' | 'saved' | 'error'
+    savedAt: string | null
+    save: (data: Record<string, unknown>, page: number) => void
+    later: (email: string) => Promise<{ sentTo: string | null; devUrl: string | null } | null>
+  }
 }

@@ -2085,6 +2085,24 @@
       "close": "Fermer le guide",
       "defaultTitle": "Comment remplir ce formulaire",
       "subtitle": "Guide de l’organisateur"
+    },
+    "resume": {
+      "auto": "Vos réponses sont enregistrées au fur et à mesure",
+      "saving": "Enregistrement…",
+      "saved": "Enregistré {when}",
+      "notSaved": "Non enregistré — vérifiez votre connexion",
+      "later": "Enregistrer et continuer plus tard",
+      "title": "Continuer plus tard",
+      "desc": "Nous vous enverrons un lien personnel qui restaure vos réponses — sur n’importe quel appareil, pendant 30 jours.",
+      "email": "Votre adresse e-mail",
+      "emailHint": "Le lien est envoyé uniquement à cette adresse. Gardez-le pour vous : toute personne qui le possède peut poursuivre votre formulaire.",
+      "send": "Envoyer mon lien",
+      "sent": "Lien envoyé à {email}",
+      "sentHint": "Ouvrez-le à tout moment dans les 30 prochains jours pour reprendre là où vous vous êtes arrêté.",
+      "devLink": "Développement : le lien qui serait envoyé par e-mail",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "keepGoing": "Continuer à remplir"
     }
   },
   "logic": {

@@ -2085,6 +2085,24 @@
       "close": "Chiudi la guida",
       "defaultTitle": "Come compilare questo modulo",
       "subtitle": "Guida dell’organizzatore"
+    },
+    "resume": {
+      "auto": "Le tue risposte vengono salvate man mano",
+      "saving": "Salvataggio…",
+      "saved": "Salvato {when}",
+      "notSaved": "Non salvato — controlla la connessione",
+      "later": "Salva e continua più tardi",
+      "title": "Continua più tardi",
+      "desc": "Ti invieremo un link personale che recupera le tue risposte — su qualsiasi dispositivo, per 30 giorni.",
+      "email": "La tua email",
+      "emailHint": "Il link viene inviato solo a questo indirizzo. Tienilo riservato: chiunque lo abbia può continuare il tuo modulo.",
+      "send": "Invia il mio link",
+      "sent": "Link inviato a {email}",
+      "sentHint": "Aprilo quando vuoi nei prossimi 30 giorni per riprendere da dove avevi lasciato.",
+      "devLink": "Sviluppo: il link che verrebbe inviato via email",
+      "copy": "Copia link",
+      "copied": "Link copiato",
+      "keepGoing": "Continua a compilare"
     }
   },
   "logic": {

@@ -2085,6 +2085,24 @@
       "close": "Tutup panduan",
       "defaultTitle": "Cara mengisi formulir ini",
       "subtitle": "Panduan dari penyelenggara"
+    },
+    "resume": {
+      "auto": "Jawaban Anda disimpan otomatis saat mengisi",
+      "saving": "Menyimpan…",
+      "saved": "Disimpan {when}",
+      "notSaved": "Belum tersimpan — periksa koneksi Anda",
+      "later": "Simpan dan lanjutkan nanti",
+      "title": "Lanjutkan nanti",
+      "desc": "Kami akan mengirimkan tautan pribadi yang mengembalikan jawaban Anda — di perangkat apa pun, selama 30 hari.",
+      "email": "Email Anda",
+      "emailHint": "Tautan hanya dikirim ke alamat ini. Jaga kerahasiaannya: siapa pun yang memilikinya dapat melanjutkan formulir Anda.",
+      "send": "Kirim tautan saya",
+      "sent": "Tautan dikirim ke {email}",
+      "sentHint": "Buka kapan saja dalam 30 hari ke depan untuk melanjutkan dari tempat terakhir Anda.",
+      "devLink": "Pengembangan: tautan yang akan dikirim lewat email",
+      "copy": "Salin tautan",
+      "copied": "Tautan disalin",
+      "keepGoing": "Lanjutkan mengisi"
     }
   },
   "logic": {
