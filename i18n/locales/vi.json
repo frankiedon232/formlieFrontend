@@ -168,7 +168,8 @@
         "logicText": "Hiện, ẩn hoặc bắt buộc câu hỏi và cộng tổng câu trả lời.",
         "saveTitle": "Tự lưu khi bạn làm",
         "saveText": "Mọi thay đổi được lưu dưới dạng bản nháp cho đến khi bạn xuất bản."
-      }
+      },
+      "folderHint": "Thư mục giúp sắp xếp biểu mẫu trong danh sách và thanh bên (ví dụ theo nhóm hoặc dự án). Đây không phải là danh mục mẫu."
     },
     "detail": {
       "created": "Ngày tạo",
@@ -232,7 +233,16 @@
     "apiAccess": "Quy tắc truy cập",
     "apiLogs": "Nhật ký yêu cầu",
     "apiAnalytics": "Phân tích",
-    "apiDocs": "Tài liệu & kiểm thử"
+    "apiDocs": "Tài liệu & kiểm thử",
+    "ai": "Trợ lý AI",
+    "aiOverview": "Tổng quan",
+    "aiCreateForm": "Tạo biểu mẫu",
+    "aiTemplates": "Ý tưởng mẫu",
+    "aiAnalysis": "Phân tích phản hồi",
+    "aiInsights": "Thông tin chi tiết & tóm tắt",
+    "aiTranslate": "Bản dịch",
+    "aiHistory": "Lịch sử",
+    "aiSettings": "Cài đặt & mức sử dụng"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -1249,6 +1259,30 @@
       "height": "Chiều cao",
       "heightHint": "Tự động hiển thị toàn bộ ảnh; chiều cao cố định sẽ cắt ảnh như biểu ngữ.",
       "heightAuto": "Tự động"
+    },
+    "audience": {
+      "title": "Quyền truy cập trường",
+      "label": "Trường này dành cho ai?",
+      "mode": {
+        "everyone": "Mọi người",
+        "department": "Phòng ban",
+        "role": "Vai trò",
+        "user": "Người dùng"
+      },
+      "everyoneHint": "Mọi người điền biểu mẫu đều thấy trường này.",
+      "all": {
+        "department": "Tất cả phòng ban",
+        "role": "Tất cả vai trò",
+        "user": "Tất cả mọi người trong không gian làm việc"
+      },
+      "pick": {
+        "department": "Chọn phòng ban",
+        "role": "Chọn vai trò",
+        "user": "Chọn người dùng"
+      },
+      "placeholder": "Chọn từ danh sách…",
+      "selected": "Chỉ {n} mục đã chọn mới có thể xem và điền trường này.",
+      "noRequired": "Trường bị giới hạn không thể bắt buộc — những người không thuộc đối tượng của trường vẫn phải gửi được biểu mẫu. Câu trả lời chỉ hiển thị với chính những người đó."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Chọn ngôn ngữ",
       "timezone": "Chọn múi giờ",
       "currency_code": "Chọn tiền tệ"
-    }
+    },
+    "restricted": "Chỉ dành cho một số người (quyền truy cập trường)"
   },
   "logic": {
     "crumb": "Logic",
@@ -1897,6 +1932,25 @@
       "logs": "Mọi lượt gọi kèm trạng thái, thời gian xử lý và bên gọi.",
       "analytics": "Lượt gọi, lỗi và thời gian phản hồi theo dịch vụ và endpoint.",
       "docs": "Tài liệu sẵn có và nơi để thử từng endpoint."
+    }
+  },
+  "ai": {
+    "subtitle": "Hỗ trợ tạo biểu mẫu và mẫu, phân tích câu trả lời và hơn thế nữa",
+    "back": "Tổng quan trợ lý AI",
+    "promise": {
+      "title": "Bạn luôn nắm quyền kiểm soát",
+      "review": "Trợ lý đề xuất — bạn xem xét và áp dụng.",
+      "private": "Bạn chọn những gì trợ lý được đọc; dữ liệu cá nhân có thể được loại trừ.",
+      "audit": "Mọi yêu cầu đều được ghi lại trong lịch sử và nhật ký kiểm tra."
+    },
+    "section": {
+      "createForm": "Mô tả nhu cầu của bạn và nhận bản nháp sẵn sàng với các trường, logic và phép tính.",
+      "templates": "Tạo mẫu cho ngành của bạn với thiết kế phù hợp.",
+      "analysis": "Tìm chủ đề, cảm xúc và xu hướng trong phản hồi của bạn.",
+      "insights": "Tóm tắt và bản tin về những gì biểu mẫu đang cho bạn biết.",
+      "translate": "Dịch biểu mẫu sang bất kỳ ngôn ngữ nào trong 20 ngôn ngữ và xem song song.",
+      "history": "Mọi điều trợ lý được yêu cầu, bởi ai và khi nào.",
+      "settings": "Bật hoặc tắt trợ lý, chọn những gì trợ lý được đọc và xem mức sử dụng."
     }
   }
 }

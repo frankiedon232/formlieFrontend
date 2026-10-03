@@ -21,6 +21,18 @@ export const formFieldSchema = z.object({
   readonly: z.boolean().optional(),
   /** Shown greyed out and not submitted. Never required. */
   disabled: z.boolean().optional(),
+  /**
+   * Field access — who the field is for. Everyone (default), or only some departments, roles or
+   * people (`all` = every one of that kind). A restricted field is never required: people it is
+   * not meant for must still be able to submit. Answers stay visible only to the same audience.
+   */
+  audience: z
+    .object({
+      mode: z.enum(['everyone', 'department', 'role', 'user']),
+      all: z.boolean().optional(),
+      ids: z.array(z.string().max(100)).max(500).optional(),
+    })
+    .optional(),
   validation: z.record(z.string(), z.unknown()).optional(),
   options: z
     .array(z.object({ value: text(200), label: text(500), score: z.number().finite().optional() }))

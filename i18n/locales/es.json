@@ -168,7 +168,8 @@
         "logicText": "Muestra, oculta u obliga preguntas y suma respuestas.",
         "saveTitle": "Se guarda mientras trabajas",
         "saveText": "Cada cambio se guarda como borrador hasta que publiques."
-      }
+      },
+      "folderHint": "Las carpetas mantienen tus formularios organizados en la lista y la barra lateral (por ejemplo, por equipo o proyecto). No son categorías de plantillas."
     },
     "detail": {
       "created": "Creado",
@@ -232,7 +233,16 @@
     "apiAccess": "Reglas de acceso",
     "apiLogs": "Registros",
     "apiAnalytics": "Analítica",
-    "apiDocs": "Docs y pruebas"
+    "apiDocs": "Docs y pruebas",
+    "ai": "Asistente de IA",
+    "aiOverview": "Resumen",
+    "aiCreateForm": "Crear un formulario",
+    "aiTemplates": "Ideas de plantillas",
+    "aiAnalysis": "Análisis de respuestas",
+    "aiInsights": "Información y resúmenes",
+    "aiTranslate": "Traducciones",
+    "aiHistory": "Historial",
+    "aiSettings": "Ajustes y uso"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -1249,6 +1259,30 @@
       "height": "Altura",
       "heightHint": "Automático muestra la imagen completa; una altura fija la recorta como un banner.",
       "heightAuto": "Automático"
+    },
+    "audience": {
+      "title": "Acceso al campo",
+      "label": "¿Para quién es este campo?",
+      "mode": {
+        "everyone": "Todos",
+        "department": "Departamentos",
+        "role": "Roles",
+        "user": "Personas"
+      },
+      "everyoneHint": "Todas las personas que rellenan el formulario ven este campo.",
+      "all": {
+        "department": "Todos los departamentos",
+        "role": "Todos los roles",
+        "user": "Todas las personas del espacio de trabajo"
+      },
+      "pick": {
+        "department": "Elegir departamentos",
+        "role": "Elegir roles",
+        "user": "Elegir personas"
+      },
+      "placeholder": "Elige de la lista…",
+      "selected": "Solo los {n} seleccionados pueden ver y rellenar este campo.",
+      "noRequired": "Los campos restringidos no pueden ser obligatorios: las personas a las que no va dirigido el campo deben poder enviar igualmente. Sus respuestas solo se muestran a esas mismas personas."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Elija un idioma",
       "timezone": "Elija una zona horaria",
       "currency_code": "Elija una moneda"
-    }
+    },
+    "restricted": "Solo para algunas personas (acceso al campo)"
   },
   "logic": {
     "crumb": "Lógica",
@@ -1897,6 +1932,25 @@
       "logs": "Cada llamada con su estado, duración y origen.",
       "analytics": "Llamadas, errores y tiempos de respuesta por servicio y endpoint.",
       "docs": "Documentación lista para usar y un lugar para probar cada endpoint."
+    }
+  },
+  "ai": {
+    "subtitle": "Ayuda para crear formularios y plantillas, analizar respuestas y mucho más",
+    "back": "Resumen del asistente de IA",
+    "promise": {
+      "title": "Tú tienes el control",
+      "review": "El asistente sugiere; tú revisas y aplicas.",
+      "private": "Tú eliges qué puede leer; los datos personales pueden quedar fuera.",
+      "audit": "Cada solicitud queda registrada en el historial y en el registro de auditoría."
+    },
+    "section": {
+      "createForm": "Describe lo que necesitas y obtén un borrador listo con campos, lógica y cálculos.",
+      "templates": "Genera plantillas para tu sector con un diseño a juego.",
+      "analysis": "Descubre temas, sentimientos y tendencias en tus respuestas.",
+      "insights": "Resúmenes y compendios de lo que te dicen tus formularios.",
+      "translate": "Traduce formularios a cualquiera de los 20 idiomas y revísalos en paralelo.",
+      "history": "Todo lo que se le preguntó al asistente, quién y cuándo.",
+      "settings": "Activa o desactiva el asistente, elige qué puede leer y consulta el uso."
     }
   }
 }

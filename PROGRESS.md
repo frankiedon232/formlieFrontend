@@ -29,9 +29,10 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
 | F18   | Analytics                                         | ⬜     | 0%   |
-| F19   | Live collaboration (optional)                     | ⬜     | 0%   |
-| F20   | Dashboard                                         | ⬜     | 0%   |
-| F21   | Roles & access (last)                             | ⬜     | 0%   |
+| F19   | AI assistant                                      | 🟡     | ~2%  |
+| F20   | Live collaboration (optional)                     | ⬜     | 0%   |
+| F21   | Dashboard                                         | ⬜     | 0%   |
+| F22   | Roles & access (last)                             | ⬜     | 0%   |
 
 **Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars — CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
@@ -229,7 +230,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Access
 
-- ✅ Workspace admins only for now; a proper `audit.read` permission arrives with Roles & access (F21)
+- ✅ Workspace admins only for now; a proper `audit.read` permission arrives with Roles & access (F22)
 
 ### Waiting on backend
 
@@ -364,6 +365,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Save as theme (new or update), apply a saved theme in the designer; themes library page (Resources → Themes): Table / Grid, search, rename, duplicate, delete with usage count; audited (`forms.theme_*`) — milestone 2
 - ✅ New global and IT field types (owner request): full name (title / middle optional), percentage, duration, consent with terms link, language, time zone, currency (all from `Intl`, in the respondent's language), IP address (any / IPv4 / IPv6), domain, MAC address, colour, IBAN (checksum), SWIFT / BIC — new palette group "Technical & IDs", validated by the shared validator
 - ✅ Six more starting points with different structures (owner request): Banner (gradient header band), Ribbon (colour header band), Grounded (footer bar), Side panel (colour panel carrying logo / title), Aurora (gradient side panel), Corporate (header band + footer bar); new tokens `header.band`, `footer.style`, `split.panel`, all editable in the designer
+- ✅ Owner follow-ups 2026-10-03: "Folder" on New form explained in place (workspace folders, not template categories); typing masks for IP address (IPv4 dots, IPv6 groups) and MAC address (colon pairs in capitals; dash / dot notation kept); **field access** (Everyone · Departments · Roles · People, all or selected; restricted fields can't be required; lock icon on the field; answers later shown only to the same people — F11)
 - ⬜ More fonts (self-hosted web fonts — needs a font package, ask first)
 - ⬜ Custom CSS (paid plans, sanitised) — with billing
 
@@ -371,24 +373,49 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 ## F9 — Templates gallery ⬜
 
-**Goal:** nobody starts from an empty page — pick a ready form (fields, logic, design) and adapt it. Comes before the renderer (owner, 2026-10-02): templates and the renderer both serve form creation, and the gallery's previews are the first real use of the themed form page.
+**Goal:** nobody starts from an empty page — a catalogue full of beautiful, ready templates (fields, pages, logic, calculations **and a design**) that people pick, adapt and publish; plus their own workspace templates. Comes before the renderer (owner, 2026-10-02). Stays in the **Forms area** (Resources → Templates) — no own rail icon: templates are a way to start a form.
 
-### Gallery
+**Approach (decided 2026-10-03, see 03-DECISIONS → 67):** framework first, proven on two full categories, then the remaining categories in batches — all inside F9, each batch committed and reviewable. F9 closes only when every listed template exists, in all 20 languages.
 
-- ⬜ Templates page (Resources → Templates) in DataView: Table / Grid with themed thumbnails, categories, search, sort, filters (category, field count, language), pagination
-- ⬜ System templates — global and neutral, built with the full field set (incl. global / technical fields) and a theme each: HR (job application, leave request, onboarding), IT (access request, incident report, asset check-out), events (registration, RSVP), feedback (customer satisfaction, NPS), operations (visitor sign-in, inspection checklist), education (enrolment, course feedback), health (patient intake — controls, no compliance claims), finance (expense claim, supplier sign-up)
-- ⬜ Organisation templates: save any form as a template (forms list row action + builder menu), rename, edit description / category, duplicate, delete with confirm; audited (`templates.*`)
-- ⬜ A template carries fields, pages, logic, calculations, settings and theme; never responses
+### Milestone 1 — Framework + Business & Customer + HR & Workplace
 
-### Preview and use
+- ⬜ Template model: key, category, icon, name / description / tags (i18n), schema (pages, fields, logic, calculations, settings), theme, estimated time, field / page counts, "includes calculations / logic" flags, version; system vs workspace templates
+- ⬜ Authoring kit (`shared/templates/`): one small definition per template (fields by type, options, validation, logic, formulas, theme), validated against the form schema in tests — every template must pass the publish checks
+- ⬜ **Gallery** (`/templates`) in DataView: Grid of themed cards (mini preview in the template's own design, category, fields, time, "Calculations" / "Logic" badges, uses) and Table (name, category, fields, uses, forms, responses, updated); category chips with counts, search, sort (popular, newest, name, most used), filters (category, has calculations, field count, system / workspace)
+- ⬜ **Template page** (`/templates/[key]`): live themed preview (desktop / tablet / phone, questions / thank-you), what's included (pages, fields, logic rules, calculations with their formulas in plain words, design), statistics (forms created, responses collected, last used), and **all forms created from it** (DataView filtered by template)
+- ⬜ **Use template** → name + folder → new form opened in the builder; everything editable (fields, logic, design) before publishing; the form remembers its template
+- ⬜ New form → "From a template" tab and onboarding starters read the catalogue (`shared/utils/templates/starters.ts` → full schemas)
+- ⬜ Workspace templates: save any form as a template (forms list row action + builder menu), edit name / description / category, duplicate, delete with confirm; audited (`templates.*`)
+- ⬜ Formula additions for templates: `avg()`, `count()`, `days(from, to)`, text results (e.g. risk level "High")
+- ⬜ Mock + contract: `/templates` (list with stats, get, create from form, update, duplicate, delete), `/templates/{key}/forms`, `/forms/from-template`; error codes
+- ⬜ Business & Customer (10): Customer Feedback · Customer Satisfaction (CSAT / NPS — NPS group calculated) · Product Review · Contact / Inquiry · Quote / Estimate Request (line totals, tax, total) · Order Form (line totals, subtotal, tax, total) · Complaint / Dispute · Service Request · Lead Capture / Newsletter Signup · Return / Refund Request (refund amount)
+- ⬜ HR & Workplace (10): Job Application · Employee Onboarding · Exit Interview · Leave / Time-Off Request (days requested) · Performance Review / Appraisal (average score, rating band) · Employee Engagement Survey (engagement index) · Expense Reimbursement (claim total) · Timesheet (hours, overtime) · Training Feedback (average) · Reference Check
 
-- ⬜ Template preview: themed form page (desktop / tablet / phone), fields list, what's included (pages, logic rules, theme)
-- ⬜ Use a template → new form (name, folder) opened in the builder; the New form modal's Templates tab reads from the gallery
-- ⬜ Onboarding starter templates become full schemas (`shared/utils/templates/starters.ts`)
+### Milestone 2 — Health & Safety · Events & Bookings · Hospitality
 
-### API (mock first)
+- ⬜ Health & Safety (8): Risk Assessment (likelihood × severity = risk score, risk level, action required when high) · Incident / Accident Report (severity score) · Near-Miss Report (potential severity) · Safety Inspection Checklist (compliance %) · Patient Intake · Medical History · Health Screening / Declaration (flag when any "yes") · Consent Form — controls only, no compliance claims
+- ⬜ Events & Bookings (7): Event Registration (ticket total) · RSVP (party size) · Appointment Booking · Venue / Room Reservation (hours × rate) · Volunteer Signup · Speaker / Sponsor Application · Post-Event Feedback (average)
+- ⬜ Hospitality (8): Guest Registration · Hotel Booking Request (nights × rate) · Guest Feedback (average) · Service Evaluation (score) · Special Requirements · Event Catering Request (guests × price per head) · Restaurant Reservation Request · Hospitality Complaint
 
-- ⬜ `/templates` list / get / create (from a form) / update / duplicate / delete; `/forms/from-template`; contract + error codes
+### Milestone 3 — Education · Operations & IT · Finance & Legal
+
+- ⬜ Education (7): Student Enrolment / Admission · Course Evaluation (average) · Quiz / Assessment (score from answers, pass / fail) · Scholarship Application (eligibility score) · Parent Consent / Permission Slip · Attendance Register (present count) · Academic Survey
+- ⬜ Operations & IT (9): IT Support Ticket (priority from impact × urgency) · Change Request (risk score) · Asset Check-out / Inventory · Maintenance / Work Order · Purchase Requisition (line totals, total) · Vendor / Supplier Registration · Site / Field Inspection Report (pass rate) · Delivery Confirmation / Proof of Delivery · Quality Control Checklist (pass rate, result)
+- ⬜ Finance & Legal (5): Loan / Credit Application (debt-to-income ratio, estimated monthly payment) · KYC / Identity Verification · Invoice Submission (subtotal, tax, total) · Insurance Claim (claim total) · NDA / Agreement Sign-off
+
+### Milestone 4 — Community & Other · Real Estate · Sales
+
+- ⬜ Community & Other (4): Membership Application (fee) · Donation Form (gift + optional fee cover) · Petition · Poll / Voting Ballot
+- ⬜ Real Estate (8): Property Viewing Request · Tenant Application (income-to-rent ratio) · Rental Application (income-to-rent ratio) · Property Inspection (condition score) · Maintenance Request · Property Information · Landlord Information · Tenant Feedback (average)
+- ⬜ Sales (8): Lead Capture · Quote Request (total) · Sales Qualification (qualification score, e.g. budget / authority / need / timing) · Product Demo Request · Customer Discovery · Proposal Request · Order Request (total) · Sales Follow-up
+
+### Milestone 5 — Languages, polish, review
+
+- ⬜ Template content (labels, options, help, messages) in all 20 languages — per-template message files, so a template opens in the person's language
+- ⬜ Phone / tablet / desktop, keyboard, light / dark, Arabic RTL checks; loading feedback; empty / error states
+- ⬜ End-of-phase review with the owner
+
+Total at launch: **84 templates in 11 categories** (a few names appear in two categories on purpose, framed for each — e.g. Lead Capture, Quote Request, Order, Maintenance). More later (owner: "just the tip of the iceberg"); the AI assistant (F19) can generate more.
 
 ---
 
@@ -474,7 +501,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ⬜ Run all or the selection (Ctrl / ⌘ + Enter), cancel a running query, time limit and row limit, results grid with paging, run time, rows affected, errors pointing at the line
 - ⬜ Read-only by default: on read-only connections only reading statements run; on read + write connections a changing statement shows what it will do and needs a confirm; structure changes (create / alter / drop) blocked unless the connection allows them
 - ⬜ Parameters (`:name` → input boxes), query history, saved queries (personal or shared with the workspace), export results (CSV / XLSX)
-- ⬜ Use a saved read query as a dynamic option list source (F15e) and, later, on the dashboard (F20)
+- ⬜ Use a saved read query as a dynamic option list source (F15e) and, later, on the dashboard (F21)
 
 ### 5. Other database operations
 
@@ -488,7 +515,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 - ⬜ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps — never from the browser
 - ⬜ Every query, row change, import and export is recorded in the audit trail (who, connection, statement, rows affected, duration)
-- ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data) — wired up in F21; until then admins only
+- ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data) — wired up in F22; until then admins only
 - ⬜ Rate limits; no credentials or result data in logs; results never stored in the browser
 - ⬜ Clear wording: we provide controls (encryption, audit, least privilege), never certifications
 
@@ -501,7 +528,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 ## F13 — API service 🟡
 
-**Goal:** turn any form into an API so organisations collect data from every side — **links, embeds and API** — all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F20). In the backend the API service runs as its own service, separate from form operations.
+**Goal:** turn any form into an API so organisations collect data from every side — **links, embeds and API** — all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
 ### Addresses (decided 2026-10-03, see 03-DECISIONS → 61)
 
@@ -550,7 +577,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 - ⬜ Request logs: time, endpoint, method, status, duration, caller IP / country, token name; filters, search, export; request / response bodies only when switched on (masked)
 - ⬜ Analytics (separate from the form analytics): calls, errors, latency (p50 / p95), top endpoints, top callers, by country; date range
-- ⬜ Own dashboard in F20 (Forms, Data sources and API service each get one)
+- ⬜ Own dashboard in F21 (Forms, Data sources and API service each get one)
 
 ### 7. Docs and testing
 
@@ -561,7 +588,7 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 
 - ⬜ Every change to services, endpoints, tokens and rules is audited (`api.*`); tokens never shown again after creation
 - ⬜ TLS only; CORS per endpoint for browser callers; request size limits; no secrets or bodies in logs by default
-- ⬜ Permissions per role in F21; admins only until then
+- ⬜ Permissions per role in F22; admins only until then
 
 ### 9. API (mock first)
 
@@ -669,6 +696,13 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 - ⬜ Create (name, scopes, expiry), show once, copy, revoke, last used
 
+### Payments (Payment field — shown as "soon" in the builder until then)
+
+- ⬜ Payment providers per workspace (connect with the provider's own sign-in; e.g. Stripe, PayPal, Adyen, Mollie, Razorpay, Flutterwave, Paystack — global and regional), test / live mode
+- ⬜ Payment field: fixed amount, amount from a choice, or **calculated** (formula — order totals, fees); currency; optional tax and fee lines; one-off payments first (subscriptions later)
+- ⬜ Card details never touch Formalie: the provider's secure checkout / hosted fields; we keep only the payment status, reference and amount
+- ⬜ Response shows paid / pending / failed / refunded; receipts by email; refunds from the response (audited); webhooks from the provider confirm payment before the response counts as complete
+
 ### Other integrations (later)
 
 - ⬜ Google Sheets, Slack, email notifications to external addresses
@@ -701,7 +735,42 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F19 — Live collaboration (optional) ⬜
+## F19 — AI assistant 🟡
+
+**Goal:** an assistant built into Formalie that makes work easier — creating forms and templates, analysing responses, summarising, translating and more (owner idea 2026-10-03). Own rail area and menu; also available in context (builder, templates, responses). People stay in control: the assistant proposes, a person reviews and applies; nothing is published or sent by the assistant on its own.
+
+### 1. Area and navigation
+
+- ✅ Own rail area (sparkles icon) with its own menu: Overview · Create a form · Template ideas · Response analysis · Insights & summaries · Translations · History · Settings & usage — placeholder pages (`/ai/**`)
+
+### 2. Creating
+
+- ⬜ Describe a form in plain words (or paste a document / old form) → a draft with pages, fields, options, validation, logic and calculations, shown as a preview to accept, edit or regenerate; then opened in the builder
+- ⬜ In the builder: "Suggest fields", "Write help texts", "Add logic", "Check my form" (accessibility, missing validation, duplicate questions)
+- ⬜ Template ideas: generate a template for an industry / use case, with a matching theme; save to the workspace templates (F9)
+- ⬜ Design help: suggest a theme from a brand colour / logo / website
+
+### 3. Analysing
+
+- ⬜ Response analysis per form: themes in open text, sentiment, trends, outliers, comparison between periods
+- ⬜ Ask questions about the data in plain words ("Which site had most incidents last month?") with the numbers and the filters used shown
+- ⬜ Insights and summaries: weekly digest per form, summary of a single response, executive summary for exports
+
+### 4. Translating and writing
+
+- ⬜ Translate a form (labels, options, help, messages) into any of the 20 languages; reviewed side by side before applying
+- ⬜ Rewrite for clarity / tone; plain-language check
+
+### 5. Control, privacy and cost
+
+- ⬜ Settings: switch the assistant on / off per workspace, choose which areas it may read (forms, responses, data sources), keep personal data out (masking), retention of prompts
+- ⬜ Usage and limits per plan; history of every request (who, what, when) with the result; everything audited (`ai.*`)
+- ⬜ Clear labelling of AI-made content; nothing applied without a person's confirmation
+- ⬜ Model / provider choice is a backend decision (documented when F19 starts); data processing terms shown — controls, not certifications
+
+---
+
+## F20 — Live collaboration (optional) ⬜
 
 - ⬜ Presence, cursors and selections in the builder
 - ⬜ Conflict-free editing
@@ -709,7 +778,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F20 — Dashboard ⬜
+## F21 — Dashboard ⬜
 
 - ⬜ Separate dashboards for **Forms**, **Data sources** and **API service** (owner, 2026-10-02), plus the workspace overview
 
@@ -726,7 +795,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F21 — Roles & access ⬜ (last)
+## F22 — Roles & access ⬜ (last)
 
 - ⬜ Roles and permissions editor (permission catalogue, custom roles)
 - ⬜ Role assignment per user and per organisation; form-level access
@@ -764,7 +833,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Separate progress file with every task per phase                                                                                                                                                                                                                                                                                                                  | PROGRESS.md                                                                       | ✅         |
 | 2026-10-02 | Social providers on the first signup; more methods enabled later per workspace                                                                                                                                                                                                                                                                                    | F3 / F14                                                                          | 🟡         |
 | 2026-10-02 | Provider buttons on one row with a "Sign up with" caption                                                                                                                                                                                                                                                                                                         | F3                                                                                | ✅         |
-| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC                                                                                                                                                                                                                                                                                  | F14 / F20                                                                         | ✅         |
+| 2026-10-02 | Settings as its own detailed phase; Dashboard after everything, just before RBAC                                                                                                                                                                                                                                                                                  | F14 / F21                                                                         | ✅         |
 | 2026-10-02 | Audit trail early (its own phase after sign-in), not last                                                                                                                                                                                                                                                                                                         | F4                                                                                | ✅         |
 | 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome                                                                                                                                                                                                                                                                                           | F3                                                                                | ✅         |
 | 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them                                                                                                                                                                                                                                                                                    | F1                                                                                | ✅         |
@@ -793,7 +862,13 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | API service ("developer option"): build API endpoints from forms (GET / POST / PUT / DELETE), tokens and headers, field choice per method, allow / block lists, analytics, enable / disable; own rail area with placeholders                                                                                                                                      | F13 (new phase)                                                                   | 🟡         |
 | 2026-10-03 | API addresses `https://api.formalie.dev/{key}/{endpoint}` (production `api.formalie.com`)                                                                                                                                                                                                                                                                         | F13                                                                               | ✅ decided |
 | 2026-10-03 | Form links `https://{forms                                                                                                                                                                                                                                                                                                                                        | sub}.formalie.com/{formId}/fill`and`/embed` (`forms.formalie.dev` in development) | F10        | ✅ decided |
-| 2026-10-03 | Separate dashboards for Forms, Data sources and API service                                                                                                                                                                                                                                                                                                       | F20                                                                               | ⬜         |
+| 2026-10-03 | Separate dashboards for Forms, Data sources and API service                                                                                                                                                                                                                                                                                                       | F21                                                                               | ⬜         |
+| 2026-10-03 | Template catalogue: 84 starter templates in 11 categories, each with its own design; calculations where needed (risk score, totals, averages); template statistics and the forms made from each template                                                                                                                                                          | F9                                                                                | ⬜         |
+| 2026-10-03 | AI assistant built in (create forms, templates, analysis, more) — own rail area with placeholders                                                                                                                                                                                                                                                                 | F19 (new phase)                                                                   | 🟡         |
+| 2026-10-03 | "Folder" on New form — what it means                                                                                                                                                                                                                                                                                                                              | F8                                                                                | ✅         |
+| 2026-10-03 | IP address and MAC address typing masks (MAC: other notations allowed)                                                                                                                                                                                                                                                                                            | F8                                                                                | ✅         |
+| 2026-10-03 | Field access: Everyone / Departments / Roles / People; restricted fields never required                                                                                                                                                                                                                                                                           | F8 (answers visibility in F11)                                                    | ✅         |
+| 2026-10-03 | Payment field — intention                                                                                                                                                                                                                                                                                                                                         | F15 (Payments)                                                                    | ⬜         |
 
 ---
 
@@ -814,7 +889,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F3    | Provider buttons on one row with a "Sign up with / Sign in with" caption: logo + name for 2, logo only (tooltip) for 3–4.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | 2026-10-02 | F3    | "Work email" → "Email address" everywhere, neutral placeholder name@example.com, no "work email" wording (any organisation, any email provider).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | 2026-10-02 | F3    | Phase done: RTL, keyboard-only and phone passes on every auth screen (logical tab order, nothing hidden focusable, no overflow at 375 px).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F21 (last).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 2026-10-02 | F4    | Audit trail moved up to its own phase right after sign-in (owner); phases renumbered, RBAC is now F22 (last).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | 2026-10-02 | F4    | Audit trail built: event catalogue, mock store with international history, sign-in events recorded live, /audit page (table / grid, filters, shareable detail, export with progress + one-time download), activity timeline, admins only (role on the session user). Checked desktop / phone, light / dark, Arabic RTL, member access.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 2026-10-02 | F1    | Sidebar polish (owner): chevrons moved to the right edge, count badges on the right (forms by status, new responses), menu column 16 → 17.5 rem so labels fit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 2026-10-02 | F5    | Onboarding wizard: 5 optional steps with live preview, server-side progress, pre-signed logo upload with progress, regional defaults from device and country, invites, starter templates; every saved step in the audit trail. Checked desktop / phone, light / dark, Arabic RTL.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -848,6 +923,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F8    | Six more starting points (Banner, Ribbon, Grounded, Side panel, Aurora, Corporate) with header bands, footer bars and colour / gradient side panels; designer controls for each; swatches show the structure. Form workspace header: search and Preview as icons. Confirm dialogs now always open above drawers (they were hidden behind the designer drawer on phones). Roadmap: Templates moved before the renderer (F9 Templates · F10 Renderer · F11 Responses).                                                                                                                                                                                                                                                                                                             |
 | 2026-10-02 | F8    | Fix: “Add link” in the footer reset the footer (a new link starts as an incomplete https:// address, which failed the theme check and switched the footer off). Links are now kept while being typed; only complete https links with a label show on the form; other schemes are emptied.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-| 2026-10-02 | Roadmap | New phase **F12 — Data sources & databases** (connections, sending form data, database explorer, query editor, other database operations, safety); later phases renumbered F14–F21 (Settings → Roles & access). |
+| 2026-10-02 | Roadmap | New phase **F12 — Data sources & databases** (connections, sending form data, database explorer, query editor, other database operations, safety); later phases renumbered F14–F22 (Settings → Roles & access). |
 | 2026-10-02 | F12 | Placeholder shell: Data sources rail area (icon under the workspace button), own sidebar menu, overview with section cards and supported databases, seven placeholder pages; destinations moved from Integrations (redirect kept). |
-| 2026-10-03 | F13 | New phase **F13 — API service** (own rail area + placeholder pages); later phases renumbered F14–F21. Public URL scheme decided: API `https://api.formalie.dev/{apiKey}/{endpoint}`, forms `https://{forms | sub}.formalie.dev/{formKey}/fill · /embed`; `forms` subdomain reserved; copy-link and the form overview use the new links. F8 closed after owner review. |
+| 2026-10-03 | F13 | New phase **F13 — API service** (own rail area + placeholder pages); later phases renumbered F14–F22. Public URL scheme decided: API `https://api.formalie.dev/{apiKey}/{endpoint}`, forms `https://{forms | sub}.formalie.dev/{formKey}/fill · /embed`; `forms` subdomain reserved; copy-link and the form overview use the new links. F8 closed after owner review. |
+| 2026-10-03 | F8 | Owner follow-ups: folder hint, IP / MAC typing masks, field access (audience) with directory picker and "never required" rule (editor, form, publish check, logic). |
+| 2026-10-03 | F19 | New phase **F19 — AI assistant** (own rail area + placeholder pages); later phases renumbered F20–F22. F9 plan written: framework + 84 templates in 5 milestones. Payments planned in F15. |

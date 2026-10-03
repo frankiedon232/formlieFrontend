@@ -168,7 +168,8 @@
         "logicText": "Fragen ein- oder ausblenden, zur Pflicht machen und Antworten summieren.",
         "saveTitle": "Speichert automatisch",
         "saveText": "Jede Änderung wird als Entwurf gespeichert, bis Sie veröffentlichen."
-      }
+      },
+      "folderHint": "Ordner halten Ihre Formulare in der Liste und der Seitenleiste geordnet (zum Beispiel nach Team oder Projekt). Sie sind keine Vorlagenkategorien."
     },
     "detail": {
       "created": "Erstellt",
@@ -232,7 +233,16 @@
     "apiAccess": "Zugriffsregeln",
     "apiLogs": "Anfrageprotokolle",
     "apiAnalytics": "Analysen",
-    "apiDocs": "Doku & Tests"
+    "apiDocs": "Doku & Tests",
+    "ai": "KI-Assistent",
+    "aiOverview": "Übersicht",
+    "aiCreateForm": "Formular erstellen",
+    "aiTemplates": "Vorlagenideen",
+    "aiAnalysis": "Antwortanalyse",
+    "aiInsights": "Einblicke & Zusammenfassungen",
+    "aiTranslate": "Übersetzungen",
+    "aiHistory": "Verlauf",
+    "aiSettings": "Einstellungen & Nutzung"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -1249,6 +1259,30 @@
       "height": "Höhe",
       "heightHint": "Automatisch zeigt das ganze Bild; eine feste Höhe schneidet es wie ein Banner zu.",
       "heightAuto": "Automatisch"
+    },
+    "audience": {
+      "title": "Feldzugriff",
+      "label": "Für wen ist dieses Feld?",
+      "mode": {
+        "everyone": "Alle",
+        "department": "Abteilungen",
+        "role": "Rollen",
+        "user": "Personen"
+      },
+      "everyoneHint": "Alle, die das Formular ausfüllen, sehen dieses Feld.",
+      "all": {
+        "department": "Alle Abteilungen",
+        "role": "Alle Rollen",
+        "user": "Alle Personen im Workspace"
+      },
+      "pick": {
+        "department": "Abteilungen auswählen",
+        "role": "Rollen auswählen",
+        "user": "Personen auswählen"
+      },
+      "placeholder": "Aus der Liste auswählen…",
+      "selected": "Nur die {n} ausgewählten können dieses Feld sehen und ausfüllen.",
+      "noRequired": "Eingeschränkte Felder können keine Pflichtfelder sein — Personen, für die das Feld nicht gedacht ist, müssen trotzdem absenden können. Ihre Antworten sind nur für dieselben Personen sichtbar."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Sprache wählen",
       "timezone": "Zeitzone wählen",
       "currency_code": "Währung wählen"
-    }
+    },
+    "restricted": "Nur für bestimmte Personen (Feldzugriff)"
   },
   "logic": {
     "crumb": "Logik",
@@ -1897,6 +1932,25 @@
       "logs": "Jeder Aufruf mit Status, Dauer und Aufrufer.",
       "analytics": "Aufrufe, Fehler und Antwortzeiten pro Dienst und Endpunkt.",
       "docs": "Fertige Dokumentation und ein Ort zum Testen jedes Endpunkts."
+    }
+  },
+  "ai": {
+    "subtitle": "Hilfe beim Erstellen von Formularen und Vorlagen, beim Analysieren von Antworten und mehr",
+    "back": "Übersicht KI-Assistent",
+    "promise": {
+      "title": "Sie behalten die Kontrolle",
+      "review": "Der Assistent schlägt vor — Sie prüfen und übernehmen.",
+      "private": "Sie bestimmen, was er lesen darf; personenbezogene Daten können ausgeschlossen werden.",
+      "audit": "Jede Anfrage wird im Verlauf und im Audit-Protokoll erfasst."
+    },
+    "section": {
+      "createForm": "Beschreiben Sie, was Sie brauchen, und erhalten Sie einen fertigen Entwurf mit Feldern, Logik und Berechnungen.",
+      "templates": "Erstellen Sie Vorlagen für Ihre Branche mit passendem Design.",
+      "analysis": "Finden Sie Themen, Stimmungen und Trends in Ihren Antworten.",
+      "insights": "Zusammenfassungen und Übersichten dessen, was Ihre Formulare Ihnen sagen.",
+      "translate": "Übersetzen Sie Formulare in jede der 20 Sprachen und prüfen Sie sie nebeneinander.",
+      "history": "Alles, was der Assistent gefragt wurde, von wem und wann.",
+      "settings": "Schalten Sie den Assistenten ein oder aus, legen Sie fest, was er lesen darf, und sehen Sie die Nutzung."
     }
   }
 }

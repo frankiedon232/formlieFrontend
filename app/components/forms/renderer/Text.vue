@@ -1,6 +1,7 @@
 <!-- Text-like fields: short / long text, IP address, domain, MAC address, IBAN, BIC, percentage, email, phone, URL, number, currency, calculated, hidden. -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
+import { maskIp, maskMac, type IpVersion } from '#shared/utils/forms/masks'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
@@ -9,11 +10,28 @@ const { t } = useI18n()
 const control = useControlStyle()
 const { current } = useAppLocale()
 
+const props_ = computed(() => (props.field.props ?? {}) as Record<string, unknown>)
+/** Typing masks for technical fields (shared/utils/forms/masks.ts); the validator still decides. */
+function masked(next: string) {
+  if (props.field.type === 'ip_address') return maskIp(next, (props_.value.ip_version as IpVersion | undefined) ?? 'any')
+  if (props.field.type === 'mac_address') return maskMac(next)
+  return next
+}
+const input = useTemplateRef<{ inputRef?: HTMLInputElement | null }>('input')
 const text = computed({
   get: () => (value.value == null ? '' : String(value.value)),
-  set: next => (value.value = next),
+  set: next => {
+    const raw = String(next ?? '')
+    const out = masked(raw)
+    value.value = out
+    // A stripped character leaves the model unchanged, so put the cleaned text back in the box.
+    if (out !== raw)
+      nextTick(() => {
+        const el = input.value?.inputRef
+        if (el && el.value !== out) el.value = out
+      })
+  },
 })
-const props_ = computed(() => (props.field.props ?? {}) as Record<string, unknown>)
 const INPUT_TYPES: Record<string, string> = {
   email: 'email',
   phone: 'tel',
@@ -89,6 +107,7 @@ const disabled = computed(() => !!props.field.disabled)
     v-else
     v-bind="control"
     :id="id"
+    ref="input"
     v-model="text"
     :type="INPUT_TYPES[field.type] ?? 'text'"
     :inputmode="MODES[field.type]"

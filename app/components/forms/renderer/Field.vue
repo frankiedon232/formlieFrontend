@@ -9,7 +9,7 @@
   builder swap the label for an inline editor.
 -->
 <script setup lang="ts">
-import type { FormField } from '#shared/utils/forms/build'
+import { isRestricted, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 
 const props = withDefaults(
@@ -118,6 +118,10 @@ const left = computed(() => props.labelPosition === 'left' && showLabel.value &&
           <span v-if="field.required" class="sr-only">({{ t('renderer.required') }})</span>
         </label>
       </slot>
+      <!-- Field access: only some departments, roles or people (public respondents never see it, F10). -->
+      <UTooltip v-if="isRestricted(field)" :text="t('renderer.restricted')">
+        <UIcon name="i-lucide-lock" class="size-3.5 shrink-0 text-muted" role="img" :aria-label="t('renderer.restricted')" />
+      </UTooltip>
       <UPopover v-if="field.help" :content="{ side: 'top', align: 'start' }" arrow>
         <UButton
           icon="i-lucide-info"

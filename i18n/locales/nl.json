@@ -168,7 +168,8 @@
         "logicText": "Toon, verberg of verplicht vragen en tel antwoorden op.",
         "saveTitle": "Slaat automatisch op",
         "saveText": "Elke wijziging wordt als concept bewaard tot je publiceert."
-      }
+      },
+      "folderHint": "Mappen houden uw formulieren overzichtelijk in de lijst en de zijbalk (bijvoorbeeld per team of project). Het zijn geen sjablooncategorieën."
     },
     "detail": {
       "created": "Gemaakt",
@@ -232,7 +233,16 @@
     "apiAccess": "Toegangsregels",
     "apiLogs": "Verzoeklogs",
     "apiAnalytics": "Analyses",
-    "apiDocs": "Docs & testen"
+    "apiDocs": "Docs & testen",
+    "ai": "AI-assistent",
+    "aiOverview": "Overzicht",
+    "aiCreateForm": "Formulier maken",
+    "aiTemplates": "Sjabloonideeën",
+    "aiAnalysis": "Antwoordanalyse",
+    "aiInsights": "Inzichten & samenvattingen",
+    "aiTranslate": "Vertalingen",
+    "aiHistory": "Geschiedenis",
+    "aiSettings": "Instellingen & gebruik"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -1249,6 +1259,30 @@
       "height": "Hoogte",
       "heightHint": "Automatisch toont de hele afbeelding; een vaste hoogte snijdt hem bij als een banner.",
       "heightAuto": "Automatisch"
+    },
+    "audience": {
+      "title": "Veldtoegang",
+      "label": "Voor wie is dit veld?",
+      "mode": {
+        "everyone": "Iedereen",
+        "department": "Afdelingen",
+        "role": "Rollen",
+        "user": "Personen"
+      },
+      "everyoneHint": "Iedereen die het formulier invult, ziet dit veld.",
+      "all": {
+        "department": "Alle afdelingen",
+        "role": "Alle rollen",
+        "user": "Alle personen in de werkruimte"
+      },
+      "pick": {
+        "department": "Afdelingen kiezen",
+        "role": "Rollen kiezen",
+        "user": "Personen kiezen"
+      },
+      "placeholder": "Kies uit de lijst…",
+      "selected": "Alleen de {n} geselecteerde kunnen dit veld zien en invullen.",
+      "noRequired": "Beperkte velden kunnen niet verplicht zijn — personen voor wie het veld niet bedoeld is, moeten het formulier nog steeds kunnen verzenden. Hun antwoorden zijn alleen zichtbaar voor dezelfde personen."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Kies een taal",
       "timezone": "Kies een tijdzone",
       "currency_code": "Kies een valuta"
-    }
+    },
+    "restricted": "Alleen voor bepaalde personen (veldtoegang)"
   },
   "logic": {
     "crumb": "Logica",
@@ -1897,6 +1932,25 @@
       "logs": "Elke aanroep met status, duur en aanroeper.",
       "analytics": "Aanroepen, fouten en responstijden per service en endpoint.",
       "docs": "Kant-en-klare documentatie en een plek om elk endpoint te testen."
+    }
+  },
+  "ai": {
+    "subtitle": "Hulp bij het maken van formulieren en sjablonen, het analyseren van antwoorden en meer",
+    "back": "Overzicht AI-assistent",
+    "promise": {
+      "title": "U houdt de regie",
+      "review": "De assistent stelt voor — u controleert en past toe.",
+      "private": "U bepaalt wat hij mag lezen; persoonsgegevens kunnen buiten beschouwing blijven.",
+      "audit": "Elk verzoek wordt vastgelegd in de geschiedenis en het auditlogboek."
+    },
+    "section": {
+      "createForm": "Beschrijf wat u nodig hebt en ontvang een kant-en-klaar concept met velden, logica en berekeningen.",
+      "templates": "Genereer sjablonen voor uw branche, met een passend ontwerp.",
+      "analysis": "Ontdek thema's, sentiment en trends in uw antwoorden.",
+      "insights": "Samenvattingen en overzichten van wat uw formulieren u vertellen.",
+      "translate": "Vertaal formulieren naar een van de 20 talen en vergelijk ze naast elkaar.",
+      "history": "Alles wat aan de assistent is gevraagd, door wie en wanneer.",
+      "settings": "Zet de assistent aan of uit, kies wat hij mag lezen en bekijk het gebruik."
     }
   }
 }

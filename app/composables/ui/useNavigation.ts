@@ -17,7 +17,7 @@ export interface AppNavItem {
   count?: (counts: NavCounts) => number
   /** Hide the badge at 0 (e.g. "new" items); status counts always show. */
   hideZero?: boolean
-  /** Workspace owners / admins only (until Roles & access, F21). */
+  /** Workspace owners / admins only (until Roles & access, F22). */
   adminOnly?: boolean
   /** Active on its own path only (an overview whose sections live under it). */
   exact?: boolean
@@ -134,13 +134,29 @@ const API_NAV: AppNavItem[] = [
 ]
 
 /**
+ * AI assistant area (F19, owner 2026-10-03) — help creating forms and templates, analysing
+ * responses and more. Placeholders until F19; plan in PROGRESS.md → F19.
+ */
+const AI_NAV: AppNavItem[] = [
+  { key: 'aiOverview', icon: 'i-lucide-layout-grid', to: '/ai', exact: true },
+  { key: 'aiCreateForm', icon: 'i-lucide-file-plus-2', to: '/ai/create-form' },
+  { key: 'aiTemplates', icon: 'i-lucide-layout-template', to: '/ai/templates' },
+  { key: 'aiAnalysis', icon: 'i-lucide-chart-scatter', to: '/ai/analysis' },
+  { key: 'aiInsights', icon: 'i-lucide-lightbulb', to: '/ai/insights' },
+  { key: 'aiTranslate', icon: 'i-lucide-languages', to: '/ai/translate' },
+  { key: 'aiHistory', icon: 'i-lucide-history', to: '/ai/history' },
+  { key: 'aiSettings', icon: 'i-lucide-sliders-horizontal', to: '/ai/settings' },
+]
+
+/**
  * Areas on the rail; each brings its own menu. The workspace button is the Forms area, so only
  * the extra areas are listed here.
  */
-export type NavArea = 'forms' | 'data' | 'api'
+export type NavArea = 'forms' | 'data' | 'api' | 'ai'
 const NAV_AREAS: { key: Exclude<NavArea, 'forms'>; label: string; icon: string; to: string; menu: AppNavItem[] }[] = [
   { key: 'data', label: 'nav.dataSources', icon: 'i-lucide-database', to: '/data-sources', menu: DATA_NAV },
   { key: 'api', label: 'nav.apiService', icon: 'i-lucide-code-xml', to: '/api-service', menu: API_NAV },
+  { key: 'ai', label: 'nav.ai', icon: 'i-lucide-sparkles', to: '/ai', menu: AI_NAV },
 ]
 const areaOf = (path: string): NavArea =>
   NAV_AREAS.find(a => path === a.to || path.startsWith(`${a.to}/`))?.key ?? 'forms'
@@ -220,7 +236,7 @@ export function useNavigation() {
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
-    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...SYSTEM_NAV]
+    [...MAIN_NAV, ...RESOURCE_NAV, ...DATA_NAV, ...API_NAV, ...AI_NAV, ...SYSTEM_NAV]
       .filter(allowed)
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )

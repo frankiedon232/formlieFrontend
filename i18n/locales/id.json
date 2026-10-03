@@ -168,7 +168,8 @@
         "logicText": "Tampilkan, sembunyikan, atau wajibkan pertanyaan dan jumlahkan jawaban.",
         "saveTitle": "Tersimpan otomatis",
         "saveText": "Setiap perubahan disimpan sebagai draf sampai Anda menerbitkan."
-      }
+      },
+      "folderHint": "Folder menjaga formulir Anda tetap teratur di daftar dan bilah samping (misalnya per tim atau proyek). Folder bukan kategori templat."
     },
     "detail": {
       "created": "Dibuat",
@@ -232,7 +233,16 @@
     "apiAccess": "Aturan akses",
     "apiLogs": "Log permintaan",
     "apiAnalytics": "Analitik",
-    "apiDocs": "Dokumen & uji"
+    "apiDocs": "Dokumen & uji",
+    "ai": "Asisten AI",
+    "aiOverview": "Ikhtisar",
+    "aiCreateForm": "Buat formulir",
+    "aiTemplates": "Ide templat",
+    "aiAnalysis": "Analisis respons",
+    "aiInsights": "Wawasan & ringkasan",
+    "aiTranslate": "Terjemahan",
+    "aiHistory": "Riwayat",
+    "aiSettings": "Pengaturan & penggunaan"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -1249,6 +1259,30 @@
       "height": "Tinggi",
       "heightHint": "Otomatis menampilkan seluruh gambar; tinggi tetap memotongnya seperti banner.",
       "heightAuto": "Otomatis"
+    },
+    "audience": {
+      "title": "Akses kolom",
+      "label": "Untuk siapa kolom ini?",
+      "mode": {
+        "everyone": "Semua orang",
+        "department": "Departemen",
+        "role": "Peran",
+        "user": "Orang"
+      },
+      "everyoneHint": "Semua orang yang mengisi formulir melihat kolom ini.",
+      "all": {
+        "department": "Semua departemen",
+        "role": "Semua peran",
+        "user": "Semua orang di ruang kerja"
+      },
+      "pick": {
+        "department": "Pilih departemen",
+        "role": "Pilih peran",
+        "user": "Pilih orang"
+      },
+      "placeholder": "Pilih dari daftar…",
+      "selected": "Hanya {n} yang dipilih yang dapat melihat dan mengisi kolom ini.",
+      "noRequired": "Kolom terbatas tidak dapat diwajibkan — orang yang tidak dituju oleh kolom ini tetap harus dapat mengirim. Jawaban mereka hanya ditampilkan kepada orang yang sama."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Pilih bahasa",
       "timezone": "Pilih zona waktu",
       "currency_code": "Pilih mata uang"
-    }
+    },
+    "restricted": "Hanya untuk orang tertentu (akses kolom)"
   },
   "logic": {
     "crumb": "Logika",
@@ -1897,6 +1932,25 @@
       "logs": "Setiap panggilan beserta status, durasi, dan pemanggilnya.",
       "analytics": "Panggilan, galat, dan waktu respons per layanan dan endpoint.",
       "docs": "Dokumentasi siap pakai dan tempat untuk mencoba setiap endpoint."
+    }
+  },
+  "ai": {
+    "subtitle": "Bantuan membuat formulir dan templat, menganalisis jawaban, dan lainnya",
+    "back": "Ikhtisar asisten AI",
+    "promise": {
+      "title": "Anda tetap memegang kendali",
+      "review": "Asisten memberi saran — Anda meninjau dan menerapkan.",
+      "private": "Anda memilih apa yang boleh dibacanya; data pribadi dapat dikecualikan.",
+      "audit": "Setiap permintaan dicatat di riwayat dan jejak audit."
+    },
+    "section": {
+      "createForm": "Jelaskan kebutuhan Anda dan dapatkan draf siap pakai dengan kolom, logika, dan perhitungan.",
+      "templates": "Buat templat untuk industri Anda dengan desain yang serasi.",
+      "analysis": "Temukan tema, sentimen, dan tren dalam respons Anda.",
+      "insights": "Ringkasan dan intisari dari apa yang disampaikan formulir Anda.",
+      "translate": "Terjemahkan formulir ke salah satu dari 20 bahasa dan tinjau berdampingan.",
+      "history": "Semua yang ditanyakan kepada asisten, oleh siapa dan kapan.",
+      "settings": "Aktifkan atau nonaktifkan asisten, pilih apa yang boleh dibacanya, dan lihat penggunaan."
     }
   }
 }

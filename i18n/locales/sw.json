@@ -168,7 +168,8 @@
         "logicText": "Onyesha, ficha au lazimisha maswali na ujumlishe majibu.",
         "saveTitle": "Huhifadhi unapoendelea",
         "saveText": "Kila badiliko huhifadhiwa kama rasimu hadi uchapishe."
-      }
+      },
+      "folderHint": "Folda huweka fomu zako kwa mpangilio kwenye orodha na upau wa pembeni (kwa mfano kwa timu au mradi). Si kategoria za violezo."
     },
     "detail": {
       "created": "Iliundwa",
@@ -232,7 +233,16 @@
     "apiAccess": "Sheria za ufikiaji",
     "apiLogs": "Kumbukumbu za maombi",
     "apiAnalytics": "Takwimu",
-    "apiDocs": "Nyaraka na majaribio"
+    "apiDocs": "Nyaraka na majaribio",
+    "ai": "Msaidizi wa AI",
+    "aiOverview": "Muhtasari",
+    "aiCreateForm": "Unda fomu",
+    "aiTemplates": "Mawazo ya violezo",
+    "aiAnalysis": "Uchambuzi wa majibu",
+    "aiInsights": "Maarifa na muhtasari",
+    "aiTranslate": "Tafsiri",
+    "aiHistory": "Historia",
+    "aiSettings": "Mipangilio na matumizi"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -1249,6 +1259,30 @@
       "height": "Urefu",
       "heightHint": "Otomatiki huonyesha picha yote; urefu maalum huikata kama bango.",
       "heightAuto": "Otomatiki"
+    },
+    "audience": {
+      "title": "Ufikiaji wa sehemu",
+      "label": "Sehemu hii ni ya nani?",
+      "mode": {
+        "everyone": "Kila mtu",
+        "department": "Idara",
+        "role": "Majukumu",
+        "user": "Watu"
+      },
+      "everyoneHint": "Kila mtu anayejaza fomu huona sehemu hii.",
+      "all": {
+        "department": "Idara zote",
+        "role": "Majukumu yote",
+        "user": "Watu wote kwenye eneo la kazi"
+      },
+      "pick": {
+        "department": "Chagua idara",
+        "role": "Chagua majukumu",
+        "user": "Chagua watu"
+      },
+      "placeholder": "Chagua kutoka kwenye orodha…",
+      "selected": "Ni {n} waliochaguliwa pekee wanaoweza kuona na kujaza sehemu hii.",
+      "noRequired": "Sehemu zenye vikwazo haziwezi kuwa za lazima — watu ambao sehemu hii si yao lazima bado waweze kuwasilisha. Majibu yao yanaonyeshwa kwa watu hao hao pekee."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Chagua lugha",
       "timezone": "Chagua saa za eneo",
       "currency_code": "Chagua sarafu"
-    }
+    },
+    "restricted": "Kwa baadhi ya watu pekee (ufikiaji wa sehemu)"
   },
   "logic": {
     "crumb": "Mantiki",
@@ -1897,6 +1932,25 @@
       "logs": "Kila mwito pamoja na hali yake, muda uliotumika na mpigaji.",
       "analytics": "Miito, hitilafu na muda wa majibu kwa kila huduma na endpoint.",
       "docs": "Nyaraka zilizo tayari na mahali pa kujaribu kila endpoint."
+    }
+  },
+  "ai": {
+    "subtitle": "Msaada wa kuunda fomu na violezo, kuchambua majibu na zaidi",
+    "back": "Muhtasari wa msaidizi wa AI",
+    "promise": {
+      "title": "Udhibiti uko mikononi mwako",
+      "review": "Msaidizi anapendekeza — wewe unakagua na kutumia.",
+      "private": "Unachagua anachoweza kusoma; data binafsi inaweza kuachwa nje.",
+      "audit": "Kila ombi hurekodiwa kwenye historia na kumbukumbu ya ukaguzi."
+    },
+    "section": {
+      "createForm": "Eleza unachohitaji upate rasimu iliyo tayari yenye sehemu, mantiki na hesabu.",
+      "templates": "Tengeneza violezo vya sekta yako, vyenye muundo unaolingana.",
+      "analysis": "Tambua mada, hisia na mienendo katika majibu yako.",
+      "insights": "Muhtasari na dondoo za kile fomu zako zinakuambia.",
+      "translate": "Tafsiri fomu katika lugha yoyote kati ya 20 na uzikague bega kwa bega.",
+      "history": "Kila kitu msaidizi aliulizwa, na nani na lini.",
+      "settings": "Washa au zima msaidizi, chagua anachoweza kusoma na uone matumizi."
     }
   }
 }

@@ -168,7 +168,8 @@
         "logicText": "Soruları gösterin, gizleyin veya zorunlu yapın ve yanıtları toplayın.",
         "saveTitle": "Siz çalışırken kaydeder",
         "saveText": "Yayınlayana kadar her değişiklik taslak olarak kaydedilir."
-      }
+      },
+      "folderHint": "Klasörler formlarınızı listede ve kenar çubuğunda düzenli tutar (örneğin ekibe veya projeye göre). Şablon kategorisi değildir."
     },
     "detail": {
       "created": "Oluşturulma",
@@ -232,7 +233,16 @@
     "apiAccess": "Erişim kuralları",
     "apiLogs": "İstek kayıtları",
     "apiAnalytics": "Analitik",
-    "apiDocs": "Belgeler ve test"
+    "apiDocs": "Belgeler ve test",
+    "ai": "YZ asistanı",
+    "aiOverview": "Genel bakış",
+    "aiCreateForm": "Form oluştur",
+    "aiTemplates": "Şablon fikirleri",
+    "aiAnalysis": "Yanıt analizi",
+    "aiInsights": "İçgörüler ve özetler",
+    "aiTranslate": "Çeviriler",
+    "aiHistory": "Geçmiş",
+    "aiSettings": "Ayarlar ve kullanım"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -1249,6 +1259,30 @@
       "height": "Yükseklik",
       "heightHint": "Otomatik tüm resmi gösterir; sabit yükseklik onu afiş gibi kırpar.",
       "heightAuto": "Otomatik"
+    },
+    "audience": {
+      "title": "Alan erişimi",
+      "label": "Bu alan kimin için?",
+      "mode": {
+        "everyone": "Herkes",
+        "department": "Departmanlar",
+        "role": "Roller",
+        "user": "Kişiler"
+      },
+      "everyoneHint": "Formu dolduran herkes bu alanı görür.",
+      "all": {
+        "department": "Tüm departmanlar",
+        "role": "Tüm roller",
+        "user": "Çalışma alanındaki tüm kişiler"
+      },
+      "pick": {
+        "department": "Departman seçin",
+        "role": "Rol seçin",
+        "user": "Kişi seçin"
+      },
+      "placeholder": "Listeden seçin…",
+      "selected": "Bu alanı yalnızca seçilen {n} kişi/grup görebilir ve doldurabilir.",
+      "noRequired": "Kısıtlı alanlar zorunlu olamaz — alanın hitap etmediği kişiler de formu gönderebilmelidir. Yanıtlar yalnızca aynı kişilere gösterilir."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Bir dil seçin",
       "timezone": "Bir saat dilimi seçin",
       "currency_code": "Bir para birimi seçin"
-    }
+    },
+    "restricted": "Yalnızca bazı kişiler için (alan erişimi)"
   },
   "logic": {
     "crumb": "Mantık",
@@ -1897,6 +1932,25 @@
       "logs": "Her çağrı; durumu, süresi ve çağıranıyla birlikte.",
       "analytics": "Hizmet ve uç nokta başına çağrılar, hatalar ve yanıt süreleri.",
       "docs": "Hazır belgeler ve her uç noktayı denemek için bir alan."
+    }
+  },
+  "ai": {
+    "subtitle": "Form ve şablon oluşturma, yanıtları analiz etme ve daha fazlası için yardım",
+    "back": "YZ asistanına genel bakış",
+    "promise": {
+      "title": "Kontrol sizde",
+      "review": "Asistan önerir — siz inceleyip uygularsınız.",
+      "private": "Neleri okuyabileceğini siz seçersiniz; kişisel veriler hariç tutulabilir.",
+      "audit": "Her istek geçmişe ve denetim kaydına işlenir."
+    },
+    "section": {
+      "createForm": "İhtiyacınızı anlatın; alanlar, mantık ve hesaplamalarla hazır bir taslak alın.",
+      "templates": "Sektörünüz için uyumlu tasarımlı şablonlar oluşturun.",
+      "analysis": "Yanıtlarınızdaki temaları, duygu durumunu ve eğilimleri bulun.",
+      "insights": "Formlarınızın size anlattıklarının özetleri ve derlemeleri.",
+      "translate": "Formları 20 dilden herhangi birine çevirin ve yan yana inceleyin.",
+      "history": "Asistana sorulan her şey, kimin tarafından ve ne zaman.",
+      "settings": "Asistanı açın veya kapatın, neleri okuyabileceğini seçin ve kullanımı görün."
     }
   }
 }

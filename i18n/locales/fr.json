@@ -168,7 +168,8 @@
         "logicText": "Affichez, masquez ou rendez obligatoires des questions et totalisez les réponses.",
         "saveTitle": "Enregistrement automatique",
         "saveText": "Chaque modification est enregistrée en brouillon jusqu’à la publication."
-      }
+      },
+      "folderHint": "Les dossiers gardent vos formulaires organisés dans la liste et la barre latérale (par exemple par équipe ou par projet). Ce ne sont pas des catégories de modèles."
     },
     "detail": {
       "created": "Créé",
@@ -232,7 +233,16 @@
     "apiAccess": "Règles d’accès",
     "apiLogs": "Journaux",
     "apiAnalytics": "Statistiques",
-    "apiDocs": "Docs et tests"
+    "apiDocs": "Docs et tests",
+    "ai": "Assistant IA",
+    "aiOverview": "Vue d'ensemble",
+    "aiCreateForm": "Créer un formulaire",
+    "aiTemplates": "Idées de modèles",
+    "aiAnalysis": "Analyse des réponses",
+    "aiInsights": "Analyses & synthèses",
+    "aiTranslate": "Traductions",
+    "aiHistory": "Historique",
+    "aiSettings": "Paramètres & utilisation"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -1249,6 +1259,30 @@
       "height": "Hauteur",
       "heightHint": "Auto affiche toute l’image ; une hauteur fixe la recadre comme une bannière.",
       "heightAuto": "Auto"
+    },
+    "audience": {
+      "title": "Accès au champ",
+      "label": "À qui s'adresse ce champ ?",
+      "mode": {
+        "everyone": "Tout le monde",
+        "department": "Services",
+        "role": "Rôles",
+        "user": "Personnes"
+      },
+      "everyoneHint": "Toutes les personnes qui remplissent le formulaire voient ce champ.",
+      "all": {
+        "department": "Tous les services",
+        "role": "Tous les rôles",
+        "user": "Toutes les personnes de l'espace de travail"
+      },
+      "pick": {
+        "department": "Choisir des services",
+        "role": "Choisir des rôles",
+        "user": "Choisir des personnes"
+      },
+      "placeholder": "Choisissez dans la liste…",
+      "selected": "Seuls les {n} sélectionnés peuvent voir et remplir ce champ.",
+      "noRequired": "Les champs restreints ne peuvent pas être obligatoires : les personnes auxquelles le champ n'est pas destiné doivent tout de même pouvoir envoyer le formulaire. Leurs réponses ne sont visibles que par ces mêmes personnes."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Choisir une langue",
       "timezone": "Choisir un fuseau horaire",
       "currency_code": "Choisir une devise"
-    }
+    },
+    "restricted": "Réservé à certaines personnes (accès au champ)"
   },
   "logic": {
     "crumb": "Logique",
@@ -1897,6 +1932,25 @@
       "logs": "Chaque appel avec son statut, sa durée et son appelant.",
       "analytics": "Appels, erreurs et temps de réponse par service et par endpoint.",
       "docs": "Une documentation prête à l’emploi et un espace pour tester chaque endpoint."
+    }
+  },
+  "ai": {
+    "subtitle": "Aide pour créer des formulaires et des modèles, analyser les réponses et plus encore",
+    "back": "Vue d'ensemble de l'assistant IA",
+    "promise": {
+      "title": "Vous gardez le contrôle",
+      "review": "L'assistant propose — vous vérifiez et appliquez.",
+      "private": "Vous choisissez ce qu'il peut lire ; les données personnelles peuvent être exclues.",
+      "audit": "Chaque demande est enregistrée dans l'historique et le journal d'audit."
+    },
+    "section": {
+      "createForm": "Décrivez votre besoin et obtenez un brouillon prêt avec champs, logique et calculs.",
+      "templates": "Générez des modèles pour votre secteur, avec un design assorti.",
+      "analysis": "Repérez les thèmes, le sentiment et les tendances dans vos réponses.",
+      "insights": "Synthèses et résumés de ce que vos formulaires vous apprennent.",
+      "translate": "Traduisez vos formulaires dans l'une des 20 langues et comparez côte à côte.",
+      "history": "Tout ce qui a été demandé à l'assistant, par qui et quand.",
+      "settings": "Activez ou désactivez l'assistant, choisissez ce qu'il peut lire et consultez l'utilisation."
     }
   }
 }

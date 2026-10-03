@@ -6,7 +6,7 @@
   never sends anything. Columns follow the form's own width (container queries).
 -->
 <script setup lang="ts">
-import { isLocked, sectionOwners, type FormField } from '#shared/utils/forms/build'
+import { cannotBeRequired, isLocked, sectionOwners, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 import { calculate } from '#shared/utils/forms/formula'
 import { END_OF_FORM, evaluateLogic } from '#shared/utils/forms/logic'
@@ -84,8 +84,8 @@ const last = computed(() => nextIndex.value < 0)
 function effective(field: FormField): FormField {
   const disabled = logic.value.disabled.has(field.id) ? true : logic.value.enabled.has(field.id) ? false : field.disabled
   const wanted = logic.value.optional.has(field.id) ? false : !!field.required || logic.value.required.has(field.id)
-  // Read-only, disabled and hidden fields are never required: nobody could fill them in.
-  const required = wanted && !isLocked({ ...field, disabled }) && field.type !== 'hidden'
+  // Read-only, disabled, restricted and hidden fields are never required (someone could never submit).
+  const required = wanted && !cannotBeRequired({ ...field, disabled })
   return { ...field, disabled, required }
 }
 

@@ -168,7 +168,8 @@
         "logicText": "Mostra, nascondi o rendi obbligatorie le domande e somma le risposte.",
         "saveTitle": "Salvataggio automatico",
         "saveText": "Ogni modifica viene salvata come bozza finché non pubblichi."
-      }
+      },
+      "folderHint": "Le cartelle mantengono i tuoi moduli organizzati nell'elenco e nella barra laterale (ad esempio per team o progetto). Non sono categorie di modelli."
     },
     "detail": {
       "created": "Creato",
@@ -232,7 +233,16 @@
     "apiAccess": "Regole di accesso",
     "apiLogs": "Log richieste",
     "apiAnalytics": "Statistiche",
-    "apiDocs": "Docs e test"
+    "apiDocs": "Docs e test",
+    "ai": "Assistente IA",
+    "aiOverview": "Panoramica",
+    "aiCreateForm": "Crea un modulo",
+    "aiTemplates": "Idee per modelli",
+    "aiAnalysis": "Analisi delle risposte",
+    "aiInsights": "Approfondimenti e sintesi",
+    "aiTranslate": "Traduzioni",
+    "aiHistory": "Cronologia",
+    "aiSettings": "Impostazioni e utilizzo"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -1249,6 +1259,30 @@
       "height": "Altezza",
       "heightHint": "Automatica mostra l’immagine intera; un’altezza fissa la ritaglia come un banner.",
       "heightAuto": "Automatica"
+    },
+    "audience": {
+      "title": "Accesso al campo",
+      "label": "A chi è destinato questo campo?",
+      "mode": {
+        "everyone": "Tutti",
+        "department": "Reparti",
+        "role": "Ruoli",
+        "user": "Persone"
+      },
+      "everyoneHint": "Tutti coloro che compilano il modulo vedono questo campo.",
+      "all": {
+        "department": "Tutti i reparti",
+        "role": "Tutti i ruoli",
+        "user": "Tutte le persone dello spazio di lavoro"
+      },
+      "pick": {
+        "department": "Scegli i reparti",
+        "role": "Scegli i ruoli",
+        "user": "Scegli le persone"
+      },
+      "placeholder": "Scegli dall'elenco…",
+      "selected": "Solo i {n} selezionati possono vedere e compilare questo campo.",
+      "noRequired": "I campi riservati non possono essere obbligatori: chi non è destinatario del campo deve comunque poter inviare il modulo. Le risposte sono mostrate solo a quelle stesse persone."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Scelga una lingua",
       "timezone": "Scelga un fuso orario",
       "currency_code": "Scelga una valuta"
-    }
+    },
+    "restricted": "Solo per alcune persone (accesso al campo)"
   },
   "logic": {
     "crumb": "Logica",
@@ -1897,6 +1932,25 @@
       "logs": "Ogni chiamata con stato, durata e chiamante.",
       "analytics": "Chiamate, errori e tempi di risposta per servizio ed endpoint.",
       "docs": "Documentazione pronta e uno spazio per provare ogni endpoint."
+    }
+  },
+  "ai": {
+    "subtitle": "Aiuto per creare moduli e modelli, analizzare le risposte e altro ancora",
+    "back": "Panoramica dell'assistente IA",
+    "promise": {
+      "title": "Il controllo resta a te",
+      "review": "L'assistente suggerisce: tu verifichi e applichi.",
+      "private": "Scegli tu cosa può leggere; i dati personali possono essere esclusi.",
+      "audit": "Ogni richiesta viene registrata nella cronologia e nel registro di audit."
+    },
+    "section": {
+      "createForm": "Descrivi ciò che ti serve e ottieni una bozza pronta con campi, logica e calcoli.",
+      "templates": "Genera modelli per il tuo settore, con un design coordinato.",
+      "analysis": "Individua temi, sentiment e tendenze nelle tue risposte.",
+      "insights": "Sintesi e riepiloghi di ciò che i tuoi moduli ti stanno dicendo.",
+      "translate": "Traduci i moduli in una qualsiasi delle 20 lingue e confrontali affiancati.",
+      "history": "Tutto ciò che è stato chiesto all'assistente, da chi e quando.",
+      "settings": "Attiva o disattiva l'assistente, scegli cosa può leggere e consulta l'utilizzo."
     }
   }
 }

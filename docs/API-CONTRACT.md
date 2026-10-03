@@ -45,14 +45,14 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 | POST | `/auth/password/reset` | `{ challenge_id, code, password }` → `{ reset: true }` |
 | GET | `/me` · PATCH `/me` · POST `/me/password` · `/me/mfa/totp/*` · GET/DELETE `/me/sessions/{id}` | |
 
-**`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F21); owner and admin manage the workspace (e.g. the audit trail).
+**`user`** (in tokens and `/me`): `{ id, first_name, last_name, email, avatar_url, role: owner|admin|member }`. `role` is the simple workspace role until Roles & access (F22); owner and admin manage the workspace (e.g. the audit trail).
 
 **Refresh cookie:** `formalie_rt`, `HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth` (covers refresh + logout).
 **Mock only:** challenge responses carry `meta.dev_code` so the dev code screen can show it; the real API never returns codes. The mock honours the dev header `X-Formalie-Dev-Tenant` (localhost / LAN-IP testing).
 
 ## Audit trail
 
-Owners / admins only (members → FRM-PERM-1001) until permissions arrive with Roles & access (F21). Every state-changing endpoint and every sign-in event writes one entry; action keys and areas are listed once in `shared/utils/audit/events.ts`.
+Owners / admins only (members → FRM-PERM-1001) until permissions arrive with Roles & access (F22). Every state-changing endpoint and every sign-in event writes one entry; action keys and areas are listed once in `shared/utils/audit/events.ts`.
 
 | Method | Path                 | Notes                                                                                                                                                                                                                                                           |
 | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -119,6 +119,10 @@ Every change takes the form's `row_version` and bumps it; a stale version → `F
 | POST   | `/option-lists`                                                                         | `{ name, options (1–2000) }` — name unique per workspace → `FRM-FORM-1009` (audit `forms.list_created`)                                                                                                                                                                                                                                                                                                                             |
 | PATCH  | `/option-lists/{id}`                                                                    | `{ name?, options? }` (audit `forms.list_updated`); fields filled from a list keep a copy of its options plus `option_set_id`                                                                                                                                                                                                                                                                                                       |
 | DELETE | `/option-lists/{id}`                                                                    | fields keep their options (audit `forms.list_deleted`)                                                                                                                                                                                                                                                                                                                                                                              |
+
+## Directory
+
+| GET | `/directory` | `{ departments: [{ id, name }], roles: [{ id, name }], users: [{ id, name, detail }] }` — for field access pickers; members and admins |
 
 ## Design, templates, option sets
 
@@ -190,7 +194,7 @@ Portal management (enveloped like the rest of the portal API): `/api-services`, 
 
 ## FormSchema (v1)
 
-Field types: `shared/utils/forms/fields.ts` (text, dates, choice, rating, files, location, technical, advanced, layout — 47 types). Validated by `shared/utils/forms/schema.ts` (also used for imports). `props` per type: long text `rows`; currency `currency`; rating `max`; scale `min`, `max`, `min_label`, `max_label`; slider `min`, `max`, `step`; files `accept`, `max_files`, `max_mb`; matrix `rows[]` (columns = `options`); hidden / any field `prefill_param`; calculated `formula`; section `description`; paragraph `text`; image `src`, `alt`; full name `show_title`, `show_middle` (answer `{ title?, first, middle?, last }`); consent `text`, `link_label`, `link_href` (https only; answer `true`); duration answer `{ hours, minutes }`; ip address `ip_version` (`any` | `v4` | `v6`); language / time zone / currency answer the ISO code (BCP 47 language, IANA zone, ISO 4217); colour `#rrggbb`; percentage a number. `validation`: `min_length`, `max_length`, `min`, `max`, `pattern`, `pattern_message`, `min_selected`, `max_selected`.
+Field types: `shared/utils/forms/fields.ts` (text, dates, choice, rating, files, location, technical, advanced, layout — 47 types). Validated by `shared/utils/forms/schema.ts` (also used for imports). `props` per type: long text `rows`; currency `currency`; rating `max`; scale `min`, `max`, `min_label`, `max_label`; slider `min`, `max`, `step`; files `accept`, `max_files`, `max_mb`; matrix `rows[]` (columns = `options`); hidden / any field `prefill_param`; calculated `formula`; section `description`; paragraph `text`; image `src`, `alt`; full name `show_title`, `show_middle` (answer `{ title?, first, middle?, last }`); consent `text`, `link_label`, `link_href` (https only; answer `true`); duration answer `{ hours, minutes }`; ip address `ip_version` (`any` | `v4` | `v6`); language / time zone / currency answer the ISO code (BCP 47 language, IANA zone, ISO 4217); colour `#rrggbb`; percentage a number. Field access: `audience: { mode: everyone|department|role|user, all?, ids? }` (absent = everyone); a restricted field can't be `required` (publish check `locked_required`). `validation`: `min_length`, `max_length`, `min`, `max`, `pattern`, `pattern_message`, `min_selected`, `max_selected`.
 
 ```json
 {

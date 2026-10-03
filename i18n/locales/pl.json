@@ -168,7 +168,8 @@
         "logicText": "Pokazuj, ukrywaj lub wymagaj pytań i sumuj odpowiedzi.",
         "saveTitle": "Zapisuje na bieżąco",
         "saveText": "Każda zmiana jest zapisywana jako wersja robocza do publikacji."
-      }
+      },
+      "folderHint": "Foldery porządkują formularze na liście i w pasku bocznym (na przykład według zespołu lub projektu). Nie są to kategorie szablonów."
     },
     "detail": {
       "created": "Utworzono",
@@ -232,7 +233,16 @@
     "apiAccess": "Reguły dostępu",
     "apiLogs": "Logi żądań",
     "apiAnalytics": "Analityka",
-    "apiDocs": "Dokumentacja i testy"
+    "apiDocs": "Dokumentacja i testy",
+    "ai": "Asystent AI",
+    "aiOverview": "Przegląd",
+    "aiCreateForm": "Utwórz formularz",
+    "aiTemplates": "Pomysły na szablony",
+    "aiAnalysis": "Analiza odpowiedzi",
+    "aiInsights": "Wnioski i podsumowania",
+    "aiTranslate": "Tłumaczenia",
+    "aiHistory": "Historia",
+    "aiSettings": "Ustawienia i użycie"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -1249,6 +1259,30 @@
       "height": "Wysokość",
       "heightHint": "Automatycznie pokazuje cały obraz; stała wysokość przycina go jak baner.",
       "heightAuto": "Automatycznie"
+    },
+    "audience": {
+      "title": "Dostęp do pola",
+      "label": "Dla kogo jest to pole?",
+      "mode": {
+        "everyone": "Wszyscy",
+        "department": "Działy",
+        "role": "Role",
+        "user": "Osoby"
+      },
+      "everyoneHint": "Wszyscy wypełniający formularz widzą to pole.",
+      "all": {
+        "department": "Wszystkie działy",
+        "role": "Wszystkie role",
+        "user": "Wszystkie osoby w obszarze roboczym"
+      },
+      "pick": {
+        "department": "Wybierz działy",
+        "role": "Wybierz role",
+        "user": "Wybierz osoby"
+      },
+      "placeholder": "Wybierz z listy…",
+      "selected": "Tylko wybrane ({n}) mogą widzieć i wypełniać to pole.",
+      "noRequired": "Pola z ograniczonym dostępem nie mogą być wymagane — osoby, dla których pole nie jest przeznaczone, nadal muszą móc wysłać formularz. Ich odpowiedzi są widoczne tylko dla tych samych osób."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Wybierz język",
       "timezone": "Wybierz strefę czasową",
       "currency_code": "Wybierz walutę"
-    }
+    },
+    "restricted": "Tylko dla wybranych osób (dostęp do pola)"
   },
   "logic": {
     "crumb": "Logika",
@@ -1897,6 +1932,25 @@
       "logs": "Każde wywołanie ze statusem, czasem trwania i wywołującym.",
       "analytics": "Wywołania, błędy i czasy odpowiedzi według usługi i endpointu.",
       "docs": "Gotowa dokumentacja i miejsce do testowania każdego endpointu."
+    }
+  },
+  "ai": {
+    "subtitle": "Pomoc w tworzeniu formularzy i szablonów, analizie odpowiedzi i nie tylko",
+    "back": "Przegląd asystenta AI",
+    "promise": {
+      "title": "Decyzja należy do Ciebie",
+      "review": "Asystent proponuje — Ty sprawdzasz i stosujesz.",
+      "private": "Ty decydujesz, co może czytać; dane osobowe można wykluczyć.",
+      "audit": "Każde żądanie jest zapisywane w historii i dzienniku audytu."
+    },
+    "section": {
+      "createForm": "Opisz, czego potrzebujesz, i otrzymaj gotowy szkic z polami, logiką i obliczeniami.",
+      "templates": "Generuj szablony dla swojej branży z dopasowanym wyglądem.",
+      "analysis": "Znajdź tematy, nastroje i trendy w odpowiedziach.",
+      "insights": "Podsumowania i zestawienia tego, co mówią Twoje formularze.",
+      "translate": "Tłumacz formularze na dowolny z 20 języków i porównuj obok siebie.",
+      "history": "Wszystko, o co proszono asystenta, kto i kiedy.",
+      "settings": "Włącz lub wyłącz asystenta, wybierz, co może czytać, i sprawdź użycie."
     }
   }
 }

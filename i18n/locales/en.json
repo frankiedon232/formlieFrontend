@@ -168,7 +168,8 @@
         "logicText": "Show, hide or require questions and total up answers.",
         "saveTitle": "Saves as you go",
         "saveText": "Every change is saved as a draft until you publish."
-      }
+      },
+      "folderHint": "Folders keep your forms organised in the list and the sidebar (for example by team or project). They are not template categories."
     },
     "detail": {
       "created": "Created",
@@ -232,7 +233,16 @@
     "apiAccess": "Access rules",
     "apiLogs": "Request logs",
     "apiAnalytics": "Analytics",
-    "apiDocs": "Docs & testing"
+    "apiDocs": "Docs & testing",
+    "ai": "AI assistant",
+    "aiOverview": "Overview",
+    "aiCreateForm": "Create a form",
+    "aiTemplates": "Template ideas",
+    "aiAnalysis": "Response analysis",
+    "aiInsights": "Insights & summaries",
+    "aiTranslate": "Translations",
+    "aiHistory": "History",
+    "aiSettings": "Settings & usage"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -1249,6 +1259,30 @@
       "height": "Height",
       "heightHint": "Auto keeps the whole picture; a fixed height crops it like a banner.",
       "heightAuto": "Auto"
+    },
+    "audience": {
+      "title": "Field access",
+      "label": "Who is this field for?",
+      "mode": {
+        "everyone": "Everyone",
+        "department": "Departments",
+        "role": "Roles",
+        "user": "People"
+      },
+      "everyoneHint": "Everyone filling in the form sees this field.",
+      "all": {
+        "department": "All departments",
+        "role": "All roles",
+        "user": "All people in the workspace"
+      },
+      "pick": {
+        "department": "Choose departments",
+        "role": "Choose roles",
+        "user": "Choose people"
+      },
+      "placeholder": "Choose from the list…",
+      "selected": "Only the {n} selected can see and fill this field.",
+      "noRequired": "Restricted fields can't be required — people the field isn't meant for must still be able to submit. Their answers are shown only to the same people."
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "Choose a language",
       "timezone": "Choose a time zone",
       "currency_code": "Choose a currency"
-    }
+    },
+    "restricted": "Only for some people (field access)"
   },
   "logic": {
     "crumb": "Logic",
@@ -1897,6 +1932,25 @@
       "logs": "Every call with its status, time taken and caller.",
       "analytics": "Calls, errors and response times per service and endpoint.",
       "docs": "Ready-made documentation and a place to try each endpoint."
+    }
+  },
+  "ai": {
+    "subtitle": "Help with creating forms and templates, analysing answers and more",
+    "back": "AI assistant overview",
+    "promise": {
+      "title": "You stay in control",
+      "review": "The assistant suggests — you review and apply.",
+      "private": "You choose what it may read; personal data can be kept out.",
+      "audit": "Every request is recorded in the history and the audit trail."
+    },
+    "section": {
+      "createForm": "Describe what you need and get a ready draft with fields, logic and calculations.",
+      "templates": "Generate templates for your industry, with a matching design.",
+      "analysis": "Find themes, sentiment and trends in your responses.",
+      "insights": "Summaries and digests of what your forms are telling you.",
+      "translate": "Translate forms into any of the 20 languages and review side by side.",
+      "history": "Everything the assistant was asked, by whom and when.",
+      "settings": "Switch the assistant on or off, choose what it may read and see usage."
     }
   }
 }

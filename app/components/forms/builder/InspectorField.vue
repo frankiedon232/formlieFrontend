@@ -1,6 +1,6 @@
 <!-- Inspector for one field: basics · options · rules · type settings · default & prefill · advanced. -->
 <script setup lang="ts">
-import { isLocked, type FormField } from '#shared/utils/forms/build'
+import { cannotBeRequired, isLocked, type FormField } from '#shared/utils/forms/build'
 import { FIELD_WIDTHS } from '#shared/utils/forms/fields'
 
 const props = defineProps<{ field: FormField }>()
@@ -27,6 +27,12 @@ const accessItems = computed(() => [
   { value: 'disabled', label: t('builder.access.disabled') },
 ])
 const locked = computed(() => isLocked(props.field))
+/** Locked or restricted to some people: "required" is off and can't be switched on. */
+const noRequired = computed(() => cannotBeRequired(props.field))
+const noRequiredHint = computed(() =>
+  // Restricted fields: the reason is shown once, in the Field access section below.
+  locked.value ? t('builder.access.noRequired') : undefined,
+)
 function setAccess(next: string | number) {
   set({ readonly: next === 'readonly', disabled: next === 'disabled', ...(next !== 'editable' ? { required: false } : {}) })
 }
@@ -74,10 +80,10 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
       </UFormField>
       <USwitch
         v-if="has('required')"
-        :model-value="!!field.required && !locked"
-        :disabled="locked"
+        :model-value="!!field.required && !noRequired"
+        :disabled="noRequired"
         :label="t('builder.inspector.required')"
-        :description="locked ? t('builder.access.noRequired') : undefined"
+        :description="noRequiredHint"
         color="neutral"
         @update:model-value="v => set({ required: v })"
       />
@@ -94,6 +100,8 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
         />
       </UFormField>
     </section>
+
+    <FormsBuilderInspectorAudience v-if="hasAccess" :field="field" />
 
     <FormsBuilderInspectorOptions v-if="has('options') || has('matrix_rows')" :field="field" />
 

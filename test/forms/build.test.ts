@@ -104,4 +104,13 @@ describe('field keys and locked fields', () => {
     field.readonly = true
     expect(publishIssues(schema).some(i => i.code === 'locked_required' && i.field_id === field.id)).toBe(true)
   })
+
+  it('flags required fields restricted to some people (field access)', () => {
+    const schema = starterSchema('contact_lead')
+    const field = allFields(schema).find(f => f.required)!
+    field.audience = { mode: 'department', all: false, ids: ['dep_finance'] }
+    expect(publishIssues(schema).some(i => i.code === 'locked_required' && i.field_id === field.id)).toBe(true)
+    field.audience = { mode: 'everyone' }
+    expect(publishIssues(schema).some(i => i.field_id === field.id)).toBe(false)
+  })
 })

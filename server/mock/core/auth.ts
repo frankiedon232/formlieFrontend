@@ -325,7 +325,7 @@ export function requireAuth(event: H3Event): { user: MockUser; tenant: MockTenan
   return { user: session.user, tenant: session.tenant }
 }
 
-/** Workspace owner / admin only (until Roles & access, F21). */
+/** Workspace owner / admin only (until Roles & access, F22). */
 export function requireAdmin(event: H3Event): { user: MockUser; tenant: MockTenant } {
   const auth = requireAuth(event)
   if (auth.user.role === 'member') throw new MockError('FRM-PERM-1001')

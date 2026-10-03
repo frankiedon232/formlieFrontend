@@ -168,7 +168,8 @@
         "logicText": "显示、隐藏或设为必填问题，并汇总答案。",
         "saveTitle": "边做边保存",
         "saveText": "在发布之前，每次更改都会保存为草稿。"
-      }
+      },
+      "folderHint": "文件夹可让表单在列表和侧边栏中保持有序（例如按团队或项目）。它们不是模板分类。"
     },
     "detail": {
       "created": "创建时间",
@@ -232,7 +233,16 @@
     "apiAccess": "访问规则",
     "apiLogs": "请求日志",
     "apiAnalytics": "分析",
-    "apiDocs": "文档与测试"
+    "apiDocs": "文档与测试",
+    "ai": "AI 助手",
+    "aiOverview": "概览",
+    "aiCreateForm": "创建表单",
+    "aiTemplates": "模板创意",
+    "aiAnalysis": "回复分析",
+    "aiInsights": "洞察与摘要",
+    "aiTranslate": "翻译",
+    "aiHistory": "历史记录",
+    "aiSettings": "设置与用量"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -1249,6 +1259,30 @@
       "height": "高度",
       "heightHint": "自动显示完整图片；固定高度会像横幅一样裁剪。",
       "heightAuto": "自动"
+    },
+    "audience": {
+      "title": "字段访问权限",
+      "label": "此字段面向谁？",
+      "mode": {
+        "everyone": "所有人",
+        "department": "部门",
+        "role": "角色",
+        "user": "人员"
+      },
+      "everyoneHint": "所有填写表单的人都能看到此字段。",
+      "all": {
+        "department": "所有部门",
+        "role": "所有角色",
+        "user": "工作区中的所有人员"
+      },
+      "pick": {
+        "department": "选择部门",
+        "role": "选择角色",
+        "user": "选择人员"
+      },
+      "placeholder": "从列表中选择…",
+      "selected": "仅选中的 {n} 项可以查看和填写此字段。",
+      "noRequired": "受限字段不能设为必填——字段不面向的人员也必须能够提交。其答案仅对相同人员可见。"
     }
   },
   "renderer": {
@@ -1365,7 +1399,8 @@
       "language": "选择语言",
       "timezone": "选择时区",
       "currency_code": "选择货币"
-    }
+    },
+    "restricted": "仅限部分人员（字段访问权限）"
   },
   "logic": {
     "crumb": "逻辑",
@@ -1897,6 +1932,25 @@
       "logs": "每次调用及其状态、耗时和调用方。",
       "analytics": "按服务和端点统计的调用量、错误和响应时间。",
       "docs": "现成的文档，以及试用每个端点的地方。"
+    }
+  },
+  "ai": {
+    "subtitle": "帮助创建表单和模板、分析答案等",
+    "back": "AI 助手概览",
+    "promise": {
+      "title": "一切由您掌控",
+      "review": "助手提供建议——由您审阅并应用。",
+      "private": "由您决定它可以读取哪些内容；个人数据可以排除在外。",
+      "audit": "每个请求都会记录在历史记录和审计日志中。"
+    },
+    "section": {
+      "createForm": "描述您的需求，即可获得包含字段、逻辑和计算的现成草稿。",
+      "templates": "为您的行业生成模板，并配以相应的设计。",
+      "analysis": "发现回复中的主题、情绪和趋势。",
+      "insights": "汇总并摘要您的表单所揭示的信息。",
+      "translate": "将表单翻译为 20 种语言中的任意一种，并并排审阅。",
+      "history": "向助手提出的所有请求，以及提出者和时间。",
+      "settings": "开启或关闭助手，选择它可以读取的内容，并查看用量。"
     }
   }
 }

@@ -1,5 +1,5 @@
 <!--
-  Far-left rail (design: ⋯ · + · workspaces), then the other areas (Data sources, API service) — each with
+  Far-left rail (design: ⋯ · + · workspaces), then the other areas (Data sources, API service, AI assistant) — each with
   its own menu; the workspace button is the Forms area. When the menu is collapsed it also carries the current area's section icons
   with tooltips, an expand button and the account avatar.
 -->

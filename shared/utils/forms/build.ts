@@ -49,6 +49,13 @@ export function fieldKey(label: string, id: string, taken: Iterable<string>): st
 /** Read-only or disabled: shown but not editable by respondents, so it can never be required. */
 export const isLocked = (field: Pick<FormField, 'readonly' | 'disabled'>) => !!field.readonly || !!field.disabled
 
+/** Field access other than "everyone" (only some departments, roles or people). */
+export const isRestricted = (field: Pick<FormField, 'audience'>) => !!field.audience && field.audience.mode !== 'everyone'
+
+/** Locked, restricted or hidden fields can't be required — someone could never submit the form. */
+export const cannotBeRequired = (field: Pick<FormField, 'readonly' | 'disabled' | 'audience' | 'type'>) =>
+  isLocked(field) || isRestricted(field) || field.type === 'hidden'
+
 export const allFields = (schema: FormSchemaV1): FormField[] =>
   schema.pages.flatMap(page => page.rows.flatMap(row => row.fields))
 
@@ -300,7 +307,7 @@ export function publishIssues(schema: FormSchemaV1): PublishIssue[] {
     if (hasOptions(f.type) && !f.option_set_id && !(f.options?.length ?? 0))
       issues.push({ code: 'no_options', field_id: f.id })
     // Nobody could fill these in, so the form could never be submitted.
-    if (f.required && (isLocked(f) || f.type === 'hidden')) issues.push({ code: 'locked_required', field_id: f.id })
+    if (f.required && cannotBeRequired(f)) issues.push({ code: 'locked_required', field_id: f.id })
   }
   return issues
 }

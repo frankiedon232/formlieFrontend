@@ -1,4 +1,4 @@
-import { allFields, isLocked, newId, type FormField } from '#shared/utils/forms/build'
+import { allFields, cannotBeRequired, newId, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 import { formulaKeys, isValidFormula } from '#shared/utils/forms/formula'
 import {
@@ -150,7 +150,7 @@ export function useLogicRules() {
         const field = fieldById.value.get(target)
         if (!field) found.push(t('logic.problem.target'))
         else {
-          if (a.action === 'require' && (isLocked(field) || field.type === 'hidden'))
+          if (a.action === 'require' && cannotBeRequired(field))
             found.push(t('logic.problem.requireLocked'))
           if (['hide', 'disable', 'clear_value'].includes(a.action) && tested.has(target)) found.push(t('logic.problem.self'))
           if (a.action === 'set_value' && emptyValue(a.value)) found.push(t('logic.problem.value'))
