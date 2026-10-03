@@ -2,11 +2,11 @@
  * Telling people apart on a public form (F10, owner 2026-10-03) — "is this response from someone who
  * already responded, without mistaking another person for them?"
  *
- * Identity = the respondent's OWN email (never a reference's, manager's or guardian's) and / or an
- * ID / account number, chosen in Form settings (suggested automatically). Matching:
- *   clear  — same email (normalised) or same ID → refused
- *   likely — near-identical email (a typo away) or ID, ideally with a similar name → the respondent
- *            confirms they are a different person; the response is flagged "possible duplicate"
+ * Identity = the respondent's OWN email (never a reference's, manager's or guardian's), chosen in
+ * Form settings (suggested automatically). Email only — no ID numbers (owner: avoid complexity).
+ *   clear  — same email (normalised) → refused
+ *   likely — an email a typo away, with a similar name → the respondent confirms they are a
+ *            different person; the response is flagged "possible duplicate"
  *   none   — accepted
  * Messages never reveal the other person's details (only a masked hint and the date).
  */
@@ -17,15 +17,12 @@ import type { FormSchemaV1 } from './schema'
 export interface IdentitySettings {
   /** Key of the email field that belongs to the person filling in (null = off). */
   email: string | null
-  /** Key of an ID / account / membership number field (null = off). */
-  id: string | null
   /** Ask for a one-time code sent to that email before submitting. */
   verify: boolean
 }
 
 // Emails that are about someone else, by their label or key.
 const OTHER_PERSON = /\b(reference|referee|manager|supervisor|guardian|parent|emergency|contact person|next of kin|friend|partner|spouse|colleague|employer|company|business|billing|invoice|sponsor|assistant|secretary|recipient|cc)\b/i
-const ID_WORDS = /\b(id|identity|identification|national|passport|membership|member|account|employee|student|staff|customer|patient|policy|licen[cs]e|registration|reference number|number)\b/i
 
 const textOf = (field: FormField) => `${field.label ?? ''} ${field.key.replace(/_/g, ' ')}`
 
@@ -35,21 +32,13 @@ export function suggestEmailField(fields: FormField[]): string | null {
   return emails.find(f => !OTHER_PERSON.test(textOf(f)))?.key ?? null
 }
 
-/** A field that looks like an ID / account number (short text or number, labelled as one). */
-export function suggestIdField(fields: FormField[]): string | null {
-  return (
-    fields.find(f => (f.type === 'short_text' || f.type === 'number') && ID_WORDS.test(textOf(f)) && !OTHER_PERSON.test(textOf(f)) && /\b(id|number|no)\b/i.test(textOf(f)))
-      ?.key ?? null
-  )
-}
-
 /** The form's identity settings: stored ones, or suggestions when the form never chose. */
 export function identityOf(schema: FormSchemaV1): IdentitySettings {
   const stored = schema.settings?.identity
   const fields = allFields(schema)
-  const exists = (key: string | null | undefined) => (key && fields.some(f => f.key === key) ? key : null)
-  if (stored) return { email: exists(stored.email), id: exists(stored.id), verify: !!stored.verify && !!exists(stored.email) }
-  return { email: suggestEmailField(fields), id: exists(schema.settings?.unique_field) ?? suggestIdField(fields), verify: false }
+  const exists = (key: string | null | undefined) => (key && fields.some(f => f.key === key && f.type === 'email') ? key : null)
+  if (stored) return { email: exists(stored.email), verify: !!stored.verify && !!exists(stored.email) }
+  return { email: suggestEmailField(fields), verify: false }
 }
 
 // ── Normalising ──────────────────────────────────────────────────────────────────────
@@ -63,12 +52,6 @@ export function normaliseEmail(value: unknown): string | null {
   let local = rawLocal.split('+')[0]!
   if (GMAIL.has(domain)) local = local.replace(/\./g, '')
   return local && domain ? `${local}@${domain}` : null
-}
-/** Letters and digits only, upper case (AB-123 456 → AB123456). */
-export function normaliseId(value: unknown): string | null {
-  const text = typeof value === 'number' ? String(value) : typeof value === 'string' ? value : ''
-  const clean = text.toUpperCase().replace(/[^A-Z0-9]/g, '')
-  return clean.length >= 3 ? clean : null
 }
 /** Names: accents, case, punctuation and word order don't matter. */
 export function normaliseName(value: unknown): string {
@@ -122,7 +105,7 @@ export interface IdentityRecord {
   submitted_at: string
   data: Record<string, unknown>
 }
-export type MatchReason = 'email' | 'id' | 'email_similar' | 'id_similar'
+export type MatchReason = 'email' | 'email_similar'
 export interface IdentityMatch {
   level: 'none' | 'likely' | 'clear'
   reason?: MatchReason
@@ -139,22 +122,16 @@ function nameOf(fields: FormField[], data: Record<string, unknown>): string {
 
 /** Compares a new response with earlier ones of the same form. */
 export function matchIdentity(schema: FormSchemaV1, answers: Record<string, unknown>, earlier: IdentityRecord[], identity = identityOf(schema)): IdentityMatch {
+  const key = identity.email
+  const email = key ? normaliseEmail(answers[key]) : null
+  if (!key || !email) return { level: 'none' }
+  for (const record of earlier) if (normaliseEmail(record.data[key]) === email) return { level: 'clear', reason: 'email', record }
   const fields = allFields(schema)
-  const email = identity.email ? normaliseEmail(answers[identity.email]) : null
-  const id = identity.id ? normaliseId(answers[identity.id]) : null
-  if (!email && !id) return { level: 'none' }
-
-  for (const record of earlier) {
-    if (email && identity.email && normaliseEmail(record.data[identity.email]) === email) return { level: 'clear', reason: 'email', record }
-    if (id && identity.id && normaliseId(record.data[identity.id]) === id) return { level: 'clear', reason: 'id', record }
-  }
   const name = nameOf(fields, answers)
   for (const record of earlier) {
-    const theirEmail = identity.email ? normaliseEmail(record.data[identity.email]) : null
-    const theirId = identity.id ? normaliseId(record.data[identity.id]) : null
+    const theirs = normaliseEmail(record.data[key])
     const similarName = !name || nameSimilarity(name, nameOf(fields, record.data)) >= 0.75
-    if (email && theirEmail && emailsNear(email, theirEmail) && similarName) return { level: 'likely', reason: 'email_similar', record }
-    if (id && theirId && editDistance(id, theirId) <= 1 && similarName) return { level: 'likely', reason: 'id_similar', record }
+    if (theirs && emailsNear(email, theirs) && similarName) return { level: 'likely', reason: 'email_similar', record }
   }
   return { level: 'none' }
 }

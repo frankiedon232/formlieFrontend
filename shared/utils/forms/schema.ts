@@ -53,11 +53,9 @@ export const formSchemaV1 = z.object({
       language: text(10).optional(),
       /** Where labels sit, for the whole form: above the field (default) or beside it. */
       label_position: z.enum(['top', 'left']).optional(),
-      /** Earlier "one response per answer" setting (read as the ID field when identity isn't set). */
-      unique_field: text(64).nullable().optional(),
       /** Telling respondents apart (F10, shared/utils/forms/identity.ts): their own email, an ID, verification. */
       identity: z
-        .object({ email: text(64).nullable(), id: text(64).nullable(), verify: z.boolean() })
+        .object({ email: text(64).nullable(), verify: z.boolean() })
         .optional(),
       /** Help guide (F10, owner 2026-10-03): opened from a "?" button on the form; off by default. */
       guide: z.object({ enabled: z.boolean(), title: text(120), html: text(50_000) }).optional(),

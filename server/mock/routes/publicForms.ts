@@ -162,7 +162,7 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   if (issues.length) throw new MockError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
 
   // Telling people apart (owner, 2026-10-03; shared/utils/forms/identity.ts). With the respondent's
-  // own email or an ID: same → refused, a typo away → asked + flagged. Without: one per browser.
+  // own email: same → refused, a typo away → asked + flagged. Without: one per browser.
   // The exact same answers are never accepted twice.
   const deviceId = deviceOf(event)
   const earlierResponses = responsesOf(tenant).responses.filter(item => item.form_id === form.id)
@@ -175,10 +175,10 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
       throw new MockError('FRM-RESP-1008', [{ field: identity.email, message: maskEmail(answers[identity.email]) }])
   }
   let possibleDuplicate: { of: string; reason: string } | undefined
-  if (identity.email || identity.id) {
+  if (identity.email) {
     const match = matchIdentity(schema, answers, earlierResponses, identity)
-    const key = (match.reason === 'id' || match.reason === 'id_similar' ? identity.id : identity.email) ?? ''
-    const hint = JSON.stringify({ at: match.record?.submitted_at, email: identity.email ? maskEmail(match.record?.data[identity.email]) : '' })
+    const key = identity.email
+    const hint = JSON.stringify({ at: match.record?.submitted_at, email: maskEmail(match.record?.data[key]) })
     if (match.level === 'clear') throw new MockError('FRM-RESP-1006', [{ field: key, message: hint }])
     if (match.level === 'likely') {
       if (!input.confirmed_different) throw new MockError('FRM-RESP-1007', [{ field: key, message: hint }])
