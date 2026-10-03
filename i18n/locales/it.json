@@ -325,7 +325,10 @@
     "responsesRejected": "Rifiutate",
     "responsesExports": "Esportazioni",
     "apiApps": "Integrazioni app",
-    "templatesMine": "I tuoi modelli"
+    "templatesMine": "I tuoi modelli",
+    "themesSystem": "Formalie",
+    "themesSaved": "Salvati",
+    "themesCreated": "Creato"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",

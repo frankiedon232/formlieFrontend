@@ -325,7 +325,10 @@
     "responsesRejected": "अस्वीकृत",
     "responsesExports": "एक्सपोर्ट",
     "apiApps": "ऐप इंटीग्रेशन",
-    "templatesMine": "आपके टेम्पलेट"
+    "templatesMine": "आपके टेम्पलेट",
+    "themesSystem": "Formalie",
+    "themesSaved": "सहेजे गए",
+    "themesCreated": "बनाया गया"
   },
   "navbar": {
     "breadcrumb": "ब्रेडक्रंब",

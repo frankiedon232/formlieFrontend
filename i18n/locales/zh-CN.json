@@ -325,7 +325,10 @@
     "responsesRejected": "已拒绝",
     "responsesExports": "导出",
     "apiApps": "应用集成",
-    "templatesMine": "你的模板"
+    "templatesMine": "你的模板",
+    "themesSystem": "Formalie",
+    "themesSaved": "已保存",
+    "themesCreated": "自建"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",

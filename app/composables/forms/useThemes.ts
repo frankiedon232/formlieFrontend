@@ -27,7 +27,12 @@ export function useThemes() {
     }
   }
 
-  const upsert = (theme: SavedTheme) => (themes.value = [theme, ...themes.value.filter(item => item.id !== theme.id)])
+  // Menu counts per kind change with every new / removed theme.
+  const counts = useNavCounts()
+  const upsert = (theme: SavedTheme) => {
+    themes.value = [theme, ...themes.value.filter(item => item.id !== theme.id)]
+    void counts.refresh(true)
+  }
 
   /** `saved` from a form's design (designer) · `created` in the theme editor. */
   async function create(name: string, tokens: FormTheme, source: 'saved' | 'created' = 'saved'): Promise<SavedTheme | null> {
@@ -71,6 +76,7 @@ export function useThemes() {
     try {
       await api.del(`/themes/${theme.id}`)
       themes.value = themes.value.filter(item => item.id !== theme.id)
+      void counts.refresh(true)
       toast.add({ title: t('themes.toast.deleted', { name: theme.name }), icon: 'i-lucide-trash-2', color: 'neutral' })
       return true
     } catch (error) {

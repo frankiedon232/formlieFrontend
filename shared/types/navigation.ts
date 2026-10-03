@@ -8,5 +8,6 @@ export interface NavCounts {
   /** Formalie templates (total), the workspace's own, and the categories most used first. */
   templates: { total: number; mine: number; categories: { key: string; count: number }[] }
   /** Most recently updated saved themes — up to 6. */
-  themes: { total: number; recent: { id: string; name: string }[] }
+  /** Themes by kind (owner, 2026-10-03: the menu lists kinds, not every saved theme). */
+  themes: { total: number; system: number; saved: number; created: number }
 }

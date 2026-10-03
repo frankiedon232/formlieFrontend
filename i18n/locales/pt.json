@@ -325,7 +325,10 @@
     "responsesRejected": "Rejeitadas",
     "responsesExports": "Exportações",
     "apiApps": "Integrações de apps",
-    "templatesMine": "Seus modelos"
+    "templatesMine": "Seus modelos",
+    "themesSystem": "Formalie",
+    "themesSaved": "Salvos",
+    "themesCreated": "Criado"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",

@@ -63,6 +63,7 @@ export function useTemplates() {
   async function saveFromForm(input: { form_id: string; name: string; description: string; category: string }) {
     try {
       const { data } = await api.post<TemplateDetail>('/templates', input)
+      void useNavCounts().refresh(true)
       toast.add({
         title: t('templates.toast.saved', { name: data.name }),
         icon: 'i-lucide-layout-template',

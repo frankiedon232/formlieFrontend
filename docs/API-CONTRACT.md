@@ -81,7 +81,7 @@ Files never pass through the enveloped API (SECURITY-PROTOCOL.md): the API hands
 
 ## Navigation
 
-`GET /navigation/counts` → `NavCounts` (`shared/types/navigation.ts`): forms by status, responses by review status (all, new, reviewed, approved, rejected), templates `{ total, mine, categories: [{ key, count }] }` (Formalie templates, the workspace's own, and the categories with templates — most used first; the menu shows six) and themes `{ total, recent: [{ id, name }] }` (6 most recently updated).
+`GET /navigation/counts` → `NavCounts` (`shared/types/navigation.ts`): forms by status, responses by review status (all, new, reviewed, approved, rejected), templates `{ total, mine, categories: [{ key, count }] }` (Formalie templates, the workspace's own, and the categories with templates — most used first; the menu shows six) and themes `{ total, system, saved, created }` (counts per kind — the menu lists kinds, not every theme).
 
 | Method | Path                 | Notes                                                                                                                                                                                                                         |
 | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

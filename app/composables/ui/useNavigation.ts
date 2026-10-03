@@ -121,9 +121,13 @@ const RESOURCE_NAV: AppNavItem[] = [
     icon: 'i-lucide-palette',
     iconClass: 'text-amber-500',
     to: '/settings/themes',
-    // The six most recently updated saved themes, then the library.
-    recent: c => c.themes.recent.map(item => ({ key: `thm_${item.id}`, label: item.name, to: '/settings/themes', query: { q: item.name } })),
-    children: [{ key: 'themesAll', icon: 'i-lucide-swatch-book', to: '/settings/themes', exact: true, count: c => c.themes.total }],
+    // Like Templates (owner, 2026-10-03): the kinds with counts, never every saved theme.
+    children: [
+      { key: 'themesAll', icon: 'i-lucide-swatch-book', to: '/settings/themes', exact: true, count: c => c.themes.total },
+      { key: 'themesSystem', icon: 'i-lucide-sparkles', to: '/settings/themes', query: { source: 'system' }, count: c => c.themes.system },
+      { key: 'themesSaved', icon: 'i-lucide-bookmark', to: '/settings/themes', query: { source: 'saved' }, count: c => c.themes.saved },
+      { key: 'themesCreated', icon: 'i-lucide-paintbrush', to: '/settings/themes', query: { source: 'created' }, count: c => c.themes.created },
+    ],
   },
 ]
 
@@ -209,7 +213,7 @@ export function useNavigation() {
       return route.path === item.to && Object.entries(item.query).every(([k, v]) => route.query[k] === v)
     if (item.dot) return route.path === item.to && !route.query.status
     // "All …" entries stay unhighlighted while a single item (a search) is open.
-    if (item.exact) return route.path === item.to && !route.query.q
+    if (item.exact) return route.path === item.to && !route.query.q && !route.query.source
     if (item.children)
       return item.children.some(isActive) || route.path.startsWith(`${item.to}/`) || route.path === item.to
     return route.path === item.to || route.path.startsWith(`${item.to}/`)

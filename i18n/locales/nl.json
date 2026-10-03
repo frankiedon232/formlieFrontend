@@ -325,7 +325,10 @@
     "responsesRejected": "Afgewezen",
     "responsesExports": "Exports",
     "apiApps": "App-koppelingen",
-    "templatesMine": "Je sjablonen"
+    "templatesMine": "Je sjablonen",
+    "themesSystem": "Formalie",
+    "themesSaved": "Opgeslagen",
+    "themesCreated": "Zelf gemaakt"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",

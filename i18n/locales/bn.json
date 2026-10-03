@@ -325,7 +325,10 @@
     "responsesRejected": "প্রত্যাখ্যাত",
     "responsesExports": "এক্সপোর্ট",
     "apiApps": "অ্যাপ ইন্টিগ্রেশন",
-    "templatesMine": "আপনার টেমপ্লেট"
+    "templatesMine": "আপনার টেমপ্লেট",
+    "themesSystem": "Formalie",
+    "themesSaved": "সংরক্ষিত",
+    "themesCreated": "তৈরি"
   },
   "navbar": {
     "breadcrumb": "ব্রেডক্রাম্ব",

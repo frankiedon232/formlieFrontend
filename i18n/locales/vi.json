@@ -325,7 +325,10 @@
     "responsesRejected": "Đã từ chối",
     "responsesExports": "Xuất dữ liệu",
     "apiApps": "Tích hợp ứng dụng",
-    "templatesMine": "Mẫu của bạn"
+    "templatesMine": "Mẫu của bạn",
+    "themesSystem": "Formalie",
+    "themesSaved": "Đã lưu",
+    "themesCreated": "Đã tạo"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",

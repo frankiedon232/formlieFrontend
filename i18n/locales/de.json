@@ -325,7 +325,10 @@
     "responsesRejected": "Abgelehnt",
     "responsesExports": "Exporte",
     "apiApps": "App-Integrationen",
-    "templatesMine": "Eigene Vorlagen"
+    "templatesMine": "Eigene Vorlagen",
+    "themesSystem": "Formalie",
+    "themesSaved": "Gespeichert",
+    "themesCreated": "Erstellt"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",

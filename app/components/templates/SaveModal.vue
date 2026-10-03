@@ -22,11 +22,16 @@ const state = reactive<{ name: string; description: string; category: (typeof TE
   description: '',
   category: 'business',
 })
-watch(open, value => {
-  if (!value || !props.form) return
-  state.name = props.form.name.slice(0, 80)
-  state.description = ''
-})
+// Immediate: in the builder the dialog loads lazily and is already open when it mounts.
+watch(
+  open,
+  value => {
+    if (!value || !props.form) return
+    state.name = props.form.name.slice(0, 80)
+    state.description = ''
+  },
+  { immediate: true },
+)
 const categories = computed(() =>
   TEMPLATE_CATEGORIES.map(c => ({ value: c.key, label: t(`templates.categories.${c.key}`), icon: c.icon })),
 )

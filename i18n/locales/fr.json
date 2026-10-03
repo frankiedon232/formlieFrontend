@@ -325,7 +325,10 @@
     "responsesRejected": "Rejetées",
     "responsesExports": "Exports",
     "apiApps": "Intégrations d'apps",
-    "templatesMine": "Vos modèles"
+    "templatesMine": "Vos modèles",
+    "themesSystem": "Formalie",
+    "themesSaved": "Enregistrés",
+    "themesCreated": "Créé"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",

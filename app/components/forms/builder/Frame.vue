@@ -32,6 +32,22 @@ const publishUsed = ref(false)
 const previewUsed = ref(false)
 watch(publishOpen, v => v && (publishUsed.value = true))
 watch(previewOpen, v => v && (previewUsed.value = true))
+// Save as template from the builder too (owner, 2026-10-03): unsaved edits are written first so the
+// template is exactly what's on screen.
+const templateOpen = ref(false)
+const templateUsed = ref(false)
+const savingDraft = ref(false)
+watch(templateOpen, v => v && (templateUsed.value = true))
+async function saveAsTemplate() {
+  savingDraft.value = true
+  try {
+    await autosave.saveNow()
+    templateOpen.value = true
+  } finally {
+    savingDraft.value = false
+  }
+}
+
 async function publish(summary: string | null) {
   if (await s.publish(summary)) publishOpen.value = false
 }
@@ -42,7 +58,10 @@ const phoneMenu = computed<DropdownMenuItem[][]>(() => [
     { label: t('builder.undo'), icon: 'i-lucide-undo-2', disabled: !builder.history.canUndo.value, onSelect: () => { builder.history.undo() } },
     { label: t('builder.redo'), icon: 'i-lucide-redo-2', disabled: !builder.history.canRedo.value, onSelect: () => { builder.history.redo() } },
   ],
-  [{ label: t('builder.preview.button'), icon: 'i-lucide-eye', onSelect: () => { previewOpen.value = true } }],
+  [
+    { label: t('builder.preview.button'), icon: 'i-lucide-eye', onSelect: () => { previewOpen.value = true } },
+    { label: t('templates.saveAs'), icon: 'i-lucide-bookmark-plus', onSelect: () => void saveAsTemplate() },
+  ],
 ])
 
 defineShortcuts({
@@ -90,6 +109,9 @@ defineShortcuts({
       <UButton class="hidden sm:inline-flex" icon="i-lucide-redo-2" color="neutral" variant="outline" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
       <UTooltip :text="t('builder.fullscreen.enter')" :kbds="['meta', 'shift', 'f']">
         <UButton class="hidden lg:inline-flex" icon="i-lucide-maximize-2" color="neutral" variant="outline" square :aria-label="t('builder.fullscreen.enter')" @click="s.toggleFullscreen(true)" />
+      </UTooltip>
+      <UTooltip :text="t('templates.saveAs')">
+        <UButton class="hidden sm:inline-flex" icon="i-lucide-bookmark-plus" color="neutral" variant="outline" square :loading="savingDraft" :aria-label="t('templates.saveAs')" @click="saveAsTemplate" />
       </UTooltip>
       <UTooltip :text="t('builder.preview.button')">
         <UButton class="hidden sm:inline-flex" icon="i-lucide-eye" color="neutral" variant="outline" square :aria-label="t('builder.preview.button')" @click="previewOpen = true" />
@@ -151,6 +173,7 @@ defineShortcuts({
               />
               <UButton icon="i-lucide-undo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
               <UButton icon="i-lucide-redo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
+              <UButton icon="i-lucide-bookmark-plus" color="neutral" variant="ghost" size="sm" square class="hidden sm:inline-flex" :loading="savingDraft" :aria-label="t('templates.saveAs')" @click="saveAsTemplate" />
               <UButton icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" size="sm" class="hidden sm:inline-flex" @click="previewOpen = true" />
               <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" @click="publishOpen = true" />
               <UTooltip :text="t('builder.fullscreen.exit')" :kbds="['esc']">
@@ -166,6 +189,7 @@ defineShortcuts({
     </template>
 
     <LazyFormsBuilderPublishModal v-if="publishUsed" v-model:open="publishOpen" :busy="s.publishing.value" :republish="form?.status === 'published'" @publish="publish" />
+    <LazyTemplatesSaveModal v-if="templateUsed && form" v-model:open="templateOpen" :form="form" />
     <LazyFormsBuilderPreviewModal v-if="previewUsed" v-model:open="previewOpen" :form-name="form?.name" />
   </AppPanel>
 </template>

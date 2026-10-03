@@ -325,7 +325,10 @@
     "responsesRejected": "Reddedildi",
     "responsesExports": "Dışa aktarımlar",
     "apiApps": "Uygulama entegrasyonları",
-    "templatesMine": "Şablonlarınız"
+    "templatesMine": "Şablonlarınız",
+    "themesSystem": "Formalie",
+    "themesSaved": "Kaydedilenler",
+    "themesCreated": "Oluşturuldu"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",

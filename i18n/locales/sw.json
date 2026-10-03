@@ -325,7 +325,10 @@
     "responsesRejected": "Yamekataliwa",
     "responsesExports": "Uhamishaji",
     "apiApps": "Miunganisho ya programu",
-    "templatesMine": "Violezo vyako"
+    "templatesMine": "Violezo vyako",
+    "themesSystem": "Formalie",
+    "themesSaved": "Zilizohifadhiwa",
+    "themesCreated": "Imeundwa"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",

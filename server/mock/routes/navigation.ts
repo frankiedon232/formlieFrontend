@@ -43,6 +43,11 @@ export const navigationCounts = defineMockRoute(({ event }) => {
     },
     responses: { all: total, new: unread, reviewed, approved: total - unread - reviewed - rejected, rejected },
     templates: { total: system.length || SYSTEM_TEMPLATES.length, mine: templates.length - system.length, categories },
-    themes: { total: themes.length + SYSTEM_THEME_COUNT, recent: themes.slice(0, 6).map(theme => ({ id: theme.id, name: theme.name })) },
+    themes: {
+      total: themes.length + SYSTEM_THEME_COUNT,
+      system: SYSTEM_THEME_COUNT,
+      saved: themes.filter(theme => (theme.source ?? 'saved') === 'saved').length,
+      created: themes.filter(theme => theme.source === 'created').length,
+    },
   })
 })

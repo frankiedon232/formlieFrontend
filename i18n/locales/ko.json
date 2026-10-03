@@ -325,7 +325,10 @@
     "responsesRejected": "거부됨",
     "responsesExports": "내보내기",
     "apiApps": "앱 연동",
-    "templatesMine": "내 템플릿"
+    "templatesMine": "내 템플릿",
+    "themesSystem": "Formalie",
+    "themesSaved": "저장됨",
+    "themesCreated": "직접 만듦"
   },
   "navbar": {
     "breadcrumb": "이동 경로",

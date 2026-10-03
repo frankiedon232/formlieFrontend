@@ -325,7 +325,10 @@
     "responsesRejected": "却下",
     "responsesExports": "エクスポート",
     "apiApps": "アプリ連携",
-    "templatesMine": "あなたのテンプレート"
+    "templatesMine": "あなたのテンプレート",
+    "themesSystem": "Formalie",
+    "themesSaved": "保存済み",
+    "themesCreated": "作成"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",

@@ -325,7 +325,10 @@
     "responsesRejected": "Отклонённые",
     "responsesExports": "Экспорт",
     "apiApps": "Интеграции приложений",
-    "templatesMine": "Ваши шаблоны"
+    "templatesMine": "Ваши шаблоны",
+    "themesSystem": "Formalie",
+    "themesSaved": "Сохранённые",
+    "themesCreated": "Создана"
   },
   "navbar": {
     "breadcrumb": "Навигационная цепочка",
