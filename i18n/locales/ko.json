@@ -2873,6 +2873,12 @@
       "until": "{until}까지",
       "between": "{from}부터 {until}까지",
       "change": "변경"
+    },
+    "summary": {
+      "limit": "최대 {n}개 응답",
+      "noLimit": "응답 수 제한 없음",
+      "until": "{date}까지",
+      "customLink": "사용자 지정 링크"
     }
   }
 }

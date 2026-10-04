@@ -2873,6 +2873,12 @@
       "until": "До {until}",
       "between": "З {from} до {until}",
       "change": "Змінити"
+    },
+    "summary": {
+      "limit": "До {n} відповідей",
+      "noLimit": "Без обмеження відповідей",
+      "until": "До {date}",
+      "customLink": "Власне посилання"
     }
   }
 }

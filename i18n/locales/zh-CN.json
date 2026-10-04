@@ -2873,6 +2873,12 @@
       "until": "截至 {until}",
       "between": "从 {from} 至 {until}",
       "change": "更改"
+    },
+    "summary": {
+      "limit": "最多 {n} 份回复",
+      "noLimit": "不限回复数量",
+      "until": "截至 {date}",
+      "customLink": "自定义链接"
     }
   }
 }

@@ -2873,6 +2873,12 @@
       "until": "{until} পর্যন্ত",
       "between": "{from} থেকে {until} পর্যন্ত",
       "change": "পরিবর্তন"
+    },
+    "summary": {
+      "limit": "সর্বোচ্চ {n}টি উত্তর",
+      "noLimit": "উত্তরের কোনো সীমা নেই",
+      "until": "{date} পর্যন্ত",
+      "customLink": "কাস্টম লিঙ্ক"
     }
   }
 }

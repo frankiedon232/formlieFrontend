@@ -2873,6 +2873,12 @@
       "until": "{until} まで",
       "between": "{from} から {until} まで",
       "change": "変更"
+    },
+    "summary": {
+      "limit": "最大 {n} 件の回答",
+      "noLimit": "回答数の上限なし",
+      "until": "{date} まで",
+      "customLink": "カスタムリンク"
     }
   }
 }

@@ -2873,6 +2873,12 @@
       "until": "{until} tarihine kadar",
       "between": "{from} ile {until} arasında",
       "change": "Değiştir"
+    },
+    "summary": {
+      "limit": "En fazla {n} yanıt",
+      "noLimit": "Yanıt sınırı yok",
+      "until": "{date} tarihine kadar",
+      "customLink": "Özel bağlantı"
     }
   }
 }

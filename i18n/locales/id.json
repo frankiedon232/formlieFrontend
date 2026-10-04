@@ -2873,6 +2873,12 @@
       "until": "Hingga {until}",
       "between": "Dari {from} hingga {until}",
       "change": "Ubah"
+    },
+    "summary": {
+      "limit": "Hingga {n} tanggapan",
+      "noLimit": "Tanpa batas tanggapan",
+      "until": "Sampai {date}",
+      "customLink": "Tautan khusus"
     }
   }
 }

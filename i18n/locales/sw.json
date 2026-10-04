@@ -2873,6 +2873,12 @@
       "until": "Hadi {until}",
       "between": "Kuanzia {from} hadi {until}",
       "change": "Badilisha"
+    },
+    "summary": {
+      "limit": "Hadi majibu {n}",
+      "noLimit": "Hakuna kikomo cha majibu",
+      "until": "Hadi {date}",
+      "customLink": "Kiungo maalum"
     }
   }
 }

@@ -2873,6 +2873,12 @@
       "until": "Until {until}",
       "between": "From {from} until {until}",
       "change": "Change"
+    },
+    "summary": {
+      "limit": "Up to {n} responses",
+      "noLimit": "No response limit",
+      "until": "Until {date}",
+      "customLink": "Custom link"
     }
   }
 }

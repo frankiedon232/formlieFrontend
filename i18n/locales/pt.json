@@ -2873,6 +2873,12 @@
       "until": "Até {until}",
       "between": "De {from} até {until}",
       "change": "Alterar"
+    },
+    "summary": {
+      "limit": "Até {n} respostas",
+      "noLimit": "Sem limite de respostas",
+      "until": "Até {date}",
+      "customLink": "Ligação personalizada"
     }
   }
 }

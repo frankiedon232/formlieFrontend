@@ -2873,6 +2873,12 @@
       "until": "Tot {until}",
       "between": "Van {from} tot {until}",
       "change": "Wijzigen"
+    },
+    "summary": {
+      "limit": "Tot {n} antwoorden",
+      "noLimit": "Geen limiet op antwoorden",
+      "until": "Tot {date}",
+      "customLink": "Eigen link"
     }
   }
 }

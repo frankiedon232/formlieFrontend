@@ -2873,6 +2873,12 @@
       "until": "{until} तक",
       "between": "{from} से {until} तक",
       "change": "बदलें"
+    },
+    "summary": {
+      "limit": "अधिकतम {n} जवाब",
+      "noLimit": "जवाबों की कोई सीमा नहीं",
+      "until": "{date} तक",
+      "customLink": "कस्टम लिंक"
     }
   }
 }

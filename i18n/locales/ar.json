@@ -2873,6 +2873,12 @@
       "until": "حتى {until}",
       "between": "من {from} حتى {until}",
       "change": "تغيير"
+    },
+    "summary": {
+      "limit": "حتى {n} ردود",
+      "noLimit": "بلا حد للردود",
+      "until": "حتى {date}",
+      "customLink": "رابط مخصص"
     }
   }
 }

@@ -2873,6 +2873,12 @@
       "until": "Đến {until}",
       "between": "Từ {from} đến {until}",
       "change": "Thay đổi"
+    },
+    "summary": {
+      "limit": "Tối đa {n} câu trả lời",
+      "noLimit": "Không giới hạn câu trả lời",
+      "until": "Đến {date}",
+      "customLink": "Liên kết tùy chỉnh"
     }
   }
 }
