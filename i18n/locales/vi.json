@@ -1820,7 +1820,10 @@
         "fonts": "Phông chữ",
         "security": "Khóa và chứng chỉ",
         "apps": "Ứng dụng và trình cài đặt"
-      }
+      },
+      "notPictures": "Câu hỏi hình ảnh chỉ nhận hình ảnh: {types} sẽ bị từ chối",
+      "notPicturesDesc": "Với PDF và tài liệu, hãy dùng câu hỏi tải tệp lên. Đổi tại đây, cài đặt được giữ nguyên.",
+      "toFileUpload": "Đổi sang tải tệp lên"
     },
     "fullscreen": {
       "enter": "Toàn màn hình",

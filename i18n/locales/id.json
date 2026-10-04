@@ -1820,7 +1820,10 @@
         "fonts": "Font",
         "security": "Kunci & sertifikat",
         "apps": "Aplikasi & penginstal"
-      }
+      },
+      "notPictures": "Pertanyaan gambar hanya menerima gambar: {types} akan ditolak",
+      "notPicturesDesc": "Untuk PDF dan dokumen, gunakan pertanyaan unggah file. Ubah di sini, pengaturannya tetap.",
+      "toFileUpload": "Ubah ke unggah file"
     },
     "fullscreen": {
       "enter": "Layar penuh",

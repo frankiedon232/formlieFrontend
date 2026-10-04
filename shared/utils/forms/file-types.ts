@@ -44,6 +44,20 @@ export const parseAccept = (accept: string | undefined | null) =>
     .map(item => normaliseFileType(item))
     .filter((item): item is string => !!item)
 
+/**
+ * What an Image upload question can take: real pictures only (the server checks the bytes the same
+ * way). Documents such as PDF belong in a File upload question (owner, 2026-10-04).
+ */
+export const PICTURE_TYPES = ['image/*', '.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif', '.heic', '.heif', '.bmp', '.tif', '.tiff'] as const
+const PICTURES = new Set<string>(PICTURE_TYPES)
+/** Types in an `accept` list that an image question can't take. */
+export const nonPictureTypes = (accept: string | undefined | null) => parseAccept(accept).filter(type => !PICTURES.has(type) && !(type.startsWith('image/') && type !== 'image/svg+xml'))
+/** An image question's `accept`, pictures only ("image/*" when nothing is left). */
+export function pictureAccept(accept: string | undefined | null): string {
+  const kept = parseAccept(accept).filter(type => !nonPictureTypes(type).length)
+  return kept.length ? kept.join(',') : 'image/*'
+}
+
 /** Does a file match an `accept` list? (Server checks again on upload.) */
 export function acceptsFile(accept: string | undefined | null, file: { name: string; type: string }) {
   const types = parseAccept(accept)

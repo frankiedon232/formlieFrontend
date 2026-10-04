@@ -1,5 +1,6 @@
 <!-- Validation rules: length, number range, pattern (+ message), file type / size / count, how many choices. -->
 <script setup lang="ts">
+import { nonPictureTypes } from '#shared/utils/forms/file-types'
 import type { FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ field: FormField }>()
@@ -123,7 +124,17 @@ const range = (min: unknown, max: unknown) =>
     </div>
 
     <template v-if="has('files')">
-      <FormsBuilderInspectorFileTypes :accept="String(p.accept ?? '')" @update="accept => setProp({ accept })" />
+      <!-- Image questions take pictures only (owner, 2026-10-04): a PDF set here would always be refused. -->
+      <UAlert
+        v-if="field.type === 'image_upload' && nonPictureTypes(String(p.accept ?? '')).length"
+        icon="i-lucide-file-warning"
+        color="warning"
+        variant="subtle"
+        :title="t('builder.files.notPictures', { types: nonPictureTypes(String(p.accept ?? '')).join(', ') })"
+        :description="t('builder.files.notPicturesDesc')"
+        :actions="[{ label: t('builder.files.toFileUpload'), color: 'neutral', variant: 'outline', icon: 'i-lucide-file-up', onClick: () => builder.updateField(field.id, { type: 'file_upload' }) }]"
+      />
+      <FormsBuilderInspectorFileTypes :accept="String(p.accept ?? '')" :pictures-only="field.type === 'image_upload'" @update="accept => setProp({ accept })" />
       <div class="grid grid-cols-2 gap-2">
         <UFormField :label="t('builder.inspector.maxFiles')">
           <UInputNumber

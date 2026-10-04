@@ -1820,7 +1820,10 @@
         "fonts": "Yazı tipleri",
         "security": "Anahtarlar ve sertifikalar",
         "apps": "Uygulamalar ve yükleyiciler"
-      }
+      },
+      "notPictures": "Görsel soruları yalnızca görsel kabul eder: {types} reddedilir",
+      "notPicturesDesc": "PDF ve belgeler için dosya yükleme sorusu kullanın. Buradan değiştirin, ayarları korunur.",
+      "toFileUpload": "Dosya yüklemeye çevir"
     },
     "fullscreen": {
       "enter": "Tam ekran",

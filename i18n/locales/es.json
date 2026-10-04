@@ -1820,7 +1820,10 @@
         "fonts": "Fuentes",
         "security": "Claves y certificados",
         "apps": "Apps e instaladores"
-      }
+      },
+      "notPictures": "Las preguntas de imagen solo aceptan imágenes: se rechazará {types}",
+      "notPicturesDesc": "Para PDF y documentos, use una pregunta de subida de archivo. Cámbiela aquí y conservará sus ajustes.",
+      "toFileUpload": "Cambiar a subida de archivo"
     },
     "fullscreen": {
       "enter": "Pantalla completa",

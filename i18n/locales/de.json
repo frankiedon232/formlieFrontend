@@ -1820,7 +1820,10 @@
         "fonts": "Schriften",
         "security": "Schlüssel & Zertifikate",
         "apps": "Apps & Installer"
-      }
+      },
+      "notPictures": "Bildfragen nehmen nur Bilder an: {types} wird abgelehnt",
+      "notPicturesDesc": "Für PDFs und Dokumente verwenden Sie eine Datei-Upload-Frage. Hier umstellen, die Einstellungen bleiben.",
+      "toFileUpload": "In Datei-Upload ändern"
     },
     "fullscreen": {
       "enter": "Vollbild",

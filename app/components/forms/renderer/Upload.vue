@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { isLocked, type FormField } from '#shared/utils/forms/build'
 import { fileAnswers, maxFileBytes } from '#shared/utils/forms/file-answers'
+import { pictureAccept } from '#shared/utils/forms/file-types'
 import { FILE_GROUP_ICONS, FILE_TYPE_GROUPS, type FileTypeGroup } from '#shared/utils/forms/file-types'
 import type { FileAnswer } from '#shared/types/public'
 
@@ -25,7 +26,8 @@ const maxBytes = computed(() => maxFileBytes(p.value))
 const maxMb = computed(() => Math.round(maxBytes.value / 1024 / 1024))
 const multiple = computed(() => maxFiles.value > 1)
 const image = computed(() => props.field.type === 'image_upload')
-const accept = computed(() => String(p.value.accept || '') || (image.value ? 'image/*' : ''))
+// Image questions: pictures only, whatever was set (a PDF would always be refused).
+const accept = computed(() => (image.value ? pictureAccept(String(p.value.accept ?? '')) : String(p.value.accept || '')))
 
 const files = ref<File[] | File | null>(null)
 const listOf = (model: File[] | File | null) => (model == null ? [] : Array.isArray(model) ? model : [model])

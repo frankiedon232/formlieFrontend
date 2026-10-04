@@ -1820,7 +1820,10 @@
         "fonts": "Polices",
         "security": "Clés et certificats",
         "apps": "Applications et installeurs"
-      }
+      },
+      "notPictures": "Les questions image n’acceptent que des images : {types} sera refusé",
+      "notPicturesDesc": "Pour les PDF et documents, utilisez une question de dépôt de fichier. Changez-la ici, ses réglages sont conservés.",
+      "toFileUpload": "Passer en dépôt de fichier"
     },
     "fullscreen": {
       "enter": "Plein écran",

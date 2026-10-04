@@ -1820,7 +1820,10 @@
         "fonts": "Czcionki",
         "security": "Klucze i certyfikaty",
         "apps": "Aplikacje i instalatory"
-      }
+      },
+      "notPictures": "Pytania o obraz przyjmują tylko obrazy: {types} zostanie odrzucony",
+      "notPicturesDesc": "Do PDF i dokumentów użyj pytania o przesłanie pliku. Zmień je tutaj, ustawienia zostaną.",
+      "toFileUpload": "Zmień na przesłanie pliku"
     },
     "fullscreen": {
       "enter": "Pełny ekran",

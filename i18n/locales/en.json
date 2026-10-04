@@ -1820,7 +1820,10 @@
         "fonts": "Fonts",
         "security": "Keys & certificates",
         "apps": "Apps & installers"
-      }
+      },
+      "notPictures": "Image questions take pictures only: {types} will be refused",
+      "notPicturesDesc": "For PDFs and documents, use a File upload question. Change it here and keep its settings.",
+      "toFileUpload": "Change to File upload"
     },
     "fullscreen": {
       "enter": "Full screen",

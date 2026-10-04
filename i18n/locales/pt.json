@@ -1820,7 +1820,10 @@
         "fonts": "Fontes",
         "security": "Chaves e certificados",
         "apps": "Apps e instaladores"
-      }
+      },
+      "notPictures": "As perguntas de imagem só aceitam imagens: {types} será recusado",
+      "notPicturesDesc": "Para PDF e documentos, use uma pergunta de carregamento de ficheiro. Altere aqui, as definições mantêm-se.",
+      "toFileUpload": "Mudar para carregamento de ficheiro"
     },
     "fullscreen": {
       "enter": "Tela cheia",

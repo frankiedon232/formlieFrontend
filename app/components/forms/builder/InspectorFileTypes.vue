@@ -5,9 +5,10 @@
 -->
 <script setup lang="ts">
 import type { SelectMenuItem } from '@nuxt/ui'
-import { FILE_GROUP_ICONS, FILE_TYPE_GROUPS, normaliseFileType, parseAccept, type FileTypeGroup } from '#shared/utils/forms/file-types'
+import { FILE_GROUP_ICONS, FILE_TYPE_GROUPS, normaliseFileType, parseAccept, PICTURE_TYPES, type FileTypeGroup } from '#shared/utils/forms/file-types'
 
-const props = defineProps<{ accept: string }>()
+/** picturesOnly: an Image upload question, offered only picture types. */
+const props = defineProps<{ accept: string; picturesOnly?: boolean }>()
 const emit = defineEmits<{ update: [accept: string] }>()
 const { t } = useI18n()
 
@@ -16,10 +17,12 @@ const custom = computed(() => {
   const known = new Set<string>(Object.values(FILE_TYPE_GROUPS).flat())
   return selected.value.filter(type => !known.has(type))
 })
+const groups = computed(() => (props.picturesOnly ? (['images'] as FileTypeGroup[]) : (Object.keys(FILE_TYPE_GROUPS) as FileTypeGroup[])))
+const typesOf = (group: FileTypeGroup): readonly string[] => (props.picturesOnly ? PICTURE_TYPES : FILE_TYPE_GROUPS[group])
 const items = computed<SelectMenuItem[][]>(() => [
-  ...(Object.keys(FILE_TYPE_GROUPS) as FileTypeGroup[]).map(group => [
+  ...groups.value.map(group => [
     { type: 'label' as const, label: t(`builder.files.group.${group}`) },
-    ...FILE_TYPE_GROUPS[group].map(type => ({
+    ...typesOf(group).map(type => ({
       value: type,
       label: type.endsWith('/*') ? t(`builder.files.all.${group}`) : type,
       icon: FILE_GROUP_ICONS[group],
@@ -32,7 +35,8 @@ const items = computed<SelectMenuItem[][]>(() => [
 const set = (types: string[]) => emit('update', [...new Set(types)].join(','))
 function create(term: string) {
   const type = normaliseFileType(term)
-  if (type) set([...selected.value, type])
+  // Image questions: pictures only.
+  if (type && (!props.picturesOnly || (PICTURE_TYPES as readonly string[]).includes(type))) set([...selected.value, type])
 }
 const labelOf = (type: string) => {
   const group = (Object.keys(FILE_TYPE_GROUPS) as FileTypeGroup[]).find(g => type === FILE_TYPE_GROUPS[g][0] && type.endsWith('/*'))

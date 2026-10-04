@@ -1820,7 +1820,10 @@
         "fonts": "Lettertypen",
         "security": "Sleutels en certificaten",
         "apps": "Apps en installatieprogramma’s"
-      }
+      },
+      "notPictures": "Afbeeldingsvragen nemen alleen afbeeldingen aan: {types} wordt geweigerd",
+      "notPicturesDesc": "Gebruik voor pdf’s en documenten een vraag voor bestandsupload. Wijzig het hier, de instellingen blijven.",
+      "toFileUpload": "Wijzigen in bestandsupload"
     },
     "fullscreen": {
       "enter": "Volledig scherm",

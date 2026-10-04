@@ -1820,7 +1820,10 @@
         "fonts": "字体",
         "security": "密钥和证书",
         "apps": "应用和安装程序"
-      }
+      },
+      "notPictures": "图片题只接受图片：{types} 会被拒绝",
+      "notPicturesDesc": "PDF 和文档请使用文件上传题。在此更改，设置保持不变。",
+      "toFileUpload": "改为文件上传"
     },
     "fullscreen": {
       "enter": "全屏",

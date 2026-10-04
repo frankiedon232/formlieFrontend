@@ -1820,7 +1820,10 @@
         "fonts": "글꼴",
         "security": "키 및 인증서",
         "apps": "앱 및 설치 파일"
-      }
+      },
+      "notPictures": "이미지 질문은 이미지만 받습니다: {types}은(는) 거부됩니다",
+      "notPicturesDesc": "PDF와 문서는 파일 업로드 질문을 사용하세요. 여기서 바꾸면 설정은 그대로 유지됩니다.",
+      "toFileUpload": "파일 업로드로 변경"
     },
     "fullscreen": {
       "enter": "전체 화면",

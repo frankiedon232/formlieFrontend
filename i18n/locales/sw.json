@@ -1820,7 +1820,10 @@
         "fonts": "Fonti",
         "security": "Funguo na vyeti",
         "apps": "Programu na visakinishi"
-      }
+      },
+      "notPictures": "Maswali ya picha hupokea picha pekee: {types} itakataliwa",
+      "notPicturesDesc": "Kwa PDF na nyaraka, tumia swali la kupakia faili. Libadilishe hapa, mipangilio inabaki.",
+      "toFileUpload": "Badilisha kuwa kupakia faili"
     },
     "fullscreen": {
       "enter": "Skrini nzima",

@@ -1820,7 +1820,10 @@
         "fonts": "Font",
         "security": "Chiavi e certificati",
         "apps": "App e installer"
-      }
+      },
+      "notPictures": "Le domande immagine accettano solo immagini: {types} verrà rifiutato",
+      "notPicturesDesc": "Per PDF e documenti usi una domanda di caricamento file. La cambi qui, le impostazioni restano.",
+      "toFileUpload": "Cambia in caricamento file"
     },
     "fullscreen": {
       "enter": "Schermo intero",

@@ -25,3 +25,12 @@ describe('file answers', () => {
     expect(maxFileBytes({ max_mb: 'x' })).toBe(10 * 1024 * 1024)
   })
 })
+
+describe('image questions take pictures only', () => {
+  it('drops non-picture types', async () => {
+    const { nonPictureTypes, pictureAccept } = await import('../../shared/utils/forms/file-types')
+    expect(nonPictureTypes('.pdf,.jpg,image/png,image/svg+xml')).toEqual(['.pdf', 'image/svg+xml'])
+    expect(pictureAccept('.pdf')).toBe('image/*')
+    expect(pictureAccept('.jpg,.pdf,.png')).toBe('.jpg,.png')
+  })
+})
