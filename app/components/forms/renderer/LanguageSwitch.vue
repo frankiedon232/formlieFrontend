@@ -2,7 +2,7 @@
   Language switcher on a form that speaks several languages (F10 M4, decision 99): flag and the
   language's own name. Shown only when there is a choice; answers stay when switching. `bar`: the
   page frame's top bar, beside "Visit website" (same round outline, takes the bar's text colour;
-  narrow screens show the flag only).
+  narrow screens show the flag only, same height as the website button).
 -->
 <script setup lang="ts">
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
@@ -31,7 +31,7 @@ const flag = computed(() => items.value.find(item => item.value === model.value)
     color="neutral"
     variant="outline"
     size="sm"
-    :class="bar ? 'shrink-0 rounded-full border-current/25 bg-transparent text-current ring-current/25 hover:bg-current/10' : 'w-40'"
+    :class="bar ? 'h-7 shrink-0 rounded-full border-current/25 bg-transparent text-current ring-current/25 hover:bg-current/10 @max-xl:w-16' : 'w-40'"
     :ui="bar ? { value: 'text-current @max-xl:sr-only', trailingIcon: 'text-current/70' } : undefined"
     :content="{ align: 'end' }"
     :aria-label="t('renderer.language')"
