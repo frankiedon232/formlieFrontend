@@ -210,6 +210,7 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
       selectable
       :row-actions="rowActions"
       :busy="actions.isBusy"
+      :open-row="form => navigateTo(`/forms/${form.id}`)"
       :search-placeholder="t('forms.searchPlaceholder')"
       empty-icon="i-lucide-file-text"
       :empty-title="t('forms.emptyTitle')"

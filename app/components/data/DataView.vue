@@ -183,6 +183,12 @@ const tableMeta = computed(() => ({
   class: { tr: (row: { original: T }) => (props.busy?.(row.original) ? BUSY_ROW : '') },
 }))
 
+/** A card opens its item when clicked anywhere except its own buttons, links, inputs and menus. */
+function openFromCard(event: MouseEvent, row: T) {
+  if (!props.openRow || (event.target as HTMLElement).closest('a, button, input, label, select, textarea, [role="menu"], [role="menuitem"]')) return
+  props.openRow(row)
+}
+
 const showSkeleton = computed(() => state.loading.value && !state.loaded.value)
 const isEmpty = computed(() => state.loaded.value && !state.error.value && state.rows.value.length === 0)
 
@@ -286,8 +292,10 @@ defineExpose({ refresh: state.refresh, state })
           <div
             v-for="row in state.rows.value"
             :key="String(row[rowKey])"
-            :class="state.loading.value ? 'opacity-60' : busy?.(row) ? BUSY_ROW : ''"
+            class="h-full"
+            :class="[state.loading.value ? 'opacity-60' : busy?.(row) ? BUSY_ROW : '', openRow ? 'cursor-pointer' : '']"
             :aria-busy="busy?.(row) || undefined"
+            @click="openFromCard($event, row)"
           >
             <slot name="grid-card" :row="row" :columns="orderedColumns.map(column => column.key)">
               <UCard>{{ row[columns[0]!.key] }}</UCard>
@@ -323,7 +331,7 @@ defineExpose({ refresh: state.refresh, state })
           thead: 'bg-elevated/50',
           th: 'py-2 text-default font-medium',
           td: 'py-3 text-default',
-          tr: 'data-[selected=true]:bg-elevated/50',
+          tr: 'transition-colors hover:bg-elevated/50 data-[selectable=true]:cursor-pointer data-[selected=true]:bg-elevated/50',
         }"
       >
         <template v-for="name in cellSlots" :key="name" #[name]="slotProps">

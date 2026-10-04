@@ -22,7 +22,7 @@ const facts = computed(() => [
 </script>
 
 <template>
-  <article class="group flex h-full flex-col rounded-lg border border-default bg-default p-4 transition-shadow hover:shadow-md focus-within:shadow-md">
+  <article class="group flex h-full flex-col rounded-lg border border-default bg-default p-4 transition-all hover:-translate-y-0.5 hover:border-accented hover:shadow-md focus-within:shadow-md">
     <!-- Updated · status · menu -->
     <div class="flex items-center justify-between gap-2">
       <span class="inline-flex min-w-0 items-center gap-1.5 rounded-md border border-default px-2 py-0.5 text-xs font-medium text-toned">
