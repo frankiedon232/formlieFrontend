@@ -2917,6 +2917,70 @@
       "invalid": "«{site}» non è un indirizzo di sito web.",
       "formalieAllowed": "Le pagine di Formalie (anteprime, link pubblico) possono sempre mostrare il modulo.",
       "needSite": "Aggiunga almeno un sito web per salvare"
+    },
+    "guide": {
+      "title": "Come funzionano i link del modulo",
+      "desc": "Il modulo può avere fino a tre link. Aprono tutti lo stesso modulo — usi quello più adatto al luogo in cui lo condivide.",
+      "always": "Sempre attivo",
+      "on": "Attivo",
+      "off": "Non impostato",
+      "original": {
+        "name": "Link originale",
+        "for": "Creato insieme al modulo. Non cambia mai e funziona sempre — anche dopo aver aggiunto un link personalizzato o un link breve."
+      },
+      "custom": {
+        "name": "Link personalizzato",
+        "for": "Un nome leggibile scelto da lei, ad es. /procurement-request. Ideale per e-mail, siti web e documenti."
+      },
+      "short": {
+        "name": "Link breve",
+        "for": "Cinque caratteri per poster, SMS, slide e codici QR. Porta sempre al modulo, anche se il link personalizzato cambia."
+      },
+      "together": "Aggiungere un link personalizzato o un link breve non annulla mai gli altri. I link già distribuiti continuano a funzionare.",
+      "situations": "Situazioni comuni",
+      "case": {
+        "shared": {
+          "when": "Ha inviato il link originale via e-mail, poi ha aggiunto un link personalizzato",
+          "then": "funzionano entrambi; chi ha il link originale raggiunge ancora il modulo."
+        },
+        "changed": {
+          "when": "Modifica il link personalizzato",
+          "then": "il nuovo funziona e il precedente link personalizzato smette di funzionare. Il link originale e quello breve continuano a funzionare."
+        },
+        "removed": {
+          "when": "Rimuove il link personalizzato",
+          "then": "smette di funzionare solo l’indirizzo personalizzato; il link originale e quello breve aprono ancora il modulo."
+        },
+        "poster": {
+          "when": "Un poster o un codice QR usa il link breve",
+          "then": "continua a funzionare qualunque cosa faccia con il link personalizzato. Rimuovere il link breve lo disattiva per sempre — il suo codice non viene mai assegnato a un altro modulo."
+        },
+        "closed": {
+          "when": "Il modulo è chiuso, completo, scaduto o protetto",
+          "then": "ogni link mostra lo stesso messaggio o la stessa schermata della password — nessun link lo aggira."
+        }
+      }
+    },
+    "seo": {
+      "title": "Anteprima ricerca e link",
+      "desc": "Ciò che si vede quando il link viene condiviso su WhatsApp, LinkedIn, e-mail e altre app, e nei risultati di ricerca.",
+      "titleLabel": "Titolo",
+      "emptyUsesForm": "Lascia vuoto per usare il titolo e l’introduzione del modulo.",
+      "descriptionLabel": "Descrizione",
+      "descriptionPlaceholder": "Una frase sullo scopo del modulo",
+      "image": "Immagine",
+      "imageHint": "Mostrata in alto nella scheda del link. PNG, JPEG o WebP, fino a 5 MB — ideale 1200 × 630 px.",
+      "imageRule": "Usa un’immagine PNG, JPEG o WebP fino a 5 MB.",
+      "upload": "Carica immagine",
+      "replace": "Sostituisci",
+      "removeImage": "Rimuovi",
+      "noindex": "Nascondi ai motori di ricerca",
+      "noindexDesc": "Il modulo non comparirà su Google né in altri risultati di ricerca. Chi ha il link può comunque aprirlo.",
+      "preview": "Anteprima",
+      "asCard": "Scheda del link",
+      "asSearch": "Risultato di ricerca",
+      "noImage": "Nessuna immagine",
+      "hiddenFromSearch": "Nascosto ai motori di ricerca — questo modulo non comparirà nei risultati di ricerca."
     }
   }
 }

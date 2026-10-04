@@ -2917,6 +2917,70 @@
       "invalid": "„{site}“ ist keine Website-Adresse.",
       "formalieAllowed": "Formalies eigene Seiten (Vorschauen, der öffentliche Link) können das Formular immer anzeigen.",
       "needSite": "Fügen Sie zum Speichern mindestens eine Website hinzu"
+    },
+    "guide": {
+      "title": "So funktionieren die Links Ihres Formulars",
+      "desc": "Ihr Formular kann bis zu drei Links haben. Alle öffnen dasselbe Formular — verwenden Sie den, der am besten zum Ort passt, an dem Sie ihn teilen.",
+      "always": "Immer aktiv",
+      "on": "Aktiv",
+      "off": "Nicht festgelegt",
+      "original": {
+        "name": "Original-Link",
+        "for": "Wird mit dem Formular erstellt. Er ändert sich nie und funktioniert immer — auch nachdem Sie einen eigenen Link oder einen Kurzlink hinzugefügt haben."
+      },
+      "custom": {
+        "name": "Eigener Link",
+        "for": "Ein gut lesbarer Name Ihrer Wahl, z. B. /procurement-request. Ideal für E-Mails, Websites und Dokumente."
+      },
+      "short": {
+        "name": "Kurzlink",
+        "for": "Fünf Zeichen für Plakate, SMS, Folien und QR-Codes. Er führt immer zum Formular, auch wenn sich der eigene Link ändert."
+      },
+      "together": "Ein eigener Link oder ein Kurzlink hebt die anderen nie auf. Bereits weitergegebene Links funktionieren weiter.",
+      "situations": "Häufige Situationen",
+      "case": {
+        "shared": {
+          "when": "Sie haben den Original-Link per E-Mail verschickt und danach einen eigenen Link hinzugefügt",
+          "then": "beide funktionieren; wer den Original-Link hat, gelangt weiterhin zum Formular."
+        },
+        "changed": {
+          "when": "Sie ändern den eigenen Link",
+          "then": "der neue funktioniert, der bisherige eigene Link nicht mehr. Original-Link und Kurzlink funktionieren weiter."
+        },
+        "removed": {
+          "when": "Sie entfernen den eigenen Link",
+          "then": "nur die eigene Adresse funktioniert nicht mehr; Original-Link und Kurzlink öffnen das Formular weiterhin."
+        },
+        "poster": {
+          "when": "Ein Plakat oder QR-Code verwendet den Kurzlink",
+          "then": "er funktioniert weiter, egal was Sie mit dem eigenen Link machen. Wenn Sie den Kurzlink entfernen, ist er dauerhaft deaktiviert — sein Code wird nie an ein anderes Formular vergeben."
+        },
+        "closed": {
+          "when": "Das Formular ist geschlossen, voll, abgelaufen oder geschützt",
+          "then": "jeder Link zeigt dieselbe Meldung oder Passwortabfrage — kein Link umgeht sie."
+        }
+      }
+    },
+    "seo": {
+      "title": "Such- und Linkvorschau",
+      "desc": "Was andere sehen, wenn der Link über WhatsApp, LinkedIn, E-Mail und andere Apps geteilt wird, und in Suchergebnissen.",
+      "titleLabel": "Titel",
+      "emptyUsesForm": "Leer lassen, um Titel und Einleitung des Formulars zu verwenden.",
+      "descriptionLabel": "Beschreibung",
+      "descriptionPlaceholder": "Ein Satz dazu, wofür das Formular gedacht ist",
+      "image": "Bild",
+      "imageHint": "Wird oben in der Linkkarte angezeigt. PNG, JPEG oder WebP, bis 5 MB — 1200 × 630 px eignet sich am besten.",
+      "imageRule": "Verwenden Sie ein PNG-, JPEG- oder WebP-Bild mit bis zu 5 MB.",
+      "upload": "Bild hochladen",
+      "replace": "Ersetzen",
+      "removeImage": "Entfernen",
+      "noindex": "Vor Suchmaschinen verbergen",
+      "noindexDesc": "Das Formular erscheint nicht bei Google oder in anderen Suchergebnissen. Personen mit dem Link können es weiterhin öffnen.",
+      "preview": "Vorschau",
+      "asCard": "Linkkarte",
+      "asSearch": "Suchergebnis",
+      "noImage": "Kein Bild",
+      "hiddenFromSearch": "Vor Suchmaschinen verborgen — dieses Formular erscheint nicht in Suchergebnissen."
     }
   }
 }

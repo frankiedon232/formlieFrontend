@@ -2917,6 +2917,70 @@
       "invalid": "“{site}” bukan alamat situs web.",
       "formalieAllowed": "Halaman milik Formalie sendiri (pratinjau, tautan publik) selalu dapat menampilkan formulir.",
       "needSite": "Tambahkan setidaknya satu situs web untuk menyimpan"
+    },
+    "guide": {
+      "title": "Cara kerja tautan formulir Anda",
+      "desc": "Formulir Anda dapat memiliki hingga tiga tautan. Semuanya membuka formulir yang sama — gunakan yang paling sesuai dengan tempat Anda membagikannya.",
+      "always": "Selalu aktif",
+      "on": "Aktif",
+      "off": "Belum diatur",
+      "original": {
+        "name": "Tautan asli",
+        "for": "Dibuat bersama formulir. Tidak pernah berubah dan selalu berfungsi — bahkan setelah Anda menambahkan tautan kustom atau tautan pendek."
+      },
+      "custom": {
+        "name": "Tautan kustom",
+        "for": "Nama mudah dibaca yang Anda pilih, mis. /procurement-request. Paling cocok untuk email, situs web, dan dokumen."
+      },
+      "short": {
+        "name": "Tautan pendek",
+        "for": "Lima karakter untuk poster, SMS, slide, dan kode QR. Selalu mengarah ke formulir, meskipun tautan kustom berubah."
+      },
+      "together": "Menambahkan tautan kustom atau tautan pendek tidak pernah membatalkan tautan lainnya. Tautan yang sudah Anda bagikan tetap berfungsi.",
+      "situations": "Situasi umum",
+      "case": {
+        "shared": {
+          "when": "Anda mengirim tautan asli lewat email, lalu menambahkan tautan kustom",
+          "then": "keduanya berfungsi; orang yang memiliki tautan asli tetap dapat membuka formulir."
+        },
+        "changed": {
+          "when": "Anda mengubah tautan kustom",
+          "then": "tautan baru berfungsi dan tautan kustom sebelumnya berhenti berfungsi. Tautan asli dan tautan pendek tetap berfungsi."
+        },
+        "removed": {
+          "when": "Anda menghapus tautan kustom",
+          "then": "hanya alamat kustom yang berhenti berfungsi; tautan asli dan tautan pendek tetap membuka formulir."
+        },
+        "poster": {
+          "when": "Poster atau kode QR menggunakan tautan pendek",
+          "then": "tautan itu tetap berfungsi apa pun yang Anda lakukan pada tautan kustom. Menghapus tautan pendek menonaktifkannya selamanya — kodenya tidak pernah diberikan ke formulir lain."
+        },
+        "closed": {
+          "when": "Formulir ditutup, penuh, kedaluwarsa, atau dilindungi",
+          "then": "setiap tautan menampilkan pesan atau layar kata sandi yang sama — tidak ada tautan yang dapat melewatinya."
+        }
+      }
+    },
+    "seo": {
+      "title": "Pratinjau pencarian & tautan",
+      "desc": "Yang dilihat orang saat tautan dibagikan di WhatsApp, LinkedIn, email, dan aplikasi lain, serta di hasil pencarian.",
+      "titleLabel": "Judul",
+      "emptyUsesForm": "Biarkan kosong untuk memakai judul dan pengantar formulir.",
+      "descriptionLabel": "Deskripsi",
+      "descriptionPlaceholder": "Satu kalimat tentang tujuan formulir",
+      "image": "Gambar",
+      "imageHint": "Ditampilkan di bagian atas kartu tautan. PNG, JPEG, atau WebP, hingga 5 MB — 1200 × 630 px paling ideal.",
+      "imageRule": "Gunakan gambar PNG, JPEG, atau WebP berukuran maksimal 5 MB.",
+      "upload": "Unggah gambar",
+      "replace": "Ganti",
+      "removeImage": "Hapus",
+      "noindex": "Sembunyikan dari mesin pencari",
+      "noindexDesc": "Formulir tidak akan muncul di Google atau hasil pencarian lain. Orang yang memiliki tautan tetap dapat membukanya.",
+      "preview": "Pratinjau",
+      "asCard": "Kartu tautan",
+      "asSearch": "Hasil pencarian",
+      "noImage": "Tidak ada gambar",
+      "hiddenFromSearch": "Disembunyikan dari mesin pencari — formulir ini tidak akan muncul di hasil pencarian."
     }
   }
 }

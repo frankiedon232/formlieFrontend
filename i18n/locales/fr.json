@@ -2917,6 +2917,70 @@
       "invalid": "« {site} » n’est pas une adresse de site web.",
       "formalieAllowed": "Les pages de Formalie (aperçus, lien public) peuvent toujours afficher le formulaire.",
       "needSite": "Ajoutez au moins un site web pour enregistrer"
+    },
+    "guide": {
+      "title": "Fonctionnement des liens de votre formulaire",
+      "desc": "Votre formulaire peut avoir jusqu’à trois liens. Ils ouvrent tous le même formulaire — utilisez celui qui convient le mieux à l’endroit où vous le partagez.",
+      "always": "Toujours actif",
+      "on": "Actif",
+      "off": "Non défini",
+      "original": {
+        "name": "Lien d’origine",
+        "for": "Créé avec le formulaire. Il ne change jamais et fonctionne toujours — même après l’ajout d’un lien personnalisé ou d’un lien court."
+      },
+      "custom": {
+        "name": "Lien personnalisé",
+        "for": "Un nom lisible de votre choix, p. ex. /procurement-request. Idéal pour les e-mails, les sites web et les documents."
+      },
+      "short": {
+        "name": "Lien court",
+        "for": "Cinq caractères pour les affiches, SMS, diapositives et codes QR. Il mène toujours au formulaire, même si le lien personnalisé change."
+      },
+      "together": "Ajouter un lien personnalisé ou un lien court n’annule jamais les autres. Les liens déjà diffusés continuent de fonctionner.",
+      "situations": "Situations courantes",
+      "case": {
+        "shared": {
+          "when": "Vous avez envoyé le lien d’origine par e-mail, puis ajouté un lien personnalisé",
+          "then": "les deux fonctionnent ; les personnes qui ont le lien d’origine accèdent toujours au formulaire."
+        },
+        "changed": {
+          "when": "Vous modifiez le lien personnalisé",
+          "then": "le nouveau fonctionne et l’ancien lien personnalisé cesse de fonctionner. Le lien d’origine et le lien court continuent de fonctionner."
+        },
+        "removed": {
+          "when": "Vous supprimez le lien personnalisé",
+          "then": "seule l’adresse personnalisée cesse de fonctionner ; le lien d’origine et le lien court ouvrent toujours le formulaire."
+        },
+        "poster": {
+          "when": "Une affiche ou un code QR utilise le lien court",
+          "then": "il continue de fonctionner, quoi que vous fassiez du lien personnalisé. Supprimer le lien court le désactive définitivement — son code n’est jamais attribué à un autre formulaire."
+        },
+        "closed": {
+          "when": "Le formulaire est fermé, complet, expiré ou protégé",
+          "then": "tous les liens affichent le même message ou le même écran de mot de passe — aucun lien ne permet de le contourner."
+        }
+      }
+    },
+    "seo": {
+      "title": "Aperçu recherche et lien",
+      "desc": "Ce que l’on voit lorsque le lien est partagé sur WhatsApp, LinkedIn, par e-mail et dans d’autres applis, ainsi que dans les résultats de recherche.",
+      "titleLabel": "Titre",
+      "emptyUsesForm": "Laissez vide pour utiliser le titre et l’introduction du formulaire.",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Une phrase sur l’objet du formulaire",
+      "image": "Image",
+      "imageHint": "Affichée en haut de la carte du lien. PNG, JPEG ou WebP, jusqu’à 5 Mo — 1200 × 630 px est idéal.",
+      "imageRule": "Utilisez une image PNG, JPEG ou WebP de 5 Mo maximum.",
+      "upload": "Importer une image",
+      "replace": "Remplacer",
+      "removeImage": "Supprimer",
+      "noindex": "Masquer aux moteurs de recherche",
+      "noindexDesc": "Le formulaire n’apparaîtra pas dans Google ni dans d’autres résultats de recherche. Les personnes disposant du lien peuvent toujours l’ouvrir.",
+      "preview": "Aperçu",
+      "asCard": "Carte du lien",
+      "asSearch": "Résultat de recherche",
+      "noImage": "Aucune image",
+      "hiddenFromSearch": "Masqué aux moteurs de recherche — ce formulaire n’apparaîtra pas dans les résultats de recherche."
     }
   }
 }

@@ -2917,6 +2917,70 @@
       "invalid": "“{site}” không phải là địa chỉ trang web.",
       "formalieAllowed": "Các trang của chính Formalie (bản xem trước, liên kết công khai) luôn có thể hiển thị biểu mẫu.",
       "needSite": "Thêm ít nhất một trang web để lưu"
+    },
+    "guide": {
+      "title": "Cách các liên kết của biểu mẫu hoạt động",
+      "desc": "Biểu mẫu của bạn có thể có tối đa ba liên kết. Tất cả đều mở cùng một biểu mẫu — hãy dùng liên kết phù hợp nhất với nơi bạn chia sẻ.",
+      "always": "Luôn bật",
+      "on": "Đang bật",
+      "off": "Chưa thiết lập",
+      "original": {
+        "name": "Liên kết gốc",
+        "for": "Được tạo cùng biểu mẫu. Không bao giờ thay đổi và luôn hoạt động — kể cả sau khi bạn thêm liên kết tùy chỉnh hoặc liên kết rút gọn."
+      },
+      "custom": {
+        "name": "Liên kết tùy chỉnh",
+        "for": "Một tên dễ đọc do bạn chọn, ví dụ /procurement-request. Phù hợp nhất cho email, trang web và tài liệu."
+      },
+      "short": {
+        "name": "Liên kết rút gọn",
+        "for": "Năm ký tự dành cho áp phích, SMS, trang trình bày và mã QR. Luôn dẫn đến biểu mẫu, kể cả khi liên kết tùy chỉnh thay đổi."
+      },
+      "together": "Thêm liên kết tùy chỉnh hoặc liên kết rút gọn không bao giờ hủy các liên kết khác. Các liên kết bạn đã chia sẻ vẫn tiếp tục hoạt động.",
+      "situations": "Tình huống thường gặp",
+      "case": {
+        "shared": {
+          "when": "Bạn đã gửi liên kết gốc qua email, sau đó thêm liên kết tùy chỉnh",
+          "then": "cả hai đều hoạt động; người có liên kết gốc vẫn truy cập được biểu mẫu."
+        },
+        "changed": {
+          "when": "Bạn thay đổi liên kết tùy chỉnh",
+          "then": "liên kết mới hoạt động và liên kết tùy chỉnh trước đó ngừng hoạt động. Liên kết gốc và liên kết rút gọn vẫn hoạt động."
+        },
+        "removed": {
+          "when": "Bạn xóa liên kết tùy chỉnh",
+          "then": "chỉ địa chỉ tùy chỉnh ngừng hoạt động; liên kết gốc và liên kết rút gọn vẫn mở được biểu mẫu."
+        },
+        "poster": {
+          "when": "Áp phích hoặc mã QR dùng liên kết rút gọn",
+          "then": "liên kết vẫn hoạt động dù bạn làm gì với liên kết tùy chỉnh. Xóa liên kết rút gọn sẽ vô hiệu hóa nó vĩnh viễn — mã của nó không bao giờ được cấp cho biểu mẫu khác."
+        },
+        "closed": {
+          "when": "Biểu mẫu đã đóng, đã đủ, đã hết hạn hoặc được bảo vệ",
+          "then": "mọi liên kết đều hiển thị cùng một thông báo hoặc màn hình mật khẩu — không liên kết nào vượt qua được."
+        }
+      }
+    },
+    "seo": {
+      "title": "Xem trước tìm kiếm và liên kết",
+      "desc": "Những gì mọi người thấy khi liên kết được chia sẻ trên WhatsApp, LinkedIn, email và các ứng dụng khác, cũng như trong kết quả tìm kiếm.",
+      "titleLabel": "Tiêu đề",
+      "emptyUsesForm": "Để trống để dùng tiêu đề và phần giới thiệu của biểu mẫu.",
+      "descriptionLabel": "Mô tả",
+      "descriptionPlaceholder": "Một câu về mục đích của biểu mẫu",
+      "image": "Hình ảnh",
+      "imageHint": "Hiển thị ở đầu thẻ liên kết. PNG, JPEG hoặc WebP, tối đa 5 MB — tốt nhất là 1200 × 630 px.",
+      "imageRule": "Hãy dùng ảnh PNG, JPEG hoặc WebP tối đa 5 MB.",
+      "upload": "Tải ảnh lên",
+      "replace": "Thay thế",
+      "removeImage": "Xóa",
+      "noindex": "Ẩn khỏi công cụ tìm kiếm",
+      "noindexDesc": "Biểu mẫu sẽ không xuất hiện trên Google hoặc các kết quả tìm kiếm khác. Người có liên kết vẫn có thể mở được.",
+      "preview": "Xem trước",
+      "asCard": "Thẻ liên kết",
+      "asSearch": "Kết quả tìm kiếm",
+      "noImage": "Không có ảnh",
+      "hiddenFromSearch": "Đã ẩn khỏi công cụ tìm kiếm — biểu mẫu này sẽ không xuất hiện trong kết quả tìm kiếm."
     }
   }
 }

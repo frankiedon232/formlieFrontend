@@ -2917,6 +2917,70 @@
       "invalid": "“{site}” bir web sitesi adresi değil.",
       "formalieAllowed": "Formalie’nin kendi sayfaları (önizlemeler, herkese açık bağlantı) formu her zaman gösterebilir.",
       "needSite": "Kaydetmek için en az bir web sitesi ekleyin"
+    },
+    "guide": {
+      "title": "Formunuzun bağlantıları nasıl çalışır",
+      "desc": "Formunuzun en fazla üç bağlantısı olabilir. Hepsi aynı formu açar — paylaştığınız yere en uygun olanı kullanın.",
+      "always": "Her zaman açık",
+      "on": "Açık",
+      "off": "Ayarlanmadı",
+      "original": {
+        "name": "Orijinal bağlantı",
+        "for": "Formla birlikte oluşturulur. Asla değişmez ve her zaman çalışır — özel bağlantı veya kısa bağlantı ekledikten sonra da."
+      },
+      "custom": {
+        "name": "Özel bağlantı",
+        "for": "Seçtiğiniz okunabilir bir ad, ör. /procurement-request. E-postalar, web siteleri ve belgeler için en uygunudur."
+      },
+      "short": {
+        "name": "Kısa bağlantı",
+        "for": "Afişler, SMS, slaytlar ve QR kodları için beş karakter. Özel bağlantı değişse bile her zaman forma götürür."
+      },
+      "together": "Özel bağlantı veya kısa bağlantı eklemek diğerlerini asla iptal etmez. Daha önce paylaştığınız bağlantılar çalışmaya devam eder.",
+      "situations": "Sık karşılaşılan durumlar",
+      "case": {
+        "shared": {
+          "when": "Orijinal bağlantıyı e-postayla gönderdiniz, ardından özel bir bağlantı eklediniz",
+          "then": "ikisi de çalışır; orijinal bağlantıya sahip olanlar forma ulaşmaya devam eder."
+        },
+        "changed": {
+          "when": "Özel bağlantıyı değiştirirsiniz",
+          "then": "yenisi çalışır, önceki özel bağlantı çalışmaz. Orijinal ve kısa bağlantılar çalışmaya devam eder."
+        },
+        "removed": {
+          "when": "Özel bağlantıyı kaldırırsınız",
+          "then": "yalnızca özel adres çalışmaz; orijinal ve kısa bağlantılar formu açmaya devam eder."
+        },
+        "poster": {
+          "when": "Bir afiş veya QR kodu kısa bağlantıyı kullanıyor",
+          "then": "özel bağlantıyla ne yaparsanız yapın çalışmaya devam eder. Kısa bağlantıyı kaldırmak onu kalıcı olarak durdurur — kodu asla başka bir forma verilmez."
+        },
+        "closed": {
+          "when": "Form kapalı, dolu, süresi dolmuş veya korumalı",
+          "then": "her bağlantı aynı mesajı veya parola ekranını gösterir — hiçbir bağlantı bunu aşamaz."
+        }
+      }
+    },
+    "seo": {
+      "title": "Arama ve bağlantı önizlemesi",
+      "desc": "Bağlantı WhatsApp, LinkedIn, e-posta ve diğer uygulamalarda paylaşıldığında ve arama sonuçlarında görünenler.",
+      "titleLabel": "Başlık",
+      "emptyUsesForm": "Formun kendi başlığını ve girişini kullanmak için boş bırakın.",
+      "descriptionLabel": "Açıklama",
+      "descriptionPlaceholder": "Formun amacını anlatan bir cümle",
+      "image": "Görsel",
+      "imageHint": "Bağlantı kartının üstünde gösterilir. PNG, JPEG veya WebP, en fazla 5 MB — en iyisi 1200 × 630 px.",
+      "imageRule": "En fazla 5 MB boyutunda bir PNG, JPEG veya WebP görsel kullanın.",
+      "upload": "Görsel yükle",
+      "replace": "Değiştir",
+      "removeImage": "Kaldır",
+      "noindex": "Arama motorlarından gizle",
+      "noindexDesc": "Form, Google veya diğer arama sonuçlarında görünmez. Bağlantıya sahip kişiler yine de açabilir.",
+      "preview": "Önizleme",
+      "asCard": "Bağlantı kartı",
+      "asSearch": "Arama sonucu",
+      "noImage": "Görsel yok",
+      "hiddenFromSearch": "Arama motorlarından gizli — bu form arama sonuçlarında görünmez."
     }
   }
 }

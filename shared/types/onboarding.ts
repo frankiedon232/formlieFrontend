@@ -90,7 +90,7 @@ export type OnboardingPatch =
   | { step: OnboardingStep; action: 'skip' }
 
 /** logo (onboarding / settings, admins) · form_image (image blocks in forms, any member). */
-export type UploadPurpose = 'logo' | 'form_image'
+export type UploadPurpose = 'logo' | 'form_image' | 'share_image'
 
 /** POST /uploads → where to PUT the file (pre-signed, SECURITY-PROTOCOL.md). */
 export interface UploadTicket {

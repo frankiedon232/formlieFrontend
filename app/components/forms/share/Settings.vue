@@ -19,7 +19,7 @@ const settings = ref<FormShareSettings | null>(null)
 const loading = ref(true)
 const failed = ref(false)
 
-const draft = reactive<ShareDraft>({ access: 'public', password: '', limitOn: false, limit: 10, link: '', embedLimited: false, domains: [] })
+const draft = reactive<ShareDraft>({ access: 'public', password: '', limitOn: false, limit: 10, link: '', embedLimited: false, domains: [], seoTitle: '', seoDescription: '', seoImage: null, noindex: false })
 /** The custom link can be saved (empty, unchanged or checked as free). */
 const linkOk = ref(true)
 
@@ -33,6 +33,10 @@ function reset(from: FormShareSettings) {
     link: from.custom_link ?? '',
     embedLimited: from.embed_domains.length > 0,
     domains: [...from.embed_domains],
+    seoTitle: from.seo.title ?? '',
+    seoDescription: from.seo.description ?? '',
+    seoImage: from.seo.image_upload_id && from.seo.image_url ? { id: from.seo.image_upload_id, url: from.seo.image_url } : null,
+    noindex: from.seo.noindex,
   })
 }
 async function load() {
@@ -62,7 +66,11 @@ const dirty = computed(() => {
     !!draft.password ||
     (draft.limitOn ? draft.limit : null) !== s.response_limit ||
     (draft.link.trim() || null) !== s.custom_link ||
-    embedDomains().join(',') !== s.embed_domains.join(',')
+    embedDomains().join(',') !== s.embed_domains.join(',') ||
+    draft.seoTitle.trim() !== (s.seo.title ?? '') ||
+    draft.seoDescription.trim() !== (s.seo.description ?? '') ||
+    (draft.seoImage?.id ?? null) !== s.seo.image_upload_id ||
+    draft.noindex !== s.seo.noindex
   )
 })
 const passwordMissing = computed(() => draft.access === 'password' && !settings.value?.has_password && draft.password.length < 8)
@@ -89,6 +97,7 @@ async function save() {
         response_limit: draft.limitOn ? draft.limit : null,
         custom_link: draft.link.trim() || null,
         embed_domains: embedDomains(),
+        seo: { title: draft.seoTitle.trim() || null, description: draft.seoDescription.trim() || null, image_upload_id: draft.seoImage?.id ?? null, noindex: draft.noindex },
       })
       settings.value = data
       reset(data)
@@ -137,9 +146,11 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
     <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <div class="flex min-w-0 flex-col gap-4">
         <FormsShareAccessCard v-model:draft="draft" :settings="settings" />
+        <FormsShareLinksGuide :settings="settings" :form="form" />
         <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
         <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
         <FormsShareEmbedCard v-model:draft="draft" :settings="settings" :form="form" />
+        <FormsShareSeoCard v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
       </div>
       <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />

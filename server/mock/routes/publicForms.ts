@@ -29,7 +29,8 @@ import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 import { websiteOf } from './onboarding'
 import { draftOf, newResumeToken, putDraft, RESUME_TTL_DAYS } from '../data/resumeStore'
-import { attachRespondentFiles, completeRespondentUpload, createRespondentTicket, respondentFile } from './uploads'
+import { attachRespondentFiles, completedUploadUrl, completeRespondentUpload, createRespondentTicket, respondentFile } from './uploads'
+import { seoOf } from '../data/formSeo'
 import { allFields, isLocked } from '#shared/utils/forms/build'
 import { acceptsFile, parseAccept } from '#shared/utils/forms/file-types'
 import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
@@ -157,13 +158,6 @@ const offered = (schema: FormSchemaV1 | null) => {
   return APP_LOCALES.some(locale => locale.code === main) ? main : 'en'
 }
 
-/** Plain text from the first paragraph block, for the link-card description. */
-function summaryText(schema: FormSchemaV1 | null): string {
-  const intro = schema?.pages.flatMap(page => page.rows.flatMap(row => row.fields)).find(field => field.type === 'paragraph')
-  const html = String((intro?.props as { html?: string } | undefined)?.html ?? '')
-  return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 200)
-}
-
 /** The published form for respondents (also used by the server-rendered page, server/routes/_ssr). */
 export function publicFormView(event: Parameters<typeof tenantOf>[0], key: string): PublicForm {
   const { tenant, form } = locate(event, key)
@@ -173,6 +167,10 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
   const schema = published ? { ...structuredClone(published), theme: resolveTheme(published.theme, branding(tenant)) as unknown as Record<string, unknown> } : null
   // The form's language also for full, closed, expired, scheduled and locked pages (no questions are sent then).
   const language = offered(published ?? form.published_schema ?? form.schema)
+  const seo = seoOf(form)
+  // Link cards need a full address for the image (link previews fetch it from outside).
+  const imagePath = seo.imageUploadId ? completedUploadUrl(seo.imageUploadId, tenant.id) : null
+  const seoImage = imagePath ? `https://${getRequestHost(event, { xForwardedHost: true })}${imagePath}` : null
   return {
     key: form.custom_link || form.public_key,
     name: form.name,
@@ -181,11 +179,12 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
     closes_at: form.closes_at ?? null,
     schema: locked ? null : schema,
     workspace: { name: tenant.name, logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null, subdomain: tenant.subdomain ?? null, website: websiteOf(tenant) },
+    // Search & link preview (decision 95): the creator's text and image, else from the form.
     seo: {
-      title: published?.settings?.title?.trim() || form.name,
-      description: summaryText(published) || String((published?.theme as { header?: { subtitle?: string } } | undefined)?.header?.subtitle ?? ''),
-      image: null,
-      noindex: state !== 'open',
+      title: seo.title,
+      description: seo.description,
+      image: seoImage,
+      noindex: state !== 'open' || seo.noindex,
     },
     legal: platformLegal(event),
     languages: [language],

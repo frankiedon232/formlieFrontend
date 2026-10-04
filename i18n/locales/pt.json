@@ -2917,6 +2917,70 @@
       "invalid": "«{site}» não é um endereço de site.",
       "formalieAllowed": "As próprias páginas da Formalie (pré-visualizações, a ligação pública) podem sempre mostrar o formulário.",
       "needSite": "Adicione pelo menos um site para guardar"
+    },
+    "guide": {
+      "title": "Como funcionam as ligações do seu formulário",
+      "desc": "O seu formulário pode ter até três ligações. Todas abrem o mesmo formulário — utilize a que melhor se adequa ao local onde a partilha.",
+      "always": "Sempre ativa",
+      "on": "Ativa",
+      "off": "Não definida",
+      "original": {
+        "name": "Ligação original",
+        "for": "Criada com o formulário. Nunca muda e funciona sempre — mesmo depois de adicionar uma ligação personalizada ou uma ligação curta."
+      },
+      "custom": {
+        "name": "Ligação personalizada",
+        "for": "Um nome legível à sua escolha, p. ex. /procurement-request. Ideal para e-mails, sites e documentos."
+      },
+      "short": {
+        "name": "Ligação curta",
+        "for": "Cinco caracteres para cartazes, SMS, diapositivos e códigos QR. Leva sempre ao formulário, mesmo que a ligação personalizada mude."
+      },
+      "together": "Adicionar uma ligação personalizada ou curta nunca anula as outras. As ligações que já partilhou continuam a funcionar.",
+      "situations": "Situações comuns",
+      "case": {
+        "shared": {
+          "when": "Enviou a ligação original por e-mail e depois adicionou uma ligação personalizada",
+          "then": "ambas funcionam; quem tem a ligação original continua a aceder ao formulário."
+        },
+        "changed": {
+          "when": "Altera a ligação personalizada",
+          "then": "a nova funciona e a ligação personalizada anterior deixa de funcionar. A ligação original e a curta continuam a funcionar."
+        },
+        "removed": {
+          "when": "Remove a ligação personalizada",
+          "then": "só o endereço personalizado deixa de funcionar; a ligação original e a curta continuam a abrir o formulário."
+        },
+        "poster": {
+          "when": "Um cartaz ou código QR usa a ligação curta",
+          "then": "continua a funcionar, faça o que fizer com a ligação personalizada. Remover a ligação curta desativa-a para sempre — o seu código nunca é atribuído a outro formulário."
+        },
+        "closed": {
+          "when": "O formulário está fechado, completo, expirado ou protegido",
+          "then": "todas as ligações mostram a mesma mensagem ou ecrã de palavra-passe — nenhuma ligação o contorna."
+        }
+      }
+    },
+    "seo": {
+      "title": "Pré-visualização na pesquisa e no link",
+      "desc": "O que as pessoas veem quando o link é partilhado no WhatsApp, LinkedIn, email e outras apps, e nos resultados de pesquisa.",
+      "titleLabel": "Título",
+      "emptyUsesForm": "Deixe vazio para usar o título e a introdução do formulário.",
+      "descriptionLabel": "Descrição",
+      "descriptionPlaceholder": "Uma frase sobre a finalidade do formulário",
+      "image": "Imagem",
+      "imageHint": "Apresentada no topo do cartão do link. PNG, JPEG ou WebP, até 5 MB — o ideal é 1200 × 630 px.",
+      "imageRule": "Use uma imagem PNG, JPEG ou WebP com até 5 MB.",
+      "upload": "Carregar imagem",
+      "replace": "Substituir",
+      "removeImage": "Remover",
+      "noindex": "Ocultar dos motores de pesquisa",
+      "noindexDesc": "O formulário não aparecerá no Google nem noutros resultados de pesquisa. Quem tiver o link continua a poder abri-lo.",
+      "preview": "Pré-visualização",
+      "asCard": "Cartão do link",
+      "asSearch": "Resultado de pesquisa",
+      "noImage": "Sem imagem",
+      "hiddenFromSearch": "Oculto dos motores de pesquisa — este formulário não aparecerá nos resultados de pesquisa."
     }
   }
 }

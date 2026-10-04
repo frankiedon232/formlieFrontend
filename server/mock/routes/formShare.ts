@@ -12,6 +12,8 @@ import type { CustomLinkCheck, FormShareSettings } from '#shared/types/forms'
 import { customLinkProblem, FORM_KEY_PATTERN, newShortCode, tidyCustomLink } from '#shared/utils/urls/public'
 import { MAX_EMBED_DOMAINS, normaliseEmbedDomain } from '#shared/utils/urls/embed-domains'
 import { requireAuth } from '../core/auth'
+import { SEO_DESCRIPTION_MAX, SEO_TITLE_MAX, seoDefaults } from '../data/formSeo'
+import { completedUploadUrl } from './uploads'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -28,7 +30,7 @@ function findForm(tenant: MockTenant, id: string | undefined): StoredForm {
 
 export const hashPassword = (password: string, salt: string) => scryptSync(password, salt, 32).toString('base64')
 
-const settingsOf = (form: StoredForm): FormShareSettings => ({
+const settingsOf = (form: StoredForm, tenant: MockTenant): FormShareSettings => ({
   access: form.access ?? 'public',
   has_password: !!form.password,
   password_changed_at: form.password?.changed_at ?? null,
@@ -39,6 +41,15 @@ const settingsOf = (form: StoredForm): FormShareSettings => ({
   closes_at: form.closes_at,
   row_version: form.row_version,
   embed_domains: form.embed_domains ?? [],
+  seo: {
+    title: form.seo?.title ?? null,
+    description: form.seo?.description ?? null,
+    image_upload_id: form.seo?.image_upload_id ?? null,
+    image_url: form.seo?.image_upload_id ? completedUploadUrl(form.seo.image_upload_id, tenant.id) : null,
+    noindex: !!form.seo?.noindex,
+    default_title: seoDefaults(form).title,
+    default_description: seoDefaults(form).description,
+  },
   short_link: form.short_code ? { code: form.short_code, clicks: form.short_clicks ?? 0, created_at: form.short_created_at ?? form.updated_at } : null,
 })
 
@@ -96,7 +107,7 @@ function check(value: string, formId: string, tenant: MockTenant): CustomLinkChe
 /** GET /forms/:id/share */
 export const getShare = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
-  return ok(settingsOf(findForm(tenant, getRouterParam(event, 'id'))))
+  return ok(settingsOf(findForm(tenant, getRouterParam(event, 'id')), tenant))
 })
 
 /** GET /forms/:id/share/link-check?value= */
@@ -115,6 +126,15 @@ const shareSchema = z.object({
   password: z.string().min(8).max(100).optional(),
   response_limit: z.number().int().min(2).max(1_000_000).nullable().optional(),
   custom_link: z.string().max(80).nullable().optional(),
+  /** Search & link preview; empty text = from the form. */
+  seo: z
+    .object({
+      title: z.string().max(SEO_TITLE_MAX).nullable(),
+      description: z.string().max(SEO_DESCRIPTION_MAX).nullable(),
+      image_upload_id: z.string().max(64).nullable(),
+      noindex: z.boolean(),
+    })
+    .optional(),
   /** Websites allowed to show the embed; [] = any website. */
   embed_domains: z.array(z.string().max(253)).max(MAX_EMBED_DOMAINS).optional(),
 })
@@ -158,6 +178,21 @@ export const saveShare = defineMockRoute(({ event, body }) => {
     }
   }
 
+  if (input.seo !== undefined) {
+    const next = {
+      title: input.seo.title?.trim() || null,
+      description: input.seo.description?.trim() || null,
+      image_upload_id: input.seo.image_upload_id,
+      noindex: input.seo.noindex,
+    }
+    // The image must be a finished upload of this workspace.
+    if (next.image_upload_id && !completedUploadUrl(next.image_upload_id, tenant.id)) throw new MockError('FRM-GEN-1002', [{ field: 'seo.image_upload_id', message: 'Upload the image again.' }])
+    const before = form.seo ?? { title: null, description: null, image_upload_id: null, noindex: false }
+    for (const field of ['title', 'description', 'noindex'] as const)
+      if (before[field] !== next[field]) changes.push({ field: `seo_${field}`, before: before[field] == null ? null : String(before[field]), after: next[field] == null ? null : String(next[field]) })
+    if (before.image_upload_id !== next.image_upload_id) changes.push({ field: 'seo_image', before: before.image_upload_id ? 'image' : null, after: next.image_upload_id ? 'image' : null })
+    form.seo = next
+  }
   if (input.embed_domains !== undefined) {
     const domains = [...new Set(input.embed_domains.map(normaliseEmbedDomain))]
     if (domains.some(domain => !domain)) throw new MockError('FRM-GEN-1002', [{ field: 'embed_domains', message: 'invalid' }])
@@ -173,7 +208,7 @@ export const saveShare = defineMockRoute(({ event, body }) => {
     saveForms()
     recordAudit(event, tenant, { action: 'forms.shared', actor: actorOf(user), resource: { type: 'form', id: form.id, name: form.name }, changes })
   }
-  return ok(settingsOf(form))
+  return ok(settingsOf(form, tenant))
 })
 
 // ── Short link (F10 M3) ─────────────────────────────────────────────────────────────────
@@ -203,7 +238,7 @@ function shortLinkChange(event: Parameters<typeof requireAuth>[0], create: boole
     saveForms()
     recordAudit(event, tenant, { action: 'forms.shared', actor: actorOf(user), resource: { type: 'form', id: form.id, name: form.name }, changes: [{ field: 'short_link', before, after: form.short_code ?? null }] })
   }
-  return ok(settingsOf(form), {}, create && !before ? 201 : 200)
+  return ok(settingsOf(form, tenant), {}, create && !before ? 201 : 200)
 }
 
 /** POST /forms/:id/short-link — create the form's short link (or return the one it has). */

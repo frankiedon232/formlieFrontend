@@ -481,7 +481,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule — ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ⬜ invite-only, organisation-only
 - ⬜ People access: edit / view / responses
 - ✅ Embed: iframe snippet with auto-resize, size options (M2), allowed websites + live preview (M3, decision 94)
-- ⬜ SEO settings with link-card preview
+- ✅ SEO settings with link-card preview (decision 95): title, description, image, hide from search engines; previews as link card and search result
 - ✅ Short link redirect `/s/[code]` (decision 93): create / remove on the Share tab, 302 to the current link, visits counted, 404 page for unknown codes
 
 ---
@@ -1074,3 +1074,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | M3: embed allowed websites (any / only listed; pasted addresses tidied; frame-ancestors header, Formalie previews always allowed) and a live Preview tab in the Embed code window. Tested in the browser (header with the list, back to any website). |
 | 2026-10-04 | F10 | Dialogs (owner): the move grip no longer sits over the close button (close button in the header flow, grip beside it) and the close button is a round soft button. |
 | 2026-10-04 | F10 | Short links (owner question "no conflict"): removed codes — and codes of forms deleted for good — are retired and never handed out again, so an old poster can never open another form. Tested. |
+| 2026-10-04 | F10 | M3: "How your form’s links work" note on the Share tab (original · custom · short, none cancels another, common situations); Search & link preview card (title, description, image upload, hide from search engines, link-card and search-result previews) feeding the public page tags. Tested in the browser (tags, image, back to defaults). |

@@ -2917,6 +2917,70 @@
       "invalid": "“{site}” isn’t a website address.",
       "formalieAllowed": "Formalie’s own pages (previews, the public link) can always show the form.",
       "needSite": "Add at least one website to save"
+    },
+    "guide": {
+      "title": "How your form’s links work",
+      "desc": "Your form can have up to three links. They all open the same form — use whichever suits where you share it.",
+      "always": "Always on",
+      "on": "On",
+      "off": "Not set",
+      "original": {
+        "name": "Original link",
+        "for": "Created with the form. It never changes and always works — even after you add a custom link or a short link."
+      },
+      "custom": {
+        "name": "Custom link",
+        "for": "A readable name you choose, e.g. /procurement-request. Best for emails, websites and documents."
+      },
+      "short": {
+        "name": "Short link",
+        "for": "Five characters for posters, SMS, slides and QR codes. It always leads to the form, even when the custom link changes."
+      },
+      "together": "Adding a custom link or a short link never cancels the others. Links you already gave out keep working.",
+      "situations": "Common situations",
+      "case": {
+        "shared": {
+          "when": "You emailed the original link, then added a custom link",
+          "then": "both work; people with the original link still reach the form."
+        },
+        "changed": {
+          "when": "You change the custom link",
+          "then": "the new one works and the previous custom link stops working. The original and short links keep working."
+        },
+        "removed": {
+          "when": "You remove the custom link",
+          "then": "only the custom address stops working; the original and short links still open the form."
+        },
+        "poster": {
+          "when": "A poster or QR code uses the short link",
+          "then": "it keeps working whatever you do with the custom link. Removing the short link stops it for good — its code is never given to another form."
+        },
+        "closed": {
+          "when": "The form is closed, full, expired or protected",
+          "then": "every link shows the same message or password screen — no link gets around it."
+        }
+      }
+    },
+    "seo": {
+      "title": "Search & link preview",
+      "desc": "What people see when the link is shared on WhatsApp, LinkedIn, email and other apps, and in search results.",
+      "titleLabel": "Title",
+      "emptyUsesForm": "Leave empty to use the form’s own title and intro.",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "A sentence about what the form is for",
+      "image": "Image",
+      "imageHint": "Shown at the top of the link card. PNG, JPEG or WebP, up to 5 MB — 1200 × 630 px works best.",
+      "imageRule": "Use a PNG, JPEG or WebP image of up to 5 MB.",
+      "upload": "Upload image",
+      "replace": "Replace",
+      "removeImage": "Remove",
+      "noindex": "Hide from search engines",
+      "noindexDesc": "The form won’t appear in Google or other search results. People with the link can still open it.",
+      "preview": "Preview",
+      "asCard": "Link card",
+      "asSearch": "Search result",
+      "noImage": "No image",
+      "hiddenFromSearch": "Hidden from search engines — this form won’t appear in search results."
     }
   }
 }

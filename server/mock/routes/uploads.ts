@@ -18,6 +18,8 @@ import { parseBody } from '../core/validate'
 /** What each purpose may upload: logos (admins, 2 MB) and images inside forms (members, 5 MB). */
 const PURPOSES = {
   logo: { types: ['image/png', 'image/jpeg', 'image/webp'], maxBytes: 2 * 1024 * 1024, admin: true },
+  /** Link preview image (F10 M3): what WhatsApp, LinkedIn… show — no SVG (social sites don't show it). */
+  share_image: { types: ['image/png', 'image/jpeg', 'image/webp'], maxBytes: 5 * 1024 * 1024, admin: false },
   form_image: {
     types: ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg+xml'],
     maxBytes: 5 * 1024 * 1024,

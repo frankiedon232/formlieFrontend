@@ -2917,6 +2917,70 @@
       "invalid": "“{site}” si anwani ya tovuti.",
       "formalieAllowed": "Kurasa za Formalie zenyewe (maonyesho ya awali, kiungo cha umma) zinaweza kuonyesha fomu kila wakati.",
       "needSite": "Ongeza angalau tovuti moja ili kuhifadhi"
+    },
+    "guide": {
+      "title": "Jinsi viungo vya fomu yako vinavyofanya kazi",
+      "desc": "Fomu yako inaweza kuwa na hadi viungo vitatu. Vyote hufungua fomu ileile — tumia kinachofaa mahali unapokishiriki.",
+      "always": "Huwashwa kila wakati",
+      "on": "Imewashwa",
+      "off": "Hakijawekwa",
+      "original": {
+        "name": "Kiungo asili",
+        "for": "Huundwa pamoja na fomu. Hakibadiliki kamwe na hufanya kazi kila wakati — hata baada ya kuongeza kiungo maalum au kiungo kifupi."
+      },
+      "custom": {
+        "name": "Kiungo maalum",
+        "for": "Jina rahisi kusoma unalochagua, k.m. /procurement-request. Bora kwa barua pepe, tovuti na nyaraka."
+      },
+      "short": {
+        "name": "Kiungo kifupi",
+        "for": "Herufi tano kwa mabango, SMS, slaidi na misimbo ya QR. Huelekeza kwenye fomu kila wakati, hata kiungo maalum kikibadilika."
+      },
+      "together": "Kuongeza kiungo maalum au kiungo kifupi hakufuti vingine kamwe. Viungo ulivyokwisha kushiriki vinaendelea kufanya kazi.",
+      "situations": "Hali za kawaida",
+      "case": {
+        "shared": {
+          "when": "Ulituma kiungo asili kwa barua pepe, kisha ukaongeza kiungo maalum",
+          "then": "vyote viwili hufanya kazi; walio na kiungo asili bado wanafikia fomu."
+        },
+        "changed": {
+          "when": "Unabadilisha kiungo maalum",
+          "then": "kipya hufanya kazi na kiungo maalum cha awali huacha kufanya kazi. Kiungo asili na kifupi vinaendelea kufanya kazi."
+        },
+        "removed": {
+          "when": "Unaondoa kiungo maalum",
+          "then": "anwani maalum pekee ndiyo huacha kufanya kazi; kiungo asili na kifupi bado hufungua fomu."
+        },
+        "poster": {
+          "when": "Bango au msimbo wa QR unatumia kiungo kifupi",
+          "then": "kinaendelea kufanya kazi bila kujali unachofanya na kiungo maalum. Kuondoa kiungo kifupi hukizima kabisa — msimbo wake haupewi fomu nyingine kamwe."
+        },
+        "closed": {
+          "when": "Fomu imefungwa, imejaa, imeisha muda au imelindwa",
+          "then": "kila kiungo huonyesha ujumbe uleule au skrini ya nenosiri — hakuna kiungo kinachoweza kuikwepa."
+        }
+      }
+    },
+    "seo": {
+      "title": "Onyesho la utafutaji na kiungo",
+      "desc": "Kile watu wanachoona kiungo kinaposhirikiwa kwenye WhatsApp, LinkedIn, barua pepe na programu nyingine, na katika matokeo ya utafutaji.",
+      "titleLabel": "Kichwa",
+      "emptyUsesForm": "Acha wazi ili kutumia kichwa na utangulizi wa fomu yenyewe.",
+      "descriptionLabel": "Maelezo",
+      "descriptionPlaceholder": "Sentensi moja kuhusu madhumuni ya fomu",
+      "image": "Picha",
+      "imageHint": "Huonyeshwa juu ya kadi ya kiungo. PNG, JPEG au WebP, hadi 5 MB — 1200 × 630 px hufaa zaidi.",
+      "imageRule": "Tumia picha ya PNG, JPEG au WebP isiyozidi 5 MB.",
+      "upload": "Pakia picha",
+      "replace": "Badilisha",
+      "removeImage": "Ondoa",
+      "noindex": "Ficha kwa injini za utafutaji",
+      "noindexDesc": "Fomu haitaonekana kwenye Google au matokeo mengine ya utafutaji. Watu walio na kiungo bado wanaweza kuifungua.",
+      "preview": "Onyesho la awali",
+      "asCard": "Kadi ya kiungo",
+      "asSearch": "Tokeo la utafutaji",
+      "noImage": "Hakuna picha",
+      "hiddenFromSearch": "Imefichwa kwa injini za utafutaji — fomu hii haitaonekana katika matokeo ya utafutaji."
     }
   }
 }

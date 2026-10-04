@@ -66,6 +66,16 @@ export interface FormShareSettings {
   short_link: { code: string; clicks: number; created_at: string } | null
   /** Websites allowed to show the embed (empty = any website). */
   embed_domains: string[]
+  /** Search & link preview: the creator's text (null = from the form) and what the form gives by default. */
+  seo: {
+    title: string | null
+    description: string | null
+    image_upload_id: string | null
+    image_url: string | null
+    noindex: boolean
+    default_title: string
+    default_description: string
+  }
 }
 
 /** The Share tab's unsaved changes (portal only). */
@@ -79,6 +89,11 @@ export interface ShareDraft {
   /** Embed: only the websites listed (false = any website). */
   embedLimited: boolean
   domains: string[]
+  /** Search & link preview (empty text = from the form). */
+  seoTitle: string
+  seoDescription: string
+  seoImage: { id: string; url: string } | null
+  noindex: boolean
 }
 
 /** GET /forms/{id}/share/link-check?value= — can this custom link be used? */

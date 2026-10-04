@@ -2917,6 +2917,70 @@
       "invalid": "„{site}” nie jest adresem strony internetowej.",
       "formalieAllowed": "Własne strony Formalie (podglądy, link publiczny) zawsze mogą wyświetlać formularz.",
       "needSite": "Dodaj co najmniej jedną stronę, aby zapisać"
+    },
+    "guide": {
+      "title": "Jak działają linki do formularza",
+      "desc": "Formularz może mieć maksymalnie trzy linki. Wszystkie otwierają ten sam formularz — użyj tego, który najlepiej pasuje do miejsca udostępnienia.",
+      "always": "Zawsze aktywny",
+      "on": "Aktywny",
+      "off": "Nieustawiony",
+      "original": {
+        "name": "Link oryginalny",
+        "for": "Tworzony razem z formularzem. Nigdy się nie zmienia i zawsze działa — nawet po dodaniu linku własnego lub krótkiego."
+      },
+      "custom": {
+        "name": "Link własny",
+        "for": "Czytelna nazwa, którą wybierasz, np. /procurement-request. Najlepszy do e-maili, stron internetowych i dokumentów."
+      },
+      "short": {
+        "name": "Krótki link",
+        "for": "Pięć znaków na plakaty, SMS-y, slajdy i kody QR. Zawsze prowadzi do formularza, nawet gdy link własny się zmieni."
+      },
+      "together": "Dodanie linku własnego lub krótkiego nigdy nie unieważnia pozostałych. Już udostępnione linki nadal działają.",
+      "situations": "Typowe sytuacje",
+      "case": {
+        "shared": {
+          "when": "Wysłano link oryginalny e-mailem, a potem dodano link własny",
+          "then": "działają oba; osoby z linkiem oryginalnym nadal docierają do formularza."
+        },
+        "changed": {
+          "when": "Zmieniasz link własny",
+          "then": "nowy działa, a poprzedni link własny przestaje działać. Link oryginalny i krótki nadal działają."
+        },
+        "removed": {
+          "when": "Usuwasz link własny",
+          "then": "przestaje działać tylko własny adres; link oryginalny i krótki nadal otwierają formularz."
+        },
+        "poster": {
+          "when": "Plakat lub kod QR używa krótkiego linku",
+          "then": "działa on dalej niezależnie od zmian linku własnego. Usunięcie krótkiego linku wyłącza go na stałe — jego kod nigdy nie zostanie przypisany innemu formularzowi."
+        },
+        "closed": {
+          "when": "Formularz jest zamknięty, pełny, wygasły lub chroniony",
+          "then": "każdy link pokazuje ten sam komunikat lub ekran hasła — żaden link tego nie omija."
+        }
+      }
+    },
+    "seo": {
+      "title": "Podgląd w wyszukiwarce i linku",
+      "desc": "Co widzą inni, gdy link zostanie udostępniony w WhatsApp, LinkedIn, e-mailu i innych aplikacjach, oraz w wynikach wyszukiwania.",
+      "titleLabel": "Tytuł",
+      "emptyUsesForm": "Pozostaw puste, aby użyć tytułu i wstępu formularza.",
+      "descriptionLabel": "Opis",
+      "descriptionPlaceholder": "Jedno zdanie o przeznaczeniu formularza",
+      "image": "Obraz",
+      "imageHint": "Wyświetlany u góry karty linku. PNG, JPEG lub WebP, do 5 MB — najlepiej 1200 × 630 px.",
+      "imageRule": "Użyj obrazu PNG, JPEG lub WebP o rozmiarze do 5 MB.",
+      "upload": "Prześlij obraz",
+      "replace": "Zastąp",
+      "removeImage": "Usuń",
+      "noindex": "Ukryj przed wyszukiwarkami",
+      "noindexDesc": "Formularz nie pojawi się w Google ani w innych wynikach wyszukiwania. Osoby z linkiem nadal mogą go otworzyć.",
+      "preview": "Podgląd",
+      "asCard": "Karta linku",
+      "asSearch": "Wynik wyszukiwania",
+      "noImage": "Brak obrazu",
+      "hiddenFromSearch": "Ukryty przed wyszukiwarkami — ten formularz nie pojawi się w wynikach wyszukiwania."
     }
   }
 }

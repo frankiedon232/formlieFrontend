@@ -2917,6 +2917,70 @@
       "invalid": "‘{site}’ is geen websiteadres.",
       "formalieAllowed": "De eigen pagina’s van Formalie (voorbeelden, de openbare link) kunnen het formulier altijd tonen.",
       "needSite": "Voeg ten minste één website toe om op te slaan"
+    },
+    "guide": {
+      "title": "Zo werken de links van uw formulier",
+      "desc": "Uw formulier kan maximaal drie links hebben. Ze openen allemaal hetzelfde formulier — gebruik de link die het best past bij waar u deelt.",
+      "always": "Altijd actief",
+      "on": "Actief",
+      "off": "Niet ingesteld",
+      "original": {
+        "name": "Oorspronkelijke link",
+        "for": "Aangemaakt met het formulier. Hij verandert nooit en werkt altijd — ook nadat u een eigen link of een korte link hebt toegevoegd."
+      },
+      "custom": {
+        "name": "Eigen link",
+        "for": "Een leesbare naam die u zelf kiest, bijv. /procurement-request. Het best voor e-mails, websites en documenten."
+      },
+      "short": {
+        "name": "Korte link",
+        "for": "Vijf tekens voor posters, sms, dia’s en QR-codes. Leidt altijd naar het formulier, ook als de eigen link verandert."
+      },
+      "together": "Een eigen link of korte link toevoegen maakt de andere nooit ongeldig. Links die u al hebt verspreid, blijven werken.",
+      "situations": "Veelvoorkomende situaties",
+      "case": {
+        "shared": {
+          "when": "U hebt de oorspronkelijke link gemaild en daarna een eigen link toegevoegd",
+          "then": "beide werken; wie de oorspronkelijke link heeft, komt nog steeds bij het formulier."
+        },
+        "changed": {
+          "when": "U wijzigt de eigen link",
+          "then": "de nieuwe werkt en de vorige eigen link werkt niet meer. De oorspronkelijke en korte link blijven werken."
+        },
+        "removed": {
+          "when": "U verwijdert de eigen link",
+          "then": "alleen het eigen adres werkt niet meer; de oorspronkelijke en korte link openen het formulier nog steeds."
+        },
+        "poster": {
+          "when": "Een poster of QR-code gebruikt de korte link",
+          "then": "die blijft werken, wat u ook met de eigen link doet. Als u de korte link verwijdert, werkt hij definitief niet meer — de code wordt nooit aan een ander formulier gegeven."
+        },
+        "closed": {
+          "when": "Het formulier is gesloten, vol, verlopen of beveiligd",
+          "then": "elke link toont hetzelfde bericht of wachtwoordscherm — geen enkele link omzeilt dit."
+        }
+      }
+    },
+    "seo": {
+      "title": "Zoek- en linkvoorbeeld",
+      "desc": "Wat mensen zien wanneer de link wordt gedeeld via WhatsApp, LinkedIn, e-mail en andere apps, en in zoekresultaten.",
+      "titleLabel": "Titel",
+      "emptyUsesForm": "Laat leeg om de titel en inleiding van het formulier te gebruiken.",
+      "descriptionLabel": "Beschrijving",
+      "descriptionPlaceholder": "Eén zin over waarvoor het formulier dient",
+      "image": "Afbeelding",
+      "imageHint": "Wordt bovenaan de linkkaart getoond. PNG, JPEG of WebP, tot 5 MB — 1200 × 630 px werkt het best.",
+      "imageRule": "Gebruik een PNG-, JPEG- of WebP-afbeelding van maximaal 5 MB.",
+      "upload": "Afbeelding uploaden",
+      "replace": "Vervangen",
+      "removeImage": "Verwijderen",
+      "noindex": "Verbergen voor zoekmachines",
+      "noindexDesc": "Het formulier verschijnt niet in Google of andere zoekresultaten. Mensen met de link kunnen het nog steeds openen.",
+      "preview": "Voorbeeld",
+      "asCard": "Linkkaart",
+      "asSearch": "Zoekresultaat",
+      "noImage": "Geen afbeelding",
+      "hiddenFromSearch": "Verborgen voor zoekmachines — dit formulier verschijnt niet in zoekresultaten."
     }
   }
 }

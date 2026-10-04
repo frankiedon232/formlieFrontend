@@ -25,6 +25,8 @@ export interface StoredForm extends FormSummary {
   short_created_at?: string | null
   /** Websites allowed to show the embed (F10 M3; empty / missing = any). */
   embed_domains?: string[]
+  /** Search & link preview set by the creator (F10 M3; empty = from the form, data/formSeo.ts). */
+  seo?: { title: string | null; description: string | null; image_upload_id: string | null; noindex: boolean }
 }
 
 export interface StoredVersion extends FormVersion {
@@ -113,6 +115,7 @@ export function summaryOf(form: StoredForm): FormSummary {
     short_clicks: _sc,
     short_created_at: _sca,
     embed_domains: _ed,
+    seo: _seo,
     ...summary
   } = form
   // Share settings added in F10 M3: older forms have none yet.
