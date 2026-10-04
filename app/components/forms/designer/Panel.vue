@@ -1,6 +1,7 @@
 <!--
-  Designer controls (FRONTEND-SPEC §7): starting points on top, then collapsible groups,
-  Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
+  Designer controls (FRONTEND-SPEC §7), every part a collapsible group (owner 2026-10-04: the
+  themes collapse like the rest, a little space under each open group): Starting points · Your
+  themes · Page designs (Resources → Pages) · Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
   Footer · Thank-you page. "Reset" goes back to the workspace default.
 -->
 <script setup lang="ts">
@@ -13,7 +14,10 @@ const d = useDesigner()
 const confirm = useConfirm()
 
 const groups = computed<AccordionItem[]>(() => [
-  // The page around the form on its link (F10), first, because it's what people see first.
+  { value: 'starting', label: t('designer.startingPoints'), icon: 'i-lucide-sparkles', slot: 'starting' },
+  ...(props.standalone ? [] : [{ value: 'themes', label: t('themes.yours'), icon: 'i-lucide-swatch-book', slot: 'themes' }]),
+  { value: 'pages', label: t('pages.designerGroup'), icon: 'i-lucide-panels-top-left', slot: 'pages' },
+  // The page around the form on its link (F10), first of the controls, because it's what people see first.
   { value: 'frame', label: t('designer.group.frame'), icon: 'i-lucide-app-window', slot: 'frame' },
   { value: 'layout', label: t('designer.group.layout'), icon: 'i-lucide-layout-template', slot: 'layout' },
   { value: 'background', label: t('designer.group.background'), icon: 'i-lucide-paint-bucket', slot: 'background' },
@@ -26,7 +30,7 @@ const groups = computed<AccordionItem[]>(() => [
   { value: 'footer', label: t('designer.group.footer'), icon: 'i-lucide-panel-bottom', slot: 'footer' },
   { value: 'thank_you', label: t('designer.group.thankYou'), icon: 'i-lucide-party-popper', slot: 'thank_you' },
 ])
-const open = ref<string[]>(['layout'])
+const open = ref<string[]>(['starting'])
 
 async function reset() {
   if (await confirm({ title: t('designer.resetTitle'), description: t('designer.resetDesc'), confirmLabel: t('designer.reset') })) d.reset()
@@ -35,27 +39,18 @@ async function reset() {
 
 <template>
   <div class="flex flex-col gap-4">
-    <section class="flex flex-col gap-2">
-      <div class="flex items-center justify-between gap-2">
-        <h3 class="text-xs font-medium text-muted uppercase">{{ t('designer.startingPoints') }}</h3>
-        <UButton
-          v-if="d.customised.value"
-          :label="t('designer.reset')"
-          icon="i-lucide-rotate-ccw"
-          color="neutral"
-          variant="link"
-          size="xs"
-          class="px-0"
-          @click="reset"
-        />
-      </div>
-      <FormsDesignerPresets />
-      <p v-if="!d.customised.value" class="text-xs text-muted">{{ t('designer.usingDefault') }}</p>
-    </section>
-
-    <FormsDesignerSavedThemes v-if="!props.standalone" />
-
-    <UAccordion v-model="open" type="multiple" :items="groups" :ui="{ trigger: 'text-sm font-medium', body: 'pb-4' }">
+    <UAccordion v-model="open" type="multiple" :items="groups" :ui="{ trigger: 'text-sm font-medium', body: 'pb-6' }">
+      <template #starting>
+        <div class="flex flex-col gap-2">
+          <FormsDesignerPresets />
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-xs text-muted">{{ d.customised.value ? '' : t('designer.usingDefault') }}</p>
+            <UButton v-if="d.customised.value" :label="t('designer.reset')" icon="i-lucide-rotate-ccw" color="neutral" variant="link" size="xs" class="px-0" @click="reset" />
+          </div>
+        </div>
+      </template>
+      <template #themes><FormsDesignerSavedThemes /></template>
+      <template #pages><FormsDesignerPageDesigns /></template>
       <template #frame><FormsDesignerPanelFrame /></template>
       <template #layout><FormsDesignerPanelLayout group="layout" /></template>
       <template #background><FormsDesignerPanelLayout group="background" /></template>

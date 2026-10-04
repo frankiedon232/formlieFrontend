@@ -2816,7 +2816,8 @@
       "changed": "Geändert {when}",
       "created": "Erstellt",
       "share": "Anteil der Formulare"
-    }
+    },
+    "yoursHint": "Von Ihrem Team gespeichert. Ein Klick wendet es an."
   },
   "dataSources": {
     "subtitle": "Verbinden Sie Ihre eigenen Datenbanken, senden Sie Formulardaten dorthin und arbeiten Sie damit",
@@ -3507,6 +3508,15 @@
       "notFound": "Dieses Seitendesign ist nicht verfügbar",
       "sample": "Um ein Beispielformular gezeigt",
       "controls": "Seitendesign"
-    }
+    },
+    "designerGroup": "Seitendesigns",
+    "designerHint": "Legen Sie eine fertige Seite um dieses Formular. Nur die Seite ändert sich.",
+    "saveShort": "Seite speichern",
+    "saveTitle": "Seite als Design speichern",
+    "saveDesc": "Behalten Sie die Seite dieses Formulars (Stil, Farben, Hintergrund) unter Ressourcen → Seiten für andere Formulare.",
+    "apply": "Seitendesign {name} verwenden",
+    "manage": "Seitendesigns verwalten",
+    "replaceTitle": "Diese Seite ersetzen?",
+    "replaceDesc": "Die Seite um dieses Formular wechselt zum gewählten Design. Das Formular selbst bleibt, wie es ist, und Sie können es rückgängig machen."
   }
 }

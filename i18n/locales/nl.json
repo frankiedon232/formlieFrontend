@@ -2816,7 +2816,8 @@
       "changed": "Gewijzigd {when}",
       "created": "Gemaakt",
       "share": "Aandeel formulieren"
-    }
+    },
+    "yoursHint": "Opgeslagen door uw team. Eén klik past het toe."
   },
   "dataSources": {
     "subtitle": "Koppel uw eigen databases, stuur formuliergegevens ernaartoe en werk ermee",
@@ -3507,6 +3508,15 @@
       "notFound": "Dit pagina-ontwerp is niet beschikbaar",
       "sample": "Getoond rond een voorbeeldformulier",
       "controls": "Pagina-ontwerp"
-    }
+    },
+    "designerGroup": "Pagina-ontwerpen",
+    "designerHint": "Zet een kant-en-klare pagina rond dit formulier. Alleen de pagina verandert.",
+    "saveShort": "Pagina opslaan",
+    "saveTitle": "Pagina opslaan als ontwerp",
+    "saveDesc": "Bewaar de pagina van dit formulier (stijl, kleuren, achtergrond) in Bronnen → Pagina’s voor andere formulieren.",
+    "apply": "Pagina-ontwerp {name} gebruiken",
+    "manage": "Pagina-ontwerpen beheren",
+    "replaceTitle": "Deze pagina vervangen?",
+    "replaceDesc": "De pagina rond dit formulier krijgt het gekozen ontwerp. Het formulier zelf blijft zoals het is, en u kunt het ongedaan maken."
   }
 }

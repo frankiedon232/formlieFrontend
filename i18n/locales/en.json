@@ -2816,7 +2816,8 @@
       "changed": "Changed {when}",
       "created": "Created",
       "share": "Share of forms"
-    }
+    },
+    "yoursHint": "Saved by your team. One click applies one."
   },
   "dataSources": {
     "subtitle": "Connect your own databases, send form data to them and work with it",
@@ -3507,6 +3508,15 @@
       "notFound": "This page design isn't available",
       "sample": "Shown around a sample form",
       "controls": "Page design"
-    }
+    },
+    "designerGroup": "Page designs",
+    "designerHint": "Put a ready page around this form. Only the page changes.",
+    "saveShort": "Save page",
+    "saveTitle": "Save page as design",
+    "saveDesc": "Keep this form's page (style, colours, background) in Resources → Pages to use on other forms.",
+    "apply": "Use page design {name}",
+    "manage": "Manage page designs",
+    "replaceTitle": "Replace this page?",
+    "replaceDesc": "The page around this form changes to the design you picked. The form itself stays as it is, and you can undo it."
   }
 }

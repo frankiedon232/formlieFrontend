@@ -2816,7 +2816,8 @@
       "changed": "Alterado {when}",
       "created": "Criado",
       "share": "Parcela dos formulários"
-    }
+    },
+    "yoursHint": "Salvos pela sua equipe. Um clique aplica um."
   },
   "dataSources": {
     "subtitle": "Conecte seus próprios bancos de dados, envie dados de formulários para eles e trabalhe com esses dados",
@@ -3507,6 +3508,15 @@
       "notFound": "Este design de página não está disponível",
       "sample": "Mostrado em volta de um formulário de exemplo",
       "controls": "Design de página"
-    }
+    },
+    "designerGroup": "Designs de página",
+    "designerHint": "Coloque uma página pronta em volta deste formulário. Só a página muda.",
+    "saveShort": "Salvar página",
+    "saveTitle": "Salvar página como design",
+    "saveDesc": "Guarde a página deste formulário (estilo, cores, fundo) em Recursos → Páginas para usar em outros formulários.",
+    "apply": "Usar o design de página {name}",
+    "manage": "Gerenciar designs de página",
+    "replaceTitle": "Substituir esta página?",
+    "replaceDesc": "A página em volta deste formulário muda para o design escolhido. O formulário continua igual, e você pode desfazer."
   }
 }

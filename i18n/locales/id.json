@@ -2816,7 +2816,8 @@
       "changed": "Diubah {when}",
       "created": "Dibuat",
       "share": "Porsi formulir"
-    }
+    },
+    "yoursHint": "Disimpan oleh tim Anda. Sekali klik untuk menerapkan."
   },
   "dataSources": {
     "subtitle": "Hubungkan database Anda sendiri, kirim data formulir ke sana, dan kelola datanya",
@@ -3507,6 +3508,15 @@
       "notFound": "Desain halaman ini tidak tersedia",
       "sample": "Ditampilkan di sekitar formulir contoh",
       "controls": "Desain halaman"
-    }
+    },
+    "designerGroup": "Desain halaman",
+    "designerHint": "Pasang halaman siap pakai di sekitar formulir ini. Hanya halamannya yang berubah.",
+    "saveShort": "Simpan halaman",
+    "saveTitle": "Simpan halaman sebagai desain",
+    "saveDesc": "Simpan halaman formulir ini (gaya, warna, latar) di Sumber daya → Halaman untuk formulir lain.",
+    "apply": "Gunakan desain halaman {name}",
+    "manage": "Kelola desain halaman",
+    "replaceTitle": "Ganti halaman ini?",
+    "replaceDesc": "Halaman di sekitar formulir ini berubah ke desain yang Anda pilih. Formulirnya tetap, dan Anda bisa membatalkannya."
   }
 }

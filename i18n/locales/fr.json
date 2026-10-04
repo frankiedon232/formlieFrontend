@@ -2816,7 +2816,8 @@
       "changed": "Modifié {when}",
       "created": "Créé",
       "share": "Part des formulaires"
-    }
+    },
+    "yoursHint": "Enregistrés par votre équipe. Un clic en applique un."
   },
   "dataSources": {
     "subtitle": "Connectez vos propres bases de données, envoyez-y les données de vos formulaires et exploitez-les",
@@ -3507,6 +3508,15 @@
       "notFound": "Ce design de page n’est pas disponible",
       "sample": "Affiché autour d’un formulaire d’exemple",
       "controls": "Design de page"
-    }
+    },
+    "designerGroup": "Designs de page",
+    "designerHint": "Placez une page prête autour de ce formulaire. Seule la page change.",
+    "saveShort": "Enregistrer la page",
+    "saveTitle": "Enregistrer la page comme design",
+    "saveDesc": "Gardez la page de ce formulaire (style, couleurs, fond) dans Ressources → Pages pour d’autres formulaires.",
+    "apply": "Utiliser le design de page {name}",
+    "manage": "Gérer les designs de page",
+    "replaceTitle": "Remplacer cette page ?",
+    "replaceDesc": "La page autour de ce formulaire passe au design choisi. Le formulaire lui-même reste tel quel, et vous pouvez annuler."
   }
 }

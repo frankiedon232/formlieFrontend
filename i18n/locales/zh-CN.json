@@ -2816,7 +2816,8 @@
       "changed": "{when}修改",
       "created": "创建时间",
       "share": "表单占比"
-    }
+    },
+    "yoursHint": "由你的团队保存。点击即可应用。"
   },
   "dataSources": {
     "subtitle": "连接您自己的数据库，将表单数据发送到其中并进行处理",
@@ -3507,6 +3508,15 @@
       "notFound": "此页面设计不可用",
       "sample": "显示在示例表单周围",
       "controls": "页面设计"
-    }
+    },
+    "designerGroup": "页面设计",
+    "designerHint": "为此表单套上现成的页面。只改变页面。",
+    "saveShort": "保存页面",
+    "saveTitle": "将页面保存为设计",
+    "saveDesc": "把此表单的页面（样式、颜色、背景）保存到 资源 → 页面，供其他表单使用。",
+    "apply": "使用页面设计 {name}",
+    "manage": "管理页面设计",
+    "replaceTitle": "替换此页面？",
+    "replaceDesc": "此表单外围的页面会换成你选的设计。表单本身保持不变，并且可以撤销。"
   }
 }

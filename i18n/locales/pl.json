@@ -2816,7 +2816,8 @@
       "changed": "Zmieniono {when}",
       "created": "Utworzono",
       "share": "Udział formularzy"
-    }
+    },
+    "yoursHint": "Zapisane przez Twój zespół. Jedno kliknięcie, by zastosować."
   },
   "dataSources": {
     "subtitle": "Połącz własne bazy danych, wysyłaj do nich dane z formularzy i pracuj z nimi",
@@ -3507,6 +3508,15 @@
       "notFound": "Ten projekt strony jest niedostępny",
       "sample": "Pokazany wokół przykładowego formularza",
       "controls": "Projekt strony"
-    }
+    },
+    "designerGroup": "Projekty stron",
+    "designerHint": "Umieść gotową stronę wokół tego formularza. Zmienia się tylko strona.",
+    "saveShort": "Zapisz stronę",
+    "saveTitle": "Zapisz stronę jako projekt",
+    "saveDesc": "Zachowaj stronę tego formularza (styl, kolory, tło) w Zasoby → Strony, aby użyć jej w innych formularzach.",
+    "apply": "Użyj projektu strony {name}",
+    "manage": "Zarządzaj projektami stron",
+    "replaceTitle": "Zastąpić tę stronę?",
+    "replaceDesc": "Strona wokół tego formularza zmieni się na wybrany projekt. Sam formularz zostaje bez zmian i możesz to cofnąć."
   }
 }

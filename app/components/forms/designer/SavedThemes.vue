@@ -24,8 +24,8 @@ async function apply(saved: SavedTheme) {
 <template>
   <section class="flex flex-col gap-2">
     <div class="flex items-center justify-between gap-2">
-      <h3 class="text-xs font-medium text-muted uppercase">{{ t('themes.yours') }}</h3>
-      <UButton :label="t('themes.save')" icon="i-lucide-bookmark-plus" color="neutral" variant="outline" size="xs" @click="saveOpen = true" />
+      <p class="text-xs text-muted">{{ t('themes.yoursHint') }}</p>
+      <UButton :label="t('themes.save')" icon="i-lucide-bookmark-plus" color="neutral" variant="outline" size="xs" class="shrink-0" @click="saveOpen = true" />
     </div>
 
     <div v-if="library.loading.value && !library.loaded.value" class="grid grid-cols-2 gap-2" :aria-label="t('common.loading')">

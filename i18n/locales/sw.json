@@ -2816,7 +2816,8 @@
       "changed": "Imebadilishwa {when}",
       "created": "Imeundwa",
       "share": "Sehemu ya fomu"
-    }
+    },
+    "yoursHint": "Zimehifadhiwa na timu yako. Bofya mara moja kutumia."
   },
   "dataSources": {
     "subtitle": "Unganisha hifadhidata zako mwenyewe, tuma data ya fomu kwazo na uifanyie kazi",
@@ -3507,6 +3508,15 @@
       "notFound": "Muundo huu wa ukurasa haupatikani",
       "sample": "Unaonyeshwa kuzunguka fomu ya mfano",
       "controls": "Muundo wa ukurasa"
-    }
+    },
+    "designerGroup": "Miundo ya kurasa",
+    "designerHint": "Weka ukurasa ulio tayari kuzunguka fomu hii. Ukurasa pekee ndio hubadilika.",
+    "saveShort": "Hifadhi ukurasa",
+    "saveTitle": "Hifadhi ukurasa kama muundo",
+    "saveDesc": "Weka ukurasa wa fomu hii (mtindo, rangi, mandharinyuma) kwenye Rasilimali → Kurasa kwa fomu nyingine.",
+    "apply": "Tumia muundo wa ukurasa {name}",
+    "manage": "Simamia miundo ya kurasa",
+    "replaceTitle": "Badilisha ukurasa huu?",
+    "replaceDesc": "Ukurasa unaozunguka fomu hii utabadilika kuwa muundo uliochagua. Fomu yenyewe inabaki kama ilivyo, na unaweza kutendua."
   }
 }

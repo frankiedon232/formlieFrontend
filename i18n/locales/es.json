@@ -2816,7 +2816,8 @@
       "changed": "Cambiado {when}",
       "created": "Creado",
       "share": "Cuota de formularios"
-    }
+    },
+    "yoursHint": "Guardados por tu equipo. Un clic aplica uno."
   },
   "dataSources": {
     "subtitle": "Conecta tus propias bases de datos, envíales los datos de los formularios y trabaja con ellos",
@@ -3507,6 +3508,15 @@
       "notFound": "Este diseño de página no está disponible",
       "sample": "Mostrado alrededor de un formulario de ejemplo",
       "controls": "Diseño de página"
-    }
+    },
+    "designerGroup": "Diseños de página",
+    "designerHint": "Pon una página lista alrededor de este formulario. Solo cambia la página.",
+    "saveShort": "Guardar página",
+    "saveTitle": "Guardar página como diseño",
+    "saveDesc": "Guarda la página de este formulario (estilo, colores, fondo) en Recursos → Páginas para usarla en otros formularios.",
+    "apply": "Usar el diseño de página {name}",
+    "manage": "Gestionar diseños de página",
+    "replaceTitle": "¿Reemplazar esta página?",
+    "replaceDesc": "La página alrededor de este formulario cambia al diseño elegido. El formulario sigue igual y puedes deshacerlo."
   }
 }

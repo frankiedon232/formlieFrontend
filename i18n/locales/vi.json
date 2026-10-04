@@ -2816,7 +2816,8 @@
       "changed": "Đã đổi {when}",
       "created": "Ngày tạo",
       "share": "Tỷ lệ biểu mẫu"
-    }
+    },
+    "yoursHint": "Do nhóm bạn lưu. Một cú nhấp để áp dụng."
   },
   "dataSources": {
     "subtitle": "Kết nối cơ sở dữ liệu của riêng bạn, gửi dữ liệu biểu mẫu đến đó và làm việc với dữ liệu",
@@ -3507,6 +3508,15 @@
       "notFound": "Thiết kế trang này không khả dụng",
       "sample": "Hiển thị quanh một biểu mẫu mẫu",
       "controls": "Thiết kế trang"
-    }
+    },
+    "designerGroup": "Thiết kế trang",
+    "designerHint": "Đặt một trang có sẵn quanh biểu mẫu này. Chỉ trang thay đổi.",
+    "saveShort": "Lưu trang",
+    "saveTitle": "Lưu trang thành thiết kế",
+    "saveDesc": "Giữ trang của biểu mẫu này (kiểu, màu, nền) trong Tài nguyên → Trang để dùng cho biểu mẫu khác.",
+    "apply": "Dùng thiết kế trang {name}",
+    "manage": "Quản lý thiết kế trang",
+    "replaceTitle": "Thay trang này?",
+    "replaceDesc": "Trang quanh biểu mẫu này đổi sang thiết kế bạn chọn. Bản thân biểu mẫu giữ nguyên và bạn có thể hoàn tác."
   }
 }

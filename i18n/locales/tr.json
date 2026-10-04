@@ -2816,7 +2816,8 @@
       "changed": "Değiştirildi: {when}",
       "created": "Oluşturuldu",
       "share": "Form payı"
-    }
+    },
+    "yoursHint": "Ekibinizin kaydettikleri. Tek tıkla uygulanır."
   },
   "dataSources": {
     "subtitle": "Kendi veritabanlarınızı bağlayın, form verilerini onlara gönderin ve bu verilerle çalışın",
@@ -3507,6 +3508,15 @@
       "notFound": "Bu sayfa tasarımı kullanılamıyor",
       "sample": "Örnek bir formun çevresinde gösterilir",
       "controls": "Sayfa tasarımı"
-    }
+    },
+    "designerGroup": "Sayfa tasarımları",
+    "designerHint": "Bu formun çevresine hazır bir sayfa koyun. Yalnızca sayfa değişir.",
+    "saveShort": "Sayfayı kaydet",
+    "saveTitle": "Sayfayı tasarım olarak kaydet",
+    "saveDesc": "Bu formun sayfasını (stil, renkler, arka plan) diğer formlarda kullanmak için Kaynaklar → Sayfalar'da saklayın.",
+    "apply": "{name} sayfa tasarımını kullan",
+    "manage": "Sayfa tasarımlarını yönet",
+    "replaceTitle": "Bu sayfa değiştirilsin mi?",
+    "replaceDesc": "Bu formun çevresindeki sayfa seçtiğiniz tasarıma geçer. Formun kendisi aynı kalır ve geri alabilirsiniz."
   }
 }
