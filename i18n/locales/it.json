@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Salvati",
     "themesCreated": "Creato",
-    "pages": "Pagine",
-    "pagesAll": "Tutte le pagine",
+    "pages": "Landing page",
+    "pagesAll": "Tutte le landing page",
     "pagesSystem": "Formalie",
     "pagesSaved": "Salvate",
     "pagesCreated": "Create"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Modello duplicato",
       "forms_template_deleted": "Modello eliminato",
       "responses_submitted": "Risposta ricevuta",
-      "forms_page_design_created": "Design di pagina salvato",
-      "forms_page_design_updated": "Design di pagina aggiornato",
-      "forms_page_design_deleted": "Design di pagina eliminato"
+      "forms_page_design_created": "Landing page salvata",
+      "forms_page_design_updated": "Landing page aggiornata",
+      "forms_page_design_deleted": "Landing page eliminata"
     },
     "detail": {
       "who": "Chi",
@@ -2575,7 +2575,7 @@
       "header": "Intestazione",
       "footer": "Piè di pagina",
       "thankYou": "Pagina di ringraziamento",
-      "frame": "Pagina"
+      "frame": "Stile della landing page"
     },
     "layout": {
       "card": "Scheda",
@@ -2700,7 +2700,7 @@
       "side": "Lato del pannello"
     },
     "frame": {
-      "hint": "La pagina attorno al modulo sul suo link: il tuo brand, un link al tuo sito e un piè di pagina sicuro. Gli incorporamenti mostrano solo il modulo.",
+      "hint": "La pagina su cui si arriva dal link del modulo: il tuo marchio, un link al tuo sito e un piè di pagina sicuro. Gli embed mostrano solo il modulo.",
       "style": {
         "branded": "Con brand",
         "spotlight": "In evidenza",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Design per la pagina intorno ai tuoi moduli",
-    "new": "Nuovo design di pagina",
-    "search": "Cerca design di pagina…",
-    "emptyTitle": "Nessun design di pagina qui",
-    "emptyDesc": "Creane uno o salva la pagina di un modulo dal suo editor di design.",
+    "subtitle": "La pagina su cui si arriva dal link di un modulo",
+    "new": "Nuova landing page",
+    "search": "Cerca landing page…",
+    "emptyTitle": "Nessuna landing page qui",
+    "emptyDesc": "Creane una o salva la landing page di un modulo dal suo editor di design.",
     "col": {
-      "name": "Design di pagina",
+      "name": "Landing page",
       "style": "Stile"
     },
     "deleteTitle": "Eliminare “{name}”?",
-    "deleteDesc": "Scompare dall’elenco dei design di pagina.",
+    "deleteDesc": "Scompare dall’elenco delle landing page.",
     "toast": {
-      "saved": "Design di pagina “{name}” salvato",
-      "updated": "Design di pagina “{name}” aggiornato",
+      "saved": "Landing page “{name}” salvata",
+      "updated": "Landing page “{name}” aggiornata",
       "duplicated": "“{name}” creato",
-      "deleted": "Design di pagina “{name}” eliminato"
+      "deleted": "Landing page “{name}” eliminata"
     },
     "preset": {
       "clean": "Pulito",
@@ -3494,29 +3494,29 @@
       "floating_night": "Fluttuante notte"
     },
     "editor": {
-      "crumb": "Editor di pagina",
-      "newTitle": "Nuovo design di pagina",
-      "untitled": "Design di pagina senza nome",
+      "crumb": "Editor della landing page",
+      "newTitle": "Nuova landing page",
+      "untitled": "Landing page senza nome",
       "newDesc": "Progettalo una volta, usalo su ogni modulo",
       "systemDesc": "Design Formalie (sola lettura)",
       "systemTitle": "Un design Formalie",
-      "systemHint": "Questo design di pagina fa parte di Formalie e non può essere modificato. Duplicalo per creare la tua versione.",
-      "save": "Salva design di pagina",
+      "systemHint": "Questa landing page fa parte di Formalie e non può essere modificata. Duplicala per creare la tua versione.",
+      "save": "Salva landing page",
       "name": "Nome",
       "namePlaceholder": "es. Pagina di iscrizione all’evento",
-      "nameFirst": "Dai un nome al design di pagina per salvarlo.",
-      "notFound": "Questo design di pagina non è disponibile",
+      "nameFirst": "Dai un nome alla landing page per salvarla.",
+      "notFound": "Questa landing page non è disponibile",
       "sample": "Mostrato intorno a un modulo di esempio",
-      "controls": "Design di pagina"
+      "controls": "Landing page"
     },
-    "designerGroup": "Design di pagina",
-    "designerHint": "Metti una pagina pronta intorno a questo modulo. Cambia solo la pagina.",
-    "saveShort": "Salva pagina",
-    "saveTitle": "Salva la pagina come design",
-    "saveDesc": "Conserva la pagina di questo modulo (stile, colori, sfondo) in Risorse → Pagine per altri moduli.",
-    "apply": "Usa il design di pagina {name}",
-    "manage": "Gestisci design di pagina",
-    "replaceTitle": "Sostituire questa pagina?",
-    "replaceDesc": "La pagina intorno a questo modulo passa al design scelto. Il modulo resta com’è e puoi annullare."
+    "designerGroup": "Landing page",
+    "designerHint": "Metti una landing page pronta intorno a questo modulo. Cambia solo la pagina.",
+    "saveShort": "Salva landing page",
+    "saveTitle": "Salva come landing page",
+    "saveDesc": "Conserva la landing page di questo modulo (stile, colori, sfondo) in Risorse → Landing page per altri moduli.",
+    "apply": "Usa la landing page {name}",
+    "manage": "Gestisci landing page",
+    "replaceTitle": "Sostituire questa landing page?",
+    "replaceDesc": "La landing page di questo modulo passa a quella scelta. Il modulo resta com’è e puoi annullare."
   }
 }

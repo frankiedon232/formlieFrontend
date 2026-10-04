@@ -1,6 +1,6 @@
 <!--
   Save the page around this form (its page style, tone, website link, quick facts and background)
-  as a page design for the workspace (Resources → Pages). If the page came from one of the
+  as a page design for the workspace (Resources → Landing pages). If the page came from one of the
   workspace's designs, the choice is "Update <design>" (forms keep their copy) or "Save as new".
 -->
 <script setup lang="ts">

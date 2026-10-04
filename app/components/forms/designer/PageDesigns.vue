@@ -2,7 +2,7 @@
   Designer → Page designs (owner 2026-10-04: "in design you can add it", listed like the themes):
   every page design, the workspace's own first, then Formalie's, as page miniatures. A click puts
   that page around the form (only the page changes, one undo step; confirm when it replaces a
-  page you made yourself). "Save page as design" keeps this form's page in Resources → Pages.
+  page you made yourself). "Save page as design" keeps this form's page in Resources → Landing pages.
 -->
 <script setup lang="ts">
 import type { PageDesign } from '#shared/types/forms'
@@ -51,7 +51,7 @@ async function apply(page: PageDesign) {
         </span>
       </button>
     </div>
-    <UButton :label="t('pages.manage')" trailing-icon="i-lucide-arrow-up-right" color="neutral" variant="link" size="xs" to="/settings/pages" target="_blank" class="self-start px-0" />
+    <UButton :label="t('pages.manage')" trailing-icon="i-lucide-arrow-up-right" color="neutral" variant="link" size="xs" to="/settings/landing-pages" target="_blank" class="self-start px-0" />
     <FormsDesignerSavePageModal v-model:open="saveOpen" :current="current" />
   </div>
 </template>

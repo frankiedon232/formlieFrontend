@@ -12,7 +12,7 @@ interface TenantLibrary {
   lists: OptionList[]
   /** Saved designs; `forms_count` is computed when listing. */
   themes?: (Omit<SavedTheme, 'forms_count' | 'source' | 'name_key'> & { source?: SavedTheme['source'] })[]
-  /** Saved page designs (Resources → Pages); `forms_count` is computed when listing. */
+  /** Saved page designs (Resources → Landing pages); `forms_count` is computed when listing. */
   pages?: (Omit<PageDesign, 'forms_count' | 'source' | 'name_key'> & { source?: PageDesign['source'] })[]
   /** Workspace templates (F9): a snapshot of a form, its design included. */
   templates?: WorkspaceTemplate[]

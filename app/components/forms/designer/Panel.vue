@@ -1,7 +1,7 @@
 <!--
   Designer controls (FRONTEND-SPEC §7), every part a collapsible group (owner 2026-10-04: the
   themes collapse like the rest, a little space under each open group): Starting points · Your
-  themes · Page designs (Resources → Pages) · Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
+  themes · Page designs (Resources → Landing pages) · Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
   Footer · Thank-you page. "Reset" goes back to the workspace default.
 -->
 <script setup lang="ts">

@@ -7,7 +7,7 @@ const loading = ref(false)
 const loaded = ref(false)
 
 /**
- * Page designs (Resources → Pages, owner 2026-10-04): the page around a form on its public link.
+ * Page designs (Resources → Landing pages, owner 2026-10-04): the page around a form on its public link.
  * Load every design (Formalie's and the workspace's) for pickers, save from a form, create in the
  * page editor, rename / duplicate / delete, like Themes.
  */

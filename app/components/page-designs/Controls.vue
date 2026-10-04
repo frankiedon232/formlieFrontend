@@ -1,5 +1,5 @@
 <!--
-  Page editor controls (Resources → Pages): the designer's own Page group (style drawn as small
+  Page editor controls (Resources → Landing pages): the designer's own Page group (style drawn as small
   pictures, tone, website link, quick facts) and its Background group (colour, gradient or image),
   the two parts a page design holds. Works on the sample form provided by the page editor.
 -->

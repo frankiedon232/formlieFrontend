@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Gespeichert",
     "themesCreated": "Erstellt",
-    "pages": "Seiten",
-    "pagesAll": "Alle Seiten",
+    "pages": "Landingpages",
+    "pagesAll": "Alle Landingpages",
     "pagesSystem": "Formalie",
     "pagesSaved": "Gespeichert",
     "pagesCreated": "Erstellt"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Vorlage dupliziert",
       "forms_template_deleted": "Vorlage gelöscht",
       "responses_submitted": "Antwort eingegangen",
-      "forms_page_design_created": "Seitendesign gespeichert",
-      "forms_page_design_updated": "Seitendesign aktualisiert",
-      "forms_page_design_deleted": "Seitendesign gelöscht"
+      "forms_page_design_created": "Landingpage gespeichert",
+      "forms_page_design_updated": "Landingpage aktualisiert",
+      "forms_page_design_deleted": "Landingpage gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -2575,7 +2575,7 @@
       "header": "Kopfzeile",
       "footer": "Fußzeile",
       "thankYou": "Dankesseite",
-      "frame": "Seite"
+      "frame": "Stil der Landingpage"
     },
     "layout": {
       "card": "Karte",
@@ -2700,7 +2700,7 @@
       "side": "Position der Seitenleiste"
     },
     "frame": {
-      "hint": "Die Seite rund um das Formular unter seinem Link: Branding, ein Link zur Website und eine sichere Fußzeile. Einbettungen zeigen nur das Formular.",
+      "hint": "Die Seite, auf der Menschen über den Link des Formulars landen: Ihr Branding, ein Link zu Ihrer Website und eine sichere Fußzeile. Einbettungen zeigen nur das Formular.",
       "style": {
         "branded": "Gebrandet",
         "spotlight": "Spotlight",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Designs für die Seite rund um Ihre Formulare",
-    "new": "Neues Seitendesign",
-    "search": "Seitendesigns suchen…",
-    "emptyTitle": "Hier gibt es keine Seitendesigns",
-    "emptyDesc": "Erstellen Sie eines oder speichern Sie die Seite eines Formulars in dessen Designer.",
+    "subtitle": "Die Seite, auf der Menschen über den Link eines Formulars landen",
+    "new": "Neue Landingpage",
+    "search": "Landingpages suchen…",
+    "emptyTitle": "Hier gibt es keine Landingpages",
+    "emptyDesc": "Erstellen Sie eine oder speichern Sie die Landingpage eines Formulars in dessen Designer.",
     "col": {
-      "name": "Seitendesign",
+      "name": "Landingpage",
       "style": "Stil"
     },
     "deleteTitle": "„{name}“ löschen?",
-    "deleteDesc": "Es verschwindet aus der Liste der Seitendesigns.",
+    "deleteDesc": "Sie verschwindet aus der Liste der Landingpages.",
     "toast": {
-      "saved": "Seitendesign „{name}“ gespeichert",
-      "updated": "Seitendesign „{name}“ aktualisiert",
+      "saved": "Landingpage „{name}“ gespeichert",
+      "updated": "Landingpage „{name}“ aktualisiert",
       "duplicated": "„{name}“ erstellt",
-      "deleted": "Seitendesign „{name}“ gelöscht"
+      "deleted": "Landingpage „{name}“ gelöscht"
     },
     "preset": {
       "clean": "Klar",
@@ -3494,29 +3494,29 @@
       "floating_night": "Nacht schwebend"
     },
     "editor": {
-      "crumb": "Seiteneditor",
-      "newTitle": "Neues Seitendesign",
-      "untitled": "Unbenanntes Seitendesign",
+      "crumb": "Landingpage-Editor",
+      "newTitle": "Neue Landingpage",
+      "untitled": "Unbenannte Landingpage",
       "newDesc": "Einmal gestalten, in jedem Formular nutzen",
       "systemDesc": "Formalie-Design (schreibgeschützt)",
       "systemTitle": "Ein Formalie-Design",
-      "systemHint": "Dieses Seitendesign gehört zu Formalie und kann nicht geändert werden. Duplizieren Sie es für Ihre eigene Version.",
-      "save": "Seitendesign speichern",
+      "systemHint": "Diese Landingpage gehört zu Formalie und kann nicht geändert werden. Duplizieren Sie sie für Ihre eigene Version.",
+      "save": "Landingpage speichern",
       "name": "Name",
       "namePlaceholder": "z. B. Seite zur Veranstaltungsanmeldung",
-      "nameFirst": "Geben Sie dem Seitendesign einen Namen, um es zu speichern.",
-      "notFound": "Dieses Seitendesign ist nicht verfügbar",
+      "nameFirst": "Geben Sie der Landingpage einen Namen, um sie zu speichern.",
+      "notFound": "Diese Landingpage ist nicht verfügbar",
       "sample": "Um ein Beispielformular gezeigt",
-      "controls": "Seitendesign"
+      "controls": "Landingpage"
     },
-    "designerGroup": "Seitendesigns",
-    "designerHint": "Legen Sie eine fertige Seite um dieses Formular. Nur die Seite ändert sich.",
-    "saveShort": "Seite speichern",
-    "saveTitle": "Seite als Design speichern",
-    "saveDesc": "Behalten Sie die Seite dieses Formulars (Stil, Farben, Hintergrund) unter Ressourcen → Seiten für andere Formulare.",
-    "apply": "Seitendesign {name} verwenden",
-    "manage": "Seitendesigns verwalten",
-    "replaceTitle": "Diese Seite ersetzen?",
-    "replaceDesc": "Die Seite um dieses Formular wechselt zum gewählten Design. Das Formular selbst bleibt, wie es ist, und Sie können es rückgängig machen."
+    "designerGroup": "Landingpages",
+    "designerHint": "Legen Sie eine fertige Landingpage um dieses Formular. Nur die Seite ändert sich.",
+    "saveShort": "Landingpage speichern",
+    "saveTitle": "Als Landingpage speichern",
+    "saveDesc": "Behalten Sie die Landingpage dieses Formulars (Stil, Farben, Hintergrund) unter Ressourcen → Landingpages für andere Formulare.",
+    "apply": "Landingpage {name} verwenden",
+    "manage": "Landingpages verwalten",
+    "replaceTitle": "Diese Landingpage ersetzen?",
+    "replaceDesc": "Die Landingpage um dieses Formular wechselt zur gewählten. Das Formular selbst bleibt, wie es ist, und Sie können es rückgängig machen."
   }
 }

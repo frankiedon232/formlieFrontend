@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "已保存",
     "themesCreated": "自建",
-    "pages": "页面",
-    "pagesAll": "所有页面",
+    "pages": "落地页",
+    "pagesAll": "所有落地页",
     "pagesSystem": "Formalie",
     "pagesSaved": "已保存",
     "pagesCreated": "已创建"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "已复制模板",
       "forms_template_deleted": "已删除模板",
       "responses_submitted": "已收到回复",
-      "forms_page_design_created": "已保存页面设计",
-      "forms_page_design_updated": "已更新页面设计",
-      "forms_page_design_deleted": "已删除页面设计"
+      "forms_page_design_created": "已保存落地页",
+      "forms_page_design_updated": "已更新落地页",
+      "forms_page_design_deleted": "已删除落地页"
     },
     "detail": {
       "who": "谁",
@@ -2575,7 +2575,7 @@
       "header": "页眉",
       "footer": "页脚",
       "thankYou": "感谢页",
-      "frame": "页面"
+      "frame": "落地页样式"
     },
     "layout": {
       "card": "卡片",
@@ -2700,7 +2700,7 @@
       "side": "面板位置"
     },
     "frame": {
-      "hint": "通过链接打开时表单周围的页面：你的品牌、指向你网站的链接和安全页脚。嵌入时仅显示表单。",
+      "hint": "用户通过表单链接打开的页面：你的品牌、网站链接和安全页脚。嵌入时只显示表单。",
       "style": {
         "branded": "品牌",
         "spotlight": "聚焦",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "表单外围页面的设计",
-    "new": "新建页面设计",
-    "search": "搜索页面设计…",
-    "emptyTitle": "这里还没有页面设计",
-    "emptyDesc": "新建一个，或在任意表单的设计器中保存其页面。",
+    "subtitle": "用户通过表单链接打开的页面",
+    "new": "新建落地页",
+    "search": "搜索落地页…",
+    "emptyTitle": "这里还没有落地页",
+    "emptyDesc": "新建一个，或在任意表单的设计器中保存其落地页。",
     "col": {
-      "name": "页面设计",
+      "name": "落地页",
       "style": "样式"
     },
     "deleteTitle": "删除“{name}”？",
-    "deleteDesc": "它将从页面设计列表中消失。",
+    "deleteDesc": "它将从落地页列表中消失。",
     "toast": {
-      "saved": "已保存页面设计“{name}”",
-      "updated": "已更新页面设计“{name}”",
+      "saved": "已保存落地页“{name}”",
+      "updated": "已更新落地页“{name}”",
       "duplicated": "已创建“{name}”",
-      "deleted": "已删除页面设计“{name}”"
+      "deleted": "已删除落地页“{name}”"
     },
     "preset": {
       "clean": "简洁",
@@ -3494,29 +3494,29 @@
       "floating_night": "夜色悬浮"
     },
     "editor": {
-      "crumb": "页面编辑器",
-      "newTitle": "新建页面设计",
-      "untitled": "未命名页面设计",
+      "crumb": "落地页编辑器",
+      "newTitle": "新建落地页",
+      "untitled": "未命名落地页",
       "newDesc": "设计一次，用于任何表单",
       "systemDesc": "Formalie 设计（只读）",
       "systemTitle": "Formalie 设计",
-      "systemHint": "此页面设计属于 Formalie，无法更改。复制后可制作你自己的版本。",
-      "save": "保存页面设计",
+      "systemHint": "此落地页属于 Formalie，无法更改。复制后可制作你自己的版本。",
+      "save": "保存落地页",
       "name": "名称",
       "namePlaceholder": "例如：活动报名页面",
-      "nameFirst": "请为页面设计命名后再保存。",
-      "notFound": "此页面设计不可用",
+      "nameFirst": "请为落地页命名后再保存。",
+      "notFound": "此落地页不可用",
       "sample": "显示在示例表单周围",
-      "controls": "页面设计"
+      "controls": "落地页"
     },
-    "designerGroup": "页面设计",
-    "designerHint": "为此表单套上现成的页面。只改变页面。",
-    "saveShort": "保存页面",
-    "saveTitle": "将页面保存为设计",
-    "saveDesc": "把此表单的页面（样式、颜色、背景）保存到 资源 → 页面，供其他表单使用。",
-    "apply": "使用页面设计 {name}",
-    "manage": "管理页面设计",
-    "replaceTitle": "替换此页面？",
-    "replaceDesc": "此表单外围的页面会换成你选的设计。表单本身保持不变，并且可以撤销。"
+    "designerGroup": "落地页",
+    "designerHint": "为此表单套上现成的落地页。只改变页面。",
+    "saveShort": "保存落地页",
+    "saveTitle": "保存为落地页",
+    "saveDesc": "把此表单的落地页（样式、颜色、背景）保存到 资源 → 落地页，供其他表单使用。",
+    "apply": "使用落地页 {name}",
+    "manage": "管理落地页",
+    "replaceTitle": "替换此落地页？",
+    "replaceDesc": "此表单的落地页会换成你选的。表单本身保持不变，并且可以撤销。"
   }
 }

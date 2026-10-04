@@ -1,5 +1,5 @@
 <!--
-  Page design card (Resources → Pages; same arrangement as the theme card, owner 2026-10-04:
+  Page design card (Resources → Landing pages; same arrangement as the theme card, owner 2026-10-04:
   thumbnail left, content right, then buttons, then details). The page in a fixed 16:9 miniature
   beside its name and style · tone; a row with the "changed" pill, the kind and ⋯; forms, kind,
   created by and created in two columns. The whole card opens the design (DataView openRow).
@@ -29,7 +29,7 @@ const facts = computed(() => [
       </span>
       <div class="flex min-w-0 flex-1 flex-col gap-1">
         <NuxtLink
-          :to="`/settings/pages/${page.id}`"
+          :to="`/settings/landing-pages/${page.id}`"
           class="line-clamp-2 text-base leading-snug font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
           >{{ name }}</NuxtLink
         >

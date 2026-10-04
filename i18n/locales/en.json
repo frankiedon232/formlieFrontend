@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Saved",
     "themesCreated": "Created",
-    "pages": "Pages",
-    "pagesAll": "All pages",
+    "pages": "Landing pages",
+    "pagesAll": "All landing pages",
     "pagesSystem": "Formalie",
     "pagesSaved": "Saved",
     "pagesCreated": "Created"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Template duplicated",
       "forms_template_deleted": "Template deleted",
       "responses_submitted": "Response received",
-      "forms_page_design_created": "Page design saved",
-      "forms_page_design_updated": "Page design updated",
-      "forms_page_design_deleted": "Page design deleted"
+      "forms_page_design_created": "Landing page saved",
+      "forms_page_design_updated": "Landing page updated",
+      "forms_page_design_deleted": "Landing page deleted"
     },
     "detail": {
       "who": "Who",
@@ -2575,7 +2575,7 @@
       "header": "Header",
       "footer": "Footer",
       "thankYou": "Thank-you page",
-      "frame": "Page"
+      "frame": "Landing page style"
     },
     "layout": {
       "card": "Card",
@@ -2700,7 +2700,7 @@
       "side": "Panel side"
     },
     "frame": {
-      "hint": "The page around the form on its link: your branding, a link to your website and a secure footer. Embeds show the form only.",
+      "hint": "The page people land on from the form's link: your branding, a link to your website and a secure footer. Embeds show the form only.",
       "style": {
         "branded": "Branded",
         "spotlight": "Spotlight",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Designs for the page around your forms",
-    "new": "New page design",
-    "search": "Search page designs…",
-    "emptyTitle": "No page designs here",
-    "emptyDesc": "Create one, or save the page of any form from its designer.",
+    "subtitle": "The page people land on from a form's link",
+    "new": "New landing page",
+    "search": "Search landing pages…",
+    "emptyTitle": "No landing pages here",
+    "emptyDesc": "Create one, or save the landing page of any form from its designer.",
     "col": {
-      "name": "Page design",
+      "name": "Landing page",
       "style": "Style"
     },
     "deleteTitle": "Delete “{name}”?",
-    "deleteDesc": "It disappears from the list of page designs.",
+    "deleteDesc": "It disappears from the list of landing pages.",
     "toast": {
-      "saved": "Page design “{name}” saved",
-      "updated": "Page design “{name}” updated",
+      "saved": "Landing page “{name}” saved",
+      "updated": "Landing page “{name}” updated",
       "duplicated": "“{name}” created",
-      "deleted": "Page design “{name}” deleted"
+      "deleted": "Landing page “{name}” deleted"
     },
     "preset": {
       "clean": "Clean",
@@ -3494,29 +3494,29 @@
       "floating_night": "Night floating"
     },
     "editor": {
-      "crumb": "Page editor",
-      "newTitle": "New page design",
-      "untitled": "Untitled page design",
+      "crumb": "Landing page editor",
+      "newTitle": "New landing page",
+      "untitled": "Untitled landing page",
       "newDesc": "Design it once, use it on any form",
       "systemDesc": "Formalie design (read-only)",
       "systemTitle": "A Formalie design",
-      "systemHint": "This page design is part of Formalie and can't be changed. Duplicate it to make your own version.",
-      "save": "Save page design",
+      "systemHint": "This landing page is part of Formalie and can't be changed. Duplicate it to make your own version.",
+      "save": "Save landing page",
       "name": "Name",
       "namePlaceholder": "e.g. Event sign-up page",
-      "nameFirst": "Give the page design a name to save it.",
-      "notFound": "This page design isn't available",
+      "nameFirst": "Give the landing page a name to save it.",
+      "notFound": "This landing page isn't available",
       "sample": "Shown around a sample form",
-      "controls": "Page design"
+      "controls": "Landing page"
     },
-    "designerGroup": "Page designs",
-    "designerHint": "Put a ready page around this form. Only the page changes.",
-    "saveShort": "Save page",
-    "saveTitle": "Save page as design",
-    "saveDesc": "Keep this form's page (style, colours, background) in Resources → Pages to use on other forms.",
-    "apply": "Use page design {name}",
-    "manage": "Manage page designs",
-    "replaceTitle": "Replace this page?",
-    "replaceDesc": "The page around this form changes to the design you picked. The form itself stays as it is, and you can undo it."
+    "designerGroup": "Landing pages",
+    "designerHint": "Put a ready landing page around this form. Only the page changes.",
+    "saveShort": "Save landing page",
+    "saveTitle": "Save as landing page",
+    "saveDesc": "Keep this form's landing page (style, colours, background) in Resources → Landing pages to use on other forms.",
+    "apply": "Use landing page {name}",
+    "manage": "Manage landing pages",
+    "replaceTitle": "Replace this landing page?",
+    "replaceDesc": "The landing page around this form changes to the one you picked. The form itself stays as it is, and you can undo it."
   }
 }

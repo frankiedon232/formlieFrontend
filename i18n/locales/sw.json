@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Zilizohifadhiwa",
     "themesCreated": "Imeundwa",
-    "pages": "Kurasa",
-    "pagesAll": "Kurasa zote",
+    "pages": "Kurasa za kutua",
+    "pagesAll": "Kurasa zote za kutua",
     "pagesSystem": "Formalie",
     "pagesSaved": "Zilizohifadhiwa",
     "pagesCreated": "Zilizoundwa"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Kiolezo kimenakiliwa",
       "forms_template_deleted": "Kiolezo kimefutwa",
       "responses_submitted": "Jibu limepokelewa",
-      "forms_page_design_created": "Muundo wa ukurasa umehifadhiwa",
-      "forms_page_design_updated": "Muundo wa ukurasa umesasishwa",
-      "forms_page_design_deleted": "Muundo wa ukurasa umefutwa"
+      "forms_page_design_created": "Ukurasa wa kutua umehifadhiwa",
+      "forms_page_design_updated": "Ukurasa wa kutua umesasishwa",
+      "forms_page_design_deleted": "Ukurasa wa kutua umefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -2575,7 +2575,7 @@
       "header": "Kichwa",
       "footer": "Sehemu ya chini",
       "thankYou": "Ukurasa wa shukrani",
-      "frame": "Ukurasa"
+      "frame": "Mtindo wa ukurasa wa kutua"
     },
     "layout": {
       "card": "Kadi",
@@ -2700,7 +2700,7 @@
       "side": "Upande wa paneli"
     },
     "frame": {
-      "hint": "Ukurasa unaozunguka fomu kwenye kiungo chake: chapa yako, kiungo cha tovuti yako na sehemu ya chini salama. Fomu zilizopachikwa huonyesha fomu pekee.",
+      "hint": "Ukurasa ambao watu hufika kupitia kiungo cha fomu: chapa yako, kiungo cha tovuti yako na sehemu salama ya chini. Upachikaji huonyesha fomu tu.",
       "style": {
         "branded": "Yenye chapa",
         "spotlight": "Kivutio",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Miundo ya ukurasa unaozunguka fomu zako",
-    "new": "Muundo mpya wa ukurasa",
-    "search": "Tafuta miundo ya kurasa…",
-    "emptyTitle": "Hakuna miundo ya kurasa hapa",
-    "emptyDesc": "Unda mmoja, au hifadhi ukurasa wa fomu yoyote kutoka kwa mbunifu wake.",
+    "subtitle": "Ukurasa ambao watu hufika kupitia kiungo cha fomu",
+    "new": "Ukurasa mpya wa kutua",
+    "search": "Tafuta kurasa za kutua…",
+    "emptyTitle": "Hakuna kurasa za kutua hapa",
+    "emptyDesc": "Unda mmoja, au hifadhi ukurasa wa kutua wa fomu yoyote kutoka kwa mbunifu wake.",
     "col": {
-      "name": "Muundo wa ukurasa",
+      "name": "Ukurasa wa kutua",
       "style": "Mtindo"
     },
     "deleteTitle": "Futa “{name}”?",
-    "deleteDesc": "Utaondoka kwenye orodha ya miundo ya kurasa.",
+    "deleteDesc": "Utaondoka kwenye orodha ya kurasa za kutua.",
     "toast": {
-      "saved": "Muundo wa ukurasa “{name}” umehifadhiwa",
-      "updated": "Muundo wa ukurasa “{name}” umesasishwa",
+      "saved": "Ukurasa wa kutua “{name}” umehifadhiwa",
+      "updated": "Ukurasa wa kutua “{name}” umesasishwa",
       "duplicated": "“{name}” umeundwa",
-      "deleted": "Muundo wa ukurasa “{name}” umefutwa"
+      "deleted": "Ukurasa wa kutua “{name}” umefutwa"
     },
     "preset": {
       "clean": "Safi",
@@ -3494,29 +3494,29 @@
       "floating_night": "Inayoelea ya usiku"
     },
     "editor": {
-      "crumb": "Kihariri cha ukurasa",
-      "newTitle": "Muundo mpya wa ukurasa",
-      "untitled": "Muundo wa ukurasa usio na jina",
+      "crumb": "Kihariri cha ukurasa wa kutua",
+      "newTitle": "Ukurasa mpya wa kutua",
+      "untitled": "Ukurasa wa kutua usio na jina",
       "newDesc": "Unda mara moja, tumia kwenye fomu yoyote",
       "systemDesc": "Muundo wa Formalie (kusoma tu)",
       "systemTitle": "Muundo wa Formalie",
-      "systemHint": "Muundo huu wa ukurasa ni sehemu ya Formalie na hauwezi kubadilishwa. Unakili ili kuunda toleo lako.",
-      "save": "Hifadhi muundo wa ukurasa",
+      "systemHint": "Ukurasa huu wa kutua ni sehemu ya Formalie na hauwezi kubadilishwa. Unakili ili kuunda toleo lako.",
+      "save": "Hifadhi ukurasa wa kutua",
       "name": "Jina",
       "namePlaceholder": "mf. Ukurasa wa kujisajili kwa tukio",
-      "nameFirst": "Upe muundo wa ukurasa jina ili uuhifadhi.",
-      "notFound": "Muundo huu wa ukurasa haupatikani",
+      "nameFirst": "Upe ukurasa wa kutua jina ili uuhifadhi.",
+      "notFound": "Ukurasa huu wa kutua haupatikani",
       "sample": "Unaonyeshwa kuzunguka fomu ya mfano",
-      "controls": "Muundo wa ukurasa"
+      "controls": "Ukurasa wa kutua"
     },
-    "designerGroup": "Miundo ya kurasa",
-    "designerHint": "Weka ukurasa ulio tayari kuzunguka fomu hii. Ukurasa pekee ndio hubadilika.",
-    "saveShort": "Hifadhi ukurasa",
-    "saveTitle": "Hifadhi ukurasa kama muundo",
-    "saveDesc": "Weka ukurasa wa fomu hii (mtindo, rangi, mandharinyuma) kwenye Rasilimali → Kurasa kwa fomu nyingine.",
-    "apply": "Tumia muundo wa ukurasa {name}",
-    "manage": "Simamia miundo ya kurasa",
-    "replaceTitle": "Badilisha ukurasa huu?",
-    "replaceDesc": "Ukurasa unaozunguka fomu hii utabadilika kuwa muundo uliochagua. Fomu yenyewe inabaki kama ilivyo, na unaweza kutendua."
+    "designerGroup": "Kurasa za kutua",
+    "designerHint": "Weka ukurasa wa kutua ulio tayari kuzunguka fomu hii. Ukurasa pekee ndio hubadilika.",
+    "saveShort": "Hifadhi ukurasa wa kutua",
+    "saveTitle": "Hifadhi kama ukurasa wa kutua",
+    "saveDesc": "Weka ukurasa wa kutua wa fomu hii (mtindo, rangi, mandharinyuma) kwenye Rasilimali → Kurasa za kutua kwa fomu nyingine.",
+    "apply": "Tumia ukurasa wa kutua {name}",
+    "manage": "Simamia kurasa za kutua",
+    "replaceTitle": "Badilisha ukurasa huu wa kutua?",
+    "replaceDesc": "Ukurasa wa kutua wa fomu hii utabadilika kuwa ule uliochagua. Fomu yenyewe inabaki kama ilivyo, na unaweza kutendua."
   }
 }

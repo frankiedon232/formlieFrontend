@@ -40,7 +40,7 @@ const pick = (style: ThemeFrame) => d.set('frame', 'style', style)
         "
         @click="pick(style)"
       >
-        <!-- Small picture of the style, in this form's tone and background (same as Resources → Pages) -->
+        <!-- Small picture of the style, in this form's tone and background (same as Resources → Landing pages) -->
         <span class="block overflow-hidden rounded-md border border-default" aria-hidden="true">
           <PageDesignsThumb :tokens="{ frame: { ...theme.frame, style }, page: theme.page }" />
         </span>

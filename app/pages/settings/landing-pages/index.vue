@@ -1,5 +1,5 @@
 <!--
-  Page designs library (Resources → Pages; owner 2026-10-04: "add more pages, just like Themes"):
+  Page designs library (Resources → Landing pages; owner 2026-10-04: "add more pages, just like Themes"):
   the page around a form on its public link. Three kinds in the shared DataView: Formalie's
   (read-only: duplicate to change), Saved (from a form's design) and Created (page editor). Same
   table / grid format as Themes (rule 21, no chart cards): miniature, forms using it, share of
@@ -73,7 +73,7 @@ async function duplicateToEdit(page: PageDesign) {
   busy.value = new Set(busy.value).add(page.id)
   try {
     const copy = await library.duplicate({ ...page, name: name(page) })
-    if (copy) await navigateTo(`/settings/pages/${copy.id}`)
+    if (copy) await navigateTo(`/settings/landing-pages/${copy.id}`)
   } finally {
     const next = new Set(busy.value)
     next.delete(page.id)
@@ -84,13 +84,13 @@ const rowActions = (page: PageDesign): DropdownMenuItem[][] =>
   page.source === 'system'
     ? [
         [
-          { label: t('themes.view'), icon: 'i-lucide-eye', to: `/settings/pages/${page.id}` },
+          { label: t('themes.view'), icon: 'i-lucide-eye', to: `/settings/landing-pages/${page.id}` },
           { label: t('themes.duplicateToEdit'), icon: 'i-lucide-copy-plus', onSelect: () => void duplicateToEdit(page) },
         ],
       ]
     : [
         [
-          { label: t('themes.editDesign'), icon: 'i-lucide-paintbrush', to: `/settings/pages/${page.id}` },
+          { label: t('themes.editDesign'), icon: 'i-lucide-paintbrush', to: `/settings/landing-pages/${page.id}` },
           { label: t('themes.duplicate'), icon: 'i-lucide-copy', onSelect: () => void act(page, () => library.duplicate({ ...page, name: name(page) })) },
         ],
         [{ label: t('themes.delete'), icon: 'i-lucide-trash-2', color: 'error', onSelect: () => void remove(page) }],
@@ -102,7 +102,7 @@ const isBusy = (page: PageDesign) => busy.value.has(page.id)
   <AppPanel id="pages" :title="t('nav.pages')" :subtitle="t('pages.subtitle')" subtitle-icon="i-lucide-panels-top-left">
     <template #actions>
       <UButton :label="t('themes.goToForms')" icon="i-lucide-file-text" color="neutral" variant="outline" to="/forms" />
-      <UButton :label="t('pages.new')" icon="i-lucide-plus" color="neutral" to="/settings/pages/new" />
+      <UButton :label="t('pages.new')" icon="i-lucide-plus" color="neutral" to="/settings/landing-pages/new" />
     </template>
 
     <DataView
@@ -116,14 +116,14 @@ const isBusy = (page: PageDesign) => busy.value.has(page.id)
       default-view="grid"
       :row-actions="rowActions"
       :busy="isBusy"
-      :open-row="row => navigateTo(`/settings/pages/${row.id}`)"
+      :open-row="row => navigateTo(`/settings/landing-pages/${row.id}`)"
       :search-placeholder="t('pages.search')"
       empty-icon="i-lucide-panels-top-left"
       :empty-title="t('pages.emptyTitle')"
       :empty-description="t('pages.emptyDesc')"
     >
       <template #name-cell="{ row }">
-        <NuxtLink :to="`/settings/pages/${row.original.id}`" class="flex min-w-0 items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">
+        <NuxtLink :to="`/settings/landing-pages/${row.original.id}`" class="flex min-w-0 items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">
           <span class="w-16 shrink-0 overflow-hidden rounded-sm border border-default"><PageDesignsThumb :tokens="row.original.tokens" /></span>
           <span class="flex min-w-0 flex-col">
             <span class="flex min-w-0 items-center gap-1.5 truncate font-medium text-highlighted">

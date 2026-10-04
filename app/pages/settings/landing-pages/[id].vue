@@ -1,7 +1,7 @@
 <!--
-  Page editor (Resources → Pages; owner 2026-10-04): create or change a page design, the page around
+  Page editor (Resources → Landing pages; owner 2026-10-04): create or change a page design, the page around
   a form on its public link, without a form. The designer's own Page and Background controls on a
-  sample form, live preview with the page frame on desktop / tablet / phone. `/settings/pages/new`
+  sample form, live preview with the page frame on desktop / tablet / phone. `/settings/landing-pages/new`
   creates a "created" design; an id opens it. Formalie's designs open read-only (preview +
   "Duplicate to edit"). Saving without a name shows the field; leaving with changes asks first.
 -->
@@ -65,7 +65,7 @@ const { busy: duplicating, run: runDuplicate } = useBusy()
 async function duplicateToEdit() {
   if (!page.value) return
   const copy = await runDuplicate(() => library.duplicate({ id: page.value!.id, name: name.value }))
-  if (copy) await navigateTo(`/settings/pages/${copy.id}`)
+  if (copy) await navigateTo(`/settings/landing-pages/${copy.id}`)
 }
 
 const large = useMediaQuery('(min-width: 1024px)')
@@ -88,7 +88,7 @@ async function save() {
   page.value = result
   name.value = library.nameOf(result)
   saved.value = snapshot()
-  if (isNew.value) await navigateTo(`/settings/pages/${result.id}`, { replace: true })
+  if (isNew.value) await navigateTo(`/settings/landing-pages/${result.id}`, { replace: true })
 }
 onBeforeRouteLeave(async () => {
   if (!dirty.value || busy.value) return true
@@ -113,11 +113,11 @@ const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[3
     :subtitle-icon="dirty ? 'i-lucide-circle-dot' : 'i-lucide-panels-top-left'"
   >
     <template v-if="readOnly" #actions>
-      <UButton :label="t('nav.pagesAll')" icon="i-lucide-arrow-left" color="neutral" variant="outline" to="/settings/pages" />
+      <UButton :label="t('nav.pagesAll')" icon="i-lucide-arrow-left" color="neutral" variant="outline" to="/settings/landing-pages" />
       <UButton :label="t('themes.duplicateToEdit')" icon="i-lucide-copy-plus" color="neutral" :loading="duplicating" @click="duplicateToEdit" />
     </template>
     <template v-else #actions>
-      <UButton :label="t('common.cancel')" icon="i-lucide-x" color="neutral" variant="outline" to="/settings/pages" />
+      <UButton :label="t('common.cancel')" icon="i-lucide-x" color="neutral" variant="outline" to="/settings/landing-pages" />
       <UTooltip :text="t('pages.editor.save')" :kbds="['meta', 's']">
         <UButton :label="t('pages.editor.save')" icon="i-lucide-check" color="neutral" :loading="busy" :disabled="loading || notFound" @click="save" />
       </UTooltip>
@@ -132,7 +132,7 @@ const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[3
       v-else-if="notFound"
       icon="i-lucide-panels-top-left"
       :title="t('pages.editor.notFound')"
-      :actions="[{ label: t('nav.pagesAll'), icon: 'i-lucide-arrow-left', to: '/settings/pages', color: 'neutral', variant: 'subtle' }]"
+      :actions="[{ label: t('nav.pagesAll'), icon: 'i-lucide-arrow-left', to: '/settings/landing-pages', color: 'neutral', variant: 'subtle' }]"
       class="my-auto"
     />
 

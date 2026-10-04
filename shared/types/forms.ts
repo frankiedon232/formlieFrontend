@@ -210,7 +210,7 @@ export interface SavedTheme {
   updated_at: string
 }
 
-/** A page design (Resources → Pages): the page around a form on its public link (shared/utils/forms/page-design.ts). */
+/** A page design (Resources → Landing pages): the page around a form on its public link (shared/utils/forms/page-design.ts). */
 export interface PageDesign {
   id: string
   name: string

@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Đã lưu",
     "themesCreated": "Đã tạo",
-    "pages": "Trang",
-    "pagesAll": "Tất cả trang",
+    "pages": "Trang đích",
+    "pagesAll": "Tất cả trang đích",
     "pagesSystem": "Formalie",
     "pagesSaved": "Đã lưu",
     "pagesCreated": "Đã tạo"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Đã nhân bản mẫu",
       "forms_template_deleted": "Đã xóa mẫu",
       "responses_submitted": "Đã nhận phản hồi",
-      "forms_page_design_created": "Đã lưu thiết kế trang",
-      "forms_page_design_updated": "Đã cập nhật thiết kế trang",
-      "forms_page_design_deleted": "Đã xoá thiết kế trang"
+      "forms_page_design_created": "Đã lưu trang đích",
+      "forms_page_design_updated": "Đã cập nhật trang đích",
+      "forms_page_design_deleted": "Đã xoá trang đích"
     },
     "detail": {
       "who": "Ai",
@@ -2575,7 +2575,7 @@
       "header": "Đầu trang",
       "footer": "Chân trang",
       "thankYou": "Trang cảm ơn",
-      "frame": "Trang"
+      "frame": "Kiểu trang đích"
     },
     "layout": {
       "card": "Thẻ",
@@ -2700,7 +2700,7 @@
       "side": "Vị trí bảng"
     },
     "frame": {
-      "hint": "Trang bao quanh biểu mẫu khi mở bằng liên kết: thương hiệu của bạn, liên kết đến trang web của bạn và chân trang bảo mật. Bản nhúng chỉ hiển thị biểu mẫu.",
+      "hint": "Trang mọi người mở từ liên kết của biểu mẫu: thương hiệu của bạn, liên kết tới trang web và chân trang an toàn. Khi nhúng chỉ hiện biểu mẫu.",
       "style": {
         "branded": "Thương hiệu",
         "spotlight": "Nổi bật",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Thiết kế cho trang bao quanh biểu mẫu của bạn",
-    "new": "Thiết kế trang mới",
-    "search": "Tìm thiết kế trang…",
-    "emptyTitle": "Chưa có thiết kế trang nào",
-    "emptyDesc": "Tạo một thiết kế, hoặc lưu trang của bất kỳ biểu mẫu nào từ trình thiết kế.",
+    "subtitle": "Trang mọi người mở từ liên kết của biểu mẫu",
+    "new": "Trang đích mới",
+    "search": "Tìm trang đích…",
+    "emptyTitle": "Chưa có trang đích nào",
+    "emptyDesc": "Tạo một trang, hoặc lưu trang đích của bất kỳ biểu mẫu nào từ trình thiết kế.",
     "col": {
-      "name": "Thiết kế trang",
+      "name": "Trang đích",
       "style": "Kiểu"
     },
     "deleteTitle": "Xoá “{name}”?",
-    "deleteDesc": "Thiết kế sẽ biến mất khỏi danh sách thiết kế trang.",
+    "deleteDesc": "Trang sẽ biến mất khỏi danh sách trang đích.",
     "toast": {
-      "saved": "Đã lưu thiết kế trang “{name}”",
-      "updated": "Đã cập nhật thiết kế trang “{name}”",
+      "saved": "Đã lưu trang đích “{name}”",
+      "updated": "Đã cập nhật trang đích “{name}”",
       "duplicated": "Đã tạo “{name}”",
-      "deleted": "Đã xoá thiết kế trang “{name}”"
+      "deleted": "Đã xoá trang đích “{name}”"
     },
     "preset": {
       "clean": "Gọn gàng",
@@ -3494,29 +3494,29 @@
       "floating_night": "Nổi đêm"
     },
     "editor": {
-      "crumb": "Trình sửa trang",
-      "newTitle": "Thiết kế trang mới",
-      "untitled": "Thiết kế trang chưa đặt tên",
+      "crumb": "Trình sửa trang đích",
+      "newTitle": "Trang đích mới",
+      "untitled": "Trang đích chưa đặt tên",
       "newDesc": "Thiết kế một lần, dùng cho mọi biểu mẫu",
       "systemDesc": "Thiết kế của Formalie (chỉ xem)",
       "systemTitle": "Một thiết kế của Formalie",
-      "systemHint": "Thiết kế trang này thuộc Formalie và không thể thay đổi. Hãy nhân bản để tạo phiên bản của bạn.",
-      "save": "Lưu thiết kế trang",
+      "systemHint": "Trang đích này thuộc Formalie và không thể thay đổi. Hãy nhân bản để tạo phiên bản của bạn.",
+      "save": "Lưu trang đích",
       "name": "Tên",
       "namePlaceholder": "vd: Trang đăng ký sự kiện",
-      "nameFirst": "Đặt tên cho thiết kế trang để lưu.",
-      "notFound": "Thiết kế trang này không khả dụng",
+      "nameFirst": "Đặt tên cho trang đích để lưu.",
+      "notFound": "Trang đích này không khả dụng",
       "sample": "Hiển thị quanh một biểu mẫu mẫu",
-      "controls": "Thiết kế trang"
+      "controls": "Trang đích"
     },
-    "designerGroup": "Thiết kế trang",
-    "designerHint": "Đặt một trang có sẵn quanh biểu mẫu này. Chỉ trang thay đổi.",
-    "saveShort": "Lưu trang",
-    "saveTitle": "Lưu trang thành thiết kế",
-    "saveDesc": "Giữ trang của biểu mẫu này (kiểu, màu, nền) trong Tài nguyên → Trang để dùng cho biểu mẫu khác.",
-    "apply": "Dùng thiết kế trang {name}",
-    "manage": "Quản lý thiết kế trang",
-    "replaceTitle": "Thay trang này?",
-    "replaceDesc": "Trang quanh biểu mẫu này đổi sang thiết kế bạn chọn. Bản thân biểu mẫu giữ nguyên và bạn có thể hoàn tác."
+    "designerGroup": "Trang đích",
+    "designerHint": "Đặt một trang đích có sẵn quanh biểu mẫu này. Chỉ trang thay đổi.",
+    "saveShort": "Lưu trang đích",
+    "saveTitle": "Lưu thành trang đích",
+    "saveDesc": "Giữ trang đích của biểu mẫu này (kiểu, màu, nền) trong Tài nguyên → Trang đích để dùng cho biểu mẫu khác.",
+    "apply": "Dùng trang đích {name}",
+    "manage": "Quản lý trang đích",
+    "replaceTitle": "Thay trang đích này?",
+    "replaceDesc": "Trang đích của biểu mẫu này đổi sang trang bạn chọn. Bản thân biểu mẫu giữ nguyên và bạn có thể hoàn tác."
   }
 }

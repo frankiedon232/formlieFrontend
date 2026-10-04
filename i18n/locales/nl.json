@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Opgeslagen",
     "themesCreated": "Zelf gemaakt",
-    "pages": "Pagina’s",
-    "pagesAll": "Alle pagina’s",
+    "pages": "Landingspagina’s",
+    "pagesAll": "Alle landingspagina’s",
     "pagesSystem": "Formalie",
     "pagesSaved": "Opgeslagen",
     "pagesCreated": "Gemaakt"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Sjabloon gedupliceerd",
       "forms_template_deleted": "Sjabloon verwijderd",
       "responses_submitted": "Reactie ontvangen",
-      "forms_page_design_created": "Pagina-ontwerp opgeslagen",
-      "forms_page_design_updated": "Pagina-ontwerp bijgewerkt",
-      "forms_page_design_deleted": "Pagina-ontwerp verwijderd"
+      "forms_page_design_created": "Landingspagina opgeslagen",
+      "forms_page_design_updated": "Landingspagina bijgewerkt",
+      "forms_page_design_deleted": "Landingspagina verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -2575,7 +2575,7 @@
       "header": "Koptekst",
       "footer": "Voettekst",
       "thankYou": "Bedankpagina",
-      "frame": "Pagina"
+      "frame": "Stijl van de landingspagina"
     },
     "layout": {
       "card": "Kaart",
@@ -2700,7 +2700,7 @@
       "side": "Kant van het paneel"
     },
     "frame": {
-      "hint": "De pagina rond het formulier op de link: je huisstijl, een link naar je website en een veilige voettekst. Insluitingen tonen alleen het formulier.",
+      "hint": "De pagina waarop mensen via de link van het formulier landen: uw huisstijl, een link naar uw website en een veilige voettekst. Insluitingen tonen alleen het formulier.",
       "style": {
         "branded": "Huisstijl",
         "spotlight": "Spotlight",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Ontwerpen voor de pagina rond uw formulieren",
-    "new": "Nieuw pagina-ontwerp",
-    "search": "Pagina-ontwerpen zoeken…",
-    "emptyTitle": "Hier zijn geen pagina-ontwerpen",
-    "emptyDesc": "Maak er een, of sla de pagina van een formulier op vanuit de ontwerper.",
+    "subtitle": "De pagina waarop mensen via de link van een formulier landen",
+    "new": "Nieuwe landingspagina",
+    "search": "Landingspagina’s zoeken…",
+    "emptyTitle": "Hier zijn geen landingspagina’s",
+    "emptyDesc": "Maak er een, of sla de landingspagina van een formulier op vanuit de ontwerper.",
     "col": {
-      "name": "Pagina-ontwerp",
+      "name": "Landingspagina",
       "style": "Stijl"
     },
     "deleteTitle": "“{name}” verwijderen?",
-    "deleteDesc": "Het verdwijnt uit de lijst met pagina-ontwerpen.",
+    "deleteDesc": "Ze verdwijnt uit de lijst met landingspagina’s.",
     "toast": {
-      "saved": "Pagina-ontwerp “{name}” opgeslagen",
-      "updated": "Pagina-ontwerp “{name}” bijgewerkt",
+      "saved": "Landingspagina “{name}” opgeslagen",
+      "updated": "Landingspagina “{name}” bijgewerkt",
       "duplicated": "“{name}” gemaakt",
-      "deleted": "Pagina-ontwerp “{name}” verwijderd"
+      "deleted": "Landingspagina “{name}” verwijderd"
     },
     "preset": {
       "clean": "Strak",
@@ -3494,29 +3494,29 @@
       "floating_night": "Nacht zwevend"
     },
     "editor": {
-      "crumb": "Pagina-editor",
-      "newTitle": "Nieuw pagina-ontwerp",
-      "untitled": "Naamloos pagina-ontwerp",
+      "crumb": "Landingspagina-editor",
+      "newTitle": "Nieuwe landingspagina",
+      "untitled": "Naamloze landingspagina",
       "newDesc": "Eén keer ontwerpen, op elk formulier gebruiken",
       "systemDesc": "Formalie-ontwerp (alleen lezen)",
       "systemTitle": "Een Formalie-ontwerp",
-      "systemHint": "Dit pagina-ontwerp hoort bij Formalie en kan niet worden gewijzigd. Dupliceer het voor uw eigen versie.",
-      "save": "Pagina-ontwerp opslaan",
+      "systemHint": "Deze landingspagina hoort bij Formalie en kan niet worden gewijzigd. Dupliceer haar voor uw eigen versie.",
+      "save": "Landingspagina opslaan",
       "name": "Naam",
       "namePlaceholder": "bijv. Aanmeldpagina voor een evenement",
-      "nameFirst": "Geef het pagina-ontwerp een naam om het op te slaan.",
-      "notFound": "Dit pagina-ontwerp is niet beschikbaar",
+      "nameFirst": "Geef de landingspagina een naam om haar op te slaan.",
+      "notFound": "Deze landingspagina is niet beschikbaar",
       "sample": "Getoond rond een voorbeeldformulier",
-      "controls": "Pagina-ontwerp"
+      "controls": "Landingspagina"
     },
-    "designerGroup": "Pagina-ontwerpen",
-    "designerHint": "Zet een kant-en-klare pagina rond dit formulier. Alleen de pagina verandert.",
-    "saveShort": "Pagina opslaan",
-    "saveTitle": "Pagina opslaan als ontwerp",
-    "saveDesc": "Bewaar de pagina van dit formulier (stijl, kleuren, achtergrond) in Bronnen → Pagina’s voor andere formulieren.",
-    "apply": "Pagina-ontwerp {name} gebruiken",
-    "manage": "Pagina-ontwerpen beheren",
-    "replaceTitle": "Deze pagina vervangen?",
-    "replaceDesc": "De pagina rond dit formulier krijgt het gekozen ontwerp. Het formulier zelf blijft zoals het is, en u kunt het ongedaan maken."
+    "designerGroup": "Landingspagina’s",
+    "designerHint": "Zet een kant-en-klare landingspagina rond dit formulier. Alleen de pagina verandert.",
+    "saveShort": "Landingspagina opslaan",
+    "saveTitle": "Opslaan als landingspagina",
+    "saveDesc": "Bewaar de landingspagina van dit formulier (stijl, kleuren, achtergrond) in Bronnen → Landingspagina’s voor andere formulieren.",
+    "apply": "Landingspagina {name} gebruiken",
+    "manage": "Landingspagina’s beheren",
+    "replaceTitle": "Deze landingspagina vervangen?",
+    "replaceDesc": "De landingspagina van dit formulier wordt de gekozen pagina. Het formulier zelf blijft zoals het is, en u kunt het ongedaan maken."
   }
 }

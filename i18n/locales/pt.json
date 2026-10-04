@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Salvos",
     "themesCreated": "Criado",
-    "pages": "Páginas",
-    "pagesAll": "Todas as páginas",
+    "pages": "Páginas de destino",
+    "pagesAll": "Todas as páginas de destino",
     "pagesSystem": "Formalie",
     "pagesSaved": "Salvas",
     "pagesCreated": "Criadas"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Modelo duplicado",
       "forms_template_deleted": "Modelo excluído",
       "responses_submitted": "Resposta recebida",
-      "forms_page_design_created": "Design de página salvo",
-      "forms_page_design_updated": "Design de página atualizado",
-      "forms_page_design_deleted": "Design de página excluído"
+      "forms_page_design_created": "Página de destino salva",
+      "forms_page_design_updated": "Página de destino atualizada",
+      "forms_page_design_deleted": "Página de destino excluída"
     },
     "detail": {
       "who": "Quem",
@@ -2575,7 +2575,7 @@
       "header": "Cabeçalho",
       "footer": "Rodapé",
       "thankYou": "Página de agradecimento",
-      "frame": "Página"
+      "frame": "Estilo da página de destino"
     },
     "layout": {
       "card": "Cartão",
@@ -2700,7 +2700,7 @@
       "side": "Lado do painel"
     },
     "frame": {
-      "hint": "A página ao redor do formulário no link: sua marca, um link para seu site e um rodapé seguro. Incorporações mostram só o formulário.",
+      "hint": "A página em que as pessoas chegam pelo link do formulário: sua marca, um link para o seu site e um rodapé seguro. Incorporações mostram só o formulário.",
       "style": {
         "branded": "Com marca",
         "spotlight": "Destaque",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Designs para a página em volta dos seus formulários",
-    "new": "Novo design de página",
-    "search": "Pesquisar designs de página…",
-    "emptyTitle": "Nenhum design de página aqui",
-    "emptyDesc": "Crie um ou salve a página de qualquer formulário no designer dele.",
+    "subtitle": "A página em que as pessoas chegam pelo link de um formulário",
+    "new": "Nova página de destino",
+    "search": "Pesquisar páginas de destino…",
+    "emptyTitle": "Nenhuma página de destino aqui",
+    "emptyDesc": "Crie uma ou salve a página de destino de qualquer formulário no designer dele.",
     "col": {
-      "name": "Design de página",
+      "name": "Página de destino",
       "style": "Estilo"
     },
     "deleteTitle": "Excluir “{name}”?",
-    "deleteDesc": "Ele some da lista de designs de página.",
+    "deleteDesc": "Ela some da lista de páginas de destino.",
     "toast": {
-      "saved": "Design de página “{name}” salvo",
-      "updated": "Design de página “{name}” atualizado",
+      "saved": "Página de destino “{name}” salva",
+      "updated": "Página de destino “{name}” atualizada",
       "duplicated": "“{name}” criado",
-      "deleted": "Design de página “{name}” excluído"
+      "deleted": "Página de destino “{name}” excluída"
     },
     "preset": {
       "clean": "Limpo",
@@ -3494,29 +3494,29 @@
       "floating_night": "Flutuante noturno"
     },
     "editor": {
-      "crumb": "Editor de página",
-      "newTitle": "Novo design de página",
-      "untitled": "Design de página sem nome",
+      "crumb": "Editor de página de destino",
+      "newTitle": "Nova página de destino",
+      "untitled": "Página de destino sem nome",
       "newDesc": "Crie uma vez, use em qualquer formulário",
       "systemDesc": "Design da Formalie (somente leitura)",
       "systemTitle": "Um design da Formalie",
-      "systemHint": "Este design de página faz parte da Formalie e não pode ser alterado. Duplique-o para criar sua versão.",
-      "save": "Salvar design de página",
+      "systemHint": "Esta página de destino faz parte da Formalie e não pode ser alterada. Duplique-a para criar sua versão.",
+      "save": "Salvar página de destino",
       "name": "Nome",
       "namePlaceholder": "ex.: Página de inscrição no evento",
-      "nameFirst": "Dê um nome ao design de página para salvá-lo.",
-      "notFound": "Este design de página não está disponível",
+      "nameFirst": "Dê um nome à página de destino para salvá-la.",
+      "notFound": "Esta página de destino não está disponível",
       "sample": "Mostrado em volta de um formulário de exemplo",
-      "controls": "Design de página"
+      "controls": "Página de destino"
     },
-    "designerGroup": "Designs de página",
-    "designerHint": "Coloque uma página pronta em volta deste formulário. Só a página muda.",
-    "saveShort": "Salvar página",
-    "saveTitle": "Salvar página como design",
-    "saveDesc": "Guarde a página deste formulário (estilo, cores, fundo) em Recursos → Páginas para usar em outros formulários.",
-    "apply": "Usar o design de página {name}",
-    "manage": "Gerenciar designs de página",
-    "replaceTitle": "Substituir esta página?",
-    "replaceDesc": "A página em volta deste formulário muda para o design escolhido. O formulário continua igual, e você pode desfazer."
+    "designerGroup": "Páginas de destino",
+    "designerHint": "Coloque uma página de destino pronta em volta deste formulário. Só a página muda.",
+    "saveShort": "Salvar página de destino",
+    "saveTitle": "Salvar como página de destino",
+    "saveDesc": "Guarde a página de destino deste formulário (estilo, cores, fundo) em Recursos → Páginas de destino para outros formulários.",
+    "apply": "Usar a página de destino {name}",
+    "manage": "Gerenciar páginas de destino",
+    "replaceTitle": "Substituir esta página de destino?",
+    "replaceDesc": "A página de destino deste formulário muda para a escolhida. O formulário continua igual, e você pode desfazer."
   }
 }

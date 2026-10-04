@@ -397,8 +397,8 @@
     "themesSystem": "Formalie",
     "themesSaved": "Zapisane",
     "themesCreated": "Utworzony",
-    "pages": "Strony",
-    "pagesAll": "Wszystkie strony",
+    "pages": "Strony docelowe",
+    "pagesAll": "Wszystkie strony docelowe",
     "pagesSystem": "Formalie",
     "pagesSaved": "Zapisane",
     "pagesCreated": "Utworzone"
@@ -871,9 +871,9 @@
       "forms_template_duplicated": "Zduplikowano szablon",
       "forms_template_deleted": "Usunięto szablon",
       "responses_submitted": "Otrzymano odpowiedź",
-      "forms_page_design_created": "Zapisano projekt strony",
-      "forms_page_design_updated": "Zaktualizowano projekt strony",
-      "forms_page_design_deleted": "Usunięto projekt strony"
+      "forms_page_design_created": "Zapisano stronę docelową",
+      "forms_page_design_updated": "Zaktualizowano stronę docelową",
+      "forms_page_design_deleted": "Usunięto stronę docelową"
     },
     "detail": {
       "who": "Kto",
@@ -2575,7 +2575,7 @@
       "header": "Nagłówek",
       "footer": "Stopka",
       "thankYou": "Strona podziękowania",
-      "frame": "Strona"
+      "frame": "Styl strony docelowej"
     },
     "layout": {
       "card": "Karta",
@@ -2700,7 +2700,7 @@
       "side": "Strona panelu"
     },
     "frame": {
-      "hint": "Strona wokół formularza pod jego linkiem: Twoja marka, link do Twojej witryny i bezpieczna stopka. Osadzenia pokazują tylko formularz.",
+      "hint": "Strona, na którą trafia się z linku formularza: Twoja marka, link do Twojej strony i bezpieczna stopka. Osadzenia pokazują tylko formularz.",
       "style": {
         "branded": "Z marką",
         "spotlight": "Wyróżnienie",
@@ -3452,22 +3452,22 @@
     }
   },
   "pages": {
-    "subtitle": "Projekty strony wokół Twoich formularzy",
-    "new": "Nowy projekt strony",
-    "search": "Szukaj projektów stron…",
-    "emptyTitle": "Brak projektów stron",
-    "emptyDesc": "Utwórz projekt albo zapisz stronę formularza w jego edytorze wyglądu.",
+    "subtitle": "Strona, na którą trafia się z linku formularza",
+    "new": "Nowa strona docelowa",
+    "search": "Szukaj stron docelowych…",
+    "emptyTitle": "Brak stron docelowych",
+    "emptyDesc": "Utwórz stronę albo zapisz stronę docelową formularza w jego edytorze wyglądu.",
     "col": {
-      "name": "Projekt strony",
+      "name": "Strona docelowa",
       "style": "Styl"
     },
     "deleteTitle": "Usunąć „{name}”?",
-    "deleteDesc": "Zniknie z listy projektów stron.",
+    "deleteDesc": "Zniknie z listy stron docelowych.",
     "toast": {
-      "saved": "Zapisano projekt strony „{name}”",
-      "updated": "Zaktualizowano projekt strony „{name}”",
+      "saved": "Zapisano stronę docelową „{name}”",
+      "updated": "Zaktualizowano stronę docelową „{name}”",
       "duplicated": "Utworzono „{name}”",
-      "deleted": "Usunięto projekt strony „{name}”"
+      "deleted": "Usunięto stronę docelową „{name}”"
     },
     "preset": {
       "clean": "Czysty",
@@ -3494,29 +3494,29 @@
       "floating_night": "Nocny pływający"
     },
     "editor": {
-      "crumb": "Edytor strony",
-      "newTitle": "Nowy projekt strony",
-      "untitled": "Projekt strony bez nazwy",
+      "crumb": "Edytor strony docelowej",
+      "newTitle": "Nowa strona docelowa",
+      "untitled": "Strona docelowa bez nazwy",
       "newDesc": "Zaprojektuj raz, używaj w każdym formularzu",
       "systemDesc": "Projekt Formalie (tylko do odczytu)",
       "systemTitle": "Projekt Formalie",
-      "systemHint": "Ten projekt strony należy do Formalie i nie można go zmienić. Zduplikuj go, aby utworzyć własną wersję.",
-      "save": "Zapisz projekt strony",
+      "systemHint": "Ta strona docelowa należy do Formalie i nie można jej zmienić. Zduplikuj ją, aby utworzyć własną wersję.",
+      "save": "Zapisz stronę docelową",
       "name": "Nazwa",
       "namePlaceholder": "np. Strona zapisów na wydarzenie",
-      "nameFirst": "Nadaj projektowi strony nazwę, aby go zapisać.",
-      "notFound": "Ten projekt strony jest niedostępny",
+      "nameFirst": "Nadaj stronie docelowej nazwę, aby ją zapisać.",
+      "notFound": "Ta strona docelowa jest niedostępna",
       "sample": "Pokazany wokół przykładowego formularza",
-      "controls": "Projekt strony"
+      "controls": "Strona docelowa"
     },
-    "designerGroup": "Projekty stron",
-    "designerHint": "Umieść gotową stronę wokół tego formularza. Zmienia się tylko strona.",
-    "saveShort": "Zapisz stronę",
-    "saveTitle": "Zapisz stronę jako projekt",
-    "saveDesc": "Zachowaj stronę tego formularza (styl, kolory, tło) w Zasoby → Strony, aby użyć jej w innych formularzach.",
-    "apply": "Użyj projektu strony {name}",
-    "manage": "Zarządzaj projektami stron",
-    "replaceTitle": "Zastąpić tę stronę?",
-    "replaceDesc": "Strona wokół tego formularza zmieni się na wybrany projekt. Sam formularz zostaje bez zmian i możesz to cofnąć."
+    "designerGroup": "Strony docelowe",
+    "designerHint": "Umieść gotową stronę docelową wokół tego formularza. Zmienia się tylko strona.",
+    "saveShort": "Zapisz stronę docelową",
+    "saveTitle": "Zapisz jako stronę docelową",
+    "saveDesc": "Zachowaj stronę docelową tego formularza (styl, kolory, tło) w Zasoby → Strony docelowe, aby użyć jej w innych formularzach.",
+    "apply": "Użyj strony docelowej {name}",
+    "manage": "Zarządzaj stronami docelowymi",
+    "replaceTitle": "Zastąpić tę stronę docelową?",
+    "replaceDesc": "Strona docelowa tego formularza zmieni się na wybraną. Sam formularz zostaje bez zmian i możesz to cofnąć."
   }
 }

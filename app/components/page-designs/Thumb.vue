@@ -1,5 +1,5 @@
 <!--
-  Page design miniature (Resources → Pages and the designer's style picker): the page around a form
+  Page design miniature (Resources → Landing pages and the designer's style picker): the page around a form
   on its public link, drawn with shapes in a fixed 16:9 frame so every picture is the same size.
   The page background, the frame style (branded · spotlight · side · minimal · banner · centred ·
   headline · corporate · compact · floating) in its tone and the workspace's brand colour, and a
