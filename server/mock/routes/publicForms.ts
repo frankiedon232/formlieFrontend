@@ -15,7 +15,7 @@ import type { FileAnswer, PublicForm, PublicFormState, PublicSubmitResult } from
 import { checkSubmission } from '#shared/utils/forms/submission'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { resolveTheme } from '#shared/utils/forms/theme'
-import { APP_LOCALES } from '#shared/utils/i18n/locales'
+import { formLanguages, mainLanguage, translateSchema } from '#shared/utils/forms/translations'
 import { tenantOf } from '../core/auth'
 import { recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -172,10 +172,7 @@ function publishedSchema(tenant: MockTenant, form: StoredForm): FormSchemaV1 | n
 }
 
 const branding = (tenant: MockTenant) => ({ logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null })
-const offered = (schema: FormSchemaV1 | null) => {
-  const main = schema?.settings?.language ?? 'en'
-  return APP_LOCALES.some(locale => locale.code === main) ? main : 'en'
-}
+const offered = (schema: FormSchemaV1 | null) => mainLanguage(schema)
 
 /** The published form for respondents (also used by the server-rendered page, server/routes/_ssr). */
 export function publicFormView(event: Parameters<typeof tenantOf>[0], key: string): PublicForm {
@@ -187,7 +184,8 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
   const published = state === 'open' ? publishedSchema(tenant, form) : null
   const schema = published ? { ...structuredClone(published), theme: resolveTheme(published.theme, branding(tenant)) as unknown as Record<string, unknown> } : null
   // The form's language also for full, closed, expired, scheduled and locked pages (no questions are sent then).
-  const language = offered(published ?? form.published_schema ?? form.schema)
+  const languages = formLanguages(published ?? form.published_schema ?? form.schema)
+  const language = languages[0]!
   const seo = seoOf(form)
   // Link cards need a full address for the image (link previews fetch it from outside).
   const imagePath = seo.imageUploadId ? completedUploadUrl(seo.imageUploadId, tenant.id) : null
@@ -208,7 +206,8 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
       noindex: state !== 'open' || seo.noindex,
     },
     legal: platformLegal(event),
-    languages: [language],
+    // Every language the form offers (decision 99); the page picks the respondent's.
+    languages,
     language,
     locked,
     lock: locked ? (accessOf(form) as Exclude<ReturnType<typeof accessOf>, 'public'>) : null,
@@ -248,10 +247,12 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   const input = parseBody(submitBody, body)
   const { tenant, form, schema, visitor } = takingResponses(event, key, { ignoreLimit: true })
   const known = visitorIdentity(visitor)
+  // The thank-you message in the language the respondent filled in (decision 99).
+  const thanks = translateSchema(schema, input.language ?? offered(schema)).thank_you
   const thankYou = {
-    title: schema.thank_you?.title ?? '',
-    message: schema.thank_you?.message ?? '',
-    redirect_url: schema.thank_you?.redirect_url ?? null,
+    title: thanks?.title ?? '',
+    message: thanks?.message ?? '',
+    redirect_url: thanks?.redirect_url ?? null,
   }
 
   // The same session again (double click, retry, back button): the response it already made.
@@ -320,7 +321,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
     form_id: form.id,
     form_version: form.versions?.[0]?.number ?? null,
     submitted_at: new Date().toISOString(),
-    language: input.language ?? offered(schema),
+    language: input.language && formLanguages(schema).includes(input.language) ? input.language : offered(schema),
     data: answers,
     submission_id: submissionId,
     device_id: deviceId,

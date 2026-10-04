@@ -1953,6 +1953,51 @@
       "title": "Chống thư rác",
       "on": "Luôn bật",
       "desc": "Một bước kiểm tra vô hình chạy nền chặn các lượt gửi tự động. Người điền không thấy gì và không phải nhấp gì."
+    },
+    "languages": {
+      "title": "Ngôn ngữ khác",
+      "hint": "Người trả lời có thể đổi ngôn ngữ, và biểu mẫu mở bằng ngôn ngữ trình duyệt của họ nếu có.",
+      "add": "Thêm ngôn ngữ…",
+      "translate": "Dịch",
+      "remove": "Gỡ {language}",
+      "progress": "Đã dịch {done} trên {total}",
+      "added": "Đã thêm {language}",
+      "filled": "Đã dịch {done} trên {total} văn bản bằng từ điển có sẵn. Phần còn lại bạn tự dịch.",
+      "removeTitle": "Gỡ {language}?",
+      "removeDesc": "Các bản dịch sẽ bị xóa khỏi bản nháp. Hoàn tác sẽ khôi phục.",
+      "promoted": "Các bản dịch giờ là văn bản của biểu mẫu. Văn bản {language} được giữ làm bản dịch."
+    },
+    "translate": {
+      "title": "Dịch sang {language}",
+      "desc": "Mỗi văn bản bằng {language} với bản dịch bên dưới. Ô để trống sẽ hiển thị bằng {language}.",
+      "all": "Tất cả",
+      "todo": "Còn lại ({n})",
+      "filter": "Hiển thị",
+      "noMatch": "Không có văn bản khớp với tìm kiếm",
+      "allDone": "Đã dịch xong tất cả",
+      "translated": "Đã dịch",
+      "into": "{text} bằng {language}",
+      "done": "Xong",
+      "wholeForm": "Toàn bộ biểu mẫu",
+      "kind": {
+        "question": "Câu hỏi",
+        "option": "Lựa chọn",
+        "row": "Hàng",
+        "formula": "Kết quả tính toán",
+        "help": "Văn bản trợ giúp",
+        "placeholder": "Văn bản gợi ý",
+        "pattern_message": "Thông báo lỗi",
+        "min_label": "Nhãn thang đo",
+        "max_label": "Nhãn thang đo",
+        "text": "Văn bản",
+        "page_title": "Tiêu đề trang",
+        "form_title": "Tiêu đề biểu mẫu",
+        "guide_title": "Tiêu đề hướng dẫn",
+        "guide_html": "Hướng dẫn",
+        "header_subtitle": "Phụ đề đầu trang",
+        "thanks_title": "Tiêu đề cảm ơn",
+        "thanks_message": "Lời cảm ơn"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Sao chép liên kết",
       "copied": "Đã sao chép liên kết",
       "keepGoing": "Tiếp tục điền"
-    }
+    },
+    "language": "Ngôn ngữ"
   },
   "logic": {
     "crumb": "Logic",

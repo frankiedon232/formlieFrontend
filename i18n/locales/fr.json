@@ -1953,6 +1953,51 @@
       "title": "Protection contre le spam",
       "on": "Toujours active",
       "desc": "Une vérification invisible en arrière-plan bloque les envois automatisés. Les personnes qui remplissent ne voient rien et ne cliquent sur rien."
+    },
+    "languages": {
+      "title": "Autres langues",
+      "hint": "Les répondants peuvent changer de langue, et le formulaire s'ouvre dans la langue de leur navigateur quand il la propose.",
+      "add": "Ajouter une langue…",
+      "translate": "Traduire",
+      "remove": "Retirer {language}",
+      "progress": "{done} sur {total} traduits",
+      "added": "{language} ajouté",
+      "filled": "{done} textes sur {total} traduits grâce aux dictionnaires intégrés. Traduisez le reste vous-même.",
+      "removeTitle": "Retirer {language} ?",
+      "removeDesc": "Ses traductions sont retirées du brouillon. Annuler les rétablit.",
+      "promoted": "Ses traductions deviennent le texte du formulaire. Le texte en {language} est conservé comme traduction."
+    },
+    "translate": {
+      "title": "Traduire en {language}",
+      "desc": "Chaque texte en {language} avec sa traduction en dessous. Ce qui reste vide s'affiche en {language}.",
+      "all": "Tout",
+      "todo": "À faire ({n})",
+      "filter": "Afficher",
+      "noMatch": "Aucun texte ne correspond à votre recherche",
+      "allDone": "Tout est traduit",
+      "translated": "Traduit",
+      "into": "{text} en {language}",
+      "done": "Terminé",
+      "wholeForm": "Tout le formulaire",
+      "kind": {
+        "question": "Question",
+        "option": "Choix",
+        "row": "Ligne",
+        "formula": "Résultat calculé",
+        "help": "Texte d'aide",
+        "placeholder": "Texte indicatif",
+        "pattern_message": "Message d'erreur",
+        "min_label": "Libellé d'échelle",
+        "max_label": "Libellé d'échelle",
+        "text": "Texte",
+        "page_title": "Titre de page",
+        "form_title": "Titre du formulaire",
+        "guide_title": "Titre du guide d'aide",
+        "guide_html": "Guide d'aide",
+        "header_subtitle": "Sous-titre de l'en-tête",
+        "thanks_title": "Titre de remerciement",
+        "thanks_message": "Message de remerciement"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Copier le lien",
       "copied": "Lien copié",
       "keepGoing": "Continuer à remplir"
-    }
+    },
+    "language": "Langue"
   },
   "logic": {
     "crumb": "Logique",

@@ -6,11 +6,11 @@
   never sends anything. Columns follow the form's own width (container queries).
 -->
 <script setup lang="ts">
-import { isLocked, sectionOwners, type FormField } from '#shared/utils/forms/build'
+import { isLocked, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 import { calculateResult } from '#shared/utils/forms/formula'
 import { evaluateLogic } from '#shared/utils/forms/logic'
-import { effectiveField, nextPageIndex } from '#shared/utils/forms/submission'
+import { nextPageIndex } from '#shared/utils/forms/submission'
 import { identityOf } from '#shared/utils/forms/identity'
 import { validateAnswer, type AddressPart, type ValidationIssue } from '#shared/utils/forms/validate'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
@@ -84,63 +84,14 @@ const position = computed(() => Math.max(0, pages.value.findIndex(p => p.id === 
 const nextIndex = computed(() => nextPageIndex(props.schema, logic.value, index.value))
 const last = computed(() => nextIndex.value < 0)
 
-/** The field as respondents get it right now, same rules as the API (shared/utils/forms/submission.ts). */
-const effective = (field: FormField) => effectiveField(field, logic.value)
-
-const visibleRows = computed(() =>
-  (page.value?.rows ?? [])
-    .map(row => ({
-      ...row,
-      // Internal calculations (e.g. a loyalty group) are worked out and saved, but not shown.
-      fields: (row.fields as FormField[])
-        .filter(f => !logic.value.hidden.has(f.id) && !(f.type === 'calculated' && f.props?.internal))
-        .map(effective),
-    }))
-    .filter(row => row.fields.length),
-)
-
-// Collapsible sections: a section heading with `collapsible` folds the rows below it, up to the
-// next section. Folded fields still count for required checks (a failing one unfolds its section).
-const collapsible = (field?: FormField) => field?.type === 'section' && !!field.props?.collapsible
-const folded = ref<Record<string, boolean>>({})
-watch(
-  () => [...allFieldsByKey.value.values()].filter(collapsible),
-  sections => {
-    for (const section of sections) folded.value[section.id] ??= !!section.props?.collapsed
-  },
-  { immediate: true },
-)
-const ownerOf = computed(() => sectionOwners(visibleRows.value))
-/** What's on screen: hidden-type fields carry values but are never shown to respondents. */
-const shownRows = computed(() =>
-  visibleRows.value
-    .filter(row => !folded.value[ownerOf.value.get(row.id) ?? ''])
-    .map(row => ({ ...row, fields: row.fields.filter(f => f.type !== 'hidden') }))
-    .filter(row => row.fields.length),
-)
-const toggle = (id: string) => (folded.value[id] = !folded.value[id])
+// Rows on screen and collapsible sections (useRendererSections), same rules as the API.
+const { visibleRows, shownRows, collapsible, folded, toggle, unfoldFor } = useRendererSections(page, logic, allFieldsByKey)
 
 // Validation (shared/utils/forms/validate.ts, the API runs the same rules). After a first
 // failed Next / Submit, errors update live as respondents fix their answers.
 const errorParts = ref<Record<string, AddressPart[]>>({})
 const attempted = ref(false)
-const PART_LABEL: Record<AddressPart, string> = {
-  line1: 'renderer.address.line1',
-  city: 'renderer.address.city',
-  region: 'renderer.address.region',
-  postal_code: 'renderer.address.postalCode',
-  country: 'renderer.address.country',
-}
-function message(field: FormField, issue: ValidationIssue) {
-  const name = field.label?.trim() || t('builder.untitled')
-  if (issue.code === 'required')
-    return field.label?.trim() ? t('renderer.requiredNamed', { field: name }) : t('renderer.requiredError')
-  if (issue.code === 'address')
-    return t('renderer.invalid.address', { field: name, parts: (issue.parts ?? []).map(part => t(PART_LABEL[part])).join(', ') })
-  const custom = field.validation?.pattern_message
-  if (issue.code === 'pattern' && typeof custom === 'string' && custom.trim()) return custom
-  return t(`renderer.invalid.${issue.code}`, { field: name, ...issue.params })
-}
+const message = useAnswerMessages()
 function check(unfold = true): boolean {
   const next: Record<string, string> = {}
   const parts: Record<string, AddressPart[]> = {}
@@ -154,17 +105,12 @@ function check(unfold = true): boolean {
     }
   errors.value = next
   errorParts.value = parts
-  if (unfold)
-    for (const row of visibleRows.value) {
-      const owner = ownerOf.value.get(row.id)
-      if (owner && row.fields.some(f => next[f.key])) folded.value[owner] = false
-    }
+  if (unfold) unfoldFor(next)
   return !Object.keys(next).length
 }
 watch(answers, () => attempted.value && check(false), { deep: true })
 // Pages visited, so Back follows the path the respondent actually took (jumps included).
 const trail = ref<number[]>([])
-const { date: formatDate } = useFormat()
 const submitting = ref(false)
 // Spam check (decision 89): a field people never see or reach; bots fill it in.
 const trap = ref('')
@@ -291,13 +237,7 @@ function restart() {
   <div class="flex flex-col gap-5 @container/form" :style="{ '--form-label-w': labelWidth }">
     <FormsRendererAfter v-if="showAlready" mode="already" :org="respondent?.org" :embedded="respondent?.embedded" class="py-10 text-center" @another="onAnother" />
     <template v-else-if="!done && page">
-      <div v-if="pages.length > 1 && schema.settings?.progress_bar !== false" class="flex flex-col gap-1.5">
-        <div class="flex justify-between text-xs text-muted">
-          <span>{{ t('builder.page.stepOf', { n: position + 1, total: pages.length }) }}</span>
-          <span>{{ Math.round(((position + 1) / pages.length) * 100) }}%</span>
-        </div>
-        <UProgress :model-value="position + 1" :max="pages.length" color="neutral" size="xs" />
-      </div>
+      <FormsRendererProgress v-if="pages.length > 1 && schema.settings?.progress_bar !== false" :position="position" :total="pages.length" />
       <h2 v-if="page.title" class="text-xl font-semibold text-highlighted">{{ page.title }}</h2>
       <form class="relative flex flex-col gap-4" novalidate @submit.prevent="next">
         <input v-if="submit && !preview" v-model="trap" type="text" name="formalie_hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="pointer-events-none absolute -start-[200vw] top-0 size-px opacity-0">
@@ -330,70 +270,25 @@ function restart() {
             />
           </div>
         </div>
-        <UAlert
-          v-if="registered"
-          icon="i-lucide-user-round-check"
-          color="warning"
-          variant="subtle"
-          :title="t('renderer.identity.registeredTitle')"
-          :description="registered.at ? t('renderer.identity.registeredDesc', { date: formatDate(registered.at) }) : t('renderer.identity.registeredDescNoDate')"
-        />
-        <UAlert v-if="duplicateNotice" icon="i-lucide-copy-x" color="warning" variant="subtle" :title="t('renderer.after.duplicate')" :description="t('renderer.after.duplicateDesc')" />
-        <p v-if="uploadsPending" class="flex items-center gap-1.5 text-xs text-toned" role="status" aria-live="polite">
-          <UIcon name="i-lucide-loader-circle" class="size-3.5 animate-spin" />{{ t('renderer.files.waiting') }}
-        </p>
-        <div class="flex items-center gap-2 pt-2" :class="button.block ? 'flex-col-reverse' : 'justify-between'">
-          <UButton
-            v-if="trail.length"
-            :label="t('common.back')"
-            icon="i-lucide-arrow-left"
-            :color="button.color"
-            variant="ghost"
-            :block="button.block"
-            :class="button.class"
-            class="rtl:[&_svg]:rotate-180"
-            @click="back"
-          />
-          <span v-else-if="!button.block" />
-          <UButton
-            type="submit"
-            :loading="submitting"
-            :disabled="uploadsPending > 0"
-            :label="last ? t('renderer.submit') : t('renderer.next')"
-            :trailing-icon="last ? undefined : 'i-lucide-arrow-right'"
-            :color="button.color"
-            :variant="button.variant"
-            :block="button.block"
-            :class="button.class"
-            class="rtl:[&_svg]:rotate-180"
-          />
-        </div>
+        <FormsRendererNotices :registered="registered" :duplicate="duplicateNotice" :uploads-pending="uploadsPending" />
+        <FormsRendererNav :can-go-back="trail.length > 0" :last="last" :submitting="submitting" :uploads-pending="uploadsPending" :button="button" @back="back" />
         <!-- Save and resume: saved status + "continue later". -->
         <FormsRendererResumeBar v-if="resume" :resume="resume" :color="button.color" @later="resumeOpen = true" />
       </form>
       <FormsRendererResume v-if="resume" v-model:open="resumeOpen" :default-email="resumeEmail" :later="resume.later" />
     </template>
 
-    <div v-else class="flex flex-col items-center gap-3 py-10 text-center">
-      <UIcon v-if="theme?.thank_you.show_icon !== false" name="i-lucide-circle-check" class="size-10" :class="theme ? 'text-(--ui-primary)' : 'text-success'" />
-      <h2 class="text-xl font-semibold text-highlighted">
-        {{ thanks?.title || schema.thank_you?.title || t('renderer.thanks') }}
-      </h2>
-      <p v-if="thanks?.message || schema.thank_you?.message" class="max-w-md text-sm text-muted">
-        {{ thanks?.message || schema.thank_you?.message }}
-      </p>
-      <p v-if="preview" class="text-xs text-muted">{{ t('builder.preview.nothingSent') }}</p>
-      <FormsRendererAfter v-if="respondent && !preview" mode="thanks" :org="respondent.org" :embedded="respondent.embedded" class="pt-2" @another="onAnother" />
-      <UButton
-        v-if="preview"
-        :label="t('builder.preview.restart')"
-        icon="i-lucide-rotate-ccw"
-        color="neutral"
-        variant="outline"
-        size="sm"
-        @click="restart"
-      />
-    </div>
+    <FormsRendererThanks
+      v-else
+      :title="thanks?.title || schema.thank_you?.title"
+      :message="thanks?.message || schema.thank_you?.message"
+      :icon="theme?.thank_you.show_icon !== false"
+      :themed="!!theme"
+      :preview="preview"
+      :respondent="respondent"
+      @another="onAnother"
+      @restart="restart"
+    />
     <FormsRendererIdentity
       v-if="respondent && !preview"
       :reason="identityPrompt?.reason ?? null"

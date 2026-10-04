@@ -1953,6 +1953,51 @@
       "title": "垃圾提交防护",
       "on": "始终开启",
       "desc": "后台的隐形检查会阻止自动提交。填写者看不到任何内容，也无需点击。"
+    },
+    "languages": {
+      "title": "更多语言",
+      "hint": "填写者可以切换语言；如果表单提供，会以其浏览器语言打开。",
+      "add": "添加语言…",
+      "translate": "翻译",
+      "remove": "移除{language}",
+      "progress": "已翻译 {done}/{total}",
+      "added": "已添加{language}",
+      "filled": "已用内置词典翻译 {total} 条中的 {done} 条，其余请自行翻译。",
+      "removeTitle": "移除{language}？",
+      "removeDesc": "其翻译将从草稿中删除，撤销可恢复。",
+      "promoted": "其翻译现已成为表单文本，{language}文本保留为翻译。"
+    },
+    "translate": {
+      "title": "翻译为{language}",
+      "desc": "每条{language}文本下方填写其翻译。留空的内容将以{language}显示。",
+      "all": "全部",
+      "todo": "待翻译 ({n})",
+      "filter": "显示",
+      "noMatch": "没有符合搜索的文本",
+      "allDone": "全部已翻译",
+      "translated": "已翻译",
+      "into": "{text}（{language}）",
+      "done": "完成",
+      "wholeForm": "整个表单",
+      "kind": {
+        "question": "问题",
+        "option": "选项",
+        "row": "行",
+        "formula": "计算结果",
+        "help": "帮助文本",
+        "placeholder": "占位文本",
+        "pattern_message": "错误提示",
+        "min_label": "量表标签",
+        "max_label": "量表标签",
+        "text": "文本",
+        "page_title": "页面标题",
+        "form_title": "表单标题",
+        "guide_title": "帮助指南标题",
+        "guide_html": "帮助指南",
+        "header_subtitle": "页眉副标题",
+        "thanks_title": "感谢标题",
+        "thanks_message": "感谢信息"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "复制链接",
       "copied": "链接已复制",
       "keepGoing": "继续填写"
-    }
+    },
+    "language": "语言"
   },
   "logic": {
     "crumb": "逻辑",

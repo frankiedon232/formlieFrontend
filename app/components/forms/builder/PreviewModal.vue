@@ -4,6 +4,7 @@
 -->
 <script setup lang="ts">
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+import { formLanguages, translateSchema } from '#shared/utils/forms/translations'
 
 const props = defineProps<{ schema?: FormSchemaV1 | null; title?: string; formName?: string }>()
 const open = defineModel<boolean>('open', { default: false })
@@ -18,7 +19,12 @@ const openFull = () =>
     await session?.autosave.saveNow()
     await navigateTo(`/forms/${session?.formId}/preview?v=draft`)
   })
-const shown = computed(() => props.schema ?? builder?.schema.value ?? null)
+const base = computed(() => props.schema ?? builder?.schema.value ?? null)
+// Forms in several languages (decision 99): the same switcher respondents get.
+const languages = computed(() => formLanguages(base.value))
+const language = ref('')
+watch(languages, offered => !offered.includes(language.value) && (language.value = offered[0] ?? 'en'), { immediate: true })
+const shown = computed(() => (base.value ? translateSchema(base.value, language.value) : null))
 
 const device = ref<'desktop' | 'tablet' | 'phone'>('desktop')
 const devices = computed(() => [
@@ -84,7 +90,7 @@ watch(open, value => {
     <template #body>
       <div class="mx-auto w-full overflow-hidden transition-[max-width] duration-300 @container" :class="FRAME[device]">
         <!-- The form page with its theme (background, header, footer), exactly as respondents see it. -->
-        <FormsRendererPage v-if="shown" :key="key" :schema="shown" :title="formName ?? ''" preview framed />
+        <FormsRendererPage v-if="shown" :key="key" :schema="shown" :title="formName ?? ''" preview framed :languages="languages" :language="language" @language="language = $event" />
       </div>
     </template>
   </USlideover>

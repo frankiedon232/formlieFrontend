@@ -6,6 +6,7 @@
 -->
 <script setup lang="ts">
 import type { FormPreview } from '#shared/types/forms'
+import { formLanguages, translateSchema } from '#shared/utils/forms/translations'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
 
 definePageMeta({ breadcrumb: 'preview.crumb' })
@@ -40,7 +41,12 @@ async function load() {
 }
 onMounted(load)
 
-const schema = computed(() => (version.value === 'live' ? data.value?.live : data.value?.draft) ?? null)
+const base = computed(() => (version.value === 'live' ? data.value?.live : data.value?.draft) ?? null)
+// Forms in several languages (decision 99): the switcher on the form, like respondents get it.
+const languages = computed(() => formLanguages(base.value))
+const language = ref('')
+watch(languages, offered => !offered.includes(language.value) && (language.value = offered[0] ?? 'en'), { immediate: true })
+const schema = computed(() => (base.value ? translateSchema(base.value, language.value) : null))
 const versions = computed(() => [
   { value: 'draft', label: t('preview.draft'), icon: 'i-lucide-pencil-line' },
   { value: 'live', label: t('preview.live', { n: data.value?.published_version ?? 1 }), icon: 'i-lucide-globe' },
@@ -78,9 +84,11 @@ watch(version, restart)
 const config = useRuntimeConfig().public
 const tenant = useTenant()
 const request = useRequestURL()
-const address = computed(() =>
-  data.value ? formLink(publicHosts(config, request.port), data.value.form.custom_link || data.value.form.public_key, 'fill', tenant.profile.value?.subdomain ?? null) : '',
-)
+const address = computed(() => {
+  if (!data.value) return ''
+  const link = formLink(publicHosts(config, request.port), data.value.form.custom_link || data.value.form.public_key, 'fill', tenant.profile.value?.subdomain ?? null)
+  return language.value && language.value !== languages.value[0] ? `${link}?lang=${language.value}` : link
+})
 
 defineShortcuts({
   '1': () => (device.value = 'desktop'),
@@ -182,11 +190,11 @@ defineShortcuts({
 
       <!-- Phones: the form itself, full width. -->
       <div v-if="small" class="overflow-hidden rounded-lg border border-default @container">
-        <FormsRendererPage :key="`${version}-${fresh}`" :schema="schema" :title="data!.form.name" preview framed :go-to="goTo" @at="at = $event" />
+        <FormsRendererPage :key="`${version}-${fresh}`" :schema="schema" :title="data!.form.name" preview framed :go-to="goTo" :languages="languages" :language="language" @at="at = $event" @language="language = $event" />
       </div>
       <div v-else class="h-[calc(100dvh-15rem)] min-h-[28rem] rounded-lg bg-elevated/40 p-3 sm:p-4">
         <FormsPreviewDevice :device="device" :landscape="landscape" :address="address">
-          <FormsRendererPage :key="`${version}-${fresh}`" :schema="schema" :title="data!.form.name" preview framed :go-to="goTo" @at="at = $event" />
+          <FormsRendererPage :key="`${version}-${fresh}`" :schema="schema" :title="data!.form.name" preview framed :go-to="goTo" :languages="languages" :language="language" @at="at = $event" @language="language = $event" />
         </FormsPreviewDevice>
       </div>
     </div>

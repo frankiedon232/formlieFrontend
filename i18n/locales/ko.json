@@ -1953,6 +1953,51 @@
       "title": "스팸 방지",
       "on": "항상 켜짐",
       "desc": "보이지 않는 백그라운드 검사가 자동 제출을 막습니다. 작성자는 아무것도 보거나 클릭할 필요가 없습니다."
+    },
+    "languages": {
+      "title": "추가 언어",
+      "hint": "응답자는 언어를 바꿀 수 있으며, 양식이 지원하면 브라우저 언어로 열립니다.",
+      "add": "언어 추가…",
+      "translate": "번역",
+      "remove": "{language} 제거",
+      "progress": "{total}개 중 {done}개 번역됨",
+      "added": "{language} 추가됨",
+      "filled": "기본 제공 사전으로 {total}개 중 {done}개를 번역했습니다. 나머지는 직접 번역하세요.",
+      "removeTitle": "{language}을(를) 제거할까요?",
+      "removeDesc": "번역이 초안에서 삭제됩니다. 실행 취소로 되돌릴 수 있습니다.",
+      "promoted": "번역이 이제 양식의 텍스트입니다. {language} 텍스트는 번역으로 보관됩니다."
+    },
+    "translate": {
+      "title": "{language}(으)로 번역",
+      "desc": "{language} 텍스트마다 아래에 번역을 입력합니다. 비워 둔 항목은 {language}(으)로 표시됩니다.",
+      "all": "전체",
+      "todo": "남은 항목 ({n})",
+      "filter": "보기",
+      "noMatch": "검색과 일치하는 텍스트가 없습니다",
+      "allDone": "모두 번역되었습니다",
+      "translated": "번역됨",
+      "into": "{text} ({language})",
+      "done": "완료",
+      "wholeForm": "양식 전체",
+      "kind": {
+        "question": "질문",
+        "option": "선택지",
+        "row": "행",
+        "formula": "계산 결과",
+        "help": "도움말",
+        "placeholder": "자리 표시 텍스트",
+        "pattern_message": "오류 메시지",
+        "min_label": "척도 레이블",
+        "max_label": "척도 레이블",
+        "text": "텍스트",
+        "page_title": "페이지 제목",
+        "form_title": "양식 제목",
+        "guide_title": "도움말 안내 제목",
+        "guide_html": "도움말 안내",
+        "header_subtitle": "머리글 부제목",
+        "thanks_title": "감사 제목",
+        "thanks_message": "감사 메시지"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "링크 복사",
       "copied": "링크가 복사되었습니다",
       "keepGoing": "계속 작성하기"
-    }
+    },
+    "language": "언어"
   },
   "logic": {
     "crumb": "로직",

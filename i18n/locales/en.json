@@ -1953,6 +1953,51 @@
       "title": "Spam protection",
       "on": "Always on",
       "desc": "An invisible check in the background stops automated submissions. People filling in see nothing and click nothing."
+    },
+    "languages": {
+      "title": "More languages",
+      "hint": "Respondents get a language switcher, and the form opens in their browser's language when it offers it.",
+      "add": "Add a language…",
+      "translate": "Translate",
+      "remove": "Remove {language}",
+      "progress": "{done} of {total} translated",
+      "added": "{language} added",
+      "filled": "{done} of {total} texts translated from the built-in dictionaries. Translate the rest yourself.",
+      "removeTitle": "Remove {language}?",
+      "removeDesc": "Its translations are removed from the draft. Undo brings them back.",
+      "promoted": "Its translations are now the form's text. The {language} text is kept as a translation."
+    },
+    "translate": {
+      "title": "Translate into {language}",
+      "desc": "Each text in {language} with its translation under it. Anything left empty is shown in {language}.",
+      "all": "All",
+      "todo": "To do ({n})",
+      "filter": "Show",
+      "noMatch": "No text matches your search",
+      "allDone": "Everything is translated",
+      "translated": "Translated",
+      "into": "{text} in {language}",
+      "done": "Done",
+      "wholeForm": "Whole form",
+      "kind": {
+        "question": "Question",
+        "option": "Choice",
+        "row": "Row",
+        "formula": "Calculated result",
+        "help": "Help text",
+        "placeholder": "Placeholder",
+        "pattern_message": "Error message",
+        "min_label": "Scale label",
+        "max_label": "Scale label",
+        "text": "Text",
+        "page_title": "Page title",
+        "form_title": "Form title",
+        "guide_title": "Help guide title",
+        "guide_html": "Help guide",
+        "header_subtitle": "Header subtitle",
+        "thanks_title": "Thank-you title",
+        "thanks_message": "Thank-you message"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Copy link",
       "copied": "Link copied",
       "keepGoing": "Keep filling in"
-    }
+    },
+    "language": "Language"
   },
   "logic": {
     "crumb": "Logic",

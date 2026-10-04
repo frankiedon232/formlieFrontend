@@ -160,6 +160,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
           </UFormField>
         </section>
         <FormsBuilderLanguageSetting />
+        <FormsBuilderLanguagesSetting />
         <section class="flex flex-col gap-3">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.experience') }}</h3>
           <USwitch

@@ -1953,6 +1953,51 @@
       "title": "Spamschutz",
       "on": "Immer aktiv",
       "desc": "Eine unsichtbare Prüfung im Hintergrund stoppt automatisierte Einsendungen. Ausfüllende sehen nichts und klicken nichts."
+    },
+    "languages": {
+      "title": "Weitere Sprachen",
+      "hint": "Befragte können die Sprache wechseln, und das Formular öffnet sich in der Sprache ihres Browsers, wenn es sie anbietet.",
+      "add": "Sprache hinzufügen…",
+      "translate": "Übersetzen",
+      "remove": "{language} entfernen",
+      "progress": "{done} von {total} übersetzt",
+      "added": "{language} hinzugefügt",
+      "filled": "{done} von {total} Texten mit den eingebauten Wörterbüchern übersetzt. Den Rest übersetzen Sie selbst.",
+      "removeTitle": "{language} entfernen?",
+      "removeDesc": "Die Übersetzungen werden aus dem Entwurf entfernt. Rückgängig holt sie zurück.",
+      "promoted": "Die Übersetzungen sind jetzt der Text des Formulars. Der Text auf {language} bleibt als Übersetzung erhalten."
+    },
+    "translate": {
+      "title": "Übersetzen in {language}",
+      "desc": "Jeder Text auf {language} mit der Übersetzung darunter. Leere Felder werden auf {language} angezeigt.",
+      "all": "Alle",
+      "todo": "Offen ({n})",
+      "filter": "Anzeigen",
+      "noMatch": "Kein Text passt zu Ihrer Suche",
+      "allDone": "Alles ist übersetzt",
+      "translated": "Übersetzt",
+      "into": "{text} auf {language}",
+      "done": "Fertig",
+      "wholeForm": "Ganzes Formular",
+      "kind": {
+        "question": "Frage",
+        "option": "Auswahl",
+        "row": "Zeile",
+        "formula": "Berechnetes Ergebnis",
+        "help": "Hilfetext",
+        "placeholder": "Platzhalter",
+        "pattern_message": "Fehlermeldung",
+        "min_label": "Skalenbeschriftung",
+        "max_label": "Skalenbeschriftung",
+        "text": "Text",
+        "page_title": "Seitentitel",
+        "form_title": "Formulartitel",
+        "guide_title": "Titel der Hilfe",
+        "guide_html": "Hilfe",
+        "header_subtitle": "Untertitel im Kopfbereich",
+        "thanks_title": "Danke-Titel",
+        "thanks_message": "Danke-Nachricht"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Link kopieren",
       "copied": "Link kopiert",
       "keepGoing": "Weiter ausfüllen"
-    }
+    },
+    "language": "Sprache"
   },
   "logic": {
     "crumb": "Logik",

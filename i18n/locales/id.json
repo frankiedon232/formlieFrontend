@@ -1953,6 +1953,51 @@
       "title": "Perlindungan spam",
       "on": "Selalu aktif",
       "desc": "Pemeriksaan tak terlihat di latar belakang menghentikan kiriman otomatis. Pengisi tidak melihat apa pun dan tidak perlu mengeklik apa pun."
+    },
+    "languages": {
+      "title": "Bahasa lain",
+      "hint": "Responden bisa mengganti bahasa, dan formulir terbuka dalam bahasa browser mereka jika tersedia.",
+      "add": "Tambah bahasa…",
+      "translate": "Terjemahkan",
+      "remove": "Hapus {language}",
+      "progress": "{done} dari {total} diterjemahkan",
+      "added": "{language} ditambahkan",
+      "filled": "{done} dari {total} teks diterjemahkan dengan kamus bawaan. Terjemahkan sisanya sendiri.",
+      "removeTitle": "Hapus {language}?",
+      "removeDesc": "Terjemahannya dihapus dari draf. Urungkan akan mengembalikannya.",
+      "promoted": "Terjemahannya kini menjadi teks formulir. Teks {language} disimpan sebagai terjemahan."
+    },
+    "translate": {
+      "title": "Terjemahkan ke {language}",
+      "desc": "Setiap teks dalam {language} dengan terjemahan di bawahnya. Yang dibiarkan kosong ditampilkan dalam {language}.",
+      "all": "Semua",
+      "todo": "Belum ({n})",
+      "filter": "Tampilkan",
+      "noMatch": "Tidak ada teks yang cocok dengan pencarian",
+      "allDone": "Semuanya sudah diterjemahkan",
+      "translated": "Diterjemahkan",
+      "into": "{text} dalam {language}",
+      "done": "Selesai",
+      "wholeForm": "Seluruh formulir",
+      "kind": {
+        "question": "Pertanyaan",
+        "option": "Pilihan",
+        "row": "Baris",
+        "formula": "Hasil perhitungan",
+        "help": "Teks bantuan",
+        "placeholder": "Teks contoh",
+        "pattern_message": "Pesan kesalahan",
+        "min_label": "Label skala",
+        "max_label": "Label skala",
+        "text": "Teks",
+        "page_title": "Judul halaman",
+        "form_title": "Judul formulir",
+        "guide_title": "Judul panduan",
+        "guide_html": "Panduan",
+        "header_subtitle": "Subjudul header",
+        "thanks_title": "Judul ucapan terima kasih",
+        "thanks_message": "Pesan terima kasih"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Salin tautan",
       "copied": "Tautan disalin",
       "keepGoing": "Lanjutkan mengisi"
-    }
+    },
+    "language": "Bahasa"
   },
   "logic": {
     "crumb": "Logika",

@@ -1953,6 +1953,51 @@
       "title": "Protezione antispam",
       "on": "Sempre attiva",
       "desc": "Un controllo invisibile in background blocca gli invii automatici. Chi compila non vede nulla e non deve cliccare nulla."
+    },
+    "languages": {
+      "title": "Altre lingue",
+      "hint": "Chi risponde può cambiare lingua, e il modulo si apre nella lingua del browser quando la offre.",
+      "add": "Aggiungi una lingua…",
+      "translate": "Traduci",
+      "remove": "Rimuovi {language}",
+      "progress": "{done} di {total} tradotti",
+      "added": "{language} aggiunto",
+      "filled": "{done} testi su {total} tradotti con i dizionari integrati. Traduci tu il resto.",
+      "removeTitle": "Rimuovere {language}?",
+      "removeDesc": "Le sue traduzioni vengono tolte dalla bozza. Annulla le riporta.",
+      "promoted": "Le sue traduzioni ora sono il testo del modulo. Il testo in {language} resta come traduzione."
+    },
+    "translate": {
+      "title": "Traduci in {language}",
+      "desc": "Ogni testo in {language} con la traduzione sotto. Ciò che resta vuoto viene mostrato in {language}.",
+      "all": "Tutti",
+      "todo": "Da fare ({n})",
+      "filter": "Mostra",
+      "noMatch": "Nessun testo corrisponde alla ricerca",
+      "allDone": "È tutto tradotto",
+      "translated": "Tradotto",
+      "into": "{text} in {language}",
+      "done": "Fatto",
+      "wholeForm": "Tutto il modulo",
+      "kind": {
+        "question": "Domanda",
+        "option": "Scelta",
+        "row": "Riga",
+        "formula": "Risultato calcolato",
+        "help": "Testo di aiuto",
+        "placeholder": "Testo segnaposto",
+        "pattern_message": "Messaggio di errore",
+        "min_label": "Etichetta della scala",
+        "max_label": "Etichetta della scala",
+        "text": "Testo",
+        "page_title": "Titolo della pagina",
+        "form_title": "Titolo del modulo",
+        "guide_title": "Titolo della guida",
+        "guide_html": "Guida",
+        "header_subtitle": "Sottotitolo dell'intestazione",
+        "thanks_title": "Titolo di ringraziamento",
+        "thanks_message": "Messaggio di ringraziamento"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Copia link",
       "copied": "Link copiato",
       "keepGoing": "Continua a compilare"
-    }
+    },
+    "language": "Lingua"
   },
   "logic": {
     "crumb": "Logica",

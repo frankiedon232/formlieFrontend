@@ -2,11 +2,13 @@
   A public form (F10), `/{formKey}/fill` (full page) and `/{formKey}/embed` (no page chrome, for
   iframes). Server-rendered: the first response holds the whole form, its SEO tags and the right
   status code. States: not found · not published yet · closed · open. The respondent's language:
-  `?lang=xx` when the form offers it, otherwise the form's main language (decision 73). Answers are
+  `?lang=xx`, else the browser's language, when the form offers it, otherwise its main language,
+  with a switcher when it has several (decisions 73 and 99, usePublicLanguage). Answers are
   sent once per fill-in session (usePublicSubmit).
 -->
 <script setup lang="ts">
 import { THEME_FRAMES, type ThemeFrame } from '#shared/utils/forms/theme'
+import { translateSchema } from '#shared/utils/forms/translations'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
 
 const props = defineProps<{ formKey: string; embed?: boolean }>()
@@ -34,32 +36,19 @@ const respondent = computed(() => ({
     : undefined,
 }))
 
+// ── Language (decisions 73 and 99): link, browser, else the main one; the switcher changes it.
+const { language, offered: languages, choose: chooseLanguage, dir } = await usePublicLanguage(props.formKey, form)
+
 // Development only: `?frame=spotlight` previews another page style without changing the form.
 const devFrame = import.meta.dev && THEME_FRAMES.includes(route.query.frame as ThemeFrame) ? (route.query.frame as ThemeFrame) : null
 const schema = computed(() => {
-  const value = form.value?.schema
+  const base = form.value?.schema
+  // The questions in the respondent's language (missing translations show the main language).
+  const value = base ? translateSchema(base, language.value) : null
   if (!value || !devFrame) return value ?? null
   const theme = (value.theme ?? {}) as { frame?: Record<string, unknown> }
   return { ...value, theme: { ...theme, frame: { ...theme.frame, style: devFrame } } }
 })
-
-// ── Language ─────────────────────────────────────────────────────────────────────────
-const nuxtApp = useNuxtApp()
-const language = computed(() => {
-  const wanted = typeof route.query.lang === 'string' ? route.query.lang : null
-  const offered = form.value?.languages ?? []
-  return wanted && offered.includes(wanted) ? wanted : (form.value?.language ?? 'en')
-})
-/** Switch the interface language for this page only (no cookie: a signed-in person's portal language stays). */
-async function useLanguage(code: string) {
-  const i18n = nuxtApp.$i18n
-  if (i18n.locale.value === code) return
-  await i18n.loadLocaleMessages(code as Parameters<typeof i18n.loadLocaleMessages>[0])
-  ;(i18n.locale as unknown as { value: string }).value = code
-}
-await useLanguage(language.value)
-watch(language, code => void useLanguage(code))
-const dir = computed(() => APP_LOCALES.find(locale => locale.code === language.value)?.dir ?? 'ltr')
 
 // ── State, status code, SEO ──────────────────────────────────────────────────────────
 /** Arriving with a personal invitation link or a sign-in pass: "Opening…" until it is checked, never a locked page first. */
@@ -203,12 +192,13 @@ const message = computed(() => {
     <div v-if="view === 'open' && form?.visitor" class="border-b border-default bg-elevated/60 px-4 py-2 text-center text-xs text-toned">
       <UIcon name="i-lucide-user-round-check" class="me-1 inline size-3.5 align-[-2px]" />{{ t('public.visitor', { who: form.visitor.name ? `${form.visitor.name} (${form.visitor.email})` : form.visitor.email }) }}
     </div>
-    <FormsRendererPage v-if="view === 'open' && schema" :schema="schema" :title="form?.name ?? ''" :submit="submit" :respondent="respondent" :framed="!embed" :class="embed ? '' : 'flex-1'" />
+    <FormsRendererPage v-if="view === 'open' && schema" :schema="schema" :title="form?.name ?? ''" :submit="submit" :respondent="respondent" :framed="!embed" :languages="languages" :language="language" :class="embed ? '' : 'flex-1'" @language="chooseLanguage" />
 
     <!-- Closed / not open yet: still the organisation's page (bar + footer); unknown links stay neutral. -->
     <header v-if="view !== 'open' && form && !embed" class="border-b border-default bg-default">
       <div class="mx-auto flex h-16 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
         <FormsRendererFrameOrg :org="{ name: form.workspace.name, logo: form.workspace.logo_url }" :initials="orgInitials" accent="var(--ui-bg-inverted)" on-accent="var(--ui-bg)" />
+        <FormsRendererLanguageSwitch :model-value="language" :languages="languages" class="ms-auto" @update:model-value="chooseLanguage" />
         <UButton
           v-if="form.workspace.website"
           :to="form.workspace.website"

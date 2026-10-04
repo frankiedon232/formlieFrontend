@@ -1953,6 +1953,51 @@
       "title": "Ochrona przed spamem",
       "on": "Zawsze włączona",
       "desc": "Niewidoczna kontrola w tle zatrzymuje automatyczne zgłoszenia. Wypełniający niczego nie widzą i niczego nie klikają."
+    },
+    "languages": {
+      "title": "Więcej języków",
+      "hint": "Respondenci mogą zmienić język, a formularz otwiera się w języku ich przeglądarki, jeśli go oferuje.",
+      "add": "Dodaj język…",
+      "translate": "Tłumacz",
+      "remove": "Usuń: {language}",
+      "progress": "Przetłumaczono {done} z {total}",
+      "added": "Dodano: {language}",
+      "filled": "Przetłumaczono {done} z {total} tekstów za pomocą wbudowanych słowników. Resztę przetłumacz samodzielnie.",
+      "removeTitle": "Usunąć: {language}?",
+      "removeDesc": "Tłumaczenia zostaną usunięte z wersji roboczej. Cofnij przywraca je.",
+      "promoted": "Tłumaczenia są teraz tekstem formularza. Tekst w języku {language} zostaje jako tłumaczenie."
+    },
+    "translate": {
+      "title": "Tłumaczenie: {language}",
+      "desc": "Każdy tekst w języku {language} z tłumaczeniem pod spodem. Puste pola są pokazywane w języku {language}.",
+      "all": "Wszystko",
+      "todo": "Do zrobienia ({n})",
+      "filter": "Pokaż",
+      "noMatch": "Żaden tekst nie pasuje do wyszukiwania",
+      "allDone": "Wszystko jest przetłumaczone",
+      "translated": "Przetłumaczone",
+      "into": "{text}: {language}",
+      "done": "Gotowe",
+      "wholeForm": "Cały formularz",
+      "kind": {
+        "question": "Pytanie",
+        "option": "Opcja",
+        "row": "Wiersz",
+        "formula": "Wynik obliczony",
+        "help": "Tekst pomocy",
+        "placeholder": "Tekst podpowiedzi",
+        "pattern_message": "Komunikat błędu",
+        "min_label": "Etykieta skali",
+        "max_label": "Etykieta skali",
+        "text": "Tekst",
+        "page_title": "Tytuł strony",
+        "form_title": "Tytuł formularza",
+        "guide_title": "Tytuł przewodnika",
+        "guide_html": "Przewodnik",
+        "header_subtitle": "Podtytuł nagłówka",
+        "thanks_title": "Tytuł podziękowania",
+        "thanks_message": "Treść podziękowania"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Kopiuj link",
       "copied": "Skopiowano link",
       "keepGoing": "Wypełniaj dalej"
-    }
+    },
+    "language": "Język"
   },
   "logic": {
     "crumb": "Logika",

@@ -1953,6 +1953,51 @@
       "title": "Ulinzi dhidi ya taka",
       "on": "Huwashwa kila wakati",
       "desc": "Ukaguzi usioonekana chinichini huzuia uwasilishaji wa kiotomatiki. Wanaojaza hawaoni chochote wala kubofya chochote."
+    },
+    "languages": {
+      "title": "Lugha zaidi",
+      "hint": "Wanaojibu wanaweza kubadilisha lugha, na fomu hufunguka kwa lugha ya kivinjari chao ikiwa inapatikana.",
+      "add": "Ongeza lugha…",
+      "translate": "Tafsiri",
+      "remove": "Ondoa {language}",
+      "progress": "{done} kati ya {total} zimetafsiriwa",
+      "added": "{language} imeongezwa",
+      "filled": "Maandishi {done} kati ya {total} yametafsiriwa kwa kamusi zilizojengwa ndani. Tafsiri yaliyobaki mwenyewe.",
+      "removeTitle": "Ondoa {language}?",
+      "removeDesc": "Tafsiri zake zitaondolewa kwenye rasimu. Tendua huzirudisha.",
+      "promoted": "Tafsiri zake sasa ni maandishi ya fomu. Maandishi ya {language} yamehifadhiwa kama tafsiri."
+    },
+    "translate": {
+      "title": "Tafsiri kwa {language}",
+      "desc": "Kila andiko kwa {language} na tafsiri yake chini. Kilichoachwa tupu kinaonyeshwa kwa {language}.",
+      "all": "Zote",
+      "todo": "Zilizobaki ({n})",
+      "filter": "Onyesha",
+      "noMatch": "Hakuna andiko linalolingana na utafutaji",
+      "allDone": "Kila kitu kimetafsiriwa",
+      "translated": "Imetafsiriwa",
+      "into": "{text} kwa {language}",
+      "done": "Imekamilika",
+      "wholeForm": "Fomu nzima",
+      "kind": {
+        "question": "Swali",
+        "option": "Chaguo",
+        "row": "Safu",
+        "formula": "Matokeo yaliyokokotolewa",
+        "help": "Maandishi ya msaada",
+        "placeholder": "Maandishi ya mfano",
+        "pattern_message": "Ujumbe wa hitilafu",
+        "min_label": "Lebo ya kipimo",
+        "max_label": "Lebo ya kipimo",
+        "text": "Maandishi",
+        "page_title": "Kichwa cha ukurasa",
+        "form_title": "Kichwa cha fomu",
+        "guide_title": "Kichwa cha mwongozo",
+        "guide_html": "Mwongozo",
+        "header_subtitle": "Kichwa kidogo cha juu",
+        "thanks_title": "Kichwa cha shukrani",
+        "thanks_message": "Ujumbe wa shukrani"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Nakili kiungo",
       "copied": "Kiungo kimenakiliwa",
       "keepGoing": "Endelea kujaza"
-    }
+    },
+    "language": "Lugha"
   },
   "logic": {
     "crumb": "Mantiki",

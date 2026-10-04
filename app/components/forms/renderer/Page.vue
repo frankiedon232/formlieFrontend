@@ -26,8 +26,11 @@ const props = defineProps<{
   respondent?: RendererRespondent
   /** Preview page: jump to a page or the thank-you screen (renderer Form). */
   goTo?: { at: number | 'thanks'; n: number }
+  /** Forms in several languages (decision 99): the switcher above the form. */
+  languages?: string[]
+  language?: string
 }>()
-const emit = defineEmits<{ at: [at: number | 'thanks'] }>()
+const emit = defineEmits<{ at: [at: number | 'thanks']; language: [code: string] }>()
 // The title respondents see: the form name, or its version in the form language (settings.title).
 const heading = computed(() => props.schema.settings?.title?.trim() || props.title)
 const branding = useWorkspaceBranding()
@@ -130,6 +133,9 @@ const containerClass = computed(() => [
             </div>
 
             <div class="flex-1" :class="inner">
+              <div v-if="language && (languages?.length ?? 0) > 1" class="mb-4 flex justify-end">
+                <FormsRendererLanguageSwitch :model-value="language" :languages="languages!" @update:model-value="emit('language', $event)" />
+              </div>
               <FormsRendererPageHeader v-if="!band && !panel && hasHeader" class="mb-6" :theme="theme" :title="heading" :logo="logo" />
               <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" :respondent="respondent" :go-to="goTo" @at="emit('at', $event)" />
             </div>

@@ -1953,6 +1953,51 @@
       "title": "Spambeveiliging",
       "on": "Altijd aan",
       "desc": "Een onzichtbare controle op de achtergrond houdt automatische inzendingen tegen. Invullers zien niets en hoeven nergens op te klikken."
+    },
+    "languages": {
+      "title": "Meer talen",
+      "hint": "Invullers kunnen van taal wisselen, en het formulier opent in de taal van hun browser als het die aanbiedt.",
+      "add": "Taal toevoegen…",
+      "translate": "Vertalen",
+      "remove": "{language} verwijderen",
+      "progress": "{done} van {total} vertaald",
+      "added": "{language} toegevoegd",
+      "filled": "{done} van {total} teksten vertaald met de ingebouwde woordenboeken. Vertaal de rest zelf.",
+      "removeTitle": "{language} verwijderen?",
+      "removeDesc": "De vertalingen worden uit het concept gehaald. Ongedaan maken zet ze terug.",
+      "promoted": "De vertalingen zijn nu de tekst van het formulier. De tekst in het {language} blijft als vertaling bewaard."
+    },
+    "translate": {
+      "title": "Vertalen naar het {language}",
+      "desc": "Elke tekst in het {language} met de vertaling eronder. Wat leeg blijft, wordt in het {language} getoond.",
+      "all": "Alles",
+      "todo": "Te doen ({n})",
+      "filter": "Tonen",
+      "noMatch": "Geen tekst past bij je zoekopdracht",
+      "allDone": "Alles is vertaald",
+      "translated": "Vertaald",
+      "into": "{text} in het {language}",
+      "done": "Klaar",
+      "wholeForm": "Hele formulier",
+      "kind": {
+        "question": "Vraag",
+        "option": "Keuze",
+        "row": "Rij",
+        "formula": "Berekend resultaat",
+        "help": "Helptekst",
+        "placeholder": "Voorbeeldtekst",
+        "pattern_message": "Foutmelding",
+        "min_label": "Schaallabel",
+        "max_label": "Schaallabel",
+        "text": "Tekst",
+        "page_title": "Paginatitel",
+        "form_title": "Formuliertitel",
+        "guide_title": "Titel van de hulpgids",
+        "guide_html": "Hulpgids",
+        "header_subtitle": "Ondertitel van de kop",
+        "thanks_title": "Bedanktitel",
+        "thanks_message": "Bedankbericht"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
       "keepGoing": "Verder invullen"
-    }
+    },
+    "language": "Taal"
   },
   "logic": {
     "crumb": "Logica",

@@ -1953,6 +1953,51 @@
       "title": "スパム対策",
       "on": "常にオン",
       "desc": "目に見えないチェックがバックグラウンドで自動送信を防ぎます。回答者には何も表示されず、クリックも不要です。"
+    },
+    "languages": {
+      "title": "その他の言語",
+      "hint": "回答者は言語を切り替えられます。フォームが対応していれば、ブラウザの言語で開きます。",
+      "add": "言語を追加…",
+      "translate": "翻訳",
+      "remove": "{language}を削除",
+      "progress": "{total} 件中 {done} 件翻訳済み",
+      "added": "{language}を追加しました",
+      "filled": "内蔵の辞書で {total} 件中 {done} 件を翻訳しました。残りはご自分で翻訳してください。",
+      "removeTitle": "{language}を削除しますか？",
+      "removeDesc": "翻訳は下書きから削除されます。元に戻すで復元できます。",
+      "promoted": "翻訳がフォームの文章になりました。{language}の文章は翻訳として残ります。"
+    },
+    "translate": {
+      "title": "{language}に翻訳",
+      "desc": "{language}の各テキストの下に翻訳を入力します。空欄は{language}で表示されます。",
+      "all": "すべて",
+      "todo": "未翻訳 ({n})",
+      "filter": "表示",
+      "noMatch": "検索に一致するテキストはありません",
+      "allDone": "すべて翻訳済みです",
+      "translated": "翻訳済み",
+      "into": "{text}（{language}）",
+      "done": "完了",
+      "wholeForm": "フォーム全体",
+      "kind": {
+        "question": "質問",
+        "option": "選択肢",
+        "row": "行",
+        "formula": "計算結果",
+        "help": "ヘルプテキスト",
+        "placeholder": "プレースホルダー",
+        "pattern_message": "エラーメッセージ",
+        "min_label": "スケールのラベル",
+        "max_label": "スケールのラベル",
+        "text": "テキスト",
+        "page_title": "ページタイトル",
+        "form_title": "フォームのタイトル",
+        "guide_title": "ヘルプガイドのタイトル",
+        "guide_html": "ヘルプガイド",
+        "header_subtitle": "ヘッダーのサブタイトル",
+        "thanks_title": "お礼のタイトル",
+        "thanks_message": "お礼のメッセージ"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "リンクをコピー",
       "copied": "リンクをコピーしました",
       "keepGoing": "入力を続ける"
-    }
+    },
+    "language": "言語"
   },
   "logic": {
     "crumb": "ロジック",

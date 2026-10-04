@@ -1953,6 +1953,51 @@
       "title": "Spam koruması",
       "on": "Her zaman açık",
       "desc": "Arka planda görünmez bir kontrol otomatik gönderimleri durdurur. Formu dolduranlar hiçbir şey görmez ve tıklamaz."
+    },
+    "languages": {
+      "title": "Diğer diller",
+      "hint": "Yanıtlayanlar dili değiştirebilir; form, sunuyorsa tarayıcılarının dilinde açılır.",
+      "add": "Dil ekle…",
+      "translate": "Çevir",
+      "remove": "{language} dilini kaldır",
+      "progress": "{total} metnin {done} tanesi çevrildi",
+      "added": "{language} eklendi",
+      "filled": "{total} metnin {done} tanesi yerleşik sözlüklerle çevrildi. Gerisini siz çevirin.",
+      "removeTitle": "{language} kaldırılsın mı?",
+      "removeDesc": "Çevirileri taslaktan kaldırılır. Geri al ile geri gelir.",
+      "promoted": "Çevirileri artık formun metni. {language} metni çeviri olarak saklanır."
+    },
+    "translate": {
+      "title": "{language} diline çevir",
+      "desc": "Her {language} metni ve altında çevirisi. Boş kalanlar {language} olarak gösterilir.",
+      "all": "Tümü",
+      "todo": "Yapılacak ({n})",
+      "filter": "Göster",
+      "noMatch": "Aramanızla eşleşen metin yok",
+      "allDone": "Her şey çevrildi",
+      "translated": "Çevrildi",
+      "into": "{text}, {language}",
+      "done": "Bitti",
+      "wholeForm": "Formun tamamı",
+      "kind": {
+        "question": "Soru",
+        "option": "Seçenek",
+        "row": "Satır",
+        "formula": "Hesaplanan sonuç",
+        "help": "Yardım metni",
+        "placeholder": "Yer tutucu metin",
+        "pattern_message": "Hata mesajı",
+        "min_label": "Ölçek etiketi",
+        "max_label": "Ölçek etiketi",
+        "text": "Metin",
+        "page_title": "Sayfa başlığı",
+        "form_title": "Form başlığı",
+        "guide_title": "Yardım rehberi başlığı",
+        "guide_html": "Yardım rehberi",
+        "header_subtitle": "Başlık alt yazısı",
+        "thanks_title": "Teşekkür başlığı",
+        "thanks_message": "Teşekkür mesajı"
+      }
     }
   },
   "renderer": {
@@ -2142,7 +2187,8 @@
       "copy": "Bağlantıyı kopyala",
       "copied": "Bağlantı kopyalandı",
       "keepGoing": "Doldurmaya devam et"
-    }
+    },
+    "language": "Dil"
   },
   "logic": {
     "crumb": "Mantık",

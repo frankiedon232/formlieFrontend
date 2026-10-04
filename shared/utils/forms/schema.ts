@@ -51,6 +51,8 @@ export const formSchemaV1 = z.object({
       progress_bar: z.boolean().optional(),
       save_resume: z.boolean().optional(),
       language: text(10).optional(),
+      /** More languages the form offers besides its main one (F10 M4, decision 99). */
+      languages: z.array(text(10)).max(19).optional(),
       /** The form title respondents see in the form language (empty = the form name). */
       title: text(200).optional(),
       /** Where labels sit, for the whole form: above the field (default) or beside it. */
@@ -79,6 +81,8 @@ export const formSchemaV1 = z.object({
   /** The saved theme this design came from (the tokens above are a copy). */
   theme_id: z.string().max(64).nullable().optional(),
   calculations: z.array(z.unknown()).max(200).optional(),
+  /** Translations per language: text key (shared/utils/forms/translations.ts) → text. */
+  translations: z.record(z.string().max(10), z.record(z.string().max(200), z.string().max(50_000))).optional(),
   thank_you: z
     .object({
       title: text(200).optional(),
