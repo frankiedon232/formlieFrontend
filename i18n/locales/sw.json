@@ -2004,7 +2004,8 @@
       "duration": "Weka muda kwa {field} (dakika 0–59).",
       "name": "Weka jina la kwanza na la mwisho kwa {field}.",
       "consent": "Tafadhali thibitisha {field} ili kuendelea.",
-      "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}."
+      "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}.",
+      "file": "{field}: faili moja haikumaliza kupakiwa — iondoe kisha uiongeze tena."
     },
     "page": {
       "logo": "Nembo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Faili {max} tu zinaruhusiwa — faili {n} halikuongezwa. | Faili {max} tu zinaruhusiwa — faili {n} hazikuongezwa.",
       "limits": "Hadi faili {max}, MB {mb} kila moja",
       "count": "{n} kati ya {max}",
-      "addMore": "Ongeza zaidi"
+      "addMore": "Ongeza zaidi",
+      "failed": "Imeshindwa kupakia {file}.",
+      "uploading": "Inapakia faili {n}… | Inapakia faili {n}…",
+      "uploadingFile": "Inapakia {file}",
+      "waiting": "Inasubiri faili zimalize kupakiwa…"
     },
     "after": {
       "another": "Jaza nyingine",

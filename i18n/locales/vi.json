@@ -2004,7 +2004,8 @@
       "duration": "Nhập thời lượng cho {field} (phút 0–59).",
       "name": "Nhập cả tên và họ cho {field}.",
       "consent": "Vui lòng xác nhận {field} để tiếp tục.",
-      "choice": "Chọn một tùy chọn trong danh sách cho {field}."
+      "choice": "Chọn một tùy chọn trong danh sách cho {field}.",
+      "file": "{field}: có tệp chưa tải lên xong — hãy xóa tệp đó và thêm lại."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Chỉ cho phép {max} tệp — {n} tệp chưa được thêm. | Chỉ cho phép {max} tệp — {n} tệp chưa được thêm.",
       "limits": "Tối đa {max} tệp, mỗi tệp {mb} MB",
       "count": "{n}/{max}",
-      "addMore": "Thêm nữa"
+      "addMore": "Thêm nữa",
+      "failed": "Không thể tải lên {file}.",
+      "uploading": "Đang tải lên {n} tệp… | Đang tải lên {n} tệp…",
+      "uploadingFile": "Đang tải lên {file}",
+      "waiting": "Đang chờ các tệp tải lên xong…"
     },
     "after": {
       "another": "Điền thêm",

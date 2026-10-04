@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-03 · **Current phase:** F10 — Renderer, preview, share, embed (F9 reviewed by the owner)
+**Last updated:** 2026-10-04 · **Current phase:** F10 — Renderer, preview, share, embed (F9 reviewed by the owner)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -20,7 +20,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
-| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~30% |
+| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~35% |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
@@ -458,7 +458,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Secure server-side fetch for server-rendered pages (internal route + server-only `NUXT_INTERNAL_TOKEN`)
 - 🟡 Closed / expired / not found / password-protected / response-limit states — ✅ not found (404), not published, closed, **expired (410) and not-open-yet** (availability dates, owner 2026-10-03), load error; password / limit come with the Share settings (M3)
 - ✅ Multi-page with progress, **save and resume** (decision 87): autosave to a server draft, "Save and continue later" emails a 30-day resume link, the link restores answers and page, submitting closes the draft
-- ⬜ File uploads to secure upload links with progress
+- ✅ **File uploads** (decision 88): straight to storage through short-lived upload links with progress per file; answers keep references (drafts too); type / size / count / real-picture / no-program checks on both sides; files attached to one response, never public
 - ✅ **Help guide** (owner, 2026-10-03, decision 86): Form settings → Help guide (off by default, rich editor in a window); a floating "?" on the form opens it in a chat-style panel
 - ✅ **Accent header** (decision 86): quote-like header style; Events & bookings and Operations & IT designs use it instead of the side panel
 - ✅ **Recognising respondents** (owner, 2026-10-03, decision 85): the respondent's own email (suggested, never someone else's) — email only (ID option removed, owner); same → refused, near match → "different person?" + flagged possible duplicate; optional email verification with a code; masked hints only
@@ -1053,3 +1053,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | Follow-ups: Themes menu by kind with counts; "Save as template" in the builder header (Build / Logic / Design, phone menu, full screen) — saves pending edits first, name pre-filled, menu counts refresh. |
 | 2026-10-03 | F9 | Follow-ups: "Save as template" moved into Form settings → Template; templates remember their source form (`source_form_id`) — an already-saved form offers "Update template" (`POST /templates/{key}/sync`, audited) or a separate copy; sidebar keeps one group open; preview side panel Desktop fills edge to edge. |
 | 2026-10-03 | F10 | Milestone 1: public form pages `/{key}/fill` and `/embed` (server-rendered, SEO tags, canonical, 404 for unknown keys, noindex for embeds / closed forms), `forms.*` host, `public_key` per form, secure server-side fetch (server-only token), states (not found · not published · closed · error), submit through the encrypted API with one response per fill-in session (Idempotency-Key, verified: a retry stores nothing new), server re-checks answers and recomputes calculations (`shared/utils/forms/submission.ts`), thank-you or redirect, page language without touching the portal cookie, embed height messages; audit "Response received". Text colours one step sharper everywhere (owner). |
+| 2026-10-04 | F10 | M2: file uploads on public forms — files go straight to storage with progress on each thumbnail, Next / Submit wait for them, answers keep encrypted references (also in Save and resume drafts); server checks type, size, real pictures, no programs, same form / question, one response per file; respondent files never public. Form.vue split (ResumeBar, Upload). |

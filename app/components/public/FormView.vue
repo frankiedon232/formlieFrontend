@@ -19,8 +19,10 @@ const { form, errorCode } = await usePublicForm(props.formKey)
 const resumeOn = computed(() => !!form.value?.schema?.settings?.save_resume)
 const resume = usePublicResume(props.formKey, resumeOn)
 const { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)
+const { upload } = usePublicUploads(props.formKey)
 const respondent = computed(() => ({
   alreadySent: alreadySent.value,
+  upload,
   another,
   confirmDifferent,
   sendCode,

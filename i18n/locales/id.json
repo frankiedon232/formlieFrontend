@@ -2004,7 +2004,8 @@
       "duration": "Masukkan durasi untuk {field} (menit 0–59).",
       "name": "Masukkan nama depan dan belakang untuk {field}.",
       "consent": "Konfirmasikan {field} untuk melanjutkan.",
-      "choice": "Pilih opsi dari daftar untuk {field}."
+      "choice": "Pilih opsi dari daftar untuk {field}.",
+      "file": "{field}: ada file yang belum selesai diunggah — hapus lalu tambahkan lagi."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Hanya {max} file yang diizinkan — {n} file tidak ditambahkan. | Hanya {max} file yang diizinkan — {n} file tidak ditambahkan.",
       "limits": "Hingga {max} file, masing-masing {mb} MB",
       "count": "{n} dari {max}",
-      "addMore": "Tambah lagi"
+      "addMore": "Tambah lagi",
+      "failed": "Tidak dapat mengunggah {file}.",
+      "uploading": "Mengunggah {n} file… | Mengunggah {n} file…",
+      "uploadingFile": "Mengunggah {file}",
+      "waiting": "Menunggu file selesai diunggah…"
     },
     "after": {
       "another": "Isi lagi",

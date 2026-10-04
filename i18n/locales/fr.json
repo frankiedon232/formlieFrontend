@@ -2004,7 +2004,8 @@
       "duration": "Saisissez une durée pour {field} (minutes 0–59).",
       "name": "Saisissez le prénom et le nom pour {field}.",
       "consent": "Veuillez confirmer {field} pour continuer.",
-      "choice": "Choisissez une option dans la liste pour {field}."
+      "choice": "Choisissez une option dans la liste pour {field}.",
+      "file": "{field} : un fichier n'a pas fini d'être envoyé — retirez-le et ajoutez-le à nouveau."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Seuls {max} fichiers sont autorisés — {n} fichier n’a pas été ajouté. | Seuls {max} fichiers sont autorisés — {n} fichiers n’ont pas été ajoutés.",
       "limits": "Jusqu’à {max} fichiers, {mb} Mo chacun",
       "count": "{n} sur {max}",
-      "addMore": "Ajouter d’autres"
+      "addMore": "Ajouter d’autres",
+      "failed": "Impossible d'envoyer {file}.",
+      "uploading": "Envoi de {n} fichier… | Envoi de {n} fichiers…",
+      "uploadingFile": "Envoi de {file}",
+      "waiting": "En attente de la fin de l'envoi des fichiers…"
     },
     "after": {
       "another": "En remplir un autre",

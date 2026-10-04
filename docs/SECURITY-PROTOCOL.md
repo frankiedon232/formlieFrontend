@@ -41,7 +41,7 @@ Same structure (`kid, iv, ts, nonce, ct`), encrypted with the session key. Clien
 
 ## 4. Exceptions (explicit, documented)
 
-- File uploads: browser uploads directly to object storage via **pre-signed, expiring URLs** (TLS); the request that obtains the URL is enveloped. Files are encrypted at rest.
+- File uploads: browser uploads directly to object storage via **pre-signed, expiring URLs** (TLS); the request that obtains the URL is enveloped. Files are encrypted at rest. Respondents' files (public forms) are checked by their bytes (real pictures for image questions, no programs for file questions), never served from a public address, and attached to exactly one response (03-DECISIONS → 88).
 - File downloads/exports: signed, short-lived URLs.
 - `/api/health` and the handshake endpoint.
 

@@ -59,7 +59,6 @@ watch(
   value => (done.value = !!value),
 )
 
-
 // Logic, set values and calculated fields follow the answers live.
 const logic = computed(() => evaluateLogic(props.schema, answers.value))
 watchEffect(() => {
@@ -215,8 +214,12 @@ async function send() {
     submitting.value = false
   }
 }
+// File questions upload as soon as files are picked (public page); Next / Submit wait for them.
+const uploadsPending = ref(0)
+provide(RENDERER_UPLOADS, { upload: props.preview ? null : (props.respondent?.upload ?? null), pending: uploadsPending })
+
 function next() {
-  if (submitting.value) return
+  if (submitting.value || uploadsPending.value) return
   attempted.value = true
   if (!check()) return
   attempted.value = false
@@ -252,7 +255,6 @@ const resumeEmail = computed(() => {
   const value = key ? answers.value[key] : ''
   return typeof value === 'string' ? value : ''
 })
-const { relative } = useFormat()
 
 function restart() {
   index.value = 0
@@ -316,6 +318,9 @@ function restart() {
           :description="registered.at ? t('renderer.identity.registeredDesc', { date: formatDate(registered.at) }) : t('renderer.identity.registeredDescNoDate')"
         />
         <UAlert v-if="duplicateNotice" icon="i-lucide-copy-x" color="warning" variant="subtle" :title="t('renderer.after.duplicate')" :description="t('renderer.after.duplicateDesc')" />
+        <p v-if="uploadsPending" class="flex items-center gap-1.5 text-xs text-toned" role="status" aria-live="polite">
+          <UIcon name="i-lucide-loader-circle" class="size-3.5 animate-spin" />{{ t('renderer.files.waiting') }}
+        </p>
         <div class="flex items-center gap-2 pt-2" :class="button.block ? 'flex-col-reverse' : 'justify-between'">
           <UButton
             v-if="trail.length"
@@ -332,6 +337,7 @@ function restart() {
           <UButton
             type="submit"
             :loading="submitting"
+            :disabled="uploadsPending > 0"
             :label="last ? t('renderer.submit') : t('renderer.next')"
             :trailing-icon="last ? undefined : 'i-lucide-arrow-right'"
             :color="button.color"
@@ -342,25 +348,7 @@ function restart() {
           />
         </div>
         <!-- Save and resume: saved status + "continue later". -->
-        <div v-if="resume" class="flex flex-wrap items-center justify-between gap-2 border-t border-(--ui-border) pt-3 text-xs text-muted">
-          <span class="flex items-center gap-1.5" role="status" aria-live="polite">
-            <UIcon
-              :name="resume.state === 'saving' ? 'i-lucide-loader-circle' : resume.state === 'error' ? 'i-lucide-cloud-alert' : 'i-lucide-cloud-check'"
-              class="size-3.5 shrink-0"
-              :class="resume.state === 'saving' ? 'animate-spin' : resume.state === 'error' ? 'text-(--ui-error)' : ''"
-            />
-            {{
-              resume.state === 'saving'
-                ? t('renderer.resume.saving')
-                : resume.state === 'error'
-                  ? t('renderer.resume.notSaved')
-                  : resume.savedAt
-                    ? t('renderer.resume.saved', { when: relative(resume.savedAt) })
-                    : t('renderer.resume.auto')
-            }}
-          </span>
-          <UButton :label="t('renderer.resume.later')" icon="i-lucide-bookmark" :color="button.color" variant="link" size="xs" class="px-0" @click="resumeOpen = true" />
-        </div>
+        <FormsRendererResumeBar v-if="resume" :resume="resume" :color="button.color" @later="resumeOpen = true" />
       </form>
       <FormsRendererResume v-if="resume" v-model:open="resumeOpen" :default-email="resumeEmail" :later="resume.later" />
     </template>

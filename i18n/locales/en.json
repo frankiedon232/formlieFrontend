@@ -2004,7 +2004,8 @@
       "duration": "Enter a duration for {field} (minutes 0–59).",
       "name": "Enter both first and last name for {field}.",
       "consent": "Please confirm {field} to continue.",
-      "choice": "Choose an option from the list for {field}."
+      "choice": "Choose an option from the list for {field}.",
+      "file": "{field}: a file didn't finish uploading — remove it and add it again."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Only {max} files are allowed — {n} file wasn't added. | Only {max} files are allowed — {n} files weren't added.",
       "limits": "Up to {max} files, {mb} MB each",
       "count": "{n} of {max}",
-      "addMore": "Add more"
+      "addMore": "Add more",
+      "failed": "Couldn't upload {file}.",
+      "uploading": "Uploading {n} file… | Uploading {n} files…",
+      "uploadingFile": "Uploading {file}",
+      "waiting": "Waiting for files to finish uploading…"
     },
     "after": {
       "another": "Fill in another",

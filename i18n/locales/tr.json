@@ -2004,7 +2004,8 @@
       "duration": "{field} için bir süre girin (dakika 0–59).",
       "name": "{field} için hem adı hem soyadı girin.",
       "consent": "Devam etmek için lütfen {field} alanını onaylayın.",
-      "choice": "{field} için listeden bir seçenek seçin."
+      "choice": "{field} için listeden bir seçenek seçin.",
+      "file": "{field}: bir dosyanın yüklenmesi tamamlanmadı — kaldırıp yeniden ekleyin."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Yalnızca {max} dosyaya izin veriliyor — {n} dosya eklenmedi. | Yalnızca {max} dosyaya izin veriliyor — {n} dosya eklenmedi.",
       "limits": "En fazla {max} dosya, her biri {mb} MB",
       "count": "{n} / {max}",
-      "addMore": "Daha fazla ekle"
+      "addMore": "Daha fazla ekle",
+      "failed": "{file} yüklenemedi.",
+      "uploading": "{n} dosya yükleniyor… | {n} dosya yükleniyor…",
+      "uploadingFile": "{file} yükleniyor",
+      "waiting": "Dosyaların yüklenmesi bekleniyor…"
     },
     "after": {
       "another": "Bir tane daha doldur",

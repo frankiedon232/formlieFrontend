@@ -2004,7 +2004,8 @@
       "duration": "Geben Sie für {field} eine Dauer ein (Minuten 0–59).",
       "name": "Geben Sie für {field} Vor- und Nachnamen ein.",
       "consent": "Bitte bestätigen Sie {field}, um fortzufahren.",
-      "choice": "Wählen Sie für {field} eine Option aus der Liste."
+      "choice": "Wählen Sie für {field} eine Option aus der Liste.",
+      "file": "{field}: Eine Datei wurde nicht fertig hochgeladen – entfernen Sie sie und fügen Sie sie erneut hinzu."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Es sind nur {max} Dateien erlaubt – {n} Datei wurde nicht hinzugefügt. | Es sind nur {max} Dateien erlaubt – {n} Dateien wurden nicht hinzugefügt.",
       "limits": "Bis zu {max} Dateien, je {mb} MB",
       "count": "{n} von {max}",
-      "addMore": "Weitere hinzufügen"
+      "addMore": "Weitere hinzufügen",
+      "failed": "{file} konnte nicht hochgeladen werden.",
+      "uploading": "{n} Datei wird hochgeladen… | {n} Dateien werden hochgeladen…",
+      "uploadingFile": "{file} wird hochgeladen",
+      "waiting": "Warten, bis alle Dateien hochgeladen sind…"
     },
     "after": {
       "another": "Weiteres ausfüllen",

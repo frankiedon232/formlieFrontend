@@ -5,12 +5,13 @@
  *
  *   GET  /public/forms/:key          the published form, its state, SEO and workspace branding
  *   POST /public/forms/:key/submit   one response per fill-in session (Idempotency-Key)
+ *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
 import { createHash } from 'node:crypto'
 import { z } from 'zod'
 import { availabilityOf } from '#shared/utils/forms/availability'
 import { identityOf, maskEmail, matchIdentity, normaliseEmail } from '#shared/utils/forms/identity'
-import type { PublicForm, PublicFormState, PublicSubmitResult } from '#shared/types/public'
+import type { FileAnswer, PublicForm, PublicFormState, PublicSubmitResult } from '#shared/types/public'
 import { checkSubmission } from '#shared/utils/forms/submission'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { resolveTheme } from '#shared/utils/forms/theme'
@@ -26,6 +27,11 @@ import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 import { websiteOf } from './onboarding'
 import { draftOf, newResumeToken, putDraft, RESUME_TTL_DAYS } from '../data/resumeStore'
+import { attachRespondentFiles, completeRespondentUpload, createRespondentTicket, respondentFile } from './uploads'
+import { allFields, isLocked } from '#shared/utils/forms/build'
+import { acceptsFile, parseAccept } from '#shared/utils/forms/file-types'
+import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
+import type { UploadTicket } from '#shared/types/onboarding'
 import { platformLegal } from '../data/platformStore'
 
 const RESPONDENT = { type: 'user' as const, id: null, name: 'Respondent', email: null }
@@ -159,6 +165,18 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   if (earlier) return ok<PublicSubmitResult>({ response_id: earlier.id, duplicate: true, thank_you: thankYou })
 
   const { issues, answers } = checkSubmission(schema, input.data)
+  // Files: each must be a finished upload for this form and question (names and sizes come from storage).
+  const fileIds: string[] = []
+  for (const field of allFields(schema).filter(item => isFileField(item.type) && item.key in answers)) {
+    const value = answers[field.key]
+    if (value == null || (Array.isArray(value) && !value.length)) continue
+    const files = fileAnswers(value).map(file => respondentFile(file.id, form.id, field.key))
+    if (!Array.isArray(value) || files.length !== value.length || files.some(file => !file)) issues.push({ key: field.key, code: 'file' })
+    else {
+      answers[field.key] = files
+      fileIds.push(...files.map(file => file!.id))
+    }
+  }
   if (issues.length) throw new MockError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
 
   // Telling people apart (owner, 2026-10-03; shared/utils/forms/identity.ts). With the respondent's
@@ -204,6 +222,7 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   }
   responsesOf(tenant).responses.unshift(response)
   saveResponses()
+  attachRespondentFiles(fileIds, response.id)
   if (input.resume_token) {
     const draft = draftOf(input.resume_token, form.id)
     if (draft) putDraft(input.resume_token, { ...draft, closed: true, data: {}, updated_at: new Date().toISOString() })
@@ -341,4 +360,65 @@ export const getDraft = defineMockRoute(({ event }) => {
   if (!draft) throw new MockError('FRM-GEN-1004')
   if (draft.closed) throw new MockError('FRM-RESP-1003')
   return ok({ data: draft.data, page: draft.page, updated_at: draft.updated_at, expires_at: draft.expires_at })
+})
+
+// ── Files for file questions (F10 M2) ───────────────────────────────────────────────────
+// The browser uploads straight to storage through a short-lived link, with progress; the answer
+// only keeps a reference per file. The submission is checked against these uploads.
+const uploadBody = z.object({
+  field: z.string().min(1).max(64),
+  file_name: z.string().min(1).max(200),
+  content_type: z.string().max(120),
+  size: z.number().int().positive(),
+})
+const uploadsBy = new Map<string, number[]>()
+const UPLOADS_PER_10_MIN = 60
+
+/** POST /public/forms/:key/uploads — a pre-signed upload link for one file. */
+export const requestUpload = defineMockRoute(({ event, body }) => {
+  const { tenant, form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const schema = stateOf(form) === 'open' ? publishedSchema(tenant, form) : null
+  if (!schema) throw new MockError(stateOf(form) === 'expired' ? 'FRM-FORM-1015' : 'FRM-FORM-1002')
+  const input = parseBody(uploadBody, body)
+  const field = allFields(schema).find(item => item.key === input.field)
+  if (!field || !isFileField(field.type) || isLocked(field)) throw new MockError('FRM-GEN-1002', [{ field: 'field', message: 'This question takes no files.' }])
+
+  // At most 60 files per 10 minutes from one address for one form.
+  const who = `${form.id}:${getRequestIP(event, { xForwardedFor: true }) ?? 'unknown'}`
+  const recent = (uploadsBy.get(who) ?? []).filter(at => at > Date.now() - 600_000)
+  if (recent.length >= UPLOADS_PER_10_MIN) throw new MockError('FRM-GEN-1029')
+  uploadsBy.set(who, [...recent, Date.now()])
+
+  const props = (field.props ?? {}) as Record<string, unknown>
+  const accept = field.type === 'image_upload' ? String(props.accept || 'image/*') : String(props.accept ?? '')
+  const file = { name: input.file_name, type: input.content_type }
+  const image = field.type === 'image_upload'
+  if (!acceptsFile(accept, file) || (image && (!input.content_type.startsWith('image/') || input.content_type === 'image/svg+xml')))
+    throw new MockError('FRM-GEN-1002', [{ field: 'content_type', message: 'This file type is not allowed.' }])
+  const maxBytes = maxFileBytes(props)
+  if (input.size > maxBytes) throw new MockError('FRM-GEN-1002', [{ field: 'size', message: `The file is larger than ${Math.round(maxBytes / 1024 / 1024)} MB.` }])
+
+  return ok<UploadTicket>(
+    createRespondentTicket({
+      tenantId: tenant.id,
+      formId: form.id,
+      field: field.key,
+      name: input.file_name,
+      contentType: input.content_type,
+      size: input.size,
+      maxBytes,
+      kind: image ? 'image' : 'file',
+      listed: parseAccept(accept).filter(type => type.startsWith('.')),
+    }),
+    {},
+    201,
+  )
+})
+
+/** POST /public/forms/:key/uploads/:id/complete — the stored file → its answer. */
+export const completeUpload = defineMockRoute(({ event }) => {
+  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const answer = completeRespondentUpload(getRouterParam(event, 'id') ?? '', form.id)
+  if (!answer) throw new MockError('FRM-GEN-1004')
+  return ok<FileAnswer>(answer)
 })

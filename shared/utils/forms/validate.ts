@@ -12,7 +12,7 @@ import { isCurrencyCode, isLanguageCode, isTimeZone } from './catalogues'
 export type AnswerProblem =
   | 'required' | 'email' | 'url' | 'phone' | 'number' | 'min' | 'max'
   | 'min_length' | 'max_length' | 'pattern' | 'min_selected' | 'max_selected'
-  | 'max_files' | 'date_range' | 'address'
+  | 'max_files' | 'file' | 'date_range' | 'address'
   | 'ip' | 'domain' | 'mac' | 'iban' | 'bic' | 'color' | 'duration' | 'name' | 'consent' | 'choice'
 
 export interface ValidationIssue {

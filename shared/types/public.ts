@@ -70,8 +70,24 @@ export type RendererSubmitOutcome =
       hint?: { at?: string; email?: string }
     }
 
+/**
+ * A file question's answer (F10 M2): the files are already in storage — the answer only holds a
+ * reference per file (an encrypted id) plus what to show. Preview answers have an empty id.
+ */
+export interface FileAnswer {
+  id: string
+  name: string
+  size: number
+  type: string
+}
+
+/** Uploads one file for a file question, reporting progress (0–100); `onAbort` receives a cancel function. */
+export type RendererUpload = (field: string, file: File, onProgress: (percent: number) => void, onAbort: (abort: () => void) => void) => Promise<FileAnswer>
+
 /** What the public page lets the renderer do for the respondent (F10). */
 export interface RendererRespondent {
+  /** File questions: upload straight to storage (pre-signed link). */
+  upload?: RendererUpload
   /** This browser already sent the form. */
   alreadySent: boolean
   /** Start a new response for someone else. */

@@ -2004,7 +2004,8 @@
       "duration": "请为{field}输入时长（分钟 0–59）。",
       "name": "请为{field}输入名字和姓氏。",
       "consent": "请确认{field}以继续。",
-      "choice": "请从列表中为{field}选择一个选项。"
+      "choice": "请从列表中为{field}选择一个选项。",
+      "file": "{field}：有文件尚未上传完成，请移除后重新添加。"
     },
     "page": {
       "logo": "徽标",
@@ -2043,7 +2044,11 @@
       "tooMany": "最多允许 {max} 个文件 — 有 {n} 个文件未添加。 | 最多允许 {max} 个文件 — 有 {n} 个文件未添加。",
       "limits": "最多 {max} 个文件，每个 {mb} MB",
       "count": "{n} / {max}",
-      "addMore": "继续添加"
+      "addMore": "继续添加",
+      "failed": "无法上传 {file}。",
+      "uploading": "正在上传 {n} 个文件… | 正在上传 {n} 个文件…",
+      "uploadingFile": "正在上传 {file}",
+      "waiting": "正在等待文件上传完成…"
     },
     "after": {
       "another": "再填一份",

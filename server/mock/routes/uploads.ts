@@ -6,7 +6,9 @@
  */
 import { z } from 'zod'
 import { decodeId } from '../core/ids'
+import { MAX_RESPONDENT_FILE_BYTES } from '#shared/utils/forms/file-answers'
 import type { UploadedFile, UploadTicket } from '#shared/types/onboarding'
+import type { FileAnswer } from '#shared/types/public'
 import { requireAdmin, requireAuth } from '../core/auth'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { MockError, ok } from '../core/respond'
@@ -23,7 +25,7 @@ const PURPOSES = {
   },
 } as const
 type Purpose = keyof typeof PURPOSES
-const MAX_BYTES = Math.max(...Object.values(PURPOSES).map(p => p.maxBytes))
+const MAX_BYTES = Math.max(MAX_RESPONDENT_FILE_BYTES, ...Object.values(PURPOSES).map(p => p.maxBytes))
 const TICKET_TTL_MS = 5 * 60 * 1000
 
 interface StoredUpload {
@@ -36,6 +38,18 @@ interface StoredUpload {
   expiresAt: number
   data: Uint8Array | null
   completed: boolean
+  /** Respondent files (public forms, F10 M2): never served publicly — only to the workspace (F11). */
+  respondent?: {
+    formId: string
+    field: string
+    name: string
+    /** image — must really be a picture · file — anything the question allows, never a program. */
+    kind: 'image' | 'file'
+    /** Extensions the question lists explicitly (a program is accepted only when its type is listed). */
+    listed: string[]
+    /** The response that uses it (a file is never attached to two responses). */
+    responseId?: string
+  }
 }
 
 // Completed files are kept across dev reloads (base64 in .data/mock/uploads.json) so images in
@@ -65,6 +79,38 @@ function looksLike(contentType: string, bytes: Uint8Array): boolean {
     return /<svg[\s>]/i.test(text) && !/<script|\son\w+\s*=|javascript:|<foreignObject|<iframe|<embed|<object/i.test(text)
   }
   return false
+}
+
+/** Respondent pictures: common photo formats by their bytes (SVG is never accepted from respondents). */
+function isPicture(bytes: Uint8Array): boolean {
+  const starts = (...sig: number[]) => sig.every((value, i) => bytes[i] === value)
+  const at = (offset: number, text: string) => String.fromCharCode(...bytes.slice(offset, offset + text.length)) === text
+  return (
+    ['image/png', 'image/jpeg', 'image/webp', 'image/gif'].some(type => looksLike(type, bytes)) ||
+    starts(0x42, 0x4d) || // BMP
+    starts(0x49, 0x49, 0x2a, 0x00) || starts(0x4d, 0x4d, 0x00, 0x2a) || // TIFF
+    (at(4, 'ftyp') && ['avif', 'avis', 'heic', 'heix', 'hevc', 'mif1', 'msf1'].some(brand => at(8, brand))) // AVIF / HEIC
+  )
+}
+
+/** Programs (Windows, Linux, macOS) and scripts with a `#!` line. */
+function isProgram(bytes: Uint8Array): boolean {
+  const starts = (...sig: number[]) => sig.every((value, i) => bytes[i] === value)
+  return (
+    starts(0x4d, 0x5a) ||
+    starts(0x7f, 0x45, 0x4c, 0x46) ||
+    starts(0xcf, 0xfa, 0xed, 0xfe) || starts(0xce, 0xfa, 0xed, 0xfe) || starts(0xfe, 0xed, 0xfa, 0xcf) || starts(0xca, 0xfe, 0xba, 0xbe) ||
+    starts(0x23, 0x21)
+  )
+}
+
+/** Does the stored file pass its checks? (Respondent files: picture / not a program; others: the declared image.) */
+function bytesAllowed(upload: StoredUpload, bytes: Uint8Array): boolean {
+  const respondent = upload.respondent
+  if (!respondent) return looksLike(upload.contentType, bytes)
+  if (respondent.kind === 'image') return isPicture(bytes)
+  const extension = respondent.name.toLowerCase().match(/\.[a-z0-9]+$/)?.[0] ?? ''
+  return !isProgram(bytes) || respondent.listed.includes(extension)
 }
 
 const ticketSchema = z.object({
@@ -120,7 +166,7 @@ export const storeUpload = defineEventHandler(async event => {
   const bytes = raw ? new Uint8Array(raw) : new Uint8Array()
   if (bytes.length === 0 || bytes.length > Math.min(upload.maxBytes, MAX_BYTES) || bytes.length !== upload.size)
     return refuse(400, 'Unexpected file size.')
-  if (!looksLike(upload.contentType, bytes)) return refuse(400, 'The file is not a valid image.')
+  if (!bytesAllowed(upload, bytes)) return refuse(400, upload.respondent?.kind === 'file' ? 'This kind of file is not allowed.' : 'The file is not a valid image.')
   upload.data = bytes
   upload.token = ''
   setResponseStatus(event, 204)
@@ -145,7 +191,8 @@ export const completeUpload = defineMockRoute(({ event }) => {
 export const serveFile = defineEventHandler(event => {
   // Image addresses carry an encrypted reference (core/ids.ts), never the file's id.
   const upload = uploads.get(decodeId(getRouterParam(event, 'id') ?? '') ?? '')
-  if (!upload?.completed || !upload.data) {
+  // Respondents' files are personal data: only the workspace sees them (responses, F11).
+  if (!upload?.completed || !upload.data || upload.respondent) {
     setResponseStatus(event, 404)
     return 'Not found'
   }
@@ -160,5 +207,71 @@ export const serveFile = defineEventHandler(event => {
 /** For the onboarding route: the URL of a completed upload of this workspace, else null. */
 export function completedUploadUrl(id: string, tenantId: string): string | null {
   const upload = uploads.get(id)
-  return upload?.completed && upload.tenantId === tenantId ? `/api/v1/files/${upload.id}` : null
+  return upload?.completed && !upload.respondent && upload.tenantId === tenantId ? `/api/v1/files/${upload.id}` : null
+}
+
+// ── Respondent files (public forms, F10 M2 — routes in publicForms.ts) ─────────────────────
+export interface RespondentTicketInput {
+  tenantId: string
+  formId: string
+  field: string
+  name: string
+  contentType: string
+  size: number
+  maxBytes: number
+  kind: 'image' | 'file'
+  listed: string[]
+}
+
+/** A pre-signed upload link for one respondent file. */
+export function createRespondentTicket(input: RespondentTicketInput): UploadTicket {
+  const upload: StoredUpload = {
+    id: crypto.randomUUID(),
+    tenantId: input.tenantId,
+    token: crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, ''),
+    contentType: input.contentType,
+    size: input.size,
+    maxBytes: input.maxBytes,
+    expiresAt: Date.now() + TICKET_TTL_MS,
+    data: null,
+    completed: false,
+    respondent: { formId: input.formId, field: input.field, name: input.name, kind: input.kind, listed: input.listed },
+  }
+  uploads.set(upload.id, upload)
+  return {
+    upload_id: upload.id,
+    upload_url: `/api/v1/storage/${upload.token}`,
+    method: 'PUT',
+    headers: { 'content-type': input.contentType },
+    max_bytes: input.maxBytes,
+    expires_at: new Date(upload.expiresAt).toISOString(),
+  }
+}
+
+const answerOf = (upload: StoredUpload): FileAnswer => ({ id: upload.id, name: upload.respondent!.name, size: upload.size, type: upload.contentType })
+
+/** Confirms a respondent file once its bytes are stored → the answer the form keeps. */
+export function completeRespondentUpload(id: string, formId: string): FileAnswer | null {
+  const upload = uploads.get(id)
+  if (!upload?.respondent || upload.respondent.formId !== formId || !upload.data) return null
+  upload.completed = true
+  saveUploads()
+  return answerOf(upload)
+}
+
+/** A finished respondent file of this form and question that no other response uses → its answer. */
+export function respondentFile(id: string, formId: string, field: string): FileAnswer | null {
+  const upload = uploads.get(id)
+  const owner = upload?.respondent
+  if (!upload?.completed || !owner || owner.formId !== formId || owner.field !== field || owner.responseId) return null
+  return answerOf(upload)
+}
+
+/** Attaches files to the response that was just stored. */
+export function attachRespondentFiles(ids: string[], responseId: string) {
+  for (const id of ids) {
+    const owner = uploads.get(id)?.respondent
+    if (owner) owner.responseId = responseId
+  }
+  saveUploads()
 }

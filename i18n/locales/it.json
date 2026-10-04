@@ -2004,7 +2004,8 @@
       "duration": "Inserisca una durata per {field} (minuti 0–59).",
       "name": "Inserisca nome e cognome per {field}.",
       "consent": "Confermi {field} per continuare.",
-      "choice": "Scelga un’opzione dall’elenco per {field}."
+      "choice": "Scelga un’opzione dall’elenco per {field}.",
+      "file": "{field}: un file non ha terminato il caricamento — rimuovilo e aggiungilo di nuovo."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Sono consentiti solo {max} file — {n} file non è stato aggiunto. | Sono consentiti solo {max} file — {n} file non sono stati aggiunti.",
       "limits": "Fino a {max} file, {mb} MB ciascuno",
       "count": "{n} di {max}",
-      "addMore": "Aggiungi altri"
+      "addMore": "Aggiungi altri",
+      "failed": "Impossibile caricare {file}.",
+      "uploading": "Caricamento di {n} file… | Caricamento di {n} file…",
+      "uploadingFile": "Caricamento di {file}",
+      "waiting": "In attesa che i file finiscano di caricarsi…"
     },
     "after": {
       "another": "Compilane un altro",

@@ -2004,7 +2004,8 @@
       "duration": "Wpisz czas trwania w polu {field} (minuty 0–59).",
       "name": "Wpisz imię i nazwisko w polu {field}.",
       "consent": "Potwierdź {field}, aby kontynuować.",
-      "choice": "Wybierz opcję z listy w polu {field}."
+      "choice": "Wybierz opcję z listy w polu {field}.",
+      "file": "{field}: jeden z plików nie został przesłany do końca — usuń go i dodaj ponownie."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Dozwolona liczba plików: {max} — nie dodano pliku ({n}). | Dozwolona liczba plików: {max} — nie dodane pliki: {n}.",
       "limits": "Maks. liczba plików: {max}, do {mb} MB każdy",
       "count": "{n} z {max}",
-      "addMore": "Dodaj więcej"
+      "addMore": "Dodaj więcej",
+      "failed": "Nie udało się przesłać pliku {file}.",
+      "uploading": "Przesyłanie plików: {n}… | Przesyłanie plików: {n}…",
+      "uploadingFile": "Przesyłanie {file}",
+      "waiting": "Czekamy na zakończenie przesyłania plików…"
     },
     "after": {
       "another": "Wypełnij kolejny",

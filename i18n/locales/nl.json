@@ -2004,7 +2004,8 @@
       "duration": "Voer een duur in voor {field} (minuten 0–59).",
       "name": "Voer zowel voor- als achternaam in voor {field}.",
       "consent": "Bevestig {field} om door te gaan.",
-      "choice": "Kies een optie uit de lijst voor {field}."
+      "choice": "Kies een optie uit de lijst voor {field}.",
+      "file": "{field}: een bestand is niet volledig geüpload — verwijder het en voeg het opnieuw toe."
     },
     "page": {
       "logo": "Logo",
@@ -2043,7 +2044,11 @@
       "tooMany": "Er zijn maar {max} bestanden toegestaan — {n} bestand is niet toegevoegd. | Er zijn maar {max} bestanden toegestaan — {n} bestanden zijn niet toegevoegd.",
       "limits": "Tot {max} bestanden, elk {mb} MB",
       "count": "{n} van {max}",
-      "addMore": "Meer toevoegen"
+      "addMore": "Meer toevoegen",
+      "failed": "{file} kon niet worden geüpload.",
+      "uploading": "{n} bestand uploaden… | {n} bestanden uploaden…",
+      "uploadingFile": "{file} uploaden",
+      "waiting": "Wachten tot de bestanden zijn geüpload…"
     },
     "after": {
       "another": "Nog een invullen",
