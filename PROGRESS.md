@@ -479,7 +479,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 - 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons, ✅ custom link with live check (2026-10-04) · ✅ short link (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
 - 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule, ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ✅ invite-only (personal links, statuses, resend / revoke, one response each) and organisation-only (sign in on the portal, 2-minute pass, works on forms.*), decision 96
-- ✅ People access: edit / view / responses (decision 97): workspace default + per-person level on the Share tab (under “Your team”, apart from “Answering the form”), enforced by the API; read-only editor for view, responses-only page
+- ✅ People access: edit / view / responses (decision 97): workspace default + per-person level on the Share tab (under “Your team”, apart from “Answering the form”), enforced by the API; view only: overview + read-only preview, no editor (owner, 2026-10-04)
 - ✅ Embed: iframe snippet with auto-resize, size options (M2), allowed websites + live preview (M3, decision 94)
 - ✅ SEO settings with link-card preview (decision 95): title, description, image, hide from search engines; previews as link card and search result
 - ✅ Short link redirect `/s/[code]` (decision 93): create / remove on the Share tab, 302 to the current link, visits counted, 404 page for unknown codes
@@ -982,6 +982,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Save and resume: how and where it works, built (autosave + "Save and continue later" link) | F10 M2 | ✅ |
 | 2026-10-03 | Portal text still looked faded: dark-mode headline colour fixed, body text darker, list values in the main text colour like the design image | F1 follow-up | ✅ |
 | 2026-10-03 | Public form page: branded frame around the form, workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
+| 2026-10-04 | "Can view" must be view only: no editor, designer, logic, share settings, save as template or availability change | F10 M3 | ✅ |
 | 2026-10-04 | French form: labels, sections, help and thank-you stayed English; "already filled in" showed only after the form flashed for seconds; spam check not visible anywhere | F10 | ✅ |
 
 ---
@@ -1086,3 +1087,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Personal invitation links and sign-in passes show "Opening your form…" while the link is checked, instead of flashing "This form is by invitation only" first (owner). |
 | 2026-10-04 | F10 | File rules and uploads always agree (owner question): the builder caps a question at 25 MB per file (the upload limit); files a device sends without a type (HEIC photos, some videos) are matched by extension for "All images / audio / video", pictures still checked by their bytes. |
 | 2026-10-04 | F10 | Thank-you screen (owner: "Close this page" does nothing in Chrome / Edge, browsers block it): "Close this page" only when the browser allows it (opened by another page); otherwise "All done. You can close this tab." plus "Visit the {org} website" when the organisation has one; in embeds neither. |
+| 2026-10-04 | F10 | "Can view" is view only (owner): only editors open the editor, logic, design, share settings and versions, save as template, duplicate or change availability; the API refuses the rest. View people get the overview without editor links and a read-only Preview; an editor address shows "Only people who can edit open the editor" with the way back. |

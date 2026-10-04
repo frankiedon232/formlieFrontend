@@ -22,11 +22,11 @@ import type { MockTenant, MockUser } from '../data/tenants'
 
 const MAX_INVITES = 500
 
-/** A form of this workspace, with at least this people-access level (decision 97). */
-function findForm(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'view' | 'edit' = 'edit'): StoredForm {
+/** A form of this workspace that this person can edit: sharing is editors only (decision 97). */
+function findForm(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
-  requireLevel(form, user, need)
+  requireLevel(form, user, 'edit')
   return form
 }
 
@@ -62,7 +62,7 @@ function audit(event: Parameters<typeof requireAuth>[0], tenant: MockTenant, use
 /** GET /forms/:id/invites */
 export const listInvites = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
-  return ok(listOf(findForm(tenant, user, getRouterParam(event, 'id'), 'view')))
+  return ok(listOf(findForm(tenant, user, getRouterParam(event, 'id'))))
 })
 
 const inviteBody = z.object({

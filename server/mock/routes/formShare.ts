@@ -24,11 +24,11 @@ import { MOCK_TENANTS, MOCK_USERS, type MockTenant, type MockUser } from '../dat
 import { isWorkspaceAdmin, requireLevel } from '../data/formPermissions'
 import { MOCK_OWNERS } from '../data/forms'
 
-/** A form of this workspace, with at least this people-access level (decision 97). */
-function findForm(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'view' | 'edit' = 'edit'): StoredForm {
+/** A form of this workspace that this person can edit: sharing is editors only (decision 97). */
+function findForm(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
-  requireLevel(form, user, need)
+  requireLevel(form, user, 'edit')
   return form
 }
 
@@ -137,13 +137,13 @@ function check(value: string, formId: string, tenant: MockTenant): CustomLinkChe
 /** GET /forms/:id/share */
 export const getShare = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
-  return ok(settingsOf(findForm(tenant, user, getRouterParam(event, 'id'), 'view'), tenant))
+  return ok(settingsOf(findForm(tenant, user, getRouterParam(event, 'id')), tenant))
 })
 
 /** GET /forms/:id/share/link-check?value= */
 export const checkLink = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
-  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'view')
+  const form = findForm(tenant, user, getRouterParam(event, 'id'))
   // Query values arrive inside the encrypted envelope (ctx.query), not in the address.
   const value = String(query.value ?? '').slice(0, 80)
   return ok(check(value, form.id, tenant))

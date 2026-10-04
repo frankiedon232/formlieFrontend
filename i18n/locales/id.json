@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Ubah pertanyaan, desain, berbagi; publikasikan",
-        "view": "Lihat formulir dan pengaturannya, tanpa mengubah apa pun",
+        "view": "Melihat formulir dan pratinjaunya, tanpa mengubah apa pun",
         "responses": "Lihat formulir di daftar beserta responsnya",
         "none": "Formulir tidak muncul bagi mereka"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Akses untuk {name}",
       "remove": "Hapus {name}",
       "note": "Akses pribadi seseorang menggantikan default ruang kerja baginya, baik lebih luas maupun lebih terbatas. Admin ruang kerja dan pemilik formulir selalu memiliki akses penuh.",
-      "viewOnly": "Hanya lihat",
-      "viewOnlyDesc": "Anda dapat melihat formulir ini dan pengaturannya. Perubahan tidak disimpan. Mintalah akses edit kepada pemilik formulir.",
-      "responsesOnly": "Anda hanya dapat melihat respons formulir ini",
-      "responsesOnlyDesc": "Pertanyaan dan desain tidak dibagikan kepada Anda. Hubungi pemilik formulir jika Anda memerlukan akses lebih.",
-      "viewForm": "Lihat"
+      "noEditor": "Hanya orang yang dapat mengedit yang membuka editor",
+      "noEditorDesc": "Anda dapat melihat ringkasan formulir ini dan tanggapannya. Minta pemilik formulir jika Anda perlu melakukan perubahan.",
+      "backToForm": "Kembali ke formulir"
     },
     "section": {
       "answering": "Mengisi formulir",

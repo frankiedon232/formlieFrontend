@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Change questions, design, sharing; publish",
-        "view": "See the form and its settings, change nothing",
+        "view": "See the form and a preview of it, change nothing",
         "responses": "See the form in the list and its responses",
         "none": "The form doesn’t appear for them"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Access for {name}",
       "remove": "Remove {name}",
       "note": "A person’s own access replaces the workspace default for them, whether more or less. Workspace admins and the form’s owner always have full access.",
-      "viewOnly": "View only",
-      "viewOnlyDesc": "You can look at this form and its settings. Changes aren’t saved, so ask the form’s owner for edit access.",
-      "responsesOnly": "You can see this form’s responses only",
-      "responsesOnlyDesc": "The questions and design aren’t shared with you. Ask the form’s owner if you need more access.",
-      "viewForm": "View"
+      "noEditor": "Only people who can edit open the editor",
+      "noEditorDesc": "You can see this form's overview and its responses. Ask the form's owner if you need to make changes.",
+      "backToForm": "Back to the form"
     },
     "section": {
       "answering": "Answering the form",

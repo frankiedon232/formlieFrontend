@@ -44,3 +44,14 @@ describe('seed users', () => {
     for (const person of MOCK_USERS) for (const other of MOCK_USERS) if (person.id === other.id) expect(other.email).toBe(person.email)
   })
 })
+
+describe('who may change a form (decision 97)', () => {
+  it('only "Can edit" (or full access) changes anything', async () => {
+    const { canEditForm } = await import('../../shared/utils/forms/access')
+    expect(canEditForm({ my_access: 'edit' })).toBe(true)
+    expect(canEditForm({})).toBe(true)
+    expect(canEditForm({ my_access: 'view' })).toBe(false)
+    expect(canEditForm({ my_access: 'responses' })).toBe(false)
+    expect(canEditForm(null)).toBe(false)
+  })
+})

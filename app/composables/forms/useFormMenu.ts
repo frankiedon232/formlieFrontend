@@ -25,12 +25,12 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
     formLink(publicHosts(config, request.port), key, 'fill', tenant.profile.value?.subdomain ?? null)
 
   return (form: FormSummary): DropdownMenuItem[][] => {
-    // People access (decision 97): view-only / responses-only people get only what they may do.
-    if (form.my_access && form.my_access !== 'edit')
+    // People access (decision 97): "Can view" / "Responses only" people change nothing, so no
+    // duplicate, template, sharing or lifecycle actions; only open, copy the live link, responses.
+    if (!canEditForm(form))
       return [
         [
           { label: t('forms.actions.open'), icon: 'i-lucide-square-arrow-out-up-right', to: `/forms/${form.id}` },
-          ...(form.my_access === 'view' ? [{ label: t('forms.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => actions.duplicate(form) }] : []),
           ...(form.status === 'published'
             ? [
                 {

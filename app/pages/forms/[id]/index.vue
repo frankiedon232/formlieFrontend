@@ -5,6 +5,7 @@
 -->
 <script setup lang="ts">
 import type { FormOverview, FormSummary } from '#shared/types/forms'
+import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -49,9 +50,16 @@ const menu = useFormMenu(actions, {
   saveTemplate: () => (templateOpen.value = true),
   availability: () => (availabilityOpen.value = true),
 })
+/** People access (decision 97): only editors change anything; "Can view" looks via the preview. */
+const editable = computed(() => canEditForm(form.value))
 // Header menu: save as template + lifecycle + delete (rename / move / tags live in the list).
 const lifecycleItems = computed(() => {
   if (!form.value) return []
+  // Not an editor: copy the live link and responses only ("Open" is this page).
+  if (!editable.value)
+    return menu(form.value)
+      .map(group => group.filter(item => item.to !== `/forms/${form.value!.id}`))
+      .filter(group => group.length)
   if (form.value.deleted_at)
     return [[{ label: t('forms.actions.restore'), icon: 'i-lucide-undo-2', onSelect: () => actions.lifecycle(form.value!, 'restore') }]]
   return [
@@ -59,6 +67,15 @@ const lifecycleItems = computed(() => {
     ...menu(form.value).slice(2),
   ]
 })
+// "Can view": the form exactly as respondents see it, read only (nothing is sent).
+const previewOpen = ref(false)
+const preview = ref<{ name: string; schema: FormSchemaV1 } | null>(null)
+const { busy: previewing, run } = useBusy()
+const openPreview = () =>
+  run(async () => {
+    preview.value ??= (await api.get<{ name: string; schema: FormSchemaV1 }>(`/forms/${route.params.id}/preview`)).data
+    previewOpen.value = true
+  })
 const canSeeActivity = computed(() => useSession().user.value?.role !== 'member')
 const subtitle = computed(() =>
   form.value ? t('forms.overview.subtitle', { status: t(`status.${form.value.status}`), updated: relative(form.value.updated_at) }) : undefined,
@@ -68,7 +85,7 @@ const subtitle = computed(() =>
 <template>
   <AppPanel id="form-overview" :title="form?.name ?? t('nav.forms')" :subtitle="subtitle" subtitle-icon="i-lucide-file-text">
     <template v-if="form" #actions>
-      <UDropdownMenu :items="lifecycleItems" :content="{ align: 'end' }">
+      <UDropdownMenu v-if="lifecycleItems.length" :items="lifecycleItems" :content="{ align: 'end' }">
         <UButton icon="i-lucide-ellipsis" :label="t('dataView.actions')" color="neutral" variant="outline" :loading="busy" />
       </UDropdownMenu>
       <UButton
@@ -79,14 +96,16 @@ const subtitle = computed(() =>
         :to="`/responses?form=${form.id}`"
         class="hidden sm:inline-flex"
       />
-      <!-- People access: view-only people open the editor read only; responses-only people don't. -->
+      <!-- People access: only editors open the editor; "Can view" gets a read-only preview. -->
+      <UButton v-if="editable" icon="i-lucide-pencil-ruler" :label="t('forms.detail.edit')" color="neutral" :to="`/forms/${form.id}/build`" :disabled="!!form.deleted_at" />
       <UButton
-        v-if="form.my_access !== 'responses'"
-        :icon="form.my_access === 'view' ? 'i-lucide-eye' : 'i-lucide-pencil-ruler'"
-        :label="form.my_access === 'view' ? t('share.people.viewForm') : t('forms.detail.edit')"
+        v-else-if="form.my_access === 'view'"
+        icon="i-lucide-eye"
+        :label="t('builder.preview.button')"
         color="neutral"
-        :to="`/forms/${form.id}/build`"
+        :loading="previewing"
         :disabled="!!form.deleted_at"
+        @click="openPreview"
       />
     </template>
 
@@ -136,11 +155,11 @@ const subtitle = computed(() =>
       <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div class="flex min-w-0 flex-col gap-4">
           <FormsOverviewTrend :days="overview.daily" />
-          <FormsOverviewStructure :form="form" :overview="overview" />
+          <FormsOverviewStructure :form="form" :overview="overview" :read-only="!editable" />
         </div>
         <div class="flex min-w-0 flex-col gap-4">
-          <FormsOverviewShare :form="form" :accent="(overview.theme.colors as { primary?: string } | undefined)?.primary" />
-          <FormsOverviewDetails :form="form" :template="overview.template" @availability="availabilityOpen = true" />
+          <FormsOverviewShare :form="form" :read-only="!editable" :accent="(overview.theme.colors as { primary?: string } | undefined)?.primary" />
+          <FormsOverviewDetails :form="form" :template="overview.template" :read-only="!editable" @availability="availabilityOpen = true" />
           <UCard v-if="canSeeActivity" variant="outline" :ui="{ body: 'p-4 sm:p-5' }">
             <h2 class="mb-4 text-sm font-semibold text-highlighted">{{ t('forms.detail.activity') }}</h2>
             <AuditTimeline
@@ -153,7 +172,10 @@ const subtitle = computed(() =>
         </div>
       </div>
     </div>
-    <TemplatesSaveModal v-model:open="templateOpen" :form="form" />
-    <FormsListAvailabilityModal v-model:open="availabilityOpen" :form="form" @saved="load" />
+    <template v-if="editable">
+      <TemplatesSaveModal v-model:open="templateOpen" :form="form" />
+      <FormsListAvailabilityModal v-model:open="availabilityOpen" :form="form" @saved="load" />
+    </template>
+    <LazyFormsBuilderPreviewModal v-if="preview" v-model:open="previewOpen" :schema="preview.schema" :form-name="preview.name" />
   </AppPanel>
 </template>

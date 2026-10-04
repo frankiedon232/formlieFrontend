@@ -379,3 +379,6 @@ export function useBuilder(): FormBuilder {
   if (!builder) throw new Error('useBuilder() must be used inside the form builder page.')
   return builder
 }
+
+/** The builder when inside the editor, else null (e.g. the read-only preview on the overview). */
+export const useBuilderIfAny = (): FormBuilder | null => inject(BUILDER_KEY, null)

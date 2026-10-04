@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Cambiar preguntas, diseño y uso compartido; publicar",
-        "view": "Ver el formulario y su configuración, sin cambiar nada",
+        "view": "Ver el formulario y una vista previa, sin cambiar nada",
         "responses": "Ver el formulario en la lista y sus respuestas",
         "none": "El formulario no les aparece"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Acceso de {name}",
       "remove": "Quitar a {name}",
       "note": "El acceso propio de una persona sustituye para ella el valor predeterminado del espacio de trabajo, sea mayor o menor. Los administradores del espacio de trabajo y el propietario del formulario siempre tienen acceso total.",
-      "viewOnly": "Solo lectura",
-      "viewOnlyDesc": "Puede consultar este formulario y su configuración. Los cambios no se guardan; pida acceso de edición al propietario del formulario.",
-      "responsesOnly": "Solo puede ver las respuestas de este formulario",
-      "responsesOnlyDesc": "Las preguntas y el diseño no se han compartido con usted. Consulte al propietario del formulario si necesita más acceso.",
-      "viewForm": "Ver"
+      "noEditor": "Solo quienes pueden editar abren el editor",
+      "noEditorDesc": "Puedes ver el resumen de este formulario y sus respuestas. Pide al propietario del formulario si necesitas hacer cambios.",
+      "backToForm": "Volver al formulario"
     },
     "section": {
       "answering": "Responder el formulario",

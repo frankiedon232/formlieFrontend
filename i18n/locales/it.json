@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Modificare domande, design e condivisione; pubblicare",
-        "view": "Vedere il modulo e le impostazioni, senza modificare nulla",
+        "view": "Vedere il modulo e un'anteprima, senza modificare nulla",
         "responses": "Vedere il modulo nell’elenco e le sue risposte",
         "none": "Il modulo non viene mostrato"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Accesso per {name}",
       "remove": "Rimuovi {name}",
       "note": "L’accesso personale sostituisce per quella persona l’impostazione predefinita dello spazio di lavoro, che sia maggiore o minore. Gli amministratori dello spazio e il proprietario del modulo hanno sempre accesso completo.",
-      "viewOnly": "Sola lettura",
-      "viewOnlyDesc": "Puoi consultare questo modulo e le sue impostazioni. Le modifiche non vengono salvate: chiedi l’accesso in modifica al proprietario del modulo.",
-      "responsesOnly": "Puoi vedere solo le risposte di questo modulo",
-      "responsesOnlyDesc": "Domande e design non sono condivisi con te. Rivolgiti al proprietario del modulo se ti serve un accesso maggiore.",
-      "viewForm": "Visualizza"
+      "noEditor": "Solo chi può modificare apre l'editor",
+      "noEditorDesc": "Puoi vedere la panoramica di questo modulo e le sue risposte. Chiedi al proprietario del modulo se devi apportare modifiche.",
+      "backToForm": "Torna al modulo"
     },
     "section": {
       "answering": "Compilare il modulo",

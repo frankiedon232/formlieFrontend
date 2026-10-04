@@ -8,8 +8,9 @@ import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 const props = defineProps<{ schema?: FormSchemaV1 | null; title?: string; formName?: string }>()
 const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
-const builder = useBuilder()
-const shown = computed(() => props.schema ?? builder.schema.value)
+// Outside the editor (read-only preview for "Can view" people) the schema comes in as a prop.
+const builder = useBuilderIfAny()
+const shown = computed(() => props.schema ?? builder?.schema.value ?? null)
 
 const device = ref<'desktop' | 'tablet' | 'phone'>('desktop')
 const devices = computed(() => [

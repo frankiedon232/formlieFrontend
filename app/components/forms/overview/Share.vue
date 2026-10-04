@@ -2,13 +2,13 @@
   Form overview → Share card (also beside the Share tab): status, the public link (custom link
   when set, shared/utils/urls/public.ts) with copy, three equal actions (open · embed code ·
   QR code), and a summary of how the form is shared (access · limit · availability) that opens
-  the Share settings. Live once the form is published.
+  the Share settings (editors only, decision 97). Live once the form is published.
 -->
 <script setup lang="ts">
 import type { FormSummary } from '#shared/types/forms'
 import { formLink, publicHosts, shortLink } from '#shared/utils/urls/public'
 
-const props = defineProps<{ form: FormSummary; accent?: string }>()
+const props = defineProps<{ form: FormSummary; accent?: string; readOnly?: boolean }>()
 const { t } = useI18n()
 const config = useRuntimeConfig().public
 const tenant = useTenant()
@@ -88,7 +88,7 @@ const actions = computed(() => [
 
     <!-- How it's shared → Share settings. -->
     <div class="-mx-4 -mb-4 border-t border-default sm:-mx-5 sm:-mb-5">
-      <div v-if="onShareTab" class="flex flex-wrap gap-x-3 gap-y-1 px-4 py-3 sm:px-5">
+      <div v-if="onShareTab || readOnly" class="flex flex-wrap gap-x-3 gap-y-1 px-4 py-3 sm:px-5">
         <span v-for="fact in facts" :key="fact.label" class="flex items-center gap-1.5 text-xs text-toned">
           <UIcon :name="fact.icon" class="size-3.5 shrink-0 text-muted" />{{ fact.label }}
         </span>

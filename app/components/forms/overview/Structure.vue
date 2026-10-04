@@ -1,12 +1,12 @@
 <!--
   Form overview → what the form is made of, each part linked to where it is edited: questions and
   pages (Build), rules and calculations (Logic), the look (Design, with a mini preview) and the
-  published versions (Versions).
+  published versions (Versions). Read only (not an editor, decision 97): the same numbers, no links.
 -->
 <script setup lang="ts">
 import type { FormOverview, FormSummary } from '#shared/types/forms'
 
-const props = defineProps<{ form: FormSummary; overview: FormOverview }>()
+const props = defineProps<{ form: FormSummary; overview: FormOverview; readOnly?: boolean }>()
 const { t } = useI18n()
 const { relative } = useFormat()
 
@@ -23,19 +23,31 @@ const parts = computed(() => [
     <h2 class="mb-3 text-sm font-semibold text-highlighted">{{ t('forms.overview.structureTitle') }}</h2>
     <div class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_11rem]">
       <div class="grid grid-cols-3 gap-2">
-        <NuxtLink
-          v-for="part in parts"
-          :key="part.key"
-          :to="form.deleted_at ? undefined : part.to"
-          class="flex flex-col gap-1 rounded-md border border-default p-3 transition-colors hover:border-accented focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
-        >
-          <UIcon :name="part.icon" class="size-4 text-muted" />
-          <span class="text-xl font-semibold text-highlighted tabular-nums">{{ part.value }}</span>
-          <span class="truncate text-xs text-muted">{{ t(`forms.overview.part.${part.key}`) }}</span>
-          <span class="truncate text-[11px] text-dimmed">{{ part.sub }}</span>
-        </NuxtLink>
+        <template v-for="part in parts" :key="part.key">
+          <div v-if="readOnly" class="flex flex-col gap-1 rounded-md border border-default p-3">
+            <UIcon :name="part.icon" class="size-4 text-muted" />
+            <span class="text-xl font-semibold text-highlighted tabular-nums">{{ part.value }}</span>
+            <span class="truncate text-xs text-muted">{{ t(`forms.overview.part.${part.key}`) }}</span>
+            <span class="truncate text-[11px] text-dimmed">{{ part.sub }}</span>
+          </div>
+          <NuxtLink
+            v-else
+            :to="form.deleted_at ? undefined : part.to"
+            class="flex flex-col gap-1 rounded-md border border-default p-3 transition-colors hover:border-accented focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+          >
+            <UIcon :name="part.icon" class="size-4 text-muted" />
+            <span class="text-xl font-semibold text-highlighted tabular-nums">{{ part.value }}</span>
+            <span class="truncate text-xs text-muted">{{ t(`forms.overview.part.${part.key}`) }}</span>
+            <span class="truncate text-[11px] text-dimmed">{{ part.sub }}</span>
+          </NuxtLink>
+        </template>
+      </div>
+      <div v-if="readOnly" class="flex flex-col overflow-hidden rounded-md border border-default">
+        <TemplatesThumb :theme="overview.theme" :title="form.name" :labels="overview.preview" compact />
+        <span class="border-t border-default px-2.5 py-1.5 text-xs text-muted">{{ t('forms.overview.design') }}</span>
       </div>
       <NuxtLink
+        v-else
         :to="form.deleted_at ? undefined : `${base}/design`"
         class="group/design flex flex-col overflow-hidden rounded-md border border-default transition-colors hover:border-accented focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
         :aria-label="t('forms.overview.editDesign')"
@@ -51,7 +63,7 @@ const parts = computed(() => [
     <div class="mt-4 flex flex-col gap-2">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-medium text-muted uppercase">{{ t('forms.overview.versions') }}</h3>
-        <UButton :label="t('forms.overview.allVersions')" color="neutral" variant="link" size="xs" :to="`${base}/versions`" trailing-icon="i-lucide-arrow-right" />
+        <UButton v-if="!readOnly" :label="t('forms.overview.allVersions')" color="neutral" variant="link" size="xs" :to="`${base}/versions`" trailing-icon="i-lucide-arrow-right" />
       </div>
       <ol v-if="overview.versions.length" class="flex flex-col">
         <li v-for="version in overview.versions" :key="version.id" class="flex items-center gap-3 border-s border-default py-1.5 ps-3">

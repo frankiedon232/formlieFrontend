@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Thay đổi câu hỏi, thiết kế, chia sẻ; xuất bản",
-        "view": "Xem biểu mẫu và cài đặt, không thay đổi gì",
+        "view": "Xem biểu mẫu và bản xem trước, không thay đổi gì",
         "responses": "Xem biểu mẫu trong danh sách và các câu trả lời",
         "none": "Biểu mẫu không hiển thị với họ"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Quyền truy cập của {name}",
       "remove": "Xóa {name}",
       "note": "Quyền riêng của một người sẽ thay thế mặc định của không gian làm việc đối với người đó, dù nhiều hơn hay ít hơn. Quản trị viên không gian làm việc và chủ sở hữu biểu mẫu luôn có toàn quyền.",
-      "viewOnly": "Chỉ xem",
-      "viewOnlyDesc": "Bạn có thể xem biểu mẫu này và cài đặt của nó. Thay đổi sẽ không được lưu. Hãy đề nghị chủ sở hữu biểu mẫu cấp quyền chỉnh sửa.",
-      "responsesOnly": "Bạn chỉ có thể xem câu trả lời của biểu mẫu này",
-      "responsesOnlyDesc": "Câu hỏi và thiết kế không được chia sẻ với bạn. Hãy liên hệ chủ sở hữu biểu mẫu nếu bạn cần thêm quyền.",
-      "viewForm": "Xem"
+      "noEditor": "Chỉ người có quyền chỉnh sửa mới mở được trình chỉnh sửa",
+      "noEditorDesc": "Bạn có thể xem tổng quan biểu mẫu này và các phản hồi. Hãy hỏi chủ sở hữu biểu mẫu nếu bạn cần thay đổi.",
+      "backToForm": "Quay lại biểu mẫu"
     },
     "section": {
       "answering": "Trả lời biểu mẫu",

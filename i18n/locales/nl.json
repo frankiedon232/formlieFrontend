@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Vragen, ontwerp en delen wijzigen; publiceren",
-        "view": "Formulier en instellingen zien, niets wijzigen",
+        "view": "Het formulier en een voorbeeld bekijken, niets wijzigen",
         "responses": "Formulier in de lijst en de reacties zien",
         "none": "Het formulier wordt niet getoond"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Toegang voor {name}",
       "remove": "{name} verwijderen",
       "note": "De eigen toegang van een persoon vervangt voor die persoon de standaard van de werkruimte (meer of minder). Werkruimtebeheerders en de eigenaar van het formulier hebben altijd volledige toegang.",
-      "viewOnly": "Alleen bekijken",
-      "viewOnlyDesc": "U kunt dit formulier en de instellingen bekijken. Wijzigingen worden niet opgeslagen. Vraag de eigenaar van het formulier om bewerkingstoegang.",
-      "responsesOnly": "U kunt alleen de reacties op dit formulier zien",
-      "responsesOnlyDesc": "De vragen en het ontwerp zijn niet met u gedeeld. Vraag de eigenaar van het formulier als u meer toegang nodig hebt.",
-      "viewForm": "Bekijken"
+      "noEditor": "Alleen mensen die mogen bewerken openen de editor",
+      "noEditorDesc": "Je kunt het overzicht van dit formulier en de antwoorden zien. Vraag de eigenaar van het formulier als je iets wilt wijzigen.",
+      "backToForm": "Terug naar het formulier"
     },
     "section": {
       "answering": "Het formulier invullen",

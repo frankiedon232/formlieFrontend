@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Soruları, tasarımı, paylaşımı değiştirme; yayınlama",
-        "view": "Formu ve ayarlarını görme, değişiklik yok",
+        "view": "Formu ve önizlemesini görür, hiçbir şeyi değiştirmez",
         "responses": "Formu listede ve yanıtlarını görme",
         "none": "Form onlara gösterilmez"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "{name} için erişim",
       "remove": "{name} kişisini kaldır",
       "note": "Bir kişiye özel erişim, o kişi için çalışma alanı varsayılanının yerini alır (daha fazla ya da daha az). Çalışma alanı yöneticileri ve form sahibi her zaman tam erişime sahiptir.",
-      "viewOnly": "Yalnızca görüntüleme",
-      "viewOnlyDesc": "Bu formu ve ayarlarını görüntüleyebilirsiniz. Değişiklikler kaydedilmez. Düzenleme erişimi için form sahibine başvurun.",
-      "responsesOnly": "Bu formun yalnızca yanıtlarını görebilirsiniz",
-      "responsesOnlyDesc": "Sorular ve tasarım sizinle paylaşılmadı. Daha fazla erişime ihtiyacınız varsa form sahibine başvurun.",
-      "viewForm": "Görüntüle"
+      "noEditor": "Düzenleyiciyi yalnızca düzenleme yetkisi olanlar açar",
+      "noEditorDesc": "Bu formun genel görünümünü ve yanıtlarını görebilirsiniz. Değişiklik yapmanız gerekirse formun sahibinden isteyin.",
+      "backToForm": "Forma dön"
     },
     "section": {
       "answering": "Formu yanıtlama",

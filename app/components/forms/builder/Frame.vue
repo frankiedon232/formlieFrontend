@@ -59,7 +59,7 @@ defineShortcuts({
   <AppPanel :id="`form-${mode}`" :title="form?.name ?? t('builder.crumb')" compact-search>
     <template #title>
       <UInput
-        v-if="form"
+        v-if="form && s.canEdit.value"
         v-model="nameDraft"
         variant="ghost"
         maxlength="120"
@@ -70,13 +70,14 @@ defineShortcuts({
         @keydown.enter="($event.target as HTMLInputElement).blur()"
         @keydown.esc="nameDraft = form.name"
       />
-      <USkeleton v-else class="h-6 w-48" />
+      <USkeleton v-else-if="s.loading.value" class="h-6 w-48" />
+      <span v-else class="truncate text-base font-semibold text-highlighted sm:text-lg">{{ form?.name ?? t('builder.crumb') }}</span>
     </template>
-    <template v-if="form" #meta>
+    <template v-if="form && s.canEdit.value" #meta>
       <FormsBuilderSaveStatus :session="s" />
     </template>
 
-    <template v-if="form" #actions>
+    <template v-if="form && s.canEdit.value" #actions>
       <UTabs
         :model-value="mode"
         :items="modes"
@@ -107,15 +108,15 @@ defineShortcuts({
       <USkeleton class="mx-auto h-[60vh] w-full max-w-4xl" />
     </slot>
 
-    <!-- Responses only (people access): no editor, but the way to what they may see. -->
+    <!-- "Can view" / "Responses only" (people access, decision 97): never the editor, only the way back. -->
     <UEmpty
-      v-else-if="s.failed.value === 'FRM-PERM-1001'"
-      icon="i-lucide-inbox"
-      :title="t('share.people.responsesOnly')"
-      :description="t('share.people.responsesOnlyDesc')"
+      v-else-if="s.failed.value === 'FRM-PERM-1001' || !s.canEdit.value"
+      icon="i-lucide-eye"
+      :title="t('share.people.noEditor')"
+      :description="t('share.people.noEditorDesc')"
       :actions="[
-        { label: t('forms.viewResponses'), to: `/responses?form=${s.formId}`, color: 'neutral', icon: 'i-lucide-inbox' },
-        { label: t('nav.forms'), to: '/forms', color: 'neutral', variant: 'outline' },
+        { label: t('share.people.backToForm'), to: `/forms/${s.formId}`, color: 'neutral', icon: 'i-lucide-arrow-left' },
+        { label: t('forms.viewResponses'), to: `/responses?form=${s.formId}`, color: 'neutral', variant: 'outline', icon: 'i-lucide-inbox' },
       ]"
       variant="outline"
     />
@@ -131,7 +132,6 @@ defineShortcuts({
     />
 
     <template v-else>
-      <UAlert v-if="!s.canEdit.value" icon="i-lucide-eye" color="neutral" variant="subtle" :title="t('share.people.viewOnly')" :description="t('share.people.viewOnlyDesc')" />
       <UAlert
         v-if="autosave.state.value === 'conflict'"
         icon="i-lucide-users"

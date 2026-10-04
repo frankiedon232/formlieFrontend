@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Fragen, Design und Freigabe ändern; veröffentlichen",
-        "view": "Formular und Einstellungen sehen, nichts ändern",
+        "view": "Formular und Vorschau ansehen, nichts ändern",
         "responses": "Formular in der Liste und seine Antworten sehen",
         "none": "Das Formular wird ihnen nicht angezeigt"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Zugriff für {name}",
       "remove": "{name} entfernen",
       "note": "Der eigene Zugriff einer Person ersetzt für sie die Workspace-Vorgabe, ob mehr oder weniger. Workspace-Admins und der Formularinhaber haben immer vollen Zugriff.",
-      "viewOnly": "Nur ansehen",
-      "viewOnlyDesc": "Sie können dieses Formular und seine Einstellungen ansehen. Änderungen werden nicht gespeichert. Bitten Sie den Formularinhaber um Bearbeitungszugriff.",
-      "responsesOnly": "Sie sehen nur die Antworten dieses Formulars",
-      "responsesOnlyDesc": "Fragen und Design sind nicht für Sie freigegeben. Wenden Sie sich an den Formularinhaber, wenn Sie mehr Zugriff benötigen.",
-      "viewForm": "Ansehen"
+      "noEditor": "Nur Personen mit Bearbeitungsrecht öffnen den Editor",
+      "noEditorDesc": "Sie sehen die Übersicht dieses Formulars und seine Antworten. Bitten Sie den Eigentümer des Formulars, wenn Sie etwas ändern müssen.",
+      "backToForm": "Zurück zum Formular"
     },
     "section": {
       "answering": "Formular ausfüllen",

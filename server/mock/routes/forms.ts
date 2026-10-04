@@ -227,7 +227,7 @@ export const importForm = defineMockRoute(({ event, body }) => {
 
 export const duplicateForm = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
-  const source = findForm(tenant, user, getRouterParam(event, 'id'), { need: 'view' })
+  const source = findForm(tenant, user, getRouterParam(event, 'id'), { need: 'edit' })
   const copy = newForm(tenant, user, {
     name: `${source.name} (copy)`.slice(0, 120),
     folder: source.folder,

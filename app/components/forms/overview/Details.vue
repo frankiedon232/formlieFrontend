@@ -2,7 +2,8 @@
 <script setup lang="ts">
 import type { FormOverview, FormSummary } from '#shared/types/forms'
 
-defineProps<{ form: FormSummary; template: FormOverview['template'] }>()
+/** readOnly: not an editor (people access), so availability can't be changed here. */
+defineProps<{ form: FormSummary; template: FormOverview['template']; readOnly?: boolean }>()
 const emit = defineEmits<{ availability: [] }>()
 const { t } = useI18n()
 const { dateTime, relative } = useFormat()
@@ -21,7 +22,7 @@ const { dateTime, relative } = useFormat()
         <dd class="flex items-center gap-1.5">
           <FormsListAvailabilityBadge v-if="form.status === 'published'" :form="form" />
           <span v-else class="text-highlighted">{{ form.opens_at || form.closes_at ? t('forms.availability.set') : t('forms.availability.notSet') }}</span>
-          <UButton icon="i-lucide-pencil" color="neutral" variant="ghost" size="xs" :aria-label="t('forms.availability.menu')" :disabled="!!form.deleted_at" @click="emit('availability')" />
+          <UButton v-if="!readOnly" icon="i-lucide-pencil" color="neutral" variant="ghost" size="xs" :aria-label="t('forms.availability.menu')" :disabled="!!form.deleted_at" @click="emit('availability')" />
         </dd>
       </div>
       <div class="flex items-center justify-between gap-3">

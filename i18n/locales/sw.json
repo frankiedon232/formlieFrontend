@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Kubadilisha maswali, muundo, ushiriki; kuchapisha",
-        "view": "Kuona fomu na mipangilio yake, bila kubadilisha chochote",
+        "view": "Kuona fomu na onyesho lake, bila kubadilisha chochote",
         "responses": "Kuona fomu kwenye orodha na majibu yake",
         "none": "Fomu haionekani kwao"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Ufikiaji wa {name}",
       "remove": "Ondoa {name}",
       "note": "Ufikiaji binafsi wa mtu huchukua nafasi ya chaguo-msingi la eneo la kazi kwake, uwe zaidi au pungufu. Wasimamizi wa eneo la kazi na mmiliki wa fomu huwa na ufikiaji kamili kila wakati.",
-      "viewOnly": "Kutazama pekee",
-      "viewOnlyDesc": "Unaweza kutazama fomu hii na mipangilio yake. Mabadiliko hayahifadhiwi. Mwombe mmiliki wa fomu ufikiaji wa kuhariri.",
-      "responsesOnly": "Unaweza kuona majibu ya fomu hii pekee",
-      "responsesOnlyDesc": "Maswali na muundo havijashirikiwa nawe. Wasiliana na mmiliki wa fomu ikiwa unahitaji ufikiaji zaidi.",
-      "viewForm": "Tazama"
+      "noEditor": "Ni wanaoweza kuhariri tu wanaofungua kihariri",
+      "noEditorDesc": "Unaweza kuona muhtasari wa fomu hii na majibu yake. Muulize mmiliki wa fomu ikiwa unahitaji kufanya mabadiliko.",
+      "backToForm": "Rudi kwenye fomu"
     },
     "section": {
       "answering": "Kujibu fomu",

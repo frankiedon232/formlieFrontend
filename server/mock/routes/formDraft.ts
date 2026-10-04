@@ -50,8 +50,8 @@ const versionView = ({ schema: _schema, ...version }: StoredVersion) => version
 export const getBuilder = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
-  // People access: "view" may look (read only), "edit" may change.
-  requireLevel(form, user, 'view')
+  // People access: only "edit" opens the editor (owner, 2026-10-04: view means view only).
+  requireLevel(form, user, 'edit')
   const schema = ensureSchema(form, tenant)
   return ok({
     form: { ...summaryOf(form), my_access: levelOf(form, user) },
@@ -162,17 +162,28 @@ export const discardDraft = defineMockRoute(({ event }) => {
   return ok({ form: summaryOf(form), schema: form.schema })
 })
 
-export const listVersions = defineMockRoute(({ event }) => {
+/**
+ * GET /forms/:id/preview, the form as respondents will see it, read only. "Can view" people get
+ * this instead of the editor (decision 97); nothing here can change the form.
+ */
+export const previewForm = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
   requireLevel(form, user, 'view')
+  return ok({ name: form.name, schema: ensureSchema(form, tenant) })
+})
+
+export const listVersions = defineMockRoute(({ event }) => {
+  const { tenant, user } = requireAuth(event)
+  const form = findForm(tenant, getRouterParam(event, 'id'))
+  requireLevel(form, user, 'edit')
   return ok((form.versions ?? []).map(versionView))
 })
 
 export const getVersion = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
-  requireLevel(form, user, 'view')
+  requireLevel(form, user, 'edit')
   const version = form.versions?.find(item => item.id === getRouterParam(event, 'vid'))
   if (!version) throw new MockError('FRM-GEN-1004')
   return ok(version)

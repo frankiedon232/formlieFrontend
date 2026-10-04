@@ -3061,7 +3061,7 @@
       },
       "levelDesc": {
         "edit": "Zmiana pytań, wyglądu, udostępniania; publikacja",
-        "view": "Podgląd formularza i ustawień, bez zmian",
+        "view": "Widzieć formularz i jego podgląd, bez zmian",
         "responses": "Formularz na liście i jego odpowiedzi",
         "none": "Formularz nie jest dla nich widoczny"
       },
@@ -3073,11 +3073,9 @@
       "levelFor": "Dostęp dla: {name}",
       "remove": "Usuń: {name}",
       "note": "Indywidualny dostęp osoby zastępuje dla niej ustawienie domyślne obszaru roboczego (większy lub mniejszy). Administratorzy obszaru roboczego i właściciel formularza zawsze mają pełny dostęp.",
-      "viewOnly": "Tylko podgląd",
-      "viewOnlyDesc": "Możesz przeglądać ten formularz i jego ustawienia. Zmiany nie są zapisywane. Poproś właściciela formularza o dostęp do edycji.",
-      "responsesOnly": "Widzisz tylko odpowiedzi na ten formularz",
-      "responsesOnlyDesc": "Pytania i wygląd nie zostały Ci udostępnione. Jeśli potrzebujesz większego dostępu, zwróć się do właściciela formularza.",
-      "viewForm": "Wyświetl"
+      "noEditor": "Edytor otwierają tylko osoby z prawem edycji",
+      "noEditorDesc": "Możesz zobaczyć przegląd tego formularza i jego odpowiedzi. Poproś właściciela formularza, jeśli musisz coś zmienić.",
+      "backToForm": "Wróć do formularza"
     },
     "section": {
       "answering": "Wypełnianie formularza",
