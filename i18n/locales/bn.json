@@ -3344,7 +3344,9 @@
       "answers": "উত্তর",
       "onlyAnswered": "শুধু উত্তর দেওয়া",
       "groups": "উত্তরের গোষ্ঠী",
-      "nothingHere": "এখানে দেখানোর কিছু নেই"
+      "nothingHere": "এখানে দেখানোর কিছু নেই",
+      "notDuplicate": "সদৃশ নয়",
+      "rejectDuplicate": "সদৃশ হিসেবে প্রত্যাখ্যান"
     },
     "device": {
       "desktop": "কম্পিউটার",

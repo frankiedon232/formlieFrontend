@@ -3344,7 +3344,9 @@
       "answers": "答案",
       "onlyAnswered": "仅显示已作答",
       "groups": "答案分组",
-      "nothingHere": "这里没有内容"
+      "nothingHere": "这里没有内容",
+      "notDuplicate": "不是重复",
+      "rejectDuplicate": "作为重复拒绝"
     },
     "device": {
       "desktop": "电脑",

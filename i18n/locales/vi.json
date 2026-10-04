@@ -3344,7 +3344,9 @@
       "answers": "Câu trả lời",
       "onlyAnswered": "Chỉ câu đã trả lời",
       "groups": "Nhóm câu trả lời",
-      "nothingHere": "Không có gì ở đây"
+      "nothingHere": "Không có gì ở đây",
+      "notDuplicate": "Không phải trùng lặp",
+      "rejectDuplicate": "Từ chối vì trùng lặp"
     },
     "device": {
       "desktop": "Máy tính",

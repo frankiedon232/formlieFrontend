@@ -3344,7 +3344,9 @@
       "answers": "Odpowiedzi",
       "onlyAnswered": "Tylko z odpowiedzią",
       "groups": "Grupy odpowiedzi",
-      "nothingHere": "Nic tu nie ma"
+      "nothingHere": "Nic tu nie ma",
+      "notDuplicate": "To nie duplikat",
+      "rejectDuplicate": "Odrzuć jako duplikat"
     },
     "device": {
       "desktop": "Komputer",

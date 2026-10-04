@@ -3344,7 +3344,9 @@
       "answers": "Antwoorden",
       "onlyAnswered": "Alleen beantwoord",
       "groups": "Antwoordgroepen",
-      "nothingHere": "Niets te tonen"
+      "nothingHere": "Niets te tonen",
+      "notDuplicate": "Geen duplicaat",
+      "rejectDuplicate": "Afwijzen als duplicaat"
     },
     "device": {
       "desktop": "Computer",

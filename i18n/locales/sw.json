@@ -3344,7 +3344,9 @@
       "answers": "Majibu",
       "onlyAnswered": "Yaliyojibiwa tu",
       "groups": "Makundi ya majibu",
-      "nothingHere": "Hakuna cha kuonyesha hapa"
+      "nothingHere": "Hakuna cha kuonyesha hapa",
+      "notDuplicate": "Si nakala",
+      "rejectDuplicate": "Kataa kama nakala"
     },
     "device": {
       "desktop": "Kompyuta",

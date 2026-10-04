@@ -3344,7 +3344,9 @@
       "answers": "Jawaban",
       "onlyAnswered": "Hanya yang dijawab",
       "groups": "Grup jawaban",
-      "nothingHere": "Tidak ada yang ditampilkan"
+      "nothingHere": "Tidak ada yang ditampilkan",
+      "notDuplicate": "Bukan duplikat",
+      "rejectDuplicate": "Tolak sebagai duplikat"
     },
     "device": {
       "desktop": "Komputer",

@@ -181,7 +181,7 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
       duration_seconds: Math.round(Math.max(1, fields) * (9 + rng() * 14)),
       notes_count: review?.notes?.length ?? 0,
       edited: !!review?.data && Object.keys(review.data).length > 0,
-      possible_duplicate: index > 0 && rng() < 0.012 ? { of: sampleId(form.id, index - 1), reason: 'email_typo' } : null,
+      possible_duplicate: index > 0 && rng() < 0.012 && !review?.duplicate_cleared ? { of: sampleId(form.id, index - 1), reason: 'email_typo' } : null,
       form_version: form.versions?.length ? Math.max(1, (form.versions[0]?.number ?? 1) - (at < anchor - 60 * DAY ? 1 : 0)) : null,
       source: { kind: 'sample', index, person },
     })
@@ -206,7 +206,7 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
           duration_seconds: null,
           notes_count: review?.notes?.length ?? 0,
           edited: !!review?.data && Object.keys(review.data).length > 0,
-          possible_duplicate: stored.possible_duplicate ?? null,
+          possible_duplicate: review?.duplicate_cleared ? null : (stored.possible_duplicate ?? null),
           form_version: stored.form_version,
           source: { kind: 'real', stored },
         }

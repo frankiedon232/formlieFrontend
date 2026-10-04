@@ -3344,7 +3344,9 @@
       "answers": "Respuestas",
       "onlyAnswered": "Solo respondidas",
       "groups": "Grupos de respuestas",
-      "nothingHere": "Nada que mostrar aquí"
+      "nothingHere": "Nada que mostrar aquí",
+      "notDuplicate": "No es un duplicado",
+      "rejectDuplicate": "Rechazar como duplicado"
     },
     "device": {
       "desktop": "Ordenador",

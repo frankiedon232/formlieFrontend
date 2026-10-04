@@ -2,7 +2,8 @@
   One response, in a rich panel from the side (F11, owner 2026-10-04: "super rich", next / previous
   floating in the footer). Header: avatar, who, number, form, status, one-click review bar, menu.
   Body: facts as tiles, tags, a possible-duplicate notice, every answer in a card per page, notes
-  and history. Footer: a floating pill with Previous (K) · "3 / 20" · Next (J). Esc closes.
+  and history. A possible duplicate can be opened, cleared ("Not a duplicate") or rejected (status
+  Rejected + tag "duplicate"). Footer: a floating pill with Previous (K) · "3 / 20" · Next (J). Esc closes.
 -->
 <script setup lang="ts">
 import type { ResponseDetail, ResponseStatus } from '#shared/types/responses'
@@ -43,7 +44,7 @@ defineShortcuts({
 
 // Status and tags: saved at once, one change at a time.
 const { busy, run } = useBusy()
-async function save(body: { status?: ResponseStatus; tags?: string[] }) {
+async function save(body: { status?: ResponseStatus; tags?: string[]; duplicate?: 'cleared' }) {
   if (!response.value) return
   const id = response.value.id
   await run(async () => {
@@ -111,7 +112,15 @@ async function remove() {
             variant="subtle"
             :title="t('responses.detail.duplicateTitle')"
             :description="t('responses.detail.duplicateDesc')"
-            :actions="[{ label: t('responses.detail.openEarlier'), color: 'neutral', variant: 'outline', onClick: () => emit('go', response!.possible_duplicate!.of) }]"
+            :actions="[
+              { label: t('responses.detail.openEarlier'), color: 'neutral', variant: 'outline', onClick: () => emit('go', response!.possible_duplicate!.of) },
+              ...(response.can.review
+                ? [
+                    { label: t('responses.detail.notDuplicate'), color: 'neutral' as const, variant: 'outline' as const, loading: busy, onClick: () => save({ duplicate: 'cleared' }) },
+                    { label: t('responses.detail.rejectDuplicate'), color: 'error' as const, variant: 'soft' as const, loading: busy, onClick: () => save({ status: 'rejected', tags: [...new Set([...response!.tags, 'duplicate'])] }) },
+                  ]
+                : []),
+            ]"
           />
 
           <FormsResponsesDetailAnswers :response="response" @updated="value => ((response = value), emit('changed'))" />

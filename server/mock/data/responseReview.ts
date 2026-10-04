@@ -14,6 +14,8 @@ export interface ResponseReview {
   /** Answers changed by the team (key → new value); the original stays in the history. */
   data?: Record<string, unknown>
   deleted_at?: string
+  /** "Not a duplicate": the possible-duplicate flag was looked at and cleared (F11 M2). */
+  duplicate_cleared?: boolean
 }
 
 const reviews = new Map<string, ResponseReview>(Object.entries(loadPersisted<Record<string, ResponseReview>>('response-reviews', {})))

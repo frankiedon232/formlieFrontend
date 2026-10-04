@@ -3344,7 +3344,9 @@
       "answers": "Yanıtlar",
       "onlyAnswered": "Yalnızca yanıtlananlar",
       "groups": "Yanıt grupları",
-      "nothingHere": "Burada gösterilecek bir şey yok"
+      "nothingHere": "Burada gösterilecek bir şey yok",
+      "notDuplicate": "Kopya değil",
+      "rejectDuplicate": "Kopya olarak reddet"
     },
     "device": {
       "desktop": "Bilgisayar",

@@ -21,7 +21,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | 100% (owner review) |
-| F11   | Responses                                         | 🟡     | ~45% |
+| F11   | Responses                                         | 🟡     | ~65% |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
@@ -466,7 +466,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ **Availability** (decision 84): open from / open until per form, set from the list menu or the overview; badge in table and grid
 - ✅ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key`, the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
 - ✅ **Spam protection** (decision 89): invisible proof-of-work challenge (no third-party captcha), hidden trap field, submission limits per address
-- ⬜ F11: show "Possible duplicate" on responses with a link to the earlier one; merge / reject
+- ✅ F11: show "Possible duplicate" on responses with a link to the earlier one; Not a duplicate (clears the flag) / Reject as duplicate (Rejected + tag "duplicate"); merging two responses is not offered (both stay as evidence)
 - ✅ Thank-you page or redirect
 - ✅ **In-app browser** (owner, 2026-10-03, decision 83): website, Terms and Data Privacy Policy open in a branded window over the form; answers stay
 - ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles, Branded · Spotlight · Side panel · Minimal, tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
@@ -1143,3 +1143,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F11 | M2: editing answers. Editors get a pencil on every answer that can be changed; the dialog shows the form's own control, checks with the same rules (also on the server), records who / when / before / after in the history and the audit trail (question labels), and the tile shows an Edited mark. Corrected names and emails show as the respondent. Test: `answer-edit`. |
 | 2026-10-04 | F11 | M2: filters by answers. Under "Questions" in the Filter menu: one filter per choice, yes / no or rating question and "Left empty"; a Tags filter from the tags in use (`GET /forms/{id}/responses/tags`); chips read "Question: answer". DataView follows its filters live, so options that load later (tags, folders) now show. Test: `answer-filter`. |
 | 2026-10-04 | F11 | M2: bulk tags. A Tags button in the selection bar: type a tag or pick one in use, Add to N / Remove; toast confirms, the list and the Tags filter refresh. |
+| 2026-10-04 | F11 | M2 done: possible duplicates can be cleared ("Not a duplicate", recorded) or rejected (status Rejected + tag "duplicate") from the panel. M2 complete: edit answers, filters by answers and tags, bulk tags, duplicate review. Next: M3 exports. |

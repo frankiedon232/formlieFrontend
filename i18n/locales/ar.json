@@ -3344,7 +3344,9 @@
       "answers": "الإجابات",
       "onlyAnswered": "الإجابات فقط",
       "groups": "مجموعات الإجابات",
-      "nothingHere": "لا شيء لعرضه هنا"
+      "nothingHere": "لا شيء لعرضه هنا",
+      "notDuplicate": "ليست مكررة",
+      "rejectDuplicate": "رفض كمكررة"
     },
     "device": {
       "desktop": "حاسوب",

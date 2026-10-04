@@ -273,6 +273,8 @@ const patchBody = z.object({
   tags: z.array(z.string().trim().min(1).max(40)).max(20).optional(),
   /** Changed answers (key → value); needs "Can edit". */
   data: z.record(z.string().max(64), z.unknown()).optional(),
+  /** "Not a duplicate": clears the possible-duplicate flag (F11 M2). */
+  duplicate: z.literal('cleared').optional(),
 })
 
 /**
@@ -307,6 +309,7 @@ export const patchResponse = defineMockRoute(({ event, body: raw }) => {
   if (input.status && input.status !== entry.status) changes.push({ field: 'status', before: entry.status, after: input.status })
   const tags = input.tags ? [...new Set(input.tags)] : null
   if (tags && JSON.stringify(tags) !== JSON.stringify(entry.tags)) changes.push({ field: 'tags', before: entry.tags, after: tags })
+  if (input.duplicate && entry.possible_duplicate) changes.push({ field: 'duplicate', before: 'possible', after: 'not a duplicate' })
   for (const [key, value] of Object.entries(input.data ?? {}))
     if (JSON.stringify(current[key] ?? null) !== JSON.stringify(value ?? null)) changes.push({ field: `answer:${key}`, before: current[key] ?? null, after: value ?? null })
   if (changes.length) {
@@ -314,6 +317,7 @@ export const patchResponse = defineMockRoute(({ event, body: raw }) => {
       if (input.status) review.status = input.status
       if (tags) review.tags = tags
       if (input.data) review.data = { ...review.data, ...input.data }
+      if (input.duplicate) review.duplicate_cleared = true
       review.history = [...changes.map(change => ({ id: crypto.randomUUID(), at, by, ...change })), ...(review.history ?? [])].slice(0, 200)
     })
     // The audit trail names the question as people know it; the response keeps the key.

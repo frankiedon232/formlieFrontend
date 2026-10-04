@@ -3344,7 +3344,9 @@
       "answers": "답변",
       "onlyAnswered": "답변한 항목만",
       "groups": "답변 그룹",
-      "nothingHere": "표시할 내용이 없습니다"
+      "nothingHere": "표시할 내용이 없습니다",
+      "notDuplicate": "중복 아님",
+      "rejectDuplicate": "중복으로 거절"
     },
     "device": {
       "desktop": "컴퓨터",

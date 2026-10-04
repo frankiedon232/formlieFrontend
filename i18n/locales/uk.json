@@ -3344,7 +3344,9 @@
       "answers": "Відповіді",
       "onlyAnswered": "Лише з відповіддю",
       "groups": "Групи відповідей",
-      "nothingHere": "Тут порожньо"
+      "nothingHere": "Тут порожньо",
+      "notDuplicate": "Не дублікат",
+      "rejectDuplicate": "Відхилити як дублікат"
     },
     "device": {
       "desktop": "Комп'ютер",

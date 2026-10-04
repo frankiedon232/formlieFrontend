@@ -3344,7 +3344,9 @@
       "answers": "回答",
       "onlyAnswered": "回答済みのみ",
       "groups": "回答のグループ",
-      "nothingHere": "表示するものはありません"
+      "nothingHere": "表示するものはありません",
+      "notDuplicate": "重複ではない",
+      "rejectDuplicate": "重複として却下"
     },
     "device": {
       "desktop": "パソコン",

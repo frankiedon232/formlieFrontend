@@ -3344,7 +3344,9 @@
       "answers": "Answers",
       "onlyAnswered": "Only answered",
       "groups": "Answer groups",
-      "nothingHere": "Nothing to show here"
+      "nothingHere": "Nothing to show here",
+      "notDuplicate": "Not a duplicate",
+      "rejectDuplicate": "Reject as duplicate"
     },
     "device": {
       "desktop": "Desktop",

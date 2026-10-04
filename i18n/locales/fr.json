@@ -3344,7 +3344,9 @@
       "answers": "Réponses",
       "onlyAnswered": "Seulement les réponses données",
       "groups": "Groupes de réponses",
-      "nothingHere": "Rien à afficher ici"
+      "nothingHere": "Rien à afficher ici",
+      "notDuplicate": "Pas un doublon",
+      "rejectDuplicate": "Rejeter comme doublon"
     },
     "device": {
       "desktop": "Ordinateur",
