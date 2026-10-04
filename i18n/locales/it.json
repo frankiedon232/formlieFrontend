@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Altre lingue",
-      "hint": "Chi risponde può cambiare lingua, e il modulo si apre nella lingua del browser quando la offre.",
+      "hint": "Il modulo si apre nella lingua del modulo indicata sopra. Chi risponde può passare a queste con il menu delle lingue in cima alla pagina.",
       "add": "Aggiungi una lingua…",
       "translate": "Traduci",
       "remove": "Rimuovi {language}",

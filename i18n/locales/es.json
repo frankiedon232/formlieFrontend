@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Más idiomas",
-      "hint": "Quienes responden pueden cambiar de idioma, y el formulario se abre en el idioma de su navegador cuando lo ofrece.",
+      "hint": "El formulario se abre en el idioma del formulario de arriba. Quienes responden pueden cambiar a estos con el menú de idiomas en la parte superior de la página.",
       "add": "Añadir un idioma…",
       "translate": "Traducir",
       "remove": "Quitar {language}",

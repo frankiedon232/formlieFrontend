@@ -102,7 +102,10 @@ const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in ok
         class="flex flex-col gap-8 px-5 py-6 @xl:px-8 @4xl:sticky @4xl:top-0 @4xl:max-h-dvh @4xl:min-h-dvh @4xl:justify-between @4xl:px-10 @4xl:py-10"
         :class="frame.tone === 'light' ? 'border-b border-(--ui-border) @4xl:border-e @4xl:border-b-0' : ''" :style="sideSurface"
       >
-        <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" />
+        <div class="flex items-center justify-between gap-3">
+          <FormsRendererFrameOrg :org="org" :initials="initials" :accent="primary" :on-accent="onPrimary" />
+          <slot name="language" />
+        </div>
         <div class="flex flex-col gap-4">
           <h1
             class="text-2xl leading-tight font-semibold tracking-tight text-balance @xl:text-3xl @4xl:text-4xl"
@@ -164,20 +167,24 @@ const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in ok
             :on-accent="onPrimary"
             :inverse="frame.style === 'spotlight'"
           />
-          <UButton
-            v-if="website"
-            :to="website"
-            target="_blank"
-            external
-            :label="t('public.frame.website')"
-            trailing-icon="i-lucide-arrow-up-right"
-            color="neutral"
-            variant="outline"
-            size="sm"
-            class="shrink-0 rounded-full border-current/25 bg-transparent text-current ring-current/25 hover:bg-current/10 @max-xl:[&>span:first-child]:sr-only"
-            :aria-label="t('public.frame.websiteOf', { name: org.name })"
-            @click="visit"
-          />
+          <div class="flex shrink-0 items-center gap-2">
+            <!-- Forms in several languages: the switcher sits beside "Visit website" (owner, 2026-10-04). -->
+            <slot name="language" />
+            <UButton
+              v-if="website"
+              :to="website"
+              target="_blank"
+              external
+              :label="t('public.frame.website')"
+              trailing-icon="i-lucide-arrow-up-right"
+              color="neutral"
+              variant="outline"
+              size="sm"
+              class="shrink-0 rounded-full border-current/25 bg-transparent text-current ring-current/25 hover:bg-current/10 @max-xl:[&>span:first-child]:sr-only"
+              :aria-label="t('public.frame.websiteOf', { name: org.name })"
+              @click="visit"
+            />
+          </div>
         </div>
       </header>
 

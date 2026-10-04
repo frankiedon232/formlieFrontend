@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { FormSchemaV1 } from '../../shared/utils/forms/schema'
 import {
-  acceptedLanguages,
   formLanguages,
   formTexts,
   pickLanguage,
@@ -99,12 +98,11 @@ describe('form translations', () => {
     expect(translationProgress(form, 'fr').stale).toBe(1)
   })
 
-  it('picks the link language, then the browser language, then the main one', () => {
-    const offered = ['en', 'fr', 'zh-CN']
-    expect(pickLanguage(offered, 'fr', ['zh-CN'])).toBe('fr')
-    expect(pickLanguage(offered, 'de', ['fr-CA', 'en'])).toBe('fr')
-    expect(pickLanguage(offered, null, ['zh-cn'])).toBe('zh-CN')
-    expect(pickLanguage(offered, null, ['de'])).toBe('en')
-    expect(acceptedLanguages('de;q=0.5, fr-CA, en;q=0.8, *')).toEqual(['fr-CA', 'en', 'de'])
+  it('opens in the main language unless the link asks for another it offers', () => {
+    const offered = ['fr', 'en', 'zh-CN']
+    expect(pickLanguage(offered, null)).toBe('fr')
+    expect(pickLanguage(offered, 'en')).toBe('en')
+    expect(pickLanguage(offered, 'de')).toBe('fr')
+    expect(pickLanguage([], null)).toBe('en')
   })
 })

@@ -1,12 +1,12 @@
 import type { PublicForm } from '#shared/types/public'
-import { acceptedLanguages, pickLanguage } from '#shared/utils/forms/translations'
+import { pickLanguage } from '#shared/utils/forms/translations'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 
 /**
- * The respondent's language on a public form (decisions 73 and 99): the link's `?lang=`, else the
- * browser's languages the form offers, else its main language. Chosen once on the server (so the
- * first paint is already right) and kept in state; the switcher changes it and puts `?lang=` in
- * the address so the link can be shared. Buttons, messages, dates and right-to-left follow it, for
+ * The respondent's language on a public form (decisions 73 and 99, owner 2026-10-04): the form's
+ * own (main) language, unless the link asks for another it offers (`?lang=`). Chosen on the server
+ * (so the first paint is already right) and kept in state; the switcher changes it and puts
+ * `?lang=` in the address so the link can be shared. Buttons, messages, dates and right-to-left follow it, for
  * this page only (a signed-in person's portal language stays as it is).
  */
 export async function usePublicLanguage(formKey: string, form: Ref<PublicForm | null>) {
@@ -15,13 +15,9 @@ export async function usePublicLanguage(formKey: string, form: Ref<PublicForm | 
   const nuxtApp = useNuxtApp()
   const offered = computed(() => form.value?.languages ?? [])
   const wanted = () => (typeof route.query.lang === 'string' ? route.query.lang : null)
-  const accepted = import.meta.server
-    ? acceptedLanguages(useRequestHeaders(['accept-language'])['accept-language'])
-    : [...(navigator.languages ?? [])]
-
-  const language = useState(`form-language:${formKey}`, () => pickLanguage(offered.value, wanted(), accepted))
+  const language = useState(`form-language:${formKey}`, () => pickLanguage(offered.value, wanted()))
   // A language the form no longer offers (or one asked for in the link) is checked again.
-  watch([offered, () => route.query.lang], () => (language.value = pickLanguage(offered.value, wanted() ?? language.value, accepted)))
+  watch([offered, () => route.query.lang], () => (language.value = pickLanguage(offered.value, wanted() ?? language.value)))
 
   async function apply(code: string) {
     const i18n = nuxtApp.$i18n

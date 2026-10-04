@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Lugha zaidi",
-      "hint": "Wanaojibu wanaweza kubadilisha lugha, na fomu hufunguka kwa lugha ya kivinjari chao ikiwa inapatikana.",
+      "hint": "Fomu hufunguka kwa lugha ya fomu iliyo juu. Wanaojibu wanaweza kubadili kwenda lugha hizi kwa menyu ya lugha juu ya ukurasa.",
       "add": "Ongeza lugha…",
       "translate": "Tafsiri",
       "remove": "Ondoa {language}",

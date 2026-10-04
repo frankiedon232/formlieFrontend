@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Meer talen",
-      "hint": "Invullers kunnen van taal wisselen, en het formulier opent in de taal van hun browser als het die aanbiedt.",
+      "hint": "Het formulier opent in de formuliertaal hierboven. Invullers wisselen naar deze talen met het taalmenu bovenaan de pagina.",
       "add": "Taal toevoegen…",
       "translate": "Vertalen",
       "remove": "{language} verwijderen",

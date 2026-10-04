@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Więcej języków",
-      "hint": "Respondenci mogą zmienić język, a formularz otwiera się w języku ich przeglądarki, jeśli go oferuje.",
+      "hint": "Formularz otwiera się w języku formularza ustawionym powyżej. Respondenci mogą przełączyć się na te języki menu języka u góry strony.",
       "add": "Dodaj język…",
       "translate": "Tłumacz",
       "remove": "Usuń: {language}",

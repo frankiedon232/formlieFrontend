@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Bahasa lain",
-      "hint": "Responden bisa mengganti bahasa, dan formulir terbuka dalam bahasa browser mereka jika tersedia.",
+      "hint": "Formulir terbuka dalam bahasa formulir di atas. Responden bisa beralih ke bahasa ini lewat menu bahasa di bagian atas halaman.",
       "add": "Tambah bahasa…",
       "translate": "Terjemahkan",
       "remove": "Hapus {language}",

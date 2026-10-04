@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "More languages",
-      "hint": "Respondents get a language switcher, and the form opens in their browser's language when it offers it.",
+      "hint": "The form opens in the form language above. Respondents can switch to these with the language menu at the top of the page.",
       "add": "Add a language…",
       "translate": "Translate",
       "remove": "Remove {language}",

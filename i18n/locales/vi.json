@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Ngôn ngữ khác",
-      "hint": "Người trả lời có thể đổi ngôn ngữ, và biểu mẫu mở bằng ngôn ngữ trình duyệt của họ nếu có.",
+      "hint": "Biểu mẫu mở bằng ngôn ngữ biểu mẫu ở trên. Người trả lời có thể chuyển sang các ngôn ngữ này bằng menu ngôn ngữ ở đầu trang.",
       "add": "Thêm ngôn ngữ…",
       "translate": "Dịch",
       "remove": "Gỡ {language}",

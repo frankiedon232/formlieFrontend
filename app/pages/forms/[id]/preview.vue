@@ -45,7 +45,14 @@ const base = computed(() => (version.value === 'live' ? data.value?.live : data.
 // Forms in several languages (decision 99): the switcher on the form, like respondents get it.
 const languages = computed(() => formLanguages(base.value))
 const language = ref('')
-watch(languages, offered => !offered.includes(language.value) && (language.value = offered[0] ?? 'en'), { immediate: true })
+// Starts in the form's main language, and again when the main language changes (or the form loads).
+watch(
+  languages,
+  (offered, before) => {
+    if (!offered.includes(language.value) || offered[0] !== before?.[0]) language.value = offered[0] ?? 'en'
+  },
+  { immediate: true },
+)
 const schema = computed(() => (base.value ? translateSchema(base.value, language.value) : null))
 const versions = computed(() => [
   { value: 'draft', label: t('preview.draft'), icon: 'i-lucide-pencil-line' },

@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Weitere Sprachen",
-      "hint": "Befragte können die Sprache wechseln, und das Formular öffnet sich in der Sprache ihres Browsers, wenn es sie anbietet.",
+      "hint": "Das Formular öffnet sich in der Formularsprache oben. Befragte wechseln über das Sprachmenü oben auf der Seite zu diesen Sprachen.",
       "add": "Sprache hinzufügen…",
       "translate": "Übersetzen",
       "remove": "{language} entfernen",

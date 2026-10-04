@@ -1957,7 +1957,7 @@
     },
     "languages": {
       "title": "Diğer diller",
-      "hint": "Yanıtlayanlar dili değiştirebilir; form, sunuyorsa tarayıcılarının dilinde açılır.",
+      "hint": "Form, yukarıdaki form dilinde açılır. Yanıtlayanlar sayfanın üstündeki dil menüsüyle bu dillere geçebilir.",
       "add": "Dil ekle…",
       "translate": "Çevir",
       "remove": "{language} dilini kaldır",

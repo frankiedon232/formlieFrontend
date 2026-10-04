@@ -148,27 +148,10 @@ export function translateSchema(schema: FormSchemaV1, language: string): FormSch
 }
 
 /**
- * Which language a respondent gets (decision 73): the one in the link (`?lang=`), else the first
- * of their browser languages the form offers ("fr-CA" matches "fr"), else the main language.
+ * Which language a respondent gets (decision 99, owner 2026-10-04): the one in the link (`?lang=`)
+ * when the form offers it, else the form's main language (first in `offered`). The browser's
+ * language doesn't decide; the switcher on the form is there for that.
  */
-export function pickLanguage(offered: string[], wanted: string | null | undefined, accepted: readonly string[] = []): string {
-  if (wanted && offered.includes(wanted)) return wanted
-  for (const tag of accepted) {
-    const exact = offered.find(code => code.toLowerCase() === tag.toLowerCase())
-    const base = offered.find(code => code.split('-')[0]!.toLowerCase() === tag.split('-')[0]!.toLowerCase())
-    if (exact ?? base) return (exact ?? base)!
-  }
-  return offered[0] ?? 'en'
+export function pickLanguage(offered: string[], wanted: string | null | undefined): string {
+  return wanted && offered.includes(wanted) ? wanted : (offered[0] ?? 'en')
 }
-
-/** Browser languages from an Accept-Language header, most wanted first. */
-export const acceptedLanguages = (header: string | null | undefined) =>
-  (header ?? '')
-    .split(',')
-    .map(part => {
-      const [tag, q] = part.trim().split(';q=')
-      return { tag: tag?.trim() ?? '', q: q ? Number(q) : 1 }
-    })
-    .filter(item => item.tag && item.tag !== '*' && !Number.isNaN(item.q))
-    .sort((a, b) => b.q - a.q)
-    .map(item => item.tag)

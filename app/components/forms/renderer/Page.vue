@@ -31,6 +31,8 @@ const props = defineProps<{
   language?: string
 }>()
 const emit = defineEmits<{ at: [at: number | 'thanks']; language: [code: string] }>()
+/** The switcher: in the page frame's top bar beside "Visit website", else (embeds, Minimal) above the form. */
+const switcher = computed(() => !!props.language && (props.languages?.length ?? 0) > 1)
 // The title respondents see: the form name, or its version in the form language (settings.title).
 const heading = computed(() => props.schema.settings?.title?.trim() || props.title)
 const branding = useWorkspaceBranding()
@@ -54,6 +56,7 @@ const inner = computed(() => (layout.value === 'full' ? `mx-auto w-full ${width.
 const frameStyle = computed(() => (props.framed ? theme.value.frame.style : null))
 const frameOwnsLogo = computed(() => !!frameStyle.value && frameStyle.value !== 'minimal')
 const frameOwnsTitle = computed(() => frameStyle.value === 'spotlight' || frameStyle.value === 'side')
+const switcherInBar = computed(() => !!frameStyle.value && frameStyle.value !== 'minimal')
 const logo = computed(() => (!frameOwnsLogo.value && theme.value.header.show_logo ? theme.value.header.logo || branding.value.logo_url : null))
 const footerLogo = computed(() => (theme.value.footer.show_logo ? theme.value.header.logo || branding.value.logo_url : null))
 const hasHeader = computed(() => !frameOwnsTitle.value && !!(logo.value || theme.value.header.show_title || theme.value.header.subtitle))
@@ -97,6 +100,9 @@ const containerClass = computed(() => [
       v-bind="framed ? { theme, title: heading, intro: theme.header.subtitle, questions, minutes, org: frameOrg } : {}"
       :class="framed ? 'flex-1' : 'contents'"
     >
+    <template v-if="switcher && switcherInBar" #language>
+      <FormsRendererLanguageSwitch bar :model-value="language!" :languages="languages!" @update:model-value="emit('language', $event)" />
+    </template>
     <div class="flex w-full flex-1 flex-col items-center" :class="layout === 'full' ? '' : 'px-3 py-6 sm:px-6 sm:py-10'">
       <main :class="containerClass" :style="{ background: layout === 'plain' ? 'transparent' : 'var(--form-container-bg)' }">
         <div :class="layout === 'split' ? 'grid @container md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]' : ''">
@@ -133,8 +139,8 @@ const containerClass = computed(() => [
             </div>
 
             <div class="flex-1" :class="inner">
-              <div v-if="language && (languages?.length ?? 0) > 1" class="mb-4 flex justify-end">
-                <FormsRendererLanguageSwitch :model-value="language" :languages="languages!" @update:model-value="emit('language', $event)" />
+              <div v-if="switcher && !switcherInBar" class="mb-4 flex justify-end">
+                <FormsRendererLanguageSwitch :model-value="language!" :languages="languages!" @update:model-value="emit('language', $event)" />
               </div>
               <FormsRendererPageHeader v-if="!band && !panel && hasHeader" class="mb-6" :theme="theme" :title="heading" :logo="logo" />
               <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" :respondent="respondent" :go-to="goTo" @at="emit('at', $event)" />
