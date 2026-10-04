@@ -2853,11 +2853,11 @@
       "taken": "Fomu nyingine tayari inatumia kiungo hiki",
       "reserved": "Neno hili limehifadhiwa — chagua jingine",
       "invalid": "Tumia herufi ndogo, nambari na vistari 3–60",
-      "use": "Tumia {link}",
       "remove": "Ondoa kiungo maalum",
       "copy": "Nakili kiungo",
       "copied": "Kiungo kimenakiliwa",
-      "keyStays": "Kiungo cha awali kinaendelea kufanya kazi, kwa hivyo viungo ulivyokwisha shiriki havitaacha kufanya kazi."
+      "keyStays": "Kiungo cha awali kinaendelea kufanya kazi, kwa hivyo viungo ulivyokwisha shiriki havitaacha kufanya kazi.",
+      "try": "Viungo vilivyo wazi unavyoweza kutumia:"
     },
     "limits": {
       "title": "Vikomo",

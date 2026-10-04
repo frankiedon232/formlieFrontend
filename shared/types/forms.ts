@@ -78,8 +78,8 @@ export interface CustomLinkCheck {
   available: boolean
   /** invalid · reserved (a Formalie page) · taken (another form) */
   reason: 'invalid' | 'reserved' | 'taken' | null
-  /** A free variant when taken. */
-  suggestion: string | null
+  /** Up to three free links close to it (taken or reserved). */
+  suggestions: string[]
 }
 
 /** GET /forms/facets — options for the owner and tag filters. */

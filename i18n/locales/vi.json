@@ -2853,11 +2853,11 @@
       "taken": "Một biểu mẫu khác đã dùng liên kết này",
       "reserved": "Từ này đã được dành riêng — hãy chọn từ khác",
       "invalid": "Dùng 3–60 chữ cái thường không dấu, chữ số và dấu gạch nối",
-      "use": "Dùng {link}",
       "remove": "Xóa liên kết tùy chỉnh",
       "copy": "Sao chép liên kết",
       "copied": "Đã sao chép liên kết",
-      "keyStays": "Liên kết gốc vẫn hoạt động, nên các liên kết bạn đã chia sẻ sẽ không bao giờ bị hỏng."
+      "keyStays": "Liên kết gốc vẫn hoạt động, nên các liên kết bạn đã chia sẻ sẽ không bao giờ bị hỏng.",
+      "try": "Các liên kết còn trống bạn có thể dùng:"
     },
     "limits": {
       "title": "Giới hạn",

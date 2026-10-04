@@ -2,14 +2,14 @@
  * Share settings (F10 M3, docs/API-CONTRACT.md → Sharing):
  *   GET  /forms/:id/share               access, password set?, response limit, custom link, availability
  *   PUT  /forms/:id/share               change them (row_version) — audited as forms.shared, never the password
- *   GET  /forms/:id/share/link-check    is a custom link free? (+ a free suggestion)
+ *   GET  /forms/:id/share/link-check    is a custom link free? (+ up to three free suggestions)
  * Passwords are stored as scrypt hashes; changing one signs everyone out of the form (version).
  */
 import { randomBytes, scryptSync } from 'node:crypto'
 import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
 import type { CustomLinkCheck, FormShareSettings } from '#shared/types/forms'
-import { customLinkProblem, FORM_KEY_PATTERN } from '#shared/utils/urls/public'
+import { customLinkProblem, FORM_KEY_PATTERN, tidyCustomLink } from '#shared/utils/urls/public'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -45,13 +45,30 @@ function linkTaken(value: string, exceptId: string): boolean {
   )
 }
 
-function check(value: string, formId: string): CustomLinkCheck {
+/** Up to three free links close to what was typed: with the organisation's name, the year, a number. */
+function suggestionsFor(value: string, formId: string, tenant: MockTenant): string[] {
+  const base = tidyCustomLink(value)
+  if (base.length < 2) return []
+  const org = tidyCustomLink(tenant.subdomain || tenant.name).slice(0, 20)
+  const year = new Date().getFullYear()
+  const candidates = [org && `${org}-${base}`, org && `${base}-${org}`, `${base}-${year}`, `${base}-form`]
+  for (let n = 2; n < 50; n++) candidates.push(`${base}-${n}`)
+  const free: string[] = []
+  for (const candidate of candidates) {
+    if (!candidate) continue
+    const link = tidyCustomLink(candidate)
+    if (!free.includes(link) && !customLinkProblem(link) && !linkTaken(link, formId)) free.push(link)
+    if (free.length === 3) break
+  }
+  return free
+}
+
+function check(value: string, formId: string, tenant: MockTenant): CustomLinkCheck {
   const problem = customLinkProblem(value)
-  if (problem) return { value, available: false, reason: problem, suggestion: null }
-  if (!linkTaken(value, formId)) return { value, available: true, reason: null, suggestion: null }
-  let n = 2
-  while (linkTaken(`${value}-${n}`, formId)) n++
-  return { value, available: false, reason: 'taken', suggestion: `${value}-${n}`.slice(0, 60) }
+  // Reserved words still get suggestions; unreadable input doesn't.
+  if (problem === 'invalid') return { value, available: false, reason: 'invalid', suggestions: [] }
+  if (!problem && !linkTaken(value, formId)) return { value, available: true, reason: null, suggestions: [] }
+  return { value, available: false, reason: problem ?? 'taken', suggestions: suggestionsFor(value, formId, tenant) }
 }
 
 /** GET /forms/:id/share */
@@ -65,7 +82,7 @@ export const checkLink = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
   const value = String(getQuery(event).value ?? '').slice(0, 80)
-  return ok(check(value, form.id))
+  return ok(check(value, form.id, tenant))
 })
 
 const shareSchema = z.object({
@@ -105,7 +122,7 @@ export const saveShare = defineMockRoute(({ event, body }) => {
     const value = input.custom_link?.trim() || null
     if (value !== (form.custom_link ?? null)) {
       if (value) {
-        const result = check(value, form.id)
+        const result = check(value, form.id, tenant)
         if (!result.available)
           throw new MockError(result.reason === 'taken' ? 'FRM-FORM-1006' : 'FRM-GEN-1002', [{ field: 'custom_link', message: result.reason ?? 'invalid' }])
         // A link that reads like a key would be ambiguous.

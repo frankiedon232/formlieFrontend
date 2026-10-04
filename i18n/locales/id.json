@@ -2853,11 +2853,11 @@
       "taken": "Formulir lain sudah menggunakan tautan ini",
       "reserved": "Kata ini dicadangkan — pilih yang lain",
       "invalid": "Gunakan 3–60 huruf kecil, angka, dan tanda hubung",
-      "use": "Gunakan {link}",
       "remove": "Hapus tautan khusus",
       "copy": "Salin tautan",
       "copied": "Tautan disalin",
-      "keyStays": "Tautan asli tetap berfungsi, sehingga tautan yang sudah Anda bagikan tidak akan rusak."
+      "keyStays": "Tautan asli tetap berfungsi, sehingga tautan yang sudah Anda bagikan tidak akan rusak.",
+      "try": "Tautan tersedia yang dapat Anda gunakan:"
     },
     "limits": {
       "title": "Batas",

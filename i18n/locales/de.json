@@ -2853,11 +2853,11 @@
       "taken": "Ein anderes Formular verwendet diesen Link bereits",
       "reserved": "Dieses Wort ist reserviert – wählen Sie ein anderes",
       "invalid": "Verwenden Sie 3–60 Kleinbuchstaben, Ziffern und Bindestriche",
-      "use": "{link} verwenden",
       "remove": "Eigenen Link entfernen",
       "copy": "Link kopieren",
       "copied": "Link kopiert",
-      "keyStays": "Der ursprüngliche Link funktioniert weiter, bereits geteilte Links bleiben also gültig."
+      "keyStays": "Der ursprüngliche Link funktioniert weiter, bereits geteilte Links bleiben also gültig.",
+      "try": "Freie Links, die Sie nutzen können:"
     },
     "limits": {
       "title": "Grenzen",

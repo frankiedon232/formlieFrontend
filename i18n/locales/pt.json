@@ -2853,11 +2853,11 @@
       "taken": "Outro formulário já usa esta ligação",
       "reserved": "Esta palavra está reservada — escolha outra",
       "invalid": "Use 3–60 letras minúsculas, números e hífenes",
-      "use": "Usar {link}",
       "remove": "Remover ligação personalizada",
       "copy": "Copiar ligação",
       "copied": "Ligação copiada",
-      "keyStays": "A ligação original continua a funcionar, por isso as ligações já partilhadas nunca deixam de funcionar."
+      "keyStays": "A ligação original continua a funcionar, por isso as ligações já partilhadas nunca deixam de funcionar.",
+      "try": "Ligações livres que pode usar:"
     },
     "limits": {
       "title": "Limites",

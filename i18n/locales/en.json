@@ -2853,11 +2853,11 @@
       "taken": "Another form already uses this link",
       "reserved": "This word is reserved — choose another",
       "invalid": "Use 3–60 lower-case letters, numbers and hyphens",
-      "use": "Use {link}",
       "remove": "Remove custom link",
       "copy": "Copy link",
       "copied": "Link copied",
-      "keyStays": "The original link keeps working, so links you already shared never break."
+      "keyStays": "The original link keeps working, so links you already shared never break.",
+      "try": "Free links you can use:"
     },
     "limits": {
       "title": "Limits",

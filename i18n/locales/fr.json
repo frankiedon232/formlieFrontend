@@ -2853,11 +2853,11 @@
       "taken": "Un autre formulaire utilise déjà ce lien",
       "reserved": "Ce mot est réservé — choisissez-en un autre",
       "invalid": "Utilisez de 3 à 60 lettres minuscules, chiffres et traits d’union",
-      "use": "Utiliser {link}",
       "remove": "Supprimer le lien personnalisé",
       "copy": "Copier le lien",
       "copied": "Lien copié",
-      "keyStays": "Le lien d’origine continue de fonctionner : les liens déjà partagés restent valides."
+      "keyStays": "Le lien d’origine continue de fonctionner : les liens déjà partagés restent valides.",
+      "try": "Liens libres que vous pouvez utiliser :"
     },
     "limits": {
       "title": "Limites",

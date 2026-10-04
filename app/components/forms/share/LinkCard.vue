@@ -1,7 +1,7 @@
 <!--
   Share → Custom link (F10 M3): a readable address instead of the random key —
   `https://{forms | sub}.formalie.com/{custom-link}/fill`. Checked while typing
-  (GET /forms/{id}/share/link-check): free · taken (with a free suggestion) · reserved · invalid.
+  (GET /forms/{id}/share/link-check): free · taken or reserved (with up to three free suggestions) · invalid.
   The key keeps working, so links already shared never break.
 -->
 <script setup lang="ts">
@@ -36,7 +36,7 @@ let latest = 0
 const check = useDebounceFn(async (value: string) => {
   const ticket = ++latest
   try {
-    const { data } = await api.get<CustomLinkCheck>(`/forms/${props.form.id}/share/link-check`, { query: { value }, background: true })
+    const { data } = await api.get<CustomLinkCheck>(`/forms/${props.form.id}/share/link-check`, { value }, { background: true })
     if (ticket === latest) result.value = data
   } catch {
     if (ticket === latest) result.value = null
@@ -106,16 +106,22 @@ function copyPreview() {
       <span v-if="status" class="flex items-center gap-1.5" :class="status.color">
         <UIcon :name="status.icon" class="size-3.5" :class="status.spin ? 'animate-spin' : ''" />{{ status.text }}
       </span>
-      <UButton
-        v-if="result?.suggestion"
-        :label="t('share.link.use', { link: result.suggestion })"
-        color="neutral"
-        variant="link"
-        size="xs"
-        class="px-0"
-        @click="draft.link = result.suggestion"
-      />
       <UButton v-if="draft.link" :label="t('share.link.remove')" icon="i-lucide-x" color="neutral" variant="link" size="xs" class="ms-auto px-0" @click="draft.link = ''" />
+    </div>
+    <!-- Taken or reserved: free links close to it, one click to use. -->
+    <div v-if="result?.suggestions.length" class="mt-2 flex flex-wrap items-center gap-1.5">
+      <span class="text-xs text-muted">{{ t('share.link.try') }}</span>
+      <UButton
+        v-for="suggestion in result.suggestions"
+        :key="suggestion"
+        :label="suggestion"
+        icon="i-lucide-sparkles"
+        color="neutral"
+        variant="outline"
+        size="xs"
+        class="rounded-full font-mono"
+        @click="draft.link = suggestion"
+      />
     </div>
     <div class="mt-3 flex items-center gap-2 rounded-md bg-elevated/50 px-3 py-2">
       <code class="min-w-0 flex-1 truncate text-xs text-highlighted" dir="ltr">{{ preview }}</code>

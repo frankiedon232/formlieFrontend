@@ -2853,11 +2853,11 @@
       "taken": "Een ander formulier gebruikt deze link al",
       "reserved": "Dit woord is gereserveerd — kies een ander",
       "invalid": "Gebruik 3–60 kleine letters, cijfers en koppeltekens",
-      "use": "{link} gebruiken",
       "remove": "Aangepaste link verwijderen",
       "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
-      "keyStays": "De oorspronkelijke link blijft werken, dus links die u al hebt gedeeld, blijven altijd werken."
+      "keyStays": "De oorspronkelijke link blijft werken, dus links die u al hebt gedeeld, blijven altijd werken.",
+      "try": "Vrije links die u kunt gebruiken:"
     },
     "limits": {
       "title": "Limieten",

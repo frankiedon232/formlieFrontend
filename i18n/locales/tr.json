@@ -2853,11 +2853,11 @@
       "taken": "Bu bağlantıyı başka bir form kullanıyor",
       "reserved": "Bu kelime ayrılmış — başka bir tane seçin",
       "invalid": "3–60 küçük harf, rakam ve kısa çizgi kullanın",
-      "use": "{link} kullan",
       "remove": "Özel bağlantıyı kaldır",
       "copy": "Bağlantıyı kopyala",
       "copied": "Bağlantı kopyalandı",
-      "keyStays": "Asıl bağlantı çalışmaya devam eder; böylece daha önce paylaştığınız bağlantılar asla bozulmaz."
+      "keyStays": "Asıl bağlantı çalışmaya devam eder; böylece daha önce paylaştığınız bağlantılar asla bozulmaz.",
+      "try": "Kullanabileceğiniz boş bağlantılar:"
     },
     "limits": {
       "title": "Sınırlar",

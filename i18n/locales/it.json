@@ -2853,11 +2853,11 @@
       "taken": "Un altro modulo usa già questo link",
       "reserved": "Questa parola è riservata — ne scelga un’altra",
       "invalid": "Usi da 3 a 60 lettere minuscole, numeri e trattini",
-      "use": "Usa {link}",
       "remove": "Rimuovi link personalizzato",
       "copy": "Copia link",
       "copied": "Link copiato",
-      "keyStays": "Il link originale continua a funzionare, quindi i link già condivisi non smettono mai di funzionare."
+      "keyStays": "Il link originale continua a funzionare, quindi i link già condivisi non smettono mai di funzionare.",
+      "try": "Link liberi che può usare:"
     },
     "limits": {
       "title": "Limiti",
