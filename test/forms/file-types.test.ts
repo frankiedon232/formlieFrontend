@@ -19,3 +19,15 @@ describe('file types', () => {
     expect(acceptsFile('image/*', pdf)).toBe(false)
   })
 })
+
+describe('files a device sends without a type', () => {
+  it('match a family by their extension', async () => {
+    const { acceptsFile, looksLikePicture } = await import('../../shared/utils/forms/file-types')
+    expect(acceptsFile('image/*', { name: 'IMG_0001.HEIC', type: '' })).toBe(true)
+    expect(acceptsFile('video/*', { name: 'clip.mkv', type: 'application/octet-stream' })).toBe(true)
+    expect(acceptsFile('image/*', { name: 'cv.pdf', type: '' })).toBe(false)
+    expect(looksLikePicture({ name: 'IMG_0001.heic', type: '' })).toBe(true)
+    expect(looksLikePicture({ name: 'logo.svg', type: 'image/svg+xml' })).toBe(false)
+    expect(looksLikePicture({ name: 'cv.pdf', type: 'application/pdf' })).toBe(false)
+  })
+})

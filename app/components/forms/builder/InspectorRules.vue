@@ -149,7 +149,7 @@ const range = (min: unknown, max: unknown) =>
           <UInputNumber
             :model-value="Number(p.max_mb ?? 10)"
             :min="1"
-            :max="100"
+            :max="25"
             class="w-full"
             @update:model-value="x => setProp({ max_mb: x ?? 10 })"
           />

@@ -32,7 +32,7 @@ import { draftOf, newResumeToken, putDraft, RESUME_TTL_DAYS } from '../data/resu
 import { attachRespondentFiles, completedUploadUrl, completeRespondentUpload, createRespondentTicket, respondentFile } from './uploads'
 import { seoOf } from '../data/formSeo'
 import { allFields, isLocked } from '#shared/utils/forms/build'
-import { acceptsFile, parseAccept } from '#shared/utils/forms/file-types'
+import { acceptsFile, looksLikePicture, parseAccept } from '#shared/utils/forms/file-types'
 import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
 import { checkWork } from '#shared/utils/forms/proof-of-work'
 import type { UploadTicket } from '#shared/types/onboarding'
@@ -504,7 +504,7 @@ export const requestUpload = defineMockRoute(({ event, body }) => {
   const accept = field.type === 'image_upload' ? String(props.accept || 'image/*') : String(props.accept ?? '')
   const file = { name: input.file_name, type: input.content_type }
   const image = field.type === 'image_upload'
-  if (!acceptsFile(accept, file) || (image && (!input.content_type.startsWith('image/') || input.content_type === 'image/svg+xml')))
+  if (!acceptsFile(accept, file) || (image && !looksLikePicture(file)))
     throw new MockError('FRM-GEN-1002', [{ field: 'content_type', message: 'This file type is not allowed.' }])
   const maxBytes = maxFileBytes(props)
   if (input.size > maxBytes) throw new MockError('FRM-GEN-1002', [{ field: 'size', message: `The file is larger than ${Math.round(maxBytes / 1024 / 1024)} MB.` }])

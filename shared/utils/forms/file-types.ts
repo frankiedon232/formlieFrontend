@@ -64,7 +64,23 @@ export function acceptsFile(accept: string | undefined | null, file: { name: str
   if (!types.length) return true
   const name = file.name.toLowerCase()
   const mime = file.type.toLowerCase()
+  const extension = name.match(/\.[a-z0-9]+$/)?.[0] ?? ''
+  // Some devices send no type (e.g. HEIC photos, some videos): a family like "image/*" then goes by the extension.
+  const unlabelled = !mime || mime === 'application/octet-stream'
+  const family = (wildcard: string) => {
+    const group = wildcard === 'image/*' ? 'images' : wildcard === 'audio/*' ? 'audio' : wildcard === 'video/*' ? 'video' : null
+    return group ? (FILE_TYPE_GROUPS[group] as readonly string[]).includes(extension) : false
+  }
   return types.some(type =>
-    type.startsWith('.') ? name.endsWith(type) : type.endsWith('/*') ? mime.startsWith(type.slice(0, -1)) : mime === type,
+    type.startsWith('.')
+      ? name.endsWith(type)
+      : type.endsWith('/*')
+        ? mime.startsWith(type.slice(0, -1)) || (unlabelled && family(type))
+        : mime === type,
   )
 }
+
+/** A picture by its name when the device sent no type (the server still checks the bytes). */
+export const looksLikePicture = (file: { name: string; type: string }) =>
+  (file.type.startsWith('image/') && file.type !== 'image/svg+xml') ||
+  ((!file.type || file.type === 'application/octet-stream') && (PICTURE_TYPES as readonly string[]).includes(file.name.toLowerCase().match(/\.[a-z0-9]+$/)?.[0] ?? ''))
