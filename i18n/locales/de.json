@@ -2871,7 +2871,8 @@
       "inviteDesc": "Jede Person erhält einen persönlichen Link und kann einmal antworten.",
       "organisation": "Nur meine Organisation",
       "organisationDesc": "Zum Öffnen ist eine Anmeldung bei {org} nötig.",
-      "organisationNote": "Nur Mitglieder von {org} können das Formular nach der Anmeldung öffnen. Name und E-Mail werden mit der Antwort gespeichert, und jedes Mitglied kann einmal antworten."
+      "organisationNote": "Nur Mitglieder von {org} können das Formular nach der Anmeldung öffnen. Name und E-Mail werden mit der Antwort gespeichert, und jedes Mitglied kann einmal antworten.",
+      "audienceNote": "Dies gilt für die Personen, denen Sie das Formular schicken. Den Zugriff Ihres Teams legen Sie unten unter „Ihr Team“ fest."
     },
     "link": {
       "title": "Eigener Link",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Personen mit Zugriff",
-      "desc": "Wer in Ihrem Workspace an diesem Formular arbeiten kann.",
+      "desc": "Nur Mitarbeitende Ihres Arbeitsbereichs – das ändert nicht, wer das Formular ausfüllen kann.",
       "team": "Alle anderen im Workspace",
       "teamDesc": "Gilt für alle, die unten nicht aufgeführt sind.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Sie sehen nur die Antworten dieses Formulars",
       "responsesOnlyDesc": "Fragen und Design sind nicht für Sie freigegeben. Wenden Sie sich an den Formularinhaber, wenn Sie mehr Zugriff benötigen.",
       "viewForm": "Ansehen"
+    },
+    "section": {
+      "answering": "Formular ausfüllen",
+      "answeringDesc": "Wer es ausfüllen kann und wie man es erreicht – für alle, denen Sie das Formular schicken.",
+      "team": "Ihr Team",
+      "teamDesc": "Mitarbeitende Ihres Arbeitsbereichs, die dieses Formular erstellen und verwalten. Das ändert nicht, wer es ausfüllen kann."
     }
   }
 }

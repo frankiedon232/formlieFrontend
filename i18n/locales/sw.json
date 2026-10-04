@@ -2871,7 +2871,8 @@
       "inviteDesc": "Kila mtu anapata kiungo binafsi na anaweza kujibu mara moja.",
       "organisation": "Shirika langu pekee",
       "organisationDesc": "Watu huingia kwenye {org} ili kuifungua.",
-      "organisationNote": "Ni wanachama wa {org} pekee wanaoweza kufungua fomu, baada ya kuingia. Jina na barua pepe yao huhifadhiwa pamoja na jibu lao, na kila mwanachama anaweza kujibu mara moja."
+      "organisationNote": "Ni wanachama wa {org} pekee wanaoweza kufungua fomu, baada ya kuingia. Jina na barua pepe yao huhifadhiwa pamoja na jibu lao, na kila mwanachama anaweza kujibu mara moja.",
+      "audienceNote": "Hii ni kwa watu unaowatumia fomu. Ufikiaji wa timu yako unawekwa chini kwenye “Timu yako”."
     },
     "link": {
       "title": "Kiungo maalum",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Watu wenye ufikiaji",
-      "desc": "Nani katika eneo lako la kazi anaweza kufanyia kazi fomu hii.",
+      "desc": "Wafanyakazi wa eneo lako la kazi pekee — haibadilishi nani anaweza kujaza fomu.",
       "team": "Kila mtu mwingine katika eneo la kazi",
       "teamDesc": "Watu wasioorodheshwa hapa chini hupata hiki.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Unaweza kuona majibu ya fomu hii pekee",
       "responsesOnlyDesc": "Maswali na muundo havijashirikiwa nawe. Wasiliana na mmiliki wa fomu ikiwa unahitaji ufikiaji zaidi.",
       "viewForm": "Tazama"
+    },
+    "section": {
+      "answering": "Kujibu fomu",
+      "answeringDesc": "Nani anaweza kuijaza na jinsi ya kuifikia — kwa kila mtu unayemtumia fomu.",
+      "team": "Timu yako",
+      "teamDesc": "Wafanyakazi wa eneo lako la kazi wanaounda na kusimamia fomu hii. Haibadilishi nani anaweza kuijaza."
     }
   }
 }

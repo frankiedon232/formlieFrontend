@@ -2871,7 +2871,8 @@
       "inviteDesc": "Setiap orang mendapat tautan pribadi dan dapat merespons satu kali.",
       "organisation": "Hanya organisasi saya",
       "organisationDesc": "Orang masuk ke {org} untuk membukanya.",
-      "organisationNote": "Hanya anggota {org} yang dapat membuka formulir, setelah masuk. Nama dan email mereka disimpan bersama respons, dan setiap anggota dapat merespons satu kali."
+      "organisationNote": "Hanya anggota {org} yang dapat membuka formulir, setelah masuk. Nama dan email mereka disimpan bersama respons, dan setiap anggota dapat merespons satu kali.",
+      "audienceNote": "Ini untuk orang yang Anda kirimi formulir. Akses tim Anda diatur di “Tim Anda” di bawah."
     },
     "link": {
       "title": "Tautan khusus",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Orang dengan akses",
-      "desc": "Siapa di ruang kerja Anda yang dapat mengerjakan formulir ini.",
+      "desc": "Hanya staf di ruang kerja Anda — ini tidak mengubah siapa yang dapat mengisi formulir.",
       "team": "Semua orang lain di ruang kerja",
       "teamDesc": "Berlaku untuk orang yang tidak tercantum di bawah.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Anda hanya dapat melihat respons formulir ini",
       "responsesOnlyDesc": "Pertanyaan dan desain tidak dibagikan kepada Anda. Hubungi pemilik formulir jika Anda memerlukan akses lebih.",
       "viewForm": "Lihat"
+    },
+    "section": {
+      "answering": "Mengisi formulir",
+      "answeringDesc": "Siapa yang dapat mengisinya dan cara mereka membukanya — untuk semua orang yang Anda kirimi formulir.",
+      "team": "Tim Anda",
+      "teamDesc": "Staf di ruang kerja Anda yang membuat dan mengelola formulir ini. Ini tidak mengubah siapa yang dapat mengisinya."
     }
   }
 }

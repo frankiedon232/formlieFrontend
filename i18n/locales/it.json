@@ -2871,7 +2871,8 @@
       "inviteDesc": "Ogni persona riceve un link personale e può rispondere una volta.",
       "organisation": "Solo la mia organizzazione",
       "organisationDesc": "Per aprirlo occorre accedere a {org}.",
-      "organisationNote": "Solo i membri di {org} possono aprire il modulo, dopo aver effettuato l’accesso. Nome ed email vengono salvati con la risposta e ogni membro può rispondere una volta."
+      "organisationNote": "Solo i membri di {org} possono aprire il modulo, dopo aver effettuato l’accesso. Nome ed email vengono salvati con la risposta e ogni membro può rispondere una volta.",
+      "audienceNote": "Questo riguarda le persone a cui invia il modulo. L’accesso del suo team si imposta più sotto, in «Il suo team»."
     },
     "link": {
       "title": "Link personalizzato",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Persone con accesso",
-      "desc": "Chi nel tuo spazio di lavoro può lavorare su questo modulo.",
+      "desc": "Solo il personale del suo spazio di lavoro: non cambia chi può compilare il modulo.",
       "team": "Tutti gli altri nello spazio di lavoro",
       "teamDesc": "Vale per chi non è elencato sotto.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Puoi vedere solo le risposte di questo modulo",
       "responsesOnlyDesc": "Domande e design non sono condivisi con te. Rivolgiti al proprietario del modulo se ti serve un accesso maggiore.",
       "viewForm": "Visualizza"
+    },
+    "section": {
+      "answering": "Compilare il modulo",
+      "answeringDesc": "Chi può compilarlo e come ci arriva — per tutte le persone a cui invia il modulo.",
+      "team": "Il suo team",
+      "teamDesc": "Il personale del suo spazio di lavoro che crea e gestisce questo modulo. Non cambia chi può compilarlo."
     }
   }
 }

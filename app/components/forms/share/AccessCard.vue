@@ -36,6 +36,7 @@ const tooShort = computed(() => !!draft.value.password && draft.value.password.l
       <div>
         <h2 class="text-sm font-semibold text-highlighted">{{ t('share.access.title') }}</h2>
         <p class="text-xs text-muted">{{ t('share.access.desc') }}</p>
+        <p class="mt-1 flex items-start gap-1.5 text-xs text-toned"><UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />{{ t('share.access.audienceNote') }}</p>
       </div>
     </div>
     <URadioGroup v-model="draft.access" :items="items" variant="card" color="neutral" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-2', item: 'w-full' }" :aria-label="t('share.access.title')" />

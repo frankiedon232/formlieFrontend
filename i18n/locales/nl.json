@@ -2871,7 +2871,8 @@
       "inviteDesc": "Iedereen krijgt een persoonlijke link en kan één keer reageren.",
       "organisation": "Alleen mijn organisatie",
       "organisationDesc": "Om het te openen meldt men zich aan bij {org}.",
-      "organisationNote": "Alleen leden van {org} kunnen het formulier openen, na aanmelding. Hun naam en e-mail worden met hun reactie opgeslagen en elk lid kan één keer reageren."
+      "organisationNote": "Alleen leden van {org} kunnen het formulier openen, na aanmelding. Hun naam en e-mail worden met hun reactie opgeslagen en elk lid kan één keer reageren.",
+      "audienceNote": "Dit is voor de mensen naar wie u het formulier stuurt. De toegang van uw team stelt u hieronder in bij ‘Uw team’."
     },
     "link": {
       "title": "Aangepaste link",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Mensen met toegang",
-      "desc": "Wie in uw werkruimte aan dit formulier kan werken.",
+      "desc": "Alleen medewerkers van uw werkruimte — dit verandert niet wie het formulier kan invullen.",
       "team": "Alle anderen in de werkruimte",
       "teamDesc": "Geldt voor wie hieronder niet staat.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "U kunt alleen de reacties op dit formulier zien",
       "responsesOnlyDesc": "De vragen en het ontwerp zijn niet met u gedeeld. Vraag de eigenaar van het formulier als u meer toegang nodig hebt.",
       "viewForm": "Bekijken"
+    },
+    "section": {
+      "answering": "Het formulier invullen",
+      "answeringDesc": "Wie het kan invullen en hoe men erbij komt — voor iedereen naar wie u het formulier stuurt.",
+      "team": "Uw team",
+      "teamDesc": "Medewerkers van uw werkruimte die dit formulier maken en beheren. Dit verandert niet wie het kan invullen."
     }
   }
 }

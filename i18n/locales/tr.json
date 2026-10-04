@@ -2871,7 +2871,8 @@
       "inviteDesc": "Her kişi kişisel bir bağlantı alır ve bir kez yanıt verebilir.",
       "organisation": "Yalnızca kuruluşum",
       "organisationDesc": "Açmak için {org} hesabında oturum açılır.",
-      "organisationNote": "Formu yalnızca {org} üyeleri, oturum açtıktan sonra açabilir. Ad ve e-posta yanıtla birlikte kaydedilir ve her üye bir kez yanıt verebilir."
+      "organisationNote": "Formu yalnızca {org} üyeleri, oturum açtıktan sonra açabilir. Ad ve e-posta yanıtla birlikte kaydedilir ve her üye bir kez yanıt verebilir.",
+      "audienceNote": "Bu, formu gönderdiğiniz kişiler içindir. Ekibinizin erişimi aşağıda “Ekibiniz” bölümünde ayarlanır."
     },
     "link": {
       "title": "Özel bağlantı",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Erişimi olan kişiler",
-      "desc": "Çalışma alanınızda bu form üzerinde kimlerin çalışabileceği.",
+      "desc": "Yalnızca çalışma alanınızın personeli — formu kimin doldurabileceğini değiştirmez.",
       "team": "Çalışma alanındaki diğer herkes",
       "teamDesc": "Aşağıda listelenmeyen kişiler için geçerlidir.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Bu formun yalnızca yanıtlarını görebilirsiniz",
       "responsesOnlyDesc": "Sorular ve tasarım sizinle paylaşılmadı. Daha fazla erişime ihtiyacınız varsa form sahibine başvurun.",
       "viewForm": "Görüntüle"
+    },
+    "section": {
+      "answering": "Formu yanıtlama",
+      "answeringDesc": "Kimin doldurabileceği ve forma nasıl ulaşılacağı — formu gönderdiğiniz herkes için.",
+      "team": "Ekibiniz",
+      "teamDesc": "Bu formu oluşturan ve yöneten çalışma alanı personeli. Kimin doldurabileceğini değiştirmez."
     }
   }
 }

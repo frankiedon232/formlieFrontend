@@ -2871,7 +2871,8 @@
       "inviteDesc": "Każda osoba otrzymuje osobisty link i może odpowiedzieć raz.",
       "organisation": "Tylko moja organizacja",
       "organisationDesc": "Aby go otworzyć, trzeba zalogować się do {org}.",
-      "organisationNote": "Tylko członkowie {org} mogą otworzyć formularz po zalogowaniu. Ich imię i nazwisko oraz e-mail są zapisywane z odpowiedzią, a każdy członek może odpowiedzieć raz."
+      "organisationNote": "Tylko członkowie {org} mogą otworzyć formularz po zalogowaniu. Ich imię i nazwisko oraz e-mail są zapisywane z odpowiedzią, a każdy członek może odpowiedzieć raz.",
+      "audienceNote": "To dotyczy osób, do których wysyłasz formularz. Dostęp zespołu ustawisz niżej, w sekcji „Twój zespół”."
     },
     "link": {
       "title": "Własny link",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Osoby z dostępem",
-      "desc": "Kto w Twoim obszarze roboczym może pracować nad tym formularzem.",
+      "desc": "Tylko pracownicy Twojego obszaru roboczego — nie zmienia to, kto może wypełnić formularz.",
       "team": "Wszyscy pozostali w obszarze roboczym",
       "teamDesc": "Dotyczy osób, których nie ma na liście poniżej.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Widzisz tylko odpowiedzi na ten formularz",
       "responsesOnlyDesc": "Pytania i wygląd nie zostały Ci udostępnione. Jeśli potrzebujesz większego dostępu, zwróć się do właściciela formularza.",
       "viewForm": "Wyświetl"
+    },
+    "section": {
+      "answering": "Wypełnianie formularza",
+      "answeringDesc": "Kto może go wypełnić i jak do niego trafia — dla wszystkich, do których wysyłasz formularz.",
+      "team": "Twój zespół",
+      "teamDesc": "Pracownicy obszaru roboczego, którzy tworzą formularz i nim zarządzają. Nie zmienia to, kto może go wypełnić."
     }
   }
 }

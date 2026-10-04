@@ -2871,7 +2871,8 @@
       "inviteDesc": "Cada pessoa recebe uma ligação pessoal e pode responder uma vez.",
       "organisation": "Apenas a minha organização",
       "organisationDesc": "Para o abrir é preciso iniciar sessão em {org}.",
-      "organisationNote": "Apenas os membros de {org} podem abrir o formulário, após iniciarem sessão. O nome e o e-mail são guardados com a resposta, e cada membro pode responder uma vez."
+      "organisationNote": "Apenas os membros de {org} podem abrir o formulário, após iniciarem sessão. O nome e o e-mail são guardados com a resposta, e cada membro pode responder uma vez.",
+      "audienceNote": "Isto é para as pessoas a quem envia o formulário. O acesso da sua equipa define-se abaixo, em «A sua equipa»."
     },
     "link": {
       "title": "Ligação personalizada",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Pessoas com acesso",
-      "desc": "Quem no seu espaço de trabalho pode trabalhar neste formulário.",
+      "desc": "Apenas pessoal da sua área de trabalho — não altera quem pode preencher o formulário.",
       "team": "Todas as outras pessoas do espaço de trabalho",
       "teamDesc": "Aplica-se a quem não está listado abaixo.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Só pode ver as respostas deste formulário",
       "responsesOnlyDesc": "As perguntas e o design não foram partilhados consigo. Contacte o proprietário do formulário se precisar de mais acesso.",
       "viewForm": "Ver"
+    },
+    "section": {
+      "answering": "Responder ao formulário",
+      "answeringDesc": "Quem o pode preencher e como lá chega — para todas as pessoas a quem envia o formulário.",
+      "team": "A sua equipa",
+      "teamDesc": "Pessoal da sua área de trabalho que cria e gere este formulário. Não altera quem o pode preencher."
     }
   }
 }

@@ -2871,7 +2871,8 @@
       "inviteDesc": "Each person gets a personal link and can respond once.",
       "organisation": "Only my organisation",
       "organisationDesc": "People sign in to {org} to open it.",
-      "organisationNote": "Only members of {org} can open the form, after signing in. Their name and email are saved with their response, and each member can respond once."
+      "organisationNote": "Only members of {org} can open the form, after signing in. Their name and email are saved with their response, and each member can respond once.",
+      "audienceNote": "This is for the people you send the form to. Your team’s access is set under “Your team” below."
     },
     "link": {
       "title": "Custom link",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "People with access",
-      "desc": "Who in your workspace can work on this form.",
+      "desc": "Only staff in your workspace — it doesn’t change who can fill in the form.",
       "team": "Everyone else in the workspace",
       "teamDesc": "People not listed below get this.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "You can see this form’s responses only",
       "responsesOnlyDesc": "The questions and design aren’t shared with you. Ask the form’s owner if you need more access.",
       "viewForm": "View"
+    },
+    "section": {
+      "answering": "Answering the form",
+      "answeringDesc": "Who can fill it in and how they reach it — for everyone you send the form to.",
+      "team": "Your team",
+      "teamDesc": "Staff in your workspace who build and manage this form. This doesn’t change who can fill it in."
     }
   }
 }

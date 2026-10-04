@@ -152,14 +152,17 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
   <div v-else class="flex flex-col gap-4 pb-20">
     <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <div class="flex min-w-0 flex-col gap-4">
+        <!-- Two worlds, kept apart (owner, 2026-10-04): the people the form is sent to, and your team. -->
+        <FormsShareSection icon="i-lucide-send" :title="t('share.section.answering')" :description="t('share.section.answeringDesc')" />
         <FormsShareAccessCard v-model:draft="draft" :settings="settings" :form-id="form.id" />
+        <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
         <FormsShareLinksGuide :settings="settings" :form="form" />
         <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
         <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
         <FormsShareEmbedCard v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareSeoCard v-model:draft="draft" :settings="settings" :form="form" />
+        <FormsShareSection icon="i-lucide-users" :title="t('share.section.team')" :description="t('share.section.teamDesc')" class="mt-4" />
         <FormsSharePeopleCard v-model:draft="draft" :settings="settings" />
-        <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
       </div>
       <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />
     </div>

@@ -2871,7 +2871,8 @@
       "inviteDesc": "Chaque personne reçoit un lien personnel et peut répondre une fois.",
       "organisation": "Mon organisation uniquement",
       "organisationDesc": "Il faut se connecter à {org} pour l’ouvrir.",
-      "organisationNote": "Seuls les membres de {org} peuvent ouvrir le formulaire, après connexion. Leur nom et leur e-mail sont enregistrés avec leur réponse, et chaque membre peut répondre une fois."
+      "organisationNote": "Seuls les membres de {org} peuvent ouvrir le formulaire, après connexion. Leur nom et leur e-mail sont enregistrés avec leur réponse, et chaque membre peut répondre une fois.",
+      "audienceNote": "Ceci concerne les personnes à qui vous envoyez le formulaire. L’accès de votre équipe se règle plus bas, dans « Votre équipe »."
     },
     "link": {
       "title": "Lien personnalisé",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Personnes ayant accès",
-      "desc": "Qui, dans votre espace de travail, peut travailler sur ce formulaire.",
+      "desc": "Uniquement les membres de votre espace de travail — cela ne change pas qui peut remplir le formulaire.",
       "team": "Tous les autres membres de l’espace de travail",
       "teamDesc": "S’applique aux personnes non listées ci-dessous.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Vous ne voyez que les réponses de ce formulaire",
       "responsesOnlyDesc": "Les questions et le design ne sont pas partagés avec vous. Contactez le propriétaire du formulaire si vous avez besoin de plus d’accès.",
       "viewForm": "Consulter"
+    },
+    "section": {
+      "answering": "Répondre au formulaire",
+      "answeringDesc": "Qui peut le remplir et comment y accéder — pour toutes les personnes à qui vous l’envoyez.",
+      "team": "Votre équipe",
+      "teamDesc": "Les membres de votre espace de travail qui créent et gèrent ce formulaire. Cela ne change pas qui peut le remplir."
     }
   }
 }

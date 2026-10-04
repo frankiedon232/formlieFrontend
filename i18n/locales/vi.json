@@ -2871,7 +2871,8 @@
       "inviteDesc": "Mỗi người nhận một liên kết riêng và có thể trả lời một lần.",
       "organisation": "Chỉ tổ chức của tôi",
       "organisationDesc": "Mọi người đăng nhập vào {org} để mở.",
-      "organisationNote": "Chỉ thành viên của {org} mới có thể mở biểu mẫu sau khi đăng nhập. Tên và email được lưu cùng câu trả lời, và mỗi thành viên có thể trả lời một lần."
+      "organisationNote": "Chỉ thành viên của {org} mới có thể mở biểu mẫu sau khi đăng nhập. Tên và email được lưu cùng câu trả lời, và mỗi thành viên có thể trả lời một lần.",
+      "audienceNote": "Phần này dành cho những người bạn gửi biểu mẫu. Quyền truy cập của nhóm được đặt ở mục “Nhóm của bạn” bên dưới."
     },
     "link": {
       "title": "Liên kết tùy chỉnh",
@@ -3042,7 +3043,7 @@
     },
     "people": {
       "title": "Những người có quyền truy cập",
-      "desc": "Ai trong không gian làm việc của bạn có thể làm việc với biểu mẫu này.",
+      "desc": "Chỉ nhân viên trong không gian làm việc — không thay đổi ai có thể điền biểu mẫu.",
       "team": "Mọi người khác trong không gian làm việc",
       "teamDesc": "Áp dụng cho những người không có trong danh sách bên dưới.",
       "level": {
@@ -3070,6 +3071,12 @@
       "responsesOnly": "Bạn chỉ có thể xem câu trả lời của biểu mẫu này",
       "responsesOnlyDesc": "Câu hỏi và thiết kế không được chia sẻ với bạn. Hãy liên hệ chủ sở hữu biểu mẫu nếu bạn cần thêm quyền.",
       "viewForm": "Xem"
+    },
+    "section": {
+      "answering": "Trả lời biểu mẫu",
+      "answeringDesc": "Ai có thể điền và cách họ mở biểu mẫu — áp dụng cho mọi người bạn gửi biểu mẫu.",
+      "team": "Nhóm của bạn",
+      "teamDesc": "Nhân viên trong không gian làm việc tạo và quản lý biểu mẫu này. Điều này không thay đổi ai có thể điền."
     }
   }
 }
