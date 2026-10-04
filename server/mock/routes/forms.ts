@@ -23,6 +23,7 @@ import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf, saveForms, summaryOf, uniqueSlug, type StoredForm } from '../data/formStore'
+import { retireShortCode } from '../data/shortCodeStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 
 type Query = Record<string, unknown>
@@ -347,6 +348,9 @@ export const formLifecycle = defineMockRoute(({ event, body }) => {
   return ok(summaryOf(form))
 })
 
+/** A form deleted for good: its short link code is never handed out again (data/shortCodeStore.ts). */
+const retireCodesOf = (form: StoredForm) => form.short_code && retireShortCode(form.short_code)
+
 /** DELETE /forms/:id → Trash; `?permanent=1` on a form already in Trash removes it for good. */
 export const deleteForm = defineMockRoute(({ event, query }) => {
   const { user, tenant } = requireAuth(event)
@@ -354,6 +358,7 @@ export const deleteForm = defineMockRoute(({ event, query }) => {
   const store = formsOf(tenant)
   if (query.permanent === '1') {
     const form = findForm(tenant, id, { trash: true })
+    retireCodesOf(form)
     store.forms = store.forms.filter(item => item.id !== form.id)
     saveForms()
     audit(event, tenant, user, 'forms.purged', form)
@@ -371,6 +376,7 @@ export const emptyTrash = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const store = formsOf(tenant)
   const trashed = store.forms.filter(form => form.deleted_at)
+  trashed.forEach(retireCodesOf)
   store.forms = store.forms.filter(form => !form.deleted_at)
   saveForms()
   for (const form of trashed) audit(event, tenant, user, 'forms.purged', form, [], { via: 'empty_trash' })
@@ -406,6 +412,7 @@ export const bulkForms = defineMockRoute(({ event, body }) => {
         touch(form)
         audit(event, tenant, user, 'forms.deleted', form, [], { via: 'bulk' })
       } else if (input.action === 'purge') {
+        retireCodesOf(form)
         store.forms = store.forms.filter(item => item.id !== form.id)
         audit(event, tenant, user, 'forms.purged', form, [], { via: 'bulk' })
       } else {

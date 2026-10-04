@@ -17,6 +17,7 @@ import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf, saveForms, type StoredForm } from '../data/formStore'
+import { isRetiredShortCode, retireShortCode } from '../data/shortCodeStore'
 import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 
 function findForm(tenant: MockTenant, id: string | undefined): StoredForm {
@@ -176,7 +177,8 @@ export const saveShare = defineMockRoute(({ event, body }) => {
 })
 
 // ── Short link (F10 M3) ─────────────────────────────────────────────────────────────────
-const codeTaken = (code: string) => MOCK_TENANTS.some(tenant => formsOf(tenant).forms.some(form => form.short_code === code))
+/** In use by any form of any organisation (deleted forms included), or retired. */
+const codeTaken = (code: string) => isRetiredShortCode(code) || MOCK_TENANTS.some(tenant => formsOf(tenant).forms.some(form => form.short_code === code))
 
 function shortLinkChange(event: Parameters<typeof requireAuth>[0], create: boolean) {
   const { user, tenant } = requireAuth(event)
@@ -189,7 +191,8 @@ function shortLinkChange(event: Parameters<typeof requireAuth>[0], create: boole
     form.short_clicks = 0
     form.short_created_at = new Date().toISOString()
   } else if (!create && form.short_code) {
-    // The old code stops working (and is never handed out again: codes stay on the deleted record in a real backend).
+    // The old code stops working and is never handed out again (data/shortCodeStore.ts).
+    retireShortCode(form.short_code)
     form.short_code = null
     form.short_clicks = 0
     form.short_created_at = null

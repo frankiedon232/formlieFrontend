@@ -1073,3 +1073,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Form language on non-open pages (owner): full, closed, expired, not-yet-open and password pages now use the form’s language (they fell back to English because no questions are sent then). |
 | 2026-10-04 | F10 | M3: embed allowed websites (any / only listed; pasted addresses tidied; frame-ancestors header, Formalie previews always allowed) and a live Preview tab in the Embed code window. Tested in the browser (header with the list, back to any website). |
 | 2026-10-04 | F10 | Dialogs (owner): the move grip no longer sits over the close button (close button in the header flow, grip beside it) and the close button is a round soft button. |
+| 2026-10-04 | F10 | Short links (owner question "no conflict"): removed codes — and codes of forms deleted for good — are retired and never handed out again, so an old poster can never open another form. Tested. |
