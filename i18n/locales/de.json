@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Das sieht nach einer bereits gesendeten Antwort aus. Bestätigen Sie, dass es sich um eine andere Person handelt.",
     "FRM-RESP-1008": "Bestätigen Sie Ihre E-Mail-Adresse, um dieses Formular zu senden.",
     "FRM-RESP-1009": "Wir konnten nicht bestätigen, dass diese Antwort von einer Person gesendet wurde. Bitte versuchen Sie es erneut.",
-    "FRM-FORM-1017": "Das Passwort ist nicht korrekt."
+    "FRM-FORM-1017": "Das Passwort ist nicht korrekt.",
+    "FRM-FORM-1018": "Dieser Einladungslink ist nicht mehr gültig.",
+    "FRM-FORM-1019": "Ihre Anmeldung für dieses Formular ist abgelaufen. Bitte melden Sie sich erneut an."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Dieser Kurzlink funktioniert nicht",
       "desc": "Er wurde möglicherweise entfernt oder die Adresse wurde falsch eingegeben. Bitte fragen Sie bei der Person nach, die ihn geteilt hat.",
       "opening": "Formular wird geöffnet…"
-    }
+    },
+    "invite": {
+      "title": "Dieses Formular ist nur auf Einladung zugänglich",
+      "desc": "Nur eingeladene Personen können es ausfüllen.",
+      "how": "Öffnen Sie das Formular über den persönlichen Link aus Ihrer Einladungs-E-Mail. Jeder Link gilt für eine Person.",
+      "badLink": "Dieser Einladungslink funktioniert nicht mehr",
+      "badLinkDesc": "Er wurde möglicherweise durch einen neueren ersetzt oder widerrufen. Bitten Sie die Organisation um einen neuen Link."
+    },
+    "member": {
+      "title": "Nur für Mitglieder von {org}",
+      "desc": "Melden Sie sich mit Ihrem Arbeitskonto an, um dieses Formular auszufüllen.",
+      "signIn": "Bei {org} anmelden",
+      "openTitle": "Formular wird geöffnet",
+      "opening": "Formular wird geöffnet…",
+      "notYours": "Dieses Formular gehört nicht zu Ihrem Arbeitsbereich",
+      "notYoursDesc": "Sie sind bei einer anderen Organisation angemeldet, oder das Formular existiert nicht mehr."
+    },
+    "visitor": "Ausfüllen als {who}"
   },
   "share": {
     "crumb": "Teilen",
@@ -2847,7 +2866,12 @@
       "setPassword": "Passwort",
       "passwordHint": "Mindestens 8 Zeichen. Geben Sie es den Personen, die das Formular ausfüllen sollen.",
       "tooShort": "Verwenden Sie mindestens 8 Zeichen.",
-      "passwordNote": "Das Passwort wird nie wieder angezeigt. Nach einer Änderung benötigen alle das neue."
+      "passwordNote": "Das Passwort wird nie wieder angezeigt. Nach einer Änderung benötigen alle das neue.",
+      "invite": "Nur eingeladene Personen",
+      "inviteDesc": "Jede Person erhält einen persönlichen Link und kann einmal antworten.",
+      "organisation": "Nur meine Organisation",
+      "organisationDesc": "Zum Öffnen ist eine Anmeldung bei {org} nötig.",
+      "organisationNote": "Nur Mitglieder von {org} können das Formular nach der Anmeldung öffnen. Name und E-Mail werden mit der Antwort gespeichert, und jedes Mitglied kann einmal antworten."
     },
     "link": {
       "title": "Eigener Link",
@@ -2981,6 +3005,38 @@
       "asSearch": "Suchergebnis",
       "noImage": "Kein Bild",
       "hiddenFromSearch": "Vor Suchmaschinen verborgen — dieses Formular erscheint nicht in Suchergebnissen."
+    },
+    "invite": {
+      "title": "Einladungen",
+      "counts": "{responded} von {total} haben geantwortet",
+      "saveFirst": "Speichern Sie „Nur eingeladene Personen“, damit die Einladungen wirksam werden — bis dahin bleibt das Formular wie bisher offen.",
+      "add": "Personen einladen",
+      "addHint": "Eine pro Zeile oder durch Kommas getrennt. Einen Namen so hinzufügen: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Keine E-Mail-Adresse: {list}",
+      "button": "{n} Person einladen | {n} Personen einladen",
+      "buttonEmpty": "Einladen",
+      "sent": "{n} Einladung gesendet | {n} Einladungen gesendet",
+      "skipped": "{n} Person war bereits eingeladen | {n} Personen waren bereits eingeladen",
+      "devLinks": "Persönliche Links — werden jeder Person per E-Mail gesendet, sobald Formalie live ist; während der Entwicklung hier angezeigt:",
+      "none": "Noch niemand eingeladen.",
+      "resent": "Ein neuer Link wurde an {email} gesendet",
+      "resend": "Neuen Link senden",
+      "revoke": "Widerrufen",
+      "revokeTitle": "Einladung für {email} widerrufen?",
+      "revokeDesc": "Der persönliche Link funktioniert dann nicht mehr. Eine bereits gesendete Antwort bleibt erhalten.",
+      "status": {
+        "invited": "Eingeladen",
+        "opened": "Geöffnet",
+        "responded": "Geantwortet",
+        "revoked": "Widerrufen"
+      },
+      "when": {
+        "invited": "eingeladen {when}",
+        "opened": "geöffnet {when}",
+        "responded": "geantwortet {when}",
+        "revoked": "eingeladen {when}"
+      }
     }
   }
 }

@@ -124,6 +124,26 @@ async function onUnlocked() {
   prepareProof()
 }
 
+// Invitation links (?invite=) and member sign-in passes (?pass=) open the form by themselves; the
+// token leaves the address bar at once (history, screenshots, shared tabs).
+const accessFailed = ref<'invite' | 'pass' | null>(null)
+const api = useApi()
+onMounted(async () => {
+  const address = new URL(location.href)
+  const invite = address.searchParams.get('invite')
+  const pass = address.searchParams.get('pass')
+  if (!invite && !pass) return
+  address.searchParams.delete('invite')
+  address.searchParams.delete('pass')
+  history.replaceState(history.state, '', address.pathname + address.search + address.hash)
+  try {
+    await api.post(`/public/forms/${encodeURIComponent(props.formKey)}/unlock`, invite ? { invite } : { pass })
+    await onUnlocked()
+  } catch {
+    accessFailed.value = invite ? 'invite' : 'pass'
+  }
+})
+
 const year = new Date().getFullYear()
 const browser = useInAppBrowser()
 function visit(event: MouseEvent) {
@@ -153,7 +173,11 @@ const message = computed(() => {
     case 'scheduled':
       return { icon: 'i-lucide-calendar-clock', title: t('public.scheduled.title'), description: t('public.scheduled.desc', { date: longDate(form.value?.opens_at) }) }
     case 'locked':
-      return { icon: 'i-lucide-lock-keyhole', title: t('public.locked.title'), description: t('public.locked.desc') }
+      return form.value?.lock === 'invite'
+        ? { icon: 'i-lucide-mail-check', title: t('public.invite.title'), description: t('public.invite.desc') }
+        : form.value?.lock === 'organisation'
+          ? { icon: 'i-lucide-building-2', title: t('public.member.title', { org: form.value.workspace.name }), description: t('public.member.desc') }
+          : { icon: 'i-lucide-lock-keyhole', title: t('public.locked.title'), description: t('public.locked.desc') }
     case 'limit_reached':
       return { icon: 'i-lucide-users-round', title: t('public.full.title'), description: t('public.full.desc') }
     case 'error':
@@ -166,6 +190,10 @@ const message = computed(() => {
 
 <template>
   <div ref="root" :class="embed ? '' : 'flex min-h-dvh flex-col'">
+    <!-- Invitation or signed-in member: who is filling in (kept with the response). -->
+    <div v-if="view === 'open' && form?.visitor" class="border-b border-default bg-elevated/60 px-4 py-2 text-center text-xs text-toned">
+      <UIcon name="i-lucide-user-round-check" class="me-1 inline size-3.5 align-[-2px]" />{{ t('public.visitor', { who: form.visitor.name ? `${form.visitor.name} (${form.visitor.email})` : form.visitor.email }) }}
+    </div>
     <FormsRendererPage v-if="view === 'open' && schema" :schema="schema" :title="form?.name ?? ''" :submit="submit" :respondent="respondent" :framed="!embed" :class="embed ? '' : 'flex-1'" />
 
     <!-- Closed / not open yet: still the organisation's page (bar + footer); unknown links stay neutral. -->
@@ -196,7 +224,7 @@ const message = computed(() => {
           <h1 class="text-lg font-semibold text-highlighted">{{ message?.title }}</h1>
           <p class="text-sm text-muted">{{ message?.description }}</p>
           <p v-if="form && view !== 'not_found'" class="text-xs text-dimmed">{{ form.name }} · {{ form.workspace.name }}</p>
-          <PublicUnlock v-if="view === 'locked'" :form-key="formKey" class="mt-2" @unlocked="onUnlocked" />
+          <PublicAccess v-if="view === 'locked' && form" :form="form" :form-key="formKey" :failed="accessFailed" class="w-full" @unlocked="onUnlocked" />
           <UButton v-if="view === 'error'" :label="t('common.retry')" icon="i-lucide-rotate-cw" color="neutral" variant="outline" @click="reloadNuxtApp()" />
         </div>
       </UCard>

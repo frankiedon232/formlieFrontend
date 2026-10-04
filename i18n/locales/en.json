@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "This looks like a response that was already submitted. Confirm this is a different person.",
     "FRM-RESP-1008": "Verify your email to submit this form.",
     "FRM-RESP-1009": "We couldn’t confirm this response was sent by a person. Please try again.",
-    "FRM-FORM-1017": "That password isn’t right."
+    "FRM-FORM-1017": "That password isn’t right.",
+    "FRM-FORM-1018": "This invitation link isn’t valid any more.",
+    "FRM-FORM-1019": "Your sign-in for this form has expired. Sign in again."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -2818,7 +2820,24 @@
       "title": "This short link doesn’t work",
       "desc": "It may have been removed, or the address was typed incorrectly. Check it with whoever shared it.",
       "opening": "Opening the form…"
-    }
+    },
+    "invite": {
+      "title": "This form is by invitation only",
+      "desc": "Only people who were invited can fill it in.",
+      "how": "Open the form with the personal link from your invitation email. Each link is for one person.",
+      "badLink": "This invitation link doesn’t work any more",
+      "badLinkDesc": "It may have been replaced by a newer one or revoked. Ask the organisation for a new link."
+    },
+    "member": {
+      "title": "Only for members of {org}",
+      "desc": "Sign in with your work account to fill in this form.",
+      "signIn": "Sign in to {org}",
+      "openTitle": "Opening the form",
+      "opening": "Opening the form…",
+      "notYours": "This form isn’t part of your workspace",
+      "notYoursDesc": "You are signed in to a different organisation, or the form no longer exists."
+    },
+    "visitor": "Filling in as {who}"
   },
   "share": {
     "crumb": "Share",
@@ -2847,7 +2866,12 @@
       "setPassword": "Password",
       "passwordHint": "At least 8 characters. Give it to the people who should fill in the form.",
       "tooShort": "Use at least 8 characters.",
-      "passwordNote": "The password is never shown again. After a change, everyone needs the new one."
+      "passwordNote": "The password is never shown again. After a change, everyone needs the new one.",
+      "invite": "Only invited people",
+      "inviteDesc": "Each person gets a personal link and can respond once.",
+      "organisation": "Only my organisation",
+      "organisationDesc": "People sign in to {org} to open it.",
+      "organisationNote": "Only members of {org} can open the form, after signing in. Their name and email are saved with their response, and each member can respond once."
     },
     "link": {
       "title": "Custom link",
@@ -2981,6 +3005,38 @@
       "asSearch": "Search result",
       "noImage": "No image",
       "hiddenFromSearch": "Hidden from search engines — this form won’t appear in search results."
+    },
+    "invite": {
+      "title": "Invitations",
+      "counts": "{responded} of {total} responded",
+      "saveFirst": "Save “Only invited people” for invitations to take effect — until then the form stays open as before.",
+      "add": "Invite people",
+      "addHint": "One per line or separated by commas. Add a name like this: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Not an email address: {list}",
+      "button": "Invite {n} person | Invite {n} people",
+      "buttonEmpty": "Invite",
+      "sent": "{n} invitation sent | {n} invitations sent",
+      "skipped": "{n} person was already invited | {n} people were already invited",
+      "devLinks": "Personal links — emailed to each person once Formalie is live; shown here while developing:",
+      "none": "No one invited yet.",
+      "resent": "A new link was sent to {email}",
+      "resend": "Send a new link",
+      "revoke": "Revoke",
+      "revokeTitle": "Revoke the invitation for {email}?",
+      "revokeDesc": "Their personal link stops working. A response they already sent is kept.",
+      "status": {
+        "invited": "Invited",
+        "opened": "Opened",
+        "responded": "Responded",
+        "revoked": "Revoked"
+      },
+      "when": {
+        "invited": "invited {when}",
+        "opened": "opened {when}",
+        "responded": "responded {when}",
+        "revoked": "invited {when}"
+      }
     }
   }
 }

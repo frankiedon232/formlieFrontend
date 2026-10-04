@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Phản hồi này trông giống một phản hồi đã được gửi. Hãy xác nhận đây là một người khác.",
     "FRM-RESP-1008": "Xác minh email của bạn để gửi biểu mẫu này.",
     "FRM-RESP-1009": "Chúng tôi không thể xác nhận câu trả lời này do một người gửi. Vui lòng thử lại.",
-    "FRM-FORM-1017": "Mật khẩu không đúng."
+    "FRM-FORM-1017": "Mật khẩu không đúng.",
+    "FRM-FORM-1018": "Liên kết lời mời này không còn hợp lệ.",
+    "FRM-FORM-1019": "Phiên đăng nhập của bạn cho biểu mẫu này đã hết hạn. Vui lòng đăng nhập lại."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Liên kết ngắn này không hoạt động",
       "desc": "Có thể liên kết đã bị xóa hoặc địa chỉ được nhập sai. Vui lòng kiểm tra lại với người đã chia sẻ.",
       "opening": "Đang mở biểu mẫu…"
-    }
+    },
+    "invite": {
+      "title": "Biểu mẫu này chỉ dành cho người được mời",
+      "desc": "Chỉ những người được mời mới có thể điền.",
+      "how": "Mở biểu mẫu bằng liên kết riêng trong email mời của bạn. Mỗi liên kết dành cho một người.",
+      "badLink": "Liên kết lời mời này không còn hoạt động",
+      "badLinkDesc": "Có thể liên kết đã được thay bằng liên kết mới hơn hoặc đã bị thu hồi. Hãy xin tổ chức một liên kết mới."
+    },
+    "member": {
+      "title": "Chỉ dành cho thành viên của {org}",
+      "desc": "Đăng nhập bằng tài khoản công việc để điền biểu mẫu này.",
+      "signIn": "Đăng nhập vào {org}",
+      "openTitle": "Đang mở biểu mẫu",
+      "opening": "Đang mở biểu mẫu…",
+      "notYours": "Biểu mẫu này không thuộc không gian làm việc của bạn",
+      "notYoursDesc": "Bạn đang đăng nhập vào một tổ chức khác, hoặc biểu mẫu không còn tồn tại."
+    },
+    "visitor": "Đang điền với tư cách {who}"
   },
   "share": {
     "crumb": "Chia sẻ",
@@ -2847,7 +2866,12 @@
       "setPassword": "Mật khẩu",
       "passwordHint": "Tối thiểu 8 ký tự. Hãy gửi cho những người cần điền biểu mẫu.",
       "tooShort": "Hãy dùng ít nhất 8 ký tự.",
-      "passwordNote": "Mật khẩu sẽ không bao giờ được hiển thị lại. Sau khi đổi, mọi người đều cần mật khẩu mới."
+      "passwordNote": "Mật khẩu sẽ không bao giờ được hiển thị lại. Sau khi đổi, mọi người đều cần mật khẩu mới.",
+      "invite": "Chỉ người được mời",
+      "inviteDesc": "Mỗi người nhận một liên kết riêng và có thể trả lời một lần.",
+      "organisation": "Chỉ tổ chức của tôi",
+      "organisationDesc": "Mọi người đăng nhập vào {org} để mở.",
+      "organisationNote": "Chỉ thành viên của {org} mới có thể mở biểu mẫu sau khi đăng nhập. Tên và email được lưu cùng câu trả lời, và mỗi thành viên có thể trả lời một lần."
     },
     "link": {
       "title": "Liên kết tùy chỉnh",
@@ -2981,6 +3005,38 @@
       "asSearch": "Kết quả tìm kiếm",
       "noImage": "Không có ảnh",
       "hiddenFromSearch": "Đã ẩn khỏi công cụ tìm kiếm — biểu mẫu này sẽ không xuất hiện trong kết quả tìm kiếm."
+    },
+    "invite": {
+      "title": "Lời mời",
+      "counts": "{responded}/{total} đã trả lời",
+      "saveFirst": "Lưu “Chỉ người được mời” để lời mời có hiệu lực — cho đến lúc đó biểu mẫu vẫn mở như trước.",
+      "add": "Mời mọi người",
+      "addHint": "Mỗi dòng một địa chỉ hoặc phân tách bằng dấu phẩy. Thêm tên như sau: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Không phải địa chỉ email: {list}",
+      "button": "Mời {n} người | Mời {n} người",
+      "buttonEmpty": "Mời",
+      "sent": "Đã gửi {n} lời mời | Đã gửi {n} lời mời",
+      "skipped": "{n} người đã được mời trước đó | {n} người đã được mời trước đó",
+      "devLinks": "Liên kết riêng — sẽ được gửi qua email cho từng người khi Formalie hoạt động chính thức; hiển thị ở đây trong lúc phát triển:",
+      "none": "Chưa mời ai.",
+      "resent": "Đã gửi liên kết mới đến {email}",
+      "resend": "Gửi liên kết mới",
+      "revoke": "Thu hồi",
+      "revokeTitle": "Thu hồi lời mời của {email}?",
+      "revokeDesc": "Liên kết riêng của họ sẽ ngừng hoạt động. Câu trả lời đã gửi vẫn được giữ lại.",
+      "status": {
+        "invited": "Đã mời",
+        "opened": "Đã mở",
+        "responded": "Đã trả lời",
+        "revoked": "Đã thu hồi"
+      },
+      "when": {
+        "invited": "đã mời {when}",
+        "opened": "đã mở {when}",
+        "responded": "đã trả lời {when}",
+        "revoked": "đã mời {when}"
+      }
     }
   }
 }

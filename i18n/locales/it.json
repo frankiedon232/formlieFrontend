@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Sembra una risposta già inviata. Conferma che si tratta di un’altra persona.",
     "FRM-RESP-1008": "Verifica la tua email per inviare questo modulo.",
     "FRM-RESP-1009": "Non è stato possibile confermare che questa risposta sia stata inviata da una persona. Riprova.",
-    "FRM-FORM-1017": "La password non è corretta."
+    "FRM-FORM-1017": "La password non è corretta.",
+    "FRM-FORM-1018": "Questo link di invito non è più valido.",
+    "FRM-FORM-1019": "L’accesso a questo modulo è scaduto. Acceda di nuovo."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Questo link breve non funziona",
       "desc": "Potrebbe essere stato rimosso, oppure l’indirizzo è stato digitato in modo errato. Verifichi con chi lo ha condiviso.",
       "opening": "Apertura del modulo…"
-    }
+    },
+    "invite": {
+      "title": "Questo modulo è solo su invito",
+      "desc": "Solo le persone invitate possono compilarlo.",
+      "how": "Apra il modulo con il link personale presente nell’email di invito. Ogni link è per una sola persona.",
+      "badLink": "Questo link di invito non funziona più",
+      "badLinkDesc": "Potrebbe essere stato sostituito da uno più recente o revocato. Chieda un nuovo link all’organizzazione."
+    },
+    "member": {
+      "title": "Solo per i membri di {org}",
+      "desc": "Acceda con il suo account di lavoro per compilare questo modulo.",
+      "signIn": "Accedi a {org}",
+      "openTitle": "Apertura del modulo",
+      "opening": "Apertura del modulo…",
+      "notYours": "Questo modulo non fa parte del suo spazio di lavoro",
+      "notYoursDesc": "Ha effettuato l’accesso a un’altra organizzazione, oppure il modulo non esiste più."
+    },
+    "visitor": "Compilazione come {who}"
   },
   "share": {
     "crumb": "Condividi",
@@ -2847,7 +2866,12 @@
       "setPassword": "Password",
       "passwordHint": "Almeno 8 caratteri. La comunichi alle persone che devono compilare il modulo.",
       "tooShort": "Usi almeno 8 caratteri.",
-      "passwordNote": "La password non verrà più mostrata. Dopo una modifica, tutti avranno bisogno di quella nuova."
+      "passwordNote": "La password non verrà più mostrata. Dopo una modifica, tutti avranno bisogno di quella nuova.",
+      "invite": "Solo persone invitate",
+      "inviteDesc": "Ogni persona riceve un link personale e può rispondere una volta.",
+      "organisation": "Solo la mia organizzazione",
+      "organisationDesc": "Per aprirlo occorre accedere a {org}.",
+      "organisationNote": "Solo i membri di {org} possono aprire il modulo, dopo aver effettuato l’accesso. Nome ed email vengono salvati con la risposta e ogni membro può rispondere una volta."
     },
     "link": {
       "title": "Link personalizzato",
@@ -2981,6 +3005,38 @@
       "asSearch": "Risultato di ricerca",
       "noImage": "Nessuna immagine",
       "hiddenFromSearch": "Nascosto ai motori di ricerca — questo modulo non comparirà nei risultati di ricerca."
+    },
+    "invite": {
+      "title": "Inviti",
+      "counts": "{responded} su {total} hanno risposto",
+      "saveFirst": "Salvi «Solo persone invitate» perché gli inviti abbiano effetto — fino ad allora il modulo resta aperto come prima.",
+      "add": "Invita persone",
+      "addHint": "Una per riga o separate da virgole. Aggiunga un nome così: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Non è un indirizzo email: {list}",
+      "button": "Invita {n} persona | Invita {n} persone",
+      "buttonEmpty": "Invita",
+      "sent": "{n} invito inviato | {n} inviti inviati",
+      "skipped": "{n} persona era già invitata | {n} persone erano già invitate",
+      "devLinks": "Link personali — inviati via email a ciascuna persona quando Formalie sarà attivo; mostrati qui durante lo sviluppo:",
+      "none": "Ancora nessun invitato.",
+      "resent": "Un nuovo link è stato inviato a {email}",
+      "resend": "Invia un nuovo link",
+      "revoke": "Revoca",
+      "revokeTitle": "Revocare l’invito per {email}?",
+      "revokeDesc": "Il link personale smetterà di funzionare. Una risposta già inviata viene conservata.",
+      "status": {
+        "invited": "Invitato",
+        "opened": "Aperto",
+        "responded": "Ha risposto",
+        "revoked": "Revocato"
+      },
+      "when": {
+        "invited": "invitato {when}",
+        "opened": "aperto {when}",
+        "responded": "ha risposto {when}",
+        "revoked": "invitato {when}"
+      }
     }
   }
 }

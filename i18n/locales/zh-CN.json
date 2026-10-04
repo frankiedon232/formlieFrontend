@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "这看起来与一份已提交的回复相似。请确认这是另一个人。",
     "FRM-RESP-1008": "请验证你的邮箱以提交此表单。",
     "FRM-RESP-1009": "无法确认此回复是由真人提交的，请重试。",
-    "FRM-FORM-1017": "密码不正确。"
+    "FRM-FORM-1017": "密码不正确。",
+    "FRM-FORM-1018": "此邀请链接已失效。",
+    "FRM-FORM-1019": "您对此表单的登录已过期，请重新登录。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -2818,7 +2820,24 @@
       "title": "此短链接无效",
       "desc": "它可能已被移除，或地址输入有误。请向分享者核实。",
       "opening": "正在打开表单…"
-    }
+    },
+    "invite": {
+      "title": "此表单仅限受邀填写",
+      "desc": "只有受邀人员才能填写。",
+      "how": "请通过邀请邮件中的专属链接打开表单。每个链接仅供一人使用。",
+      "badLink": "此邀请链接已无法使用",
+      "badLinkDesc": "它可能已被新链接替换或已被撤销。请向该组织索取新链接。"
+    },
+    "member": {
+      "title": "仅限 {org} 成员",
+      "desc": "请使用工作账号登录以填写此表单。",
+      "signIn": "登录 {org}",
+      "openTitle": "正在打开表单",
+      "opening": "正在打开表单…",
+      "notYours": "此表单不属于您的工作区",
+      "notYoursDesc": "您登录的是其他组织，或该表单已不存在。"
+    },
+    "visitor": "以 {who} 的身份填写"
   },
   "share": {
     "crumb": "分享",
@@ -2847,7 +2866,12 @@
       "setPassword": "密码",
       "passwordHint": "至少 8 个字符。请将其提供给需要填写表单的人。",
       "tooShort": "请至少使用 8 个字符。",
-      "passwordNote": "密码不会再次显示。更改后，所有人都需要使用新密码。"
+      "passwordNote": "密码不会再次显示。更改后，所有人都需要使用新密码。",
+      "invite": "仅限受邀人员",
+      "inviteDesc": "每人获得一个专属链接，可回复一次。",
+      "organisation": "仅限我的组织",
+      "organisationDesc": "需登录 {org} 才能打开。",
+      "organisationNote": "只有 {org} 的成员在登录后才能打开此表单。其姓名和邮箱会随回复一起保存，每位成员可回复一次。"
     },
     "link": {
       "title": "自定义链接",
@@ -2981,6 +3005,38 @@
       "asSearch": "搜索结果",
       "noImage": "无图片",
       "hiddenFromSearch": "已对搜索引擎隐藏 — 此表单不会出现在搜索结果中。"
+    },
+    "invite": {
+      "title": "邀请",
+      "counts": "{total} 人中已有 {responded} 人回复",
+      "saveFirst": "请保存“仅限受邀人员”以使邀请生效——在此之前，表单仍像以前一样开放。",
+      "add": "邀请人员",
+      "addHint": "每行一个，或用逗号分隔。添加姓名的格式：Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "不是邮箱地址：{list}",
+      "button": "邀请 {n} 人 | 邀请 {n} 人",
+      "buttonEmpty": "邀请",
+      "sent": "已发送 {n} 份邀请 | 已发送 {n} 份邀请",
+      "skipped": "{n} 人已被邀请过 | {n} 人已被邀请过",
+      "devLinks": "专属链接——Formalie 正式上线后将通过邮件发送给每个人；开发期间在此显示：",
+      "none": "尚未邀请任何人。",
+      "resent": "已向 {email} 发送新链接",
+      "resend": "发送新链接",
+      "revoke": "撤销",
+      "revokeTitle": "撤销对 {email} 的邀请？",
+      "revokeDesc": "其专属链接将失效。已提交的回复会被保留。",
+      "status": {
+        "invited": "已邀请",
+        "opened": "已打开",
+        "responded": "已回复",
+        "revoked": "已撤销"
+      },
+      "when": {
+        "invited": "{when}邀请",
+        "opened": "{when}打开",
+        "responded": "{when}回复",
+        "revoked": "{when}邀请"
+      }
     }
   }
 }

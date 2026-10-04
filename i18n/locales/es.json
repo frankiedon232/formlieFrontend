@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Parece una respuesta que ya se envió. Confirma que se trata de otra persona.",
     "FRM-RESP-1008": "Verifica tu correo para enviar este formulario.",
     "FRM-RESP-1009": "No pudimos confirmar que esta respuesta la envió una persona. Inténtalo de nuevo.",
-    "FRM-FORM-1017": "La contraseña no es correcta."
+    "FRM-FORM-1017": "La contraseña no es correcta.",
+    "FRM-FORM-1018": "Este enlace de invitación ya no es válido.",
+    "FRM-FORM-1019": "Su sesión para este formulario ha caducado. Vuelva a iniciar sesión."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Este enlace corto no funciona",
       "desc": "Es posible que se haya quitado o que la dirección se haya escrito mal. Consúltelo con quien lo compartió.",
       "opening": "Abriendo el formulario…"
-    }
+    },
+    "invite": {
+      "title": "Este formulario es solo por invitación",
+      "desc": "Solo las personas invitadas pueden rellenarlo.",
+      "how": "Abra el formulario con el enlace personal de su correo de invitación. Cada enlace es para una sola persona.",
+      "badLink": "Este enlace de invitación ya no funciona",
+      "badLinkDesc": "Puede que se haya sustituido por uno más reciente o se haya revocado. Pida un nuevo enlace a la organización."
+    },
+    "member": {
+      "title": "Solo para miembros de {org}",
+      "desc": "Inicie sesión con su cuenta de trabajo para rellenar este formulario.",
+      "signIn": "Iniciar sesión en {org}",
+      "openTitle": "Abriendo el formulario",
+      "opening": "Abriendo el formulario…",
+      "notYours": "Este formulario no forma parte de su espacio de trabajo",
+      "notYoursDesc": "Ha iniciado sesión en otra organización, o el formulario ya no existe."
+    },
+    "visitor": "Rellenando como {who}"
   },
   "share": {
     "crumb": "Compartir",
@@ -2847,7 +2866,12 @@
       "setPassword": "Contraseña",
       "passwordHint": "Al menos 8 caracteres. Compártala con las personas que deben rellenar el formulario.",
       "tooShort": "Use al menos 8 caracteres.",
-      "passwordNote": "La contraseña no se vuelve a mostrar. Tras un cambio, todos necesitarán la nueva."
+      "passwordNote": "La contraseña no se vuelve a mostrar. Tras un cambio, todos necesitarán la nueva.",
+      "invite": "Solo personas invitadas",
+      "inviteDesc": "Cada persona recibe un enlace personal y puede responder una vez.",
+      "organisation": "Solo mi organización",
+      "organisationDesc": "Para abrirlo hay que iniciar sesión en {org}.",
+      "organisationNote": "Solo los miembros de {org} pueden abrir el formulario, tras iniciar sesión. Su nombre y correo se guardan con la respuesta, y cada miembro puede responder una vez."
     },
     "link": {
       "title": "Enlace personalizado",
@@ -2981,6 +3005,38 @@
       "asSearch": "Resultado de búsqueda",
       "noImage": "Sin imagen",
       "hiddenFromSearch": "Oculto a los motores de búsqueda — este formulario no aparecerá en los resultados de búsqueda."
+    },
+    "invite": {
+      "title": "Invitaciones",
+      "counts": "{responded} de {total} han respondido",
+      "saveFirst": "Guarde «Solo personas invitadas» para que las invitaciones surtan efecto; hasta entonces, el formulario sigue abierto como antes.",
+      "add": "Invitar personas",
+      "addHint": "Una por línea o separadas por comas. Añada un nombre así: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "No es una dirección de correo: {list}",
+      "button": "Invitar a {n} persona | Invitar a {n} personas",
+      "buttonEmpty": "Invitar",
+      "sent": "{n} invitación enviada | {n} invitaciones enviadas",
+      "skipped": "{n} persona ya estaba invitada | {n} personas ya estaban invitadas",
+      "devLinks": "Enlaces personales: se enviarán por correo a cada persona cuando Formalie esté en marcha; se muestran aquí durante el desarrollo:",
+      "none": "Aún no hay nadie invitado.",
+      "resent": "Se ha enviado un nuevo enlace a {email}",
+      "resend": "Enviar un nuevo enlace",
+      "revoke": "Revocar",
+      "revokeTitle": "¿Revocar la invitación de {email}?",
+      "revokeDesc": "Su enlace personal dejará de funcionar. Se conserva la respuesta que ya haya enviado.",
+      "status": {
+        "invited": "Invitado",
+        "opened": "Abierto",
+        "responded": "Respondido",
+        "revoked": "Revocado"
+      },
+      "when": {
+        "invited": "invitado {when}",
+        "opened": "abierto {when}",
+        "responded": "respondido {when}",
+        "revoked": "invitado {when}"
+      }
     }
   }
 }

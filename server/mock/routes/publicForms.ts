@@ -38,6 +38,7 @@ import { checkWork } from '#shared/utils/forms/proof-of-work'
 import type { UploadTicket } from '#shared/types/onboarding'
 import { platformLegal } from '../data/platformStore'
 import { hashPassword } from './formShare'
+import { accessOf, inviteByToken, readPass, unlockCookieName, unlockValue, visitorOf, type Visitor } from '../data/formAccess'
 
 const RESPONDENT = { type: 'user' as const, id: null, name: 'Respondent', email: null }
 
@@ -85,25 +86,8 @@ function stateOf(form: StoredForm, { ignoreLimit = false } = {}): PublicFormStat
   return 'not_published'
 }
 
-// ── Password access (F10 M3) ───────────────────────────────────────────────────────────
-// After the right password the browser gets an HttpOnly cookie for this form (12 hours), signed
-// with the password's version: changing the password locks everyone out again.
-const UNLOCK_SECRET = randomBytes(32)
-const UNLOCK_TTL_MS = 12 * 3_600_000
-const unlockCookie = (form: StoredForm) => `formalie_unlock_${form.public_key}`
-const unlockSignature = (form: StoredForm, until: number) =>
-  createHmac('sha256', UNLOCK_SECRET).update(`${form.id}|${form.password?.version ?? 0}|${until}`).digest('base64url')
-
-function unlocked(event: Parameters<typeof tenantOf>[0], form: StoredForm): boolean {
-  if ((form.access ?? 'public') !== 'password') return true
-  const [until, signature] = (getCookie(event, unlockCookie(form)) ?? '').split('.')
-  if (!until || !signature || Number(until) < Date.now()) return false
-  const expected = Buffer.from(unlockSignature(form, Number(until)))
-  const given = Buffer.from(signature)
-  return expected.length === given.length && timingSafeEqual(expected, given)
-}
-
-/** The form takes responses from this visitor right now: open, unlocked (password) — or the reason why not. */
+// ── Who may open the form (F10 M3, data/formAccess.ts) ────────────────────────────────────
+/** The form takes responses from this visitor right now: open and unlocked for them — or the reason why not. */
 function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false } = {}) {
   const { tenant, form } = locate(event, key)
   const state = stateOf(form, { ignoreLimit })
@@ -120,31 +104,66 @@ function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { i
               ? 'FRM-FORM-1003'
               : 'FRM-FORM-1001',
     )
-  if (!unlocked(event, form)) throw new MockError('FRM-FORM-1005')
-  return { tenant, form, schema }
+  const visitor = visitorOf(event, form, tenant)
+  if (!visitor) throw new MockError('FRM-FORM-1005')
+  return { tenant, form, schema, visitor }
 }
 
-const unlockBody = z.object({ password: z.string().min(1).max(100) })
+const unlockBody = z.union([
+  z.object({ password: z.string().min(1).max(100) }),
+  z.object({ invite: z.string().min(10).max(100) }),
+  z.object({ pass: z.string().min(10).max(200) }),
+])
 const unlockAttempts = new Map<string, number[]>()
 
-/** POST /public/forms/:key/unlock — the form's password → an unlock cookie for this browser. */
+/**
+ * POST /public/forms/:key/unlock — the password, a personal invitation token or a member's sign-in
+ * pass → an unlock cookie for this browser (12 hours; SameSite=None so embeds work too).
+ */
 export const unlockForm = defineMockRoute(({ event, body }) => {
-  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
-  if ((form.access ?? 'public') !== 'password' || !form.password) return ok({ unlocked: true })
+  const { tenant, form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const mode = accessOf(form)
+  if (mode === 'public') return ok({ unlocked: true })
   // At most 10 tries per 10 minutes from one address for one form.
-  const who = `${form.id}:${getRequestIP(event, { xForwardedFor: true }) ?? 'unknown'}`
-  const recent = (unlockAttempts.get(who) ?? []).filter(at => at > Date.now() - 600_000)
+  const attempt = `${form.id}:${getRequestIP(event, { xForwardedFor: true }) ?? 'unknown'}`
+  const recent = (unlockAttempts.get(attempt) ?? []).filter(at => at > Date.now() - 600_000)
   if (recent.length >= 10) throw new MockError('FRM-GEN-1029')
-  unlockAttempts.set(who, [...recent, Date.now()])
-  const given = Buffer.from(hashPassword(parseBody(unlockBody, body).password, form.password.salt))
-  const stored = Buffer.from(form.password.hash)
-  if (given.length !== stored.length || !timingSafeEqual(given, stored)) throw new MockError('FRM-FORM-1017')
-  unlockAttempts.delete(who)
-  const until = Date.now() + UNLOCK_TTL_MS
-  // SameSite=None: password forms work inside embeds too.
-  setCookie(event, unlockCookie(form), `${until}.${unlockSignature(form, until)}`, { httpOnly: true, secure: true, sameSite: 'none', path: '/', maxAge: UNLOCK_TTL_MS / 1000 })
+  unlockAttempts.set(attempt, [...recent, Date.now()])
+  const input = parseBody(unlockBody, body)
+
+  let who: string | null = null
+  if (mode === 'password' && 'password' in input && form.password) {
+    const given = Buffer.from(hashPassword(input.password, form.password.salt))
+    const stored = Buffer.from(form.password.hash)
+    if (given.length !== stored.length || !timingSafeEqual(given, stored)) throw new MockError('FRM-FORM-1017')
+    who = 'pw'
+  } else if (mode === 'invite' && 'invite' in input) {
+    const invite = inviteByToken(form, input.invite)
+    if (!invite) throw new MockError('FRM-FORM-1018')
+    if (!invite.opened_at) {
+      invite.opened_at = new Date().toISOString()
+      saveForms()
+    }
+    who = `inv~${invite.id}`
+  } else if (mode === 'organisation' && 'pass' in input) {
+    const user = readPass(form, tenant, input.pass)
+    if (!user) throw new MockError('FRM-FORM-1019')
+    who = `usr~${user.id}`
+  }
+  if (!who) throw new MockError('FRM-FORM-1005')
+  unlockAttempts.delete(attempt)
+  const cookie = unlockValue(form, who)
+  setCookie(event, unlockCookieName(form), cookie.value, { httpOnly: true, secure: true, sameSite: 'none', path: '/', maxAge: cookie.maxAge })
   return ok({ unlocked: true })
 })
+
+/** Name and email of a known visitor (invitation or member), for "Filling in as …" and the response. */
+function visitorIdentity(visitor: Visitor | null): { kind: 'invite' | 'member'; id: string; name: string | null; email: string } | null {
+  if (visitor?.kind === 'invite') return { kind: 'invite', id: visitor.invite.id, name: visitor.invite.name, email: visitor.invite.email }
+  if (visitor?.kind === 'member')
+    return { kind: 'member', id: visitor.user.id, name: `${visitor.user.first_name} ${visitor.user.last_name}`.trim(), email: visitor.user.email }
+  return null
+}
 
 /** What respondents fill in: the published version (seeded sample forms get theirs on first open). */
 function publishedSchema(tenant: MockTenant, form: StoredForm): FormSchemaV1 | null {
@@ -162,7 +181,9 @@ const offered = (schema: FormSchemaV1 | null) => {
 export function publicFormView(event: Parameters<typeof tenantOf>[0], key: string): PublicForm {
   const { tenant, form } = locate(event, key)
   const state = stateOf(form)
-  const locked = state === 'open' && !unlocked(event, form)
+  const visitor = state === 'open' ? visitorOf(event, form, tenant) : null
+  const locked = state === 'open' && !visitor
+  const identity = visitorIdentity(visitor)
   const published = state === 'open' ? publishedSchema(tenant, form) : null
   const schema = published ? { ...structuredClone(published), theme: resolveTheme(published.theme, branding(tenant)) as unknown as Record<string, unknown> } : null
   // The form's language also for full, closed, expired, scheduled and locked pages (no questions are sent then).
@@ -190,6 +211,8 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
     languages: [language],
     language,
     locked,
+    lock: locked ? (accessOf(form) as Exclude<ReturnType<typeof accessOf>, 'public'>) : null,
+    visitor: identity ? { name: identity.name, email: identity.email } : null,
     embed_ancestors: frameAncestors(form.embed_domains ?? [], useRuntimeConfig(event).public.rootDomain),
   }
 }
@@ -223,7 +246,8 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   if (!SUBMISSION_ID.test(submissionId))
     throw new MockError('FRM-GEN-1002', [{ field: 'Idempotency-Key', message: 'Send the fill-in session id as Idempotency-Key.' }])
   const input = parseBody(submitBody, body)
-  const { tenant, form, schema } = takingResponses(event, key, { ignoreLimit: true })
+  const { tenant, form, schema, visitor } = takingResponses(event, key, { ignoreLimit: true })
+  const known = visitorIdentity(visitor)
   const thankYou = {
     title: schema.thank_you?.title ?? '',
     message: schema.thank_you?.message ?? '',
@@ -274,7 +298,11 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
       throw new MockError('FRM-RESP-1008', [{ field: identity.email, message: maskEmail(answers[identity.email]) }])
   }
   let possibleDuplicate: { of: string; reason: string } | undefined
-  if (identity.email) {
+  // Invitation or signed-in member (F10 M3): the person is known — one response each.
+  if (known) {
+    const earlier = earlierResponses.find(item => item.respondent?.kind === known.kind && item.respondent.id === known.id)
+    if (earlier) throw new MockError('FRM-RESP-1006', [{ field: '', message: JSON.stringify({ at: earlier.submitted_at, email: maskEmail(known.email) }) }])
+  } else if (identity.email) {
     const match = matchIdentity(schema, answers, earlierResponses, identity)
     const key = identity.email
     const hint = JSON.stringify({ at: match.record?.submitted_at, email: maskEmail(match.record?.data[key]) })
@@ -298,6 +326,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
     device_id: deviceId,
     fingerprint,
     ...(possibleDuplicate ? { possible_duplicate: possibleDuplicate } : {}),
+    ...(known ? { respondent: known } : {}),
     channel: input.channel,
     meta: { ip: getRequestIP(event, { xForwardedFor: true }) ?? 'unknown', user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 300) },
   }
@@ -305,6 +334,10 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   saveResponses()
   usedChallenges.set(salt, Date.now() + CHALLENGE_TTL_MS)
   attachRespondentFiles(fileIds, response.id)
+  if (visitor?.kind === 'invite') {
+    visitor.invite.responded_at = response.submitted_at
+    saveForms()
+  }
   if (input.resume_token) {
     const draft = draftOf(input.resume_token, form.id)
     if (draft) putDraft(input.resume_token, { ...draft, closed: true, data: {}, updated_at: new Date().toISOString() })

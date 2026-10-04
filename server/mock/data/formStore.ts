@@ -4,6 +4,7 @@
  * Trash is emptied automatically after TRASH_RETENTION_DAYS.
  */
 import { TRASH_RETENTION_DAYS, type FormFolder, type FormStatus, type FormSummary, type FormVersion } from '#shared/types/forms'
+import type { FormInvite } from './formAccess'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { newPublicKey } from '#shared/utils/urls/public'
 import { loadPersisted, savePersisted } from '../core/persist'
@@ -25,6 +26,8 @@ export interface StoredForm extends FormSummary {
   short_created_at?: string | null
   /** Websites allowed to show the embed (F10 M3; empty / missing = any). */
   embed_domains?: string[]
+  /** Invitations of an invite-only form (F10 M3, data/formAccess.ts). */
+  invites?: FormInvite[]
   /** Search & link preview set by the creator (F10 M3; empty = from the form, data/formSeo.ts). */
   seo?: { title: string | null; description: string | null; image_upload_id: string | null; noindex: boolean }
 }
@@ -116,6 +119,7 @@ export function summaryOf(form: StoredForm): FormSummary {
     short_created_at: _sca,
     embed_domains: _ed,
     seo: _seo,
+    invites: _inv,
     ...summary
   } = form
   // Share settings added in F10 M3: older forms have none yet.

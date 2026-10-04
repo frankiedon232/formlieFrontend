@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Cela ressemble à une réponse déjà envoyée. Confirmez qu’il s’agit d’une autre personne.",
     "FRM-RESP-1008": "Vérifiez votre adresse e-mail pour envoyer ce formulaire.",
     "FRM-RESP-1009": "Nous n’avons pas pu confirmer que cette réponse a été envoyée par une personne. Veuillez réessayer.",
-    "FRM-FORM-1017": "Ce mot de passe n’est pas correct."
+    "FRM-FORM-1017": "Ce mot de passe n’est pas correct.",
+    "FRM-FORM-1018": "Ce lien d’invitation n’est plus valide.",
+    "FRM-FORM-1019": "Votre connexion pour ce formulaire a expiré. Veuillez vous reconnecter."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -2818,7 +2820,24 @@
       "title": "Ce lien court ne fonctionne pas",
       "desc": "Il a peut-être été supprimé, ou l’adresse a été mal saisie. Vérifiez-la auprès de la personne qui l’a partagé.",
       "opening": "Ouverture du formulaire…"
-    }
+    },
+    "invite": {
+      "title": "Ce formulaire est accessible sur invitation uniquement",
+      "desc": "Seules les personnes invitées peuvent le remplir.",
+      "how": "Ouvrez le formulaire avec le lien personnel figurant dans votre e-mail d’invitation. Chaque lien est destiné à une seule personne.",
+      "badLink": "Ce lien d’invitation ne fonctionne plus",
+      "badLinkDesc": "Il a peut-être été remplacé par un lien plus récent ou révoqué. Demandez un nouveau lien à l’organisation."
+    },
+    "member": {
+      "title": "Réservé aux membres de {org}",
+      "desc": "Connectez-vous avec votre compte professionnel pour remplir ce formulaire.",
+      "signIn": "Se connecter à {org}",
+      "openTitle": "Ouverture du formulaire",
+      "opening": "Ouverture du formulaire…",
+      "notYours": "Ce formulaire ne fait pas partie de votre espace de travail",
+      "notYoursDesc": "Vous êtes connecté à une autre organisation, ou le formulaire n’existe plus."
+    },
+    "visitor": "Rempli en tant que {who}"
   },
   "share": {
     "crumb": "Partager",
@@ -2847,7 +2866,12 @@
       "setPassword": "Mot de passe",
       "passwordHint": "Au moins 8 caractères. Communiquez-le aux personnes qui doivent remplir le formulaire.",
       "tooShort": "Utilisez au moins 8 caractères.",
-      "passwordNote": "Le mot de passe ne sera plus jamais affiché. Après une modification, tout le monde aura besoin du nouveau."
+      "passwordNote": "Le mot de passe ne sera plus jamais affiché. Après une modification, tout le monde aura besoin du nouveau.",
+      "invite": "Personnes invitées uniquement",
+      "inviteDesc": "Chaque personne reçoit un lien personnel et peut répondre une fois.",
+      "organisation": "Mon organisation uniquement",
+      "organisationDesc": "Il faut se connecter à {org} pour l’ouvrir.",
+      "organisationNote": "Seuls les membres de {org} peuvent ouvrir le formulaire, après connexion. Leur nom et leur e-mail sont enregistrés avec leur réponse, et chaque membre peut répondre une fois."
     },
     "link": {
       "title": "Lien personnalisé",
@@ -2981,6 +3005,38 @@
       "asSearch": "Résultat de recherche",
       "noImage": "Aucune image",
       "hiddenFromSearch": "Masqué aux moteurs de recherche — ce formulaire n’apparaîtra pas dans les résultats de recherche."
+    },
+    "invite": {
+      "title": "Invitations",
+      "counts": "{responded} sur {total} ont répondu",
+      "saveFirst": "Enregistrez « Personnes invitées uniquement » pour que les invitations prennent effet — d’ici là, le formulaire reste ouvert comme avant.",
+      "add": "Inviter des personnes",
+      "addHint": "Une par ligne ou séparées par des virgules. Ajoutez un nom ainsi : Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Adresse e-mail non valide : {list}",
+      "button": "Inviter {n} personne | Inviter {n} personnes",
+      "buttonEmpty": "Inviter",
+      "sent": "{n} invitation envoyée | {n} invitations envoyées",
+      "skipped": "{n} personne était déjà invitée | {n} personnes étaient déjà invitées",
+      "devLinks": "Liens personnels — envoyés par e-mail à chaque personne dès que Formalie sera en ligne ; affichés ici pendant le développement :",
+      "none": "Personne n’a encore été invité.",
+      "resent": "Un nouveau lien a été envoyé à {email}",
+      "resend": "Envoyer un nouveau lien",
+      "revoke": "Révoquer",
+      "revokeTitle": "Révoquer l’invitation de {email} ?",
+      "revokeDesc": "Son lien personnel cessera de fonctionner. Une réponse déjà envoyée est conservée.",
+      "status": {
+        "invited": "Invité",
+        "opened": "Ouvert",
+        "responded": "Répondu",
+        "revoked": "Révoqué"
+      },
+      "when": {
+        "invited": "invité {when}",
+        "opened": "ouvert {when}",
+        "responded": "a répondu {when}",
+        "revoked": "invité {when}"
+      }
     }
   }
 }

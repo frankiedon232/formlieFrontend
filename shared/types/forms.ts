@@ -48,7 +48,7 @@ export interface FormSummary {
   short_code: string | null
 }
 
-export type FormAccess = 'public' | 'password'
+export type FormAccess = 'public' | 'password' | 'invite' | 'organisation'
 
 /** GET /forms/{id}/share — everything about how a form is shared (the password itself is never returned). */
 export interface FormShareSettings {
@@ -76,6 +76,17 @@ export interface FormShareSettings {
     default_title: string
     default_description: string
   }
+}
+
+/** One invitation of an invite-only form (GET /forms/{id}/invites). The personal link is only shown when created / resent. */
+export interface FormInvitation {
+  id: string
+  email: string
+  name: string | null
+  status: 'invited' | 'opened' | 'responded' | 'revoked'
+  sent_at: string
+  opened_at: string | null
+  responded_at: string | null
 }
 
 /** The Share tab's unsaved changes (portal only). */

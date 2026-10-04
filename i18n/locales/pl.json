@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Wygląda to na odpowiedź, która została już wysłana. Potwierdź, że to inna osoba.",
     "FRM-RESP-1008": "Zweryfikuj adres e-mail, aby wysłać ten formularz.",
     "FRM-RESP-1009": "Nie udało się potwierdzić, że tę odpowiedź wysłała osoba. Spróbuj ponownie.",
-    "FRM-FORM-1017": "To hasło jest nieprawidłowe."
+    "FRM-FORM-1017": "To hasło jest nieprawidłowe.",
+    "FRM-FORM-1018": "Ten link z zaproszeniem jest już nieważny.",
+    "FRM-FORM-1019": "Logowanie do tego formularza wygasło. Zaloguj się ponownie."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Ten krótki link nie działa",
       "desc": "Mógł zostać usunięty lub adres wpisano niepoprawnie. Sprawdź go u osoby, która go udostępniła.",
       "opening": "Otwieranie formularza…"
-    }
+    },
+    "invite": {
+      "title": "Ten formularz jest dostępny tylko na zaproszenie",
+      "desc": "Wypełnić go mogą tylko zaproszone osoby.",
+      "how": "Otwórz formularz za pomocą osobistego linku z e-maila z zaproszeniem. Każdy link jest dla jednej osoby.",
+      "badLink": "Ten link z zaproszeniem już nie działa",
+      "badLinkDesc": "Mógł zostać zastąpiony nowszym lub cofnięty. Poproś organizację o nowy link."
+    },
+    "member": {
+      "title": "Tylko dla członków {org}",
+      "desc": "Zaloguj się kontem służbowym, aby wypełnić ten formularz.",
+      "signIn": "Zaloguj się do {org}",
+      "openTitle": "Otwieranie formularza",
+      "opening": "Otwieranie formularza…",
+      "notYours": "Ten formularz nie należy do Twojej przestrzeni roboczej",
+      "notYoursDesc": "Jesteś zalogowany w innej organizacji albo formularz już nie istnieje."
+    },
+    "visitor": "Wypełniasz jako {who}"
   },
   "share": {
     "crumb": "Udostępnianie",
@@ -2847,7 +2866,12 @@
       "setPassword": "Hasło",
       "passwordHint": "Co najmniej 8 znaków. Przekaż je osobom, które mają wypełnić formularz.",
       "tooShort": "Użyj co najmniej 8 znaków.",
-      "passwordNote": "Hasło nie zostanie już nigdy wyświetlone. Po zmianie wszyscy potrzebują nowego."
+      "passwordNote": "Hasło nie zostanie już nigdy wyświetlone. Po zmianie wszyscy potrzebują nowego.",
+      "invite": "Tylko zaproszone osoby",
+      "inviteDesc": "Każda osoba otrzymuje osobisty link i może odpowiedzieć raz.",
+      "organisation": "Tylko moja organizacja",
+      "organisationDesc": "Aby go otworzyć, trzeba zalogować się do {org}.",
+      "organisationNote": "Tylko członkowie {org} mogą otworzyć formularz po zalogowaniu. Ich imię i nazwisko oraz e-mail są zapisywane z odpowiedzią, a każdy członek może odpowiedzieć raz."
     },
     "link": {
       "title": "Własny link",
@@ -2981,6 +3005,38 @@
       "asSearch": "Wynik wyszukiwania",
       "noImage": "Brak obrazu",
       "hiddenFromSearch": "Ukryty przed wyszukiwarkami — ten formularz nie pojawi się w wynikach wyszukiwania."
+    },
+    "invite": {
+      "title": "Zaproszenia",
+      "counts": "Odpowiedzi: {responded} z {total}",
+      "saveFirst": "Zapisz „Tylko zaproszone osoby”, aby zaproszenia zaczęły działać — do tego czasu formularz pozostaje otwarty jak dotąd.",
+      "add": "Zaproś osoby",
+      "addHint": "Jedna na wiersz lub oddzielone przecinkami. Dodaj imię w ten sposób: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "To nie jest adres e-mail: {list}",
+      "button": "Zaproś {n} osobę | Zaproś osoby ({n})",
+      "buttonEmpty": "Zaproś",
+      "sent": "Wysłano {n} zaproszenie | Wysłano zaproszenia: {n}",
+      "skipped": "{n} osoba była już zaproszona | Już zaproszone osoby: {n}",
+      "devLinks": "Osobiste linki — zostaną wysłane e-mailem do każdej osoby, gdy Formalie zostanie uruchomione; w trakcie rozwoju są widoczne tutaj:",
+      "none": "Nikt nie został jeszcze zaproszony.",
+      "resent": "Wysłano nowy link na adres {email}",
+      "resend": "Wyślij nowy link",
+      "revoke": "Cofnij",
+      "revokeTitle": "Cofnąć zaproszenie dla {email}?",
+      "revokeDesc": "Osobisty link przestanie działać. Wysłana już odpowiedź zostanie zachowana.",
+      "status": {
+        "invited": "Zaproszono",
+        "opened": "Otwarto",
+        "responded": "Odpowiedziano",
+        "revoked": "Cofnięto"
+      },
+      "when": {
+        "invited": "zaproszono {when}",
+        "opened": "otwarto {when}",
+        "responded": "odpowiedziano {when}",
+        "revoked": "zaproszono {when}"
+      }
     }
   }
 }

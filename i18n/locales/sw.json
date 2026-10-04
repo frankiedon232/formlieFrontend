@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Hili linaonekana kama jibu lililokwisha tumwa. Thibitisha kuwa huyu ni mtu mwingine.",
     "FRM-RESP-1008": "Thibitisha barua pepe yako ili kutuma fomu hii.",
     "FRM-RESP-1009": "Hatukuweza kuthibitisha kuwa jibu hili lilitumwa na mtu. Tafadhali jaribu tena.",
-    "FRM-FORM-1017": "Nenosiri hilo si sahihi."
+    "FRM-FORM-1017": "Nenosiri hilo si sahihi.",
+    "FRM-FORM-1018": "Kiungo hiki cha mwaliko si halali tena.",
+    "FRM-FORM-1019": "Muda wa kuingia kwako kwa fomu hii umeisha. Tafadhali ingia tena."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Kiungo hiki kifupi hakifanyi kazi",
       "desc": "Huenda kimeondolewa, au anwani iliandikwa vibaya. Tafadhali thibitisha na aliyekishiriki.",
       "opening": "Inafungua fomu…"
-    }
+    },
+    "invite": {
+      "title": "Fomu hii ni kwa mwaliko pekee",
+      "desc": "Ni watu walioalikwa pekee wanaoweza kuijaza.",
+      "how": "Fungua fomu kwa kiungo binafsi kilicho kwenye barua pepe yako ya mwaliko. Kila kiungo ni cha mtu mmoja.",
+      "badLink": "Kiungo hiki cha mwaliko hakifanyi kazi tena",
+      "badLinkDesc": "Huenda kimebadilishwa na kipya au kimebatilishwa. Omba kiungo kipya kutoka kwa shirika."
+    },
+    "member": {
+      "title": "Kwa wanachama wa {org} pekee",
+      "desc": "Ingia kwa akaunti yako ya kazi ili kujaza fomu hii.",
+      "signIn": "Ingia kwenye {org}",
+      "openTitle": "Inafungua fomu",
+      "opening": "Inafungua fomu…",
+      "notYours": "Fomu hii si sehemu ya eneo lako la kazi",
+      "notYoursDesc": "Umeingia kwenye shirika jingine, au fomu haipo tena."
+    },
+    "visitor": "Unajaza kama {who}"
   },
   "share": {
     "crumb": "Shiriki",
@@ -2847,7 +2866,12 @@
       "setPassword": "Nenosiri",
       "passwordHint": "Angalau herufi 8. Wape watu wanaopaswa kujaza fomu.",
       "tooShort": "Tumia angalau herufi 8.",
-      "passwordNote": "Nenosiri halitaonyeshwa tena. Baada ya kubadilisha, kila mtu atahitaji jipya."
+      "passwordNote": "Nenosiri halitaonyeshwa tena. Baada ya kubadilisha, kila mtu atahitaji jipya.",
+      "invite": "Walioalikwa pekee",
+      "inviteDesc": "Kila mtu anapata kiungo binafsi na anaweza kujibu mara moja.",
+      "organisation": "Shirika langu pekee",
+      "organisationDesc": "Watu huingia kwenye {org} ili kuifungua.",
+      "organisationNote": "Ni wanachama wa {org} pekee wanaoweza kufungua fomu, baada ya kuingia. Jina na barua pepe yao huhifadhiwa pamoja na jibu lao, na kila mwanachama anaweza kujibu mara moja."
     },
     "link": {
       "title": "Kiungo maalum",
@@ -2981,6 +3005,38 @@
       "asSearch": "Tokeo la utafutaji",
       "noImage": "Hakuna picha",
       "hiddenFromSearch": "Imefichwa kwa injini za utafutaji — fomu hii haitaonekana katika matokeo ya utafutaji."
+    },
+    "invite": {
+      "title": "Mialiko",
+      "counts": "{responded} kati ya {total} wamejibu",
+      "saveFirst": "Hifadhi “Walioalikwa pekee” ili mialiko ianze kufanya kazi — hadi hapo fomu inabaki wazi kama awali.",
+      "add": "Alika watu",
+      "addHint": "Moja kwa kila mstari au tenganisha kwa koma. Ongeza jina hivi: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Si anwani ya barua pepe: {list}",
+      "button": "Alika mtu {n} | Alika watu {n}",
+      "buttonEmpty": "Alika",
+      "sent": "Mwaliko {n} umetumwa | Mialiko {n} imetumwa",
+      "skipped": "Mtu {n} alikuwa ameshaalikwa | Watu {n} walikuwa wameshaalikwa",
+      "devLinks": "Viungo binafsi — vitatumwa kwa barua pepe kwa kila mtu Formalie itakapozinduliwa; vinaonyeshwa hapa wakati wa uundaji:",
+      "none": "Bado hakuna aliyealikwa.",
+      "resent": "Kiungo kipya kimetumwa kwa {email}",
+      "resend": "Tuma kiungo kipya",
+      "revoke": "Batilisha",
+      "revokeTitle": "Batilisha mwaliko wa {email}?",
+      "revokeDesc": "Kiungo chake binafsi kitaacha kufanya kazi. Jibu ambalo tayari limetumwa litahifadhiwa.",
+      "status": {
+        "invited": "Amealikwa",
+        "opened": "Amefungua",
+        "responded": "Amejibu",
+        "revoked": "Umebatilishwa"
+      },
+      "when": {
+        "invited": "alialikwa {when}",
+        "opened": "alifungua {when}",
+        "responded": "alijibu {when}",
+        "revoked": "alialikwa {when}"
+      }
     }
   }
 }

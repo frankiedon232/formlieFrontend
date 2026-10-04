@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Ini tampak seperti respons yang sudah dikirim. Konfirmasi bahwa ini orang yang berbeda.",
     "FRM-RESP-1008": "Verifikasi email Anda untuk mengirim formulir ini.",
     "FRM-RESP-1009": "Kami tidak dapat memastikan bahwa tanggapan ini dikirim oleh manusia. Silakan coba lagi.",
-    "FRM-FORM-1017": "Kata sandi tidak benar."
+    "FRM-FORM-1017": "Kata sandi tidak benar.",
+    "FRM-FORM-1018": "Tautan undangan ini sudah tidak berlaku.",
+    "FRM-FORM-1019": "Sesi masuk Anda untuk formulir ini telah berakhir. Silakan masuk lagi."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Tautan pendek ini tidak berfungsi",
       "desc": "Tautan mungkin telah dihapus, atau alamatnya salah ketik. Silakan periksa dengan orang yang membagikannya.",
       "opening": "Membuka formulir…"
-    }
+    },
+    "invite": {
+      "title": "Formulir ini hanya untuk yang diundang",
+      "desc": "Hanya orang yang diundang yang dapat mengisinya.",
+      "how": "Buka formulir dengan tautan pribadi dari email undangan Anda. Setiap tautan untuk satu orang.",
+      "badLink": "Tautan undangan ini sudah tidak berfungsi",
+      "badLinkDesc": "Tautan ini mungkin telah diganti dengan yang lebih baru atau dicabut. Mintalah tautan baru kepada organisasi."
+    },
+    "member": {
+      "title": "Hanya untuk anggota {org}",
+      "desc": "Masuk dengan akun kerja Anda untuk mengisi formulir ini.",
+      "signIn": "Masuk ke {org}",
+      "openTitle": "Membuka formulir",
+      "opening": "Membuka formulir…",
+      "notYours": "Formulir ini bukan bagian dari ruang kerja Anda",
+      "notYoursDesc": "Anda masuk ke organisasi lain, atau formulir sudah tidak ada."
+    },
+    "visitor": "Mengisi sebagai {who}"
   },
   "share": {
     "crumb": "Bagikan",
@@ -2847,7 +2866,12 @@
       "setPassword": "Kata sandi",
       "passwordHint": "Minimal 8 karakter. Berikan kepada orang yang perlu mengisi formulir.",
       "tooShort": "Gunakan minimal 8 karakter.",
-      "passwordNote": "Kata sandi tidak akan ditampilkan lagi. Setelah diubah, semua orang memerlukan kata sandi yang baru."
+      "passwordNote": "Kata sandi tidak akan ditampilkan lagi. Setelah diubah, semua orang memerlukan kata sandi yang baru.",
+      "invite": "Hanya orang yang diundang",
+      "inviteDesc": "Setiap orang mendapat tautan pribadi dan dapat merespons satu kali.",
+      "organisation": "Hanya organisasi saya",
+      "organisationDesc": "Orang masuk ke {org} untuk membukanya.",
+      "organisationNote": "Hanya anggota {org} yang dapat membuka formulir, setelah masuk. Nama dan email mereka disimpan bersama respons, dan setiap anggota dapat merespons satu kali."
     },
     "link": {
       "title": "Tautan khusus",
@@ -2981,6 +3005,38 @@
       "asSearch": "Hasil pencarian",
       "noImage": "Tidak ada gambar",
       "hiddenFromSearch": "Disembunyikan dari mesin pencari — formulir ini tidak akan muncul di hasil pencarian."
+    },
+    "invite": {
+      "title": "Undangan",
+      "counts": "{responded} dari {total} telah merespons",
+      "saveFirst": "Simpan “Hanya orang yang diundang” agar undangan berlaku — sampai saat itu formulir tetap terbuka seperti sebelumnya.",
+      "add": "Undang orang",
+      "addHint": "Satu per baris atau pisahkan dengan koma. Tambahkan nama seperti ini: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Bukan alamat email: {list}",
+      "button": "Undang {n} orang | Undang {n} orang",
+      "buttonEmpty": "Undang",
+      "sent": "{n} undangan terkirim | {n} undangan terkirim",
+      "skipped": "{n} orang sudah diundang | {n} orang sudah diundang",
+      "devLinks": "Tautan pribadi — dikirim lewat email ke setiap orang setelah Formalie aktif; ditampilkan di sini selama pengembangan:",
+      "none": "Belum ada yang diundang.",
+      "resent": "Tautan baru telah dikirim ke {email}",
+      "resend": "Kirim tautan baru",
+      "revoke": "Cabut",
+      "revokeTitle": "Cabut undangan untuk {email}?",
+      "revokeDesc": "Tautan pribadinya akan berhenti berfungsi. Respons yang sudah dikirim tetap disimpan.",
+      "status": {
+        "invited": "Diundang",
+        "opened": "Dibuka",
+        "responded": "Merespons",
+        "revoked": "Dicabut"
+      },
+      "when": {
+        "invited": "diundang {when}",
+        "opened": "dibuka {when}",
+        "responded": "merespons {when}",
+        "revoked": "diundang {when}"
+      }
     }
   }
 }

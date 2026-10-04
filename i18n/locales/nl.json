@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Dit lijkt op een reactie die al is verstuurd. Bevestig dat dit iemand anders is.",
     "FRM-RESP-1008": "Verifieer je e-mailadres om dit formulier te versturen.",
     "FRM-RESP-1009": "We konden niet bevestigen dat dit antwoord door een persoon is verstuurd. Probeer het opnieuw.",
-    "FRM-FORM-1017": "Dat wachtwoord klopt niet."
+    "FRM-FORM-1017": "Dat wachtwoord klopt niet.",
+    "FRM-FORM-1018": "Deze uitnodigingslink is niet meer geldig.",
+    "FRM-FORM-1019": "Uw aanmelding voor dit formulier is verlopen. Meld u opnieuw aan."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Deze korte link werkt niet",
       "desc": "Mogelijk is de link verwijderd of is het adres verkeerd getypt. Controleer het bij degene die hem heeft gedeeld.",
       "opening": "Formulier openen…"
-    }
+    },
+    "invite": {
+      "title": "Dit formulier is alleen op uitnodiging",
+      "desc": "Alleen uitgenodigde personen kunnen het invullen.",
+      "how": "Open het formulier met de persoonlijke link uit uw uitnodigingsmail. Elke link is voor één persoon.",
+      "badLink": "Deze uitnodigingslink werkt niet meer",
+      "badLinkDesc": "Mogelijk is hij vervangen door een nieuwere link of ingetrokken. Vraag de organisatie om een nieuwe link."
+    },
+    "member": {
+      "title": "Alleen voor leden van {org}",
+      "desc": "Meld u aan met uw werkaccount om dit formulier in te vullen.",
+      "signIn": "Aanmelden bij {org}",
+      "openTitle": "Formulier openen",
+      "opening": "Formulier wordt geopend…",
+      "notYours": "Dit formulier hoort niet bij uw werkruimte",
+      "notYoursDesc": "U bent aangemeld bij een andere organisatie, of het formulier bestaat niet meer."
+    },
+    "visitor": "Invullen als {who}"
   },
   "share": {
     "crumb": "Delen",
@@ -2847,7 +2866,12 @@
       "setPassword": "Wachtwoord",
       "passwordHint": "Minstens 8 tekens. Geef het aan de mensen die het formulier moeten invullen.",
       "tooShort": "Gebruik minstens 8 tekens.",
-      "passwordNote": "Het wachtwoord wordt nooit meer getoond. Na een wijziging heeft iedereen het nieuwe nodig."
+      "passwordNote": "Het wachtwoord wordt nooit meer getoond. Na een wijziging heeft iedereen het nieuwe nodig.",
+      "invite": "Alleen uitgenodigde personen",
+      "inviteDesc": "Iedereen krijgt een persoonlijke link en kan één keer reageren.",
+      "organisation": "Alleen mijn organisatie",
+      "organisationDesc": "Om het te openen meldt men zich aan bij {org}.",
+      "organisationNote": "Alleen leden van {org} kunnen het formulier openen, na aanmelding. Hun naam en e-mail worden met hun reactie opgeslagen en elk lid kan één keer reageren."
     },
     "link": {
       "title": "Aangepaste link",
@@ -2981,6 +3005,38 @@
       "asSearch": "Zoekresultaat",
       "noImage": "Geen afbeelding",
       "hiddenFromSearch": "Verborgen voor zoekmachines — dit formulier verschijnt niet in zoekresultaten."
+    },
+    "invite": {
+      "title": "Uitnodigingen",
+      "counts": "{responded} van {total} gereageerd",
+      "saveFirst": "Sla ‘Alleen uitgenodigde personen’ op om de uitnodigingen te laten werken — tot dan blijft het formulier open zoals voorheen.",
+      "add": "Personen uitnodigen",
+      "addHint": "Eén per regel of gescheiden door komma’s. Voeg zo een naam toe: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Geen e-mailadres: {list}",
+      "button": "{n} persoon uitnodigen | {n} personen uitnodigen",
+      "buttonEmpty": "Uitnodigen",
+      "sent": "{n} uitnodiging verzonden | {n} uitnodigingen verzonden",
+      "skipped": "{n} persoon was al uitgenodigd | {n} personen waren al uitgenodigd",
+      "devLinks": "Persoonlijke links — worden naar iedereen gemaild zodra Formalie live is; tijdens de ontwikkeling hier getoond:",
+      "none": "Nog niemand uitgenodigd.",
+      "resent": "Er is een nieuwe link verzonden naar {email}",
+      "resend": "Nieuwe link verzenden",
+      "revoke": "Intrekken",
+      "revokeTitle": "Uitnodiging voor {email} intrekken?",
+      "revokeDesc": "Hun persoonlijke link werkt dan niet meer. Een reactie die al is verzonden, blijft bewaard.",
+      "status": {
+        "invited": "Uitgenodigd",
+        "opened": "Geopend",
+        "responded": "Gereageerd",
+        "revoked": "Ingetrokken"
+      },
+      "when": {
+        "invited": "uitgenodigd {when}",
+        "opened": "geopend {when}",
+        "responded": "gereageerd {when}",
+        "revoked": "uitgenodigd {when}"
+      }
     }
   }
 }

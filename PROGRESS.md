@@ -478,7 +478,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 ### Share
 
 - 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ custom link with live check (2026-10-04) · ✅ short link (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
-- 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule — ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ⬜ invite-only, organisation-only
+- 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule — ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ✅ invite-only (personal links, statuses, resend / revoke, one response each) and organisation-only (sign in on the portal, 2-minute pass, works on forms.*) — decision 96
 - ⬜ People access: edit / view / responses
 - ✅ Embed: iframe snippet with auto-resize, size options (M2), allowed websites + live preview (M3, decision 94)
 - ✅ SEO settings with link-card preview (decision 95): title, description, image, hide from search engines; previews as link card and search result
@@ -1075,3 +1075,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Dialogs (owner): the move grip no longer sits over the close button (close button in the header flow, grip beside it) and the close button is a round soft button. |
 | 2026-10-04 | F10 | Short links (owner question "no conflict"): removed codes — and codes of forms deleted for good — are retired and never handed out again, so an old poster can never open another form. Tested. |
 | 2026-10-04 | F10 | M3: "How your form’s links work" note on the Share tab (original · custom · short, none cancels another, common situations); Search & link preview card (title, description, image upload, hide from search engines, link-card and search-result previews) feeding the public page tags. Tested in the browser (tags, image, back to defaults). |
+| 2026-10-04 | F10 | M3: invite-only (invitations with personal links, Invited / Opened / Responded / Revoked, resend, revoke, one response each) and organisation-only access (portal sign-in → pass → form, “Filling in as …”, respondent kept with the response). Tested end to end in the browser; fixed invitation changes blocking the page’s Save. |

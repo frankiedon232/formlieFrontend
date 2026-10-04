@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Bu, daha önce gönderilmiş bir yanıta benziyor. Bunun farklı bir kişi olduğunu onaylayın.",
     "FRM-RESP-1008": "Bu formu göndermek için e-postanızı doğrulayın.",
     "FRM-RESP-1009": "Bu yanıtın bir kişi tarafından gönderildiği doğrulanamadı. Lütfen tekrar deneyin.",
-    "FRM-FORM-1017": "Bu parola doğru değil."
+    "FRM-FORM-1017": "Bu parola doğru değil.",
+    "FRM-FORM-1018": "Bu davet bağlantısı artık geçerli değil.",
+    "FRM-FORM-1019": "Bu form için oturumunuzun süresi doldu. Lütfen yeniden oturum açın."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Bu kısa bağlantı çalışmıyor",
       "desc": "Kaldırılmış olabilir ya da adres yanlış yazılmış olabilir. Lütfen paylaşan kişiye danışın.",
       "opening": "Form açılıyor…"
-    }
+    },
+    "invite": {
+      "title": "Bu form yalnızca davetle doldurulabilir",
+      "desc": "Yalnızca davet edilen kişiler doldurabilir.",
+      "how": "Formu davet e-postanızdaki kişisel bağlantıyla açın. Her bağlantı tek bir kişi içindir.",
+      "badLink": "Bu davet bağlantısı artık çalışmıyor",
+      "badLinkDesc": "Daha yeni bir bağlantıyla değiştirilmiş veya iptal edilmiş olabilir. Kuruluştan yeni bir bağlantı isteyin."
+    },
+    "member": {
+      "title": "Yalnızca {org} üyeleri için",
+      "desc": "Bu formu doldurmak için iş hesabınızla oturum açın.",
+      "signIn": "{org} hesabında oturum aç",
+      "openTitle": "Form açılıyor",
+      "opening": "Form açılıyor…",
+      "notYours": "Bu form çalışma alanınıza ait değil",
+      "notYoursDesc": "Başka bir kuruluşta oturum açtınız veya form artık mevcut değil."
+    },
+    "visitor": "{who} olarak dolduruluyor"
   },
   "share": {
     "crumb": "Paylaş",
@@ -2847,7 +2866,12 @@
       "setPassword": "Parola",
       "passwordHint": "En az 8 karakter. Formu doldurması gereken kişilere verin.",
       "tooShort": "En az 8 karakter kullanın.",
-      "passwordNote": "Parola bir daha gösterilmez. Değiştirildikten sonra herkesin yeni parolaya ihtiyacı olur."
+      "passwordNote": "Parola bir daha gösterilmez. Değiştirildikten sonra herkesin yeni parolaya ihtiyacı olur.",
+      "invite": "Yalnızca davet edilen kişiler",
+      "inviteDesc": "Her kişi kişisel bir bağlantı alır ve bir kez yanıt verebilir.",
+      "organisation": "Yalnızca kuruluşum",
+      "organisationDesc": "Açmak için {org} hesabında oturum açılır.",
+      "organisationNote": "Formu yalnızca {org} üyeleri, oturum açtıktan sonra açabilir. Ad ve e-posta yanıtla birlikte kaydedilir ve her üye bir kez yanıt verebilir."
     },
     "link": {
       "title": "Özel bağlantı",
@@ -2981,6 +3005,38 @@
       "asSearch": "Arama sonucu",
       "noImage": "Görsel yok",
       "hiddenFromSearch": "Arama motorlarından gizli — bu form arama sonuçlarında görünmez."
+    },
+    "invite": {
+      "title": "Davetler",
+      "counts": "{total} kişiden {responded} kişi yanıtladı",
+      "saveFirst": "Davetlerin geçerli olması için “Yalnızca davet edilen kişiler” seçeneğini kaydedin — o zamana kadar form eskisi gibi açık kalır.",
+      "add": "Kişileri davet et",
+      "addHint": "Her satıra bir tane veya virgülle ayırarak. Adı şöyle ekleyin: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "E-posta adresi değil: {list}",
+      "button": "{n} kişiyi davet et | {n} kişiyi davet et",
+      "buttonEmpty": "Davet et",
+      "sent": "{n} davet gönderildi | {n} davet gönderildi",
+      "skipped": "{n} kişi zaten davet edilmişti | {n} kişi zaten davet edilmişti",
+      "devLinks": "Kişisel bağlantılar — Formalie yayına girdiğinde her kişiye e-postayla gönderilir; geliştirme sırasında burada gösterilir:",
+      "none": "Henüz kimse davet edilmedi.",
+      "resent": "{email} adresine yeni bir bağlantı gönderildi",
+      "resend": "Yeni bağlantı gönder",
+      "revoke": "İptal et",
+      "revokeTitle": "{email} için davet iptal edilsin mi?",
+      "revokeDesc": "Kişisel bağlantısı çalışmayı durdurur. Önceden gönderilmiş bir yanıt saklanır.",
+      "status": {
+        "invited": "Davet edildi",
+        "opened": "Açıldı",
+        "responded": "Yanıtladı",
+        "revoked": "İptal edildi"
+      },
+      "when": {
+        "invited": "davet edildi {when}",
+        "opened": "açıldı {when}",
+        "responded": "yanıtladı {when}",
+        "revoked": "davet edildi {when}"
+      }
     }
   }
 }

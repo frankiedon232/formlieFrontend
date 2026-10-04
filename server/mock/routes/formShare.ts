@@ -121,7 +121,7 @@ export const checkLink = defineMockRoute(({ event, query }) => {
 
 const shareSchema = z.object({
   row_version: z.number().int().optional(),
-  access: z.enum(['public', 'password']).optional(),
+  access: z.enum(['public', 'password', 'invite', 'organisation']).optional(),
   /** A new password (8–100 characters); never returned. */
   password: z.string().min(8).max(100).optional(),
   response_limit: z.number().int().min(2).max(1_000_000).nullable().optional(),

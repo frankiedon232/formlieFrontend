@@ -76,6 +76,13 @@ export function newPublicKey(): string {
   return Array.from(bytes, byte => KEY_ALPHABET[byte % KEY_ALPHABET.length]).join('')
 }
 
+/**
+ * A page of the workspace's portal (F10 M3: organisation-only forms send people there to sign in):
+ * the workspace's own host, or manage.formalie.com for workspaces without one.
+ */
+export const portalLink = (hosts: PublicHosts, manageSubdomain: string, subdomain: string | null, path: string) =>
+  `https://${subdomain || manageSubdomain}.${hosts.rootDomain}${hosts.port ?? ''}${path}`
+
 // ── Short links (F10 M3) ────────────────────────────────────────────────────────────
 /**
  * `https://forms.formalie.com/s/{code}` — five characters that are easy to read aloud, type from a

@@ -44,8 +44,12 @@ export interface PublicForm {
   /** Languages the form offers (its main language first) and the one served. */
   languages: string[]
   language: string
-  /** Share settings (F10 M3): the form needs a password and this visitor hasn't entered it — no questions are sent. */
+  /** Share settings (F10 M3): this visitor may not open the form yet — no questions are sent. */
   locked: boolean
+  /** What opens it: password · personal invitation link · signing in as a member (null = not locked). */
+  lock: 'password' | 'invite' | 'organisation' | null
+  /** Who is filling in, when the form knows (invitation or signed-in member). */
+  visitor: { name: string | null; email: string } | null
   /** Who may show the embed: the frame-ancestors value ("*" = any website). */
   embed_ancestors: string
 }

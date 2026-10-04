@@ -13,6 +13,7 @@ import * as formDraft from './routes/formDraft'
 import * as library from './routes/library'
 import * as themes from './routes/themes'
 import * as formShare from './routes/formShare'
+import * as formInvites from './routes/formInvites'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
@@ -47,6 +48,7 @@ const router = createRouter()
   .get('/forms', forms.listForms)
   .post('/forms', forms.createForm)
   .get('/forms/facets', forms.formFacets)
+  .post('/forms/pass', formInvites.formPass)
   .post('/forms/import', forms.importForm)
   .post('/forms/bulk', forms.bulkForms)
   .delete('/forms/trash', forms.emptyTrash)
@@ -58,6 +60,10 @@ const router = createRouter()
   .get('/forms/:id/share/link-check', formShare.checkLink)
   .post('/forms/:id/short-link', formShare.createShortLink)
   .delete('/forms/:id/short-link', formShare.removeShortLink)
+  .get('/forms/:id/invites', formInvites.listInvites)
+  .post('/forms/:id/invites', formInvites.createInvites)
+  .post('/forms/:id/invites/:inviteId/resend', formInvites.resendInvite)
+  .delete('/forms/:id/invites/:inviteId', formInvites.revokeInvite)
   .delete('/forms/:id', forms.deleteForm)
   .post('/forms/:id/duplicate', forms.duplicateForm)
   .get('/forms/:id/builder', formDraft.getBuilder)

@@ -145,7 +145,7 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
   <div v-else class="flex flex-col gap-4 pb-20">
     <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <div class="flex min-w-0 flex-col gap-4">
-        <FormsShareAccessCard v-model:draft="draft" :settings="settings" />
+        <FormsShareAccessCard v-model:draft="draft" :settings="settings" :form-id="form.id" />
         <FormsShareLinksGuide :settings="settings" :form="form" />
         <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
         <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />

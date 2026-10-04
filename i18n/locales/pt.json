@@ -493,7 +493,9 @@
     "FRM-RESP-1007": "Parece uma resposta que já foi enviada. Confirme que é outra pessoa.",
     "FRM-RESP-1008": "Verifique seu e-mail para enviar este formulário.",
     "FRM-RESP-1009": "Não foi possível confirmar que esta resposta foi enviada por uma pessoa. Tente novamente.",
-    "FRM-FORM-1017": "Essa palavra-passe não está correta."
+    "FRM-FORM-1017": "Essa palavra-passe não está correta.",
+    "FRM-FORM-1018": "Esta ligação de convite já não é válida.",
+    "FRM-FORM-1019": "A sua sessão neste formulário expirou. Inicie sessão novamente."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -2818,7 +2820,24 @@
       "title": "Este link curto não funciona",
       "desc": "Pode ter sido removido ou o endereço foi escrito incorretamente. Confirme com quem o partilhou.",
       "opening": "A abrir o formulário…"
-    }
+    },
+    "invite": {
+      "title": "Este formulário é apenas por convite",
+      "desc": "Só as pessoas convidadas o podem preencher.",
+      "how": "Abra o formulário com a ligação pessoal do seu e-mail de convite. Cada ligação destina-se a uma pessoa.",
+      "badLink": "Esta ligação de convite já não funciona",
+      "badLinkDesc": "Pode ter sido substituída por uma mais recente ou revogada. Peça uma nova ligação à organização."
+    },
+    "member": {
+      "title": "Apenas para membros de {org}",
+      "desc": "Inicie sessão com a sua conta de trabalho para preencher este formulário.",
+      "signIn": "Iniciar sessão em {org}",
+      "openTitle": "A abrir o formulário",
+      "opening": "A abrir o formulário…",
+      "notYours": "Este formulário não pertence ao seu espaço de trabalho",
+      "notYoursDesc": "Iniciou sessão noutra organização, ou o formulário já não existe."
+    },
+    "visitor": "A preencher como {who}"
   },
   "share": {
     "crumb": "Partilhar",
@@ -2847,7 +2866,12 @@
       "setPassword": "Palavra-passe",
       "passwordHint": "Pelo menos 8 caracteres. Dê-a às pessoas que devem preencher o formulário.",
       "tooShort": "Use pelo menos 8 caracteres.",
-      "passwordNote": "A palavra-passe nunca volta a ser mostrada. Após uma alteração, todos precisam da nova."
+      "passwordNote": "A palavra-passe nunca volta a ser mostrada. Após uma alteração, todos precisam da nova.",
+      "invite": "Apenas pessoas convidadas",
+      "inviteDesc": "Cada pessoa recebe uma ligação pessoal e pode responder uma vez.",
+      "organisation": "Apenas a minha organização",
+      "organisationDesc": "Para o abrir é preciso iniciar sessão em {org}.",
+      "organisationNote": "Apenas os membros de {org} podem abrir o formulário, após iniciarem sessão. O nome e o e-mail são guardados com a resposta, e cada membro pode responder uma vez."
     },
     "link": {
       "title": "Ligação personalizada",
@@ -2981,6 +3005,38 @@
       "asSearch": "Resultado de pesquisa",
       "noImage": "Sem imagem",
       "hiddenFromSearch": "Oculto dos motores de pesquisa — este formulário não aparecerá nos resultados de pesquisa."
+    },
+    "invite": {
+      "title": "Convites",
+      "counts": "{responded} de {total} responderam",
+      "saveFirst": "Guarde «Apenas pessoas convidadas» para que os convites entrem em vigor — até lá, o formulário continua aberto como antes.",
+      "add": "Convidar pessoas",
+      "addHint": "Um por linha ou separados por vírgulas. Adicione um nome assim: Ada Obi <ada{'@'}example.org>",
+      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
+      "wrong": "Não é um endereço de e-mail: {list}",
+      "button": "Convidar {n} pessoa | Convidar {n} pessoas",
+      "buttonEmpty": "Convidar",
+      "sent": "{n} convite enviado | {n} convites enviados",
+      "skipped": "{n} pessoa já tinha sido convidada | {n} pessoas já tinham sido convidadas",
+      "devLinks": "Ligações pessoais — enviadas por e-mail a cada pessoa quando o Formalie estiver ativo; apresentadas aqui durante o desenvolvimento:",
+      "none": "Ainda ninguém foi convidado.",
+      "resent": "Foi enviada uma nova ligação para {email}",
+      "resend": "Enviar nova ligação",
+      "revoke": "Revogar",
+      "revokeTitle": "Revogar o convite de {email}?",
+      "revokeDesc": "A ligação pessoal deixa de funcionar. Uma resposta já enviada é mantida.",
+      "status": {
+        "invited": "Convidado",
+        "opened": "Aberto",
+        "responded": "Respondido",
+        "revoked": "Revogado"
+      },
+      "when": {
+        "invited": "convidado {when}",
+        "opened": "aberto {when}",
+        "responded": "respondeu {when}",
+        "revoked": "convidado {when}"
+      }
     }
   }
 }

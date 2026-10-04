@@ -23,6 +23,8 @@ export interface StoredResponse {
   fingerprint?: string
   /** A similar earlier response (respondent said they're a different person) — for the team to review (F11). */
   possible_duplicate?: { of: string; reason: string }
+  /** Who sent it, when the form knows (F10 M3): an invitation, or a signed-in member. */
+  respondent?: { kind: 'invite' | 'member'; id: string; name: string | null; email: string }
   /** How it came in. */
   channel: 'link' | 'embed'
   meta: { ip: string; user_agent: string }
