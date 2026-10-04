@@ -2089,7 +2089,6 @@
       "another": "Điền thêm",
       "forSomeoneElse": "Điền cho người khác",
       "close": "Đóng trang này",
-      "closeHint": "Bây giờ bạn có thể đóng tab này.",
       "alreadyTitle": "Bạn đã điền biểu mẫu này",
       "alreadyDesc": "Phản hồi của bạn đã được nhận từ trình duyệt này. Chỉ điền lại cho người khác. Phản hồi của mỗi người chỉ được nhận một lần.",
       "askTitle": "Đây là cho người khác phải không?",
@@ -2099,7 +2098,9 @@
       "confirm": "Có, cho người khác",
       "stay": "Không, ở lại đây",
       "duplicate": "Các câu trả lời giống hệt này đã được gửi",
-      "duplicateDesc": "Đã có phản hồi với cùng các câu trả lời. Nếu đây là người khác, hãy kiểm tra thông tin của họ."
+      "duplicateDesc": "Đã có phản hồi với cùng các câu trả lời. Nếu đây là người khác, hãy kiểm tra thông tin của họ.",
+      "visit": "Truy cập trang web của {org}",
+      "done": "Đã xong. Bạn có thể đóng thẻ này."
     },
     "identity": {
       "registeredTitle": "Bạn đã phản hồi rồi",

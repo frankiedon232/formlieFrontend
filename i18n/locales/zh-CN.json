@@ -2089,7 +2089,6 @@
       "another": "再填一份",
       "forSomeoneElse": "为他人填写",
       "close": "关闭此页面",
-      "closeHint": "你现在可以关闭此标签页。",
       "alreadyTitle": "你已填写过此表单",
       "alreadyDesc": "已从此浏览器收到你的回复。仅在为他人填写时再次填写，每人的回复只接受一次。",
       "askTitle": "这是为他人填写吗？",
@@ -2099,7 +2098,9 @@
       "confirm": "是，为他人填写",
       "stay": "否，留在此页",
       "duplicate": "完全相同的答案已提交过",
-      "duplicateDesc": "已有一份答案相同的回复。如果是他人，请核对其信息。"
+      "duplicateDesc": "已有一份答案相同的回复。如果是他人，请核对其信息。",
+      "visit": "访问 {org} 网站",
+      "done": "已完成。您可以关闭此标签页。"
     },
     "identity": {
       "registeredTitle": "你已提交过回复",

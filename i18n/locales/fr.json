@@ -2089,7 +2089,6 @@
       "another": "En remplir un autre",
       "forSomeoneElse": "Remplir pour une autre personne",
       "close": "Fermer cette page",
-      "closeHint": "Vous pouvez fermer cet onglet.",
       "alreadyTitle": "Vous avez déjà rempli ce formulaire",
       "alreadyDesc": "Votre réponse a été reçue depuis ce navigateur. Ne le remplissez à nouveau que pour une autre personne : la réponse de chaque personne n’est acceptée qu’une fois.",
       "askTitle": "Est-ce pour une autre personne ?",
@@ -2099,7 +2098,9 @@
       "confirm": "Oui, pour une autre personne",
       "stay": "Non, rester ici",
       "duplicate": "Ces réponses identiques ont déjà été envoyées",
-      "duplicateDesc": "Une réponse avec les mêmes réponses existe déjà. S’il s’agit d’une autre personne, vérifiez ses informations."
+      "duplicateDesc": "Une réponse avec les mêmes réponses existe déjà. S’il s’agit d’une autre personne, vérifiez ses informations.",
+      "visit": "Visiter le site de {org}",
+      "done": "C’est terminé. Vous pouvez fermer cet onglet."
     },
     "identity": {
       "registeredTitle": "Vous avez déjà répondu",

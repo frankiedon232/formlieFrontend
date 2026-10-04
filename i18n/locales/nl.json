@@ -2089,7 +2089,6 @@
       "another": "Nog een invullen",
       "forSomeoneElse": "Invullen voor iemand anders",
       "close": "Deze pagina sluiten",
-      "closeHint": "Je kunt dit tabblad nu sluiten.",
       "alreadyTitle": "Je hebt dit formulier al ingevuld",
       "alreadyDesc": "Je antwoord is vanuit deze browser ontvangen. Vul het alleen opnieuw in voor iemand anders: het antwoord van elke persoon wordt één keer geaccepteerd.",
       "askTitle": "Is dit voor iemand anders?",
@@ -2099,7 +2098,9 @@
       "confirm": "Ja, voor iemand anders",
       "stay": "Nee, hier blijven",
       "duplicate": "Exact deze antwoorden zijn al verzonden",
-      "duplicateDesc": "Er is al een antwoord met dezelfde antwoorden. Is dit iemand anders, controleer dan diens gegevens."
+      "duplicateDesc": "Er is al een antwoord met dezelfde antwoorden. Is dit iemand anders, controleer dan diens gegevens.",
+      "visit": "Website van {org} bezoeken",
+      "done": "Klaar. U kunt dit tabblad sluiten."
     },
     "identity": {
       "registeredTitle": "Je hebt al gereageerd",

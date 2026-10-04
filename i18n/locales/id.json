@@ -2089,7 +2089,6 @@
       "another": "Isi lagi",
       "forSomeoneElse": "Isi untuk orang lain",
       "close": "Tutup halaman ini",
-      "closeHint": "Anda dapat menutup tab ini sekarang.",
       "alreadyTitle": "Anda sudah mengisi formulir ini",
       "alreadyDesc": "Respons Anda diterima dari browser ini. Isi lagi hanya untuk orang lain, karena respons setiap orang diterima satu kali.",
       "askTitle": "Apakah ini untuk orang lain?",
@@ -2099,7 +2098,9 @@
       "confirm": "Ya, untuk orang lain",
       "stay": "Tidak, tetap di sini",
       "duplicate": "Jawaban yang persis sama sudah dikirim",
-      "duplicateDesc": "Respons dengan jawaban yang sama sudah ada. Jika ini orang lain, periksa datanya."
+      "duplicateDesc": "Respons dengan jawaban yang sama sudah ada. Jika ini orang lain, periksa datanya.",
+      "visit": "Kunjungi situs web {org}",
+      "done": "Selesai. Anda dapat menutup tab ini."
     },
     "identity": {
       "registeredTitle": "Anda sudah merespons",

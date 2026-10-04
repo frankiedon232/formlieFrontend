@@ -2089,7 +2089,6 @@
       "another": "Weiteres ausfüllen",
       "forSomeoneElse": "Für eine andere Person ausfüllen",
       "close": "Diese Seite schließen",
-      "closeHint": "Sie können diesen Tab jetzt schließen.",
       "alreadyTitle": "Sie haben dieses Formular bereits ausgefüllt",
       "alreadyDesc": "Ihre Antwort wurde von diesem Browser empfangen. Füllen Sie es nur für eine andere Person erneut aus. Die Antwort jeder Person wird einmal angenommen.",
       "askTitle": "Ist das für eine andere Person?",
@@ -2099,7 +2098,9 @@
       "confirm": "Ja, für eine andere Person",
       "stay": "Nein, hierbleiben",
       "duplicate": "Genau diese Antworten wurden bereits gesendet",
-      "duplicateDesc": "Eine Antwort mit denselben Angaben liegt bereits vor. Wenn es sich um eine andere Person handelt, prüfen Sie deren Angaben."
+      "duplicateDesc": "Eine Antwort mit denselben Angaben liegt bereits vor. Wenn es sich um eine andere Person handelt, prüfen Sie deren Angaben.",
+      "visit": "Website von {org} besuchen",
+      "done": "Fertig. Sie können diesen Tab jetzt schließen."
     },
     "identity": {
       "registeredTitle": "Sie haben bereits geantwortet",

@@ -2089,7 +2089,6 @@
       "another": "Preencher outro",
       "forSomeoneElse": "Preencher para outra pessoa",
       "close": "Fechar esta página",
-      "closeHint": "Você já pode fechar esta aba.",
       "alreadyTitle": "Você já preencheu este formulário",
       "alreadyDesc": "Sua resposta foi recebida a partir deste navegador. Preencha novamente apenas para outra pessoa. A resposta de cada pessoa é aceita uma vez.",
       "askTitle": "Isto é para outra pessoa?",
@@ -2099,7 +2098,9 @@
       "confirm": "Sim, para outra pessoa",
       "stay": "Não, ficar aqui",
       "duplicate": "Estas mesmas respostas já foram enviadas",
-      "duplicateDesc": "Já existe uma resposta com as mesmas respostas. Se for outra pessoa, confira os dados dela."
+      "duplicateDesc": "Já existe uma resposta com as mesmas respostas. Se for outra pessoa, confira os dados dela.",
+      "visit": "Visitar o site de {org}",
+      "done": "Concluído. Já pode fechar este separador."
     },
     "identity": {
       "registeredTitle": "Você já respondeu",

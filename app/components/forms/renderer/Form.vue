@@ -271,7 +271,7 @@ function restart() {
 
 <template>
   <div class="flex flex-col gap-5 @container/form" :style="{ '--form-label-w': labelWidth }">
-    <FormsRendererAfter v-if="showAlready" mode="already" class="py-10 text-center" @another="onAnother" />
+    <FormsRendererAfter v-if="showAlready" mode="already" :org="respondent?.org" :embedded="respondent?.embedded" class="py-10 text-center" @another="onAnother" />
     <template v-else-if="!done && page">
       <div v-if="pages.length > 1 && schema.settings?.progress_bar !== false" class="flex flex-col gap-1.5">
         <div class="flex justify-between text-xs text-muted">
@@ -365,7 +365,7 @@ function restart() {
         {{ thanks?.message || schema.thank_you?.message }}
       </p>
       <p v-if="preview" class="text-xs text-muted">{{ t('builder.preview.nothingSent') }}</p>
-      <FormsRendererAfter v-if="respondent && !preview" mode="thanks" class="pt-2" @another="onAnother" />
+      <FormsRendererAfter v-if="respondent && !preview" mode="thanks" :org="respondent.org" :embedded="respondent.embedded" class="pt-2" @another="onAnother" />
       <UButton
         v-if="preview"
         :label="t('builder.preview.restart')"

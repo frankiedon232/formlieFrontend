@@ -21,6 +21,8 @@ const resume = usePublicResume(props.formKey, resumeOn)
 const { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)
 const { upload } = usePublicUploads(props.formKey)
 const respondent = computed(() => ({
+  org: form.value ? { name: form.value.workspace.name, website: form.value.workspace.website } : undefined,
+  embedded: !!props.embed,
   alreadySent: alreadySent.value,
   upload,
   another,

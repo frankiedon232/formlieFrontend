@@ -95,6 +95,9 @@ export type RendererUpload = (field: string, file: File, onProgress: (percent: n
 
 /** What the public page lets the renderer do for the respondent (F10). */
 export interface RendererRespondent {
+  /** The organisation (thank-you: "Visit … website") and whether the form is embedded in another site. */
+  org?: { name: string; website: string | null }
+  embedded?: boolean
   /** File questions: upload straight to storage (pre-signed link). */
   upload?: RendererUpload
   /** This browser already sent the form. */

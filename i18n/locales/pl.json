@@ -2089,7 +2089,6 @@
       "another": "Wypełnij kolejny",
       "forSomeoneElse": "Wypełnij dla innej osoby",
       "close": "Zamknij tę stronę",
-      "closeHint": "Możesz teraz zamknąć tę kartę.",
       "alreadyTitle": "Ten formularz został już wypełniony",
       "alreadyDesc": "Odpowiedź z tej przeglądarki została odebrana. Wypełnij go ponownie tylko dla innej osoby. Odpowiedź każdej osoby jest przyjmowana raz.",
       "askTitle": "Czy to dla innej osoby?",
@@ -2099,7 +2098,9 @@
       "confirm": "Tak, dla innej osoby",
       "stay": "Nie, zostań tutaj",
       "duplicate": "Te same odpowiedzi zostały już wysłane",
-      "duplicateDesc": "Odpowiedź z takimi samymi danymi już istnieje. Jeśli to inna osoba, sprawdź jej dane."
+      "duplicateDesc": "Odpowiedź z takimi samymi danymi już istnieje. Jeśli to inna osoba, sprawdź jej dane.",
+      "visit": "Odwiedź stronę {org}",
+      "done": "Gotowe. Możesz zamknąć tę kartę."
     },
     "identity": {
       "registeredTitle": "Twoja odpowiedź już do nas dotarła",

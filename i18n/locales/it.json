@@ -2089,7 +2089,6 @@
       "another": "Compilane un altro",
       "forSomeoneElse": "Compila per un’altra persona",
       "close": "Chiudi questa pagina",
-      "closeHint": "Ora puoi chiudere questa scheda.",
       "alreadyTitle": "Hai già compilato questo modulo",
       "alreadyDesc": "La tua risposta è stata ricevuta da questo browser. Compilalo di nuovo solo per un’altra persona: la risposta di ogni persona viene accettata una sola volta.",
       "askTitle": "È per un’altra persona?",
@@ -2099,7 +2098,9 @@
       "confirm": "Sì, per un’altra persona",
       "stay": "No, resto qui",
       "duplicate": "Queste stesse risposte sono già state inviate",
-      "duplicateDesc": "Esiste già una risposta con le stesse risposte. Se si tratta di un’altra persona, controlla i suoi dati."
+      "duplicateDesc": "Esiste già una risposta con le stesse risposte. Se si tratta di un’altra persona, controlla i suoi dati.",
+      "visit": "Visita il sito di {org}",
+      "done": "Fatto. Può chiudere questa scheda."
     },
     "identity": {
       "registeredTitle": "Hai già risposto",

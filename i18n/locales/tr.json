@@ -2089,7 +2089,6 @@
       "another": "Bir tane daha doldur",
       "forSomeoneElse": "Başka biri için doldur",
       "close": "Bu sayfayı kapat",
-      "closeHint": "Bu sekmeyi artık kapatabilirsiniz.",
       "alreadyTitle": "Bu formu zaten doldurdunuz",
       "alreadyDesc": "Yanıtınız bu tarayıcıdan alındı. Yalnızca başka bir kişi için tekrar doldurun. Her kişinin yanıtı bir kez kabul edilir.",
       "askTitle": "Bu başka biri için mi?",
@@ -2099,7 +2098,9 @@
       "confirm": "Evet, başka biri için",
       "stay": "Hayır, burada kal",
       "duplicate": "Birebir aynı yanıtlar zaten gönderildi",
-      "duplicateDesc": "Aynı yanıtları içeren bir yanıt zaten var. Başka biriyse bilgilerini kontrol edin."
+      "duplicateDesc": "Aynı yanıtları içeren bir yanıt zaten var. Başka biriyse bilgilerini kontrol edin.",
+      "visit": "{org} web sitesini ziyaret edin",
+      "done": "Tamamlandı. Bu sekmeyi kapatabilirsiniz."
     },
     "identity": {
       "registeredTitle": "Zaten yanıt verdiniz",

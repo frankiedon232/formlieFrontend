@@ -2089,7 +2089,6 @@
       "another": "Fill in another",
       "forSomeoneElse": "Fill in for someone else",
       "close": "Close this page",
-      "closeHint": "You can close this tab now.",
       "alreadyTitle": "You’ve already filled in this form",
       "alreadyDesc": "Your response was received from this browser. Fill it in again only for another person. Each person’s response is accepted once.",
       "askTitle": "Is this for someone else?",
@@ -2099,7 +2098,9 @@
       "confirm": "Yes, for someone else",
       "stay": "No, stay here",
       "duplicate": "These exact answers were already sent",
-      "duplicateDesc": "A response with the same answers is already in. If this is someone else, check their details."
+      "duplicateDesc": "A response with the same answers is already in. If this is someone else, check their details.",
+      "visit": "Visit the {org} website",
+      "done": "All done. You can close this tab."
     },
     "identity": {
       "registeredTitle": "You’ve already responded",

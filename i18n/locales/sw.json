@@ -2089,7 +2089,6 @@
       "another": "Jaza nyingine",
       "forSomeoneElse": "Jaza kwa ajili ya mtu mwingine",
       "close": "Funga ukurasa huu",
-      "closeHint": "Sasa unaweza kufunga kichupo hiki.",
       "alreadyTitle": "Umeshajaza fomu hii",
       "alreadyDesc": "Jibu lako lilipokelewa kutoka kivinjari hiki. Ijaze tena kwa ajili ya mtu mwingine tu. Jibu la kila mtu linakubaliwa mara moja.",
       "askTitle": "Je, hii ni kwa ajili ya mtu mwingine?",
@@ -2099,7 +2098,9 @@
       "confirm": "Ndiyo, kwa mtu mwingine",
       "stay": "Hapana, baki hapa",
       "duplicate": "Majibu haya hayo yameshatumwa",
-      "duplicateDesc": "Jibu lenye majibu yale yale tayari lipo. Ikiwa ni mtu mwingine, kagua taarifa zake."
+      "duplicateDesc": "Jibu lenye majibu yale yale tayari lipo. Ikiwa ni mtu mwingine, kagua taarifa zake.",
+      "visit": "Tembelea tovuti ya {org}",
+      "done": "Imekamilika. Unaweza kufunga kichupo hiki."
     },
     "identity": {
       "registeredTitle": "Tayari umejibu",
