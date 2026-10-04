@@ -16,7 +16,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
 import { saveLibrary } from '../data/libraryStore'
-import { allTemplates, categoryName, contentDict, findWorkspaceTemplate, templateDetail, workspaceKey, workspaceTemplates } from '../data/templateStore'
+import { allTemplates, categoryName, findWorkspaceTemplate, translationDict, templateDetail, workspaceKey, workspaceTemplates } from '../data/templateStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 
@@ -240,6 +240,6 @@ export const translateFormContent = defineMockRoute(({ event, body }) => {
   const from = known(input.from)
   const to = known(input.to)
   if (!from || !to) throw new MockError('FRM-GEN-1002', [{ field: 'to', message: 'Unknown language.' }])
-  const result = translateContent(input.schema as unknown as FormSchemaV1, contentDict(from), contentDict(to))
+  const result = translateContent(input.schema as unknown as FormSchemaV1, translationDict(from), translationDict(to))
   return ok({ schema: result.schema, translated: result.translated, kept: result.kept.length })
 })

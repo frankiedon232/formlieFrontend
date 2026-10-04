@@ -68,6 +68,49 @@ export function contentDict(code: string): Record<string, string> | null {
 }
 const langCode = (lang: string) => (/^[a-z]{2}(-[A-Z]{2})?$/.test(lang) ? lang : 'en')
 
+type Messages = { builder?: { field?: Record<string, unknown>; defaults?: Record<string, string>; page?: { default?: string } } }
+const uiMessages = new Map<string, Messages | null>()
+function messagesOf(code: string): Messages | null {
+  if (!uiMessages.has(code)) {
+    try {
+      uiMessages.set(code, JSON.parse(readFileSync(join(process.cwd(), 'i18n', 'locales', `${code}.json`), 'utf8')) as Messages)
+    } catch {
+      uiMessages.set(code, null)
+    }
+  }
+  return uiMessages.get(code) ?? null
+}
+
+/**
+ * The builder's own default text (field names given to new questions, "Option 1", "Row 1",
+ * "Page 1") English → this language, from the app's message files (owner, 2026-10-04: a new
+ * "Long text" question stayed English after changing the form language).
+ */
+function builderDict(code: string): Record<string, string> {
+  const en = messagesOf('en')?.builder
+  const local = messagesOf(code)?.builder
+  const dict: Record<string, string> = {}
+  if (!en || !local) return dict
+  for (const [type, text] of Object.entries(en.field ?? {}))
+    if (typeof text === 'string' && typeof local.field?.[type] === 'string') dict[text] = local.field[type] as string
+  const numbered: [string | undefined, string | undefined][] = [
+    [en.defaults?.option, local.defaults?.option],
+    [en.defaults?.row, local.defaults?.row],
+    [en.page?.default, local.page?.default],
+  ]
+  for (const [source, target] of numbered)
+    if (source && target) for (let n = 1; n <= 50; n++) dict[source.replace('{n}', String(n))] = target.replace('{n}', String(n))
+  return dict
+}
+
+/** Everything Formalie can move into another language: builder defaults + template text (template wins). */
+export function translationDict(code: string): Record<string, string> | null {
+  if (code === 'en') return null
+  const content = contentDict(code)
+  const builder = builderDict(code)
+  return content || Object.keys(builder).length ? { ...builder, ...(content ?? {}) } : null
+}
+
 /**
  * A blank form in the creator's language (owner, 2026-10-04): the form language, the first page's
  * name and the thank-you text start in it, like forms made from a template.
