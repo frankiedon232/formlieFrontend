@@ -103,12 +103,27 @@ function builderDict(code: string): Record<string, string> {
   return dict
 }
 
-/** Everything Formalie can move into another language: builder defaults + template text (template wins). */
+/**
+ * Everyday form words people type themselves ("Item name", "System", "Phone number"…, owner
+ * 2026-10-04: "let nothing be left out") — shared/templates/vocabulary/<code>.json.
+ */
+const vocabularies = new Map<string, Record<string, string> | null>()
+function vocabularyDict(code: string): Record<string, string> | null {
+  if (!vocabularies.has(code)) {
+    try {
+      vocabularies.set(code, JSON.parse(readFileSync(join(process.cwd(), 'shared', 'templates', 'vocabulary', `${code}.json`), 'utf8')))
+    } catch {
+      vocabularies.set(code, null)
+    }
+  }
+  return vocabularies.get(code) ?? null
+}
+
+/** Everything Formalie can move into another language: vocabulary, builder defaults, template text (most specific wins). */
 export function translationDict(code: string): Record<string, string> | null {
   if (code === 'en') return null
-  const content = contentDict(code)
-  const builder = builderDict(code)
-  return content || Object.keys(builder).length ? { ...builder, ...(content ?? {}) } : null
+  const merged = { ...(vocabularyDict(code) ?? {}), ...builderDict(code), ...(contentDict(code) ?? {}) }
+  return Object.keys(merged).length ? merged : null
 }
 
 /**

@@ -70,3 +70,37 @@ describe('translating a form to another language', () => {
     expect(allFields(result.schema).find(f => f.key === 'name')!.label).toBe(dictOf('fr').Name)
   })
 })
+
+describe('translating text people typed', () => {
+  it('ignores capitals and extra spaces', () => {
+    const custom = templateSchema(systemTemplate('quote_request')!)
+    const name = allFields(custom).find(f => f.key === 'name')!
+    name.label = '  first  NAME '
+    const result = translateContent(custom, null, dictOf('fr'))
+    expect(allFields(result.schema).find(f => f.key === 'name')!.label).toBe(dictOf('fr')['First name'])
+  })
+})
+
+describe('every kind of text in a form follows the language', () => {
+  it('labels, help, placeholders, choices, scales, matrix rows, consent, images, errors, guide, header, thank-you', () => {
+    const custom = templateSchema(systemTemplate('quote_request')!)
+    const [first, second] = allFields(custom)
+    Object.assign(first!, { label: 'Item name', help: 'System', placeholder: 'Item name', validation: { pattern: 'x', pattern_message: 'System' } })
+    Object.assign(second!, {
+      options: [{ value: 'a', label: 'System' }],
+      props: { rows: ['System'], min_label: 'System', max_label: 'System', text: 'System', link_label: 'System', alt: 'System', caption: 'System' },
+    })
+    custom.settings = { ...custom.settings, guide: { enabled: true, title: 'System', html: '<p>x</p>' } }
+    custom.theme = { header: { subtitle: 'System' } }
+    custom.thank_you = { title: 'System', message: 'System' }
+    const dict = { 'Item name': 'Nom de l’article', System: 'Système' }
+    const out = translateContent(custom, null, dict).schema
+    const [a, b] = allFields(out)
+    expect([a!.label, a!.help, a!.placeholder, a!.validation!.pattern_message]).toEqual(['Nom de l’article', 'Système', 'Nom de l’article', 'Système'])
+    expect(b!.options![0]!.label).toBe('Système')
+    expect(Object.values(b!.props!).flat()).toEqual(Array(7).fill('Système'))
+    expect(out.settings!.guide!.title).toBe('Système')
+    expect((out.theme as { header: { subtitle: string } }).header.subtitle).toBe('Système')
+    expect(out.thank_you).toMatchObject({ title: 'Système', message: 'Système' })
+  })
+})

@@ -11,8 +11,8 @@ import type { FormSchemaV1 } from '../utils/forms/schema'
 
 type Dict = Record<string, string>
 
-/** Field props that hold readable text. */
-const TEXT_PROPS = ['text', 'html', 'description', 'min_label', 'max_label', 'link_label'] as const
+/** Field props that hold readable text (every field type: choices, scales, consent, sections, images…). */
+const TEXT_PROPS = ['text', 'html', 'description', 'min_label', 'max_label', 'link_label', 'alt', 'caption'] as const
 const LITERAL = /"([^"\\]*)"/g
 
 /** Text results in a formula; values compared against answers (`{x} = "yes"`) stay as they are. */
@@ -47,6 +47,15 @@ function walk(schema: FormSchemaV1, visit: Visit) {
       }
     }
   }
+  // Text outside the questions: a question's own error message, the help guide's title, the page header subtitle.
+  for (const field of schema.pages.flatMap(page => page.rows.flatMap(row => row.fields))) {
+    const message = field.validation?.pattern_message
+    if (typeof message === 'string' && message) field.validation!.pattern_message = visit(message)
+  }
+  const guide = schema.settings?.guide
+  if (guide?.title) guide.title = visit(guide.title)
+  const header = (schema.theme as { header?: { subtitle?: unknown } } | undefined)?.header
+  if (header && typeof header.subtitle === 'string' && header.subtitle) header.subtitle = visit(header.subtitle)
   const thanks = schema.thank_you
   if (thanks?.title) thanks.title = visit(thanks.title)
   if (thanks?.message) thanks.message = visit(thanks.message)
@@ -62,6 +71,9 @@ export function schemaTexts(schema: FormSchemaV1): string[] {
   return [...found]
 }
 
+/** Text compared without capitals or extra spaces. */
+const normaliseText = (text: string) => text.trim().replace(/\s+/g, ' ').toLocaleLowerCase()
+
 /**
  * A form's text moved to another language (owner, 2026-10-04: changing a form's language left its
  * questions in English). Works for every text that comes from the template dictionaries — in
@@ -70,13 +82,15 @@ export function schemaTexts(schema: FormSchemaV1): string[] {
  * `to` / `from` null = English.
  */
 export function translateContent(schema: FormSchemaV1, from: Dict | null, to: Dict | null): { schema: FormSchemaV1; translated: number; kept: string[] } {
-  const english = new Set(Object.keys(to ?? from ?? {}))
-  const back = new Map(Object.entries(from ?? {}).map(([source, text]) => [text, source]))
+  // People type "First Name", "first name " or "FIRST NAME": capitals and spacing don't matter.
+  const english = new Map(Object.keys(to ?? from ?? {}).map(source => [normaliseText(source), source]))
+  const back = new Map(Object.entries(from ?? {}).map(([source, text]) => [normaliseText(text), source]))
   const copy = structuredClone(schema)
   let translated = 0
   const kept = new Set<string>()
   walk(copy, text => {
-    const source = english.has(text) ? text : back.get(text)
+    const key = normaliseText(text)
+    const source = english.get(key) ?? back.get(key)
     const result = source === undefined ? undefined : to ? to[source] : source
     if (result === undefined) {
       if (/\p{L}/u.test(text)) kept.add(text)

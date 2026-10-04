@@ -38,6 +38,8 @@ async function setLanguage(value: string) {
       if (!schema.value || schema.value.settings?.language !== value) return
       schema.value.pages = data.schema.pages
       schema.value.thank_you = data.schema.thank_you
+      if (data.schema.settings?.guide) schema.value.settings = { ...schema.value.settings, guide: data.schema.settings.guide }
+      if (data.schema.theme) schema.value.theme = data.schema.theme
       toast.add({
         title: t('builder.language.changed', { language: nameOf(value) }),
         description: [

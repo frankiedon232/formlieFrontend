@@ -1061,3 +1061,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Form language: choosing the language now translates the form text in the same step (no second button), toast with Undo. |
 | 2026-10-04 | F10 | Blank forms now start in the creator's app language (form language, first page name, thank-you text), like template forms. |
 | 2026-10-04 | F10 | Form language change also translates the builder's default question names ("Long text", "Option 1", "Page 1"…), not only template text (owner: a new "Long text" question stayed English). |
+| 2026-10-04 | F10 | Form language change covers every field type and text spot (owner: "as long as it has a label"): matching ignores capitals / spaces, new 546-word everyday form vocabulary in all 20 languages, plus image alt / caption, custom error messages, guide title, header subtitle. |
