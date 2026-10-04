@@ -3039,6 +3039,37 @@
       "notEmail": "Bukan alamat email yang valid",
       "removeEmail": "Hapus {email}",
       "fixRed": "Perbaiki atau hapus email yang ditandai merah | Perbaiki atau hapus {n} email yang ditandai merah"
+    },
+    "people": {
+      "title": "Orang dengan akses",
+      "desc": "Siapa di ruang kerja Anda yang dapat mengerjakan formulir ini.",
+      "team": "Semua orang lain di ruang kerja",
+      "teamDesc": "Berlaku untuk orang yang tidak tercantum di bawah.",
+      "level": {
+        "edit": "Dapat mengedit",
+        "view": "Dapat melihat",
+        "responses": "Hanya respons",
+        "none": "Tanpa akses"
+      },
+      "levelDesc": {
+        "edit": "Ubah pertanyaan, desain, berbagi; publikasikan",
+        "view": "Lihat formulir dan pengaturannya, tanpa mengubah apa pun",
+        "responses": "Lihat formulir di daftar beserta responsnya",
+        "none": "Formulir tidak muncul bagi mereka"
+      },
+      "always": {
+        "workspace_admin": "Admin ruang kerja · akses penuh",
+        "form_owner": "Pemilik formulir · akses penuh"
+      },
+      "add": "Tambahkan orang…",
+      "levelFor": "Akses untuk {name}",
+      "remove": "Hapus {name}",
+      "note": "Akses pribadi seseorang menggantikan default ruang kerja baginya — lebih luas atau lebih terbatas. Admin ruang kerja dan pemilik formulir selalu memiliki akses penuh.",
+      "viewOnly": "Hanya lihat",
+      "viewOnlyDesc": "Anda dapat melihat formulir ini dan pengaturannya. Perubahan tidak disimpan — mintalah akses edit kepada pemilik formulir.",
+      "responsesOnly": "Anda hanya dapat melihat respons formulir ini",
+      "responsesOnlyDesc": "Pertanyaan dan desain tidak dibagikan kepada Anda. Hubungi pemilik formulir jika Anda memerlukan akses lebih.",
+      "viewForm": "Lihat"
     }
   }
 }

@@ -3039,6 +3039,37 @@
       "notEmail": "Não é um endereço de e-mail válido",
       "removeEmail": "Remover {email}",
       "fixRed": "Corrija ou remova o e-mail a vermelho | Corrija ou remova os {n} e-mails a vermelho"
+    },
+    "people": {
+      "title": "Pessoas com acesso",
+      "desc": "Quem no seu espaço de trabalho pode trabalhar neste formulário.",
+      "team": "Todas as outras pessoas do espaço de trabalho",
+      "teamDesc": "Aplica-se a quem não está listado abaixo.",
+      "level": {
+        "edit": "Pode editar",
+        "view": "Pode ver",
+        "responses": "Só respostas",
+        "none": "Sem acesso"
+      },
+      "levelDesc": {
+        "edit": "Alterar perguntas, design e partilha; publicar",
+        "view": "Ver o formulário e as definições, sem alterar nada",
+        "responses": "Ver o formulário na lista e as respostas",
+        "none": "O formulário não lhes é apresentado"
+      },
+      "always": {
+        "workspace_admin": "Administrador do espaço de trabalho · acesso total",
+        "form_owner": "Proprietário do formulário · acesso total"
+      },
+      "add": "Adicionar uma pessoa…",
+      "levelFor": "Acesso de {name}",
+      "remove": "Remover {name}",
+      "note": "O acesso próprio de uma pessoa substitui, para ela, a predefinição do espaço de trabalho — seja maior ou menor. Os administradores do espaço de trabalho e o proprietário do formulário têm sempre acesso total.",
+      "viewOnly": "Só de leitura",
+      "viewOnlyDesc": "Pode consultar este formulário e as respetivas definições. As alterações não são guardadas — peça acesso de edição ao proprietário do formulário.",
+      "responsesOnly": "Só pode ver as respostas deste formulário",
+      "responsesOnlyDesc": "As perguntas e o design não foram partilhados consigo. Contacte o proprietário do formulário se precisar de mais acesso.",
+      "viewForm": "Ver"
     }
   }
 }

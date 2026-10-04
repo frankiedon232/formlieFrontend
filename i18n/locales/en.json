@@ -3039,6 +3039,37 @@
       "notEmail": "Not a valid email address",
       "removeEmail": "Remove {email}",
       "fixRed": "Fix or remove the email marked in red | Fix or remove the {n} emails marked in red"
+    },
+    "people": {
+      "title": "People with access",
+      "desc": "Who in your workspace can work on this form.",
+      "team": "Everyone else in the workspace",
+      "teamDesc": "People not listed below get this.",
+      "level": {
+        "edit": "Can edit",
+        "view": "Can view",
+        "responses": "Responses only",
+        "none": "No access"
+      },
+      "levelDesc": {
+        "edit": "Change questions, design, sharing; publish",
+        "view": "See the form and its settings, change nothing",
+        "responses": "See the form in the list and its responses",
+        "none": "The form doesn’t appear for them"
+      },
+      "always": {
+        "workspace_admin": "Workspace admin · full access",
+        "form_owner": "Form owner · full access"
+      },
+      "add": "Add a person…",
+      "levelFor": "Access for {name}",
+      "remove": "Remove {name}",
+      "note": "A person’s own access replaces the workspace default for them — more or less. Workspace admins and the form’s owner always have full access.",
+      "viewOnly": "View only",
+      "viewOnlyDesc": "You can look at this form and its settings. Changes aren’t saved — ask the form’s owner for edit access.",
+      "responsesOnly": "You can see this form’s responses only",
+      "responsesOnlyDesc": "The questions and design aren’t shared with you. Ask the form’s owner if you need more access.",
+      "viewForm": "View"
     }
   }
 }

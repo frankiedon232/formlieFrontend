@@ -10,6 +10,7 @@ import { formSchemaV1, type FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { StarterTemplateKey } from '#shared/utils/templates/starters'
 import { schemaForTemplate } from '../data/templateStore'
 import { requireAuth } from '../core/auth'
+import { levelOf, requireLevel } from '../data/formPermissions'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -47,11 +48,13 @@ const versionView = ({ schema: _schema, ...version }: StoredVersion) => version
 
 /** GET /forms/:id/builder — everything the builder needs in one call. */
 export const getBuilder = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
+  // People access: "view" may look (read only), "edit" may change.
+  requireLevel(form, user, 'view')
   const schema = ensureSchema(form, tenant)
   return ok({
-    form: summaryOf(form),
+    form: { ...summaryOf(form), my_access: levelOf(form, user) },
     schema,
     published_version: form.versions?.[0]?.number ?? null,
   })
@@ -65,6 +68,7 @@ const draftSchema = z.object({ row_version: z.number().int(), schema: formSchema
 export const saveDraft = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
+  requireLevel(form, user, 'edit')
   const input = parseBody(draftSchema, body)
   if (input.row_version !== form.row_version) throw new MockError('FRM-GEN-1009')
   form.schema = input.schema
@@ -97,6 +101,7 @@ const publishSchema = z.object({
 export const publishForm = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
+  requireLevel(form, user, 'edit')
   const input = parseBody(publishSchema, body)
   if (input.row_version !== form.row_version) throw new MockError('FRM-GEN-1009')
   if (!['draft', 'published'].includes(form.status)) throw new MockError('FRM-FORM-1007')
@@ -141,6 +146,7 @@ export const publishForm = defineMockRoute(({ event, body }) => {
 export const discardDraft = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
+  requireLevel(form, user, 'edit')
   if (!form.published_schema) throw new MockError('FRM-FORM-1007')
   form.schema = structuredClone(form.published_schema)
   form.has_unpublished_changes = false
@@ -157,14 +163,16 @@ export const discardDraft = defineMockRoute(({ event }) => {
 })
 
 export const listVersions = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
+  requireLevel(form, user, 'view')
   return ok((form.versions ?? []).map(versionView))
 })
 
 export const getVersion = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
+  requireLevel(form, user, 'view')
   const version = form.versions?.find(item => item.id === getRouterParam(event, 'vid'))
   if (!version) throw new MockError('FRM-GEN-1004')
   return ok(version)
@@ -174,6 +182,7 @@ export const getVersion = defineMockRoute(({ event }) => {
 export const restoreVersion = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
+  requireLevel(form, user, 'edit')
   const version = form.versions?.find(item => item.id === getRouterParam(event, 'vid'))
   if (!version) throw new MockError('FRM-GEN-1004')
   form.schema = structuredClone(version.schema)

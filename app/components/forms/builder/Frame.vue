@@ -100,13 +100,25 @@ defineShortcuts({
       <UDropdownMenu :items="phoneMenu" :content="{ align: 'end' }" class="md:hidden">
         <UButton class="md:hidden" icon="i-lucide-ellipsis" color="neutral" variant="outline" square :aria-label="t('builder.actions.more')" />
       </UDropdownMenu>
-      <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" @click="publishOpen = true" />
+      <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" :loading="s.publishing.value" :disabled="!s.canEdit.value" @click="publishOpen = true" />
     </template>
 
     <slot v-if="s.loading.value" name="loading">
       <USkeleton class="mx-auto h-[60vh] w-full max-w-4xl" />
     </slot>
 
+    <!-- Responses only (people access): no editor, but the way to what they may see. -->
+    <UEmpty
+      v-else-if="s.failed.value === 'FRM-PERM-1001'"
+      icon="i-lucide-inbox"
+      :title="t('share.people.responsesOnly')"
+      :description="t('share.people.responsesOnlyDesc')"
+      :actions="[
+        { label: t('forms.viewResponses'), to: `/responses?form=${s.formId}`, color: 'neutral', icon: 'i-lucide-inbox' },
+        { label: t('nav.forms'), to: '/forms', color: 'neutral', variant: 'outline' },
+      ]"
+      variant="outline"
+    />
     <UEmpty
       v-else-if="s.failed.value"
       icon="i-lucide-file-question"
@@ -119,6 +131,7 @@ defineShortcuts({
     />
 
     <template v-else>
+      <UAlert v-if="!s.canEdit.value" icon="i-lucide-eye" color="neutral" variant="subtle" :title="t('share.people.viewOnly')" :description="t('share.people.viewOnlyDesc')" />
       <UAlert
         v-if="autosave.state.value === 'conflict'"
         icon="i-lucide-users"
@@ -154,7 +167,7 @@ defineShortcuts({
               <UButton icon="i-lucide-undo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canUndo.value" :aria-label="t('builder.undo')" @click="builder.history.undo()" />
               <UButton icon="i-lucide-redo-2" color="neutral" variant="ghost" size="sm" square :disabled="!builder.history.canRedo.value" :aria-label="t('builder.redo')" @click="builder.history.redo()" />
               <UButton icon="i-lucide-eye" :label="t('builder.preview.button')" color="neutral" variant="outline" size="sm" class="hidden sm:inline-flex" @click="previewOpen = true" />
-              <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" @click="publishOpen = true" />
+              <UButton icon="i-lucide-globe" :label="t('builder.publish.button')" color="neutral" size="sm" :loading="s.publishing.value" :disabled="!s.canEdit.value" @click="publishOpen = true" />
               <UTooltip :text="t('builder.fullscreen.exit')" :kbds="['esc']">
                 <UButton icon="i-lucide-minimize-2" color="neutral" variant="outline" size="sm" square :aria-label="t('builder.fullscreen.exit')" @click="s.toggleFullscreen(false)" />
               </UTooltip>

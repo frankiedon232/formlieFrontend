@@ -3039,6 +3039,37 @@
       "notEmail": "To nie jest poprawny adres e-mail",
       "removeEmail": "Usuń {email}",
       "fixRed": "Popraw lub usuń adres zaznaczony na czerwono | Popraw lub usuń adresy zaznaczone na czerwono ({n})"
+    },
+    "people": {
+      "title": "Osoby z dostępem",
+      "desc": "Kto w Twoim obszarze roboczym może pracować nad tym formularzem.",
+      "team": "Wszyscy pozostali w obszarze roboczym",
+      "teamDesc": "Dotyczy osób, których nie ma na liście poniżej.",
+      "level": {
+        "edit": "Może edytować",
+        "view": "Może wyświetlać",
+        "responses": "Tylko odpowiedzi",
+        "none": "Brak dostępu"
+      },
+      "levelDesc": {
+        "edit": "Zmiana pytań, wyglądu, udostępniania; publikacja",
+        "view": "Podgląd formularza i ustawień, bez zmian",
+        "responses": "Formularz na liście i jego odpowiedzi",
+        "none": "Formularz nie jest dla nich widoczny"
+      },
+      "always": {
+        "workspace_admin": "Administrator obszaru roboczego · pełny dostęp",
+        "form_owner": "Właściciel formularza · pełny dostęp"
+      },
+      "add": "Dodaj osobę…",
+      "levelFor": "Dostęp dla: {name}",
+      "remove": "Usuń: {name}",
+      "note": "Indywidualny dostęp osoby zastępuje dla niej ustawienie domyślne obszaru roboczego — większy lub mniejszy. Administratorzy obszaru roboczego i właściciel formularza zawsze mają pełny dostęp.",
+      "viewOnly": "Tylko podgląd",
+      "viewOnlyDesc": "Możesz przeglądać ten formularz i jego ustawienia. Zmiany nie są zapisywane — poproś właściciela formularza o dostęp do edycji.",
+      "responsesOnly": "Widzisz tylko odpowiedzi na ten formularz",
+      "responsesOnlyDesc": "Pytania i wygląd nie zostały Ci udostępnione. Jeśli potrzebujesz większego dostępu, zwróć się do właściciela formularza.",
+      "viewForm": "Wyświetl"
     }
   }
 }

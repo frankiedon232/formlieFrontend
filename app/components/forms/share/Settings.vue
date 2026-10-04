@@ -13,13 +13,13 @@ const { t } = useI18n()
 const api = useApi()
 const toast = useToast()
 const { handle } = useErrorHandler()
-const { form, rowVersion } = props.session
+const { form, rowVersion, canEdit } = props.session
 
 const settings = ref<FormShareSettings | null>(null)
 const loading = ref(true)
 const failed = ref(false)
 
-const draft = reactive<ShareDraft>({ access: 'public', password: '', limitOn: false, limit: 10, link: '', embedLimited: false, domains: [], seoTitle: '', seoDescription: '', seoImage: null, noindex: false })
+const draft = reactive<ShareDraft>({ access: 'public', password: '', limitOn: false, limit: 10, link: '', embedLimited: false, domains: [], seoTitle: '', seoDescription: '', seoImage: null, noindex: false, teamAccess: 'edit', grants: [] })
 /** The custom link can be saved (empty, unchanged or checked as free). */
 const linkOk = ref(true)
 
@@ -37,6 +37,8 @@ function reset(from: FormShareSettings) {
     seoDescription: from.seo.description ?? '',
     seoImage: from.seo.image_upload_id && from.seo.image_url ? { id: from.seo.image_upload_id, url: from.seo.image_url } : null,
     noindex: from.seo.noindex,
+    teamAccess: from.people.team_access,
+    grants: from.people.grants.map(grant => ({ ...grant })),
   })
 }
 async function load() {
@@ -58,6 +60,8 @@ onMounted(load)
 /** Embed websites as they will be saved: none when "any website" is chosen. */
 const embedDomains = () => (draft.embedLimited ? draft.domains : [])
 
+const peopleKey = (grants: ShareDraft['grants']) => grants.map(grant => `${grant.user.id}:${grant.level}`).sort().join(',')
+
 const dirty = computed(() => {
   const s = settings.value
   if (!s) return false
@@ -70,12 +74,14 @@ const dirty = computed(() => {
     draft.seoTitle.trim() !== (s.seo.title ?? '') ||
     draft.seoDescription.trim() !== (s.seo.description ?? '') ||
     (draft.seoImage?.id ?? null) !== s.seo.image_upload_id ||
-    draft.noindex !== s.seo.noindex
+    draft.noindex !== s.seo.noindex ||
+    draft.teamAccess !== s.people.team_access ||
+    peopleKey(draft.grants) !== peopleKey(s.people.grants)
   )
 })
 const passwordMissing = computed(() => draft.access === 'password' && !settings.value?.has_password && draft.password.length < 8)
 const embedMissing = computed(() => draft.embedLimited && !draft.domains.length)
-const canSave = computed(() => dirty.value && linkOk.value && !passwordMissing.value && !embedMissing.value && (!draft.password || draft.password.length >= 8))
+const canSave = computed(() => canEdit.value && dirty.value && linkOk.value && !passwordMissing.value && !embedMissing.value && (!draft.password || draft.password.length >= 8))
 
 /** Keeps the rest of the editor in step: the form's version and what the overview / links show. */
 function applyToSession(next: FormShareSettings) {
@@ -97,6 +103,7 @@ async function save() {
         response_limit: draft.limitOn ? draft.limit : null,
         custom_link: draft.link.trim() || null,
         embed_domains: embedDomains(),
+        people: { team_access: draft.teamAccess, grants: draft.grants.map(grant => ({ user_id: grant.user.id, level: grant.level })) },
         seo: { title: draft.seoTitle.trim() || null, description: draft.seoDescription.trim() || null, image_upload_id: draft.seoImage?.id ?? null, noindex: draft.noindex },
       })
       settings.value = data
@@ -151,6 +158,7 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
         <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
         <FormsShareEmbedCard v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareSeoCard v-model:draft="draft" :settings="settings" :form="form" />
+        <FormsSharePeopleCard v-model:draft="draft" :settings="settings" />
         <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
       </div>
       <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />

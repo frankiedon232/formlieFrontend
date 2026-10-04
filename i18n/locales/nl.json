@@ -3039,6 +3039,37 @@
       "notEmail": "Geen geldig e-mailadres",
       "removeEmail": "{email} verwijderen",
       "fixRed": "Verbeter of verwijder het rood gemarkeerde e-mailadres | Verbeter of verwijder de {n} rood gemarkeerde e-mailadressen"
+    },
+    "people": {
+      "title": "Mensen met toegang",
+      "desc": "Wie in uw werkruimte aan dit formulier kan werken.",
+      "team": "Alle anderen in de werkruimte",
+      "teamDesc": "Geldt voor wie hieronder niet staat.",
+      "level": {
+        "edit": "Kan bewerken",
+        "view": "Kan bekijken",
+        "responses": "Alleen reacties",
+        "none": "Geen toegang"
+      },
+      "levelDesc": {
+        "edit": "Vragen, ontwerp en delen wijzigen; publiceren",
+        "view": "Formulier en instellingen zien, niets wijzigen",
+        "responses": "Formulier in de lijst en de reacties zien",
+        "none": "Het formulier wordt niet getoond"
+      },
+      "always": {
+        "workspace_admin": "Werkruimtebeheerder · volledige toegang",
+        "form_owner": "Eigenaar van formulier · volledige toegang"
+      },
+      "add": "Persoon toevoegen…",
+      "levelFor": "Toegang voor {name}",
+      "remove": "{name} verwijderen",
+      "note": "De eigen toegang van een persoon vervangt voor die persoon de standaard van de werkruimte — meer of minder. Werkruimtebeheerders en de eigenaar van het formulier hebben altijd volledige toegang.",
+      "viewOnly": "Alleen bekijken",
+      "viewOnlyDesc": "U kunt dit formulier en de instellingen bekijken. Wijzigingen worden niet opgeslagen — vraag de eigenaar van het formulier om bewerkingstoegang.",
+      "responsesOnly": "U kunt alleen de reacties op dit formulier zien",
+      "responsesOnlyDesc": "De vragen en het ontwerp zijn niet met u gedeeld. Vraag de eigenaar van het formulier als u meer toegang nodig hebt.",
+      "viewForm": "Bekijken"
     }
   }
 }

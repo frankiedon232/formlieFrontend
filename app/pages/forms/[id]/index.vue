@@ -79,7 +79,15 @@ const subtitle = computed(() =>
         :to="`/responses?form=${form.id}`"
         class="hidden sm:inline-flex"
       />
-      <UButton icon="i-lucide-pencil-ruler" :label="t('forms.detail.edit')" color="neutral" :to="`/forms/${form.id}/build`" :disabled="!!form.deleted_at" />
+      <!-- People access: view-only people open the editor read only; responses-only people don't. -->
+      <UButton
+        v-if="form.my_access !== 'responses'"
+        :icon="form.my_access === 'view' ? 'i-lucide-eye' : 'i-lucide-pencil-ruler'"
+        :label="form.my_access === 'view' ? t('share.people.viewForm') : t('forms.detail.edit')"
+        color="neutral"
+        :to="`/forms/${form.id}/build`"
+        :disabled="!!form.deleted_at"
+      />
     </template>
 
     <!-- Loading: mirrors KPI row, chart + side column -->

@@ -3039,6 +3039,37 @@
       "notEmail": "No es un correo electrónico válido",
       "removeEmail": "Quitar {email}",
       "fixRed": "Corrija o quite el correo marcado en rojo | Corrija o quite los {n} correos marcados en rojo"
+    },
+    "people": {
+      "title": "Personas con acceso",
+      "desc": "Quién de su espacio de trabajo puede trabajar en este formulario.",
+      "team": "Todos los demás del espacio de trabajo",
+      "teamDesc": "Se aplica a quienes no aparecen abajo.",
+      "level": {
+        "edit": "Puede editar",
+        "view": "Puede ver",
+        "responses": "Solo respuestas",
+        "none": "Sin acceso"
+      },
+      "levelDesc": {
+        "edit": "Cambiar preguntas, diseño y uso compartido; publicar",
+        "view": "Ver el formulario y su configuración, sin cambiar nada",
+        "responses": "Ver el formulario en la lista y sus respuestas",
+        "none": "El formulario no les aparece"
+      },
+      "always": {
+        "workspace_admin": "Administrador del espacio de trabajo · acceso total",
+        "form_owner": "Propietario del formulario · acceso total"
+      },
+      "add": "Añadir una persona…",
+      "levelFor": "Acceso de {name}",
+      "remove": "Quitar a {name}",
+      "note": "El acceso propio de una persona sustituye para ella el valor predeterminado del espacio de trabajo, sea mayor o menor. Los administradores del espacio de trabajo y el propietario del formulario siempre tienen acceso total.",
+      "viewOnly": "Solo lectura",
+      "viewOnlyDesc": "Puede consultar este formulario y su configuración. Los cambios no se guardan; pida acceso de edición al propietario del formulario.",
+      "responsesOnly": "Solo puede ver las respuestas de este formulario",
+      "responsesOnlyDesc": "Las preguntas y el diseño no se han compartido con usted. Consulte al propietario del formulario si necesita más acceso.",
+      "viewForm": "Ver"
     }
   }
 }

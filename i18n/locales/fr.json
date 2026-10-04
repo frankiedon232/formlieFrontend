@@ -3039,6 +3039,37 @@
       "notEmail": "Adresse e-mail non valide",
       "removeEmail": "Retirer {email}",
       "fixRed": "Corrigez ou retirez l’adresse en rouge | Corrigez ou retirez les {n} adresses en rouge"
+    },
+    "people": {
+      "title": "Personnes ayant accès",
+      "desc": "Qui, dans votre espace de travail, peut travailler sur ce formulaire.",
+      "team": "Tous les autres membres de l’espace de travail",
+      "teamDesc": "S’applique aux personnes non listées ci-dessous.",
+      "level": {
+        "edit": "Peut modifier",
+        "view": "Peut consulter",
+        "responses": "Réponses uniquement",
+        "none": "Aucun accès"
+      },
+      "levelDesc": {
+        "edit": "Modifier questions, design et partage ; publier",
+        "view": "Voir le formulaire et ses paramètres, sans rien modifier",
+        "responses": "Voir le formulaire dans la liste et ses réponses",
+        "none": "Le formulaire ne leur est pas affiché"
+      },
+      "always": {
+        "workspace_admin": "Administrateur de l’espace · accès complet",
+        "form_owner": "Propriétaire du formulaire · accès complet"
+      },
+      "add": "Ajouter une personne…",
+      "levelFor": "Accès de {name}",
+      "remove": "Retirer {name}",
+      "note": "L’accès propre à une personne remplace pour elle la valeur par défaut de l’espace de travail, qu’il soit plus large ou plus restreint. Les administrateurs de l’espace et le propriétaire du formulaire ont toujours un accès complet.",
+      "viewOnly": "Lecture seule",
+      "viewOnlyDesc": "Vous pouvez consulter ce formulaire et ses paramètres. Les modifications ne sont pas enregistrées — demandez un accès en modification au propriétaire du formulaire.",
+      "responsesOnly": "Vous ne voyez que les réponses de ce formulaire",
+      "responsesOnlyDesc": "Les questions et le design ne sont pas partagés avec vous. Contactez le propriétaire du formulaire si vous avez besoin de plus d’accès.",
+      "viewForm": "Consulter"
     }
   }
 }

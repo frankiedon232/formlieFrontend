@@ -23,6 +23,8 @@ export function useBuilderSession(formId: string) {
   const rowVersion = ref(0)
   const loading = ref(true)
   const failed = ref<string | null>(null)
+  /** May change this form (people access): view-only people get a read-only editor. */
+  const canEdit = computed(() => !form.value?.my_access || form.value.my_access === 'edit')
 
   const autosave = useBuilderAutosave(formId, builder.schema, rowVersion, saved => {
     if (form.value)
@@ -33,7 +35,8 @@ export function useBuilderSession(formId: string) {
     form.value = next
     rowVersion.value = next.row_version
     if (schema) {
-      autosave.start()
+      // People access (decision 97): view-only people look; nothing is saved.
+      if (canEdit.value) autosave.start()
       builder.load(schema)
     }
   }
@@ -133,7 +136,7 @@ export function useBuilderSession(formId: string) {
   onMounted(load)
 
   return {
-    formId, builder, form, rowVersion, loading, failed, autosave, statusText, publishing,
+    formId, builder, form, rowVersion, loading, failed, autosave, statusText, publishing, canEdit,
     fullscreen, toggleFullscreen, load, rename, publish, replaceDraft,
   }
 }

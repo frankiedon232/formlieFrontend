@@ -3039,6 +3039,37 @@
       "notEmail": "Indirizzo email non valido",
       "removeEmail": "Rimuovi {email}",
       "fixRed": "Correggi o rimuovi l’email in rosso | Correggi o rimuovi le {n} email in rosso"
+    },
+    "people": {
+      "title": "Persone con accesso",
+      "desc": "Chi nel tuo spazio di lavoro può lavorare su questo modulo.",
+      "team": "Tutti gli altri nello spazio di lavoro",
+      "teamDesc": "Vale per chi non è elencato sotto.",
+      "level": {
+        "edit": "Può modificare",
+        "view": "Può visualizzare",
+        "responses": "Solo risposte",
+        "none": "Nessun accesso"
+      },
+      "levelDesc": {
+        "edit": "Modificare domande, design e condivisione; pubblicare",
+        "view": "Vedere il modulo e le impostazioni, senza modificare nulla",
+        "responses": "Vedere il modulo nell’elenco e le sue risposte",
+        "none": "Il modulo non viene mostrato"
+      },
+      "always": {
+        "workspace_admin": "Amministratore dello spazio · accesso completo",
+        "form_owner": "Proprietario del modulo · accesso completo"
+      },
+      "add": "Aggiungi una persona…",
+      "levelFor": "Accesso per {name}",
+      "remove": "Rimuovi {name}",
+      "note": "L’accesso personale sostituisce per quella persona l’impostazione predefinita dello spazio di lavoro, che sia maggiore o minore. Gli amministratori dello spazio e il proprietario del modulo hanno sempre accesso completo.",
+      "viewOnly": "Sola lettura",
+      "viewOnlyDesc": "Puoi consultare questo modulo e le sue impostazioni. Le modifiche non vengono salvate — chiedi l’accesso in modifica al proprietario del modulo.",
+      "responsesOnly": "Puoi vedere solo le risposte di questo modulo",
+      "responsesOnlyDesc": "Domande e design non sono condivisi con te. Rivolgiti al proprietario del modulo se ti serve un accesso maggiore.",
+      "viewForm": "Visualizza"
     }
   }
 }

@@ -25,6 +25,7 @@ import { parseBody } from '../core/validate'
 import { formsOf, saveForms, summaryOf, uniqueSlug, type StoredForm } from '../data/formStore'
 import { retireShortCode } from '../data/shortCodeStore'
 import type { MockTenant, MockUser } from '../data/tenants'
+import { canSee, levelOf, requireLevel } from '../data/formPermissions'
 
 type Query = Record<string, unknown>
 const list = (query: Query, key: string) => {
@@ -34,11 +35,15 @@ const list = (query: Query, key: string) => {
 const day = (value: unknown, end: boolean) =>
   typeof value === 'string' && value ? Date.parse(`${value}T${end ? '23:59:59' : '00:00:00'}Z`) : null
 
-function findForm(tenant: MockTenant, id: string | undefined, { trash = false } = {}): StoredForm {
+/** A form of this workspace the person may work on (people access, decision 97: changes need "edit"). */
+function findForm(tenant: MockTenant, user: MockUser, id: string | undefined, { trash = false, need = 'edit' as 'edit' | 'view' | 'responses' } = {}): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id)
   if (!form || !!form.deleted_at !== trash) throw new MockError('FRM-GEN-1004')
+  requireLevel(form, user, need)
   return form
 }
+/** The summary with what this person may do (my_access). */
+const summaryFor = (form: StoredForm, user: MockUser) => ({ ...summaryOf(form), my_access: levelOf(form, user) })
 
 function checkVersion(form: StoredForm, version: number | undefined) {
   if (version !== undefined && version !== form.row_version) throw new MockError('FRM-GEN-1009')
@@ -74,7 +79,7 @@ const ownerOf = (user: MockUser) => ({ id: user.id, name: `${user.first_name} ${
 
 /** GET /forms — filters: status, folder_id (`none` = no folder), owner_id, tag (comma = any of), trash=1; from/to on updated_at. */
 export const listForms = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const status = list(query, 'status')
   const folder = list(query, 'folder_id')
   const owner = list(query, 'owner_id')
@@ -87,6 +92,7 @@ export const listForms = defineMockRoute(({ event, query }) => {
   const filtered = formsOf(tenant).forms.filter(form => {
     const updated = Date.parse(form.updated_at)
     return (
+      canSee(form, user) &&
       !!form.deleted_at === trash &&
       // Archived forms only show when asked for explicitly (and always in Trash).
       (trash || (status ? status.includes(form.status) : form.status !== 'archived')) &&
@@ -104,12 +110,12 @@ export const listForms = defineMockRoute(({ event, query }) => {
     { sort: trash ? '-deleted_at' : '-updated_at', ...query },
     (form, q) => form.name.toLowerCase().includes(q) || form.slug.includes(q) || form.tags.includes(q),
   )
-  return ok(data.map(summaryOf), meta)
+  return ok(data.map(form => summaryFor(form, user)), meta)
 })
 
 export const formFacets = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at)
+  const { tenant, user } = requireAuth(event)
+  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user))
   const owners = new Map(forms.map(form => [form.owner.id, form.owner]))
   return ok<FormFacets>({
     owners: [...owners.values()].sort((a, b) => a.name.localeCompare(b.name)),
@@ -122,10 +128,12 @@ export const formFacets = defineMockRoute(({ event }) => {
 })
 
 export const getForm = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const form = formsOf(tenant).forms.find(item => item.id === getRouterParam(event, 'id'))
   if (!form) throw new MockError('FRM-GEN-1004')
-  return ok({ ...summaryOf(form), template_key: form.template_key, schema: form.schema })
+  const level = requireLevel(form, user, 'responses')
+  // Responses only: no questions or design.
+  return ok({ ...summaryFor(form, user), template_key: form.template_key, schema: level === 'responses' ? null : form.schema })
 })
 
 // ── Create ────────────────────────────────────────────────────────────────────────
@@ -219,7 +227,7 @@ export const importForm = defineMockRoute(({ event, body }) => {
 
 export const duplicateForm = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
-  const source = findForm(tenant, getRouterParam(event, 'id'))
+  const source = findForm(tenant, user, getRouterParam(event, 'id'), { need: 'view' })
   const copy = newForm(tenant, user, {
     name: `${source.name} (copy)`.slice(0, 120),
     folder: source.folder,
@@ -228,7 +236,7 @@ export const duplicateForm = defineMockRoute(({ event }) => {
   })
   copy.tags = [...source.tags]
   audit(event, tenant, user, 'forms.created', copy, [], { source: 'duplicate', from: source.name })
-  return ok(summaryOf(copy), {}, 201)
+  return ok(summaryFor(copy, user), {}, 201)
 })
 
 // ── Change ────────────────────────────────────────────────────────────────────────
@@ -256,7 +264,7 @@ const patchSchema = z.object({
 
 export const patchForm = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'))
   const input = parseBody(patchSchema, body)
   checkVersion(form, input.row_version)
   const changes: AuditChange[] = []
@@ -333,7 +341,7 @@ export const formLifecycle = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const action = getRouterParam(event, 'action') as FormLifecycleAction
   if (!LIFECYCLE_ACTIONS.includes(action)) throw new MockError('FRM-GEN-1004')
-  const form = findForm(tenant, getRouterParam(event, 'id'), { trash: action === 'restore' })
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), { trash: action === 'restore' })
   checkVersion(form, parseBody(lifecycleSchema, body ?? {}).row_version)
   const changes = applyLifecycle(form, action)
   touch(form)
@@ -357,14 +365,14 @@ export const deleteForm = defineMockRoute(({ event, query }) => {
   const id = getRouterParam(event, 'id')
   const store = formsOf(tenant)
   if (query.permanent === '1') {
-    const form = findForm(tenant, id, { trash: true })
+    const form = findForm(tenant, user, id, { trash: true })
     retireCodesOf(form)
     store.forms = store.forms.filter(item => item.id !== form.id)
     saveForms()
     audit(event, tenant, user, 'forms.purged', form)
     return ok({ deleted: true })
   }
-  const form = findForm(tenant, id)
+  const form = findForm(tenant, user, id)
   form.deleted_at = new Date().toISOString()
   touch(form)
   audit(event, tenant, user, 'forms.deleted', form, [], { kept_in_trash: '30 days' })
@@ -399,7 +407,7 @@ export const bulkForms = defineMockRoute(({ event, body }) => {
   for (const id of input.ids) {
     try {
       const inTrash = input.action === 'restore' || input.action === 'purge'
-      const form = findForm(tenant, id, { trash: inTrash })
+      const form = findForm(tenant, user, id, { trash: inTrash })
       if (input.action === 'move') {
         if ((form.folder?.id ?? null) !== (folder?.id ?? null)) {
           const change = { field: 'folder', before: form.folder?.name ?? null, after: folder?.name ?? null }

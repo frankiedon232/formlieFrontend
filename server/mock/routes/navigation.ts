@@ -4,14 +4,16 @@ import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { formsOf } from '../data/formStore'
+import { canSee } from '../data/formPermissions'
 import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
 import { SYSTEM_THEME_COUNT } from './themes'
 
 /** GET /navigation/counts — cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  const all = formsOf(tenant).forms
+  const { tenant, user } = requireAuth(event)
+  // People access: forms someone may not see aren't counted for them either.
+  const all = formsOf(tenant).forms.filter(form => canSee(form, user))
   const live = all.filter(form => !form.deleted_at)
   const count = (status: string) => live.filter(form => form.status === status).length
 

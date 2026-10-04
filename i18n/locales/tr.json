@@ -3039,6 +3039,37 @@
       "notEmail": "Geçerli bir e-posta adresi değil",
       "removeEmail": "{email} kaldır",
       "fixRed": "Kırmızıyla işaretli e-postayı düzeltin veya kaldırın | Kırmızıyla işaretli {n} e-postayı düzeltin veya kaldırın"
+    },
+    "people": {
+      "title": "Erişimi olan kişiler",
+      "desc": "Çalışma alanınızda bu form üzerinde kimlerin çalışabileceği.",
+      "team": "Çalışma alanındaki diğer herkes",
+      "teamDesc": "Aşağıda listelenmeyen kişiler için geçerlidir.",
+      "level": {
+        "edit": "Düzenleyebilir",
+        "view": "Görüntüleyebilir",
+        "responses": "Yalnızca yanıtlar",
+        "none": "Erişim yok"
+      },
+      "levelDesc": {
+        "edit": "Soruları, tasarımı, paylaşımı değiştirme; yayınlama",
+        "view": "Formu ve ayarlarını görme, değişiklik yok",
+        "responses": "Formu listede ve yanıtlarını görme",
+        "none": "Form onlara gösterilmez"
+      },
+      "always": {
+        "workspace_admin": "Çalışma alanı yöneticisi · tam erişim",
+        "form_owner": "Form sahibi · tam erişim"
+      },
+      "add": "Kişi ekle…",
+      "levelFor": "{name} için erişim",
+      "remove": "{name} kişisini kaldır",
+      "note": "Bir kişiye özel erişim, o kişi için çalışma alanı varsayılanının yerini alır — daha fazla ya da daha az. Çalışma alanı yöneticileri ve form sahibi her zaman tam erişime sahiptir.",
+      "viewOnly": "Yalnızca görüntüleme",
+      "viewOnlyDesc": "Bu formu ve ayarlarını görüntüleyebilirsiniz. Değişiklikler kaydedilmez — düzenleme erişimi için form sahibine başvurun.",
+      "responsesOnly": "Bu formun yalnızca yanıtlarını görebilirsiniz",
+      "responsesOnlyDesc": "Sorular ve tasarım sizinle paylaşılmadı. Daha fazla erişime ihtiyacınız varsa form sahibine başvurun.",
+      "viewForm": "Görüntüle"
     }
   }
 }

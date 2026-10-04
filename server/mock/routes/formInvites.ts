@@ -16,14 +16,17 @@ import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { hashToken, issuePass, newInviteToken, type FormInvite } from '../data/formAccess'
+import { requireLevel } from '../data/formPermissions'
 import { formsOf, saveForms, type StoredForm } from '../data/formStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 
 const MAX_INVITES = 500
 
-function findForm(tenant: MockTenant, id: string | undefined): StoredForm {
+/** A form of this workspace, with at least this people-access level (decision 97). */
+function findForm(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'view' | 'edit' = 'edit'): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
+  requireLevel(form, user, need)
   return form
 }
 
@@ -58,8 +61,8 @@ function audit(event: Parameters<typeof requireAuth>[0], tenant: MockTenant, use
 
 /** GET /forms/:id/invites */
 export const listInvites = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  return ok(listOf(findForm(tenant, getRouterParam(event, 'id'))))
+  const { tenant, user } = requireAuth(event)
+  return ok(listOf(findForm(tenant, user, getRouterParam(event, 'id'), 'view')))
 })
 
 const inviteBody = z.object({
@@ -72,7 +75,7 @@ const inviteBody = z.object({
 /** POST /forms/:id/invites — people already invited (and not revoked) are skipped, not invited twice. */
 export const createInvites = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'))
   const input = parseBody(inviteBody, body)
   form.invites ??= []
   const active = new Set(form.invites.filter(item => !item.revoked_at).map(item => item.email))
@@ -105,7 +108,7 @@ function inviteOf(form: StoredForm, id: string | undefined): FormInvite {
 /** POST /forms/:id/invites/:inviteId/resend — a new personal link; the previous one stops working. */
 export const resendInvite = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'))
   const invite = inviteOf(form, getRouterParam(event, 'inviteId'))
   if (invite.revoked_at) throw new MockError('FRM-FORM-1007')
   const token = newInviteToken()
@@ -118,7 +121,7 @@ export const resendInvite = defineMockRoute(({ event }) => {
 /** DELETE /forms/:id/invites/:inviteId — the invitation link stops working (a response already sent stays). */
 export const revokeInvite = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'))
   const invite = inviteOf(form, getRouterParam(event, 'inviteId'))
   if (!invite.revoked_at) {
     invite.revoked_at = new Date().toISOString()

@@ -46,7 +46,12 @@ export interface FormSummary {
   response_limit: number | null
   /** Short link code (forms.formalie.com/s/{code}), or null. */
   short_code: string | null
+  /** What the signed-in person may do with this form (F10 M3 people access; lists and form pages). */
+  my_access?: FormAccessLevel
 }
+
+/** People access per form: none < responses < view (read only) < edit. */
+export type FormAccessLevel = 'none' | 'responses' | 'view' | 'edit'
 
 export type FormAccess = 'public' | 'password' | 'invite' | 'organisation'
 
@@ -66,6 +71,12 @@ export interface FormShareSettings {
   short_link: { code: string; clicks: number; created_at: string } | null
   /** Websites allowed to show the embed (empty = any website). */
   embed_domains: string[]
+  /** People access (decision 97): the default for the workspace, people given access, and who always has full access. */
+  people: {
+    team_access: Exclude<FormAccessLevel, 'responses'>
+    grants: { user: { id: string; name: string; email: string }; level: Exclude<FormAccessLevel, 'none'> }[]
+    always: { user: { id: string; name: string; email: string }; reason: 'workspace_admin' | 'form_owner' }[]
+  }
   /** Search & link preview: the creator's text (null = from the form) and what the form gives by default. */
   seo: {
     title: string | null
@@ -111,6 +122,9 @@ export interface ShareDraft {
   seoDescription: string
   seoImage: { id: string; url: string } | null
   noindex: boolean
+  /** People access. */
+  teamAccess: Exclude<FormAccessLevel, 'responses'>
+  grants: { user: { id: string; name: string; email: string }; level: Exclude<FormAccessLevel, 'none'> }[]
 }
 
 /** GET /forms/{id}/share/link-check?value= — can this custom link be used? */

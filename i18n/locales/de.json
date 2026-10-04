@@ -3039,6 +3039,37 @@
       "notEmail": "Keine gültige E-Mail-Adresse",
       "removeEmail": "{email} entfernen",
       "fixRed": "Korrigieren oder entfernen Sie die rot markierte E-Mail | Korrigieren oder entfernen Sie die {n} rot markierten E-Mails"
+    },
+    "people": {
+      "title": "Personen mit Zugriff",
+      "desc": "Wer in Ihrem Workspace an diesem Formular arbeiten kann.",
+      "team": "Alle anderen im Workspace",
+      "teamDesc": "Gilt für alle, die unten nicht aufgeführt sind.",
+      "level": {
+        "edit": "Bearbeiten",
+        "view": "Anzeigen",
+        "responses": "Nur Antworten",
+        "none": "Kein Zugriff"
+      },
+      "levelDesc": {
+        "edit": "Fragen, Design und Freigabe ändern; veröffentlichen",
+        "view": "Formular und Einstellungen sehen, nichts ändern",
+        "responses": "Formular in der Liste und seine Antworten sehen",
+        "none": "Das Formular wird ihnen nicht angezeigt"
+      },
+      "always": {
+        "workspace_admin": "Workspace-Admin · voller Zugriff",
+        "form_owner": "Formularinhaber · voller Zugriff"
+      },
+      "add": "Person hinzufügen…",
+      "levelFor": "Zugriff für {name}",
+      "remove": "{name} entfernen",
+      "note": "Der eigene Zugriff einer Person ersetzt für sie die Workspace-Vorgabe — ob mehr oder weniger. Workspace-Admins und der Formularinhaber haben immer vollen Zugriff.",
+      "viewOnly": "Nur ansehen",
+      "viewOnlyDesc": "Sie können dieses Formular und seine Einstellungen ansehen. Änderungen werden nicht gespeichert — bitten Sie den Formularinhaber um Bearbeitungszugriff.",
+      "responsesOnly": "Sie sehen nur die Antworten dieses Formulars",
+      "responsesOnlyDesc": "Fragen und Design sind nicht für Sie freigegeben. Wenden Sie sich an den Formularinhaber, wenn Sie mehr Zugriff benötigen.",
+      "viewForm": "Ansehen"
     }
   }
 }

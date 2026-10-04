@@ -25,6 +25,27 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
     formLink(publicHosts(config, request.port), key, 'fill', tenant.profile.value?.subdomain ?? null)
 
   return (form: FormSummary): DropdownMenuItem[][] => {
+    // People access (decision 97): view-only / responses-only people get only what they may do.
+    if (form.my_access && form.my_access !== 'edit')
+      return [
+        [
+          { label: t('forms.actions.open'), icon: 'i-lucide-square-arrow-out-up-right', to: `/forms/${form.id}` },
+          ...(form.my_access === 'view' ? [{ label: t('forms.actions.duplicate'), icon: 'i-lucide-copy', onSelect: () => actions.duplicate(form) }] : []),
+          ...(form.status === 'published'
+            ? [
+                {
+                  label: t('forms.copyLink'),
+                  icon: 'i-lucide-link',
+                  onSelect: () => {
+                    copy(fillLink(form.custom_link || form.public_key))
+                    toast.add({ title: t('forms.linkCopied'), color: 'success' as const, icon: 'i-lucide-check' })
+                  },
+                },
+              ]
+            : []),
+          { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/responses?form=${form.id}` },
+        ],
+      ]
     const lifecycle: DropdownMenuItem[] = []
     const add = (action: Parameters<typeof actions.lifecycle>[1], icon: string) =>
       lifecycle.push({

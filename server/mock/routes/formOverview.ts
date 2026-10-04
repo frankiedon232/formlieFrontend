@@ -10,6 +10,7 @@ import { requireAuth } from '../core/auth'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { formsOf } from '../data/formStore'
+import { requireLevel } from '../data/formPermissions'
 import { findWorkspaceTemplate } from '../data/templateStore'
 import { ensureSchema } from './formDraft'
 
@@ -27,8 +28,9 @@ function seeded(text: string) {
 const DAY = 86_400_000
 
 export const getFormOverview = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const form = formsOf(tenant).forms.find(item => item.id === getRouterParam(event, 'id'))
+  if (form) requireLevel(form, user, 'responses')
   if (!form) throw new MockError('FRM-GEN-1004')
   const schema = ensureSchema(form, tenant)
   const random = seeded(form.id)

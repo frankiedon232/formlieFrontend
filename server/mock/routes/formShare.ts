@@ -20,11 +20,15 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf, saveForms, type StoredForm } from '../data/formStore'
 import { isRetiredShortCode, retireShortCode } from '../data/shortCodeStore'
-import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
+import { MOCK_TENANTS, MOCK_USERS, type MockTenant, type MockUser } from '../data/tenants'
+import { isWorkspaceAdmin, requireLevel } from '../data/formPermissions'
+import { MOCK_OWNERS } from '../data/forms'
 
-function findForm(tenant: MockTenant, id: string | undefined): StoredForm {
+/** A form of this workspace, with at least this people-access level (decision 97). */
+function findForm(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'view' | 'edit' = 'edit'): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
+  requireLevel(form, user, need)
   return form
 }
 
@@ -41,6 +45,7 @@ const settingsOf = (form: StoredForm, tenant: MockTenant): FormShareSettings => 
   closes_at: form.closes_at,
   row_version: form.row_version,
   embed_domains: form.embed_domains ?? [],
+  people: peopleOf(form, tenant),
   seo: {
     title: form.seo?.title ?? null,
     description: form.seo?.description ?? null,
@@ -52,6 +57,31 @@ const settingsOf = (form: StoredForm, tenant: MockTenant): FormShareSettings => 
   },
   short_link: form.short_code ? { code: form.short_code, clicks: form.short_clicks ?? 0, created_at: form.short_created_at ?? form.updated_at } : null,
 })
+
+// ── People access (decision 97) ─────────────────────────────────────────────────────────
+type Person = { id: string; name: string; email: string }
+/** Everyone who can be given access: the workspace's people (plus the sample form owners of the mock). */
+function peopleIn(tenant: MockTenant): Person[] {
+  const domain = `${tenant.subdomain}.test`
+  return [
+    ...MOCK_USERS.filter(user => user.tenant_id === tenant.id && !user.disabled).map(user => ({ id: user.id, name: `${user.first_name} ${user.last_name}`.trim(), email: user.email })),
+    ...MOCK_OWNERS.map(owner => ({ id: owner.id, name: owner.name, email: `${owner.name.toLowerCase().replace(/\s+/g, '.')}@${domain}` })),
+  ]
+}
+function peopleOf(form: StoredForm, tenant: MockTenant): FormShareSettings['people'] {
+  const people = peopleIn(tenant)
+  const admins = MOCK_USERS.filter(user => user.tenant_id === tenant.id && !user.disabled && isWorkspaceAdmin(user))
+  const always: FormShareSettings['people']['always'] = admins.map(user => ({ user: people.find(person => person.id === user.id)!, reason: 'workspace_admin' as const }))
+  if (!admins.some(user => user.id === form.owner.id)) {
+    const owner = people.find(person => person.id === form.owner.id) ?? { id: form.owner.id, name: form.owner.name, email: '' }
+    always.push({ user: owner, reason: 'form_owner' })
+  }
+  const grants = (form.grants ?? []).flatMap(grant => {
+    const user = people.find(person => person.id === grant.user_id)
+    return user ? [{ user, level: grant.level }] : []
+  })
+  return { team_access: form.team_access ?? 'edit', grants, always }
+}
 
 /**
  * Workspaces whose forms live on the same address (owner, 2026-10-04): a workspace with its own
@@ -106,14 +136,14 @@ function check(value: string, formId: string, tenant: MockTenant): CustomLinkChe
 
 /** GET /forms/:id/share */
 export const getShare = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
-  return ok(settingsOf(findForm(tenant, getRouterParam(event, 'id')), tenant))
+  const { tenant, user } = requireAuth(event)
+  return ok(settingsOf(findForm(tenant, user, getRouterParam(event, 'id'), 'view'), tenant))
 })
 
 /** GET /forms/:id/share/link-check?value= */
 export const checkLink = defineMockRoute(({ event, query }) => {
-  const { tenant } = requireAuth(event)
-  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const { tenant, user } = requireAuth(event)
+  const form = findForm(tenant, user, getRouterParam(event, 'id'), 'view')
   // Query values arrive inside the encrypted envelope (ctx.query), not in the address.
   const value = String(query.value ?? '').slice(0, 80)
   return ok(check(value, form.id, tenant))
@@ -135,6 +165,13 @@ const shareSchema = z.object({
       noindex: z.boolean(),
     })
     .optional(),
+  /** People access: the workspace default and people given access. */
+  people: z
+    .object({
+      team_access: z.enum(['edit', 'view', 'none']),
+      grants: z.array(z.object({ user_id: z.string().max(64), level: z.enum(['edit', 'view', 'responses']) })).max(500),
+    })
+    .optional(),
   /** Websites allowed to show the embed; [] = any website. */
   embed_domains: z.array(z.string().max(253)).max(MAX_EMBED_DOMAINS).optional(),
 })
@@ -142,7 +179,7 @@ const shareSchema = z.object({
 /** PUT /forms/:id/share */
 export const saveShare = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'))
   const input = parseBody(shareSchema, body)
   if (input.row_version !== undefined && input.row_version !== form.row_version) throw new MockError('FRM-GEN-1009')
   const changes: AuditChange[] = []
@@ -178,6 +215,20 @@ export const saveShare = defineMockRoute(({ event, body }) => {
     }
   }
 
+  if (input.people !== undefined) {
+    const known = new Set(peopleIn(tenant).map(person => person.id))
+    if (input.people.grants.some(grant => !known.has(grant.user_id))) throw new MockError('FRM-GEN-1002', [{ field: 'people', message: 'Unknown person.' }])
+    const before = form.team_access ?? 'edit'
+    if (before !== input.people.team_access) changes.push({ field: 'team_access', before, after: input.people.team_access })
+    const describe = (grants: { user_id: string; level: string }[]) => grants.map(grant => `${grant.user_id}:${grant.level}`).sort().join(',')
+    const grants = [...new Map(input.people.grants.map(grant => [grant.user_id, grant])).values()]
+    if (describe(form.grants ?? []) !== describe(grants)) {
+      const names = (list: { user_id: string; level: string }[]) => list.map(grant => `${peopleIn(tenant).find(person => person.id === grant.user_id)?.name ?? '?'} (${grant.level})`).join(', ') || null
+      changes.push({ field: 'people_access', before: names(form.grants ?? []), after: names(grants) })
+      form.grants = grants.map(grant => ({ ...grant, granted_at: (form.grants ?? []).find(item => item.user_id === grant.user_id)?.granted_at ?? new Date().toISOString() }))
+    }
+    form.team_access = input.people.team_access
+  }
   if (input.seo !== undefined) {
     const next = {
       title: input.seo.title?.trim() || null,
@@ -217,7 +268,7 @@ const codeTaken = (code: string) => isRetiredShortCode(code) || MOCK_TENANTS.som
 
 function shortLinkChange(event: Parameters<typeof requireAuth>[0], create: boolean) {
   const { user, tenant } = requireAuth(event)
-  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const form = findForm(tenant, user, getRouterParam(event, 'id'))
   const before = form.short_code ?? null
   if (create && !form.short_code) {
     let code = newShortCode()

@@ -3039,6 +3039,37 @@
       "notEmail": "Không phải địa chỉ email hợp lệ",
       "removeEmail": "Xóa {email}",
       "fixRed": "Hãy sửa hoặc xóa email được đánh dấu đỏ | Hãy sửa hoặc xóa {n} email được đánh dấu đỏ"
+    },
+    "people": {
+      "title": "Những người có quyền truy cập",
+      "desc": "Ai trong không gian làm việc của bạn có thể làm việc với biểu mẫu này.",
+      "team": "Mọi người khác trong không gian làm việc",
+      "teamDesc": "Áp dụng cho những người không có trong danh sách bên dưới.",
+      "level": {
+        "edit": "Có thể chỉnh sửa",
+        "view": "Có thể xem",
+        "responses": "Chỉ câu trả lời",
+        "none": "Không có quyền"
+      },
+      "levelDesc": {
+        "edit": "Thay đổi câu hỏi, thiết kế, chia sẻ; xuất bản",
+        "view": "Xem biểu mẫu và cài đặt, không thay đổi gì",
+        "responses": "Xem biểu mẫu trong danh sách và các câu trả lời",
+        "none": "Biểu mẫu không hiển thị với họ"
+      },
+      "always": {
+        "workspace_admin": "Quản trị viên không gian làm việc · toàn quyền",
+        "form_owner": "Chủ sở hữu biểu mẫu · toàn quyền"
+      },
+      "add": "Thêm người…",
+      "levelFor": "Quyền truy cập của {name}",
+      "remove": "Xóa {name}",
+      "note": "Quyền riêng của một người sẽ thay thế mặc định của không gian làm việc đối với người đó — dù nhiều hơn hay ít hơn. Quản trị viên không gian làm việc và chủ sở hữu biểu mẫu luôn có toàn quyền.",
+      "viewOnly": "Chỉ xem",
+      "viewOnlyDesc": "Bạn có thể xem biểu mẫu này và cài đặt của nó. Thay đổi sẽ không được lưu — hãy đề nghị chủ sở hữu biểu mẫu cấp quyền chỉnh sửa.",
+      "responsesOnly": "Bạn chỉ có thể xem câu trả lời của biểu mẫu này",
+      "responsesOnlyDesc": "Câu hỏi và thiết kế không được chia sẻ với bạn. Hãy liên hệ chủ sở hữu biểu mẫu nếu bạn cần thêm quyền.",
+      "viewForm": "Xem"
     }
   }
 }
