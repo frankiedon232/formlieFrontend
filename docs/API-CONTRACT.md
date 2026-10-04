@@ -12,6 +12,7 @@ Shared by frontend (mocks) and backend (implementation). Bump the version and up
 - Success: `{ "success": true, "data": …, "meta": {…} }`
 - Error: `{ "success": false, "error": { "code", "message", "trace_id", "details": [{ "field", "message" }] } }`
 - Lists: query `page`, `page_size` (≤100), `q`, `sort` (`-updated_at`), `filter[status]=published`, `from`, `to` (ISO dates); meta `{ page, page_size, total, total_pages }`. Large sets: `cursor` instead of `page`, meta `{ next_cursor }`.
+- **Paging happens in the database** (owner, 2026-10-04): a list request reads and sends only that page's rows (`LIMIT` / `OFFSET`, or keyset paging on indexed columns such as `submitted_at, id` for responses and audit), never the whole set; `total` comes from a separate `COUNT` (it may be an estimate above 100,000, then `meta.total_estimated: true`). Search, filters and sort run in the query on indexed columns (full-text index for searching answers). Insights and counts are aggregated in the database (`GROUP BY`), never by loading rows. The browser only ever holds one page. (The dev mock builds lists in memory and slices them; that is a stand-in only.)
 - IDs are UUID strings; timestamps ISO-8601 UTC.
 - Optimistic locking: editable resources return `row_version`; updates send it; mismatch → `FRM-GEN-1009`.
 
