@@ -46,13 +46,19 @@ watch(open, value => {
   <USlideover
     v-model:open="open"
     :title="title ?? t('builder.preview.title')"
-    :description="t('builder.preview.desc')"
     :ui="{
       content: `${PANEL[device]} transition-[max-width] duration-300`,
       body: device === 'desktop' ? 'p-0 sm:p-0' : 'bg-elevated/40 p-3 sm:p-4',
     }"
   >
     <template #actions>
+      <!-- The note sits behind an icon so the header stays one slim line (owner, 2026-10-04). -->
+      <UPopover :content="{ align: 'start' }">
+        <UButton icon="i-lucide-info" color="neutral" variant="ghost" size="xs" square :aria-label="t('builder.preview.desc')" />
+        <template #content>
+          <p class="max-w-64 p-3 text-sm text-default">{{ t('builder.preview.desc') }}</p>
+        </template>
+      </UPopover>
       <UButton
         v-if="session && !schema"
         icon="i-lucide-maximize-2"
