@@ -1059,3 +1059,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | M2 done: spam protection without a captcha (invisible proof-of-work, hidden trap, submission limits) and the Embed code window on the Share card (auto / fixed height, resize script limited to the form address); embed pages can now be shown on other websites (frame headers, SameSite=None device cookie). |
 | 2026-10-04 | F10 | Owner test fixes: "Translate the form’s text" when the form language changes (template text, 20 languages, own text kept); "already filled in" rendered by the server from a receipt cookie (no flash); Form settings shows "Spam protection — always on". |
 | 2026-10-04 | F10 | Form language: choosing the language now translates the form text in the same step (no second button), toast with Undo. |
+| 2026-10-04 | F10 | Blank forms now start in the creator's app language (form language, first page name, thank-you text), like template forms. |

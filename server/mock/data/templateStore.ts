@@ -7,7 +7,7 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { TemplateCalculation, TemplateDetail, TemplateSummary } from '#shared/types/templates'
-import { allFields, starterSchema } from '#shared/utils/forms/build'
+import { allFields, blankSchema, starterSchema } from '#shared/utils/forms/build'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { STARTER_TEMPLATE_KEYS, type StarterTemplateKey } from '#shared/utils/templates/starters'
 import {
@@ -67,6 +67,22 @@ export function contentDict(code: string): Record<string, string> | null {
   return contents.get(code) ?? null
 }
 const langCode = (lang: string) => (/^[a-z]{2}(-[A-Z]{2})?$/.test(lang) ? lang : 'en')
+
+/**
+ * A blank form in the creator's language (owner, 2026-10-04): the form language, the first page's
+ * name and the thank-you text start in it, like forms made from a template.
+ */
+export function blankFormSchema(lang = 'en'): FormSchemaV1 {
+  const code = langCode(lang)
+  let page = 'Page 1'
+  try {
+    const messages = JSON.parse(readFileSync(join(process.cwd(), 'i18n', 'locales', `${code}.json`), 'utf8')) as { builder?: { page?: { default?: string } } }
+    page = messages.builder?.page?.default?.replace('{n}', '1') ?? page
+  } catch {
+    // Unknown language: English.
+  }
+  return localiseSchema(blankSchema(page), contentDict(code), code)
+}
 /** A system template's form in the person's language (English when there is no translation). */
 function systemSchema(tenant: MockTenant, def: TemplateDef, lang: string) {
   const code = langCode(lang)
