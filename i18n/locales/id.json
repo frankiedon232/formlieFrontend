@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "{n} tanggapan dihapus | {n} tanggapan dihapus",
-      "marked": "{n} tanggapan ditandai {status} | {n} tanggapan ditandai {status}"
+      "marked": "{n} tanggapan ditandai {status} | {n} tanggapan ditandai {status}",
+      "tagged": "Tag “{tag}” ditambahkan ke {n} respons | Tag “{tag}” ditambahkan ke {n} respons",
+      "untagged": "Tag “{tag}” dihapus dari {n} respons | Tag “{tag}” dihapus dari {n} respons"
     },
     "known": {
       "invite": "Diundang",
@@ -3416,6 +3418,14 @@
       "questions": "Pertanyaan",
       "tags": "Tag",
       "empty": "Dibiarkan kosong"
+    },
+    "bulkTags": {
+      "button": "Tag",
+      "label": "Tag",
+      "help": "Untuk {n} respons terpilih | Untuk {n} respons terpilih",
+      "inUse": "Tag yang dipakai",
+      "add": "Tambah ke {n} | Tambah ke {n}",
+      "remove": "Hapus"
     }
   }
 }

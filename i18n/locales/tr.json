@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "{n} yanıt silindi | {n} yanıt silindi",
-      "marked": "{n} yanıt {status} olarak işaretlendi | {n} yanıt {status} olarak işaretlendi"
+      "marked": "{n} yanıt {status} olarak işaretlendi | {n} yanıt {status} olarak işaretlendi",
+      "tagged": "“{tag}” etiketi {n} yanıta eklendi | “{tag}” etiketi {n} yanıta eklendi",
+      "untagged": "“{tag}” etiketi {n} yanıttan kaldırıldı | “{tag}” etiketi {n} yanıttan kaldırıldı"
     },
     "known": {
       "invite": "Davetli",
@@ -3416,6 +3418,14 @@
       "questions": "Sorular",
       "tags": "Etiketler",
       "empty": "Boş bırakılan"
+    },
+    "bulkTags": {
+      "button": "Etiketler",
+      "label": "Etiket",
+      "help": "Seçili {n} yanıt için | Seçili {n} yanıt için",
+      "inUse": "Kullanılan etiketler",
+      "add": "{n} yanıta ekle | {n} yanıta ekle",
+      "remove": "Kaldır"
     }
   }
 }

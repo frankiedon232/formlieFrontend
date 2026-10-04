@@ -3,11 +3,11 @@
   status, every question (the first four useful ones shown; move or show / hide any in Columns,
   remembered per form; ratings as slim bars like the design's progress column), notes. Filters: status, channel, possible duplicates, tags, and
   under "Questions" one per choice, yes / no or rating question plus "Left empty" (F11 M2); search covers
-  the answers too. A row (or card) opens the response; bulk: set status, delete (editors).
+  the answers too. A row (or card) opens the response; bulk: set status, add / remove a tag, delete (editors).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
-import { RESPONSE_STATUSES, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
+import { RESPONSE_STATUSES, type ResponseRow } from '#shared/types/responses'
 import { allFields, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
 import { ANSWER_FILTER_PREFIX, filterValues } from '#shared/utils/forms/answer-filter'
@@ -81,13 +81,19 @@ const toast = useToast()
 const confirm = useConfirm()
 const { handle } = useErrorHandler()
 const busyIds = ref(new Set<string>())
-async function bulk(ids: string[], action: 'status' | 'delete', value?: ResponseStatus) {
+async function bulk(ids: string[], action: 'status' | 'tag' | 'untag' | 'delete', value?: string) {
   if (action === 'delete' && !(await confirm({ title: t('responses.delete.title', { n: ids.length }, ids.length), description: t('responses.delete.desc'), danger: true }))) return
   busyIds.value = new Set([...busyIds.value, ...ids])
   try {
     const { data } = await api.post<{ done: number; skipped: number }>('/responses/bulk', { ids, action, value })
-    toast.add({ title: action === 'delete' ? t('responses.toast.deleted', { n: data.done }, data.done) : t('responses.toast.marked', { n: data.done, status: t(`status.${value}`) }, data.done), color: 'success', icon: 'i-lucide-circle-check' })
-    await view.value?.refresh()
+    const title =
+      action === 'delete'
+        ? t('responses.toast.deleted', { n: data.done }, data.done)
+        : action === 'status'
+          ? t('responses.toast.marked', { n: data.done, status: t(`status.${value}`) }, data.done)
+          : t(action === 'tag' ? 'responses.toast.tagged' : 'responses.toast.untagged', { n: data.done, tag: value }, data.done)
+    toast.add({ title, color: 'success', icon: 'i-lucide-circle-check' })
+    await Promise.all([view.value?.refresh(), action === 'tag' || action === 'untag' ? loadTags() : undefined])
     emit('changed')
   } catch (error) {
     handle(error)
@@ -171,6 +177,7 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
       <UDropdownMenu :items="statusItems(selected.map(row => row.id), clear)">
         <UButton :label="t('responses.list.markAs')" icon="i-lucide-circle-dot" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" />
       </UDropdownMenu>
+      <FormsResponsesBulkTags :count="selected.length" :tags="tags" :busy="selected.some(row => busyIds.has(row.id))" @apply="(action, tag) => bulk(selected.map(row => row.id), action, tag).then(clear)" />
       <UButton v-if="canEdit" :label="t('responses.list.delete')" icon="i-lucide-trash-2" color="error" variant="outline" size="sm" @click="bulk(selected.map(row => row.id), 'delete').then(clear)" />
     </template>
   </DataView>

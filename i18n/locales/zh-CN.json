@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "已删除 {n} 条回复 | 已删除 {n} 条回复",
-      "marked": "已将 {n} 条回复标记为{status} | 已将 {n} 条回复标记为{status}"
+      "marked": "已将 {n} 条回复标记为{status} | 已将 {n} 条回复标记为{status}",
+      "tagged": "已为 {n} 条回复添加标签“{tag}” | 已为 {n} 条回复添加标签“{tag}”",
+      "untagged": "已从 {n} 条回复移除标签“{tag}” | 已从 {n} 条回复移除标签“{tag}”"
     },
     "known": {
       "invite": "受邀",
@@ -3416,6 +3418,14 @@
       "questions": "问题",
       "tags": "标签",
       "empty": "未作答"
+    },
+    "bulkTags": {
+      "button": "标签",
+      "label": "标签",
+      "help": "用于所选的 {n} 条回复 | 用于所选的 {n} 条回复",
+      "inUse": "已用标签",
+      "add": "添加到 {n} 条 | 添加到 {n} 条",
+      "remove": "移除"
     }
   }
 }

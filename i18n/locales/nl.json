@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "{n} antwoord verwijderd | {n} antwoorden verwijderd",
-      "marked": "{n} antwoord gemarkeerd als {status} | {n} antwoorden gemarkeerd als {status}"
+      "marked": "{n} antwoord gemarkeerd als {status} | {n} antwoorden gemarkeerd als {status}",
+      "tagged": "Tag ‘{tag}’ toegevoegd aan {n} reactie | Tag ‘{tag}’ toegevoegd aan {n} reacties",
+      "untagged": "Tag ‘{tag}’ verwijderd van {n} reactie | Tag ‘{tag}’ verwijderd van {n} reacties"
     },
     "known": {
       "invite": "Uitgenodigd",
@@ -3416,6 +3418,14 @@
       "questions": "Vragen",
       "tags": "Tags",
       "empty": "Leeg gelaten"
+    },
+    "bulkTags": {
+      "button": "Tags",
+      "label": "Tag",
+      "help": "Voor de {n} geselecteerde reactie | Voor de {n} geselecteerde reacties",
+      "inUse": "Gebruikte tags",
+      "add": "Toevoegen aan {n} | Toevoegen aan {n}",
+      "remove": "Verwijderen"
     }
   }
 }

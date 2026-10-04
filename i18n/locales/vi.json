@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "Đã xóa {n} phản hồi | Đã xóa {n} phản hồi",
-      "marked": "Đã đánh dấu {n} phản hồi là {status} | Đã đánh dấu {n} phản hồi là {status}"
+      "marked": "Đã đánh dấu {n} phản hồi là {status} | Đã đánh dấu {n} phản hồi là {status}",
+      "tagged": "Đã thêm thẻ “{tag}” vào {n} phản hồi | Đã thêm thẻ “{tag}” vào {n} phản hồi",
+      "untagged": "Đã gỡ thẻ “{tag}” khỏi {n} phản hồi | Đã gỡ thẻ “{tag}” khỏi {n} phản hồi"
     },
     "known": {
       "invite": "Được mời",
@@ -3416,6 +3418,14 @@
       "questions": "Câu hỏi",
       "tags": "Thẻ",
       "empty": "Để trống"
+    },
+    "bulkTags": {
+      "button": "Thẻ",
+      "label": "Thẻ",
+      "help": "Cho {n} phản hồi đã chọn | Cho {n} phản hồi đã chọn",
+      "inUse": "Thẻ đang dùng",
+      "add": "Thêm vào {n} | Thêm vào {n}",
+      "remove": "Gỡ"
     }
   }
 }

@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "{n} risposta eliminata | {n} risposte eliminate",
-      "marked": "{n} risposta segnata come {status} | {n} risposte segnate come {status}"
+      "marked": "{n} risposta segnata come {status} | {n} risposte segnate come {status}",
+      "tagged": "Tag “{tag}” aggiunto a {n} risposta | Tag “{tag}” aggiunto a {n} risposte",
+      "untagged": "Tag “{tag}” rimosso da {n} risposta | Tag “{tag}” rimosso da {n} risposte"
     },
     "known": {
       "invite": "Invitato",
@@ -3416,6 +3418,14 @@
       "questions": "Domande",
       "tags": "Tag",
       "empty": "Lasciata vuota"
+    },
+    "bulkTags": {
+      "button": "Tag",
+      "label": "Tag",
+      "help": "Per la {n} risposta selezionata | Per le {n} risposte selezionate",
+      "inUse": "Tag in uso",
+      "add": "Aggiungi a {n} | Aggiungi a {n}",
+      "remove": "Rimuovi"
     }
   }
 }

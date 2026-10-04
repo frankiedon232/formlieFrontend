@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "Usunięto odpowiedzi: {n} | Usunięto odpowiedzi: {n}",
-      "marked": "Oznaczono jako {status}: {n} | Oznaczono jako {status}: {n}"
+      "marked": "Oznaczono jako {status}: {n} | Oznaczono jako {status}: {n}",
+      "tagged": "Dodano tag „{tag}”, odpowiedzi: {n} | Dodano tag „{tag}”, odpowiedzi: {n}",
+      "untagged": "Usunięto tag „{tag}”, odpowiedzi: {n} | Usunięto tag „{tag}”, odpowiedzi: {n}"
     },
     "known": {
       "invite": "Zaproszony",
@@ -3416,6 +3418,14 @@
       "questions": "Pytania",
       "tags": "Tagi",
       "empty": "Bez odpowiedzi"
+    },
+    "bulkTags": {
+      "button": "Tagi",
+      "label": "Tag",
+      "help": "Zaznaczone odpowiedzi: {n} | Zaznaczone odpowiedzi: {n}",
+      "inUse": "Używane tagi",
+      "add": "Dodaj do zaznaczonych ({n}) | Dodaj do zaznaczonych ({n})",
+      "remove": "Usuń"
     }
   }
 }

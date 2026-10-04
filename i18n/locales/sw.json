@@ -3279,7 +3279,9 @@
     },
     "toast": {
       "deleted": "Jibu {n} limefutwa | Majibu {n} yamefutwa",
-      "marked": "Jibu {n} limewekwa {status} | Majibu {n} yamewekwa {status}"
+      "marked": "Jibu {n} limewekwa {status} | Majibu {n} yamewekwa {status}",
+      "tagged": "Lebo “{tag}” imeongezwa kwa jibu {n} | Lebo “{tag}” imeongezwa kwa majibu {n}",
+      "untagged": "Lebo “{tag}” imeondolewa kwenye jibu {n} | Lebo “{tag}” imeondolewa kwenye majibu {n}"
     },
     "known": {
       "invite": "Alialikwa",
@@ -3416,6 +3418,14 @@
       "questions": "Maswali",
       "tags": "Lebo",
       "empty": "Imeachwa wazi"
+    },
+    "bulkTags": {
+      "button": "Lebo",
+      "label": "Lebo",
+      "help": "Kwa jibu {n} lililochaguliwa | Kwa majibu {n} yaliyochaguliwa",
+      "inUse": "Lebo zinazotumika",
+      "add": "Ongeza kwa {n} | Ongeza kwa {n}",
+      "remove": "Ondoa"
     }
   }
 }
