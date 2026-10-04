@@ -3011,9 +3011,8 @@
       "counts": "{responded} dari {total} telah merespons",
       "saveFirst": "Simpan “Hanya orang yang diundang” agar undangan berlaku — sampai saat itu formulir tetap terbuka seperti sebelumnya.",
       "add": "Undang orang",
-      "addHint": "Satu per baris atau pisahkan dengan koma. Tambahkan nama seperti ini: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Bukan alamat email: {list}",
+      "addHint": "Hanya alamat email. Pisahkan dengan koma, spasi, atau baris baru — atau tempel daftar.",
+      "placeholder": "nama{'@'}example.org",
       "button": "Undang {n} orang | Undang {n} orang",
       "buttonEmpty": "Undang",
       "sent": "{n} undangan terkirim | {n} undangan terkirim",
@@ -3036,7 +3035,10 @@
         "opened": "dibuka {when}",
         "responded": "merespons {when}",
         "revoked": "diundang {when}"
-      }
+      },
+      "notEmail": "Bukan alamat email yang valid",
+      "removeEmail": "Hapus {email}",
+      "fixRed": "Perbaiki atau hapus email yang ditandai merah | Perbaiki atau hapus {n} email yang ditandai merah"
     }
   }
 }

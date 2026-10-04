@@ -3011,9 +3011,8 @@
       "counts": "{responded} van {total} gereageerd",
       "saveFirst": "Sla ‘Alleen uitgenodigde personen’ op om de uitnodigingen te laten werken — tot dan blijft het formulier open zoals voorheen.",
       "add": "Personen uitnodigen",
-      "addHint": "Eén per regel of gescheiden door komma’s. Voeg zo een naam toe: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Geen e-mailadres: {list}",
+      "addHint": "Alleen e-mailadressen. Scheid ze met een komma, spatie of nieuwe regel — of plak een lijst.",
+      "placeholder": "naam{'@'}example.org",
       "button": "{n} persoon uitnodigen | {n} personen uitnodigen",
       "buttonEmpty": "Uitnodigen",
       "sent": "{n} uitnodiging verzonden | {n} uitnodigingen verzonden",
@@ -3036,7 +3035,10 @@
         "opened": "geopend {when}",
         "responded": "gereageerd {when}",
         "revoked": "uitgenodigd {when}"
-      }
+      },
+      "notEmail": "Geen geldig e-mailadres",
+      "removeEmail": "{email} verwijderen",
+      "fixRed": "Verbeter of verwijder het rood gemarkeerde e-mailadres | Verbeter of verwijder de {n} rood gemarkeerde e-mailadressen"
     }
   }
 }

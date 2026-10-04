@@ -3011,9 +3011,8 @@
       "counts": "{total} kişiden {responded} kişi yanıtladı",
       "saveFirst": "Davetlerin geçerli olması için “Yalnızca davet edilen kişiler” seçeneğini kaydedin — o zamana kadar form eskisi gibi açık kalır.",
       "add": "Kişileri davet et",
-      "addHint": "Her satıra bir tane veya virgülle ayırarak. Adı şöyle ekleyin: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "E-posta adresi değil: {list}",
+      "addHint": "Yalnızca e-posta adresleri. Virgül, boşluk veya yeni satırla ayırın — ya da bir liste yapıştırın.",
+      "placeholder": "ad{'@'}example.org",
       "button": "{n} kişiyi davet et | {n} kişiyi davet et",
       "buttonEmpty": "Davet et",
       "sent": "{n} davet gönderildi | {n} davet gönderildi",
@@ -3036,7 +3035,10 @@
         "opened": "açıldı {when}",
         "responded": "yanıtladı {when}",
         "revoked": "davet edildi {when}"
-      }
+      },
+      "notEmail": "Geçerli bir e-posta adresi değil",
+      "removeEmail": "{email} kaldır",
+      "fixRed": "Kırmızıyla işaretli e-postayı düzeltin veya kaldırın | Kırmızıyla işaretli {n} e-postayı düzeltin veya kaldırın"
     }
   }
 }

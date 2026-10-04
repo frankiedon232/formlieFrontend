@@ -3011,9 +3011,8 @@
       "counts": "Odpowiedzi: {responded} z {total}",
       "saveFirst": "Zapisz „Tylko zaproszone osoby”, aby zaproszenia zaczęły działać — do tego czasu formularz pozostaje otwarty jak dotąd.",
       "add": "Zaproś osoby",
-      "addHint": "Jedna na wiersz lub oddzielone przecinkami. Dodaj imię w ten sposób: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "To nie jest adres e-mail: {list}",
+      "addHint": "Tylko adresy e-mail. Oddziel je przecinkiem, spacją lub nową linią — albo wklej listę.",
+      "placeholder": "imie{'@'}example.org",
       "button": "Zaproś {n} osobę | Zaproś osoby ({n})",
       "buttonEmpty": "Zaproś",
       "sent": "Wysłano {n} zaproszenie | Wysłano zaproszenia: {n}",
@@ -3036,7 +3035,10 @@
         "opened": "otwarto {when}",
         "responded": "odpowiedziano {when}",
         "revoked": "zaproszono {when}"
-      }
+      },
+      "notEmail": "To nie jest poprawny adres e-mail",
+      "removeEmail": "Usuń {email}",
+      "fixRed": "Popraw lub usuń adres zaznaczony na czerwono | Popraw lub usuń adresy zaznaczone na czerwono ({n})"
     }
   }
 }

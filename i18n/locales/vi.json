@@ -3011,9 +3011,8 @@
       "counts": "{responded}/{total} đã trả lời",
       "saveFirst": "Lưu “Chỉ người được mời” để lời mời có hiệu lực — cho đến lúc đó biểu mẫu vẫn mở như trước.",
       "add": "Mời mọi người",
-      "addHint": "Mỗi dòng một địa chỉ hoặc phân tách bằng dấu phẩy. Thêm tên như sau: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Không phải địa chỉ email: {list}",
+      "addHint": "Chỉ địa chỉ email. Phân cách bằng dấu phẩy, dấu cách hoặc xuống dòng — hoặc dán một danh sách.",
+      "placeholder": "ten{'@'}example.org",
       "button": "Mời {n} người | Mời {n} người",
       "buttonEmpty": "Mời",
       "sent": "Đã gửi {n} lời mời | Đã gửi {n} lời mời",
@@ -3036,7 +3035,10 @@
         "opened": "đã mở {when}",
         "responded": "đã trả lời {when}",
         "revoked": "đã mời {when}"
-      }
+      },
+      "notEmail": "Không phải địa chỉ email hợp lệ",
+      "removeEmail": "Xóa {email}",
+      "fixRed": "Hãy sửa hoặc xóa email được đánh dấu đỏ | Hãy sửa hoặc xóa {n} email được đánh dấu đỏ"
     }
   }
 }

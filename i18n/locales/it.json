@@ -3011,9 +3011,8 @@
       "counts": "{responded} su {total} hanno risposto",
       "saveFirst": "Salvi «Solo persone invitate» perché gli inviti abbiano effetto — fino ad allora il modulo resta aperto come prima.",
       "add": "Invita persone",
-      "addHint": "Una per riga o separate da virgole. Aggiunga un nome così: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Non è un indirizzo email: {list}",
+      "addHint": "Solo indirizzi email. Separali con una virgola, uno spazio o un a capo, oppure incolla un elenco.",
+      "placeholder": "nome{'@'}example.org",
       "button": "Invita {n} persona | Invita {n} persone",
       "buttonEmpty": "Invita",
       "sent": "{n} invito inviato | {n} inviti inviati",
@@ -3036,7 +3035,10 @@
         "opened": "aperto {when}",
         "responded": "ha risposto {when}",
         "revoked": "invitato {when}"
-      }
+      },
+      "notEmail": "Indirizzo email non valido",
+      "removeEmail": "Rimuovi {email}",
+      "fixRed": "Correggi o rimuovi l’email in rosso | Correggi o rimuovi le {n} email in rosso"
     }
   }
 }

@@ -3011,9 +3011,8 @@
       "counts": "{responded} of {total} responded",
       "saveFirst": "Save “Only invited people” for invitations to take effect — until then the form stays open as before.",
       "add": "Invite people",
-      "addHint": "One per line or separated by commas. Add a name like this: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Not an email address: {list}",
+      "addHint": "Email addresses only. Separate them with a comma, a space or a new line — or paste a list.",
+      "placeholder": "name{'@'}example.org",
       "button": "Invite {n} person | Invite {n} people",
       "buttonEmpty": "Invite",
       "sent": "{n} invitation sent | {n} invitations sent",
@@ -3036,7 +3035,10 @@
         "opened": "opened {when}",
         "responded": "responded {when}",
         "revoked": "invited {when}"
-      }
+      },
+      "notEmail": "Not a valid email address",
+      "removeEmail": "Remove {email}",
+      "fixRed": "Fix or remove the email marked in red | Fix or remove the {n} emails marked in red"
     }
   }
 }

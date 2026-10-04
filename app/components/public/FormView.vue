@@ -224,7 +224,7 @@ const message = computed(() => {
           <h1 class="text-lg font-semibold text-highlighted">{{ message?.title }}</h1>
           <p class="text-sm text-muted">{{ message?.description }}</p>
           <p v-if="form && view !== 'not_found'" class="text-xs text-dimmed">{{ form.name }} · {{ form.workspace.name }}</p>
-          <PublicAccess v-if="view === 'locked' && form" :form="form" :form-key="formKey" :failed="accessFailed" class="w-full" @unlocked="onUnlocked" />
+          <PublicAccess v-if="view === 'locked' && form" :form="form" :form-key="formKey" :failed="accessFailed" :embed="embed" class="w-full" @unlocked="onUnlocked" />
           <UButton v-if="view === 'error'" :label="t('common.retry')" icon="i-lucide-rotate-cw" color="neutral" variant="outline" @click="reloadNuxtApp()" />
         </div>
       </UCard>

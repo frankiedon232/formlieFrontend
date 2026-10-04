@@ -3011,9 +3011,8 @@
       "counts": "{responded} de {total} han respondido",
       "saveFirst": "Guarde «Solo personas invitadas» para que las invitaciones surtan efecto; hasta entonces, el formulario sigue abierto como antes.",
       "add": "Invitar personas",
-      "addHint": "Una por línea o separadas por comas. Añada un nombre así: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "No es una dirección de correo: {list}",
+      "addHint": "Solo direcciones de correo. Sepárelas con una coma, un espacio o un salto de línea, o pegue una lista.",
+      "placeholder": "nombre{'@'}example.org",
       "button": "Invitar a {n} persona | Invitar a {n} personas",
       "buttonEmpty": "Invitar",
       "sent": "{n} invitación enviada | {n} invitaciones enviadas",
@@ -3036,7 +3035,10 @@
         "opened": "abierto {when}",
         "responded": "respondido {when}",
         "revoked": "invitado {when}"
-      }
+      },
+      "notEmail": "No es un correo electrónico válido",
+      "removeEmail": "Quitar {email}",
+      "fixRed": "Corrija o quite el correo marcado en rojo | Corrija o quite los {n} correos marcados en rojo"
     }
   }
 }

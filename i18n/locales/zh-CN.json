@@ -3011,9 +3011,8 @@
       "counts": "{total} 人中已有 {responded} 人回复",
       "saveFirst": "请保存“仅限受邀人员”以使邀请生效——在此之前，表单仍像以前一样开放。",
       "add": "邀请人员",
-      "addHint": "每行一个，或用逗号分隔。添加姓名的格式：Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "不是邮箱地址：{list}",
+      "addHint": "仅限电子邮件地址。用逗号、空格或换行分隔，或粘贴一个列表。",
+      "placeholder": "name{'@'}example.org",
       "button": "邀请 {n} 人 | 邀请 {n} 人",
       "buttonEmpty": "邀请",
       "sent": "已发送 {n} 份邀请 | 已发送 {n} 份邀请",
@@ -3036,7 +3035,10 @@
         "opened": "{when}打开",
         "responded": "{when}回复",
         "revoked": "{when}邀请"
-      }
+      },
+      "notEmail": "不是有效的电子邮件地址",
+      "removeEmail": "移除 {email}",
+      "fixRed": "请修改或移除标红的邮箱 | 请修改或移除 {n} 个标红的邮箱"
     }
   }
 }

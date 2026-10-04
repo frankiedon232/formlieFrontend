@@ -3011,9 +3011,8 @@
       "counts": "{responded} de {total} responderam",
       "saveFirst": "Guarde «Apenas pessoas convidadas» para que os convites entrem em vigor — até lá, o formulário continua aberto como antes.",
       "add": "Convidar pessoas",
-      "addHint": "Um por linha ou separados por vírgulas. Adicione um nome assim: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Não é um endereço de e-mail: {list}",
+      "addHint": "Apenas endereços de e-mail. Separe-os com vírgula, espaço ou nova linha — ou cole uma lista.",
+      "placeholder": "nome{'@'}example.org",
       "button": "Convidar {n} pessoa | Convidar {n} pessoas",
       "buttonEmpty": "Convidar",
       "sent": "{n} convite enviado | {n} convites enviados",
@@ -3036,7 +3035,10 @@
         "opened": "aberto {when}",
         "responded": "respondeu {when}",
         "revoked": "convidado {when}"
-      }
+      },
+      "notEmail": "Não é um endereço de e-mail válido",
+      "removeEmail": "Remover {email}",
+      "fixRed": "Corrija ou remova o e-mail a vermelho | Corrija ou remova os {n} e-mails a vermelho"
     }
   }
 }

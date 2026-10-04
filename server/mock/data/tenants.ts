@@ -122,6 +122,18 @@ export const MOCK_USERS: MockUser[] = [
     disabled: true,
     role: 'member',
   },
+  {
+    // Staff member for testing organisation-only forms (F10 M3).
+    id: 'a1b2c3d4-0005-4000-8000-000000000005',
+    tenant_id: MOCK_TENANTS[0]!.id,
+    first_name: 'Lena',
+    last_name: 'Novak',
+    email: 'staff@remedylegal.test',
+    password: MOCK_PASSWORD,
+    phone: null,
+    disabled: false,
+    role: 'member',
+  },
 ]
 
 // ── Workspaces created by signup survive dev reloads (../core/persist.ts) ─────────────

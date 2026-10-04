@@ -3011,9 +3011,8 @@
       "counts": "{responded} von {total} haben geantwortet",
       "saveFirst": "Speichern Sie „Nur eingeladene Personen“, damit die Einladungen wirksam werden — bis dahin bleibt das Formular wie bisher offen.",
       "add": "Personen einladen",
-      "addHint": "Eine pro Zeile oder durch Kommas getrennt. Einen Namen so hinzufügen: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Keine E-Mail-Adresse: {list}",
+      "addHint": "Nur E-Mail-Adressen. Trennen Sie sie mit Komma, Leerzeichen oder neuer Zeile – oder fügen Sie eine Liste ein.",
+      "placeholder": "name{'@'}example.org",
       "button": "{n} Person einladen | {n} Personen einladen",
       "buttonEmpty": "Einladen",
       "sent": "{n} Einladung gesendet | {n} Einladungen gesendet",
@@ -3036,7 +3035,10 @@
         "opened": "geöffnet {when}",
         "responded": "geantwortet {when}",
         "revoked": "eingeladen {when}"
-      }
+      },
+      "notEmail": "Keine gültige E-Mail-Adresse",
+      "removeEmail": "{email} entfernen",
+      "fixRed": "Korrigieren oder entfernen Sie die rot markierte E-Mail | Korrigieren oder entfernen Sie die {n} rot markierten E-Mails"
     }
   }
 }

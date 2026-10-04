@@ -89,6 +89,12 @@ export interface FormInvitation {
   responded_at: string | null
 }
 
+/** An email typed into the invitations field (portal only). */
+export interface EmailChip {
+  value: string
+  valid: boolean
+}
+
 /** The Share tab's unsaved changes (portal only). */
 export interface ShareDraft {
   access: FormAccess

@@ -3011,9 +3011,8 @@
       "counts": "{responded} kati ya {total} wamejibu",
       "saveFirst": "Hifadhi “Walioalikwa pekee” ili mialiko ianze kufanya kazi — hadi hapo fomu inabaki wazi kama awali.",
       "add": "Alika watu",
-      "addHint": "Moja kwa kila mstari au tenganisha kwa koma. Ongeza jina hivi: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Si anwani ya barua pepe: {list}",
+      "addHint": "Anwani za barua pepe pekee. Zitenganishe kwa koma, nafasi au mstari mpya — au bandika orodha.",
+      "placeholder": "jina{'@'}example.org",
       "button": "Alika mtu {n} | Alika watu {n}",
       "buttonEmpty": "Alika",
       "sent": "Mwaliko {n} umetumwa | Mialiko {n} imetumwa",
@@ -3036,7 +3035,10 @@
         "opened": "alifungua {when}",
         "responded": "alijibu {when}",
         "revoked": "alialikwa {when}"
-      }
+      },
+      "notEmail": "Si anwani sahihi ya barua pepe",
+      "removeEmail": "Ondoa {email}",
+      "fixRed": "Rekebisha au ondoa barua pepe iliyowekwa alama nyekundu | Rekebisha au ondoa barua pepe {n} zilizowekwa alama nyekundu"
     }
   }
 }

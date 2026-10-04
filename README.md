@@ -30,6 +30,7 @@ The mock API (`NUXT_PUBLIC_API_MOCK=true`) is seeded in [server/mock/data/tenant
 | ------------ | --------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
 | Remedy Legal | Frankie Don — workspace owner           | `admin@remedylegal.test`           | Normal sign-in; code by email or SMS; sees the **Audit trail**                     |
 | Remedy Legal | Marcus Reid — account disabled by admin | `marcus.reid@remedylegal.test`     | Correct password, but "Account disabled. Contact your administrator."              |
+| Remedy Legal | Lena Novak — staff member               | `staff@remedylegal.test`           | **Form test:** opening a form set to "Only my organisation" (Share tab) — see below |
 | Samath Tax   | Elena Rossi — workspace owner           | `admin@samathtax.test`             | Sign-in with Google, Apple and Facebook buttons shown                              |
 | Both         | James Carter — external consultant      | `james.carter@carterpartners.test` | Member of both workspaces; **Find my workspace** lists both; no audit trail access |
 | Old Co       | —                                       | —                                  | Suspended workspace page (`https://oldco.formalie.dev:2202/`, needs a hosts entry) |
@@ -41,6 +42,8 @@ The mock API (`NUXT_PUBLIC_API_MOCK=true`) is seeded in [server/mock/data/tenant
 | `https://remedylegal.formalie.dev:2202/` | Remedy Legal sign-in                            |
 | `https://samathtax.formalie.dev:2202/`   | Samath Tax sign-in                              |
 | `https://manage.formalie.dev:2202/`      | Find my workspace · Create a workspace (signup) |
+
+**Form test — "Only my organisation" (F10):** as the owner, open a published form → **Share** → *Who can open the form* → **Only my organisation** → Save. Open the form's link in a private window: it says "Only for members of Remedy Legal" → **Sign in to Remedy Legal** → sign in as `staff@remedylegal.test` → you come back to the form with "Filling in as Lena Novak (staff@remedylegal.test)". Each member can respond once. Someone without a Remedy Legal account (e.g. `admin@samathtax.test`) can't sign in there, so never reaches the form. Put the form back to *Anyone with the link* afterwards.
 
 **One-time code:** after the password, the code screen shows the mock's code in dev ("Development code: 123456"). It is also printed in the dev-server console as `[mock-otp]`. Five wrong codes lock the attempt.
 

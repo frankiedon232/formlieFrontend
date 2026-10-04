@@ -7,7 +7,7 @@
 import type { PublicForm } from '#shared/types/public'
 import { portalLink, publicHosts } from '#shared/utils/urls/public'
 
-const props = defineProps<{ form: PublicForm; formKey: string; failed: 'invite' | 'pass' | null }>()
+const props = defineProps<{ form: PublicForm; formKey: string; failed: 'invite' | 'pass' | null; embed?: boolean }>()
 defineEmits<{ unlocked: [] }>()
 const { t } = useI18n()
 const config = useRuntimeConfig().public
@@ -29,6 +29,7 @@ const signIn = computed(() =>
   </div>
   <div v-else-if="form.lock === 'organisation'" class="mt-1 flex w-full flex-col gap-2">
     <UAlert v-if="failed === 'pass'" icon="i-lucide-clock-alert" color="warning" variant="subtle" :title="t('errors.FRM-FORM-1019')" />
-    <UButton :to="signIn" external :label="t('public.member.signIn', { org: form.workspace.name })" icon="i-lucide-log-in" color="neutral" block />
+    <!-- In an embed the portal can't open inside the website's frame: sign in in a new tab. -->
+    <UButton :to="signIn" external :target="embed ? '_blank' : undefined" :label="t('public.member.signIn', { org: form.workspace.name })" icon="i-lucide-log-in" color="neutral" block />
   </div>
 </template>

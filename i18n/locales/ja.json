@@ -3011,9 +3011,8 @@
       "counts": "{total} 人中 {responded} 人が回答済み",
       "saveFirst": "招待を有効にするには「招待した人のみ」を保存してください。それまでフォームは従来どおり公開されたままです。",
       "add": "ユーザーを招待",
-      "addHint": "1行に1件、またはカンマ区切りで入力します。名前は次のように追加できます: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "メールアドレスではありません: {list}",
+      "addHint": "メールアドレスのみ。カンマ、スペース、改行で区切るか、リストを貼り付けてください。",
+      "placeholder": "name{'@'}example.org",
       "button": "{n} 人を招待 | {n} 人を招待",
       "buttonEmpty": "招待",
       "sent": "{n} 件の招待を送信しました | {n} 件の招待を送信しました",
@@ -3036,7 +3035,10 @@
         "opened": "{when}に開封",
         "responded": "{when}に回答",
         "revoked": "{when}に招待"
-      }
+      },
+      "notEmail": "有効なメールアドレスではありません",
+      "removeEmail": "{email} を削除",
+      "fixRed": "赤で表示されたメールを修正または削除してください | 赤で表示された {n} 件のメールを修正または削除してください"
     }
   }
 }

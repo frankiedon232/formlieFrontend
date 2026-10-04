@@ -1,12 +1,13 @@
 <!--
-  Share → Invite-only → the invitations (F10 M3, decision 96). Paste emails (one per line, or
-  separated by commas; "Name <email>" works too) → each person gets a personal link (emailed by the
+  Share → Invite-only → the invitations (F10 M3, decision 96). Type or paste emails only (owner):
+  each becomes a chip on comma, space, semicolon or Enter; invalid ones are red and block sending
+  (FormsShareEmailChips) → each person gets a personal link (emailed by the
   backend; in development the links are shown to copy). Each person can respond once; their status
   shows Invited · Opened · Responded. Resend gives a new link (the old one stops working); Revoke
   stops it. Changes apply at once (separate from the page's Save).
 -->
 <script setup lang="ts">
-import type { FormInvitation } from '#shared/types/forms'
+import type { EmailChip, FormInvitation } from '#shared/types/forms'
 
 const props = defineProps<{ formId: string; saved: boolean }>()
 const { t } = useI18n()
@@ -31,32 +32,22 @@ async function load() {
 }
 onMounted(load)
 
-// Typing: "Ada Obi <ada@example.org>", "ada@example.org", one per line or comma-separated.
-const text = ref('')
-const EMAIL = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/
-const parsed = computed(() => {
-  const people: { email: string; name?: string }[] = []
-  const wrong: string[] = []
-  for (const part of text.value.split(/[\n,;]+/).map(item => item.trim()).filter(Boolean)) {
-    const match = /^(.*?)\s*<([^>]+)>$/.exec(part)
-    const email = (match ? match[2]! : part).trim().toLowerCase()
-    if (!EMAIL.test(email)) wrong.push(part)
-    else if (!people.some(person => person.email === email)) people.push({ email, ...(match?.[1] ? { name: match[1].replace(/^["']|["']$/g, '').trim() } : {}) })
-  }
-  return { people, wrong }
-})
+// Emails only (owner): each address is a chip; invalid ones are red and block sending.
+const chips = ref<EmailChip[]>([])
+const valid = computed(() => chips.value.filter(chip => chip.valid).map(chip => chip.value))
+const invalidCount = computed(() => chips.value.filter(chip => !chip.valid).length)
 
 /** Personal links just created / resent (development: the backend emails them in production). */
 const links = ref<{ email: string; url: string }[]>([])
 const { busy, run } = useBusy()
 async function invite() {
-  if (!parsed.value.people.length) return
+  if (!valid.value.length || invalidCount.value) return
   await run(async () => {
     try {
-      const reply = await api.post<{ invitations: FormInvitation[]; created: number; skipped: string[] }>(`/forms/${props.formId}/invites`, { people: parsed.value.people })
+      const reply = await api.post<{ invitations: FormInvitation[]; created: number; skipped: string[] }>(`/forms/${props.formId}/invites`, { people: valid.value.map(email => ({ email })) })
       invitations.value = reply.data.invitations
       links.value = (reply.meta?.dev_links as typeof links.value | undefined) ?? []
-      text.value = ''
+      chips.value = []
       toast.add({
         title: t('share.invite.sent', { n: reply.data.created }, reply.data.created),
         description: reply.data.skipped.length ? t('share.invite.skipped', { n: reply.data.skipped.length }, reply.data.skipped.length) : undefined,
@@ -119,17 +110,17 @@ const counts = computed(() => ({
     </div>
     <UAlert v-if="!saved" icon="i-lucide-info" color="neutral" variant="subtle" :title="t('share.invite.saveFirst')" />
 
-    <UFormField :label="t('share.invite.add')" :description="t('share.invite.addHint')" :error="parsed.wrong.length ? t('share.invite.wrong', { list: parsed.wrong.slice(0, 3).join(', ') }) : undefined">
-      <UTextarea v-model="text" :rows="3" autoresize :placeholder="t('share.invite.placeholder')" class="w-full" />
+    <UFormField :label="t('share.invite.add')" :description="t('share.invite.addHint')" :error="invalidCount ? t('share.invite.fixRed', { n: invalidCount }, invalidCount) : undefined">
+      <FormsShareEmailChips v-model="chips" :placeholder="t('share.invite.placeholder')" :disabled="busy" />
     </UFormField>
     <div class="flex justify-end">
       <UButton
-        :label="parsed.people.length ? t('share.invite.button', { n: parsed.people.length }, parsed.people.length) : t('share.invite.buttonEmpty')"
+        :label="valid.length ? t('share.invite.button', { n: valid.length }, valid.length) : t('share.invite.buttonEmpty')"
         icon="i-lucide-send"
         color="neutral"
         size="sm"
         :loading="busy"
-        :disabled="!parsed.people.length"
+        :disabled="!valid.length || invalidCount > 0"
         @click="invite"
       />
     </div>

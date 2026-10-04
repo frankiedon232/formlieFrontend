@@ -3011,9 +3011,8 @@
       "counts": "{responded} sur {total} ont répondu",
       "saveFirst": "Enregistrez « Personnes invitées uniquement » pour que les invitations prennent effet — d’ici là, le formulaire reste ouvert comme avant.",
       "add": "Inviter des personnes",
-      "addHint": "Une par ligne ou séparées par des virgules. Ajoutez un nom ainsi : Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "Adresse e-mail non valide : {list}",
+      "addHint": "Adresses e-mail uniquement. Séparez-les par une virgule, un espace ou un retour à la ligne — ou collez une liste.",
+      "placeholder": "nom{'@'}example.org",
       "button": "Inviter {n} personne | Inviter {n} personnes",
       "buttonEmpty": "Inviter",
       "sent": "{n} invitation envoyée | {n} invitations envoyées",
@@ -3036,7 +3035,10 @@
         "opened": "ouvert {when}",
         "responded": "a répondu {when}",
         "revoked": "invité {when}"
-      }
+      },
+      "notEmail": "Adresse e-mail non valide",
+      "removeEmail": "Retirer {email}",
+      "fixRed": "Corrigez ou retirez l’adresse en rouge | Corrigez ou retirez les {n} adresses en rouge"
     }
   }
 }

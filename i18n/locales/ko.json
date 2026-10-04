@@ -3011,9 +3011,8 @@
       "counts": "{total}명 중 {responded}명 응답",
       "saveFirst": "초대를 적용하려면 ‘초대된 사람만’을 저장하세요. 그전까지 양식은 이전처럼 공개 상태로 유지됩니다.",
       "add": "사람 초대",
-      "addHint": "한 줄에 하나씩 또는 쉼표로 구분하세요. 이름은 다음과 같이 추가합니다: Ada Obi <ada{'@'}example.org>",
-      "placeholder": "ada{'@'}example.org\nKai Tan <kai{'@'}example.org>",
-      "wrong": "이메일 주소가 아닙니다: {list}",
+      "addHint": "이메일 주소만 입력하세요. 쉼표, 공백 또는 줄바꿈으로 구분하거나 목록을 붙여 넣으세요.",
+      "placeholder": "name{'@'}example.org",
       "button": "{n}명 초대 | {n}명 초대",
       "buttonEmpty": "초대",
       "sent": "초대 {n}건을 보냈습니다 | 초대 {n}건을 보냈습니다",
@@ -3036,7 +3035,10 @@
         "opened": "{when} 열람함",
         "responded": "{when} 응답함",
         "revoked": "{when} 초대됨"
-      }
+      },
+      "notEmail": "올바른 이메일 주소가 아닙니다",
+      "removeEmail": "{email} 삭제",
+      "fixRed": "빨간색으로 표시된 이메일을 수정하거나 삭제하세요 | 빨간색으로 표시된 이메일 {n}개를 수정하거나 삭제하세요"
     }
   }
 }
