@@ -298,7 +298,9 @@
       "code": "Codice",
       "copy": "Copia codice",
       "copied": "Codice copiato",
-      "where": "Incollalo come HTML (nella maggior parte dei site builder: un blocco “Incorpora” o “HTML personalizzato”)."
+      "where": "Incollalo come HTML (nella maggior parte dei site builder: un blocco “Incorpora” o “HTML personalizzato”).",
+      "preview": "Anteprima",
+      "previewNote": "Questo è il modulo reale, come apparirà su un sito web. Le risposte inviate qui sono risposte reali."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Rimuovere il link breve?",
       "removeDesc": "Smette subito di funzionare: poster, messaggi e codici QR che lo usano non porteranno più al modulo.",
       "removed": "Link breve rimosso"
+    },
+    "embed": {
+      "title": "Incorpora nei siti web",
+      "desc": "Quali siti web possono mostrare questo modulo nelle loro pagine.",
+      "any": "Qualsiasi sito web",
+      "anyDesc": "Chiunque abbia il codice di incorporamento può inserire il modulo nel proprio sito.",
+      "listed": "Solo i siti web indicati",
+      "listedDesc": "Gli altri siti web non possono mostrare il modulo: il browser lo rifiuta.",
+      "sites": "Siti web consentiti",
+      "sitesHint": "Digiti o incolli gli indirizzi, poi prema Invio. *.example.com include i suoi sottositi. Fino a {n}.",
+      "placeholder": "example.com",
+      "invalid": "«{site}» non è un indirizzo di sito web.",
+      "formalieAllowed": "Le pagine di Formalie (anteprime, link pubblico) possono sempre mostrare il modulo.",
+      "needSite": "Aggiunga almeno un sito web per salvare"
     }
   }
 }

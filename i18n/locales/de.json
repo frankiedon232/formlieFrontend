@@ -298,7 +298,9 @@
       "code": "Code",
       "copy": "Code kopieren",
       "copied": "Einbettungscode kopiert",
-      "where": "Als HTML einfügen (in den meisten Website-Baukästen: ein Block „Einbetten“ oder „Eigenes HTML“)."
+      "where": "Als HTML einfügen (in den meisten Website-Baukästen: ein Block „Einbetten“ oder „Eigenes HTML“).",
+      "preview": "Vorschau",
+      "previewNote": "Dies ist das echte Formular, so wie es auf einer Website aussieht. Hier gesendete Antworten sind echte Antworten."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Kurzlink entfernen?",
       "removeDesc": "Er funktioniert sofort nicht mehr: Plakate, Nachrichten und QR-Codes, die ihn verwenden, führen nicht mehr zum Formular.",
       "removed": "Kurzlink entfernt"
+    },
+    "embed": {
+      "title": "Auf Websites einbetten",
+      "desc": "Welche Websites dieses Formular in ihren Seiten anzeigen dürfen.",
+      "any": "Jede Website",
+      "anyDesc": "Jeder mit dem Einbettungscode kann das Formular auf seiner Website einbinden.",
+      "listed": "Nur von Ihnen aufgeführte Websites",
+      "listedDesc": "Andere Websites können das Formular nicht anzeigen – der Browser verweigert es.",
+      "sites": "Erlaubte Websites",
+      "sitesHint": "Adressen eingeben oder einfügen, dann Enter drücken. *.example.com schließt die Unterseiten ein. Bis zu {n}.",
+      "placeholder": "example.com",
+      "invalid": "„{site}“ ist keine Website-Adresse.",
+      "formalieAllowed": "Formalies eigene Seiten (Vorschauen, der öffentliche Link) können das Formular immer anzeigen.",
+      "needSite": "Fügen Sie zum Speichern mindestens eine Website hinzu"
     }
   }
 }

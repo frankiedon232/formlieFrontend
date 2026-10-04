@@ -298,7 +298,9 @@
       "code": "Mã",
       "copy": "Sao chép mã",
       "copied": "Đã sao chép mã nhúng",
-      "where": "Dán dưới dạng HTML (trong hầu hết trình tạo website: khối “Embed” hoặc “Custom HTML”)."
+      "where": "Dán dưới dạng HTML (trong hầu hết trình tạo website: khối “Embed” hoặc “Custom HTML”).",
+      "preview": "Xem trước",
+      "previewNote": "Đây là biểu mẫu thật, đúng như khi hiển thị trên trang web. Câu trả lời gửi tại đây là phản hồi thật."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Xóa liên kết ngắn?",
       "removeDesc": "Liên kết sẽ ngừng hoạt động ngay: áp phích, tin nhắn và mã QR sử dụng nó sẽ không còn dẫn đến biểu mẫu.",
       "removed": "Đã xóa liên kết ngắn"
+    },
+    "embed": {
+      "title": "Nhúng vào trang web",
+      "desc": "Những trang web nào được phép hiển thị biểu mẫu này trong trang của họ.",
+      "any": "Mọi trang web",
+      "anyDesc": "Bất kỳ ai có mã nhúng đều có thể đặt biểu mẫu lên trang của họ.",
+      "listed": "Chỉ các trang web bạn liệt kê",
+      "listedDesc": "Các trang web khác không thể hiển thị biểu mẫu — trình duyệt sẽ từ chối.",
+      "sites": "Trang web được phép",
+      "sitesHint": "Nhập hoặc dán địa chỉ, rồi nhấn Enter. *.example.com bao gồm cả các trang con. Tối đa {n}.",
+      "placeholder": "example.com",
+      "invalid": "“{site}” không phải là địa chỉ trang web.",
+      "formalieAllowed": "Các trang của chính Formalie (bản xem trước, liên kết công khai) luôn có thể hiển thị biểu mẫu.",
+      "needSite": "Thêm ít nhất một trang web để lưu"
     }
   }
 }

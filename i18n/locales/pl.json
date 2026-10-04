@@ -298,7 +298,9 @@
       "code": "Kod",
       "copy": "Kopiuj kod",
       "copied": "Skopiowano kod do osadzenia",
-      "where": "Wklej go jako HTML (w większości kreatorów stron: blok „Osadź” lub „Własny HTML”)."
+      "where": "Wklej go jako HTML (w większości kreatorów stron: blok „Osadź” lub „Własny HTML”).",
+      "preview": "Podgląd",
+      "previewNote": "To jest prawdziwy formularz, tak jak będzie wyglądał na stronie. Odpowiedzi wysłane tutaj są prawdziwymi odpowiedziami."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Usunąć krótki link?",
       "removeDesc": "Przestanie działać natychmiast: plakaty, wiadomości i kody QR, które go używają, nie będą już prowadzić do formularza.",
       "removed": "Usunięto krótki link"
+    },
+    "embed": {
+      "title": "Osadzanie na stronach",
+      "desc": "Które strony internetowe mogą wyświetlać ten formularz na swoich stronach.",
+      "any": "Dowolna strona",
+      "anyDesc": "Każdy, kto ma kod osadzania, może umieścić formularz na swojej stronie.",
+      "listed": "Tylko strony z Twojej listy",
+      "listedDesc": "Inne strony nie mogą wyświetlić formularza — przeglądarka go blokuje.",
+      "sites": "Dozwolone strony",
+      "sitesHint": "Wpisz lub wklej adresy, a następnie naciśnij Enter. *.example.com obejmuje także jej podstrony. Maksymalnie {n}.",
+      "placeholder": "example.com",
+      "invalid": "„{site}” nie jest adresem strony internetowej.",
+      "formalieAllowed": "Własne strony Formalie (podglądy, link publiczny) zawsze mogą wyświetlać formularz.",
+      "needSite": "Dodaj co najmniej jedną stronę, aby zapisać"
     }
   }
 }

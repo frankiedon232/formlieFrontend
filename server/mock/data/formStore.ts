@@ -23,6 +23,8 @@ export interface StoredForm extends FormSummary {
   /** Short link (F10 M3): visits counted when it is opened. */
   short_clicks?: number
   short_created_at?: string | null
+  /** Websites allowed to show the embed (F10 M3; empty / missing = any). */
+  embed_domains?: string[]
 }
 
 export interface StoredVersion extends FormVersion {
@@ -110,6 +112,7 @@ export function summaryOf(form: StoredForm): FormSummary {
     password: _pw,
     short_clicks: _sc,
     short_created_at: _sca,
+    embed_domains: _ed,
     ...summary
   } = form
   // Share settings added in F10 M3: older forms have none yet.

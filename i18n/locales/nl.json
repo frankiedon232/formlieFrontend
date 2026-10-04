@@ -298,7 +298,9 @@
       "code": "Code",
       "copy": "Code kopiëren",
       "copied": "Insluitcode gekopieerd",
-      "where": "Plak het als HTML (in de meeste websitebouwers: een blok “Insluiten” of “Aangepaste HTML”)."
+      "where": "Plak het als HTML (in de meeste websitebouwers: een blok “Insluiten” of “Aangepaste HTML”).",
+      "preview": "Voorbeeld",
+      "previewNote": "Dit is het echte formulier, zoals het op een website wordt getoond. Antwoorden die u hier verstuurt, zijn echte reacties."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Korte link verwijderen?",
       "removeDesc": "De link werkt direct niet meer: posters, berichten en QR-codes die hem gebruiken, leiden niet langer naar het formulier.",
       "removed": "Korte link verwijderd"
+    },
+    "embed": {
+      "title": "Insluiten op websites",
+      "desc": "Welke websites dit formulier in hun pagina’s mogen tonen.",
+      "any": "Elke website",
+      "anyDesc": "Iedereen met de insluitcode kan het formulier op zijn site plaatsen.",
+      "listed": "Alleen websites die u opgeeft",
+      "listedDesc": "Andere websites kunnen het formulier niet tonen — de browser weigert het.",
+      "sites": "Toegestane websites",
+      "sitesHint": "Typ of plak adressen en druk op Enter. *.example.com omvat ook de subsites. Maximaal {n}.",
+      "placeholder": "example.com",
+      "invalid": "‘{site}’ is geen websiteadres.",
+      "formalieAllowed": "De eigen pagina’s van Formalie (voorbeelden, de openbare link) kunnen het formulier altijd tonen.",
+      "needSite": "Voeg ten minste één website toe om op te slaan"
     }
   }
 }

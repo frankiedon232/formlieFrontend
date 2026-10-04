@@ -46,6 +46,8 @@ export interface PublicForm {
   language: string
   /** Share settings (F10 M3): the form needs a password and this visitor hasn't entered it — no questions are sent. */
   locked: boolean
+  /** Who may show the embed: the frame-ancestors value ("*" = any website). */
+  embed_ancestors: string
 }
 
 /** POST /public/forms/{key}/submit → the response and what to show next. */

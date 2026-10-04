@@ -96,15 +96,16 @@ useSeoMeta({
   robots: () => (props.embed || view.value !== 'open' || form.value?.seo.noindex ? 'noindex, nofollow' : 'index, follow'),
 })
 
-// ── Embed: other websites may show it in a frame (the portal and /fill pages may not).
-// Allowed websites per form come with the Share settings (M3).
+// ── Embed: which websites may show it in a frame (Share settings → Embed, decision 94; the
+// portal and /fill pages may never be framed). Development has no full policy, so only this rule.
 if (import.meta.server && props.embed) {
   const event = useRequestEvent()
   const response = event?.node.res
   if (response) {
+    const ancestors = `frame-ancestors ${form.value?.embed_ancestors ?? '*'}`
     response.removeHeader('x-frame-options')
     const policy = response.getHeader('content-security-policy')
-    if (typeof policy === 'string') response.setHeader('content-security-policy', policy.replace("frame-ancestors 'self'", 'frame-ancestors *'))
+    response.setHeader('content-security-policy', typeof policy === 'string' ? policy.replace("frame-ancestors 'self'", ancestors) : ancestors)
   }
 }
 

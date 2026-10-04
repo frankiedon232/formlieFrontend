@@ -298,7 +298,9 @@
       "code": "Kode",
       "copy": "Salin kode",
       "copied": "Kode sematan disalin",
-      "where": "Tempel sebagai HTML (di sebagian besar pembuat situs: blok “Embed” atau “Custom HTML”)."
+      "where": "Tempel sebagai HTML (di sebagian besar pembuat situs: blok “Embed” atau “Custom HTML”).",
+      "preview": "Pratinjau",
+      "previewNote": "Ini adalah formulir sebenarnya, seperti yang akan tampil di situs web. Jawaban yang dikirim di sini adalah respons sungguhan."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Hapus tautan pendek?",
       "removeDesc": "Tautan langsung berhenti berfungsi: poster, pesan, dan kode QR yang menggunakannya tidak akan lagi mengarah ke formulir.",
       "removed": "Tautan pendek dihapus"
+    },
+    "embed": {
+      "title": "Sematkan di situs web",
+      "desc": "Situs web mana yang boleh menampilkan formulir ini di halamannya.",
+      "any": "Situs web apa pun",
+      "anyDesc": "Siapa pun yang memiliki kode sematan dapat memasang formulir di situsnya.",
+      "listed": "Hanya situs web yang Anda daftarkan",
+      "listedDesc": "Situs web lain tidak dapat menampilkan formulir — browser akan menolaknya.",
+      "sites": "Situs web yang diizinkan",
+      "sitesHint": "Ketik atau tempel alamat, lalu tekan Enter. *.example.com mencakup subsitusnya. Hingga {n}.",
+      "placeholder": "example.com",
+      "invalid": "“{site}” bukan alamat situs web.",
+      "formalieAllowed": "Halaman milik Formalie sendiri (pratinjau, tautan publik) selalu dapat menampilkan formulir.",
+      "needSite": "Tambahkan setidaknya satu situs web untuk menyimpan"
     }
   }
 }

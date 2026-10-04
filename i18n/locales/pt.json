@@ -298,7 +298,9 @@
       "code": "Código",
       "copy": "Copiar código",
       "copied": "Código copiado",
-      "where": "Cole-o como HTML (na maioria dos criadores de sites: um bloco «Incorporar» ou «HTML personalizado»)."
+      "where": "Cole-o como HTML (na maioria dos criadores de sites: um bloco «Incorporar» ou «HTML personalizado»).",
+      "preview": "Pré-visualização",
+      "previewNote": "Este é o formulário real, tal como aparecerá num site. As respostas enviadas aqui são respostas reais."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Remover o link curto?",
       "removeDesc": "Deixa de funcionar de imediato: cartazes, mensagens e códigos QR que o utilizam deixarão de levar ao formulário.",
       "removed": "Link curto removido"
+    },
+    "embed": {
+      "title": "Incorporar em sites",
+      "desc": "Que sites podem mostrar este formulário nas suas páginas.",
+      "any": "Qualquer site",
+      "anyDesc": "Qualquer pessoa com o código de incorporação pode colocar o formulário no seu site.",
+      "listed": "Apenas os sites que indicar",
+      "listedDesc": "Outros sites não podem mostrar o formulário — o navegador recusa-o.",
+      "sites": "Sites permitidos",
+      "sitesHint": "Escreva ou cole endereços e prima Enter. *.example.com inclui os respetivos subsites. Até {n}.",
+      "placeholder": "example.com",
+      "invalid": "«{site}» não é um endereço de site.",
+      "formalieAllowed": "As próprias páginas da Formalie (pré-visualizações, a ligação pública) podem sempre mostrar o formulário.",
+      "needSite": "Adicione pelo menos um site para guardar"
     }
   }
 }

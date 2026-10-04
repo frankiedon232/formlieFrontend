@@ -10,6 +10,7 @@ import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
 import type { CustomLinkCheck, FormShareSettings } from '#shared/types/forms'
 import { customLinkProblem, FORM_KEY_PATTERN, newShortCode, tidyCustomLink } from '#shared/utils/urls/public'
+import { MAX_EMBED_DOMAINS, normaliseEmbedDomain } from '#shared/utils/urls/embed-domains'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -36,6 +37,7 @@ const settingsOf = (form: StoredForm): FormShareSettings => ({
   opens_at: form.opens_at,
   closes_at: form.closes_at,
   row_version: form.row_version,
+  embed_domains: form.embed_domains ?? [],
   short_link: form.short_code ? { code: form.short_code, clicks: form.short_clicks ?? 0, created_at: form.short_created_at ?? form.updated_at } : null,
 })
 
@@ -112,6 +114,8 @@ const shareSchema = z.object({
   password: z.string().min(8).max(100).optional(),
   response_limit: z.number().int().min(2).max(1_000_000).nullable().optional(),
   custom_link: z.string().max(80).nullable().optional(),
+  /** Websites allowed to show the embed; [] = any website. */
+  embed_domains: z.array(z.string().max(253)).max(MAX_EMBED_DOMAINS).optional(),
 })
 
 /** PUT /forms/:id/share */
@@ -153,6 +157,15 @@ export const saveShare = defineMockRoute(({ event, body }) => {
     }
   }
 
+  if (input.embed_domains !== undefined) {
+    const domains = [...new Set(input.embed_domains.map(normaliseEmbedDomain))]
+    if (domains.some(domain => !domain)) throw new MockError('FRM-GEN-1002', [{ field: 'embed_domains', message: 'invalid' }])
+    const before = (form.embed_domains ?? []).join(', ')
+    if (domains.join(', ') !== before) {
+      changes.push({ field: 'embed_domains', before: before || null, after: domains.join(', ') || null })
+      form.embed_domains = domains as string[]
+    }
+  }
   if (changes.length) {
     form.row_version++
     form.updated_at = new Date().toISOString()

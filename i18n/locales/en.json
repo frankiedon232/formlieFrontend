@@ -298,7 +298,9 @@
       "code": "Code",
       "copy": "Copy code",
       "copied": "Embed code copied",
-      "where": "Paste it as HTML (in most website builders: an “Embed” or “Custom HTML” block)."
+      "where": "Paste it as HTML (in most website builders: an “Embed” or “Custom HTML” block).",
+      "preview": "Preview",
+      "previewNote": "This is the live form, as it will look on a website. Answers sent here are real responses."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Remove the short link?",
       "removeDesc": "It stops working at once: posters, messages and QR codes that use it will no longer lead to the form.",
       "removed": "Short link removed"
+    },
+    "embed": {
+      "title": "Embed on websites",
+      "desc": "Which websites may show this form inside their pages.",
+      "any": "Any website",
+      "anyDesc": "Anyone with the embed code can put the form on their site.",
+      "listed": "Only websites you list",
+      "listedDesc": "Other websites can’t show the form — the browser refuses it.",
+      "sites": "Allowed websites",
+      "sitesHint": "Type or paste addresses, then press Enter. *.example.com includes its sub-sites. Up to {n}.",
+      "placeholder": "example.com",
+      "invalid": "“{site}” isn’t a website address.",
+      "formalieAllowed": "Formalie’s own pages (previews, the public link) can always show the form.",
+      "needSite": "Add at least one website to save"
     }
   }
 }

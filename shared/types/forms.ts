@@ -64,6 +64,8 @@ export interface FormShareSettings {
   row_version: number
   /** Short link: its code and how many times it was opened. */
   short_link: { code: string; clicks: number; created_at: string } | null
+  /** Websites allowed to show the embed (empty = any website). */
+  embed_domains: string[]
 }
 
 /** The Share tab's unsaved changes (portal only). */
@@ -74,6 +76,9 @@ export interface ShareDraft {
   limitOn: boolean
   limit: number
   link: string
+  /** Embed: only the websites listed (false = any website). */
+  embedLimited: boolean
+  domains: string[]
 }
 
 /** GET /forms/{id}/share/link-check?value= — can this custom link be used? */

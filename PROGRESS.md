@@ -480,7 +480,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ custom link with live check (2026-10-04) · ✅ short link (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
 - 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule — ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ⬜ invite-only, organisation-only
 - ⬜ People access: edit / view / responses
-- 🟡 Embed: iframe snippet with auto-resize, size options, allowed domains, live preview — ✅ snippet with auto / fixed height (M2); allowed domains + live preview with the Share settings (M3)
+- ✅ Embed: iframe snippet with auto-resize, size options (M2), allowed websites + live preview (M3, decision 94)
 - ⬜ SEO settings with link-card preview
 - ✅ Short link redirect `/s/[code]` (decision 93): create / remove on the Share tab, 302 to the current link, visits counted, 404 page for unknown codes
 
@@ -1071,3 +1071,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Response limit (owner): starts at 10, goes down to 2, steps of 1 (was steps of 10 from 1). |
 | 2026-10-04 | F10 | M3: short links — forms.formalie.dev/s/{code} (5 easy characters) on the Share tab, server-side 302 to the form’s current link, visit count, removable, 404 page; Share card shows it and uses it for the QR code. Tested in the browser. |
 | 2026-10-04 | F10 | Form language on non-open pages (owner): full, closed, expired, not-yet-open and password pages now use the form’s language (they fell back to English because no questions are sent then). |
+| 2026-10-04 | F10 | M3: embed allowed websites (any / only listed; pasted addresses tidied; frame-ancestors header, Formalie previews always allowed) and a live Preview tab in the Embed code window. Tested in the browser (header with the list, back to any website). |

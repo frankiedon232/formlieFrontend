@@ -19,7 +19,7 @@ const settings = ref<FormShareSettings | null>(null)
 const loading = ref(true)
 const failed = ref(false)
 
-const draft = reactive<ShareDraft>({ access: 'public', password: '', limitOn: false, limit: 100, link: '' })
+const draft = reactive<ShareDraft>({ access: 'public', password: '', limitOn: false, limit: 10, link: '', embedLimited: false, domains: [] })
 /** The custom link can be saved (empty, unchanged or checked as free). */
 const linkOk = ref(true)
 
@@ -31,6 +31,8 @@ function reset(from: FormShareSettings) {
     // Starts at 10 (owner); a form that already has 10 or more responses starts 10 above its count.
     limit: from.response_limit ?? (from.responses_count < 10 ? 10 : from.responses_count + 10),
     link: from.custom_link ?? '',
+    embedLimited: from.embed_domains.length > 0,
+    domains: [...from.embed_domains],
   })
 }
 async function load() {
@@ -49,6 +51,9 @@ async function load() {
 }
 onMounted(load)
 
+/** Embed websites as they will be saved: none when "any website" is chosen. */
+const embedDomains = () => (draft.embedLimited ? draft.domains : [])
+
 const dirty = computed(() => {
   const s = settings.value
   if (!s) return false
@@ -56,11 +61,13 @@ const dirty = computed(() => {
     draft.access !== s.access ||
     !!draft.password ||
     (draft.limitOn ? draft.limit : null) !== s.response_limit ||
-    (draft.link.trim() || null) !== s.custom_link
+    (draft.link.trim() || null) !== s.custom_link ||
+    embedDomains().join(',') !== s.embed_domains.join(',')
   )
 })
 const passwordMissing = computed(() => draft.access === 'password' && !settings.value?.has_password && draft.password.length < 8)
-const canSave = computed(() => dirty.value && linkOk.value && !passwordMissing.value && (!draft.password || draft.password.length >= 8))
+const embedMissing = computed(() => draft.embedLimited && !draft.domains.length)
+const canSave = computed(() => dirty.value && linkOk.value && !passwordMissing.value && !embedMissing.value && (!draft.password || draft.password.length >= 8))
 
 /** Keeps the rest of the editor in step: the form's version and what the overview / links show. */
 function applyToSession(next: FormShareSettings) {
@@ -81,6 +88,7 @@ async function save() {
         access: draft.access,
         response_limit: draft.limitOn ? draft.limit : null,
         custom_link: draft.link.trim() || null,
+        embed_domains: embedDomains(),
       })
       settings.value = data
       reset(data)
@@ -131,6 +139,7 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
         <FormsShareAccessCard v-model:draft="draft" :settings="settings" />
         <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
         <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
+        <FormsShareEmbedCard v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
       </div>
       <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />
@@ -140,7 +149,7 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
     <Transition enter-from-class="translate-y-4 opacity-0" leave-to-class="translate-y-4 opacity-0" enter-active-class="transition" leave-active-class="transition">
       <div v-if="dirty" class="sticky bottom-3 z-10 mx-auto flex w-full max-w-2xl flex-wrap items-center justify-between gap-2 rounded-lg border border-default bg-default/95 px-3 py-2 shadow-lg backdrop-blur" role="status">
         <span class="flex items-center gap-2 text-sm text-highlighted">
-          <UIcon name="i-lucide-circle-dot" class="size-4 text-warning" />{{ passwordMissing ? t('share.needPassword') : t('share.unsaved') }}
+          <UIcon name="i-lucide-circle-dot" class="size-4 text-warning" />{{ passwordMissing ? t('share.needPassword') : embedMissing ? t('share.embed.needSite') : t('share.unsaved') }}
         </span>
         <div class="flex gap-2">
           <UButton :label="t('share.discard')" color="neutral" variant="outline" size="sm" :disabled="busy" @click="reset(settings)" />

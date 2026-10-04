@@ -298,7 +298,9 @@
       "code": "Código",
       "copy": "Copiar código",
       "copied": "Código copiado",
-      "where": "Pégalo como HTML (en la mayoría de creadores de sitios: un bloque «Insertar» o «HTML personalizado»)."
+      "where": "Pégalo como HTML (en la mayoría de creadores de sitios: un bloque «Insertar» o «HTML personalizado»).",
+      "preview": "Vista previa",
+      "previewNote": "Este es el formulario real, tal como se verá en un sitio web. Las respuestas enviadas aquí son respuestas reales."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "¿Quitar el enlace corto?",
       "removeDesc": "Dejará de funcionar de inmediato: los carteles, mensajes y códigos QR que lo usen ya no llevarán al formulario.",
       "removed": "Enlace corto quitado"
+    },
+    "embed": {
+      "title": "Insertar en sitios web",
+      "desc": "Qué sitios web pueden mostrar este formulario dentro de sus páginas.",
+      "any": "Cualquier sitio web",
+      "anyDesc": "Cualquier persona con el código de inserción puede poner el formulario en su sitio.",
+      "listed": "Solo los sitios web que indique",
+      "listedDesc": "Otros sitios web no pueden mostrar el formulario: el navegador lo rechaza.",
+      "sites": "Sitios web permitidos",
+      "sitesHint": "Escriba o pegue direcciones y pulse Enter. *.example.com incluye sus subsitios. Hasta {n}.",
+      "placeholder": "example.com",
+      "invalid": "«{site}» no es una dirección de sitio web.",
+      "formalieAllowed": "Las propias páginas de Formalie (vistas previas, el enlace público) siempre pueden mostrar el formulario.",
+      "needSite": "Añada al menos un sitio web para guardar"
     }
   }
 }

@@ -298,7 +298,9 @@
       "code": "Code",
       "copy": "Copier le code",
       "copied": "Code d’intégration copié",
-      "where": "Collez-le en HTML (dans la plupart des créateurs de sites : un bloc « Intégrer » ou « HTML personnalisé »)."
+      "where": "Collez-le en HTML (dans la plupart des créateurs de sites : un bloc « Intégrer » ou « HTML personnalisé »).",
+      "preview": "Aperçu",
+      "previewNote": "Voici le formulaire réel, tel qu’il apparaîtra sur un site web. Les réponses envoyées ici sont de vraies réponses."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Supprimer le lien court ?",
       "removeDesc": "Il cesse de fonctionner immédiatement : les affiches, messages et codes QR qui l’utilisent ne mèneront plus au formulaire.",
       "removed": "Lien court supprimé"
+    },
+    "embed": {
+      "title": "Intégrer sur des sites web",
+      "desc": "Les sites web autorisés à afficher ce formulaire dans leurs pages.",
+      "any": "Tout site web",
+      "anyDesc": "Toute personne disposant du code d’intégration peut placer le formulaire sur son site.",
+      "listed": "Uniquement les sites web que vous indiquez",
+      "listedDesc": "Les autres sites web ne peuvent pas afficher le formulaire : le navigateur le refuse.",
+      "sites": "Sites web autorisés",
+      "sitesHint": "Saisissez ou collez des adresses, puis appuyez sur Entrée. *.example.com inclut ses sous-sites. Jusqu’à {n}.",
+      "placeholder": "example.com",
+      "invalid": "« {site} » n’est pas une adresse de site web.",
+      "formalieAllowed": "Les pages de Formalie (aperçus, lien public) peuvent toujours afficher le formulaire.",
+      "needSite": "Ajoutez au moins un site web pour enregistrer"
     }
   }
 }

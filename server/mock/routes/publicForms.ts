@@ -23,6 +23,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { findByPublicKey, findByShortCode, formsOf, saveForms, type StoredForm } from '../data/formStore'
 import { formLink, publicHosts, SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
+import { frameAncestors } from '#shared/utils/urls/embed-domains'
 import { responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
 import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
@@ -190,6 +191,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
     languages: [language],
     language,
     locked,
+    embed_ancestors: frameAncestors(form.embed_domains ?? [], useRuntimeConfig(event).public.rootDomain),
   }
 }
 

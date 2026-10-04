@@ -298,7 +298,9 @@
       "code": "Msimbo",
       "copy": "Nakili msimbo",
       "copied": "Msimbo wa kupachika umenakiliwa",
-      "where": "Ubandike kama HTML (katika vijenzi vingi vya tovuti: kizuizi cha “Embed” au “Custom HTML”)."
+      "where": "Ubandike kama HTML (katika vijenzi vingi vya tovuti: kizuizi cha “Embed” au “Custom HTML”).",
+      "preview": "Onyesho la awali",
+      "previewNote": "Hii ni fomu halisi, jinsi itakavyoonekana kwenye tovuti. Majibu yanayotumwa hapa ni majibu halisi."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Ungependa kuondoa kiungo kifupi?",
       "removeDesc": "Kitaacha kufanya kazi mara moja: mabango, ujumbe na misimbo ya QR inayokitumia haitaelekeza tena kwenye fomu.",
       "removed": "Kiungo kifupi kimeondolewa"
+    },
+    "embed": {
+      "title": "Pachika kwenye tovuti",
+      "desc": "Tovuti zipi zinaweza kuonyesha fomu hii ndani ya kurasa zao.",
+      "any": "Tovuti yoyote",
+      "anyDesc": "Mtu yeyote aliye na msimbo wa kupachika anaweza kuweka fomu kwenye tovuti yake.",
+      "listed": "Tovuti unazoorodhesha pekee",
+      "listedDesc": "Tovuti nyingine haziwezi kuonyesha fomu — kivinjari kinaikataa.",
+      "sites": "Tovuti zinazoruhusiwa",
+      "sitesHint": "Andika au bandika anwani, kisha bonyeza Enter. *.example.com inajumuisha tovuti zake ndogo. Hadi {n}.",
+      "placeholder": "example.com",
+      "invalid": "“{site}” si anwani ya tovuti.",
+      "formalieAllowed": "Kurasa za Formalie zenyewe (maonyesho ya awali, kiungo cha umma) zinaweza kuonyesha fomu kila wakati.",
+      "needSite": "Ongeza angalau tovuti moja ili kuhifadhi"
     }
   }
 }

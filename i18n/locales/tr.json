@@ -298,7 +298,9 @@
       "code": "Kod",
       "copy": "Kodu kopyala",
       "copied": "Yerleştirme kodu kopyalandı",
-      "where": "HTML olarak yapıştırın (çoğu site oluşturucuda: “Embed” veya “Custom HTML” bloğu)."
+      "where": "HTML olarak yapıştırın (çoğu site oluşturucuda: “Embed” veya “Custom HTML” bloğu).",
+      "preview": "Önizleme",
+      "previewNote": "Bu, bir web sitesinde görüneceği haliyle gerçek formdur. Buradan gönderilen yanıtlar gerçek yanıtlardır."
     }
   },
   "nav": {
@@ -2901,6 +2903,20 @@
       "removeTitle": "Kısa bağlantı kaldırılsın mı?",
       "removeDesc": "Hemen çalışmayı durdurur: onu kullanan afişler, mesajlar ve QR kodları artık forma yönlendirmez.",
       "removed": "Kısa bağlantı kaldırıldı"
+    },
+    "embed": {
+      "title": "Web sitelerine yerleştirme",
+      "desc": "Bu formu kendi sayfalarında gösterebilecek web siteleri.",
+      "any": "Tüm web siteleri",
+      "anyDesc": "Yerleştirme koduna sahip herkes formu kendi sitesine koyabilir.",
+      "listed": "Yalnızca listelediğiniz web siteleri",
+      "listedDesc": "Diğer web siteleri formu gösteremez — tarayıcı bunu reddeder.",
+      "sites": "İzin verilen web siteleri",
+      "sitesHint": "Adresleri yazın veya yapıştırın, ardından Enter tuşuna basın. *.example.com alt sitelerini de kapsar. En fazla {n}.",
+      "placeholder": "example.com",
+      "invalid": "“{site}” bir web sitesi adresi değil.",
+      "formalieAllowed": "Formalie’nin kendi sayfaları (önizlemeler, herkese açık bağlantı) formu her zaman gösterebilir.",
+      "needSite": "Kaydetmek için en az bir web sitesi ekleyin"
     }
   }
 }
