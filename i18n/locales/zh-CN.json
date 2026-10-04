@@ -239,7 +239,14 @@
       "responsesAll": "回复（全部表单）",
       "last30Short": "最近 30 天",
       "byStatus": "按状态的表单",
-      "liveNow": "当前 {n} 个已发布"
+      "liveNow": "当前 {n} 个已发布",
+      "latest": "最新回复",
+      "allResponses": "全部回复",
+      "noResponsesYet": "分享表单即可开始收集回复。",
+      "publishFirst": "发布表单即可开始收集回复。",
+      "shareForm": "分享表单",
+      "highlights": "亮点",
+      "allInsights": "全部洞察"
     },
     "qr": {
       "title": "二维码",

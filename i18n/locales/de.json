@@ -239,7 +239,14 @@
       "responsesAll": "Antworten, alle Formulare",
       "last30Short": "Letzte 30 Tage",
       "byStatus": "Formulare nach Status",
-      "liveNow": "{n} jetzt live"
+      "liveNow": "{n} jetzt live",
+      "latest": "Neueste Antworten",
+      "allResponses": "Alle Antworten",
+      "noResponsesYet": "Teilen Sie das Formular, um Antworten zu sammeln.",
+      "publishFirst": "Veröffentlichen Sie das Formular, um Antworten zu sammeln.",
+      "shareForm": "Formular teilen",
+      "highlights": "Höhepunkte",
+      "allInsights": "Alle Einblicke"
     },
     "qr": {
       "title": "QR-Code",

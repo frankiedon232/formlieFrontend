@@ -239,7 +239,14 @@
       "responsesAll": "回答（全フォーム）",
       "last30Short": "過去30日",
       "byStatus": "ステータス別フォーム",
-      "liveNow": "現在 {n} 件公開中"
+      "liveNow": "現在 {n} 件公開中",
+      "latest": "最新の回答",
+      "allResponses": "すべての回答",
+      "noResponsesYet": "フォームを共有して回答の受付を始めましょう。",
+      "publishFirst": "フォームを公開して回答の受付を始めましょう。",
+      "shareForm": "フォームを共有",
+      "highlights": "ハイライト",
+      "allInsights": "すべてのインサイト"
     },
     "qr": {
       "title": "QR コード",

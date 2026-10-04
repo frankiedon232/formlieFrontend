@@ -239,7 +239,14 @@
       "responsesAll": "Majibu, fomu zote",
       "last30Short": "Siku 30 zilizopita",
       "byStatus": "Fomu kwa hali",
-      "liveNow": "{n} ziko hewani sasa"
+      "liveNow": "{n} ziko hewani sasa",
+      "latest": "Majibu ya hivi karibuni",
+      "allResponses": "Majibu yote",
+      "noResponsesYet": "Shiriki fomu ili kuanza kupokea majibu.",
+      "publishFirst": "Chapisha fomu ili kuanza kupokea majibu.",
+      "shareForm": "Shiriki fomu",
+      "highlights": "Mambo muhimu",
+      "allInsights": "Uchambuzi wote"
     },
     "qr": {
       "title": "Msimbo wa QR",

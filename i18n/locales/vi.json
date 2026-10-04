@@ -239,7 +239,14 @@
       "responsesAll": "Phản hồi, mọi biểu mẫu",
       "last30Short": "30 ngày qua",
       "byStatus": "Biểu mẫu theo trạng thái",
-      "liveNow": "{n} đang mở"
+      "liveNow": "{n} đang mở",
+      "latest": "Phản hồi mới nhất",
+      "allResponses": "Tất cả phản hồi",
+      "noResponsesYet": "Chia sẻ biểu mẫu để bắt đầu nhận phản hồi.",
+      "publishFirst": "Xuất bản biểu mẫu để bắt đầu nhận phản hồi.",
+      "shareForm": "Chia sẻ biểu mẫu",
+      "highlights": "Điểm nổi bật",
+      "allInsights": "Tất cả phân tích"
     },
     "qr": {
       "title": "Mã QR",

@@ -1,10 +1,13 @@
 <!--
-  Form overview, the form's home: headline numbers, the 30-day response trend, sharing links,
-  what the form is made of (each part linked to Build / Logic / Design / Versions), details with
-  the template it came from, and its activity. Lifecycle actions and Edit live in the header.
+  Form overview, the form's home (rule 21, owner 2026-10-04): two chart cards on top (responses of
+  the last 30 days with daily bars; review status as thin lines, a status opens the filtered
+  responses), the latest responses as cards (each opens its response), highlights of the most
+  telling questions, what the form is made of; on the side sharing, details and activity.
+  Lifecycle actions and Edit live in the header.
 -->
 <script setup lang="ts">
 import type { FormOverview, FormSummary } from '#shared/types/forms'
+import type { ResponseInsights } from '#shared/types/responses'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -15,18 +18,23 @@ const { handle } = useErrorHandler()
 
 const form = ref<(FormSummary & { template_key: string | null }) | null>(null)
 const overview = ref<FormOverview | null>(null)
+const insights = ref<ResponseInsights | null>(null)
 const loading = ref(true)
 const notFound = ref(false)
 useHead({ title: () => form.value?.name ?? t('nav.forms') })
 
 async function load() {
   try {
-    const [summary, stats] = await Promise.all([
+    const to = new Date().toISOString().slice(0, 10)
+    const from = new Date(Date.now() - 29 * 86_400_000).toISOString().slice(0, 10)
+    const [summary, stats, numbers] = await Promise.all([
       api.get<FormSummary & { template_key: string | null }>(`/forms/${route.params.id}`),
       api.get<FormOverview>(`/forms/${route.params.id}/overview`),
+      api.get<ResponseInsights>(`/forms/${route.params.id}/responses/insights`, { from, to }),
     ])
     form.value = summary.data
     overview.value = stats.data
+    insights.value = numbers.data
     setLabel(route.path, form.value.name)
   } catch (error) {
     const normalised = handle(error, { silent: true })
@@ -102,8 +110,8 @@ const subtitle = computed(() =>
 
     <!-- Loading: mirrors KPI row, chart + side column -->
     <div v-if="loading" class="flex flex-col gap-4" :aria-label="t('common.loading')">
-      <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <USkeleton v-for="n in 4" :key="n" class="h-28 w-full rounded-lg" />
+      <div class="grid gap-4 lg:grid-cols-2">
+        <USkeleton v-for="n in 2" :key="n" class="h-40 w-full rounded-lg" />
       </div>
       <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div class="flex flex-col gap-4">
@@ -141,11 +149,18 @@ const subtitle = computed(() =>
         :actions="[{ label: t('forms.trash.title'), to: '/forms/trash', color: 'neutral', variant: 'outline' }]"
       />
 
-      <FormsOverviewKpis :form-id="form.id" :stats="overview.stats" :daily="overview.daily" />
+      <FormsResponsesOverview
+        v-if="insights"
+        :insights="insights"
+        per-form
+        @status="status => navigateTo(`/forms/${form!.id}/responses?status=${status}`)"
+        @insights="navigateTo(`/forms/${form!.id}/responses?view=insights`)"
+      />
 
       <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div class="flex min-w-0 flex-col gap-4">
-          <FormsOverviewTrend :days="overview.daily" />
+          <FormsOverviewLatest :form-id="form.id" :schema="insights?.schema ?? null" :published="form.status !== 'draft'" />
+          <FormsOverviewHighlights v-if="insights" :form-id="form.id" :insights="insights" />
           <FormsOverviewStructure :form="form" :overview="overview" :read-only="!editable" />
         </div>
         <div class="flex min-w-0 flex-col gap-4">

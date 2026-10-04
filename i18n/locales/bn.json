@@ -239,7 +239,14 @@
       "responsesAll": "উত্তর, সব ফর্ম",
       "last30Short": "গত ৩০ দিন",
       "byStatus": "অবস্থা অনুযায়ী ফর্ম",
-      "liveNow": "এখন {n}টি লাইভ"
+      "liveNow": "এখন {n}টি লাইভ",
+      "latest": "সাম্প্রতিক উত্তর",
+      "allResponses": "সব উত্তর",
+      "noResponsesYet": "উত্তর পেতে ফর্ম শেয়ার করুন।",
+      "publishFirst": "উত্তর পেতে ফর্ম প্রকাশ করুন।",
+      "shareForm": "ফর্ম শেয়ার করুন",
+      "highlights": "মূল বিষয়",
+      "allInsights": "সব বিশ্লেষণ"
     },
     "qr": {
       "title": "QR কোড",

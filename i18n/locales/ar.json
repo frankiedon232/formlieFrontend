@@ -239,7 +239,14 @@
       "responsesAll": "الردود، كل النماذج",
       "last30Short": "آخر 30 يومًا",
       "byStatus": "النماذج حسب الحالة",
-      "liveNow": "{n} منشورة الآن"
+      "liveNow": "{n} منشورة الآن",
+      "latest": "أحدث الردود",
+      "allResponses": "كل الردود",
+      "noResponsesYet": "شارك النموذج لبدء تلقي الردود.",
+      "publishFirst": "انشر النموذج لبدء تلقي الردود.",
+      "shareForm": "مشاركة النموذج",
+      "highlights": "أبرز النقاط",
+      "allInsights": "كل الرؤى"
     },
     "qr": {
       "title": "رمز QR",

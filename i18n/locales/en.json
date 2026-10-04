@@ -239,7 +239,14 @@
       "responsesAll": "Responses, all forms",
       "last30Short": "Last 30 days",
       "byStatus": "Forms by status",
-      "liveNow": "{n} live now"
+      "liveNow": "{n} live now",
+      "latest": "Latest responses",
+      "allResponses": "All responses",
+      "noResponsesYet": "Share the form to start collecting responses.",
+      "publishFirst": "Publish the form to start collecting responses.",
+      "shareForm": "Share the form",
+      "highlights": "Highlights",
+      "allInsights": "All insights"
     },
     "qr": {
       "title": "QR code",

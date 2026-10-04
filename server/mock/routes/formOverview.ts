@@ -27,6 +27,12 @@ function seeded(text: string) {
 }
 
 const DAY = 86_400_000
+const medianSeconds = (entries: { duration_seconds: number | null }[]) => {
+  const times = entries.map(entry => entry.duration_seconds).filter((n): n is number => n != null).sort((a, b) => a - b)
+  if (!times.length) return null
+  const mid = Math.floor(times.length / 2)
+  return Math.round(times.length % 2 ? times[mid]! : (times[mid - 1]! + times[mid]!) / 2)
+}
 
 export const getFormOverview = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
@@ -59,7 +65,8 @@ export const getFormOverview = defineMockRoute(({ event }) => {
       starts,
       responses: entries.length,
       completion_rate: live ? completion : 0,
-      avg_seconds: live ? Math.round(stats.fields * (14 + random() * 10)) : null,
+      // Median time to fill in, from the responses (the Responses page shows the same).
+      avg_seconds: medianSeconds(entries),
       last_response_at: entries[0] ? new Date(entries[0].at).toISOString() : null,
     },
     daily,

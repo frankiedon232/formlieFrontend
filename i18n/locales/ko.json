@@ -239,7 +239,14 @@
       "responsesAll": "응답(모든 양식)",
       "last30Short": "최근 30일",
       "byStatus": "상태별 양식",
-      "liveNow": "지금 {n}개 게시 중"
+      "liveNow": "지금 {n}개 게시 중",
+      "latest": "최근 응답",
+      "allResponses": "모든 응답",
+      "noResponsesYet": "양식을 공유해 응답을 받기 시작하세요.",
+      "publishFirst": "양식을 게시해 응답을 받기 시작하세요.",
+      "shareForm": "양식 공유",
+      "highlights": "주요 내용",
+      "allInsights": "모든 인사이트"
     },
     "qr": {
       "title": "QR 코드",

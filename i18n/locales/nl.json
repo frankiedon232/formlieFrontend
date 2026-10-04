@@ -239,7 +239,14 @@
       "responsesAll": "Antwoorden, alle formulieren",
       "last30Short": "Laatste 30 dagen",
       "byStatus": "Formulieren per status",
-      "liveNow": "{n} nu live"
+      "liveNow": "{n} nu live",
+      "latest": "Laatste antwoorden",
+      "allResponses": "Alle antwoorden",
+      "noResponsesYet": "Deel het formulier om antwoorden te verzamelen.",
+      "publishFirst": "Publiceer het formulier om antwoorden te verzamelen.",
+      "shareForm": "Formulier delen",
+      "highlights": "Hoogtepunten",
+      "allInsights": "Alle inzichten"
     },
     "qr": {
       "title": "QR-code",

@@ -239,7 +239,14 @@
       "responsesAll": "Risposte, tutti i moduli",
       "last30Short": "Ultimi 30 giorni",
       "byStatus": "Moduli per stato",
-      "liveNow": "{n} online ora"
+      "liveNow": "{n} online ora",
+      "latest": "Ultime risposte",
+      "allResponses": "Tutte le risposte",
+      "noResponsesYet": "Condividi il modulo per iniziare a raccogliere risposte.",
+      "publishFirst": "Pubblica il modulo per iniziare a raccogliere risposte.",
+      "shareForm": "Condividi il modulo",
+      "highlights": "In evidenza",
+      "allInsights": "Tutte le analisi"
     },
     "qr": {
       "title": "Codice QR",

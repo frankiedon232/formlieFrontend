@@ -239,7 +239,14 @@
       "responsesAll": "Yanıtlar, tüm formlar",
       "last30Short": "Son 30 gün",
       "byStatus": "Duruma göre formlar",
-      "liveNow": "Şu an {n} yayında"
+      "liveNow": "Şu an {n} yayında",
+      "latest": "Son yanıtlar",
+      "allResponses": "Tüm yanıtlar",
+      "noResponsesYet": "Yanıt toplamaya başlamak için formu paylaşın.",
+      "publishFirst": "Yanıt toplamaya başlamak için formu yayınlayın.",
+      "shareForm": "Formu paylaş",
+      "highlights": "Öne çıkanlar",
+      "allInsights": "Tüm içgörüler"
     },
     "qr": {
       "title": "QR kodu",

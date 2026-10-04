@@ -239,7 +239,14 @@
       "responsesAll": "Tanggapan, semua formulir",
       "last30Short": "30 hari terakhir",
       "byStatus": "Formulir per status",
-      "liveNow": "{n} aktif sekarang"
+      "liveNow": "{n} aktif sekarang",
+      "latest": "Tanggapan terbaru",
+      "allResponses": "Semua tanggapan",
+      "noResponsesYet": "Bagikan formulir untuk mulai mengumpulkan tanggapan.",
+      "publishFirst": "Terbitkan formulir untuk mulai mengumpulkan tanggapan.",
+      "shareForm": "Bagikan formulir",
+      "highlights": "Sorotan",
+      "allInsights": "Semua wawasan"
     },
     "qr": {
       "title": "Kode QR",
