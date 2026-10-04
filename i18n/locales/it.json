@@ -3374,6 +3374,18 @@
       "next": "File successivo",
       "sampleNote": "File di esempio: un segnaposto, non un vero caricamento",
       "newTab": "Apri in una nuova scheda"
+    },
+    "byForm": {
+      "newWaiting": "{n} nuova risposta da esaminare | {n} nuove risposte da esaminare",
+      "reviewed": "Esaminate",
+      "trend": "Ultimi 30 giorni",
+      "withStatus": "Ha risposte con stato",
+      "mostNew": "Prima con più nuove",
+      "latest": "Prima l'ultima risposta",
+      "most": "Prima con più risposte",
+      "openResponses": "Apri le risposte",
+      "openForm": "Apri il modulo",
+      "search": "Cerca moduli…"
     }
   }
 }

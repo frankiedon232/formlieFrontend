@@ -3374,6 +3374,18 @@
       "next": "File berikutnya",
       "sampleNote": "File contoh: pengganti, bukan unggahan asli",
       "newTab": "Buka di tab baru"
+    },
+    "byForm": {
+      "newWaiting": "{n} tanggapan baru untuk ditinjau | {n} tanggapan baru untuk ditinjau",
+      "reviewed": "Ditinjau",
+      "trend": "30 hari terakhir",
+      "withStatus": "Punya tanggapan berstatus",
+      "mostNew": "Paling banyak baru dulu",
+      "latest": "Tanggapan terbaru dulu",
+      "most": "Paling banyak tanggapan dulu",
+      "openResponses": "Buka tanggapan",
+      "openForm": "Buka formulir",
+      "search": "Cari formulir…"
     }
   }
 }

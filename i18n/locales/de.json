@@ -3374,6 +3374,18 @@
       "next": "Nächste Datei",
       "sampleNote": "Beispieldatei: ein Platzhalter, kein echter Upload",
       "newTab": "In neuem Tab öffnen"
+    },
+    "byForm": {
+      "newWaiting": "{n} neue Antwort zu prüfen | {n} neue Antworten zu prüfen",
+      "reviewed": "Geprüft",
+      "trend": "Letzte 30 Tage",
+      "withStatus": "Hat Antworten mit Status",
+      "mostNew": "Meiste neue zuerst",
+      "latest": "Neueste Antwort zuerst",
+      "most": "Meiste Antworten zuerst",
+      "openResponses": "Antworten öffnen",
+      "openForm": "Formular öffnen",
+      "search": "Formulare suchen…"
     }
   }
 }

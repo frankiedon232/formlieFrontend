@@ -3374,6 +3374,18 @@
       "next": "Next file",
       "sampleNote": "Sample file: a stand-in, not a real upload",
       "newTab": "Open in new tab"
+    },
+    "byForm": {
+      "newWaiting": "{n} new response to review | {n} new responses to review",
+      "reviewed": "Reviewed",
+      "trend": "Last 30 days",
+      "withStatus": "Has responses that are",
+      "mostNew": "Most new first",
+      "latest": "Latest response first",
+      "most": "Most responses first",
+      "openResponses": "Open responses",
+      "openForm": "Open the form",
+      "search": "Search forms…"
     }
   }
 }

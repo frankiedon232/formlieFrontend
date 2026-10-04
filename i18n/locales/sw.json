@@ -3374,6 +3374,18 @@
       "next": "Faili linalofuata",
       "sampleNote": "Faili la mfano: mbadala, si upakiaji halisi",
       "newTab": "Fungua kwenye kichupo kipya"
+    },
+    "byForm": {
+      "newWaiting": "Jibu {n} jipya la kukagua | Majibu {n} mapya ya kukagua",
+      "reviewed": "Yamekaguliwa",
+      "trend": "Siku 30 zilizopita",
+      "withStatus": "Ina majibu yenye hali",
+      "mostNew": "Mapya mengi kwanza",
+      "latest": "Jibu la karibuni kwanza",
+      "most": "Majibu mengi kwanza",
+      "openResponses": "Fungua majibu",
+      "openForm": "Fungua fomu",
+      "search": "Tafuta fomu…"
     }
   }
 }

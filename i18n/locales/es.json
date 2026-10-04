@@ -3374,6 +3374,18 @@
       "next": "Archivo siguiente",
       "sampleNote": "Archivo de ejemplo: un sustituto, no una subida real",
       "newTab": "Abrir en una pestaña nueva"
+    },
+    "byForm": {
+      "newWaiting": "{n} respuesta nueva por revisar | {n} respuestas nuevas por revisar",
+      "reviewed": "Revisadas",
+      "trend": "Últimos 30 días",
+      "withStatus": "Tiene respuestas en estado",
+      "mostNew": "Más nuevas primero",
+      "latest": "Última respuesta primero",
+      "most": "Más respuestas primero",
+      "openResponses": "Abrir respuestas",
+      "openForm": "Abrir el formulario",
+      "search": "Buscar formularios…"
     }
   }
 }

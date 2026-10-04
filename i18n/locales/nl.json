@@ -3374,6 +3374,18 @@
       "next": "Volgend bestand",
       "sampleNote": "Voorbeeldbestand: een vervanger, geen echte upload",
       "newTab": "Openen in nieuw tabblad"
+    },
+    "byForm": {
+      "newWaiting": "{n} nieuw antwoord te beoordelen | {n} nieuwe antwoorden te beoordelen",
+      "reviewed": "Beoordeeld",
+      "trend": "Laatste 30 dagen",
+      "withStatus": "Heeft antwoorden met status",
+      "mostNew": "Meeste nieuwe eerst",
+      "latest": "Laatste antwoord eerst",
+      "most": "Meeste antwoorden eerst",
+      "openResponses": "Antwoorden openen",
+      "openForm": "Formulier openen",
+      "search": "Formulieren zoeken…"
     }
   }
 }

@@ -3374,6 +3374,18 @@
       "next": "Fichier suivant",
       "sampleNote": "Fichier d'exemple : une copie de démonstration, pas un vrai envoi",
       "newTab": "Ouvrir dans un nouvel onglet"
+    },
+    "byForm": {
+      "newWaiting": "{n} nouvelle réponse à examiner | {n} nouvelles réponses à examiner",
+      "reviewed": "Examinées",
+      "trend": "30 derniers jours",
+      "withStatus": "A des réponses au statut",
+      "mostNew": "Plus de nouvelles d'abord",
+      "latest": "Dernière réponse d'abord",
+      "most": "Plus de réponses d'abord",
+      "openResponses": "Ouvrir les réponses",
+      "openForm": "Ouvrir le formulaire",
+      "search": "Rechercher des formulaires…"
     }
   }
 }

@@ -101,3 +101,22 @@ export interface ResponseInsights {
   /** Per form: the questions (what respondents fill in), for table columns and the summary. */
   schema: FormSchemaV1 | null
 }
+
+/** One form in the Responses page, grouped by form (owner 2026-10-04): its responses at a glance. */
+export interface ResponseFormRow {
+  id: string
+  name: string
+  status: 'draft' | 'published' | 'closed' | 'archived'
+  folder: { id: string; name: string } | null
+  owner: { id: string; name: string }
+  public_key: string
+  custom_link: string | null
+  completion_rate: number
+  total: number
+  /** By review status. */
+  status_counts: Record<ResponseStatus, number>
+  last_at: string | null
+  /** Responses per day, the last 30 days (sparkline). */
+  daily: number[]
+}
+

@@ -3374,6 +3374,18 @@
       "next": "下一个文件",
       "sampleNote": "示例文件：替代文件，并非真实上传",
       "newTab": "在新标签页中打开"
+    },
+    "byForm": {
+      "newWaiting": "{n} 条新回复待审核 | {n} 条新回复待审核",
+      "reviewed": "已审核",
+      "trend": "最近 30 天",
+      "withStatus": "有以下状态的回复",
+      "mostNew": "新回复多的优先",
+      "latest": "最新回复优先",
+      "most": "回复多的优先",
+      "openResponses": "打开回复",
+      "openForm": "打开表单",
+      "search": "搜索表单…"
     }
   }
 }

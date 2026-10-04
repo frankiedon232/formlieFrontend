@@ -3374,6 +3374,18 @@
       "next": "次のファイル",
       "sampleNote": "サンプルファイル: 実際のアップロードではない代替ファイル",
       "newTab": "新しいタブで開く"
+    },
+    "byForm": {
+      "newWaiting": "確認待ちの新しい回答 {n} 件 | 確認待ちの新しい回答 {n} 件",
+      "reviewed": "確認済み",
+      "trend": "過去30日",
+      "withStatus": "この状況の回答がある",
+      "mostNew": "新規が多い順",
+      "latest": "最新の回答順",
+      "most": "回答が多い順",
+      "openResponses": "回答を開く",
+      "openForm": "フォームを開く",
+      "search": "フォームを検索…"
     }
   }
 }

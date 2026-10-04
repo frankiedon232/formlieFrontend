@@ -5,7 +5,7 @@
  * Every change is recorded in the response's history and the audit trail.
  */
 import { z } from 'zod'
-import { RESPONSE_STATUSES, type ResponseDetail, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
+import { RESPONSE_STATUSES, type ResponseDetail, type ResponseFormRow, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
 import { allFields } from '#shared/utils/forms/build'
 import { isFileField } from '#shared/utils/forms/file-answers'
 import { isInputField } from '#shared/utils/forms/fields'
@@ -129,6 +129,63 @@ export const listResponses = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   const { data, meta } = pageOf(workspaceResponses(tenant, form => levelOf(form, user) !== 'none'), query, false)
   return ok(data.map(({ form, entry }) => rowOf(form, entry, false)), meta)
+})
+
+/**
+ * GET /responses/forms, the Responses page grouped by form (owner 2026-10-04): one row per form the
+ * person may see that has responses, with counts by review status, last response and a 30-day
+ * trend. `q` (form name), `filter[form_status]`, `filter[folder_id]`, `filter[review]` (forms with
+ * responses in that review status), sort `-new` (default) · `-last_at` · `-total` · `name`; paged.
+ */
+export const listResponseForms = defineMockRoute(({ event, query }) => {
+  const { tenant, user } = requireAuth(event)
+  const formStatus = list(query, 'form_status')
+  const folder = list(query, 'folder_id')
+  const review = list(query, 'review') as ResponseStatus[] | null
+  const q = typeof query.q === 'string' ? query.q.trim().toLowerCase() : ''
+  const today = Date.parse(new Date().toISOString().slice(0, 10))
+  const rows: ResponseFormRow[] = []
+  for (const form of formsOf(tenant).forms) {
+    if (form.deleted_at || levelOf(form, user) === 'none') continue
+    if ((formStatus && !formStatus.includes(form.status)) || (folder && !folder.includes(form.folder?.id ?? 'none')) || (q && !form.name.toLowerCase().includes(q))) continue
+    const entries = formResponses(tenant, form)
+    if (!entries.length) continue
+    const counts: Record<ResponseStatus, number> = { new: 0, reviewed: 0, approved: 0, rejected: 0 }
+    const daily = Array.from({ length: 30 }, () => 0)
+    for (const entry of entries) {
+      counts[entry.status]++
+      const index = 29 - Math.floor((today + DAY - 1 - entry.at) / DAY)
+      if (index >= 0 && index < 30) daily[index]!++
+    }
+    if (review && !review.some(status => counts[status] > 0)) continue
+    rows.push({
+      id: form.id,
+      name: form.name,
+      status: form.status,
+      folder: form.folder,
+      owner: { id: form.owner.id, name: form.owner.name },
+      public_key: form.public_key,
+      custom_link: form.custom_link ?? null,
+      completion_rate: form.completion_rate,
+      total: entries.length,
+      status_counts: counts,
+      last_at: new Date(entries[0]!.at).toISOString(),
+      daily,
+    })
+  }
+  const sort = typeof query.sort === 'string' && query.sort ? query.sort : '-new'
+  const desc = sort.startsWith('-')
+  const key = desc ? sort.slice(1) : sort
+  const value = (row: ResponseFormRow): string | number =>
+    key === 'name' ? row.name.toLowerCase() : key === 'total' ? row.total : key === 'last_at' ? row.last_at ?? '' : key in row.status_counts ? row.status_counts[key as ResponseStatus] : row.status_counts.new
+  rows.sort((a, b) => {
+    const x = value(a)
+    const y = value(b)
+    return (x < y ? -1 : x > y ? 1 : (b.last_at ?? '').localeCompare(a.last_at ?? '')) * (desc ? -1 : 1)
+  })
+  const page = Math.max(1, Number(query.page) || 1)
+  const pageSize = Math.min(100, Math.max(1, Number(query.page_size) || 20))
+  return ok(rows.slice((page - 1) * pageSize, page * pageSize), { page, page_size: pageSize, total: rows.length, total_pages: Math.max(1, Math.ceil(rows.length / pageSize)) })
 })
 
 /** GET /responses/insights, the inbox numbers. */

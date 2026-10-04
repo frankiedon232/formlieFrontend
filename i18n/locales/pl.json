@@ -3374,6 +3374,18 @@
       "next": "Następny plik",
       "sampleNote": "Plik przykładowy: zastępczy, nie prawdziwe przesłanie",
       "newTab": "Otwórz w nowej karcie"
+    },
+    "byForm": {
+      "newWaiting": "Nowe odpowiedzi do przejrzenia: {n} | Nowe odpowiedzi do przejrzenia: {n}",
+      "reviewed": "Przejrzane",
+      "trend": "Ostatnie 30 dni",
+      "withStatus": "Ma odpowiedzi o statusie",
+      "mostNew": "Najwięcej nowych najpierw",
+      "latest": "Najnowsza odpowiedź najpierw",
+      "most": "Najwięcej odpowiedzi najpierw",
+      "openResponses": "Otwórz odpowiedzi",
+      "openForm": "Otwórz formularz",
+      "search": "Szukaj formularzy…"
     }
   }
 }

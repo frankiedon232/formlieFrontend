@@ -3374,6 +3374,18 @@
       "next": "Sonraki dosya",
       "sampleNote": "Örnek dosya: gerçek bir yükleme değil, temsili",
       "newTab": "Yeni sekmede aç"
+    },
+    "byForm": {
+      "newWaiting": "İncelenecek {n} yeni yanıt | İncelenecek {n} yeni yanıt",
+      "reviewed": "İncelendi",
+      "trend": "Son 30 gün",
+      "withStatus": "Şu durumda yanıtları olan",
+      "mostNew": "En çok yeni önce",
+      "latest": "Son yanıt önce",
+      "most": "En çok yanıt önce",
+      "openResponses": "Yanıtları aç",
+      "openForm": "Formu aç",
+      "search": "Form ara…"
     }
   }
 }

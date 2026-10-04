@@ -1,12 +1,12 @@
 <!--
-  Responses inbox (F11): every form's responses in one place, for the forms the person may see.
-  A thin strip of the period's numbers, then the list (table or grid; form, status, channel
-  filters; the Responses | Insights switch shares its toolbar line) or Insights (responses over
-  time, review status, busiest forms). A response opens in the side panel (J / K). Old links
-  `/responses?form={id}` go to that form's Responses page.
+  Responses (F11; owner 2026-10-04: grouped by form, responses only inside a form). Two chart cards
+  for all forms on top (a review status filters the forms to those with such responses), then
+  every form with responses as table or grid (rule 21); a form opens its own Responses page.
+  Insights (responses over time, review status, busiest forms) share the toolbar line's switch.
+  Sidebar New / Reviewed… arrive as `?review=`; old links `/responses?form={id}` go to that form.
 -->
 <script setup lang="ts">
-import type { ResponseInsights, ResponseRow, ResponseStatus } from '#shared/types/responses'
+import type { ResponseInsights, ResponseStatus } from '#shared/types/responses'
 
 definePageMeta({ breadcrumb: 'nav.responses' })
 
@@ -51,33 +51,10 @@ const view = computed<'responses' | 'insights'>({
   get: () => (route.query.view === 'insights' ? 'insights' : 'responses'),
   set: value => void router.replace({ query: { ...route.query, view: value === 'responses' ? undefined : value } }),
 })
-const statusFilter = computed(() => (typeof route.query.status === 'string' && !route.query.status.includes(',') ? route.query.status : null))
-const filterStatus = (status: ResponseStatus | null) =>
-  void router.replace({ query: { ...route.query, view: undefined, status: status && statusFilter.value !== status ? status : undefined, page: undefined } })
-
-const list = useTemplateRef<{ refresh: () => Promise<void> }>('list')
-const openId = ref<string | null>(null)
-const ids = ref<string[]>([])
-const panel = ref(false)
-function openRow(row: ResponseRow, rows: ResponseRow[]) {
-  ids.value = rows.map(item => item.id)
-  openId.value = row.id
-  panel.value = true
-}
-// A shared link (`?response=`) opens that response.
-onMounted(() => typeof route.query.response === 'string' && openById(route.query.response))
-function openById(id: string) {
-  if (!ids.value.includes(id)) ids.value = [id]
-  openId.value = id
-  panel.value = true
-}
-let timer: ReturnType<typeof setTimeout> | undefined
-function changed() {
-  void list.value?.refresh()
-  clearTimeout(timer)
-  timer = setTimeout(() => void load(), 600)
-}
-onBeforeUnmount(() => clearTimeout(timer))
+/** One review status at a time: the forms that have such responses (the sidebar uses the same). */
+const review = computed(() => (typeof route.query.review === 'string' && !route.query.review.includes(',') ? route.query.review : null))
+const filterReview = (status: ResponseStatus) =>
+  void router.replace({ query: { ...route.query, view: undefined, review: review.value === status ? undefined : status, page: undefined } })
 </script>
 
 <template>
@@ -93,9 +70,8 @@ onBeforeUnmount(() => clearTimeout(timer))
     </template>
 
     <div v-if="loading" class="flex flex-col gap-4" :aria-label="t('common.loading')">
-      <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4"><USkeleton v-for="n in 4" :key="n" class="h-32 rounded-lg" /></div>
-      <div class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]"><USkeleton class="h-72 rounded-lg" /><USkeleton class="h-72 rounded-lg" /></div>
-      <USkeleton class="h-96 rounded-lg" />
+      <div class="grid gap-4 lg:grid-cols-2"><USkeleton v-for="n in 2" :key="n" class="h-40 rounded-lg" /></div>
+      <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-64 rounded-lg" /></div>
     </div>
     <UEmpty
       v-else-if="failed || !insights"
@@ -105,19 +81,17 @@ onBeforeUnmount(() => clearTimeout(timer))
       variant="outline"
     />
     <div v-else class="flex flex-col gap-4">
-      <FormsResponsesOverview :insights="insights" :status="statusFilter" @status="filterStatus" @insights="view = 'insights'" />
-      <FormsResponsesInbox v-if="view === 'responses'" ref="list" @open="openRow" @changed="changed">
+      <FormsResponsesOverview :insights="insights" :status="review" @status="filterReview" @insights="view = 'insights'" />
+      <FormsResponsesByForm v-if="view === 'responses'">
         <template #start><FormsResponsesViewSwitch v-model="view" /></template>
-      </FormsResponsesInbox>
+      </FormsResponsesByForm>
       <template v-else>
         <FormsResponsesViewSwitch v-model="view" class="self-start" />
         <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
           <FormsResponsesTrend :insights="insights" />
-          <FormsResponsesBreakdown :insights="insights" :status="statusFilter" @status="filterStatus" />
+          <FormsResponsesBreakdown :insights="insights" :status="review" @status="filterReview" />
         </div>
       </template>
     </div>
-
-    <FormsResponsesDetail :id="openId" v-model:open="panel" :ids="ids" @go="openById" @changed="changed" />
   </AppPanel>
 </template>

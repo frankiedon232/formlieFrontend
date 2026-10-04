@@ -64,7 +64,9 @@ function prepare(form: StoredForm, real: StoredResponse[]) {
 function sampleTimes(form: StoredForm): number[] {
   const n = form.sample_count ?? 0
   if (!n) return []
-  const end = Date.parse(form.sample_anchor!)
+  // Closed and archived forms stopped taking responses a while ago (their samples end earlier).
+  const stopped = form.status === 'archived' ? 75 * DAY : form.status === 'closed' ? 21 * DAY : 0
+  const end = Date.parse(form.sample_anchor!) - stopped
   const start = Math.min(Date.parse(form.created_at), end - DAY)
   const days = Math.max(1, Math.ceil((end - start) / DAY))
   const rng = rngOf(`${form.id}:days`)
@@ -133,7 +135,7 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
   if (!form.schema) ensureSchema(form, tenant)
   if (prepare(form, real)) saveForms()
   const schema = responseSchema(form)
-  const stamp = `${reviewVersion(form.id)}:${real.length}:${form.sample_count}:${form.sample_anchor}:${schemaStamp(form)}`
+  const stamp = `${reviewVersion(form.id)}:${real.length}:${form.sample_count}:${form.sample_anchor}:${schemaStamp(form)}:${form.status}`
   const hit = cache.get(form.id)
   if (hit?.stamp === stamp) return hit.list
 

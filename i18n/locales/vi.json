@@ -3374,6 +3374,18 @@
       "next": "Tệp sau",
       "sampleNote": "Tệp mẫu: bản thay thế, không phải tệp tải lên thật",
       "newTab": "Mở trong thẻ mới"
+    },
+    "byForm": {
+      "newWaiting": "{n} phản hồi mới cần xem | {n} phản hồi mới cần xem",
+      "reviewed": "Đã xem",
+      "trend": "30 ngày qua",
+      "withStatus": "Có phản hồi ở trạng thái",
+      "mostNew": "Nhiều mới nhất trước",
+      "latest": "Phản hồi gần nhất trước",
+      "most": "Nhiều phản hồi nhất trước",
+      "openResponses": "Mở phản hồi",
+      "openForm": "Mở biểu mẫu",
+      "search": "Tìm biểu mẫu…"
     }
   }
 }
