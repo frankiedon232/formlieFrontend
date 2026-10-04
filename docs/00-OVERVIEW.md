@@ -1,14 +1,14 @@
-# 00 — Formalie Product Overview
+# 00, Formalie Product Overview
 
 ## Positioning (owner, 2026-10-02)
 
-**A secure, flexible platform for creating forms, collecting and managing data, connecting systems and controlling access — built for organisations of any size, anywhere in the world.** Companies and organisations can build any form, design it as they want, share it, connect their own database, stay privacy-compliant and keep data secure.
+**A secure, flexible platform for creating forms, collecting and managing data, connecting systems and controlling access, built for organisations of any size, anywhere in the world.** Companies and organisations can build any form, design it as they want, share it, connect their own database, stay privacy-compliant and keep data secure.
 
-Formalie is a **global** product: copy, examples, sample data and visuals are international and neutral — never tied to one country.
+Formalie is a **global** product: copy, examples, sample data and visuals are international and neutral, never tied to one country.
 
 ## One-liner
 
-A drag-and-drop form builder with ready templates, full visual design control, versioned draft → publish workflow, sharing/embedding, short links, responses stored in Formalie or sent to the customer's own database, Excel export and analytics — multi-tenant, secure enough for a large enterprise, yet simple to use.
+A drag-and-drop form builder with ready templates, full visual design control, versioned draft → publish workflow, sharing/embedding, short links, responses stored in Formalie or sent to the customer's own database, Excel export and analytics, multi-tenant, secure enough for a large enterprise, yet simple to use.
 
 ## Core modules
 
@@ -41,14 +41,14 @@ System templates (platform-wide) + organisation templates. Categories: questionn
 - Share with people inside the organisation with **edit** or **view** access; share responses view separately.
 - Public link options: open, password-protected, invite-only, expiry date, response limit, one response per person, schedule open/close.
 - Form link `https://{forms | sub}.formalie.com/{formKey}/fill` and embed `…/{formKey}/embed` (`forms.formalie.com` for workspaces without their own subdomain) + **short URL** (`/s/{code}`) + QR code.
-- **API service** (F13): any form can also become API endpoints (`https://api.formalie.com/{apiKey}/{endpoint}`, GET / POST / PUT / DELETE) so applications send and read its data — links, embeds and API all land in the same storage.
+- **API service** (F13): any form can also become API endpoints (`https://api.formalie.com/{apiKey}/{endpoint}`, GET / POST / PUT / DELETE) so applications send and read its data, links, embeds and API all land in the same storage.
 - Embed via **iframe** (primary, with auto-resize script) and popup/slide-in later. Per-form allowed embed domains.
 - **SEO on every shared form link**: title, description, Open Graph/Twitter image, canonical URL, favicon, `noindex` toggle (default noindex for private forms).
 
 ### 6. Responses
 
-- Data sources (F12): organisations connect their own databases, then browse them (database explorer), query them (query editor, read-only by default) and manage rows, imports and exports — all server-side and audited.
-- Destinations: Formalie database (default), customer's own database — launch set: **MySQL, MariaDB, Oracle, PostgreSQL, SQL Server** (via Celery writer; list in `shared/utils/integrations/databases.ts`), or Formalie's own encrypted storage, webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
+- Data sources (F12): organisations connect their own databases, then browse them (database explorer), query them (query editor, read-only by default) and manage rows, imports and exports, all server-side and audited.
+- Destinations: Formalie database (default), customer's own database, launch set: **MySQL, MariaDB, Oracle, PostgreSQL, SQL Server** (via Celery writer; list in `shared/utils/integrations/databases.ts`), or Formalie's own encrypted storage, webhook (HMAC-signed, retried), email notification; integrations later (Google Sheets, Slack).
 - Response views: table and grid (switchable), filters, search, date ranges, single response view, edit history, notes/tags/status (e.g. new, reviewed, approved), bulk actions.
 - Export: Excel (.xlsx), CSV, PDF (single and bulk) via background jobs.
 
@@ -62,13 +62,13 @@ Per form: views, starts, completions, completion rate, drop-off per page/field, 
 
 ### 8. Collaboration
 
-Live co-editing in the builder (presence, cursors/selection, conflict-free edits) — planned as an optional phase once the single-user builder is solid. Comments on fields later.
+Live co-editing in the builder (presence, cursors/selection, conflict-free edits), planned as an optional phase once the single-user builder is solid. Comments on fields later.
 
 ### 9. Settings (handles everything)
 
 Company profile, branding, subdomain, authentication providers (Google, Microsoft, Apple, Facebook, email/password), OTP policy, predefined select lists (option sets), themes, data destinations/connections, webhooks, API keys, notification and email templates, data retention, localisation (language, timezone, date/number formats, currency), embed defaults, security policies (password rules, session timeout, IP allowlist), billing/subscription.
 
-### 10. Users, roles, access (RBAC) — near the end
+### 10. Users, roles, access (RBAC), near the end
 
 Org admin (all access by default) profiles users in their organisation, defines roles and permissions, resets passwords/accounts, enables/disables users, forces MFA, enables auth providers shown on their subdomain login page.
 
@@ -76,7 +76,7 @@ Org admin (all access by default) profiles users in their organisation, defines 
 
 Every action recorded with who, what, when, where (IP, geo), before/after values.
 
-### 12. Dashboard — last
+### 12. Dashboard, last
 
 Robust overview with date-range filters, built once we know exactly what to capture.
 

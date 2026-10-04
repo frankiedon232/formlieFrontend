@@ -1,4 +1,4 @@
-# Frontend Specification — Formalie Portal
+# Frontend Specification, Formalie Portal
 
 ## 1. Design principles
 
@@ -45,11 +45,11 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 
 ## 3. Shared building blocks
 
-- **`DataView`** — props: `columns`, `fetcher`, `gridCard` slot, `filters` schema, `defaultView`. Provides: Table (`UTable`, TanStack-based sorting, column visibility, row selection, sticky header) ↔ Grid (responsive `UCard` grid) switch; `FilterBar` (search, select filters, status chips, **date range**, reset); server-side pagination (`UPagination`, page-size selector); empty, loading (skeleton rows/cards) and error states; URL-synced query (`?page=&q=&status=&from=&to=&sort=`) so views are shareable and back-button safe.
+- **`DataView`**, props: `columns`, `fetcher`, `gridCard` slot, `filters` schema, `defaultView`. Provides: Table (`UTable`, TanStack-based sorting, column visibility, row selection, sticky header) ↔ Grid (responsive `UCard` grid) switch; `FilterBar` (search, select filters, status chips, **date range**, reset); server-side pagination (`UPagination`, page-size selector); empty, loading (skeleton rows/cards) and error states; URL-synced query (`?page=&q=&status=&from=&to=&sort=`) so views are shareable and back-button safe.
 - **`ConfirmDialog`**, **`EmptyState`**, **`PageHeader`** (title, description, actions), **`StatusBadge`**, **`CopyField`**, **`QrCode`**.
 - **Forms:** `UForm` + zod schemas; submit button busy; prevent double submit; dirty-state warning on leave.
-- **`useApi`** — envelope encrypt/decrypt (WebCrypto), bearer, CSRF, refresh on `FRM-AUTH-1001`, re-handshake on `FRM-SEC-1004`, typed responses, `try/catch/finally` inside, cancellation via `AbortController`.
-- **`useErrorHandler`** — maps error codes (see ERROR-CODES.md) to messages; shows trace ID for support.
+- **`useApi`**, envelope encrypt/decrypt (WebCrypto), bearer, CSRF, refresh on `FRM-AUTH-1001`, re-handshake on `FRM-SEC-1004`, typed responses, `try/catch/finally` inside, cancellation via `AbortController`.
+- **`useErrorHandler`**, maps error codes (see ERROR-CODES.md) to messages; shows trace ID for support.
 
 ## 4. Tenant detection and auth screens
 
@@ -65,7 +65,7 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 | Route                                                                                                                  | Page                                                                                                                                                            |
 | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/`                                                                                                                    | redirect → `/forms` (Dashboard later)                                                                                                                           |
-| `/forms`                                                                                                               | All forms — DataView; filters: status, folder, owner, tags, date range; actions: new, duplicate, move, archive, delete (trash)                                  |
+| `/forms`                                                                                                               | All forms, DataView; filters: status, folder, owner, tags, date range; actions: new, duplicate, move, archive, delete (trash)                                  |
 | `/forms/new`                                                                                                           | Start blank / from template / import JSON                                                                                                                       |
 | `/forms/[id]/build`                                                                                                    | Builder                                                                                                                                                         |
 | `/forms/[id]/design`                                                                                                   | Designer (theme)                                                                                                                                                |
@@ -83,12 +83,12 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 | `/api-service/webhooks` · `/api-keys` · `/apps`                                                                        | Webhooks, API keys, app integrations (F13; old `/integrations/*` links redirect)                                                                                |
 | `/data-sources`                                                                                                        | Data sources area (own rail icon, own menu, F12): overview of the sections                                                                                      |
 | `/data-sources/connections` · `/explorer` · `/query` · `/saved-queries` · `/destinations` · `/transfers` · `/activity` | Connections, database explorer, query editor, saved queries, destinations (form data → tables), imports & exports, activity (placeholders until F12)            |
-| `/api-service`                                                                                                         | API service area (own rail icon, own menu, F13): overview — link · embed · API channels, example endpoint                                                       |
+| `/api-service`                                                                                                         | API service area (own rail icon, own menu, F13): overview, link · embed · API channels, example endpoint                                                       |
 | `/api-service/services` · `/endpoints` · `/auth` · `/access` · `/logs` · `/analytics` · `/docs`                        | Services (containers), endpoints from forms, tokens & headers, allow / block rules, request logs, analytics, docs & testing (placeholders until F13)            |
 | `/settings/*`                                                                                                          | Company, branding, domain & subdomain, authentication, security, localisation, notifications & email templates, themes, data retention, embed defaults, billing |
 | `/settings/themes` · `/settings/themes/new` · `/settings/themes/[id]`                                                  | Themes library (system / saved / created) and the theme editor (designer on a sample form)                                                                      |
 | `/profile/*`                                                                                                           | My profile, password, MFA, sessions/devices                                                                                                                     |
-| `/audit`                                                                                                               | Audit trail: every action (who, what, when, where, before / after), filters, export — **early (F4)**                                                            |
+| `/audit`                                                                                                               | Audit trail: every action (who, what, when, where, before / after), filters, export, **early (F4)**                                                            |
 | `/users`, `/roles`, `/dashboard`                                                                                       | **Last**                                                                                                                                                        |
 
 Public (SSR, `layouts/public.vue`) on `forms.formalie.*` and workspace subdomains: `/[formKey]/fill` form renderer, `/[formKey]/embed` (chrome-less for iframe), `/s/[code]` short link redirect, closed/expired/not-found states.

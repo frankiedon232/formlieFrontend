@@ -21,7 +21,7 @@ describe('people access', () => {
     expect(levelOf(form({ team_access: 'none' }), user('a'))).toBe('none')
   })
 
-  it("a person's own level wins — more or less than the default", () => {
+  it("a person's own level wins, more or less than the default", () => {
     const some = form({
       team_access: 'none',
       grants: [
@@ -40,7 +40,7 @@ describe('seed users', () => {
     const { MOCK_USERS } = await import('../../server/mock/data/tenants')
     const keys = MOCK_USERS.map(person => `${person.tenant_id}:${person.id}`)
     expect(new Set(keys).size).toBe(keys.length)
-    // The same id in two workspaces is one person (a member of both) — same email.
+    // The same id in two workspaces is one person (a member of both), same email.
     for (const person of MOCK_USERS) for (const other of MOCK_USERS) if (person.id === other.id) expect(other.email).toBe(person.email)
   })
 })

@@ -1,5 +1,5 @@
 <!--
-  "Use template" (F9): name the new form and pick its folder, then it opens in the builder —
+  "Use template" (F9): name the new form and pick its folder, then it opens in the builder,
   every field, rule, calculation and the design can be changed before publishing.
 -->
 <script setup lang="ts">

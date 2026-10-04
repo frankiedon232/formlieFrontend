@@ -17,7 +17,7 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
         row(q('short_text', 'Organisation'), q('short_text', 'Job title')),
       ]),
       page('Your tickets', [
-        q('radio', 'Ticket type', { key: 'ticket', required: true, options: scored(['Standard — 120.00', 120], ['VIP — 250.00', 250], ['Student — 60.00', 60]) }),
+        q('radio', 'Ticket type', { key: 'ticket', required: true, options: scored(['Standard: 120.00', 120], ['VIP: 250.00', 250], ['Student: 60.00', 60]) }),
         row(
           q('number', 'Number of tickets', { key: 'tickets', required: true, default: 1, validation: { min: 1, max: 20 } }),
           q('calculated', 'Total', { key: 'total', formula: '{ticket} * {tickets}' }),
@@ -87,10 +87,10 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
       page('Reservation', [
         row(q('full_name', 'Name', { required: true }), q('email', 'Email', { required: true })),
         q('short_text', 'Organisation'),
-        q('radio', 'Room', { key: 'room', required: true, options: scored(['Meeting room — 40.00 / hour', 40], ['Board room — 75.00 / hour', 75], ['Event hall — 150.00 / hour', 150]) }),
+        q('radio', 'Room', { key: 'room', required: true, options: scored(['Meeting room: 40.00 / hour', 40], ['Board room: 75.00 / hour', 75], ['Event hall: 150.00 / hour', 150]) }),
         row(q('date', 'Date', { required: true }), q('time', 'Start time', { required: true }), q('number', 'Hours', { key: 'hours', required: true, default: 2, validation: { min: 1, max: 12 } })),
         q('number', 'Number of attendees', { validation: { min: 1, max: 1000 } }),
-        q('checkbox', 'Equipment', { key: 'equipment', options: scored(['Projector — 20.00', 20], ['Video conferencing — 30.00', 30], ['Catering set-up — 50.00', 50]) }),
+        q('checkbox', 'Equipment', { key: 'equipment', options: scored(['Projector: 20.00', 20], ['Video conferencing: 30.00', 30], ['Catering set-up: 50.00', 50]) }),
         row(
           q('calculated', 'Room cost', { key: 'room_cost', formula: '{room} * {hours}' }),
           q('calculated', 'Estimated total', { key: 'estimated_total', formula: '{room_cost} + if(count({equipment}) > 0, {equipment}, 0)' }),
@@ -105,7 +105,7 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-hand-helping',
     minutes: 4,
     name: 'Volunteer Signup',
-    description: 'Collect volunteers, their interests and availability — with guardian consent for under-18s.',
+    description: 'Collect volunteers, their interests and availability, with guardian consent for under-18s.',
     tags: ['volunteer', 'availability'],
     design: { header: { band_bg: '#15803d' }, colors: { primary: '#15803d' } },
     pages: [
@@ -148,8 +148,8 @@ export const EVENTS_TEMPLATES: TemplateDef[] = [
         q('url', 'Recording of a past talk', { key: 'past_talk' }),
       ]),
       page('Sponsor', [
-        q('radio', 'Package', { key: 'package', options: scored(['Bronze — 2,000', 2000], ['Silver — 5,000', 5000], ['Gold — 10,000', 10000]) }),
-        q('checkbox', 'Add-ons', { key: 'addons', options: scored(['Exhibition booth — 1,500', 1500], ['Logo on badges — 800', 800], ['Speaking slot — 2,500', 2500]) }),
+        q('radio', 'Package', { key: 'package', options: scored(['Bronze: 2,000', 2000], ['Silver: 5,000', 5000], ['Gold: 10,000', 10000]) }),
+        q('checkbox', 'Add-ons', { key: 'addons', options: scored(['Exhibition booth: 1,500', 1500], ['Logo on badges: 800', 800], ['Speaking slot: 2,500', 2500]) }),
         q('calculated', 'Sponsorship total', { key: 'sponsorship_total', formula: '{package} + if(count({addons}) > 0, {addons}, 0)' }),
         q('file_upload', 'Logo (SVG or PNG)', { props: { accept: '.svg,.png', max_files: 1, max_mb: 5 } }),
       ]),

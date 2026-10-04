@@ -1,4 +1,4 @@
-# 01 — Formalie Architecture
+# 01, Formalie Architecture
 
 ## High-level picture
 
@@ -52,13 +52,13 @@ Start as a **modular monolith API + independent worker services** connected by R
 
 | What                              | Development (now)                                      | Production                                             |
 | --------------------------------- | ------------------------------------------------------ | ------------------------------------------------------ |
-| Form link — no own subdomain      | `https://forms.formalie.dev/{formKey}/fill`            | `https://forms.formalie.com/{formKey}/fill`            |
-| Form embed — no own subdomain     | `https://forms.formalie.dev/{formKey}/embed`           | `https://forms.formalie.com/{formKey}/embed`           |
-| Form link / embed — own subdomain | `https://{sub}.formalie.dev/{formKey}/fill` · `/embed` | `https://{sub}.formalie.com/{formKey}/fill` · `/embed` |
+| Form link, no own subdomain      | `https://forms.formalie.dev/{formKey}/fill`            | `https://forms.formalie.com/{formKey}/fill`            |
+| Form embed, no own subdomain     | `https://forms.formalie.dev/{formKey}/embed`           | `https://forms.formalie.com/{formKey}/embed`           |
+| Form link / embed, own subdomain | `https://{sub}.formalie.dev/{formKey}/fill` · `/embed` | `https://{sub}.formalie.com/{formKey}/fill` · `/embed` |
 | API service endpoint              | `https://api.formalie.dev/{apiKey}/{endpoint}`         | `https://api.formalie.com/{apiKey}/{endpoint}`         |
 
 - `{formKey}`: the form's short public key (random, 10 letters / digits; a custom slug may replace it, unique per host). Never a database id. Public keys never clash with portal routes (reserved words).
-- `{apiKey}`: a short random public handle per organisation (10 letters / digits). It is **not** the tenant / organisation id and is **not** encrypted — see 03-DECISIONS → 61. The backend maps it to tenant + organisation; tokens are bound to the same organisation.
+- `{apiKey}`: a short random public handle per organisation (10 letters / digits). It is **not** the tenant / organisation id and is **not** encrypted, see 03-DECISIONS → 61. The backend maps it to tenant + organisation; tokens are bound to the same organisation.
 - `{endpoint}`: lower-case words with hyphens (`register-account`); `/{recordId}` is appended for GET one, PUT and DELETE.
 - `forms` and `api` are reserved subdomains (`shared/utils/tenant/host.ts`); every link is built by `shared/utils/urls/public.ts`. In local development the Nuxt dev port is added (`:2202`).
 - The API service runs as its own backend service (own deployment, scaling and rate limits), separate from form operations; both write through the same response pipeline.

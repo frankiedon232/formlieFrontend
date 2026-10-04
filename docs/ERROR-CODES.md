@@ -1,4 +1,4 @@
-# Error Codes — Formalie
+# Error Codes, Formalie
 
 Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–5999 server. Each code has an HTTP status, default message (safe for users), and log level. Add new codes here first, then to `app/core/errors/codes.py` and the `error_codes` table seed.
 

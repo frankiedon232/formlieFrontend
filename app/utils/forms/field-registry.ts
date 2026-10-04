@@ -1,7 +1,7 @@
 /**
  * Builder side of each field type (FRONTEND-SPEC §6): default settings for a new field and which
  * inspector controls apply. The type list itself is shared (shared/utils/forms/fields.ts);
- * labels come from i18n `builder.field.<type>`. One entry per type — the palette, inspector and
+ * labels come from i18n `builder.field.<type>`. One entry per type, the palette, inspector and
  * renderer all read from here.
  */
 import type { FormField } from '#shared/utils/forms/build'

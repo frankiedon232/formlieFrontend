@@ -1,5 +1,5 @@
 /**
- * The audit event catalogue — one place for every action key (used by the mock, the
+ * The audit event catalogue, one place for every action key (used by the mock, the
  * audit trail page, filters and exports). Labels live in i18n under `audit.action.<key>`
  * with dots replaced by underscores (`auth.login.failed` → `audit.action.auth_login_failed`).
  * New features add their actions here as they are built (PROGRESS.md → definition of done).

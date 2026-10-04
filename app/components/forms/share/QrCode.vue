@@ -1,9 +1,9 @@
 <!--
-  QR code for a form link (uqr encodes; we draw — no v-html). Two styles:
-    branded — a card: "scan to open" on top; the QR with the organisation's logo (or initials) in
-              the middle — Formalie's mark for workspaces without their own subdomain; below, the
+  QR code for a form link (uqr encodes; we draw, no v-html). Two styles:
+    branded, a card: "scan to open" on top; the QR with the organisation's logo (or initials) in
+              the middle, Formalie's mark for workspaces without their own subdomain; below, the
               organisation and the form name; a footer with the Formalie mark and the short address
-    plain   — the QR alone with its quiet zone
+    plain:  the QR alone with its quiet zone
   The preview, the SVG and the PNG come from the same markup (svgText), so downloads look the same.
   Error correction is "H" (30%) so the centre badge never breaks scanning.
 -->

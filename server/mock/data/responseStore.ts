@@ -17,11 +17,11 @@ export interface StoredResponse {
   data: Record<string, unknown>
   /** The fill-in session's submission id (Idempotency-Key). */
   submission_id: string
-  /** The browser it came from (device cookie) — "already submitted from this browser" (F10). */
+  /** The browser it came from (device cookie), "already submitted from this browser" (F10). */
   device_id?: string
-  /** SHA-256 of the answers — the exact same response twice is refused. */
+  /** SHA-256 of the answers, the exact same response twice is refused. */
   fingerprint?: string
-  /** A similar earlier response (respondent said they're a different person) — for the team to review (F11). */
+  /** A similar earlier response (respondent said they're a different person), for the team to review (F11). */
   possible_duplicate?: { of: string; reason: string }
   /** Who sent it, when the form knows (F10 M3): an invitation, or a signed-in member. */
   respondent?: { kind: 'invite' | 'member'; id: string; name: string | null; email: string }

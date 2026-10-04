@@ -1,6 +1,6 @@
 /**
  * Seeded audit history per workspace (deterministic per workspace, times relative to server
- * start so the trail looks live). International team, offices and devices — no single country.
+ * start so the trail looks live). International team, offices and devices, no single country.
  * IPs come from the reserved documentation ranges (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24).
  */
 import type { AuditActor, AuditChange, AuditDevice, AuditEvent, AuditLocation } from '#shared/types/audit'

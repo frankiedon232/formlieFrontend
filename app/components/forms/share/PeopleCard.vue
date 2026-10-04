@@ -1,8 +1,8 @@
 <!--
   Share → People with access (F10 M3, decision 97): who in the workspace may work on this form.
   Always full access: workspace owner / admins and the form's owner. Everyone else: the workspace
-  default (can edit — as before · can view · no access), unless given their own level (can edit ·
-  can view · responses only) — more or less than the default. Saved with the page.
+  default (can edit, as before · can view · no access), unless given their own level (can edit ·
+  can view · responses only), more or less than the default. Saved with the page.
 -->
 <script setup lang="ts">
 import type { Directory } from '#shared/types/directory'

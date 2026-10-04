@@ -1,7 +1,7 @@
 /**
  * Framework-free API client implementing the browser half of docs/SECURITY-PROTOCOL.md.
  * `useApi()` wraps it with Nuxt bits (base URL, session token, real fetch); tests drive it
- * with a fake server. All state (session key, CSRF token) lives in this closure — memory
+ * with a fake server. All state (session key, CSRF token) lives in this closure, memory
  * only, never storage (CLAUDE.md rule 12).
  */
 import type { ApiResponse, ApiSuccess, CsrfTokenResponse } from '#shared/types/api'

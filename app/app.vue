@@ -2,7 +2,7 @@
 const { t } = useI18n()
 const { current, uiLocale } = useAppLocale()
 
-// URLs are the same in every language (no_prefix), so no hreflang alternates — just lang/dir.
+// URLs are the same in every language (no_prefix), so no hreflang alternates, just lang/dir.
 useHead({
   htmlAttrs: {
     lang: () => current.value.language,

@@ -1,6 +1,6 @@
 <!--
   Designer (FRONTEND-SPEC §7, PROGRESS F8): design controls on the left, the live form page on
-  the right — desktop / tablet / phone and questions / thank-you page. Below laptop width the
+  the right, desktop / tablet / phone and questions / thank-you page. Below laptop width the
   preview fills the screen and the controls open from a floating "Design" bar (slide-over on
   tablets, drawer on phones). Same header, autosave and undo as the builder.
 -->

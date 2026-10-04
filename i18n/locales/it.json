@@ -119,7 +119,7 @@
       "count": "{count} modulo | {count} moduli",
       "empty": "Ancora nessuna cartella. Creane una qui sotto.",
       "viewForms": "Mostra i moduli in {name}",
-      "notEmpty": "Sposta prima i suoi moduli in un'altra cartella — poi potrà essere eliminata.",
+      "notEmpty": "Sposta prima i suoi moduli in un'altra cartella. Poi potrà essere eliminata.",
       "deleteEmpty": "La cartella è vuota, quindi nessun modulo è interessato."
     },
     "tags": {
@@ -190,7 +190,7 @@
     "filterTemplate": "Modello",
     "overview": {
       "subtitle": "{status} · aggiornato {updated}",
-      "trendTitle": "Risposte — ultimi 30 giorni",
+      "trendTitle": "Risposte degli ultimi 30 giorni",
       "trendDesc": "Invii al giorno",
       "trendAria": "Risposte al giorno negli ultimi 30 giorni, {total} in totale",
       "responsesCount": "{count} risposta | {count} risposte",
@@ -1711,7 +1711,7 @@
       "minChoices": "Scelte min.",
       "maxChoices": "Scelte max.",
       "accept": "Tipi di file consentiti",
-      "acceptHint": "Separati da virgola, es. .pdf,.docx,image/* — vuoto consente tutto.",
+      "acceptHint": "Separati da virgola, es. .pdf,.docx,image/* (vuoto consente tutto).",
       "maxFiles": "File max.",
       "maxSize": "Dimensione max. (MB)",
       "minAboveMax": "Il minimo supera il massimo.",
@@ -1782,9 +1782,9 @@
       "readonly": "Sola lettura",
       "disabled": "Disattivato",
       "editableHint": "Chi risponde può compilarlo.",
-      "readonlyHint": "Mostrato e inviato con la risposta, ma non modificabile — es. un riferimento precompilato.",
+      "readonlyHint": "Mostrato e inviato con la risposta, ma non modificabile (es. un riferimento precompilato).",
       "disabledHint": "Mostrato in grigio e non inviato con la risposta.",
-      "noRequired": "I campi di sola lettura e disattivati non possono essere obbligatori — nessuno potrebbe compilarli."
+      "noRequired": "I campi di sola lettura e disattivati non possono essere obbligatori, perché nessuno potrebbe compilarli."
     },
     "labels": {
       "title": "Posizione etichette",
@@ -1828,13 +1828,13 @@
       "label": "Editor del modulo, schermo intero"
     },
     "drop": {
-      "newRow": "Rilascia qui — nuova riga",
-      "beside": "Rilascia qui — accanto"
+      "newRow": "Rilascia qui: nuova riga",
+      "beside": "Rilascia qui: accanto"
     },
     "blocks": {
       "appearance": "Aspetto",
       "sectionPlaceholder": "Titolo della sezione",
-      "descriptionPlaceholder": "Aggiungi una descrizione (facoltativa) — doppio clic per modificare",
+      "descriptionPlaceholder": "Aggiungi una descrizione (facoltativa). Doppio clic per modificare",
       "paragraphPlaceholder": "Scrivi del testo…",
       "paragraphHint": "Fai clic sul paragrafo nell’area di lavoro per scrivere. Seleziona il testo per grassetto, link, elenchi e allineamento.",
       "size": "Dimensione",
@@ -1867,7 +1867,7 @@
       "caption": "Didascalia",
       "imageWidth": "Dimensione immagine",
       "href": "Link al clic",
-      "hrefHint": "Facoltativo — si apre in una nuova scheda.",
+      "hrefHint": "Facoltativo. Si apre in una nuova scheda.",
       "rounded": "Angoli arrotondati",
       "fill": "Riempi",
       "height": "Altezza",
@@ -2030,14 +2030,14 @@
       "ip": "Inserisca un indirizzo IP valido per {field}.",
       "domain": "Inserisca un nome di dominio per {field}, come example.org.",
       "mac": "Inserisca un indirizzo MAC per {field}, come 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} non è un IBAN valido — controlli il numero.",
+      "iban": "{field} non è un IBAN valido. Controlli il numero.",
       "bic": "Inserisca un codice SWIFT / BIC di 8 o 11 caratteri per {field}.",
       "color": "Scelga un colore per {field}.",
       "duration": "Inserisca una durata per {field} (minuti 0–59).",
       "name": "Inserisca nome e cognome per {field}.",
       "consent": "Confermi {field} per continuare.",
       "choice": "Scelga un’opzione dall’elenco per {field}.",
-      "file": "{field}: un file non ha terminato il caricamento — rimuovilo e aggiungilo di nuovo."
+      "file": "{field}: un file non ha terminato il caricamento. Rimuovilo e aggiungilo di nuovo."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "File non aggiunto",
       "wrongType": "Tipo di file non valido: {files}. Scegli uno dei tipi consentiti.",
       "tooBig": "Troppo grande (oltre {mb} MB): {files}",
-      "tooMany": "Sono consentiti solo {max} file — {n} file non è stato aggiunto. | Sono consentiti solo {max} file — {n} file non sono stati aggiunti.",
+      "tooMany": "Sono consentiti solo {max} file. {n} file non è stato aggiunto. | Sono consentiti solo {max} file. {n} file non sono stati aggiunti.",
       "limits": "Fino a {max} file, {mb} MB ciascuno",
       "count": "{n} di {max}",
       "addMore": "Aggiungi altri",
@@ -2125,10 +2125,10 @@
       "auto": "Le tue risposte vengono salvate man mano",
       "saving": "Salvataggio…",
       "saved": "Salvato {when}",
-      "notSaved": "Non salvato — controlla la connessione",
+      "notSaved": "Non salvato. Controlla la connessione",
       "later": "Salva e continua più tardi",
       "title": "Continua più tardi",
-      "desc": "Ti invieremo un link personale che recupera le tue risposte — su qualsiasi dispositivo, per 30 giorni.",
+      "desc": "Ti invieremo un link personale che recupera le tue risposte, su qualsiasi dispositivo, per 30 giorni.",
       "email": "La tua email",
       "emailHint": "Il link viene inviato solo a questo indirizzo. Tienilo riservato: chiunque lo abbia può continuare il tuo modulo.",
       "send": "Invia il mio link",
@@ -2282,7 +2282,7 @@
       "empty": "Aggiungi una formula",
       "unknown": "Nessun campo usa la chiave “{key}”",
       "self": "Un campo non può usare se stesso",
-      "syntax": "Questa formula è incompleta — controlla parentesi, virgole e operatori",
+      "syntax": "Questa formula è incompleta. Controlla parentesi, virgole e operatori",
       "functions": "Funzioni:",
       "choiceScored": "Vale il numero dell’opzione scelta",
       "choiceUnscored": "Assegna numeri alle sue opzioni (impostazioni campo → Opzioni) per usarlo nelle somme",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Controlla queste risposte",
     "thenTitle": "Poi fai questo",
     "ifHelp": "Scegli una domanda, come confrontarla e la risposta che deve attivare la regola.",
-    "thenHelp": "Scegli cosa succede quando le risposte corrispondono — e a quale domanda o pagina.",
+    "thenHelp": "Scegli cosa succede quando le risposte corrispondono, e a quale domanda o pagina.",
     "matchLead": "Esegui la regola quando",
     "andChip": "e",
     "orChip": "o",
@@ -2410,7 +2410,7 @@
     "deleteList": "Elimina elenco",
     "deleteListTitle": "Eliminare l’elenco “{name}”?",
     "deleteListDesc": "I campi che lo usano già conservano le loro opzioni.",
-    "listDesc": "Opzioni riutilizzabili per qualsiasi campo a scelta — paesi, regioni, prodotti, team …",
+    "listDesc": "Opzioni riutilizzabili per qualsiasi campo a scelta: paesi, regioni, prodotti, team …",
     "listName": "Nome",
     "listNamePlaceholder": "es. Regioni",
     "listOptions": "Opzioni",
@@ -2426,7 +2426,7 @@
     "useList": "Compila da un elenco…",
     "saveAsList": "Salva come elenco",
     "toast": {
-      "fieldSaved": "“{name}” salvato — lo trovi in Salvati",
+      "fieldSaved": "“{name}” salvato. Lo trovi in Salvati",
       "fieldRemoved": "“{name}” rimosso dai campi salvati",
       "listCreated": "Elenco “{name}” creato",
       "listUpdated": "Elenco “{name}” aggiornato",
@@ -2546,7 +2546,7 @@
       "error": "Errori"
     },
     "colorInvalid": "Usa un colore esadecimale come #1a2b3c.",
-    "lowContrast": "Contrasto basso ({ratio} : 1) — potrebbe essere difficile da leggere.",
+    "lowContrast": "Contrasto basso ({ratio} : 1), potrebbe essere difficile da leggere.",
     "pickColor": "Scegli un colore per {name}",
     "inputStyle": "Stile",
     "style": {
@@ -2636,7 +2636,7 @@
     "updateExisting": "Aggiorna «{name}»",
     "saveNew": "Salva come nuovo tema",
     "name": "Nome",
-    "namePlaceholder": "es. Brand — chiaro",
+    "namePlaceholder": "es. Brand (chiaro)",
     "renameTitle": "Rinomina tema",
     "rename": "Rinomina",
     "duplicate": "Duplica",
@@ -2721,7 +2721,7 @@
     "example": "Com’è fatto un endpoint (esempio)",
     "channels": {
       "title": "Raccolga dati da ogni direzione",
-      "hint": "Ogni modulo può ricevere risposte tramite il suo link, un’incorporazione sul Suo sito e la sua API — tutto arriva nello stesso posto.",
+      "hint": "Ogni modulo può ricevere risposte tramite il suo link, un’incorporazione sul Suo sito e la sua API. Tutto arriva nello stesso posto.",
       "link": "Link condivisibile",
       "embed": "Modulo incorporato",
       "api": "Endpoint API"
@@ -2883,7 +2883,7 @@
       "checking": "Verifica in corso…",
       "free": "Questo link è disponibile",
       "taken": "Un altro modulo usa già questo link",
-      "reserved": "Questa parola è riservata — ne scelga un’altra",
+      "reserved": "Questa parola è riservata. Ne scelga un’altra",
       "invalid": "Usi da 3 a 60 lettere minuscole, numeri e trattini",
       "remove": "Rimuovi link personalizzato",
       "copy": "Copia link",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Dopodiché, il link indica che il modulo è completo.",
       "max": "Numero massimo di risposte",
       "used": "{n} di {max} utilizzate",
-      "full": "Il limite è stato raggiunto — il modulo non accetta più risposte.",
+      "full": "Il limite è stato raggiunto. Il modulo non accetta più risposte.",
       "when": "Quando accetta risposte",
       "always": "Sempre (senza data di inizio o di fine)",
       "from": "Dal {from}",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Come funzionano i link del modulo",
-      "desc": "Il modulo può avere fino a tre link. Aprono tutti lo stesso modulo — usi quello più adatto al luogo in cui lo condivide.",
+      "desc": "Il modulo può avere fino a tre link. Aprono tutti lo stesso modulo: usi quello più adatto al luogo in cui lo condivide.",
       "always": "Sempre attivo",
       "on": "Attivo",
       "off": "Non impostato",
       "original": {
         "name": "Link originale",
-        "for": "Creato insieme al modulo. Non cambia mai e funziona sempre — anche dopo aver aggiunto un link personalizzato o un link breve."
+        "for": "Creato insieme al modulo. Non cambia mai e funziona sempre, anche dopo aver aggiunto un link personalizzato o un link breve."
       },
       "custom": {
         "name": "Link personalizzato",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Un poster o un codice QR usa il link breve",
-          "then": "continua a funzionare qualunque cosa faccia con il link personalizzato. Rimuovere il link breve lo disattiva per sempre — il suo codice non viene mai assegnato a un altro modulo."
+          "then": "continua a funzionare qualunque cosa faccia con il link personalizzato. Rimuovere il link breve lo disattiva per sempre: il suo codice non viene mai assegnato a un altro modulo."
         },
         "closed": {
           "when": "Il modulo è chiuso, completo, scaduto o protetto",
-          "then": "ogni link mostra lo stesso messaggio o la stessa schermata della password — nessun link lo aggira."
+          "then": "ogni link mostra lo stesso messaggio o la stessa schermata della password. Nessun link lo aggira."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Descrizione",
       "descriptionPlaceholder": "Una frase sullo scopo del modulo",
       "image": "Immagine",
-      "imageHint": "Mostrata in alto nella scheda del link. PNG, JPEG o WebP, fino a 5 MB — ideale 1200 × 630 px.",
+      "imageHint": "Mostrata in alto nella scheda del link. PNG, JPEG o WebP, fino a 5 MB (ideale 1200 × 630 px).",
       "imageRule": "Usa un’immagine PNG, JPEG o WebP fino a 5 MB.",
       "upload": "Carica immagine",
       "replace": "Sostituisci",
@@ -3005,12 +3005,12 @@
       "asCard": "Scheda del link",
       "asSearch": "Risultato di ricerca",
       "noImage": "Nessuna immagine",
-      "hiddenFromSearch": "Nascosto ai motori di ricerca — questo modulo non comparirà nei risultati di ricerca."
+      "hiddenFromSearch": "Nascosto ai motori di ricerca. Questo modulo non comparirà nei risultati di ricerca."
     },
     "invite": {
       "title": "Inviti",
       "counts": "{responded} su {total} hanno risposto",
-      "saveFirst": "Salvi «Solo persone invitate» perché gli inviti abbiano effetto — fino ad allora il modulo resta aperto come prima.",
+      "saveFirst": "Salvi «Solo persone invitate» perché gli inviti abbiano effetto. Fino ad allora il modulo resta aperto come prima.",
       "add": "Invita persone",
       "addHint": "Solo indirizzi email. Separali con una virgola, uno spazio o un a capo, oppure incolla un elenco.",
       "placeholder": "nome{'@'}example.org",
@@ -3018,7 +3018,7 @@
       "buttonEmpty": "Invita",
       "sent": "{n} invito inviato | {n} inviti inviati",
       "skipped": "{n} persona era già invitata | {n} persone erano già invitate",
-      "devLinks": "Link personali — inviati via email a ciascuna persona quando Formalie sarà attivo; mostrati qui durante lo sviluppo:",
+      "devLinks": "Link personali, inviati via email a ciascuna persona quando Formalie sarà attivo. Mostrati qui durante lo sviluppo:",
       "none": "Ancora nessun invitato.",
       "resent": "Un nuovo link è stato inviato a {email}",
       "resend": "Invia un nuovo link",
@@ -3069,14 +3069,14 @@
       "remove": "Rimuovi {name}",
       "note": "L’accesso personale sostituisce per quella persona l’impostazione predefinita dello spazio di lavoro, che sia maggiore o minore. Gli amministratori dello spazio e il proprietario del modulo hanno sempre accesso completo.",
       "viewOnly": "Sola lettura",
-      "viewOnlyDesc": "Puoi consultare questo modulo e le sue impostazioni. Le modifiche non vengono salvate — chiedi l’accesso in modifica al proprietario del modulo.",
+      "viewOnlyDesc": "Puoi consultare questo modulo e le sue impostazioni. Le modifiche non vengono salvate: chiedi l’accesso in modifica al proprietario del modulo.",
       "responsesOnly": "Puoi vedere solo le risposte di questo modulo",
       "responsesOnlyDesc": "Domande e design non sono condivisi con te. Rivolgiti al proprietario del modulo se ti serve un accesso maggiore.",
       "viewForm": "Visualizza"
     },
     "section": {
       "answering": "Compilare il modulo",
-      "answeringDesc": "Chi può compilarlo e come ci arriva — per tutte le persone a cui invia il modulo.",
+      "answeringDesc": "Chi può compilarlo e come ci arriva, per tutte le persone a cui invia il modulo.",
       "team": "Il suo team",
       "teamDesc": "Il personale del suo spazio di lavoro che crea e gestisce questo modulo. Non cambia chi può compilarlo."
     }

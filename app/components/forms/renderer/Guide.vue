@@ -1,6 +1,6 @@
 <!--
   Help guide on the form (F10, owner 2026-10-03): a round "?" button floating in the bottom corner
-  (the form's own colour) opens a chat-style panel — not a chat — with the creator's guide on how
+  (the form's own colour) opens a chat-style panel, not a chat, with the creator's guide on how
   to fill in the form. Only when the creator turned it on and wrote one. Esc or the close button
   closes it; focus moves into the panel and back to the button.
 -->

@@ -59,7 +59,7 @@ export interface AuditEvent {
   request_id: string
 }
 
-/** GET /audit-logs/facets — options for the person and country filters. */
+/** GET /audit-logs/facets, options for the person and country filters. */
 export interface AuditFacets {
   actors: { id: string; name: string }[]
   countries: string[]

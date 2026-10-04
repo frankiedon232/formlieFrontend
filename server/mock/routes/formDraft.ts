@@ -46,7 +46,7 @@ function findForm(tenant: MockTenant, id: string | undefined): StoredForm {
 
 const versionView = ({ schema: _schema, ...version }: StoredVersion) => version
 
-/** GET /forms/:id/builder — everything the builder needs in one call. */
+/** GET /forms/:id/builder, everything the builder needs in one call. */
 export const getBuilder = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
@@ -142,7 +142,7 @@ export const publishForm = defineMockRoute(({ event, body }) => {
   return ok({ form: summaryOf(form), version: versionView(version) })
 })
 
-/** POST /forms/:id/discard — throw away draft changes, back to the published version. */
+/** POST /forms/:id/discard, throw away draft changes, back to the published version. */
 export const discardDraft = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
@@ -178,7 +178,7 @@ export const getVersion = defineMockRoute(({ event }) => {
   return ok(version)
 })
 
-/** POST /forms/:id/versions/:vid/restore — copy a published version into the draft. */
+/** POST /forms/:id/versions/:vid/restore, copy a published version into the draft. */
 export const restoreVersion = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))

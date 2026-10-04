@@ -1,9 +1,9 @@
 /**
  * Embed code for a form (F10 M2): the `<iframe>` people paste into their own website.
- *   auto  — the frame follows the form's height: the embed page posts `formalie:resize` messages
+ *   auto, the frame follows the form's height: the embed page posts `formalie:resize` messages
  *           (FormView) and a small script on the host page applies them (only messages from the
  *           form's own address, only to that frame).
- *   fixed — a fixed height in pixels; the form scrolls inside the frame.
+ *   fixed, a fixed height in pixels; the form scrolls inside the frame.
  */
 export interface EmbedOptions {
   url: string

@@ -1,4 +1,4 @@
-/** Templates gallery (F9) — docs/API-CONTRACT.md → Templates. */
+/** Templates gallery (F9), docs/API-CONTRACT.md → Templates. */
 import type { FormSchemaV1 } from '../utils/forms/schema'
 
 export type TemplateSource = 'system' | 'workspace'
@@ -18,7 +18,7 @@ export interface TemplateSummary {
   fields_count: number
   logic_count: number
   calculations_count: number
-  /** Full design tokens — the gallery card shows a mini preview in this design. */
+  /** Full design tokens, the gallery card shows a mini preview in this design. */
   theme: Record<string, unknown>
   /** First question labels, for the card preview. */
   preview: string[]
@@ -44,14 +44,14 @@ export interface TemplateDetail extends TemplateSummary {
   calculations: TemplateCalculation[]
 }
 
-/** GET /templates/facets — counts for the category filter (system + workspace). */
+/** GET /templates/facets, counts for the category filter (system + workspace). */
 export interface TemplateFacets {
   total: number
   categories: Record<string, number>
   workspace: number
 }
 
-/** GET /templates/categories — Formalie's categories with what's inside (owner, 2026-10-03). */
+/** GET /templates/categories, Formalie's categories with what's inside (owner, 2026-10-03). */
 export interface TemplateCategorySummary {
   key: string
   /** In the requested language. */

@@ -33,7 +33,7 @@ export function useFormat() {
     )
   }
 
-  /** "3 minutes ago", "in 2 days" — falls back to "now" under 5 s. */
+  /** "3 minutes ago", "in 2 days", falls back to "now" under 5 s. */
   function relative(value: string | number | Date | null | undefined, now = Date.now()) {
     if (value == null || value === '') return ''
     const seconds = Math.round((toDate(value).getTime() - now) / 1000)

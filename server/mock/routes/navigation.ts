@@ -9,7 +9,7 @@ import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
 import { SYSTEM_THEME_COUNT } from './themes'
 
-/** GET /navigation/counts — cheap counters and short lists for the sidebar. */
+/** GET /navigation/counts, cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   // People access: forms someone may not see aren't counted for them either.

@@ -1,7 +1,7 @@
 <!--
   In-app browser for public form pages (owner, 2026-10-03): the organisation's website, terms and
-  privacy pages open here — a window over about 80% of the screen, rounded, with the organisation's
-  branding, a loading bar, reload / open-in-new-tab and a clear close button — so the form
+  privacy pages open here, a window over about 80% of the screen, rounded, with the organisation's
+  branding, a loading bar, reload / open-in-new-tab and a clear close button, so the form
   underneath (and everything typed in) stays. Some sites refuse to be shown inside another page;
   browsers don't say so, so "Open in a new tab" is always one click away and offered again when a
   page takes long.

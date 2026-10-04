@@ -1,7 +1,7 @@
 import type { AuthTokens, SessionOrganisation, SessionTenant, SessionUser } from '#shared/types/auth'
 
 /**
- * Signed-in session in plain module-level refs (CLAUDE.md rule 12): client memory only — never
+ * Signed-in session in plain module-level refs (CLAUDE.md rule 12): client memory only, never
  * localStorage, never useState, so nothing leaks into an SSR payload. The refresh token is an
  * HttpOnly cookie the browser sends to /auth/refresh by itself; a reload restores the session
  * through it (useAuth().restore()).

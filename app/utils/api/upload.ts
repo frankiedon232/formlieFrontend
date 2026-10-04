@@ -2,7 +2,7 @@ import type { UploadTicket } from '#shared/types/onboarding'
 
 /**
  * PUT a file straight to storage through a pre-signed ticket (SECURITY-PROTOCOL.md) with real
- * progress — XHR, because fetch has no upload progress. `onRequest` gets the request so callers
+ * progress, XHR, because fetch has no upload progress. `onRequest` gets the request so callers
  * can cancel it.
  */
 export function putFile(

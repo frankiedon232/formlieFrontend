@@ -1,5 +1,5 @@
 /**
- * Invisible spam check for public forms (F10 M2, decision 89) — no third-party captcha, no
+ * Invisible spam check for public forms (F10 M2, decision 89), no third-party captcha, no
  * tracking, nothing for people to click. The server hands out a signed challenge when the form
  * opens; the browser finds a number whose SHA-256 with the challenge's salt starts with
  * `difficulty` zero bits (well under a second on a phone, done in the background while the person

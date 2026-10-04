@@ -2,7 +2,7 @@
  * Template content in the person's language (F9 milestone 5). Templates are written in English; a
  * dictionary per language (`shared/templates/messages/<code>.json`, English text → translation,
  * shared by all templates so "Email" is translated once) is applied to the built schema. Only text
- * people read changes — keys, option values, scores, logic and formulas stay as they are, so
+ * people read changes, keys, option values, scores, logic and formulas stay as they are, so
  * calculations and rules behave the same in every language. Text results inside formulas
  * (`"Pass"`) are translated too; values compared against answers (`{attending} = "yes"`) are not.
  * Missing entries simply stay in English.
@@ -77,7 +77,7 @@ const normaliseText = (text: string) => text.trim().replace(/\s+/g, ' ').toLocal
 
 /**
  * A form's text moved to another language (owner, 2026-10-04: changing a form's language left its
- * questions in English). Works for every text that comes from the template dictionaries — in
+ * questions in English). Works for every text that comes from the template dictionaries, in
  * English, or already in the form's previous language (`from`). Text people wrote themselves has
  * no translation here and stays as it is (`kept`); those are translated per language in M4.
  * `to` / `from` null = English.

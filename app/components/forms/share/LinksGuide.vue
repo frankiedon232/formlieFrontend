@@ -1,6 +1,6 @@
 <!--
   Share → "How your form's links work" (owner, 2026-10-04): the three addresses of a form side by
-  side — original (always works), custom (readable), short (posters, SMS, QR) — what each is for,
+  side, original (always works), custom (readable), short (posters, SMS, QR), what each is for,
   that they all work together (none cancels another), and the everyday situations. Shows the form's
   real links; the situations fold open.
 -->
@@ -89,7 +89,7 @@ const open = ref(false)
         <UIcon name="i-lucide-corner-down-right" class="mt-0.5 size-3.5 shrink-0 text-muted" />
         <span>
           <span class="font-medium text-highlighted">{{ t(`share.guide.case.${situation}.when`) }}</span>
-          <span class="text-toned"> — {{ t(`share.guide.case.${situation}.then`) }}</span>
+          <span class="text-toned">, {{ t(`share.guide.case.${situation}.then`) }}</span>
         </span>
       </li>
     </ul>

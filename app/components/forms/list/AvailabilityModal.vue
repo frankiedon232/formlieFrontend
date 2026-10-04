@@ -1,7 +1,7 @@
 <!--
   When a form takes responses (F10, owner 2026-10-03): "Open from" and "Open until" (both optional),
   with quick choices for the end. After the end the link says the form has expired; before the start
-  it says when it opens. Saves straight away (PATCH /forms/{id}) — no publishing needed.
+  it says when it opens. Saves straight away (PATCH /forms/{id}), no publishing needed.
 -->
 <script setup lang="ts">
 import type { FormSummary } from '#shared/types/forms'

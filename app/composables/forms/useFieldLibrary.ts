@@ -2,7 +2,7 @@ import type { OptionList, SavedField } from '#shared/types/forms'
 import type { FormField } from '#shared/utils/forms/build'
 
 // Shared by the palette, the inspector and the list manager on the same page (workspace data,
-// no secrets — a plain module-level cache that each builder visit refreshes).
+// no secrets, a plain module-level cache that each builder visit refreshes).
 const savedFields = ref<SavedField[]>([])
 const lists = ref<OptionList[]>([])
 const loading = ref(false)

@@ -1,4 +1,4 @@
-# Frontend Roadmap — formalieFrontend
+# Frontend Roadmap, formalieFrontend
 
 **Every task, its status and the progress log now live in [PROGRESS.md](../PROGRESS.md)** (repo root). This file only keeps the phase order and the rules for working through it.
 

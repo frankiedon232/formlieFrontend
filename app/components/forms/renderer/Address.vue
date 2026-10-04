@@ -1,4 +1,4 @@
-<!-- Address (street, city, region, postal code, country — international) and country picker. -->
+<!-- Address (street, city, region, postal code, country, international) and country picker. -->
 <script setup lang="ts">
 import { isLocked, type FormField } from '#shared/utils/forms/build'
 import { requiredAddressParts, type AddressPart } from '#shared/utils/forms/validate'

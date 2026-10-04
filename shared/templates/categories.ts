@@ -1,5 +1,5 @@
 /**
- * Template categories (F9) — each with an icon, a colour for chips / bullets and a design family,
+ * Template categories (F9), each with an icon, a colour for chips / bullets and a design family,
  * so the catalogue looks varied but every category is recognisable. Templates add their own accent
  * on top. Names live in i18n (`templates.categories.<key>`).
  */

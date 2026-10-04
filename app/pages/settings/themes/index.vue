@@ -1,5 +1,5 @@
 <!--
-  Themes library (Resources → Themes): three kinds in the shared DataView — System (Formalie's
+  Themes library (Resources → Themes): three kinds in the shared DataView, System (Formalie's
   designs, read-only: duplicate to change), Saved (from a form's design) and Created (theme editor).
   Table or grid with page-shaped previews, filter by kind, search, sort; edit, rename, duplicate,
   delete (forms keep their copy).

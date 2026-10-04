@@ -1,7 +1,7 @@
 <!--
   One rule as a card: "Rule 2" + problem badge + Edit + ⋯ (move, duplicate, delete) in the header;
-  the plain-language sentence below. Edit opens two numbered steps — 1 IF (which answers to
-  check) and 2 THEN (what happens) — each with a short explanation, column labels and AND / OR
+  the plain-language sentence below. Edit opens two numbered steps, 1 IF (which answers to
+  check) and 2 THEN (what happens), each with a short explanation, column labels and AND / OR
   between conditions, so anyone can follow it.
 -->
 <script setup lang="ts">

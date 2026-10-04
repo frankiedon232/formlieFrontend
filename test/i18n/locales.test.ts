@@ -18,7 +18,7 @@ function flatten(messages: Messages, prefix = ''): Record<string, string> {
   }, {})
 }
 
-// vue-i18n syntax: a bare @ starts a linked message and | splits plurals — escape @ as {'@'}.
+// vue-i18n syntax: a bare @ starts a linked message and | splits plurals, escape @ as {'@'}.
 const unescapedAt = (text: string) => /@/.test(text.replace(/{'@'}/g, ''))
 const placeholders = (text: string) => [...text.matchAll(/\{(\w+)\}/g)].map(m => m[1]).sort()
 const english = flatten(load('en'))

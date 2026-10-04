@@ -1,5 +1,5 @@
 <!--
-  Embed code (F10 M2): the ready `<iframe>` to paste into a website — auto height (the frame grows
+  Embed code (F10 M2): the ready `<iframe>` to paste into a website, auto height (the frame grows
   and shrinks with the form; recommended) or a fixed height. Code from shared/utils/urls/embed.ts.
   Live preview tab: the real embed, sized like on a website. Allowed websites: Share tab → Embed.
 -->

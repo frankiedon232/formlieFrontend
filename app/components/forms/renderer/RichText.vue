@@ -1,5 +1,5 @@
 <!--
-  Rich text answer — Nuxt UI editor (UEditor + UEditorToolbar, TipTap inside, plus the TipTap
+  Rich text answer, Nuxt UI editor (UEditor + UEditorToolbar, TipTap inside, plus the TipTap
   text-align extension). The answer is HTML (Markdown can't keep alignment); the server sanitises
   it on submit and wherever it is shown again. Toolbar: "basic" (marks, lists, quote, link, undo)
   or "full" (+ paragraph / heading 1–6 menu, inline code, code block, alignment). Read-only / disabled hide the toolbar
@@ -26,7 +26,7 @@ const html = computed({
   get: () => (typeof value.value === 'string' ? value.value : ''),
   set: next => (value.value = plain(next).trim() ? next : ''),
 })
-/** Visible text only — what "max characters" counts. */
+/** Visible text only, what "max characters" counts. */
 function plain(source: string) {
   return source.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/&[a-z]+;|&#\d+;/gi, 'x')
 }

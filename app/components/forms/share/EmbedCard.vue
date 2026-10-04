@@ -1,5 +1,5 @@
 <!--
-  Share → Embed (F10 M3, decision 94): which websites may show the form in a frame — any website,
+  Share → Embed (F10 M3, decision 94): which websites may show the form in a frame, any website,
   or only the ones listed (pasted addresses are tidied to `example.com`, `*.example.com` covers
   sub-sites). Others get the browser's "refused to connect". The embed code itself (with live
   preview) is one click away. Saved with the rest of the page.

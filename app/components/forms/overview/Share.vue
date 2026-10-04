@@ -1,6 +1,6 @@
 <!--
   Form overview → Share card (also beside the Share tab): status, the public link (custom link
-  when set — shared/utils/urls/public.ts) with copy, three equal actions (open · embed code ·
+  when set, shared/utils/urls/public.ts) with copy, three equal actions (open · embed code ·
   QR code), and a summary of how the form is shared (access · limit · availability) that opens
   the Share settings. Live once the form is published.
 -->

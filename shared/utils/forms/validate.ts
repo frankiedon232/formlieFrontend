@@ -1,10 +1,10 @@
 /**
- * Answer validation — one set of rules for the form renderer and the API (the server re-checks
+ * Answer validation, one set of rules for the form renderer and the API (the server re-checks
  * every submission with the same function). Returns the first problem with an answer, or null.
  *
  *   required · email · url · phone · number + min / max · text length · pattern · choices count ·
  *   file count · date range order · address parts (street, city, country, postal code unless
- *   switched off, region when switched on — also when an optional address is only partly filled).
+ *   switched off, region when switched on, also when an optional address is only partly filled).
  */
 import type { FormField } from './build'
 import { isCurrencyCode, isLanguageCode, isTimeZone } from './catalogues'

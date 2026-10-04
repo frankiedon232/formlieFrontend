@@ -1,6 +1,6 @@
 <!--
-  Save a form as a workspace template (F9): its current draft — questions, logic, calculations and
-  design — becomes a template everyone in the workspace can start from. Responses never go along.
+  Save a form as a workspace template (F9): its current draft, questions, logic, calculations and
+  design, becomes a template everyone in the workspace can start from. Responses never go along.
 -->
 <script setup lang="ts">
 import { z } from 'zod'

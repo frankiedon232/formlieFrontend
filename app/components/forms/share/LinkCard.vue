@@ -1,5 +1,5 @@
 <!--
-  Share → Custom link (F10 M3): a readable address instead of the random key —
+  Share → Custom link (F10 M3): a readable address instead of the random key,
   `https://{forms | sub}.formalie.com/{custom-link}/fill`. Checked while typing
   (GET /forms/{id}/share/link-check): free · taken (by which of your forms) or reserved, with up to
   three free suggestions · invalid. Links are unique per address: each workspace subdomain has its own.

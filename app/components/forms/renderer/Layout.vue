@@ -1,7 +1,7 @@
 <!--
   Layout blocks as respondents see them (no answer collected):
   - section: title (large / medium / small) + optional description + divider line; start or centre.
-  - paragraph: rich text (HTML, shown through the read-only editor — never v-html); old plain text still works.
+  - paragraph: rich text (HTML, shown through the read-only editor, never v-html); old plain text still works.
   - divider: solid / dashed / dotted line with small / medium / large spacing.
   - image: uploaded or linked picture at 25–100 % width, aligned start / centre / end, optional
     caption, rounded corners and a link (http / https only, opens in a new tab). "Fill" spans the
@@ -26,7 +26,7 @@ const fill = computed(() => str('align') === 'fill')
 const IMAGE_HEIGHT: Record<string, string> = { sm: 'h-40', md: 'h-60', lg: 'h-90' }
 const banner = computed(() => (fill.value && IMAGE_HEIGHT[str('height')]) || '')
 const imageWidth = computed(() => (fill.value ? '100%' : `${Math.min(100, Math.max(10, Number(p.value.size ?? 100)))}%`))
-/** Only web links — never javascript: or data: URLs. */
+/** Only web links, never javascript: or data: URLs. */
 const safeHref = computed(() => (/^https?:\/\//i.test(str('href')) ? str('href') : ''))
 const html = computed(() => str('html'))
 </script>

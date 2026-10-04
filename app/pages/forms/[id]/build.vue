@@ -24,7 +24,7 @@ const issues = computed(() =>
 
 const large = useMediaQuery('(min-width: 1024px)')
 const tablet = useMediaQuery('(min-width: 768px)')
-// Side panes fill the height left under the page header — or under the slim bar in full screen.
+// Side panes fill the height left under the page header, or under the slim bar in full screen.
 const paneHeight = computed(() => (session.fullscreen.value ? 'h-[calc(100dvh-5.5rem)]' : 'h-[calc(100dvh-11rem)]'))
 const paletteOpen = ref(false)
 const inspectorOpen = ref(false)
@@ -72,7 +72,7 @@ defineShortcuts({
 
     <template v-if="!large">
       <!-- Below laptop width: field list and settings in a bar that sticks to the bottom of the
-           content (thumb reach) — never over the footer. -->
+           content (thumb reach), never over the footer. -->
       <div class="pointer-events-none sticky bottom-3 z-20 mt-3 flex justify-center">
         <div class="pointer-events-auto flex items-center gap-1 rounded-xl border border-default bg-default p-1 shadow-lg">
           <UButton icon="i-lucide-plus" :label="t('builder.palette.title')" color="neutral" @click="paletteOpen = true" />

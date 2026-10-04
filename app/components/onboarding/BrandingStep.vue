@@ -1,5 +1,5 @@
 <!--
-  Step 2 — logo + brand colour. The logo uploads as soon as it is chosen (pre-signed URL, real
+  Step 2, logo + brand colour. The logo uploads as soon as it is chosen (pre-signed URL, real
   progress); the step saves the upload id and colour. PNG / JPEG / WebP up to 2 MB (no SVG: scripts).
 -->
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 /**
- * Calculated fields — a small, safe formula language (never `eval`):
+ * Calculated fields, a small, safe formula language (never `eval`):
  *
  *   {quantity} * {unit_price}                       numbers, + - * / and brackets
  *   if({plan} = "premium", 50, 10)                  conditions: = != > >= < <=, "text" literals
@@ -224,7 +224,7 @@ export function calculate(formula: string, answers: Record<string, unknown>, fie
   return typeof result === 'number' ? result : null
 }
 
-/** Like calculate, but a formula may also give a text — e.g. a risk level "High". */
+/** Like calculate, but a formula may also give a text, e.g. a risk level "High". */
 export function calculateResult(
   formula: string,
   answers: Record<string, unknown>,

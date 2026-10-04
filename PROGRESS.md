@@ -1,8 +1,8 @@
-# Formalie Portal — Progress
+# Formalie Portal, Progress
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-04 · **Current phase:** F10 — Renderer, preview, share, embed (F9 reviewed by the owner)
+**Last updated:** 2026-10-04 · **Current phase:** F10, Renderer, preview, share, embed (F9 reviewed by the owner)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -35,11 +35,11 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F22   | Roles & access (last)                             | ⬜     | 0%   |
 | F23   | Platform admin (super admin, Formalie team)       | ⬜     | 0%   |
 
-**Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars — CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
+**Every phase is only done when:** phone / tablet / desktop checked · keyboard-only checked · light + dark checked · Arabic RTL checked · every new action recorded in the audit trail (from F4 on) · loading feedback complete (first-load screen, top bar on navigation and API calls, skeletons, busy buttons, busy rows, progress bars, CLAUDE.md rule 5) · empty and error states present · every new string in all 20 languages · matches [docs/design](docs/design/README.md) · typecheck, lint and tests green · this file and the docs updated · committed and pushed.
 
 ---
 
-## F0 — Foundation ✅
+## F0, Foundation ✅
 
 **Goal:** a correctly configured Nuxt 4 project that runs on every dev host, speaks the secure protocol and supports 20 languages.
 
@@ -86,7 +86,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F1 — App shell ✅
+## F1, App shell ✅
 
 **Goal:** the portal frame exactly as in the design references.
 
@@ -118,7 +118,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F2 — Core plumbing ✅
+## F2, Core plumbing ✅
 
 **Goal:** the shared building blocks every feature uses.
 
@@ -127,7 +127,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ `useErrorHandler()`: translated toasts for all 48 error codes, copyable support reference, form field errors
 - ✅ `useBusy()`: loading state, no double submit, success toast
 - ✅ `useFormat()`: dates, relative time, numbers, percent, currency, file sizes in the active language
-- ✅ **DataView** — owner-approved, keep unchanged:
+- ✅ **DataView**, owner-approved, keep unchanged:
   - ✅ Table / Grid switch remembered per page
   - ✅ Search (`/`), Filter popover, filter chips, clear all
   - ✅ Date range with presets + calendar
@@ -137,13 +137,13 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
   - ✅ Server pagination with page size; everything in the URL
 - ✅ Confirm dialog (`useConfirm()`), copy field, status badge
 - ✅ Forms list wired to the mock as the first DataView user
-- ✅ Branded first-load screen (`app/spa-loading-template.html`) — no blank page while the app starts
+- ✅ Branded first-load screen (`app/spa-loading-template.html`), no blank page while the app starts
 - ✅ Top progress bar on every API call, not only navigation (`useApi`; polling uses `background: true`)
 - ✅ In-app navigation feedback: top bar starts on click and runs until the new page has its data; sweeping in-page bar under every page header (`useActivity`)
 
 ---
 
-## F3 — Workspace detection + sign-in ✅
+## F3, Workspace detection + sign-in ✅
 
 **Goal:** every way of reaching the app lands in the right workspace, and signing in is secure, simple and beautiful.
 
@@ -165,7 +165,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Screens
 
-- ✅ Sign in (workspace) — redesigned: dark showcase panel + roomy form
+- ✅ Sign in (workspace), redesigned: dark showcase panel + roomy form
 - ✅ Sign in on `manage.` (find workspace / continue / create)
 - ✅ One-time code screen (paste, auto-submit, resend countdown, email/SMS switch, attempts left)
 - ✅ Social sign-in buttons for the providers the workspace enabled
@@ -198,9 +198,9 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F4 — Audit trail ✅
+## F4, Audit trail ✅
 
-**Goal:** every action in a workspace is recorded — who, what, when, where (IP, location, device) and before / after values — and admins can search, filter and export it. Built now so every later phase records its own actions as it is built (owner request, product overview §11).
+**Goal:** every action in a workspace is recorded, who, what, when, where (IP, location, device) and before / after values, and admins can search, filter and export it. Built now so every later phase records its own actions as it is built (owner request, product overview §11).
 
 ### Event model
 
@@ -241,17 +241,17 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F5 — Onboarding wizard ✅
+## F5, Onboarding wizard ✅
 
 **Goal:** a new workspace is ready to use in a few skippable steps.
 
 - ✅ Full-screen wizard (`/onboarding`, own layout: brand · language · theme · Finish later) with stepper (any step can be opened), phone progress bar and live preview (sign-in page, regional samples, team, form)
 - ✅ Resume where the admin left off (progress stored on the server per workspace)
-- ✅ Step: company details (name, industry, size, country with flags, website — `https://` added automatically)
+- ✅ Step: company details (name, industry, size, country with flags, website, `https://` added automatically)
 - ✅ Step: branding (logo upload with real progress via pre-signed URL, brand colour presets + custom picker, live preview)
-- ✅ Step: regional settings (workspace language, timezone with UTC offsets, currency, date / number format with live examples, first day of the week) — defaults from the device and the company's country
+- ✅ Step: regional settings (workspace language, timezone with UTC offsets, currency, date / number format with live examples, first day of the week), defaults from the device and the company's country
 - ✅ Step: invite team (email + role rows, paste a list, duplicates / own email caught)
-- ✅ Step: first form (blank or one of 6 starter templates) — finishing opens it in `/forms/new`
+- ✅ Step: first form (blank or one of 6 starter templates), finishing opens it in `/forms/new`
 - ✅ Skip / back on every step, finish → chosen form (or Forms)
 - ✅ Mock endpoints `GET / PATCH /onboarding`, `POST /onboarding/finish`, uploads (`POST /uploads` → PUT to storage → `POST /uploads/{id}/complete`)
 - ✅ Every saved step recorded in the audit trail (workspace / branding / localisation changes with before → after, invitations, setup finished)
@@ -261,7 +261,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F6 — Forms list and lifecycle ✅
+## F6, Forms list and lifecycle ✅
 
 **Goal:** everything you do _with_ forms before opening the builder.
 
@@ -271,7 +271,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 - ✅ Folders: create, rename, delete (forms stay, without a folder), filter by folder incl. "No folder"
 - ✅ Tags: add / remove (suggestions from the workspace), shown in rows and cards, filter by tag
 - ✅ Owner filter
-- ✅ Archive / unarchive (back to the previous status); close / reopen; unpublish — menu shows only what fits the status
+- ✅ Archive / unarchive (back to the previous status); close / reopen; unpublish, menu shows only what fits the status
 - ✅ Delete → Trash (confirm); Trash page (`/forms/trash`) with restore, permanent delete (confirm), bulk, Empty Trash, days left
 - ✅ Bulk actions (move, archive, delete; restore / delete permanently in Trash) on selected rows, with a summary toast
 - ✅ Sidebar counts refresh right after every change; Trash entry with its own count
@@ -283,14 +283,14 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ---
 
-## F7 — Form builder ✅
+## F7, Form builder ✅
 
 **Goal:** a robust drag-and-drop builder that works on desktop and stays usable on tablet and phone.
 
 ### Fields (one registry entry each: palette item, defaults, inspector, renderer, validation)
 
 - ✅ Text: short text, long text, email, phone, URL, number, currency (amount with the currency symbol)
-- ✅ Rich text — Nuxt UI editor (UEditor + toolbar, TipTap ships with Nuxt UI — no new dependency); Basic / Full toolbar (Full, the default: paragraph / heading 1–6, code, code block, left / centre / right / justify); answer stored as sanitised HTML (owner approved the text-align extension); read-only / disabled hide the toolbar; character count with max length
+- ✅ Rich text, Nuxt UI editor (UEditor + toolbar, TipTap ships with Nuxt UI, no new dependency); Basic / Full toolbar (Full, the default: paragraph / heading 1–6, code, code block, left / centre / right / justify); answer stored as sanitised HTML (owner approved the text-align extension); read-only / disabled hide the toolbar; character count with max length
 - ✅ Dates: date, time, date-time, date range
 - ✅ Choice: dropdown, multi-select, radio, checkbox, toggle, ranking (drag + ↑ / ↓), matrix / grid
 - ✅ Rating: star rating, scale / NPS (with end labels), slider
@@ -322,8 +322,8 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 ### Logic (`/forms/[id]/logic`)
 
-- ✅ Show / hide, skip / jump to page, required-if — one evaluator (`shared/utils/forms/logic.ts`) for preview, public form and API; Back follows the path actually taken
-- ✅ Calculated values — safe arithmetic parser (never `eval`), formula editor with key chips and checks (unknown key, self-reference)
+- ✅ Show / hide, skip / jump to page, required-if, one evaluator (`shared/utils/forms/logic.ts`) for preview, public form and API; Back follows the path actually taken
+- ✅ Calculated values, safe arithmetic parser (never `eval`), formula editor with key chips and checks (unknown key, self-reference)
 - ✅ Visual rule editor with a plain-language summary ("When Severity is High, require Photos."), All / Any, reorder, duplicate, delete with undo, broken-rule badges
 
 ### Saving and publishing
@@ -339,12 +339,12 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 
 - ✅ Laptop+: three panes; tablet: palette and settings as slide-overs; phone: bottom drawers, floating "Add field / Field settings" bar, header folds undo / redo / preview into ⋯
 - ✅ Heavy parts lazy-loaded (preview, publish dialogs load on first use)
-- ✅ Canvas fills the space between the panes (no fixed width); full-screen mode (button or Ctrl+Shift+F) shows only fields · canvas · settings under a slim bar with name, save status, undo / redo, Preview, Publish, Exit (Esc) — browser full screen when allowed (owner request 2026-10-02)
+- ✅ Canvas fills the space between the panes (no fixed width); full-screen mode (button or Ctrl+Shift+F) shows only fields · canvas · settings under a slim bar with name, save status, undo / redo, Preview, Publish, Exit (Esc), browser full screen when allowed (owner request 2026-10-02)
 - ➡️ Canvas virtualisation deferred: it conflicts with drag and drop; revisit if forms > 200 fields feel slow (measured, not guessed)
 
 ---
 
-## F8 — Designer (themes) ✅
+## F8, Designer (themes) ✅
 
 Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspace default theme) are picked up with Settings / billing and the requests log.
 
@@ -359,29 +359,29 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Typography (font: clean sans, device, serif, rounded, mono; text size; heading weight)
 - ✅ Colours (accent, text, secondary text, input background / border, errors) with colour picker, hex box and contrast warning; button text colour picked automatically
 - ✅ Inputs (outline / soft / underline, size, corners) and buttons (solid / outline / soft, corners, full width)
-- ✅ Header / cover (cover image + height, logo — workspace or uploaded, form name, intro text, alignment), thank-you page (tick icon; title / message from form settings)
+- ✅ Header / cover (cover image + height, logo, workspace or uploaded, form name, intro text, alignment), thank-you page (tick icon; title / message from form settings)
 - ✅ Footer (text, up to 6 https links, logo, alignment) (owner request 2026-10-02)
 - ✅ Default theme: a form without a design uses the workspace default (brand colour + logo from onboarding)
 - ✅ Applied as CSS variables on the renderer only (Nuxt UI controls follow; portal untouched); theme stored on the form schema (versioned with publishing); builder Preview and Versions preview show the themed page
-- ✅ Save as theme (new or update), apply a saved theme in the designer; themes library page (Resources → Themes): Table / Grid, search, rename, duplicate, delete with usage count; audited (`forms.theme_*`) — milestone 2
-- ✅ New global and IT field types (owner request): full name (title / middle optional), percentage, duration, consent with terms link, language, time zone, currency (all from `Intl`, in the respondent's language), IP address (any / IPv4 / IPv6), domain, MAC address, colour, IBAN (checksum), SWIFT / BIC — new palette group "Technical & IDs", validated by the shared validator
+- ✅ Save as theme (new or update), apply a saved theme in the designer; themes library page (Resources → Themes): Table / Grid, search, rename, duplicate, delete with usage count; audited (`forms.theme_*`), milestone 2
+- ✅ New global and IT field types (owner request): full name (title / middle optional), percentage, duration, consent with terms link, language, time zone, currency (all from `Intl`, in the respondent's language), IP address (any / IPv4 / IPv6), domain, MAC address, colour, IBAN (checksum), SWIFT / BIC, new palette group "Technical & IDs", validated by the shared validator
 - ✅ Six more starting points with different structures (owner request): Banner (gradient header band), Ribbon (colour header band), Grounded (footer bar), Side panel (colour panel carrying logo / title), Aurora (gradient side panel), Corporate (header band + footer bar); new tokens `header.band`, `footer.style`, `split.panel`, all editable in the designer
-- ✅ Owner follow-ups 2026-10-03: "Folder" on New form explained in place (workspace folders, not template categories); typing masks for IP address (IPv4 dots, IPv6 groups) and MAC address (colon pairs in capitals; dash / dot notation kept); **field access** (Everyone · Departments · Roles · People, all or selected; restricted fields can't be required; lock icon on the field; answers later shown only to the same people — F11)
-- ⬜ More fonts (self-hosted web fonts — needs a font package, ask first)
-- ⬜ Custom CSS (paid plans, sanitised) — with billing
+- ✅ Owner follow-ups 2026-10-03: "Folder" on New form explained in place (workspace folders, not template categories); typing masks for IP address (IPv4 dots, IPv6 groups) and MAC address (colon pairs in capitals; dash / dot notation kept); **field access** (Everyone · Departments · Roles · People, all or selected; restricted fields can't be required; lock icon on the field; answers later shown only to the same people, F11)
+- ⬜ More fonts (self-hosted web fonts, needs a font package, ask first)
+- ⬜ Custom CSS (paid plans, sanitised), with billing
 
 ---
 
-## F9 — Templates gallery ✅
+## F9, Templates gallery ✅
 
-**Goal:** nobody starts from an empty page — a catalogue full of beautiful, ready templates (fields, pages, logic, calculations **and a design**) that people pick, adapt and publish; plus their own workspace templates. Comes before the renderer (owner, 2026-10-02). Stays in the **Forms area** (Resources → Templates) — no own rail icon: templates are a way to start a form.
+**Goal:** nobody starts from an empty page, a catalogue full of beautiful, ready templates (fields, pages, logic, calculations **and a design**) that people pick, adapt and publish; plus their own workspace templates. Comes before the renderer (owner, 2026-10-02). Stays in the **Forms area** (Resources → Templates), no own rail icon: templates are a way to start a form.
 
-**Approach (decided 2026-10-03, see 03-DECISIONS → 67):** framework first, proven on two full categories, then the remaining categories in batches — all inside F9, each batch committed and reviewable. F9 closes only when every listed template exists, in all 20 languages.
+**Approach (decided 2026-10-03, see 03-DECISIONS → 67):** framework first, proven on two full categories, then the remaining categories in batches, all inside F9, each batch committed and reviewable. F9 closes only when every listed template exists, in all 20 languages.
 
-### Milestone 1 — Framework + Business & Customer + HR & Workplace
+### Milestone 1, Framework + Business & Customer + HR & Workplace
 
 - ✅ Template model: key, category, icon, name / description / tags (i18n), schema (pages, fields, logic, calculations, settings), theme, estimated time, field / page counts, "includes calculations / logic" flags, version; system vs workspace templates
-- ✅ Authoring kit (`shared/templates/`): one small definition per template (fields by type, options, validation, logic, formulas, theme), validated against the form schema in tests — every template must pass the publish checks
+- ✅ Authoring kit (`shared/templates/`): one small definition per template (fields by type, options, validation, logic, formulas, theme), validated against the form schema in tests, every template must pass the publish checks
 - ✅ **Gallery** (`/templates`) in DataView: Grid of themed cards (mini preview in the template's own design, category, fields, time, "Calculations" / "Logic" badges, uses) and Table (name, category, fields, uses, forms, responses, updated); category chips with counts, search, sort (popular, newest, name, most used), filters (category, has calculations, field count, system / workspace)
 - ✅ **Template page** (`/templates/[key]`): live themed preview (desktop / tablet / phone, questions / thank-you), what's included (pages, fields, logic rules, calculations with their formulas in plain words, design), statistics (forms created, responses collected, last used), and **all forms created from it** (DataView filtered by template)
 - ✅ **Use template** → name + folder → new form opened in the builder; everything editable (fields, logic, design) before publishing; the form remembers its template
@@ -389,12 +389,12 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Workspace templates: save any form as a template (forms list row action + form overview menu; builder menu ⬜ with the builder header rework), edit name / description / category, duplicate, delete with confirm; audited (`forms.template_*`)
 - ✅ Formula additions for templates: `avg()`, `count()`, `days(from, to)`, text results (e.g. risk level "High")
 - ✅ Mock + contract: `/templates` (list with stats, get, create from form, update, duplicate, delete), `/templates/{key}/forms`, `/forms/from-template`; error codes
-- ✅ Business & Customer (10): Customer Feedback · Customer Satisfaction (CSAT / NPS — NPS group calculated) · Product Review · Contact / Inquiry · Quote / Estimate Request (line totals, tax, total) · Order Form (line totals, subtotal, tax, total) · Complaint / Dispute · Service Request · Lead Capture / Newsletter Signup · Return / Refund Request (refund amount)
+- ✅ Business & Customer (10): Customer Feedback · Customer Satisfaction (CSAT / NPS, NPS group calculated) · Product Review · Contact / Inquiry · Quote / Estimate Request (line totals, tax, total) · Order Form (line totals, subtotal, tax, total) · Complaint / Dispute · Service Request · Lead Capture / Newsletter Signup · Return / Refund Request (refund amount)
 - ✅ HR & Workplace (10): Job Application · Employee Onboarding · Exit Interview · Leave / Time-Off Request (days requested) · Performance Review / Appraisal (average score, rating band) · Employee Engagement Survey (engagement index) · Expense Reimbursement (claim total) · Timesheet (hours, overtime) · Training Feedback (average) · Reference Check
 
 ### Milestone 1 follow-ups (owner review 2026-10-03)
 
-- ✅ Template page: "What's included" as tiles; calculations as code snippets (coloured field references, functions, text, numbers; copy button; team-only marked); usage + the latest forms made from the template in a slider with "View all" (forms list → Template filter) — moved from below the preview to the side
+- ✅ Template page: "What's included" as tiles; calculations as code snippets (coloured field references, functions, text, numbers; copy button; team-only marked); usage + the latest forms made from the template in a slider with "View all" (forms list → Template filter), moved from below the preview to the side
 - ✅ Table view: small even thumbnails (64 × 40, small radius, shapes only)
 - ✅ Sidebar: Templates (new icon) and Themes (palette icon) open submenus with the 6 most recent + "All …"; Responses opens status submenus (All, New, Reviewed, Approved, Rejected, Exports) with counts
 - ✅ Form overview redesigned: KPI tiles (responses, completion with views → starts, median time, last response), 30-day response chart with hover / keyboard tooltips, share links (fill + embed), structure tiles linked to Build / Logic / Design, versions timeline, details with the template it came from, activity
@@ -405,13 +405,13 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ File uploads: chosen files sit inside the drop zone (compact grid), "{n} of {max}" + "Add more"; wrong type, too large and over the file limit are taken out again with a notification and a message under the field; remove buttons always visible (outline, round)
 - ✅ Errors clear while typing everywhere: duration hours / minutes now report every keystroke (the stepper only reported on leaving the field)
 - ✅ Gallery cards: page-shaped thumbnails with a fixed proportion (no stretching at any card width)
-- ✅ Folders: create / rename / delete under Forms → Folders (also created from "Move to folder"); a folder that still holds forms can't be deleted (`FRM-FORM-1013`) — its forms are one click away
+- ✅ Folders: create / rename / delete under Forms → Folders (also created from "Move to folder"); a folder that still holds forms can't be deleted (`FRM-FORM-1013`), its forms are one click away
 
-### Milestone 2 — Health & Safety · Events & Bookings · Hospitality ✅
+### Milestone 2, Health & Safety · Events & Bookings · Hospitality ✅
 
-- ✅ **Themes catalogue** (owner, 2026-10-03): the themes library shows three kinds — **System** (Formalie's designs: the starting points and every category design), **Saved** (saved from a form's design) and **Created** (made from scratch in a theme editor: the designer controls on a sample form, no form needed); filters and badges per kind; system themes can be duplicated, not changed; Themes submenu keeps the 6 most recent
+- ✅ **Themes catalogue** (owner, 2026-10-03): the themes library shows three kinds, **System** (Formalie's designs: the starting points and every category design), **Saved** (saved from a form's design) and **Created** (made from scratch in a theme editor: the designer controls on a sample form, no form needed); filters and badges per kind; system themes can be duplicated, not changed; Themes submenu keeps the 6 most recent
 
-- ✅ Health & Safety (8): Risk Assessment (likelihood × severity = risk score, risk level, action required when high) · Incident / Accident Report (severity score) · Near-Miss Report (potential severity) · Safety Inspection Checklist (compliance %) · Patient Intake · Medical History · Health Screening / Declaration (flag when any "yes") · Consent Form — controls only, no compliance claims
+- ✅ Health & Safety (8): Risk Assessment (likelihood × severity = risk score, risk level, action required when high) · Incident / Accident Report (severity score) · Near-Miss Report (potential severity) · Safety Inspection Checklist (compliance %) · Patient Intake · Medical History · Health Screening / Declaration (flag when any "yes") · Consent Form, controls only, no compliance claims
 - ✅ Events & Bookings (7): Event Registration (ticket total) · RSVP (party size) · Appointment Booking · Venue / Room Reservation (hours × rate) · Volunteer Signup · Speaker / Sponsor Application · Post-Event Feedback (average)
 - ✅ Hospitality (8): Guest Registration · Hotel Booking Request (nights × rate) · Guest Feedback (average) · Service Evaluation (score) · Special Requirements · Event Catering Request (guests × price per head) · Restaurant Reservation Request · Hospitality Complaint
 
@@ -422,63 +422,63 @@ Owner-tested 2026-10-03: all good. Open items below (fonts, custom CSS, workspac
 - ✅ Form language: main language of the form in Form settings (20 languages)
 - ✅ Themes clickable everywhere: workspace themes open the editor, Formalie themes open read-only with "Duplicate to edit"
 
-### Milestone 3 — Education · Operations & IT · Finance & Legal ✅
+### Milestone 3, Education · Operations & IT · Finance & Legal ✅
 
 - ✅ Education (7): Student Enrolment / Admission · Course Evaluation (average) · Quiz / Assessment (score from answers, pass / fail) · Scholarship Application (eligibility score) · Parent Consent / Permission Slip · Attendance Register (present count) · Academic Survey
 - ✅ Operations & IT (9): IT Support Ticket (priority from impact × urgency) · Change Request (risk score) · Asset Check-out / Inventory · Maintenance / Work Order · Purchase Requisition (line totals, total) · Vendor / Supplier Registration · Site / Field Inspection Report (pass rate) · Delivery Confirmation / Proof of Delivery · Quality Control Checklist (pass rate, result)
-- ✅ Finance & Legal (5): Loan / Credit Application (debt-to-income ratio, flat-rate monthly payment estimate — labelled as an estimate) · KYC / Identity Verification · Invoice Submission (subtotal, tax, total) · Insurance Claim (claim total) · NDA / Agreement Sign-off
+- ✅ Finance & Legal (5): Loan / Credit Application (debt-to-income ratio, flat-rate monthly payment estimate, labelled as an estimate) · KYC / Identity Verification · Invoice Submission (subtotal, tax, total) · Insurance Claim (claim total) · NDA / Agreement Sign-off
 
-### Milestone 4 — Community & Other · Real Estate · Sales ✅
+### Milestone 4, Community & Other · Real Estate · Sales ✅
 
 - ✅ Community & Other (4): Membership Application (fee) · Donation Form (gift + optional fee cover) · Petition · Poll / Voting Ballot
 - ✅ Real Estate (8): Property Viewing Request · Tenant Application (income-to-rent ratio) · Rental Application (income-to-rent ratio) · Property Inspection (condition score) · Maintenance Request · Property Information · Landlord Information · Tenant Feedback (average)
 - ✅ Sales (8): Lead Capture · Quote Request (total) · Sales Qualification (qualification score, e.g. budget / authority / need / timing) · Product Demo Request · Customer Discovery · Proposal Request · Order Request (total) · Sales Follow-up
 
-### Milestone 5 — Languages, polish, review
+### Milestone 5, Languages, polish, review
 
 - ✅ **Categories first, own templates apart** (owner, 2026-10-03, decision 78): `/templates` lists Formalie's categories (Grid / Table: templates, with calculations / logic, forms made, responses, last used); a category opens its templates (`/templates/category/{key}`); the workspace's own templates under "Your templates" (`/templates/mine`); menu: six most used categories, All categories, Your templates; a template page links back to its category
 
-- ✅ Template content (labels, options, help, page titles, consent / paragraph text, thank-you messages, text results) in all 20 languages — one dictionary per language (`shared/templates/messages/<code>.json`, decision 77); preview and new forms open in the person's language; keys, values, scores, logic and formulas unchanged
+- ✅ Template content (labels, options, help, page titles, consent / paragraph text, thank-you messages, text results) in all 20 languages, one dictionary per language (`shared/templates/messages/<code>.json`, decision 77); preview and new forms open in the person's language; keys, values, scores, logic and formulas unchanged
 - ✅ Phone / desktop, dark, Arabic RTL checked on the categories page, a category, Your templates and a template in Arabic; skeletons from DataView; empty state for Your templates offers next steps; keyboard: cards and rows are links, actions are buttons
 - ✅ End-of-phase review with the owner (2026-10-03: "all is good")
 
-Total at launch: **84 templates in 11 categories** (a few names appear in two categories on purpose, framed for each — e.g. Lead Capture, Quote Request, Order, Maintenance). More later (owner: "just the tip of the iceberg"); the AI assistant (F19) can generate more.
+Total at launch: **84 templates in 11 categories** (a few names appear in two categories on purpose, framed for each, e.g. Lead Capture, Quote Request, Order, Maintenance). More later (owner: "just the tip of the iceberg"); the AI assistant (F19) can generate more.
 
 ---
 
-## F10 — Renderer, preview, share, embed, short links, SEO 🟡
+## F10, Renderer, preview, share, embed, short links, SEO 🟡
 
-**Plan (2026-10-03, milestones):** **M1** public page core — public key per form, `/{formKey}/fill` + `/embed` server-rendered with SEO, `forms.*` host, secure server-side fetch, not found / not published / closed states, submit with one response per fill-in session (`Idempotency-Key`), thank-you or redirect, respondent language (`?lang`, browser language). **M2** save & resume, file uploads with progress, spam protection, embed auto-resize. **M3** Share card: access (password, invite-only, organisation-only, expiry, response limit, schedule), custom link, short links `/s/{code}`, embed code builder, SEO settings with link-card preview, preview page with device frames. **M4** form translations (questions in several languages + switcher), polish, review.
+**Plan (2026-10-03, milestones):** **M1** public page core, public key per form, `/{formKey}/fill` + `/embed` server-rendered with SEO, `forms.*` host, secure server-side fetch, not found / not published / closed states, submit with one response per fill-in session (`Idempotency-Key`), thank-you or redirect, respondent language (`?lang`, browser language). **M2** save & resume, file uploads with progress, spam protection, embed auto-resize. **M3** Share card: access (password, invite-only, organisation-only, expiry, response limit, schedule), custom link, short links `/s/{code}`, embed code builder, SEO settings with link-card preview, preview page with device frames. **M4** form translations (questions in several languages + switcher), polish, review.
 
 ### Renderer
 
 - ✅ One renderer for preview, public page and embed (submit hook, same rules as the API)
-- ✅ Public form links (decided 2026-10-03; built M1 with a 10-character `public_key` per form): `https://{forms | subdomain}.formalie.com/{formKey}/fill` and `…/{formKey}/embed` — `forms.formalie.dev` / `forms.formalie.com` for workspaces without their own subdomain; `{formKey}` is the form's short public key (custom slug optional); helper `shared/utils/urls/public.ts`
+- ✅ Public form links (decided 2026-10-03; built M1 with a 10-character `public_key` per form): `https://{forms | subdomain}.formalie.com/{formKey}/fill` and `…/{formKey}/embed`, `forms.formalie.dev` / `forms.formalie.com` for workspaces without their own subdomain; `{formKey}` is the form's short public key (custom slug optional); helper `shared/utils/urls/public.ts`
 - ✅ Public page server-rendered with SEO (title, description, image, canonical, noindex); `forms.*` host served without a workspace (tenant from the form key)
 - ✅ Secure server-side fetch for server-rendered pages (internal route + server-only `NUXT_INTERNAL_TOKEN`)
-- 🟡 Closed / expired / not found / password-protected / response-limit states — ✅ not found (404), not published, closed, **expired (410) and not-open-yet** (availability dates, owner 2026-10-03), load error; password / limit come with the Share settings (M3)
+- 🟡 Closed / expired / not found / password-protected / response-limit states, ✅ not found (404), not published, closed, **expired (410) and not-open-yet** (availability dates, owner 2026-10-03), load error; password / limit come with the Share settings (M3)
 - ✅ Multi-page with progress, **save and resume** (decision 87): autosave to a server draft, "Save and continue later" emails a 30-day resume link, the link restores answers and page, submitting closes the draft
 - ✅ **File uploads** (decision 88): straight to storage through short-lived upload links with progress per file; answers keep references (drafts too); type / size / count / real-picture / no-program checks on both sides; files attached to one response, never public
 - ✅ **Help guide** (owner, 2026-10-03, decision 86): Form settings → Help guide (off by default, rich editor in a window); a floating "?" on the form opens it in a chat-style panel
 - ✅ **Accent header** (decision 86): quote-like header style; Events & bookings and Operations & IT designs use it instead of the side panel
-- ✅ **Recognising respondents** (owner, 2026-10-03, decision 85): the respondent's own email (suggested, never someone else's) — email only (ID option removed, owner); same → refused, near match → "different person?" + flagged possible duplicate; optional email verification with a code; masked hints only
+- ✅ **Recognising respondents** (owner, 2026-10-03, decision 85): the respondent's own email (suggested, never someone else's), email only (ID option removed, owner); same → refused, near match → "different person?" + flagged possible duplicate; optional email verification with a code; masked hints only
 - ✅ **Duplicate protection** (owner, 2026-10-03, decision 84): per session, per browser (with "for someone else" after confirming), exact same answers never twice, optional one response per answer (e.g. email); thank-you page: Fill in another · Close this page
 - ✅ **Availability** (decision 84): open from / open until per form, set from the list menu or the overview; badge in table and grid
-- ✅ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key` — the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
+- ✅ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key`, the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
 - ✅ **Spam protection** (decision 89): invisible proof-of-work challenge (no third-party captcha), hidden trap field, submission limits per address
 - ⬜ F11: show "Possible duplicate" on responses with a link to the earlier one; merge / reject
 - ✅ Thank-you page or redirect
 - ✅ **In-app browser** (owner, 2026-10-03, decision 83): website, Terms and Data Privacy Policy open in a branded window over the form; answers stay
-- ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles — Branded · Spotlight · Side panel · Minimal — tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
+- ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles, Branded · Spotlight · Side panel · Minimal, tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
 - ⬜ Preview page with device frames
-- ✅ **Changing the form language translates its text** in the same step (owner, 2026-10-04, decision 91 — no second button): template text in all 20 languages, the creator’s own text kept (count shown), one undo
+- ✅ **Changing the form language translates its text** in the same step (owner, 2026-10-04, decision 91, no second button): template text in all 20 languages, the creator’s own text kept (count shown), one undo
 - ⬜ **Form languages** (owner, 2026-10-03, see 03-DECISIONS → 73): the form opens in the respondent's browser language when the form offers it, otherwise its main language; `?lang=xx` forces one (shareable per-language links, embeds and QR codes); a language switcher when a form has several; translated questions / options / help / messages per language; the language is saved with each response; buttons, messages, dates, numbers and right-to-left follow it
-- ✅ **Embed code** (decision 90): the Share card offers the ready `<iframe>` code — auto height (recommended) or fixed height — instead of a bare embed address; embed pages can be framed by other websites
+- ✅ **Embed code** (decision 90): the Share card offers the ready `<iframe>` code, auto height (recommended) or fixed height, instead of a bare embed address; embed pages can be framed by other websites
 
 ### Share
 
-- 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ custom link with live check (2026-10-04) · ✅ short link (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
-- 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule — ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ✅ invite-only (personal links, statuses, resend / revoke, one response each) and organisation-only (sign in on the portal, 2-minute pass, works on forms.*) — decision 96
+- 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons, ✅ custom link with live check (2026-10-04) · ✅ short link (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
+- 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule, ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ✅ invite-only (personal links, statuses, resend / revoke, one response each) and organisation-only (sign in on the portal, 2-minute pass, works on forms.*), decision 96
 - ✅ People access: edit / view / responses (decision 97): workspace default + per-person level on the Share tab (under “Your team”, apart from “Answering the form”), enforced by the API; read-only editor for view, responses-only page
 - ✅ Embed: iframe snippet with auto-resize, size options (M2), allowed websites + live preview (M3, decision 94)
 - ✅ SEO settings with link-card preview (decision 95): title, description, image, hide from search engines; previews as link card and search result
@@ -486,7 +486,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ---
 
-## F11 — Responses ⬜
+## F11, Responses ⬜
 
 - ⬜ Per-form responses (DataView, columns from the form)
 - ⬜ Inbox across all forms
@@ -496,7 +496,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ⬜ Bulk actions
 - ⬜ Export XLSX / CSV / PDF (all, filtered, selected) with progress and download
 
-### Folders workspace (owner request 2026-10-02 — built here because the stats need response data)
+### Folders workspace (owner request 2026-10-02, built here because the stats need response data)
 
 - ⬜ Sidebar "Folders" group (design RESOURCES style): coloured folder icons, form count on the end, **+** to create, "Show all" when long
 - ⬜ Folder colour chosen when creating / editing a folder
@@ -505,9 +505,9 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ---
 
-## F12 — Data sources & databases ⬜
+## F12, Data sources & databases ⬜
 
-**Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal — browse it, query it and manage it — safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
+**Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -521,7 +521,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 ### 2. Sending form data (destinations)
 
 - ⬜ Per form (form settings → Destination): built-in storage (default) or one of the connections; several destinations allowed
-- ⬜ Table: choose an existing table, or create one from the form — generated table preview (column names from field keys, types from field types), confirm, then create
+- ⬜ Table: choose an existing table, or create one from the form, generated table preview (column names from field keys, types from field types), confirm, then create
 - ⬜ Field → column mapping: auto-match by key, type-mismatch warnings, required-column check, extra columns (response id, submitted at, form version, language, respondent details), multi-value fields (JSON / joined / child table), files as secure links
 - ⬜ Write mode: insert, or update-or-insert on a key column
 - ⬜ Delivery runs in the background: queued per response, retries with back-off, status per response (sent · pending · failed), error log with retry / retry all, pause / resume
@@ -538,7 +538,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ### 4. Query editor
 
-- ⬜ SQL editor with syntax highlighting, table / column completion from the explorer, format query, multiple tabs — **needs a code editor package (e.g. CodeMirror 6) — ask before adding**
+- ⬜ SQL editor with syntax highlighting, table / column completion from the explorer, format query, multiple tabs, **needs a code editor package (e.g. CodeMirror 6), ask before adding**
 - ⬜ Run all or the selection (Ctrl / ⌘ + Enter), cancel a running query, time limit and row limit, results grid with paging, run time, rows affected, errors pointing at the line
 - ⬜ Read-only by default: on read-only connections only reading statements run; on read + write connections a changing statement shows what it will do and needs a confirm; structure changes (create / alter / drop) blocked unless the connection allows them
 - ⬜ Parameters (`:name` → input boxes), query history, saved queries (personal or shared with the workspace), export results (CSV / XLSX)
@@ -554,48 +554,48 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ### 6. Safety (enforced by the backend, visible in the UI)
 
-- ⬜ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps — never from the browser
+- ⬜ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps, never from the browser
 - ⬜ Every query, row change, import and export is recorded in the audit trail (who, connection, statement, rows affected, duration)
-- ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data) — wired up in F22; until then admins only
+- ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data), wired up in F22; until then admins only
 - ⬜ Rate limits; no credentials or result data in logs; results never stored in the browser
 - ⬜ Clear wording: we provide controls (encryption, audit, least privilege), never certifications
 
 ### 7. Navigation, API and docs
 
-- ✅ Own rail area (owner, 2026-10-02): Data sources icon under the workspace button, with its own menu — Overview · Connections · Database explorer · Query editor · Saved queries · Destinations · Imports & exports · Activity; placeholder pages in place (`/data-sources/**`), old `/integrations/destinations` redirects; Integrations keeps Webhooks · API keys
+- ✅ Own rail area (owner, 2026-10-02): Data sources icon under the workspace button, with its own menu, Overview · Connections · Database explorer · Query editor · Saved queries · Destinations · Imports & exports · Activity; placeholder pages in place (`/data-sources/**`), old `/integrations/destinations` redirects; Integrations keeps Webhooks · API keys
 - ⬜ Mock first, then API: `/datasources` (CRUD, test, health, change credentials) · `/datasources/{id}/schema` · `/datasources/{id}/tables/{table}/rows` (list, insert, update, delete, import, export) · `/datasources/{id}/query` (+ cancel) · `/saved-queries` · `/forms/{id}/destinations` (+ mapping, create table, backfill, deliveries, retry); error codes `FRM-DEST-*`; contract updated
 
 ---
 
-## F13 — API service & integrations 🟡
+## F13, API service & integrations 🟡
 
-**Goal:** turn any form into an API so organisations collect data from every side — **links, embeds and API** — all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
+**Goal:** turn any form into an API so organisations collect data from every side, **links, embeds and API**, all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
 ### Addresses (decided 2026-10-03, see 03-DECISIONS → 61)
 
 - Base URL: development `https://api.formalie.dev/` · production `https://api.formalie.com/`
 - Endpoint: `https://api.formalie.dev/{apiKey}/{endpoint}` (+ `/{recordId}` for GET one · PUT · DELETE), e.g. `https://api.formalie.dev/k7Qm2xP9aZ/register-account`
-- `apiKey` = a short random public handle per organisation (10 letters / digits) — **not** the tenant or organisation id and **not** encrypted: it only routes the call; the token, headers and access rules decide who may call. Rotatable (old key keeps working for a grace period).
+- `apiKey` = a short random public handle per organisation (10 letters / digits), **not** the tenant or organisation id and **not** encrypted: it only routes the call; the token, headers and access rules decide who may call. Rotatable (old key keeps working for a grace period).
 - Endpoint names: lower-case words with hyphens, 3–64 characters, unique per organisation
 - Helper: `shared/utils/urls/public.ts` (`apiEndpointUrl`, `API_KEY_PATTERN`, `ENDPOINT_PATTERN`, `API_METHODS`)
 
 ### 1. Area and navigation
 
-- ✅ Own rail area under Data sources with its own menu: Overview · Services · Endpoints · Tokens & headers · Access rules · Request logs · Analytics · Docs & testing — placeholder pages (`/api-service/**`), overview shows the three channels (link · embed · API) and an example endpoint
+- ✅ Own rail area under Data sources with its own menu: Overview · Services · Endpoints · Tokens & headers · Access rules · Request logs · Analytics · Docs & testing, placeholder pages (`/api-service/**`), overview shows the three channels (link · embed · API) and an example endpoint
 
 ### 2. Services (containers)
 
 - ⬜ Services page in DataView (Table / Grid): name, endpoints, status, calls today, errors, last call; create, rename, duplicate, delete (confirm)
-- ⬜ Enable / disable a whole service (every endpoint in it stops answering with a clear error) — one switch, audited
+- ⬜ Enable / disable a whole service (every endpoint in it stops answering with a clear error), one switch, audited
 
 ### 3. Endpoints (one form each; as many as needed)
 
 - ⬜ Create an endpoint from a form: pick form (published version) → name → methods → fields → authentication → access rules → review; the full URL shown with a copy button
 - ⬜ Methods: **GET, POST, PUT, DELETE only** (for now); each switchable per endpoint
-- ⬜ POST / PUT: choose the fields (columns) accepted, which are required, read-only fields refused; validation is the form's own (`shared/utils/forms/validate.ts`) — same rules as the form page
+- ⬜ POST / PUT: choose the fields (columns) accepted, which are required, read-only fields refused; validation is the form's own (`shared/utils/forms/validate.ts`), same rules as the form page
 - ⬜ GET: choose the fields (columns) returned, filters allowed, paging, sorting; never more than the chosen fields
 - ⬜ DELETE / PUT by record id; soft delete with the response kept in the audit trail
-- ⬜ Where data goes: the form's storage / destinations (built-in storage or a Data source, F12) — the same pipeline as form submissions
+- ⬜ Where data goes: the form's storage / destinations (built-in storage or a Data source, F12), the same pipeline as form submissions
 - ⬜ Enable / disable each endpoint; version pinning to a form version; "Test" button
 - ⬜ Example request and response (JSON) generated from the chosen fields
 
@@ -605,7 +605,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ⬜ Rotate / revoke tokens; expiry dates; scopes per service / endpoint / method; last used
 - ⬜ Optional request signing (HMAC header + timestamp) for high-security callers
 - ⬜ Headers: `Authorization: Bearer …` (required) · `Content-Type: application/json` · optional `Idempotency-Key` (safe retries of POST) · optional `X-Formalie-Destination` (choose among destinations the endpoint allows) · custom required headers defined per endpoint (name + expected value)
-- ⬜ No tenant / organisation id headers needed: the URL key and the token identify the organisation and must match — a mismatch is refused (no spoofing)
+- ⬜ No tenant / organisation id headers needed: the URL key and the token identify the organisation and must match, a mismatch is refused (no spoofing)
 - ⬜ Responses always JSON: `{ data, meta }` or `{ error: { code, message, details } }` with `FRM-API-*` codes
 
 ### 5. Access rules (allow / block lists)
@@ -644,7 +644,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ---
 
-## F14 — Settings ⬜
+## F14, Settings ⬜
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
@@ -659,14 +659,14 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ⬜ Company profile: legal name, display name, industry, size, address, country, tax / registration number, support email and phone
 - ⬜ Branding: logo (light + dark), favicon, brand colour, sign-in page image and message; live preview of the workspace sign-in page
 
-### Organisation data (owner, 2026-10-03 — decision 79)
+### Organisation data (owner, 2026-10-03, decision 79)
 
 Every workspace sets up its own reference data here; the builder, field access and logic only ever offer what the workspace has (no built-in samples once Settings exist), with an empty state that links straight to the right settings page.
 
 - ⬜ **Departments:** create, rename, merge, archive (forms keep their history); members per department; import from CSV
 - ⬜ **Roles / job titles:** the workspace's own list (separate from the permission roles of F22); people can hold several
 - ⬜ **Teams, locations / sites, cost centres** (optional lists, same pattern)
-- ⬜ **Lists (option sets):** reachable from Settings as well as Resources → Option sets (F15) — every list and its kinds (simple, large / searchable, cascading, with details, dynamic)
+- ⬜ **Lists (option sets):** reachable from Settings as well as Resources → Option sets (F15), every list and its kinds (simple, large / searchable, cascading, with details, dynamic)
 - ⬜ Builder pickers read these live: field access (departments, roles, people), choice fields "from a list", logic conditions; removed / archived entries are flagged on forms that still use them
 - ⬜ Mock: replace the fixed sample departments / roles in `server/mock/routes/directory.ts` with per-workspace data managed here
 
@@ -683,8 +683,8 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ### Authentication
 
-- ⬜ Sign-in methods: enable / disable email + password, Google, Microsoft, Apple, Facebook — only enabled ones appear on the workspace sign-in page
-- ⬜ Single sign-on: SAML / OIDC set-up (metadata, certificates, test sign-in) — later
+- ⬜ Sign-in methods: enable / disable email + password, Google, Microsoft, Apple, Facebook, only enabled ones appear on the workspace sign-in page
+- ⬜ Single sign-on: SAML / OIDC set-up (metadata, certificates, test sign-in), later
 - ⬜ One-time code policy: channels (email, SMS, authenticator app), code length / expiry, attempts
 - ⬜ Enforce multi-factor authentication for admins / everyone
 - ⬜ Allowed email domains for invites and self-signup (optional)
@@ -692,9 +692,9 @@ Every workspace sets up its own reference data here; the builder, field access a
 ### Security
 
 - ⬜ Password rules (length, character types, reuse, expiry)
-- ⬜ Session timeout (idle, default 60 min — never shorter than the owner's 1-hour minimum without a warning) and maximum session length, sign out everywhere
+- ⬜ Session timeout (idle, default 60 min, never shorter than the owner's 1-hour minimum without a warning) and maximum session length, sign out everywhere
 - ⬜ IP allowlist (CIDR ranges, test my IP)
-- ⬜ Security events overview (recent sign-ins, blocked attempts) — links to audit trail
+- ⬜ Security events overview (recent sign-ins, blocked attempts), links to audit trail
 
 ### Localisation
 
@@ -727,7 +727,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ---
 
-## F15 — Option sets & payments ⬜
+## F15, Option sets & payments ⬜
 
 ### Option sets (reusable choice lists)
 
@@ -739,27 +739,27 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ **F15b Large lists + autocomplete:** items on the server, "search as you type" field mode, paging
 - ⬜ **F15c Cascading lists (levels):** tree lists (e.g. State → City → Location, up to 5 levels), "Cascading choice" field group, child opens with the parent's items only, changing the parent clears children
 - ⬜ **F15d Details + auto-fill:** extra columns on items; choosing an item fills other fields (optionally read-only); columns usable in formulas and logic
-- ⬜ **F15e Dynamic lists:** live sources — another form's responses, a connected database (read-only query), a JSON URL, a refreshed CSV; refresh schedule and sync log
+- ⬜ **F15e Dynamic lists:** live sources, another form's responses, a connected database (read-only query), a JSON URL, a refreshed CSV; refresh schedule and sync log
 - ⬜ Public option lookups for respondents (rate limited, published lists only); answers store value + label (+ path)
 
 ### Destinations (where responses go)
 
-- Moved to **F12 — Data sources & databases** (connections, sending form data, explorer, query editor, other database operations).
+- Moved to **F12, Data sources & databases** (connections, sending form data, explorer, query editor, other database operations).
 
-### Payments (Payment field — shown as "soon" in the builder until then)
+### Payments (Payment field, shown as "soon" in the builder until then)
 
-- ⬜ Payment providers per workspace (connect with the provider's own sign-in; e.g. Stripe, PayPal, Adyen, Mollie, Razorpay, Flutterwave, Paystack — global and regional), test / live mode
-- ⬜ Payment field: fixed amount, amount from a choice, or **calculated** (formula — order totals, fees); currency; optional tax and fee lines; one-off payments first (subscriptions later)
+- ⬜ Payment providers per workspace (connect with the provider's own sign-in; e.g. Stripe, PayPal, Adyen, Mollie, Razorpay, Flutterwave, Paystack, global and regional), test / live mode
+- ⬜ Payment field: fixed amount, amount from a choice, or **calculated** (formula, order totals, fees); currency; optional tax and fee lines; one-off payments first (subscriptions later)
 - ⬜ Card details never touch Formalie: the provider's secure checkout / hosted fields; we keep only the payment status, reference and amount
 - ⬜ Response shows paid / pending / failed / refunded; receipts by email; refunds from the response (audited); webhooks from the provider confirm payment before the response counts as complete
 
 ### Webhooks, API keys, other integrations
 
-- Moved to **F13 — API service & integrations** (owner, 2026-10-03: integrations belong to the API service).
+- Moved to **F13, API service & integrations** (owner, 2026-10-03: integrations belong to the API service).
 
 ---
 
-## F16 — Profile ⬜
+## F16, Profile ⬜
 
 - ⬜ My profile (name, photo, language, timezone)
 - ⬜ Change password
@@ -768,7 +768,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F17 — Users ⬜
+## F17, Users ⬜
 
 - ⬜ Users list (DataView), invite by email with role, resend / revoke invites
 - ⬜ Enable / disable, reset password or MFA
@@ -776,7 +776,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F18 — Analytics ⬜
+## F18, Analytics ⬜
 
 - ⬜ Per form: views, starts, completions, completion rate, average time
 - ⬜ Drop-off per page and field
@@ -785,13 +785,13 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F19 — AI assistant 🟡
+## F19, AI assistant 🟡
 
-**Goal:** an assistant built into Formalie that makes work easier — creating forms and templates, analysing responses, summarising, translating and more (owner idea 2026-10-03). Own rail area and menu; also available in context (builder, templates, responses). People stay in control: the assistant proposes, a person reviews and applies; nothing is published or sent by the assistant on its own.
+**Goal:** an assistant built into Formalie that makes work easier, creating forms and templates, analysing responses, summarising, translating and more (owner idea 2026-10-03). Own rail area and menu; also available in context (builder, templates, responses). People stay in control: the assistant proposes, a person reviews and applies; nothing is published or sent by the assistant on its own.
 
 ### 1. Area and navigation
 
-- ✅ Own rail area (sparkles icon) with its own menu: Overview · Create a form · Template ideas · Response analysis · Insights & summaries · Translations · History · Settings & usage — placeholder pages (`/ai/**`)
+- ✅ Own rail area (sparkles icon) with its own menu: Overview · Create a form · Template ideas · Response analysis · Insights & summaries · Translations · History · Settings & usage, placeholder pages (`/ai/**`)
 
 ### 2. Creating
 
@@ -816,11 +816,11 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ Settings: switch the assistant on / off per workspace, choose which areas it may read (forms, responses, data sources), keep personal data out (masking), retention of prompts
 - ⬜ Usage and limits per plan; history of every request (who, what, when) with the result; everything audited (`ai.*`)
 - ⬜ Clear labelling of AI-made content; nothing applied without a person's confirmation
-- ⬜ Model / provider choice is a backend decision (documented when F19 starts); data processing terms shown — controls, not certifications
+- ⬜ Model / provider choice is a backend decision (documented when F19 starts); data processing terms shown, controls, not certifications
 
 ---
 
-## F20 — Live collaboration (optional) ⬜
+## F20, Live collaboration (optional) ⬜
 
 - ⬜ Presence, cursors and selections in the builder
 - ⬜ Conflict-free editing
@@ -828,7 +828,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F21 — Dashboard ⬜
+## F21, Dashboard ⬜
 
 - ⬜ Separate dashboards for **Forms**, **Data sources** and **API service** (owner, 2026-10-02), plus the workspace overview
 
@@ -845,7 +845,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F22 — Roles & access ⬜ (last)
+## F22, Roles & access ⬜ (last)
 
 - ⬜ Roles and permissions editor (permission catalogue, custom roles)
 - ⬜ Role assignment per user and per organisation; form-level access
@@ -853,13 +853,13 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
 
 
-## F23 — Platform admin (super admin) ⬜
+## F23, Platform admin (super admin) ⬜
 
-The Formalie team's own console (owner, 2026-10-03: "a place for me to manage everything") — separate from any workspace, on its own host (`admin.formalie.com`), signed in with platform staff accounts and strong second factor; every action audited.
+The Formalie team's own console (owner, 2026-10-03: "a place for me to manage everything"), separate from any workspace, on its own host (`admin.formalie.com`), signed in with platform staff accounts and strong second factor; every action audited.
 
 ### Platform settings
 
-- ⬜ **Legal links** on every public form: Terms and Data Privacy Policy URLs (already served by the API as platform settings with the app config as fallback — `PublicForm.legal`, mock `server/mock/data/platformStore.ts`); change once, applies to every form without a redeploy
+- ⬜ **Legal links** on every public form: Terms and Data Privacy Policy URLs (already served by the API as platform settings with the app config as fallback, `PublicForm.legal`, mock `server/mock/data/platformStore.ts`); change once, applies to every form without a redeploy
 - ⬜ Marketing site, support email / help-centre links, status page link
 - ⬜ Platform branding on Formalie-branded surfaces (forms host, QR codes, emails)
 - ⬜ Feature switches and announcements (banner in the portal)
@@ -908,38 +908,38 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | Audit trail early (its own phase after sign-in), not last                                                                                                                                                                                                                                                                                                         | F4                                                                                | ✅         |
 | 2026-10-02 | Use "Email address" (not "Work email") so any email provider is welcome                                                                                                                                                                                                                                                                                           | F3                                                                                | ✅         |
 | 2026-10-02 | Sidebar: chevron and count badges on the right; counts on items that have them                                                                                                                                                                                                                                                                                    | F1                                                                                | ✅         |
-| 2026-10-02 | Don't expire sessions so soon — at least 1 hour when idle                                                                                                                                                                                                                                                                                                         | F3 / F14                                                                          | ✅         |
+| 2026-10-02 | Don't expire sessions so soon, at least 1 hour when idle                                                                                                                                                                                                                                                                                                         | F3 / F14                                                                          | ✅         |
 | 2026-10-02 | Loading feedback everywhere: page loading, progress, skeletons, top bar, busy buttons                                                                                                                                                                                                                                                                             | F2 / all                                                                          | ✅         |
 | 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload                                                                                                                                                                                                                                                                           | F2 / all                                                                          | ✅         |
-| 2026-10-02 | Design images are style, not features — follow the look exactly, don’t copy widgets                                                                                                                                                                                                                                                                               | all                                                                               | ✅         |
+| 2026-10-02 | Design images are style, not features, follow the look exactly, don’t copy widgets                                                                                                                                                                                                                                                                               | all                                                                               | ✅         |
 | 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab                                                                                                                                                                                                                                                 | F6                                                                                | ✅         |
 | 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F11                                                                               | ⬜         |
 | 2026-10-02 | Builder feedback (18 points): inline rename, try fields on the canvas, read-only keys with suffix, help as info icon, smaller radius, tighter spacing, label position, Nuxt UI dates, saved fields + lists, file-type picker, thumbnails, option numbers in formulas, clearer + complete logic, read-only / disabled with required guards, phone preview stacking | F7                                                                                | ✅         |
 | 2026-10-02 | Form themes: header, footer, body, images and text design carried on shared forms; default theme when none is chosen                                                                                                                                                                                                                                              | F8                                                                                | ⬜         |
 | 2026-10-02 | Builder canvas uses the full width; full-screen toggle with fields · canvas · settings and visible save status                                                                                                                                                                                                                                                    | F7                                                                                | ✅         |
-| 2026-10-02 | Lists later: static, large / autocomplete, dynamic sources, cascading levels (State → City → Location) and auto-fill of other fields — plan in docs/OPTION-LISTS.md                                                                                                                                                                                               | F15                                                                               | ⬜         |
+| 2026-10-02 | Lists later: static, large / autocomplete, dynamic sources, cascading levels (State → City → Location) and auto-fill of other fields, plan in docs/OPTION-LISTS.md                                                                                                                                                                                               | F15                                                                               | ⬜         |
 | 2026-10-02 | Drop indicator while dragging fields (dashed placeholder + label)                                                                                                                                                                                                                                                                                                 | F7                                                                                | ✅         |
 | 2026-10-02 | Rich text field (real editor)                                                                                                                                                                                                                                                                                                                                     | F7                                                                                | ✅         |
 | 2026-10-02 | New fields default to ½ width; required messages use the field label                                                                                                                                                                                                                                                                                              | F7                                                                                | ✅         |
 | 2026-10-02 | Rich text: headings 1–6, paragraph, text alignment, code block                                                                                                                                                                                                                                                                                                    | F7                                                                                | ✅         |
 | 2026-10-02 | Layout blocks: nicer section, inline paragraph editing, image upload + resize, divider options                                                                                                                                                                                                                                                                    | F7                                                                                | ✅         |
 | 2026-10-02 | Validate email and all address parts (not only the first line)                                                                                                                                                                                                                                                                                                    | F7                                                                                | ✅         |
-| 2026-10-02 | IT / technical field types: IP address, domain, MAC, IBAN, SWIFT / BIC, colour + global types (full name, consent, duration, percentage, language, time zone, currency) — first set built; owner may add more                                                                                                                                                     | F7 (later)                                                                        | ⬜         |
-| 2026-10-02 | More theme designs: header-only, footer-only and side designs — at least 5 more now, more later                                                                                                                                                                                                                                                                   | F8                                                                                | ✅         |
+| 2026-10-02 | IT / technical field types: IP address, domain, MAC, IBAN, SWIFT / BIC, colour + global types (full name, consent, duration, percentage, language, time zone, currency), first set built; owner may add more                                                                                                                                                     | F7 (later)                                                                        | ⬜         |
+| 2026-10-02 | More theme designs: header-only, footer-only and side designs, at least 5 more now, more later                                                                                                                                                                                                                                                                   | F8                                                                                | ✅         |
 | 2026-10-02 | Form workspace header too full: search as an icon, Preview as an icon                                                                                                                                                                                                                                                                                             | F8                                                                                | ✅         |
-| 2026-10-02 | Templates before the renderer (both serve form creation) — phases renumbered: F9 Templates, F10 Renderer, F11 Responses                                                                                                                                                                                                                                           | Roadmap                                                                           | ✅         |
+| 2026-10-02 | Templates before the renderer (both serve form creation), phases renumbered: F9 Templates, F10 Renderer, F11 Responses                                                                                                                                                                                                                                           | Roadmap                                                                           | ✅         |
 | 2026-10-02 | Integrations for data sources: add their databases to send form data, database explorer, query editor, other database operations                                                                                                                                                                                                                                  | F12 (new phase)                                                                   | ⬜         |
-| 2026-10-02 | Data sources as its own rail area with its own menu; placeholder pages now (no extra Forms icon — the workspace button is Forms)                                                                                                                                                                                                                                  | F12                                                                               | ✅         |
+| 2026-10-02 | Data sources as its own rail area with its own menu; placeholder pages now (no extra Forms icon, the workspace button is Forms)                                                                                                                                                                                                                                  | F12                                                                               | ✅         |
 | 2026-10-03 | API service ("developer option"): build API endpoints from forms (GET / POST / PUT / DELETE), tokens and headers, field choice per method, allow / block lists, analytics, enable / disable; own rail area with placeholders                                                                                                                                      | F13 (new phase)                                                                   | 🟡         |
 | 2026-10-03 | API addresses `https://api.formalie.dev/{key}/{endpoint}` (production `api.formalie.com`)                                                                                                                                                                                                                                                                         | F13                                                                               | ✅ decided |
 | 2026-10-03 | Form links `https://{forms                                                                                                                                                                                                                                                                                                                                        | sub}.formalie.com/{formId}/fill`and`/embed` (`forms.formalie.dev` in development) | F10        | ✅ decided |
 | 2026-10-03 | Separate dashboards for Forms, Data sources and API service                                                                                                                                                                                                                                                                                                       | F21                                                                               | ⬜         |
 | 2026-10-03 | Template catalogue: 84 starter templates in 11 categories, each with its own design; calculations where needed (risk score, totals, averages); template statistics and the forms made from each template                                                                                                                                                          | F9                                                                                | ⬜         |
-| 2026-10-03 | AI assistant built in (create forms, templates, analysis, more) — own rail area with placeholders                                                                                                                                                                                                                                                                 | F19 (new phase)                                                                   | 🟡         |
-| 2026-10-03 | "Folder" on New form — what it means                                                                                                                                                                                                                                                                                                                              | F8                                                                                | ✅         |
+| 2026-10-03 | AI assistant built in (create forms, templates, analysis, more), own rail area with placeholders                                                                                                                                                                                                                                                                 | F19 (new phase)                                                                   | 🟡         |
+| 2026-10-03 | "Folder" on New form, what it means                                                                                                                                                                                                                                                                                                                              | F8                                                                                | ✅         |
 | 2026-10-03 | IP address and MAC address typing masks (MAC: other notations allowed)                                                                                                                                                                                                                                                                                            | F8                                                                                | ✅         |
 | 2026-10-03 | Field access: Everyone / Departments / Roles / People; restricted fields never required                                                                                                                                                                                                                                                                           | F8 (answers visibility in F11)                                                    | ✅         |
-| 2026-10-03 | Payment field — intention                                                                                                                                                                                                                                                                                                                                         | F15 (Payments)                                                                    | ⬜         |
+| 2026-10-03 | Payment field, intention                                                                                                                                                                                                                                                                                                                                         | F15 (Payments)                                                                    | ⬜         |
 | 2026-10-03 | How duplicate submissions are prevented                                                                                                                                                                                                                                                                                                                           | F10                                                                               | ⬜ planned |
 | 2026-10-03 | Field access: Departments / Roles showed no list to pick from                                                                                                                                                                                                                                                                                                     | F8                                                                                | ✅         |
 | 2026-10-03 | Templates table: smaller, even thumbnails                                                                                                                                                                                                                                                                                                                         | F9                                                                                | ✅         |
@@ -957,13 +957,13 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Max files / max size not enforced, no notification                                                                                                                                                                                                                                                                                                                | F9                                                                                | ✅         |
 | 2026-10-03 | Themes like templates: system, saved and created themes                                                                                                                                                                                                                                                                                                           | F9 milestone 2                                                                    | ⬜         |
 | 2026-10-03 | Form overview KPI cards like the design (title colour and position)                                                                                                                                                                                                                                                                                               | F9                                                                                | ✅         |
-| 2026-10-03 | Form link vs embed link — same or different? (advice: different; embed as code)                                                                                                                                                                                                                                                                                   | F10                                                                               | ✅ decided |
+| 2026-10-03 | Form link vs embed link, same or different? (advice: different; embed as code)                                                                                                                                                                                                                                                                                   | F10                                                                               | ✅ decided |
 | 2026-10-03 | QR code for form links                                                                                                                                                                                                                                                                                                                                            | F9 / F10                                                                          | ✅         |
 | 2026-10-03 | Languages go with the forms (links, embeds, QR, respondent language)                                                                                                                                                                                                                                                                                              | F9 (picker) / F10 (public pages)                                                  | 🟡         |
 | 2026-10-03 | Themes clickable to view or edit                                                                                                                                                                                                                                                                                                                                  | F9                                                                                | ✅         |
 | 2026-10-03 | Branded QR codes (organisation, form name, logo in the centre, Formalie mark), several colours, branding on / off | F9 | ✅ |
-| 2026-10-03 | Folder explanation behind an info icon (click to read) instead of text under the field — new form page and "Use template" dialog | F9 | ✅ |
-| 2026-10-03 | Templates: category chips removed from the top — categories (with counts) only in the Filter menu, like every other list | F9 | ✅ |
+| 2026-10-03 | Folder explanation behind an info icon (click to read) instead of text under the field, new form page and "Use template" dialog | F9 | ✅ |
+| 2026-10-03 | Templates: category chips removed from the top, categories (with counts) only in the Filter menu, like every other list | F9 | ✅ |
 | 2026-10-03 | Templates by category: gallery lists categories (counts + analytics) instead of all 84 templates; a category opens its templates; menu shows the top 6 categories then All; Formalie templates and your own (saved) templates kept apart | F9 | ✅ |
 | 2026-10-03 | Departments, roles and other organisation data (and lists) are set up per workspace in Settings; the builder only shows what the workspace has | F14 (Organisation data) · F15 | ⬜ planned |
 | 2026-10-03 | Preview: Desktop mode fills the whole screen edge to edge (was a box); the design page's preview fills its pane | F10 | ✅ |
@@ -972,16 +972,16 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Sidebar: one menu group open at a time (opening one closes the others) | F1 follow-up | ✅ |
 | 2026-10-03 | Preview side panel: Desktop fills the panel edge to edge (panel keeps its width) | F10 | ✅ |
 | 2026-10-03 | Text colours sharp and dark everywhere (tables, grids, cards like the navigation) | F1 follow-up | ✅ |
-| 2026-10-03 | No real ids anywhere in URLs, parameters or responses — encrypted references only the API can decrypt (globally) | F2 follow-up (security) | ✅ |
+| 2026-10-03 | No real ids anywhere in URLs, parameters or responses, encrypted references only the API can decrypt (globally) | F2 follow-up (security) | ✅ |
 | 2026-10-03 | Public form footer: © organisation · Terms · Data Privacy Policy; every link on a public form opens in an in-app browser window over the form (branded, 80%, rounded, clear close) so nothing typed is lost | F10 | ✅ |
-| 2026-10-03 | Super admin console for the owner to manage everything — starting with the Terms / Data Privacy Policy URLs (served now as platform settings, config fallback) | F23 (new phase) | ⬜ planned |
+| 2026-10-03 | Super admin console for the owner to manage everything, starting with the Terms / Data Privacy Policy URLs (served now as platform settings, config fallback) | F23 (new phase) | ⬜ planned |
 | 2026-10-03 | Prevent duplicate submissions (also when someone fills in for a friend on the same computer); thank-you buttons Fill in another (confirm it's for someone else) and Close this page; form availability period (expired page after it); show the period in table and grid | F10 | ✅ |
 | 2026-10-03 | Still possible to send twice (one-letter email change): identify the person by their own email (not other emails in the form) or ID; smart matching; optional verification; never mistake another person | F10 | ✅ |
-| 2026-10-03 | Events & bookings and Operations & IT designs: side panel squeezed the form — use a smaller quote-like header instead | F9 follow-up | ✅ |
+| 2026-10-03 | Events & bookings and Operations & IT designs: side panel squeezed the form, use a smaller quote-like header instead | F9 follow-up | ✅ |
 | 2026-10-03 | Help guide per form: written in Form settings (rich editor, opened from a button), shown from a floating "?" in a chat-style panel; on / off, off by default | F10 | ✅ |
-| 2026-10-03 | Save and resume: how and where it works — built (autosave + "Save and continue later" link) | F10 M2 | ✅ |
+| 2026-10-03 | Save and resume: how and where it works, built (autosave + "Save and continue later" link) | F10 M2 | ✅ |
 | 2026-10-03 | Portal text still looked faded: dark-mode headline colour fixed, body text darker, list values in the main text colour like the design image | F1 follow-up | ✅ |
-| 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
+| 2026-10-03 | Public form page: branded frame around the form, workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
 | 2026-10-04 | French form: labels, sections, help and thank-you stayed English; "already filled in" showed only after the form flashed for seconds; spam check not visible anywhere | F10 | ✅ |
 
 ---
@@ -1012,22 +1012,22 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F6    | Forms lifecycle: new (blank / template / import), inline rename, duplicate, move, tags, folders, unpublish / close / reopen / archive / unarchive, Trash with restore and permanent delete, bulk, row_version conflicts, busy rows, form overview with activity. Checked desktop / phone, Arabic RTL; all actions in the audit trail.                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 2026-10-02 | F2    | In-app navigation progress (owner): one activity counter for navigation + API calls drives the top bar and a new sweeping bar under each page header; starts on click, runs until the new page's data has arrived.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 2026-10-02 | F7    | Builder milestone 1–2: field catalogue (34 types) + registry, renderer for every type, three-pane builder (palette · real form on a page card · inspector), drag and drop (palette → canvas, within / between rows), keyboard moves, multi-select, undo / redo, delete with undo, autosave with conflict pause, publish with checks + change summary, live preview with device sizes, phone / tablet layout; segmented controls now match the design.                                                                                                                                                                                                                                                                                                                            |
-| 2026-10-02 | F7    | Milestone 3 — phase done: logic editor (`/forms/[id]/logic`: rules with plain-language summaries, All / Any, show / hide / require / jump, calculations), versions page (timeline, view, compare, restore, discard), shared builder frame with Build / Logic / Versions switch (saves before switching), collapsible sections, lazy dialogs; 20 languages; 87 tests. Stopped for review.                                                                                                                                                                                                                                                                                                                                                                                         |
+| 2026-10-02 | F7    | Milestone 3, phase done: logic editor (`/forms/[id]/logic`: rules with plain-language summaries, All / Any, show / hide / require / jump, calculations), versions page (timeline, view, compare, restore, discard), shared builder frame with Build / Logic / Versions switch (saves before switching), collapsible sections, lazy dialogs; 20 languages; 87 tests. Stopped for review.                                                                                                                                                                                                                                                                                                                                                                                         |
 | 2026-10-02 | F6    | New form page polish (owner): Blank tab shows a live mini preview of the empty form and what a blank form offers; name + folder sit in a "Form details" card whose footer has **Continue** (same as Create form, closer to the fields) on Blank, Template and Import.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 2026-10-02 | F7    | Owner feedback round (18 points) done: canvas fields work for trying out, double-click / F2 rename, Label wording, read-only field keys with id suffix (formulas follow), help text as info popover, smaller form radius, tighter spacing, container-query columns (phone preview stacks), form-wide label position (New form + Form settings), all dates Nuxt UI (UInputDate / UInputTime / UCalendar, ranges too), read-only / disabled fields with required guards everywhere, grouped searchable file-type picker + drop checks + thumbnail grid, option numbers + if() / comparisons / functions in formulas, logic: all operators and 12 actions, IF / THEN steps, starters, conflict checks; Saved fields + Lists (library API, palette tabs, list editor). 20 languages. |
-| 2026-10-02 | F7    | Phones / tablets: field list easy to find — "Add field" next to the page tabs and a dashed "+ Add field" under the last field (all sizes; laptops focus the palette search); the bottom bar now sticks to the content instead of covering the footer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 2026-10-02 | F7    | Phones / tablets: field list easy to find, "Add field" next to the page tabs and a dashed "+ Add field" under the last field (all sizes; laptops focus the palette search); the bottom bar now sticks to the content instead of covering the footer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 2026-10-02 | F7    | "Beside the field" now holds for half-width (and narrower) fields too: decided by the form's width (`@container/form`), not each cell; phone-width forms still stack.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| 2026-10-02 | F7    | "Beside the field" sits right next to the input: the label is as wide as its text (up to 45 %, then wraps), the input follows after a small gap and takes the rest — no column gap.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| 2026-10-02 | F7    | "Beside the field" is uniform: one label width per form (from its longest label, max 22 characters / 30 % — the input gets most of the row), labels end-aligned against their input, so every input starts on the same line and has the same width.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 2026-10-02 | F7    | "Beside the field" sits right next to the input: the label is as wide as its text (up to 45 %, then wraps), the input follows after a small gap and takes the rest, no column gap.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 2026-10-02 | F7    | "Beside the field" is uniform: one label width per form (from its longest label, max 22 characters / 30 %, the input gets most of the row), labels end-aligned against their input, so every input starts on the same line and has the same width.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | 2026-10-02 | F7    | Canvas no longer boxed (fills the middle, less padding); full-screen mode for Build / Logic / Versions with save status in a slim bar.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 2026-10-02 | F7    | Preview: Desktop fills the preview panel (no inner box; panel keeps its size); Tablet and Phone keep their device widths.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| 2026-10-02 | F7    | Drag and drop shows where a field will land: dashed, tinted placeholder labelled "Drop here — new row" (between rows) or "… beside" (in a row, half width), and a dashed outline around the page while dragging.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 2026-10-02 | F7    | Drag and drop shows where a field will land: dashed, tinted placeholder labelled "Drop here, new row" (between rows) or "… beside" (in a row, half width), and a dashed outline around the page while dragging.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | 2026-10-02 | F7    | Rich text field done with Nuxt UI's editor: Basic / Full toolbar (marks, lists, quote, link, headings, alignment, code, clear, undo / redo), Markdown answers, locked states, character count.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 2026-10-02 | F7    | New fields start at ½ width (layout blocks full width), width still adjustable; required errors name the field ("First name is required.").                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | 2026-10-02 | F7    | "+ Add field" under the canvas is a compact button at the end of the row, so it no longer covers the drop area.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | 2026-10-02 | F7    | Yes / No: switch and label on one line (switch first, label right after, centred; click the label to toggle); in "beside" forms it lines up with the other inputs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 2026-10-02 | F7    | Rich text: standard line height (20 px) and a small 2 px gap after Enter, so new paragraphs read like normal lines.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| 2026-10-02 | F7    | Rich text Full toolbar (now the default): Text style menu (Paragraph, Heading 1–6), inline code, code block. Text alignment needs the TipTap text-align extension (not bundled with Nuxt UI) and HTML storage — awaiting owner decision.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 2026-10-02 | F7    | Rich text Full toolbar (now the default): Text style menu (Paragraph, Heading 1–6), inline code, code block. Text alignment needs the TipTap text-align extension (not bundled with Nuxt UI) and HTML storage, awaiting owner decision.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | 2026-10-02 | F7    | Rich text alignment (left / centre / right / justify) with `@tiptap/extension-text-align` (owner-approved); answers now stored as HTML, sanitised server-side; max length counts visible text.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 2026-10-02 | F7    | Layout blocks upgraded: section heading block with placeholders and inline title / description editing; paragraph written on the canvas (bubble toolbar, HTML, shown read-only to respondents); image upload (drop / browse, progress, 5 MB, safe SVG) or link, drag / keyboard resize, presets, alignment, caption, link, rounded, alt-text prompt; divider style and spacing.                                                                                                                                                                                                                                                                                                                                                                                                  |
 | 2026-10-02 | F7    | Image "Fill": spans the whole field; optional height (small / medium / large) crops it like a banner.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -1037,47 +1037,48 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | F8    | Six more starting points (Banner, Ribbon, Grounded, Side panel, Aurora, Corporate) with header bands, footer bars and colour / gradient side panels; designer controls for each; swatches show the structure. Form workspace header: search and Preview as icons. Confirm dialogs now always open above drawers (they were hidden behind the designer drawer on phones). Roadmap: Templates moved before the renderer (F9 Templates · F10 Renderer · F11 Responses).                                                                                                                                                                                                                                                                                                             |
 | 2026-10-02 | F8    | Fix: “Add link” in the footer reset the footer (a new link starts as an incomplete https:// address, which failed the theme check and switched the footer off). Links are now kept while being typed; only complete https links with a label show on the form; other schemes are emptied.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-| 2026-10-02 | Roadmap | New phase **F12 — Data sources & databases** (connections, sending form data, database explorer, query editor, other database operations, safety); later phases renumbered F14–F22 (Settings → Roles & access). |
+| 2026-10-02 | Roadmap | New phase **F12, Data sources & databases** (connections, sending form data, database explorer, query editor, other database operations, safety); later phases renumbered F14–F22 (Settings → Roles & access). |
 | 2026-10-02 | F12 | Placeholder shell: Data sources rail area (icon under the workspace button), own sidebar menu, overview with section cards and supported databases, seven placeholder pages; destinations moved from Integrations (redirect kept). |
-| 2026-10-03 | F13 | New phase **F13 — API service** (own rail area + placeholder pages); later phases renumbered F14–F22. Public URL scheme decided: API `https://api.formalie.dev/{apiKey}/{endpoint}`, forms `https://{forms | sub}.formalie.dev/{formKey}/fill · /embed`; `forms` subdomain reserved; copy-link and the form overview use the new links. F8 closed after owner review. |
+| 2026-10-03 | F13 | New phase **F13, API service** (own rail area + placeholder pages); later phases renumbered F14–F22. Public URL scheme decided: API `https://api.formalie.dev/{apiKey}/{endpoint}`, forms `https://{forms | sub}.formalie.dev/{formKey}/fill · /embed`; `forms` subdomain reserved; copy-link and the form overview use the new links. F8 closed after owner review. |
 | 2026-10-03 | F8 | Owner follow-ups: folder hint, IP / MAC typing masks, field access (audience) with directory picker and "never required" rule (editor, form, publish check, logic). |
-| 2026-10-03 | F19 | New phase **F19 — AI assistant** (own rail area + placeholder pages); later phases renumbered F20–F22. F9 plan written: framework + 84 templates in 5 milestones. Payments planned in F15. |
-| 2026-10-03 | F9 | Milestone 1: template authoring kit (`shared/templates/`), 11 categories with their own designs, 20 templates (Business & Customer, HR & Workplace) with calculations (totals, averages, days, rating bands, loyalty group) and logic — all tested as valid, publishable forms; formula additions `avg` / `count` / `days` / text results, internal calculations; gallery (Grid of themed cards / Table, category chips with counts, filters, sorts), template page (live preview, what’s included, formulas, usage, forms made from it), Use template, Save as template, workspace templates (duplicate, delete), New form catalogue picker; seeded sample forms linked to templates; mock `/templates`; 20 languages. Also: confirm dialog keeps its text while closing. |
+| 2026-10-03 | F19 | New phase **F19, AI assistant** (own rail area + placeholder pages); later phases renumbered F20–F22. F9 plan written: framework + 84 templates in 5 milestones. Payments planned in F15. |
+| 2026-10-03 | F9 | Milestone 1: template authoring kit (`shared/templates/`), 11 categories with their own designs, 20 templates (Business & Customer, HR & Workplace) with calculations (totals, averages, days, rating bands, loyalty group) and logic, all tested as valid, publishable forms; formula additions `avg` / `count` / `days` / text results, internal calculations; gallery (Grid of themed cards / Table, category chips with counts, filters, sorts), template page (live preview, what’s included, formulas, usage, forms made from it), Use template, Save as template, workspace templates (duplicate, delete), New form catalogue picker; seeded sample forms linked to templates; mock `/templates`; 20 languages. Also: confirm dialog keeps its text while closing. |
 | 2026-10-03 | F9 | Owner review round: form overview redesign (KPIs, 30-day chart, share, structure, versions, details, activity; mock `/forms/:id/overview`), template page side panel (tiles, formula snippets, forms slider), mini table thumbnails, sidebar submenus (Templates / Themes recent 6 + All, Responses statuses), integrations moved to the API service (pages + redirects; F13 renamed "API service & integrations", F15 "Option sets & payments"), forms list Template filter, field access list fix. Duplicate-submission protection planned (F10). |
 | 2026-10-03 | F9 | Owner review fixes: file uploads (inside the zone, limits enforced with notifications, visible remove), live error clearing for duration, page-shaped gallery thumbnails, folders with forms can't be deleted (`FRM-FORM-1013`); themes catalogue (system / saved / created) planned into milestone 2. |
-| 2026-10-03 | F9 | Milestone 2: 23 templates — Health & Safety (risk score / level with action plan, incident priority, near-miss priority, inspection compliance %, BMI, screening result, guardian consent), Events & Bookings (ticket totals, room cost, sponsorship totals, speaker / sponsor page logic), Hospitality (nights from dates, nightly-rate estimate, service score, catering per guest); 43 templates in total, every onboarding starter now from the catalogue. Themes catalogue: system (starting points + category designs, read-only), saved and created themes; theme editor (`/settings/themes/new`, `/settings/themes/:id`) with live preview, Cmd/Ctrl+S and a leave guard. |
+| 2026-10-03 | F9 | Milestone 2: 23 templates, Health & Safety (risk score / level with action plan, incident priority, near-miss priority, inspection compliance %, BMI, screening result, guardian consent), Events & Bookings (ticket totals, room cost, sponsorship totals, speaker / sponsor page logic), Hospitality (nights from dates, nightly-rate estimate, service score, catering per guest); 43 templates in total, every onboarding starter now from the catalogue. Themes catalogue: system (starting points + category designs, read-only), saved and created themes; theme editor (`/settings/themes/new`, `/settings/themes/:id`) with live preview, Cmd/Ctrl+S and a leave guard. |
 | 2026-10-03 | F9 | KPI cards aligned with the design; QR codes for form links (`uqr` added, owner-approved); form language setting; themes open in the editor (workspace) or read-only (Formalie) from list and grid; Settings no longer highlighted on theme pages. Language plan for public forms recorded (decision 73). |
-| 2026-10-03 | F9 | Milestone 3: 21 templates — Education (course score, quiz score / percentage / pass, scholarship eligibility for the panel only, attendance count and rate), Operations & IT (ticket priority from impact × urgency, change risk, requisition totals, inspection and QC pass rates), Finance & Legal (debt-to-income and a flat-rate monthly estimate, invoice subtotal / tax / total, claim total, company details when signing for a company); 64 templates in total; new calculation checks; 20 languages. |
+| 2026-10-03 | F9 | Milestone 3: 21 templates, Education (course score, quiz score / percentage / pass, scholarship eligibility for the panel only, attendance count and rate), Operations & IT (ticket priority from impact × urgency, change risk, requisition totals, inspection and QC pass rates), Finance & Legal (debt-to-income and a flat-rate monthly estimate, invoice subtotal / tax / total, claim total, company details when signing for a company); 64 templates in total; new calculation checks; 20 languages. |
 | 2026-10-03 | F9 | Milestone 2 + 3 languages complete: template names, theme library and errors in all 20 languages; Spanish wording aligned to "tú" throughout; 188 tests green. |
-| 2026-10-03 | F9 | Milestone 4: 20 templates — Community (membership fee, donation with optional 3% cost cover, petition, ranked ballot), Real Estate (income-to-rent ratio with an internal affordability band, room-by-room condition score, emergency note on urgent repairs), Sales (B2B lead capture with hidden source fields, seat-based quote, BANT-style qualification hot / warm / cold, trade order with volume discount); all 84 templates in 11 categories; 20 languages. |
-| 2026-10-03 | F9 | Milestone 5: template content (1,411 texts) in all 20 languages — previews and new forms open in the person's language, logic / scores / formulas unchanged (compared values like "yes" kept); templates gallery reorganised by category (overview with counts and use, category pages, Your templates apart, menu: top 6 categories + All + Your templates); 228 tests green. Stopped for the owner's end-of-phase review. |
-| 2026-10-03 | F9 | Owner review passed — F9 closed. Preview fix (Desktop full screen, Tablet / Phone device frames that fill the height; design page preview fills its pane); organisation data (departments, roles, lists) planned into Settings (F14). |
-| 2026-10-03 | F9 | Follow-ups: Themes menu by kind with counts; "Save as template" in the builder header (Build / Logic / Design, phone menu, full screen) — saves pending edits first, name pre-filled, menu counts refresh. |
-| 2026-10-03 | F9 | Follow-ups: "Save as template" moved into Form settings → Template; templates remember their source form (`source_form_id`) — an already-saved form offers "Update template" (`POST /templates/{key}/sync`, audited) or a separate copy; sidebar keeps one group open; preview side panel Desktop fills edge to edge. |
+| 2026-10-03 | F9 | Milestone 4: 20 templates, Community (membership fee, donation with optional 3% cost cover, petition, ranked ballot), Real Estate (income-to-rent ratio with an internal affordability band, room-by-room condition score, emergency note on urgent repairs), Sales (B2B lead capture with hidden source fields, seat-based quote, BANT-style qualification hot / warm / cold, trade order with volume discount); all 84 templates in 11 categories; 20 languages. |
+| 2026-10-03 | F9 | Milestone 5: template content (1,411 texts) in all 20 languages, previews and new forms open in the person's language, logic / scores / formulas unchanged (compared values like "yes" kept); templates gallery reorganised by category (overview with counts and use, category pages, Your templates apart, menu: top 6 categories + All + Your templates); 228 tests green. Stopped for the owner's end-of-phase review. |
+| 2026-10-03 | F9 | Owner review passed, F9 closed. Preview fix (Desktop full screen, Tablet / Phone device frames that fill the height; design page preview fills its pane); organisation data (departments, roles, lists) planned into Settings (F14). |
+| 2026-10-03 | F9 | Follow-ups: Themes menu by kind with counts; "Save as template" in the builder header (Build / Logic / Design, phone menu, full screen), saves pending edits first, name pre-filled, menu counts refresh. |
+| 2026-10-03 | F9 | Follow-ups: "Save as template" moved into Form settings → Template; templates remember their source form (`source_form_id`), an already-saved form offers "Update template" (`POST /templates/{key}/sync`, audited) or a separate copy; sidebar keeps one group open; preview side panel Desktop fills edge to edge. |
 | 2026-10-03 | F10 | Milestone 1: public form pages `/{key}/fill` and `/embed` (server-rendered, SEO tags, canonical, 404 for unknown keys, noindex for embeds / closed forms), `forms.*` host, `public_key` per form, secure server-side fetch (server-only token), states (not found · not published · closed · error), submit through the encrypted API with one response per fill-in session (Idempotency-Key, verified: a retry stores nothing new), server re-checks answers and recomputes calculations (`shared/utils/forms/submission.ts`), thank-you or redirect, page language without touching the portal cookie, embed height messages; audit "Response received". Text colours one step sharper everywhere (owner). |
-| 2026-10-04 | F10 | M2: file uploads on public forms — files go straight to storage with progress on each thumbnail, Next / Submit wait for them, answers keep encrypted references (also in Save and resume drafts); server checks type, size, real pictures, no programs, same form / question, one response per file; respondent files never public. Form.vue split (ResumeBar, Upload). |
+| 2026-10-04 | F10 | M2: file uploads on public forms, files go straight to storage with progress on each thumbnail, Next / Submit wait for them, answers keep encrypted references (also in Save and resume drafts); server checks type, size, real pictures, no programs, same form / question, one response per file; respondent files never public. Form.vue split (ResumeBar, Upload). |
 | 2026-10-04 | F10 | M2 done: spam protection without a captcha (invisible proof-of-work, hidden trap, submission limits) and the Embed code window on the Share card (auto / fixed height, resize script limited to the form address); embed pages can now be shown on other websites (frame headers, SameSite=None device cookie). |
-| 2026-10-04 | F10 | Owner test fixes: "Translate the form’s text" when the form language changes (template text, 20 languages, own text kept); "already filled in" rendered by the server from a receipt cookie (no flash); Form settings shows "Spam protection — always on". |
+| 2026-10-04 | F10 | Owner test fixes: "Translate the form’s text" when the form language changes (template text, 20 languages, own text kept); "already filled in" rendered by the server from a receipt cookie (no flash); Form settings shows "Spam protection, always on". |
 | 2026-10-04 | F10 | Form language: choosing the language now translates the form text in the same step (no second button), toast with Undo. |
 | 2026-10-04 | F10 | Blank forms now start in the creator's app language (form language, first page name, thank-you text), like template forms. |
 | 2026-10-04 | F10 | Form language change also translates the builder's default question names ("Long text", "Option 1", "Page 1"…), not only template text (owner: a new "Long text" question stayed English). |
 | 2026-10-04 | F10 | Form language change covers every field type and text spot (owner: "as long as it has a label"): matching ignores capitals / spaces, new 546-word everyday form vocabulary in all 20 languages, plus image alt / caption, custom error messages, guide title, header subtitle. |
 | 2026-10-04 | F10 | The form title respondents see (page header, browser tab, link card) follows the form language (`settings.title`); the name in the forms list stays as typed. |
-| 2026-10-04 | F10 | M3 started: Share tab in the form editor — access (anyone with the link / password), custom link with live availability check, response limit (form-full page), availability; public password screen; Share settings from the overview card and the forms menu. |
+| 2026-10-04 | F10 | M3 started: Share tab in the form editor, access (anyone with the link / password), custom link with live availability check, response limit (form-full page), availability; public password screen; Share settings from the overview card and the forms menu. |
 | 2026-10-04 | F10 | Share card rearranged (owner): status badges on one line, link first, three equal action tiles (Open · Embed code · QR code), summary row (access · limit · end date) that opens the Share settings. |
 | 2026-10-04 | F10 | Custom link fix (owner): the availability check sent the link the wrong way, so every link read as invalid; taken or reserved links now offer up to three free suggestions (with the organisation name, the year, a number) as one-click chips. |
 | 2026-10-04 | F10 | Custom link check really fixed: the server read the link from the address instead of the encrypted request, so every link read as invalid; the Share card summary row opens the Share settings again. |
-| 2026-10-04 | F10 | Custom links are unique per address (owner): each workspace subdomain has its own set, workspaces on forms.* share one; a link taken by one of your forms shows which form (name, status, Open) with free suggestions — tested in the browser. |
+| 2026-10-04 | F10 | Custom links are unique per address (owner): each workspace subdomain has its own set, workspaces on forms.* share one; a link taken by one of your forms shows which form (name, status, Open) with free suggestions, tested in the browser. |
 | 2026-10-04 | F10 | Response limit (owner): starts at 10, goes down to 2, steps of 1 (was steps of 10 from 1). |
-| 2026-10-04 | F10 | M3: short links — forms.formalie.dev/s/{code} (5 easy characters) on the Share tab, server-side 302 to the form’s current link, visit count, removable, 404 page; Share card shows it and uses it for the QR code. Tested in the browser. |
+| 2026-10-04 | F10 | M3: short links, forms.formalie.dev/s/{code} (5 easy characters) on the Share tab, server-side 302 to the form’s current link, visit count, removable, 404 page; Share card shows it and uses it for the QR code. Tested in the browser. |
 | 2026-10-04 | F10 | Form language on non-open pages (owner): full, closed, expired, not-yet-open and password pages now use the form’s language (they fell back to English because no questions are sent then). |
 | 2026-10-04 | F10 | M3: embed allowed websites (any / only listed; pasted addresses tidied; frame-ancestors header, Formalie previews always allowed) and a live Preview tab in the Embed code window. Tested in the browser (header with the list, back to any website). |
 | 2026-10-04 | F10 | Dialogs (owner): the move grip no longer sits over the close button (close button in the header flow, grip beside it) and the close button is a round soft button. |
-| 2026-10-04 | F10 | Short links (owner question "no conflict"): removed codes — and codes of forms deleted for good — are retired and never handed out again, so an old poster can never open another form. Tested. |
+| 2026-10-04 | F10 | Short links (owner question "no conflict"): removed codes, and codes of forms deleted for good, are retired and never handed out again, so an old poster can never open another form. Tested. |
 | 2026-10-04 | F10 | M3: "How your form’s links work" note on the Share tab (original · custom · short, none cancels another, common situations); Search & link preview card (title, description, image upload, hide from search engines, link-card and search-result previews) feeding the public page tags. Tested in the browser (tags, image, back to defaults). |
 | 2026-10-04 | F10 | M3: invite-only (invitations with personal links, Invited / Opened / Responded / Revoked, resend, revoke, one response each) and organisation-only access (portal sign-in → pass → form, “Filling in as …”, respondent kept with the response). Tested end to end in the browser; fixed invitation changes blocking the page’s Save. |
 | 2026-10-04 | F10 | Invitations take emails only (owner): chips split on comma / space / semicolon / new line, invalid ones red and blocking, duplicates merged. Embedded organisation-only forms open sign-in in a new tab. Staff test account staff@remedylegal.test (Lena Novak) + organisation-only form test steps in README. |
-| 2026-10-04 | F10 | M3: people access per form — workspace default (edit / view / none) and per-person level (edit / view / responses only) on the Share tab; enforced on every form route; read-only editor with "View only" banner, responses-only page, limited menus. Fixed: the staff test user shared an id with another test user (unique ids now tested); the person picker added people by itself. |
+| 2026-10-04 | F10 | M3: people access per form, workspace default (edit / view / none) and per-person level (edit / view / responses only) on the Share tab; enforced on every form route; read-only editor with "View only" banner, responses-only page, limited menus. Fixed: the staff test user shared an id with another test user (unique ids now tested); the person picker added people by itself. |
 | 2026-10-04 | F9/F10 | No side panel beside the form anywhere (owner): Side panel (renamed Slate accent) and Aurora designs and the Real estate template design now use the accent header; the layout is no longer offered; existing split themes open as a card with an accent header. |
-| 2026-10-04 | F10 | Share tab split into two titled sections (owner, to avoid confusion): “Answering the form” (who can fill it in, limits, links, embed, link preview — for the people you send it to) and “Your team” (people with access — staff only, doesn’t change who can fill it in); notes on both. |
+| 2026-10-04 | F10 | Share tab split into two titled sections (owner, to avoid confusion): “Answering the form” (who can fill it in, limits, links, embed, link preview, for the people you send it to) and “Your team” (people with access, staff only, doesn’t change who can fill it in); notes on both. |
 | 2026-10-04 | F10 | Revoked invitations can be removed from the list (owner); active ones must be revoked first; a response already sent is kept. |
+| 2026-10-04 | All | No dashes (owner): every "—" (and spaced " – ") removed from text people read in all 20 languages, the template content and dictionaries, on-screen placeholders, docs, README and code comments (about 2,800). Sentences rewritten naturally per language; a test now fails on any dash. |

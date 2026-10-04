@@ -44,7 +44,7 @@ watch(
 const label = computed(() => {
   if (!props.from && !props.to) return t('dataView.anyTime')
   if (props.from === props.to) return date(props.from)
-  return `${props.from ? date(props.from) : '…'} – ${props.to ? date(props.to) : '…'}`
+  return `${props.from ? date(props.from) : '…'}, ${props.to ? date(props.to) : '…'}`
 })
 
 const presets = computed(() => {

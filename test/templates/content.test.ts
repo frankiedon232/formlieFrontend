@@ -11,7 +11,7 @@ const dictOf = (code: string) => JSON.parse(readFileSync(join(process.cwd(), 'sh
 const tags = (text: string) => (text.match(/<\/?[a-z][^>]*>/gi) ?? []).join('')
 
 describe('template content in every language', () => {
-  it('translates text only — keys, values, scores and logic stay the same', () => {
+  it('translates text only, keys, values, scores and logic stay the same', () => {
     const schema = templateSchema(systemTemplate('quiz_assessment')!)
     const local = localiseSchema(schema, { Score: 'Punkte', Wind: 'Wind (de)', Pass: 'Bestanden', Questions: 'Fragen' }, 'de')
     expect(local.settings.language).toBe('de')

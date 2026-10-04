@@ -53,7 +53,7 @@ const matches = (event: AuditEvent, q: string) =>
     event.action,
   ].some(value => value?.toLowerCase().includes(q))
 
-/** GET /audit-logs — admins only until Roles & access (F22). */
+/** GET /audit-logs, admins only until Roles & access (F22). */
 export const listAuditLogs = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAdmin(event)
   const { data, meta } = paginate(
@@ -64,7 +64,7 @@ export const listAuditLogs = defineMockRoute(({ event, query }) => {
   return ok(data, meta)
 })
 
-/** GET /audit-logs/facets — people and countries that appear in this workspace's trail. */
+/** GET /audit-logs/facets, people and countries that appear in this workspace's trail. */
 export const auditFacets = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
   const actors = new Map<string, string>()
@@ -138,7 +138,7 @@ function toCsv(events: AuditEvent[]): string {
     event.actor.email,
     event.resource?.type,
     event.resource?.name,
-    event.changes.map(c => `${c.field}: ${c.before ?? '—'} → ${c.after ?? '—'}`).join('; '),
+    event.changes.map(c => `${c.field}: ${c.before ?? '-'} → ${c.after ?? '-'}`).join('; '),
     event.location.ip,
     event.location.city,
     event.location.country,
@@ -167,7 +167,7 @@ function jobView(job: MockJob): ExportJob {
   }
 }
 
-/** POST /audit-logs/export — same filters as the list; recorded in the trail itself. */
+/** POST /audit-logs/export, same filters as the list; recorded in the trail itself. */
 export const exportAuditLogs = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAdmin(event)
   const input = parseBody(exportSchema, body)
@@ -203,7 +203,7 @@ export const exportAuditLogs = defineMockRoute(({ event, body }) => {
   return ok(jobView(job), {}, 202)
 })
 
-/** GET /exports/:id — progress of an export job. */
+/** GET /exports/:id, progress of an export job. */
 export const getExportJob = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
   const job = jobs.get(getRouterParam(event, 'id') ?? '')
@@ -212,7 +212,7 @@ export const getExportJob = defineMockRoute(({ event }) => {
 })
 
 /**
- * GET /downloads/:token — plain file response (a browser download cannot carry the envelope).
+ * GET /downloads/:token, plain file response (a browser download cannot carry the envelope).
  * The token is the permission: single use, 10 minutes, and only on the workspace that made it.
  */
 export const download = defineEventHandler(event => {

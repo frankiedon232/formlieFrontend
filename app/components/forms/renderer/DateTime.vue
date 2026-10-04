@@ -1,7 +1,7 @@
 <!--
-  Date, time, date-time and date range — Nuxt UI all the way: UInputDate / UInputTime (type or
+  Date, time, date-time and date range, Nuxt UI all the way: UInputDate / UInputTime (type or
   use the arrow keys per segment) with a UCalendar in a popover. Answers are stored as ISO text:
-  `2026-10-02`, `14:30`, `2026-10-02T14:30`, `{ from, to }` — easy to export and compare.
+  `2026-10-02`, `14:30`, `2026-10-02T14:30`, `{ from, to }`, easy to export and compare.
 -->
 <script setup lang="ts">
 import {

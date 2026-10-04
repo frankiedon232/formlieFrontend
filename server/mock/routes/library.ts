@@ -19,7 +19,7 @@ const options = z
 const savedFieldBody = z.object({ name, field: formFieldSchema.omit({ id: true }) })
 const listBody = z.object({ name, options })
 
-/** Who made it — name only, never the email. */
+/** Who made it, name only, never the email. */
 const authorOf = (user: Parameters<typeof actorOf>[0]) => {
   const { id, name: fullName } = actorOf(user)
   return { id: id ?? user.id, name: fullName ?? '' }

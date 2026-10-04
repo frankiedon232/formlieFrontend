@@ -1,7 +1,7 @@
 import type { InjectionKey } from 'vue'
 import type { FormTheme, WorkspaceBranding } from '#shared/utils/forms/theme'
 
-/** The workspace's branding (logo + brand colour from onboarding) — the default theme's source. */
+/** The workspace's branding (logo + brand colour from onboarding), the default theme's source. */
 export function useWorkspaceBranding() {
   const { profile } = useTenant()
   return computed<WorkspaceBranding>(() => ({

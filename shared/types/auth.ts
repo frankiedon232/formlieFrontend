@@ -6,7 +6,7 @@ export type TenantStatus = 'active' | 'suspended'
 /** Simple workspace role until Roles & access (F22): owner and admin manage the workspace. */
 export type WorkspaceRole = 'owner' | 'admin' | 'member'
 
-/** GET /tenants/public — what the login page of a host may show (no secrets). */
+/** GET /tenants/public, what the login page of a host may show (no secrets). */
 export interface TenantPublicProfile {
   /** `manage` = default entry (signup / find workspace); `tenant` = a workspace. */
   mode: 'manage' | 'tenant'

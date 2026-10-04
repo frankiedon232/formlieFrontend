@@ -1,7 +1,7 @@
 <!--
   Share → Access (F10 M3, decisions 92 / 96): anyone with the link · only with a password (8+
   characters, stored as a hash, never shown again; changing it locks everyone out) · invite-only
-  (personal links, one response each — FormsShareInvitations) · organisation-only (signed-in
+  (personal links, one response each, FormsShareInvitations) · organisation-only (signed-in
   members; their name and email are kept with the response).
 -->
 <script setup lang="ts">

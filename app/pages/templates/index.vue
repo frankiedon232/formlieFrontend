@@ -1,5 +1,5 @@
 <!--
-  Templates (F9) — Formalie's categories first (owner, 2026-10-03: 84 templates at once is too
+  Templates (F9), Formalie's categories first (owner, 2026-10-03: 84 templates at once is too
   much). Each category shows how many templates it holds and how they're used; opening one lists
   its templates. The workspace's own templates live apart, under "Your templates".
 -->

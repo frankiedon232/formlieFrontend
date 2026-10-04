@@ -1,6 +1,6 @@
 <!--
   Form page footer: text, links, logo. "Plain" is small muted text under the form; "band" is a
-  coloured bar — attached to the bottom of the card, or full width under plain / full layouts.
+  coloured bar, attached to the bottom of the card, or full width under plain / full layouts.
 -->
 <script setup lang="ts">
 import { visibleLinks, type FormTheme } from '#shared/utils/forms/theme'

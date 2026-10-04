@@ -1,6 +1,6 @@
 /**
  * Short links for the server-rendered `/s/{code}` page (F10 M3): where the code leads. Same rules as
- * the public-forms internal route — only the Nuxt server itself may call it (server-only token).
+ * the public-forms internal route, only the Nuxt server itself may call it (server-only token).
  *   mock on  → the mock data (the visit is counted there)
  *   mock off → the API's internal endpoint, service to service
  */

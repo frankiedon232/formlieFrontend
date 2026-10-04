@@ -1,5 +1,5 @@
 /**
- * Save and resume on a public form (F10 M2) — only when the form has it on:
+ * Save and resume on a public form (F10 M2), only when the form has it on:
  *   - answers are saved on the server shortly after each change (a draft under a random token);
  *   - the token lives in this tab only (sessionStorage) and in the respondent's resume link;
  *     a `?resume=` link restores the answers and page, then the token leaves the address bar;

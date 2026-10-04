@@ -1,5 +1,5 @@
 /**
- * Sales templates (F9 milestone 4) — business-to-business versions; Business & customer has the
+ * Sales templates (F9 milestone 4), business-to-business versions; Business & customer has the
  * consumer-facing quote, order and newsletter forms.
  */
 import { opts, page, q, row, rule, scored, type TemplateDef } from '../kit'
@@ -13,7 +13,7 @@ export const SALES_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-magnet',
     minutes: 2,
     name: 'Lead Capture',
-    description: 'Name, company, size and interest — short enough for a landing page, with the source tracked.',
+    description: 'Name, company, size and interest. Short enough for a landing page, with the source tracked.',
     tags: ['lead', 'b2b', 'landing page'],
     pages: [
       page('Get in touch', [
@@ -38,9 +38,9 @@ export const SALES_TEMPLATES: TemplateDef[] = [
     pages: [
       page('Your requirements', [
         row(q('short_text', 'Company', { required: true }), q('email', 'Work email', { required: true })),
-        q('radio', 'Plan', { key: 'plan', required: true, options: scored(['Team — 8.00 per seat / month', 8], ['Business — 15.00 per seat / month', 15], ['Enterprise — 25.00 per seat / month', 25]) }),
+        q('radio', 'Plan', { key: 'plan', required: true, options: scored(['Team: 8.00 per seat / month', 8], ['Business: 15.00 per seat / month', 15], ['Enterprise: 25.00 per seat / month', 25]) }),
         q('number', 'Seats', { key: 'seats', required: true, default: 10, validation: { min: 1 } }),
-        q('checkbox', 'Services', { key: 'services', options: scored(['Onboarding — 500.00', 500], ['Data migration — 1,200.00', 1200], ['Training day — 800.00', 800]) }),
+        q('checkbox', 'Services', { key: 'services', options: scored(['Onboarding: 500.00', 500], ['Data migration: 1,200.00', 1200], ['Training day: 800.00', 800]) }),
         row(
           q('calculated', 'Subscription per year', { key: 'subscription', formula: '{plan} * {seats} * 12' }),
           q('calculated', 'Indicative total (first year)', { key: 'quote_total', formula: '{subscription} + sum({services})' }),
@@ -173,7 +173,7 @@ export const SALES_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-calendar-sync',
     minutes: 2,
     name: 'Sales Follow-up',
-    description: 'Log a call or meeting: outcome, deal stage, next step and its date — quick enough for phones.',
+    description: 'Log a call or meeting: outcome, deal stage, next step and its date. Quick enough for phones.',
     tags: ['follow-up', 'crm', 'activity'],
     pages: [
       page('Follow-up', [

@@ -1,6 +1,6 @@
 /**
  * Template authoring kit (F9). A template is written as a short definition and built into a real
- * form schema — the same shape the builder saves — plus its design (theme tokens). Every template
+ * form schema, the same shape the builder saves, plus its design (theme tokens). Every template
  * is checked in tests: valid schema, publishable, formulas valid, logic targets exist.
  *
  *   const t: TemplateDef = {
@@ -104,7 +104,7 @@ export const agreeScale = () =>
   scored(['Strongly disagree', 1], ['Disagree', 2], ['Neutral', 3], ['Agree', 4], ['Strongly agree', 5])
 
 /**
- * Logic: `rule([['risk_score', 'gte', 15]], [['show', 'action_plan']])` — targets are field keys,
+ * Logic: `rule([['risk_score', 'gte', 15]], [['show', 'action_plan']])`, targets are field keys,
  * page titles or END_OF_FORM; `match: 'any'` for "any condition".
  */
 export const rule = (

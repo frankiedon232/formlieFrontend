@@ -1,7 +1,7 @@
 /**
  * Mock templates (docs/API-CONTRACT.md → Templates, F9): the gallery (system + workspace), one
  * template with its schema, category counts, and the workspace's own templates (save a form as a
- * template, edit, duplicate, delete). System templates can't be changed — duplicate them instead.
+ * template, edit, duplicate, delete). System templates can't be changed, duplicate them instead.
  * Every change is in the audit trail.
  */
 import { z } from 'zod'
@@ -48,7 +48,7 @@ function ownTemplate(tenant: MockTenant, key: string | undefined) {
   return item
 }
 
-/** GET /templates — gallery: search (in the person's language), category / source / feature filters, sort. */
+/** GET /templates, gallery: search (in the person's language), category / source / feature filters, sort. */
 export const listTemplates = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAuth(event)
   const category = filterList(query, 'category')
@@ -75,7 +75,7 @@ export const listTemplates = defineMockRoute(({ event, query }) => {
   return ok(data, meta)
 })
 
-/** GET /templates/categories — Formalie's categories with counts and use of the templates inside. */
+/** GET /templates/categories, Formalie's categories with counts and use of the templates inside. */
 export const listTemplateCategories = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAuth(event)
   const lang = langOf(query)
@@ -104,7 +104,7 @@ export const listTemplateCategories = defineMockRoute(({ event, query }) => {
   return ok(data, meta)
 })
 
-/** GET /templates/facets — counts per category for the filter. */
+/** GET /templates/facets, counts per category for the filter. */
 export const templateFacets = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
   const items = allTemplates(tenant, 'en')
@@ -116,7 +116,7 @@ export const templateFacets = defineMockRoute(({ event }) => {
   return ok(facets)
 })
 
-/** GET /templates/:key — one template with its schema and calculations. */
+/** GET /templates/:key, one template with its schema and calculations. */
 export const getTemplate = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAuth(event)
   const detail = templateDetail(tenant, getRouterParam(event, 'key') ?? '', langOf(query))
@@ -131,7 +131,7 @@ const createBody = z.object({
   category: z.enum(TEMPLATE_CATEGORY_KEYS),
 })
 
-/** POST /templates — save a form (its current draft, design included) as a workspace template. */
+/** POST /templates, save a form (its current draft, design included) as a workspace template. */
 export const createTemplate = defineMockRoute(({ event, body: raw }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(createBody, raw)
@@ -157,7 +157,7 @@ export const createTemplate = defineMockRoute(({ event, body: raw }) => {
   return ok(templateDetail(tenant, workspaceKey(item.id), 'en'), {}, 201)
 })
 
-/** PATCH /templates/:key — name, description, category (workspace templates only). */
+/** PATCH /templates/:key, name, description, category (workspace templates only). */
 export const updateTemplate = defineMockRoute(({ event, body: raw }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(createBody.omit({ form_id: true }).partial(), raw)
@@ -173,7 +173,7 @@ export const updateTemplate = defineMockRoute(({ event, body: raw }) => {
 })
 
 /**
- * POST /templates/:key/sync — update a workspace template with the current draft of the form it was
+ * POST /templates/:key/sync, update a workspace template with the current draft of the form it was
  * saved from (questions, logic, calculations, design); name, description and category stay.
  */
 export const syncTemplate = defineMockRoute(({ event }) => {
@@ -188,7 +188,7 @@ export const syncTemplate = defineMockRoute(({ event }) => {
   return ok(templateDetail(tenant, workspaceKey(item.id), 'en'))
 })
 
-/** POST /templates/:key/duplicate — a workspace copy of any template (system ones included). */
+/** POST /templates/:key/duplicate, a workspace copy of any template (system ones included). */
 export const duplicateTemplate = defineMockRoute(({ event, query }) => {
   const { user, tenant } = requireAuth(event)
   const source = templateDetail(tenant, getRouterParam(event, 'key') ?? '', langOf(query))
@@ -214,7 +214,7 @@ export const duplicateTemplate = defineMockRoute(({ event, query }) => {
   return ok(templateDetail(tenant, workspaceKey(item.id), 'en'), {}, 201)
 })
 
-/** DELETE /templates/:key — forms made from it keep their fields and design. */
+/** DELETE /templates/:key, forms made from it keep their fields and design. */
 export const deleteTemplate = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const item = ownTemplate(tenant, getRouterParam(event, 'key'))
@@ -233,7 +233,7 @@ const translateBody = z.object({
 })
 const known = (code: string) => (code === 'en' || APP_LOCALES.some(locale => locale.code === code) ? code : null)
 
-/** POST /templates/translate-content — a form's template text in another language (text written by people stays). */
+/** POST /templates/translate-content, a form's template text in another language (text written by people stays). */
 export const translateFormContent = defineMockRoute(({ event, body }) => {
   requireAuth(event)
   const input = parseBody(translateBody, body)

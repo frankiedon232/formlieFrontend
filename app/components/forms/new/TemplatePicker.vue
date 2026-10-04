@@ -1,6 +1,6 @@
 <!--
-  "From a template" tab of New form (F9): the system catalogue as selectable cards — each with a
-  mini preview in its own design — narrowed by category and search. The full gallery (with your
+  "From a template" tab of New form (F9): the system catalogue as selectable cards, each with a
+  mini preview in its own design, narrowed by category and search. The full gallery (with your
   workspace templates and usage) is one click away.
 -->
 <script setup lang="ts">

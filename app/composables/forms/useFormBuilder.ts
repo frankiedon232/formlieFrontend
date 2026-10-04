@@ -7,7 +7,7 @@ import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 /**
  * Builder state + every edit (FRONTEND-SPEC §6): pages → rows → fields on a 12-column grid.
  * Every mutation records an undo step first. The page creates it with `useFormBuilder()` and
- * children read it with `useBuilder()` (provide / inject — one builder per page).
+ * children read it with `useBuilder()` (provide / inject, one builder per page).
  */
 export function useFormBuilder() {
   const { t } = useI18n()
@@ -105,7 +105,7 @@ export function useFormBuilder() {
     return field
   }
 
-  /** Puts a field in its own row — after the selected field, else at the end of the page. */
+  /** Puts a field in its own row, after the selected field, else at the end of the page. */
   function place(field: FormField, target?: { pageId: string; rowIndex: number }): FormField | null {
     if (!schema.value || !page.value) return null
     history.record()

@@ -9,7 +9,7 @@ const affordability = () =>
       key: 'affordability',
       formula: 'if({income_ratio} >= 3, "Comfortable", if({income_ratio} >= 2.5, "Borderline", "Below guide"))',
       props: { internal: true },
-      help: 'Monthly income is compared with 3× the rent — a guide for the landlord, not a decision.',
+      help: 'Monthly income is compared with 3× the rent. A guide for the landlord, not a decision.',
     }),
   )
 
@@ -74,7 +74,7 @@ export const REAL_ESTATE_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-building',
     minutes: 6,
     name: 'Rental Application',
-    description: 'A shorter application for a specific listing — move-in date, term, household and affordability.',
+    description: 'A shorter application for a specific listing: move-in date, term, household and affordability.',
     tags: ['rental', 'application', 'lease'],
     pages: [
       page('Rental application', [
@@ -114,7 +114,7 @@ export const REAL_ESTATE_TEMPLATES: TemplateDef[] = [
         q('calculated', 'Condition score (%)', {
           key: 'condition_score',
           formula: 'round(sum({room_1}, {room_2}, {room_3}, {room_4}, {room_5}, {room_6}) / (3 * count({room_1}, {room_2}, {room_3}, {room_4}, {room_5}, {room_6})) * 100)',
-          help: 'Good = 3, fair = 2, poor = 1 — out of the best possible for the rooms rated.',
+          help: 'Good = 3, fair = 2, poor = 1, out of the best possible for the rooms rated.',
         }),
         row(q('number', 'Electricity meter'), q('number', 'Water meter'), q('number', 'Gas meter')),
         q('image_upload', 'Photos', { props: { max_files: 20 } }),

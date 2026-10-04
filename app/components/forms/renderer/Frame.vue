@@ -1,5 +1,5 @@
 <!--
-  The page around a form on its public link (F10, owner 2026-10-03) — the organisation's branding,
+  The page around a form on its public link (F10, owner 2026-10-03), the organisation's branding,
   a link to its own website (never the portal), quick facts and a secure-by-Formalie footer, in
   four styles (theme.frame.style): branded · spotlight · side · minimal. Lives inside the form page
   root, so it follows the form's theme (colours, font). The default slot is the form area.

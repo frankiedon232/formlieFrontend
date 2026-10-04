@@ -8,7 +8,7 @@ export default withNuxt({
       'error',
       {
         patterns: [
-          { group: ['*.vue'], message: 'Components are auto-imported — use <PrefixName /> instead.' },
+          { group: ['*.vue'], message: 'Components are auto-imported, use <PrefixName /> instead.' },
           {
             group: ['~/composables/*', '~/composables/**', '@/composables/**'],
             message: 'Composables are auto-imported.',

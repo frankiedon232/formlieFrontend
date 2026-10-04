@@ -1,4 +1,4 @@
-/** Finance & Legal templates (F9 milestone 3). Controls only — no compliance or certification claims. */
+/** Finance & Legal templates (F9 milestone 3). Controls only, no compliance or certification claims. */
 import { opts, page, q, row, rule, type TemplateDef } from '../kit'
 
 export const FINANCE_LEGAL_TEMPLATES: TemplateDef[] = [
@@ -31,7 +31,7 @@ export const FINANCE_LEGAL_TEMPLATES: TemplateDef[] = [
           q('calculated', 'Estimated monthly payment', {
             key: 'monthly_payment',
             formula: 'round({amount} * (1 + {rate} / 100 * {months} / 12) / {months}, 2)',
-            help: 'Flat-rate estimate before fees — the lender confirms the real figure.',
+            help: 'Flat-rate estimate before fees. The lender confirms the real figure.',
           }),
           q('calculated', 'Debt-to-income (%)', { key: 'dti', formula: 'round(({debts} + {monthly_payment}) / {income} * 100)' }),
         ),
@@ -139,7 +139,7 @@ export const FINANCE_LEGAL_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-file-signature',
     minutes: 3,
     name: 'NDA / Agreement Sign-off',
-    description: 'Show the agreement, confirm each key point and sign — with company details when signing for one.',
+    description: 'Show the agreement, confirm each key point and sign, with company details when signing for one.',
     tags: ['nda', 'agreement', 'signature'],
     pages: [
       page('Agreement', [

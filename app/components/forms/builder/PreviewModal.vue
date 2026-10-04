@@ -17,11 +17,11 @@ const devices = computed(() => [
   { value: 'tablet', label: t('builder.preview.tablet'), icon: 'i-lucide-tablet' },
   { value: 'phone', label: t('builder.preview.phone'), icon: 'i-lucide-smartphone' },
 ])
-// Desktop fills the side panel edge to edge — no frame, no padding (owner, 2026-10-03); the panel
+// Desktop fills the side panel edge to edge, no frame, no padding (owner, 2026-10-03); the panel
 // keeps its size. Tablet and phone show a device-sized frame in a panel that fits it.
 const PANEL = { desktop: 'w-full sm:max-w-5xl', tablet: 'w-full sm:max-w-[52rem]', phone: 'w-full sm:max-w-lg' }
 const FRAME = {
-  // min-h (not h): the page grows and the panel scrolls — a fixed height clipped long forms.
+  // min-h (not h): the page grows and the panel scrolls, a fixed height clipped long forms.
   desktop: 'min-h-full',
   tablet: 'max-w-[768px] min-h-full rounded-lg border border-default',
   phone: 'max-w-[390px] min-h-full rounded-lg border border-default',

@@ -42,7 +42,7 @@ export const HOSPITALITY_TEMPLATES: TemplateDef[] = [
         q('full_name', 'Name', { required: true }),
         row(q('email', 'Email', { required: true }), q('phone', 'Phone')),
         row(q('date', 'Check-in', { key: 'check_in', required: true }), q('date', 'Check-out', { key: 'check_out', required: true })),
-        q('dropdown', 'Room type', { key: 'room_type', required: true, options: scored(['Standard — 120.00 / night', 120], ['Deluxe — 180.00 / night', 180], ['Suite — 320.00 / night', 320]) }),
+        q('dropdown', 'Room type', { key: 'room_type', required: true, options: scored(['Standard: 120.00 / night', 120], ['Deluxe: 180.00 / night', 180], ['Suite: 320.00 / night', 320]) }),
         row(
           q('number', 'Rooms', { key: 'rooms', required: true, default: 1, validation: { min: 1, max: 10 } }),
           q('number', 'Adults', { required: true, default: 2, validation: { min: 1, max: 20 } }),
@@ -108,7 +108,7 @@ export const HOSPITALITY_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-heart-handshake',
     minutes: 3,
     name: 'Special Requirements Form',
-    description: 'Dietary and access needs, allergies and celebrations — so the stay is ready before arrival.',
+    description: 'Dietary and access needs, allergies and celebrations, so the stay is ready before arrival.',
     tags: ['dietary', 'accessibility', 'allergies'],
     pages: [
       page('Special requirements', [
@@ -145,8 +145,8 @@ export const HOSPITALITY_TEMPLATES: TemplateDef[] = [
         q('number', 'Number of guests', { key: 'guests', required: true, validation: { min: 5, max: 2000 } }),
       ]),
       page('Menu', [
-        q('radio', 'Menu (per guest)', { key: 'menu', required: true, options: scored(['Canapés — 18.00', 18], ['Buffet — 25.00', 25], ['Three-course meal — 45.00', 45]) }),
-        q('checkbox', 'Extras (per guest)', { key: 'extras', options: scored(['Drinks package — 15.00', 15], ['Dessert table — 6.00', 6], ['Coffee and tea — 3.00', 3]) }),
+        q('radio', 'Menu (per guest)', { key: 'menu', required: true, options: scored(['Canapés: 18.00', 18], ['Buffet: 25.00', 25], ['Three-course meal: 45.00', 45]) }),
+        q('checkbox', 'Extras (per guest)', { key: 'extras', options: scored(['Drinks package: 15.00', 15], ['Dessert table: 6.00', 6], ['Coffee and tea: 3.00', 3]) }),
         row(
           q('calculated', 'Price per guest', { key: 'per_guest', formula: '{menu} + if(count({extras}) > 0, {extras}, 0)' }),
           q('calculated', 'Estimated total', { key: 'estimate', formula: '{per_guest} * {guests}' }),
@@ -162,7 +162,7 @@ export const HOSPITALITY_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-utensils-crossed',
     minutes: 2,
     name: 'Restaurant Reservation Request',
-    description: 'Date, time, party size, seating and the occasion — everything the host needs.',
+    description: 'Date, time, party size, seating and the occasion: everything the host needs.',
     tags: ['restaurant', 'reservation', 'table'],
     pages: [
       page('Reserve a table', [

@@ -1,6 +1,6 @@
 <!--
   A calculation shown like a code snippet: name, "team only" when respondents don't see the
-  result, a copy button, and the formula with light syntax colouring — field references, functions,
+  result, a copy button, and the formula with light syntax colouring, field references, functions,
   text, numbers and operators. Field references show the question's label on hover.
 -->
 <script setup lang="ts">

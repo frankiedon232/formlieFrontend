@@ -132,7 +132,7 @@ const RESOURCE_NAV: AppNavItem[] = [
 ]
 
 /**
- * Data sources area (F12) — its own rail entry and its own menu (owner, 2026-10-02). Pages are
+ * Data sources area (F12), its own rail entry and its own menu (owner, 2026-10-02). Pages are
  * placeholders until F12; the full plan is in PROGRESS.md → F12.
  */
 const DATA_NAV: AppNavItem[] = [
@@ -147,7 +147,7 @@ const DATA_NAV: AppNavItem[] = [
 ]
 
 /**
- * API service area (F13, owner 2026-10-02) — build API endpoints from a form so applications can
+ * API service area (F13, owner 2026-10-02), build API endpoints from a form so applications can
  * send and read its data. Placeholders until F13; plan in PROGRESS.md → F13.
  */
 const API_NAV: AppNavItem[] = [
@@ -166,7 +166,7 @@ const API_NAV: AppNavItem[] = [
 ]
 
 /**
- * AI assistant area (F19, owner 2026-10-03) — help creating forms and templates, analysing
+ * AI assistant area (F19, owner 2026-10-03), help creating forms and templates, analysing
  * responses and more. Placeholders until F19; plan in PROGRESS.md → F19.
  */
 const AI_NAV: AppNavItem[] = [

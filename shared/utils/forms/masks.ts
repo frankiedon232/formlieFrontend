@@ -1,11 +1,11 @@
 /**
- * Typing masks for technical fields — they shape what is typed, the validator still decides
+ * Typing masks for technical fields, they shape what is typed, the validator still decides
  * (`validate.ts`). Backspace-safe: a separator is only added when the next character arrives.
  *
  *   IPv4 → digits and dots, at most 3 digits / 255 per part, 4 parts (192.0.2.10)
  *   IPv6 → hex groups of up to 4 with colons, "::" once, an IPv4 tail allowed (2001:db8::1)
  *   MAC  → hex pairs joined by colons in capitals (00:1A:2B:3C:4D:5E); typing "-" or "." keeps
- *          the person's own format (00-1A-…, 001A.2B3C.4D5E) — only cleaned and capitalised
+ *          the person's own format (00-1A-…, 001A.2B3C.4D5E), only cleaned and capitalised
  */
 
 export type IpVersion = 'any' | 'v4' | 'v6'

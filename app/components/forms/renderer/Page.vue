@@ -2,7 +2,7 @@
   A form page with its theme (F8): page background (colour, gradient, image + overlay), layout
   (card · plain · split with an image or a coloured side panel · full width), header (cover
   image, optional colour / gradient band, logo, title, subtitle), the form, and a footer (plain
-  text or a coloured bar). The theme is applied as CSS variables on this root only — Nuxt UI
+  text or a coloured bar). The theme is applied as CSS variables on this root only, Nuxt UI
   controls inside pick them up; the portal around it never changes.
   Used by the designer preview, the builder preview and the public form (F10).
 -->

@@ -1,5 +1,5 @@
 <!--
-  A public form (F10) — `/{formKey}/fill` (full page) and `/{formKey}/embed` (no page chrome, for
+  A public form (F10), `/{formKey}/fill` (full page) and `/{formKey}/embed` (no page chrome, for
   iframes). Server-rendered: the first response holds the whole form, its SEO tags and the right
   status code. States: not found · not published yet · closed · open. The respondent's language:
   `?lang=xx` when the form offers it, otherwise the form's main language (decision 73). Answers are

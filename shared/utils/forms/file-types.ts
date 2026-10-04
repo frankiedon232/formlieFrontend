@@ -1,5 +1,5 @@
 /**
- * File types for upload fields — picked from a searchable list instead of typed by hand (owner:
+ * File types for upload fields, picked from a searchable list instead of typed by hand (owner:
  * people get `accept` wrong). Empty = any file. Whole families use MIME wildcards (`image/*`);
  * single types use extensions (`.pdf`). Anything missing can still be added as `.ext`.
  * Stored on the field as the HTML `accept` string, e.g. "image/*,.pdf,.docx".

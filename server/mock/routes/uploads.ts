@@ -18,7 +18,7 @@ import { parseBody } from '../core/validate'
 /** What each purpose may upload: logos (admins, 2 MB) and images inside forms (members, 5 MB). */
 const PURPOSES = {
   logo: { types: ['image/png', 'image/jpeg', 'image/webp'], maxBytes: 2 * 1024 * 1024, admin: true },
-  /** Link preview image (F10 M3): what WhatsApp, LinkedIn… show — no SVG (social sites don't show it). */
+  /** Link preview image (F10 M3): what WhatsApp, LinkedIn… show, no SVG (social sites don't show it). */
   share_image: { types: ['image/png', 'image/jpeg', 'image/webp'], maxBytes: 5 * 1024 * 1024, admin: false },
   form_image: {
     types: ['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg+xml'],
@@ -40,12 +40,12 @@ interface StoredUpload {
   expiresAt: number
   data: Uint8Array | null
   completed: boolean
-  /** Respondent files (public forms, F10 M2): never served publicly — only to the workspace (F11). */
+  /** Respondent files (public forms, F10 M2): never served publicly, only to the workspace (F11). */
   respondent?: {
     formId: string
     field: string
     name: string
-    /** image — must really be a picture · file — anything the question allows, never a program. */
+    /** image, must really be a picture · file, anything the question allows, never a program. */
     kind: 'image' | 'file'
     /** Extensions the question lists explicitly (a program is accepted only when its type is listed). */
     listed: string[]
@@ -76,7 +76,7 @@ function looksLike(contentType: string, bytes: Uint8Array): boolean {
     return starts(0x52, 0x49, 0x46, 0x46) && String.fromCharCode(...bytes.slice(8, 12)) === 'WEBP'
   if (contentType === 'image/gif') return starts(0x47, 0x49, 0x46, 0x38)
   if (contentType === 'image/svg+xml') {
-    // SVG is text: accept only a plain drawing — no scripts, event handlers, links to code or embeds.
+    // SVG is text: accept only a plain drawing, no scripts, event handlers, links to code or embeds.
     const text = new TextDecoder().decode(bytes).slice(0, 2_000_000)
     return /<svg[\s>]/i.test(text) && !/<script|\son\w+\s*=|javascript:|<foreignObject|<iframe|<embed|<object/i.test(text)
   }
@@ -154,7 +154,7 @@ export const createUpload = defineMockRoute(({ event, body }) => {
   })
 })
 
-/** PUT /storage/:token — plain body, like an object-storage pre-signed URL. */
+/** PUT /storage/:token, plain body, like an object-storage pre-signed URL. */
 export const storeUpload = defineEventHandler(async event => {
   const token = getRouterParam(event, 'token') ?? ''
   const upload = [...uploads.values()].find(item => item.token === token)
@@ -200,7 +200,7 @@ export const serveFile = defineEventHandler(event => {
   }
   setHeader(event, 'content-type', upload.contentType)
   setHeader(event, 'x-content-type-options', 'nosniff')
-  // SVGs open as images only — never as a page that could run anything.
+  // SVGs open as images only, never as a page that could run anything.
   if (upload.contentType === 'image/svg+xml') setHeader(event, 'content-security-policy', "default-src 'none'; style-src 'unsafe-inline'; sandbox")
   setHeader(event, 'cache-control', 'private, max-age=3600')
   return upload.data
@@ -212,7 +212,7 @@ export function completedUploadUrl(id: string, tenantId: string): string | null 
   return upload?.completed && !upload.respondent && upload.tenantId === tenantId ? `/api/v1/files/${upload.id}` : null
 }
 
-// ── Respondent files (public forms, F10 M2 — routes in publicForms.ts) ─────────────────────
+// ── Respondent files (public forms, F10 M2, routes in publicForms.ts) ─────────────────────
 export interface RespondentTicketInput {
   tenantId: string
   formId: string

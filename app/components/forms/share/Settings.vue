@@ -1,5 +1,5 @@
 <!--
-  Share settings (F10 M3) — the form editor's Share tab: who can open the form (anyone with the
+  Share settings (F10 M3), the form editor's Share tab: who can open the form (anyone with the
   link / password), its custom link, response limit and availability; on the side the live link
   with copy, QR code and embed code. Changes are kept as a draft on the page and saved together
   (PUT /forms/{id}/share) from the bar at the bottom; they apply at once, also to published forms

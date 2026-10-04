@@ -1,5 +1,5 @@
 /**
- * FormSchema v1 (docs/API-CONTRACT.md → FormSchema) — validated on import and by the API.
+ * FormSchema v1 (docs/API-CONTRACT.md → FormSchema), validated on import and by the API.
  * Deliberately tolerant about field props (the builder, F7, owns the details) but strict about
  * structure, ids and sizes, so an imported file can never smuggle in something unexpected.
  */
@@ -22,7 +22,7 @@ export const formFieldSchema = z.object({
   /** Shown greyed out and not submitted. Never required. */
   disabled: z.boolean().optional(),
   /**
-   * Field access — who the field is for. Everyone (default), or only some departments, roles or
+   * Field access, who the field is for. Everyone (default), or only some departments, roles or
    * people (`all` = every one of that kind). A restricted field is never required: people it is
    * not meant for must still be able to submit. Answers stay visible only to the same audience.
    */

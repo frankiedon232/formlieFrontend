@@ -1,6 +1,6 @@
 <!--
   Paragraph block on the canvas: edit the text in place (Nuxt UI editor). Select text for a small
-  bubble toolbar — bold, italic, underline, link, lists, alignment. Saved as HTML (props.html),
+  bubble toolbar, bold, italic, underline, link, lists, alignment. Saved as HTML (props.html),
   one undo step per typing burst. Old plain-text paragraphs are converted on first edit.
 -->
 <script setup lang="ts">

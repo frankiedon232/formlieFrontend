@@ -72,7 +72,7 @@
       "moved": "Formulir dipindahkan",
       "tagsSaved": "Tag disimpan",
       "duplicated": "Salinan dibuat",
-      "unpublish": "Publikasi dibatalkan — tautannya tidak berfungsi lagi",
+      "unpublish": "Publikasi dibatalkan. Tautannya tidak berfungsi lagi",
       "close": "Formulir ditutup untuk respons baru",
       "reopen": "Formulir dibuka kembali",
       "archive": "Formulir diarsipkan",
@@ -119,7 +119,7 @@
       "count": "{count} formulir | {count} formulir",
       "empty": "Belum ada folder. Buat satu di bawah.",
       "viewForms": "Tampilkan formulir di {name}",
-      "notEmpty": "Pindahkan dulu formulirnya ke folder lain — setelah itu folder ini dapat dihapus.",
+      "notEmpty": "Pindahkan dulu formulirnya ke folder lain. Setelah itu folder ini dapat dihapus.",
       "deleteEmpty": "Folder ini kosong, jadi tidak ada formulir yang terpengaruh."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "Keduanya bisa diubah nanti.",
       "pickFile": "Pilih file untuk diimpor terlebih dahulu.",
       "blankTitle": "Mulai dari awal",
-      "blankDesc": "Formulir kosong dengan satu halaman — tambahkan pertanyaan yang Anda perlukan, sesuai urutan Anda.",
+      "blankDesc": "Formulir kosong dengan satu halaman. Tambahkan pertanyaan yang Anda perlukan, sesuai urutan Anda.",
       "previewAdd": "Tambahkan pertanyaan pertama",
       "points": {
         "fieldsTitle": "Lebih dari 30 jenis kolom",
@@ -190,7 +190,7 @@
     "filterTemplate": "Templat",
     "overview": {
       "subtitle": "{status} · diperbarui {updated}",
-      "trendTitle": "Tanggapan — 30 hari terakhir",
+      "trendTitle": "Tanggapan 30 hari terakhir",
       "trendDesc": "Kiriman per hari",
       "trendAria": "Tanggapan per hari selama 30 hari terakhir, total {total}",
       "responsesCount": "{count} tanggapan | {count} tanggapan",
@@ -229,15 +229,15 @@
       "design": "Desain",
       "versions": "Versi",
       "allVersions": "Semua versi",
-      "noVersions": "Belum diterbitkan — versi muncul saat Anda menerbitkan.",
+      "noVersions": "Belum diterbitkan. Versi muncul saat Anda menerbitkan.",
       "detailsTitle": "Detail",
       "tags": "Tag",
-      "noHistory": "Diterbitkan sebelum riwayat versi dicatat — riwayat dimulai pada penerbitan berikutnya.",
+      "noHistory": "Diterbitkan sebelum riwayat versi dicatat. Riwayat dimulai pada penerbitan berikutnya.",
       "embedCode": "Kode sematan"
     },
     "qr": {
       "title": "Kode QR",
-      "desc": "Cetak atau tampilkan di layar — memindainya akan membuka formulir.",
+      "desc": "Cetak atau tampilkan di layar. Memindainya akan membuka formulir.",
       "accent": "Warna formulir",
       "black": "Hitam",
       "colour": "Berwarna",
@@ -252,7 +252,7 @@
       "plain": "Polos",
       "brandedOrg": "Nama dan logo organisasi Anda beserta nama formulir; Formalie di bagian bawah.",
       "brandedFormalie": "Merek Formalie beserta nama formulir.",
-      "plainHint": "Hanya kodenya — untuk ruang sempit.",
+      "plainHint": "Hanya kodenya, untuk ruang sempit.",
       "brand": "Warna merek",
       "custom": "Warna apa saja",
       "scan": "Pindai untuk membuka",
@@ -270,9 +270,9 @@
       "title": "Kapan formulir ini menerima respons",
       "desc": "Biarkan keduanya kosong agar tetap terbuka. Setelah berakhir, tautan menyatakan formulir sudah kedaluwarsa; sebelum dimulai, tautan menyebutkan kapan dibuka.",
       "opensAt": "Terbuka mulai",
-      "opensAtHint": "Opsional — sebelum ini, tautan menampilkan kapan formulir dibuka.",
+      "opensAtHint": "Opsional. Sebelum ini, tautan menampilkan kapan formulir dibuka.",
       "closesAt": "Terbuka sampai",
-      "closesAtHint": "Opsional — setelah ini, tidak ada respons lagi; tautan menyatakan formulir sudah kedaluwarsa.",
+      "closesAtHint": "Opsional. Setelah ini, tidak ada respons lagi; tautan menyatakan formulir sudah kedaluwarsa.",
       "preset": {
         "week": "1 minggu",
         "twoWeeks": "2 minggu",
@@ -281,16 +281,16 @@
         "noEnd": "Tanpa tanggal akhir"
       },
       "endBeforeStart": "Pilih akhir setelah tanggal mulai.",
-      "pastWarning": "Tanggal akhir ini sudah lewat — formulir berhenti menerima respons begitu Anda menyimpan.",
+      "pastWarning": "Tanggal akhir ini sudah lewat. Formulir berhenti menerima respons begitu Anda menyimpan.",
       "saved": "Ketersediaan disimpan"
     },
     "embed": {
       "title": "Sematkan di situs web Anda",
       "desc": "Tempel kode ini di halaman situs web Anda tempat formulir harus muncul.",
-      "notLive": "Formulir belum dipublikasikan — sematan akan menampilkannya setelah aktif.",
+      "notLive": "Formulir belum dipublikasikan. Sematan akan menampilkannya setelah aktif.",
       "height": "Tinggi",
       "auto": "Tinggi otomatis (disarankan)",
-      "autoDesc": "Bingkai membesar dan mengecil mengikuti formulir — tanpa bilah gulir di dalamnya.",
+      "autoDesc": "Bingkai membesar dan mengecil mengikuti formulir, tanpa bilah gulir di dalamnya.",
       "fixed": "Tinggi tetap",
       "fixedDesc": "Selalu setinggi yang sama; formulir bergulir di dalam bingkai.",
       "pixels": "Tinggi dalam piksel",
@@ -542,8 +542,8 @@
     "label": "Kaki halaman"
   },
   "authLayout": {
-    "headline": "Formulir, data, dan akses — dalam kendali Anda.",
-    "subline": "Platform yang aman dan fleksibel untuk membuat formulir apa pun, mengumpulkan dan mengelola data, menghubungkan sistem Anda, serta mengatur siapa melihat apa — untuk organisasi segala ukuran, di mana pun di dunia.",
+    "headline": "Formulir, data, dan akses dalam kendali Anda.",
+    "subline": "Platform yang aman dan fleksibel untuk membuat formulir apa pun, mengumpulkan dan mengelola data, menghubungkan sistem Anda, serta mengatur siapa melihat apa. Untuk organisasi segala ukuran, di mana pun di dunia.",
     "badgeEncrypted": "Terenkripsi ujung ke ujung",
     "badgeCompliance": "Kontrol privasi & kepatuhan",
     "badgeDatabase": "{count}+ basis data atau penyimpanan aman",
@@ -651,7 +651,7 @@
       "available": "Tersedia",
       "unavailable": {
         "taken": "Sudah dipakai",
-        "reserved": "Dicadangkan — pilih yang lain",
+        "reserved": "Dicadangkan. Pilih yang lain",
         "invalid": "Alamat tidak valid"
       },
       "subdomainHelp": "Tim Anda masuk di sini. Anda bisa menambahkan domain khusus nanti.",
@@ -685,7 +685,7 @@
     "workspace": "Ruang kerja"
   },
   "audit": {
-    "description": "Setiap tindakan di ruang kerja Anda — siapa, apa, kapan, dan di mana.",
+    "description": "Setiap tindakan di ruang kerja Anda: siapa, apa, kapan, dan di mana.",
     "security": "Peristiwa keamanan",
     "searchPlaceholder": "Cari orang, item, alamat IP…",
     "emptyTitle": "Belum ada yang tercatat",
@@ -891,7 +891,7 @@
     "menu": "Penyiapan ruang kerja",
     "settingsCard": {
       "title": "Penyiapan ruang kerja",
-      "desc": "Perusahaan, merek, pengaturan regional, tim, dan formulir pertama — buka kembali langkah mana pun.",
+      "desc": "Perusahaan, merek, pengaturan regional, tim, dan formulir pertama. Buka kembali langkah mana pun.",
       "open": "Buka"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Admin",
       "owner": "Pemilik",
       "invalid": "Masukkan alamat email yang valid.",
-      "self": "Itu Anda — Anda sudah bergabung.",
+      "self": "Itu Anda. Anda sudah bergabung.",
       "duplicate": "Email ini sudah ada di daftar.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "Email {n}",
@@ -1033,7 +1033,7 @@
         "name": "Laporan insiden"
       }
     },
-    "subtitle": "Mulai dari formulir siap pakai — setiap templat punya desainnya sendiri, dan Anda bisa mengubah apa pun sebelum memublikasikan",
+    "subtitle": "Mulai dari formulir siap pakai. Setiap templat punya desainnya sendiri, dan Anda bisa mengubah apa pun sebelum memublikasikan",
     "blank": "Formulir kosong",
     "all": "Semua",
     "search": "Cari templat…",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "Tidak ada templat yang cocok",
     "emptyDesc": "Coba kategori atau pencarian lain, atau hapus filter.",
     "useTitle": "Gunakan templat",
-    "useDesc": "Formulir baru Anda terbuka di pembuat formulir — ubah pertanyaan, aturan, perhitungan, atau desain apa pun sebelum memublikasikan.",
+    "useDesc": "Formulir baru Anda terbuka di pembuat formulir. Ubah pertanyaan, aturan, perhitungan, atau desain apa pun sebelum memublikasikan.",
     "saveAs": "Simpan sebagai templat",
     "saveTitle": "Simpan sebagai templat",
     "saveDesc": "Pertanyaan, logika, perhitungan, dan desain menjadi templat untuk ruang kerja Anda. Tanggapan tidak pernah disertakan.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Umpan Balik Pelanggan",
-        "description": "Ketahui pendapat pelanggan tentang layanan Anda — dengan pertanyaan lanjutan saat ada yang tidak puas."
+        "description": "Ketahui pendapat pelanggan tentang layanan Anda, dengan pertanyaan lanjutan saat ada yang tidak puas."
       },
       "csat_nps": {
         "name": "Survei Kepuasan Pelanggan (CSAT / NPS)",
-        "description": "Ukur kepuasan (CSAT), usaha, dan loyalitas (NPS) — setiap jawaban dikelompokkan sebagai promotor, pasif, atau detraktor."
+        "description": "Ukur kepuasan (CSAT), usaha, dan loyalitas (NPS). Setiap jawaban dikelompokkan sebagai promotor, pasif, atau detraktor."
       },
       "product_review": {
         "name": "Ulasan Produk",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Survei Keterlibatan Karyawan",
-        "description": "Survei singkat anonim tentang kebanggaan, tujuan, pengembangan, dan dukungan — dengan indeks keterlibatan 0 hingga 100."
+        "description": "Survei singkat anonim tentang kebanggaan, tujuan, pengembangan, dan dukungan, dengan indeks keterlibatan 0 hingga 100."
       },
       "expense_reimbursement": {
         "name": "Penggantian Biaya",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Umpan Balik Pelatihan",
-        "description": "Nilai materi, pelatih, bahan, dan relevansi kursus — dengan skor rata-rata."
+        "description": "Nilai materi, pelatih, bahan, dan relevansi kursus, dengan skor rata-rata."
       },
       "reference_check": {
         "name": "Pemeriksaan Referensi",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Pengajuan Beasiswa",
-        "description": "Catatan akademik, kebutuhan finansial, dan pernyataan pribadi — dengan skor kelayakan untuk panel."
+        "description": "Catatan akademik, kebutuhan finansial, dan pernyataan pribadi, dengan skor kelayakan untuk panel."
       },
       "permission_slip": {
         "name": "Persetujuan / Surat Izin Orang Tua",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Konfirmasi / Bukti Pengiriman",
-        "description": "Konfirmasi barang yang diterima, kondisinya, foto, dan tanda tangan penerima — jika rusak, detail akan diminta."
+        "description": "Konfirmasi barang yang diterima, kondisinya, foto, dan tanda tangan penerima. Jika rusak, detail akan diminta."
       },
       "quality_control": {
         "name": "Checklist Kontrol Kualitas",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Penandatanganan Perjanjian",
-        "description": "Tampilkan perjanjian, konfirmasi setiap poin utama, lalu tanda tangani — dengan data perusahaan jika menandatangani atas namanya."
+        "description": "Tampilkan perjanjian, konfirmasi setiap poin utama, lalu tanda tangani. Data perusahaan diminta jika menandatangani atas namanya."
       },
       "risk_assessment": {
         "name": "Penilaian Risiko",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Laporan Insiden / Kecelakaan",
-        "description": "Catat apa yang terjadi, siapa yang terluka, dan tindakan pertama yang diambil — insiden serius ditandai untuk ditinjau segera."
+        "description": "Catat apa yang terjadi, siapa yang terluka, dan tindakan pertama yang diambil. Insiden serius ditandai untuk ditinjau segera."
       },
       "near_miss_report": {
         "name": "Laporan Nyaris Celaka",
-        "description": "Laporkan kejadian nyaris celaka dengan cepat — potensi keparahan dan kemungkinan terulang menentukan prioritas agar pencegahan didahulukan."
+        "description": "Laporkan kejadian nyaris celaka dengan cepat. Potensi keparahan dan kemungkinan terulang menentukan prioritas agar pencegahan didahulukan."
       },
       "safety_inspection": {
         "name": "Daftar Periksa Inspeksi Keselamatan",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Riwayat Medis",
-        "description": "Penyakit, operasi, obat, riwayat keluarga, dan gaya hidup — dengan jumlah penyakit untuk tenaga medis."
+        "description": "Penyakit, operasi, obat, riwayat keluarga, dan gaya hidup, dengan jumlah penyakit untuk tenaga medis."
       },
       "health_screening": {
         "name": "Skrining / Pernyataan Kesehatan",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Pendaftaran Relawan",
-        "description": "Kumpulkan relawan, minat, dan ketersediaan mereka — dengan izin wali untuk yang di bawah 18 tahun."
+        "description": "Kumpulkan relawan, minat, dan ketersediaan mereka, dengan izin wali untuk yang di bawah 18 tahun."
       },
       "speaker_sponsor_application": {
         "name": "Pengajuan Pembicara / Sponsor",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Formulir Kebutuhan Khusus",
-        "description": "Kebutuhan makanan dan aksesibilitas, alergi, dan perayaan — agar semuanya siap sebelum kedatangan."
+        "description": "Kebutuhan makanan dan aksesibilitas, alergi, dan perayaan, agar semuanya siap sebelum kedatangan."
       },
       "event_catering_request": {
         "name": "Permintaan Katering Acara",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Permintaan Reservasi Restoran",
-        "description": "Tanggal, jam, jumlah orang, tempat duduk, dan acaranya — semua yang dibutuhkan tuan rumah."
+        "description": "Tanggal, jam, jumlah orang, tempat duduk, dan acaranya: semua yang dibutuhkan tuan rumah."
       },
       "hospitality_complaint": {
         "name": "Formulir Keluhan Layanan Tamu",
@@ -1416,7 +1416,7 @@
       },
       "rental_application": {
         "name": "Aplikasi Sewa",
-        "description": "Aplikasi singkat untuk listing tertentu — tanggal pindah, jangka waktu, anggota rumah tangga, dan kemampuan bayar."
+        "description": "Aplikasi singkat untuk listing tertentu: tanggal pindah, jangka waktu, anggota rumah tangga, dan kemampuan bayar."
       },
       "property_inspection": {
         "name": "Inspeksi Properti",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Pengumpulan Prospek",
-        "description": "Nama, perusahaan, ukuran, dan minat — cukup singkat untuk landing page, dengan sumber yang tercatat."
+        "description": "Nama, perusahaan, ukuran, dan minat. Cukup singkat untuk landing page, dengan sumber yang tercatat."
       },
       "sales_quote_request": {
         "name": "Permintaan Penawaran Harga",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Tindak Lanjut Penjualan",
-        "description": "Catat panggilan atau rapat: hasil, tahap kesepakatan, langkah berikutnya, dan tanggalnya — cepat di ponsel."
+        "description": "Catat panggilan atau rapat: hasil, tahap kesepakatan, langkah berikutnya, dan tanggalnya. Cepat di ponsel."
       }
     },
     "openGallery": "Buka galeri lengkap",
@@ -1481,7 +1481,7 @@
       "browse": "Jelajahi templat"
     },
     "categoryPage": {
-      "subtitle": "Templat Formalie dalam kategori ini — masing-masing dengan desainnya sendiri, siap digunakan"
+      "subtitle": "Templat Formalie dalam kategori ini, masing-masing dengan desainnya sendiri, siap digunakan"
     },
     "mine": {
       "subtitle": "Templat yang disimpan ruang kerja Anda dari formulirnya sendiri atau disalin dari Formalie",
@@ -1611,7 +1611,7 @@
     "unpublished": "Perubahan belum diterbitkan",
     "save": {
       "saving": "Menyimpan…",
-      "error": "Belum tersimpan — lanjutkan mengedit untuk mencoba lagi",
+      "error": "Belum tersimpan. Lanjutkan mengedit untuk mencoba lagi",
       "conflict": "Diubah di tempat lain",
       "saved": "Tersimpan {time}",
       "upToDate": "Semua perubahan tersimpan",
@@ -1627,7 +1627,7 @@
       "tablet": "Tablet",
       "phone": "Ponsel",
       "device": "Perangkat",
-      "nothingSent": "Ini hanya pratinjau — tidak ada yang dikirim.",
+      "nothingSent": "Ini hanya pratinjau. Tidak ada yang dikirim.",
       "restart": "Mulai lagi"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Terbitkan",
       "submitAgain": "Terbitkan perubahan",
       "issues": "Perbaiki {count} hal sebelum menerbitkan | Perbaiki {count} hal sebelum menerbitkan",
-      "done": "Diterbitkan — versi {n} sudah tayang"
+      "done": "Diterbitkan: versi {n} sudah tayang"
     },
     "issue": {
       "no_inputs": "Tambahkan setidaknya satu pertanyaan",
@@ -1711,7 +1711,7 @@
       "minChoices": "Min. pilihan",
       "maxChoices": "Maks. pilihan",
       "accept": "Jenis file yang diizinkan",
-      "acceptHint": "Pisahkan dengan koma, mis. .pdf,.docx,image/* — kosong = semua.",
+      "acceptHint": "Pisahkan dengan koma, mis. .pdf,.docx,image/* (kosong = semua).",
       "maxFiles": "Maks. file",
       "maxSize": "Ukuran maks. (MB)",
       "minAboveMax": "Nilai minimum melebihi maksimum.",
@@ -1782,9 +1782,9 @@
       "readonly": "Hanya baca",
       "disabled": "Nonaktif",
       "editableHint": "Responden dapat mengisinya.",
-      "readonlyHint": "Ditampilkan dan dikirim bersama respons, tetapi tidak dapat diubah — mis. referensi yang sudah terisi.",
+      "readonlyHint": "Ditampilkan dan dikirim bersama respons, tetapi tidak dapat diubah (mis. referensi yang sudah terisi).",
       "disabledHint": "Ditampilkan redup dan tidak dikirim bersama respons.",
-      "noRequired": "Kolom hanya baca dan nonaktif tidak dapat diwajibkan — tidak ada yang bisa mengisinya."
+      "noRequired": "Kolom hanya baca dan nonaktif tidak dapat diwajibkan karena tidak ada yang bisa mengisinya."
     },
     "labels": {
       "title": "Posisi label",
@@ -1828,13 +1828,13 @@
       "label": "Pembuat formulir, layar penuh"
     },
     "drop": {
-      "newRow": "Lepas di sini — baris baru",
-      "beside": "Lepas di sini — di samping"
+      "newRow": "Lepas di sini: baris baru",
+      "beside": "Lepas di sini: di samping"
     },
     "blocks": {
       "appearance": "Tampilan",
       "sectionPlaceholder": "Judul bagian",
-      "descriptionPlaceholder": "Tambahkan deskripsi (opsional) — klik dua kali untuk mengedit",
+      "descriptionPlaceholder": "Tambahkan deskripsi (opsional). Klik dua kali untuk mengedit",
       "paragraphPlaceholder": "Tulis teks…",
       "paragraphHint": "Klik paragraf di kanvas untuk menulis. Pilih teks untuk tebal, tautan, daftar, dan perataan.",
       "size": "Ukuran",
@@ -1867,7 +1867,7 @@
       "caption": "Keterangan",
       "imageWidth": "Ukuran gambar",
       "href": "Tautan saat diklik",
-      "hrefHint": "Opsional — terbuka di tab baru.",
+      "hrefHint": "Opsional. Terbuka di tab baru.",
       "rounded": "Sudut membulat",
       "fill": "Penuhi",
       "height": "Tinggi",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Pilih dari daftar…",
       "selected": "Hanya {n} yang dipilih yang dapat melihat dan mengisi kolom ini.",
-      "noRequired": "Kolom terbatas tidak dapat diwajibkan — orang yang tidak dituju oleh kolom ini tetap harus dapat mengirim. Jawaban mereka hanya ditampilkan kepada orang yang sama."
+      "noRequired": "Kolom terbatas tidak dapat diwajibkan. Orang yang tidak dituju oleh kolom ini tetap harus dapat mengirim. Jawaban mereka hanya ditampilkan kepada orang yang sama."
     },
     "language": {
       "title": "Bahasa formulir",
       "hint": "Tombol, pesan, dan tanggal mengikuti bahasa ini, dan teks dari templat ikut diterjemahkan. Teks yang Anda tulis sendiri tetap seperti semula.",
       "translated": "{n} teks diterjemahkan | {n} teks diterjemahkan",
-      "kept": "{n} teks yang Anda tulis tetap seperti semula — ubah di formulir. | {n} teks yang Anda tulis tetap seperti semula — ubah di formulir.",
+      "kept": "{n} teks yang Anda tulis tetap seperti semula. Ubah di formulir. | {n} teks yang Anda tulis tetap seperti semula. Ubah di formulir.",
       "changed": "Bahasa formulir: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Perbarui templat",
       "updatedToast": "Templat “{name}” diperbarui dengan perubahan terbaru formulir ini",
       "saveNew": "Simpan sebagai templat baru saja",
-      "saveNewHint": "Membuat salinan terpisah — templat yang ada tetap seperti semula."
+      "saveNewHint": "Membuat salinan terpisah. Templat yang ada tetap seperti semula."
     },
     "identity": {
       "title": "Kenali responden",
-      "hint": "Cara Formalie membedakan orang, agar satu orang tidak bisa merespons dua kali — dan orang lain tidak pernah dikira sebagai dirinya.",
+      "hint": "Cara Formalie membedakan orang, agar satu orang tidak bisa merespons dua kali dan orang lain tidak pernah dikira sebagai dirinya.",
       "email": "Email milik responden sendiri",
-      "emailHint": "Email orang yang mengisi — bukan email referensi, atasan, atau wali. Respons kedua dengan email ini ditolak; respons yang sangat mirip akan diperiksa.",
+      "emailHint": "Email orang yang mengisi, bukan email referensi, atasan, atau wali. Respons kedua dengan email ini ditolak; respons yang sangat mirip akan diperiksa.",
       "verify": "Verifikasi email sebelum mengirim",
-      "verifyHint": "Responden memasukkan kode yang dikirim ke email mereka — satu respons per email terverifikasi.",
+      "verifyHint": "Responden memasukkan kode yang dikirim ke email mereka. Satu respons per email terverifikasi.",
       "suggested": "disarankan",
       "off": "Nonaktif",
       "none": "Tanpa email responden, Formalie hanya dapat mengenali browser yang sama (orang dapat menggunakan perangkat lain).",
-      "verifyLost": "Verifikasi email aktif, tetapi formulir tidak lagi memiliki pertanyaan email responden — verifikasi dijeda sampai Anda memilih salah satu di atas.",
-      "verifyRequired": "Pertanyaan email wajib diisi selama verifikasi aktif — kami memerlukannya untuk mengirim kode."
+      "verifyLost": "Verifikasi email aktif, tetapi formulir tidak lagi memiliki pertanyaan email responden. Verifikasi dijeda sampai Anda memilih salah satu di atas.",
+      "verifyRequired": "Pertanyaan email wajib diisi selama verifikasi aktif. Kami memerlukannya untuk mengirim kode."
     },
     "guide": {
       "title": "Panduan bantuan",
@@ -1937,7 +1937,7 @@
       "empty": "Belum ada panduan",
       "untitled": "Panduan tanpa judul",
       "summary": "{title} · {n} kata | {title} · {n} kata",
-      "noContent": "Tulis panduannya — tombol hanya muncul jika panduan sudah berisi.",
+      "noContent": "Tulis panduannya. Tombol hanya muncul jika panduan sudah berisi.",
       "editTitle": "Panduan bantuan",
       "editDesc": "Jelaskan cara mengisi formulir ini: apa yang perlu disiapkan, pertanyaan yang sulit, dan apa yang terjadi selanjutnya.",
       "titleLabel": "Judul",
@@ -2030,14 +2030,14 @@
       "ip": "Masukkan alamat IP yang valid untuk {field}.",
       "domain": "Masukkan nama domain untuk {field}, seperti example.org.",
       "mac": "Masukkan alamat MAC untuk {field}, seperti 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} bukan IBAN yang valid — periksa nomornya.",
+      "iban": "{field} bukan IBAN yang valid. Periksa nomornya.",
       "bic": "Masukkan kode SWIFT / BIC 8 atau 11 karakter untuk {field}.",
       "color": "Pilih warna untuk {field}.",
       "duration": "Masukkan durasi untuk {field} (menit 0–59).",
       "name": "Masukkan nama depan dan belakang untuk {field}.",
       "consent": "Konfirmasikan {field} untuk melanjutkan.",
       "choice": "Pilih opsi dari daftar untuk {field}.",
-      "file": "{field}: ada file yang belum selesai diunggah — hapus lalu tambahkan lagi."
+      "file": "{field}: ada file yang belum selesai diunggah. Hapus lalu tambahkan lagi."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "File tidak ditambahkan",
       "wrongType": "Jenis file salah: {files}. Pilih salah satu jenis yang diizinkan.",
       "tooBig": "Terlalu besar (lebih dari {mb} MB): {files}",
-      "tooMany": "Hanya {max} file yang diizinkan — {n} file tidak ditambahkan. | Hanya {max} file yang diizinkan — {n} file tidak ditambahkan.",
+      "tooMany": "Hanya {max} file yang diizinkan. {n} file tidak ditambahkan. | Hanya {max} file yang diizinkan. {n} file tidak ditambahkan.",
       "limits": "Hingga {max} file, masing-masing {mb} MB",
       "count": "{n} dari {max}",
       "addMore": "Tambah lagi",
@@ -2088,11 +2088,11 @@
       "close": "Tutup halaman ini",
       "closeHint": "Anda dapat menutup tab ini sekarang.",
       "alreadyTitle": "Anda sudah mengisi formulir ini",
-      "alreadyDesc": "Respons Anda diterima dari browser ini. Isi lagi hanya untuk orang lain — respons setiap orang diterima satu kali.",
+      "alreadyDesc": "Respons Anda diterima dari browser ini. Isi lagi hanya untuk orang lain, karena respons setiap orang diterima satu kali.",
       "askTitle": "Apakah ini untuk orang lain?",
       "askDesc": "Anda sudah mengirim respons dari browser ini.",
       "askPoint1": "Lanjutkan hanya jika respons ini untuk orang lain.",
-      "askPoint2": "Respons dari orang yang sama — atau jawaban yang persis sama — tidak akan diterima dua kali.",
+      "askPoint2": "Respons dari orang yang sama (atau jawaban yang persis sama) tidak akan diterima dua kali.",
       "confirm": "Ya, untuk orang lain",
       "stay": "Tidak, tetap di sini",
       "duplicate": "Jawaban yang persis sama sudah dikirim",
@@ -2105,8 +2105,8 @@
       "registeredField": "Sudah digunakan untuk sebuah respons.",
       "possibleTitle": "Apakah ini orang yang berbeda?",
       "possibleDesc": "Ini tampak seperti respons yang sudah kami terima ({email}, {date}).",
-      "possiblePoint1": "Jika Anda orang lain, lanjutkan — tim akan melihat kedua respons.",
-      "possiblePoint2": "Jika itu Anda, periksa jawaban Anda saja — respons kedua dari orang yang sama tidak akan dihitung.",
+      "possiblePoint1": "Jika Anda orang lain, lanjutkan. Tim akan melihat kedua respons.",
+      "possiblePoint2": "Jika itu Anda, periksa jawaban Anda saja. Respons kedua dari orang yang sama tidak akan dihitung.",
       "different": "Ya, saya orang yang berbeda",
       "review": "Tidak, periksa jawaban saya",
       "verifyTitle": "Konfirmasi email Anda",
@@ -2125,10 +2125,10 @@
       "auto": "Jawaban Anda disimpan otomatis saat mengisi",
       "saving": "Menyimpan…",
       "saved": "Disimpan {when}",
-      "notSaved": "Belum tersimpan — periksa koneksi Anda",
+      "notSaved": "Belum tersimpan. Periksa koneksi Anda",
       "later": "Simpan dan lanjutkan nanti",
       "title": "Lanjutkan nanti",
-      "desc": "Kami akan mengirimkan tautan pribadi yang mengembalikan jawaban Anda — di perangkat apa pun, selama 30 hari.",
+      "desc": "Kami akan mengirimkan tautan pribadi yang mengembalikan jawaban Anda, di perangkat apa pun, selama 30 hari.",
       "email": "Email Anda",
       "emailHint": "Tautan hanya dikirim ke alamat ini. Jaga kerahasiaannya: siapa pun yang memilikinya dapat melanjutkan formulir Anda.",
       "send": "Kirim tautan saya",
@@ -2282,7 +2282,7 @@
       "empty": "Tambahkan rumus",
       "unknown": "Tidak ada kolom yang memakai kunci “{key}”",
       "self": "Kolom tidak dapat memakai dirinya sendiri",
-      "syntax": "Rumus ini belum lengkap — periksa tanda kurung, koma, dan operator",
+      "syntax": "Rumus ini belum lengkap. Periksa tanda kurung, koma, dan operator",
       "functions": "Fungsi:",
       "choiceScored": "Dihitung sebagai nomor opsi yang dipilih",
       "choiceUnscored": "Beri nomor pada opsinya (pengaturan kolom → Opsi) agar bisa dipakai dalam penjumlahan",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Periksa jawaban ini",
     "thenTitle": "Lalu lakukan ini",
     "ifHelp": "Pilih pertanyaan, cara membandingkannya, dan jawaban yang memicu aturan.",
-    "thenHelp": "Pilih apa yang terjadi saat jawaban cocok — dan untuk pertanyaan atau halaman mana.",
+    "thenHelp": "Pilih apa yang terjadi saat jawaban cocok, dan untuk pertanyaan atau halaman mana.",
     "matchLead": "Jalankan aturan saat",
     "andChip": "dan",
     "orChip": "atau",
@@ -2410,7 +2410,7 @@
     "deleteList": "Hapus daftar",
     "deleteListTitle": "Hapus daftar “{name}”?",
     "deleteListDesc": "Kolom yang sudah memakainya tetap menyimpan opsinya.",
-    "listDesc": "Opsi yang dapat dipakai ulang untuk kolom pilihan apa pun — negara, wilayah, produk, tim …",
+    "listDesc": "Opsi yang dapat dipakai ulang untuk kolom pilihan apa pun: negara, wilayah, produk, tim …",
     "listName": "Nama",
     "listNamePlaceholder": "mis. Wilayah",
     "listOptions": "Opsi",
@@ -2426,7 +2426,7 @@
     "useList": "Isi dari daftar…",
     "saveAsList": "Simpan sebagai daftar",
     "toast": {
-      "fieldSaved": "“{name}” disimpan — temukan di Tersimpan",
+      "fieldSaved": "“{name}” disimpan. Temukan di Tersimpan",
       "fieldRemoved": "“{name}” dihapus dari kolom tersimpan",
       "listCreated": "Daftar “{name}” dibuat",
       "listUpdated": "Daftar “{name}” diperbarui",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "Formulir berada di atas kartu di tengah halaman.",
-      "plain": "Tanpa kartu — formulir langsung berada di latar halaman.",
+      "plain": "Tanpa kartu. Formulir langsung berada di latar halaman.",
       "split": "Gambar di samping formulir (di atasnya pada ponsel).",
       "full": "Formulir membentang selebar halaman."
     },
@@ -2546,7 +2546,7 @@
       "error": "Kesalahan"
     },
     "colorInvalid": "Gunakan warna hex seperti #1a2b3c.",
-    "lowContrast": "Kontras rendah ({ratio} : 1) — mungkin sulit dibaca.",
+    "lowContrast": "Kontras rendah ({ratio} : 1), mungkin sulit dibaca.",
     "pickColor": "Pilih warna untuk {name}",
     "inputStyle": "Gaya",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Bilah atas dengan logo dan situs web Anda, formulir, dan footer.",
         "spotlight": "Banner berwarna merek dengan judul dan info singkat; formulir naik ke dalamnya.",
-        "side": "Panel bermerek di samping formulir — bertumpuk di ponsel.",
+        "side": "Panel bermerek di samping formulir, bertumpuk di ponsel.",
         "minimal": "Hanya formulir dan footer tipis."
       },
       "tone": "Warna bilah dan panel",
@@ -2636,7 +2636,7 @@
     "updateExisting": "Perbarui “{name}”",
     "saveNew": "Simpan sebagai tema baru",
     "name": "Nama",
-    "namePlaceholder": "mis. Merek — terang",
+    "namePlaceholder": "mis. Merek (terang)",
     "renameTitle": "Ganti nama tema",
     "rename": "Ganti nama",
     "duplicate": "Duplikat",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Desain Formalie",
       "systemHint": "Tema ini bagian dari Formalie dan tidak dapat diubah. Duplikat tema ini untuk membuat versi Anda sendiri.",
-      "systemDesc": "Desain Formalie — hanya baca",
+      "systemDesc": "Desain Formalie, hanya baca",
       "crumb": "Editor tema",
       "newTitle": "Tema baru",
       "untitled": "Tema tanpa judul",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Tambahkan database Anda, uji koneksinya, dan jaga keamanan kredensialnya.",
       "explorer": "Jelajahi skema, tabel, dan baris, lalu ekspor yang Anda perlukan.",
-      "query": "Jalankan SQL di database Anda — hanya-baca secara default, setiap eksekusi tercatat.",
+      "query": "Jalankan SQL di database Anda. Hanya-baca secara default, setiap eksekusi tercatat.",
       "savedQueries": "Simpan dan bagikan kueri yang paling sering digunakan tim Anda.",
       "destinations": "Pilih ke mana setiap formulir mengirim responsnya dan cocokkan kolom isian dengan kolom tabel.",
       "transfers": "Impor file ke tabel dan ekspor tabel atau hasil kueri.",
@@ -2721,7 +2721,7 @@
     "example": "Seperti apa sebuah endpoint (contoh)",
     "channels": {
       "title": "Kumpulkan data dari segala arah",
-      "hint": "Setiap formulir dapat menerima jawaban melalui tautannya, sematan di situs Anda, dan API-nya sendiri — semuanya masuk ke tempat yang sama.",
+      "hint": "Setiap formulir dapat menerima jawaban melalui tautannya, sematan di situs Anda, dan API-nya sendiri. Semuanya masuk ke tempat yang sama.",
       "link": "Tautan yang dapat dibagikan",
       "embed": "Formulir tersemat",
       "api": "Endpoint API"
@@ -2734,7 +2734,7 @@
       "logs": "Setiap panggilan beserta status, durasi, dan pemanggilnya.",
       "analytics": "Panggilan, galat, dan waktu respons per layanan dan endpoint.",
       "docs": "Dokumentasi siap pakai dan tempat untuk mencoba setiap endpoint.",
-      "webhooks": "Kirim setiap tanggapan baru ke sistem Anda sendiri begitu masuk — ditandatangani dan dicoba ulang.",
+      "webhooks": "Kirim setiap tanggapan baru ke sistem Anda sendiri begitu masuk, ditandatangani dan dicoba ulang.",
       "apiKeys": "Kunci untuk API Formalie: kelola formulir dan tanggapan dari kode Anda.",
       "apps": "Hubungkan aplikasi seperti spreadsheet dan obrolan tim."
     }
@@ -2744,7 +2744,7 @@
     "back": "Ikhtisar asisten AI",
     "promise": {
       "title": "Anda tetap memegang kendali",
-      "review": "Asisten memberi saran — Anda meninjau dan menerapkan.",
+      "review": "Asisten memberi saran, Anda meninjau dan menerapkan.",
       "private": "Anda memilih apa yang boleh dibacanya; data pribadi dapat dikecualikan.",
       "audit": "Setiap permintaan dicatat di riwayat dan jejak audit."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Buka di tab baru",
       "close": "Tutup",
       "loading": "Memuat {host}…",
-      "slow": "Butuh waktu lama? Beberapa situs tidak dapat ditampilkan di dalam halaman lain — buka di tab baru saja.",
-      "safe": "Jawaban Anda tetap tersimpan — tutup jendela ini untuk melanjutkan formulir.",
+      "slow": "Butuh waktu lama? Beberapa situs tidak dapat ditampilkan di dalam halaman lain. Buka di tab baru saja.",
+      "safe": "Jawaban Anda tetap tersimpan. Tutup jendela ini untuk melanjutkan formulir.",
       "backToForm": "Kembali ke formulir"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Memeriksa…",
       "free": "Tautan ini tersedia",
       "taken": "Formulir lain sudah menggunakan tautan ini",
-      "reserved": "Kata ini dicadangkan — pilih yang lain",
+      "reserved": "Kata ini dicadangkan. Pilih yang lain",
       "invalid": "Gunakan 3–60 huruf kecil, angka, dan tanda hubung",
       "remove": "Hapus tautan khusus",
       "copy": "Salin tautan",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Setelah itu, tautan menyatakan bahwa formulir sudah penuh.",
       "max": "Jumlah tanggapan maksimum",
       "used": "{n} dari {max} terpakai",
-      "full": "Batas tercapai — formulir tidak menerima tanggapan lagi.",
+      "full": "Batas tercapai. Formulir tidak menerima tanggapan lagi.",
       "when": "Kapan formulir menerima tanggapan",
       "always": "Selalu (tanpa tanggal mulai atau berakhir)",
       "from": "Mulai {from}",
@@ -2935,7 +2935,7 @@
       "any": "Situs web apa pun",
       "anyDesc": "Siapa pun yang memiliki kode sematan dapat memasang formulir di situsnya.",
       "listed": "Hanya situs web yang Anda daftarkan",
-      "listedDesc": "Situs web lain tidak dapat menampilkan formulir — browser akan menolaknya.",
+      "listedDesc": "Situs web lain tidak dapat menampilkan formulir. Browser akan menolaknya.",
       "sites": "Situs web yang diizinkan",
       "sitesHint": "Ketik atau tempel alamat, lalu tekan Enter. *.example.com mencakup subsitusnya. Hingga {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Cara kerja tautan formulir Anda",
-      "desc": "Formulir Anda dapat memiliki hingga tiga tautan. Semuanya membuka formulir yang sama — gunakan yang paling sesuai dengan tempat Anda membagikannya.",
+      "desc": "Formulir Anda dapat memiliki hingga tiga tautan. Semuanya membuka formulir yang sama, jadi gunakan yang paling sesuai dengan tempat Anda membagikannya.",
       "always": "Selalu aktif",
       "on": "Aktif",
       "off": "Belum diatur",
       "original": {
         "name": "Tautan asli",
-        "for": "Dibuat bersama formulir. Tidak pernah berubah dan selalu berfungsi — bahkan setelah Anda menambahkan tautan kustom atau tautan pendek."
+        "for": "Dibuat bersama formulir. Tidak pernah berubah dan selalu berfungsi, bahkan setelah Anda menambahkan tautan kustom atau tautan pendek."
       },
       "custom": {
         "name": "Tautan kustom",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Poster atau kode QR menggunakan tautan pendek",
-          "then": "tautan itu tetap berfungsi apa pun yang Anda lakukan pada tautan kustom. Menghapus tautan pendek menonaktifkannya selamanya — kodenya tidak pernah diberikan ke formulir lain."
+          "then": "tautan itu tetap berfungsi apa pun yang Anda lakukan pada tautan kustom. Menghapus tautan pendek menonaktifkannya selamanya. Kodenya tidak pernah diberikan ke formulir lain."
         },
         "closed": {
           "when": "Formulir ditutup, penuh, kedaluwarsa, atau dilindungi",
-          "then": "setiap tautan menampilkan pesan atau layar kata sandi yang sama — tidak ada tautan yang dapat melewatinya."
+          "then": "setiap tautan menampilkan pesan atau layar kata sandi yang sama. Tidak ada tautan yang dapat melewatinya."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Deskripsi",
       "descriptionPlaceholder": "Satu kalimat tentang tujuan formulir",
       "image": "Gambar",
-      "imageHint": "Ditampilkan di bagian atas kartu tautan. PNG, JPEG, atau WebP, hingga 5 MB — 1200 × 630 px paling ideal.",
+      "imageHint": "Ditampilkan di bagian atas kartu tautan. PNG, JPEG, atau WebP, hingga 5 MB (1200 × 630 px paling ideal).",
       "imageRule": "Gunakan gambar PNG, JPEG, atau WebP berukuran maksimal 5 MB.",
       "upload": "Unggah gambar",
       "replace": "Ganti",
@@ -3005,20 +3005,20 @@
       "asCard": "Kartu tautan",
       "asSearch": "Hasil pencarian",
       "noImage": "Tidak ada gambar",
-      "hiddenFromSearch": "Disembunyikan dari mesin pencari — formulir ini tidak akan muncul di hasil pencarian."
+      "hiddenFromSearch": "Disembunyikan dari mesin pencari. Formulir ini tidak akan muncul di hasil pencarian."
     },
     "invite": {
       "title": "Undangan",
       "counts": "{responded} dari {total} telah merespons",
-      "saveFirst": "Simpan “Hanya orang yang diundang” agar undangan berlaku — sampai saat itu formulir tetap terbuka seperti sebelumnya.",
+      "saveFirst": "Simpan “Hanya orang yang diundang” agar undangan berlaku. Sampai saat itu formulir tetap terbuka seperti sebelumnya.",
       "add": "Undang orang",
-      "addHint": "Hanya alamat email. Pisahkan dengan koma, spasi, atau baris baru — atau tempel daftar.",
+      "addHint": "Hanya alamat email. Pisahkan dengan koma, spasi, atau baris baru, atau tempel daftar.",
       "placeholder": "nama{'@'}example.org",
       "button": "Undang {n} orang | Undang {n} orang",
       "buttonEmpty": "Undang",
       "sent": "{n} undangan terkirim | {n} undangan terkirim",
       "skipped": "{n} orang sudah diundang | {n} orang sudah diundang",
-      "devLinks": "Tautan pribadi — dikirim lewat email ke setiap orang setelah Formalie aktif; ditampilkan di sini selama pengembangan:",
+      "devLinks": "Tautan pribadi, dikirim lewat email ke setiap orang setelah Formalie aktif. Ditampilkan di sini selama pengembangan:",
       "none": "Belum ada yang diundang.",
       "resent": "Tautan baru telah dikirim ke {email}",
       "resend": "Kirim tautan baru",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Orang dengan akses",
-      "desc": "Hanya staf di ruang kerja Anda — ini tidak mengubah siapa yang dapat mengisi formulir.",
+      "desc": "Hanya staf di ruang kerja Anda. Ini tidak mengubah siapa yang dapat mengisi formulir.",
       "team": "Semua orang lain di ruang kerja",
       "teamDesc": "Berlaku untuk orang yang tidak tercantum di bawah.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Tambahkan orang…",
       "levelFor": "Akses untuk {name}",
       "remove": "Hapus {name}",
-      "note": "Akses pribadi seseorang menggantikan default ruang kerja baginya — lebih luas atau lebih terbatas. Admin ruang kerja dan pemilik formulir selalu memiliki akses penuh.",
+      "note": "Akses pribadi seseorang menggantikan default ruang kerja baginya, baik lebih luas maupun lebih terbatas. Admin ruang kerja dan pemilik formulir selalu memiliki akses penuh.",
       "viewOnly": "Hanya lihat",
-      "viewOnlyDesc": "Anda dapat melihat formulir ini dan pengaturannya. Perubahan tidak disimpan — mintalah akses edit kepada pemilik formulir.",
+      "viewOnlyDesc": "Anda dapat melihat formulir ini dan pengaturannya. Perubahan tidak disimpan. Mintalah akses edit kepada pemilik formulir.",
       "responsesOnly": "Anda hanya dapat melihat respons formulir ini",
       "responsesOnlyDesc": "Pertanyaan dan desain tidak dibagikan kepada Anda. Hubungi pemilik formulir jika Anda memerlukan akses lebih.",
       "viewForm": "Lihat"
     },
     "section": {
       "answering": "Mengisi formulir",
-      "answeringDesc": "Siapa yang dapat mengisinya dan cara mereka membukanya — untuk semua orang yang Anda kirimi formulir.",
+      "answeringDesc": "Siapa yang dapat mengisinya dan cara mereka membukanya, untuk semua orang yang Anda kirimi formulir.",
       "team": "Tim Anda",
       "teamDesc": "Staf di ruang kerja Anda yang membuat dan mengelola formulir ini. Ini tidak mengubah siapa yang dapat mengisinya."
     }

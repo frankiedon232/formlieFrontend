@@ -1,6 +1,6 @@
 <!--
   Field access (owner, 2026-10-03): who the field is for. Everyone (default) overrides everything;
-  otherwise pick departments, roles or people — all of them, or some from the list. A restricted
+  otherwise pick departments, roles or people, all of them, or some from the list. A restricted
   field is never required (people it isn't meant for must still be able to submit), and its
   answers are later shown only to the same audience (F11).
 -->
@@ -16,7 +16,7 @@ const builder = useBuilder()
 const api = useApi()
 
 // The workspace directory, loaded once and shared (the inspector is rebuilt when the field
-// changes, so the result and the request in flight live outside it). In the background — no page bar.
+// changes, so the result and the request in flight live outside it). In the background, no page bar.
 const directory = useState<Directory | null>('field-access-directory', () => null)
 const loading = useState('field-access-directory-loading', () => false)
 async function load() {

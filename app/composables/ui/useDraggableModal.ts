@@ -6,7 +6,7 @@ const KEY_STEP_LARGE = 64
  * `handle` is any element inside the modal header; the whole header becomes the drag area.
  * Offsets with margin-left/top: Nuxt UI centres the modal with the `translate` property and
  * animates it with `transform`, so margins move it without fighting either (and work in RTL).
- * Disabled below `sm` — on phones modals stay docked.
+ * Disabled below `sm`, on phones modals stay docked.
  */
 export function useDraggableModal() {
   const handle = ref<HTMLElement | null>(null)

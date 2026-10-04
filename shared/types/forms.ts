@@ -55,7 +55,7 @@ export type FormAccessLevel = 'none' | 'responses' | 'view' | 'edit'
 
 export type FormAccess = 'public' | 'password' | 'invite' | 'organisation'
 
-/** GET /forms/{id}/share — everything about how a form is shared (the password itself is never returned). */
+/** GET /forms/{id}/share, everything about how a form is shared (the password itself is never returned). */
 export interface FormShareSettings {
   access: FormAccess
   /** A password is set (required for access "password"). */
@@ -127,7 +127,7 @@ export interface ShareDraft {
   grants: { user: { id: string; name: string; email: string }; level: Exclude<FormAccessLevel, 'none'> }[]
 }
 
-/** GET /forms/{id}/share/link-check?value= — can this custom link be used? */
+/** GET /forms/{id}/share/link-check?value=, can this custom link be used? */
 export interface CustomLinkCheck {
   value: string
   available: boolean
@@ -137,12 +137,12 @@ export interface CustomLinkCheck {
   suggestions: string[]
   /**
    * Taken by one of your own forms: which one (`link`: its custom link, or else its key).
-   * Null when another organisation sharing forms.formalie.com uses it — never named.
+   * Null when another organisation sharing forms.formalie.com uses it, never named.
    */
   taken_by: { id: string; name: string; status: FormStatus; link: boolean } | null
 }
 
-/** GET /forms/facets — options for the owner and tag filters. */
+/** GET /forms/facets, options for the owner and tag filters. */
 export interface FormFacets {
   owners: FormOwner[]
   tags: string[]
@@ -162,7 +162,7 @@ export interface FormBulkResult {
 
 export const TRASH_RETENTION_DAYS = 30
 
-/** GET /forms/:id/versions item — a published snapshot (the schema comes from GET …/versions/:vid). */
+/** GET /forms/:id/versions item, a published snapshot (the schema comes from GET …/versions/:vid). */
 export interface FormVersion {
   id: string
   number: number
@@ -181,7 +181,7 @@ export interface SavedField {
   created_at: string
 }
 
-/** A reusable list of options — countries, regions, products … (GET /option-lists). */
+/** A reusable list of options, countries, regions, products … (GET /option-lists). */
 export interface OptionList {
   id: string
   name: string
@@ -191,7 +191,7 @@ export interface OptionList {
   updated_at: string
 }
 
-/** A saved design (GET /themes) — reusable on any form; forms keep a copy of the tokens. */
+/** A saved design (GET /themes), reusable on any form; forms keep a copy of the tokens. */
 /** system = Formalie's designs (read-only) · saved = from a form's design · created = in the theme editor. */
 export type ThemeSource = 'system' | 'saved' | 'created'
 
@@ -208,7 +208,7 @@ export interface SavedTheme {
   updated_at: string
 }
 
-/** GET /forms/:id/overview — everything the form overview page shows (F9 redesign). */
+/** GET /forms/:id/overview, everything the form overview page shows (F9 redesign). */
 export interface FormOverview {
   stats: {
     views: number

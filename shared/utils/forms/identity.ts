@@ -1,13 +1,13 @@
 /**
- * Telling people apart on a public form (F10, owner 2026-10-03) — "is this response from someone who
+ * Telling people apart on a public form (F10, owner 2026-10-03), "is this response from someone who
  * already responded, without mistaking another person for them?"
  *
  * Identity = the respondent's OWN email (never a reference's, manager's or guardian's), chosen in
- * Form settings (suggested automatically). Email only — no ID numbers (owner: avoid complexity).
- *   clear  — same email (normalised) → refused
- *   likely — an email a typo away, with a similar name → the respondent confirms they are a
+ * Form settings (suggested automatically). Email only, no ID numbers (owner: avoid complexity).
+ *   clear, same email (normalised) → refused
+ *   likely, an email a typo away, with a similar name → the respondent confirms they are a
  *            different person; the response is flagged "possible duplicate"
- *   none   — accepted
+ *   none:  accepted
  * Messages never reveal the other person's details (only a masked hint and the date).
  */
 import type { FormField } from './build'
@@ -136,7 +136,7 @@ export function matchIdentity(schema: FormSchemaV1, answers: Record<string, unkn
   return { level: 'none' }
 }
 
-/** "sa•••@yahoo.com" — enough to recognise your own email, never enough to learn someone else's. */
+/** "sa•••@yahoo.com", enough to recognise your own email, never enough to learn someone else's. */
 export function maskEmail(value: unknown): string {
   const email = typeof value === 'string' ? value.trim() : ''
   const [local, domain] = email.split('@')

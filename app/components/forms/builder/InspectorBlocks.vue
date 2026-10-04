@@ -1,6 +1,6 @@
 <!--
   Settings for layout blocks: section style (size, divider, alignment), paragraph (edited on the
-  canvas — hint only), divider style and spacing, image (alt text, caption, width, alignment,
+  canvas, hint only), divider style and spacing, image (alt text, caption, width, alignment,
   link on click, rounded corners, image link / upload hint).
 -->
 <script setup lang="ts">

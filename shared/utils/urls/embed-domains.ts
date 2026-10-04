@@ -1,6 +1,6 @@
 /**
- * Websites allowed to show a form's embed (F10 M3, decision 94). People type or paste anything —
- * `https://www.example.com/contact`, `Example.com`, `*.example.com`, `localhost:3000` — and get the
+ * Websites allowed to show a form's embed (F10 M3, decision 94). People type or paste anything,
+ * `https://www.example.com/contact`, `Example.com`, `*.example.com`, `localhost:3000`, and get the
  * host they meant. An empty list = any website. The embed page turns the list into the browser's
  * `frame-ancestors` rule; Formalie's own pages (previews) are always allowed.
  */

@@ -31,7 +31,7 @@ watch(() => props.template.key, load, { immediate: true })
 const usage = computed(() => [
   { icon: 'i-lucide-file-text', label: t('templates.stats.forms'), value: number(props.template.forms_count) },
   { icon: 'i-lucide-inbox', label: t('templates.stats.responses'), value: number(props.template.responses_count) },
-  { icon: 'i-lucide-clock-3', label: t('templates.stats.lastUsed'), value: props.template.last_used_at ? relative(props.template.last_used_at) : '—' },
+  { icon: 'i-lucide-clock-3', label: t('templates.stats.lastUsed'), value: props.template.last_used_at ? relative(props.template.last_used_at) : '-' },
 ])
 </script>
 

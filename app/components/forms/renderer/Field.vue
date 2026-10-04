@@ -3,7 +3,7 @@
   canvas, preview, public form and embed). Label · required mark · info icon (help text in a
   popover) · control · error. Labels sit on top or, with `label-position="left"`, beside the
   control, right next to it: every label has the same width (the form's `--form-label-w`, from its
-  longest label, max 30 %) and is end-aligned, so labels hug their inputs and all inputs line up — decided by the width of the whole form (`@container/form`), so half-width fields
+  longest label, max 30 %) and is end-aligned, so labels hug their inputs and all inputs line up, decided by the width of the whole form (`@container/form`), so half-width fields
   keep their label beside too; a phone-width form stacks. In `builder` mode the
   control works for trying it out; the canvas never stores what you type. `#label` lets the
   builder swap the label for an inline editor.

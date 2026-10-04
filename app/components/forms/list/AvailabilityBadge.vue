@@ -1,5 +1,5 @@
 <!--
-  A form's availability at a glance (F10, owner 2026-10-03) — table and grid:
+  A form's availability at a glance (F10, owner 2026-10-03), table and grid:
   Always open · Until 12 Oct (amber in the last 3 days) · Opens 5 Oct · Expired 3 Oct.
   Only meaningful for forms that take responses; drafts and closed forms show nothing.
 -->
@@ -45,5 +45,5 @@ const badge = computed(() => {
 
 <template>
   <UBadge v-if="badge" :label="badge.label" :icon="badge.icon" :color="badge.color" :variant="badge.variant" size="sm" :title="badge.title || undefined" class="font-medium whitespace-nowrap" :class="DEEP[badge.color]" />
-  <span v-else class="text-dimmed" aria-hidden="true">—</span>
+  <span v-else class="text-dimmed" aria-hidden="true">-</span>
 </template>

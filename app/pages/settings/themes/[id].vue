@@ -1,5 +1,5 @@
 <!--
-  Theme editor (F9 milestone 2): create or change a workspace theme without a form — the full
+  Theme editor (F9 milestone 2): create or change a workspace theme without a form, the full
   designer on a sample form, live preview on desktop / tablet / phone and the thank-you page.
   `/settings/themes/new` creates a "created" theme; an id opens it. Formalie's system themes open
   read-only (preview + "Duplicate to edit"). Leaving with unsaved changes asks first.

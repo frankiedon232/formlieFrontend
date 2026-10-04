@@ -1,5 +1,5 @@
 /**
- * Field type catalogue (FormSchema v1) — shared by the API mock (validation) and the app
+ * Field type catalogue (FormSchema v1), shared by the API mock (validation) and the app
  * (palette, inspector, renderer). Labels live in i18n under `builder.field.<type>`.
  * Adding a field type = one entry here + one in app/utils/forms/field-registry.ts + a renderer.
  */

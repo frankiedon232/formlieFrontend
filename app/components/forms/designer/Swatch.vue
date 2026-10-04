@@ -1,12 +1,12 @@
 <!--
   Mini preview of a theme: page background, card (or side panel), header band, a title line,
-  an input, the accent button and a footer bar — enough to tell the starting points apart.
+  an input, the accent button and a footer bar, enough to tell the starting points apart.
 -->
 <script setup lang="ts">
 import type { FormTheme } from '#shared/utils/forms/theme'
 
 const props = defineProps<{ theme: FormTheme; size?: 'sm' | 'md' }>()
-/** Saved themes may predate newer tokens — fill them from the defaults. */
+/** Saved themes may predate newer tokens, fill them from the defaults. */
 const th = computed(() => resolveTheme(props.theme))
 const RADIUS: Record<string, string> = { none: '0', sm: '3px', md: '5px', lg: '7px', xl: '10px' }
 const background = computed(() => pageBackground(th.value))

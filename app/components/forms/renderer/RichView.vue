@@ -1,6 +1,6 @@
 <!--
   Shows saved rich text (HTML) safely: a read-only Nuxt UI editor parses it into its schema, so
-  only known nodes and marks survive (no scripts, no unknown attributes) — no v-html anywhere.
+  only known nodes and marks survive (no scripts, no unknown attributes), no v-html anywhere.
   Same look as the editor (RichText.vue) and the paragraph block.
 -->
 <script setup lang="ts">

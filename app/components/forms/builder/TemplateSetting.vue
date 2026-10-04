@@ -1,7 +1,7 @@
 <!--
   Form settings → Template (owner, 2026-10-03), after "Save and resume". A form that isn't a template
   yet can be saved as one. Once it is, this says so and "Update template" puts the form's latest
-  changes into that same template — no second template. Saving a separate copy stays possible,
+  changes into that same template, no second template. Saving a separate copy stays possible,
   clearly marked as a new template. Pending edits are saved first so the template matches the screen.
 -->
 <script setup lang="ts">

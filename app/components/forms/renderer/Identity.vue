@@ -1,9 +1,9 @@
 <!--
   Telling respondents apart, on the public form (F10, owner 2026-10-03):
-    possible — "This looks like a response we already have (sa•••@yahoo.com, 3 Oct). Is this a
+    possible, "This looks like a response we already have (sa•••@yahoo.com, 3 Oct). Is this a
                different person?" Yes → sent, flagged for the team; No → back to the answers.
-    verify   — a 6-digit code to the respondent's own email before the form is sent.
-  Only a masked hint of an earlier response is ever shown — never its details.
+    verify:  a 6-digit code to the respondent's own email before the form is sent.
+  Only a masked hint of an earlier response is ever shown, never its details.
 -->
 <script setup lang="ts">
 import type { RendererRespondent } from '#shared/types/public'
@@ -69,7 +69,7 @@ const showDevCode = computed(() => import.meta.dev && !!devCode.value)
     :description="
       reason === 'verify'
         ? t('renderer.identity.verifyDesc', { email: sentTo || hint?.email || '' })
-        : t('renderer.identity.possibleDesc', { email: hint?.email || '—', date: hint?.at ? date(hint.at, 'long') : '—' })
+        : t('renderer.identity.possibleDesc', { email: hint?.email || '-', date: hint?.at ? date(hint.at, 'long') : '-' })
     "
     :dismissible="!checking"
   >

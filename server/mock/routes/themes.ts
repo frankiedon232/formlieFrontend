@@ -1,9 +1,9 @@
 /**
  * Mock themes (docs/API-CONTRACT.md → Themes). Three kinds (owner, 2026-10-03):
- *   system  — Formalie's designs: the designer's starting points and every template category design
+ *   system, Formalie's designs: the designer's starting points and every template category design
  *             (read-only; duplicate to change)
- *   saved   — saved from a form's design ("Save as theme" in the designer)
- *   created — made from scratch in the theme editor
+ *   saved:  saved from a form's design ("Save as theme" in the designer)
+ *   created, made from scratch in the theme editor
  * Forms keep a copy of the tokens plus `schema.theme_id`, so changing or deleting a theme never
  * breaks a form. Every change is in the audit trail.
  */
@@ -80,7 +80,7 @@ function find(tenant: MockTenant, id: string | undefined) {
   if (!theme) throw new MockError('FRM-GEN-1004')
   return theme
 }
-/** Workspace themes only — system themes can't be changed or deleted. */
+/** Workspace themes only, system themes can't be changed or deleted. */
 function own(tenant: MockTenant, id: string | undefined) {
   if (id?.startsWith('sys_')) throw new MockError('FRM-FORM-1014')
   const theme = themesOf(tenant).find(item => item.id === id)
@@ -95,7 +95,7 @@ type ThemeAction = 'forms.theme_created' | 'forms.theme_updated' | 'forms.theme_
 const audit = (event: Parameters<typeof recordAudit>[0], tenant: MockTenant, user: MockUser, action: ThemeAction, theme: { id: string; name: string }, changes: { field: string; before: string | null; after: string | null }[] = []) =>
   recordAudit(event, tenant, { action, actor: actorOf(user), resource: { type: 'theme', id: theme.id, name: theme.name }, changes })
 
-/** GET /themes — `filter[source]=system,saved,created`, search, sort. */
+/** GET /themes, `filter[source]=system,saved,created`, search, sort. */
 export const listThemes = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAuth(event)
   const raw = query['filter[source]']
@@ -105,7 +105,7 @@ export const listThemes = defineMockRoute(({ event, query }) => {
   return ok(data, meta)
 })
 
-/** GET /themes/:id — one theme (theme editor). */
+/** GET /themes/:id, one theme (theme editor). */
 export const getTheme = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
   return ok(view(tenant)(find(tenant, getRouterParam(event, 'id'))))
@@ -138,7 +138,7 @@ export const updateTheme = defineMockRoute(({ event, body: raw }) => {
   return ok(view(tenant)(theme))
 })
 
-/** POST /themes/:id/duplicate — any theme (system included) → a workspace copy to change. */
+/** POST /themes/:id/duplicate, any theme (system included) → a workspace copy to change. */
 export const duplicateTheme = defineMockRoute(({ event, body: raw }) => {
   const { user, tenant } = requireAuth(event)
   const source = find(tenant, getRouterParam(event, 'id'))

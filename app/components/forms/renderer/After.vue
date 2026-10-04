@@ -1,7 +1,7 @@
 <!--
   After sending, on the public form (owner, 2026-10-03):
-    thanks  — under the thank-you message: "Fill in another" and "Close this page"
-    already — this browser already sent the form: say so, offer "Fill in for someone else"
+    thanks, under the thank-you message: "Fill in another" and "Close this page"
+    already, this browser already sent the form: say so, offer "Fill in for someone else"
   Filling in again always asks first: it must be for another person (the same person's response is
   accepted once). "Close this page" closes the tab where the browser allows it, otherwise it says
   the tab can be closed now.

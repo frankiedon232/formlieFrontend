@@ -2,7 +2,7 @@
  * Templates for the mock (F9): the system catalogue (shared/templates) plus each workspace's own
  * templates (library store), usage from the forms made with them, and names in the person's
  * language (read from the app's locale files) and template content in that language
- * (shared/templates/messages) — the real API keeps translations in its database.
+ * (shared/templates/messages), the real API keeps translations in its database.
  */
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -105,7 +105,7 @@ function builderDict(code: string): Record<string, string> {
 
 /**
  * Everyday form words people type themselves ("Item name", "System", "Phone number"…, owner
- * 2026-10-04: "let nothing be left out") — shared/templates/vocabulary/<code>.json.
+ * 2026-10-04: "let nothing be left out"), shared/templates/vocabulary/<code>.json.
  */
 const vocabularies = new Map<string, Record<string, string> | null>()
 function vocabularyDict(code: string): Record<string, string> | null {

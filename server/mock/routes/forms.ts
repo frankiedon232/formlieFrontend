@@ -77,7 +77,7 @@ const ownerOf = (user: MockUser) => ({ id: user.id, name: `${user.first_name} ${
 
 // ── Lists ─────────────────────────────────────────────────────────────────────────
 
-/** GET /forms — filters: status, folder_id (`none` = no folder), owner_id, tag (comma = any of), trash=1; from/to on updated_at. */
+/** GET /forms, filters: status, folder_id (`none` = no folder), owner_id, tag (comma = any of), trash=1; from/to on updated_at. */
 export const listForms = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   const status = list(query, 'status')
@@ -336,7 +336,7 @@ function applyLifecycle(form: StoredForm, action: FormLifecycleAction): AuditCha
 const lifecycleSchema = z.object({ row_version: z.number().int().optional() })
 const LIFECYCLE_ACTIONS = ['unpublish', 'close', 'reopen', 'archive', 'unarchive', 'restore'] as const
 
-/** POST /forms/:id/:action — unpublish · close · reopen · archive · unarchive · restore (from Trash). */
+/** POST /forms/:id/:action, unpublish · close · reopen · archive · unarchive · restore (from Trash). */
 export const formLifecycle = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const action = getRouterParam(event, 'action') as FormLifecycleAction
@@ -379,7 +379,7 @@ export const deleteForm = defineMockRoute(({ event, query }) => {
   return ok(summaryOf(form))
 })
 
-/** DELETE /forms/trash — empty the Trash. */
+/** DELETE /forms/trash, empty the Trash. */
 export const emptyTrash = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const store = formsOf(tenant)
@@ -397,7 +397,7 @@ const bulkSchema = z.object({
   folder_id: z.string().nullable().optional(),
 })
 
-/** POST /forms/bulk — one result per form; a form that can't take the action is reported, not fatal. */
+/** POST /forms/bulk, one result per form; a form that can't take the action is reported, not fatal. */
 export const bulkForms = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const input = parseBody(bulkSchema, body)
@@ -474,7 +474,7 @@ const folderAudit = (
     changes,
   })
 
-/** GET /folders — with the number of forms in each (Trash not counted). */
+/** GET /folders, with the number of forms in each (Trash not counted). */
 export const listFolders = defineMockRoute(({ event }) => {
   const { tenant } = requireAuth(event)
   const store = formsOf(tenant)
@@ -518,7 +518,7 @@ export const renameFolder = defineMockRoute(({ event, body }) => {
   return ok(folder)
 })
 
-/** DELETE /folders/:id — only empty folders (forms in Trash just lose the folder). */
+/** DELETE /folders/:id, only empty folders (forms in Trash just lose the folder). */
 export const deleteFolder = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const store = formsOf(tenant)

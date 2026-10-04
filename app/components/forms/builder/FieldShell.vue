@@ -103,7 +103,7 @@ function commitDesc() {
     <FormsBuilderBlockParagraph v-if="field.type === 'paragraph'" :field="field" />
     <FormsBuilderBlockImage v-else-if="field.type === 'image'" :field="field" :selected="selected" />
 
-    <!-- Everything else: the real field, as respondents see it — and it works, so it can be tried out. -->
+    <!-- Everything else: the real field, as respondents see it, and it works, so it can be tried out. -->
     <FormsRendererField v-else v-model="trial" :field="field" mode="builder" :label-position="labelPosition">
       <template v-if="renaming" #label>
         <UInput

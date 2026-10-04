@@ -5,7 +5,7 @@ import type { FormTheme, ThemePatch } from '#shared/utils/forms/theme'
  * The designer's model on top of the builder schema (F8). The resolved theme is read from
  * `schema.theme`; every change writes the full theme back (one undo step per control, typing
  * grouped), so the published form looks exactly like the preview. "Reset" removes the stored
- * theme — the form then follows the workspace default again (brand colour + logo).
+ * theme, the form then follows the workspace default again (brand colour + logo).
  */
 export function useDesigner() {
   const builder = useBuilder()

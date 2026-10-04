@@ -72,7 +72,7 @@ const inviteBody = z.object({
     .max(200),
 })
 
-/** POST /forms/:id/invites — people already invited (and not revoked) are skipped, not invited twice. */
+/** POST /forms/:id/invites, people already invited (and not revoked) are skipped, not invited twice. */
 export const createInvites = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, user, getRouterParam(event, 'id'))
@@ -105,7 +105,7 @@ function inviteOf(form: StoredForm, id: string | undefined): FormInvite {
   return invite
 }
 
-/** POST /forms/:id/invites/:inviteId/resend — a new personal link; the previous one stops working. */
+/** POST /forms/:id/invites/:inviteId/resend, a new personal link; the previous one stops working. */
 export const resendInvite = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, user, getRouterParam(event, 'id'))
@@ -119,7 +119,7 @@ export const resendInvite = defineMockRoute(({ event }) => {
 })
 
 /**
- * DELETE /forms/:id/invites/:inviteId — the invitation link stops working (a response already sent stays).
+ * DELETE /forms/:id/invites/:inviteId, the invitation link stops working (a response already sent stays).
  * `?remove=1` on a revoked invitation takes it off the list (owner, 2026-10-04); an active one must be revoked first.
  */
 export const revokeInvite = defineMockRoute(({ event, query }) => {
@@ -141,7 +141,7 @@ export const revokeInvite = defineMockRoute(({ event, query }) => {
 
 const passBody = z.object({ key: z.string().min(3).max(80) })
 
-/** POST /forms/pass — a signed-in member asks to open an organisation-only form of their workspace. */
+/** POST /forms/pass, a signed-in member asks to open an organisation-only form of their workspace. */
 export const formPass = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
   const { key } = parseBody(passBody, body)

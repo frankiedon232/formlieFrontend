@@ -1,11 +1,11 @@
 /**
- * Who may open a form (F10 M3, decisions 92 and 96) — one unlock mechanism for every access mode:
- *   public        — everyone
- *   password      — after the right password
- *   invite        — with a personal invitation link (one person, one response)
- *   organisation  — signed-in members of the workspace (a short sign-in pass from the portal)
+ * Who may open a form (F10 M3, decisions 92 and 96), one unlock mechanism for every access mode:
+ *   public:       everyone
+ *   password:     after the right password
+ *   invite:       with a personal invitation link (one person, one response)
+ *   organisation, signed-in members of the workspace (a short sign-in pass from the portal)
  * The browser keeps an HttpOnly cookie per form: `{until}.{who}.{signature}`, signed with the form's
- * access version — changing the mode or the password, or revoking an invitation, locks people out.
+ * access version, changing the mode or the password, or revoking an invitation, locks people out.
  */
 import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import type { H3Event } from 'h3'
@@ -23,7 +23,7 @@ export interface FormInvite {
   id: string
   email: string
   name: string | null
-  /** SHA-256 of the personal token — the token itself is only in the invitation link. */
+  /** SHA-256 of the personal token, the token itself is only in the invitation link. */
   token_hash: string
   created_at: string
   sent_at: string
@@ -50,7 +50,7 @@ export function unlockValue(form: StoredForm, who: string): { value: string; max
   return { value: `${until}.${who}.${sign(`${form.id}|${accessVersion(form)}|${who}|${until}`)}`, maxAge: UNLOCK_TTL_MS / 1000 }
 }
 
-/** The visitor behind this browser's cookie — or null when the form is locked for them. */
+/** The visitor behind this browser's cookie, or null when the form is locked for them. */
 export function visitorOf(event: H3Event, form: StoredForm, tenant: MockTenant): Visitor | null {
   const mode = accessOf(form)
   if (mode === 'public') return { kind: 'public' }

@@ -1,4 +1,4 @@
-<!-- Step 4 — invite teammates (optional). Paste a list into any row to split it into rows. -->
+<!-- Step 4, invite teammates (optional). Paste a list into any row to split it into rows. -->
 <script setup lang="ts">
 import { z } from 'zod'
 import type { OnboardingInvite } from '#shared/types/onboarding'

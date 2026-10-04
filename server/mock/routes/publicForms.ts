@@ -1,5 +1,5 @@
 /**
- * Public form endpoints (docs/API-CONTRACT.md → Public, F10) — no sign-in. The workspace comes from
+ * Public form endpoints (docs/API-CONTRACT.md → Public, F10), no sign-in. The workspace comes from
  * the host (`{sub}.formalie.dev`) or, on `forms.formalie.dev`, from the form key. Requests are
  * enveloped like every other call (anonymous handshake + pre-session CSRF).
  *
@@ -87,7 +87,7 @@ function stateOf(form: StoredForm, { ignoreLimit = false } = {}): PublicFormStat
 }
 
 // ── Who may open the form (F10 M3, data/formAccess.ts) ────────────────────────────────────
-/** The form takes responses from this visitor right now: open and unlocked for them — or the reason why not. */
+/** The form takes responses from this visitor right now: open and unlocked for them, or the reason why not. */
 function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false } = {}) {
   const { tenant, form } = locate(event, key)
   const state = stateOf(form, { ignoreLimit })
@@ -117,7 +117,7 @@ const unlockBody = z.union([
 const unlockAttempts = new Map<string, number[]>()
 
 /**
- * POST /public/forms/:key/unlock — the password, a personal invitation token or a member's sign-in
+ * POST /public/forms/:key/unlock, the password, a personal invitation token or a member's sign-in
  * pass → an unlock cookie for this browser (12 hours; SameSite=None so embeds work too).
  */
 export const unlockForm = defineMockRoute(({ event, body }) => {
@@ -217,7 +217,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
   }
 }
 
-/** GET /public/forms/:key — the published form for respondents. */
+/** GET /public/forms/:key, the published form for respondents. */
 export const getPublicForm = defineMockRoute(({ event }) => ok<PublicForm>(publicFormView(event, getRouterParam(event, 'key') ?? '')))
 
 const submitBody = z.object({
@@ -239,7 +239,7 @@ const submitBody = z.object({
 })
 const SUBMISSION_ID = /^[A-Za-z0-9-]{16,64}$/
 
-/** POST /public/forms/:key/submit — store the response once per fill-in session. */
+/** POST /public/forms/:key/submit, store the response once per fill-in session. */
 export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   const key = getRouterParam(event, 'key') ?? ''
   const submissionId = getHeader(event, 'idempotency-key') ?? ''
@@ -298,7 +298,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
       throw new MockError('FRM-RESP-1008', [{ field: identity.email, message: maskEmail(answers[identity.email]) }])
   }
   let possibleDuplicate: { of: string; reason: string } | undefined
-  // Invitation or signed-in member (F10 M3): the person is known — one response each.
+  // Invitation or signed-in member (F10 M3): the person is known, one response each.
   if (known) {
     const earlier = earlierResponses.find(item => item.respondent?.kind === known.kind && item.respondent.id === known.id)
     if (earlier) throw new MockError('FRM-RESP-1006', [{ field: '', message: JSON.stringify({ at: earlier.submitted_at, email: maskEmail(known.email) }) }])
@@ -381,7 +381,7 @@ function useVerification(formId: string, email: string, token: string | undefine
 }
 
 const verifyBody = z.object({ email: z.email().max(200) })
-/** POST /public/forms/:key/verify — send a 6-digit code to the respondent's email. */
+/** POST /public/forms/:key/verify, send a 6-digit code to the respondent's email. */
 export const sendVerification = defineMockRoute(({ event, body }) => {
   const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const email = normaliseEmail(parseBody(verifyBody, body).email)
@@ -397,7 +397,7 @@ export const sendVerification = defineMockRoute(({ event, body }) => {
 })
 
 const confirmBody = z.object({ email: z.email().max(200), code: z.string().regex(/^\d{6}$/) })
-/** POST /public/forms/:key/verify/confirm — the code → a short-lived token for the submission. */
+/** POST /public/forms/:key/verify/confirm, the code → a short-lived token for the submission. */
 export const confirmVerification = defineMockRoute(({ event, body }) => {
   const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const input = parseBody(confirmBody, body)
@@ -428,11 +428,11 @@ function resumable(event: Parameters<typeof tenantOf>[0]) {
   if (!schema.settings?.save_resume) throw new MockError('FRM-PERM-1001')
   return { tenant, form }
 }
-/** The resume link — sent by email (a real backend); the mock returns it to the dev screen. */
+/** The resume link, sent by email (a real backend); the mock returns it to the dev screen. */
 const resumeLink = (event: Parameters<typeof tenantOf>[0], key: string, token: string) =>
   `https://${getRequestHost(event, { xForwardedHost: true })}/${key}/fill?resume=${encodeURIComponent(token)}`
 
-/** POST /public/forms/:key/sessions — start a draft → its resume token. */
+/** POST /public/forms/:key/sessions, start a draft → its resume token. */
 export const startDraft = defineMockRoute(({ event, body }) => {
   const { tenant, form } = resumable(event)
   const input = parseBody(draftBody, body)
@@ -453,7 +453,7 @@ export const startDraft = defineMockRoute(({ event, body }) => {
   return ok({ resume_token: token, expires_at: new Date(now.getTime() + RESUME_TTL_DAYS * 86_400_000).toISOString(), sent_to: input.email ? maskEmail(input.email) : null }, meta, 201)
 })
 
-/** PUT /public/forms/:key/sessions/:token — save the answers so far (and send the link when an email is given). */
+/** PUT /public/forms/:key/sessions/:token, save the answers so far (and send the link when an email is given). */
 export const saveDraft = defineMockRoute(({ event, body }) => {
   const { form } = resumable(event)
   const token = getRouterParam(event, 'token') ?? ''
@@ -466,7 +466,7 @@ export const saveDraft = defineMockRoute(({ event, body }) => {
   return ok({ saved_at: new Date().toISOString(), expires_at: draft.expires_at, sent_to: input.email ? maskEmail(input.email) : null }, meta)
 })
 
-/** GET /public/forms/:key/sessions/:token — the saved answers and page. */
+/** GET /public/forms/:key/sessions/:token, the saved answers and page. */
 export const getDraft = defineMockRoute(({ event }) => {
   const { form } = resumable(event)
   const draft = draftOf(getRouterParam(event, 'token') ?? '', form.id)
@@ -487,7 +487,7 @@ const uploadBody = z.object({
 const uploadsBy = new Map<string, number[]>()
 const UPLOADS_PER_10_MIN = 60
 
-/** POST /public/forms/:key/uploads — a pre-signed upload link for one file. */
+/** POST /public/forms/:key/uploads, a pre-signed upload link for one file. */
 export const requestUpload = defineMockRoute(({ event, body }) => {
   const { tenant, form, schema } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const input = parseBody(uploadBody, body)
@@ -526,7 +526,7 @@ export const requestUpload = defineMockRoute(({ event, body }) => {
   )
 })
 
-/** POST /public/forms/:key/uploads/:id/complete — the stored file → its answer. */
+/** POST /public/forms/:key/uploads/:id/complete, the stored file → its answer. */
 export const completeUpload = defineMockRoute(({ event }) => {
   const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const answer = completeRespondentUpload(getRouterParam(event, 'id') ?? '', form.id)
@@ -564,7 +564,7 @@ async function provenHuman(key: string, proof: { token: string; nonce: number } 
   return (await checkWork(salt, Number(difficulty), proof.nonce)) ? salt : null
 }
 
-/** POST /public/forms/:key/challenge — a fresh spam-check challenge for this fill-in. */
+/** POST /public/forms/:key/challenge, a fresh spam-check challenge for this fill-in. */
 export const issueChallenge = defineMockRoute(({ event }) => {
   const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const salt = randomBytes(16).toString('base64url')
@@ -584,5 +584,5 @@ export function resolveShortLink(event: Parameters<typeof tenantOf>[0], code: st
   return formLink(publicHosts(useRuntimeConfig(event).public, port), form.custom_link || form.public_key, 'fill', tenant.subdomain ?? null)
 }
 
-/** GET /public/short/:code — `{ target }` (browser fallback; the server-rendered /s/{code} page redirects itself). */
+/** GET /public/short/:code, `{ target }` (browser fallback; the server-rendered /s/{code} page redirects itself). */
 export const getShortLink = defineMockRoute(({ event }) => ok({ target: resolveShortLink(event, getRouterParam(event, 'code') ?? '') }))

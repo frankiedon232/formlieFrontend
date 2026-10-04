@@ -85,7 +85,7 @@ export function useThemes() {
     }
   }
 
-  /** One theme (system ones included) — the theme editor. */
+  /** One theme (system ones included), the theme editor. */
   const get = async (id: string) => (await api.get<SavedTheme>(`/themes/${encodeURIComponent(id)}`)).data
 
   /** System themes show their name in the person's language; others as written. */

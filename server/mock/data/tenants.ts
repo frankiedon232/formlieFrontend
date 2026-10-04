@@ -1,6 +1,6 @@
 /**
  * Mock tenants, organisations and users (in memory; signup adds to them).
- * Test sign-in for every seeded user — mock only, never a real credential:
+ * Test sign-in for every seeded user, mock only, never a real credential:
  *   password  Formalie!2026
  *   OTP       shown on the code screen in dev (mock returns `dev_code`) and logged to the server console
  */

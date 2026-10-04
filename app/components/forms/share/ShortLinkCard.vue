@@ -1,5 +1,5 @@
 <!--
-  Share → Short link (F10 M3): `forms.formalie.com/s/{code}` — five easy characters for posters, SMS
+  Share → Short link (F10 M3): `forms.formalie.com/s/{code}`, five easy characters for posters, SMS
   and QR codes. It always leads to the form's current link, so a printed code keeps working when the
   custom link changes. Created / removed at once (POST / DELETE /forms/{id}/short-link, audited);
   shows how many times it was opened. Removing it makes the code stop working.

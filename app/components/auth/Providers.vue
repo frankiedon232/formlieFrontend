@@ -1,5 +1,5 @@
 <!--
-  Social sign-in / sign-up buttons — only the providers enabled for this host (public profile):
+  Social sign-in / sign-up buttons, only the providers enabled for this host (public profile):
   manage.* offers them all for the first signup; a workspace shows the ones its admin enabled.
   One row with a "Sign in with / Sign up with" caption (owner, 2026-10-02). Each goes to the backend's OAuth start endpoint
   (a plain redirect, not an enveloped call).

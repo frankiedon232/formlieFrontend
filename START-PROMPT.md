@@ -1,4 +1,4 @@
-# Start Prompt — formlyFrontend
+# Start Prompt, formlyFrontend
 
 Open Claude Code in the `formlyFrontend` root and paste everything inside the box below as your first message.
 

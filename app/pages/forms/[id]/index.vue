@@ -1,5 +1,5 @@
 <!--
-  Form overview — the form's home: headline numbers, the 30-day response trend, sharing links,
+  Form overview, the form's home: headline numbers, the 30-day response trend, sharing links,
   what the form is made of (each part linked to Build / Logic / Design / Versions), details with
   the template it came from, and its activity. Lifecycle actions and Edit live in the header.
 -->

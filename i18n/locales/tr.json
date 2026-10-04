@@ -72,7 +72,7 @@
       "moved": "Form taşındı",
       "tagsSaved": "Etiketler kaydedildi",
       "duplicated": "Kopya oluşturuldu",
-      "unpublish": "Form yayından kaldırıldı — bağlantısı artık çalışmıyor",
+      "unpublish": "Form yayından kaldırıldı. Bağlantısı artık çalışmıyor",
       "close": "Form yeni yanıtlara kapatıldı",
       "reopen": "Form yeniden açıldı",
       "archive": "Form arşivlendi",
@@ -119,7 +119,7 @@
       "count": "{count} form | {count} form",
       "empty": "Henüz klasör yok. Aşağıdan bir tane oluşturun.",
       "viewForms": "{name} içindeki formları göster",
-      "notEmpty": "Önce formlarını başka bir klasöre taşıyın — ardından silinebilir.",
+      "notEmpty": "Önce formlarını başka bir klasöre taşıyın. Ardından silinebilir.",
       "deleteEmpty": "Klasör boş, bu yüzden hiçbir form etkilenmez."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "İkisini de sonra değiştirebilirsiniz.",
       "pickFile": "Önce içe aktarılacak bir dosya seçin.",
       "blankTitle": "Sıfırdan başla",
-      "blankDesc": "Tek sayfalık boş bir form — ihtiyacınız olan soruları istediğiniz sırayla ekleyin.",
+      "blankDesc": "Tek sayfalık boş bir form. İhtiyacınız olan soruları istediğiniz sırayla ekleyin.",
       "previewAdd": "İlk sorunuzu ekleyin",
       "points": {
         "fieldsTitle": "30’dan fazla alan türü",
@@ -190,7 +190,7 @@
     "filterTemplate": "Şablon",
     "overview": {
       "subtitle": "{status} · {updated} güncellendi",
-      "trendTitle": "Yanıtlar — son 30 gün",
+      "trendTitle": "Yanıtlar (son 30 gün)",
       "trendDesc": "Günlük gönderimler",
       "trendAria": "Son 30 günde günlük yanıtlar, toplam {total}",
       "responsesCount": "{count} yanıt | {count} yanıt",
@@ -229,15 +229,15 @@
       "design": "Tasarım",
       "versions": "Sürümler",
       "allVersions": "Tüm sürümler",
-      "noVersions": "Henüz yayımlanmadı — sürümler yayımladığınızda görünür.",
+      "noVersions": "Henüz yayımlanmadı. Sürümler yayımladığınızda görünür.",
       "detailsTitle": "Ayrıntılar",
       "tags": "Etiketler",
-      "noHistory": "Sürüm geçmişi tutulmadan önce yayımlandı — geçmiş bir sonraki yayımlamayla başlar.",
+      "noHistory": "Sürüm geçmişi tutulmadan önce yayımlandı. Geçmiş bir sonraki yayımlamayla başlar.",
       "embedCode": "Yerleştirme kodu"
     },
     "qr": {
       "title": "QR kodu",
-      "desc": "Yazdırın veya ekranlarda gösterin — taratıldığında form açılır.",
+      "desc": "Yazdırın veya ekranlarda gösterin. Taratıldığında form açılır.",
       "accent": "Form rengi",
       "black": "Siyah",
       "colour": "Renkli",
@@ -252,7 +252,7 @@
       "plain": "Sade",
       "brandedOrg": "Kuruluşunuzun adı ve logosu ile form adı; alt bilgide Formalie.",
       "brandedFormalie": "Form adıyla birlikte Formalie markası.",
-      "plainHint": "Yalnızca kod — küçük alanlar için.",
+      "plainHint": "Yalnızca kod, küçük alanlar için.",
       "brand": "Marka rengi",
       "custom": "Herhangi bir renk",
       "scan": "Açmak için tarayın",
@@ -270,9 +270,9 @@
       "title": "Bu form ne zaman yanıt kabul eder",
       "desc": "Açık kalması için ikisini de boş bırakın. Bitişten sonra bağlantı formun süresinin dolduğunu, başlangıçtan önce ne zaman açılacağını belirtir.",
       "opensAt": "Açılış",
-      "opensAtHint": "İsteğe bağlı — bu tarihten önce bağlantı formun ne zaman açılacağını gösterir.",
+      "opensAtHint": "İsteğe bağlı. Bu tarihten önce bağlantı formun ne zaman açılacağını gösterir.",
       "closesAt": "Kapanış",
-      "closesAtHint": "İsteğe bağlı — bu tarihten sonra yanıt alınmaz; bağlantı formun süresinin dolduğunu belirtir.",
+      "closesAtHint": "İsteğe bağlı. Bu tarihten sonra yanıt alınmaz; bağlantı formun süresinin dolduğunu belirtir.",
       "preset": {
         "week": "1 hafta",
         "twoWeeks": "2 hafta",
@@ -281,16 +281,16 @@
         "noEnd": "Bitiş tarihi yok"
       },
       "endBeforeStart": "Başlangıçtan sonra bir bitiş seçin.",
-      "pastWarning": "Bu bitiş tarihi geçti — form, kaydeder kaydetmez yanıt almayı durdurur.",
+      "pastWarning": "Bu bitiş tarihi geçti. Form, kaydeder kaydetmez yanıt almayı durdurur.",
       "saved": "Erişilebilirlik kaydedildi"
     },
     "embed": {
       "title": "Web sitenize yerleştirin",
       "desc": "Bu kodu web sitenizde formun görünmesini istediğiniz sayfaya yapıştırın.",
-      "notLive": "Form henüz yayımlanmadı — yayına girdiğinde yerleştirmede görünür.",
+      "notLive": "Form henüz yayımlanmadı. Yayına girdiğinde yerleştirmede görünür.",
       "height": "Yükseklik",
       "auto": "Otomatik yükseklik (önerilen)",
-      "autoDesc": "Çerçeve formla birlikte büyür ve küçülür — içte kaydırma çubuğu olmaz.",
+      "autoDesc": "Çerçeve formla birlikte büyür ve küçülür, içte kaydırma çubuğu olmaz.",
       "fixed": "Sabit yükseklik",
       "fixedDesc": "Her zaman aynı yükseklik; form çerçevenin içinde kayar.",
       "pixels": "Piksel cinsinden yükseklik",
@@ -542,8 +542,8 @@
     "label": "Alt bilgi"
   },
   "authLayout": {
-    "headline": "Formlar, veriler ve erişim — sizin kontrolünüzde.",
-    "subline": "Her türlü formu oluşturmak, verileri toplamak ve yönetmek, sistemlerinizi bağlamak ve kimin neyi göreceğini belirlemek için güvenli, esnek bir platform — dünyanın her yerinde, her ölçekten kuruluş için.",
+    "headline": "Formlar, veriler ve erişim sizin kontrolünüzde.",
+    "subline": "Her türlü formu oluşturmak, verileri toplamak ve yönetmek, sistemlerinizi bağlamak ve kimin neyi göreceğini belirlemek için güvenli, esnek bir platform. Dünyanın her yerinde, her ölçekten kuruluş için.",
     "badgeEncrypted": "Uçtan uca şifreli",
     "badgeCompliance": "Gizlilik ve uyumluluk kontrolleri",
     "badgeDatabase": "{count}+ veritabanı veya güvenli depolama",
@@ -651,7 +651,7 @@
       "available": "Kullanılabilir",
       "unavailable": {
         "taken": "Zaten alınmış",
-        "reserved": "Ayrılmış — başka birini seçin",
+        "reserved": "Ayrılmış. Başka birini seçin",
         "invalid": "Geçerli bir adres değil"
       },
       "subdomainHelp": "Ekibiniz buradan giriş yapar. Daha sonra özel alan adı ekleyebilirsiniz.",
@@ -891,7 +891,7 @@
     "menu": "Çalışma alanı kurulumu",
     "settingsCard": {
       "title": "Çalışma alanı kurulumu",
-      "desc": "Şirket, marka, bölge ayarları, ekip ve ilk form — istediğiniz adıma geri dönün.",
+      "desc": "Şirket, marka, bölge ayarları, ekip ve ilk form. İstediğiniz adıma geri dönün.",
       "open": "Aç"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Yönetici",
       "owner": "Sahip",
       "invalid": "Geçerli bir e-posta adresi girin.",
-      "self": "Bu sizsiniz — zaten buradasınız.",
+      "self": "Bu sizsiniz. Zaten buradasınız.",
       "duplicate": "Bu e-posta zaten listede.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "E-posta {n}",
@@ -1033,7 +1033,7 @@
         "name": "Olay bildirimi"
       }
     },
-    "subtitle": "Hazır bir formla başlayın — her şablonun kendi tasarımı vardır ve yayınlamadan önce her şeyi değiştirebilirsiniz",
+    "subtitle": "Hazır bir formla başlayın. Her şablonun kendi tasarımı vardır ve yayınlamadan önce her şeyi değiştirebilirsiniz",
     "blank": "Boş form",
     "all": "Tümü",
     "search": "Şablonlarda ara…",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "Eşleşen şablon yok",
     "emptyDesc": "Başka bir kategori veya arama deneyin ya da filtreleri temizleyin.",
     "useTitle": "Şablonu kullan",
-    "useDesc": "Yeni formunuz düzenleyicide açılır — yayınlamadan önce istediğiniz soruyu, kuralı, hesaplamayı veya tasarımı değiştirin.",
+    "useDesc": "Yeni formunuz düzenleyicide açılır. Yayınlamadan önce istediğiniz soruyu, kuralı, hesaplamayı veya tasarımı değiştirin.",
     "saveAs": "Şablon olarak kaydet",
     "saveTitle": "Şablon olarak kaydet",
     "saveDesc": "Sorular, mantık, hesaplamalar ve tasarım çalışma alanınız için bir şablona dönüşür. Yanıtlar asla dahil edilmez.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Müşteri Geri Bildirimi",
-        "description": "Müşterilerin hizmetiniz hakkında ne düşündüğünü öğrenin — memnun olmayanlar için ek bir soruyla."
+        "description": "Müşterilerin hizmetiniz hakkında ne düşündüğünü öğrenin. Memnun olmayanlara ek bir soru sorulur."
       },
       "csat_nps": {
         "name": "Müşteri Memnuniyeti (CSAT / NPS) Anketi",
-        "description": "Memnuniyeti (CSAT), çabayı ve sadakati (NPS) ölçün — her yanıt destekçi, pasif veya eleştirmen olarak gruplanır."
+        "description": "Memnuniyeti (CSAT), çabayı ve sadakati (NPS) ölçün. Her yanıt destekçi, pasif veya eleştirmen olarak gruplanır."
       },
       "product_review": {
         "name": "Ürün Değerlendirmesi",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Çalışan Bağlılığı Anketi",
-        "description": "Gurur, amaç, gelişim ve destek üzerine anonim bir nabız anketi — 0 ile 100 arasında bağlılık endeksiyle."
+        "description": "Gurur, amaç, gelişim ve destek üzerine anonim bir nabız anketi; 0 ile 100 arasında bağlılık endeksiyle."
       },
       "expense_reimbursement": {
         "name": "Masraf Beyanı",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Eğitim Değerlendirmesi",
-        "description": "Bir kursun içeriğini, eğitmenini, materyallerini ve uygunluğunu puanlayın — ortalama skorla."
+        "description": "Bir kursun içeriğini, eğitmenini, materyallerini ve uygunluğunu ortalama skorla puanlayın."
       },
       "reference_check": {
         "name": "Referans Kontrolü",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Burs Başvurusu",
-        "description": "Akademik geçmiş, maddi ihtiyaç ve kişisel beyan — kurul için uygunluk puanıyla."
+        "description": "Akademik geçmiş, maddi ihtiyaç ve kişisel beyan; kurul için uygunluk puanıyla."
       },
       "permission_slip": {
         "name": "Veli Onayı / İzin Belgesi",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Teslimat Onayı / Teslim Belgesi",
-        "description": "Neyin geldiğini, durumunu, fotoğrafı ve teslim alanın imzasını onaylayın — hasar varsa ayrıntı istenir."
+        "description": "Neyin geldiğini, durumunu, fotoğrafı ve teslim alanın imzasını onaylayın. Hasar varsa ayrıntı istenir."
       },
       "quality_control": {
         "name": "Kalite Kontrol Listesi",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Sözleşme Onayı",
-        "description": "Sözleşmeyi gösterin, her ana maddeyi onaylayın ve imzalayın — şirket adına imzalanıyorsa şirket bilgileriyle."
+        "description": "Sözleşmeyi gösterin, her ana maddeyi onaylayın ve imzalayın. Şirket adına imzalanıyorsa şirket bilgileri de alınır."
       },
       "risk_assessment": {
         "name": "Risk Değerlendirmesi",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Olay / Kaza Raporu",
-        "description": "Ne olduğunu, kimin yaralandığını ve alınan ilk önlemleri kaydedin — ciddi olaylar acil inceleme için işaretlenir."
+        "description": "Ne olduğunu, kimin yaralandığını ve alınan ilk önlemleri kaydedin. Ciddi olaylar acil inceleme için işaretlenir."
       },
       "near_miss_report": {
         "name": "Ramak Kala Bildirimi",
-        "description": "Ramak kala olayları hızla bildirin — olası şiddet ve tekrarlanma önceliği belirler, böylece önleme önce gelir."
+        "description": "Ramak kala olayları hızla bildirin. Olası şiddet ve tekrarlanma önceliği belirler, böylece önleme önce gelir."
       },
       "safety_inspection": {
         "name": "Güvenlik Denetimi Kontrol Listesi",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Tıbbi Geçmiş",
-        "description": "Hastalıklar, ameliyatlar, ilaçlar, aile geçmişi ve yaşam tarzı — hekim için hastalık sayısıyla birlikte."
+        "description": "Hastalıklar, ameliyatlar, ilaçlar, aile geçmişi ve yaşam tarzı; hekim için hastalık sayısıyla birlikte."
       },
       "health_screening": {
         "name": "Sağlık Taraması / Beyanı",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Gönüllü Kaydı",
-        "description": "Gönüllüleri, ilgi alanlarını ve uygunluklarını toplayın — 18 yaş altı için vasi onayıyla."
+        "description": "Gönüllüleri, ilgi alanlarını ve uygunluklarını toplayın; 18 yaş altı için vasi onayıyla."
       },
       "speaker_sponsor_application": {
         "name": "Konuşmacı / Sponsor Başvurusu",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Özel İstekler Formu",
-        "description": "Beslenme ve erişim ihtiyaçları, alerjiler ve kutlamalar — konaklama varıştan önce hazır olsun."
+        "description": "Beslenme ve erişim ihtiyaçları, alerjiler ve kutlamalar. Konaklama varıştan önce hazır olsun."
       },
       "event_catering_request": {
         "name": "Etkinlik İkram Talebi",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Restoran Rezervasyon Talebi",
-        "description": "Tarih, saat, kişi sayısı, oturma yeri ve vesile — ev sahibinin ihtiyacı olan her şey."
+        "description": "Tarih, saat, kişi sayısı, oturma yeri ve vesile: ev sahibinin ihtiyacı olan her şey."
       },
       "hospitality_complaint": {
         "name": "Konaklama Şikâyet Formu",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Potansiyel Müşteri Toplama",
-        "description": "Ad, şirket, büyüklük ve ilgi alanı — açılış sayfası için yeterince kısa, kaynak takibiyle."
+        "description": "Ad, şirket, büyüklük ve ilgi alanı. Açılış sayfası için yeterince kısa, kaynak takibiyle."
       },
       "sales_quote_request": {
         "name": "Teklif Talebi",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Satış Takibi",
-        "description": "Bir görüşmeyi veya toplantıyı kaydedin: sonuç, satış aşaması, sonraki adım ve tarihi — telefonda bile hızlı."
+        "description": "Bir görüşmeyi veya toplantıyı kaydedin: sonuç, satış aşaması, sonraki adım ve tarihi. Telefonda bile hızlı."
       }
     },
     "openGallery": "Galerinin tamamını aç",
@@ -1481,7 +1481,7 @@
       "browse": "Şablonlara göz at"
     },
     "categoryPage": {
-      "subtitle": "Bu kategorideki Formalie şablonları — her biri kendi tasarımıyla, kullanıma hazır"
+      "subtitle": "Bu kategorideki Formalie şablonları. Her biri kendi tasarımıyla, kullanıma hazır"
     },
     "mine": {
       "subtitle": "Çalışma alanınızın kendi formlarından kaydettiği veya Formalie’den kopyaladığı şablonlar",
@@ -1611,7 +1611,7 @@
     "unpublished": "Yayınlanmamış değişiklikler",
     "save": {
       "saving": "Kaydediliyor…",
-      "error": "Kaydedilemedi — tekrar denemek için düzenlemeye devam edin",
+      "error": "Kaydedilemedi. Tekrar denemek için düzenlemeye devam edin",
       "conflict": "Başka yerde değiştirildi",
       "saved": "{time} kaydedildi",
       "upToDate": "Tüm değişiklikler kaydedildi",
@@ -1627,7 +1627,7 @@
       "tablet": "Tablet",
       "phone": "Telefon",
       "device": "Cihaz",
-      "nothingSent": "Bu bir önizlemeydi — hiçbir şey gönderilmedi.",
+      "nothingSent": "Bu bir önizlemeydi. Hiçbir şey gönderilmedi.",
       "restart": "Baştan başla"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Yayınla",
       "submitAgain": "Değişiklikleri yayınla",
       "issues": "Yayınlamadan önce {count} sorunu düzeltin | Yayınlamadan önce {count} sorunu düzeltin",
-      "done": "Yayınlandı — {n}. sürüm yayında"
+      "done": "Yayınlandı. {n}. sürüm yayında"
     },
     "issue": {
       "no_inputs": "En az bir soru ekleyin",
@@ -1711,7 +1711,7 @@
       "minChoices": "En az seçim",
       "maxChoices": "En çok seçim",
       "accept": "İzin verilen dosya türleri",
-      "acceptHint": "Virgülle ayırın, ör. .pdf,.docx,image/* — boş bırakılırsa hepsi.",
+      "acceptHint": "Virgülle ayırın, ör. .pdf,.docx,image/* (boş bırakılırsa hepsi).",
       "maxFiles": "En çok dosya",
       "maxSize": "En büyük boyut (MB)",
       "minAboveMax": "En az değer en çok değerden büyük.",
@@ -1782,9 +1782,9 @@
       "readonly": "Salt okunur",
       "disabled": "Devre dışı",
       "editableHint": "Yanıtlayanlar bunu doldurabilir.",
-      "readonlyHint": "Gösterilir ve yanıtla gönderilir, ancak değiştirilemez — ör. önceden doldurulmuş bir referans.",
+      "readonlyHint": "Gösterilir ve yanıtla gönderilir, ancak değiştirilemez (ör. önceden doldurulmuş bir referans).",
       "disabledHint": "Soluk gösterilir ve yanıtla gönderilmez.",
-      "noRequired": "Salt okunur ve devre dışı alanlar zorunlu olamaz — kimse dolduramaz."
+      "noRequired": "Salt okunur ve devre dışı alanlar zorunlu olamaz, çünkü kimse dolduramaz."
     },
     "labels": {
       "title": "Etiket konumu",
@@ -1828,13 +1828,13 @@
       "label": "Form oluşturucu, tam ekran"
     },
     "drop": {
-      "newRow": "Buraya bırakın — yeni satır",
-      "beside": "Buraya bırakın — yanına"
+      "newRow": "Buraya bırakın (yeni satır)",
+      "beside": "Buraya bırakın (yanına)"
     },
     "blocks": {
       "appearance": "Görünüm",
       "sectionPlaceholder": "Bölüm başlığı",
-      "descriptionPlaceholder": "Açıklama ekleyin (isteğe bağlı) — düzenlemek için çift tıklayın",
+      "descriptionPlaceholder": "Açıklama ekleyin (isteğe bağlı). Düzenlemek için çift tıklayın",
       "paragraphPlaceholder": "Metin yazın…",
       "paragraphHint": "Yazmak için tuvaldeki paragrafa tıklayın. Kalın, bağlantı, liste ve hizalama için metni seçin.",
       "size": "Boyut",
@@ -1867,7 +1867,7 @@
       "caption": "Altyazı",
       "imageWidth": "Görsel boyutu",
       "href": "Tıklandığında bağlantı",
-      "hrefHint": "İsteğe bağlı — yeni sekmede açılır.",
+      "hrefHint": "İsteğe bağlı. Yeni sekmede açılır.",
       "rounded": "Yuvarlatılmış köşeler",
       "fill": "Doldur",
       "height": "Yükseklik",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Listeden seçin…",
       "selected": "Bu alanı yalnızca seçilen {n} kişi/grup görebilir ve doldurabilir.",
-      "noRequired": "Kısıtlı alanlar zorunlu olamaz — alanın hitap etmediği kişiler de formu gönderebilmelidir. Yanıtlar yalnızca aynı kişilere gösterilir."
+      "noRequired": "Kısıtlı alanlar zorunlu olamaz. Alanın hitap etmediği kişiler de formu gönderebilmelidir. Yanıtlar yalnızca aynı kişilere gösterilir."
     },
     "language": {
       "title": "Form dili",
       "hint": "Düğmeler, mesajlar ve tarihler bu dili izler; şablondan gelen metin de birlikte çevrilir. Kendi yazdığınız metin olduğu gibi kalır.",
       "translated": "{n} metin çevrildi | {n} metin çevrildi",
-      "kept": "Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin. | Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin.",
+      "kept": "Yazdığınız {n} metin olduğu gibi kalıyor. Formda düzenleyin. | Yazdığınız {n} metin olduğu gibi kalıyor. Formda düzenleyin.",
       "changed": "Form dili: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Şablonu güncelle",
       "updatedToast": "“{name}” şablonu bu formun son değişiklikleriyle güncellendi",
       "saveNew": "Bunun yerine yeni şablon olarak kaydet",
-      "saveNewHint": "Ayrı bir kopya oluşturur — mevcut şablon olduğu gibi kalır."
+      "saveNewHint": "Ayrı bir kopya oluşturur. Mevcut şablon olduğu gibi kalır."
     },
     "identity": {
       "title": "Yanıtlayanları tanı",
-      "hint": "Formalie kişileri nasıl ayırt eder: böylece bir kişi iki kez yanıt veremez — ve başka biri asla onunla karıştırılmaz.",
+      "hint": "Formalie kişileri nasıl ayırt eder: böylece bir kişi iki kez yanıt veremez ve başka biri asla onunla karıştırılmaz.",
       "email": "Yanıtlayanın kendi e-postası",
-      "emailHint": "Formu dolduran kişinin e-postası — referans, yönetici veya vasinin değil. Aynı e-postayla ikinci yanıt reddedilir; çok benzer olanı kontrol edilir.",
+      "emailHint": "Formu dolduran kişinin e-postası (referans, yönetici veya vasinin değil). Aynı e-postayla ikinci yanıt reddedilir; çok benzer olanı kontrol edilir.",
       "verify": "Göndermeden önce e-postayı doğrula",
-      "verifyHint": "Yanıtlayanlar e-postalarına gönderilen kodu girer — doğrulanmış her e-posta için bir yanıt.",
+      "verifyHint": "Yanıtlayanlar e-postalarına gönderilen kodu girer. Doğrulanmış her e-posta için bir yanıt.",
       "suggested": "önerilen",
       "off": "Kapalı",
       "none": "Yanıtlayanın e-postası olmadan Formalie yalnızca aynı tarayıcıyı tanıyabilir (kişiler başka bir cihaz kullanabilir).",
-      "verifyLost": "E-posta doğrulaması açık, ancak formda artık yanıtlayanın e-posta sorusu yok — yukarıdan bir soru seçene kadar doğrulama duraklatıldı.",
-      "verifyRequired": "Doğrulama açıkken e-posta sorusu zorunludur — kodu göndermek için buna ihtiyacımız var."
+      "verifyLost": "E-posta doğrulaması açık, ancak formda artık yanıtlayanın e-posta sorusu yok. Yukarıdan bir soru seçene kadar doğrulama duraklatıldı.",
+      "verifyRequired": "Doğrulama açıkken e-posta sorusu zorunludur. Kodu göndermek için buna ihtiyacımız var."
     },
     "guide": {
       "title": "Yardım kılavuzu",
@@ -1937,7 +1937,7 @@
       "empty": "Henüz kılavuz yok",
       "untitled": "Adsız kılavuz",
       "summary": "{title} · {n} kelime | {title} · {n} kelime",
-      "noContent": "Kılavuzu yazın — düğme yalnızca içinde bir şey olduğunda görünür.",
+      "noContent": "Kılavuzu yazın. Düğme yalnızca içinde bir şey olduğunda görünür.",
       "editTitle": "Yardım kılavuzu",
       "editDesc": "Bu formun nasıl doldurulacağını açıklayın: neleri hazır bulundurmalı, zor sorular ve sonrasında ne olacağı.",
       "titleLabel": "Başlık",
@@ -2030,14 +2030,14 @@
       "ip": "{field} için geçerli bir IP adresi girin.",
       "domain": "{field} için example.org gibi bir alan adı girin.",
       "mac": "{field} için 00:1A:2B:3C:4D:5E gibi bir MAC adresi girin.",
-      "iban": "{field} geçerli bir IBAN değil — numarayı kontrol edin.",
+      "iban": "{field} geçerli bir IBAN değil. Numarayı kontrol edin.",
       "bic": "{field} için 8 veya 11 karakterli bir SWIFT / BIC kodu girin.",
       "color": "{field} için bir renk seçin.",
       "duration": "{field} için bir süre girin (dakika 0–59).",
       "name": "{field} için hem adı hem soyadı girin.",
       "consent": "Devam etmek için lütfen {field} alanını onaylayın.",
       "choice": "{field} için listeden bir seçenek seçin.",
-      "file": "{field}: bir dosyanın yüklenmesi tamamlanmadı — kaldırıp yeniden ekleyin."
+      "file": "{field}: bir dosyanın yüklenmesi tamamlanmadı. Kaldırıp yeniden ekleyin."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "Dosya eklenmedi",
       "wrongType": "Yanlış dosya türü: {files}. İzin verilen türlerden birini seçin.",
       "tooBig": "Çok büyük ({mb} MB üzeri): {files}",
-      "tooMany": "Yalnızca {max} dosyaya izin veriliyor — {n} dosya eklenmedi. | Yalnızca {max} dosyaya izin veriliyor — {n} dosya eklenmedi.",
+      "tooMany": "Yalnızca {max} dosyaya izin veriliyor. {n} dosya eklenmedi. | Yalnızca {max} dosyaya izin veriliyor. {n} dosya eklenmedi.",
       "limits": "En fazla {max} dosya, her biri {mb} MB",
       "count": "{n} / {max}",
       "addMore": "Daha fazla ekle",
@@ -2088,11 +2088,11 @@
       "close": "Bu sayfayı kapat",
       "closeHint": "Bu sekmeyi artık kapatabilirsiniz.",
       "alreadyTitle": "Bu formu zaten doldurdunuz",
-      "alreadyDesc": "Yanıtınız bu tarayıcıdan alındı. Yalnızca başka bir kişi için tekrar doldurun — her kişinin yanıtı bir kez kabul edilir.",
+      "alreadyDesc": "Yanıtınız bu tarayıcıdan alındı. Yalnızca başka bir kişi için tekrar doldurun. Her kişinin yanıtı bir kez kabul edilir.",
       "askTitle": "Bu başka biri için mi?",
       "askDesc": "Bu tarayıcıdan zaten bir yanıt gönderdiniz.",
       "askPoint1": "Yalnızca bu yanıt başka bir kişi içinse devam edin.",
-      "askPoint2": "Aynı kişinin yanıtı — ya da birebir aynı yanıtlar — iki kez kabul edilmez.",
+      "askPoint2": "Aynı kişinin yanıtı (ya da birebir aynı yanıtlar) iki kez kabul edilmez.",
       "confirm": "Evet, başka biri için",
       "stay": "Hayır, burada kal",
       "duplicate": "Birebir aynı yanıtlar zaten gönderildi",
@@ -2105,8 +2105,8 @@
       "registeredField": "Zaten bir yanıtta kullanıldı.",
       "possibleTitle": "Bu farklı bir kişi mi?",
       "possibleDesc": "Bu, elimizde olan bir yanıta benziyor ({email}, {date}).",
-      "possiblePoint1": "Başka biriyseniz devam edin — ekip iki yanıtı da görecek.",
-      "possiblePoint2": "Sizseniz bunun yerine yanıtlarınızı kontrol edin — aynı kişinin ikinci yanıtı sayılmaz.",
+      "possiblePoint1": "Başka biriyseniz devam edin. Ekip iki yanıtı da görecek.",
+      "possiblePoint2": "Sizseniz bunun yerine yanıtlarınızı kontrol edin. Aynı kişinin ikinci yanıtı sayılmaz.",
       "different": "Evet, farklı bir kişiyim",
       "review": "Hayır, yanıtlarımı kontrol edeyim",
       "verifyTitle": "E-postanızı onaylayın",
@@ -2125,10 +2125,10 @@
       "auto": "Yanıtlarınız siz doldurdukça kaydedilir",
       "saving": "Kaydediliyor…",
       "saved": "Kaydedildi: {when}",
-      "notSaved": "Kaydedilmedi — bağlantınızı kontrol edin",
+      "notSaved": "Kaydedilmedi. Bağlantınızı kontrol edin",
       "later": "Kaydet ve sonra devam et",
       "title": "Sonra devam et",
-      "desc": "Yanıtlarınızı geri getiren kişisel bir bağlantı göndereceğiz — her cihazda, 30 gün boyunca.",
+      "desc": "Yanıtlarınızı geri getiren kişisel bir bağlantı göndereceğiz. Her cihazda, 30 gün boyunca geçerlidir.",
       "email": "E-posta adresiniz",
       "emailHint": "Bağlantı yalnızca bu adrese gönderilir. Kimseyle paylaşmayın: bağlantıya sahip olan herkes formunuza devam edebilir.",
       "send": "Bağlantımı gönder",
@@ -2282,7 +2282,7 @@
       "empty": "Formül ekleyin",
       "unknown": "“{key}” anahtarını kullanan alan yok",
       "self": "Bir alan kendisini kullanamaz",
-      "syntax": "Bu formül eksik — parantezleri, virgülleri ve operatörleri kontrol edin",
+      "syntax": "Bu formül eksik. Parantezleri, virgülleri ve operatörleri kontrol edin",
       "functions": "Fonksiyonlar:",
       "choiceScored": "Seçilen seçeneğin sayısı olarak sayılır",
       "choiceUnscored": "Toplamlarda kullanmak için seçeneklerine sayı verin (alan ayarları → Seçenekler)",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Bu yanıtları kontrol et",
     "thenTitle": "Sonra bunu yap",
     "ifHelp": "Bir soru, nasıl karşılaştırılacağını ve kuralı tetiklemesi gereken yanıtı seçin.",
-    "thenHelp": "Yanıtlar eşleştiğinde ne olacağını — ve hangi soru veya sayfaya uygulanacağını — seçin.",
+    "thenHelp": "Yanıtlar eşleştiğinde ne olacağını ve bunun hangi soru veya sayfaya uygulanacağını seçin.",
     "matchLead": "Kuralı şu durumda çalıştır:",
     "andChip": "ve",
     "orChip": "veya",
@@ -2410,7 +2410,7 @@
     "deleteList": "Listeyi sil",
     "deleteListTitle": "“{name}” listesi silinsin mi?",
     "deleteListDesc": "Onu zaten kullanan alanlar seçeneklerini korur.",
-    "listDesc": "Her seçim alanı için yeniden kullanılabilir seçenekler — ülkeler, bölgeler, ürünler, ekipler …",
+    "listDesc": "Her seçim alanı için yeniden kullanılabilir seçenekler: ülkeler, bölgeler, ürünler, ekipler …",
     "listName": "Ad",
     "listNamePlaceholder": "ör. Bölgeler",
     "listOptions": "Seçenekler",
@@ -2426,7 +2426,7 @@
     "useList": "Listeden doldur…",
     "saveAsList": "Liste olarak kaydet",
     "toast": {
-      "fieldSaved": "“{name}” kaydedildi — Kayıtlı altında bulabilirsiniz",
+      "fieldSaved": "“{name}” kaydedildi. Kayıtlı altında bulabilirsiniz",
       "fieldRemoved": "“{name}” kayıtlı alanlardan kaldırıldı",
       "listCreated": "“{name}” listesi oluşturuldu",
       "listUpdated": "“{name}” listesi güncellendi",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "Form, sayfanın ortasındaki bir kartın üzerinde durur.",
-      "plain": "Kart yok — form doğrudan sayfa arka planında durur.",
+      "plain": "Kart yok. Form doğrudan sayfa arka planında durur.",
       "split": "Formun yanında bir görsel (telefonlarda üstünde).",
       "full": "Form sayfanın tüm genişliğini kaplar."
     },
@@ -2546,7 +2546,7 @@
       "error": "Hatalar"
     },
     "colorInvalid": "#1a2b3c gibi bir hex renk kullanın.",
-    "lowContrast": "Düşük kontrast ({ratio} : 1) — okunması zor olabilir.",
+    "lowContrast": "Düşük kontrast ({ratio} : 1). Okunması zor olabilir.",
     "pickColor": "{name} için renk seçin",
     "inputStyle": "Stil",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Logonuz ve web sitenizle üst çubuk, form ve alt bilgi.",
         "spotlight": "Başlık ve kısa bilgilerle marka renginde bir afiş; form onun içine doğru yükselir.",
-        "side": "Formun yanında markalı bir panel — telefonlarda alt alta dizilir.",
+        "side": "Formun yanında markalı bir panel. Telefonlarda alt alta dizilir.",
         "minimal": "Yalnızca form ve ince bir alt bilgi."
       },
       "tone": "Çubuk ve panel rengi",
@@ -2636,7 +2636,7 @@
     "updateExisting": "“{name}” temasını güncelle",
     "saveNew": "Yeni tema olarak kaydet",
     "name": "Ad",
-    "namePlaceholder": "örn. Marka — açık",
+    "namePlaceholder": "örn. Marka (açık)",
     "renameTitle": "Temayı yeniden adlandır",
     "rename": "Yeniden adlandır",
     "duplicate": "Çoğalt",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Bir Formalie tasarımı",
       "systemHint": "Bu tema Formalie'nin bir parçasıdır ve değiştirilemez. Kendi sürümünüzü oluşturmak için çoğaltın.",
-      "systemDesc": "Formalie tasarımı — salt okunur",
+      "systemDesc": "Formalie tasarımı (salt okunur)",
       "crumb": "Tema düzenleyici",
       "newTitle": "Yeni tema",
       "untitled": "Adsız tema",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Veritabanlarınızı ekleyin, test edin ve kimlik bilgilerini güvende tutun.",
       "explorer": "Şemalara, tablolara ve satırlara göz atın, ihtiyacınız olanı dışa aktarın.",
-      "query": "Veritabanlarınızda SQL çalıştırın — varsayılan olarak salt okunur, her çalıştırma kaydedilir.",
+      "query": "Veritabanlarınızda SQL çalıştırın. Varsayılan olarak salt okunurdur ve her çalıştırma kaydedilir.",
       "savedQueries": "Ekibinizin en çok kullandığı sorguları saklayın ve paylaşın.",
       "destinations": "Her formun yanıtlarını nereye göndereceğini seçin ve alanları sütunlarla eşleştirin.",
       "transfers": "Dosyaları tablolara içe aktarın, tabloları veya sorgu sonuçlarını dışa aktarın.",
@@ -2721,7 +2721,7 @@
     "example": "Bir uç nokta nasıl görünür (örnek)",
     "channels": {
       "title": "Her yönden veri toplayın",
-      "hint": "Her form; bağlantısı, sitenize yerleştirme ve kendi API’si üzerinden yanıt alabilir — hepsi aynı yere ulaşır.",
+      "hint": "Her form; bağlantısı, sitenize yerleştirme ve kendi API’si üzerinden yanıt alabilir. Hepsi aynı yere ulaşır.",
       "link": "Paylaşılabilir bağlantı",
       "embed": "Yerleştirilmiş form",
       "api": "API uç noktaları"
@@ -2734,7 +2734,7 @@
       "logs": "Her çağrı; durumu, süresi ve çağıranıyla birlikte.",
       "analytics": "Hizmet ve uç nokta başına çağrılar, hatalar ve yanıt süreleri.",
       "docs": "Hazır belgeler ve her uç noktayı denemek için bir alan.",
-      "webhooks": "Her yeni yanıtı geldiği anda kendi sistemlerinize gönderin — imzalı ve yeniden denemeli.",
+      "webhooks": "Her yeni yanıtı geldiği anda kendi sistemlerinize gönderin. İmzalı ve yeniden denemeli.",
       "apiKeys": "Formalie API'si için anahtarlar: formları ve yanıtları kodunuzdan yönetin.",
       "apps": "E-tablolar ve ekip sohbeti gibi uygulamaları bağlayın."
     }
@@ -2744,7 +2744,7 @@
     "back": "YZ asistanına genel bakış",
     "promise": {
       "title": "Kontrol sizde",
-      "review": "Asistan önerir — siz inceleyip uygularsınız.",
+      "review": "Asistan önerir, siz inceleyip uygularsınız.",
       "private": "Neleri okuyabileceğini siz seçersiniz; kişisel veriler hariç tutulabilir.",
       "audit": "Her istek geçmişe ve denetim kaydına işlenir."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Yeni sekmede aç",
       "close": "Kapat",
       "loading": "{host} yükleniyor…",
-      "slow": "Uzun mu sürüyor? Bazı siteler başka bir sayfanın içinde gösterilemez — bunun yerine yeni bir sekmede açın.",
-      "safe": "Yanıtlarınız korunuyor — forma devam etmek için bu pencereyi kapatın.",
+      "slow": "Uzun mu sürüyor? Bazı siteler başka bir sayfanın içinde gösterilemez. Bunun yerine yeni bir sekmede açın.",
+      "safe": "Yanıtlarınız korunuyor. Forma devam etmek için bu pencereyi kapatın.",
       "backToForm": "Forma dön"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Kontrol ediliyor…",
       "free": "Bu bağlantı kullanılabilir",
       "taken": "Bu bağlantıyı başka bir form kullanıyor",
-      "reserved": "Bu kelime ayrılmış — başka bir tane seçin",
+      "reserved": "Bu kelime ayrılmış. Başka bir tane seçin",
       "invalid": "3–60 küçük harf, rakam ve kısa çizgi kullanın",
       "remove": "Özel bağlantıyı kaldır",
       "copy": "Bağlantıyı kopyala",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Bundan sonra bağlantı, formun dolduğunu gösterir.",
       "max": "En fazla yanıt",
       "used": "{max} içinden {n} kullanıldı",
-      "full": "Sınıra ulaşıldı — form artık yanıt almıyor.",
+      "full": "Sınıra ulaşıldı. Form artık yanıt almıyor.",
       "when": "Yanıt alma zamanı",
       "always": "Her zaman (başlangıç veya bitiş tarihi yok)",
       "from": "{from} tarihinden itibaren",
@@ -2935,7 +2935,7 @@
       "any": "Tüm web siteleri",
       "anyDesc": "Yerleştirme koduna sahip herkes formu kendi sitesine koyabilir.",
       "listed": "Yalnızca listelediğiniz web siteleri",
-      "listedDesc": "Diğer web siteleri formu gösteremez — tarayıcı bunu reddeder.",
+      "listedDesc": "Diğer web siteleri formu gösteremez, çünkü tarayıcı bunu reddeder.",
       "sites": "İzin verilen web siteleri",
       "sitesHint": "Adresleri yazın veya yapıştırın, ardından Enter tuşuna basın. *.example.com alt sitelerini de kapsar. En fazla {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Formunuzun bağlantıları nasıl çalışır",
-      "desc": "Formunuzun en fazla üç bağlantısı olabilir. Hepsi aynı formu açar — paylaştığınız yere en uygun olanı kullanın.",
+      "desc": "Formunuzun en fazla üç bağlantısı olabilir. Hepsi aynı formu açar. Paylaştığınız yere en uygun olanı kullanın.",
       "always": "Her zaman açık",
       "on": "Açık",
       "off": "Ayarlanmadı",
       "original": {
         "name": "Orijinal bağlantı",
-        "for": "Formla birlikte oluşturulur. Asla değişmez ve her zaman çalışır — özel bağlantı veya kısa bağlantı ekledikten sonra da."
+        "for": "Formla birlikte oluşturulur. Asla değişmez ve her zaman çalışır, özel bağlantı veya kısa bağlantı ekledikten sonra da."
       },
       "custom": {
         "name": "Özel bağlantı",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Bir afiş veya QR kodu kısa bağlantıyı kullanıyor",
-          "then": "özel bağlantıyla ne yaparsanız yapın çalışmaya devam eder. Kısa bağlantıyı kaldırmak onu kalıcı olarak durdurur — kodu asla başka bir forma verilmez."
+          "then": "özel bağlantıyla ne yaparsanız yapın çalışmaya devam eder. Kısa bağlantıyı kaldırmak onu kalıcı olarak durdurur ve kodu asla başka bir forma verilmez."
         },
         "closed": {
           "when": "Form kapalı, dolu, süresi dolmuş veya korumalı",
-          "then": "her bağlantı aynı mesajı veya parola ekranını gösterir — hiçbir bağlantı bunu aşamaz."
+          "then": "her bağlantı aynı mesajı veya parola ekranını gösterir. Hiçbir bağlantı bunu aşamaz."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Açıklama",
       "descriptionPlaceholder": "Formun amacını anlatan bir cümle",
       "image": "Görsel",
-      "imageHint": "Bağlantı kartının üstünde gösterilir. PNG, JPEG veya WebP, en fazla 5 MB — en iyisi 1200 × 630 px.",
+      "imageHint": "Bağlantı kartının üstünde gösterilir. PNG, JPEG veya WebP, en fazla 5 MB. En iyisi 1200 × 630 px.",
       "imageRule": "En fazla 5 MB boyutunda bir PNG, JPEG veya WebP görsel kullanın.",
       "upload": "Görsel yükle",
       "replace": "Değiştir",
@@ -3005,20 +3005,20 @@
       "asCard": "Bağlantı kartı",
       "asSearch": "Arama sonucu",
       "noImage": "Görsel yok",
-      "hiddenFromSearch": "Arama motorlarından gizli — bu form arama sonuçlarında görünmez."
+      "hiddenFromSearch": "Arama motorlarından gizli. Bu form arama sonuçlarında görünmez."
     },
     "invite": {
       "title": "Davetler",
       "counts": "{total} kişiden {responded} kişi yanıtladı",
-      "saveFirst": "Davetlerin geçerli olması için “Yalnızca davet edilen kişiler” seçeneğini kaydedin — o zamana kadar form eskisi gibi açık kalır.",
+      "saveFirst": "Davetlerin geçerli olması için “Yalnızca davet edilen kişiler” seçeneğini kaydedin. O zamana kadar form eskisi gibi açık kalır.",
       "add": "Kişileri davet et",
-      "addHint": "Yalnızca e-posta adresleri. Virgül, boşluk veya yeni satırla ayırın — ya da bir liste yapıştırın.",
+      "addHint": "Yalnızca e-posta adresleri. Virgül, boşluk veya yeni satırla ayırın ya da bir liste yapıştırın.",
       "placeholder": "ad{'@'}example.org",
       "button": "{n} kişiyi davet et | {n} kişiyi davet et",
       "buttonEmpty": "Davet et",
       "sent": "{n} davet gönderildi | {n} davet gönderildi",
       "skipped": "{n} kişi zaten davet edilmişti | {n} kişi zaten davet edilmişti",
-      "devLinks": "Kişisel bağlantılar — Formalie yayına girdiğinde her kişiye e-postayla gönderilir; geliştirme sırasında burada gösterilir:",
+      "devLinks": "Kişisel bağlantılar. Formalie yayına girdiğinde her kişiye e-postayla gönderilir; geliştirme sırasında burada gösterilir:",
       "none": "Henüz kimse davet edilmedi.",
       "resent": "{email} adresine yeni bir bağlantı gönderildi",
       "resend": "Yeni bağlantı gönder",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Erişimi olan kişiler",
-      "desc": "Yalnızca çalışma alanınızın personeli — formu kimin doldurabileceğini değiştirmez.",
+      "desc": "Yalnızca çalışma alanınızın personeli. Formu kimin doldurabileceğini değiştirmez.",
       "team": "Çalışma alanındaki diğer herkes",
       "teamDesc": "Aşağıda listelenmeyen kişiler için geçerlidir.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Kişi ekle…",
       "levelFor": "{name} için erişim",
       "remove": "{name} kişisini kaldır",
-      "note": "Bir kişiye özel erişim, o kişi için çalışma alanı varsayılanının yerini alır — daha fazla ya da daha az. Çalışma alanı yöneticileri ve form sahibi her zaman tam erişime sahiptir.",
+      "note": "Bir kişiye özel erişim, o kişi için çalışma alanı varsayılanının yerini alır (daha fazla ya da daha az). Çalışma alanı yöneticileri ve form sahibi her zaman tam erişime sahiptir.",
       "viewOnly": "Yalnızca görüntüleme",
-      "viewOnlyDesc": "Bu formu ve ayarlarını görüntüleyebilirsiniz. Değişiklikler kaydedilmez — düzenleme erişimi için form sahibine başvurun.",
+      "viewOnlyDesc": "Bu formu ve ayarlarını görüntüleyebilirsiniz. Değişiklikler kaydedilmez. Düzenleme erişimi için form sahibine başvurun.",
       "responsesOnly": "Bu formun yalnızca yanıtlarını görebilirsiniz",
       "responsesOnlyDesc": "Sorular ve tasarım sizinle paylaşılmadı. Daha fazla erişime ihtiyacınız varsa form sahibine başvurun.",
       "viewForm": "Görüntüle"
     },
     "section": {
       "answering": "Formu yanıtlama",
-      "answeringDesc": "Kimin doldurabileceği ve forma nasıl ulaşılacağı — formu gönderdiğiniz herkes için.",
+      "answeringDesc": "Kimin doldurabileceği ve forma nasıl ulaşılacağı. Formu gönderdiğiniz herkes için geçerlidir.",
       "team": "Ekibiniz",
       "teamDesc": "Bu formu oluşturan ve yöneten çalışma alanı personeli. Kimin doldurabileceğini değiştirmez."
     }

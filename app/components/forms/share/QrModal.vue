@@ -2,7 +2,7 @@
   QR code for the form link (owner, 2026-10-03): branded card or plain code; colour from the form,
   the workspace brand, black, a few presets or any colour; download as PNG (sizes) or SVG. The
   branded card carries the organisation (name + logo / initials in the centre) when the workspace
-  has its own subdomain, otherwise Formalie. Works before publishing — the code opens the form
+  has its own subdomain, otherwise Formalie. Works before publishing, the code opens the form
   once it is live.
 -->
 <script setup lang="ts">

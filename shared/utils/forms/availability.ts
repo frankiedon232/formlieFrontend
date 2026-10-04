@@ -1,9 +1,9 @@
 /**
  * When a form takes responses (F10, owner 2026-10-03): optional "open from" and "open until".
- *   always    — no dates set
- *   open      — within the dates (closes_at may be set: "until …")
- *   scheduled — before opens_at
- *   expired   — after closes_at
+ *   always:   no dates set
+ *   open:     within the dates (closes_at may be set: "until …")
+ *   scheduled, before opens_at
+ *   expired:  after closes_at
  */
 export type Availability = 'always' | 'open' | 'scheduled' | 'expired'
 

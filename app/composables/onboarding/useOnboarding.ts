@@ -2,7 +2,7 @@ import type { Onboarding, OnboardingPatch, OnboardingStep } from '#shared/types/
 
 /**
  * Onboarding wizard state (GET / PATCH /onboarding). The server remembers every step, so the
- * wizard resumes where the admin left off — on any device.
+ * wizard resumes where the admin left off, on any device.
  */
 export function useOnboarding() {
   const api = useApi()

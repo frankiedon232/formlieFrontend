@@ -67,7 +67,7 @@ watchEffect(() => {
         : t('onboarding.firstForm.untitled')
 })
 
-// Where labels sit — a form-wide choice made up front (changeable later in Form settings).
+// Where labels sit, a form-wide choice made up front (changeable later in Form settings).
 const labelPosition = ref<'top' | 'left'>('top')
 const labelItems = computed(() => [
   { value: 'top', label: t('builder.labels.top'), icon: 'i-lucide-panel-top' },
@@ -197,7 +197,7 @@ async function create() {
               size="lg"
               :loading="busy"
               :disabled="!canCreate"
-              :aria-label="`${t('forms.new.continue')} — ${submitLabel}`"
+              :aria-label="`${t('forms.new.continue')}: ${submitLabel}`"
               class="justify-center sm:w-auto rtl:[&_svg]:rotate-180"
               block
             />

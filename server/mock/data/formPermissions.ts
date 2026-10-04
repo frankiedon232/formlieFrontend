@@ -2,9 +2,9 @@
  * People access per form (F10 M3, decision 97). One rule for every route:
  *   workspace owner / admin  → edit (always)
  *   the form's owner         → edit (always)
- *   a person given access    → their level (edit · view · responses) — more or less than the default
+ *   a person given access    → their level (edit · view · responses), more or less than the default
  *   everyone else            → the form's team default (edit · view · none; default edit = as before)
- * Levels: none < responses (list, overview, responses) < view (also builder, design, share — read
+ * Levels: none < responses (list, overview, responses) < view (also builder, design, share, read
  * only) < edit (everything). Too little → FRM-PERM-1001; none → the form doesn't exist for them
  * (FRM-GEN-1004), so its name never leaks. Full roles & permissions come with F22.
  */

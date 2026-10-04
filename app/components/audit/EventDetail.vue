@@ -127,7 +127,7 @@ const related = computed((): Related | null => {
           {{ t('audit.detail.item') }}
         </h3>
         <p class="text-xs text-muted">{{ format.resourceType(props.event.resource.type) }}</p>
-        <p class="text-sm break-all text-highlighted">{{ props.event.resource.name ?? '—' }}</p>
+        <p class="text-sm break-all text-highlighted">{{ props.event.resource.name ?? '-' }}</p>
         <UButton
           v-if="link"
           :label="t('audit.detail.open')"

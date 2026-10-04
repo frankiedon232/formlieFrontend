@@ -25,7 +25,7 @@ export const OPERATIONS_IT_TEMPLATES: TemplateDef[] = [
         ),
         q('calculated', 'Priority', {
           key: 'priority',
-          formula: 'if({impact} * {urgency} >= 6, "P1 — critical", if({impact} * {urgency} >= 3, "P2 — high", "P3 — normal"))',
+          formula: 'if({impact} * {urgency} >= 6, "P1: critical", if({impact} * {urgency} >= 3, "P2: high", "P3: normal"))',
         }),
         row(q('short_text', 'Device or asset tag'), q('ip_address', 'IP address (if known)')),
         q('image_upload', 'Screenshots', { props: { max_files: 4 } }),
@@ -213,7 +213,7 @@ export const OPERATIONS_IT_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-truck',
     minutes: 2,
     name: 'Delivery Confirmation / Proof of Delivery',
-    description: 'Confirm what arrived, its condition, a photo and the receiver’s signature — damage asks for details.',
+    description: 'Confirm what arrived, its condition, a photo and the receiver’s signature. Damage asks for details.',
     tags: ['delivery', 'logistics', 'pod'],
     pages: [
       page('Delivery', [

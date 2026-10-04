@@ -72,7 +72,7 @@
       "moved": "Đã chuyển biểu mẫu",
       "tagsSaved": "Đã lưu thẻ",
       "duplicated": "Đã tạo bản sao",
-      "unpublish": "Đã hủy xuất bản — liên kết không còn hoạt động",
+      "unpublish": "Đã hủy xuất bản. Liên kết không còn hoạt động",
       "close": "Đã ngừng nhận phản hồi mới",
       "reopen": "Đã mở lại biểu mẫu",
       "archive": "Đã lưu trữ biểu mẫu",
@@ -119,7 +119,7 @@
       "count": "{count} biểu mẫu | {count} biểu mẫu",
       "empty": "Chưa có thư mục. Hãy tạo một thư mục bên dưới.",
       "viewForms": "Hiển thị biểu mẫu trong {name}",
-      "notEmpty": "Hãy chuyển biểu mẫu của thư mục sang thư mục khác trước — sau đó có thể xóa thư mục.",
+      "notEmpty": "Hãy chuyển biểu mẫu của thư mục sang thư mục khác trước, sau đó có thể xóa thư mục.",
       "deleteEmpty": "Thư mục trống nên không biểu mẫu nào bị ảnh hưởng."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "Bạn có thể đổi cả hai sau.",
       "pickFile": "Hãy chọn tệp cần nhập trước.",
       "blankTitle": "Bắt đầu từ đầu",
-      "blankDesc": "Một biểu mẫu trống có một trang — thêm các câu hỏi bạn cần theo thứ tự bạn muốn.",
+      "blankDesc": "Một biểu mẫu trống có một trang. Thêm các câu hỏi bạn cần theo thứ tự bạn muốn.",
       "previewAdd": "Thêm câu hỏi đầu tiên",
       "points": {
         "fieldsTitle": "Hơn 30 loại trường",
@@ -190,7 +190,7 @@
     "filterTemplate": "Mẫu",
     "overview": {
       "subtitle": "{status} · cập nhật {updated}",
-      "trendTitle": "Phản hồi — 30 ngày qua",
+      "trendTitle": "Phản hồi (30 ngày qua)",
       "trendDesc": "Lượt gửi mỗi ngày",
       "trendAria": "Phản hồi mỗi ngày trong 30 ngày qua, tổng cộng {total}",
       "responsesCount": "{count} phản hồi | {count} phản hồi",
@@ -229,15 +229,15 @@
       "design": "Thiết kế",
       "versions": "Phiên bản",
       "allVersions": "Tất cả phiên bản",
-      "noVersions": "Chưa xuất bản — phiên bản sẽ xuất hiện khi bạn xuất bản.",
+      "noVersions": "Chưa xuất bản. Phiên bản sẽ xuất hiện khi bạn xuất bản.",
       "detailsTitle": "Chi tiết",
       "tags": "Thẻ",
-      "noHistory": "Đã xuất bản trước khi lịch sử phiên bản được lưu — lịch sử bắt đầu từ lần xuất bản tiếp theo.",
+      "noHistory": "Đã xuất bản trước khi lịch sử phiên bản được lưu. Lịch sử bắt đầu từ lần xuất bản tiếp theo.",
       "embedCode": "Mã nhúng"
     },
     "qr": {
       "title": "Mã QR",
-      "desc": "In ra hoặc hiển thị trên màn hình — quét mã sẽ mở biểu mẫu.",
+      "desc": "In ra hoặc hiển thị trên màn hình. Quét mã sẽ mở biểu mẫu.",
       "accent": "Màu biểu mẫu",
       "black": "Đen",
       "colour": "Màu",
@@ -252,7 +252,7 @@
       "plain": "Đơn giản",
       "brandedOrg": "Tên và logo tổ chức của bạn cùng tên biểu mẫu; Formalie ở chân trang.",
       "brandedFormalie": "Thương hiệu Formalie cùng tên biểu mẫu.",
-      "plainHint": "Chỉ có mã — cho không gian nhỏ.",
+      "plainHint": "Chỉ có mã, dành cho không gian nhỏ.",
       "brand": "Màu thương hiệu",
       "custom": "Màu bất kỳ",
       "scan": "Quét để mở",
@@ -270,9 +270,9 @@
       "title": "Khi nào biểu mẫu này nhận phản hồi",
       "desc": "Để trống cả hai để biểu mẫu luôn mở. Sau ngày kết thúc, liên kết báo biểu mẫu đã hết hạn; trước ngày bắt đầu, liên kết cho biết khi nào mở.",
       "opensAt": "Mở từ",
-      "opensAtHint": "Không bắt buộc — trước thời điểm này, liên kết hiển thị khi nào biểu mẫu mở.",
+      "opensAtHint": "Không bắt buộc. Trước thời điểm này, liên kết hiển thị khi nào biểu mẫu mở.",
       "closesAt": "Mở đến",
-      "closesAtHint": "Không bắt buộc — sau thời điểm này không nhận thêm phản hồi; liên kết báo biểu mẫu đã hết hạn.",
+      "closesAtHint": "Không bắt buộc. Sau thời điểm này không nhận thêm phản hồi; liên kết báo biểu mẫu đã hết hạn.",
       "preset": {
         "week": "1 tuần",
         "twoWeeks": "2 tuần",
@@ -281,16 +281,16 @@
         "noEnd": "Không có ngày kết thúc"
       },
       "endBeforeStart": "Hãy chọn ngày kết thúc sau ngày bắt đầu.",
-      "pastWarning": "Ngày kết thúc này đã qua — biểu mẫu sẽ ngừng nhận phản hồi ngay khi bạn lưu.",
+      "pastWarning": "Ngày kết thúc này đã qua. Biểu mẫu sẽ ngừng nhận phản hồi ngay khi bạn lưu.",
       "saved": "Đã lưu thời gian mở"
     },
     "embed": {
       "title": "Nhúng vào trang web của bạn",
       "desc": "Dán mã này vào trang trên website của bạn, nơi biểu mẫu cần xuất hiện.",
-      "notLive": "Biểu mẫu chưa được xuất bản — sẽ hiển thị khi đã hoạt động.",
+      "notLive": "Biểu mẫu chưa được xuất bản. Biểu mẫu sẽ hiển thị khi đã hoạt động.",
       "height": "Chiều cao",
       "auto": "Chiều cao tự động (khuyên dùng)",
-      "autoDesc": "Khung tự giãn và thu theo biểu mẫu — không có thanh cuộn bên trong.",
+      "autoDesc": "Khung tự giãn và thu theo biểu mẫu, không có thanh cuộn bên trong.",
       "fixed": "Chiều cao cố định",
       "fixedDesc": "Luôn cùng một chiều cao; biểu mẫu cuộn bên trong khung.",
       "pixels": "Chiều cao (pixel)",
@@ -542,8 +542,8 @@
     "label": "Chân trang"
   },
   "authLayout": {
-    "headline": "Biểu mẫu, dữ liệu và quyền truy cập — trong tầm kiểm soát của bạn.",
-    "subline": "Nền tảng an toàn, linh hoạt để tạo mọi loại biểu mẫu, thu thập và quản lý dữ liệu, kết nối hệ thống và kiểm soát ai được xem gì — cho tổ chức mọi quy mô, ở bất kỳ đâu trên thế giới.",
+    "headline": "Biểu mẫu, dữ liệu và quyền truy cập trong tầm kiểm soát của bạn.",
+    "subline": "Nền tảng an toàn, linh hoạt để tạo mọi loại biểu mẫu, thu thập và quản lý dữ liệu, kết nối hệ thống và kiểm soát ai được xem gì. Dành cho tổ chức mọi quy mô, ở bất kỳ đâu trên thế giới.",
     "badgeEncrypted": "Mã hóa đầu cuối",
     "badgeCompliance": "Kiểm soát quyền riêng tư và tuân thủ",
     "badgeDatabase": "{count}+ cơ sở dữ liệu hoặc lưu trữ an toàn",
@@ -651,7 +651,7 @@
       "available": "Có thể dùng",
       "unavailable": {
         "taken": "Đã có người dùng",
-        "reserved": "Đã được giữ chỗ — hãy chọn tên khác",
+        "reserved": "Đã được giữ chỗ. Hãy chọn tên khác",
         "invalid": "Địa chỉ không hợp lệ"
       },
       "subdomainHelp": "Nhóm của bạn sẽ đăng nhập tại đây. Bạn có thể thêm tên miền riêng sau.",
@@ -685,7 +685,7 @@
     "workspace": "Không gian làm việc"
   },
   "audit": {
-    "description": "Mọi thao tác trong không gian làm việc của bạn — ai, làm gì, khi nào và ở đâu.",
+    "description": "Mọi thao tác trong không gian làm việc của bạn: ai, làm gì, khi nào và ở đâu.",
     "security": "Sự kiện bảo mật",
     "searchPlaceholder": "Tìm người, mục, địa chỉ IP…",
     "emptyTitle": "Chưa có gì được ghi lại",
@@ -891,7 +891,7 @@
     "menu": "Thiết lập không gian làm việc",
     "settingsCard": {
       "title": "Thiết lập không gian làm việc",
-      "desc": "Công ty, thương hiệu, cài đặt khu vực, nhóm và biểu mẫu đầu tiên — quay lại bất kỳ bước nào.",
+      "desc": "Công ty, thương hiệu, cài đặt khu vực, nhóm và biểu mẫu đầu tiên. Quay lại bất kỳ bước nào.",
       "open": "Mở"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Quản trị viên",
       "owner": "Chủ sở hữu",
       "invalid": "Nhập địa chỉ email hợp lệ.",
-      "self": "Đó là bạn — bạn đã ở trong đây.",
+      "self": "Đó là bạn. Bạn đã ở trong đây.",
       "duplicate": "Email này đã có trong danh sách.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "Email {n}",
@@ -1033,7 +1033,7 @@
         "name": "Báo cáo sự cố"
       }
     },
-    "subtitle": "Bắt đầu từ một biểu mẫu có sẵn — mỗi mẫu có thiết kế riêng và bạn có thể thay đổi mọi thứ trước khi xuất bản",
+    "subtitle": "Bắt đầu từ một biểu mẫu có sẵn. Mỗi mẫu có thiết kế riêng và bạn có thể thay đổi mọi thứ trước khi xuất bản",
     "blank": "Biểu mẫu trống",
     "all": "Tất cả",
     "search": "Tìm mẫu…",
@@ -1055,7 +1055,7 @@
       "hr": "Nhân sự & nơi làm việc",
       "health_safety": "Sức khỏe & an toàn",
       "events": "Sự kiện & đặt chỗ",
-      "hospitality": "Nhà hàng – khách sạn",
+      "hospitality": "Nhà hàng và khách sạn",
       "education": "Giáo dục",
       "operations_it": "Vận hành & CNTT",
       "finance_legal": "Tài chính & pháp lý",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "Không có mẫu phù hợp",
     "emptyDesc": "Hãy thử danh mục hoặc từ khóa khác, hoặc xóa bộ lọc.",
     "useTitle": "Dùng mẫu",
-    "useDesc": "Biểu mẫu mới mở trong trình tạo — hãy thay đổi bất kỳ câu hỏi, quy tắc, phép tính hoặc thiết kế nào trước khi xuất bản.",
+    "useDesc": "Biểu mẫu mới mở trong trình tạo. Hãy thay đổi bất kỳ câu hỏi, quy tắc, phép tính hoặc thiết kế nào trước khi xuất bản.",
     "saveAs": "Lưu thành mẫu",
     "saveTitle": "Lưu thành mẫu",
     "saveDesc": "Câu hỏi, logic, phép tính và thiết kế sẽ trở thành một mẫu cho không gian làm việc của bạn. Phản hồi không bao giờ được đưa vào.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Phản hồi của khách hàng",
-        "description": "Lắng nghe khách hàng nghĩ gì về dịch vụ của bạn — kèm câu hỏi tiếp theo khi ai đó không hài lòng."
+        "description": "Lắng nghe khách hàng nghĩ gì về dịch vụ của bạn, kèm câu hỏi tiếp theo khi ai đó không hài lòng."
       },
       "csat_nps": {
         "name": "Khảo sát mức độ hài lòng của khách hàng (CSAT / NPS)",
-        "description": "Đo mức độ hài lòng (CSAT), công sức và lòng trung thành (NPS) — mỗi câu trả lời được xếp nhóm ủng hộ, trung lập hoặc phản đối."
+        "description": "Đo mức độ hài lòng (CSAT), công sức và lòng trung thành (NPS). Mỗi câu trả lời được xếp nhóm ủng hộ, trung lập hoặc phản đối."
       },
       "product_review": {
         "name": "Đánh giá sản phẩm",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Khảo sát mức độ gắn kết của nhân viên",
-        "description": "Khảo sát nhanh ẩn danh về niềm tự hào, mục đích, phát triển và hỗ trợ — với chỉ số gắn kết từ 0 đến 100."
+        "description": "Khảo sát nhanh ẩn danh về niềm tự hào, mục đích, phát triển và hỗ trợ, với chỉ số gắn kết từ 0 đến 100."
       },
       "expense_reimbursement": {
         "name": "Hoàn ứng chi phí",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Phản hồi về đào tạo",
-        "description": "Đánh giá nội dung, giảng viên, tài liệu và mức độ phù hợp của khóa học — kèm điểm trung bình."
+        "description": "Đánh giá nội dung, giảng viên, tài liệu và mức độ phù hợp của khóa học, kèm điểm trung bình."
       },
       "reference_check": {
         "name": "Kiểm tra người tham chiếu",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Đơn xin học bổng",
-        "description": "Thành tích học tập, nhu cầu tài chính và bài luận cá nhân — kèm điểm đủ điều kiện cho hội đồng."
+        "description": "Thành tích học tập, nhu cầu tài chính và bài luận cá nhân, kèm điểm đủ điều kiện cho hội đồng."
       },
       "permission_slip": {
         "name": "Giấy đồng ý / Cho phép của phụ huynh",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Xác nhận giao hàng / Bằng chứng giao hàng",
-        "description": "Xác nhận hàng đã đến, tình trạng, ảnh và chữ ký người nhận — nếu hư hỏng sẽ yêu cầu chi tiết."
+        "description": "Xác nhận hàng đã đến, tình trạng, ảnh và chữ ký người nhận. Nếu hư hỏng sẽ yêu cầu chi tiết."
       },
       "quality_control": {
         "name": "Danh sách kiểm tra chất lượng",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Ký thỏa thuận",
-        "description": "Hiển thị thỏa thuận, xác nhận từng điểm chính và ký — kèm thông tin công ty khi ký thay mặt công ty."
+        "description": "Hiển thị thỏa thuận, xác nhận từng điểm chính và ký, kèm thông tin công ty khi ký thay mặt công ty."
       },
       "risk_assessment": {
         "name": "Đánh giá rủi ro",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Báo cáo sự cố / tai nạn",
-        "description": "Ghi lại sự việc, ai bị thương và các biện pháp ban đầu — sự cố nghiêm trọng được đánh dấu để xem xét khẩn."
+        "description": "Ghi lại sự việc, ai bị thương và các biện pháp ban đầu. Sự cố nghiêm trọng được đánh dấu để xem xét khẩn."
       },
       "near_miss_report": {
         "name": "Báo cáo suýt xảy ra sự cố",
-        "description": "Báo cáo nhanh các tình huống suýt xảy ra — mức độ tiềm ẩn và khả năng lặp lại xác định mức ưu tiên để phòng ngừa đi trước."
+        "description": "Báo cáo nhanh các tình huống suýt xảy ra. Mức độ tiềm ẩn và khả năng lặp lại xác định mức ưu tiên để phòng ngừa đi trước."
       },
       "safety_inspection": {
         "name": "Danh sách kiểm tra an toàn",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Tiền sử bệnh",
-        "description": "Bệnh lý, phẫu thuật, thuốc, tiền sử gia đình và lối sống — kèm số bệnh lý cho bác sĩ."
+        "description": "Bệnh lý, phẫu thuật, thuốc, tiền sử gia đình và lối sống, kèm số bệnh lý cho bác sĩ."
       },
       "health_screening": {
         "name": "Sàng lọc / khai báo y tế",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Đăng ký tình nguyện viên",
-        "description": "Thu thập tình nguyện viên, sở thích và thời gian rảnh — có sự đồng ý của người giám hộ cho người dưới 18 tuổi."
+        "description": "Thu thập tình nguyện viên, sở thích và thời gian rảnh, có sự đồng ý của người giám hộ cho người dưới 18 tuổi."
       },
       "speaker_sponsor_application": {
         "name": "Đăng ký diễn giả / nhà tài trợ",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Phiếu yêu cầu đặc biệt",
-        "description": "Nhu cầu ăn uống và hỗ trợ tiếp cận, dị ứng và dịp kỷ niệm — để mọi thứ sẵn sàng trước khi khách đến."
+        "description": "Nhu cầu ăn uống và hỗ trợ tiếp cận, dị ứng và dịp kỷ niệm, để mọi thứ sẵn sàng trước khi khách đến."
       },
       "event_catering_request": {
         "name": "Yêu cầu tiệc cho sự kiện",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Đặt bàn nhà hàng",
-        "description": "Ngày, giờ, số người, chỗ ngồi và dịp đặc biệt — mọi thứ nhà hàng cần."
+        "description": "Ngày, giờ, số người, chỗ ngồi và dịp đặc biệt: mọi thứ nhà hàng cần."
       },
       "hospitality_complaint": {
         "name": "Phiếu khiếu nại dịch vụ",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Thu thập khách hàng tiềm năng",
-        "description": "Tên, công ty, quy mô và nhu cầu — đủ ngắn cho trang đích, có theo dõi nguồn."
+        "description": "Tên, công ty, quy mô và nhu cầu. Đủ ngắn cho trang đích, có theo dõi nguồn."
       },
       "sales_quote_request": {
         "name": "Yêu cầu báo giá",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Theo dõi bán hàng",
-        "description": "Ghi lại cuộc gọi hoặc cuộc họp: kết quả, giai đoạn giao dịch, bước tiếp theo và ngày — nhanh cả trên điện thoại."
+        "description": "Ghi lại cuộc gọi hoặc cuộc họp: kết quả, giai đoạn giao dịch, bước tiếp theo và ngày. Nhanh cả trên điện thoại."
       }
     },
     "openGallery": "Mở toàn bộ thư viện",
@@ -1481,7 +1481,7 @@
       "browse": "Xem mẫu"
     },
     "categoryPage": {
-      "subtitle": "Các mẫu Formalie trong danh mục này — mỗi mẫu có thiết kế riêng, sẵn sàng sử dụng"
+      "subtitle": "Các mẫu Formalie trong danh mục này. Mỗi mẫu có thiết kế riêng, sẵn sàng sử dụng"
     },
     "mine": {
       "subtitle": "Các mẫu mà không gian làm việc của bạn đã lưu từ biểu mẫu của mình hoặc sao chép từ Formalie",
@@ -1611,7 +1611,7 @@
     "unpublished": "Có thay đổi chưa xuất bản",
     "save": {
       "saving": "Đang lưu…",
-      "error": "Chưa lưu được — tiếp tục chỉnh sửa để thử lại",
+      "error": "Chưa lưu được. Tiếp tục chỉnh sửa để thử lại",
       "conflict": "Đã thay đổi ở nơi khác",
       "saved": "Đã lưu {time}",
       "upToDate": "Đã lưu mọi thay đổi",
@@ -1627,7 +1627,7 @@
       "tablet": "Máy tính bảng",
       "phone": "Điện thoại",
       "device": "Thiết bị",
-      "nothingSent": "Đây là bản xem trước — không có gì được gửi.",
+      "nothingSent": "Đây là bản xem trước. Không có gì được gửi.",
       "restart": "Bắt đầu lại"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Xuất bản",
       "submitAgain": "Xuất bản thay đổi",
       "issues": "Hãy sửa {count} vấn đề trước khi xuất bản | Hãy sửa {count} vấn đề trước khi xuất bản",
-      "done": "Đã xuất bản — phiên bản {n} đang hoạt động"
+      "done": "Đã xuất bản. Phiên bản {n} đang hoạt động"
     },
     "issue": {
       "no_inputs": "Thêm ít nhất một câu hỏi",
@@ -1711,7 +1711,7 @@
       "minChoices": "Lựa chọn tối thiểu",
       "maxChoices": "Lựa chọn tối đa",
       "accept": "Loại tệp được phép",
-      "acceptHint": "Phân tách bằng dấu phẩy, vd: .pdf,.docx,image/* — để trống = mọi loại.",
+      "acceptHint": "Phân tách bằng dấu phẩy, vd: .pdf,.docx,image/* (để trống = mọi loại).",
       "maxFiles": "Số tệp tối đa",
       "maxSize": "Dung lượng tối đa (MB)",
       "minAboveMax": "Giá trị tối thiểu lớn hơn tối đa.",
@@ -1782,9 +1782,9 @@
       "readonly": "Chỉ đọc",
       "disabled": "Đã tắt",
       "editableHint": "Người trả lời có thể điền mục này.",
-      "readonlyHint": "Được hiển thị và gửi kèm câu trả lời, nhưng không thể thay đổi — ví dụ một mã tham chiếu điền sẵn.",
+      "readonlyHint": "Được hiển thị và gửi kèm câu trả lời, nhưng không thể thay đổi (ví dụ một mã tham chiếu điền sẵn).",
       "disabledHint": "Hiển thị mờ và không gửi kèm câu trả lời.",
-      "noRequired": "Trường chỉ đọc và trường đã tắt không thể bắt buộc — không ai điền được."
+      "noRequired": "Trường chỉ đọc và trường đã tắt không thể bắt buộc, vì không ai điền được."
     },
     "labels": {
       "title": "Vị trí nhãn",
@@ -1828,13 +1828,13 @@
       "label": "Trình tạo biểu mẫu, toàn màn hình"
     },
     "drop": {
-      "newRow": "Thả vào đây — hàng mới",
-      "beside": "Thả vào đây — bên cạnh"
+      "newRow": "Thả vào đây (hàng mới)",
+      "beside": "Thả vào đây (bên cạnh)"
     },
     "blocks": {
       "appearance": "Giao diện",
       "sectionPlaceholder": "Tiêu đề phần",
-      "descriptionPlaceholder": "Thêm mô tả (không bắt buộc) — nhấp đúp để chỉnh sửa",
+      "descriptionPlaceholder": "Thêm mô tả (không bắt buộc). Nhấp đúp để chỉnh sửa",
       "paragraphPlaceholder": "Viết nội dung…",
       "paragraphHint": "Nhấp vào đoạn văn trên khung vẽ để viết. Chọn văn bản để in đậm, thêm liên kết, danh sách và căn chỉnh.",
       "size": "Kích thước",
@@ -1867,7 +1867,7 @@
       "caption": "Chú thích",
       "imageWidth": "Kích thước hình ảnh",
       "href": "Liên kết khi nhấp",
-      "hrefHint": "Không bắt buộc — mở trong thẻ mới.",
+      "hrefHint": "Không bắt buộc. Mở trong thẻ mới.",
       "rounded": "Bo góc",
       "fill": "Lấp đầy",
       "height": "Chiều cao",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Chọn từ danh sách…",
       "selected": "Chỉ {n} mục đã chọn mới có thể xem và điền trường này.",
-      "noRequired": "Trường bị giới hạn không thể bắt buộc — những người không thuộc đối tượng của trường vẫn phải gửi được biểu mẫu. Câu trả lời chỉ hiển thị với chính những người đó."
+      "noRequired": "Trường bị giới hạn không thể bắt buộc. Những người không thuộc đối tượng của trường vẫn phải gửi được biểu mẫu. Câu trả lời chỉ hiển thị với chính những người đó."
     },
     "language": {
       "title": "Ngôn ngữ biểu mẫu",
       "hint": "Nút, thông báo và ngày tháng theo ngôn ngữ này, và văn bản đến từ mẫu cũng được dịch theo. Văn bản bạn tự viết giữ nguyên.",
       "translated": "Đã dịch {n} văn bản | Đã dịch {n} văn bản",
-      "kept": "{n} văn bản bạn viết được giữ nguyên — hãy sửa trong biểu mẫu. | {n} văn bản bạn viết được giữ nguyên — hãy sửa trong biểu mẫu.",
+      "kept": "{n} văn bản bạn viết được giữ nguyên. Hãy sửa trong biểu mẫu. | {n} văn bản bạn viết được giữ nguyên. Hãy sửa trong biểu mẫu.",
       "changed": "Ngôn ngữ biểu mẫu: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Cập nhật mẫu",
       "updatedToast": "Đã cập nhật mẫu “{name}” với các thay đổi mới nhất của biểu mẫu này",
       "saveNew": "Lưu thành mẫu mới",
-      "saveNewHint": "Tạo một bản sao riêng — mẫu hiện có vẫn giữ nguyên."
+      "saveNewHint": "Tạo một bản sao riêng. Mẫu hiện có vẫn giữ nguyên."
     },
     "identity": {
       "title": "Nhận diện người phản hồi",
-      "hint": "Cách Formalie phân biệt mọi người, để một người không thể phản hồi hai lần — và người khác không bao giờ bị nhầm là họ.",
+      "hint": "Cách Formalie phân biệt mọi người, để một người không thể phản hồi hai lần và người khác không bao giờ bị nhầm là họ.",
       "email": "Email của chính người phản hồi",
-      "emailHint": "Email của người đang điền — không phải của người giới thiệu, quản lý hay người giám hộ. Phản hồi thứ hai với email này bị từ chối; phản hồi rất giống sẽ được kiểm tra.",
+      "emailHint": "Email của người đang điền, không phải của người giới thiệu, quản lý hay người giám hộ. Phản hồi thứ hai với email này bị từ chối; phản hồi rất giống sẽ được kiểm tra.",
       "verify": "Xác minh email trước khi gửi",
-      "verifyHint": "Người phản hồi nhập mã được gửi đến email của họ — mỗi email đã xác minh một phản hồi.",
+      "verifyHint": "Người phản hồi nhập mã được gửi đến email của họ. Mỗi email đã xác minh một phản hồi.",
       "suggested": "đề xuất",
       "off": "Tắt",
       "none": "Không có email của người trả lời, Formalie chỉ có thể nhận diện cùng một trình duyệt (mọi người có thể dùng thiết bị khác).",
-      "verifyLost": "Xác minh email đang bật, nhưng biểu mẫu không còn câu hỏi email của người phản hồi — tính năng này tạm dừng cho đến khi bạn chọn một câu hỏi ở trên.",
-      "verifyRequired": "Câu hỏi email là bắt buộc khi xác minh đang bật — chúng tôi cần nó để gửi mã."
+      "verifyLost": "Xác minh email đang bật, nhưng biểu mẫu không còn câu hỏi email của người phản hồi. Tính năng này tạm dừng cho đến khi bạn chọn một câu hỏi ở trên.",
+      "verifyRequired": "Câu hỏi email là bắt buộc khi xác minh đang bật. Chúng tôi cần nó để gửi mã."
     },
     "guide": {
       "title": "Hướng dẫn trợ giúp",
@@ -1937,7 +1937,7 @@
       "empty": "Chưa có hướng dẫn",
       "untitled": "Hướng dẫn chưa có tiêu đề",
       "summary": "{title} · {n} từ | {title} · {n} từ",
-      "noContent": "Hãy viết hướng dẫn — nút chỉ hiển thị khi đã có nội dung.",
+      "noContent": "Hãy viết hướng dẫn. Nút chỉ hiển thị khi đã có nội dung.",
       "editTitle": "Hướng dẫn trợ giúp",
       "editDesc": "Giải thích cách điền biểu mẫu này: cần chuẩn bị gì, những câu hỏi khó và điều gì xảy ra tiếp theo.",
       "titleLabel": "Tiêu đề",
@@ -2030,14 +2030,14 @@
       "ip": "Nhập địa chỉ IP hợp lệ cho {field}.",
       "domain": "Nhập tên miền cho {field}, như example.org.",
       "mac": "Nhập địa chỉ MAC cho {field}, như 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} không phải IBAN hợp lệ — hãy kiểm tra số.",
+      "iban": "{field} không phải IBAN hợp lệ. Hãy kiểm tra số.",
       "bic": "Nhập mã SWIFT / BIC gồm 8 hoặc 11 ký tự cho {field}.",
       "color": "Chọn màu cho {field}.",
       "duration": "Nhập thời lượng cho {field} (phút 0–59).",
       "name": "Nhập cả tên và họ cho {field}.",
       "consent": "Vui lòng xác nhận {field} để tiếp tục.",
       "choice": "Chọn một tùy chọn trong danh sách cho {field}.",
-      "file": "{field}: có tệp chưa tải lên xong — hãy xóa tệp đó và thêm lại."
+      "file": "{field}: có tệp chưa tải lên xong. Hãy xóa tệp đó và thêm lại."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "Chưa thêm tệp",
       "wrongType": "Sai loại tệp: {files}. Hãy chọn một trong các loại được phép.",
       "tooBig": "Quá lớn (trên {mb} MB): {files}",
-      "tooMany": "Chỉ cho phép {max} tệp — {n} tệp chưa được thêm. | Chỉ cho phép {max} tệp — {n} tệp chưa được thêm.",
+      "tooMany": "Chỉ cho phép {max} tệp. {n} tệp chưa được thêm. | Chỉ cho phép {max} tệp. {n} tệp chưa được thêm.",
       "limits": "Tối đa {max} tệp, mỗi tệp {mb} MB",
       "count": "{n}/{max}",
       "addMore": "Thêm nữa",
@@ -2088,11 +2088,11 @@
       "close": "Đóng trang này",
       "closeHint": "Bây giờ bạn có thể đóng tab này.",
       "alreadyTitle": "Bạn đã điền biểu mẫu này",
-      "alreadyDesc": "Phản hồi của bạn đã được nhận từ trình duyệt này. Chỉ điền lại cho người khác — phản hồi của mỗi người chỉ được nhận một lần.",
+      "alreadyDesc": "Phản hồi của bạn đã được nhận từ trình duyệt này. Chỉ điền lại cho người khác. Phản hồi của mỗi người chỉ được nhận một lần.",
       "askTitle": "Đây là cho người khác phải không?",
       "askDesc": "Bạn đã gửi một phản hồi từ trình duyệt này.",
       "askPoint1": "Chỉ tiếp tục nếu phản hồi này là của người khác.",
-      "askPoint2": "Phản hồi của cùng một người — hoặc các câu trả lời giống hệt — sẽ không được nhận hai lần.",
+      "askPoint2": "Phản hồi của cùng một người (hoặc các câu trả lời giống hệt) sẽ không được nhận hai lần.",
       "confirm": "Có, cho người khác",
       "stay": "Không, ở lại đây",
       "duplicate": "Các câu trả lời giống hệt này đã được gửi",
@@ -2105,8 +2105,8 @@
       "registeredField": "Đã được dùng cho một phản hồi.",
       "possibleTitle": "Đây có phải là một người khác không?",
       "possibleDesc": "Phản hồi này trông giống một phản hồi chúng tôi đã có ({email}, {date}).",
-      "possiblePoint1": "Nếu bạn là người khác, hãy tiếp tục — nhóm sẽ thấy cả hai phản hồi.",
-      "possiblePoint2": "Nếu đó là bạn, hãy kiểm tra lại câu trả lời — phản hồi thứ hai từ cùng một người sẽ không được tính.",
+      "possiblePoint1": "Nếu bạn là người khác, hãy tiếp tục. Nhóm sẽ thấy cả hai phản hồi.",
+      "possiblePoint2": "Nếu đó là bạn, hãy kiểm tra lại câu trả lời. Phản hồi thứ hai từ cùng một người sẽ không được tính.",
       "different": "Có, tôi là một người khác",
       "review": "Không, xem lại câu trả lời",
       "verifyTitle": "Xác nhận email của bạn",
@@ -2125,10 +2125,10 @@
       "auto": "Câu trả lời của bạn được lưu trong lúc bạn điền",
       "saving": "Đang lưu…",
       "saved": "Đã lưu {when}",
-      "notSaved": "Chưa lưu — hãy kiểm tra kết nối của bạn",
+      "notSaved": "Chưa lưu. Hãy kiểm tra kết nối của bạn",
       "later": "Lưu và tiếp tục sau",
       "title": "Tiếp tục sau",
-      "desc": "Chúng tôi sẽ gửi cho bạn một liên kết cá nhân để khôi phục câu trả lời — trên mọi thiết bị, trong 30 ngày.",
+      "desc": "Chúng tôi sẽ gửi cho bạn một liên kết cá nhân để khôi phục câu trả lời trên mọi thiết bị, trong 30 ngày.",
       "email": "Email của bạn",
       "emailHint": "Liên kết chỉ được gửi đến địa chỉ này. Hãy giữ kín: bất kỳ ai có liên kết đều có thể tiếp tục biểu mẫu của bạn.",
       "send": "Gửi liên kết cho tôi",
@@ -2282,7 +2282,7 @@
       "empty": "Thêm công thức",
       "unknown": "Không có trường nào dùng khóa “{key}”",
       "self": "Một trường không thể dùng chính nó",
-      "syntax": "Công thức chưa hoàn chỉnh — hãy kiểm tra dấu ngoặc, dấu phẩy và toán tử",
+      "syntax": "Công thức chưa hoàn chỉnh. Hãy kiểm tra dấu ngoặc, dấu phẩy và toán tử",
       "functions": "Hàm:",
       "choiceScored": "Tính bằng số của lựa chọn được chọn",
       "choiceUnscored": "Gán số cho các lựa chọn (cài đặt trường → Lựa chọn) để dùng trong phép cộng",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Kiểm tra các câu trả lời này",
     "thenTitle": "Sau đó làm việc này",
     "ifHelp": "Chọn câu hỏi, cách so sánh và câu trả lời sẽ kích hoạt quy tắc.",
-    "thenHelp": "Chọn điều xảy ra khi câu trả lời khớp — và áp dụng cho câu hỏi hoặc trang nào.",
+    "thenHelp": "Chọn điều xảy ra khi câu trả lời khớp, và áp dụng cho câu hỏi hoặc trang nào.",
     "matchLead": "Chạy quy tắc khi",
     "andChip": "và",
     "orChip": "hoặc",
@@ -2410,7 +2410,7 @@
     "deleteList": "Xóa danh sách",
     "deleteListTitle": "Xóa danh sách “{name}”?",
     "deleteListDesc": "Các trường đang dùng danh sách này vẫn giữ lựa chọn của mình.",
-    "listDesc": "Lựa chọn dùng lại cho mọi trường lựa chọn — quốc gia, khu vực, sản phẩm, nhóm …",
+    "listDesc": "Lựa chọn dùng lại cho mọi trường lựa chọn: quốc gia, khu vực, sản phẩm, nhóm …",
     "listName": "Tên",
     "listNamePlaceholder": "ví dụ Khu vực",
     "listOptions": "Lựa chọn",
@@ -2426,7 +2426,7 @@
     "useList": "Điền từ danh sách…",
     "saveAsList": "Lưu thành danh sách",
     "toast": {
-      "fieldSaved": "Đã lưu “{name}” — xem ở mục Đã lưu",
+      "fieldSaved": "Đã lưu “{name}”. Xem ở mục Đã lưu",
       "fieldRemoved": "Đã xóa “{name}” khỏi trường đã lưu",
       "listCreated": "Đã tạo danh sách “{name}”",
       "listUpdated": "Đã cập nhật danh sách “{name}”",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "Biểu mẫu nằm trên một thẻ ở giữa trang.",
-      "plain": "Không có thẻ — biểu mẫu nằm ngay trên nền trang.",
+      "plain": "Không có thẻ. Biểu mẫu nằm ngay trên nền trang.",
       "split": "Một hình ảnh bên cạnh biểu mẫu (phía trên trên điện thoại).",
       "full": "Biểu mẫu trải rộng toàn bộ chiều rộng trang."
     },
@@ -2546,7 +2546,7 @@
       "error": "Lỗi"
     },
     "colorInvalid": "Dùng mã màu hex như #1a2b3c.",
-    "lowContrast": "Độ tương phản thấp ({ratio} : 1) — có thể khó đọc.",
+    "lowContrast": "Độ tương phản thấp ({ratio} : 1), có thể khó đọc.",
     "pickColor": "Chọn màu cho {name}",
     "inputStyle": "Kiểu",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Thanh trên cùng có logo và trang web của bạn, biểu mẫu và chân trang.",
         "spotlight": "Biểu ngữ màu thương hiệu với tiêu đề và thông tin nhanh; biểu mẫu nổi lên trên đó.",
-        "side": "Bảng thương hiệu bên cạnh biểu mẫu — xếp chồng trên điện thoại.",
+        "side": "Bảng thương hiệu bên cạnh biểu mẫu. Trên điện thoại sẽ xếp chồng.",
         "minimal": "Chỉ biểu mẫu và một chân trang mảnh."
       },
       "tone": "Màu thanh và bảng",
@@ -2636,7 +2636,7 @@
     "updateExisting": "Cập nhật “{name}”",
     "saveNew": "Lưu thành chủ đề mới",
     "name": "Tên",
-    "namePlaceholder": "vd. Thương hiệu — sáng",
+    "namePlaceholder": "vd. Thương hiệu (sáng)",
     "renameTitle": "Đổi tên chủ đề",
     "rename": "Đổi tên",
     "duplicate": "Nhân bản",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Một thiết kế của Formalie",
       "systemHint": "Chủ đề này thuộc Formalie và không thể thay đổi. Hãy nhân bản để tạo phiên bản của riêng bạn.",
-      "systemDesc": "Thiết kế của Formalie — chỉ đọc",
+      "systemDesc": "Thiết kế của Formalie (chỉ đọc)",
       "crumb": "Trình chỉnh sửa giao diện",
       "newTitle": "Giao diện mới",
       "untitled": "Giao diện chưa đặt tên",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Thêm cơ sở dữ liệu, kiểm tra và giữ an toàn thông tin xác thực.",
       "explorer": "Duyệt lược đồ, bảng và hàng, rồi xuất những gì bạn cần.",
-      "query": "Chạy SQL trên cơ sở dữ liệu của bạn — mặc định chỉ đọc, mọi lần chạy đều được ghi lại.",
+      "query": "Chạy SQL trên cơ sở dữ liệu của bạn. Mặc định chỉ đọc, mọi lần chạy đều được ghi lại.",
       "savedQueries": "Lưu và chia sẻ các truy vấn nhóm của bạn dùng nhiều nhất.",
       "destinations": "Chọn nơi mỗi biểu mẫu gửi phản hồi và ánh xạ trường với cột.",
       "transfers": "Nhập tệp vào bảng và xuất bảng hoặc kết quả truy vấn.",
@@ -2721,7 +2721,7 @@
     "example": "Một endpoint trông như thế nào (ví dụ)",
     "channels": {
       "title": "Thu thập dữ liệu từ mọi phía",
-      "hint": "Mỗi biểu mẫu có thể nhận câu trả lời qua liên kết, bản nhúng trên trang web của bạn và API riêng — tất cả đều về cùng một nơi.",
+      "hint": "Mỗi biểu mẫu có thể nhận câu trả lời qua liên kết, bản nhúng trên trang web của bạn và API riêng. Tất cả đều về cùng một nơi.",
       "link": "Liên kết chia sẻ",
       "embed": "Biểu mẫu nhúng",
       "api": "Endpoint API"
@@ -2734,7 +2734,7 @@
       "logs": "Mọi lượt gọi kèm trạng thái, thời gian xử lý và bên gọi.",
       "analytics": "Lượt gọi, lỗi và thời gian phản hồi theo dịch vụ và endpoint.",
       "docs": "Tài liệu sẵn có và nơi để thử từng endpoint.",
-      "webhooks": "Gửi từng phản hồi mới đến hệ thống của bạn ngay khi có — được ký và tự thử lại.",
+      "webhooks": "Gửi từng phản hồi mới đến hệ thống của bạn ngay khi có. Được ký và tự thử lại.",
       "apiKeys": "Khóa cho API của Formalie: quản lý biểu mẫu và phản hồi từ mã của bạn.",
       "apps": "Kết nối các ứng dụng như bảng tính và trò chuyện nhóm."
     }
@@ -2744,7 +2744,7 @@
     "back": "Tổng quan trợ lý AI",
     "promise": {
       "title": "Bạn luôn nắm quyền kiểm soát",
-      "review": "Trợ lý đề xuất — bạn xem xét và áp dụng.",
+      "review": "Trợ lý đề xuất, còn bạn xem xét và áp dụng.",
       "private": "Bạn chọn những gì trợ lý được đọc; dữ liệu cá nhân có thể được loại trừ.",
       "audit": "Mọi yêu cầu đều được ghi lại trong lịch sử và nhật ký kiểm tra."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Mở trong thẻ mới",
       "close": "Đóng",
       "loading": "Đang tải {host}…",
-      "slow": "Mất nhiều thời gian? Một số trang web không thể hiển thị bên trong trang khác — hãy mở trong thẻ mới.",
-      "safe": "Câu trả lời của bạn vẫn được giữ lại — đóng cửa sổ này để tiếp tục điền biểu mẫu.",
+      "slow": "Mất nhiều thời gian? Một số trang web không thể hiển thị bên trong trang khác. Hãy mở trong thẻ mới.",
+      "safe": "Câu trả lời của bạn vẫn được giữ lại. Đóng cửa sổ này để tiếp tục điền biểu mẫu.",
       "backToForm": "Quay lại biểu mẫu"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Đang kiểm tra…",
       "free": "Liên kết này còn trống",
       "taken": "Một biểu mẫu khác đã dùng liên kết này",
-      "reserved": "Từ này đã được dành riêng — hãy chọn từ khác",
+      "reserved": "Từ này đã được dành riêng. Hãy chọn từ khác",
       "invalid": "Dùng 3–60 chữ cái thường không dấu, chữ số và dấu gạch nối",
       "remove": "Xóa liên kết tùy chỉnh",
       "copy": "Sao chép liên kết",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Sau đó, liên kết sẽ báo biểu mẫu đã đủ.",
       "max": "Số câu trả lời tối đa",
       "used": "Đã dùng {n}/{max}",
-      "full": "Đã đạt giới hạn — biểu mẫu không nhận thêm câu trả lời.",
+      "full": "Đã đạt giới hạn. Biểu mẫu không nhận thêm câu trả lời.",
       "when": "Thời gian nhận câu trả lời",
       "always": "Luôn luôn (không có ngày bắt đầu hay kết thúc)",
       "from": "Từ {from}",
@@ -2935,7 +2935,7 @@
       "any": "Mọi trang web",
       "anyDesc": "Bất kỳ ai có mã nhúng đều có thể đặt biểu mẫu lên trang của họ.",
       "listed": "Chỉ các trang web bạn liệt kê",
-      "listedDesc": "Các trang web khác không thể hiển thị biểu mẫu — trình duyệt sẽ từ chối.",
+      "listedDesc": "Các trang web khác không thể hiển thị biểu mẫu vì trình duyệt sẽ từ chối.",
       "sites": "Trang web được phép",
       "sitesHint": "Nhập hoặc dán địa chỉ, rồi nhấn Enter. *.example.com bao gồm cả các trang con. Tối đa {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Cách các liên kết của biểu mẫu hoạt động",
-      "desc": "Biểu mẫu của bạn có thể có tối đa ba liên kết. Tất cả đều mở cùng một biểu mẫu — hãy dùng liên kết phù hợp nhất với nơi bạn chia sẻ.",
+      "desc": "Biểu mẫu của bạn có thể có tối đa ba liên kết. Tất cả đều mở cùng một biểu mẫu. Hãy dùng liên kết phù hợp nhất với nơi bạn chia sẻ.",
       "always": "Luôn bật",
       "on": "Đang bật",
       "off": "Chưa thiết lập",
       "original": {
         "name": "Liên kết gốc",
-        "for": "Được tạo cùng biểu mẫu. Không bao giờ thay đổi và luôn hoạt động — kể cả sau khi bạn thêm liên kết tùy chỉnh hoặc liên kết rút gọn."
+        "for": "Được tạo cùng biểu mẫu. Không bao giờ thay đổi và luôn hoạt động, kể cả sau khi bạn thêm liên kết tùy chỉnh hoặc liên kết rút gọn."
       },
       "custom": {
         "name": "Liên kết tùy chỉnh",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Áp phích hoặc mã QR dùng liên kết rút gọn",
-          "then": "liên kết vẫn hoạt động dù bạn làm gì với liên kết tùy chỉnh. Xóa liên kết rút gọn sẽ vô hiệu hóa nó vĩnh viễn — mã của nó không bao giờ được cấp cho biểu mẫu khác."
+          "then": "liên kết vẫn hoạt động dù bạn làm gì với liên kết tùy chỉnh. Xóa liên kết rút gọn sẽ vô hiệu hóa nó vĩnh viễn, và mã của nó không bao giờ được cấp cho biểu mẫu khác."
         },
         "closed": {
           "when": "Biểu mẫu đã đóng, đã đủ, đã hết hạn hoặc được bảo vệ",
-          "then": "mọi liên kết đều hiển thị cùng một thông báo hoặc màn hình mật khẩu — không liên kết nào vượt qua được."
+          "then": "mọi liên kết đều hiển thị cùng một thông báo hoặc màn hình mật khẩu. Không liên kết nào vượt qua được."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Mô tả",
       "descriptionPlaceholder": "Một câu về mục đích của biểu mẫu",
       "image": "Hình ảnh",
-      "imageHint": "Hiển thị ở đầu thẻ liên kết. PNG, JPEG hoặc WebP, tối đa 5 MB — tốt nhất là 1200 × 630 px.",
+      "imageHint": "Hiển thị ở đầu thẻ liên kết. PNG, JPEG hoặc WebP, tối đa 5 MB. Tốt nhất là 1200 × 630 px.",
       "imageRule": "Hãy dùng ảnh PNG, JPEG hoặc WebP tối đa 5 MB.",
       "upload": "Tải ảnh lên",
       "replace": "Thay thế",
@@ -3005,20 +3005,20 @@
       "asCard": "Thẻ liên kết",
       "asSearch": "Kết quả tìm kiếm",
       "noImage": "Không có ảnh",
-      "hiddenFromSearch": "Đã ẩn khỏi công cụ tìm kiếm — biểu mẫu này sẽ không xuất hiện trong kết quả tìm kiếm."
+      "hiddenFromSearch": "Đã ẩn khỏi công cụ tìm kiếm. Biểu mẫu này sẽ không xuất hiện trong kết quả tìm kiếm."
     },
     "invite": {
       "title": "Lời mời",
       "counts": "{responded}/{total} đã trả lời",
-      "saveFirst": "Lưu “Chỉ người được mời” để lời mời có hiệu lực — cho đến lúc đó biểu mẫu vẫn mở như trước.",
+      "saveFirst": "Lưu “Chỉ người được mời” để lời mời có hiệu lực. Cho đến lúc đó biểu mẫu vẫn mở như trước.",
       "add": "Mời mọi người",
-      "addHint": "Chỉ địa chỉ email. Phân cách bằng dấu phẩy, dấu cách hoặc xuống dòng — hoặc dán một danh sách.",
+      "addHint": "Chỉ địa chỉ email. Phân cách bằng dấu phẩy, dấu cách hoặc xuống dòng, hoặc dán một danh sách.",
       "placeholder": "ten{'@'}example.org",
       "button": "Mời {n} người | Mời {n} người",
       "buttonEmpty": "Mời",
       "sent": "Đã gửi {n} lời mời | Đã gửi {n} lời mời",
       "skipped": "{n} người đã được mời trước đó | {n} người đã được mời trước đó",
-      "devLinks": "Liên kết riêng — sẽ được gửi qua email cho từng người khi Formalie hoạt động chính thức; hiển thị ở đây trong lúc phát triển:",
+      "devLinks": "Liên kết riêng. Sẽ được gửi qua email cho từng người khi Formalie hoạt động chính thức; hiển thị ở đây trong lúc phát triển:",
       "none": "Chưa mời ai.",
       "resent": "Đã gửi liên kết mới đến {email}",
       "resend": "Gửi liên kết mới",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Những người có quyền truy cập",
-      "desc": "Chỉ nhân viên trong không gian làm việc — không thay đổi ai có thể điền biểu mẫu.",
+      "desc": "Chỉ nhân viên trong không gian làm việc. Không thay đổi ai có thể điền biểu mẫu.",
       "team": "Mọi người khác trong không gian làm việc",
       "teamDesc": "Áp dụng cho những người không có trong danh sách bên dưới.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Thêm người…",
       "levelFor": "Quyền truy cập của {name}",
       "remove": "Xóa {name}",
-      "note": "Quyền riêng của một người sẽ thay thế mặc định của không gian làm việc đối với người đó — dù nhiều hơn hay ít hơn. Quản trị viên không gian làm việc và chủ sở hữu biểu mẫu luôn có toàn quyền.",
+      "note": "Quyền riêng của một người sẽ thay thế mặc định của không gian làm việc đối với người đó, dù nhiều hơn hay ít hơn. Quản trị viên không gian làm việc và chủ sở hữu biểu mẫu luôn có toàn quyền.",
       "viewOnly": "Chỉ xem",
-      "viewOnlyDesc": "Bạn có thể xem biểu mẫu này và cài đặt của nó. Thay đổi sẽ không được lưu — hãy đề nghị chủ sở hữu biểu mẫu cấp quyền chỉnh sửa.",
+      "viewOnlyDesc": "Bạn có thể xem biểu mẫu này và cài đặt của nó. Thay đổi sẽ không được lưu. Hãy đề nghị chủ sở hữu biểu mẫu cấp quyền chỉnh sửa.",
       "responsesOnly": "Bạn chỉ có thể xem câu trả lời của biểu mẫu này",
       "responsesOnlyDesc": "Câu hỏi và thiết kế không được chia sẻ với bạn. Hãy liên hệ chủ sở hữu biểu mẫu nếu bạn cần thêm quyền.",
       "viewForm": "Xem"
     },
     "section": {
       "answering": "Trả lời biểu mẫu",
-      "answeringDesc": "Ai có thể điền và cách họ mở biểu mẫu — áp dụng cho mọi người bạn gửi biểu mẫu.",
+      "answeringDesc": "Ai có thể điền và cách họ mở biểu mẫu. Áp dụng cho mọi người bạn gửi biểu mẫu.",
       "team": "Nhóm của bạn",
       "teamDesc": "Nhân viên trong không gian làm việc tạo và quản lý biểu mẫu này. Điều này không thay đổi ai có thể điền."
     }

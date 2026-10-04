@@ -1,7 +1,7 @@
 <!--
   Sign-in / sign-up / OTP / recovery. lg+: inset dark showcase (AuthShowcase) | form column.
   Phones: brand bar + form. Language + theme always top-right; slim footer at the bottom.
-  Monochrome, Manrope, clean dark text — same language as the portal (docs/design).
+  Monochrome, Manrope, clean dark text, same language as the portal (docs/design).
 -->
 <script setup lang="ts">
 const { t } = useI18n()

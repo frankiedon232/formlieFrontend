@@ -1611,7 +1611,7 @@
     "unpublished": "Cambios sin publicar",
     "save": {
       "saving": "Guardando…",
-      "error": "No se guardó — sigue editando para reintentar",
+      "error": "No se guardó. Sigue editando para reintentar",
       "conflict": "Cambiado en otro lugar",
       "saved": "Guardado {time}",
       "upToDate": "Todo guardado",
@@ -1711,7 +1711,7 @@
       "minChoices": "Mín. opciones",
       "maxChoices": "Máx. opciones",
       "accept": "Tipos de archivo permitidos",
-      "acceptHint": "Separados por comas, p. ej. .pdf,.docx,image/* — vacío permite cualquiera.",
+      "acceptHint": "Separados por comas, p. ej. .pdf,.docx,image/*. Si lo dejas vacío, se permite cualquiera.",
       "maxFiles": "Máx. archivos",
       "maxSize": "Tamaño máx. (MB)",
       "minAboveMax": "El mínimo supera el máximo.",
@@ -1782,9 +1782,9 @@
       "readonly": "Solo lectura",
       "disabled": "Desactivado",
       "editableHint": "Quienes responden pueden rellenarlo.",
-      "readonlyHint": "Se muestra y se envía con la respuesta, pero no se puede cambiar — p. ej. una referencia rellenada de antemano.",
+      "readonlyHint": "Se muestra y se envía con la respuesta, pero no se puede cambiar (p. ej. una referencia rellenada de antemano).",
       "disabledHint": "Se muestra atenuado y no se envía con la respuesta.",
-      "noRequired": "Los campos de solo lectura y desactivados no pueden ser obligatorios — nadie podría rellenarlos."
+      "noRequired": "Los campos de solo lectura y desactivados no pueden ser obligatorios, porque nadie podría rellenarlos."
     },
     "labels": {
       "title": "Posición de la etiqueta",
@@ -1834,7 +1834,7 @@
     "blocks": {
       "appearance": "Apariencia",
       "sectionPlaceholder": "Título de la sección",
-      "descriptionPlaceholder": "Añade una descripción (opcional) — doble clic para editar",
+      "descriptionPlaceholder": "Añade una descripción (opcional). Doble clic para editar",
       "paragraphPlaceholder": "Escribe un texto…",
       "paragraphHint": "Haz clic en el párrafo del lienzo para escribir. Selecciona texto para negrita, enlaces, listas y alineación.",
       "size": "Tamaño",
@@ -1867,7 +1867,7 @@
       "caption": "Pie de imagen",
       "imageWidth": "Tamaño de la imagen",
       "href": "Enlace al hacer clic",
-      "hrefHint": "Opcional — se abre en una pestaña nueva.",
+      "hrefHint": "Opcional. Se abre en una pestaña nueva.",
       "rounded": "Esquinas redondeadas",
       "fill": "Rellenar",
       "height": "Altura",
@@ -2073,7 +2073,7 @@
       "notAdded": "Archivo no añadido",
       "wrongType": "Tipo de archivo incorrecto: {files}. Elige uno de los tipos permitidos.",
       "tooBig": "Demasiado grande (más de {mb} MB): {files}",
-      "tooMany": "Solo se permiten {max} archivos — {n} archivo no se añadió. | Solo se permiten {max} archivos — {n} archivos no se añadieron.",
+      "tooMany": "Solo se permiten {max} archivos. {n} archivo no se añadió. | Solo se permiten {max} archivos. {n} archivos no se añadieron.",
       "limits": "Hasta {max} archivos, {mb} MB cada uno",
       "count": "{n} de {max}",
       "addMore": "Añadir más",
@@ -2125,10 +2125,10 @@
       "auto": "Tus respuestas se guardan mientras avanzas",
       "saving": "Guardando…",
       "saved": "Guardado {when}",
-      "notSaved": "No se guardó — revisa tu conexión",
+      "notSaved": "No se guardó. Revisa tu conexión",
       "later": "Guardar y continuar más tarde",
       "title": "Continuar más tarde",
-      "desc": "Te enviaremos un enlace personal que recupera tus respuestas — en cualquier dispositivo, durante 30 días.",
+      "desc": "Te enviaremos un enlace personal que recupera tus respuestas en cualquier dispositivo durante 30 días.",
       "email": "Tu correo electrónico",
       "emailHint": "El enlace solo se envía a esta dirección. Guárdalo en privado: cualquiera que lo tenga puede continuar tu formulario.",
       "send": "Enviar mi enlace",
@@ -2282,7 +2282,7 @@
       "empty": "Añade una fórmula",
       "unknown": "Ningún campo usa la clave «{key}»",
       "self": "Un campo no puede usarse a sí mismo",
-      "syntax": "Esta fórmula no está completa — revisa paréntesis, comas y operadores",
+      "syntax": "Esta fórmula no está completa. Revisa paréntesis, comas y operadores",
       "functions": "Funciones:",
       "choiceScored": "Cuenta como el número de la opción elegida",
       "choiceUnscored": "Numera sus opciones (ajustes del campo → Opciones) para usarlo en sumas",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Comprobar estas respuestas",
     "thenTitle": "Después, hacer esto",
     "ifHelp": "Elige una pregunta, cómo compararla y la respuesta que debe activar la regla.",
-    "thenHelp": "Elige qué ocurre cuando las respuestas coinciden — y en qué pregunta o página.",
+    "thenHelp": "Elige qué ocurre cuando las respuestas coinciden y en qué pregunta o página.",
     "matchLead": "Ejecutar la regla cuando",
     "andChip": "y",
     "orChip": "o",
@@ -2410,7 +2410,7 @@
     "deleteList": "Eliminar lista",
     "deleteListTitle": "¿Eliminar la lista “{name}”?",
     "deleteListDesc": "Los campos que ya la usan conservan sus opciones.",
-    "listDesc": "Opciones reutilizables para cualquier campo de opciones — países, regiones, productos, equipos …",
+    "listDesc": "Opciones reutilizables para cualquier campo de opciones: países, regiones, productos, equipos …",
     "listName": "Nombre",
     "listNamePlaceholder": "p. ej. Regiones",
     "listOptions": "Opciones",
@@ -2426,7 +2426,7 @@
     "useList": "Rellenar desde una lista…",
     "saveAsList": "Guardar como lista",
     "toast": {
-      "fieldSaved": "“{name}” guardado — está en Guardados",
+      "fieldSaved": "“{name}” guardado. Está en Guardados",
       "fieldRemoved": "“{name}” quitado de los campos guardados",
       "listCreated": "Lista “{name}” creada",
       "listUpdated": "Lista “{name}” actualizada",
@@ -2636,7 +2636,7 @@
     "updateExisting": "Actualizar «{name}»",
     "saveNew": "Guardar como tema nuevo",
     "name": "Nombre",
-    "namePlaceholder": "p. ej., Marca — claro",
+    "namePlaceholder": "p. ej., Marca (claro)",
     "renameTitle": "Cambiar nombre del tema",
     "rename": "Cambiar nombre",
     "duplicate": "Duplicar",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Cómo funcionan los enlaces de su formulario",
-      "desc": "Su formulario puede tener hasta tres enlaces. Todos abren el mismo formulario — use el que mejor se adapte al lugar donde lo comparta.",
+      "desc": "Su formulario puede tener hasta tres enlaces. Todos abren el mismo formulario. Use el que mejor se adapte al lugar donde lo comparta.",
       "always": "Siempre activo",
       "on": "Activo",
       "off": "Sin definir",
       "original": {
         "name": "Enlace original",
-        "for": "Se crea con el formulario. Nunca cambia y siempre funciona — incluso después de añadir un enlace personalizado o un enlace corto."
+        "for": "Se crea con el formulario. Nunca cambia y siempre funciona, incluso después de añadir un enlace personalizado o un enlace corto."
       },
       "custom": {
         "name": "Enlace personalizado",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Un cartel o código QR usa el enlace corto",
-          "then": "sigue funcionando haga lo que haga con el enlace personalizado. Eliminar el enlace corto lo desactiva para siempre — su código nunca se asigna a otro formulario."
+          "then": "sigue funcionando haga lo que haga con el enlace personalizado. Eliminar el enlace corto lo desactiva para siempre, y su código nunca se asigna a otro formulario."
         },
         "closed": {
           "when": "El formulario está cerrado, completo, caducado o protegido",
-          "then": "todos los enlaces muestran el mismo mensaje o la misma pantalla de contraseña — ningún enlace lo evita."
+          "then": "todos los enlaces muestran el mismo mensaje o la misma pantalla de contraseña. Ningún enlace lo evita."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Descripción",
       "descriptionPlaceholder": "Una frase sobre la finalidad del formulario",
       "image": "Imagen",
-      "imageHint": "Se muestra en la parte superior de la tarjeta del enlace. PNG, JPEG o WebP, hasta 5 MB — lo ideal es 1200 × 630 px.",
+      "imageHint": "Se muestra en la parte superior de la tarjeta del enlace. PNG, JPEG o WebP, hasta 5 MB. Lo ideal es 1200 × 630 px.",
       "imageRule": "Use una imagen PNG, JPEG o WebP de hasta 5 MB.",
       "upload": "Subir imagen",
       "replace": "Reemplazar",
@@ -3005,7 +3005,7 @@
       "asCard": "Tarjeta del enlace",
       "asSearch": "Resultado de búsqueda",
       "noImage": "Sin imagen",
-      "hiddenFromSearch": "Oculto a los motores de búsqueda — este formulario no aparecerá en los resultados de búsqueda."
+      "hiddenFromSearch": "Oculto a los motores de búsqueda. Este formulario no aparecerá en los resultados de búsqueda."
     },
     "invite": {
       "title": "Invitaciones",

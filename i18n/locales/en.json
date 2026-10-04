@@ -72,7 +72,7 @@
       "moved": "Form moved",
       "tagsSaved": "Tags saved",
       "duplicated": "Copy created",
-      "unpublish": "Form unpublished — its link no longer works",
+      "unpublish": "Form unpublished. Its link no longer works",
       "close": "Form closed to new responses",
       "reopen": "Form reopened",
       "archive": "Form archived",
@@ -119,7 +119,7 @@
       "count": "{count} form | {count} forms",
       "empty": "No folders yet. Create one below.",
       "viewForms": "Show the forms in {name}",
-      "notEmpty": "Move its forms to another folder first — then it can be deleted.",
+      "notEmpty": "Move its forms to another folder first. Then it can be deleted.",
       "deleteEmpty": "The folder is empty, so no form is affected."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "You can change both later.",
       "pickFile": "Choose a file to import first.",
       "blankTitle": "Start from scratch",
-      "blankDesc": "An empty form with one page — add the questions you need, in the order you want.",
+      "blankDesc": "An empty form with one page. Add the questions you need, in the order you want.",
       "previewAdd": "Add your first question",
       "points": {
         "fieldsTitle": "More than 30 field types",
@@ -190,7 +190,7 @@
     "filterTemplate": "Template",
     "overview": {
       "subtitle": "{status} · updated {updated}",
-      "trendTitle": "Responses — last 30 days",
+      "trendTitle": "Responses in the last 30 days",
       "trendDesc": "Submissions per day",
       "trendAria": "Responses per day for the last 30 days, {total} in total",
       "responsesCount": "{count} response | {count} responses",
@@ -229,15 +229,15 @@
       "design": "Design",
       "versions": "Versions",
       "allVersions": "All versions",
-      "noVersions": "Not published yet — versions appear when you publish.",
+      "noVersions": "Not published yet. Versions appear when you publish.",
       "detailsTitle": "Details",
       "tags": "Tags",
-      "noHistory": "Published before version history was kept — the next publish starts it.",
+      "noHistory": "Published before version history was kept. The next publish starts it.",
       "embedCode": "Embed code"
     },
     "qr": {
       "title": "QR code",
-      "desc": "Print it or put it on screens — scanning opens the form.",
+      "desc": "Print it or put it on screens. Scanning opens the form.",
       "accent": "Form colour",
       "black": "Black",
       "colour": "Colour",
@@ -252,7 +252,7 @@
       "plain": "Plain",
       "brandedOrg": "Your organisation's name and logo with the form name; Formalie in the footer.",
       "brandedFormalie": "Formalie branding with the form name.",
-      "plainHint": "Just the code — for small spaces.",
+      "plainHint": "Just the code, for small spaces.",
       "brand": "Brand colour",
       "custom": "Any colour",
       "scan": "Scan to open",
@@ -270,9 +270,9 @@
       "title": "When this form takes responses",
       "desc": "Leave both empty to keep it open. After the end, the link says the form has expired; before the start, it says when it opens.",
       "opensAt": "Open from",
-      "opensAtHint": "Optional — before this, the link shows when the form opens.",
+      "opensAtHint": "Optional. Before this, the link shows when the form opens.",
       "closesAt": "Open until",
-      "closesAtHint": "Optional — after this, no more responses; the link says the form has expired.",
+      "closesAtHint": "Optional. After this, no more responses; the link says the form has expired.",
       "preset": {
         "week": "1 week",
         "twoWeeks": "2 weeks",
@@ -281,16 +281,16 @@
         "noEnd": "No end date"
       },
       "endBeforeStart": "Choose an end after the start.",
-      "pastWarning": "This end date has already passed — the form stops taking responses as soon as you save.",
+      "pastWarning": "This end date has already passed. The form stops taking responses as soon as you save.",
       "saved": "Availability saved"
     },
     "embed": {
       "title": "Embed on your website",
       "desc": "Paste this code into a page of your website where the form should appear.",
-      "notLive": "The form isn’t published yet — the embed shows it once it is live.",
+      "notLive": "The form isn’t published yet. The embed shows it once it is live.",
       "height": "Height",
       "auto": "Auto height (recommended)",
-      "autoDesc": "The frame grows and shrinks with the form — no inner scroll bar.",
+      "autoDesc": "The frame grows and shrinks with the form, so there’s no inner scroll bar.",
       "fixed": "Fixed height",
       "fixedDesc": "Always the same height; the form scrolls inside the frame.",
       "pixels": "Height in pixels",
@@ -542,8 +542,8 @@
     "label": "Footer"
   },
   "authLayout": {
-    "headline": "Forms, data and access — under your control.",
-    "subline": "A secure, flexible platform to build any form, collect and manage data, connect your systems and control who sees what — for organisations of any size, anywhere in the world.",
+    "headline": "Forms, data and access, under your control.",
+    "subline": "A secure, flexible platform to build any form, collect and manage data, connect your systems and control who sees what. For organisations of any size, anywhere in the world.",
     "badgeEncrypted": "End-to-end encrypted",
     "badgeCompliance": "Privacy & compliance controls",
     "badgeDatabase": "{count}+ databases or secure storage",
@@ -651,7 +651,7 @@
       "available": "Available",
       "unavailable": {
         "taken": "Already taken",
-        "reserved": "Reserved — choose another",
+        "reserved": "Reserved, choose another",
         "invalid": "Not a valid address"
       },
       "subdomainHelp": "Your team signs in here. You can add a custom domain later.",
@@ -685,7 +685,7 @@
     "workspace": "Workspace"
   },
   "audit": {
-    "description": "Every action in your workspace — who, what, when and where.",
+    "description": "Every action in your workspace: who, what, when and where.",
     "security": "Security events",
     "searchPlaceholder": "Search people, items, IP addresses…",
     "emptyTitle": "Nothing recorded yet",
@@ -891,7 +891,7 @@
     "menu": "Workspace setup",
     "settingsCard": {
       "title": "Workspace setup",
-      "desc": "Company details, branding, regional settings, team and a first form — revisit any step.",
+      "desc": "Company details, branding, regional settings, team and a first form. Revisit any step.",
       "open": "Open"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Admin",
       "owner": "Owner",
       "invalid": "Enter a valid email address.",
-      "self": "That's you — you're already in.",
+      "self": "That's you. You're already in.",
       "duplicate": "This email is already in the list.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "Email {n}",
@@ -1033,7 +1033,7 @@
         "name": "Incident report"
       }
     },
-    "subtitle": "Start from a ready form — every template has its own design, and you can change anything before publishing",
+    "subtitle": "Start from a ready form. Every template has its own design, and you can change anything before publishing",
     "blank": "Blank form",
     "all": "All",
     "search": "Search templates…",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "No templates match",
     "emptyDesc": "Try another category or search, or clear the filters.",
     "useTitle": "Use template",
-    "useDesc": "Your new form opens in the builder — change any question, rule, calculation or the design before publishing.",
+    "useDesc": "Your new form opens in the builder. Change any question, rule, calculation or the design before publishing.",
     "saveAs": "Save as template",
     "saveTitle": "Save as template",
     "saveDesc": "The questions, logic, calculations and design become a template for your workspace. Responses are never included.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Customer Feedback",
-        "description": "Hear what customers think of your service — with a follow-up when someone is unhappy."
+        "description": "Hear what customers think of your service, with a follow-up when someone is unhappy."
       },
       "csat_nps": {
         "name": "Customer Satisfaction (CSAT / NPS) Survey",
-        "description": "Measure satisfaction (CSAT), effort and loyalty (NPS) — each answer is grouped as promoter, passive or detractor."
+        "description": "Measure satisfaction (CSAT), effort and loyalty (NPS). Each answer is grouped as promoter, passive or detractor."
       },
       "product_review": {
         "name": "Product Review",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Employee Engagement Survey",
-        "description": "An anonymous pulse on pride, purpose, growth and support — with an engagement index from 0 to 100."
+        "description": "An anonymous pulse on pride, purpose, growth and support, with an engagement index from 0 to 100."
       },
       "expense_reimbursement": {
         "name": "Expense Reimbursement",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Training Feedback",
-        "description": "Rate the content, trainer, materials and relevance of a course — with an average score."
+        "description": "Rate the content, trainer, materials and relevance of a course, with an average score."
       },
       "reference_check": {
         "name": "Reference Check",
@@ -1220,11 +1220,11 @@
       },
       "incident_report": {
         "name": "Incident / Accident Report",
-        "description": "Record what happened, who was hurt and the first actions taken — serious incidents are flagged for urgent review."
+        "description": "Record what happened, who was hurt and the first actions taken. Serious incidents are flagged for urgent review."
       },
       "near_miss_report": {
         "name": "Near-Miss Report",
-        "description": "Report close calls quickly — potential severity and recurrence give a priority so prevention comes first."
+        "description": "Report close calls quickly. Potential severity and recurrence give a priority so prevention comes first."
       },
       "safety_inspection": {
         "name": "Safety Inspection Checklist",
@@ -1236,7 +1236,7 @@
       },
       "medical_history": {
         "name": "Medical History",
-        "description": "Conditions, operations, medicines, family history and lifestyle — with a count of conditions for the clinician."
+        "description": "Conditions, operations, medicines, family history and lifestyle, with a count of conditions for the clinician."
       },
       "health_screening": {
         "name": "Health Screening / Declaration",
@@ -1264,7 +1264,7 @@
       },
       "volunteer_signup": {
         "name": "Volunteer Signup",
-        "description": "Collect volunteers, their interests and availability — with guardian consent for under-18s."
+        "description": "Collect volunteers, their interests and availability, with guardian consent for under-18s."
       },
       "speaker_sponsor_application": {
         "name": "Speaker / Sponsor Application",
@@ -1292,7 +1292,7 @@
       },
       "special_requirements": {
         "name": "Special Requirements Form",
-        "description": "Dietary and access needs, allergies and celebrations — so the stay is ready before arrival."
+        "description": "Dietary and access needs, allergies and celebrations, so the stay is ready before arrival."
       },
       "event_catering_request": {
         "name": "Event Catering Request",
@@ -1300,7 +1300,7 @@
       },
       "restaurant_reservation": {
         "name": "Restaurant Reservation Request",
-        "description": "Date, time, party size, seating and the occasion — everything the host needs."
+        "description": "Date, time, party size, seating and the occasion: everything the host needs."
       },
       "hospitality_complaint": {
         "name": "Hospitality Complaint Form",
@@ -1320,7 +1320,7 @@
       },
       "scholarship_application": {
         "name": "Scholarship Application",
-        "description": "Academic record, financial need and a personal statement — with an eligibility score for the panel."
+        "description": "Academic record, financial need and a personal statement, with an eligibility score for the panel."
       },
       "permission_slip": {
         "name": "Parent Consent / Permission Slip",
@@ -1364,7 +1364,7 @@
       },
       "proof_of_delivery": {
         "name": "Delivery Confirmation / Proof of Delivery",
-        "description": "Confirm what arrived, its condition, a photo and the receiver’s signature — damage asks for details."
+        "description": "Confirm what arrived, its condition, a photo and the receiver’s signature. Damage asks for details."
       },
       "quality_control": {
         "name": "Quality Control Checklist",
@@ -1388,7 +1388,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Agreement Sign-off",
-        "description": "Show the agreement, confirm each key point and sign — with company details when signing for one."
+        "description": "Show the agreement, confirm each key point and sign, with company details when signing for one."
       },
       "membership_application": {
         "name": "Membership Application",
@@ -1416,7 +1416,7 @@
       },
       "rental_application": {
         "name": "Rental Application",
-        "description": "A shorter application for a specific listing — move-in date, term, household and affordability."
+        "description": "A shorter application for a specific listing: move-in date, term, household and affordability."
       },
       "property_inspection": {
         "name": "Property Inspection",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Lead Capture",
-        "description": "Name, company, size and interest — short enough for a landing page, with the source tracked."
+        "description": "Name, company, size and interest. Short enough for a landing page, with the source tracked."
       },
       "sales_quote_request": {
         "name": "Quote Request",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Sales Follow-up",
-        "description": "Log a call or meeting: outcome, deal stage, next step and its date — quick enough for phones."
+        "description": "Log a call or meeting: outcome, deal stage, next step and its date. Quick enough for phones."
       }
     },
     "openGallery": "Open the full gallery",
@@ -1481,7 +1481,7 @@
       "browse": "Browse templates"
     },
     "categoryPage": {
-      "subtitle": "Formalie templates in this category — each with its own design, ready to use"
+      "subtitle": "Formalie templates in this category, each with its own design and ready to use"
     },
     "mine": {
       "subtitle": "Templates your workspace saved from its own forms or copied from Formalie’s",
@@ -1619,7 +1619,7 @@
     "unpublished": "Changes not published",
     "save": {
       "saving": "Saving…",
-      "error": "Couldn't save — keep editing to retry",
+      "error": "Couldn't save. Keep editing to retry",
       "conflict": "Changed elsewhere",
       "saved": "Saved {time}",
       "upToDate": "All changes saved",
@@ -1635,7 +1635,7 @@
       "tablet": "Tablet",
       "phone": "Phone",
       "device": "Device",
-      "nothingSent": "This was a preview — nothing was sent.",
+      "nothingSent": "This was a preview. Nothing was sent.",
       "restart": "Start again"
     },
     "publish": {
@@ -1650,7 +1650,7 @@
       "submit": "Publish",
       "submitAgain": "Publish changes",
       "issues": "Fix {count} thing before publishing | Fix {count} things before publishing",
-      "done": "Published — version {n} is live"
+      "done": "Published. Version {n} is live"
     },
     "issue": {
       "no_inputs": "Add at least one question",
@@ -1719,7 +1719,7 @@
       "minChoices": "Min. choices",
       "maxChoices": "Max. choices",
       "accept": "Allowed file types",
-      "acceptHint": "Comma-separated, e.g. .pdf,.docx,image/* — empty allows any.",
+      "acceptHint": "Comma-separated, e.g. .pdf,.docx,image/*. Empty allows any.",
       "maxFiles": "Max. files",
       "maxSize": "Max. size (MB)",
       "minAboveMax": "The minimum is above the maximum.",
@@ -1782,9 +1782,9 @@
       "readonly": "Read-only",
       "disabled": "Disabled",
       "editableHint": "Respondents can fill this in.",
-      "readonlyHint": "Shown and sent with the response, but can’t be changed — e.g. a prefilled reference.",
+      "readonlyHint": "Shown and sent with the response, but can’t be changed (e.g. a prefilled reference).",
       "disabledHint": "Shown greyed out and not sent with the response.",
-      "noRequired": "Read-only and disabled fields can’t be required — nobody could fill them in."
+      "noRequired": "Read-only and disabled fields can’t be required, because nobody could fill them in."
     },
     "labels": {
       "title": "Label position",
@@ -1828,13 +1828,13 @@
       "label": "Form builder, full screen"
     },
     "drop": {
-      "newRow": "Drop here — new row",
-      "beside": "Drop here — beside"
+      "newRow": "Drop here: new row",
+      "beside": "Drop here: beside"
     },
     "blocks": {
       "appearance": "Appearance",
       "sectionPlaceholder": "Section title",
-      "descriptionPlaceholder": "Add a description (optional) — double-click to edit",
+      "descriptionPlaceholder": "Add a description (optional). Double-click to edit",
       "paragraphPlaceholder": "Write some text…",
       "paragraphHint": "Click the paragraph on the canvas to write. Select text for bold, links, lists and alignment.",
       "size": "Size",
@@ -1867,7 +1867,7 @@
       "caption": "Caption",
       "imageWidth": "Image size",
       "href": "Link when clicked",
-      "hrefHint": "Optional — opens in a new tab.",
+      "hrefHint": "Optional. Opens in a new tab.",
       "rounded": "Rounded corners",
       "fill": "Fill",
       "height": "Height",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Choose from the list…",
       "selected": "Only the {n} selected can see and fill this field.",
-      "noRequired": "Restricted fields can't be required — people the field isn't meant for must still be able to submit. Their answers are shown only to the same people."
+      "noRequired": "Restricted fields can't be required. People the field isn't meant for must still be able to submit. Their answers are shown only to the same people."
     },
     "language": {
       "title": "Form language",
       "hint": "Buttons, messages and dates follow this language, and text that came from a template is translated with it. Text you wrote yourself stays as it is.",
       "translated": "{n} text translated | {n} texts translated",
-      "kept": "{n} text you wrote stays as it is — edit it in the form. | {n} texts you wrote stay as they are — edit them in the form.",
+      "kept": "{n} text you wrote stays as it is. Edit it in the form. | {n} texts you wrote stay as they are. Edit them in the form.",
       "changed": "Form language: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Update template",
       "updatedToast": "Template “{name}” updated with this form's latest changes",
       "saveNew": "Save as a new template instead",
-      "saveNewHint": "Makes a separate copy — the existing template stays as it is."
+      "saveNewHint": "Makes a separate copy. The existing template stays as it is."
     },
     "identity": {
       "title": "Recognise respondents",
-      "hint": "How Formalie tells people apart, so one person can’t respond twice — and someone else is never mistaken for them.",
+      "hint": "How Formalie tells people apart, so one person can’t respond twice and someone else is never mistaken for them.",
       "email": "Respondent’s own email",
-      "emailHint": "The email of the person filling in — not a reference’s, manager’s or guardian’s. A second response with it is refused; a very similar one is checked.",
+      "emailHint": "The email of the person filling in, not a reference’s, manager’s or guardian’s. A second response with it is refused; a very similar one is checked.",
       "verify": "Verify the email before submitting",
-      "verifyHint": "Respondents enter a code sent to their email — one response per verified email.",
+      "verifyHint": "Respondents enter a code sent to their email. One response per verified email.",
       "suggested": "suggested",
       "off": "Off",
       "none": "Without the respondent’s email, Formalie can only recognise the same browser (people can use another device).",
-      "verifyLost": "Email verification is on, but the form no longer has the respondent’s email question — it’s paused until you choose one above.",
-      "verifyRequired": "The email question is required while verification is on — we need it to send the code."
+      "verifyLost": "Email verification is on, but the form no longer has the respondent’s email question. It’s paused until you choose one above.",
+      "verifyRequired": "The email question is required while verification is on. We need it to send the code."
     },
     "guide": {
       "title": "Help guide",
@@ -1937,7 +1937,7 @@
       "empty": "No guide yet",
       "untitled": "Untitled guide",
       "summary": "{title} · {n} word | {title} · {n} words",
-      "noContent": "Write the guide — the button only shows once there’s something in it.",
+      "noContent": "Write the guide. The button only shows once there’s something in it.",
       "editTitle": "Help guide",
       "editDesc": "Explain how to fill in this form: what to have ready, tricky questions, what happens next.",
       "titleLabel": "Title",
@@ -2030,14 +2030,14 @@
       "ip": "Enter a valid IP address for {field}.",
       "domain": "Enter a domain name for {field}, like example.org.",
       "mac": "Enter a MAC address for {field}, like 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} isn’t a valid IBAN — check the number.",
+      "iban": "{field} isn’t a valid IBAN. Check the number.",
       "bic": "Enter an 8- or 11-character SWIFT / BIC code for {field}.",
       "color": "Choose a colour for {field}.",
       "duration": "Enter a duration for {field} (minutes 0–59).",
       "name": "Enter both first and last name for {field}.",
       "consent": "Please confirm {field} to continue.",
       "choice": "Choose an option from the list for {field}.",
-      "file": "{field}: a file didn't finish uploading — remove it and add it again."
+      "file": "{field}: a file didn't finish uploading. Remove it and add it again."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "File not added",
       "wrongType": "Wrong file type: {files}. Choose one of the allowed types.",
       "tooBig": "Too large (over {mb} MB): {files}",
-      "tooMany": "Only {max} files are allowed — {n} file wasn't added. | Only {max} files are allowed — {n} files weren't added.",
+      "tooMany": "Only {max} files are allowed, so {n} file wasn't added. | Only {max} files are allowed, so {n} files weren't added.",
       "limits": "Up to {max} files, {mb} MB each",
       "count": "{n} of {max}",
       "addMore": "Add more",
@@ -2088,11 +2088,11 @@
       "close": "Close this page",
       "closeHint": "You can close this tab now.",
       "alreadyTitle": "You’ve already filled in this form",
-      "alreadyDesc": "Your response was received from this browser. Fill it in again only for another person — each person’s response is accepted once.",
+      "alreadyDesc": "Your response was received from this browser. Fill it in again only for another person. Each person’s response is accepted once.",
       "askTitle": "Is this for someone else?",
       "askDesc": "You’ve already sent a response from this browser.",
       "askPoint1": "Continue only if this response is for another person.",
-      "askPoint2": "The same person’s response — or the exact same answers — won’t be accepted twice.",
+      "askPoint2": "The same person’s response (or the exact same answers) won’t be accepted twice.",
       "confirm": "Yes, for someone else",
       "stay": "No, stay here",
       "duplicate": "These exact answers were already sent",
@@ -2105,8 +2105,8 @@
       "registeredField": "Already used for a response.",
       "possibleTitle": "Is this a different person?",
       "possibleDesc": "This looks like a response we already have ({email}, {date}).",
-      "possiblePoint1": "If you’re someone else, continue — the team will see both responses.",
-      "possiblePoint2": "If it’s you, check your answers instead — a second response from the same person won’t count.",
+      "possiblePoint1": "If you’re someone else, continue. The team will see both responses.",
+      "possiblePoint2": "If it’s you, check your answers instead. A second response from the same person won’t count.",
       "different": "Yes, I’m a different person",
       "review": "No, review my answers",
       "verifyTitle": "Confirm your email",
@@ -2125,10 +2125,10 @@
       "auto": "Your answers are saved as you go",
       "saving": "Saving…",
       "saved": "Saved {when}",
-      "notSaved": "Not saved — check your connection",
+      "notSaved": "Not saved. Check your connection",
       "later": "Save and continue later",
       "title": "Continue later",
-      "desc": "We’ll send you a personal link that brings back your answers — on any device, for 30 days.",
+      "desc": "We’ll send you a personal link that brings back your answers on any device, for 30 days.",
       "email": "Your email",
       "emailHint": "The link goes only to this address. Keep it private: anyone with it can continue your form.",
       "send": "Send my link",
@@ -2282,7 +2282,7 @@
       "empty": "Add a formula",
       "unknown": "No field uses the key “{key}”",
       "self": "A field can’t use itself",
-      "syntax": "This formula isn’t complete — check brackets, commas and operators",
+      "syntax": "This formula isn’t complete. Check brackets, commas and operators",
       "functions": "Functions:",
       "choiceScored": "Counts as the number of the chosen option",
       "choiceUnscored": "Give its options numbers (field settings → Options) to use it in sums",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Check these answers",
     "thenTitle": "Then do this",
     "ifHelp": "Pick a question, how to compare it, and the answer that should trigger the rule.",
-    "thenHelp": "Pick what happens when the answers match — and to which question or page.",
+    "thenHelp": "Pick what happens when the answers match, and to which question or page.",
     "matchLead": "Run the rule when",
     "andChip": "and",
     "orChip": "or",
@@ -2410,7 +2410,7 @@
     "deleteList": "Delete list",
     "deleteListTitle": "Delete the list “{name}”?",
     "deleteListDesc": "Fields that already use it keep their options.",
-    "listDesc": "Reusable options for any choice field — countries, regions, products, teams …",
+    "listDesc": "Reusable options for any choice field: countries, regions, products, teams …",
     "listName": "Name",
     "listNamePlaceholder": "e.g. Regions",
     "listOptions": "Options",
@@ -2426,7 +2426,7 @@
     "useList": "Fill from a list…",
     "saveAsList": "Save as list",
     "toast": {
-      "fieldSaved": "“{name}” saved — find it under Saved",
+      "fieldSaved": "“{name}” saved. Find it under Saved",
       "fieldRemoved": "“{name}” removed from saved fields",
       "listCreated": "List “{name}” created",
       "listUpdated": "List “{name}” updated",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "The form sits on a card in the middle of the page.",
-      "plain": "No card — the form sits right on the page background.",
+      "plain": "No card. The form sits right on the page background.",
       "split": "An image beside the form (above it on phones).",
       "full": "The form spans the whole page width."
     },
@@ -2546,7 +2546,7 @@
       "error": "Errors"
     },
     "colorInvalid": "Use a hex colour like #1a2b3c.",
-    "lowContrast": "Low contrast ({ratio} : 1) — may be hard to read.",
+    "lowContrast": "Low contrast ({ratio} : 1). May be hard to read.",
     "pickColor": "Pick a colour for {name}",
     "inputStyle": "Style",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Top bar with your logo and website, the form, and a footer.",
         "spotlight": "A brand-colour banner with the title and quick facts; the form rises into it.",
-        "side": "A branded panel beside the form — stacks on phones.",
+        "side": "A branded panel beside the form. Stacks on phones.",
         "minimal": "Just the form and a slim footer."
       },
       "tone": "Bar and panel colour",
@@ -2636,7 +2636,7 @@
     "updateExisting": "Update “{name}”",
     "saveNew": "Save as a new theme",
     "name": "Name",
-    "namePlaceholder": "e.g. Brand — light",
+    "namePlaceholder": "e.g. Brand light",
     "renameTitle": "Rename theme",
     "rename": "Rename",
     "duplicate": "Duplicate",
@@ -2694,7 +2694,7 @@
       "leave": "Leave",
       "systemTitle": "A Formalie design",
       "systemHint": "This theme is part of Formalie and can't be changed. Duplicate it to make your own version.",
-      "systemDesc": "Formalie design — read-only"
+      "systemDesc": "Formalie design (read-only)"
     },
     "view": "View",
     "open": "Open {name}"
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Add your databases, test them and keep their credentials safe.",
       "explorer": "Browse schemas, tables and rows, and export what you need.",
-      "query": "Run SQL on your databases — read-only by default, every run recorded.",
+      "query": "Run SQL on your databases. Read-only by default, every run recorded.",
       "savedQueries": "Keep and share the queries your team uses most.",
       "destinations": "Choose where each form sends its responses and match fields to columns.",
       "transfers": "Import files into tables and export tables or query results.",
@@ -2721,7 +2721,7 @@
     "example": "What an endpoint looks like (example)",
     "channels": {
       "title": "Collect data from every side",
-      "hint": "Each form can take answers through its link, an embed on your site and its own API — all landing in the same place.",
+      "hint": "Each form can take answers through its link, an embed on your site and its own API, all landing in the same place.",
       "link": "Shareable link",
       "embed": "Embedded form",
       "api": "API endpoints"
@@ -2734,7 +2734,7 @@
       "logs": "Every call with its status, time taken and caller.",
       "analytics": "Calls, errors and response times per service and endpoint.",
       "docs": "Ready-made documentation and a place to try each endpoint.",
-      "webhooks": "Send each new response to your own systems as it arrives — signed and retried.",
+      "webhooks": "Send each new response to your own systems as it arrives, signed and retried.",
       "apiKeys": "Keys for Formalie's own API: manage forms and responses from your code.",
       "apps": "Connect apps such as spreadsheets and team chat."
     }
@@ -2744,7 +2744,7 @@
     "back": "AI assistant overview",
     "promise": {
       "title": "You stay in control",
-      "review": "The assistant suggests — you review and apply.",
+      "review": "The assistant suggests. You review and apply.",
       "private": "You choose what it may read; personal data can be kept out.",
       "audit": "Every request is recorded in the history and the audit trail."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Open in a new tab",
       "close": "Close",
       "loading": "Loading {host}…",
-      "slow": "Taking a while? Some sites can’t be shown inside another page — open it in a new tab instead.",
-      "safe": "Your answers are kept — close this window to carry on with the form.",
+      "slow": "Taking a while? Some sites can’t be shown inside another page. Open it in a new tab instead.",
+      "safe": "Your answers are kept. Close this window to carry on with the form.",
       "backToForm": "Back to the form"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Checking…",
       "free": "This link is free",
       "taken": "Another form already uses this link",
-      "reserved": "This word is reserved — choose another",
+      "reserved": "This word is reserved. Choose another",
       "invalid": "Use 3–60 lower-case letters, numbers and hyphens",
       "remove": "Remove custom link",
       "copy": "Copy link",
@@ -2901,7 +2901,7 @@
       "limitDesc": "After that, the link says the form is full.",
       "max": "Maximum responses",
       "used": "{n} of {max} used",
-      "full": "The limit is reached — the form takes no more responses.",
+      "full": "The limit is reached. The form takes no more responses.",
       "when": "When it takes responses",
       "always": "Always (no start or end date)",
       "from": "From {from}",
@@ -2935,7 +2935,7 @@
       "any": "Any website",
       "anyDesc": "Anyone with the embed code can put the form on their site.",
       "listed": "Only websites you list",
-      "listedDesc": "Other websites can’t show the form — the browser refuses it.",
+      "listedDesc": "Other websites can’t show the form. The browser refuses it.",
       "sites": "Allowed websites",
       "sitesHint": "Type or paste addresses, then press Enter. *.example.com includes its sub-sites. Up to {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "How your form’s links work",
-      "desc": "Your form can have up to three links. They all open the same form — use whichever suits where you share it.",
+      "desc": "Your form can have up to three links. They all open the same form, so use whichever suits where you share it.",
       "always": "Always on",
       "on": "On",
       "off": "Not set",
       "original": {
         "name": "Original link",
-        "for": "Created with the form. It never changes and always works — even after you add a custom link or a short link."
+        "for": "Created with the form. It never changes and always works, even after you add a custom link or a short link."
       },
       "custom": {
         "name": "Custom link",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "A poster or QR code uses the short link",
-          "then": "it keeps working whatever you do with the custom link. Removing the short link stops it for good — its code is never given to another form."
+          "then": "it keeps working whatever you do with the custom link. Removing the short link stops it for good, and its code is never given to another form."
         },
         "closed": {
           "when": "The form is closed, full, expired or protected",
-          "then": "every link shows the same message or password screen — no link gets around it."
+          "then": "every link shows the same message or password screen. No link gets around it."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Description",
       "descriptionPlaceholder": "A sentence about what the form is for",
       "image": "Image",
-      "imageHint": "Shown at the top of the link card. PNG, JPEG or WebP, up to 5 MB — 1200 × 630 px works best.",
+      "imageHint": "Shown at the top of the link card. PNG, JPEG or WebP, up to 5 MB. 1200 × 630 px works best.",
       "imageRule": "Use a PNG, JPEG or WebP image of up to 5 MB.",
       "upload": "Upload image",
       "replace": "Replace",
@@ -3005,20 +3005,20 @@
       "asCard": "Link card",
       "asSearch": "Search result",
       "noImage": "No image",
-      "hiddenFromSearch": "Hidden from search engines — this form won’t appear in search results."
+      "hiddenFromSearch": "Hidden from search engines. This form won’t appear in search results."
     },
     "invite": {
       "title": "Invitations",
       "counts": "{responded} of {total} responded",
-      "saveFirst": "Save “Only invited people” for invitations to take effect — until then the form stays open as before.",
+      "saveFirst": "Save “Only invited people” for invitations to take effect. Until then the form stays open as before.",
       "add": "Invite people",
-      "addHint": "Email addresses only. Separate them with a comma, a space or a new line — or paste a list.",
+      "addHint": "Email addresses only. Separate them with a comma, a space or a new line, or paste a list.",
       "placeholder": "name{'@'}example.org",
       "button": "Invite {n} person | Invite {n} people",
       "buttonEmpty": "Invite",
       "sent": "{n} invitation sent | {n} invitations sent",
       "skipped": "{n} person was already invited | {n} people were already invited",
-      "devLinks": "Personal links — emailed to each person once Formalie is live; shown here while developing:",
+      "devLinks": "Personal links (emailed to each person once Formalie is live; shown here while developing):",
       "none": "No one invited yet.",
       "resent": "A new link was sent to {email}",
       "resend": "Send a new link",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "People with access",
-      "desc": "Only staff in your workspace — it doesn’t change who can fill in the form.",
+      "desc": "Only staff in your workspace. It doesn’t change who can fill in the form.",
       "team": "Everyone else in the workspace",
       "teamDesc": "People not listed below get this.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Add a person…",
       "levelFor": "Access for {name}",
       "remove": "Remove {name}",
-      "note": "A person’s own access replaces the workspace default for them — more or less. Workspace admins and the form’s owner always have full access.",
+      "note": "A person’s own access replaces the workspace default for them, whether more or less. Workspace admins and the form’s owner always have full access.",
       "viewOnly": "View only",
-      "viewOnlyDesc": "You can look at this form and its settings. Changes aren’t saved — ask the form’s owner for edit access.",
+      "viewOnlyDesc": "You can look at this form and its settings. Changes aren’t saved, so ask the form’s owner for edit access.",
       "responsesOnly": "You can see this form’s responses only",
       "responsesOnlyDesc": "The questions and design aren’t shared with you. Ask the form’s owner if you need more access.",
       "viewForm": "View"
     },
     "section": {
       "answering": "Answering the form",
-      "answeringDesc": "Who can fill it in and how they reach it — for everyone you send the form to.",
+      "answeringDesc": "Who can fill it in and how they reach it, for everyone you send the form to.",
       "team": "Your team",
       "teamDesc": "Staff in your workspace who build and manage this form. This doesn’t change who can fill it in."
     }

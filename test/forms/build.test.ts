@@ -28,7 +28,7 @@ describe('form schema helpers', () => {
 
   it('makes readable, unique field keys', () => {
     expect(keyFromLabel('Full name', [])).toBe('full_name')
-    expect(keyFromLabel('Café — préféré ?', [])).toBe('cafe_prefere')
+    expect(keyFromLabel('Café, préféré ?', [])).toBe('cafe_prefere')
     expect(keyFromLabel('2nd address', [])).toBe('f_2nd_address')
     expect(keyFromLabel('Email', ['email', 'email_2'])).toBe('email_3')
     expect(keyFromLabel('???', [])).toBe('field')

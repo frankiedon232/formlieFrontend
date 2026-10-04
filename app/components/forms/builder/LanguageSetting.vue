@@ -1,6 +1,6 @@
 <!--
   Form settings → Form language (decision 73). The language sets everything Formalie shows
-  (buttons, messages, dates) and — in the same step (owner, 2026-10-04: "why a second button?") —
+  (buttons, messages, dates) and, in the same step (owner, 2026-10-04: "why a second button?"),
   moves the form's own text into it: every text that came from a template is translated
   (POST /templates/translate-content); text people wrote stays as it is (translated per language
   later, form translations M4). One undo brings back both the language and the text.

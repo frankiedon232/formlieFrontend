@@ -5,7 +5,7 @@ const INTERNAL_TOKEN_HEADER = 'x-formalie-internal'
 
 /**
  * A public form page's data (F10). While the page renders on the server it reads the published
- * form through the internal route (server-only token — browsers never see it), so the first
+ * form through the internal route (server-only token, browsers never see it), so the first
  * response already holds the whole form. In the browser (later visits within the app) it falls
  * back to the enveloped public API.
  */
@@ -62,7 +62,7 @@ export async function usePublicForm(key: string) {
 
 /**
  * Sending a public form (F10):
- *   - one submission id per fill-in session (sessionStorage) — a reload or retry sends the same id,
+ *   - one submission id per fill-in session (sessionStorage), a reload or retry sends the same id,
  *     and the API answers repeats with the same response, never a second one;
  *   - this browser remembers it has sent the form (localStorage receipt, not personal data) so a
  *     return visit says so; a new response from the same browser only "for someone else";
@@ -207,7 +207,7 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
     newSession()
   }
 
-  /** "Yes, I'm a different person" — send again; the team sees it flagged as a possible duplicate. */
+  /** "Yes, I'm a different person", send again; the team sees it flagged as a possible duplicate. */
   const confirmDifferent = () => (confirmedDifferent.value = true)
 
   /** Email code step: send a code, then trade it for a short-lived token. Dev mock returns the code. */

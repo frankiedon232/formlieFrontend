@@ -5,7 +5,7 @@
  *
  * `uiLocale` is the key in `@nuxt/ui/locale`; when Nuxt UI has no translation
  * for a language we fall back to `en` for component-internal strings only.
- * `flag` is an icon (circle-flags set) — emoji flags don't render on Windows.
+ * `flag` is an icon (circle-flags set), emoji flags don't render on Windows.
  */
 export interface AppLocale {
   code: string

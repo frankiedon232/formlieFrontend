@@ -1,4 +1,4 @@
-<!-- Public form for iframes: https://{forms | sub}.formalie.com/{formKey}/embed — no page chrome, auto-resizes (F10). -->
+<!-- Public form for iframes: https://{forms | sub}.formalie.com/{formKey}/embed, no page chrome, auto-resizes (F10). -->
 <script setup lang="ts">
 import { isFormAddress } from '#shared/utils/urls/public'
 

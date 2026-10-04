@@ -1,6 +1,6 @@
 /**
  * Field widths on the 12-column grid, as **container** queries (Tailwind `@container`): the form
- * decides by its own width, not the window — so the phone preview (390 px) stacks every field
+ * decides by its own width, not the window, so the phone preview (390 px) stacks every field
  * on its own row even on a desktop screen, and a form embedded in a narrow column does too.
  * Literal class names so Tailwind finds them.
  */
@@ -32,7 +32,7 @@ export function labelColumnWidth(fields: { type: string; label?: string; require
 /**
  * Drag and drop placeholder: SortableJS marks the spot where the field will land with
  * `ghost-class="drop-ghost"`; the drop area (canvas) styles it as a dashed, tinted box with a
- * label from `--drop-label` ("Drop here — new row" / "… beside"). Literal classes for Tailwind.
+ * label from `--drop-label` ("Drop here, new row" / "… beside"). Literal classes for Tailwind.
  */
 export const DROP_GHOST = 'drop-ghost'
 export const DROP_ZONE = [

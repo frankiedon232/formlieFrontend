@@ -1,4 +1,4 @@
-# Option lists — plan (F15)
+# Option lists, plan (F15)
 
 Status: **planned** (owner request 2026-10-02). Today (F7) a workspace has simple saved lists: the
 palette **Lists** tab, "Fill from a list" / "Save as list" in a choice field, `GET/POST/PATCH/DELETE
@@ -9,7 +9,7 @@ palette **Lists** tab, "Fill from a list" / "Save as list" in a choice field, `G
 | Kind                         | What it is                                                   | Example                                                                           | How respondents pick                                                              |
 | ---------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | **Static** (exists)          | A fixed list of options, copied into the field               | Priority, Departments                                                             | Dropdown, radio, checkboxes, multi-select                                         |
-| **Large / autocomplete**     | Thousands of items, kept on the server, searched as you type | Products, airports, 5 000 branches                                                | "Search as you type" box — loads matches page by page                             |
+| **Large / autocomplete**     | Thousands of items, kept on the server, searched as you type | Products, airports, 5 000 branches                                                | "Search as you type" box, loads matches page by page                             |
 | **Cascading (levels)**       | A tree with named levels; each choice narrows the next       | Region → Area → Site; State → City → Location                                     | One field per level; the next one opens with only the children of what was chosen |
 | **With details (auto-fill)** | Items carry extra columns that fill other fields when chosen | Site → address, phone, manager; Product → price, unit                             | Choose one item, the linked fields fill themselves (optionally read-only)         |
 | **Dynamic (live source)**    | Items come from somewhere else and refresh                   | Another form's responses, a connected database, a JSON URL, a CSV refreshed daily | Same as above; the list keeps itself up to date                                   |
@@ -101,8 +101,8 @@ Deleting or retiring items never breaks old responses.
 
 ## Phasing
 
-1. **F15a — List manager:** the Option sets page (DataView), items editor, bulk paste, CSV import, translations, "used in".
-2. **F15b — Large lists + autocomplete:** server-side items, search-as-you-type field mode, paging.
-3. **F15c — Cascading lists:** tree lists with levels, "Cascading choice" field group, parent → child loading.
-4. **F15d — Details + auto-fill:** columns on items, "Fill other fields", formulas / logic on columns.
-5. **F15e — Dynamic lists:** sources from forms, connected databases (after F12 Data sources), JSON URL, refreshed CSV; sync log.
+1. **F15a, List manager:** the Option sets page (DataView), items editor, bulk paste, CSV import, translations, "used in".
+2. **F15b, Large lists + autocomplete:** server-side items, search-as-you-type field mode, paging.
+3. **F15c, Cascading lists:** tree lists with levels, "Cascading choice" field group, parent → child loading.
+4. **F15d, Details + auto-fill:** columns on items, "Fill other fields", formulas / logic on columns.
+5. **F15e, Dynamic lists:** sources from forms, connected databases (after F12 Data sources), JSON URL, refreshed CSV; sync log.

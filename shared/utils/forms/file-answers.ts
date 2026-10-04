@@ -1,5 +1,5 @@
 /**
- * File question answers (F10 M2): a list of `FileAnswer` — the files themselves are in storage.
+ * File question answers (F10 M2): a list of `FileAnswer`, the files themselves are in storage.
  * Older answers (or anything hand-made) that aren't in this shape are treated as no files.
  */
 import type { FileAnswer } from '../../types/public'

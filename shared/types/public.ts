@@ -1,4 +1,4 @@
-/** Public form pages (F10) — docs/API-CONTRACT.md → Public. No sign-in; the workspace comes from the host or the form key. */
+/** Public form pages (F10), docs/API-CONTRACT.md → Public. No sign-in; the workspace comes from the host or the form key. */
 import type { FormSchemaV1 } from '../utils/forms/schema'
 
 /**
@@ -35,16 +35,16 @@ export interface PublicForm {
   /** Availability: open from / until (state expired / scheduled follows from them). */
   opens_at: string | null
   closes_at: string | null
-  /** The published form (theme resolved) — only when `state` is `open`. */
+  /** The published form (theme resolved), only when `state` is `open`. */
   schema: FormSchemaV1 | null
   workspace: PublicWorkspace
   seo: PublicFormSeo
-  /** Formalie's legal pages for the footer — platform settings (super admin, F23), config as fallback. */
+  /** Formalie's legal pages for the footer, platform settings (super admin, F23), config as fallback. */
   legal: { terms_url: string; privacy_url: string }
   /** Languages the form offers (its main language first) and the one served. */
   languages: string[]
   language: string
-  /** Share settings (F10 M3): this visitor may not open the form yet — no questions are sent. */
+  /** Share settings (F10 M3): this visitor may not open the form yet, no questions are sent. */
   locked: boolean
   /** What opens it: password · personal invitation link · signing in as a member (null = not locked). */
   lock: 'password' | 'invite' | 'organisation' | null
@@ -69,9 +69,9 @@ export type RendererSubmitOutcome =
       done: false
       issues?: { key: string; code: string; params?: Record<string, unknown> }[]
       /**
-       * already — this browser already sent one (offer "for someone else") · duplicate — the exact same
-       * answers were already sent · registered — this person (their email / ID) already responded ·
-       * possible — looks like an earlier response: ask "different person?" · verify — confirm the email first.
+       * already, this browser already sent one (offer "for someone else") · duplicate, the exact same
+       * answers were already sent · registered, this person (their email / ID) already responded ·
+       * possible, looks like an earlier response: ask "different person?" · verify, confirm the email first.
        */
       reason?: 'already' | 'duplicate' | 'registered' | 'possible' | 'verify'
       /** The identity question concerned, and a masked hint of the earlier response (never its details). */
@@ -80,7 +80,7 @@ export type RendererSubmitOutcome =
     }
 
 /**
- * A file question's answer (F10 M2): the files are already in storage — the answer only holds a
+ * A file question's answer (F10 M2): the files are already in storage, the answer only holds a
  * reference per file (an encrypted id) plus what to show. Preview answers have an empty id.
  */
 export interface FileAnswer {

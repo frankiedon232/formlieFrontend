@@ -1,5 +1,5 @@
 <!--
-  Inspector (FRONTEND-SPEC §6, right pane) — a side card like the design's detail panel:
+  Inspector (FRONTEND-SPEC §6, right pane), a side card like the design's detail panel:
   nothing selected → form settings; one field → its settings; several → bulk width / required /
   move / duplicate / delete.
 -->
@@ -178,7 +178,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
           />
         </section>
         <FormsBuilderIdentitySetting />
-        <!-- Spam protection (decision 89): always on and invisible to respondents — shown so creators know. -->
+        <!-- Spam protection (decision 89): always on and invisible to respondents, shown so creators know. -->
         <section class="flex flex-col gap-2">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.spam.title') }}</h3>
           <div class="flex items-start gap-2 rounded-md border border-default bg-elevated/40 p-2.5">

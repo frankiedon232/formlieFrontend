@@ -72,7 +72,7 @@
       "moved": "Formulaire déplacé",
       "tagsSaved": "Étiquettes enregistrées",
       "duplicated": "Copie créée",
-      "unpublish": "Formulaire dépublié — son lien ne fonctionne plus",
+      "unpublish": "Formulaire dépublié. Son lien ne fonctionne plus",
       "close": "Formulaire fermé aux nouvelles réponses",
       "reopen": "Formulaire rouvert",
       "archive": "Formulaire archivé",
@@ -119,7 +119,7 @@
       "count": "{count} formulaire | {count} formulaires",
       "empty": "Aucun dossier pour l’instant. Créez-en un ci-dessous.",
       "viewForms": "Afficher les formulaires de {name}",
-      "notEmpty": "Déplacez d’abord ses formulaires vers un autre dossier — il pourra ensuite être supprimé.",
+      "notEmpty": "Déplacez d’abord ses formulaires vers un autre dossier. Il pourra ensuite être supprimé.",
       "deleteEmpty": "Le dossier est vide, aucun formulaire n’est donc concerné."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "Vous pourrez modifier les deux plus tard.",
       "pickFile": "Choisissez d’abord un fichier à importer.",
       "blankTitle": "Partir de zéro",
-      "blankDesc": "Un formulaire vide d’une page — ajoutez les questions dont vous avez besoin, dans l’ordre voulu.",
+      "blankDesc": "Un formulaire vide d’une page. Ajoutez les questions dont vous avez besoin, dans l’ordre voulu.",
       "previewAdd": "Ajoutez votre première question",
       "points": {
         "fieldsTitle": "Plus de 30 types de champs",
@@ -190,7 +190,7 @@
     "filterTemplate": "Modèle",
     "overview": {
       "subtitle": "{status} · mis à jour {updated}",
-      "trendTitle": "Réponses — 30 derniers jours",
+      "trendTitle": "Réponses des 30 derniers jours",
       "trendDesc": "Envois par jour",
       "trendAria": "Réponses par jour sur les 30 derniers jours, {total} au total",
       "responsesCount": "{count} réponse | {count} réponses",
@@ -229,15 +229,15 @@
       "design": "Design",
       "versions": "Versions",
       "allVersions": "Toutes les versions",
-      "noVersions": "Pas encore publié — les versions apparaissent lors de la publication.",
+      "noVersions": "Pas encore publié. Les versions apparaissent lors de la publication.",
       "detailsTitle": "Détails",
       "tags": "Étiquettes",
-      "noHistory": "Publié avant la tenue de l’historique des versions — il commence à la prochaine publication.",
+      "noHistory": "Publié avant la tenue de l’historique des versions. Il commence à la prochaine publication.",
       "embedCode": "Code d’intégration"
     },
     "qr": {
       "title": "Code QR",
-      "desc": "Imprimez-le ou affichez-le sur des écrans — le scanner ouvre le formulaire.",
+      "desc": "Imprimez-le ou affichez-le sur des écrans : le scanner ouvre le formulaire.",
       "accent": "Couleur du formulaire",
       "black": "Noir",
       "colour": "Couleur",
@@ -252,7 +252,7 @@
       "plain": "Simple",
       "brandedOrg": "Le nom et le logo de votre organisation avec le nom du formulaire ; Formalie en pied de page.",
       "brandedFormalie": "Image de marque Formalie avec le nom du formulaire.",
-      "plainHint": "Uniquement le code — pour les petits espaces.",
+      "plainHint": "Uniquement le code, pour les petits espaces.",
       "brand": "Couleur de la marque",
       "custom": "Couleur libre",
       "scan": "Scannez pour ouvrir",
@@ -270,9 +270,9 @@
       "title": "Quand ce formulaire accepte des réponses",
       "desc": "Laissez les deux champs vides pour le garder ouvert. Après la fin, le lien indique que le formulaire a expiré ; avant le début, il indique quand il ouvre.",
       "opensAt": "Ouvert à partir du",
-      "opensAtHint": "Facultatif — avant cette date, le lien indique quand le formulaire ouvre.",
+      "opensAtHint": "Facultatif. Avant cette date, le lien indique quand le formulaire ouvre.",
       "closesAt": "Ouvert jusqu’au",
-      "closesAtHint": "Facultatif — après cette date, plus aucune réponse ; le lien indique que le formulaire a expiré.",
+      "closesAtHint": "Facultatif. Après cette date, plus aucune réponse ; le lien indique que le formulaire a expiré.",
       "preset": {
         "week": "1 semaine",
         "twoWeeks": "2 semaines",
@@ -281,16 +281,16 @@
         "noEnd": "Sans date de fin"
       },
       "endBeforeStart": "Choisissez une fin postérieure au début.",
-      "pastWarning": "Cette date de fin est déjà passée — le formulaire cessera d’accepter des réponses dès l’enregistrement.",
+      "pastWarning": "Cette date de fin est déjà passée. Le formulaire cessera d’accepter des réponses dès l’enregistrement.",
       "saved": "Disponibilité enregistrée"
     },
     "embed": {
       "title": "Intégrer à votre site",
       "desc": "Collez ce code dans la page de votre site où le formulaire doit apparaître.",
-      "notLive": "Le formulaire n’est pas encore publié — l’intégration l’affichera une fois en ligne.",
+      "notLive": "Le formulaire n’est pas encore publié. L’intégration l’affichera une fois en ligne.",
       "height": "Hauteur",
       "auto": "Hauteur automatique (recommandé)",
-      "autoDesc": "Le cadre s’agrandit et se réduit avec le formulaire — sans barre de défilement intérieure.",
+      "autoDesc": "Le cadre s’agrandit et se réduit avec le formulaire, sans barre de défilement intérieure.",
       "fixed": "Hauteur fixe",
       "fixedDesc": "Toujours la même hauteur ; le formulaire défile dans le cadre.",
       "pixels": "Hauteur en pixels",
@@ -542,8 +542,8 @@
     "label": "Pied de page"
   },
   "authLayout": {
-    "headline": "Formulaires, données et accès — sous votre contrôle.",
-    "subline": "Une plateforme sûre et flexible pour créer tout type de formulaire, collecter et gérer vos données, connecter vos systèmes et décider qui voit quoi — pour les organisations de toute taille, partout dans le monde.",
+    "headline": "Formulaires, données et accès : sous votre contrôle.",
+    "subline": "Une plateforme sûre et flexible pour créer tout type de formulaire, collecter et gérer vos données, connecter vos systèmes et décider qui voit quoi. Pour les organisations de toute taille, partout dans le monde.",
     "badgeEncrypted": "Chiffré de bout en bout",
     "badgeCompliance": "Contrôles de confidentialité et de conformité",
     "badgeDatabase": "{count}+ bases de données ou stockage sécurisé",
@@ -651,7 +651,7 @@
       "available": "Disponible",
       "unavailable": {
         "taken": "Déjà pris",
-        "reserved": "Réservé — choisissez-en un autre",
+        "reserved": "Réservé, choisissez-en un autre",
         "invalid": "Adresse invalide"
       },
       "subdomainHelp": "Votre équipe se connecte ici. Vous pourrez ajouter un domaine personnalisé plus tard.",
@@ -891,7 +891,7 @@
     "menu": "Configuration de l’espace",
     "settingsCard": {
       "title": "Configuration de l’espace",
-      "desc": "Entreprise, image de marque, paramètres régionaux, équipe et premier formulaire — revenez sur n’importe quelle étape.",
+      "desc": "Entreprise, image de marque, paramètres régionaux, équipe et premier formulaire. Revenez sur n’importe quelle étape.",
       "open": "Ouvrir"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Administrateur",
       "owner": "Propriétaire",
       "invalid": "Saisissez une adresse e-mail valide.",
-      "self": "C’est vous — vous en faites déjà partie.",
+      "self": "C’est vous. Vous en faites déjà partie.",
       "duplicate": "Cette adresse est déjà dans la liste.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "E-mail {n}",
@@ -1033,7 +1033,7 @@
         "name": "Déclaration d’incident"
       }
     },
-    "subtitle": "Partez d’un formulaire prêt à l’emploi – chaque modèle a son propre design, et vous pouvez tout modifier avant de publier",
+    "subtitle": "Partez d’un formulaire prêt à l’emploi. Chaque modèle a son propre design, et vous pouvez tout modifier avant de publier",
     "blank": "Formulaire vierge",
     "all": "Tous",
     "search": "Rechercher des modèles…",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "Aucun modèle ne correspond",
     "emptyDesc": "Essayez une autre catégorie ou recherche, ou effacez les filtres.",
     "useTitle": "Utiliser le modèle",
-    "useDesc": "Votre nouveau formulaire s’ouvre dans l’éditeur – modifiez n’importe quelle question, règle, calcul ou le design avant de publier.",
+    "useDesc": "Votre nouveau formulaire s’ouvre dans l’éditeur. Modifiez n’importe quelle question, règle, calcul ou le design avant de publier.",
     "saveAs": "Enregistrer comme modèle",
     "saveTitle": "Enregistrer comme modèle",
     "saveDesc": "Les questions, la logique, les calculs et le design deviennent un modèle pour votre espace de travail. Les réponses ne sont jamais incluses.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Avis clients",
-        "description": "Découvrez ce que vos clients pensent de votre service – avec un suivi lorsqu’une personne est mécontente."
+        "description": "Découvrez ce que vos clients pensent de votre service, avec un suivi lorsqu’une personne est mécontente."
       },
       "csat_nps": {
         "name": "Enquête de satisfaction client (CSAT / NPS)",
-        "description": "Mesurez la satisfaction (CSAT), l’effort et la fidélité (NPS) – chaque réponse est classée en promoteur, passif ou détracteur."
+        "description": "Mesurez la satisfaction (CSAT), l’effort et la fidélité (NPS). Chaque réponse est classée en promoteur, passif ou détracteur."
       },
       "product_review": {
         "name": "Avis produit",
@@ -1188,7 +1188,7 @@
       },
       "leave_request": {
         "name": "Demande de congé",
-        "description": "Demandez un congé – le nombre de jours est calculé à partir des dates, avec remplaçant et justificatifs."
+        "description": "Demandez un congé. Le nombre de jours est calculé à partir des dates, avec remplaçant et justificatifs."
       },
       "performance_review": {
         "name": "Entretien annuel d’évaluation",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Enquête d’engagement des employés",
-        "description": "Un baromètre anonyme sur la fierté, le sens, l’évolution et le soutien – avec un indice d’engagement de 0 à 100."
+        "description": "Un baromètre anonyme sur la fierté, le sens, l’évolution et le soutien, avec un indice d’engagement de 0 à 100."
       },
       "expense_reimbursement": {
         "name": "Note de frais",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Évaluation de formation",
-        "description": "Évaluez le contenu, le formateur, les supports et la pertinence d’une formation – avec un score moyen."
+        "description": "Évaluez le contenu, le formateur, les supports et la pertinence d’une formation, avec un score moyen."
       },
       "reference_check": {
         "name": "Vérification des références",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Demande de bourse",
-        "description": "Dossier scolaire, besoin financier et lettre de motivation — avec un score d’éligibilité pour le jury."
+        "description": "Dossier scolaire, besoin financier et lettre de motivation, avec un score d’éligibilité pour le jury."
       },
       "permission_slip": {
         "name": "Autorisation parentale",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Confirmation / Preuve de livraison",
-        "description": "Confirmez ce qui est arrivé, son état, une photo et la signature du destinataire — les dommages appellent des détails."
+        "description": "Confirmez ce qui est arrivé, son état, une photo et la signature du destinataire. Les dommages appellent des détails."
       },
       "quality_control": {
         "name": "Checklist de contrôle qualité",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Signature d’accord",
-        "description": "Affichez l’accord, confirmez chaque point clé et signez — avec les infos de la société en cas de signature pour elle."
+        "description": "Affichez l’accord, confirmez chaque point clé et signez, avec les infos de la société en cas de signature pour elle."
       },
       "risk_assessment": {
         "name": "Évaluation des risques",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Rapport d'incident / d'accident",
-        "description": "Consignez ce qui s'est passé, qui a été blessé et les premières mesures prises — les incidents graves sont signalés pour examen urgent."
+        "description": "Consignez ce qui s'est passé, qui a été blessé et les premières mesures prises. Les incidents graves sont signalés pour examen urgent."
       },
       "near_miss_report": {
         "name": "Signalement de presque-accident",
-        "description": "Signalez vite les presque-accidents — la gravité potentielle et la récurrence donnent une priorité pour privilégier la prévention."
+        "description": "Signalez vite les presque-accidents. La gravité potentielle et la récurrence donnent une priorité pour privilégier la prévention."
       },
       "safety_inspection": {
         "name": "Checklist d'inspection de sécurité",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Antécédents médicaux",
-        "description": "Pathologies, opérations, médicaments, antécédents familiaux et mode de vie — avec le nombre de pathologies pour le praticien."
+        "description": "Pathologies, opérations, médicaments, antécédents familiaux et mode de vie, avec le nombre de pathologies pour le praticien."
       },
       "health_screening": {
         "name": "Dépistage / déclaration de santé",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Inscription des bénévoles",
-        "description": "Recueillez les bénévoles, leurs centres d'intérêt et disponibilités — avec l'accord d'un tuteur pour les moins de 18 ans."
+        "description": "Recueillez les bénévoles, leurs centres d'intérêt et disponibilités, avec l'accord d'un tuteur pour les moins de 18 ans."
       },
       "speaker_sponsor_application": {
         "name": "Candidature intervenant / sponsor",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Besoins particuliers",
-        "description": "Régimes alimentaires, accessibilité, allergies et célébrations — pour que tout soit prêt avant l'arrivée."
+        "description": "Régimes alimentaires, accessibilité, allergies et célébrations, pour que tout soit prêt avant l'arrivée."
       },
       "event_catering_request": {
         "name": "Demande de traiteur pour événement",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Demande de réservation au restaurant",
-        "description": "Date, heure, nombre de personnes, placement et occasion — tout ce dont l'hôte a besoin."
+        "description": "Date, heure, nombre de personnes, placement et occasion : tout ce dont l'hôte a besoin."
       },
       "hospitality_complaint": {
         "name": "Formulaire de réclamation",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Capture de prospects",
-        "description": "Nom, entreprise, taille et intérêt — assez court pour une page d'atterrissage, avec suivi de la source."
+        "description": "Nom, entreprise, taille et intérêt. Assez court pour une page d'atterrissage, avec suivi de la source."
       },
       "sales_quote_request": {
         "name": "Demande de devis",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Suivi commercial",
-        "description": "Consignez un appel ou un rendez-vous : résultat, étape de l'affaire, prochaine action et sa date — rapide sur mobile."
+        "description": "Consignez un appel ou un rendez-vous : résultat, étape de l'affaire, prochaine action et sa date. Rapide sur mobile."
       }
     },
     "openGallery": "Ouvrir la galerie complète",
@@ -1481,7 +1481,7 @@
       "browse": "Parcourir les modèles"
     },
     "categoryPage": {
-      "subtitle": "Modèles Formalie de cette catégorie — chacun avec son propre design, prêt à l’emploi"
+      "subtitle": "Modèles Formalie de cette catégorie, chacun avec son propre design, prêts à l’emploi"
     },
     "mine": {
       "subtitle": "Modèles que votre espace de travail a enregistrés à partir de ses formulaires ou copiés depuis Formalie",
@@ -1611,7 +1611,7 @@
     "unpublished": "Modifications non publiées",
     "save": {
       "saving": "Enregistrement…",
-      "error": "Non enregistré — continuez pour réessayer",
+      "error": "Non enregistré. Continuez pour réessayer",
       "conflict": "Modifié ailleurs",
       "saved": "Enregistré {time}",
       "upToDate": "Tout est enregistré",
@@ -1627,7 +1627,7 @@
       "tablet": "Tablette",
       "phone": "Téléphone",
       "device": "Appareil",
-      "nothingSent": "C’était un aperçu — rien n’a été envoyé.",
+      "nothingSent": "C’était un aperçu. Rien n’a été envoyé.",
       "restart": "Recommencer"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Publier",
       "submitAgain": "Publier les modifications",
       "issues": "Corrigez {count} point avant de publier | Corrigez {count} points avant de publier",
-      "done": "Publié — la version {n} est en ligne"
+      "done": "Publié : la version {n} est en ligne"
     },
     "issue": {
       "no_inputs": "Ajoutez au moins une question",
@@ -1711,7 +1711,7 @@
       "minChoices": "Choix min.",
       "maxChoices": "Choix max.",
       "accept": "Types de fichiers autorisés",
-      "acceptHint": "Séparés par des virgules, ex. .pdf,.docx,image/* — vide = tous.",
+      "acceptHint": "Séparés par des virgules, ex. .pdf,.docx,image/* (vide = tous).",
       "maxFiles": "Fichiers max.",
       "maxSize": "Taille max. (Mo)",
       "minAboveMax": "Le minimum dépasse le maximum.",
@@ -1782,9 +1782,9 @@
       "readonly": "Lecture seule",
       "disabled": "Désactivé",
       "editableHint": "Les répondants peuvent le remplir.",
-      "readonlyHint": "Affiché et envoyé avec la réponse, mais non modifiable — ex. une référence pré-remplie.",
+      "readonlyHint": "Affiché et envoyé avec la réponse, mais non modifiable (ex. une référence pré-remplie).",
       "disabledHint": "Affiché en grisé et non envoyé avec la réponse.",
-      "noRequired": "Les champs en lecture seule ou désactivés ne peuvent pas être obligatoires — personne ne pourrait les remplir."
+      "noRequired": "Les champs en lecture seule ou désactivés ne peuvent pas être obligatoires, car personne ne pourrait les remplir."
     },
     "labels": {
       "title": "Position du libellé",
@@ -1828,13 +1828,13 @@
       "label": "Éditeur de formulaire, plein écran"
     },
     "drop": {
-      "newRow": "Déposer ici — nouvelle ligne",
-      "beside": "Déposer ici — à côté"
+      "newRow": "Déposer ici : nouvelle ligne",
+      "beside": "Déposer ici : à côté"
     },
     "blocks": {
       "appearance": "Apparence",
       "sectionPlaceholder": "Titre de la section",
-      "descriptionPlaceholder": "Ajoutez une description (facultatif) — double-cliquez pour modifier",
+      "descriptionPlaceholder": "Ajoutez une description (facultatif). Double-cliquez pour modifier",
       "paragraphPlaceholder": "Écrivez du texte…",
       "paragraphHint": "Cliquez sur le paragraphe dans le canevas pour écrire. Sélectionnez du texte pour le gras, les liens, les listes et l’alignement.",
       "size": "Taille",
@@ -1867,7 +1867,7 @@
       "caption": "Légende",
       "imageWidth": "Taille de l’image",
       "href": "Lien au clic",
-      "hrefHint": "Facultatif — s’ouvre dans un nouvel onglet.",
+      "hrefHint": "Facultatif. S’ouvre dans un nouvel onglet.",
       "rounded": "Coins arrondis",
       "fill": "Remplir",
       "height": "Hauteur",
@@ -1902,7 +1902,7 @@
       "title": "Langue du formulaire",
       "hint": "Les boutons, messages et dates suivent cette langue, et le texte issu d’un modèle est traduit avec elle. Le texte que vous avez écrit reste tel quel.",
       "translated": "{n} texte traduit | {n} textes traduits",
-      "kept": "{n} texte que vous avez écrit reste tel quel — modifiez-le dans le formulaire. | {n} textes que vous avez écrits restent tels quels — modifiez-les dans le formulaire.",
+      "kept": "{n} texte que vous avez écrit reste tel quel. Modifiez-le dans le formulaire. | {n} textes que vous avez écrits restent tels quels. Modifiez-les dans le formulaire.",
       "changed": "Langue du formulaire : {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Mettre à jour le modèle",
       "updatedToast": "Modèle « {name} » mis à jour avec les dernières modifications de ce formulaire",
       "saveNew": "Enregistrer plutôt comme nouveau modèle",
-      "saveNewHint": "Crée une copie distincte — le modèle existant reste inchangé."
+      "saveNewHint": "Crée une copie distincte. Le modèle existant reste inchangé."
     },
     "identity": {
       "title": "Reconnaître les répondants",
-      "hint": "Comment Formalie distingue les personnes, pour qu’une même personne ne puisse pas répondre deux fois — et que personne d’autre ne soit jamais confondu avec elle.",
+      "hint": "Comment Formalie distingue les personnes, pour qu’une même personne ne puisse pas répondre deux fois et que personne d’autre ne soit jamais confondu avec elle.",
       "email": "Adresse e-mail du répondant lui-même",
-      "emailHint": "L’adresse e-mail de la personne qui remplit le formulaire — pas celle d’un référent, d’un responsable ou d’un tuteur. Une deuxième réponse avec cette adresse est refusée ; une réponse très similaire est vérifiée.",
+      "emailHint": "L’adresse e-mail de la personne qui remplit le formulaire, et non celle d’un référent, d’un responsable ou d’un tuteur. Une deuxième réponse avec cette adresse est refusée ; une réponse très similaire est vérifiée.",
       "verify": "Vérifier l’adresse e-mail avant l’envoi",
-      "verifyHint": "Les répondants saisissent un code envoyé à leur adresse e-mail — une réponse par adresse vérifiée.",
+      "verifyHint": "Les répondants saisissent un code envoyé à leur adresse e-mail. Une réponse par adresse vérifiée.",
       "suggested": "suggéré",
       "off": "Désactivé",
       "none": "Sans l’adresse e-mail du répondant, Formalie ne peut reconnaître que le même navigateur (les personnes peuvent utiliser un autre appareil).",
-      "verifyLost": "La vérification de l’adresse e-mail est activée, mais le formulaire ne contient plus la question de l’adresse e-mail du répondant — elle est suspendue jusqu’à ce que vous en choisissiez une ci-dessus.",
-      "verifyRequired": "La question de l’adresse e-mail est obligatoire tant que la vérification est activée — nous en avons besoin pour envoyer le code."
+      "verifyLost": "La vérification de l’adresse e-mail est activée, mais le formulaire ne contient plus la question de l’adresse e-mail du répondant. Elle est suspendue jusqu’à ce que vous en choisissiez une ci-dessus.",
+      "verifyRequired": "La question de l’adresse e-mail est obligatoire tant que la vérification est activée. Nous en avons besoin pour envoyer le code."
     },
     "guide": {
       "title": "Guide d’aide",
@@ -2030,14 +2030,14 @@
       "ip": "Saisissez une adresse IP valide pour {field}.",
       "domain": "Saisissez un nom de domaine pour {field}, comme example.org.",
       "mac": "Saisissez une adresse MAC pour {field}, comme 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} n’est pas un IBAN valide — vérifiez le numéro.",
+      "iban": "{field} n’est pas un IBAN valide. Vérifiez le numéro.",
       "bic": "Saisissez un code SWIFT / BIC de 8 ou 11 caractères pour {field}.",
       "color": "Choisissez une couleur pour {field}.",
       "duration": "Saisissez une durée pour {field} (minutes 0–59).",
       "name": "Saisissez le prénom et le nom pour {field}.",
       "consent": "Veuillez confirmer {field} pour continuer.",
       "choice": "Choisissez une option dans la liste pour {field}.",
-      "file": "{field} : un fichier n'a pas fini d'être envoyé — retirez-le et ajoutez-le à nouveau."
+      "file": "{field} : un fichier n'a pas fini d'être envoyé. Retirez-le et ajoutez-le à nouveau."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "Fichier non ajouté",
       "wrongType": "Type de fichier non valide : {files}. Choisissez l’un des types autorisés.",
       "tooBig": "Trop volumineux (plus de {mb} Mo) : {files}",
-      "tooMany": "Seuls {max} fichiers sont autorisés — {n} fichier n’a pas été ajouté. | Seuls {max} fichiers sont autorisés — {n} fichiers n’ont pas été ajoutés.",
+      "tooMany": "Seuls {max} fichiers sont autorisés. {n} fichier n’a pas été ajouté. | Seuls {max} fichiers sont autorisés. {n} fichiers n’ont pas été ajoutés.",
       "limits": "Jusqu’à {max} fichiers, {mb} Mo chacun",
       "count": "{n} sur {max}",
       "addMore": "Ajouter d’autres",
@@ -2088,11 +2088,11 @@
       "close": "Fermer cette page",
       "closeHint": "Vous pouvez fermer cet onglet.",
       "alreadyTitle": "Vous avez déjà rempli ce formulaire",
-      "alreadyDesc": "Votre réponse a été reçue depuis ce navigateur. Ne le remplissez à nouveau que pour une autre personne — la réponse de chaque personne n’est acceptée qu’une fois.",
+      "alreadyDesc": "Votre réponse a été reçue depuis ce navigateur. Ne le remplissez à nouveau que pour une autre personne : la réponse de chaque personne n’est acceptée qu’une fois.",
       "askTitle": "Est-ce pour une autre personne ?",
       "askDesc": "Vous avez déjà envoyé une réponse depuis ce navigateur.",
       "askPoint1": "Continuez uniquement si cette réponse concerne une autre personne.",
-      "askPoint2": "La réponse d’une même personne — ou des réponses identiques — ne sera pas acceptée deux fois.",
+      "askPoint2": "La réponse d’une même personne (ou des réponses identiques) ne sera pas acceptée deux fois.",
       "confirm": "Oui, pour une autre personne",
       "stay": "Non, rester ici",
       "duplicate": "Ces réponses identiques ont déjà été envoyées",
@@ -2105,8 +2105,8 @@
       "registeredField": "Déjà utilisé pour une réponse.",
       "possibleTitle": "S’agit-il d’une autre personne ?",
       "possibleDesc": "Cela ressemble à une réponse que nous avons déjà ({email}, {date}).",
-      "possiblePoint1": "Si vous êtes une autre personne, continuez — l’équipe verra les deux réponses.",
-      "possiblePoint2": "S’il s’agit de vous, vérifiez plutôt vos réponses — une deuxième réponse de la même personne ne sera pas prise en compte.",
+      "possiblePoint1": "Si vous êtes une autre personne, continuez. L’équipe verra les deux réponses.",
+      "possiblePoint2": "S’il s’agit de vous, vérifiez plutôt vos réponses. Une deuxième réponse de la même personne ne sera pas prise en compte.",
       "different": "Oui, je suis une autre personne",
       "review": "Non, vérifier mes réponses",
       "verifyTitle": "Confirmez votre adresse e-mail",
@@ -2125,10 +2125,10 @@
       "auto": "Vos réponses sont enregistrées au fur et à mesure",
       "saving": "Enregistrement…",
       "saved": "Enregistré {when}",
-      "notSaved": "Non enregistré — vérifiez votre connexion",
+      "notSaved": "Non enregistré. Vérifiez votre connexion",
       "later": "Enregistrer et continuer plus tard",
       "title": "Continuer plus tard",
-      "desc": "Nous vous enverrons un lien personnel qui restaure vos réponses — sur n’importe quel appareil, pendant 30 jours.",
+      "desc": "Nous vous enverrons un lien personnel qui restaure vos réponses, sur n’importe quel appareil, pendant 30 jours.",
       "email": "Votre adresse e-mail",
       "emailHint": "Le lien est envoyé uniquement à cette adresse. Gardez-le pour vous : toute personne qui le possède peut poursuivre votre formulaire.",
       "send": "Envoyer mon lien",
@@ -2282,7 +2282,7 @@
       "empty": "Ajouter une formule",
       "unknown": "Aucun champ n’utilise la clé « {key} »",
       "self": "Un champ ne peut pas s’utiliser lui-même",
-      "syntax": "Cette formule est incomplète — vérifiez les parenthèses, les virgules et les opérateurs",
+      "syntax": "Cette formule est incomplète. Vérifiez les parenthèses, les virgules et les opérateurs",
       "functions": "Fonctions :",
       "choiceScored": "Compte comme le numéro de l’option choisie",
       "choiceUnscored": "Numérotez ses options (réglages du champ → Options) pour l’utiliser dans des sommes",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Vérifier ces réponses",
     "thenTitle": "Puis faire ceci",
     "ifHelp": "Choisissez une question, le mode de comparaison et la réponse qui doit déclencher la règle.",
-    "thenHelp": "Choisissez ce qui se passe quand les réponses correspondent — et pour quelle question ou page.",
+    "thenHelp": "Choisissez ce qui se passe quand les réponses correspondent, et pour quelle question ou page.",
     "matchLead": "Exécuter la règle quand",
     "andChip": "et",
     "orChip": "ou",
@@ -2410,7 +2410,7 @@
     "deleteList": "Supprimer la liste",
     "deleteListTitle": "Supprimer la liste « {name} » ?",
     "deleteListDesc": "Les champs qui l’utilisent déjà gardent leurs options.",
-    "listDesc": "Des options réutilisables pour tout champ à choix — pays, régions, produits, équipes …",
+    "listDesc": "Des options réutilisables pour tout champ à choix : pays, régions, produits, équipes …",
     "listName": "Nom",
     "listNamePlaceholder": "ex. Régions",
     "listOptions": "Options",
@@ -2426,7 +2426,7 @@
     "useList": "Remplir depuis une liste…",
     "saveAsList": "Enregistrer comme liste",
     "toast": {
-      "fieldSaved": "« {name} » enregistré — retrouvez-le sous Enregistrés",
+      "fieldSaved": "« {name} » enregistré. Retrouvez-le sous Enregistrés",
       "fieldRemoved": "« {name} » retiré des champs enregistrés",
       "listCreated": "Liste « {name} » créée",
       "listUpdated": "Liste « {name} » mise à jour",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "Le formulaire repose sur une carte au centre de la page.",
-      "plain": "Pas de carte — le formulaire repose directement sur l’arrière-plan.",
+      "plain": "Pas de carte : le formulaire repose directement sur l’arrière-plan.",
       "split": "Une image à côté du formulaire (au-dessus sur mobile).",
       "full": "Le formulaire occupe toute la largeur de la page."
     },
@@ -2546,7 +2546,7 @@
       "error": "Erreurs"
     },
     "colorInvalid": "Utilisez une couleur hexadécimale comme #1a2b3c.",
-    "lowContrast": "Contraste faible ({ratio} : 1) — peut être difficile à lire.",
+    "lowContrast": "Contraste faible ({ratio} : 1), peut être difficile à lire.",
     "pickColor": "Choisir une couleur pour {name}",
     "inputStyle": "Style",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Barre supérieure avec votre logo et votre site, le formulaire et un pied de page.",
         "spotlight": "Une bannière aux couleurs de votre marque avec le titre et l’essentiel ; le formulaire vient s’y superposer.",
-        "side": "Un panneau à vos couleurs à côté du formulaire — empilé sur mobile.",
+        "side": "Un panneau à vos couleurs à côté du formulaire, empilé sur mobile.",
         "minimal": "Uniquement le formulaire et un fin pied de page."
       },
       "tone": "Couleur de la barre et du panneau",
@@ -2636,7 +2636,7 @@
     "updateExisting": "Mettre à jour « {name} »",
     "saveNew": "Enregistrer comme nouveau thème",
     "name": "Nom",
-    "namePlaceholder": "p. ex. Marque — clair",
+    "namePlaceholder": "p. ex. Marque (clair)",
     "renameTitle": "Renommer le thème",
     "rename": "Renommer",
     "duplicate": "Dupliquer",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Un design Formalie",
       "systemHint": "Ce thème fait partie de Formalie et ne peut pas être modifié. Dupliquez-le pour créer votre propre version.",
-      "systemDesc": "Design Formalie — lecture seule",
+      "systemDesc": "Design Formalie, lecture seule",
       "crumb": "Éditeur de thème",
       "newTitle": "Nouveau thème",
       "untitled": "Thème sans titre",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Ajoutez vos bases de données, testez-les et protégez leurs identifiants.",
       "explorer": "Parcourez les schémas, tables et lignes, et exportez ce dont vous avez besoin.",
-      "query": "Exécutez du SQL sur vos bases de données — en lecture seule par défaut, chaque exécution est journalisée.",
+      "query": "Exécutez du SQL sur vos bases de données. En lecture seule par défaut, chaque exécution est journalisée.",
       "savedQueries": "Conservez et partagez les requêtes les plus utilisées par votre équipe.",
       "destinations": "Choisissez où chaque formulaire envoie ses réponses et associez les champs aux colonnes.",
       "transfers": "Importez des fichiers dans des tables et exportez des tables ou des résultats de requêtes.",
@@ -2721,7 +2721,7 @@
     "example": "À quoi ressemble un endpoint (exemple)",
     "channels": {
       "title": "Collectez des données de toutes parts",
-      "hint": "Chaque formulaire peut recevoir des réponses via son lien, une intégration sur votre site et sa propre API — tout arrive au même endroit.",
+      "hint": "Chaque formulaire peut recevoir des réponses via son lien, une intégration sur votre site et sa propre API. Tout arrive au même endroit.",
       "link": "Lien partageable",
       "embed": "Formulaire intégré",
       "api": "Endpoints API"
@@ -2734,7 +2734,7 @@
       "logs": "Chaque appel avec son statut, sa durée et son appelant.",
       "analytics": "Appels, erreurs et temps de réponse par service et par endpoint.",
       "docs": "Une documentation prête à l’emploi et un espace pour tester chaque endpoint.",
-      "webhooks": "Envoyez chaque nouvelle réponse à vos propres systèmes dès son arrivée — signée et relancée en cas d'échec.",
+      "webhooks": "Envoyez chaque nouvelle réponse à vos propres systèmes dès son arrivée, signée et relancée en cas d'échec.",
       "apiKeys": "Clés pour l'API de Formalie : gérez formulaires et réponses depuis votre code.",
       "apps": "Connectez des apps comme des tableurs et une messagerie d'équipe."
     }
@@ -2744,7 +2744,7 @@
     "back": "Vue d'ensemble de l'assistant IA",
     "promise": {
       "title": "Vous gardez le contrôle",
-      "review": "L'assistant propose — vous vérifiez et appliquez.",
+      "review": "L'assistant propose, vous vérifiez et appliquez.",
       "private": "Vous choisissez ce qu'il peut lire ; les données personnelles peuvent être exclues.",
       "audit": "Chaque demande est enregistrée dans l'historique et le journal d'audit."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Ouvrir dans un nouvel onglet",
       "close": "Fermer",
       "loading": "Chargement de {host}…",
-      "slow": "Cela prend du temps ? Certains sites ne peuvent pas s’afficher dans une autre page — ouvrez-le plutôt dans un nouvel onglet.",
-      "safe": "Vos réponses sont conservées — fermez cette fenêtre pour poursuivre le formulaire.",
+      "slow": "Cela prend du temps ? Certains sites ne peuvent pas s’afficher dans une autre page. Ouvrez-le plutôt dans un nouvel onglet.",
+      "safe": "Vos réponses sont conservées. Fermez cette fenêtre pour poursuivre le formulaire.",
       "backToForm": "Retour au formulaire"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Vérification…",
       "free": "Ce lien est disponible",
       "taken": "Un autre formulaire utilise déjà ce lien",
-      "reserved": "Ce mot est réservé — choisissez-en un autre",
+      "reserved": "Ce mot est réservé. Choisissez-en un autre",
       "invalid": "Utilisez de 3 à 60 lettres minuscules, chiffres et traits d’union",
       "remove": "Supprimer le lien personnalisé",
       "copy": "Copier le lien",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Ensuite, le lien indique que le formulaire est complet.",
       "max": "Nombre maximal de réponses",
       "used": "{n} sur {max} utilisées",
-      "full": "La limite est atteinte — le formulaire n’accepte plus de réponses.",
+      "full": "La limite est atteinte. Le formulaire n’accepte plus de réponses.",
       "when": "Quand il accepte des réponses",
       "always": "Toujours (sans date de début ni de fin)",
       "from": "À partir du {from}",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Fonctionnement des liens de votre formulaire",
-      "desc": "Votre formulaire peut avoir jusqu’à trois liens. Ils ouvrent tous le même formulaire — utilisez celui qui convient le mieux à l’endroit où vous le partagez.",
+      "desc": "Votre formulaire peut avoir jusqu’à trois liens. Ils ouvrent tous le même formulaire : utilisez celui qui convient le mieux à l’endroit où vous le partagez.",
       "always": "Toujours actif",
       "on": "Actif",
       "off": "Non défini",
       "original": {
         "name": "Lien d’origine",
-        "for": "Créé avec le formulaire. Il ne change jamais et fonctionne toujours — même après l’ajout d’un lien personnalisé ou d’un lien court."
+        "for": "Créé avec le formulaire. Il ne change jamais et fonctionne toujours, même après l’ajout d’un lien personnalisé ou d’un lien court."
       },
       "custom": {
         "name": "Lien personnalisé",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Une affiche ou un code QR utilise le lien court",
-          "then": "il continue de fonctionner, quoi que vous fassiez du lien personnalisé. Supprimer le lien court le désactive définitivement — son code n’est jamais attribué à un autre formulaire."
+          "then": "il continue de fonctionner, quoi que vous fassiez du lien personnalisé. Supprimer le lien court le désactive définitivement : son code n’est jamais attribué à un autre formulaire."
         },
         "closed": {
           "when": "Le formulaire est fermé, complet, expiré ou protégé",
-          "then": "tous les liens affichent le même message ou le même écran de mot de passe — aucun lien ne permet de le contourner."
+          "then": "tous les liens affichent le même message ou le même écran de mot de passe. Aucun lien ne permet de le contourner."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Description",
       "descriptionPlaceholder": "Une phrase sur l’objet du formulaire",
       "image": "Image",
-      "imageHint": "Affichée en haut de la carte du lien. PNG, JPEG ou WebP, jusqu’à 5 Mo — 1200 × 630 px est idéal.",
+      "imageHint": "Affichée en haut de la carte du lien. PNG, JPEG ou WebP, jusqu’à 5 Mo (1200 × 630 px est idéal).",
       "imageRule": "Utilisez une image PNG, JPEG ou WebP de 5 Mo maximum.",
       "upload": "Importer une image",
       "replace": "Remplacer",
@@ -3005,20 +3005,20 @@
       "asCard": "Carte du lien",
       "asSearch": "Résultat de recherche",
       "noImage": "Aucune image",
-      "hiddenFromSearch": "Masqué aux moteurs de recherche — ce formulaire n’apparaîtra pas dans les résultats de recherche."
+      "hiddenFromSearch": "Masqué aux moteurs de recherche. Ce formulaire n’apparaîtra pas dans les résultats de recherche."
     },
     "invite": {
       "title": "Invitations",
       "counts": "{responded} sur {total} ont répondu",
-      "saveFirst": "Enregistrez « Personnes invitées uniquement » pour que les invitations prennent effet — d’ici là, le formulaire reste ouvert comme avant.",
+      "saveFirst": "Enregistrez « Personnes invitées uniquement » pour que les invitations prennent effet. D’ici là, le formulaire reste ouvert comme avant.",
       "add": "Inviter des personnes",
-      "addHint": "Adresses e-mail uniquement. Séparez-les par une virgule, un espace ou un retour à la ligne — ou collez une liste.",
+      "addHint": "Adresses e-mail uniquement. Séparez-les par une virgule, un espace ou un retour à la ligne, ou collez une liste.",
       "placeholder": "nom{'@'}example.org",
       "button": "Inviter {n} personne | Inviter {n} personnes",
       "buttonEmpty": "Inviter",
       "sent": "{n} invitation envoyée | {n} invitations envoyées",
       "skipped": "{n} personne était déjà invitée | {n} personnes étaient déjà invitées",
-      "devLinks": "Liens personnels — envoyés par e-mail à chaque personne dès que Formalie sera en ligne ; affichés ici pendant le développement :",
+      "devLinks": "Liens personnels, envoyés par e-mail à chaque personne dès que Formalie sera en ligne. Affichés ici pendant le développement :",
       "none": "Personne n’a encore été invité.",
       "resent": "Un nouveau lien a été envoyé à {email}",
       "resend": "Envoyer un nouveau lien",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Personnes ayant accès",
-      "desc": "Uniquement les membres de votre espace de travail — cela ne change pas qui peut remplir le formulaire.",
+      "desc": "Uniquement les membres de votre espace de travail. Cela ne change pas qui peut remplir le formulaire.",
       "team": "Tous les autres membres de l’espace de travail",
       "teamDesc": "S’applique aux personnes non listées ci-dessous.",
       "level": {
@@ -3069,14 +3069,14 @@
       "remove": "Retirer {name}",
       "note": "L’accès propre à une personne remplace pour elle la valeur par défaut de l’espace de travail, qu’il soit plus large ou plus restreint. Les administrateurs de l’espace et le propriétaire du formulaire ont toujours un accès complet.",
       "viewOnly": "Lecture seule",
-      "viewOnlyDesc": "Vous pouvez consulter ce formulaire et ses paramètres. Les modifications ne sont pas enregistrées — demandez un accès en modification au propriétaire du formulaire.",
+      "viewOnlyDesc": "Vous pouvez consulter ce formulaire et ses paramètres. Les modifications ne sont pas enregistrées : demandez un accès en modification au propriétaire du formulaire.",
       "responsesOnly": "Vous ne voyez que les réponses de ce formulaire",
       "responsesOnlyDesc": "Les questions et le design ne sont pas partagés avec vous. Contactez le propriétaire du formulaire si vous avez besoin de plus d’accès.",
       "viewForm": "Consulter"
     },
     "section": {
       "answering": "Répondre au formulaire",
-      "answeringDesc": "Qui peut le remplir et comment y accéder — pour toutes les personnes à qui vous l’envoyez.",
+      "answeringDesc": "Qui peut le remplir et comment y accéder, pour toutes les personnes à qui vous l’envoyez.",
       "team": "Votre équipe",
       "teamDesc": "Les membres de votre espace de travail qui créent et gèrent ce formulaire. Cela ne change pas qui peut le remplir."
     }

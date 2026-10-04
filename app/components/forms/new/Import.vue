@@ -27,7 +27,7 @@ watch(file, async picked => {
       const issue = parsed.error.issues[0]
       const wrapped = !!raw && typeof raw === 'object' && 'schema' in raw
       const inner = issue?.code === 'invalid_union' ? issue.errors[wrapped ? 0 : 1]?.[0] : issue
-      importError.value = t('forms.new.invalid', { detail: inner?.path.join('.') || '—' })
+      importError.value = t('forms.new.invalid', { detail: inner?.path.join('.') || '-' })
       return
     }
     imported.value = parsed.data

@@ -131,13 +131,13 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-    // Manrope (main.css) — light 300 to bold 700; titles use 600, body 400/500.
+    // Manrope (main.css), light 300 to bold 700; titles use 600, body 400/500.
     defaults: { weights: [300, 400, 500, 600, 700] },
   },
 
   // Icon sets: lucide (UI), circle-flags (languages), simple-icons (sign-in providers).
   icon: {
-    // /api/** belongs to the backend (mock, dev proxy, Nginx in production) — keep icons out of it.
+    // /api/** belongs to the backend (mock, dev proxy, Nginx in production), keep icons out of it.
     localApiEndpoint: '/_nuxt_icon',
     // Bundle every icon used in the source so menus never render blank while icons load.
     clientBundle: {

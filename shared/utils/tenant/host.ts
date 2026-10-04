@@ -42,7 +42,7 @@ export type HostContext =
   | { kind: 'manage'; host: string; reason: 'manage' | 'root' | 'local' }
   | { kind: 'tenant'; host: string; subdomain: string }
   | { kind: 'custom'; host: string }
-  /** forms.formalie.com — public forms of workspaces without their own subdomain (F10). */
+  /** forms.formalie.com, public forms of workspaces without their own subdomain (F10). */
   | { kind: 'forms'; host: string }
   | { kind: 'invalid'; host: string; reason: 'reserved' | 'nested' | 'malformed' }
 

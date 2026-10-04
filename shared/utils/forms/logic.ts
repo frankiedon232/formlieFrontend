@@ -1,5 +1,5 @@
 /**
- * Form logic (FormSchema v1 `logic`) — one evaluator for the builder preview, the public form
+ * Form logic (FormSchema v1 `logic`), one evaluator for the builder preview, the public form
  * and the API.
  *
  *   rule = { id, when: { all | any: [{ field, op, value?, value2? }] }, then: [{ action, target?, value? }] }

@@ -34,7 +34,7 @@
 }
 
 /* Theme tokens: monochrome primary as in docs/design (black actions in light, white in dark). */
-/* Text: sharp and dark everywhere (owner, 2026-10-03) — every text level one step stronger than
+/* Text: sharp and dark everywhere (owner, 2026-10-03), every text level one step stronger than
    Nuxt UI's defaults, so tables, grids and cards read as crisply as the navigation. */
 :root {
   --ui-primary: var(--ui-color-neutral-900);

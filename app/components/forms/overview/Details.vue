@@ -42,7 +42,7 @@ const { dateTime, relative } = useFormat()
         <dt class="text-muted">{{ t('forms.overview.tags') }}</dt>
         <dd class="flex flex-wrap justify-end gap-1">
           <UBadge v-for="tag in form.tags" :key="tag" :label="tag" color="neutral" variant="soft" size="sm" />
-          <span v-if="!form.tags.length" class="text-muted">—</span>
+          <span v-if="!form.tags.length" class="text-muted">-</span>
         </dd>
       </div>
       <div class="flex items-center justify-between gap-3">

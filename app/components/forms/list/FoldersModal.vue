@@ -1,6 +1,6 @@
 <!--
   Manage folders: create, rename inline, delete. A folder that still holds forms can't be deleted
-  (owner, 2026-10-03) — its forms are one click away to move them first.
+  (owner, 2026-10-03), its forms are one click away to move them first.
 -->
 <script setup lang="ts">
 import type { FormFolder } from '#shared/types/forms'

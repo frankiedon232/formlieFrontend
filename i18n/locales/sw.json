@@ -72,7 +72,7 @@
       "moved": "Fomu imehamishwa",
       "tagsSaved": "Lebo zimehifadhiwa",
       "duplicated": "Nakala imeundwa",
-      "unpublish": "Uchapishaji umeondolewa — kiungo hakifanyi kazi tena",
+      "unpublish": "Uchapishaji umeondolewa. Kiungo hakifanyi kazi tena",
       "close": "Fomu imefungwa kwa majibu mapya",
       "reopen": "Fomu imefunguliwa tena",
       "archive": "Fomu imehifadhiwa kwenye kumbukumbu",
@@ -119,7 +119,7 @@
       "count": "Fomu {count} | Fomu {count}",
       "empty": "Bado hakuna folda. Unda moja hapa chini.",
       "viewForms": "Onyesha fomu zilizo katika {name}",
-      "notEmpty": "Hamisha kwanza fomu zake kwenye folda nyingine — kisha inaweza kufutwa.",
+      "notEmpty": "Hamisha kwanza fomu zake kwenye folda nyingine, kisha inaweza kufutwa.",
       "deleteEmpty": "Folda ni tupu, kwa hiyo hakuna fomu inayoathiriwa."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "Unaweza kubadilisha vyote baadaye.",
       "pickFile": "Chagua kwanza faili ya kuleta.",
       "blankTitle": "Anza mwanzo kabisa",
-      "blankDesc": "Fomu tupu yenye ukurasa mmoja — ongeza maswali unayohitaji, kwa mpangilio unaotaka.",
+      "blankDesc": "Fomu tupu yenye ukurasa mmoja. Ongeza maswali unayohitaji, kwa mpangilio unaotaka.",
       "previewAdd": "Ongeza swali lako la kwanza",
       "points": {
         "fieldsTitle": "Zaidi ya aina 30 za sehemu",
@@ -190,7 +190,7 @@
     "filterTemplate": "Kiolezo",
     "overview": {
       "subtitle": "{status} · imesasishwa {updated}",
-      "trendTitle": "Majibu — siku 30 zilizopita",
+      "trendTitle": "Majibu (siku 30 zilizopita)",
       "trendDesc": "Mawasilisho kwa siku",
       "trendAria": "Majibu kwa siku katika siku 30 zilizopita, jumla {total}",
       "responsesCount": "Jibu {count} | Majibu {count}",
@@ -229,15 +229,15 @@
       "design": "Muundo",
       "versions": "Matoleo",
       "allVersions": "Matoleo yote",
-      "noVersions": "Bado haijachapishwa — matoleo yataonekana utakapochapisha.",
+      "noVersions": "Bado haijachapishwa. Matoleo yataonekana utakapochapisha.",
       "detailsTitle": "Maelezo",
       "tags": "Lebo",
-      "noHistory": "Ilichapishwa kabla historia ya matoleo kuanza kuhifadhiwa — itaanza na uchapishaji unaofuata.",
+      "noHistory": "Ilichapishwa kabla historia ya matoleo kuanza kuhifadhiwa. Itaanza na uchapishaji unaofuata.",
       "embedCode": "Msimbo wa kupachika"
     },
     "qr": {
       "title": "Msimbo wa QR",
-      "desc": "Uchapishe au uweke kwenye skrini — kuuskani hufungua fomu.",
+      "desc": "Uchapishe au uweke kwenye skrini. Kuuskani hufungua fomu.",
       "accent": "Rangi ya fomu",
       "black": "Nyeusi",
       "colour": "Rangi",
@@ -252,7 +252,7 @@
       "plain": "Wa kawaida",
       "brandedOrg": "Jina na nembo ya shirika lako pamoja na jina la fomu; Formalie chini.",
       "brandedFormalie": "Chapa ya Formalie pamoja na jina la fomu.",
-      "plainHint": "Msimbo pekee — kwa nafasi ndogo.",
+      "plainHint": "Msimbo pekee, kwa nafasi ndogo.",
       "brand": "Rangi ya chapa",
       "custom": "Rangi yoyote",
       "scan": "Skani ili kufungua",
@@ -270,9 +270,9 @@
       "title": "Fomu hii inapokea majibu lini",
       "desc": "Acha zote mbili wazi ili iendelee kuwa wazi. Baada ya mwisho, kiungo kinaeleza kuwa muda wa fomu umeisha; kabla ya kuanza, kinaeleza itafunguliwa lini.",
       "opensAt": "Wazi kuanzia",
-      "opensAtHint": "Si lazima — kabla ya hapo, kiungo kinaonyesha fomu itafunguliwa lini.",
+      "opensAtHint": "Si lazima. Kabla ya hapo, kiungo kinaonyesha fomu itafunguliwa lini.",
       "closesAt": "Wazi hadi",
-      "closesAtHint": "Si lazima — baada ya hapo, hakuna majibu zaidi; kiungo kinaeleza kuwa muda wa fomu umeisha.",
+      "closesAtHint": "Si lazima. Baada ya hapo, hakuna majibu zaidi; kiungo kinaeleza kuwa muda wa fomu umeisha.",
       "preset": {
         "week": "Wiki 1",
         "twoWeeks": "Wiki 2",
@@ -281,16 +281,16 @@
         "noEnd": "Hakuna tarehe ya mwisho"
       },
       "endBeforeStart": "Chagua mwisho ulio baada ya mwanzo.",
-      "pastWarning": "Tarehe hii ya mwisho imeshapita — fomu itaacha kupokea majibu mara tu utakapohifadhi.",
+      "pastWarning": "Tarehe hii ya mwisho imeshapita. Fomu itaacha kupokea majibu mara tu utakapohifadhi.",
       "saved": "Upatikanaji umehifadhiwa"
     },
     "embed": {
       "title": "Pachika kwenye tovuti yako",
       "desc": "Bandika msimbo huu kwenye ukurasa wa tovuti yako ambapo fomu inapaswa kuonekana.",
-      "notLive": "Fomu bado haijachapishwa — itaonekana ikishachapishwa.",
+      "notLive": "Fomu bado haijachapishwa. Itaonekana ikishachapishwa.",
       "height": "Urefu",
       "auto": "Urefu wa kiotomatiki (inapendekezwa)",
-      "autoDesc": "Fremu hukua na kupungua pamoja na fomu — bila upau wa kusogeza ndani.",
+      "autoDesc": "Fremu hukua na kupungua pamoja na fomu, bila upau wa kusogeza ndani.",
       "fixed": "Urefu usiobadilika",
       "fixedDesc": "Urefu ule ule kila wakati; fomu husogezwa ndani ya fremu.",
       "pixels": "Urefu kwa pikseli",
@@ -542,8 +542,8 @@
     "label": "Sehemu ya chini"
   },
   "authLayout": {
-    "headline": "Fomu, data na ufikiaji — chini ya udhibiti wako.",
-    "subline": "Jukwaa salama na linalonyumbulika la kuunda fomu yoyote, kukusanya na kusimamia data, kuunganisha mifumo yako na kudhibiti nani anaona nini — kwa mashirika ya ukubwa wowote, popote duniani.",
+    "headline": "Fomu, data na ufikiaji chini ya udhibiti wako.",
+    "subline": "Jukwaa salama na linalonyumbulika la kuunda fomu yoyote, kukusanya na kusimamia data, kuunganisha mifumo yako na kudhibiti nani anaona nini, kwa mashirika ya ukubwa wowote, popote duniani.",
     "badgeEncrypted": "Usimbaji fiche kamili",
     "badgeCompliance": "Udhibiti wa faragha na uzingatiaji",
     "badgeDatabase": "Hifadhidata {count}+ au hifadhi salama",
@@ -651,7 +651,7 @@
       "available": "Inapatikana",
       "unavailable": {
         "taken": "Tayari imechukuliwa",
-        "reserved": "Imehifadhiwa — chagua nyingine",
+        "reserved": "Imehifadhiwa. Chagua nyingine",
         "invalid": "Si anwani sahihi"
       },
       "subdomainHelp": "Timu yako itaingia hapa. Unaweza kuongeza kikoa chako baadaye.",
@@ -685,7 +685,7 @@
     "workspace": "Eneo la kazi"
   },
   "audit": {
-    "description": "Kila kitendo katika eneo lako la kazi — nani, nini, lini na wapi.",
+    "description": "Kila kitendo katika eneo lako la kazi: nani, nini, lini na wapi.",
     "security": "Matukio ya usalama",
     "searchPlaceholder": "Tafuta watu, vipengee, anwani za IP…",
     "emptyTitle": "Bado hakuna kilichorekodiwa",
@@ -891,7 +891,7 @@
     "menu": "Kuweka eneo la kazi",
     "settingsCard": {
       "title": "Kuweka eneo la kazi",
-      "desc": "Kampuni, chapa, mipangilio ya eneo, timu na fomu ya kwanza — rudi kwenye hatua yoyote.",
+      "desc": "Kampuni, chapa, mipangilio ya eneo, timu na fomu ya kwanza. Rudi kwenye hatua yoyote.",
       "open": "Fungua"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Msimamizi",
       "owner": "Mmiliki",
       "invalid": "Weka anwani sahihi ya barua pepe.",
-      "self": "Huyo ni wewe — tayari uko ndani.",
+      "self": "Huyo ni wewe. Tayari uko ndani.",
       "duplicate": "Barua pepe hii tayari iko kwenye orodha.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "Barua pepe {n}",
@@ -1033,7 +1033,7 @@
         "name": "Ripoti ya tukio"
       }
     },
-    "subtitle": "Anza na fomu iliyo tayari — kila kiolezo kina muundo wake, na unaweza kubadilisha chochote kabla ya kuchapisha",
+    "subtitle": "Anza na fomu iliyo tayari. Kila kiolezo kina muundo wake, na unaweza kubadilisha chochote kabla ya kuchapisha",
     "blank": "Fomu tupu",
     "all": "Zote",
     "search": "Tafuta violezo…",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "Hakuna violezo vinavyolingana",
     "emptyDesc": "Jaribu aina au utafutaji mwingine, au futa vichujio.",
     "useTitle": "Tumia kiolezo",
-    "useDesc": "Fomu yako mpya inafunguka kwenye kijenzi — badilisha swali, kanuni, hesabu au muundo wowote kabla ya kuchapisha.",
+    "useDesc": "Fomu yako mpya inafunguka kwenye kijenzi. Badilisha swali, kanuni, hesabu au muundo wowote kabla ya kuchapisha.",
     "saveAs": "Hifadhi kama kiolezo",
     "saveTitle": "Hifadhi kama kiolezo",
     "saveDesc": "Maswali, mantiki, hesabu na muundo vinakuwa kiolezo cha eneo lako la kazi. Majibu hayajumuishwi kamwe.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Maoni ya Wateja",
-        "description": "Sikia wateja wanavyofikiri kuhusu huduma yako — pamoja na swali la ufuatiliaji mtu asiporidhika."
+        "description": "Sikia wateja wanavyofikiri kuhusu huduma yako, pamoja na swali la ufuatiliaji mtu asiporidhika."
       },
       "csat_nps": {
         "name": "Utafiti wa Kuridhika kwa Wateja (CSAT / NPS)",
-        "description": "Pima kuridhika (CSAT), juhudi na uaminifu (NPS) — kila jibu linapangwa kama mtetezi, wa kati au mkosoaji."
+        "description": "Pima kuridhika (CSAT), juhudi na uaminifu (NPS). Kila jibu linapangwa kama mtetezi, wa kati au mkosoaji."
       },
       "product_review": {
         "name": "Tathmini ya Bidhaa",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Utafiti wa Ushiriki wa Wafanyakazi",
-        "description": "Utafiti mfupi usio na majina kuhusu fahari, kusudi, ukuaji na usaidizi — pamoja na fahirisi ya ushiriki kutoka 0 hadi 100."
+        "description": "Utafiti mfupi usio na majina kuhusu fahari, kusudi, ukuaji na usaidizi, pamoja na fahirisi ya ushiriki kutoka 0 hadi 100."
       },
       "expense_reimbursement": {
         "name": "Kurejeshewa Gharama",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Maoni ya Mafunzo",
-        "description": "Pima maudhui, mkufunzi, nyenzo na umuhimu wa kozi — pamoja na wastani wa alama."
+        "description": "Pima maudhui, mkufunzi, nyenzo na umuhimu wa kozi, pamoja na wastani wa alama."
       },
       "reference_check": {
         "name": "Uhakiki wa Wadhamini",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Ombi la Ufadhili wa Masomo",
-        "description": "Rekodi ya kitaaluma, hitaji la kifedha na maelezo binafsi — pamoja na alama ya ustahiki kwa jopo."
+        "description": "Rekodi ya kitaaluma, hitaji la kifedha na maelezo binafsi, pamoja na alama ya ustahiki kwa jopo."
       },
       "permission_slip": {
         "name": "Idhini ya Mzazi / Fomu ya Ruhusa",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Uthibitisho wa Uwasilishaji / Ushahidi wa Kupokea",
-        "description": "Thibitisha kilichofika, hali yake, picha na sahihi ya mpokeaji — uharibifu huomba maelezo zaidi."
+        "description": "Thibitisha kilichofika, hali yake, picha na sahihi ya mpokeaji. Uharibifu huomba maelezo zaidi."
       },
       "quality_control": {
         "name": "Orodha ya Ukaguzi wa Ubora",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Kusaini Makubaliano",
-        "description": "Onyesha makubaliano, thibitisha kila hoja kuu na usaini — pamoja na taarifa za kampuni unaposaini kwa niaba yake."
+        "description": "Onyesha makubaliano, thibitisha kila hoja kuu na usaini, pamoja na taarifa za kampuni unaposaini kwa niaba yake."
       },
       "risk_assessment": {
         "name": "Tathmini ya Hatari",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Ripoti ya Tukio / Ajali",
-        "description": "Rekodi kilichotokea, aliyeumia na hatua za kwanza zilizochukuliwa — matukio makubwa yanawekewa alama kwa ukaguzi wa haraka."
+        "description": "Rekodi kilichotokea, aliyeumia na hatua za kwanza zilizochukuliwa. Matukio makubwa yanawekewa alama kwa ukaguzi wa haraka."
       },
       "near_miss_report": {
         "name": "Ripoti ya Karibu Ajali",
-        "description": "Ripoti matukio ya karibu ajali haraka — ukubwa unaowezekana na kujirudia hutoa kipaumbele ili kinga ije kwanza."
+        "description": "Ripoti matukio ya karibu ajali haraka. Ukubwa unaowezekana na kujirudia hutoa kipaumbele ili kinga ije kwanza."
       },
       "safety_inspection": {
         "name": "Orodha ya Ukaguzi wa Usalama",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Historia ya Matibabu",
-        "description": "Magonjwa, upasuaji, dawa, historia ya familia na mtindo wa maisha — pamoja na idadi ya magonjwa kwa mtaalamu wa afya."
+        "description": "Magonjwa, upasuaji, dawa, historia ya familia na mtindo wa maisha, pamoja na idadi ya magonjwa kwa mtaalamu wa afya."
       },
       "health_screening": {
         "name": "Uchunguzi / Tamko la Afya",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Usajili wa Wajitolea",
-        "description": "Kusanya wajitolea, mambo wanayopenda na upatikanaji wao — kwa idhini ya mlezi kwa walio chini ya miaka 18."
+        "description": "Kusanya wajitolea, mambo wanayopenda na upatikanaji wao, kwa idhini ya mlezi kwa walio chini ya miaka 18."
       },
       "speaker_sponsor_application": {
         "name": "Ombi la Mzungumzaji / Mfadhili",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Fomu ya Mahitaji Maalum",
-        "description": "Mahitaji ya chakula na ufikiaji, mzio na sherehe — ili kila kitu kiwe tayari kabla ya kuwasili."
+        "description": "Mahitaji ya chakula na ufikiaji, mzio na sherehe, ili kila kitu kiwe tayari kabla ya kuwasili."
       },
       "event_catering_request": {
         "name": "Ombi la Huduma ya Chakula kwa Tukio",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Kuhifadhi Meza ya Mgahawa",
-        "description": "Tarehe, saa, idadi ya watu, mahali pa kukaa na tukio — kila kitu mwenyeji anachohitaji."
+        "description": "Tarehe, saa, idadi ya watu, mahali pa kukaa na tukio: kila kitu mwenyeji anachohitaji."
       },
       "hospitality_complaint": {
         "name": "Fomu ya Malalamiko ya Huduma",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Kukusanya Wateja Watarajiwa",
-        "description": "Jina, kampuni, ukubwa na hamu — fupi kwa ukurasa wa kutua, na chanzo kinafuatiliwa."
+        "description": "Jina, kampuni, ukubwa na hamu. Fupi kwa ukurasa wa kutua, na chanzo kinafuatiliwa."
       },
       "sales_quote_request": {
         "name": "Ombi la Bei",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Ufuatiliaji wa Mauzo",
-        "description": "Rekodi simu au mkutano: matokeo, hatua ya mauzo, hatua inayofuata na tarehe yake — haraka hata kwa simu."
+        "description": "Rekodi simu au mkutano: matokeo, hatua ya mauzo, hatua inayofuata na tarehe yake. Haraka hata kwa simu."
       }
     },
     "openGallery": "Fungua matunzio yote",
@@ -1481,7 +1481,7 @@
       "browse": "Vinjari violezo"
     },
     "categoryPage": {
-      "subtitle": "Violezo vya Formalie katika aina hii — kila kimoja na muundo wake, tayari kutumika"
+      "subtitle": "Violezo vya Formalie katika aina hii, kila kimoja na muundo wake, tayari kutumika"
     },
     "mine": {
       "subtitle": "Violezo ambavyo eneo lako la kazi lilihifadhi kutoka kwa fomu zake au kunakili kutoka Formalie",
@@ -1611,7 +1611,7 @@
     "unpublished": "Mabadiliko hayajachapishwa",
     "save": {
       "saving": "Inahifadhi…",
-      "error": "Haijahifadhiwa — endelea kuhariri ili kujaribu tena",
+      "error": "Haijahifadhiwa. Endelea kuhariri ili kujaribu tena",
       "conflict": "Imebadilishwa mahali pengine",
       "saved": "Imehifadhiwa {time}",
       "upToDate": "Mabadiliko yote yamehifadhiwa",
@@ -1627,7 +1627,7 @@
       "tablet": "Kompyuta kibao",
       "phone": "Simu",
       "device": "Kifaa",
-      "nothingSent": "Hili lilikuwa onyesho tu — hakuna kilichotumwa.",
+      "nothingSent": "Hili lilikuwa onyesho tu. Hakuna kilichotumwa.",
       "restart": "Anza upya"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Chapisha",
       "submitAgain": "Chapisha mabadiliko",
       "issues": "Rekebisha jambo {count} kabla ya kuchapisha | Rekebisha mambo {count} kabla ya kuchapisha",
-      "done": "Imechapishwa — toleo {n} liko hewani"
+      "done": "Imechapishwa. Toleo {n} liko hewani"
     },
     "issue": {
       "no_inputs": "Ongeza angalau swali moja",
@@ -1711,7 +1711,7 @@
       "minChoices": "Chaguo za chini",
       "maxChoices": "Chaguo za juu",
       "accept": "Aina za faili zinazoruhusiwa",
-      "acceptHint": "Tenganisha kwa koma, mf. .pdf,.docx,image/* — tupu = zote.",
+      "acceptHint": "Tenganisha kwa koma, mf. .pdf,.docx,image/* (tupu = zote).",
       "maxFiles": "Faili za juu",
       "maxSize": "Ukubwa wa juu (MB)",
       "minAboveMax": "Kiwango cha chini ni kikubwa kuliko cha juu.",
@@ -1782,9 +1782,9 @@
       "readonly": "Kusoma tu",
       "disabled": "Imezimwa",
       "editableHint": "Wajibuji wanaweza kujaza hii.",
-      "readonlyHint": "Inaonyeshwa na kutumwa pamoja na jibu, lakini haiwezi kubadilishwa — k.m. kumbukumbu iliyojazwa awali.",
+      "readonlyHint": "Inaonyeshwa na kutumwa pamoja na jibu, lakini haiwezi kubadilishwa (k.m. kumbukumbu iliyojazwa awali).",
       "disabledHint": "Inaonyeshwa kwa rangi ya kijivu na haitumwi pamoja na jibu.",
-      "noRequired": "Sehemu za kusoma tu na zilizozimwa haziwezi kuwa lazima — hakuna anayeweza kuzijaza."
+      "noRequired": "Sehemu za kusoma tu na zilizozimwa haziwezi kuwa lazima, kwa sababu hakuna anayeweza kuzijaza."
     },
     "labels": {
       "title": "Mahali pa lebo",
@@ -1828,13 +1828,13 @@
       "label": "Kiunda fomu, skrini nzima"
     },
     "drop": {
-      "newRow": "Dondosha hapa — safu mpya",
-      "beside": "Dondosha hapa — kando"
+      "newRow": "Dondosha hapa (safu mpya)",
+      "beside": "Dondosha hapa (kando)"
     },
     "blocks": {
       "appearance": "Mwonekano",
       "sectionPlaceholder": "Kichwa cha sehemu",
-      "descriptionPlaceholder": "Ongeza maelezo (si lazima) — bofya mara mbili kuhariri",
+      "descriptionPlaceholder": "Ongeza maelezo (si lazima). Bofya mara mbili kuhariri",
       "paragraphPlaceholder": "Andika maandishi…",
       "paragraphHint": "Bofya aya kwenye turubai ili kuandika. Chagua maandishi kwa herufi nzito, viungo, orodha na upangaji.",
       "size": "Ukubwa",
@@ -1867,7 +1867,7 @@
       "caption": "Maelezo ya picha",
       "imageWidth": "Ukubwa wa picha",
       "href": "Kiungo kinapobofywa",
-      "hrefHint": "Si lazima — hufunguka kwenye kichupo kipya.",
+      "hrefHint": "Si lazima. Hufunguka kwenye kichupo kipya.",
       "rounded": "Pembe za mviringo",
       "fill": "Jaza",
       "height": "Urefu",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Chagua kutoka kwenye orodha…",
       "selected": "Ni {n} waliochaguliwa pekee wanaoweza kuona na kujaza sehemu hii.",
-      "noRequired": "Sehemu zenye vikwazo haziwezi kuwa za lazima — watu ambao sehemu hii si yao lazima bado waweze kuwasilisha. Majibu yao yanaonyeshwa kwa watu hao hao pekee."
+      "noRequired": "Sehemu zenye vikwazo haziwezi kuwa za lazima. Watu ambao sehemu hii si yao lazima bado waweze kuwasilisha. Majibu yao yanaonyeshwa kwa watu hao hao pekee."
     },
     "language": {
       "title": "Lugha ya fomu",
       "hint": "Vitufe, ujumbe na tarehe hufuata lugha hii, na maandishi yaliyotoka kwenye kiolezo hutafsiriwa pamoja nayo. Maandishi uliyoandika mwenyewe yanabaki kama yalivyo.",
       "translated": "Maandishi {n} yametafsiriwa | Maandishi {n} yametafsiriwa",
-      "kept": "Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu. | Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu.",
+      "kept": "Maandishi {n} uliyoandika yanabaki kama yalivyo. Yahariri kwenye fomu. | Maandishi {n} uliyoandika yanabaki kama yalivyo. Yahariri kwenye fomu.",
       "changed": "Lugha ya fomu: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Sasisha kiolezo",
       "updatedToast": "Kiolezo “{name}” kimesasishwa kwa mabadiliko ya hivi karibuni ya fomu hii",
       "saveNew": "Badala yake hifadhi kama kiolezo kipya",
-      "saveNewHint": "Hutengeneza nakala tofauti — kiolezo kilichopo kinabaki kama kilivyo."
+      "saveNewHint": "Hutengeneza nakala tofauti. Kiolezo kilichopo kinabaki kama kilivyo."
     },
     "identity": {
       "title": "Tambua wajibuji",
-      "hint": "Jinsi Formalie inavyotofautisha watu, ili mtu mmoja asijibu mara mbili — na mtu mwingine asidhaniwe kuwa yeye kamwe.",
+      "hint": "Jinsi Formalie inavyotofautisha watu, ili mtu mmoja asijibu mara mbili na mtu mwingine asidhaniwe kuwa yeye kamwe.",
       "email": "Barua pepe ya mjibuji mwenyewe",
-      "emailHint": "Barua pepe ya mtu anayejaza — si ya mdhamini, meneja au mlezi. Jibu la pili kwa barua pepe hiyo linakataliwa; linalofanana sana linakaguliwa.",
+      "emailHint": "Barua pepe ya mtu anayejaza, si ya mdhamini, meneja au mlezi. Jibu la pili kwa barua pepe hiyo linakataliwa; linalofanana sana linakaguliwa.",
       "verify": "Thibitisha barua pepe kabla ya kutuma",
-      "verifyHint": "Wajibuji huweka msimbo uliotumwa kwa barua pepe yao — jibu moja kwa kila barua pepe iliyothibitishwa.",
+      "verifyHint": "Wajibuji huweka msimbo uliotumwa kwa barua pepe yao. Jibu moja kwa kila barua pepe iliyothibitishwa.",
       "suggested": "inapendekezwa",
       "off": "Imezimwa",
       "none": "Bila barua pepe ya mjibuji, Formalie inaweza kutambua kivinjari kilekile tu (watu wanaweza kutumia kifaa kingine).",
-      "verifyLost": "Uthibitishaji wa barua pepe umewashwa, lakini fomu haina tena swali la barua pepe ya mjibuji — umesitishwa hadi uchague swali hapo juu.",
-      "verifyRequired": "Swali la barua pepe ni la lazima wakati uthibitishaji umewashwa — tunalihitaji ili kutuma msimbo."
+      "verifyLost": "Uthibitishaji wa barua pepe umewashwa, lakini fomu haina tena swali la barua pepe ya mjibuji. Umesitishwa hadi uchague swali hapo juu.",
+      "verifyRequired": "Swali la barua pepe ni la lazima wakati uthibitishaji umewashwa. Tunalihitaji ili kutuma msimbo."
     },
     "guide": {
       "title": "Mwongozo wa usaidizi",
@@ -1937,7 +1937,7 @@
       "empty": "Bado hakuna mwongozo",
       "untitled": "Mwongozo usio na kichwa",
       "summary": "{title} · neno {n} | {title} · maneno {n}",
-      "noContent": "Andika mwongozo — kitufe kitaonekana tu ukiwa na maudhui.",
+      "noContent": "Andika mwongozo. Kitufe kitaonekana tu ukiwa na maudhui.",
       "editTitle": "Mwongozo wa usaidizi",
       "editDesc": "Eleza jinsi ya kujaza fomu hii: vitu vya kuandaa, maswali magumu, na kinachofuata baadaye.",
       "titleLabel": "Kichwa",
@@ -2030,14 +2030,14 @@
       "ip": "Weka anwani sahihi ya IP kwa {field}.",
       "domain": "Weka jina la kikoa kwa {field}, kama example.org.",
       "mac": "Weka anwani ya MAC kwa {field}, kama 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} si IBAN sahihi — kagua nambari.",
+      "iban": "{field} si IBAN sahihi. Kagua nambari.",
       "bic": "Weka msimbo wa SWIFT / BIC wenye herufi 8 au 11 kwa {field}.",
       "color": "Chagua rangi kwa {field}.",
       "duration": "Weka muda kwa {field} (dakika 0–59).",
       "name": "Weka jina la kwanza na la mwisho kwa {field}.",
       "consent": "Tafadhali thibitisha {field} ili kuendelea.",
       "choice": "Chagua chaguo kutoka kwenye orodha kwa {field}.",
-      "file": "{field}: faili moja haikumaliza kupakiwa — iondoe kisha uiongeze tena."
+      "file": "{field}: faili moja haikumaliza kupakiwa. Iondoe kisha uiongeze tena."
     },
     "page": {
       "logo": "Nembo",
@@ -2073,7 +2073,7 @@
       "notAdded": "Faili halikuongezwa",
       "wrongType": "Aina ya faili si sahihi: {files}. Chagua mojawapo ya aina zinazoruhusiwa.",
       "tooBig": "Kubwa mno (zaidi ya MB {mb}): {files}",
-      "tooMany": "Faili {max} tu zinaruhusiwa — faili {n} halikuongezwa. | Faili {max} tu zinaruhusiwa — faili {n} hazikuongezwa.",
+      "tooMany": "Faili {max} tu zinaruhusiwa. Faili {n} halikuongezwa. | Faili {max} tu zinaruhusiwa. Faili {n} hazikuongezwa.",
       "limits": "Hadi faili {max}, MB {mb} kila moja",
       "count": "{n} kati ya {max}",
       "addMore": "Ongeza zaidi",
@@ -2088,11 +2088,11 @@
       "close": "Funga ukurasa huu",
       "closeHint": "Sasa unaweza kufunga kichupo hiki.",
       "alreadyTitle": "Umeshajaza fomu hii",
-      "alreadyDesc": "Jibu lako lilipokelewa kutoka kivinjari hiki. Ijaze tena kwa ajili ya mtu mwingine tu — jibu la kila mtu linakubaliwa mara moja.",
+      "alreadyDesc": "Jibu lako lilipokelewa kutoka kivinjari hiki. Ijaze tena kwa ajili ya mtu mwingine tu. Jibu la kila mtu linakubaliwa mara moja.",
       "askTitle": "Je, hii ni kwa ajili ya mtu mwingine?",
       "askDesc": "Umeshatuma jibu kutoka kivinjari hiki.",
       "askPoint1": "Endelea tu ikiwa jibu hili ni la mtu mwingine.",
-      "askPoint2": "Jibu la mtu yule yule — au majibu yanayofanana kabisa — halitakubaliwa mara mbili.",
+      "askPoint2": "Jibu la mtu yule yule (au majibu yanayofanana kabisa) halitakubaliwa mara mbili.",
       "confirm": "Ndiyo, kwa mtu mwingine",
       "stay": "Hapana, baki hapa",
       "duplicate": "Majibu haya hayo yameshatumwa",
@@ -2105,8 +2105,8 @@
       "registeredField": "Tayari kimetumika kwa jibu.",
       "possibleTitle": "Je, huyu ni mtu mwingine?",
       "possibleDesc": "Hili linaonekana kama jibu ambalo tayari tunalo ({email}, {date}).",
-      "possiblePoint1": "Ikiwa wewe ni mtu mwingine, endelea — timu itaona majibu yote mawili.",
-      "possiblePoint2": "Ikiwa ni wewe, kagua majibu yako badala yake — jibu la pili kutoka kwa mtu yuleyule halitahesabiwa.",
+      "possiblePoint1": "Ikiwa wewe ni mtu mwingine, endelea. Timu itaona majibu yote mawili.",
+      "possiblePoint2": "Ikiwa ni wewe, kagua majibu yako badala yake. Jibu la pili kutoka kwa mtu yuleyule halitahesabiwa.",
       "different": "Ndiyo, mimi ni mtu mwingine",
       "review": "Hapana, nikague majibu yangu",
       "verifyTitle": "Thibitisha barua pepe yako",
@@ -2125,10 +2125,10 @@
       "auto": "Majibu yako yanahifadhiwa unapoendelea",
       "saving": "Inahifadhi…",
       "saved": "Imehifadhiwa {when}",
-      "notSaved": "Haijahifadhiwa — angalia muunganisho wako",
+      "notSaved": "Haijahifadhiwa. Angalia muunganisho wako",
       "later": "Hifadhi na uendelee baadaye",
       "title": "Endelea baadaye",
-      "desc": "Tutakutumia kiungo binafsi kinachorejesha majibu yako — kwenye kifaa chochote, kwa siku 30.",
+      "desc": "Tutakutumia kiungo binafsi kinachorejesha majibu yako kwenye kifaa chochote, kwa siku 30.",
       "email": "Barua pepe yako",
       "emailHint": "Kiungo kitatumwa kwa anwani hii pekee. Kiweke siri: yeyote aliye nacho anaweza kuendelea na fomu yako.",
       "send": "Nitumie kiungo",
@@ -2282,7 +2282,7 @@
       "empty": "Ongeza fomula",
       "unknown": "Hakuna sehemu inayotumia ufunguo “{key}”",
       "self": "Sehemu haiwezi kujitumia yenyewe",
-      "syntax": "Fomula hii haijakamilika — angalia mabano, koma na viendeshaji",
+      "syntax": "Fomula hii haijakamilika. Angalia mabano, koma na viendeshaji",
       "functions": "Vitendakazi:",
       "choiceScored": "Huhesabiwa kama namba ya chaguo lililochaguliwa",
       "choiceUnscored": "Pa chaguo zake namba (mipangilio ya sehemu → Chaguo) ili uitumie katika jumla",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Angalia majibu haya",
     "thenTitle": "Kisha fanya hivi",
     "ifHelp": "Chagua swali, jinsi ya kulilinganisha, na jibu litakaloanzisha kanuni.",
-    "thenHelp": "Chagua kitakachotokea majibu yakilingana — na kwa swali au ukurasa upi.",
+    "thenHelp": "Chagua kitakachotokea majibu yakilingana, na kwa swali au ukurasa upi.",
     "matchLead": "Endesha kanuni wakati",
     "andChip": "na",
     "orChip": "au",
@@ -2410,7 +2410,7 @@
     "deleteList": "Futa orodha",
     "deleteListTitle": "Ungependa kufuta orodha “{name}”?",
     "deleteListDesc": "Sehemu ambazo tayari zinaitumia zitabaki na chaguo zao.",
-    "listDesc": "Chaguo zinazotumika tena kwa sehemu yoyote ya kuchagua — nchi, maeneo, bidhaa, timu …",
+    "listDesc": "Chaguo zinazotumika tena kwa sehemu yoyote ya kuchagua: nchi, maeneo, bidhaa, timu …",
     "listName": "Jina",
     "listNamePlaceholder": "k.m. Maeneo",
     "listOptions": "Chaguo",
@@ -2426,7 +2426,7 @@
     "useList": "Jaza kutoka kwenye orodha…",
     "saveAsList": "Hifadhi kama orodha",
     "toast": {
-      "fieldSaved": "“{name}” imehifadhiwa — iko chini ya Zilizohifadhiwa",
+      "fieldSaved": "“{name}” imehifadhiwa. Iko chini ya Zilizohifadhiwa",
       "fieldRemoved": "“{name}” imeondolewa kwenye sehemu zilizohifadhiwa",
       "listCreated": "Orodha “{name}” imeundwa",
       "listUpdated": "Orodha “{name}” imesasishwa",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "Fomu iko juu ya kadi katikati ya ukurasa.",
-      "plain": "Hakuna kadi — fomu iko moja kwa moja kwenye mandharinyuma ya ukurasa.",
+      "plain": "Hakuna kadi. Fomu iko moja kwa moja kwenye mandharinyuma ya ukurasa.",
       "split": "Picha kando ya fomu (juu yake kwenye simu).",
       "full": "Fomu inachukua upana wote wa ukurasa."
     },
@@ -2546,7 +2546,7 @@
       "error": "Hitilafu"
     },
     "colorInvalid": "Tumia rangi ya hex kama #1a2b3c.",
-    "lowContrast": "Utofautishaji mdogo ({ratio} : 1) — huenda ikawa vigumu kusoma.",
+    "lowContrast": "Utofautishaji mdogo ({ratio} : 1). Huenda ikawa vigumu kusoma.",
     "pickColor": "Chagua rangi ya {name}",
     "inputStyle": "Mtindo",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Upau wa juu wenye nembo na tovuti yako, fomu, na sehemu ya chini.",
         "spotlight": "Bango la rangi ya chapa lenye kichwa na taarifa fupi; fomu inapanda ndani yake.",
-        "side": "Paneli yenye chapa kando ya fomu — hupangwa juu na chini kwenye simu.",
+        "side": "Paneli yenye chapa kando ya fomu. Hupangwa juu na chini kwenye simu.",
         "minimal": "Fomu pekee na sehemu ya chini nyembamba."
       },
       "tone": "Rangi ya upau na paneli",
@@ -2636,7 +2636,7 @@
     "updateExisting": "Sasisha “{name}”",
     "saveNew": "Hifadhi kama mandhari mpya",
     "name": "Jina",
-    "namePlaceholder": "mf. Chapa — angavu",
+    "namePlaceholder": "mf. Chapa (angavu)",
     "renameTitle": "Badilisha jina la mandhari",
     "rename": "Badilisha jina",
     "duplicate": "Nakili",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Muundo wa Formalie",
       "systemHint": "Mandhari haya ni sehemu ya Formalie na hayawezi kubadilishwa. Yanakili ili kuunda toleo lako mwenyewe.",
-      "systemDesc": "Muundo wa Formalie — kusoma tu",
+      "systemDesc": "Muundo wa Formalie (kusoma tu)",
       "crumb": "Kihariri cha mandhari",
       "newTitle": "Mandhari mpya",
       "untitled": "Mandhari isiyo na jina",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Ongeza hifadhidata zako, zijaribu na uweke vitambulisho vyake salama.",
       "explorer": "Vinjari skima, majedwali na safu, na uhamishe unachohitaji.",
-      "query": "Endesha SQL kwenye hifadhidata zako — kusoma tu kwa chaguo-msingi, kila uendeshaji hurekodiwa.",
+      "query": "Endesha SQL kwenye hifadhidata zako. Ni kusoma tu kwa chaguo-msingi, na kila uendeshaji hurekodiwa.",
       "savedQueries": "Hifadhi na ushiriki hoja ambazo timu yako hutumia zaidi.",
       "destinations": "Chagua mahali kila fomu inapotuma majibu yake na ulinganishe sehemu na safuwima.",
       "transfers": "Ingiza faili kwenye majedwali na uhamishe majedwali au matokeo ya hoja.",
@@ -2721,7 +2721,7 @@
     "example": "Jinsi endpoint inavyoonekana (mfano)",
     "channels": {
       "title": "Kusanya data kutoka kila upande",
-      "hint": "Kila fomu inaweza kupokea majibu kupitia kiungo chake, kupachikwa kwenye tovuti yako na API yake yenyewe — yote yanafika mahali pamoja.",
+      "hint": "Kila fomu inaweza kupokea majibu kupitia kiungo chake, kupachikwa kwenye tovuti yako na API yake yenyewe. Yote yanafika mahali pamoja.",
       "link": "Kiungo cha kushiriki",
       "embed": "Fomu iliyopachikwa",
       "api": "Endpoints za API"
@@ -2734,7 +2734,7 @@
       "logs": "Kila mwito pamoja na hali yake, muda uliotumika na mpigaji.",
       "analytics": "Miito, hitilafu na muda wa majibu kwa kila huduma na endpoint.",
       "docs": "Nyaraka zilizo tayari na mahali pa kujaribu kila endpoint.",
-      "webhooks": "Tuma kila jibu jipya kwa mifumo yako mara linapofika — limesainiwa na hujaribiwa tena.",
+      "webhooks": "Tuma kila jibu jipya kwa mifumo yako mara linapofika. Limesainiwa na hujaribiwa tena.",
       "apiKeys": "Funguo za API ya Formalie: dhibiti fomu na majibu kutoka kwenye msimbo wako.",
       "apps": "Unganisha programu kama lahajedwali na gumzo la timu."
     }
@@ -2744,7 +2744,7 @@
     "back": "Muhtasari wa msaidizi wa AI",
     "promise": {
       "title": "Udhibiti uko mikononi mwako",
-      "review": "Msaidizi anapendekeza — wewe unakagua na kutumia.",
+      "review": "Msaidizi anapendekeza. Wewe unakagua na kutumia.",
       "private": "Unachagua anachoweza kusoma; data binafsi inaweza kuachwa nje.",
       "audit": "Kila ombi hurekodiwa kwenye historia na kumbukumbu ya ukaguzi."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Fungua kwenye kichupo kipya",
       "close": "Funga",
       "loading": "Inapakia {host}…",
-      "slow": "Inachukua muda? Baadhi ya tovuti haziwezi kuonyeshwa ndani ya ukurasa mwingine — ifungue kwenye kichupo kipya badala yake.",
-      "safe": "Majibu yako yamehifadhiwa — funga dirisha hili ili kuendelea na fomu.",
+      "slow": "Inachukua muda? Baadhi ya tovuti haziwezi kuonyeshwa ndani ya ukurasa mwingine. Ifungue kwenye kichupo kipya badala yake.",
+      "safe": "Majibu yako yamehifadhiwa. Funga dirisha hili ili kuendelea na fomu.",
       "backToForm": "Rudi kwenye fomu"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Inakagua…",
       "free": "Kiungo hiki kinapatikana",
       "taken": "Fomu nyingine tayari inatumia kiungo hiki",
-      "reserved": "Neno hili limehifadhiwa — chagua jingine",
+      "reserved": "Neno hili limehifadhiwa. Chagua jingine",
       "invalid": "Tumia herufi ndogo, nambari na vistari 3–60",
       "remove": "Ondoa kiungo maalum",
       "copy": "Nakili kiungo",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Baada ya hapo, kiungo kitaonyesha kwamba fomu imejaa.",
       "max": "Idadi ya juu ya majibu",
       "used": "{n} kati ya {max} yametumika",
-      "full": "Kikomo kimefikiwa — fomu haipokei majibu zaidi.",
+      "full": "Kikomo kimefikiwa. Fomu haipokei majibu zaidi.",
       "when": "Wakati inapokea majibu",
       "always": "Daima (bila tarehe ya kuanza wala kumalizika)",
       "from": "Kuanzia {from}",
@@ -2935,7 +2935,7 @@
       "any": "Tovuti yoyote",
       "anyDesc": "Mtu yeyote aliye na msimbo wa kupachika anaweza kuweka fomu kwenye tovuti yake.",
       "listed": "Tovuti unazoorodhesha pekee",
-      "listedDesc": "Tovuti nyingine haziwezi kuonyesha fomu — kivinjari kinaikataa.",
+      "listedDesc": "Tovuti nyingine haziwezi kuonyesha fomu, kwa sababu kivinjari kinaikataa.",
       "sites": "Tovuti zinazoruhusiwa",
       "sitesHint": "Andika au bandika anwani, kisha bonyeza Enter. *.example.com inajumuisha tovuti zake ndogo. Hadi {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Jinsi viungo vya fomu yako vinavyofanya kazi",
-      "desc": "Fomu yako inaweza kuwa na hadi viungo vitatu. Vyote hufungua fomu ileile — tumia kinachofaa mahali unapokishiriki.",
+      "desc": "Fomu yako inaweza kuwa na hadi viungo vitatu. Vyote hufungua fomu ileile. Tumia kinachofaa mahali unapokishiriki.",
       "always": "Huwashwa kila wakati",
       "on": "Imewashwa",
       "off": "Hakijawekwa",
       "original": {
         "name": "Kiungo asili",
-        "for": "Huundwa pamoja na fomu. Hakibadiliki kamwe na hufanya kazi kila wakati — hata baada ya kuongeza kiungo maalum au kiungo kifupi."
+        "for": "Huundwa pamoja na fomu. Hakibadiliki kamwe na hufanya kazi kila wakati, hata baada ya kuongeza kiungo maalum au kiungo kifupi."
       },
       "custom": {
         "name": "Kiungo maalum",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Bango au msimbo wa QR unatumia kiungo kifupi",
-          "then": "kinaendelea kufanya kazi bila kujali unachofanya na kiungo maalum. Kuondoa kiungo kifupi hukizima kabisa — msimbo wake haupewi fomu nyingine kamwe."
+          "then": "kinaendelea kufanya kazi bila kujali unachofanya na kiungo maalum. Kuondoa kiungo kifupi hukizima kabisa, na msimbo wake haupewi fomu nyingine kamwe."
         },
         "closed": {
           "when": "Fomu imefungwa, imejaa, imeisha muda au imelindwa",
-          "then": "kila kiungo huonyesha ujumbe uleule au skrini ya nenosiri — hakuna kiungo kinachoweza kuikwepa."
+          "then": "kila kiungo huonyesha ujumbe uleule au skrini ya nenosiri, na hakuna kiungo kinachoweza kuikwepa."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Maelezo",
       "descriptionPlaceholder": "Sentensi moja kuhusu madhumuni ya fomu",
       "image": "Picha",
-      "imageHint": "Huonyeshwa juu ya kadi ya kiungo. PNG, JPEG au WebP, hadi 5 MB — 1200 × 630 px hufaa zaidi.",
+      "imageHint": "Huonyeshwa juu ya kadi ya kiungo. PNG, JPEG au WebP, hadi 5 MB. Ukubwa bora ni 1200 × 630 px.",
       "imageRule": "Tumia picha ya PNG, JPEG au WebP isiyozidi 5 MB.",
       "upload": "Pakia picha",
       "replace": "Badilisha",
@@ -3005,20 +3005,20 @@
       "asCard": "Kadi ya kiungo",
       "asSearch": "Tokeo la utafutaji",
       "noImage": "Hakuna picha",
-      "hiddenFromSearch": "Imefichwa kwa injini za utafutaji — fomu hii haitaonekana katika matokeo ya utafutaji."
+      "hiddenFromSearch": "Imefichwa kwa injini za utafutaji. Fomu hii haitaonekana katika matokeo ya utafutaji."
     },
     "invite": {
       "title": "Mialiko",
       "counts": "{responded} kati ya {total} wamejibu",
-      "saveFirst": "Hifadhi “Walioalikwa pekee” ili mialiko ianze kufanya kazi — hadi hapo fomu inabaki wazi kama awali.",
+      "saveFirst": "Hifadhi “Walioalikwa pekee” ili mialiko ianze kufanya kazi. Hadi hapo fomu inabaki wazi kama awali.",
       "add": "Alika watu",
-      "addHint": "Anwani za barua pepe pekee. Zitenganishe kwa koma, nafasi au mstari mpya — au bandika orodha.",
+      "addHint": "Anwani za barua pepe pekee. Zitenganishe kwa koma, nafasi au mstari mpya, au bandika orodha.",
       "placeholder": "jina{'@'}example.org",
       "button": "Alika mtu {n} | Alika watu {n}",
       "buttonEmpty": "Alika",
       "sent": "Mwaliko {n} umetumwa | Mialiko {n} imetumwa",
       "skipped": "Mtu {n} alikuwa ameshaalikwa | Watu {n} walikuwa wameshaalikwa",
-      "devLinks": "Viungo binafsi — vitatumwa kwa barua pepe kwa kila mtu Formalie itakapozinduliwa; vinaonyeshwa hapa wakati wa uundaji:",
+      "devLinks": "Viungo binafsi. Vitatumwa kwa barua pepe kwa kila mtu Formalie itakapozinduliwa; vinaonyeshwa hapa wakati wa uundaji:",
       "none": "Bado hakuna aliyealikwa.",
       "resent": "Kiungo kipya kimetumwa kwa {email}",
       "resend": "Tuma kiungo kipya",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Watu wenye ufikiaji",
-      "desc": "Wafanyakazi wa eneo lako la kazi pekee — haibadilishi nani anaweza kujaza fomu.",
+      "desc": "Wafanyakazi wa eneo lako la kazi pekee. Haibadilishi nani anaweza kujaza fomu.",
       "team": "Kila mtu mwingine katika eneo la kazi",
       "teamDesc": "Watu wasioorodheshwa hapa chini hupata hiki.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Ongeza mtu…",
       "levelFor": "Ufikiaji wa {name}",
       "remove": "Ondoa {name}",
-      "note": "Ufikiaji binafsi wa mtu huchukua nafasi ya chaguo-msingi la eneo la kazi kwake — uwe zaidi au pungufu. Wasimamizi wa eneo la kazi na mmiliki wa fomu huwa na ufikiaji kamili kila wakati.",
+      "note": "Ufikiaji binafsi wa mtu huchukua nafasi ya chaguo-msingi la eneo la kazi kwake, uwe zaidi au pungufu. Wasimamizi wa eneo la kazi na mmiliki wa fomu huwa na ufikiaji kamili kila wakati.",
       "viewOnly": "Kutazama pekee",
-      "viewOnlyDesc": "Unaweza kutazama fomu hii na mipangilio yake. Mabadiliko hayahifadhiwi — mwombe mmiliki wa fomu ufikiaji wa kuhariri.",
+      "viewOnlyDesc": "Unaweza kutazama fomu hii na mipangilio yake. Mabadiliko hayahifadhiwi. Mwombe mmiliki wa fomu ufikiaji wa kuhariri.",
       "responsesOnly": "Unaweza kuona majibu ya fomu hii pekee",
       "responsesOnlyDesc": "Maswali na muundo havijashirikiwa nawe. Wasiliana na mmiliki wa fomu ikiwa unahitaji ufikiaji zaidi.",
       "viewForm": "Tazama"
     },
     "section": {
       "answering": "Kujibu fomu",
-      "answeringDesc": "Nani anaweza kuijaza na jinsi ya kuifikia — kwa kila mtu unayemtumia fomu.",
+      "answeringDesc": "Nani anaweza kuijaza na jinsi ya kuifikia, kwa kila mtu unayemtumia fomu.",
       "team": "Timu yako",
       "teamDesc": "Wafanyakazi wa eneo lako la kazi wanaounda na kusimamia fomu hii. Haibadilishi nani anaweza kuijaza."
     }

@@ -1,19 +1,19 @@
 <!--
-  Designer controls (FRONTEND-SPEC §7): starting points on top, then collapsible groups —
+  Designer controls (FRONTEND-SPEC §7): starting points on top, then collapsible groups,
   Page (the frame around the form on its link) · Layout · Background · Form container · Typography · Colours · Inputs · Buttons · Header ·
   Footer · Thank-you page. "Reset" goes back to the workspace default.
 -->
 <script setup lang="ts">
 import type { AccordionItem } from '@nuxt/ui'
 
-/** standalone: the theme editor (no "Your themes" — you are editing one). */
+/** standalone: the theme editor (no "Your themes", you are editing one). */
 const props = defineProps<{ standalone?: boolean }>()
 const { t } = useI18n()
 const d = useDesigner()
 const confirm = useConfirm()
 
 const groups = computed<AccordionItem[]>(() => [
-  // The page around the form on its link (F10) — first, because it's what people see first.
+  // The page around the form on its link (F10), first, because it's what people see first.
   { value: 'frame', label: t('designer.group.frame'), icon: 'i-lucide-app-window', slot: 'frame' },
   { value: 'layout', label: t('designer.group.layout'), icon: 'i-lucide-layout-template', slot: 'layout' },
   { value: 'background', label: t('designer.group.background'), icon: 'i-lucide-paint-bucket', slot: 'background' },

@@ -1,6 +1,6 @@
 <!--
   Email addresses as chips (owner, 2026-10-04: invitations take emails only). Typing a comma,
-  space, semicolon or Enter — or pasting a list — turns each address into its own chip; chips wrap
+  space, semicolon or Enter, or pasting a list, turns each address into its own chip; chips wrap
   onto new lines. Invalid addresses are red with the reason; duplicates are merged; × or Backspace
   removes a chip. v-model: every entry, with `valid` set.
 -->

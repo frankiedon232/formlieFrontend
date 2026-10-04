@@ -1,5 +1,5 @@
 <!--
-  The value part of a condition (or of "set value"): fits the field and the operator —
+  The value part of a condition (or of "set value"): fits the field and the operator,
   options (one or several), number, date (Nuxt UI date input), yes / no, a count, or a range
   (from … to …). Free text otherwise; several free-text values as tags.
 -->
@@ -49,13 +49,13 @@ const fromInput = (v: unknown) => (v === '' || v == null ? null : kind.value ===
     <template v-if="isDate">
       <UInputDate
         :model-value="toDate(value)"
-        :aria-label="`${label} — ${t('logic.from')}`"
+        :aria-label="`${label}, ${t('logic.from')}`"
         class="w-full"
         @update:model-value="v => emit('update', v ? v.toString() : null, value2)"
       />
       <UInputDate
         :model-value="toDate(value2)"
-        :aria-label="`${label} — ${t('logic.to')}`"
+        :aria-label="`${label}, ${t('logic.to')}`"
         class="w-full"
         @update:model-value="v => emit('update', (value as LogicValue) ?? null, v ? v.toString() : null)"
       />
@@ -65,7 +65,7 @@ const fromInput = (v: unknown) => (v === '' || v == null ? null : kind.value ===
         type="number"
         :model-value="value == null ? '' : String(value)"
         :placeholder="t('logic.from')"
-        :aria-label="`${label} — ${t('logic.from')}`"
+        :aria-label="`${label}, ${t('logic.from')}`"
         class="w-full"
         @update:model-value="v => emit('update', fromInput(v), value2)"
       />
@@ -73,7 +73,7 @@ const fromInput = (v: unknown) => (v === '' || v == null ? null : kind.value ===
         type="number"
         :model-value="value2 == null ? '' : String(value2)"
         :placeholder="t('logic.to')"
-        :aria-label="`${label} — ${t('logic.to')}`"
+        :aria-label="`${label}, ${t('logic.to')}`"
         class="w-full"
         @update:model-value="v => emit('update', (value as LogicValue) ?? null, v === '' ? null : Number(v))"
       />

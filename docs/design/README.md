@@ -4,7 +4,7 @@ Images that guide the look and feel of the Formalie portal. Claude Code checks t
 
 **These images are the exact target design** (owner, 2026-10-02): same layout, spacing, placement and monochrome look (black primary actions). Only the product name/logo and the domain content differ.
 
-**Style, not features** (owner, 2026-10-02): the images define the *look and feel*. Do not copy their widgets (kanban cards, “Due” pills, task charts) into screens that are about something else — design what the screen needs and dress it in this style.
+**Style, not features** (owner, 2026-10-02): the images define the *look and feel*. Do not copy their widgets (kanban cards, “Due” pills, task charts) into screens that are about something else, design what the screen needs and dress it in this style.
 
 | Image | Applies to | What to take from it | What to ignore |
 | --- | --- | --- | --- |

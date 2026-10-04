@@ -1,4 +1,4 @@
-# 02 — Local Development Environment
+# 02, Local Development Environment
 
 ## Current setup (as done by Frankie)
 
@@ -40,9 +40,9 @@ Add more lines as new test tenants are created.
 
 - Default entry: `https://manage.formalie.dev:2202/`
 - Public form links (from F10): `https://forms.formalie.dev:2202/{formKey}/fill` · `/embed`, or `https://{sub}.formalie.dev:2202/{formKey}/fill` (production drops the port; see 01-ARCHITECTURE → Public URLs)
-- API service (from F13): `https://api.formalie.dev/{apiKey}/{endpoint}` — served by the backend API service; the wildcard certificate already covers `api.` and `forms.`
+- API service (from F13): `https://api.formalie.dev/{apiKey}/{endpoint}`, served by the backend API service; the wildcard certificate already covers `api.` and `forms.`
 - Tenant workspaces: `https://remedylegal.formalie.dev:2202/`, `https://samathtax.formalie.dev:2202/`
-- API (direct): `https://formalie.dev:5004/` — the browser should call `/api/...` on its own origin; Nuxt proxies it (below).
+- API (direct): `https://formalie.dev:5004/`, the browser should call `/api/...` on its own origin; Nuxt proxies it (below).
 
 ## Nuxt dev settings to add
 
@@ -65,9 +65,9 @@ Every way of opening the dev server must work. Host classification is one shared
 | `https://formalie.dev:2202`                                                    | ✅                                   | ✅                                                                                                                                                      | manage (root)                                            |
 | `https://{sub}.formalie.dev:2202` (needs hosts line)                           | ✅                                   | ✅                                                                                                                                                      | tenant `{sub}`                                           |
 | `https://localhost:2202` / `https://127.0.0.1:2202`                            | ✅                                   | ✅                                                                                                                                                      | manage (local); `?tenant={sub}` in dev opens a tenant    |
-| `https://{sub}.localhost:2202` (no hosts line, Chrome/Edge/Firefox resolve it) | ✅                                   | ⚠ wildcards over single-label `localhost` are rejected by Windows/Chrome — add explicit names (`acme.localhost`) to mkcert, or use `{sub}.formalie.dev` | tenant `{sub}`                                           |
+| `https://{sub}.localhost:2202` (no hosts line, Chrome/Edge/Firefox resolve it) | ✅                                   | ⚠ wildcards over single-label `localhost` are rejected by Windows/Chrome, add explicit names (`acme.localhost`) to mkcert, or use `{sub}.formalie.dev` | tenant `{sub}`                                           |
 | `https://192.168.x.x:2202` (phone on Wi-Fi)                                    | ✅                                   | ✅ (cert includes 192.168.0.180; phone needs the mkcert root CA)                                                                                        | manage; `?tenant={sub}` in dev                           |
-| `https://[::1]:2202`                                                           | ❌ with `--host 0.0.0.0` (IPv4 only) | ✅                                                                                                                                                      | manage — start with `--host ::` to listen on IPv4 + IPv6 |
+| `https://[::1]:2202`                                                           | ❌ with `--host 0.0.0.0` (IPv4 only) | ✅                                                                                                                                                      | manage, start with `--host ::` to listen on IPv4 + IPv6 |
 
 Current cert (regenerated 2026-10-02) covers all of the above; regenerate when your LAN IP changes:
 
@@ -98,4 +98,4 @@ Cloudflare wildcard DNS `*.formalie.com` → Nginx → Nuxt + FastAPI. Same subd
 
 ## Server-only secrets (F10)
 
-- `NUXT_INTERNAL_TOKEN` — shared between the Nuxt server and the API for the server-rendered public form pages (`/_ssr/public-forms/{key}` → API `/internal/public-forms/{key}`). Development makes a random one per start; production must set the same value on both sides. Never exposed to browsers.
+- `NUXT_INTERNAL_TOKEN`, shared between the Nuxt server and the API for the server-rendered public form pages (`/_ssr/public-forms/{key}` → API `/internal/public-forms/{key}`). Development makes a random one per start; production must set the same value on both sides. Never exposed to browsers.

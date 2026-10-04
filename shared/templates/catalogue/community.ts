@@ -21,9 +21,9 @@ export const COMMUNITY_TEMPLATES: TemplateDef[] = [
         q('radio', 'Membership level', {
           key: 'level',
           required: true,
-          options: scored(['Standard — 60.00 a year', 60], ['Concession (student / senior) — 30.00 a year', 30], ['Family — 100.00 a year', 100], ['Supporter — 150.00 a year', 150]),
+          options: scored(['Standard: 60.00 a year', 60], ['Concession (student / senior): 30.00 a year', 30], ['Family: 100.00 a year', 100], ['Supporter: 150.00 a year', 150]),
         }),
-        q('checkbox', 'Extras', { key: 'extras', options: scored(['Printed newsletter — 10.00', 10], ['Locker or storage — 25.00', 25]) }),
+        q('checkbox', 'Extras', { key: 'extras', options: scored(['Printed newsletter: 10.00', 10], ['Locker or storage: 25.00', 25]) }),
         q('number', 'Additional family members', { key: 'family_members', default: 0, validation: { min: 0, max: 8 } }),
         q('calculated', 'Yearly fee', { key: 'fee', formula: 'sum({level}, {extras})' }),
         q('multi_select', 'What are you interested in?', { options: opts('Events', 'Volunteering', 'Committees', 'Training', 'Newsletter') }),

@@ -1,6 +1,6 @@
 <!--
   Form page header content: logo, form name, intro text. On a coloured band or side panel the
-  text switches to black or white — whichever reads better on that colour.
+  text switches to black or white, whichever reads better on that colour.
 -->
 <script setup lang="ts">
 import type { FormTheme } from '#shared/utils/forms/theme'
@@ -9,7 +9,7 @@ const props = defineProps<{ theme: FormTheme; title: string; logo: string | null
 const { t } = useI18n()
 const WEIGHT: Record<string, string> = { medium: 'font-medium', semibold: 'font-semibold', bold: 'font-bold' }
 const color = computed(() => (props.on ? readableOn(props.on) : null))
-// Accent: a compact, quote-like block — coloured edge, soft tint — so the form keeps its full width.
+// Accent: a compact, quote-like block, coloured edge, soft tint, so the form keeps its full width.
 const accent = computed(() => !props.on && props.theme.header.band === 'accent')
 const accentStyle = computed(() =>
   accent.value

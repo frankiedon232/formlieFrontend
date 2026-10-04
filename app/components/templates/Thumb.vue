@@ -1,6 +1,6 @@
 <!--
-  Template thumbnail (F9): a miniature of the form page in the template's own design — page
-  background, card or side panel, header band, the first real questions and the button — so the
+  Template thumbnail (F9): a miniature of the form page in the template's own design, page
+  background, card or side panel, header band, the first real questions and the button, so the
   gallery reads like a catalogue. Decorative (aria-hidden); the card carries the text.
 -->
 <script setup lang="ts">

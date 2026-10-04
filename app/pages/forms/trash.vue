@@ -1,4 +1,4 @@
-<!-- Trash (F6): deleted forms for 30 days — restore, delete permanently (confirm), bulk, empty Trash. -->
+<!-- Trash (F6): deleted forms for 30 days, restore, delete permanently (confirm), bulk, empty Trash. -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { TRASH_RETENTION_DAYS, type FormSummary } from '#shared/types/forms'

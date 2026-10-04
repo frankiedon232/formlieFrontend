@@ -9,7 +9,7 @@ export const BUSINESS_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-message-square-heart',
     minutes: 3,
     name: 'Customer Feedback',
-    description: 'Hear what customers think of your service — with a follow-up when someone is unhappy.',
+    description: 'Hear what customers think of your service, with a follow-up when someone is unhappy.',
     tags: ['feedback', 'nps', 'service'],
     pages: [
       page('Your feedback', [
@@ -39,7 +39,7 @@ export const BUSINESS_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-smile-plus',
     minutes: 2,
     name: 'Customer Satisfaction (CSAT / NPS) Survey',
-    description: 'Measure satisfaction (CSAT), effort and loyalty (NPS) — each answer is grouped as promoter, passive or detractor.',
+    description: 'Measure satisfaction (CSAT), effort and loyalty (NPS). Each answer is grouped as promoter, passive or detractor.',
     tags: ['csat', 'nps', 'ces', 'survey'],
     design: { colors: { primary: '#7c3aed' }, header: { band_bg: '#7c3aed', band_to: '#2563eb' } },
     pages: [
@@ -58,7 +58,7 @@ export const BUSINESS_TEMPLATES: TemplateDef[] = [
           key: 'nps_group',
           formula: 'if({nps} >= 9, "Promoter", if({nps} >= 7, "Passive", "Detractor"))',
           props: { internal: true },
-          help: 'Promoter 9–10 · Passive 7–8 · Detractor 0–6 — for your team, not shown to respondents.',
+          help: 'Promoter 9–10 · Passive 7–8 · Detractor 0–6. For your team, not shown to respondents.',
         }),
         q('long_text', 'What could we do to win back your trust?', { key: 'win_back' }),
         q('checkbox', 'What did we do well?', { options: opts('Quick response', 'Friendly staff', 'Solved my problem', 'Good value', 'Easy to use') }),
@@ -158,13 +158,13 @@ export const BUSINESS_TEMPLATES: TemplateDef[] = [
               key: `product_${n}`,
               required: n === 1,
               width: 6,
-              options: scored(['Starter kit — 25.00', 25], ['Standard pack — 45.00', 45], ['Professional set — 90.00', 90], ['Refill bundle — 15.00', 15]),
+              options: scored(['Starter kit: 25.00', 25], ['Standard pack: 45.00', 45], ['Professional set: 90.00', 90], ['Refill bundle: 15.00', 15]),
             }),
             q('number', 'Qty', { key: `qty_${n}`, width: 2, default: n === 1 ? 1 : undefined, validation: { min: 0, max: 999 } }),
             q('calculated', 'Line total', { key: `line_${n}`, width: 4, formula: `{product_${n}} * {qty_${n}}` }),
           ),
         ),
-        q('radio', 'Delivery', { key: 'delivery', required: true, options: scored(['Standard (free)', 0], ['Express — 15.00', 15], ['Collect in store', 0]) }),
+        q('radio', 'Delivery', { key: 'delivery', required: true, options: scored(['Standard (free)', 0], ['Express: 15.00', 15], ['Collect in store', 0]) }),
         row(q('calculated', 'Subtotal', { key: 'subtotal', formula: 'sum({line_1}, {line_2}, {line_3})' }), q('calculated', 'Total', { key: 'total', formula: '{subtotal} + {delivery}' })),
       ]),
       page('Delivery details', [

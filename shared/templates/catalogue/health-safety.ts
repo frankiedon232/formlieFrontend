@@ -1,4 +1,4 @@
-/** Health & Safety templates (F9 milestone 2). Controls only — no compliance claims. */
+/** Health & Safety templates (F9 milestone 2). Controls only, no compliance claims. */
 import { opts, page, q, row, rule, scored, type TemplateDef } from '../kit'
 
 const passFail = scored(['Pass', 1], ['Fail', 0])
@@ -56,7 +56,7 @@ export const HEALTH_SAFETY_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-triangle-alert',
     minutes: 6,
     name: 'Incident / Accident Report',
-    description: 'Record what happened, who was hurt and the first actions taken — serious incidents are flagged for urgent review.',
+    description: 'Record what happened, who was hurt and the first actions taken. Serious incidents are flagged for urgent review.',
     tags: ['incident', 'accident', 'injury'],
     pages: [
       page('What happened', [
@@ -88,7 +88,7 @@ export const HEALTH_SAFETY_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-octagon-alert',
     minutes: 3,
     name: 'Near-Miss Report',
-    description: 'Report close calls quickly — potential severity and recurrence give a priority so prevention comes first.',
+    description: 'Report close calls quickly. Potential severity and recurrence give a priority so prevention comes first.',
     tags: ['near miss', 'prevention'],
     design: { header: { band_bg: '#9a3412' }, colors: { primary: '#c2410c' } },
     pages: [
@@ -188,7 +188,7 @@ export const HEALTH_SAFETY_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-file-heart',
     minutes: 8,
     name: 'Medical History',
-    description: 'Conditions, operations, medicines, family history and lifestyle — with a count of conditions for the clinician.',
+    description: 'Conditions, operations, medicines, family history and lifestyle, with a count of conditions for the clinician.',
     tags: ['medical', 'history', 'clinic'],
     design: { colors: { primary: '#0e7490' }, header: { band_bg: '#155e75' }, footer: { bg: '#164e63' } },
     pages: [

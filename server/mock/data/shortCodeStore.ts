@@ -1,6 +1,6 @@
 /**
  * Retired short link codes (F10 M3, owner question 2026-10-04: "no conflict"): a code that was
- * removed is never handed out again — an old poster or QR code must never open another form, let
+ * removed is never handed out again, an old poster or QR code must never open another form, let
  * alone another organisation's. Kept even when the form itself is deleted for good.
  * The real backend keeps them in a table with a unique constraint on the code.
  */

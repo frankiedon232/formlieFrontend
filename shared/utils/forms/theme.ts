@@ -1,7 +1,7 @@
 /**
  * Form themes (F8, docs/API-CONTRACT.md → Theme tokens). A theme is a small set of design tokens
  * stored on the form (`schema.theme`, versioned with the form) and applied as CSS variables on the
- * rendered form page only — the portal never changes. A form without a theme uses the workspace
+ * rendered form page only, the portal never changes. A form without a theme uses the workspace
  * default (brand colour + logo from onboarding).
  */
 import { z } from 'zod'
@@ -15,10 +15,10 @@ export const THEME_LAYOUTS = ['card', 'plain', 'split', 'full'] as const
 /**
  * The page around the form on its public link (F10, owner 2026-10-03): the organisation's
  * branding, a link to its website, quick facts and a secure-by-Formalie footer.
- *   branded   — top bar (logo, name, website) · form · footer
- *   spotlight — brand-colour hero with title, intro and facts; the form card overlaps it
- *   side      — branded side panel (sticky on wide screens) next to the form
- *   minimal   — the form with a slim footer
+ *   branded:  top bar (logo, name, website) · form · footer
+ *   spotlight, brand-colour hero with title, intro and facts; the form card overlaps it
+ *   side:     branded side panel (sticky on wide screens) next to the form
+ *   minimal:  the form with a slim footer
  * Embeds never show the page frame.
  */
 export const THEME_FRAMES = ['branded', 'spotlight', 'side', 'minimal'] as const
@@ -90,7 +90,7 @@ export const themeSchema = z.object({
   footer: z.object({
     enabled: z.boolean(),
     text: z.string().max(500),
-    /** Stored as typed (a half-written link must not reset the footer); only complete links render — see visibleLinks. */
+    /** Stored as typed (a half-written link must not reset the footer); only complete links render, see visibleLinks. */
     links: z
       .array(
         z.object({
@@ -113,7 +113,7 @@ export const themeSchema = z.object({
   thank_you: z.object({ show_icon: z.boolean() }),
   frame: z.object({
     style: z.enum(THEME_FRAMES),
-    /** "Visit website" — the organisation's site (Settings → Company), never the portal. */
+    /** "Visit website", the organisation's site (Settings → Company), never the portal. */
     show_website: z.boolean(),
     /** About N minutes · N questions · encrypted. */
     show_facts: z.boolean(),
@@ -128,7 +128,7 @@ export interface WorkspaceBranding {
   primary: string | null
 }
 
-/** The workspace default — what every form looks like until someone designs it. */
+/** The workspace default, what every form looks like until someone designs it. */
 export function defaultTheme(branding: WorkspaceBranding = { logo_url: null, primary: null }): FormTheme {
   return {
     layout: 'card',
@@ -345,7 +345,7 @@ export function contrastRatio(a: string, b: string) {
   const [x, y] = [luminance(a), luminance(b)].sort((m, n) => n - m)
   return (x! + 0.05) / (y! + 0.05)
 }
-/** Black or white — whichever reads better on `color` (button text on the primary colour). */
+/** Black or white, whichever reads better on `color` (button text on the primary colour). */
 export const readableOn = (color: string) => (contrastRatio(color, '#ffffff') >= contrastRatio(color, '#18181b') ? '#ffffff' : '#18181b')
 
 // ── CSS variables (applied on the form page root) ─────────────────────────────────────
@@ -363,7 +363,7 @@ const SIZE: Record<string, string> = { sm: '15px', md: '16px', lg: '17px' }
 
 /**
  * Nuxt UI reads its colours from `--ui-*` variables, so setting them on the form root re-themes
- * every input, button and text inside — without touching the portal around it.
+ * every input, button and text inside, without touching the portal around it.
  */
 export function themeVars(theme: FormTheme): Record<string, string> {
   const c = theme.colors

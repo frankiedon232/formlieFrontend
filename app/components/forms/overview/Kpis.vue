@@ -19,7 +19,7 @@ const trend = computed(() => {
 })
 const time = computed(() => {
   const s = props.stats.avg_seconds
-  if (s == null) return '—'
+  if (s == null) return '-'
   return s < 60 ? t('forms.overview.seconds', { n: s }) : t('forms.overview.minutesShort', { n: Math.round(s / 6) / 10 })
 })
 
@@ -55,7 +55,7 @@ const cards = computed(() => [
     key: 'last',
     title: t('forms.overview.lastResponse'),
     icon: 'i-lucide-clock-3',
-    value: props.stats.last_response_at ? relative(props.stats.last_response_at) : '—',
+    value: props.stats.last_response_at ? relative(props.stats.last_response_at) : '-',
     trend: null,
     caption: props.stats.last_response_at ? t('forms.overview.lastResponseHint') : t('forms.overview.noResponses'),
     to: `/responses?form=${props.formId}`,

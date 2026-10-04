@@ -158,12 +158,12 @@ export const HR_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-heart-handshake',
     minutes: 6,
     name: 'Employee Engagement Survey',
-    description: 'An anonymous pulse on pride, purpose, growth and support — with an engagement index from 0 to 100.',
+    description: 'An anonymous pulse on pride, purpose, growth and support, with an engagement index from 0 to 100.',
     tags: ['engagement', 'survey', 'anonymous'],
     design: { colors: { primary: '#0d9488' }, header: { band: 'gradient', band_bg: '#0f766e', band_to: '#14b8a6' } },
     pages: [
       page('About you', [
-        q('paragraph', 'Intro', { props: { html: '<p>This survey is anonymous. Please answer honestly — it helps us make this a better place to work.</p>' } }),
+        q('paragraph', 'Intro', { props: { html: '<p>This survey is anonymous. Please answer honestly. It helps us make this a better place to work.</p>' } }),
         row(q('dropdown', 'Department', { options: DEPARTMENTS }), q('radio', 'Time with us', { options: opts('Under 1 year', '1–3 years', '3–5 years', 'Over 5 years') })),
       ]),
       page('Your views', [
@@ -253,7 +253,7 @@ export const HR_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-presentation',
     minutes: 3,
     name: 'Training Feedback',
-    description: 'Rate the content, trainer, materials and relevance of a course — with an average score.',
+    description: 'Rate the content, trainer, materials and relevance of a course, with an average score.',
     tags: ['training', 'course', 'feedback'],
     pages: [
       page('Training feedback', [

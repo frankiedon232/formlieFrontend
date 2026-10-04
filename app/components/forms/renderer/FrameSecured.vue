@@ -1,4 +1,4 @@
-<!-- "Encrypted · Secured by Formalie" — the trust line on public form pages. -->
+<!-- "Encrypted · Secured by Formalie", the trust line on public form pages. -->
 <script setup lang="ts">
 const { t } = useI18n()
 </script>

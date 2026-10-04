@@ -17,7 +17,7 @@ export const health = defineMockRoute(
   { plain: true },
 )
 
-/** POST /crypto/handshake — ECDH P-256 + HKDF, the only plaintext JSON endpoint. */
+/** POST /crypto/handshake, ECDH P-256 + HKDF, the only plaintext JSON endpoint. */
 export const handshake = defineMockRoute(
   async ({ event, body }) => {
     const parsed = handshakeSchema.safeParse(body)
@@ -55,7 +55,7 @@ export const handshake = defineMockRoute(
   { plain: true },
 )
 
-/** GET /auth/csrf — pre-session CSRF token bound to the handshake key. */
+/** GET /auth/csrf, pre-session CSRF token bound to the handshake key. */
 export const csrf = defineMockRoute(({ kid }) => {
   const { token, expiresAt } = issueCsrfToken(kid)
   return ok<CsrfTokenResponse>({ csrf_token: token, expires_at: expiresAt.toISOString() })

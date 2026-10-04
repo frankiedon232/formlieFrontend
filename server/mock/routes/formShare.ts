@@ -1,7 +1,7 @@
 /**
  * Share settings (F10 M3, docs/API-CONTRACT.md → Sharing):
  *   GET  /forms/:id/share               access, password set?, response limit, custom link, availability
- *   PUT  /forms/:id/share               change them (row_version) — audited as forms.shared, never the password
+ *   PUT  /forms/:id/share               change them (row_version), audited as forms.shared, never the password
  *   GET  /forms/:id/share/link-check    is a custom link free? (+ up to three free suggestions)
  * Passwords are stored as scrypt hashes; changing one signs everyone out of the form (version).
  */
@@ -129,7 +129,7 @@ function check(value: string, formId: string, tenant: MockTenant): CustomLinkChe
     available: false,
     reason: problem ?? 'taken',
     suggestions: suggestionsFor(value, formId, tenant),
-    // Which of your forms uses it — never another organisation's form.
+    // Which of your forms uses it, never another organisation's form.
     taken_by: holder && holder.tenant.id === tenant.id ? { id: holder.form.id, name: holder.form.name, status: holder.form.status, link: holder.form.custom_link === value } : null,
   }
 }
@@ -187,7 +187,7 @@ export const saveShare = defineMockRoute(({ event, body }) => {
   if (input.password !== undefined) {
     const salt = randomBytes(16).toString('base64')
     form.password = { hash: hashPassword(input.password, salt), salt, version: (form.password?.version ?? 0) + 1, changed_at: new Date().toISOString() }
-    // Never the password itself — only that it changed.
+    // Never the password itself, only that it changed.
     changes.push({ field: 'password', before: null, after: 'changed' })
   }
   if (input.access !== undefined && input.access !== (form.access ?? 'public')) {
@@ -292,7 +292,7 @@ function shortLinkChange(event: Parameters<typeof requireAuth>[0], create: boole
   return ok(settingsOf(form, tenant), {}, create && !before ? 201 : 200)
 }
 
-/** POST /forms/:id/short-link — create the form's short link (or return the one it has). */
+/** POST /forms/:id/short-link, create the form's short link (or return the one it has). */
 export const createShortLink = defineMockRoute(({ event }) => shortLinkChange(event, true))
-/** DELETE /forms/:id/short-link — remove it; the code stops working. */
+/** DELETE /forms/:id/short-link, remove it; the code stops working. */
 export const removeShortLink = defineMockRoute(({ event }) => shortLinkChange(event, false))

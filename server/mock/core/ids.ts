@@ -12,7 +12,7 @@
  *   - Id blocks: a UUID's 16 bytes, or a workspace template key (`ws_` + 12 hex) in a marked block.
  *
  * The mock applies it centrally (core/route.ts): replies are encoded, route params / query / body
- * decoded — routes and stores keep working with real ids. The real API does the same at its edge.
+ * decoded, routes and stores keep working with real ids. The real API does the same at its edge.
  */
 import { createCipheriv, createDecipheriv, createHmac, randomBytes } from 'node:crypto'
 import { loadPersisted, savePersisted } from './persist'
@@ -115,7 +115,7 @@ export function decodeRouteParams(params: Record<string, string> | undefined) {
     const raw = decodeURIComponent(value)
     const decoded = decodeId(raw)
     if (decoded) params[key] = decoded
-    // A real id typed into the address is never accepted — only references are.
+    // A real id typed into the address is never accepted, only references are.
     else if (UUID.test(raw) || WS_KEY.test(raw)) params[key] = 'invalid-reference'
   }
 }

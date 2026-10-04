@@ -111,7 +111,7 @@ export const login = defineMockRoute(({ event, body }) => {
 
 const verifySchema = z.object({ challenge_id: z.string(), code })
 
-/** POST /auth/otp/verify — login → tokens + refresh cookie; signup → marks the email verified. */
+/** POST /auth/otp/verify, login → tokens + refresh cookie; signup → marks the email verified. */
 export const verifyOtp = defineMockRoute(({ event, body }) => {
   const input = parseBody(verifySchema, body)
   const pending = getChallenge(input.challenge_id)
@@ -215,7 +215,7 @@ export const signupComplete = defineMockRoute(({ event, body }) => {
     subdomain: input.subdomain,
     status: 'active',
     // New workspaces start with email + password; the admin enables more in Settings → Authentication (F14).
-    // (Social signup will also enable the provider used — backend.)
+    // (Social signup will also enable the provider used, backend.)
     auth_providers: ['password'],
     organisation: { id: crypto.randomUUID(), name: input.company_name },
   }
@@ -250,7 +250,7 @@ export const signupComplete = defineMockRoute(({ event, body }) => {
 
 const ticketSchema = z.object({ ticket: z.string().min(10) })
 
-/** POST /auth/exchange-ticket — one-time cross-subdomain hand-off → tokens + refresh cookie. */
+/** POST /auth/exchange-ticket, one-time cross-subdomain hand-off → tokens + refresh cookie. */
 export const exchangeTicket = defineMockRoute(({ event, body }) => {
   const { ticket } = parseBody(ticketSchema, body)
   const tokens = redeemTicket(event, ticket)
@@ -266,7 +266,7 @@ export const exchangeTicket = defineMockRoute(({ event, body }) => {
 
 const forgotSchema = z.object({ email: z.email() })
 
-/** POST /auth/password/forgot — always answers the same (no account enumeration). */
+/** POST /auth/password/forgot, always answers the same (no account enumeration). */
 export const forgotPassword = defineMockRoute(({ event, body }) => {
   const tenant = requireTenant(event)
   const { email } = parseBody(forgotSchema, body)
@@ -302,7 +302,7 @@ export const resetPassword = defineMockRoute(({ event, body }) => {
   return ok({ reset: true })
 })
 
-/** GET /auth/oauth/:provider/start — the mock has no identity providers configured. */
+/** GET /auth/oauth/:provider/start, the mock has no identity providers configured. */
 export const oauthStart = defineEventHandler(event => {
   const provider = getRouterParam(event, 'provider') ?? ''
   const page = getQuery(event).intent === 'signup' ? '/auth/signup' : '/auth/login'

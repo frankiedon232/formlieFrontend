@@ -58,7 +58,7 @@ export function useBuilderSession(formId: string) {
     }
   }
 
-  /** Inline rename — waits for autosave so the two never race on row_version. */
+  /** Inline rename, waits for autosave so the two never race on row_version. */
   async function rename(name: string): Promise<boolean> {
     if (!form.value || !name.trim() || name.trim() === form.value.name) return false
     await until(autosave.state).not.toBe('saving')

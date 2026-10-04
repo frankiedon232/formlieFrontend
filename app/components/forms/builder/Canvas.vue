@@ -1,6 +1,6 @@
 <!--
   Builder canvas (FRONTEND-SPEC §6, centre): page tabs (design segmented control) + the page as
-  respondents will see it, rows on a 12-column grid. Drag fields by their handle — within a row,
+  respondents will see it, rows on a 12-column grid. Drag fields by their handle, within a row,
   between rows, or between rows to give them their own row; drop palette fields anywhere.
 -->
 <script setup lang="ts">

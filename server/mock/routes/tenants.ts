@@ -15,7 +15,7 @@ import { parseBody } from '../core/validate'
 import { MOCK_TENANTS, MOCK_USERS } from '../data/tenants'
 import { websiteOf } from './onboarding'
 
-/** GET /tenants/public — branding + enabled sign-in methods for this host. */
+/** GET /tenants/public, branding + enabled sign-in methods for this host. */
 export const publicProfile = defineMockRoute(({ event }) => {
   const { context, tenant } = tenantOf(event)
   if (context.kind === 'manage') {
@@ -57,7 +57,7 @@ export const subdomainAvailability = defineMockRoute(({ query }) => {
 
 const emailSchema = z.object({ email: z.email() })
 
-/** POST /tenants/find-workspace — always "sent" (no account enumeration). */
+/** POST /tenants/find-workspace, always "sent" (no account enumeration). */
 export const findWorkspace = defineMockRoute(({ body }) => {
   const { email } = parseBody(emailSchema, body)
   const challenge = createChallenge({

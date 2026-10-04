@@ -1,7 +1,7 @@
 <!--
   Confirmation for destructive / important actions (CLAUDE.md rule 13). Mounted once in the
   layouts and driven by useConfirm(). Draggable like every AppModal; Esc / outside = cancel.
-  Always the top layer — it can open from a drawer or slide-over (designer controls on phones).
+  Always the top layer, it can open from a drawer or slide-over (designer controls on phones).
 -->
 <script setup lang="ts">
 const { t } = useI18n()

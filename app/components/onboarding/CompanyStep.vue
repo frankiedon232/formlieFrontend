@@ -1,4 +1,4 @@
-<!-- Step 1 — company details. Submitted by the wizard footer (form="onboarding-step"). -->
+<!-- Step 1, company details. Submitted by the wizard footer (form="onboarding-step"). -->
 <script setup lang="ts">
 import { z } from 'zod'
 import { COMPANY_SIZES, INDUSTRIES, type OnboardingCompany } from '#shared/types/onboarding'

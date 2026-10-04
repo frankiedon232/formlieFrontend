@@ -1,6 +1,6 @@
 <!--
   Save the current design as a theme for the workspace. If this design came from a saved theme,
-  the choice is "Update <theme>" (changes it for future use — forms keep their copy) or "Save as new".
+  the choice is "Update <theme>" (changes it for future use, forms keep their copy) or "Save as new".
 -->
 <script setup lang="ts">
 import { z } from 'zod'

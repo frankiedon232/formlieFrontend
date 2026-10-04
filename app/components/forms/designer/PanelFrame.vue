@@ -1,5 +1,5 @@
 <!--
-  Designer → Page (F10, owner 2026-10-03): how the form's public link looks around the form —
+  Designer → Page (F10, owner 2026-10-03): how the form's public link looks around the form,
   four styles drawn as small pictures, the bar / panel colour, the website link and quick facts.
 -->
 <script setup lang="ts">

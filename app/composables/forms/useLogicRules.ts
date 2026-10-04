@@ -170,7 +170,7 @@ export function useLogicRules() {
   }
   const problem = (rule: LogicRule) => problems(rule)[0] ?? null
 
-  // ── Calculated fields — formulas live on the field (props.formula) ───────────────────
+  // ── Calculated fields, formulas live on the field (props.formula) ───────────────────
   const calculated = computed(() => fields.value.filter(f => f.type === 'calculated'))
   /** Fields a formula can use: numbers, choices (via option numbers), toggles, other calculations. */
   const FORMULA_TYPES = [

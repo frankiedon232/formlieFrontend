@@ -80,7 +80,7 @@ const position = computed(() => Math.max(0, pages.value.findIndex(p => p.id === 
 const nextIndex = computed(() => nextPageIndex(props.schema, logic.value, index.value))
 const last = computed(() => nextIndex.value < 0)
 
-/** The field as respondents get it right now — same rules as the API (shared/utils/forms/submission.ts). */
+/** The field as respondents get it right now, same rules as the API (shared/utils/forms/submission.ts). */
 const effective = (field: FormField) => effectiveField(field, logic.value)
 
 const visibleRows = computed(() =>
@@ -116,7 +116,7 @@ const shownRows = computed(() =>
 )
 const toggle = (id: string) => (folded.value[id] = !folded.value[id])
 
-// Validation (shared/utils/forms/validate.ts — the API runs the same rules). After a first
+// Validation (shared/utils/forms/validate.ts, the API runs the same rules). After a first
 // failed Next / Submit, errors update live as respondents fix their answers.
 const errorParts = ref<Record<string, AddressPart[]>>({})
 const attempted = ref(false)

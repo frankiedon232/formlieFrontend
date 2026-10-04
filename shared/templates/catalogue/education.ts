@@ -88,7 +88,7 @@ export const EDUCATION_TEMPLATES: TemplateDef[] = [
         ),
       ]),
     ],
-    thankYou: { title: 'Quiz submitted', message: 'Thank you — your teacher will share the results.' },
+    thankYou: { title: 'Quiz submitted', message: 'Thank you! Your teacher will share the results.' },
   },
   {
     key: 'scholarship_application',
@@ -96,7 +96,7 @@ export const EDUCATION_TEMPLATES: TemplateDef[] = [
     icon: 'i-lucide-award',
     minutes: 12,
     name: 'Scholarship Application',
-    description: 'Academic record, financial need and a personal statement — with an eligibility score for the panel.',
+    description: 'Academic record, financial need and a personal statement, with an eligibility score for the panel.',
     tags: ['scholarship', 'bursary', 'grant'],
     pages: [
       page('Applicant', [
@@ -113,7 +113,7 @@ export const EDUCATION_TEMPLATES: TemplateDef[] = [
           key: 'eligibility',
           formula: '{grade} + {need} + if(count({activities}) > 0, {activities}, 0)',
           props: { internal: true },
-          help: 'Grade (up to 4) + need (up to 4) + one point per activity — for the panel only.',
+          help: 'Grade (up to 4) + need (up to 4) + one point per activity. For the panel only.',
         }),
       ]),
       page('Statement', [

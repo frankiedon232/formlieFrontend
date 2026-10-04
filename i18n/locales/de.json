@@ -72,7 +72,7 @@
       "moved": "Formular verschoben",
       "tagsSaved": "Tags gespeichert",
       "duplicated": "Kopie erstellt",
-      "unpublish": "Veröffentlichung aufgehoben – der Link funktioniert nicht mehr",
+      "unpublish": "Veröffentlichung aufgehoben. Der Link funktioniert nicht mehr",
       "close": "Formular für neue Antworten geschlossen",
       "reopen": "Formular wieder geöffnet",
       "archive": "Formular archiviert",
@@ -119,7 +119,7 @@
       "count": "{count} Formular | {count} Formulare",
       "empty": "Noch keine Ordner. Legen Sie unten einen an.",
       "viewForms": "Formulare in {name} anzeigen",
-      "notEmpty": "Verschieben Sie zuerst die Formulare in einen anderen Ordner – dann kann er gelöscht werden.",
+      "notEmpty": "Verschieben Sie zuerst die Formulare in einen anderen Ordner. Danach kann er gelöscht werden.",
       "deleteEmpty": "Der Ordner ist leer, daher ist kein Formular betroffen."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "Sie können beides später ändern.",
       "pickFile": "Wählen Sie zuerst eine Datei zum Importieren.",
       "blankTitle": "Von Grund auf neu",
-      "blankDesc": "Ein leeres Formular mit einer Seite – fügen Sie die Fragen hinzu, die Sie brauchen, in Ihrer Reihenfolge.",
+      "blankDesc": "Ein leeres Formular mit einer Seite. Fügen Sie die Fragen hinzu, die Sie brauchen, in Ihrer Reihenfolge.",
       "previewAdd": "Erste Frage hinzufügen",
       "points": {
         "fieldsTitle": "Über 30 Feldtypen",
@@ -190,7 +190,7 @@
     "filterTemplate": "Vorlage",
     "overview": {
       "subtitle": "{status} · aktualisiert {updated}",
-      "trendTitle": "Antworten – letzte 30 Tage",
+      "trendTitle": "Antworten (letzte 30 Tage)",
       "trendDesc": "Einsendungen pro Tag",
       "trendAria": "Antworten pro Tag in den letzten 30 Tagen, insgesamt {total}",
       "responsesCount": "{count} Antwort | {count} Antworten",
@@ -229,15 +229,15 @@
       "design": "Design",
       "versions": "Versionen",
       "allVersions": "Alle Versionen",
-      "noVersions": "Noch nicht veröffentlicht – Versionen erscheinen beim Veröffentlichen.",
+      "noVersions": "Noch nicht veröffentlicht. Versionen erscheinen beim Veröffentlichen.",
       "detailsTitle": "Details",
       "tags": "Tags",
-      "noHistory": "Veröffentlicht, bevor der Versionsverlauf geführt wurde – er beginnt mit der nächsten Veröffentlichung.",
+      "noHistory": "Veröffentlicht, bevor der Versionsverlauf geführt wurde. Er beginnt mit der nächsten Veröffentlichung.",
       "embedCode": "Einbettungscode"
     },
     "qr": {
       "title": "QR-Code",
-      "desc": "Drucken Sie ihn aus oder zeigen Sie ihn auf Bildschirmen — beim Scannen öffnet sich das Formular.",
+      "desc": "Drucken Sie ihn aus oder zeigen Sie ihn auf Bildschirmen. Beim Scannen öffnet sich das Formular.",
       "accent": "Formularfarbe",
       "black": "Schwarz",
       "colour": "Farbig",
@@ -252,7 +252,7 @@
       "plain": "Schlicht",
       "brandedOrg": "Name und Logo Ihrer Organisation mit dem Formularnamen; Formalie in der Fußzeile.",
       "brandedFormalie": "Formalie-Branding mit dem Formularnamen.",
-      "plainHint": "Nur der Code — für kleine Flächen.",
+      "plainHint": "Nur der Code, für kleine Flächen.",
       "brand": "Markenfarbe",
       "custom": "Beliebige Farbe",
       "scan": "Zum Öffnen scannen",
@@ -270,9 +270,9 @@
       "title": "Wann dieses Formular Antworten annimmt",
       "desc": "Lassen Sie beide Felder leer, damit es geöffnet bleibt. Nach dem Ende zeigt der Link an, dass das Formular abgelaufen ist; vor dem Start, wann es öffnet.",
       "opensAt": "Geöffnet ab",
-      "opensAtHint": "Optional – vorher zeigt der Link, wann das Formular öffnet.",
+      "opensAtHint": "Optional. Vorher zeigt der Link, wann das Formular öffnet.",
       "closesAt": "Geöffnet bis",
-      "closesAtHint": "Optional – danach keine weiteren Antworten; der Link zeigt an, dass das Formular abgelaufen ist.",
+      "closesAtHint": "Optional. Danach keine weiteren Antworten; der Link zeigt an, dass das Formular abgelaufen ist.",
       "preset": {
         "week": "1 Woche",
         "twoWeeks": "2 Wochen",
@@ -281,16 +281,16 @@
         "noEnd": "Kein Enddatum"
       },
       "endBeforeStart": "Wählen Sie ein Ende nach dem Start.",
-      "pastWarning": "Dieses Enddatum ist bereits vorbei – das Formular nimmt nach dem Speichern sofort keine Antworten mehr an.",
+      "pastWarning": "Dieses Enddatum ist bereits vorbei. Das Formular nimmt nach dem Speichern sofort keine Antworten mehr an.",
       "saved": "Verfügbarkeit gespeichert"
     },
     "embed": {
       "title": "Auf Ihrer Website einbetten",
       "desc": "Fügen Sie diesen Code auf der Seite Ihrer Website ein, auf der das Formular erscheinen soll.",
-      "notLive": "Das Formular ist noch nicht veröffentlicht – die Einbettung zeigt es, sobald es live ist.",
+      "notLive": "Das Formular ist noch nicht veröffentlicht. Die Einbettung zeigt es, sobald es live ist.",
       "height": "Höhe",
       "auto": "Automatische Höhe (empfohlen)",
-      "autoDesc": "Der Rahmen wächst und schrumpft mit dem Formular – keine innere Bildlaufleiste.",
+      "autoDesc": "Der Rahmen wächst und schrumpft mit dem Formular, ohne innere Bildlaufleiste.",
       "fixed": "Feste Höhe",
       "fixedDesc": "Immer gleich hoch; das Formular scrollt im Rahmen.",
       "pixels": "Höhe in Pixeln",
@@ -542,8 +542,8 @@
     "label": "Fußzeile"
   },
   "authLayout": {
-    "headline": "Formulare, Daten und Zugriffe – unter Ihrer Kontrolle.",
-    "subline": "Eine sichere, flexible Plattform, um beliebige Formulare zu erstellen, Daten zu erfassen und zu verwalten, Ihre Systeme anzubinden und festzulegen, wer was sieht – für Organisationen jeder Größe, überall auf der Welt.",
+    "headline": "Formulare, Daten und Zugriffe unter Ihrer Kontrolle.",
+    "subline": "Eine sichere, flexible Plattform, um beliebige Formulare zu erstellen, Daten zu erfassen und zu verwalten, Ihre Systeme anzubinden und festzulegen, wer was sieht. Für Organisationen jeder Größe, überall auf der Welt.",
     "badgeEncrypted": "Durchgehend verschlüsselt",
     "badgeCompliance": "Datenschutz- und Compliance-Kontrollen",
     "badgeDatabase": "{count}+ Datenbanken oder sicherer Speicher",
@@ -651,7 +651,7 @@
       "available": "Verfügbar",
       "unavailable": {
         "taken": "Bereits vergeben",
-        "reserved": "Reserviert – bitte eine andere wählen",
+        "reserved": "Reserviert. Bitte eine andere wählen",
         "invalid": "Keine gültige Adresse"
       },
       "subdomainHelp": "Hier meldet sich Ihr Team an. Eine eigene Domain können Sie später hinzufügen.",
@@ -685,7 +685,7 @@
     "workspace": "Arbeitsbereich"
   },
   "audit": {
-    "description": "Jede Aktion in Ihrem Arbeitsbereich – wer, was, wann und wo.",
+    "description": "Jede Aktion in Ihrem Arbeitsbereich: wer, was, wann und wo.",
     "security": "Sicherheitsereignisse",
     "searchPlaceholder": "Personen, Elemente, IP-Adressen suchen…",
     "emptyTitle": "Noch nichts aufgezeichnet",
@@ -891,7 +891,7 @@
     "menu": "Einrichtung des Arbeitsbereichs",
     "settingsCard": {
       "title": "Einrichtung des Arbeitsbereichs",
-      "desc": "Unternehmen, Branding, Regionaleinstellungen, Team und erstes Formular – jeden Schritt erneut aufrufen.",
+      "desc": "Unternehmen, Branding, Regionaleinstellungen, Team und erstes Formular. Jeden Schritt erneut aufrufen.",
       "open": "Öffnen"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Administrator",
       "owner": "Inhaber",
       "invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
-      "self": "Das sind Sie – Sie sind schon dabei.",
+      "self": "Das sind Sie. Sie sind schon dabei.",
       "duplicate": "Diese E-Mail steht schon in der Liste.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "E-Mail {n}",
@@ -1033,7 +1033,7 @@
         "name": "Vorfallmeldung"
       }
     },
-    "subtitle": "Starten Sie mit einem fertigen Formular – jede Vorlage hat ihr eigenes Design, und Sie können vor dem Veröffentlichen alles ändern",
+    "subtitle": "Starten Sie mit einem fertigen Formular. Jede Vorlage hat ihr eigenes Design, und Sie können vor dem Veröffentlichen alles ändern",
     "blank": "Leeres Formular",
     "all": "Alle",
     "search": "Vorlagen durchsuchen…",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "Keine passenden Vorlagen",
     "emptyDesc": "Versuchen Sie eine andere Kategorie oder Suche, oder setzen Sie die Filter zurück.",
     "useTitle": "Vorlage verwenden",
-    "useDesc": "Ihr neues Formular öffnet sich im Editor – ändern Sie vor dem Veröffentlichen beliebige Fragen, Regeln, Berechnungen oder das Design.",
+    "useDesc": "Ihr neues Formular öffnet sich im Editor. Ändern Sie vor dem Veröffentlichen beliebige Fragen, Regeln, Berechnungen oder das Design.",
     "saveAs": "Als Vorlage speichern",
     "saveTitle": "Als Vorlage speichern",
     "saveDesc": "Fragen, Logik, Berechnungen und Design werden zu einer Vorlage für Ihren Arbeitsbereich. Antworten werden nie übernommen.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Kundenfeedback",
-        "description": "Erfahren Sie, wie Kunden Ihren Service finden – mit einer Nachfrage, wenn jemand unzufrieden ist."
+        "description": "Erfahren Sie, wie Kunden Ihren Service finden, mit einer Nachfrage, wenn jemand unzufrieden ist."
       },
       "csat_nps": {
         "name": "Kundenzufriedenheitsumfrage (CSAT / NPS)",
-        "description": "Messen Sie Zufriedenheit (CSAT), Aufwand und Loyalität (NPS) – jede Antwort wird als Promotor, Passiver oder Kritiker eingeordnet."
+        "description": "Messen Sie Zufriedenheit (CSAT), Aufwand und Loyalität (NPS). Jede Antwort wird als Promotor, Passiver oder Kritiker eingeordnet."
       },
       "product_review": {
         "name": "Produktbewertung",
@@ -1168,7 +1168,7 @@
       },
       "lead_capture_newsletter": {
         "name": "Lead-Erfassung / Newsletter-Anmeldung",
-        "description": "Erweitern Sie Ihre Liste – mit integrierter Einwilligung, Interessen und Kampagnen-Tracking."
+        "description": "Erweitern Sie Ihre Liste mit integrierter Einwilligung, Interessen und Kampagnen-Tracking."
       },
       "return_refund": {
         "name": "Rücksendung / Rückerstattungsantrag",
@@ -1184,11 +1184,11 @@
       },
       "exit_interview": {
         "name": "Austrittsgespräch",
-        "description": "Erfahren Sie, warum Menschen gehen und was sie zum Bleiben bewegen würde – mit Bewertungen der gesamten Mitarbeitererfahrung."
+        "description": "Erfahren Sie, warum Menschen gehen und was sie zum Bleiben bewegen würde, mit Bewertungen der gesamten Mitarbeitererfahrung."
       },
       "leave_request": {
         "name": "Urlaubsantrag",
-        "description": "Beantragen Sie Urlaub – die Anzahl der Tage wird aus den Daten berechnet, mit Vertretung und Nachweisen."
+        "description": "Beantragen Sie Urlaub. Die Anzahl der Tage wird aus den Daten berechnet, mit Vertretung und Nachweisen."
       },
       "performance_review": {
         "name": "Leistungsbeurteilung / Mitarbeitergespräch",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Mitarbeiterbefragung zum Engagement",
-        "description": "Eine anonyme Pulsbefragung zu Stolz, Sinn, Entwicklung und Unterstützung – mit einem Engagement-Index von 0 bis 100."
+        "description": "Eine anonyme Pulsbefragung zu Stolz, Sinn, Entwicklung und Unterstützung, mit einem Engagement-Index von 0 bis 100."
       },
       "expense_reimbursement": {
         "name": "Spesenabrechnung",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Schulungsfeedback",
-        "description": "Bewerten Sie Inhalt, Trainer, Unterlagen und Relevanz eines Kurses – mit Durchschnittswert."
+        "description": "Bewerten Sie Inhalt, Trainer, Unterlagen und Relevanz eines Kurses, mit Durchschnittswert."
       },
       "reference_check": {
         "name": "Referenzprüfung",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Stipendienantrag",
-        "description": "Studienleistungen, finanzieller Bedarf und Motivationsschreiben – mit Eignungswert für das Auswahlgremium."
+        "description": "Studienleistungen, finanzieller Bedarf und Motivationsschreiben, mit Eignungswert für das Auswahlgremium."
       },
       "permission_slip": {
         "name": "Einverständniserklärung der Eltern",
@@ -1248,7 +1248,7 @@
       },
       "change_request": {
         "name": "Änderungsantrag",
-        "description": "Geplante Änderung beschreiben – mit Risikowert aus Auswirkung und Wahrscheinlichkeit, Rollback-Plan und Freigabe."
+        "description": "Geplante Änderung beschreiben, mit Risikowert aus Auswirkung und Wahrscheinlichkeit, Rollback-Plan und Freigabe."
       },
       "asset_checkout": {
         "name": "Geräteausgabe / Inventar",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Lieferbestätigung / Liefernachweis",
-        "description": "Erhaltene Ware, Zustand, Foto und Unterschrift des Empfängers bestätigen – bei Schäden werden Details abgefragt."
+        "description": "Erhaltene Ware, Zustand, Foto und Unterschrift des Empfängers bestätigen. Bei Schäden werden Details abgefragt."
       },
       "quality_control": {
         "name": "Checkliste Qualitätskontrolle",
@@ -1280,11 +1280,11 @@
       },
       "loan_application": {
         "name": "Kredit- / Darlehensantrag",
-        "description": "Antragsteller, Beschäftigung und Finanzen – mit Schulden-Einkommens-Quote und geschätzter Monatsrate."
+        "description": "Antragsteller, Beschäftigung und Finanzen, mit Schulden-Einkommens-Quote und geschätzter Monatsrate."
       },
       "kyc_verification": {
         "name": "KYC / Identitätsprüfung",
-        "description": "Personalien, Ausweisdokument und Adressnachweis – mit klarem Zweck und Einwilligung."
+        "description": "Personalien, Ausweisdokument und Adressnachweis, mit klarem Zweck und Einwilligung."
       },
       "invoice_submission": {
         "name": "Rechnungseinreichung",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Vereinbarung unterzeichnen",
-        "description": "Vereinbarung anzeigen, jeden Kernpunkt bestätigen und unterschreiben – mit Firmendaten bei Unterzeichnung für ein Unternehmen."
+        "description": "Vereinbarung anzeigen, jeden Kernpunkt bestätigen und unterschreiben, mit Firmendaten bei Unterzeichnung für ein Unternehmen."
       },
       "risk_assessment": {
         "name": "Gefährdungsbeurteilung",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Vorfall- / Unfallbericht",
-        "description": "Erfassen, was passiert ist, wer verletzt wurde und welche Sofortmaßnahmen ergriffen wurden – schwere Vorfälle werden zur dringenden Prüfung markiert."
+        "description": "Erfassen, was passiert ist, wer verletzt wurde und welche Sofortmaßnahmen ergriffen wurden. Schwere Vorfälle werden zur dringenden Prüfung markiert."
       },
       "near_miss_report": {
         "name": "Beinahe-Unfall-Meldung",
-        "description": "Beinahe-Unfälle schnell melden – mögliche Schwere und Wiederholung ergeben eine Priorität, damit Vorbeugung an erster Stelle steht."
+        "description": "Beinahe-Unfälle schnell melden. Mögliche Schwere und Wiederholung ergeben eine Priorität, damit Vorbeugung an erster Stelle steht."
       },
       "safety_inspection": {
         "name": "Sicherheitsprüfung (Checkliste)",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Anamnese",
-        "description": "Erkrankungen, Operationen, Medikamente, Familiengeschichte und Lebensstil – mit Anzahl der Erkrankungen für das Behandlungsteam."
+        "description": "Erkrankungen, Operationen, Medikamente, Familiengeschichte und Lebensstil, mit Anzahl der Erkrankungen für das Behandlungsteam."
       },
       "health_screening": {
         "name": "Gesundheitsabfrage / -erklärung",
@@ -1336,7 +1336,7 @@
       },
       "rsvp": {
         "name": "Zu- / Absage",
-        "description": "Einfache Antworten mit Ja / Nein / Vielleicht – Gruppengröße und Ernährungswünsche nur bei Zusage."
+        "description": "Einfache Antworten mit Ja / Nein / Vielleicht. Gruppengröße und Ernährungswünsche nur bei Zusage."
       },
       "appointment_booking": {
         "name": "Terminbuchung",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Anmeldung für Freiwillige",
-        "description": "Freiwillige mit Interessen und Verfügbarkeit erfassen – mit Einwilligung der Erziehungsberechtigten für unter 18-Jährige."
+        "description": "Freiwillige mit Interessen und Verfügbarkeit erfassen, mit Einwilligung der Erziehungsberechtigten für unter 18-Jährige."
       },
       "speaker_sponsor_application": {
         "name": "Bewerbung für Speaker / Sponsoren",
@@ -1368,7 +1368,7 @@
       },
       "guest_feedback": {
         "name": "Gästefeedback",
-        "description": "Sauberkeit, Komfort, Personal, Essen und Preis-Leistung bewerten – mit Durchschnitt und Weiterempfehlung."
+        "description": "Sauberkeit, Komfort, Personal, Essen und Preis-Leistung bewerten, mit Durchschnitt und Weiterempfehlung."
       },
       "service_evaluation": {
         "name": "Servicebewertung",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Besondere Wünsche",
-        "description": "Ernährungs- und Barrierefreiheitsbedarf, Allergien und Anlässe – damit vor der Ankunft alles bereit ist."
+        "description": "Ernährungs- und Barrierefreiheitsbedarf, Allergien und Anlässe, damit vor der Ankunft alles bereit ist."
       },
       "event_catering_request": {
         "name": "Catering-Anfrage für Veranstaltungen",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Tischreservierung",
-        "description": "Datum, Uhrzeit, Personenzahl, Sitzplatz und Anlass – alles, was der Gastgeber braucht."
+        "description": "Datum, Uhrzeit, Personenzahl, Sitzplatz und Anlass: alles, was der Gastgeber braucht."
       },
       "hospitality_complaint": {
         "name": "Gästebeschwerde",
@@ -1416,7 +1416,7 @@
       },
       "rental_application": {
         "name": "Mietantrag",
-        "description": "Ein kürzerer Antrag für ein bestimmtes Inserat — Einzugsdatum, Laufzeit, Haushalt und Bezahlbarkeit."
+        "description": "Ein kürzerer Antrag für ein bestimmtes Inserat: Einzugsdatum, Laufzeit, Haushalt und Bezahlbarkeit."
       },
       "property_inspection": {
         "name": "Objektbegehung",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Lead-Erfassung",
-        "description": "Name, Unternehmen, Größe und Interesse — kurz genug für eine Landingpage, mit erfasster Quelle."
+        "description": "Name, Unternehmen, Größe und Interesse. Kurz genug für eine Landingpage, mit erfasster Quelle."
       },
       "sales_quote_request": {
         "name": "Angebotsanfrage",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Vertriebs-Follow-up",
-        "description": "Anruf oder Termin festhalten: Ergebnis, Verkaufsphase, nächster Schritt und Datum — schnell auch am Handy."
+        "description": "Anruf oder Termin festhalten: Ergebnis, Verkaufsphase, nächster Schritt und Datum. Schnell auch am Handy."
       }
     },
     "openGallery": "Ganze Galerie öffnen",
@@ -1481,12 +1481,12 @@
       "browse": "Vorlagen ansehen"
     },
     "categoryPage": {
-      "subtitle": "Formalie-Vorlagen in dieser Kategorie – jede mit eigenem Design, sofort einsatzbereit"
+      "subtitle": "Formalie-Vorlagen in dieser Kategorie, jede mit eigenem Design und sofort einsatzbereit"
     },
     "mine": {
       "subtitle": "Vorlagen, die der Arbeitsbereich aus eigenen Formularen gespeichert oder von Formalie kopiert hat",
       "emptyTitle": "Noch keine eigenen Vorlagen",
-      "emptyDesc": "Formular öffnen und „Als Vorlage speichern“ wählen – oder eine Formalie-Vorlage duplizieren, um sie anzupassen.",
+      "emptyDesc": "Formular öffnen und „Als Vorlage speichern“ wählen oder eine Formalie-Vorlage duplizieren, um sie anzupassen.",
       "openForms": "Formulare öffnen",
       "browse": "Formalie-Vorlagen ansehen"
     }
@@ -1611,7 +1611,7 @@
     "unpublished": "Nicht veröffentlichte Änderungen",
     "save": {
       "saving": "Wird gespeichert…",
-      "error": "Nicht gespeichert – weiter bearbeiten, um es erneut zu versuchen",
+      "error": "Nicht gespeichert. Weiter bearbeiten, um es erneut zu versuchen",
       "conflict": "Anderswo geändert",
       "saved": "Gespeichert {time}",
       "upToDate": "Alles gespeichert",
@@ -1627,7 +1627,7 @@
       "tablet": "Tablet",
       "phone": "Telefon",
       "device": "Gerät",
-      "nothingSent": "Das war eine Vorschau – es wurde nichts gesendet.",
+      "nothingSent": "Das war eine Vorschau. Es wurde nichts gesendet.",
       "restart": "Neu beginnen"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Veröffentlichen",
       "submitAgain": "Änderungen veröffentlichen",
       "issues": "Vor dem Veröffentlichen {count} Punkt beheben | Vor dem Veröffentlichen {count} Punkte beheben",
-      "done": "Veröffentlicht – Version {n} ist live"
+      "done": "Veröffentlicht. Version {n} ist live"
     },
     "issue": {
       "no_inputs": "Fügen Sie mindestens eine Frage hinzu",
@@ -1711,7 +1711,7 @@
       "minChoices": "Min. Auswahl",
       "maxChoices": "Max. Auswahl",
       "accept": "Erlaubte Dateitypen",
-      "acceptHint": "Kommagetrennt, z. B. .pdf,.docx,image/* – leer erlaubt alle.",
+      "acceptHint": "Kommagetrennt, z. B. .pdf,.docx,image/*. Leer erlaubt alle.",
       "maxFiles": "Max. Dateien",
       "maxSize": "Max. Größe (MB)",
       "minAboveMax": "Das Minimum liegt über dem Maximum.",
@@ -1782,9 +1782,9 @@
       "readonly": "Schreibgeschützt",
       "disabled": "Deaktiviert",
       "editableHint": "Befragte können es ausfüllen.",
-      "readonlyHint": "Wird angezeigt und mit der Antwort gesendet, kann aber nicht geändert werden — z. B. eine vorausgefüllte Referenz.",
+      "readonlyHint": "Wird angezeigt und mit der Antwort gesendet, kann aber nicht geändert werden (z. B. eine vorausgefüllte Referenz).",
       "disabledHint": "Wird ausgegraut angezeigt und nicht mit der Antwort gesendet.",
-      "noRequired": "Schreibgeschützte und deaktivierte Felder können keine Pflichtfelder sein — niemand könnte sie ausfüllen."
+      "noRequired": "Schreibgeschützte und deaktivierte Felder können keine Pflichtfelder sein, da niemand sie ausfüllen könnte."
     },
     "labels": {
       "title": "Position der Beschriftung",
@@ -1828,13 +1828,13 @@
       "label": "Formular-Editor, Vollbild"
     },
     "drop": {
-      "newRow": "Hier ablegen – neue Zeile",
-      "beside": "Hier ablegen – daneben"
+      "newRow": "Hier ablegen: neue Zeile",
+      "beside": "Hier ablegen: daneben"
     },
     "blocks": {
       "appearance": "Darstellung",
       "sectionPlaceholder": "Abschnittstitel",
-      "descriptionPlaceholder": "Beschreibung hinzufügen (optional) — zum Bearbeiten doppelklicken",
+      "descriptionPlaceholder": "Beschreibung hinzufügen (optional). Zum Bearbeiten doppelklicken",
       "paragraphPlaceholder": "Text eingeben…",
       "paragraphHint": "Klicken Sie auf den Absatz im Arbeitsbereich, um zu schreiben. Markieren Sie Text für Fettdruck, Links, Listen und Ausrichtung.",
       "size": "Größe",
@@ -1867,7 +1867,7 @@
       "caption": "Bildunterschrift",
       "imageWidth": "Bildgröße",
       "href": "Link beim Klicken",
-      "hrefHint": "Optional — öffnet sich in einem neuen Tab.",
+      "hrefHint": "Optional. Öffnet sich in einem neuen Tab.",
       "rounded": "Abgerundete Ecken",
       "fill": "Füllen",
       "height": "Höhe",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Aus der Liste auswählen…",
       "selected": "Nur die {n} ausgewählten können dieses Feld sehen und ausfüllen.",
-      "noRequired": "Eingeschränkte Felder können keine Pflichtfelder sein — Personen, für die das Feld nicht gedacht ist, müssen trotzdem absenden können. Ihre Antworten sind nur für dieselben Personen sichtbar."
+      "noRequired": "Eingeschränkte Felder können keine Pflichtfelder sein. Personen, für die das Feld nicht gedacht ist, müssen trotzdem absenden können. Ihre Antworten sind nur für dieselben Personen sichtbar."
     },
     "language": {
       "title": "Formularsprache",
       "hint": "Schaltflächen, Meldungen und Datumsangaben folgen dieser Sprache, und Text aus einer Vorlage wird mit übersetzt. Selbst geschriebener Text bleibt, wie er ist.",
       "translated": "{n} Text übersetzt | {n} Texte übersetzt",
-      "kept": "{n} selbst geschriebener Text bleibt, wie er ist – bearbeiten Sie ihn im Formular. | {n} selbst geschriebene Texte bleiben, wie sie sind – bearbeiten Sie sie im Formular.",
+      "kept": "{n} selbst geschriebener Text bleibt, wie er ist. Bearbeiten Sie ihn im Formular. | {n} selbst geschriebene Texte bleiben, wie sie sind. Bearbeiten Sie sie im Formular.",
       "changed": "Formularsprache: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Vorlage aktualisieren",
       "updatedToast": "Vorlage „{name}“ mit den neuesten Änderungen dieses Formulars aktualisiert",
       "saveNew": "Stattdessen als neue Vorlage speichern",
-      "saveNewHint": "Erstellt eine separate Kopie – die bestehende Vorlage bleibt unverändert."
+      "saveNewHint": "Erstellt eine separate Kopie. Die bestehende Vorlage bleibt unverändert."
     },
     "identity": {
       "title": "Antwortende erkennen",
-      "hint": "Wie Formalie Personen unterscheidet, damit niemand zweimal antworten kann – und niemand anderes mit dieser Person verwechselt wird.",
+      "hint": "Wie Formalie Personen unterscheidet, damit niemand zweimal antworten kann und niemand anderes mit dieser Person verwechselt wird.",
       "email": "Eigene E-Mail-Adresse der antwortenden Person",
-      "emailHint": "Die E-Mail-Adresse der Person, die ausfüllt – nicht die einer Referenz, Führungskraft oder erziehungsberechtigten Person. Eine zweite Antwort damit wird abgelehnt; eine sehr ähnliche wird geprüft.",
+      "emailHint": "Die E-Mail-Adresse der Person, die ausfüllt, nicht die einer Referenz, Führungskraft oder erziehungsberechtigten Person. Eine zweite Antwort damit wird abgelehnt; eine sehr ähnliche wird geprüft.",
       "verify": "E-Mail-Adresse vor dem Absenden bestätigen",
-      "verifyHint": "Antwortende geben einen Code ein, der an ihre E-Mail-Adresse gesendet wird – eine Antwort pro bestätigter E-Mail-Adresse.",
+      "verifyHint": "Antwortende geben einen Code ein, der an ihre E-Mail-Adresse gesendet wird. Eine Antwort pro bestätigter E-Mail-Adresse.",
       "suggested": "empfohlen",
       "off": "Aus",
       "none": "Ohne die E-Mail-Adresse der antwortenden Person kann Formalie nur denselben Browser erkennen (Personen können ein anderes Gerät verwenden).",
-      "verifyLost": "Die E-Mail-Bestätigung ist aktiv, aber das Formular enthält die E-Mail-Frage der antwortenden Person nicht mehr – sie ist pausiert, bis oben eine Frage ausgewählt wird.",
-      "verifyRequired": "Die E-Mail-Frage ist ein Pflichtfeld, solange die Bestätigung aktiv ist – sie wird zum Senden des Codes benötigt."
+      "verifyLost": "Die E-Mail-Bestätigung ist aktiv, aber das Formular enthält die E-Mail-Frage der antwortenden Person nicht mehr. Sie ist pausiert, bis oben eine Frage ausgewählt wird.",
+      "verifyRequired": "Die E-Mail-Frage ist ein Pflichtfeld, solange die Bestätigung aktiv ist. Sie wird zum Senden des Codes benötigt."
     },
     "guide": {
       "title": "Hilfe-Anleitung",
@@ -1937,7 +1937,7 @@
       "empty": "Noch keine Anleitung",
       "untitled": "Anleitung ohne Titel",
       "summary": "{title} · {n} Wort | {title} · {n} Wörter",
-      "noContent": "Schreiben Sie die Anleitung – die Schaltfläche erscheint erst, wenn sie Inhalt hat.",
+      "noContent": "Schreiben Sie die Anleitung. Die Schaltfläche erscheint erst, wenn sie Inhalt hat.",
       "editTitle": "Hilfe-Anleitung",
       "editDesc": "Erklären Sie, wie dieses Formular ausgefüllt wird: was bereitliegen sollte, knifflige Fragen und wie es danach weitergeht.",
       "titleLabel": "Titel",
@@ -2030,14 +2030,14 @@
       "ip": "Geben Sie für {field} eine gültige IP-Adresse ein.",
       "domain": "Geben Sie für {field} einen Domainnamen ein, z. B. example.org.",
       "mac": "Geben Sie für {field} eine MAC-Adresse ein, z. B. 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} ist keine gültige IBAN — bitte prüfen Sie die Nummer.",
+      "iban": "{field} ist keine gültige IBAN. Bitte prüfen Sie die Nummer.",
       "bic": "Geben Sie für {field} einen SWIFT-/BIC-Code mit 8 oder 11 Zeichen ein.",
       "color": "Wählen Sie eine Farbe für {field}.",
       "duration": "Geben Sie für {field} eine Dauer ein (Minuten 0–59).",
       "name": "Geben Sie für {field} Vor- und Nachnamen ein.",
       "consent": "Bitte bestätigen Sie {field}, um fortzufahren.",
       "choice": "Wählen Sie für {field} eine Option aus der Liste.",
-      "file": "{field}: Eine Datei wurde nicht fertig hochgeladen – entfernen Sie sie und fügen Sie sie erneut hinzu."
+      "file": "{field}: Eine Datei wurde nicht fertig hochgeladen. Entfernen Sie sie und fügen Sie sie erneut hinzu."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "Datei nicht hinzugefügt",
       "wrongType": "Falscher Dateityp: {files}. Wählen Sie einen der erlaubten Typen.",
       "tooBig": "Zu groß (über {mb} MB): {files}",
-      "tooMany": "Es sind nur {max} Dateien erlaubt – {n} Datei wurde nicht hinzugefügt. | Es sind nur {max} Dateien erlaubt – {n} Dateien wurden nicht hinzugefügt.",
+      "tooMany": "Es sind nur {max} Dateien erlaubt. {n} Datei wurde nicht hinzugefügt. | Es sind nur {max} Dateien erlaubt. {n} Dateien wurden nicht hinzugefügt.",
       "limits": "Bis zu {max} Dateien, je {mb} MB",
       "count": "{n} von {max}",
       "addMore": "Weitere hinzufügen",
@@ -2088,11 +2088,11 @@
       "close": "Diese Seite schließen",
       "closeHint": "Sie können diesen Tab jetzt schließen.",
       "alreadyTitle": "Sie haben dieses Formular bereits ausgefüllt",
-      "alreadyDesc": "Ihre Antwort wurde von diesem Browser empfangen. Füllen Sie es nur für eine andere Person erneut aus – die Antwort jeder Person wird einmal angenommen.",
+      "alreadyDesc": "Ihre Antwort wurde von diesem Browser empfangen. Füllen Sie es nur für eine andere Person erneut aus. Die Antwort jeder Person wird einmal angenommen.",
       "askTitle": "Ist das für eine andere Person?",
       "askDesc": "Sie haben von diesem Browser bereits eine Antwort gesendet.",
       "askPoint1": "Fahren Sie nur fort, wenn diese Antwort für eine andere Person ist.",
-      "askPoint2": "Die Antwort derselben Person – oder genau dieselben Antworten – werden nicht zweimal angenommen.",
+      "askPoint2": "Die Antwort derselben Person (oder genau dieselben Antworten) wird nicht zweimal angenommen.",
       "confirm": "Ja, für eine andere Person",
       "stay": "Nein, hierbleiben",
       "duplicate": "Genau diese Antworten wurden bereits gesendet",
@@ -2105,8 +2105,8 @@
       "registeredField": "Bereits für eine Antwort verwendet.",
       "possibleTitle": "Ist das eine andere Person?",
       "possibleDesc": "Das sieht nach einer Antwort aus, die bereits vorliegt ({email}, {date}).",
-      "possiblePoint1": "Wenn Sie eine andere Person sind, fahren Sie fort – das Team sieht beide Antworten.",
-      "possiblePoint2": "Wenn Sie es selbst sind, prüfen Sie stattdessen Ihre Angaben – eine zweite Antwort derselben Person zählt nicht.",
+      "possiblePoint1": "Wenn Sie eine andere Person sind, fahren Sie fort. Das Team sieht beide Antworten.",
+      "possiblePoint2": "Wenn Sie es selbst sind, prüfen Sie stattdessen Ihre Angaben. Eine zweite Antwort derselben Person zählt nicht.",
       "different": "Ja, ich bin eine andere Person",
       "review": "Nein, Angaben prüfen",
       "verifyTitle": "E-Mail-Adresse bestätigen",
@@ -2125,10 +2125,10 @@
       "auto": "Ihre Antworten werden laufend gespeichert",
       "saving": "Wird gespeichert…",
       "saved": "Gespeichert {when}",
-      "notSaved": "Nicht gespeichert – prüfen Sie Ihre Verbindung",
+      "notSaved": "Nicht gespeichert. Prüfen Sie Ihre Verbindung",
       "later": "Speichern und später fortsetzen",
       "title": "Später fortsetzen",
-      "desc": "Wir senden Ihnen einen persönlichen Link, der Ihre Antworten wiederherstellt – auf jedem Gerät, 30 Tage lang.",
+      "desc": "Wir senden Ihnen einen persönlichen Link, der Ihre Antworten wiederherstellt, auf jedem Gerät und 30 Tage lang.",
       "email": "Ihre E-Mail-Adresse",
       "emailHint": "Der Link geht nur an diese Adresse. Geben Sie ihn nicht weiter: Wer ihn hat, kann Ihr Formular fortsetzen.",
       "send": "Link senden",
@@ -2265,7 +2265,7 @@
       "skip_to_end": "zum Ende springen"
     },
     "emptyTitle": "Noch keine Regeln",
-    "emptyDesc": "Fragen abhängig von früheren Antworten anzeigen, ausblenden oder verpflichtend machen – oder zu einer anderen Seite springen.",
+    "emptyDesc": "Fragen abhängig von früheren Antworten anzeigen, ausblenden oder verpflichtend machen oder zu einer anderen Seite springen.",
     "noFieldsTitle": "Zuerst Fragen hinzufügen",
     "noFieldsDesc": "Regeln reagieren auf Antworten, daher braucht das Formular mindestens eine Frage.",
     "tipTitle": "So funktionieren Regeln",
@@ -2282,7 +2282,7 @@
       "empty": "Formel hinzufügen",
       "unknown": "Kein Feld nutzt den Schlüssel „{key}“",
       "self": "Ein Feld kann sich nicht selbst verwenden",
-      "syntax": "Diese Formel ist unvollständig — prüfen Sie Klammern, Kommas und Operatoren",
+      "syntax": "Diese Formel ist unvollständig. Prüfen Sie Klammern, Kommas und Operatoren",
       "functions": "Funktionen:",
       "choiceScored": "Zählt als Zahl der gewählten Option",
       "choiceUnscored": "Nummerieren Sie die Optionen (Feldeinstellungen → Optionen), um es in Summen zu verwenden",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Diese Antworten prüfen",
     "thenTitle": "Dann Folgendes tun",
     "ifHelp": "Wählen Sie eine Frage, die Art des Vergleichs und die Antwort, die die Regel auslösen soll.",
-    "thenHelp": "Wählen Sie, was passiert, wenn die Antworten zutreffen — und für welche Frage oder Seite.",
+    "thenHelp": "Wählen Sie, was passiert, wenn die Antworten zutreffen, und für welche Frage oder Seite.",
     "matchLead": "Regel ausführen, wenn",
     "andChip": "und",
     "orChip": "oder",
@@ -2394,7 +2394,7 @@
     "saveField": "Feld speichern",
     "saveFieldHint": "Dieses Feld speichern, um es in jedem Formular wiederzuverwenden",
     "saveFieldTitle": "Feld speichern",
-    "saveFieldDesc": "Es erscheint mit allen Einstellungen unter „Gespeichert“ in der Feldliste – für jedes Formular in diesem Workspace.",
+    "saveFieldDesc": "Es erscheint mit allen Einstellungen unter „Gespeichert“ in der Feldliste, für jedes Formular in diesem Workspace.",
     "fieldName": "Name",
     "nameRequired": "Geben Sie einen Namen ein.",
     "savedEmptyTitle": "Noch keine gespeicherten Felder",
@@ -2410,7 +2410,7 @@
     "deleteList": "Liste löschen",
     "deleteListTitle": "Die Liste „{name}“ löschen?",
     "deleteListDesc": "Felder, die sie bereits verwenden, behalten ihre Optionen.",
-    "listDesc": "Wiederverwendbare Optionen für jedes Auswahlfeld — Länder, Regionen, Produkte, Teams …",
+    "listDesc": "Wiederverwendbare Optionen für jedes Auswahlfeld: Länder, Regionen, Produkte, Teams …",
     "listName": "Name",
     "listNamePlaceholder": "z. B. Regionen",
     "listOptions": "Optionen",
@@ -2426,7 +2426,7 @@
     "useList": "Aus einer Liste füllen…",
     "saveAsList": "Als Liste speichern",
     "toast": {
-      "fieldSaved": "„{name}“ gespeichert — Sie finden es unter „Gespeichert“",
+      "fieldSaved": "„{name}“ gespeichert. Sie finden es unter „Gespeichert“",
       "fieldRemoved": "„{name}“ aus den gespeicherten Feldern entfernt",
       "listCreated": "Liste „{name}“ erstellt",
       "listUpdated": "Liste „{name}“ aktualisiert",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "Das Formular liegt auf einer Karte in der Seitenmitte.",
-      "plain": "Keine Karte – das Formular liegt direkt auf dem Seitenhintergrund.",
+      "plain": "Keine Karte. Das Formular liegt direkt auf dem Seitenhintergrund.",
       "split": "Ein Bild neben dem Formular (auf Smartphones darüber).",
       "full": "Das Formular nutzt die gesamte Seitenbreite."
     },
@@ -2546,7 +2546,7 @@
       "error": "Fehler"
     },
     "colorInvalid": "Verwenden Sie eine Hex-Farbe wie #1a2b3c.",
-    "lowContrast": "Geringer Kontrast ({ratio} : 1) – möglicherweise schwer lesbar.",
+    "lowContrast": "Geringer Kontrast ({ratio} : 1), möglicherweise schwer lesbar.",
     "pickColor": "Farbe für {name} wählen",
     "inputStyle": "Stil",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Obere Leiste mit Logo und Website, das Formular und eine Fußzeile.",
         "spotlight": "Ein Banner in Markenfarbe mit Titel und Kurzinfos; das Formular ragt hinein.",
-        "side": "Ein gebrandetes Panel neben dem Formular – auf Smartphones untereinander.",
+        "side": "Ein gebrandetes Panel neben dem Formular, auf Smartphones untereinander.",
         "minimal": "Nur das Formular und eine schmale Fußzeile."
       },
       "tone": "Farbe von Leiste und Panel",
@@ -2636,7 +2636,7 @@
     "updateExisting": "„{name}“ aktualisieren",
     "saveNew": "Als neues Design speichern",
     "name": "Name",
-    "namePlaceholder": "z. B. Marke — hell",
+    "namePlaceholder": "z. B. Marke (hell)",
     "renameTitle": "Design umbenennen",
     "rename": "Umbenennen",
     "duplicate": "Duplizieren",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Ein Formalie-Design",
       "systemHint": "Dieses Design gehört zu Formalie und kann nicht geändert werden. Duplizieren Sie es, um Ihre eigene Version zu erstellen.",
-      "systemDesc": "Formalie-Design — schreibgeschützt",
+      "systemDesc": "Formalie-Design, schreibgeschützt",
       "crumb": "Theme-Editor",
       "newTitle": "Neues Theme",
       "untitled": "Unbenanntes Theme",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Fügen Sie Ihre Datenbanken hinzu, testen Sie sie und bewahren Sie die Zugangsdaten sicher auf.",
       "explorer": "Durchsuchen Sie Schemas, Tabellen und Zeilen und exportieren Sie, was Sie benötigen.",
-      "query": "Führen Sie SQL auf Ihren Datenbanken aus – standardmäßig schreibgeschützt, jede Ausführung wird protokolliert.",
+      "query": "Führen Sie SQL auf Ihren Datenbanken aus. Standardmäßig schreibgeschützt, jede Ausführung wird protokolliert.",
       "savedQueries": "Speichern und teilen Sie die Abfragen, die Ihr Team am häufigsten nutzt.",
       "destinations": "Legen Sie fest, wohin jedes Formular seine Antworten sendet, und ordnen Sie Felder den Spalten zu.",
       "transfers": "Importieren Sie Dateien in Tabellen und exportieren Sie Tabellen oder Abfrageergebnisse.",
@@ -2721,7 +2721,7 @@
     "example": "So sieht ein Endpunkt aus (Beispiel)",
     "channels": {
       "title": "Daten aus allen Richtungen erfassen",
-      "hint": "Jedes Formular nimmt Antworten über seinen Link, eine Einbettung auf Ihrer Website und seine eigene API entgegen – alles landet am selben Ort.",
+      "hint": "Jedes Formular nimmt Antworten über seinen Link, eine Einbettung auf Ihrer Website und seine eigene API entgegen. Alles landet am selben Ort.",
       "link": "Teilbarer Link",
       "embed": "Eingebettetes Formular",
       "api": "API-Endpunkte"
@@ -2734,7 +2734,7 @@
       "logs": "Jeder Aufruf mit Status, Dauer und Aufrufer.",
       "analytics": "Aufrufe, Fehler und Antwortzeiten pro Dienst und Endpunkt.",
       "docs": "Fertige Dokumentation und ein Ort zum Testen jedes Endpunkts.",
-      "webhooks": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme – signiert und mit Wiederholungsversuchen.",
+      "webhooks": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme, signiert und mit Wiederholungsversuchen.",
       "apiKeys": "Schlüssel für die Formalie-API: Verwalten Sie Formulare und Antworten aus Ihrem Code.",
       "apps": "Verbinden Sie Apps wie Tabellenkalkulationen und Team-Chat."
     }
@@ -2744,7 +2744,7 @@
     "back": "Übersicht KI-Assistent",
     "promise": {
       "title": "Sie behalten die Kontrolle",
-      "review": "Der Assistent schlägt vor — Sie prüfen und übernehmen.",
+      "review": "Der Assistent schlägt vor. Sie prüfen und übernehmen.",
       "private": "Sie bestimmen, was er lesen darf; personenbezogene Daten können ausgeschlossen werden.",
       "audit": "Jede Anfrage wird im Verlauf und im Audit-Protokoll erfasst."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "In neuem Tab öffnen",
       "close": "Schließen",
       "loading": "{host} wird geladen…",
-      "slow": "Dauert es länger? Manche Websites lassen sich nicht innerhalb einer anderen Seite anzeigen – öffnen Sie sie stattdessen in einem neuen Tab.",
-      "safe": "Ihre Antworten bleiben erhalten – schließen Sie dieses Fenster, um mit dem Formular fortzufahren.",
+      "slow": "Dauert es länger? Manche Websites lassen sich nicht innerhalb einer anderen Seite anzeigen. Öffnen Sie sie stattdessen in einem neuen Tab.",
+      "safe": "Ihre Antworten bleiben erhalten. Schließen Sie dieses Fenster, um mit dem Formular fortzufahren.",
       "backToForm": "Zurück zum Formular"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Wird geprüft…",
       "free": "Dieser Link ist frei",
       "taken": "Ein anderes Formular verwendet diesen Link bereits",
-      "reserved": "Dieses Wort ist reserviert – wählen Sie ein anderes",
+      "reserved": "Dieses Wort ist reserviert. Wählen Sie ein anderes",
       "invalid": "Verwenden Sie 3–60 Kleinbuchstaben, Ziffern und Bindestriche",
       "remove": "Eigenen Link entfernen",
       "copy": "Link kopieren",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Danach zeigt der Link an, dass das Formular voll ist.",
       "max": "Maximale Antworten",
       "used": "{n} von {max} genutzt",
-      "full": "Die Grenze ist erreicht – das Formular nimmt keine Antworten mehr an.",
+      "full": "Die Grenze ist erreicht. Das Formular nimmt keine Antworten mehr an.",
       "when": "Wann es Antworten annimmt",
       "always": "Immer (kein Start- oder Enddatum)",
       "from": "Ab {from}",
@@ -2935,7 +2935,7 @@
       "any": "Jede Website",
       "anyDesc": "Jeder mit dem Einbettungscode kann das Formular auf seiner Website einbinden.",
       "listed": "Nur von Ihnen aufgeführte Websites",
-      "listedDesc": "Andere Websites können das Formular nicht anzeigen – der Browser verweigert es.",
+      "listedDesc": "Andere Websites können das Formular nicht anzeigen, weil der Browser es verweigert.",
       "sites": "Erlaubte Websites",
       "sitesHint": "Adressen eingeben oder einfügen, dann Enter drücken. *.example.com schließt die Unterseiten ein. Bis zu {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "So funktionieren die Links Ihres Formulars",
-      "desc": "Ihr Formular kann bis zu drei Links haben. Alle öffnen dasselbe Formular — verwenden Sie den, der am besten zum Ort passt, an dem Sie ihn teilen.",
+      "desc": "Ihr Formular kann bis zu drei Links haben. Alle öffnen dasselbe Formular. Verwenden Sie den, der am besten zum Ort passt, an dem Sie ihn teilen.",
       "always": "Immer aktiv",
       "on": "Aktiv",
       "off": "Nicht festgelegt",
       "original": {
         "name": "Original-Link",
-        "for": "Wird mit dem Formular erstellt. Er ändert sich nie und funktioniert immer — auch nachdem Sie einen eigenen Link oder einen Kurzlink hinzugefügt haben."
+        "for": "Wird mit dem Formular erstellt. Er ändert sich nie und funktioniert immer, auch nachdem Sie einen eigenen Link oder einen Kurzlink hinzugefügt haben."
       },
       "custom": {
         "name": "Eigener Link",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Ein Plakat oder QR-Code verwendet den Kurzlink",
-          "then": "er funktioniert weiter, egal was Sie mit dem eigenen Link machen. Wenn Sie den Kurzlink entfernen, ist er dauerhaft deaktiviert — sein Code wird nie an ein anderes Formular vergeben."
+          "then": "er funktioniert weiter, egal was Sie mit dem eigenen Link machen. Wenn Sie den Kurzlink entfernen, ist er dauerhaft deaktiviert. Sein Code wird nie an ein anderes Formular vergeben."
         },
         "closed": {
           "when": "Das Formular ist geschlossen, voll, abgelaufen oder geschützt",
-          "then": "jeder Link zeigt dieselbe Meldung oder Passwortabfrage — kein Link umgeht sie."
+          "then": "jeder Link zeigt dieselbe Meldung oder Passwortabfrage. Kein Link umgeht sie."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Beschreibung",
       "descriptionPlaceholder": "Ein Satz dazu, wofür das Formular gedacht ist",
       "image": "Bild",
-      "imageHint": "Wird oben in der Linkkarte angezeigt. PNG, JPEG oder WebP, bis 5 MB — 1200 × 630 px eignet sich am besten.",
+      "imageHint": "Wird oben in der Linkkarte angezeigt. PNG, JPEG oder WebP, bis 5 MB. 1200 × 630 px eignet sich am besten.",
       "imageRule": "Verwenden Sie ein PNG-, JPEG- oder WebP-Bild mit bis zu 5 MB.",
       "upload": "Bild hochladen",
       "replace": "Ersetzen",
@@ -3005,20 +3005,20 @@
       "asCard": "Linkkarte",
       "asSearch": "Suchergebnis",
       "noImage": "Kein Bild",
-      "hiddenFromSearch": "Vor Suchmaschinen verborgen — dieses Formular erscheint nicht in Suchergebnissen."
+      "hiddenFromSearch": "Vor Suchmaschinen verborgen. Dieses Formular erscheint nicht in Suchergebnissen."
     },
     "invite": {
       "title": "Einladungen",
       "counts": "{responded} von {total} haben geantwortet",
-      "saveFirst": "Speichern Sie „Nur eingeladene Personen“, damit die Einladungen wirksam werden — bis dahin bleibt das Formular wie bisher offen.",
+      "saveFirst": "Speichern Sie „Nur eingeladene Personen“, damit die Einladungen wirksam werden. Bis dahin bleibt das Formular wie bisher offen.",
       "add": "Personen einladen",
-      "addHint": "Nur E-Mail-Adressen. Trennen Sie sie mit Komma, Leerzeichen oder neuer Zeile – oder fügen Sie eine Liste ein.",
+      "addHint": "Nur E-Mail-Adressen. Trennen Sie sie mit Komma, Leerzeichen oder neuer Zeile, oder fügen Sie eine Liste ein.",
       "placeholder": "name{'@'}example.org",
       "button": "{n} Person einladen | {n} Personen einladen",
       "buttonEmpty": "Einladen",
       "sent": "{n} Einladung gesendet | {n} Einladungen gesendet",
       "skipped": "{n} Person war bereits eingeladen | {n} Personen waren bereits eingeladen",
-      "devLinks": "Persönliche Links — werden jeder Person per E-Mail gesendet, sobald Formalie live ist; während der Entwicklung hier angezeigt:",
+      "devLinks": "Persönliche Links. Sie werden jeder Person per E-Mail gesendet, sobald Formalie live ist; während der Entwicklung hier angezeigt:",
       "none": "Noch niemand eingeladen.",
       "resent": "Ein neuer Link wurde an {email} gesendet",
       "resend": "Neuen Link senden",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Personen mit Zugriff",
-      "desc": "Nur Mitarbeitende Ihres Arbeitsbereichs – das ändert nicht, wer das Formular ausfüllen kann.",
+      "desc": "Nur Mitarbeitende Ihres Arbeitsbereichs. Das ändert nicht, wer das Formular ausfüllen kann.",
       "team": "Alle anderen im Workspace",
       "teamDesc": "Gilt für alle, die unten nicht aufgeführt sind.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Person hinzufügen…",
       "levelFor": "Zugriff für {name}",
       "remove": "{name} entfernen",
-      "note": "Der eigene Zugriff einer Person ersetzt für sie die Workspace-Vorgabe — ob mehr oder weniger. Workspace-Admins und der Formularinhaber haben immer vollen Zugriff.",
+      "note": "Der eigene Zugriff einer Person ersetzt für sie die Workspace-Vorgabe, ob mehr oder weniger. Workspace-Admins und der Formularinhaber haben immer vollen Zugriff.",
       "viewOnly": "Nur ansehen",
-      "viewOnlyDesc": "Sie können dieses Formular und seine Einstellungen ansehen. Änderungen werden nicht gespeichert — bitten Sie den Formularinhaber um Bearbeitungszugriff.",
+      "viewOnlyDesc": "Sie können dieses Formular und seine Einstellungen ansehen. Änderungen werden nicht gespeichert. Bitten Sie den Formularinhaber um Bearbeitungszugriff.",
       "responsesOnly": "Sie sehen nur die Antworten dieses Formulars",
       "responsesOnlyDesc": "Fragen und Design sind nicht für Sie freigegeben. Wenden Sie sich an den Formularinhaber, wenn Sie mehr Zugriff benötigen.",
       "viewForm": "Ansehen"
     },
     "section": {
       "answering": "Formular ausfüllen",
-      "answeringDesc": "Wer es ausfüllen kann und wie man es erreicht – für alle, denen Sie das Formular schicken.",
+      "answeringDesc": "Wer es ausfüllen kann und wie man es erreicht, für alle, denen Sie das Formular schicken.",
       "team": "Ihr Team",
       "teamDesc": "Mitarbeitende Ihres Arbeitsbereichs, die dieses Formular erstellen und verwalten. Das ändert nicht, wer es ausfüllen kann."
     }

@@ -1,6 +1,6 @@
 <!--
-  Your templates (owner, 2026-10-03): the workspace's own templates — saved from forms or
-  duplicated from Formalie's — kept apart from Formalie's catalogue.
+  Your templates (owner, 2026-10-03): the workspace's own templates, saved from forms or
+  duplicated from Formalie's, kept apart from Formalie's catalogue.
 -->
 <script setup lang="ts">
 definePageMeta({ breadcrumb: 'nav.templatesMine' })

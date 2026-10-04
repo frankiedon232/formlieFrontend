@@ -72,7 +72,7 @@
       "moved": "Formulário movido",
       "tagsSaved": "Tags salvas",
       "duplicated": "Cópia criada",
-      "unpublish": "Formulário despublicado — o link não funciona mais",
+      "unpublish": "Formulário despublicado. O link não funciona mais",
       "close": "Formulário encerrado para novas respostas",
       "reopen": "Formulário reaberto",
       "archive": "Formulário arquivado",
@@ -119,7 +119,7 @@
       "count": "{count} formulário | {count} formulários",
       "empty": "Ainda não há pastas. Crie uma abaixo.",
       "viewForms": "Mostrar os formulários em {name}",
-      "notEmpty": "Mova primeiro os formulários para outra pasta — depois ela poderá ser excluída.",
+      "notEmpty": "Mova primeiro os formulários para outra pasta. Depois ela poderá ser excluída.",
       "deleteEmpty": "A pasta está vazia, então nenhum formulário é afetado."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "Você pode alterar ambos depois.",
       "pickFile": "Escolha primeiro um arquivo para importar.",
       "blankTitle": "Começar do zero",
-      "blankDesc": "Um formulário vazio com uma página — adicione as perguntas de que precisa, na ordem que quiser.",
+      "blankDesc": "Um formulário vazio com uma página. Adicione as perguntas de que precisa, na ordem que quiser.",
       "previewAdd": "Adicione sua primeira pergunta",
       "points": {
         "fieldsTitle": "Mais de 30 tipos de campo",
@@ -190,7 +190,7 @@
     "filterTemplate": "Modelo",
     "overview": {
       "subtitle": "{status} · atualizado {updated}",
-      "trendTitle": "Respostas — últimos 30 dias",
+      "trendTitle": "Respostas (últimos 30 dias)",
       "trendDesc": "Envios por dia",
       "trendAria": "Respostas por dia nos últimos 30 dias, {total} no total",
       "responsesCount": "{count} resposta | {count} respostas",
@@ -229,15 +229,15 @@
       "design": "Design",
       "versions": "Versões",
       "allVersions": "Todas as versões",
-      "noVersions": "Ainda não publicado — as versões aparecem quando você publica.",
+      "noVersions": "Ainda não publicado. As versões aparecem quando você publica.",
       "detailsTitle": "Detalhes",
       "tags": "Tags",
-      "noHistory": "Publicado antes de o histórico de versões ser mantido — ele começa na próxima publicação.",
+      "noHistory": "Publicado antes de o histórico de versões ser mantido. Ele começa na próxima publicação.",
       "embedCode": "Código de incorporação"
     },
     "qr": {
       "title": "Código QR",
-      "desc": "Imprima ou exiba em telas — ao escanear, o formulário é aberto.",
+      "desc": "Imprima ou exiba em telas. Ao escanear, o formulário é aberto.",
       "accent": "Cor do formulário",
       "black": "Preto",
       "colour": "Colorido",
@@ -252,7 +252,7 @@
       "plain": "Simples",
       "brandedOrg": "Nome e logotipo da sua organização com o nome do formulário; Formalie no rodapé.",
       "brandedFormalie": "Marca Formalie com o nome do formulário.",
-      "plainHint": "Só o código — para espaços pequenos.",
+      "plainHint": "Só o código, para espaços pequenos.",
       "brand": "Cor da marca",
       "custom": "Qualquer cor",
       "scan": "Escaneie para abrir",
@@ -270,9 +270,9 @@
       "title": "Quando este formulário aceita respostas",
       "desc": "Deixe ambos vazios para mantê-lo aberto. Após o fim, o link informa que o formulário expirou; antes do início, informa quando ele abre.",
       "opensAt": "Aberto a partir de",
-      "opensAtHint": "Opcional — antes disso, o link mostra quando o formulário abre.",
+      "opensAtHint": "Opcional. Antes disso, o link mostra quando o formulário abre.",
       "closesAt": "Aberto até",
-      "closesAtHint": "Opcional — depois disso, não há mais respostas; o link informa que o formulário expirou.",
+      "closesAtHint": "Opcional. Depois disso, não há mais respostas; o link informa que o formulário expirou.",
       "preset": {
         "week": "1 semana",
         "twoWeeks": "2 semanas",
@@ -281,16 +281,16 @@
         "noEnd": "Sem data de término"
       },
       "endBeforeStart": "Escolha um fim posterior ao início.",
-      "pastWarning": "Esta data de término já passou — o formulário deixa de aceitar respostas assim que você salvar.",
+      "pastWarning": "Esta data de término já passou. O formulário deixa de aceitar respostas assim que você salvar.",
       "saved": "Disponibilidade salva"
     },
     "embed": {
       "title": "Incorporar no seu site",
       "desc": "Cole este código na página do seu site onde o formulário deve aparecer.",
-      "notLive": "O formulário ainda não foi publicado — a incorporação mostra-o quando estiver ativo.",
+      "notLive": "O formulário ainda não foi publicado. A incorporação mostra-o quando estiver ativo.",
       "height": "Altura",
       "auto": "Altura automática (recomendado)",
-      "autoDesc": "A moldura aumenta e diminui com o formulário — sem barra de deslocamento interna.",
+      "autoDesc": "A moldura aumenta e diminui com o formulário, sem barra de deslocamento interna.",
       "fixed": "Altura fixa",
       "fixedDesc": "Sempre a mesma altura; o formulário desloca-se dentro da moldura.",
       "pixels": "Altura em píxeis",
@@ -542,8 +542,8 @@
     "label": "Rodapé"
   },
   "authLayout": {
-    "headline": "Formulários, dados e acesso — sob o seu controle.",
-    "subline": "Uma plataforma segura e flexível para criar qualquer formulário, coletar e gerenciar dados, conectar seus sistemas e controlar quem vê o quê — para organizações de qualquer porte, em qualquer lugar do mundo.",
+    "headline": "Formulários, dados e acesso sob o seu controle.",
+    "subline": "Uma plataforma segura e flexível para criar qualquer formulário, coletar e gerenciar dados, conectar seus sistemas e controlar quem vê o quê. Para organizações de qualquer porte, em qualquer lugar do mundo.",
     "badgeEncrypted": "Criptografia de ponta a ponta",
     "badgeCompliance": "Controles de privacidade e conformidade",
     "badgeDatabase": "{count}+ bancos de dados ou armazenamento seguro",
@@ -651,7 +651,7 @@
       "available": "Disponível",
       "unavailable": {
         "taken": "Já está em uso",
-        "reserved": "Reservado — escolha outro",
+        "reserved": "Reservado, escolha outro",
         "invalid": "Endereço inválido"
       },
       "subdomainHelp": "Sua equipe entra por aqui. Você pode adicionar um domínio próprio depois.",
@@ -891,7 +891,7 @@
     "menu": "Configuração do espaço",
     "settingsCard": {
       "title": "Configuração do espaço",
-      "desc": "Empresa, marca, configurações regionais, equipe e primeiro formulário — volte a qualquer etapa.",
+      "desc": "Empresa, marca, configurações regionais, equipe e primeiro formulário. Volte a qualquer etapa.",
       "open": "Abrir"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Administrador",
       "owner": "Proprietário",
       "invalid": "Digite um e-mail válido.",
-      "self": "É você — você já faz parte.",
+      "self": "É você. Você já faz parte.",
       "duplicate": "Este e-mail já está na lista.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "E-mail {n}",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Solicitação de bolsa de estudos",
-        "description": "Histórico escolar, necessidade financeira e carta pessoal — com uma pontuação de elegibilidade para a banca."
+        "description": "Histórico escolar, necessidade financeira e carta pessoal, com uma pontuação de elegibilidade para a banca."
       },
       "permission_slip": {
         "name": "Autorização / Consentimento dos pais",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Confirmação / Comprovante de entrega",
-        "description": "Confirme o que chegou, o estado, uma foto e a assinatura do recebedor — avarias pedem detalhes."
+        "description": "Confirme o que chegou, o estado, uma foto e a assinatura do recebedor. Avarias pedem detalhes."
       },
       "quality_control": {
         "name": "Checklist de controle de qualidade",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Assinatura de acordo",
-        "description": "Mostre o acordo, confirme cada ponto principal e assine — com os dados da empresa ao assinar em nome dela."
+        "description": "Mostre o acordo, confirme cada ponto principal e assine, com os dados da empresa ao assinar em nome dela."
       },
       "risk_assessment": {
         "name": "Avaliação de riscos",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Relatório de incidente / acidente",
-        "description": "Registre o que aconteceu, quem se feriu e as primeiras ações tomadas — incidentes graves são sinalizados para análise urgente."
+        "description": "Registre o que aconteceu, quem se feriu e as primeiras ações tomadas. Incidentes graves são sinalizados para análise urgente."
       },
       "near_miss_report": {
         "name": "Relato de quase acidente",
-        "description": "Relate quase acidentes rapidamente — a gravidade potencial e a recorrência definem a prioridade para que a prevenção venha primeiro."
+        "description": "Relate quase acidentes rapidamente. A gravidade potencial e a recorrência definem a prioridade para que a prevenção venha primeiro."
       },
       "safety_inspection": {
         "name": "Checklist de inspeção de segurança",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Histórico médico",
-        "description": "Doenças, cirurgias, medicamentos, histórico familiar e estilo de vida — com a contagem de condições para o profissional de saúde."
+        "description": "Doenças, cirurgias, medicamentos, histórico familiar e estilo de vida, com a contagem de condições para o profissional de saúde."
       },
       "health_screening": {
         "name": "Triagem / declaração de saúde",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Inscrição de voluntários",
-        "description": "Reúna voluntários, seus interesses e disponibilidade — com consentimento do responsável para menores de 18."
+        "description": "Reúna voluntários, seus interesses e disponibilidade, com consentimento do responsável para menores de 18."
       },
       "speaker_sponsor_application": {
         "name": "Inscrição de palestrante / patrocinador",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Formulário de necessidades especiais",
-        "description": "Restrições alimentares, acessibilidade, alergias e comemorações — para tudo estar pronto antes da chegada."
+        "description": "Restrições alimentares, acessibilidade, alergias e comemorações, para tudo estar pronto antes da chegada."
       },
       "event_catering_request": {
         "name": "Pedido de buffet para evento",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Reserva de restaurante",
-        "description": "Data, horário, número de pessoas, lugar e ocasião — tudo de que o anfitrião precisa."
+        "description": "Data, horário, número de pessoas, lugar e ocasião: tudo de que o anfitrião precisa."
       },
       "hospitality_complaint": {
         "name": "Formulário de reclamação de hospitalidade",
@@ -1440,7 +1440,7 @@
       },
       "sales_lead_capture": {
         "name": "Captação de leads",
-        "description": "Nome, empresa, porte e interesse — curto o bastante para uma landing page, com a origem registrada."
+        "description": "Nome, empresa, porte e interesse. Curto o bastante para uma landing page, com a origem registrada."
       },
       "sales_quote_request": {
         "name": "Pedido de orçamento",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Acompanhamento de vendas",
-        "description": "Registre uma ligação ou reunião: resultado, etapa do negócio, próximo passo e data — rápido no celular."
+        "description": "Registre uma ligação ou reunião: resultado, etapa do negócio, próximo passo e data. Rápido no celular."
       }
     },
     "openGallery": "Abrir a galeria completa",
@@ -1481,7 +1481,7 @@
       "browse": "Ver modelos"
     },
     "categoryPage": {
-      "subtitle": "Modelos da Formalie nesta categoria — cada um com seu próprio design, pronto para usar"
+      "subtitle": "Modelos da Formalie nesta categoria, cada um com seu próprio design e pronto para usar"
     },
     "mine": {
       "subtitle": "Modelos que seu espaço de trabalho salvou dos próprios formulários ou copiou da Formalie",
@@ -1611,7 +1611,7 @@
     "unpublished": "Alterações não publicadas",
     "save": {
       "saving": "Salvando…",
-      "error": "Não salvo — continue editando para tentar de novo",
+      "error": "Não salvo. Continue editando para tentar de novo",
       "conflict": "Alterado em outro lugar",
       "saved": "Salvo {time}",
       "upToDate": "Tudo salvo",
@@ -1627,7 +1627,7 @@
       "tablet": "Tablet",
       "phone": "Celular",
       "device": "Dispositivo",
-      "nothingSent": "Era uma pré-visualização — nada foi enviado.",
+      "nothingSent": "Era uma pré-visualização. Nada foi enviado.",
       "restart": "Começar de novo"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Publicar",
       "submitAgain": "Publicar alterações",
       "issues": "Corrija {count} item antes de publicar | Corrija {count} itens antes de publicar",
-      "done": "Publicado — a versão {n} está no ar"
+      "done": "Publicado: a versão {n} está no ar"
     },
     "issue": {
       "no_inputs": "Adicione pelo menos uma pergunta",
@@ -1711,7 +1711,7 @@
       "minChoices": "Mín. de escolhas",
       "maxChoices": "Máx. de escolhas",
       "accept": "Tipos de arquivo permitidos",
-      "acceptHint": "Separados por vírgula, ex.: .pdf,.docx,image/* — vazio permite qualquer um.",
+      "acceptHint": "Separados por vírgula, ex.: .pdf,.docx,image/* (vazio permite qualquer um).",
       "maxFiles": "Máx. de arquivos",
       "maxSize": "Tamanho máx. (MB)",
       "minAboveMax": "O mínimo está acima do máximo.",
@@ -1782,9 +1782,9 @@
       "readonly": "Somente leitura",
       "disabled": "Desativado",
       "editableHint": "Os respondentes podem preencher.",
-      "readonlyHint": "Exibido e enviado com a resposta, mas não pode ser alterado — ex.: uma referência pré-preenchida.",
+      "readonlyHint": "Exibido e enviado com a resposta, mas não pode ser alterado (ex.: uma referência pré-preenchida).",
       "disabledHint": "Exibido em cinza e não enviado com a resposta.",
-      "noRequired": "Campos somente leitura e desativados não podem ser obrigatórios — ninguém conseguiria preenchê-los."
+      "noRequired": "Campos somente leitura e desativados não podem ser obrigatórios. Ninguém conseguiria preenchê-los."
     },
     "labels": {
       "title": "Posição dos rótulos",
@@ -1828,13 +1828,13 @@
       "label": "Editor de formulário, tela cheia"
     },
     "drop": {
-      "newRow": "Solte aqui — nova linha",
-      "beside": "Solte aqui — ao lado"
+      "newRow": "Solte aqui: nova linha",
+      "beside": "Solte aqui: ao lado"
     },
     "blocks": {
       "appearance": "Aparência",
       "sectionPlaceholder": "Título da seção",
-      "descriptionPlaceholder": "Adicione uma descrição (opcional) — clique duas vezes para editar",
+      "descriptionPlaceholder": "Adicione uma descrição (opcional). Clique duas vezes para editar",
       "paragraphPlaceholder": "Escreva um texto…",
       "paragraphHint": "Clique no parágrafo na tela para escrever. Selecione o texto para negrito, links, listas e alinhamento.",
       "size": "Tamanho",
@@ -1867,7 +1867,7 @@
       "caption": "Legenda",
       "imageWidth": "Tamanho da imagem",
       "href": "Link ao clicar",
-      "hrefHint": "Opcional — abre em uma nova aba.",
+      "hrefHint": "Opcional. Abre em uma nova aba.",
       "rounded": "Cantos arredondados",
       "fill": "Preencher",
       "height": "Altura",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Escolha na lista…",
       "selected": "Somente os {n} selecionados podem ver e preencher este campo.",
-      "noRequired": "Campos restritos não podem ser obrigatórios — pessoas a quem o campo não se destina ainda precisam conseguir enviar. As respostas são mostradas somente a essas mesmas pessoas."
+      "noRequired": "Campos restritos não podem ser obrigatórios. Pessoas a quem o campo não se destina ainda precisam conseguir enviar. As respostas são mostradas somente a essas mesmas pessoas."
     },
     "language": {
       "title": "Idioma do formulário",
       "hint": "Os botões, mensagens e datas seguem este idioma, e o texto vindo de um modelo é traduzido com ele. O texto que escreveu fica como está.",
       "translated": "{n} texto traduzido | {n} textos traduzidos",
-      "kept": "{n} texto escrito por si fica como está — edite-o no formulário. | {n} textos escritos por si ficam como estão — edite-os no formulário.",
+      "kept": "{n} texto escrito por si fica como está. Edite-o no formulário. | {n} textos escritos por si ficam como estão. Edite-os no formulário.",
       "changed": "Idioma do formulário: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Atualizar modelo",
       "updatedToast": "Modelo “{name}” atualizado com as alterações mais recentes deste formulário",
       "saveNew": "Salvar como um novo modelo",
-      "saveNewHint": "Cria uma cópia separada — o modelo existente continua como está."
+      "saveNewHint": "Cria uma cópia separada. O modelo existente continua como está."
     },
     "identity": {
       "title": "Reconhecer respondentes",
-      "hint": "Como o Formalie diferencia as pessoas, para que ninguém responda duas vezes — e ninguém mais seja confundido com ela.",
+      "hint": "Como o Formalie diferencia as pessoas, para que ninguém responda duas vezes e ninguém mais seja confundido com ela.",
       "email": "E-mail do próprio respondente",
-      "emailHint": "O e-mail da pessoa que está preenchendo — não de uma referência, gestor ou responsável. Uma segunda resposta com ele é recusada; uma muito parecida é verificada.",
+      "emailHint": "O e-mail da pessoa que está preenchendo, não de uma referência, gestor ou responsável. Uma segunda resposta com ele é recusada; uma muito parecida é verificada.",
       "verify": "Verificar o e-mail antes de enviar",
-      "verifyHint": "Os respondentes digitam um código enviado ao e-mail deles — uma resposta por e-mail verificado.",
+      "verifyHint": "Os respondentes digitam um código enviado ao e-mail deles. Uma resposta por e-mail verificado.",
       "suggested": "sugerido",
       "off": "Desativado",
       "none": "Sem o e-mail de quem responde, o Formalie só consegue reconhecer o mesmo navegador (as pessoas podem usar outro dispositivo).",
-      "verifyLost": "A verificação de e-mail está ativada, mas o formulário não tem mais a pergunta de e-mail do respondente — ela fica pausada até você escolher uma acima.",
-      "verifyRequired": "A pergunta de e-mail é obrigatória enquanto a verificação estiver ativada — precisamos dela para enviar o código."
+      "verifyLost": "A verificação de e-mail está ativada, mas o formulário não tem mais a pergunta de e-mail do respondente. Ela fica pausada até você escolher uma acima.",
+      "verifyRequired": "A pergunta de e-mail é obrigatória enquanto a verificação estiver ativada. Precisamos dela para enviar o código."
     },
     "guide": {
       "title": "Guia de ajuda",
@@ -1937,7 +1937,7 @@
       "empty": "Nenhum guia ainda",
       "untitled": "Guia sem título",
       "summary": "{title} · {n} palavra | {title} · {n} palavras",
-      "noContent": "Escreva o guia — o botão só aparece quando houver algum conteúdo.",
+      "noContent": "Escreva o guia. O botão só aparece quando houver algum conteúdo.",
       "editTitle": "Guia de ajuda",
       "editDesc": "Explique como preencher este formulário: o que ter em mãos, as perguntas difíceis e o que acontece depois.",
       "titleLabel": "Título",
@@ -2030,14 +2030,14 @@
       "ip": "Introduza um endereço IP válido para {field}.",
       "domain": "Introduza um nome de domínio para {field}, como example.org.",
       "mac": "Introduza um endereço MAC para {field}, como 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} não é um IBAN válido — verifique o número.",
+      "iban": "{field} não é um IBAN válido. Verifique o número.",
       "bic": "Introduza um código SWIFT / BIC de 8 ou 11 caracteres para {field}.",
       "color": "Escolha uma cor para {field}.",
       "duration": "Introduza uma duração para {field} (minutos 0–59).",
       "name": "Introduza o nome próprio e o apelido para {field}.",
       "consent": "Confirme {field} para continuar.",
       "choice": "Escolha uma opção da lista para {field}.",
-      "file": "{field}: um ficheiro não terminou de ser enviado — remova-o e adicione-o novamente."
+      "file": "{field}: um ficheiro não terminou de ser enviado. Remova-o e adicione-o novamente."
     },
     "page": {
       "logo": "Logotipo",
@@ -2073,7 +2073,7 @@
       "notAdded": "Arquivo não adicionado",
       "wrongType": "Tipo de arquivo inválido: {files}. Escolha um dos tipos permitidos.",
       "tooBig": "Muito grande (mais de {mb} MB): {files}",
-      "tooMany": "Só são permitidos {max} arquivos — {n} arquivo não foi adicionado. | Só são permitidos {max} arquivos — {n} arquivos não foram adicionados.",
+      "tooMany": "Só são permitidos {max} arquivos. {n} arquivo não foi adicionado. | Só são permitidos {max} arquivos. {n} arquivos não foram adicionados.",
       "limits": "Até {max} arquivos, {mb} MB cada",
       "count": "{n} de {max}",
       "addMore": "Adicionar mais",
@@ -2088,11 +2088,11 @@
       "close": "Fechar esta página",
       "closeHint": "Você já pode fechar esta aba.",
       "alreadyTitle": "Você já preencheu este formulário",
-      "alreadyDesc": "Sua resposta foi recebida a partir deste navegador. Preencha novamente apenas para outra pessoa — a resposta de cada pessoa é aceita uma vez.",
+      "alreadyDesc": "Sua resposta foi recebida a partir deste navegador. Preencha novamente apenas para outra pessoa. A resposta de cada pessoa é aceita uma vez.",
       "askTitle": "Isto é para outra pessoa?",
       "askDesc": "Você já enviou uma resposta a partir deste navegador.",
       "askPoint1": "Continue apenas se esta resposta for para outra pessoa.",
-      "askPoint2": "A resposta da mesma pessoa — ou exatamente as mesmas respostas — não será aceita duas vezes.",
+      "askPoint2": "A resposta da mesma pessoa (ou exatamente as mesmas respostas) não será aceita duas vezes.",
       "confirm": "Sim, para outra pessoa",
       "stay": "Não, ficar aqui",
       "duplicate": "Estas mesmas respostas já foram enviadas",
@@ -2105,8 +2105,8 @@
       "registeredField": "Já usado em uma resposta.",
       "possibleTitle": "Você é outra pessoa?",
       "possibleDesc": "Parece uma resposta que já temos ({email}, {date}).",
-      "possiblePoint1": "Se você é outra pessoa, continue — a equipe verá as duas respostas.",
-      "possiblePoint2": "Se for você, revise suas respostas — uma segunda resposta da mesma pessoa não será contabilizada.",
+      "possiblePoint1": "Se você é outra pessoa, continue. A equipe verá as duas respostas.",
+      "possiblePoint2": "Se for você, revise suas respostas. Uma segunda resposta da mesma pessoa não será contabilizada.",
       "different": "Sim, sou outra pessoa",
       "review": "Não, revisar minhas respostas",
       "verifyTitle": "Confirme seu e-mail",
@@ -2125,10 +2125,10 @@
       "auto": "Suas respostas são salvas conforme você avança",
       "saving": "Salvando…",
       "saved": "Salvo {when}",
-      "notSaved": "Não salvo — verifique sua conexão",
+      "notSaved": "Não salvo. Verifique sua conexão",
       "later": "Salvar e continuar depois",
       "title": "Continuar depois",
-      "desc": "Vamos enviar um link pessoal que recupera suas respostas — em qualquer dispositivo, por 30 dias.",
+      "desc": "Vamos enviar um link pessoal que recupera suas respostas em qualquer dispositivo, por 30 dias.",
       "email": "Seu e-mail",
       "emailHint": "O link vai somente para este endereço. Mantenha-o em sigilo: qualquer pessoa com ele pode continuar seu formulário.",
       "send": "Enviar meu link",
@@ -2282,7 +2282,7 @@
       "empty": "Adicionar uma fórmula",
       "unknown": "Nenhum campo usa a chave “{key}”",
       "self": "Um campo não pode usar a si mesmo",
-      "syntax": "Esta fórmula está incompleta — verifique parênteses, vírgulas e operadores",
+      "syntax": "Esta fórmula está incompleta. Verifique parênteses, vírgulas e operadores",
       "functions": "Funções:",
       "choiceScored": "Conta como o número da opção escolhida",
       "choiceUnscored": "Numere as opções (configurações do campo → Opções) para usá-lo em somas",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Verificar estas respostas",
     "thenTitle": "Então faça isto",
     "ifHelp": "Escolha uma pergunta, como compará-la e a resposta que deve acionar a regra.",
-    "thenHelp": "Escolha o que acontece quando as respostas correspondem — e em qual pergunta ou página.",
+    "thenHelp": "Escolha o que acontece quando as respostas correspondem, e em qual pergunta ou página.",
     "matchLead": "Executar a regra quando",
     "andChip": "e",
     "orChip": "ou",
@@ -2410,7 +2410,7 @@
     "deleteList": "Excluir lista",
     "deleteListTitle": "Excluir a lista “{name}”?",
     "deleteListDesc": "Os campos que já a usam mantêm suas opções.",
-    "listDesc": "Opções reutilizáveis para qualquer campo de escolha — países, regiões, produtos, equipes …",
+    "listDesc": "Opções reutilizáveis para qualquer campo de escolha: países, regiões, produtos, equipes …",
     "listName": "Nome",
     "listNamePlaceholder": "ex.: Regiões",
     "listOptions": "Opções",
@@ -2426,7 +2426,7 @@
     "useList": "Preencher a partir de uma lista…",
     "saveAsList": "Salvar como lista",
     "toast": {
-      "fieldSaved": "“{name}” salvo — encontre em Salvos",
+      "fieldSaved": "“{name}” salvo. Encontre em Salvos",
       "fieldRemoved": "“{name}” removido dos campos salvos",
       "listCreated": "Lista “{name}” criada",
       "listUpdated": "Lista “{name}” atualizada",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "O formulário fica em um cartão no centro da página.",
-      "plain": "Sem cartão — o formulário fica direto sobre o fundo da página.",
+      "plain": "Sem cartão. O formulário fica direto sobre o fundo da página.",
       "split": "Uma imagem ao lado do formulário (acima dele em celulares).",
       "full": "O formulário ocupa toda a largura da página."
     },
@@ -2546,7 +2546,7 @@
       "error": "Erros"
     },
     "colorInvalid": "Use uma cor hexadecimal como #1a2b3c.",
-    "lowContrast": "Contraste baixo ({ratio} : 1) — pode ser difícil de ler.",
+    "lowContrast": "Contraste baixo ({ratio} : 1), pode ser difícil de ler.",
     "pickColor": "Escolha uma cor para {name}",
     "inputStyle": "Estilo",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Barra superior com seu logo e site, o formulário e um rodapé.",
         "spotlight": "Um banner na cor da marca com o título e informações rápidas; o formulário sobe sobre ele.",
-        "side": "Um painel com sua marca ao lado do formulário — empilhado no celular.",
+        "side": "Um painel com sua marca ao lado do formulário. Empilhado no celular.",
         "minimal": "Só o formulário e um rodapé fino."
       },
       "tone": "Cor da barra e do painel",
@@ -2636,7 +2636,7 @@
     "updateExisting": "Atualizar “{name}”",
     "saveNew": "Guardar como novo tema",
     "name": "Nome",
-    "namePlaceholder": "ex. Marca — claro",
+    "namePlaceholder": "ex. Marca claro",
     "renameTitle": "Mudar o nome do tema",
     "rename": "Mudar o nome",
     "duplicate": "Duplicar",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Um design da Formalie",
       "systemHint": "Este tema faz parte da Formalie e não pode ser alterado. Duplique-o para criar sua própria versão.",
-      "systemDesc": "Design da Formalie — somente leitura",
+      "systemDesc": "Design da Formalie (somente leitura)",
       "crumb": "Editor de tema",
       "newTitle": "Novo tema",
       "untitled": "Tema sem título",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Adicione seus bancos de dados, teste-os e mantenha suas credenciais seguras.",
       "explorer": "Navegue por esquemas, tabelas e linhas e exporte o que precisar.",
-      "query": "Execute SQL nos seus bancos de dados — somente leitura por padrão, com cada execução registrada.",
+      "query": "Execute SQL nos seus bancos de dados. Somente leitura por padrão, com cada execução registrada.",
       "savedQueries": "Guarde e compartilhe as consultas mais usadas pela sua equipe.",
       "destinations": "Escolha para onde cada formulário envia suas respostas e associe os campos às colunas.",
       "transfers": "Importe arquivos para tabelas e exporte tabelas ou resultados de consultas.",
@@ -2721,7 +2721,7 @@
     "example": "Como é um endpoint (exemplo)",
     "channels": {
       "title": "Colete dados de todos os lados",
-      "hint": "Cada formulário pode receber respostas pelo seu link, por uma incorporação no seu site e pela sua própria API — tudo chega ao mesmo lugar.",
+      "hint": "Cada formulário pode receber respostas pelo seu link, por uma incorporação no seu site e pela sua própria API. Tudo chega ao mesmo lugar.",
       "link": "Link compartilhável",
       "embed": "Formulário incorporado",
       "api": "Endpoints de API"
@@ -2734,7 +2734,7 @@
       "logs": "Cada chamada com o seu estado, duração e chamador.",
       "analytics": "Chamadas, erros e tempos de resposta por serviço e endpoint.",
       "docs": "Documentação pronta e um espaço para testar cada endpoint.",
-      "webhooks": "Envie cada nova resposta para seus próprios sistemas assim que chegar — assinada e com novas tentativas.",
+      "webhooks": "Envie cada nova resposta para seus próprios sistemas assim que chegar, assinada e com novas tentativas.",
       "apiKeys": "Chaves da API da Formalie: gerencie formulários e respostas pelo seu código.",
       "apps": "Conecte apps como planilhas e chat da equipe."
     }
@@ -2744,7 +2744,7 @@
     "back": "Visão geral do assistente de IA",
     "promise": {
       "title": "Você no controle",
-      "review": "O assistente sugere — você revisa e aplica.",
+      "review": "O assistente sugere, você revisa e aplica.",
       "private": "Você escolhe o que ele pode ler; dados pessoais podem ficar de fora.",
       "audit": "Cada solicitação é registrada no histórico e na trilha de auditoria."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Abrir em uma nova aba",
       "close": "Fechar",
       "loading": "Carregando {host}…",
-      "slow": "Está demorando? Alguns sites não podem ser exibidos dentro de outra página — abra em uma nova aba.",
-      "safe": "Suas respostas estão guardadas — feche esta janela para continuar o formulário.",
+      "slow": "Está demorando? Alguns sites não podem ser exibidos dentro de outra página. Abra em uma nova aba.",
+      "safe": "Suas respostas estão guardadas. Feche esta janela para continuar o formulário.",
       "backToForm": "Voltar ao formulário"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "A verificar…",
       "free": "Esta ligação está disponível",
       "taken": "Outro formulário já usa esta ligação",
-      "reserved": "Esta palavra está reservada — escolha outra",
+      "reserved": "Esta palavra está reservada. Escolha outra",
       "invalid": "Use 3–60 letras minúsculas, números e hífenes",
       "remove": "Remover ligação personalizada",
       "copy": "Copiar ligação",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Depois disso, a ligação indica que o formulário está completo.",
       "max": "Número máximo de respostas",
       "used": "{n} de {max} utilizadas",
-      "full": "O limite foi atingido — o formulário não aceita mais respostas.",
+      "full": "O limite foi atingido. O formulário não aceita mais respostas.",
       "when": "Quando aceita respostas",
       "always": "Sempre (sem data de início nem de fim)",
       "from": "A partir de {from}",
@@ -2935,7 +2935,7 @@
       "any": "Qualquer site",
       "anyDesc": "Qualquer pessoa com o código de incorporação pode colocar o formulário no seu site.",
       "listed": "Apenas os sites que indicar",
-      "listedDesc": "Outros sites não podem mostrar o formulário — o navegador recusa-o.",
+      "listedDesc": "Outros sites não podem mostrar o formulário. O navegador recusa-o.",
       "sites": "Sites permitidos",
       "sitesHint": "Escreva ou cole endereços e prima Enter. *.example.com inclui os respetivos subsites. Até {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Como funcionam as ligações do seu formulário",
-      "desc": "O seu formulário pode ter até três ligações. Todas abrem o mesmo formulário — utilize a que melhor se adequa ao local onde a partilha.",
+      "desc": "O seu formulário pode ter até três ligações. Todas abrem o mesmo formulário. Utilize a que melhor se adequa ao local onde a partilha.",
       "always": "Sempre ativa",
       "on": "Ativa",
       "off": "Não definida",
       "original": {
         "name": "Ligação original",
-        "for": "Criada com o formulário. Nunca muda e funciona sempre — mesmo depois de adicionar uma ligação personalizada ou uma ligação curta."
+        "for": "Criada com o formulário. Nunca muda e funciona sempre, mesmo depois de adicionar uma ligação personalizada ou uma ligação curta."
       },
       "custom": {
         "name": "Ligação personalizada",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Um cartaz ou código QR usa a ligação curta",
-          "then": "continua a funcionar, faça o que fizer com a ligação personalizada. Remover a ligação curta desativa-a para sempre — o seu código nunca é atribuído a outro formulário."
+          "then": "continua a funcionar, faça o que fizer com a ligação personalizada. Remover a ligação curta desativa-a para sempre. O seu código nunca é atribuído a outro formulário."
         },
         "closed": {
           "when": "O formulário está fechado, completo, expirado ou protegido",
-          "then": "todas as ligações mostram a mesma mensagem ou ecrã de palavra-passe — nenhuma ligação o contorna."
+          "then": "todas as ligações mostram a mesma mensagem ou ecrã de palavra-passe. Nenhuma ligação o contorna."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Descrição",
       "descriptionPlaceholder": "Uma frase sobre a finalidade do formulário",
       "image": "Imagem",
-      "imageHint": "Apresentada no topo do cartão do link. PNG, JPEG ou WebP, até 5 MB — o ideal é 1200 × 630 px.",
+      "imageHint": "Apresentada no topo do cartão do link. PNG, JPEG ou WebP, até 5 MB. O ideal é 1200 × 630 px.",
       "imageRule": "Use uma imagem PNG, JPEG ou WebP com até 5 MB.",
       "upload": "Carregar imagem",
       "replace": "Substituir",
@@ -3005,20 +3005,20 @@
       "asCard": "Cartão do link",
       "asSearch": "Resultado de pesquisa",
       "noImage": "Sem imagem",
-      "hiddenFromSearch": "Oculto dos motores de pesquisa — este formulário não aparecerá nos resultados de pesquisa."
+      "hiddenFromSearch": "Oculto dos motores de pesquisa: este formulário não aparecerá nos resultados de pesquisa."
     },
     "invite": {
       "title": "Convites",
       "counts": "{responded} de {total} responderam",
-      "saveFirst": "Guarde «Apenas pessoas convidadas» para que os convites entrem em vigor — até lá, o formulário continua aberto como antes.",
+      "saveFirst": "Guarde «Apenas pessoas convidadas» para que os convites entrem em vigor. Até lá, o formulário continua aberto como antes.",
       "add": "Convidar pessoas",
-      "addHint": "Apenas endereços de e-mail. Separe-os com vírgula, espaço ou nova linha — ou cole uma lista.",
+      "addHint": "Apenas endereços de e-mail. Separe-os com vírgula, espaço ou nova linha, ou cole uma lista.",
       "placeholder": "nome{'@'}example.org",
       "button": "Convidar {n} pessoa | Convidar {n} pessoas",
       "buttonEmpty": "Convidar",
       "sent": "{n} convite enviado | {n} convites enviados",
       "skipped": "{n} pessoa já tinha sido convidada | {n} pessoas já tinham sido convidadas",
-      "devLinks": "Ligações pessoais — enviadas por e-mail a cada pessoa quando o Formalie estiver ativo; apresentadas aqui durante o desenvolvimento:",
+      "devLinks": "Ligações pessoais. São enviadas por e-mail a cada pessoa quando o Formalie estiver ativo; durante o desenvolvimento são apresentadas aqui:",
       "none": "Ainda ninguém foi convidado.",
       "resent": "Foi enviada uma nova ligação para {email}",
       "resend": "Enviar nova ligação",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Pessoas com acesso",
-      "desc": "Apenas pessoal da sua área de trabalho — não altera quem pode preencher o formulário.",
+      "desc": "Apenas pessoal da sua área de trabalho. Não altera quem pode preencher o formulário.",
       "team": "Todas as outras pessoas do espaço de trabalho",
       "teamDesc": "Aplica-se a quem não está listado abaixo.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Adicionar uma pessoa…",
       "levelFor": "Acesso de {name}",
       "remove": "Remover {name}",
-      "note": "O acesso próprio de uma pessoa substitui, para ela, a predefinição do espaço de trabalho — seja maior ou menor. Os administradores do espaço de trabalho e o proprietário do formulário têm sempre acesso total.",
+      "note": "O acesso próprio de uma pessoa substitui, para ela, a predefinição do espaço de trabalho, seja maior ou menor. Os administradores do espaço de trabalho e o proprietário do formulário têm sempre acesso total.",
       "viewOnly": "Só de leitura",
-      "viewOnlyDesc": "Pode consultar este formulário e as respetivas definições. As alterações não são guardadas — peça acesso de edição ao proprietário do formulário.",
+      "viewOnlyDesc": "Pode consultar este formulário e as respetivas definições. As alterações não são guardadas. Peça acesso de edição ao proprietário do formulário.",
       "responsesOnly": "Só pode ver as respostas deste formulário",
       "responsesOnlyDesc": "As perguntas e o design não foram partilhados consigo. Contacte o proprietário do formulário se precisar de mais acesso.",
       "viewForm": "Ver"
     },
     "section": {
       "answering": "Responder ao formulário",
-      "answeringDesc": "Quem o pode preencher e como lá chega — para todas as pessoas a quem envia o formulário.",
+      "answeringDesc": "Quem o pode preencher e como lá chega. Aplica-se a todas as pessoas a quem envia o formulário.",
       "team": "A sua equipa",
       "teamDesc": "Pessoal da sua área de trabalho que cria e gere este formulário. Não altera quem o pode preencher."
     }

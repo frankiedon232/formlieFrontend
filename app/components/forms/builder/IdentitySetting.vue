@@ -1,7 +1,7 @@
 <!--
   Form settings → Recognise respondents (F10, owner 2026-10-03): the respondent's OWN email tells
   people apart (suggested: the first email that isn't a reference's, manager's…), optionally
-  verified with a one-time code. Without it, only the same browser is recognised. Email only —
+  verified with a one-time code. Without it, only the same browser is recognised. Email only,
   no ID numbers (owner: avoid complexity). Rules: shared/utils/forms/identity.ts.
 -->
 <script setup lang="ts">

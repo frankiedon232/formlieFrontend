@@ -1,5 +1,5 @@
 /**
- * Helpers for building FormSchema v1 documents — shared by the builder and the API mock:
+ * Helpers for building FormSchema v1 documents, shared by the builder and the API mock:
  * ids, blank and starter-template schemas, field keys, and the checks that must pass before
  * a form can be published.
  */
@@ -37,7 +37,7 @@ export function keyFromLabel(label: string, taken: Iterable<string>): string {
 
 /**
  * Field key for the builder: the label as snake_case plus a short suffix taken from the field id
- * (`full_name_k3x9`) — unique even when two fields share a label, and stable while the label
+ * (`full_name_k3x9`), unique even when two fields share a label, and stable while the label
  * changes. Read-only in the UI; it names the answer in exports, integrations and formulas.
  */
 export function fieldKey(label: string, id: string, taken: Iterable<string>): string {
@@ -52,7 +52,7 @@ export const isLocked = (field: Pick<FormField, 'readonly' | 'disabled'>) => !!f
 /** Field access other than "everyone" (only some departments, roles or people). */
 export const isRestricted = (field: Pick<FormField, 'audience'>) => !!field.audience && field.audience.mode !== 'everyone'
 
-/** Locked, restricted or hidden fields can't be required — someone could never submit the form. */
+/** Locked, restricted or hidden fields can't be required, someone could never submit the form. */
 export const cannotBeRequired = (field: Pick<FormField, 'readonly' | 'disabled' | 'audience' | 'type'>) =>
   isLocked(field) || isRestricted(field) || field.type === 'hidden'
 

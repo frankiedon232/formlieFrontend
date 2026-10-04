@@ -1,4 +1,4 @@
-<!-- Step 3 — workspace language, timezone, currency, date / number format, first day of the week. -->
+<!-- Step 3, workspace language, timezone, currency, date / number format, first day of the week. -->
 <script setup lang="ts">
 import {
   DATE_FORMATS,

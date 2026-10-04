@@ -1,6 +1,6 @@
 <!--
   Share → Limits (F10 M3): stop after a number of responses (the link then says the form is full)
-  and when the form takes responses (open from / until — the availability window, saved on its own).
+  and when the form takes responses (open from / until, the availability window, saved on its own).
 -->
 <script setup lang="ts">
 import type { FormShareSettings, ShareDraft } from '#shared/types/forms'

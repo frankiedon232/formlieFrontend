@@ -1,4 +1,4 @@
-<!-- Step 5 — start a first form: blank or one of the starter templates. Finishing opens it. -->
+<!-- Step 5, start a first form: blank or one of the starter templates. Finishing opens it. -->
 <script setup lang="ts">
 import type { OnboardingFirstForm } from '#shared/types/onboarding'
 import { STARTER_TEMPLATES, type StarterTemplateKey } from '#shared/utils/templates/starters'

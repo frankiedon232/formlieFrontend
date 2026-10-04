@@ -88,7 +88,7 @@ const router = createRouter()
   .get('/themes', themes.listThemes)
   .get('/themes/:id', themes.getTheme)
   .get('/directory', getDirectory)
-  // Public form pages (F10) — no sign-in.
+  // Public form pages (F10), no sign-in.
   .get('/public/forms/:key', publicForms.getPublicForm)
   .post('/public/forms/:key/submit', publicForms.submitPublicForm)
   .post('/public/forms/:key/verify', publicForms.sendVerification)

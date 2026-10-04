@@ -72,7 +72,7 @@
       "moved": "Formulier verplaatst",
       "tagsSaved": "Tags opgeslagen",
       "duplicated": "Kopie gemaakt",
-      "unpublish": "Publicatie ingetrokken — de link werkt niet meer",
+      "unpublish": "Publicatie ingetrokken. De link werkt niet meer",
       "close": "Formulier gesloten voor nieuwe reacties",
       "reopen": "Formulier heropend",
       "archive": "Formulier gearchiveerd",
@@ -119,7 +119,7 @@
       "count": "{count} formulier | {count} formulieren",
       "empty": "Nog geen mappen. Maak er hieronder een.",
       "viewForms": "Formulieren in {name} tonen",
-      "notEmpty": "Verplaats eerst de formulieren naar een andere map — daarna kan deze worden verwijderd.",
+      "notEmpty": "Verplaats eerst de formulieren naar een andere map. Daarna kan deze worden verwijderd.",
       "deleteEmpty": "De map is leeg, dus er wordt geen formulier geraakt."
     },
     "tags": {
@@ -163,7 +163,7 @@
       "later": "Je kunt beide later wijzigen.",
       "pickFile": "Kies eerst een bestand om te importeren.",
       "blankTitle": "Begin vanaf nul",
-      "blankDesc": "Een leeg formulier met één pagina — voeg de vragen toe die je nodig hebt, in jouw volgorde.",
+      "blankDesc": "Een leeg formulier met één pagina. Voeg de vragen toe die je nodig hebt, in jouw volgorde.",
       "previewAdd": "Voeg je eerste vraag toe",
       "points": {
         "fieldsTitle": "Meer dan 30 veldtypen",
@@ -190,7 +190,7 @@
     "filterTemplate": "Sjabloon",
     "overview": {
       "subtitle": "{status} · bijgewerkt {updated}",
-      "trendTitle": "Reacties — laatste 30 dagen",
+      "trendTitle": "Reacties (laatste 30 dagen)",
       "trendDesc": "Inzendingen per dag",
       "trendAria": "Reacties per dag in de laatste 30 dagen, {total} in totaal",
       "responsesCount": "{count} reactie | {count} reacties",
@@ -229,15 +229,15 @@
       "design": "Ontwerp",
       "versions": "Versies",
       "allVersions": "Alle versies",
-      "noVersions": "Nog niet gepubliceerd — versies verschijnen zodra je publiceert.",
+      "noVersions": "Nog niet gepubliceerd. Versies verschijnen zodra je publiceert.",
       "detailsTitle": "Details",
       "tags": "Tags",
-      "noHistory": "Gepubliceerd voordat de versiegeschiedenis werd bijgehouden — die begint bij de volgende publicatie.",
+      "noHistory": "Gepubliceerd voordat de versiegeschiedenis werd bijgehouden. Die begint bij de volgende publicatie.",
       "embedCode": "Insluitcode"
     },
     "qr": {
       "title": "QR-code",
-      "desc": "Print hem of toon hem op schermen — scannen opent het formulier.",
+      "desc": "Print hem of toon hem op schermen. Scannen opent het formulier.",
       "accent": "Formulierkleur",
       "black": "Zwart",
       "colour": "Kleur",
@@ -252,7 +252,7 @@
       "plain": "Eenvoudig",
       "brandedOrg": "De naam en het logo van je organisatie met de formuliernaam; Formalie in de voettekst.",
       "brandedFormalie": "Formalie-huisstijl met de formuliernaam.",
-      "plainHint": "Alleen de code — voor kleine ruimtes.",
+      "plainHint": "Alleen de code, voor kleine ruimtes.",
       "brand": "Merkkleur",
       "custom": "Elke kleur",
       "scan": "Scan om te openen",
@@ -287,10 +287,10 @@
     "embed": {
       "title": "Insluiten op je website",
       "desc": "Plak deze code op de pagina van je website waar het formulier moet verschijnen.",
-      "notLive": "Het formulier is nog niet gepubliceerd — de insluiting toont het zodra het live is.",
+      "notLive": "Het formulier is nog niet gepubliceerd. De insluiting toont het zodra het live is.",
       "height": "Hoogte",
       "auto": "Automatische hoogte (aanbevolen)",
-      "autoDesc": "Het kader groeit en krimpt mee met het formulier — geen schuifbalk binnenin.",
+      "autoDesc": "Het kader groeit en krimpt mee met het formulier, zonder schuifbalk binnenin.",
       "fixed": "Vaste hoogte",
       "fixedDesc": "Altijd even hoog; het formulier scrolt binnen het kader.",
       "pixels": "Hoogte in pixels",
@@ -542,8 +542,8 @@
     "label": "Voettekst"
   },
   "authLayout": {
-    "headline": "Formulieren, data en toegang — onder jouw regie.",
-    "subline": "Een veilig, flexibel platform om elk formulier te bouwen, data te verzamelen en te beheren, je systemen te koppelen en te bepalen wie wat ziet — voor organisaties van elke omvang, waar ook ter wereld.",
+    "headline": "Formulieren, data en toegang: onder jouw regie.",
+    "subline": "Een veilig, flexibel platform om elk formulier te bouwen, data te verzamelen en te beheren, je systemen te koppelen en te bepalen wie wat ziet. Voor organisaties van elke omvang, waar ook ter wereld.",
     "badgeEncrypted": "End-to-end versleuteld",
     "badgeCompliance": "Privacy- en compliancecontroles",
     "badgeDatabase": "{count}+ databases of veilige opslag",
@@ -651,7 +651,7 @@
       "available": "Beschikbaar",
       "unavailable": {
         "taken": "Al in gebruik",
-        "reserved": "Gereserveerd — kies een ander",
+        "reserved": "Gereserveerd, kies een ander",
         "invalid": "Geen geldig adres"
       },
       "subdomainHelp": "Hier logt je team in. Een eigen domein kun je later toevoegen.",
@@ -891,7 +891,7 @@
     "menu": "Werkruimte instellen",
     "settingsCard": {
       "title": "Werkruimte instellen",
-      "desc": "Bedrijf, huisstijl, regionale instellingen, team en eerste formulier — open elke stap opnieuw.",
+      "desc": "Bedrijf, huisstijl, regionale instellingen, team en eerste formulier. Open elke stap opnieuw.",
       "open": "Openen"
     },
     "steps": {
@@ -983,7 +983,7 @@
       "admin": "Beheerder",
       "owner": "Eigenaar",
       "invalid": "Vul een geldig e-mailadres in.",
-      "self": "Dat ben jij — je doet al mee.",
+      "self": "Dat ben jij. Je doet al mee.",
       "duplicate": "Dit e-mailadres staat al in de lijst.",
       "placeholder": "colleague{'@'}example.com",
       "emailLabel": "E-mail {n}",
@@ -1033,7 +1033,7 @@
         "name": "Incidentmelding"
       }
     },
-    "subtitle": "Begin met een kant-en-klaar formulier — elk sjabloon heeft een eigen ontwerp en je kunt alles aanpassen voordat je publiceert",
+    "subtitle": "Begin met een kant-en-klaar formulier. Elk sjabloon heeft een eigen ontwerp en je kunt alles aanpassen voordat je publiceert",
     "blank": "Leeg formulier",
     "all": "Alle",
     "search": "Sjablonen zoeken…",
@@ -1097,7 +1097,7 @@
     "emptyTitle": "Geen sjablonen gevonden",
     "emptyDesc": "Probeer een andere categorie of zoekterm, of wis de filters.",
     "useTitle": "Sjabloon gebruiken",
-    "useDesc": "Je nieuwe formulier opent in de editor — pas elke vraag, regel, berekening of het ontwerp aan voordat je publiceert.",
+    "useDesc": "Je nieuwe formulier opent in de editor. Pas elke vraag, regel, berekening of het ontwerp aan voordat je publiceert.",
     "saveAs": "Opslaan als sjabloon",
     "saveTitle": "Opslaan als sjabloon",
     "saveDesc": "De vragen, logica, berekeningen en het ontwerp worden een sjabloon voor je werkruimte. Reacties worden nooit meegenomen.",
@@ -1136,11 +1136,11 @@
     "items": {
       "customer_feedback": {
         "name": "Klantfeedback",
-        "description": "Ontdek wat klanten van je service vinden — met een vervolgvraag als iemand ontevreden is."
+        "description": "Ontdek wat klanten van je service vinden, met een vervolgvraag als iemand ontevreden is."
       },
       "csat_nps": {
         "name": "Klanttevredenheidsonderzoek (CSAT / NPS)",
-        "description": "Meet tevredenheid (CSAT), inspanning en loyaliteit (NPS) — elk antwoord wordt ingedeeld als promotor, passief of criticaster."
+        "description": "Meet tevredenheid (CSAT), inspanning en loyaliteit (NPS). Elk antwoord wordt ingedeeld als promotor, passief of criticaster."
       },
       "product_review": {
         "name": "Productbeoordeling",
@@ -1188,7 +1188,7 @@
       },
       "leave_request": {
         "name": "Verlofaanvraag",
-        "description": "Vraag verlof aan — het aantal dagen wordt berekend uit de data, met vervanging en onderbouwende documenten."
+        "description": "Vraag verlof aan. Het aantal dagen wordt berekend uit de data, met vervanging en onderbouwende documenten."
       },
       "performance_review": {
         "name": "Beoordelingsgesprek",
@@ -1196,7 +1196,7 @@
       },
       "engagement_survey": {
         "name": "Medewerkersbetrokkenheidsonderzoek",
-        "description": "Een anonieme pulsmeting over trots, zingeving, groei en steun — met een betrokkenheidsindex van 0 tot 100."
+        "description": "Een anonieme pulsmeting over trots, zingeving, groei en steun, met een betrokkenheidsindex van 0 tot 100."
       },
       "expense_reimbursement": {
         "name": "Onkostendeclaratie",
@@ -1208,7 +1208,7 @@
       },
       "training_feedback": {
         "name": "Trainingsevaluatie",
-        "description": "Beoordeel de inhoud, trainer, materialen en relevantie van een cursus — met een gemiddelde score."
+        "description": "Beoordeel de inhoud, trainer, materialen en relevantie van een cursus, met een gemiddelde score."
       },
       "reference_check": {
         "name": "Referentiecheck",
@@ -1228,7 +1228,7 @@
       },
       "scholarship_application": {
         "name": "Beursaanvraag",
-        "description": "Studieresultaten, financiële behoefte en een motivatie — met een geschiktheidsscore voor de commissie."
+        "description": "Studieresultaten, financiële behoefte en een motivatie, met een geschiktheidsscore voor de commissie."
       },
       "permission_slip": {
         "name": "Toestemmingsformulier ouders",
@@ -1272,7 +1272,7 @@
       },
       "proof_of_delivery": {
         "name": "Leveringsbevestiging / Afleverbewijs",
-        "description": "Bevestig wat er is aangekomen, de staat, een foto en de handtekening van de ontvanger — bij schade worden details gevraagd."
+        "description": "Bevestig wat er is aangekomen, de staat, een foto en de handtekening van de ontvanger. Bij schade worden details gevraagd."
       },
       "quality_control": {
         "name": "Checklist kwaliteitscontrole",
@@ -1296,7 +1296,7 @@
       },
       "nda_signoff": {
         "name": "NDA / Overeenkomst ondertekenen",
-        "description": "Toon de overeenkomst, bevestig elk kernpunt en teken — met bedrijfsgegevens als je namens een bedrijf tekent."
+        "description": "Toon de overeenkomst, bevestig elk kernpunt en teken. Met bedrijfsgegevens als je namens een bedrijf tekent."
       },
       "risk_assessment": {
         "name": "Risicobeoordeling",
@@ -1304,11 +1304,11 @@
       },
       "incident_report": {
         "name": "Incident- / ongevalsrapport",
-        "description": "Leg vast wat er gebeurde, wie gewond raakte en welke eerste acties zijn genomen — ernstige incidenten worden gemarkeerd voor spoedige beoordeling."
+        "description": "Leg vast wat er gebeurde, wie gewond raakte en welke eerste acties zijn genomen. Ernstige incidenten worden gemarkeerd voor spoedige beoordeling."
       },
       "near_miss_report": {
         "name": "Bijna-ongevalmelding",
-        "description": "Meld bijna-ongevallen snel — mogelijke ernst en herhaling bepalen de prioriteit, zodat preventie voorop staat."
+        "description": "Meld bijna-ongevallen snel. Mogelijke ernst en herhaling bepalen de prioriteit, zodat preventie voorop staat."
       },
       "safety_inspection": {
         "name": "Checklist veiligheidsinspectie",
@@ -1320,7 +1320,7 @@
       },
       "medical_history": {
         "name": "Medische voorgeschiedenis",
-        "description": "Aandoeningen, operaties, medicijnen, familiegeschiedenis en leefstijl — met het aantal aandoeningen voor de zorgverlener."
+        "description": "Aandoeningen, operaties, medicijnen, familiegeschiedenis en leefstijl, met het aantal aandoeningen voor de zorgverlener."
       },
       "health_screening": {
         "name": "Gezondheidscheck / -verklaring",
@@ -1348,7 +1348,7 @@
       },
       "volunteer_signup": {
         "name": "Aanmelding vrijwilligers",
-        "description": "Verzamel vrijwilligers, hun interesses en beschikbaarheid — met toestemming van een voogd voor minderjarigen."
+        "description": "Verzamel vrijwilligers, hun interesses en beschikbaarheid, met toestemming van een voogd voor minderjarigen."
       },
       "speaker_sponsor_application": {
         "name": "Aanmelding spreker / sponsor",
@@ -1376,7 +1376,7 @@
       },
       "special_requirements": {
         "name": "Formulier speciale wensen",
-        "description": "Dieet- en toegankelijkheidswensen, allergieën en feestelijke gelegenheden — zodat alles klaarstaat vóór aankomst."
+        "description": "Dieet- en toegankelijkheidswensen, allergieën en feestelijke gelegenheden, zodat alles klaarstaat vóór aankomst."
       },
       "event_catering_request": {
         "name": "Cateringaanvraag evenement",
@@ -1384,7 +1384,7 @@
       },
       "restaurant_reservation": {
         "name": "Restaurantreservering",
-        "description": "Datum, tijd, groepsgrootte, zitplaats en gelegenheid — alles wat de gastheer nodig heeft."
+        "description": "Datum, tijd, groepsgrootte, zitplaats en gelegenheid: alles wat de gastheer nodig heeft."
       },
       "hospitality_complaint": {
         "name": "Klachtenformulier gastvrijheid",
@@ -1468,7 +1468,7 @@
       },
       "sales_follow_up": {
         "name": "Sales-opvolging",
-        "description": "Leg een gesprek of afspraak vast: resultaat, dealfase, volgende stap en datum — snel genoeg voor mobiel."
+        "description": "Leg een gesprek of afspraak vast: resultaat, dealfase, volgende stap en datum. Snel genoeg voor mobiel."
       }
     },
     "openGallery": "Volledige galerij openen",
@@ -1481,7 +1481,7 @@
       "browse": "Sjablonen bekijken"
     },
     "categoryPage": {
-      "subtitle": "Formalie-sjablonen in deze categorie — elk met een eigen ontwerp, klaar voor gebruik"
+      "subtitle": "Formalie-sjablonen in deze categorie, elk met een eigen ontwerp en klaar voor gebruik"
     },
     "mine": {
       "subtitle": "Sjablonen die je werkruimte uit eigen formulieren heeft opgeslagen of van Formalie heeft gekopieerd",
@@ -1611,7 +1611,7 @@
     "unpublished": "Wijzigingen niet gepubliceerd",
     "save": {
       "saving": "Opslaan…",
-      "error": "Niet opgeslagen — blijf bewerken om opnieuw te proberen",
+      "error": "Niet opgeslagen. Blijf bewerken om opnieuw te proberen",
       "conflict": "Elders gewijzigd",
       "saved": "Opgeslagen {time}",
       "upToDate": "Alles opgeslagen",
@@ -1627,7 +1627,7 @@
       "tablet": "Tablet",
       "phone": "Telefoon",
       "device": "Apparaat",
-      "nothingSent": "Dit was een voorbeeld — er is niets verstuurd.",
+      "nothingSent": "Dit was een voorbeeld. Er is niets verstuurd.",
       "restart": "Opnieuw beginnen"
     },
     "publish": {
@@ -1642,7 +1642,7 @@
       "submit": "Publiceren",
       "submitAgain": "Wijzigingen publiceren",
       "issues": "Los {count} punt op voor je publiceert | Los {count} punten op voor je publiceert",
-      "done": "Gepubliceerd — versie {n} is live"
+      "done": "Gepubliceerd: versie {n} is live"
     },
     "issue": {
       "no_inputs": "Voeg minstens één vraag toe",
@@ -1711,7 +1711,7 @@
       "minChoices": "Min. keuzes",
       "maxChoices": "Max. keuzes",
       "accept": "Toegestane bestandstypen",
-      "acceptHint": "Kommagescheiden, bijv. .pdf,.docx,image/* — leeg staat alles toe.",
+      "acceptHint": "Kommagescheiden, bijv. .pdf,.docx,image/* (leeg staat alles toe).",
       "maxFiles": "Max. bestanden",
       "maxSize": "Max. grootte (MB)",
       "minAboveMax": "Het minimum ligt boven het maximum.",
@@ -1782,9 +1782,9 @@
       "readonly": "Alleen-lezen",
       "disabled": "Uitgeschakeld",
       "editableHint": "Respondenten kunnen dit invullen.",
-      "readonlyHint": "Getoond en meegestuurd met het antwoord, maar niet te wijzigen — bijv. een vooraf ingevuld kenmerk.",
+      "readonlyHint": "Getoond en meegestuurd met het antwoord, maar niet te wijzigen (bijv. een vooraf ingevuld kenmerk).",
       "disabledHint": "Grijs getoond en niet meegestuurd met het antwoord.",
-      "noRequired": "Alleen-lezen en uitgeschakelde velden kunnen niet verplicht zijn — niemand kan ze invullen."
+      "noRequired": "Alleen-lezen en uitgeschakelde velden kunnen niet verplicht zijn. Niemand kan ze invullen."
     },
     "labels": {
       "title": "Positie van labels",
@@ -1828,13 +1828,13 @@
       "label": "Formulierbouwer, volledig scherm"
     },
     "drop": {
-      "newRow": "Hier neerzetten — nieuwe rij",
-      "beside": "Hier neerzetten — ernaast"
+      "newRow": "Hier neerzetten: nieuwe rij",
+      "beside": "Hier neerzetten: ernaast"
     },
     "blocks": {
       "appearance": "Weergave",
       "sectionPlaceholder": "Sectietitel",
-      "descriptionPlaceholder": "Voeg een beschrijving toe (optioneel) — dubbelklik om te bewerken",
+      "descriptionPlaceholder": "Voeg een beschrijving toe (optioneel). Dubbelklik om te bewerken",
       "paragraphPlaceholder": "Schrijf wat tekst…",
       "paragraphHint": "Klik op de alinea op het canvas om te schrijven. Selecteer tekst voor vet, links, lijsten en uitlijning.",
       "size": "Grootte",
@@ -1867,7 +1867,7 @@
       "caption": "Bijschrift",
       "imageWidth": "Afbeeldingsgrootte",
       "href": "Link bij klikken",
-      "hrefHint": "Optioneel — opent in een nieuw tabblad.",
+      "hrefHint": "Optioneel. Opent in een nieuw tabblad.",
       "rounded": "Afgeronde hoeken",
       "fill": "Vullen",
       "height": "Hoogte",
@@ -1896,13 +1896,13 @@
       },
       "placeholder": "Kies uit de lijst…",
       "selected": "Alleen de {n} geselecteerde kunnen dit veld zien en invullen.",
-      "noRequired": "Beperkte velden kunnen niet verplicht zijn — personen voor wie het veld niet bedoeld is, moeten het formulier nog steeds kunnen verzenden. Hun antwoorden zijn alleen zichtbaar voor dezelfde personen."
+      "noRequired": "Beperkte velden kunnen niet verplicht zijn. Personen voor wie het veld niet bedoeld is, moeten het formulier nog steeds kunnen verzenden. Hun antwoorden zijn alleen zichtbaar voor dezelfde personen."
     },
     "language": {
       "title": "Formuliertaal",
       "hint": "Knoppen, meldingen en datums volgen deze taal, en tekst uit een sjabloon wordt meevertaald. Tekst die je zelf schreef blijft zoals hij is.",
       "translated": "{n} tekst vertaald | {n} teksten vertaald",
-      "kept": "{n} zelfgeschreven tekst blijft zoals hij is — pas hem aan in het formulier. | {n} zelfgeschreven teksten blijven zoals ze zijn — pas ze aan in het formulier.",
+      "kept": "{n} zelfgeschreven tekst blijft zoals hij is. Pas hem aan in het formulier. | {n} zelfgeschreven teksten blijven zoals ze zijn. Pas ze aan in het formulier.",
       "changed": "Taal van het formulier: {language}"
     },
     "template": {
@@ -1913,20 +1913,20 @@
       "update": "Sjabloon bijwerken",
       "updatedToast": "Sjabloon ‘{name}’ bijgewerkt met de laatste wijzigingen van dit formulier",
       "saveNew": "Liever opslaan als nieuw sjabloon",
-      "saveNewHint": "Maakt een aparte kopie — het bestaande sjabloon blijft zoals het is."
+      "saveNewHint": "Maakt een aparte kopie. Het bestaande sjabloon blijft zoals het is."
     },
     "identity": {
       "title": "Respondenten herkennen",
-      "hint": "Hoe Formalie mensen uit elkaar houdt, zodat iemand niet twee keer kan reageren — en niemand anders ooit voor diegene wordt aangezien.",
+      "hint": "Hoe Formalie mensen uit elkaar houdt, zodat iemand niet twee keer kan reageren en niemand anders ooit voor diegene wordt aangezien.",
       "email": "Eigen e-mailadres van de respondent",
-      "emailHint": "Het e-mailadres van de persoon die invult — niet dat van een referentie, leidinggevende of voogd. Een tweede reactie ermee wordt geweigerd; een sterk gelijkende wordt gecontroleerd.",
+      "emailHint": "Het e-mailadres van de persoon die invult, niet dat van een referentie, leidinggevende of voogd. Een tweede reactie ermee wordt geweigerd; een sterk gelijkende wordt gecontroleerd.",
       "verify": "E-mailadres verifiëren vóór verzenden",
-      "verifyHint": "Respondenten vullen een code in die naar hun e-mailadres is gestuurd — één reactie per geverifieerd e-mailadres.",
+      "verifyHint": "Respondenten vullen een code in die naar hun e-mailadres is gestuurd. Eén reactie per geverifieerd e-mailadres.",
       "suggested": "aanbevolen",
       "off": "Uit",
       "none": "Zonder het e-mailadres van de respondent kan Formalie alleen dezelfde browser herkennen (mensen kunnen een ander apparaat gebruiken).",
-      "verifyLost": "E-mailverificatie staat aan, maar het formulier heeft de e-mailvraag van de respondent niet meer — de verificatie is gepauzeerd tot je hierboven een vraag kiest.",
-      "verifyRequired": "De e-mailvraag is verplicht zolang verificatie aanstaat — we hebben die nodig om de code te sturen."
+      "verifyLost": "E-mailverificatie staat aan, maar het formulier heeft de e-mailvraag van de respondent niet meer. De verificatie is gepauzeerd tot je hierboven een vraag kiest.",
+      "verifyRequired": "De e-mailvraag is verplicht zolang verificatie aanstaat. We hebben die nodig om de code te sturen."
     },
     "guide": {
       "title": "Hulphandleiding",
@@ -1937,7 +1937,7 @@
       "empty": "Nog geen handleiding",
       "untitled": "Naamloze handleiding",
       "summary": "{title} · {n} woord | {title} · {n} woorden",
-      "noContent": "Schrijf de handleiding — de knop verschijnt pas als er iets in staat.",
+      "noContent": "Schrijf de handleiding. De knop verschijnt pas als er iets in staat.",
       "editTitle": "Hulphandleiding",
       "editDesc": "Leg uit hoe je dit formulier invult: wat je klaar moet hebben, lastige vragen en wat er daarna gebeurt.",
       "titleLabel": "Titel",
@@ -2030,14 +2030,14 @@
       "ip": "Voer een geldig IP-adres in voor {field}.",
       "domain": "Voer een domeinnaam in voor {field}, zoals example.org.",
       "mac": "Voer een MAC-adres in voor {field}, zoals 00:1A:2B:3C:4D:5E.",
-      "iban": "{field} is geen geldige IBAN — controleer het nummer.",
+      "iban": "{field} is geen geldige IBAN. Controleer het nummer.",
       "bic": "Voer een SWIFT / BIC-code van 8 of 11 tekens in voor {field}.",
       "color": "Kies een kleur voor {field}.",
       "duration": "Voer een duur in voor {field} (minuten 0–59).",
       "name": "Voer zowel voor- als achternaam in voor {field}.",
       "consent": "Bevestig {field} om door te gaan.",
       "choice": "Kies een optie uit de lijst voor {field}.",
-      "file": "{field}: een bestand is niet volledig geüpload — verwijder het en voeg het opnieuw toe."
+      "file": "{field}: een bestand is niet volledig geüpload. Verwijder het en voeg het opnieuw toe."
     },
     "page": {
       "logo": "Logo",
@@ -2073,7 +2073,7 @@
       "notAdded": "Bestand niet toegevoegd",
       "wrongType": "Verkeerd bestandstype: {files}. Kies een van de toegestane typen.",
       "tooBig": "Te groot (meer dan {mb} MB): {files}",
-      "tooMany": "Er zijn maar {max} bestanden toegestaan — {n} bestand is niet toegevoegd. | Er zijn maar {max} bestanden toegestaan — {n} bestanden zijn niet toegevoegd.",
+      "tooMany": "Er zijn maar {max} bestanden toegestaan. {n} bestand is niet toegevoegd. | Er zijn maar {max} bestanden toegestaan. {n} bestanden zijn niet toegevoegd.",
       "limits": "Tot {max} bestanden, elk {mb} MB",
       "count": "{n} van {max}",
       "addMore": "Meer toevoegen",
@@ -2105,8 +2105,8 @@
       "registeredField": "Al gebruikt voor een reactie.",
       "possibleTitle": "Is dit iemand anders?",
       "possibleDesc": "Dit lijkt op een reactie die we al hebben ({email}, {date}).",
-      "possiblePoint1": "Ben je iemand anders, ga dan verder — het team ziet beide reacties.",
-      "possiblePoint2": "Ben jij het zelf, controleer dan liever je antwoorden — een tweede reactie van dezelfde persoon telt niet.",
+      "possiblePoint1": "Ben je iemand anders, ga dan verder. Het team ziet beide reacties.",
+      "possiblePoint2": "Ben jij het zelf, controleer dan liever je antwoorden. Een tweede reactie van dezelfde persoon telt niet.",
       "different": "Ja, ik ben iemand anders",
       "review": "Nee, mijn antwoorden controleren",
       "verifyTitle": "Bevestig je e-mailadres",
@@ -2125,10 +2125,10 @@
       "auto": "Je antwoorden worden onderweg opgeslagen",
       "saving": "Opslaan…",
       "saved": "Opgeslagen {when}",
-      "notSaved": "Niet opgeslagen — controleer je verbinding",
+      "notSaved": "Niet opgeslagen. Controleer je verbinding",
       "later": "Opslaan en later verdergaan",
       "title": "Later verdergaan",
-      "desc": "We sturen je een persoonlijke link waarmee je je antwoorden terugkrijgt — op elk apparaat, 30 dagen lang.",
+      "desc": "We sturen je een persoonlijke link waarmee je je antwoorden terugkrijgt, op elk apparaat, 30 dagen lang.",
       "email": "Je e-mailadres",
       "emailHint": "De link gaat alleen naar dit adres. Houd hem privé: iedereen met de link kan je formulier verder invullen.",
       "send": "Stuur mijn link",
@@ -2282,7 +2282,7 @@
       "empty": "Formule toevoegen",
       "unknown": "Geen veld gebruikt de sleutel “{key}”",
       "self": "Een veld kan zichzelf niet gebruiken",
-      "syntax": "Deze formule is niet compleet — controleer haakjes, komma’s en operatoren",
+      "syntax": "Deze formule is niet compleet. Controleer haakjes, komma’s en operatoren",
       "functions": "Functies:",
       "choiceScored": "Telt als het nummer van de gekozen optie",
       "choiceUnscored": "Nummer de opties (veldinstellingen → Opties) om het in sommen te gebruiken",
@@ -2305,7 +2305,7 @@
     "ifTitle": "Controleer deze antwoorden",
     "thenTitle": "Doe dan dit",
     "ifHelp": "Kies een vraag, hoe je die vergelijkt en het antwoord dat de regel moet activeren.",
-    "thenHelp": "Kies wat er gebeurt als de antwoorden overeenkomen — en met welke vraag of pagina.",
+    "thenHelp": "Kies wat er gebeurt als de antwoorden overeenkomen, en met welke vraag of pagina.",
     "matchLead": "Voer de regel uit als",
     "andChip": "en",
     "orChip": "of",
@@ -2410,7 +2410,7 @@
     "deleteList": "Lijst verwijderen",
     "deleteListTitle": "De lijst “{name}” verwijderen?",
     "deleteListDesc": "Velden die hem al gebruiken, houden hun opties.",
-    "listDesc": "Herbruikbare opties voor elk keuzeveld — landen, regio’s, producten, teams …",
+    "listDesc": "Herbruikbare opties voor elk keuzeveld: landen, regio’s, producten, teams …",
     "listName": "Naam",
     "listNamePlaceholder": "bijv. Regio’s",
     "listOptions": "Opties",
@@ -2426,7 +2426,7 @@
     "useList": "Vullen uit een lijst…",
     "saveAsList": "Opslaan als lijst",
     "toast": {
-      "fieldSaved": "“{name}” opgeslagen — je vindt het onder Opgeslagen",
+      "fieldSaved": "“{name}” opgeslagen. Je vindt het onder Opgeslagen",
       "fieldRemoved": "“{name}” verwijderd uit opgeslagen velden",
       "listCreated": "Lijst “{name}” aangemaakt",
       "listUpdated": "Lijst “{name}” bijgewerkt",
@@ -2484,7 +2484,7 @@
     },
     "layoutHint": {
       "card": "Het formulier staat op een kaart midden op de pagina.",
-      "plain": "Geen kaart — het formulier staat direct op de pagina-achtergrond.",
+      "plain": "Geen kaart. Het formulier staat direct op de pagina-achtergrond.",
       "split": "Een afbeelding naast het formulier (erboven op telefoons).",
       "full": "Het formulier beslaat de volle paginabreedte."
     },
@@ -2546,7 +2546,7 @@
       "error": "Fouten"
     },
     "colorInvalid": "Gebruik een hexkleur zoals #1a2b3c.",
-    "lowContrast": "Laag contrast ({ratio} : 1) — mogelijk slecht leesbaar.",
+    "lowContrast": "Laag contrast ({ratio} : 1), mogelijk slecht leesbaar.",
     "pickColor": "Kies een kleur voor {name}",
     "inputStyle": "Stijl",
     "style": {
@@ -2609,7 +2609,7 @@
       "styleHint": {
         "branded": "Bovenbalk met je logo en website, het formulier en een voettekst.",
         "spotlight": "Een banner in je merkkleur met de titel en korte info; het formulier schuift erin omhoog.",
-        "side": "Een paneel in je huisstijl naast het formulier — op telefoons onder elkaar.",
+        "side": "Een paneel in je huisstijl naast het formulier. Op telefoons onder elkaar.",
         "minimal": "Alleen het formulier en een smalle voettekst."
       },
       "tone": "Kleur van balk en paneel",
@@ -2636,7 +2636,7 @@
     "updateExisting": "“{name}” bijwerken",
     "saveNew": "Opslaan als nieuw thema",
     "name": "Naam",
-    "namePlaceholder": "bijv. Merk — licht",
+    "namePlaceholder": "bijv. Merk licht",
     "renameTitle": "Thema hernoemen",
     "rename": "Hernoemen",
     "duplicate": "Dupliceren",
@@ -2668,7 +2668,7 @@
     "editor": {
       "systemTitle": "Een Formalie-ontwerp",
       "systemHint": "Dit thema hoort bij Formalie en kan niet worden gewijzigd. Dupliceer het om je eigen versie te maken.",
-      "systemDesc": "Formalie-ontwerp — alleen-lezen",
+      "systemDesc": "Formalie-ontwerp (alleen-lezen)",
       "crumb": "Thema-editor",
       "newTitle": "Nieuw thema",
       "untitled": "Naamloos thema",
@@ -2708,7 +2708,7 @@
     "section": {
       "connections": "Voeg uw databases toe, test ze en bewaar hun inloggegevens veilig.",
       "explorer": "Blader door schema’s, tabellen en rijen en exporteer wat u nodig hebt.",
-      "query": "Voer SQL uit op uw databases — standaard alleen-lezen, elke uitvoering wordt vastgelegd.",
+      "query": "Voer SQL uit op uw databases. Standaard alleen-lezen, elke uitvoering wordt vastgelegd.",
       "savedQueries": "Bewaar en deel de query’s die uw team het meest gebruikt.",
       "destinations": "Kies waar elk formulier zijn reacties naartoe stuurt en koppel velden aan kolommen.",
       "transfers": "Importeer bestanden in tabellen en exporteer tabellen of queryresultaten.",
@@ -2721,7 +2721,7 @@
     "example": "Zo ziet een endpoint eruit (voorbeeld)",
     "channels": {
       "title": "Verzamel gegevens van alle kanten",
-      "hint": "Elk formulier kan antwoorden ontvangen via de link, een insluiting op uw site en een eigen API — alles komt op dezelfde plek terecht.",
+      "hint": "Elk formulier kan antwoorden ontvangen via de link, een insluiting op uw site en een eigen API. Alles komt op dezelfde plek terecht.",
       "link": "Deelbare link",
       "embed": "Ingesloten formulier",
       "api": "API-endpoints"
@@ -2734,7 +2734,7 @@
       "logs": "Elke aanroep met status, duur en aanroeper.",
       "analytics": "Aanroepen, fouten en responstijden per service en endpoint.",
       "docs": "Kant-en-klare documentatie en een plek om elk endpoint te testen.",
-      "webhooks": "Stuur elke nieuwe reactie direct naar je eigen systemen — ondertekend en met herhaalpogingen.",
+      "webhooks": "Stuur elke nieuwe reactie direct naar je eigen systemen, ondertekend en met herhaalpogingen.",
       "apiKeys": "Sleutels voor de API van Formalie: beheer formulieren en reacties vanuit je code.",
       "apps": "Koppel apps zoals spreadsheets en teamchat."
     }
@@ -2744,7 +2744,7 @@
     "back": "Overzicht AI-assistent",
     "promise": {
       "title": "U houdt de regie",
-      "review": "De assistent stelt voor — u controleert en past toe.",
+      "review": "De assistent stelt voor, u controleert en past toe.",
       "private": "U bepaalt wat hij mag lezen; persoonsgegevens kunnen buiten beschouwing blijven.",
       "audit": "Elk verzoek wordt vastgelegd in de geschiedenis en het auditlogboek."
     },
@@ -2791,8 +2791,8 @@
       "newTab": "Openen in een nieuw tabblad",
       "close": "Sluiten",
       "loading": "{host} laden…",
-      "slow": "Duurt het lang? Sommige sites kunnen niet binnen een andere pagina worden getoond — open hem in een nieuw tabblad.",
-      "safe": "Je antwoorden blijven bewaard — sluit dit venster om verder te gaan met het formulier.",
+      "slow": "Duurt het lang? Sommige sites kunnen niet binnen een andere pagina worden getoond. Open hem in een nieuw tabblad.",
+      "safe": "Je antwoorden blijven bewaard. Sluit dit venster om verder te gaan met het formulier.",
       "backToForm": "Terug naar het formulier"
     },
     "expired": {
@@ -2883,7 +2883,7 @@
       "checking": "Controleren…",
       "free": "Deze link is beschikbaar",
       "taken": "Een ander formulier gebruikt deze link al",
-      "reserved": "Dit woord is gereserveerd — kies een ander",
+      "reserved": "Dit woord is gereserveerd. Kies een ander",
       "invalid": "Gebruik 3–60 kleine letters, cijfers en koppeltekens",
       "remove": "Aangepaste link verwijderen",
       "copy": "Link kopiëren",
@@ -2901,7 +2901,7 @@
       "limitDesc": "Daarna meldt de link dat het formulier vol is.",
       "max": "Maximumaantal reacties",
       "used": "{n} van {max} gebruikt",
-      "full": "De limiet is bereikt — het formulier neemt geen reacties meer aan.",
+      "full": "De limiet is bereikt. Het formulier neemt geen reacties meer aan.",
       "when": "Wanneer het reacties aanneemt",
       "always": "Altijd (geen begin- of einddatum)",
       "from": "Vanaf {from}",
@@ -2935,7 +2935,7 @@
       "any": "Elke website",
       "anyDesc": "Iedereen met de insluitcode kan het formulier op zijn site plaatsen.",
       "listed": "Alleen websites die u opgeeft",
-      "listedDesc": "Andere websites kunnen het formulier niet tonen — de browser weigert het.",
+      "listedDesc": "Andere websites kunnen het formulier niet tonen. De browser weigert het.",
       "sites": "Toegestane websites",
       "sitesHint": "Typ of plak adressen en druk op Enter. *.example.com omvat ook de subsites. Maximaal {n}.",
       "placeholder": "example.com",
@@ -2945,13 +2945,13 @@
     },
     "guide": {
       "title": "Zo werken de links van uw formulier",
-      "desc": "Uw formulier kan maximaal drie links hebben. Ze openen allemaal hetzelfde formulier — gebruik de link die het best past bij waar u deelt.",
+      "desc": "Uw formulier kan maximaal drie links hebben. Ze openen allemaal hetzelfde formulier. Gebruik de link die het best past bij waar u deelt.",
       "always": "Altijd actief",
       "on": "Actief",
       "off": "Niet ingesteld",
       "original": {
         "name": "Oorspronkelijke link",
-        "for": "Aangemaakt met het formulier. Hij verandert nooit en werkt altijd — ook nadat u een eigen link of een korte link hebt toegevoegd."
+        "for": "Aangemaakt met het formulier. Hij verandert nooit en werkt altijd, ook nadat u een eigen link of een korte link hebt toegevoegd."
       },
       "custom": {
         "name": "Eigen link",
@@ -2978,11 +2978,11 @@
         },
         "poster": {
           "when": "Een poster of QR-code gebruikt de korte link",
-          "then": "die blijft werken, wat u ook met de eigen link doet. Als u de korte link verwijdert, werkt hij definitief niet meer — de code wordt nooit aan een ander formulier gegeven."
+          "then": "die blijft werken, wat u ook met de eigen link doet. Als u de korte link verwijdert, werkt hij definitief niet meer. De code wordt nooit aan een ander formulier gegeven."
         },
         "closed": {
           "when": "Het formulier is gesloten, vol, verlopen of beveiligd",
-          "then": "elke link toont hetzelfde bericht of wachtwoordscherm — geen enkele link omzeilt dit."
+          "then": "elke link toont hetzelfde bericht of wachtwoordscherm. Geen enkele link omzeilt dit."
         }
       }
     },
@@ -2994,7 +2994,7 @@
       "descriptionLabel": "Beschrijving",
       "descriptionPlaceholder": "Eén zin over waarvoor het formulier dient",
       "image": "Afbeelding",
-      "imageHint": "Wordt bovenaan de linkkaart getoond. PNG, JPEG of WebP, tot 5 MB — 1200 × 630 px werkt het best.",
+      "imageHint": "Wordt bovenaan de linkkaart getoond. PNG, JPEG of WebP, tot 5 MB. 1200 × 630 px werkt het best.",
       "imageRule": "Gebruik een PNG-, JPEG- of WebP-afbeelding van maximaal 5 MB.",
       "upload": "Afbeelding uploaden",
       "replace": "Vervangen",
@@ -3005,20 +3005,20 @@
       "asCard": "Linkkaart",
       "asSearch": "Zoekresultaat",
       "noImage": "Geen afbeelding",
-      "hiddenFromSearch": "Verborgen voor zoekmachines — dit formulier verschijnt niet in zoekresultaten."
+      "hiddenFromSearch": "Verborgen voor zoekmachines: dit formulier verschijnt niet in zoekresultaten."
     },
     "invite": {
       "title": "Uitnodigingen",
       "counts": "{responded} van {total} gereageerd",
-      "saveFirst": "Sla ‘Alleen uitgenodigde personen’ op om de uitnodigingen te laten werken — tot dan blijft het formulier open zoals voorheen.",
+      "saveFirst": "Sla ‘Alleen uitgenodigde personen’ op om de uitnodigingen te laten werken. Tot dan blijft het formulier open zoals voorheen.",
       "add": "Personen uitnodigen",
-      "addHint": "Alleen e-mailadressen. Scheid ze met een komma, spatie of nieuwe regel — of plak een lijst.",
+      "addHint": "Alleen e-mailadressen. Scheid ze met een komma, spatie of nieuwe regel, of plak een lijst.",
       "placeholder": "naam{'@'}example.org",
       "button": "{n} persoon uitnodigen | {n} personen uitnodigen",
       "buttonEmpty": "Uitnodigen",
       "sent": "{n} uitnodiging verzonden | {n} uitnodigingen verzonden",
       "skipped": "{n} persoon was al uitgenodigd | {n} personen waren al uitgenodigd",
-      "devLinks": "Persoonlijke links — worden naar iedereen gemaild zodra Formalie live is; tijdens de ontwikkeling hier getoond:",
+      "devLinks": "Persoonlijke links. Ze worden naar iedereen gemaild zodra Formalie live is; tijdens de ontwikkeling worden ze hier getoond:",
       "none": "Nog niemand uitgenodigd.",
       "resent": "Er is een nieuwe link verzonden naar {email}",
       "resend": "Nieuwe link verzenden",
@@ -3045,7 +3045,7 @@
     },
     "people": {
       "title": "Mensen met toegang",
-      "desc": "Alleen medewerkers van uw werkruimte — dit verandert niet wie het formulier kan invullen.",
+      "desc": "Alleen medewerkers van uw werkruimte. Dit verandert niet wie het formulier kan invullen.",
       "team": "Alle anderen in de werkruimte",
       "teamDesc": "Geldt voor wie hieronder niet staat.",
       "level": {
@@ -3067,16 +3067,16 @@
       "add": "Persoon toevoegen…",
       "levelFor": "Toegang voor {name}",
       "remove": "{name} verwijderen",
-      "note": "De eigen toegang van een persoon vervangt voor die persoon de standaard van de werkruimte — meer of minder. Werkruimtebeheerders en de eigenaar van het formulier hebben altijd volledige toegang.",
+      "note": "De eigen toegang van een persoon vervangt voor die persoon de standaard van de werkruimte (meer of minder). Werkruimtebeheerders en de eigenaar van het formulier hebben altijd volledige toegang.",
       "viewOnly": "Alleen bekijken",
-      "viewOnlyDesc": "U kunt dit formulier en de instellingen bekijken. Wijzigingen worden niet opgeslagen — vraag de eigenaar van het formulier om bewerkingstoegang.",
+      "viewOnlyDesc": "U kunt dit formulier en de instellingen bekijken. Wijzigingen worden niet opgeslagen. Vraag de eigenaar van het formulier om bewerkingstoegang.",
       "responsesOnly": "U kunt alleen de reacties op dit formulier zien",
       "responsesOnlyDesc": "De vragen en het ontwerp zijn niet met u gedeeld. Vraag de eigenaar van het formulier als u meer toegang nodig hebt.",
       "viewForm": "Bekijken"
     },
     "section": {
       "answering": "Het formulier invullen",
-      "answeringDesc": "Wie het kan invullen en hoe men erbij komt — voor iedereen naar wie u het formulier stuurt.",
+      "answeringDesc": "Wie het kan invullen en hoe men erbij komt. Geldt voor iedereen naar wie u het formulier stuurt.",
       "team": "Uw team",
       "teamDesc": "Medewerkers van uw werkruimte die dit formulier maken en beheren. Dit verandert niet wie het kan invullen."
     }

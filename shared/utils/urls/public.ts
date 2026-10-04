@@ -1,5 +1,5 @@
 /**
- * Public URLs — one place for every link Formalie hands out (docs/01-ARCHITECTURE.md → Public URLs).
+ * Public URLs, one place for every link Formalie hands out (docs/01-ARCHITECTURE.md → Public URLs).
  *
  *   Forms (fill / embed)
  *     workspace without its own subdomain → https://forms.formalie.com/{formKey}/fill · /embed
@@ -8,7 +8,7 @@
  *
  *   API service (F13)
  *     https://api.formalie.com/{apiKey}/{endpoint}[/{recordId}]   (development: api.formalie.dev)
- *     `apiKey` is a short random public handle for the organisation — not its id, not encrypted;
+ *     `apiKey` is a short random public handle for the organisation, not its id, not encrypted;
  *     it only says where a call goes. Who may call is decided by the token, headers and access rules.
  */
 
@@ -85,7 +85,7 @@ export const portalLink = (hosts: PublicHosts, manageSubdomain: string, subdomai
 
 // ── Short links (F10 M3) ────────────────────────────────────────────────────────────
 /**
- * `https://forms.formalie.com/s/{code}` — five characters that are easy to read aloud, type from a
+ * `https://forms.formalie.com/s/{code}`, five characters that are easy to read aloud, type from a
  * poster or fit in an SMS (no 0/o, 1/l/i). Always on the shared forms host (shortest address);
  * it sends people on to the form's current link (custom link or key, on its own host).
  */
@@ -107,7 +107,7 @@ export const ENDPOINT_PATTERN = /^[a-z0-9](?:[a-z0-9-]{1,62}[a-z0-9])$/
 export const API_METHODS = ['GET', 'POST', 'PUT', 'DELETE'] as const
 export type ApiMethod = (typeof API_METHODS)[number]
 
-/** `https://api.formalie.com/{apiKey}/{endpoint}` — `recordId` for GET one / PUT / DELETE. */
+/** `https://api.formalie.com/{apiKey}/{endpoint}`, `recordId` for GET one / PUT / DELETE. */
 export function apiEndpointUrl(apiServiceUrl: string, apiKey: string, endpoint: string, recordId?: string) {
   const base = apiServiceUrl.replace(/\/+$/, '')
   return `${base}/${apiKey}/${endpoint}${recordId ? `/${encodeURIComponent(recordId)}` : ''}`

@@ -1,5 +1,5 @@
 /**
- * ISO 3166-1 alpha-2 countries with their main ISO 4217 currency — the platform list behind every
+ * ISO 3166-1 alpha-2 countries with their main ISO 4217 currency, the platform list behind every
  * country picker (onboarding, settings, country fields). Names come from `Intl.DisplayNames` in the
  * active language, so this file holds codes only. `/platform/countries` returns the same list.
  */

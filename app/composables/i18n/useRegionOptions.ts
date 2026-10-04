@@ -14,12 +14,12 @@ export function useCountryOptions() {
   })
 }
 
-/** Currency picker items: "EUR — Euro" in the active language. */
+/** Currency picker items: "EUR, Euro" in the active language. */
 export function useCurrencyOptions() {
   const { current } = useAppLocale()
   return computed(() => {
     const names = new Intl.DisplayNames([current.value.language], { type: 'currency' })
-    return CURRENCY_CODES.map(code => ({ value: code, label: `${code} — ${names.of(code) ?? code}` }))
+    return CURRENCY_CODES.map(code => ({ value: code, label: `${code} · ${names.of(code) ?? code}` }))
   })
 }
 

@@ -19,7 +19,7 @@ const widths = computed(() =>
 const setLabel = (label: string) => builder.renameField(props.field.id, label)
 
 // Answer access: editable · read-only (shown + submitted) · disabled (greyed, not submitted).
-// Locked fields can never be required — turning one on switches "required" off.
+// Locked fields can never be required, turning one on switches "required" off.
 const access = computed(() => (props.field.disabled ? 'disabled' : props.field.readonly ? 'readonly' : 'editable'))
 const accessItems = computed(() => [
   { value: 'editable', label: t('builder.access.editable') },

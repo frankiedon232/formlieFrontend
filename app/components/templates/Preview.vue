@@ -1,6 +1,6 @@
 <!--
   Live template preview (F9): the real form page in the template's design, on desktop / tablet /
-  phone widths, questions or thank-you page. Try it out — nothing is saved or sent.
+  phone widths, questions or thank-you page. Try it out, nothing is saved or sent.
 -->
 <script setup lang="ts">
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
