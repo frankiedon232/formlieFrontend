@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Este formulário está completo",
       "desc": "Já recebeu todas as respostas que pode aceitar. Obrigado pelo seu interesse."
+    },
+    "short": {
+      "title": "Este link curto não funciona",
+      "desc": "Pode ter sido removido ou o endereço foi escrito incorretamente. Confirme com quem o partilhou.",
+      "opening": "A abrir o formulário…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Sem limite de respostas",
       "until": "Até {date}",
       "customLink": "Ligação personalizada"
+    },
+    "short": {
+      "title": "Link curto",
+      "desc": "Cinco caracteres simples para cartazes, SMS e códigos QR. Leva sempre ao formulário, mesmo quando o link deste muda.",
+      "label": "Link curto",
+      "clicks": "Aberto {n} vez | Aberto {n} vezes",
+      "since": "Criado {when}",
+      "none": "Ainda não existe link curto.",
+      "create": "Criar link curto",
+      "created": "Link curto criado",
+      "remove": "Remover",
+      "removeTitle": "Remover o link curto?",
+      "removeDesc": "Deixa de funcionar de imediato: cartazes, mensagens e códigos QR que o utilizam deixarão de levar ao formulário.",
+      "removed": "Link curto removido"
     }
   }
 }

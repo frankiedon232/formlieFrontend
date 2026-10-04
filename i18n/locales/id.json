@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Formulir ini sudah penuh",
       "desc": "Formulir ini telah menerima semua tanggapan yang dapat diterimanya. Terima kasih atas minat Anda."
+    },
+    "short": {
+      "title": "Tautan pendek ini tidak berfungsi",
+      "desc": "Tautan mungkin telah dihapus, atau alamatnya salah ketik. Silakan periksa dengan orang yang membagikannya.",
+      "opening": "Membuka formulir…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Tanpa batas tanggapan",
       "until": "Sampai {date}",
       "customLink": "Tautan khusus"
+    },
+    "short": {
+      "title": "Tautan pendek",
+      "desc": "Lima karakter mudah untuk poster, SMS, dan kode QR. Selalu mengarah ke formulir, meskipun tautannya berubah.",
+      "label": "Tautan pendek",
+      "clicks": "Dibuka {n} kali | Dibuka {n} kali",
+      "since": "Dibuat {when}",
+      "none": "Belum ada tautan pendek.",
+      "create": "Buat tautan pendek",
+      "created": "Tautan pendek dibuat",
+      "remove": "Hapus",
+      "removeTitle": "Hapus tautan pendek?",
+      "removeDesc": "Tautan langsung berhenti berfungsi: poster, pesan, dan kode QR yang menggunakannya tidak akan lagi mengarah ke formulir.",
+      "removed": "Tautan pendek dihapus"
     }
   }
 }

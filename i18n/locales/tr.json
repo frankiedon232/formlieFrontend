@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Bu form doldu",
       "desc": "Alabileceği tüm yanıtları aldı. İlginiz için teşekkür ederiz."
+    },
+    "short": {
+      "title": "Bu kısa bağlantı çalışmıyor",
+      "desc": "Kaldırılmış olabilir ya da adres yanlış yazılmış olabilir. Lütfen paylaşan kişiye danışın.",
+      "opening": "Form açılıyor…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Yanıt sınırı yok",
       "until": "{date} tarihine kadar",
       "customLink": "Özel bağlantı"
+    },
+    "short": {
+      "title": "Kısa bağlantı",
+      "desc": "Afişler, SMS ve QR kodları için beş kolay karakter. Formun bağlantısı değişse bile her zaman forma yönlendirir.",
+      "label": "Kısa bağlantı",
+      "clicks": "{n} kez açıldı | {n} kez açıldı",
+      "since": "Oluşturulma: {when}",
+      "none": "Henüz kısa bağlantı yok.",
+      "create": "Kısa bağlantı oluştur",
+      "created": "Kısa bağlantı oluşturuldu",
+      "remove": "Kaldır",
+      "removeTitle": "Kısa bağlantı kaldırılsın mı?",
+      "removeDesc": "Hemen çalışmayı durdurur: onu kullanan afişler, mesajlar ve QR kodları artık forma yönlendirmez.",
+      "removed": "Kısa bağlantı kaldırıldı"
     }
   }
 }

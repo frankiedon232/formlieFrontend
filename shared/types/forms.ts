@@ -44,6 +44,8 @@ export interface FormSummary {
   access: FormAccess
   /** Stop taking responses after this many (null = no limit). */
   response_limit: number | null
+  /** Short link code (forms.formalie.com/s/{code}), or null. */
+  short_code: string | null
 }
 
 export type FormAccess = 'public' | 'password'
@@ -60,6 +62,8 @@ export interface FormShareSettings {
   opens_at: string | null
   closes_at: string | null
   row_version: number
+  /** Short link: its code and how many times it was opened. */
+  short_link: { code: string; clicks: number; created_at: string } | null
 }
 
 /** The Share tab's unsaved changes (portal only). */

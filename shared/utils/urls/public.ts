@@ -76,6 +76,20 @@ export function newPublicKey(): string {
   return Array.from(bytes, byte => KEY_ALPHABET[byte % KEY_ALPHABET.length]).join('')
 }
 
+// ── Short links (F10 M3) ────────────────────────────────────────────────────────────
+/**
+ * `https://forms.formalie.com/s/{code}` — five characters that are easy to read aloud, type from a
+ * poster or fit in an SMS (no 0/o, 1/l/i). Always on the shared forms host (shortest address);
+ * it sends people on to the form's current link (custom link or key, on its own host).
+ */
+export const SHORT_CODE_PATTERN = /^[a-hjkmnp-z2-9]{5}$/
+const SHORT_ALPHABET = 'abcdefghjkmnpqrstuvwxyz23456789'
+export function newShortCode(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(5))
+  return Array.from(bytes, byte => SHORT_ALPHABET[byte % SHORT_ALPHABET.length]).join('')
+}
+export const shortLink = (hosts: PublicHosts, code: string) => `https://${hosts.formsHost}${hosts.port ?? ''}/s/${code}`
+
 // ── API service ─────────────────────────────────────────────────────────────────────
 
 /** Organisation API key in the URL: 10 characters, letters and digits (≈ 59 bits, random). */

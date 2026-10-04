@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Questo modulo è completo",
       "desc": "Ha ricevuto tutte le risposte che può accettare. Grazie per l’interesse."
+    },
+    "short": {
+      "title": "Questo link breve non funziona",
+      "desc": "Potrebbe essere stato rimosso, oppure l’indirizzo è stato digitato in modo errato. Verifichi con chi lo ha condiviso.",
+      "opening": "Apertura del modulo…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Nessun limite di risposte",
       "until": "Fino al {date}",
       "customLink": "Link personalizzato"
+    },
+    "short": {
+      "title": "Link breve",
+      "desc": "Cinque caratteri semplici per poster, SMS e codici QR. Porta sempre al modulo, anche se il suo link cambia.",
+      "label": "Link breve",
+      "clicks": "Aperto {n} volta | Aperto {n} volte",
+      "since": "Creato {when}",
+      "none": "Ancora nessun link breve.",
+      "create": "Crea link breve",
+      "created": "Link breve creato",
+      "remove": "Rimuovi",
+      "removeTitle": "Rimuovere il link breve?",
+      "removeDesc": "Smette subito di funzionare: poster, messaggi e codici QR che lo usano non porteranno più al modulo.",
+      "removed": "Link breve rimosso"
     }
   }
 }

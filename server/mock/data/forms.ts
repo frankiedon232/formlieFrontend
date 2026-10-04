@@ -122,5 +122,6 @@ export const MOCK_FORMS: Omit<FormSummary, 'public_key'>[] = Array.from({ length
     custom_link: null,
     access: 'public',
     response_limit: null,
+    short_code: null,
   }
 })

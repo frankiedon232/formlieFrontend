@@ -172,6 +172,7 @@ function newForm(
     custom_link: null,
     access: 'public',
     response_limit: null,
+    short_code: null,
     status: 'draft',
     has_unpublished_changes: false,
     folder: input.folder,

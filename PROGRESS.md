@@ -477,12 +477,12 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ### Share
 
-- 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ custom link with live check (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
+- 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ custom link with live check (2026-10-04) · ✅ short link (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
 - 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule — ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ⬜ invite-only, organisation-only
 - ⬜ People access: edit / view / responses
 - 🟡 Embed: iframe snippet with auto-resize, size options, allowed domains, live preview — ✅ snippet with auto / fixed height (M2); allowed domains + live preview with the Share settings (M3)
 - ⬜ SEO settings with link-card preview
-- ⬜ Short link redirect `/s/[code]`
+- ✅ Short link redirect `/s/[code]` (decision 93): create / remove on the Share tab, 302 to the current link, visits counted, 404 page for unknown codes
 
 ---
 
@@ -1069,3 +1069,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Custom link check really fixed: the server read the link from the address instead of the encrypted request, so every link read as invalid; the Share card summary row opens the Share settings again. |
 | 2026-10-04 | F10 | Custom links are unique per address (owner): each workspace subdomain has its own set, workspaces on forms.* share one; a link taken by one of your forms shows which form (name, status, Open) with free suggestions — tested in the browser. |
 | 2026-10-04 | F10 | Response limit (owner): starts at 10, goes down to 2, steps of 1 (was steps of 10 from 1). |
+| 2026-10-04 | F10 | M3: short links — forms.formalie.dev/s/{code} (5 easy characters) on the Share tab, server-side 302 to the form’s current link, visit count, removable, 404 page; Share card shows it and uses it for the QR code. Tested in the browser. |

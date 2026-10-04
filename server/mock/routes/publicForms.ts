@@ -21,7 +21,8 @@ import { recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
-import { findByPublicKey, formsOf, saveForms, type StoredForm } from '../data/formStore'
+import { findByPublicKey, findByShortCode, formsOf, saveForms, type StoredForm } from '../data/formStore'
+import { formLink, publicHosts, SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
 import { responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
 import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
@@ -535,3 +536,18 @@ export const issueChallenge = defineMockRoute(({ event }) => {
   const encoded = Buffer.from([form.public_key, salt, Date.now(), CHALLENGE_DIFFICULTY].join('|')).toString('base64url')
   return ok({ token: `${encoded}.${sign(encoded)}`, salt, difficulty: CHALLENGE_DIFFICULTY, min_wait_ms: MIN_FILL_MS })
 })
+
+// ── Short links (F10 M3) ────────────────────────────────────────────────────────────────
+/** Where a short link leads (the visit is counted): the form's current link on its own host. */
+export function resolveShortLink(event: Parameters<typeof tenantOf>[0], code: string): string {
+  const found = SHORT_CODE_PATTERN.test(code) ? findByShortCode(MOCK_TENANTS.filter(item => item.status !== 'suspended'), code) : null
+  if (!found) throw new MockError('FRM-FORM-1001')
+  const { tenant, form } = found
+  form.short_clicks = (form.short_clicks ?? 0) + 1
+  saveForms()
+  const port = getRequestHost(event, { xForwardedHost: true }).split(':')[1] ?? ''
+  return formLink(publicHosts(useRuntimeConfig(event).public, port), form.custom_link || form.public_key, 'fill', tenant.subdomain ?? null)
+}
+
+/** GET /public/short/:code — `{ target }` (browser fallback; the server-rendered /s/{code} page redirects itself). */
+export const getShortLink = defineMockRoute(({ event }) => ok({ target: resolveShortLink(event, getRouterParam(event, 'code') ?? '') }))

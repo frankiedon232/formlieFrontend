@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import type { FormSummary } from '#shared/types/forms'
-import { formLink, publicHosts } from '#shared/utils/urls/public'
+import { formLink, publicHosts, shortLink } from '#shared/utils/urls/public'
 
 const props = defineProps<{ form: FormSummary; accent?: string }>()
 const { t } = useI18n()
@@ -21,6 +21,8 @@ const sub = computed(() => tenant.profile.value?.subdomain ?? null)
 const address = computed(() => props.form.custom_link || props.form.public_key)
 const fill = computed(() => formLink(hosts.value, address.value, 'fill', sub.value))
 const embed = computed(() => formLink(hosts.value, address.value, 'embed', sub.value))
+// Short link (F10 M3): shown under the link and used for the QR code (a shorter code is easier to scan).
+const short = computed(() => (props.form.short_code ? shortLink(hosts.value, props.form.short_code) : null))
 const route = useRoute()
 const onShareTab = computed(() => route.path.endsWith('/share'))
 const live = computed(() => props.form.status === 'published')
@@ -63,6 +65,7 @@ const actions = computed(() => [
     <!-- The link. -->
     <div :class="live ? '' : 'opacity-60'">
       <AppCopyField :label="form.custom_link ? t('share.summary.customLink') : t('forms.overview.link')" :value="fill" monospace />
+      <AppCopyField v-if="short" :label="t('share.short.label')" :value="short" monospace class="mt-3" />
     </div>
 
     <!-- Three equal actions. -->
@@ -107,6 +110,6 @@ const actions = computed(() => [
     </div>
 
     <FormsShareEmbedModal v-model:open="embedOpen" :url="embed" :form-name="form.name" :live="live" />
-    <FormsShareQrModal v-model:open="qrOpen" :url="fill" :form-name="form.name" :accent="accent" :live="live" />
+    <FormsShareQrModal v-model:open="qrOpen" :url="short ?? fill" :form-name="form.name" :accent="accent" :live="live" />
   </UCard>
 </template>

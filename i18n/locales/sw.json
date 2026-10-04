@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Fomu hii imejaa",
       "desc": "Imepokea majibu yote inayoweza kupokea. Asante kwa nia yako."
+    },
+    "short": {
+      "title": "Kiungo hiki kifupi hakifanyi kazi",
+      "desc": "Huenda kimeondolewa, au anwani iliandikwa vibaya. Tafadhali thibitisha na aliyekishiriki.",
+      "opening": "Inafungua fomu…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Hakuna kikomo cha majibu",
       "until": "Hadi {date}",
       "customLink": "Kiungo maalum"
+    },
+    "short": {
+      "title": "Kiungo kifupi",
+      "desc": "Herufi tano rahisi kwa mabango, SMS na misimbo ya QR. Kinaelekeza kwenye fomu kila wakati, hata kiungo chake kikibadilika.",
+      "label": "Kiungo kifupi",
+      "clicks": "Kimefunguliwa mara {n} | Kimefunguliwa mara {n}",
+      "since": "Kiliundwa {when}",
+      "none": "Bado hakuna kiungo kifupi.",
+      "create": "Unda kiungo kifupi",
+      "created": "Kiungo kifupi kimeundwa",
+      "remove": "Ondoa",
+      "removeTitle": "Ungependa kuondoa kiungo kifupi?",
+      "removeDesc": "Kitaacha kufanya kazi mara moja: mabango, ujumbe na misimbo ya QR inayokitumia haitaelekeza tena kwenye fomu.",
+      "removed": "Kiungo kifupi kimeondolewa"
     }
   }
 }

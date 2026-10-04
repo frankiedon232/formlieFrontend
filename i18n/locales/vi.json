@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Biểu mẫu này đã đủ",
       "desc": "Biểu mẫu đã nhận đủ số câu trả lời có thể nhận. Cảm ơn bạn đã quan tâm."
+    },
+    "short": {
+      "title": "Liên kết ngắn này không hoạt động",
+      "desc": "Có thể liên kết đã bị xóa hoặc địa chỉ được nhập sai. Vui lòng kiểm tra lại với người đã chia sẻ.",
+      "opening": "Đang mở biểu mẫu…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Không giới hạn câu trả lời",
       "until": "Đến {date}",
       "customLink": "Liên kết tùy chỉnh"
+    },
+    "short": {
+      "title": "Liên kết ngắn",
+      "desc": "Năm ký tự dễ nhớ cho áp phích, SMS và mã QR. Luôn dẫn đến biểu mẫu, kể cả khi liên kết của biểu mẫu thay đổi.",
+      "label": "Liên kết ngắn",
+      "clicks": "Đã mở {n} lần | Đã mở {n} lần",
+      "since": "Tạo {when}",
+      "none": "Chưa có liên kết ngắn.",
+      "create": "Tạo liên kết ngắn",
+      "created": "Đã tạo liên kết ngắn",
+      "remove": "Xóa",
+      "removeTitle": "Xóa liên kết ngắn?",
+      "removeDesc": "Liên kết sẽ ngừng hoạt động ngay: áp phích, tin nhắn và mã QR sử dụng nó sẽ không còn dẫn đến biểu mẫu.",
+      "removed": "Đã xóa liên kết ngắn"
     }
   }
 }

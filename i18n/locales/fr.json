@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Ce formulaire est complet",
       "desc": "Il a reçu toutes les réponses qu’il peut accepter. Merci de votre intérêt."
+    },
+    "short": {
+      "title": "Ce lien court ne fonctionne pas",
+      "desc": "Il a peut-être été supprimé, ou l’adresse a été mal saisie. Vérifiez-la auprès de la personne qui l’a partagé.",
+      "opening": "Ouverture du formulaire…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Pas de limite de réponses",
       "until": "Jusqu’au {date}",
       "customLink": "Lien personnalisé"
+    },
+    "short": {
+      "title": "Lien court",
+      "desc": "Cinq caractères simples pour les affiches, SMS et codes QR. Il mène toujours au formulaire, même si son lien change.",
+      "label": "Lien court",
+      "clicks": "Ouvert {n} fois | Ouvert {n} fois",
+      "since": "Créé {when}",
+      "none": "Aucun lien court pour l’instant.",
+      "create": "Créer un lien court",
+      "created": "Lien court créé",
+      "remove": "Supprimer",
+      "removeTitle": "Supprimer le lien court ?",
+      "removeDesc": "Il cesse de fonctionner immédiatement : les affiches, messages et codes QR qui l’utilisent ne mèneront plus au formulaire.",
+      "removed": "Lien court supprimé"
     }
   }
 }

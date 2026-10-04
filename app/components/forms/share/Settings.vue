@@ -66,7 +66,7 @@ const canSave = computed(() => dirty.value && linkOk.value && !passwordMissing.v
 function applyToSession(next: FormShareSettings) {
   rowVersion.value = next.row_version
   if (form.value)
-    form.value = { ...form.value, access: next.access, custom_link: next.custom_link, response_limit: next.response_limit, opens_at: next.opens_at, closes_at: next.closes_at, row_version: next.row_version }
+    form.value = { ...form.value, access: next.access, custom_link: next.custom_link, response_limit: next.response_limit, opens_at: next.opens_at, closes_at: next.closes_at, row_version: next.row_version, short_code: next.short_link?.code ?? null }
 }
 
 const { busy, run } = useBusy()
@@ -92,6 +92,12 @@ async function save() {
       else handle(error)
     }
   })
+}
+
+/** The short link saves on its own (unsaved changes on the page stay as they are). */
+function shortChanged(next: FormShareSettings) {
+  settings.value = next
+  applyToSession(next)
 }
 
 // Availability has its own window (also used from the forms list).
@@ -124,6 +130,7 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
       <div class="flex min-w-0 flex-col gap-4">
         <FormsShareAccessCard v-model:draft="draft" :settings="settings" />
         <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
+        <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
         <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
       </div>
       <FormsOverviewShare :form="form" class="lg:sticky lg:top-4" />

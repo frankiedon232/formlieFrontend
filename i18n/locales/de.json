@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Dieses Formular ist voll",
       "desc": "Es hat alle Antworten erhalten, die es annehmen kann. Vielen Dank für Ihr Interesse."
+    },
+    "short": {
+      "title": "Dieser Kurzlink funktioniert nicht",
+      "desc": "Er wurde möglicherweise entfernt oder die Adresse wurde falsch eingegeben. Bitte fragen Sie bei der Person nach, die ihn geteilt hat.",
+      "opening": "Formular wird geöffnet…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Kein Antwortlimit",
       "until": "Bis {date}",
       "customLink": "Eigener Link"
+    },
+    "short": {
+      "title": "Kurzlink",
+      "desc": "Fünf einfache Zeichen für Plakate, SMS und QR-Codes. Er führt immer zum Formular, auch wenn sich dessen Link ändert.",
+      "label": "Kurzlink",
+      "clicks": "{n}-mal geöffnet | {n}-mal geöffnet",
+      "since": "Erstellt {when}",
+      "none": "Noch kein Kurzlink.",
+      "create": "Kurzlink erstellen",
+      "created": "Kurzlink erstellt",
+      "remove": "Entfernen",
+      "removeTitle": "Kurzlink entfernen?",
+      "removeDesc": "Er funktioniert sofort nicht mehr: Plakate, Nachrichten und QR-Codes, die ihn verwenden, führen nicht mehr zum Formular.",
+      "removed": "Kurzlink entfernt"
     }
   }
 }

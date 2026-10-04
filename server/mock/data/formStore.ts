@@ -20,6 +20,9 @@ export interface StoredForm extends FormSummary {
   versions?: StoredVersion[]
   /** Password for access "password" (F10 M3): scrypt hash + salt; the version invalidates unlocks when it changes. */
   password?: { hash: string; salt: string; version: number; changed_at: string } | null
+  /** Short link (F10 M3): visits counted when it is opened. */
+  short_clicks?: number
+  short_created_at?: string | null
 }
 
 export interface StoredVersion extends FormVersion {
@@ -105,10 +108,12 @@ export function summaryOf(form: StoredForm): FormSummary {
     published_schema: _ps,
     versions: _v,
     password: _pw,
+    short_clicks: _sc,
+    short_created_at: _sca,
     ...summary
   } = form
   // Share settings added in F10 M3: older forms have none yet.
-  return { ...summary, custom_link: summary.custom_link ?? null, access: summary.access ?? 'public', response_limit: summary.response_limit ?? null }
+  return { ...summary, custom_link: summary.custom_link ?? null, access: summary.access ?? 'public', response_limit: summary.response_limit ?? null, short_code: summary.short_code ?? null }
 }
 
 export const slugify = (value: string) =>
@@ -137,6 +142,15 @@ export function findByPublicKey(tenants: MockTenant[], key: string, { sharedHost
     // On the shared forms host a custom link belongs to a workspace without its own subdomain.
     const linkHere = (item: StoredForm) => item.custom_link === key && !(sharedHost && tenant.subdomain)
     const form = formsOf(tenant).forms.find(item => (item.public_key === key || linkHere(item)) && !item.deleted_at)
+    if (form) return { tenant, form }
+  }
+  return null
+}
+
+/** A form by its short link code, across workspaces (F10 M3). */
+export function findByShortCode(tenants: MockTenant[], code: string): { tenant: MockTenant; form: StoredForm } | null {
+  for (const tenant of tenants) {
+    const form = formsOf(tenant).forms.find(item => item.short_code === code && !item.deleted_at)
     if (form) return { tenant, form }
   }
   return null

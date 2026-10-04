@@ -9,7 +9,7 @@ import { randomBytes, scryptSync } from 'node:crypto'
 import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
 import type { CustomLinkCheck, FormShareSettings } from '#shared/types/forms'
-import { customLinkProblem, FORM_KEY_PATTERN, tidyCustomLink } from '#shared/utils/urls/public'
+import { customLinkProblem, FORM_KEY_PATTERN, newShortCode, tidyCustomLink } from '#shared/utils/urls/public'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -36,6 +36,7 @@ const settingsOf = (form: StoredForm): FormShareSettings => ({
   opens_at: form.opens_at,
   closes_at: form.closes_at,
   row_version: form.row_version,
+  short_link: form.short_code ? { code: form.short_code, clicks: form.short_clicks ?? 0, created_at: form.short_created_at ?? form.updated_at } : null,
 })
 
 /**
@@ -160,3 +161,36 @@ export const saveShare = defineMockRoute(({ event, body }) => {
   }
   return ok(settingsOf(form))
 })
+
+// ── Short link (F10 M3) ─────────────────────────────────────────────────────────────────
+const codeTaken = (code: string) => MOCK_TENANTS.some(tenant => formsOf(tenant).forms.some(form => form.short_code === code))
+
+function shortLinkChange(event: Parameters<typeof requireAuth>[0], create: boolean) {
+  const { user, tenant } = requireAuth(event)
+  const form = findForm(tenant, getRouterParam(event, 'id'))
+  const before = form.short_code ?? null
+  if (create && !form.short_code) {
+    let code = newShortCode()
+    while (codeTaken(code)) code = newShortCode()
+    form.short_code = code
+    form.short_clicks = 0
+    form.short_created_at = new Date().toISOString()
+  } else if (!create && form.short_code) {
+    // The old code stops working (and is never handed out again: codes stay on the deleted record in a real backend).
+    form.short_code = null
+    form.short_clicks = 0
+    form.short_created_at = null
+  }
+  if ((form.short_code ?? null) !== before) {
+    form.row_version++
+    form.updated_at = new Date().toISOString()
+    saveForms()
+    recordAudit(event, tenant, { action: 'forms.shared', actor: actorOf(user), resource: { type: 'form', id: form.id, name: form.name }, changes: [{ field: 'short_link', before, after: form.short_code ?? null }] })
+  }
+  return ok(settingsOf(form), {}, create && !before ? 201 : 200)
+}
+
+/** POST /forms/:id/short-link — create the form's short link (or return the one it has). */
+export const createShortLink = defineMockRoute(({ event }) => shortLinkChange(event, true))
+/** DELETE /forms/:id/short-link — remove it; the code stops working. */
+export const removeShortLink = defineMockRoute(({ event }) => shortLinkChange(event, false))

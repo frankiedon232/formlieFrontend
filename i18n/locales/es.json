@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Este formulario está completo",
       "desc": "Ha recibido todas las respuestas que puede admitir. Gracias por su interés."
+    },
+    "short": {
+      "title": "Este enlace corto no funciona",
+      "desc": "Es posible que se haya quitado o que la dirección se haya escrito mal. Consúltelo con quien lo compartió.",
+      "opening": "Abriendo el formulario…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Sin límite de respuestas",
       "until": "Hasta el {date}",
       "customLink": "Enlace personalizado"
+    },
+    "short": {
+      "title": "Enlace corto",
+      "desc": "Cinco caracteres sencillos para carteles, SMS y códigos QR. Siempre lleva al formulario, aunque cambie su enlace.",
+      "label": "Enlace corto",
+      "clicks": "Abierto {n} vez | Abierto {n} veces",
+      "since": "Creado {when}",
+      "none": "Aún no hay enlace corto.",
+      "create": "Crear enlace corto",
+      "created": "Enlace corto creado",
+      "remove": "Quitar",
+      "removeTitle": "¿Quitar el enlace corto?",
+      "removeDesc": "Dejará de funcionar de inmediato: los carteles, mensajes y códigos QR que lo usen ya no llevarán al formulario.",
+      "removed": "Enlace corto quitado"
     }
   }
 }

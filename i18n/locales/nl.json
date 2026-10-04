@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Dit formulier is vol",
       "desc": "Het heeft alle reacties ontvangen die het kan aannemen. Bedankt voor uw interesse."
+    },
+    "short": {
+      "title": "Deze korte link werkt niet",
+      "desc": "Mogelijk is de link verwijderd of is het adres verkeerd getypt. Controleer het bij degene die hem heeft gedeeld.",
+      "opening": "Formulier openen…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Geen limiet op antwoorden",
       "until": "Tot {date}",
       "customLink": "Eigen link"
+    },
+    "short": {
+      "title": "Korte link",
+      "desc": "Vijf eenvoudige tekens voor posters, sms en QR-codes. De link leidt altijd naar het formulier, ook als de formulierlink verandert.",
+      "label": "Korte link",
+      "clicks": "{n} keer geopend | {n} keer geopend",
+      "since": "Aangemaakt {when}",
+      "none": "Nog geen korte link.",
+      "create": "Korte link maken",
+      "created": "Korte link aangemaakt",
+      "remove": "Verwijderen",
+      "removeTitle": "Korte link verwijderen?",
+      "removeDesc": "De link werkt direct niet meer: posters, berichten en QR-codes die hem gebruiken, leiden niet langer naar het formulier.",
+      "removed": "Korte link verwijderd"
     }
   }
 }

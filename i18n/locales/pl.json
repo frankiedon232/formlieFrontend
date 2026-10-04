@@ -2811,6 +2811,11 @@
     "full": {
       "title": "Ten formularz jest pełny",
       "desc": "Otrzymał już wszystkie odpowiedzi, jakie może przyjąć. Dziękujemy za zainteresowanie."
+    },
+    "short": {
+      "title": "Ten krótki link nie działa",
+      "desc": "Mógł zostać usunięty lub adres wpisano niepoprawnie. Sprawdź go u osoby, która go udostępniła.",
+      "opening": "Otwieranie formularza…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "Bez limitu odpowiedzi",
       "until": "Do {date}",
       "customLink": "Własny link"
+    },
+    "short": {
+      "title": "Krótki link",
+      "desc": "Pięć prostych znaków na plakaty, SMS-y i kody QR. Zawsze prowadzi do formularza, nawet gdy zmieni się jego link.",
+      "label": "Krótki link",
+      "clicks": "Otwarto {n} raz | Otwarto {n} razy",
+      "since": "Utworzono {when}",
+      "none": "Brak krótkiego linku.",
+      "create": "Utwórz krótki link",
+      "created": "Utworzono krótki link",
+      "remove": "Usuń",
+      "removeTitle": "Usunąć krótki link?",
+      "removeDesc": "Przestanie działać natychmiast: plakaty, wiadomości i kody QR, które go używają, nie będą już prowadzić do formularza.",
+      "removed": "Usunięto krótki link"
     }
   }
 }

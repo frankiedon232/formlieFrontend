@@ -2811,6 +2811,11 @@
     "full": {
       "title": "This form is full",
       "desc": "It has received all the responses it can take. Thank you for your interest."
+    },
+    "short": {
+      "title": "This short link doesn’t work",
+      "desc": "It may have been removed, or the address was typed incorrectly. Check it with whoever shared it.",
+      "opening": "Opening the form…"
     }
   },
   "share": {
@@ -2882,6 +2887,20 @@
       "noLimit": "No response limit",
       "until": "Until {date}",
       "customLink": "Custom link"
+    },
+    "short": {
+      "title": "Short link",
+      "desc": "Five easy characters for posters, SMS and QR codes. It always leads to the form, even when its link changes.",
+      "label": "Short link",
+      "clicks": "Opened {n} time | Opened {n} times",
+      "since": "Created {when}",
+      "none": "No short link yet.",
+      "create": "Create short link",
+      "created": "Short link created",
+      "remove": "Remove",
+      "removeTitle": "Remove the short link?",
+      "removeDesc": "It stops working at once: posters, messages and QR codes that use it will no longer lead to the form.",
+      "removed": "Short link removed"
     }
   }
 }
