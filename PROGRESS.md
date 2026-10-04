@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-04 · **Current phase:** F10, Renderer, preview, share, embed: built, waiting for the owner's review
+**Last updated:** 2026-10-04 · **Current phase:** F11, Responses (F10 reviewed by the owner)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -21,7 +21,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | 100% (owner review) |
-| F11   | Responses                                         | ⬜     | 0%   |
+| F11   | Responses                                         | 🟡     | ~45% |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
@@ -506,12 +506,17 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ## F11, Responses ⬜
 
-- ⬜ Per-form responses (DataView, columns from the form)
-- ⬜ Inbox across all forms
-- ⬜ Filters per field type, date range, status, tags
-- ⬜ Response detail slide-over with next / previous (`J` / `K`)
-- ⬜ Status (new, reviewed, approved…), tags, notes, edit history
-- ⬜ Bulk actions
+**Plan (2026-10-04, milestones):** **M1** one response source for every page (decision 100), per-form Responses page with insights and slim charts, Summary per question, list, response panel, inbox. **M2** editing answers (with history), per-field filters, bulk tags, possible-duplicate review. **M3** exports (XLSX / CSV / PDF) with progress and the Exports page. **M4** Folders workspace, polish and review.
+
+- ✅ One response source (decision 100): real submissions + stable sample responses for seeded forms; overview, sidebar counts and form lists read from it (owner, 2026-10-04: "connect all the dots")
+- ✅ Per-form responses `/forms/[id]/responses` (DataView, Table / Grid, columns from the form picked in "Columns" and remembered, ratings as slim bars)
+- ✅ Insights: KPI cards with sparklines and trend, responses over time (daily / weekly), review status stacked bar (filters the list), channels, languages, period 7 d / 30 d / 90 d / 12 m
+- ✅ Summary tab: every question summarised (choices as bars, rating average + distribution, numbers, latest text answers, calculated results)
+- ✅ Inbox across all forms `/responses` (busiest forms, form filter); old `/responses?form=` links forward
+- 🟡 Filters: ✅ status, channel, possible duplicates, date range, search (names, emails, answers, #number) · ⬜ per field type, tags
+- ✅ Response detail slide-over with next / previous (`J` / `K`), facts, answers by page, possible-duplicate link
+- 🟡 Status (new, reviewed, approved, rejected), tags, notes, history ✅ · editing answers in the panel ⬜ (API ready)
+- 🟡 Bulk actions: ✅ set status, delete (editors) · ⬜ tags
 - ⬜ Export XLSX / CSV / PDF (all, filtered, selected) with progress and download
 
 ### Folders workspace (owner request 2026-10-02, built here because the stats need response data)
@@ -1001,6 +1006,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Portal text still looked faded: dark-mode headline colour fixed, body text darker, list values in the main text colour like the design image | F1 follow-up | ✅ |
 | 2026-10-03 | Public form page: branded frame around the form, workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
 | 2026-10-04 | "Can view" must be view only: no editor, designer, logic, share settings, save as template or availability change | F10 M3 | ✅ |
+| 2026-10-04 | Responses: a beautiful, clean page with a lot of insight, slim charts, table; and every page must show test responses ("connect all the dots") | F11 M1 | ✅ |
 | 2026-10-04 | Forms in several languages open in the form's main language (not the browser's); language switcher beside "Visit website" | F10 M4 | ✅ |
 | 2026-10-04 | French form: labels, sections, help and thank-you stayed English; "already filled in" showed only after the form flashed for seconds; spam check not visible anywhere | F10 | ✅ |
 
@@ -1113,3 +1119,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | M4 part 2, polish and review: out-of-date translation marker; a full review of F10 fixed 13 issues (empty Trash only for editors, no draft text on unpublished public pages, image upload types agree on both sides, all access modes on the Share card, save and resume edge cases, invitation emails split on space, progress after a password, clearer /forms/open errors, language add only after a successful fill, one challenge per submission, freed upload previews, page-owned watchers, folder counts by access). F10 complete, waiting for the owner's review. |
 | 2026-10-04 | F10 | Owner test: a form opens in its main language (Form settings → Form language), only `?lang=` opens another; the browser's language no longer decides. The language switcher moved into the page's top bar beside "Visit website" (side panel: beside the organisation; embeds and Minimal: above the form). Previews also start in the main language (they picked English before the form had loaded). |
 | 2026-10-04 | F10 | Language switcher in the page's top bar looked squashed on phone widths (only the flag showed and the button lost its height): it now keeps the website button's height and a fixed width. |
+| 2026-10-04 | F11 | M1: one response source for every page (decision 100: real submissions + stable sample responses; overview trend, sidebar counts and form lists follow it, so test submissions now show everywhere). Per-form Responses page and inbox with KPI sparklines, trend chart, review status, channels, languages, busiest forms, Summary per question, DataView table / grid with question columns and slim rating bars, response side panel (J / K, status, tags, notes, history), bulk status / delete. 20 languages. |

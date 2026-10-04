@@ -535,7 +535,11 @@
     "draft": "Brouillon",
     "published": "Publié",
     "closed": "Fermé",
-    "archived": "Archivé"
+    "archived": "Archivé",
+    "new": "Nouveau",
+    "reviewed": "Examiné",
+    "approved": "Approuvé",
+    "rejected": "Refusé"
   },
   "footer": {
     "rights": "Tous droits réservés.",
@@ -3147,5 +3151,149 @@
     "rotate": "Tourner à l'horizontale",
     "scale": "Affiché à {percent} %",
     "full": "Aperçu complet"
+  },
+  "responses": {
+    "crumb": "Réponses",
+    "subtitle": "Dernière réponse {when}",
+    "subtitleNone": "Aucune réponse pour l'instant",
+    "toForm": "Formulaire",
+    "anonymous": "Anonyme",
+    "count": "{n} réponse | {n} réponses",
+    "period": {
+      "label": "Période",
+      "7d": "7 jours",
+      "30d": "30 jours",
+      "90d": "90 jours",
+      "12m": "12 mois"
+    },
+    "tabs": {
+      "label": "Affichage",
+      "responses": "Réponses",
+      "summary": "Synthèse"
+    },
+    "kpi": {
+      "period": "Réponses",
+      "total": "{n} au total",
+      "toReview": "À examiner",
+      "ofAll": "{share} de toutes les réponses",
+      "nothing": "Rien pour l'instant",
+      "review": "Examiner",
+      "time": "Temps de remplissage",
+      "timeHint": "Médiane sur cette période",
+      "completion": "Taux d'achèvement",
+      "completionHint": "Parmi ceux qui ont commencé, combien l'ont envoyé",
+      "last": "Dernière réponse",
+      "busiest": "Le plus actif : {name}"
+    },
+    "trend": {
+      "title": "Réponses dans le temps",
+      "daily": "Par jour",
+      "weekly": "Par semaine",
+      "perDay": "Environ {n} par jour",
+      "step": "Afficher par",
+      "empty": "Aucune réponse sur cette période",
+      "emptyDesc": "Choisissez une période plus longue ou partagez le formulaire pour en recevoir."
+    },
+    "breakdown": {
+      "status": "Statut d'examen",
+      "channels": "Provenance",
+      "languages": "Langues",
+      "busiest": "Formulaires les plus actifs"
+    },
+    "channel": {
+      "link": "Lien du formulaire",
+      "embed": "Intégré",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Colonnes",
+      "respondent": "Répondant",
+      "submitted": "Envoyé",
+      "status": "Statut",
+      "notes": "Notes",
+      "channel": "Provenance",
+      "flags": "Signalements",
+      "possibleDuplicate": "Doublon possible",
+      "newest": "Plus récents d'abord",
+      "oldest": "Plus anciens d'abord",
+      "byStatus": "Statut",
+      "byRespondent": "Répondant",
+      "open": "Ouvrir",
+      "markAs": "Marquer comme",
+      "delete": "Supprimer",
+      "search": "Rechercher des noms, e-mails, réponses ou un n°…",
+      "empty": "Aucune réponse pour l'instant",
+      "emptyDesc": "Partagez le formulaire pour commencer à recevoir des réponses.",
+      "form": "Formulaire",
+      "byForm": "Formulaire",
+      "allOfForm": "Toutes les réponses de ce formulaire",
+      "searchInbox": "Rechercher des noms, e-mails ou formulaires…",
+      "emptyInbox": "Les réponses de tous vos formulaires apparaissent ici."
+    },
+    "delete": {
+      "title": "Supprimer {n} réponse ? | Supprimer {n} réponses ?",
+      "desc": "Elles sont supprimées définitivement, avec leurs notes. Impossible d'annuler."
+    },
+    "toast": {
+      "deleted": "{n} réponse supprimée | {n} réponses supprimées",
+      "marked": "{n} réponse marquée {status} | {n} réponses marquées {status}"
+    },
+    "known": {
+      "invite": "Invité",
+      "member": "Membre connecté"
+    },
+    "answer": {
+      "yes": "Oui",
+      "no": "Non",
+      "agreed": "Accepté",
+      "duration": "{h} h {m} min",
+      "signed": "Signé"
+    },
+    "time": {
+      "seconds": "{n} s",
+      "minutes": "{m} min {s} s"
+    },
+    "summary": {
+      "answered": "{n} réponses · {share}",
+      "multiple": "plusieurs choix possibles",
+      "none": "Personne n'a répondu à cette question sur cette période.",
+      "more": "+ {n} de plus",
+      "outOf": "sur {max}",
+      "average": "Moyenne",
+      "median": "Médiane",
+      "min": "Minimum",
+      "max": "Maximum",
+      "inTable": "Voir chaque réponse dans la liste des réponses.",
+      "empty": "Rien à résumer pour l'instant",
+      "emptyDesc": "Les réponses apparaîtront ici dès qu'il y en aura sur cette période."
+    },
+    "detail": {
+      "noAnswer": "Sans réponse",
+      "sampleFile": "Exemple",
+      "tags": "Étiquettes",
+      "addTag": "Ajouter une étiquette…",
+      "note": "une note",
+      "notes": "Notes",
+      "notePlaceholder": "Écrivez une note pour votre équipe…",
+      "addNote": "Ajouter la note",
+      "noteHint": "Seule votre équipe voit les notes. Ctrl ou ⌘ + Entrée pour l'ajouter.",
+      "history": "Historique",
+      "changed": "a modifié {field}",
+      "timeTaken": "Temps passé",
+      "cameIn": "Provenance",
+      "language": "Langue",
+      "device": "Appareil",
+      "version": "Version du formulaire",
+      "previous": "Réponse précédente",
+      "next": "Réponse suivante",
+      "duplicateTitle": "Doublon possible",
+      "duplicateDesc": "Cette réponse ressemble à une réponse antérieure de la même personne (un e-mail très proche). Elle a confirmé être quelqu'un d'autre.",
+      "openEarlier": "Ouvrir la précédente"
+    },
+    "device": {
+      "desktop": "Ordinateur",
+      "phone": "Téléphone",
+      "tablet": "Tablette"
+    }
   }
 }

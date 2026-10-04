@@ -535,7 +535,11 @@
     "draft": "Draft",
     "published": "Published",
     "closed": "Closed",
-    "archived": "Archived"
+    "archived": "Archived",
+    "new": "New",
+    "reviewed": "Reviewed",
+    "approved": "Approved",
+    "rejected": "Rejected"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -3147,5 +3151,149 @@
     "rotate": "Turn sideways",
     "scale": "Shown at {percent}%",
     "full": "Full preview"
+  },
+  "responses": {
+    "crumb": "Responses",
+    "subtitle": "Last response {when}",
+    "subtitleNone": "No responses yet",
+    "toForm": "Form",
+    "anonymous": "Anonymous",
+    "count": "{n} response | {n} responses",
+    "period": {
+      "label": "Period",
+      "7d": "7 days",
+      "30d": "30 days",
+      "90d": "90 days",
+      "12m": "12 months"
+    },
+    "tabs": {
+      "label": "View",
+      "responses": "Responses",
+      "summary": "Summary"
+    },
+    "kpi": {
+      "period": "Responses",
+      "total": "{n} in total",
+      "toReview": "To review",
+      "ofAll": "{share} of all responses",
+      "nothing": "Nothing yet",
+      "review": "Review",
+      "time": "Time to fill in",
+      "timeHint": "Median in this period",
+      "completion": "Completion",
+      "completionHint": "Of the people who started, how many sent it",
+      "last": "Last response",
+      "busiest": "Busiest: {name}"
+    },
+    "trend": {
+      "title": "Responses over time",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "perDay": "About {n} a day",
+      "step": "Show by",
+      "empty": "No responses in this period",
+      "emptyDesc": "Choose a longer period, or share the form to collect some."
+    },
+    "breakdown": {
+      "status": "Review status",
+      "channels": "How they came in",
+      "languages": "Languages",
+      "busiest": "Busiest forms"
+    },
+    "channel": {
+      "link": "Form link",
+      "embed": "Embedded",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Columns",
+      "respondent": "Respondent",
+      "submitted": "Submitted",
+      "status": "Status",
+      "notes": "Notes",
+      "channel": "Came in",
+      "flags": "Flags",
+      "possibleDuplicate": "Possible duplicate",
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "byStatus": "Status",
+      "byRespondent": "Respondent",
+      "open": "Open",
+      "markAs": "Mark as",
+      "delete": "Delete",
+      "search": "Search names, emails, answers or #number…",
+      "empty": "No responses yet",
+      "emptyDesc": "Share the form to start collecting responses.",
+      "form": "Form",
+      "byForm": "Form",
+      "allOfForm": "All responses of this form",
+      "searchInbox": "Search names, emails or forms…",
+      "emptyInbox": "Responses from all your forms appear here."
+    },
+    "delete": {
+      "title": "Delete {n} response? | Delete {n} responses?",
+      "desc": "They are removed for good, with their notes. This can't be undone."
+    },
+    "toast": {
+      "deleted": "{n} response deleted | {n} responses deleted",
+      "marked": "{n} response marked {status} | {n} responses marked {status}"
+    },
+    "known": {
+      "invite": "Invited",
+      "member": "Signed-in member"
+    },
+    "answer": {
+      "yes": "Yes",
+      "no": "No",
+      "agreed": "Agreed",
+      "duration": "{h} h {m} min",
+      "signed": "Signed"
+    },
+    "time": {
+      "seconds": "{n} s",
+      "minutes": "{m} min {s} s"
+    },
+    "summary": {
+      "answered": "{n} answered · {share}",
+      "multiple": "more than one allowed",
+      "none": "Nobody answered this in this period.",
+      "more": "+ {n} more",
+      "outOf": "out of {max}",
+      "average": "Average",
+      "median": "Median",
+      "min": "Lowest",
+      "max": "Highest",
+      "inTable": "See each answer in the Responses list.",
+      "empty": "Nothing to summarise yet",
+      "emptyDesc": "Answers appear here once responses come in for this period."
+    },
+    "detail": {
+      "noAnswer": "No answer",
+      "sampleFile": "Sample",
+      "tags": "Tags",
+      "addTag": "Add a tag…",
+      "note": "a note",
+      "notes": "Notes",
+      "notePlaceholder": "Write a note for your team…",
+      "addNote": "Add note",
+      "noteHint": "Only your team sees notes. Ctrl or ⌘ + Enter adds it.",
+      "history": "History",
+      "changed": "changed {field}",
+      "timeTaken": "Time taken",
+      "cameIn": "Came in",
+      "language": "Language",
+      "device": "Device",
+      "version": "Form version",
+      "previous": "Previous response",
+      "next": "Next response",
+      "duplicateTitle": "Possible duplicate",
+      "duplicateDesc": "This looks like an earlier response from the same person (a very similar email). They confirmed they are someone else.",
+      "openEarlier": "Open the earlier one"
+    },
+    "device": {
+      "desktop": "Desktop",
+      "phone": "Phone",
+      "tablet": "Tablet"
+    }
   }
 }

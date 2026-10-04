@@ -1,0 +1,98 @@
+/**
+ * Responses (F11, docs/API-CONTRACT.md → Responses). One shape for the per-form list, the inbox
+ * across forms and the detail panel; insights summarise a form's (or the workspace's) responses.
+ */
+import type { FormSchemaV1 } from '../utils/forms/schema'
+
+/** Review status: new until someone looks at it; reviewed, approved or rejected after. */
+export type ResponseStatus = 'new' | 'reviewed' | 'approved' | 'rejected'
+export const RESPONSE_STATUSES: ResponseStatus[] = ['new', 'reviewed', 'approved', 'rejected']
+
+export interface ResponseRespondent {
+  name: string | null
+  email: string | null
+  /** How we know: an invitation, a signed-in member, or what they typed in the form. */
+  kind: 'invite' | 'member' | 'answer' | 'anonymous'
+}
+
+export interface ResponseRow {
+  id: string
+  /** Running number within the form (#1 = the first response). */
+  number: number
+  form: { id: string; name: string }
+  submitted_at: string
+  status: ResponseStatus
+  tags: string[]
+  respondent: ResponseRespondent
+  channel: 'link' | 'embed' | 'api'
+  language: string
+  /** Time spent filling in (null when unknown). */
+  duration_seconds: number | null
+  /** Answers by field key (per-form lists; the inbox sends none). */
+  answers: Record<string, unknown>
+  notes_count: number
+  edited: boolean
+  /** Flagged as perhaps the same person as an earlier response (F10 identity). */
+  possible_duplicate: { of: string; reason: string } | null
+}
+
+export interface ResponseNote {
+  id: string
+  author: { id: string; name: string }
+  text: string
+  created_at: string
+}
+
+/** One change to a response (status, tags, an edited answer), newest first. */
+export interface ResponseChange {
+  id: string
+  at: string
+  by: { id: string; name: string }
+  field: string
+  before: unknown
+  after: unknown
+}
+
+export interface ResponseDetail extends ResponseRow {
+  /** Every answer by field key. */
+  data: Record<string, unknown>
+  form_version: number | null
+  /** The version the respondent filled in (questions in its order). */
+  schema: FormSchemaV1
+  meta: { device: string; country: string | null }
+  notes: ResponseNote[]
+  history: ResponseChange[]
+  /** What the person may do: review (status, tags, notes) and edit answers / delete. */
+  can: { review: boolean; edit: boolean }
+}
+
+export type QuestionInsight =
+  | { key: string; label: string; type: string; answered: number; kind: 'choice'; multiple: boolean; options: { value: string; label: string; count: number }[] }
+  | { key: string; label: string; type: string; answered: number; kind: 'rating'; average: number; min: number; max: number; distribution: { value: number; count: number }[] }
+  | { key: string; label: string; type: string; answered: number; kind: 'number'; average: number; min: number; max: number; median: number }
+  | { key: string; label: string; type: string; answered: number; kind: 'text'; latest: { id: string; value: string; at: string }[] }
+  | { key: string; label: string; type: string; answered: number; kind: 'other' }
+
+export interface ResponseInsights {
+  total: number
+  /** Not yet reviewed. */
+  new: number
+  /** The chosen period and the same length before it (trend). */
+  period: { from: string; to: string; count: number; previous: number }
+  /** One entry per day in the period. */
+  daily: { date: string; count: number }[]
+  status: Record<ResponseStatus, number>
+  channels: { link: number; embed: number; api: number }
+  languages: { code: string; count: number }[]
+  /** Median time to fill in, in seconds (null when unknown). */
+  median_seconds: number | null
+  /** Share of started fill-ins that were sent (0–100; per form only). */
+  completion_rate: number | null
+  last_at: string | null
+  /** Per question (per form only, empty in the inbox). */
+  questions: QuestionInsight[]
+  /** Inbox only: the busiest forms in the period. */
+  top_forms: { id: string; name: string; count: number }[]
+  /** Per form: the questions (what respondents fill in), for table columns and the summary. */
+  schema: FormSchemaV1 | null
+}

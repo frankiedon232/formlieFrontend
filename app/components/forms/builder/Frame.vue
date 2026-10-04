@@ -116,7 +116,7 @@ defineShortcuts({
       :description="t('share.people.noEditorDesc')"
       :actions="[
         { label: t('share.people.backToForm'), to: `/forms/${s.formId}`, color: 'neutral', icon: 'i-lucide-arrow-left' },
-        { label: t('forms.viewResponses'), to: `/responses?form=${s.formId}`, color: 'neutral', variant: 'outline', icon: 'i-lucide-inbox' },
+        { label: t('forms.viewResponses'), to: `/forms/${s.formId}/responses`, color: 'neutral', variant: 'outline', icon: 'i-lucide-inbox' },
       ]"
       variant="outline"
     />

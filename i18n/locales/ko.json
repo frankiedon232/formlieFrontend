@@ -535,7 +535,11 @@
     "draft": "초안",
     "published": "게시됨",
     "closed": "마감됨",
-    "archived": "보관됨"
+    "archived": "보관됨",
+    "new": "새 응답",
+    "reviewed": "검토됨",
+    "approved": "승인됨",
+    "rejected": "거절됨"
   },
   "footer": {
     "rights": "모든 권리 보유.",
@@ -3147,5 +3151,149 @@
     "rotate": "가로로 돌리기",
     "scale": "{percent}%로 표시",
     "full": "전체 미리보기"
+  },
+  "responses": {
+    "crumb": "응답",
+    "subtitle": "마지막 응답 {when}",
+    "subtitleNone": "아직 응답이 없습니다",
+    "toForm": "양식",
+    "anonymous": "익명",
+    "count": "응답 {n}개 | 응답 {n}개",
+    "period": {
+      "label": "기간",
+      "7d": "7일",
+      "30d": "30일",
+      "90d": "90일",
+      "12m": "12개월"
+    },
+    "tabs": {
+      "label": "보기",
+      "responses": "응답",
+      "summary": "요약"
+    },
+    "kpi": {
+      "period": "응답",
+      "total": "총 {n}개",
+      "toReview": "검토 필요",
+      "ofAll": "전체 응답의 {share}",
+      "nothing": "아직 없음",
+      "review": "검토",
+      "time": "작성 시간",
+      "timeHint": "이 기간의 중앙값",
+      "completion": "완료율",
+      "completionHint": "시작한 사람 중 제출한 비율",
+      "last": "마지막 응답",
+      "busiest": "가장 많음: {name}"
+    },
+    "trend": {
+      "title": "기간별 응답",
+      "daily": "일별",
+      "weekly": "주별",
+      "perDay": "하루 약 {n}개",
+      "step": "표시 단위",
+      "empty": "이 기간에 응답이 없습니다",
+      "emptyDesc": "기간을 늘리거나 양식을 공유하세요."
+    },
+    "breakdown": {
+      "status": "검토 상태",
+      "channels": "유입 경로",
+      "languages": "언어",
+      "busiest": "응답이 많은 양식"
+    },
+    "channel": {
+      "link": "양식 링크",
+      "embed": "삽입됨",
+      "api": "API"
+    },
+    "list": {
+      "columns": "열",
+      "respondent": "응답자",
+      "submitted": "제출",
+      "status": "상태",
+      "notes": "메모",
+      "channel": "유입 경로",
+      "flags": "표시",
+      "possibleDuplicate": "중복 가능성",
+      "newest": "최신순",
+      "oldest": "오래된순",
+      "byStatus": "상태",
+      "byRespondent": "응답자",
+      "open": "열기",
+      "markAs": "다음으로 표시",
+      "delete": "삭제",
+      "search": "이름, 이메일, 답변 또는 #번호 검색…",
+      "empty": "아직 응답이 없습니다",
+      "emptyDesc": "양식을 공유해 응답을 받기 시작하세요.",
+      "form": "양식",
+      "byForm": "양식",
+      "allOfForm": "이 양식의 모든 응답",
+      "searchInbox": "이름, 이메일 또는 양식 검색…",
+      "emptyInbox": "모든 양식의 응답이 여기에 표시됩니다."
+    },
+    "delete": {
+      "title": "응답 {n}개를 삭제할까요? | 응답 {n}개를 삭제할까요?",
+      "desc": "메모와 함께 영구 삭제됩니다. 되돌릴 수 없습니다."
+    },
+    "toast": {
+      "deleted": "응답 {n}개 삭제됨 | 응답 {n}개 삭제됨",
+      "marked": "응답 {n}개를 {status}(으)로 표시함 | 응답 {n}개를 {status}(으)로 표시함"
+    },
+    "known": {
+      "invite": "초대됨",
+      "member": "로그인한 구성원"
+    },
+    "answer": {
+      "yes": "예",
+      "no": "아니요",
+      "agreed": "동의함",
+      "duration": "{h}시간 {m}분",
+      "signed": "서명함"
+    },
+    "time": {
+      "seconds": "{n}초",
+      "minutes": "{m}분 {s}초"
+    },
+    "summary": {
+      "answered": "{n}명 응답 · {share}",
+      "multiple": "여러 개 선택 가능",
+      "none": "이 기간에 응답한 사람이 없습니다.",
+      "more": "+ {n}개 더",
+      "outOf": "{max} 중",
+      "average": "평균",
+      "median": "중앙값",
+      "min": "최저",
+      "max": "최고",
+      "inTable": "각 답변은 응답 목록에서 확인하세요.",
+      "empty": "아직 요약할 내용이 없습니다",
+      "emptyDesc": "이 기간에 응답이 들어오면 여기에 표시됩니다."
+    },
+    "detail": {
+      "noAnswer": "답변 없음",
+      "sampleFile": "샘플",
+      "tags": "태그",
+      "addTag": "태그 추가…",
+      "note": "메모",
+      "notes": "메모",
+      "notePlaceholder": "팀을 위한 메모 작성…",
+      "addNote": "메모 추가",
+      "noteHint": "메모는 팀만 볼 수 있습니다. Ctrl 또는 ⌘ + Enter로 추가.",
+      "history": "기록",
+      "changed": "{field} 변경",
+      "timeTaken": "걸린 시간",
+      "cameIn": "유입 경로",
+      "language": "언어",
+      "device": "기기",
+      "version": "양식 버전",
+      "previous": "이전 응답",
+      "next": "다음 응답",
+      "duplicateTitle": "중복 가능성",
+      "duplicateDesc": "같은 사람의 이전 응답과 비슷합니다(매우 비슷한 이메일). 본인이 다른 사람이라고 확인했습니다.",
+      "openEarlier": "이전 응답 열기"
+    },
+    "device": {
+      "desktop": "컴퓨터",
+      "phone": "휴대폰",
+      "tablet": "태블릿"
+    }
   }
 }

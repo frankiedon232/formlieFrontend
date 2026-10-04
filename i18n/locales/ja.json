@@ -535,7 +535,11 @@
     "draft": "下書き",
     "published": "公開中",
     "closed": "終了",
-    "archived": "アーカイブ済み"
+    "archived": "アーカイブ済み",
+    "new": "新規",
+    "reviewed": "確認済み",
+    "approved": "承認",
+    "rejected": "却下"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -3147,5 +3151,149 @@
     "rotate": "横向きにする",
     "scale": "{percent}% で表示",
     "full": "全画面プレビュー"
+  },
+  "responses": {
+    "crumb": "回答",
+    "subtitle": "最新の回答 {when}",
+    "subtitleNone": "まだ回答はありません",
+    "toForm": "フォーム",
+    "anonymous": "匿名",
+    "count": "{n} 件の回答 | {n} 件の回答",
+    "period": {
+      "label": "期間",
+      "7d": "7日間",
+      "30d": "30日間",
+      "90d": "90日間",
+      "12m": "12か月"
+    },
+    "tabs": {
+      "label": "表示",
+      "responses": "回答",
+      "summary": "サマリー"
+    },
+    "kpi": {
+      "period": "回答",
+      "total": "合計 {n} 件",
+      "toReview": "要確認",
+      "ofAll": "全回答の {share}",
+      "nothing": "まだありません",
+      "review": "確認する",
+      "time": "入力時間",
+      "timeHint": "この期間の中央値",
+      "completion": "完了率",
+      "completionHint": "開始した人のうち送信した人の割合",
+      "last": "最新の回答",
+      "busiest": "最多: {name}"
+    },
+    "trend": {
+      "title": "回答の推移",
+      "daily": "日別",
+      "weekly": "週別",
+      "perDay": "1日あたり約 {n} 件",
+      "step": "表示単位",
+      "empty": "この期間の回答はありません",
+      "emptyDesc": "期間を長くするか、フォームを共有してください。"
+    },
+    "breakdown": {
+      "status": "確認状況",
+      "channels": "回答の経路",
+      "languages": "言語",
+      "busiest": "回答が多いフォーム"
+    },
+    "channel": {
+      "link": "フォームのリンク",
+      "embed": "埋め込み",
+      "api": "API"
+    },
+    "list": {
+      "columns": "列",
+      "respondent": "回答者",
+      "submitted": "送信日時",
+      "status": "状況",
+      "notes": "メモ",
+      "channel": "経路",
+      "flags": "フラグ",
+      "possibleDuplicate": "重複の可能性",
+      "newest": "新しい順",
+      "oldest": "古い順",
+      "byStatus": "状況",
+      "byRespondent": "回答者",
+      "open": "開く",
+      "markAs": "次に変更",
+      "delete": "削除",
+      "search": "名前・メール・回答・#番号で検索…",
+      "empty": "まだ回答はありません",
+      "emptyDesc": "フォームを共有して回答の受付を始めましょう。",
+      "form": "フォーム",
+      "byForm": "フォーム",
+      "allOfForm": "このフォームのすべての回答",
+      "searchInbox": "名前・メール・フォームで検索…",
+      "emptyInbox": "すべてのフォームの回答がここに表示されます。"
+    },
+    "delete": {
+      "title": "{n} 件の回答を削除しますか？ | {n} 件の回答を削除しますか？",
+      "desc": "メモも含めて完全に削除されます。元に戻せません。"
+    },
+    "toast": {
+      "deleted": "{n} 件の回答を削除しました | {n} 件の回答を削除しました",
+      "marked": "{n} 件を「{status}」にしました | {n} 件を「{status}」にしました"
+    },
+    "known": {
+      "invite": "招待",
+      "member": "ログイン中のメンバー"
+    },
+    "answer": {
+      "yes": "はい",
+      "no": "いいえ",
+      "agreed": "同意済み",
+      "duration": "{h} 時間 {m} 分",
+      "signed": "署名済み"
+    },
+    "time": {
+      "seconds": "{n} 秒",
+      "minutes": "{m} 分 {s} 秒"
+    },
+    "summary": {
+      "answered": "{n} 件回答 · {share}",
+      "multiple": "複数選択可",
+      "none": "この期間に回答した人はいません。",
+      "more": "ほか {n} 件",
+      "outOf": "{max} 中",
+      "average": "平均",
+      "median": "中央値",
+      "min": "最小",
+      "max": "最大",
+      "inTable": "各回答は回答一覧で確認できます。",
+      "empty": "まだ集計するものがありません",
+      "emptyDesc": "この期間に回答が届くとここに表示されます。"
+    },
+    "detail": {
+      "noAnswer": "未回答",
+      "sampleFile": "サンプル",
+      "tags": "タグ",
+      "addTag": "タグを追加…",
+      "note": "メモ",
+      "notes": "メモ",
+      "notePlaceholder": "チームへのメモを書く…",
+      "addNote": "メモを追加",
+      "noteHint": "メモはチームだけが見られます。Ctrl または ⌘ + Enter で追加。",
+      "history": "履歴",
+      "changed": "{field} を変更",
+      "timeTaken": "所要時間",
+      "cameIn": "経路",
+      "language": "言語",
+      "device": "デバイス",
+      "version": "フォームのバージョン",
+      "previous": "前の回答",
+      "next": "次の回答",
+      "duplicateTitle": "重複の可能性",
+      "duplicateDesc": "同じ人の以前の回答に似ています（非常に似たメール）。本人は別人だと確認しました。",
+      "openEarlier": "以前の回答を開く"
+    },
+    "device": {
+      "desktop": "パソコン",
+      "phone": "スマートフォン",
+      "tablet": "タブレット"
+    }
   }
 }

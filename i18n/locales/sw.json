@@ -535,7 +535,11 @@
     "draft": "Rasimu",
     "published": "Imechapishwa",
     "closed": "Imefungwa",
-    "archived": "Imehifadhiwa"
+    "archived": "Imehifadhiwa",
+    "new": "Mpya",
+    "reviewed": "Imekaguliwa",
+    "approved": "Imeidhinishwa",
+    "rejected": "Imekataliwa"
   },
   "footer": {
     "rights": "Haki zote zimehifadhiwa.",
@@ -3147,5 +3151,149 @@
     "rotate": "Geuza kwa ulalo",
     "scale": "Inaonyeshwa kwa {percent}%",
     "full": "Onyesho kamili"
+  },
+  "responses": {
+    "crumb": "Majibu",
+    "subtitle": "Jibu la mwisho {when}",
+    "subtitleNone": "Bado hakuna majibu",
+    "toForm": "Fomu",
+    "anonymous": "Asiyejulikana",
+    "count": "Jibu {n} | Majibu {n}",
+    "period": {
+      "label": "Kipindi",
+      "7d": "Siku 7",
+      "30d": "Siku 30",
+      "90d": "Siku 90",
+      "12m": "Miezi 12"
+    },
+    "tabs": {
+      "label": "Mwonekano",
+      "responses": "Majibu",
+      "summary": "Muhtasari"
+    },
+    "kpi": {
+      "period": "Majibu",
+      "total": "Jumla {n}",
+      "toReview": "Ya kukagua",
+      "ofAll": "{share} ya majibu yote",
+      "nothing": "Bado hakuna",
+      "review": "Kagua",
+      "time": "Muda wa kujaza",
+      "timeHint": "Wastani wa kati wa kipindi",
+      "completion": "Ukamilishaji",
+      "completionHint": "Kati ya walioanza, wangapi walituma",
+      "last": "Jibu la mwisho",
+      "busiest": "Yenye shughuli zaidi: {name}"
+    },
+    "trend": {
+      "title": "Majibu kwa muda",
+      "daily": "Kila siku",
+      "weekly": "Kila wiki",
+      "perDay": "Takriban {n} kwa siku",
+      "step": "Onyesha kwa",
+      "empty": "Hakuna majibu katika kipindi hiki",
+      "emptyDesc": "Chagua kipindi kirefu zaidi, au shiriki fomu."
+    },
+    "breakdown": {
+      "status": "Hali ya ukaguzi",
+      "channels": "Yalikotoka",
+      "languages": "Lugha",
+      "busiest": "Fomu zenye shughuli zaidi"
+    },
+    "channel": {
+      "link": "Kiungo cha fomu",
+      "embed": "Iliyopachikwa",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Safu",
+      "respondent": "Mjibuji",
+      "submitted": "Ilitumwa",
+      "status": "Hali",
+      "notes": "Maelezo",
+      "channel": "Chanzo",
+      "flags": "Alama",
+      "possibleDuplicate": "Huenda ni nakala",
+      "newest": "Mpya kwanza",
+      "oldest": "Za zamani kwanza",
+      "byStatus": "Hali",
+      "byRespondent": "Mjibuji",
+      "open": "Fungua",
+      "markAs": "Weka kama",
+      "delete": "Futa",
+      "search": "Tafuta majina, barua pepe, majibu au #namba…",
+      "empty": "Bado hakuna majibu",
+      "emptyDesc": "Shiriki fomu ili kuanza kupokea majibu.",
+      "form": "Fomu",
+      "byForm": "Fomu",
+      "allOfForm": "Majibu yote ya fomu hii",
+      "searchInbox": "Tafuta majina, barua pepe au fomu…",
+      "emptyInbox": "Majibu ya fomu zako zote huonekana hapa."
+    },
+    "delete": {
+      "title": "Futa jibu {n}? | Futa majibu {n}?",
+      "desc": "Yanafutwa kabisa pamoja na maelezo yake. Haiwezi kutenduliwa."
+    },
+    "toast": {
+      "deleted": "Jibu {n} limefutwa | Majibu {n} yamefutwa",
+      "marked": "Jibu {n} limewekwa {status} | Majibu {n} yamewekwa {status}"
+    },
+    "known": {
+      "invite": "Alialikwa",
+      "member": "Mwanachama aliyeingia"
+    },
+    "answer": {
+      "yes": "Ndiyo",
+      "no": "Hapana",
+      "agreed": "Amekubali",
+      "duration": "Saa {h} dak {m}",
+      "signed": "Imesainiwa"
+    },
+    "time": {
+      "seconds": "Sek {n}",
+      "minutes": "Dak {m} sek {s}"
+    },
+    "summary": {
+      "answered": "{n} walijibu · {share}",
+      "multiple": "zaidi ya moja inaruhusiwa",
+      "none": "Hakuna aliyejibu katika kipindi hiki.",
+      "more": "+ {n} zaidi",
+      "outOf": "kati ya {max}",
+      "average": "Wastani",
+      "median": "Wastani wa kati",
+      "min": "Chini zaidi",
+      "max": "Juu zaidi",
+      "inTable": "Tazama kila jibu kwenye orodha ya majibu.",
+      "empty": "Bado hakuna cha kufupisha",
+      "emptyDesc": "Majibu yataonekana hapa yakifika katika kipindi hiki."
+    },
+    "detail": {
+      "noAnswer": "Hakuna jibu",
+      "sampleFile": "Mfano",
+      "tags": "Lebo",
+      "addTag": "Ongeza lebo…",
+      "note": "maelezo",
+      "notes": "Maelezo",
+      "notePlaceholder": "Andika maelezo kwa timu yako…",
+      "addNote": "Ongeza maelezo",
+      "noteHint": "Timu yako pekee huona maelezo. Ctrl au ⌘ + Enter huongeza.",
+      "history": "Historia",
+      "changed": "alibadilisha {field}",
+      "timeTaken": "Muda uliotumika",
+      "cameIn": "Chanzo",
+      "language": "Lugha",
+      "device": "Kifaa",
+      "version": "Toleo la fomu",
+      "previous": "Jibu lililotangulia",
+      "next": "Jibu linalofuata",
+      "duplicateTitle": "Huenda ni nakala",
+      "duplicateDesc": "Linafanana na jibu la awali la mtu yule yule (barua pepe inayofanana sana). Alithibitisha kuwa ni mtu mwingine.",
+      "openEarlier": "Fungua la awali"
+    },
+    "device": {
+      "desktop": "Kompyuta",
+      "phone": "Simu",
+      "tablet": "Kishikwambi"
+    }
   }
 }

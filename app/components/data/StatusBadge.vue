@@ -1,4 +1,4 @@
-<!-- Status pill (docs/design: soft colour badge). Form statuses map to the sidebar bullet colours. -->
+<!-- Status pill (docs/design: soft colour badge). Form statuses map to the sidebar bullet colours; response review statuses (F11) too. -->
 <script setup lang="ts">
 import type { BadgeProps } from '@nuxt/ui'
 
@@ -10,6 +10,11 @@ const COLORS: Record<string, BadgeProps['color']> = {
   published: 'success',
   closed: 'secondary',
   archived: 'neutral',
+  // Responses (F11): review status.
+  new: 'info',
+  reviewed: 'neutral',
+  approved: 'success',
+  rejected: 'error',
 }
 
 // Deeper text than Nuxt UI's subtle default (500 shade), so status reads crisply (owner, 2026-10-03; docs/design).

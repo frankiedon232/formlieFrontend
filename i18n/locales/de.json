@@ -535,7 +535,11 @@
     "draft": "Entwurf",
     "published": "Veröffentlicht",
     "closed": "Geschlossen",
-    "archived": "Archiviert"
+    "archived": "Archiviert",
+    "new": "Neu",
+    "reviewed": "Geprüft",
+    "approved": "Genehmigt",
+    "rejected": "Abgelehnt"
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -3147,5 +3151,149 @@
     "rotate": "Quer drehen",
     "scale": "Angezeigt mit {percent} %",
     "full": "Volle Vorschau"
+  },
+  "responses": {
+    "crumb": "Antworten",
+    "subtitle": "Letzte Antwort {when}",
+    "subtitleNone": "Noch keine Antworten",
+    "toForm": "Formular",
+    "anonymous": "Anonym",
+    "count": "{n} Antwort | {n} Antworten",
+    "period": {
+      "label": "Zeitraum",
+      "7d": "7 Tage",
+      "30d": "30 Tage",
+      "90d": "90 Tage",
+      "12m": "12 Monate"
+    },
+    "tabs": {
+      "label": "Ansicht",
+      "responses": "Antworten",
+      "summary": "Übersicht"
+    },
+    "kpi": {
+      "period": "Antworten",
+      "total": "{n} insgesamt",
+      "toReview": "Zu prüfen",
+      "ofAll": "{share} aller Antworten",
+      "nothing": "Noch nichts",
+      "review": "Prüfen",
+      "time": "Ausfülldauer",
+      "timeHint": "Median in diesem Zeitraum",
+      "completion": "Abschlussrate",
+      "completionHint": "Wie viele, die begonnen haben, auch gesendet haben",
+      "last": "Letzte Antwort",
+      "busiest": "Am aktivsten: {name}"
+    },
+    "trend": {
+      "title": "Antworten im Zeitverlauf",
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "perDay": "Etwa {n} pro Tag",
+      "step": "Anzeigen nach",
+      "empty": "Keine Antworten in diesem Zeitraum",
+      "emptyDesc": "Wählen Sie einen längeren Zeitraum oder teilen Sie das Formular."
+    },
+    "breakdown": {
+      "status": "Prüfstatus",
+      "channels": "Woher sie kamen",
+      "languages": "Sprachen",
+      "busiest": "Aktivste Formulare"
+    },
+    "channel": {
+      "link": "Formular-Link",
+      "embed": "Eingebettet",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Spalten",
+      "respondent": "Befragte Person",
+      "submitted": "Gesendet",
+      "status": "Status",
+      "notes": "Notizen",
+      "channel": "Herkunft",
+      "flags": "Markierungen",
+      "possibleDuplicate": "Mögliches Duplikat",
+      "newest": "Neueste zuerst",
+      "oldest": "Älteste zuerst",
+      "byStatus": "Status",
+      "byRespondent": "Befragte Person",
+      "open": "Öffnen",
+      "markAs": "Markieren als",
+      "delete": "Löschen",
+      "search": "Namen, E-Mails, Antworten oder #Nummer suchen…",
+      "empty": "Noch keine Antworten",
+      "emptyDesc": "Teilen Sie das Formular, um Antworten zu sammeln.",
+      "form": "Formular",
+      "byForm": "Formular",
+      "allOfForm": "Alle Antworten dieses Formulars",
+      "searchInbox": "Namen, E-Mails oder Formulare suchen…",
+      "emptyInbox": "Antworten aus all Ihren Formularen erscheinen hier."
+    },
+    "delete": {
+      "title": "{n} Antwort löschen? | {n} Antworten löschen?",
+      "desc": "Sie werden endgültig gelöscht, samt Notizen. Das lässt sich nicht rückgängig machen."
+    },
+    "toast": {
+      "deleted": "{n} Antwort gelöscht | {n} Antworten gelöscht",
+      "marked": "{n} Antwort als {status} markiert | {n} Antworten als {status} markiert"
+    },
+    "known": {
+      "invite": "Eingeladen",
+      "member": "Angemeldetes Mitglied"
+    },
+    "answer": {
+      "yes": "Ja",
+      "no": "Nein",
+      "agreed": "Zugestimmt",
+      "duration": "{h} Std. {m} Min.",
+      "signed": "Unterschrieben"
+    },
+    "time": {
+      "seconds": "{n} s",
+      "minutes": "{m} Min. {s} s"
+    },
+    "summary": {
+      "answered": "{n} beantwortet · {share}",
+      "multiple": "mehrere möglich",
+      "none": "In diesem Zeitraum hat niemand geantwortet.",
+      "more": "+ {n} weitere",
+      "outOf": "von {max}",
+      "average": "Durchschnitt",
+      "median": "Median",
+      "min": "Niedrigster",
+      "max": "Höchster",
+      "inTable": "Jede Antwort finden Sie in der Antwortliste.",
+      "empty": "Noch nichts zusammenzufassen",
+      "emptyDesc": "Antworten erscheinen hier, sobald welche für diesen Zeitraum eingehen."
+    },
+    "detail": {
+      "noAnswer": "Keine Antwort",
+      "sampleFile": "Beispiel",
+      "tags": "Tags",
+      "addTag": "Tag hinzufügen…",
+      "note": "eine Notiz",
+      "notes": "Notizen",
+      "notePlaceholder": "Notiz für Ihr Team schreiben…",
+      "addNote": "Notiz hinzufügen",
+      "noteHint": "Notizen sieht nur Ihr Team. Strg oder ⌘ + Enter fügt sie hinzu.",
+      "history": "Verlauf",
+      "changed": "hat {field} geändert",
+      "timeTaken": "Benötigte Zeit",
+      "cameIn": "Herkunft",
+      "language": "Sprache",
+      "device": "Gerät",
+      "version": "Formularversion",
+      "previous": "Vorherige Antwort",
+      "next": "Nächste Antwort",
+      "duplicateTitle": "Mögliches Duplikat",
+      "duplicateDesc": "Diese Antwort ähnelt einer früheren derselben Person (sehr ähnliche E-Mail). Sie hat bestätigt, jemand anderes zu sein.",
+      "openEarlier": "Frühere öffnen"
+    },
+    "device": {
+      "desktop": "Computer",
+      "phone": "Telefon",
+      "tablet": "Tablet"
+    }
   }
 }

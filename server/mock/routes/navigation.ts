@@ -5,6 +5,7 @@ import { ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { formsOf } from '../data/formStore'
 import { canSee } from '../data/formPermissions'
+import { formResponses } from '../data/responseData'
 import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
 import { SYSTEM_THEME_COUNT } from './themes'
@@ -17,11 +18,10 @@ export const navigationCounts = defineMockRoute(({ event }) => {
   const live = all.filter(form => !form.deleted_at)
   const count = (status: string) => live.filter(form => form.status === status).length
 
-  // Mock: responses split by review status (a small share of published forms' responses is unread).
-  const total = live.reduce((sum, form) => sum + form.responses_count, 0)
-  const unread = live.filter(form => form.status === 'published').reduce((sum, form) => sum + Math.floor(form.responses_count / 400), 0)
-  const reviewed = Math.round((total - unread) * 0.22)
-  const rejected = Math.round((total - unread) * 0.06)
+  // Responses by review status, from the response data (decision 100): what the Responses pages show.
+  const byStatus = { new: 0, reviewed: 0, approved: 0, rejected: 0 }
+  for (const form of live) for (const entry of formResponses(tenant, form)) byStatus[entry.status]++
+  const total = byStatus.new + byStatus.reviewed + byStatus.approved + byStatus.rejected
 
   // Templates: Formalie's categories, most used first (forms made from them), then the largest.
   const templates = allTemplates(tenant, 'en')
@@ -43,7 +43,7 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       closed: count('closed'),
       trash: all.length - live.length,
     },
-    responses: { all: total, new: unread, reviewed, approved: total - unread - reviewed - rejected, rejected },
+    responses: { all: total, ...byStatus },
     templates: { total: system.length || SYSTEM_TEMPLATES.length, mine: templates.length - system.length, categories },
     themes: {
       total: themes.length + SYSTEM_THEME_COUNT,

@@ -535,7 +535,11 @@
     "draft": "Szkic",
     "published": "Opublikowany",
     "closed": "Zamknięty",
-    "archived": "Zarchiwizowany"
+    "archived": "Zarchiwizowany",
+    "new": "Nowa",
+    "reviewed": "Przejrzana",
+    "approved": "Zatwierdzona",
+    "rejected": "Odrzucona"
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
@@ -3147,5 +3151,149 @@
     "rotate": "Obróć poziomo",
     "scale": "Pokazano w {percent}%",
     "full": "Pełny podgląd"
+  },
+  "responses": {
+    "crumb": "Odpowiedzi",
+    "subtitle": "Ostatnia odpowiedź {when}",
+    "subtitleNone": "Brak odpowiedzi",
+    "toForm": "Formularz",
+    "anonymous": "Anonim",
+    "count": "Odpowiedzi: {n} | Odpowiedzi: {n}",
+    "period": {
+      "label": "Okres",
+      "7d": "7 dni",
+      "30d": "30 dni",
+      "90d": "90 dni",
+      "12m": "12 miesięcy"
+    },
+    "tabs": {
+      "label": "Widok",
+      "responses": "Odpowiedzi",
+      "summary": "Podsumowanie"
+    },
+    "kpi": {
+      "period": "Odpowiedzi",
+      "total": "Łącznie: {n}",
+      "toReview": "Do przejrzenia",
+      "ofAll": "{share} wszystkich odpowiedzi",
+      "nothing": "Na razie nic",
+      "review": "Przejrzyj",
+      "time": "Czas wypełniania",
+      "timeHint": "Mediana w tym okresie",
+      "completion": "Ukończenie",
+      "completionHint": "Ile osób, które zaczęły, wysłało",
+      "last": "Ostatnia odpowiedź",
+      "busiest": "Najaktywniejszy: {name}"
+    },
+    "trend": {
+      "title": "Odpowiedzi w czasie",
+      "daily": "Dziennie",
+      "weekly": "Tygodniowo",
+      "perDay": "Około {n} dziennie",
+      "step": "Pokaż według",
+      "empty": "Brak odpowiedzi w tym okresie",
+      "emptyDesc": "Wybierz dłuższy okres albo udostępnij formularz."
+    },
+    "breakdown": {
+      "status": "Status przeglądu",
+      "channels": "Skąd przyszły",
+      "languages": "Języki",
+      "busiest": "Najaktywniejsze formularze"
+    },
+    "channel": {
+      "link": "Link do formularza",
+      "embed": "Osadzony",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Kolumny",
+      "respondent": "Osoba",
+      "submitted": "Wysłano",
+      "status": "Status",
+      "notes": "Notatki",
+      "channel": "Źródło",
+      "flags": "Oznaczenia",
+      "possibleDuplicate": "Możliwy duplikat",
+      "newest": "Najnowsze najpierw",
+      "oldest": "Najstarsze najpierw",
+      "byStatus": "Status",
+      "byRespondent": "Osoba",
+      "open": "Otwórz",
+      "markAs": "Oznacz jako",
+      "delete": "Usuń",
+      "search": "Szukaj imion, e-maili, odpowiedzi lub #numeru…",
+      "empty": "Brak odpowiedzi",
+      "emptyDesc": "Udostępnij formularz, aby zbierać odpowiedzi.",
+      "form": "Formularz",
+      "byForm": "Formularz",
+      "allOfForm": "Wszystkie odpowiedzi tego formularza",
+      "searchInbox": "Szukaj imion, e-maili lub formularzy…",
+      "emptyInbox": "Tu pojawiają się odpowiedzi ze wszystkich formularzy."
+    },
+    "delete": {
+      "title": "Usunąć odpowiedzi ({n})? | Usunąć odpowiedzi ({n})?",
+      "desc": "Zostaną usunięte na zawsze, razem z notatkami. Nie można tego cofnąć."
+    },
+    "toast": {
+      "deleted": "Usunięto odpowiedzi: {n} | Usunięto odpowiedzi: {n}",
+      "marked": "Oznaczono jako {status}: {n} | Oznaczono jako {status}: {n}"
+    },
+    "known": {
+      "invite": "Zaproszony",
+      "member": "Zalogowany członek"
+    },
+    "answer": {
+      "yes": "Tak",
+      "no": "Nie",
+      "agreed": "Zgoda",
+      "duration": "{h} godz. {m} min",
+      "signed": "Podpisano"
+    },
+    "time": {
+      "seconds": "{n} s",
+      "minutes": "{m} min {s} s"
+    },
+    "summary": {
+      "answered": "Odpowiedziało: {n} · {share}",
+      "multiple": "można wybrać kilka",
+      "none": "Nikt nie odpowiedział w tym okresie.",
+      "more": "+ jeszcze {n}",
+      "outOf": "z {max}",
+      "average": "Średnia",
+      "median": "Mediana",
+      "min": "Najniższa",
+      "max": "Najwyższa",
+      "inTable": "Każdą odpowiedź zobaczysz na liście odpowiedzi.",
+      "empty": "Na razie nic do podsumowania",
+      "emptyDesc": "Odpowiedzi pojawią się tutaj, gdy wpłyną w tym okresie."
+    },
+    "detail": {
+      "noAnswer": "Brak odpowiedzi",
+      "sampleFile": "Przykład",
+      "tags": "Tagi",
+      "addTag": "Dodaj tag…",
+      "note": "notatkę",
+      "notes": "Notatki",
+      "notePlaceholder": "Napisz notatkę dla zespołu…",
+      "addNote": "Dodaj notatkę",
+      "noteHint": "Notatki widzi tylko zespół. Ctrl lub ⌘ + Enter dodaje.",
+      "history": "Historia",
+      "changed": "zmienił(a) {field}",
+      "timeTaken": "Czas wypełniania",
+      "cameIn": "Źródło",
+      "language": "Język",
+      "device": "Urządzenie",
+      "version": "Wersja formularza",
+      "previous": "Poprzednia odpowiedź",
+      "next": "Następna odpowiedź",
+      "duplicateTitle": "Możliwy duplikat",
+      "duplicateDesc": "Wygląda jak wcześniejsza odpowiedź tej samej osoby (bardzo podobny e-mail). Osoba potwierdziła, że to ktoś inny.",
+      "openEarlier": "Otwórz wcześniejszą"
+    },
+    "device": {
+      "desktop": "Komputer",
+      "phone": "Telefon",
+      "tablet": "Tablet"
+    }
   }
 }

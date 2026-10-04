@@ -34,6 +34,9 @@ export interface StoredForm extends FormSummary {
   invites?: FormInvite[]
   /** Search & link preview set by the creator (F10 M3; empty = from the form, data/formSeo.ts). */
   seo?: { title: string | null; description: string | null; image_upload_id: string | null; noindex: boolean }
+  /** Sample responses (F11, data/responseData.ts): how many, and when they end (fixed on first read). */
+  sample_count?: number
+  sample_anchor?: string
 }
 
 export interface StoredVersion extends FormVersion {
@@ -126,6 +129,8 @@ export function summaryOf(form: StoredForm): FormSummary {
     invites: _inv,
     team_access: _ta,
     grants: _gr,
+    sample_count: _sn,
+    sample_anchor: _sa,
     ...summary
   } = form
   // Share settings added in F10 M3: older forms have none yet.

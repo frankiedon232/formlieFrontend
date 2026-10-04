@@ -535,7 +535,11 @@
     "draft": "Bozza",
     "published": "Pubblicato",
     "closed": "Chiuso",
-    "archived": "Archiviato"
+    "archived": "Archiviato",
+    "new": "Nuova",
+    "reviewed": "Esaminata",
+    "approved": "Approvata",
+    "rejected": "Respinta"
   },
   "footer": {
     "rights": "Tutti i diritti riservati.",
@@ -3147,5 +3151,149 @@
     "rotate": "Ruota in orizzontale",
     "scale": "Mostrato al {percent}%",
     "full": "Anteprima completa"
+  },
+  "responses": {
+    "crumb": "Risposte",
+    "subtitle": "Ultima risposta {when}",
+    "subtitleNone": "Ancora nessuna risposta",
+    "toForm": "Modulo",
+    "anonymous": "Anonimo",
+    "count": "{n} risposta | {n} risposte",
+    "period": {
+      "label": "Periodo",
+      "7d": "7 giorni",
+      "30d": "30 giorni",
+      "90d": "90 giorni",
+      "12m": "12 mesi"
+    },
+    "tabs": {
+      "label": "Vista",
+      "responses": "Risposte",
+      "summary": "Riepilogo"
+    },
+    "kpi": {
+      "period": "Risposte",
+      "total": "{n} in totale",
+      "toReview": "Da esaminare",
+      "ofAll": "{share} di tutte le risposte",
+      "nothing": "Ancora niente",
+      "review": "Esamina",
+      "time": "Tempo di compilazione",
+      "timeHint": "Mediana nel periodo",
+      "completion": "Completamento",
+      "completionHint": "Di chi ha iniziato, quanti l'hanno inviato",
+      "last": "Ultima risposta",
+      "busiest": "Più attivo: {name}"
+    },
+    "trend": {
+      "title": "Risposte nel tempo",
+      "daily": "Giornaliero",
+      "weekly": "Settimanale",
+      "perDay": "Circa {n} al giorno",
+      "step": "Mostra per",
+      "empty": "Nessuna risposta in questo periodo",
+      "emptyDesc": "Scegli un periodo più lungo o condividi il modulo per riceverne."
+    },
+    "breakdown": {
+      "status": "Stato di revisione",
+      "channels": "Da dove arrivano",
+      "languages": "Lingue",
+      "busiest": "Moduli più attivi"
+    },
+    "channel": {
+      "link": "Link del modulo",
+      "embed": "Incorporato",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Colonne",
+      "respondent": "Persona",
+      "submitted": "Inviata",
+      "status": "Stato",
+      "notes": "Note",
+      "channel": "Arrivata da",
+      "flags": "Segnalazioni",
+      "possibleDuplicate": "Possibile duplicato",
+      "newest": "Prima le più recenti",
+      "oldest": "Prima le meno recenti",
+      "byStatus": "Stato",
+      "byRespondent": "Persona",
+      "open": "Apri",
+      "markAs": "Segna come",
+      "delete": "Elimina",
+      "search": "Cerca nomi, email, risposte o #numero…",
+      "empty": "Ancora nessuna risposta",
+      "emptyDesc": "Condividi il modulo per iniziare a raccogliere risposte.",
+      "form": "Modulo",
+      "byForm": "Modulo",
+      "allOfForm": "Tutte le risposte di questo modulo",
+      "searchInbox": "Cerca nomi, email o moduli…",
+      "emptyInbox": "Qui compaiono le risposte di tutti i tuoi moduli."
+    },
+    "delete": {
+      "title": "Eliminare {n} risposta? | Eliminare {n} risposte?",
+      "desc": "Vengono rimosse per sempre, con le note. Non si può annullare."
+    },
+    "toast": {
+      "deleted": "{n} risposta eliminata | {n} risposte eliminate",
+      "marked": "{n} risposta segnata come {status} | {n} risposte segnate come {status}"
+    },
+    "known": {
+      "invite": "Invitato",
+      "member": "Membro connesso"
+    },
+    "answer": {
+      "yes": "Sì",
+      "no": "No",
+      "agreed": "Accettato",
+      "duration": "{h} h {m} min",
+      "signed": "Firmato"
+    },
+    "time": {
+      "seconds": "{n} s",
+      "minutes": "{m} min {s} s"
+    },
+    "summary": {
+      "answered": "{n} risposte · {share}",
+      "multiple": "più scelte possibili",
+      "none": "Nessuno ha risposto in questo periodo.",
+      "more": "+ altre {n}",
+      "outOf": "su {max}",
+      "average": "Media",
+      "median": "Mediana",
+      "min": "Minimo",
+      "max": "Massimo",
+      "inTable": "Vedi ogni risposta nell'elenco delle risposte.",
+      "empty": "Ancora niente da riassumere",
+      "emptyDesc": "Le risposte compaiono qui quando arrivano in questo periodo."
+    },
+    "detail": {
+      "noAnswer": "Nessuna risposta",
+      "sampleFile": "Esempio",
+      "tags": "Tag",
+      "addTag": "Aggiungi un tag…",
+      "note": "una nota",
+      "notes": "Note",
+      "notePlaceholder": "Scrivi una nota per il team…",
+      "addNote": "Aggiungi nota",
+      "noteHint": "Le note le vede solo il tuo team. Ctrl o ⌘ + Invio per aggiungerla.",
+      "history": "Cronologia",
+      "changed": "ha modificato {field}",
+      "timeTaken": "Tempo impiegato",
+      "cameIn": "Arrivata da",
+      "language": "Lingua",
+      "device": "Dispositivo",
+      "version": "Versione del modulo",
+      "previous": "Risposta precedente",
+      "next": "Risposta successiva",
+      "duplicateTitle": "Possibile duplicato",
+      "duplicateDesc": "Somiglia a una risposta precedente della stessa persona (un'email molto simile). Ha confermato di essere un'altra persona.",
+      "openEarlier": "Apri la precedente"
+    },
+    "device": {
+      "desktop": "Computer",
+      "phone": "Telefono",
+      "tablet": "Tablet"
+    }
   }
 }

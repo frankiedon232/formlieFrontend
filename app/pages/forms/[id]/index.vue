@@ -57,7 +57,7 @@ const lifecycleItems = computed(() => {
   // Not an editor: copy the live link and responses only ("Open" is this page, Preview is in the header).
   if (!editable.value)
     return menu(form.value)
-      .map(group => group.filter(item => !item.to || !String(item.to).startsWith(`/forms/${form.value!.id}`)))
+      .map(group => group.filter(item => ![`/forms/${form.value!.id}`, `/forms/${form.value!.id}/preview`].includes(String(item.to))))
       .filter(group => group.length)
   if (form.value.deleted_at)
     return [[{ label: t('forms.actions.restore'), icon: 'i-lucide-undo-2', onSelect: () => actions.lifecycle(form.value!, 'restore') }]]
@@ -83,7 +83,7 @@ const subtitle = computed(() =>
         :label="t('forms.viewResponses')"
         color="neutral"
         variant="outline"
-        :to="`/responses?form=${form.id}`"
+        :to="`/forms/${form.id}/responses`"
         class="hidden sm:inline-flex"
       />
       <!-- People access: only editors open the editor; "Can view" gets the read-only preview page. -->

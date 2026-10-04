@@ -535,7 +535,11 @@
     "draft": "Draf",
     "published": "Diterbitkan",
     "closed": "Ditutup",
-    "archived": "Diarsipkan"
+    "archived": "Diarsipkan",
+    "new": "Baru",
+    "reviewed": "Ditinjau",
+    "approved": "Disetujui",
+    "rejected": "Ditolak"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
@@ -3147,5 +3151,149 @@
     "rotate": "Putar mendatar",
     "scale": "Ditampilkan {percent}%",
     "full": "Pratinjau penuh"
+  },
+  "responses": {
+    "crumb": "Tanggapan",
+    "subtitle": "Tanggapan terakhir {when}",
+    "subtitleNone": "Belum ada tanggapan",
+    "toForm": "Formulir",
+    "anonymous": "Anonim",
+    "count": "{n} tanggapan | {n} tanggapan",
+    "period": {
+      "label": "Periode",
+      "7d": "7 hari",
+      "30d": "30 hari",
+      "90d": "90 hari",
+      "12m": "12 bulan"
+    },
+    "tabs": {
+      "label": "Tampilan",
+      "responses": "Tanggapan",
+      "summary": "Ringkasan"
+    },
+    "kpi": {
+      "period": "Tanggapan",
+      "total": "Total {n}",
+      "toReview": "Perlu ditinjau",
+      "ofAll": "{share} dari semua tanggapan",
+      "nothing": "Belum ada",
+      "review": "Tinjau",
+      "time": "Waktu pengisian",
+      "timeHint": "Median periode ini",
+      "completion": "Penyelesaian",
+      "completionHint": "Dari yang memulai, berapa yang mengirim",
+      "last": "Tanggapan terakhir",
+      "busiest": "Paling ramai: {name}"
+    },
+    "trend": {
+      "title": "Tanggapan dari waktu ke waktu",
+      "daily": "Harian",
+      "weekly": "Mingguan",
+      "perDay": "Sekitar {n} per hari",
+      "step": "Tampilkan per",
+      "empty": "Tidak ada tanggapan pada periode ini",
+      "emptyDesc": "Pilih periode lebih panjang, atau bagikan formulir."
+    },
+    "breakdown": {
+      "status": "Status tinjauan",
+      "channels": "Asal tanggapan",
+      "languages": "Bahasa",
+      "busiest": "Formulir paling ramai"
+    },
+    "channel": {
+      "link": "Tautan formulir",
+      "embed": "Disematkan",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Kolom",
+      "respondent": "Responden",
+      "submitted": "Dikirim",
+      "status": "Status",
+      "notes": "Catatan",
+      "channel": "Asal",
+      "flags": "Tanda",
+      "possibleDuplicate": "Kemungkinan duplikat",
+      "newest": "Terbaru dulu",
+      "oldest": "Terlama dulu",
+      "byStatus": "Status",
+      "byRespondent": "Responden",
+      "open": "Buka",
+      "markAs": "Tandai sebagai",
+      "delete": "Hapus",
+      "search": "Cari nama, email, jawaban atau #nomor…",
+      "empty": "Belum ada tanggapan",
+      "emptyDesc": "Bagikan formulir untuk mulai mengumpulkan tanggapan.",
+      "form": "Formulir",
+      "byForm": "Formulir",
+      "allOfForm": "Semua tanggapan formulir ini",
+      "searchInbox": "Cari nama, email atau formulir…",
+      "emptyInbox": "Tanggapan dari semua formulir Anda muncul di sini."
+    },
+    "delete": {
+      "title": "Hapus {n} tanggapan? | Hapus {n} tanggapan?",
+      "desc": "Dihapus permanen beserta catatannya. Tidak bisa dibatalkan."
+    },
+    "toast": {
+      "deleted": "{n} tanggapan dihapus | {n} tanggapan dihapus",
+      "marked": "{n} tanggapan ditandai {status} | {n} tanggapan ditandai {status}"
+    },
+    "known": {
+      "invite": "Diundang",
+      "member": "Anggota yang masuk"
+    },
+    "answer": {
+      "yes": "Ya",
+      "no": "Tidak",
+      "agreed": "Setuju",
+      "duration": "{h} j {m} mnt",
+      "signed": "Ditandatangani"
+    },
+    "time": {
+      "seconds": "{n} dtk",
+      "minutes": "{m} mnt {s} dtk"
+    },
+    "summary": {
+      "answered": "{n} menjawab · {share}",
+      "multiple": "boleh lebih dari satu",
+      "none": "Tidak ada yang menjawab pada periode ini.",
+      "more": "+ {n} lagi",
+      "outOf": "dari {max}",
+      "average": "Rata-rata",
+      "median": "Median",
+      "min": "Terendah",
+      "max": "Tertinggi",
+      "inTable": "Lihat setiap jawaban di daftar tanggapan.",
+      "empty": "Belum ada yang bisa diringkas",
+      "emptyDesc": "Jawaban muncul di sini saat tanggapan masuk pada periode ini."
+    },
+    "detail": {
+      "noAnswer": "Tidak dijawab",
+      "sampleFile": "Contoh",
+      "tags": "Tag",
+      "addTag": "Tambah tag…",
+      "note": "catatan",
+      "notes": "Catatan",
+      "notePlaceholder": "Tulis catatan untuk tim Anda…",
+      "addNote": "Tambah catatan",
+      "noteHint": "Hanya tim Anda yang melihat catatan. Ctrl atau ⌘ + Enter untuk menambah.",
+      "history": "Riwayat",
+      "changed": "mengubah {field}",
+      "timeTaken": "Waktu yang dipakai",
+      "cameIn": "Asal",
+      "language": "Bahasa",
+      "device": "Perangkat",
+      "version": "Versi formulir",
+      "previous": "Tanggapan sebelumnya",
+      "next": "Tanggapan berikutnya",
+      "duplicateTitle": "Kemungkinan duplikat",
+      "duplicateDesc": "Mirip tanggapan sebelumnya dari orang yang sama (email sangat mirip). Ia sudah memastikan dirinya orang lain.",
+      "openEarlier": "Buka yang sebelumnya"
+    },
+    "device": {
+      "desktop": "Komputer",
+      "phone": "Ponsel",
+      "tablet": "Tablet"
+    }
   }
 }

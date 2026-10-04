@@ -22,6 +22,8 @@ const props = withDefaults(
     rowActions?: (row: T) => DropdownMenuItem[][]
     /** Row / card whose action is running: dimmed, pulsing and not clickable (CLAUDE.md rule 5). */
     busy?: (row: T) => boolean
+    /** Click (or Enter on) a row opens it, e.g. a detail panel (F11 responses). */
+    openRow?: (row: T) => void
     emptyIcon?: string
     emptyTitle?: string
     emptyDescription?: string
@@ -35,6 +37,7 @@ const props = withDefaults(
     rowKey: 'id',
     rowActions: undefined,
     busy: undefined,
+    openRow: undefined,
     emptyIcon: 'i-lucide-inbox',
     emptyTitle: undefined,
     emptyDescription: undefined,
@@ -277,6 +280,7 @@ defineExpose({ refresh: state.refresh, state })
         loading-color="neutral"
         :get-row-id="(row: T) => String(row[rowKey])"
         :meta="tableMeta"
+        :on-select="openRow ? (_: Event, row: { original: T }) => openRow!(row.original) : undefined"
         sticky
         :ui="{
           base: 'min-w-full',

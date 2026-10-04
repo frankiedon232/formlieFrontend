@@ -535,7 +535,11 @@
     "draft": "Concept",
     "published": "Gepubliceerd",
     "closed": "Gesloten",
-    "archived": "Gearchiveerd"
+    "archived": "Gearchiveerd",
+    "new": "Nieuw",
+    "reviewed": "Beoordeeld",
+    "approved": "Goedgekeurd",
+    "rejected": "Afgewezen"
   },
   "footer": {
     "rights": "Alle rechten voorbehouden.",
@@ -3147,5 +3151,149 @@
     "rotate": "Liggend draaien",
     "scale": "Getoond op {percent}%",
     "full": "Volledig voorbeeld"
+  },
+  "responses": {
+    "crumb": "Antwoorden",
+    "subtitle": "Laatste antwoord {when}",
+    "subtitleNone": "Nog geen antwoorden",
+    "toForm": "Formulier",
+    "anonymous": "Anoniem",
+    "count": "{n} antwoord | {n} antwoorden",
+    "period": {
+      "label": "Periode",
+      "7d": "7 dagen",
+      "30d": "30 dagen",
+      "90d": "90 dagen",
+      "12m": "12 maanden"
+    },
+    "tabs": {
+      "label": "Weergave",
+      "responses": "Antwoorden",
+      "summary": "Samenvatting"
+    },
+    "kpi": {
+      "period": "Antwoorden",
+      "total": "{n} in totaal",
+      "toReview": "Te beoordelen",
+      "ofAll": "{share} van alle antwoorden",
+      "nothing": "Nog niets",
+      "review": "Beoordelen",
+      "time": "Invultijd",
+      "timeHint": "Mediaan in deze periode",
+      "completion": "Voltooiing",
+      "completionHint": "Van wie begon, hoeveel het verstuurden",
+      "last": "Laatste antwoord",
+      "busiest": "Drukst: {name}"
+    },
+    "trend": {
+      "title": "Antwoorden door de tijd",
+      "daily": "Per dag",
+      "weekly": "Per week",
+      "perDay": "Ongeveer {n} per dag",
+      "step": "Tonen per",
+      "empty": "Geen antwoorden in deze periode",
+      "emptyDesc": "Kies een langere periode, of deel het formulier om er te verzamelen."
+    },
+    "breakdown": {
+      "status": "Beoordelingsstatus",
+      "channels": "Hoe ze binnenkwamen",
+      "languages": "Talen",
+      "busiest": "Drukste formulieren"
+    },
+    "channel": {
+      "link": "Formulierlink",
+      "embed": "Ingesloten",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Kolommen",
+      "respondent": "Invuller",
+      "submitted": "Verstuurd",
+      "status": "Status",
+      "notes": "Notities",
+      "channel": "Binnengekomen via",
+      "flags": "Markeringen",
+      "possibleDuplicate": "Mogelijk dubbel",
+      "newest": "Nieuwste eerst",
+      "oldest": "Oudste eerst",
+      "byStatus": "Status",
+      "byRespondent": "Invuller",
+      "open": "Openen",
+      "markAs": "Markeren als",
+      "delete": "Verwijderen",
+      "search": "Zoek namen, e-mails, antwoorden of #nummer…",
+      "empty": "Nog geen antwoorden",
+      "emptyDesc": "Deel het formulier om antwoorden te verzamelen.",
+      "form": "Formulier",
+      "byForm": "Formulier",
+      "allOfForm": "Alle antwoorden van dit formulier",
+      "searchInbox": "Zoek namen, e-mails of formulieren…",
+      "emptyInbox": "Antwoorden van al je formulieren verschijnen hier."
+    },
+    "delete": {
+      "title": "{n} antwoord verwijderen? | {n} antwoorden verwijderen?",
+      "desc": "Ze worden definitief verwijderd, met hun notities. Dit kan niet ongedaan worden."
+    },
+    "toast": {
+      "deleted": "{n} antwoord verwijderd | {n} antwoorden verwijderd",
+      "marked": "{n} antwoord gemarkeerd als {status} | {n} antwoorden gemarkeerd als {status}"
+    },
+    "known": {
+      "invite": "Uitgenodigd",
+      "member": "Ingelogd lid"
+    },
+    "answer": {
+      "yes": "Ja",
+      "no": "Nee",
+      "agreed": "Akkoord",
+      "duration": "{h} u {m} min",
+      "signed": "Ondertekend"
+    },
+    "time": {
+      "seconds": "{n} s",
+      "minutes": "{m} min {s} s"
+    },
+    "summary": {
+      "answered": "{n} beantwoord · {share}",
+      "multiple": "meer dan één mogelijk",
+      "none": "Niemand heeft dit in deze periode beantwoord.",
+      "more": "+ nog {n}",
+      "outOf": "van {max}",
+      "average": "Gemiddelde",
+      "median": "Mediaan",
+      "min": "Laagste",
+      "max": "Hoogste",
+      "inTable": "Bekijk elk antwoord in de antwoordenlijst.",
+      "empty": "Nog niets om samen te vatten",
+      "emptyDesc": "Antwoorden verschijnen hier zodra ze in deze periode binnenkomen."
+    },
+    "detail": {
+      "noAnswer": "Geen antwoord",
+      "sampleFile": "Voorbeeld",
+      "tags": "Labels",
+      "addTag": "Label toevoegen…",
+      "note": "een notitie",
+      "notes": "Notities",
+      "notePlaceholder": "Schrijf een notitie voor je team…",
+      "addNote": "Notitie toevoegen",
+      "noteHint": "Alleen je team ziet notities. Ctrl of ⌘ + Enter voegt toe.",
+      "history": "Geschiedenis",
+      "changed": "wijzigde {field}",
+      "timeTaken": "Benodigde tijd",
+      "cameIn": "Binnengekomen via",
+      "language": "Taal",
+      "device": "Apparaat",
+      "version": "Formulierversie",
+      "previous": "Vorig antwoord",
+      "next": "Volgend antwoord",
+      "duplicateTitle": "Mogelijk dubbel",
+      "duplicateDesc": "Dit lijkt op een eerder antwoord van dezelfde persoon (een bijna gelijk e-mailadres). Die bevestigde iemand anders te zijn.",
+      "openEarlier": "Eerdere openen"
+    },
+    "device": {
+      "desktop": "Computer",
+      "phone": "Telefoon",
+      "tablet": "Tablet"
+    }
   }
 }

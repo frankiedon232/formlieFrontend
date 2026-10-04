@@ -57,6 +57,8 @@ Open a personal link in a private window → "Filling in as test1@example.org"; 
 
 **Form test, forms in several languages (F10):** in the editor, **Form settings** → *More languages* → add e.g. Français (the built-in dictionaries fill in what they know) → **Translate** to fill in the rest → Publish. Open the form link: the switcher sits at the top of the form and the address gets `?lang=fr`; `…/fill?lang=fr` opens French directly. Without `?lang=` the form always opens in its main language (Form settings → Form language), whatever the browser's language. Change a question afterwards: its translation shows "Changed since translated". **Preview** (form overview) shows the form in a phone, tablet or desktop frame with the same switcher.
 
+**Responses (F11):** open any published form → **View responses** (or **Responses** in the sidebar for all forms). Seeded forms have sample responses (stable, international sample people); your own test submissions appear there too, numbered after them, and in the form overview's trend. Try the period (7 / 30 / 90 days, 12 months), click a status in *Review status* to filter, switch to **Summary**, pick question **Columns**, open a response and use **J** / **K**, change its status, add a tag and a note.
+
 **One-time code:** after the password, the code screen shows the mock's code in dev ("Development code: 123456"). It is also printed in the dev-server console as `[mock-otp]`. Five wrong codes lock the attempt.
 
 **Without a hosts entry** (e.g. `localhost` or a phone on Wi-Fi): add `?tenant=remedylegal` once, e.g. `https://localhost:2202/auth/login?tenant=remedylegal` (dev only, remembered for the tab).

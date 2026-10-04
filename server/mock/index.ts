@@ -6,6 +6,7 @@ import { fail } from './core/respond'
 import * as audit from './routes/audit'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
+import * as responses from './routes/responses'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
 import * as auth from './routes/auth'
@@ -68,6 +69,15 @@ const router = createRouter()
   .post('/forms/:id/duplicate', forms.duplicateForm)
   .get('/forms/:id/builder', formDraft.getBuilder)
   .get('/forms/:id/preview', formDraft.previewForm)
+  .get('/forms/:id/responses', responses.listFormResponses)
+  .get('/forms/:id/responses/insights', responses.formInsights)
+  .get('/responses/insights', responses.inboxInsights)
+  .post('/responses/bulk', responses.bulkResponses)
+  .get('/responses', responses.listResponses)
+  .get('/responses/:id', responses.getResponse)
+  .patch('/responses/:id', responses.patchResponse)
+  .delete('/responses/:id', responses.deleteResponse)
+  .post('/responses/:id/notes', responses.addNote)
   .put('/forms/:id/draft', formDraft.saveDraft)
   .post('/forms/:id/publish', formDraft.publishForm)
   .post('/forms/:id/discard', formDraft.discardDraft)

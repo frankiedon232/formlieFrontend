@@ -31,7 +31,7 @@ const cards = computed(() => [
     value: number(props.stats.responses),
     trend: trend.value,
     caption: t('forms.overview.last30', { n: number(recent.value) }),
-    to: `/responses?form=${props.formId}`,
+    to: `/forms/${props.formId}/responses`,
   },
   {
     key: 'completion',
@@ -58,7 +58,7 @@ const cards = computed(() => [
     value: props.stats.last_response_at ? relative(props.stats.last_response_at) : '-',
     trend: null,
     caption: props.stats.last_response_at ? t('forms.overview.lastResponseHint') : t('forms.overview.noResponses'),
-    to: `/responses?form=${props.formId}`,
+    to: `/forms/${props.formId}/responses`,
   },
 ])
 </script>

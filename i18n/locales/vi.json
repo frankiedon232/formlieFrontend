@@ -535,7 +535,11 @@
     "draft": "Bản nháp",
     "published": "Đã xuất bản",
     "closed": "Đã đóng",
-    "archived": "Đã lưu trữ"
+    "archived": "Đã lưu trữ",
+    "new": "Mới",
+    "reviewed": "Đã xem",
+    "approved": "Đã duyệt",
+    "rejected": "Bị từ chối"
   },
   "footer": {
     "rights": "Bảo lưu mọi quyền.",
@@ -3147,5 +3151,149 @@
     "rotate": "Xoay ngang",
     "scale": "Hiển thị {percent}%",
     "full": "Xem trước đầy đủ"
+  },
+  "responses": {
+    "crumb": "Phản hồi",
+    "subtitle": "Phản hồi gần nhất {when}",
+    "subtitleNone": "Chưa có phản hồi",
+    "toForm": "Biểu mẫu",
+    "anonymous": "Ẩn danh",
+    "count": "{n} phản hồi | {n} phản hồi",
+    "period": {
+      "label": "Khoảng thời gian",
+      "7d": "7 ngày",
+      "30d": "30 ngày",
+      "90d": "90 ngày",
+      "12m": "12 tháng"
+    },
+    "tabs": {
+      "label": "Chế độ xem",
+      "responses": "Phản hồi",
+      "summary": "Tóm tắt"
+    },
+    "kpi": {
+      "period": "Phản hồi",
+      "total": "Tổng {n}",
+      "toReview": "Cần xem xét",
+      "ofAll": "{share} tổng số phản hồi",
+      "nothing": "Chưa có gì",
+      "review": "Xem xét",
+      "time": "Thời gian điền",
+      "timeHint": "Trung vị trong kỳ",
+      "completion": "Hoàn thành",
+      "completionHint": "Trong số người bắt đầu, bao nhiêu người đã gửi",
+      "last": "Phản hồi gần nhất",
+      "busiest": "Nhiều nhất: {name}"
+    },
+    "trend": {
+      "title": "Phản hồi theo thời gian",
+      "daily": "Theo ngày",
+      "weekly": "Theo tuần",
+      "perDay": "Khoảng {n} mỗi ngày",
+      "step": "Hiển thị theo",
+      "empty": "Không có phản hồi trong kỳ này",
+      "emptyDesc": "Chọn khoảng dài hơn, hoặc chia sẻ biểu mẫu."
+    },
+    "breakdown": {
+      "status": "Trạng thái xem xét",
+      "channels": "Đến từ đâu",
+      "languages": "Ngôn ngữ",
+      "busiest": "Biểu mẫu nhiều phản hồi nhất"
+    },
+    "channel": {
+      "link": "Liên kết biểu mẫu",
+      "embed": "Nhúng",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Cột",
+      "respondent": "Người trả lời",
+      "submitted": "Đã gửi",
+      "status": "Trạng thái",
+      "notes": "Ghi chú",
+      "channel": "Nguồn",
+      "flags": "Đánh dấu",
+      "possibleDuplicate": "Có thể trùng",
+      "newest": "Mới nhất trước",
+      "oldest": "Cũ nhất trước",
+      "byStatus": "Trạng thái",
+      "byRespondent": "Người trả lời",
+      "open": "Mở",
+      "markAs": "Đánh dấu là",
+      "delete": "Xóa",
+      "search": "Tìm tên, email, câu trả lời hoặc #số…",
+      "empty": "Chưa có phản hồi",
+      "emptyDesc": "Chia sẻ biểu mẫu để bắt đầu nhận phản hồi.",
+      "form": "Biểu mẫu",
+      "byForm": "Biểu mẫu",
+      "allOfForm": "Tất cả phản hồi của biểu mẫu này",
+      "searchInbox": "Tìm tên, email hoặc biểu mẫu…",
+      "emptyInbox": "Phản hồi từ mọi biểu mẫu của bạn hiện ở đây."
+    },
+    "delete": {
+      "title": "Xóa {n} phản hồi? | Xóa {n} phản hồi?",
+      "desc": "Bị xóa vĩnh viễn cùng ghi chú. Không thể hoàn tác."
+    },
+    "toast": {
+      "deleted": "Đã xóa {n} phản hồi | Đã xóa {n} phản hồi",
+      "marked": "Đã đánh dấu {n} phản hồi là {status} | Đã đánh dấu {n} phản hồi là {status}"
+    },
+    "known": {
+      "invite": "Được mời",
+      "member": "Thành viên đã đăng nhập"
+    },
+    "answer": {
+      "yes": "Có",
+      "no": "Không",
+      "agreed": "Đồng ý",
+      "duration": "{h} giờ {m} phút",
+      "signed": "Đã ký"
+    },
+    "time": {
+      "seconds": "{n} giây",
+      "minutes": "{m} phút {s} giây"
+    },
+    "summary": {
+      "answered": "{n} đã trả lời · {share}",
+      "multiple": "được chọn nhiều",
+      "none": "Không ai trả lời trong kỳ này.",
+      "more": "+ {n} khác",
+      "outOf": "trên {max}",
+      "average": "Trung bình",
+      "median": "Trung vị",
+      "min": "Thấp nhất",
+      "max": "Cao nhất",
+      "inTable": "Xem từng câu trả lời trong danh sách phản hồi.",
+      "empty": "Chưa có gì để tóm tắt",
+      "emptyDesc": "Câu trả lời sẽ hiện ở đây khi có phản hồi trong kỳ này."
+    },
+    "detail": {
+      "noAnswer": "Không trả lời",
+      "sampleFile": "Mẫu",
+      "tags": "Thẻ",
+      "addTag": "Thêm thẻ…",
+      "note": "một ghi chú",
+      "notes": "Ghi chú",
+      "notePlaceholder": "Viết ghi chú cho nhóm…",
+      "addNote": "Thêm ghi chú",
+      "noteHint": "Chỉ nhóm của bạn thấy ghi chú. Ctrl hoặc ⌘ + Enter để thêm.",
+      "history": "Lịch sử",
+      "changed": "đã đổi {field}",
+      "timeTaken": "Thời gian đã dùng",
+      "cameIn": "Nguồn",
+      "language": "Ngôn ngữ",
+      "device": "Thiết bị",
+      "version": "Phiên bản biểu mẫu",
+      "previous": "Phản hồi trước",
+      "next": "Phản hồi sau",
+      "duplicateTitle": "Có thể trùng",
+      "duplicateDesc": "Giống một phản hồi trước của cùng người (email rất giống). Họ đã xác nhận là người khác.",
+      "openEarlier": "Mở phản hồi trước"
+    },
+    "device": {
+      "desktop": "Máy tính",
+      "phone": "Điện thoại",
+      "tablet": "Máy tính bảng"
+    }
   }
 }

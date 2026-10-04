@@ -44,7 +44,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
                 },
               ]
             : []),
-          { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/responses?form=${form.id}` },
+          { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/forms/${form.id}/responses` },
         ],
       ]
     const lifecycle: DropdownMenuItem[] = []
@@ -102,7 +102,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
             ]
           : []),
         { label: t('share.open'), icon: 'i-lucide-share-2', to: `/forms/${form.id}/share` },
-        { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/responses?form=${form.id}` },
+        { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/forms/${form.id}/responses` },
         { label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => handlers.saveTemplate(form) },
       ],
       lifecycle,

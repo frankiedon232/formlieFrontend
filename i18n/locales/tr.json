@@ -535,7 +535,11 @@
     "draft": "Taslak",
     "published": "Yayında",
     "closed": "Kapalı",
-    "archived": "Arşivlendi"
+    "archived": "Arşivlendi",
+    "new": "Yeni",
+    "reviewed": "İncelendi",
+    "approved": "Onaylandı",
+    "rejected": "Reddedildi"
   },
   "footer": {
     "rights": "Tüm hakları saklıdır.",
@@ -3147,5 +3151,149 @@
     "rotate": "Yatay çevir",
     "scale": "Ölçek: yüzde {percent}",
     "full": "Tam önizleme"
+  },
+  "responses": {
+    "crumb": "Yanıtlar",
+    "subtitle": "Son yanıt {when}",
+    "subtitleNone": "Henüz yanıt yok",
+    "toForm": "Form",
+    "anonymous": "Anonim",
+    "count": "{n} yanıt | {n} yanıt",
+    "period": {
+      "label": "Dönem",
+      "7d": "7 gün",
+      "30d": "30 gün",
+      "90d": "90 gün",
+      "12m": "12 ay"
+    },
+    "tabs": {
+      "label": "Görünüm",
+      "responses": "Yanıtlar",
+      "summary": "Özet"
+    },
+    "kpi": {
+      "period": "Yanıtlar",
+      "total": "Toplam {n}",
+      "toReview": "İncelenecek",
+      "ofAll": "Tüm yanıtların {share}",
+      "nothing": "Henüz bir şey yok",
+      "review": "İncele",
+      "time": "Doldurma süresi",
+      "timeHint": "Bu dönemin medyanı",
+      "completion": "Tamamlama",
+      "completionHint": "Başlayanların ne kadarı gönderdi",
+      "last": "Son yanıt",
+      "busiest": "En yoğun: {name}"
+    },
+    "trend": {
+      "title": "Zaman içinde yanıtlar",
+      "daily": "Günlük",
+      "weekly": "Haftalık",
+      "perDay": "Günde yaklaşık {n}",
+      "step": "Göster",
+      "empty": "Bu dönemde yanıt yok",
+      "emptyDesc": "Daha uzun bir dönem seçin ya da formu paylaşın."
+    },
+    "breakdown": {
+      "status": "İnceleme durumu",
+      "channels": "Nereden geldiler",
+      "languages": "Diller",
+      "busiest": "En yoğun formlar"
+    },
+    "channel": {
+      "link": "Form bağlantısı",
+      "embed": "Gömülü",
+      "api": "API"
+    },
+    "list": {
+      "columns": "Sütunlar",
+      "respondent": "Yanıtlayan",
+      "submitted": "Gönderildi",
+      "status": "Durum",
+      "notes": "Notlar",
+      "channel": "Geliş yolu",
+      "flags": "İşaretler",
+      "possibleDuplicate": "Olası kopya",
+      "newest": "Önce en yeni",
+      "oldest": "Önce en eski",
+      "byStatus": "Durum",
+      "byRespondent": "Yanıtlayan",
+      "open": "Aç",
+      "markAs": "Şöyle işaretle",
+      "delete": "Sil",
+      "search": "Ad, e-posta, yanıt veya #numara ara…",
+      "empty": "Henüz yanıt yok",
+      "emptyDesc": "Yanıt toplamaya başlamak için formu paylaşın.",
+      "form": "Form",
+      "byForm": "Form",
+      "allOfForm": "Bu formun tüm yanıtları",
+      "searchInbox": "Ad, e-posta veya form ara…",
+      "emptyInbox": "Tüm formlarınızın yanıtları burada görünür."
+    },
+    "delete": {
+      "title": "{n} yanıt silinsin mi? | {n} yanıt silinsin mi?",
+      "desc": "Notlarıyla birlikte kalıcı olarak silinir. Geri alınamaz."
+    },
+    "toast": {
+      "deleted": "{n} yanıt silindi | {n} yanıt silindi",
+      "marked": "{n} yanıt {status} olarak işaretlendi | {n} yanıt {status} olarak işaretlendi"
+    },
+    "known": {
+      "invite": "Davetli",
+      "member": "Oturum açmış üye"
+    },
+    "answer": {
+      "yes": "Evet",
+      "no": "Hayır",
+      "agreed": "Onaylandı",
+      "duration": "{h} sa {m} dk",
+      "signed": "İmzalandı"
+    },
+    "time": {
+      "seconds": "{n} sn",
+      "minutes": "{m} dk {s} sn"
+    },
+    "summary": {
+      "answered": "{n} yanıtladı · {share}",
+      "multiple": "birden fazla seçilebilir",
+      "none": "Bu dönemde kimse yanıtlamadı.",
+      "more": "+ {n} tane daha",
+      "outOf": "{max} üzerinden",
+      "average": "Ortalama",
+      "median": "Medyan",
+      "min": "En düşük",
+      "max": "En yüksek",
+      "inTable": "Her yanıtı Yanıtlar listesinde görün.",
+      "empty": "Henüz özetlenecek bir şey yok",
+      "emptyDesc": "Bu dönemde yanıt geldikçe burada görünür."
+    },
+    "detail": {
+      "noAnswer": "Yanıt yok",
+      "sampleFile": "Örnek",
+      "tags": "Etiketler",
+      "addTag": "Etiket ekle…",
+      "note": "bir not",
+      "notes": "Notlar",
+      "notePlaceholder": "Ekibiniz için not yazın…",
+      "addNote": "Not ekle",
+      "noteHint": "Notları yalnızca ekibiniz görür. Ctrl veya ⌘ + Enter ile ekleyin.",
+      "history": "Geçmiş",
+      "changed": "{field} değiştirdi",
+      "timeTaken": "Harcanan süre",
+      "cameIn": "Geliş yolu",
+      "language": "Dil",
+      "device": "Cihaz",
+      "version": "Form sürümü",
+      "previous": "Önceki yanıt",
+      "next": "Sonraki yanıt",
+      "duplicateTitle": "Olası kopya",
+      "duplicateDesc": "Aynı kişinin önceki bir yanıtına benziyor (çok benzer bir e-posta). Kişi başka biri olduğunu onayladı.",
+      "openEarlier": "Öncekini aç"
+    },
+    "device": {
+      "desktop": "Bilgisayar",
+      "phone": "Telefon",
+      "tablet": "Tablet"
+    }
   }
 }

@@ -535,7 +535,11 @@
     "draft": "草稿",
     "published": "已发布",
     "closed": "已关闭",
-    "archived": "已归档"
+    "archived": "已归档",
+    "new": "新",
+    "reviewed": "已查看",
+    "approved": "已批准",
+    "rejected": "已拒绝"
   },
   "footer": {
     "rights": "保留所有权利。",
@@ -3147,5 +3151,149 @@
     "rotate": "横向旋转",
     "scale": "按 {percent}% 显示",
     "full": "完整预览"
+  },
+  "responses": {
+    "crumb": "回复",
+    "subtitle": "最近回复 {when}",
+    "subtitleNone": "暂无回复",
+    "toForm": "表单",
+    "anonymous": "匿名",
+    "count": "{n} 条回复 | {n} 条回复",
+    "period": {
+      "label": "时间段",
+      "7d": "7 天",
+      "30d": "30 天",
+      "90d": "90 天",
+      "12m": "12 个月"
+    },
+    "tabs": {
+      "label": "视图",
+      "responses": "回复",
+      "summary": "汇总"
+    },
+    "kpi": {
+      "period": "回复",
+      "total": "共 {n} 条",
+      "toReview": "待审核",
+      "ofAll": "占全部回复的 {share}",
+      "nothing": "暂无",
+      "review": "去审核",
+      "time": "填写时长",
+      "timeHint": "本期中位数",
+      "completion": "完成率",
+      "completionHint": "开始填写的人中有多少人提交",
+      "last": "最近回复",
+      "busiest": "最多：{name}"
+    },
+    "trend": {
+      "title": "回复趋势",
+      "daily": "按日",
+      "weekly": "按周",
+      "perDay": "每天约 {n} 条",
+      "step": "显示方式",
+      "empty": "此期间暂无回复",
+      "emptyDesc": "请选择更长的时间段，或分享表单。"
+    },
+    "breakdown": {
+      "status": "审核状态",
+      "channels": "来源",
+      "languages": "语言",
+      "busiest": "回复最多的表单"
+    },
+    "channel": {
+      "link": "表单链接",
+      "embed": "嵌入",
+      "api": "API"
+    },
+    "list": {
+      "columns": "列",
+      "respondent": "填写者",
+      "submitted": "提交时间",
+      "status": "状态",
+      "notes": "备注",
+      "channel": "来源",
+      "flags": "标记",
+      "possibleDuplicate": "可能重复",
+      "newest": "最新优先",
+      "oldest": "最早优先",
+      "byStatus": "状态",
+      "byRespondent": "填写者",
+      "open": "打开",
+      "markAs": "标记为",
+      "delete": "删除",
+      "search": "搜索姓名、邮箱、答案或 #编号…",
+      "empty": "暂无回复",
+      "emptyDesc": "分享表单即可开始收集回复。",
+      "form": "表单",
+      "byForm": "表单",
+      "allOfForm": "此表单的全部回复",
+      "searchInbox": "搜索姓名、邮箱或表单…",
+      "emptyInbox": "所有表单的回复都会显示在这里。"
+    },
+    "delete": {
+      "title": "删除 {n} 条回复？ | 删除 {n} 条回复？",
+      "desc": "将连同备注永久删除，且无法撤销。"
+    },
+    "toast": {
+      "deleted": "已删除 {n} 条回复 | 已删除 {n} 条回复",
+      "marked": "已将 {n} 条回复标记为{status} | 已将 {n} 条回复标记为{status}"
+    },
+    "known": {
+      "invite": "受邀",
+      "member": "已登录成员"
+    },
+    "answer": {
+      "yes": "是",
+      "no": "否",
+      "agreed": "已同意",
+      "duration": "{h} 小时 {m} 分钟",
+      "signed": "已签名"
+    },
+    "time": {
+      "seconds": "{n} 秒",
+      "minutes": "{m} 分 {s} 秒"
+    },
+    "summary": {
+      "answered": "{n} 人作答 · {share}",
+      "multiple": "可多选",
+      "none": "此期间无人作答。",
+      "more": "另有 {n} 项",
+      "outOf": "满分 {max}",
+      "average": "平均值",
+      "median": "中位数",
+      "min": "最低",
+      "max": "最高",
+      "inTable": "可在回复列表中查看每个答案。",
+      "empty": "暂无可汇总的内容",
+      "emptyDesc": "此期间有回复后会显示在这里。"
+    },
+    "detail": {
+      "noAnswer": "未作答",
+      "sampleFile": "示例",
+      "tags": "标签",
+      "addTag": "添加标签…",
+      "note": "备注",
+      "notes": "备注",
+      "notePlaceholder": "给团队写备注…",
+      "addNote": "添加备注",
+      "noteHint": "备注仅团队可见。按 Ctrl 或 ⌘ + Enter 添加。",
+      "history": "历史",
+      "changed": "修改了{field}",
+      "timeTaken": "用时",
+      "cameIn": "来源",
+      "language": "语言",
+      "device": "设备",
+      "version": "表单版本",
+      "previous": "上一条回复",
+      "next": "下一条回复",
+      "duplicateTitle": "可能重复",
+      "duplicateDesc": "看起来与同一人的较早回复相似（邮箱非常接近）。对方已确认是另一个人。",
+      "openEarlier": "打开较早的回复"
+    },
+    "device": {
+      "desktop": "电脑",
+      "phone": "手机",
+      "tablet": "平板"
+    }
   }
 }
