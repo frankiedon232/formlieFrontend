@@ -10,6 +10,14 @@ const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 // Outside the editor (read-only preview for "Can view" people) the schema comes in as a prop.
 const builder = useBuilderIfAny()
+// In the editor: the full preview page (device frames, live version), after saving the draft.
+const session = injectBuilderSession()
+const { busy: opening, run } = useBusy()
+const openFull = () =>
+  run(async () => {
+    await session?.autosave.saveNow()
+    await navigateTo(`/forms/${session?.formId}/preview?v=draft`)
+  })
 const shown = computed(() => props.schema ?? builder?.schema.value ?? null)
 
 const device = ref<'desktop' | 'tablet' | 'phone'>('desktop')
@@ -45,6 +53,17 @@ watch(open, value => {
     }"
   >
     <template #actions>
+      <UButton
+        v-if="session && !schema"
+        icon="i-lucide-maximize-2"
+        :label="t('preview.full')"
+        color="neutral"
+        variant="outline"
+        size="xs"
+        :loading="opening"
+        :ui="{ label: 'hidden md:inline' }"
+        @click="openFull"
+      />
       <UTabs
         v-model="device"
         :items="devices"

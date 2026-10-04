@@ -3083,5 +3083,19 @@
       "team": "Twój zespół",
       "teamDesc": "Pracownicy obszaru roboczego, którzy tworzą formularz i nim zarządzają. Nie zmienia to, kto może go wypełnić."
     }
+  },
+  "preview": {
+    "crumb": "Podgląd",
+    "subtitle": "Tak jak widzą to respondenci. Nic nie jest wysyłane.",
+    "draft": "Wersja robocza",
+    "live": "Opublikowany · v{n}",
+    "version": "Wersja do podglądu",
+    "openLive": "Otwórz opublikowany formularz",
+    "goTo": "Przejdź do strony",
+    "page": "Strona {n}",
+    "nothingSent": "Nic nie jest wysyłane ani zapisywane",
+    "rotate": "Obróć poziomo",
+    "scale": "Pokazano w {percent}%",
+    "full": "Pełny podgląd"
   }
 }

@@ -3083,5 +3083,19 @@
       "team": "Your team",
       "teamDesc": "Staff in your workspace who build and manage this form. This doesn’t change who can fill it in."
     }
+  },
+  "preview": {
+    "crumb": "Preview",
+    "subtitle": "As respondents see it. Nothing is sent.",
+    "draft": "Draft",
+    "live": "Live · v{n}",
+    "version": "Version to preview",
+    "openLive": "Open live form",
+    "goTo": "Go to page",
+    "page": "Page {n}",
+    "nothingSent": "Nothing is sent or saved",
+    "rotate": "Turn sideways",
+    "scale": "Shown at {percent}%",
+    "full": "Full preview"
   }
 }

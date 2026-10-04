@@ -3083,5 +3083,19 @@
       "team": "Votre équipe",
       "teamDesc": "Les membres de votre espace de travail qui créent et gèrent ce formulaire. Cela ne change pas qui peut le remplir."
     }
+  },
+  "preview": {
+    "crumb": "Aperçu",
+    "subtitle": "Tel que les répondants le voient. Rien n'est envoyé.",
+    "draft": "Brouillon",
+    "live": "En ligne · v{n}",
+    "version": "Version à prévisualiser",
+    "openLive": "Ouvrir le formulaire en ligne",
+    "goTo": "Aller à la page",
+    "page": "Page {n}",
+    "nothingSent": "Rien n'est envoyé ni enregistré",
+    "rotate": "Tourner à l'horizontale",
+    "scale": "Affiché à {percent} %",
+    "full": "Aperçu complet"
   }
 }

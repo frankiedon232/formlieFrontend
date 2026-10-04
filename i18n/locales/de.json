@@ -3083,5 +3083,19 @@
       "team": "Ihr Team",
       "teamDesc": "Mitarbeitende Ihres Arbeitsbereichs, die dieses Formular erstellen und verwalten. Das ändert nicht, wer es ausfüllen kann."
     }
+  },
+  "preview": {
+    "crumb": "Vorschau",
+    "subtitle": "So sehen es die Befragten. Es wird nichts gesendet.",
+    "draft": "Entwurf",
+    "live": "Live · v{n}",
+    "version": "Version für die Vorschau",
+    "openLive": "Live-Formular öffnen",
+    "goTo": "Zur Seite",
+    "page": "Seite {n}",
+    "nothingSent": "Nichts wird gesendet oder gespeichert",
+    "rotate": "Quer drehen",
+    "scale": "Angezeigt mit {percent} %",
+    "full": "Volle Vorschau"
   }
 }

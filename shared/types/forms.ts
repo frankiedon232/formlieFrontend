@@ -1,5 +1,6 @@
 import type { FormField } from '../utils/forms/build'
 import type { FormTheme } from '../utils/forms/theme'
+import type { FormSchemaV1 } from '../utils/forms/schema'
 /** Form list shapes (docs/API-CONTRACT.md → Forms). */
 export type FormStatus = 'draft' | 'published' | 'closed' | 'archived'
 
@@ -229,4 +230,14 @@ export interface FormOverview {
   /** Design tokens and first questions, for the themed mini preview. */
   theme: Record<string, unknown>
   preview: string[]
+}
+
+/** GET /forms/{id}/preview: the form as respondents see it, read only ("Can view" and up). */
+export interface FormPreview {
+  form: FormSummary
+  /** The saved draft (what editors are working on). */
+  draft: FormSchemaV1
+  /** What respondents fill in now; null until the form is published. */
+  live: FormSchemaV1 | null
+  published_version: number | null
 }

@@ -27,7 +27,11 @@ const props = defineProps<{
   submit?: (answers: Record<string, unknown>, extra?: { trap?: string }) => Promise<RendererSubmitOutcome>
   /** Public page: this browser already sent the form, and how to start one for someone else. */
   respondent?: RendererRespondent
+  /** Preview page: go straight to this page (index) or the thank-you screen, answers kept. */
+  goTo?: { at: number | 'thanks'; n: number }
 }>()
+/** Preview page: where the respondent is now (page index or the thank-you screen). */
+const emit = defineEmits<{ at: [at: number | 'thanks'] }>()
 const { t } = useI18n()
 
 const labelPosition = computed(() => props.schema.settings?.label_position ?? 'top')
@@ -257,6 +261,20 @@ const resumeEmail = computed(() => {
   const value = key ? answers.value[key] : ''
   return typeof value === 'string' ? value : ''
 })
+
+// Preview page: jump anywhere without filling in what comes before (nothing is ever sent there).
+watch(
+  () => props.goTo,
+  jump => {
+    if (!jump || !props.preview) return
+    trail.value = []
+    errors.value = {}
+    attempted.value = false
+    done.value = jump.at === 'thanks'
+    if (jump.at !== 'thanks') index.value = Math.min(Math.max(0, jump.at), props.schema.pages.length - 1)
+  },
+)
+watch([index, done], () => emit('at', done.value ? 'thanks' : index.value))
 
 function restart() {
   index.value = 0

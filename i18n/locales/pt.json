@@ -3083,5 +3083,19 @@
       "team": "A sua equipa",
       "teamDesc": "Pessoal da sua área de trabalho que cria e gere este formulário. Não altera quem o pode preencher."
     }
+  },
+  "preview": {
+    "crumb": "Pré-visualização",
+    "subtitle": "Como quem responde vê. Nada é enviado.",
+    "draft": "Rascunho",
+    "live": "Publicado · v{n}",
+    "version": "Versão a mostrar",
+    "openLive": "Abrir o formulário publicado",
+    "goTo": "Ir para a página",
+    "page": "Página {n}",
+    "nothingSent": "Nada é enviado nem guardado",
+    "rotate": "Virar na horizontal",
+    "scale": "Mostrado a {percent}%",
+    "full": "Pré-visualização completa"
   }
 }

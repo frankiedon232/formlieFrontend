@@ -5,7 +5,6 @@
 -->
 <script setup lang="ts">
 import type { FormOverview, FormSummary } from '#shared/types/forms'
-import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -55,10 +54,10 @@ const editable = computed(() => canEditForm(form.value))
 // Header menu: save as template + lifecycle + delete (rename / move / tags live in the list).
 const lifecycleItems = computed(() => {
   if (!form.value) return []
-  // Not an editor: copy the live link and responses only ("Open" is this page).
+  // Not an editor: copy the live link and responses only ("Open" is this page, Preview is in the header).
   if (!editable.value)
     return menu(form.value)
-      .map(group => group.filter(item => item.to !== `/forms/${form.value!.id}`))
+      .map(group => group.filter(item => !item.to || !String(item.to).startsWith(`/forms/${form.value!.id}`)))
       .filter(group => group.length)
   if (form.value.deleted_at)
     return [[{ label: t('forms.actions.restore'), icon: 'i-lucide-undo-2', onSelect: () => actions.lifecycle(form.value!, 'restore') }]]
@@ -67,15 +66,6 @@ const lifecycleItems = computed(() => {
     ...menu(form.value).slice(2),
   ]
 })
-// "Can view": the form exactly as respondents see it, read only (nothing is sent).
-const previewOpen = ref(false)
-const preview = ref<{ name: string; schema: FormSchemaV1 } | null>(null)
-const { busy: previewing, run } = useBusy()
-const openPreview = () =>
-  run(async () => {
-    preview.value ??= (await api.get<{ name: string; schema: FormSchemaV1 }>(`/forms/${route.params.id}/preview`)).data
-    previewOpen.value = true
-  })
 const canSeeActivity = computed(() => useSession().user.value?.role !== 'member')
 const subtitle = computed(() =>
   form.value ? t('forms.overview.subtitle', { status: t(`status.${form.value.status}`), updated: relative(form.value.updated_at) }) : undefined,
@@ -96,17 +86,18 @@ const subtitle = computed(() =>
         :to="`/responses?form=${form.id}`"
         class="hidden sm:inline-flex"
       />
-      <!-- People access: only editors open the editor; "Can view" gets a read-only preview. -->
-      <UButton v-if="editable" icon="i-lucide-pencil-ruler" :label="t('forms.detail.edit')" color="neutral" :to="`/forms/${form.id}/build`" :disabled="!!form.deleted_at" />
+      <!-- People access: only editors open the editor; "Can view" gets the read-only preview page. -->
       <UButton
-        v-else-if="form.my_access === 'view'"
+        v-if="form.my_access !== 'responses'"
         icon="i-lucide-eye"
-        :label="t('builder.preview.button')"
+        :label="t('preview.crumb')"
         color="neutral"
-        :loading="previewing"
+        :variant="editable ? 'outline' : 'solid'"
+        :to="`/forms/${form.id}/preview`"
         :disabled="!!form.deleted_at"
-        @click="openPreview"
+        :class="editable ? 'hidden sm:inline-flex' : ''"
       />
+      <UButton v-if="editable" icon="i-lucide-pencil-ruler" :label="t('forms.detail.edit')" color="neutral" :to="`/forms/${form.id}/build`" :disabled="!!form.deleted_at" />
     </template>
 
     <!-- Loading: mirrors KPI row, chart + side column -->
@@ -176,6 +167,5 @@ const subtitle = computed(() =>
       <TemplatesSaveModal v-model:open="templateOpen" :form="form" />
       <FormsListAvailabilityModal v-model:open="availabilityOpen" :form="form" @saved="load" />
     </template>
-    <LazyFormsBuilderPreviewModal v-if="preview" v-model:open="previewOpen" :schema="preview.schema" :form-name="preview.name" />
   </AppPanel>
 </template>

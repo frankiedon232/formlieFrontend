@@ -20,7 +20,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
-| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~55% |
+| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~80% |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
@@ -470,7 +470,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Thank-you page or redirect
 - ✅ **In-app browser** (owner, 2026-10-03, decision 83): website, Terms and Data Privacy Policy open in a branded window over the form; answers stay
 - ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles, Branded · Spotlight · Side panel · Minimal, tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
-- ⬜ Preview page with device frames
+- ✅ **Preview page** `/forms/[id]/preview` (decision 98, 2026-10-04): the form in a desktop browser window, a tablet or a phone at real screen sizes (turned sideways too), scaled to fit; draft or live version; jump to any page or the thank-you screen; try it out, nothing is sent; phones show it full width; open from the overview, the form menu and the editor's quick preview; open to "Can view"
 - ✅ **Changing the form language translates its text** in the same step (owner, 2026-10-04, decision 91, no second button): template text in all 20 languages, the creator’s own text kept (count shown), one undo
 - ⬜ **Form languages** (owner, 2026-10-03, see 03-DECISIONS → 73): the form opens in the respondent's browser language when the form offers it, otherwise its main language; `?lang=xx` forces one (shareable per-language links, embeds and QR codes); a language switcher when a form has several; translated questions / options / help / messages per language; the language is saved with each response; buttons, messages, dates, numbers and right-to-left follow it
 - ✅ **Embed code** (decision 90): the Share card offers the ready `<iframe>` code, auto height (recommended) or fixed height, instead of a bare embed address; embed pages can be framed by other websites
@@ -1088,3 +1088,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | File rules and uploads always agree (owner question): the builder caps a question at 25 MB per file (the upload limit); files a device sends without a type (HEIC photos, some videos) are matched by extension for "All images / audio / video", pictures still checked by their bytes. |
 | 2026-10-04 | F10 | Thank-you screen (owner: "Close this page" does nothing in Chrome / Edge, browsers block it): "Close this page" only when the browser allows it (opened by another page); otherwise "All done. You can close this tab." plus "Visit the {org} website" when the organisation has one; in embeds neither. |
 | 2026-10-04 | F10 | "Can view" is view only (owner): only editors open the editor, logic, design, share settings and versions, save as template, duplicate or change availability; the API refuses the rest. View people get the overview without editor links and a read-only Preview; an editor address shows "Only people who can edit open the editor" with the way back. |
+| 2026-10-04 | F10 | M3 item 6: preview page `/forms/[id]/preview` with device frames (desktop browser window with the form's address, tablet and phone at real sizes, turned sideways, scaled to fit), draft or live version, jump to any page or the thank-you screen, start again, shortcuts 1 / 2 / 3 / R; opened from the overview, the form menu and "Full preview" in the editor (saves first); "Can view" people preview here. Milestone 3 complete. |

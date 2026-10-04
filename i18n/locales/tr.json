@@ -3083,5 +3083,19 @@
       "team": "Ekibiniz",
       "teamDesc": "Bu formu oluşturan ve yöneten çalışma alanı personeli. Kimin doldurabileceğini değiştirmez."
     }
+  },
+  "preview": {
+    "crumb": "Önizleme",
+    "subtitle": "Yanıtlayanların gördüğü gibi. Hiçbir şey gönderilmez.",
+    "draft": "Taslak",
+    "live": "Yayında · v{n}",
+    "version": "Önizlenecek sürüm",
+    "openLive": "Yayındaki formu aç",
+    "goTo": "Sayfaya git",
+    "page": "Sayfa {n}",
+    "nothingSent": "Hiçbir şey gönderilmez veya kaydedilmez",
+    "rotate": "Yatay çevir",
+    "scale": "Ölçek: yüzde {percent}",
+    "full": "Tam önizleme"
   }
 }

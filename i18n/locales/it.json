@@ -3083,5 +3083,19 @@
       "team": "Il suo team",
       "teamDesc": "Il personale del suo spazio di lavoro che crea e gestisce questo modulo. Non cambia chi può compilarlo."
     }
+  },
+  "preview": {
+    "crumb": "Anteprima",
+    "subtitle": "Come lo vede chi risponde. Non viene inviato nulla.",
+    "draft": "Bozza",
+    "live": "Pubblicato · v{n}",
+    "version": "Versione da mostrare",
+    "openLive": "Apri il modulo pubblicato",
+    "goTo": "Vai alla pagina",
+    "page": "Pagina {n}",
+    "nothingSent": "Nulla viene inviato o salvato",
+    "rotate": "Ruota in orizzontale",
+    "scale": "Mostrato al {percent}%",
+    "full": "Anteprima completa"
   }
 }

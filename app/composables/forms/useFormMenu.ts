@@ -31,6 +31,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
       return [
         [
           { label: t('forms.actions.open'), icon: 'i-lucide-square-arrow-out-up-right', to: `/forms/${form.id}` },
+          ...(form.my_access === 'view' ? [{ label: t('preview.crumb'), icon: 'i-lucide-eye', to: `/forms/${form.id}/preview` }] : []),
           ...(form.status === 'published'
             ? [
                 {
@@ -68,6 +69,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
           icon: 'i-lucide-square-arrow-out-up-right',
           to: `/forms/${form.id}`,
         },
+        { label: t('preview.crumb'), icon: 'i-lucide-eye', to: `/forms/${form.id}/preview` },
         { label: t('forms.actions.rename'), icon: 'i-lucide-pencil', onSelect: () => handlers.rename(form) },
         {
           label: t('forms.actions.duplicate'),

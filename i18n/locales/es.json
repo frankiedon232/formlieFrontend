@@ -3083,5 +3083,19 @@
       "team": "Su equipo",
       "teamDesc": "Personal de su espacio de trabajo que crea y gestiona este formulario. No cambia quién puede rellenarlo."
     }
+  },
+  "preview": {
+    "crumb": "Vista previa",
+    "subtitle": "Tal como lo ven quienes responden. No se envía nada.",
+    "draft": "Borrador",
+    "live": "Publicado · v{n}",
+    "version": "Versión que se muestra",
+    "openLive": "Abrir el formulario publicado",
+    "goTo": "Ir a la página",
+    "page": "Página {n}",
+    "nothingSent": "No se envía ni se guarda nada",
+    "rotate": "Girar en horizontal",
+    "scale": "Mostrado al {percent} %",
+    "full": "Vista previa completa"
   }
 }

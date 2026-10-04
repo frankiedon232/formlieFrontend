@@ -15,6 +15,7 @@ import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
+import type { FormPreview } from '#shared/types/forms'
 import { formsOf, saveForms, summaryOf, type StoredForm, type StoredVersion } from '../data/formStore'
 import type { MockTenant } from '../data/tenants'
 
@@ -163,14 +164,21 @@ export const discardDraft = defineMockRoute(({ event }) => {
 })
 
 /**
- * GET /forms/:id/preview, the form as respondents will see it, read only. "Can view" people get
+ * GET /forms/:id/preview, the form as respondents will see it (draft and live version), read only. "Can view" people get
  * this instead of the editor (decision 97); nothing here can change the form.
  */
 export const previewForm = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
   requireLevel(form, user, 'view')
-  return ok({ name: form.name, schema: ensureSchema(form, tenant) })
+  const draft = ensureSchema(form, tenant)
+  const preview: FormPreview = {
+    form: { ...summaryOf(form), my_access: levelOf(form, user) },
+    draft,
+    live: form.status === 'draft' ? null : (form.published_schema ?? null),
+    published_version: form.versions?.[0]?.number ?? null,
+  }
+  return ok(preview)
 })
 
 export const listVersions = defineMockRoute(({ event }) => {

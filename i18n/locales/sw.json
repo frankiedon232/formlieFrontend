@@ -3083,5 +3083,19 @@
       "team": "Timu yako",
       "teamDesc": "Wafanyakazi wa eneo lako la kazi wanaounda na kusimamia fomu hii. Haibadilishi nani anaweza kuijaza."
     }
+  },
+  "preview": {
+    "crumb": "Onyesho",
+    "subtitle": "Kama wanaojibu wanavyoiona. Hakuna kinachotumwa.",
+    "draft": "Rasimu",
+    "live": "Hewani · v{n}",
+    "version": "Toleo la kuonyesha",
+    "openLive": "Fungua fomu iliyo hewani",
+    "goTo": "Nenda kwenye ukurasa",
+    "page": "Ukurasa {n}",
+    "nothingSent": "Hakuna kinachotumwa wala kuhifadhiwa",
+    "rotate": "Geuza kwa ulalo",
+    "scale": "Inaonyeshwa kwa {percent}%",
+    "full": "Onyesho kamili"
   }
 }

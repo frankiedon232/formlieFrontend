@@ -3083,5 +3083,19 @@
       "team": "Uw team",
       "teamDesc": "Medewerkers van uw werkruimte die dit formulier maken en beheren. Dit verandert niet wie het kan invullen."
     }
+  },
+  "preview": {
+    "crumb": "Voorbeeld",
+    "subtitle": "Zoals invullers het zien. Er wordt niets verstuurd.",
+    "draft": "Concept",
+    "live": "Live · v{n}",
+    "version": "Versie om te bekijken",
+    "openLive": "Live formulier openen",
+    "goTo": "Naar pagina",
+    "page": "Pagina {n}",
+    "nothingSent": "Er wordt niets verstuurd of opgeslagen",
+    "rotate": "Liggend draaien",
+    "scale": "Getoond op {percent}%",
+    "full": "Volledig voorbeeld"
   }
 }

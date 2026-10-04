@@ -3083,5 +3083,19 @@
       "team": "您的团队",
       "teamDesc": "创建和管理此表单的工作区成员。不会改变谁可以填写。"
     }
+  },
+  "preview": {
+    "crumb": "预览",
+    "subtitle": "与填写者看到的一样。不会发送任何内容。",
+    "draft": "草稿",
+    "live": "已发布 · v{n}",
+    "version": "预览的版本",
+    "openLive": "打开已发布的表单",
+    "goTo": "前往页面",
+    "page": "第 {n} 页",
+    "nothingSent": "不会发送或保存任何内容",
+    "rotate": "横向旋转",
+    "scale": "按 {percent}% 显示",
+    "full": "完整预览"
   }
 }

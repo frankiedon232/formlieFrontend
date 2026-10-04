@@ -3083,5 +3083,19 @@
       "team": "Tim Anda",
       "teamDesc": "Staf di ruang kerja Anda yang membuat dan mengelola formulir ini. Ini tidak mengubah siapa yang dapat mengisinya."
     }
+  },
+  "preview": {
+    "crumb": "Pratinjau",
+    "subtitle": "Seperti yang dilihat responden. Tidak ada yang dikirim.",
+    "draft": "Draf",
+    "live": "Aktif · v{n}",
+    "version": "Versi yang ditampilkan",
+    "openLive": "Buka formulir aktif",
+    "goTo": "Ke halaman",
+    "page": "Halaman {n}",
+    "nothingSent": "Tidak ada yang dikirim atau disimpan",
+    "rotate": "Putar mendatar",
+    "scale": "Ditampilkan {percent}%",
+    "full": "Pratinjau penuh"
   }
 }

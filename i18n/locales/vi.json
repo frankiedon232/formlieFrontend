@@ -3083,5 +3083,19 @@
       "team": "Nhóm của bạn",
       "teamDesc": "Nhân viên trong không gian làm việc tạo và quản lý biểu mẫu này. Điều này không thay đổi ai có thể điền."
     }
+  },
+  "preview": {
+    "crumb": "Xem trước",
+    "subtitle": "Như người trả lời nhìn thấy. Không có gì được gửi.",
+    "draft": "Bản nháp",
+    "live": "Đang dùng · v{n}",
+    "version": "Phiên bản xem trước",
+    "openLive": "Mở biểu mẫu đang dùng",
+    "goTo": "Đến trang",
+    "page": "Trang {n}",
+    "nothingSent": "Không có gì được gửi hay lưu",
+    "rotate": "Xoay ngang",
+    "scale": "Hiển thị {percent}%",
+    "full": "Xem trước đầy đủ"
   }
 }

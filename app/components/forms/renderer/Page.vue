@@ -24,7 +24,10 @@ const props = defineProps<{
   framed?: boolean
   /** Public page: already sent from this browser / start one for someone else (renderer Form). */
   respondent?: RendererRespondent
+  /** Preview page: jump to a page or the thank-you screen (renderer Form). */
+  goTo?: { at: number | 'thanks'; n: number }
 }>()
+const emit = defineEmits<{ at: [at: number | 'thanks'] }>()
 // The title respondents see: the form name, or its version in the form language (settings.title).
 const heading = computed(() => props.schema.settings?.title?.trim() || props.title)
 const branding = useWorkspaceBranding()
@@ -128,7 +131,7 @@ const containerClass = computed(() => [
 
             <div class="flex-1" :class="inner">
               <FormsRendererPageHeader v-if="!band && !panel && hasHeader" class="mb-6" :theme="theme" :title="heading" :logo="logo" />
-              <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" :respondent="respondent" />
+              <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" :respondent="respondent" :go-to="goTo" @at="emit('at', $event)" />
             </div>
 
             <FormsRendererPageFooter v-if="attachedFooter" :theme="theme" :logo="footerLogo" attached />
