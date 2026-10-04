@@ -2840,7 +2840,8 @@
       "notYours": "Biểu mẫu này không thuộc không gian làm việc của bạn",
       "notYoursDesc": "Bạn đang đăng nhập vào một tổ chức khác, hoặc biểu mẫu không còn tồn tại."
     },
-    "visitor": "Đang điền với tư cách {who}"
+    "visitor": "Đang điền với tư cách {who}",
+    "opening": "Đang mở biểu mẫu của bạn…"
   },
   "share": {
     "crumb": "Chia sẻ",

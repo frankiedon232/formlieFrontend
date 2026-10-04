@@ -2840,7 +2840,8 @@
       "notYours": "Bu form çalışma alanınıza ait değil",
       "notYoursDesc": "Başka bir kuruluşta oturum açtınız veya form artık mevcut değil."
     },
-    "visitor": "{who} olarak dolduruluyor"
+    "visitor": "{who} olarak dolduruluyor",
+    "opening": "Formunuz açılıyor…"
   },
   "share": {
     "crumb": "Paylaş",

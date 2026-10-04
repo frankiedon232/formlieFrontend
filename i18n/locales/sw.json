@@ -2840,7 +2840,8 @@
       "notYours": "Fomu hii si sehemu ya eneo lako la kazi",
       "notYoursDesc": "Umeingia kwenye shirika jingine, au fomu haipo tena."
     },
-    "visitor": "Unajaza kama {who}"
+    "visitor": "Unajaza kama {who}",
+    "opening": "Inafungua fomu yako…"
   },
   "share": {
     "crumb": "Shiriki",

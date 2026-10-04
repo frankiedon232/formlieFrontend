@@ -2840,7 +2840,8 @@
       "notYours": "Ten formularz nie należy do Twojej przestrzeni roboczej",
       "notYoursDesc": "Jesteś zalogowany w innej organizacji albo formularz już nie istnieje."
     },
-    "visitor": "Wypełniasz jako {who}"
+    "visitor": "Wypełniasz jako {who}",
+    "opening": "Otwieranie formularza…"
   },
   "share": {
     "crumb": "Udostępnianie",

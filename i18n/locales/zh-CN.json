@@ -2840,7 +2840,8 @@
       "notYours": "此表单不属于您的工作区",
       "notYoursDesc": "您登录的是其他组织，或该表单已不存在。"
     },
-    "visitor": "以 {who} 的身份填写"
+    "visitor": "以 {who} 的身份填写",
+    "opening": "正在打开您的表单…"
   },
   "share": {
     "crumb": "分享",

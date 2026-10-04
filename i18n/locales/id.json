@@ -2840,7 +2840,8 @@
       "notYours": "Formulir ini bukan bagian dari ruang kerja Anda",
       "notYoursDesc": "Anda masuk ke organisasi lain, atau formulir sudah tidak ada."
     },
-    "visitor": "Mengisi sebagai {who}"
+    "visitor": "Mengisi sebagai {who}",
+    "opening": "Membuka formulir Anda…"
   },
   "share": {
     "crumb": "Bagikan",

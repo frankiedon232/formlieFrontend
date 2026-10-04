@@ -2840,7 +2840,8 @@
       "notYours": "Ce formulaire ne fait pas partie de votre espace de travail",
       "notYoursDesc": "Vous êtes connecté à une autre organisation, ou le formulaire n’existe plus."
     },
-    "visitor": "Rempli en tant que {who}"
+    "visitor": "Rempli en tant que {who}",
+    "opening": "Ouverture de votre formulaire…"
   },
   "share": {
     "crumb": "Partager",

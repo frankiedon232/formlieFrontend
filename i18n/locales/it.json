@@ -2840,7 +2840,8 @@
       "notYours": "Questo modulo non fa parte del suo spazio di lavoro",
       "notYoursDesc": "Ha effettuato l’accesso a un’altra organizzazione, oppure il modulo non esiste più."
     },
-    "visitor": "Compilazione come {who}"
+    "visitor": "Compilazione come {who}",
+    "opening": "Apertura del modulo…"
   },
   "share": {
     "crumb": "Condividi",

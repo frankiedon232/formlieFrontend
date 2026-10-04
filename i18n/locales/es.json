@@ -2840,7 +2840,8 @@
       "notYours": "Este formulario no forma parte de su espacio de trabajo",
       "notYoursDesc": "Ha iniciado sesión en otra organización, o el formulario ya no existe."
     },
-    "visitor": "Rellenando como {who}"
+    "visitor": "Rellenando como {who}",
+    "opening": "Abriendo su formulario…"
   },
   "share": {
     "crumb": "Compartir",

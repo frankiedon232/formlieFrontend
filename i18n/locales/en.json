@@ -2840,7 +2840,8 @@
       "notYours": "This form isn’t part of your workspace",
       "notYoursDesc": "You are signed in to a different organisation, or the form no longer exists."
     },
-    "visitor": "Filling in as {who}"
+    "visitor": "Filling in as {who}",
+    "opening": "Opening your form…"
   },
   "share": {
     "crumb": "Share",

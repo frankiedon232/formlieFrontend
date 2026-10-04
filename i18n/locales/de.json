@@ -2840,7 +2840,8 @@
       "notYours": "Dieses Formular gehört nicht zu Ihrem Arbeitsbereich",
       "notYoursDesc": "Sie sind bei einer anderen Organisation angemeldet, oder das Formular existiert nicht mehr."
     },
-    "visitor": "Ausfüllen als {who}"
+    "visitor": "Ausfüllen als {who}",
+    "opening": "Ihr Formular wird geöffnet…"
   },
   "share": {
     "crumb": "Teilen",

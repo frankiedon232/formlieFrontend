@@ -60,11 +60,14 @@ watch(language, code => void useLanguage(code))
 const dir = computed(() => APP_LOCALES.find(locale => locale.code === language.value)?.dir ?? 'ltr')
 
 // ── State, status code, SEO ──────────────────────────────────────────────────────────
-type View = 'open' | 'locked' | 'closed' | 'not_published' | 'expired' | 'scheduled' | 'limit_reached' | 'not_found' | 'error'
+/** Arriving with a personal invitation link or a sign-in pass: "Opening…" until it is checked, never a locked page first. */
+const arriving = ref(!!(route.query.invite || route.query.pass))
+type View = 'open' | 'opening' | 'locked' | 'closed' | 'not_published' | 'expired' | 'scheduled' | 'limit_reached' | 'not_found' | 'error'
 const view = computed<View>(() => {
   if (errorCode.value === 'FRM-FORM-1001') return 'not_found'
   if (errorCode.value || !form.value) return 'error'
-  return form.value.state === 'open' && form.value.locked ? 'locked' : form.value.state
+  if (form.value.state === 'open' && form.value.locked) return arriving.value ? 'opening' : 'locked'
+  return form.value.state
 })
 if (import.meta.server && ['not_found', 'error', 'expired'].includes(view.value)) {
   const event = useRequestEvent()
@@ -132,7 +135,7 @@ onMounted(async () => {
   const address = new URL(location.href)
   const invite = address.searchParams.get('invite')
   const pass = address.searchParams.get('pass')
-  if (!invite && !pass) return
+  if (!invite && !pass) return void (arriving.value = false)
   address.searchParams.delete('invite')
   address.searchParams.delete('pass')
   history.replaceState(history.state, '', address.pathname + address.search + address.hash)
@@ -141,6 +144,8 @@ onMounted(async () => {
     await onUnlocked()
   } catch {
     accessFailed.value = invite ? 'invite' : 'pass'
+  } finally {
+    arriving.value = false
   }
 })
 
@@ -172,6 +177,8 @@ const message = computed(() => {
       return { icon: 'i-lucide-calendar-x-2', title: t('public.expired.title'), description: t('public.expired.desc', { date: longDate(form.value?.closes_at) }) }
     case 'scheduled':
       return { icon: 'i-lucide-calendar-clock', title: t('public.scheduled.title'), description: t('public.scheduled.desc', { date: longDate(form.value?.opens_at) }) }
+    case 'opening':
+      return { icon: 'i-lucide-loader-circle', title: t('public.opening'), description: '' }
     case 'locked':
       return form.value?.lock === 'invite'
         ? { icon: 'i-lucide-mail-check', title: t('public.invite.title'), description: t('public.invite.desc') }
@@ -219,10 +226,10 @@ const message = computed(() => {
       <UCard class="w-full max-w-md" :ui="{ body: 'p-6 sm:p-8' }">
         <div class="flex flex-col items-center gap-3 text-center">
           <span class="flex size-12 items-center justify-center rounded-full bg-elevated">
-            <UIcon :name="message?.icon ?? 'i-lucide-info'" class="size-6 text-muted" />
+            <UIcon :name="message?.icon ?? 'i-lucide-info'" class="size-6 text-muted" :class="view === 'opening' ? 'animate-spin' : ''" />
           </span>
           <h1 class="text-lg font-semibold text-highlighted">{{ message?.title }}</h1>
-          <p class="text-sm text-muted">{{ message?.description }}</p>
+          <p v-if="message?.description" class="text-sm text-muted">{{ message?.description }}</p>
           <p v-if="form && view !== 'not_found'" class="text-xs text-dimmed">{{ form.name }} · {{ form.workspace.name }}</p>
           <PublicAccess v-if="view === 'locked' && form" :form="form" :form-key="formKey" :failed="accessFailed" :embed="embed" class="w-full" @unlocked="onUnlocked" />
           <UButton v-if="view === 'error'" :label="t('common.retry')" icon="i-lucide-rotate-cw" color="neutral" variant="outline" @click="reloadNuxtApp()" />

@@ -2840,7 +2840,8 @@
       "notYours": "Este formulário não pertence ao seu espaço de trabalho",
       "notYoursDesc": "Iniciou sessão noutra organização, ou o formulário já não existe."
     },
-    "visitor": "A preencher como {who}"
+    "visitor": "A preencher como {who}",
+    "opening": "A abrir o seu formulário…"
   },
   "share": {
     "crumb": "Partilhar",

@@ -2840,7 +2840,8 @@
       "notYours": "Dit formulier hoort niet bij uw werkruimte",
       "notYoursDesc": "U bent aangemeld bij een andere organisatie, of het formulier bestaat niet meer."
     },
-    "visitor": "Invullen als {who}"
+    "visitor": "Invullen als {who}",
+    "opening": "Uw formulier wordt geopend…"
   },
   "share": {
     "crumb": "Delen",
