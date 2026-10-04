@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Ngôn ngữ biểu mẫu",
-      "hint": "Nút, thông báo và ngày tháng theo ngôn ngữ này. Câu hỏi là văn bản bạn đã viết — dịch văn bản mẫu bằng nút bên dưới.",
-      "offer": "Dịch cả văn bản của biểu mẫu sang {language}?",
-      "offerDesc": "Câu hỏi, lựa chọn, phần và lời cảm ơn đến từ mẫu sẽ được dịch. Văn bản bạn tự viết giữ nguyên. Hoàn tác sẽ khôi phục.",
-      "translate": "Dịch",
-      "notNow": "Để sau",
-      "translateTo": "Dịch văn bản biểu mẫu sang {language}",
+      "hint": "Nút, thông báo và ngày tháng theo ngôn ngữ này, và văn bản đến từ mẫu cũng được dịch theo. Văn bản bạn tự viết giữ nguyên.",
       "translated": "Đã dịch {n} văn bản | Đã dịch {n} văn bản",
-      "kept": "{n} văn bản bạn viết được giữ nguyên — hãy sửa trong biểu mẫu. | {n} văn bản bạn viết được giữ nguyên — hãy sửa trong biểu mẫu."
+      "kept": "{n} văn bản bạn viết được giữ nguyên — hãy sửa trong biểu mẫu. | {n} văn bản bạn viết được giữ nguyên — hãy sửa trong biểu mẫu.",
+      "changed": "Ngôn ngữ biểu mẫu: {language}"
     },
     "template": {
       "title": "Mẫu",

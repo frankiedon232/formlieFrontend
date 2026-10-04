@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Bahasa formulir",
-      "hint": "Tombol, pesan, dan tanggal mengikuti bahasa ini. Pertanyaan adalah teks yang Anda tulis — terjemahkan teks templat dengan tombol di bawah.",
-      "offer": "Terjemahkan juga teks formulir ke {language}?",
-      "offerDesc": "Pertanyaan, opsi, bagian, dan teks terima kasih dari templat akan diterjemahkan. Teks yang Anda tulis sendiri tetap seperti semula. Urungkan untuk mengembalikannya.",
-      "translate": "Terjemahkan",
-      "notNow": "Nanti saja",
-      "translateTo": "Terjemahkan teks formulir ke {language}",
+      "hint": "Tombol, pesan, dan tanggal mengikuti bahasa ini, dan teks dari templat ikut diterjemahkan. Teks yang Anda tulis sendiri tetap seperti semula.",
       "translated": "{n} teks diterjemahkan | {n} teks diterjemahkan",
-      "kept": "{n} teks yang Anda tulis tetap seperti semula — ubah di formulir. | {n} teks yang Anda tulis tetap seperti semula — ubah di formulir."
+      "kept": "{n} teks yang Anda tulis tetap seperti semula — ubah di formulir. | {n} teks yang Anda tulis tetap seperti semula — ubah di formulir.",
+      "changed": "Bahasa formulir: {language}"
     },
     "template": {
       "title": "Templat",

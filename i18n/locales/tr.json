@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Form dili",
-      "hint": "Düğmeler, mesajlar ve tarihler bu dili izler. Sorular sizin yazdığınız metindir — şablon metnini aşağıdaki düğmeyle çevirin.",
-      "offer": "Formun metni de {language} diline çevrilsin mi?",
-      "offerDesc": "Şablondan gelen sorular, seçenekler, bölümler ve teşekkür metni çevrilir. Kendi yazdığınız metin olduğu gibi kalır. Geri al ile eski hâline döner.",
-      "translate": "Çevir",
-      "notNow": "Şimdi değil",
-      "translateTo": "Formun metnini {language} diline çevir",
+      "hint": "Düğmeler, mesajlar ve tarihler bu dili izler; şablondan gelen metin de birlikte çevrilir. Kendi yazdığınız metin olduğu gibi kalır.",
       "translated": "{n} metin çevrildi | {n} metin çevrildi",
-      "kept": "Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin. | Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin."
+      "kept": "Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin. | Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin.",
+      "changed": "Form dili: {language}"
     },
     "template": {
       "title": "Şablon",

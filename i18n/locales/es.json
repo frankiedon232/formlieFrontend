@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Idioma del formulario",
-      "hint": "Los botones, mensajes y fechas siguen este idioma. Las preguntas son el texto que escribiste: traduce el texto de la plantilla con el botón de abajo.",
-      "offer": "¿Traducir también el texto del formulario a {language}?",
-      "offerDesc": "Se traducen las preguntas, opciones, secciones y el texto de agradecimiento que vienen de una plantilla. El texto que escribiste tú se queda igual. Deshacer lo recupera.",
-      "translate": "Traducir",
-      "notNow": "Ahora no",
-      "translateTo": "Traducir el texto del formulario a {language}",
+      "hint": "Los botones, mensajes y fechas siguen este idioma, y el texto que viene de una plantilla se traduce con él. El texto que escribiste tú se queda igual.",
       "translated": "{n} texto traducido | {n} textos traducidos",
-      "kept": "{n} texto que escribiste se queda igual: edítalo en el formulario. | {n} textos que escribiste se quedan igual: edítalos en el formulario."
+      "kept": "{n} texto que escribiste se queda igual: edítalo en el formulario. | {n} textos que escribiste se quedan igual: edítalos en el formulario.",
+      "changed": "Idioma del formulario: {language}"
     },
     "template": {
       "title": "Plantilla",

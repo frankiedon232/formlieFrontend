@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Formularsprache",
-      "hint": "Schaltflächen, Meldungen und Datumsangaben folgen dieser Sprache. Die Fragen sind Ihr eigener Text – Vorlagentext übersetzen Sie mit der Schaltfläche unten.",
-      "offer": "Den Text des Formulars auch ins {language} übersetzen?",
-      "offerDesc": "Fragen, Optionen, Abschnitte und der Dankestext aus einer Vorlage werden übersetzt. Selbst geschriebener Text bleibt, wie er ist. Rückgängig stellt ihn wieder her.",
-      "translate": "Übersetzen",
-      "notNow": "Nicht jetzt",
-      "translateTo": "Text des Formulars ins {language} übersetzen",
+      "hint": "Schaltflächen, Meldungen und Datumsangaben folgen dieser Sprache, und Text aus einer Vorlage wird mit übersetzt. Selbst geschriebener Text bleibt, wie er ist.",
       "translated": "{n} Text übersetzt | {n} Texte übersetzt",
-      "kept": "{n} selbst geschriebener Text bleibt, wie er ist – bearbeiten Sie ihn im Formular. | {n} selbst geschriebene Texte bleiben, wie sie sind – bearbeiten Sie sie im Formular."
+      "kept": "{n} selbst geschriebener Text bleibt, wie er ist – bearbeiten Sie ihn im Formular. | {n} selbst geschriebene Texte bleiben, wie sie sind – bearbeiten Sie sie im Formular.",
+      "changed": "Formularsprache: {language}"
     },
     "template": {
       "title": "Vorlage",

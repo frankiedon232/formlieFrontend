@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Form language",
-      "hint": "Buttons, messages and dates follow this language. The questions are the text you wrote — translate template text with the button below.",
-      "offer": "Translate the form’s text into {language} too?",
-      "offerDesc": "Questions, options, sections and the thank-you text that came from a template are translated. Text you wrote yourself stays as it is. Undo brings it back.",
-      "translate": "Translate",
-      "notNow": "Not now",
-      "translateTo": "Translate the form’s text into {language}",
+      "hint": "Buttons, messages and dates follow this language, and text that came from a template is translated with it. Text you wrote yourself stays as it is.",
       "translated": "{n} text translated | {n} texts translated",
-      "kept": "{n} text you wrote stays as it is — edit it in the form. | {n} texts you wrote stay as they are — edit them in the form."
+      "kept": "{n} text you wrote stays as it is — edit it in the form. | {n} texts you wrote stay as they are — edit them in the form.",
+      "changed": "Form language: {language}"
     },
     "template": {
       "title": "Template",

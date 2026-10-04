@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Język formularza",
-      "hint": "Przyciski, komunikaty i daty są w tym języku. Pytania to tekst, który napisano — tekst z szablonu przetłumaczysz przyciskiem poniżej.",
-      "offer": "Przetłumaczyć też tekst formularza na: {language}?",
-      "offerDesc": "Pytania, opcje, sekcje i podziękowanie pochodzące z szablonu zostaną przetłumaczone. Tekst napisany samodzielnie pozostanie bez zmian. Cofnij przywraca poprzedni.",
-      "translate": "Przetłumacz",
-      "notNow": "Nie teraz",
-      "translateTo": "Przetłumacz tekst formularza na: {language}",
+      "hint": "Przyciski, komunikaty i daty są w tym języku, a tekst z szablonu zostaje przetłumaczony razem z nimi. Tekst napisany samodzielnie pozostaje bez zmian.",
       "translated": "Przetłumaczono tekstów: {n} | Przetłumaczono tekstów: {n}",
-      "kept": "Samodzielnie napisane teksty ({n}) pozostają bez zmian — edytuj je w formularzu. | Samodzielnie napisane teksty ({n}) pozostają bez zmian — edytuj je w formularzu."
+      "kept": "Samodzielnie napisane teksty ({n}) pozostają bez zmian — edytuj je w formularzu. | Samodzielnie napisane teksty ({n}) pozostają bez zmian — edytuj je w formularzu.",
+      "changed": "Język formularza: {language}"
     },
     "template": {
       "title": "Szablon",

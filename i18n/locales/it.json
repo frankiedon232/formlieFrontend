@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Lingua del modulo",
-      "hint": "Pulsanti, messaggi e date seguono questa lingua. Le domande sono il testo che hai scritto: traduci il testo del modello con il pulsante qui sotto.",
-      "offer": "Tradurre anche il testo del modulo in {language}?",
-      "offerDesc": "Domande, opzioni, sezioni e messaggio di ringraziamento provenienti da un modello vengono tradotti. Il testo scritto da te resta com’è. Annulla lo ripristina.",
-      "translate": "Traduci",
-      "notNow": "Non ora",
-      "translateTo": "Traduci il testo del modulo in {language}",
+      "hint": "Pulsanti, messaggi e date seguono questa lingua e il testo proveniente da un modello viene tradotto insieme. Il testo scritto da te resta com’è.",
       "translated": "{n} testo tradotto | {n} testi tradotti",
-      "kept": "{n} testo scritto da te resta com’è: modificalo nel modulo. | {n} testi scritti da te restano come sono: modificali nel modulo."
+      "kept": "{n} testo scritto da te resta com’è: modificalo nel modulo. | {n} testi scritti da te restano come sono: modificali nel modulo.",
+      "changed": "Lingua del modulo: {language}"
     },
     "template": {
       "title": "Modello",

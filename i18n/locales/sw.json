@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Lugha ya fomu",
-      "hint": "Vitufe, ujumbe na tarehe hufuata lugha hii. Maswali ni maandishi uliyoandika — tafsiri maandishi ya kiolezo kwa kitufe kilicho hapa chini.",
-      "offer": "Tafsiri pia maandishi ya fomu kwa {language}?",
-      "offerDesc": "Maswali, chaguo, sehemu na ujumbe wa shukrani uliotoka kwenye kiolezo vitatafsiriwa. Maandishi uliyoandika mwenyewe yanabaki kama yalivyo. Tendua huyarudisha.",
-      "translate": "Tafsiri",
-      "notNow": "Si sasa",
-      "translateTo": "Tafsiri maandishi ya fomu kwa {language}",
+      "hint": "Vitufe, ujumbe na tarehe hufuata lugha hii, na maandishi yaliyotoka kwenye kiolezo hutafsiriwa pamoja nayo. Maandishi uliyoandika mwenyewe yanabaki kama yalivyo.",
       "translated": "Maandishi {n} yametafsiriwa | Maandishi {n} yametafsiriwa",
-      "kept": "Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu. | Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu."
+      "kept": "Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu. | Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu.",
+      "changed": "Lugha ya fomu: {language}"
     },
     "template": {
       "title": "Kiolezo",

@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Formuliertaal",
-      "hint": "Knoppen, meldingen en datums volgen deze taal. De vragen zijn de tekst die je zelf schreef — vertaal sjabloontekst met de knop hieronder.",
-      "offer": "De tekst van het formulier ook naar het {language} vertalen?",
-      "offerDesc": "Vragen, opties, secties en de bedanktekst uit een sjabloon worden vertaald. Tekst die je zelf schreef blijft zoals hij is. Ongedaan maken zet hem terug.",
-      "translate": "Vertalen",
-      "notNow": "Niet nu",
-      "translateTo": "Tekst van het formulier naar het {language} vertalen",
+      "hint": "Knoppen, meldingen en datums volgen deze taal, en tekst uit een sjabloon wordt meevertaald. Tekst die je zelf schreef blijft zoals hij is.",
       "translated": "{n} tekst vertaald | {n} teksten vertaald",
-      "kept": "{n} zelfgeschreven tekst blijft zoals hij is — pas hem aan in het formulier. | {n} zelfgeschreven teksten blijven zoals ze zijn — pas ze aan in het formulier."
+      "kept": "{n} zelfgeschreven tekst blijft zoals hij is — pas hem aan in het formulier. | {n} zelfgeschreven teksten blijven zoals ze zijn — pas ze aan in het formulier.",
+      "changed": "Taal van het formulier: {language}"
     },
     "template": {
       "title": "Sjabloon",

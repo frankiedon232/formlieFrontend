@@ -1894,14 +1894,10 @@
     },
     "language": {
       "title": "Langue du formulaire",
-      "hint": "Les boutons, messages et dates suivent cette langue. Les questions sont le texte que vous avez écrit — traduisez le texte du modèle avec le bouton ci-dessous.",
-      "offer": "Traduire aussi le texte du formulaire en {language} ?",
-      "offerDesc": "Les questions, options, sections et le message de remerciement issus d’un modèle sont traduits. Le texte que vous avez écrit reste tel quel. Annuler le rétablit.",
-      "translate": "Traduire",
-      "notNow": "Plus tard",
-      "translateTo": "Traduire le texte du formulaire en {language}",
+      "hint": "Les boutons, messages et dates suivent cette langue, et le texte issu d’un modèle est traduit avec elle. Le texte que vous avez écrit reste tel quel.",
       "translated": "{n} texte traduit | {n} textes traduits",
-      "kept": "{n} texte que vous avez écrit reste tel quel — modifiez-le dans le formulaire. | {n} textes que vous avez écrits restent tels quels — modifiez-les dans le formulaire."
+      "kept": "{n} texte que vous avez écrit reste tel quel — modifiez-le dans le formulaire. | {n} textes que vous avez écrits restent tels quels — modifiez-les dans le formulaire.",
+      "changed": "Langue du formulaire : {language}"
     },
     "template": {
       "title": "Modèle",

@@ -1,9 +1,9 @@
 <!--
   Form settings → Form language (decision 73). The language sets everything Formalie shows
-  (buttons, messages, dates); the form's own text is what the creator wrote. Changing the language
-  offers to translate that text too (owner, 2026-10-04): every text that came from a template is
-  translated (POST /templates/translate-content); text people wrote stays as it is — translated per
-  language later (form translations, M4). Undo brings the previous text back.
+  (buttons, messages, dates) and — in the same step (owner, 2026-10-04: "why a second button?") —
+  moves the form's own text into it: every text that came from a template is translated
+  (POST /templates/translate-content); text people wrote stays as it is (translated per language
+  later, form translations M4). One undo brings back both the language and the text.
 -->
 <script setup lang="ts">
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
@@ -19,39 +19,39 @@ const schema = builder.schema
 const items = computed(() => APP_LOCALES.map(item => ({ value: item.code, label: item.name, description: item.englishName, icon: item.flag })))
 const current = computed(() => schema.value?.settings?.language ?? 'en')
 const flag = computed(() => APP_LOCALES.find(item => item.code === current.value)?.flag)
-const languageName = computed(() => APP_LOCALES.find(item => item.code === current.value)?.name ?? current.value)
-
-/** The language the text was in before the last change (offered as "translate from"). */
-const previous = ref<string | null>(null)
-function setLanguage(value: string) {
-  if (!schema.value || value === current.value) return
-  builder.history.record()
-  previous.value = current.value
-  schema.value.settings = { ...schema.value.settings, language: value }
-}
+const nameOf = (code: string) => APP_LOCALES.find(item => item.code === code)?.name ?? code
 
 const { busy, run } = useBusy()
-async function translate() {
-  if (!schema.value) return
+async function setLanguage(value: string) {
+  if (!schema.value || value === current.value) return
+  const from = current.value
+  // One undo step for the language and the translated text.
+  builder.history.record()
+  schema.value.settings = { ...schema.value.settings, language: value }
   await run(async () => {
     try {
       const { data } = await api.post<{ schema: FormSchemaV1; translated: number; kept: number }>('/templates/translate-content', {
         schema: schema.value,
-        from: previous.value ?? 'en',
-        to: current.value,
+        from,
+        to: value,
       })
-      if (!schema.value) return
-      builder.history.record()
+      if (!schema.value || schema.value.settings?.language !== value) return
       schema.value.pages = data.schema.pages
       schema.value.thank_you = data.schema.thank_you
-      previous.value = null
       toast.add({
-        title: t('builder.language.translated', { n: data.translated }, data.translated),
-        description: data.kept ? t('builder.language.kept', { n: data.kept }, data.kept) : undefined,
+        title: t('builder.language.changed', { language: nameOf(value) }),
+        description: [
+          data.translated ? t('builder.language.translated', { n: data.translated }, data.translated) : '',
+          data.kept ? t('builder.language.kept', { n: data.kept }, data.kept) : '',
+        ]
+          .filter(Boolean)
+          .join(' '),
         icon: 'i-lucide-languages',
-        color: data.translated ? 'success' : 'neutral',
+        color: 'success',
+        actions: [{ label: t('builder.undo'), color: 'neutral', variant: 'outline', size: 'xs', onClick: () => void builder.history.undo() }],
       })
     } catch (error) {
+      // The language is changed; only the text stays as it was.
       handle(error)
     }
   })
@@ -67,35 +67,13 @@ async function translate() {
         :items="items"
         value-key="value"
         :search-input="{ placeholder: t('common.search') }"
-        :icon="flag"
+        :icon="busy ? 'i-lucide-loader-circle' : flag"
+        :loading="busy"
+        :disabled="busy"
         class="w-full"
         :aria-label="t('builder.language.title')"
         @update:model-value="v => setLanguage(String(v))"
       />
     </UFormField>
-    <UAlert
-      v-if="previous"
-      icon="i-lucide-languages"
-      color="neutral"
-      variant="subtle"
-      :title="t('builder.language.offer', { language: languageName })"
-      :description="t('builder.language.offerDesc')"
-      :actions="[
-        { label: t('builder.language.translate'), color: 'neutral', size: 'xs', loading: busy, onClick: translate },
-        { label: t('builder.language.notNow'), color: 'neutral', variant: 'ghost', size: 'xs', disabled: busy, onClick: () => (previous = null) },
-      ]"
-      orientation="vertical"
-    />
-    <UButton
-      v-else
-      :label="t('builder.language.translateTo', { language: languageName })"
-      icon="i-lucide-languages"
-      color="neutral"
-      variant="outline"
-      size="xs"
-      class="self-start"
-      :loading="busy"
-      @click="translate"
-    />
   </section>
 </template>
