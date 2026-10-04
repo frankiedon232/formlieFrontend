@@ -232,7 +232,8 @@
       "noVersions": "Pas encore publié — les versions apparaissent lors de la publication.",
       "detailsTitle": "Détails",
       "tags": "Étiquettes",
-      "noHistory": "Publié avant la tenue de l’historique des versions — il commence à la prochaine publication."
+      "noHistory": "Publié avant la tenue de l’historique des versions — il commence à la prochaine publication.",
+      "embedCode": "Code d’intégration"
     },
     "qr": {
       "title": "Code QR",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Choisissez une fin postérieure au début.",
       "pastWarning": "Cette date de fin est déjà passée — le formulaire cessera d’accepter des réponses dès l’enregistrement.",
       "saved": "Disponibilité enregistrée"
+    },
+    "embed": {
+      "title": "Intégrer à votre site",
+      "desc": "Collez ce code dans la page de votre site où le formulaire doit apparaître.",
+      "notLive": "Le formulaire n’est pas encore publié — l’intégration l’affichera une fois en ligne.",
+      "height": "Hauteur",
+      "auto": "Hauteur automatique (recommandé)",
+      "autoDesc": "Le cadre s’agrandit et se réduit avec le formulaire — sans barre de défilement intérieure.",
+      "fixed": "Hauteur fixe",
+      "fixedDesc": "Toujours la même hauteur ; le formulaire défile dans le cadre.",
+      "pixels": "Hauteur en pixels",
+      "pixelsHint": "240–4000",
+      "code": "Code",
+      "copy": "Copier le code",
+      "copied": "Code d’intégration copié",
+      "where": "Collez-le en HTML (dans la plupart des créateurs de sites : un bloc « Intégrer » ou « HTML personnalisé »)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Une réponse avec exactement ces réponses a déjà été envoyée.",
     "FRM-RESP-1006": "Une réponse de cette personne a déjà été envoyée.",
     "FRM-RESP-1007": "Cela ressemble à une réponse déjà envoyée. Confirmez qu’il s’agit d’une autre personne.",
-    "FRM-RESP-1008": "Vérifiez votre adresse e-mail pour envoyer ce formulaire."
+    "FRM-RESP-1008": "Vérifiez votre adresse e-mail pour envoyer ce formulaire.",
+    "FRM-RESP-1009": "Nous n’avons pas pu confirmer que cette réponse a été envoyée par une personne. Veuillez réessayer."
   },
   "errorUi": {
     "reference": "Référence : {id}",

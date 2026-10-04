@@ -232,7 +232,8 @@
       "noVersions": "Belum diterbitkan — versi muncul saat Anda menerbitkan.",
       "detailsTitle": "Detail",
       "tags": "Tag",
-      "noHistory": "Diterbitkan sebelum riwayat versi dicatat — riwayat dimulai pada penerbitan berikutnya."
+      "noHistory": "Diterbitkan sebelum riwayat versi dicatat — riwayat dimulai pada penerbitan berikutnya.",
+      "embedCode": "Kode sematan"
     },
     "qr": {
       "title": "Kode QR",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Pilih akhir setelah tanggal mulai.",
       "pastWarning": "Tanggal akhir ini sudah lewat — formulir berhenti menerima respons begitu Anda menyimpan.",
       "saved": "Ketersediaan disimpan"
+    },
+    "embed": {
+      "title": "Sematkan di situs web Anda",
+      "desc": "Tempel kode ini di halaman situs web Anda tempat formulir harus muncul.",
+      "notLive": "Formulir belum dipublikasikan — sematan akan menampilkannya setelah aktif.",
+      "height": "Tinggi",
+      "auto": "Tinggi otomatis (disarankan)",
+      "autoDesc": "Bingkai membesar dan mengecil mengikuti formulir — tanpa bilah gulir di dalamnya.",
+      "fixed": "Tinggi tetap",
+      "fixedDesc": "Selalu setinggi yang sama; formulir bergulir di dalam bingkai.",
+      "pixels": "Tinggi dalam piksel",
+      "pixelsHint": "240–4000",
+      "code": "Kode",
+      "copy": "Salin kode",
+      "copied": "Kode sematan disalin",
+      "where": "Tempel sebagai HTML (di sebagian besar pembuat situs: blok “Embed” atau “Custom HTML”)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Respons dengan jawaban yang persis sama sudah dikirim.",
     "FRM-RESP-1006": "Respons dari orang ini sudah dikirim.",
     "FRM-RESP-1007": "Ini tampak seperti respons yang sudah dikirim. Konfirmasi bahwa ini orang yang berbeda.",
-    "FRM-RESP-1008": "Verifikasi email Anda untuk mengirim formulir ini."
+    "FRM-RESP-1008": "Verifikasi email Anda untuk mengirim formulir ini.",
+    "FRM-RESP-1009": "Kami tidak dapat memastikan bahwa tanggapan ini dikirim oleh manusia. Silakan coba lagi."
   },
   "errorUi": {
     "reference": "Referensi: {id}",

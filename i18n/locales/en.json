@@ -232,7 +232,8 @@
       "noVersions": "Not published yet — versions appear when you publish.",
       "detailsTitle": "Details",
       "tags": "Tags",
-      "noHistory": "Published before version history was kept — the next publish starts it."
+      "noHistory": "Published before version history was kept — the next publish starts it.",
+      "embedCode": "Embed code"
     },
     "qr": {
       "title": "QR code",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Choose an end after the start.",
       "pastWarning": "This end date has already passed — the form stops taking responses as soon as you save.",
       "saved": "Availability saved"
+    },
+    "embed": {
+      "title": "Embed on your website",
+      "desc": "Paste this code into a page of your website where the form should appear.",
+      "notLive": "The form isn’t published yet — the embed shows it once it is live.",
+      "height": "Height",
+      "auto": "Auto height (recommended)",
+      "autoDesc": "The frame grows and shrinks with the form — no inner scroll bar.",
+      "fixed": "Fixed height",
+      "fixedDesc": "Always the same height; the form scrolls inside the frame.",
+      "pixels": "Height in pixels",
+      "pixelsHint": "240–4000",
+      "code": "Code",
+      "copy": "Copy code",
+      "copied": "Embed code copied",
+      "where": "Paste it as HTML (in most website builders: an “Embed” or “Custom HTML” block)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "A response with exactly these answers was already submitted.",
     "FRM-RESP-1006": "A response from this person was already submitted.",
     "FRM-RESP-1007": "This looks like a response that was already submitted. Confirm this is a different person.",
-    "FRM-RESP-1008": "Verify your email to submit this form."
+    "FRM-RESP-1008": "Verify your email to submit this form.",
+    "FRM-RESP-1009": "We couldn’t confirm this response was sent by a person. Please try again."
   },
   "errorUi": {
     "reference": "Reference: {id}",

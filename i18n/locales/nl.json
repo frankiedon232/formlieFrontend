@@ -232,7 +232,8 @@
       "noVersions": "Nog niet gepubliceerd — versies verschijnen zodra je publiceert.",
       "detailsTitle": "Details",
       "tags": "Tags",
-      "noHistory": "Gepubliceerd voordat de versiegeschiedenis werd bijgehouden — die begint bij de volgende publicatie."
+      "noHistory": "Gepubliceerd voordat de versiegeschiedenis werd bijgehouden — die begint bij de volgende publicatie.",
+      "embedCode": "Insluitcode"
     },
     "qr": {
       "title": "QR-code",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Kies een einde na de start.",
       "pastWarning": "Deze einddatum is al voorbij: het formulier neemt geen antwoorden meer aan zodra je opslaat.",
       "saved": "Beschikbaarheid opgeslagen"
+    },
+    "embed": {
+      "title": "Insluiten op je website",
+      "desc": "Plak deze code op de pagina van je website waar het formulier moet verschijnen.",
+      "notLive": "Het formulier is nog niet gepubliceerd — de insluiting toont het zodra het live is.",
+      "height": "Hoogte",
+      "auto": "Automatische hoogte (aanbevolen)",
+      "autoDesc": "Het kader groeit en krimpt mee met het formulier — geen schuifbalk binnenin.",
+      "fixed": "Vaste hoogte",
+      "fixedDesc": "Altijd even hoog; het formulier scrolt binnen het kader.",
+      "pixels": "Hoogte in pixels",
+      "pixelsHint": "240–4000",
+      "code": "Code",
+      "copy": "Code kopiëren",
+      "copied": "Insluitcode gekopieerd",
+      "where": "Plak het als HTML (in de meeste websitebouwers: een blok “Insluiten” of “Aangepaste HTML”)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Er is al een antwoord met exact deze antwoorden verzonden.",
     "FRM-RESP-1006": "Er is al een reactie van deze persoon verstuurd.",
     "FRM-RESP-1007": "Dit lijkt op een reactie die al is verstuurd. Bevestig dat dit iemand anders is.",
-    "FRM-RESP-1008": "Verifieer je e-mailadres om dit formulier te versturen."
+    "FRM-RESP-1008": "Verifieer je e-mailadres om dit formulier te versturen.",
+    "FRM-RESP-1009": "We konden niet bevestigen dat dit antwoord door een persoon is verstuurd. Probeer het opnieuw."
   },
   "errorUi": {
     "reference": "Referentie: {id}",

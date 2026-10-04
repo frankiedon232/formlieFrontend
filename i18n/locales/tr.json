@@ -232,7 +232,8 @@
       "noVersions": "Henüz yayımlanmadı — sürümler yayımladığınızda görünür.",
       "detailsTitle": "Ayrıntılar",
       "tags": "Etiketler",
-      "noHistory": "Sürüm geçmişi tutulmadan önce yayımlandı — geçmiş bir sonraki yayımlamayla başlar."
+      "noHistory": "Sürüm geçmişi tutulmadan önce yayımlandı — geçmiş bir sonraki yayımlamayla başlar.",
+      "embedCode": "Yerleştirme kodu"
     },
     "qr": {
       "title": "QR kodu",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Başlangıçtan sonra bir bitiş seçin.",
       "pastWarning": "Bu bitiş tarihi geçti — form, kaydeder kaydetmez yanıt almayı durdurur.",
       "saved": "Erişilebilirlik kaydedildi"
+    },
+    "embed": {
+      "title": "Web sitenize yerleştirin",
+      "desc": "Bu kodu web sitenizde formun görünmesini istediğiniz sayfaya yapıştırın.",
+      "notLive": "Form henüz yayımlanmadı — yayına girdiğinde yerleştirmede görünür.",
+      "height": "Yükseklik",
+      "auto": "Otomatik yükseklik (önerilen)",
+      "autoDesc": "Çerçeve formla birlikte büyür ve küçülür — içte kaydırma çubuğu olmaz.",
+      "fixed": "Sabit yükseklik",
+      "fixedDesc": "Her zaman aynı yükseklik; form çerçevenin içinde kayar.",
+      "pixels": "Piksel cinsinden yükseklik",
+      "pixelsHint": "240–4000",
+      "code": "Kod",
+      "copy": "Kodu kopyala",
+      "copied": "Yerleştirme kodu kopyalandı",
+      "where": "HTML olarak yapıştırın (çoğu site oluşturucuda: “Embed” veya “Custom HTML” bloğu)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Birebir aynı yanıtları içeren bir yanıt zaten gönderildi.",
     "FRM-RESP-1006": "Bu kişiden zaten bir yanıt gönderildi.",
     "FRM-RESP-1007": "Bu, daha önce gönderilmiş bir yanıta benziyor. Bunun farklı bir kişi olduğunu onaylayın.",
-    "FRM-RESP-1008": "Bu formu göndermek için e-postanızı doğrulayın."
+    "FRM-RESP-1008": "Bu formu göndermek için e-postanızı doğrulayın.",
+    "FRM-RESP-1009": "Bu yanıtın bir kişi tarafından gönderildiği doğrulanamadı. Lütfen tekrar deneyin."
   },
   "errorUi": {
     "reference": "Referans: {id}",

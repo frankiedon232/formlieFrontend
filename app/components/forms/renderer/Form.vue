@@ -24,7 +24,7 @@ const props = defineProps<{
   /** Designer: show the thank-you page instead of the questions. */
   showThankYou?: boolean
   /** Public page: send the answers; the button stays busy until it reports back (no double submit). */
-  submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
+  submit?: (answers: Record<string, unknown>, extra?: { trap?: string }) => Promise<RendererSubmitOutcome>
   /** Public page: this browser already sent the form, and how to start one for someone else. */
   respondent?: RendererRespondent
 }>()
@@ -162,6 +162,8 @@ watch(answers, () => attempted.value && check(false), { deep: true })
 const trail = ref<number[]>([])
 const { date: formatDate } = useFormat()
 const submitting = ref(false)
+// Spam check (decision 89): a field people never see or reach; bots fill it in.
+const trap = ref('')
 /** Thank-you text from the server (it may differ from the schema's, e.g. per language). */
 const thanks = ref<{ title: string; message: string } | null>(null)
 // After sending (public page): "already sent from this browser" and exact-duplicate notices.
@@ -188,7 +190,7 @@ async function send() {
   if (!props.submit || props.preview) return (done.value = true)
   submitting.value = true
   try {
-    const outcome = await props.submit({ ...answers.value })
+    const outcome = await props.submit({ ...answers.value }, { trap: trap.value })
     duplicateNotice.value = outcome.done ? false : outcome.reason === 'duplicate'
     registered.value = !outcome.done && outcome.reason === 'registered' ? { at: outcome.hint?.at } : null
     if (!outcome.done && outcome.reason === 'already') return void (blocked.value = true)
@@ -279,7 +281,8 @@ function restart() {
         <UProgress :model-value="position + 1" :max="pages.length" color="neutral" size="xs" />
       </div>
       <h2 v-if="page.title" class="text-xl font-semibold text-highlighted">{{ page.title }}</h2>
-      <form class="flex flex-col gap-4" novalidate @submit.prevent="next">
+      <form class="relative flex flex-col gap-4" novalidate @submit.prevent="next">
+        <input v-if="submit && !preview" v-model="trap" type="text" name="formalie_hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="pointer-events-none absolute -start-[200vw] top-0 size-px opacity-0">
         <div v-for="row in shownRows" :key="row.id" class="grid grid-cols-12 gap-x-4 gap-y-4">
           <div
             v-for="field in row.fields"

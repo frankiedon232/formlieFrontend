@@ -232,7 +232,8 @@
       "noVersions": "Aún no publicado: las versiones aparecen al publicar.",
       "detailsTitle": "Detalles",
       "tags": "Etiquetas",
-      "noHistory": "Publicado antes de que se guardara el historial de versiones; empieza con la próxima publicación."
+      "noHistory": "Publicado antes de que se guardara el historial de versiones; empieza con la próxima publicación.",
+      "embedCode": "Código para insertar"
     },
     "qr": {
       "title": "Código QR",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Elige un final posterior al inicio.",
       "pastWarning": "Esta fecha de fin ya ha pasado: el formulario dejará de aceptar respuestas en cuanto guardes.",
       "saved": "Disponibilidad guardada"
+    },
+    "embed": {
+      "title": "Insertar en tu sitio web",
+      "desc": "Pega este código en la página de tu sitio web donde debe aparecer el formulario.",
+      "notLive": "El formulario aún no está publicado; se mostrará cuando esté activo.",
+      "height": "Altura",
+      "auto": "Altura automática (recomendada)",
+      "autoDesc": "El marco crece y se encoge con el formulario, sin barra de desplazamiento interna.",
+      "fixed": "Altura fija",
+      "fixedDesc": "Siempre la misma altura; el formulario se desplaza dentro del marco.",
+      "pixels": "Altura en píxeles",
+      "pixelsHint": "240–4000",
+      "code": "Código",
+      "copy": "Copiar código",
+      "copied": "Código copiado",
+      "where": "Pégalo como HTML (en la mayoría de creadores de sitios: un bloque «Insertar» o «HTML personalizado»)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Ya se envió una respuesta con exactamente estas respuestas.",
     "FRM-RESP-1006": "Esta persona ya envió una respuesta.",
     "FRM-RESP-1007": "Parece una respuesta que ya se envió. Confirma que se trata de otra persona.",
-    "FRM-RESP-1008": "Verifica tu correo para enviar este formulario."
+    "FRM-RESP-1008": "Verifica tu correo para enviar este formulario.",
+    "FRM-RESP-1009": "No pudimos confirmar que esta respuesta la envió una persona. Inténtalo de nuevo."
   },
   "errorUi": {
     "reference": "Referencia: {id}",

@@ -63,6 +63,7 @@ export const ERROR_CODES = {
   'FRM-RESP-1006': { status: 409, message: 'A response from this person was already submitted.' },
   'FRM-RESP-1007': { status: 409, message: 'This looks like a response that was already submitted. Confirm this is a different person.' },
   'FRM-RESP-1008': { status: 403, message: 'Verify your email to submit this form.' },
+  'FRM-RESP-1009': { status: 403, message: 'We could not confirm this response was sent by a person. Please try again.' },
   'FRM-FILE-1001': { status: 400, message: 'File type not allowed.' },
   'FRM-FILE-1002': { status: 413, message: 'File too large.' },
   'FRM-FILE-1003': { status: 400, message: 'File failed security scan.' },

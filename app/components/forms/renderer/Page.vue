@@ -19,7 +19,7 @@ const props = defineProps<{
   preview?: boolean
   showThankYou?: boolean
   /** Public page: sends the answers (see renderer Form). */
-  submit?: (answers: Record<string, unknown>) => Promise<RendererSubmitOutcome>
+  submit?: (answers: Record<string, unknown>, extra?: { trap?: string }) => Promise<RendererSubmitOutcome>
   /** Show the page frame around the form (public link and previews; never in embeds). */
   framed?: boolean
   /** Public page: already sent from this browser / start one for someone else (renderer Form). */

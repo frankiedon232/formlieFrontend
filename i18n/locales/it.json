@@ -232,7 +232,8 @@
       "noVersions": "Non ancora pubblicato: le versioni compaiono quando pubblichi.",
       "detailsTitle": "Dettagli",
       "tags": "Tag",
-      "noHistory": "Pubblicato prima che venisse tenuta la cronologia delle versioni: inizia con la prossima pubblicazione."
+      "noHistory": "Pubblicato prima che venisse tenuta la cronologia delle versioni: inizia con la prossima pubblicazione.",
+      "embedCode": "Codice di incorporamento"
     },
     "qr": {
       "title": "Codice QR",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Scegli una fine successiva all’inizio.",
       "pastWarning": "Questa data di fine è già passata: il modulo smetterà di accettare risposte appena salvi.",
       "saved": "Disponibilità salvata"
+    },
+    "embed": {
+      "title": "Incorpora nel tuo sito",
+      "desc": "Incolla questo codice nella pagina del tuo sito in cui deve comparire il modulo.",
+      "notLive": "Il modulo non è ancora pubblicato: l’incorporamento lo mostrerà quando sarà attivo.",
+      "height": "Altezza",
+      "auto": "Altezza automatica (consigliata)",
+      "autoDesc": "Il riquadro si allarga e si riduce con il modulo, senza barra di scorrimento interna.",
+      "fixed": "Altezza fissa",
+      "fixedDesc": "Sempre la stessa altezza; il modulo scorre all’interno del riquadro.",
+      "pixels": "Altezza in pixel",
+      "pixelsHint": "240–4000",
+      "code": "Codice",
+      "copy": "Copia codice",
+      "copied": "Codice copiato",
+      "where": "Incollalo come HTML (nella maggior parte dei site builder: un blocco “Incorpora” o “HTML personalizzato”)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "È già stata inviata una risposta con esattamente queste risposte.",
     "FRM-RESP-1006": "Questa persona ha già inviato una risposta.",
     "FRM-RESP-1007": "Sembra una risposta già inviata. Conferma che si tratta di un’altra persona.",
-    "FRM-RESP-1008": "Verifica la tua email per inviare questo modulo."
+    "FRM-RESP-1008": "Verifica la tua email per inviare questo modulo.",
+    "FRM-RESP-1009": "Non è stato possibile confermare che questa risposta sia stata inviata da una persona. Riprova."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",

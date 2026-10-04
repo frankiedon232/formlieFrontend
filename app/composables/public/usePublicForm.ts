@@ -64,7 +64,8 @@ export async function usePublicForm(key: string) {
  *     and the API answers repeats with the same response, never a second one;
  *   - this browser remembers it has sent the form (localStorage receipt, not personal data) so a
  *     return visit says so; a new response from the same browser only "for someone else";
- *   - refusals become outcomes the form can show: already sent · exact duplicate · answer taken.
+ *   - refusals become outcomes the form can show: already sent · exact duplicate · answer taken;
+ *   - spam check (decision 89): a proof-of-work challenge solved in the background + a hidden trap field.
  */
 export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?: { token: Ref<string | null>; finished: () => void }) {
   const api = useApi()
@@ -81,7 +82,27 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
     } catch {
       alreadySent.value = false
     }
+    prepareProof()
   })
+
+  // Spam check (decision 89): a challenge from the server, solved in the background while the
+  // person fills in; a new one after each response.
+  let proof: Promise<{ token: string; nonce: number; ready: number } | null> | null = null
+  function prepareProof() {
+    proof = (async () => {
+      try {
+        const { data } = await api.post<{ token: string; salt: string; difficulty: number; min_wait_ms: number }>(
+          `/public/forms/${encodeURIComponent(key)}/challenge`,
+          undefined,
+          { background: true },
+        )
+        const nonce = await solveWork(data.salt, data.difficulty)
+        return nonce == null ? null : { token: data.token, nonce, ready: Date.now() + data.min_wait_ms }
+      } catch {
+        return null // The submission asks again (FRM-RESP-1009 → one automatic retry).
+      }
+    })()
+  }
   /** Set when the respondent confirmed the next response is for another person. */
   const forSomeoneElse = ref(false)
   /** Set when the respondent confirmed they are not the person of a similar earlier response. */
@@ -109,21 +130,37 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
     memoryId = undefined
   }
 
-  async function submit(answers: Record<string, unknown>): Promise<RendererSubmitOutcome> {
+  async function send(answers: Record<string, unknown>, trap: string) {
+    if (!proof) prepareProof()
+    const solved = await proof
+    // A challenge is valid a few seconds after it was issued (people don't fill in a form instantly).
+    if (solved && solved.ready > Date.now()) await new Promise(done => setTimeout(done, solved.ready - Date.now()))
+    return api.post<PublicSubmitResult>(
+      `/public/forms/${encodeURIComponent(key)}/submit`,
+      {
+        data: answers,
+        channel,
+        language: locale.value,
+        for_someone_else: forSomeoneElse.value || undefined,
+        confirmed_different: confirmedDifferent.value || undefined,
+        verification_token: verificationToken.value ?? undefined,
+        resume_token: resume?.token.value ?? undefined,
+        challenge: solved ? { token: solved.token, nonce: solved.nonce } : undefined,
+        trap: trap || undefined,
+      },
+      { headers: { 'Idempotency-Key': submissionId() } },
+    )
+  }
+
+  async function submit(answers: Record<string, unknown>, extra: { trap?: string } = {}): Promise<RendererSubmitOutcome> {
     try {
-      const { data } = await api.post<PublicSubmitResult>(
-        `/public/forms/${encodeURIComponent(key)}/submit`,
-        {
-          data: answers,
-          channel,
-          language: locale.value,
-          for_someone_else: forSomeoneElse.value || undefined,
-          confirmed_different: confirmedDifferent.value || undefined,
-          verification_token: verificationToken.value ?? undefined,
-          resume_token: resume?.token.value ?? undefined,
-        },
-        { headers: { 'Idempotency-Key': submissionId() } },
-      )
+      const { data } = await send(answers, extra.trap ?? '').catch(async (error: { code?: string }) => {
+        // The challenge was used, expired or couldn't be solved: one fresh try.
+        if (error.code !== 'FRM-RESP-1009') throw error
+        prepareProof()
+        return send(answers, extra.trap ?? '')
+      })
+      prepareProof()
       newSession() // A next fill-in is a new session.
       resume?.finished()
       forSomeoneElse.value = false

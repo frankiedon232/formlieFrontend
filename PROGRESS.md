@@ -20,7 +20,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
-| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~35% |
+| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~45% |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
@@ -465,21 +465,21 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ **Duplicate protection** (owner, 2026-10-03, decision 84): per session, per browser (with "for someone else" after confirming), exact same answers never twice, optional one response per answer (e.g. email); thank-you page: Fill in another · Close this page
 - ✅ **Availability** (decision 84): open from / open until per form, set from the list menu or the overview; badge in table and grid
 - ✅ **No duplicate submissions** (owner question 2026-10-03, see 03-DECISIONS → 68): the Submit button is busy and disabled from the first click; every fill-in session has its own submission id sent as an `Idempotency-Key` — the server keeps the first response for that key and answers repeats (double click, retry after a dropped connection, back button) with the same response id instead of a second response; a finished session can't submit again; optional "one response per person" (signed-in respondents by account, others by a signed cookie + email if the form asks for it); rate limits per form / IP
-- ⬜ Spam protection (captcha)
+- ✅ **Spam protection** (decision 89): invisible proof-of-work challenge (no third-party captcha), hidden trap field, submission limits per address
 - ⬜ F11: show "Possible duplicate" on responses with a link to the earlier one; merge / reject
 - ✅ Thank-you page or redirect
 - ✅ **In-app browser** (owner, 2026-10-03, decision 83): website, Terms and Data Privacy Policy open in a branded window over the form; answers stay
 - ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles — Branded · Spotlight · Side panel · Minimal — tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
 - ⬜ Preview page with device frames
 - ⬜ **Form languages** (owner, 2026-10-03, see 03-DECISIONS → 73): the form opens in the respondent's browser language when the form offers it, otherwise its main language; `?lang=xx` forces one (shareable per-language links, embeds and QR codes); a language switcher when a form has several; translated questions / options / help / messages per language; the language is saved with each response; buttons, messages, dates, numbers and right-to-left follow it
-- ⬜ Embed: the Share card offers the ready `<iframe>` code (with sizes and auto-resize) instead of a bare embed address
+- ✅ **Embed code** (decision 90): the Share card offers the ready `<iframe>` code — auto height (recommended) or fixed height — instead of a bare embed address; embed pages can be framed by other websites
 
 ### Share
 
 - 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
 - ⬜ Access: public, password, invite-only, organisation-only; expiry, response limit, schedule
 - ⬜ People access: edit / view / responses
-- ⬜ Embed: iframe snippet with auto-resize, size options, allowed domains, live preview
+- 🟡 Embed: iframe snippet with auto-resize, size options, allowed domains, live preview — ✅ snippet with auto / fixed height (M2); allowed domains + live preview with the Share settings (M3)
 - ⬜ SEO settings with link-card preview
 - ⬜ Short link redirect `/s/[code]`
 
@@ -1054,3 +1054,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F9 | Follow-ups: "Save as template" moved into Form settings → Template; templates remember their source form (`source_form_id`) — an already-saved form offers "Update template" (`POST /templates/{key}/sync`, audited) or a separate copy; sidebar keeps one group open; preview side panel Desktop fills edge to edge. |
 | 2026-10-03 | F10 | Milestone 1: public form pages `/{key}/fill` and `/embed` (server-rendered, SEO tags, canonical, 404 for unknown keys, noindex for embeds / closed forms), `forms.*` host, `public_key` per form, secure server-side fetch (server-only token), states (not found · not published · closed · error), submit through the encrypted API with one response per fill-in session (Idempotency-Key, verified: a retry stores nothing new), server re-checks answers and recomputes calculations (`shared/utils/forms/submission.ts`), thank-you or redirect, page language without touching the portal cookie, embed height messages; audit "Response received". Text colours one step sharper everywhere (owner). |
 | 2026-10-04 | F10 | M2: file uploads on public forms — files go straight to storage with progress on each thumbnail, Next / Submit wait for them, answers keep encrypted references (also in Save and resume drafts); server checks type, size, real pictures, no programs, same form / question, one response per file; respondent files never public. Form.vue split (ResumeBar, Upload). |
+| 2026-10-04 | F10 | M2 done: spam protection without a captcha (invisible proof-of-work, hidden trap, submission limits) and the Embed code window on the Share card (auto / fixed height, resize script limited to the form address); embed pages can now be shown on other websites (frame headers, SameSite=None device cookie). |

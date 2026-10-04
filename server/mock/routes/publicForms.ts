@@ -7,7 +7,7 @@
  *   POST /public/forms/:key/submit   one response per fill-in session (Idempotency-Key)
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
-import { createHash } from 'node:crypto'
+import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import { z } from 'zod'
 import { availabilityOf } from '#shared/utils/forms/availability'
 import { identityOf, maskEmail, matchIdentity, normaliseEmail } from '#shared/utils/forms/identity'
@@ -31,6 +31,7 @@ import { attachRespondentFiles, completeRespondentUpload, createRespondentTicket
 import { allFields, isLocked } from '#shared/utils/forms/build'
 import { acceptsFile, parseAccept } from '#shared/utils/forms/file-types'
 import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
+import { checkWork } from '#shared/utils/forms/proof-of-work'
 import type { UploadTicket } from '#shared/types/onboarding'
 import { platformLegal } from '../data/platformStore'
 
@@ -42,7 +43,8 @@ function deviceOf(event: Parameters<typeof tenantOf>[0]): string {
   const existing = getCookie(event, DEVICE_COOKIE)
   if (existing && /^[A-Za-z0-9-]{20,64}$/.test(existing)) return existing
   const fresh = crypto.randomUUID()
-  setCookie(event, DEVICE_COOKIE, fresh, { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 60 * 60 * 24 * 365 })
+  // SameSite=None: embedded forms run inside other websites; the cookie is only a random id.
+  setCookie(event, DEVICE_COOKIE, fresh, { httpOnly: true, secure: true, sameSite: 'none', path: '/', maxAge: 60 * 60 * 24 * 365 })
   return fresh
 }
 /** The answers in a stable order, hashed: the same response twice has the same fingerprint. */
@@ -136,11 +138,15 @@ const submitBody = z.object({
   verification_token: z.string().max(80).optional(),
   /** Save and resume: the draft this response finishes (closed on success). */
   resume_token: z.string().max(80).optional(),
+  /** Spam check (decision 89): the solved challenge from POST /challenge. */
+  challenge: z.object({ token: z.string().max(300), nonce: z.number().int().min(0) }).optional(),
+  /** A field people never see; bots fill it in. */
+  trap: z.string().max(500).optional(),
 })
 const SUBMISSION_ID = /^[A-Za-z0-9-]{16,64}$/
 
 /** POST /public/forms/:key/submit — store the response once per fill-in session. */
-export const submitPublicForm = defineMockRoute(({ event, body }) => {
+export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   const key = getRouterParam(event, 'key') ?? ''
   const submissionId = getHeader(event, 'idempotency-key') ?? ''
   if (!SUBMISSION_ID.test(submissionId))
@@ -163,6 +169,16 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   // The same session again (double click, retry, back button): the response it already made.
   const earlier = responseForSubmission(tenant, form.id, submissionId)
   if (earlier) return ok<PublicSubmitResult>({ response_id: earlier.id, duplicate: true, thank_you: thankYou })
+
+  // Spam (decision 89): a filled-in trap looks accepted but stores nothing; too many from one
+  // address → slow down; without a solved challenge (or sent within seconds of opening) → refused.
+  if (input.trap?.trim()) return ok<PublicSubmitResult>({ response_id: crypto.randomUUID(), duplicate: false, thank_you: thankYou }, {}, 201)
+  const sender = `${form.id}:${getRequestIP(event, { xForwardedFor: true }) ?? 'unknown'}`
+  const sent = (submitsBy.get(sender) ?? []).filter(at => at > Date.now() - 600_000)
+  if (sent.length >= SUBMITS_PER_10_MIN) throw new MockError('FRM-GEN-1029')
+  submitsBy.set(sender, [...sent, Date.now()])
+  const salt = await provenHuman(form.public_key, input.challenge)
+  if (!salt) throw new MockError('FRM-RESP-1009')
 
   const { issues, answers } = checkSubmission(schema, input.data)
   // Files: each must be a finished upload for this form and question (names and sizes come from storage).
@@ -222,6 +238,7 @@ export const submitPublicForm = defineMockRoute(({ event, body }) => {
   }
   responsesOf(tenant).responses.unshift(response)
   saveResponses()
+  usedChallenges.set(salt, Date.now() + CHALLENGE_TTL_MS)
   attachRespondentFiles(fileIds, response.id)
   if (input.resume_token) {
     const draft = draftOf(input.resume_token, form.id)
@@ -421,4 +438,42 @@ export const completeUpload = defineMockRoute(({ event }) => {
   const answer = completeRespondentUpload(getRouterParam(event, 'id') ?? '', form.id)
   if (!answer) throw new MockError('FRM-GEN-1004')
   return ok<FileAnswer>(answer)
+})
+
+// ── Spam check (decision 89) ─────────────────────────────────────────────────────────────
+// A signed proof-of-work challenge per fill-in: issued when the form opens, solved in the
+// background by the browser, used once. No third-party captcha, no tracking.
+const CHALLENGE_SECRET = randomBytes(32)
+const CHALLENGE_DIFFICULTY = 14
+const CHALLENGE_TTL_MS = 4 * 3_600_000
+/** People need a few seconds to fill in a form; bots send at once. */
+const MIN_FILL_MS = 3_000
+const usedChallenges = new Map<string, number>()
+const submitsBy = new Map<string, number[]>()
+const SUBMITS_PER_10_MIN = 20
+
+const sign = (payload: string) => createHmac('sha256', CHALLENGE_SECRET).update(payload).digest('base64url')
+
+/** The challenge's salt when the proof is valid for this form (not used before, old enough, not expired). */
+async function provenHuman(key: string, proof: { token: string; nonce: number } | undefined): Promise<string | null> {
+  if (!proof) return null
+  const [encoded, signature] = proof.token.split('.')
+  if (!encoded || !signature) return null
+  const expected = Buffer.from(sign(encoded))
+  const given = Buffer.from(signature)
+  if (expected.length !== given.length || !timingSafeEqual(expected, given)) return null
+  const [formKey, salt, issued, difficulty] = Buffer.from(encoded, 'base64url').toString('utf8').split('|')
+  const age = Date.now() - Number(issued)
+  if (formKey !== key || !salt || !(age >= MIN_FILL_MS && age <= CHALLENGE_TTL_MS)) return null
+  for (const [used, until] of usedChallenges) if (until < Date.now()) usedChallenges.delete(used)
+  if (usedChallenges.has(salt)) return null
+  return (await checkWork(salt, Number(difficulty), proof.nonce)) ? salt : null
+}
+
+/** POST /public/forms/:key/challenge — a fresh spam-check challenge for this fill-in. */
+export const issueChallenge = defineMockRoute(({ event }) => {
+  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const salt = randomBytes(16).toString('base64url')
+  const encoded = Buffer.from([form.public_key, salt, Date.now(), CHALLENGE_DIFFICULTY].join('|')).toString('base64url')
+  return ok({ token: `${encoded}.${sign(encoded)}`, salt, difficulty: CHALLENGE_DIFFICULTY, min_wait_ms: MIN_FILL_MS })
 })

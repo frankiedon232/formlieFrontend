@@ -232,7 +232,8 @@
       "noVersions": "Chưa xuất bản — phiên bản sẽ xuất hiện khi bạn xuất bản.",
       "detailsTitle": "Chi tiết",
       "tags": "Thẻ",
-      "noHistory": "Đã xuất bản trước khi lịch sử phiên bản được lưu — lịch sử bắt đầu từ lần xuất bản tiếp theo."
+      "noHistory": "Đã xuất bản trước khi lịch sử phiên bản được lưu — lịch sử bắt đầu từ lần xuất bản tiếp theo.",
+      "embedCode": "Mã nhúng"
     },
     "qr": {
       "title": "Mã QR",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Hãy chọn ngày kết thúc sau ngày bắt đầu.",
       "pastWarning": "Ngày kết thúc này đã qua — biểu mẫu sẽ ngừng nhận phản hồi ngay khi bạn lưu.",
       "saved": "Đã lưu thời gian mở"
+    },
+    "embed": {
+      "title": "Nhúng vào trang web của bạn",
+      "desc": "Dán mã này vào trang trên website của bạn, nơi biểu mẫu cần xuất hiện.",
+      "notLive": "Biểu mẫu chưa được xuất bản — sẽ hiển thị khi đã hoạt động.",
+      "height": "Chiều cao",
+      "auto": "Chiều cao tự động (khuyên dùng)",
+      "autoDesc": "Khung tự giãn và thu theo biểu mẫu — không có thanh cuộn bên trong.",
+      "fixed": "Chiều cao cố định",
+      "fixedDesc": "Luôn cùng một chiều cao; biểu mẫu cuộn bên trong khung.",
+      "pixels": "Chiều cao (pixel)",
+      "pixelsHint": "240–4000",
+      "code": "Mã",
+      "copy": "Sao chép mã",
+      "copied": "Đã sao chép mã nhúng",
+      "where": "Dán dưới dạng HTML (trong hầu hết trình tạo website: khối “Embed” hoặc “Custom HTML”)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Đã có phản hồi với đúng các câu trả lời này được gửi.",
     "FRM-RESP-1006": "Người này đã gửi một phản hồi.",
     "FRM-RESP-1007": "Phản hồi này trông giống một phản hồi đã được gửi. Hãy xác nhận đây là một người khác.",
-    "FRM-RESP-1008": "Xác minh email của bạn để gửi biểu mẫu này."
+    "FRM-RESP-1008": "Xác minh email của bạn để gửi biểu mẫu này.",
+    "FRM-RESP-1009": "Chúng tôi không thể xác nhận câu trả lời này do một người gửi. Vui lòng thử lại."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",

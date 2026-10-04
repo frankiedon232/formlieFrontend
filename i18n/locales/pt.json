@@ -232,7 +232,8 @@
       "noVersions": "Ainda não publicado — as versões aparecem quando você publica.",
       "detailsTitle": "Detalhes",
       "tags": "Tags",
-      "noHistory": "Publicado antes de o histórico de versões ser mantido — ele começa na próxima publicação."
+      "noHistory": "Publicado antes de o histórico de versões ser mantido — ele começa na próxima publicação.",
+      "embedCode": "Código de incorporação"
     },
     "qr": {
       "title": "Código QR",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Escolha um fim posterior ao início.",
       "pastWarning": "Esta data de término já passou — o formulário deixa de aceitar respostas assim que você salvar.",
       "saved": "Disponibilidade salva"
+    },
+    "embed": {
+      "title": "Incorporar no seu site",
+      "desc": "Cole este código na página do seu site onde o formulário deve aparecer.",
+      "notLive": "O formulário ainda não foi publicado — a incorporação mostra-o quando estiver ativo.",
+      "height": "Altura",
+      "auto": "Altura automática (recomendado)",
+      "autoDesc": "A moldura aumenta e diminui com o formulário — sem barra de deslocamento interna.",
+      "fixed": "Altura fixa",
+      "fixedDesc": "Sempre a mesma altura; o formulário desloca-se dentro da moldura.",
+      "pixels": "Altura em píxeis",
+      "pixelsHint": "240–4000",
+      "code": "Código",
+      "copy": "Copiar código",
+      "copied": "Código copiado",
+      "where": "Cole-o como HTML (na maioria dos criadores de sites: um bloco «Incorporar» ou «HTML personalizado»)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Já foi enviada uma resposta com exatamente estas respostas.",
     "FRM-RESP-1006": "Uma resposta desta pessoa já foi enviada.",
     "FRM-RESP-1007": "Parece uma resposta que já foi enviada. Confirme que é outra pessoa.",
-    "FRM-RESP-1008": "Verifique seu e-mail para enviar este formulário."
+    "FRM-RESP-1008": "Verifique seu e-mail para enviar este formulário.",
+    "FRM-RESP-1009": "Não foi possível confirmar que esta resposta foi enviada por uma pessoa. Tente novamente."
   },
   "errorUi": {
     "reference": "Referência: {id}",

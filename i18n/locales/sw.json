@@ -232,7 +232,8 @@
       "noVersions": "Bado haijachapishwa — matoleo yataonekana utakapochapisha.",
       "detailsTitle": "Maelezo",
       "tags": "Lebo",
-      "noHistory": "Ilichapishwa kabla historia ya matoleo kuanza kuhifadhiwa — itaanza na uchapishaji unaofuata."
+      "noHistory": "Ilichapishwa kabla historia ya matoleo kuanza kuhifadhiwa — itaanza na uchapishaji unaofuata.",
+      "embedCode": "Msimbo wa kupachika"
     },
     "qr": {
       "title": "Msimbo wa QR",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Chagua mwisho ulio baada ya mwanzo.",
       "pastWarning": "Tarehe hii ya mwisho imeshapita — fomu itaacha kupokea majibu mara tu utakapohifadhi.",
       "saved": "Upatikanaji umehifadhiwa"
+    },
+    "embed": {
+      "title": "Pachika kwenye tovuti yako",
+      "desc": "Bandika msimbo huu kwenye ukurasa wa tovuti yako ambapo fomu inapaswa kuonekana.",
+      "notLive": "Fomu bado haijachapishwa — itaonekana ikishachapishwa.",
+      "height": "Urefu",
+      "auto": "Urefu wa kiotomatiki (inapendekezwa)",
+      "autoDesc": "Fremu hukua na kupungua pamoja na fomu — bila upau wa kusogeza ndani.",
+      "fixed": "Urefu usiobadilika",
+      "fixedDesc": "Urefu ule ule kila wakati; fomu husogezwa ndani ya fremu.",
+      "pixels": "Urefu kwa pikseli",
+      "pixelsHint": "240–4000",
+      "code": "Msimbo",
+      "copy": "Nakili msimbo",
+      "copied": "Msimbo wa kupachika umenakiliwa",
+      "where": "Ubandike kama HTML (katika vijenzi vingi vya tovuti: kizuizi cha “Embed” au “Custom HTML”)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Jibu lenye majibu haya hayo kabisa limeshatumwa.",
     "FRM-RESP-1006": "Jibu kutoka kwa mtu huyu tayari limetumwa.",
     "FRM-RESP-1007": "Hili linaonekana kama jibu lililokwisha tumwa. Thibitisha kuwa huyu ni mtu mwingine.",
-    "FRM-RESP-1008": "Thibitisha barua pepe yako ili kutuma fomu hii."
+    "FRM-RESP-1008": "Thibitisha barua pepe yako ili kutuma fomu hii.",
+    "FRM-RESP-1009": "Hatukuweza kuthibitisha kuwa jibu hili lilitumwa na mtu. Tafadhali jaribu tena."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",

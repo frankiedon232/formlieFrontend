@@ -232,7 +232,8 @@
       "noVersions": "Noch nicht veröffentlicht – Versionen erscheinen beim Veröffentlichen.",
       "detailsTitle": "Details",
       "tags": "Tags",
-      "noHistory": "Veröffentlicht, bevor der Versionsverlauf geführt wurde – er beginnt mit der nächsten Veröffentlichung."
+      "noHistory": "Veröffentlicht, bevor der Versionsverlauf geführt wurde – er beginnt mit der nächsten Veröffentlichung.",
+      "embedCode": "Einbettungscode"
     },
     "qr": {
       "title": "QR-Code",
@@ -282,6 +283,22 @@
       "endBeforeStart": "Wählen Sie ein Ende nach dem Start.",
       "pastWarning": "Dieses Enddatum ist bereits vorbei – das Formular nimmt nach dem Speichern sofort keine Antworten mehr an.",
       "saved": "Verfügbarkeit gespeichert"
+    },
+    "embed": {
+      "title": "Auf Ihrer Website einbetten",
+      "desc": "Fügen Sie diesen Code auf der Seite Ihrer Website ein, auf der das Formular erscheinen soll.",
+      "notLive": "Das Formular ist noch nicht veröffentlicht – die Einbettung zeigt es, sobald es live ist.",
+      "height": "Höhe",
+      "auto": "Automatische Höhe (empfohlen)",
+      "autoDesc": "Der Rahmen wächst und schrumpft mit dem Formular – keine innere Bildlaufleiste.",
+      "fixed": "Feste Höhe",
+      "fixedDesc": "Immer gleich hoch; das Formular scrollt im Rahmen.",
+      "pixels": "Höhe in Pixeln",
+      "pixelsHint": "240–4000",
+      "code": "Code",
+      "copy": "Code kopieren",
+      "copied": "Einbettungscode kopiert",
+      "where": "Als HTML einfügen (in den meisten Website-Baukästen: ein Block „Einbetten“ oder „Eigenes HTML“)."
     }
   },
   "nav": {
@@ -472,7 +489,8 @@
     "FRM-RESP-1005": "Eine Antwort mit genau diesen Angaben wurde bereits gesendet.",
     "FRM-RESP-1006": "Von dieser Person wurde bereits eine Antwort gesendet.",
     "FRM-RESP-1007": "Das sieht nach einer bereits gesendeten Antwort aus. Bestätigen Sie, dass es sich um eine andere Person handelt.",
-    "FRM-RESP-1008": "Bestätigen Sie Ihre E-Mail-Adresse, um dieses Formular zu senden."
+    "FRM-RESP-1008": "Bestätigen Sie Ihre E-Mail-Adresse, um dieses Formular zu senden.",
+    "FRM-RESP-1009": "Wir konnten nicht bestätigen, dass diese Antwort von einer Person gesendet wurde. Bitte versuchen Sie es erneut."
   },
   "errorUi": {
     "reference": "Referenz: {id}",

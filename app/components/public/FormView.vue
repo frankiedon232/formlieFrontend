@@ -96,6 +96,18 @@ useSeoMeta({
   robots: () => (props.embed || view.value !== 'open' || form.value?.seo.noindex ? 'noindex, nofollow' : 'index, follow'),
 })
 
+// ── Embed: other websites may show it in a frame (the portal and /fill pages may not).
+// Allowed websites per form come with the Share settings (M3).
+if (import.meta.server && props.embed) {
+  const event = useRequestEvent()
+  const response = event?.node.res
+  if (response) {
+    response.removeHeader('x-frame-options')
+    const policy = response.getHeader('content-security-policy')
+    if (typeof policy === 'string') response.setHeader('content-security-policy', policy.replace("frame-ancestors 'self'", 'frame-ancestors *'))
+  }
+}
+
 // ── Embed: tell the parent page how tall the form is (auto-resize). ──────────────────
 const root = useTemplateRef<HTMLElement>('root')
 if (import.meta.client && props.embed) {
