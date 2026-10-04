@@ -109,7 +109,7 @@ const shareSchema = z.object({
   access: z.enum(['public', 'password']).optional(),
   /** A new password (8–100 characters); never returned. */
   password: z.string().min(8).max(100).optional(),
-  response_limit: z.number().int().min(1).max(1_000_000).nullable().optional(),
+  response_limit: z.number().int().min(2).max(1_000_000).nullable().optional(),
   custom_link: z.string().max(80).nullable().optional(),
 })
 

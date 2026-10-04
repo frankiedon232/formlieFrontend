@@ -28,7 +28,8 @@ function reset(from: FormShareSettings) {
     access: from.access,
     password: '',
     limitOn: from.response_limit != null,
-    limit: from.response_limit ?? Math.max(100, from.responses_count + 1),
+    // Starts at 10 (owner); a form that already has 10 or more responses starts 10 above its count.
+    limit: from.response_limit ?? (from.responses_count < 10 ? 10 : from.responses_count + 10),
     link: from.custom_link ?? '',
   })
 }

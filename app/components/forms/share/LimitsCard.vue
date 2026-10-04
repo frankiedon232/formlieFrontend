@@ -36,7 +36,7 @@ const period = computed(() => {
       <USwitch v-model="draft.limitOn" :label="t('share.limits.limit')" :description="t('share.limits.limitDesc')" color="neutral" />
       <div v-if="draft.limitOn" class="flex flex-col gap-2 ps-11">
         <UFormField :label="t('share.limits.max')">
-          <UInputNumber v-model="draft.limit" :min="1" :max="1000000" :step="10" class="w-44" />
+          <UInputNumber v-model="draft.limit" :min="2" :max="1000000" :step="1" class="w-44" />
         </UFormField>
         <div class="flex flex-col gap-1">
           <div class="flex justify-between text-xs text-muted">

@@ -1068,3 +1068,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Custom link fix (owner): the availability check sent the link the wrong way, so every link read as invalid; taken or reserved links now offer up to three free suggestions (with the organisation name, the year, a number) as one-click chips. |
 | 2026-10-04 | F10 | Custom link check really fixed: the server read the link from the address instead of the encrypted request, so every link read as invalid; the Share card summary row opens the Share settings again. |
 | 2026-10-04 | F10 | Custom links are unique per address (owner): each workspace subdomain has its own set, workspaces on forms.* share one; a link taken by one of your forms shows which form (name, status, Open) with free suggestions — tested in the browser. |
+| 2026-10-04 | F10 | Response limit (owner): starts at 10, goes down to 2, steps of 1 (was steps of 10 from 1). |
