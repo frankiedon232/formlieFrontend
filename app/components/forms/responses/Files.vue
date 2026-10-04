@@ -1,5 +1,5 @@
 <!--
-  The files of one answer (F11): a sliding strip of tiles, pictures as real thumbnails (loaded over
+  The files of one answer (F11): tiles side by side that wrap when the row is full, pictures as real thumbnails (loaded over
   short-lived private links), other files as a type badge with name and size. A tile opens the
   viewer at that file.
 -->
@@ -38,12 +38,12 @@ function view(index: number) {
 </script>
 
 <template>
-  <div class="-mx-1 flex snap-x gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:thin]">
+  <div class="flex flex-wrap gap-2">
     <button
       v-for="(file, index) in files"
       :key="index"
       type="button"
-      class="group flex w-36 shrink-0 snap-start flex-col overflow-hidden rounded-lg border border-default bg-default text-start transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+      class="group flex w-36 shrink-0 flex-col overflow-hidden rounded-lg border border-default bg-default text-start transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
       :aria-label="t('responses.files.open', { name: file.name })"
       @click="view(index)"
     >

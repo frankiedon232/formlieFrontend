@@ -3,7 +3,8 @@
   with like, no endless scrolling on long forms). Filter chips on top (All · People & contact ·
   Choices · Ratings · Written · Numbers & dates · Files · Other, with counts) in a rounded track
   without a scrollbar (AppChipScroller: wheel, arrows, a clicked chip centres) and "Only answered". Each group: a header with how many were answered, then tiles in
-  two columns that share one height per row; long text, grids and files take the full width.
+  two columns that share one height per row; long text and grids take the full width. Files flow
+  (owner 2026-10-04): each question's tile is as wide as its files, side by side, wrapping when full.
 -->
 <script setup lang="ts">
 import type { ResponseDetail } from '#shared/types/responses'
@@ -69,16 +70,17 @@ const answeredTotal = computed(() => fields.value.filter(field => filled(props.r
         <span class="h-px flex-1 bg-(--ui-border)" />
         <span class="tabular-nums">{{ t('responses.detail.answeredOf', { n: item.answered, total: item.fields.length }) }}</span>
       </div>
-      <dl class="grid gap-2 sm:grid-cols-2">
+      <dl :class="item.key === 'files' ? 'flex flex-wrap gap-2' : 'grid gap-2 sm:grid-cols-2'">
         <div
           v-for="field in item.fields"
           :key="field.id"
           class="flex h-full min-w-0 flex-col gap-2 rounded-lg border border-default p-3"
-          :class="[wideAnswer(field) ? 'sm:col-span-2' : '', filled(response.data[field.key]) ? 'bg-default' : 'bg-elevated/30']"
+          :class="[item.key === 'files' ? 'max-w-full min-w-40 flex-auto sm:flex-none' : wideAnswer(field) ? 'sm:col-span-2' : '', filled(response.data[field.key]) ? 'bg-default' : 'bg-elevated/30']"
         >
           <dt class="flex items-start gap-2 text-xs text-muted">
             <UIcon :name="icon(field.type)" class="mt-px size-3.5 shrink-0" />
-            <span class="line-clamp-2">{{ field.label || field.key }}</span>
+            <!-- w-0 + flex-1: a long question wraps instead of widening a file tile -->
+            <span class="line-clamp-2 w-0 min-w-0 flex-1">{{ field.label || field.key }}</span>
           </dt>
           <dd class="min-w-0"><FormsResponsesAnswer :field="field" :value="response.data[field.key]" :response-id="response.id" /></dd>
         </div>
