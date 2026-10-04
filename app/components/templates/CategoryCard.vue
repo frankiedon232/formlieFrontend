@@ -1,8 +1,8 @@
 <!--
-  Category card in the locked card format (CLAUDE.md rule 21; owner 2026-10-04: a bigger
-  thumbnail, nothing below the facts): a "last used" pill, the template count and ⋯ on top; the
-  category's design in miniature beside its name and a few of its templates; templates, with
-  calculations, forms and responses in two columns. The whole card opens the category.
+  Category card (locked card format, CLAUDE.md rule 21; owner 2026-10-04: thumbnail left, content
+  right, then buttons, then details, nothing more). The category's design in a fixed 16:9 frame
+  beside its name and a few of its templates; a row with the "last used" pill, the template count
+  and ⋯; templates, with calculations, forms and responses in two columns. The whole card opens it.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -30,10 +30,30 @@ const facts = computed(() => [
 
 <template>
   <article
-    class="group flex h-full flex-col rounded-lg border border-default bg-default p-4 transition-all hover:-translate-y-0.5 hover:border-accented hover:shadow-md focus-within:shadow-md"
+    class="group flex h-full flex-col gap-3 rounded-lg border border-default bg-default p-4 transition-all hover:-translate-y-0.5 hover:border-accented hover:shadow-md focus-within:shadow-md"
   >
-    <!-- Last used · templates · menu -->
-    <div class="flex items-center justify-between gap-2">
+    <!-- Thumbnail left, name and subtitle right -->
+    <div class="flex min-w-0 items-center gap-3">
+      <span
+        class="w-32 shrink-0 overflow-hidden rounded-md border border-default bg-elevated sm:w-36"
+        aria-hidden="true"
+      >
+        <TemplatesThumb :theme="category.theme" :title="category.name" :labels="category.examples" tile />
+      </span>
+      <div class="flex min-w-0 flex-1 flex-col gap-1">
+        <NuxtLink
+          :to="`/templates/category/${category.key}`"
+          class="flex min-w-0 items-center gap-1.5 text-base leading-snug font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+        >
+          <span class="size-2 shrink-0 rounded-[1px]" :class="dot" aria-hidden="true" />
+          <span class="truncate">{{ category.name }}</span>
+        </NuxtLink>
+        <p class="truncate text-sm text-muted">{{ category.examples.join(' · ') }}</p>
+      </div>
+    </div>
+
+    <!-- Buttons: Last used · templates · menu -->
+    <div class="mt-auto flex items-center justify-between gap-2 border-t border-default pt-3">
       <span
         class="inline-flex min-w-0 items-center gap-1.5 rounded-md border border-default px-2 py-0.5 text-xs font-medium text-toned"
       >
@@ -71,25 +91,8 @@ const facts = computed(() => [
       </div>
     </div>
 
-    <!-- Design, name and examples -->
-    <div class="mt-3 flex min-w-0 items-center gap-3">
-      <span class="w-24 shrink-0 overflow-hidden rounded-md border border-default" aria-hidden="true">
-        <TemplatesThumb :theme="category.theme" :title="category.name" :labels="category.examples" mini />
-      </span>
-      <div class="flex min-w-0 flex-col">
-        <NuxtLink
-          :to="`/templates/category/${category.key}`"
-          class="flex min-w-0 items-center gap-1.5 text-base font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
-        >
-          <span class="size-2 shrink-0 rounded-[1px]" :class="dot" aria-hidden="true" />
-          <span class="truncate">{{ category.name }}</span>
-        </NuxtLink>
-        <p class="truncate text-sm text-muted">{{ category.examples.join(' · ') }}</p>
-      </div>
-    </div>
-
-    <!-- Facts (two columns, one line each) -->
-    <dl class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5">
+    <!-- Details (two columns, one line each) -->
+    <dl class="grid grid-cols-2 gap-x-4 gap-y-2.5">
       <div v-for="fact in facts" :key="fact.key" class="flex min-w-0 flex-col gap-0.5">
         <dt class="truncate text-[11px] text-muted">{{ fact.label }}</dt>
         <dd

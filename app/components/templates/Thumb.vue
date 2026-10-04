@@ -6,12 +6,13 @@
 <script setup lang="ts">
 import { fillBackground, pageBackground, readableOn, resolveTheme } from '#shared/utils/forms/theme'
 
-/** card: gallery · compact: pickers · mini: table rows (shapes only, no text). */
+/** card: gallery · compact: pickers · tile: card thumbnails (16:9, the form fills it) · mini: table rows (shapes only). */
 const props = defineProps<{
   theme: Record<string, unknown>
   title: string
   labels: string[]
   compact?: boolean
+  tile?: boolean
   mini?: boolean
 }>()
 
@@ -38,15 +39,15 @@ const RADIUS: Record<string, string> = {
 }
 const INPUT_RADIUS = computed(() => RADIUS[th.value.inputs.radius] ?? '4px')
 const centred = computed(() => th.value.header.align === 'center')
-const shown = computed(() => props.labels.slice(0, props.mini || props.compact ? 2 : 3))
+const shown = computed(() => props.labels.slice(0, props.mini || props.compact || props.tile ? 2 : 3))
 </script>
 
 <template>
   <div
     class="flex w-full overflow-hidden"
     :class="[
-      mini ? 'h-10' : compact ? 'aspect-[16/9]' : 'aspect-[16/10]',
-      th.layout === 'full' ? '' : mini ? 'p-1' : compact ? 'p-2' : 'p-3',
+      mini ? 'h-10' : compact || tile ? 'aspect-[16/9]' : 'aspect-[16/10]',
+      th.layout === 'full' ? '' : mini ? 'p-1' : tile ? 'px-2 pt-1.5' : compact ? 'p-2' : 'p-3',
     ]"
     :style="{ background }"
     aria-hidden="true"
@@ -54,7 +55,8 @@ const shown = computed(() => props.labels.slice(0, props.mini || props.compact ?
     <div
       class="mx-auto flex h-full w-full overflow-hidden"
       :class="[
-        th.layout === 'full' || mini ? '' : panel ? 'max-w-[78%]' : 'max-w-[62%]',
+        th.layout === 'full' || mini ? '' : tile ? (panel ? 'max-w-[94%]' : 'max-w-[86%]') : panel ? 'max-w-[78%]' : 'max-w-[62%]',
+        tile && th.layout !== 'full' ? 'rounded-b-none!' : '',
         panel?.side === 'end' ? 'flex-row-reverse' : '',
       ]"
       :style="{

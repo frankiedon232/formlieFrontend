@@ -1,8 +1,8 @@
 <!--
-  Theme card in the locked card format (CLAUDE.md rule 21; owner 2026-10-04: a bigger thumbnail,
-  nothing below the facts): a "changed" pill, the kind and ⋯ on top; the theme in miniature beside
-  its name, font and layout; forms, kind, created by and created in two columns. The whole card
-  opens the theme (DataView openRow).
+  Theme card (locked card format, CLAUDE.md rule 21; owner 2026-10-04: thumbnail left, content
+  right, then buttons, then details, nothing more). The theme in a fixed 16:9 frame beside its name,
+  font and layout; a row with the "changed" pill, the kind and ⋯; forms, kind, created by and
+  created in two columns. The whole card opens the theme (DataView openRow).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -32,10 +32,34 @@ const facts = computed(() => [
 
 <template>
   <article
-    class="group flex h-full flex-col rounded-lg border border-default bg-default p-4 transition-all hover:-translate-y-0.5 hover:border-accented hover:shadow-md focus-within:shadow-md"
+    class="group flex h-full flex-col gap-3 rounded-lg border border-default bg-default p-4 transition-all hover:-translate-y-0.5 hover:border-accented hover:shadow-md focus-within:shadow-md"
   >
-    <!-- Changed · kind · menu -->
-    <div class="flex items-center justify-between gap-2">
+    <!-- Thumbnail left, name and subtitle right -->
+    <div class="flex min-w-0 items-center gap-3">
+      <span
+        class="w-32 shrink-0 overflow-hidden rounded-md border border-default bg-elevated sm:w-36"
+        aria-hidden="true"
+      >
+        <TemplatesThumb :theme="theme.tokens" :title="name" :labels="preview" tile />
+      </span>
+      <div class="flex min-w-0 flex-1 flex-col gap-1">
+        <NuxtLink
+          :to="`/settings/themes/${theme.id}`"
+          class="line-clamp-2 text-base leading-snug font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+          >{{ name }}</NuxtLink
+        >
+        <p class="flex min-w-0 items-center gap-1.5 text-sm text-muted">
+          <UIcon name="i-lucide-type" class="size-3.5 shrink-0" />
+          <span class="truncate"
+            >{{ t(`designer.font.${theme.tokens.typography.font}`) }} ·
+            {{ t(`designer.layout.${theme.tokens.layout}`) }}</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <!-- Buttons: Changed · kind · menu -->
+    <div class="mt-auto flex items-center justify-between gap-2 border-t border-default pt-3">
       <span
         class="inline-flex min-w-0 items-center gap-1.5 rounded-md border border-default px-2 py-0.5 text-xs font-medium text-toned"
       >
@@ -68,29 +92,8 @@ const facts = computed(() => [
       </div>
     </div>
 
-    <!-- Preview, name and font -->
-    <div class="mt-3 flex min-w-0 items-center gap-3">
-      <span class="w-24 shrink-0 overflow-hidden rounded-md border border-default" aria-hidden="true">
-        <TemplatesThumb :theme="theme.tokens" :title="name" :labels="preview" mini />
-      </span>
-      <div class="flex min-w-0 flex-col">
-        <NuxtLink
-          :to="`/settings/themes/${theme.id}`"
-          class="truncate text-base font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
-          >{{ name }}</NuxtLink
-        >
-        <p class="flex min-w-0 items-center gap-1.5 text-sm text-muted">
-          <UIcon name="i-lucide-type" class="size-3.5 shrink-0" />
-          <span class="truncate"
-            >{{ t(`designer.font.${theme.tokens.typography.font}`) }} ·
-            {{ t(`designer.layout.${theme.tokens.layout}`) }}</span
-          >
-        </p>
-      </div>
-    </div>
-
-    <!-- Facts (two columns, one line each) -->
-    <dl class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5">
+    <!-- Details (two columns, one line each) -->
+    <dl class="grid grid-cols-2 gap-x-4 gap-y-2.5">
       <div v-for="fact in facts" :key="fact.key" class="flex min-w-0 flex-col gap-0.5">
         <dt class="truncate text-[11px] text-muted">{{ fact.label }}</dt>
         <dd

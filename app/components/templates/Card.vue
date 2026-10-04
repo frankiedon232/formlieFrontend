@@ -1,8 +1,9 @@
 <!--
-  Template card in the locked card format (CLAUDE.md rule 21; owner 2026-10-04: a bigger
-  thumbnail, nothing below the facts): a "last used" pill, the category and ⋯ (Use first) on top;
-  the template's design in miniature beside its name and how long it takes; questions, pages, forms
-  and responses in two columns. The whole card opens the template (DataView openRow).
+  Template card (locked card format, CLAUDE.md rule 21; owner 2026-10-04: thumbnail left, content
+  right, then buttons, then details, nothing more). The template's design in a fixed 16:9 frame
+  (every card's picture the same size) beside its name and time to fill in; a row with the "last
+  used" pill, the category and ⋯ (Use first); questions, pages, forms and responses in two columns.
+  The whole card opens the template (DataView openRow).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -27,10 +28,38 @@ const facts = computed(() => [
 
 <template>
   <article
-    class="group flex h-full flex-col rounded-lg border border-default bg-default p-4 transition-all hover:-translate-y-0.5 hover:border-accented hover:shadow-md focus-within:shadow-md"
+    class="group flex h-full flex-col gap-3 rounded-lg border border-default bg-default p-4 transition-all hover:-translate-y-0.5 hover:border-accented hover:shadow-md focus-within:shadow-md"
   >
-    <!-- Last used · category · menu -->
-    <div class="flex items-center justify-between gap-2">
+    <!-- Thumbnail left, name and subtitle right -->
+    <div class="flex min-w-0 items-center gap-3">
+      <span
+        class="w-32 shrink-0 overflow-hidden rounded-md border border-default bg-elevated sm:w-36"
+        aria-hidden="true"
+      >
+        <TemplatesThumb :theme="template.theme" :title="template.name" :labels="template.preview" tile />
+      </span>
+      <div class="flex min-w-0 flex-1 flex-col gap-1">
+        <NuxtLink
+          :to="`/templates/${template.key}`"
+          class="line-clamp-2 text-base leading-snug font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+          >{{ template.name }}</NuxtLink
+        >
+        <p class="flex min-w-0 items-center gap-1.5 text-sm text-muted">
+          <UIcon
+            :name="template.source === 'workspace' ? 'i-lucide-building-2' : 'i-lucide-timer'"
+            class="size-3.5 shrink-0"
+          />
+          <span class="truncate">{{
+            template.source === 'workspace'
+              ? t('templates.badge.workspace')
+              : t('templates.minutes', { n: template.minutes })
+          }}</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Buttons: Last used · category · menu -->
+    <div class="mt-auto flex items-center justify-between gap-2 border-t border-default pt-3">
       <span
         class="inline-flex min-w-0 items-center gap-1.5 rounded-md border border-default px-2 py-0.5 text-xs font-medium text-toned"
       >
@@ -63,33 +92,8 @@ const facts = computed(() => [
       </div>
     </div>
 
-    <!-- Design, name and time -->
-    <div class="mt-3 flex min-w-0 items-center gap-3">
-      <span class="w-24 shrink-0 overflow-hidden rounded-md border border-default" aria-hidden="true">
-        <TemplatesThumb :theme="template.theme" :title="template.name" :labels="template.preview" mini />
-      </span>
-      <div class="flex min-w-0 flex-col">
-        <NuxtLink
-          :to="`/templates/${template.key}`"
-          class="truncate text-base font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
-          >{{ template.name }}</NuxtLink
-        >
-        <p class="flex min-w-0 items-center gap-1.5 text-sm text-muted">
-          <UIcon
-            :name="template.source === 'workspace' ? 'i-lucide-building-2' : 'i-lucide-timer'"
-            class="size-3.5 shrink-0"
-          />
-          <span class="truncate">{{
-            template.source === 'workspace'
-              ? t('templates.badge.workspace')
-              : t('templates.minutes', { n: template.minutes })
-          }}</span>
-        </p>
-      </div>
-    </div>
-
-    <!-- Facts (two columns, one line each) -->
-    <dl class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5">
+    <!-- Details (two columns, one line each) -->
+    <dl class="grid grid-cols-2 gap-x-4 gap-y-2.5">
       <div v-for="fact in facts" :key="fact.key" class="flex min-w-0 flex-col gap-0.5">
         <dt class="truncate text-[11px] text-muted">{{ fact.label }}</dt>
         <dd
