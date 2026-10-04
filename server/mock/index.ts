@@ -14,6 +14,7 @@ import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
 import * as library from './routes/library'
 import * as themes from './routes/themes'
+import * as pageDesigns from './routes/pageDesigns'
 import * as formShare from './routes/formShare'
 import * as formInvites from './routes/formInvites'
 import * as forms from './routes/forms'
@@ -103,6 +104,9 @@ const router = createRouter()
   .delete('/option-lists/:id', library.deleteOptionList)
   .get('/themes', themes.listThemes)
   .get('/themes/insights', themes.themeInsights)
+  .get('/page-designs', pageDesigns.listPageDesigns)
+  .get('/page-designs/insights', pageDesigns.pageDesignInsights)
+  .get('/page-designs/:id', pageDesigns.getPageDesign)
   .get('/themes/:id', themes.getTheme)
   .get('/directory', getDirectory)
   // Public form pages (F10), no sign-in.
@@ -133,6 +137,10 @@ const router = createRouter()
   .patch('/themes/:id', themes.updateTheme)
   .post('/themes/:id/duplicate', themes.duplicateTheme)
   .delete('/themes/:id', themes.deleteTheme)
+  .post('/page-designs', pageDesigns.createPageDesign)
+  .patch('/page-designs/:id', pageDesigns.updatePageDesign)
+  .post('/page-designs/:id/duplicate', pageDesigns.duplicatePageDesign)
+  .delete('/page-designs/:id', pageDesigns.deletePageDesign)
   .get('/navigation/counts', navigationCounts)
   // onboarding + uploads
   .get('/onboarding', onboarding.getOnboarding)

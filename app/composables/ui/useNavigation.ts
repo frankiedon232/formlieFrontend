@@ -129,6 +129,20 @@ const RESOURCE_NAV: AppNavItem[] = [
       { key: 'themesCreated', icon: 'i-lucide-paintbrush', to: '/settings/themes', query: { source: 'created' }, count: c => c.themes.created },
     ],
   },
+  {
+    // Page designs (owner 2026-10-04: "add more pages, just like Themes on its menu"): the page
+    // around a form on its public link, the same kinds with counts.
+    key: 'pages',
+    icon: 'i-lucide-panels-top-left',
+    iconClass: 'text-rose-500',
+    to: '/settings/pages',
+    children: [
+      { key: 'pagesAll', icon: 'i-lucide-layout-grid', to: '/settings/pages', exact: true, count: c => c.pages.total },
+      { key: 'pagesSystem', icon: 'i-lucide-sparkles', to: '/settings/pages', query: { source: 'system' }, count: c => c.pages.system },
+      { key: 'pagesSaved', icon: 'i-lucide-bookmark', to: '/settings/pages', query: { source: 'saved' }, count: c => c.pages.saved },
+      { key: 'pagesCreated', icon: 'i-lucide-paintbrush', to: '/settings/pages', query: { source: 'created' }, count: c => c.pages.created },
+    ],
+  },
 ]
 
 /**

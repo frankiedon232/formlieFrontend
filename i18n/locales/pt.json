@@ -396,7 +396,12 @@
     "templatesMine": "Seus modelos",
     "themesSystem": "Formalie",
     "themesSaved": "Salvos",
-    "themesCreated": "Criado"
+    "themesCreated": "Criado",
+    "pages": "Páginas",
+    "pagesAll": "Todas as páginas",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Salvas",
+    "pagesCreated": "Criadas"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Modelo atualizado",
       "forms_template_duplicated": "Modelo duplicado",
       "forms_template_deleted": "Modelo excluído",
-      "responses_submitted": "Resposta recebida"
+      "responses_submitted": "Resposta recebida",
+      "forms_page_design_created": "Design de página salvo",
+      "forms_page_design_updated": "Design de página atualizado",
+      "forms_page_design_deleted": "Design de página excluído"
     },
     "detail": {
       "who": "Quem",
@@ -3428,6 +3436,53 @@
       "inUse": "Etiquetas em uso",
       "add": "Adicionar a {n} | Adicionar a {n}",
       "remove": "Remover"
+    }
+  },
+  "pages": {
+    "subtitle": "Designs para a página em volta dos seus formulários",
+    "new": "Novo design de página",
+    "search": "Pesquisar designs de página…",
+    "emptyTitle": "Nenhum design de página aqui",
+    "emptyDesc": "Crie um ou salve a página de qualquer formulário no designer dele.",
+    "col": {
+      "name": "Design de página",
+      "style": "Estilo"
+    },
+    "deleteTitle": "Excluir “{name}”?",
+    "deleteDesc": "Ele some da lista de designs de página.",
+    "toast": {
+      "saved": "Design de página “{name}” salvo",
+      "updated": "Design de página “{name}” atualizado",
+      "duplicated": "“{name}” criado",
+      "deleted": "Design de página “{name}” excluído"
+    },
+    "preset": {
+      "clean": "Limpo",
+      "midnight_bar": "Barra noturna",
+      "brand_bar": "Barra da marca",
+      "spotlight": "Destaque",
+      "spotlight_night": "Destaque noturno",
+      "side_brand": "Painel da marca",
+      "side_night": "Painel noturno",
+      "side_soft": "Painel suave",
+      "minimal": "Mínimo",
+      "minimal_soft": "Mínimo suave"
+    },
+    "editor": {
+      "crumb": "Editor de página",
+      "newTitle": "Novo design de página",
+      "untitled": "Design de página sem nome",
+      "newDesc": "Crie uma vez, use em qualquer formulário",
+      "systemDesc": "Design da Formalie (somente leitura)",
+      "systemTitle": "Um design da Formalie",
+      "systemHint": "Este design de página faz parte da Formalie e não pode ser alterado. Duplique-o para criar sua versão.",
+      "save": "Salvar design de página",
+      "name": "Nome",
+      "namePlaceholder": "ex.: Página de inscrição no evento",
+      "nameFirst": "Dê um nome ao design de página para salvá-lo.",
+      "notFound": "Este design de página não está disponível",
+      "sample": "Mostrado em volta de um formulário de exemplo",
+      "controls": "Design de página"
     }
   }
 }

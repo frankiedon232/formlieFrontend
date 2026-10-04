@@ -396,7 +396,12 @@
     "templatesMine": "내 템플릿",
     "themesSystem": "Formalie",
     "themesSaved": "저장됨",
-    "themesCreated": "직접 만듦"
+    "themesCreated": "직접 만듦",
+    "pages": "페이지",
+    "pagesAll": "모든 페이지",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "저장됨",
+    "pagesCreated": "만든 항목"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -865,7 +870,10 @@
       "forms_template_updated": "템플릿 업데이트됨",
       "forms_template_duplicated": "템플릿 복제됨",
       "forms_template_deleted": "템플릿 삭제됨",
-      "responses_submitted": "응답 접수됨"
+      "responses_submitted": "응답 접수됨",
+      "forms_page_design_created": "페이지 디자인 저장됨",
+      "forms_page_design_updated": "페이지 디자인 업데이트됨",
+      "forms_page_design_deleted": "페이지 디자인 삭제됨"
     },
     "detail": {
       "who": "누가",
@@ -3428,6 +3436,53 @@
       "inUse": "사용 중인 태그",
       "add": "{n}개에 추가 | {n}개에 추가",
       "remove": "제거"
+    }
+  },
+  "pages": {
+    "subtitle": "양식을 둘러싼 페이지 디자인",
+    "new": "새 페이지 디자인",
+    "search": "페이지 디자인 검색…",
+    "emptyTitle": "페이지 디자인이 없습니다",
+    "emptyDesc": "새로 만들거나 양식 디자이너에서 해당 페이지를 저장하세요.",
+    "col": {
+      "name": "페이지 디자인",
+      "style": "스타일"
+    },
+    "deleteTitle": "“{name}”을(를) 삭제할까요?",
+    "deleteDesc": "페이지 디자인 목록에서 사라집니다.",
+    "toast": {
+      "saved": "페이지 디자인 “{name}” 저장됨",
+      "updated": "페이지 디자인 “{name}” 업데이트됨",
+      "duplicated": "“{name}” 생성됨",
+      "deleted": "페이지 디자인 “{name}” 삭제됨"
+    },
+    "preset": {
+      "clean": "깔끔함",
+      "midnight_bar": "나이트 바",
+      "brand_bar": "브랜드 바",
+      "spotlight": "스포트라이트",
+      "spotlight_night": "나이트 스포트라이트",
+      "side_brand": "브랜드 패널",
+      "side_night": "나이트 패널",
+      "side_soft": "부드러운 패널",
+      "minimal": "미니멀",
+      "minimal_soft": "부드러운 미니멀"
+    },
+    "editor": {
+      "crumb": "페이지 편집기",
+      "newTitle": "새 페이지 디자인",
+      "untitled": "이름 없는 페이지 디자인",
+      "newDesc": "한 번 디자인하고 모든 양식에 사용하세요",
+      "systemDesc": "Formalie 디자인(읽기 전용)",
+      "systemTitle": "Formalie 디자인",
+      "systemHint": "이 페이지 디자인은 Formalie의 일부로 변경할 수 없습니다. 복제해 나만의 버전을 만드세요.",
+      "save": "페이지 디자인 저장",
+      "name": "이름",
+      "namePlaceholder": "예: 행사 신청 페이지",
+      "nameFirst": "저장하려면 페이지 디자인 이름을 입력하세요.",
+      "notFound": "이 페이지 디자인을 사용할 수 없습니다",
+      "sample": "샘플 양식 주위에 표시",
+      "controls": "페이지 디자인"
     }
   }
 }

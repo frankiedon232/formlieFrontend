@@ -396,7 +396,12 @@
     "templatesMine": "Twoje szablony",
     "themesSystem": "Formalie",
     "themesSaved": "Zapisane",
-    "themesCreated": "Utworzony"
+    "themesCreated": "Utworzony",
+    "pages": "Strony",
+    "pagesAll": "Wszystkie strony",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Zapisane",
+    "pagesCreated": "Utworzone"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Zaktualizowano szablon",
       "forms_template_duplicated": "Zduplikowano szablon",
       "forms_template_deleted": "Usunięto szablon",
-      "responses_submitted": "Otrzymano odpowiedź"
+      "responses_submitted": "Otrzymano odpowiedź",
+      "forms_page_design_created": "Zapisano projekt strony",
+      "forms_page_design_updated": "Zaktualizowano projekt strony",
+      "forms_page_design_deleted": "Usunięto projekt strony"
     },
     "detail": {
       "who": "Kto",
@@ -3428,6 +3436,53 @@
       "inUse": "Używane tagi",
       "add": "Dodaj do zaznaczonych ({n}) | Dodaj do zaznaczonych ({n})",
       "remove": "Usuń"
+    }
+  },
+  "pages": {
+    "subtitle": "Projekty strony wokół Twoich formularzy",
+    "new": "Nowy projekt strony",
+    "search": "Szukaj projektów stron…",
+    "emptyTitle": "Brak projektów stron",
+    "emptyDesc": "Utwórz projekt albo zapisz stronę formularza w jego edytorze wyglądu.",
+    "col": {
+      "name": "Projekt strony",
+      "style": "Styl"
+    },
+    "deleteTitle": "Usunąć „{name}”?",
+    "deleteDesc": "Zniknie z listy projektów stron.",
+    "toast": {
+      "saved": "Zapisano projekt strony „{name}”",
+      "updated": "Zaktualizowano projekt strony „{name}”",
+      "duplicated": "Utworzono „{name}”",
+      "deleted": "Usunięto projekt strony „{name}”"
+    },
+    "preset": {
+      "clean": "Czysty",
+      "midnight_bar": "Nocny pasek",
+      "brand_bar": "Pasek marki",
+      "spotlight": "Reflektor",
+      "spotlight_night": "Nocny reflektor",
+      "side_brand": "Panel marki",
+      "side_night": "Nocny panel",
+      "side_soft": "Łagodny panel",
+      "minimal": "Minimalny",
+      "minimal_soft": "Łagodny minimalny"
+    },
+    "editor": {
+      "crumb": "Edytor strony",
+      "newTitle": "Nowy projekt strony",
+      "untitled": "Projekt strony bez nazwy",
+      "newDesc": "Zaprojektuj raz, używaj w każdym formularzu",
+      "systemDesc": "Projekt Formalie (tylko do odczytu)",
+      "systemTitle": "Projekt Formalie",
+      "systemHint": "Ten projekt strony należy do Formalie i nie można go zmienić. Zduplikuj go, aby utworzyć własną wersję.",
+      "save": "Zapisz projekt strony",
+      "name": "Nazwa",
+      "namePlaceholder": "np. Strona zapisów na wydarzenie",
+      "nameFirst": "Nadaj projektowi strony nazwę, aby go zapisać.",
+      "notFound": "Ten projekt strony jest niedostępny",
+      "sample": "Pokazany wokół przykładowego formularza",
+      "controls": "Projekt strony"
     }
   }
 }

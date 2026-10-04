@@ -396,7 +396,12 @@
     "templatesMine": "Şablonlarınız",
     "themesSystem": "Formalie",
     "themesSaved": "Kaydedilenler",
-    "themesCreated": "Oluşturuldu"
+    "themesCreated": "Oluşturuldu",
+    "pages": "Sayfalar",
+    "pagesAll": "Tüm sayfalar",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Kaydedilenler",
+    "pagesCreated": "Oluşturulanlar"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Şablon güncellendi",
       "forms_template_duplicated": "Şablon çoğaltıldı",
       "forms_template_deleted": "Şablon silindi",
-      "responses_submitted": "Yanıt alındı"
+      "responses_submitted": "Yanıt alındı",
+      "forms_page_design_created": "Sayfa tasarımı kaydedildi",
+      "forms_page_design_updated": "Sayfa tasarımı güncellendi",
+      "forms_page_design_deleted": "Sayfa tasarımı silindi"
     },
     "detail": {
       "who": "Kim",
@@ -3428,6 +3436,53 @@
       "inUse": "Kullanılan etiketler",
       "add": "{n} yanıta ekle | {n} yanıta ekle",
       "remove": "Kaldır"
+    }
+  },
+  "pages": {
+    "subtitle": "Formlarınızı çevreleyen sayfa için tasarımlar",
+    "new": "Yeni sayfa tasarımı",
+    "search": "Sayfa tasarımlarında ara…",
+    "emptyTitle": "Burada sayfa tasarımı yok",
+    "emptyDesc": "Bir tane oluşturun ya da bir formun sayfasını tasarımcısından kaydedin.",
+    "col": {
+      "name": "Sayfa tasarımı",
+      "style": "Stil"
+    },
+    "deleteTitle": "“{name}” silinsin mi?",
+    "deleteDesc": "Sayfa tasarımları listesinden kalkar.",
+    "toast": {
+      "saved": "“{name}” sayfa tasarımı kaydedildi",
+      "updated": "“{name}” sayfa tasarımı güncellendi",
+      "duplicated": "“{name}” oluşturuldu",
+      "deleted": "“{name}” sayfa tasarımı silindi"
+    },
+    "preset": {
+      "clean": "Sade",
+      "midnight_bar": "Gece çubuğu",
+      "brand_bar": "Marka çubuğu",
+      "spotlight": "Spot ışığı",
+      "spotlight_night": "Gece spot ışığı",
+      "side_brand": "Marka paneli",
+      "side_night": "Gece paneli",
+      "side_soft": "Yumuşak panel",
+      "minimal": "Minimal",
+      "minimal_soft": "Yumuşak minimal"
+    },
+    "editor": {
+      "crumb": "Sayfa düzenleyici",
+      "newTitle": "Yeni sayfa tasarımı",
+      "untitled": "Adsız sayfa tasarımı",
+      "newDesc": "Bir kez tasarlayın, her formda kullanın",
+      "systemDesc": "Formalie tasarımı (salt okunur)",
+      "systemTitle": "Bir Formalie tasarımı",
+      "systemHint": "Bu sayfa tasarımı Formalie’nin parçasıdır ve değiştirilemez. Kendi sürümünüz için çoğaltın.",
+      "save": "Sayfa tasarımını kaydet",
+      "name": "Ad",
+      "namePlaceholder": "örn. Etkinlik kayıt sayfası",
+      "nameFirst": "Kaydetmek için sayfa tasarımına bir ad verin.",
+      "notFound": "Bu sayfa tasarımı kullanılamıyor",
+      "sample": "Örnek bir formun çevresinde gösterilir",
+      "controls": "Sayfa tasarımı"
     }
   }
 }

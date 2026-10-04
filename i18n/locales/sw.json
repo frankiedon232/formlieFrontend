@@ -396,7 +396,12 @@
     "templatesMine": "Violezo vyako",
     "themesSystem": "Formalie",
     "themesSaved": "Zilizohifadhiwa",
-    "themesCreated": "Imeundwa"
+    "themesCreated": "Imeundwa",
+    "pages": "Kurasa",
+    "pagesAll": "Kurasa zote",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Zilizohifadhiwa",
+    "pagesCreated": "Zilizoundwa"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Kiolezo kimesasishwa",
       "forms_template_duplicated": "Kiolezo kimenakiliwa",
       "forms_template_deleted": "Kiolezo kimefutwa",
-      "responses_submitted": "Jibu limepokelewa"
+      "responses_submitted": "Jibu limepokelewa",
+      "forms_page_design_created": "Muundo wa ukurasa umehifadhiwa",
+      "forms_page_design_updated": "Muundo wa ukurasa umesasishwa",
+      "forms_page_design_deleted": "Muundo wa ukurasa umefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -3428,6 +3436,53 @@
       "inUse": "Lebo zinazotumika",
       "add": "Ongeza kwa {n} | Ongeza kwa {n}",
       "remove": "Ondoa"
+    }
+  },
+  "pages": {
+    "subtitle": "Miundo ya ukurasa unaozunguka fomu zako",
+    "new": "Muundo mpya wa ukurasa",
+    "search": "Tafuta miundo ya kurasa…",
+    "emptyTitle": "Hakuna miundo ya kurasa hapa",
+    "emptyDesc": "Unda mmoja, au hifadhi ukurasa wa fomu yoyote kutoka kwa mbunifu wake.",
+    "col": {
+      "name": "Muundo wa ukurasa",
+      "style": "Mtindo"
+    },
+    "deleteTitle": "Futa “{name}”?",
+    "deleteDesc": "Utaondoka kwenye orodha ya miundo ya kurasa.",
+    "toast": {
+      "saved": "Muundo wa ukurasa “{name}” umehifadhiwa",
+      "updated": "Muundo wa ukurasa “{name}” umesasishwa",
+      "duplicated": "“{name}” umeundwa",
+      "deleted": "Muundo wa ukurasa “{name}” umefutwa"
+    },
+    "preset": {
+      "clean": "Safi",
+      "midnight_bar": "Upau wa usiku",
+      "brand_bar": "Upau wa chapa",
+      "spotlight": "Mwangaza",
+      "spotlight_night": "Mwangaza wa usiku",
+      "side_brand": "Paneli ya chapa",
+      "side_night": "Paneli ya usiku",
+      "side_soft": "Paneli laini",
+      "minimal": "Rahisi",
+      "minimal_soft": "Rahisi laini"
+    },
+    "editor": {
+      "crumb": "Kihariri cha ukurasa",
+      "newTitle": "Muundo mpya wa ukurasa",
+      "untitled": "Muundo wa ukurasa usio na jina",
+      "newDesc": "Unda mara moja, tumia kwenye fomu yoyote",
+      "systemDesc": "Muundo wa Formalie (kusoma tu)",
+      "systemTitle": "Muundo wa Formalie",
+      "systemHint": "Muundo huu wa ukurasa ni sehemu ya Formalie na hauwezi kubadilishwa. Unakili ili kuunda toleo lako.",
+      "save": "Hifadhi muundo wa ukurasa",
+      "name": "Jina",
+      "namePlaceholder": "mf. Ukurasa wa kujisajili kwa tukio",
+      "nameFirst": "Upe muundo wa ukurasa jina ili uuhifadhi.",
+      "notFound": "Muundo huu wa ukurasa haupatikani",
+      "sample": "Unaonyeshwa kuzunguka fomu ya mfano",
+      "controls": "Muundo wa ukurasa"
     }
   }
 }

@@ -10,4 +10,5 @@ export interface NavCounts {
   /** Most recently updated saved themes, up to 6. */
   /** Themes by kind (owner, 2026-10-03: the menu lists kinds, not every saved theme). */
   themes: { total: number; system: number; saved: number; created: number }
+  pages: { total: number; system: number; saved: number; created: number }
 }

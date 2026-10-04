@@ -396,7 +396,12 @@
     "templatesMine": "Your templates",
     "themesSystem": "Formalie",
     "themesSaved": "Saved",
-    "themesCreated": "Created"
+    "themesCreated": "Created",
+    "pages": "Pages",
+    "pagesAll": "All pages",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Saved",
+    "pagesCreated": "Created"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Template updated",
       "forms_template_duplicated": "Template duplicated",
       "forms_template_deleted": "Template deleted",
-      "responses_submitted": "Response received"
+      "responses_submitted": "Response received",
+      "forms_page_design_created": "Page design saved",
+      "forms_page_design_updated": "Page design updated",
+      "forms_page_design_deleted": "Page design deleted"
     },
     "detail": {
       "who": "Who",
@@ -3428,6 +3436,53 @@
       "inUse": "Tags in use",
       "add": "Add to {n} | Add to {n}",
       "remove": "Remove"
+    }
+  },
+  "pages": {
+    "subtitle": "Designs for the page around your forms",
+    "new": "New page design",
+    "search": "Search page designs…",
+    "emptyTitle": "No page designs here",
+    "emptyDesc": "Create one, or save the page of any form from its designer.",
+    "col": {
+      "name": "Page design",
+      "style": "Style"
+    },
+    "deleteTitle": "Delete “{name}”?",
+    "deleteDesc": "It disappears from the list of page designs.",
+    "toast": {
+      "saved": "Page design “{name}” saved",
+      "updated": "Page design “{name}” updated",
+      "duplicated": "“{name}” created",
+      "deleted": "Page design “{name}” deleted"
+    },
+    "preset": {
+      "clean": "Clean",
+      "midnight_bar": "Midnight bar",
+      "brand_bar": "Brand bar",
+      "spotlight": "Spotlight",
+      "spotlight_night": "Spotlight night",
+      "side_brand": "Brand panel",
+      "side_night": "Night panel",
+      "side_soft": "Soft panel",
+      "minimal": "Minimal",
+      "minimal_soft": "Soft minimal"
+    },
+    "editor": {
+      "crumb": "Page editor",
+      "newTitle": "New page design",
+      "untitled": "Untitled page design",
+      "newDesc": "Design it once, use it on any form",
+      "systemDesc": "Formalie design (read-only)",
+      "systemTitle": "A Formalie design",
+      "systemHint": "This page design is part of Formalie and can't be changed. Duplicate it to make your own version.",
+      "save": "Save page design",
+      "name": "Name",
+      "namePlaceholder": "e.g. Event sign-up page",
+      "nameFirst": "Give the page design a name to save it.",
+      "notFound": "This page design isn't available",
+      "sample": "Shown around a sample form",
+      "controls": "Page design"
     }
   }
 }

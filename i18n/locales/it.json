@@ -396,7 +396,12 @@
     "templatesMine": "I tuoi modelli",
     "themesSystem": "Formalie",
     "themesSaved": "Salvati",
-    "themesCreated": "Creato"
+    "themesCreated": "Creato",
+    "pages": "Pagine",
+    "pagesAll": "Tutte le pagine",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Salvate",
+    "pagesCreated": "Create"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Modello aggiornato",
       "forms_template_duplicated": "Modello duplicato",
       "forms_template_deleted": "Modello eliminato",
-      "responses_submitted": "Risposta ricevuta"
+      "responses_submitted": "Risposta ricevuta",
+      "forms_page_design_created": "Design di pagina salvato",
+      "forms_page_design_updated": "Design di pagina aggiornato",
+      "forms_page_design_deleted": "Design di pagina eliminato"
     },
     "detail": {
       "who": "Chi",
@@ -3428,6 +3436,53 @@
       "inUse": "Tag in uso",
       "add": "Aggiungi a {n} | Aggiungi a {n}",
       "remove": "Rimuovi"
+    }
+  },
+  "pages": {
+    "subtitle": "Design per la pagina intorno ai tuoi moduli",
+    "new": "Nuovo design di pagina",
+    "search": "Cerca design di pagina…",
+    "emptyTitle": "Nessun design di pagina qui",
+    "emptyDesc": "Creane uno o salva la pagina di un modulo dal suo editor di design.",
+    "col": {
+      "name": "Design di pagina",
+      "style": "Stile"
+    },
+    "deleteTitle": "Eliminare “{name}”?",
+    "deleteDesc": "Scompare dall’elenco dei design di pagina.",
+    "toast": {
+      "saved": "Design di pagina “{name}” salvato",
+      "updated": "Design di pagina “{name}” aggiornato",
+      "duplicated": "“{name}” creato",
+      "deleted": "Design di pagina “{name}” eliminato"
+    },
+    "preset": {
+      "clean": "Pulito",
+      "midnight_bar": "Barra notte",
+      "brand_bar": "Barra del marchio",
+      "spotlight": "Riflettore",
+      "spotlight_night": "Riflettore notte",
+      "side_brand": "Pannello del marchio",
+      "side_night": "Pannello notte",
+      "side_soft": "Pannello morbido",
+      "minimal": "Minimale",
+      "minimal_soft": "Minimale morbido"
+    },
+    "editor": {
+      "crumb": "Editor di pagina",
+      "newTitle": "Nuovo design di pagina",
+      "untitled": "Design di pagina senza nome",
+      "newDesc": "Progettalo una volta, usalo su ogni modulo",
+      "systemDesc": "Design Formalie (sola lettura)",
+      "systemTitle": "Un design Formalie",
+      "systemHint": "Questo design di pagina fa parte di Formalie e non può essere modificato. Duplicalo per creare la tua versione.",
+      "save": "Salva design di pagina",
+      "name": "Nome",
+      "namePlaceholder": "es. Pagina di iscrizione all’evento",
+      "nameFirst": "Dai un nome al design di pagina per salvarlo.",
+      "notFound": "Questo design di pagina non è disponibile",
+      "sample": "Mostrato intorno a un modulo di esempio",
+      "controls": "Design di pagina"
     }
   }
 }

@@ -396,7 +396,12 @@
     "templatesMine": "あなたのテンプレート",
     "themesSystem": "Formalie",
     "themesSaved": "保存済み",
-    "themesCreated": "作成"
+    "themesCreated": "作成",
+    "pages": "ページ",
+    "pagesAll": "すべてのページ",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "保存済み",
+    "pagesCreated": "作成済み"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -865,7 +870,10 @@
       "forms_template_updated": "テンプレートを更新",
       "forms_template_duplicated": "テンプレートを複製",
       "forms_template_deleted": "テンプレートを削除",
-      "responses_submitted": "回答を受信しました"
+      "responses_submitted": "回答を受信しました",
+      "forms_page_design_created": "ページデザインを保存しました",
+      "forms_page_design_updated": "ページデザインを更新しました",
+      "forms_page_design_deleted": "ページデザインを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -3428,6 +3436,53 @@
       "inUse": "使用中のタグ",
       "add": "{n} 件に追加 | {n} 件に追加",
       "remove": "外す"
+    }
+  },
+  "pages": {
+    "subtitle": "フォームを囲むページのデザイン",
+    "new": "新しいページデザイン",
+    "search": "ページデザインを検索…",
+    "emptyTitle": "ページデザインはまだありません",
+    "emptyDesc": "新しく作成するか、フォームのデザイナーからそのページを保存してください。",
+    "col": {
+      "name": "ページデザイン",
+      "style": "スタイル"
+    },
+    "deleteTitle": "「{name}」を削除しますか？",
+    "deleteDesc": "ページデザインの一覧から消えます。",
+    "toast": {
+      "saved": "ページデザイン「{name}」を保存しました",
+      "updated": "ページデザイン「{name}」を更新しました",
+      "duplicated": "「{name}」を作成しました",
+      "deleted": "ページデザイン「{name}」を削除しました"
+    },
+    "preset": {
+      "clean": "クリーン",
+      "midnight_bar": "ナイトバー",
+      "brand_bar": "ブランドバー",
+      "spotlight": "スポットライト",
+      "spotlight_night": "ナイトスポットライト",
+      "side_brand": "ブランドパネル",
+      "side_night": "ナイトパネル",
+      "side_soft": "ソフトパネル",
+      "minimal": "ミニマル",
+      "minimal_soft": "ソフトミニマル"
+    },
+    "editor": {
+      "crumb": "ページエディター",
+      "newTitle": "新しいページデザイン",
+      "untitled": "名前のないページデザイン",
+      "newDesc": "一度デザインすれば、どのフォームにも使えます",
+      "systemDesc": "Formalie のデザイン（読み取り専用）",
+      "systemTitle": "Formalie のデザイン",
+      "systemHint": "このページデザインは Formalie の一部で変更できません。複製して独自のバージョンを作成してください。",
+      "save": "ページデザインを保存",
+      "name": "名前",
+      "namePlaceholder": "例：イベント申込ページ",
+      "nameFirst": "保存するにはページデザインに名前を付けてください。",
+      "notFound": "このページデザインは利用できません",
+      "sample": "サンプルフォームの周りに表示",
+      "controls": "ページデザイン"
     }
   }
 }

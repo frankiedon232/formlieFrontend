@@ -396,7 +396,12 @@
     "templatesMine": "आपके टेम्पलेट",
     "themesSystem": "Formalie",
     "themesSaved": "सहेजे गए",
-    "themesCreated": "बनाया गया"
+    "themesCreated": "बनाया गया",
+    "pages": "पेज",
+    "pagesAll": "सभी पेज",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "सहेजे गए",
+    "pagesCreated": "बनाए गए"
   },
   "navbar": {
     "breadcrumb": "ब्रेडक्रंब",
@@ -865,7 +870,10 @@
       "forms_template_updated": "टेम्पलेट अपडेट किया गया",
       "forms_template_duplicated": "टेम्पलेट डुप्लिकेट किया गया",
       "forms_template_deleted": "टेम्पलेट हटाया गया",
-      "responses_submitted": "जवाब मिला"
+      "responses_submitted": "जवाब मिला",
+      "forms_page_design_created": "पेज डिज़ाइन सहेजा गया",
+      "forms_page_design_updated": "पेज डिज़ाइन अपडेट हुआ",
+      "forms_page_design_deleted": "पेज डिज़ाइन हटाया गया"
     },
     "detail": {
       "who": "किसने",
@@ -3428,6 +3436,53 @@
       "inUse": "उपयोग में टैग",
       "add": "{n} में जोड़ें | {n} में जोड़ें",
       "remove": "हटाएँ"
+    }
+  },
+  "pages": {
+    "subtitle": "आपके फ़ॉर्म के आसपास के पेज के डिज़ाइन",
+    "new": "नया पेज डिज़ाइन",
+    "search": "पेज डिज़ाइन खोजें…",
+    "emptyTitle": "यहाँ कोई पेज डिज़ाइन नहीं",
+    "emptyDesc": "एक बनाएँ, या किसी भी फ़ॉर्म के डिज़ाइनर से उसका पेज सहेजें।",
+    "col": {
+      "name": "पेज डिज़ाइन",
+      "style": "शैली"
+    },
+    "deleteTitle": "“{name}” हटाएँ?",
+    "deleteDesc": "यह पेज डिज़ाइन की सूची से हट जाएगा।",
+    "toast": {
+      "saved": "पेज डिज़ाइन “{name}” सहेजा गया",
+      "updated": "पेज डिज़ाइन “{name}” अपडेट हुआ",
+      "duplicated": "“{name}” बनाया गया",
+      "deleted": "पेज डिज़ाइन “{name}” हटाया गया"
+    },
+    "preset": {
+      "clean": "साफ़",
+      "midnight_bar": "रात्रि बार",
+      "brand_bar": "ब्रांड बार",
+      "spotlight": "स्पॉटलाइट",
+      "spotlight_night": "रात्रि स्पॉटलाइट",
+      "side_brand": "ब्रांड पैनल",
+      "side_night": "रात्रि पैनल",
+      "side_soft": "सौम्य पैनल",
+      "minimal": "न्यूनतम",
+      "minimal_soft": "सौम्य न्यूनतम"
+    },
+    "editor": {
+      "crumb": "पेज संपादक",
+      "newTitle": "नया पेज डिज़ाइन",
+      "untitled": "बिना नाम का पेज डिज़ाइन",
+      "newDesc": "एक बार डिज़ाइन करें, किसी भी फ़ॉर्म पर उपयोग करें",
+      "systemDesc": "Formalie डिज़ाइन (केवल पढ़ने के लिए)",
+      "systemTitle": "एक Formalie डिज़ाइन",
+      "systemHint": "यह पेज डिज़ाइन Formalie का हिस्सा है और बदला नहीं जा सकता। अपना संस्करण बनाने के लिए इसकी प्रति बनाएँ।",
+      "save": "पेज डिज़ाइन सहेजें",
+      "name": "नाम",
+      "namePlaceholder": "जैसे: इवेंट पंजीकरण पेज",
+      "nameFirst": "सहेजने के लिए पेज डिज़ाइन को एक नाम दें।",
+      "notFound": "यह पेज डिज़ाइन उपलब्ध नहीं है",
+      "sample": "एक नमूना फ़ॉर्म के आसपास दिखाया गया",
+      "controls": "पेज डिज़ाइन"
     }
   }
 }

@@ -80,6 +80,8 @@ export const formSchemaV1 = z.object({
   theme: z.record(z.string(), z.unknown()).optional(),
   /** The saved theme this design came from (the tokens above are a copy). */
   theme_id: z.string().max(64).nullable().optional(),
+  /** The page design the page around the form came from (the frame and page tokens are a copy). */
+  page_design_id: z.string().max(64).nullable().optional(),
   calculations: z.array(z.unknown()).max(200).optional(),
   /** Translations per language: text key (shared/utils/forms/translations.ts) → text. */
   translations: z.record(z.string().max(10), z.record(z.string().max(200), z.string().max(50_000))).optional(),

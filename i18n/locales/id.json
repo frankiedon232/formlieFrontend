@@ -396,7 +396,12 @@
     "templatesMine": "Templat Anda",
     "themesSystem": "Formalie",
     "themesSaved": "Tersimpan",
-    "themesCreated": "Dibuat"
+    "themesCreated": "Dibuat",
+    "pages": "Halaman",
+    "pagesAll": "Semua halaman",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Tersimpan",
+    "pagesCreated": "Dibuat"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Templat diperbarui",
       "forms_template_duplicated": "Templat diduplikat",
       "forms_template_deleted": "Templat dihapus",
-      "responses_submitted": "Respons diterima"
+      "responses_submitted": "Respons diterima",
+      "forms_page_design_created": "Desain halaman disimpan",
+      "forms_page_design_updated": "Desain halaman diperbarui",
+      "forms_page_design_deleted": "Desain halaman dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -3428,6 +3436,53 @@
       "inUse": "Tag yang dipakai",
       "add": "Tambah ke {n} | Tambah ke {n}",
       "remove": "Hapus"
+    }
+  },
+  "pages": {
+    "subtitle": "Desain untuk halaman di sekitar formulir Anda",
+    "new": "Desain halaman baru",
+    "search": "Cari desain halaman…",
+    "emptyTitle": "Belum ada desain halaman di sini",
+    "emptyDesc": "Buat satu, atau simpan halaman formulir mana pun dari perancangnya.",
+    "col": {
+      "name": "Desain halaman",
+      "style": "Gaya"
+    },
+    "deleteTitle": "Hapus “{name}”?",
+    "deleteDesc": "Desain ini hilang dari daftar desain halaman.",
+    "toast": {
+      "saved": "Desain halaman “{name}” disimpan",
+      "updated": "Desain halaman “{name}” diperbarui",
+      "duplicated": "“{name}” dibuat",
+      "deleted": "Desain halaman “{name}” dihapus"
+    },
+    "preset": {
+      "clean": "Bersih",
+      "midnight_bar": "Bilah malam",
+      "brand_bar": "Bilah merek",
+      "spotlight": "Sorotan",
+      "spotlight_night": "Sorotan malam",
+      "side_brand": "Panel merek",
+      "side_night": "Panel malam",
+      "side_soft": "Panel lembut",
+      "minimal": "Minimal",
+      "minimal_soft": "Minimal lembut"
+    },
+    "editor": {
+      "crumb": "Editor halaman",
+      "newTitle": "Desain halaman baru",
+      "untitled": "Desain halaman tanpa nama",
+      "newDesc": "Rancang sekali, pakai di formulir mana pun",
+      "systemDesc": "Desain Formalie (hanya baca)",
+      "systemTitle": "Desain dari Formalie",
+      "systemHint": "Desain halaman ini bagian dari Formalie dan tidak dapat diubah. Duplikat untuk membuat versi Anda sendiri.",
+      "save": "Simpan desain halaman",
+      "name": "Nama",
+      "namePlaceholder": "mis. Halaman pendaftaran acara",
+      "nameFirst": "Beri nama desain halaman untuk menyimpannya.",
+      "notFound": "Desain halaman ini tidak tersedia",
+      "sample": "Ditampilkan di sekitar formulir contoh",
+      "controls": "Desain halaman"
     }
   }
 }

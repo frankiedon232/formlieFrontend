@@ -396,7 +396,12 @@
     "templatesMine": "আপনার টেমপ্লেট",
     "themesSystem": "Formalie",
     "themesSaved": "সংরক্ষিত",
-    "themesCreated": "তৈরি"
+    "themesCreated": "তৈরি",
+    "pages": "পৃষ্ঠা",
+    "pagesAll": "সব পৃষ্ঠা",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "সংরক্ষিত",
+    "pagesCreated": "তৈরি করা"
   },
   "navbar": {
     "breadcrumb": "ব্রেডক্রাম্ব",
@@ -865,7 +870,10 @@
       "forms_template_updated": "টেমপ্লেট আপডেট হয়েছে",
       "forms_template_duplicated": "টেমপ্লেট ডুপ্লিকেট হয়েছে",
       "forms_template_deleted": "টেমপ্লেট মুছে ফেলা হয়েছে",
-      "responses_submitted": "উত্তর পাওয়া গেছে"
+      "responses_submitted": "উত্তর পাওয়া গেছে",
+      "forms_page_design_created": "পৃষ্ঠা ডিজাইন সংরক্ষিত",
+      "forms_page_design_updated": "পৃষ্ঠা ডিজাইন হালনাগাদ",
+      "forms_page_design_deleted": "পৃষ্ঠা ডিজাইন মুছে ফেলা হয়েছে"
     },
     "detail": {
       "who": "কে",
@@ -3428,6 +3436,53 @@
       "inUse": "ব্যবহৃত ট্যাগ",
       "add": "{n}টিতে যোগ করুন | {n}টিতে যোগ করুন",
       "remove": "সরান"
+    }
+  },
+  "pages": {
+    "subtitle": "আপনার ফর্মের চারপাশের পৃষ্ঠার ডিজাইন",
+    "new": "নতুন পৃষ্ঠা ডিজাইন",
+    "search": "পৃষ্ঠা ডিজাইন খুঁজুন…",
+    "emptyTitle": "এখানে কোনো পৃষ্ঠা ডিজাইন নেই",
+    "emptyDesc": "একটি তৈরি করুন, বা যেকোনো ফর্মের ডিজাইনার থেকে তার পৃষ্ঠা সংরক্ষণ করুন।",
+    "col": {
+      "name": "পৃষ্ঠা ডিজাইন",
+      "style": "ধরন"
+    },
+    "deleteTitle": "“{name}” মুছবেন?",
+    "deleteDesc": "এটি পৃষ্ঠা ডিজাইনের তালিকা থেকে সরে যাবে।",
+    "toast": {
+      "saved": "পৃষ্ঠা ডিজাইন “{name}” সংরক্ষিত",
+      "updated": "পৃষ্ঠা ডিজাইন “{name}” হালনাগাদ",
+      "duplicated": "“{name}” তৈরি হয়েছে",
+      "deleted": "পৃষ্ঠা ডিজাইন “{name}” মুছে ফেলা হয়েছে"
+    },
+    "preset": {
+      "clean": "পরিচ্ছন্ন",
+      "midnight_bar": "রাতের বার",
+      "brand_bar": "ব্র্যান্ড বার",
+      "spotlight": "স্পটলাইট",
+      "spotlight_night": "রাতের স্পটলাইট",
+      "side_brand": "ব্র্যান্ড প্যানেল",
+      "side_night": "রাতের প্যানেল",
+      "side_soft": "কোমল প্যানেল",
+      "minimal": "ন্যূনতম",
+      "minimal_soft": "কোমল ন্যূনতম"
+    },
+    "editor": {
+      "crumb": "পৃষ্ঠা সম্পাদক",
+      "newTitle": "নতুন পৃষ্ঠা ডিজাইন",
+      "untitled": "নামহীন পৃষ্ঠা ডিজাইন",
+      "newDesc": "একবার ডিজাইন করুন, যেকোনো ফর্মে ব্যবহার করুন",
+      "systemDesc": "Formalie ডিজাইন (শুধু পড়ার জন্য)",
+      "systemTitle": "একটি Formalie ডিজাইন",
+      "systemHint": "এই পৃষ্ঠা ডিজাইনটি Formalie-এর অংশ এবং বদলানো যায় না। নিজের সংস্করণ বানাতে এটি অনুলিপি করুন।",
+      "save": "পৃষ্ঠা ডিজাইন সংরক্ষণ",
+      "name": "নাম",
+      "namePlaceholder": "যেমন: ইভেন্ট নিবন্ধন পৃষ্ঠা",
+      "nameFirst": "সংরক্ষণ করতে পৃষ্ঠা ডিজাইনের একটি নাম দিন।",
+      "notFound": "এই পৃষ্ঠা ডিজাইনটি পাওয়া যাচ্ছে না",
+      "sample": "একটি নমুনা ফর্মের চারপাশে দেখানো",
+      "controls": "পৃষ্ঠা ডিজাইন"
     }
   }
 }

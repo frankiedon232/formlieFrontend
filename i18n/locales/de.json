@@ -396,7 +396,12 @@
     "templatesMine": "Eigene Vorlagen",
     "themesSystem": "Formalie",
     "themesSaved": "Gespeichert",
-    "themesCreated": "Erstellt"
+    "themesCreated": "Erstellt",
+    "pages": "Seiten",
+    "pagesAll": "Alle Seiten",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Gespeichert",
+    "pagesCreated": "Erstellt"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Vorlage aktualisiert",
       "forms_template_duplicated": "Vorlage dupliziert",
       "forms_template_deleted": "Vorlage gelöscht",
-      "responses_submitted": "Antwort eingegangen"
+      "responses_submitted": "Antwort eingegangen",
+      "forms_page_design_created": "Seitendesign gespeichert",
+      "forms_page_design_updated": "Seitendesign aktualisiert",
+      "forms_page_design_deleted": "Seitendesign gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -3428,6 +3436,53 @@
       "inUse": "Verwendete Tags",
       "add": "Zu {n} hinzufügen | Zu {n} hinzufügen",
       "remove": "Entfernen"
+    }
+  },
+  "pages": {
+    "subtitle": "Designs für die Seite rund um Ihre Formulare",
+    "new": "Neues Seitendesign",
+    "search": "Seitendesigns suchen…",
+    "emptyTitle": "Hier gibt es keine Seitendesigns",
+    "emptyDesc": "Erstellen Sie eines oder speichern Sie die Seite eines Formulars in dessen Designer.",
+    "col": {
+      "name": "Seitendesign",
+      "style": "Stil"
+    },
+    "deleteTitle": "„{name}“ löschen?",
+    "deleteDesc": "Es verschwindet aus der Liste der Seitendesigns.",
+    "toast": {
+      "saved": "Seitendesign „{name}“ gespeichert",
+      "updated": "Seitendesign „{name}“ aktualisiert",
+      "duplicated": "„{name}“ erstellt",
+      "deleted": "Seitendesign „{name}“ gelöscht"
+    },
+    "preset": {
+      "clean": "Klar",
+      "midnight_bar": "Nachtleiste",
+      "brand_bar": "Markenleiste",
+      "spotlight": "Spotlight",
+      "spotlight_night": "Spotlight Nacht",
+      "side_brand": "Markenpaneel",
+      "side_night": "Nachtpaneel",
+      "side_soft": "Sanftes Paneel",
+      "minimal": "Minimal",
+      "minimal_soft": "Sanft minimal"
+    },
+    "editor": {
+      "crumb": "Seiteneditor",
+      "newTitle": "Neues Seitendesign",
+      "untitled": "Unbenanntes Seitendesign",
+      "newDesc": "Einmal gestalten, in jedem Formular nutzen",
+      "systemDesc": "Formalie-Design (schreibgeschützt)",
+      "systemTitle": "Ein Formalie-Design",
+      "systemHint": "Dieses Seitendesign gehört zu Formalie und kann nicht geändert werden. Duplizieren Sie es für Ihre eigene Version.",
+      "save": "Seitendesign speichern",
+      "name": "Name",
+      "namePlaceholder": "z. B. Seite zur Veranstaltungsanmeldung",
+      "nameFirst": "Geben Sie dem Seitendesign einen Namen, um es zu speichern.",
+      "notFound": "Dieses Seitendesign ist nicht verfügbar",
+      "sample": "Um ein Beispielformular gezeigt",
+      "controls": "Seitendesign"
     }
   }
 }

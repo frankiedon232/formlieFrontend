@@ -83,25 +83,7 @@ async function showNameField() {
   if (!large.value) panelOpen.value = true
   await nextTick()
   await new Promise(resolve => setTimeout(resolve, large.value ? 0 : 250))
-  const field = document.getElementById(large.value ? 'theme-name' : 'theme-name-panel')
-  if (!field) return
-  // Scroll the panel that holds it (scrollIntoView doesn't move nested scroll areas reliably).
-  let box = field.parentElement
-  while (box && !(box.scrollHeight > box.clientHeight && /auto|scroll/.test(getComputedStyle(box).overflowY)))
-    box = box.parentElement
-  field.focus({ preventScroll: true })
-  if (!box) return field.scrollIntoView({ block: 'center' })
-  const top = Math.max(
-    0,
-    box.scrollTop + field.getBoundingClientRect().top - box.getBoundingClientRect().top - 48,
-  )
-  box.scrollTo({ top, behavior: 'smooth' })
-  // Some browsers ignore smooth scrolling here; jump instead if nothing moved.
-  const from = box.scrollTop
-  setTimeout(
-    () => box && Math.abs(box.scrollTop - top) > 4 && box.scrollTop === from && box.scrollTo({ top }),
-    350,
-  )
+  revealField(large.value ? 'theme-name' : 'theme-name-panel')
 }
 async function save() {
   const trimmed = name.value.trim()

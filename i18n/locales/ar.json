@@ -396,7 +396,12 @@
     "templatesMine": "قوالبك",
     "themesSystem": "Formalie",
     "themesSaved": "المحفوظة",
-    "themesCreated": "منشأ"
+    "themesCreated": "منشأ",
+    "pages": "الصفحات",
+    "pagesAll": "كل الصفحات",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "المحفوظة",
+    "pagesCreated": "المُنشأة"
   },
   "navbar": {
     "breadcrumb": "مسار التنقل",
@@ -865,7 +870,10 @@
       "forms_template_updated": "حُدّث قالب",
       "forms_template_duplicated": "كُرّر قالب",
       "forms_template_deleted": "حُذف قالب",
-      "responses_submitted": "استُلم رد"
+      "responses_submitted": "استُلم رد",
+      "forms_page_design_created": "تم حفظ تصميم صفحة",
+      "forms_page_design_updated": "تم تحديث تصميم صفحة",
+      "forms_page_design_deleted": "تم حذف تصميم صفحة"
     },
     "detail": {
       "who": "من",
@@ -3428,6 +3436,53 @@
       "inUse": "وسوم مستخدمة",
       "add": "إضافة إلى {n} | إضافة إلى {n}",
       "remove": "إزالة"
+    }
+  },
+  "pages": {
+    "subtitle": "تصاميم للصفحة المحيطة بنماذجك",
+    "new": "تصميم صفحة جديد",
+    "search": "ابحث في تصاميم الصفحات…",
+    "emptyTitle": "لا توجد تصاميم صفحات هنا",
+    "emptyDesc": "أنشئ واحدًا، أو احفظ صفحة أي نموذج من مصمّمه.",
+    "col": {
+      "name": "تصميم الصفحة",
+      "style": "النمط"
+    },
+    "deleteTitle": "حذف «{name}»؟",
+    "deleteDesc": "سيختفي من قائمة تصاميم الصفحات.",
+    "toast": {
+      "saved": "تم حفظ تصميم الصفحة «{name}»",
+      "updated": "تم تحديث تصميم الصفحة «{name}»",
+      "duplicated": "تم إنشاء «{name}»",
+      "deleted": "تم حذف تصميم الصفحة «{name}»"
+    },
+    "preset": {
+      "clean": "نظيف",
+      "midnight_bar": "شريط ليلي",
+      "brand_bar": "شريط العلامة",
+      "spotlight": "تسليط الضوء",
+      "spotlight_night": "تسليط ليلي",
+      "side_brand": "لوحة العلامة",
+      "side_night": "لوحة ليلية",
+      "side_soft": "لوحة ناعمة",
+      "minimal": "بسيط",
+      "minimal_soft": "بسيط ناعم"
+    },
+    "editor": {
+      "crumb": "محرر الصفحة",
+      "newTitle": "تصميم صفحة جديد",
+      "untitled": "تصميم صفحة بلا اسم",
+      "newDesc": "صمّمه مرة واستخدمه في أي نموذج",
+      "systemDesc": "تصميم Formalie (للقراءة فقط)",
+      "systemTitle": "تصميم من Formalie",
+      "systemHint": "هذا التصميم جزء من Formalie ولا يمكن تغييره. انسخه لتصنع نسختك الخاصة.",
+      "save": "حفظ تصميم الصفحة",
+      "name": "الاسم",
+      "namePlaceholder": "مثال: صفحة التسجيل في فعالية",
+      "nameFirst": "أعطِ تصميم الصفحة اسمًا لحفظه.",
+      "notFound": "تصميم الصفحة هذا غير متاح",
+      "sample": "معروض حول نموذج تجريبي",
+      "controls": "تصميم الصفحة"
     }
   }
 }

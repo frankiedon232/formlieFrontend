@@ -396,7 +396,12 @@
     "templatesMine": "Je sjablonen",
     "themesSystem": "Formalie",
     "themesSaved": "Opgeslagen",
-    "themesCreated": "Zelf gemaakt"
+    "themesCreated": "Zelf gemaakt",
+    "pages": "Pagina’s",
+    "pagesAll": "Alle pagina’s",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "Opgeslagen",
+    "pagesCreated": "Gemaakt"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -865,7 +870,10 @@
       "forms_template_updated": "Sjabloon bijgewerkt",
       "forms_template_duplicated": "Sjabloon gedupliceerd",
       "forms_template_deleted": "Sjabloon verwijderd",
-      "responses_submitted": "Reactie ontvangen"
+      "responses_submitted": "Reactie ontvangen",
+      "forms_page_design_created": "Pagina-ontwerp opgeslagen",
+      "forms_page_design_updated": "Pagina-ontwerp bijgewerkt",
+      "forms_page_design_deleted": "Pagina-ontwerp verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -3428,6 +3436,53 @@
       "inUse": "Gebruikte tags",
       "add": "Toevoegen aan {n} | Toevoegen aan {n}",
       "remove": "Verwijderen"
+    }
+  },
+  "pages": {
+    "subtitle": "Ontwerpen voor de pagina rond uw formulieren",
+    "new": "Nieuw pagina-ontwerp",
+    "search": "Pagina-ontwerpen zoeken…",
+    "emptyTitle": "Hier zijn geen pagina-ontwerpen",
+    "emptyDesc": "Maak er een, of sla de pagina van een formulier op vanuit de ontwerper.",
+    "col": {
+      "name": "Pagina-ontwerp",
+      "style": "Stijl"
+    },
+    "deleteTitle": "“{name}” verwijderen?",
+    "deleteDesc": "Het verdwijnt uit de lijst met pagina-ontwerpen.",
+    "toast": {
+      "saved": "Pagina-ontwerp “{name}” opgeslagen",
+      "updated": "Pagina-ontwerp “{name}” bijgewerkt",
+      "duplicated": "“{name}” gemaakt",
+      "deleted": "Pagina-ontwerp “{name}” verwijderd"
+    },
+    "preset": {
+      "clean": "Strak",
+      "midnight_bar": "Nachtbalk",
+      "brand_bar": "Merkbalk",
+      "spotlight": "Spotlight",
+      "spotlight_night": "Spotlight nacht",
+      "side_brand": "Merkpaneel",
+      "side_night": "Nachtpaneel",
+      "side_soft": "Zacht paneel",
+      "minimal": "Minimaal",
+      "minimal_soft": "Zacht minimaal"
+    },
+    "editor": {
+      "crumb": "Pagina-editor",
+      "newTitle": "Nieuw pagina-ontwerp",
+      "untitled": "Naamloos pagina-ontwerp",
+      "newDesc": "Eén keer ontwerpen, op elk formulier gebruiken",
+      "systemDesc": "Formalie-ontwerp (alleen lezen)",
+      "systemTitle": "Een Formalie-ontwerp",
+      "systemHint": "Dit pagina-ontwerp hoort bij Formalie en kan niet worden gewijzigd. Dupliceer het voor uw eigen versie.",
+      "save": "Pagina-ontwerp opslaan",
+      "name": "Naam",
+      "namePlaceholder": "bijv. Aanmeldpagina voor een evenement",
+      "nameFirst": "Geef het pagina-ontwerp een naam om het op te slaan.",
+      "notFound": "Dit pagina-ontwerp is niet beschikbaar",
+      "sample": "Getoond rond een voorbeeldformulier",
+      "controls": "Pagina-ontwerp"
     }
   }
 }

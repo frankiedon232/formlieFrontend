@@ -9,6 +9,7 @@ import { formResponses } from '../data/responseData'
 import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
 import { SYSTEM_THEME_COUNT } from './themes'
+import { SYSTEM_PAGE_COUNT } from './pageDesigns'
 
 /** GET /navigation/counts, cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
@@ -34,6 +35,7 @@ export const navigationCounts = defineMockRoute(({ event }) => {
     .sort((a, b) => b.forms - a.forms || b.count - a.count)
     .map(({ key, count }) => ({ key, count }))
   const themes = [...(libraryOf(tenant).themes ?? [])].sort((a, b) => b.updated_at.localeCompare(a.updated_at))
+  const pages = libraryOf(tenant).pages ?? []
 
   return ok<NavCounts>({
     forms: {
@@ -51,6 +53,12 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       system: SYSTEM_THEME_COUNT,
       saved: themes.filter(theme => (theme.source ?? 'saved') === 'saved').length,
       created: themes.filter(theme => theme.source === 'created').length,
+    },
+    pages: {
+      total: pages.length + SYSTEM_PAGE_COUNT,
+      system: SYSTEM_PAGE_COUNT,
+      saved: pages.filter(page => (page.source ?? 'saved') === 'saved').length,
+      created: pages.filter(page => page.source === 'created').length,
     },
   })
 })

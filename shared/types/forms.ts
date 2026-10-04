@@ -1,5 +1,6 @@
 import type { FormField } from '../utils/forms/build'
 import type { FormTheme } from '../utils/forms/theme'
+import type { PageDesignTokens } from '../utils/forms/page-design'
 import type { FormSchemaV1 } from '../utils/forms/schema'
 /** Form list shapes (docs/API-CONTRACT.md → Forms). */
 export type FormStatus = 'draft' | 'published' | 'closed' | 'archived'
@@ -207,6 +208,27 @@ export interface SavedTheme {
   created_by: { id: string; name: string }
   created_at: string
   updated_at: string
+}
+
+/** A page design (Resources → Pages): the page around a form on its public link (shared/utils/forms/page-design.ts). */
+export interface PageDesign {
+  id: string
+  name: string
+  tokens: PageDesignTokens
+  source: ThemeSource
+  /** System designs: i18n key of the name. */
+  name_key?: string
+  forms_count: number
+  created_by: { id: string; name: string }
+  created_at: string
+  updated_at: string
+}
+
+/** GET /page-designs/insights, totals for each card's share of forms. */
+export interface PageDesignInsights {
+  by_source: Record<ThemeSource, number>
+  in_use: number
+  forms_total: number
 }
 
 /**

@@ -396,7 +396,12 @@
     "templatesMine": "你的模板",
     "themesSystem": "Formalie",
     "themesSaved": "已保存",
-    "themesCreated": "自建"
+    "themesCreated": "自建",
+    "pages": "页面",
+    "pagesAll": "所有页面",
+    "pagesSystem": "Formalie",
+    "pagesSaved": "已保存",
+    "pagesCreated": "已创建"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -865,7 +870,10 @@
       "forms_template_updated": "已更新模板",
       "forms_template_duplicated": "已复制模板",
       "forms_template_deleted": "已删除模板",
-      "responses_submitted": "已收到回复"
+      "responses_submitted": "已收到回复",
+      "forms_page_design_created": "已保存页面设计",
+      "forms_page_design_updated": "已更新页面设计",
+      "forms_page_design_deleted": "已删除页面设计"
     },
     "detail": {
       "who": "谁",
@@ -3428,6 +3436,53 @@
       "inUse": "已用标签",
       "add": "添加到 {n} 条 | 添加到 {n} 条",
       "remove": "移除"
+    }
+  },
+  "pages": {
+    "subtitle": "表单外围页面的设计",
+    "new": "新建页面设计",
+    "search": "搜索页面设计…",
+    "emptyTitle": "这里还没有页面设计",
+    "emptyDesc": "新建一个，或在任意表单的设计器中保存其页面。",
+    "col": {
+      "name": "页面设计",
+      "style": "样式"
+    },
+    "deleteTitle": "删除“{name}”？",
+    "deleteDesc": "它将从页面设计列表中消失。",
+    "toast": {
+      "saved": "已保存页面设计“{name}”",
+      "updated": "已更新页面设计“{name}”",
+      "duplicated": "已创建“{name}”",
+      "deleted": "已删除页面设计“{name}”"
+    },
+    "preset": {
+      "clean": "简洁",
+      "midnight_bar": "夜色顶栏",
+      "brand_bar": "品牌顶栏",
+      "spotlight": "聚光",
+      "spotlight_night": "夜色聚光",
+      "side_brand": "品牌侧栏",
+      "side_night": "夜色侧栏",
+      "side_soft": "柔和侧栏",
+      "minimal": "极简",
+      "minimal_soft": "柔和极简"
+    },
+    "editor": {
+      "crumb": "页面编辑器",
+      "newTitle": "新建页面设计",
+      "untitled": "未命名页面设计",
+      "newDesc": "设计一次，用于任何表单",
+      "systemDesc": "Formalie 设计（只读）",
+      "systemTitle": "Formalie 设计",
+      "systemHint": "此页面设计属于 Formalie，无法更改。复制后可制作你自己的版本。",
+      "save": "保存页面设计",
+      "name": "名称",
+      "namePlaceholder": "例如：活动报名页面",
+      "nameFirst": "请为页面设计命名后再保存。",
+      "notFound": "此页面设计不可用",
+      "sample": "显示在示例表单周围",
+      "controls": "页面设计"
     }
   }
 }
