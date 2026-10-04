@@ -519,6 +519,16 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Bulk actions: set status, add / remove a tag (type one or pick one in use), delete (editors)
 - ⬜ Export XLSX / CSV / PDF (all, filtered, selected) with progress and download
 
+### Page designs library (owner request 2026-10-04: "add more pages, just like Themes on its menu")
+
+The page around the form on its public link (today the theme's `frame`: 4 styles, 3 tones) becomes its own library, like Themes.
+
+- ⬜ M1 Library: `PageDesign { id, name, source: system | saved | created, frame (style, tone, website, facts), page background }`; Formalie's ready-made designs; `/page-designs` API (list, get, create, update, duplicate, delete, insights for share of use), audit
+- ⬜ M1 Resources → Pages menu (All · Formalie · Saved · Created) and the list page in the locked table / grid format (thumbnail left, like Themes)
+- ⬜ M2 More page styles rendered (beyond branded · spotlight · side · minimal: e.g. banner with cover image, centred, headline beside the form, corporate top bar with links, event poster, compact), each with a clear miniature
+- ⬜ M2 Page editor (like the theme editor: settings left, live preview of a sample form on desktop / tablet / phone)
+- ⬜ M3 Form designer "Page" panel picks from the library (Formalie + yours), "Save page as design", forms keep their copy (changing a design never breaks a form)
+
 ### Folders workspace (owner request 2026-10-02, built here because the stats need response data)
 
 - ⬜ Sidebar "Folders" group (design RESOURCES style): coloured folder icons, form count on the end, **+** to create, "Show all" when long
@@ -1009,7 +1019,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | Responses page: group by form; only a form's page lists its responses (grouped only) | F11 | ✅ |
 | 2026-10-04 | Lock the response card format and use it on the Forms list (table and grid) | F11 / F6 | ✅ |
 | 2026-10-04 | Templates and Themes in the same table / grid format (chart cards, Columns, locked card, rows open) | F9 / F11 | ✅ |
-| 2026-10-04 | More page designs ("pages") offered like Themes, with their own menu entry; scope to confirm with the owner after F11 M2 | F10 / F9 | ⬜ |
+| 2026-10-04 | Page designs library (owner chose "Page designs library"): Resources → Pages like Themes, many ready-made designs for the page around the form on its public link, teams save / create their own, pick one per form | F10 / F9 | ⬜ |
 | 2026-10-04 | Responses, following the design image: two top cards with charts; grid cards like the design's task cards; theme status colours (no blue); panel without history, answers grouped by likeness with chips, equal tiles, sliders; a file viewer like the preview (download when not previewable); move and show / hide columns in every table | F11 M1 | ✅ |
 | 2026-10-04 | Responses layout: slim top strip and the table right below; Responses | Insights switch on the table's toolbar line; very rich grid cards; a super rich response panel with Previous / Next floating in the footer | F11 M1 | ✅ |
 | 2026-10-04 | Responses: a beautiful, clean page with a lot of insight, slim charts, table; and every page must show test responses ("connect all the dots") | F11 M1 | ✅ |
