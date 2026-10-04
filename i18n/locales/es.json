@@ -234,7 +234,12 @@
       "detailsTitle": "Detalles",
       "tags": "Etiquetas",
       "noHistory": "Publicado antes de que se guardara el historial de versiones; empieza con la próxima publicación.",
-      "embedCode": "Código para insertar"
+      "embedCode": "Código para insertar",
+      "forms": "Formularios",
+      "responsesAll": "Respuestas, todos los formularios",
+      "last30Short": "Últimos 30 días",
+      "byStatus": "Formularios por estado",
+      "liveNow": "{n} publicados ahora"
     },
     "qr": {
       "title": "Código QR",
@@ -302,6 +307,11 @@
       "where": "Pégalo como HTML (en la mayoría de creadores de sitios: un bloque «Insertar» o «HTML personalizado»).",
       "preview": "Vista previa",
       "previewNote": "Este es el formulario real, tal como se verá en un sitio web. Las respuestas enviadas aquí son respuestas reales."
+    },
+    "card": {
+      "updated": "Actualizado {when}",
+      "access": "Acceso",
+      "noTags": "Sin etiquetas"
     }
   },
   "nav": {

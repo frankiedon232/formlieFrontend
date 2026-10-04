@@ -1,6 +1,8 @@
 <!--
-  Forms list (F6): DataView (search, status / folder / owner / tag filters, date range, sort,
-  Table / Grid) · inline rename · duplicate · move · tags · lifecycle · delete to Trash · bulk.
+  Forms list (F6; locked list-page format 2026-10-04): two chart cards on top (responses across
+  forms, forms by status), then DataView (search, status / folder / owner / tag filters, date
+  range, sort, Columns, Table / Grid with the locked card) · inline rename · duplicate · move ·
+  tags · lifecycle · delete to Trash · bulk.
   Busy rows while an action runs; every action refreshes the list and the sidebar counts.
 -->
 <script setup lang="ts">
@@ -9,6 +11,8 @@ import type { FormFacets, FormFolder, FormSummary } from '#shared/types/forms'
 definePageMeta({ breadcrumb: 'nav.forms' })
 
 const { t, te } = useI18n()
+const route = useRoute()
+const router = useRouter()
 const api = useApi()
 const { relative, date, number } = useFormat()
 useHead({ title: () => t('nav.forms') })
@@ -152,6 +156,11 @@ const sortOptions = computed(() => [
   { label: t('forms.sortResponses'), value: '-responses_count' },
 ])
 
+// The status card filters the list (one status at a time; the same status again clears it).
+const statusFilter = computed(() => (typeof route.query.status === 'string' && !route.query.status.includes(',') ? route.query.status : null))
+const filterStatus = (status: string) =>
+  void router.replace({ query: { ...route.query, status: statusFilter.value === status ? undefined : status, page: undefined } })
+
 const fetcher: DataFetcher<FormSummary> = (params, signal) =>
   api.list<FormSummary>('/forms', params, { signal })
 
@@ -187,6 +196,8 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
       </UButton>
     </template>
 
+    <div class="flex flex-col gap-4">
+    <FormsListOverview :status="statusFilter" :dots="STATUS_DOTS" @status="filterStatus" />
     <DataView
       id="forms"
       ref="dataView"
@@ -282,6 +293,7 @@ defineShortcuts({ n: () => navigateTo('/forms/new') })
         />
       </template>
     </DataView>
+    </div>
 
     <FormsListMoveModal
       v-model:open="moveOpen"

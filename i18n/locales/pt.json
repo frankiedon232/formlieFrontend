@@ -234,7 +234,12 @@
       "detailsTitle": "Detalhes",
       "tags": "Tags",
       "noHistory": "Publicado antes de o histórico de versões ser mantido. Ele começa na próxima publicação.",
-      "embedCode": "Código de incorporação"
+      "embedCode": "Código de incorporação",
+      "forms": "Formulários",
+      "responsesAll": "Respostas, todos os formulários",
+      "last30Short": "Últimos 30 dias",
+      "byStatus": "Formulários por estado",
+      "liveNow": "{n} publicados agora"
     },
     "qr": {
       "title": "Código QR",
@@ -302,6 +307,11 @@
       "where": "Cole-o como HTML (na maioria dos criadores de sites: um bloco «Incorporar» ou «HTML personalizado»).",
       "preview": "Pré-visualização",
       "previewNote": "Este é o formulário real, tal como aparecerá num site. As respostas enviadas aqui são respostas reais."
+    },
+    "card": {
+      "updated": "Atualizado {when}",
+      "access": "Acesso",
+      "noTags": "Sem etiquetas"
     }
   },
   "nav": {

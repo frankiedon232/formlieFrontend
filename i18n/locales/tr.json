@@ -234,7 +234,12 @@
       "detailsTitle": "Ayrıntılar",
       "tags": "Etiketler",
       "noHistory": "Sürüm geçmişi tutulmadan önce yayımlandı. Geçmiş bir sonraki yayımlamayla başlar.",
-      "embedCode": "Yerleştirme kodu"
+      "embedCode": "Yerleştirme kodu",
+      "forms": "Formlar",
+      "responsesAll": "Yanıtlar, tüm formlar",
+      "last30Short": "Son 30 gün",
+      "byStatus": "Duruma göre formlar",
+      "liveNow": "Şu an {n} yayında"
     },
     "qr": {
       "title": "QR kodu",
@@ -302,6 +307,11 @@
       "where": "HTML olarak yapıştırın (çoğu site oluşturucuda: “Embed” veya “Custom HTML” bloğu).",
       "preview": "Önizleme",
       "previewNote": "Bu, bir web sitesinde görüneceği haliyle gerçek formdur. Buradan gönderilen yanıtlar gerçek yanıtlardır."
+    },
+    "card": {
+      "updated": "Güncellendi {when}",
+      "access": "Erişim",
+      "noTags": "Etiket yok"
     }
   },
   "nav": {

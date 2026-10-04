@@ -234,7 +234,12 @@
       "detailsTitle": "Details",
       "tags": "Tags",
       "noHistory": "Veröffentlicht, bevor der Versionsverlauf geführt wurde. Er beginnt mit der nächsten Veröffentlichung.",
-      "embedCode": "Einbettungscode"
+      "embedCode": "Einbettungscode",
+      "forms": "Formulare",
+      "responsesAll": "Antworten, alle Formulare",
+      "last30Short": "Letzte 30 Tage",
+      "byStatus": "Formulare nach Status",
+      "liveNow": "{n} jetzt live"
     },
     "qr": {
       "title": "QR-Code",
@@ -302,6 +307,11 @@
       "where": "Als HTML einfügen (in den meisten Website-Baukästen: ein Block „Einbetten“ oder „Eigenes HTML“).",
       "preview": "Vorschau",
       "previewNote": "Dies ist das echte Formular, so wie es auf einer Website aussieht. Hier gesendete Antworten sind echte Antworten."
+    },
+    "card": {
+      "updated": "Geändert {when}",
+      "access": "Zugang",
+      "noTags": "Keine Tags"
     }
   },
   "nav": {

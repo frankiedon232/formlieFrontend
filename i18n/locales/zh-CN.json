@@ -234,7 +234,12 @@
       "detailsTitle": "详情",
       "tags": "标签",
       "noHistory": "发布时尚未记录版本历史，下次发布时开始记录。",
-      "embedCode": "嵌入代码"
+      "embedCode": "嵌入代码",
+      "forms": "表单",
+      "responsesAll": "回复（全部表单）",
+      "last30Short": "最近 30 天",
+      "byStatus": "按状态的表单",
+      "liveNow": "当前 {n} 个已发布"
     },
     "qr": {
       "title": "二维码",
@@ -302,6 +307,11 @@
       "where": "以 HTML 形式粘贴（大多数建站工具中为“嵌入”或“自定义 HTML”区块）。",
       "preview": "预览",
       "previewNote": "这是实际的表单，与在网站上显示的效果一致。在此提交的答案将作为真实回复记录。"
+    },
+    "card": {
+      "updated": "{when}更新",
+      "access": "访问权限",
+      "noTags": "无标签"
     }
   },
   "nav": {

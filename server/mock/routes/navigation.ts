@@ -41,6 +41,7 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       draft: count('draft'),
       published: count('published'),
       closed: count('closed'),
+      archived: count('archived'),
       trash: all.length - live.length,
     },
     responses: { all: total, ...byStatus },

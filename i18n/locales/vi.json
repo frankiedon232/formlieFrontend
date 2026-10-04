@@ -234,7 +234,12 @@
       "detailsTitle": "Chi tiết",
       "tags": "Thẻ",
       "noHistory": "Đã xuất bản trước khi lịch sử phiên bản được lưu. Lịch sử bắt đầu từ lần xuất bản tiếp theo.",
-      "embedCode": "Mã nhúng"
+      "embedCode": "Mã nhúng",
+      "forms": "Biểu mẫu",
+      "responsesAll": "Phản hồi, mọi biểu mẫu",
+      "last30Short": "30 ngày qua",
+      "byStatus": "Biểu mẫu theo trạng thái",
+      "liveNow": "{n} đang mở"
     },
     "qr": {
       "title": "Mã QR",
@@ -302,6 +307,11 @@
       "where": "Dán dưới dạng HTML (trong hầu hết trình tạo website: khối “Embed” hoặc “Custom HTML”).",
       "preview": "Xem trước",
       "previewNote": "Đây là biểu mẫu thật, đúng như khi hiển thị trên trang web. Câu trả lời gửi tại đây là phản hồi thật."
+    },
+    "card": {
+      "updated": "Cập nhật {when}",
+      "access": "Quyền truy cập",
+      "noTags": "Không có thẻ"
     }
   },
   "nav": {

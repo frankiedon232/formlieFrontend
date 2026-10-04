@@ -234,7 +234,12 @@
       "detailsTitle": "Maelezo",
       "tags": "Lebo",
       "noHistory": "Ilichapishwa kabla historia ya matoleo kuanza kuhifadhiwa. Itaanza na uchapishaji unaofuata.",
-      "embedCode": "Msimbo wa kupachika"
+      "embedCode": "Msimbo wa kupachika",
+      "forms": "Fomu",
+      "responsesAll": "Majibu, fomu zote",
+      "last30Short": "Siku 30 zilizopita",
+      "byStatus": "Fomu kwa hali",
+      "liveNow": "{n} ziko hewani sasa"
     },
     "qr": {
       "title": "Msimbo wa QR",
@@ -302,6 +307,11 @@
       "where": "Ubandike kama HTML (katika vijenzi vingi vya tovuti: kizuizi cha “Embed” au “Custom HTML”).",
       "preview": "Onyesho la awali",
       "previewNote": "Hii ni fomu halisi, jinsi itakavyoonekana kwenye tovuti. Majibu yanayotumwa hapa ni majibu halisi."
+    },
+    "card": {
+      "updated": "Ilisasishwa {when}",
+      "access": "Ufikiaji",
+      "noTags": "Hakuna lebo"
     }
   },
   "nav": {

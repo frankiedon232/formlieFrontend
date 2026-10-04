@@ -234,7 +234,12 @@
       "detailsTitle": "세부 정보",
       "tags": "태그",
       "noHistory": "버전 기록이 시작되기 전에 게시되었습니다. 다음 게시부터 기록이 시작됩니다.",
-      "embedCode": "삽입 코드"
+      "embedCode": "삽입 코드",
+      "forms": "양식",
+      "responsesAll": "응답(모든 양식)",
+      "last30Short": "최근 30일",
+      "byStatus": "상태별 양식",
+      "liveNow": "지금 {n}개 게시 중"
     },
     "qr": {
       "title": "QR 코드",
@@ -302,6 +307,11 @@
       "where": "HTML로 붙여 넣으세요(대부분의 사이트 빌더에서 “Embed” 또는 “Custom HTML” 블록).",
       "preview": "미리 보기",
       "previewNote": "웹사이트에 표시되는 모습 그대로의 실제 양식입니다. 여기서 보낸 답변은 실제 응답으로 저장됩니다."
+    },
+    "card": {
+      "updated": "{when} 업데이트",
+      "access": "접근",
+      "noTags": "태그 없음"
     }
   },
   "nav": {

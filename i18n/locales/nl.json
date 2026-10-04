@@ -234,7 +234,12 @@
       "detailsTitle": "Details",
       "tags": "Tags",
       "noHistory": "Gepubliceerd voordat de versiegeschiedenis werd bijgehouden. Die begint bij de volgende publicatie.",
-      "embedCode": "Insluitcode"
+      "embedCode": "Insluitcode",
+      "forms": "Formulieren",
+      "responsesAll": "Antwoorden, alle formulieren",
+      "last30Short": "Laatste 30 dagen",
+      "byStatus": "Formulieren per status",
+      "liveNow": "{n} nu live"
     },
     "qr": {
       "title": "QR-code",
@@ -302,6 +307,11 @@
       "where": "Plak het als HTML (in de meeste websitebouwers: een blok “Insluiten” of “Aangepaste HTML”).",
       "preview": "Voorbeeld",
       "previewNote": "Dit is het echte formulier, zoals het op een website wordt getoond. Antwoorden die u hier verstuurt, zijn echte reacties."
+    },
+    "card": {
+      "updated": "Bijgewerkt {when}",
+      "access": "Toegang",
+      "noTags": "Geen labels"
     }
   },
   "nav": {

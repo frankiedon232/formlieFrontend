@@ -234,7 +234,12 @@
       "detailsTitle": "Szczegóły",
       "tags": "Tagi",
       "noHistory": "Opublikowano przed prowadzeniem historii wersji. Zacznie się ona przy następnej publikacji.",
-      "embedCode": "Kod do osadzenia"
+      "embedCode": "Kod do osadzenia",
+      "forms": "Formularze",
+      "responsesAll": "Odpowiedzi, wszystkie formularze",
+      "last30Short": "Ostatnie 30 dni",
+      "byStatus": "Formularze według statusu",
+      "liveNow": "Teraz opublikowane: {n}"
     },
     "qr": {
       "title": "Kod QR",
@@ -302,6 +307,11 @@
       "where": "Wklej go jako HTML (w większości kreatorów stron: blok „Osadź” lub „Własny HTML”).",
       "preview": "Podgląd",
       "previewNote": "To jest prawdziwy formularz, tak jak będzie wyglądał na stronie. Odpowiedzi wysłane tutaj są prawdziwymi odpowiedziami."
+    },
+    "card": {
+      "updated": "Zaktualizowano {when}",
+      "access": "Dostęp",
+      "noTags": "Brak tagów"
     }
   },
   "nav": {

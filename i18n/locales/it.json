@@ -234,7 +234,12 @@
       "detailsTitle": "Dettagli",
       "tags": "Tag",
       "noHistory": "Pubblicato prima che venisse tenuta la cronologia delle versioni: inizia con la prossima pubblicazione.",
-      "embedCode": "Codice di incorporamento"
+      "embedCode": "Codice di incorporamento",
+      "forms": "Moduli",
+      "responsesAll": "Risposte, tutti i moduli",
+      "last30Short": "Ultimi 30 giorni",
+      "byStatus": "Moduli per stato",
+      "liveNow": "{n} online ora"
     },
     "qr": {
       "title": "Codice QR",
@@ -302,6 +307,11 @@
       "where": "Incollalo come HTML (nella maggior parte dei site builder: un blocco “Incorpora” o “HTML personalizzato”).",
       "preview": "Anteprima",
       "previewNote": "Questo è il modulo reale, come apparirà su un sito web. Le risposte inviate qui sono risposte reali."
+    },
+    "card": {
+      "updated": "Aggiornato {when}",
+      "access": "Accesso",
+      "noTags": "Nessun tag"
     }
   },
   "nav": {

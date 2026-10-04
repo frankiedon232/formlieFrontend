@@ -10,7 +10,7 @@ import { RESPONSE_STATUSES, type ResponseInsights, type ResponseStatus } from '#
 
 const props = defineProps<{ insights: ResponseInsights; perForm?: boolean; status?: string | null }>()
 const emit = defineEmits<{ status: [status: ResponseStatus]; insights: [] }>()
-const { t, d } = useI18n()
+const { t } = useI18n()
 const { number, relative } = useFormat()
 const { duration } = useResponseFormat()
 
@@ -20,9 +20,6 @@ const trend = computed(() => {
 })
 const parts = computed(() => RESPONSE_STATUSES.map(key => ({ key, label: t(`status.${key}`), count: props.insights.status[key], color: RESPONSE_STATUS_META[key].fill })))
 const daily = computed(() => props.insights.daily)
-const top = computed(() => Math.max(1, ...daily.value.map(day => day.count)))
-const active = ref<number | null>(null)
-const dayLabel = (date: string) => d(new Date(`${date}T12:00:00`), { day: 'numeric', month: 'short' })
 const stats = computed(() => [
   { label: t('responses.kpi.totalLabel'), value: number(props.insights.total) },
   { label: t('responses.kpi.time'), value: props.insights.median_seconds != null ? duration(Math.round(props.insights.median_seconds)) : '-' },
@@ -57,21 +54,7 @@ const stats = computed(() => [
             </div>
           </dl>
         </div>
-        <!-- The period, day by day -->
-        <div class="relative hidden h-24 min-w-0 flex-1 items-end gap-px sm:flex" role="img" :aria-label="t('responses.trend.title')">
-          <span
-            v-for="(day, index) in daily"
-            :key="day.date"
-            class="min-w-0 flex-1 rounded-t-[3px] bg-inverted transition-opacity"
-            :class="active === null || active === index ? 'opacity-100' : 'opacity-35'"
-            :style="{ height: `${(day.count / top) * 100}%`, minHeight: day.count ? '2px' : '0' }"
-            @mouseenter="active = index"
-            @mouseleave="active = null"
-          />
-          <span v-if="active !== null" class="pointer-events-none absolute -top-1 end-0 rounded-md border border-default bg-default px-2 py-0.5 text-[11px] whitespace-nowrap shadow-sm">
-            {{ dayLabel(daily[active]!.date) }} · <span class="font-semibold text-highlighted tabular-nums">{{ number(daily[active]!.count) }}</span>
-          </span>
-        </div>
+        <ChartsMiniBars :days="daily" :label="t('responses.trend.title')" />
       </div>
     </UCard>
 

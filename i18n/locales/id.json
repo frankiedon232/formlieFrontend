@@ -234,7 +234,12 @@
       "detailsTitle": "Detail",
       "tags": "Tag",
       "noHistory": "Diterbitkan sebelum riwayat versi dicatat. Riwayat dimulai pada penerbitan berikutnya.",
-      "embedCode": "Kode sematan"
+      "embedCode": "Kode sematan",
+      "forms": "Formulir",
+      "responsesAll": "Tanggapan, semua formulir",
+      "last30Short": "30 hari terakhir",
+      "byStatus": "Formulir per status",
+      "liveNow": "{n} aktif sekarang"
     },
     "qr": {
       "title": "Kode QR",
@@ -302,6 +307,11 @@
       "where": "Tempel sebagai HTML (di sebagian besar pembuat situs: blok “Embed” atau “Custom HTML”).",
       "preview": "Pratinjau",
       "previewNote": "Ini adalah formulir sebenarnya, seperti yang akan tampil di situs web. Jawaban yang dikirim di sini adalah respons sungguhan."
+    },
+    "card": {
+      "updated": "Diperbarui {when}",
+      "access": "Akses",
+      "noTags": "Tanpa tag"
     }
   },
   "nav": {
