@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "बदला गया {when}",
       "created": "बनाया गया",
-      "share": "फ़ॉर्म का हिस्सा",
-      "colours": "थीम के रंग"
+      "share": "फ़ॉर्म का हिस्सा"
     }
   },
   "dataSources": {

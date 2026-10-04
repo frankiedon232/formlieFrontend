@@ -135,7 +135,7 @@ const rowActions = (category: TemplateCategorySummary) => [
           }}</span>
         </template>
         <template #grid-card="{ row }">
-          <TemplatesCategoryCard :category="row" :actions="rowActions(row)" :total="insights?.forms_total" />
+          <TemplatesCategoryCard :category="row" :actions="rowActions(row)" />
         </template>
       </DataView>
     </div>

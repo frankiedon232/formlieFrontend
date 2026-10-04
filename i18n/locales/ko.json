@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "{when} 변경",
       "created": "생성일",
-      "share": "양식 비율",
-      "colours": "테마 색상"
+      "share": "양식 비율"
     }
   },
   "dataSources": {

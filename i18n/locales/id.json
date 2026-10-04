@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Diubah {when}",
       "created": "Dibuat",
-      "share": "Porsi formulir",
-      "colours": "Warna tema"
+      "share": "Porsi formulir"
     }
   },
   "dataSources": {

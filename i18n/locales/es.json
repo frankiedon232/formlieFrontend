@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Cambiado {when}",
       "created": "Creado",
-      "share": "Cuota de formularios",
-      "colours": "Colores del tema"
+      "share": "Cuota de formularios"
     }
   },
   "dataSources": {

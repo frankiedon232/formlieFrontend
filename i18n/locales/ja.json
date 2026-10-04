@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "{when}に変更",
       "created": "作成日",
-      "share": "フォームの割合",
-      "colours": "テーマの色"
+      "share": "フォームの割合"
     }
   },
   "dataSources": {

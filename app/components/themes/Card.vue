@@ -1,9 +1,8 @@
 <!--
-  Theme card in the locked card format (CLAUDE.md rule 21, owner 2026-10-04; same structure as the
-  form, response and template cards): a "changed" pill, the kind and ⋯ on top; the theme in
-  miniature beside its name, font and layout; forms, kind, created by and created in two columns; a
-  divider, then Share of forms with a black bar (forms styled with it out of all forms); author,
-  short id and the theme's colours at the bottom. The whole card opens the theme (DataView openRow).
+  Theme card in the locked card format (CLAUDE.md rule 21; owner 2026-10-04: a bigger thumbnail,
+  nothing below the facts): a "changed" pill, the kind and ⋯ on top; the theme in miniature beside
+  its name, font and layout; forms, kind, created by and created in two columns. The whole card
+  opens the theme (DataView openRow).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -14,26 +13,15 @@ const props = defineProps<{
   name: string
   actions: DropdownMenuItem[][]
   busy?: boolean
-  total?: number
   preview: string[]
 }>()
 const { t } = useI18n()
-const { relative, date, number, percent } = useFormat()
+const { relative, date, number } = useFormat()
 const SOURCE_ICON: Record<SavedTheme['source'], string> = {
   system: 'i-lucide-sparkles',
   saved: 'i-lucide-bookmark',
   created: 'i-lucide-paintbrush',
 }
-const share = computed(() => (props.total ? props.theme.forms_count / props.total : 0))
-/** The theme's main colours as small swatches: accent, text, page and form background. */
-const swatches = computed(() => [
-  ...new Set([
-    props.theme.tokens.colors.primary,
-    props.theme.tokens.colors.text,
-    props.theme.tokens.page.bg,
-    props.theme.tokens.container.bg,
-  ]),
-])
 const facts = computed(() => [
   { key: 'forms', label: t('themes.col.forms'), value: number(props.theme.forms_count) },
   { key: 'kind', label: t('themes.filterSource'), value: t(`themes.source.${props.theme.source}`) },
@@ -82,7 +70,7 @@ const facts = computed(() => [
 
     <!-- Preview, name and font -->
     <div class="mt-3 flex min-w-0 items-center gap-3">
-      <span class="w-14 shrink-0 overflow-hidden rounded-sm border border-default" aria-hidden="true">
+      <span class="w-24 shrink-0 overflow-hidden rounded-md border border-default" aria-hidden="true">
         <TemplatesThumb :theme="theme.tokens" :title="name" :labels="preview" mini />
       </span>
       <div class="flex min-w-0 flex-col">
@@ -113,35 +101,5 @@ const facts = computed(() => [
         </dd>
       </div>
     </dl>
-
-    <!-- Share of forms (the design's Progress) -->
-    <div class="mt-auto pt-4">
-      <div class="border-t border-default pt-3">
-        <div class="mb-1.5 flex items-center justify-between text-xs">
-          <span class="text-muted">{{ t('themes.card.share') }}</span>
-          <span class="font-medium text-highlighted tabular-nums">{{ percent(share) }}</span>
-        </div>
-        <div class="h-1.5 overflow-hidden rounded-full bg-elevated" role="presentation">
-          <div class="h-full rounded-full bg-inverted" :style="{ width: `${share * 100}%` }" />
-        </div>
-      </div>
-
-      <!-- Author, id, colours -->
-      <div class="mt-4 flex items-center justify-between gap-2">
-        <div class="flex min-w-0 items-center gap-2">
-          <UAvatar :alt="theme.created_by.name" size="xs" />
-          <span class="truncate font-mono text-xs text-muted">{{ theme.id.slice(0, 12) }}</span>
-        </div>
-        <div class="flex shrink-0 -space-x-1 rtl:space-x-reverse" :aria-label="t('themes.card.colours')">
-          <span
-            v-for="colour in swatches"
-            :key="colour"
-            class="size-4 rounded-full ring-2 ring-(--ui-bg)"
-            :style="{ backgroundColor: colour }"
-            :title="colour"
-          />
-        </div>
-      </div>
-    </div>
   </article>
 </template>

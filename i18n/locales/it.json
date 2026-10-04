@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Modificato {when}",
       "created": "Creato",
-      "share": "Quota dei moduli",
-      "colours": "Colori del tema"
+      "share": "Quota dei moduli"
     }
   },
   "dataSources": {

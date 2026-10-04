@@ -212,7 +212,7 @@ const mine = computed(() => props.source === 'workspace')
       }}</span>
     </template>
     <template #grid-card="{ row }">
-      <TemplatesCard :template="row" :actions="rowActions(row)" :busy="isBusy(row)" :total="total" />
+      <TemplatesCard :template="row" :actions="rowActions(row)" :busy="isBusy(row)" />
     </template>
   </DataView>
 

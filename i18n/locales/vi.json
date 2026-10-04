@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Đã đổi {when}",
       "created": "Ngày tạo",
-      "share": "Tỷ lệ biểu mẫu",
-      "colours": "Màu giao diện"
+      "share": "Tỷ lệ biểu mẫu"
     }
   },
   "dataSources": {

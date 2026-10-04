@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Değiştirildi: {when}",
       "created": "Oluşturuldu",
-      "share": "Form payı",
-      "colours": "Tema renkleri"
+      "share": "Form payı"
     }
   },
   "dataSources": {

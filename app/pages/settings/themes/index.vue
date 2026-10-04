@@ -236,7 +236,6 @@ const refreshAll = () => Promise.all([dataView.value?.refresh(), loadInsights()]
             :name="name(row)"
             :actions="rowActions(row)"
             :busy="isBusy(row)"
-            :total="insights?.forms_total"
             :preview="preview"
           />
         </template>

@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Gewijzigd {when}",
       "created": "Gemaakt",
-      "share": "Aandeel formulieren",
-      "colours": "Themakleuren"
+      "share": "Aandeel formulieren"
     }
   },
   "dataSources": {

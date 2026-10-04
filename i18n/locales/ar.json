@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "تغيّر {when}",
       "created": "تاريخ الإنشاء",
-      "share": "حصة النماذج",
-      "colours": "ألوان السمة"
+      "share": "حصة النماذج"
     }
   },
   "dataSources": {

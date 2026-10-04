@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Zmieniono {when}",
       "created": "Utworzono",
-      "share": "Udział formularzy",
-      "colours": "Kolory motywu"
+      "share": "Udział formularzy"
     }
   },
   "dataSources": {

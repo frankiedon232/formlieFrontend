@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Changed {when}",
       "created": "Created",
-      "share": "Share of forms",
-      "colours": "Theme colours"
+      "share": "Share of forms"
     }
   },
   "dataSources": {

@@ -1,10 +1,8 @@
 <!--
-  Template card in the locked card format (CLAUDE.md rule 21, owner 2026-10-04; same structure as
-  the form and response cards): a "last used" pill, the category and ⋯ (Use first) on top; the
-  template's design in miniature beside its name and how long it takes; questions, pages, forms
-  and responses in two columns; a divider, then Share of use with a black bar (its forms out of all
-  forms made from templates); author, key and what it holds (calculations, logic) at the bottom.
-  The whole card opens the template (DataView openRow).
+  Template card in the locked card format (CLAUDE.md rule 21; owner 2026-10-04: a bigger
+  thumbnail, nothing below the facts): a "last used" pill, the category and ⋯ (Use first) on top;
+  the template's design in miniature beside its name and how long it takes; questions, pages, forms
+  and responses in two columns. The whole card opens the template (DataView openRow).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -15,12 +13,10 @@ const props = defineProps<{
   template: TemplateSummary
   actions: DropdownMenuItem[][]
   busy?: boolean
-  total?: number
 }>()
 const { t } = useI18n()
-const { relative, number, percent } = useFormat()
+const { relative, number } = useFormat()
 const category = computed(() => categoryOf(props.template.category))
-const share = computed(() => (props.total ? props.template.forms_count / props.total : 0))
 const facts = computed(() => [
   { key: 'questions', label: t('templates.col.questions'), value: number(props.template.fields_count) },
   { key: 'pages', label: t('templates.card.pages'), value: number(props.template.pages_count) },
@@ -69,7 +65,7 @@ const facts = computed(() => [
 
     <!-- Design, name and time -->
     <div class="mt-3 flex min-w-0 items-center gap-3">
-      <span class="w-14 shrink-0 overflow-hidden rounded-sm border border-default" aria-hidden="true">
+      <span class="w-24 shrink-0 overflow-hidden rounded-md border border-default" aria-hidden="true">
         <TemplatesThumb :theme="template.theme" :title="template.name" :labels="template.preview" mini />
       </span>
       <div class="flex min-w-0 flex-col">
@@ -104,38 +100,5 @@ const facts = computed(() => [
         </dd>
       </div>
     </dl>
-
-    <!-- Share of use (the design's Progress) -->
-    <div class="mt-auto pt-4">
-      <div class="border-t border-default pt-3">
-        <div class="mb-1.5 flex items-center justify-between text-xs">
-          <span class="text-muted">{{ t('templates.card.share') }}</span>
-          <span class="font-medium text-highlighted tabular-nums">{{ percent(share) }}</span>
-        </div>
-        <div class="h-1.5 overflow-hidden rounded-full bg-elevated" role="presentation">
-          <div class="h-full rounded-full bg-inverted" :style="{ width: `${share * 100}%` }" />
-        </div>
-      </div>
-
-      <!-- Author, key, what it holds -->
-      <div class="mt-4 flex items-center justify-between gap-2">
-        <div class="flex min-w-0 items-center gap-2">
-          <UAvatar :alt="template.created_by?.name ?? 'Formalie'" size="xs" />
-          <span class="truncate font-mono text-xs text-muted">{{ template.key }}</span>
-        </div>
-        <div class="flex shrink-0 items-center gap-3 text-xs text-muted">
-          <UTooltip :text="t('templates.badge.calculations')">
-            <span class="flex items-center gap-1" :class="template.calculations_count ? 'text-toned' : ''"
-              ><UIcon name="i-lucide-calculator" class="size-3.5" />{{ template.calculations_count }}</span
-            >
-          </UTooltip>
-          <UTooltip :text="t('templates.badge.logic')">
-            <span class="flex items-center gap-1" :class="template.logic_count ? 'text-toned' : ''"
-              ><UIcon name="i-lucide-git-branch" class="size-3.5" />{{ template.logic_count }}</span
-            >
-          </UTooltip>
-        </div>
-      </div>
-    </div>
   </article>
 </template>

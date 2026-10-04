@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Imebadilishwa {when}",
       "created": "Imeundwa",
-      "share": "Sehemu ya fomu",
-      "colours": "Rangi za mandhari"
+      "share": "Sehemu ya fomu"
     }
   },
   "dataSources": {

@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "Изменено {when}",
       "created": "Создано",
-      "share": "Доля форм",
-      "colours": "Цвета темы"
+      "share": "Доля форм"
     }
   },
   "dataSources": {

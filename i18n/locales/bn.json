@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "পরিবর্তিত {when}",
       "created": "তৈরি",
-      "share": "ফর্মের অংশ",
-      "colours": "থিমের রং"
+      "share": "ফর্মের অংশ"
     }
   },
   "dataSources": {

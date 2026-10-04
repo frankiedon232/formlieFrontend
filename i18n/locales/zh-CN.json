@@ -2794,8 +2794,7 @@
     "card": {
       "changed": "{when}修改",
       "created": "创建时间",
-      "share": "表单占比",
-      "colours": "主题颜色"
+      "share": "表单占比"
     }
   },
   "dataSources": {
