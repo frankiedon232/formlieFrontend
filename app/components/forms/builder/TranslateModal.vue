@@ -2,11 +2,12 @@
   The translation screen (F10 M4, decision 99): every text of the form in its main language with
   the translation under it, grouped like the form (form · each page). Filter to what's still to
   do, search, and see the progress. Empty = respondents see the main language text there.
-  Typing goes straight into the draft (one undo step per text).
+  Typing goes straight into the draft (one undo step per text). A translation whose original was
+  changed afterwards says so ("Changed since translated"), with "Still right" to confirm it.
 -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
-import { formTexts, type FormText } from '#shared/utils/forms/translations'
+import { formTexts, staleKeys, type FormText } from '#shared/utils/forms/translations'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 
 const props = defineProps<{ language: string }>()
@@ -25,11 +26,16 @@ const texts = computed<FormText[]>(() =>
   schema.value ? formTexts({ ...schema.value, settings: { ...schema.value.settings, title: translations.formTitle.value } }) : [],
 )
 const done = computed(() => texts.value.filter(item => saved.value[item.key]?.trim()).length)
+const stale = computed(() => (schema.value ? staleKeys(schema.value, props.language, texts.value) : new Set<string>()))
 
 // "To do" keeps the list it started with, so a text doesn't vanish while you type it.
 const filter = ref<'all' | 'todo'>('all')
 const todo = ref<Set<string>>(new Set())
-watch([filter, open], () => (todo.value = new Set(texts.value.filter(item => !saved.value[item.key]?.trim()).map(item => item.key))), { immediate: true })
+watch(
+  [filter, open],
+  () => (todo.value = new Set(texts.value.filter(item => !saved.value[item.key]?.trim() || stale.value.has(item.key)).map(item => item.key))),
+  { immediate: true },
+)
 const search = ref('')
 const shown = computed(() => {
   const words = search.value.trim().toLocaleLowerCase()
@@ -64,7 +70,7 @@ const kindOf = (key: string) => (key.startsWith('page.') ? t('builder.translate.
 
 const editorField = { id: 'translate', key: 'translate', type: 'rich_text', label: '', width: 12, required: false, props: { toolbar: 'full' } } as FormField
 const plain = (html: string) => html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
-const set = (key: string, value: unknown) => translations.set(props.language, key, String(value ?? ''))
+const set = (item: FormText, value: unknown) => translations.set(props.language, item.key, String(value ?? ''), item.text)
 </script>
 
 <template>
@@ -81,7 +87,7 @@ const set = (key: string, value: unknown) => translations.set(props.language, ke
             v-model="filter"
             :items="[
               { value: 'all', label: t('builder.translate.all') },
-              { value: 'todo', label: t('builder.translate.todo', { n: texts.length - done }) },
+              { value: 'todo', label: t('builder.translate.todo', { n: texts.length - done + stale.size }) },
             ]"
             :content="false"
             color="neutral"
@@ -105,7 +111,12 @@ const set = (key: string, value: unknown) => translations.set(props.language, ke
           <div v-for="item in group.items" :key="item.key" class="flex flex-col gap-1.5 rounded-md border border-default p-3">
             <div class="flex items-start justify-between gap-2">
               <p class="min-w-0 text-sm text-highlighted" :dir="source?.dir">{{ item.kind === 'html' ? plain(item.text) : item.text }}</p>
-              <UIcon v-if="saved[item.key]?.trim()" name="i-lucide-check" class="mt-0.5 size-4 shrink-0 text-muted" :aria-label="t('builder.translate.translated')" />
+              <UIcon v-if="saved[item.key]?.trim() && !stale.has(item.key)" name="i-lucide-check" class="mt-0.5 size-4 shrink-0 text-muted" :aria-label="t('builder.translate.translated')" />
+            </div>
+            <!-- The original changed after it was translated: check it, or confirm it still fits. -->
+            <div v-if="stale.has(item.key)" class="flex flex-wrap items-center gap-2">
+              <UBadge :label="t('builder.translate.changed')" icon="i-lucide-triangle-alert" color="warning" variant="subtle" size="sm" />
+              <UButton :label="t('builder.translate.stillRight')" icon="i-lucide-check" color="neutral" variant="link" size="xs" @click="translations.confirm(language, item.key, item.text)" />
             </div>
             <p class="truncate text-[11px] text-dimmed">{{ kindOf(item.key) }}</p>
             <FormsRendererRichText
@@ -115,7 +126,7 @@ const set = (key: string, value: unknown) => translations.set(props.language, ke
               :field="editorField"
               mode="live"
               :dir="target?.dir"
-              @update:model-value="v => set(item.key, v)"
+              @update:model-value="v => set(item, v)"
             />
             <UTextarea
               v-else-if="item.kind === 'long'"
@@ -126,7 +137,7 @@ const set = (key: string, value: unknown) => translations.set(props.language, ke
               :dir="target?.dir"
               class="w-full"
               :aria-label="t('builder.translate.into', { text: item.text, language: target?.name ?? language })"
-              @update:model-value="v => set(item.key, v)"
+              @update:model-value="v => set(item, v)"
             />
             <UInput
               v-else
@@ -135,7 +146,7 @@ const set = (key: string, value: unknown) => translations.set(props.language, ke
               :dir="target?.dir"
               class="w-full"
               :aria-label="t('builder.translate.into', { text: item.text, language: target?.name ?? language })"
-              @update:model-value="v => set(item.key, v)"
+              @update:model-value="v => set(item, v)"
             />
           </div>
         </section>

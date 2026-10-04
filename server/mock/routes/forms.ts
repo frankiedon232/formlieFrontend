@@ -379,16 +379,21 @@ export const deleteForm = defineMockRoute(({ event, query }) => {
   return ok(summaryOf(form))
 })
 
-/** DELETE /forms/trash, empty the Trash. */
+/**
+ * DELETE /forms/trash, empty the Trash: only the forms this person can edit (people access,
+ * decision 97); the others stay and are counted in `skipped`.
+ */
 export const emptyTrash = defineMockRoute(({ event }) => {
   const { user, tenant } = requireAuth(event)
   const store = formsOf(tenant)
-  const trashed = store.forms.filter(form => form.deleted_at)
+  const trashed = store.forms.filter(form => form.deleted_at && levelOf(form, user) === 'edit')
+  const skipped = store.forms.filter(form => form.deleted_at && canSee(form, user) && levelOf(form, user) !== 'edit').length
   trashed.forEach(retireCodesOf)
-  store.forms = store.forms.filter(form => !form.deleted_at)
+  const gone = new Set(trashed)
+  store.forms = store.forms.filter(form => !gone.has(form))
   saveForms()
   for (const form of trashed) audit(event, tenant, user, 'forms.purged', form, [], { via: 'empty_trash' })
-  return ok({ deleted: trashed.length })
+  return ok({ deleted: trashed.length, skipped })
 })
 
 const bulkSchema = z.object({
@@ -476,13 +481,14 @@ const folderAudit = (
 
 /** GET /folders, with the number of forms in each (Trash not counted). */
 export const listFolders = defineMockRoute(({ event }) => {
-  const { tenant } = requireAuth(event)
+  const { tenant, user } = requireAuth(event)
   const store = formsOf(tenant)
   return ok(
     store.folders
       .map(folder => ({
         ...folder,
-        forms_count: store.forms.filter(form => !form.deleted_at && form.folder?.id === folder.id).length,
+        // Only forms this person can see (people access): hidden forms don't show up as numbers either.
+        forms_count: store.forms.filter(form => !form.deleted_at && form.folder?.id === folder.id && canSee(form, user)).length,
       }))
       .sort((a, b) => a.name.localeCompare(b.name)),
   )

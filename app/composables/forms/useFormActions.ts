@@ -131,7 +131,11 @@ export function useFormActions(onChanged: () => void | Promise<void>) {
       confirmLabel: t('forms.trash.empty'),
       danger: true,
     })
-    if (ok) await run(['__trash__'], () => api.del('/forms/trash'), t('forms.toast.emptied'))
+    if (!ok) return
+    const reply = await run(['__trash__'], () => api.del<{ deleted: number; skipped: number }>('/forms/trash'), t('forms.toast.emptied'))
+    // People access: forms someone else edits stay in the Trash for them.
+    const skipped = reply?.data.skipped ?? 0
+    if (skipped) toast.add({ title: t('forms.toast.trashKept', { n: skipped }, skipped), color: 'neutral', icon: 'i-lucide-info' })
   }
 
   return { busyIds, isBusy, rename, move, setTags, duplicate, lifecycle, remove, purge, bulk, emptyTrash }

@@ -83,6 +83,8 @@ export const formSchemaV1 = z.object({
   calculations: z.array(z.unknown()).max(200).optional(),
   /** Translations per language: text key (shared/utils/forms/translations.ts) → text. */
   translations: z.record(z.string().max(10), z.record(z.string().max(200), z.string().max(50_000))).optional(),
+  /** Per translation, a fingerprint of the text it was made from (changed text = "check the translation"). */
+  translated_from: z.record(z.string().max(10), z.record(z.string().max(200), z.string().max(16))).optional(),
   thank_you: z
     .object({
       title: text(200).optional(),

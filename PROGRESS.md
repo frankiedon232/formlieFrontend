@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-04 · **Current phase:** F10, Renderer, preview, share, embed (F9 reviewed by the owner)
+**Last updated:** 2026-10-04 · **Current phase:** F10, Renderer, preview, share, embed: built, waiting for the owner's review
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -20,7 +20,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
-| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~80% |
+| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | 100% (owner review) |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
@@ -485,6 +485,24 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Short link redirect `/s/[code]` (decision 93): create / remove on the Share tab, 302 to the current link, visits counted, 404 page for unknown codes
 
 ---
+
+
+### Milestone 4 review (2026-10-04) ✅
+
+- ✅ Out-of-date translations marked: "Changed since translated" + "Still right", "N to check" per language; web addresses and email examples are not offered for translation
+- ✅ Empty Trash removes only forms the person can edit (others stay, with a note); folder counts only count forms the person can see
+- ✅ Public pages never show draft text: a never-published form's page title and description use only its name
+- ✅ Image questions: the server takes the same picture types the form offers (a stray ".pdf" no longer blocks photos)
+- ✅ Overview Share card shows all four access modes (invite-only and members-only were shown as public)
+- ✅ Save and resume: "Save and continue later" works before anything is typed and saves what is on screen; saves run one at a time (no second draft on a slow network)
+- ✅ Invitation emails: space separates emails too (text input with email keyboard), remove buttons have a focus ring and are off while busy
+- ✅ "Opening your form…" after the right password until the questions arrive
+- ✅ `/forms/open`: "This form isn't yours" only when it really isn't; other errors offer Retry
+- ✅ Adding a language changes the form only after the dictionary fill succeeded
+- ✅ One spam-check challenge, one submission (reserved while a submission runs)
+- ✅ Upload picture previews are freed when a file is removed or fails
+- ✅ Watchers on public pages belong to the page (no leftovers after leaving it)
+- ✅ Checked clean: every English text exists in all 19 other languages, no left/right utilities or dashes in F10 files, no direct fetch in components, icon buttons named, access checks on every editor / share / template / lifecycle route
 
 ## F11, Responses ⬜
 
@@ -1091,3 +1109,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | M3 item 6: preview page `/forms/[id]/preview` with device frames (desktop browser window with the form's address, tablet and phone at real sizes, turned sideways, scaled to fit), draft or live version, jump to any page or the thank-you screen, start again, shortcuts 1 / 2 / 3 / R; opened from the overview, the form menu and "Full preview" in the editor (saves first); "Can view" people preview here. Milestone 3 complete. |
 | 2026-10-04 | F10 | Editor quick preview (owner: the note took space): "Fill it in like a respondent would. Nothing is sent." moved behind an ⓘ icon next to the title (click to read), the header is one slim line. |
 | 2026-10-04 | F10 | M4 part 1: forms in several languages (decision 99). Form settings → More languages with dictionary fill and a translation screen (progress, to do filter, search, rich text), switching the main language to an offered one keeps everything; respondents get their link / browser language and a switcher (address gets `?lang=`), thank-you text and response language follow; switcher in both previews. Renderer `Form.vue` split (407 → 302 lines: sections and error wording composables, Progress, Notices, Nav, Thanks components). |
+| 2026-10-04 | F10 | M4 part 2, polish and review: out-of-date translation marker; a full review of F10 fixed 13 issues (empty Trash only for editors, no draft text on unpublished public pages, image upload types agree on both sides, all access modes on the Share card, save and resume edge cases, invitation emails split on space, progress after a password, clearer /forms/open errors, language add only after a successful fill, one challenge per submission, freed upload previews, page-owned watchers, folder counts by access). F10 complete, waiting for the owner's review. |

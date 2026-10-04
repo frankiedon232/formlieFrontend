@@ -32,7 +32,8 @@ const TEXT_PROPS: Record<string, TextKind> = {
   caption: 'text',
 }
 const LITERAL = /"([^"\\]*)"/g
-const hasWords = (text: string) => /\p{L}/u.test(text)
+/** Words to translate: letters, and not a web address or an email example ("https://", "name@example.com"). */
+const hasWords = (text: string) => /\p{L}/u.test(text) && !/^\s*([a-z][a-z0-9+.-]*:\/\/\S*|[^\s@]+@[^\s@]+)\s*$/i.test(text)
 /** A plain copy (the builder's schema is reactive, which structuredClone can't copy). */
 const copyOf = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T
 
@@ -110,11 +111,25 @@ export function formLanguages(schema: FormSchemaV1 | null | undefined): string[]
   return [main, ...new Set((schema?.settings?.languages ?? []).filter(code => code !== main && known(code)))]
 }
 
-/** How much of a language is done. */
+/** A short fingerprint of a text (FNV-1a), to notice when the original changes after translating. */
+export function textHash(text: string): string {
+  let hash = 0x811c9dc5
+  for (let i = 0; i < text.length; i++) hash = Math.imul(hash ^ text.charCodeAt(i), 0x01000193)
+  return (hash >>> 0).toString(36)
+}
+
+/** Translations whose original text changed since they were made ("check the translation"). */
+export function staleKeys(schema: FormSchemaV1, language: string, texts = formTexts(schema)): Set<string> {
+  const saved = schema.translations?.[language] ?? {}
+  const from = schema.translated_from?.[language] ?? {}
+  return new Set(texts.filter(item => saved[item.key]?.trim() && from[item.key] && from[item.key] !== textHash(item.text)).map(item => item.key))
+}
+
+/** How much of a language is done, and how many translations to check. */
 export function translationProgress(schema: FormSchemaV1, language: string) {
   const texts = formTexts(schema)
   const saved = schema.translations?.[language] ?? {}
-  return { done: texts.filter(item => saved[item.key]?.trim()).length, total: texts.length }
+  return { done: texts.filter(item => saved[item.key]?.trim()).length, total: texts.length, stale: staleKeys(schema, language, texts).size }
 }
 
 /**

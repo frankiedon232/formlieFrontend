@@ -83,7 +83,8 @@
       "emptied": "Opróżniono kosz",
       "created": "Utworzono formularz",
       "bulk": "Zaktualizowane formularze: {count} | Zaktualizowane formularze: {count}",
-      "bulkFailed": "Nie udało się zmienić: {count} | Nie udało się zmienić: {count}"
+      "bulkFailed": "Nie udało się zmienić: {count} | Nie udało się zmienić: {count}",
+      "trashKept": "Formularze, których nie możesz edytować, zostają w koszu: {n} | Formularze, których nie możesz edytować, zostają w koszu: {n}"
     },
     "confirm": {
       "deleteTitle": "Przenieść „{name}” do kosza?",
@@ -1965,7 +1966,8 @@
       "filled": "Przetłumaczono {done} z {total} tekstów za pomocą wbudowanych słowników. Resztę przetłumacz samodzielnie.",
       "removeTitle": "Usunąć: {language}?",
       "removeDesc": "Tłumaczenia zostaną usunięte z wersji roboczej. Cofnij przywraca je.",
-      "promoted": "Tłumaczenia są teraz tekstem formularza. Tekst w języku {language} zostaje jako tłumaczenie."
+      "promoted": "Tłumaczenia są teraz tekstem formularza. Tekst w języku {language} zostaje jako tłumaczenie.",
+      "toCheck": "{n} do sprawdzenia"
     },
     "translate": {
       "title": "Tłumaczenie: {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Podtytuł nagłówka",
         "thanks_title": "Tytuł podziękowania",
         "thanks_message": "Treść podziękowania"
-      }
+      },
+      "changed": "Zmienione po przetłumaczeniu",
+      "stillRight": "Nadal dobrze"
     }
   },
   "renderer": {

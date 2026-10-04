@@ -83,7 +83,8 @@
       "emptied": "Corbeille vidée",
       "created": "Formulaire créé",
       "bulk": "{count} formulaire mis à jour | {count} formulaires mis à jour",
-      "bulkFailed": "{count} n’a pas pu être modifié | {count} n’ont pas pu être modifiés"
+      "bulkFailed": "{count} n’a pas pu être modifié | {count} n’ont pas pu être modifiés",
+      "trashKept": "{n} formulaire que vous ne pouvez pas modifier reste dans la corbeille | {n} formulaires que vous ne pouvez pas modifier restent dans la corbeille"
     },
     "confirm": {
       "deleteTitle": "Mettre « {name} » à la corbeille ?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} textes sur {total} traduits grâce aux dictionnaires intégrés. Traduisez le reste vous-même.",
       "removeTitle": "Retirer {language} ?",
       "removeDesc": "Ses traductions sont retirées du brouillon. Annuler les rétablit.",
-      "promoted": "Ses traductions deviennent le texte du formulaire. Le texte en {language} est conservé comme traduction."
+      "promoted": "Ses traductions deviennent le texte du formulaire. Le texte en {language} est conservé comme traduction.",
+      "toCheck": "{n} à vérifier"
     },
     "translate": {
       "title": "Traduire en {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Sous-titre de l'en-tête",
         "thanks_title": "Titre de remerciement",
         "thanks_message": "Message de remerciement"
-      }
+      },
+      "changed": "Modifié depuis la traduction",
+      "stillRight": "Toujours juste"
     }
   },
   "renderer": {

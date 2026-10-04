@@ -26,7 +26,7 @@ const addable = computed(() =>
 )
 const rows = computed(() =>
   extras.value.map(code => {
-    const progress = schema.value ? translationProgress(withTitle.value!, code) : { done: 0, total: 0 }
+    const progress = schema.value ? translationProgress(withTitle.value!, code) : { done: 0, total: 0, stale: 0 }
     return { code, locale: localeOf(code), ...progress, percent: progress.total ? Math.round((progress.done / progress.total) * 100) : 100 }
   }),
 )
@@ -93,6 +93,7 @@ async function remove(code: string) {
         <div class="flex items-center gap-2">
           <UProgress :model-value="row.percent" size="xs" color="neutral" class="flex-1" />
           <span class="shrink-0 text-[11px] text-muted tabular-nums">{{ t('builder.languages.progress', { done: row.done, total: row.total }) }}</span>
+          <UBadge v-if="row.stale" :label="t('builder.languages.toCheck', { n: row.stale })" color="warning" variant="subtle" size="sm" />
         </div>
       </li>
     </ul>

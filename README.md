@@ -53,6 +53,10 @@ test1@example.org, test2@example.org, test3@example.org
 
 Open a personal link in a private window → "Filling in as test1@example.org"; the plain form link says "This form is by invitation only". Check the status (Invited → Opened → Responded), that a second response from the same link is refused, and that **Revoke** stops a link. To see invalid-address checking, add `not-an-email`, it turns red and blocks sending. Put the form back to *Anyone with the link* afterwards.
 
+**Form test, people access "Can view" (F10):** as the owner, open a form → **Share** → *Your team* → *People with access* → add Lena Novak → **Can view** → Save. Sign in as `staff@remedylegal.test`: the form's overview shows **Preview** (no Edit, no Save as template, no Share settings, no availability change), and editor addresses (`/build`, `/design`, `/logic`, `/share`, `/versions`) say "Only people who can edit open the editor".
+
+**Form test, forms in several languages (F10):** in the editor, **Form settings** → *More languages* → add e.g. Français (the built-in dictionaries fill in what they know) → **Translate** to fill in the rest → Publish. Open the form link: the switcher sits at the top of the form and the address gets `?lang=fr`; `…/fill?lang=fr` opens French directly, and a browser set to French opens it in French by itself. Change a question afterwards: its translation shows "Changed since translated". **Preview** (form overview) shows the form in a phone, tablet or desktop frame with the same switcher.
+
 **One-time code:** after the password, the code screen shows the mock's code in dev ("Development code: 123456"). It is also printed in the dev-server console as `[mock-otp]`. Five wrong codes lock the attempt.
 
 **Without a hosts entry** (e.g. `localhost` or a phone on Wi-Fi): add `?tenant=remedylegal` once, e.g. `https://localhost:2202/auth/login?tenant=remedylegal` (dev only, remembered for the tab).

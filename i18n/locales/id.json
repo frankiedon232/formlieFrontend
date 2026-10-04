@@ -83,7 +83,8 @@
       "emptied": "Sampah dikosongkan",
       "created": "Formulir dibuat",
       "bulk": "{count} formulir diperbarui | {count} formulir diperbarui",
-      "bulkFailed": "{count} tidak bisa diubah | {count} tidak bisa diubah"
+      "bulkFailed": "{count} tidak bisa diubah | {count} tidak bisa diubah",
+      "trashKept": "{n} formulir yang tidak bisa Anda edit tetap di Sampah | {n} formulir yang tidak bisa Anda edit tetap di Sampah"
     },
     "confirm": {
       "deleteTitle": "Pindahkan “{name}” ke sampah?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} dari {total} teks diterjemahkan dengan kamus bawaan. Terjemahkan sisanya sendiri.",
       "removeTitle": "Hapus {language}?",
       "removeDesc": "Terjemahannya dihapus dari draf. Urungkan akan mengembalikannya.",
-      "promoted": "Terjemahannya kini menjadi teks formulir. Teks {language} disimpan sebagai terjemahan."
+      "promoted": "Terjemahannya kini menjadi teks formulir. Teks {language} disimpan sebagai terjemahan.",
+      "toCheck": "{n} perlu dicek"
     },
     "translate": {
       "title": "Terjemahkan ke {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Subjudul header",
         "thanks_title": "Judul ucapan terima kasih",
         "thanks_message": "Pesan terima kasih"
-      }
+      },
+      "changed": "Berubah setelah diterjemahkan",
+      "stillRight": "Masih benar"
     }
   },
   "renderer": {

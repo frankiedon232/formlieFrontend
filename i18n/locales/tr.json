@@ -83,7 +83,8 @@
       "emptied": "Çöp kutusu boşaltıldı",
       "created": "Form oluşturuldu",
       "bulk": "{count} form güncellendi | {count} form güncellendi",
-      "bulkFailed": "{count} form değiştirilemedi | {count} form değiştirilemedi"
+      "bulkFailed": "{count} form değiştirilemedi | {count} form değiştirilemedi",
+      "trashKept": "Düzenleyemediğiniz {n} form çöp kutusunda kalıyor | Düzenleyemediğiniz {n} form çöp kutusunda kalıyor"
     },
     "confirm": {
       "deleteTitle": "“{name}” çöp kutusuna taşınsın mı?",
@@ -1965,7 +1966,8 @@
       "filled": "{total} metnin {done} tanesi yerleşik sözlüklerle çevrildi. Gerisini siz çevirin.",
       "removeTitle": "{language} kaldırılsın mı?",
       "removeDesc": "Çevirileri taslaktan kaldırılır. Geri al ile geri gelir.",
-      "promoted": "Çevirileri artık formun metni. {language} metni çeviri olarak saklanır."
+      "promoted": "Çevirileri artık formun metni. {language} metni çeviri olarak saklanır.",
+      "toCheck": "{n} kontrol edilecek"
     },
     "translate": {
       "title": "{language} diline çevir",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Başlık alt yazısı",
         "thanks_title": "Teşekkür başlığı",
         "thanks_message": "Teşekkür mesajı"
-      }
+      },
+      "changed": "Çeviriden sonra değişti",
+      "stillRight": "Hâlâ doğru"
     }
   },
   "renderer": {

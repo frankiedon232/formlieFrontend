@@ -83,7 +83,8 @@
       "emptied": "Lixeira esvaziada",
       "created": "Formulário criado",
       "bulk": "{count} formulário atualizado | {count} formulários atualizados",
-      "bulkFailed": "{count} não pôde ser alterado | {count} não puderam ser alterados"
+      "bulkFailed": "{count} não pôde ser alterado | {count} não puderam ser alterados",
+      "trashKept": "{n} formulário que você não pode editar continua na lixeira | {n} formulários que você não pode editar continuam na lixeira"
     },
     "confirm": {
       "deleteTitle": "Mover “{name}” para a lixeira?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} de {total} textos traduzidos com os dicionários integrados. Traduza o resto você mesmo.",
       "removeTitle": "Remover {language}?",
       "removeDesc": "As traduções são removidas do rascunho. Desfazer as recupera.",
-      "promoted": "As traduções agora são o texto do formulário. O texto em {language} fica guardado como tradução."
+      "promoted": "As traduções agora são o texto do formulário. O texto em {language} fica guardado como tradução.",
+      "toCheck": "{n} para rever"
     },
     "translate": {
       "title": "Traduzir para {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Subtítulo do cabeçalho",
         "thanks_title": "Título de agradecimento",
         "thanks_message": "Mensagem de agradecimento"
-      }
+      },
+      "changed": "Alterado desde a tradução",
+      "stillRight": "Continua certo"
     }
   },
   "renderer": {

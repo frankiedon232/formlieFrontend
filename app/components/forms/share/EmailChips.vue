@@ -67,15 +67,20 @@ const remove = (value: string) => (chips.value = chips.value.filter(chip => chip
     >
       <UIcon v-if="!chip.valid" name="i-lucide-circle-alert" class="size-3.5 shrink-0" />
       <span class="truncate" dir="ltr">{{ chip.value }}</span>
-      <button type="button" class="ms-0.5 rounded-full p-0.5 hover:bg-accented" :aria-label="t('share.invite.removeEmail', { email: chip.value })" @click.stop="remove(chip.value)">
+      <button
+        type="button"
+        class="ms-0.5 rounded-full p-0.5 hover:bg-accented focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+        :disabled="disabled"
+        :aria-label="t('share.invite.removeEmail', { email: chip.value })" @click.stop="remove(chip.value)">
         <UIcon name="i-lucide-x" class="block size-3" />
       </button>
     </span>
     <input
       ref="input"
       :value="draft"
-      type="email"
+      type="text"
       inputmode="email"
+      :disabled="disabled"
       autocomplete="off"
       :placeholder="chips.length ? '' : placeholder"
       :aria-label="placeholder"

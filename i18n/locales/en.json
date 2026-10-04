@@ -83,7 +83,8 @@
       "emptied": "Trash emptied",
       "created": "Form created",
       "bulk": "{count} form updated | {count} forms updated",
-      "bulkFailed": "{count} couldn't be changed | {count} couldn't be changed"
+      "bulkFailed": "{count} couldn't be changed | {count} couldn't be changed",
+      "trashKept": "{n} form you can't edit stays in the Trash | {n} forms you can't edit stay in the Trash"
     },
     "confirm": {
       "deleteTitle": "Move “{name}” to Trash?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} of {total} texts translated from the built-in dictionaries. Translate the rest yourself.",
       "removeTitle": "Remove {language}?",
       "removeDesc": "Its translations are removed from the draft. Undo brings them back.",
-      "promoted": "Its translations are now the form's text. The {language} text is kept as a translation."
+      "promoted": "Its translations are now the form's text. The {language} text is kept as a translation.",
+      "toCheck": "{n} to check"
     },
     "translate": {
       "title": "Translate into {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Header subtitle",
         "thanks_title": "Thank-you title",
         "thanks_message": "Thank-you message"
-      }
+      },
+      "changed": "Changed since translated",
+      "stillRight": "Still right"
     }
   },
   "renderer": {

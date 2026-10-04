@@ -114,8 +114,14 @@ if (import.meta.client && props.embed) {
 
 // Password forms: after the right password, load the questions and start the spam check.
 async function onUnlocked() {
-  await refresh()
-  prepareProof()
+  // "Opening your form…" until the questions are here (never a still, locked card).
+  arriving.value = true
+  try {
+    await refresh()
+    prepareProof()
+  } finally {
+    arriving.value = false
+  }
 }
 
 // Invitation links (?invite=) and member sign-in passes (?pass=) open the form by themselves; the

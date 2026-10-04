@@ -83,7 +83,8 @@
       "emptied": "Cestino svuotato",
       "created": "Modulo creato",
       "bulk": "{count} modulo aggiornato | {count} moduli aggiornati",
-      "bulkFailed": "{count} non è stato modificato | {count} non sono stati modificati"
+      "bulkFailed": "{count} non è stato modificato | {count} non sono stati modificati",
+      "trashKept": "{n} modulo che non puoi modificare resta nel cestino | {n} moduli che non puoi modificare restano nel cestino"
     },
     "confirm": {
       "deleteTitle": "Spostare «{name}» nel cestino?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} testi su {total} tradotti con i dizionari integrati. Traduci tu il resto.",
       "removeTitle": "Rimuovere {language}?",
       "removeDesc": "Le sue traduzioni vengono tolte dalla bozza. Annulla le riporta.",
-      "promoted": "Le sue traduzioni ora sono il testo del modulo. Il testo in {language} resta come traduzione."
+      "promoted": "Le sue traduzioni ora sono il testo del modulo. Il testo in {language} resta come traduzione.",
+      "toCheck": "{n} da verificare"
     },
     "translate": {
       "title": "Traduci in {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Sottotitolo dell'intestazione",
         "thanks_title": "Titolo di ringraziamento",
         "thanks_message": "Messaggio di ringraziamento"
-      }
+      },
+      "changed": "Modificato dopo la traduzione",
+      "stillRight": "Va ancora bene"
     }
   },
   "renderer": {

@@ -22,7 +22,8 @@ export async function usePublicForm(key: string) {
   // Footer legal links from the platform settings (super admin), shared with the page frame.
   const legal = useState<PublicForm['legal'] | null>('public:legal', () => null)
 
-  const { data, refresh } = await useAsyncData(`public-form:${key}`, async () => {
+  // Not awaited yet: the watchers below are set up first, so they belong to the page (and stop with it).
+  const loading = useAsyncData(`public-form:${key}`, async () => {
     if (import.meta.server && requestFetch) {
       return requestFetch<{ data?: PublicForm; error?: { code: string } }>(`/_ssr/public-forms/${encodeURIComponent(key)}`, {
         headers: { [INTERNAL_TOKEN_HEADER]: String(config.internalToken ?? ''), 'x-forwarded-host': host, cookie },
@@ -36,6 +37,7 @@ export async function usePublicForm(key: string) {
     }
   })
 
+  const { data, refresh } = loading
   const form = computed(() => data.value?.data ?? null)
   const errorCode = computed(() => data.value?.error?.code ?? null)
 
@@ -57,6 +59,7 @@ export async function usePublicForm(key: string) {
     }
   })
 
+  await loading
   return { form, errorCode, refresh }
 }
 

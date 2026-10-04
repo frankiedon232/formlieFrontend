@@ -83,7 +83,8 @@
       "emptied": "回收站已清空",
       "created": "表单已创建",
       "bulk": "已更新 {count} 个表单 | 已更新 {count} 个表单",
-      "bulkFailed": "{count} 个无法更改 | {count} 个无法更改"
+      "bulkFailed": "{count} 个无法更改 | {count} 个无法更改",
+      "trashKept": "{n} 个你无权编辑的表单仍留在回收站 | {n} 个你无权编辑的表单仍留在回收站"
     },
     "confirm": {
       "deleteTitle": "将“{name}”移至回收站？",
@@ -1965,7 +1966,8 @@
       "filled": "已用内置词典翻译 {total} 条中的 {done} 条，其余请自行翻译。",
       "removeTitle": "移除{language}？",
       "removeDesc": "其翻译将从草稿中删除，撤销可恢复。",
-      "promoted": "其翻译现已成为表单文本，{language}文本保留为翻译。"
+      "promoted": "其翻译现已成为表单文本，{language}文本保留为翻译。",
+      "toCheck": "{n} 条待检查"
     },
     "translate": {
       "title": "翻译为{language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "页眉副标题",
         "thanks_title": "感谢标题",
         "thanks_message": "感谢信息"
-      }
+      },
+      "changed": "翻译后原文已更改",
+      "stillRight": "仍然正确"
     }
   },
   "renderer": {

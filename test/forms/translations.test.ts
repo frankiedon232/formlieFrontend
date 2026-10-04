@@ -5,6 +5,8 @@ import {
   formLanguages,
   formTexts,
   pickLanguage,
+  staleKeys,
+  textHash,
   translateSchema,
   translationProgress,
 } from '../../shared/utils/forms/translations'
@@ -22,6 +24,8 @@ const schema = (): FormSchemaV1 => ({
           id: 'r1',
           fields: [
             { id: 'f1', key: 'name', type: 'short_text', label: 'Your name', width: 12, required: true, placeholder: '→' } as never,
+            { id: 'f4', key: 'site', type: 'url', label: 'Website', width: 12, required: false, placeholder: 'https://' } as never,
+            { id: 'f5', key: 'mail', type: 'email', label: 'Email', width: 12, required: false, placeholder: 'name@example.com' } as never,
             {
               id: 'f2',
               key: 'pick',
@@ -48,6 +52,8 @@ describe('form translations', () => {
       'form.title',
       'page.p1.title',
       'field.f1.label',
+      'field.f4.label',
+      'field.f5.label',
       'field.f2.label',
       'field.f2.option.yes',
       'field.f2.option.no',
@@ -66,12 +72,12 @@ describe('form translations', () => {
 
   it('swaps in translations and keeps the main text where one is missing', () => {
     const fr = translateSchema(schema(), 'fr')
-    const fields = fr.pages[0]!.rows[0]!.fields
+    const field = (id: string) => fr.pages[0]!.rows[0]!.fields.find(item => item.id === id)!
     expect(fr.settings?.language).toBe('fr')
-    expect(fields[0]!.label).toBe('Votre nom')
-    expect(fields[1]!.label).toBe('Pick one')
-    expect(fields[1]!.options).toEqual([{ value: 'yes', label: 'Oui' }, { value: 'no', label: 'No' }])
-    expect(fields[2]!.props?.formula).toBe('IF({pick} = "yes", "Réussi", "Fail")')
+    expect(field('f1').label).toBe('Votre nom')
+    expect(field('f2').label).toBe('Pick one')
+    expect(field('f2').options).toEqual([{ value: 'yes', label: 'Oui' }, { value: 'no', label: 'No' }])
+    expect(field('f3').props?.formula).toBe('IF({pick} = "yes", "Réussi", "Fail")')
     expect(fr.thank_you?.title).toBe('Thank you!')
   })
 
@@ -82,7 +88,15 @@ describe('form translations', () => {
   })
 
   it('counts what is done', () => {
-    expect(translationProgress(schema(), 'fr')).toEqual({ done: 3, total: 11 })
+    expect(translationProgress(schema(), 'fr')).toEqual({ done: 3, total: 13, stale: 0 })
+  })
+
+  it('notices when the original changed after translating', () => {
+    const form = { ...schema(), translated_from: { fr: { 'field.f1.label': textHash('Your name'), 'field.f2.option.yes': textHash('Yes') } } }
+    expect(staleKeys(form, 'fr').size).toBe(0)
+    form.pages[0]!.rows[0]!.fields.find(item => item.id === 'f1')!.label = 'Your full name'
+    expect([...staleKeys(form, 'fr')]).toEqual(['field.f1.label'])
+    expect(translationProgress(form, 'fr').stale).toBe(1)
   })
 
   it('picks the link language, then the browser language, then the main one', () => {

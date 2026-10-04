@@ -83,7 +83,8 @@
       "emptied": "ゴミ箱を空にしました",
       "created": "フォームを作成しました",
       "bulk": "{count} 件のフォームを更新しました | {count} 件のフォームを更新しました",
-      "bulkFailed": "{count} 件は変更できませんでした | {count} 件は変更できませんでした"
+      "bulkFailed": "{count} 件は変更できませんでした | {count} 件は変更できませんでした",
+      "trashKept": "編集権限のないフォーム {n} 件はごみ箱に残ります | 編集権限のないフォーム {n} 件はごみ箱に残ります"
     },
     "confirm": {
       "deleteTitle": "「{name}」をゴミ箱に移動しますか？",
@@ -1965,7 +1966,8 @@
       "filled": "内蔵の辞書で {total} 件中 {done} 件を翻訳しました。残りはご自分で翻訳してください。",
       "removeTitle": "{language}を削除しますか？",
       "removeDesc": "翻訳は下書きから削除されます。元に戻すで復元できます。",
-      "promoted": "翻訳がフォームの文章になりました。{language}の文章は翻訳として残ります。"
+      "promoted": "翻訳がフォームの文章になりました。{language}の文章は翻訳として残ります。",
+      "toCheck": "要確認 {n} 件"
     },
     "translate": {
       "title": "{language}に翻訳",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "ヘッダーのサブタイトル",
         "thanks_title": "お礼のタイトル",
         "thanks_message": "お礼のメッセージ"
-      }
+      },
+      "changed": "翻訳後に変更されました",
+      "stillRight": "このままで正しい"
     }
   },
   "renderer": {

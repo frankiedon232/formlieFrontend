@@ -62,7 +62,14 @@ export function usePublicResume(key: string, enabled: Ref<boolean>) {
 
   let pending: { data: Record<string, unknown>; page: number } | null = null
   let timer: ReturnType<typeof setTimeout> | undefined
-  async function flush(email?: string) {
+  // One save at a time: a second one waits, so a slow first save never makes a second draft.
+  let queue: Promise<unknown> = Promise.resolve()
+  function flush(email?: string) {
+    const run = queue.then(() => saveNow(email))
+    queue = run.catch(() => undefined)
+    return run
+  }
+  async function saveNow(email?: string) {
     if (!enabled.value || !pending) return null
     const body = { ...pending, ...(email ? { email } : {}) }
     state.value = 'saving'
@@ -90,6 +97,8 @@ export function usePublicResume(key: string, enabled: Ref<boolean>) {
   /** "Save and continue later": save now and send the link to this email. */
   async function later(email: string): Promise<{ sentTo: string | null; devUrl: string | null } | null> {
     clearTimeout(timer)
+    // Nothing typed yet and no draft: still save (empty, page 1), so the link always arrives.
+    if (!pending && !token.value) pending = { data: {}, page: 0 }
     const reply = await flush(email)
     if (!reply) return null
     const data = reply.data as { sent_to?: string | null }

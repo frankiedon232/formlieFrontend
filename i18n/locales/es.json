@@ -83,7 +83,8 @@
       "emptied": "Papelera vaciada",
       "created": "Formulario creado",
       "bulk": "{count} formulario actualizado | {count} formularios actualizados",
-      "bulkFailed": "{count} no se pudo cambiar | {count} no se pudieron cambiar"
+      "bulkFailed": "{count} no se pudo cambiar | {count} no se pudieron cambiar",
+      "trashKept": "{n} formulario que no puedes editar sigue en la papelera | {n} formularios que no puedes editar siguen en la papelera"
     },
     "confirm": {
       "deleteTitle": "¿Mover «{name}» a la papelera?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} de {total} textos traducidos con los diccionarios integrados. Traduce el resto tú.",
       "removeTitle": "¿Quitar {language}?",
       "removeDesc": "Sus traducciones se quitan del borrador. Deshacer las recupera.",
-      "promoted": "Sus traducciones son ahora el texto del formulario. El texto en {language} se guarda como traducción."
+      "promoted": "Sus traducciones son ahora el texto del formulario. El texto en {language} se guarda como traducción.",
+      "toCheck": "{n} por revisar"
     },
     "translate": {
       "title": "Traducir al {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Subtítulo del encabezado",
         "thanks_title": "Título de agradecimiento",
         "thanks_message": "Mensaje de agradecimiento"
-      }
+      },
+      "changed": "Cambiado desde la traducción",
+      "stillRight": "Sigue bien"
     }
   },
   "renderer": {

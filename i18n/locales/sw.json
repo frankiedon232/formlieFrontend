@@ -83,7 +83,8 @@
       "emptied": "Tupio limeondolewa vitu vyote",
       "created": "Fomu imeundwa",
       "bulk": "Fomu {count} imesasishwa | Fomu {count} zimesasishwa",
-      "bulkFailed": "Fomu {count} haikuweza kubadilishwa | Fomu {count} hazikuweza kubadilishwa"
+      "bulkFailed": "Fomu {count} haikuweza kubadilishwa | Fomu {count} hazikuweza kubadilishwa",
+      "trashKept": "Fomu {n} usizoweza kuhariri zinabaki kwenye Taka | Fomu {n} usizoweza kuhariri zinabaki kwenye Taka"
     },
     "confirm": {
       "deleteTitle": "Hamishia “{name}” kwenye tupio?",
@@ -1965,7 +1966,8 @@
       "filled": "Maandishi {done} kati ya {total} yametafsiriwa kwa kamusi zilizojengwa ndani. Tafsiri yaliyobaki mwenyewe.",
       "removeTitle": "Ondoa {language}?",
       "removeDesc": "Tafsiri zake zitaondolewa kwenye rasimu. Tendua huzirudisha.",
-      "promoted": "Tafsiri zake sasa ni maandishi ya fomu. Maandishi ya {language} yamehifadhiwa kama tafsiri."
+      "promoted": "Tafsiri zake sasa ni maandishi ya fomu. Maandishi ya {language} yamehifadhiwa kama tafsiri.",
+      "toCheck": "{n} za kukagua"
     },
     "translate": {
       "title": "Tafsiri kwa {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Kichwa kidogo cha juu",
         "thanks_title": "Kichwa cha shukrani",
         "thanks_message": "Ujumbe wa shukrani"
-      }
+      },
+      "changed": "Imebadilika baada ya kutafsiriwa",
+      "stillRight": "Bado ni sahihi"
     }
   },
   "renderer": {

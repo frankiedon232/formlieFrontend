@@ -78,6 +78,7 @@ async function start(file: File) {
     const problem = t('renderer.files.failed', { file: file.name })
     rejected.value = [...rejected.value, problem]
     toast.add({ title: t('renderer.files.notAdded'), description: reason ? `${problem} ${reason}` : problem, color: 'error', icon: 'i-lucide-cloud-alert' })
+    release(current)
     entries.delete(file)
     trimming = true
     const kept = listOf(files.value).filter(item => item !== file)
@@ -89,10 +90,17 @@ async function start(file: File) {
 }
 
 /** Files taken out (or replaced): cancel their uploads; new files: start theirs. */
+/** A file taken off: its picture preview is freed (it isn't kept for this page any more). */
+function release(item: Entry) {
+  if (!item.preview) return
+  if (item.answer) previews.delete(keyOf(item.answer))
+  URL.revokeObjectURL(item.preview)
+}
 function reconcile(list: File[]) {
   for (const [file, item] of entries)
     if (!list.includes(file)) {
       item.abort?.()
+      release(item)
       entries.delete(file)
     }
   for (const file of list) if (!entries.has(file)) void start(file)

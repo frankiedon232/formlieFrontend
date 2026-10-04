@@ -83,7 +83,8 @@
       "emptied": "Đã dọn thùng rác",
       "created": "Đã tạo biểu mẫu",
       "bulk": "Đã cập nhật {count} biểu mẫu | Đã cập nhật {count} biểu mẫu",
-      "bulkFailed": "{count} biểu mẫu không thể thay đổi | {count} biểu mẫu không thể thay đổi"
+      "bulkFailed": "{count} biểu mẫu không thể thay đổi | {count} biểu mẫu không thể thay đổi",
+      "trashKept": "{n} biểu mẫu bạn không được sửa vẫn ở trong Thùng rác | {n} biểu mẫu bạn không được sửa vẫn ở trong Thùng rác"
     },
     "confirm": {
       "deleteTitle": "Chuyển “{name}” vào thùng rác?",
@@ -1965,7 +1966,8 @@
       "filled": "Đã dịch {done} trên {total} văn bản bằng từ điển có sẵn. Phần còn lại bạn tự dịch.",
       "removeTitle": "Gỡ {language}?",
       "removeDesc": "Các bản dịch sẽ bị xóa khỏi bản nháp. Hoàn tác sẽ khôi phục.",
-      "promoted": "Các bản dịch giờ là văn bản của biểu mẫu. Văn bản {language} được giữ làm bản dịch."
+      "promoted": "Các bản dịch giờ là văn bản của biểu mẫu. Văn bản {language} được giữ làm bản dịch.",
+      "toCheck": "{n} cần kiểm tra"
     },
     "translate": {
       "title": "Dịch sang {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Phụ đề đầu trang",
         "thanks_title": "Tiêu đề cảm ơn",
         "thanks_message": "Lời cảm ơn"
-      }
+      },
+      "changed": "Đã đổi sau khi dịch",
+      "stillRight": "Vẫn đúng"
     }
   },
   "renderer": {

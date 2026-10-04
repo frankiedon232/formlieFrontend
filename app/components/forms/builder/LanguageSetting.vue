@@ -9,6 +9,7 @@
 -->
 <script setup lang="ts">
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+import { formTexts } from '#shared/utils/forms/translations'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 
 const { t } = useI18n()
@@ -29,6 +30,7 @@ const { busy, run } = useBusy()
 async function setLanguage(value: string) {
   if (!schema.value || value === current.value) return
   const from = current.value
+  const before = new Map(formTexts(schema.value).map(item => [item.key, item.text]))
   if (translations.extras.value.includes(value)) {
     translations.promote(value)
     toast.add({
@@ -62,6 +64,7 @@ async function setLanguage(value: string) {
       schema.value.thank_you = data.schema.thank_you
       if (data.schema.settings?.guide) schema.value.settings = { ...schema.value.settings, guide: data.schema.settings.guide }
       if (data.schema.theme) schema.value.theme = data.schema.theme
+      translations.rebase(before)
       toast.add({
         title: t('builder.language.changed', { language: nameOf(value) }),
         description: [

@@ -29,12 +29,12 @@ const live = computed(() => props.form.status === 'published')
 const qrOpen = ref(false)
 const embedOpen = ref(false)
 
+/** Who can open it: all four modes (the badge shows every mode but "anyone with the link"). */
+const ACCESS_ICON = { public: 'i-lucide-globe', password: 'i-lucide-lock-keyhole', invite: 'i-lucide-mail-check', organisation: 'i-lucide-building-2' } as const
+const access = computed(() => ({ icon: ACCESS_ICON[props.form.access] ?? ACCESS_ICON.public, label: t(`share.access.${props.form.access ?? 'public'}`) }))
 /** How the form is shared, in a few words (each opens the Share settings). */
 const facts = computed(() => [
-  {
-    icon: props.form.access === 'password' ? 'i-lucide-lock-keyhole' : 'i-lucide-globe',
-    label: props.form.access === 'password' ? t('share.access.password') : t('share.access.public'),
-  },
+  access.value,
   {
     icon: 'i-lucide-gauge',
     label: props.form.response_limit != null ? t('share.summary.limit', { n: number(props.form.response_limit) }) : t('share.summary.noLimit'),
@@ -55,7 +55,7 @@ const actions = computed(() => [
       <div class="flex items-center justify-between gap-2">
         <h2 class="text-sm font-semibold text-highlighted">{{ t('forms.overview.shareTitle') }}</h2>
         <div class="flex shrink-0 items-center gap-1.5">
-          <UBadge v-if="form.access === 'password'" :label="t('share.access.badge')" color="neutral" variant="outline" icon="i-lucide-lock-keyhole" size="sm" />
+          <UBadge v-if="form.access && form.access !== 'public'" :label="form.access === 'password' ? t('share.access.badge') : access.label" color="neutral" variant="outline" :icon="access.icon" size="sm" class="max-sm:[&>span:last-child]:sr-only" />
           <UBadge :label="live ? t('forms.overview.live') : t(`status.${form.status}`)" :color="live ? 'success' : 'neutral'" variant="subtle" :icon="live ? 'i-lucide-radio' : 'i-lucide-circle-dashed'" size="sm" />
         </div>
       </div>

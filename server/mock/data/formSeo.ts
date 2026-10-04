@@ -19,15 +19,19 @@ function summaryOf(schema: FormSchemaV1 | null | undefined): string {
   return (text || subtitle).slice(0, SEO_DESCRIPTION_MAX)
 }
 
-/** What the form says when nothing is set: its respondent title and intro (published version first). */
-export function seoDefaults(form: StoredForm): { title: string; description: string } {
-  const schema = form.published_schema ?? form.schema
+/**
+ * What the form says when nothing is set: its respondent title and intro (published version
+ * first). `publishedOnly` (public pages): never the draft, so a form that was never published
+ * shows only its name, no draft text.
+ */
+export function seoDefaults(form: StoredForm, publishedOnly = false): { title: string; description: string } {
+  const schema = publishedOnly ? form.published_schema : (form.published_schema ?? form.schema)
   return { title: (schema?.settings?.title?.trim() || form.name).slice(0, SEO_TITLE_MAX), description: summaryOf(schema) }
 }
 
 /** The link preview as shown: the creator's text where set, the defaults otherwise. */
-export function seoOf(form: StoredForm): { title: string; description: string; imageUploadId: string | null; noindex: boolean } {
-  const defaults = seoDefaults(form)
+export function seoOf(form: StoredForm, publishedOnly = false): { title: string; description: string; imageUploadId: string | null; noindex: boolean } {
+  const defaults = seoDefaults(form, publishedOnly)
   return {
     title: form.seo?.title?.trim() || defaults.title,
     description: form.seo?.description?.trim() || defaults.description,

@@ -32,7 +32,7 @@ import { draftOf, newResumeToken, putDraft, RESUME_TTL_DAYS } from '../data/resu
 import { attachRespondentFiles, completedUploadUrl, completeRespondentUpload, createRespondentTicket, respondentFile } from './uploads'
 import { seoOf } from '../data/formSeo'
 import { allFields, isLocked } from '#shared/utils/forms/build'
-import { acceptsFile, looksLikePicture, parseAccept } from '#shared/utils/forms/file-types'
+import { acceptsFile, looksLikePicture, parseAccept, pictureAccept } from '#shared/utils/forms/file-types'
 import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
 import { checkWork } from '#shared/utils/forms/proof-of-work'
 import type { UploadTicket } from '#shared/types/onboarding'
@@ -186,7 +186,8 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
   // The form's language also for full, closed, expired, scheduled and locked pages (no questions are sent then).
   const languages = formLanguages(published ?? form.published_schema ?? form.schema)
   const language = languages[0]!
-  const seo = seoOf(form)
+  // Public page: never draft text (a never-published form shows only its name).
+  const seo = seoOf(form, true)
   // Link cards need a full address for the image (link previews fetch it from outside).
   const imagePath = seo.imageUploadId ? completedUploadUrl(seo.imageUploadId, tenant.id) : null
   const seoImage = imagePath ? `https://${getRequestHost(event, { xForwardedHost: true })}${imagePath}` : null
@@ -268,7 +269,11 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   if (sent.length >= SUBMITS_PER_10_MIN) throw new MockError('FRM-GEN-1029')
   submitsBy.set(sender, [...sent, Date.now()])
   const salt = await provenHuman(form.public_key, input.challenge)
-  if (!salt) throw new MockError('FRM-RESP-1009')
+  // One solved challenge, one submission: reserved while this request runs (two at once can't share
+  // it), marked used when the response is stored, free again if this one is refused.
+  if (!salt || challengesInUse.has(salt) || usedChallenges.has(salt)) throw new MockError('FRM-RESP-1009')
+  challengesInUse.add(salt)
+  event.node.res.once('close', () => challengesInUse.delete(salt))
 
   const { issues, answers } = checkSubmission(schema, input.data)
   // Files: each must be a finished upload for this form and question (names and sizes come from storage).
@@ -502,7 +507,8 @@ export const requestUpload = defineMockRoute(({ event, body }) => {
   uploadsBy.set(who, [...recent, Date.now()])
 
   const props = (field.props ?? {}) as Record<string, unknown>
-  const accept = field.type === 'image_upload' ? String(props.accept || 'image/*') : String(props.accept ?? '')
+  // Image questions: pictures only, the same list the form offers (a stray ".pdf" never blocks a photo).
+  const accept = field.type === 'image_upload' ? pictureAccept(String(props.accept ?? '')) : String(props.accept ?? '')
   const file = { name: input.file_name, type: input.content_type }
   const image = field.type === 'image_upload'
   if (!acceptsFile(accept, file) || (image && !looksLikePicture(file)))
@@ -550,6 +556,9 @@ const SUBMITS_PER_10_MIN = 20
 const sign = (payload: string) => createHmac('sha256', CHALLENGE_SECRET).update(payload).digest('base64url')
 
 /** The challenge's salt when the proof is valid for this form (not used before, old enough, not expired). */
+/** Challenges a submission is using right now (see submitPublicForm). */
+const challengesInUse = new Set<string>()
+
 async function provenHuman(key: string, proof: { token: string; nonce: number } | undefined): Promise<string | null> {
   if (!proof) return null
   const [encoded, signature] = proof.token.split('.')

@@ -202,6 +202,11 @@ watch(
   },
   { deep: true },
 )
+/** "Save and continue later" saves what is on screen right now (also when nothing changed yet). */
+function laterWithAnswers(email: string) {
+  resume.value?.save({ ...answers.value }, index.value)
+  return resume.value ? resume.value.later(email) : Promise.resolve(null)
+}
 const resumeEmail = computed(() => {
   const key = identityOf(props.schema).email ?? [...allFieldsByKey.value.values()].find(f => f.type === 'email')?.key
   const value = key ? answers.value[key] : ''
@@ -275,7 +280,7 @@ function restart() {
         <!-- Save and resume: saved status + "continue later". -->
         <FormsRendererResumeBar v-if="resume" :resume="resume" :color="button.color" @later="resumeOpen = true" />
       </form>
-      <FormsRendererResume v-if="resume" v-model:open="resumeOpen" :default-email="resumeEmail" :later="resume.later" />
+      <FormsRendererResume v-if="resume" v-model:open="resumeOpen" :default-email="resumeEmail" :later="laterWithAnswers" />
     </template>
 
     <FormsRendererThanks

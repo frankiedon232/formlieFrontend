@@ -83,7 +83,8 @@
       "emptied": "Prullenbak geleegd",
       "created": "Formulier gemaakt",
       "bulk": "{count} formulier bijgewerkt | {count} formulieren bijgewerkt",
-      "bulkFailed": "{count} kon niet worden gewijzigd | {count} konden niet worden gewijzigd"
+      "bulkFailed": "{count} kon niet worden gewijzigd | {count} konden niet worden gewijzigd",
+      "trashKept": "{n} formulier dat je niet mag bewerken blijft in de prullenbak | {n} formulieren die je niet mag bewerken blijven in de prullenbak"
     },
     "confirm": {
       "deleteTitle": "“{name}” naar de prullenbak verplaatsen?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} van {total} teksten vertaald met de ingebouwde woordenboeken. Vertaal de rest zelf.",
       "removeTitle": "{language} verwijderen?",
       "removeDesc": "De vertalingen worden uit het concept gehaald. Ongedaan maken zet ze terug.",
-      "promoted": "De vertalingen zijn nu de tekst van het formulier. De tekst in het {language} blijft als vertaling bewaard."
+      "promoted": "De vertalingen zijn nu de tekst van het formulier. De tekst in het {language} blijft als vertaling bewaard.",
+      "toCheck": "{n} na te kijken"
     },
     "translate": {
       "title": "Vertalen naar het {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Ondertitel van de kop",
         "thanks_title": "Bedanktitel",
         "thanks_message": "Bedankbericht"
-      }
+      },
+      "changed": "Gewijzigd na vertalen",
+      "stillRight": "Klopt nog"
     }
   },
   "renderer": {

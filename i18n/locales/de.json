@@ -83,7 +83,8 @@
       "emptied": "Papierkorb geleert",
       "created": "Formular erstellt",
       "bulk": "{count} Formular aktualisiert | {count} Formulare aktualisiert",
-      "bulkFailed": "{count} konnte nicht geändert werden | {count} konnten nicht geändert werden"
+      "bulkFailed": "{count} konnte nicht geändert werden | {count} konnten nicht geändert werden",
+      "trashKept": "{n} Formular ohne Bearbeitungsrecht bleibt im Papierkorb | {n} Formulare ohne Bearbeitungsrecht bleiben im Papierkorb"
     },
     "confirm": {
       "deleteTitle": "„{name}“ in den Papierkorb verschieben?",
@@ -1965,7 +1966,8 @@
       "filled": "{done} von {total} Texten mit den eingebauten Wörterbüchern übersetzt. Den Rest übersetzen Sie selbst.",
       "removeTitle": "{language} entfernen?",
       "removeDesc": "Die Übersetzungen werden aus dem Entwurf entfernt. Rückgängig holt sie zurück.",
-      "promoted": "Die Übersetzungen sind jetzt der Text des Formulars. Der Text auf {language} bleibt als Übersetzung erhalten."
+      "promoted": "Die Übersetzungen sind jetzt der Text des Formulars. Der Text auf {language} bleibt als Übersetzung erhalten.",
+      "toCheck": "{n} prüfen"
     },
     "translate": {
       "title": "Übersetzen in {language}",
@@ -1997,7 +1999,9 @@
         "header_subtitle": "Untertitel im Kopfbereich",
         "thanks_title": "Danke-Titel",
         "thanks_message": "Danke-Nachricht"
-      }
+      },
+      "changed": "Seit der Übersetzung geändert",
+      "stillRight": "Passt noch"
     }
   },
   "renderer": {
