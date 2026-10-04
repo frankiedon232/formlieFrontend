@@ -18,8 +18,11 @@ const open = defineModel<boolean>('open', { default: false })
 const { t } = useI18n()
 const { handle, enabled, reset, onKeydown } = useDraggableModal()
 
-// Title block grows so the grip sits next to the close button.
-const ui = computed(() => ({ wrapper: 'flex-1 min-w-0', ...props.ui }))
+// Header: title block grows; the move grip and the close button sit side by side at the end, in
+// the flow (Nuxt UI places the close button absolutely in the corner, where the grip overlapped it).
+const ui = computed(() => ({ wrapper: 'flex-1 min-w-0', close: 'static shrink-0', ...props.ui }))
+/** A clear close button: a soft round button, darker on hover. */
+const closeButton = { color: 'neutral' as const, variant: 'soft' as const, size: 'sm' as const, square: true, class: 'rounded-full text-highlighted hover:bg-accented' }
 
 watch(open, value => {
   if (value) nextTick(reset)
@@ -32,6 +35,8 @@ watch(open, value => {
     :title="props.title"
     :description="props.description"
     :dismissible="props.dismissible"
+    :close="closeButton"
+    close-icon="i-lucide-x"
     :ui="ui"
   >
     <template v-if="$slots.title" #title>
@@ -51,6 +56,9 @@ watch(open, value => {
             icon="i-lucide-grip"
             color="neutral"
             variant="ghost"
+            size="sm"
+            square
+            class="cursor-grab text-muted active:cursor-grabbing"
             :aria-label="t('modal.move')"
             @keydown="onKeydown"
           />
