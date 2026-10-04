@@ -2857,7 +2857,10 @@
       "copy": "Copia link",
       "copied": "Link copiato",
       "keyStays": "Il link originale continua a funzionare, quindi i link già condivisi non smettono mai di funzionare.",
-      "try": "Link liberi che può usare:"
+      "try": "Link liberi che può usare:",
+      "usedBy": "Già usato dal suo modulo",
+      "usedByKey": "È il link originale del suo modulo",
+      "openForm": "Apri"
     },
     "limits": {
       "title": "Limiti",

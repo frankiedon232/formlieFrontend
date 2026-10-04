@@ -130,11 +130,13 @@ export function uniqueSlug(store: TenantForms, name: string, exceptId?: string):
   return `${base}-${n}`
 }
 
-/** A form by its public key or custom link, across workspaces (public pages, F10). */
-export function findByPublicKey(tenants: MockTenant[], key: string): { tenant: MockTenant; form: StoredForm } | null {
+/** A form by its public key (unique everywhere) or custom link (unique per host: a workspace subdomain, or forms.* for workspaces without one). */
+export function findByPublicKey(tenants: MockTenant[], key: string, { sharedHost = false } = {}): { tenant: MockTenant; form: StoredForm } | null {
   for (const tenant of tenants) {
     // The key, or the form's custom link (F10 M3).
-    const form = formsOf(tenant).forms.find(item => (item.public_key === key || item.custom_link === key) && !item.deleted_at)
+    // On the shared forms host a custom link belongs to a workspace without its own subdomain.
+    const linkHere = (item: StoredForm) => item.custom_link === key && !(sharedHost && tenant.subdomain)
+    const form = formsOf(tenant).forms.find(item => (item.public_key === key || linkHere(item)) && !item.deleted_at)
     if (form) return { tenant, form }
   }
   return null

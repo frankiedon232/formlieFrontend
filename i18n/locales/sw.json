@@ -2857,7 +2857,10 @@
       "copy": "Nakili kiungo",
       "copied": "Kiungo kimenakiliwa",
       "keyStays": "Kiungo cha awali kinaendelea kufanya kazi, kwa hivyo viungo ulivyokwisha shiriki havitaacha kufanya kazi.",
-      "try": "Viungo vilivyo wazi unavyoweza kutumia:"
+      "try": "Viungo vilivyo wazi unavyoweza kutumia:",
+      "usedBy": "Tayari kinatumiwa na fomu yako",
+      "usedByKey": "Hiki ni kiungo asili cha fomu yako",
+      "openForm": "Fungua"
     },
     "limits": {
       "title": "Vikomo",

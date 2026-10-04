@@ -2857,7 +2857,10 @@
       "copy": "Bağlantıyı kopyala",
       "copied": "Bağlantı kopyalandı",
       "keyStays": "Asıl bağlantı çalışmaya devam eder; böylece daha önce paylaştığınız bağlantılar asla bozulmaz.",
-      "try": "Kullanabileceğiniz boş bağlantılar:"
+      "try": "Kullanabileceğiniz boş bağlantılar:",
+      "usedBy": "Zaten şu formunuzda kullanılıyor",
+      "usedByKey": "Bu, şu formunuzun asıl bağlantısı",
+      "openForm": "Aç"
     },
     "limits": {
       "title": "Sınırlar",

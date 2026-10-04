@@ -2857,7 +2857,10 @@
       "copy": "Copy link",
       "copied": "Link copied",
       "keyStays": "The original link keeps working, so links you already shared never break.",
-      "try": "Free links you can use:"
+      "try": "Free links you can use:",
+      "usedBy": "Already used by your form",
+      "usedByKey": "This is the original link of your form",
+      "openForm": "Open"
     },
     "limits": {
       "title": "Limits",

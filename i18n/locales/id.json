@@ -2857,7 +2857,10 @@
       "copy": "Salin tautan",
       "copied": "Tautan disalin",
       "keyStays": "Tautan asli tetap berfungsi, sehingga tautan yang sudah Anda bagikan tidak akan rusak.",
-      "try": "Tautan tersedia yang dapat Anda gunakan:"
+      "try": "Tautan tersedia yang dapat Anda gunakan:",
+      "usedBy": "Sudah dipakai oleh formulir Anda",
+      "usedByKey": "Ini tautan asli formulir Anda",
+      "openForm": "Buka"
     },
     "limits": {
       "title": "Batas",

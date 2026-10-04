@@ -2857,7 +2857,10 @@
       "copy": "Link kopieren",
       "copied": "Link kopiert",
       "keyStays": "Der ursprüngliche Link funktioniert weiter, bereits geteilte Links bleiben also gültig.",
-      "try": "Freie Links, die Sie nutzen können:"
+      "try": "Freie Links, die Sie nutzen können:",
+      "usedBy": "Bereits von Ihrem Formular verwendet",
+      "usedByKey": "Das ist der ursprüngliche Link Ihres Formulars",
+      "openForm": "Öffnen"
     },
     "limits": {
       "title": "Grenzen",

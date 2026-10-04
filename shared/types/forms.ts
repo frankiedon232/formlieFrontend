@@ -80,6 +80,11 @@ export interface CustomLinkCheck {
   reason: 'invalid' | 'reserved' | 'taken' | null
   /** Up to three free links close to it (taken or reserved). */
   suggestions: string[]
+  /**
+   * Taken by one of your own forms: which one (`link`: its custom link, or else its key).
+   * Null when another organisation sharing forms.formalie.com uses it — never named.
+   */
+  taken_by: { id: string; name: string; status: FormStatus; link: boolean } | null
 }
 
 /** GET /forms/facets — options for the owner and tag filters. */

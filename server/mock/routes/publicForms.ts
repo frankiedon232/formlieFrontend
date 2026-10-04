@@ -64,7 +64,7 @@ function locate(event: Parameters<typeof tenantOf>[0], key: string): { tenant: M
       ? tenant && tenant.status !== 'suspended'
         ? findByPublicKey([tenant], key)
         : null
-      : findByPublicKey(MOCK_TENANTS.filter(item => item.status !== 'suspended'), key)
+      : findByPublicKey(MOCK_TENANTS.filter(item => item.status !== 'suspended'), key, { sharedHost: true })
   if (!found) throw new MockError('FRM-FORM-1001')
   return found
 }

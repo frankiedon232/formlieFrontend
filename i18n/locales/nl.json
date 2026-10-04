@@ -2857,7 +2857,10 @@
       "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
       "keyStays": "De oorspronkelijke link blijft werken, dus links die u al hebt gedeeld, blijven altijd werken.",
-      "try": "Vrije links die u kunt gebruiken:"
+      "try": "Vrije links die u kunt gebruiken:",
+      "usedBy": "Al in gebruik door uw formulier",
+      "usedByKey": "Dit is de oorspronkelijke link van uw formulier",
+      "openForm": "Openen"
     },
     "limits": {
       "title": "Limieten",

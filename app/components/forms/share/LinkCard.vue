@@ -1,7 +1,8 @@
 <!--
   Share → Custom link (F10 M3): a readable address instead of the random key —
   `https://{forms | sub}.formalie.com/{custom-link}/fill`. Checked while typing
-  (GET /forms/{id}/share/link-check): free · taken or reserved (with up to three free suggestions) · invalid.
+  (GET /forms/{id}/share/link-check): free · taken (by which of your forms) or reserved, with up to
+  three free suggestions · invalid. Links are unique per address: each workspace subdomain has its own.
   The key keeps working, so links already shared never break.
 -->
 <script setup lang="ts">
@@ -107,6 +108,20 @@ function copyPreview() {
         <UIcon :name="status.icon" class="size-3.5" :class="status.spin ? 'animate-spin' : ''" />{{ status.text }}
       </span>
       <UButton v-if="draft.link" :label="t('share.link.remove')" icon="i-lucide-x" color="neutral" variant="link" size="xs" class="ms-auto px-0" @click="draft.link = ''" />
+    </div>
+    <!-- Taken by one of your forms: which one, with a way to open it. -->
+    <div v-if="result?.taken_by" class="mt-3 flex items-center gap-3 rounded-md border border-default bg-elevated/40 p-3">
+      <span class="flex size-9 shrink-0 items-center justify-center rounded-md border border-default bg-default">
+        <UIcon name="i-lucide-file-text" class="size-4 text-muted" />
+      </span>
+      <div class="min-w-0 flex-1">
+        <p class="text-xs text-muted">{{ result.taken_by.link ? t('share.link.usedBy') : t('share.link.usedByKey') }}</p>
+        <div class="flex min-w-0 items-center gap-2">
+          <span class="truncate text-sm font-medium text-highlighted">{{ result.taken_by.name }}</span>
+          <DataStatusBadge :status="result.taken_by.status" />
+        </div>
+      </div>
+      <UButton :label="t('share.link.openForm')" icon="i-lucide-arrow-up-right" color="neutral" variant="outline" size="xs" :to="`/forms/${result.taken_by.id}`" target="_blank" />
     </div>
     <!-- Taken or reserved: free links close to it, one click to use. -->
     <div v-if="result?.suggestions.length" class="mt-2 flex flex-wrap items-center gap-1.5">

@@ -2857,7 +2857,10 @@
       "copy": "Sao chép liên kết",
       "copied": "Đã sao chép liên kết",
       "keyStays": "Liên kết gốc vẫn hoạt động, nên các liên kết bạn đã chia sẻ sẽ không bao giờ bị hỏng.",
-      "try": "Các liên kết còn trống bạn có thể dùng:"
+      "try": "Các liên kết còn trống bạn có thể dùng:",
+      "usedBy": "Đã được dùng cho biểu mẫu của bạn",
+      "usedByKey": "Đây là liên kết gốc của biểu mẫu",
+      "openForm": "Mở"
     },
     "limits": {
       "title": "Giới hạn",

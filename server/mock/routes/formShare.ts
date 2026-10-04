@@ -38,12 +38,22 @@ const settingsOf = (form: StoredForm): FormShareSettings => ({
   row_version: form.row_version,
 })
 
-/** Who already uses this link (any workspace: forms.* serves them all) — or a form's key that reads the same. */
-function linkTaken(value: string, exceptId: string): boolean {
-  return MOCK_TENANTS.some(tenant =>
-    formsOf(tenant).forms.some(form => form.id !== exceptId && !form.deleted_at && (form.custom_link === value || form.public_key === value)),
-  )
+/**
+ * Workspaces whose forms live on the same address (owner, 2026-10-04): a workspace with its own
+ * subdomain has its links to itself (remedylegal.… and datalinks.… can both have /feedback);
+ * workspaces without one share forms.formalie.com, so their links must differ from each other.
+ */
+const sameHost = (tenant: MockTenant) => (tenant.subdomain ? [tenant] : MOCK_TENANTS.filter(item => !item.subdomain))
+
+/** The form already answering to this address on the same host (custom link, or a key that reads the same). */
+function holderOf(value: string, exceptId: string, tenant: MockTenant): { tenant: MockTenant; form: StoredForm } | null {
+  for (const owner of sameHost(tenant)) {
+    const form = formsOf(owner).forms.find(item => item.id !== exceptId && !item.deleted_at && (item.custom_link === value || item.public_key === value))
+    if (form) return { tenant: owner, form }
+  }
+  return null
 }
+const linkTaken = (value: string, exceptId: string, tenant: MockTenant) => !!holderOf(value, exceptId, tenant)
 
 /** Up to three free links close to what was typed: with the organisation's name, the year, a number. */
 function suggestionsFor(value: string, formId: string, tenant: MockTenant): string[] {
@@ -57,7 +67,7 @@ function suggestionsFor(value: string, formId: string, tenant: MockTenant): stri
   for (const candidate of candidates) {
     if (!candidate) continue
     const link = tidyCustomLink(candidate)
-    if (!free.includes(link) && !customLinkProblem(link) && !linkTaken(link, formId)) free.push(link)
+    if (!free.includes(link) && !customLinkProblem(link) && !linkTaken(link, formId, tenant)) free.push(link)
     if (free.length === 3) break
   }
   return free
@@ -66,9 +76,17 @@ function suggestionsFor(value: string, formId: string, tenant: MockTenant): stri
 function check(value: string, formId: string, tenant: MockTenant): CustomLinkCheck {
   const problem = customLinkProblem(value)
   // Reserved words still get suggestions; unreadable input doesn't.
-  if (problem === 'invalid') return { value, available: false, reason: 'invalid', suggestions: [] }
-  if (!problem && !linkTaken(value, formId)) return { value, available: true, reason: null, suggestions: [] }
-  return { value, available: false, reason: problem ?? 'taken', suggestions: suggestionsFor(value, formId, tenant) }
+  if (problem === 'invalid') return { value, available: false, reason: 'invalid', suggestions: [], taken_by: null }
+  const holder = problem ? null : holderOf(value, formId, tenant)
+  if (!problem && !holder) return { value, available: true, reason: null, suggestions: [], taken_by: null }
+  return {
+    value,
+    available: false,
+    reason: problem ?? 'taken',
+    suggestions: suggestionsFor(value, formId, tenant),
+    // Which of your forms uses it — never another organisation's form.
+    taken_by: holder && holder.tenant.id === tenant.id ? { id: holder.form.id, name: holder.form.name, status: holder.form.status, link: holder.form.custom_link === value } : null,
+  }
 }
 
 /** GET /forms/:id/share */
