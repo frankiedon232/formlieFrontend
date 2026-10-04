@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Idioma del formulario",
-      "hint": "Los encuestados ven el formulario en este idioma, incluidos botones, mensajes y fechas. Varios idiomas por formulario llegarán con las páginas públicas de formularios."
+      "hint": "Los botones, mensajes y fechas siguen este idioma. Las preguntas son el texto que escribiste: traduce el texto de la plantilla con el botón de abajo.",
+      "offer": "¿Traducir también el texto del formulario a {language}?",
+      "offerDesc": "Se traducen las preguntas, opciones, secciones y el texto de agradecimiento que vienen de una plantilla. El texto que escribiste tú se queda igual. Deshacer lo recupera.",
+      "translate": "Traducir",
+      "notNow": "Ahora no",
+      "translateTo": "Traducir el texto del formulario a {language}",
+      "translated": "{n} texto traducido | {n} textos traducidos",
+      "kept": "{n} texto que escribiste se queda igual: edítalo en el formulario. | {n} textos que escribiste se quedan igual: edítalos en el formulario."
     },
     "template": {
       "title": "Plantilla",
@@ -1936,6 +1943,11 @@
       "content": "Guía",
       "contentHint": "Los títulos, las listas y los enlaces ayudan a encontrar rápido lo que se necesita.",
       "save": "Guardar guía"
+    },
+    "spam": {
+      "title": "Protección contra spam",
+      "on": "Siempre activa",
+      "desc": "Una comprobación invisible en segundo plano detiene los envíos automáticos. Quien rellena no ve nada ni tiene que hacer clic."
     }
   },
   "renderer": {

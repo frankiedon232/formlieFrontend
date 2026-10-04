@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Bahasa formulir",
-      "hint": "Responden melihat formulir dalam bahasa ini — termasuk tombol, pesan, dan tanggal. Dukungan beberapa bahasa per formulir hadir bersama halaman formulir publik."
+      "hint": "Tombol, pesan, dan tanggal mengikuti bahasa ini. Pertanyaan adalah teks yang Anda tulis — terjemahkan teks templat dengan tombol di bawah.",
+      "offer": "Terjemahkan juga teks formulir ke {language}?",
+      "offerDesc": "Pertanyaan, opsi, bagian, dan teks terima kasih dari templat akan diterjemahkan. Teks yang Anda tulis sendiri tetap seperti semula. Urungkan untuk mengembalikannya.",
+      "translate": "Terjemahkan",
+      "notNow": "Nanti saja",
+      "translateTo": "Terjemahkan teks formulir ke {language}",
+      "translated": "{n} teks diterjemahkan | {n} teks diterjemahkan",
+      "kept": "{n} teks yang Anda tulis tetap seperti semula — ubah di formulir. | {n} teks yang Anda tulis tetap seperti semula — ubah di formulir."
     },
     "template": {
       "title": "Templat",
@@ -1936,6 +1943,11 @@
       "content": "Panduan",
       "contentHint": "Judul, daftar, dan tautan membantu orang menemukan yang mereka butuhkan dengan cepat.",
       "save": "Simpan panduan"
+    },
+    "spam": {
+      "title": "Perlindungan spam",
+      "on": "Selalu aktif",
+      "desc": "Pemeriksaan tak terlihat di latar belakang menghentikan kiriman otomatis. Pengisi tidak melihat apa pun dan tidak perlu mengeklik apa pun."
     }
   },
   "renderer": {

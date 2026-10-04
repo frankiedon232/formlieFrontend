@@ -6,7 +6,9 @@
  */
 import { z } from 'zod'
 import type { TemplateCategorySummary, TemplateFacets, TemplateSummary } from '#shared/types/templates'
-import { TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS, categoryOf, templateTheme, type TemplateDef } from '#shared/templates'
+import { TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS, categoryOf, templateTheme, translateContent, type TemplateDef } from '#shared/templates'
+import type { FormSchemaV1 } from '#shared/utils/forms/schema'
+import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok, paginate } from '../core/respond'
@@ -14,7 +16,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
 import { saveLibrary } from '../data/libraryStore'
-import { allTemplates, categoryName, findWorkspaceTemplate, templateDetail, workspaceKey, workspaceTemplates } from '../data/templateStore'
+import { allTemplates, categoryName, contentDict, findWorkspaceTemplate, templateDetail, workspaceKey, workspaceTemplates } from '../data/templateStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 
@@ -221,4 +223,23 @@ export const deleteTemplate = defineMockRoute(({ event }) => {
   saveLibrary()
   audit(event, tenant, user, 'forms.template_deleted', item)
   return ok({ deleted: true })
+})
+
+// ── Form text in another language (owner, 2026-10-04) ───────────────────────────────────
+const translateBody = z.object({
+  schema: z.record(z.string(), z.unknown()),
+  from: z.string().max(10),
+  to: z.string().max(10),
+})
+const known = (code: string) => (code === 'en' || APP_LOCALES.some(locale => locale.code === code) ? code : null)
+
+/** POST /templates/translate-content — a form's template text in another language (text written by people stays). */
+export const translateFormContent = defineMockRoute(({ event, body }) => {
+  requireAuth(event)
+  const input = parseBody(translateBody, body)
+  const from = known(input.from)
+  const to = known(input.to)
+  if (!from || !to) throw new MockError('FRM-GEN-1002', [{ field: 'to', message: 'Unknown language.' }])
+  const result = translateContent(input.schema as unknown as FormSchemaV1, contentDict(from), contentDict(to))
+  return ok({ schema: result.schema, translated: result.translated, kept: result.kept.length })
 })

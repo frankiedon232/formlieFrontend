@@ -62,6 +62,32 @@ export function schemaTexts(schema: FormSchemaV1): string[] {
   return [...found]
 }
 
+/**
+ * A form's text moved to another language (owner, 2026-10-04: changing a form's language left its
+ * questions in English). Works for every text that comes from the template dictionaries — in
+ * English, or already in the form's previous language (`from`). Text people wrote themselves has
+ * no translation here and stays as it is (`kept`); those are translated per language in M4.
+ * `to` / `from` null = English.
+ */
+export function translateContent(schema: FormSchemaV1, from: Dict | null, to: Dict | null): { schema: FormSchemaV1; translated: number; kept: string[] } {
+  const english = new Set(Object.keys(to ?? from ?? {}))
+  const back = new Map(Object.entries(from ?? {}).map(([source, text]) => [text, source]))
+  const copy = structuredClone(schema)
+  let translated = 0
+  const kept = new Set<string>()
+  walk(copy, text => {
+    const source = english.has(text) ? text : back.get(text)
+    const result = source === undefined ? undefined : to ? to[source] : source
+    if (result === undefined) {
+      if (/\p{L}/u.test(text)) kept.add(text)
+      return text
+    }
+    if (result !== text) translated++
+    return result
+  })
+  return { schema: copy, translated, kept: [...kept] }
+}
+
 /** A copy of the schema in another language; `language` is recorded in the form settings. */
 export function localiseSchema(schema: FormSchemaV1, dict: Dict | null, language: string): FormSchemaV1 {
   const copy = structuredClone(schema)

@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Idioma do formulário",
-      "hint": "Os respondentes veem o formulário neste idioma — incluindo botões, mensagens e datas. Mais idiomas por formulário chegarão com as páginas públicas de formulários."
+      "hint": "Os botões, mensagens e datas seguem este idioma. As perguntas são o texto que escreveu — traduza o texto do modelo com o botão abaixo.",
+      "offer": "Traduzir também o texto do formulário para {language}?",
+      "offerDesc": "As perguntas, opções, secções e o texto de agradecimento vindos de um modelo são traduzidos. O texto que escreveu fica como está. Anular repõe-no.",
+      "translate": "Traduzir",
+      "notNow": "Agora não",
+      "translateTo": "Traduzir o texto do formulário para {language}",
+      "translated": "{n} texto traduzido | {n} textos traduzidos",
+      "kept": "{n} texto escrito por si fica como está — edite-o no formulário. | {n} textos escritos por si ficam como estão — edite-os no formulário."
     },
     "template": {
       "title": "Modelo",
@@ -1936,6 +1943,11 @@
       "content": "Guia",
       "contentHint": "Títulos, listas e links ajudam as pessoas a encontrar rápido o que precisam.",
       "save": "Salvar guia"
+    },
+    "spam": {
+      "title": "Proteção contra spam",
+      "on": "Sempre ativa",
+      "desc": "Uma verificação invisível em segundo plano trava envios automáticos. Quem preenche não vê nada nem tem de clicar em nada."
     }
   },
   "renderer": {

@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Formuliertaal",
-      "hint": "Respondenten zien het formulier in deze taal — ook knoppen, meldingen en datums. Meer talen per formulier komen met de openbare formulierpagina's."
+      "hint": "Knoppen, meldingen en datums volgen deze taal. De vragen zijn de tekst die je zelf schreef — vertaal sjabloontekst met de knop hieronder.",
+      "offer": "De tekst van het formulier ook naar het {language} vertalen?",
+      "offerDesc": "Vragen, opties, secties en de bedanktekst uit een sjabloon worden vertaald. Tekst die je zelf schreef blijft zoals hij is. Ongedaan maken zet hem terug.",
+      "translate": "Vertalen",
+      "notNow": "Niet nu",
+      "translateTo": "Tekst van het formulier naar het {language} vertalen",
+      "translated": "{n} tekst vertaald | {n} teksten vertaald",
+      "kept": "{n} zelfgeschreven tekst blijft zoals hij is — pas hem aan in het formulier. | {n} zelfgeschreven teksten blijven zoals ze zijn — pas ze aan in het formulier."
     },
     "template": {
       "title": "Sjabloon",
@@ -1936,6 +1943,11 @@
       "content": "Handleiding",
       "contentHint": "Kopjes, lijsten en links helpen mensen snel te vinden wat ze zoeken.",
       "save": "Handleiding opslaan"
+    },
+    "spam": {
+      "title": "Spambeveiliging",
+      "on": "Altijd aan",
+      "desc": "Een onzichtbare controle op de achtergrond houdt automatische inzendingen tegen. Invullers zien niets en hoeven nergens op te klikken."
     }
   },
   "renderer": {

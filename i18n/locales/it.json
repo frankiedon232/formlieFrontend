@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Lingua del modulo",
-      "hint": "I rispondenti vedono il modulo in questa lingua, inclusi pulsanti, messaggi e date. Più lingue per modulo arriveranno con le pagine pubbliche dei moduli."
+      "hint": "Pulsanti, messaggi e date seguono questa lingua. Le domande sono il testo che hai scritto: traduci il testo del modello con il pulsante qui sotto.",
+      "offer": "Tradurre anche il testo del modulo in {language}?",
+      "offerDesc": "Domande, opzioni, sezioni e messaggio di ringraziamento provenienti da un modello vengono tradotti. Il testo scritto da te resta com’è. Annulla lo ripristina.",
+      "translate": "Traduci",
+      "notNow": "Non ora",
+      "translateTo": "Traduci il testo del modulo in {language}",
+      "translated": "{n} testo tradotto | {n} testi tradotti",
+      "kept": "{n} testo scritto da te resta com’è: modificalo nel modulo. | {n} testi scritti da te restano come sono: modificali nel modulo."
     },
     "template": {
       "title": "Modello",
@@ -1936,6 +1943,11 @@
       "content": "Guida",
       "contentHint": "Titoli, elenchi e link aiutano a trovare in fretta ciò che serve.",
       "save": "Salva la guida"
+    },
+    "spam": {
+      "title": "Protezione antispam",
+      "on": "Sempre attiva",
+      "desc": "Un controllo invisibile in background blocca gli invii automatici. Chi compila non vede nulla e non deve cliccare nulla."
     }
   },
   "renderer": {

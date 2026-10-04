@@ -4,7 +4,6 @@
   move / duplicate / delete.
 -->
 <script setup lang="ts">
-import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { FIELD_WIDTHS } from '#shared/utils/forms/fields'
 
 const { t } = useI18n()
@@ -30,16 +29,6 @@ function setLabelPosition(value: string | number) {
   if (!schema.value) return
   builder.history.record()
   schema.value.settings = { ...schema.value.settings, label_position: value === 'left' ? 'left' : 'top' }
-}
-/** The form's main language (decision 73): respondents get it unless the form offers theirs too. */
-const languageItems = computed(() =>
-  APP_LOCALES.map(item => ({ value: item.code, label: item.name, description: item.englishName, icon: item.flag })),
-)
-const languageFlag = computed(() => APP_LOCALES.find(item => item.code === (schema.value?.settings?.language ?? 'en'))?.flag)
-function setLanguage(value: string) {
-  if (!schema.value) return
-  builder.history.record()
-  schema.value.settings = { ...schema.value.settings, language: value }
 }
 function setSetting(key: 'progress_bar' | 'save_resume', value: boolean) {
   if (!schema.value) return
@@ -170,21 +159,7 @@ function setThankYou(key: 'title' | 'message', value: string) {
             />
           </UFormField>
         </section>
-        <section class="flex flex-col gap-3">
-          <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.language.title') }}</h3>
-          <UFormField :description="t('builder.language.hint')">
-            <USelectMenu
-              :model-value="schema.settings?.language ?? 'en'"
-              :items="languageItems"
-              value-key="value"
-              :search-input="{ placeholder: t('common.search') }"
-              :icon="languageFlag"
-              class="w-full"
-              :aria-label="t('builder.language.title')"
-              @update:model-value="v => setLanguage(String(v))"
-            />
-          </UFormField>
-        </section>
+        <FormsBuilderLanguageSetting />
         <section class="flex flex-col gap-3">
           <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.inspector.experience') }}</h3>
           <USwitch
@@ -203,6 +178,17 @@ function setThankYou(key: 'title' | 'message', value: string) {
           />
         </section>
         <FormsBuilderIdentitySetting />
+        <!-- Spam protection (decision 89): always on and invisible to respondents — shown so creators know. -->
+        <section class="flex flex-col gap-2">
+          <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.spam.title') }}</h3>
+          <div class="flex items-start gap-2 rounded-md border border-default bg-elevated/40 p-2.5">
+            <UIcon name="i-lucide-shield-check" class="mt-0.5 size-4 shrink-0 text-success" />
+            <div class="flex min-w-0 flex-col gap-0.5">
+              <span class="text-sm font-medium text-highlighted">{{ t('builder.spam.on') }}</span>
+              <span class="text-xs text-muted">{{ t('builder.spam.desc') }}</span>
+            </div>
+          </div>
+        </section>
         <FormsBuilderGuideSetting />
         <FormsBuilderTemplateSetting />
         <section class="flex flex-col gap-3">

@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { allFields } from '../../shared/utils/forms/build'
 import { calculateResult } from '../../shared/utils/forms/formula'
 import { APP_LOCALES } from '../../shared/utils/i18n/locales'
-import { SYSTEM_TEMPLATES, localiseSchema, schemaTexts, systemTemplate, templateSchema } from '../../shared/templates'
+import { SYSTEM_TEMPLATES, localiseSchema, schemaTexts, systemTemplate, templateSchema, translateContent } from '../../shared/templates'
 
 const english = [...new Set(SYSTEM_TEMPLATES.flatMap(def => schemaTexts(templateSchema(def))))]
 const dictOf = (code: string) => JSON.parse(readFileSync(join(process.cwd(), 'shared', 'templates', 'messages', `${code}.json`), 'utf8')) as Record<string, string>
@@ -40,5 +40,33 @@ describe('template content in every language', () => {
     expect(missing.slice(0, 5), `${missing.length} missing`).toEqual([])
     for (const text of english.filter(s => s.includes('<'))) expect(tags(dict[text]!), text).toBe(tags(text))
     for (const text of english) for (const ph of text.match(/\{[a-z_]+\}/g) ?? []) expect(dict[text], text).toContain(ph)
+  })
+})
+
+describe('translating a form to another language', () => {
+  const schema = () => templateSchema(systemTemplate('quote_request')!)
+
+  it('moves template text from English into the new language and back', () => {
+    const fr = dictOf('fr')
+    const de = dictOf('de')
+    const custom = schema()
+    custom.pages[0]!.title = 'Something I wrote myself'
+    const toFrench = translateContent(custom, null, fr)
+    expect(toFrench.translated).toBeGreaterThan(5)
+    expect(toFrench.kept).toContain('Something I wrote myself')
+    const name = allFields(toFrench.schema).find(f => f.key === 'name')!
+    expect(name.label).toBe(fr.Name)
+    // French → German goes through the English source text.
+    const toGerman = translateContent(toFrench.schema, fr, de)
+    expect(allFields(toGerman.schema).find(f => f.key === 'name')!.label).toBe(de.Name)
+    // … and back to English.
+    const back = translateContent(toGerman.schema, de, null)
+    expect(allFields(back.schema).find(f => f.key === 'name')!.label).toBe('Name')
+    expect(back.schema.logic).toEqual(custom.logic)
+  })
+
+  it('also handles English text on a form already marked as another language', () => {
+    const result = translateContent(schema(), dictOf('de'), dictOf('fr'))
+    expect(allFields(result.schema).find(f => f.key === 'name')!.label).toBe(dictOf('fr').Name)
   })
 })

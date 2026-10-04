@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Lugha ya fomu",
-      "hint": "Wajibuji wanaona fomu kwa lugha hii — pamoja na vitufe, ujumbe na tarehe. Lugha zaidi kwa kila fomu zitakuja pamoja na kurasa za fomu za umma."
+      "hint": "Vitufe, ujumbe na tarehe hufuata lugha hii. Maswali ni maandishi uliyoandika — tafsiri maandishi ya kiolezo kwa kitufe kilicho hapa chini.",
+      "offer": "Tafsiri pia maandishi ya fomu kwa {language}?",
+      "offerDesc": "Maswali, chaguo, sehemu na ujumbe wa shukrani uliotoka kwenye kiolezo vitatafsiriwa. Maandishi uliyoandika mwenyewe yanabaki kama yalivyo. Tendua huyarudisha.",
+      "translate": "Tafsiri",
+      "notNow": "Si sasa",
+      "translateTo": "Tafsiri maandishi ya fomu kwa {language}",
+      "translated": "Maandishi {n} yametafsiriwa | Maandishi {n} yametafsiriwa",
+      "kept": "Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu. | Maandishi {n} uliyoandika yanabaki kama yalivyo — yahariri kwenye fomu."
     },
     "template": {
       "title": "Kiolezo",
@@ -1936,6 +1943,11 @@
       "content": "Mwongozo",
       "contentHint": "Vichwa, orodha na viungo huwasaidia watu kupata wanachohitaji haraka.",
       "save": "Hifadhi mwongozo"
+    },
+    "spam": {
+      "title": "Ulinzi dhidi ya taka",
+      "on": "Huwashwa kila wakati",
+      "desc": "Ukaguzi usioonekana chinichini huzuia uwasilishaji wa kiotomatiki. Wanaojaza hawaoni chochote wala kubofya chochote."
     }
   },
   "renderer": {

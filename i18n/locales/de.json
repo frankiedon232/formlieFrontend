@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Formularsprache",
-      "hint": "Teilnehmende sehen das Formular in dieser Sprache — auch Schaltflächen, Meldungen und Datumsangaben. Mehrere Sprachen pro Formular kommen mit den öffentlichen Formularseiten."
+      "hint": "Schaltflächen, Meldungen und Datumsangaben folgen dieser Sprache. Die Fragen sind Ihr eigener Text – Vorlagentext übersetzen Sie mit der Schaltfläche unten.",
+      "offer": "Den Text des Formulars auch ins {language} übersetzen?",
+      "offerDesc": "Fragen, Optionen, Abschnitte und der Dankestext aus einer Vorlage werden übersetzt. Selbst geschriebener Text bleibt, wie er ist. Rückgängig stellt ihn wieder her.",
+      "translate": "Übersetzen",
+      "notNow": "Nicht jetzt",
+      "translateTo": "Text des Formulars ins {language} übersetzen",
+      "translated": "{n} Text übersetzt | {n} Texte übersetzt",
+      "kept": "{n} selbst geschriebener Text bleibt, wie er ist – bearbeiten Sie ihn im Formular. | {n} selbst geschriebene Texte bleiben, wie sie sind – bearbeiten Sie sie im Formular."
     },
     "template": {
       "title": "Vorlage",
@@ -1936,6 +1943,11 @@
       "content": "Anleitung",
       "contentHint": "Überschriften, Listen und Links helfen, das Gesuchte schnell zu finden.",
       "save": "Anleitung speichern"
+    },
+    "spam": {
+      "title": "Spamschutz",
+      "on": "Immer aktiv",
+      "desc": "Eine unsichtbare Prüfung im Hintergrund stoppt automatisierte Einsendungen. Ausfüllende sehen nichts und klicken nichts."
     }
   },
   "renderer": {

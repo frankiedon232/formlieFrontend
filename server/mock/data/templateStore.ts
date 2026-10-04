@@ -55,7 +55,7 @@ export function categoryName(lang: string, key: string): string {
 
 // ── Template content in the person's language (F9 milestone 5) ───────────────────────
 const contents = new Map<string, Record<string, string> | null>()
-function contentDict(code: string): Record<string, string> | null {
+export function contentDict(code: string): Record<string, string> | null {
   if (code === 'en') return null
   if (!contents.has(code)) {
     try {

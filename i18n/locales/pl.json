@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Język formularza",
-      "hint": "Respondenci widzą formularz w tym języku — również przyciski, komunikaty i daty. Więcej języków na formularz pojawi się wraz z publicznymi stronami formularzy."
+      "hint": "Przyciski, komunikaty i daty są w tym języku. Pytania to tekst, który napisano — tekst z szablonu przetłumaczysz przyciskiem poniżej.",
+      "offer": "Przetłumaczyć też tekst formularza na: {language}?",
+      "offerDesc": "Pytania, opcje, sekcje i podziękowanie pochodzące z szablonu zostaną przetłumaczone. Tekst napisany samodzielnie pozostanie bez zmian. Cofnij przywraca poprzedni.",
+      "translate": "Przetłumacz",
+      "notNow": "Nie teraz",
+      "translateTo": "Przetłumacz tekst formularza na: {language}",
+      "translated": "Przetłumaczono tekstów: {n} | Przetłumaczono tekstów: {n}",
+      "kept": "Samodzielnie napisane teksty ({n}) pozostają bez zmian — edytuj je w formularzu. | Samodzielnie napisane teksty ({n}) pozostają bez zmian — edytuj je w formularzu."
     },
     "template": {
       "title": "Szablon",
@@ -1936,6 +1943,11 @@
       "content": "Przewodnik",
       "contentHint": "Nagłówki, listy i linki pomagają szybko znaleźć potrzebne informacje.",
       "save": "Zapisz przewodnik"
+    },
+    "spam": {
+      "title": "Ochrona przed spamem",
+      "on": "Zawsze włączona",
+      "desc": "Niewidoczna kontrola w tle zatrzymuje automatyczne zgłoszenia. Wypełniający niczego nie widzą i niczego nie klikają."
     }
   },
   "renderer": {

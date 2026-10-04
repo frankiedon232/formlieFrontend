@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Form language",
-      "hint": "Respondents see the form in this language — buttons, messages and dates too. More languages per form come with the public form pages."
+      "hint": "Buttons, messages and dates follow this language. The questions are the text you wrote — translate template text with the button below.",
+      "offer": "Translate the form’s text into {language} too?",
+      "offerDesc": "Questions, options, sections and the thank-you text that came from a template are translated. Text you wrote yourself stays as it is. Undo brings it back.",
+      "translate": "Translate",
+      "notNow": "Not now",
+      "translateTo": "Translate the form’s text into {language}",
+      "translated": "{n} text translated | {n} texts translated",
+      "kept": "{n} text you wrote stays as it is — edit it in the form. | {n} texts you wrote stay as they are — edit them in the form."
     },
     "template": {
       "title": "Template",
@@ -1936,6 +1943,11 @@
       "content": "Guide",
       "contentHint": "Headings, lists and links help people find what they need quickly.",
       "save": "Save guide"
+    },
+    "spam": {
+      "title": "Spam protection",
+      "on": "Always on",
+      "desc": "An invisible check in the background stops automated submissions. People filling in see nothing and click nothing."
     }
   },
   "renderer": {

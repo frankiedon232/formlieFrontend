@@ -1894,7 +1894,14 @@
     },
     "language": {
       "title": "Form dili",
-      "hint": "Yanıtlayanlar formu bu dilde görür — düğmeler, mesajlar ve tarihler de dahil. Form başına birden fazla dil, herkese açık form sayfalarıyla birlikte gelecek."
+      "hint": "Düğmeler, mesajlar ve tarihler bu dili izler. Sorular sizin yazdığınız metindir — şablon metnini aşağıdaki düğmeyle çevirin.",
+      "offer": "Formun metni de {language} diline çevrilsin mi?",
+      "offerDesc": "Şablondan gelen sorular, seçenekler, bölümler ve teşekkür metni çevrilir. Kendi yazdığınız metin olduğu gibi kalır. Geri al ile eski hâline döner.",
+      "translate": "Çevir",
+      "notNow": "Şimdi değil",
+      "translateTo": "Formun metnini {language} diline çevir",
+      "translated": "{n} metin çevrildi | {n} metin çevrildi",
+      "kept": "Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin. | Yazdığınız {n} metin olduğu gibi kalıyor — formda düzenleyin."
     },
     "template": {
       "title": "Şablon",
@@ -1936,6 +1943,11 @@
       "content": "Kılavuz",
       "contentHint": "Başlıklar, listeler ve bağlantılar, aranan bilgiyi hızla bulmaya yardımcı olur.",
       "save": "Kılavuzu kaydet"
+    },
+    "spam": {
+      "title": "Spam koruması",
+      "on": "Her zaman açık",
+      "desc": "Arka planda görünmez bir kontrol otomatik gönderimleri durdurur. Formu dolduranlar hiçbir şey görmez ve tıklamaz."
     }
   },
   "renderer": {

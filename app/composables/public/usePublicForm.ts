@@ -75,12 +75,15 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
   const receiptKey = `formalie:sent:${key}`
   let memoryId: string | undefined
 
-  const alreadySent = ref(false)
+  // The receipt is also a cookie, so the server-rendered page already says "you've filled this in"
+  // (no flash of the form first). SameSite=None: embeds run inside other websites.
+  const receipt = useCookie<string | null>(`formalie_sent_${key}`, { maxAge: 60 * 60 * 24 * 365, sameSite: 'none', secure: true, path: '/' })
+  const alreadySent = ref(!!receipt.value)
   onMounted(() => {
     try {
-      alreadySent.value = !!localStorage.getItem(receiptKey)
+      alreadySent.value ||= !!localStorage.getItem(receiptKey)
     } catch {
-      alreadySent.value = false
+      // The cookie (if any) already decided.
     }
     prepareProof()
   })
@@ -166,6 +169,7 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
       forSomeoneElse.value = false
       confirmedDifferent.value = false
       verificationToken.value = null
+      receipt.value = new Date().toISOString()
       try {
         localStorage.setItem(receiptKey, new Date().toISOString())
       } catch {

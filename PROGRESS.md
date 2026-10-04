@@ -471,6 +471,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ **In-app browser** (owner, 2026-10-03, decision 83): website, Terms and Data Privacy Policy open in a branded window over the form; answers stay
 - ✅ **Page frame** (owner, 2026-10-03, decision 82): Designer → Page with four styles — Branded · Spotlight · Side panel · Minimal — tone, website link, quick facts; shown on the public link, the designer and Preview (not in embeds)
 - ⬜ Preview page with device frames
+- ✅ **Translate the form’s text** when its language changes (owner, 2026-10-04, decision 91): template text in all 20 languages, the creator’s own text kept (count shown), undoable
 - ⬜ **Form languages** (owner, 2026-10-03, see 03-DECISIONS → 73): the form opens in the respondent's browser language when the form offers it, otherwise its main language; `?lang=xx` forces one (shareable per-language links, embeds and QR codes); a language switcher when a form has several; translated questions / options / help / messages per language; the language is saved with each response; buttons, messages, dates, numbers and right-to-left follow it
 - ✅ **Embed code** (decision 90): the Share card offers the ready `<iframe>` code — auto height (recommended) or fixed height — instead of a bare embed address; embed pages can be framed by other websites
 
@@ -981,6 +982,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | Save and resume: how and where it works — built (autosave + "Save and continue later" link) | F10 M2 | ✅ |
 | 2026-10-03 | Portal text still looked faded: dark-mode headline colour fixed, body text darker, list values in the main text colour like the design image | F1 follow-up | ✅ |
 | 2026-10-03 | Public form page: branded frame around the form — workspace branding, link to the organisation's website, several page designs to choose from; polished and lively without distracting from the form | F10 (M1b) | ✅ |
+| 2026-10-04 | French form: labels, sections, help and thank-you stayed English; "already filled in" showed only after the form flashed for seconds; spam check not visible anywhere | F10 | ✅ |
 
 ---
 
@@ -1055,3 +1057,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-03 | F10 | Milestone 1: public form pages `/{key}/fill` and `/embed` (server-rendered, SEO tags, canonical, 404 for unknown keys, noindex for embeds / closed forms), `forms.*` host, `public_key` per form, secure server-side fetch (server-only token), states (not found · not published · closed · error), submit through the encrypted API with one response per fill-in session (Idempotency-Key, verified: a retry stores nothing new), server re-checks answers and recomputes calculations (`shared/utils/forms/submission.ts`), thank-you or redirect, page language without touching the portal cookie, embed height messages; audit "Response received". Text colours one step sharper everywhere (owner). |
 | 2026-10-04 | F10 | M2: file uploads on public forms — files go straight to storage with progress on each thumbnail, Next / Submit wait for them, answers keep encrypted references (also in Save and resume drafts); server checks type, size, real pictures, no programs, same form / question, one response per file; respondent files never public. Form.vue split (ResumeBar, Upload). |
 | 2026-10-04 | F10 | M2 done: spam protection without a captcha (invisible proof-of-work, hidden trap, submission limits) and the Embed code window on the Share card (auto / fixed height, resize script limited to the form address); embed pages can now be shown on other websites (frame headers, SameSite=None device cookie). |
+| 2026-10-04 | F10 | Owner test fixes: "Translate the form’s text" when the form language changes (template text, 20 languages, own text kept); "already filled in" rendered by the server from a receipt cookie (no flash); Form settings shows "Spam protection — always on". |
