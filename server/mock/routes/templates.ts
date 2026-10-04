@@ -5,7 +5,7 @@
  * Every change is in the audit trail.
  */
 import { z } from 'zod'
-import type { TemplateCategorySummary, TemplateFacets, TemplateSummary } from '#shared/types/templates'
+import type { TemplateCategorySummary, TemplateFacets, TemplateInsights, TemplateSummary } from '#shared/types/templates'
 import { TEMPLATE_CATEGORIES, TEMPLATE_CATEGORY_KEYS, categoryOf, templateTheme, translateContent, type TemplateDef } from '#shared/templates'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
@@ -103,6 +103,41 @@ export const listTemplateCategories = defineMockRoute(({ event, query }) => {
     (row, q) => row.name.toLowerCase().includes(q) || row.examples.some(name => name.toLowerCase().includes(q)),
   )
   return ok(data, meta)
+})
+
+const DAY = 86_400_000
+/** GET /templates/insights, forms made from templates over time and use per category. */
+export const templateInsights = defineMockRoute(({ event, query }) => {
+  const { tenant } = requireAuth(event)
+  const day = (value: unknown, fallback: number) => (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? Date.parse(value) : fallback)
+  const today = Date.parse(new Date().toISOString().slice(0, 10))
+  const to = day(query.to, today)
+  const from = Math.min(to, day(query.from, to - 29 * DAY))
+  const days = Math.round((to - from) / DAY) + 1
+  const daily = Array.from({ length: days }, (_, index) => ({ date: new Date(from + index * DAY).toISOString().slice(0, 10), count: 0 }))
+  const items = allTemplates(tenant, 'en')
+  const categoryOfKey = new Map(items.map(item => [item.key, item.category]))
+  const byCategory = new Map<string, number>()
+  let total = 0
+  let previous = 0
+  for (const form of formsOf(tenant).forms) {
+    if (form.deleted_at || !form.template_key) continue
+    total++
+    const category = categoryOfKey.get(form.template_key)
+    if (category) byCategory.set(category, (byCategory.get(category) ?? 0) + 1)
+    const at = Date.parse(form.created_at.slice(0, 10))
+    if (at >= from && at <= to) daily[Math.round((at - from) / DAY)]!.count++
+    else if (at < from && at >= from - days * DAY) previous++
+  }
+  const insights: TemplateInsights = {
+    period: { from: daily[0]!.date, to: daily.at(-1)!.date, count: daily.reduce((sum, item) => sum + item.count, 0), previous },
+    daily,
+    forms_total: total,
+    system_count: items.filter(item => item.source === 'system').length,
+    workspace_count: items.filter(item => item.source === 'workspace').length,
+    categories: [...byCategory].map(([key, forms]) => ({ key, forms })).sort((a, b) => b.forms - a.forms),
+  }
+  return ok(insights)
 })
 
 /** GET /templates/facets, counts per category for the filter. */

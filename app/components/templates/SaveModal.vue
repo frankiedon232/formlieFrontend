@@ -17,7 +17,11 @@ const schema = z.object({
   description: z.string().trim().max(300),
   category: z.enum(TEMPLATE_CATEGORY_KEYS),
 })
-const state = reactive<{ name: string; description: string; category: (typeof TEMPLATE_CATEGORY_KEYS)[number] }>({
+const state = reactive<{
+  name: string
+  description: string
+  category: (typeof TEMPLATE_CATEGORY_KEYS)[number]
+}>({
   name: '',
   description: '',
   category: 'business',
@@ -45,14 +49,36 @@ async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
 </script>
 
 <template>
-  <AppModal v-model:open="open" :title="t('templates.saveTitle')" :description="t('templates.saveDesc')" :dismissible="!busy">
+  <AppModal
+    v-model:open="open"
+    :title="t('templates.saveTitle')"
+    :description="t('templates.saveDesc')"
+    :dismissible="!busy"
+  >
     <template #body>
-      <UForm id="save-template-form" :schema="schema" :state="state" class="flex flex-col gap-4" @submit="submit">
+      <UForm
+        id="save-template-form"
+        :schema="schema"
+        :state="state"
+        class="flex flex-col gap-4"
+        @submit="submit"
+      >
         <UFormField name="name" :label="t('templates.col.name')" required>
           <UInput v-model="state.name" maxlength="80" class="w-full" autofocus />
         </UFormField>
-        <UFormField name="description" :label="t('templates.description')" :hint="`${state.description.length}/300`">
-          <UTextarea v-model="state.description" :rows="2" autoresize maxlength="300" class="w-full" :placeholder="t('templates.descriptionPlaceholder')" />
+        <UFormField
+          name="description"
+          :label="t('templates.description')"
+          :hint="`${state.description.length}/300`"
+        >
+          <UTextarea
+            v-model="state.description"
+            :rows="2"
+            autoresize
+            maxlength="300"
+            class="w-full"
+            :placeholder="t('templates.descriptionPlaceholder')"
+          />
         </UFormField>
         <UFormField name="category" :label="t('templates.col.category')" required>
           <USelectMenu v-model="state.category" :items="categories" value-key="value" class="w-full" />
@@ -61,8 +87,21 @@ async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
     </template>
     <template #footer>
       <div class="flex w-full justify-end gap-2">
-        <UButton :label="t('common.cancel')" color="neutral" variant="outline" :disabled="busy" @click="open = false" />
-        <UButton type="submit" form="save-template-form" :label="t('templates.saveButton')" icon="i-lucide-layout-template" color="neutral" :loading="busy" />
+        <UButton
+          :label="t('common.cancel')"
+          color="neutral"
+          variant="outline"
+          :disabled="busy"
+          @click="open = false"
+        />
+        <UButton
+          type="submit"
+          form="save-template-form"
+          :label="t('templates.saveButton')"
+          icon="i-lucide-layout-template"
+          color="neutral"
+          :loading="busy"
+        />
       </div>
     </template>
   </AppModal>

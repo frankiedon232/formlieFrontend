@@ -1,5 +1,5 @@
 import type { FormSummary } from '#shared/types/forms'
-import type { TemplateCategorySummary, TemplateDetail, TemplateFacets, TemplateSummary } from '#shared/types/templates'
+import type { TemplateCategorySummary, TemplateDetail, TemplateFacets, TemplateInsights, TemplateSummary } from '#shared/types/templates'
 
 /**
  * Templates (F9): gallery data, "Use template" (new form → builder), duplicate, delete, save a
@@ -116,4 +116,24 @@ export function useTemplates() {
   }
 
   return { list, categories, facets, fromForm, syncFromForm, get, use, duplicate, remove, saveFromForm, update }
+}
+
+/**
+ * The numbers behind the template pages' two top cards (last 30 days), loaded in the background on
+ * mount; `refresh` after a template is used, duplicated or deleted.
+ */
+export function useTemplateInsights() {
+  const api = useApi()
+  const insights = ref<TemplateInsights | null>(null)
+  async function refresh() {
+    try {
+      const to = new Date().toISOString().slice(0, 10)
+      const from = new Date(Date.now() - 29 * 86_400_000).toISOString().slice(0, 10)
+      insights.value = (await api.get<TemplateInsights>('/templates/insights', { from, to }, { background: true })).data
+    } catch {
+      // The cards keep their skeletons; the list reports its own errors.
+    }
+  }
+  onMounted(refresh)
+  return { insights, refresh }
 }

@@ -1524,6 +1524,21 @@
       "emptyDesc": "Open een formulier en kies ‘Opslaan als sjabloon’, of dupliceer een sjabloon van Formalie om het aan te passen.",
       "openForms": "Formulieren openen",
       "browse": "Formalie-sjablonen bekijken"
+    },
+    "overview": {
+      "formsFrom": "Formulieren uit sjablonen",
+      "system": "Formalie-sjablonen",
+      "mine": "Uw sjablonen",
+      "allTime": "Totaal",
+      "byCategory": "Gebruik per categorie",
+      "other": "Overig",
+      "formsCount": "{n} formulieren uit sjablonen",
+      "noUse": "Nog geen formulieren uit sjablonen"
+    },
+    "card": {
+      "used": "Gebruikt {when}",
+      "pages": "Pagina’s",
+      "share": "Aandeel in gebruik"
     }
   },
   "builder": {
@@ -2785,7 +2800,25 @@
     "categoryDesign": "Ontwerp {name}",
     "previewName": "Volledige naam",
     "previewEmail": "E-mail",
-    "previewMessage": "Bericht"
+    "previewMessage": "Bericht",
+    "overview": {
+      "use": "Themagebruik",
+      "styledHint": "Formulieren met een thema uit de bibliotheek",
+      "themes": "Thema’s",
+      "inUse": "In gebruik",
+      "unused": "Niet gebruikt",
+      "ofForms": "van {n} formulieren",
+      "top": "Meest gebruikte thema’s",
+      "noUse": "Nog geen formulier gebruikt een thema uit de bibliotheek",
+      "byKind": "Thema’s per soort",
+      "inUseNow": "{n} in gebruik"
+    },
+    "card": {
+      "changed": "Gewijzigd {when}",
+      "created": "Gemaakt",
+      "share": "Aandeel formulieren",
+      "colours": "Themakleuren"
+    }
   },
   "dataSources": {
     "subtitle": "Koppel uw eigen databases, stuur formuliergegevens ernaartoe en werk ermee",

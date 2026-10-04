@@ -15,7 +15,10 @@ const api = useApi()
 const templates = useTemplates()
 
 const NONE = '__none__'
-const schema = z.object({ name: z.string().trim().min(1, t('templates.nameRequired')).max(120), folder: z.string() })
+const schema = z.object({
+  name: z.string().trim().min(1, t('templates.nameRequired')).max(120),
+  folder: z.string(),
+})
 const state = reactive({ name: '', folder: NONE })
 const folders = ref<FormFolder[]>([])
 const foldersLoading = ref(false)
@@ -42,16 +45,30 @@ const { busy, run } = useBusy()
 async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
   if (!props.template) return
   const created = await run(() =>
-    templates.use(props.template!, { name: event.data.name, folder_id: event.data.folder === NONE ? null : event.data.folder }),
+    templates.use(props.template!, {
+      name: event.data.name,
+      folder_id: event.data.folder === NONE ? null : event.data.folder,
+    }),
   )
   if (created) open.value = false
 }
 </script>
 
 <template>
-  <AppModal v-model:open="open" :title="t('templates.useTitle')" :description="t('templates.useDesc')" :dismissible="!busy">
+  <AppModal
+    v-model:open="open"
+    :title="t('templates.useTitle')"
+    :description="t('templates.useDesc')"
+    :dismissible="!busy"
+  >
     <template #body>
-      <UForm id="use-template-form" :schema="schema" :state="state" class="flex flex-col gap-4" @submit="submit">
+      <UForm
+        id="use-template-form"
+        :schema="schema"
+        :state="state"
+        class="flex flex-col gap-4"
+        @submit="submit"
+      >
         <UFormField name="name" :label="t('forms.new.name')" required>
           <UInput v-model="state.name" maxlength="120" class="w-full" autofocus />
         </UFormField>
@@ -72,8 +89,21 @@ async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
     </template>
     <template #footer>
       <div class="flex w-full justify-end gap-2">
-        <UButton :label="t('common.cancel')" color="neutral" variant="outline" :disabled="busy" @click="open = false" />
-        <UButton type="submit" form="use-template-form" :label="t('templates.use')" icon="i-lucide-file-plus" color="neutral" :loading="busy" />
+        <UButton
+          :label="t('common.cancel')"
+          color="neutral"
+          variant="outline"
+          :disabled="busy"
+          @click="open = false"
+        />
+        <UButton
+          type="submit"
+          form="use-template-form"
+          :label="t('templates.use')"
+          icon="i-lucide-file-plus"
+          color="neutral"
+          :loading="busy"
+        />
       </div>
     </template>
   </AppModal>

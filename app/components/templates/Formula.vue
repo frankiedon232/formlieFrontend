@@ -6,19 +6,29 @@
 <script setup lang="ts">
 import { FORMULA_FUNCTIONS } from '#shared/utils/forms/formula'
 
-const props = defineProps<{ label: string; formula: string; internal?: boolean; fields?: Record<string, string> }>()
+const props = defineProps<{
+  label: string
+  formula: string
+  internal?: boolean
+  fields?: Record<string, string>
+}>()
 const { t } = useI18n()
 const { copy, copied } = useClipboard({ legacy: true, copiedDuring: 1500 })
 
 type Kind = 'field' | 'fn' | 'text' | 'num' | 'op' | 'plain'
 const tokens = computed(() => {
   const out: { kind: Kind; text: string; title?: string }[] = []
-  const re = /(\{[a-z][a-z0-9_]*\})|("[^"]*")|(\d+(?:\.\d+)?)|([a-z_]+)(?=\()|([+\-*/=<>!]+|[(),])|(\s+)|(.)/gi
+  const re =
+    /(\{[a-z][a-z0-9_]*\})|("[^"]*")|(\d+(?:\.\d+)?)|([a-z_]+)(?=\()|([+\-*/=<>!]+|[(),])|(\s+)|(.)/gi
   for (const m of props.formula.matchAll(re)) {
     if (m[1]) out.push({ kind: 'field', text: m[1], title: props.fields?.[m[1].slice(1, -1)] })
     else if (m[2]) out.push({ kind: 'text', text: m[2] })
     else if (m[3]) out.push({ kind: 'num', text: m[3] })
-    else if (m[4]) out.push({ kind: (FORMULA_FUNCTIONS as readonly string[]).includes(m[4].toLowerCase()) ? 'fn' : 'plain', text: m[4] })
+    else if (m[4])
+      out.push({
+        kind: (FORMULA_FUNCTIONS as readonly string[]).includes(m[4].toLowerCase()) ? 'fn' : 'plain',
+        text: m[4],
+      })
     else if (m[5]) out.push({ kind: 'op', text: m[5] })
     else out.push({ kind: 'plain', text: m[0] })
   }
@@ -40,7 +50,13 @@ const COLOUR: Record<Kind, string> = {
       <UIcon name="i-lucide-calculator" class="size-3.5 shrink-0 text-muted" />
       <span class="min-w-0 flex-1 truncate text-xs font-medium text-highlighted">{{ label }}</span>
       <UTooltip v-if="internal" :text="t('templates.teamOnlyHint')">
-        <UBadge :label="t('templates.teamOnly')" icon="i-lucide-eye-off" color="neutral" variant="soft" size="sm" />
+        <UBadge
+          :label="t('templates.teamOnly')"
+          icon="i-lucide-eye-off"
+          color="neutral"
+          variant="soft"
+          size="sm"
+        />
       </UTooltip>
       <UButton
         :icon="copied ? 'i-lucide-check' : 'i-lucide-copy'"
@@ -52,7 +68,9 @@ const COLOUR: Record<Kind, string> = {
         @click="copy(formula)"
       />
     </figcaption>
-    <pre class="overflow-x-auto bg-default px-3 py-2 font-mono text-xs leading-relaxed whitespace-pre-wrap"><code><span
+    <pre
+      class="overflow-x-auto bg-default px-3 py-2 font-mono text-xs leading-relaxed whitespace-pre-wrap"
+    ><code><span
       v-for="(token, index) in tokens"
       :key="index"
       :class="COLOUR[token.kind]"

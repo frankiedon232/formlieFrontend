@@ -1524,6 +1524,21 @@
       "emptyDesc": "Fungua fomu na uchague “Hifadhi kama kiolezo”, au nakili kiolezo cha Formalie ili kukibadilisha.",
       "openForms": "Fungua fomu",
       "browse": "Vinjari violezo vya Formalie"
+    },
+    "overview": {
+      "formsFrom": "Fomu kutoka violezo",
+      "system": "Violezo vya Formalie",
+      "mine": "Violezo vyako",
+      "allTime": "Jumla",
+      "byCategory": "Matumizi kwa aina",
+      "other": "Nyingine",
+      "formsCount": "Fomu {n} kutoka violezo",
+      "noUse": "Bado hakuna fomu iliyotengenezwa kutoka kiolezo"
+    },
+    "card": {
+      "used": "Imetumika {when}",
+      "pages": "Kurasa",
+      "share": "Sehemu ya matumizi"
     }
   },
   "builder": {
@@ -2785,7 +2800,25 @@
     "categoryDesign": "Muundo wa {name}",
     "previewName": "Jina kamili",
     "previewEmail": "Barua pepe",
-    "previewMessage": "Ujumbe"
+    "previewMessage": "Ujumbe",
+    "overview": {
+      "use": "Matumizi ya mandhari",
+      "styledHint": "Fomu zenye mandhari ya maktaba",
+      "themes": "Mandhari",
+      "inUse": "Zinatumika",
+      "unused": "Hazitumiki",
+      "ofForms": "kati ya fomu {n}",
+      "top": "Mandhari zinazotumika zaidi",
+      "noUse": "Bado hakuna fomu inayotumia mandhari ya maktaba",
+      "byKind": "Mandhari kwa aina",
+      "inUseNow": "{n} zinatumika"
+    },
+    "card": {
+      "changed": "Imebadilishwa {when}",
+      "created": "Imeundwa",
+      "share": "Sehemu ya fomu",
+      "colours": "Rangi za mandhari"
+    }
   },
   "dataSources": {
     "subtitle": "Unganisha hifadhidata zako mwenyewe, tuma data ya fomu kwazo na uifanyie kazi",

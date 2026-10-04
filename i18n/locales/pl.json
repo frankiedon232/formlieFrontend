@@ -1524,6 +1524,21 @@
       "emptyDesc": "Otwórz formularz i wybierz „Zapisz jako szablon” albo zduplikuj szablon Formalie, aby go zmienić.",
       "openForms": "Otwórz formularze",
       "browse": "Przeglądaj szablony Formalie"
+    },
+    "overview": {
+      "formsFrom": "Formularze z szablonów",
+      "system": "Szablony Formalie",
+      "mine": "Twoje szablony",
+      "allTime": "Łącznie",
+      "byCategory": "Użycie według kategorii",
+      "other": "Inne",
+      "formsCount": "Formularze z szablonów: {n}",
+      "noUse": "Nie ma jeszcze formularzy z szablonów"
+    },
+    "card": {
+      "used": "Użyty {when}",
+      "pages": "Strony",
+      "share": "Udział w użyciu"
     }
   },
   "builder": {
@@ -2785,7 +2800,25 @@
     "categoryDesign": "Wygląd: {name}",
     "previewName": "Imię i nazwisko",
     "previewEmail": "E-mail",
-    "previewMessage": "Wiadomość"
+    "previewMessage": "Wiadomość",
+    "overview": {
+      "use": "Użycie motywów",
+      "styledHint": "Formularze z motywem z biblioteki",
+      "themes": "Motywy",
+      "inUse": "W użyciu",
+      "unused": "Nieużywane",
+      "ofForms": "z {n} formularzy",
+      "top": "Najczęściej używane motywy",
+      "noUse": "Żaden formularz nie używa jeszcze motywu z biblioteki",
+      "byKind": "Motywy według rodzaju",
+      "inUseNow": "W użyciu: {n}"
+    },
+    "card": {
+      "changed": "Zmieniono {when}",
+      "created": "Utworzono",
+      "share": "Udział formularzy",
+      "colours": "Kolory motywu"
+    }
   },
   "dataSources": {
     "subtitle": "Połącz własne bazy danych, wysyłaj do nich dane z formularzy i pracuj z nimi",

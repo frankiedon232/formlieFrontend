@@ -1524,6 +1524,21 @@
       "emptyDesc": "Open a form and choose “Save as template”, or duplicate one of Formalie’s templates to change it.",
       "openForms": "Open forms",
       "browse": "Browse Formalie templates"
+    },
+    "overview": {
+      "formsFrom": "Forms from templates",
+      "system": "Formalie templates",
+      "mine": "Your templates",
+      "allTime": "All time",
+      "byCategory": "Use by category",
+      "other": "Other",
+      "formsCount": "{n} forms from templates",
+      "noUse": "No forms made from templates yet"
+    },
+    "card": {
+      "used": "Used {when}",
+      "pages": "Pages",
+      "share": "Share of use"
     }
   },
   "builder": {
@@ -2785,7 +2800,25 @@
       "systemDesc": "Formalie design (read-only)"
     },
     "view": "View",
-    "open": "Open {name}"
+    "open": "Open {name}",
+    "overview": {
+      "use": "Theme use",
+      "styledHint": "Forms styled with a library theme",
+      "themes": "Themes",
+      "inUse": "In use",
+      "unused": "Not used",
+      "ofForms": "of {n} forms",
+      "top": "Most used themes",
+      "noUse": "No form uses a library theme yet",
+      "byKind": "Themes by kind",
+      "inUseNow": "{n} in use"
+    },
+    "card": {
+      "changed": "Changed {when}",
+      "created": "Created",
+      "share": "Share of forms",
+      "colours": "Theme colours"
+    }
   },
   "dataSources": {
     "subtitle": "Connect your own databases, send form data to them and work with it",

@@ -44,6 +44,21 @@ export interface TemplateDetail extends TemplateSummary {
   calculations: TemplateCalculation[]
 }
 
+/**
+ * GET /templates/insights?from=&to=, the two top cards of the template pages (locked list format,
+ * owner 2026-10-04): forms made from templates in the period (and the one before), per day, all
+ * time, how many templates there are, and use per category (most used first).
+ */
+export interface TemplateInsights {
+  period: { from: string; to: string; count: number; previous: number }
+  daily: { date: string; count: number }[]
+  /** Forms made from any template, not in Trash. */
+  forms_total: number
+  system_count: number
+  workspace_count: number
+  categories: { key: string; forms: number }[]
+}
+
 /** GET /templates/facets, counts for the category filter (system + workspace). */
 export interface TemplateFacets {
   total: number

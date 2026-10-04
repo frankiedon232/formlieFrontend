@@ -40,26 +40,45 @@ async function duplicate() {
   const copy = await run(() => templates.duplicate(template.value!))
   if (copy) await navigateTo(`/templates/${copy.key}`)
 }
-
 </script>
 
 <template>
   <AppPanel
     id="template"
     :title="template?.name ?? t('nav.templates')"
-    :subtitle="template ? `${t(`templates.categories.${template.category}`)} · ${t('templates.minutes', { n: template.minutes })}` : undefined"
+    :subtitle="
+      template
+        ? `${t(`templates.categories.${template.category}`)} · ${t('templates.minutes', { n: template.minutes })}`
+        : undefined
+    "
     :subtitle-icon="template?.icon"
   >
     <template v-if="template" #actions>
       <UButton
-        :label="template.source === 'workspace' ? t('nav.templatesMine') : t(`templates.categories.${template.category}`)"
+        :label="
+          template.source === 'workspace'
+            ? t('nav.templatesMine')
+            : t(`templates.categories.${template.category}`)
+        "
         :icon="template.source === 'workspace' ? 'i-lucide-bookmark' : 'i-lucide-shapes'"
         color="neutral"
         variant="ghost"
         :to="template.source === 'workspace' ? '/templates/mine' : `/templates/category/${template.category}`"
       />
-      <UButton :label="t('templates.duplicate')" icon="i-lucide-copy" color="neutral" variant="outline" :loading="duplicating" @click="duplicate" />
-      <UButton :label="t('templates.use')" icon="i-lucide-file-plus" color="neutral" @click="useOpen = true" />
+      <UButton
+        :label="t('templates.duplicate')"
+        icon="i-lucide-copy"
+        color="neutral"
+        variant="outline"
+        :loading="duplicating"
+        @click="duplicate"
+      />
+      <UButton
+        :label="t('templates.use')"
+        icon="i-lucide-file-plus"
+        color="neutral"
+        @click="useOpen = true"
+      />
     </template>
 
     <!-- Loading: mirrors preview + side panel -->
@@ -76,7 +95,15 @@ async function duplicate() {
       icon="i-lucide-layout-template"
       :title="t('templates.notFound')"
       :description="t('templates.notFoundDesc')"
-      :actions="[{ label: t('templates.backToGallery'), icon: 'i-lucide-arrow-left', to: '/templates', color: 'neutral', variant: 'subtle' }]"
+      :actions="[
+        {
+          label: t('templates.backToGallery'),
+          icon: 'i-lucide-arrow-left',
+          to: '/templates',
+          color: 'neutral',
+          variant: 'subtle',
+        },
+      ]"
       class="my-auto"
     />
 
@@ -86,7 +113,6 @@ async function duplicate() {
         <TemplatesPreview :schema="template.schema" :title="template.name" />
         <TemplatesIncluded :template="template" @use="useOpen = true" />
       </div>
-
 
       <TemplatesUseModal v-model:open="useOpen" :template="template" />
     </template>

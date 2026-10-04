@@ -1524,6 +1524,21 @@
       "emptyDesc": "Ouvrez un formulaire et choisissez « Enregistrer comme modèle », ou dupliquez un modèle Formalie pour le modifier.",
       "openForms": "Ouvrir les formulaires",
       "browse": "Parcourir les modèles Formalie"
+    },
+    "overview": {
+      "formsFrom": "Formulaires issus de modèles",
+      "system": "Modèles Formalie",
+      "mine": "Vos modèles",
+      "allTime": "Au total",
+      "byCategory": "Utilisation par catégorie",
+      "other": "Autres",
+      "formsCount": "{n} formulaires issus de modèles",
+      "noUse": "Aucun formulaire créé à partir d’un modèle pour l’instant"
+    },
+    "card": {
+      "used": "Utilisé {when}",
+      "pages": "Pages",
+      "share": "Part d’utilisation"
     }
   },
   "builder": {
@@ -2785,7 +2800,25 @@
     "categoryDesign": "Design {name}",
     "previewName": "Nom complet",
     "previewEmail": "E-mail",
-    "previewMessage": "Message"
+    "previewMessage": "Message",
+    "overview": {
+      "use": "Utilisation des thèmes",
+      "styledHint": "Formulaires avec un thème de la bibliothèque",
+      "themes": "Thèmes",
+      "inUse": "Utilisés",
+      "unused": "Inutilisés",
+      "ofForms": "sur {n} formulaires",
+      "top": "Thèmes les plus utilisés",
+      "noUse": "Aucun formulaire n’utilise encore un thème de la bibliothèque",
+      "byKind": "Thèmes par type",
+      "inUseNow": "{n} utilisés"
+    },
+    "card": {
+      "changed": "Modifié {when}",
+      "created": "Créé",
+      "share": "Part des formulaires",
+      "colours": "Couleurs du thème"
+    }
   },
   "dataSources": {
     "subtitle": "Connectez vos propres bases de données, envoyez-y les données de vos formulaires et exploitez-les",

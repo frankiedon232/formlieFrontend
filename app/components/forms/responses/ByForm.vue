@@ -14,7 +14,7 @@ import { RESPONSE_STATUSES, type ResponseFormRow, type ResponseStatus } from '#s
 const { t } = useI18n()
 const api = useApi()
 const route = useRoute()
-const { relative, dateTime, number, percent } = useFormat()
+const { relative, dateTime, number } = useFormat()
 
 const folders = ref<FormFolder[]>([])
 onMounted(async () => {
@@ -106,10 +106,7 @@ const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.st
       <span class="tabular-nums">{{ number(row.original.total) }}</span>
     </template>
     <template #reviewed-cell="{ row }">
-      <div class="flex min-w-32 items-center gap-2">
-        <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-elevated"><div class="h-full rounded-full bg-inverted" :style="{ width: `${reviewedShare(row.original) * 100}%` }" /></div>
-        <span class="w-9 text-end text-xs tabular-nums">{{ percent(reviewedShare(row.original)) }}</span>
-      </div>
+      <DataShareBar :value="reviewedShare(row.original)" />
     </template>
     <template #trend-cell="{ row }">
       <ChartsSparkline :values="row.original.daily" :width="80" :height="22" />

@@ -23,7 +23,10 @@ const screens = computed(() => [
 </script>
 
 <template>
-  <section class="flex min-w-0 flex-col gap-3 rounded-lg border border-default bg-elevated/40 p-2 sm:p-3" :aria-label="t('templates.preview')">
+  <section
+    class="flex min-w-0 flex-col gap-3 rounded-lg border border-default bg-elevated/40 p-2 sm:p-3"
+    :aria-label="t('templates.preview')"
+  >
     <div class="flex flex-wrap items-center justify-between gap-2">
       <UTabs
         v-model="screen"
@@ -45,7 +48,10 @@ const screens = computed(() => [
         :aria-label="t('builder.preview.device')"
       />
     </div>
-    <div class="mx-auto h-[70vh] min-h-96 w-full overflow-y-auto rounded-md border border-default transition-[max-width] duration-300 @container" :class="WIDTH[device]">
+    <div
+      class="mx-auto h-[70vh] min-h-96 w-full overflow-y-auto rounded-md border border-default transition-[max-width] duration-300 @container"
+      :class="WIDTH[device]"
+    >
       <FormsRendererPage :schema="schema" :title="title" preview :show-thank-you="screen === 'thanks'" />
     </div>
   </section>

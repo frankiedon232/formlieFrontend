@@ -209,6 +209,18 @@ export interface SavedTheme {
   updated_at: string
 }
 
+/**
+ * GET /themes/insights, the two top cards of the Themes page (locked list format): themes per kind,
+ * how many forms use a library theme out of all forms, and the most used themes.
+ */
+export interface ThemeInsights {
+  by_source: Record<ThemeSource, number>
+  in_use: number
+  forms_total: number
+  forms_styled: number
+  top: { id: string; name: string; name_key?: string; forms: number }[]
+}
+
 /** GET /forms/:id/overview, everything the form overview page shows (F9 redesign). */
 export interface FormOverview {
   stats: {

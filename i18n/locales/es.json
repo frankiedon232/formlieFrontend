@@ -1524,6 +1524,21 @@
       "emptyDesc": "Abre un formulario y elige «Guardar como plantilla», o duplica una plantilla de Formalie para cambiarla.",
       "openForms": "Abrir formularios",
       "browse": "Ver plantillas de Formalie"
+    },
+    "overview": {
+      "formsFrom": "Formularios desde plantillas",
+      "system": "Plantillas de Formalie",
+      "mine": "Tus plantillas",
+      "allTime": "Total",
+      "byCategory": "Uso por categoría",
+      "other": "Otras",
+      "formsCount": "{n} formularios desde plantillas",
+      "noUse": "Aún no hay formularios creados desde plantillas"
+    },
+    "card": {
+      "used": "Usada {when}",
+      "pages": "Páginas",
+      "share": "Cuota de uso"
     }
   },
   "builder": {
@@ -2785,7 +2800,25 @@
     "categoryDesign": "Diseño {name}",
     "previewName": "Nombre completo",
     "previewEmail": "Correo electrónico",
-    "previewMessage": "Mensaje"
+    "previewMessage": "Mensaje",
+    "overview": {
+      "use": "Uso de temas",
+      "styledHint": "Formularios con un tema de la biblioteca",
+      "themes": "Temas",
+      "inUse": "En uso",
+      "unused": "Sin usar",
+      "ofForms": "de {n} formularios",
+      "top": "Temas más usados",
+      "noUse": "Ningún formulario usa aún un tema de la biblioteca",
+      "byKind": "Temas por tipo",
+      "inUseNow": "{n} en uso"
+    },
+    "card": {
+      "changed": "Cambiado {when}",
+      "created": "Creado",
+      "share": "Cuota de formularios",
+      "colours": "Colores del tema"
+    }
   },
   "dataSources": {
     "subtitle": "Conecta tus propias bases de datos, envíales los datos de los formularios y trabaja con ellos",

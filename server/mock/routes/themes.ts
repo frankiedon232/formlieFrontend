@@ -8,7 +8,7 @@
  * breaks a form. Every change is in the audit trail.
  */
 import { z } from 'zod'
-import type { SavedTheme, ThemeSource } from '#shared/types/forms'
+import type { SavedTheme, ThemeInsights, ThemeSource } from '#shared/types/forms'
 import { applyPatch, defaultTheme, themeSchema, THEME_PRESETS } from '#shared/utils/forms/theme'
 import { TEMPLATE_CATEGORIES } from '#shared/templates'
 import { requireAuth } from '../core/auth'
@@ -103,6 +103,27 @@ export const listThemes = defineMockRoute(({ event, query }) => {
   const all = allThemes(tenant).map(view(tenant)).filter(theme => !sources || sources.includes(theme.source))
   const { data, meta } = paginate(all, { sort: '-updated_at', ...query }, (item, q) => item.name.toLowerCase().includes(q))
   return ok(data, meta)
+})
+
+/** GET /themes/insights, themes per kind, forms styled with a library theme, the most used. */
+export const themeInsights = defineMockRoute(({ event }) => {
+  const { tenant } = requireAuth(event)
+  const all = allThemes(tenant).map(view(tenant))
+  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at)
+  const ids = new Set(all.map(theme => theme.id))
+  const insights: ThemeInsights = {
+    by_source: { system: 0, saved: 0, created: 0 },
+    in_use: all.filter(theme => theme.forms_count > 0).length,
+    forms_total: forms.length,
+    forms_styled: forms.filter(form => form.schema?.theme_id && ids.has(form.schema.theme_id)).length,
+    top: all
+      .filter(theme => theme.forms_count > 0)
+      .sort((a, b) => b.forms_count - a.forms_count)
+      .slice(0, 3)
+      .map(theme => ({ id: theme.id, name: theme.name, ...(theme.name_key ? { name_key: theme.name_key } : {}), forms: theme.forms_count })),
+  }
+  for (const theme of all) insights.by_source[theme.source]++
+  return ok(insights)
 })
 
 /** GET /themes/:id, one theme (theme editor). */

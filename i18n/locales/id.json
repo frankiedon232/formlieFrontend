@@ -1524,6 +1524,21 @@
       "emptyDesc": "Buka formulir lalu pilih “Simpan sebagai templat”, atau duplikat salah satu templat Formalie untuk mengubahnya.",
       "openForms": "Buka formulir",
       "browse": "Jelajahi templat Formalie"
+    },
+    "overview": {
+      "formsFrom": "Formulir dari templat",
+      "system": "Templat Formalie",
+      "mine": "Templat Anda",
+      "allTime": "Sepanjang waktu",
+      "byCategory": "Penggunaan per kategori",
+      "other": "Lainnya",
+      "formsCount": "{n} formulir dari templat",
+      "noUse": "Belum ada formulir dari templat"
+    },
+    "card": {
+      "used": "Dipakai {when}",
+      "pages": "Halaman",
+      "share": "Porsi penggunaan"
     }
   },
   "builder": {
@@ -2785,7 +2800,25 @@
     "categoryDesign": "Desain {name}",
     "previewName": "Nama lengkap",
     "previewEmail": "Email",
-    "previewMessage": "Pesan"
+    "previewMessage": "Pesan",
+    "overview": {
+      "use": "Penggunaan tema",
+      "styledHint": "Formulir dengan tema dari pustaka",
+      "themes": "Tema",
+      "inUse": "Dipakai",
+      "unused": "Tidak dipakai",
+      "ofForms": "dari {n} formulir",
+      "top": "Tema paling sering dipakai",
+      "noUse": "Belum ada formulir yang memakai tema dari pustaka",
+      "byKind": "Tema per jenis",
+      "inUseNow": "{n} dipakai"
+    },
+    "card": {
+      "changed": "Diubah {when}",
+      "created": "Dibuat",
+      "share": "Porsi formulir",
+      "colours": "Warna tema"
+    }
   },
   "dataSources": {
     "subtitle": "Hubungkan database Anda sendiri, kirim data formulir ke sana, dan kelola datanya",
