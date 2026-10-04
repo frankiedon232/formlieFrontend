@@ -7,6 +7,7 @@ import * as audit from './routes/audit'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
+import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
 import * as auth from './routes/auth'
@@ -78,6 +79,8 @@ const router = createRouter()
   .patch('/responses/:id', responses.patchResponse)
   .delete('/responses/:id', responses.deleteResponse)
   .post('/responses/:id/notes', responses.addNote)
+  .post('/responses/:id/files', responseFiles.fileLink)
+  .get('/response-files/:token', responseFiles.serveResponseFile)
   .put('/forms/:id/draft', formDraft.saveDraft)
   .post('/forms/:id/publish', formDraft.publishForm)
   .post('/forms/:id/discard', formDraft.discardDraft)

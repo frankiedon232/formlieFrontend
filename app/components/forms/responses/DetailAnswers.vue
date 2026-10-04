@@ -1,7 +1,9 @@
 <!--
-  Every answer of a response, a card per page (F11 panel): page title with how many of its
-  questions were answered and a slim bar; each question numbered, with its type icon, the
-  question, and the answer shown by kind (FormsResponsesAnswer).
+  Every answer of a response, grouped by likeness (F11; owner 2026-10-04: use the space, group like
+  with like, no endless scrolling on long forms). Filter chips on top (All · People & contact ·
+  Choices · Ratings · Written · Numbers & dates · Files · Other, with counts; a sliding row on small
+  screens) and "Only answered". Each group: a header with how many were answered, then tiles in
+  two columns that share one height per row; long text, grids and files take the full width.
 -->
 <script setup lang="ts">
 import type { ResponseDetail } from '#shared/types/responses'
@@ -11,37 +13,77 @@ const props = defineProps<{ response: ResponseDetail }>()
 const { t } = useI18n()
 
 const filled = (value: unknown) => value != null && value !== '' && !(Array.isArray(value) && !value.length)
-const pages = computed(() => {
-  let n = 0
-  return props.response.schema.pages
-    .map((page, index) => {
-      const fields = page.rows.flatMap(row => row.fields).filter(field => isInputField(field.type) && field.type !== 'payment' && field.type !== 'hidden')
-      const items = fields.map(field => ({ field, n: ++n, icon: (FIELD_TYPES as Record<string, { icon: string }>)[field.type]?.icon ?? 'i-lucide-circle-help' }))
-      return { id: page.id, title: page.title || t('preview.page', { n: index + 1 }), items, answered: fields.filter(field => filled(props.response.data[field.key])).length }
-    })
-    .filter(page => page.items.length)
-})
+const fields = computed(() =>
+  props.response.schema.pages.flatMap(page => page.rows.flatMap(row => row.fields)).filter(field => isInputField(field.type) && field.type !== 'payment' && field.type !== 'hidden'),
+)
+const onlyAnswered = ref(false)
+const group = ref<AnswerGroup | 'all'>('all')
+watch(() => props.response.form.id, () => (group.value = 'all'))
+
+const groups = computed(() =>
+  ANSWER_GROUPS.map(item => {
+    const inGroup = fields.value.filter(field => answerGroup(field) === item.key)
+    return { ...item, fields: inGroup, answered: inGroup.filter(field => filled(props.response.data[field.key])).length }
+  }).filter(item => item.fields.length),
+)
+const shown = computed(() =>
+  groups.value
+    .filter(item => group.value === 'all' || item.key === group.value)
+    .map(item => ({ ...item, fields: onlyAnswered.value ? item.fields.filter(field => filled(props.response.data[field.key])) : item.fields }))
+    .filter(item => item.fields.length),
+)
+const icon = (type: string) => (FIELD_TYPES as Record<string, { icon: string }>)[type]?.icon ?? 'i-lucide-circle-help'
+const total = computed(() => fields.value.length)
+const answeredTotal = computed(() => fields.value.filter(field => filled(props.response.data[field.key])).length)
 </script>
 
 <template>
-  <section v-for="page in pages" :key="page.id" class="overflow-hidden rounded-lg border border-default">
-    <header class="flex items-center gap-3 border-b border-default bg-elevated/40 px-4 py-2.5">
-      <h3 class="min-w-0 flex-1 truncate text-sm font-semibold text-highlighted">{{ page.title }}</h3>
-      <span class="shrink-0 text-xs text-muted tabular-nums">{{ t('responses.detail.answeredOf', { n: page.answered, total: page.items.length }) }}</span>
-      <span class="h-1 w-14 shrink-0 overflow-hidden rounded-full bg-accented/60" role="presentation">
-        <span class="block h-full rounded-full bg-inverted" :style="{ width: `${(page.answered / page.items.length) * 100}%` }" />
-      </span>
-    </header>
-    <dl class="divide-y divide-default">
-      <div v-for="item in page.items" :key="item.field.id" class="flex gap-3 px-4 py-3">
-        <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md bg-elevated text-muted">
-          <UIcon :name="item.icon" class="size-3.5" />
-        </span>
-        <div class="flex min-w-0 flex-1 flex-col gap-1.5">
-          <dt class="text-xs text-muted"><span class="me-1 text-dimmed tabular-nums">{{ item.n }}.</span>{{ item.field.label || item.field.key }}</dt>
-          <dd class="min-w-0"><FormsResponsesAnswer :field="item.field" :value="response.data[item.field.key]" /></dd>
-        </div>
+  <section class="flex flex-col gap-3">
+    <div class="flex items-center justify-between gap-3">
+      <h3 class="text-xs font-medium text-muted uppercase">{{ t('responses.detail.answers') }}</h3>
+      <USwitch v-model="onlyAnswered" size="sm" :label="t('responses.detail.onlyAnswered')" :ui="{ label: 'text-xs text-muted' }" />
+    </div>
+
+    <!-- Group chips: a sliding row -->
+    <div class="-mx-1 flex snap-x gap-1.5 overflow-x-auto px-1 pb-1 [scrollbar-width:thin]" role="tablist" :aria-label="t('responses.detail.groups')">
+      <button
+        v-for="item in [{ key: 'all' as const, icon: 'i-lucide-layout-grid', answered: answeredTotal, fields: { length: total } }, ...groups]"
+        :key="item.key"
+        type="button"
+        role="tab"
+        :aria-selected="group === item.key"
+        class="inline-flex shrink-0 snap-start items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+        :class="group === item.key ? 'border-inverted bg-inverted text-inverted' : 'border-default bg-default text-toned hover:bg-elevated'"
+        @click="group = item.key"
+      >
+        <UIcon :name="item.icon" class="size-3.5" />
+        {{ t(`responses.groups.${item.key}`) }}
+        <span class="tabular-nums opacity-70">{{ item.answered }}/{{ item.fields.length }}</span>
+      </button>
+    </div>
+
+    <div v-for="item in shown" :key="item.key" class="flex flex-col gap-2">
+      <div v-if="group === 'all'" class="flex items-center gap-2 pt-1 text-xs text-muted">
+        <UIcon :name="item.icon" class="size-3.5" />
+        <span class="font-medium text-toned">{{ t(`responses.groups.${item.key}`) }}</span>
+        <span class="h-px flex-1 bg-(--ui-border)" />
+        <span class="tabular-nums">{{ t('responses.detail.answeredOf', { n: item.answered, total: item.fields.length }) }}</span>
       </div>
-    </dl>
+      <dl class="grid gap-2 sm:grid-cols-2">
+        <div
+          v-for="field in item.fields"
+          :key="field.id"
+          class="flex h-full min-w-0 flex-col gap-2 rounded-lg border border-default p-3"
+          :class="[wideAnswer(field) ? 'sm:col-span-2' : '', filled(response.data[field.key]) ? 'bg-default' : 'bg-elevated/30']"
+        >
+          <dt class="flex items-start gap-2 text-xs text-muted">
+            <UIcon :name="icon(field.type)" class="mt-px size-3.5 shrink-0" />
+            <span class="line-clamp-2">{{ field.label || field.key }}</span>
+          </dt>
+          <dd class="min-w-0"><FormsResponsesAnswer :field="field" :value="response.data[field.key]" :response-id="response.id" /></dd>
+        </div>
+      </dl>
+    </div>
+    <UEmpty v-if="!shown.length" icon="i-lucide-filter-x" :title="t('responses.detail.nothingHere')" variant="naked" size="sm" />
   </section>
 </template>

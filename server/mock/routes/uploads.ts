@@ -277,3 +277,10 @@ export function attachRespondentFiles(ids: string[], responseId: string) {
   }
   saveUploads()
 }
+
+/** A respondent file's bytes for its own workspace (F11 file viewer, behind a short-lived link). */
+export function respondentFileBytes(id: string, tenantId: string): { data: Uint8Array; contentType: string; name: string } | null {
+  const upload = uploads.get(id)
+  if (!upload?.completed || !upload.data || !upload.respondent || upload.tenantId !== tenantId) return null
+  return { data: upload.data, contentType: upload.contentType, name: upload.respondent.name }
+}

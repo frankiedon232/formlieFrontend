@@ -529,7 +529,16 @@
     "clearSelection": "Clear selection",
     "errorTitle": "Couldn't load this list",
     "noResults": "No results",
-    "noResultsDesc": "Try a different search or clear the filters."
+    "noResultsDesc": "Try a different search or clear the filters.",
+    "columns": {
+      "button": "Columns",
+      "title": "Columns",
+      "hint": "Drag or use the arrows to move; tick to show.",
+      "reset": "Reset",
+      "show": "Show {name}",
+      "up": "Move {name} up",
+      "down": "Move {name} down"
+    }
   },
   "status": {
     "draft": "Draft",
@@ -3184,7 +3193,8 @@
       "completionHint": "Of the people who started, how many sent it",
       "last": "Last response",
       "busiest": "Busiest: {name}",
-      "label": "At a glance"
+      "label": "At a glance",
+      "totalLabel": "Total"
     },
     "trend": {
       "title": "Responses over time",
@@ -3296,7 +3306,11 @@
       "navigate": "Move between responses",
       "prevShort": "Previous",
       "nextShort": "Next",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Answers",
+      "onlyAnswered": "Only answered",
+      "groups": "Answer groups",
+      "nothingHere": "Nothing to show here"
     },
     "device": {
       "desktop": "Desktop",
@@ -3315,7 +3329,34 @@
         "reviewed": "Reviewed",
         "approved": "Approve",
         "rejected": "Reject"
-      }
+      },
+      "answered": "Answered"
+    },
+    "overview": {
+      "responses": "Responses",
+      "vsBefore": "vs the period before",
+      "toReview": "{n} to review"
+    },
+    "groups": {
+      "all": "All",
+      "person": "People & contact",
+      "choices": "Choices",
+      "ratings": "Ratings",
+      "written": "Written",
+      "numbers": "Numbers & dates",
+      "files": "Files",
+      "other": "Other"
+    },
+    "files": {
+      "open": "Open {name}",
+      "title": "File",
+      "noPreview": "This file can't be previewed",
+      "noPreviewDesc": "Your browser can't show this type of file. Download it to open it on your device.",
+      "download": "Download",
+      "previous": "Previous file",
+      "next": "Next file",
+      "sampleNote": "Sample file: a stand-in, not a real upload",
+      "newTab": "Open in new tab"
     }
   }
 }

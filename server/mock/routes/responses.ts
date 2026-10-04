@@ -6,6 +6,9 @@
  */
 import { z } from 'zod'
 import { RESPONSE_STATUSES, type ResponseDetail, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
+import { allFields } from '#shared/utils/forms/build'
+import { isFileField } from '#shared/utils/forms/file-answers'
+import { isInputField } from '#shared/utils/forms/fields'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -34,7 +37,14 @@ function formFor(tenant: MockTenant, user: MockUser, id: string | undefined): St
   return form
 }
 
+/** Questions a respondent can answer (no headings, hidden or calculated fields). */
+const questionsOf = (form: StoredForm) =>
+  allFields(responseSchema(form) ?? { schema_version: 1, pages: [] }).filter(field => isInputField(field.type) && !['hidden', 'calculated', 'payment'].includes(field.type))
+const filled = (value: unknown) => value != null && value !== '' && value !== false && !(Array.isArray(value) && !value.length)
+
 function rowOf(form: StoredForm, entry: IndexedResponse, withAnswers: boolean): ResponseRow {
+  const data = answersOf(form, entry)
+  const questions = questionsOf(form)
   return {
     id: entry.id,
     number: entry.number,
@@ -46,8 +56,11 @@ function rowOf(form: StoredForm, entry: IndexedResponse, withAnswers: boolean): 
     channel: entry.channel,
     language: entry.language,
     duration_seconds: entry.duration_seconds,
-    answers: withAnswers ? answersOf(form, entry) : {},
+    answers: withAnswers ? data : {},
     notes_count: entry.notes_count,
+    answered: questions.filter(field => filled(data[field.key])).length,
+    questions: questions.length,
+    files_count: questions.filter(field => isFileField(field.type)).reduce((sum, field) => sum + (Array.isArray(data[field.key]) ? (data[field.key] as unknown[]).length : 0), 0),
     edited: entry.edited,
     possible_duplicate: entry.possible_duplicate,
   }
@@ -124,7 +137,7 @@ export const inboxInsights = defineMockRoute(({ event, query }) => {
   return ok(insightsOf(workspaceResponses(tenant, form => canSee(form, user)), query))
 })
 
-function responseFor(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'responses' | 'edit') {
+export function responseFor(tenant: MockTenant, user: MockUser, id: string | undefined, need: 'responses' | 'edit') {
   const found = id ? findResponse(tenant, id) : null
   if (!found || found.form.deleted_at) throw new MockError('FRM-GEN-1004')
   requireLevel(found.form, user, need)

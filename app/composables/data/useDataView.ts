@@ -25,6 +25,10 @@ export interface DataColumn {
   /** Hide below this breakpoint to keep phones readable. */
   hideBelow?: 'sm' | 'md' | 'lg'
   class?: string
+  /** Hidden until someone ticks it in Columns (e.g. a form's other questions). */
+  hidden?: boolean
+  /** Always shown (can still be moved). */
+  fixed?: boolean
 }
 
 export interface DataQuery {

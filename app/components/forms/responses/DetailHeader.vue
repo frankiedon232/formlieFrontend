@@ -39,7 +39,7 @@ const menu = computed<DropdownMenuItem[][]>(() => [
         <div class="flex min-w-0 items-center gap-1.5">
           <h2 class="truncate text-lg leading-tight font-semibold text-highlighted">{{ name }}</h2>
           <UTooltip v-if="response.respondent.kind === 'invite' || response.respondent.kind === 'member'" :text="t(`responses.known.${response.respondent.kind}`)">
-            <UIcon name="i-lucide-badge-check" class="size-4 shrink-0 text-info" :aria-label="t(`responses.known.${response.respondent.kind}`)" />
+            <UIcon name="i-lucide-badge-check" class="size-4 shrink-0 text-highlighted" :aria-label="t(`responses.known.${response.respondent.kind}`)" />
           </UTooltip>
         </div>
         <p v-if="response.respondent.name && response.respondent.email" class="truncate text-sm text-muted" dir="ltr">{{ response.respondent.email }}</p>

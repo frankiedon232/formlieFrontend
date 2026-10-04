@@ -529,7 +529,16 @@
     "clearSelection": "Hapus pilihan",
     "errorTitle": "Tidak dapat memuat daftar ini",
     "noResults": "Tidak ada hasil",
-    "noResultsDesc": "Coba pencarian lain atau hapus filter."
+    "noResultsDesc": "Coba pencarian lain atau hapus filter.",
+    "columns": {
+      "button": "Kolom",
+      "title": "Kolom",
+      "hint": "Seret atau pakai panah untuk memindah; centang untuk menampilkan.",
+      "reset": "Atur ulang",
+      "show": "Tampilkan {name}",
+      "up": "Naikkan {name}",
+      "down": "Turunkan {name}"
+    }
   },
   "status": {
     "draft": "Draf",
@@ -3184,7 +3193,8 @@
       "completionHint": "Dari yang memulai, berapa yang mengirim",
       "last": "Tanggapan terakhir",
       "busiest": "Paling ramai: {name}",
-      "label": "Sekilas"
+      "label": "Sekilas",
+      "totalLabel": "Total"
     },
     "trend": {
       "title": "Tanggapan dari waktu ke waktu",
@@ -3296,7 +3306,11 @@
       "navigate": "Pindah antar tanggapan",
       "prevShort": "Sebelumnya",
       "nextShort": "Berikutnya",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Jawaban",
+      "onlyAnswered": "Hanya yang dijawab",
+      "groups": "Grup jawaban",
+      "nothingHere": "Tidak ada yang ditampilkan"
     },
     "device": {
       "desktop": "Komputer",
@@ -3315,7 +3329,34 @@
         "reviewed": "Ditinjau",
         "approved": "Setujui",
         "rejected": "Tolak"
-      }
+      },
+      "answered": "Dijawab"
+    },
+    "overview": {
+      "responses": "Tanggapan",
+      "vsBefore": "dibanding periode sebelumnya",
+      "toReview": "{n} perlu ditinjau"
+    },
+    "groups": {
+      "all": "Semua",
+      "person": "Orang & kontak",
+      "choices": "Pilihan",
+      "ratings": "Penilaian",
+      "written": "Tulisan",
+      "numbers": "Angka & tanggal",
+      "files": "File",
+      "other": "Lainnya"
+    },
+    "files": {
+      "open": "Buka {name}",
+      "title": "File",
+      "noPreview": "File ini tidak bisa dipratinjau",
+      "noPreviewDesc": "Browser Anda tidak dapat menampilkan jenis file ini. Unduh untuk membukanya di perangkat Anda.",
+      "download": "Unduh",
+      "previous": "File sebelumnya",
+      "next": "File berikutnya",
+      "sampleNote": "File contoh: pengganti, bukan unggahan asli",
+      "newTab": "Buka di tab baru"
     }
   }
 }

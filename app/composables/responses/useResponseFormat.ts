@@ -2,12 +2,16 @@ import type { BadgeProps } from '@nuxt/ui'
 import type { ResponseStatus } from '#shared/types/responses'
 import type { FormField } from '#shared/utils/forms/build'
 
-/** Review status look (F11): badge colour, chart fill, card edge, icon colour, icon. Colour is always named next to it. */
-export const RESPONSE_STATUS_META: Record<ResponseStatus, { color: BadgeProps['color']; fill: string; edge: string; text: string; icon: string }> = {
-  new: { color: 'info', fill: 'bg-info', edge: 'border-s-info', text: 'text-info', icon: 'i-lucide-sparkle' },
-  reviewed: { color: 'neutral', fill: 'bg-inverted/35', edge: 'border-s-(--ui-border-accented)', text: 'text-muted', icon: 'i-lucide-eye' },
-  approved: { color: 'success', fill: 'bg-success', edge: 'border-s-success', text: 'text-success', icon: 'i-lucide-circle-check' },
-  rejected: { color: 'error', fill: 'bg-error', edge: 'border-s-error', text: 'text-error', icon: 'i-lucide-circle-x' },
+/**
+ * Review status look (F11), in the theme's own status colours (docs/design: grey "To-do", amber "In
+ * progress", green "Completed"; owner 2026-10-04: no blue accent): badge colour, chart fill, icon
+ * colour, icon. Colour is always named next to it.
+ */
+export const RESPONSE_STATUS_META: Record<ResponseStatus, { color: BadgeProps['color']; fill: string; text: string; icon: string }> = {
+  new: { color: 'neutral', fill: 'bg-inverted', text: 'text-highlighted', icon: 'i-lucide-sparkle' },
+  reviewed: { color: 'warning', fill: 'bg-warning', text: 'text-warning', icon: 'i-lucide-eye' },
+  approved: { color: 'success', fill: 'bg-success', text: 'text-success', icon: 'i-lucide-circle-check' },
+  rejected: { color: 'error', fill: 'bg-error', text: 'text-error', icon: 'i-lucide-circle-x' },
 }
 
 /** Question types that make a good table column (short, one line). */
@@ -106,3 +110,28 @@ export function useResponseFormat() {
 
   return { text, duration }
 }
+
+/** Answers grouped by likeness in the response panel (owner, 2026-10-04: "group according to likeness"). */
+export type AnswerGroup = 'person' | 'choices' | 'ratings' | 'written' | 'numbers' | 'files' | 'other'
+export const ANSWER_GROUPS: { key: AnswerGroup; icon: string }[] = [
+  { key: 'person', icon: 'i-lucide-contact-round' },
+  { key: 'choices', icon: 'i-lucide-list-checks' },
+  { key: 'ratings', icon: 'i-lucide-star' },
+  { key: 'written', icon: 'i-lucide-align-left' },
+  { key: 'numbers', icon: 'i-lucide-calendar-range' },
+  { key: 'files', icon: 'i-lucide-paperclip' },
+  { key: 'other', icon: 'i-lucide-shapes' },
+]
+const PERSON_TYPES = new Set(['full_name', 'email', 'phone', 'address', 'country'])
+const NAME_LABEL = /^(your\s+)?(full\s+|first\s+|last\s+|family\s+|given\s+)?name$|surname/i
+const GROUP_OF: Record<string, AnswerGroup> = {
+  dropdown: 'choices', radio: 'choices', checkbox: 'choices', multi_select: 'choices', toggle: 'choices', consent: 'choices', ranking: 'choices', matrix: 'choices',
+  rating: 'ratings', scale: 'ratings', slider: 'ratings',
+  long_text: 'written', rich_text: 'written', short_text: 'written', url: 'written', domain: 'written',
+  number: 'numbers', currency: 'numbers', percentage: 'numbers', calculated: 'numbers', date: 'numbers', time: 'numbers', datetime: 'numbers', date_range: 'numbers', duration: 'numbers',
+  file_upload: 'files', image_upload: 'files', signature: 'files',
+}
+export const answerGroup = (field: FormField): AnswerGroup =>
+  PERSON_TYPES.has(field.type) || (field.type === 'short_text' && NAME_LABEL.test((field.label ?? '').trim())) ? 'person' : (GROUP_OF[field.type] ?? 'other')
+/** Answers that need the full width (long text, grids, files). */
+export const wideAnswer = (field: FormField) => ['long_text', 'rich_text', 'matrix', 'ranking', 'file_upload', 'image_upload', 'address'].includes(field.type)

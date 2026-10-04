@@ -529,7 +529,16 @@
     "clearSelection": "Seçimi temizle",
     "errorTitle": "Bu liste yüklenemedi",
     "noResults": "Sonuç yok",
-    "noResultsDesc": "Farklı bir arama deneyin veya filtreleri temizleyin."
+    "noResultsDesc": "Farklı bir arama deneyin veya filtreleri temizleyin.",
+    "columns": {
+      "button": "Sütunlar",
+      "title": "Sütunlar",
+      "hint": "Taşımak için sürükleyin veya okları kullanın; göstermek için işaretleyin.",
+      "reset": "Sıfırla",
+      "show": "{name} göster",
+      "up": "{name} yukarı",
+      "down": "{name} aşağı"
+    }
   },
   "status": {
     "draft": "Taslak",
@@ -3184,7 +3193,8 @@
       "completionHint": "Başlayanların ne kadarı gönderdi",
       "last": "Son yanıt",
       "busiest": "En yoğun: {name}",
-      "label": "Bir bakışta"
+      "label": "Bir bakışta",
+      "totalLabel": "Toplam"
     },
     "trend": {
       "title": "Zaman içinde yanıtlar",
@@ -3296,7 +3306,11 @@
       "navigate": "Yanıtlar arasında gezin",
       "prevShort": "Önceki",
       "nextShort": "Sonraki",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Yanıtlar",
+      "onlyAnswered": "Yalnızca yanıtlananlar",
+      "groups": "Yanıt grupları",
+      "nothingHere": "Burada gösterilecek bir şey yok"
     },
     "device": {
       "desktop": "Bilgisayar",
@@ -3315,7 +3329,34 @@
         "reviewed": "İncelendi",
         "approved": "Onayla",
         "rejected": "Reddet"
-      }
+      },
+      "answered": "Yanıtlanan"
+    },
+    "overview": {
+      "responses": "Yanıtlar",
+      "vsBefore": "önceki döneme göre",
+      "toReview": "{n} incelenecek"
+    },
+    "groups": {
+      "all": "Tümü",
+      "person": "Kişiler ve iletişim",
+      "choices": "Seçimler",
+      "ratings": "Puanlar",
+      "written": "Yazılı",
+      "numbers": "Sayılar ve tarihler",
+      "files": "Dosyalar",
+      "other": "Diğer"
+    },
+    "files": {
+      "open": "{name} aç",
+      "title": "Dosya",
+      "noPreview": "Bu dosya önizlenemiyor",
+      "noPreviewDesc": "Tarayıcınız bu dosya türünü gösteremiyor. Cihazınızda açmak için indirin.",
+      "download": "İndir",
+      "previous": "Önceki dosya",
+      "next": "Sonraki dosya",
+      "sampleNote": "Örnek dosya: gerçek bir yükleme değil, temsili",
+      "newTab": "Yeni sekmede aç"
     }
   }
 }

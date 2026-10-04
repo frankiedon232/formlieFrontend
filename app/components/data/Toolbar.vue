@@ -81,7 +81,7 @@ const viewItems = computed(() => [
       icon="i-lucide-search"
       :placeholder="searchPlaceholder ?? t('dataView.search')"
       :aria-label="t('dataView.search')"
-      class="w-full sm:w-64"
+      class="w-full sm:w-56 2xl:w-64"
       @keydown.esc="search = ''"
     >
       <template v-if="!search" #trailing>

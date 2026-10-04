@@ -529,7 +529,16 @@
     "clearSelection": "Effacer la sélection",
     "errorTitle": "Impossible de charger cette liste",
     "noResults": "Aucun résultat",
-    "noResultsDesc": "Essayez une autre recherche ou effacez les filtres."
+    "noResultsDesc": "Essayez une autre recherche ou effacez les filtres.",
+    "columns": {
+      "button": "Colonnes",
+      "title": "Colonnes",
+      "hint": "Faites glisser ou utilisez les flèches pour déplacer ; cochez pour afficher.",
+      "reset": "Réinitialiser",
+      "show": "Afficher {name}",
+      "up": "Monter {name}",
+      "down": "Descendre {name}"
+    }
   },
   "status": {
     "draft": "Brouillon",
@@ -3184,7 +3193,8 @@
       "completionHint": "Parmi ceux qui ont commencé, combien l'ont envoyé",
       "last": "Dernière réponse",
       "busiest": "Le plus actif : {name}",
-      "label": "En un coup d'œil"
+      "label": "En un coup d'œil",
+      "totalLabel": "Total"
     },
     "trend": {
       "title": "Réponses dans le temps",
@@ -3296,7 +3306,11 @@
       "navigate": "Passer d'une réponse à l'autre",
       "prevShort": "Précédente",
       "nextShort": "Suivante",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Réponses",
+      "onlyAnswered": "Seulement les réponses données",
+      "groups": "Groupes de réponses",
+      "nothingHere": "Rien à afficher ici"
     },
     "device": {
       "desktop": "Ordinateur",
@@ -3315,7 +3329,34 @@
         "reviewed": "Examinée",
         "approved": "Approuver",
         "rejected": "Refuser"
-      }
+      },
+      "answered": "Répondu"
+    },
+    "overview": {
+      "responses": "Réponses",
+      "vsBefore": "par rapport à la période précédente",
+      "toReview": "{n} à examiner"
+    },
+    "groups": {
+      "all": "Tout",
+      "person": "Personnes et contact",
+      "choices": "Choix",
+      "ratings": "Notes",
+      "written": "Écrit",
+      "numbers": "Nombres et dates",
+      "files": "Fichiers",
+      "other": "Autre"
+    },
+    "files": {
+      "open": "Ouvrir {name}",
+      "title": "Fichier",
+      "noPreview": "Ce fichier ne peut pas être prévisualisé",
+      "noPreviewDesc": "Votre navigateur ne peut pas afficher ce type de fichier. Téléchargez-le pour l'ouvrir sur votre appareil.",
+      "download": "Télécharger",
+      "previous": "Fichier précédent",
+      "next": "Fichier suivant",
+      "sampleNote": "Fichier d'exemple : une copie de démonstration, pas un vrai envoi",
+      "newTab": "Ouvrir dans un nouvel onglet"
     }
   }
 }

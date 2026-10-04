@@ -31,6 +31,11 @@ export interface ResponseRow {
   /** Answers by field key (per-form lists; the inbox sends none). */
   answers: Record<string, unknown>
   notes_count: number
+  /** How complete it is: questions answered of the questions the form asks (cards' progress bar). */
+  answered: number
+  questions: number
+  /** Files attached across the answers. */
+  files_count: number
   edited: boolean
   /** Flagged as perhaps the same person as an earlier response (F10 identity). */
   possible_duplicate: { of: string; reason: string } | null

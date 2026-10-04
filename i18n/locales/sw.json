@@ -529,7 +529,16 @@
     "clearSelection": "Futa uteuzi",
     "errorTitle": "Imeshindwa kupakia orodha hii",
     "noResults": "Hakuna matokeo",
-    "noResultsDesc": "Jaribu utafutaji mwingine au futa vichujio."
+    "noResultsDesc": "Jaribu utafutaji mwingine au futa vichujio.",
+    "columns": {
+      "button": "Safu",
+      "title": "Safu",
+      "hint": "Buruta au tumia mishale kuhamisha; weka alama kuonyesha.",
+      "reset": "Weka upya",
+      "show": "Onyesha {name}",
+      "up": "Pandisha {name}",
+      "down": "Shusha {name}"
+    }
   },
   "status": {
     "draft": "Rasimu",
@@ -3184,7 +3193,8 @@
       "completionHint": "Kati ya walioanza, wangapi walituma",
       "last": "Jibu la mwisho",
       "busiest": "Yenye shughuli zaidi: {name}",
-      "label": "Kwa haraka"
+      "label": "Kwa haraka",
+      "totalLabel": "Jumla"
     },
     "trend": {
       "title": "Majibu kwa muda",
@@ -3296,7 +3306,11 @@
       "navigate": "Hama kati ya majibu",
       "prevShort": "Iliyotangulia",
       "nextShort": "Inayofuata",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Majibu",
+      "onlyAnswered": "Yaliyojibiwa tu",
+      "groups": "Makundi ya majibu",
+      "nothingHere": "Hakuna cha kuonyesha hapa"
     },
     "device": {
       "desktop": "Kompyuta",
@@ -3315,7 +3329,34 @@
         "reviewed": "Imekaguliwa",
         "approved": "Idhinisha",
         "rejected": "Kataa"
-      }
+      },
+      "answered": "Yamejibiwa"
+    },
+    "overview": {
+      "responses": "Majibu",
+      "vsBefore": "ikilinganishwa na kipindi kilichopita",
+      "toReview": "{n} za kukagua"
+    },
+    "groups": {
+      "all": "Yote",
+      "person": "Watu na mawasiliano",
+      "choices": "Machaguo",
+      "ratings": "Ukadiriaji",
+      "written": "Maandishi",
+      "numbers": "Namba na tarehe",
+      "files": "Faili",
+      "other": "Mengineyo"
+    },
+    "files": {
+      "open": "Fungua {name}",
+      "title": "Faili",
+      "noPreview": "Faili hili haliwezi kuonyeshwa",
+      "noPreviewDesc": "Kivinjari chako hakiwezi kuonyesha aina hii ya faili. Pakua ili kuifungua kwenye kifaa chako.",
+      "download": "Pakua",
+      "previous": "Faili lililotangulia",
+      "next": "Faili linalofuata",
+      "sampleNote": "Faili la mfano: mbadala, si upakiaji halisi",
+      "newTab": "Fungua kwenye kichupo kipya"
     }
   }
 }

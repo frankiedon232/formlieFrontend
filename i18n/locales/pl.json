@@ -529,7 +529,16 @@
     "clearSelection": "Wyczyść zaznaczenie",
     "errorTitle": "Nie udało się wczytać listy",
     "noResults": "Brak wyników",
-    "noResultsDesc": "Spróbuj innego wyszukiwania lub wyczyść filtry."
+    "noResultsDesc": "Spróbuj innego wyszukiwania lub wyczyść filtry.",
+    "columns": {
+      "button": "Kolumny",
+      "title": "Kolumny",
+      "hint": "Przeciągnij lub użyj strzałek, aby przesunąć; zaznacz, aby pokazać.",
+      "reset": "Resetuj",
+      "show": "Pokaż: {name}",
+      "up": "Przesuń w górę: {name}",
+      "down": "Przesuń w dół: {name}"
+    }
   },
   "status": {
     "draft": "Szkic",
@@ -3184,7 +3193,8 @@
       "completionHint": "Ile osób, które zaczęły, wysłało",
       "last": "Ostatnia odpowiedź",
       "busiest": "Najaktywniejszy: {name}",
-      "label": "W skrócie"
+      "label": "W skrócie",
+      "totalLabel": "Łącznie"
     },
     "trend": {
       "title": "Odpowiedzi w czasie",
@@ -3296,7 +3306,11 @@
       "navigate": "Przechodzenie między odpowiedziami",
       "prevShort": "Poprzednia",
       "nextShort": "Następna",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Odpowiedzi",
+      "onlyAnswered": "Tylko z odpowiedzią",
+      "groups": "Grupy odpowiedzi",
+      "nothingHere": "Nic tu nie ma"
     },
     "device": {
       "desktop": "Komputer",
@@ -3315,7 +3329,34 @@
         "reviewed": "Przejrzana",
         "approved": "Zatwierdź",
         "rejected": "Odrzuć"
-      }
+      },
+      "answered": "Odpowiedziano"
+    },
+    "overview": {
+      "responses": "Odpowiedzi",
+      "vsBefore": "względem poprzedniego okresu",
+      "toReview": "Do przejrzenia: {n}"
+    },
+    "groups": {
+      "all": "Wszystko",
+      "person": "Osoby i kontakt",
+      "choices": "Wybory",
+      "ratings": "Oceny",
+      "written": "Tekst",
+      "numbers": "Liczby i daty",
+      "files": "Pliki",
+      "other": "Inne"
+    },
+    "files": {
+      "open": "Otwórz: {name}",
+      "title": "Plik",
+      "noPreview": "Tego pliku nie można podejrzeć",
+      "noPreviewDesc": "Przeglądarka nie wyświetli tego typu pliku. Pobierz go, aby otworzyć na urządzeniu.",
+      "download": "Pobierz",
+      "previous": "Poprzedni plik",
+      "next": "Następny plik",
+      "sampleNote": "Plik przykładowy: zastępczy, nie prawdziwe przesłanie",
+      "newTab": "Otwórz w nowej karcie"
     }
   }
 }

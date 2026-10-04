@@ -529,7 +529,16 @@
     "clearSelection": "Limpar seleção",
     "errorTitle": "Não foi possível carregar esta lista",
     "noResults": "Nenhum resultado",
-    "noResultsDesc": "Tente outra pesquisa ou limpe os filtros."
+    "noResultsDesc": "Tente outra pesquisa ou limpe os filtros.",
+    "columns": {
+      "button": "Colunas",
+      "title": "Colunas",
+      "hint": "Arraste ou use as setas para mover; marque para mostrar.",
+      "reset": "Repor",
+      "show": "Mostrar {name}",
+      "up": "Subir {name}",
+      "down": "Descer {name}"
+    }
   },
   "status": {
     "draft": "Rascunho",
@@ -3184,7 +3193,8 @@
       "completionHint": "De quem começou, quantos enviaram",
       "last": "Última resposta",
       "busiest": "Mais ativo: {name}",
-      "label": "Num relance"
+      "label": "Num relance",
+      "totalLabel": "Total"
     },
     "trend": {
       "title": "Respostas ao longo do tempo",
@@ -3296,7 +3306,11 @@
       "navigate": "Mudar de resposta",
       "prevShort": "Anterior",
       "nextShort": "Seguinte",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Respostas",
+      "onlyAnswered": "Só respondidas",
+      "groups": "Grupos de respostas",
+      "nothingHere": "Nada para mostrar aqui"
     },
     "device": {
       "desktop": "Computador",
@@ -3315,7 +3329,34 @@
         "reviewed": "Revista",
         "approved": "Aprovar",
         "rejected": "Rejeitar"
-      }
+      },
+      "answered": "Respondidas"
+    },
+    "overview": {
+      "responses": "Respostas",
+      "vsBefore": "face ao período anterior",
+      "toReview": "{n} por rever"
+    },
+    "groups": {
+      "all": "Tudo",
+      "person": "Pessoas e contacto",
+      "choices": "Escolhas",
+      "ratings": "Avaliações",
+      "written": "Escrito",
+      "numbers": "Números e datas",
+      "files": "Ficheiros",
+      "other": "Outros"
+    },
+    "files": {
+      "open": "Abrir {name}",
+      "title": "Ficheiro",
+      "noPreview": "Este ficheiro não tem pré-visualização",
+      "noPreviewDesc": "O seu navegador não consegue mostrar este tipo de ficheiro. Descarregue-o para o abrir no seu dispositivo.",
+      "download": "Descarregar",
+      "previous": "Ficheiro anterior",
+      "next": "Ficheiro seguinte",
+      "sampleNote": "Ficheiro de exemplo: um substituto, não um envio real",
+      "newTab": "Abrir num novo separador"
     }
   }
 }

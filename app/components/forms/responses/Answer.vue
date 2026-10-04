@@ -1,13 +1,14 @@
 <!--
-  One answer in the response panel (F11): files as chips (sample files say so), ratings as stars or
+  One answer in the response panel (F11): files as a sliding strip that opens the viewer, ratings as stars or
   a slim bar, a matrix as rows, long text as paragraphs, rich text rendered safely, the rest as text.
 -->
 <script setup lang="ts">
 import type { FormField } from '#shared/utils/forms/build'
 
-const props = defineProps<{ field: FormField; value: unknown }>()
+/** responseId: files open in the viewer (over private links). */
+const props = defineProps<{ field: FormField; value: unknown; responseId?: string }>()
 const { t } = useI18n()
-const { fileSize, number } = useFormat()
+const { number } = useFormat()
 const { text } = useResponseFormat()
 
 const empty = computed(() => props.value == null || props.value === '' || (Array.isArray(props.value) && !props.value.length))
@@ -19,14 +20,7 @@ const options = computed(() => new Map((props.field.options ?? []).map(option =>
 <template>
   <span v-if="empty" class="text-sm text-dimmed italic">{{ t('responses.detail.noAnswer') }}</span>
 
-  <ul v-else-if="field.type === 'file_upload' || field.type === 'image_upload'" class="flex flex-wrap gap-2">
-    <li v-for="(file, i) in files" :key="i" class="flex items-center gap-2 rounded-md border border-default px-2.5 py-1.5 text-sm">
-      <UIcon :name="file.type?.startsWith('image/') ? 'i-lucide-image' : 'i-lucide-file-text'" class="size-4 shrink-0 text-muted" />
-      <span class="max-w-52 truncate text-default">{{ file.name }}</span>
-      <span class="text-xs text-muted">{{ fileSize(file.size) }}</span>
-      <UBadge v-if="file.sample" :label="t('responses.detail.sampleFile')" color="neutral" variant="outline" size="sm" />
-    </li>
-  </ul>
+  <FormsResponsesFiles v-else-if="(field.type === 'file_upload' || field.type === 'image_upload') && responseId" :response-id="responseId" :field="field.key" :files="files" />
 
   <div v-else-if="field.type === 'rating'" class="flex items-center gap-1" :aria-label="text(field, value)">
     <svg v-for="n in max" :key="n" viewBox="0 0 24 24" class="size-4" :class="n <= Number(value) ? 'text-highlighted' : 'text-dimmed'" aria-hidden="true">

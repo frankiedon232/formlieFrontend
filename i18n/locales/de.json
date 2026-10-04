@@ -529,7 +529,16 @@
     "clearSelection": "Auswahl aufheben",
     "errorTitle": "Diese Liste konnte nicht geladen werden",
     "noResults": "Keine Ergebnisse",
-    "noResultsDesc": "Versuchen Sie eine andere Suche oder entfernen Sie die Filter."
+    "noResultsDesc": "Versuchen Sie eine andere Suche oder entfernen Sie die Filter.",
+    "columns": {
+      "button": "Spalten",
+      "title": "Spalten",
+      "hint": "Ziehen oder Pfeile nutzen zum Verschieben; anhaken zum Anzeigen.",
+      "reset": "Zurücksetzen",
+      "show": "{name} anzeigen",
+      "up": "{name} nach oben",
+      "down": "{name} nach unten"
+    }
   },
   "status": {
     "draft": "Entwurf",
@@ -3184,7 +3193,8 @@
       "completionHint": "Wie viele, die begonnen haben, auch gesendet haben",
       "last": "Letzte Antwort",
       "busiest": "Am aktivsten: {name}",
-      "label": "Auf einen Blick"
+      "label": "Auf einen Blick",
+      "totalLabel": "Gesamt"
     },
     "trend": {
       "title": "Antworten im Zeitverlauf",
@@ -3296,7 +3306,11 @@
       "navigate": "Zwischen Antworten wechseln",
       "prevShort": "Zurück",
       "nextShort": "Weiter",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Antworten",
+      "onlyAnswered": "Nur beantwortete",
+      "groups": "Antwortgruppen",
+      "nothingHere": "Hier gibt es nichts"
     },
     "device": {
       "desktop": "Computer",
@@ -3315,7 +3329,34 @@
         "reviewed": "Geprüft",
         "approved": "Genehmigen",
         "rejected": "Ablehnen"
-      }
+      },
+      "answered": "Beantwortet"
+    },
+    "overview": {
+      "responses": "Antworten",
+      "vsBefore": "im Vergleich zum Zeitraum davor",
+      "toReview": "{n} zu prüfen"
+    },
+    "groups": {
+      "all": "Alle",
+      "person": "Personen und Kontakt",
+      "choices": "Auswahl",
+      "ratings": "Bewertungen",
+      "written": "Text",
+      "numbers": "Zahlen und Daten",
+      "files": "Dateien",
+      "other": "Sonstiges"
+    },
+    "files": {
+      "open": "{name} öffnen",
+      "title": "Datei",
+      "noPreview": "Diese Datei kann nicht in der Vorschau gezeigt werden",
+      "noPreviewDesc": "Ihr Browser kann diesen Dateityp nicht anzeigen. Laden Sie die Datei herunter, um sie auf Ihrem Gerät zu öffnen.",
+      "download": "Herunterladen",
+      "previous": "Vorherige Datei",
+      "next": "Nächste Datei",
+      "sampleNote": "Beispieldatei: ein Platzhalter, kein echter Upload",
+      "newTab": "In neuem Tab öffnen"
     }
   }
 }

@@ -529,7 +529,16 @@
     "clearSelection": "選択を解除",
     "errorTitle": "一覧を読み込めませんでした",
     "noResults": "該当なし",
-    "noResultsDesc": "別の検索語を試すか、フィルターを解除してください。"
+    "noResultsDesc": "別の検索語を試すか、フィルターを解除してください。",
+    "columns": {
+      "button": "列",
+      "title": "列",
+      "hint": "ドラッグまたは矢印で移動、チェックで表示。",
+      "reset": "リセット",
+      "show": "{name} を表示",
+      "up": "{name} を上へ",
+      "down": "{name} を下へ"
+    }
   },
   "status": {
     "draft": "下書き",
@@ -3184,7 +3193,8 @@
       "completionHint": "開始した人のうち送信した人の割合",
       "last": "最新の回答",
       "busiest": "最多: {name}",
-      "label": "概要"
+      "label": "概要",
+      "totalLabel": "合計"
     },
     "trend": {
       "title": "回答の推移",
@@ -3296,7 +3306,11 @@
       "navigate": "回答を移動",
       "prevShort": "前へ",
       "nextShort": "次へ",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "回答",
+      "onlyAnswered": "回答済みのみ",
+      "groups": "回答のグループ",
+      "nothingHere": "表示するものはありません"
     },
     "device": {
       "desktop": "パソコン",
@@ -3315,7 +3329,34 @@
         "reviewed": "確認済み",
         "approved": "承認",
         "rejected": "却下"
-      }
+      },
+      "answered": "回答済み"
+    },
+    "overview": {
+      "responses": "回答",
+      "vsBefore": "前の期間との比較",
+      "toReview": "要確認 {n} 件"
+    },
+    "groups": {
+      "all": "すべて",
+      "person": "人と連絡先",
+      "choices": "選択",
+      "ratings": "評価",
+      "written": "記述",
+      "numbers": "数値と日付",
+      "files": "ファイル",
+      "other": "その他"
+    },
+    "files": {
+      "open": "{name} を開く",
+      "title": "ファイル",
+      "noPreview": "このファイルはプレビューできません",
+      "noPreviewDesc": "ブラウザではこの種類のファイルを表示できません。ダウンロードしてお使いの端末で開いてください。",
+      "download": "ダウンロード",
+      "previous": "前のファイル",
+      "next": "次のファイル",
+      "sampleNote": "サンプルファイル: 実際のアップロードではない代替ファイル",
+      "newTab": "新しいタブで開く"
     }
   }
 }

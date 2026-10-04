@@ -24,6 +24,8 @@ const props = withDefaults(
     busy?: (row: T) => boolean
     /** Click (or Enter on) a row opens it, e.g. a detail panel (F11 responses). */
     openRow?: (row: T) => void
+    /** The Columns menu: move and show / hide columns (owner 2026-10-04); on for 4+ columns. */
+    columnsMenu?: boolean
     emptyIcon?: string
     emptyTitle?: string
     emptyDescription?: string
@@ -38,6 +40,7 @@ const props = withDefaults(
     rowActions: undefined,
     busy: undefined,
     openRow: undefined,
+    columnsMenu: undefined,
     emptyIcon: 'i-lucide-inbox',
     emptyTitle: undefined,
     emptyDescription: undefined,
@@ -46,7 +49,7 @@ const props = withDefaults(
 
 const slots = defineSlots<
   {
-    'grid-card'?(props: { row: T }): unknown
+    'grid-card'?(props: { row: T; columns: string[] }): unknown
     'empty-actions'?(): unknown
     'bulk-actions'?(props: { selected: T[]; clear: () => void }): unknown
     'toolbar-end'?(): unknown
@@ -68,6 +71,26 @@ const state = useDataView<T>({
   defaultSort: props.defaultSort,
   defaultView: props.defaultView,
 })
+
+// ── Column order and visibility (remembered per list on this browser) ───────────────────
+const layout = useLocalStorage<{ order: string[]; hidden: string[]; shown: string[] }>(`formalie:columns:${props.id}`, { order: [], hidden: [], shown: [] }, { mergeDefaults: true })
+const columnOrder = computed(() => {
+  const keys = props.columns.map(column => column.key)
+  const known = layout.value.order.filter(key => keys.includes(key))
+  return [...known, ...keys.filter(key => !known.includes(key))]
+})
+const isVisible = (column: DataColumn) =>
+  !!column.fixed || (layout.value.shown.includes(column.key) ? true : layout.value.hidden.includes(column.key) ? false : !column.hidden)
+const orderedColumns = computed(() => {
+  const byKey = new Map(props.columns.map(column => [column.key, column]))
+  return columnOrder.value.map(key => byKey.get(key)!).filter(isVisible)
+})
+const showColumnsMenu = computed(() => props.columnsMenu ?? props.columns.length > 3)
+function toggleColumn(key: string, on: boolean) {
+  const { hidden, shown } = layout.value
+  layout.value = { ...layout.value, hidden: on ? hidden.filter(k => k !== key) : [...new Set([...hidden, key])], shown: on ? [...new Set([...shown, key])] : shown.filter(k => k !== key) }
+}
+const resetColumns = () => (layout.value = { order: [], hidden: [], shown: [] })
 
 const HIDE = { sm: 'hidden sm:table-cell', md: 'hidden md:table-cell', lg: 'hidden lg:table-cell' }
 
@@ -101,7 +124,7 @@ const selectedRows = computed(() =>
 )
 
 const tableColumns = computed<TableColumn<T>[]>(() => {
-  const columns: TableColumn<T>[] = props.columns.map(column => ({
+  const columns: TableColumn<T>[] = orderedColumns.value.map(column => ({
     accessorKey: column.key,
     id: column.key,
     header: column.sortable ? () => sortHeader(column) : column.label,
@@ -178,8 +201,17 @@ defineExpose({ refresh: state.refresh, state })
       <template v-if="slots['toolbar-start']" #start>
         <slot name="toolbar-start" />
       </template>
-      <template v-if="slots['toolbar-end']" #end>
+      <template v-if="slots['toolbar-end'] || (showColumnsMenu && state.view.value === 'table')" #end>
         <slot name="toolbar-end" />
+        <DataColumns
+          v-if="showColumnsMenu && state.view.value === 'table'"
+          :columns="columns"
+          :order="columnOrder"
+          :visible="isVisible"
+          @order="keys => (layout = { ...layout, order: keys })"
+          @toggle="toggleColumn"
+          @reset="resetColumns"
+        />
       </template>
     </DataToolbar>
 
@@ -257,7 +289,7 @@ defineExpose({ refresh: state.refresh, state })
             :class="state.loading.value ? 'opacity-60' : busy?.(row) ? BUSY_ROW : ''"
             :aria-busy="busy?.(row) || undefined"
           >
-            <slot name="grid-card" :row="row">
+            <slot name="grid-card" :row="row" :columns="orderedColumns.map(column => column.key)">
               <UCard>{{ row[columns[0]!.key] }}</UCard>
             </slot>
           </div>

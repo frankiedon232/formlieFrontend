@@ -198,7 +198,7 @@ Shapes in `shared/types/responses.ts` (decision 100). Reading needs "Responses o
 
 | Method | Path | Notes |
 | --- | --- | --- |
-| GET | `/forms/{id}/responses` | `ResponseRow[] { id, number, form { id, name }, submitted_at, status: new\|reviewed\|approved\|rejected, tags, respondent { name, email, kind: invite\|member\|answer\|anonymous }, channel: link\|embed\|api, language, duration_seconds, answers (by field key), notes_count, edited, possible_duplicate { of, reason } \| null }`; `?q` (names, emails, answers, `#number`), `filter[status]`, `filter[tag]`, `filter[channel]`, `filter[flag]=duplicate`, `from`, `to`, `sort` (`-submitted_at` default, `submitted_at`, `status`, `respondent`, `number`), `page`, `page_size`. Per-field filters (`filter[field_key][op]`) come later |
+| GET | `/forms/{id}/responses` | `ResponseRow[] { id, number, form { id, name }, submitted_at, status: new\|reviewed\|approved\|rejected, tags, respondent { name, email, kind: invite\|member\|answer\|anonymous }, channel: link\|embed\|api, language, duration_seconds, answers (by field key), notes_count, answered, questions, files_count, edited, possible_duplicate { of, reason } \| null }`; `?q` (names, emails, answers, `#number`), `filter[status]`, `filter[tag]`, `filter[channel]`, `filter[flag]=duplicate`, `from`, `to`, `sort` (`-submitted_at` default, `submitted_at`, `status`, `respondent`, `number`), `page`, `page_size`. Per-field filters (`filter[field_key][op]`) come later |
 | GET | `/forms/{id}/responses/insights` | `?from&to` (default the last 30 days) → `ResponseInsights { total, new, period { from, to, count, previous }, daily [{ date, count }], status, channels, languages [{ code, count }], median_seconds, completion_rate (null = not measured), last_at, questions: QuestionInsight[] (choice counts, rating average + distribution, number average / median / min / max, latest text answers), schema }` |
 | GET | `/responses` | the inbox: every form the person may see; rows without `answers`; same query plus `filter[form]` |
 | GET | `/responses/insights` | inbox numbers: as above plus `top_forms [{ id, name, count }]`, no `questions` |
@@ -206,6 +206,8 @@ Shapes in `shared/types/responses.ts` (decision 100). Reading needs "Responses o
 | PATCH | `/responses/{id}` | `{ status?, tags? (up to 20, 40 characters each), data? (changed answers; editors only) }` → `ResponseDetail`; each change goes into `history` |
 | POST | `/responses/{id}/notes` | `{ text }` (up to 2000) → `ResponseDetail`; notes are for the team only |
 | DELETE | `/responses/{id}` | removed for good (editors only) → `{ deleted: 1 }` |
+| POST | `/responses/{id}/files` | `{ field, index }` → `{ url, download_url, name, type, size, previewable, sample, expires_at }`: a private link to one file of the response, valid 5 minutes, bound to the workspace (decision 101) |
+| GET | `/response-files/{token}` | **plain** file response (an image, video or PDF frame can't carry the envelope): inline, or `?download=1` as an attachment; `nosniff`, SVG sandboxed; expired → 410 |
 | POST | `/responses/bulk` | `{ ids (up to 500), action: status\|tag\|untag\|delete, value? }` → `{ done, skipped }` (responses the person may not change are skipped) |
 | POST | `/forms/{id}/exports` | `{ format: xlsx|csv|pdf, scope: all|filtered|selected, filters, ids }` → job |
 | GET | `/exports/{job_id}` | `{ status, progress, download_url? }` |

@@ -529,7 +529,16 @@
     "clearSelection": "Quitar selección",
     "errorTitle": "No se pudo cargar esta lista",
     "noResults": "Sin resultados",
-    "noResultsDesc": "Prueba otra búsqueda o borra los filtros."
+    "noResultsDesc": "Prueba otra búsqueda o borra los filtros.",
+    "columns": {
+      "button": "Columnas",
+      "title": "Columnas",
+      "hint": "Arrastra o usa las flechas para mover; marca para mostrar.",
+      "reset": "Restablecer",
+      "show": "Mostrar {name}",
+      "up": "Subir {name}",
+      "down": "Bajar {name}"
+    }
   },
   "status": {
     "draft": "Borrador",
@@ -3184,7 +3193,8 @@
       "completionHint": "De quienes empezaron, cuántos lo enviaron",
       "last": "Última respuesta",
       "busiest": "Más activo: {name}",
-      "label": "De un vistazo"
+      "label": "De un vistazo",
+      "totalLabel": "Total"
     },
     "trend": {
       "title": "Respuestas en el tiempo",
@@ -3296,7 +3306,11 @@
       "navigate": "Moverse entre respuestas",
       "prevShort": "Anterior",
       "nextShort": "Siguiente",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Respuestas",
+      "onlyAnswered": "Solo respondidas",
+      "groups": "Grupos de respuestas",
+      "nothingHere": "Nada que mostrar aquí"
     },
     "device": {
       "desktop": "Ordenador",
@@ -3315,7 +3329,34 @@
         "reviewed": "Revisada",
         "approved": "Aprobar",
         "rejected": "Rechazar"
-      }
+      },
+      "answered": "Respondidas"
+    },
+    "overview": {
+      "responses": "Respuestas",
+      "vsBefore": "frente al periodo anterior",
+      "toReview": "{n} por revisar"
+    },
+    "groups": {
+      "all": "Todo",
+      "person": "Personas y contacto",
+      "choices": "Opciones",
+      "ratings": "Valoraciones",
+      "written": "Escrito",
+      "numbers": "Números y fechas",
+      "files": "Archivos",
+      "other": "Otros"
+    },
+    "files": {
+      "open": "Abrir {name}",
+      "title": "Archivo",
+      "noPreview": "Este archivo no tiene vista previa",
+      "noPreviewDesc": "Tu navegador no puede mostrar este tipo de archivo. Descárgalo para abrirlo en tu dispositivo.",
+      "download": "Descargar",
+      "previous": "Archivo anterior",
+      "next": "Archivo siguiente",
+      "sampleNote": "Archivo de ejemplo: un sustituto, no una subida real",
+      "newTab": "Abrir en una pestaña nueva"
     }
   }
 }

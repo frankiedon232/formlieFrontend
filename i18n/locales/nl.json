@@ -529,7 +529,16 @@
     "clearSelection": "Selectie wissen",
     "errorTitle": "Deze lijst kon niet worden geladen",
     "noResults": "Geen resultaten",
-    "noResultsDesc": "Probeer een andere zoekopdracht of wis de filters."
+    "noResultsDesc": "Probeer een andere zoekopdracht of wis de filters.",
+    "columns": {
+      "button": "Kolommen",
+      "title": "Kolommen",
+      "hint": "Sleep of gebruik de pijlen om te verplaatsen; vink aan om te tonen.",
+      "reset": "Herstellen",
+      "show": "{name} tonen",
+      "up": "{name} omhoog",
+      "down": "{name} omlaag"
+    }
   },
   "status": {
     "draft": "Concept",
@@ -3184,7 +3193,8 @@
       "completionHint": "Van wie begon, hoeveel het verstuurden",
       "last": "Laatste antwoord",
       "busiest": "Drukst: {name}",
-      "label": "In één oogopslag"
+      "label": "In één oogopslag",
+      "totalLabel": "Totaal"
     },
     "trend": {
       "title": "Antwoorden door de tijd",
@@ -3296,7 +3306,11 @@
       "navigate": "Tussen antwoorden wisselen",
       "prevShort": "Vorige",
       "nextShort": "Volgende",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Antwoorden",
+      "onlyAnswered": "Alleen beantwoord",
+      "groups": "Antwoordgroepen",
+      "nothingHere": "Niets te tonen"
     },
     "device": {
       "desktop": "Computer",
@@ -3315,7 +3329,34 @@
         "reviewed": "Beoordeeld",
         "approved": "Goedkeuren",
         "rejected": "Afwijzen"
-      }
+      },
+      "answered": "Beantwoord"
+    },
+    "overview": {
+      "responses": "Antwoorden",
+      "vsBefore": "t.o.v. de periode ervoor",
+      "toReview": "{n} te beoordelen"
+    },
+    "groups": {
+      "all": "Alles",
+      "person": "Personen en contact",
+      "choices": "Keuzes",
+      "ratings": "Beoordelingen",
+      "written": "Tekst",
+      "numbers": "Getallen en datums",
+      "files": "Bestanden",
+      "other": "Overig"
+    },
+    "files": {
+      "open": "{name} openen",
+      "title": "Bestand",
+      "noPreview": "Dit bestand heeft geen voorbeeld",
+      "noPreviewDesc": "Je browser kan dit bestandstype niet tonen. Download het om het op je apparaat te openen.",
+      "download": "Downloaden",
+      "previous": "Vorig bestand",
+      "next": "Volgend bestand",
+      "sampleNote": "Voorbeeldbestand: een vervanger, geen echte upload",
+      "newTab": "Openen in nieuw tabblad"
     }
   }
 }

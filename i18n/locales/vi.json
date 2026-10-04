@@ -529,7 +529,16 @@
     "clearSelection": "Bỏ chọn",
     "errorTitle": "Không thể tải danh sách này",
     "noResults": "Không có kết quả",
-    "noResultsDesc": "Hãy thử từ khóa khác hoặc xóa bộ lọc."
+    "noResultsDesc": "Hãy thử từ khóa khác hoặc xóa bộ lọc.",
+    "columns": {
+      "button": "Cột",
+      "title": "Cột",
+      "hint": "Kéo hoặc dùng mũi tên để di chuyển; đánh dấu để hiện.",
+      "reset": "Đặt lại",
+      "show": "Hiện {name}",
+      "up": "Đưa {name} lên",
+      "down": "Đưa {name} xuống"
+    }
   },
   "status": {
     "draft": "Bản nháp",
@@ -3184,7 +3193,8 @@
       "completionHint": "Trong số người bắt đầu, bao nhiêu người đã gửi",
       "last": "Phản hồi gần nhất",
       "busiest": "Nhiều nhất: {name}",
-      "label": "Tổng quan nhanh"
+      "label": "Tổng quan nhanh",
+      "totalLabel": "Tổng"
     },
     "trend": {
       "title": "Phản hồi theo thời gian",
@@ -3296,7 +3306,11 @@
       "navigate": "Chuyển giữa các phản hồi",
       "prevShort": "Trước",
       "nextShort": "Sau",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Câu trả lời",
+      "onlyAnswered": "Chỉ câu đã trả lời",
+      "groups": "Nhóm câu trả lời",
+      "nothingHere": "Không có gì ở đây"
     },
     "device": {
       "desktop": "Máy tính",
@@ -3315,7 +3329,34 @@
         "reviewed": "Đã xem",
         "approved": "Duyệt",
         "rejected": "Từ chối"
-      }
+      },
+      "answered": "Đã trả lời"
+    },
+    "overview": {
+      "responses": "Phản hồi",
+      "vsBefore": "so với kỳ trước",
+      "toReview": "{n} cần xem xét"
+    },
+    "groups": {
+      "all": "Tất cả",
+      "person": "Người & liên hệ",
+      "choices": "Lựa chọn",
+      "ratings": "Đánh giá",
+      "written": "Văn bản",
+      "numbers": "Số & ngày",
+      "files": "Tệp",
+      "other": "Khác"
+    },
+    "files": {
+      "open": "Mở {name}",
+      "title": "Tệp",
+      "noPreview": "Không thể xem trước tệp này",
+      "noPreviewDesc": "Trình duyệt không hiển thị được loại tệp này. Hãy tải xuống để mở trên thiết bị.",
+      "download": "Tải xuống",
+      "previous": "Tệp trước",
+      "next": "Tệp sau",
+      "sampleNote": "Tệp mẫu: bản thay thế, không phải tệp tải lên thật",
+      "newTab": "Mở trong thẻ mới"
     }
   }
 }

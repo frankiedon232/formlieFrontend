@@ -529,7 +529,16 @@
     "clearSelection": "清除选择",
     "errorTitle": "无法加载此列表",
     "noResults": "没有结果",
-    "noResultsDesc": "请尝试其他搜索词或清除筛选条件。"
+    "noResultsDesc": "请尝试其他搜索词或清除筛选条件。",
+    "columns": {
+      "button": "列",
+      "title": "列",
+      "hint": "拖动或使用箭头移动；勾选即可显示。",
+      "reset": "重置",
+      "show": "显示{name}",
+      "up": "上移{name}",
+      "down": "下移{name}"
+    }
   },
   "status": {
     "draft": "草稿",
@@ -3184,7 +3193,8 @@
       "completionHint": "开始填写的人中有多少人提交",
       "last": "最近回复",
       "busiest": "最多：{name}",
-      "label": "概览"
+      "label": "概览",
+      "totalLabel": "总计"
     },
     "trend": {
       "title": "回复趋势",
@@ -3296,7 +3306,11 @@
       "navigate": "在回复之间切换",
       "prevShort": "上一条",
       "nextShort": "下一条",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "答案",
+      "onlyAnswered": "仅显示已作答",
+      "groups": "答案分组",
+      "nothingHere": "这里没有内容"
     },
     "device": {
       "desktop": "电脑",
@@ -3315,7 +3329,34 @@
         "reviewed": "已查看",
         "approved": "批准",
         "rejected": "拒绝"
-      }
+      },
+      "answered": "已作答"
+    },
+    "overview": {
+      "responses": "回复",
+      "vsBefore": "与上一时段相比",
+      "toReview": "{n} 条待审核"
+    },
+    "groups": {
+      "all": "全部",
+      "person": "人员与联系方式",
+      "choices": "选项",
+      "ratings": "评分",
+      "written": "文字",
+      "numbers": "数字与日期",
+      "files": "文件",
+      "other": "其他"
+    },
+    "files": {
+      "open": "打开{name}",
+      "title": "文件",
+      "noPreview": "此文件无法预览",
+      "noPreviewDesc": "浏览器无法显示此类文件。请下载后在设备上打开。",
+      "download": "下载",
+      "previous": "上一个文件",
+      "next": "下一个文件",
+      "sampleNote": "示例文件：替代文件，并非真实上传",
+      "newTab": "在新标签页中打开"
     }
   }
 }

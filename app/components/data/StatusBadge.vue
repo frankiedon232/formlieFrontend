@@ -11,8 +11,8 @@ const COLORS: Record<string, BadgeProps['color']> = {
   closed: 'secondary',
   archived: 'neutral',
   // Responses (F11): review status.
-  new: 'info',
-  reviewed: 'neutral',
+  new: 'neutral',
+  reviewed: 'warning',
   approved: 'success',
   rejected: 'error',
 }

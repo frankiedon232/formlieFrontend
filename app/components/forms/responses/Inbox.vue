@@ -118,7 +118,7 @@ defineExpose({ refresh: () => view.value?.refresh() })
     </template>
 
     <template #grid-card="{ row }">
-      <FormsResponsesCard :row="row" :fields="[]" :busy="busyIds.has(row.id)" @open="openRow(row)" @status="status => mark([row.id], status)" />
+      <FormsResponsesCard :row="row" :fields="[]" :actions="rowActions(row)" @open="openRow(row)" />
     </template>
 
     <template #bulk-actions="{ selected, clear }">

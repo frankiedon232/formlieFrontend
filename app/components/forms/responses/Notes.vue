@@ -1,7 +1,7 @@
 <!--
-  Notes and history of a response (F11): notes for the team (never shown to the respondent), newest
-  first, with a box to add one (Ctrl / ⌘ + Enter sends); then every change (status, tags, answers)
-  as a slim timeline.
+  Notes on a response (F11): for the team only (never shown to the respondent), newest first, with
+  a box to add one (Ctrl / ⌘ + Enter sends). The change history stays in the audit trail; the panel
+  shows only what matters (owner, 2026-10-04).
 -->
 <script setup lang="ts">
 import type { ResponseDetail } from '#shared/types/responses'
@@ -25,19 +25,6 @@ async function add() {
   })
 }
 
-const fieldLabel = (field: string) => {
-  if (field === 'status') return t('responses.list.status')
-  if (field === 'tags') return t('responses.detail.tags')
-  if (field === 'note') return t('responses.detail.note')
-  const key = field.replace(/^answer:/, '')
-  return props.response.schema.pages.flatMap(page => page.rows.flatMap(row => row.fields)).find(item => item.key === key)?.label ?? key
-}
-const show = (value: unknown, field: string) => {
-  if (value == null || value === '') return '–'
-  if (field === 'status') return t(`status.${value}`)
-  if (Array.isArray(value)) return value.join(', ') || '–'
-  return typeof value === 'object' ? JSON.stringify(value) : String(value)
-}
 </script>
 
 <template>
@@ -70,21 +57,5 @@ const show = (value: unknown, field: string) => {
         <p class="text-sm whitespace-pre-line text-default">{{ note.text }}</p>
       </li>
     </ul>
-  </section>
-
-  <section v-if="response.history.length" class="flex flex-col gap-3">
-    <h3 class="text-xs font-medium text-muted uppercase">{{ t('responses.detail.history') }}</h3>
-    <ol class="flex flex-col">
-      <li v-for="change in response.history" :key="change.id" class="flex gap-3 border-s border-default ps-3 pb-3 last:pb-0">
-        <div class="flex min-w-0 flex-col gap-0.5 text-sm">
-          <span class="text-default">
-            <span class="font-medium text-highlighted">{{ change.by.name }}</span>
-            {{ t('responses.detail.changed', { field: fieldLabel(change.field) }) }}
-          </span>
-          <span v-if="change.field !== 'note'" class="truncate text-xs text-muted">{{ show(change.before, change.field) }} → {{ show(change.after, change.field) }}</span>
-          <UTooltip :text="dateTime(change.at)"><span class="w-fit text-[11px] text-dimmed">{{ relative(change.at) }}</span></UTooltip>
-        </div>
-      </li>
-    </ol>
   </section>
 </template>

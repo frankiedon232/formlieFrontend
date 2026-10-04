@@ -105,7 +105,7 @@ onBeforeUnmount(() => clearTimeout(timer))
       variant="outline"
     />
     <div v-else class="flex flex-col gap-4">
-      <FormsResponsesKpis :insights="insights" @review="filterStatus('new')" />
+      <FormsResponsesOverview :insights="insights" :status="statusFilter" @status="filterStatus" @insights="view = 'insights'" />
       <FormsResponsesInbox v-if="view === 'responses'" ref="list" @open="openRow" @changed="changed">
         <template #start><FormsResponsesViewSwitch v-model="view" /></template>
       </FormsResponsesInbox>

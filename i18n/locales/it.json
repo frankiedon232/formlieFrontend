@@ -529,7 +529,16 @@
     "clearSelection": "Annulla selezione",
     "errorTitle": "Impossibile caricare questo elenco",
     "noResults": "Nessun risultato",
-    "noResultsDesc": "Prova un’altra ricerca o rimuovi i filtri."
+    "noResultsDesc": "Prova un’altra ricerca o rimuovi i filtri.",
+    "columns": {
+      "button": "Colonne",
+      "title": "Colonne",
+      "hint": "Trascina o usa le frecce per spostare; spunta per mostrare.",
+      "reset": "Ripristina",
+      "show": "Mostra {name}",
+      "up": "Sposta su {name}",
+      "down": "Sposta giù {name}"
+    }
   },
   "status": {
     "draft": "Bozza",
@@ -3184,7 +3193,8 @@
       "completionHint": "Di chi ha iniziato, quanti l'hanno inviato",
       "last": "Ultima risposta",
       "busiest": "Più attivo: {name}",
-      "label": "A colpo d'occhio"
+      "label": "A colpo d'occhio",
+      "totalLabel": "Totale"
     },
     "trend": {
       "title": "Risposte nel tempo",
@@ -3296,7 +3306,11 @@
       "navigate": "Passa tra le risposte",
       "prevShort": "Precedente",
       "nextShort": "Successiva",
-      "position": "{n} / {total}"
+      "position": "{n} / {total}",
+      "answers": "Risposte",
+      "onlyAnswered": "Solo le risposte date",
+      "groups": "Gruppi di risposte",
+      "nothingHere": "Niente da mostrare qui"
     },
     "device": {
       "desktop": "Computer",
@@ -3315,7 +3329,34 @@
         "reviewed": "Esaminata",
         "approved": "Approva",
         "rejected": "Respingi"
-      }
+      },
+      "answered": "Risposte date"
+    },
+    "overview": {
+      "responses": "Risposte",
+      "vsBefore": "rispetto al periodo precedente",
+      "toReview": "{n} da esaminare"
+    },
+    "groups": {
+      "all": "Tutto",
+      "person": "Persone e contatti",
+      "choices": "Scelte",
+      "ratings": "Valutazioni",
+      "written": "Testo",
+      "numbers": "Numeri e date",
+      "files": "File",
+      "other": "Altro"
+    },
+    "files": {
+      "open": "Apri {name}",
+      "title": "File",
+      "noPreview": "Questo file non ha anteprima",
+      "noPreviewDesc": "Il browser non può mostrare questo tipo di file. Scaricalo per aprirlo sul tuo dispositivo.",
+      "download": "Scarica",
+      "previous": "File precedente",
+      "next": "File successivo",
+      "sampleNote": "File di esempio: un segnaposto, non un vero caricamento",
+      "newTab": "Apri in una nuova scheda"
     }
   }
 }

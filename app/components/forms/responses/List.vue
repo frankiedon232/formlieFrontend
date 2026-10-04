@@ -1,7 +1,7 @@
 <!--
   A form's responses in the shared DataView (F11, CLAUDE.md rule 6): #, respondent, submitted,
-  status, then the questions picked in "Columns" (remembered per form; ratings as slim bars like the
-  design's progress column), notes. Filters: status, channel, possible duplicates; search covers
+  status, every question (the first four useful ones shown; move or show / hide any in Columns,
+  remembered per form; ratings as slim bars like the design's progress column), notes. Filters: status, channel, possible duplicates; search covers
   the answers too. A row (or card) opens the response; bulk: set status, delete (editors).
 -->
 <script setup lang="ts">
@@ -19,33 +19,21 @@ const { relative, dateTime, number } = useFormat()
 const { text } = useResponseFormat()
 const view = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: { value: ResponseRow[] } } }>('view')
 
-// ── Question columns (remembered per form) ─────────────────────────────────────────────
+// ── Question columns: all of them, the first four useful ones shown (Columns moves / shows / hides)
 const questions = computed(() => allFields(props.schema).filter(field => isInputField(field.type) && field.type !== 'payment'))
 const byKey = computed(() => new Map(questions.value.map(field => [field.key, field])))
-const stored = useLocalStorage<string[] | null>(`formalie:responses:columns:${props.formId}`, null)
-const picked = computed<string[]>({
-  get: () => (stored.value ?? questions.value.filter(goodColumn).slice(0, 4).map(field => field.key)).filter(key => byKey.value.has(key)),
-  set: keys => (stored.value = keys),
-})
-const columnMenu = computed<DropdownMenuItem[][]>(() => [
-  [{ type: 'label', label: t('responses.list.columns') }],
-  questions.value.map(field => ({
-    label: field.label?.trim() || field.key,
-    type: 'checkbox' as const,
-    checked: picked.value.includes(field.key),
-    onUpdateChecked: (on: boolean) => (picked.value = on ? questions.value.map(f => f.key).filter(key => key === field.key || picked.value.includes(key)) : picked.value.filter(key => key !== field.key)),
-    onSelect: (event: Event) => event.preventDefault(),
-  })),
-])
+const shownFirst = computed(() => new Set(questions.value.filter(goodColumn).slice(0, 4).map(field => field.key)))
 
 const columns = computed<DataColumn[]>(() => [
   { key: 'number', label: '#', sortable: true, class: 'w-16' },
-  { key: 'respondent', label: t('responses.list.respondent'), sortable: true },
+  { key: 'respondent', label: t('responses.list.respondent'), sortable: true, fixed: true },
   { key: 'submitted_at', label: t('responses.list.submitted'), sortable: true, hideBelow: 'sm' },
   { key: 'status', label: t('responses.list.status'), sortable: true },
-  ...picked.value.map(key => ({ key: `q_${key}`, label: byKey.value.get(key)?.label?.trim() || key, hideBelow: 'lg' as const, class: 'max-w-56' })),
+  ...questions.value.map(field => ({ key: `q_${field.key}`, label: field.label?.trim() || field.key, hideBelow: 'lg' as const, class: 'max-w-56', hidden: !shownFirst.value.has(field.key) })),
   { key: 'notes_count', label: t('responses.list.notes'), hideBelow: 'md', class: 'w-16' },
 ])
+/** The card shows the first four questions shown in the table (same order). */
+const cardFields = (shown: string[]) => shown.filter(key => key.startsWith('q_')).map(key => byKey.value.get(key.slice(2))!).filter(Boolean).slice(0, 4)
 const fieldOf = (column: string): FormField | undefined => byKey.value.get(column.slice(2))
 const meter = (field: FormField | undefined) => !!field && ['rating', 'scale', 'slider'].includes(field.type)
 const maxOf = (field: FormField) => Number(field.props?.max ?? (field.type === 'rating' ? 5 : field.type === 'scale' ? 10 : 100))
@@ -113,11 +101,6 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
     :empty-title="t('responses.list.empty')"
     :empty-description="t('responses.list.emptyDesc')"
   >
-    <template #toolbar-end>
-      <UDropdownMenu :items="columnMenu" :content="{ align: 'end' }" :ui="{ content: 'max-h-80' }">
-        <UButton icon="i-lucide-columns-3" :label="t('responses.list.columns')" color="neutral" variant="outline" :ui="{ label: 'hidden sm:inline' }" />
-      </UDropdownMenu>
-    </template>
 
     <template #number-cell="{ row }">
       <span class="text-muted tabular-nums">#{{ row.original.number }}</span>
@@ -136,12 +119,12 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
     <template #status-cell="{ row }">
       <DataStatusBadge :status="row.original.status" />
     </template>
-    <template v-for="key in picked" :key="`h_${key}`" #[`q_${key}-header`]>
+    <template v-for="key in byKey.keys()" :key="`h_${key}`" #[`q_${key}-header`]>
       <UTooltip :text="byKey.get(key)?.label || key">
         <span class="block max-w-44 truncate">{{ byKey.get(key)?.label || key }}</span>
       </UTooltip>
     </template>
-    <template v-for="key in picked" :key="key" #[`q_${key}-cell`]="{ row }">
+    <template v-for="key in byKey.keys()" :key="key" #[`q_${key}-cell`]="{ row }">
       <div v-if="meter(fieldOf(`q_${key}`)) && row.original.answers[key] != null" class="flex w-28 items-center gap-2">
         <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-elevated">
           <div class="h-full rounded-full bg-inverted" :style="{ width: `${(Number(row.original.answers[key]) / maxOf(fieldOf(`q_${key}`)!)) * 100}%` }" />
@@ -155,8 +138,8 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
       <span v-else class="sr-only">0</span>
     </template>
 
-    <template #grid-card="{ row }">
-      <FormsResponsesCard :row="row" :fields="picked.map(key => byKey.get(key)!).slice(0, 4)" :busy="busyIds.has(row.id)" @open="openRow(row)" @status="status => bulk([row.id], 'status', status)" />
+    <template #grid-card="{ row, columns: shown }">
+      <FormsResponsesCard :row="row" :fields="cardFields(shown)" :actions="rowActions(row)" @open="openRow(row)" />
     </template>
 
     <template #bulk-actions="{ selected, clear }">
