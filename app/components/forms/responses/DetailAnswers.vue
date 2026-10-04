@@ -5,13 +5,20 @@
   without a scrollbar (AppChipScroller: wheel, arrows, a clicked chip centres) and "Only answered". Each group: a header with how many were answered, then tiles in
   two columns that share one height per row; long text and grids take the full width. Files flow
   (owner 2026-10-04): each question's tile is as wide as its files, side by side, wrapping when full.
+  Editors see a pencil on every answer that can be changed (F11 M2; opens EditAnswer); a changed
+  answer carries an "Edited" mark with who changed it, when, and what it was before.
 -->
 <script setup lang="ts">
-import type { ResponseDetail } from '#shared/types/responses'
+import type { ResponseChange, ResponseDetail } from '#shared/types/responses'
+import type { FormField } from '#shared/utils/forms/build'
+import { canEditAnswer } from '#shared/utils/forms/answer-edit'
 import { FIELD_TYPES, isInputField } from '#shared/utils/forms/fields'
 
 const props = defineProps<{ response: ResponseDetail }>()
+const emit = defineEmits<{ updated: [response: ResponseDetail] }>()
 const { t } = useI18n()
+const { relative, dateTime } = useFormat()
+const { text } = useResponseFormat()
 
 const filled = (value: unknown) => value != null && value !== '' && !(Array.isArray(value) && !value.length)
 const fields = computed(() =>
@@ -36,6 +43,22 @@ const shown = computed(() =>
 const icon = (type: string) => (FIELD_TYPES as Record<string, { icon: string }>)[type]?.icon ?? 'i-lucide-circle-help'
 const total = computed(() => fields.value.length)
 const answeredTotal = computed(() => fields.value.filter(field => filled(props.response.data[field.key])).length)
+
+// Editing (people with "Can edit"): the latest change per answer, and the dialog.
+const editable = (field: FormField) => props.response.can.edit && canEditAnswer(field)
+const lastEdit = computed(() => {
+  const map = new Map<string, ResponseChange>()
+  for (const change of props.response.history) if (change.field.startsWith('answer:') && !map.has(change.field.slice(7))) map.set(change.field.slice(7), change)
+  return map
+})
+const editHint = (field: FormField, change: ResponseChange) =>
+  t('responses.edit.mark', { who: change.by.name, when: relative(change.at), before: filled(change.before) ? text(field, change.before) : t('responses.detail.noAnswer') })
+const editing = ref<FormField | null>(null)
+const editOpen = ref(false)
+function edit(field: FormField) {
+  editing.value = field
+  editOpen.value = true
+}
 </script>
 
 <template>
@@ -74,18 +97,33 @@ const answeredTotal = computed(() => fields.value.filter(field => filled(props.r
         <div
           v-for="field in item.fields"
           :key="field.id"
-          class="flex h-full min-w-0 flex-col gap-2 rounded-lg border border-default p-3"
+          class="group/tile flex h-full min-w-0 flex-col gap-2 rounded-lg border border-default p-3"
           :class="[item.key === 'files' ? 'max-w-full min-w-40 flex-auto sm:flex-none' : wideAnswer(field) ? 'sm:col-span-2' : '', filled(response.data[field.key]) ? 'bg-default' : 'bg-elevated/30']"
         >
           <dt class="flex items-start gap-2 text-xs text-muted">
             <UIcon :name="icon(field.type)" class="mt-px size-3.5 shrink-0" />
             <!-- w-0 + flex-1: a long question wraps instead of widening a file tile -->
             <span class="line-clamp-2 w-0 min-w-0 flex-1">{{ field.label || field.key }}</span>
+            <UTooltip v-if="lastEdit.get(field.key)" :text="editHint(field, lastEdit.get(field.key)!)">
+              <UBadge :label="t('responses.edit.edited')" icon="i-lucide-pencil-line" color="warning" variant="subtle" size="sm" class="-my-0.5 shrink-0 rounded-md" :title="dateTime(lastEdit.get(field.key)!.at)" />
+            </UTooltip>
+            <UButton
+              v-if="editable(field)"
+              icon="i-lucide-pencil"
+              color="neutral"
+              variant="ghost"
+              size="xs"
+              square
+              class="-my-1 -me-1 shrink-0 opacity-100 transition-opacity focus-visible:opacity-100 sm:opacity-0 sm:group-hover/tile:opacity-100"
+              :aria-label="t('responses.edit.open', { field: field.label || field.key })"
+              @click="edit(field)"
+            />
           </dt>
           <dd class="min-w-0"><FormsResponsesAnswer :field="field" :value="response.data[field.key]" :response-id="response.id" /></dd>
         </div>
       </dl>
     </div>
     <UEmpty v-if="!shown.length" icon="i-lucide-filter-x" :title="t('responses.detail.nothingHere')" variant="naked" size="sm" />
+    <FormsResponsesEditAnswer v-if="response.can.edit" v-model:open="editOpen" :response="response" :field="editing" @saved="value => emit('updated', value)" />
   </section>
 </template>

@@ -3401,6 +3401,16 @@
       "openResponses": "打开回复",
       "openForm": "打开表单",
       "search": "搜索表单…"
+    },
+    "edit": {
+      "title": "编辑回答",
+      "desc": "回复 #{n}",
+      "recorded": "更改会连同你的姓名、时间和原回答一起保存，并记录在审计日志中。",
+      "save": "保存回答",
+      "saved": "回答已更新",
+      "edited": "已编辑",
+      "mark": "{who} 于{when}修改。原为：{before}",
+      "open": "编辑回答：{field}"
     }
   }
 }

@@ -3401,6 +3401,16 @@
       "openResponses": "Fungua majibu",
       "openForm": "Fungua fomu",
       "search": "Tafuta fomu…"
+    },
+    "edit": {
+      "title": "Hariri jibu",
+      "desc": "Jibu #{n}",
+      "recorded": "Mabadiliko yanahifadhiwa pamoja na jina lako, muda na jibu la awali, na yanabaki kwenye kumbukumbu za ukaguzi.",
+      "save": "Hifadhi jibu",
+      "saved": "Jibu limesasishwa",
+      "edited": "Limehaririwa",
+      "mark": "Limebadilishwa na {who} {when}. Awali: {before}",
+      "open": "Hariri jibu: {field}"
     }
   }
 }

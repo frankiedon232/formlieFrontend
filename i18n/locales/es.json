@@ -3401,6 +3401,16 @@
       "openResponses": "Abrir respuestas",
       "openForm": "Abrir el formulario",
       "search": "Buscar formularios…"
+    },
+    "edit": {
+      "title": "Editar respuesta",
+      "desc": "Respuesta n.º {n}",
+      "recorded": "El cambio se guarda con tu nombre, la hora y la respuesta anterior, y queda en el registro de auditoría.",
+      "save": "Guardar respuesta",
+      "saved": "Respuesta actualizada",
+      "edited": "Editada",
+      "mark": "Cambiada por {who} {when}. Antes: {before}",
+      "open": "Editar respuesta: {field}"
     }
   }
 }

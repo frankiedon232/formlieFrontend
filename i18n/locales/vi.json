@@ -3401,6 +3401,16 @@
       "openResponses": "Mở phản hồi",
       "openForm": "Mở biểu mẫu",
       "search": "Tìm biểu mẫu…"
+    },
+    "edit": {
+      "title": "Sửa câu trả lời",
+      "desc": "Phản hồi #{n}",
+      "recorded": "Thay đổi được lưu cùng tên bạn, thời gian và câu trả lời trước đó, và được giữ trong nhật ký kiểm tra.",
+      "save": "Lưu câu trả lời",
+      "saved": "Đã cập nhật câu trả lời",
+      "edited": "Đã sửa",
+      "mark": "{who} đã đổi {when}. Trước đó: {before}",
+      "open": "Sửa câu trả lời: {field}"
     }
   }
 }

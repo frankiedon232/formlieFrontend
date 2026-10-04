@@ -145,7 +145,8 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
   const times = sampleTimes(form)
   const total = times.length
   const list: IndexedResponse[] = []
-  const sampleRespondent = (person: SamplePerson): ResponseRespondent => {
+  /** Edited answers (F11 M2) count too, so a corrected name or email shows everywhere. */
+  const sampleRespondent = (person: SamplePerson, edits?: Record<string, unknown>): ResponseRespondent => {
     if (!schema) return { name: null, email: null, kind: 'anonymous' }
     const data: Record<string, unknown> = {}
     for (const field of allFields(schema)) {
@@ -158,7 +159,7 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
         else if (/name/i.test(label)) data[field.key] = `${person.first} ${person.last}`
       }
     }
-    return respondentFrom(schema, data)
+    return respondentFrom(schema, { ...data, ...edits })
   }
 
   times.forEach((at, index) => {
@@ -174,7 +175,7 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
       at,
       status: review?.status ?? sampleStatus(id, anchor - at),
       tags: review?.tags ?? (rng() < 0.07 ? [['priority', 'follow-up', 'vip'][Math.floor(rng() * 3)]!] : []),
-      respondent: sampleRespondent(person),
+      respondent: sampleRespondent(person, review?.data),
       channel: rng() < 0.16 ? 'embed' : 'link',
       language: languages.length > 1 && rng() < 0.25 ? languages[1 + Math.floor(rng() * (languages.length - 1))]! : languages[0]!,
       duration_seconds: Math.round(Math.max(1, fields) * (9 + rng() * 14)),
@@ -199,7 +200,7 @@ export function formResponses(tenant: MockTenant, form: StoredForm): IndexedResp
           at: Date.parse(stored.submitted_at),
           status: review?.status ?? 'new',
           tags: review?.tags ?? [],
-          respondent: respondentFrom(schema, stored.data, stored.respondent),
+          respondent: respondentFrom(schema, { ...stored.data, ...review?.data }, stored.respondent),
           channel: stored.channel,
           language: stored.language,
           duration_seconds: null,

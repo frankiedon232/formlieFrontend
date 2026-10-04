@@ -3401,6 +3401,16 @@
       "openResponses": "Open responses",
       "openForm": "Open the form",
       "search": "Search forms…"
+    },
+    "edit": {
+      "title": "Edit answer",
+      "desc": "Response #{n}",
+      "recorded": "The change is saved with your name, the time and the earlier answer, and kept in the audit trail.",
+      "save": "Save answer",
+      "saved": "Answer updated",
+      "edited": "Edited",
+      "mark": "Changed by {who} {when}. Before: {before}",
+      "open": "Edit answer: {field}"
     }
   }
 }

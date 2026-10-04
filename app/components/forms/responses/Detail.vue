@@ -114,7 +114,7 @@ async function remove() {
             :actions="[{ label: t('responses.detail.openEarlier'), color: 'neutral', variant: 'outline', onClick: () => emit('go', response!.possible_duplicate!.of) }]"
           />
 
-          <FormsResponsesDetailAnswers :response="response" />
+          <FormsResponsesDetailAnswers :response="response" @updated="value => ((response = value), emit('changed'))" />
           <FormsResponsesNotes :response="response" @updated="value => ((response = value), emit('changed'))" />
         </div>
       </template>

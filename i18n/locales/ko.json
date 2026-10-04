@@ -3401,6 +3401,16 @@
       "openResponses": "응답 열기",
       "openForm": "양식 열기",
       "search": "양식 검색…"
+    },
+    "edit": {
+      "title": "답변 수정",
+      "desc": "응답 #{n}",
+      "recorded": "변경 내용은 이름, 시간, 이전 답변과 함께 저장되며 감사 기록에 남습니다.",
+      "save": "답변 저장",
+      "saved": "답변이 업데이트되었습니다",
+      "edited": "수정됨",
+      "mark": "{who} 님이 {when} 변경. 이전: {before}",
+      "open": "답변 수정: {field}"
     }
   }
 }

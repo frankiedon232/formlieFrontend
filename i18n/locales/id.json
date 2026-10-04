@@ -3401,6 +3401,16 @@
       "openResponses": "Buka tanggapan",
       "openForm": "Buka formulir",
       "search": "Cari formulir…"
+    },
+    "edit": {
+      "title": "Edit jawaban",
+      "desc": "Respons #{n}",
+      "recorded": "Perubahan disimpan dengan nama Anda, waktu, dan jawaban sebelumnya, serta dicatat di jejak audit.",
+      "save": "Simpan jawaban",
+      "saved": "Jawaban diperbarui",
+      "edited": "Diedit",
+      "mark": "Diubah oleh {who} {when}. Sebelumnya: {before}",
+      "open": "Edit jawaban: {field}"
     }
   }
 }

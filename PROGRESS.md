@@ -515,7 +515,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Inbox across all forms `/responses` (busiest forms, form filter); old `/responses?form=` links forward
 - 🟡 Filters: ✅ status, channel, possible duplicates, date range, search (names, emails, answers, #number) · ⬜ per field type, tags
 - ✅ Response detail slide-over with next / previous (`J` / `K`), facts, answers by page, possible-duplicate link
-- 🟡 Status (new, reviewed, approved, rejected), tags, notes, history ✅ · editing answers in the panel ⬜ (API ready)
+- 🟡 Status (new, reviewed, approved, rejected), tags, notes, history ✅ · editing answers in the panel ✅ (decision 104: pencil per answer, same control and rules as the form, Edited mark, audit)
 - 🟡 Bulk actions: ✅ set status, delete (editors) · ⬜ tags
 - ⬜ Export XLSX / CSV / PDF (all, filtered, selected) with progress and download
 
@@ -1009,6 +1009,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | Responses page: group by form; only a form's page lists its responses (grouped only) | F11 | ✅ |
 | 2026-10-04 | Lock the response card format and use it on the Forms list (table and grid) | F11 / F6 | ✅ |
 | 2026-10-04 | Templates and Themes in the same table / grid format (chart cards, Columns, locked card, rows open) | F9 / F11 | ✅ |
+| 2026-10-04 | More page designs ("pages") offered like Themes, with their own menu entry; scope to confirm with the owner after F11 M2 | F10 / F9 | ⬜ |
 | 2026-10-04 | Responses, following the design image: two top cards with charts; grid cards like the design's task cards; theme status colours (no blue); panel without history, answers grouped by likeness with chips, equal tiles, sliders; a file viewer like the preview (download when not previewable); move and show / hide columns in every table | F11 M1 | ✅ |
 | 2026-10-04 | Responses layout: slim top strip and the table right below; Responses | Insights switch on the table's toolbar line; very rich grid cards; a super rich response panel with Previous / Next floating in the footer | F11 M1 | ✅ |
 | 2026-10-04 | Responses: a beautiful, clean page with a lot of insight, slim charts, table; and every page must show test responses ("connect all the dots") | F11 M1 | ✅ |
@@ -1139,3 +1140,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F9 | Template, category and theme cards: thumbnail left in a fixed 16:9 frame (new clear `tile` miniature, all the same size), name right, then the buttons row, then the details. |
 | 2026-10-04 | F9 | Theme cards: "Used in" reads "1 form" / "2 forms" like the table. CLAUDE.md rule 21: one card concept, the arrangement follows each page's purpose. |
 | 2026-10-04 | F9 | Theme editor: saving without a name now brings the name field into view (scrolls the design panel back up; phones open the panel first), focuses it and says why in a toast; the red mark clears as soon as a name is typed. |
+| 2026-10-04 | F11 | M2: editing answers. Editors get a pencil on every answer that can be changed; the dialog shows the form's own control, checks with the same rules (also on the server), records who / when / before / after in the history and the audit trail (question labels), and the tile shows an Edited mark. Corrected names and emails show as the respondent. Test: `answer-edit`. |

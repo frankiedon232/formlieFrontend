@@ -3401,6 +3401,16 @@
       "openResponses": "Antwoorden openen",
       "openForm": "Formulier openen",
       "search": "Formulieren zoeken…"
+    },
+    "edit": {
+      "title": "Antwoord bewerken",
+      "desc": "Reactie #{n}",
+      "recorded": "De wijziging wordt opgeslagen met uw naam, het tijdstip en het eerdere antwoord, en bewaard in het auditlogboek.",
+      "save": "Antwoord opslaan",
+      "saved": "Antwoord bijgewerkt",
+      "edited": "Bewerkt",
+      "mark": "Gewijzigd door {who} {when}. Eerder: {before}",
+      "open": "Antwoord bewerken: {field}"
     }
   }
 }

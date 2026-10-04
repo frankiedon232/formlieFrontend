@@ -3401,6 +3401,16 @@
       "openResponses": "Antworten öffnen",
       "openForm": "Formular öffnen",
       "search": "Formulare suchen…"
+    },
+    "edit": {
+      "title": "Antwort bearbeiten",
+      "desc": "Antwort Nr. {n}",
+      "recorded": "Die Änderung wird mit Ihrem Namen, der Uhrzeit und der vorherigen Antwort gespeichert und im Audit-Protokoll festgehalten.",
+      "save": "Antwort speichern",
+      "saved": "Antwort aktualisiert",
+      "edited": "Bearbeitet",
+      "mark": "Geändert von {who} {when}. Vorher: {before}",
+      "open": "Antwort bearbeiten: {field}"
     }
   }
 }

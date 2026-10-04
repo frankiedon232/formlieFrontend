@@ -6,9 +6,11 @@
  */
 import { z } from 'zod'
 import { RESPONSE_STATUSES, type ResponseDetail, type ResponseFormRow, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
+import { canEditAnswer } from '#shared/utils/forms/answer-edit'
 import { allFields } from '#shared/utils/forms/build'
 import { isFileField } from '#shared/utils/forms/file-answers'
 import { isInputField } from '#shared/utils/forms/fields'
+import { validateAnswer } from '#shared/utils/forms/validate'
 import { requireAuth } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
@@ -204,8 +206,10 @@ export function responseFor(tenant: MockTenant, user: MockUser, id: string | und
   return found
 }
 
+const schemaOf = (form: StoredForm, entry: IndexedResponse) => form.versions?.find(item => item.number === entry.form_version)?.schema ?? responseSchema(form)!
+
 function detailOf(form: StoredForm, entry: IndexedResponse, user: MockUser): ResponseDetail {
-  const schema = form.versions?.find(item => item.number === entry.form_version)?.schema ?? responseSchema(form)!
+  const schema = schemaOf(form, entry)
   const stored = entry.source.kind === 'real' ? entry.source.stored : null
   const ua = stored?.meta.user_agent ?? ''
   const device = stored ? (/mobile|android|iphone/i.test(ua) ? 'Phone' : /ipad|tablet/i.test(ua) ? 'Tablet' : 'Desktop') : ['Desktop', 'Phone', 'Phone', 'Tablet'][entry.number % 4]!
@@ -246,11 +250,31 @@ const patchBody = z.object({
   data: z.record(z.string().max(64), z.unknown()).optional(),
 })
 
+/**
+ * Edited answers are checked like a submission (F11 M2): only questions of the version the
+ * respondent filled in that may be edited (`canEditAnswer`), each value through the same
+ * `validateAnswer` as the renderer; problems come back per field as FRM-RESP-1001.
+ */
+function checkEdits(form: StoredForm, entry: IndexedResponse, data: Record<string, unknown>) {
+  const fields = new Map(allFields(schemaOf(form, entry)).map(field => [field.key, field]))
+  const problems: { field: string; message: string }[] = []
+  for (const [key, value] of Object.entries(data)) {
+    const field = fields.get(key)
+    if (!field || !canEditAnswer(field)) problems.push({ field: key, message: 'This answer can not be edited.' })
+    else {
+      const issue = validateAnswer(field, value, !!field.required)
+      if (issue) problems.push({ field: key, message: issue.code })
+    }
+  }
+  if (problems.length) throw new MockError('FRM-RESP-1001', problems)
+}
+
 /** PATCH /responses/:id, status, tags, or (editors) answers; each change kept in the history. */
 export const patchResponse = defineMockRoute(({ event, body: raw }) => {
   const { tenant, user } = requireAuth(event)
   const input = parseBody(patchBody, raw)
   const { form, entry } = responseFor(tenant, user, getRouterParam(event, 'id'), input.data ? 'edit' : 'responses')
+  if (input.data) checkEdits(form, entry, input.data)
   const current = answersOf(form, entry)
   const by = { id: user.id, name: `${user.first_name} ${user.last_name}`.trim() }
   const at = new Date().toISOString()
@@ -267,7 +291,9 @@ export const patchResponse = defineMockRoute(({ event, body: raw }) => {
       if (input.data) review.data = { ...review.data, ...input.data }
       review.history = [...changes.map(change => ({ id: crypto.randomUUID(), at, by, ...change })), ...(review.history ?? [])].slice(0, 200)
     })
-    audit(event, tenant, user, 'responses.updated', form, entry, changes)
+    // The audit trail names the question as people know it; the response keeps the key.
+    const labels = new Map(allFields(schemaOf(form, entry)).map(field => [`answer:${field.key}`, field.label?.trim() || field.key]))
+    audit(event, tenant, user, 'responses.updated', form, entry, changes.map(change => ({ ...change, field: labels.get(change.field) ?? change.field })))
   }
   const updated = findResponse(tenant, entry.id)!
   return ok(detailOf(updated.form, updated.entry, user))

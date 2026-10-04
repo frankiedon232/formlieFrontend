@@ -3401,6 +3401,16 @@
       "openResponses": "Apri le risposte",
       "openForm": "Apri il modulo",
       "search": "Cerca moduli…"
+    },
+    "edit": {
+      "title": "Modifica risposta",
+      "desc": "Risposta n. {n}",
+      "recorded": "La modifica viene salvata con il tuo nome, l’ora e la risposta precedente, e resta nel registro di audit.",
+      "save": "Salva risposta",
+      "saved": "Risposta aggiornata",
+      "edited": "Modificata",
+      "mark": "Modificata da {who} {when}. Prima: {before}",
+      "open": "Modifica risposta: {field}"
     }
   }
 }

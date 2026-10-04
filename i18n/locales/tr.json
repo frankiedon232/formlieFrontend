@@ -3401,6 +3401,16 @@
       "openResponses": "Yanıtları aç",
       "openForm": "Formu aç",
       "search": "Form ara…"
+    },
+    "edit": {
+      "title": "Yanıtı düzenle",
+      "desc": "Yanıt #{n}",
+      "recorded": "Değişiklik adınız, saat ve önceki yanıtla birlikte kaydedilir ve denetim kaydında tutulur.",
+      "save": "Yanıtı kaydet",
+      "saved": "Yanıt güncellendi",
+      "edited": "Düzenlendi",
+      "mark": "{who} tarafından {when} değiştirildi. Önceki: {before}",
+      "open": "Yanıtı düzenle: {field}"
     }
   }
 }

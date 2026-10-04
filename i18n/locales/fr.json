@@ -3401,6 +3401,16 @@
       "openResponses": "Ouvrir les réponses",
       "openForm": "Ouvrir le formulaire",
       "search": "Rechercher des formulaires…"
+    },
+    "edit": {
+      "title": "Modifier la réponse",
+      "desc": "Réponse n° {n}",
+      "recorded": "La modification est enregistrée avec votre nom, l’heure et la réponse précédente, et conservée dans le journal d’audit.",
+      "save": "Enregistrer la réponse",
+      "saved": "Réponse mise à jour",
+      "edited": "Modifiée",
+      "mark": "Modifiée par {who} {when}. Avant : {before}",
+      "open": "Modifier la réponse : {field}"
     }
   }
 }
