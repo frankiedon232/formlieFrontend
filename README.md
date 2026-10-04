@@ -45,6 +45,14 @@ The mock API (`NUXT_PUBLIC_API_MOCK=true`) is seeded in [server/mock/data/tenant
 
 **Form test — "Only my organisation" (F10):** as the owner, open a published form → **Share** → *Who can open the form* → **Only my organisation** → Save. Open the form's link in a private window: it says "Only for members of Remedy Legal" → **Sign in to Remedy Legal** → sign in as `staff@remedylegal.test` → you come back to the form with "Filling in as Lena Novak (staff@remedylegal.test)". Each member can respond once. Someone without a Remedy Legal account (e.g. `admin@samathtax.test`) can't sign in there, so never reaches the form. Put the form back to *Anyone with the link* afterwards.
 
+**Form test — "Only invited people" (F10):** invitations need no account — any valid email works (development sends no mail; the Share tab shows each person's personal link to copy). Paste these into *Invitations*:
+
+```
+test1@example.org, test2@example.org, test3@example.org
+```
+
+Open a personal link in a private window → "Filling in as test1@example.org"; the plain form link says "This form is by invitation only". Check the status (Invited → Opened → Responded), that a second response from the same link is refused, and that **Revoke** stops a link. To see invalid-address checking, add `not-an-email` — it turns red and blocks sending. Put the form back to *Anyone with the link* afterwards.
+
 **One-time code:** after the password, the code screen shows the mock's code in dev ("Development code: 123456"). It is also printed in the dev-server console as `[mock-otp]`. Five wrong codes lock the attempt.
 
 **Without a hosts entry** (e.g. `localhost` or a phone on Wi-Fi): add `?tenant=remedylegal` once, e.g. `https://localhost:2202/auth/login?tenant=remedylegal` (dev only, remembered for the tab).
