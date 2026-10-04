@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Formulieren die overal werken"
+    "tagline": "Formulieren die overal werken",
+    "scroller": {
+      "back": "Eerdere tonen",
+      "more": "Meer tonen"
+    }
   },
   "common": {
     "loading": "Laden…",

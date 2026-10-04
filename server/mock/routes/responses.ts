@@ -136,6 +136,8 @@ export const listResponses = defineMockRoute(({ event, query }) => {
  * person may see that has responses, with counts by review status, last response and a 30-day
  * trend. `q` (form name), `filter[form_status]`, `filter[folder_id]`, `filter[review]` (forms with
  * responses in that review status), sort `-new` (default) · `-last_at` · `-total` · `name`; paged.
+ * With a review status asked for, the default sort counts that status instead (most approved first…),
+ * so the sidebar's New / Reviewed / Approved / Rejected each give their own order.
  */
 export const listResponseForms = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
@@ -176,8 +178,9 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
   const sort = typeof query.sort === 'string' && query.sort ? query.sort : '-new'
   const desc = sort.startsWith('-')
   const key = desc ? sort.slice(1) : sort
+  const focus = (row: ResponseFormRow) => (review ?? ['new']).reduce((sum: number, status: ResponseStatus) => sum + (row.status_counts[status] ?? 0), 0)
   const value = (row: ResponseFormRow): string | number =>
-    key === 'name' ? row.name.toLowerCase() : key === 'total' ? row.total : key === 'last_at' ? row.last_at ?? '' : key in row.status_counts ? row.status_counts[key as ResponseStatus] : row.status_counts.new
+    key === 'name' ? row.name.toLowerCase() : key === 'total' ? row.total : key === 'last_at' ? row.last_at ?? '' : key !== 'new' && key in row.status_counts ? row.status_counts[key as ResponseStatus] : focus(row)
   rows.sort((a, b) => {
     const x = value(a)
     const y = value(b)

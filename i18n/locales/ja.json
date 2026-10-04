@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "どこでも使えるフォーム"
+    "tagline": "どこでも使えるフォーム",
+    "scroller": {
+      "back": "前を表示",
+      "more": "さらに表示"
+    }
   },
   "common": {
     "loading": "読み込み中…",

@@ -1,23 +1,25 @@
 <!--
   A form on the Responses page (grouped by form; locked card format, CLAUDE.md rule 21): last
   response pill, form status and ⋯ on top; the form name (red flag = new responses to review) with
-  its folder; responses, new, approved and rejected in two columns; Reviewed with a black bar (how
+  its folder; responses and three review counts in two columns, the status the list is about
+  (`focus`, sidebar New / Approved…) first and in bold; Reviewed with a black bar (how
   much of it the team has looked at); owner, link key, a 30-day sparkline and the new count below.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
-import type { ResponseFormRow } from '#shared/types/responses'
+import type { ResponseFormRow, ResponseStatus } from '#shared/types/responses'
 
-const props = defineProps<{ row: ResponseFormRow; actions: DropdownMenuItem[][] }>()
+const props = withDefaults(defineProps<{ row: ResponseFormRow; actions: DropdownMenuItem[][]; focus?: ResponseStatus; to?: string }>(), { focus: 'new', to: undefined })
 const { t } = useI18n()
 const { relative, number, percent } = useFormat()
 const reviewed = computed(() => (props.row.total ? (props.row.total - props.row.status_counts.new) / props.row.total : 0))
-const facts = computed(() => [
-  { key: 'total', label: t('forms.col.responses'), value: number(props.row.total), strong: true },
-  { key: 'new', label: t('status.new'), value: number(props.row.status_counts.new), strong: props.row.status_counts.new > 0 },
-  { key: 'approved', label: t('status.approved'), value: number(props.row.status_counts.approved), strong: false },
-  { key: 'rejected', label: t('status.rejected'), value: number(props.row.status_counts.rejected), strong: false },
-])
+const facts = computed(() => {
+  const statuses = [props.focus, ...(['new', 'approved', 'rejected'] as const).filter(status => status !== props.focus)].slice(0, 3)
+  return [
+    { key: 'total' as const, label: t('forms.col.responses'), value: number(props.row.total), strong: true },
+    ...statuses.map(status => ({ key: status, label: t(`status.${status}`), value: number(props.row.status_counts[status]), strong: status === props.focus && props.row.status_counts[status] > 0 })),
+  ]
+})
 </script>
 
 <template>
@@ -41,7 +43,7 @@ const facts = computed(() => [
       <UTooltip v-if="row.status_counts.new" :text="t('responses.byForm.newWaiting', { n: number(row.status_counts.new) }, row.status_counts.new)">
         <UIcon name="i-lucide-flag" class="size-4 shrink-0 text-error" :aria-label="t('responses.byForm.newWaiting', { n: row.status_counts.new }, row.status_counts.new)" />
       </UTooltip>
-      <NuxtLink :to="`/forms/${row.id}/responses`" class="truncate text-base font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">{{ row.name }}</NuxtLink>
+      <NuxtLink :to="to ?? `/forms/${row.id}/responses`" class="truncate text-base font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">{{ row.name }}</NuxtLink>
     </div>
     <p class="flex min-w-0 items-center gap-1.5 text-sm text-muted">
       <UIcon name="i-lucide-folder" class="size-3.5 shrink-0" />
@@ -52,7 +54,7 @@ const facts = computed(() => [
     <dl class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5">
       <div v-for="fact in facts" :key="fact.key" class="flex min-w-0 flex-col gap-0.5">
         <dt class="flex items-center gap-1.5 truncate text-[11px] text-muted">
-          <span v-if="fact.key !== 'total'" class="size-1.5 rounded-[2px]" :class="RESPONSE_STATUS_META[fact.key as 'new' | 'approved' | 'rejected'].fill" />{{ fact.label }}
+          <span v-if="fact.key !== 'total'" class="size-1.5 rounded-[2px]" :class="RESPONSE_STATUS_META[fact.key].fill" />{{ fact.label }}
         </dt>
         <dd class="h-5 truncate text-sm tabular-nums" :class="fact.strong ? 'font-semibold text-highlighted' : 'text-default'">{{ fact.value }}</dd>
       </div>

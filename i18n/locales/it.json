@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Moduli che funzionano ovunque"
+    "tagline": "Moduli che funzionano ovunque",
+    "scroller": {
+      "back": "Mostra precedenti",
+      "more": "Mostra altri"
+    }
   },
   "common": {
     "loading": "Caricamento…",

@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Formulir yang berfungsi di mana saja"
+    "tagline": "Formulir yang berfungsi di mana saja",
+    "scroller": {
+      "back": "Tampilkan sebelumnya",
+      "more": "Tampilkan lainnya"
+    }
   },
   "common": {
     "loading": "Memuat…",

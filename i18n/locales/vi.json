@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Biểu mẫu hoạt động ở mọi nơi"
+    "tagline": "Biểu mẫu hoạt động ở mọi nơi",
+    "scroller": {
+      "back": "Hiện mục trước",
+      "more": "Hiện thêm"
+    }
   },
   "common": {
     "loading": "Đang tải…",

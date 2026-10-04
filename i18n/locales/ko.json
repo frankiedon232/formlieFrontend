@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "어디서나 작동하는 양식"
+    "tagline": "어디서나 작동하는 양식",
+    "scroller": {
+      "back": "이전 보기",
+      "more": "더 보기"
+    }
   },
   "common": {
     "loading": "불러오는 중…",

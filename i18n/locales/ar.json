@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "نماذج تعمل في كل مكان"
+    "tagline": "نماذج تعمل في كل مكان",
+    "scroller": {
+      "back": "عرض السابق",
+      "more": "عرض المزيد"
+    }
   },
   "common": {
     "loading": "جارٍ التحميل…",

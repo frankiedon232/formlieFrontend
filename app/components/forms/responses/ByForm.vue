@@ -3,12 +3,13 @@
   form). DataView (rule 21): form, form status, new, responses, reviewed so far, 30-day trend, last
   response, owner; filters: review status (forms with new / reviewed… responses), form status,
   folder; sort: most new, latest response, most responses, name. A form opens its Responses page,
-  filtered to the review status asked for.
+  filtered to the review status asked for. With a review status asked for (sidebar New / Reviewed /
+  Approved / Rejected) the list is about that status: its count column, its order, its card figure.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { FormFolder } from '#shared/types/forms'
-import { RESPONSE_STATUSES, type ResponseFormRow } from '#shared/types/responses'
+import { RESPONSE_STATUSES, type ResponseFormRow, type ResponseStatus } from '#shared/types/responses'
 
 const { t } = useI18n()
 const api = useApi()
@@ -24,11 +25,15 @@ onMounted(async () => {
   }
 })
 
+/** The review status the list is about: the one asked for, otherwise New. */
+const reviewAsked = computed(() => (typeof route.query.review === 'string' && (RESPONSE_STATUSES as readonly string[]).includes(route.query.review) ? (route.query.review as ResponseStatus) : null))
+const focus = computed<ResponseStatus>(() => reviewAsked.value ?? 'new')
+
 const FORM_DOTS: Record<string, string> = { draft: 'bg-amber-500', published: 'bg-green-500', closed: 'bg-violet-600', archived: 'bg-(--ui-text-dimmed)' }
 const columns = computed<DataColumn[]>(() => [
   { key: 'name', label: t('responses.list.form'), sortable: true, fixed: true },
   { key: 'status', label: t('forms.col.status'), hideBelow: 'md' },
-  { key: 'new', label: t('status.new'), sortable: true },
+  { key: 'new', label: t(`status.${focus.value}`), sortable: true },
   { key: 'total', label: t('forms.col.responses'), sortable: true, hideBelow: 'sm' },
   { key: 'reviewed', label: t('responses.byForm.reviewed'), hideBelow: 'lg' },
   { key: 'trend', label: t('responses.byForm.trend'), hideBelow: 'lg' },
@@ -49,7 +54,6 @@ const sortOptions = computed(() => [
 const fetcher: DataFetcher<ResponseFormRow> = (params, signal) => api.list<ResponseFormRow>('/responses/forms', params, { signal })
 
 /** Open a form's responses, filtered to the one review status asked for (sidebar New / Reviewed…). */
-const reviewAsked = computed(() => (typeof route.query.review === 'string' && !route.query.review.includes(',') ? route.query.review : null))
 const target = (row: ResponseFormRow) => `/forms/${row.id}/responses${reviewAsked.value ? `?status=${reviewAsked.value}` : ''}`
 const rowActions = (row: ResponseFormRow): DropdownMenuItem[][] => [
   [
@@ -95,7 +99,7 @@ const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.st
       <DataStatusBadge :status="row.original.status" />
     </template>
     <template #new-cell="{ row }">
-      <UBadge v-if="row.original.status_counts.new" :label="number(row.original.status_counts.new)" color="neutral" variant="solid" size="sm" class="rounded-md tabular-nums" />
+      <UBadge v-if="row.original.status_counts[focus]" :label="number(row.original.status_counts[focus])" :color="RESPONSE_STATUS_META[focus].color" variant="solid" size="sm" class="rounded-md tabular-nums" />
       <span v-else class="text-muted">0</span>
     </template>
     <template #total-cell="{ row }">
@@ -120,7 +124,7 @@ const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.st
     </template>
 
     <template #grid-card="{ row }">
-      <FormsResponsesFormCard :row="row" :actions="rowActions(row)" />
+      <FormsResponsesFormCard :row="row" :actions="rowActions(row)" :focus="focus" :to="target(row)" />
     </template>
   </DataView>
 </template>

@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Des formulaires qui fonctionnent partout"
+    "tagline": "Des formulaires qui fonctionnent partout",
+    "scroller": {
+      "back": "Afficher les précédents",
+      "more": "Afficher plus"
+    }
   },
   "common": {
     "loading": "Chargement…",

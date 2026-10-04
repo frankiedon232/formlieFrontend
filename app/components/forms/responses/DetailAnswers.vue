@@ -1,8 +1,8 @@
 <!--
   Every answer of a response, grouped by likeness (F11; owner 2026-10-04: use the space, group like
   with like, no endless scrolling on long forms). Filter chips on top (All · People & contact ·
-  Choices · Ratings · Written · Numbers & dates · Files · Other, with counts; a sliding row on small
-  screens) and "Only answered". Each group: a header with how many were answered, then tiles in
+  Choices · Ratings · Written · Numbers & dates · Files · Other, with counts) in a rounded track
+  without a scrollbar (AppChipScroller: wheel, arrows, a clicked chip centres) and "Only answered". Each group: a header with how many were answered, then tiles in
   two columns that share one height per row; long text, grids and files take the full width.
 -->
 <script setup lang="ts">
@@ -44,23 +44,23 @@ const answeredTotal = computed(() => fields.value.filter(field => filled(props.r
       <USwitch v-model="onlyAnswered" size="sm" :label="t('responses.detail.onlyAnswered')" :ui="{ label: 'text-xs text-muted' }" />
     </div>
 
-    <!-- Group chips: a sliding row -->
-    <div class="-mx-1 flex snap-x gap-1.5 overflow-x-auto px-1 pb-1 [scrollbar-width:thin]" role="tablist" :aria-label="t('responses.detail.groups')">
+    <!-- Group chips: a rounded track (wheel, arrows, click centres the chip) -->
+    <AppChipScroller :label="t('responses.detail.groups')">
       <button
         v-for="item in [{ key: 'all' as const, icon: 'i-lucide-layout-grid', answered: answeredTotal, fields: { length: total } }, ...groups]"
         :key="item.key"
         type="button"
-        role="tab"
-        :aria-selected="group === item.key"
-        class="inline-flex shrink-0 snap-start items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
-        :class="group === item.key ? 'border-inverted bg-inverted text-inverted' : 'border-default bg-default text-toned hover:bg-elevated'"
+        data-chip
+        :aria-pressed="group === item.key"
+        class="inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--ui-border-inverted)"
+        :class="group === item.key ? 'bg-default text-highlighted shadow-xs ring-1 ring-(--ui-border)' : 'text-muted hover:text-highlighted'"
         @click="group = item.key"
       >
         <UIcon :name="item.icon" class="size-3.5" />
         {{ t(`responses.groups.${item.key}`) }}
         <span class="tabular-nums opacity-70">{{ item.answered }}/{{ item.fields.length }}</span>
       </button>
-    </div>
+    </AppChipScroller>
 
     <div v-for="item in shown" :key="item.key" class="flex flex-col gap-2">
       <div v-if="group === 'all'" class="flex items-center gap-2 pt-1 text-xs text-muted">

@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Fomu zinazofanya kazi kila mahali"
+    "tagline": "Fomu zinazofanya kazi kila mahali",
+    "scroller": {
+      "back": "Onyesha yaliyotangulia",
+      "more": "Onyesha zaidi"
+    }
   },
   "common": {
     "loading": "Inapakia…",

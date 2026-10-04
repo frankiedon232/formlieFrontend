@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "随处可用的表单"
+    "tagline": "随处可用的表单",
+    "scroller": {
+      "back": "显示前面的",
+      "more": "显示更多"
+    }
   },
   "common": {
     "loading": "加载中…",

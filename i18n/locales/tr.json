@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Her yerde çalışan formlar"
+    "tagline": "Her yerde çalışan formlar",
+    "scroller": {
+      "back": "Öncekileri göster",
+      "more": "Daha fazla göster"
+    }
   },
   "common": {
     "loading": "Yükleniyor…",

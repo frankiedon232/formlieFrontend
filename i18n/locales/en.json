@@ -1,7 +1,11 @@
 {
   "app": {
     "name": "Formalie",
-    "tagline": "Forms that work everywhere"
+    "tagline": "Forms that work everywhere",
+    "scroller": {
+      "back": "Show earlier",
+      "more": "Show more"
+    }
   },
   "common": {
     "loading": "Loading…",
