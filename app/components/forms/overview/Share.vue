@@ -85,21 +85,25 @@ const actions = computed(() => [
 
     <!-- How it's shared → Share settings. -->
     <div class="-mx-4 -mb-4 border-t border-default sm:-mx-5 sm:-mb-5">
-      <component
-        :is="onShareTab ? 'div' : resolveComponent('NuxtLink')"
-        :to="onShareTab ? undefined : `/forms/${form.id}/share`"
-        class="flex items-center gap-3 px-4 py-3 sm:px-5"
-        :class="onShareTab ? '' : 'rounded-b-lg transition-colors hover:bg-elevated/60 focus-visible:outline-2 focus-visible:outline-inverted'"
+      <div v-if="onShareTab" class="flex flex-wrap gap-x-3 gap-y-1 px-4 py-3 sm:px-5">
+        <span v-for="fact in facts" :key="fact.label" class="flex items-center gap-1.5 text-xs text-toned">
+          <UIcon :name="fact.icon" class="size-3.5 shrink-0 text-muted" />{{ fact.label }}
+        </span>
+      </div>
+      <NuxtLink
+        v-else
+        :to="`/forms/${form.id}/share`"
+        class="flex items-center gap-3 rounded-b-lg px-4 py-3 transition-colors hover:bg-elevated/60 focus-visible:outline-2 focus-visible:outline-inverted sm:px-5"
       >
-        <div class="flex min-w-0 flex-1 flex-wrap gap-x-3 gap-y-1">
+        <span class="flex min-w-0 flex-1 flex-wrap gap-x-3 gap-y-1">
           <span v-for="fact in facts" :key="fact.label" class="flex items-center gap-1.5 text-xs text-toned">
             <UIcon :name="fact.icon" class="size-3.5 shrink-0 text-muted" />{{ fact.label }}
           </span>
-        </div>
-        <span v-if="!onShareTab" class="flex shrink-0 items-center gap-1 text-xs font-medium text-highlighted">
+        </span>
+        <span class="flex shrink-0 items-center gap-1 text-xs font-medium text-highlighted">
           {{ t('share.open') }}<UIcon name="i-lucide-chevron-right" class="size-3.5 rtl:rotate-180" />
         </span>
-      </component>
+      </NuxtLink>
     </div>
 
     <FormsShareEmbedModal v-model:open="embedOpen" :url="embed" :form-name="form.name" :live="live" />

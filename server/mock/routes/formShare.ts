@@ -78,10 +78,11 @@ export const getShare = defineMockRoute(({ event }) => {
 })
 
 /** GET /forms/:id/share/link-check?value= */
-export const checkLink = defineMockRoute(({ event }) => {
+export const checkLink = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAuth(event)
   const form = findForm(tenant, getRouterParam(event, 'id'))
-  const value = String(getQuery(event).value ?? '').slice(0, 80)
+  // Query values arrive inside the encrypted envelope (ctx.query), not in the address.
+  const value = String(query.value ?? '').slice(0, 80)
   return ok(check(value, form.id, tenant))
 })
 
