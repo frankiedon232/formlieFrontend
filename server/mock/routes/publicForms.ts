@@ -170,7 +170,8 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
   const locked = state === 'open' && !unlocked(event, form)
   const published = state === 'open' ? publishedSchema(tenant, form) : null
   const schema = published ? { ...structuredClone(published), theme: resolveTheme(published.theme, branding(tenant)) as unknown as Record<string, unknown> } : null
-  const language = offered(published)
+  // The form's language also for full, closed, expired, scheduled and locked pages (no questions are sent then).
+  const language = offered(published ?? form.published_schema ?? form.schema)
   return {
     key: form.custom_link || form.public_key,
     name: form.name,

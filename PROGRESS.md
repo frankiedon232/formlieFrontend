@@ -1070,3 +1070,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Custom links are unique per address (owner): each workspace subdomain has its own set, workspaces on forms.* share one; a link taken by one of your forms shows which form (name, status, Open) with free suggestions — tested in the browser. |
 | 2026-10-04 | F10 | Response limit (owner): starts at 10, goes down to 2, steps of 1 (was steps of 10 from 1). |
 | 2026-10-04 | F10 | M3: short links — forms.formalie.dev/s/{code} (5 easy characters) on the Share tab, server-side 302 to the form’s current link, visit count, removable, 404 page; Share card shows it and uses it for the QR code. Tested in the browser. |
+| 2026-10-04 | F10 | Form language on non-open pages (owner): full, closed, expired, not-yet-open and password pages now use the form’s language (they fell back to English because no questions are sent then). |
