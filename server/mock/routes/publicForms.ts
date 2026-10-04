@@ -112,7 +112,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
     schema,
     workspace: { name: tenant.name, logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null, subdomain: tenant.subdomain ?? null, website: websiteOf(tenant) },
     seo: {
-      title: form.name,
+      title: published?.settings?.title?.trim() || form.name,
       description: summaryText(published) || String((published?.theme as { header?: { subtitle?: string } } | undefined)?.header?.subtitle ?? ''),
       image: null,
       noindex: state !== 'open',

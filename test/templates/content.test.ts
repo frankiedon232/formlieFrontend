@@ -104,3 +104,12 @@ describe('every kind of text in a form follows the language', () => {
     expect(out.thank_you).toMatchObject({ title: 'Système', message: 'Système' })
   })
 })
+
+describe('the title respondents see', () => {
+  it('follows the form language', () => {
+    const custom = templateSchema(systemTemplate('quote_request')!)
+    custom.settings = { ...custom.settings, title: 'Purchase request' }
+    const out = translateContent(custom, null, { 'Purchase request': 'Demande d’achat' }).schema
+    expect(out.settings!.title).toBe('Demande d’achat')
+  })
+})

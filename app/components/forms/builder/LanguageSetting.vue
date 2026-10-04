@@ -15,6 +15,7 @@ const toast = useToast()
 const { handle } = useErrorHandler()
 const builder = useBuilder()
 const schema = builder.schema
+const session = injectBuilderSession()
 
 const items = computed(() => APP_LOCALES.map(item => ({ value: item.code, label: item.name, description: item.englishName, icon: item.flag })))
 const current = computed(() => schema.value?.settings?.language ?? 'en')
@@ -30,12 +31,19 @@ async function setLanguage(value: string) {
   schema.value.settings = { ...schema.value.settings, language: value }
   await run(async () => {
     try {
+      // The title respondents see follows too (the form name in the list stays as it is).
+      const current = schema.value
+      if (!current) return
+      const formName = session?.form.value?.name ?? ''
+      const title = current.settings?.title || formName
       const { data } = await api.post<{ schema: FormSchemaV1; translated: number; kept: number }>('/templates/translate-content', {
-        schema: schema.value,
+        schema: { ...current, settings: { ...current.settings, title } },
         from,
         to: value,
       })
       if (!schema.value || schema.value.settings?.language !== value) return
+      const shown = data.schema.settings?.title
+      schema.value.settings = { ...schema.value.settings, title: shown && shown !== formName ? shown : undefined }
       schema.value.pages = data.schema.pages
       schema.value.thank_you = data.schema.thank_you
       if (data.schema.settings?.guide) schema.value.settings = { ...schema.value.settings, guide: data.schema.settings.guide }

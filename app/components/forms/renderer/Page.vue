@@ -25,6 +25,8 @@ const props = defineProps<{
   /** Public page: already sent from this browser / start one for someone else (renderer Form). */
   respondent?: RendererRespondent
 }>()
+// The title respondents see: the form name, or its version in the form language (settings.title).
+const heading = computed(() => props.schema.settings?.title?.trim() || props.title)
 const branding = useWorkspaceBranding()
 const theme = useFormTheme(() => props.schema.theme)
 provideControlStyle(theme)
@@ -86,7 +88,7 @@ const containerClass = computed(() => [
   >
     <component
       :is="framed ? FormFrame : 'div'"
-      v-bind="framed ? { theme, title, intro: theme.header.subtitle, questions, minutes, org: frameOrg } : {}"
+      v-bind="framed ? { theme, title: heading, intro: theme.header.subtitle, questions, minutes, org: frameOrg } : {}"
       :class="framed ? 'flex-1' : 'contents'"
     >
     <div class="flex w-full flex-1 flex-col items-center" :class="layout === 'full' ? '' : 'px-3 py-6 sm:px-6 sm:py-10'">
@@ -105,9 +107,9 @@ const containerClass = computed(() => [
                   : { background: 'var(--ui-bg-elevated)' }
             "
             :role="panel ? undefined : 'img'"
-            :aria-label="panel ? undefined : title"
+            :aria-label="panel ? undefined : heading"
           >
-            <FormsRendererPageHeader v-if="panel && hasHeader" :theme="theme" :title="title" :logo="logo" :on="panel.bg" />
+            <FormsRendererPageHeader v-if="panel && hasHeader" :theme="theme" :title="heading" :logo="logo" :on="panel.bg" />
           </div>
 
           <div class="flex min-w-0 flex-col">
@@ -117,15 +119,15 @@ const containerClass = computed(() => [
               :class="COVER[theme.header.cover_height]"
               :style="{ backgroundImage: `url(&quot;${theme.header.cover}&quot;)` }"
               role="img"
-              :aria-label="title"
+              :aria-label="heading"
             />
             <!-- Header band -->
             <div v-if="band && hasHeader" :style="{ background: fillBackground(band.band, band.band_bg, band.band_to) }">
-              <FormsRendererPageHeader :class="inner" :theme="theme" :title="title" :logo="logo" :on="band.band_bg" />
+              <FormsRendererPageHeader :class="inner" :theme="theme" :title="heading" :logo="logo" :on="band.band_bg" />
             </div>
 
             <div class="flex-1" :class="inner">
-              <FormsRendererPageHeader v-if="!band && !panel && hasHeader" class="mb-6" :theme="theme" :title="title" :logo="logo" />
+              <FormsRendererPageHeader v-if="!band && !panel && hasHeader" class="mb-6" :theme="theme" :title="heading" :logo="logo" />
               <FormsRendererForm :schema="schema" :theme="theme" :preview="preview" :show-thank-you="showThankYou" :submit="submit" :respondent="respondent" />
             </div>
 

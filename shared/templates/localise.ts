@@ -52,6 +52,7 @@ function walk(schema: FormSchemaV1, visit: Visit) {
     const message = field.validation?.pattern_message
     if (typeof message === 'string' && message) field.validation!.pattern_message = visit(message)
   }
+  if (schema.settings?.title) schema.settings.title = visit(schema.settings.title)
   const guide = schema.settings?.guide
   if (guide?.title) guide.title = visit(guide.title)
   const header = (schema.theme as { header?: { subtitle?: unknown } } | undefined)?.header

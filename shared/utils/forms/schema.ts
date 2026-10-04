@@ -51,6 +51,8 @@ export const formSchemaV1 = z.object({
       progress_bar: z.boolean().optional(),
       save_resume: z.boolean().optional(),
       language: text(10).optional(),
+      /** The form title respondents see in the form language (empty = the form name). */
+      title: text(200).optional(),
       /** Where labels sit, for the whole form: above the field (default) or beside it. */
       label_position: z.enum(['top', 'left']).optional(),
       /** Telling respondents apart (F10, shared/utils/forms/identity.ts): their own email, an ID, verification. */
