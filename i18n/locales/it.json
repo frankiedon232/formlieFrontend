@@ -1525,16 +1525,6 @@
       "openForms": "Apri i moduli",
       "browse": "Sfoglia i modelli Formalie"
     },
-    "overview": {
-      "formsFrom": "Moduli da modelli",
-      "system": "Modelli Formalie",
-      "mine": "I tuoi modelli",
-      "allTime": "In totale",
-      "byCategory": "Uso per categoria",
-      "other": "Altre",
-      "formsCount": "{n} moduli da modelli",
-      "noUse": "Nessun modulo creato da un modello finora"
-    },
     "card": {
       "used": "Usato {when}",
       "pages": "Pagine",
@@ -2801,18 +2791,6 @@
     "previewName": "Nome completo",
     "previewEmail": "Email",
     "previewMessage": "Messaggio",
-    "overview": {
-      "use": "Uso dei temi",
-      "styledHint": "Moduli con un tema della libreria",
-      "themes": "Temi",
-      "inUse": "In uso",
-      "unused": "Non usati",
-      "ofForms": "su {n} moduli",
-      "top": "Temi più usati",
-      "noUse": "Nessun modulo usa ancora un tema della libreria",
-      "byKind": "Temi per tipo",
-      "inUseNow": "{n} in uso"
-    },
     "card": {
       "changed": "Modificato {when}",
       "created": "Creato",

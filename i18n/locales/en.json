@@ -1525,16 +1525,6 @@
       "openForms": "Open forms",
       "browse": "Browse Formalie templates"
     },
-    "overview": {
-      "formsFrom": "Forms from templates",
-      "system": "Formalie templates",
-      "mine": "Your templates",
-      "allTime": "All time",
-      "byCategory": "Use by category",
-      "other": "Other",
-      "formsCount": "{n} forms from templates",
-      "noUse": "No forms made from templates yet"
-    },
     "card": {
       "used": "Used {when}",
       "pages": "Pages",
@@ -2801,18 +2791,6 @@
     },
     "view": "View",
     "open": "Open {name}",
-    "overview": {
-      "use": "Theme use",
-      "styledHint": "Forms styled with a library theme",
-      "themes": "Themes",
-      "inUse": "In use",
-      "unused": "Not used",
-      "ofForms": "of {n} forms",
-      "top": "Most used themes",
-      "noUse": "No form uses a library theme yet",
-      "byKind": "Themes by kind",
-      "inUseNow": "{n} in use"
-    },
     "card": {
       "changed": "Changed {when}",
       "created": "Created",

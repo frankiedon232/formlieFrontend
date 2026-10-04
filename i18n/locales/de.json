@@ -1525,16 +1525,6 @@
       "openForms": "Formulare öffnen",
       "browse": "Formalie-Vorlagen ansehen"
     },
-    "overview": {
-      "formsFrom": "Formulare aus Vorlagen",
-      "system": "Formalie-Vorlagen",
-      "mine": "Ihre Vorlagen",
-      "allTime": "Gesamt",
-      "byCategory": "Nutzung nach Kategorie",
-      "other": "Sonstige",
-      "formsCount": "{n} Formulare aus Vorlagen",
-      "noUse": "Noch keine Formulare aus Vorlagen"
-    },
     "card": {
       "used": "Genutzt {when}",
       "pages": "Seiten",
@@ -2801,18 +2791,6 @@
     "previewName": "Vollständiger Name",
     "previewEmail": "E-Mail",
     "previewMessage": "Nachricht",
-    "overview": {
-      "use": "Theme-Nutzung",
-      "styledHint": "Formulare mit einem Theme aus der Bibliothek",
-      "themes": "Themes",
-      "inUse": "In Gebrauch",
-      "unused": "Nicht genutzt",
-      "ofForms": "von {n} Formularen",
-      "top": "Meistgenutzte Themes",
-      "noUse": "Noch kein Formular nutzt ein Theme aus der Bibliothek",
-      "byKind": "Themes nach Art",
-      "inUseNow": "{n} in Gebrauch"
-    },
     "card": {
       "changed": "Geändert {when}",
       "created": "Erstellt",

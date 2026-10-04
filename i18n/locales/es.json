@@ -1525,16 +1525,6 @@
       "openForms": "Abrir formularios",
       "browse": "Ver plantillas de Formalie"
     },
-    "overview": {
-      "formsFrom": "Formularios desde plantillas",
-      "system": "Plantillas de Formalie",
-      "mine": "Tus plantillas",
-      "allTime": "Total",
-      "byCategory": "Uso por categoría",
-      "other": "Otras",
-      "formsCount": "{n} formularios desde plantillas",
-      "noUse": "Aún no hay formularios creados desde plantillas"
-    },
     "card": {
       "used": "Usada {when}",
       "pages": "Páginas",
@@ -2801,18 +2791,6 @@
     "previewName": "Nombre completo",
     "previewEmail": "Correo electrónico",
     "previewMessage": "Mensaje",
-    "overview": {
-      "use": "Uso de temas",
-      "styledHint": "Formularios con un tema de la biblioteca",
-      "themes": "Temas",
-      "inUse": "En uso",
-      "unused": "Sin usar",
-      "ofForms": "de {n} formularios",
-      "top": "Temas más usados",
-      "noUse": "Ningún formulario usa aún un tema de la biblioteca",
-      "byKind": "Temas por tipo",
-      "inUseNow": "{n} en uso"
-    },
     "card": {
       "changed": "Cambiado {when}",
       "created": "Creado",

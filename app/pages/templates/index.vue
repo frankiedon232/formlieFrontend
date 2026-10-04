@@ -1,8 +1,8 @@
 <!--
   Templates (F9), Formalie's categories first (owner, 2026-10-03: 84 templates at once is too
   much). Each category shows how many templates it holds and how they're used; opening one lists
-  its templates. The workspace's own templates live apart, under "Your templates". Locked list
-  format (rule 21): two chart cards on top, the table with Columns, the locked card; a row opens it.
+  its templates. The workspace's own templates live apart, under "Your templates". Locked table / grid
+  format (rule 21; owner 2026-10-04: no chart cards here): Columns, the locked card; a row opens it.
 -->
 <script setup lang="ts">
 import type { TemplateCategorySummary } from '#shared/types/templates'
@@ -72,7 +72,6 @@ const rowActions = (category: TemplateCategorySummary) => [
     </template>
 
     <div class="flex flex-col gap-4">
-      <TemplatesOverview :insights="insights" />
       <DataView
         id="template-categories"
         :columns="columns"

@@ -1525,16 +1525,6 @@
       "openForms": "Formulieren openen",
       "browse": "Formalie-sjablonen bekijken"
     },
-    "overview": {
-      "formsFrom": "Formulieren uit sjablonen",
-      "system": "Formalie-sjablonen",
-      "mine": "Uw sjablonen",
-      "allTime": "Totaal",
-      "byCategory": "Gebruik per categorie",
-      "other": "Overig",
-      "formsCount": "{n} formulieren uit sjablonen",
-      "noUse": "Nog geen formulieren uit sjablonen"
-    },
     "card": {
       "used": "Gebruikt {when}",
       "pages": "Pagina’s",
@@ -2801,18 +2791,6 @@
     "previewName": "Volledige naam",
     "previewEmail": "E-mail",
     "previewMessage": "Bericht",
-    "overview": {
-      "use": "Themagebruik",
-      "styledHint": "Formulieren met een thema uit de bibliotheek",
-      "themes": "Thema’s",
-      "inUse": "In gebruik",
-      "unused": "Niet gebruikt",
-      "ofForms": "van {n} formulieren",
-      "top": "Meest gebruikte thema’s",
-      "noUse": "Nog geen formulier gebruikt een thema uit de bibliotheek",
-      "byKind": "Thema’s per soort",
-      "inUseNow": "{n} in gebruik"
-    },
     "card": {
       "changed": "Gewijzigd {when}",
       "created": "Gemaakt",

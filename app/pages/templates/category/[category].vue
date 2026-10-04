@@ -1,6 +1,6 @@
 <!--
   One of Formalie's template categories (owner, 2026-10-03): its templates in Grid / Table with
-  search, features filter and sort, under the two chart cards (rule 21; this category marked).
+  search, features filter and sort (table / grid only, owner 2026-10-04).
   Unknown categories go back to the overview.
 -->
 <script setup lang="ts">
@@ -45,7 +45,6 @@ useHead({ title: () => name.value || t('nav.templates') })
       <UButton :label="t('templates.blank')" icon="i-lucide-file" color="neutral" to="/forms/new" />
     </template>
     <div class="flex flex-col gap-4">
-      <TemplatesOverview :insights="insights" :category="key" />
       <TemplatesList
         :id="`templates-${key}`"
         :key="key"

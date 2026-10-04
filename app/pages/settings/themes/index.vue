@@ -2,20 +2,17 @@
   Themes library (Resources → Themes): three kinds in the shared DataView, System (Formalie's
   designs, read-only: duplicate to change), Saved (from a form's design) and Created (theme editor).
   Table or grid with page-shaped previews, filter by kind, search, sort; edit, rename, duplicate,
-  delete (forms keep their copy). Locked list format (rule 21, owner 2026-10-04): two chart cards on
-  top (theme use, themes by kind; a kind filters the list), the table with Columns and a share bar,
-  the locked card; a row or card opens the theme.
+  delete (forms keep their copy). Locked table / grid format (rule 21; owner 2026-10-04: no chart cards here): the table with
+  Columns and a share bar, the locked card; a row or card opens the theme.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
-import type { SavedTheme, ThemeInsights, ThemeSource } from '#shared/types/forms'
+import type { SavedTheme, ThemeInsights } from '#shared/types/forms'
 
 definePageMeta({ breadcrumb: 'nav.themes' })
 const { t } = useI18n()
 const api = useApi()
 const { relative, dateTime } = useFormat()
-const route = useRoute()
-const router = useRouter()
 const confirm = useConfirm()
 const library = useThemes()
 useHead({ title: () => t('nav.themes') })
@@ -26,18 +23,10 @@ async function loadInsights() {
   try {
     insights.value = (await api.get<ThemeInsights>('/themes/insights', undefined, { background: true })).data
   } catch {
-    // The cards keep their skeletons; the list reports its own errors.
+    // Share bars show 0 %; the list reports its own errors.
   }
 }
 onMounted(loadInsights)
-/** One kind at a time from the chart card (the sidebar's System / Saved / Created use the same). */
-const source = computed(() =>
-  typeof route.query.source === 'string' && !route.query.source.includes(',') ? route.query.source : null,
-)
-const pickSource = (value: ThemeSource) =>
-  void router.replace({
-    query: { ...route.query, source: source.value === value ? undefined : value, page: undefined },
-  })
 const busy = ref(new Set<string>())
 async function act(theme: SavedTheme, work: () => Promise<unknown>) {
   busy.value = new Set(busy.value).add(theme.id)
@@ -172,7 +161,6 @@ const refreshAll = () => Promise.all([dataView.value?.refresh(), loadInsights()]
     </template>
 
     <div class="flex flex-col gap-4">
-      <ThemesOverview :insights="insights" :source="source" @source="pickSource" />
       <DataView
         id="themes"
         ref="dataView"

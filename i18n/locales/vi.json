@@ -1525,16 +1525,6 @@
       "openForms": "Mở biểu mẫu",
       "browse": "Xem mẫu Formalie"
     },
-    "overview": {
-      "formsFrom": "Biểu mẫu từ mẫu có sẵn",
-      "system": "Mẫu của Formalie",
-      "mine": "Mẫu của bạn",
-      "allTime": "Mọi lúc",
-      "byCategory": "Mức dùng theo danh mục",
-      "other": "Khác",
-      "formsCount": "{n} biểu mẫu từ mẫu có sẵn",
-      "noUse": "Chưa có biểu mẫu nào tạo từ mẫu"
-    },
     "card": {
       "used": "Đã dùng {when}",
       "pages": "Trang",
@@ -2801,18 +2791,6 @@
     "previewName": "Họ và tên",
     "previewEmail": "Email",
     "previewMessage": "Lời nhắn",
-    "overview": {
-      "use": "Mức dùng giao diện",
-      "styledHint": "Biểu mẫu dùng giao diện từ thư viện",
-      "themes": "Giao diện",
-      "inUse": "Đang dùng",
-      "unused": "Chưa dùng",
-      "ofForms": "trên {n} biểu mẫu",
-      "top": "Giao diện dùng nhiều nhất",
-      "noUse": "Chưa có biểu mẫu nào dùng giao diện từ thư viện",
-      "byKind": "Giao diện theo loại",
-      "inUseNow": "{n} đang dùng"
-    },
     "card": {
       "changed": "Đã đổi {when}",
       "created": "Ngày tạo",

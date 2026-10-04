@@ -1525,16 +1525,6 @@
       "openForms": "Formları aç",
       "browse": "Formalie şablonlarına göz at"
     },
-    "overview": {
-      "formsFrom": "Şablonlardan formlar",
-      "system": "Formalie şablonları",
-      "mine": "Şablonlarınız",
-      "allTime": "Tüm zamanlar",
-      "byCategory": "Kategoriye göre kullanım",
-      "other": "Diğer",
-      "formsCount": "Şablonlardan {n} form",
-      "noUse": "Henüz şablondan oluşturulmuş form yok"
-    },
     "card": {
       "used": "Kullanıldı: {when}",
       "pages": "Sayfalar",
@@ -2801,18 +2791,6 @@
     "previewName": "Ad soyad",
     "previewEmail": "E-posta",
     "previewMessage": "Mesaj",
-    "overview": {
-      "use": "Tema kullanımı",
-      "styledHint": "Kitaplıktan tema kullanan formlar",
-      "themes": "Temalar",
-      "inUse": "Kullanımda",
-      "unused": "Kullanılmıyor",
-      "ofForms": "{n} formdan",
-      "top": "En çok kullanılan temalar",
-      "noUse": "Henüz hiçbir form kitaplıktan tema kullanmıyor",
-      "byKind": "Türe göre temalar",
-      "inUseNow": "{n} kullanımda"
-    },
     "card": {
       "changed": "Değiştirildi: {when}",
       "created": "Oluşturuldu",

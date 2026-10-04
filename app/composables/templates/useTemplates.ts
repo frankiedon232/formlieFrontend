@@ -119,7 +119,7 @@ export function useTemplates() {
 }
 
 /**
- * The numbers behind the template pages' two top cards (last 30 days), loaded in the background on
+ * The template totals (forms made from templates, for each card's share of use), loaded in the background on
  * mount; `refresh` after a template is used, duplicated or deleted.
  */
 export function useTemplateInsights() {
@@ -131,7 +131,7 @@ export function useTemplateInsights() {
       const from = new Date(Date.now() - 29 * 86_400_000).toISOString().slice(0, 10)
       insights.value = (await api.get<TemplateInsights>('/templates/insights', { from, to }, { background: true })).data
     } catch {
-      // The cards keep their skeletons; the list reports its own errors.
+      // Share bars show 0 %; the list reports its own errors.
     }
   }
   onMounted(refresh)

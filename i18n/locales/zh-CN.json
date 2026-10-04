@@ -1525,16 +1525,6 @@
       "openForms": "打开表单",
       "browse": "浏览 Formalie 模板"
     },
-    "overview": {
-      "formsFrom": "由模板创建的表单",
-      "system": "Formalie 模板",
-      "mine": "你的模板",
-      "allTime": "全部时间",
-      "byCategory": "按类别的使用情况",
-      "other": "其他",
-      "formsCount": "由模板创建的表单 {n} 个",
-      "noUse": "还没有由模板创建的表单"
-    },
     "card": {
       "used": "{when}使用过",
       "pages": "页面",
@@ -2801,18 +2791,6 @@
     "previewName": "姓名",
     "previewEmail": "邮箱",
     "previewMessage": "留言",
-    "overview": {
-      "use": "主题使用情况",
-      "styledHint": "使用资源库主题的表单",
-      "themes": "主题",
-      "inUse": "使用中",
-      "unused": "未使用",
-      "ofForms": "共 {n} 个表单",
-      "top": "最常用的主题",
-      "noUse": "还没有表单使用资源库主题",
-      "byKind": "按类型的主题",
-      "inUseNow": "{n} 个使用中"
-    },
     "card": {
       "changed": "{when}修改",
       "created": "创建时间",

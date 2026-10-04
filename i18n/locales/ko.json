@@ -1525,16 +1525,6 @@
       "openForms": "양식 열기",
       "browse": "Formalie 템플릿 둘러보기"
     },
-    "overview": {
-      "formsFrom": "템플릿으로 만든 양식",
-      "system": "Formalie 템플릿",
-      "mine": "내 템플릿",
-      "allTime": "전체 기간",
-      "byCategory": "카테고리별 사용",
-      "other": "기타",
-      "formsCount": "템플릿으로 만든 양식 {n}개",
-      "noUse": "아직 템플릿으로 만든 양식이 없습니다"
-    },
     "card": {
       "used": "{when} 사용",
       "pages": "페이지",
@@ -2801,18 +2791,6 @@
     "previewName": "이름",
     "previewEmail": "이메일",
     "previewMessage": "메시지",
-    "overview": {
-      "use": "테마 사용",
-      "styledHint": "라이브러리 테마를 쓰는 양식",
-      "themes": "테마",
-      "inUse": "사용 중",
-      "unused": "미사용",
-      "ofForms": "양식 {n}개 중",
-      "top": "가장 많이 쓰는 테마",
-      "noUse": "아직 라이브러리 테마를 쓰는 양식이 없습니다",
-      "byKind": "종류별 테마",
-      "inUseNow": "{n}개 사용 중"
-    },
     "card": {
       "changed": "{when} 변경",
       "created": "생성일",

@@ -1525,16 +1525,6 @@
       "openForms": "フォームを開く",
       "browse": "Formalie テンプレートを見る"
     },
-    "overview": {
-      "formsFrom": "テンプレートから作成したフォーム",
-      "system": "Formalie のテンプレート",
-      "mine": "あなたのテンプレート",
-      "allTime": "累計",
-      "byCategory": "カテゴリ別の利用",
-      "other": "その他",
-      "formsCount": "テンプレートから {n} 件のフォーム",
-      "noUse": "テンプレートから作成されたフォームはまだありません"
-    },
     "card": {
       "used": "{when}に使用",
       "pages": "ページ",
@@ -2801,18 +2791,6 @@
     "previewName": "氏名",
     "previewEmail": "メールアドレス",
     "previewMessage": "メッセージ",
-    "overview": {
-      "use": "テーマの利用",
-      "styledHint": "ライブラリのテーマを使うフォーム",
-      "themes": "テーマ",
-      "inUse": "使用中",
-      "unused": "未使用",
-      "ofForms": "{n} 件のフォーム中",
-      "top": "よく使われるテーマ",
-      "noUse": "ライブラリのテーマを使うフォームはまだありません",
-      "byKind": "種類別のテーマ",
-      "inUseNow": "{n} 件使用中"
-    },
     "card": {
       "changed": "{when}に変更",
       "created": "作成日",

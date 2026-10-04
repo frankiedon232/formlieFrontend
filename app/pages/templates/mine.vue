@@ -1,6 +1,6 @@
 <!--
   Your templates (owner, 2026-10-03): the workspace's own templates, saved from forms or
-  duplicated from Formalie's, kept apart from Formalie's catalogue. Two chart cards on top (rule 21).
+  duplicated from Formalie's, kept apart from Formalie's catalogue. Table / grid only (owner 2026-10-04).
 -->
 <script setup lang="ts">
 definePageMeta({ breadcrumb: 'nav.templatesMine' })
@@ -33,7 +33,6 @@ function changed() {
       <UButton :label="t('templates.blank')" icon="i-lucide-file" color="neutral" to="/forms/new" />
     </template>
     <div class="flex flex-col gap-4">
-      <TemplatesOverview :insights="insights" />
       <TemplatesList
         id="templates-mine"
         source="workspace"
