@@ -527,7 +527,7 @@ The page around the form on its public link (today the theme's `frame`: 4 styles
 - ⬜ M1 Resources → Pages menu (All · Formalie · Saved · Created) and the list page in the locked table / grid format (thumbnail left, like Themes)
 - ⬜ M2 More page styles rendered (beyond branded · spotlight · side · minimal: e.g. banner with cover image, centred, headline beside the form, corporate top bar with links, event poster, compact), each with a clear miniature
 - ⬜ M2 Page editor (like the theme editor: settings left, live preview of a sample form on desktop / tablet / phone)
-- ⬜ M3 Form designer "Page" panel picks from the library (Formalie + yours), "Save page as design", forms keep their copy (changing a design never breaks a form)
+- ⬜ M3 Listed for picking wherever themes are (owner 2026-10-04: "in themes design you have them listed there same"): the form designer's and the theme editor's Page panel show the library as tiles with miniatures (Formalie + yours), like the theme starting points; "Save page as design"; forms keep their copy (changing a design never breaks a form)
 
 ### Folders workspace (owner request 2026-10-02, built here because the stats need response data)
 
