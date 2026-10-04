@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Bukan alamat email yang valid",
       "removeEmail": "Hapus {email}",
-      "fixRed": "Perbaiki atau hapus email yang ditandai merah | Perbaiki atau hapus {n} email yang ditandai merah"
+      "fixRed": "Perbaiki atau hapus email yang ditandai merah | Perbaiki atau hapus {n} email yang ditandai merah",
+      "remove": "Hapus dari daftar",
+      "removed": "{email} dihapus dari daftar"
     },
     "people": {
       "title": "Orang dengan akses",

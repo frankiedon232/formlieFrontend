@@ -3039,7 +3039,9 @@
       },
       "notEmail": "To nie jest poprawny adres e-mail",
       "removeEmail": "Usuń {email}",
-      "fixRed": "Popraw lub usuń adres zaznaczony na czerwono | Popraw lub usuń adresy zaznaczone na czerwono ({n})"
+      "fixRed": "Popraw lub usuń adres zaznaczony na czerwono | Popraw lub usuń adresy zaznaczone na czerwono ({n})",
+      "remove": "Usuń z listy",
+      "removed": "Usunięto z listy: {email}"
     },
     "people": {
       "title": "Osoby z dostępem",

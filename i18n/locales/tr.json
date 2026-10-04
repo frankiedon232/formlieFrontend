@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Geçerli bir e-posta adresi değil",
       "removeEmail": "{email} kaldır",
-      "fixRed": "Kırmızıyla işaretli e-postayı düzeltin veya kaldırın | Kırmızıyla işaretli {n} e-postayı düzeltin veya kaldırın"
+      "fixRed": "Kırmızıyla işaretli e-postayı düzeltin veya kaldırın | Kırmızıyla işaretli {n} e-postayı düzeltin veya kaldırın",
+      "remove": "Listeden kaldır",
+      "removed": "{email} listeden kaldırıldı"
     },
     "people": {
       "title": "Erişimi olan kişiler",

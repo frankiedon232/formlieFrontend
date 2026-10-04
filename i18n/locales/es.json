@@ -3039,7 +3039,9 @@
       },
       "notEmail": "No es un correo electrónico válido",
       "removeEmail": "Quitar {email}",
-      "fixRed": "Corrija o quite el correo marcado en rojo | Corrija o quite los {n} correos marcados en rojo"
+      "fixRed": "Corrija o quite el correo marcado en rojo | Corrija o quite los {n} correos marcados en rojo",
+      "remove": "Quitar de la lista",
+      "removed": "{email} se quitó de la lista"
     },
     "people": {
       "title": "Personas con acceso",

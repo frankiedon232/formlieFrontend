@@ -118,11 +118,20 @@ export const resendInvite = defineMockRoute(({ event }) => {
   return ok({ invitations: listOf(form) }, import.meta.dev ? { dev_links: [{ email: invite.email, url: personalLink(event, tenant, form, token) }] } : {})
 })
 
-/** DELETE /forms/:id/invites/:inviteId — the invitation link stops working (a response already sent stays). */
-export const revokeInvite = defineMockRoute(({ event }) => {
+/**
+ * DELETE /forms/:id/invites/:inviteId — the invitation link stops working (a response already sent stays).
+ * `?remove=1` on a revoked invitation takes it off the list (owner, 2026-10-04); an active one must be revoked first.
+ */
+export const revokeInvite = defineMockRoute(({ event, query }) => {
   const { user, tenant } = requireAuth(event)
   const form = findForm(tenant, user, getRouterParam(event, 'id'))
   const invite = inviteOf(form, getRouterParam(event, 'inviteId'))
+  if (query.remove === '1') {
+    if (!invite.revoked_at) throw new MockError('FRM-FORM-1007')
+    form.invites = (form.invites ?? []).filter(item => item.id !== invite.id)
+    audit(event, tenant, user, form, 'invitation_removed', invite.email)
+    return ok({ invitations: listOf(form) })
+  }
   if (!invite.revoked_at) {
     invite.revoked_at = new Date().toISOString()
     audit(event, tenant, user, form, 'invitation_revoked', invite.email)

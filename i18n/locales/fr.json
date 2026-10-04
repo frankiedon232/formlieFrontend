@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Adresse e-mail non valide",
       "removeEmail": "Retirer {email}",
-      "fixRed": "Corrigez ou retirez l’adresse en rouge | Corrigez ou retirez les {n} adresses en rouge"
+      "fixRed": "Corrigez ou retirez l’adresse en rouge | Corrigez ou retirez les {n} adresses en rouge",
+      "remove": "Retirer de la liste",
+      "removed": "{email} retiré de la liste"
     },
     "people": {
       "title": "Personnes ayant accès",

@@ -85,6 +85,18 @@ async function revoke(item: FormInvitation) {
     working.value = null
   }
 }
+/** A revoked invitation off the list (a response they already sent is kept). */
+async function removeRevoked(item: FormInvitation) {
+  working.value = item.id
+  try {
+    invitations.value = (await api.del<{ invitations: FormInvitation[] }>(`/forms/${props.formId}/invites/${item.id}`, { query: { remove: '1' } })).data.invitations
+    toast.add({ title: t('share.invite.removed', { email: item.email }), icon: 'i-lucide-check', color: 'success' })
+  } catch (error) {
+    handle(error)
+  } finally {
+    working.value = null
+  }
+}
 function copyLink(url: string) {
   copy(url)
   toast.add({ title: t('share.link.copied'), icon: 'i-lucide-check', color: 'success' })
@@ -150,6 +162,9 @@ const counts = computed(() => ({
           <UButton v-if="item.status !== 'responded'" icon="i-lucide-rotate-cw" color="neutral" variant="ghost" size="xs" :loading="working === item.id" :aria-label="t('share.invite.resend')" @click="resend(item)" />
           <UButton icon="i-lucide-ban" color="neutral" variant="ghost" size="xs" :disabled="working === item.id" :aria-label="t('share.invite.revoke')" @click="revoke(item)" />
         </div>
+        <UTooltip v-else :text="t('share.invite.remove')">
+          <UButton icon="i-lucide-trash-2" color="neutral" variant="ghost" size="xs" :loading="working === item.id" :aria-label="t('share.invite.remove')" @click="removeRevoked(item)" />
+        </UTooltip>
       </li>
     </ul>
   </div>

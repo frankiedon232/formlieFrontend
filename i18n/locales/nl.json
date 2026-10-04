@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Geen geldig e-mailadres",
       "removeEmail": "{email} verwijderen",
-      "fixRed": "Verbeter of verwijder het rood gemarkeerde e-mailadres | Verbeter of verwijder de {n} rood gemarkeerde e-mailadressen"
+      "fixRed": "Verbeter of verwijder het rood gemarkeerde e-mailadres | Verbeter of verwijder de {n} rood gemarkeerde e-mailadressen",
+      "remove": "Uit de lijst verwijderen",
+      "removed": "{email} uit de lijst verwijderd"
     },
     "people": {
       "title": "Mensen met toegang",

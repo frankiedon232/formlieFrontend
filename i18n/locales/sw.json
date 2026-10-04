@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Si anwani sahihi ya barua pepe",
       "removeEmail": "Ondoa {email}",
-      "fixRed": "Rekebisha au ondoa barua pepe iliyowekwa alama nyekundu | Rekebisha au ondoa barua pepe {n} zilizowekwa alama nyekundu"
+      "fixRed": "Rekebisha au ondoa barua pepe iliyowekwa alama nyekundu | Rekebisha au ondoa barua pepe {n} zilizowekwa alama nyekundu",
+      "remove": "Ondoa kwenye orodha",
+      "removed": "{email} imeondolewa kwenye orodha"
     },
     "people": {
       "title": "Watu wenye ufikiaji",

@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Không phải địa chỉ email hợp lệ",
       "removeEmail": "Xóa {email}",
-      "fixRed": "Hãy sửa hoặc xóa email được đánh dấu đỏ | Hãy sửa hoặc xóa {n} email được đánh dấu đỏ"
+      "fixRed": "Hãy sửa hoặc xóa email được đánh dấu đỏ | Hãy sửa hoặc xóa {n} email được đánh dấu đỏ",
+      "remove": "Xóa khỏi danh sách",
+      "removed": "Đã xóa {email} khỏi danh sách"
     },
     "people": {
       "title": "Những người có quyền truy cập",

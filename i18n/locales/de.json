@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Keine gültige E-Mail-Adresse",
       "removeEmail": "{email} entfernen",
-      "fixRed": "Korrigieren oder entfernen Sie die rot markierte E-Mail | Korrigieren oder entfernen Sie die {n} rot markierten E-Mails"
+      "fixRed": "Korrigieren oder entfernen Sie die rot markierte E-Mail | Korrigieren oder entfernen Sie die {n} rot markierten E-Mails",
+      "remove": "Aus der Liste entfernen",
+      "removed": "{email} aus der Liste entfernt"
     },
     "people": {
       "title": "Personen mit Zugriff",

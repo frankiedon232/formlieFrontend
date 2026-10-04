@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Not a valid email address",
       "removeEmail": "Remove {email}",
-      "fixRed": "Fix or remove the email marked in red | Fix or remove the {n} emails marked in red"
+      "fixRed": "Fix or remove the email marked in red | Fix or remove the {n} emails marked in red",
+      "remove": "Remove from the list",
+      "removed": "{email} removed from the list"
     },
     "people": {
       "title": "People with access",

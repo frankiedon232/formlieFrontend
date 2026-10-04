@@ -3039,7 +3039,9 @@
       },
       "notEmail": "Não é um endereço de e-mail válido",
       "removeEmail": "Remover {email}",
-      "fixRed": "Corrija ou remova o e-mail a vermelho | Corrija ou remova os {n} e-mails a vermelho"
+      "fixRed": "Corrija ou remova o e-mail a vermelho | Corrija ou remova os {n} e-mails a vermelho",
+      "remove": "Remover da lista",
+      "removed": "{email} removido da lista"
     },
     "people": {
       "title": "Pessoas com acesso",
