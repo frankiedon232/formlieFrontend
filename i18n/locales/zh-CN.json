@@ -2705,13 +2705,25 @@
         "branded": "品牌",
         "spotlight": "聚焦",
         "side": "侧边面板",
-        "minimal": "极简"
+        "minimal": "极简",
+        "banner": "横幅",
+        "centred": "居中",
+        "headline": "大标题",
+        "corporate": "企业",
+        "compact": "紧凑",
+        "floating": "悬浮"
       },
       "styleHint": {
         "branded": "带有你的徽标和网站的顶栏、表单和页脚。",
         "spotlight": "品牌色横幅，展示标题和概要信息；表单向上叠入其中。",
         "side": "表单旁的品牌面板，在手机上上下排列。",
-        "minimal": "仅表单和一条细页脚。"
+        "minimal": "仅表单和一条细页脚。",
+        "banner": "一条宽横幅，含标志、标题、简介和要点；表单在下方。",
+        "centred": "无顶栏：标志和名称居中位于表单上方。安静，适合简短表单。",
+        "headline": "宽屏时大标题和简介在表单旁边；手机上在表单上方。",
+        "corporate": "正式的顶栏，以及含组织和网站的页脚横条。",
+        "compact": "一条细栏，含标志和表单标题。为表单留出最大空间。",
+        "floating": "悬浮在页面背景上的圆角栏。适合渐变和图片背景。"
       },
       "tone": "顶栏和面板颜色",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "夜色侧栏",
       "side_soft": "柔和侧栏",
       "minimal": "极简",
-      "minimal_soft": "柔和极简"
+      "minimal_soft": "柔和极简",
+      "banner_brand": "品牌横幅",
+      "banner_night": "夜色横幅",
+      "centred_calm": "宁静居中",
+      "centred_white": "纯白居中",
+      "headline_light": "明亮大标题",
+      "headline_warm": "温暖大标题",
+      "corporate_light": "企业浅色",
+      "corporate_brand": "企业品牌色",
+      "compact_light": "紧凑浅色",
+      "compact_night": "紧凑夜色",
+      "floating_soft": "柔和悬浮",
+      "floating_night": "夜色悬浮"
     },
     "editor": {
       "crumb": "页面编辑器",

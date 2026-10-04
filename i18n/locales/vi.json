@@ -2705,13 +2705,25 @@
         "branded": "Thương hiệu",
         "spotlight": "Nổi bật",
         "side": "Bảng bên",
-        "minimal": "Tối giản"
+        "minimal": "Tối giản",
+        "banner": "Băng rôn",
+        "centred": "Căn giữa",
+        "headline": "Tiêu đề lớn",
+        "corporate": "Doanh nghiệp",
+        "compact": "Gọn",
+        "floating": "Nổi"
       },
       "styleHint": {
         "branded": "Thanh trên cùng có logo và trang web của bạn, biểu mẫu và chân trang.",
         "spotlight": "Biểu ngữ màu thương hiệu với tiêu đề và thông tin nhanh; biểu mẫu nổi lên trên đó.",
         "side": "Bảng thương hiệu bên cạnh biểu mẫu. Trên điện thoại sẽ xếp chồng.",
-        "minimal": "Chỉ biểu mẫu và một chân trang mảnh."
+        "minimal": "Chỉ biểu mẫu và một chân trang mảnh.",
+        "banner": "Một dải rộng có logo, tiêu đề, phần giới thiệu và thông tin nhanh; biểu mẫu ở bên dưới.",
+        "centred": "Không có thanh: logo và tên căn giữa phía trên biểu mẫu. Nhẹ nhàng, cho biểu mẫu ngắn.",
+        "headline": "Tiêu đề lớn và phần giới thiệu bên cạnh biểu mẫu trên màn hình rộng; phía trên trên điện thoại.",
+        "corporate": "Thanh trên trang trọng và dải chân trang có tổ chức và trang web của bạn.",
+        "compact": "Một thanh mảnh có logo và tiêu đề biểu mẫu. Nhiều chỗ nhất cho biểu mẫu.",
+        "floating": "Một thanh bo tròn nổi trên nền trang. Hợp với nền chuyển màu và hình ảnh."
       },
       "tone": "Màu thanh và bảng",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Bảng đêm",
       "side_soft": "Bảng dịu",
       "minimal": "Tối giản",
-      "minimal_soft": "Tối giản dịu"
+      "minimal_soft": "Tối giản dịu",
+      "banner_brand": "Băng rôn thương hiệu",
+      "banner_night": "Băng rôn đêm",
+      "centred_calm": "Căn giữa dịu",
+      "centred_white": "Căn giữa trắng",
+      "headline_light": "Tiêu đề sáng",
+      "headline_warm": "Tiêu đề ấm",
+      "corporate_light": "Doanh nghiệp sáng",
+      "corporate_brand": "Doanh nghiệp thương hiệu",
+      "compact_light": "Gọn sáng",
+      "compact_night": "Gọn đêm",
+      "floating_soft": "Nổi dịu",
+      "floating_night": "Nổi đêm"
     },
     "editor": {
       "crumb": "Trình sửa trang",

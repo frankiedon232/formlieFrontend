@@ -2705,13 +2705,25 @@
         "branded": "Z marką",
         "spotlight": "Wyróżnienie",
         "side": "Panel boczny",
-        "minimal": "Minimalny"
+        "minimal": "Minimalny",
+        "banner": "Baner",
+        "centred": "Wyśrodkowany",
+        "headline": "Nagłówek",
+        "corporate": "Firmowy",
+        "compact": "Kompaktowy",
+        "floating": "Pływający"
       },
       "styleHint": {
         "branded": "Górny pasek z logo i witryną, formularz i stopka.",
         "spotlight": "Baner w kolorze marki z tytułem i krótkimi informacjami; formularz na niego nachodzi.",
         "side": "Panel z marką obok formularza. Na telefonach jeden pod drugim.",
-        "minimal": "Tylko formularz i wąska stopka."
+        "minimal": "Tylko formularz i wąska stopka.",
+        "banner": "Szeroki pas z logo, tytułem, wstępem i krótkimi informacjami; formularz pod nim.",
+        "centred": "Bez paska: logo i nazwa wyśrodkowane nad formularzem. Spokojny, do krótkich formularzy.",
+        "headline": "Duży nagłówek i wstęp obok formularza na szerokich ekranach; nad nim na telefonach.",
+        "corporate": "Oficjalny górny pasek i pas stopki z organizacją i stroną internetową.",
+        "compact": "Jeden wąski pasek z logo i tytułem formularza. Najwięcej miejsca na formularz.",
+        "floating": "Zaokrąglony pasek unosi się nad tłem strony. Do gradientów i zdjęć."
       },
       "tone": "Kolor paska i panelu",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Nocny panel",
       "side_soft": "Łagodny panel",
       "minimal": "Minimalny",
-      "minimal_soft": "Łagodny minimalny"
+      "minimal_soft": "Łagodny minimalny",
+      "banner_brand": "Baner marki",
+      "banner_night": "Nocny baner",
+      "centred_calm": "Spokojny środek",
+      "centred_white": "Biały środek",
+      "headline_light": "Jasny nagłówek",
+      "headline_warm": "Ciepły nagłówek",
+      "corporate_light": "Firmowy jasny",
+      "corporate_brand": "Firmowy marki",
+      "compact_light": "Kompaktowy jasny",
+      "compact_night": "Kompaktowy nocny",
+      "floating_soft": "Łagodny pływający",
+      "floating_night": "Nocny pływający"
     },
     "editor": {
       "crumb": "Edytor strony",

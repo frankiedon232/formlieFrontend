@@ -1,12 +1,13 @@
 <!--
   The page around a form on its public link (F10, owner 2026-10-03), the organisation's branding,
   a link to its own website (never the portal), quick facts and a secure-by-Formalie footer, in
-  four styles (theme.frame.style): branded · spotlight · side · minimal. Lives inside the form page
+  styles (theme.frame.style): branded · spotlight · side · minimal here; banner · centred · headline ·
+  corporate · compact · floating (page designs, owner 2026-10-04) in their own components (FrameBanner…). Lives inside the form page
   root, so it follows the form's theme (colours, font). The default slot is the form area.
   Text on dark / brand surfaces is black or white for contrast (readableOn).
 -->
 <script setup lang="ts">
-import { readableOn, type FormTheme } from '#shared/utils/forms/theme'
+import type { FormTheme } from '#shared/utils/forms/theme'
 
 const props = defineProps<{
   theme: FormTheme
@@ -16,86 +17,29 @@ const props = defineProps<{
   minutes: number
   org: { name: string; logo: string | null; website: string | null }
 }>()
-const { t } = useI18n()
-
-const frame = computed(() => props.theme.frame)
-const primary = computed(() => props.theme.colors.primary)
-const onPrimary = computed(() => readableOn(primary.value))
-const brandGradient = computed(
-  () => `linear-gradient(135deg, ${primary.value}, color-mix(in oklab, ${primary.value} 62%, #000))`,
-)
-
-/** Bar / panel surface for the chosen tone. */
-const tone = computed(() => {
-  switch (frame.value.tone) {
-    case 'dark':
-      return { background: '#0a0a0a', color: '#fafafa', borderColor: 'rgb(255 255 255 / 0.08)' }
-    case 'brand':
-      return { background: primary.value, color: onPrimary.value, borderColor: 'transparent' }
-    default:
-      return {
-        background: props.theme.container.bg,
-        color: props.theme.colors.text,
-        borderColor: 'var(--ui-border)',
-      }
-  }
-})
-const sideSurface = computed(() =>
-  frame.value.tone === 'light'
-    ? { background: props.theme.container.bg, color: props.theme.colors.text }
-    : frame.value.tone === 'dark'
-      ? { background: '#0a0a0a', color: '#fafafa' }
-      : { background: brandGradient.value, color: onPrimary.value },
-)
-
-const website = computed(() =>
-  frame.value.show_website && props.org.website && /^https:\/\//i.test(props.org.website)
-    ? props.org.website
-    : null,
-)
-const websiteHost = computed(() => {
-  try {
-    return website.value ? new URL(website.value).hostname.replace(/^www\./, '') : ''
-  } catch {
-    return ''
-  }
-})
-const initials = computed(() =>
-  props.org.name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map(word => word[0]!.toUpperCase())
-    .join(''),
-)
-const facts = computed(() =>
-  frame.value.show_facts
-    ? [
-        { icon: 'i-lucide-timer', label: t('public.frame.minutes', { n: props.minutes }, props.minutes) },
-        {
-          icon: 'i-lucide-list-checks',
-          label: t('public.frame.questions', { n: props.questions }, props.questions),
-        },
-        { icon: 'i-lucide-lock-keyhole', label: t('public.frame.encrypted') },
-      ]
-    : [],
-)
-const year = new Date().getFullYear()
-// The website opens in the in-app browser over the form (Ctrl / Cmd / middle click: a new tab).
-const browser = useInAppBrowser()
-function visit(event: MouseEvent) {
-  if (!website.value || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-  event.preventDefault()
-  browser.open(website.value, props.org.name)
-}
+const { frame, primary, onPrimary, brandGradient, tone, surface: sideSurface, website, websiteHost, initials, facts, year } = useFrameParts(props)
 const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in oklab, ${primary.value} 14%, transparent), transparent)`)
+/** Styles added with page designs (owner 2026-10-04) each have their own component (literal names: Nuxt resolves them at build time). */
+const MORE: Record<string, ReturnType<typeof resolveComponent>> = {
+  banner: resolveComponent('FormsRendererFrameBanner'),
+  centred: resolveComponent('FormsRendererFrameCentred'),
+  headline: resolveComponent('FormsRendererFrameHeadline'),
+  corporate: resolveComponent('FormsRendererFrameCorporate'),
+  compact: resolveComponent('FormsRendererFrameCompact'),
+  floating: resolveComponent('FormsRendererFrameFloating'),
+}
+const more = computed(() => MORE[frame.value.style] ?? null)
 </script>
 
 <template>
   <div class="@container flex min-h-full flex-col">
+    <component :is="more" v-if="more" v-bind="props" class="flex-1">
+      <template #language><slot name="language" /></template>
+      <slot />
+    </component>
     <!-- ── Side panel ─────────────────────────────────────────────────────────── -->
     <div
-      v-if="frame.style === 'side'"
+      v-else-if="frame.style === 'side'"
       class="flex flex-1 flex-col @4xl:grid @4xl:grid-cols-[minmax(20rem,38%)_minmax(0,1fr)]"
     >
       <aside
@@ -170,20 +114,7 @@ const glow = computed(() => `radial-gradient(60% 100% at 50% 0%, color-mix(in ok
           <div class="flex shrink-0 items-center gap-2">
             <!-- Forms in several languages: the switcher sits beside "Visit website" (owner, 2026-10-04). -->
             <slot name="language" />
-            <UButton
-              v-if="website"
-              :to="website"
-              target="_blank"
-              external
-              :label="t('public.frame.website')"
-              trailing-icon="i-lucide-arrow-up-right"
-              color="neutral"
-              variant="outline"
-              size="sm"
-              class="shrink-0 rounded-full border-current/25 bg-transparent text-current ring-current/25 hover:bg-current/10 @max-xl:[&>span:first-child]:sr-only"
-              :aria-label="t('public.frame.websiteOf', { name: org.name })"
-              @click="visit"
-            />
+            <FormsRendererFrameWebsite v-if="website" :href="website" :org-name="org.name" />
           </div>
         </div>
       </header>

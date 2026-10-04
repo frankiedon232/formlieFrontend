@@ -2705,13 +2705,25 @@
         "branded": "Markalı",
         "spotlight": "Öne çıkan",
         "side": "Yan panel",
-        "minimal": "Sade"
+        "minimal": "Sade",
+        "banner": "Afiş",
+        "centred": "Ortalı",
+        "headline": "Manşet",
+        "corporate": "Kurumsal",
+        "compact": "Kompakt",
+        "floating": "Yüzen"
       },
       "styleHint": {
         "branded": "Logonuz ve web sitenizle üst çubuk, form ve alt bilgi.",
         "spotlight": "Başlık ve kısa bilgilerle marka renginde bir afiş; form onun içine doğru yükselir.",
         "side": "Formun yanında markalı bir panel. Telefonlarda alt alta dizilir.",
-        "minimal": "Yalnızca form ve ince bir alt bilgi."
+        "minimal": "Yalnızca form ve ince bir alt bilgi.",
+        "banner": "Logonuz, başlık, giriş ve kısa bilgilerle geniş bir bant; form altında.",
+        "centred": "Çubuk yok: formun üstünde ortalanmış logonuz ve adınız. Kısa formlar için sakin.",
+        "headline": "Geniş ekranlarda formun yanında büyük bir manşet ve giriş; telefonlarda üstünde.",
+        "corporate": "Resmi bir üst çubuk ve kuruluşunuz ile web sitenizin yer aldığı alt bant.",
+        "compact": "Logonuz ve form başlığıyla tek ince çubuk. Form için en fazla alan.",
+        "floating": "Sayfa arka planının üzerinde yüzen yuvarlak bir çubuk. Geçişler ve görseller için."
       },
       "tone": "Çubuk ve panel rengi",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Gece paneli",
       "side_soft": "Yumuşak panel",
       "minimal": "Minimal",
-      "minimal_soft": "Yumuşak minimal"
+      "minimal_soft": "Yumuşak minimal",
+      "banner_brand": "Marka afişi",
+      "banner_night": "Gece afişi",
+      "centred_calm": "Sakin ortalı",
+      "centred_white": "Beyaz ortalı",
+      "headline_light": "Açık manşet",
+      "headline_warm": "Sıcak manşet",
+      "corporate_light": "Kurumsal açık",
+      "corporate_brand": "Kurumsal marka",
+      "compact_light": "Kompakt açık",
+      "compact_night": "Kompakt gece",
+      "floating_soft": "Yumuşak yüzen",
+      "floating_night": "Gece yüzen"
     },
     "editor": {
       "crumb": "Sayfa düzenleyici",

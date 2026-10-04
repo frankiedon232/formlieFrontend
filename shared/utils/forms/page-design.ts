@@ -31,6 +31,18 @@ export const PAGE_PRESETS: { key: string; patch: PagePatch }[] = [
   { key: 'side_soft', patch: { frame: { style: 'side', tone: 'light' }, page: { bg_type: 'gradient', bg: '#eef2ff', bg_to: '#fdf2f8', gradient_angle: 135 } } },
   { key: 'minimal', patch: { frame: { style: 'minimal', tone: 'light', show_facts: false }, page: { bg_type: 'color', bg: '#ffffff' } } },
   { key: 'minimal_soft', patch: { frame: { style: 'minimal', tone: 'light' }, page: { bg_type: 'gradient', bg: '#f0fdf4', bg_to: '#ecfeff', gradient_angle: 160 } } },
+  { key: 'banner_brand', patch: { frame: { style: 'banner', tone: 'brand' }, page: { bg_type: 'color', bg: '#f4f4f5' } } },
+  { key: 'banner_night', patch: { frame: { style: 'banner', tone: 'dark' }, page: { bg_type: 'color', bg: '#fafafa' } } },
+  { key: 'centred_calm', patch: { frame: { style: 'centred', tone: 'light' }, page: { bg_type: 'gradient', bg: '#f8fafc', bg_to: '#eef2ff', gradient_angle: 180 } } },
+  { key: 'centred_white', patch: { frame: { style: 'centred', tone: 'light', show_facts: false }, page: { bg_type: 'color', bg: '#ffffff' } } },
+  { key: 'headline_light', patch: { frame: { style: 'headline', tone: 'light' }, page: { bg_type: 'color', bg: '#fafafa' } } },
+  { key: 'headline_warm', patch: { frame: { style: 'headline', tone: 'light' }, page: { bg_type: 'gradient', bg: '#fff7ed', bg_to: '#fdf2f8', gradient_angle: 135 } } },
+  { key: 'corporate_light', patch: { frame: { style: 'corporate', tone: 'light' }, page: { bg_type: 'color', bg: '#f4f4f5' } } },
+  { key: 'corporate_brand', patch: { frame: { style: 'corporate', tone: 'brand' }, page: { bg_type: 'color', bg: '#fafafa' } } },
+  { key: 'compact_light', patch: { frame: { style: 'compact', tone: 'light', show_facts: false }, page: { bg_type: 'color', bg: '#f4f4f5' } } },
+  { key: 'compact_night', patch: { frame: { style: 'compact', tone: 'dark', show_facts: false }, page: { bg_type: 'color', bg: '#e4e4e7' } } },
+  { key: 'floating_soft', patch: { frame: { style: 'floating', tone: 'light' }, page: { bg_type: 'gradient', bg: '#eef2ff', bg_to: '#fdf2f8', gradient_angle: 135 } } },
+  { key: 'floating_night', patch: { frame: { style: 'floating', tone: 'dark' }, page: { bg_type: 'gradient', bg: '#ecfeff', bg_to: '#f5f3ff', gradient_angle: 160 } } },
 ]
 
 /** The page tokens of a form's theme. */

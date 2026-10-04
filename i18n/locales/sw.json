@@ -2705,13 +2705,25 @@
         "branded": "Yenye chapa",
         "spotlight": "Kivutio",
         "side": "Paneli ya pembeni",
-        "minimal": "Rahisi"
+        "minimal": "Rahisi",
+        "banner": "Bango",
+        "centred": "Katikati",
+        "headline": "Kichwa kikubwa",
+        "corporate": "Kirasmi",
+        "compact": "Fupi",
+        "floating": "Inayoelea"
       },
       "styleHint": {
         "branded": "Upau wa juu wenye nembo na tovuti yako, fomu, na sehemu ya chini.",
         "spotlight": "Bango la rangi ya chapa lenye kichwa na taarifa fupi; fomu inapanda ndani yake.",
         "side": "Paneli yenye chapa kando ya fomu. Hupangwa juu na chini kwenye simu.",
-        "minimal": "Fomu pekee na sehemu ya chini nyembamba."
+        "minimal": "Fomu pekee na sehemu ya chini nyembamba.",
+        "banner": "Utepe mpana wenye nembo, kichwa, utangulizi na taarifa fupi; fomu chini yake.",
+        "centred": "Bila upau: nembo na jina lako katikati juu ya fomu. Tulivu, kwa fomu fupi.",
+        "headline": "Kichwa kikubwa na utangulizi kando ya fomu kwenye skrini pana; juu yake kwenye simu.",
+        "corporate": "Upau rasmi wa juu na utepe wa chini wenye shirika na tovuti yako.",
+        "compact": "Upau mmoja mwembamba wenye nembo na kichwa cha fomu. Nafasi kubwa zaidi kwa fomu.",
+        "floating": "Upau wa mviringo unaoelea juu ya mandharinyuma ya ukurasa. Kwa gradienti na picha."
       },
       "tone": "Rangi ya upau na paneli",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Paneli ya usiku",
       "side_soft": "Paneli laini",
       "minimal": "Rahisi",
-      "minimal_soft": "Rahisi laini"
+      "minimal_soft": "Rahisi laini",
+      "banner_brand": "Bango la chapa",
+      "banner_night": "Bango la usiku",
+      "centred_calm": "Katikati tulivu",
+      "centred_white": "Katikati nyeupe",
+      "headline_light": "Kichwa angavu",
+      "headline_warm": "Kichwa cha joto",
+      "corporate_light": "Kirasmi angavu",
+      "corporate_brand": "Kirasmi cha chapa",
+      "compact_light": "Fupi angavu",
+      "compact_night": "Fupi ya usiku",
+      "floating_soft": "Inayoelea laini",
+      "floating_night": "Inayoelea ya usiku"
     },
     "editor": {
       "crumb": "Kihariri cha ukurasa",

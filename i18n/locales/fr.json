@@ -2705,13 +2705,25 @@
         "branded": "À vos couleurs",
         "spotlight": "Mise en avant",
         "side": "Panneau latéral",
-        "minimal": "Minimal"
+        "minimal": "Minimal",
+        "banner": "Bandeau",
+        "centred": "Centré",
+        "headline": "Titre",
+        "corporate": "Institutionnel",
+        "compact": "Compact",
+        "floating": "Flottant"
       },
       "styleHint": {
         "branded": "Barre supérieure avec votre logo et votre site, le formulaire et un pied de page.",
         "spotlight": "Une bannière aux couleurs de votre marque avec le titre et l’essentiel ; le formulaire vient s’y superposer.",
         "side": "Un panneau à vos couleurs à côté du formulaire, empilé sur mobile.",
-        "minimal": "Uniquement le formulaire et un fin pied de page."
+        "minimal": "Uniquement le formulaire et un fin pied de page.",
+        "banner": "Un large bandeau avec votre logo, le titre, l’intro et les infos clés ; le formulaire en dessous.",
+        "centred": "Pas de barre : votre logo et votre nom centrés au-dessus du formulaire. Calme, pour les formulaires courts.",
+        "headline": "Un grand titre et une intro à côté du formulaire sur grand écran, au-dessus sur téléphone.",
+        "corporate": "Une barre officielle en haut et un bandeau de pied avec votre organisation et votre site.",
+        "compact": "Une barre fine avec votre logo et le titre du formulaire. Le plus de place pour le formulaire.",
+        "floating": "Une barre arrondie flotte au-dessus du fond de page. Idéal pour les dégradés et les images."
       },
       "tone": "Couleur de la barre et du panneau",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Panneau nuit",
       "side_soft": "Panneau doux",
       "minimal": "Minimal",
-      "minimal_soft": "Minimal doux"
+      "minimal_soft": "Minimal doux",
+      "banner_brand": "Bandeau de marque",
+      "banner_night": "Bandeau nuit",
+      "centred_calm": "Centré serein",
+      "centred_white": "Centré blanc",
+      "headline_light": "Titre clair",
+      "headline_warm": "Titre chaleureux",
+      "corporate_light": "Institutionnel clair",
+      "corporate_brand": "Institutionnel marque",
+      "compact_light": "Compact clair",
+      "compact_night": "Compact nuit",
+      "floating_soft": "Flottant doux",
+      "floating_night": "Flottant nuit"
     },
     "editor": {
       "crumb": "Éditeur de page",

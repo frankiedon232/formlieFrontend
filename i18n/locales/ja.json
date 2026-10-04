@@ -2705,13 +2705,25 @@
         "branded": "ブランド",
         "spotlight": "スポットライト",
         "side": "サイドパネル",
-        "minimal": "ミニマル"
+        "minimal": "ミニマル",
+        "banner": "バナー",
+        "centred": "中央揃え",
+        "headline": "見出し",
+        "corporate": "コーポレート",
+        "compact": "コンパクト",
+        "floating": "フローティング"
       },
       "styleHint": {
         "branded": "ロゴとウェブサイトを載せた上部バー、フォーム、フッター。",
         "spotlight": "タイトルと概要を載せたブランドカラーのバナー。フォームがその上に重なります。",
         "side": "フォームの横にブランドパネル。スマートフォンでは縦に並びます。",
-        "minimal": "フォームと細いフッターのみ。"
+        "minimal": "フォームと細いフッターのみ。",
+        "banner": "ロゴ、タイトル、紹介文、概要を載せた幅広の帯。その下にフォーム。",
+        "centred": "バーなし：フォームの上中央にロゴと名前。短いフォーム向けの落ち着いた見た目。",
+        "headline": "広い画面ではフォームの横に大きな見出しと紹介文、スマホでは上に表示。",
+        "corporate": "公式感のある上部バーと、組織名とウェブサイトを載せたフッター帯。",
+        "compact": "ロゴとフォーム名を並べた細いバー1本。フォームに最大の広さ。",
+        "floating": "ページ背景の上に浮かぶ角丸のバー。グラデーションや画像に最適。"
       },
       "tone": "バーとパネルの色",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "ナイトパネル",
       "side_soft": "ソフトパネル",
       "minimal": "ミニマル",
-      "minimal_soft": "ソフトミニマル"
+      "minimal_soft": "ソフトミニマル",
+      "banner_brand": "ブランドバナー",
+      "banner_night": "ナイトバナー",
+      "centred_calm": "穏やかな中央",
+      "centred_white": "白の中央",
+      "headline_light": "明るい見出し",
+      "headline_warm": "温かい見出し",
+      "corporate_light": "コーポレート ライト",
+      "corporate_brand": "コーポレート ブランド",
+      "compact_light": "コンパクト ライト",
+      "compact_night": "コンパクト ナイト",
+      "floating_soft": "ソフト フローティング",
+      "floating_night": "ナイト フローティング"
     },
     "editor": {
       "crumb": "ページエディター",

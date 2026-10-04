@@ -2705,13 +2705,25 @@
         "branded": "Bermerek",
         "spotlight": "Sorotan",
         "side": "Panel samping",
-        "minimal": "Minimal"
+        "minimal": "Minimal",
+        "banner": "Spanduk",
+        "centred": "Tengah",
+        "headline": "Judul besar",
+        "corporate": "Korporat",
+        "compact": "Ringkas",
+        "floating": "Melayang"
       },
       "styleHint": {
         "branded": "Bilah atas dengan logo dan situs web Anda, formulir, dan footer.",
         "spotlight": "Banner berwarna merek dengan judul dan info singkat; formulir naik ke dalamnya.",
         "side": "Panel bermerek di samping formulir, bertumpuk di ponsel.",
-        "minimal": "Hanya formulir dan footer tipis."
+        "minimal": "Hanya formulir dan footer tipis.",
+        "banner": "Pita lebar dengan logo, judul, pengantar, dan info singkat; formulir di bawahnya.",
+        "centred": "Tanpa bilah: logo dan nama Anda di tengah di atas formulir. Tenang, untuk formulir pendek.",
+        "headline": "Judul besar dan pengantar di samping formulir di layar lebar; di atasnya di ponsel.",
+        "corporate": "Bilah atas resmi dan pita kaki dengan organisasi dan situs web Anda.",
+        "compact": "Satu bilah tipis dengan logo dan judul formulir. Ruang terbanyak untuk formulir.",
+        "floating": "Bilah membulat melayang di atas latar halaman. Cocok untuk gradasi dan gambar."
       },
       "tone": "Warna bilah dan panel",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Panel malam",
       "side_soft": "Panel lembut",
       "minimal": "Minimal",
-      "minimal_soft": "Minimal lembut"
+      "minimal_soft": "Minimal lembut",
+      "banner_brand": "Spanduk merek",
+      "banner_night": "Spanduk malam",
+      "centred_calm": "Tengah tenang",
+      "centred_white": "Tengah putih",
+      "headline_light": "Judul terang",
+      "headline_warm": "Judul hangat",
+      "corporate_light": "Korporat terang",
+      "corporate_brand": "Korporat merek",
+      "compact_light": "Ringkas terang",
+      "compact_night": "Ringkas malam",
+      "floating_soft": "Melayang lembut",
+      "floating_night": "Melayang malam"
     },
     "editor": {
       "crumb": "Editor halaman",

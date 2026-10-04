@@ -1,6 +1,7 @@
 <!--
   Designer → Page (F10, owner 2026-10-03): how the form's public link looks around the form,
-  four styles drawn as small pictures, the bar / panel colour, the website link and quick facts.
+  ten styles drawn as small pictures (the page-design miniature), the bar / panel colour, the
+  website link and quick facts.
 -->
 <script setup lang="ts">
 import { THEME_FRAMES, type ThemeFrame } from '#shared/utils/forms/theme'
@@ -39,57 +40,9 @@ const pick = (style: ThemeFrame) => d.set('frame', 'style', style)
         "
         @click="pick(style)"
       >
-        <!-- Small picture of the style -->
-        <span
-          class="flex aspect-[4/3] w-full overflow-hidden rounded-md border border-default bg-muted"
-          aria-hidden="true"
-        >
-          <span v-if="style === 'side'" class="flex w-full">
-            <span class="flex w-2/5 flex-col justify-between bg-inverted p-1.5">
-              <span class="h-1 w-6 rounded-full bg-(--ui-bg)/70" />
-              <span class="flex flex-col gap-1"
-                ><span class="h-1.5 w-10 rounded-full bg-(--ui-bg)" /><span
-                  class="h-1 w-8 rounded-full bg-(--ui-bg)/60"
-              /></span>
-              <span class="h-1 w-5 rounded-full bg-(--ui-bg)/50" />
-            </span>
-            <span class="flex flex-1 items-center justify-center p-1.5"
-              ><span class="flex h-4/5 w-full flex-col gap-1 rounded-sm bg-default p-1"
-                ><span class="h-1 w-3/4 rounded-full bg-accented" /><span
-                  class="h-1.5 w-full rounded-sm bg-elevated" /><span
-                  class="h-1.5 w-full rounded-sm bg-elevated" /></span
-            ></span>
-          </span>
-          <span v-else class="flex w-full flex-col">
-            <span
-              v-if="style !== 'minimal'"
-              class="flex h-3 shrink-0 items-center justify-between px-1.5"
-              :class="style === 'spotlight' ? 'bg-inverted' : 'border-b border-default bg-default'"
-            >
-              <span
-                class="h-1 w-6 rounded-full"
-                :class="style === 'spotlight' ? 'bg-(--ui-bg)/70' : 'bg-accented'"
-              />
-              <span
-                class="h-1.5 w-4 rounded-full border"
-                :class="style === 'spotlight' ? 'border-(--ui-bg)/60' : 'border-accented'"
-              />
-            </span>
-            <span
-              v-if="style === 'spotlight'"
-              class="flex h-7 shrink-0 flex-col items-center justify-center gap-0.5 bg-inverted pb-2"
-              ><span class="h-1.5 w-12 rounded-full bg-(--ui-bg)" /><span
-                class="h-1 w-8 rounded-full bg-(--ui-bg)/60"
-            /></span>
-            <span class="flex flex-1 justify-center px-3" :class="style === 'spotlight' ? '-mt-3' : 'pt-1.5'">
-              <span class="flex w-full flex-col gap-1 rounded-sm bg-default p-1 shadow-xs"
-                ><span class="h-1 w-3/4 rounded-full bg-accented" /><span
-                  class="h-1.5 w-full rounded-sm bg-elevated" /><span
-                  class="h-1.5 w-full rounded-sm bg-elevated"
-              /></span>
-            </span>
-            <span class="mt-auto h-1.5 shrink-0 border-t border-default" />
-          </span>
+        <!-- Small picture of the style, in this form's tone and background (same as Resources → Pages) -->
+        <span class="block overflow-hidden rounded-md border border-default" aria-hidden="true">
+          <PageDesignsThumb :tokens="{ frame: { ...theme.frame, style }, page: theme.page }" />
         </span>
         <span
           class="px-0.5 text-xs font-medium"
@@ -101,7 +54,7 @@ const pick = (style: ThemeFrame) => d.set('frame', 'style', style)
     <p class="text-xs text-muted">{{ t(`designer.frame.styleHint.${theme.frame.style}`) }}</p>
 
     <FormsDesignerChoice
-      v-if="theme.frame.style !== 'minimal'"
+      v-if="!['minimal', 'centred', 'headline'].includes(theme.frame.style)"
       :label="t('designer.frame.tone')"
       :model-value="theme.frame.tone"
       :items="tones"

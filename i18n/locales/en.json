@@ -2705,13 +2705,25 @@
         "branded": "Branded",
         "spotlight": "Spotlight",
         "side": "Side panel",
-        "minimal": "Minimal"
+        "minimal": "Minimal",
+        "banner": "Banner",
+        "centred": "Centred",
+        "headline": "Headline",
+        "corporate": "Corporate",
+        "compact": "Compact",
+        "floating": "Floating"
       },
       "styleHint": {
         "branded": "Top bar with your logo and website, the form, and a footer.",
         "spotlight": "A brand-colour banner with the title and quick facts; the form rises into it.",
         "side": "A branded panel beside the form. Stacks on phones.",
-        "minimal": "Just the form and a slim footer."
+        "minimal": "Just the form and a slim footer.",
+        "banner": "A wide band with your logo, the title, intro and quick facts; the form below it.",
+        "centred": "No bar: your logo and name centred above the form. Calm, for short forms.",
+        "headline": "A large headline and intro beside the form on wide screens; above it on phones.",
+        "corporate": "An official top bar and a footer band with your organisation and website.",
+        "compact": "One slim bar with your logo and the form's title. The most room for the form.",
+        "floating": "A rounded bar floating over the page background. Made for gradients and pictures."
       },
       "tone": "Bar and panel colour",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Night panel",
       "side_soft": "Soft panel",
       "minimal": "Minimal",
-      "minimal_soft": "Soft minimal"
+      "minimal_soft": "Soft minimal",
+      "banner_brand": "Brand banner",
+      "banner_night": "Night banner",
+      "centred_calm": "Calm centred",
+      "centred_white": "White centred",
+      "headline_light": "Light headline",
+      "headline_warm": "Warm headline",
+      "corporate_light": "Corporate light",
+      "corporate_brand": "Corporate brand",
+      "compact_light": "Compact light",
+      "compact_night": "Compact night",
+      "floating_soft": "Soft floating",
+      "floating_night": "Night floating"
     },
     "editor": {
       "crumb": "Page editor",

@@ -2705,13 +2705,25 @@
         "branded": "Con brand",
         "spotlight": "In evidenza",
         "side": "Pannello laterale",
-        "minimal": "Minimale"
+        "minimal": "Minimale",
+        "banner": "Banner",
+        "centred": "Centrato",
+        "headline": "Titolo",
+        "corporate": "Istituzionale",
+        "compact": "Compatto",
+        "floating": "Fluttuante"
       },
       "styleHint": {
         "branded": "Barra superiore con il tuo logo e sito, il modulo e un piè di pagina.",
         "spotlight": "Un banner nel colore del tuo brand con titolo e info rapide; il modulo vi si sovrappone.",
         "side": "Un pannello con il tuo brand accanto al modulo, impilato sui telefoni.",
-        "minimal": "Solo il modulo e un piè di pagina sottile."
+        "minimal": "Solo il modulo e un piè di pagina sottile.",
+        "banner": "Una fascia ampia con logo, titolo, introduzione e info rapide; il modulo sotto.",
+        "centred": "Nessuna barra: logo e nome centrati sopra il modulo. Calmo, per moduli brevi.",
+        "headline": "Un grande titolo e un’introduzione accanto al modulo su schermi ampi; sopra sui telefoni.",
+        "corporate": "Una barra superiore ufficiale e una fascia a piè di pagina con organizzazione e sito.",
+        "compact": "Una barra sottile con logo e titolo del modulo. Il massimo spazio per il modulo.",
+        "floating": "Una barra arrotondata fluttua sopra lo sfondo della pagina. Ideale per sfumature e immagini."
       },
       "tone": "Colore di barra e pannello",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Pannello notte",
       "side_soft": "Pannello morbido",
       "minimal": "Minimale",
-      "minimal_soft": "Minimale morbido"
+      "minimal_soft": "Minimale morbido",
+      "banner_brand": "Banner del marchio",
+      "banner_night": "Banner notte",
+      "centred_calm": "Centrato sereno",
+      "centred_white": "Centrato bianco",
+      "headline_light": "Titolo chiaro",
+      "headline_warm": "Titolo caldo",
+      "corporate_light": "Istituzionale chiaro",
+      "corporate_brand": "Istituzionale marchio",
+      "compact_light": "Compatto chiaro",
+      "compact_night": "Compatto notte",
+      "floating_soft": "Fluttuante morbido",
+      "floating_night": "Fluttuante notte"
     },
     "editor": {
       "crumb": "Editor di pagina",

@@ -2705,13 +2705,25 @@
         "branded": "Con marca",
         "spotlight": "Destacado",
         "side": "Panel lateral",
-        "minimal": "Mínimo"
+        "minimal": "Mínimo",
+        "banner": "Banda",
+        "centred": "Centrado",
+        "headline": "Titular",
+        "corporate": "Corporativo",
+        "compact": "Compacto",
+        "floating": "Flotante"
       },
       "styleHint": {
         "branded": "Barra superior con tu logo y sitio web, el formulario y un pie de página.",
         "spotlight": "Un banner con el color de tu marca, el título y datos rápidos; el formulario se eleva sobre él.",
         "side": "Un panel con tu marca junto al formulario; en móviles se apila.",
-        "minimal": "Solo el formulario y un pie de página fino."
+        "minimal": "Solo el formulario y un pie de página fino.",
+        "banner": "Una banda ancha con tu logo, el título, la introducción y datos rápidos; el formulario debajo.",
+        "centred": "Sin barra: tu logo y nombre centrados sobre el formulario. Tranquilo, para formularios cortos.",
+        "headline": "Un gran titular e introducción junto al formulario en pantallas anchas; encima en móviles.",
+        "corporate": "Una barra superior oficial y una banda de pie con tu organización y sitio web.",
+        "compact": "Una barra fina con tu logo y el título del formulario. El máximo espacio para el formulario.",
+        "floating": "Una barra redondeada flota sobre el fondo de la página. Ideal para degradados e imágenes."
       },
       "tone": "Color de la barra y el panel",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Panel nocturno",
       "side_soft": "Panel suave",
       "minimal": "Mínimo",
-      "minimal_soft": "Mínimo suave"
+      "minimal_soft": "Mínimo suave",
+      "banner_brand": "Banda de marca",
+      "banner_night": "Banda nocturna",
+      "centred_calm": "Centrado sereno",
+      "centred_white": "Centrado blanco",
+      "headline_light": "Titular claro",
+      "headline_warm": "Titular cálido",
+      "corporate_light": "Corporativo claro",
+      "corporate_brand": "Corporativo de marca",
+      "compact_light": "Compacto claro",
+      "compact_night": "Compacto nocturno",
+      "floating_soft": "Flotante suave",
+      "floating_night": "Flotante nocturno"
     },
     "editor": {
       "crumb": "Editor de página",

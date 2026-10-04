@@ -19,9 +19,13 @@ export const THEME_LAYOUTS = ['card', 'plain', 'split', 'full'] as const
  *   spotlight, brand-colour hero with title, intro and facts; the form card overlaps it
  *   side:     branded side panel (sticky on wide screens) next to the form
  *   minimal:  the form with a slim footer
+ * Page designs (owner 2026-10-04) add: banner (a wide band with title, intro and facts) · centred
+ * (logo and name above the form, no bar) · headline (a large headline beside the form) · corporate
+ * (official bar and footer band) · compact (one slim bar with the organisation and the title) ·
+ * floating (a rounded bar floating over the page background).
  * Embeds never show the page frame.
  */
-export const THEME_FRAMES = ['branded', 'spotlight', 'side', 'minimal'] as const
+export const THEME_FRAMES = ['branded', 'spotlight', 'side', 'minimal', 'banner', 'centred', 'headline', 'corporate', 'compact', 'floating'] as const
 export type ThemeFrame = (typeof THEME_FRAMES)[number]
 
 export const themeSchema = z.object({

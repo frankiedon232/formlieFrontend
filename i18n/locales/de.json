@@ -2705,13 +2705,25 @@
         "branded": "Gebrandet",
         "spotlight": "Spotlight",
         "side": "Seitenleiste",
-        "minimal": "Minimal"
+        "minimal": "Minimal",
+        "banner": "Banner",
+        "centred": "Zentriert",
+        "headline": "Schlagzeile",
+        "corporate": "Unternehmen",
+        "compact": "Kompakt",
+        "floating": "Schwebend"
       },
       "styleHint": {
         "branded": "Obere Leiste mit Logo und Website, das Formular und eine Fußzeile.",
         "spotlight": "Ein Banner in Markenfarbe mit Titel und Kurzinfos; das Formular ragt hinein.",
         "side": "Ein gebrandetes Panel neben dem Formular, auf Smartphones untereinander.",
-        "minimal": "Nur das Formular und eine schmale Fußzeile."
+        "minimal": "Nur das Formular und eine schmale Fußzeile.",
+        "banner": "Ein breites Band mit Logo, Titel, Einleitung und Kurzinfos; das Formular darunter.",
+        "centred": "Keine Leiste: Logo und Name zentriert über dem Formular. Ruhig, für kurze Formulare.",
+        "headline": "Eine große Schlagzeile mit Einleitung neben dem Formular auf breiten Bildschirmen, auf Telefonen darüber.",
+        "corporate": "Eine offizielle Kopfleiste und ein Fußband mit Organisation und Website.",
+        "compact": "Eine schmale Leiste mit Logo und Formulartitel. Der meiste Platz für das Formular.",
+        "floating": "Eine abgerundete Leiste schwebt über dem Seitenhintergrund. Ideal für Verläufe und Bilder."
       },
       "tone": "Farbe von Leiste und Panel",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Nachtpaneel",
       "side_soft": "Sanftes Paneel",
       "minimal": "Minimal",
-      "minimal_soft": "Sanft minimal"
+      "minimal_soft": "Sanft minimal",
+      "banner_brand": "Markenbanner",
+      "banner_night": "Nachtbanner",
+      "centred_calm": "Ruhig zentriert",
+      "centred_white": "Weiß zentriert",
+      "headline_light": "Helle Schlagzeile",
+      "headline_warm": "Warme Schlagzeile",
+      "corporate_light": "Unternehmen hell",
+      "corporate_brand": "Unternehmen Marke",
+      "compact_light": "Kompakt hell",
+      "compact_night": "Kompakt Nacht",
+      "floating_soft": "Sanft schwebend",
+      "floating_night": "Nacht schwebend"
     },
     "editor": {
       "crumb": "Seiteneditor",

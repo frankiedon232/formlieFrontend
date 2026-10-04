@@ -2705,13 +2705,25 @@
         "branded": "Huisstijl",
         "spotlight": "Spotlight",
         "side": "Zijpaneel",
-        "minimal": "Minimaal"
+        "minimal": "Minimaal",
+        "banner": "Banner",
+        "centred": "Gecentreerd",
+        "headline": "Kop",
+        "corporate": "Zakelijk",
+        "compact": "Compact",
+        "floating": "Zwevend"
       },
       "styleHint": {
         "branded": "Bovenbalk met je logo en website, het formulier en een voettekst.",
         "spotlight": "Een banner in je merkkleur met de titel en korte info; het formulier schuift erin omhoog.",
         "side": "Een paneel in je huisstijl naast het formulier. Op telefoons onder elkaar.",
-        "minimal": "Alleen het formulier en een smalle voettekst."
+        "minimal": "Alleen het formulier en een smalle voettekst.",
+        "banner": "Een brede band met uw logo, de titel, intro en kerngegevens; het formulier eronder.",
+        "centred": "Geen balk: uw logo en naam gecentreerd boven het formulier. Rustig, voor korte formulieren.",
+        "headline": "Een grote kop en intro naast het formulier op brede schermen; erboven op telefoons.",
+        "corporate": "Een officiële bovenbalk en een voetband met uw organisatie en website.",
+        "compact": "Eén smalle balk met uw logo en de titel van het formulier. De meeste ruimte voor het formulier.",
+        "floating": "Een afgeronde balk zweeft boven de paginaachtergrond. Gemaakt voor verlopen en afbeeldingen."
       },
       "tone": "Kleur van balk en paneel",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Nachtpaneel",
       "side_soft": "Zacht paneel",
       "minimal": "Minimaal",
-      "minimal_soft": "Zacht minimaal"
+      "minimal_soft": "Zacht minimaal",
+      "banner_brand": "Merkbanner",
+      "banner_night": "Nachtbanner",
+      "centred_calm": "Rustig gecentreerd",
+      "centred_white": "Wit gecentreerd",
+      "headline_light": "Lichte kop",
+      "headline_warm": "Warme kop",
+      "corporate_light": "Zakelijk licht",
+      "corporate_brand": "Zakelijk merk",
+      "compact_light": "Compact licht",
+      "compact_night": "Compact nacht",
+      "floating_soft": "Zacht zwevend",
+      "floating_night": "Nacht zwevend"
     },
     "editor": {
       "crumb": "Pagina-editor",

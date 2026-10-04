@@ -2705,13 +2705,25 @@
         "branded": "Com marca",
         "spotlight": "Destaque",
         "side": "Painel lateral",
-        "minimal": "Mínimo"
+        "minimal": "Mínimo",
+        "banner": "Faixa",
+        "centred": "Centralizado",
+        "headline": "Manchete",
+        "corporate": "Corporativo",
+        "compact": "Compacto",
+        "floating": "Flutuante"
       },
       "styleHint": {
         "branded": "Barra superior com seu logo e site, o formulário e um rodapé.",
         "spotlight": "Um banner na cor da marca com o título e informações rápidas; o formulário sobe sobre ele.",
         "side": "Um painel com sua marca ao lado do formulário. Empilhado no celular.",
-        "minimal": "Só o formulário e um rodapé fino."
+        "minimal": "Só o formulário e um rodapé fino.",
+        "banner": "Uma faixa larga com seu logotipo, o título, a introdução e dados rápidos; o formulário abaixo.",
+        "centred": "Sem barra: seu logotipo e nome centralizados acima do formulário. Calmo, para formulários curtos.",
+        "headline": "Uma manchete grande e introdução ao lado do formulário em telas largas; acima no celular.",
+        "corporate": "Uma barra superior oficial e uma faixa de rodapé com sua organização e site.",
+        "compact": "Uma barra fina com seu logotipo e o título do formulário. O máximo de espaço para o formulário.",
+        "floating": "Uma barra arredondada flutua sobre o fundo da página. Feita para degradês e imagens."
       },
       "tone": "Cor da barra e do painel",
       "toneValue": {
@@ -3466,7 +3478,19 @@
       "side_night": "Painel noturno",
       "side_soft": "Painel suave",
       "minimal": "Mínimo",
-      "minimal_soft": "Mínimo suave"
+      "minimal_soft": "Mínimo suave",
+      "banner_brand": "Faixa da marca",
+      "banner_night": "Faixa noturna",
+      "centred_calm": "Centralizado sereno",
+      "centred_white": "Centralizado branco",
+      "headline_light": "Manchete clara",
+      "headline_warm": "Manchete quente",
+      "corporate_light": "Corporativo claro",
+      "corporate_brand": "Corporativo da marca",
+      "compact_light": "Compacto claro",
+      "compact_night": "Compacto noturno",
+      "floating_soft": "Flutuante suave",
+      "floating_night": "Flutuante noturno"
     },
     "editor": {
       "crumb": "Editor de página",
