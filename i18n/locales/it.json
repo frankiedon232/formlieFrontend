@@ -2775,7 +2775,8 @@
       "notFound": "Questo tema non è disponibile",
       "leaveTitle": "Uscire senza salvare?",
       "leaveDesc": "Le modifiche a questo tema andranno perse.",
-      "leave": "Esci"
+      "leave": "Esci",
+      "nameFirst": "Dai un nome al tema per salvarlo."
     },
     "source": {
       "system": "Formalie",

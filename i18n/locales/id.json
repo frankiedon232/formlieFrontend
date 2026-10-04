@@ -2775,7 +2775,8 @@
       "notFound": "Tema ini tidak tersedia",
       "leaveTitle": "Keluar tanpa menyimpan?",
       "leaveDesc": "Perubahan Anda pada tema ini akan hilang.",
-      "leave": "Keluar"
+      "leave": "Keluar",
+      "nameFirst": "Beri nama tema untuk menyimpannya."
     },
     "source": {
       "system": "Formalie",

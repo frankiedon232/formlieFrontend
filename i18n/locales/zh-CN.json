@@ -2775,7 +2775,8 @@
       "notFound": "此主题不可用",
       "leaveTitle": "不保存就离开？",
       "leaveDesc": "你对此主题的更改将会丢失。",
-      "leave": "离开"
+      "leave": "离开",
+      "nameFirst": "请为主题命名后再保存。"
     },
     "source": {
       "system": "Formalie",

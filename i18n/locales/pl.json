@@ -2775,7 +2775,8 @@
       "notFound": "Ten motyw jest niedostępny",
       "leaveTitle": "Wyjść bez zapisywania?",
       "leaveDesc": "Zmiany w tym motywie zostaną utracone.",
-      "leave": "Wyjdź"
+      "leave": "Wyjdź",
+      "nameFirst": "Nadaj motywowi nazwę, aby go zapisać."
     },
     "source": {
       "system": "Formalie",

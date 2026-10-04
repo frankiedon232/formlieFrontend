@@ -2787,7 +2787,8 @@
       "leave": "Leave",
       "systemTitle": "A Formalie design",
       "systemHint": "This theme is part of Formalie and can't be changed. Duplicate it to make your own version.",
-      "systemDesc": "Formalie design (read-only)"
+      "systemDesc": "Formalie design (read-only)",
+      "nameFirst": "Give the theme a name to save it."
     },
     "view": "View",
     "open": "Open {name}",

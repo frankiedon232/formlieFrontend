@@ -2775,7 +2775,8 @@
       "notFound": "Dieses Theme ist nicht verfügbar",
       "leaveTitle": "Ohne Speichern verlassen?",
       "leaveDesc": "Die Änderungen an diesem Theme gehen verloren.",
-      "leave": "Verlassen"
+      "leave": "Verlassen",
+      "nameFirst": "Geben Sie dem Theme einen Namen, um es zu speichern."
     },
     "source": {
       "system": "Formalie",

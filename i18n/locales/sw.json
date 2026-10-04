@@ -2775,7 +2775,8 @@
       "notFound": "Mandhari hii haipatikani",
       "leaveTitle": "Ondoka bila kuhifadhi?",
       "leaveDesc": "Mabadiliko yako kwenye mandhari hii yatapotea.",
-      "leave": "Ondoka"
+      "leave": "Ondoka",
+      "nameFirst": "Ipe mandhari jina ili uihifadhi."
     },
     "source": {
       "system": "Formalie",

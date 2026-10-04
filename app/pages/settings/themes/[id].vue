@@ -31,10 +31,13 @@ provideFormBuilder(builder)
 /** No tokens = a new theme: it starts from the workspace default, so a starting point applies without asking. */
 function load(tokens?: FormTheme) {
   const { theme: _sampleDesign, ...sample } = templateSchema(systemTemplate('contact_lead')!)
-  builder.load(tokens ? { ...sample, theme: structuredClone(tokens) as unknown as Record<string, unknown> } : sample)
+  builder.load(
+    tokens ? { ...sample, theme: structuredClone(tokens) as unknown as Record<string, unknown> } : sample,
+  )
 }
 const saved = ref('')
-const snapshot = () => JSON.stringify({ name: name.value.trim(), tokens: builder.schema.value?.theme ?? null })
+const snapshot = () =>
+  JSON.stringify({ name: name.value.trim(), tokens: builder.schema.value?.theme ?? null })
 const dirty = computed(() => !loading.value && theme.value?.source !== 'system' && snapshot() !== saved.value)
 
 onMounted(async () => {
@@ -68,14 +71,49 @@ async function duplicateToEdit() {
 }
 
 const nameError = ref<string | undefined>()
+watch(name, value => value.trim() && (nameError.value = undefined))
 const { busy, run } = useBusy()
+const toast = useToast()
+/**
+ * Saving without a name (owner 2026-10-04): the field sits at the top of a scrolling panel, so
+ * bring it into view and focus it (phones: open the panel first), and say why in a toast.
+ */
+async function showNameField() {
+  toast.add({ title: t('themes.editor.nameFirst'), icon: 'i-lucide-pencil-line', color: 'warning' })
+  if (!large.value) panelOpen.value = true
+  await nextTick()
+  await new Promise(resolve => setTimeout(resolve, large.value ? 0 : 250))
+  const field = document.getElementById(large.value ? 'theme-name' : 'theme-name-panel')
+  if (!field) return
+  // Scroll the panel that holds it (scrollIntoView doesn't move nested scroll areas reliably).
+  let box = field.parentElement
+  while (box && !(box.scrollHeight > box.clientHeight && /auto|scroll/.test(getComputedStyle(box).overflowY)))
+    box = box.parentElement
+  field.focus({ preventScroll: true })
+  if (!box) return field.scrollIntoView({ block: 'center' })
+  const top = Math.max(
+    0,
+    box.scrollTop + field.getBoundingClientRect().top - box.getBoundingClientRect().top - 48,
+  )
+  box.scrollTo({ top, behavior: 'smooth' })
+  // Some browsers ignore smooth scrolling here; jump instead if nothing moved.
+  const from = box.scrollTop
+  setTimeout(
+    () => box && Math.abs(box.scrollTop - top) > 4 && box.scrollTop === from && box.scrollTo({ top }),
+    350,
+  )
+}
 async function save() {
   const trimmed = name.value.trim()
   nameError.value = trimmed ? undefined : t('library.nameRequired')
-  if (!trimmed) return
+  if (!trimmed) return showNameField()
   // The designer writes the full theme into the sample form; resolve fills anything missing.
   const tokens = resolveTheme(structuredClone(toRaw(builder.schema.value?.theme)), branding.value)
-  const result = await run(() => (isNew.value ? library.create(trimmed, tokens, 'created') : library.update(id.value, { name: trimmed, tokens })))
+  const result = await run(() =>
+    isNew.value
+      ? library.create(trimmed, tokens, 'created')
+      : library.update(id.value, { name: trimmed, tokens }),
+  )
   if (!result) return
   theme.value = result
   name.value = result.name
@@ -85,7 +123,12 @@ async function save() {
 
 onBeforeRouteLeave(async () => {
   if (!dirty.value || busy.value) return true
-  return await confirm({ title: t('themes.editor.leaveTitle'), description: t('themes.editor.leaveDesc'), confirmLabel: t('themes.editor.leave'), danger: true })
+  return await confirm({
+    title: t('themes.editor.leaveTitle'),
+    description: t('themes.editor.leaveDesc'),
+    confirmLabel: t('themes.editor.leave'),
+    danger: true,
+  })
 })
 defineShortcuts({ meta_s: { usingInput: true, handler: () => void (readOnly.value ? undefined : save()) } })
 
@@ -109,21 +152,58 @@ const panelOpen = ref(false)
   <AppPanel
     id="theme-editor"
     :title="name.trim() || (isNew ? t('themes.editor.newTitle') : t('themes.editor.untitled'))"
-    :subtitle="readOnly ? t('themes.editor.systemDesc') : dirty ? t('themes.editor.unsaved') : isNew ? t('themes.editor.newDesc') : t('themes.editor.savedState')"
+    :subtitle="
+      readOnly
+        ? t('themes.editor.systemDesc')
+        : dirty
+          ? t('themes.editor.unsaved')
+          : isNew
+            ? t('themes.editor.newDesc')
+            : t('themes.editor.savedState')
+    "
     :subtitle-icon="dirty ? 'i-lucide-circle-dot' : 'i-lucide-palette'"
   >
     <template v-if="readOnly" #actions>
-      <UButton :label="t('nav.themesAll')" icon="i-lucide-arrow-left" color="neutral" variant="outline" to="/settings/themes" />
-      <UButton :label="t('themes.duplicateToEdit')" icon="i-lucide-copy-plus" color="neutral" :loading="duplicating" @click="duplicateToEdit" />
+      <UButton
+        :label="t('nav.themesAll')"
+        icon="i-lucide-arrow-left"
+        color="neutral"
+        variant="outline"
+        to="/settings/themes"
+      />
+      <UButton
+        :label="t('themes.duplicateToEdit')"
+        icon="i-lucide-copy-plus"
+        color="neutral"
+        :loading="duplicating"
+        @click="duplicateToEdit"
+      />
     </template>
     <template v-else #actions>
-      <UButton :label="t('common.cancel')" icon="i-lucide-x" color="neutral" variant="outline" to="/settings/themes" />
+      <UButton
+        :label="t('common.cancel')"
+        icon="i-lucide-x"
+        color="neutral"
+        variant="outline"
+        to="/settings/themes"
+      />
       <UTooltip :text="t('themes.editor.save')" :kbds="['meta', 's']">
-        <UButton :label="t('themes.editor.save')" icon="i-lucide-check" color="neutral" :loading="busy" :disabled="loading || notFound" @click="save" />
+        <UButton
+          :label="t('themes.editor.save')"
+          icon="i-lucide-check"
+          color="neutral"
+          :loading="busy"
+          :disabled="loading || notFound"
+          @click="save"
+        />
       </UTooltip>
     </template>
 
-    <div v-if="loading" class="grid gap-4 lg:grid-cols-[340px_minmax(0,1fr)]" :aria-label="t('common.loading')">
+    <div
+      v-if="loading"
+      class="grid gap-4 lg:grid-cols-[340px_minmax(0,1fr)]"
+      :aria-label="t('common.loading')"
+    >
       <USkeleton class="hidden h-[70vh] lg:block" />
       <USkeleton class="h-[70vh] w-full" />
     </div>
@@ -132,11 +212,23 @@ const panelOpen = ref(false)
       v-else-if="notFound"
       icon="i-lucide-palette"
       :title="t('themes.editor.notFound')"
-      :actions="[{ label: t('nav.themesAll'), icon: 'i-lucide-arrow-left', to: '/settings/themes', color: 'neutral', variant: 'subtle' }]"
+      :actions="[
+        {
+          label: t('nav.themesAll'),
+          icon: 'i-lucide-arrow-left',
+          to: '/settings/themes',
+          color: 'neutral',
+          variant: 'subtle',
+        },
+      ]"
       class="my-auto"
     />
 
-    <div v-else-if="builder.schema.value" class="grid items-start gap-4" :class="readOnly ? '' : 'lg:grid-cols-[340px_minmax(0,1fr)]'">
+    <div
+      v-else-if="builder.schema.value"
+      class="grid items-start gap-4"
+      :class="readOnly ? '' : 'lg:grid-cols-[340px_minmax(0,1fr)]'"
+    >
       <UAlert
         v-if="readOnly"
         icon="i-lucide-sparkles"
@@ -145,16 +237,35 @@ const panelOpen = ref(false)
         :title="t('themes.editor.systemTitle')"
         :description="t('themes.editor.systemHint')"
       />
-      <UCard v-if="large && !readOnly" class="sticky top-0" :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-4 overflow-y-auto h-[calc(100dvh-11rem)]' }">
+      <UCard
+        v-if="large && !readOnly"
+        class="sticky top-0"
+        :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-4 overflow-y-auto h-[calc(100dvh-11rem)]' }"
+      >
         <UFormField :label="t('themes.editor.name')" :error="nameError" required>
-          <UInput v-model="name" maxlength="80" :placeholder="t('themes.namePlaceholder')" class="w-full" autofocus />
+          <UInput
+            id="theme-name"
+            v-model="name"
+            maxlength="80"
+            :placeholder="t('themes.namePlaceholder')"
+            class="w-full"
+            autofocus
+          />
         </UFormField>
         <FormsDesignerPanel standalone />
       </UCard>
 
       <div class="mb-20 flex min-w-0 flex-col gap-3 rounded-xl bg-elevated/40 p-2 sm:p-3 lg:mb-0">
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <UTabs v-model="screen" :items="screens" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" :aria-label="t('designer.screen.label')" />
+          <UTabs
+            v-model="screen"
+            :items="screens"
+            :content="false"
+            color="neutral"
+            size="xs"
+            :ui="SEGMENTED_UI"
+            :aria-label="t('designer.screen.label')"
+          />
           <span class="hidden text-xs text-muted md:inline">{{ t('themes.editor.sample') }}</span>
           <UTabs
             v-model="device"
@@ -167,21 +278,42 @@ const panelOpen = ref(false)
             :aria-label="t('builder.preview.device')"
           />
         </div>
-        <div class="mx-auto h-[calc(100dvh-14rem)] min-h-96 w-full overflow-y-auto rounded-lg border border-default transition-[max-width] duration-300 @container" :class="WIDTH[device]">
-          <FormsRendererPage :schema="builder.schema.value" :title="name.trim() || t('themes.editor.sampleTitle')" preview :show-thank-you="screen === 'thanks'" />
+        <div
+          class="mx-auto h-[calc(100dvh-14rem)] min-h-96 w-full overflow-y-auto rounded-lg border border-default transition-[max-width] duration-300 @container"
+          :class="WIDTH[device]"
+        >
+          <FormsRendererPage
+            :schema="builder.schema.value"
+            :title="name.trim() || t('themes.editor.sampleTitle')"
+            preview
+            :show-thank-you="screen === 'thanks'"
+          />
         </div>
       </div>
 
       <!-- Phones / tablets: the controls open from a floating bar (same as the form designer). -->
       <template v-if="!large && !readOnly">
         <div class="fixed inset-x-0 bottom-4 z-20 flex justify-center">
-          <UButton :label="t('builder.mode.design')" icon="i-lucide-palette" color="neutral" size="lg" class="rounded-full shadow-lg" @click="panelOpen = true" />
+          <UButton
+            :label="t('builder.mode.design')"
+            icon="i-lucide-palette"
+            color="neutral"
+            size="lg"
+            class="rounded-full shadow-lg"
+            @click="panelOpen = true"
+          />
         </div>
         <USlideover v-model:open="panelOpen" :title="t('builder.mode.design')" side="left">
           <template #body>
             <div class="flex flex-col gap-4">
               <UFormField :label="t('themes.editor.name')" :error="nameError" required>
-                <UInput v-model="name" maxlength="80" :placeholder="t('themes.namePlaceholder')" class="w-full" />
+                <UInput
+                  id="theme-name-panel"
+                  v-model="name"
+                  maxlength="80"
+                  :placeholder="t('themes.namePlaceholder')"
+                  class="w-full"
+                />
               </UFormField>
               <FormsDesignerPanel standalone />
             </div>

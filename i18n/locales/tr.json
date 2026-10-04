@@ -2775,7 +2775,8 @@
       "notFound": "Bu tema kullanılamıyor",
       "leaveTitle": "Kaydetmeden çıkılsın mı?",
       "leaveDesc": "Bu temadaki değişiklikleriniz kaybolacak.",
-      "leave": "Çık"
+      "leave": "Çık",
+      "nameFirst": "Kaydetmek için temaya bir ad verin."
     },
     "source": {
       "system": "Formalie",

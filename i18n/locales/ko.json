@@ -2775,7 +2775,8 @@
       "notFound": "이 테마를 사용할 수 없습니다",
       "leaveTitle": "저장하지 않고 나갈까요?",
       "leaveDesc": "이 테마의 변경 사항이 사라집니다.",
-      "leave": "나가기"
+      "leave": "나가기",
+      "nameFirst": "저장하려면 테마 이름을 입력하세요."
     },
     "source": {
       "system": "Formalie",

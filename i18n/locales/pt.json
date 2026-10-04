@@ -2775,7 +2775,8 @@
       "notFound": "Este tema não está disponível",
       "leaveTitle": "Sair sem salvar?",
       "leaveDesc": "Suas alterações neste tema serão perdidas.",
-      "leave": "Sair"
+      "leave": "Sair",
+      "nameFirst": "Dê um nome ao tema para salvá-lo."
     },
     "source": {
       "system": "Formalie",

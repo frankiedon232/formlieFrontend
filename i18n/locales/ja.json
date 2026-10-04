@@ -2775,7 +2775,8 @@
       "notFound": "このテーマは利用できません",
       "leaveTitle": "保存せずに移動しますか？",
       "leaveDesc": "このテーマへの変更は失われます。",
-      "leave": "移動する"
+      "leave": "移動する",
+      "nameFirst": "保存するにはテーマに名前を付けてください。"
     },
     "source": {
       "system": "Formalie",

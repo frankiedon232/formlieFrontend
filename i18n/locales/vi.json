@@ -2775,7 +2775,8 @@
       "notFound": "Giao diện này không khả dụng",
       "leaveTitle": "Rời đi mà không lưu?",
       "leaveDesc": "Các thay đổi của bạn với giao diện này sẽ bị mất.",
-      "leave": "Rời đi"
+      "leave": "Rời đi",
+      "nameFirst": "Đặt tên cho giao diện để lưu."
     },
     "source": {
       "system": "Formalie",

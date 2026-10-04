@@ -2775,7 +2775,8 @@
       "notFound": "Ce thème n'est pas disponible",
       "leaveTitle": "Quitter sans enregistrer ?",
       "leaveDesc": "Vos modifications de ce thème seront perdues.",
-      "leave": "Quitter"
+      "leave": "Quitter",
+      "nameFirst": "Donnez un nom au thème pour l’enregistrer."
     },
     "source": {
       "system": "Formalie",

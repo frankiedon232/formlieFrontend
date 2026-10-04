@@ -2775,7 +2775,8 @@
       "notFound": "Dit thema is niet beschikbaar",
       "leaveTitle": "Weggaan zonder opslaan?",
       "leaveDesc": "Je wijzigingen aan dit thema gaan verloren.",
-      "leave": "Weggaan"
+      "leave": "Weggaan",
+      "nameFirst": "Geef het thema een naam om het op te slaan."
     },
     "source": {
       "system": "Formalie",
