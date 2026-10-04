@@ -34,6 +34,7 @@ import { fileAnswers, isFileField, maxFileBytes } from '#shared/utils/forms/file
 import { checkWork } from '#shared/utils/forms/proof-of-work'
 import type { UploadTicket } from '#shared/types/onboarding'
 import { platformLegal } from '../data/platformStore'
+import { hashPassword } from './formShare'
 
 const RESPONDENT = { type: 'user' as const, id: null, name: 'Respondent', email: null }
 
@@ -68,14 +69,79 @@ function locate(event: Parameters<typeof tenantOf>[0], key: string): { tenant: M
   return found
 }
 
-function stateOf(form: StoredForm): PublicFormState {
+/** The form's response limit is used up (Share settings, F10 M3). */
+const limitReached = (form: StoredForm) => form.response_limit != null && form.responses_count >= form.response_limit
+
+function stateOf(form: StoredForm, { ignoreLimit = false } = {}): PublicFormState {
   if (form.status === 'published') {
     const window = availabilityOf(form)
-    return window === 'expired' ? 'expired' : window === 'scheduled' ? 'scheduled' : 'open'
+    if (window === 'expired' || window === 'scheduled') return window
+    return !ignoreLimit && limitReached(form) ? 'limit_reached' : 'open'
   }
   if (form.status === 'closed' || form.status === 'archived') return 'closed'
   return 'not_published'
 }
+
+// ── Password access (F10 M3) ───────────────────────────────────────────────────────────
+// After the right password the browser gets an HttpOnly cookie for this form (12 hours), signed
+// with the password's version: changing the password locks everyone out again.
+const UNLOCK_SECRET = randomBytes(32)
+const UNLOCK_TTL_MS = 12 * 3_600_000
+const unlockCookie = (form: StoredForm) => `formalie_unlock_${form.public_key}`
+const unlockSignature = (form: StoredForm, until: number) =>
+  createHmac('sha256', UNLOCK_SECRET).update(`${form.id}|${form.password?.version ?? 0}|${until}`).digest('base64url')
+
+function unlocked(event: Parameters<typeof tenantOf>[0], form: StoredForm): boolean {
+  if ((form.access ?? 'public') !== 'password') return true
+  const [until, signature] = (getCookie(event, unlockCookie(form)) ?? '').split('.')
+  if (!until || !signature || Number(until) < Date.now()) return false
+  const expected = Buffer.from(unlockSignature(form, Number(until)))
+  const given = Buffer.from(signature)
+  return expected.length === given.length && timingSafeEqual(expected, given)
+}
+
+/** The form takes responses from this visitor right now: open, unlocked (password) — or the reason why not. */
+function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false } = {}) {
+  const { tenant, form } = locate(event, key)
+  const state = stateOf(form, { ignoreLimit })
+  const schema = state === 'open' ? publishedSchema(tenant, form) : null
+  if (!schema)
+    throw new MockError(
+      state === 'closed'
+        ? 'FRM-FORM-1002'
+        : state === 'expired'
+          ? 'FRM-FORM-1015'
+          : state === 'scheduled'
+            ? 'FRM-FORM-1016'
+            : state === 'limit_reached'
+              ? 'FRM-FORM-1003'
+              : 'FRM-FORM-1001',
+    )
+  if (!unlocked(event, form)) throw new MockError('FRM-FORM-1005')
+  return { tenant, form, schema }
+}
+
+const unlockBody = z.object({ password: z.string().min(1).max(100) })
+const unlockAttempts = new Map<string, number[]>()
+
+/** POST /public/forms/:key/unlock — the form's password → an unlock cookie for this browser. */
+export const unlockForm = defineMockRoute(({ event, body }) => {
+  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  if ((form.access ?? 'public') !== 'password' || !form.password) return ok({ unlocked: true })
+  // At most 10 tries per 10 minutes from one address for one form.
+  const who = `${form.id}:${getRequestIP(event, { xForwardedFor: true }) ?? 'unknown'}`
+  const recent = (unlockAttempts.get(who) ?? []).filter(at => at > Date.now() - 600_000)
+  if (recent.length >= 10) throw new MockError('FRM-GEN-1029')
+  unlockAttempts.set(who, [...recent, Date.now()])
+  const given = Buffer.from(hashPassword(parseBody(unlockBody, body).password, form.password.salt))
+  const stored = Buffer.from(form.password.hash)
+  if (given.length !== stored.length || !timingSafeEqual(given, stored)) throw new MockError('FRM-FORM-1017')
+  unlockAttempts.delete(who)
+  const until = Date.now() + UNLOCK_TTL_MS
+  // SameSite=None: password forms work inside embeds too.
+  setCookie(event, unlockCookie(form), `${until}.${unlockSignature(form, until)}`, { httpOnly: true, secure: true, sameSite: 'none', path: '/', maxAge: UNLOCK_TTL_MS / 1000 })
+  return ok({ unlocked: true })
+})
 
 /** What respondents fill in: the published version (seeded sample forms get theirs on first open). */
 function publishedSchema(tenant: MockTenant, form: StoredForm): FormSchemaV1 | null {
@@ -100,16 +166,17 @@ function summaryText(schema: FormSchemaV1 | null): string {
 export function publicFormView(event: Parameters<typeof tenantOf>[0], key: string): PublicForm {
   const { tenant, form } = locate(event, key)
   const state = stateOf(form)
+  const locked = state === 'open' && !unlocked(event, form)
   const published = state === 'open' ? publishedSchema(tenant, form) : null
   const schema = published ? { ...structuredClone(published), theme: resolveTheme(published.theme, branding(tenant)) as unknown as Record<string, unknown> } : null
   const language = offered(published)
   return {
-    key: form.public_key,
+    key: form.custom_link || form.public_key,
     name: form.name,
     state: schema ? state : state === 'open' ? 'not_published' : state,
     opens_at: form.opens_at ?? null,
     closes_at: form.closes_at ?? null,
-    schema,
+    schema: locked ? null : schema,
     workspace: { name: tenant.name, logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null, subdomain: tenant.subdomain ?? null, website: websiteOf(tenant) },
     seo: {
       title: published?.settings?.title?.trim() || form.name,
@@ -120,6 +187,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
     legal: platformLegal(event),
     languages: [language],
     language,
+    locked,
   }
 }
 
@@ -152,14 +220,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   if (!SUBMISSION_ID.test(submissionId))
     throw new MockError('FRM-GEN-1002', [{ field: 'Idempotency-Key', message: 'Send the fill-in session id as Idempotency-Key.' }])
   const input = parseBody(submitBody, body)
-  const { tenant, form } = locate(event, key)
-
-  const state = stateOf(form)
-  const schema = state === 'open' ? publishedSchema(tenant, form) : null
-  if (!schema)
-    throw new MockError(
-      state === 'closed' ? 'FRM-FORM-1002' : state === 'expired' ? 'FRM-FORM-1015' : state === 'scheduled' ? 'FRM-FORM-1016' : 'FRM-FORM-1001',
-    )
+  const { tenant, form, schema } = takingResponses(event, key, { ignoreLimit: true })
   const thankYou = {
     title: schema.thank_you?.title ?? '',
     message: schema.thank_you?.message ?? '',
@@ -169,6 +230,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   // The same session again (double click, retry, back button): the response it already made.
   const earlier = responseForSubmission(tenant, form.id, submissionId)
   if (earlier) return ok<PublicSubmitResult>({ response_id: earlier.id, duplicate: true, thank_you: thankYou })
+  if (limitReached(form)) throw new MockError('FRM-FORM-1003')
 
   // Spam (decision 89): a filled-in trap looks accepted but stores nothing; too many from one
   // address → slow down; without a solved challenge (or sent within seconds of opening) → refused.
@@ -285,7 +347,7 @@ function useVerification(formId: string, email: string, token: string | undefine
 const verifyBody = z.object({ email: z.email().max(200) })
 /** POST /public/forms/:key/verify — send a 6-digit code to the respondent's email. */
 export const sendVerification = defineMockRoute(({ event, body }) => {
-  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const email = normaliseEmail(parseBody(verifyBody, body).email)
   if (!email) throw new MockError('FRM-GEN-1002', [{ field: 'email', message: 'Enter a valid email.' }])
   // At most 5 codes an hour for one email on one form.
@@ -301,7 +363,7 @@ export const sendVerification = defineMockRoute(({ event, body }) => {
 const confirmBody = z.object({ email: z.email().max(200), code: z.string().regex(/^\d{6}$/) })
 /** POST /public/forms/:key/verify/confirm — the code → a short-lived token for the submission. */
 export const confirmVerification = defineMockRoute(({ event, body }) => {
-  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const input = parseBody(confirmBody, body)
   const email = normaliseEmail(input.email) ?? ''
   const entry = verifications.get(slot(form.id, email))
@@ -326,9 +388,7 @@ const draftBody = z.object({
 
 /** The form must take responses and have Save and resume on. */
 function resumable(event: Parameters<typeof tenantOf>[0]) {
-  const { tenant, form } = locate(event, getRouterParam(event, 'key') ?? '')
-  const schema = stateOf(form) === 'open' ? publishedSchema(tenant, form) : null
-  if (!schema) throw new MockError(stateOf(form) === 'expired' ? 'FRM-FORM-1015' : 'FRM-FORM-1002')
+  const { tenant, form, schema } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   if (!schema.settings?.save_resume) throw new MockError('FRM-PERM-1001')
   return { tenant, form }
 }
@@ -393,9 +453,7 @@ const UPLOADS_PER_10_MIN = 60
 
 /** POST /public/forms/:key/uploads — a pre-signed upload link for one file. */
 export const requestUpload = defineMockRoute(({ event, body }) => {
-  const { tenant, form } = locate(event, getRouterParam(event, 'key') ?? '')
-  const schema = stateOf(form) === 'open' ? publishedSchema(tenant, form) : null
-  if (!schema) throw new MockError(stateOf(form) === 'expired' ? 'FRM-FORM-1015' : 'FRM-FORM-1002')
+  const { tenant, form, schema } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const input = parseBody(uploadBody, body)
   const field = allFields(schema).find(item => item.key === input.field)
   if (!field || !isFileField(field.type) || isLocked(field)) throw new MockError('FRM-GEN-1002', [{ field: 'field', message: 'This question takes no files.' }])
@@ -434,7 +492,7 @@ export const requestUpload = defineMockRoute(({ event, body }) => {
 
 /** POST /public/forms/:key/uploads/:id/complete — the stored file → its answer. */
 export const completeUpload = defineMockRoute(({ event }) => {
-  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const answer = completeRespondentUpload(getRouterParam(event, 'id') ?? '', form.id)
   if (!answer) throw new MockError('FRM-GEN-1004')
   return ok<FileAnswer>(answer)
@@ -472,7 +530,7 @@ async function provenHuman(key: string, proof: { token: string; nonce: number } 
 
 /** POST /public/forms/:key/challenge — a fresh spam-check challenge for this fill-in. */
 export const issueChallenge = defineMockRoute(({ event }) => {
-  const { form } = locate(event, getRouterParam(event, 'key') ?? '')
+  const { form } = takingResponses(event, getRouterParam(event, 'key') ?? '')
   const salt = randomBytes(16).toString('base64url')
   const encoded = Buffer.from([form.public_key, salt, Date.now(), CHALLENGE_DIFFICULTY].join('|')).toString('base64url')
   return ok({ token: `${encoded}.${sign(encoded)}`, salt, difficulty: CHALLENGE_DIFFICULTY, min_wait_ms: MIN_FILL_MS })

@@ -27,8 +27,9 @@ export function usePublicResume(key: string, enabled: Ref<boolean>) {
     }
   }
 
-  onMounted(async () => {
-    if (!enabled.value) return
+  async function restore() {
+    if (!enabled.value || restored) return
+    restored = true
     const url = new URL(location.href)
     const fromLink = url.searchParams.get('resume')
     let stored: string | null = null
@@ -53,7 +54,11 @@ export function usePublicResume(key: string, enabled: Ref<boolean>) {
     } catch {
       remember(null) // Closed, expired or unknown: start fresh.
     }
-  })
+  }
+  let restored = false
+  onMounted(restore)
+  // A password form gets its questions (and Save and resume) after the password.
+  watch(enabled, on => on && void restore())
 
   let pending: { data: Record<string, unknown>; page: number } | null = null
   let timer: ReturnType<typeof setTimeout> | undefined

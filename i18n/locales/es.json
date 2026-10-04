@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Esta persona ya envió una respuesta.",
     "FRM-RESP-1007": "Parece una respuesta que ya se envió. Confirma que se trata de otra persona.",
     "FRM-RESP-1008": "Verifica tu correo para enviar este formulario.",
-    "FRM-RESP-1009": "No pudimos confirmar que esta respuesta la envió una persona. Inténtalo de nuevo."
+    "FRM-RESP-1009": "No pudimos confirmar que esta respuesta la envió una persona. Inténtalo de nuevo.",
+    "FRM-FORM-1017": "La contraseña no es correcta."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Crear",
       "logic": "Lógica",
       "versions": "Versiones",
-      "design": "Diseño"
+      "design": "Diseño",
+      "share": "Compartir"
     },
     "renameHint": "Doble clic para cambiar el nombre",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Este formulario aún no está abierto",
       "desc": "Abre el {date}. Vuelve entonces, por favor."
+    },
+    "locked": {
+      "title": "Este formulario está protegido",
+      "desc": "Introduzca la contraseña que le dieron para abrirlo.",
+      "password": "Contraseña",
+      "wrong": "La contraseña no es correcta. Revísela e inténtelo de nuevo.",
+      "show": "Mostrar contraseña",
+      "hide": "Ocultar contraseña",
+      "open": "Abrir el formulario"
+    },
+    "full": {
+      "title": "Este formulario está completo",
+      "desc": "Ha recibido todas las respuestas que puede admitir. Gracias por su interés."
+    }
+  },
+  "share": {
+    "crumb": "Compartir",
+    "open": "Ajustes para compartir",
+    "saved": "Ajustes para compartir guardados",
+    "conflict": "Otra persona ha modificado este formulario. Recargue para ver sus cambios.",
+    "unsaved": "Tiene cambios sin guardar",
+    "needPassword": "Establezca una contraseña (8 caracteres o más) para guardar",
+    "discard": "Descartar",
+    "save": "Guardar cambios",
+    "leaveTitle": "¿Salir sin guardar?",
+    "leaveDesc": "Se perderán sus cambios en los ajustes para compartir.",
+    "leave": "Salir",
+    "access": {
+      "title": "Quién puede abrir el formulario",
+      "desc": "Los cambios se aplican de inmediato, también a un formulario publicado.",
+      "public": "Cualquiera con el enlace",
+      "publicDesc": "Todas las personas que tengan el enlace o el código QR pueden rellenarlo.",
+      "password": "Solo con contraseña",
+      "passwordDesc": "Las personas introducen una contraseña que usted les da antes de ver las preguntas.",
+      "badge": "Contraseña",
+      "passwordSet": "Hay una contraseña establecida",
+      "passwordSetOn": "Contraseña establecida {when}",
+      "change": "Cambiar contraseña",
+      "newPassword": "Nueva contraseña",
+      "setPassword": "Contraseña",
+      "passwordHint": "Al menos 8 caracteres. Compártala con las personas que deben rellenar el formulario.",
+      "tooShort": "Use al menos 8 caracteres.",
+      "passwordNote": "La contraseña no se vuelve a mostrar. Tras un cambio, todos necesitarán la nueva."
+    },
+    "link": {
+      "title": "Enlace personalizado",
+      "desc": "Una dirección legible, fácil de compartir, decir y recordar.",
+      "label": "Enlace",
+      "hint": "Letras, números y guiones",
+      "placeholder": "p. ej., solicitud-de-compra",
+      "checking": "Comprobando…",
+      "free": "Este enlace está disponible",
+      "taken": "Otro formulario ya usa este enlace",
+      "reserved": "Esta palabra está reservada: elija otra",
+      "invalid": "Use de 3 a 60 letras minúsculas, números y guiones",
+      "use": "Usar {link}",
+      "remove": "Quitar enlace personalizado",
+      "copy": "Copiar enlace",
+      "copied": "Enlace copiado",
+      "keyStays": "El enlace original sigue funcionando, así que los enlaces que ya compartió nunca dejan de funcionar."
+    },
+    "limits": {
+      "title": "Límites",
+      "desc": "Cuándo deja el formulario de aceptar respuestas.",
+      "limit": "Limitar el número de respuestas",
+      "limitDesc": "Después, el enlace indica que el formulario está completo.",
+      "max": "Máximo de respuestas",
+      "used": "{n} de {max} usadas",
+      "full": "Se ha alcanzado el límite: el formulario ya no acepta respuestas.",
+      "when": "Cuándo acepta respuestas",
+      "always": "Siempre (sin fecha de inicio ni de fin)",
+      "from": "Desde el {from}",
+      "until": "Hasta el {until}",
+      "between": "Del {from} al {until}",
+      "change": "Cambiar"
     }
   }
 }

@@ -13,6 +13,8 @@ export async function usePublicForm(key: string) {
   const config = useRuntimeConfig()
   const requestFetch = import.meta.server ? useRequestFetch() : null
   const host = import.meta.server ? useRequestURL().host : ''
+  // The visitor's cookies (an unlocked password form, F10 M3) go along to the internal route.
+  const cookie = import.meta.server ? (useRequestHeaders(['cookie']).cookie ?? '') : ''
   const api = useApi()
   // The renderer takes the workspace's logo and brand colour from the tenant profile.
   // (Composables first: after an await this function no longer has Nuxt's context.)
@@ -23,7 +25,7 @@ export async function usePublicForm(key: string) {
   const { data, refresh } = await useAsyncData(`public-form:${key}`, async () => {
     if (import.meta.server && requestFetch) {
       return requestFetch<{ data?: PublicForm; error?: { code: string } }>(`/_ssr/public-forms/${encodeURIComponent(key)}`, {
-        headers: { [INTERNAL_TOKEN_HEADER]: String(config.internalToken ?? ''), 'x-forwarded-host': host },
+        headers: { [INTERNAL_TOKEN_HEADER]: String(config.internalToken ?? ''), 'x-forwarded-host': host, cookie },
         ignoreResponseError: true,
       })
     }
@@ -229,5 +231,5 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
     }
   }
 
-  return { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode }
+  return { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof }
 }

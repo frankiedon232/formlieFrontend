@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Er is al een reactie van deze persoon verstuurd.",
     "FRM-RESP-1007": "Dit lijkt op een reactie die al is verstuurd. Bevestig dat dit iemand anders is.",
     "FRM-RESP-1008": "Verifieer je e-mailadres om dit formulier te versturen.",
-    "FRM-RESP-1009": "We konden niet bevestigen dat dit antwoord door een persoon is verstuurd. Probeer het opnieuw."
+    "FRM-RESP-1009": "We konden niet bevestigen dat dit antwoord door een persoon is verstuurd. Probeer het opnieuw.",
+    "FRM-FORM-1017": "Dat wachtwoord klopt niet."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Bouwen",
       "logic": "Logica",
       "versions": "Versies",
-      "design": "Ontwerp"
+      "design": "Ontwerp",
+      "share": "Delen"
     },
     "renameHint": "Dubbelklik om te hernoemen",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Dit formulier is nog niet open",
       "desc": "Het opent op {date}. Kom dan gerust terug."
+    },
+    "locked": {
+      "title": "Dit formulier is beveiligd",
+      "desc": "Voer het wachtwoord in dat u hebt gekregen om het te openen.",
+      "password": "Wachtwoord",
+      "wrong": "Dat wachtwoord klopt niet. Controleer het en probeer het opnieuw.",
+      "show": "Wachtwoord tonen",
+      "hide": "Wachtwoord verbergen",
+      "open": "Formulier openen"
+    },
+    "full": {
+      "title": "Dit formulier is vol",
+      "desc": "Het heeft alle reacties ontvangen die het kan aannemen. Bedankt voor uw interesse."
+    }
+  },
+  "share": {
+    "crumb": "Delen",
+    "open": "Deelinstellingen",
+    "saved": "Deelinstellingen opgeslagen",
+    "conflict": "Iemand anders heeft dit formulier gewijzigd. Laad opnieuw om de wijzigingen te zien.",
+    "unsaved": "U hebt niet-opgeslagen wijzigingen",
+    "needPassword": "Stel een wachtwoord in (8 of meer tekens) om op te slaan",
+    "discard": "Verwerpen",
+    "save": "Wijzigingen opslaan",
+    "leaveTitle": "Verlaten zonder op te slaan?",
+    "leaveDesc": "Uw wijzigingen in de deelinstellingen gaan verloren.",
+    "leave": "Verlaten",
+    "access": {
+      "title": "Wie het formulier kan openen",
+      "desc": "Wijzigingen gelden direct, ook voor een gepubliceerd formulier.",
+      "public": "Iedereen met de link",
+      "publicDesc": "Iedereen die de link of QR-code heeft, kan het invullen.",
+      "password": "Alleen met een wachtwoord",
+      "passwordDesc": "Mensen voeren een wachtwoord in dat u hun geeft, voordat ze de vragen zien.",
+      "badge": "Wachtwoord",
+      "passwordSet": "Er is een wachtwoord ingesteld",
+      "passwordSetOn": "Wachtwoord ingesteld {when}",
+      "change": "Wachtwoord wijzigen",
+      "newPassword": "Nieuw wachtwoord",
+      "setPassword": "Wachtwoord",
+      "passwordHint": "Minstens 8 tekens. Geef het aan de mensen die het formulier moeten invullen.",
+      "tooShort": "Gebruik minstens 8 tekens.",
+      "passwordNote": "Het wachtwoord wordt nooit meer getoond. Na een wijziging heeft iedereen het nieuwe nodig."
+    },
+    "link": {
+      "title": "Aangepaste link",
+      "desc": "Een leesbaar adres dat gemakkelijk te delen, uit te spreken en te onthouden is.",
+      "label": "Link",
+      "hint": "Letters, cijfers en koppeltekens",
+      "placeholder": "bijv. inkoopaanvraag",
+      "checking": "Controleren…",
+      "free": "Deze link is beschikbaar",
+      "taken": "Een ander formulier gebruikt deze link al",
+      "reserved": "Dit woord is gereserveerd — kies een ander",
+      "invalid": "Gebruik 3–60 kleine letters, cijfers en koppeltekens",
+      "use": "{link} gebruiken",
+      "remove": "Aangepaste link verwijderen",
+      "copy": "Link kopiëren",
+      "copied": "Link gekopieerd",
+      "keyStays": "De oorspronkelijke link blijft werken, dus links die u al hebt gedeeld, blijven altijd werken."
+    },
+    "limits": {
+      "title": "Limieten",
+      "desc": "Wanneer het formulier geen reacties meer aanneemt.",
+      "limit": "Het aantal reacties beperken",
+      "limitDesc": "Daarna meldt de link dat het formulier vol is.",
+      "max": "Maximumaantal reacties",
+      "used": "{n} van {max} gebruikt",
+      "full": "De limiet is bereikt — het formulier neemt geen reacties meer aan.",
+      "when": "Wanneer het reacties aanneemt",
+      "always": "Altijd (geen begin- of einddatum)",
+      "from": "Vanaf {from}",
+      "until": "Tot {until}",
+      "between": "Van {from} tot {until}",
+      "change": "Wijzigen"
     }
   }
 }

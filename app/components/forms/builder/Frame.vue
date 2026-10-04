@@ -1,12 +1,12 @@
 <!--
   Shared frame for the builder, logic and versions pages (one form, one session):
-  header = inline name · status + "Saved just now" · Build / Logic / Versions (design segmented
+  header = inline name · status + "Saved just now" · Build / Logic / Design / Share / Versions (design segmented
   control) · undo / redo · Preview · Publish; body = loading / error / conflict states + the page.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 
-const props = defineProps<{ session: BuilderSession; mode: 'build' | 'logic' | 'design' | 'versions' }>()
+const props = defineProps<{ session: BuilderSession; mode: 'build' | 'logic' | 'design' | 'share' | 'versions' }>()
 const { t } = useI18n()
 const s = props.session
 const { builder, form, autosave } = s
@@ -22,6 +22,7 @@ const modes = computed(() => [
   { value: 'build', label: t('builder.mode.build'), icon: 'i-lucide-layout-panel-top' },
   { value: 'logic', label: t('builder.mode.logic'), icon: 'i-lucide-git-branch' },
   { value: 'design', label: t('builder.mode.design'), icon: 'i-lucide-palette' },
+  { value: 'share', label: t('builder.mode.share'), icon: 'i-lucide-share-2' },
   { value: 'versions', label: t('builder.mode.versions'), icon: 'i-lucide-history' },
 ])
 const go = (mode: string | number) => navigateTo(`/forms/${s.formId}/${mode === 'build' ? 'build' : mode}`)

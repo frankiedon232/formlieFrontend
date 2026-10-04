@@ -20,7 +20,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F7    | Form builder                                      | ✅     | 100% |
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
-| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~45% |
+| F10   | Renderer, preview, share, embed, short links, SEO | 🟡     | ~55% |
 | F11   | Responses                                         | ⬜     | 0%   |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
@@ -477,8 +477,8 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ### Share
 
-- 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
-- ⬜ Access: public, password, invite-only, organisation-only; expiry, response limit, schedule
+- 🟡 Custom link (slug availability), short link, QR code (PNG / SVG), copy buttons — ✅ custom link with live check (2026-10-04) · ✅ QR code (form colour or black, PNG 512–2048 px / SVG) and copy buttons on the form overview (2026-10-03)
+- 🟡 Access: public, password, invite-only, organisation-only; expiry, response limit, schedule — ✅ Share tab (decision 92): anyone with the link / password (hashed, unlock cookie, tries limited), response limit (form full page), availability; ⬜ invite-only, organisation-only
 - ⬜ People access: edit / view / responses
 - 🟡 Embed: iframe snippet with auto-resize, size options, allowed domains, live preview — ✅ snippet with auto / fixed height (M2); allowed domains + live preview with the Share settings (M3)
 - ⬜ SEO settings with link-card preview
@@ -1063,3 +1063,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 | Form language change also translates the builder's default question names ("Long text", "Option 1", "Page 1"…), not only template text (owner: a new "Long text" question stayed English). |
 | 2026-10-04 | F10 | Form language change covers every field type and text spot (owner: "as long as it has a label"): matching ignores capitals / spaces, new 546-word everyday form vocabulary in all 20 languages, plus image alt / caption, custom error messages, guide title, header subtitle. |
 | 2026-10-04 | F10 | The form title respondents see (page header, browser tab, link card) follows the form language (`settings.title`); the name in the forms list stays as typed. |
+| 2026-10-04 | F10 | M3 started: Share tab in the form editor — access (anyone with the link / password), custom link with live availability check, response limit (form-full page), availability; public password screen; Share settings from the overview card and the forms menu. |

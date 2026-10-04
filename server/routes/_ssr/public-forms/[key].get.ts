@@ -7,7 +7,7 @@
  *   mock off → asks the API's internal endpoint with the same token (service-to-service)
  */
 import type { PublicForm } from '#shared/types/public'
-import { FORM_KEY_PATTERN } from '#shared/utils/urls/public'
+import { isFormAddress } from '#shared/utils/urls/public'
 
 export const INTERNAL_TOKEN_HEADER = 'x-formalie-internal'
 
@@ -19,7 +19,7 @@ export default defineEventHandler(async event => {
     return { error: { code: 'FRM-PERM-1001' } }
   }
   const key = getRouterParam(event, 'key') ?? ''
-  if (!FORM_KEY_PATTERN.test(key)) {
+  if (!isFormAddress(key)) {
     setResponseStatus(event, 404)
     return { error: { code: 'FRM-FORM-1001' } }
   }
@@ -27,7 +27,8 @@ export default defineEventHandler(async event => {
   if (!config.public.apiMock) {
     try {
       const data = await $fetch<PublicForm>(`${config.apiProxyTarget}/api/v1/internal/public-forms/${encodeURIComponent(key)}`, {
-        headers: { [INTERNAL_TOKEN_HEADER]: config.internalToken, 'x-forwarded-host': getRequestHost(event, { xForwardedHost: true }) },
+        // The respondent's cookies go along: an unlocked password form stays unlocked (F10 M3).
+        headers: { [INTERNAL_TOKEN_HEADER]: config.internalToken, 'x-forwarded-host': getRequestHost(event, { xForwardedHost: true }), cookie: getHeader(event, 'cookie') ?? '' },
       })
       return { data }
     } catch (error) {

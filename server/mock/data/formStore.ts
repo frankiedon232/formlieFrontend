@@ -18,6 +18,8 @@ export interface StoredForm extends FormSummary {
   /** What respondents see (null until first publish). */
   published_schema?: FormSchemaV1 | null
   versions?: StoredVersion[]
+  /** Password for access "password" (F10 M3): scrypt hash + salt; the version invalidates unlocks when it changes. */
+  password?: { hash: string; salt: string; version: number; changed_at: string } | null
 }
 
 export interface StoredVersion extends FormVersion {
@@ -102,9 +104,11 @@ export function summaryOf(form: StoredForm): FormSummary {
     template_key: _t,
     published_schema: _ps,
     versions: _v,
+    password: _pw,
     ...summary
   } = form
-  return summary
+  // Share settings added in F10 M3: older forms have none yet.
+  return { ...summary, custom_link: summary.custom_link ?? null, access: summary.access ?? 'public', response_limit: summary.response_limit ?? null }
 }
 
 export const slugify = (value: string) =>
@@ -126,10 +130,11 @@ export function uniqueSlug(store: TenantForms, name: string, exceptId?: string):
   return `${base}-${n}`
 }
 
-/** A form by its public key, across workspaces (public pages, F10). */
+/** A form by its public key or custom link, across workspaces (public pages, F10). */
 export function findByPublicKey(tenants: MockTenant[], key: string): { tenant: MockTenant; form: StoredForm } | null {
   for (const tenant of tenants) {
-    const form = formsOf(tenant).forms.find(item => item.public_key === key && !item.deleted_at)
+    // The key, or the form's custom link (F10 M3).
+    const form = formsOf(tenant).forms.find(item => (item.public_key === key || item.custom_link === key) && !item.deleted_at)
     if (form) return { tenant, form }
   }
   return null

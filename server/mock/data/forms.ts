@@ -119,5 +119,8 @@ export const MOCK_FORMS: Omit<FormSummary, 'public_key'>[] = Array.from({ length
         : status === 'published' && index % 11 === 4
           ? new Date(now - 3 * 86_400_000).toISOString()
           : null,
+    custom_link: null,
+    access: 'public',
+    response_limit: null,
   }
 })

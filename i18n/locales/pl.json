@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Odpowiedź od tej osoby została już wysłana.",
     "FRM-RESP-1007": "Wygląda to na odpowiedź, która została już wysłana. Potwierdź, że to inna osoba.",
     "FRM-RESP-1008": "Zweryfikuj adres e-mail, aby wysłać ten formularz.",
-    "FRM-RESP-1009": "Nie udało się potwierdzić, że tę odpowiedź wysłała osoba. Spróbuj ponownie."
+    "FRM-RESP-1009": "Nie udało się potwierdzić, że tę odpowiedź wysłała osoba. Spróbuj ponownie.",
+    "FRM-FORM-1017": "To hasło jest nieprawidłowe."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Tworzenie",
       "logic": "Logika",
       "versions": "Wersje",
-      "design": "Wygląd"
+      "design": "Wygląd",
+      "share": "Udostępnij"
     },
     "renameHint": "Kliknij dwukrotnie, aby zmienić nazwę",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Ten formularz nie jest jeszcze otwarty",
       "desc": "Zostanie otwarty {date}. Zapraszamy wtedy ponownie."
+    },
+    "locked": {
+      "title": "Ten formularz jest chroniony",
+      "desc": "Wpisz otrzymane hasło, aby go otworzyć.",
+      "password": "Hasło",
+      "wrong": "To hasło jest nieprawidłowe. Sprawdź je i spróbuj ponownie.",
+      "show": "Pokaż hasło",
+      "hide": "Ukryj hasło",
+      "open": "Otwórz formularz"
+    },
+    "full": {
+      "title": "Ten formularz jest pełny",
+      "desc": "Otrzymał już wszystkie odpowiedzi, jakie może przyjąć. Dziękujemy za zainteresowanie."
+    }
+  },
+  "share": {
+    "crumb": "Udostępnianie",
+    "open": "Ustawienia udostępniania",
+    "saved": "Zapisano ustawienia udostępniania",
+    "conflict": "Ktoś inny zmienił ten formularz. Odśwież, aby zobaczyć zmiany.",
+    "unsaved": "Masz niezapisane zmiany",
+    "needPassword": "Ustaw hasło (co najmniej 8 znaków), aby zapisać",
+    "discard": "Odrzuć",
+    "save": "Zapisz zmiany",
+    "leaveTitle": "Wyjść bez zapisywania?",
+    "leaveDesc": "Zmiany w ustawieniach udostępniania zostaną utracone.",
+    "leave": "Wyjdź",
+    "access": {
+      "title": "Kto może otworzyć formularz",
+      "desc": "Zmiany obowiązują od razu, także dla opublikowanego formularza.",
+      "public": "Każdy, kto ma link",
+      "publicDesc": "Każdy, kto ma link lub kod QR, może go wypełnić.",
+      "password": "Tylko z hasłem",
+      "passwordDesc": "Przed zobaczeniem pytań trzeba wpisać hasło, które przekażesz.",
+      "badge": "Hasło",
+      "passwordSet": "Hasło jest ustawione",
+      "passwordSetOn": "Hasło ustawiono {when}",
+      "change": "Zmień hasło",
+      "newPassword": "Nowe hasło",
+      "setPassword": "Hasło",
+      "passwordHint": "Co najmniej 8 znaków. Przekaż je osobom, które mają wypełnić formularz.",
+      "tooShort": "Użyj co najmniej 8 znaków.",
+      "passwordNote": "Hasło nie zostanie już nigdy wyświetlone. Po zmianie wszyscy potrzebują nowego."
+    },
+    "link": {
+      "title": "Własny link",
+      "desc": "Czytelny adres, który łatwo udostępnić, wypowiedzieć i zapamiętać.",
+      "label": "Link",
+      "hint": "Litery, cyfry i łączniki",
+      "placeholder": "np. wniosek-zakupowy",
+      "checking": "Sprawdzanie…",
+      "free": "Ten link jest wolny",
+      "taken": "Inny formularz już używa tego linku",
+      "reserved": "To słowo jest zarezerwowane — wybierz inne",
+      "invalid": "Użyj 3–60 małych liter, cyfr i łączników",
+      "use": "Użyj {link}",
+      "remove": "Usuń własny link",
+      "copy": "Kopiuj link",
+      "copied": "Skopiowano link",
+      "keyStays": "Pierwotny link nadal działa, więc już udostępnione linki nigdy nie przestaną działać."
+    },
+    "limits": {
+      "title": "Limity",
+      "desc": "Kiedy formularz przestaje przyjmować odpowiedzi.",
+      "limit": "Ogranicz liczbę odpowiedzi",
+      "limitDesc": "Potem link informuje, że formularz jest pełny.",
+      "max": "Maksymalna liczba odpowiedzi",
+      "used": "Wykorzystano {n} z {max}",
+      "full": "Limit został osiągnięty — formularz nie przyjmuje już odpowiedzi.",
+      "when": "Kiedy przyjmuje odpowiedzi",
+      "always": "Zawsze (bez daty początkowej i końcowej)",
+      "from": "Od {from}",
+      "until": "Do {until}",
+      "between": "Od {from} do {until}",
+      "change": "Zmień"
     }
   }
 }

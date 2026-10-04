@@ -12,6 +12,7 @@ import * as auth from './routes/auth'
 import * as formDraft from './routes/formDraft'
 import * as library from './routes/library'
 import * as themes from './routes/themes'
+import * as formShare from './routes/formShare'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
@@ -52,6 +53,9 @@ const router = createRouter()
   .get('/forms/:id', forms.getForm)
   .get('/forms/:id/overview', getFormOverview)
   .patch('/forms/:id', forms.patchForm)
+  .get('/forms/:id/share', formShare.getShare)
+  .put('/forms/:id/share', formShare.saveShare)
+  .get('/forms/:id/share/link-check', formShare.checkLink)
   .delete('/forms/:id', forms.deleteForm)
   .post('/forms/:id/duplicate', forms.duplicateForm)
   .get('/forms/:id/builder', formDraft.getBuilder)
@@ -86,6 +90,7 @@ const router = createRouter()
   .post('/public/forms/:key/verify/confirm', publicForms.confirmVerification)
   .post('/public/forms/:key/uploads', publicForms.requestUpload)
   .post('/public/forms/:key/challenge', publicForms.issueChallenge)
+  .post('/public/forms/:key/unlock', publicForms.unlockForm)
   .post('/public/forms/:key/uploads/:id/complete', publicForms.completeUpload)
   .get('/templates', templates.listTemplates)
   .get('/templates/facets', templates.templateFacets)

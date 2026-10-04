@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Une réponse de cette personne a déjà été envoyée.",
     "FRM-RESP-1007": "Cela ressemble à une réponse déjà envoyée. Confirmez qu’il s’agit d’une autre personne.",
     "FRM-RESP-1008": "Vérifiez votre adresse e-mail pour envoyer ce formulaire.",
-    "FRM-RESP-1009": "Nous n’avons pas pu confirmer que cette réponse a été envoyée par une personne. Veuillez réessayer."
+    "FRM-RESP-1009": "Nous n’avons pas pu confirmer que cette réponse a été envoyée par une personne. Veuillez réessayer.",
+    "FRM-FORM-1017": "Ce mot de passe n’est pas correct."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1767,7 +1768,8 @@
       "build": "Créer",
       "logic": "Logique",
       "versions": "Versions",
-      "design": "Design"
+      "design": "Design",
+      "share": "Partager"
     },
     "renameHint": "Double-cliquez pour renommer",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Ce formulaire n’est pas encore ouvert",
       "desc": "Il ouvre le {date}. Merci de revenir à ce moment-là."
+    },
+    "locked": {
+      "title": "Ce formulaire est protégé",
+      "desc": "Saisissez le mot de passe qui vous a été communiqué pour l’ouvrir.",
+      "password": "Mot de passe",
+      "wrong": "Ce mot de passe n’est pas correct. Vérifiez-le et réessayez.",
+      "show": "Afficher le mot de passe",
+      "hide": "Masquer le mot de passe",
+      "open": "Ouvrir le formulaire"
+    },
+    "full": {
+      "title": "Ce formulaire est complet",
+      "desc": "Il a reçu toutes les réponses qu’il peut accepter. Merci de votre intérêt."
+    }
+  },
+  "share": {
+    "crumb": "Partager",
+    "open": "Paramètres de partage",
+    "saved": "Paramètres de partage enregistrés",
+    "conflict": "Quelqu’un d’autre a modifié ce formulaire. Rechargez la page pour voir ses modifications.",
+    "unsaved": "Vous avez des modifications non enregistrées",
+    "needPassword": "Définissez un mot de passe (8 caractères ou plus) pour enregistrer",
+    "discard": "Annuler les modifications",
+    "save": "Enregistrer les modifications",
+    "leaveTitle": "Quitter sans enregistrer ?",
+    "leaveDesc": "Vos modifications des paramètres de partage seront perdues.",
+    "leave": "Quitter",
+    "access": {
+      "title": "Qui peut ouvrir le formulaire",
+      "desc": "Les modifications s’appliquent immédiatement, y compris à un formulaire publié.",
+      "public": "Toute personne disposant du lien",
+      "publicDesc": "Toute personne qui a le lien ou le code QR peut le remplir.",
+      "password": "Uniquement avec un mot de passe",
+      "passwordDesc": "Les personnes saisissent le mot de passe que vous leur donnez avant de voir les questions.",
+      "badge": "Mot de passe",
+      "passwordSet": "Un mot de passe est défini",
+      "passwordSetOn": "Mot de passe défini {when}",
+      "change": "Modifier le mot de passe",
+      "newPassword": "Nouveau mot de passe",
+      "setPassword": "Mot de passe",
+      "passwordHint": "Au moins 8 caractères. Communiquez-le aux personnes qui doivent remplir le formulaire.",
+      "tooShort": "Utilisez au moins 8 caractères.",
+      "passwordNote": "Le mot de passe ne sera plus jamais affiché. Après une modification, tout le monde aura besoin du nouveau."
+    },
+    "link": {
+      "title": "Lien personnalisé",
+      "desc": "Une adresse lisible, facile à partager, à dire et à retenir.",
+      "label": "Lien",
+      "hint": "Lettres, chiffres et traits d’union",
+      "placeholder": "p. ex. demande-achat",
+      "checking": "Vérification…",
+      "free": "Ce lien est disponible",
+      "taken": "Un autre formulaire utilise déjà ce lien",
+      "reserved": "Ce mot est réservé — choisissez-en un autre",
+      "invalid": "Utilisez de 3 à 60 lettres minuscules, chiffres et traits d’union",
+      "use": "Utiliser {link}",
+      "remove": "Supprimer le lien personnalisé",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "keyStays": "Le lien d’origine continue de fonctionner : les liens déjà partagés restent valides."
+    },
+    "limits": {
+      "title": "Limites",
+      "desc": "Quand le formulaire cesse d’accepter des réponses.",
+      "limit": "Limiter le nombre de réponses",
+      "limitDesc": "Ensuite, le lien indique que le formulaire est complet.",
+      "max": "Nombre maximal de réponses",
+      "used": "{n} sur {max} utilisées",
+      "full": "La limite est atteinte — le formulaire n’accepte plus de réponses.",
+      "when": "Quand il accepte des réponses",
+      "always": "Toujours (sans date de début ni de fin)",
+      "from": "À partir du {from}",
+      "until": "Jusqu’au {until}",
+      "between": "Du {from} au {until}",
+      "change": "Modifier"
     }
   }
 }

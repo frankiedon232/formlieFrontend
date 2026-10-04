@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Questa persona ha già inviato una risposta.",
     "FRM-RESP-1007": "Sembra una risposta già inviata. Conferma che si tratta di un’altra persona.",
     "FRM-RESP-1008": "Verifica la tua email per inviare questo modulo.",
-    "FRM-RESP-1009": "Non è stato possibile confermare che questa risposta sia stata inviata da una persona. Riprova."
+    "FRM-RESP-1009": "Non è stato possibile confermare che questa risposta sia stata inviata da una persona. Riprova.",
+    "FRM-FORM-1017": "La password non è corretta."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Crea",
       "logic": "Logica",
       "versions": "Versioni",
-      "design": "Design"
+      "design": "Design",
+      "share": "Condividi"
     },
     "renameHint": "Doppio clic per rinominare",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Questo modulo non è ancora aperto",
       "desc": "Apre il {date}. Torna pure allora."
+    },
+    "locked": {
+      "title": "Questo modulo è protetto",
+      "desc": "Inserisca la password che Le è stata fornita per aprirlo.",
+      "password": "Password",
+      "wrong": "La password non è corretta. La controlli e riprovi.",
+      "show": "Mostra password",
+      "hide": "Nascondi password",
+      "open": "Apri il modulo"
+    },
+    "full": {
+      "title": "Questo modulo è completo",
+      "desc": "Ha ricevuto tutte le risposte che può accettare. Grazie per l’interesse."
+    }
+  },
+  "share": {
+    "crumb": "Condividi",
+    "open": "Impostazioni di condivisione",
+    "saved": "Impostazioni di condivisione salvate",
+    "conflict": "Qualcun altro ha modificato questo modulo. Ricarichi per vedere le modifiche.",
+    "unsaved": "Ci sono modifiche non salvate",
+    "needPassword": "Imposti una password (almeno 8 caratteri) per salvare",
+    "discard": "Annulla modifiche",
+    "save": "Salva modifiche",
+    "leaveTitle": "Uscire senza salvare?",
+    "leaveDesc": "Le modifiche alle impostazioni di condivisione andranno perse.",
+    "leave": "Esci",
+    "access": {
+      "title": "Chi può aprire il modulo",
+      "desc": "Le modifiche si applicano subito, anche a un modulo pubblicato.",
+      "public": "Chiunque abbia il link",
+      "publicDesc": "Chiunque abbia il link o il codice QR può compilarlo.",
+      "password": "Solo con password",
+      "passwordDesc": "Le persone inseriscono una password fornita da Lei prima di vedere le domande.",
+      "badge": "Password",
+      "passwordSet": "È impostata una password",
+      "passwordSetOn": "Password impostata {when}",
+      "change": "Cambia password",
+      "newPassword": "Nuova password",
+      "setPassword": "Password",
+      "passwordHint": "Almeno 8 caratteri. La comunichi alle persone che devono compilare il modulo.",
+      "tooShort": "Usi almeno 8 caratteri.",
+      "passwordNote": "La password non verrà più mostrata. Dopo una modifica, tutti avranno bisogno di quella nuova."
+    },
+    "link": {
+      "title": "Link personalizzato",
+      "desc": "Un indirizzo leggibile, facile da condividere, pronunciare e ricordare.",
+      "label": "Link",
+      "hint": "Lettere, numeri e trattini",
+      "placeholder": "ad es. richiesta-acquisto",
+      "checking": "Verifica in corso…",
+      "free": "Questo link è disponibile",
+      "taken": "Un altro modulo usa già questo link",
+      "reserved": "Questa parola è riservata — ne scelga un’altra",
+      "invalid": "Usi da 3 a 60 lettere minuscole, numeri e trattini",
+      "use": "Usa {link}",
+      "remove": "Rimuovi link personalizzato",
+      "copy": "Copia link",
+      "copied": "Link copiato",
+      "keyStays": "Il link originale continua a funzionare, quindi i link già condivisi non smettono mai di funzionare."
+    },
+    "limits": {
+      "title": "Limiti",
+      "desc": "Quando il modulo smette di accettare risposte.",
+      "limit": "Limita il numero di risposte",
+      "limitDesc": "Dopodiché, il link indica che il modulo è completo.",
+      "max": "Numero massimo di risposte",
+      "used": "{n} di {max} utilizzate",
+      "full": "Il limite è stato raggiunto — il modulo non accetta più risposte.",
+      "when": "Quando accetta risposte",
+      "always": "Sempre (senza data di inizio o di fine)",
+      "from": "Dal {from}",
+      "until": "Fino al {until}",
+      "between": "Dal {from} al {until}",
+      "change": "Modifica"
     }
   }
 }

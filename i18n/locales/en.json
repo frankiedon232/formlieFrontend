@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "A response from this person was already submitted.",
     "FRM-RESP-1007": "This looks like a response that was already submitted. Confirm this is a different person.",
     "FRM-RESP-1008": "Verify your email to submit this form.",
-    "FRM-RESP-1009": "We couldn’t confirm this response was sent by a person. Please try again."
+    "FRM-RESP-1009": "We couldn’t confirm this response was sent by a person. Please try again.",
+    "FRM-FORM-1017": "That password isn’t right."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Build",
       "logic": "Logic",
       "versions": "Versions",
-      "design": "Design"
+      "design": "Design",
+      "share": "Share"
     },
     "renameHint": "Double-click to rename",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "This form isn’t open yet",
       "desc": "It opens on {date}. Please come back then."
+    },
+    "locked": {
+      "title": "This form is protected",
+      "desc": "Enter the password you were given to open it.",
+      "password": "Password",
+      "wrong": "That password isn’t right. Check it and try again.",
+      "show": "Show password",
+      "hide": "Hide password",
+      "open": "Open the form"
+    },
+    "full": {
+      "title": "This form is full",
+      "desc": "It has received all the responses it can take. Thank you for your interest."
+    }
+  },
+  "share": {
+    "crumb": "Share",
+    "open": "Share settings",
+    "saved": "Share settings saved",
+    "conflict": "Someone else changed this form. Reload to see their changes.",
+    "unsaved": "You have unsaved changes",
+    "needPassword": "Set a password (8 or more characters) to save",
+    "discard": "Discard",
+    "save": "Save changes",
+    "leaveTitle": "Leave without saving?",
+    "leaveDesc": "Your changes to the share settings will be lost.",
+    "leave": "Leave",
+    "access": {
+      "title": "Who can open the form",
+      "desc": "Changes apply right away, also to a published form.",
+      "public": "Anyone with the link",
+      "publicDesc": "Everyone who has the link or QR code can fill it in.",
+      "password": "Only with a password",
+      "passwordDesc": "People enter a password you give them before they see the questions.",
+      "badge": "Password",
+      "passwordSet": "A password is set",
+      "passwordSetOn": "Password set {when}",
+      "change": "Change password",
+      "newPassword": "New password",
+      "setPassword": "Password",
+      "passwordHint": "At least 8 characters. Give it to the people who should fill in the form.",
+      "tooShort": "Use at least 8 characters.",
+      "passwordNote": "The password is never shown again. After a change, everyone needs the new one."
+    },
+    "link": {
+      "title": "Custom link",
+      "desc": "A readable address that is easy to share, say and remember.",
+      "label": "Link",
+      "hint": "Letters, numbers and hyphens",
+      "placeholder": "e.g. procurement-request",
+      "checking": "Checking…",
+      "free": "This link is free",
+      "taken": "Another form already uses this link",
+      "reserved": "This word is reserved — choose another",
+      "invalid": "Use 3–60 lower-case letters, numbers and hyphens",
+      "use": "Use {link}",
+      "remove": "Remove custom link",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "keyStays": "The original link keeps working, so links you already shared never break."
+    },
+    "limits": {
+      "title": "Limits",
+      "desc": "When the form stops taking responses.",
+      "limit": "Limit the number of responses",
+      "limitDesc": "After that, the link says the form is full.",
+      "max": "Maximum responses",
+      "used": "{n} of {max} used",
+      "full": "The limit is reached — the form takes no more responses.",
+      "when": "When it takes responses",
+      "always": "Always (no start or end date)",
+      "from": "From {from}",
+      "until": "Until {until}",
+      "between": "From {from} until {until}",
+      "change": "Change"
     }
   }
 }

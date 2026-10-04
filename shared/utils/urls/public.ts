@@ -34,6 +34,41 @@ export function formLink(hosts: PublicHosts, formKey: string, kind: FormLinkKind
 
 /** A form's public key: 10 random letters / digits (never a database id; 01-ARCHITECTURE → Public URLs). */
 export const FORM_KEY_PATTERN = /^[A-Za-z0-9]{10}$/
+
+/**
+ * A custom link (F10 M3): a readable address instead of the key, e.g. `/procurement-request/fill`.
+ * Lower-case letters, digits and single hyphens, 3–60 characters, starting and ending with a
+ * letter or digit. The key keeps working too.
+ */
+export const CUSTOM_LINK_PATTERN = /^[a-z0-9](?:[a-z0-9]|-(?=[a-z0-9])){2,59}$/
+
+/** Words a custom link can't be: portal pages and system paths on the same hosts. */
+export const RESERVED_LINKS = new Set([
+  'admin', 'ai', 'analytics', 'api', 'api-service', 'app', 'audit', 'auth', 'billing', 'dashboard', 'data-sources', 'embed',
+  'fill', 'files', 'form', 'forms', 'formalie', 'help', 'login', 'logout', 'manage', 'new', 'onboarding', 'option-sets',
+  'profile', 'public', 'responses', 's', 'settings', 'signin', 'signup', 'static', 'storage', 'support', 'templates',
+  'workspace-not-found', 'www',
+])
+
+/** Why a custom link can't be used (null = fine to check for availability). */
+export function customLinkProblem(value: string): 'invalid' | 'reserved' | null {
+  if (!CUSTOM_LINK_PATTERN.test(value)) return 'invalid'
+  return RESERVED_LINKS.has(value) ? 'reserved' : null
+}
+
+/** A typed custom link tidied up: lower case, spaces and other characters → hyphens. */
+export const tidyCustomLink = (value: string) =>
+  value
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60)
+    .replace(/-+$/, '')
+
+/** What can stand in a public form address: the key or a custom link. */
+export const isFormAddress = (value: string) => FORM_KEY_PATTERN.test(value) || CUSTOM_LINK_PATTERN.test(value)
 const KEY_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'
 /** A new random public key (unambiguous letters and digits; ≈ 58 bits). */
 export function newPublicKey(): string {

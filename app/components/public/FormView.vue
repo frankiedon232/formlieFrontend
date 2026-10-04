@@ -15,10 +15,10 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const url = useRequestURL()
 
-const { form, errorCode } = await usePublicForm(props.formKey)
+const { form, errorCode, refresh } = await usePublicForm(props.formKey)
 const resumeOn = computed(() => !!form.value?.schema?.settings?.save_resume)
 const resume = usePublicResume(props.formKey, resumeOn)
-const { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)
+const { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)
 const { upload } = usePublicUploads(props.formKey)
 const respondent = computed(() => ({
   alreadySent: alreadySent.value,
@@ -60,11 +60,11 @@ watch(language, code => void useLanguage(code))
 const dir = computed(() => APP_LOCALES.find(locale => locale.code === language.value)?.dir ?? 'ltr')
 
 // ── State, status code, SEO ──────────────────────────────────────────────────────────
-type View = 'open' | 'closed' | 'not_published' | 'expired' | 'scheduled' | 'not_found' | 'error'
+type View = 'open' | 'locked' | 'closed' | 'not_published' | 'expired' | 'scheduled' | 'limit_reached' | 'not_found' | 'error'
 const view = computed<View>(() => {
   if (errorCode.value === 'FRM-FORM-1001') return 'not_found'
   if (errorCode.value || !form.value) return 'error'
-  return form.value.state
+  return form.value.state === 'open' && form.value.locked ? 'locked' : form.value.state
 })
 if (import.meta.server && ['not_found', 'error', 'expired'].includes(view.value)) {
   const event = useRequestEvent()
@@ -117,6 +117,12 @@ if (import.meta.client && props.embed) {
   })
 }
 
+// Password forms: after the right password, load the questions and start the spam check.
+async function onUnlocked() {
+  await refresh()
+  prepareProof()
+}
+
 const year = new Date().getFullYear()
 const browser = useInAppBrowser()
 function visit(event: MouseEvent) {
@@ -145,6 +151,10 @@ const message = computed(() => {
       return { icon: 'i-lucide-calendar-x-2', title: t('public.expired.title'), description: t('public.expired.desc', { date: longDate(form.value?.closes_at) }) }
     case 'scheduled':
       return { icon: 'i-lucide-calendar-clock', title: t('public.scheduled.title'), description: t('public.scheduled.desc', { date: longDate(form.value?.opens_at) }) }
+    case 'locked':
+      return { icon: 'i-lucide-lock-keyhole', title: t('public.locked.title'), description: t('public.locked.desc') }
+    case 'limit_reached':
+      return { icon: 'i-lucide-users-round', title: t('public.full.title'), description: t('public.full.desc') }
     case 'error':
       return { icon: 'i-lucide-cloud-off', title: t('public.error.title'), description: t('public.error.desc') }
     default:
@@ -185,6 +195,7 @@ const message = computed(() => {
           <h1 class="text-lg font-semibold text-highlighted">{{ message?.title }}</h1>
           <p class="text-sm text-muted">{{ message?.description }}</p>
           <p v-if="form && view !== 'not_found'" class="text-xs text-dimmed">{{ form.name }} · {{ form.workspace.name }}</p>
+          <PublicUnlock v-if="view === 'locked'" :form-key="formKey" class="mt-2" @unlocked="onUnlocked" />
           <UButton v-if="view === 'error'" :label="t('common.retry')" icon="i-lucide-rotate-cw" color="neutral" variant="outline" @click="reloadNuxtApp()" />
         </div>
       </UCard>

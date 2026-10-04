@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Uma resposta desta pessoa já foi enviada.",
     "FRM-RESP-1007": "Parece uma resposta que já foi enviada. Confirme que é outra pessoa.",
     "FRM-RESP-1008": "Verifique seu e-mail para enviar este formulário.",
-    "FRM-RESP-1009": "Não foi possível confirmar que esta resposta foi enviada por uma pessoa. Tente novamente."
+    "FRM-RESP-1009": "Não foi possível confirmar que esta resposta foi enviada por uma pessoa. Tente novamente.",
+    "FRM-FORM-1017": "Essa palavra-passe não está correta."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Criar",
       "logic": "Lógica",
       "versions": "Versões",
-      "design": "Design"
+      "design": "Design",
+      "share": "Partilhar"
     },
     "renameHint": "Clique duas vezes para renomear",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Este formulário ainda não está aberto",
       "desc": "Ele abre em {date}. Volte nessa data, por favor."
+    },
+    "locked": {
+      "title": "Este formulário está protegido",
+      "desc": "Introduza a palavra-passe que recebeu para o abrir.",
+      "password": "Palavra-passe",
+      "wrong": "Essa palavra-passe não está correta. Verifique-a e tente novamente.",
+      "show": "Mostrar palavra-passe",
+      "hide": "Ocultar palavra-passe",
+      "open": "Abrir o formulário"
+    },
+    "full": {
+      "title": "Este formulário está completo",
+      "desc": "Já recebeu todas as respostas que pode aceitar. Obrigado pelo seu interesse."
+    }
+  },
+  "share": {
+    "crumb": "Partilhar",
+    "open": "Definições de partilha",
+    "saved": "Definições de partilha guardadas",
+    "conflict": "Outra pessoa alterou este formulário. Recarregue para ver as alterações.",
+    "unsaved": "Tem alterações por guardar",
+    "needPassword": "Defina uma palavra-passe (8 ou mais caracteres) para guardar",
+    "discard": "Descartar",
+    "save": "Guardar alterações",
+    "leaveTitle": "Sair sem guardar?",
+    "leaveDesc": "As suas alterações às definições de partilha serão perdidas.",
+    "leave": "Sair",
+    "access": {
+      "title": "Quem pode abrir o formulário",
+      "desc": "As alterações aplicam-se de imediato, também a um formulário publicado.",
+      "public": "Qualquer pessoa com a ligação",
+      "publicDesc": "Todos os que têm a ligação ou o código QR podem preenchê-lo.",
+      "password": "Apenas com palavra-passe",
+      "passwordDesc": "As pessoas introduzem uma palavra-passe que lhes dá antes de verem as perguntas.",
+      "badge": "Palavra-passe",
+      "passwordSet": "Está definida uma palavra-passe",
+      "passwordSetOn": "Palavra-passe definida {when}",
+      "change": "Alterar palavra-passe",
+      "newPassword": "Nova palavra-passe",
+      "setPassword": "Palavra-passe",
+      "passwordHint": "Pelo menos 8 caracteres. Dê-a às pessoas que devem preencher o formulário.",
+      "tooShort": "Use pelo menos 8 caracteres.",
+      "passwordNote": "A palavra-passe nunca volta a ser mostrada. Após uma alteração, todos precisam da nova."
+    },
+    "link": {
+      "title": "Ligação personalizada",
+      "desc": "Um endereço legível, fácil de partilhar, dizer e memorizar.",
+      "label": "Ligação",
+      "hint": "Letras, números e hífenes",
+      "placeholder": "p. ex. pedido-de-compra",
+      "checking": "A verificar…",
+      "free": "Esta ligação está disponível",
+      "taken": "Outro formulário já usa esta ligação",
+      "reserved": "Esta palavra está reservada — escolha outra",
+      "invalid": "Use 3–60 letras minúsculas, números e hífenes",
+      "use": "Usar {link}",
+      "remove": "Remover ligação personalizada",
+      "copy": "Copiar ligação",
+      "copied": "Ligação copiada",
+      "keyStays": "A ligação original continua a funcionar, por isso as ligações já partilhadas nunca deixam de funcionar."
+    },
+    "limits": {
+      "title": "Limites",
+      "desc": "Quando o formulário deixa de aceitar respostas.",
+      "limit": "Limitar o número de respostas",
+      "limitDesc": "Depois disso, a ligação indica que o formulário está completo.",
+      "max": "Número máximo de respostas",
+      "used": "{n} de {max} utilizadas",
+      "full": "O limite foi atingido — o formulário não aceita mais respostas.",
+      "when": "Quando aceita respostas",
+      "always": "Sempre (sem data de início nem de fim)",
+      "from": "A partir de {from}",
+      "until": "Até {until}",
+      "between": "De {from} até {until}",
+      "change": "Alterar"
     }
   }
 }

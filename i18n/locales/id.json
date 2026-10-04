@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Respons dari orang ini sudah dikirim.",
     "FRM-RESP-1007": "Ini tampak seperti respons yang sudah dikirim. Konfirmasi bahwa ini orang yang berbeda.",
     "FRM-RESP-1008": "Verifikasi email Anda untuk mengirim formulir ini.",
-    "FRM-RESP-1009": "Kami tidak dapat memastikan bahwa tanggapan ini dikirim oleh manusia. Silakan coba lagi."
+    "FRM-RESP-1009": "Kami tidak dapat memastikan bahwa tanggapan ini dikirim oleh manusia. Silakan coba lagi.",
+    "FRM-FORM-1017": "Kata sandi tidak benar."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Buat",
       "logic": "Logika",
       "versions": "Versi",
-      "design": "Desain"
+      "design": "Desain",
+      "share": "Bagikan"
     },
     "renameHint": "Klik dua kali untuk mengganti nama",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Formulir ini belum dibuka",
       "desc": "Formulir dibuka pada {date}. Silakan kembali saat itu."
+    },
+    "locked": {
+      "title": "Formulir ini dilindungi",
+      "desc": "Masukkan kata sandi yang diberikan kepada Anda untuk membukanya.",
+      "password": "Kata sandi",
+      "wrong": "Kata sandi tidak benar. Periksa lalu coba lagi.",
+      "show": "Tampilkan kata sandi",
+      "hide": "Sembunyikan kata sandi",
+      "open": "Buka formulir"
+    },
+    "full": {
+      "title": "Formulir ini sudah penuh",
+      "desc": "Formulir ini telah menerima semua tanggapan yang dapat diterimanya. Terima kasih atas minat Anda."
+    }
+  },
+  "share": {
+    "crumb": "Bagikan",
+    "open": "Pengaturan berbagi",
+    "saved": "Pengaturan berbagi disimpan",
+    "conflict": "Orang lain telah mengubah formulir ini. Muat ulang untuk melihat perubahannya.",
+    "unsaved": "Ada perubahan yang belum disimpan",
+    "needPassword": "Tetapkan kata sandi (8 karakter atau lebih) untuk menyimpan",
+    "discard": "Buang",
+    "save": "Simpan perubahan",
+    "leaveTitle": "Keluar tanpa menyimpan?",
+    "leaveDesc": "Perubahan Anda pada pengaturan berbagi akan hilang.",
+    "leave": "Keluar",
+    "access": {
+      "title": "Siapa yang dapat membuka formulir",
+      "desc": "Perubahan langsung berlaku, termasuk pada formulir yang sudah diterbitkan.",
+      "public": "Siapa saja yang memiliki tautan",
+      "publicDesc": "Semua orang yang memiliki tautan atau kode QR dapat mengisinya.",
+      "password": "Hanya dengan kata sandi",
+      "passwordDesc": "Orang memasukkan kata sandi yang Anda berikan sebelum melihat pertanyaan.",
+      "badge": "Kata sandi",
+      "passwordSet": "Kata sandi sudah ditetapkan",
+      "passwordSetOn": "Kata sandi ditetapkan {when}",
+      "change": "Ubah kata sandi",
+      "newPassword": "Kata sandi baru",
+      "setPassword": "Kata sandi",
+      "passwordHint": "Minimal 8 karakter. Berikan kepada orang yang perlu mengisi formulir.",
+      "tooShort": "Gunakan minimal 8 karakter.",
+      "passwordNote": "Kata sandi tidak akan ditampilkan lagi. Setelah diubah, semua orang memerlukan kata sandi yang baru."
+    },
+    "link": {
+      "title": "Tautan khusus",
+      "desc": "Alamat yang mudah dibaca, dibagikan, diucapkan, dan diingat.",
+      "label": "Tautan",
+      "hint": "Huruf, angka, dan tanda hubung",
+      "placeholder": "mis. permintaan-pengadaan",
+      "checking": "Memeriksa…",
+      "free": "Tautan ini tersedia",
+      "taken": "Formulir lain sudah menggunakan tautan ini",
+      "reserved": "Kata ini dicadangkan — pilih yang lain",
+      "invalid": "Gunakan 3–60 huruf kecil, angka, dan tanda hubung",
+      "use": "Gunakan {link}",
+      "remove": "Hapus tautan khusus",
+      "copy": "Salin tautan",
+      "copied": "Tautan disalin",
+      "keyStays": "Tautan asli tetap berfungsi, sehingga tautan yang sudah Anda bagikan tidak akan rusak."
+    },
+    "limits": {
+      "title": "Batas",
+      "desc": "Kapan formulir berhenti menerima tanggapan.",
+      "limit": "Batasi jumlah tanggapan",
+      "limitDesc": "Setelah itu, tautan menyatakan bahwa formulir sudah penuh.",
+      "max": "Jumlah tanggapan maksimum",
+      "used": "{n} dari {max} terpakai",
+      "full": "Batas tercapai — formulir tidak menerima tanggapan lagi.",
+      "when": "Kapan formulir menerima tanggapan",
+      "always": "Selalu (tanpa tanggal mulai atau berakhir)",
+      "from": "Mulai {from}",
+      "until": "Hingga {until}",
+      "between": "Dari {from} hingga {until}",
+      "change": "Ubah"
     }
   }
 }

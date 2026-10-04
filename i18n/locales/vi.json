@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Người này đã gửi một phản hồi.",
     "FRM-RESP-1007": "Phản hồi này trông giống một phản hồi đã được gửi. Hãy xác nhận đây là một người khác.",
     "FRM-RESP-1008": "Xác minh email của bạn để gửi biểu mẫu này.",
-    "FRM-RESP-1009": "Chúng tôi không thể xác nhận câu trả lời này do một người gửi. Vui lòng thử lại."
+    "FRM-RESP-1009": "Chúng tôi không thể xác nhận câu trả lời này do một người gửi. Vui lòng thử lại.",
+    "FRM-FORM-1017": "Mật khẩu không đúng."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Tạo",
       "logic": "Logic",
       "versions": "Phiên bản",
-      "design": "Thiết kế"
+      "design": "Thiết kế",
+      "share": "Chia sẻ"
     },
     "renameHint": "Nhấp đúp để đổi tên",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Biểu mẫu này chưa mở",
       "desc": "Biểu mẫu sẽ mở vào {date}. Vui lòng quay lại khi đó."
+    },
+    "locked": {
+      "title": "Biểu mẫu này được bảo vệ",
+      "desc": "Nhập mật khẩu bạn đã nhận được để mở biểu mẫu.",
+      "password": "Mật khẩu",
+      "wrong": "Mật khẩu không đúng. Vui lòng kiểm tra và thử lại.",
+      "show": "Hiện mật khẩu",
+      "hide": "Ẩn mật khẩu",
+      "open": "Mở biểu mẫu"
+    },
+    "full": {
+      "title": "Biểu mẫu này đã đủ",
+      "desc": "Biểu mẫu đã nhận đủ số câu trả lời có thể nhận. Cảm ơn bạn đã quan tâm."
+    }
+  },
+  "share": {
+    "crumb": "Chia sẻ",
+    "open": "Cài đặt chia sẻ",
+    "saved": "Đã lưu cài đặt chia sẻ",
+    "conflict": "Người khác đã thay đổi biểu mẫu này. Hãy tải lại để xem các thay đổi.",
+    "unsaved": "Bạn có thay đổi chưa lưu",
+    "needPassword": "Đặt mật khẩu (từ 8 ký tự trở lên) để lưu",
+    "discard": "Hủy bỏ",
+    "save": "Lưu thay đổi",
+    "leaveTitle": "Rời đi mà không lưu?",
+    "leaveDesc": "Các thay đổi của bạn đối với cài đặt chia sẻ sẽ bị mất.",
+    "leave": "Rời đi",
+    "access": {
+      "title": "Ai có thể mở biểu mẫu",
+      "desc": "Thay đổi có hiệu lực ngay, kể cả với biểu mẫu đã xuất bản.",
+      "public": "Bất kỳ ai có liên kết",
+      "publicDesc": "Bất kỳ ai có liên kết hoặc mã QR đều có thể điền.",
+      "password": "Chỉ với mật khẩu",
+      "passwordDesc": "Mọi người nhập mật khẩu do bạn cung cấp trước khi xem câu hỏi.",
+      "badge": "Mật khẩu",
+      "passwordSet": "Đã đặt mật khẩu",
+      "passwordSetOn": "Đã đặt mật khẩu {when}",
+      "change": "Đổi mật khẩu",
+      "newPassword": "Mật khẩu mới",
+      "setPassword": "Mật khẩu",
+      "passwordHint": "Tối thiểu 8 ký tự. Hãy gửi cho những người cần điền biểu mẫu.",
+      "tooShort": "Hãy dùng ít nhất 8 ký tự.",
+      "passwordNote": "Mật khẩu sẽ không bao giờ được hiển thị lại. Sau khi đổi, mọi người đều cần mật khẩu mới."
+    },
+    "link": {
+      "title": "Liên kết tùy chỉnh",
+      "desc": "Một địa chỉ dễ đọc, dễ chia sẻ, dễ nói và dễ nhớ.",
+      "label": "Liên kết",
+      "hint": "Chữ cái, chữ số và dấu gạch nối",
+      "placeholder": "vd. de-nghi-mua-hang",
+      "checking": "Đang kiểm tra…",
+      "free": "Liên kết này còn trống",
+      "taken": "Một biểu mẫu khác đã dùng liên kết này",
+      "reserved": "Từ này đã được dành riêng — hãy chọn từ khác",
+      "invalid": "Dùng 3–60 chữ cái thường không dấu, chữ số và dấu gạch nối",
+      "use": "Dùng {link}",
+      "remove": "Xóa liên kết tùy chỉnh",
+      "copy": "Sao chép liên kết",
+      "copied": "Đã sao chép liên kết",
+      "keyStays": "Liên kết gốc vẫn hoạt động, nên các liên kết bạn đã chia sẻ sẽ không bao giờ bị hỏng."
+    },
+    "limits": {
+      "title": "Giới hạn",
+      "desc": "Khi nào biểu mẫu ngừng nhận câu trả lời.",
+      "limit": "Giới hạn số câu trả lời",
+      "limitDesc": "Sau đó, liên kết sẽ báo biểu mẫu đã đủ.",
+      "max": "Số câu trả lời tối đa",
+      "used": "Đã dùng {n}/{max}",
+      "full": "Đã đạt giới hạn — biểu mẫu không nhận thêm câu trả lời.",
+      "when": "Thời gian nhận câu trả lời",
+      "always": "Luôn luôn (không có ngày bắt đầu hay kết thúc)",
+      "from": "Từ {from}",
+      "until": "Đến {until}",
+      "between": "Từ {from} đến {until}",
+      "change": "Thay đổi"
     }
   }
 }

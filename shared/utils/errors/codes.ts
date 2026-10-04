@@ -55,6 +55,7 @@ export const ERROR_CODES = {
   'FRM-FORM-1014': { status: 403, message: 'System themes can’t be changed. Duplicate it to make your own.' },
   'FRM-FORM-1015': { status: 410, message: 'This form has expired.' },
   'FRM-FORM-1016': { status: 403, message: 'This form isn’t open yet.' },
+  'FRM-FORM-1017': { status: 403, message: 'That password isn’t right.' },
   'FRM-RESP-1001': { status: 422, message: 'Submission is invalid.' },
   'FRM-RESP-1002': { status: 400, message: 'Verification failed.' },
   'FRM-RESP-1003': { status: 409, message: 'This form was already submitted from this session.' },

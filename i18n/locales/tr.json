@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Bu kişiden zaten bir yanıt gönderildi.",
     "FRM-RESP-1007": "Bu, daha önce gönderilmiş bir yanıta benziyor. Bunun farklı bir kişi olduğunu onaylayın.",
     "FRM-RESP-1008": "Bu formu göndermek için e-postanızı doğrulayın.",
-    "FRM-RESP-1009": "Bu yanıtın bir kişi tarafından gönderildiği doğrulanamadı. Lütfen tekrar deneyin."
+    "FRM-RESP-1009": "Bu yanıtın bir kişi tarafından gönderildiği doğrulanamadı. Lütfen tekrar deneyin.",
+    "FRM-FORM-1017": "Bu parola doğru değil."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Oluştur",
       "logic": "Mantık",
       "versions": "Sürümler",
-      "design": "Tasarım"
+      "design": "Tasarım",
+      "share": "Paylaş"
     },
     "renameHint": "Yeniden adlandırmak için çift tıklayın",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Bu form henüz açık değil",
       "desc": "{date} tarihinde açılacak. Lütfen o zaman tekrar gelin."
+    },
+    "locked": {
+      "title": "Bu form korumalı",
+      "desc": "Açmak için size verilen parolayı girin.",
+      "password": "Parola",
+      "wrong": "Bu parola doğru değil. Kontrol edip yeniden deneyin.",
+      "show": "Parolayı göster",
+      "hide": "Parolayı gizle",
+      "open": "Formu aç"
+    },
+    "full": {
+      "title": "Bu form doldu",
+      "desc": "Alabileceği tüm yanıtları aldı. İlginiz için teşekkür ederiz."
+    }
+  },
+  "share": {
+    "crumb": "Paylaş",
+    "open": "Paylaşım ayarları",
+    "saved": "Paylaşım ayarları kaydedildi",
+    "conflict": "Bu formu başka biri değiştirdi. Değişiklikleri görmek için yeniden yükleyin.",
+    "unsaved": "Kaydedilmemiş değişiklikleriniz var",
+    "needPassword": "Kaydetmek için bir parola belirleyin (8 veya daha fazla karakter)",
+    "discard": "Vazgeç",
+    "save": "Değişiklikleri kaydet",
+    "leaveTitle": "Kaydetmeden çıkılsın mı?",
+    "leaveDesc": "Paylaşım ayarlarında yaptığınız değişiklikler kaybolacak.",
+    "leave": "Çık",
+    "access": {
+      "title": "Formu kimler açabilir",
+      "desc": "Değişiklikler, yayımlanmış formlar dahil hemen uygulanır.",
+      "public": "Bağlantıya sahip herkes",
+      "publicDesc": "Bağlantıya veya QR koduna sahip herkes formu doldurabilir.",
+      "password": "Yalnızca parolayla",
+      "passwordDesc": "Kişiler soruları görmeden önce sizin verdiğiniz parolayı girer.",
+      "badge": "Parola",
+      "passwordSet": "Parola belirlendi",
+      "passwordSetOn": "Parola {when} belirlendi",
+      "change": "Parolayı değiştir",
+      "newPassword": "Yeni parola",
+      "setPassword": "Parola",
+      "passwordHint": "En az 8 karakter. Formu doldurması gereken kişilere verin.",
+      "tooShort": "En az 8 karakter kullanın.",
+      "passwordNote": "Parola bir daha gösterilmez. Değiştirildikten sonra herkesin yeni parolaya ihtiyacı olur."
+    },
+    "link": {
+      "title": "Özel bağlantı",
+      "desc": "Paylaşması, söylemesi ve hatırlaması kolay, okunabilir bir adres.",
+      "label": "Bağlantı",
+      "hint": "Harfler, rakamlar ve kısa çizgiler",
+      "placeholder": "örn. satin-alma-talebi",
+      "checking": "Kontrol ediliyor…",
+      "free": "Bu bağlantı kullanılabilir",
+      "taken": "Bu bağlantıyı başka bir form kullanıyor",
+      "reserved": "Bu kelime ayrılmış — başka bir tane seçin",
+      "invalid": "3–60 küçük harf, rakam ve kısa çizgi kullanın",
+      "use": "{link} kullan",
+      "remove": "Özel bağlantıyı kaldır",
+      "copy": "Bağlantıyı kopyala",
+      "copied": "Bağlantı kopyalandı",
+      "keyStays": "Asıl bağlantı çalışmaya devam eder; böylece daha önce paylaştığınız bağlantılar asla bozulmaz."
+    },
+    "limits": {
+      "title": "Sınırlar",
+      "desc": "Formun ne zaman yanıt almayı durduracağı.",
+      "limit": "Yanıt sayısını sınırla",
+      "limitDesc": "Bundan sonra bağlantı, formun dolduğunu gösterir.",
+      "max": "En fazla yanıt",
+      "used": "{max} içinden {n} kullanıldı",
+      "full": "Sınıra ulaşıldı — form artık yanıt almıyor.",
+      "when": "Yanıt alma zamanı",
+      "always": "Her zaman (başlangıç veya bitiş tarihi yok)",
+      "from": "{from} tarihinden itibaren",
+      "until": "{until} tarihine kadar",
+      "between": "{from} ile {until} arasında",
+      "change": "Değiştir"
     }
   }
 }

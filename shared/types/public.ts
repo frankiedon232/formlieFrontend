@@ -3,10 +3,11 @@ import type { FormSchemaV1 } from '../utils/forms/schema'
 
 /**
  * What a visitor can do with the form right now:
- * open · closed (closed or archived by the workspace) · not_published (never published yet).
- * Later (Share settings, M3): expired · limit_reached · scheduled · password.
+ * open · closed (closed or archived by the workspace) · not_published (never published yet) ·
+ * expired / scheduled (availability dates) · limit_reached (response limit, Share settings).
+ * A password form is `open` with `locked` until the visitor enters the password.
  */
-export type PublicFormState = 'open' | 'closed' | 'not_published' | 'expired' | 'scheduled'
+export type PublicFormState = 'open' | 'closed' | 'not_published' | 'expired' | 'scheduled' | 'limit_reached'
 
 export interface PublicWorkspace {
   name: string
@@ -43,6 +44,8 @@ export interface PublicForm {
   /** Languages the form offers (its main language first) and the one served. */
   languages: string[]
   language: string
+  /** Share settings (F10 M3): the form needs a password and this visitor hasn't entered it — no questions are sent. */
+  locked: boolean
 }
 
 /** POST /public/forms/{key}/submit → the response and what to show next. */

@@ -68,7 +68,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
                 label: t('forms.copyLink'),
                 icon: 'i-lucide-link',
                 onSelect: () => {
-                  copy(fillLink(form.public_key))
+                  copy(fillLink(form.custom_link || form.public_key))
                   toast.add({
                     title: t('forms.linkCopied'),
                     color: 'success' as const,
@@ -78,6 +78,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
               },
             ]
           : []),
+        { label: t('share.open'), icon: 'i-lucide-share-2', to: `/forms/${form.id}/share` },
         { label: t('forms.viewResponses'), icon: 'i-lucide-inbox', to: `/responses?form=${form.id}` },
         { label: t('templates.saveAs'), icon: 'i-lucide-layout-template', onSelect: () => handlers.saveTemplate(form) },
       ],

@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Von dieser Person wurde bereits eine Antwort gesendet.",
     "FRM-RESP-1007": "Das sieht nach einer bereits gesendeten Antwort aus. Bestätigen Sie, dass es sich um eine andere Person handelt.",
     "FRM-RESP-1008": "Bestätigen Sie Ihre E-Mail-Adresse, um dieses Formular zu senden.",
-    "FRM-RESP-1009": "Wir konnten nicht bestätigen, dass diese Antwort von einer Person gesendet wurde. Bitte versuchen Sie es erneut."
+    "FRM-RESP-1009": "Wir konnten nicht bestätigen, dass diese Antwort von einer Person gesendet wurde. Bitte versuchen Sie es erneut.",
+    "FRM-FORM-1017": "Das Passwort ist nicht korrekt."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Erstellen",
       "logic": "Logik",
       "versions": "Versionen",
-      "design": "Design"
+      "design": "Design",
+      "share": "Teilen"
     },
     "renameHint": "Zum Umbenennen doppelklicken",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Dieses Formular ist noch nicht geöffnet",
       "desc": "Es öffnet am {date}. Bitte schauen Sie dann wieder vorbei."
+    },
+    "locked": {
+      "title": "Dieses Formular ist geschützt",
+      "desc": "Geben Sie das Passwort ein, das Sie erhalten haben, um es zu öffnen.",
+      "password": "Passwort",
+      "wrong": "Das Passwort ist nicht korrekt. Prüfen Sie es und versuchen Sie es erneut.",
+      "show": "Passwort anzeigen",
+      "hide": "Passwort verbergen",
+      "open": "Formular öffnen"
+    },
+    "full": {
+      "title": "Dieses Formular ist voll",
+      "desc": "Es hat alle Antworten erhalten, die es annehmen kann. Vielen Dank für Ihr Interesse."
+    }
+  },
+  "share": {
+    "crumb": "Teilen",
+    "open": "Freigabeeinstellungen",
+    "saved": "Freigabeeinstellungen gespeichert",
+    "conflict": "Jemand anderes hat dieses Formular geändert. Laden Sie neu, um die Änderungen zu sehen.",
+    "unsaved": "Sie haben ungespeicherte Änderungen",
+    "needPassword": "Legen Sie zum Speichern ein Passwort fest (mindestens 8 Zeichen)",
+    "discard": "Verwerfen",
+    "save": "Änderungen speichern",
+    "leaveTitle": "Ohne Speichern verlassen?",
+    "leaveDesc": "Ihre Änderungen an den Freigabeeinstellungen gehen verloren.",
+    "leave": "Verlassen",
+    "access": {
+      "title": "Wer das Formular öffnen kann",
+      "desc": "Änderungen gelten sofort, auch für ein veröffentlichtes Formular.",
+      "public": "Jeder mit dem Link",
+      "publicDesc": "Alle, die den Link oder QR-Code haben, können es ausfüllen.",
+      "password": "Nur mit Passwort",
+      "passwordDesc": "Personen geben ein Passwort ein, das Sie ihnen mitteilen, bevor sie die Fragen sehen.",
+      "badge": "Passwort",
+      "passwordSet": "Ein Passwort ist festgelegt",
+      "passwordSetOn": "Passwort festgelegt {when}",
+      "change": "Passwort ändern",
+      "newPassword": "Neues Passwort",
+      "setPassword": "Passwort",
+      "passwordHint": "Mindestens 8 Zeichen. Geben Sie es den Personen, die das Formular ausfüllen sollen.",
+      "tooShort": "Verwenden Sie mindestens 8 Zeichen.",
+      "passwordNote": "Das Passwort wird nie wieder angezeigt. Nach einer Änderung benötigen alle das neue."
+    },
+    "link": {
+      "title": "Eigener Link",
+      "desc": "Eine lesbare Adresse, die sich leicht teilen, aussprechen und merken lässt.",
+      "label": "Link",
+      "hint": "Buchstaben, Ziffern und Bindestriche",
+      "placeholder": "z. B. beschaffungsantrag",
+      "checking": "Wird geprüft…",
+      "free": "Dieser Link ist frei",
+      "taken": "Ein anderes Formular verwendet diesen Link bereits",
+      "reserved": "Dieses Wort ist reserviert – wählen Sie ein anderes",
+      "invalid": "Verwenden Sie 3–60 Kleinbuchstaben, Ziffern und Bindestriche",
+      "use": "{link} verwenden",
+      "remove": "Eigenen Link entfernen",
+      "copy": "Link kopieren",
+      "copied": "Link kopiert",
+      "keyStays": "Der ursprüngliche Link funktioniert weiter, bereits geteilte Links bleiben also gültig."
+    },
+    "limits": {
+      "title": "Grenzen",
+      "desc": "Wann das Formular keine Antworten mehr annimmt.",
+      "limit": "Anzahl der Antworten begrenzen",
+      "limitDesc": "Danach zeigt der Link an, dass das Formular voll ist.",
+      "max": "Maximale Antworten",
+      "used": "{n} von {max} genutzt",
+      "full": "Die Grenze ist erreicht – das Formular nimmt keine Antworten mehr an.",
+      "when": "Wann es Antworten annimmt",
+      "always": "Immer (kein Start- oder Enddatum)",
+      "from": "Ab {from}",
+      "until": "Bis {until}",
+      "between": "Von {from} bis {until}",
+      "change": "Ändern"
     }
   }
 }

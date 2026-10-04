@@ -490,7 +490,8 @@
     "FRM-RESP-1006": "Jibu kutoka kwa mtu huyu tayari limetumwa.",
     "FRM-RESP-1007": "Hili linaonekana kama jibu lililokwisha tumwa. Thibitisha kuwa huyu ni mtu mwingine.",
     "FRM-RESP-1008": "Thibitisha barua pepe yako ili kutuma fomu hii.",
-    "FRM-RESP-1009": "Hatukuweza kuthibitisha kuwa jibu hili lilitumwa na mtu. Tafadhali jaribu tena."
+    "FRM-RESP-1009": "Hatukuweza kuthibitisha kuwa jibu hili lilitumwa na mtu. Tafadhali jaribu tena.",
+    "FRM-FORM-1017": "Nenosiri hilo si sahihi."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1767,7 +1768,8 @@
       "build": "Jenga",
       "logic": "Mantiki",
       "versions": "Matoleo",
-      "design": "Muundo"
+      "design": "Muundo",
+      "share": "Shiriki"
     },
     "renameHint": "Bofya mara mbili ili kubadilisha jina",
     "access": {
@@ -2796,6 +2798,81 @@
     "scheduled": {
       "title": "Fomu hii bado haijafunguliwa",
       "desc": "Itafunguliwa tarehe {date}. Tafadhali rudi wakati huo."
+    },
+    "locked": {
+      "title": "Fomu hii imelindwa",
+      "desc": "Weka nenosiri ulilopewa ili kuifungua.",
+      "password": "Nenosiri",
+      "wrong": "Nenosiri hilo si sahihi. Likague kisha ujaribu tena.",
+      "show": "Onyesha nenosiri",
+      "hide": "Ficha nenosiri",
+      "open": "Fungua fomu"
+    },
+    "full": {
+      "title": "Fomu hii imejaa",
+      "desc": "Imepokea majibu yote inayoweza kupokea. Asante kwa nia yako."
+    }
+  },
+  "share": {
+    "crumb": "Shiriki",
+    "open": "Mipangilio ya kushiriki",
+    "saved": "Mipangilio ya kushiriki imehifadhiwa",
+    "conflict": "Mtu mwingine amebadilisha fomu hii. Pakia upya ili kuona mabadiliko yao.",
+    "unsaved": "Una mabadiliko ambayo hayajahifadhiwa",
+    "needPassword": "Weka nenosiri (herufi 8 au zaidi) ili kuhifadhi",
+    "discard": "Tupa",
+    "save": "Hifadhi mabadiliko",
+    "leaveTitle": "Ondoka bila kuhifadhi?",
+    "leaveDesc": "Mabadiliko yako kwenye mipangilio ya kushiriki yatapotea.",
+    "leave": "Ondoka",
+    "access": {
+      "title": "Nani anaweza kufungua fomu",
+      "desc": "Mabadiliko yanatumika mara moja, hata kwa fomu iliyochapishwa.",
+      "public": "Yeyote aliye na kiungo",
+      "publicDesc": "Kila aliye na kiungo au msimbo wa QR anaweza kuijaza.",
+      "password": "Kwa nenosiri pekee",
+      "passwordDesc": "Watu huweka nenosiri unalowapa kabla ya kuona maswali.",
+      "badge": "Nenosiri",
+      "passwordSet": "Nenosiri limewekwa",
+      "passwordSetOn": "Nenosiri liliwekwa {when}",
+      "change": "Badilisha nenosiri",
+      "newPassword": "Nenosiri jipya",
+      "setPassword": "Nenosiri",
+      "passwordHint": "Angalau herufi 8. Wape watu wanaopaswa kujaza fomu.",
+      "tooShort": "Tumia angalau herufi 8.",
+      "passwordNote": "Nenosiri halitaonyeshwa tena. Baada ya kubadilisha, kila mtu atahitaji jipya."
+    },
+    "link": {
+      "title": "Kiungo maalum",
+      "desc": "Anwani inayosomeka ambayo ni rahisi kushiriki, kutamka na kukumbuka.",
+      "label": "Kiungo",
+      "hint": "Herufi, nambari na vistari",
+      "placeholder": "mfano ombi-la-ununuzi",
+      "checking": "Inakagua…",
+      "free": "Kiungo hiki kinapatikana",
+      "taken": "Fomu nyingine tayari inatumia kiungo hiki",
+      "reserved": "Neno hili limehifadhiwa — chagua jingine",
+      "invalid": "Tumia herufi ndogo, nambari na vistari 3–60",
+      "use": "Tumia {link}",
+      "remove": "Ondoa kiungo maalum",
+      "copy": "Nakili kiungo",
+      "copied": "Kiungo kimenakiliwa",
+      "keyStays": "Kiungo cha awali kinaendelea kufanya kazi, kwa hivyo viungo ulivyokwisha shiriki havitaacha kufanya kazi."
+    },
+    "limits": {
+      "title": "Vikomo",
+      "desc": "Wakati fomu inaacha kupokea majibu.",
+      "limit": "Weka kikomo cha idadi ya majibu",
+      "limitDesc": "Baada ya hapo, kiungo kitaonyesha kwamba fomu imejaa.",
+      "max": "Idadi ya juu ya majibu",
+      "used": "{n} kati ya {max} yametumika",
+      "full": "Kikomo kimefikiwa — fomu haipokei majibu zaidi.",
+      "when": "Wakati inapokea majibu",
+      "always": "Daima (bila tarehe ya kuanza wala kumalizika)",
+      "from": "Kuanzia {from}",
+      "until": "Hadi {until}",
+      "between": "Kuanzia {from} hadi {until}",
+      "change": "Badilisha"
     }
   }
 }

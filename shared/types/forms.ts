@@ -38,6 +38,48 @@ export interface FormSummary {
   /** Availability (F10): responses only from / until these times (null = no limit). */
   opens_at: string | null
   closes_at: string | null
+  /** Share settings (F10 M3): readable address instead of the key (null = the key only). */
+  custom_link: string | null
+  /** Who can open the form: anyone with the link, or people who know the password. */
+  access: FormAccess
+  /** Stop taking responses after this many (null = no limit). */
+  response_limit: number | null
+}
+
+export type FormAccess = 'public' | 'password'
+
+/** GET /forms/{id}/share — everything about how a form is shared (the password itself is never returned). */
+export interface FormShareSettings {
+  access: FormAccess
+  /** A password is set (required for access "password"). */
+  has_password: boolean
+  password_changed_at: string | null
+  response_limit: number | null
+  responses_count: number
+  custom_link: string | null
+  opens_at: string | null
+  closes_at: string | null
+  row_version: number
+}
+
+/** The Share tab's unsaved changes (portal only). */
+export interface ShareDraft {
+  access: FormAccess
+  /** A new password (empty = keep the current one). */
+  password: string
+  limitOn: boolean
+  limit: number
+  link: string
+}
+
+/** GET /forms/{id}/share/link-check?value= — can this custom link be used? */
+export interface CustomLinkCheck {
+  value: string
+  available: boolean
+  /** invalid · reserved (a Formalie page) · taken (another form) */
+  reason: 'invalid' | 'reserved' | 'taken' | null
+  /** A free variant when taken. */
+  suggestion: string | null
 }
 
 /** GET /forms/facets — options for the owner and tag filters. */
