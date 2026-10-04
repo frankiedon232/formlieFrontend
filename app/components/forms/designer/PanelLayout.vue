@@ -6,7 +6,8 @@ const d = useDesigner()
 const theme = d.theme
 
 const layouts = computed(() =>
-  THEME_LAYOUTS.map(value => ({ value, label: t(`designer.layout.${value}`), icon: { card: 'i-lucide-square', plain: 'i-lucide-align-justify', split: 'i-lucide-columns-2', full: 'i-lucide-maximize' }[value] })),
+  // No side-panel layout (owner, 2026-10-04: it squeezed the form; old ones open as a card).
+  THEME_LAYOUTS.filter(value => value !== 'split').map(value => ({ value, label: t(`designer.layout.${value}`), icon: { card: 'i-lucide-square', plain: 'i-lucide-align-justify', split: 'i-lucide-columns-2', full: 'i-lucide-maximize' }[value] })),
 )
 const sizes = (keys: readonly string[]) => keys.map(value => ({ value, label: t(`designer.size.${value}`) }))
 const bgTypes = computed(() => [

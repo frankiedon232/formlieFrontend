@@ -159,11 +159,12 @@ export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
     icon: 'i-lucide-house',
     dot: 'bg-orange-600',
     design: {
-      layout: 'split',
+      // Card with an accent header (owner, 2026-10-04: the side panel squeezed the form).
+      layout: 'card',
       page: { bg_type: 'gradient', bg: '#fff7ed', bg_to: '#f5f5f4', gradient_angle: 160 },
-      container: { width: 'xl', radius: 'lg', shadow: 'md', border: false },
+      container: { width: 'lg', radius: 'lg', shadow: 'md', border: false },
       colors: { primary: '#c2410c', input_border: '#e7e5e4' },
-      split: { panel: 'gradient', bg: '#9a3412', bg_to: '#f59e0b', side: 'end' },
+      header: { band: 'accent', band_bg: '#9a3412' },
     },
   },
   {

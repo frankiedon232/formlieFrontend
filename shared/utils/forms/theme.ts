@@ -245,28 +245,28 @@ export const THEME_PRESETS: { key: string; patch: ThemePatch }[] = [
       footer: { enabled: true, style: 'band', bg: '#14532d', align: 'center', show_logo: true },
     },
   },
-  // Side designs
+  // Accent header designs (owner, 2026-10-04: these were side panels that squeezed the form)
   {
     key: 'sidebar',
     patch: {
-      layout: 'split',
+      layout: 'card',
       page: { bg_type: 'color', bg: '#e2e8f0' },
-      container: { width: 'xl', radius: 'lg', shadow: 'lg', border: false },
+      container: { width: 'lg', radius: 'lg', shadow: 'lg', border: false },
       colors: { primary: '#0f172a' },
-      split: { panel: 'color', bg: '#0f172a', side: 'start' },
+      header: { band: 'accent', band_bg: '#0f172a' },
     },
   },
   {
     key: 'aurora',
     patch: {
-      layout: 'split',
+      layout: 'card',
       page: { bg_type: 'gradient', bg: '#ecfeff', bg_to: '#f0fdf4', gradient_angle: 160 },
-      container: { width: 'xl', radius: 'xl', shadow: 'md', border: false },
+      container: { width: 'lg', radius: 'xl', shadow: 'md', border: false },
       typography: { font: 'rounded' },
       colors: { primary: '#0e7490', input_bg: '#f8fafc', input_border: '#cbd5e1' },
       inputs: { style: 'soft', radius: 'lg' },
       buttons: { radius: 'full' },
-      split: { panel: 'gradient', bg: '#0e7490', bg_to: '#10b981', side: 'end' },
+      header: { band: 'accent', band_bg: '#0e7490' },
     },
   },
   // Header + footer together
@@ -312,16 +312,27 @@ export function resolveTheme(stored: unknown, branding?: WorkspaceBranding): For
   const base = defaultTheme(branding)
   const merged = merge(base, stored)
   const parsed = themeSchema.safeParse(merged)
-  if (parsed.success) return parsed.data
+  if (parsed.success) return withoutSidePanel(parsed.data)
   // Keep only the valid groups.
   const out = { ...base } as Record<string, unknown>
   for (const key of Object.keys(base) as (keyof FormTheme)[]) {
     const group = themeSchema.shape[key].safeParse((merged as Record<string, unknown>)[key])
     if (group.success) out[key] = group.data
   }
-  return out as FormTheme
+  return withoutSidePanel(out as FormTheme)
 }
 export const applyPatch = (theme: FormTheme, patch: ThemePatch) => merge(theme, patch)
+
+/**
+ * No side panel beside the form any more (owner, 2026-10-04: it squeezed the form). Forms and
+ * saved themes that still say "split" become a card; a coloured panel becomes the quote-like accent
+ * header in its colour (unless the header already has a band).
+ */
+function withoutSidePanel(theme: FormTheme): FormTheme {
+  if (theme.layout !== 'split') return theme
+  const header = theme.header.band === 'none' && theme.split.panel !== 'image' ? { ...theme.header, band: 'accent' as const, band_bg: theme.split.bg } : theme.header
+  return { ...theme, layout: 'card', container: { ...theme.container, width: theme.container.width === 'xl' ? 'lg' : theme.container.width }, header }
+}
 
 // ── Colour helpers ────────────────────────────────────────────────────────────────────
 function luminance(color: string) {

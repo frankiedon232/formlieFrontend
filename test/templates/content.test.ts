@@ -113,3 +113,16 @@ describe('the title respondents see', () => {
     expect(out.settings!.title).toBe('Demande d’achat')
   })
 })
+
+describe('no side panel beside the form (owner, 2026-10-04)', () => {
+  it('a stored split layout opens as a card with an accent header in the panel colour', async () => {
+    const { resolveTheme, THEME_PRESETS } = await import('../../shared/utils/forms/theme')
+    const theme = resolveTheme({ layout: 'split', container: { width: 'xl' }, split: { panel: 'gradient', bg: '#9a3412', bg_to: '#f59e0b', side: 'end' } })
+    expect(theme.layout).toBe('card')
+    expect(theme.container.width).toBe('lg')
+    expect(theme.header).toMatchObject({ band: 'accent', band_bg: '#9a3412' })
+    for (const preset of THEME_PRESETS) expect((preset.patch as { layout?: string }).layout, preset.key).not.toBe('split')
+    const { TEMPLATE_CATEGORIES } = await import('../../shared/templates')
+    for (const category of TEMPLATE_CATEGORIES) expect((category.design as { layout?: string }).layout, category.key).not.toBe('split')
+  })
+})
