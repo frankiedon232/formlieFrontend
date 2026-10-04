@@ -1,6 +1,7 @@
 <!--
-  DataView toolbar (docs/design: "All Tasks" row): search · Filter popover · active filter chips ·
-  date range · Sort · Table/Grid switch. Wraps on small screens. `/` focuses search.
+  DataView toolbar (docs/design: "All Tasks" row): [start slot, e.g. a page's own view switch] ·
+  search · Filter popover · active filter chips · date range · Sort · Table/Grid switch. Wraps on
+  small screens. `/` focuses search.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -73,6 +74,7 @@ const viewItems = computed(() => [
 
 <template>
   <div class="flex flex-wrap items-center gap-2">
+    <slot name="start" />
     <UInput
       ref="searchInput"
       v-model="search"

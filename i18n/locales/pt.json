@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "Vista",
       "responses": "Respostas",
-      "summary": "Resumo"
+      "summary": "Análises"
     },
     "kpi": {
       "period": "Respostas",
@@ -3183,7 +3183,8 @@
       "completion": "Conclusão",
       "completionHint": "De quem começou, quantos enviaram",
       "last": "Última resposta",
-      "busiest": "Mais ativo: {name}"
+      "busiest": "Mais ativo: {name}",
+      "label": "Num relance"
     },
     "trend": {
       "title": "Respostas ao longo do tempo",
@@ -3288,12 +3289,33 @@
       "next": "Resposta seguinte",
       "duplicateTitle": "Possível duplicado",
       "duplicateDesc": "Parece uma resposta anterior da mesma pessoa (um email muito parecido). Confirmou ser outra pessoa.",
-      "openEarlier": "Abrir a anterior"
+      "openEarlier": "Abrir a anterior",
+      "copyLink": "Copiar link desta resposta",
+      "linkCopied": "Link copiado",
+      "answeredOf": "{n} de {total} respondidas",
+      "navigate": "Mudar de resposta",
+      "prevShort": "Anterior",
+      "nextShort": "Seguinte",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "Computador",
       "phone": "Telemóvel",
       "tablet": "Tablet"
+    },
+    "respondentKind": {
+      "invite": "Pessoa convidada",
+      "member": "Membro do espaço",
+      "answer": "Pelas respostas",
+      "anonymous": "Não foi pedido nome nem email"
+    },
+    "card": {
+      "edited": "Editada",
+      "quick": {
+        "reviewed": "Revista",
+        "approved": "Aprovar",
+        "rejected": "Rejeitar"
+      }
     }
   }
 }

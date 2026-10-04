@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "Görünüm",
       "responses": "Yanıtlar",
-      "summary": "Özet"
+      "summary": "İçgörüler"
     },
     "kpi": {
       "period": "Yanıtlar",
@@ -3183,7 +3183,8 @@
       "completion": "Tamamlama",
       "completionHint": "Başlayanların ne kadarı gönderdi",
       "last": "Son yanıt",
-      "busiest": "En yoğun: {name}"
+      "busiest": "En yoğun: {name}",
+      "label": "Bir bakışta"
     },
     "trend": {
       "title": "Zaman içinde yanıtlar",
@@ -3288,12 +3289,33 @@
       "next": "Sonraki yanıt",
       "duplicateTitle": "Olası kopya",
       "duplicateDesc": "Aynı kişinin önceki bir yanıtına benziyor (çok benzer bir e-posta). Kişi başka biri olduğunu onayladı.",
-      "openEarlier": "Öncekini aç"
+      "openEarlier": "Öncekini aç",
+      "copyLink": "Bu yanıtın bağlantısını kopyala",
+      "linkCopied": "Bağlantı kopyalandı",
+      "answeredOf": "{total} sorudan {n} yanıtlandı",
+      "navigate": "Yanıtlar arasında gezin",
+      "prevShort": "Önceki",
+      "nextShort": "Sonraki",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "Bilgisayar",
       "phone": "Telefon",
       "tablet": "Tablet"
+    },
+    "respondentKind": {
+      "invite": "Davetli kişi",
+      "member": "Çalışma alanı üyesi",
+      "answer": "Yanıtlarından",
+      "anonymous": "Ad veya e-posta sorulmadı"
+    },
+    "card": {
+      "edited": "Düzenlendi",
+      "quick": {
+        "reviewed": "İncelendi",
+        "approved": "Onayla",
+        "rejected": "Reddet"
+      }
     }
   }
 }

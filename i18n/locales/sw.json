@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "Mwonekano",
       "responses": "Majibu",
-      "summary": "Muhtasari"
+      "summary": "Uchambuzi"
     },
     "kpi": {
       "period": "Majibu",
@@ -3183,7 +3183,8 @@
       "completion": "Ukamilishaji",
       "completionHint": "Kati ya walioanza, wangapi walituma",
       "last": "Jibu la mwisho",
-      "busiest": "Yenye shughuli zaidi: {name}"
+      "busiest": "Yenye shughuli zaidi: {name}",
+      "label": "Kwa haraka"
     },
     "trend": {
       "title": "Majibu kwa muda",
@@ -3288,12 +3289,33 @@
       "next": "Jibu linalofuata",
       "duplicateTitle": "Huenda ni nakala",
       "duplicateDesc": "Linafanana na jibu la awali la mtu yule yule (barua pepe inayofanana sana). Alithibitisha kuwa ni mtu mwingine.",
-      "openEarlier": "Fungua la awali"
+      "openEarlier": "Fungua la awali",
+      "copyLink": "Nakili kiungo cha jibu hili",
+      "linkCopied": "Kiungo kimenakiliwa",
+      "answeredOf": "{n} kati ya {total} yamejibiwa",
+      "navigate": "Hama kati ya majibu",
+      "prevShort": "Iliyotangulia",
+      "nextShort": "Inayofuata",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "Kompyuta",
       "phone": "Simu",
       "tablet": "Kishikwambi"
+    },
+    "respondentKind": {
+      "invite": "Mtu aliyealikwa",
+      "member": "Mwanachama wa eneo la kazi",
+      "answer": "Kutoka kwa majibu yake",
+      "anonymous": "Jina wala barua pepe havikuulizwa"
+    },
+    "card": {
+      "edited": "Imehaririwa",
+      "quick": {
+        "reviewed": "Imekaguliwa",
+        "approved": "Idhinisha",
+        "rejected": "Kataa"
+      }
     }
   }
 }

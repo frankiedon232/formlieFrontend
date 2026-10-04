@@ -1,7 +1,8 @@
 <!--
-  A form's responses (F11): the period's numbers with sparklines, responses over time, review
-  status / channels / languages, then Responses (table or grid) and Summary (every question
-  summarised). A response opens in a side panel (J / K to move). Open to "Responses only" and up.
+  A form's responses (F11; owner 2026-10-04: "a slim top and the table below"): a thin strip of the
+  period's numbers, then Responses (table or grid; the Responses | Insights switch shares the
+  toolbar line) or Insights (responses over time, review status / channels / languages, every
+  question summarised). A response opens in a side panel (J / K to move). "Responses only" and up.
 -->
 <script setup lang="ts">
 import type { FormSummary } from '#shared/types/forms'
@@ -56,18 +57,13 @@ async function load() {
 onMounted(load)
 watch(period, () => void loadInsights().catch(handle))
 
-const tab = computed({
-  get: () => (route.query.tab === 'summary' ? 'summary' : 'responses'),
-  set: value => void router.replace({ query: { ...route.query, tab: value === 'responses' ? undefined : value } }),
+const view = computed<'responses' | 'insights'>({
+  get: () => (route.query.view === 'insights' ? 'insights' : 'responses'),
+  set: value => void router.replace({ query: { ...route.query, view: value === 'responses' ? undefined : value } }),
 })
-const tabs = computed(() => [
-  { value: 'responses', label: t('responses.tabs.responses'), icon: 'i-lucide-table-2' },
-  { value: 'summary', label: t('responses.tabs.summary'), icon: 'i-lucide-chart-bar-big' },
-])
 const statusFilter = computed(() => (typeof route.query.status === 'string' && !route.query.status.includes(',') ? route.query.status : null))
 function filterStatus(status: ResponseStatus | null) {
-  tab.value = 'responses'
-  void router.replace({ query: { ...route.query, tab: undefined, status: status && statusFilter.value !== status ? status : undefined, page: undefined } })
+  void router.replace({ query: { ...route.query, view: undefined, status: status && statusFilter.value !== status ? status : undefined, page: undefined } })
 }
 
 // The side panel: the rows on screen, J / K through them.
@@ -80,6 +76,8 @@ function openRow(row: ResponseRow, rows: ResponseRow[]) {
   openId.value = row.id
   panel.value = true
 }
+// A shared link (`?response=`) opens that response.
+onMounted(() => typeof route.query.response === 'string' && openById(route.query.response))
 function openById(responseId: string) {
   if (!ids.value.includes(responseId)) ids.value = [responseId]
   openId.value = responseId
@@ -129,14 +127,18 @@ const canEdit = computed(() => canEditForm(form.value))
 
     <div v-else-if="form && insights" class="flex flex-col gap-4">
       <FormsResponsesKpis :insights="insights" per-form @review="filterStatus('new')" />
-      <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-        <FormsResponsesTrend :insights="insights" />
-        <FormsResponsesBreakdown :insights="insights" :status="statusFilter" @status="filterStatus" />
-      </div>
 
-      <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" size="sm" :ui="SEGMENTED_UI" class="self-start" :aria-label="t('responses.tabs.label')" />
-      <FormsResponsesList v-if="tab === 'responses' && insights.schema" ref="list" :form-id="id" :schema="insights.schema" :can-edit="canEdit" @open="openRow" @changed="changed" />
-      <FormsResponsesSummary v-else-if="tab === 'summary'" :insights="insights" @open="openById" />
+      <FormsResponsesList v-if="view === 'responses' && insights.schema" ref="list" :form-id="id" :schema="insights.schema" :can-edit="canEdit" @open="openRow" @changed="changed">
+        <template #start><FormsResponsesViewSwitch v-model="view" /></template>
+      </FormsResponsesList>
+      <template v-else-if="view === 'insights'">
+        <FormsResponsesViewSwitch v-model="view" class="self-start" />
+        <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
+          <FormsResponsesTrend :insights="insights" />
+          <FormsResponsesBreakdown :insights="insights" :status="statusFilter" @status="filterStatus" />
+        </div>
+        <FormsResponsesSummary :insights="insights" @open="openById" />
+      </template>
     </div>
 
     <FormsResponsesDetail :id="openId" v-model:open="panel" :ids="ids" @go="openById" @changed="changed" />

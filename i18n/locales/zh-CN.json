@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "视图",
       "responses": "回复",
-      "summary": "汇总"
+      "summary": "洞察"
     },
     "kpi": {
       "period": "回复",
@@ -3183,7 +3183,8 @@
       "completion": "完成率",
       "completionHint": "开始填写的人中有多少人提交",
       "last": "最近回复",
-      "busiest": "最多：{name}"
+      "busiest": "最多：{name}",
+      "label": "概览"
     },
     "trend": {
       "title": "回复趋势",
@@ -3288,12 +3289,33 @@
       "next": "下一条回复",
       "duplicateTitle": "可能重复",
       "duplicateDesc": "看起来与同一人的较早回复相似（邮箱非常接近）。对方已确认是另一个人。",
-      "openEarlier": "打开较早的回复"
+      "openEarlier": "打开较早的回复",
+      "copyLink": "复制此回复的链接",
+      "linkCopied": "链接已复制",
+      "answeredOf": "已答 {n}/{total}",
+      "navigate": "在回复之间切换",
+      "prevShort": "上一条",
+      "nextShort": "下一条",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "电脑",
       "phone": "手机",
       "tablet": "平板"
+    },
+    "respondentKind": {
+      "invite": "受邀者",
+      "member": "工作区成员",
+      "answer": "根据其回答",
+      "anonymous": "未询问姓名或邮箱"
+    },
+    "card": {
+      "edited": "已编辑",
+      "quick": {
+        "reviewed": "已查看",
+        "approved": "批准",
+        "rejected": "拒绝"
+      }
     }
   }
 }

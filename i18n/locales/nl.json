@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "Weergave",
       "responses": "Antwoorden",
-      "summary": "Samenvatting"
+      "summary": "Inzichten"
     },
     "kpi": {
       "period": "Antwoorden",
@@ -3183,7 +3183,8 @@
       "completion": "Voltooiing",
       "completionHint": "Van wie begon, hoeveel het verstuurden",
       "last": "Laatste antwoord",
-      "busiest": "Drukst: {name}"
+      "busiest": "Drukst: {name}",
+      "label": "In één oogopslag"
     },
     "trend": {
       "title": "Antwoorden door de tijd",
@@ -3288,12 +3289,33 @@
       "next": "Volgend antwoord",
       "duplicateTitle": "Mogelijk dubbel",
       "duplicateDesc": "Dit lijkt op een eerder antwoord van dezelfde persoon (een bijna gelijk e-mailadres). Die bevestigde iemand anders te zijn.",
-      "openEarlier": "Eerdere openen"
+      "openEarlier": "Eerdere openen",
+      "copyLink": "Link naar dit antwoord kopiëren",
+      "linkCopied": "Link gekopieerd",
+      "answeredOf": "{n} van {total} beantwoord",
+      "navigate": "Tussen antwoorden wisselen",
+      "prevShort": "Vorige",
+      "nextShort": "Volgende",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "Computer",
       "phone": "Telefoon",
       "tablet": "Tablet"
+    },
+    "respondentKind": {
+      "invite": "Uitgenodigde persoon",
+      "member": "Lid van de werkruimte",
+      "answer": "Uit de antwoorden",
+      "anonymous": "Geen naam of e-mail gevraagd"
+    },
+    "card": {
+      "edited": "Bewerkt",
+      "quick": {
+        "reviewed": "Beoordeeld",
+        "approved": "Goedkeuren",
+        "rejected": "Afwijzen"
+      }
     }
   }
 }

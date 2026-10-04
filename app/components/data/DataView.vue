@@ -50,6 +50,7 @@ const slots = defineSlots<
     'empty-actions'?(): unknown
     'bulk-actions'?(props: { selected: T[]; clear: () => void }): unknown
     'toolbar-end'?(): unknown
+    'toolbar-start'?(): unknown
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- `#<key>-cell` slots receive TanStack cell context, forwarded untouched to UTable
   } & Record<string, ((props: any) => unknown) | undefined>
 >()
@@ -174,6 +175,9 @@ defineExpose({ refresh: state.refresh, state })
       :date-range="dateRange"
       views
     >
+      <template v-if="slots['toolbar-start']" #start>
+        <slot name="toolbar-start" />
+      </template>
       <template v-if="slots['toolbar-end']" #end>
         <slot name="toolbar-end" />
       </template>

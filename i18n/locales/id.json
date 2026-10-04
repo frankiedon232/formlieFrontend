@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "Tampilan",
       "responses": "Tanggapan",
-      "summary": "Ringkasan"
+      "summary": "Wawasan"
     },
     "kpi": {
       "period": "Tanggapan",
@@ -3183,7 +3183,8 @@
       "completion": "Penyelesaian",
       "completionHint": "Dari yang memulai, berapa yang mengirim",
       "last": "Tanggapan terakhir",
-      "busiest": "Paling ramai: {name}"
+      "busiest": "Paling ramai: {name}",
+      "label": "Sekilas"
     },
     "trend": {
       "title": "Tanggapan dari waktu ke waktu",
@@ -3288,12 +3289,33 @@
       "next": "Tanggapan berikutnya",
       "duplicateTitle": "Kemungkinan duplikat",
       "duplicateDesc": "Mirip tanggapan sebelumnya dari orang yang sama (email sangat mirip). Ia sudah memastikan dirinya orang lain.",
-      "openEarlier": "Buka yang sebelumnya"
+      "openEarlier": "Buka yang sebelumnya",
+      "copyLink": "Salin tautan tanggapan ini",
+      "linkCopied": "Tautan disalin",
+      "answeredOf": "{n} dari {total} dijawab",
+      "navigate": "Pindah antar tanggapan",
+      "prevShort": "Sebelumnya",
+      "nextShort": "Berikutnya",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "Komputer",
       "phone": "Ponsel",
       "tablet": "Tablet"
+    },
+    "respondentKind": {
+      "invite": "Orang yang diundang",
+      "member": "Anggota ruang kerja",
+      "answer": "Dari jawabannya",
+      "anonymous": "Tidak ditanya nama atau email"
+    },
+    "card": {
+      "edited": "Diedit",
+      "quick": {
+        "reviewed": "Ditinjau",
+        "approved": "Setujui",
+        "rejected": "Tolak"
+      }
     }
   }
 }

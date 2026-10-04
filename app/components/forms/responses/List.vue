@@ -122,6 +122,9 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
     <template #number-cell="{ row }">
       <span class="text-muted tabular-nums">#{{ row.original.number }}</span>
     </template>
+    <template v-if="$slots.start" #toolbar-start>
+      <slot name="start" />
+    </template>
     <template #respondent-cell="{ row }">
       <FormsResponsesWho :row="row.original" @open="openRow(row.original)" />
     </template>
@@ -153,7 +156,7 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
     </template>
 
     <template #grid-card="{ row }">
-      <FormsResponsesCard :row="row" :fields="picked.map(key => byKey.get(key)!).slice(0, 3)" @open="openRow(row)" />
+      <FormsResponsesCard :row="row" :fields="picked.map(key => byKey.get(key)!).slice(0, 4)" :busy="busyIds.has(row.id)" @open="openRow(row)" @status="status => bulk([row.id], 'status', status)" />
     </template>
 
     <template #bulk-actions="{ selected, clear }">

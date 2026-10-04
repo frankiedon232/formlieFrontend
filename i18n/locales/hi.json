@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "दृश्य",
       "responses": "जवाब",
-      "summary": "सारांश"
+      "summary": "विश्लेषण"
     },
     "kpi": {
       "period": "जवाब",
@@ -3183,7 +3183,8 @@
       "completion": "पूरा होना",
       "completionHint": "शुरू करने वालों में से कितनों ने भेजा",
       "last": "आख़िरी जवाब",
-      "busiest": "सबसे सक्रिय: {name}"
+      "busiest": "सबसे सक्रिय: {name}",
+      "label": "एक नज़र में"
     },
     "trend": {
       "title": "समय के साथ जवाब",
@@ -3288,12 +3289,33 @@
       "next": "अगला जवाब",
       "duplicateTitle": "संभावित डुप्लिकेट",
       "duplicateDesc": "यह उसी व्यक्ति के पिछले जवाब जैसा लगता है (बहुत मिलता-जुलता ईमेल)। उन्होंने पुष्टि की कि वे कोई और हैं।",
-      "openEarlier": "पिछला खोलें"
+      "openEarlier": "पिछला खोलें",
+      "copyLink": "इस जवाब का लिंक कॉपी करें",
+      "linkCopied": "लिंक कॉपी हुआ",
+      "answeredOf": "{total} में से {n} के जवाब",
+      "navigate": "जवाबों के बीच जाएँ",
+      "prevShort": "पिछला",
+      "nextShort": "अगला",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "कंप्यूटर",
       "phone": "फ़ोन",
       "tablet": "टैबलेट"
+    },
+    "respondentKind": {
+      "invite": "आमंत्रित व्यक्ति",
+      "member": "वर्कस्पेस सदस्य",
+      "answer": "उनके जवाबों से",
+      "anonymous": "नाम या ईमेल नहीं पूछा गया"
+    },
+    "card": {
+      "edited": "संपादित",
+      "quick": {
+        "reviewed": "समीक्षित",
+        "approved": "स्वीकृत करें",
+        "rejected": "अस्वीकार करें"
+      }
     }
   }
 }

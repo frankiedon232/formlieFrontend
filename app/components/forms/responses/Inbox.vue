@@ -95,6 +95,9 @@ defineExpose({ refresh: () => view.value?.refresh() })
     :empty-title="t('responses.list.empty')"
     :empty-description="t('responses.list.emptyInbox')"
   >
+    <template v-if="$slots.start" #toolbar-start>
+      <slot name="start" />
+    </template>
     <template #respondent-cell="{ row }">
       <FormsResponsesWho :row="row.original" @open="openRow(row.original)" />
     </template>
@@ -115,7 +118,7 @@ defineExpose({ refresh: () => view.value?.refresh() })
     </template>
 
     <template #grid-card="{ row }">
-      <FormsResponsesCard :row="row" :fields="[]" @open="openRow(row)" />
+      <FormsResponsesCard :row="row" :fields="[]" :busy="busyIds.has(row.id)" @open="openRow(row)" @status="status => mark([row.id], status)" />
     </template>
 
     <template #bulk-actions="{ selected, clear }">

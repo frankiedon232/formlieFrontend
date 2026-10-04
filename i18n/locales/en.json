@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "View",
       "responses": "Responses",
-      "summary": "Summary"
+      "summary": "Insights"
     },
     "kpi": {
       "period": "Responses",
@@ -3183,7 +3183,8 @@
       "completion": "Completion",
       "completionHint": "Of the people who started, how many sent it",
       "last": "Last response",
-      "busiest": "Busiest: {name}"
+      "busiest": "Busiest: {name}",
+      "label": "At a glance"
     },
     "trend": {
       "title": "Responses over time",
@@ -3288,12 +3289,33 @@
       "next": "Next response",
       "duplicateTitle": "Possible duplicate",
       "duplicateDesc": "This looks like an earlier response from the same person (a very similar email). They confirmed they are someone else.",
-      "openEarlier": "Open the earlier one"
+      "openEarlier": "Open the earlier one",
+      "copyLink": "Copy link to this response",
+      "linkCopied": "Link copied",
+      "answeredOf": "{n} of {total} answered",
+      "navigate": "Move between responses",
+      "prevShort": "Previous",
+      "nextShort": "Next",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "Desktop",
       "phone": "Phone",
       "tablet": "Tablet"
+    },
+    "respondentKind": {
+      "invite": "Invited person",
+      "member": "Workspace member",
+      "answer": "From their answers",
+      "anonymous": "No name or email asked"
+    },
+    "card": {
+      "edited": "Edited",
+      "quick": {
+        "reviewed": "Reviewed",
+        "approved": "Approve",
+        "rejected": "Reject"
+      }
     }
   }
 }

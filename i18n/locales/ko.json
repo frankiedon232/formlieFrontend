@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "보기",
       "responses": "응답",
-      "summary": "요약"
+      "summary": "인사이트"
     },
     "kpi": {
       "period": "응답",
@@ -3183,7 +3183,8 @@
       "completion": "완료율",
       "completionHint": "시작한 사람 중 제출한 비율",
       "last": "마지막 응답",
-      "busiest": "가장 많음: {name}"
+      "busiest": "가장 많음: {name}",
+      "label": "한눈에 보기"
     },
     "trend": {
       "title": "기간별 응답",
@@ -3288,12 +3289,33 @@
       "next": "다음 응답",
       "duplicateTitle": "중복 가능성",
       "duplicateDesc": "같은 사람의 이전 응답과 비슷합니다(매우 비슷한 이메일). 본인이 다른 사람이라고 확인했습니다.",
-      "openEarlier": "이전 응답 열기"
+      "openEarlier": "이전 응답 열기",
+      "copyLink": "이 응답 링크 복사",
+      "linkCopied": "링크 복사됨",
+      "answeredOf": "{total}개 중 {n}개 답변",
+      "navigate": "응답 간 이동",
+      "prevShort": "이전",
+      "nextShort": "다음",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "컴퓨터",
       "phone": "휴대폰",
       "tablet": "태블릿"
+    },
+    "respondentKind": {
+      "invite": "초대된 사람",
+      "member": "워크스페이스 구성원",
+      "answer": "답변에서 확인",
+      "anonymous": "이름과 이메일을 묻지 않음"
+    },
+    "card": {
+      "edited": "수정됨",
+      "quick": {
+        "reviewed": "검토됨",
+        "approved": "승인",
+        "rejected": "거절"
+      }
     }
   }
 }

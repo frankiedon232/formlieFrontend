@@ -2,12 +2,12 @@ import type { BadgeProps } from '@nuxt/ui'
 import type { ResponseStatus } from '#shared/types/responses'
 import type { FormField } from '#shared/utils/forms/build'
 
-/** Review status look (F11): badge colour, chart colour, icon. Colour is always named next to it. */
-export const RESPONSE_STATUS_META: Record<ResponseStatus, { color: BadgeProps['color']; fill: string; icon: string }> = {
-  new: { color: 'info', fill: 'bg-info', icon: 'i-lucide-sparkle' },
-  reviewed: { color: 'neutral', fill: 'bg-inverted/35', icon: 'i-lucide-eye' },
-  approved: { color: 'success', fill: 'bg-success', icon: 'i-lucide-circle-check' },
-  rejected: { color: 'error', fill: 'bg-error', icon: 'i-lucide-circle-x' },
+/** Review status look (F11): badge colour, chart fill, card edge, icon colour, icon. Colour is always named next to it. */
+export const RESPONSE_STATUS_META: Record<ResponseStatus, { color: BadgeProps['color']; fill: string; edge: string; text: string; icon: string }> = {
+  new: { color: 'info', fill: 'bg-info', edge: 'border-s-info', text: 'text-info', icon: 'i-lucide-sparkle' },
+  reviewed: { color: 'neutral', fill: 'bg-inverted/35', edge: 'border-s-(--ui-border-accented)', text: 'text-muted', icon: 'i-lucide-eye' },
+  approved: { color: 'success', fill: 'bg-success', edge: 'border-s-success', text: 'text-success', icon: 'i-lucide-circle-check' },
+  rejected: { color: 'error', fill: 'bg-error', edge: 'border-s-error', text: 'text-error', icon: 'i-lucide-circle-x' },
 }
 
 /** Question types that make a good table column (short, one line). */

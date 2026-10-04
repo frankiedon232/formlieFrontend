@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "العرض",
       "responses": "الردود",
-      "summary": "الملخص"
+      "summary": "رؤى"
     },
     "kpi": {
       "period": "الردود",
@@ -3183,7 +3183,8 @@
       "completion": "الإكمال",
       "completionHint": "من بين من بدأوا، كم أرسلوا",
       "last": "آخر رد",
-      "busiest": "الأنشط: {name}"
+      "busiest": "الأنشط: {name}",
+      "label": "نظرة سريعة"
     },
     "trend": {
       "title": "الردود عبر الزمن",
@@ -3288,12 +3289,33 @@
       "next": "الرد التالي",
       "duplicateTitle": "تكرار محتمل",
       "duplicateDesc": "يشبه ردًا سابقًا من الشخص نفسه (بريد مشابه جدًا). وقد أكّد أنه شخص آخر.",
-      "openEarlier": "فتح الرد السابق"
+      "openEarlier": "فتح الرد السابق",
+      "copyLink": "نسخ رابط هذا الرد",
+      "linkCopied": "تم نسخ الرابط",
+      "answeredOf": "أُجيب عن {n} من {total}",
+      "navigate": "التنقل بين الردود",
+      "prevShort": "السابق",
+      "nextShort": "التالي",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "حاسوب",
       "phone": "هاتف",
       "tablet": "جهاز لوحي"
+    },
+    "respondentKind": {
+      "invite": "شخص مدعو",
+      "member": "عضو في مساحة العمل",
+      "answer": "من إجاباته",
+      "anonymous": "لم يُطلب اسم أو بريد"
+    },
+    "card": {
+      "edited": "معدَّل",
+      "quick": {
+        "reviewed": "تمت مراجعته",
+        "approved": "اعتماد",
+        "rejected": "رفض"
+      }
     }
   }
 }

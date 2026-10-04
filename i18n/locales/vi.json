@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "Chế độ xem",
       "responses": "Phản hồi",
-      "summary": "Tóm tắt"
+      "summary": "Phân tích"
     },
     "kpi": {
       "period": "Phản hồi",
@@ -3183,7 +3183,8 @@
       "completion": "Hoàn thành",
       "completionHint": "Trong số người bắt đầu, bao nhiêu người đã gửi",
       "last": "Phản hồi gần nhất",
-      "busiest": "Nhiều nhất: {name}"
+      "busiest": "Nhiều nhất: {name}",
+      "label": "Tổng quan nhanh"
     },
     "trend": {
       "title": "Phản hồi theo thời gian",
@@ -3288,12 +3289,33 @@
       "next": "Phản hồi sau",
       "duplicateTitle": "Có thể trùng",
       "duplicateDesc": "Giống một phản hồi trước của cùng người (email rất giống). Họ đã xác nhận là người khác.",
-      "openEarlier": "Mở phản hồi trước"
+      "openEarlier": "Mở phản hồi trước",
+      "copyLink": "Sao chép liên kết phản hồi này",
+      "linkCopied": "Đã sao chép liên kết",
+      "answeredOf": "Đã trả lời {n}/{total}",
+      "navigate": "Chuyển giữa các phản hồi",
+      "prevShort": "Trước",
+      "nextShort": "Sau",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "Máy tính",
       "phone": "Điện thoại",
       "tablet": "Máy tính bảng"
+    },
+    "respondentKind": {
+      "invite": "Người được mời",
+      "member": "Thành viên không gian làm việc",
+      "answer": "Từ câu trả lời",
+      "anonymous": "Không hỏi tên hay email"
+    },
+    "card": {
+      "edited": "Đã sửa",
+      "quick": {
+        "reviewed": "Đã xem",
+        "approved": "Duyệt",
+        "rejected": "Từ chối"
+      }
     }
   }
 }

@@ -1,8 +1,9 @@
 <!--
   Responses inbox (F11): every form's responses in one place, for the forms the person may see.
-  The period's numbers with sparklines, responses over time, review status and the busiest forms,
-  then the list (table or grid) with form, status and channel filters; a response opens in the
-  side panel (J / K). Old links `/responses?form={id}` go to that form's Responses page.
+  A thin strip of the period's numbers, then the list (table or grid; form, status, channel
+  filters; the Responses | Insights switch shares its toolbar line) or Insights (responses over
+  time, review status, busiest forms). A response opens in the side panel (J / K). Old links
+  `/responses?form={id}` go to that form's Responses page.
 -->
 <script setup lang="ts">
 import type { ResponseInsights, ResponseRow, ResponseStatus } from '#shared/types/responses'
@@ -46,9 +47,13 @@ async function load() {
 onMounted(load)
 watch(period, load)
 
+const view = computed<'responses' | 'insights'>({
+  get: () => (route.query.view === 'insights' ? 'insights' : 'responses'),
+  set: value => void router.replace({ query: { ...route.query, view: value === 'responses' ? undefined : value } }),
+})
 const statusFilter = computed(() => (typeof route.query.status === 'string' && !route.query.status.includes(',') ? route.query.status : null))
 const filterStatus = (status: ResponseStatus | null) =>
-  void router.replace({ query: { ...route.query, status: status && statusFilter.value !== status ? status : undefined, page: undefined } })
+  void router.replace({ query: { ...route.query, view: undefined, status: status && statusFilter.value !== status ? status : undefined, page: undefined } })
 
 const list = useTemplateRef<{ refresh: () => Promise<void> }>('list')
 const openId = ref<string | null>(null)
@@ -59,6 +64,8 @@ function openRow(row: ResponseRow, rows: ResponseRow[]) {
   openId.value = row.id
   panel.value = true
 }
+// A shared link (`?response=`) opens that response.
+onMounted(() => typeof route.query.response === 'string' && openById(route.query.response))
 function openById(id: string) {
   if (!ids.value.includes(id)) ids.value = [id]
   openId.value = id
@@ -99,11 +106,16 @@ onBeforeUnmount(() => clearTimeout(timer))
     />
     <div v-else class="flex flex-col gap-4">
       <FormsResponsesKpis :insights="insights" @review="filterStatus('new')" />
-      <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-        <FormsResponsesTrend :insights="insights" />
-        <FormsResponsesBreakdown :insights="insights" :status="statusFilter" @status="filterStatus" />
-      </div>
-      <FormsResponsesInbox ref="list" @open="openRow" @changed="changed" />
+      <FormsResponsesInbox v-if="view === 'responses'" ref="list" @open="openRow" @changed="changed">
+        <template #start><FormsResponsesViewSwitch v-model="view" /></template>
+      </FormsResponsesInbox>
+      <template v-else>
+        <FormsResponsesViewSwitch v-model="view" class="self-start" />
+        <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
+          <FormsResponsesTrend :insights="insights" />
+          <FormsResponsesBreakdown :insights="insights" :status="statusFilter" @status="filterStatus" />
+        </div>
+      </template>
     </div>
 
     <FormsResponsesDetail :id="openId" v-model:open="panel" :ids="ids" @go="openById" @changed="changed" />

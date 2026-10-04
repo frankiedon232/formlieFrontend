@@ -3169,7 +3169,7 @@
     "tabs": {
       "label": "表示",
       "responses": "回答",
-      "summary": "サマリー"
+      "summary": "インサイト"
     },
     "kpi": {
       "period": "回答",
@@ -3183,7 +3183,8 @@
       "completion": "完了率",
       "completionHint": "開始した人のうち送信した人の割合",
       "last": "最新の回答",
-      "busiest": "最多: {name}"
+      "busiest": "最多: {name}",
+      "label": "概要"
     },
     "trend": {
       "title": "回答の推移",
@@ -3288,12 +3289,33 @@
       "next": "次の回答",
       "duplicateTitle": "重複の可能性",
       "duplicateDesc": "同じ人の以前の回答に似ています（非常に似たメール）。本人は別人だと確認しました。",
-      "openEarlier": "以前の回答を開く"
+      "openEarlier": "以前の回答を開く",
+      "copyLink": "この回答へのリンクをコピー",
+      "linkCopied": "リンクをコピーしました",
+      "answeredOf": "{total} 問中 {n} 問回答",
+      "navigate": "回答を移動",
+      "prevShort": "前へ",
+      "nextShort": "次へ",
+      "position": "{n} / {total}"
     },
     "device": {
       "desktop": "パソコン",
       "phone": "スマートフォン",
       "tablet": "タブレット"
+    },
+    "respondentKind": {
+      "invite": "招待された人",
+      "member": "ワークスペースのメンバー",
+      "answer": "回答内容から",
+      "anonymous": "名前もメールも尋ねていません"
+    },
+    "card": {
+      "edited": "編集済み",
+      "quick": {
+        "reviewed": "確認済み",
+        "approved": "承認",
+        "rejected": "却下"
+      }
     }
   }
 }
