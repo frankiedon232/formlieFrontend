@@ -23,7 +23,11 @@ const SOURCE_ICON: Record<SavedTheme['source'], string> = {
   created: 'i-lucide-paintbrush',
 }
 const facts = computed(() => [
-  { key: 'forms', label: t('themes.col.forms'), value: number(props.theme.forms_count) },
+  {
+    key: 'forms',
+    label: t('themes.col.forms'),
+    value: t('themes.formsCount', { count: number(props.theme.forms_count) }, props.theme.forms_count),
+  },
   { key: 'kind', label: t('themes.filterSource'), value: t(`themes.source.${props.theme.source}`) },
   { key: 'by', label: t('themes.col.createdBy'), value: props.theme.created_by.name },
   { key: 'created', label: t('themes.card.created'), value: date(props.theme.created_at) },

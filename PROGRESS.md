@@ -1137,3 +1137,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F9 | Owner: Templates and Themes without chart cards, only the table / grid (locked card and table stay). Chart components and their texts removed; the insight endpoints stay for the cards' share of use. CLAUDE.md rule 21 notes the exception. |
 | 2026-10-04 | F9 | Template, category and theme cards: bigger thumbnail, nothing below the facts (no share bar, no footer); the share of use stays in the table. |
 | 2026-10-04 | F9 | Template, category and theme cards: thumbnail left in a fixed 16:9 frame (new clear `tile` miniature, all the same size), name right, then the buttons row, then the details. |
+| 2026-10-04 | F9 | Theme cards: "Used in" reads "1 form" / "2 forms" like the table. CLAUDE.md rule 21: one card concept, the arrangement follows each page's purpose. |
