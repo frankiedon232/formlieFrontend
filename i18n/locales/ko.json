@@ -3411,6 +3411,11 @@
       "edited": "수정됨",
       "mark": "{who} 님이 {when} 변경. 이전: {before}",
       "open": "답변 수정: {field}"
+    },
+    "filter": {
+      "questions": "질문",
+      "tags": "태그",
+      "empty": "비워 둠"
     }
   }
 }

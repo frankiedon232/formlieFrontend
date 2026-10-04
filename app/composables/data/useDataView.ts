@@ -14,6 +14,10 @@ export interface DataFilter {
   label: string
   icon?: string
   options: DataFilterOption[]
+  /** A heading the filter sits under in the Filter menu (e.g. "Questions"); filters without one come first. */
+  group?: string
+  /** The chip reads "Label: option" (when the option alone is unclear, e.g. a question's answer). */
+  named?: boolean
 }
 
 export type DataViewMode = 'table' | 'grid'
@@ -50,7 +54,8 @@ export interface UseDataViewOptions<T> {
   /** Unique per page; keys the remembered view mode. */
   id: string
   fetcher: DataFetcher<T>
-  filters?: DataFilter[]
+  /** A getter keeps it live (filters whose options load later, e.g. folders or tags). */
+  filters?: MaybeRefOrGetter<DataFilter[]>
   defaultSort?: string
   defaultPageSize?: number
   defaultView?: DataViewMode
@@ -72,7 +77,8 @@ export function useDataView<T>(options: UseDataViewOptions<T>) {
   const { handle } = useErrorHandler()
   const path = route.path
   const defaultPageSize = options.defaultPageSize ?? 20
-  const filterKeys = (options.filters ?? []).map(filter => filter.key)
+  const filterList = computed(() => toValue(options.filters) ?? [])
+  const filterKeys = computed(() => filterList.value.map(filter => filter.key))
 
   const query = computed<DataQuery>(() => {
     const q = route.query
@@ -84,7 +90,7 @@ export function useDataView<T>(options: UseDataViewOptions<T>) {
       sort: first(q.sort) || options.defaultSort || '',
       from: first(q.from),
       to: first(q.to),
-      filters: Object.fromEntries(filterKeys.map(key => [key, first(q[key]).split(',').filter(Boolean)])),
+      filters: Object.fromEntries(filterKeys.value.map(key => [key, first(q[key]).split(',').filter(Boolean)])),
     }
   })
 
@@ -116,7 +122,7 @@ export function useDataView<T>(options: UseDataViewOptions<T>) {
   const setFilter = (key: string, values: string[]) => update({ [key]: values.join(',') })
   const setRange = (from: string, to: string) => update({ from, to })
   const reset = () =>
-    update(Object.fromEntries(['q', 'from', 'to', 'sort', ...filterKeys].map(key => [key, null])))
+    update(Object.fromEntries(['q', 'from', 'to', 'sort', ...filterKeys.value].map(key => [key, null])))
 
   const view = useLocalStorage<DataViewMode>(`formalie:view:${options.id}`, options.defaultView ?? 'table')
 
@@ -172,7 +178,7 @@ export function useDataView<T>(options: UseDataViewOptions<T>) {
   return {
     query,
     hasActiveFilters,
-    filters: options.filters ?? [],
+    filters: filterList,
     view,
     rows,
     meta,

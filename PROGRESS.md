@@ -513,7 +513,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Insights: KPI cards with sparklines and trend, responses over time (daily / weekly), review status stacked bar (filters the list), channels, languages, period 7 d / 30 d / 90 d / 12 m
 - ✅ Summary tab: every question summarised (choices as bars, rating average + distribution, numbers, latest text answers, calculated results)
 - ✅ Inbox across all forms `/responses` (busiest forms, form filter); old `/responses?form=` links forward
-- 🟡 Filters: ✅ status, channel, possible duplicates, date range, search (names, emails, answers, #number) · ⬜ per field type, tags
+- ✅ Filters: status, channel, possible duplicates, date range, search (names, emails, answers, #number), tags, per question (choices, yes / no, ratings and scales; "Left empty"; decision 105)
 - ✅ Response detail slide-over with next / previous (`J` / `K`), facts, answers by page, possible-duplicate link
 - 🟡 Status (new, reviewed, approved, rejected), tags, notes, history ✅ · editing answers in the panel ✅ (decision 104: pencil per answer, same control and rules as the form, Edited mark, audit)
 - 🟡 Bulk actions: ✅ set status, delete (editors) · ⬜ tags
@@ -1141,3 +1141,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F9 | Theme cards: "Used in" reads "1 form" / "2 forms" like the table. CLAUDE.md rule 21: one card concept, the arrangement follows each page's purpose. |
 | 2026-10-04 | F9 | Theme editor: saving without a name now brings the name field into view (scrolls the design panel back up; phones open the panel first), focuses it and says why in a toast; the red mark clears as soon as a name is typed. |
 | 2026-10-04 | F11 | M2: editing answers. Editors get a pencil on every answer that can be changed; the dialog shows the form's own control, checks with the same rules (also on the server), records who / when / before / after in the history and the audit trail (question labels), and the tile shows an Edited mark. Corrected names and emails show as the respondent. Test: `answer-edit`. |
+| 2026-10-04 | F11 | M2: filters by answers. Under "Questions" in the Filter menu: one filter per choice, yes / no or rating question and "Left empty"; a Tags filter from the tags in use (`GET /forms/{id}/responses/tags`); chips read "Question: answer". DataView follows its filters live, so options that load later (tags, folders) now show. Test: `answer-filter`. |

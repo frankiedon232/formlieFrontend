@@ -3411,6 +3411,11 @@
       "edited": "Diedit",
       "mark": "Diubah oleh {who} {when}. Sebelumnya: {before}",
       "open": "Edit jawaban: {field}"
+    },
+    "filter": {
+      "questions": "Pertanyaan",
+      "tags": "Tag",
+      "empty": "Dibiarkan kosong"
     }
   }
 }

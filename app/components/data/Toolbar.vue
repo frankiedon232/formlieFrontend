@@ -36,7 +36,7 @@ const activeCount = computed(() =>
 )
 
 const chips = computed(() =>
-  props.state.filters.flatMap(filter =>
+  props.state.filters.value.flatMap(filter =>
     props.state.query.value.filters[filter.key]!.map(value => ({
       filter,
       value,
@@ -89,29 +89,37 @@ const viewItems = computed(() => [
       </template>
     </UInput>
 
-    <UPopover v-if="state.filters.length" :content="{ align: 'start' }">
+    <UPopover v-if="state.filters.value.length" :content="{ align: 'start' }">
       <UButton icon="i-lucide-list-filter" :label="t('dataView.filter')" color="neutral" variant="outline">
         <template v-if="activeCount" #trailing>
           <UBadge :label="activeCount" color="neutral" variant="solid" size="sm" />
         </template>
       </UButton>
       <template #content>
-        <div class="flex w-72 flex-col gap-3 p-3">
-          <UFormField v-for="filter in state.filters" :key="filter.key" :label="filter.label">
-            <USelectMenu
-              :model-value="state.query.value.filters[filter.key]"
-              :items="filter.options"
-              value-key="value"
-              multiple
-              :placeholder="t('dataView.any')"
-              class="w-full"
-              @update:model-value="(values: string[]) => state.setFilter(filter.key, values)"
+        <div class="flex max-h-[min(70vh,32rem)] w-72 flex-col gap-3 overflow-y-auto p-3">
+          <template v-for="(filter, index) in state.filters.value" :key="filter.key">
+            <p
+              v-if="filter.group && filter.group !== state.filters.value[index - 1]?.group"
+              class="-mb-1 flex items-center gap-2 border-t border-default pt-3 text-xs font-medium text-muted uppercase"
             >
-              <template #item-leading="{ item }">
-                <span v-if="item.dot" class="size-2 shrink-0 rounded-[1px]" :class="item.dot" />
-              </template>
-            </USelectMenu>
-          </UFormField>
+              {{ filter.group }}
+            </p>
+            <UFormField :label="filter.label">
+              <USelectMenu
+                :model-value="state.query.value.filters[filter.key]"
+                :items="filter.options"
+                value-key="value"
+                multiple
+                :placeholder="t('dataView.any')"
+                class="w-full"
+                @update:model-value="(values: string[]) => state.setFilter(filter.key, values)"
+              >
+                <template #item-leading="{ item }">
+                  <span v-if="item.dot" class="size-2 shrink-0 rounded-[1px]" :class="item.dot" />
+                </template>
+              </USelectMenu>
+            </UFormField>
+          </template>
         </div>
       </template>
     </UPopover>
@@ -119,7 +127,11 @@ const viewItems = computed(() => [
     <UButton
       v-for="chip in chips"
       :key="`${chip.filter.key}:${chip.value}`"
-      :label="chip.option?.label ?? chip.value"
+      :label="
+        chip.filter.named
+          ? `${chip.filter.label}: ${chip.option?.label ?? chip.value}`
+          : (chip.option?.label ?? chip.value)
+      "
       color="neutral"
       variant="outline"
       size="sm"

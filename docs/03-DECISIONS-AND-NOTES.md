@@ -140,3 +140,4 @@ Edit this file whenever a decision changes.
 - GeoIP: MaxMind GeoLite2 needs a free account and licence key.
 - Payment providers for subscriptions (Paystack for NGN, Stripe for international).
 - Data residency requirements for early customers.
+105. **Filtering responses by their answers** (F11 M2). Inside the unchanged DataView flow: the Filter menu gains a "Questions" heading with one filter per question that has a short set of answers (choices with their options, yes / no, ratings and scales of up to 11 steps) and "Left empty" (pick questions that were skipped), plus a Tags filter from the tags in use. Their chips read "Question: answer". Free text, numbers and dates are found with search; range filters can follow if needed. DataView now follows its filters live (a getter), so filters whose options load later (tags, folders) work.

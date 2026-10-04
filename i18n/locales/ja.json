@@ -3411,6 +3411,11 @@
       "edited": "編集済み",
       "mark": "{who} が{when}に変更。変更前: {before}",
       "open": "回答を編集: {field}"
+    },
+    "filter": {
+      "questions": "質問",
+      "tags": "タグ",
+      "empty": "未回答"
     }
   }
 }

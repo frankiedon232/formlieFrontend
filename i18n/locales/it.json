@@ -3411,6 +3411,11 @@
       "edited": "Modificata",
       "mark": "Modificata da {who} {when}. Prima: {before}",
       "open": "Modifica risposta: {field}"
+    },
+    "filter": {
+      "questions": "Domande",
+      "tags": "Tag",
+      "empty": "Lasciata vuota"
     }
   }
 }

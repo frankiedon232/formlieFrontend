@@ -3411,6 +3411,11 @@
       "edited": "Edited",
       "mark": "Changed by {who} {when}. Before: {before}",
       "open": "Edit answer: {field}"
+    },
+    "filter": {
+      "questions": "Questions",
+      "tags": "Tags",
+      "empty": "Left empty"
     }
   }
 }

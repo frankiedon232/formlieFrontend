@@ -1,7 +1,8 @@
 <!--
   A form's responses in the shared DataView (F11, CLAUDE.md rule 6): #, respondent, submitted,
   status, every question (the first four useful ones shown; move or show / hide any in Columns,
-  remembered per form; ratings as slim bars like the design's progress column), notes. Filters: status, channel, possible duplicates; search covers
+  remembered per form; ratings as slim bars like the design's progress column), notes. Filters: status, channel, possible duplicates, tags, and
+  under "Questions" one per choice, yes / no or rating question plus "Left empty" (F11 M2); search covers
   the answers too. A row (or card) opens the response; bulk: set status, delete (editors).
 -->
 <script setup lang="ts">
@@ -9,6 +10,7 @@ import type { DropdownMenuItem } from '@nuxt/ui'
 import { RESPONSE_STATUSES, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
 import { allFields, type FormField } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
+import { ANSWER_FILTER_PREFIX, filterValues } from '#shared/utils/forms/answer-filter'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
 const props = defineProps<{ formId: string; schema: FormSchemaV1; canEdit: boolean }>()
@@ -38,10 +40,33 @@ const fieldOf = (column: string): FormField | undefined => byKey.value.get(colum
 const meter = (field: FormField | undefined) => !!field && ['rating', 'scale', 'slider'].includes(field.type)
 const maxOf = (field: FormField) => Number(field.props?.max ?? (field.type === 'rating' ? 5 : field.type === 'scale' ? 10 : 100))
 
+// Tags in use on this form (for the Tags filter), loaded in the background.
+const tags = ref<{ value: string; count: number }[]>([])
+async function loadTags() {
+  try {
+    tags.value = (await api.get<{ value: string; count: number }[]>(`/forms/${props.formId}/responses/tags`, undefined, { background: true })).data
+  } catch {
+    tags.value = []
+  }
+}
+watch(() => props.formId, loadTags, { immediate: true })
+
+/** One filter per question with a short set of answers, labelled like the answers themselves. */
+const questionFilters = computed<DataFilter[]>(() =>
+  questions.value.flatMap(field => {
+    const values = filterValues(field)
+    if (!values) return []
+    const label = (value: string) => (field.type === 'toggle' ? text(field, value === 'true') : field.options?.find(option => option.value === value)?.label ?? value)
+    return [{ key: `${ANSWER_FILTER_PREFIX}${field.key}`, label: field.label?.trim() || field.key, options: values.map(value => ({ value, label: label(value) })), group: t('responses.filter.questions'), named: true }]
+  }),
+)
 const filters = computed<DataFilter[]>(() => [
   { key: 'status', label: t('responses.list.status'), icon: 'i-lucide-circle-dot', options: RESPONSE_STATUSES.map(value => ({ value, label: t(`status.${value}`), dot: RESPONSE_STATUS_META[value].fill })) },
   { key: 'channel', label: t('responses.list.channel'), icon: 'i-lucide-route', options: (['link', 'embed', 'api'] as const).map(value => ({ value, label: t(`responses.channel.${value}`) })) },
   { key: 'flag', label: t('responses.list.flags'), icon: 'i-lucide-flag', options: [{ value: 'duplicate', label: t('responses.list.possibleDuplicate') }] },
+  ...(tags.value.length ? [{ key: 'tag', label: t('responses.filter.tags'), icon: 'i-lucide-tag', options: tags.value.map(tag => ({ value: tag.value, label: `${tag.value} (${number(tag.count)})` })), named: true }] : []),
+  ...questionFilters.value,
+  { key: 'empty', label: t('responses.filter.empty'), icon: 'i-lucide-circle-dashed', options: questions.value.map(field => ({ value: field.key, label: field.label?.trim() || field.key })), group: t('responses.filter.questions'), named: true },
 ])
 const sortOptions = computed(() => [
   { label: t('responses.list.newest'), value: '-submitted_at' },

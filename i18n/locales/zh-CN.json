@@ -3411,6 +3411,11 @@
       "edited": "已编辑",
       "mark": "{who} 于{when}修改。原为：{before}",
       "open": "编辑回答：{field}"
+    },
+    "filter": {
+      "questions": "问题",
+      "tags": "标签",
+      "empty": "未作答"
     }
   }
 }

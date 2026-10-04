@@ -3411,6 +3411,11 @@
       "edited": "Edytowano",
       "mark": "Zmienione przez {who} {when}. Wcześniej: {before}",
       "open": "Edytuj odpowiedź: {field}"
+    },
+    "filter": {
+      "questions": "Pytania",
+      "tags": "Tagi",
+      "empty": "Bez odpowiedzi"
     }
   }
 }

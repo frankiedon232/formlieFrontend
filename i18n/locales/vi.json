@@ -3411,6 +3411,11 @@
       "edited": "Đã sửa",
       "mark": "{who} đã đổi {when}. Trước đó: {before}",
       "open": "Sửa câu trả lời: {field}"
+    },
+    "filter": {
+      "questions": "Câu hỏi",
+      "tags": "Thẻ",
+      "empty": "Để trống"
     }
   }
 }

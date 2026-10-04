@@ -67,7 +67,7 @@ const UDropdownMenu = resolveComponent('UDropdownMenu')
 const state = useDataView<T>({
   id: props.id,
   fetcher: props.fetcher,
-  filters: props.filters,
+  filters: () => props.filters,
   defaultSort: props.defaultSort,
   defaultView: props.defaultView,
 })

@@ -3411,6 +3411,11 @@
       "edited": "संपादित",
       "mark": "{who} ने {when} बदला। पहले: {before}",
       "open": "उत्तर संपादित करें: {field}"
+    },
+    "filter": {
+      "questions": "प्रश्न",
+      "tags": "टैग",
+      "empty": "खाली छोड़ा"
     }
   }
 }

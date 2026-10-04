@@ -3411,6 +3411,11 @@
       "edited": "معدّلة",
       "mark": "غيّرها {who} {when}. السابق: {before}",
       "open": "تعديل الإجابة: {field}"
+    },
+    "filter": {
+      "questions": "الأسئلة",
+      "tags": "الوسوم",
+      "empty": "بلا إجابة"
     }
   }
 }

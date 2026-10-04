@@ -7,6 +7,7 @@
 import { z } from 'zod'
 import { RESPONSE_STATUSES, type ResponseDetail, type ResponseFormRow, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
 import { canEditAnswer } from '#shared/utils/forms/answer-edit'
+import { ANSWER_FILTER_PREFIX, answerMatches, isEmptyAnswer } from '#shared/utils/forms/answer-filter'
 import { allFields } from '#shared/utils/forms/build'
 import { isFileField } from '#shared/utils/forms/file-answers'
 import { isInputField } from '#shared/utils/forms/fields'
@@ -78,6 +79,20 @@ function pageOf(items: { form: StoredForm; entry: IndexedResponse }[], query: Qu
   const from = day(query.from, false)
   const to = day(query.to, true)
   const q = typeof query.q === 'string' ? query.q.trim().toLowerCase() : ''
+  // Answers (one form's list): filter[a_{key}] = any of these values, filter[empty] = left unanswered.
+  const answerFilters = searchAnswers
+    ? Object.keys(query)
+        .map(name => /^filter\[a_(.+)\]$/.exec(name)?.[1])
+        .filter((key): key is string => !!key)
+        .map(key => ({ key, wanted: list(query, `${ANSWER_FILTER_PREFIX}${key}`)! }))
+        .filter(item => item.wanted?.length)
+    : []
+  const empty = searchAnswers ? list(query, 'empty') : null
+  const answersMatch = (form: StoredForm, entry: IndexedResponse) => {
+    if (!answerFilters.length && !empty) return true
+    const data = answersOf(form, entry)
+    return answerFilters.every(item => answerMatches(data[item.key], item.wanted)) && (!empty || empty.every(key => isEmptyAnswer(data[key])))
+  }
   let result = items.filter(
     ({ form, entry }) =>
       (!status || status.includes(entry.status)) &&
@@ -87,6 +102,7 @@ function pageOf(items: { form: StoredForm; entry: IndexedResponse }[], query: Qu
       (!flagged || !!entry.possible_duplicate) &&
       (from === null || entry.at >= from) &&
       (to === null || entry.at <= to) &&
+      answersMatch(form, entry) &&
       (!q ||
         String(entry.number) === q.replace(/^#/, '') ||
         `${entry.respondent.name ?? ''} ${entry.respondent.email ?? ''} ${form.name}`.toLowerCase().includes(q) ||
@@ -117,6 +133,15 @@ export const listFormResponses = defineMockRoute(({ event, query }) => {
   const form = formFor(tenant, user, getRouterParam(event, 'id'))
   const { data, meta } = pageOf(formResponses(tenant, form).map(entry => ({ form, entry })), query, true)
   return ok(data.map(({ entry }) => rowOf(form, entry, true)), meta)
+})
+
+/** GET /forms/:id/responses/tags, the tags used on this form's responses, most used first (the Tags filter). */
+export const formResponseTags = defineMockRoute(({ event }) => {
+  const { tenant, user } = requireAuth(event)
+  const form = formFor(tenant, user, getRouterParam(event, 'id'))
+  const counts = new Map<string, number>()
+  for (const entry of formResponses(tenant, form)) for (const tag of entry.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1)
+  return ok([...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([value, count]) => ({ value, count })))
 })
 
 /** GET /forms/:id/responses/insights, the numbers and charts for one form. */

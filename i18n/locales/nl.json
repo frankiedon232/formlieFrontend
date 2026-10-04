@@ -3411,6 +3411,11 @@
       "edited": "Bewerkt",
       "mark": "Gewijzigd door {who} {when}. Eerder: {before}",
       "open": "Antwoord bewerken: {field}"
+    },
+    "filter": {
+      "questions": "Vragen",
+      "tags": "Tags",
+      "empty": "Leeg gelaten"
     }
   }
 }

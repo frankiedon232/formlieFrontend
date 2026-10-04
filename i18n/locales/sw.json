@@ -3411,6 +3411,11 @@
       "edited": "Limehaririwa",
       "mark": "Limebadilishwa na {who} {when}. Awali: {before}",
       "open": "Hariri jibu: {field}"
+    },
+    "filter": {
+      "questions": "Maswali",
+      "tags": "Lebo",
+      "empty": "Imeachwa wazi"
     }
   }
 }

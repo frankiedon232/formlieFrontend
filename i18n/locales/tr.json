@@ -3411,6 +3411,11 @@
       "edited": "Düzenlendi",
       "mark": "{who} tarafından {when} değiştirildi. Önceki: {before}",
       "open": "Yanıtı düzenle: {field}"
+    },
+    "filter": {
+      "questions": "Sorular",
+      "tags": "Etiketler",
+      "empty": "Boş bırakılan"
     }
   }
 }
