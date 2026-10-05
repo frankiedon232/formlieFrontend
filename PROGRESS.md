@@ -1080,6 +1080,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | Explorer dialogs that change data or structure don't close on an outside click (Esc, ✕ and Cancel still do) | F12 M3 | ✅ |
 | 2026-10-05 | Query editor (M4) uses the same mode as the explorer: its panel in the menu column, full width for the editor | F12 M4 | ⬜ |
 | 2026-10-05 | Every empty, not-found and error state: a better, evenly centred look with fitting icons | all | ✅ |
+| 2026-10-05 | Explorer export: this page by default; "All rows" is a deliberate choice capped at 5,000 rows (server load), with a note when more matched | F12 M3 | ✅ |
 
 ---
 
@@ -1256,3 +1257,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Explorer structure changes (owner): New table, columns, indexes, rename, empty, delete for their own tables with Full access, never Formalie's; statements per engine shown first and run as shown; mock keeps the changes (`server/mock/data/tableEdits.ts`). Tests: `datasources/ddl`. |
 | 2026-10-05 | shell / F12 | Right-click menus everywhere (`AppContextMenu`, `useContextMenu`, DataView `rowMenu`, explorer `useExplorerMenus`); Help & support at the rail's foot; no types beside column names; explorer dialogs keep their input on outside clicks (`AppModal keep-open`). |
 | 2026-10-05 | all | One empty / not-found / error state everywhere (`AppEmpty`, replacing UEmpty in 35 files and 15 hand-made ones): evenly centred, a layered icon tile, title, short description, next step; sizes md / sm / xs; error icons tint red. |
+| 2026-10-05 | F12 | Explorer export scope: this page (default) or all matching rows up to 5,000 (`EXPORT_MAX_ROWS`, `TableExport.scope / total / capped`), in the button and the right-click menus. |

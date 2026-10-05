@@ -4630,8 +4630,6 @@
     "previous": "Fila anterior",
     "next": "Fila siguiente",
     "export": "Exportar",
-    "exportAll": "Toda la tabla",
-    "exportFiltered": "Las filas que coinciden con tu búsqueda y filtros",
     "exporting": "Exportando {n}%",
     "exported": "{n} fila exportada | {n} filas exportadas",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Solo lectura",
     "exportJson": "JSON",
-    "exportJsonDesc": "Un objeto por fila, para desarrolladores y otros sistemas",
     "exportSql": "SQL (sentencias INSERT)",
-    "exportSqlDesc": "Escrito para esta base de datos, para copiar las filas a otra",
     "ddl": {
       "actions": "Acciones",
       "willRun": "Lo que se ejecutará en la base de datos",
@@ -4787,7 +4783,12 @@
       "refresh": "Actualizar",
       "openRow": "Abrir fila",
       "copyValue": "Copiar valor"
-    }
+    },
+    "exportPage": "Esta página ({n} fila) | Esta página ({n} filas)",
+    "exportThisPage": "Esta página",
+    "exportAllRows": "Todas las filas, hasta {max}",
+    "exportMatching": "Todas las filas que coinciden, hasta {max}",
+    "exportCapped": "Coinciden {total} filas; un archivo admite hasta {max}. Acota la lista con la búsqueda o los filtros para exportar el resto."
   },
   "contextMenu": {
     "open": "Abrir",

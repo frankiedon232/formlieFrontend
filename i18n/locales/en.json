@@ -4630,8 +4630,6 @@
     "previous": "Previous row",
     "next": "Next row",
     "export": "Export",
-    "exportAll": "The whole table",
-    "exportFiltered": "The rows matching your search and filters",
     "exporting": "Exporting {n}%",
     "exported": "{n} row exported | {n} rows exported",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Read only",
     "exportJson": "JSON",
-    "exportJsonDesc": "One object per row, for developers and other systems",
     "exportSql": "SQL (INSERT statements)",
-    "exportSqlDesc": "Written for this database, to copy the rows into another one",
     "ddl": {
       "actions": "Actions",
       "willRun": "What will run on the database",
@@ -4787,7 +4783,12 @@
       "refresh": "Refresh",
       "openRow": "Open row",
       "copyValue": "Copy value"
-    }
+    },
+    "exportPage": "This page ({n} row) | This page ({n} rows)",
+    "exportThisPage": "This page",
+    "exportAllRows": "All rows, up to {max}",
+    "exportMatching": "All matching rows, up to {max}",
+    "exportCapped": "{total} rows matched; a file holds up to {max}. Narrow the list with search or filters to export the rest."
   },
   "contextMenu": {
     "open": "Open",

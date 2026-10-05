@@ -18,6 +18,7 @@ const view = useTemplateRef<{
     rows: { value: TableRow[] }
     params: () => Record<string, string | number>
     hasActiveFilters: { value: boolean }
+    query: { value: { page: number; pageSize: number } }
   }
   shownColumns: () => string[]
 }>('view')
@@ -50,7 +51,8 @@ const openRow = (row: TableRow) => emit('open', row, view.value?.state.rows.valu
 defineExpose({
   refresh: () => view.value?.refresh(),
   rows: () => view.value?.state.rows.value ?? [],
-  params: () => view.value?.state.params() ?? {},
+  // The list's search, filters and sort, plus the page on screen (Export: this page)
+  params: () => (view.value ? { ...view.value.state.params(), page: view.value.state.query.value.page, page_size: view.value.state.query.value.pageSize } : {}),
   filtered: () => !!view.value?.state.hasActiveFilters.value || !!view.value?.state.params().q,
 })
 </script>

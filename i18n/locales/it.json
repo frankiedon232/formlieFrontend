@@ -4630,8 +4630,6 @@
     "previous": "Riga precedente",
     "next": "Riga successiva",
     "export": "Esporta",
-    "exportAll": "L’intera tabella",
-    "exportFiltered": "Le righe che corrispondono a ricerca e filtri",
     "exporting": "Esportazione {n}%",
     "exported": "{n} riga esportata | {n} righe esportate",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Sola lettura",
     "exportJson": "JSON",
-    "exportJsonDesc": "Un oggetto per riga, per sviluppatori e altri sistemi",
     "exportSql": "SQL (istruzioni INSERT)",
-    "exportSqlDesc": "Scritto per questo database, per copiare le righe in un altro",
     "ddl": {
       "actions": "Azioni",
       "willRun": "Cosa verrà eseguito sul database",
@@ -4787,7 +4783,12 @@
       "refresh": "Aggiorna",
       "openRow": "Apri riga",
       "copyValue": "Copia valore"
-    }
+    },
+    "exportPage": "Questa pagina ({n} riga) | Questa pagina ({n} righe)",
+    "exportThisPage": "Questa pagina",
+    "exportAllRows": "Tutte le righe, fino a {max}",
+    "exportMatching": "Tutte le righe corrispondenti, fino a {max}",
+    "exportCapped": "{total} righe corrispondono; un file ne contiene fino a {max}. Restringi l’elenco con la ricerca o i filtri per esportare il resto."
   },
   "contextMenu": {
     "open": "Apri",

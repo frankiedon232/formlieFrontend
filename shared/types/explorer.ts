@@ -60,6 +60,11 @@ export interface TableExport {
   id: string
   table: string
   format: 'csv' | 'xlsx' | 'json' | 'sql'
+  /** page = the rows on screen; all = every matching row, up to EXPORT_MAX_ROWS. */
+  scope: 'page' | 'all'
+  /** Rows that matched (the file holds `rows`; `capped` = the limit cut it short). */
+  total: number
+  capped: boolean
   status: 'running' | 'ready'
   progress: number
   rows: number

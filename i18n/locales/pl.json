@@ -4630,8 +4630,6 @@
     "previous": "Poprzedni wiersz",
     "next": "Następny wiersz",
     "export": "Eksportuj",
-    "exportAll": "Cała tabela",
-    "exportFiltered": "Wiersze pasujące do wyszukiwania i filtrów",
     "exporting": "Eksportowanie {n}%",
     "exported": "Wyeksportowane wiersze: {n} | Wyeksportowane wiersze: {n}",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Tylko odczyt",
     "exportJson": "JSON",
-    "exportJsonDesc": "Jeden obiekt na wiersz, dla programistów i innych systemów",
     "exportSql": "SQL (instrukcje INSERT)",
-    "exportSqlDesc": "Napisane dla tej bazy danych, aby skopiować wiersze do innej",
     "ddl": {
       "actions": "Akcje",
       "willRun": "Co zostanie wykonane w bazie danych",
@@ -4787,7 +4783,12 @@
       "refresh": "Odśwież",
       "openRow": "Otwórz wiersz",
       "copyValue": "Kopiuj wartość"
-    }
+    },
+    "exportPage": "Ta strona (wiersze: {n}) | Ta strona (wiersze: {n})",
+    "exportThisPage": "Ta strona",
+    "exportAllRows": "Wszystkie wiersze, do {max}",
+    "exportMatching": "Wszystkie pasujące wiersze, do {max}",
+    "exportCapped": "Pasujące wiersze: {total}; plik mieści do {max}. Zawęź listę wyszukiwaniem lub filtrami, aby wyeksportować resztę."
   },
   "contextMenu": {
     "open": "Otwórz",

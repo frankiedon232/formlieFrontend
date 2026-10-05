@@ -196,7 +196,7 @@ async function schemaChanged(result: SchemaResult) {
   await data.value?.refresh()
 }
 // Right-click menus (owner 2026-10-05): tree nodes, rows and the table area
-const exporter = useTemplateRef<{ start: (format: TableExport['format']) => Promise<void> }>('exporter')
+const exporter = useTemplateRef<{ start: (format: TableExport['format'], scope?: TableExport['scope']) => Promise<void> }>('exporter')
 const newTableSchema = ref<string | null>(null)
 function newTable(schemaName?: string) {
   newTableSchema.value = schemaName ?? null
@@ -213,7 +213,7 @@ const menus = useExplorerMenus({
   openRow: row => openRow(row, data.value?.rows() ?? [row]),
   editRow: row => editRow(row),
   removeRow: row => void removeRow(row),
-  exportAs: format => void exporter.value?.start(format),
+  exportAs: (format, scope) => void exporter.value?.start(format, scope),
   schema: () => schema.value,
 })
 const content = useTemplateRef<HTMLElement>('content')
@@ -265,6 +265,7 @@ const readOnlyText = computed(() =>
         :table="structure.name"
         :params="() => data?.params() ?? {}"
         :filtered="!!data?.filtered()"
+        :page-rows="data?.rows().length ?? 0"
       />
     </template>
 

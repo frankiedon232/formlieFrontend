@@ -4630,8 +4630,6 @@
     "previous": "Baris sebelumnya",
     "next": "Baris berikutnya",
     "export": "Ekspor",
-    "exportAll": "Seluruh tabel",
-    "exportFiltered": "Baris yang cocok dengan pencarian dan filter Anda",
     "exporting": "Mengekspor {n}%",
     "exported": "{n} baris diekspor | {n} baris diekspor",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Hanya baca",
     "exportJson": "JSON",
-    "exportJsonDesc": "Satu objek per baris, untuk pengembang dan sistem lain",
     "exportSql": "SQL (pernyataan INSERT)",
-    "exportSqlDesc": "Ditulis untuk database ini, untuk menyalin baris ke database lain",
     "ddl": {
       "actions": "Tindakan",
       "willRun": "Yang akan dijalankan di database",
@@ -4787,7 +4783,12 @@
       "refresh": "Segarkan",
       "openRow": "Buka baris",
       "copyValue": "Salin nilai"
-    }
+    },
+    "exportPage": "Halaman ini ({n} baris) | Halaman ini ({n} baris)",
+    "exportThisPage": "Halaman ini",
+    "exportAllRows": "Semua baris, hingga {max}",
+    "exportMatching": "Semua baris yang cocok, hingga {max}",
+    "exportCapped": "{total} baris cocok; satu file memuat hingga {max}. Persempit daftar dengan pencarian atau filter untuk mengekspor sisanya."
   },
   "contextMenu": {
     "open": "Buka",

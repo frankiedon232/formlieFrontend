@@ -4630,8 +4630,6 @@
     "previous": "Vorige rij",
     "next": "Volgende rij",
     "export": "Exporteren",
-    "exportAll": "De hele tabel",
-    "exportFiltered": "De rijen die passen bij uw zoekopdracht en filters",
     "exporting": "Exporteren {n}%",
     "exported": "{n} rij geëxporteerd | {n} rijen geëxporteerd",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Alleen lezen",
     "exportJson": "JSON",
-    "exportJsonDesc": "Eén object per rij, voor ontwikkelaars en andere systemen",
     "exportSql": "SQL (INSERT-statements)",
-    "exportSqlDesc": "Geschreven voor deze database, om de rijen naar een andere te kopiëren",
     "ddl": {
       "actions": "Acties",
       "willRun": "Wat er op de database wordt uitgevoerd",
@@ -4787,7 +4783,12 @@
       "refresh": "Vernieuwen",
       "openRow": "Rij openen",
       "copyValue": "Waarde kopiëren"
-    }
+    },
+    "exportPage": "Deze pagina ({n} rij) | Deze pagina ({n} rijen)",
+    "exportThisPage": "Deze pagina",
+    "exportAllRows": "Alle rijen, tot {max}",
+    "exportMatching": "Alle overeenkomende rijen, tot {max}",
+    "exportCapped": "{total} rijen komen overeen; een bestand bevat er tot {max}. Verklein de lijst met zoeken of filters om de rest te exporteren."
   },
   "contextMenu": {
     "open": "Openen",

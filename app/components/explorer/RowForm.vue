@@ -89,8 +89,9 @@ async function save() {
 </script>
 
 <template>
-  <AppModal keep-open
+  <AppModal
     v-model:open="open"
+    keep-open
     :title="row ? t('explorer.editRow', { key: row.__key }) : t('explorer.addRow')"
     :description="`${structure.schema}.${structure.name}`"
     :dismissible="!saving"

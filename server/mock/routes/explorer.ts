@@ -17,7 +17,7 @@
 import { z } from 'zod'
 import type { H3Event } from 'h3'
 import { parseValue } from '#shared/utils/datasources/values'
-import { jsonExport, sqlInsertScript } from '#shared/utils/datasources/exportFormats'
+import { EXPORT_MAX_ROWS, jsonExport, sqlInsertScript } from '#shared/utils/datasources/exportFormats'
 import type { DatabaseTable } from '#shared/types/destinations'
 import type { ColumnFacet, TableExport, TableRow, TableStructure } from '#shared/types/explorer'
 import { actorOf, recordAudit } from '../core/audit'
@@ -172,6 +172,9 @@ const view = (item: StoredTableExport): TableExport => {
     id: item.id,
     table: item.table,
     format: item.format,
+    scope: item.scope,
+    total: item.total,
+    capped: item.capped,
     status: ready ? 'ready' : 'running',
     progress: item.rows ? Math.round((done / item.rows) * 100) : 100,
     rows: item.rows,
@@ -187,6 +190,9 @@ export const startTableExport = defineMockRoute(({ event, body }) => {
       schema: z.string(),
       table: z.string(),
       format: z.enum(['csv', 'xlsx', 'json', 'sql']),
+      scope: z.enum(['page', 'all']).default('page'),
+      page: z.coerce.number().int().min(1).default(1),
+      page_size: z.coerce.number().int().min(1).max(100).default(20),
       q: z.string().optional(),
       sort: z.string().optional(),
       filter: z.record(z.string(), z.string()).optional(),
@@ -194,7 +200,10 @@ export const startTableExport = defineMockRoute(({ event, body }) => {
     body,
   )
   const { tables, structure } = tableOf(tenant, source, input)
-  const rows = select(rowsOf(tenant, source, tables, structure), input)
+  // This page, or every matching row up to the limit (never a whole large table at once)
+  const matching = select(rowsOf(tenant, source, tables, structure), input)
+  const rows = input.scope === 'page' ? matching.slice((input.page - 1) * input.page_size, input.page * input.page_size) : matching.slice(0, EXPORT_MAX_ROWS)
+  const capped = input.scope === 'all' && matching.length > EXPORT_MAX_ROWS
   const head = structure.columns.map(column => column.name)
   const lines = rows.map(row => head.map(name => text(row[name])))
   const name = `${structure.name}.${input.format}`
@@ -210,6 +219,9 @@ export const startTableExport = defineMockRoute(({ event, body }) => {
     id: crypto.randomUUID(),
     table: `${structure.schema}.${structure.name}`,
     format: input.format,
+    scope: input.scope,
+    total: input.scope === 'page' ? rows.length : matching.length,
+    capped,
     status: 'running',
     progress: 0,
     rows: rows.length,
@@ -228,6 +240,7 @@ export const startTableExport = defineMockRoute(({ event, body }) => {
     metadata: {
       table: item.table,
       format: input.format,
+      scope: input.scope,
       rows: String(rows.length),
       filtered: input.q || Object.keys(input.filter ?? {}).length ? 'yes' : 'no',
     },

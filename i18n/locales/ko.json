@@ -4630,8 +4630,6 @@
     "previous": "이전 행",
     "next": "다음 행",
     "export": "내보내기",
-    "exportAll": "테이블 전체",
-    "exportFiltered": "검색 및 필터와 일치하는 행",
     "exporting": "내보내는 중 {n}%",
     "exported": "{n}개 행 내보냄 | {n}개 행 내보냄",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "읽기 전용",
     "exportJson": "JSON",
-    "exportJsonDesc": "행마다 객체 하나, 개발자와 다른 시스템용",
     "exportSql": "SQL(INSERT 문)",
-    "exportSqlDesc": "이 데이터베이스에 맞게 작성되어 행을 다른 데이터베이스로 복사할 수 있습니다",
     "ddl": {
       "actions": "작업",
       "willRun": "데이터베이스에서 실행될 내용",
@@ -4787,7 +4783,12 @@
       "refresh": "새로고침",
       "openRow": "행 열기",
       "copyValue": "값 복사"
-    }
+    },
+    "exportPage": "이 페이지({n}행) | 이 페이지({n}행)",
+    "exportThisPage": "이 페이지",
+    "exportAllRows": "모든 행, 최대 {max}",
+    "exportMatching": "일치하는 모든 행, 최대 {max}",
+    "exportCapped": "{total}행이 일치합니다. 파일 하나에는 최대 {max}행이 들어갑니다. 나머지를 내보내려면 검색이나 필터로 목록을 좁히세요."
   },
   "contextMenu": {
     "open": "열기",

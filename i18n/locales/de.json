@@ -4630,8 +4630,6 @@
     "previous": "Vorherige Zeile",
     "next": "Nächste Zeile",
     "export": "Exportieren",
-    "exportAll": "Die ganze Tabelle",
-    "exportFiltered": "Die Zeilen, die zu Ihrer Suche und den Filtern passen",
     "exporting": "Export läuft: {n} %",
     "exported": "{n} Zeile exportiert | {n} Zeilen exportiert",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Nur Lesen",
     "exportJson": "JSON",
-    "exportJsonDesc": "Ein Objekt pro Zeile, für Entwickler und andere Systeme",
     "exportSql": "SQL (INSERT-Anweisungen)",
-    "exportSqlDesc": "Für diese Datenbank geschrieben, um die Zeilen in eine andere zu kopieren",
     "ddl": {
       "actions": "Aktionen",
       "willRun": "Was auf der Datenbank ausgeführt wird",
@@ -4787,7 +4783,12 @@
       "refresh": "Aktualisieren",
       "openRow": "Zeile öffnen",
       "copyValue": "Wert kopieren"
-    }
+    },
+    "exportPage": "Diese Seite ({n} Zeile) | Diese Seite ({n} Zeilen)",
+    "exportThisPage": "Diese Seite",
+    "exportAllRows": "Alle Zeilen, bis zu {max}",
+    "exportMatching": "Alle passenden Zeilen, bis zu {max}",
+    "exportCapped": "{total} Zeilen passen; eine Datei enthält bis zu {max}. Grenzen Sie die Liste mit Suche oder Filtern ein, um den Rest zu exportieren."
   },
   "contextMenu": {
     "open": "Öffnen",

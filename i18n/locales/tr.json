@@ -4630,8 +4630,6 @@
     "previous": "Önceki satır",
     "next": "Sonraki satır",
     "export": "Dışa aktar",
-    "exportAll": "Tablonun tamamı",
-    "exportFiltered": "Arama ve filtrelerinizle eşleşen satırlar",
     "exporting": "Dışa aktarılıyor %{n}",
     "exported": "{n} satır dışa aktarıldı | {n} satır dışa aktarıldı",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Salt okunur",
     "exportJson": "JSON",
-    "exportJsonDesc": "Satır başına bir nesne, geliştiriciler ve diğer sistemler için",
     "exportSql": "SQL (INSERT ifadeleri)",
-    "exportSqlDesc": "Bu veritabanı için yazılır, satırları başka birine kopyalamak için",
     "ddl": {
       "actions": "İşlemler",
       "willRun": "Veritabanında çalıştırılacak olan",
@@ -4787,7 +4783,12 @@
       "refresh": "Yenile",
       "openRow": "Satırı aç",
       "copyValue": "Değeri kopyala"
-    }
+    },
+    "exportPage": "Bu sayfa ({n} satır) | Bu sayfa ({n} satır)",
+    "exportThisPage": "Bu sayfa",
+    "exportAllRows": "Tüm satırlar, en fazla {max}",
+    "exportMatching": "Eşleşen tüm satırlar, en fazla {max}",
+    "exportCapped": "{total} satır eşleşti; bir dosya en fazla {max} satır alır. Kalanını dışa aktarmak için listeyi arama veya filtrelerle daraltın."
   },
   "contextMenu": {
     "open": "Aç",

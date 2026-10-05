@@ -57,7 +57,7 @@ async function submit() {
 </script>
 
 <template>
-  <AppModal keep-open v-model:open="open" :title="t('explorer.ddl.newTable')" :description="t('explorer.ddl.newTableDesc')" :dismissible="!busy" :ui="{ content: 'sm:max-w-3xl' }">
+  <AppModal v-model:open="open" keep-open :title="t('explorer.ddl.newTable')" :description="t('explorer.ddl.newTableDesc')" :dismissible="!busy" :ui="{ content: 'sm:max-w-3xl' }">
     <template #body>
       <form id="new-table" class="flex flex-col gap-4" novalidate @submit.prevent="submit">
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">

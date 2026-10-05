@@ -8,6 +8,7 @@
  */
 import type { ContextMenuItem } from '@nuxt/ui'
 import type { ExplorerNode, TableExport, TableRow, TableStructure } from '#shared/types/explorer'
+import { EXPORT_MAX_ROWS } from '#shared/utils/datasources/exportFormats'
 
 export interface ExplorerMenuActions {
   structure: Ref<TableStructure | null>
@@ -22,7 +23,7 @@ export interface ExplorerMenuActions {
   openRow: (row: TableRow) => void
   editRow: (row: TableRow) => void
   removeRow: (row: TableRow) => void
-  exportAs: (format: TableExport['format']) => void
+  exportAs: (format: TableExport['format'], scope: TableExport['scope']) => void
   schema: () => { addColumn: () => void; addIndex: () => void; table: (mode: 'rename' | 'truncate' | 'drop') => void; editColumn: (column: TableStructure['columns'][number]) => void; dropColumn: (column: TableStructure['columns'][number]) => void } | null
 }
 
@@ -30,6 +31,7 @@ export function useExplorerMenus(actions: ExplorerMenuActions) {
   const { t } = useI18n()
   const toast = useToast()
   const { copy } = useClipboard({ legacy: true })
+  const { number } = useFormat()
   const copyText = (text: string) => {
     void copy(text)
     toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })
@@ -53,15 +55,20 @@ export function useExplorerMenus(actions: ExplorerMenuActions) {
     actions.open({ schema, name: table }, tab)
   }
 
-  const exportGroup = (run: (format: TableExport['format']) => void): ContextMenuItem[] => [
+  // Export: this page first; all rows is a deliberate choice, up to EXPORT_MAX_ROWS
+  const formats = (run: (format: TableExport['format'], scope: TableExport['scope']) => void, scope: TableExport['scope']): ContextMenuItem[] => [
+    { label: t('responses.export.format.xlsx'), icon: 'i-lucide-file-spreadsheet', onSelect: () => run('xlsx', scope) },
+    { label: t('responses.export.format.csv'), icon: 'i-lucide-file-text', onSelect: () => run('csv', scope) },
+    { label: t('explorer.exportJson'), icon: 'i-lucide-file-json', onSelect: () => run('json', scope) },
+    { label: t('explorer.exportSql'), icon: 'i-lucide-file-code', onSelect: () => run('sql', scope) },
+  ]
+  const exportGroup = (run: (format: TableExport['format'], scope: TableExport['scope']) => void): ContextMenuItem[] => [
     {
       label: t('explorer.export'),
       icon: 'i-lucide-file-down',
       children: [
-        { label: t('responses.export.format.xlsx'), icon: 'i-lucide-file-spreadsheet', onSelect: () => run('xlsx') },
-        { label: t('responses.export.format.csv'), icon: 'i-lucide-file-text', onSelect: () => run('csv') },
-        { label: t('explorer.exportJson'), icon: 'i-lucide-file-json', onSelect: () => run('json') },
-        { label: t('explorer.exportSql'), icon: 'i-lucide-file-code', onSelect: () => run('sql') },
+        [{ type: 'label', label: t('explorer.exportThisPage') }, ...formats(run, 'page')],
+        [{ type: 'label', label: t('explorer.exportAllRows', { max: number(EXPORT_MAX_ROWS) }) }, ...formats(run, 'all')],
       ],
     },
   ]
@@ -95,7 +102,7 @@ export function useExplorerMenus(actions: ExplorerMenuActions) {
           { label: t('explorer.menu.openData'), icon: 'i-lucide-rows-3', onSelect: () => actions.open({ schema: node.schema, name: node.table }, 'data') },
           { label: t('explorer.menu.openStructure'), icon: 'i-lucide-network', onSelect: () => actions.open({ schema: node.schema, name: node.table }, 'structure') },
         ],
-        exportGroup(format => onTable(node.schema, node.table, () => actions.exportAs(format), 'data')),
+        exportGroup((format, scope) => onTable(node.schema, node.table, () => actions.exportAs(format, scope), 'data')),
         ...structureGroups(node.schema, node.table),
         [{ label: t('explorer.ddl.copyName'), icon: 'i-lucide-copy', onSelect: () => copyText(`${node.schema}.${node.table}`) }],
       ]
@@ -123,7 +130,7 @@ export function useExplorerMenus(actions: ExplorerMenuActions) {
         { label: t('explorer.menu.refresh'), icon: 'i-lucide-rotate-cw', onSelect: () => actions.refresh() },
         ...(structure.read_only ? [] : [{ label: t('explorer.addRow'), icon: 'i-lucide-plus', onSelect: () => actions.addRow() }]),
       ],
-      exportGroup(format => actions.exportAs(format)),
+      exportGroup((format, scope) => actions.exportAs(format, scope)),
       ...structureGroups(structure.schema, structure.name),
       [
         ...(actions.canCreate.value ? [{ label: t('explorer.ddl.newTable'), icon: 'i-lucide-table-2', onSelect: () => actions.newTable(structure.schema) }] : []),
@@ -151,7 +158,7 @@ export function useExplorerMenus(actions: ExplorerMenuActions) {
         ...(cell && value ? [{ label: t('explorer.menu.copyValue'), icon: 'i-lucide-copy', onSelect: () => copyText(value) }] : []),
         { label: t('explorer.copyRow'), icon: 'i-lucide-braces', onSelect: () => copyText(JSON.stringify(values, null, 2)) },
       ],
-      exportGroup(format => actions.exportAs(format)),
+      exportGroup((format, scope) => actions.exportAs(format, scope)),
     ]
   }
 

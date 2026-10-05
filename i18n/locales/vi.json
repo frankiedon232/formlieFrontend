@@ -4630,8 +4630,6 @@
     "previous": "Hàng trước",
     "next": "Hàng sau",
     "export": "Xuất",
-    "exportAll": "Toàn bộ bảng",
-    "exportFiltered": "Các hàng khớp với tìm kiếm và bộ lọc của bạn",
     "exporting": "Đang xuất {n}%",
     "exported": "Đã xuất {n} hàng | Đã xuất {n} hàng",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Chỉ đọc",
     "exportJson": "JSON",
-    "exportJsonDesc": "Mỗi hàng một đối tượng, dành cho nhà phát triển và hệ thống khác",
     "exportSql": "SQL (câu lệnh INSERT)",
-    "exportSqlDesc": "Viết cho cơ sở dữ liệu này, để sao chép các hàng sang cơ sở dữ liệu khác",
     "ddl": {
       "actions": "Thao tác",
       "willRun": "Những gì sẽ chạy trên cơ sở dữ liệu",
@@ -4787,7 +4783,12 @@
       "refresh": "Làm mới",
       "openRow": "Mở hàng",
       "copyValue": "Sao chép giá trị"
-    }
+    },
+    "exportPage": "Trang này ({n} hàng) | Trang này ({n} hàng)",
+    "exportThisPage": "Trang này",
+    "exportAllRows": "Tất cả các hàng, tối đa {max}",
+    "exportMatching": "Tất cả các hàng phù hợp, tối đa {max}",
+    "exportCapped": "Có {total} hàng phù hợp; mỗi tệp chứa tối đa {max}. Thu hẹp danh sách bằng tìm kiếm hoặc bộ lọc để xuất phần còn lại."
   },
   "contextMenu": {
     "open": "Mở",

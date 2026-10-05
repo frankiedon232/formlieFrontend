@@ -1,25 +1,28 @@
 <!--
-  Export the table, or the rows matching the current search and filters, as CSV, Excel, JSON or SQL
-  INSERT statements for the connection's engine (F12 M3).
+  Export rows as CSV, Excel, JSON or SQL INSERT statements for the connection's engine (F12 M3).
+  This page (the rows on screen, with the search, filters and sort) first; "All rows" is a
+  deliberate choice and stops at EXPORT_MAX_ROWS (owner 2026-10-05), saying so when it does.
   The file is made on Formalie's servers with a percentage shown on the button, then downloaded
   through a one-time private link. Recorded in the audit trail.
 -->
 <script setup lang="ts">
 import type { TableExport } from '#shared/types/explorer'
+import { EXPORT_MAX_ROWS } from '#shared/utils/datasources/exportFormats'
 
-const props = defineProps<{ sourceId: string; schema: string; table: string; params: () => Record<string, string | number>; filtered: boolean }>()
+const props = defineProps<{ sourceId: string; schema: string; table: string; params: () => Record<string, string | number>; filtered: boolean; pageRows: number }>()
 const { t } = useI18n()
 const api = useApi()
 const toast = useToast()
 const { handle } = useErrorHandler()
+const { number } = useFormat()
 const job = ref<TableExport | null>(null)
 const running = computed(() => !!job.value && job.value.status === 'running')
 
-async function start(format: TableExport['format']) {
-  const { q, sort, ...rest } = props.params()
+async function start(format: TableExport['format'], scope: TableExport['scope'] = 'page') {
+  const { q, sort, page, page_size: pageSize, ...rest } = props.params()
   const filter = Object.fromEntries(Object.entries(rest).filter(([key]) => key.startsWith('filter[')).map(([key, value]) => [key.slice(7, -1), String(value)]))
   try {
-    job.value = (await api.post<TableExport>(`/datasources/${props.sourceId}/explorer/exports`, { schema: props.schema, table: props.table, format, q: q ? String(q) : undefined, sort: sort ? String(sort) : undefined, filter })).data
+    job.value = (await api.post<TableExport>(`/datasources/${props.sourceId}/explorer/exports`, { schema: props.schema, table: props.table, format, scope, page, page_size: pageSize, q: q ? String(q) : undefined, sort: sort ? String(sort) : undefined, filter })).data
     while (job.value.status === 'running') {
       await new Promise(resolve => setTimeout(resolve, 400))
       job.value = (await api.get<TableExport>(`/explorer-exports/${job.value.id}`, undefined, { background: true })).data
@@ -29,7 +32,11 @@ async function start(format: TableExport['format']) {
     link.href = data.url
     link.rel = 'noopener'
     link.click()
-    toast.add({ title: t('explorer.exported', { n: job.value.rows }, job.value.rows), color: 'success', icon: 'i-lucide-file-down' })
+    toast.add(
+      job.value.capped
+        ? { title: t('explorer.exported', { n: number(job.value.rows) }, job.value.rows), description: t('explorer.exportCapped', { total: number(job.value.total), max: number(EXPORT_MAX_ROWS) }), color: 'warning', icon: 'i-lucide-file-down' }
+        : { title: t('explorer.exported', { n: number(job.value.rows) }, job.value.rows), color: 'success', icon: 'i-lucide-file-down' },
+    )
   } catch (error) {
     handle(error)
   } finally {
@@ -37,16 +44,15 @@ async function start(format: TableExport['format']) {
   }
 }
 defineExpose({ start, running })
+const formats = (scope: TableExport['scope']) => [
+  { label: t('responses.export.format.xlsx'), icon: 'i-lucide-file-spreadsheet', onSelect: () => void start('xlsx', scope) },
+  { label: t('responses.export.format.csv'), icon: 'i-lucide-file-text', onSelect: () => void start('csv', scope) },
+  { label: t('explorer.exportJson'), icon: 'i-lucide-file-json', onSelect: () => void start('json', scope) },
+  { label: t('explorer.exportSql'), icon: 'i-lucide-file-code', onSelect: () => void start('sql', scope) },
+]
 const items = computed(() => [
-  [{ type: 'label' as const, label: props.filtered ? t('explorer.exportFiltered') : t('explorer.exportAll') }],
-  [
-    { label: t('responses.export.format.xlsx'), icon: 'i-lucide-file-spreadsheet', onSelect: () => void start('xlsx') },
-    { label: t('responses.export.format.csv'), icon: 'i-lucide-file-text', onSelect: () => void start('csv') },
-  ],
-  [
-    { label: t('explorer.exportJson'), description: t('explorer.exportJsonDesc'), icon: 'i-lucide-file-json', onSelect: () => void start('json') },
-    { label: t('explorer.exportSql'), description: t('explorer.exportSqlDesc'), icon: 'i-lucide-file-code', onSelect: () => void start('sql') },
-  ],
+  [{ type: 'label' as const, label: t('explorer.exportPage', { n: number(props.pageRows) }, props.pageRows) }, ...formats('page')],
+  [{ type: 'label' as const, label: props.filtered ? t('explorer.exportMatching', { max: number(EXPORT_MAX_ROWS) }) : t('explorer.exportAllRows', { max: number(EXPORT_MAX_ROWS) }) }, ...formats('all')],
 ])
 </script>
 

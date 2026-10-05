@@ -10,6 +10,9 @@ import type { DbEngine } from '#shared/utils/integrations/databases'
 import { kindOfType } from '#shared/utils/datasources/values'
 import { quoteName } from '#shared/utils/datasources/tables'
 
+/** The most rows one explorer export takes (owner 2026-10-05): this page by default, "All rows" up to this many. */
+export const EXPORT_MAX_ROWS = 5000
+
 interface ExportColumn {
   name: string
   type: string

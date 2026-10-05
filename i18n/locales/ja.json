@@ -4630,8 +4630,6 @@
     "previous": "前の行",
     "next": "次の行",
     "export": "エクスポート",
-    "exportAll": "テーブル全体",
-    "exportFiltered": "検索とフィルターに一致する行",
     "exporting": "エクスポート中 {n}%",
     "exported": "{n} 行をエクスポートしました | {n} 行をエクスポートしました",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "読み取り専用",
     "exportJson": "JSON",
-    "exportJsonDesc": "1 行につき 1 つのオブジェクト。開発者や他のシステム向け",
     "exportSql": "SQL（INSERT 文）",
-    "exportSqlDesc": "このデータベース向けに作成。行を別のデータベースにコピーできます",
     "ddl": {
       "actions": "操作",
       "willRun": "データベースで実行される内容",
@@ -4787,7 +4783,12 @@
       "refresh": "更新",
       "openRow": "行を開く",
       "copyValue": "値をコピー"
-    }
+    },
+    "exportPage": "このページ（{n} 行） | このページ（{n} 行）",
+    "exportThisPage": "このページ",
+    "exportAllRows": "すべての行（最大 {max}）",
+    "exportMatching": "一致するすべての行（最大 {max}）",
+    "exportCapped": "{total} 行が一致しました。1 つのファイルは最大 {max} 行です。残りを書き出すには、検索やフィルターで絞り込んでください。"
   },
   "contextMenu": {
     "open": "開く",

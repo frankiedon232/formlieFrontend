@@ -4630,8 +4630,6 @@
     "previous": "Safu iliyotangulia",
     "next": "Safu inayofuata",
     "export": "Hamisha",
-    "exportAll": "Jedwali zima",
-    "exportFiltered": "Safu zinazolingana na utafutaji na vichujio vyako",
     "exporting": "Inahamisha {n}%",
     "exported": "Safu {n} imehamishwa | Safu {n} zimehamishwa",
     "structure": {
@@ -4676,9 +4674,7 @@
     },
     "readOnlyShort": "Kusoma tu",
     "exportJson": "JSON",
-    "exportJsonDesc": "Kitu kimoja kwa kila safu, kwa wasanidi na mifumo mingine",
     "exportSql": "SQL (taarifa za INSERT)",
-    "exportSqlDesc": "Imeandikwa kwa hifadhidata hii, kunakili safu kwenda nyingine",
     "ddl": {
       "actions": "Vitendo",
       "willRun": "Kitakachoendeshwa kwenye hifadhidata",
@@ -4787,7 +4783,12 @@
       "refresh": "Onyesha upya",
       "openRow": "Fungua safu",
       "copyValue": "Nakili thamani"
-    }
+    },
+    "exportPage": "Ukurasa huu (safu {n}) | Ukurasa huu (safu {n})",
+    "exportThisPage": "Ukurasa huu",
+    "exportAllRows": "Safu zote, hadi {max}",
+    "exportMatching": "Safu zote zinazolingana, hadi {max}",
+    "exportCapped": "Safu {total} zimelingana; faili moja hubeba hadi {max}. Punguza orodha kwa utafutaji au vichujio ili kuhamisha zilizobaki."
   },
   "contextMenu": {
     "open": "Fungua",

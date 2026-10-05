@@ -46,7 +46,7 @@ async function submit() {
 </script>
 
 <template>
-  <AppModal keep-open v-model:open="open" :title="t('explorer.ddl.addIndex')" :description="`${structure.schema}.${structure.name}`" :dismissible="!busy" :ui="{ content: 'sm:max-w-xl' }">
+  <AppModal v-model:open="open" keep-open :title="t('explorer.ddl.addIndex')" :description="`${structure.schema}.${structure.name}`" :dismissible="!busy" :ui="{ content: 'sm:max-w-xl' }">
     <template #body>
       <form id="index-form" class="flex flex-col gap-4" novalidate @submit.prevent="submit">
         <UFormField :label="t('explorer.ddl.indexColumns')" :error="errors.columns" :help="t('explorer.ddl.indexColumnsHelp')" required>
