@@ -410,7 +410,8 @@
     "connectionsAttention": "İlgi gerekiyor",
     "connectionsFailing": "Başarısız",
     "connectionsDisabled": "Devre dışı",
-    "connectionsNew": "Bağlantı ekle"
+    "connectionsNew": "Bağlantı ekle",
+    "backToMenu": "Menüye dön"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -4691,6 +4692,7 @@
       "skipped": "Atlandı",
       "whySkipped": "Satırların neden atlandığı (ilk 100):",
       "rowN": "Satır {n}"
-    }
+    },
+    "readOnlyShort": "Salt okunur"
   }
 }

@@ -410,7 +410,8 @@
     "connectionsAttention": "تحتاج إلى انتباه",
     "connectionsFailing": "فاشلة",
     "connectionsDisabled": "معطّلة",
-    "connectionsNew": "إضافة اتصال"
+    "connectionsNew": "إضافة اتصال",
+    "backToMenu": "العودة إلى القائمة"
   },
   "navbar": {
     "breadcrumb": "مسار التنقل",
@@ -4691,6 +4692,7 @@
       "skipped": "تُخطيت",
       "whySkipped": "سبب تخطي الصفوف (أول 100):",
       "rowN": "الصف {n}"
-    }
+    },
+    "readOnlyShort": "للقراءة فقط"
   }
 }

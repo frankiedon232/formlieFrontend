@@ -410,7 +410,8 @@
     "connectionsAttention": "Needs attention",
     "connectionsFailing": "Failing",
     "connectionsDisabled": "Disabled",
-    "connectionsNew": "Add connection"
+    "connectionsNew": "Add connection",
+    "backToMenu": "Back to menu"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -4691,6 +4692,7 @@
       "skipped": "Skipped",
       "whySkipped": "Why rows were skipped (the first 100):",
       "rowN": "Row {n}"
-    }
+    },
+    "readOnlyShort": "Read only"
   }
 }

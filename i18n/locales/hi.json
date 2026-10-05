@@ -410,7 +410,8 @@
     "connectionsAttention": "ध्यान देना ज़रूरी",
     "connectionsFailing": "विफल हो रहे",
     "connectionsDisabled": "अक्षम",
-    "connectionsNew": "कनेक्शन जोड़ें"
+    "connectionsNew": "कनेक्शन जोड़ें",
+    "backToMenu": "मेनू पर वापस जाएँ"
   },
   "navbar": {
     "breadcrumb": "ब्रेडक्रंब",
@@ -4691,6 +4692,7 @@
       "skipped": "छोड़ी गईं",
       "whySkipped": "पंक्तियाँ क्यों छोड़ी गईं (पहली 100):",
       "rowN": "पंक्ति {n}"
-    }
+    },
+    "readOnlyShort": "केवल पढ़ने के लिए"
   }
 }

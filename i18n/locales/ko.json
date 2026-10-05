@@ -410,7 +410,8 @@
     "connectionsAttention": "확인 필요",
     "connectionsFailing": "실패",
     "connectionsDisabled": "비활성화됨",
-    "connectionsNew": "연결 추가"
+    "connectionsNew": "연결 추가",
+    "backToMenu": "메뉴로 돌아가기"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -4691,6 +4692,7 @@
       "skipped": "건너뜀",
       "whySkipped": "행을 건너뛴 이유(처음 100개):",
       "rowN": "행 {n}"
-    }
+    },
+    "readOnlyShort": "읽기 전용"
   }
 }

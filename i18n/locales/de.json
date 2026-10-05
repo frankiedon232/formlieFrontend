@@ -410,7 +410,8 @@
     "connectionsAttention": "Prüfen",
     "connectionsFailing": "Fehlerhaft",
     "connectionsDisabled": "Deaktiviert",
-    "connectionsNew": "Verbindung hinzufügen"
+    "connectionsNew": "Verbindung hinzufügen",
+    "backToMenu": "Zurück zum Menü"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -4691,6 +4692,7 @@
       "skipped": "Übersprungen",
       "whySkipped": "Warum Zeilen übersprungen wurden (die ersten 100):",
       "rowN": "Zeile {n}"
-    }
+    },
+    "readOnlyShort": "Nur Lesen"
   }
 }

@@ -410,7 +410,8 @@
     "connectionsAttention": "Requieren atención",
     "connectionsFailing": "Con fallos",
     "connectionsDisabled": "Desactivadas",
-    "connectionsNew": "Añadir conexión"
+    "connectionsNew": "Añadir conexión",
+    "backToMenu": "Volver al menú"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -4691,6 +4692,7 @@
       "skipped": "Omitidas",
       "whySkipped": "Por qué se omitieron filas (las primeras 100):",
       "rowN": "Fila {n}"
-    }
+    },
+    "readOnlyShort": "Solo lectura"
   }
 }

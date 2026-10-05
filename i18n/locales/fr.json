@@ -410,7 +410,8 @@
     "connectionsAttention": "À vérifier",
     "connectionsFailing": "En échec",
     "connectionsDisabled": "Désactivées",
-    "connectionsNew": "Ajouter une connexion"
+    "connectionsNew": "Ajouter une connexion",
+    "backToMenu": "Retour au menu"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -4691,6 +4692,7 @@
       "skipped": "Ignorées",
       "whySkipped": "Pourquoi des lignes ont été ignorées (les 100 premières) :",
       "rowN": "Ligne {n}"
-    }
+    },
+    "readOnlyShort": "Lecture seule"
   }
 }

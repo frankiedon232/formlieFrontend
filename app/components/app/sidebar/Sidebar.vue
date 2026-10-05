@@ -8,6 +8,7 @@ const emit = defineEmits<{ peekFocus: [edge: 'first' | 'last'] }>()
 const { t } = useI18n()
 const { open: peekOpen, mode, collapsed: sharedCollapsed, available, schedule, close } = useSidebarPeek()
 const collapsed = ref(false)
+const takeover = useSidebarTakeover()
 
 watch(
   collapsed,
@@ -62,7 +63,9 @@ defineShortcuts({
   >
     <template #default="{ collapsed: isCollapsed }">
       <AppSidebarRail :collapsed="isCollapsed" @expand="collapsed = false" />
-      <AppSidebarMenu v-if="!isCollapsed" collapsible @collapse="collapsed = true" />
+      <!-- A page may hold the menu column (Database explorer); the rail stays -->
+      <AppSidebarTakeover v-if="!isCollapsed && takeover.shown.value" @collapse="collapsed = true" />
+      <AppSidebarMenu v-else-if="!isCollapsed" collapsible @collapse="collapsed = true" />
     </template>
   </UDashboardSidebar>
 </template>

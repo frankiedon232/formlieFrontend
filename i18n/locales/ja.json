@@ -410,7 +410,8 @@
     "connectionsAttention": "要確認",
     "connectionsFailing": "エラー",
     "connectionsDisabled": "無効",
-    "connectionsNew": "接続を追加"
+    "connectionsNew": "接続を追加",
+    "backToMenu": "メニューに戻る"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -4691,6 +4692,7 @@
       "skipped": "スキップ",
       "whySkipped": "行がスキップされた理由（最初の 100 件）：",
       "rowN": "行 {n}"
-    }
+    },
+    "readOnlyShort": "読み取り専用"
   }
 }

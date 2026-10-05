@@ -20,7 +20,7 @@ const json = computed(() => {
 </script>
 
 <template>
-  <span v-if="shown === null" class="font-mono text-xs text-dimmed italic">NULL</span>
+  <span v-if="shown === null" class="font-mono text-[11px] text-dimmed italic">NULL</span>
   <pre v-else-if="json" class="max-h-64 overflow-auto rounded-md bg-elevated px-2 py-1.5 font-mono text-[11px] whitespace-pre-wrap text-default" dir="ltr">{{ json }}</pre>
-  <span v-else :class="full ? 'break-words whitespace-pre-wrap' : 'block max-w-72 truncate'" dir="auto">{{ shown }}</span>
+  <span v-else :class="full ? 'break-words whitespace-pre-wrap' : 'block max-w-64 truncate'" dir="auto">{{ shown }}</span>
 </template>

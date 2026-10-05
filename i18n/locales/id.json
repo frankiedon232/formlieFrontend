@@ -410,7 +410,8 @@
     "connectionsAttention": "Perlu diperiksa",
     "connectionsFailing": "Gagal",
     "connectionsDisabled": "Dinonaktifkan",
-    "connectionsNew": "Tambah koneksi"
+    "connectionsNew": "Tambah koneksi",
+    "backToMenu": "Kembali ke menu"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -4691,6 +4692,7 @@
       "skipped": "Dilewati",
       "whySkipped": "Alasan baris dilewati (100 pertama):",
       "rowN": "Baris {n}"
-    }
+    },
+    "readOnlyShort": "Hanya baca"
   }
 }

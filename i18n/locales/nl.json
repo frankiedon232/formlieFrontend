@@ -410,7 +410,8 @@
     "connectionsAttention": "Aandacht nodig",
     "connectionsFailing": "Mislukt",
     "connectionsDisabled": "Uitgeschakeld",
-    "connectionsNew": "Verbinding toevoegen"
+    "connectionsNew": "Verbinding toevoegen",
+    "backToMenu": "Terug naar menu"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -4691,6 +4692,7 @@
       "skipped": "Overgeslagen",
       "whySkipped": "Waarom rijen zijn overgeslagen (de eerste 100):",
       "rowN": "Rij {n}"
-    }
+    },
+    "readOnlyShort": "Alleen lezen"
   }
 }

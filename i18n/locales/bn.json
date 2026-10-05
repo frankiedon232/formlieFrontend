@@ -410,7 +410,8 @@
     "connectionsAttention": "মনোযোগ প্রয়োজন",
     "connectionsFailing": "ব্যর্থ হচ্ছে",
     "connectionsDisabled": "নিষ্ক্রিয়",
-    "connectionsNew": "সংযোগ যোগ করুন"
+    "connectionsNew": "সংযোগ যোগ করুন",
+    "backToMenu": "মেনুতে ফিরে যান"
   },
   "navbar": {
     "breadcrumb": "ব্রেডক্রাম্ব",
@@ -4691,6 +4692,7 @@
       "skipped": "বাদ পড়েছে",
       "whySkipped": "সারিগুলো কেন বাদ পড়েছে (প্রথম 100টি):",
       "rowN": "সারি {n}"
-    }
+    },
+    "readOnlyShort": "শুধু পড়ার জন্য"
   }
 }

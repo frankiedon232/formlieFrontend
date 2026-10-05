@@ -410,7 +410,8 @@
     "connectionsAttention": "Inahitaji uangalizi",
     "connectionsFailing": "Inashindwa",
     "connectionsDisabled": "Imezimwa",
-    "connectionsNew": "Ongeza muunganisho"
+    "connectionsNew": "Ongeza muunganisho",
+    "backToMenu": "Rudi kwenye menyu"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -4691,6 +4692,7 @@
       "skipped": "Zimerukwa",
       "whySkipped": "Kwa nini safu zilirukwa (100 za kwanza):",
       "rowN": "Safu {n}"
-    }
+    },
+    "readOnlyShort": "Kusoma tu"
   }
 }

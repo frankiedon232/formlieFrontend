@@ -1,8 +1,9 @@
 <!--
   Data sources → Database explorer (F12 M3). Pick a connection; the tree shows its schemas,
   tables (row counts) and columns, Formalie's response tables marked; a table opens with its rows
-  (DataView: search, filters, sort, Columns, Table / Grid, paging, a row opens its panel) and its
-  structure. Export in the header. On phones the tree opens from "Tables". A connection that isn't
+  (DataView: search, filters, sort, Columns, extra slim rows, paging, a row opens its panel) and its
+  structure. Export in the header. The connection and tree take the sidebar's menu column on
+  desktop (back arrow to the menu); elsewhere they open from "Tables". A connection that isn't
   working shows its error with Retry and Check connection. `?ds=` and `?object=schema.table` keep
   the place on reload and in shared links.
 -->
@@ -38,9 +39,6 @@ onMounted(async () => {
     handle(error)
   }
 })
-const sourceItems = computed(() =>
-  (sources.value ?? []).map(item => ({ value: item.id, label: item.name, icon: engineIcon(item.engine) })),
-)
 
 // Tables of the connection
 const tables = ref<DatabaseTable[] | null>(null)
@@ -90,6 +88,10 @@ async function loadTable() {
 watch([dsId, objectKey], () => void loadTable(), { immediate: true })
 
 const treeOpen = ref(false)
+// The connection and tables take the sidebar's menu column (owner 2026-10-05); the rail stays
+const takeover = useSidebarTakeover()
+takeover.claim(() => t('nav.dataExplorer'), 'i-lucide-table-2')
+watch(takeover.shown, shown => shown && (treeOpen.value = false))
 function open(table: Pick<DatabaseTable, 'schema' | 'name'>) {
   treeOpen.value = false
   tab.value = 'data'
@@ -99,6 +101,7 @@ const openRef = (ref: { schema: string; table: string }) => {
   rowOpen.value = false
   open({ schema: ref.schema, name: ref.table })
 }
+const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, selected: objectKey.value, loading: loadingTables.value }))
 const tab = ref<'data' | 'structure'>('data')
 const tabs = computed(() => [
   { value: 'data', label: t('explorer.tab.data'), icon: 'i-lucide-rows-3' },
@@ -174,22 +177,12 @@ const readOnlyText = computed(() =>
     subtitle-icon="i-lucide-table-2"
   >
     <template #actions>
-      <USelectMenu
-        v-if="sources?.length"
-        :model-value="dsId ?? undefined"
-        :items="sourceItems"
-        value-key="value"
-        :icon="source ? engineIcon(source.engine) : 'i-lucide-database'"
-        class="w-44 sm:w-56"
-        :aria-label="t('explorer.connection')"
-        @update:model-value="value => go({ ds: String(value) })"
-      />
       <UButton
+        v-if="!takeover.shown.value"
         :label="t('explorer.tables')"
         icon="i-lucide-folder-tree"
         color="neutral"
         variant="outline"
-        class="lg:hidden"
         @click="treeOpen = true"
       />
       <template v-if="structure && dsId && !structure.read_only">
@@ -252,15 +245,7 @@ const readOnlyText = computed(() =>
       ]"
       class="my-auto"
     />
-    <div v-else class="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-[17rem_minmax(0,1fr)]">
-      <UCard
-        variant="outline"
-        class="hidden lg:block"
-        :ui="{ body: 'flex max-h-[calc(100dvh-10rem)] flex-col p-3' }"
-      >
-        <ExplorerTree :tables="tables" :selected="objectKey" :loading="loadingTables" @select="open" />
-      </UCard>
-
+    <div v-else class="flex min-h-0 min-w-0 flex-1 flex-col">
       <div class="flex min-w-0 flex-col gap-4">
         <UEmpty
           v-if="!objectKey"
@@ -274,7 +259,7 @@ const readOnlyText = computed(() =>
               icon: 'i-lucide-folder-tree',
               color: 'neutral',
               variant: 'outline',
-              class: 'lg:hidden',
+              class: takeover.shown.value ? 'hidden' : '',
               onClick: () => (treeOpen = true),
             },
           ]"
@@ -300,50 +285,40 @@ const readOnlyText = computed(() =>
           <USkeleton class="h-96 rounded-lg" />
         </template>
         <template v-else>
-          <!-- The table -->
-          <div class="flex flex-wrap items-start gap-3 rounded-lg border border-default p-3 sm:p-4">
-            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-default"
-              ><UIcon
-                :name="structure.formalie ? 'i-lucide-inbox' : 'i-lucide-table-2'"
-                class="size-5 text-highlighted"
-            /></span>
-            <div class="flex min-w-0 flex-1 flex-col gap-1">
-              <h2 class="truncate font-mono text-base font-semibold text-highlighted" dir="ltr">
-                {{ structure.schema }}.{{ structure.name }}
-              </h2>
-              <div class="flex flex-wrap items-center gap-1.5 text-xs text-muted">
-                <UBadge
-                  :label="
-                    structure.formalie ? t('destinations.table.created') : t('destinations.table.yours')
-                  "
-                  color="neutral"
-                  variant="outline"
-                  size="sm"
-                  class="rounded-md"
-                />
-                <span>{{
-                  t('explorer.facts', {
-                    rows: number(structure.rows_estimate ?? 0),
-                    columns: structure.columns.length,
-                  })
-                }}</span>
-                <NuxtLink
-                  v-if="structure.form"
-                  :to="`/forms/${structure.form.id}`"
-                  class="underline-offset-2 hover:underline"
-                  >{{ t('explorer.formOf', { form: structure.form.name }) }}</NuxtLink
-                >
-              </div>
-              <p v-if="readOnlyText" class="flex items-center gap-1.5 text-xs text-muted">
-                <UIcon name="i-lucide-lock" class="size-3.5 shrink-0" /> {{ readOnlyText }}
-              </p>
-            </div>
+          <!-- The table: one slim line -->
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border border-default px-3 py-2 sm:flex-nowrap">
+            <UIcon :name="structure.formalie ? 'i-lucide-inbox' : 'i-lucide-table-2'" class="size-4 shrink-0 text-highlighted" />
+            <h2 class="min-w-0 truncate font-mono text-sm font-semibold text-highlighted" dir="ltr">
+              <span class="font-normal text-muted">{{ structure.schema }}.</span>{{ structure.name }}
+            </h2>
+            <UBadge
+              :label="structure.formalie ? t('destinations.table.created') : t('destinations.table.yours')"
+              color="neutral"
+              variant="outline"
+              size="sm"
+              class="hidden shrink-0 rounded-md md:inline-flex"
+            />
+            <span class="hidden shrink-0 text-xs whitespace-nowrap text-muted tabular-nums lg:inline">{{
+              t('explorer.facts', { rows: number(structure.rows_estimate ?? 0), columns: structure.columns.length })
+            }}</span>
+            <NuxtLink
+              v-if="structure.form"
+              :to="`/forms/${structure.form.id}`"
+              class="hidden min-w-0 truncate text-xs text-muted underline-offset-2 hover:text-highlighted hover:underline 2xl:inline"
+              >{{ t('explorer.formOf', { form: structure.form.name }) }}</NuxtLink
+            >
+            <UTooltip v-if="readOnlyText" :text="readOnlyText">
+              <span class="flex shrink-0 items-center gap-1 text-xs whitespace-nowrap text-muted" tabindex="0" :aria-label="readOnlyText">
+                <UIcon name="i-lucide-lock" class="size-3.5 shrink-0" /> {{ t('explorer.readOnlyShort') }}
+              </span>
+            </UTooltip>
             <UTabs
               v-model="tab"
               :items="tabs"
               :content="false"
               color="neutral"
-              size="sm"
+              size="xs"
+              class="shrink-0 sm:ms-auto"
               :ui="{ ...SEGMENTED_UI, root: 'w-full sm:w-fit' }"
             />
           </div>
@@ -364,14 +339,17 @@ const readOnlyText = computed(() =>
       </div>
     </div>
 
+    <Teleport v-if="takeover.shown.value" :to="`#${SIDEBAR_TAKEOVER_ID}`" defer>
+      <ExplorerNavigator v-bind="navigator" @source="id => go({ ds: id })" @select="open" />
+    </Teleport>
     <USlideover
       v-model:open="treeOpen"
       side="left"
       :title="t('explorer.tables')"
-      :ui="{ content: 'w-full max-w-xs', body: 'p-3' }"
+      :ui="{ content: 'w-full max-w-xs', body: 'flex p-0 sm:p-0' }"
     >
       <template #body>
-        <ExplorerTree :tables="tables" :selected="objectKey" :loading="loadingTables" @select="open" />
+        <ExplorerNavigator v-bind="navigator" @source="id => go({ ds: id })" @select="open" />
       </template>
     </USlideover>
     <ExplorerRowDetail

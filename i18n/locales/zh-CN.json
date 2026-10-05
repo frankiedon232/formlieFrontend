@@ -410,7 +410,8 @@
     "connectionsAttention": "需要关注",
     "connectionsFailing": "失败",
     "connectionsDisabled": "已停用",
-    "connectionsNew": "添加连接"
+    "connectionsNew": "添加连接",
+    "backToMenu": "返回菜单"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -4691,6 +4692,7 @@
       "skipped": "已跳过",
       "whySkipped": "行被跳过的原因（前 100 条）：",
       "rowN": "第 {n} 行"
-    }
+    },
+    "readOnlyShort": "只读"
   }
 }

@@ -410,7 +410,8 @@
     "connectionsAttention": "Потребують уваги",
     "connectionsFailing": "Зі збоями",
     "connectionsDisabled": "Вимкнені",
-    "connectionsNew": "Додати підключення"
+    "connectionsNew": "Додати підключення",
+    "backToMenu": "Назад до меню"
   },
   "navbar": {
     "breadcrumb": "Навігаційний ланцюжок",
@@ -4691,6 +4692,7 @@
       "skipped": "Пропущено",
       "whySkipped": "Чому рядки було пропущено (перші 100):",
       "rowN": "Рядок {n}"
-    }
+    },
+    "readOnlyShort": "Лише читання"
   }
 }

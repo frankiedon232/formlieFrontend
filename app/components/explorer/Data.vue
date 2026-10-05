@@ -1,7 +1,7 @@
 <!--
   A table's rows (F12 M3) in the shared DataView: search across every column, filters for columns
-  with few distinct values, sortable headers, Columns (the first eight shown), Table / Grid, server
-  paging. NULL shows dimmed; a row or card opens the row panel. Exposes the list's params for
+  with few distinct values, sortable headers, Columns (the first eight shown), extra slim rows
+  (table only, no grid), server paging. NULL shows dimmed; a row opens the row panel. Exposes the list's params for
   Export.
 -->
 <script setup lang="ts">
@@ -62,6 +62,8 @@ defineExpose({
     :fetcher="fetcher"
     :filters="filters"
     row-key="__key"
+    dense
+    table-only
     :open-row="openRow"
     :search-placeholder="t('explorer.searchRows')"
     empty-icon="i-lucide-table-2"
@@ -70,9 +72,6 @@ defineExpose({
   >
     <template v-for="column in structure.columns" :key="column.name" #[`${column.name}-cell`]="{ row }">
       <ExplorerCell :value="row.original[column.name]" />
-    </template>
-    <template #grid-card="{ row, columns: shown }">
-      <ExplorerRecordCard :row="row" :structure="structure" :columns="shown" />
     </template>
   </DataView>
 </template>

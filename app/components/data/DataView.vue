@@ -26,6 +26,10 @@ const props = withDefaults(
     openRow?: (row: T) => void
     /** The Columns menu: move and show / hide columns (owner 2026-10-04); on for 4+ columns. */
     columnsMenu?: boolean
+    /** Extra slim rows with column lines, for raw data such as database tables (F12 M3). */
+    dense?: boolean
+    /** Only the table, no Table / Grid switch (raw data such as database rows; owner 2026-10-05). */
+    tableOnly?: boolean
     emptyIcon?: string
     emptyTitle?: string
     emptyDescription?: string
@@ -41,11 +45,26 @@ const props = withDefaults(
     busy: undefined,
     openRow: undefined,
     columnsMenu: undefined,
+    dense: false,
+    tableOnly: false,
     emptyIcon: 'i-lucide-inbox',
     emptyTitle: undefined,
     emptyDescription: undefined,
   },
 )
+
+const TABLE_UI = {
+  base: 'min-w-full',
+  thead: 'bg-elevated/50',
+  th: 'py-2 text-default font-medium',
+  td: 'py-3 text-default',
+  tr: 'transition-colors hover:bg-elevated/50 data-[selectable=true]:cursor-pointer data-[selected=true]:bg-elevated/50',
+}
+const DENSE_TABLE_UI = {
+  ...TABLE_UI,
+  th: 'h-8 px-3 py-0 text-xs text-default font-medium border-e border-default last:border-e-0 whitespace-nowrap',
+  td: 'h-7 px-3 py-0 text-xs text-default border-e border-default last:border-e-0 whitespace-nowrap',
+}
 
 const slots = defineSlots<
   {
@@ -71,6 +90,7 @@ const state = useDataView<T>({
   defaultSort: props.defaultSort,
   defaultView: props.defaultView,
 })
+const viewMode = computed(() => (props.tableOnly ? 'table' : state.view.value))
 
 // ── Column order and visibility (remembered per list on this browser) ───────────────────
 const layout = useLocalStorage<{ order: string[]; hidden: string[]; shown: string[] }>(`formalie:columns:${props.id}`, { order: [], hidden: [], shown: [] }, { mergeDefaults: true })
@@ -202,15 +222,15 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
       :search-placeholder="searchPlaceholder"
       :sort-options="sortOptions"
       :date-range="dateRange"
-      views
+      :views="!tableOnly"
     >
       <template v-if="slots['toolbar-start']" #start>
         <slot name="toolbar-start" />
       </template>
-      <template v-if="slots['toolbar-end'] || (showColumnsMenu && state.view.value === 'table')" #end>
+      <template v-if="slots['toolbar-end'] || (showColumnsMenu && viewMode === 'table')" #end>
         <slot name="toolbar-end" />
         <DataColumns
-          v-if="showColumnsMenu && state.view.value === 'table'"
+          v-if="showColumnsMenu && viewMode === 'table'"
           :columns="columns"
           :order="columnOrder"
           :visible="isVisible"
@@ -283,7 +303,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
       </template>
     </UEmpty>
 
-    <template v-else-if="state.view.value === 'grid'">
+    <template v-else-if="viewMode === 'grid'">
       <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" :aria-busy="state.loading.value">
         <template v-if="showSkeleton">
           <USkeleton v-for="n in 8" :key="n" class="h-40 rounded-lg" />
@@ -308,7 +328,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
     <div v-else class="overflow-x-auto rounded-lg border border-default">
       <div v-if="showSkeleton" class="divide-y divide-default" :aria-label="t('common.loading')">
         <div class="h-10 bg-elevated/50" />
-        <div v-for="n in 8" :key="n" class="flex items-center gap-4 px-4 py-3.5">
+        <div v-for="n in 8" :key="n" class="flex items-center gap-4 px-4" :class="dense ? 'py-2' : 'py-3.5'">
           <USkeleton class="h-4 w-1/3" />
           <USkeleton class="hidden h-4 w-20 sm:block" />
           <USkeleton class="hidden h-4 w-24 md:block" />
@@ -326,13 +346,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
         :meta="tableMeta"
         :on-select="openRow ? (_: Event, row: { original: T }) => openRow!(row.original) : undefined"
         sticky
-        :ui="{
-          base: 'min-w-full',
-          thead: 'bg-elevated/50',
-          th: 'py-2 text-default font-medium',
-          td: 'py-3 text-default',
-          tr: 'transition-colors hover:bg-elevated/50 data-[selectable=true]:cursor-pointer data-[selected=true]:bg-elevated/50',
-        }"
+        :ui="dense ? DENSE_TABLE_UI : TABLE_UI"
       >
         <template v-for="name in cellSlots" :key="name" #[name]="slotProps">
           <slot :name="name" v-bind="slotProps" />

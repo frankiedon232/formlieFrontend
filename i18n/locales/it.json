@@ -410,7 +410,8 @@
     "connectionsAttention": "Da controllare",
     "connectionsFailing": "In errore",
     "connectionsDisabled": "Disattivate",
-    "connectionsNew": "Aggiungi connessione"
+    "connectionsNew": "Aggiungi connessione",
+    "backToMenu": "Torna al menu"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -4691,6 +4692,7 @@
       "skipped": "Saltate",
       "whySkipped": "Perché alcune righe sono state saltate (le prime 100):",
       "rowN": "Riga {n}"
-    }
+    },
+    "readOnlyShort": "Sola lettura"
   }
 }

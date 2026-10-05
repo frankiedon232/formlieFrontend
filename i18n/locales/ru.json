@@ -410,7 +410,8 @@
     "connectionsAttention": "Требуют внимания",
     "connectionsFailing": "Со сбоями",
     "connectionsDisabled": "Отключённые",
-    "connectionsNew": "Добавить подключение"
+    "connectionsNew": "Добавить подключение",
+    "backToMenu": "Назад в меню"
   },
   "navbar": {
     "breadcrumb": "Навигационная цепочка",
@@ -4691,6 +4692,7 @@
       "skipped": "Пропущено",
       "whySkipped": "Почему строки были пропущены (первые 100):",
       "rowN": "Строка {n}"
-    }
+    },
+    "readOnlyShort": "Только чтение"
   }
 }

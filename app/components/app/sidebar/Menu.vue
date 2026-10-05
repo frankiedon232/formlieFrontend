@@ -19,6 +19,8 @@ function onFolderCreated(folder: { id: string }) {
   void navigateTo(`/folders/${folder.id}`)
 }
 const mainHeading = computed(() => t(areaLabel.value))
+// Back to the page that held this column (Database explorer), main sidebar only
+const takeover = useSidebarTakeover()
 const colorMode = useColorMode()
 
 const isDark = computed({
@@ -102,6 +104,17 @@ const menuUi = {
     </div>
 
     <div class="flex flex-1 flex-col gap-5 overflow-y-auto px-3 py-4">
+      <UButton
+        v-if="props.collapsible && takeover.owner.value && takeover.dismissed.value"
+        :label="takeover.owner.value.title"
+        :icon="takeover.owner.value.icon"
+        trailing-icon="i-lucide-arrow-right"
+        color="neutral"
+        variant="outline"
+        block
+        :ui="{ trailingIcon: 'ms-auto rtl:-scale-x-100' }"
+        @click="takeover.dismissed.value = false"
+      />
       <nav :aria-label="mainHeading">
         <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ mainHeading }}</p>
         <UNavigationMenu :items="mainItems" orientation="vertical" color="neutral" :ui="menuUi" v-bind="accordion">

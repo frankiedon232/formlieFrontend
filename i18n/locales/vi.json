@@ -410,7 +410,8 @@
     "connectionsAttention": "Cần chú ý",
     "connectionsFailing": "Đang lỗi",
     "connectionsDisabled": "Đã tắt",
-    "connectionsNew": "Thêm kết nối"
+    "connectionsNew": "Thêm kết nối",
+    "backToMenu": "Quay lại menu"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -4691,6 +4692,7 @@
       "skipped": "Đã bỏ qua",
       "whySkipped": "Lý do các hàng bị bỏ qua (100 hàng đầu tiên):",
       "rowN": "Hàng {n}"
-    }
+    },
+    "readOnlyShort": "Chỉ đọc"
   }
 }

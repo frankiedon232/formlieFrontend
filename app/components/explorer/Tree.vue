@@ -1,5 +1,5 @@
 <!--
-  The database tree (F12 M3): schemas → tables → columns, with each table's row count; Formalie's
+  The database tree (F12 M3): schemas → tables → columns (type on hover), with each table's row count; Formalie's
   response tables marked. Search narrows by table or column name. Nuxt UI's tree gives keyboard
   navigation (arrows move and open, Enter selects); picking a table opens it.
 -->
@@ -46,15 +46,14 @@ const items = computed<TreeItem[]>(() => {
     <UInput v-model="search" icon="i-lucide-search" :placeholder="t('explorer.searchTables')" class="w-full" :aria-label="t('explorer.searchTables')" />
     <div v-if="loading && !tables" class="flex flex-col gap-2"><USkeleton v-for="n in 8" :key="n" class="h-6 rounded-md" :class="n % 3 ? 'ms-5' : ''" /></div>
     <p v-else-if="!items.length" class="px-1 text-sm text-muted">{{ search ? t('explorer.noMatch') : t('explorer.noTables') }}</p>
-    <UTree v-else :key="search" :items="items" :get-key="item => String(item.key)" color="neutral" size="sm" class="min-h-0 overflow-y-auto">
+    <UTree v-else :key="search" :items="items" :get-key="item => String(item.key)" color="neutral" size="sm" class="-mx-1 min-h-0 flex-1 overflow-y-auto">
       <template #item-label="{ item }">
-        <span class="truncate" :class="[item.table && keyOf(item.table) === selected ? 'font-semibold text-highlighted' : '', item.column ? 'font-mono text-xs' : '']" dir="ltr">{{ item.label }}</span>
+        <span class="truncate" :title="item.column ? `${item.label} · ${item.column.type}` : String(item.label)" :class="[item.table && keyOf(item.table) === selected ? 'font-semibold text-highlighted' : '', item.column ? 'font-mono text-xs' : '']" dir="ltr">{{ item.label }}</span>
       </template>
       <template #item-trailing="{ item }">
         <span v-if="item.table && item.table.rows_estimate !== null" class="ms-auto ps-2 text-[11px] text-muted tabular-nums">{{ number(item.table.rows_estimate) }}</span>
-        <code v-else-if="item.column" class="ms-auto ps-2 font-mono text-[10px] text-dimmed" dir="ltr">{{ item.column.type }}</code>
       </template>
     </UTree>
-    <p class="flex items-center gap-1.5 px-1 text-[11px] text-muted"><UIcon name="i-lucide-inbox" class="size-3.5" /> {{ t('explorer.responseTable') }}</p>
+    <p class="mt-auto flex shrink-0 items-center gap-1.5 border-t border-default px-1 pt-2.5 text-[11px] text-muted"><UIcon name="i-lucide-inbox" class="size-3.5" /> {{ t('explorer.responseTable') }}</p>
   </div>
 </template>
