@@ -12,6 +12,7 @@ import * as folders from './routes/folders'
 import * as dataSources from './routes/dataSources'
 import * as destinations from './routes/destinations'
 import * as explorer from './routes/explorer'
+import * as explorerSchema from './routes/explorerSchema'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
@@ -121,6 +122,8 @@ const router = createRouter()
   .post('/datasources/:id/duplicate', dataSources.duplicateDataSource)
   .get('/datasources/:id/tables', destinations.listTables)
   .get('/datasources/:id/explorer/tables', explorer.explorerTables)
+  .post('/datasources/:id/explorer/tables', explorerSchema.createTable)
+  .post('/datasources/:id/explorer/changes', explorerSchema.changeTable)
   .get('/datasources/:id/explorer/structure', explorer.tableStructure)
   .get('/datasources/:id/explorer/rows', explorer.tableRows)
   .get('/datasources/:id/explorer/facets', explorer.tableFacets)

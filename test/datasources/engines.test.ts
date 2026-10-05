@@ -95,7 +95,7 @@ describe('permissions', () => {
     const mysql = script('mysql', { database: 'leads', username: 'app' }, ownOnly)
     expect(mysql).toContain("CREATE USER 'app'@'%'")
     expect(mysql).toContain('GRANT CREATE, ALTER, INDEX, REFERENCES, SELECT, INSERT, UPDATE, DELETE ON `leads`.*')
-    expect(script('mysql', { database: 'leads', username: 'app' }, { ...full, schemas: ['crm'] })).toContain('GRANT INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX ON `crm`.*')
+    expect(script('mysql', { database: 'leads', username: 'app' }, { ...full, schemas: ['crm'] })).toContain('GRANT INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX, DROP ON `crm`.*')
 
     const pgOwn = script('postgresql', { database: 'cases', username: 'app' }, ownOnly)
     expect(pgOwn).toContain('GRANT USAGE, CREATE ON SCHEMA "public" TO "app";')
@@ -113,7 +113,7 @@ describe('permissions', () => {
     expect(script('sqlserver', { database: 'People', auth: 'entra_service_principal', client_id: 'abc' }, readOnly)).toContain('FROM EXTERNAL PROVIDER')
 
     expect(script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] }, { oracle23: true })).toContain('GRANT SELECT ANY TABLE ON SCHEMA "FINANCE" TO "APP";')
-    expect(script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] }, { oracle23: true })).toContain('GRANT CREATE ANY TABLE, ALTER ANY TABLE, CREATE ANY INDEX ON SCHEMA "FINANCE"')
+    expect(script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] }, { oracle23: true })).toContain('GRANT CREATE ANY TABLE, ALTER ANY TABLE, DROP ANY TABLE, CREATE ANY INDEX, DROP ANY INDEX ON SCHEMA "FINANCE"')
     const oracle19 = script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] })
     expect(oracle19).toContain("FROM all_sequences WHERE sequence_owner = 'FINANCE'")
     expect(oracle19).toContain('GRANT CREATE TABLE, CREATE SEQUENCE TO "APP";')

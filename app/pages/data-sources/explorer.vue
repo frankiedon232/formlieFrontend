@@ -10,7 +10,8 @@
 <script setup lang="ts">
 import type { DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable } from '#shared/types/destinations'
-import type { ColumnFacet, TableRow, TableStructure } from '#shared/types/explorer'
+import type { DropdownMenuItem } from '@nuxt/ui'
+import type { ColumnFacet, ExplorerColumn, SchemaResult, TableIndex, TableRow, TableStructure } from '#shared/types/explorer'
 
 definePageMeta({ breadcrumb: 'nav.dataExplorer' })
 const { t } = useI18n()
@@ -44,11 +45,11 @@ onMounted(async () => {
 const tables = ref<DatabaseTable[] | null>(null)
 const tablesError = ref<ApiError | null>(null)
 const loadingTables = ref(false)
-async function loadTables() {
+async function loadTables(keep = false) {
   if (!dsId.value) return
   loadingTables.value = true
   tablesError.value = null
-  tables.value = null
+  if (!keep) tables.value = null
   try {
     tables.value = (await api.get<DatabaseTable[]>(`/datasources/${dsId.value}/explorer/tables`)).data
   } catch (error) {
@@ -163,6 +164,41 @@ async function removeRow(item: TableRow) {
     deleting.value = false
   }
 }
+// Structure changes (their own tables with Full access, never response tables)
+const schema = useTemplateRef<{ addColumn: () => void; editColumn: (column: ExplorerColumn) => void; dropColumn: (column: ExplorerColumn) => void; addIndex: () => void; dropIndex: (index: TableIndex) => void; table: (mode: 'rename' | 'truncate' | 'drop') => void; removing: string | null }>('schema')
+const canCreate = computed(() => source.value?.access.other === 'read_write')
+const newTableOpen = ref(false)
+// The open table's schema first, then the connection's own list, then the rest
+const schemas = computed(() => {
+  const theirs = [...new Set([...(tables.value ?? []).filter(item => !item.formalie).map(item => item.schema), ...(source.value?.access.schemas ?? [])])]
+  const list = theirs.length ? theirs : [...new Set((tables.value ?? []).map(item => item.schema))]
+  const first = structure.value?.schema ?? source.value?.access.schemas[0] ?? (tables.value ?? []).find(item => item.formalie)?.schema
+  return first && list.includes(first) ? [first, ...list.filter(item => item !== first)] : list
+})
+const tableMenu = computed<DropdownMenuItem[][]>(() => [
+  [
+    { label: t('explorer.ddl.addColumn'), icon: 'i-lucide-columns-3', onSelect: () => ((tab.value = 'structure'), schema.value?.addColumn()) },
+    { label: t('explorer.ddl.addIndex'), icon: 'i-lucide-list-tree', onSelect: () => ((tab.value = 'structure'), schema.value?.addIndex()) },
+    { label: t('explorer.ddl.renameButton'), icon: 'i-lucide-pencil', onSelect: () => schema.value?.table('rename') },
+  ],
+  [
+    { label: t('explorer.ddl.truncateButton'), icon: 'i-lucide-eraser', color: 'error' as const, onSelect: () => schema.value?.table('truncate') },
+    { label: t('explorer.ddl.dropButton'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => schema.value?.table('drop') },
+  ],
+])
+async function schemaChanged(result: SchemaResult) {
+  await loadTables(true)
+  if (!result.table) return go({ ds: dsId.value ?? undefined })
+  const key = `${result.table.schema}.${result.table.name}`
+  if (key !== objectKey.value) return go({ ds: dsId.value ?? undefined, object: key })
+  await loadTable()
+  await data.value?.refresh()
+}
+function tableCreated(table: { schema: string; name: string }) {
+  void loadTables(true)
+  tab.value = 'structure'
+  go({ ds: dsId.value ?? undefined, object: `${table.schema}.${table.name}` })
+}
 const readOnlyText = computed(() =>
   structure.value?.read_only ? t(`explorer.readOnly.${structure.value.read_only}`) : null,
 )
@@ -183,6 +219,15 @@ const readOnlyText = computed(() =>
         color="neutral"
         variant="outline"
         @click="treeOpen = true"
+      />
+      <UButton
+        v-if="canCreate && dsId && !tablesError"
+        :label="t('explorer.ddl.newTable')"
+        icon="i-lucide-table-2"
+        color="neutral"
+        variant="outline"
+        class="hidden sm:inline-flex"
+        @click="newTableOpen = true"
       />
       <template v-if="structure && dsId && !structure.read_only">
         <UButton :label="t('explorer.addRow')" icon="i-lucide-plus" color="neutral" @click="editRow(null)" />
@@ -312,6 +357,9 @@ const readOnlyText = computed(() =>
               class="shrink-0 sm:ms-auto"
               :ui="{ ...SEGMENTED_UI, root: 'w-full sm:w-fit' }"
             />
+            <UDropdownMenu v-if="structure.alterable" :items="tableMenu" :content="{ align: 'end' }">
+              <UButton icon="i-lucide-ellipsis" color="neutral" variant="outline" size="xs" square :aria-label="t('explorer.ddl.tableActions', { table: structure.name })" />
+            </UDropdownMenu>
           </div>
 
           <div class="transition-opacity" :class="loadingTable ? 'opacity-60' : ''">
@@ -324,7 +372,17 @@ const readOnlyText = computed(() =>
               :facets="facets"
               @open="openRow"
             />
-            <ExplorerStructure v-else :structure="structure" @table="openRef" />
+            <ExplorerStructure
+              v-else
+              :structure="structure"
+              :removing="schema?.removing"
+              @table="openRef"
+              @add-column="schema?.addColumn()"
+              @edit-column="column => schema?.editColumn(column)"
+              @drop-column="column => schema?.dropColumn(column)"
+              @add-index="schema?.addIndex()"
+              @drop-index="index => schema?.dropIndex(index)"
+            />
           </div>
         </template>
       </div>
@@ -355,6 +413,8 @@ const readOnlyText = computed(() =>
       @edit="editRow"
       @remove="removeRow"
     />
+    <ExplorerSchemaActions v-if="structure?.alterable && dsId && source" ref="schema" :source-id="dsId" :engine="source.engine" :structure="structure" @changed="schemaChanged" />
+    <ExplorerNewTableModal v-if="canCreate && dsId && source" v-model:open="newTableOpen" :source-id="dsId" :engine="source.engine" :schemas="schemas" @created="tableCreated" />
     <template v-if="structure && dsId && !structure.read_only">
       <ExplorerRowForm
         v-model:open="formOpen"

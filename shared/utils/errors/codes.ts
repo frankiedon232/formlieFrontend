@@ -113,6 +113,7 @@ export const ERROR_CODES = {
   },
   'FRM-DEST-1018': { status: 409, message: 'A row with this key already exists.' },
   'FRM-DEST-1019': { status: 403, message: "This table's rows can't be changed here." },
+  'FRM-DEST-1022': { status: 409, message: 'That name is already used. Choose another one.' },
   'FRM-DEST-1012': { status: 400, message: "This account can't create or use the response tables." },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },

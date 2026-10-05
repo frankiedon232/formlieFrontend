@@ -8,6 +8,7 @@ import type { DatabaseTable, TableColumn } from '#shared/types/destinations'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 import { seedOf } from './dataSourceSim'
+import { applyStructureEdits } from './tableEdits'
 import type { StoredDataSource } from './dataSourceStore'
 
 type Spec = [name: string, kind: 'id' | 'text' | 'long' | 'email' | 'date' | 'datetime' | 'number' | 'money' | 'bool' | 'key', required?: boolean]
@@ -85,5 +86,6 @@ export function tablesOf(source: StoredDataSource, created: CreatedTable[]): Dat
     if (schema === tablesSchemaOf(engine, source.settings, source.access) && own.some(table => table.name === name)) return
     theirs.push({ schema, name, columns: columnsOf(engine, specs), rows_estimate: 40 + (seedOf(`${source.id}${name}`) % 900), formalie: false })
   })
-  return [...own, ...theirs].sort((a, b) => Number(b.formalie) - Number(a.formalie) || a.schema.localeCompare(b.schema) || a.name.localeCompare(b.name))
+  // Tables created, renamed, changed or deleted in the explorer (their own tables only)
+  return applyStructureEdits(source.id, [...own, ...theirs]).sort((a, b) => Number(b.formalie) - Number(a.formalie) || a.schema.localeCompare(b.schema) || a.name.localeCompare(b.name))
 }

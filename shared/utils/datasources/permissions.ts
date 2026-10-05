@@ -63,7 +63,7 @@ const MYSQL: Record<string, string> = {
   insert: 'INSERT',
   update: 'UPDATE',
   delete: 'DELETE',
-  other_structure: 'CREATE, ALTER, INDEX',
+  other_structure: 'CREATE, ALTER, INDEX, DROP (DROP also empties tables)',
 }
 
 /** The privilege behind each operation, per engine (technical names, shown as they are). */
@@ -84,7 +84,7 @@ export const PRIVILEGES: Record<DbEngine, Record<string, string>> = {
     update: 'UPDATE',
     delete: 'DELETE',
     sequences: 'USAGE, SELECT on sequences',
-    other_structure: 'CREATE on the schema (new tables); owner to change existing ones',
+    other_structure: 'CREATE on the schema (new tables), TRUNCATE; owner to change or delete existing ones',
   },
   sqlserver: {
     connect: 'login + database user',
@@ -99,7 +99,7 @@ export const PRIVILEGES: Record<DbEngine, Record<string, string>> = {
     insert: 'INSERT',
     update: 'UPDATE',
     delete: 'DELETE',
-    other_structure: 'CREATE TABLE + ALTER on the schema',
+    other_structure: 'CREATE TABLE + ALTER on the schema (change, empty, delete)',
   },
   oracle: {
     connect: 'CREATE SESSION',
@@ -115,7 +115,7 @@ export const PRIVILEGES: Record<DbEngine, Record<string, string>> = {
     update: 'UPDATE',
     delete: 'DELETE',
     sequences: 'SELECT on sequences',
-    other_structure: 'CREATE / ALTER ANY TABLE on the schema (23ai)',
+    other_structure: 'CREATE / ALTER / DROP ANY TABLE on the schema (23ai; DROP also empties tables)',
   },
 }
 
@@ -207,9 +207,9 @@ export function grantScript(engine: DbEngine, settings: DataSourceSettings, acce
       const extra = others.filter(db => db !== own)
       const on = (privileges: string, list: string[]) => list.map(db => `GRANT ${privileges} ON ${quote.mysql(db)}.* TO ${who};`)
       add('account', [`CREATE USER ${who} IDENTIFIED BY '<password>'${isEncrypted(engine, settings) ? ' REQUIRE SSL' : ''} WITH MAX_USER_CONNECTIONS 10;`], ['host_limit', 'pool'])
-      add('own', on('CREATE, ALTER, INDEX, REFERENCES, SELECT, INSERT, UPDATE, DELETE', [own]), ['mysql_database'])
+      add('own', on(`CREATE, ALTER, INDEX, REFERENCES, SELECT, INSERT, UPDATE, DELETE${levels.includes('write') ? ', DROP' : ''}`, [own]), ['mysql_database'])
       add('read', on('SELECT, SHOW VIEW', extra))
-      add('write', on('INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX', extra))
+      add('write', on('INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX, DROP', extra))
       // Nothing more to run: the block only explains why (no statements, a note).
       if (levels.includes('read') && !extra.length) blocks.push({ key: levels.includes('write') ? 'write' : 'read', sql: '', notes: ['mysql_covered'] })
       break
@@ -224,9 +224,9 @@ export function grantScript(engine: DbEngine, settings: DataSourceSettings, acce
       add(
         'write',
         each(schema => [
-          `GRANT INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA ${schema} TO ${role};`,
+          `GRANT INSERT, UPDATE, DELETE, TRUNCATE ON ALL TABLES IN SCHEMA ${schema} TO ${role};`,
           `GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA ${schema} TO ${role};`,
-          `ALTER DEFAULT PRIVILEGES IN SCHEMA ${schema} GRANT INSERT, UPDATE, DELETE ON TABLES TO ${role};`,
+          `ALTER DEFAULT PRIVILEGES IN SCHEMA ${schema} GRANT INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO ${role};`,
           `ALTER DEFAULT PRIVILEGES IN SCHEMA ${schema} GRANT USAGE, SELECT ON SEQUENCES TO ${role};`,
           `GRANT CREATE ON SCHEMA ${schema} TO ${role};`,
         ]),
@@ -268,7 +268,7 @@ export function grantScript(engine: DbEngine, settings: DataSourceSettings, acce
       add('own', [`GRANT CREATE TABLE, CREATE SEQUENCE TO ${account};`, `ALTER USER ${account} QUOTA 1G ON USERS;`], ['oracle_own_schema'])
       if (options.oracle23) {
         add('read', owners.map(owner => `GRANT SELECT ANY TABLE ON SCHEMA ${quote.oracle(owner)} TO ${account};`))
-        add('write', owners.flatMap(owner => [`GRANT INSERT ANY TABLE, UPDATE ANY TABLE, DELETE ANY TABLE ON SCHEMA ${quote.oracle(owner)} TO ${account};`, `GRANT SELECT ANY SEQUENCE ON SCHEMA ${quote.oracle(owner)} TO ${account};`, `GRANT CREATE ANY TABLE, ALTER ANY TABLE, CREATE ANY INDEX ON SCHEMA ${quote.oracle(owner)} TO ${account};`]))
+        add('write', owners.flatMap(owner => [`GRANT INSERT ANY TABLE, UPDATE ANY TABLE, DELETE ANY TABLE ON SCHEMA ${quote.oracle(owner)} TO ${account};`, `GRANT SELECT ANY SEQUENCE ON SCHEMA ${quote.oracle(owner)} TO ${account};`, `GRANT CREATE ANY TABLE, ALTER ANY TABLE, DROP ANY TABLE, CREATE ANY INDEX, DROP ANY INDEX ON SCHEMA ${quote.oracle(owner)} TO ${account};`]))
       } else {
         add('read', [...loop('SELECT'), ...loop('SELECT', 'all_views', 'view_name')], ['oracle_new_tables'])
         add('write', [...loop('INSERT, UPDATE, DELETE, ALTER'), ...loop('SELECT', 'all_sequences', 'sequence_name', 'sequence_owner')], ['oracle_new_tables', 'oracle_create_other'])

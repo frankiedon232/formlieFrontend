@@ -12,6 +12,7 @@
  *   POST /explorer-exports/:id/link                           a one-time private download link (5 min)
  *   GET  /datasource-exports/:token                           the file (plain download)
  *   POST · PATCH · DELETE /datasources/:id/explorer/rows      add, change, delete a row (Full access, their tables)
+ *   POST /datasources/:id/explorer/tables · /changes          structure changes (explorerSchema.ts)
  */
 import { z } from 'zod'
 import type { H3Event } from 'h3'
@@ -395,3 +396,6 @@ export const deleteRow = defineMockRoute(({ event, query }) => {
   rowAudit(event, tenant, user, 'data.row_deleted', source, structure, key)
   return ok({ deleted: true })
 })
+
+/** For the structure-change routes (explorerSchema.ts). */
+export const usableSource = usable

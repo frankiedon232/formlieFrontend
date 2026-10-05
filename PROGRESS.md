@@ -586,6 +586,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ➖ Import CSV / Excel: built, then removed (owner 2026-10-05: not supported for now)
 - ✅ Layout (owner 2026-10-05): the connection and tree take the sidebar's menu column on desktop (`useSidebarTakeover`; rail stays; back arrow to the menu and a button back to the tree; same width as the menu, drag to resize); the page keeps the full width; a slim one-line table strip; extra slim rows with column lines (DataView `dense`), table only (DataView `table-only`, no grid); phones, tablets and a folded sidebar open the same panel from "Tables"
 - ✅ Export also as JSON (row objects, JSON columns parsed) and SQL INSERT statements for the connection's engine (`shared/utils/datasources/exportFormats.ts`); the tree keeps one table open at a time; the account avatar sits at the foot of the rail while the tree holds the menu column
+- ✅ Structure changes on the organisation's own tables (Full access; never response tables or views): New table (columns, key, numbered automatically, defaults), add / change (rename, kind, size, can be empty, default) / delete columns, add / delete indexes, rename, empty (TRUNCATE) and delete (DROP) with the table's name typed to confirm; every dialog shows the exact statements per engine first (`shared/utils/datasources/ddl.ts`); a change that may lose data says so; audit `data.user_table_created` · `table_altered` · `table_truncated` · `table_dropped`
 
 ### 4. Query editor
 
@@ -1073,6 +1074,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | Explorer: export tables as JSON and SQL INSERT statements too; one table open at a time in the tree; account avatar at the foot of the rail (with a line above) while the tree holds the menu column; slimmer tree search and connection picker; one square bullet for every table | F12 M3 | ✅ |
 | 2026-10-05 | Explorer: no import for now (removed); adding, changing and deleting rows only in tables created outside Formalie, never in response tables | F12 M3 | ✅ |
 | 2026-10-05 | Make sure nothing loads a whole table at once: paging in the database, a capped count ("10,000+"), a time limit on every explorer statement (backend rules in the contract) | F12 M3 | ✅ |
+| 2026-10-05 | Table and column management in the explorer (CREATE TABLE, add / change / delete columns, indexes, rename, empty, delete), only on tables that aren't Formalie's, with Full access | F12 M3 | ✅ |
 
 ---
 
@@ -1246,3 +1248,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Explorer: JSON and SQL (INSERT per engine) exports; one open table in the tree; account at the rail's foot in explorer mode. Test: `datasources/exportFormats`. |
 | 2026-10-05 | F12 | Import into tables removed (owner: not supported for now): dialog, routes, file readers, errors FRM-DEST-1020 / 1021, audit `data.rows_imported`. Row changes stay limited to the organisation's own tables. |
 | 2026-10-05 | F12 | Explorer backend rules in API-CONTRACT (paging in the database, count capped at 10,000 with `meta.total_capped` shown as "10,000+", 5 s statement limit → FRM-DEST-1011, capped facets, catalogue-only tree, streamed and capped exports, workspace check). Fixed duplicate auto-import warnings (`DbEngine` imported from its one home, connection `FieldType` renamed `ConnectionFieldType`, one `quoteName`). |
+| 2026-10-05 | F12 | Explorer structure changes (owner): New table, columns, indexes, rename, empty, delete for their own tables with Full access, never Formalie's; statements per engine shown first and run as shown; mock keeps the changes (`server/mock/data/tableEdits.ts`). Tests: `datasources/ddl`. |

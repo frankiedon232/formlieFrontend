@@ -43,6 +43,8 @@ export interface TableStructure {
   /** The table's definition (read only). */
   ddl: string
   read_only: ReadOnlyReason
+  /** Its structure may be changed here: the organisation's own table with Full access (never a response table). */
+  alterable: boolean
 }
 
 /** A row as stored; `__key` identifies it (its primary key) for the detail panel and changes. */
@@ -62,4 +64,10 @@ export interface TableExport {
   progress: number
   rows: number
   size: number | null
+}
+
+/** The answer to a structure change: the statements that ran and the table now (null = deleted). */
+export interface SchemaResult {
+  statements: string[]
+  table: { schema: string; name: string } | null
 }
