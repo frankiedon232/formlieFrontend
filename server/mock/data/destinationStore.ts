@@ -137,6 +137,18 @@ export function createdTablesOn(tenant: MockTenant, source: StoredDataSource): C
     })
 }
 
+/** Every form that stores in a database: form id → connection name and engine (cheap, for lists). */
+export function storageMarks(tenant: MockTenant): Map<string, { mode: 'database'; datasource: string; engine: StoredDataSource['engine'] }> {
+  const sources = new Map(dataSourcesOf(tenant).map(source => [source.id, source]))
+  const marks = new Map<string, { mode: 'database'; datasource: string; engine: StoredDataSource['engine'] }>()
+  for (const item of destinationsOf(tenant)) {
+    const source = sources.get(item.datasource_id)
+    if (source) marks.set(item.form_id, { mode: 'database', datasource: source.name, engine: source.engine })
+  }
+  return marks
+}
+export const FORMALIE_MARK = { mode: 'formalie' as const, datasource: null, engine: null }
+
 // ── Delivery status ──────────────────────────────────────────────────────────────────────
 
 interface Context {

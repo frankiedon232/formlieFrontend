@@ -4567,6 +4567,10 @@
         "p2": "Başarısız teslimler giderek uzayan aralıklarla yeniden denenir; bunları kendiniz de yeniden deneyebilirsiniz.",
         "p3": "Önceki yanıtlar daha sonra, herhangi bir tarih aralığı için gönderilebilir."
       }
+    },
+    "mark": {
+      "database": "Yanıtlar {name} içinde saklanıyor",
+      "formalie": "Yanıtlar Formalie içinde saklanıyor"
     }
   }
 }

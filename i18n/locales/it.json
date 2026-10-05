@@ -4567,6 +4567,10 @@
         "p2": "Le consegne non riuscite vengono ritentate con attese crescenti; potete ritentarle voi stessi.",
         "p3": "Le risposte precedenti si possono inviare in seguito, per qualsiasi intervallo di date."
       }
+    },
+    "mark": {
+      "database": "Risposte salvate in {name}",
+      "formalie": "Risposte salvate in Formalie"
     }
   }
 }

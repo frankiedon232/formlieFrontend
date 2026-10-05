@@ -48,6 +48,7 @@ const facts = computed(() => {
     <p class="flex min-w-0 items-center gap-1.5 text-sm text-muted">
       <UIcon name="i-lucide-folder" class="size-3.5 shrink-0" />
       <span class="truncate">{{ row.folder?.name ?? t('forms.noFolder') }}</span>
+      <FormsStorageMark :storage="row.storage" />
     </p>
 
     <!-- Counts (two columns) -->

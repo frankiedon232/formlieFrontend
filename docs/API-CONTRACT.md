@@ -248,7 +248,7 @@ Errors: `FRM-DEST-1001` can't reach · `1002` sign-in refused · `1003` TLS / ce
 
 ## Response storage (F12 M2)
 
-Decision 113. Admins only until F22 (`GET /forms/{id}/storage` for anyone who can see the form). Shapes in `shared/types/destinations.ts`; names, types, SQL and rows in `shared/utils/datasources/tables.ts`.
+Decision 113. List rows of `GET /forms` and `GET /responses/forms` carry `storage { mode: formalie\|database, datasource, engine }` (the icon after the folder). Admins only until F22 (`GET /forms/{id}/storage` for anyone who can see the form). Shapes in `shared/types/destinations.ts`; names, types, SQL and rows in `shared/utils/datasources/tables.ts`.
 
 | Method | Path | Notes |
 | --- | --- | --- |

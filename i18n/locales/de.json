@@ -4567,6 +4567,10 @@
         "p2": "Fehlgeschlagene Zustellungen werden mit wachsenden Pausen wiederholt; Sie können sie auch selbst wiederholen.",
         "p3": "Frühere Antworten lassen sich danach für jeden Zeitraum senden."
       }
+    },
+    "mark": {
+      "database": "Antworten gespeichert in {name}",
+      "formalie": "Antworten gespeichert in Formalie"
     }
   }
 }

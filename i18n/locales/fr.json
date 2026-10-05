@@ -4567,6 +4567,10 @@
         "p2": "Les livraisons échouées sont relancées avec des délais croissants ; vous pouvez aussi les relancer vous-même.",
         "p3": "Les réponses antérieures peuvent être envoyées ensuite, pour n’importe quelle période."
       }
+    },
+    "mark": {
+      "database": "Réponses enregistrées dans {name}",
+      "formalie": "Réponses enregistrées dans Formalie"
     }
   }
 }

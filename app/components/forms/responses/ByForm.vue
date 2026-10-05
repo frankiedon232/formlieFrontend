@@ -100,7 +100,10 @@ const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.st
         </UTooltip>
         <div class="flex min-w-0 flex-col">
           <NuxtLink :to="target(row.original)" class="truncate font-medium text-highlighted hover:underline">{{ row.original.name }}</NuxtLink>
-          <span class="truncate text-xs text-muted">{{ row.original.folder?.name ?? t('forms.noFolder') }}</span>
+          <span class="flex min-w-0 items-center gap-1.5 text-xs text-muted">
+            <span class="truncate">{{ row.original.folder?.name ?? t('forms.noFolder') }}</span>
+            <FormsStorageMark :storage="row.original.storage" size="xs" />
+          </span>
         </div>
       </div>
     </template>

@@ -4567,6 +4567,10 @@
         "p2": "Nieudane dostarczenia są ponawiane z coraz dłuższymi przerwami; możesz je też ponowić samodzielnie.",
         "p3": "Wcześniejsze odpowiedzi można wysłać później, dla dowolnego zakresu dat."
       }
+    },
+    "mark": {
+      "database": "Odpowiedzi zapisane w {name}",
+      "formalie": "Odpowiedzi zapisane w Formalie"
     }
   }
 }

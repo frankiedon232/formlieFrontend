@@ -4567,6 +4567,10 @@
         "p2": "Las entregas fallidas se reintentan con esperas cada vez mayores; también puedes reintentarlas tú.",
         "p3": "Las respuestas anteriores se pueden enviar después, para cualquier rango de fechas."
       }
+    },
+    "mark": {
+      "database": "Respuestas guardadas en {name}",
+      "formalie": "Respuestas guardadas en Formalie"
     }
   }
 }

@@ -4567,6 +4567,10 @@
         "p2": "Uwasilishaji ulioshindwa hujaribiwa tena kwa vipindi vinavyoongezeka; unaweza pia kuujaribu tena mwenyewe.",
         "p3": "Majibu ya awali yanaweza kutumwa baadaye, kwa kipindi chochote cha tarehe."
       }
+    },
+    "mark": {
+      "database": "Majibu yamehifadhiwa katika {name}",
+      "formalie": "Majibu yamehifadhiwa katika Formalie"
     }
   }
 }

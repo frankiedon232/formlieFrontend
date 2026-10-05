@@ -4567,6 +4567,10 @@
         "p2": "Failed deliveries are retried with growing waits; you can retry them yourself.",
         "p3": "Earlier responses can be sent afterwards, for any date range."
       }
+    },
+    "mark": {
+      "database": "Responses stored in {name}",
+      "formalie": "Responses stored in Formalie"
     }
   }
 }

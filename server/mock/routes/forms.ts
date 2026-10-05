@@ -27,6 +27,7 @@ import { formsOf, saveForms, summaryOf, uniqueSlug, type StoredForm } from '../d
 import { retireShortCode } from '../data/shortCodeStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { canSee, levelOf, requireLevel } from '../data/formPermissions'
+import { FORMALIE_MARK, storageMarks } from '../data/destinationStore'
 
 type Query = Record<string, unknown>
 const list = (query: Query, key: string) => {
@@ -111,7 +112,8 @@ export const listForms = defineMockRoute(({ event, query }) => {
     { sort: trash ? '-deleted_at' : '-updated_at', ...query },
     (form, q) => form.name.toLowerCase().includes(q) || form.slug.includes(q) || form.tags.includes(q),
   )
-  return ok(data.map(form => summaryFor(form, user)), meta)
+  const marks = storageMarks(tenant)
+  return ok(data.map(form => ({ ...summaryFor(form, user), storage: marks.get(form.id) ?? FORMALIE_MARK })), meta)
 })
 
 export const formFacets = defineMockRoute(({ event }) => {

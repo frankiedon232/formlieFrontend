@@ -47,6 +47,7 @@ const facts = computed(() => [
     <p class="flex min-w-0 items-center gap-1.5 text-sm text-muted">
       <UIcon name="i-lucide-folder" class="size-3.5 shrink-0" />
       <span class="truncate">{{ form.folder?.name ?? t('forms.noFolder') }}</span>
+      <FormsStorageMark :storage="form.storage" />
     </p>
 
     <!-- Facts (two columns, one line each) -->

@@ -123,6 +123,13 @@ export interface DestinationInsights {
   deliveries: Record<'sent' | 'pending' | 'failed' | 'held', number>
 }
 
+/** Where a form's responses are kept, as the form and response lists show it (icon after the folder). */
+export interface StorageMark {
+  mode: 'formalie' | 'database'
+  datasource: string | null
+  engine: DbEngine | null
+}
+
 /** The form's storage, for its overview card. */
 export interface FormStorage {
   mode: 'formalie' | 'database'

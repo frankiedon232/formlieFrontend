@@ -4567,6 +4567,10 @@
         "p2": "Mislukte leveringen worden opnieuw geprobeerd met steeds langere pauzes; u kunt ze ook zelf opnieuw proberen.",
         "p3": "Eerdere reacties kunt u achteraf verzenden, voor elke periode."
       }
+    },
+    "mark": {
+      "database": "Reacties opgeslagen in {name}",
+      "formalie": "Reacties opgeslagen in Formalie"
     }
   }
 }

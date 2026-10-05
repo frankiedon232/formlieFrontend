@@ -24,6 +24,7 @@ import { insightsOf } from '../data/responseInsights'
 import { reviewOf, updateReview } from '../data/responseReview'
 import type { MockTenant, MockUser } from '../data/tenants'
 import type { H3Event } from 'h3'
+import { FORMALIE_MARK, storageMarks } from '../data/destinationStore'
 
 type Query = Record<string, unknown>
 const DAY = 86_400_000
@@ -174,6 +175,7 @@ export const listResponses = defineMockRoute(({ event, query }) => {
  */
 export const listResponseForms = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
+  const marks = storageMarks(tenant)
   const formStatus = list(query, 'form_status')
   const folder = list(query, 'folder_id')
   const review = list(query, 'review') as ResponseStatus[] | null
@@ -208,6 +210,7 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
       status_counts: counts,
       last_at: new Date(entries[0]!.at).toISOString(),
       daily,
+      storage: marks.get(form.id) ?? FORMALIE_MARK,
     })
   }
   const sort = typeof query.sort === 'string' && query.sort ? query.sort : '-new'

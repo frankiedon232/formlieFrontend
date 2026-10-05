@@ -40,6 +40,8 @@ export interface FolderRow {
 }
 
 export interface FormSummary {
+  /** Where its responses are kept (lists only; F12 M2). */
+  storage?: import('./destinations').StorageMark
   id: string
   name: string
   slug: string

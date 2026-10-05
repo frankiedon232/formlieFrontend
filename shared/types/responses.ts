@@ -118,6 +118,8 @@ export interface ResponseFormRow {
   last_at: string | null
   /** Responses per day, the last 30 days (sparkline). */
   daily: number[]
+  /** Where its responses are kept (F12 M2). */
+  storage?: import('./destinations').StorageMark
 }
 
 

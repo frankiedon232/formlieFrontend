@@ -4567,6 +4567,10 @@
         "p2": "Các lần gửi thất bại được thử lại với thời gian chờ tăng dần; bạn cũng có thể tự thử lại.",
         "p3": "Các phản hồi trước đó có thể được gửi sau, cho bất kỳ khoảng ngày nào."
       }
+    },
+    "mark": {
+      "database": "Câu trả lời được lưu trong {name}",
+      "formalie": "Câu trả lời được lưu trong Formalie"
     }
   }
 }

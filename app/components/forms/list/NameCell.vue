@@ -54,6 +54,7 @@ function cancel() {
       </p>
       <p class="flex min-w-0 items-center gap-1.5 truncate text-xs text-muted">
         <span class="truncate">{{ form.folder?.name ?? t('forms.noFolder') }}</span>
+        <FormsStorageMark :storage="form.storage" size="xs" />
         <span v-if="form.has_unpublished_changes">· {{ t('forms.unpublished') }}</span>
         <UBadge
           v-for="tag in form.tags.slice(0, 3)"

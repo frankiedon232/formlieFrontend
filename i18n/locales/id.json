@@ -4567,6 +4567,10 @@
         "p2": "Pengiriman yang gagal dicoba ulang dengan jeda yang makin panjang; Anda juga bisa mencobanya ulang sendiri.",
         "p3": "Respons sebelumnya dapat dikirim kemudian, untuk rentang tanggal mana pun."
       }
+    },
+    "mark": {
+      "database": "Respons disimpan di {name}",
+      "formalie": "Respons disimpan di Formalie"
     }
   }
 }

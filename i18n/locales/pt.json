@@ -4567,6 +4567,10 @@
         "p2": "Entregas com falha são tentadas novamente com esperas crescentes; você também pode tentar de novo.",
         "p3": "As respostas anteriores podem ser enviadas depois, para qualquer intervalo de datas."
       }
+    },
+    "mark": {
+      "database": "Respostas armazenadas em {name}",
+      "formalie": "Respostas armazenadas no Formalie"
     }
   }
 }
