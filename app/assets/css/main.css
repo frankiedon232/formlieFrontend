@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
 
+/* Classes written in shared/ (e.g. folder colours) must be generated too; Tailwind only scans app/ by default. */
+@source '../../../shared';
+
 @theme static {
   /* Closest match to docs/design: slim geometric sans (Onest is the runner-up). */
   --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
