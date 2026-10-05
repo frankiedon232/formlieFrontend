@@ -1,6 +1,6 @@
 <!-- Step 1 of a new connection: which database (arrow keys move between them, like any radio group). -->
 <script setup lang="ts">
-import type { DbEngine } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
 
 const engine = defineModel<DbEngine | null>({ required: true })

@@ -7,7 +7,8 @@
   statements to run, written for this connection.
 -->
 <script setup lang="ts">
-import { TABLE_PREFIXES, type DataSourceAccessSettings, type DataSourceSettings, type DbEngine, type OtherTablesAccess } from '#shared/types/datasources'
+import { TABLE_PREFIXES, type DataSourceAccessSettings, type DataSourceSettings, type OtherTablesAccess } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { defaultSchemaOf } from '#shared/utils/datasources/engines'
 import { hasTablesSchema, tablesSchemaOf } from '#shared/utils/datasources/permissions'
 

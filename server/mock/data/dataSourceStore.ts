@@ -6,7 +6,8 @@
  * five minutes are derived from the status, so the panel always has a recent history.
  * Persisted across dev reloads.
  */
-import type { ConnectionTest, DataSourceAccessSettings, DataSourceCheck, DataSourceDetail, DataSourceRow, DataSourceSecrets, DataSourceSettings, DataSourceStatus, DbEngine } from '#shared/types/datasources'
+import type { ConnectionTest, DataSourceAccessSettings, DataSourceCheck, DataSourceDetail, DataSourceRow, DataSourceSecrets, DataSourceSettings, DataSourceStatus } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { addressOf, databaseNameOf, defaultSettings } from '#shared/utils/datasources/engines'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { finishedTest, planTest, seedOf, uuidFrom } from './dataSourceSim'

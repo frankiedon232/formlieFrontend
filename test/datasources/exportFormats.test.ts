@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { jsonExport, quoteName, sqlInsertScript, sqlLiteral } from '#shared/utils/datasources/exportFormats'
+import { jsonExport, sqlInsertScript, sqlLiteral } from '#shared/utils/datasources/exportFormats'
+import { quoteName } from '#shared/utils/datasources/tables'
 
 const columns = [
   { name: 'id', type: 'BIGINT', primary: true, has_default: true },

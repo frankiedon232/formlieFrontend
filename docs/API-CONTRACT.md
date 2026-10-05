@@ -282,6 +282,16 @@ Admins only until F22. Runs on Formalie's servers through the connection; a conn
 | PATCH  | `/datasources/{id}/explorer/rows`                                                   | `{ schema, table, key, values }` (only the columns sent; the key never changes)                                                                                                                                                                                                                                                                                                   |
 | DELETE | `/datasources/{id}/explorer/rows?schema&table&key`                                  | the row is removed; audit `data.row_inserted · row_updated · row_deleted` (which row, never its values)                                                                                                                                                                                                                                                                           |
 
+**Never the whole table (backend rules, owner 2026-10-05).** The explorer reads one page at a time; nothing loads a whole table into memory, in the browser or on Formalie's servers.
+
+1. **Paging in the database.** `rows` runs one query per page: `WHERE` for `q` and `filter[…]`, `ORDER BY` for `sort` (then the key, so pages are stable), and `LIMIT … OFFSET …` (MySQL, MariaDB, PostgreSQL) or `OFFSET … ROWS FETCH NEXT … ROWS ONLY` (SQL Server, Oracle). `page_size` is at most 100. Values are bound parameters, column names are checked against the table's columns and quoted the engine's way.
+2. **A capped count.** The total counts at most 10,000 rows (`SELECT COUNT(*) FROM (SELECT 1 FROM … WHERE … LIMIT 10001)` or the engine's equivalent). Above that, `meta.total` is 10,000 with `meta.total_capped: true` and the list says "10,000+"; paging still works. "About N rows" comes from the database's own statistics, never a count.
+3. **A time limit on every explorer statement** (5 seconds for rows, facets and the tree; exports run as jobs with their own limit): set per statement (`statement_timeout`, `MAX_EXECUTION_TIME`, `max_statement_time`, the driver's command timeout on SQL Server and Oracle), and cancelled when the browser leaves. A statement over the limit answers `FRM-DEST-1011`.
+4. **Facets** come from a capped look (`GROUP BY … LIMIT 13` under the same time limit, or the database's statistics), never a scan without a limit; a column whose facet query runs over the limit simply gets no filter.
+5. **The tree** reads only the catalogue (`information_schema` / `ALL_TAB_COLUMNS` / `sys.columns`), never table data.
+6. **Exports** stream page by page into the file on Formalie's servers (never all rows in memory) and are capped (1,000,000 rows); the row panel's Previous / Next moves within the page that is loaded.
+7. **Every request is checked against the signed-in person's workspace** (the connection, its table, the row); anything else answers "not found", the same as something that doesn't exist.
+
 ## Integrations, settings, analytics
 
 | POST | `/datasources/{id}/query` `{ sql, params, limit }` → `{ columns, rows, rows_affected, duration_ms }` (+ `/query/{run_id}/cancel`); read-only unless the connection allows changes; every run audited | planned (F12) |

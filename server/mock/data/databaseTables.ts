@@ -5,7 +5,7 @@
  * there. What Formalie may see follows the connection's access: with "None" only its own tables.
  */
 import type { DatabaseTable, TableColumn } from '#shared/types/destinations'
-import type { DbEngine } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 import { seedOf } from './dataSourceSim'
 import type { StoredDataSource } from './dataSourceStore'

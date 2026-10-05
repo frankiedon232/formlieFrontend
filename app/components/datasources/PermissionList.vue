@@ -5,7 +5,8 @@
   marks what this connection needs; with them (a finished test) each line says granted or missing.
 -->
 <script setup lang="ts">
-import type { DataSourceAccessSettings, DbEngine, PermissionResult } from '#shared/types/datasources'
+import type { DataSourceAccessSettings, PermissionResult } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { operationsFor, type PermissionLevel } from '#shared/utils/datasources/permissions'
 
 const props = defineProps<{ engine: DbEngine; access: DataSourceAccessSettings; results?: PermissionResult[] | null }>()

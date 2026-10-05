@@ -5,6 +5,8 @@ export interface ListMeta {
   page_size: number
   total: number
   total_pages: number
+  /** The count stopped at `total` (very large tables, F12 explorer): shown as "10,000+". */
+  total_capped?: boolean
 }
 
 export interface CursorMeta {

@@ -6,7 +6,8 @@
   versions per table.
 -->
 <script setup lang="ts">
-import type { DataSourceAccessSettings, DataSourceSettings, DbEngine } from '#shared/types/datasources'
+import type { DataSourceAccessSettings, DataSourceSettings } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { grantScript, grantScriptText } from '#shared/utils/datasources/permissions'
 
 const props = defineProps<{ engine: DbEngine; settings: DataSourceSettings; access: DataSourceAccessSettings }>()

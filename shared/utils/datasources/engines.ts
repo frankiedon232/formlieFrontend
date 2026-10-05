@@ -21,12 +21,12 @@ import type { DataSourceSecrets, DataSourceSettings } from '#shared/types/dataso
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
 export type FieldStep = 'server' | 'signin' | 'security'
-export type FieldType = 'text' | 'number' | 'select' | 'switch' | 'secret' | 'certificate'
+export type ConnectionFieldType = 'text' | 'number' | 'select' | 'switch' | 'secret' | 'certificate'
 
 export interface EngineField {
   key: string
   step: FieldStep
-  type: FieldType
+  type: ConnectionFieldType
   default?: string | number | boolean
   options?: string[]
   required?: boolean

@@ -4,7 +4,8 @@
  * creates from the form (named with the connection's prefix), or an existing table of theirs
  * (Full access needed). Each response is delivered in the background, retried, and has a status.
  */
-import type { DataSourceStatus, DbEngine } from './datasources'
+import type { DataSourceStatus } from './datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 
 /** Where a value in a row comes from: an answer, or a fact about the response. */
 export const META_COLUMNS = ['response_id', 'submitted_at', 'form_version', 'language', 'response_number', 'respondent_email', 'review_status'] as const

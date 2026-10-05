@@ -8,6 +8,7 @@
  */
 import type { DbEngine } from '#shared/utils/integrations/databases'
 import { kindOfType } from '#shared/utils/datasources/values'
+import { quoteName } from '#shared/utils/datasources/tables'
 
 interface ExportColumn {
   name: string
@@ -37,13 +38,6 @@ export function jsonExport(columns: ExportColumn[], rows: Row[]): string {
     ),
   )
   return `${JSON.stringify(list, null, 2)}\n`
-}
-
-/** A name quoted the engine's way (quotes inside doubled). */
-export function quoteName(engine: DbEngine, name: string): string {
-  if (engine === 'mysql' || engine === 'mariadb') return `\`${name.replace(/`/g, '``')}\``
-  if (engine === 'sqlserver') return `[${name.replace(/]/g, ']]')}]`
-  return `"${name.replace(/"/g, '""')}"`
 }
 
 const stringLiteral = (engine: DbEngine, text: string) => {

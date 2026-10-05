@@ -5,7 +5,8 @@
   on this device; nothing is uploaded until Save). Rarely needed fields sit under More options.
 -->
 <script setup lang="ts">
-import type { DataSourceSecrets, DataSourceSettings, DbEngine } from '#shared/types/datasources'
+import type { DataSourceSecrets, DataSourceSettings } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { fieldsFor, isSecretField, type EngineField, type FieldStep } from '#shared/utils/datasources/engines'
 import { databaseOf } from '#shared/utils/integrations/databases'
 

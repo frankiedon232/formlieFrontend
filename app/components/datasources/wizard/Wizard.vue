@@ -7,7 +7,8 @@
   click away, secrets left empty keep the saved ones, and only a renamed connection skips the test.
 -->
 <script setup lang="ts">
-import type { DataSourceAccessSettings, DataSourceDetail, DataSourceSaveRequest, DataSourceSecrets, DataSourceSettings, DbEngine } from '#shared/types/datasources'
+import type { DataSourceAccessSettings, DataSourceDetail, DataSourceSaveRequest, DataSourceSecrets, DataSourceSettings } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { checkConfig, cleanSecrets, databaseNameOf, defaultSettings, type FieldStep } from '#shared/utils/datasources/engines'
 import { DEFAULT_ACCESS } from '#shared/utils/datasources/permissions'
 

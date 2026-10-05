@@ -97,6 +97,9 @@ function select(rows: TableRow[], query: Record<string, unknown>): TableRow[] {
   return list
 }
 
+/** Rows are counted up to this many; beyond it the list says "10,000+" and keeps paging. */
+const COUNT_CAP = 10_000
+
 /** GET /datasources/:id/explorer/tables, the tree (fails like the connection does). */
 export const explorerTables = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
@@ -116,7 +119,12 @@ export const tableRows = defineMockRoute(({ event, query }) => {
   const rows = select(rowsOf(tenant, source, tables, structure), query)
   // The order is already applied; paginate only pages.
   const { data, meta } = paginate(rows, { ...query, q: undefined, sort: undefined })
-  return ok(data, meta)
+  // The real backend counts up to COUNT_CAP rows (a capped COUNT), never the whole of a huge table.
+  if (rows.length > COUNT_CAP) {
+    meta.total = COUNT_CAP
+    meta.total_pages = Math.ceil(COUNT_CAP / meta.page_size)
+  }
+  return ok(data, rows.length > COUNT_CAP ? { ...meta, total_capped: true } : meta)
 })
 
 export const tableFacets = defineMockRoute(({ event, query }) => {

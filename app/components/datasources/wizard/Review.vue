@@ -3,7 +3,8 @@
   Testing is the way to save with confidence; a failed step offers "Fix" on the step it belongs to.
 -->
 <script setup lang="ts">
-import type { ConnectionTest, DataSourceAccessSettings, DataSourceSettings, DbEngine, TestStepKey } from '#shared/types/datasources'
+import type { ConnectionTest, DataSourceAccessSettings, DataSourceSettings, TestStepKey } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 import { addressOf, databaseNameOf, isEncrypted } from '#shared/utils/datasources/engines'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 

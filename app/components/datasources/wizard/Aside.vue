@@ -4,7 +4,7 @@
   what the test checks. Under the step on phones.
 -->
 <script setup lang="ts">
-import type { DbEngine } from '#shared/types/datasources'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ step: string; engine: DbEngine | null }>()
 const { t, te } = useI18n()

@@ -6,7 +6,6 @@
  */
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
-export type { DbEngine }
 
 /** connected · attention (works, but something needs a look, e.g. a missing permission) · failing · disabled · untested */
 export const DATASOURCE_STATUSES = ['connected', 'attention', 'failing', 'disabled', 'untested'] as const
