@@ -932,7 +932,8 @@
       "data_table_created": "Jedwali la majibu limeundwa",
       "data_column_added": "Safuwima zimeongezwa kwenye jedwali la majibu",
       "data_backfill_started": "Majibu ya awali yametumwa kwenye hifadhidata",
-      "data_deliveries_retried": "Uwasilishaji ulioshindwa umejaribiwa tena"
+      "data_deliveries_retried": "Uwasilishaji ulioshindwa umejaribiwa tena",
+      "data_table_exported": "Jedwali limehamishwa"
     },
     "detail": {
       "who": "Nani",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Majibu yamehifadhiwa katika {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Muunganisho",
+    "tables": "Majedwali",
+    "searchTables": "Tafuta majedwali na safuwima…",
+    "noMatch": "Hakuna kinacholingana.",
+    "noTables": "Hakuna majedwali ambayo Formalie inaruhusiwa kuona kwenye muunganisho huu.",
+    "responseTable": "Jedwali la majibu (limeundwa na Formalie)",
+    "noConnections": "Bado hakuna muunganisho",
+    "noConnectionsDesc": "Unganisha mojawapo ya hifadhidata zako ili kuvinjari majedwali yake hapa.",
+    "cantReach": "Muunganisho huu haufanyi kazi kwa sasa",
+    "checkConnection": "Kagua muunganisho",
+    "pickTable": "Chagua jedwali",
+    "pickTableDesc": "Chagua jedwali kwenye orodha ili kuona safu na muundo wake.",
+    "facts": "Takriban safu {rows} · safuwima {columns}",
+    "formOf": "Majibu ya “{form}”",
+    "readOnly": {
+      "response_table": "Kusoma tu hapa: safu hizi hubadilika kupitia Formalie. Hariri jibu badala yake.",
+      "read_access": "Kusoma tu: muunganisho unaweza kusoma majedwali yako tu.",
+      "no_key": "Kusoma tu: jedwali halina ufunguo msingi wa kupata safu.",
+      "view": "Kusoma tu: huu ni mwonekano."
+    },
+    "tab": {
+      "data": "Data",
+      "structure": "Muundo"
+    },
+    "searchRows": "Tafuta katika kila safuwima…",
+    "emptyRows": "Hakuna safu",
+    "emptyRowsDesc": "Jedwali hili ni tupu, au hakuna kinacholingana na utafutaji na vichujio.",
+    "emptyResponses": "Majibu yataonekana hapa mara tu Formalie itakapoyawasilisha.",
+    "row": "Safu {key}",
+    "copyRow": "Nakili safu",
+    "rowCopied": "Safu imenakiliwa kama JSON",
+    "copyValue": "Nakili {column}",
+    "openReferenced": "Fungua {table}",
+    "navigate": "Hamia kati ya safu",
+    "previous": "Safu iliyotangulia",
+    "next": "Safu inayofuata",
+    "export": "Hamisha",
+    "exportAll": "Jedwali zima",
+    "exportFiltered": "Safu zinazolingana na utafutaji na vichujio vyako",
+    "exporting": "Inahamisha {n}%",
+    "exported": "Safu {n} imehamishwa | Safu {n} zimehamishwa",
+    "structure": {
+      "columns": "Safuwima ({n})",
+      "name": "Jina",
+      "type": "Aina",
+      "nullable": "Inaweza kuwa tupu",
+      "default": "Chaguomsingi",
+      "keys": "Funguo",
+      "pk": "Ufunguo msingi",
+      "unique": "Ya kipekee",
+      "fk": "Inaelekeza kwenye jedwali lingine",
+      "indexes": "Faharasa",
+      "noIndexes": "Hakuna faharasa.",
+      "relations": "Mahusiano",
+      "noRelations": "Hakuna safuwima zinazoelekeza kwenye majedwali mengine.",
+      "definition": "Ufafanuzi"
     }
   }
 }

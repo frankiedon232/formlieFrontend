@@ -932,7 +932,8 @@
       "data_table_created": "Response table created",
       "data_column_added": "Columns added to a response table",
       "data_backfill_started": "Earlier responses sent to a database",
-      "data_deliveries_retried": "Failed deliveries retried"
+      "data_deliveries_retried": "Failed deliveries retried",
+      "data_table_exported": "Table exported"
     },
     "detail": {
       "who": "Who",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Responses stored in {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Connection",
+    "tables": "Tables",
+    "searchTables": "Search tables and columns…",
+    "noMatch": "Nothing matches.",
+    "noTables": "No tables Formalie may see on this connection.",
+    "responseTable": "Response table (created by Formalie)",
+    "noConnections": "No connection yet",
+    "noConnectionsDesc": "Connect one of your databases to browse its tables here.",
+    "cantReach": "This connection isn't working right now",
+    "checkConnection": "Check connection",
+    "pickTable": "Choose a table",
+    "pickTableDesc": "Pick a table in the list to see its rows and structure.",
+    "facts": "About {rows} rows · {columns} columns",
+    "formOf": "Responses of “{form}”",
+    "readOnly": {
+      "response_table": "Read only here: these rows change through Formalie. Edit the response instead.",
+      "read_access": "Read only: the connection has Read only access to your tables.",
+      "no_key": "Read only: the table has no primary key to find a row by.",
+      "view": "Read only: this is a view."
+    },
+    "tab": {
+      "data": "Data",
+      "structure": "Structure"
+    },
+    "searchRows": "Search every column…",
+    "emptyRows": "No rows",
+    "emptyRowsDesc": "This table is empty, or nothing matches the search and filters.",
+    "emptyResponses": "Responses appear here as soon as Formalie delivers them.",
+    "row": "Row {key}",
+    "copyRow": "Copy row",
+    "rowCopied": "Row copied as JSON",
+    "copyValue": "Copy {column}",
+    "openReferenced": "Open {table}",
+    "navigate": "Move between rows",
+    "previous": "Previous row",
+    "next": "Next row",
+    "export": "Export",
+    "exportAll": "The whole table",
+    "exportFiltered": "The rows matching your search and filters",
+    "exporting": "Exporting {n}%",
+    "exported": "{n} row exported | {n} rows exported",
+    "structure": {
+      "columns": "Columns ({n})",
+      "name": "Name",
+      "type": "Type",
+      "nullable": "Can be empty",
+      "default": "Default",
+      "keys": "Keys",
+      "pk": "Primary key",
+      "unique": "Unique",
+      "fk": "Points to another table",
+      "indexes": "Indexes",
+      "noIndexes": "No indexes.",
+      "relations": "Relations",
+      "noRelations": "No columns point to other tables.",
+      "definition": "Definition"
     }
   }
 }

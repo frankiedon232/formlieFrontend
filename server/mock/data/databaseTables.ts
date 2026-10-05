@@ -83,7 +83,7 @@ export function tablesOf(source: StoredDataSource, created: CreatedTable[]): Dat
   Object.entries(set).forEach(([name, specs], i) => {
     const schema = schemas[i % schemas.length]!
     if (schema === tablesSchemaOf(engine, source.settings, source.access) && own.some(table => table.name === name)) return
-    theirs.push({ schema, name, columns: columnsOf(engine, specs), rows_estimate: 40 + (seedOf(`${source.id}${name}`) % 9000), formalie: false })
+    theirs.push({ schema, name, columns: columnsOf(engine, specs), rows_estimate: 40 + (seedOf(`${source.id}${name}`) % 900), formalie: false })
   })
   return [...own, ...theirs].sort((a, b) => Number(b.formalie) - Number(a.formalie) || a.schema.localeCompare(b.schema) || a.name.localeCompare(b.name))
 }

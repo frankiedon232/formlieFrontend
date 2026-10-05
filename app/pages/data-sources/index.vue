@@ -11,7 +11,7 @@ useHead({ title: () => t('nav.dataSources') })
 
 const sections = [
   { key: 'connections', nav: 'dataConnections', icon: 'i-lucide-database', to: '/data-sources/connections', live: true },
-  { key: 'explorer', nav: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
+  { key: 'explorer', nav: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer', live: true },
   { key: 'query', nav: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
   { key: 'savedQueries', nav: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
   { key: 'destinations', nav: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations', live: true },

@@ -932,7 +932,8 @@
       "data_table_created": "Tabla de respuestas creada",
       "data_column_added": "Columnas añadidas a una tabla de respuestas",
       "data_backfill_started": "Respuestas anteriores enviadas a una base de datos",
-      "data_deliveries_retried": "Entregas fallidas reintentadas"
+      "data_deliveries_retried": "Entregas fallidas reintentadas",
+      "data_table_exported": "Tabla exportada"
     },
     "detail": {
       "who": "Quién",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Respuestas guardadas en {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Conexión",
+    "tables": "Tablas",
+    "searchTables": "Buscar tablas y columnas…",
+    "noMatch": "Nada coincide.",
+    "noTables": "No hay tablas que Formalie pueda ver en esta conexión.",
+    "responseTable": "Tabla de respuestas (creada por Formalie)",
+    "noConnections": "Aún no hay conexiones",
+    "noConnectionsDesc": "Conecta una de tus bases de datos para explorar aquí sus tablas.",
+    "cantReach": "Esta conexión no funciona en este momento",
+    "checkConnection": "Comprobar conexión",
+    "pickTable": "Elige una tabla",
+    "pickTableDesc": "Elige una tabla de la lista para ver sus filas y su estructura.",
+    "facts": "Unas {rows} filas · {columns} columnas",
+    "formOf": "Respuestas de «{form}»",
+    "readOnly": {
+      "response_table": "Solo lectura aquí: estas filas cambian a través de Formalie. Edita la respuesta en su lugar.",
+      "read_access": "Solo lectura: la conexión solo puede leer tus tablas.",
+      "no_key": "Solo lectura: la tabla no tiene clave primaria para encontrar una fila.",
+      "view": "Solo lectura: esto es una vista."
+    },
+    "tab": {
+      "data": "Datos",
+      "structure": "Estructura"
+    },
+    "searchRows": "Buscar en todas las columnas…",
+    "emptyRows": "Sin filas",
+    "emptyRowsDesc": "Esta tabla está vacía, o nada coincide con la búsqueda y los filtros.",
+    "emptyResponses": "Las respuestas aparecen aquí en cuanto Formalie las entrega.",
+    "row": "Fila {key}",
+    "copyRow": "Copiar fila",
+    "rowCopied": "Fila copiada como JSON",
+    "copyValue": "Copiar {column}",
+    "openReferenced": "Abrir {table}",
+    "navigate": "Moverse entre filas",
+    "previous": "Fila anterior",
+    "next": "Fila siguiente",
+    "export": "Exportar",
+    "exportAll": "Toda la tabla",
+    "exportFiltered": "Las filas que coinciden con tu búsqueda y filtros",
+    "exporting": "Exportando {n}%",
+    "exported": "{n} fila exportada | {n} filas exportadas",
+    "structure": {
+      "columns": "Columnas ({n})",
+      "name": "Nombre",
+      "type": "Tipo",
+      "nullable": "Puede estar vacío",
+      "default": "Valor predeterminado",
+      "keys": "Claves",
+      "pk": "Clave primaria",
+      "unique": "Único",
+      "fk": "Apunta a otra tabla",
+      "indexes": "Índices",
+      "noIndexes": "Sin índices.",
+      "relations": "Relaciones",
+      "noRelations": "Ninguna columna apunta a otras tablas.",
+      "definition": "Definición"
     }
   }
 }

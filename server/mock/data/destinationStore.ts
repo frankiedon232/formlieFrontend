@@ -16,7 +16,7 @@
 import type { BackfillJob, ColumnSource, Delivery, DeliveryStatus, DestinationColumn, DestinationDetail, DestinationRow, DestinationSettings, DestinationStatus } from '#shared/types/destinations'
 import { allFields } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
-import { columnNameFor, columnTypeFor, columnsForForm, matchColumns, standardSettings, tableNameFor } from '#shared/utils/datasources/tables'
+import { columnNameFor, columnTypeFor, columnsForForm, matchColumns, standardSettings, tableNameFor, typedForEngine } from '#shared/utils/datasources/tables'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { tablesOf, type CreatedTable } from './databaseTables'
@@ -126,6 +126,18 @@ export function destinationsOf(tenant: MockTenant): StoredDestination[] {
   }
   // Tables Formalie created follow its standard (also those saved before it was set).
   for (const item of list) if (item.table.created && item.settings.write_mode !== 'upsert') item.settings = standardSettings(item.settings, item.columns)
+  // Repair tables saved with another engine's types (before the server set them itself).
+  for (const item of list) {
+    if (!item.table.created) continue
+    const source = dataSourcesOf(tenant).find(entry => entry.id === item.datasource_id)
+    const form = formsOf(tenant).forms.find(entry => entry.id === item.form_id)
+    if (!source || !form) continue
+    const typed = typedForEngine(source.engine, item.columns, inputFieldsOf(form), item.settings.multi_value)
+    if (typed.some((column, i) => column.type !== item.columns[i]!.type)) {
+      item.columns = typed
+      saveDestinations()
+    }
+  }
   return list
 }
 

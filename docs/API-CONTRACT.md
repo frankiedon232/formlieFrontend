@@ -265,9 +265,23 @@ Decision 113. List rows of `GET /forms` and `GET /responses/forms` carry `storag
 | POST | `/destinations/{id}/backfill` | `{ from, to }` (dates) → `DestinationDetail` with `backfill { total, done, status, … }`; `FRM-DEST-1017` while one runs |
 | DELETE | `/destinations/{id}` | back to Formalie's storage; the table and its rows stay |
 
+## Database explorer (F12 M3)
+
+Admins only until F22. Runs on Formalie's servers through the connection; a connection that isn't working answers with its `FRM-DEST-*` error, a disabled one `FRM-DEST-1009`. What it shows follows the connection's access ("None": only the response tables). Shapes in `shared/types/explorer.ts`.
+
+| Method | Path | Notes |
+| --- | --- | --- |
+| GET | `/datasources/{id}/explorer/tables` | `DatabaseTable[]` (schemas, tables with row estimates, columns; `formalie` marks response tables) |
+| GET | `/datasources/{id}/explorer/structure?schema&table` | `TableStructure { columns [{ name, type, nullable, default, primary, unique, references }], primary_key, indexes, foreign_keys, rows_estimate, ddl, form, read_only: response_table\|read_access\|no_key\|view\|null }` |
+| GET | `/datasources/{id}/explorer/rows?schema&table&page&page_size&sort&q&filter[column]` | rows as stored, each with `__key` (its primary key); `q` searches every column; `sort` any column (`-` for descending) |
+| GET | `/datasources/{id}/explorer/facets?schema&table` | `[{ column, values [{ value, count }] }]` for columns with 2 to 12 distinct values (the Filter menu) |
+| POST | `/datasources/{id}/explorer/exports` | `{ schema, table, format: csv\|xlsx, q?, sort?, filter? }` → 201 `TableExport { id, status, progress, rows, size }`; audit `data.table_exported` |
+| GET | `/explorer-exports/{id}` | progress |
+| POST | `/explorer-exports/{id}/link` | `{ url, expires_at }`: one-time private link, 5 minutes |
+| GET | `/datasource-exports/{token}` | **plain** file download (CSV with BOM and formula-safe cells, or XLSX) |
+
 ## Integrations, settings, analytics
 
-| GET | `/datasources/{id}/schema` (schemas → tables / views → columns, keys, indexes, row counts) | planned (F12) |
 | CRUD | `/datasources/{id}/tables/{table}/rows` (paged list with sort / filters; insert / update / delete on read + write connections; import; export job) | planned (F12) |
 | POST | `/datasources/{id}/query` `{ sql, params, limit }` → `{ columns, rows, rows_affected, duration_ms }` (+ `/query/{run_id}/cancel`); read-only unless the connection allows changes; every run audited | planned (F12) |
 | CRUD | `/saved-queries` (personal / shared) | planned (F12) |

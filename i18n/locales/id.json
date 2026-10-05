@@ -932,7 +932,8 @@
       "data_table_created": "Tabel respons dibuat",
       "data_column_added": "Kolom ditambahkan ke tabel respons",
       "data_backfill_started": "Respons sebelumnya dikirim ke database",
-      "data_deliveries_retried": "Pengiriman yang gagal dicoba ulang"
+      "data_deliveries_retried": "Pengiriman yang gagal dicoba ulang",
+      "data_table_exported": "Tabel diekspor"
     },
     "detail": {
       "who": "Siapa",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Respons disimpan di {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Koneksi",
+    "tables": "Tabel",
+    "searchTables": "Cari tabel dan kolom…",
+    "noMatch": "Tidak ada yang cocok.",
+    "noTables": "Tidak ada tabel yang boleh dilihat Formalie di koneksi ini.",
+    "responseTable": "Tabel respons (dibuat oleh Formalie)",
+    "noConnections": "Belum ada koneksi",
+    "noConnectionsDesc": "Hubungkan salah satu database Anda untuk menjelajahi tabelnya di sini.",
+    "cantReach": "Koneksi ini sedang tidak berfungsi",
+    "checkConnection": "Periksa koneksi",
+    "pickTable": "Pilih tabel",
+    "pickTableDesc": "Pilih tabel di daftar untuk melihat baris dan strukturnya.",
+    "facts": "Sekitar {rows} baris · {columns} kolom",
+    "formOf": "Respons dari “{form}”",
+    "readOnly": {
+      "response_table": "Hanya baca di sini: baris ini berubah melalui Formalie. Edit responsnya saja.",
+      "read_access": "Hanya baca: koneksi hanya dapat membaca tabel Anda.",
+      "no_key": "Hanya baca: tabel tidak memiliki kunci utama untuk menemukan baris.",
+      "view": "Hanya baca: ini adalah view."
+    },
+    "tab": {
+      "data": "Data",
+      "structure": "Struktur"
+    },
+    "searchRows": "Cari di semua kolom…",
+    "emptyRows": "Tidak ada baris",
+    "emptyRowsDesc": "Tabel ini kosong, atau tidak ada yang cocok dengan pencarian dan filter.",
+    "emptyResponses": "Respons muncul di sini begitu Formalie mengirimkannya.",
+    "row": "Baris {key}",
+    "copyRow": "Salin baris",
+    "rowCopied": "Baris disalin sebagai JSON",
+    "copyValue": "Salin {column}",
+    "openReferenced": "Buka {table}",
+    "navigate": "Berpindah antarbaris",
+    "previous": "Baris sebelumnya",
+    "next": "Baris berikutnya",
+    "export": "Ekspor",
+    "exportAll": "Seluruh tabel",
+    "exportFiltered": "Baris yang cocok dengan pencarian dan filter Anda",
+    "exporting": "Mengekspor {n}%",
+    "exported": "{n} baris diekspor | {n} baris diekspor",
+    "structure": {
+      "columns": "Kolom ({n})",
+      "name": "Nama",
+      "type": "Tipe",
+      "nullable": "Boleh kosong",
+      "default": "Default",
+      "keys": "Kunci",
+      "pk": "Kunci utama",
+      "unique": "Unik",
+      "fk": "Menunjuk ke tabel lain",
+      "indexes": "Indeks",
+      "noIndexes": "Tidak ada indeks.",
+      "relations": "Relasi",
+      "noRelations": "Tidak ada kolom yang menunjuk ke tabel lain.",
+      "definition": "Definisi"
     }
   }
 }

@@ -51,7 +51,7 @@ const bodySchema = z.object({
   details: z.boolean().default(true),
 })
 
-const csvCell = (value: unknown) => {
+export const csvCell = (value: unknown) => {
   const text = value == null ? '' : String(value)
   // Leading = + - @ would run as a formula in spreadsheet apps (CSV injection).
   const safe = /^[=+\-@\t\r]/.test(text) ? `'${text}` : text

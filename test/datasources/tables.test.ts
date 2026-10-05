@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { DestinationSettings, TableColumn } from '../../shared/types/destinations'
-import { addColumnSql, blocking, checkMapping, checkTableRest, normaliseTableRest, columnNameFor, columnsForForm, createTableSql, matchColumns, rowFor, snake, standardSettings, tableNameFor, viewSql } from '../../shared/utils/datasources/tables'
+import { addColumnSql, blocking, checkMapping, checkTableRest, normaliseTableRest, typedForEngine, columnNameFor, columnsForForm, createTableSql, matchColumns, rowFor, snake, standardSettings, tableNameFor, viewSql } from '../../shared/utils/datasources/tables'
 
 const settings: DestinationSettings = { write_mode: 'insert', key_column: 'response_id', multi_value: 'json', choices: 'value' }
 const fields = [
@@ -96,5 +96,17 @@ describe('table names Formalie creates', () => {
     expect(checkTableRest('sqlserver', 'formalie_', 'x'.repeat(55))).toBeNull()
     expect(normaliseTableRest('mysql', 'Job Apps 2')).toBe('job_apps_2')
     expect(normaliseTableRest('oracle', 'job apps')).toBe('JOB_APPS')
+  })
+})
+
+describe('types of tables Formalie creates', () => {
+  it('come from the connection’s engine, never from the request', () => {
+    const mysql = columnsForForm('mysql', fields, settings)
+    const fixed = typedForEngine('postgresql', mysql, fields, 'json')
+    expect(mysql[0]!.type).toBe('CHAR(36)')
+    expect(fixed[0]!.type).toBe('UUID')
+    expect(fixed.find(column => column.column === 'submitted_at')!.type).toBe('TIMESTAMPTZ')
+    expect(fixed.find(column => column.column === 'skills')!.type).toBe('JSONB')
+    expect(fixed.map(column => column.column)).toEqual(mysql.map(column => column.column))
   })
 })

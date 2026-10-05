@@ -40,6 +40,8 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
     loadingTables.value = true
     try {
       const [detail, list] = await Promise.all([api.get<DataSourceDetail>(`/datasources/${id}`), api.get<DatabaseTable[]>(`/datasources/${id}/tables`)])
+      // A slower answer for a connection picked earlier must not replace the one chosen now.
+      if (id !== sourceId.value) return
       source.value = detail.data
       tables.value = list.data
       if (!input.destination && !tableName.value) tableName.value = suggestedName()

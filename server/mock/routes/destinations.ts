@@ -18,7 +18,7 @@
 import { z } from 'zod'
 import { META_COLUMNS, type DestinationColumn, type DestinationInsights, type FormStorage } from '#shared/types/destinations'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
-import { blocking, checkMapping, checkTableRest, columnNameFor, columnTypeFor, standardSettings } from '#shared/utils/datasources/tables'
+import { blocking, checkMapping, checkTableRest, columnNameFor, columnTypeFor, standardSettings, typedForEngine } from '#shared/utils/datasources/tables'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin, requireAuth } from '../core/auth'
 import { MockError, ok, paginate } from '../core/respond'
@@ -161,7 +161,8 @@ export const createDestination = defineMockRoute(({ event, body }) => {
     if (tables.some(item => item.schema === schema && item.name.toLowerCase() === name.toLowerCase())) throw new MockError('FRM-DEST-1014', [{ field: 'table', message: 'taken' }])
     table = { schema, name, created: true }
   }
-  const columns = input.columns as DestinationColumn[]
+  // Tables Formalie creates get their types from the connection's engine, whatever the request says.
+  const columns = table.created ? typedForEngine(source.engine, input.columns as DestinationColumn[], fields, input.settings.multi_value) : (input.columns as DestinationColumn[])
   // Tables Formalie creates always follow its standard (one row per response, by its id).
   if (table.created) input.settings = standardSettings(input.settings, columns)
   checkColumns(columns, fields, input.settings)
@@ -212,7 +213,9 @@ export const patchDestination = defineMockRoute(({ event, body }) => {
     recordAudit(event, tenant, { action: input.paused ? 'data.destination_paused' : 'data.destination_resumed', actor, resource: resource(tenant, destination) })
   }
   if (input.settings || input.columns) {
-    const columns = (input.columns as DestinationColumn[] | undefined) ?? destination.columns
+    const source = dataSourcesOf(tenant).find(item => item.id === destination.datasource_id)
+    const given = (input.columns as DestinationColumn[] | undefined) ?? destination.columns
+    const columns = destination.table.created && source ? typedForEngine(source.engine, given, inputFieldsOf(form), destination.settings.multi_value) : given
     const asked = input.settings ?? destination.settings
     // How several values and choices are written is set when the table is set up (mixing would make the data inconsistent).
     const kept = { ...asked, multi_value: destination.settings.multi_value, choices: destination.settings.choices }

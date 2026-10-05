@@ -932,7 +932,8 @@
       "data_table_created": "Yanıt tablosu oluşturuldu",
       "data_column_added": "Bir yanıt tablosuna sütun eklendi",
       "data_backfill_started": "Önceki yanıtlar bir veritabanına gönderildi",
-      "data_deliveries_retried": "Başarısız teslimler yeniden denendi"
+      "data_deliveries_retried": "Başarısız teslimler yeniden denendi",
+      "data_table_exported": "Tablo dışa aktarıldı"
     },
     "detail": {
       "who": "Kim",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Yanıtlar {name} içinde saklanıyor"
+    }
+  },
+  "explorer": {
+    "connection": "Bağlantı",
+    "tables": "Tablolar",
+    "searchTables": "Tablo ve sütun ara…",
+    "noMatch": "Eşleşen bir şey yok.",
+    "noTables": "Bu bağlantıda Formalie’nin görebileceği tablo yok.",
+    "responseTable": "Yanıt tablosu (Formalie tarafından oluşturuldu)",
+    "noConnections": "Henüz bağlantı yok",
+    "noConnectionsDesc": "Tablolarına buradan göz atmak için veritabanlarınızdan birini bağlayın.",
+    "cantReach": "Bu bağlantı şu anda çalışmıyor",
+    "checkConnection": "Bağlantıyı kontrol et",
+    "pickTable": "Bir tablo seçin",
+    "pickTableDesc": "Satırlarını ve yapısını görmek için listeden bir tablo seçin.",
+    "facts": "Yaklaşık {rows} satır · {columns} sütun",
+    "formOf": "“{form}” yanıtları",
+    "readOnly": {
+      "response_table": "Burada salt okunur: bu satırlar Formalie üzerinden değişir. Bunun yerine yanıtı düzenleyin.",
+      "read_access": "Salt okunur: bağlantı tablolarınızı yalnızca okuyabilir.",
+      "no_key": "Salt okunur: tabloda bir satırı bulmak için birincil anahtar yok.",
+      "view": "Salt okunur: bu bir görünüm."
+    },
+    "tab": {
+      "data": "Veriler",
+      "structure": "Yapı"
+    },
+    "searchRows": "Tüm sütunlarda ara…",
+    "emptyRows": "Satır yok",
+    "emptyRowsDesc": "Bu tablo boş ya da arama ve filtrelerle eşleşen bir şey yok.",
+    "emptyResponses": "Yanıtlar, Formalie teslim eder etmez burada görünür.",
+    "row": "Satır {key}",
+    "copyRow": "Satırı kopyala",
+    "rowCopied": "Satır JSON olarak kopyalandı",
+    "copyValue": "{column} değerini kopyala",
+    "openReferenced": "{table} tablosunu aç",
+    "navigate": "Satırlar arasında geçiş yap",
+    "previous": "Önceki satır",
+    "next": "Sonraki satır",
+    "export": "Dışa aktar",
+    "exportAll": "Tablonun tamamı",
+    "exportFiltered": "Arama ve filtrelerinizle eşleşen satırlar",
+    "exporting": "Dışa aktarılıyor %{n}",
+    "exported": "{n} satır dışa aktarıldı | {n} satır dışa aktarıldı",
+    "structure": {
+      "columns": "Sütunlar ({n})",
+      "name": "Ad",
+      "type": "Tür",
+      "nullable": "Boş olabilir",
+      "default": "Varsayılan",
+      "keys": "Anahtarlar",
+      "pk": "Birincil anahtar",
+      "unique": "Benzersiz",
+      "fk": "Başka bir tabloya işaret eder",
+      "indexes": "Dizinler",
+      "noIndexes": "Dizin yok.",
+      "relations": "İlişkiler",
+      "noRelations": "Başka tablolara işaret eden sütun yok.",
+      "definition": "Tanım"
     }
   }
 }

@@ -107,6 +107,7 @@ export const AUDIT_EVENTS = {
   'data.column_added': { area: 'data', icon: 'i-lucide-columns-3' },
   'data.backfill_started': { area: 'data', icon: 'i-lucide-history' },
   'data.deliveries_retried': { area: 'data', icon: 'i-lucide-rotate-cw' },
+  'data.table_exported': { area: 'data', icon: 'i-lucide-file-down' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>

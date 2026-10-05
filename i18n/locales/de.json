@@ -932,7 +932,8 @@
       "data_table_created": "Antworttabelle erstellt",
       "data_column_added": "Spalten zu einer Antworttabelle hinzugefügt",
       "data_backfill_started": "Frühere Antworten an eine Datenbank gesendet",
-      "data_deliveries_retried": "Fehlgeschlagene Zustellungen wiederholt"
+      "data_deliveries_retried": "Fehlgeschlagene Zustellungen wiederholt",
+      "data_table_exported": "Tabelle exportiert"
     },
     "detail": {
       "who": "Wer",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Antworten gespeichert in {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Verbindung",
+    "tables": "Tabellen",
+    "searchTables": "Tabellen und Spalten suchen…",
+    "noMatch": "Keine Treffer.",
+    "noTables": "Auf dieser Verbindung gibt es keine Tabellen, die Formalie sehen darf.",
+    "responseTable": "Antworttabelle (von Formalie erstellt)",
+    "noConnections": "Noch keine Verbindung",
+    "noConnectionsDesc": "Verbinden Sie eine Ihrer Datenbanken, um hier ihre Tabellen zu durchsuchen.",
+    "cantReach": "Diese Verbindung funktioniert gerade nicht",
+    "checkConnection": "Verbindung prüfen",
+    "pickTable": "Tabelle auswählen",
+    "pickTableDesc": "Wählen Sie eine Tabelle in der Liste, um ihre Zeilen und ihre Struktur zu sehen.",
+    "facts": "Etwa {rows} Zeilen · {columns} Spalten",
+    "formOf": "Antworten von „{form}“",
+    "readOnly": {
+      "response_table": "Hier nur lesbar: Diese Zeilen ändern sich über Formalie. Bearbeiten Sie stattdessen die Antwort.",
+      "read_access": "Nur Lesen: Die Verbindung darf Ihre Tabellen nur lesen.",
+      "no_key": "Nur Lesen: Die Tabelle hat keinen Primärschlüssel, um eine Zeile zu finden.",
+      "view": "Nur Lesen: Dies ist eine Sicht."
+    },
+    "tab": {
+      "data": "Daten",
+      "structure": "Struktur"
+    },
+    "searchRows": "Alle Spalten durchsuchen…",
+    "emptyRows": "Keine Zeilen",
+    "emptyRowsDesc": "Diese Tabelle ist leer, oder nichts passt zur Suche und zu den Filtern.",
+    "emptyResponses": "Antworten erscheinen hier, sobald Formalie sie zustellt.",
+    "row": "Zeile {key}",
+    "copyRow": "Zeile kopieren",
+    "rowCopied": "Zeile als JSON kopiert",
+    "copyValue": "{column} kopieren",
+    "openReferenced": "{table} öffnen",
+    "navigate": "Zwischen Zeilen wechseln",
+    "previous": "Vorherige Zeile",
+    "next": "Nächste Zeile",
+    "export": "Exportieren",
+    "exportAll": "Die ganze Tabelle",
+    "exportFiltered": "Die Zeilen, die zu Ihrer Suche und den Filtern passen",
+    "exporting": "Export läuft: {n} %",
+    "exported": "{n} Zeile exportiert | {n} Zeilen exportiert",
+    "structure": {
+      "columns": "Spalten ({n})",
+      "name": "Name",
+      "type": "Typ",
+      "nullable": "Darf leer sein",
+      "default": "Standardwert",
+      "keys": "Schlüssel",
+      "pk": "Primärschlüssel",
+      "unique": "Eindeutig",
+      "fk": "Verweist auf eine andere Tabelle",
+      "indexes": "Indizes",
+      "noIndexes": "Keine Indizes.",
+      "relations": "Beziehungen",
+      "noRelations": "Keine Spalten verweisen auf andere Tabellen.",
+      "definition": "Definition"
     }
   }
 }

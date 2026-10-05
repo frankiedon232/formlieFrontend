@@ -932,7 +932,8 @@
       "data_table_created": "أُنشئ جدول ردود",
       "data_column_added": "أُضيفت أعمدة إلى جدول ردود",
       "data_backfill_started": "أُرسلت ردود سابقة إلى قاعدة بيانات",
-      "data_deliveries_retried": "أُعيدت محاولة عمليات التسليم الفاشلة"
+      "data_deliveries_retried": "أُعيدت محاولة عمليات التسليم الفاشلة",
+      "data_table_exported": "صُدّر جدول"
     },
     "detail": {
       "who": "من",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "الردود محفوظة في {name}"
+    }
+  },
+  "explorer": {
+    "connection": "الاتصال",
+    "tables": "الجداول",
+    "searchTables": "ابحث في الجداول والأعمدة…",
+    "noMatch": "لا توجد نتائج مطابقة.",
+    "noTables": "لا توجد جداول يمكن لـ Formalie رؤيتها في هذا الاتصال.",
+    "responseTable": "جدول ردود (أنشأه Formalie)",
+    "noConnections": "لا يوجد اتصال بعد",
+    "noConnectionsDesc": "اربط إحدى قواعد بياناتك لتتصفح جداولها هنا.",
+    "cantReach": "هذا الاتصال لا يعمل حاليًا",
+    "checkConnection": "فحص الاتصال",
+    "pickTable": "اختر جدولًا",
+    "pickTableDesc": "اختر جدولًا من القائمة لعرض صفوفه وبنيته.",
+    "facts": "نحو {rows} صف · {columns} عمود",
+    "formOf": "ردود «{form}»",
+    "readOnly": {
+      "response_table": "قراءة فقط هنا: تتغير هذه الصفوف عبر Formalie. عدّل الرد بدلًا من ذلك.",
+      "read_access": "قراءة فقط: يمكن للاتصال قراءة جداولك فقط.",
+      "no_key": "قراءة فقط: لا يحتوي الجدول على مفتاح أساسي للعثور على صف.",
+      "view": "قراءة فقط: هذا عرض."
+    },
+    "tab": {
+      "data": "البيانات",
+      "structure": "البنية"
+    },
+    "searchRows": "ابحث في كل الأعمدة…",
+    "emptyRows": "لا توجد صفوف",
+    "emptyRowsDesc": "هذا الجدول فارغ، أو لا شيء يطابق البحث والفلاتر.",
+    "emptyResponses": "تظهر الردود هنا فور تسليمها من Formalie.",
+    "row": "الصف {key}",
+    "copyRow": "نسخ الصف",
+    "rowCopied": "نُسخ الصف بتنسيق JSON",
+    "copyValue": "نسخ {column}",
+    "openReferenced": "فتح {table}",
+    "navigate": "التنقل بين الصفوف",
+    "previous": "الصف السابق",
+    "next": "الصف التالي",
+    "export": "تصدير",
+    "exportAll": "الجدول بأكمله",
+    "exportFiltered": "الصفوف المطابقة لبحثك وفلاترك",
+    "exporting": "جارٍ التصدير {n}%",
+    "exported": "عدد الصفوف المصدّرة: {n} | عدد الصفوف المصدّرة: {n}",
+    "structure": {
+      "columns": "الأعمدة ({n})",
+      "name": "الاسم",
+      "type": "النوع",
+      "nullable": "يمكن أن يكون فارغًا",
+      "default": "القيمة الافتراضية",
+      "keys": "المفاتيح",
+      "pk": "مفتاح أساسي",
+      "unique": "فريد",
+      "fk": "يشير إلى جدول آخر",
+      "indexes": "الفهارس",
+      "noIndexes": "لا توجد فهارس.",
+      "relations": "العلاقات",
+      "noRelations": "لا توجد أعمدة تشير إلى جداول أخرى.",
+      "definition": "التعريف"
     }
   }
 }

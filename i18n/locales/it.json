@@ -932,7 +932,8 @@
       "data_table_created": "Tabella delle risposte creata",
       "data_column_added": "Colonne aggiunte a una tabella delle risposte",
       "data_backfill_started": "Risposte precedenti inviate a un database",
-      "data_deliveries_retried": "Consegne non riuscite ritentate"
+      "data_deliveries_retried": "Consegne non riuscite ritentate",
+      "data_table_exported": "Tabella esportata"
     },
     "detail": {
       "who": "Chi",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Risposte salvate in {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Connessione",
+    "tables": "Tabelle",
+    "searchTables": "Cerca tabelle e colonne…",
+    "noMatch": "Nessun risultato.",
+    "noTables": "Nessuna tabella visibile a Formalie su questa connessione.",
+    "responseTable": "Tabella delle risposte (creata da Formalie)",
+    "noConnections": "Ancora nessuna connessione",
+    "noConnectionsDesc": "Collegate uno dei vostri database per sfogliarne qui le tabelle.",
+    "cantReach": "Questa connessione al momento non funziona",
+    "checkConnection": "Controlla connessione",
+    "pickTable": "Scegliete una tabella",
+    "pickTableDesc": "Scegliete una tabella nell’elenco per vederne righe e struttura.",
+    "facts": "Circa {rows} righe · {columns} colonne",
+    "formOf": "Risposte di «{form}»",
+    "readOnly": {
+      "response_table": "Qui in sola lettura: queste righe cambiano tramite Formalie. Modificate invece la risposta.",
+      "read_access": "Sola lettura: la connessione può solo leggere le vostre tabelle.",
+      "no_key": "Sola lettura: la tabella non ha una chiave primaria per trovare una riga.",
+      "view": "Sola lettura: questa è una vista."
+    },
+    "tab": {
+      "data": "Dati",
+      "structure": "Struttura"
+    },
+    "searchRows": "Cerca in tutte le colonne…",
+    "emptyRows": "Nessuna riga",
+    "emptyRowsDesc": "Questa tabella è vuota, oppure nulla corrisponde alla ricerca e ai filtri.",
+    "emptyResponses": "Le risposte compaiono qui non appena Formalie le consegna.",
+    "row": "Riga {key}",
+    "copyRow": "Copia riga",
+    "rowCopied": "Riga copiata come JSON",
+    "copyValue": "Copia {column}",
+    "openReferenced": "Apri {table}",
+    "navigate": "Spostati tra le righe",
+    "previous": "Riga precedente",
+    "next": "Riga successiva",
+    "export": "Esporta",
+    "exportAll": "L’intera tabella",
+    "exportFiltered": "Le righe che corrispondono a ricerca e filtri",
+    "exporting": "Esportazione {n}%",
+    "exported": "{n} riga esportata | {n} righe esportate",
+    "structure": {
+      "columns": "Colonne ({n})",
+      "name": "Nome",
+      "type": "Tipo",
+      "nullable": "Può essere vuoto",
+      "default": "Predefinito",
+      "keys": "Chiavi",
+      "pk": "Chiave primaria",
+      "unique": "Univoco",
+      "fk": "Punta a un’altra tabella",
+      "indexes": "Indici",
+      "noIndexes": "Nessun indice.",
+      "relations": "Relazioni",
+      "noRelations": "Nessuna colonna punta ad altre tabelle.",
+      "definition": "Definizione"
     }
   }
 }

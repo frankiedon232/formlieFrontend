@@ -141,6 +141,19 @@ const META_KIND: Record<MetaColumn, Kind> = { response_id: 'uuid', submitted_at:
 export const columnTypeFor = (engine: DbEngine, field: Pick<FormField, 'type'>, multi: MultiValue) => TYPES[engine][kindOfField(field.type, multi)]
 export const metaTypeFor = (engine: DbEngine, meta: MetaColumn) => TYPES[engine][META_KIND[meta]]
 
+/**
+ * The columns of a table Formalie creates, with every type worked out for the engine (never taken
+ * from a request): an answer by its question, a fact about the response by its kind.
+ */
+export function typedForEngine(engine: DbEngine, columns: DestinationColumn[], fields: Pick<FormField, 'key' | 'type'>[], multi: MultiValue): DestinationColumn[] {
+  const byKey = new Map(fields.map(field => [field.key, field]))
+  return columns.map(column => {
+    if (column.source?.kind === 'meta') return { ...column, type: metaTypeFor(engine, column.source.key) }
+    const field = column.source?.kind === 'field' ? byKey.get(column.source.key) : undefined
+    return field ? { ...column, type: columnTypeFor(engine, field, multi) } : column
+  })
+}
+
 /** The columns of a new table for a form: the response facts first, then a column per answer. */
 export function columnsForForm(engine: DbEngine, fields: Pick<FormField, 'key' | 'type'>[], settings: Pick<DestinationSettings, 'multi_value'>, meta: MetaColumn[] = ['response_id', 'submitted_at', 'form_version', 'language']): DestinationColumn[] {
   const taken = new Set<string>()

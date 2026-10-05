@@ -932,7 +932,8 @@
       "data_table_created": "Utworzono tabelę odpowiedzi",
       "data_column_added": "Dodano kolumny do tabeli odpowiedzi",
       "data_backfill_started": "Wysłano wcześniejsze odpowiedzi do bazy danych",
-      "data_deliveries_retried": "Ponowiono nieudane dostarczenia"
+      "data_deliveries_retried": "Ponowiono nieudane dostarczenia",
+      "data_table_exported": "Wyeksportowano tabelę"
     },
     "detail": {
       "who": "Kto",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Odpowiedzi zapisane w {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Połączenie",
+    "tables": "Tabele",
+    "searchTables": "Szukaj tabel i kolumn…",
+    "noMatch": "Brak wyników.",
+    "noTables": "Brak tabel, które Formalie może widzieć w tym połączeniu.",
+    "responseTable": "Tabela odpowiedzi (utworzona przez Formalie)",
+    "noConnections": "Brak połączeń",
+    "noConnectionsDesc": "Połącz jedną ze swoich baz danych, aby przeglądać tu jej tabele.",
+    "cantReach": "To połączenie obecnie nie działa",
+    "checkConnection": "Sprawdź połączenie",
+    "pickTable": "Wybierz tabelę",
+    "pickTableDesc": "Wybierz tabelę z listy, aby zobaczyć jej wiersze i strukturę.",
+    "facts": "Wierszy: ok. {rows} · kolumn: {columns}",
+    "formOf": "Odpowiedzi z „{form}”",
+    "readOnly": {
+      "response_table": "Tutaj tylko odczyt: te wiersze zmieniają się przez Formalie. Zamiast tego edytuj odpowiedź.",
+      "read_access": "Tylko odczyt: połączenie może jedynie odczytywać twoje tabele.",
+      "no_key": "Tylko odczyt: tabela nie ma klucza głównego do odnalezienia wiersza.",
+      "view": "Tylko odczyt: to jest widok."
+    },
+    "tab": {
+      "data": "Dane",
+      "structure": "Struktura"
+    },
+    "searchRows": "Szukaj we wszystkich kolumnach…",
+    "emptyRows": "Brak wierszy",
+    "emptyRowsDesc": "Ta tabela jest pusta albo nic nie pasuje do wyszukiwania i filtrów.",
+    "emptyResponses": "Odpowiedzi pojawią się tu, gdy tylko Formalie je dostarczy.",
+    "row": "Wiersz {key}",
+    "copyRow": "Kopiuj wiersz",
+    "rowCopied": "Skopiowano wiersz jako JSON",
+    "copyValue": "Kopiuj {column}",
+    "openReferenced": "Otwórz {table}",
+    "navigate": "Przechodź między wierszami",
+    "previous": "Poprzedni wiersz",
+    "next": "Następny wiersz",
+    "export": "Eksportuj",
+    "exportAll": "Cała tabela",
+    "exportFiltered": "Wiersze pasujące do wyszukiwania i filtrów",
+    "exporting": "Eksportowanie {n}%",
+    "exported": "Wyeksportowane wiersze: {n} | Wyeksportowane wiersze: {n}",
+    "structure": {
+      "columns": "Kolumny ({n})",
+      "name": "Nazwa",
+      "type": "Typ",
+      "nullable": "Może być pusta",
+      "default": "Domyślna",
+      "keys": "Klucze",
+      "pk": "Klucz główny",
+      "unique": "Unikalna",
+      "fk": "Wskazuje inną tabelę",
+      "indexes": "Indeksy",
+      "noIndexes": "Brak indeksów.",
+      "relations": "Relacje",
+      "noRelations": "Żadna kolumna nie wskazuje innych tabel.",
+      "definition": "Definicja"
     }
   }
 }

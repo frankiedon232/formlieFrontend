@@ -932,7 +932,8 @@
       "data_table_created": "Tabela de respostas criada",
       "data_column_added": "Colunas adicionadas a uma tabela de respostas",
       "data_backfill_started": "Respostas anteriores enviadas a um banco de dados",
-      "data_deliveries_retried": "Entregas com falha tentadas novamente"
+      "data_deliveries_retried": "Entregas com falha tentadas novamente",
+      "data_table_exported": "Tabela exportada"
     },
     "detail": {
       "who": "Quem",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Respostas armazenadas em {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Conexão",
+    "tables": "Tabelas",
+    "searchTables": "Pesquisar tabelas e colunas…",
+    "noMatch": "Nada corresponde.",
+    "noTables": "Nenhuma tabela que o Formalie possa ver nesta conexão.",
+    "responseTable": "Tabela de respostas (criada pelo Formalie)",
+    "noConnections": "Nenhuma conexão ainda",
+    "noConnectionsDesc": "Conecte um dos seus bancos de dados para navegar pelas tabelas aqui.",
+    "cantReach": "Esta conexão não está funcionando no momento",
+    "checkConnection": "Verificar conexão",
+    "pickTable": "Escolha uma tabela",
+    "pickTableDesc": "Escolha uma tabela na lista para ver as linhas e a estrutura.",
+    "facts": "Cerca de {rows} linhas · {columns} colunas",
+    "formOf": "Respostas de “{form}”",
+    "readOnly": {
+      "response_table": "Somente leitura aqui: estas linhas mudam pelo Formalie. Edite a resposta em vez disso.",
+      "read_access": "Somente leitura: a conexão só pode ler suas tabelas.",
+      "no_key": "Somente leitura: a tabela não tem chave primária para localizar uma linha.",
+      "view": "Somente leitura: isto é uma view."
+    },
+    "tab": {
+      "data": "Dados",
+      "structure": "Estrutura"
+    },
+    "searchRows": "Pesquisar em todas as colunas…",
+    "emptyRows": "Nenhuma linha",
+    "emptyRowsDesc": "Esta tabela está vazia, ou nada corresponde à pesquisa e aos filtros.",
+    "emptyResponses": "As respostas aparecem aqui assim que o Formalie as entrega.",
+    "row": "Linha {key}",
+    "copyRow": "Copiar linha",
+    "rowCopied": "Linha copiada como JSON",
+    "copyValue": "Copiar {column}",
+    "openReferenced": "Abrir {table}",
+    "navigate": "Navegar entre linhas",
+    "previous": "Linha anterior",
+    "next": "Próxima linha",
+    "export": "Exportar",
+    "exportAll": "A tabela inteira",
+    "exportFiltered": "As linhas que correspondem à sua pesquisa e aos filtros",
+    "exporting": "Exportando {n}%",
+    "exported": "{n} linha exportada | {n} linhas exportadas",
+    "structure": {
+      "columns": "Colunas ({n})",
+      "name": "Nome",
+      "type": "Tipo",
+      "nullable": "Pode ficar vazio",
+      "default": "Padrão",
+      "keys": "Chaves",
+      "pk": "Chave primária",
+      "unique": "Única",
+      "fk": "Aponta para outra tabela",
+      "indexes": "Índices",
+      "noIndexes": "Nenhum índice.",
+      "relations": "Relações",
+      "noRelations": "Nenhuma coluna aponta para outras tabelas.",
+      "definition": "Definição"
     }
   }
 }

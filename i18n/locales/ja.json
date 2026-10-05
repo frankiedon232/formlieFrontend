@@ -932,7 +932,8 @@
       "data_table_created": "回答テーブルを作成",
       "data_column_added": "回答テーブルに列を追加",
       "data_backfill_started": "以前の回答をデータベースに送信",
-      "data_deliveries_retried": "失敗した配信を再試行"
+      "data_deliveries_retried": "失敗した配信を再試行",
+      "data_table_exported": "テーブルをエクスポートしました"
     },
     "detail": {
       "who": "誰が",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "回答の保存先: {name}"
+    }
+  },
+  "explorer": {
+    "connection": "接続",
+    "tables": "テーブル",
+    "searchTables": "テーブルと列を検索…",
+    "noMatch": "一致するものはありません。",
+    "noTables": "この接続には Formalie が参照できるテーブルがありません。",
+    "responseTable": "回答テーブル（Formalie が作成）",
+    "noConnections": "接続はまだありません",
+    "noConnectionsDesc": "データベースを接続すると、ここでテーブルを閲覧できます。",
+    "cantReach": "この接続は現在機能していません",
+    "checkConnection": "接続を確認",
+    "pickTable": "テーブルを選択",
+    "pickTableDesc": "一覧からテーブルを選ぶと、行と構造が表示されます。",
+    "facts": "約 {rows} 行 · {columns} 列",
+    "formOf": "「{form}」の回答",
+    "readOnly": {
+      "response_table": "ここでは読み取り専用です。これらの行は Formalie を通じて変更されます。代わりに回答を編集してください。",
+      "read_access": "読み取り専用です。この接続はテーブルの読み取りのみ可能です。",
+      "no_key": "読み取り専用です。行を特定する主キーがテーブルにありません。",
+      "view": "読み取り専用です。これはビューです。"
+    },
+    "tab": {
+      "data": "データ",
+      "structure": "構造"
+    },
+    "searchRows": "すべての列を検索…",
+    "emptyRows": "行がありません",
+    "emptyRowsDesc": "このテーブルは空か、検索とフィルターに一致する行がありません。",
+    "emptyResponses": "Formalie が回答を配信すると、すぐにここに表示されます。",
+    "row": "行 {key}",
+    "copyRow": "行をコピー",
+    "rowCopied": "行を JSON としてコピーしました",
+    "copyValue": "{column} をコピー",
+    "openReferenced": "{table} を開く",
+    "navigate": "行間を移動",
+    "previous": "前の行",
+    "next": "次の行",
+    "export": "エクスポート",
+    "exportAll": "テーブル全体",
+    "exportFiltered": "検索とフィルターに一致する行",
+    "exporting": "エクスポート中 {n}%",
+    "exported": "{n} 行をエクスポートしました | {n} 行をエクスポートしました",
+    "structure": {
+      "columns": "列（{n}）",
+      "name": "名前",
+      "type": "型",
+      "nullable": "空を許可",
+      "default": "デフォルト",
+      "keys": "キー",
+      "pk": "主キー",
+      "unique": "一意",
+      "fk": "別のテーブルを参照",
+      "indexes": "インデックス",
+      "noIndexes": "インデックスはありません。",
+      "relations": "リレーション",
+      "noRelations": "他のテーブルを参照する列はありません。",
+      "definition": "定義"
     }
   }
 }

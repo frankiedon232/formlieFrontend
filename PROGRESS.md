@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done; next M3 Database explorer.
+**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done, M3 Database explorer: browsing done, row changes and import next.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -22,7 +22,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
-| F12   | Data sources & databases                          | 🟡     | ~45% |
+| F12   | Data sources & databases                          | 🟡     | ~55% |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
@@ -542,7 +542,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
-**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ⬜ Database explorer and row operations (incl. import). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** 🟡 Database explorer (browsing ✅; row changes and import next). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -572,11 +572,14 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 3. Database explorer
 
-- ⬜ Explorer page per connection: tree of schemas → tables / views → columns (type, nullable, default, primary / foreign keys, indexes) with row counts; search tables and columns; keyboard navigation of the tree
-- ⬜ Table data tab: rows with server-side paging, sort, filters per column type, search, column picker, Table / Grid (record cards), copy cell / row, row detail slide-over
-- ⬜ Structure tab: columns, keys, indexes, relations and the table definition (read only)
-- ⬜ Export a table or the filtered rows to CSV / XLSX with a progress bar
-- ⬜ Skeletons that mirror the tree and the grid; empty / error states with retry and "check connection"
+**M3 part 1 ✅ (2026-10-05; decision 114): browsing.**
+
+- ✅ Explorer per connection (`/data-sources/explorer?ds=&object=`): connection picker in the header; tree of schemas → tables (row counts, response tables marked) → columns (type, key), search tables and columns, keyboard navigation (Nuxt UI tree); on phones the tree opens from "Tables"
+- ✅ Rows in DataView: search every column, filters for low-variety columns, sortable headers, Columns (first eight shown), Table / Grid (record cards), server paging, NULL dimmed; a row opens its panel (every column with type and full value, JSON laid out, copy a value or the row, open a referenced table, J / K)
+- ✅ Structure tab: columns (type, can be empty, default, keys), indexes, relations (open the other table), the definition with Copy
+- ✅ Export the table or the rows matching the search and filters to CSV / Excel with a percentage, one-time private download link; audit `data.table_exported`
+- ✅ Skeletons for the tree and the table; empty states; a connection that isn't working shows its error with Try again and Check connection
+- ✅ Response tables are read only here (they change through Formalie); what is visible follows the connection's access
 
 ### 4. Query editor
 
@@ -1227,3 +1230,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Owner: how several values and choices are written is chosen at setup and locked afterwards (UI and API), so every row stays alike. |
 | 2026-10-05 | F12 | New response tables store the response number and review status by default; the respondent's email stays opt-in (personal data). |
 | 2026-10-05 | F12 | Response tables: `language` VARCHAR(35) and `review_status` VARCHAR(16) (were email-sized); an index on `submitted_at` is created with the table. |
+| 2026-10-05 | F12 | M3 part 1, Database explorer (decision 114): tree, rows (DataView with search, filters, sort, Columns, Table / Grid), row panel, structure, export with progress; failing connections show their error. Fix found while testing: a response table on a PostgreSQL connection had been saved with MySQL types (a slower answer for an earlier-picked connection replaced the chosen one); the setup now ignores stale answers, the server sets the types of tables Formalie creates itself, and stored tables were repaired. |

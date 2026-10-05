@@ -932,7 +932,8 @@
       "data_table_created": "응답 테이블 생성",
       "data_column_added": "응답 테이블에 열 추가",
       "data_backfill_started": "이전 응답을 데이터베이스로 전송",
-      "data_deliveries_retried": "실패한 전송 재시도"
+      "data_deliveries_retried": "실패한 전송 재시도",
+      "data_table_exported": "테이블 내보냄"
     },
     "detail": {
       "who": "누가",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "응답 저장 위치: {name}"
+    }
+  },
+  "explorer": {
+    "connection": "연결",
+    "tables": "테이블",
+    "searchTables": "테이블 및 열 검색…",
+    "noMatch": "일치하는 항목이 없습니다.",
+    "noTables": "이 연결에는 Formalie가 볼 수 있는 테이블이 없습니다.",
+    "responseTable": "응답 테이블(Formalie에서 생성)",
+    "noConnections": "아직 연결이 없습니다",
+    "noConnectionsDesc": "데이터베이스를 연결하면 여기에서 테이블을 탐색할 수 있습니다.",
+    "cantReach": "이 연결은 현재 작동하지 않습니다",
+    "checkConnection": "연결 확인",
+    "pickTable": "테이블 선택",
+    "pickTableDesc": "목록에서 테이블을 선택하면 행과 구조를 볼 수 있습니다.",
+    "facts": "약 {rows}개 행 · {columns}개 열",
+    "formOf": "“{form}”의 응답",
+    "readOnly": {
+      "response_table": "여기서는 읽기 전용: 이 행은 Formalie를 통해 변경됩니다. 대신 응답을 편집하세요.",
+      "read_access": "읽기 전용: 이 연결은 테이블을 읽기만 할 수 있습니다.",
+      "no_key": "읽기 전용: 테이블에 행을 찾을 기본 키가 없습니다.",
+      "view": "읽기 전용: 뷰입니다."
+    },
+    "tab": {
+      "data": "데이터",
+      "structure": "구조"
+    },
+    "searchRows": "모든 열 검색…",
+    "emptyRows": "행 없음",
+    "emptyRowsDesc": "이 테이블이 비어 있거나 검색 및 필터와 일치하는 항목이 없습니다.",
+    "emptyResponses": "Formalie가 응답을 전달하면 바로 여기에 표시됩니다.",
+    "row": "행 {key}",
+    "copyRow": "행 복사",
+    "rowCopied": "행을 JSON으로 복사했습니다",
+    "copyValue": "{column} 복사",
+    "openReferenced": "{table} 열기",
+    "navigate": "행 간 이동",
+    "previous": "이전 행",
+    "next": "다음 행",
+    "export": "내보내기",
+    "exportAll": "테이블 전체",
+    "exportFiltered": "검색 및 필터와 일치하는 행",
+    "exporting": "내보내는 중 {n}%",
+    "exported": "{n}개 행 내보냄 | {n}개 행 내보냄",
+    "structure": {
+      "columns": "열({n})",
+      "name": "이름",
+      "type": "유형",
+      "nullable": "빈 값 허용",
+      "default": "기본값",
+      "keys": "키",
+      "pk": "기본 키",
+      "unique": "고유",
+      "fk": "다른 테이블 참조",
+      "indexes": "인덱스",
+      "noIndexes": "인덱스가 없습니다.",
+      "relations": "관계",
+      "noRelations": "다른 테이블을 참조하는 열이 없습니다.",
+      "definition": "정의"
     }
   }
 }

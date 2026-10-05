@@ -932,7 +932,8 @@
       "data_table_created": "Reactietabel gemaakt",
       "data_column_added": "Kolommen toegevoegd aan een reactietabel",
       "data_backfill_started": "Eerdere reacties naar een database verzonden",
-      "data_deliveries_retried": "Mislukte leveringen opnieuw geprobeerd"
+      "data_deliveries_retried": "Mislukte leveringen opnieuw geprobeerd",
+      "data_table_exported": "Tabel geëxporteerd"
     },
     "detail": {
       "who": "Wie",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Reacties opgeslagen in {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Verbinding",
+    "tables": "Tabellen",
+    "searchTables": "Tabellen en kolommen zoeken…",
+    "noMatch": "Niets gevonden.",
+    "noTables": "Geen tabellen die Formalie op deze verbinding mag zien.",
+    "responseTable": "Reactietabel (gemaakt door Formalie)",
+    "noConnections": "Nog geen verbinding",
+    "noConnectionsDesc": "Verbind een van uw databases om hier de tabellen te bekijken.",
+    "cantReach": "Deze verbinding werkt op dit moment niet",
+    "checkConnection": "Verbinding controleren",
+    "pickTable": "Kies een tabel",
+    "pickTableDesc": "Kies een tabel in de lijst om de rijen en structuur te zien.",
+    "facts": "Ongeveer {rows} rijen · {columns} kolommen",
+    "formOf": "Reacties op “{form}”",
+    "readOnly": {
+      "response_table": "Hier alleen lezen: deze rijen veranderen via Formalie. Bewerk in plaats daarvan de reactie.",
+      "read_access": "Alleen lezen: de verbinding kan uw tabellen alleen lezen.",
+      "no_key": "Alleen lezen: de tabel heeft geen primaire sleutel om een rij te vinden.",
+      "view": "Alleen lezen: dit is een view."
+    },
+    "tab": {
+      "data": "Gegevens",
+      "structure": "Structuur"
+    },
+    "searchRows": "Alle kolommen doorzoeken…",
+    "emptyRows": "Geen rijen",
+    "emptyRowsDesc": "Deze tabel is leeg, of niets komt overeen met de zoekopdracht en filters.",
+    "emptyResponses": "Reacties verschijnen hier zodra Formalie ze aflevert.",
+    "row": "Rij {key}",
+    "copyRow": "Rij kopiëren",
+    "rowCopied": "Rij gekopieerd als JSON",
+    "copyValue": "{column} kopiëren",
+    "openReferenced": "{table} openen",
+    "navigate": "Tussen rijen wisselen",
+    "previous": "Vorige rij",
+    "next": "Volgende rij",
+    "export": "Exporteren",
+    "exportAll": "De hele tabel",
+    "exportFiltered": "De rijen die passen bij uw zoekopdracht en filters",
+    "exporting": "Exporteren {n}%",
+    "exported": "{n} rij geëxporteerd | {n} rijen geëxporteerd",
+    "structure": {
+      "columns": "Kolommen ({n})",
+      "name": "Naam",
+      "type": "Type",
+      "nullable": "Mag leeg zijn",
+      "default": "Standaardwaarde",
+      "keys": "Sleutels",
+      "pk": "Primaire sleutel",
+      "unique": "Uniek",
+      "fk": "Verwijst naar een andere tabel",
+      "indexes": "Indexen",
+      "noIndexes": "Geen indexen.",
+      "relations": "Relaties",
+      "noRelations": "Geen kolommen verwijzen naar andere tabellen.",
+      "definition": "Definitie"
     }
   }
 }

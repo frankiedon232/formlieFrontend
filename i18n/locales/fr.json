@@ -932,7 +932,8 @@
       "data_table_created": "Table de réponses créée",
       "data_column_added": "Colonnes ajoutées à une table de réponses",
       "data_backfill_started": "Réponses antérieures envoyées vers une base de données",
-      "data_deliveries_retried": "Livraisons échouées relancées"
+      "data_deliveries_retried": "Livraisons échouées relancées",
+      "data_table_exported": "Table exportée"
     },
     "detail": {
       "who": "Qui",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Réponses enregistrées dans {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Connexion",
+    "tables": "Tables",
+    "searchTables": "Rechercher des tables et colonnes…",
+    "noMatch": "Aucun résultat.",
+    "noTables": "Aucune table visible par Formalie sur cette connexion.",
+    "responseTable": "Table de réponses (créée par Formalie)",
+    "noConnections": "Aucune connexion pour l’instant",
+    "noConnectionsDesc": "Connectez l’une de vos bases de données pour parcourir ses tables ici.",
+    "cantReach": "Cette connexion ne fonctionne pas pour le moment",
+    "checkConnection": "Vérifier la connexion",
+    "pickTable": "Choisissez une table",
+    "pickTableDesc": "Choisissez une table dans la liste pour voir ses lignes et sa structure.",
+    "facts": "Environ {rows} lignes · {columns} colonnes",
+    "formOf": "Réponses de « {form} »",
+    "readOnly": {
+      "response_table": "Lecture seule ici : ces lignes changent via Formalie. Modifiez plutôt la réponse.",
+      "read_access": "Lecture seule : la connexion peut uniquement lire vos tables.",
+      "no_key": "Lecture seule : la table n’a pas de clé primaire pour retrouver une ligne.",
+      "view": "Lecture seule : il s’agit d’une vue."
+    },
+    "tab": {
+      "data": "Données",
+      "structure": "Structure"
+    },
+    "searchRows": "Rechercher dans toutes les colonnes…",
+    "emptyRows": "Aucune ligne",
+    "emptyRowsDesc": "Cette table est vide, ou rien ne correspond à la recherche et aux filtres.",
+    "emptyResponses": "Les réponses apparaissent ici dès que Formalie les livre.",
+    "row": "Ligne {key}",
+    "copyRow": "Copier la ligne",
+    "rowCopied": "Ligne copiée en JSON",
+    "copyValue": "Copier {column}",
+    "openReferenced": "Ouvrir {table}",
+    "navigate": "Passer d’une ligne à l’autre",
+    "previous": "Ligne précédente",
+    "next": "Ligne suivante",
+    "export": "Exporter",
+    "exportAll": "Toute la table",
+    "exportFiltered": "Les lignes correspondant à votre recherche et à vos filtres",
+    "exporting": "Export : {n} %",
+    "exported": "{n} ligne exportée | {n} lignes exportées",
+    "structure": {
+      "columns": "Colonnes ({n})",
+      "name": "Nom",
+      "type": "Type",
+      "nullable": "Peut être vide",
+      "default": "Valeur par défaut",
+      "keys": "Clés",
+      "pk": "Clé primaire",
+      "unique": "Unique",
+      "fk": "Pointe vers une autre table",
+      "indexes": "Index",
+      "noIndexes": "Aucun index.",
+      "relations": "Relations",
+      "noRelations": "Aucune colonne ne pointe vers d’autres tables.",
+      "definition": "Définition"
     }
   }
 }

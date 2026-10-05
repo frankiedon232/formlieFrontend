@@ -932,7 +932,8 @@
       "data_table_created": "Đã tạo bảng phản hồi",
       "data_column_added": "Đã thêm cột vào bảng phản hồi",
       "data_backfill_started": "Đã gửi các phản hồi trước đó vào cơ sở dữ liệu",
-      "data_deliveries_retried": "Đã thử lại các lần gửi thất bại"
+      "data_deliveries_retried": "Đã thử lại các lần gửi thất bại",
+      "data_table_exported": "Đã xuất bảng"
     },
     "detail": {
       "who": "Ai",
@@ -4579,6 +4580,65 @@
     },
     "mark": {
       "database": "Câu trả lời được lưu trong {name}"
+    }
+  },
+  "explorer": {
+    "connection": "Kết nối",
+    "tables": "Bảng",
+    "searchTables": "Tìm bảng và cột…",
+    "noMatch": "Không có kết quả phù hợp.",
+    "noTables": "Không có bảng nào Formalie được phép xem trên kết nối này.",
+    "responseTable": "Bảng phản hồi (do Formalie tạo)",
+    "noConnections": "Chưa có kết nối nào",
+    "noConnectionsDesc": "Kết nối một cơ sở dữ liệu của bạn để duyệt các bảng tại đây.",
+    "cantReach": "Kết nối này hiện không hoạt động",
+    "checkConnection": "Kiểm tra kết nối",
+    "pickTable": "Chọn một bảng",
+    "pickTableDesc": "Chọn một bảng trong danh sách để xem các hàng và cấu trúc.",
+    "facts": "Khoảng {rows} hàng · {columns} cột",
+    "formOf": "Phản hồi của “{form}”",
+    "readOnly": {
+      "response_table": "Chỉ đọc ở đây: các hàng này thay đổi qua Formalie. Hãy sửa phản hồi thay vào đó.",
+      "read_access": "Chỉ đọc: kết nối chỉ có thể đọc các bảng của bạn.",
+      "no_key": "Chỉ đọc: bảng không có khóa chính để tìm một hàng.",
+      "view": "Chỉ đọc: đây là một view."
+    },
+    "tab": {
+      "data": "Dữ liệu",
+      "structure": "Cấu trúc"
+    },
+    "searchRows": "Tìm trong mọi cột…",
+    "emptyRows": "Không có hàng",
+    "emptyRowsDesc": "Bảng này trống, hoặc không có gì khớp với tìm kiếm và bộ lọc.",
+    "emptyResponses": "Phản hồi sẽ xuất hiện ở đây ngay khi Formalie gửi đến.",
+    "row": "Hàng {key}",
+    "copyRow": "Sao chép hàng",
+    "rowCopied": "Đã sao chép hàng dưới dạng JSON",
+    "copyValue": "Sao chép {column}",
+    "openReferenced": "Mở {table}",
+    "navigate": "Di chuyển giữa các hàng",
+    "previous": "Hàng trước",
+    "next": "Hàng sau",
+    "export": "Xuất",
+    "exportAll": "Toàn bộ bảng",
+    "exportFiltered": "Các hàng khớp với tìm kiếm và bộ lọc của bạn",
+    "exporting": "Đang xuất {n}%",
+    "exported": "Đã xuất {n} hàng | Đã xuất {n} hàng",
+    "structure": {
+      "columns": "Cột ({n})",
+      "name": "Tên",
+      "type": "Kiểu",
+      "nullable": "Có thể trống",
+      "default": "Mặc định",
+      "keys": "Khóa",
+      "pk": "Khóa chính",
+      "unique": "Duy nhất",
+      "fk": "Trỏ đến bảng khác",
+      "indexes": "Chỉ mục",
+      "noIndexes": "Không có chỉ mục.",
+      "relations": "Quan hệ",
+      "noRelations": "Không có cột nào trỏ đến bảng khác.",
+      "definition": "Định nghĩa"
     }
   }
 }
