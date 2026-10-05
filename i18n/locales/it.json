@@ -403,8 +403,7 @@
     "pagesSaved": "Salvate",
     "pagesCreated": "Create",
     "folders": "Cartelle",
-    "foldersAll": "Tutte le cartelle",
-    "foldersShowAll": "Mostra tutte le cartelle"
+    "foldersAll": "Tutte le cartelle"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -3646,6 +3645,9 @@
     "open": "Apri cartella",
     "search": "Cerca cartelle…",
     "emptyTitle": "Ancora nessuna cartella",
-    "emptyDesc": "Crea cartelle per raggruppare i moduli per team, cliente o progetto."
+    "emptyDesc": "Crea cartelle per raggruppare i moduli per team, cliente o progetto.",
+    "pin": "Fissa nella barra laterale",
+    "unpin": "Rimuovi dalla barra laterale",
+    "pinFull": "Si possono fissare fino a 5 cartelle"
   }
 }

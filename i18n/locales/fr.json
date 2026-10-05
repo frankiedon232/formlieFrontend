@@ -403,8 +403,7 @@
     "pagesSaved": "Enregistrées",
     "pagesCreated": "Créées",
     "folders": "Dossiers",
-    "foldersAll": "Tous les dossiers",
-    "foldersShowAll": "Voir tous les dossiers"
+    "foldersAll": "Tous les dossiers"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -3646,6 +3645,9 @@
     "open": "Ouvrir le dossier",
     "search": "Rechercher des dossiers…",
     "emptyTitle": "Aucun dossier pour l’instant",
-    "emptyDesc": "Créez des dossiers pour regrouper les formulaires par équipe, client ou projet."
+    "emptyDesc": "Créez des dossiers pour regrouper les formulaires par équipe, client ou projet.",
+    "pin": "Épingler dans la barre latérale",
+    "unpin": "Retirer de la barre latérale",
+    "pinFull": "Jusqu’à 5 dossiers peuvent être épinglés"
   }
 }

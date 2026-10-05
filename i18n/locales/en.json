@@ -403,8 +403,7 @@
     "pagesSaved": "Saved",
     "pagesCreated": "Created",
     "folders": "Folders",
-    "foldersAll": "All folders",
-    "foldersShowAll": "Show all folders"
+    "foldersAll": "All folders"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -3646,6 +3645,9 @@
     "open": "Open folder",
     "search": "Search folders…",
     "emptyTitle": "No folders yet",
-    "emptyDesc": "Create folders to group forms by team, client or project."
+    "emptyDesc": "Create folders to group forms by team, client or project.",
+    "pin": "Pin to sidebar",
+    "unpin": "Unpin from sidebar",
+    "pinFull": "Up to 5 folders can be pinned"
   }
 }

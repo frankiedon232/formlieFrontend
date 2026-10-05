@@ -403,8 +403,7 @@
     "pagesSaved": "Zilizohifadhiwa",
     "pagesCreated": "Zilizoundwa",
     "folders": "Folda",
-    "foldersAll": "Folda zote",
-    "foldersShowAll": "Onyesha folda zote"
+    "foldersAll": "Folda zote"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -3646,6 +3645,9 @@
     "open": "Fungua folda",
     "search": "Tafuta folda…",
     "emptyTitle": "Bado hakuna folda",
-    "emptyDesc": "Unda folda kupanga fomu kwa timu, mteja au mradi."
+    "emptyDesc": "Unda folda kupanga fomu kwa timu, mteja au mradi.",
+    "pin": "Bandika kwenye upau wa pembeni",
+    "unpin": "Bandua kutoka upau wa pembeni",
+    "pinFull": "Unaweza kubandika folda hadi 5"
   }
 }

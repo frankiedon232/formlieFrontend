@@ -403,8 +403,7 @@
     "pagesSaved": "Salvas",
     "pagesCreated": "Criadas",
     "folders": "Pastas",
-    "foldersAll": "Todas as pastas",
-    "foldersShowAll": "Ver todas as pastas"
+    "foldersAll": "Todas as pastas"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -3646,6 +3645,9 @@
     "open": "Abrir pasta",
     "search": "Pesquisar pastas…",
     "emptyTitle": "Ainda sem pastas",
-    "emptyDesc": "Crie pastas para agrupar formulários por equipe, cliente ou projeto."
+    "emptyDesc": "Crie pastas para agrupar formulários por equipe, cliente ou projeto.",
+    "pin": "Fixar na barra lateral",
+    "unpin": "Desafixar da barra lateral",
+    "pinFull": "É possível fixar até 5 pastas"
   }
 }

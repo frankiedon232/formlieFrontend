@@ -403,8 +403,7 @@
     "pagesSaved": "Opgeslagen",
     "pagesCreated": "Gemaakt",
     "folders": "Mappen",
-    "foldersAll": "Alle mappen",
-    "foldersShowAll": "Alle mappen tonen"
+    "foldersAll": "Alle mappen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -3646,6 +3645,9 @@
     "open": "Map openen",
     "search": "Mappen zoeken…",
     "emptyTitle": "Nog geen mappen",
-    "emptyDesc": "Maak mappen om formulieren per team, klant of project te groeperen."
+    "emptyDesc": "Maak mappen om formulieren per team, klant of project te groeperen.",
+    "pin": "Vastzetten in de zijbalk",
+    "unpin": "Losmaken uit de zijbalk",
+    "pinFull": "U kunt maximaal 5 mappen vastzetten"
   }
 }

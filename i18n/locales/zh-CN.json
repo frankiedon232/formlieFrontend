@@ -403,8 +403,7 @@
     "pagesSaved": "已保存",
     "pagesCreated": "已创建",
     "folders": "文件夹",
-    "foldersAll": "所有文件夹",
-    "foldersShowAll": "显示所有文件夹"
+    "foldersAll": "所有文件夹"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -3646,6 +3645,9 @@
     "open": "打开文件夹",
     "search": "搜索文件夹…",
     "emptyTitle": "还没有文件夹",
-    "emptyDesc": "创建文件夹，按团队、客户或项目归类表单。"
+    "emptyDesc": "创建文件夹，按团队、客户或项目归类表单。",
+    "pin": "固定到侧边栏",
+    "unpin": "从侧边栏取消固定",
+    "pinFull": "最多可固定 5 个文件夹"
   }
 }

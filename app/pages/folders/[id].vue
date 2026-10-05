@@ -37,6 +37,9 @@ watch(id, () => {
   void load()
 }, { immediate: true })
 watch(() => folder.value?.name, name => name && setLabel(route.path, name))
+// Opening a folder brings it to the sidebar (recently opened, per person).
+const sidebarFolders = useSidebarFolders()
+watch(() => folder.value?.id, folderId => folderId && sidebarFolders.visit(folderId))
 useHead({ title: () => folder.value?.name ?? t('nav.folders') })
 
 const STATUS_DOTS: Record<string, string> = { draft: 'bg-amber-500', published: 'bg-green-500', closed: 'bg-violet-600', archived: 'bg-(--ui-text-dimmed)' }
@@ -53,8 +56,15 @@ async function remove() {
   void counts.refresh(true)
   await navigateTo('/folders')
 }
+/** Pin / unpin in the sidebar (per person, up to five). */
+const pinItem = (folderId: string): DropdownMenuItem =>
+  sidebarFolders.isPinned(folderId)
+    ? { label: t('folders.unpin'), icon: 'i-lucide-pin-off', onSelect: () => sidebarFolders.togglePin(folderId) }
+    : sidebarFolders.canPin.value
+      ? { label: t('folders.pin'), icon: 'i-lucide-pin', onSelect: () => sidebarFolders.togglePin(folderId) }
+      : { label: t('folders.pinFull'), icon: 'i-lucide-pin', disabled: true }
 const menu = computed<DropdownMenuItem[][]>(() => [
-  [{ label: t('folders.editTitle'), icon: 'i-lucide-pencil', onSelect: () => (editOpen.value = true) }],
+  [{ label: t('folders.editTitle'), icon: 'i-lucide-pencil', onSelect: () => (editOpen.value = true) }, ...(folder.value ? [pinItem(folder.value.id)] : [])],
   [
     folder.value?.forms_count
       ? { label: t('forms.folders.notEmpty'), icon: 'i-lucide-trash-2', disabled: true }

@@ -403,8 +403,7 @@
     "pagesSaved": "Kaydedilenler",
     "pagesCreated": "Oluşturulanlar",
     "folders": "Klasörler",
-    "foldersAll": "Tüm klasörler",
-    "foldersShowAll": "Tüm klasörleri göster"
+    "foldersAll": "Tüm klasörler"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -3646,6 +3645,9 @@
     "open": "Klasörü aç",
     "search": "Klasör ara…",
     "emptyTitle": "Henüz klasör yok",
-    "emptyDesc": "Formları ekip, müşteri veya projeye göre gruplamak için klasör oluşturun."
+    "emptyDesc": "Formları ekip, müşteri veya projeye göre gruplamak için klasör oluşturun.",
+    "pin": "Kenar çubuğuna sabitle",
+    "unpin": "Kenar çubuğundan kaldır",
+    "pinFull": "En fazla 5 klasör sabitlenebilir"
   }
 }

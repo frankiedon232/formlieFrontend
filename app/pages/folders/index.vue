@@ -38,6 +38,7 @@ const sortOptions = computed(() => [
 ])
 const fetcher: DataFetcher<FolderRow> = (params, signal) => api.list<FolderRow>('/folders/overview', params, { signal })
 
+const sidebarFolders = useSidebarFolders()
 const editing = ref<FolderRow | null>(null)
 const editOpen = ref(false)
 function edit(folder: FolderRow | null) {
@@ -46,7 +47,10 @@ function edit(folder: FolderRow | null) {
 }
 async function saved(folder: FormFolder) {
   await view.value?.refresh()
-  if (!editing.value) await navigateTo(`/folders/${folder.id}`)
+  if (!editing.value) {
+    sidebarFolders.visit(folder.id)
+    await navigateTo(`/folders/${folder.id}`)
+  }
 }
 const busyIds = ref(new Set<string>())
 async function remove(folder: FolderRow) {
@@ -63,9 +67,17 @@ async function remove(folder: FolderRow) {
     busyIds.value = new Set([...busyIds.value].filter(id => id !== folder.id))
   }
 }
+/** Pin / unpin in the sidebar (per person, up to five). */
+const pinItem = (folderId: string): DropdownMenuItem =>
+  sidebarFolders.isPinned(folderId)
+    ? { label: t('folders.unpin'), icon: 'i-lucide-pin-off', onSelect: () => sidebarFolders.togglePin(folderId) }
+    : sidebarFolders.canPin.value
+      ? { label: t('folders.pin'), icon: 'i-lucide-pin', onSelect: () => sidebarFolders.togglePin(folderId) }
+      : { label: t('folders.pinFull'), icon: 'i-lucide-pin', disabled: true }
 const rowActions = (folder: FolderRow): DropdownMenuItem[][] => [
   [
     { label: t('folders.open'), icon: 'i-lucide-folder-open', to: `/folders/${folder.id}` },
+    pinItem(folder.id),
     { label: t('folders.editTitle'), icon: 'i-lucide-pencil', onSelect: () => edit(folder) },
     { label: t('nav.newForm'), icon: 'i-lucide-plus', to: { path: '/forms/new', query: { folder: folder.id } } },
   ],

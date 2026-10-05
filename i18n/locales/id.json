@@ -403,8 +403,7 @@
     "pagesSaved": "Tersimpan",
     "pagesCreated": "Dibuat",
     "folders": "Folder",
-    "foldersAll": "Semua folder",
-    "foldersShowAll": "Tampilkan semua folder"
+    "foldersAll": "Semua folder"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -3646,6 +3645,9 @@
     "open": "Buka folder",
     "search": "Cari folder…",
     "emptyTitle": "Belum ada folder",
-    "emptyDesc": "Buat folder untuk mengelompokkan formulir per tim, klien, atau proyek."
+    "emptyDesc": "Buat folder untuk mengelompokkan formulir per tim, klien, atau proyek.",
+    "pin": "Sematkan di bilah samping",
+    "unpin": "Lepas dari bilah samping",
+    "pinFull": "Maksimal 5 folder bisa disematkan"
   }
 }

@@ -403,8 +403,7 @@
     "pagesSaved": "Đã lưu",
     "pagesCreated": "Đã tạo",
     "folders": "Thư mục",
-    "foldersAll": "Tất cả thư mục",
-    "foldersShowAll": "Xem tất cả thư mục"
+    "foldersAll": "Tất cả thư mục"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -3646,6 +3645,9 @@
     "open": "Mở thư mục",
     "search": "Tìm thư mục…",
     "emptyTitle": "Chưa có thư mục",
-    "emptyDesc": "Tạo thư mục để nhóm biểu mẫu theo nhóm, khách hàng hoặc dự án."
+    "emptyDesc": "Tạo thư mục để nhóm biểu mẫu theo nhóm, khách hàng hoặc dự án.",
+    "pin": "Ghim vào thanh bên",
+    "unpin": "Bỏ ghim khỏi thanh bên",
+    "pinFull": "Có thể ghim tối đa 5 thư mục"
   }
 }

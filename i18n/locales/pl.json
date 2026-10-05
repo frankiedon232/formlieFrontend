@@ -403,8 +403,7 @@
     "pagesSaved": "Zapisane",
     "pagesCreated": "Utworzone",
     "folders": "Foldery",
-    "foldersAll": "Wszystkie foldery",
-    "foldersShowAll": "Pokaż wszystkie foldery"
+    "foldersAll": "Wszystkie foldery"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -3646,6 +3645,9 @@
     "open": "Otwórz folder",
     "search": "Szukaj folderów…",
     "emptyTitle": "Brak folderów",
-    "emptyDesc": "Utwórz foldery, aby grupować formularze według zespołu, klienta lub projektu."
+    "emptyDesc": "Utwórz foldery, aby grupować formularze według zespołu, klienta lub projektu.",
+    "pin": "Przypnij na pasku bocznym",
+    "unpin": "Odepnij z paska bocznego",
+    "pinFull": "Można przypiąć maksymalnie 5 folderów"
   }
 }

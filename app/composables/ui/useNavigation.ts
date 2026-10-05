@@ -299,23 +299,20 @@ export function useNavigation() {
   const mainItems = computed(() => (areaMenu.value ?? MAIN_NAV).map(item => toMenuItem(item)))
   const resourceItems = computed(() => (areaMenu.value ? [] : RESOURCE_NAV.map(item => toMenuItem(item))))
   /**
-   * FOLDERS (F11 M4, owner 2026-10-02): the workspace's folders with their colour and form count, up
-   * to six, then "All folders"; only in the Forms area.
+   * FOLDERS (F11 M4; owner 2026-10-05: they must not take over the menu as they grow): at most five,
+   * chosen per person (pinned first, then recently opened, then the busiest), each in its colour
+   * with its form count and a pin mark when pinned; "All folders" with the total is always last.
    */
-  const FOLDERS_SHOWN = 6
-  const folderItems = computed(() => {
+  const sidebarFolders = useSidebarFolders()
+  const folderItems = computed<NavigationMenuItem[]>(() => {
     if (areaMenu.value || !counts.value) return []
     const folders = (counts.value as NavCounts).folders ?? []
-    const shown: AppNavItem[] = folders.slice(0, FOLDERS_SHOWN).map(folder => ({
-      key: `folder_${folder.id}`,
-      label: folder.name,
-      icon: 'i-lucide-folder',
-      iconClass: folderColor(folder.color).text,
-      to: `/folders/${folder.id}`,
-      count: () => folder.count,
+    if (!folders.length) return []
+    const shown = sidebarFolders.pick(folders).map(folder => ({
+      ...toMenuItem({ key: `folder_${folder.id}`, label: folder.name, icon: 'i-lucide-folder', iconClass: folderColor(folder.color).text, to: `/folders/${folder.id}`, count: () => folder.count }),
+      ...(sidebarFolders.isPinned(folder.id) ? { trailingIcon: 'i-lucide-pin' } : {}),
     }))
-    if (folders.length) shown.push({ key: folders.length > FOLDERS_SHOWN ? 'foldersShowAll' : 'foldersAll', icon: 'i-lucide-folders', to: '/folders', exact: true })
-    return shown.map(item => toMenuItem(item))
+    return [...shown, toMenuItem({ key: 'foldersAll', icon: 'i-lucide-folders', to: '/folders', exact: true, count: () => folders.length })]
   })
   /** Sidebar heading for the main list: the area's name, or "Main menu" for Forms. */
   const areaLabel = computed(() => NAV_AREAS.find(a => a.key === area.value)?.label ?? 'nav.main')

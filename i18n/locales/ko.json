@@ -403,8 +403,7 @@
     "pagesSaved": "저장됨",
     "pagesCreated": "만든 항목",
     "folders": "폴더",
-    "foldersAll": "모든 폴더",
-    "foldersShowAll": "모든 폴더 보기"
+    "foldersAll": "모든 폴더"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -3646,6 +3645,9 @@
     "open": "폴더 열기",
     "search": "폴더 검색…",
     "emptyTitle": "아직 폴더가 없습니다",
-    "emptyDesc": "팀, 고객, 프로젝트별로 양식을 묶을 폴더를 만드세요."
+    "emptyDesc": "팀, 고객, 프로젝트별로 양식을 묶을 폴더를 만드세요.",
+    "pin": "사이드바에 고정",
+    "unpin": "사이드바 고정 해제",
+    "pinFull": "폴더는 최대 5개까지 고정할 수 있습니다"
   }
 }

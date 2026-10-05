@@ -403,8 +403,7 @@
     "pagesSaved": "Guardadas",
     "pagesCreated": "Creadas",
     "folders": "Carpetas",
-    "foldersAll": "Todas las carpetas",
-    "foldersShowAll": "Ver todas las carpetas"
+    "foldersAll": "Todas las carpetas"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -3646,6 +3645,9 @@
     "open": "Abrir carpeta",
     "search": "Buscar carpetas…",
     "emptyTitle": "Aún no hay carpetas",
-    "emptyDesc": "Crea carpetas para agrupar formularios por equipo, cliente o proyecto."
+    "emptyDesc": "Crea carpetas para agrupar formularios por equipo, cliente o proyecto.",
+    "pin": "Fijar en la barra lateral",
+    "unpin": "Quitar de la barra lateral",
+    "pinFull": "Se pueden fijar hasta 5 carpetas"
   }
 }

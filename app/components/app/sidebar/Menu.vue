@@ -11,7 +11,11 @@ const { t } = useI18n()
 const { mainItems, resourceItems, folderItems, systemItems, areaLabel, area } = useNavigation()
 // FOLDERS (F11 M4): + creates a folder and opens its page.
 const folderOpen = ref(false)
-const onFolderCreated = (folder: { id: string }) => navigateTo(`/folders/${folder.id}`)
+const sidebarFolders = useSidebarFolders()
+function onFolderCreated(folder: { id: string }) {
+  sidebarFolders.visit(folder.id)
+  void navigateTo(`/folders/${folder.id}`)
+}
 const mainHeading = computed(() => t(areaLabel.value))
 const colorMode = useColorMode()
 
@@ -127,18 +131,32 @@ const menuUi = {
         <USeparator />
         <nav :aria-label="t('nav.folders')">
           <div class="mb-1 flex items-center justify-between ps-2.5">
-            <p class="text-xs font-medium text-muted uppercase">{{ t('nav.folders') }}</p>
+            <!-- The group folds away (remembered per person), like the other groups -->
+            <button
+              type="button"
+              class="flex flex-1 items-center gap-1 rounded-sm text-start text-xs font-medium text-muted uppercase hover:text-highlighted focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+              :aria-expanded="sidebarFolders.open.value"
+              aria-controls="sidebar-folders"
+              @click="sidebarFolders.open.value = !sidebarFolders.open.value"
+            >
+              {{ t('nav.folders') }}
+              <UIcon name="i-lucide-chevron-down" class="size-3.5 transition-transform" :class="sidebarFolders.open.value ? '' : '-rotate-90 rtl:rotate-90'" />
+            </button>
             <UTooltip :text="t('forms.folders.new')">
               <UButton icon="i-lucide-plus" color="neutral" variant="ghost" size="xs" square :aria-label="t('forms.folders.new')" @click="folderOpen = true" />
             </UTooltip>
           </div>
-          <UNavigationMenu v-if="folderItems.length" :items="folderItems" orientation="vertical" color="neutral" :ui="menuUi" />
-          <UButton v-else :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" variant="link" size="sm" class="px-2.5 text-muted" @click="folderOpen = true" />
+          <div v-show="sidebarFolders.open.value" id="sidebar-folders">
+            <UNavigationMenu v-if="folderItems.length" :items="folderItems" orientation="vertical" color="neutral" :ui="menuUi" />
+          </div>
+          <UButton v-if="!folderItems.length && sidebarFolders.open.value" :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" variant="link" size="sm" class="px-2.5 text-muted" @click="folderOpen = true" />
         </nav>
         <FoldersEditModal v-model:open="folderOpen" @saved="onFolderCreated" />
       </template>
 
-      <nav :aria-label="t('nav.system')" class="mt-auto">
+      <!-- A line above SYSTEM (owner 2026-10-05), which stays at the bottom -->
+      <USeparator class="mt-auto" />
+      <nav :aria-label="t('nav.system')">
         <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ t('nav.system') }}</p>
         <UNavigationMenu :items="systemWithTheme" orientation="vertical" color="neutral" :ui="menuUi" v-bind="accordion">
           <template #theme-trailing>

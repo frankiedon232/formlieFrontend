@@ -1,11 +1,17 @@
-<!-- Command palette (Ctrl/⌘+K): pages, actions, language. Theme toggle is built into UDashboardSearch. -->
+<!--
+  Command palette (Ctrl/⌘+K): pages, every folder (F11 M4: any folder one search away, however many
+  there are; each in its colour with its form count), actions, language. Theme toggle is built into
+  UDashboardSearch.
+-->
 <script setup lang="ts">
 import type { CommandPaletteGroup, CommandPaletteItem } from '@nuxt/ui'
+import { folderColor } from '#shared/utils/forms/folders'
 
 const { t } = useI18n()
 const { destinations } = useNavigation()
 const { shortcutsOpen } = useAppUi()
 const { locales, changeLocale } = useAppLocale()
+const { counts } = useNavCounts()
 
 const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
   {
@@ -18,6 +24,21 @@ const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
       kbds: item.shortcut?.split('-'),
     })),
   },
+  ...(counts.value?.folders?.length
+    ? [
+        {
+          id: 'folders',
+          label: t('nav.folders'),
+          items: counts.value.folders.map(folder => ({
+            label: folder.name,
+            icon: 'i-lucide-folder',
+            ui: { itemLeadingIcon: folderColor(folder.color).text },
+            suffix: t('forms.folders.count', { count: folder.count }, folder.count),
+            to: `/folders/${folder.id}`,
+          })),
+        },
+      ]
+    : []),
   {
     id: 'actions',
     label: t('search.actions'),

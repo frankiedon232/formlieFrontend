@@ -403,8 +403,7 @@
     "pagesSaved": "Gespeichert",
     "pagesCreated": "Erstellt",
     "folders": "Ordner",
-    "foldersAll": "Alle Ordner",
-    "foldersShowAll": "Alle Ordner anzeigen"
+    "foldersAll": "Alle Ordner"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -3646,6 +3645,9 @@
     "open": "Ordner öffnen",
     "search": "Ordner suchen…",
     "emptyTitle": "Noch keine Ordner",
-    "emptyDesc": "Erstellen Sie Ordner, um Formulare nach Team, Kunde oder Projekt zu gruppieren."
+    "emptyDesc": "Erstellen Sie Ordner, um Formulare nach Team, Kunde oder Projekt zu gruppieren.",
+    "pin": "In der Seitenleiste anheften",
+    "unpin": "Aus der Seitenleiste lösen",
+    "pinFull": "Bis zu 5 Ordner lassen sich anheften"
   }
 }
