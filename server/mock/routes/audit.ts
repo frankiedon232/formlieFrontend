@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import type { AuditEvent, AuditFacets, ExportJob } from '#shared/types/audit'
 import { requireAdmin, tenantOf } from '../core/auth'
+import { xlsx } from '../core/xlsx'
 import { actorOf, auditLogOf, recordAudit } from '../core/audit'
 import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -94,7 +95,7 @@ interface MockJob extends ExportJob {
   tenantId: string
   startedAt: number
   durationMs: number
-  content: string
+  content: string | Uint8Array
   token: string
 }
 
@@ -113,7 +114,8 @@ const csvCell = (value: unknown) => {
   return /[",\n\r]/.test(safe) ? `"${safe.replace(/"/g, '""')}"` : safe
 }
 
-function toCsv(events: AuditEvent[]): string {
+/** Header row and one row per event (CSV and Excel share them). */
+function auditRows(events: AuditEvent[]): string[][] {
   const header = [
     'Time (UTC)',
     'Action',
@@ -146,9 +148,13 @@ function toCsv(events: AuditEvent[]): string {
     event.reason,
     event.request_id,
   ])
+  return [header, ...rows].map(row => row.map(cell => (cell == null ? '' : String(cell))))
+}
+
+function toCsv(events: AuditEvent[]): string {
   // Byte-order mark so spreadsheet apps open UTF-8 (accents, non-Latin names) correctly.
   const BOM = String.fromCharCode(0xfeff)
-  return `${BOM}${[header, ...rows].map(row => row.map(csvCell).join(',')).join('\r\n')}\r\n`
+  return `${BOM}${auditRows(events).map(row => row.map(csvCell).join(',')).join('\r\n')}\r\n`
 }
 
 function jobView(job: MockJob): ExportJob {
@@ -183,14 +189,13 @@ export const exportAuditLogs = defineMockRoute(({ event, body }) => {
     progress: 0,
     rows: events.length,
     format: input.format,
-    // The mock writes CSV for both choices; the real backend produces a true .xlsx file.
-    file_name: `audit-trail-${tenant.subdomain}-${stamp}.csv`,
+    file_name: `audit-trail-${tenant.subdomain}-${stamp}.${input.format}`,
     download_url: null,
     expires_at: null,
     tenantId: tenant.id,
     startedAt: Date.now(),
     durationMs: 1500 + Math.min(4000, events.length * 4),
-    content: toCsv(events),
+    content: input.format === 'xlsx' ? xlsx('Audit trail', auditRows(events)) : toCsv(events),
     token: crypto.randomUUID().replace(/-/g, '') + crypto.randomUUID().replace(/-/g, ''),
   }
   jobs.set(job.id, job)
@@ -235,7 +240,7 @@ export const download = defineEventHandler(event => {
     return 'This download link has expired. Start a new export.'
   }
   job.token = ''
-  setHeader(event, 'content-type', 'text/csv; charset=utf-8')
+  setHeader(event, 'content-type', job.format === 'xlsx' ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' : 'text/csv; charset=utf-8')
   setHeader(event, 'content-disposition', `attachment; filename="${job.file_name}"`)
   setHeader(event, 'cache-control', 'no-store')
   return job.content

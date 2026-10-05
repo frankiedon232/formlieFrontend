@@ -41,3 +41,25 @@ describe('mock PDF writer', () => {
     expect(text).toContain('Café \\(test\\)')
   })
 })
+
+describe('mock Excel writer', () => {
+  it('writes a ZIP workbook with the sheet, header style and every cell', async () => {
+    const { xlsx } = await import('../../server/mock/core/xlsx')
+    const bytes = xlsx('Job application: 2024/1', [
+      ['Number', 'Name', 'Answer'],
+      [1, 'Ada Okafor', 'Café & <tea>'],
+      [2, 'Jean Dupont', '=1+1'],
+    ])
+    const text = new TextDecoder('latin1').decode(bytes)
+    expect(text.startsWith('PK\u0003\u0004')).toBe(true)
+    for (const name of ['[Content_Types].xml', 'xl/workbook.xml', 'xl/worksheets/sheet1.xml', 'xl/styles.xml']) expect(text).toContain(name)
+    const sheet = new TextDecoder().decode(bytes)
+    expect(sheet).toContain('<v>1</v>')
+    expect(sheet).toContain('Café &amp; &lt;tea&gt;')
+    // Text that looks like a formula stays text (inline string), never a formula.
+    expect(sheet).toContain('<t xml:space="preserve">=1+1</t>')
+    expect(sheet).not.toContain('<f>')
+    expect(sheet).toContain('name="Job application  2024 1"')
+    if (process.env.XLSX_OUT) (await import('node:fs')).writeFileSync(process.env.XLSX_OUT, bytes)
+  })
+})

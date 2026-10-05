@@ -3,7 +3,7 @@
  * as a file: all of them, the ones matching the list's filters, or the selected ones; the table's
  * columns or every question; with or without review details. The file is made in the background
  * (progress), kept 7 days, and each download gets a one-time private link (5 minutes). The mock
- * writes CSV for Excel too (the real backend writes a true .xlsx) and a simple text PDF.
+ * writes a real .xlsx (core/xlsx.ts), CSV, and a simple text PDF.
  * Every export, download and removal is in the audit trail.
  */
 import { z } from 'zod'
@@ -13,6 +13,7 @@ import { answerText } from '#shared/utils/forms/answer-text'
 import { requireAuth, tenantOf } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { textPdf } from '../core/pdf'
+import { xlsx } from '../core/xlsx'
 import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
@@ -100,12 +101,14 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
   })
 
   const stamp = new Date().toISOString().slice(0, 10)
-  const extension: Record<ResponseExportFormat, string> = { csv: 'csv', xlsx: 'csv', pdf: 'pdf' }
+  const extension: Record<ResponseExportFormat, string> = { csv: 'csv', xlsx: 'xlsx', pdf: 'pdf' }
   const file_name = `${slug(form.name)}-responses-${stamp}.${extension[input.format]}`
   let bytes: Uint8Array
   if (input.format === 'pdf') {
     const lines = rows.flatMap(row => [`# #${row[0]}  ${row[2] || row[3] || ''}  ${String(row[1]).slice(0, 16).replace('T', ' ')}`, ...head.slice(4).map((name, i) => `${name}: ${row[i + 4] === '' ? '-' : row[i + 4]}`), ''])
     bytes = textPdf(`${form.name} - ${rows.length} responses`, lines)
+  } else if (input.format === 'xlsx') {
+    bytes = xlsx(form.name, [head, ...rows])
   } else {
     // Byte-order mark so spreadsheet apps open UTF-8 (accents, non-Latin names) correctly.
     bytes = new TextEncoder().encode(`${String.fromCharCode(0xfeff)}${[head, ...rows].map(row => row.map(csvCell).join(',')).join('\r\n')}\r\n`)
@@ -207,7 +210,8 @@ export const downloadResponseExport = defineEventHandler(event => {
     return 'This download link has expired. Download the export again from Responses → Exports.'
   }
   links.delete(token)
-  setHeader(event, 'content-type', item.format === 'pdf' ? 'application/pdf' : 'text/csv; charset=utf-8')
+  const TYPES = { pdf: 'application/pdf', xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', csv: 'text/csv; charset=utf-8' }
+  setHeader(event, 'content-type', TYPES[item.format])
   setHeader(event, 'content-disposition', `attachment; filename="${item.file_name}"`)
   setHeader(event, 'cache-control', 'no-store')
   return item.bytes
