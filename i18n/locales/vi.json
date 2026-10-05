@@ -4522,11 +4522,9 @@
       "existingDesc": "Dành cho bảng mà các hệ thống khác đang dùng. Chọn cột cho từng câu trả lời. Thay đổi bảng đó về sau có thể làm dừng việc gửi.",
       "existingNeedsFull": "Cần Toàn quyền trên kết nối này (Các thao tác cơ sở dữ liệu khác).",
       "tableName": "Tên bảng",
-      "tableNameDesc": "Bắt đầu bằng {prefix}. Chữ cái, chữ số và dấu gạch dưới.",
+      "tableNameDesc": "Nhập phần còn lại của tên: ít nhất {min} ký tự, gồm chữ cái, chữ số và dấu gạch dưới.",
       "suggest": "Dùng tên được gợi ý",
       "schemaFromConnection": "Được đặt trên kết nối, trong mục Quyền truy cập.",
-      "mustStartWith": "Tên phải bắt đầu bằng {prefix}.",
-      "nameChars": "Dùng chữ cái, chữ số và dấu gạch dưới, bắt đầu bằng một chữ cái.",
       "pickTable": "Chọn một bảng",
       "pickTableDesc": "Các bảng Formalie được phép thấy trên kết nối này.",
       "searchTables": "Tìm bảng…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Tạo bảng và bắt đầu",
       "start": "Bắt đầu lưu tại đây",
       "leaveDesc": "Thiết lập nơi lưu phản hồi của bạn sẽ bị mất.",
-      "recommended": "Khuyên dùng"
+      "recommended": "Khuyên dùng",
+      "prefixFixed": "Tiền tố cố định {prefix}",
+      "name": {
+        "short": "Dùng ít nhất {min} ký tự sau tiền tố.",
+        "chars": "Chỉ dùng chữ cái, chữ số và dấu gạch dưới, không có khoảng trắng hay ký tự khác.",
+        "long": "Quá dài: tối đa {max} ký tự sau tiền tố."
+      }
     },
     "help": {
       "connection": {

@@ -4522,11 +4522,9 @@
       "existingDesc": "Voor een tabel die andere systemen al gebruiken. Kies in welke kolom elk antwoord komt. Latere wijzigingen aan die tabel kunnen leveringen stoppen.",
       "existingNeedsFull": "Vereist Volledige toegang op deze verbinding (Andere databasebewerkingen).",
       "tableName": "Tabelnaam",
-      "tableNameDesc": "Begint met {prefix}. Letters, cijfers en underscores.",
+      "tableNameDesc": "Typ de rest van de naam: minstens {min} tekens, met letters, cijfers en underscores.",
       "suggest": "Voorgestelde naam gebruiken",
       "schemaFromConnection": "Ingesteld op de verbinding, onder Toegang.",
-      "mustStartWith": "Begin de naam met {prefix}.",
-      "nameChars": "Gebruik letters, cijfers en underscores, en begin met een letter.",
       "pickTable": "Kies een tabel",
       "pickTableDesc": "Tabellen die Formalie op deze verbinding mag zien.",
       "searchTables": "Tabellen zoeken…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Tabel maken en starten",
       "start": "Hier beginnen met opslaan",
       "leaveDesc": "De opslag van reacties die u hebt ingesteld, gaat verloren.",
-      "recommended": "Aanbevolen"
+      "recommended": "Aanbevolen",
+      "prefixFixed": "Vast voorvoegsel {prefix}",
+      "name": {
+        "short": "Gebruik minstens {min} tekens na het voorvoegsel.",
+        "chars": "Gebruik alleen letters, cijfers en underscores, geen spaties of andere tekens.",
+        "long": "Te lang: maximaal {max} tekens na het voorvoegsel."
+      }
     },
     "help": {
       "connection": {

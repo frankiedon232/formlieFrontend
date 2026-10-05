@@ -4522,11 +4522,9 @@
       "existingDesc": "Dla tabeli, której inne systemy już używają. Wskaż, do której kolumny trafia każda odpowiedź. Późniejsze zmiany w tej tabeli mogą zatrzymać dostarczanie.",
       "existingNeedsFull": "Wymaga Pełnego dostępu na tym połączeniu (Inne operacje na bazie danych).",
       "tableName": "Nazwa tabeli",
-      "tableNameDesc": "Zaczyna się od {prefix}. Litery, cyfry i podkreślenia.",
+      "tableNameDesc": "Wpisz resztę nazwy: co najmniej {min} znaki, z liter, cyfr i podkreśleń.",
       "suggest": "Użyj proponowanej nazwy",
       "schemaFromConnection": "Ustawiany w połączeniu, w sekcji Dostęp.",
-      "mustStartWith": "Nazwa musi zaczynać się od {prefix}.",
-      "nameChars": "Użyj liter, cyfr i podkreśleń, zaczynając od litery.",
       "pickTable": "Wybierz tabelę",
       "pickTableDesc": "Tabele, które Formalie może widzieć na tym połączeniu.",
       "searchTables": "Szukaj tabel…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Utwórz tabelę i rozpocznij",
       "start": "Zacznij zapisywać tutaj",
       "leaveDesc": "Skonfigurowane zapisywanie odpowiedzi zostanie utracone.",
-      "recommended": "Zalecane"
+      "recommended": "Zalecane",
+      "prefixFixed": "Stały prefiks {prefix}",
+      "name": {
+        "short": "Użyj co najmniej {min} znaków po prefiksie.",
+        "chars": "Używaj tylko liter, cyfr i podkreśleń, bez spacji i innych znaków.",
+        "long": "Za długa: maksymalnie {max} znaków po prefiksie."
+      }
     },
     "help": {
       "connection": {

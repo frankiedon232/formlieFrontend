@@ -4522,11 +4522,9 @@
       "existingDesc": "他のシステムで既に使われているテーブル向けです。各回答を入れる列を選択します。後でそのテーブルを変更すると、配信が止まることがあります。",
       "existingNeedsFull": "この接続でフルアクセスが必要です (その他のデータベース操作)。",
       "tableName": "テーブル名",
-      "tableNameDesc": "{prefix} で始まります。英字、数字、アンダースコアが使えます。",
+      "tableNameDesc": "名前の残りを入力してください。英字、数字、アンダースコアで {min} 文字以上です。",
       "suggest": "提案された名前を使用",
       "schemaFromConnection": "接続の「アクセス」で設定します。",
-      "mustStartWith": "名前は {prefix} で始めてください。",
-      "nameChars": "英字、数字、アンダースコアを使い、英字で始めてください。",
       "pickTable": "テーブルを選択",
       "pickTableDesc": "この接続で Formalie が参照できるテーブルです。",
       "searchTables": "テーブルを検索…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "テーブルを作成して開始",
       "start": "ここへの保存を開始",
       "leaveDesc": "設定した回答の保存先は失われます。",
-      "recommended": "おすすめ"
+      "recommended": "おすすめ",
+      "prefixFixed": "固定のプレフィックス {prefix}",
+      "name": {
+        "short": "プレフィックスの後に {min} 文字以上入力してください。",
+        "chars": "英字、数字、アンダースコアのみ使用できます。スペースやその他の文字は使えません。",
+        "long": "長すぎます。プレフィックスの後は {max} 文字以内です。"
+      }
     },
     "help": {
       "connection": {

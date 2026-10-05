@@ -55,6 +55,28 @@ export function columnNameFor(engine: DbEngine, key: string, taken: Set<string>)
   return cased(engine, name)
 }
 
+/** What may follow the prefix in a table Formalie creates (owner 2026-10-05). */
+export const TABLE_REST_MIN = 6
+export type TableNameProblem = 'required' | 'short' | 'chars' | 'long'
+
+/** The part a person types after the prefix: more than 5 characters, letters, numbers and underscores only. */
+export function checkTableRest(engine: DbEngine, prefix: string, rest: string): TableNameProblem | null {
+  if (!rest) return 'required'
+  if (!/^[A-Za-z0-9_]+$/.test(rest)) return 'chars'
+  if (rest.length < TABLE_REST_MIN) return 'short'
+  if (prefix.length + rest.length > MAX_NAME[engine]) return 'long'
+  return null
+}
+
+/** The most characters that may follow the prefix on this engine. */
+export const tableRestMax = (engine: DbEngine, prefix: string) => MAX_NAME[engine] - prefix.length
+
+/** Spaces become underscores; lower case (Oracle: upper case), as Formalie names its tables. */
+export const normaliseTableRest = (engine: DbEngine, text: string) => {
+  const joined = text.replace(/\s+/g, '_')
+  return engine === 'oracle' ? joined.toUpperCase() : joined.toLowerCase()
+}
+
 // ── Types ────────────────────────────────────────────────────────────────────────────────
 
 type Kind = 'short' | 'long' | 'code' | 'decimal' | 'integer' | 'date' | 'time' | 'datetime' | 'boolean' | 'json' | 'links' | 'uuid'

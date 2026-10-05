@@ -18,7 +18,7 @@
 import { z } from 'zod'
 import { META_COLUMNS, type DestinationColumn, type DestinationInsights, type FormStorage } from '#shared/types/destinations'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
-import { blocking, checkMapping, columnNameFor, columnTypeFor, standardSettings } from '#shared/utils/datasources/tables'
+import { blocking, checkMapping, checkTableRest, columnNameFor, columnTypeFor, standardSettings } from '#shared/utils/datasources/tables'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin, requireAuth } from '../core/auth'
 import { MockError, ok, paginate } from '../core/respond'
@@ -156,7 +156,8 @@ export const createDestination = defineMockRoute(({ event, body }) => {
     const schema = tablesSchemaOf(source.engine, source.settings, source.access)
     const prefix = source.engine === 'oracle' ? source.access.table_prefix.toUpperCase() : source.access.table_prefix
     const name = input.table.name.trim()
-    if (!name.startsWith(prefix) || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)) throw new MockError('FRM-GEN-1002', [{ field: 'table', message: 'table_name' }])
+    const problem = name.startsWith(prefix) ? checkTableRest(source.engine, prefix, name.slice(prefix.length)) : 'required'
+    if (problem) throw new MockError('FRM-GEN-1002', [{ field: 'table', message: problem }])
     if (tables.some(item => item.schema === schema && item.name.toLowerCase() === name.toLowerCase())) throw new MockError('FRM-DEST-1014', [{ field: 'table', message: 'taken' }])
     table = { schema, name, created: true }
   }

@@ -4522,11 +4522,9 @@
       "existingDesc": "Pour une table que d’autres systèmes utilisent déjà. Choisissez dans quelle colonne va chaque réponse. Des modifications ultérieures de cette table peuvent interrompre les livraisons.",
       "existingNeedsFull": "Nécessite l’Accès complet sur cette connexion (Autres opérations sur la base).",
       "tableName": "Nom de la table",
-      "tableNameDesc": "Commence par {prefix}. Lettres, chiffres et traits de soulignement.",
+      "tableNameDesc": "Saisissez la suite du nom : au moins {min} caractères, avec des lettres, des chiffres et des traits de soulignement.",
       "suggest": "Utiliser le nom suggéré",
       "schemaFromConnection": "Défini sur la connexion, dans Accès.",
-      "mustStartWith": "Le nom doit commencer par {prefix}.",
-      "nameChars": "Utilisez des lettres, des chiffres et des traits de soulignement, en commençant par une lettre.",
       "pickTable": "Choisir une table",
       "pickTableDesc": "Les tables que Formalie peut voir sur cette connexion.",
       "searchTables": "Rechercher des tables…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Créer la table et démarrer",
       "start": "Commencer à stocker ici",
       "leaveDesc": "Le stockage des réponses que vous avez configuré sera perdu.",
-      "recommended": "Recommandé"
+      "recommended": "Recommandé",
+      "prefixFixed": "Préfixe fixe {prefix}",
+      "name": {
+        "short": "Utilisez au moins {min} caractères après le préfixe.",
+        "chars": "Utilisez uniquement des lettres, des chiffres et des traits de soulignement, sans espaces ni autres caractères.",
+        "long": "Trop long : {max} caractères au maximum après le préfixe."
+      }
     },
     "help": {
       "connection": {

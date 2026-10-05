@@ -4522,11 +4522,9 @@
       "existingDesc": "Für eine Tabelle, die andere Systeme bereits nutzen. Legen Sie fest, in welche Spalte jede Antwort kommt. Spätere Änderungen an dieser Tabelle können Zustellungen stoppen.",
       "existingNeedsFull": "Erfordert Vollzugriff auf dieser Verbindung (Weitere Datenbankvorgänge).",
       "tableName": "Tabellenname",
-      "tableNameDesc": "Beginnt mit {prefix}. Buchstaben, Ziffern und Unterstriche.",
+      "tableNameDesc": "Geben Sie den Rest des Namens ein: mindestens {min} Zeichen, aus Buchstaben, Ziffern und Unterstrichen.",
       "suggest": "Vorgeschlagenen Namen verwenden",
       "schemaFromConnection": "Wird an der Verbindung unter Zugriff festgelegt.",
-      "mustStartWith": "Der Name muss mit {prefix} beginnen.",
-      "nameChars": "Verwenden Sie Buchstaben, Ziffern und Unterstriche, beginnend mit einem Buchstaben.",
       "pickTable": "Tabelle wählen",
       "pickTableDesc": "Tabellen, die Formalie auf dieser Verbindung sehen darf.",
       "searchTables": "Tabellen suchen…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Tabelle erstellen und starten",
       "start": "Hier speichern starten",
       "leaveDesc": "Der eingerichtete Antwortspeicher geht verloren.",
-      "recommended": "Empfohlen"
+      "recommended": "Empfohlen",
+      "prefixFixed": "Festes Präfix {prefix}",
+      "name": {
+        "short": "Verwenden Sie nach dem Präfix mindestens {min} Zeichen.",
+        "chars": "Nur Buchstaben, Ziffern und Unterstriche, keine Leerzeichen oder anderen Zeichen.",
+        "long": "Zu lang: höchstens {max} Zeichen nach dem Präfix."
+      }
     },
     "help": {
       "connection": {

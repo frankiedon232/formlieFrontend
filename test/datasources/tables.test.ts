@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { DestinationSettings, TableColumn } from '../../shared/types/destinations'
-import { addColumnSql, blocking, checkMapping, columnNameFor, columnsForForm, createTableSql, matchColumns, rowFor, snake, standardSettings, tableNameFor, viewSql } from '../../shared/utils/datasources/tables'
+import { addColumnSql, blocking, checkMapping, checkTableRest, normaliseTableRest, columnNameFor, columnsForForm, createTableSql, matchColumns, rowFor, snake, standardSettings, tableNameFor, viewSql } from '../../shared/utils/datasources/tables'
 
 const settings: DestinationSettings = { write_mode: 'insert', key_column: 'response_id', multi_value: 'json', choices: 'value' }
 const fields = [
@@ -80,5 +80,19 @@ describe('response tables', () => {
     expect(sql).toContain('"order_value" AS "Order no"')
     expect(sql).toContain('FROM "public"."formalie_jobs";')
     expect(viewSql('sqlserver', 'formalie', 't', columns.slice(0, 1), new Map())).toContain('CREATE OR ALTER VIEW [formalie].[t_view]')
+  })
+})
+
+describe('table names Formalie creates', () => {
+  it('checks what follows the fixed prefix', () => {
+    expect(checkTableRest('postgresql', 'formalie_', 'employee_onboarding_3')).toBeNull()
+    expect(checkTableRest('postgresql', 'formalie_', '')).toBe('required')
+    expect(checkTableRest('postgresql', 'formalie_', 'quiz')).toBe('short')
+    expect(checkTableRest('postgresql', 'formalie_', 'job-apps')).toBe('chars')
+    expect(checkTableRest('postgresql', 'formalie_', 'job apps')).toBe('chars')
+    expect(checkTableRest('postgresql', 'formalie_', 'x'.repeat(55))).toBe('long')
+    expect(checkTableRest('sqlserver', 'formalie_', 'x'.repeat(55))).toBeNull()
+    expect(normaliseTableRest('mysql', 'Job Apps 2')).toBe('job_apps_2')
+    expect(normaliseTableRest('oracle', 'job apps')).toBe('JOB_APPS')
   })
 })

@@ -4522,11 +4522,9 @@
       "existingDesc": "Para uma tabela que outros sistemas já usam. Escolha em qual coluna vai cada resposta. Mudanças posteriores nessa tabela podem interromper as entregas.",
       "existingNeedsFull": "Exige Acesso total nesta conexão (Outras operações no banco de dados).",
       "tableName": "Nome da tabela",
-      "tableNameDesc": "Começa com {prefix}. Letras, números e sublinhados.",
+      "tableNameDesc": "Digite o restante do nome: pelo menos {min} caracteres, com letras, números e sublinhados.",
       "suggest": "Usar o nome sugerido",
       "schemaFromConnection": "Definido na conexão, em Acesso.",
-      "mustStartWith": "Comece o nome com {prefix}.",
-      "nameChars": "Use letras, números e sublinhados, começando com uma letra.",
       "pickTable": "Escolha uma tabela",
       "pickTableDesc": "Tabelas que o Formalie pode ver nesta conexão.",
       "searchTables": "Pesquisar tabelas…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Criar a tabela e começar",
       "start": "Começar a armazenar aqui",
       "leaveDesc": "O armazenamento de respostas que você configurou será perdido.",
-      "recommended": "Recomendado"
+      "recommended": "Recomendado",
+      "prefixFixed": "Prefixo fixo {prefix}",
+      "name": {
+        "short": "Use pelo menos {min} caracteres depois do prefixo.",
+        "chars": "Use apenas letras, números e sublinhados, sem espaços nem outros caracteres.",
+        "long": "Longo demais: no máximo {max} caracteres depois do prefixo."
+      }
     },
     "help": {
       "connection": {

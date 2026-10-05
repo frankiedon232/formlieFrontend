@@ -4522,11 +4522,9 @@
       "existingDesc": "Per una tabella che altri sistemi usano già. Scegliete in quale colonna va ogni risposta. Modifiche successive a quella tabella possono interrompere le consegne.",
       "existingNeedsFull": "Richiede l’Accesso completo su questa connessione (Altre operazioni sul database).",
       "tableName": "Nome della tabella",
-      "tableNameDesc": "Inizia con {prefix}. Lettere, numeri e trattini bassi.",
+      "tableNameDesc": "Digitate il resto del nome: almeno {min} caratteri, con lettere, numeri e trattini bassi.",
       "suggest": "Usa il nome suggerito",
       "schemaFromConnection": "Impostato sulla connessione, in Accesso.",
-      "mustStartWith": "Il nome deve iniziare con {prefix}.",
-      "nameChars": "Usate lettere, numeri e trattini bassi, iniziando con una lettera.",
       "pickTable": "Scegliete una tabella",
       "pickTableDesc": "Tabelle che Formalie può vedere su questa connessione.",
       "searchTables": "Cerca tabelle…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Crea la tabella e avvia",
       "start": "Inizia ad archiviare qui",
       "leaveDesc": "L’archiviazione delle risposte che avete configurato andrà persa.",
-      "recommended": "Consigliato"
+      "recommended": "Consigliato",
+      "prefixFixed": "Prefisso fisso {prefix}",
+      "name": {
+        "short": "Usate almeno {min} caratteri dopo il prefisso.",
+        "chars": "Usate solo lettere, numeri e trattini bassi, senza spazi né altri caratteri.",
+        "long": "Troppo lungo: al massimo {max} caratteri dopo il prefisso."
+      }
     },
     "help": {
       "connection": {

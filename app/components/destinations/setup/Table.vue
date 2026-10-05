@@ -3,10 +3,13 @@
   response tables), or a table of theirs (needs Full access on the connection).
 -->
 <script setup lang="ts">
+import { TABLE_REST_MIN } from '#shared/utils/datasources/tables'
+
 const props = defineProps<{ setup: ReturnType<typeof useStorageSetup>; nameError?: string }>()
 const { t } = useI18n()
 const { number } = useFormat()
 const s = props.setup
+const { nameRest } = props.setup
 
 const modes = computed(() => [
   { value: 'create', label: t('destinations.setup.create'), description: t('destinations.setup.createDesc') },
@@ -40,12 +43,16 @@ const tableItems = computed(() =>
       </URadioGroup>
 
       <div v-if="s.mode.value === 'create'" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <UFormField :label="t('destinations.setup.tableName')" :description="t('destinations.setup.tableNameDesc', { prefix: s.prefix.value })" name="table" :error="nameError ?? (s.nameTaken.value ? t('errors.FRM-DEST-1014') : undefined)" required>
-          <UInput v-model="s.tableName.value" maxlength="63" class="w-full font-mono" dir="ltr" spellcheck="false">
-            <template #trailing>
-              <UButton icon="i-lucide-rotate-ccw" color="neutral" variant="link" size="xs" :aria-label="t('destinations.setup.suggest')" @click="s.tableName.value = s.suggestedName()" />
-            </template>
-          </UInput>
+        <UFormField :label="t('destinations.setup.tableName')" :description="t('destinations.setup.tableNameDesc', { min: TABLE_REST_MIN })" name="table" :error="nameError ?? (s.nameTaken.value ? t('errors.FRM-DEST-1014') : undefined)" required>
+          <!-- The prefix is fixed (it can't be removed); people type the rest. -->
+          <UFieldGroup class="w-full" dir="ltr">
+            <UBadge :label="s.prefix.value" color="neutral" variant="outline" size="xl" class="shrink-0 font-mono" :aria-label="t('destinations.setup.prefixFixed', { prefix: s.prefix.value })" />
+            <UInput v-model="nameRest" :maxlength="s.restMax.value" class="w-full font-mono" spellcheck="false" autocomplete="off" :aria-label="t('destinations.setup.tableName')">
+              <template #trailing>
+                <UButton icon="i-lucide-rotate-ccw" color="neutral" variant="link" size="xs" :aria-label="t('destinations.setup.suggest')" @click="s.tableName.value = s.suggestedName()" />
+              </template>
+            </UInput>
+          </UFieldGroup>
         </UFormField>
         <div class="flex flex-col gap-1 text-sm">
           <span class="font-medium text-highlighted">{{ t('dataSources.access.tablesSchema') }}</span>

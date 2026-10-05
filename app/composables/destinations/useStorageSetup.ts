@@ -7,7 +7,7 @@
 import type { DataSourceDetail, DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable, DestinationColumn, DestinationDetail, DestinationSettings, MetaColumn, StorageField } from '#shared/types/destinations'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
-import { checkMapping, columnsForForm, matchColumns, metaTypeFor, standardSettings, tableNameFor } from '#shared/utils/datasources/tables'
+import { checkMapping, checkTableRest, columnsForForm, matchColumns, metaTypeFor, normaliseTableRest, standardSettings, tableNameFor, tableRestMax } from '#shared/utils/datasources/tables'
 
 export function useStorageSetup(input: { formName: () => string; fields: () => StorageField[]; destination?: DestinationDetail | null }) {
   const api = useApi()
@@ -62,10 +62,24 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
   const engine = computed(() => source.value?.engine ?? null)
   const fullAccess = computed(() => source.value?.access.other === 'read_write')
   const tablesSchema = computed(() => (source.value ? tablesSchemaOf(source.value.engine, source.value.settings, source.value.access) : ''))
-  const suggestedName = () => (source.value ? tableNameFor(source.value.engine, source.value.access.table_prefix, input.formName()) : '')
+  /** prefix + form name; a short form name gets "_responses" so it meets the length rule. */
+  const suggestedName = () => {
+    if (!source.value) return ''
+    const engine = source.value.engine
+    const name = tableNameFor(engine, source.value.access.table_prefix, input.formName())
+    const rest = name.slice(source.value.access.table_prefix.length)
+    return checkTableRest(engine, prefix.value, rest) === 'short' ? `${name}${engine === 'oracle' ? '_RESPONSES' : '_responses'}` : name
+  }
   const prefix = computed(() => (source.value ? (source.value.engine === 'oracle' ? source.value.access.table_prefix.toUpperCase() : source.value.access.table_prefix) : ''))
   const theirTables = computed(() => (tables.value ?? []).filter(table => !table.formalie))
   const existing = computed(() => theirTables.value.find(table => `${table.schema}.${table.name}` === existingKey.value) ?? null)
+  /** The part after the prefix (the prefix is fixed, shown beside the field). */
+  const nameRest = computed({
+    get: () => (tableName.value.startsWith(prefix.value) ? tableName.value.slice(prefix.value.length) : tableName.value),
+    set: (value: string) => (tableName.value = `${prefix.value}${engine.value ? normaliseTableRest(engine.value, value) : value}`),
+  })
+  const nameProblem = computed(() => (engine.value ? checkTableRest(engine.value, prefix.value, nameRest.value) : null))
+  const restMax = computed(() => (engine.value ? tableRestMax(engine.value, prefix.value) : 63))
   const nameTaken = computed(() => (tables.value ?? []).some(table => table.schema === tablesSchema.value && table.name.toLowerCase() === tableName.value.trim().toLowerCase()))
 
   // A table of theirs: matched once when picked, then edited by hand.
@@ -98,6 +112,6 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
     manual.value = [...manual.value, { column: name, type: metaTypeFor(engine.value, 'response_id'), source: { kind: 'meta', key: 'response_id' }, nullable: true, existing: false }]
   }
 
-  return { sources, sourceId, source, tables, loadingTables, mode, tableName, existingKey, settings, effective, standard, extraMeta, renames, skipped, manual, engine, fullAccess, tablesSchema, prefix, theirTables, existing, nameTaken, columns, issues, loadSources, suggestedName, addKeyColumn }
+  return { sources, sourceId, source, tables, loadingTables, mode, tableName, nameRest, nameProblem, restMax, existingKey, settings, effective, standard, extraMeta, renames, skipped, manual, engine, fullAccess, tablesSchema, prefix, theirTables, existing, nameTaken, columns, issues, loadSources, suggestedName, addKeyColumn }
 }
 

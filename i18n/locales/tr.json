@@ -4522,11 +4522,9 @@
       "existingDesc": "Başka sistemlerin zaten kullandığı bir tablo için. Her yanıtın hangi sütuna gideceğini seçin. Bu tabloda sonradan yapılan değişiklikler teslimatları durdurabilir.",
       "existingNeedsFull": "Bu bağlantıda Tam erişim gerekir (Diğer veritabanı işlemleri).",
       "tableName": "Tablo adı",
-      "tableNameDesc": "{prefix} ile başlar. Harf, rakam ve alt çizgi.",
+      "tableNameDesc": "Adın geri kalanını yazın: harf, rakam ve alt çizgiyle en az {min} karakter.",
       "suggest": "Önerilen adı kullan",
       "schemaFromConnection": "Bağlantıda, Erişim altında ayarlanır.",
-      "mustStartWith": "Adı {prefix} ile başlatın.",
-      "nameChars": "Harf, rakam ve alt çizgi kullanın; bir harfle başlayın.",
       "pickTable": "Bir tablo seçin",
       "pickTableDesc": "Formalie’nin bu bağlantıda görebildiği tablolar.",
       "searchTables": "Tablo ara…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Tabloyu oluştur ve başlat",
       "start": "Burada saklamaya başla",
       "leaveDesc": "Kurduğunuz yanıt depolaması kaybolacak.",
-      "recommended": "Önerilen"
+      "recommended": "Önerilen",
+      "prefixFixed": "Sabit önek {prefix}",
+      "name": {
+        "short": "Önekten sonra en az {min} karakter kullanın.",
+        "chars": "Yalnızca harf, rakam ve alt çizgi kullanın, boşluk veya başka karakter kullanmayın.",
+        "long": "Çok uzun: önekten sonra en fazla {max} karakter."
+      }
     },
     "help": {
       "connection": {

@@ -4522,11 +4522,9 @@
       "existingDesc": "다른 시스템이 이미 사용하는 테이블용입니다. 각 답변이 들어갈 열을 고르세요. 나중에 그 테이블을 변경하면 전송이 멈출 수 있습니다.",
       "existingNeedsFull": "이 연결에 전체 액세스가 필요합니다(기타 데이터베이스 작업).",
       "tableName": "테이블 이름",
-      "tableNameDesc": "{prefix}(으)로 시작합니다. 영문자, 숫자, 밑줄을 사용할 수 있습니다.",
+      "tableNameDesc": "이름의 나머지 부분을 입력하세요. 영문자, 숫자, 밑줄로 {min}자 이상이어야 합니다.",
       "suggest": "추천 이름 사용",
       "schemaFromConnection": "연결의 액세스에서 설정합니다.",
-      "mustStartWith": "이름은 {prefix}(으)로 시작해야 합니다.",
-      "nameChars": "영문자, 숫자, 밑줄을 사용하고 영문자로 시작하세요.",
       "pickTable": "테이블 선택",
       "pickTableDesc": "이 연결에서 Formalie가 볼 수 있는 테이블입니다.",
       "searchTables": "테이블 검색…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "테이블 만들고 시작",
       "start": "이곳에 저장 시작",
       "leaveDesc": "설정한 응답 저장소가 사라집니다.",
-      "recommended": "권장"
+      "recommended": "권장",
+      "prefixFixed": "고정 접두사 {prefix}",
+      "name": {
+        "short": "접두사 뒤에 {min}자 이상 입력하세요.",
+        "chars": "영문자, 숫자, 밑줄만 사용하세요. 공백이나 다른 문자는 사용할 수 없습니다.",
+        "long": "너무 깁니다. 접두사 뒤에 최대 {max}자까지 가능합니다."
+      }
     },
     "help": {
       "connection": {

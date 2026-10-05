@@ -4522,11 +4522,9 @@
       "existingDesc": "Untuk tabel yang sudah dipakai sistem lain. Pilih kolom untuk setiap jawaban. Perubahan pada tabel itu nanti dapat menghentikan pengiriman.",
       "existingNeedsFull": "Memerlukan Akses penuh pada koneksi ini (Operasi database lainnya).",
       "tableName": "Nama tabel",
-      "tableNameDesc": "Diawali {prefix}. Huruf, angka, dan garis bawah.",
+      "tableNameDesc": "Ketik sisa nama: minimal {min} karakter, berupa huruf, angka, dan garis bawah.",
       "suggest": "Gunakan nama yang disarankan",
       "schemaFromConnection": "Diatur pada koneksi, di bagian Akses.",
-      "mustStartWith": "Awali nama dengan {prefix}.",
-      "nameChars": "Gunakan huruf, angka, dan garis bawah, diawali dengan huruf.",
       "pickTable": "Pilih tabel",
       "pickTableDesc": "Tabel yang boleh dilihat Formalie pada koneksi ini.",
       "searchTables": "Cari tabel…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Buat tabel dan mulai",
       "start": "Mulai simpan di sini",
       "leaveDesc": "Penyimpanan respons yang Anda siapkan akan hilang.",
-      "recommended": "Disarankan"
+      "recommended": "Disarankan",
+      "prefixFixed": "Prefiks tetap {prefix}",
+      "name": {
+        "short": "Gunakan minimal {min} karakter setelah prefiks.",
+        "chars": "Gunakan hanya huruf, angka, dan garis bawah, tanpa spasi atau karakter lain.",
+        "long": "Terlalu panjang: maksimal {max} karakter setelah prefiks."
+      }
     },
     "help": {
       "connection": {

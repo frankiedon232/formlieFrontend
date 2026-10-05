@@ -4522,11 +4522,9 @@
       "existingDesc": "适用于其他系统已在使用的表。选择每个回答写入哪一列。之后更改该表可能会导致投递停止。",
       "existingNeedsFull": "需要此连接具有完全访问权限（其他数据库操作）。",
       "tableName": "表名",
-      "tableNameDesc": "以 {prefix} 开头。可使用字母、数字和下划线。",
+      "tableNameDesc": "输入名称的其余部分：至少 {min} 个字符，可使用字母、数字和下划线。",
       "suggest": "使用建议的名称",
       "schemaFromConnection": "在连接的“访问”中设置。",
-      "mustStartWith": "名称须以 {prefix} 开头。",
-      "nameChars": "请使用字母、数字和下划线，并以字母开头。",
       "pickTable": "选择表",
       "pickTableDesc": "Formalie 在此连接上可见的表。",
       "searchTables": "搜索表…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "创建表并开始",
       "start": "开始存储到此处",
       "leaveDesc": "您设置的回复存储将会丢失。",
-      "recommended": "推荐"
+      "recommended": "推荐",
+      "prefixFixed": "固定前缀 {prefix}",
+      "name": {
+        "short": "前缀后至少需要 {min} 个字符。",
+        "chars": "只能使用字母、数字和下划线，不能有空格或其他字符。",
+        "long": "太长：前缀后最多 {max} 个字符。"
+      }
     },
     "help": {
       "connection": {

@@ -4522,11 +4522,9 @@
       "existingDesc": "For a table other systems already use. Choose which column each answer goes in. Changes to that table later can stop deliveries.",
       "existingNeedsFull": "Needs Full access on this connection (Other database operations).",
       "tableName": "Table name",
-      "tableNameDesc": "Starts with {prefix}. Letters, numbers and underscores.",
+      "tableNameDesc": "Type the rest of the name: at least {min} characters, using letters, numbers and underscores.",
       "suggest": "Use the suggested name",
       "schemaFromConnection": "Set on the connection, under Access.",
-      "mustStartWith": "Start the name with {prefix}.",
-      "nameChars": "Use letters, numbers and underscores, starting with a letter.",
       "pickTable": "Choose a table",
       "pickTableDesc": "Tables Formalie may see on this connection.",
       "searchTables": "Search tables…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Create the table and start",
       "start": "Start storing here",
       "leaveDesc": "The response storage you set up will be lost.",
-      "recommended": "Recommended"
+      "recommended": "Recommended",
+      "prefixFixed": "Fixed prefix {prefix}",
+      "name": {
+        "short": "Use at least {min} characters after the prefix.",
+        "chars": "Use only letters, numbers and underscores, no spaces or other characters.",
+        "long": "Too long: at most {max} characters after the prefix."
+      }
     },
     "help": {
       "connection": {

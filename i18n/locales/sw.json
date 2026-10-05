@@ -4522,11 +4522,9 @@
       "existingDesc": "Kwa jedwali ambalo mifumo mingine tayari inatumia. Chagua safuwima ambayo kila jibu linaingia. Mabadiliko ya baadaye kwenye jedwali hilo yanaweza kusimamisha uwasilishaji.",
       "existingNeedsFull": "Inahitaji Ufikiaji kamili kwenye muunganisho huu (Shughuli nyingine za hifadhidata).",
       "tableName": "Jina la jedwali",
-      "tableNameDesc": "Huanza na {prefix}. Herufi, nambari na mistari ya chini.",
+      "tableNameDesc": "Andika sehemu iliyobaki ya jina: angalau herufi {min}, ukitumia herufi, nambari na mistari ya chini.",
       "suggest": "Tumia jina lililopendekezwa",
       "schemaFromConnection": "Huwekwa kwenye muunganisho, chini ya Ufikiaji.",
-      "mustStartWith": "Anza jina na {prefix}.",
-      "nameChars": "Tumia herufi, nambari na mistari ya chini, ukianza na herufi.",
       "pickTable": "Chagua jedwali",
       "pickTableDesc": "Majedwali ambayo Formalie inaweza kuona kwenye muunganisho huu.",
       "searchTables": "Tafuta majedwali…",
@@ -4539,7 +4537,13 @@
       "createAndStart": "Unda jedwali na uanze",
       "start": "Anza kuhifadhi hapa",
       "leaveDesc": "Hifadhi ya majibu uliyoweka itapotea.",
-      "recommended": "Inapendekezwa"
+      "recommended": "Inapendekezwa",
+      "prefixFixed": "Kiambishi awali kisichobadilika {prefix}",
+      "name": {
+        "short": "Tumia angalau herufi {min} baada ya kiambishi awali.",
+        "chars": "Tumia herufi, nambari na mistari ya chini pekee, bila nafasi wala alama nyingine.",
+        "long": "Ni refu mno: herufi {max} kwa juu kabisa baada ya kiambishi awali."
+      }
     },
     "help": {
       "connection": {

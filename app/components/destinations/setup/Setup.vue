@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import type { DestinationDetail, StorageField  } from '#shared/types/destinations'
-import { blocking } from '#shared/utils/datasources/tables'
+import { TABLE_REST_MIN, blocking } from '#shared/utils/datasources/tables'
 
 const props = defineProps<{ formId: string; formName: string; fields: StorageField[]; destination?: DestinationDetail | null }>()
 const emit = defineEmits<{ saved: [destination: DestinationDetail, created: boolean]; dirty: [value: boolean] }>()
@@ -36,10 +36,8 @@ function check(step: Step): boolean {
       if (!setup.existing.value) nameError.value = t('dataSources.invalid.required')
       return !!setup.existing.value
     }
-    const name = setup.tableName.value.trim()
-    if (!name) nameError.value = t('dataSources.invalid.required')
-    else if (!name.startsWith(setup.prefix.value)) nameError.value = t('destinations.setup.mustStartWith', { prefix: setup.prefix.value })
-    else if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)) nameError.value = t('destinations.setup.nameChars')
+    const problem = setup.nameProblem.value
+    if (problem) nameError.value = problem === 'required' ? t('dataSources.invalid.required') : t(`destinations.setup.name.${problem}`, { min: TABLE_REST_MIN, max: setup.restMax.value })
     else if (setup.nameTaken.value) nameError.value = t('errors.FRM-DEST-1014')
     return !nameError.value
   }
