@@ -1,13 +1,15 @@
 <!--
   The side card of the Responses pages (F11): review status as a slim stacked bar (each status
   filters the list), the busiest forms (inbox), where responses came from (link · embedded · API)
-  and in which languages.
+  and in which languages. `only` shows one of them as its own card (the all-forms Insights grid,
+  owner 2026-10-05: balanced rows instead of one long side column).
 -->
 <script setup lang="ts">
 import { RESPONSE_STATUSES, type ResponseInsights, type ResponseStatus } from '#shared/types/responses'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 
-const props = defineProps<{ insights: ResponseInsights; status?: string | null }>()
+const props = defineProps<{ insights: ResponseInsights; status?: string | null; only?: 'status' | 'busiest' | 'channels' | 'languages' }>()
+const shows = (part: 'status' | 'busiest' | 'channels' | 'languages') => !props.only || props.only === part
 const emit = defineEmits<{ status: [status: ResponseStatus] }>()
 const { t } = useI18n()
 
@@ -31,13 +33,13 @@ const flag = (code: string) => APP_LOCALES.find(item => item.code === code)?.fla
 </script>
 
 <template>
-  <UCard variant="outline" :ui="{ body: 'flex flex-col gap-5 p-4 sm:p-5' }">
-    <section class="flex flex-col gap-3">
+  <UCard variant="outline" :ui="{ root: only ? 'h-full' : '', body: 'flex flex-col gap-5 p-4 sm:p-5' }">
+    <section v-if="shows('status')" class="flex flex-col gap-3">
       <h2 class="text-sm font-semibold text-highlighted">{{ t('responses.breakdown.status') }}</h2>
       <ChartsStack :parts="parts" :selected="status" clickable @pick="key => emit('status', key as ResponseStatus)" />
     </section>
-    <template v-if="insights.top_forms.length">
-      <USeparator />
+    <template v-if="shows('busiest') && insights.top_forms.length">
+      <USeparator v-if="!only" />
       <section class="flex flex-col gap-3">
         <h2 class="text-sm font-semibold text-highlighted">{{ t('responses.breakdown.busiest') }}</h2>
         <NuxtLink
@@ -50,13 +52,13 @@ const flag = (code: string) => APP_LOCALES.find(item => item.code === code)?.fla
         </NuxtLink>
       </section>
     </template>
-    <USeparator />
-    <section class="flex flex-col gap-3">
+    <USeparator v-if="!only" />
+    <section v-if="shows('channels')" class="flex flex-col gap-3">
       <h2 class="text-sm font-semibold text-highlighted">{{ t('responses.breakdown.channels') }}</h2>
       <ChartsMeter v-for="(item, index) in channels" :key="item.key" :label="item.label" :icon="item.icon" :count="item.count" :total="channelTotal" :strong="index === 0" />
     </section>
-    <template v-if="insights.languages.length > 1">
-      <USeparator />
+    <template v-if="shows('languages') && (only === 'languages' ? insights.languages.length : insights.languages.length > 1)">
+      <USeparator v-if="!only" />
       <section class="flex flex-col gap-3">
         <h2 class="text-sm font-semibold text-highlighted">{{ t('responses.breakdown.languages') }}</h2>
         <ChartsMeter

@@ -3520,6 +3520,17 @@
         "expired": "Hết hạn",
         "failed": "Thất bại"
       }
+    },
+    "glance": {
+      "inPeriod": "Trong kỳ này",
+      "perDay": "Mỗi ngày",
+      "busiestDay": "Ngày nhiều nhất"
+    },
+    "weekdays": {
+      "title": "Ngày nhiều phản hồi nhất trong tuần",
+      "desc": "Số phản hồi trung bình theo từng ngày trong tuần ở kỳ này",
+      "top": "Nhiều nhất: {day}",
+      "unit": "trung bình {n}"
     }
   },
   "pages": {

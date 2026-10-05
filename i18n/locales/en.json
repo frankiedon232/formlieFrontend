@@ -3520,6 +3520,17 @@
         "expired": "Expired",
         "failed": "Failed"
       }
+    },
+    "glance": {
+      "inPeriod": "In this period",
+      "perDay": "Per day",
+      "busiestDay": "Busiest day"
+    },
+    "weekdays": {
+      "title": "Busiest days of the week",
+      "desc": "Average responses per weekday in this period",
+      "top": "Busiest: {day}",
+      "unit": "{n} on average"
     }
   },
   "pages": {

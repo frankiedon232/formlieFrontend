@@ -3520,6 +3520,17 @@
         "expired": "Wygasł",
         "failed": "Błąd"
       }
+    },
+    "glance": {
+      "inPeriod": "W tym okresie",
+      "perDay": "Dziennie",
+      "busiestDay": "Najbardziej ruchliwy dzień"
+    },
+    "weekdays": {
+      "title": "Najbardziej ruchliwe dni tygodnia",
+      "desc": "Średnia liczba odpowiedzi w dniu tygodnia w tym okresie",
+      "top": "Najwięcej: {day}",
+      "unit": "średnio {n}"
     }
   },
   "pages": {

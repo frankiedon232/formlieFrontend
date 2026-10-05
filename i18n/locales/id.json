@@ -3520,6 +3520,17 @@
         "expired": "Kedaluwarsa",
         "failed": "Gagal"
       }
+    },
+    "glance": {
+      "inPeriod": "Dalam periode ini",
+      "perDay": "Per hari",
+      "busiestDay": "Hari tersibuk"
+    },
+    "weekdays": {
+      "title": "Hari tersibuk dalam seminggu",
+      "desc": "Rata-rata respons per hari dalam seminggu pada periode ini",
+      "top": "Tersibuk: {day}",
+      "unit": "rata-rata {n}"
     }
   },
   "pages": {

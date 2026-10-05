@@ -3520,6 +3520,17 @@
         "expired": "Abgelaufen",
         "failed": "Fehlgeschlagen"
       }
+    },
+    "glance": {
+      "inPeriod": "In diesem Zeitraum",
+      "perDay": "Pro Tag",
+      "busiestDay": "Stärkster Tag"
+    },
+    "weekdays": {
+      "title": "Stärkste Wochentage",
+      "desc": "Durchschnittliche Antworten je Wochentag in diesem Zeitraum",
+      "top": "Am meisten: {day}",
+      "unit": "{n} im Schnitt"
     }
   },
   "pages": {

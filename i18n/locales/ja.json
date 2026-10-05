@@ -3520,6 +3520,17 @@
         "expired": "期限切れ",
         "failed": "失敗"
       }
+    },
+    "glance": {
+      "inPeriod": "この期間",
+      "perDay": "1 日あたり",
+      "busiestDay": "最も多い日"
+    },
+    "weekdays": {
+      "title": "曜日別の多さ",
+      "desc": "この期間の曜日ごとの平均回答数",
+      "top": "最多：{day}",
+      "unit": "平均 {n} 件"
     }
   },
   "pages": {

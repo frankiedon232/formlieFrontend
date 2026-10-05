@@ -3520,6 +3520,17 @@
         "expired": "已过期",
         "failed": "失败"
       }
+    },
+    "glance": {
+      "inPeriod": "本期",
+      "perDay": "每天",
+      "busiestDay": "最多的一天"
+    },
+    "weekdays": {
+      "title": "一周中最忙的日子",
+      "desc": "本期每个工作日的平均回复数",
+      "top": "最多：{day}",
+      "unit": "平均 {n} 条"
     }
   },
   "pages": {

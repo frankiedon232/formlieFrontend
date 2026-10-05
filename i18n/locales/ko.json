@@ -3520,6 +3520,17 @@
         "expired": "만료됨",
         "failed": "실패"
       }
+    },
+    "glance": {
+      "inPeriod": "이 기간",
+      "perDay": "하루 평균",
+      "busiestDay": "가장 많은 날"
+    },
+    "weekdays": {
+      "title": "요일별 응답",
+      "desc": "이 기간 요일별 평균 응답 수",
+      "top": "가장 많음: {day}",
+      "unit": "평균 {n}개"
     }
   },
   "pages": {

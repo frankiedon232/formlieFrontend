@@ -3520,6 +3520,17 @@
         "expired": "Verlopen",
         "failed": "Mislukt"
       }
+    },
+    "glance": {
+      "inPeriod": "In deze periode",
+      "perDay": "Per dag",
+      "busiestDay": "Drukste dag"
+    },
+    "weekdays": {
+      "title": "Drukste dagen van de week",
+      "desc": "Gemiddeld aantal reacties per weekdag in deze periode",
+      "top": "Drukst: {day}",
+      "unit": "gemiddeld {n}"
     }
   },
   "pages": {

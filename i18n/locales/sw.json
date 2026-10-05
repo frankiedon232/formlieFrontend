@@ -3520,6 +3520,17 @@
         "expired": "Imeisha muda",
         "failed": "Imeshindikana"
       }
+    },
+    "glance": {
+      "inPeriod": "Katika kipindi hiki",
+      "perDay": "Kwa siku",
+      "busiestDay": "Siku yenye shughuli zaidi"
+    },
+    "weekdays": {
+      "title": "Siku zenye shughuli zaidi za wiki",
+      "desc": "Wastani wa majibu kwa kila siku ya wiki katika kipindi hiki",
+      "top": "Zaidi: {day}",
+      "unit": "wastani {n}"
     }
   },
   "pages": {

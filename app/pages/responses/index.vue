@@ -87,9 +87,19 @@ const filterReview = (status: ResponseStatus) =>
       </FormsResponsesByForm>
       <template v-else>
         <FormsResponsesViewSwitch v-model="view" class="self-start" />
-        <div class="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
-          <FormsResponsesTrend :insights="insights" />
-          <FormsResponsesBreakdown :insights="insights" :status="review" @status="filterReview" />
+        <!-- Balanced rows (owner 2026-10-05): over time + at a glance · status, channels, languages · busiest forms + weekdays -->
+        <div class="grid items-stretch gap-4 lg:grid-cols-[minmax(0,1fr)_24rem]">
+          <FormsResponsesTrend :insights="insights" class="h-full" />
+          <FormsResponsesGlance :insights="insights" />
+        </div>
+        <div class="grid items-stretch gap-4 md:grid-cols-3">
+          <FormsResponsesBreakdown :insights="insights" :status="review" only="status" @status="filterReview" />
+          <FormsResponsesBreakdown :insights="insights" only="channels" />
+          <FormsResponsesBreakdown :insights="insights" only="languages" />
+        </div>
+        <div class="grid items-stretch gap-4 lg:grid-cols-2">
+          <FormsResponsesBreakdown :insights="insights" only="busiest" />
+          <FormsResponsesWeekdays :insights="insights" />
         </div>
       </template>
     </div>
