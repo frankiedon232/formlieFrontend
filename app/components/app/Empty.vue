@@ -41,15 +41,15 @@ const ui = computed(() => ({
     tiny.value
       ? 'max-w-60 rounded-xl px-3 py-3.5'
       : compact.value
-        ? 'max-w-xs rounded-xl px-5 py-5'
-        : 'max-w-sm rounded-2xl px-6 py-6',
+        ? 'max-w-lg rounded-2xl px-8 py-9'
+        : 'max-w-2xl rounded-2xl px-10 py-14',
   ].join(' '),
   header: 'flex flex-col items-center gap-0',
   title: tiny.value
     ? 'mt-2.5 text-xs font-semibold text-highlighted'
     : compact.value
       ? 'mt-4 text-sm font-semibold text-highlighted'
-      : 'mt-4 text-sm font-semibold text-highlighted',
+      : 'mt-5 text-base font-semibold text-highlighted',
   description: compact.value
     ? 'mt-1 max-w-xs text-xs text-pretty text-muted'
     : 'mt-1.5 max-w-sm text-sm text-pretty text-muted',
@@ -79,14 +79,14 @@ const forwarded = computed(() => Object.keys(slots).filter(name => name !== 'lea
           <!-- Layered tile: a soft frame around a solid card holding the icon -->
           <span
             class="relative flex items-center justify-center border border-default bg-elevated/40"
-            :class="tiny ? 'size-10 rounded-xl' : compact ? 'size-12 rounded-xl' : 'size-15 rounded-2xl'"
+            :class="tiny ? 'size-10 rounded-xl' : compact ? 'size-14 rounded-2xl' : 'size-18 rounded-2xl'"
             aria-hidden="true"
           >
             <span
               class="flex items-center justify-center border border-default bg-default shadow-sm"
-              :class="tiny ? 'size-7 rounded-lg' : compact ? 'size-9 rounded-lg' : 'size-11 rounded-xl'"
+              :class="tiny ? 'size-7 rounded-lg' : compact ? 'size-10 rounded-xl' : 'size-12 rounded-xl'"
             >
-              <UIcon :name="icon" :class="[tiny ? 'size-4' : compact ? 'size-4.5' : 'size-5', toneClass]" />
+              <UIcon :name="icon" :class="[tiny ? 'size-4' : compact ? 'size-5' : 'size-6', toneClass]" />
             </span>
           </span>
         </slot>
