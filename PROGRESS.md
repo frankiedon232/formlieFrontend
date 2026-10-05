@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F11, Responses complete (M1 to M4, polish and review done), waiting for the owner's phase review. Next: F12, Data sources & databases.
+**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections done; next M2 Sending form data (destinations).
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -22,7 +22,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
-| F12   | Data sources & databases                          | 🟡     | ~3%  |
+| F12   | Data sources & databases                          | 🟡     | ~20% |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
@@ -538,18 +538,23 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ---
 
-## F12, Data sources & databases ⬜
+## F12, Data sources & databases 🟡
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ⬜ Sending form data (destinations, mapping, deliveries, backfill). **M3** ⬜ Database explorer and row operations (incl. import). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+
 ### 1. Connections (Integrations → Data sources)
 
-- ⬜ Data sources page in DataView (Table / Grid): engine logo, name, host, database, access mode, status (connected · failing · disabled), last checked, used by N forms; filters, search, sort
-- ⬜ Add connection (step by step): engine (default port filled in) → host, port, database / service name → username + password → security (SSL / TLS mode, CA certificate upload, optional SSH tunnel: host, user, key) → access (read only / read + write, allowed schemas) → name and test
-- ⬜ Test connection with live progress (reach host → sign in → read schema → write check when read + write) and a clear, actionable error per step (`FRM-DEST-*`)
-- ⬜ Credentials are write-only: never shown or returned again, encrypted at rest on the server, sent in the encrypted envelope; "Change password" and "last changed"; Formalie's outgoing IP addresses shown to allow-list
-- ⬜ Edit, disable / enable, duplicate, delete (confirm; warns with the forms that send to it); health check every few minutes with status history
-- ⬜ Audit: `datasource.created · updated · tested · disabled · deleted · credentials_changed`
+**M1 ✅ (2026-10-05; decision 111).** Owner: each engine's own connection properties, every operation covered, and always say which permissions to grant.
+
+- ✅ Connections page (locked list format): two chart cards (activity with daily bars; connections by status, legend filters), DataView table / task card: engine mark, name, version, server, access, status (connected · needs attention · failing · disabled · not tested) with a missing-permission mark, uptime 30 days, operations, last checked; filters (status, engine, access), search, sort; sidebar Connections menu by status with counts
+- ✅ Add connection, step by step (`/data-sources/connections/new`): database → server → sign in → security → access → name and test; every engine shows only its own settings from one catalogue (MySQL / MariaDB TLS modes, charset, time zone; PostgreSQL schema, sslmode, target session; SQL Server instance, SQL or Microsoft Entra sign-in incl. service principal, encrypt mandatory / strict, trust certificate, application intent; Oracle service name / SID / descriptor, schema owner, TCPS or native encryption); SSH tunnel, CA / client certificates (paste or load from a file), More options; checks per step on both sides; help beside each step
+- ✅ Permissions guide: every operation Formalie performs (read · write · structure) with the privilege per engine, and the grant statements written for the connection's own database, schemas and account (Copy / Copy all; Oracle 23ai or per-table); in the Access step and on the panel
+- ✅ Test with live progress from Formalie's servers (reach, SSH, TLS, sign in, open the database, check every permission), clear error and fix per step (`FRM-DEST-1001…1011`), "Fix" jumps to the step; advice for administrator accounts, unencrypted traffic, more rights than needed, unchecked certificates; never changes data. Save takes its result; a failed test saves only after a confirm
+- ✅ Credentials write-only (encrypted at rest, never returned, "Saved, leave empty to keep", last changed); blocked addresses (Formalie itself, cloud metadata); Formalie's outgoing addresses to allow, with Copy
+- ✅ Connection panel: header with Test now / Edit / Enabled, fact tiles, Connection · Security · Permissions (last test per operation + statements) · Health (uptime 30 days, health checks every 5 minutes), Previous / Next (K / J); Edit (`/[id]/edit`, every step one click away), duplicate, disable / enable (confirm), delete (confirm; refused while forms send to it)
+- ✅ Audit: `data.connection_created · updated · tested · duplicated · enabled · disabled · deleted`, `data.credentials_changed` (new area Data sources)
 
 ### 2. Sending form data (destinations)
 
@@ -1044,6 +1049,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | PDF export in the application's own colours (not the form's theme) until Appearance exists | F11 | ✅ |
 | 2026-10-05 | Folders must not take over the menu as they grow: at most 5 per person (pinned, recent, busiest), pin / unpin, foldable group, All folders with the total, folders in Ctrl / ⌘ K; a line between FOLDERS and SYSTEM | F11 | ✅ |
 | 2026-10-05 | Folder colour must show where it applies (page header too); more colours and a picker for any other | F11 | ✅ |
+| 2026-10-05 | F12: each engine's own connection properties (MySQL, SQL Server, Oracle, PostgreSQL, MariaDB); cover every operation a database is used for; always tell people which permissions to grant so nothing breaks | F12 M1 (decision 111) | ✅ |
 | 2026-10-04 | Responses, following the design image: two top cards with charts; grid cards like the design's task cards; theme status colours (no blue); panel without history, answers grouped by likeness with chips, equal tiles, sliders; a file viewer like the preview (download when not previewable); move and show / hide columns in every table | F11 M1 | ✅ |
 | 2026-10-04 | Responses layout: slim top strip and the table right below; Responses | Insights switch on the table's toolbar line; very rich grid cards; a super rich response panel with Previous / Next floating in the footer | F11 M1 | ✅ |
 | 2026-10-04 | Responses: a beautiful, clean page with a lot of insight, slim charts, table; and every page must show test responses ("connect all the dots") | F11 M1 | ✅ |
@@ -1199,3 +1205,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F11 | M4 polish and review: no overflow at 375 / 768 px on Responses, Exports, Folders, Landing pages, Themes, Templates and Forms; Arabic (RTL) checked, forward arrows now mirror; light mode checked; folder colour swatches now move keyboard focus with the arrow keys; the folder page error state offers Try again. F11 complete, waiting for the owner's review. |
 | 2026-10-05 | F11 | Fix (owner): still more room at the bottom of the response panel (10 → 14 rem), so the Notes section and its Add note button sit well clear of the Previous / Next bar. |
 | 2026-10-05 | F11 | Fix (owner): most folder colour swatches looked empty in the New / Edit folder dialog (and those colours were missing on folder icons) because Tailwind did not scan `shared/`, where the colour classes live. `main.css` now adds `@source` for `shared/` (decision 110); all 18 colours show. |
+| 2026-10-05 | F12 | M1 Connections (decision 111): engine catalogue with each database's own settings (MySQL / MariaDB, PostgreSQL, SQL Server, Oracle) and checks on both sides; permission catalogue with every operation by level and grant statements per engine for the connection's own names; Add / Edit connection in six steps with help, live test (steps, errors with fixes, permissions, advice), write-only secrets, blocked addresses, outgoing addresses; Connections page (two chart cards, table / card, filters, sidebar by status) and connection panel (Test now, Enabled, settings, permissions, health, J / K); audit area Data sources. Mock API `/datasources/**` with dev triggers (02-DEV-ENVIRONMENT). Tests: `datasources/engines`, `datasources/simulation`. |

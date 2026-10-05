@@ -19,7 +19,8 @@
     "goHome": "Ir para o início",
     "confirm": "Confirmar",
     "copy": "Copiar",
-    "copied": "Copiado"
+    "copied": "Copiado",
+    "next": "Próximo"
   },
   "placeholder": {
     "title": "Em breve",
@@ -403,7 +404,13 @@
     "pagesSaved": "Salvas",
     "pagesCreated": "Criadas",
     "folders": "Pastas",
-    "foldersAll": "Todas as pastas"
+    "foldersAll": "Todas as pastas",
+    "connectionsAll": "Tudo",
+    "connectionsConnected": "Conectadas",
+    "connectionsAttention": "Requerem atenção",
+    "connectionsFailing": "Com falha",
+    "connectionsDisabled": "Desativadas",
+    "connectionsNew": "Adicionar conexão"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "Não foi possível confirmar que esta resposta foi enviada por uma pessoa. Tente novamente.",
     "FRM-FORM-1017": "Essa palavra-passe não está correta.",
     "FRM-FORM-1018": "Esta ligação de convite já não é válida.",
-    "FRM-FORM-1019": "A sua sessão neste formulário expirou. Inicie sessão novamente."
+    "FRM-FORM-1019": "A sua sessão neste formulário expirou. Inicie sessão novamente.",
+    "FRM-DEST-1002": "O banco de dados não aceitou o nome de usuário ou a senha.",
+    "FRM-DEST-1003": "Não foi possível configurar a conexão criptografada (certificado ou configurações de TLS).",
+    "FRM-DEST-1004": "Não foi possível abrir o túnel SSH.",
+    "FRM-DEST-1005": "O banco de dados ou o esquema não foi encontrado, ou esta conta não pode usá-lo.",
+    "FRM-DEST-1006": "Faltam algumas permissões de que esta conexão precisa.",
+    "FRM-DEST-1007": "Já existe uma conexão com este nome.",
+    "FRM-DEST-1008": "Este teste de conexão não está mais disponível. Execute-o novamente.",
+    "FRM-DEST-1009": "Esta conexão está desativada. Ative-a primeiro.",
+    "FRM-DEST-1010": "Ainda há formulários enviando respostas para esta conexão.",
+    "FRM-DEST-1011": "O banco de dados demorou demais para responder."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -576,7 +593,12 @@
     "new": "Novo",
     "reviewed": "Revisto",
     "approved": "Aprovado",
-    "rejected": "Rejeitado"
+    "rejected": "Rejeitado",
+    "connected": "Conectada",
+    "attention": "Requer atenção",
+    "failing": "Com falha",
+    "disabled": "Desativada",
+    "untested": "Não testada"
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
@@ -767,7 +789,8 @@
       "settings": "Configurações",
       "users": "Usuários",
       "integrations": "Integrações",
-      "audit": "Trilha de auditoria"
+      "audit": "Trilha de auditoria",
+      "data": "Fontes de dados"
     },
     "actorType": {
       "user": "Pessoa",
@@ -794,7 +817,8 @@
       "saved_field": "Campo salvo",
       "option_list": "Lista de opções",
       "theme": "Tema",
-      "template": "Modelo"
+      "template": "Modelo",
+      "data_source": "Conexão"
     },
     "field": {
       "name": "Nome",
@@ -817,7 +841,14 @@
       "number_format": "Formato de número",
       "week_start": "Primeiro dia da semana",
       "tags": "Tags",
-      "colour": "Cor"
+      "colour": "Cor",
+      "engine": "Tipo de banco de dados",
+      "host": "Endereço do servidor",
+      "port": "Porta",
+      "database": "Banco de dados",
+      "access": "Acesso",
+      "credentials": "Credenciais",
+      "security": "Configurações da conexão"
     },
     "action": {
       "auth_login_succeeded": "Entrou",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "Página de destino atualizada",
       "forms_page_design_deleted": "Página de destino excluída",
       "responses_export_downloaded": "Exportação baixada",
-      "responses_export_deleted": "Exportação excluída"
+      "responses_export_deleted": "Exportação excluída",
+      "data_connection_created": "Conexão adicionada",
+      "data_connection_updated": "Conexão alterada",
+      "data_connection_tested": "Conexão testada",
+      "data_connection_duplicated": "Conexão duplicada",
+      "data_connection_enabled": "Conexão ativada",
+      "data_connection_disabled": "Conexão desativada",
+      "data_connection_deleted": "Conexão excluída",
+      "data_credentials_changed": "Credenciais da conexão alteradas"
     },
     "detail": {
       "who": "Quem",
@@ -2838,6 +2877,556 @@
       "destinations": "Escolha para onde cada formulário envia suas respostas e associe os campos às colunas.",
       "transfers": "Importe arquivos para tabelas e exporte tabelas ou resultados de consultas.",
       "activity": "Entregas, falhas e consultas recentes de cada conexão."
+    },
+    "add": "Adicionar conexão",
+    "search": "Pesquisar conexões, servidores ou bancos de dados…",
+    "emptyTitle": "Nenhuma conexão ainda",
+    "emptyDesc": "Conecte um dos seus bancos de dados para enviar dados de formulários a ele e trabalhar com eles aqui. O armazenamento integrado do Formalie continua funcionando enquanto isso.",
+    "notFound": "Esta conexão não está disponível",
+    "ms": "{n} ms",
+    "checked": "Verificada {when}",
+    "neverChecked": "Ainda não verificada",
+    "needsLook": "Precisa de atenção",
+    "uptime": "Disponibilidade (30 dias)",
+    "uptimePercent": "Disponibilidade por dia (%)",
+    "formsUsing": "Formulários que enviam para ela",
+    "lastChecked": "Última verificação",
+    "addedBy": "Adicionada por",
+    "yes": "Sim",
+    "no": "Não",
+    "secretSaved": "Salvo",
+    "secretNotSet": "Não definido",
+    "secretsChanged": "Credenciais alteradas pela última vez {when}",
+    "enabled": "Ativada",
+    "disabledLabel": "Desativada",
+    "missingCount": "{n} permissão faltando | {n} permissões faltando",
+    "moreOptions": "Mais opções",
+    "savedSecret": "Salvo. Deixe em branco para mantê-lo",
+    "showSecret": "Mostrar",
+    "hideSecret": "Ocultar",
+    "loadFile": "Carregar de um arquivo",
+    "col": {
+      "connection": "Conexão",
+      "status": "Status"
+    },
+    "sort": {
+      "checked": "Verificadas recentemente",
+      "uptime": "Menor disponibilidade primeiro",
+      "operations": "Mais movimentadas",
+      "newest": "Mais recentes primeiro"
+    },
+    "kpi": {
+      "activity": "Atividade",
+      "operations": "Operações",
+      "latency": "Tempo de resposta",
+      "missing": "Permissões faltando",
+      "byStatus": "Conexões por status",
+      "needLook": "{n} precisam de atenção"
+    },
+    "actions": {
+      "open": "Abrir",
+      "edit": "Editar conexão",
+      "duplicate": "Duplicar",
+      "copyLink": "Copiar link",
+      "delete": "Excluir conexão",
+      "deleteInUse": "Formulários enviam para ela, não é possível excluir",
+      "test": "Testar agora",
+      "enable": "Ativar",
+      "disable": "Desativar"
+    },
+    "toast": {
+      "created": "Conexão “{name}” adicionada",
+      "saved": "Conexão salva",
+      "enabled": "Conexão ativada",
+      "disabled": "Conexão desativada",
+      "duplicated": "Conexão duplicada. Informe a senha para usá-la",
+      "deleted": "Conexão excluída",
+      "linkCopied": "Link copiado"
+    },
+    "disable": {
+      "title": "Desativar “{name}”?",
+      "desc": "O Formalie deixa de usar este banco de dados: sem verificações de integridade, sem dados enviados ou lidos. Você pode ativá-lo novamente a qualquer momento.",
+      "confirm": "Desativar"
+    },
+    "delete": {
+      "title": "Excluir “{name}”?",
+      "desc": "As configurações e as credenciais salvas são removidas do Formalie. Nada muda no seu banco de dados.",
+      "confirm": "Excluir conexão"
+    },
+    "detail": {
+      "groups": "Mostrar",
+      "all": "Tudo",
+      "connection": "Conexão",
+      "security": "Segurança",
+      "permissions": "Permissões",
+      "health": "Integridade",
+      "permissionsFrom": "Verificado pelo último teste, {when}.",
+      "permissionsUntested": "Ainda não testada. Teste a conexão para verificar cada permissão.",
+      "howToGrant": "Comandos para concedê-las",
+      "noChecks": "Nenhuma verificação de integridade ainda.",
+      "navigate": "Navegar entre conexões",
+      "previous": "Conexão anterior",
+      "next": "Próxima conexão"
+    },
+    "egress": {
+      "title": "Permita os endereços do Formalie",
+      "desc": "O Formalie se conecta a partir destes endereços. Permita-os no firewall ou no grupo de segurança do seu banco de dados.",
+      "copy": "Copiar {ip}"
+    },
+    "engineDesc": {
+      "mysql": "Porta 3306 · modos TLS até verificação de identidade · túnel SSH",
+      "mariadb": "Porta 3306 · modos TLS até verificação de identidade · túnel SSH",
+      "oracle": "Porta 1521 · nome de serviço, SID ou descritor · TCPS ou criptografia nativa",
+      "postgresql": "Porta 5432 · esquemas · sslmode até verify-full · túnel SSH",
+      "sqlserver": "Porta 1433 · instâncias · login SQL ou Microsoft Entra · criptografia estrita"
+    },
+    "field": {
+      "host": "Endereço do servidor",
+      "port": "Porta",
+      "database": "Banco de dados",
+      "schema": "Esquema",
+      "charset": "Conjunto de caracteres",
+      "time_zone": "Fuso horário da sessão",
+      "connect_timeout": "Tempo limite de conexão (segundos)",
+      "username": "Nome de usuário",
+      "password": "Senha",
+      "ssl_mode": "Criptografia (TLS)",
+      "ca_certificate": "Certificado da CA",
+      "client_certificate": "Certificado do cliente",
+      "client_key": "Chave privada do cliente",
+      "ssh": "Conectar por um túnel SSH",
+      "ssh_host": "Servidor SSH",
+      "ssh_port": "Porta SSH",
+      "ssh_username": "Usuário SSH",
+      "ssh_private_key": "Chave privada SSH",
+      "ssh_passphrase": "Frase secreta da chave",
+      "target_session_attrs": "Servidor a usar",
+      "instance": "Nome da instância",
+      "application_intent": "Intenção do aplicativo",
+      "multi_subnet_failover": "Failover entre várias sub-redes",
+      "auth": "Entrar com",
+      "tenant_id": "ID do diretório (locatário)",
+      "client_id": "ID do aplicativo (cliente)",
+      "client_secret": "Segredo do cliente",
+      "encrypt": "Criptografia",
+      "trust_server_certificate": "Confiar no certificado do servidor sem verificá-lo",
+      "host_name_in_certificate": "Nome do host no certificado",
+      "connect_by": "Conectar por",
+      "service_name": "Nome do serviço",
+      "sid": "SID",
+      "descriptor": "Descritor de conexão",
+      "protocol": "Protocolo",
+      "network_encryption": "Criptografia de rede nativa",
+      "ssl_server_dn_match": "Verificar o nome do certificado do servidor"
+    },
+    "hint": {
+      "host": "Nome do host ou endereço IP, como os servidores do Formalie o alcançam. Redes privadas: use um túnel SSH.",
+      "connect_timeout": "Quanto tempo esperar pelo servidor antes de desistir.",
+      "username": "Uma conta dedicada ao Formalie, nunca um administrador.",
+      "ca_certificate": "Cole o texto PEM da autoridade certificadora que assinou o certificado do servidor.",
+      "client_certificate": "Somente quando o servidor exige um certificado do cliente (TLS mútuo).",
+      "client_key": "A chave privada do certificado do cliente, em PEM.",
+      "ssh": "Para um banco de dados em rede privada: o Formalie se conecta a um servidor que você permite, que encaminha para o banco de dados.",
+      "ssh_private_key": "Chave privada PEM do usuário SSH. Use uma chave criada só para o Formalie.",
+      "time_zone": "As datas são enviadas e lidas neste fuso horário. Recomenda-se UTC (+00:00).",
+      "target_session_attrs": "Para clusters: qual servidor o Formalie pode usar.",
+      "trust_server_certificate": "Não recomendado: qualquer um no meio do caminho poderia ler o tráfego. Use só para testes.",
+      "host_name_in_certificate": "Quando o certificado foi emitido para um nome diferente do endereço do servidor.",
+      "multi_subnet_failover": "Failover mais rápido para grupos de disponibilidade Always On em várias sub-redes.",
+      "descriptor": "Easy Connect ou um descritor TNS completo, como em tnsnames.ora.",
+      "schema": "Onde o Formalie procura tabelas por padrão.",
+      "postgresql": {
+        "schema": "Onde o Formalie procura tabelas por padrão (search path).",
+        "ssl_mode": "require criptografa; verify-full também verifica o certificado e o nome do host (recomendado)."
+      },
+      "mysql": {
+        "ssl_mode": "Obrigatória criptografa; Verificar identidade também verifica o certificado e o nome do host (recomendado)."
+      },
+      "mariadb": {
+        "ssl_mode": "Obrigatória criptografa; Verificar identidade também verifica o certificado e o nome do host (recomendado)."
+      },
+      "sqlserver": {
+        "instance": "Somente para uma instância nomeada. Mantenha a porta como está ou use a porta da própria instância.",
+        "schema": "Esquema padrão do usuário do Formalie.",
+        "encrypt": "Estrito usa TDS 8.0 e sempre verifica o certificado (SQL Server 2022 e Azure SQL)."
+      },
+      "oracle": {
+        "schema": "O esquema (proprietário) cujas tabelas o Formalie usa. Vazio: o do próprio usuário.",
+        "protocol": "TCPS criptografa com TLS (recomendado). TCP depende da criptografia de rede nativa."
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4 (recomendado)",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "Desligada",
+        "preferred": "Preferencial (criptografar quando possível)",
+        "required": "Obrigatória (criptografar)",
+        "verify_ca": "Verificar certificado",
+        "verify_identity": "Verificar identidade (recomendado)",
+        "disable": "disable (desligada)",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require (criptografar)",
+        "verify-ca": "verify-ca (verificar certificado)",
+        "verify-full": "verify-full (recomendado)"
+      },
+      "target_session_attrs": {
+        "any": "Qualquer",
+        "read-write": "Somente leitura e gravação",
+        "read-only": "Somente leitura",
+        "primary": "Primário",
+        "standby": "Standby",
+        "prefer-standby": "Standby, se disponível"
+      },
+      "application_intent": {
+        "read_write": "Leitura e gravação",
+        "read_only": "Somente leitura (secundário legível)"
+      },
+      "auth": {
+        "sql": "Conta do SQL Server",
+        "entra_password": "Microsoft Entra ID (senha)",
+        "entra_service_principal": "Microsoft Entra ID (entidade de serviço)"
+      },
+      "encrypt": {
+        "mandatory": "Obrigatória (recomendado)",
+        "strict": "Estrita (TDS 8.0)",
+        "optional": "Opcional (sem criptografia)"
+      },
+      "connect_by": {
+        "service_name": "Nome do serviço",
+        "sid": "SID",
+        "descriptor": "Descritor de conexão"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "Obrigatória",
+        "requested": "Solicitada",
+        "accepted": "Aceita"
+      }
+    },
+    "invalid": {
+      "required": "Preencha este campo.",
+      "host": "Informe um nome de host ou endereço IP, sem http:// nem porta.",
+      "host_blocked": "O Formalie não pode se conectar a este endereço. Para uma rede privada, use um túnel SSH.",
+      "port": "Informe uma porta de 1 a 65535.",
+      "pem": "Cole o texto PEM completo, de -----BEGIN até -----END.",
+      "identifier": "Use letras, números e sublinhados.",
+      "uuid": "Informe o ID como aparece no centro de administração do Microsoft Entra.",
+      "seconds": "Informe de 1 a 120 segundos.",
+      "taken": "Já existe uma conexão com este nome."
+    },
+    "level": {
+      "read": "Leitura",
+      "write": "Gravação",
+      "structure": "Estrutura"
+    },
+    "levelDesc": {
+      "read": "Navegar por tabelas, ler linhas, exportar, executar consultas de leitura",
+      "write": "Enviar respostas de formulários, atualizar e excluir linhas, importar",
+      "structure": "Criar tabelas a partir de um formulário, adicionar colunas para novos campos"
+    },
+    "perm": {
+      "needed": "Necessária",
+      "notNeeded": "Não necessária",
+      "granted": "Concedida",
+      "missing": "Faltando",
+      "not_needed": "Não necessária para esta conexão"
+    },
+    "op": {
+      "connect": {
+        "label": "Entrar",
+        "uses": "Abrir uma sessão no banco de dados"
+      },
+      "read_schema": {
+        "label": "Ler a estrutura",
+        "uses": "Esquemas, tabelas, colunas, chaves e índices no explorador"
+      },
+      "row_counts": {
+        "label": "Contar linhas",
+        "uses": "Tamanhos das tabelas no explorador"
+      },
+      "read_rows": {
+        "label": "Ler linhas",
+        "uses": "Navegar e exportar tabelas, consultas de leitura, listas de opções"
+      },
+      "cancel": {
+        "label": "Cancelar a própria consulta",
+        "uses": "Interromper uma consulta que demora demais"
+      },
+      "insert": {
+        "label": "Adicionar linhas",
+        "uses": "Enviar respostas de formulários, importações, novas linhas"
+      },
+      "update": {
+        "label": "Alterar linhas",
+        "uses": "Atualizar ou inserir por chave, edições no explorador"
+      },
+      "delete": {
+        "label": "Excluir linhas",
+        "uses": "Exclusão de linhas no explorador"
+      },
+      "sequences": {
+        "label": "Usar sequências",
+        "uses": "IDs gerados para novas linhas"
+      },
+      "create_table": {
+        "label": "Criar tabelas",
+        "uses": "Uma tabela criada a partir de um formulário"
+      },
+      "alter_table": {
+        "label": "Adicionar colunas",
+        "uses": "Uma coluna para um campo adicionado ao formulário"
+      },
+      "create_index": {
+        "label": "Adicionar uma chave única",
+        "uses": "A chave usada para atualizar ou inserir"
+      }
+    },
+    "grant": {
+      "intro": "Execute estes comandos como administrador do banco de dados. Eles foram escritos para o banco de dados, os esquemas e a conta desta conexão.",
+      "copyAll": "Copiar tudo",
+      "copied": "Comandos copiados",
+      "oracle23": "Oracle 23ai ou posterior",
+      "oracle23Desc": "Concessões por esquema. Desative para 19c e anteriores (concessões por tabela).",
+      "block": {
+        "account": "1. Criar a conta",
+        "read": "2. Leitura",
+        "write": "3. Gravação",
+        "structure": "4. Estrutura"
+      },
+      "note": {
+        "host_limit": "Se puder, substitua '%' pelos endereços do Formalie para que a conta funcione somente a partir deles.",
+        "pool": "O Formalie abre no máximo 10 conexões ao mesmo tempo.",
+        "default_privileges": "Execute como a função proprietária das tabelas, para que as tabelas criadas depois também sejam cobertas.",
+        "owner_alter": "O Formalie é dono das tabelas que cria e pode adicionar colunas a elas. As tabelas existentes continuam sendo suas.",
+        "entra": "Execute no banco de dados conectado com uma conta Microsoft Entra. O nome é o usuário ou aplicativo do Entra.",
+        "contained": "No Azure SQL Database, crie um usuário independente: CREATE USER ... WITH PASSWORD.",
+        "no_sysdba": "Nunca use SYS, SYSTEM ou a função SYSDBA para o Formalie.",
+        "oracle_new_tables": "Tabelas adicionadas depois também precisam da concessão: execute o bloco novamente ou use as concessões por esquema do Oracle 23ai.",
+        "oracle_own_schema": "Antes do 23ai, o Formalie cria as tabelas no próprio esquema, então não precisa de direitos sobre os seus."
+      }
+    },
+    "step": {
+      "network": "Alcançar o servidor",
+      "ssh": "Abrir o túnel SSH",
+      "tls": "Criptografar a conexão",
+      "sign_in": "Entrar",
+      "database": "Abrir o banco de dados",
+      "permissions": "Verificar permissões"
+    },
+    "stepDesc": {
+      "network": "Conectando dos servidores do Formalie ao endereço e à porta.",
+      "ssh": "Entrando no servidor SSH e encaminhando para o banco de dados.",
+      "tls": "Configurando o TLS e verificando o certificado.",
+      "sign_in": "Entrando com a conta.",
+      "database": "Abrindo o banco de dados e lendo a versão.",
+      "permissions": "Verificando cada permissão de que esta conexão precisa."
+    },
+    "fix": {
+      "FRM-DEST-1001": "Verifique o endereço e a porta, e se o firewall permite os endereços do Formalie.",
+      "FRM-DEST-1002": "Verifique o nome de usuário e a senha, e se a conta pode entrar a partir dos endereços do Formalie.",
+      "FRM-DEST-1003": "Verifique a configuração de criptografia e o certificado da CA, e se o certificado corresponde ao endereço do servidor.",
+      "FRM-DEST-1004": "Verifique o servidor SSH, o usuário e a chave privada, e se o servidor SSH alcança o banco de dados.",
+      "FRM-DEST-1005": "Verifique o nome do banco de dados (ou do serviço) e se a conta tem acesso a ele.",
+      "FRM-DEST-1006": "Conceda as permissões que faltam abaixo e teste novamente.",
+      "FRM-DEST-1011": "O servidor não respondeu a tempo. Verifique o endereço, o firewall ou aumente o tempo limite em Mais opções."
+    },
+    "test": {
+      "heading": {
+        "running": "Testando a conexão…",
+        "passed": "Tudo funciona",
+        "warning": "Funciona, com algo a verificar",
+        "failed": "A conexão não funcionou"
+      },
+      "version": "Versão do servidor",
+      "latency": "Tempo de resposta",
+      "schemas": "Esquemas",
+      "tables": "Tabelas",
+      "skipped": "Ignorado",
+      "tlsOff": "O tráfego não é criptografado com estas configurações.",
+      "safe": "O teste apenas lê. Ele nunca altera seus dados."
+    },
+    "finding": {
+      "admin_account": {
+        "title": "Esta é uma conta de administrador",
+        "desc": "Crie uma conta dedicada apenas com as permissões listadas, para que o Formalie nunca possa fazer mais do que precisa."
+      },
+      "extra_write": {
+        "title": "Esta conta pode alterar dados",
+        "desc": "A conexão é somente leitura, então o Formalie apenas lerá. Para privilégio mínimo, remova as permissões de gravação."
+      },
+      "tls_off": {
+        "title": "O tráfego não é criptografado",
+        "desc": "Escolha uma opção com criptografia em Segurança para proteger dados e senhas no caminho."
+      },
+      "trust_certificate": {
+        "title": "O certificado do servidor não é verificado",
+        "desc": "Desative “Confiar no certificado do servidor” e adicione o certificado da CA quando puder."
+      },
+      "missing_permissions": {
+        "title": "Faltam algumas permissões",
+        "desc": "As partes do Formalie que precisam delas não funcionarão. Os comandos para concedê-las estão em Permissões."
+      }
+    },
+    "access": {
+      "legend": "O que o Formalie pode fazer",
+      "read_only": "Somente leitura",
+      "read_write": "Leitura e gravação",
+      "readOnlyDesc": "Navegar, exportar e executar consultas de leitura. Nada no banco de dados pode mudar.",
+      "readWriteDesc": "Também enviar respostas de formulários para tabelas, editar linhas e importar arquivos.",
+      "structure": "Permitir que o Formalie crie tabelas e adicione colunas",
+      "structureDesc": "Para destinos de formulários: uma tabela criada a partir de um formulário e uma coluna para cada novo campo. Nunca remove nada.",
+      "schemas": "Esquemas que o Formalie pode usar",
+      "databases": "Bancos de dados que o Formalie pode usar",
+      "schemasHint": "Pressione Enter após cada um. Vazio: somente {schema}.",
+      "databasesHint": "Pressione Enter após cada um. Vazio: somente {schema}.",
+      "permissionsTitle": "Permissões a conceder",
+      "permissionsDesc": "Dê à conta exatamente estas, nada mais, para que todos os recursos funcionem e nada além disso seja possível.",
+      "tabOperations": "O que o Formalie faz",
+      "tabScript": "Comandos a executar"
+    },
+    "summary": {
+      "engine": "Banco de dados",
+      "address": "Servidor",
+      "database": "Banco de dados",
+      "account": "Conta",
+      "security": "Segurança",
+      "access": "Acesso",
+      "descriptor": "Descritor de conexão",
+      "encrypted": "Criptografada",
+      "notEncrypted": "Sem criptografia",
+      "ssh": "Túnel SSH",
+      "structure": "cria tabelas",
+      "change": "Alterar {item}"
+    },
+    "wizard": {
+      "newCrumb": "Adicionar conexão",
+      "newTitle": "Adicionar conexão",
+      "newDesc": "Conecte um dos seus bancos de dados, passo a passo",
+      "editCrumb": "Editar",
+      "editTitle": "Editar {name}",
+      "editDesc": "Altere as configurações e teste antes de salvar",
+      "engineLegend": "Banco de dados",
+      "builtInNote": "O armazenamento criptografado integrado do Formalie continua sendo o padrão. Uma conexão se soma a ele.",
+      "stepOf": "Etapa {n} de {total}",
+      "step": {
+        "engine": "Banco de dados",
+        "server": "Servidor",
+        "signin": "Login",
+        "security": "Segurança",
+        "access": "Acesso",
+        "review": "Nome e teste"
+      },
+      "title": {
+        "engine": "Qual banco de dados?",
+        "server": "Onde ele está?",
+        "signin": "Como o Formalie entra?",
+        "security": "Como a conexão é protegida?",
+        "access": "O que o Formalie pode fazer?",
+        "review": "Dê um nome e teste"
+      },
+      "desc": {
+        "engine": "Cada um tem suas próprias configurações. Você pode adicionar mais depois.",
+        "server": "O endereço que os servidores do Formalie usam para alcançar seu banco de dados {engine}.",
+        "signin": "Use uma conta criada para o Formalie. As senhas são criptografadas e nunca mais são exibidas.",
+        "security": "Criptografia e, para redes privadas, um túnel SSH.",
+        "access": "Comece com somente leitura. As permissões a conceder dependem da sua escolha.",
+        "review": "O teste é executado a partir dos servidores do Formalie e apenas lê."
+      },
+      "name": "Nome",
+      "nameDesc": "Como esta conexão aparece no Formalie.",
+      "namePlaceholder": "ex.: Gestão de casos",
+      "testTitle": "Testar a conexão",
+      "testDesc": "Verifica cada etapa e cada permissão. Nada é salvo até você salvar.",
+      "test": "Testar conexão",
+      "testAgain": "Testar novamente",
+      "fixStep": "Corrigir: {step}",
+      "save": "Salvar conexão",
+      "testAndSave": "Testar e salvar",
+      "saveAnyway": "Salvar mesmo assim",
+      "saveFailedTitle": "Salvar uma conexão que falhou no teste?",
+      "saveFailedDesc": "Ela aparecerá com falha e o Formalie não a usará até que um teste seja aprovado.",
+      "leaveTitle": "Sair sem salvar?",
+      "leaveDesc": "As configurações de conexão que você informou serão perdidas.",
+      "leave": "Sair"
+    },
+    "help": {
+      "engine": {
+        "title": "O que você precisa",
+        "p1": "O endereço e a porta do servidor, e o nome do banco de dados.",
+        "p2": "Uma conta dedicada ao Formalie. Os comandos exatos para criá-la aparecem na etapa Acesso.",
+        "p3": "Os endereços do Formalie permitidos no seu firewall (abaixo).",
+        "p4": "Para um banco de dados em rede privada: um servidor SSH que o Formalie possa usar."
+      },
+      "server": {
+        "title": "Alcançar seu banco de dados",
+        "p1": "Use o endereço que funciona a partir da internet, não de dentro da sua rede.",
+        "p2": "Permita os endereços do Formalie na porta do banco de dados.",
+        "p3": "Só rede privada? Adicione um túnel SSH na etapa Segurança."
+      },
+      "signin": {
+        "title": "Uma conta dedicada",
+        "p1": "Nunca use uma conta de administrador. O teste avisa se você fizer isso.",
+        "p2": "A etapa Acesso escreve os comandos para criar a conta com exatamente as permissões certas.",
+        "p3": "As credenciais são enviadas e armazenadas criptografadas e nunca mais são exibidas.",
+        "sqlserver": {
+          "p1": "Conta do SQL Server: um login com senha.",
+          "p2": "Microsoft Entra ID: um usuário com senha ou um aplicativo (entidade de serviço) com um segredo do cliente.",
+          "p3": "A etapa Acesso escreve os comandos para criar qualquer um deles com exatamente as permissões certas."
+        }
+      },
+      "security": {
+        "title": "Proteger a conexão",
+        "p1": "Sempre criptografe. Verificar o certificado também comprova que você alcança o servidor certo.",
+        "p2": "Um túnel SSH alcança um banco de dados privado por meio de um servidor que você permite.",
+        "p3": "Chaves e certificados ficam nos servidores do Formalie, criptografados.",
+        "postgresql": {
+          "p1": "require criptografa o tráfego.",
+          "p2": "verify-full também verifica o certificado e o nome do host (recomendado).",
+          "p3": "Cole o certificado da CA para verify-ca e verify-full."
+        },
+        "mysql": {
+          "p1": "Obrigatória criptografa o tráfego.",
+          "p2": "Verificar identidade também verifica o certificado e o nome do host (recomendado).",
+          "p3": "Adicione o certificado da CA para as opções de verificação."
+        },
+        "mariadb": {
+          "p1": "Obrigatória criptografa o tráfego.",
+          "p2": "Verificar identidade também verifica o certificado e o nome do host (recomendado).",
+          "p3": "Adicione o certificado da CA para as opções de verificação."
+        },
+        "sqlserver": {
+          "p1": "Obrigatória criptografa e verifica o certificado.",
+          "p2": "Estrita (TDS 8.0) criptografa antes do login, para SQL Server 2022 e Azure SQL.",
+          "p3": "Confiar no certificado sem verificá-lo é só para testes."
+        },
+        "oracle": {
+          "p1": "TCPS criptografa com TLS e é o recomendado.",
+          "p2": "Com TCP, defina a criptografia de rede nativa como Obrigatória nos dois lados.",
+          "p3": "Cole o certificado da CA da sua wallet para TCPS."
+        }
+      },
+      "access": {
+        "title": "Privilégio mínimo",
+        "p1": "Conceda apenas o que esta conexão usa. Cada recurso que precisar de mais avisará você.",
+        "p2": "Somente leitura nunca altera seus dados, seja qual for o pedido.",
+        "p3": "O Formalie nunca remove tabelas ou colunas.",
+        "p4": "Cada consulta, alteração, importação e exportação é registrada na trilha de auditoria."
+      },
+      "review": {
+        "title": "O que o teste verifica",
+        "p1": "Se os servidores do Formalie alcançam o endereço e a porta.",
+        "p2": "A criptografia, o certificado e o login.",
+        "p3": "Se o banco de dados abre, e cada permissão de que esta conexão precisa.",
+        "p4": "Ele apenas lê: nada muda no seu banco de dados."
+      }
     }
   },
   "apiService": {

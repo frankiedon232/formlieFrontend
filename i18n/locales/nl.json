@@ -19,7 +19,8 @@
     "goHome": "Naar home",
     "confirm": "Bevestigen",
     "copy": "Kopiëren",
-    "copied": "Gekopieerd"
+    "copied": "Gekopieerd",
+    "next": "Volgende"
   },
   "placeholder": {
     "title": "Binnenkort beschikbaar",
@@ -403,7 +404,13 @@
     "pagesSaved": "Opgeslagen",
     "pagesCreated": "Gemaakt",
     "folders": "Mappen",
-    "foldersAll": "Alle mappen"
+    "foldersAll": "Alle mappen",
+    "connectionsAll": "Alles",
+    "connectionsConnected": "Verbonden",
+    "connectionsAttention": "Aandacht nodig",
+    "connectionsFailing": "Mislukt",
+    "connectionsDisabled": "Uitgeschakeld",
+    "connectionsNew": "Verbinding toevoegen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "We konden niet bevestigen dat dit antwoord door een persoon is verstuurd. Probeer het opnieuw.",
     "FRM-FORM-1017": "Dat wachtwoord klopt niet.",
     "FRM-FORM-1018": "Deze uitnodigingslink is niet meer geldig.",
-    "FRM-FORM-1019": "Uw aanmelding voor dit formulier is verlopen. Meld u opnieuw aan."
+    "FRM-FORM-1019": "Uw aanmelding voor dit formulier is verlopen. Meld u opnieuw aan.",
+    "FRM-DEST-1002": "De database heeft de gebruikersnaam of het wachtwoord niet geaccepteerd.",
+    "FRM-DEST-1003": "De versleutelde verbinding kon niet worden opgezet (certificaat- of TLS-instellingen).",
+    "FRM-DEST-1004": "De SSH-tunnel kon niet worden geopend.",
+    "FRM-DEST-1005": "De database of het schema is niet gevonden, of dit account mag het niet gebruiken.",
+    "FRM-DEST-1006": "Sommige rechten die deze verbinding nodig heeft, ontbreken.",
+    "FRM-DEST-1007": "Er bestaat al een verbinding met deze naam.",
+    "FRM-DEST-1008": "Deze verbindingstest is niet meer beschikbaar. Voer hem opnieuw uit.",
+    "FRM-DEST-1009": "Deze verbinding is uitgeschakeld. Schakel hem eerst in.",
+    "FRM-DEST-1010": "Er zijn nog formulieren die hun reacties naar deze verbinding sturen.",
+    "FRM-DEST-1011": "De database deed er te lang over om te antwoorden."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -576,7 +593,12 @@
     "new": "Nieuw",
     "reviewed": "Beoordeeld",
     "approved": "Goedgekeurd",
-    "rejected": "Afgewezen"
+    "rejected": "Afgewezen",
+    "connected": "Verbonden",
+    "attention": "Aandacht nodig",
+    "failing": "Mislukt",
+    "disabled": "Uitgeschakeld",
+    "untested": "Niet getest"
   },
   "footer": {
     "rights": "Alle rechten voorbehouden.",
@@ -767,7 +789,8 @@
       "settings": "Instellingen",
       "users": "Gebruikers",
       "integrations": "Integraties",
-      "audit": "Audittrail"
+      "audit": "Audittrail",
+      "data": "Gegevensbronnen"
     },
     "actorType": {
       "user": "Persoon",
@@ -794,7 +817,8 @@
       "saved_field": "Opgeslagen veld",
       "option_list": "Optielijst",
       "theme": "Thema",
-      "template": "Sjabloon"
+      "template": "Sjabloon",
+      "data_source": "Verbinding"
     },
     "field": {
       "name": "Naam",
@@ -817,7 +841,14 @@
       "number_format": "Getalnotatie",
       "week_start": "Eerste dag van de week",
       "tags": "Tags",
-      "colour": "Kleur"
+      "colour": "Kleur",
+      "engine": "Databasetype",
+      "host": "Serveradres",
+      "port": "Poort",
+      "database": "Database",
+      "access": "Toegang",
+      "credentials": "Inloggegevens",
+      "security": "Verbindingsinstellingen"
     },
     "action": {
       "auth_login_succeeded": "Ingelogd",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "Landingspagina bijgewerkt",
       "forms_page_design_deleted": "Landingspagina verwijderd",
       "responses_export_downloaded": "Export gedownload",
-      "responses_export_deleted": "Export verwijderd"
+      "responses_export_deleted": "Export verwijderd",
+      "data_connection_created": "Verbinding toegevoegd",
+      "data_connection_updated": "Verbinding gewijzigd",
+      "data_connection_tested": "Verbinding getest",
+      "data_connection_duplicated": "Verbinding gedupliceerd",
+      "data_connection_enabled": "Verbinding ingeschakeld",
+      "data_connection_disabled": "Verbinding uitgeschakeld",
+      "data_connection_deleted": "Verbinding verwijderd",
+      "data_credentials_changed": "Inloggegevens van verbinding gewijzigd"
     },
     "detail": {
       "who": "Wie",
@@ -2838,6 +2877,556 @@
       "destinations": "Kies waar elk formulier zijn reacties naartoe stuurt en koppel velden aan kolommen.",
       "transfers": "Importeer bestanden in tabellen en exporteer tabellen of queryresultaten.",
       "activity": "Leveringen, fouten en recente query’s voor elke verbinding."
+    },
+    "add": "Verbinding toevoegen",
+    "search": "Zoek verbindingen, servers of databases…",
+    "emptyTitle": "Nog geen verbindingen",
+    "emptyDesc": "Koppel een van uw databases om er formuliergegevens naartoe te sturen en er hier mee te werken. De ingebouwde opslag van Formalie blijft intussen gewoon werken.",
+    "notFound": "Deze verbinding is niet beschikbaar",
+    "ms": "{n} ms",
+    "checked": "Gecontroleerd {when}",
+    "neverChecked": "Nog niet gecontroleerd",
+    "needsLook": "Bekijken",
+    "uptime": "Uptime (30 dagen)",
+    "uptimePercent": "Uptime per dag (%)",
+    "formsUsing": "Formulieren die ernaartoe sturen",
+    "lastChecked": "Laatst gecontroleerd",
+    "addedBy": "Toegevoegd door",
+    "yes": "Ja",
+    "no": "Nee",
+    "secretSaved": "Opgeslagen",
+    "secretNotSet": "Niet ingesteld",
+    "secretsChanged": "Inloggegevens laatst gewijzigd {when}",
+    "enabled": "Ingeschakeld",
+    "disabledLabel": "Uitgeschakeld",
+    "missingCount": "{n} recht ontbreekt | {n} rechten ontbreken",
+    "moreOptions": "Meer opties",
+    "savedSecret": "Opgeslagen. Laat leeg om het te behouden",
+    "showSecret": "Tonen",
+    "hideSecret": "Verbergen",
+    "loadFile": "Laden uit een bestand",
+    "col": {
+      "connection": "Verbinding",
+      "status": "Status"
+    },
+    "sort": {
+      "checked": "Recent gecontroleerd",
+      "uptime": "Laagste uptime eerst",
+      "operations": "Drukst",
+      "newest": "Nieuwste eerst"
+    },
+    "kpi": {
+      "activity": "Activiteit",
+      "operations": "Bewerkingen",
+      "latency": "Reactietijd",
+      "missing": "Ontbrekende rechten",
+      "byStatus": "Verbindingen per status",
+      "needLook": "{n} te bekijken"
+    },
+    "actions": {
+      "open": "Openen",
+      "edit": "Verbinding bewerken",
+      "duplicate": "Dupliceren",
+      "copyLink": "Link kopiëren",
+      "delete": "Verbinding verwijderen",
+      "deleteInUse": "Formulieren sturen ernaartoe, verwijderen kan niet",
+      "test": "Nu testen",
+      "enable": "Inschakelen",
+      "disable": "Uitschakelen"
+    },
+    "toast": {
+      "created": "Verbinding “{name}” toegevoegd",
+      "saved": "Verbinding opgeslagen",
+      "enabled": "Verbinding ingeschakeld",
+      "disabled": "Verbinding uitgeschakeld",
+      "duplicated": "Verbinding gedupliceerd. Voer het wachtwoord in om hem te gebruiken",
+      "deleted": "Verbinding verwijderd",
+      "linkCopied": "Link gekopieerd"
+    },
+    "disable": {
+      "title": "“{name}” uitschakelen?",
+      "desc": "Formalie stopt met het gebruik van deze database: geen statuscontroles, geen gegevens verzonden of gelezen. U kunt hem altijd weer inschakelen.",
+      "confirm": "Uitschakelen"
+    },
+    "delete": {
+      "title": "“{name}” verwijderen?",
+      "desc": "De instellingen en opgeslagen inloggegevens worden uit Formalie verwijderd. Er verandert niets in uw database.",
+      "confirm": "Verbinding verwijderen"
+    },
+    "detail": {
+      "groups": "Tonen",
+      "all": "Alles",
+      "connection": "Verbinding",
+      "security": "Beveiliging",
+      "permissions": "Rechten",
+      "health": "Status",
+      "permissionsFrom": "Gecontroleerd door de laatste test, {when}.",
+      "permissionsUntested": "Nog niet getest. Test de verbinding om alle rechten te controleren.",
+      "howToGrant": "Statements om ze toe te kennen",
+      "noChecks": "Nog geen statuscontroles.",
+      "navigate": "Tussen verbindingen wisselen",
+      "previous": "Vorige verbinding",
+      "next": "Volgende verbinding"
+    },
+    "egress": {
+      "title": "Sta de adressen van Formalie toe",
+      "desc": "Formalie maakt verbinding vanaf deze adressen. Sta ze toe in de firewall of beveiligingsgroep van uw database.",
+      "copy": "{ip} kopiëren"
+    },
+    "engineDesc": {
+      "mysql": "Poort 3306 · TLS-modi tot en met identiteit verifiëren · SSH-tunnel",
+      "mariadb": "Poort 3306 · TLS-modi tot en met identiteit verifiëren · SSH-tunnel",
+      "oracle": "Poort 1521 · servicenaam, SID of descriptor · TCPS of native versleuteling",
+      "postgresql": "Poort 5432 · schema’s · sslmode tot en met verify-full · SSH-tunnel",
+      "sqlserver": "Poort 1433 · instanties · SQL- of Microsoft Entra-aanmelding · strikte versleuteling"
+    },
+    "field": {
+      "host": "Serveradres",
+      "port": "Poort",
+      "database": "Database",
+      "schema": "Schema",
+      "charset": "Tekenset",
+      "time_zone": "Tijdzone van de sessie",
+      "connect_timeout": "Tijdslimiet verbinding (seconden)",
+      "username": "Gebruikersnaam",
+      "password": "Wachtwoord",
+      "ssl_mode": "Versleuteling (TLS)",
+      "ca_certificate": "CA-certificaat",
+      "client_certificate": "Clientcertificaat",
+      "client_key": "Persoonlijke sleutel van client",
+      "ssh": "Verbinden via een SSH-tunnel",
+      "ssh_host": "SSH-server",
+      "ssh_port": "SSH-poort",
+      "ssh_username": "SSH-gebruiker",
+      "ssh_private_key": "Persoonlijke SSH-sleutel",
+      "ssh_passphrase": "Wachtwoordzin van sleutel",
+      "target_session_attrs": "Te gebruiken server",
+      "instance": "Instantienaam",
+      "application_intent": "Toepassingsintentie",
+      "multi_subnet_failover": "Multi-subnet-failover",
+      "auth": "Aanmelden met",
+      "tenant_id": "Directory-ID (tenant)",
+      "client_id": "Toepassings-ID (client)",
+      "client_secret": "Clientgeheim",
+      "encrypt": "Versleuteling",
+      "trust_server_certificate": "Het servercertificaat vertrouwen zonder controle",
+      "host_name_in_certificate": "Hostnaam in het certificaat",
+      "connect_by": "Verbinden via",
+      "service_name": "Servicenaam",
+      "sid": "SID",
+      "descriptor": "Connect-descriptor",
+      "protocol": "Protocol",
+      "network_encryption": "Native netwerkversleuteling",
+      "ssl_server_dn_match": "Naam in het servercertificaat controleren"
+    },
+    "hint": {
+      "host": "Hostnaam of IP-adres zoals de servers van Formalie het bereiken. Privénetwerk: gebruik een SSH-tunnel.",
+      "connect_timeout": "Hoe lang op de server wordt gewacht voordat het wordt opgegeven.",
+      "username": "Een apart account voor Formalie, nooit een beheerder.",
+      "ca_certificate": "Plak de PEM-tekst van de certificeringsinstantie die het servercertificaat heeft ondertekend.",
+      "client_certificate": "Alleen als de server om een clientcertificaat vraagt (mutual TLS).",
+      "client_key": "De persoonlijke sleutel van het clientcertificaat, in PEM.",
+      "ssh": "Voor een database in een privénetwerk: Formalie verbindt met een server die u toestaat, die doorstuurt naar de database.",
+      "ssh_private_key": "Persoonlijke PEM-sleutel van de SSH-gebruiker. Gebruik een sleutel die alleen voor Formalie is gemaakt.",
+      "time_zone": "Datums worden in deze tijdzone verzonden en gelezen. UTC (+00:00) wordt aanbevolen.",
+      "target_session_attrs": "Voor clusters: welke server Formalie mag gebruiken.",
+      "trust_server_certificate": "Niet aanbevolen: iedereen ertussen kan het verkeer lezen. Alleen gebruiken om te testen.",
+      "host_name_in_certificate": "Als het certificaat op een andere naam staat dan het serveradres.",
+      "multi_subnet_failover": "Snellere failover voor Always On-beschikbaarheidsgroepen over subnetten heen.",
+      "descriptor": "Easy Connect of een volledige TNS-descriptor, zoals in tnsnames.ora.",
+      "schema": "Waar Formalie standaard naar tabellen zoekt.",
+      "postgresql": {
+        "schema": "Waar Formalie standaard naar tabellen zoekt (zoekpad).",
+        "ssl_mode": "require versleutelt; verify-full controleert ook het certificaat en de hostnaam (aanbevolen)."
+      },
+      "mysql": {
+        "ssl_mode": "Vereist versleutelt; Identiteit verifiëren controleert ook het certificaat en de hostnaam (aanbevolen)."
+      },
+      "mariadb": {
+        "ssl_mode": "Vereist versleutelt; Identiteit verifiëren controleert ook het certificaat en de hostnaam (aanbevolen)."
+      },
+      "sqlserver": {
+        "instance": "Alleen voor een benoemde instantie. Laat de poort staan, of gebruik de eigen poort van de instantie.",
+        "schema": "Standaardschema voor de Formalie-gebruiker.",
+        "encrypt": "Strikt gebruikt TDS 8.0 en controleert altijd het certificaat (SQL Server 2022 en Azure SQL)."
+      },
+      "oracle": {
+        "schema": "Het schema (eigenaar) waarvan Formalie de tabellen gebruikt. Leeg: dat van de gebruiker zelf.",
+        "protocol": "TCPS versleutelt met TLS (aanbevolen). TCP vertrouwt op native netwerkversleuteling."
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4 (aanbevolen)",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "Uit",
+        "preferred": "Voorkeur (versleutelen indien mogelijk)",
+        "required": "Vereist (versleutelen)",
+        "verify_ca": "Certificaat verifiëren",
+        "verify_identity": "Identiteit verifiëren (aanbevolen)",
+        "disable": "disable (uit)",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require (versleutelen)",
+        "verify-ca": "verify-ca (certificaat controleren)",
+        "verify-full": "verify-full (aanbevolen)"
+      },
+      "target_session_attrs": {
+        "any": "Elke",
+        "read-write": "Alleen lezen en schrijven",
+        "read-only": "Alleen alleen-lezen",
+        "primary": "Primair",
+        "standby": "Standby",
+        "prefer-standby": "Standby indien beschikbaar"
+      },
+      "application_intent": {
+        "read_write": "Lezen en schrijven",
+        "read_only": "Alleen lezen (leesbare secundaire)"
+      },
+      "auth": {
+        "sql": "SQL Server-account",
+        "entra_password": "Microsoft Entra ID (wachtwoord)",
+        "entra_service_principal": "Microsoft Entra ID (service-principal)"
+      },
+      "encrypt": {
+        "mandatory": "Verplicht (aanbevolen)",
+        "strict": "Strikt (TDS 8.0)",
+        "optional": "Optioneel (niet versleuteld)"
+      },
+      "connect_by": {
+        "service_name": "Servicenaam",
+        "sid": "SID",
+        "descriptor": "Connect-descriptor"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "Vereist",
+        "requested": "Gevraagd",
+        "accepted": "Geaccepteerd"
+      }
+    },
+    "invalid": {
+      "required": "Vul dit in.",
+      "host": "Voer een hostnaam of IP-adres in, zonder http:// of poort.",
+      "host_blocked": "Formalie kan geen verbinding maken met dit adres. Gebruik voor een privénetwerk een SSH-tunnel.",
+      "port": "Voer een poort in van 1 tot 65535.",
+      "pem": "Plak de volledige PEM-tekst, van -----BEGIN tot -----END.",
+      "identifier": "Gebruik letters, cijfers en underscores.",
+      "uuid": "Voer de ID in zoals getoond in het Microsoft Entra-beheercentrum.",
+      "seconds": "Voer 1 tot 120 seconden in.",
+      "taken": "Er bestaat al een verbinding met deze naam."
+    },
+    "level": {
+      "read": "Lezen",
+      "write": "Schrijven",
+      "structure": "Structuur"
+    },
+    "levelDesc": {
+      "read": "Tabellen bekijken, rijen lezen, exporteren, leesquery’s uitvoeren",
+      "write": "Formulierreacties versturen, rijen bijwerken en verwijderen, importeren",
+      "structure": "Tabellen maken vanuit een formulier, kolommen toevoegen voor nieuwe velden"
+    },
+    "perm": {
+      "needed": "Nodig",
+      "notNeeded": "Niet nodig",
+      "granted": "Toegekend",
+      "missing": "Ontbreekt",
+      "not_needed": "Niet nodig voor deze verbinding"
+    },
+    "op": {
+      "connect": {
+        "label": "Aanmelden",
+        "uses": "Een sessie openen op de database"
+      },
+      "read_schema": {
+        "label": "De structuur lezen",
+        "uses": "Schema’s, tabellen, kolommen, sleutels en indexen in de verkenner"
+      },
+      "row_counts": {
+        "label": "Rijen tellen",
+        "uses": "Tabelgroottes in de verkenner"
+      },
+      "read_rows": {
+        "label": "Rijen lezen",
+        "uses": "Tabellen bekijken en exporteren, leesquery’s, optielijsten"
+      },
+      "cancel": {
+        "label": "Eigen query annuleren",
+        "uses": "Een query stoppen die te lang loopt"
+      },
+      "insert": {
+        "label": "Rijen toevoegen",
+        "uses": "Formulierreacties versturen, importen, nieuwe rijen"
+      },
+      "update": {
+        "label": "Rijen wijzigen",
+        "uses": "Bijwerken-of-invoegen op een sleutel, bewerkingen in de verkenner"
+      },
+      "delete": {
+        "label": "Rijen verwijderen",
+        "uses": "Rijen verwijderen in de verkenner"
+      },
+      "sequences": {
+        "label": "Reeksen gebruiken",
+        "uses": "Gegenereerde id’s voor nieuwe rijen"
+      },
+      "create_table": {
+        "label": "Tabellen maken",
+        "uses": "Een tabel gemaakt vanuit een formulier"
+      },
+      "alter_table": {
+        "label": "Kolommen toevoegen",
+        "uses": "Een kolom voor een veld dat aan het formulier is toegevoegd"
+      },
+      "create_index": {
+        "label": "Een unieke sleutel toevoegen",
+        "uses": "De sleutel waarop bijwerken-of-invoegen matcht"
+      }
+    },
+    "grant": {
+      "intro": "Voer deze uit als databasebeheerder. Ze zijn geschreven voor de database, schema’s en het account van deze verbinding.",
+      "copyAll": "Alles kopiëren",
+      "copied": "Statements gekopieerd",
+      "oracle23": "Oracle 23ai of nieuwer",
+      "oracle23Desc": "Rechten per schema. Zet uit voor 19c en ouder (rechten per tabel).",
+      "block": {
+        "account": "1. Het account maken",
+        "read": "2. Lezen",
+        "write": "3. Schrijven",
+        "structure": "4. Structuur"
+      },
+      "note": {
+        "host_limit": "Vervang indien mogelijk '%' door de adressen van Formalie, zodat het account alleen vanaf daar werkt.",
+        "pool": "Formalie opent maximaal 10 verbindingen tegelijk.",
+        "default_privileges": "Voer uit als de rol die eigenaar is van de tabellen, zodat later gemaakte tabellen ook gedekt zijn.",
+        "owner_alter": "Formalie is eigenaar van de tabellen die het maakt en kan er kolommen aan toevoegen. Bestaande tabellen blijven van u.",
+        "entra": "Voer uit in de database terwijl u bent aangemeld met een Microsoft Entra-account. De naam is de Entra-gebruiker of -toepassing.",
+        "contained": "Maak op Azure SQL Database in plaats daarvan een contained user: CREATE USER ... WITH PASSWORD.",
+        "no_sysdba": "Gebruik nooit SYS, SYSTEM of de rol SYSDBA voor Formalie.",
+        "oracle_new_tables": "Later toegevoegde tabellen hebben het recht ook nodig: voer het blok opnieuw uit, of gebruik schemarechten van Oracle 23ai.",
+        "oracle_own_schema": "Vóór 23ai maakt Formalie zijn tabellen in een eigen schema, dus heeft het geen rechten op het uwe nodig."
+      }
+    },
+    "step": {
+      "network": "De server bereiken",
+      "ssh": "De SSH-tunnel openen",
+      "tls": "De verbinding versleutelen",
+      "sign_in": "Aanmelden",
+      "database": "De database openen",
+      "permissions": "Rechten controleren"
+    },
+    "stepDesc": {
+      "network": "Verbinding maken vanaf de servers van Formalie met het adres en de poort.",
+      "ssh": "Aanmelden bij de SSH-server en doorsturen naar de database.",
+      "tls": "TLS opzetten en het certificaat controleren.",
+      "sign_in": "Aanmelden met het account.",
+      "database": "De database openen en de versie uitlezen.",
+      "permissions": "Elk recht controleren dat deze verbinding nodig heeft."
+    },
+    "fix": {
+      "FRM-DEST-1001": "Controleer het adres en de poort, en of de firewall de adressen van Formalie toestaat.",
+      "FRM-DEST-1002": "Controleer de gebruikersnaam en het wachtwoord, en of het account zich mag aanmelden vanaf de adressen van Formalie.",
+      "FRM-DEST-1003": "Controleer de versleutelingsinstelling en het CA-certificaat, en of het certificaat overeenkomt met het serveradres.",
+      "FRM-DEST-1004": "Controleer de SSH-server, gebruiker en persoonlijke sleutel, en of de SSH-server de database kan bereiken.",
+      "FRM-DEST-1005": "Controleer de naam van de database (of service), en of het account er toegang toe heeft.",
+      "FRM-DEST-1006": "Ken de ontbrekende rechten hieronder toe en test daarna opnieuw.",
+      "FRM-DEST-1011": "De server antwoordde niet op tijd. Controleer het adres en de firewall, of verhoog de tijdslimiet onder Meer opties."
+    },
+    "test": {
+      "heading": {
+        "running": "Verbinding testen…",
+        "passed": "Alles werkt",
+        "warning": "Werkt, maar er is iets om te bekijken",
+        "failed": "De verbinding werkte niet"
+      },
+      "version": "Serverversie",
+      "latency": "Reactietijd",
+      "schemas": "Schema’s",
+      "tables": "Tabellen",
+      "skipped": "Overgeslagen",
+      "tlsOff": "Met deze instellingen wordt het verkeer niet versleuteld.",
+      "safe": "De test leest alleen. Hij wijzigt nooit uw gegevens."
+    },
+    "finding": {
+      "admin_account": {
+        "title": "Dit is een beheerdersaccount",
+        "desc": "Maak een apart account met alleen de vermelde rechten, zodat Formalie nooit meer kan doen dan nodig."
+      },
+      "extra_write": {
+        "title": "Dit account kan gegevens wijzigen",
+        "desc": "De verbinding is alleen-lezen, dus Formalie leest alleen. Verwijder voor minimale rechten de schrijfrechten."
+      },
+      "tls_off": {
+        "title": "Verkeer is niet versleuteld",
+        "desc": "Kies onder Beveiliging een versleutelende optie, zodat gegevens en wachtwoorden onderweg beschermd zijn."
+      },
+      "trust_certificate": {
+        "title": "Het servercertificaat wordt niet gecontroleerd",
+        "desc": "Zet “Het servercertificaat vertrouwen” uit en voeg het CA-certificaat toe wanneer dat kan."
+      },
+      "missing_permissions": {
+        "title": "Sommige rechten ontbreken",
+        "desc": "Onderdelen van Formalie die ze nodig hebben, werken niet. De statements om ze toe te kennen staan onder Rechten."
+      }
+    },
+    "access": {
+      "legend": "Wat Formalie mag doen",
+      "read_only": "Alleen lezen",
+      "read_write": "Lezen en schrijven",
+      "readOnlyDesc": "Bekijken, exporteren en leesquery’s uitvoeren. Er kan niets in de database veranderen.",
+      "readWriteDesc": "Ook formulierreacties naar tabellen sturen, rijen bewerken en bestanden importeren.",
+      "structure": "Formalie tabellen laten maken en kolommen laten toevoegen",
+      "structureDesc": "Voor formulierbestemmingen: een tabel gemaakt vanuit een formulier en een kolom voor elk nieuw veld. Verwijdert nooit iets.",
+      "schemas": "Schema’s die Formalie mag gebruiken",
+      "databases": "Databases die Formalie mag gebruiken",
+      "schemasHint": "Druk na elk item op Enter. Leeg: alleen {schema}.",
+      "databasesHint": "Druk na elk item op Enter. Leeg: alleen {schema}.",
+      "permissionsTitle": "Toe te kennen rechten",
+      "permissionsDesc": "Geef het account precies deze rechten, niets meer, zodat elke functie werkt en niets anders mogelijk is.",
+      "tabOperations": "Wat Formalie doet",
+      "tabScript": "Uit te voeren statements"
+    },
+    "summary": {
+      "engine": "Database",
+      "address": "Server",
+      "database": "Database",
+      "account": "Account",
+      "security": "Beveiliging",
+      "access": "Toegang",
+      "descriptor": "Connect-descriptor",
+      "encrypted": "Versleuteld",
+      "notEncrypted": "Niet versleuteld",
+      "ssh": "SSH-tunnel",
+      "structure": "maakt tabellen",
+      "change": "{item} wijzigen"
+    },
+    "wizard": {
+      "newCrumb": "Verbinding toevoegen",
+      "newTitle": "Verbinding toevoegen",
+      "newDesc": "Koppel stap voor stap een van uw databases",
+      "editCrumb": "Bewerken",
+      "editTitle": "{name} bewerken",
+      "editDesc": "Wijzig de instellingen en test voordat u opslaat",
+      "engineLegend": "Database",
+      "builtInNote": "De ingebouwde versleutelde opslag van Formalie blijft de standaard. Een verbinding komt daarbij.",
+      "stepOf": "Stap {n} van {total}",
+      "step": {
+        "engine": "Database",
+        "server": "Server",
+        "signin": "Aanmelden",
+        "security": "Beveiliging",
+        "access": "Toegang",
+        "review": "Naam en test"
+      },
+      "title": {
+        "engine": "Welke database?",
+        "server": "Waar staat hij?",
+        "signin": "Hoe meldt Formalie zich aan?",
+        "security": "Hoe is de verbinding beveiligd?",
+        "access": "Wat mag Formalie doen?",
+        "review": "Geef hem een naam en test hem"
+      },
+      "desc": {
+        "engine": "Elke database heeft eigen instellingen. U kunt er later meer toevoegen.",
+        "server": "Het adres waarmee de servers van Formalie uw {engine}-database bereiken.",
+        "signin": "Gebruik een account dat voor Formalie is gemaakt. Wachtwoorden worden versleuteld en nooit meer getoond.",
+        "security": "Versleuteling en, voor privénetwerken, een SSH-tunnel.",
+        "access": "Begin met alleen lezen. De toe te kennen rechten volgen uit uw keuze.",
+        "review": "De test draait vanaf de servers van Formalie en leest alleen."
+      },
+      "name": "Naam",
+      "nameDesc": "Hoe deze verbinding in Formalie wordt weergegeven.",
+      "namePlaceholder": "bijv. Dossierbeheer",
+      "testTitle": "De verbinding testen",
+      "testDesc": "Controleert elke stap en elk recht. Er wordt niets opgeslagen totdat u opslaat.",
+      "test": "Verbinding testen",
+      "testAgain": "Opnieuw testen",
+      "fixStep": "Oplossen: {step}",
+      "save": "Verbinding opslaan",
+      "testAndSave": "Testen en opslaan",
+      "saveAnyway": "Toch opslaan",
+      "saveFailedTitle": "Een verbinding opslaan die de test niet heeft doorstaan?",
+      "saveFailedDesc": "Hij wordt als mislukt getoond en Formalie gebruikt hem pas als een test slaagt.",
+      "leaveTitle": "Weggaan zonder op te slaan?",
+      "leaveDesc": "De ingevoerde verbindingsinstellingen gaan verloren.",
+      "leave": "Weggaan"
+    },
+    "help": {
+      "engine": {
+        "title": "Wat u nodig hebt",
+        "p1": "Het serveradres en de poort, en de databasenaam.",
+        "p2": "Een apart account voor Formalie. De exacte statements om het te maken volgen in de stap Toegang.",
+        "p3": "De adressen van Formalie toegestaan in uw firewall (hieronder).",
+        "p4": "Voor een database in een privénetwerk: een SSH-server die Formalie mag gebruiken."
+      },
+      "server": {
+        "title": "Uw database bereiken",
+        "p1": "Gebruik het adres dat vanaf internet werkt, niet vanuit uw netwerk.",
+        "p2": "Sta de adressen van Formalie toe op de databasepoort.",
+        "p3": "Alleen een privénetwerk? Voeg een SSH-tunnel toe in de stap Beveiliging."
+      },
+      "signin": {
+        "title": "Een apart account",
+        "p1": "Gebruik nooit een beheerdersaccount. De test waarschuwt u als u dat doet.",
+        "p2": "De stap Toegang schrijft de statements om het account met precies de juiste rechten te maken.",
+        "p3": "Inloggegevens worden versleuteld verzonden, versleuteld opgeslagen en nooit meer getoond.",
+        "sqlserver": {
+          "p1": "SQL Server-account: een login met een wachtwoord.",
+          "p2": "Microsoft Entra ID: een gebruiker met een wachtwoord, of een toepassing (service-principal) met een clientgeheim.",
+          "p3": "De stap Toegang schrijft de statements om een van beide met precies de juiste rechten te maken."
+        }
+      },
+      "security": {
+        "title": "De verbinding beveiligen",
+        "p1": "Versleutel altijd. Het certificaat controleren bewijst ook dat u de juiste server bereikt.",
+        "p2": "Een SSH-tunnel bereikt een privédatabase via een server die u toestaat.",
+        "p3": "Sleutels en certificaten blijven versleuteld op de servers van Formalie.",
+        "postgresql": {
+          "p1": "require versleutelt het verkeer.",
+          "p2": "verify-full controleert ook het certificaat en de hostnaam (aanbevolen).",
+          "p3": "Plak het CA-certificaat voor verify-ca en verify-full."
+        },
+        "mysql": {
+          "p1": "Vereist versleutelt het verkeer.",
+          "p2": "Identiteit verifiëren controleert ook het certificaat en de hostnaam (aanbevolen).",
+          "p3": "Voeg het CA-certificaat toe voor de verificatieopties."
+        },
+        "mariadb": {
+          "p1": "Vereist versleutelt het verkeer.",
+          "p2": "Identiteit verifiëren controleert ook het certificaat en de hostnaam (aanbevolen).",
+          "p3": "Voeg het CA-certificaat toe voor de verificatieopties."
+        },
+        "sqlserver": {
+          "p1": "Verplicht versleutelt en controleert het certificaat.",
+          "p2": "Strikt (TDS 8.0) versleutelt vóór het aanmelden, voor SQL Server 2022 en Azure SQL.",
+          "p3": "Het certificaat vertrouwen zonder controle is alleen voor testen."
+        },
+        "oracle": {
+          "p1": "TCPS versleutelt met TLS en wordt aanbevolen.",
+          "p2": "Zet bij TCP native netwerkversleuteling aan beide kanten op Vereist.",
+          "p3": "Plak voor TCPS het CA-certificaat uit uw wallet."
+        }
+      },
+      "access": {
+        "title": "Minimale rechten",
+        "p1": "Ken alleen toe wat deze verbinding gebruikt. Elke functie die meer nodig heeft, laat het u weten.",
+        "p2": "Alleen lezen kan uw gegevens nooit wijzigen, wat er ook wordt gevraagd.",
+        "p3": "Formalie verwijdert nooit tabellen of kolommen.",
+        "p4": "Elke query, wijziging, import en export wordt vastgelegd in het auditlogboek."
+      },
+      "review": {
+        "title": "Wat de test controleert",
+        "p1": "Dat de servers van Formalie het adres en de poort bereiken.",
+        "p2": "Versleuteling, het certificaat en het aanmelden.",
+        "p3": "Dat de database opent, en elk recht dat deze verbinding nodig heeft.",
+        "p4": "Hij leest alleen: er verandert niets in uw database."
+      }
     }
   },
   "apiService": {

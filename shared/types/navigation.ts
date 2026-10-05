@@ -13,4 +13,6 @@ export interface NavCounts {
   pages: { total: number; system: number; saved: number; created: number }
   /** Folders for the sidebar (name, colour, forms this person can see), A to Z. */
   folders: { id: string; name: string; color: string | null; count: number }[]
+  /** Data sources (F12): connections by status. */
+  datasources: { total: number; connected: number; attention: number; failing: number; disabled: number; untested: number }
 }

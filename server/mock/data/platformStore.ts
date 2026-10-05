@@ -8,6 +8,8 @@ import { loadPersisted, savePersisted } from '../core/persist'
 
 interface PlatformSettings {
   legal?: { terms_url?: string; privacy_url?: string }
+  /** Addresses Formalie connects to customer databases from (F12; documentation range in the mock). */
+  egress_ips?: string[]
 }
 
 const settings = loadPersisted<PlatformSettings>('platform', {})
@@ -24,3 +26,6 @@ export function setPlatformLegal(legal: { terms_url?: string; privacy_url?: stri
   settings.legal = { ...settings.legal, ...legal }
   savePersisted('platform', () => settings)
 }
+
+/** Formalie's outgoing addresses, shown on Data sources so customers can allow them (F23 edits them). */
+export const platformEgressIps = () => settings.egress_ips ?? ['203.0.113.10', '203.0.113.11', '2001:db8:4f::10']

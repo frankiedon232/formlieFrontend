@@ -1,6 +1,6 @@
 <!--
-  Data sources overview (own rail area, F12). Placeholder: what each section will do, with links,
-  and the supported databases. The full plan is in PROGRESS.md → F12.
+  Data sources overview (own rail area, F12). What each section does, with links (Connections is
+  live since F12 M1; the rest follow), and the supported databases. The full plan is in PROGRESS.md → F12.
 -->
 <script setup lang="ts">
 import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
@@ -10,7 +10,7 @@ const { t } = useI18n()
 useHead({ title: () => t('nav.dataSources') })
 
 const sections = [
-  { key: 'connections', nav: 'dataConnections', icon: 'i-lucide-database', to: '/data-sources/connections' },
+  { key: 'connections', nav: 'dataConnections', icon: 'i-lucide-database', to: '/data-sources/connections', live: true },
   { key: 'explorer', nav: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
   { key: 'query', nav: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
   { key: 'savedQueries', nav: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
@@ -33,7 +33,7 @@ const sections = [
         variant="outline"
         :ui="{ leadingIcon: 'size-5 text-default' }"
       >
-        <template #footer>
+        <template v-if="!section.live" #footer>
           <UBadge :label="t('placeholder.title')" color="neutral" variant="soft" size="sm" />
         </template>
       </UPageCard>

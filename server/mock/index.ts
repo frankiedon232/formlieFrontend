@@ -9,6 +9,7 @@ import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
 import * as responseExports from './routes/responseExports'
 import * as folders from './routes/folders'
+import * as dataSources from './routes/dataSources'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
@@ -105,6 +106,18 @@ const router = createRouter()
   .post('/folders', forms.createFolder)
   .patch('/folders/:id', forms.renameFolder)
   .delete('/folders/:id', forms.deleteFolder)
+  // data sources (F12)
+  .get('/datasources', dataSources.listDataSources)
+  .get('/datasources/insights', dataSources.dataSourceInsights)
+  .get('/datasources/meta', dataSources.dataSourceMeta)
+  .post('/datasources/test', dataSources.startConnectionTest)
+  .get('/datasources/tests/:id', dataSources.getConnectionTest)
+  .post('/datasources', dataSources.createDataSource)
+  .get('/datasources/:id', dataSources.getDataSource)
+  .patch('/datasources/:id', dataSources.patchDataSource)
+  .post('/datasources/:id/test', dataSources.testSavedConnection)
+  .post('/datasources/:id/duplicate', dataSources.duplicateDataSource)
+  .delete('/datasources/:id', dataSources.deleteDataSource)
   .get('/field-library', library.listSavedFields)
   .post('/field-library', library.saveField)
   .delete('/field-library/:id', library.deleteSavedField)

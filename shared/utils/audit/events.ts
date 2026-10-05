@@ -12,6 +12,7 @@ export const AUDIT_AREAS = [
   'settings',
   'users',
   'integrations',
+  'data',
   'audit',
 ] as const
 
@@ -88,6 +89,15 @@ export const AUDIT_EVENTS = {
   'integrations.webhook_created': { area: 'integrations', icon: 'i-lucide-webhook' },
   'integrations.api_key_created': { area: 'integrations', icon: 'i-lucide-key' },
   'integrations.api_key_revoked': { area: 'integrations', icon: 'i-lucide-key-square' },
+  // Data sources (F12)
+  'data.connection_created': { area: 'data', icon: 'i-lucide-database' },
+  'data.connection_updated': { area: 'data', icon: 'i-lucide-database-zap' },
+  'data.connection_tested': { area: 'data', icon: 'i-lucide-activity' },
+  'data.connection_duplicated': { area: 'data', icon: 'i-lucide-copy' },
+  'data.connection_enabled': { area: 'data', icon: 'i-lucide-circle-play' },
+  'data.connection_disabled': { area: 'data', icon: 'i-lucide-circle-pause' },
+  'data.connection_deleted': { area: 'data', icon: 'i-lucide-trash-2' },
+  'data.credentials_changed': { area: 'data', icon: 'i-lucide-key-round' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>
@@ -122,4 +132,11 @@ export const AUDIT_FIELDS = [
   'date_format',
   'number_format',
   'week_start',
+  'engine',
+  'host',
+  'port',
+  'database',
+  'access',
+  'credentials',
+  'security',
 ] as const

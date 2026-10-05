@@ -21,6 +21,12 @@ const COLORS: Record<string, BadgeProps['color']> = {
   ready: 'success',
   expired: 'neutral',
   failed: 'error',
+  // Data sources (F12): the connection's health.
+  connected: 'success',
+  attention: 'warning',
+  failing: 'error',
+  disabled: 'neutral',
+  untested: 'secondary',
 }
 
 // Deeper text than Nuxt UI's subtle default (500 shade), so status reads crisply (owner, 2026-10-03; docs/design).

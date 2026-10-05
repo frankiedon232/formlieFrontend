@@ -19,7 +19,8 @@
     "goHome": "Về trang chủ",
     "confirm": "Xác nhận",
     "copy": "Sao chép",
-    "copied": "Đã sao chép"
+    "copied": "Đã sao chép",
+    "next": "Tiếp"
   },
   "placeholder": {
     "title": "Sắp ra mắt",
@@ -403,7 +404,13 @@
     "pagesSaved": "Đã lưu",
     "pagesCreated": "Đã tạo",
     "folders": "Thư mục",
-    "foldersAll": "Tất cả thư mục"
+    "foldersAll": "Tất cả thư mục",
+    "connectionsAll": "Tất cả",
+    "connectionsConnected": "Đã kết nối",
+    "connectionsAttention": "Cần chú ý",
+    "connectionsFailing": "Đang lỗi",
+    "connectionsDisabled": "Đã tắt",
+    "connectionsNew": "Thêm kết nối"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "Chúng tôi không thể xác nhận câu trả lời này do một người gửi. Vui lòng thử lại.",
     "FRM-FORM-1017": "Mật khẩu không đúng.",
     "FRM-FORM-1018": "Liên kết lời mời này không còn hợp lệ.",
-    "FRM-FORM-1019": "Phiên đăng nhập của bạn cho biểu mẫu này đã hết hạn. Vui lòng đăng nhập lại."
+    "FRM-FORM-1019": "Phiên đăng nhập của bạn cho biểu mẫu này đã hết hạn. Vui lòng đăng nhập lại.",
+    "FRM-DEST-1002": "Cơ sở dữ liệu không chấp nhận tên người dùng hoặc mật khẩu.",
+    "FRM-DEST-1003": "Không thể thiết lập kết nối mã hóa (chứng chỉ hoặc cài đặt TLS).",
+    "FRM-DEST-1004": "Không thể mở đường hầm SSH.",
+    "FRM-DEST-1005": "Không tìm thấy cơ sở dữ liệu hoặc lược đồ, hoặc tài khoản này không được phép dùng.",
+    "FRM-DEST-1006": "Thiếu một số quyền mà kết nối này cần.",
+    "FRM-DEST-1007": "Đã có kết nối với tên này.",
+    "FRM-DEST-1008": "Lần kiểm tra kết nối này không còn nữa. Hãy chạy lại.",
+    "FRM-DEST-1009": "Kết nối này đang tắt. Hãy bật trước.",
+    "FRM-DEST-1010": "Vẫn có biểu mẫu gửi phản hồi đến kết nối này.",
+    "FRM-DEST-1011": "Cơ sở dữ liệu phản hồi quá lâu."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -576,7 +593,12 @@
     "new": "Mới",
     "reviewed": "Đã xem",
     "approved": "Đã duyệt",
-    "rejected": "Bị từ chối"
+    "rejected": "Bị từ chối",
+    "connected": "Đã kết nối",
+    "attention": "Cần chú ý",
+    "failing": "Đang lỗi",
+    "disabled": "Đã tắt",
+    "untested": "Chưa kiểm tra"
   },
   "footer": {
     "rights": "Bảo lưu mọi quyền.",
@@ -767,7 +789,8 @@
       "settings": "Cài đặt",
       "users": "Người dùng",
       "integrations": "Tích hợp",
-      "audit": "Nhật ký kiểm tra"
+      "audit": "Nhật ký kiểm tra",
+      "data": "Nguồn dữ liệu"
     },
     "actorType": {
       "user": "Người",
@@ -794,7 +817,8 @@
       "saved_field": "Trường đã lưu",
       "option_list": "Danh sách lựa chọn",
       "theme": "Chủ đề",
-      "template": "Mẫu"
+      "template": "Mẫu",
+      "data_source": "Kết nối"
     },
     "field": {
       "name": "Tên",
@@ -817,7 +841,14 @@
       "number_format": "Định dạng số",
       "week_start": "Ngày đầu tuần",
       "tags": "Thẻ",
-      "colour": "Màu"
+      "colour": "Màu",
+      "engine": "Loại cơ sở dữ liệu",
+      "host": "Địa chỉ máy chủ",
+      "port": "Cổng",
+      "database": "Cơ sở dữ liệu",
+      "access": "Quyền truy cập",
+      "credentials": "Thông tin xác thực",
+      "security": "Cài đặt kết nối"
     },
     "action": {
       "auth_login_succeeded": "Đã đăng nhập",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "Đã cập nhật trang đích",
       "forms_page_design_deleted": "Đã xoá trang đích",
       "responses_export_downloaded": "Đã tải bản xuất",
-      "responses_export_deleted": "Đã xoá bản xuất"
+      "responses_export_deleted": "Đã xoá bản xuất",
+      "data_connection_created": "Đã thêm kết nối",
+      "data_connection_updated": "Đã thay đổi kết nối",
+      "data_connection_tested": "Đã kiểm tra kết nối",
+      "data_connection_duplicated": "Đã nhân bản kết nối",
+      "data_connection_enabled": "Đã bật kết nối",
+      "data_connection_disabled": "Đã tắt kết nối",
+      "data_connection_deleted": "Đã xóa kết nối",
+      "data_credentials_changed": "Đã thay đổi thông tin xác thực kết nối"
     },
     "detail": {
       "who": "Ai",
@@ -2838,6 +2877,556 @@
       "destinations": "Chọn nơi mỗi biểu mẫu gửi phản hồi và ánh xạ trường với cột.",
       "transfers": "Nhập tệp vào bảng và xuất bảng hoặc kết quả truy vấn.",
       "activity": "Lượt gửi, lỗi và truy vấn gần đây của mọi kết nối."
+    },
+    "add": "Thêm kết nối",
+    "search": "Tìm kết nối, máy chủ hoặc cơ sở dữ liệu…",
+    "emptyTitle": "Chưa có kết nối nào",
+    "emptyDesc": "Kết nối một cơ sở dữ liệu của bạn để gửi dữ liệu biểu mẫu đến đó và làm việc với nó tại đây. Trong lúc đó, bộ lưu trữ tích hợp của Formalie vẫn hoạt động bình thường.",
+    "notFound": "Kết nối này không khả dụng",
+    "ms": "{n} ms",
+    "checked": "Đã kiểm tra {when}",
+    "neverChecked": "Chưa kiểm tra",
+    "needsLook": "Cần xem lại",
+    "uptime": "Thời gian hoạt động (30 ngày)",
+    "uptimePercent": "Thời gian hoạt động mỗi ngày (%)",
+    "formsUsing": "Biểu mẫu gửi đến đây",
+    "lastChecked": "Kiểm tra lần cuối",
+    "addedBy": "Người thêm",
+    "yes": "Có",
+    "no": "Không",
+    "secretSaved": "Đã lưu",
+    "secretNotSet": "Chưa đặt",
+    "secretsChanged": "Thông tin xác thực thay đổi lần cuối {when}",
+    "enabled": "Đang bật",
+    "disabledLabel": "Đã tắt",
+    "missingCount": "Thiếu {n} quyền | Thiếu {n} quyền",
+    "moreOptions": "Tùy chọn khác",
+    "savedSecret": "Đã lưu. Để trống để giữ nguyên",
+    "showSecret": "Hiện",
+    "hideSecret": "Ẩn",
+    "loadFile": "Tải từ tệp",
+    "col": {
+      "connection": "Kết nối",
+      "status": "Trạng thái"
+    },
+    "sort": {
+      "checked": "Kiểm tra gần đây",
+      "uptime": "Thời gian hoạt động thấp nhất trước",
+      "operations": "Bận rộn nhất",
+      "newest": "Mới nhất trước"
+    },
+    "kpi": {
+      "activity": "Hoạt động",
+      "operations": "Thao tác",
+      "latency": "Thời gian phản hồi",
+      "missing": "Quyền còn thiếu",
+      "byStatus": "Kết nối theo trạng thái",
+      "needLook": "{n} cần xem lại"
+    },
+    "actions": {
+      "open": "Mở",
+      "edit": "Sửa kết nối",
+      "duplicate": "Nhân bản",
+      "copyLink": "Sao chép liên kết",
+      "delete": "Xóa kết nối",
+      "deleteInUse": "Có biểu mẫu gửi đến đây, không thể xóa",
+      "test": "Kiểm tra ngay",
+      "enable": "Bật",
+      "disable": "Tắt"
+    },
+    "toast": {
+      "created": "Đã thêm kết nối “{name}”",
+      "saved": "Đã lưu kết nối",
+      "enabled": "Đã bật kết nối",
+      "disabled": "Đã tắt kết nối",
+      "duplicated": "Đã nhân bản kết nối. Nhập mật khẩu của nó để sử dụng",
+      "deleted": "Đã xóa kết nối",
+      "linkCopied": "Đã sao chép liên kết"
+    },
+    "disable": {
+      "title": "Tắt “{name}”?",
+      "desc": "Formalie ngừng dùng cơ sở dữ liệu này: không kiểm tra tình trạng, không gửi hay đọc dữ liệu. Bạn có thể bật lại bất cứ lúc nào.",
+      "confirm": "Tắt"
+    },
+    "delete": {
+      "title": "Xóa “{name}”?",
+      "desc": "Cài đặt và thông tin xác thực đã lưu của kết nối sẽ bị xóa khỏi Formalie. Không có gì thay đổi trong cơ sở dữ liệu của bạn.",
+      "confirm": "Xóa kết nối"
+    },
+    "detail": {
+      "groups": "Hiển thị",
+      "all": "Tất cả",
+      "connection": "Kết nối",
+      "security": "Bảo mật",
+      "permissions": "Quyền",
+      "health": "Tình trạng",
+      "permissionsFrom": "Được kiểm tra trong lần kiểm tra gần nhất, {when}.",
+      "permissionsUntested": "Chưa kiểm tra. Hãy kiểm tra kết nối để xác minh từng quyền.",
+      "howToGrant": "Câu lệnh để cấp quyền",
+      "noChecks": "Chưa có lần kiểm tra tình trạng nào.",
+      "navigate": "Chuyển giữa các kết nối",
+      "previous": "Kết nối trước",
+      "next": "Kết nối tiếp theo"
+    },
+    "egress": {
+      "title": "Cho phép địa chỉ của Formalie",
+      "desc": "Formalie kết nối từ các địa chỉ này. Hãy cho phép chúng trong tường lửa hoặc nhóm bảo mật của cơ sở dữ liệu.",
+      "copy": "Sao chép {ip}"
+    },
+    "engineDesc": {
+      "mysql": "Cổng 3306 · chế độ TLS đến xác minh danh tính · đường hầm SSH",
+      "mariadb": "Cổng 3306 · chế độ TLS đến xác minh danh tính · đường hầm SSH",
+      "oracle": "Cổng 1521 · tên dịch vụ, SID hoặc descriptor · TCPS hoặc mã hóa gốc",
+      "postgresql": "Cổng 5432 · lược đồ · sslmode đến verify-full · đường hầm SSH",
+      "sqlserver": "Cổng 1433 · phiên bản (instance) · đăng nhập SQL hoặc Microsoft Entra · mã hóa nghiêm ngặt"
+    },
+    "field": {
+      "host": "Địa chỉ máy chủ",
+      "port": "Cổng",
+      "database": "Cơ sở dữ liệu",
+      "schema": "Lược đồ",
+      "charset": "Bộ ký tự",
+      "time_zone": "Múi giờ phiên",
+      "connect_timeout": "Giới hạn thời gian kết nối (giây)",
+      "username": "Tên người dùng",
+      "password": "Mật khẩu",
+      "ssl_mode": "Mã hóa (TLS)",
+      "ca_certificate": "Chứng chỉ CA",
+      "client_certificate": "Chứng chỉ máy khách",
+      "client_key": "Khóa riêng của máy khách",
+      "ssh": "Kết nối qua đường hầm SSH",
+      "ssh_host": "Máy chủ SSH",
+      "ssh_port": "Cổng SSH",
+      "ssh_username": "Người dùng SSH",
+      "ssh_private_key": "Khóa riêng SSH",
+      "ssh_passphrase": "Cụm mật khẩu của khóa",
+      "target_session_attrs": "Máy chủ được dùng",
+      "instance": "Tên phiên bản (instance)",
+      "application_intent": "Mục đích ứng dụng",
+      "multi_subnet_failover": "Chuyển đổi dự phòng đa mạng con",
+      "auth": "Đăng nhập bằng",
+      "tenant_id": "ID thư mục (tenant)",
+      "client_id": "ID ứng dụng (client)",
+      "client_secret": "Bí mật máy khách",
+      "encrypt": "Mã hóa",
+      "trust_server_certificate": "Tin cậy chứng chỉ máy chủ mà không kiểm tra",
+      "host_name_in_certificate": "Tên máy chủ trong chứng chỉ",
+      "connect_by": "Kết nối bằng",
+      "service_name": "Tên dịch vụ",
+      "sid": "SID",
+      "descriptor": "Descriptor kết nối",
+      "protocol": "Giao thức",
+      "network_encryption": "Mã hóa mạng gốc",
+      "ssl_server_dn_match": "Kiểm tra tên trên chứng chỉ máy chủ"
+    },
+    "hint": {
+      "host": "Tên máy chủ hoặc địa chỉ IP mà máy chủ của Formalie truy cập được. Mạng riêng: hãy dùng đường hầm SSH.",
+      "connect_timeout": "Thời gian chờ máy chủ trước khi dừng.",
+      "username": "Một tài khoản riêng cho Formalie, không bao giờ là tài khoản quản trị.",
+      "ca_certificate": "Dán văn bản PEM của tổ chức cấp chứng chỉ đã ký chứng chỉ máy chủ.",
+      "client_certificate": "Chỉ khi máy chủ yêu cầu chứng chỉ máy khách (TLS hai chiều).",
+      "client_key": "Khóa riêng của chứng chỉ máy khách, định dạng PEM.",
+      "ssh": "Cho cơ sở dữ liệu trong mạng riêng: Formalie kết nối đến một máy chủ bạn cho phép, máy chủ này chuyển tiếp đến cơ sở dữ liệu.",
+      "ssh_private_key": "Khóa riêng PEM của người dùng SSH. Hãy dùng khóa chỉ tạo cho Formalie.",
+      "time_zone": "Ngày giờ được gửi và đọc theo múi giờ này. Khuyến nghị UTC (+00:00).",
+      "target_session_attrs": "Cho cụm máy chủ: máy chủ nào Formalie được dùng.",
+      "trust_server_certificate": "Không khuyến nghị: bất kỳ ai ở giữa đều có thể đọc lưu lượng. Chỉ dùng để thử nghiệm.",
+      "host_name_in_certificate": "Khi chứng chỉ được cấp cho một tên khác với địa chỉ máy chủ.",
+      "multi_subnet_failover": "Chuyển đổi dự phòng nhanh hơn cho nhóm khả dụng Always On trên nhiều mạng con.",
+      "descriptor": "Easy Connect hoặc descriptor TNS đầy đủ, như trong tnsnames.ora.",
+      "schema": "Nơi Formalie tìm bảng theo mặc định.",
+      "postgresql": {
+        "schema": "Nơi Formalie tìm bảng theo mặc định (search path).",
+        "ssl_mode": "require mã hóa; verify-full còn kiểm tra chứng chỉ và tên máy chủ (khuyến nghị)."
+      },
+      "mysql": {
+        "ssl_mode": "Bắt buộc sẽ mã hóa; Xác minh danh tính còn kiểm tra chứng chỉ và tên máy chủ (khuyến nghị)."
+      },
+      "mariadb": {
+        "ssl_mode": "Bắt buộc sẽ mã hóa; Xác minh danh tính còn kiểm tra chứng chỉ và tên máy chủ (khuyến nghị)."
+      },
+      "sqlserver": {
+        "instance": "Chỉ cho phiên bản có tên. Giữ nguyên cổng, hoặc dùng cổng riêng của phiên bản.",
+        "schema": "Lược đồ mặc định cho người dùng Formalie.",
+        "encrypt": "Nghiêm ngặt dùng TDS 8.0 và luôn kiểm tra chứng chỉ (SQL Server 2022 và Azure SQL)."
+      },
+      "oracle": {
+        "schema": "Lược đồ (chủ sở hữu) có các bảng Formalie dùng. Để trống: lược đồ của chính người dùng.",
+        "protocol": "TCPS mã hóa bằng TLS (khuyến nghị). TCP dựa vào mã hóa mạng gốc."
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4 (khuyến nghị)",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "Tắt",
+        "preferred": "Ưu tiên (mã hóa khi có thể)",
+        "required": "Bắt buộc (mã hóa)",
+        "verify_ca": "Xác minh chứng chỉ",
+        "verify_identity": "Xác minh danh tính (khuyến nghị)",
+        "disable": "disable (tắt)",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require (mã hóa)",
+        "verify-ca": "verify-ca (kiểm tra chứng chỉ)",
+        "verify-full": "verify-full (khuyến nghị)"
+      },
+      "target_session_attrs": {
+        "any": "Bất kỳ",
+        "read-write": "Chỉ máy chủ đọc-ghi",
+        "read-only": "Chỉ máy chủ chỉ đọc",
+        "primary": "Chính",
+        "standby": "Dự phòng",
+        "prefer-standby": "Dự phòng nếu có"
+      },
+      "application_intent": {
+        "read_write": "Đọc và ghi",
+        "read_only": "Chỉ đọc (bản sao phụ có thể đọc)"
+      },
+      "auth": {
+        "sql": "Tài khoản SQL Server",
+        "entra_password": "Microsoft Entra ID (mật khẩu)",
+        "entra_service_principal": "Microsoft Entra ID (service principal)"
+      },
+      "encrypt": {
+        "mandatory": "Bắt buộc (khuyến nghị)",
+        "strict": "Nghiêm ngặt (TDS 8.0)",
+        "optional": "Tùy chọn (không mã hóa)"
+      },
+      "connect_by": {
+        "service_name": "Tên dịch vụ",
+        "sid": "SID",
+        "descriptor": "Descriptor kết nối"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "Bắt buộc",
+        "requested": "Yêu cầu",
+        "accepted": "Chấp nhận"
+      }
+    },
+    "invalid": {
+      "required": "Vui lòng điền mục này.",
+      "host": "Nhập tên máy chủ hoặc địa chỉ IP, không kèm http:// hay cổng.",
+      "host_blocked": "Formalie không thể kết nối đến địa chỉ này. Với mạng riêng, hãy dùng đường hầm SSH.",
+      "port": "Nhập cổng từ 1 đến 65535.",
+      "pem": "Dán toàn bộ văn bản PEM, từ -----BEGIN đến -----END.",
+      "identifier": "Dùng chữ cái, chữ số và dấu gạch dưới.",
+      "uuid": "Nhập ID như hiển thị trong trung tâm quản trị Microsoft Entra.",
+      "seconds": "Nhập từ 1 đến 120 giây.",
+      "taken": "Đã có kết nối với tên này."
+    },
+    "level": {
+      "read": "Đọc",
+      "write": "Ghi",
+      "structure": "Cấu trúc"
+    },
+    "levelDesc": {
+      "read": "Duyệt bảng, đọc hàng, xuất, chạy truy vấn đọc",
+      "write": "Gửi phản hồi biểu mẫu, cập nhật và xóa hàng, nhập",
+      "structure": "Tạo bảng từ biểu mẫu, thêm cột cho trường mới"
+    },
+    "perm": {
+      "needed": "Cần",
+      "notNeeded": "Không cần",
+      "granted": "Đã cấp",
+      "missing": "Còn thiếu",
+      "not_needed": "Không cần cho kết nối này"
+    },
+    "op": {
+      "connect": {
+        "label": "Đăng nhập",
+        "uses": "Mở phiên trên cơ sở dữ liệu"
+      },
+      "read_schema": {
+        "label": "Đọc cấu trúc",
+        "uses": "Lược đồ, bảng, cột, khóa và chỉ mục trong trình khám phá"
+      },
+      "row_counts": {
+        "label": "Đếm hàng",
+        "uses": "Kích thước bảng trong trình khám phá"
+      },
+      "read_rows": {
+        "label": "Đọc hàng",
+        "uses": "Duyệt và xuất bảng, truy vấn đọc, danh sách lựa chọn"
+      },
+      "cancel": {
+        "label": "Hủy truy vấn của chính nó",
+        "uses": "Dừng truy vấn chạy quá lâu"
+      },
+      "insert": {
+        "label": "Thêm hàng",
+        "uses": "Gửi phản hồi biểu mẫu, nhập, hàng mới"
+      },
+      "update": {
+        "label": "Thay đổi hàng",
+        "uses": "Cập nhật hoặc chèn theo khóa, chỉnh sửa trong trình khám phá"
+      },
+      "delete": {
+        "label": "Xóa hàng",
+        "uses": "Xóa hàng trong trình khám phá"
+      },
+      "sequences": {
+        "label": "Dùng sequence",
+        "uses": "ID được tạo cho hàng mới"
+      },
+      "create_table": {
+        "label": "Tạo bảng",
+        "uses": "Bảng được tạo từ biểu mẫu"
+      },
+      "alter_table": {
+        "label": "Thêm cột",
+        "uses": "Cột cho trường được thêm vào biểu mẫu"
+      },
+      "create_index": {
+        "label": "Thêm khóa duy nhất",
+        "uses": "Khóa dùng để so khớp khi cập nhật hoặc chèn"
+      }
+    },
+    "grant": {
+      "intro": "Chạy các câu lệnh này với quyền quản trị viên cơ sở dữ liệu. Chúng được viết riêng cho cơ sở dữ liệu, lược đồ và tài khoản của kết nối này.",
+      "copyAll": "Sao chép tất cả",
+      "copied": "Đã sao chép câu lệnh",
+      "oracle23": "Oracle 23ai trở lên",
+      "oracle23Desc": "Cấp quyền theo lược đồ. Tắt cho 19c trở về trước (cấp quyền theo từng bảng).",
+      "block": {
+        "account": "1. Tạo tài khoản",
+        "read": "2. Đọc",
+        "write": "3. Ghi",
+        "structure": "4. Cấu trúc"
+      },
+      "note": {
+        "host_limit": "Nếu có thể, hãy thay '%' bằng địa chỉ của Formalie để tài khoản chỉ hoạt động từ đó.",
+        "pool": "Formalie mở tối đa 10 kết nối cùng lúc.",
+        "default_privileges": "Chạy với vai trò sở hữu các bảng, để các bảng tạo sau này cũng được áp dụng.",
+        "owner_alter": "Formalie sở hữu các bảng nó tạo và có thể thêm cột vào đó. Các bảng hiện có vẫn thuộc về bạn.",
+        "entra": "Chạy trong cơ sở dữ liệu khi đăng nhập bằng tài khoản Microsoft Entra. Tên là người dùng hoặc ứng dụng Entra.",
+        "contained": "Trên Azure SQL Database, hãy tạo người dùng contained: CREATE USER ... WITH PASSWORD.",
+        "no_sysdba": "Không bao giờ dùng SYS, SYSTEM hoặc vai trò SYSDBA cho Formalie.",
+        "oracle_new_tables": "Các bảng thêm sau này cũng cần được cấp quyền: chạy lại khối lệnh, hoặc dùng quyền cấp theo lược đồ của Oracle 23ai.",
+        "oracle_own_schema": "Trước 23ai, Formalie tạo bảng trong lược đồ riêng nên không cần quyền trên lược đồ của bạn."
+      }
+    },
+    "step": {
+      "network": "Kết nối tới máy chủ",
+      "ssh": "Mở đường hầm SSH",
+      "tls": "Mã hóa kết nối",
+      "sign_in": "Đăng nhập",
+      "database": "Mở cơ sở dữ liệu",
+      "permissions": "Kiểm tra quyền"
+    },
+    "stepDesc": {
+      "network": "Kết nối từ máy chủ của Formalie đến địa chỉ và cổng.",
+      "ssh": "Đăng nhập vào máy chủ SSH và chuyển tiếp đến cơ sở dữ liệu.",
+      "tls": "Thiết lập TLS và kiểm tra chứng chỉ.",
+      "sign_in": "Đăng nhập bằng tài khoản.",
+      "database": "Mở cơ sở dữ liệu và đọc phiên bản.",
+      "permissions": "Kiểm tra từng quyền mà kết nối này cần."
+    },
+    "fix": {
+      "FRM-DEST-1001": "Kiểm tra địa chỉ và cổng, và tường lửa có cho phép địa chỉ của Formalie không.",
+      "FRM-DEST-1002": "Kiểm tra tên người dùng và mật khẩu, và tài khoản có được đăng nhập từ địa chỉ của Formalie không.",
+      "FRM-DEST-1003": "Kiểm tra cài đặt mã hóa và chứng chỉ CA, và chứng chỉ có khớp với địa chỉ máy chủ không.",
+      "FRM-DEST-1004": "Kiểm tra máy chủ SSH, người dùng và khóa riêng, và máy chủ SSH có truy cập được cơ sở dữ liệu không.",
+      "FRM-DEST-1005": "Kiểm tra tên cơ sở dữ liệu (hoặc dịch vụ), và tài khoản có quyền truy cập không.",
+      "FRM-DEST-1006": "Cấp các quyền còn thiếu bên dưới, rồi kiểm tra lại.",
+      "FRM-DEST-1011": "Máy chủ không phản hồi kịp. Kiểm tra địa chỉ, tường lửa, hoặc tăng giới hạn thời gian trong Tùy chọn khác."
+    },
+    "test": {
+      "heading": {
+        "running": "Đang kiểm tra kết nối…",
+        "passed": "Mọi thứ đều hoạt động",
+        "warning": "Hoạt động, nhưng có điều cần xem lại",
+        "failed": "Kết nối không thành công"
+      },
+      "version": "Phiên bản máy chủ",
+      "latency": "Thời gian phản hồi",
+      "schemas": "Lược đồ",
+      "tables": "Bảng",
+      "skipped": "Bỏ qua",
+      "tlsOff": "Với cài đặt này, lưu lượng không được mã hóa.",
+      "safe": "Bài kiểm tra chỉ đọc. Nó không bao giờ thay đổi dữ liệu của bạn."
+    },
+    "finding": {
+      "admin_account": {
+        "title": "Đây là tài khoản quản trị",
+        "desc": "Tạo một tài khoản riêng chỉ với các quyền được liệt kê, để Formalie không bao giờ làm nhiều hơn mức cần thiết."
+      },
+      "extra_write": {
+        "title": "Tài khoản này có thể thay đổi dữ liệu",
+        "desc": "Kết nối ở chế độ chỉ đọc, nên Formalie chỉ đọc. Để tuân theo đặc quyền tối thiểu, hãy gỡ quyền ghi của tài khoản."
+      },
+      "tls_off": {
+        "title": "Lưu lượng không được mã hóa",
+        "desc": "Chọn một tùy chọn có mã hóa trong mục Bảo mật để dữ liệu và mật khẩu được bảo vệ trên đường truyền."
+      },
+      "trust_certificate": {
+        "title": "Chứng chỉ máy chủ không được kiểm tra",
+        "desc": "Tắt “Tin cậy chứng chỉ máy chủ” và thêm chứng chỉ CA khi có thể."
+      },
+      "missing_permissions": {
+        "title": "Thiếu một số quyền",
+        "desc": "Các phần của Formalie cần những quyền này sẽ không hoạt động. Câu lệnh để cấp quyền nằm trong mục Quyền."
+      }
+    },
+    "access": {
+      "legend": "Formalie được phép làm gì",
+      "read_only": "Chỉ đọc",
+      "read_write": "Đọc và ghi",
+      "readOnlyDesc": "Duyệt, xuất và chạy truy vấn đọc. Không gì trong cơ sở dữ liệu có thể bị thay đổi.",
+      "readWriteDesc": "Ngoài ra còn gửi phản hồi biểu mẫu vào bảng, sửa hàng và nhập tệp.",
+      "structure": "Cho phép Formalie tạo bảng và thêm cột",
+      "structureDesc": "Cho đích đến của biểu mẫu: một bảng tạo từ biểu mẫu và một cột cho mỗi trường mới. Không bao giờ xóa bất cứ thứ gì.",
+      "schemas": "Lược đồ Formalie được dùng",
+      "databases": "Cơ sở dữ liệu Formalie được dùng",
+      "schemasHint": "Nhấn Enter sau mỗi mục. Để trống: chỉ {schema}.",
+      "databasesHint": "Nhấn Enter sau mỗi mục. Để trống: chỉ {schema}.",
+      "permissionsTitle": "Quyền cần cấp",
+      "permissionsDesc": "Cấp cho tài khoản đúng các quyền này, không hơn, để mọi tính năng hoạt động và không thể làm gì khác.",
+      "tabOperations": "Formalie làm gì",
+      "tabScript": "Câu lệnh cần chạy"
+    },
+    "summary": {
+      "engine": "Cơ sở dữ liệu",
+      "address": "Máy chủ",
+      "database": "Cơ sở dữ liệu",
+      "account": "Tài khoản",
+      "security": "Bảo mật",
+      "access": "Quyền truy cập",
+      "descriptor": "Descriptor kết nối",
+      "encrypted": "Đã mã hóa",
+      "notEncrypted": "Không mã hóa",
+      "ssh": "Đường hầm SSH",
+      "structure": "tạo bảng",
+      "change": "Thay đổi {item}"
+    },
+    "wizard": {
+      "newCrumb": "Thêm kết nối",
+      "newTitle": "Thêm kết nối",
+      "newDesc": "Kết nối một cơ sở dữ liệu của bạn, từng bước một",
+      "editCrumb": "Sửa",
+      "editTitle": "Sửa {name}",
+      "editDesc": "Thay đổi cài đặt, rồi kiểm tra trước khi lưu",
+      "engineLegend": "Cơ sở dữ liệu",
+      "builtInNote": "Bộ lưu trữ mã hóa tích hợp của Formalie vẫn là mặc định. Kết nối chỉ bổ sung thêm.",
+      "stepOf": "Bước {n}/{total}",
+      "step": {
+        "engine": "Cơ sở dữ liệu",
+        "server": "Máy chủ",
+        "signin": "Đăng nhập",
+        "security": "Bảo mật",
+        "access": "Quyền truy cập",
+        "review": "Đặt tên và kiểm tra"
+      },
+      "title": {
+        "engine": "Cơ sở dữ liệu nào?",
+        "server": "Nó ở đâu?",
+        "signin": "Formalie đăng nhập như thế nào?",
+        "security": "Kết nối được bảo vệ ra sao?",
+        "access": "Formalie được phép làm gì?",
+        "review": "Đặt tên và kiểm tra"
+      },
+      "desc": {
+        "engine": "Mỗi loại có cài đặt riêng. Bạn có thể thêm loại khác sau.",
+        "server": "Địa chỉ mà máy chủ của Formalie dùng để truy cập cơ sở dữ liệu {engine} của bạn.",
+        "signin": "Dùng một tài khoản tạo riêng cho Formalie. Mật khẩu được mã hóa và không bao giờ hiển thị lại.",
+        "security": "Mã hóa và, với mạng riêng, một đường hầm SSH.",
+        "access": "Bắt đầu với chế độ chỉ đọc. Các quyền cần cấp sẽ theo lựa chọn của bạn.",
+        "review": "Bài kiểm tra chạy từ máy chủ của Formalie và chỉ đọc."
+      },
+      "name": "Tên",
+      "nameDesc": "Cách kết nối này hiển thị trong Formalie.",
+      "namePlaceholder": "ví dụ: Quản lý hồ sơ",
+      "testTitle": "Kiểm tra kết nối",
+      "testDesc": "Kiểm tra từng bước và từng quyền. Không có gì được lưu cho đến khi bạn lưu.",
+      "test": "Kiểm tra kết nối",
+      "testAgain": "Kiểm tra lại",
+      "fixStep": "Sửa: {step}",
+      "save": "Lưu kết nối",
+      "testAndSave": "Kiểm tra và lưu",
+      "saveAnyway": "Vẫn lưu",
+      "saveFailedTitle": "Lưu kết nối chưa vượt qua kiểm tra?",
+      "saveFailedDesc": "Kết nối sẽ hiển thị là đang lỗi và Formalie sẽ không dùng cho đến khi kiểm tra thành công.",
+      "leaveTitle": "Rời đi mà không lưu?",
+      "leaveDesc": "Các cài đặt kết nối bạn đã nhập sẽ bị mất.",
+      "leave": "Rời đi"
+    },
+    "help": {
+      "engine": {
+        "title": "Bạn cần gì",
+        "p1": "Địa chỉ và cổng máy chủ, cùng tên cơ sở dữ liệu.",
+        "p2": "Một tài khoản riêng cho Formalie. Câu lệnh chính xác để tạo tài khoản có ở bước Quyền truy cập.",
+        "p3": "Địa chỉ của Formalie được cho phép trong tường lửa của bạn (bên dưới).",
+        "p4": "Cho cơ sở dữ liệu trong mạng riêng: một máy chủ SSH mà Formalie được dùng."
+      },
+      "server": {
+        "title": "Truy cập cơ sở dữ liệu",
+        "p1": "Dùng địa chỉ truy cập được từ internet, không phải từ bên trong mạng của bạn.",
+        "p2": "Cho phép địa chỉ của Formalie trên cổng cơ sở dữ liệu.",
+        "p3": "Chỉ có mạng riêng? Hãy thêm đường hầm SSH ở bước Bảo mật."
+      },
+      "signin": {
+        "title": "Một tài khoản riêng",
+        "p1": "Không bao giờ dùng tài khoản quản trị. Bài kiểm tra sẽ cảnh báo nếu bạn làm vậy.",
+        "p2": "Bước Quyền truy cập viết sẵn câu lệnh để tạo tài khoản với đúng các quyền cần thiết.",
+        "p3": "Thông tin xác thực được gửi và lưu ở dạng mã hóa, và không bao giờ hiển thị lại.",
+        "sqlserver": {
+          "p1": "Tài khoản SQL Server: một login có mật khẩu.",
+          "p2": "Microsoft Entra ID: một người dùng có mật khẩu, hoặc một ứng dụng (service principal) có bí mật máy khách.",
+          "p3": "Bước Quyền truy cập viết sẵn câu lệnh để tạo một trong hai với đúng các quyền cần thiết."
+        }
+      },
+      "security": {
+        "title": "Bảo vệ kết nối",
+        "p1": "Luôn mã hóa. Kiểm tra chứng chỉ còn chứng minh bạn kết nối đúng máy chủ.",
+        "p2": "Đường hầm SSH truy cập cơ sở dữ liệu riêng qua một máy chủ bạn cho phép.",
+        "p3": "Khóa và chứng chỉ được lưu mã hóa trên máy chủ của Formalie.",
+        "postgresql": {
+          "p1": "require mã hóa lưu lượng.",
+          "p2": "verify-full còn kiểm tra chứng chỉ và tên máy chủ (khuyến nghị).",
+          "p3": "Dán chứng chỉ CA cho verify-ca và verify-full."
+        },
+        "mysql": {
+          "p1": "Bắt buộc sẽ mã hóa lưu lượng.",
+          "p2": "Xác minh danh tính còn kiểm tra chứng chỉ và tên máy chủ (khuyến nghị).",
+          "p3": "Thêm chứng chỉ CA cho các tùy chọn xác minh."
+        },
+        "mariadb": {
+          "p1": "Bắt buộc sẽ mã hóa lưu lượng.",
+          "p2": "Xác minh danh tính còn kiểm tra chứng chỉ và tên máy chủ (khuyến nghị).",
+          "p3": "Thêm chứng chỉ CA cho các tùy chọn xác minh."
+        },
+        "sqlserver": {
+          "p1": "Bắt buộc sẽ mã hóa và kiểm tra chứng chỉ.",
+          "p2": "Nghiêm ngặt (TDS 8.0) mã hóa trước khi đăng nhập, cho SQL Server 2022 và Azure SQL.",
+          "p3": "Tin cậy chứng chỉ mà không kiểm tra chỉ dành cho thử nghiệm."
+        },
+        "oracle": {
+          "p1": "TCPS mã hóa bằng TLS và được khuyến nghị.",
+          "p2": "Với TCP, đặt mã hóa mạng gốc thành Bắt buộc ở cả hai phía.",
+          "p3": "Dán chứng chỉ CA từ wallet của bạn cho TCPS."
+        }
+      },
+      "access": {
+        "title": "Đặc quyền tối thiểu",
+        "p1": "Chỉ cấp những gì kết nối này dùng. Tính năng nào cần thêm sẽ báo cho bạn.",
+        "p2": "Chế độ chỉ đọc không bao giờ thay đổi dữ liệu của bạn, dù được yêu cầu gì.",
+        "p3": "Formalie không bao giờ xóa bảng hay cột.",
+        "p4": "Mọi truy vấn, thay đổi, lần nhập và xuất đều được ghi vào nhật ký kiểm tra."
+      },
+      "review": {
+        "title": "Những gì được kiểm tra",
+        "p1": "Máy chủ của Formalie truy cập được địa chỉ và cổng.",
+        "p2": "Mã hóa, chứng chỉ và đăng nhập.",
+        "p3": "Cơ sở dữ liệu mở được, và từng quyền mà kết nối này cần.",
+        "p4": "Chỉ đọc: không có gì trong cơ sở dữ liệu của bạn thay đổi."
+      }
     }
   },
   "apiService": {

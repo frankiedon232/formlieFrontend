@@ -19,7 +19,8 @@
     "goHome": "ホームへ",
     "confirm": "確認",
     "copy": "コピー",
-    "copied": "コピーしました"
+    "copied": "コピーしました",
+    "next": "次へ"
   },
   "placeholder": {
     "title": "近日公開",
@@ -403,7 +404,13 @@
     "pagesSaved": "保存済み",
     "pagesCreated": "作成済み",
     "folders": "フォルダー",
-    "foldersAll": "すべてのフォルダー"
+    "foldersAll": "すべてのフォルダー",
+    "connectionsAll": "すべて",
+    "connectionsConnected": "接続済み",
+    "connectionsAttention": "要確認",
+    "connectionsFailing": "エラー",
+    "connectionsDisabled": "無効",
+    "connectionsNew": "接続を追加"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "この回答が人によって送信されたことを確認できませんでした。もう一度お試しください。",
     "FRM-FORM-1017": "パスワードが正しくありません。",
     "FRM-FORM-1018": "この招待リンクは無効になりました。",
-    "FRM-FORM-1019": "このフォームのサインインの有効期限が切れました。もう一度サインインしてください。"
+    "FRM-FORM-1019": "このフォームのサインインの有効期限が切れました。もう一度サインインしてください。",
+    "FRM-DEST-1002": "データベースがユーザー名またはパスワードを受け付けませんでした。",
+    "FRM-DEST-1003": "暗号化接続を確立できませんでした（証明書または TLS 設定）。",
+    "FRM-DEST-1004": "SSH トンネルを開けませんでした。",
+    "FRM-DEST-1005": "データベースまたはスキーマが見つからないか、このアカウントでは使用できません。",
+    "FRM-DEST-1006": "この接続に必要な権限の一部がありません。",
+    "FRM-DEST-1007": "この名前の接続はすでに存在します。",
+    "FRM-DEST-1008": "この接続テストは利用できなくなりました。もう一度実行してください。",
+    "FRM-DEST-1009": "この接続は無効になっています。先に有効にしてください。",
+    "FRM-DEST-1010": "この接続に回答を送信しているフォームがまだあります。",
+    "FRM-DEST-1011": "データベースの応答に時間がかかりすぎました。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -576,7 +593,12 @@
     "new": "新規",
     "reviewed": "確認済み",
     "approved": "承認",
-    "rejected": "却下"
+    "rejected": "却下",
+    "connected": "接続済み",
+    "attention": "要確認",
+    "failing": "エラー",
+    "disabled": "無効",
+    "untested": "未テスト"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -767,7 +789,8 @@
       "settings": "設定",
       "users": "ユーザー",
       "integrations": "連携",
-      "audit": "監査ログ"
+      "audit": "監査ログ",
+      "data": "データソース"
     },
     "actorType": {
       "user": "ユーザー",
@@ -794,7 +817,8 @@
       "saved_field": "保存済みの項目",
       "option_list": "選択肢リスト",
       "theme": "テーマ",
-      "template": "テンプレート"
+      "template": "テンプレート",
+      "data_source": "接続"
     },
     "field": {
       "name": "名前",
@@ -817,7 +841,14 @@
       "number_format": "数値の形式",
       "week_start": "週の始まり",
       "tags": "タグ",
-      "colour": "色"
+      "colour": "色",
+      "engine": "データベースの種類",
+      "host": "サーバーアドレス",
+      "port": "ポート",
+      "database": "データベース",
+      "access": "アクセス",
+      "credentials": "認証情報",
+      "security": "接続設定"
     },
     "action": {
       "auth_login_succeeded": "ログインしました",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "ランディングページを更新しました",
       "forms_page_design_deleted": "ランディングページを削除しました",
       "responses_export_downloaded": "エクスポートをダウンロードしました",
-      "responses_export_deleted": "エクスポートを削除しました"
+      "responses_export_deleted": "エクスポートを削除しました",
+      "data_connection_created": "接続を追加しました",
+      "data_connection_updated": "接続を変更しました",
+      "data_connection_tested": "接続をテストしました",
+      "data_connection_duplicated": "接続を複製しました",
+      "data_connection_enabled": "接続を有効にしました",
+      "data_connection_disabled": "接続を無効にしました",
+      "data_connection_deleted": "接続を削除しました",
+      "data_credentials_changed": "接続の認証情報を変更しました"
     },
     "detail": {
       "who": "誰が",
@@ -2838,6 +2877,556 @@
       "destinations": "各フォームの回答の送信先を選び、フィールドを列に対応付けます。",
       "transfers": "ファイルをテーブルにインポートし、テーブルやクエリ結果をエクスポートします。",
       "activity": "各接続の配信、失敗、最近のクエリ。"
+    },
+    "add": "接続を追加",
+    "search": "接続、サーバー、データベースを検索…",
+    "emptyTitle": "接続はまだありません",
+    "emptyDesc": "データベースを接続すると、フォームデータを送信してここで扱えます。その間も Formalie の組み込みストレージは引き続き動作します。",
+    "notFound": "この接続は利用できません",
+    "ms": "{n} ms",
+    "checked": "{when} に確認",
+    "neverChecked": "未確認",
+    "needsLook": "要確認",
+    "uptime": "稼働率（30 日間）",
+    "uptimePercent": "日ごとの稼働率（%）",
+    "formsUsing": "送信元のフォーム",
+    "lastChecked": "最終確認",
+    "addedBy": "追加したユーザー",
+    "yes": "はい",
+    "no": "いいえ",
+    "secretSaved": "保存済み",
+    "secretNotSet": "未設定",
+    "secretsChanged": "認証情報の最終変更: {when}",
+    "enabled": "有効",
+    "disabledLabel": "無効",
+    "missingCount": "不足している権限 {n} 件 | 不足している権限 {n} 件",
+    "moreOptions": "その他のオプション",
+    "savedSecret": "保存済み。変更しない場合は空欄のままにします",
+    "showSecret": "表示",
+    "hideSecret": "非表示",
+    "loadFile": "ファイルから読み込む",
+    "col": {
+      "connection": "接続",
+      "status": "ステータス"
+    },
+    "sort": {
+      "checked": "最近確認した順",
+      "uptime": "稼働率の低い順",
+      "operations": "処理の多い順",
+      "newest": "新しい順"
+    },
+    "kpi": {
+      "activity": "アクティビティ",
+      "operations": "処理",
+      "latency": "応答時間",
+      "missing": "不足している権限",
+      "byStatus": "ステータス別の接続",
+      "needLook": "{n} 件が要確認"
+    },
+    "actions": {
+      "open": "開く",
+      "edit": "接続を編集",
+      "duplicate": "複製",
+      "copyLink": "リンクをコピー",
+      "delete": "接続を削除",
+      "deleteInUse": "フォームの送信先のため削除できません",
+      "test": "今すぐテスト",
+      "enable": "有効にする",
+      "disable": "無効にする"
+    },
+    "toast": {
+      "created": "接続「{name}」を追加しました",
+      "saved": "接続を保存しました",
+      "enabled": "接続を有効にしました",
+      "disabled": "接続を無効にしました",
+      "duplicated": "接続を複製しました。使用するにはパスワードを入力してください",
+      "deleted": "接続を削除しました",
+      "linkCopied": "リンクをコピーしました"
+    },
+    "disable": {
+      "title": "「{name}」を無効にしますか？",
+      "desc": "Formalie はこのデータベースの使用を停止します。ヘルスチェックも、データの送信や読み取りも行いません。いつでも再度有効にできます。",
+      "confirm": "無効にする"
+    },
+    "delete": {
+      "title": "「{name}」を削除しますか？",
+      "desc": "設定と保存済みの認証情報が Formalie から削除されます。データベース内のものは何も変わりません。",
+      "confirm": "接続を削除"
+    },
+    "detail": {
+      "groups": "表示",
+      "all": "すべて",
+      "connection": "接続",
+      "security": "セキュリティ",
+      "permissions": "権限",
+      "health": "ヘルス",
+      "permissionsFrom": "前回のテスト（{when}）で確認しました。",
+      "permissionsUntested": "まだテストしていません。接続をテストしてすべての権限を確認してください。",
+      "howToGrant": "権限を付与するステートメント",
+      "noChecks": "ヘルスチェックはまだありません。",
+      "navigate": "接続間を移動",
+      "previous": "前の接続",
+      "next": "次の接続"
+    },
+    "egress": {
+      "title": "Formalie のアドレスを許可",
+      "desc": "Formalie はこれらのアドレスから接続します。データベースのファイアウォールまたはセキュリティグループで許可してください。",
+      "copy": "{ip} をコピー"
+    },
+    "engineDesc": {
+      "mysql": "ポート 3306 · ID 検証までの TLS モード · SSH トンネル",
+      "mariadb": "ポート 3306 · ID 検証までの TLS モード · SSH トンネル",
+      "oracle": "ポート 1521 · サービス名、SID または記述子 · TCPS またはネイティブ暗号化",
+      "postgresql": "ポート 5432 · スキーマ · verify-full までの sslmode · SSH トンネル",
+      "sqlserver": "ポート 1433 · インスタンス · SQL または Microsoft Entra サインイン · 厳格な暗号化"
+    },
+    "field": {
+      "host": "サーバーアドレス",
+      "port": "ポート",
+      "database": "データベース",
+      "schema": "スキーマ",
+      "charset": "文字セット",
+      "time_zone": "セッションのタイムゾーン",
+      "connect_timeout": "接続の制限時間（秒）",
+      "username": "ユーザー名",
+      "password": "パスワード",
+      "ssl_mode": "暗号化（TLS）",
+      "ca_certificate": "CA 証明書",
+      "client_certificate": "クライアント証明書",
+      "client_key": "クライアント秘密鍵",
+      "ssh": "SSH トンネル経由で接続",
+      "ssh_host": "SSH サーバー",
+      "ssh_port": "SSH ポート",
+      "ssh_username": "SSH ユーザー",
+      "ssh_private_key": "SSH 秘密鍵",
+      "ssh_passphrase": "鍵のパスフレーズ",
+      "target_session_attrs": "使用するサーバー",
+      "instance": "インスタンス名",
+      "application_intent": "アプリケーションの目的",
+      "multi_subnet_failover": "マルチサブネット フェールオーバー",
+      "auth": "サインイン方法",
+      "tenant_id": "ディレクトリ（テナント）ID",
+      "client_id": "アプリケーション（クライアント）ID",
+      "client_secret": "クライアント シークレット",
+      "encrypt": "暗号化",
+      "trust_server_certificate": "サーバー証明書を検証せずに信頼する",
+      "host_name_in_certificate": "証明書のホスト名",
+      "connect_by": "接続方法",
+      "service_name": "サービス名",
+      "sid": "SID",
+      "descriptor": "接続記述子",
+      "protocol": "プロトコル",
+      "network_encryption": "ネイティブ ネットワーク暗号化",
+      "ssl_server_dn_match": "サーバー証明書の名前を確認"
+    },
+    "hint": {
+      "host": "Formalie のサーバーから到達できるホスト名または IP アドレス。プライベートネットワークの場合は SSH トンネルを使用してください。",
+      "connect_timeout": "サーバーの応答を待つ時間。これを過ぎると中止します。",
+      "username": "Formalie 専用のアカウント。管理者アカウントは使用しないでください。",
+      "ca_certificate": "サーバー証明書に署名した認証局の PEM テキストを貼り付けます。",
+      "client_certificate": "サーバーがクライアント証明書を要求する場合のみ（相互 TLS）。",
+      "client_key": "クライアント証明書の秘密鍵（PEM 形式）。",
+      "ssh": "プライベートネットワーク上のデータベース向け: Formalie は許可されたサーバーに接続し、そこからデータベースに転送します。",
+      "ssh_private_key": "SSH ユーザーの PEM 秘密鍵。Formalie 専用の鍵を使用してください。",
+      "time_zone": "日付はこのタイムゾーンで送受信されます。UTC (+00:00) を推奨します。",
+      "target_session_attrs": "クラスター向け: Formalie が使用できるサーバー。",
+      "trust_server_certificate": "推奨しません: 経路上の第三者が通信を読み取れる可能性があります。テスト時のみ使用してください。",
+      "host_name_in_certificate": "証明書がサーバーアドレスとは別の名前で発行されている場合。",
+      "multi_subnet_failover": "サブネットをまたぐ Always On 可用性グループで、より速くフェールオーバーします。",
+      "descriptor": "Easy Connect、または tnsnames.ora と同じ形式の完全な TNS 記述子。",
+      "schema": "Formalie が既定でテーブルを探す場所。",
+      "postgresql": {
+        "schema": "Formalie が既定でテーブルを探す場所（検索パス）。",
+        "ssl_mode": "require は暗号化します。verify-full は証明書とホスト名も確認します（推奨）。"
+      },
+      "mysql": {
+        "ssl_mode": "「必須」は暗号化します。「ID を検証」は証明書とホスト名も確認します（推奨）。"
+      },
+      "mariadb": {
+        "ssl_mode": "「必須」は暗号化します。「ID を検証」は証明書とホスト名も確認します（推奨）。"
+      },
+      "sqlserver": {
+        "instance": "名前付きインスタンスの場合のみ。ポートはそのままにするか、インスタンス固有のポートにします。",
+        "schema": "Formalie ユーザーの既定のスキーマ。",
+        "encrypt": "「厳格」は TDS 8.0 を使用し、常に証明書を確認します（SQL Server 2022 と Azure SQL）。"
+      },
+      "oracle": {
+        "schema": "Formalie が使用するテーブルのスキーマ（所有者）。空欄の場合はユーザー自身のスキーマ。",
+        "protocol": "TCPS は TLS で暗号化します（推奨）。TCP はネイティブ ネットワーク暗号化に依存します。"
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4（推奨）",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "オフ",
+        "preferred": "優先（可能な場合は暗号化）",
+        "required": "必須（暗号化）",
+        "verify_ca": "証明書を検証",
+        "verify_identity": "ID を検証（推奨）",
+        "disable": "disable（オフ）",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require（暗号化）",
+        "verify-ca": "verify-ca（証明書を確認）",
+        "verify-full": "verify-full（推奨）"
+      },
+      "target_session_attrs": {
+        "any": "任意",
+        "read-write": "読み書き可能なサーバーのみ",
+        "read-only": "読み取り専用サーバーのみ",
+        "primary": "プライマリ",
+        "standby": "スタンバイ",
+        "prefer-standby": "可能ならスタンバイ"
+      },
+      "application_intent": {
+        "read_write": "読み取りと書き込み",
+        "read_only": "読み取り専用（読み取り可能なセカンダリ）"
+      },
+      "auth": {
+        "sql": "SQL Server アカウント",
+        "entra_password": "Microsoft Entra ID（パスワード）",
+        "entra_service_principal": "Microsoft Entra ID（サービス プリンシパル）"
+      },
+      "encrypt": {
+        "mandatory": "必須（推奨）",
+        "strict": "厳格（TDS 8.0）",
+        "optional": "任意（暗号化なし）"
+      },
+      "connect_by": {
+        "service_name": "サービス名",
+        "sid": "SID",
+        "descriptor": "接続記述子"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "必須",
+        "requested": "要求",
+        "accepted": "受諾"
+      }
+    },
+    "invalid": {
+      "required": "入力してください。",
+      "host": "ホスト名または IP アドレスを、http:// やポートを付けずに入力してください。",
+      "host_blocked": "Formalie はこのアドレスに接続できません。プライベートネットワークの場合は SSH トンネルを使用してください。",
+      "port": "1 から 65535 までのポートを入力してください。",
+      "pem": "-----BEGIN から -----END までの PEM テキスト全体を貼り付けてください。",
+      "identifier": "英字、数字、アンダースコアを使用してください。",
+      "uuid": "Microsoft Entra 管理センターに表示されている ID を入力してください。",
+      "seconds": "1 から 120 秒の範囲で入力してください。",
+      "taken": "この名前の接続はすでに存在します。"
+    },
+    "level": {
+      "read": "読み取り",
+      "write": "書き込み",
+      "structure": "構造"
+    },
+    "levelDesc": {
+      "read": "テーブルの閲覧、行の読み取り、エクスポート、読み取りクエリの実行",
+      "write": "フォーム回答の送信、行の更新と削除、インポート",
+      "structure": "フォームからテーブルを作成し、新しいフィールド用の列を追加"
+    },
+    "perm": {
+      "needed": "必要",
+      "notNeeded": "不要",
+      "granted": "付与済み",
+      "missing": "不足",
+      "not_needed": "この接続では不要"
+    },
+    "op": {
+      "connect": {
+        "label": "サインイン",
+        "uses": "データベースでセッションを開く"
+      },
+      "read_schema": {
+        "label": "構造の読み取り",
+        "uses": "エクスプローラーのスキーマ、テーブル、列、キー、インデックス"
+      },
+      "row_counts": {
+        "label": "行数のカウント",
+        "uses": "エクスプローラーのテーブルサイズ"
+      },
+      "read_rows": {
+        "label": "行の読み取り",
+        "uses": "テーブルの閲覧とエクスポート、読み取りクエリ、選択肢リスト"
+      },
+      "cancel": {
+        "label": "自身のクエリのキャンセル",
+        "uses": "長時間実行されているクエリを停止"
+      },
+      "insert": {
+        "label": "行の追加",
+        "uses": "フォーム回答の送信、インポート、新しい行"
+      },
+      "update": {
+        "label": "行の変更",
+        "uses": "キーによる更新または挿入、エクスプローラーでの編集"
+      },
+      "delete": {
+        "label": "行の削除",
+        "uses": "エクスプローラーでの行の削除"
+      },
+      "sequences": {
+        "label": "シーケンスの使用",
+        "uses": "新しい行に生成される ID"
+      },
+      "create_table": {
+        "label": "テーブルの作成",
+        "uses": "フォームから作成するテーブル"
+      },
+      "alter_table": {
+        "label": "列の追加",
+        "uses": "フォームに追加したフィールド用の列"
+      },
+      "create_index": {
+        "label": "一意キーの追加",
+        "uses": "更新または挿入で照合するキー"
+      }
+    },
+    "grant": {
+      "intro": "データベース管理者として実行してください。この接続のデータベース、スキーマ、アカウント向けに記述されています。",
+      "copyAll": "すべてコピー",
+      "copied": "ステートメントをコピーしました",
+      "oracle23": "Oracle 23ai 以降",
+      "oracle23Desc": "スキーマ単位で付与します。19c 以前ではオフにしてください（テーブル単位で付与）。",
+      "block": {
+        "account": "1. アカウントを作成",
+        "read": "2. 読み取り",
+        "write": "3. 書き込み",
+        "structure": "4. 構造"
+      },
+      "note": {
+        "host_limit": "可能であれば '%' を Formalie のアドレスに置き換え、アカウントがそこからのみ使えるようにしてください。",
+        "pool": "Formalie が同時に開く接続は最大 10 個です。",
+        "default_privileges": "テーブルを所有するロールとして実行すると、後で作成されるテーブルも対象になります。",
+        "owner_alter": "Formalie は自身が作成したテーブルを所有し、列を追加できます。既存のテーブルはお客様のものです。",
+        "entra": "Microsoft Entra アカウントでサインインした状態でデータベース内で実行してください。名前は Entra ユーザーまたはアプリケーションです。",
+        "contained": "Azure SQL Database では、代わりに包含ユーザーを作成してください: CREATE USER ... WITH PASSWORD。",
+        "no_sysdba": "Formalie には SYS、SYSTEM、SYSDBA ロールを決して使用しないでください。",
+        "oracle_new_tables": "後で追加したテーブルにも付与が必要です。ブロックを再実行するか、Oracle 23ai のスキーマ権限を使用してください。",
+        "oracle_own_schema": "23ai より前では、Formalie は独自のスキーマにテーブルを作成するため、お客様のスキーマへの権限は不要です。"
+      }
+    },
+    "step": {
+      "network": "サーバーに到達",
+      "ssh": "SSH トンネルを開く",
+      "tls": "接続を暗号化",
+      "sign_in": "サインイン",
+      "database": "データベースを開く",
+      "permissions": "権限を確認"
+    },
+    "stepDesc": {
+      "network": "Formalie のサーバーからアドレスとポートに接続しています。",
+      "ssh": "SSH サーバーにサインインし、データベースに転送しています。",
+      "tls": "TLS を設定し、証明書を確認しています。",
+      "sign_in": "アカウントでサインインしています。",
+      "database": "データベースを開き、バージョンを読み取っています。",
+      "permissions": "この接続に必要な各権限を確認しています。"
+    },
+    "fix": {
+      "FRM-DEST-1001": "アドレスとポート、およびファイアウォールが Formalie のアドレスを許可しているかを確認してください。",
+      "FRM-DEST-1002": "ユーザー名とパスワード、およびアカウントが Formalie のアドレスからサインインできるかを確認してください。",
+      "FRM-DEST-1003": "暗号化設定と CA 証明書、および証明書がサーバーアドレスと一致しているかを確認してください。",
+      "FRM-DEST-1004": "SSH サーバー、ユーザー、秘密鍵、および SSH サーバーからデータベースに到達できるかを確認してください。",
+      "FRM-DEST-1005": "データベース（またはサービス）名と、アカウントにアクセス権があるかを確認してください。",
+      "FRM-DEST-1006": "下記の不足している権限を付与してから、もう一度テストしてください。",
+      "FRM-DEST-1011": "サーバーが時間内に応答しませんでした。アドレスとファイアウォールを確認するか、「その他のオプション」で制限時間を延ばしてください。"
+    },
+    "test": {
+      "heading": {
+        "running": "接続をテストしています…",
+        "passed": "すべて正常です",
+        "warning": "動作していますが、確認事項があります",
+        "failed": "接続できませんでした"
+      },
+      "version": "サーバーのバージョン",
+      "latency": "応答時間",
+      "schemas": "スキーマ",
+      "tables": "テーブル",
+      "skipped": "スキップ",
+      "tlsOff": "この設定では通信が暗号化されません。",
+      "safe": "テストは読み取りのみで、データを変更することはありません。"
+    },
+    "finding": {
+      "admin_account": {
+        "title": "管理者アカウントです",
+        "desc": "一覧の権限だけを持つ専用アカウントを作成し、Formalie が必要以上の操作をできないようにしてください。"
+      },
+      "extra_write": {
+        "title": "このアカウントはデータを変更できます",
+        "desc": "接続は読み取り専用のため、Formalie は読み取りのみ行います。最小権限のために書き込み権限を削除してください。"
+      },
+      "tls_off": {
+        "title": "通信が暗号化されていません",
+        "desc": "「セキュリティ」で暗号化するオプションを選び、データとパスワードを通信中も保護してください。"
+      },
+      "trust_certificate": {
+        "title": "サーバー証明書が確認されていません",
+        "desc": "可能であれば「サーバー証明書を信頼する」をオフにし、CA 証明書を追加してください。"
+      },
+      "missing_permissions": {
+        "title": "一部の権限が不足しています",
+        "desc": "それらを必要とする Formalie の機能は動作しません。付与するステートメントは「権限」にあります。"
+      }
+    },
+    "access": {
+      "legend": "Formalie に許可する操作",
+      "read_only": "読み取り専用",
+      "read_write": "読み取りと書き込み",
+      "readOnlyDesc": "閲覧、エクスポート、読み取りクエリの実行。データベースの内容は変更されません。",
+      "readWriteDesc": "さらにフォーム回答のテーブルへの送信、行の編集、ファイルのインポートも行えます。",
+      "structure": "Formalie にテーブルの作成と列の追加を許可",
+      "structureDesc": "フォームの送信先向け: フォームから作成するテーブルと、新しいフィールドごとの列。何も削除しません。",
+      "schemas": "Formalie が使用できるスキーマ",
+      "databases": "Formalie が使用できるデータベース",
+      "schemasHint": "1 つ入力するごとに Enter を押します。空欄の場合は {schema} のみ。",
+      "databasesHint": "1 つ入力するごとに Enter を押します。空欄の場合は {schema} のみ。",
+      "permissionsTitle": "付与する権限",
+      "permissionsDesc": "アカウントにはこれらの権限だけを付与してください。すべての機能が動作し、それ以外の操作はできなくなります。",
+      "tabOperations": "Formalie が行う操作",
+      "tabScript": "実行するステートメント"
+    },
+    "summary": {
+      "engine": "データベース",
+      "address": "サーバー",
+      "database": "データベース",
+      "account": "アカウント",
+      "security": "セキュリティ",
+      "access": "アクセス",
+      "descriptor": "接続記述子",
+      "encrypted": "暗号化あり",
+      "notEncrypted": "暗号化なし",
+      "ssh": "SSH トンネル",
+      "structure": "テーブルを作成",
+      "change": "{item} を変更"
+    },
+    "wizard": {
+      "newCrumb": "接続を追加",
+      "newTitle": "接続を追加",
+      "newDesc": "データベースを順を追って接続します",
+      "editCrumb": "編集",
+      "editTitle": "{name} を編集",
+      "editDesc": "設定を変更し、保存する前にテストします",
+      "engineLegend": "データベース",
+      "builtInNote": "既定は引き続き Formalie の組み込み暗号化ストレージです。接続はそれに追加されます。",
+      "stepOf": "ステップ {n} / {total}",
+      "step": {
+        "engine": "データベース",
+        "server": "サーバー",
+        "signin": "サインイン",
+        "security": "セキュリティ",
+        "access": "アクセス",
+        "review": "名前とテスト"
+      },
+      "title": {
+        "engine": "どのデータベースですか？",
+        "server": "どこにありますか？",
+        "signin": "Formalie はどのようにサインインしますか？",
+        "security": "接続はどのように保護されていますか？",
+        "access": "Formalie に何を許可しますか？",
+        "review": "名前を付けてテスト"
+      },
+      "desc": {
+        "engine": "それぞれに固有の設定があります。後から追加することもできます。",
+        "server": "Formalie のサーバーが {engine} データベースに到達するためのアドレス。",
+        "signin": "Formalie 用に作成したアカウントを使用してください。パスワードは暗号化され、再表示されません。",
+        "security": "暗号化と、プライベートネットワークの場合は SSH トンネル。",
+        "access": "まずは読み取り専用から始めましょう。付与する権限は選択に応じて決まります。",
+        "review": "テストは Formalie のサーバーから実行され、読み取りのみ行います。"
+      },
+      "name": "名前",
+      "nameDesc": "Formalie でのこの接続の表示名。",
+      "namePlaceholder": "例: 案件管理",
+      "testTitle": "接続をテスト",
+      "testDesc": "すべてのステップと権限を確認します。保存するまで何も保存されません。",
+      "test": "接続をテスト",
+      "testAgain": "再テスト",
+      "fixStep": "修正: {step}",
+      "save": "接続を保存",
+      "testAndSave": "テストして保存",
+      "saveAnyway": "このまま保存",
+      "saveFailedTitle": "テストに失敗した接続を保存しますか？",
+      "saveFailedDesc": "エラーとして表示され、テストに合格するまで Formalie は使用しません。",
+      "leaveTitle": "保存せずに移動しますか？",
+      "leaveDesc": "入力した接続設定は失われます。",
+      "leave": "移動"
+    },
+    "help": {
+      "engine": {
+        "title": "必要なもの",
+        "p1": "サーバーのアドレスとポート、データベース名。",
+        "p2": "Formalie 専用のアカウント。作成用のステートメントは「アクセス」ステップで提示されます。",
+        "p3": "ファイアウォールで許可された Formalie のアドレス（下記）。",
+        "p4": "プライベートネットワーク上のデータベースの場合: Formalie が使用できる SSH サーバー。"
+      },
+      "server": {
+        "title": "データベースへの到達",
+        "p1": "社内ネットワークからではなく、インターネットから到達できるアドレスを使用してください。",
+        "p2": "データベースのポートで Formalie のアドレスを許可してください。",
+        "p3": "プライベートネットワークのみの場合は、「セキュリティ」ステップで SSH トンネルを追加してください。"
+      },
+      "signin": {
+        "title": "専用アカウント",
+        "p1": "管理者アカウントは使用しないでください。使用するとテストで警告されます。",
+        "p2": "「アクセス」ステップで、必要な権限だけを持つアカウントを作成するステートメントが生成されます。",
+        "p3": "認証情報は暗号化して送信・保存され、再表示されません。",
+        "sqlserver": {
+          "p1": "SQL Server アカウント: パスワード付きのログイン。",
+          "p2": "Microsoft Entra ID: パスワード付きのユーザー、またはクライアント シークレット付きのアプリケーション（サービス プリンシパル）。",
+          "p3": "「アクセス」ステップで、必要な権限だけを持ついずれかを作成するステートメントが生成されます。"
+        }
+      },
+      "security": {
+        "title": "接続の保護",
+        "p1": "常に暗号化してください。証明書を確認すると、正しいサーバーに接続していることも保証されます。",
+        "p2": "SSH トンネルは、許可したサーバーを経由してプライベートなデータベースに到達します。",
+        "p3": "鍵と証明書は暗号化されて Formalie のサーバーに保管されます。",
+        "postgresql": {
+          "p1": "require は通信を暗号化します。",
+          "p2": "verify-full は証明書とホスト名も確認します（推奨）。",
+          "p3": "verify-ca と verify-full では CA 証明書を貼り付けてください。"
+        },
+        "mysql": {
+          "p1": "「必須」は通信を暗号化します。",
+          "p2": "「ID を検証」は証明書とホスト名も確認します（推奨）。",
+          "p3": "検証オプションでは CA 証明書を追加してください。"
+        },
+        "mariadb": {
+          "p1": "「必須」は通信を暗号化します。",
+          "p2": "「ID を検証」は証明書とホスト名も確認します（推奨）。",
+          "p3": "検証オプションでは CA 証明書を追加してください。"
+        },
+        "sqlserver": {
+          "p1": "「必須」は暗号化し、証明書を確認します。",
+          "p2": "「厳格」（TDS 8.0）はサインイン前に暗号化します。SQL Server 2022 と Azure SQL 向けです。",
+          "p3": "証明書を検証せずに信頼するのはテスト時のみにしてください。"
+        },
+        "oracle": {
+          "p1": "TCPS は TLS で暗号化するため推奨です。",
+          "p2": "TCP の場合は、両側でネイティブ ネットワーク暗号化を「必須」に設定してください。",
+          "p3": "TCPS では、ウォレットの CA 証明書を貼り付けてください。"
+        }
+      },
+      "access": {
+        "title": "最小権限",
+        "p1": "この接続が使用する権限だけを付与してください。それ以上が必要な機能はその旨を表示します。",
+        "p2": "読み取り専用では、何を求められてもデータは変更されません。",
+        "p3": "Formalie がテーブルや列を削除することはありません。",
+        "p4": "すべてのクエリ、変更、インポート、エクスポートは監査ログに記録されます。"
+      },
+      "review": {
+        "title": "テストで確認する内容",
+        "p1": "Formalie のサーバーがアドレスとポートに到達できること。",
+        "p2": "暗号化、証明書、サインイン。",
+        "p3": "データベースが開けること、およびこの接続に必要なすべての権限。",
+        "p4": "読み取りのみで、データベース内のものは何も変わりません。"
+      }
     }
   },
   "apiService": {

@@ -85,7 +85,7 @@ Files never pass through the enveloped API (SECURITY-PROTOCOL.md): the API hands
 
 ## Navigation
 
-`GET /navigation/counts` → `NavCounts` (`shared/types/navigation.ts`): forms by status, responses by review status (all, new, reviewed, approved, rejected), templates `{ total, mine, categories: [{ key, count }] }` (Formalie templates, the workspace's own, and the categories with templates, most used first; the menu shows six) and themes `{ total, system, saved, created }` (counts per kind, the menu lists kinds, not every theme).
+`GET /navigation/counts` → `NavCounts` (`shared/types/navigation.ts`): forms by status, responses by review status (all, new, reviewed, approved, rejected), templates `{ total, mine, categories: [{ key, count }] }` (Formalie templates, the workspace's own, and the categories with templates, most used first; the menu shows six) and themes `{ total, system, saved, created }` (counts per kind, the menu lists kinds, not every theme), and `datasources { total, connected, attention, failing, disabled, untested }` (F12, the Connections menu).
 
 | Method | Path                 | Notes                                                                                                                                                                                                                         |
 | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -224,9 +224,30 @@ Shapes in `shared/types/responses.ts` (decision 100). Reading needs "Responses o
 | POST | `/forms/{id}/exports` | `{ format: xlsx|csv|pdf, scope: all|filtered|selected, filters, ids }` → job |
 | GET | `/exports/{job_id}` | `{ status, progress, download_url? }` |
 
+## Data sources (F12)
+
+Admins only until Roles & access (F22). Settings are per engine (`shared/utils/datasources/engines.ts`: MySQL / MariaDB, PostgreSQL, SQL Server, Oracle); the same checks run on both sides (`checkConfig`). **Secrets are write-only**: passwords, client secrets, keys, passphrases and certificates are accepted on create / change, kept encrypted at rest, and never returned; replies only say which are set (`secrets_set`) and when they changed (`secrets_changed_at`). Unknown setting keys are dropped. Hosts that point at the server itself or cloud metadata are refused (`host_blocked`); the backend repeats this on the resolved address, and private networks are reached through an SSH tunnel. Problems per field → `FRM-GEN-1002` with `{ field, message }` where `message` is a code: `required · host · host_blocked · port · pem · identifier · uuid · seconds · taken`.
+
+| Method | Path | Notes |
+| --- | --- | --- |
+| GET | `/datasources` | `DataSourceRow[]`: `id, name, engine, address, database, access { mode: read_only\|read_write, structure, schemas }, status (connected · attention · failing · disabled · untested), enabled, server_version, latency_ms, last_checked_at, uptime_30d, operations_30d, daily [{ date, count }], forms_count, missing_permissions, created_by, created_at, updated_at`; `q` (name, address, database, engine), `sort`, `filter[status\|engine\|access]` (comma lists) |
+| GET | `/datasources/insights` | `{ total, by_status, read_write, operations_30d, previous_30d, daily (30 days), avg_latency_ms, missing_permissions }` (the two chart cards) |
+| GET | `/datasources/meta` | `{ egress_ips }`: Formalie's outgoing addresses to allow in the customer's firewall (platform setting, F23) |
+| POST | `/datasources/test` | `{ engine, settings, access, secrets?, datasource_id? }` → 201 `{ id }`. Starts a test from Formalie's servers; with `datasource_id`, secrets left out keep the saved ones. Never changes data |
+| GET | `/datasources/tests/{id}` | `ConnectionTest { id, status: running\|passed\|warning\|failed, started_at, finished_at, steps [{ key: network\|ssh\|tls\|sign_in\|database\|permissions, status: pending\|running\|passed\|warning\|failed\|skipped, duration_ms, error_code }], server_version, latency_ms, permissions [{ operation, status: granted\|missing\|not_needed }], findings [admin_account\|extra_write\|tls_off\|trust_certificate\|missing_permissions], schemas, tables_count }`; poll until not `running`; kept 30 minutes (`FRM-DEST-1008` after). A finished test of a saved connection becomes its status |
+| POST | `/datasources` | `{ name (unique, ≤ 80), engine, settings, access, secrets, test_id? }` → 201 `DataSourceDetail`; status from `test_id`, else `untested` |
+| GET | `/datasources/{id}` | `DataSourceDetail`: the row plus `settings` (no secrets), `secrets_set`, `secrets_changed_at`, `last_test`, `checks` (recent health checks, every 5 minutes, newest first: `{ at, status, latency_ms, error_code }`), `uptime_daily` (30 days), `forms` |
+| PATCH | `/datasources/{id}` | any of `{ name, settings, access, secrets, enabled, test_id }`; changed settings without `test_id` reset the status to `untested`; secrets sent replace only those keys (`data.credentials_changed`) |
+| POST | `/datasources/{id}/test` | test the saved connection now → 201 `{ id }` (`FRM-DEST-1009` when disabled) |
+| POST | `/datasources/{id}/duplicate` | copy with its secrets kept server-side, status `untested` → 201 `DataSourceDetail` |
+| DELETE | `/datasources/{id}` | `FRM-DEST-1010` while forms send to it → `{ deleted: true }` (nothing changes in the database) |
+
+Errors: `FRM-DEST-1001` can't reach · `1002` sign-in refused · `1003` TLS / certificate · `1004` SSH tunnel · `1005` database or schema not found / no access · `1006` permissions missing · `1007` name taken · `1008` test expired · `1009` disabled · `1010` in use by forms · `1011` time-out. Audit: `data.connection_created · _updated · _tested · _duplicated · _enabled · _disabled · _deleted`, `data.credentials_changed` (area `data`, resource `data_source`).
+
+**Permissions** (`shared/utils/datasources/permissions.ts`): operations by level, read (connect, read the structure, row counts, read rows, cancel its own query) · write (add, change, delete rows; sequences on PostgreSQL / Oracle) · structure (create tables, add columns, add a unique key). The test checks each one the connection needs (`SHOW GRANTS`, `has_*_privilege`, `fn_my_permissions`, `SESSION_PRIVS` / `ALL_TAB_PRIVS`); `grantScript()` writes the statements for the connection's own database, schemas and account.
+
 ## Integrations, settings, analytics
 
-| CRUD | `/datasources` (+ POST `/datasources/test`, `/datasources/{id}/health`, `/datasources/{id}/credentials`), credentials write-only, never returned | planned (F12) |
 | GET | `/datasources/{id}/schema` (schemas → tables / views → columns, keys, indexes, row counts) | planned (F12) |
 | CRUD | `/datasources/{id}/tables/{table}/rows` (paged list with sort / filters; insert / update / delete on read + write connections; import; export job) | planned (F12) |
 | POST | `/datasources/{id}/query` `{ sql, params, limit }` → `{ columns, rows, rows_affected, duration_ms }` (+ `/query/{run_id}/cancel`); read-only unless the connection allows changes; every run audited | planned (F12) |

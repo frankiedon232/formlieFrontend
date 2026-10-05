@@ -81,6 +81,24 @@ Phones need the mkcert root CA installed to trust it (`mkcert -CAROOT` → `root
 
 Seeded in `server/mock/data/tenants.ts` (mock only, in memory): workspaces **remedylegal** and **samathtax** (active), **oldco** (suspended). Accounts and password: see README → Test accounts. The code screen shows the mock's code in dev; it is also logged in the dev-server console (`[mock-otp]`). On localhost / an IP use `?tenant=remedylegal` (dev only).
 
+## Data sources in the mock (F12)
+
+Seeded workspaces have five connections in every state (connected read + write, connected read only, needs attention, failing, disabled). Nothing connects to a real database: a test's outcome comes from what you type, so every path can be tried.
+
+| To see | Type |
+| --- | --- |
+| Can't reach the server (`FRM-DEST-1001`) / time-out (`1011`) | a host containing `unreachable` / `timeout` |
+| SSH tunnel fails (`1004`) | an SSH server containing `unreachable` |
+| Certificate problem (`1003`) | a host containing `badcert` (with encryption on) |
+| Sign-in refused (`1002`) | password or client secret `wrong` |
+| Database not found (`1005`) | a database / service name containing `missing` |
+| Missing write and structure permissions | a user name containing `readonly` |
+| Missing row counts and structure | a user name containing `limited` |
+| Administrator account warning | `root`, `sa`, `sys`, `system`, `postgres` or a name containing `admin` |
+| More rights than needed | a user name containing `writer` on a read-only connection |
+
+`localhost`, `127.*`, `169.254.*` and similar are refused as server addresses (by design).
+
 ## Project env (`.env`, copy from `.env.example`)
 
 | Variable                           | Purpose                                                                                   |

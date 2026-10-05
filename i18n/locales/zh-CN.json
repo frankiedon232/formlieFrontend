@@ -19,7 +19,8 @@
     "goHome": "返回首页",
     "confirm": "确认",
     "copy": "复制",
-    "copied": "已复制"
+    "copied": "已复制",
+    "next": "下一步"
   },
   "placeholder": {
     "title": "即将推出",
@@ -403,7 +404,13 @@
     "pagesSaved": "已保存",
     "pagesCreated": "已创建",
     "folders": "文件夹",
-    "foldersAll": "所有文件夹"
+    "foldersAll": "所有文件夹",
+    "connectionsAll": "全部",
+    "connectionsConnected": "已连接",
+    "connectionsAttention": "需要关注",
+    "connectionsFailing": "失败",
+    "connectionsDisabled": "已停用",
+    "connectionsNew": "添加连接"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "无法确认此回复是由真人提交的，请重试。",
     "FRM-FORM-1017": "密码不正确。",
     "FRM-FORM-1018": "此邀请链接已失效。",
-    "FRM-FORM-1019": "您对此表单的登录已过期，请重新登录。"
+    "FRM-FORM-1019": "您对此表单的登录已过期，请重新登录。",
+    "FRM-DEST-1002": "数据库未接受该用户名或密码。",
+    "FRM-DEST-1003": "无法建立加密连接（证书或 TLS 设置）。",
+    "FRM-DEST-1004": "无法打开 SSH 隧道。",
+    "FRM-DEST-1005": "未找到该数据库或架构，或此账户无权使用。",
+    "FRM-DEST-1006": "此连接缺少部分所需权限。",
+    "FRM-DEST-1007": "已存在同名连接。",
+    "FRM-DEST-1008": "此连接测试已失效。请重新运行。",
+    "FRM-DEST-1009": "此连接已停用。请先启用。",
+    "FRM-DEST-1010": "仍有表单将回复发送到此连接。",
+    "FRM-DEST-1011": "数据库响应超时。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -576,7 +593,12 @@
     "new": "新",
     "reviewed": "已查看",
     "approved": "已批准",
-    "rejected": "已拒绝"
+    "rejected": "已拒绝",
+    "connected": "已连接",
+    "attention": "需要关注",
+    "failing": "失败",
+    "disabled": "已停用",
+    "untested": "未测试"
   },
   "footer": {
     "rights": "保留所有权利。",
@@ -767,7 +789,8 @@
       "settings": "设置",
       "users": "用户",
       "integrations": "集成",
-      "audit": "审计日志"
+      "audit": "审计日志",
+      "data": "数据源"
     },
     "actorType": {
       "user": "人员",
@@ -794,7 +817,8 @@
       "saved_field": "已保存的字段",
       "option_list": "选项列表",
       "theme": "主题",
-      "template": "模板"
+      "template": "模板",
+      "data_source": "连接"
     },
     "field": {
       "name": "名称",
@@ -817,7 +841,14 @@
       "number_format": "数字格式",
       "week_start": "每周第一天",
       "tags": "标签",
-      "colour": "颜色"
+      "colour": "颜色",
+      "engine": "数据库类型",
+      "host": "服务器地址",
+      "port": "端口",
+      "database": "数据库",
+      "access": "访问权限",
+      "credentials": "凭据",
+      "security": "连接设置"
     },
     "action": {
       "auth_login_succeeded": "已登录",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "已更新落地页",
       "forms_page_design_deleted": "已删除落地页",
       "responses_export_downloaded": "已下载导出",
-      "responses_export_deleted": "已删除导出"
+      "responses_export_deleted": "已删除导出",
+      "data_connection_created": "已添加连接",
+      "data_connection_updated": "已更改连接",
+      "data_connection_tested": "已测试连接",
+      "data_connection_duplicated": "已复制连接",
+      "data_connection_enabled": "已启用连接",
+      "data_connection_disabled": "已停用连接",
+      "data_connection_deleted": "已删除连接",
+      "data_credentials_changed": "已更改连接凭据"
     },
     "detail": {
       "who": "谁",
@@ -2838,6 +2877,556 @@
       "destinations": "选择每个表单发送回复的位置，并将字段映射到列。",
       "transfers": "将文件导入表中，并导出表或查询结果。",
       "activity": "每个连接的投递、失败和最近查询。"
+    },
+    "add": "添加连接",
+    "search": "搜索连接、服务器或数据库…",
+    "emptyTitle": "还没有连接",
+    "emptyDesc": "连接您的数据库，即可将表单数据发送到其中并在此处理。在此期间，Formalie 内置存储照常工作。",
+    "notFound": "此连接不可用",
+    "ms": "{n} 毫秒",
+    "checked": "检查于 {when}",
+    "neverChecked": "尚未检查",
+    "needsLook": "需要查看",
+    "uptime": "可用率（30 天）",
+    "uptimePercent": "每日可用率（%）",
+    "formsUsing": "发送到此处的表单",
+    "lastChecked": "上次检查",
+    "addedBy": "添加者",
+    "yes": "是",
+    "no": "否",
+    "secretSaved": "已保存",
+    "secretNotSet": "未设置",
+    "secretsChanged": "凭据上次更改于 {when}",
+    "enabled": "已启用",
+    "disabledLabel": "已停用",
+    "missingCount": "缺少 {n} 项权限 | 缺少 {n} 项权限",
+    "moreOptions": "更多选项",
+    "savedSecret": "已保存。留空则保持不变",
+    "showSecret": "显示",
+    "hideSecret": "隐藏",
+    "loadFile": "从文件加载",
+    "col": {
+      "connection": "连接",
+      "status": "状态"
+    },
+    "sort": {
+      "checked": "最近检查",
+      "uptime": "可用率最低优先",
+      "operations": "最繁忙",
+      "newest": "最新优先"
+    },
+    "kpi": {
+      "activity": "活动",
+      "operations": "操作",
+      "latency": "响应时间",
+      "missing": "缺少的权限",
+      "byStatus": "按状态统计连接",
+      "needLook": "{n} 个需要查看"
+    },
+    "actions": {
+      "open": "打开",
+      "edit": "编辑连接",
+      "duplicate": "复制",
+      "copyLink": "复制链接",
+      "delete": "删除连接",
+      "deleteInUse": "有表单发送到此处，无法删除",
+      "test": "立即测试",
+      "enable": "启用",
+      "disable": "停用"
+    },
+    "toast": {
+      "created": "已添加连接“{name}”",
+      "saved": "连接已保存",
+      "enabled": "连接已启用",
+      "disabled": "连接已停用",
+      "duplicated": "连接已复制。请输入其密码后使用",
+      "deleted": "连接已删除",
+      "linkCopied": "链接已复制"
+    },
+    "disable": {
+      "title": "停用“{name}”？",
+      "desc": "Formalie 将停止使用此数据库：不再进行健康检查，也不发送或读取数据。您可以随时重新启用。",
+      "confirm": "停用"
+    },
+    "delete": {
+      "title": "删除“{name}”？",
+      "desc": "其设置和已保存的凭据将从 Formalie 中删除。您的数据库不会有任何变化。",
+      "confirm": "删除连接"
+    },
+    "detail": {
+      "groups": "显示",
+      "all": "全部",
+      "connection": "连接",
+      "security": "安全",
+      "permissions": "权限",
+      "health": "健康状况",
+      "permissionsFrom": "由上次测试检查，{when}。",
+      "permissionsUntested": "尚未测试。测试连接以检查每项权限。",
+      "howToGrant": "授权语句",
+      "noChecks": "暂无健康检查。",
+      "navigate": "在连接之间切换",
+      "previous": "上一个连接",
+      "next": "下一个连接"
+    },
+    "egress": {
+      "title": "允许 Formalie 的地址",
+      "desc": "Formalie 从这些地址发起连接。请在数据库的防火墙或安全组中允许它们。",
+      "copy": "复制 {ip}"
+    },
+    "engineDesc": {
+      "mysql": "端口 3306 · TLS 模式最高可验证身份 · SSH 隧道",
+      "mariadb": "端口 3306 · TLS 模式最高可验证身份 · SSH 隧道",
+      "oracle": "端口 1521 · 服务名、SID 或描述符 · TCPS 或原生加密",
+      "postgresql": "端口 5432 · 架构 · sslmode 最高可达 verify-full · SSH 隧道",
+      "sqlserver": "端口 1433 · 实例 · SQL 或 Microsoft Entra 登录 · 严格加密"
+    },
+    "field": {
+      "host": "服务器地址",
+      "port": "端口",
+      "database": "数据库",
+      "schema": "架构",
+      "charset": "字符集",
+      "time_zone": "会话时区",
+      "connect_timeout": "连接超时（秒）",
+      "username": "用户名",
+      "password": "密码",
+      "ssl_mode": "加密（TLS）",
+      "ca_certificate": "CA 证书",
+      "client_certificate": "客户端证书",
+      "client_key": "客户端私钥",
+      "ssh": "通过 SSH 隧道连接",
+      "ssh_host": "SSH 服务器",
+      "ssh_port": "SSH 端口",
+      "ssh_username": "SSH 用户",
+      "ssh_private_key": "SSH 私钥",
+      "ssh_passphrase": "密钥口令",
+      "target_session_attrs": "使用的服务器",
+      "instance": "实例名",
+      "application_intent": "应用程序意向",
+      "multi_subnet_failover": "多子网故障转移",
+      "auth": "登录方式",
+      "tenant_id": "目录（租户）ID",
+      "client_id": "应用程序（客户端）ID",
+      "client_secret": "客户端密码",
+      "encrypt": "加密",
+      "trust_server_certificate": "信任服务器证书而不检查",
+      "host_name_in_certificate": "证书中的主机名",
+      "connect_by": "连接方式",
+      "service_name": "服务名",
+      "sid": "SID",
+      "descriptor": "连接描述符",
+      "protocol": "协议",
+      "network_encryption": "原生网络加密",
+      "ssl_server_dn_match": "检查服务器证书名称"
+    },
+    "hint": {
+      "host": "Formalie 服务器可访问的主机名或 IP 地址。私有网络请使用 SSH 隧道。",
+      "connect_timeout": "放弃之前等待服务器的时间。",
+      "username": "为 Formalie 专设的账户，切勿使用管理员账户。",
+      "ca_certificate": "粘贴签发服务器证书的证书颁发机构的 PEM 文本。",
+      "client_certificate": "仅当服务器要求客户端证书（双向 TLS）时填写。",
+      "client_key": "客户端证书的私钥，PEM 格式。",
+      "ssh": "适用于私有网络中的数据库：Formalie 连接到您允许的服务器，由其转发到数据库。",
+      "ssh_private_key": "SSH 用户的 PEM 私钥。请使用仅供 Formalie 使用的密钥。",
+      "time_zone": "日期按此时区发送和读取。推荐使用 UTC（+00:00）。",
+      "target_session_attrs": "适用于集群：Formalie 可以使用哪台服务器。",
+      "trust_server_certificate": "不推荐：中间的任何人都可能读取流量。仅用于测试。",
+      "host_name_in_certificate": "当证书颁发给与服务器地址不同的名称时填写。",
+      "multi_subnet_failover": "为跨子网的 Always On 可用性组提供更快的故障转移。",
+      "descriptor": "Easy Connect 或完整的 TNS 描述符，与 tnsnames.ora 中的一致。",
+      "schema": "Formalie 默认查找表的位置。",
+      "postgresql": {
+        "schema": "Formalie 默认查找表的位置（搜索路径）。",
+        "ssl_mode": "require 会加密；verify-full 还会检查证书和主机名（推荐）。"
+      },
+      "mysql": {
+        "ssl_mode": "“必需”会加密；“验证身份”还会检查证书和主机名（推荐）。"
+      },
+      "mariadb": {
+        "ssl_mode": "“必需”会加密；“验证身份”还会检查证书和主机名（推荐）。"
+      },
+      "sqlserver": {
+        "instance": "仅适用于命名实例。端口保持不变，或填写该实例自己的端口。",
+        "schema": "Formalie 用户的默认架构。",
+        "encrypt": "“严格”使用 TDS 8.0 并始终检查证书（SQL Server 2022 和 Azure SQL）。"
+      },
+      "oracle": {
+        "schema": "Formalie 使用其表的架构（所有者）。留空：使用该用户自己的架构。",
+        "protocol": "TCPS 使用 TLS 加密（推荐）。TCP 依赖原生网络加密。"
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4（推荐）",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "关闭",
+        "preferred": "首选（尽可能加密）",
+        "required": "必需（加密）",
+        "verify_ca": "验证证书",
+        "verify_identity": "验证身份（推荐）",
+        "disable": "disable（关闭）",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require（加密）",
+        "verify-ca": "verify-ca（检查证书）",
+        "verify-full": "verify-full（推荐）"
+      },
+      "target_session_attrs": {
+        "any": "任意",
+        "read-write": "仅读写服务器",
+        "read-only": "仅只读服务器",
+        "primary": "主服务器",
+        "standby": "备用服务器",
+        "prefer-standby": "优先备用服务器"
+      },
+      "application_intent": {
+        "read_write": "读写",
+        "read_only": "只读（可读辅助副本）"
+      },
+      "auth": {
+        "sql": "SQL Server 账户",
+        "entra_password": "Microsoft Entra ID（密码）",
+        "entra_service_principal": "Microsoft Entra ID（服务主体）"
+      },
+      "encrypt": {
+        "mandatory": "强制（推荐）",
+        "strict": "严格（TDS 8.0）",
+        "optional": "可选（不加密）"
+      },
+      "connect_by": {
+        "service_name": "服务名",
+        "sid": "SID",
+        "descriptor": "连接描述符"
+      },
+      "protocol": {
+        "tcps": "TCPS（TLS）",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "必需",
+        "requested": "请求",
+        "accepted": "接受"
+      }
+    },
+    "invalid": {
+      "required": "请填写此项。",
+      "host": "请输入主机名或 IP 地址，不要包含 http:// 或端口。",
+      "host_blocked": "Formalie 无法连接到此地址。私有网络请使用 SSH 隧道。",
+      "port": "请输入 1 到 65535 之间的端口。",
+      "pem": "请粘贴完整的 PEM 文本，从 -----BEGIN 到 -----END。",
+      "identifier": "请使用字母、数字和下划线。",
+      "uuid": "请输入 Microsoft Entra 管理中心中显示的 ID。",
+      "seconds": "请输入 1 到 120 秒。",
+      "taken": "已存在同名连接。"
+    },
+    "level": {
+      "read": "读取",
+      "write": "写入",
+      "structure": "结构"
+    },
+    "levelDesc": {
+      "read": "浏览表、读取行、导出、运行只读查询",
+      "write": "发送表单回复、更新和删除行、导入",
+      "structure": "根据表单创建表，为新字段添加列"
+    },
+    "perm": {
+      "needed": "需要",
+      "notNeeded": "不需要",
+      "granted": "已授予",
+      "missing": "缺少",
+      "not_needed": "此连接不需要"
+    },
+    "op": {
+      "connect": {
+        "label": "登录",
+        "uses": "在数据库上打开会话"
+      },
+      "read_schema": {
+        "label": "读取结构",
+        "uses": "浏览器中的架构、表、列、键和索引"
+      },
+      "row_counts": {
+        "label": "统计行数",
+        "uses": "浏览器中的表大小"
+      },
+      "read_rows": {
+        "label": "读取行",
+        "uses": "浏览和导出表、只读查询、选项列表"
+      },
+      "cancel": {
+        "label": "取消自己的查询",
+        "uses": "停止运行过久的查询"
+      },
+      "insert": {
+        "label": "添加行",
+        "uses": "发送表单回复、导入、新行"
+      },
+      "update": {
+        "label": "更改行",
+        "uses": "按键更新或插入，在浏览器中编辑"
+      },
+      "delete": {
+        "label": "删除行",
+        "uses": "在浏览器中删除行"
+      },
+      "sequences": {
+        "label": "使用序列",
+        "uses": "为新行生成 ID"
+      },
+      "create_table": {
+        "label": "创建表",
+        "uses": "根据表单创建的表"
+      },
+      "alter_table": {
+        "label": "添加列",
+        "uses": "为表单新增字段添加的列"
+      },
+      "create_index": {
+        "label": "添加唯一键",
+        "uses": "更新或插入时用于匹配的键"
+      }
+    },
+    "grant": {
+      "intro": "请以数据库管理员身份运行这些语句。它们是根据此连接的数据库、架构和账户编写的。",
+      "copyAll": "全部复制",
+      "copied": "语句已复制",
+      "oracle23": "Oracle 23ai 或更高版本",
+      "oracle23Desc": "按架构授权。对于 19c 及更早版本请关闭（按表授权）。",
+      "block": {
+        "account": "1. 创建账户",
+        "read": "2. 读取",
+        "write": "3. 写入",
+        "structure": "4. 结构"
+      },
+      "note": {
+        "host_limit": "如果可以，请将 '%' 替换为 Formalie 的地址，使该账户只能从这些地址使用。",
+        "pool": "Formalie 最多同时打开 10 个连接。",
+        "default_privileges": "请以拥有这些表的角色运行，以便之后创建的表也能涵盖在内。",
+        "owner_alter": "Formalie 拥有其创建的表，并可为其添加列。现有表仍归您所有。",
+        "entra": "请使用 Microsoft Entra 账户登录后在数据库中运行。名称为 Entra 用户或应用程序。",
+        "contained": "在 Azure SQL Database 上，请改为创建包含的用户：CREATE USER ... WITH PASSWORD。",
+        "no_sysdba": "切勿为 Formalie 使用 SYS、SYSTEM 或 SYSDBA 角色。",
+        "oracle_new_tables": "之后添加的表也需要授权：再次运行此块，或使用 Oracle 23ai 架构授权。",
+        "oracle_own_schema": "在 23ai 之前，Formalie 在自己的架构中创建表，因此不需要您架构的任何权限。"
+      }
+    },
+    "step": {
+      "network": "访问服务器",
+      "ssh": "打开 SSH 隧道",
+      "tls": "加密连接",
+      "sign_in": "登录",
+      "database": "打开数据库",
+      "permissions": "检查权限"
+    },
+    "stepDesc": {
+      "network": "从 Formalie 服务器连接到该地址和端口。",
+      "ssh": "登录 SSH 服务器并转发到数据库。",
+      "tls": "建立 TLS 并检查证书。",
+      "sign_in": "使用该账户登录。",
+      "database": "打开数据库并读取其版本。",
+      "permissions": "检查此连接所需的每项权限。"
+    },
+    "fix": {
+      "FRM-DEST-1001": "检查地址和端口，并确认防火墙允许 Formalie 的地址。",
+      "FRM-DEST-1002": "检查用户名和密码，并确认该账户可从 Formalie 的地址登录。",
+      "FRM-DEST-1003": "检查加密设置和 CA 证书，并确认证书与服务器地址匹配。",
+      "FRM-DEST-1004": "检查 SSH 服务器、用户和私钥，并确认 SSH 服务器可以访问数据库。",
+      "FRM-DEST-1005": "检查数据库（或服务）名称，并确认该账户有权访问。",
+      "FRM-DEST-1006": "授予下方缺少的权限，然后重新测试。",
+      "FRM-DEST-1011": "服务器未及时响应。请检查地址、防火墙，或在“更多选项”中提高超时时间。"
+    },
+    "test": {
+      "heading": {
+        "running": "正在测试连接…",
+        "passed": "一切正常",
+        "warning": "可以使用，但有需要查看的地方",
+        "failed": "连接失败"
+      },
+      "version": "服务器版本",
+      "latency": "响应时间",
+      "schemas": "架构",
+      "tables": "表",
+      "skipped": "已跳过",
+      "tlsOff": "在这些设置下，流量未加密。",
+      "safe": "测试只读取，绝不会更改您的数据。"
+    },
+    "finding": {
+      "admin_account": {
+        "title": "这是管理员账户",
+        "desc": "请创建仅具有所列权限的专用账户，使 Formalie 永远不会超出所需范围。"
+      },
+      "extra_write": {
+        "title": "此账户可以更改数据",
+        "desc": "此连接为只读，Formalie 只会读取。为遵循最小权限原则，请移除其写入权限。"
+      },
+      "tls_off": {
+        "title": "流量未加密",
+        "desc": "请在“安全”中选择加密选项，以保护传输中的数据和密码。"
+      },
+      "trust_certificate": {
+        "title": "未检查服务器证书",
+        "desc": "请尽可能关闭“信任服务器证书”并添加 CA 证书。"
+      },
+      "missing_permissions": {
+        "title": "缺少部分权限",
+        "desc": "Formalie 中需要这些权限的功能将无法使用。授权语句位于“权限”中。"
+      }
+    },
+    "access": {
+      "legend": "Formalie 可以做什么",
+      "read_only": "只读",
+      "read_write": "读写",
+      "readOnlyDesc": "浏览、导出和运行只读查询。数据库中的任何内容都不会被更改。",
+      "readWriteDesc": "还可将表单回复发送到表中、编辑行和导入文件。",
+      "structure": "允许 Formalie 创建表和添加列",
+      "structureDesc": "用于表单目标：根据表单创建表，并为每个新字段添加列。绝不删除任何内容。",
+      "schemas": "Formalie 可使用的架构",
+      "databases": "Formalie 可使用的数据库",
+      "schemasHint": "每输入一个后按 Enter。留空：仅 {schema}。",
+      "databasesHint": "每输入一个后按 Enter。留空：仅 {schema}。",
+      "permissionsTitle": "需授予的权限",
+      "permissionsDesc": "只为账户授予这些权限，不多不少，确保所有功能正常且无法执行其他操作。",
+      "tabOperations": "Formalie 执行的操作",
+      "tabScript": "需运行的语句"
+    },
+    "summary": {
+      "engine": "数据库",
+      "address": "服务器",
+      "database": "数据库",
+      "account": "账户",
+      "security": "安全",
+      "access": "访问权限",
+      "descriptor": "连接描述符",
+      "encrypted": "已加密",
+      "notEncrypted": "未加密",
+      "ssh": "SSH 隧道",
+      "structure": "创建表",
+      "change": "更改{item}"
+    },
+    "wizard": {
+      "newCrumb": "添加连接",
+      "newTitle": "添加连接",
+      "newDesc": "逐步连接您的数据库",
+      "editCrumb": "编辑",
+      "editTitle": "编辑 {name}",
+      "editDesc": "更改设置，并在保存前进行测试",
+      "engineLegend": "数据库",
+      "builtInNote": "Formalie 内置加密存储仍为默认存储。连接是对它的补充。",
+      "stepOf": "第 {n} 步，共 {total} 步",
+      "step": {
+        "engine": "数据库",
+        "server": "服务器",
+        "signin": "登录",
+        "security": "安全",
+        "access": "访问权限",
+        "review": "命名并测试"
+      },
+      "title": {
+        "engine": "哪种数据库？",
+        "server": "它在哪里？",
+        "signin": "Formalie 如何登录？",
+        "security": "连接如何受保护？",
+        "access": "Formalie 可以做什么？",
+        "review": "命名并测试"
+      },
+      "desc": {
+        "engine": "每种数据库都有各自的设置。之后可以添加更多。",
+        "server": "Formalie 服务器访问您的 {engine} 数据库所用的地址。",
+        "signin": "请使用为 Formalie 专设的账户。密码会被加密，且不再显示。",
+        "security": "加密，以及用于私有网络的 SSH 隧道。",
+        "access": "从只读开始。需授予的权限取决于您的选择。",
+        "review": "测试从 Formalie 服务器运行，且只读取。"
+      },
+      "name": "名称",
+      "nameDesc": "此连接在 Formalie 中显示的名称。",
+      "namePlaceholder": "例如：案件管理",
+      "testTitle": "测试连接",
+      "testDesc": "检查每个步骤和每项权限。在您保存之前不会保存任何内容。",
+      "test": "测试连接",
+      "testAgain": "重新测试",
+      "fixStep": "修复：{step}",
+      "save": "保存连接",
+      "testAndSave": "测试并保存",
+      "saveAnyway": "仍然保存",
+      "saveFailedTitle": "保存未通过测试的连接？",
+      "saveFailedDesc": "它将显示为失败，在测试通过前 Formalie 不会使用它。",
+      "leaveTitle": "不保存就离开？",
+      "leaveDesc": "您输入的连接设置将会丢失。",
+      "leave": "离开"
+    },
+    "help": {
+      "engine": {
+        "title": "您需要准备",
+        "p1": "服务器地址和端口，以及数据库名称。",
+        "p2": "为 Formalie 专设的账户。创建它的具体语句将在“访问权限”步骤中提供。",
+        "p3": "在防火墙中允许 Formalie 的地址（见下方）。",
+        "p4": "对于私有网络中的数据库：一台 Formalie 可使用的 SSH 服务器。"
+      },
+      "server": {
+        "title": "访问您的数据库",
+        "p1": "请使用可从互联网访问的地址，而不是内部网络地址。",
+        "p2": "在数据库端口上允许 Formalie 的地址。",
+        "p3": "只有私有网络？请在“安全”步骤中添加 SSH 隧道。"
+      },
+      "signin": {
+        "title": "专用账户",
+        "p1": "切勿使用管理员账户。如果使用，测试会发出警告。",
+        "p2": "“访问权限”步骤会生成语句，以恰当的权限创建该账户。",
+        "p3": "凭据以加密方式发送和存储，且不再显示。",
+        "sqlserver": {
+          "p1": "SQL Server 账户：带密码的登录名。",
+          "p2": "Microsoft Entra ID：带密码的用户，或带客户端密码的应用程序（服务主体）。",
+          "p3": "“访问权限”步骤会生成语句，以恰当的权限创建其中任意一种。"
+        }
+      },
+      "security": {
+        "title": "保护连接",
+        "p1": "始终加密。检查证书还能证明您连接的是正确的服务器。",
+        "p2": "SSH 隧道通过您允许的服务器访问私有数据库。",
+        "p3": "密钥和证书以加密方式保存在 Formalie 服务器上。",
+        "postgresql": {
+          "p1": "require 会加密流量。",
+          "p2": "verify-full 还会检查证书和主机名（推荐）。",
+          "p3": "使用 verify-ca 和 verify-full 时请粘贴 CA 证书。"
+        },
+        "mysql": {
+          "p1": "“必需”会加密流量。",
+          "p2": "“验证身份”还会检查证书和主机名（推荐）。",
+          "p3": "使用验证选项时请添加 CA 证书。"
+        },
+        "mariadb": {
+          "p1": "“必需”会加密流量。",
+          "p2": "“验证身份”还会检查证书和主机名（推荐）。",
+          "p3": "使用验证选项时请添加 CA 证书。"
+        },
+        "sqlserver": {
+          "p1": "“强制”会加密并检查证书。",
+          "p2": "“严格”（TDS 8.0）在登录前即加密，适用于 SQL Server 2022 和 Azure SQL。",
+          "p3": "不检查即信任证书仅适用于测试。"
+        },
+        "oracle": {
+          "p1": "TCPS 使用 TLS 加密，推荐使用。",
+          "p2": "使用 TCP 时，请在两端将原生网络加密设为“必需”。",
+          "p3": "使用 TCPS 时，请粘贴钱包中的 CA 证书。"
+        }
+      },
+      "access": {
+        "title": "最小权限",
+        "p1": "只授予此连接使用的权限。任何需要更多权限的功能都会告知您。",
+        "p2": "无论请求什么，只读模式都不会更改您的数据。",
+        "p3": "Formalie 绝不删除表或列。",
+        "p4": "每次查询、更改、导入和导出都会记录在审计日志中。"
+      },
+      "review": {
+        "title": "测试检查的内容",
+        "p1": "Formalie 服务器能否访问该地址和端口。",
+        "p2": "加密、证书和登录。",
+        "p3": "数据库能否打开，以及此连接所需的每项权限。",
+        "p4": "测试只读取：您的数据库不会有任何变化。"
+      }
     }
   },
   "apiService": {

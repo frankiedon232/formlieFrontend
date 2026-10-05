@@ -19,7 +19,8 @@
     "goHome": "Vai alla home",
     "confirm": "Conferma",
     "copy": "Copia",
-    "copied": "Copiato"
+    "copied": "Copiato",
+    "next": "Avanti"
   },
   "placeholder": {
     "title": "Presto disponibile",
@@ -403,7 +404,13 @@
     "pagesSaved": "Salvate",
     "pagesCreated": "Create",
     "folders": "Cartelle",
-    "foldersAll": "Tutte le cartelle"
+    "foldersAll": "Tutte le cartelle",
+    "connectionsAll": "Tutto",
+    "connectionsConnected": "Connesse",
+    "connectionsAttention": "Da controllare",
+    "connectionsFailing": "In errore",
+    "connectionsDisabled": "Disattivate",
+    "connectionsNew": "Aggiungi connessione"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "Non è stato possibile confermare che questa risposta sia stata inviata da una persona. Riprova.",
     "FRM-FORM-1017": "La password non è corretta.",
     "FRM-FORM-1018": "Questo link di invito non è più valido.",
-    "FRM-FORM-1019": "L’accesso a questo modulo è scaduto. Acceda di nuovo."
+    "FRM-FORM-1019": "L’accesso a questo modulo è scaduto. Acceda di nuovo.",
+    "FRM-DEST-1002": "Il database non ha accettato il nome utente o la password.",
+    "FRM-DEST-1003": "Non è stato possibile stabilire la connessione crittografata (certificato o impostazioni TLS).",
+    "FRM-DEST-1004": "Impossibile aprire il tunnel SSH.",
+    "FRM-DEST-1005": "Il database o lo schema non è stato trovato, oppure questo account non può usarlo.",
+    "FRM-DEST-1006": "Mancano alcuni permessi necessari a questa connessione.",
+    "FRM-DEST-1007": "Esiste già una connessione con questo nome.",
+    "FRM-DEST-1008": "Questo test di connessione non è più disponibile. Eseguitelo di nuovo.",
+    "FRM-DEST-1009": "Questa connessione è disattivata. Attivatela prima.",
+    "FRM-DEST-1010": "Alcuni moduli inviano ancora le risposte a questa connessione.",
+    "FRM-DEST-1011": "Il database ha impiegato troppo tempo a rispondere."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -576,7 +593,12 @@
     "new": "Nuova",
     "reviewed": "Esaminata",
     "approved": "Approvata",
-    "rejected": "Respinta"
+    "rejected": "Respinta",
+    "connected": "Connessa",
+    "attention": "Da controllare",
+    "failing": "In errore",
+    "disabled": "Disattivata",
+    "untested": "Non testata"
   },
   "footer": {
     "rights": "Tutti i diritti riservati.",
@@ -767,7 +789,8 @@
       "settings": "Impostazioni",
       "users": "Utenti",
       "integrations": "Integrazioni",
-      "audit": "Registro di audit"
+      "audit": "Registro di audit",
+      "data": "Origini dati"
     },
     "actorType": {
       "user": "Persona",
@@ -794,7 +817,8 @@
       "saved_field": "Campo salvato",
       "option_list": "Elenco di opzioni",
       "theme": "Tema",
-      "template": "Modello"
+      "template": "Modello",
+      "data_source": "Connessione"
     },
     "field": {
       "name": "Nome",
@@ -817,7 +841,14 @@
       "number_format": "Formato numeri",
       "week_start": "Primo giorno della settimana",
       "tags": "Tag",
-      "colour": "Colore"
+      "colour": "Colore",
+      "engine": "Tipo di database",
+      "host": "Indirizzo del server",
+      "port": "Porta",
+      "database": "Database",
+      "access": "Accesso",
+      "credentials": "Credenziali",
+      "security": "Impostazioni di connessione"
     },
     "action": {
       "auth_login_succeeded": "Accesso effettuato",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "Landing page aggiornata",
       "forms_page_design_deleted": "Landing page eliminata",
       "responses_export_downloaded": "Esportazione scaricata",
-      "responses_export_deleted": "Esportazione eliminata"
+      "responses_export_deleted": "Esportazione eliminata",
+      "data_connection_created": "Connessione aggiunta",
+      "data_connection_updated": "Connessione modificata",
+      "data_connection_tested": "Connessione testata",
+      "data_connection_duplicated": "Connessione duplicata",
+      "data_connection_enabled": "Connessione attivata",
+      "data_connection_disabled": "Connessione disattivata",
+      "data_connection_deleted": "Connessione eliminata",
+      "data_credentials_changed": "Credenziali della connessione modificate"
     },
     "detail": {
       "who": "Chi",
@@ -2838,6 +2877,556 @@
       "destinations": "Scegliete dove ogni modulo invia le risposte e associate i campi alle colonne.",
       "transfers": "Importate file nelle tabelle ed esportate tabelle o risultati delle query.",
       "activity": "Consegne, errori e query recenti per ogni connessione."
+    },
+    "add": "Aggiungi connessione",
+    "search": "Cerca connessioni, server o database…",
+    "emptyTitle": "Ancora nessuna connessione",
+    "emptyDesc": "Collegate uno dei vostri database per inviargli i dati dei moduli e lavorarci qui. Nel frattempo l’archiviazione integrata di Formalie continua a funzionare.",
+    "notFound": "Questa connessione non è disponibile",
+    "ms": "{n} ms",
+    "checked": "Controllata {when}",
+    "neverChecked": "Non ancora controllata",
+    "needsLook": "Da controllare",
+    "uptime": "Disponibilità (30 giorni)",
+    "uptimePercent": "Disponibilità giornaliera (%)",
+    "formsUsing": "Moduli che vi inviano dati",
+    "lastChecked": "Ultimo controllo",
+    "addedBy": "Aggiunta da",
+    "yes": "Sì",
+    "no": "No",
+    "secretSaved": "Salvato",
+    "secretNotSet": "Non impostato",
+    "secretsChanged": "Credenziali modificate l’ultima volta {when}",
+    "enabled": "Attivata",
+    "disabledLabel": "Disattivata",
+    "missingCount": "{n} permesso mancante | {n} permessi mancanti",
+    "moreOptions": "Altre opzioni",
+    "savedSecret": "Salvato. Lasciate vuoto per mantenerlo",
+    "showSecret": "Mostra",
+    "hideSecret": "Nascondi",
+    "loadFile": "Carica da un file",
+    "col": {
+      "connection": "Connessione",
+      "status": "Stato"
+    },
+    "sort": {
+      "checked": "Controllate di recente",
+      "uptime": "Disponibilità più bassa prima",
+      "operations": "Più attive",
+      "newest": "Più recenti prima"
+    },
+    "kpi": {
+      "activity": "Attività",
+      "operations": "Operazioni",
+      "latency": "Tempo di risposta",
+      "missing": "Permessi mancanti",
+      "byStatus": "Connessioni per stato",
+      "needLook": "{n} da controllare"
+    },
+    "actions": {
+      "open": "Apri",
+      "edit": "Modifica connessione",
+      "duplicate": "Duplica",
+      "copyLink": "Copia link",
+      "delete": "Elimina connessione",
+      "deleteInUse": "Usata da alcuni moduli, impossibile eliminarla",
+      "test": "Testa ora",
+      "enable": "Attiva",
+      "disable": "Disattiva"
+    },
+    "toast": {
+      "created": "Connessione «{name}» aggiunta",
+      "saved": "Connessione salvata",
+      "enabled": "Connessione attivata",
+      "disabled": "Connessione disattivata",
+      "duplicated": "Connessione duplicata. Inserite la password per usarla",
+      "deleted": "Connessione eliminata",
+      "linkCopied": "Link copiato"
+    },
+    "disable": {
+      "title": "Disattivare «{name}»?",
+      "desc": "Formalie smette di usare questo database: nessun controllo di stato, nessun dato inviato o letto. Potete riattivarla in qualsiasi momento.",
+      "confirm": "Disattiva"
+    },
+    "delete": {
+      "title": "Eliminare «{name}»?",
+      "desc": "Le impostazioni e le credenziali salvate vengono rimosse da Formalie. Nel vostro database non cambia nulla.",
+      "confirm": "Elimina connessione"
+    },
+    "detail": {
+      "groups": "Mostra",
+      "all": "Tutto",
+      "connection": "Connessione",
+      "security": "Sicurezza",
+      "permissions": "Permessi",
+      "health": "Stato di salute",
+      "permissionsFrom": "Controllati dall’ultimo test, {when}.",
+      "permissionsUntested": "Non ancora testata. Testate la connessione per controllare ogni permesso.",
+      "howToGrant": "Istruzioni per concederli",
+      "noChecks": "Ancora nessun controllo di stato.",
+      "navigate": "Spostati tra le connessioni",
+      "previous": "Connessione precedente",
+      "next": "Connessione successiva"
+    },
+    "egress": {
+      "title": "Consentite gli indirizzi di Formalie",
+      "desc": "Formalie si collega da questi indirizzi. Consentiteli nel firewall o nel gruppo di sicurezza del vostro database.",
+      "copy": "Copia {ip}"
+    },
+    "engineDesc": {
+      "mysql": "Porta 3306 · modalità TLS fino alla verifica dell’identità · tunnel SSH",
+      "mariadb": "Porta 3306 · modalità TLS fino alla verifica dell’identità · tunnel SSH",
+      "oracle": "Porta 1521 · nome del servizio, SID o descrittore · TCPS o crittografia nativa",
+      "postgresql": "Porta 5432 · schemi · sslmode fino a verify-full · tunnel SSH",
+      "sqlserver": "Porta 1433 · istanze · accesso SQL o Microsoft Entra · crittografia rigorosa"
+    },
+    "field": {
+      "host": "Indirizzo del server",
+      "port": "Porta",
+      "database": "Database",
+      "schema": "Schema",
+      "charset": "Set di caratteri",
+      "time_zone": "Fuso orario della sessione",
+      "connect_timeout": "Tempo limite di connessione (secondi)",
+      "username": "Nome utente",
+      "password": "Password",
+      "ssl_mode": "Crittografia (TLS)",
+      "ca_certificate": "Certificato CA",
+      "client_certificate": "Certificato client",
+      "client_key": "Chiave privata del client",
+      "ssh": "Collegati tramite un tunnel SSH",
+      "ssh_host": "Server SSH",
+      "ssh_port": "Porta SSH",
+      "ssh_username": "Utente SSH",
+      "ssh_private_key": "Chiave privata SSH",
+      "ssh_passphrase": "Passphrase della chiave",
+      "target_session_attrs": "Server da usare",
+      "instance": "Nome dell’istanza",
+      "application_intent": "Finalità dell’applicazione",
+      "multi_subnet_failover": "Failover multi-subnet",
+      "auth": "Accedi con",
+      "tenant_id": "ID directory (tenant)",
+      "client_id": "ID applicazione (client)",
+      "client_secret": "Segreto client",
+      "encrypt": "Crittografia",
+      "trust_server_certificate": "Considera attendibile il certificato del server senza verificarlo",
+      "host_name_in_certificate": "Nome host nel certificato",
+      "connect_by": "Collegati tramite",
+      "service_name": "Nome del servizio",
+      "sid": "SID",
+      "descriptor": "Descrittore di connessione",
+      "protocol": "Protocollo",
+      "network_encryption": "Crittografia di rete nativa",
+      "ssl_server_dn_match": "Verifica il nome del certificato del server"
+    },
+    "hint": {
+      "host": "Nome host o indirizzo IP, come lo raggiungono i server di Formalie. Reti private: usate un tunnel SSH.",
+      "connect_timeout": "Quanto attendere il server prima di rinunciare.",
+      "username": "Un account dedicato a Formalie, mai un amministratore.",
+      "ca_certificate": "Incollate il testo PEM dell’autorità di certificazione che ha firmato il certificato del server.",
+      "client_certificate": "Solo se il server richiede un certificato client (TLS reciproco).",
+      "client_key": "La chiave privata del certificato client, in formato PEM.",
+      "ssh": "Per un database in una rete privata: Formalie si collega a un server da voi autorizzato, che inoltra al database.",
+      "ssh_private_key": "Chiave privata PEM dell’utente SSH. Usate una chiave creata solo per Formalie.",
+      "time_zone": "Le date vengono inviate e lette in questo fuso orario. Si consiglia UTC (+00:00).",
+      "target_session_attrs": "Per i cluster: quale server può usare Formalie.",
+      "trust_server_certificate": "Sconsigliato: chiunque si trovi nel mezzo potrebbe leggere il traffico. Usatelo solo per i test.",
+      "host_name_in_certificate": "Quando il certificato è emesso per un nome diverso dall’indirizzo del server.",
+      "multi_subnet_failover": "Failover più rapido per i gruppi di disponibilità Always On distribuiti su più subnet.",
+      "descriptor": "Easy Connect o un descrittore TNS completo, come in tnsnames.ora.",
+      "schema": "Dove Formalie cerca le tabelle per impostazione predefinita.",
+      "postgresql": {
+        "schema": "Dove Formalie cerca le tabelle per impostazione predefinita (percorso di ricerca).",
+        "ssl_mode": "require crittografa; verify-full controlla anche il certificato e il nome host (consigliato)."
+      },
+      "mysql": {
+        "ssl_mode": "Obbligatoria crittografa; Verifica identità controlla anche il certificato e il nome host (consigliato)."
+      },
+      "mariadb": {
+        "ssl_mode": "Obbligatoria crittografa; Verifica identità controlla anche il certificato e il nome host (consigliato)."
+      },
+      "sqlserver": {
+        "instance": "Solo per un’istanza denominata. Lasciate la porta com’è, oppure indicate la porta dell’istanza.",
+        "schema": "Schema predefinito per l’utente Formalie.",
+        "encrypt": "Rigorosa usa TDS 8.0 e verifica sempre il certificato (SQL Server 2022 e Azure SQL)."
+      },
+      "oracle": {
+        "schema": "Lo schema (proprietario) di cui Formalie usa le tabelle. Vuoto: quello dell’utente.",
+        "protocol": "TCPS crittografa con TLS (consigliato). TCP si affida alla crittografia di rete nativa."
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4 (consigliato)",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "Disattivata",
+        "preferred": "Preferita (crittografa se possibile)",
+        "required": "Obbligatoria (crittografa)",
+        "verify_ca": "Verifica certificato",
+        "verify_identity": "Verifica identità (consigliato)",
+        "disable": "disable (disattivata)",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require (crittografa)",
+        "verify-ca": "verify-ca (verifica il certificato)",
+        "verify-full": "verify-full (consigliato)"
+      },
+      "target_session_attrs": {
+        "any": "Qualsiasi",
+        "read-write": "Solo lettura e scrittura",
+        "read-only": "Solo in sola lettura",
+        "primary": "Primario",
+        "standby": "Standby",
+        "prefer-standby": "Standby se disponibile"
+      },
+      "application_intent": {
+        "read_write": "Lettura e scrittura",
+        "read_only": "Sola lettura (secondaria leggibile)"
+      },
+      "auth": {
+        "sql": "Account SQL Server",
+        "entra_password": "Microsoft Entra ID (password)",
+        "entra_service_principal": "Microsoft Entra ID (entità servizio)"
+      },
+      "encrypt": {
+        "mandatory": "Obbligatoria (consigliato)",
+        "strict": "Rigorosa (TDS 8.0)",
+        "optional": "Facoltativa (non crittografata)"
+      },
+      "connect_by": {
+        "service_name": "Nome del servizio",
+        "sid": "SID",
+        "descriptor": "Descrittore di connessione"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "Obbligatoria",
+        "requested": "Richiesta",
+        "accepted": "Accettata"
+      }
+    },
+    "invalid": {
+      "required": "Compilate questo campo.",
+      "host": "Inserite un nome host o un indirizzo IP, senza http:// né porta.",
+      "host_blocked": "Formalie non può collegarsi a questo indirizzo. Per una rete privata, usate un tunnel SSH.",
+      "port": "Inserite una porta da 1 a 65535.",
+      "pem": "Incollate il testo PEM completo, da -----BEGIN a -----END.",
+      "identifier": "Usate lettere, numeri e trattini bassi.",
+      "uuid": "Inserite l’ID come mostrato nell’interfaccia di amministrazione di Microsoft Entra.",
+      "seconds": "Inserite da 1 a 120 secondi.",
+      "taken": "Esiste già una connessione con questo nome."
+    },
+    "level": {
+      "read": "Lettura",
+      "write": "Scrittura",
+      "structure": "Struttura"
+    },
+    "levelDesc": {
+      "read": "Sfogliare tabelle, leggere righe, esportare, eseguire query di lettura",
+      "write": "Inviare le risposte dei moduli, aggiornare ed eliminare righe, importare",
+      "structure": "Creare tabelle da un modulo, aggiungere colonne per i nuovi campi"
+    },
+    "perm": {
+      "needed": "Necessario",
+      "notNeeded": "Non necessario",
+      "granted": "Concesso",
+      "missing": "Mancante",
+      "not_needed": "Non necessario per questa connessione"
+    },
+    "op": {
+      "connect": {
+        "label": "Accedere",
+        "uses": "Aprire una sessione sul database"
+      },
+      "read_schema": {
+        "label": "Leggere la struttura",
+        "uses": "Schemi, tabelle, colonne, chiavi e indici nell’esploratore"
+      },
+      "row_counts": {
+        "label": "Contare le righe",
+        "uses": "Dimensioni delle tabelle nell’esploratore"
+      },
+      "read_rows": {
+        "label": "Leggere le righe",
+        "uses": "Sfogliare ed esportare tabelle, query di lettura, elenchi di opzioni"
+      },
+      "cancel": {
+        "label": "Annullare le proprie query",
+        "uses": "Fermare una query che dura troppo"
+      },
+      "insert": {
+        "label": "Aggiungere righe",
+        "uses": "Invio delle risposte dei moduli, importazioni, nuove righe"
+      },
+      "update": {
+        "label": "Modificare righe",
+        "uses": "Aggiornamento o inserimento su una chiave, modifiche nell’esploratore"
+      },
+      "delete": {
+        "label": "Eliminare righe",
+        "uses": "Eliminazione di righe nell’esploratore"
+      },
+      "sequences": {
+        "label": "Usare le sequenze",
+        "uses": "ID generati per le nuove righe"
+      },
+      "create_table": {
+        "label": "Creare tabelle",
+        "uses": "Una tabella creata da un modulo"
+      },
+      "alter_table": {
+        "label": "Aggiungere colonne",
+        "uses": "Una colonna per un campo aggiunto al modulo"
+      },
+      "create_index": {
+        "label": "Aggiungere una chiave univoca",
+        "uses": "La chiave su cui si basa un aggiornamento o inserimento"
+      }
+    },
+    "grant": {
+      "intro": "Eseguitele come amministratore del database. Sono scritte per il database, gli schemi e l’account di questa connessione.",
+      "copyAll": "Copia tutto",
+      "copied": "Istruzioni copiate",
+      "oracle23": "Oracle 23ai o successivo",
+      "oracle23Desc": "Permessi per schema. Disattivate per 19c e versioni precedenti (permessi per tabella).",
+      "block": {
+        "account": "1. Creare l’account",
+        "read": "2. Lettura",
+        "write": "3. Scrittura",
+        "structure": "4. Struttura"
+      },
+      "note": {
+        "host_limit": "Se possibile, sostituite '%' con gli indirizzi di Formalie, così l’account funziona solo da lì.",
+        "pool": "Formalie apre al massimo 10 connessioni alla volta.",
+        "default_privileges": "Eseguite come il ruolo proprietario delle tabelle, così sono coperte anche le tabelle create in seguito.",
+        "owner_alter": "Formalie è proprietario delle tabelle che crea e può aggiungervi colonne. Le tabelle esistenti restano vostre.",
+        "entra": "Eseguite nel database dopo aver effettuato l’accesso con un account Microsoft Entra. Il nome è quello dell’utente o dell’applicazione Entra.",
+        "contained": "Su Azure SQL Database, create invece un utente indipendente: CREATE USER ... WITH PASSWORD.",
+        "no_sysdba": "Non usate mai SYS, SYSTEM o il ruolo SYSDBA per Formalie.",
+        "oracle_new_tables": "Anche le tabelle aggiunte in seguito richiedono il permesso: eseguite di nuovo il blocco, oppure usate i permessi per schema di Oracle 23ai.",
+        "oracle_own_schema": "Prima di 23ai, Formalie crea le sue tabelle nel proprio schema, quindi non gli servono diritti sui vostri."
+      }
+    },
+    "step": {
+      "network": "Raggiungere il server",
+      "ssh": "Aprire il tunnel SSH",
+      "tls": "Crittografare la connessione",
+      "sign_in": "Accedere",
+      "database": "Aprire il database",
+      "permissions": "Controllare i permessi"
+    },
+    "stepDesc": {
+      "network": "Connessione dai server di Formalie all’indirizzo e alla porta.",
+      "ssh": "Accesso al server SSH e inoltro al database.",
+      "tls": "Configurazione di TLS e verifica del certificato.",
+      "sign_in": "Accesso con l’account.",
+      "database": "Apertura del database e lettura della sua versione.",
+      "permissions": "Controllo di ogni permesso necessario a questa connessione."
+    },
+    "fix": {
+      "FRM-DEST-1001": "Controllate indirizzo e porta, e che il firewall consenta gli indirizzi di Formalie.",
+      "FRM-DEST-1002": "Controllate nome utente e password, e che l’account possa accedere dagli indirizzi di Formalie.",
+      "FRM-DEST-1003": "Controllate l’impostazione di crittografia e il certificato CA, e che il certificato corrisponda all’indirizzo del server.",
+      "FRM-DEST-1004": "Controllate server SSH, utente e chiave privata, e che il server SSH possa raggiungere il database.",
+      "FRM-DEST-1005": "Controllate il nome del database (o del servizio), e che l’account vi abbia accesso.",
+      "FRM-DEST-1006": "Concedete i permessi mancanti qui sotto, poi testate di nuovo.",
+      "FRM-DEST-1011": "Il server non ha risposto in tempo. Controllate l’indirizzo, il firewall, oppure aumentate il tempo limite in Altre opzioni."
+    },
+    "test": {
+      "heading": {
+        "running": "Test della connessione…",
+        "passed": "Tutto funziona",
+        "warning": "Funziona, con qualcosa da controllare",
+        "failed": "La connessione non ha funzionato"
+      },
+      "version": "Versione del server",
+      "latency": "Tempo di risposta",
+      "schemas": "Schemi",
+      "tables": "Tabelle",
+      "skipped": "Saltato",
+      "tlsOff": "Con queste impostazioni il traffico non è crittografato.",
+      "safe": "Il test legge soltanto. Non modifica mai i vostri dati."
+    },
+    "finding": {
+      "admin_account": {
+        "title": "Questo è un account amministratore",
+        "desc": "Create un account dedicato con solo i permessi elencati, così Formalie non potrà mai fare più del necessario."
+      },
+      "extra_write": {
+        "title": "Questo account può modificare i dati",
+        "desc": "La connessione è in sola lettura, quindi Formalie leggerà soltanto. Per il privilegio minimo, rimuovete i suoi permessi di scrittura."
+      },
+      "tls_off": {
+        "title": "Il traffico non è crittografato",
+        "desc": "Scegliete un’opzione con crittografia in Sicurezza, così dati e password sono protetti durante il transito."
+      },
+      "trust_certificate": {
+        "title": "Il certificato del server non viene verificato",
+        "desc": "Disattivate «Considera attendibile il certificato del server» e aggiungete il certificato CA appena possibile."
+      },
+      "missing_permissions": {
+        "title": "Mancano alcuni permessi",
+        "desc": "Le parti di Formalie che li richiedono non funzioneranno. Le istruzioni per concederli sono in Permessi."
+      }
+    },
+    "access": {
+      "legend": "Cosa può fare Formalie",
+      "read_only": "Sola lettura",
+      "read_write": "Lettura e scrittura",
+      "readOnlyDesc": "Sfogliare, esportare ed eseguire query di lettura. Nel database non può cambiare nulla.",
+      "readWriteDesc": "Inoltre inviare le risposte dei moduli alle tabelle, modificare righe e importare file.",
+      "structure": "Consenti a Formalie di creare tabelle e aggiungere colonne",
+      "structureDesc": "Per le destinazioni dei moduli: una tabella creata da un modulo e una colonna per ogni nuovo campo. Non elimina mai nulla.",
+      "schemas": "Schemi che Formalie può usare",
+      "databases": "Database che Formalie può usare",
+      "schemasHint": "Premete Invio dopo ciascuno. Vuoto: solo {schema}.",
+      "databasesHint": "Premete Invio dopo ciascuno. Vuoto: solo {schema}.",
+      "permissionsTitle": "Permessi da concedere",
+      "permissionsDesc": "Concedete all’account esattamente questi, niente di più, così ogni funzione lavora e nient’altro è possibile.",
+      "tabOperations": "Cosa fa Formalie",
+      "tabScript": "Istruzioni da eseguire"
+    },
+    "summary": {
+      "engine": "Database",
+      "address": "Server",
+      "database": "Database",
+      "account": "Account",
+      "security": "Sicurezza",
+      "access": "Accesso",
+      "descriptor": "Descrittore di connessione",
+      "encrypted": "Crittografata",
+      "notEncrypted": "Non crittografata",
+      "ssh": "Tunnel SSH",
+      "structure": "crea tabelle",
+      "change": "Modifica {item}"
+    },
+    "wizard": {
+      "newCrumb": "Aggiungi connessione",
+      "newTitle": "Aggiungi connessione",
+      "newDesc": "Collegate uno dei vostri database, passo dopo passo",
+      "editCrumb": "Modifica",
+      "editTitle": "Modifica {name}",
+      "editDesc": "Modificate le impostazioni, poi testate prima di salvare",
+      "engineLegend": "Database",
+      "builtInNote": "L’archiviazione crittografata integrata di Formalie resta quella predefinita. Una connessione si aggiunge a essa.",
+      "stepOf": "Passo {n} di {total}",
+      "step": {
+        "engine": "Database",
+        "server": "Server",
+        "signin": "Accesso",
+        "security": "Sicurezza",
+        "access": "Permessi",
+        "review": "Nome e test"
+      },
+      "title": {
+        "engine": "Quale database?",
+        "server": "Dove si trova?",
+        "signin": "Come accede Formalie?",
+        "security": "Come è protetta la connessione?",
+        "access": "Cosa può fare Formalie?",
+        "review": "Datele un nome e testatela"
+      },
+      "desc": {
+        "engine": "Ognuno ha le proprie impostazioni. Potete aggiungerne altri in seguito.",
+        "server": "L’indirizzo che i server di Formalie usano per raggiungere il vostro database {engine}.",
+        "signin": "Usate un account creato per Formalie. Le password sono crittografate e non vengono più mostrate.",
+        "security": "Crittografia e, per le reti private, un tunnel SSH.",
+        "access": "Iniziate con la sola lettura. I permessi da concedere dipendono dalla vostra scelta.",
+        "review": "Il test viene eseguito dai server di Formalie e legge soltanto."
+      },
+      "name": "Nome",
+      "nameDesc": "Come appare questa connessione in Formalie.",
+      "namePlaceholder": "es. Gestione pratiche",
+      "testTitle": "Testa la connessione",
+      "testDesc": "Controlla ogni passo e ogni permesso. Nulla viene salvato finché non salvate.",
+      "test": "Testa connessione",
+      "testAgain": "Testa di nuovo",
+      "fixStep": "Correggi: {step}",
+      "save": "Salva connessione",
+      "testAndSave": "Testa e salva",
+      "saveAnyway": "Salva comunque",
+      "saveFailedTitle": "Salvare una connessione che non ha superato il test?",
+      "saveFailedDesc": "Risulterà in errore e Formalie non la userà finché un test non avrà esito positivo.",
+      "leaveTitle": "Uscire senza salvare?",
+      "leaveDesc": "Le impostazioni di connessione inserite andranno perse.",
+      "leave": "Esci"
+    },
+    "help": {
+      "engine": {
+        "title": "Cosa vi serve",
+        "p1": "Indirizzo e porta del server, e il nome del database.",
+        "p2": "Un account dedicato a Formalie. Le istruzioni esatte per crearlo arrivano nel passo Permessi.",
+        "p3": "Gli indirizzi di Formalie consentiti nel vostro firewall (qui sotto).",
+        "p4": "Per un database in una rete privata: un server SSH che Formalie può usare."
+      },
+      "server": {
+        "title": "Raggiungere il vostro database",
+        "p1": "Usate l’indirizzo raggiungibile da internet, non quello interno alla vostra rete.",
+        "p2": "Consentite gli indirizzi di Formalie sulla porta del database.",
+        "p3": "Solo rete privata? Aggiungete un tunnel SSH nel passo Sicurezza."
+      },
+      "signin": {
+        "title": "Un account dedicato",
+        "p1": "Non usate mai un account amministratore. Il test vi avvisa se lo fate.",
+        "p2": "Il passo Permessi scrive le istruzioni per creare l’account con i permessi giusti, e solo quelli.",
+        "p3": "Le credenziali vengono inviate e archiviate crittografate, e non vengono più mostrate.",
+        "sqlserver": {
+          "p1": "Account SQL Server: un login con password.",
+          "p2": "Microsoft Entra ID: un utente con password, oppure un’applicazione (entità servizio) con un segreto client.",
+          "p3": "Il passo Permessi scrive le istruzioni per creare l’uno o l’altra con i permessi giusti, e solo quelli."
+        }
+      },
+      "security": {
+        "title": "Proteggere la connessione",
+        "p1": "Crittografate sempre. Verificare il certificato dimostra anche che raggiungete il server giusto.",
+        "p2": "Un tunnel SSH raggiunge un database privato tramite un server da voi autorizzato.",
+        "p3": "Chiavi e certificati restano crittografati sui server di Formalie.",
+        "postgresql": {
+          "p1": "require crittografa il traffico.",
+          "p2": "verify-full controlla anche il certificato e il nome host (consigliato).",
+          "p3": "Incollate il certificato CA per verify-ca e verify-full."
+        },
+        "mysql": {
+          "p1": "Obbligatoria crittografa il traffico.",
+          "p2": "Verifica identità controlla anche il certificato e il nome host (consigliato).",
+          "p3": "Aggiungete il certificato CA per le opzioni di verifica."
+        },
+        "mariadb": {
+          "p1": "Obbligatoria crittografa il traffico.",
+          "p2": "Verifica identità controlla anche il certificato e il nome host (consigliato).",
+          "p3": "Aggiungete il certificato CA per le opzioni di verifica."
+        },
+        "sqlserver": {
+          "p1": "Obbligatoria crittografa e verifica il certificato.",
+          "p2": "Rigorosa (TDS 8.0) crittografa prima dell’accesso, per SQL Server 2022 e Azure SQL.",
+          "p3": "Considerare attendibile il certificato senza verificarlo è solo per i test."
+        },
+        "oracle": {
+          "p1": "TCPS crittografa con TLS ed è consigliato.",
+          "p2": "Con TCP, impostate la crittografia di rete nativa su Obbligatoria da entrambe le parti.",
+          "p3": "Incollate il certificato CA dal vostro wallet per TCPS."
+        }
+      },
+      "access": {
+        "title": "Privilegio minimo",
+        "p1": "Concedete solo ciò che questa connessione usa. Ogni funzione che richiede di più ve lo segnala.",
+        "p2": "La sola lettura non può mai modificare i vostri dati, qualunque cosa venga richiesta.",
+        "p3": "Formalie non elimina mai tabelle o colonne.",
+        "p4": "Ogni query, modifica, importazione ed esportazione viene registrata nel registro di audit."
+      },
+      "review": {
+        "title": "Cosa controlla il test",
+        "p1": "Che i server di Formalie raggiungano l’indirizzo e la porta.",
+        "p2": "Crittografia, certificato e accesso.",
+        "p3": "Che il database si apra, e ogni permesso necessario a questa connessione.",
+        "p4": "Legge soltanto: nel vostro database non cambia nulla."
+      }
     }
   },
   "apiService": {

@@ -19,7 +19,8 @@
     "goHome": "Go home",
     "confirm": "Confirm",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "next": "Next"
   },
   "placeholder": {
     "title": "Coming soon",
@@ -403,7 +404,13 @@
     "pagesSaved": "Saved",
     "pagesCreated": "Created",
     "folders": "Folders",
-    "foldersAll": "All folders"
+    "foldersAll": "All folders",
+    "connectionsAll": "All",
+    "connectionsConnected": "Connected",
+    "connectionsAttention": "Needs attention",
+    "connectionsFailing": "Failing",
+    "connectionsDisabled": "Disabled",
+    "connectionsNew": "Add connection"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "We couldn’t confirm this response was sent by a person. Please try again.",
     "FRM-FORM-1017": "That password isn’t right.",
     "FRM-FORM-1018": "This invitation link isn’t valid any more.",
-    "FRM-FORM-1019": "Your sign-in for this form has expired. Sign in again."
+    "FRM-FORM-1019": "Your sign-in for this form has expired. Sign in again.",
+    "FRM-DEST-1002": "The database did not accept the user name or password.",
+    "FRM-DEST-1003": "The encrypted connection could not be set up (certificate or TLS settings).",
+    "FRM-DEST-1004": "Could not open the SSH tunnel.",
+    "FRM-DEST-1005": "The database or schema was not found, or this account may not use it.",
+    "FRM-DEST-1006": "Some permissions this connection needs are missing.",
+    "FRM-DEST-1007": "A connection with this name already exists.",
+    "FRM-DEST-1008": "This connection test is no longer available. Run it again.",
+    "FRM-DEST-1009": "This connection is disabled. Enable it first.",
+    "FRM-DEST-1010": "Forms still send their responses to this connection.",
+    "FRM-DEST-1011": "The database took too long to answer."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -576,7 +593,12 @@
     "new": "New",
     "reviewed": "Reviewed",
     "approved": "Approved",
-    "rejected": "Rejected"
+    "rejected": "Rejected",
+    "connected": "Connected",
+    "attention": "Needs attention",
+    "failing": "Failing",
+    "disabled": "Disabled",
+    "untested": "Not tested"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -767,7 +789,8 @@
       "settings": "Settings",
       "users": "Users",
       "integrations": "Integrations",
-      "audit": "Audit trail"
+      "audit": "Audit trail",
+      "data": "Data sources"
     },
     "actorType": {
       "user": "Person",
@@ -794,7 +817,8 @@
       "saved_field": "Saved field",
       "option_list": "Option list",
       "theme": "Theme",
-      "template": "Template"
+      "template": "Template",
+      "data_source": "Connection"
     },
     "field": {
       "name": "Name",
@@ -817,7 +841,14 @@
       "number_format": "Number format",
       "week_start": "First day of the week",
       "tags": "Tags",
-      "colour": "Colour"
+      "colour": "Colour",
+      "engine": "Database type",
+      "host": "Server address",
+      "port": "Port",
+      "database": "Database",
+      "access": "Access",
+      "credentials": "Credentials",
+      "security": "Connection settings"
     },
     "action": {
       "auth_login_succeeded": "Signed in",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "Landing page updated",
       "forms_page_design_deleted": "Landing page deleted",
       "responses_export_downloaded": "Export downloaded",
-      "responses_export_deleted": "Export deleted"
+      "responses_export_deleted": "Export deleted",
+      "data_connection_created": "Connection added",
+      "data_connection_updated": "Connection changed",
+      "data_connection_tested": "Connection tested",
+      "data_connection_duplicated": "Connection duplicated",
+      "data_connection_enabled": "Connection enabled",
+      "data_connection_disabled": "Connection disabled",
+      "data_connection_deleted": "Connection deleted",
+      "data_credentials_changed": "Connection credentials changed"
     },
     "detail": {
       "who": "Who",
@@ -2838,6 +2877,556 @@
       "destinations": "Choose where each form sends its responses and match fields to columns.",
       "transfers": "Import files into tables and export tables or query results.",
       "activity": "Deliveries, failures and recent queries for every connection."
+    },
+    "add": "Add connection",
+    "search": "Search connections, servers or databases…",
+    "emptyTitle": "No connections yet",
+    "emptyDesc": "Connect one of your databases to send form data to it and work with it here. Formalie's built-in storage keeps working meanwhile.",
+    "notFound": "This connection isn't available",
+    "ms": "{n} ms",
+    "checked": "Checked {when}",
+    "neverChecked": "Not checked yet",
+    "needsLook": "Needs a look",
+    "uptime": "Uptime (30 days)",
+    "uptimePercent": "Uptime per day (%)",
+    "formsUsing": "Forms sending to it",
+    "lastChecked": "Last checked",
+    "addedBy": "Added by",
+    "yes": "Yes",
+    "no": "No",
+    "secretSaved": "Saved",
+    "secretNotSet": "Not set",
+    "secretsChanged": "Credentials last changed {when}",
+    "enabled": "Enabled",
+    "disabledLabel": "Disabled",
+    "missingCount": "{n} permission missing | {n} permissions missing",
+    "moreOptions": "More options",
+    "savedSecret": "Saved. Leave empty to keep it",
+    "showSecret": "Show",
+    "hideSecret": "Hide",
+    "loadFile": "Load from a file",
+    "col": {
+      "connection": "Connection",
+      "status": "Status"
+    },
+    "sort": {
+      "checked": "Recently checked",
+      "uptime": "Lowest uptime first",
+      "operations": "Busiest",
+      "newest": "Newest first"
+    },
+    "kpi": {
+      "activity": "Activity",
+      "operations": "Operations",
+      "latency": "Response time",
+      "missing": "Missing permissions",
+      "byStatus": "Connections by status",
+      "needLook": "{n} need a look"
+    },
+    "actions": {
+      "open": "Open",
+      "edit": "Edit connection",
+      "duplicate": "Duplicate",
+      "copyLink": "Copy link",
+      "delete": "Delete connection",
+      "deleteInUse": "Forms send to it, can't delete",
+      "test": "Test now",
+      "enable": "Enable",
+      "disable": "Disable"
+    },
+    "toast": {
+      "created": "Connection “{name}” added",
+      "saved": "Connection saved",
+      "enabled": "Connection enabled",
+      "disabled": "Connection disabled",
+      "duplicated": "Connection duplicated. Enter its password to use it",
+      "deleted": "Connection deleted",
+      "linkCopied": "Link copied"
+    },
+    "disable": {
+      "title": "Disable “{name}”?",
+      "desc": "Formalie stops using this database: no health checks, no data sent or read. You can enable it again at any time.",
+      "confirm": "Disable"
+    },
+    "delete": {
+      "title": "Delete “{name}”?",
+      "desc": "Its settings and saved credentials are removed from Formalie. Nothing in your database changes.",
+      "confirm": "Delete connection"
+    },
+    "detail": {
+      "groups": "Show",
+      "all": "All",
+      "connection": "Connection",
+      "security": "Security",
+      "permissions": "Permissions",
+      "health": "Health",
+      "permissionsFrom": "Checked by the last test, {when}.",
+      "permissionsUntested": "Not tested yet. Test the connection to check every permission.",
+      "howToGrant": "Statements to grant them",
+      "noChecks": "No health checks yet.",
+      "navigate": "Move between connections",
+      "previous": "Previous connection",
+      "next": "Next connection"
+    },
+    "egress": {
+      "title": "Allow Formalie's addresses",
+      "desc": "Formalie connects from these addresses. Allow them in your database's firewall or security group.",
+      "copy": "Copy {ip}"
+    },
+    "engineDesc": {
+      "mysql": "Port 3306 · TLS modes up to verify identity · SSH tunnel",
+      "mariadb": "Port 3306 · TLS modes up to verify identity · SSH tunnel",
+      "oracle": "Port 1521 · service name, SID or descriptor · TCPS or native encryption",
+      "postgresql": "Port 5432 · schemas · sslmode up to verify-full · SSH tunnel",
+      "sqlserver": "Port 1433 · instances · SQL or Microsoft Entra sign-in · strict encryption"
+    },
+    "field": {
+      "host": "Server address",
+      "port": "Port",
+      "database": "Database",
+      "schema": "Schema",
+      "charset": "Character set",
+      "time_zone": "Session time zone",
+      "connect_timeout": "Connection time limit (seconds)",
+      "username": "User name",
+      "password": "Password",
+      "ssl_mode": "Encryption (TLS)",
+      "ca_certificate": "CA certificate",
+      "client_certificate": "Client certificate",
+      "client_key": "Client private key",
+      "ssh": "Connect through an SSH tunnel",
+      "ssh_host": "SSH server",
+      "ssh_port": "SSH port",
+      "ssh_username": "SSH user",
+      "ssh_private_key": "SSH private key",
+      "ssh_passphrase": "Key passphrase",
+      "target_session_attrs": "Server to use",
+      "instance": "Instance name",
+      "application_intent": "Application intent",
+      "multi_subnet_failover": "Multi-subnet failover",
+      "auth": "Sign in with",
+      "tenant_id": "Directory (tenant) ID",
+      "client_id": "Application (client) ID",
+      "client_secret": "Client secret",
+      "encrypt": "Encryption",
+      "trust_server_certificate": "Trust the server certificate without checking it",
+      "host_name_in_certificate": "Host name in the certificate",
+      "connect_by": "Connect by",
+      "service_name": "Service name",
+      "sid": "SID",
+      "descriptor": "Connect descriptor",
+      "protocol": "Protocol",
+      "network_encryption": "Native network encryption",
+      "ssl_server_dn_match": "Check the server certificate's name"
+    },
+    "hint": {
+      "host": "Host name or IP address, as Formalie's servers reach it. Private networks: use an SSH tunnel.",
+      "connect_timeout": "How long to wait for the server before giving up.",
+      "username": "A dedicated account for Formalie, never an administrator.",
+      "ca_certificate": "Paste the PEM text of the certificate authority that signed the server's certificate.",
+      "client_certificate": "Only when the server asks for a client certificate (mutual TLS).",
+      "client_key": "The private key for the client certificate, in PEM.",
+      "ssh": "For a database on a private network: Formalie connects to a server you allow, which forwards to the database.",
+      "ssh_private_key": "PEM private key of the SSH user. Use a key made only for Formalie.",
+      "time_zone": "Dates are sent and read in this time zone. UTC (+00:00) is recommended.",
+      "target_session_attrs": "For clusters: which server Formalie may use.",
+      "trust_server_certificate": "Not recommended: anyone in between could read the traffic. Use only for testing.",
+      "host_name_in_certificate": "When the certificate is issued to another name than the server address.",
+      "multi_subnet_failover": "Faster failover for Always On availability groups across subnets.",
+      "descriptor": "Easy Connect or a full TNS descriptor, as in tnsnames.ora.",
+      "schema": "Where Formalie looks for tables by default.",
+      "postgresql": {
+        "schema": "Where Formalie looks for tables by default (search path).",
+        "ssl_mode": "require encrypts; verify-full also checks the certificate and the host name (recommended)."
+      },
+      "mysql": {
+        "ssl_mode": "Required encrypts; verify identity also checks the certificate and the host name (recommended)."
+      },
+      "mariadb": {
+        "ssl_mode": "Required encrypts; verify identity also checks the certificate and the host name (recommended)."
+      },
+      "sqlserver": {
+        "instance": "Only for a named instance. Leave the port as is, or the instance's own port.",
+        "schema": "Default schema for the Formalie user.",
+        "encrypt": "Strict uses TDS 8.0 and always checks the certificate (SQL Server 2022 and Azure SQL)."
+      },
+      "oracle": {
+        "schema": "The schema (owner) whose tables Formalie uses. Empty: the user's own.",
+        "protocol": "TCPS encrypts with TLS (recommended). TCP relies on native network encryption."
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4 (recommended)",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "Off",
+        "preferred": "Preferred (encrypt when possible)",
+        "required": "Required (encrypt)",
+        "verify_ca": "Verify certificate",
+        "verify_identity": "Verify identity (recommended)",
+        "disable": "disable (off)",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require (encrypt)",
+        "verify-ca": "verify-ca (check certificate)",
+        "verify-full": "verify-full (recommended)"
+      },
+      "target_session_attrs": {
+        "any": "Any",
+        "read-write": "Read-write only",
+        "read-only": "Read-only only",
+        "primary": "Primary",
+        "standby": "Standby",
+        "prefer-standby": "Standby if available"
+      },
+      "application_intent": {
+        "read_write": "Read and write",
+        "read_only": "Read only (readable secondary)"
+      },
+      "auth": {
+        "sql": "SQL Server account",
+        "entra_password": "Microsoft Entra ID (password)",
+        "entra_service_principal": "Microsoft Entra ID (service principal)"
+      },
+      "encrypt": {
+        "mandatory": "Mandatory (recommended)",
+        "strict": "Strict (TDS 8.0)",
+        "optional": "Optional (not encrypted)"
+      },
+      "connect_by": {
+        "service_name": "Service name",
+        "sid": "SID",
+        "descriptor": "Connect descriptor"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "Required",
+        "requested": "Requested",
+        "accepted": "Accepted"
+      }
+    },
+    "invalid": {
+      "required": "Fill this in.",
+      "host": "Enter a host name or IP address, without http:// or a port.",
+      "host_blocked": "Formalie can't connect to this address. For a private network, use an SSH tunnel.",
+      "port": "Enter a port from 1 to 65535.",
+      "pem": "Paste the full PEM text, from -----BEGIN to -----END.",
+      "identifier": "Use letters, numbers and underscores.",
+      "uuid": "Enter the ID as shown in the Microsoft Entra admin center.",
+      "seconds": "Enter 1 to 120 seconds.",
+      "taken": "A connection with this name already exists."
+    },
+    "level": {
+      "read": "Read",
+      "write": "Write",
+      "structure": "Structure"
+    },
+    "levelDesc": {
+      "read": "Browse tables, read rows, export, run read queries",
+      "write": "Send form responses, update and delete rows, import",
+      "structure": "Create tables from a form, add columns for new fields"
+    },
+    "perm": {
+      "needed": "Needed",
+      "notNeeded": "Not needed",
+      "granted": "Granted",
+      "missing": "Missing",
+      "not_needed": "Not needed for this connection"
+    },
+    "op": {
+      "connect": {
+        "label": "Sign in",
+        "uses": "Open a session on the database"
+      },
+      "read_schema": {
+        "label": "Read the structure",
+        "uses": "Schemas, tables, columns, keys and indexes in the explorer"
+      },
+      "row_counts": {
+        "label": "Count rows",
+        "uses": "Table sizes in the explorer"
+      },
+      "read_rows": {
+        "label": "Read rows",
+        "uses": "Browse and export tables, read queries, option lists"
+      },
+      "cancel": {
+        "label": "Cancel its own query",
+        "uses": "Stop a query that runs too long"
+      },
+      "insert": {
+        "label": "Add rows",
+        "uses": "Send form responses, imports, new rows"
+      },
+      "update": {
+        "label": "Change rows",
+        "uses": "Update-or-insert on a key, edits in the explorer"
+      },
+      "delete": {
+        "label": "Delete rows",
+        "uses": "Deleting rows in the explorer"
+      },
+      "sequences": {
+        "label": "Use sequences",
+        "uses": "Generated ids for new rows"
+      },
+      "create_table": {
+        "label": "Create tables",
+        "uses": "A table made from a form"
+      },
+      "alter_table": {
+        "label": "Add columns",
+        "uses": "A column for a field added to the form"
+      },
+      "create_index": {
+        "label": "Add a unique key",
+        "uses": "The key an update-or-insert matches on"
+      }
+    },
+    "grant": {
+      "intro": "Run these as a database administrator. They are written for this connection's database, schemas and account.",
+      "copyAll": "Copy all",
+      "copied": "Statements copied",
+      "oracle23": "Oracle 23ai or later",
+      "oracle23Desc": "Grants per schema. Turn off for 19c and earlier (grants per table).",
+      "block": {
+        "account": "1. Create the account",
+        "read": "2. Read",
+        "write": "3. Write",
+        "structure": "4. Structure"
+      },
+      "note": {
+        "host_limit": "If you can, replace '%' with Formalie's addresses so the account only works from there.",
+        "pool": "Formalie opens at most 10 connections at a time.",
+        "default_privileges": "Run as the role that owns the tables, so tables created later are covered too.",
+        "owner_alter": "Formalie owns the tables it creates and can add columns to them. Existing tables stay yours.",
+        "entra": "Run in the database while signed in with a Microsoft Entra account. The name is the Entra user or application.",
+        "contained": "On Azure SQL Database, create a contained user instead: CREATE USER ... WITH PASSWORD.",
+        "no_sysdba": "Never use SYS, SYSTEM or the SYSDBA role for Formalie.",
+        "oracle_new_tables": "Tables added later need the grant too: run the block again, or use Oracle 23ai schema grants.",
+        "oracle_own_schema": "Before 23ai, Formalie creates its tables in its own schema, so it needs no rights on yours."
+      }
+    },
+    "step": {
+      "network": "Reach the server",
+      "ssh": "Open the SSH tunnel",
+      "tls": "Encrypt the connection",
+      "sign_in": "Sign in",
+      "database": "Open the database",
+      "permissions": "Check permissions"
+    },
+    "stepDesc": {
+      "network": "Connecting from Formalie's servers to the address and port.",
+      "ssh": "Signing in to the SSH server and forwarding to the database.",
+      "tls": "Setting up TLS and checking the certificate.",
+      "sign_in": "Signing in with the account.",
+      "database": "Opening the database and reading its version.",
+      "permissions": "Checking each permission this connection needs."
+    },
+    "fix": {
+      "FRM-DEST-1001": "Check the address and port, and that the firewall allows Formalie's addresses.",
+      "FRM-DEST-1002": "Check the user name and password, and that the account may sign in from Formalie's addresses.",
+      "FRM-DEST-1003": "Check the encryption setting and the CA certificate, and that the certificate matches the server address.",
+      "FRM-DEST-1004": "Check the SSH server, user and private key, and that the SSH server may reach the database.",
+      "FRM-DEST-1005": "Check the database (or service) name, and that the account has access to it.",
+      "FRM-DEST-1006": "Grant the missing permissions below, then test again.",
+      "FRM-DEST-1011": "The server did not answer in time. Check the address, the firewall, or raise the time limit under More options."
+    },
+    "test": {
+      "heading": {
+        "running": "Testing the connection…",
+        "passed": "Everything works",
+        "warning": "Works, with something to look at",
+        "failed": "The connection didn't work"
+      },
+      "version": "Server version",
+      "latency": "Response time",
+      "schemas": "Schemas",
+      "tables": "Tables",
+      "skipped": "Skipped",
+      "tlsOff": "Traffic is not encrypted with these settings.",
+      "safe": "The test only reads. It never changes your data."
+    },
+    "finding": {
+      "admin_account": {
+        "title": "This is an administrator account",
+        "desc": "Create a dedicated account with only the permissions listed, so Formalie can never do more than it needs."
+      },
+      "extra_write": {
+        "title": "This account can change data",
+        "desc": "The connection is read only, so Formalie will only read. For least privilege, remove its write permissions."
+      },
+      "tls_off": {
+        "title": "Traffic is not encrypted",
+        "desc": "Choose an encrypting option under Security so data and passwords are protected on the way."
+      },
+      "trust_certificate": {
+        "title": "The server certificate isn't checked",
+        "desc": "Turn off “Trust the server certificate” and add the CA certificate when you can."
+      },
+      "missing_permissions": {
+        "title": "Some permissions are missing",
+        "desc": "Parts of Formalie that need them won't work. The statements to grant them are under Permissions."
+      }
+    },
+    "access": {
+      "legend": "What Formalie may do",
+      "read_only": "Read only",
+      "read_write": "Read and write",
+      "readOnlyDesc": "Browse, export and run read queries. Nothing in the database can change.",
+      "readWriteDesc": "Also send form responses to tables, edit rows and import files.",
+      "structure": "Let Formalie create tables and add columns",
+      "structureDesc": "For form destinations: a table made from a form and a column for each new field. Never drops anything.",
+      "schemas": "Schemas Formalie may use",
+      "databases": "Databases Formalie may use",
+      "schemasHint": "Press Enter after each one. Empty: only {schema}.",
+      "databasesHint": "Press Enter after each one. Empty: only {schema}.",
+      "permissionsTitle": "Permissions to grant",
+      "permissionsDesc": "Give the account exactly these, nothing more, so every feature works and nothing else is possible.",
+      "tabOperations": "What Formalie does",
+      "tabScript": "Statements to run"
+    },
+    "summary": {
+      "engine": "Database",
+      "address": "Server",
+      "database": "Database",
+      "account": "Account",
+      "security": "Security",
+      "access": "Access",
+      "descriptor": "Connect descriptor",
+      "encrypted": "Encrypted",
+      "notEncrypted": "Not encrypted",
+      "ssh": "SSH tunnel",
+      "structure": "creates tables",
+      "change": "Change {item}"
+    },
+    "wizard": {
+      "newCrumb": "Add connection",
+      "newTitle": "Add connection",
+      "newDesc": "Connect one of your databases, step by step",
+      "editCrumb": "Edit",
+      "editTitle": "Edit {name}",
+      "editDesc": "Change the settings, then test before saving",
+      "engineLegend": "Database",
+      "builtInNote": "Formalie's built-in encrypted storage stays the default. A connection adds to it.",
+      "stepOf": "Step {n} of {total}",
+      "step": {
+        "engine": "Database",
+        "server": "Server",
+        "signin": "Sign in",
+        "security": "Security",
+        "access": "Access",
+        "review": "Name and test"
+      },
+      "title": {
+        "engine": "Which database?",
+        "server": "Where is it?",
+        "signin": "How does Formalie sign in?",
+        "security": "How is the connection protected?",
+        "access": "What may Formalie do?",
+        "review": "Name it and test it"
+      },
+      "desc": {
+        "engine": "Each one has its own settings. You can add more later.",
+        "server": "The address Formalie's servers use to reach your {engine} database.",
+        "signin": "Use an account made for Formalie. Passwords are encrypted and never shown again.",
+        "security": "Encryption and, for private networks, an SSH tunnel.",
+        "access": "Start with read only. The permissions to grant follow from your choice.",
+        "review": "The test runs from Formalie's servers and only reads."
+      },
+      "name": "Name",
+      "nameDesc": "How this connection appears in Formalie.",
+      "namePlaceholder": "e.g. Case management",
+      "testTitle": "Test the connection",
+      "testDesc": "Checks every step and every permission. Nothing is saved until you save.",
+      "test": "Test connection",
+      "testAgain": "Test again",
+      "fixStep": "Fix: {step}",
+      "save": "Save connection",
+      "testAndSave": "Test and save",
+      "saveAnyway": "Save anyway",
+      "saveFailedTitle": "Save a connection that failed its test?",
+      "saveFailedDesc": "It will show as failing and Formalie won't use it until a test passes.",
+      "leaveTitle": "Leave without saving?",
+      "leaveDesc": "The connection settings you entered will be lost.",
+      "leave": "Leave"
+    },
+    "help": {
+      "engine": {
+        "title": "What you need",
+        "p1": "The server address and port, and the database name.",
+        "p2": "A dedicated account for Formalie. The exact statements to create it come in the Access step.",
+        "p3": "Formalie's addresses allowed in your firewall (below).",
+        "p4": "For a database on a private network: an SSH server Formalie may use."
+      },
+      "server": {
+        "title": "Reaching your database",
+        "p1": "Use the address that works from the internet, not from inside your network.",
+        "p2": "Allow Formalie's addresses on the database port.",
+        "p3": "Private network only? Add an SSH tunnel in the Security step."
+      },
+      "signin": {
+        "title": "A dedicated account",
+        "p1": "Never use an administrator account. The test warns you if you do.",
+        "p2": "The Access step writes the statements to create the account with just the right permissions.",
+        "p3": "Credentials are sent encrypted, stored encrypted, and never shown again.",
+        "sqlserver": {
+          "p1": "SQL Server account: a login with a password.",
+          "p2": "Microsoft Entra ID: a user with a password, or an application (service principal) with a client secret.",
+          "p3": "The Access step writes the statements to create either one with just the right permissions."
+        }
+      },
+      "security": {
+        "title": "Protecting the connection",
+        "p1": "Always encrypt. Checking the certificate also proves you reach the right server.",
+        "p2": "An SSH tunnel reaches a private database through a server you allow.",
+        "p3": "Keys and certificates stay on Formalie's servers, encrypted.",
+        "postgresql": {
+          "p1": "require encrypts the traffic.",
+          "p2": "verify-full also checks the certificate and the host name (recommended).",
+          "p3": "Paste the CA certificate for verify-ca and verify-full."
+        },
+        "mysql": {
+          "p1": "Required encrypts the traffic.",
+          "p2": "Verify identity also checks the certificate and the host name (recommended).",
+          "p3": "Add the CA certificate for the verify options."
+        },
+        "mariadb": {
+          "p1": "Required encrypts the traffic.",
+          "p2": "Verify identity also checks the certificate and the host name (recommended).",
+          "p3": "Add the CA certificate for the verify options."
+        },
+        "sqlserver": {
+          "p1": "Mandatory encrypts and checks the certificate.",
+          "p2": "Strict (TDS 8.0) encrypts before signing in, for SQL Server 2022 and Azure SQL.",
+          "p3": "Trusting the certificate without checking it is for testing only."
+        },
+        "oracle": {
+          "p1": "TCPS encrypts with TLS and is recommended.",
+          "p2": "With TCP, set native network encryption to Required on both sides.",
+          "p3": "Paste the CA certificate from your wallet for TCPS."
+        }
+      },
+      "access": {
+        "title": "Least privilege",
+        "p1": "Grant only what this connection uses. Every feature that needs more tells you.",
+        "p2": "Read only can never change your data, whatever is asked.",
+        "p3": "Formalie never drops tables or columns.",
+        "p4": "Every query, change, import and export is recorded in the audit trail."
+      },
+      "review": {
+        "title": "What the test checks",
+        "p1": "That Formalie's servers reach the address and port.",
+        "p2": "Encryption, the certificate and the sign-in.",
+        "p3": "That the database opens, and every permission this connection needs.",
+        "p4": "It only reads: nothing in your database changes."
+      }
     }
   },
   "apiService": {

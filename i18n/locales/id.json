@@ -19,7 +19,8 @@
     "goHome": "Ke beranda",
     "confirm": "Konfirmasi",
     "copy": "Salin",
-    "copied": "Disalin"
+    "copied": "Disalin",
+    "next": "Berikutnya"
   },
   "placeholder": {
     "title": "Segera hadir",
@@ -403,7 +404,13 @@
     "pagesSaved": "Tersimpan",
     "pagesCreated": "Dibuat",
     "folders": "Folder",
-    "foldersAll": "Semua folder"
+    "foldersAll": "Semua folder",
+    "connectionsAll": "Semua",
+    "connectionsConnected": "Terhubung",
+    "connectionsAttention": "Perlu diperiksa",
+    "connectionsFailing": "Gagal",
+    "connectionsDisabled": "Dinonaktifkan",
+    "connectionsNew": "Tambah koneksi"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "Kami tidak dapat memastikan bahwa tanggapan ini dikirim oleh manusia. Silakan coba lagi.",
     "FRM-FORM-1017": "Kata sandi tidak benar.",
     "FRM-FORM-1018": "Tautan undangan ini sudah tidak berlaku.",
-    "FRM-FORM-1019": "Sesi masuk Anda untuk formulir ini telah berakhir. Silakan masuk lagi."
+    "FRM-FORM-1019": "Sesi masuk Anda untuk formulir ini telah berakhir. Silakan masuk lagi.",
+    "FRM-DEST-1002": "Database tidak menerima nama pengguna atau kata sandi.",
+    "FRM-DEST-1003": "Koneksi terenkripsi tidak dapat dibuat (sertifikat atau pengaturan TLS).",
+    "FRM-DEST-1004": "Tidak dapat membuka tunnel SSH.",
+    "FRM-DEST-1005": "Database atau skema tidak ditemukan, atau akun ini tidak boleh menggunakannya.",
+    "FRM-DEST-1006": "Beberapa izin yang diperlukan koneksi ini belum ada.",
+    "FRM-DEST-1007": "Koneksi dengan nama ini sudah ada.",
+    "FRM-DEST-1008": "Uji koneksi ini sudah tidak tersedia. Jalankan lagi.",
+    "FRM-DEST-1009": "Koneksi ini dinonaktifkan. Aktifkan terlebih dahulu.",
+    "FRM-DEST-1010": "Masih ada formulir yang mengirim responsnya ke koneksi ini.",
+    "FRM-DEST-1011": "Database terlalu lama merespons."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -576,7 +593,12 @@
     "new": "Baru",
     "reviewed": "Ditinjau",
     "approved": "Disetujui",
-    "rejected": "Ditolak"
+    "rejected": "Ditolak",
+    "connected": "Terhubung",
+    "attention": "Perlu diperiksa",
+    "failing": "Gagal",
+    "disabled": "Dinonaktifkan",
+    "untested": "Belum diuji"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
@@ -767,7 +789,8 @@
       "settings": "Pengaturan",
       "users": "Pengguna",
       "integrations": "Integrasi",
-      "audit": "Jejak audit"
+      "audit": "Jejak audit",
+      "data": "Sumber data"
     },
     "actorType": {
       "user": "Orang",
@@ -794,7 +817,8 @@
       "saved_field": "Kolom tersimpan",
       "option_list": "Daftar opsi",
       "theme": "Tema",
-      "template": "Templat"
+      "template": "Templat",
+      "data_source": "Koneksi"
     },
     "field": {
       "name": "Nama",
@@ -817,7 +841,14 @@
       "number_format": "Format angka",
       "week_start": "Hari pertama dalam minggu",
       "tags": "Tag",
-      "colour": "Warna"
+      "colour": "Warna",
+      "engine": "Jenis database",
+      "host": "Alamat server",
+      "port": "Port",
+      "database": "Database",
+      "access": "Akses",
+      "credentials": "Kredensial",
+      "security": "Pengaturan koneksi"
     },
     "action": {
       "auth_login_succeeded": "Masuk",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "Halaman arahan diperbarui",
       "forms_page_design_deleted": "Halaman arahan dihapus",
       "responses_export_downloaded": "Ekspor diunduh",
-      "responses_export_deleted": "Ekspor dihapus"
+      "responses_export_deleted": "Ekspor dihapus",
+      "data_connection_created": "Koneksi ditambahkan",
+      "data_connection_updated": "Koneksi diubah",
+      "data_connection_tested": "Koneksi diuji",
+      "data_connection_duplicated": "Koneksi diduplikasi",
+      "data_connection_enabled": "Koneksi diaktifkan",
+      "data_connection_disabled": "Koneksi dinonaktifkan",
+      "data_connection_deleted": "Koneksi dihapus",
+      "data_credentials_changed": "Kredensial koneksi diubah"
     },
     "detail": {
       "who": "Siapa",
@@ -2838,6 +2877,556 @@
       "destinations": "Pilih ke mana setiap formulir mengirim responsnya dan cocokkan kolom isian dengan kolom tabel.",
       "transfers": "Impor file ke tabel dan ekspor tabel atau hasil kueri.",
       "activity": "Pengiriman, kegagalan, dan kueri terbaru untuk setiap koneksi."
+    },
+    "add": "Tambah koneksi",
+    "search": "Cari koneksi, server, atau database…",
+    "emptyTitle": "Belum ada koneksi",
+    "emptyDesc": "Hubungkan salah satu database Anda untuk mengirim data formulir ke sana dan mengelolanya di sini. Sementara itu, penyimpanan bawaan Formalie tetap berjalan.",
+    "notFound": "Koneksi ini tidak tersedia",
+    "ms": "{n} md",
+    "checked": "Diperiksa {when}",
+    "neverChecked": "Belum diperiksa",
+    "needsLook": "Perlu diperiksa",
+    "uptime": "Uptime (30 hari)",
+    "uptimePercent": "Uptime per hari (%)",
+    "formsUsing": "Formulir yang mengirim ke sini",
+    "lastChecked": "Terakhir diperiksa",
+    "addedBy": "Ditambahkan oleh",
+    "yes": "Ya",
+    "no": "Tidak",
+    "secretSaved": "Tersimpan",
+    "secretNotSet": "Belum diatur",
+    "secretsChanged": "Kredensial terakhir diubah {when}",
+    "enabled": "Aktif",
+    "disabledLabel": "Nonaktif",
+    "missingCount": "{n} izin belum ada | {n} izin belum ada",
+    "moreOptions": "Opsi lainnya",
+    "savedSecret": "Tersimpan. Kosongkan untuk mempertahankannya",
+    "showSecret": "Tampilkan",
+    "hideSecret": "Sembunyikan",
+    "loadFile": "Muat dari file",
+    "col": {
+      "connection": "Koneksi",
+      "status": "Status"
+    },
+    "sort": {
+      "checked": "Baru saja diperiksa",
+      "uptime": "Uptime terendah dulu",
+      "operations": "Paling sibuk",
+      "newest": "Terbaru dulu"
+    },
+    "kpi": {
+      "activity": "Aktivitas",
+      "operations": "Operasi",
+      "latency": "Waktu respons",
+      "missing": "Izin yang belum ada",
+      "byStatus": "Koneksi menurut status",
+      "needLook": "{n} perlu diperiksa"
+    },
+    "actions": {
+      "open": "Buka",
+      "edit": "Edit koneksi",
+      "duplicate": "Duplikasi",
+      "copyLink": "Salin tautan",
+      "delete": "Hapus koneksi",
+      "deleteInUse": "Dipakai formulir, tidak dapat dihapus",
+      "test": "Uji sekarang",
+      "enable": "Aktifkan",
+      "disable": "Nonaktifkan"
+    },
+    "toast": {
+      "created": "Koneksi “{name}” ditambahkan",
+      "saved": "Koneksi disimpan",
+      "enabled": "Koneksi diaktifkan",
+      "disabled": "Koneksi dinonaktifkan",
+      "duplicated": "Koneksi diduplikasi. Masukkan kata sandinya untuk menggunakannya",
+      "deleted": "Koneksi dihapus",
+      "linkCopied": "Tautan disalin"
+    },
+    "disable": {
+      "title": "Nonaktifkan “{name}”?",
+      "desc": "Formalie berhenti menggunakan database ini: tidak ada pemeriksaan kesehatan, tidak ada data yang dikirim atau dibaca. Anda dapat mengaktifkannya lagi kapan saja.",
+      "confirm": "Nonaktifkan"
+    },
+    "delete": {
+      "title": "Hapus “{name}”?",
+      "desc": "Pengaturan dan kredensial tersimpannya dihapus dari Formalie. Tidak ada yang berubah di database Anda.",
+      "confirm": "Hapus koneksi"
+    },
+    "detail": {
+      "groups": "Tampilkan",
+      "all": "Semua",
+      "connection": "Koneksi",
+      "security": "Keamanan",
+      "permissions": "Izin",
+      "health": "Kesehatan",
+      "permissionsFrom": "Diperiksa oleh uji terakhir, {when}.",
+      "permissionsUntested": "Belum diuji. Uji koneksi untuk memeriksa setiap izin.",
+      "howToGrant": "Pernyataan untuk memberikannya",
+      "noChecks": "Belum ada pemeriksaan kesehatan.",
+      "navigate": "Berpindah antar koneksi",
+      "previous": "Koneksi sebelumnya",
+      "next": "Koneksi berikutnya"
+    },
+    "egress": {
+      "title": "Izinkan alamat Formalie",
+      "desc": "Formalie terhubung dari alamat-alamat ini. Izinkan di firewall atau grup keamanan database Anda.",
+      "copy": "Salin {ip}"
+    },
+    "engineDesc": {
+      "mysql": "Port 3306 · mode TLS hingga verifikasi identitas · tunnel SSH",
+      "mariadb": "Port 3306 · mode TLS hingga verifikasi identitas · tunnel SSH",
+      "oracle": "Port 1521 · nama layanan, SID, atau deskriptor · TCPS atau enkripsi native",
+      "postgresql": "Port 5432 · skema · sslmode hingga verify-full · tunnel SSH",
+      "sqlserver": "Port 1433 · instans · masuk dengan SQL atau Microsoft Entra · enkripsi ketat"
+    },
+    "field": {
+      "host": "Alamat server",
+      "port": "Port",
+      "database": "Database",
+      "schema": "Skema",
+      "charset": "Set karakter",
+      "time_zone": "Zona waktu sesi",
+      "connect_timeout": "Batas waktu koneksi (detik)",
+      "username": "Nama pengguna",
+      "password": "Kata sandi",
+      "ssl_mode": "Enkripsi (TLS)",
+      "ca_certificate": "Sertifikat CA",
+      "client_certificate": "Sertifikat klien",
+      "client_key": "Kunci privat klien",
+      "ssh": "Hubungkan melalui tunnel SSH",
+      "ssh_host": "Server SSH",
+      "ssh_port": "Port SSH",
+      "ssh_username": "Pengguna SSH",
+      "ssh_private_key": "Kunci privat SSH",
+      "ssh_passphrase": "Frasa sandi kunci",
+      "target_session_attrs": "Server yang digunakan",
+      "instance": "Nama instans",
+      "application_intent": "Tujuan aplikasi",
+      "multi_subnet_failover": "Failover multi-subnet",
+      "auth": "Masuk dengan",
+      "tenant_id": "ID direktori (tenant)",
+      "client_id": "ID aplikasi (klien)",
+      "client_secret": "Rahasia klien",
+      "encrypt": "Enkripsi",
+      "trust_server_certificate": "Percayai sertifikat server tanpa memeriksanya",
+      "host_name_in_certificate": "Nama host di sertifikat",
+      "connect_by": "Hubungkan dengan",
+      "service_name": "Nama layanan",
+      "sid": "SID",
+      "descriptor": "Deskriptor koneksi",
+      "protocol": "Protokol",
+      "network_encryption": "Enkripsi jaringan native",
+      "ssl_server_dn_match": "Periksa nama sertifikat server"
+    },
+    "hint": {
+      "host": "Nama host atau alamat IP, sebagaimana dijangkau server Formalie. Jaringan privat: gunakan tunnel SSH.",
+      "connect_timeout": "Berapa lama menunggu server sebelum menyerah.",
+      "username": "Akun khusus untuk Formalie, jangan pernah akun administrator.",
+      "ca_certificate": "Tempel teks PEM dari otoritas sertifikat yang menandatangani sertifikat server.",
+      "client_certificate": "Hanya jika server meminta sertifikat klien (TLS mutual).",
+      "client_key": "Kunci privat untuk sertifikat klien, dalam format PEM.",
+      "ssh": "Untuk database di jaringan privat: Formalie terhubung ke server yang Anda izinkan, yang meneruskan ke database.",
+      "ssh_private_key": "Kunci privat PEM milik pengguna SSH. Gunakan kunci yang dibuat khusus untuk Formalie.",
+      "time_zone": "Tanggal dikirim dan dibaca dalam zona waktu ini. UTC (+00:00) disarankan.",
+      "target_session_attrs": "Untuk klaster: server mana yang boleh digunakan Formalie.",
+      "trust_server_certificate": "Tidak disarankan: pihak di tengah dapat membaca lalu lintas. Gunakan hanya untuk pengujian.",
+      "host_name_in_certificate": "Jika sertifikat diterbitkan untuk nama lain selain alamat server.",
+      "multi_subnet_failover": "Failover lebih cepat untuk grup ketersediaan Always On di beberapa subnet.",
+      "descriptor": "Easy Connect atau deskriptor TNS lengkap, seperti di tnsnames.ora.",
+      "schema": "Tempat Formalie mencari tabel secara default.",
+      "postgresql": {
+        "schema": "Tempat Formalie mencari tabel secara default (search path).",
+        "ssl_mode": "require mengenkripsi; verify-full juga memeriksa sertifikat dan nama host (disarankan)."
+      },
+      "mysql": {
+        "ssl_mode": "Wajib mengenkripsi; Verifikasi identitas juga memeriksa sertifikat dan nama host (disarankan)."
+      },
+      "mariadb": {
+        "ssl_mode": "Wajib mengenkripsi; Verifikasi identitas juga memeriksa sertifikat dan nama host (disarankan)."
+      },
+      "sqlserver": {
+        "instance": "Hanya untuk instans bernama. Biarkan port apa adanya, atau isi port milik instans tersebut.",
+        "schema": "Skema default untuk pengguna Formalie.",
+        "encrypt": "Ketat menggunakan TDS 8.0 dan selalu memeriksa sertifikat (SQL Server 2022 dan Azure SQL)."
+      },
+      "oracle": {
+        "schema": "Skema (pemilik) yang tabelnya digunakan Formalie. Kosong: skema milik pengguna.",
+        "protocol": "TCPS mengenkripsi dengan TLS (disarankan). TCP mengandalkan enkripsi jaringan native."
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4 (disarankan)",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "Nonaktif",
+        "preferred": "Diutamakan (enkripsi jika memungkinkan)",
+        "required": "Wajib (enkripsi)",
+        "verify_ca": "Verifikasi sertifikat",
+        "verify_identity": "Verifikasi identitas (disarankan)",
+        "disable": "disable (nonaktif)",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require (enkripsi)",
+        "verify-ca": "verify-ca (periksa sertifikat)",
+        "verify-full": "verify-full (disarankan)"
+      },
+      "target_session_attrs": {
+        "any": "Apa saja",
+        "read-write": "Hanya baca-tulis",
+        "read-only": "Hanya baca saja",
+        "primary": "Primer",
+        "standby": "Standby",
+        "prefer-standby": "Standby jika tersedia"
+      },
+      "application_intent": {
+        "read_write": "Baca dan tulis",
+        "read_only": "Hanya baca (sekunder yang dapat dibaca)"
+      },
+      "auth": {
+        "sql": "Akun SQL Server",
+        "entra_password": "Microsoft Entra ID (kata sandi)",
+        "entra_service_principal": "Microsoft Entra ID (service principal)"
+      },
+      "encrypt": {
+        "mandatory": "Wajib (disarankan)",
+        "strict": "Ketat (TDS 8.0)",
+        "optional": "Opsional (tidak terenkripsi)"
+      },
+      "connect_by": {
+        "service_name": "Nama layanan",
+        "sid": "SID",
+        "descriptor": "Deskriptor koneksi"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "Wajib",
+        "requested": "Diminta",
+        "accepted": "Diterima"
+      }
+    },
+    "invalid": {
+      "required": "Isi kolom ini.",
+      "host": "Masukkan nama host atau alamat IP, tanpa http:// atau port.",
+      "host_blocked": "Formalie tidak dapat terhubung ke alamat ini. Untuk jaringan privat, gunakan tunnel SSH.",
+      "port": "Masukkan port dari 1 hingga 65535.",
+      "pem": "Tempel teks PEM lengkap, dari -----BEGIN hingga -----END.",
+      "identifier": "Gunakan huruf, angka, dan garis bawah.",
+      "uuid": "Masukkan ID seperti yang ditampilkan di pusat admin Microsoft Entra.",
+      "seconds": "Masukkan 1 hingga 120 detik.",
+      "taken": "Koneksi dengan nama ini sudah ada."
+    },
+    "level": {
+      "read": "Baca",
+      "write": "Tulis",
+      "structure": "Struktur"
+    },
+    "levelDesc": {
+      "read": "Menjelajahi tabel, membaca baris, mengekspor, menjalankan kueri baca",
+      "write": "Mengirim respons formulir, memperbarui dan menghapus baris, mengimpor",
+      "structure": "Membuat tabel dari formulir, menambah kolom untuk isian baru"
+    },
+    "perm": {
+      "needed": "Diperlukan",
+      "notNeeded": "Tidak diperlukan",
+      "granted": "Diberikan",
+      "missing": "Belum ada",
+      "not_needed": "Tidak diperlukan untuk koneksi ini"
+    },
+    "op": {
+      "connect": {
+        "label": "Masuk",
+        "uses": "Membuka sesi di database"
+      },
+      "read_schema": {
+        "label": "Membaca struktur",
+        "uses": "Skema, tabel, kolom, kunci, dan indeks di penjelajah"
+      },
+      "row_counts": {
+        "label": "Menghitung baris",
+        "uses": "Ukuran tabel di penjelajah"
+      },
+      "read_rows": {
+        "label": "Membaca baris",
+        "uses": "Menjelajahi dan mengekspor tabel, kueri baca, daftar opsi"
+      },
+      "cancel": {
+        "label": "Membatalkan kuerinya sendiri",
+        "uses": "Menghentikan kueri yang berjalan terlalu lama"
+      },
+      "insert": {
+        "label": "Menambah baris",
+        "uses": "Mengirim respons formulir, impor, baris baru"
+      },
+      "update": {
+        "label": "Mengubah baris",
+        "uses": "Perbarui-atau-sisipkan berdasarkan kunci, pengeditan di penjelajah"
+      },
+      "delete": {
+        "label": "Menghapus baris",
+        "uses": "Menghapus baris di penjelajah"
+      },
+      "sequences": {
+        "label": "Menggunakan sequence",
+        "uses": "ID yang dibuat otomatis untuk baris baru"
+      },
+      "create_table": {
+        "label": "Membuat tabel",
+        "uses": "Tabel yang dibuat dari formulir"
+      },
+      "alter_table": {
+        "label": "Menambah kolom",
+        "uses": "Kolom untuk isian yang ditambahkan ke formulir"
+      },
+      "create_index": {
+        "label": "Menambah kunci unik",
+        "uses": "Kunci yang dicocokkan oleh perbarui-atau-sisipkan"
+      }
+    },
+    "grant": {
+      "intro": "Jalankan ini sebagai administrator database. Pernyataan ini ditulis untuk database, skema, dan akun koneksi ini.",
+      "copyAll": "Salin semua",
+      "copied": "Pernyataan disalin",
+      "oracle23": "Oracle 23ai atau lebih baru",
+      "oracle23Desc": "Izin per skema. Matikan untuk 19c dan versi sebelumnya (izin per tabel).",
+      "block": {
+        "account": "1. Buat akun",
+        "read": "2. Baca",
+        "write": "3. Tulis",
+        "structure": "4. Struktur"
+      },
+      "note": {
+        "host_limit": "Jika bisa, ganti '%' dengan alamat Formalie agar akun hanya berfungsi dari sana.",
+        "pool": "Formalie membuka paling banyak 10 koneksi sekaligus.",
+        "default_privileges": "Jalankan sebagai peran pemilik tabel, agar tabel yang dibuat kemudian juga tercakup.",
+        "owner_alter": "Formalie memiliki tabel yang dibuatnya dan dapat menambah kolom ke tabel tersebut. Tabel yang sudah ada tetap milik Anda.",
+        "entra": "Jalankan di database saat masuk dengan akun Microsoft Entra. Namanya adalah pengguna atau aplikasi Entra.",
+        "contained": "Di Azure SQL Database, buat contained user sebagai gantinya: CREATE USER ... WITH PASSWORD.",
+        "no_sysdba": "Jangan pernah gunakan SYS, SYSTEM, atau peran SYSDBA untuk Formalie.",
+        "oracle_new_tables": "Tabel yang ditambahkan kemudian juga memerlukan izin: jalankan blok ini lagi, atau gunakan izin skema Oracle 23ai.",
+        "oracle_own_schema": "Sebelum 23ai, Formalie membuat tabelnya di skemanya sendiri, sehingga tidak memerlukan hak atas skema Anda."
+      }
+    },
+    "step": {
+      "network": "Menjangkau server",
+      "ssh": "Membuka tunnel SSH",
+      "tls": "Mengenkripsi koneksi",
+      "sign_in": "Masuk",
+      "database": "Membuka database",
+      "permissions": "Memeriksa izin"
+    },
+    "stepDesc": {
+      "network": "Menghubungkan dari server Formalie ke alamat dan port.",
+      "ssh": "Masuk ke server SSH dan meneruskan ke database.",
+      "tls": "Menyiapkan TLS dan memeriksa sertifikat.",
+      "sign_in": "Masuk dengan akun.",
+      "database": "Membuka database dan membaca versinya.",
+      "permissions": "Memeriksa setiap izin yang diperlukan koneksi ini."
+    },
+    "fix": {
+      "FRM-DEST-1001": "Periksa alamat dan port, serta pastikan firewall mengizinkan alamat Formalie.",
+      "FRM-DEST-1002": "Periksa nama pengguna dan kata sandi, serta pastikan akun boleh masuk dari alamat Formalie.",
+      "FRM-DEST-1003": "Periksa pengaturan enkripsi dan sertifikat CA, serta pastikan sertifikat cocok dengan alamat server.",
+      "FRM-DEST-1004": "Periksa server SSH, pengguna, dan kunci privat, serta pastikan server SSH dapat menjangkau database.",
+      "FRM-DEST-1005": "Periksa nama database (atau layanan), serta pastikan akun memiliki akses ke sana.",
+      "FRM-DEST-1006": "Berikan izin yang belum ada di bawah, lalu uji lagi.",
+      "FRM-DEST-1011": "Server tidak merespons tepat waktu. Periksa alamat, firewall, atau naikkan batas waktu di Opsi lainnya."
+    },
+    "test": {
+      "heading": {
+        "running": "Menguji koneksi…",
+        "passed": "Semuanya berfungsi",
+        "warning": "Berfungsi, dengan hal yang perlu diperiksa",
+        "failed": "Koneksi tidak berhasil"
+      },
+      "version": "Versi server",
+      "latency": "Waktu respons",
+      "schemas": "Skema",
+      "tables": "Tabel",
+      "skipped": "Dilewati",
+      "tlsOff": "Lalu lintas tidak dienkripsi dengan pengaturan ini.",
+      "safe": "Pengujian hanya membaca. Data Anda tidak pernah diubah."
+    },
+    "finding": {
+      "admin_account": {
+        "title": "Ini akun administrator",
+        "desc": "Buat akun khusus dengan hanya izin yang tercantum, agar Formalie tidak pernah bisa melakukan lebih dari yang diperlukan."
+      },
+      "extra_write": {
+        "title": "Akun ini dapat mengubah data",
+        "desc": "Koneksi ini hanya baca, jadi Formalie hanya akan membaca. Untuk hak akses minimum, hapus izin tulisnya."
+      },
+      "tls_off": {
+        "title": "Lalu lintas tidak dienkripsi",
+        "desc": "Pilih opsi yang mengenkripsi di Keamanan agar data dan kata sandi terlindungi selama pengiriman."
+      },
+      "trust_certificate": {
+        "title": "Sertifikat server tidak diperiksa",
+        "desc": "Matikan “Percayai sertifikat server” dan tambahkan sertifikat CA jika memungkinkan."
+      },
+      "missing_permissions": {
+        "title": "Beberapa izin belum ada",
+        "desc": "Bagian Formalie yang memerlukannya tidak akan berfungsi. Pernyataan untuk memberikannya ada di Izin."
+      }
+    },
+    "access": {
+      "legend": "Apa yang boleh dilakukan Formalie",
+      "read_only": "Hanya baca",
+      "read_write": "Baca dan tulis",
+      "readOnlyDesc": "Menjelajahi, mengekspor, dan menjalankan kueri baca. Tidak ada yang bisa berubah di database.",
+      "readWriteDesc": "Juga mengirim respons formulir ke tabel, mengedit baris, dan mengimpor file.",
+      "structure": "Izinkan Formalie membuat tabel dan menambah kolom",
+      "structureDesc": "Untuk tujuan formulir: tabel yang dibuat dari formulir dan kolom untuk setiap isian baru. Tidak pernah menghapus apa pun.",
+      "schemas": "Skema yang boleh digunakan Formalie",
+      "databases": "Database yang boleh digunakan Formalie",
+      "schemasHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
+      "databasesHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
+      "permissionsTitle": "Izin yang perlu diberikan",
+      "permissionsDesc": "Berikan akun tepat izin ini, tidak lebih, agar setiap fitur berfungsi dan tidak ada hal lain yang mungkin.",
+      "tabOperations": "Yang dilakukan Formalie",
+      "tabScript": "Pernyataan untuk dijalankan"
+    },
+    "summary": {
+      "engine": "Database",
+      "address": "Server",
+      "database": "Database",
+      "account": "Akun",
+      "security": "Keamanan",
+      "access": "Akses",
+      "descriptor": "Deskriptor koneksi",
+      "encrypted": "Terenkripsi",
+      "notEncrypted": "Tidak terenkripsi",
+      "ssh": "Tunnel SSH",
+      "structure": "membuat tabel",
+      "change": "Ubah {item}"
+    },
+    "wizard": {
+      "newCrumb": "Tambah koneksi",
+      "newTitle": "Tambah koneksi",
+      "newDesc": "Hubungkan salah satu database Anda, langkah demi langkah",
+      "editCrumb": "Edit",
+      "editTitle": "Edit {name}",
+      "editDesc": "Ubah pengaturan, lalu uji sebelum menyimpan",
+      "engineLegend": "Database",
+      "builtInNote": "Penyimpanan terenkripsi bawaan Formalie tetap menjadi default. Koneksi menjadi tambahannya.",
+      "stepOf": "Langkah {n} dari {total}",
+      "step": {
+        "engine": "Database",
+        "server": "Server",
+        "signin": "Masuk",
+        "security": "Keamanan",
+        "access": "Akses",
+        "review": "Nama dan uji"
+      },
+      "title": {
+        "engine": "Database yang mana?",
+        "server": "Di mana lokasinya?",
+        "signin": "Bagaimana Formalie masuk?",
+        "security": "Bagaimana koneksi dilindungi?",
+        "access": "Apa yang boleh dilakukan Formalie?",
+        "review": "Beri nama dan uji"
+      },
+      "desc": {
+        "engine": "Masing-masing punya pengaturan sendiri. Anda dapat menambahkan yang lain nanti.",
+        "server": "Alamat yang digunakan server Formalie untuk menjangkau database {engine} Anda.",
+        "signin": "Gunakan akun yang dibuat untuk Formalie. Kata sandi dienkripsi dan tidak pernah ditampilkan lagi.",
+        "security": "Enkripsi dan, untuk jaringan privat, tunnel SSH.",
+        "access": "Mulailah dengan hanya baca. Izin yang perlu diberikan mengikuti pilihan Anda.",
+        "review": "Pengujian dijalankan dari server Formalie dan hanya membaca."
+      },
+      "name": "Nama",
+      "nameDesc": "Cara koneksi ini tampil di Formalie.",
+      "namePlaceholder": "mis. Manajemen kasus",
+      "testTitle": "Uji koneksi",
+      "testDesc": "Memeriksa setiap langkah dan setiap izin. Tidak ada yang disimpan sampai Anda menyimpan.",
+      "test": "Uji koneksi",
+      "testAgain": "Uji lagi",
+      "fixStep": "Perbaiki: {step}",
+      "save": "Simpan koneksi",
+      "testAndSave": "Uji dan simpan",
+      "saveAnyway": "Tetap simpan",
+      "saveFailedTitle": "Simpan koneksi yang gagal diuji?",
+      "saveFailedDesc": "Koneksi akan tampil sebagai gagal dan Formalie tidak akan menggunakannya sampai pengujian berhasil.",
+      "leaveTitle": "Keluar tanpa menyimpan?",
+      "leaveDesc": "Pengaturan koneksi yang Anda masukkan akan hilang.",
+      "leave": "Keluar"
+    },
+    "help": {
+      "engine": {
+        "title": "Yang Anda perlukan",
+        "p1": "Alamat dan port server, serta nama database.",
+        "p2": "Akun khusus untuk Formalie. Pernyataan persis untuk membuatnya ada di langkah Akses.",
+        "p3": "Alamat Formalie diizinkan di firewall Anda (di bawah).",
+        "p4": "Untuk database di jaringan privat: server SSH yang boleh digunakan Formalie."
+      },
+      "server": {
+        "title": "Menjangkau database Anda",
+        "p1": "Gunakan alamat yang dapat diakses dari internet, bukan dari dalam jaringan Anda.",
+        "p2": "Izinkan alamat Formalie pada port database.",
+        "p3": "Hanya jaringan privat? Tambahkan tunnel SSH di langkah Keamanan."
+      },
+      "signin": {
+        "title": "Akun khusus",
+        "p1": "Jangan pernah gunakan akun administrator. Pengujian akan memperingatkan Anda jika demikian.",
+        "p2": "Langkah Akses menuliskan pernyataan untuk membuat akun dengan izin yang tepat.",
+        "p3": "Kredensial dikirim terenkripsi, disimpan terenkripsi, dan tidak pernah ditampilkan lagi.",
+        "sqlserver": {
+          "p1": "Akun SQL Server: login dengan kata sandi.",
+          "p2": "Microsoft Entra ID: pengguna dengan kata sandi, atau aplikasi (service principal) dengan rahasia klien.",
+          "p3": "Langkah Akses menuliskan pernyataan untuk membuat salah satunya dengan izin yang tepat."
+        }
+      },
+      "security": {
+        "title": "Melindungi koneksi",
+        "p1": "Selalu enkripsi. Memeriksa sertifikat juga membuktikan Anda menjangkau server yang benar.",
+        "p2": "Tunnel SSH menjangkau database privat melalui server yang Anda izinkan.",
+        "p3": "Kunci dan sertifikat tetap tersimpan terenkripsi di server Formalie.",
+        "postgresql": {
+          "p1": "require mengenkripsi lalu lintas.",
+          "p2": "verify-full juga memeriksa sertifikat dan nama host (disarankan).",
+          "p3": "Tempel sertifikat CA untuk verify-ca dan verify-full."
+        },
+        "mysql": {
+          "p1": "Wajib mengenkripsi lalu lintas.",
+          "p2": "Verifikasi identitas juga memeriksa sertifikat dan nama host (disarankan).",
+          "p3": "Tambahkan sertifikat CA untuk opsi verifikasi."
+        },
+        "mariadb": {
+          "p1": "Wajib mengenkripsi lalu lintas.",
+          "p2": "Verifikasi identitas juga memeriksa sertifikat dan nama host (disarankan).",
+          "p3": "Tambahkan sertifikat CA untuk opsi verifikasi."
+        },
+        "sqlserver": {
+          "p1": "Wajib mengenkripsi dan memeriksa sertifikat.",
+          "p2": "Ketat (TDS 8.0) mengenkripsi sebelum masuk, untuk SQL Server 2022 dan Azure SQL.",
+          "p3": "Memercayai sertifikat tanpa memeriksanya hanya untuk pengujian."
+        },
+        "oracle": {
+          "p1": "TCPS mengenkripsi dengan TLS dan disarankan.",
+          "p2": "Dengan TCP, atur enkripsi jaringan native ke Wajib di kedua sisi.",
+          "p3": "Tempel sertifikat CA dari wallet Anda untuk TCPS."
+        }
+      },
+      "access": {
+        "title": "Hak akses minimum",
+        "p1": "Berikan hanya yang digunakan koneksi ini. Setiap fitur yang memerlukan lebih akan memberi tahu Anda.",
+        "p2": "Hanya baca tidak pernah dapat mengubah data Anda, apa pun yang diminta.",
+        "p3": "Formalie tidak pernah menghapus tabel atau kolom.",
+        "p4": "Setiap kueri, perubahan, impor, dan ekspor dicatat di jejak audit."
+      },
+      "review": {
+        "title": "Yang diperiksa pengujian",
+        "p1": "Bahwa server Formalie dapat menjangkau alamat dan port.",
+        "p2": "Enkripsi, sertifikat, dan proses masuk.",
+        "p3": "Bahwa database dapat dibuka, dan setiap izin yang diperlukan koneksi ini.",
+        "p4": "Hanya membaca: tidak ada yang berubah di database Anda."
+      }
     }
   },
   "apiService": {

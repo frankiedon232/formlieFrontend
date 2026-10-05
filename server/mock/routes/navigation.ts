@@ -1,4 +1,5 @@
 import type { NavCounts } from '#shared/types/navigation'
+import { DATASOURCE_STATUSES, type DataSourceStatus } from '#shared/types/datasources'
 import { SYSTEM_TEMPLATES, TEMPLATE_CATEGORY_KEYS } from '#shared/templates'
 import { requireAuth } from '../core/auth'
 import { ok } from '../core/respond'
@@ -10,6 +11,7 @@ import { libraryOf } from '../data/libraryStore'
 import { allTemplates } from '../data/templateStore'
 import { SYSTEM_THEME_COUNT } from './themes'
 import { SYSTEM_PAGE_COUNT } from './pageDesigns'
+import { dataSourcesOf, statusOf } from '../data/dataSourceStore'
 
 /** GET /navigation/counts, cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
@@ -63,5 +65,9 @@ export const navigationCounts = defineMockRoute(({ event }) => {
     folders: formsOf(tenant)
       .folders.map(folder => ({ id: folder.id, name: folder.name, color: folder.color ?? null, count: live.filter(form => form.folder?.id === folder.id && form.status !== 'archived').length }))
       .sort((a, b) => a.name.localeCompare(b.name)),
+    datasources: {
+      total: dataSourcesOf(tenant).length,
+      ...(Object.fromEntries(DATASOURCE_STATUSES.map(status => [status, dataSourcesOf(tenant).filter(source => statusOf(source) === status).length])) as Record<DataSourceStatus, number>),
+    },
   })
 })

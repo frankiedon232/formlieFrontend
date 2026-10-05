@@ -19,7 +19,8 @@
     "goHome": "Ana sayfaya git",
     "confirm": "Onayla",
     "copy": "Kopyala",
-    "copied": "Kopyalandı"
+    "copied": "Kopyalandı",
+    "next": "İleri"
   },
   "placeholder": {
     "title": "Çok yakında",
@@ -403,7 +404,13 @@
     "pagesSaved": "Kaydedilenler",
     "pagesCreated": "Oluşturulanlar",
     "folders": "Klasörler",
-    "foldersAll": "Tüm klasörler"
+    "foldersAll": "Tüm klasörler",
+    "connectionsAll": "Tümü",
+    "connectionsConnected": "Bağlı",
+    "connectionsAttention": "İlgi gerekiyor",
+    "connectionsFailing": "Başarısız",
+    "connectionsDisabled": "Devre dışı",
+    "connectionsNew": "Bağlantı ekle"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -524,7 +531,17 @@
     "FRM-RESP-1009": "Bu yanıtın bir kişi tarafından gönderildiği doğrulanamadı. Lütfen tekrar deneyin.",
     "FRM-FORM-1017": "Bu parola doğru değil.",
     "FRM-FORM-1018": "Bu davet bağlantısı artık geçerli değil.",
-    "FRM-FORM-1019": "Bu form için oturumunuzun süresi doldu. Lütfen yeniden oturum açın."
+    "FRM-FORM-1019": "Bu form için oturumunuzun süresi doldu. Lütfen yeniden oturum açın.",
+    "FRM-DEST-1002": "Veritabanı kullanıcı adını veya parolayı kabul etmedi.",
+    "FRM-DEST-1003": "Şifreli bağlantı kurulamadı (sertifika veya TLS ayarları).",
+    "FRM-DEST-1004": "SSH tüneli açılamadı.",
+    "FRM-DEST-1005": "Veritabanı veya şema bulunamadı ya da bu hesap onu kullanamıyor.",
+    "FRM-DEST-1006": "Bu bağlantının ihtiyaç duyduğu bazı izinler eksik.",
+    "FRM-DEST-1007": "Bu ada sahip bir bağlantı zaten var.",
+    "FRM-DEST-1008": "Bu bağlantı testi artık kullanılamıyor. Yeniden çalıştırın.",
+    "FRM-DEST-1009": "Bu bağlantı devre dışı. Önce etkinleştirin.",
+    "FRM-DEST-1010": "Formlar yanıtlarını hâlâ bu bağlantıya gönderiyor.",
+    "FRM-DEST-1011": "Veritabanının yanıt vermesi çok uzun sürdü."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -576,7 +593,12 @@
     "new": "Yeni",
     "reviewed": "İncelendi",
     "approved": "Onaylandı",
-    "rejected": "Reddedildi"
+    "rejected": "Reddedildi",
+    "connected": "Bağlı",
+    "attention": "İlgi gerekiyor",
+    "failing": "Başarısız",
+    "disabled": "Devre dışı",
+    "untested": "Test edilmedi"
   },
   "footer": {
     "rights": "Tüm hakları saklıdır.",
@@ -767,7 +789,8 @@
       "settings": "Ayarlar",
       "users": "Kullanıcılar",
       "integrations": "Entegrasyonlar",
-      "audit": "Denetim kaydı"
+      "audit": "Denetim kaydı",
+      "data": "Veri kaynakları"
     },
     "actorType": {
       "user": "Kişi",
@@ -794,7 +817,8 @@
       "saved_field": "Kayıtlı alan",
       "option_list": "Seçenek listesi",
       "theme": "Tema",
-      "template": "Şablon"
+      "template": "Şablon",
+      "data_source": "Bağlantı"
     },
     "field": {
       "name": "Ad",
@@ -817,7 +841,14 @@
       "number_format": "Sayı biçimi",
       "week_start": "Haftanın ilk günü",
       "tags": "Etiketler",
-      "colour": "Renk"
+      "colour": "Renk",
+      "engine": "Veritabanı türü",
+      "host": "Sunucu adresi",
+      "port": "Bağlantı noktası",
+      "database": "Veritabanı",
+      "access": "Erişim",
+      "credentials": "Kimlik bilgileri",
+      "security": "Bağlantı ayarları"
     },
     "action": {
       "auth_login_succeeded": "Giriş yapıldı",
@@ -878,7 +909,15 @@
       "forms_page_design_updated": "Açılış sayfası güncellendi",
       "forms_page_design_deleted": "Açılış sayfası silindi",
       "responses_export_downloaded": "Dışa aktarım indirildi",
-      "responses_export_deleted": "Dışa aktarım silindi"
+      "responses_export_deleted": "Dışa aktarım silindi",
+      "data_connection_created": "Bağlantı eklendi",
+      "data_connection_updated": "Bağlantı değiştirildi",
+      "data_connection_tested": "Bağlantı test edildi",
+      "data_connection_duplicated": "Bağlantı çoğaltıldı",
+      "data_connection_enabled": "Bağlantı etkinleştirildi",
+      "data_connection_disabled": "Bağlantı devre dışı bırakıldı",
+      "data_connection_deleted": "Bağlantı silindi",
+      "data_credentials_changed": "Bağlantı kimlik bilgileri değiştirildi"
     },
     "detail": {
       "who": "Kim",
@@ -2838,6 +2877,556 @@
       "destinations": "Her formun yanıtlarını nereye göndereceğini seçin ve alanları sütunlarla eşleştirin.",
       "transfers": "Dosyaları tablolara içe aktarın, tabloları veya sorgu sonuçlarını dışa aktarın.",
       "activity": "Her bağlantı için teslimatlar, hatalar ve son sorgular."
+    },
+    "add": "Bağlantı ekle",
+    "search": "Bağlantı, sunucu veya veritabanı ara…",
+    "emptyTitle": "Henüz bağlantı yok",
+    "emptyDesc": "Form verilerini göndermek ve burada üzerinde çalışmak için veritabanlarınızdan birini bağlayın. Bu sırada Formalie’nin yerleşik depolaması çalışmaya devam eder.",
+    "notFound": "Bu bağlantı kullanılamıyor",
+    "ms": "{n} ms",
+    "checked": "Kontrol edildi: {when}",
+    "neverChecked": "Henüz kontrol edilmedi",
+    "needsLook": "Göz atılmalı",
+    "uptime": "Çalışma süresi (30 gün)",
+    "uptimePercent": "Günlük çalışma süresi (%)",
+    "formsUsing": "Buraya gönderen formlar",
+    "lastChecked": "Son kontrol",
+    "addedBy": "Ekleyen",
+    "yes": "Evet",
+    "no": "Hayır",
+    "secretSaved": "Kaydedildi",
+    "secretNotSet": "Ayarlanmadı",
+    "secretsChanged": "Kimlik bilgileri son değişiklik: {when}",
+    "enabled": "Etkin",
+    "disabledLabel": "Devre dışı",
+    "missingCount": "{n} izin eksik | {n} izin eksik",
+    "moreOptions": "Diğer seçenekler",
+    "savedSecret": "Kaydedildi. Korumak için boş bırakın",
+    "showSecret": "Göster",
+    "hideSecret": "Gizle",
+    "loadFile": "Dosyadan yükle",
+    "col": {
+      "connection": "Bağlantı",
+      "status": "Durum"
+    },
+    "sort": {
+      "checked": "Son kontrol edilenler",
+      "uptime": "En düşük çalışma süresi önce",
+      "operations": "En yoğun",
+      "newest": "Önce en yeni"
+    },
+    "kpi": {
+      "activity": "Etkinlik",
+      "operations": "İşlemler",
+      "latency": "Yanıt süresi",
+      "missing": "Eksik izinler",
+      "byStatus": "Duruma göre bağlantılar",
+      "needLook": "{n} tanesine göz atılmalı"
+    },
+    "actions": {
+      "open": "Aç",
+      "edit": "Bağlantıyı düzenle",
+      "duplicate": "Çoğalt",
+      "copyLink": "Bağlantı adresini kopyala",
+      "delete": "Bağlantıyı sil",
+      "deleteInUse": "Formlar buraya gönderiyor, silinemez",
+      "test": "Şimdi test et",
+      "enable": "Etkinleştir",
+      "disable": "Devre dışı bırak"
+    },
+    "toast": {
+      "created": "“{name}” bağlantısı eklendi",
+      "saved": "Bağlantı kaydedildi",
+      "enabled": "Bağlantı etkinleştirildi",
+      "disabled": "Bağlantı devre dışı bırakıldı",
+      "duplicated": "Bağlantı çoğaltıldı. Kullanmak için parolasını girin",
+      "deleted": "Bağlantı silindi",
+      "linkCopied": "Bağlantı adresi kopyalandı"
+    },
+    "disable": {
+      "title": "“{name}” devre dışı bırakılsın mı?",
+      "desc": "Formalie bu veritabanını kullanmayı bırakır: sağlık kontrolü yapılmaz, veri gönderilmez veya okunmaz. İstediğiniz zaman yeniden etkinleştirebilirsiniz.",
+      "confirm": "Devre dışı bırak"
+    },
+    "delete": {
+      "title": "“{name}” silinsin mi?",
+      "desc": "Ayarları ve kayıtlı kimlik bilgileri Formalie’den kaldırılır. Veritabanınızda hiçbir şey değişmez.",
+      "confirm": "Bağlantıyı sil"
+    },
+    "detail": {
+      "groups": "Göster",
+      "all": "Tümü",
+      "connection": "Bağlantı",
+      "security": "Güvenlik",
+      "permissions": "İzinler",
+      "health": "Sağlık",
+      "permissionsFrom": "Son testte kontrol edildi, {when}.",
+      "permissionsUntested": "Henüz test edilmedi. Her izni kontrol etmek için bağlantıyı test edin.",
+      "howToGrant": "İzinleri verecek komutlar",
+      "noChecks": "Henüz sağlık kontrolü yok.",
+      "navigate": "Bağlantılar arasında geçiş yap",
+      "previous": "Önceki bağlantı",
+      "next": "Sonraki bağlantı"
+    },
+    "egress": {
+      "title": "Formalie’nin adreslerine izin verin",
+      "desc": "Formalie bu adreslerden bağlanır. Veritabanınızın güvenlik duvarında veya güvenlik grubunda bunlara izin verin.",
+      "copy": "{ip} kopyala"
+    },
+    "engineDesc": {
+      "mysql": "Bağlantı noktası 3306 · kimlik doğrulamaya kadar TLS modları · SSH tüneli",
+      "mariadb": "Bağlantı noktası 3306 · kimlik doğrulamaya kadar TLS modları · SSH tüneli",
+      "oracle": "Bağlantı noktası 1521 · hizmet adı, SID veya tanımlayıcı · TCPS veya yerel şifreleme",
+      "postgresql": "Bağlantı noktası 5432 · şemalar · verify-full’a kadar sslmode · SSH tüneli",
+      "sqlserver": "Bağlantı noktası 1433 · örnekler · SQL veya Microsoft Entra ile oturum açma · katı şifreleme"
+    },
+    "field": {
+      "host": "Sunucu adresi",
+      "port": "Bağlantı noktası",
+      "database": "Veritabanı",
+      "schema": "Şema",
+      "charset": "Karakter kümesi",
+      "time_zone": "Oturum saat dilimi",
+      "connect_timeout": "Bağlantı zaman sınırı (saniye)",
+      "username": "Kullanıcı adı",
+      "password": "Parola",
+      "ssl_mode": "Şifreleme (TLS)",
+      "ca_certificate": "CA sertifikası",
+      "client_certificate": "İstemci sertifikası",
+      "client_key": "İstemci özel anahtarı",
+      "ssh": "SSH tüneli üzerinden bağlan",
+      "ssh_host": "SSH sunucusu",
+      "ssh_port": "SSH bağlantı noktası",
+      "ssh_username": "SSH kullanıcısı",
+      "ssh_private_key": "SSH özel anahtarı",
+      "ssh_passphrase": "Anahtar parolası",
+      "target_session_attrs": "Kullanılacak sunucu",
+      "instance": "Örnek adı",
+      "application_intent": "Uygulama amacı",
+      "multi_subnet_failover": "Çoklu alt ağ yük devretme",
+      "auth": "Oturum açma yöntemi",
+      "tenant_id": "Dizin (kiracı) kimliği",
+      "client_id": "Uygulama (istemci) kimliği",
+      "client_secret": "İstemci gizli anahtarı",
+      "encrypt": "Şifreleme",
+      "trust_server_certificate": "Sunucu sertifikasına kontrol etmeden güven",
+      "host_name_in_certificate": "Sertifikadaki ana bilgisayar adı",
+      "connect_by": "Bağlanma yöntemi",
+      "service_name": "Hizmet adı",
+      "sid": "SID",
+      "descriptor": "Bağlantı tanımlayıcısı",
+      "protocol": "Protokol",
+      "network_encryption": "Yerel ağ şifrelemesi",
+      "ssl_server_dn_match": "Sunucu sertifikasındaki adı kontrol et"
+    },
+    "hint": {
+      "host": "Formalie sunucularının ulaştığı ana bilgisayar adı veya IP adresi. Özel ağlar için SSH tüneli kullanın.",
+      "connect_timeout": "Vazgeçmeden önce sunucunun ne kadar bekleneceği.",
+      "username": "Formalie’ye özel bir hesap, asla yönetici hesabı değil.",
+      "ca_certificate": "Sunucunun sertifikasını imzalayan sertifika yetkilisinin PEM metnini yapıştırın.",
+      "client_certificate": "Yalnızca sunucu bir istemci sertifikası istediğinde (karşılıklı TLS).",
+      "client_key": "İstemci sertifikasının PEM biçimindeki özel anahtarı.",
+      "ssh": "Özel ağdaki bir veritabanı için: Formalie, izin verdiğiniz ve trafiği veritabanına yönlendiren bir sunucuya bağlanır.",
+      "ssh_private_key": "SSH kullanıcısının PEM özel anahtarı. Yalnızca Formalie için oluşturulmuş bir anahtar kullanın.",
+      "time_zone": "Tarihler bu saat diliminde gönderilir ve okunur. UTC (+00:00) önerilir.",
+      "target_session_attrs": "Kümeler için: Formalie’nin hangi sunucuyu kullanabileceği.",
+      "trust_server_certificate": "Önerilmez: aradaki herkes trafiği okuyabilir. Yalnızca test için kullanın.",
+      "host_name_in_certificate": "Sertifika, sunucu adresinden farklı bir ada verildiğinde.",
+      "multi_subnet_failover": "Alt ağlara yayılan Always On kullanılabilirlik grupları için daha hızlı yük devretme.",
+      "descriptor": "tnsnames.ora’daki gibi Easy Connect veya tam bir TNS tanımlayıcısı.",
+      "schema": "Formalie’nin tabloları varsayılan olarak aradığı yer.",
+      "postgresql": {
+        "schema": "Formalie’nin tabloları varsayılan olarak aradığı yer (search path).",
+        "ssl_mode": "require şifreler; verify-full ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir)."
+      },
+      "mysql": {
+        "ssl_mode": "Zorunlu şifreler; Kimliği doğrula ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir)."
+      },
+      "mariadb": {
+        "ssl_mode": "Zorunlu şifreler; Kimliği doğrula ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir)."
+      },
+      "sqlserver": {
+        "instance": "Yalnızca adlandırılmış bir örnek için. Bağlantı noktasını olduğu gibi bırakın veya örneğin kendi bağlantı noktasını girin.",
+        "schema": "Formalie kullanıcısının varsayılan şeması.",
+        "encrypt": "Katı, TDS 8.0 kullanır ve sertifikayı her zaman kontrol eder (SQL Server 2022 ve Azure SQL)."
+      },
+      "oracle": {
+        "schema": "Formalie’nin tablolarını kullandığı şema (sahip). Boş: kullanıcının kendi şeması.",
+        "protocol": "TCPS, TLS ile şifreler (önerilir). TCP, yerel ağ şifrelemesine dayanır."
+      }
+    },
+    "option": {
+      "charset": {
+        "utf8mb4": "utf8mb4 (önerilir)",
+        "utf8mb3": "utf8mb3",
+        "latin1": "latin1"
+      },
+      "ssl_mode": {
+        "disabled": "Kapalı",
+        "preferred": "Tercih edilen (mümkünse şifrele)",
+        "required": "Zorunlu (şifrele)",
+        "verify_ca": "Sertifikayı doğrula",
+        "verify_identity": "Kimliği doğrula (önerilir)",
+        "disable": "disable (kapalı)",
+        "allow": "allow",
+        "prefer": "prefer",
+        "require": "require (şifrele)",
+        "verify-ca": "verify-ca (sertifikayı kontrol et)",
+        "verify-full": "verify-full (önerilir)"
+      },
+      "target_session_attrs": {
+        "any": "Herhangi biri",
+        "read-write": "Yalnızca okuma-yazma",
+        "read-only": "Yalnızca salt okunur",
+        "primary": "Birincil",
+        "standby": "Yedek",
+        "prefer-standby": "Varsa yedek"
+      },
+      "application_intent": {
+        "read_write": "Okuma ve yazma",
+        "read_only": "Salt okunur (okunabilir ikincil)"
+      },
+      "auth": {
+        "sql": "SQL Server hesabı",
+        "entra_password": "Microsoft Entra ID (parola)",
+        "entra_service_principal": "Microsoft Entra ID (hizmet sorumlusu)"
+      },
+      "encrypt": {
+        "mandatory": "Zorunlu (önerilir)",
+        "strict": "Katı (TDS 8.0)",
+        "optional": "İsteğe bağlı (şifresiz)"
+      },
+      "connect_by": {
+        "service_name": "Hizmet adı",
+        "sid": "SID",
+        "descriptor": "Bağlantı tanımlayıcısı"
+      },
+      "protocol": {
+        "tcps": "TCPS (TLS)",
+        "tcp": "TCP"
+      },
+      "network_encryption": {
+        "required": "Zorunlu",
+        "requested": "İstenen",
+        "accepted": "Kabul edilen"
+      }
+    },
+    "invalid": {
+      "required": "Bu alanı doldurun.",
+      "host": "http:// veya bağlantı noktası olmadan bir ana bilgisayar adı ya da IP adresi girin.",
+      "host_blocked": "Formalie bu adrese bağlanamıyor. Özel bir ağ için SSH tüneli kullanın.",
+      "port": "1 ile 65535 arasında bir bağlantı noktası girin.",
+      "pem": "-----BEGIN ile -----END arasındaki PEM metninin tamamını yapıştırın.",
+      "identifier": "Harf, rakam ve alt çizgi kullanın.",
+      "uuid": "Kimliği Microsoft Entra yönetim merkezinde gösterildiği gibi girin.",
+      "seconds": "1 ile 120 saniye arasında bir değer girin.",
+      "taken": "Bu ada sahip bir bağlantı zaten var."
+    },
+    "level": {
+      "read": "Okuma",
+      "write": "Yazma",
+      "structure": "Yapı"
+    },
+    "levelDesc": {
+      "read": "Tablolara göz atma, satır okuma, dışa aktarma, okuma sorguları çalıştırma",
+      "write": "Form yanıtlarını gönderme, satır güncelleme ve silme, içe aktarma",
+      "structure": "Formdan tablo oluşturma, yeni alanlar için sütun ekleme"
+    },
+    "perm": {
+      "needed": "Gerekli",
+      "notNeeded": "Gerekli değil",
+      "granted": "Verildi",
+      "missing": "Eksik",
+      "not_needed": "Bu bağlantı için gerekli değil"
+    },
+    "op": {
+      "connect": {
+        "label": "Oturum aç",
+        "uses": "Veritabanında oturum açma"
+      },
+      "read_schema": {
+        "label": "Yapıyı oku",
+        "uses": "Gezginde şemalar, tablolar, sütunlar, anahtarlar ve dizinler"
+      },
+      "row_counts": {
+        "label": "Satırları say",
+        "uses": "Gezginde tablo boyutları"
+      },
+      "read_rows": {
+        "label": "Satırları oku",
+        "uses": "Tablolara göz atma ve dışa aktarma, okuma sorguları, seçenek listeleri"
+      },
+      "cancel": {
+        "label": "Kendi sorgusunu iptal et",
+        "uses": "Çok uzun süren bir sorguyu durdurma"
+      },
+      "insert": {
+        "label": "Satır ekle",
+        "uses": "Form yanıtlarını gönderme, içe aktarmalar, yeni satırlar"
+      },
+      "update": {
+        "label": "Satırları değiştir",
+        "uses": "Anahtara göre güncelle veya ekle, gezginde düzenlemeler"
+      },
+      "delete": {
+        "label": "Satırları sil",
+        "uses": "Gezginde satır silme"
+      },
+      "sequences": {
+        "label": "Dizileri kullan",
+        "uses": "Yeni satırlar için üretilen kimlikler"
+      },
+      "create_table": {
+        "label": "Tablo oluştur",
+        "uses": "Bir formdan oluşturulan tablo"
+      },
+      "alter_table": {
+        "label": "Sütun ekle",
+        "uses": "Forma eklenen bir alan için sütun"
+      },
+      "create_index": {
+        "label": "Benzersiz anahtar ekle",
+        "uses": "Güncelle veya ekle işleminin eşleştiği anahtar"
+      }
+    },
+    "grant": {
+      "intro": "Bunları bir veritabanı yöneticisi olarak çalıştırın. Bu bağlantının veritabanı, şemaları ve hesabı için yazılmıştır.",
+      "copyAll": "Tümünü kopyala",
+      "copied": "Komutlar kopyalandı",
+      "oracle23": "Oracle 23ai veya üzeri",
+      "oracle23Desc": "Şema başına izinler. 19c ve öncesi için kapatın (tablo başına izinler).",
+      "block": {
+        "account": "1. Hesabı oluştur",
+        "read": "2. Okuma",
+        "write": "3. Yazma",
+        "structure": "4. Yapı"
+      },
+      "note": {
+        "host_limit": "Mümkünse '%' yerine Formalie’nin adreslerini yazın, böylece hesap yalnızca oradan çalışır.",
+        "pool": "Formalie aynı anda en fazla 10 bağlantı açar.",
+        "default_privileges": "Daha sonra oluşturulan tabloların da kapsanması için tabloların sahibi olan rolle çalıştırın.",
+        "owner_alter": "Formalie oluşturduğu tabloların sahibidir ve bunlara sütun ekleyebilir. Mevcut tablolar sizin kalır.",
+        "entra": "Bir Microsoft Entra hesabıyla oturum açmışken veritabanında çalıştırın. Ad, Entra kullanıcısı veya uygulamasıdır.",
+        "contained": "Azure SQL Database’de bunun yerine kapsanan bir kullanıcı oluşturun: CREATE USER ... WITH PASSWORD.",
+        "no_sysdba": "Formalie için asla SYS, SYSTEM veya SYSDBA rolünü kullanmayın.",
+        "oracle_new_tables": "Sonradan eklenen tabloların da izne ihtiyacı vardır: bloğu yeniden çalıştırın veya Oracle 23ai şema izinlerini kullanın.",
+        "oracle_own_schema": "23ai öncesinde Formalie tablolarını kendi şemasında oluşturur, bu yüzden sizinkilerde hak gerektirmez."
+      }
+    },
+    "step": {
+      "network": "Sunucuya ulaş",
+      "ssh": "SSH tünelini aç",
+      "tls": "Bağlantıyı şifrele",
+      "sign_in": "Oturum aç",
+      "database": "Veritabanını aç",
+      "permissions": "İzinleri kontrol et"
+    },
+    "stepDesc": {
+      "network": "Formalie sunucularından adrese ve bağlantı noktasına bağlanılıyor.",
+      "ssh": "SSH sunucusunda oturum açılıyor ve veritabanına yönlendiriliyor.",
+      "tls": "TLS kuruluyor ve sertifika kontrol ediliyor.",
+      "sign_in": "Hesapla oturum açılıyor.",
+      "database": "Veritabanı açılıyor ve sürümü okunuyor.",
+      "permissions": "Bu bağlantının ihtiyaç duyduğu her izin kontrol ediliyor."
+    },
+    "fix": {
+      "FRM-DEST-1001": "Adresi ve bağlantı noktasını, ayrıca güvenlik duvarının Formalie’nin adreslerine izin verdiğini kontrol edin.",
+      "FRM-DEST-1002": "Kullanıcı adını ve parolayı, ayrıca hesabın Formalie’nin adreslerinden oturum açabildiğini kontrol edin.",
+      "FRM-DEST-1003": "Şifreleme ayarını ve CA sertifikasını, ayrıca sertifikanın sunucu adresiyle eşleştiğini kontrol edin.",
+      "FRM-DEST-1004": "SSH sunucusunu, kullanıcıyı ve özel anahtarı, ayrıca SSH sunucusunun veritabanına ulaşabildiğini kontrol edin.",
+      "FRM-DEST-1005": "Veritabanı (veya hizmet) adını ve hesabın ona erişimi olduğunu kontrol edin.",
+      "FRM-DEST-1006": "Aşağıdaki eksik izinleri verin, ardından yeniden test edin.",
+      "FRM-DEST-1011": "Sunucu zamanında yanıt vermedi. Adresi ve güvenlik duvarını kontrol edin veya Diğer seçenekler altında zaman sınırını artırın."
+    },
+    "test": {
+      "heading": {
+        "running": "Bağlantı test ediliyor…",
+        "passed": "Her şey çalışıyor",
+        "warning": "Çalışıyor, göz atılacak bir şey var",
+        "failed": "Bağlantı çalışmadı"
+      },
+      "version": "Sunucu sürümü",
+      "latency": "Yanıt süresi",
+      "schemas": "Şemalar",
+      "tables": "Tablolar",
+      "skipped": "Atlandı",
+      "tlsOff": "Bu ayarlarla trafik şifrelenmez.",
+      "safe": "Test yalnızca okur. Verilerinizi asla değiştirmez."
+    },
+    "finding": {
+      "admin_account": {
+        "title": "Bu bir yönetici hesabı",
+        "desc": "Yalnızca listelenen izinlere sahip özel bir hesap oluşturun, böylece Formalie asla ihtiyacından fazlasını yapamaz."
+      },
+      "extra_write": {
+        "title": "Bu hesap verileri değiştirebilir",
+        "desc": "Bağlantı salt okunur olduğundan Formalie yalnızca okur. En az ayrıcalık için hesabın yazma izinlerini kaldırın."
+      },
+      "tls_off": {
+        "title": "Trafik şifrelenmiyor",
+        "desc": "Veriler ve parolalar yolda korunsun diye Güvenlik altında şifreleyen bir seçenek belirleyin."
+      },
+      "trust_certificate": {
+        "title": "Sunucu sertifikası kontrol edilmiyor",
+        "desc": "“Sunucu sertifikasına güven” seçeneğini kapatın ve mümkün olduğunda CA sertifikasını ekleyin."
+      },
+      "missing_permissions": {
+        "title": "Bazı izinler eksik",
+        "desc": "Formalie’nin bu izinlere ihtiyaç duyan bölümleri çalışmaz. İzinleri verecek komutlar İzinler altında."
+      }
+    },
+    "access": {
+      "legend": "Formalie neler yapabilir",
+      "read_only": "Salt okunur",
+      "read_write": "Okuma ve yazma",
+      "readOnlyDesc": "Göz atma, dışa aktarma ve okuma sorguları çalıştırma. Veritabanında hiçbir şey değişemez.",
+      "readWriteDesc": "Ayrıca form yanıtlarını tablolara gönderme, satırları düzenleme ve dosya içe aktarma.",
+      "structure": "Formalie’nin tablo oluşturmasına ve sütun eklemesine izin ver",
+      "structureDesc": "Form hedefleri için: formdan oluşturulan bir tablo ve her yeni alan için bir sütun. Hiçbir şeyi silmez.",
+      "schemas": "Formalie’nin kullanabileceği şemalar",
+      "databases": "Formalie’nin kullanabileceği veritabanları",
+      "schemasHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
+      "databasesHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
+      "permissionsTitle": "Verilecek izinler",
+      "permissionsDesc": "Hesaba tam olarak bunları verin, fazlasını değil; böylece her özellik çalışır ve başka hiçbir şey mümkün olmaz.",
+      "tabOperations": "Formalie ne yapar",
+      "tabScript": "Çalıştırılacak komutlar"
+    },
+    "summary": {
+      "engine": "Veritabanı",
+      "address": "Sunucu",
+      "database": "Veritabanı",
+      "account": "Hesap",
+      "security": "Güvenlik",
+      "access": "Erişim",
+      "descriptor": "Bağlantı tanımlayıcısı",
+      "encrypted": "Şifreli",
+      "notEncrypted": "Şifresiz",
+      "ssh": "SSH tüneli",
+      "structure": "tablo oluşturur",
+      "change": "Değiştir: {item}"
+    },
+    "wizard": {
+      "newCrumb": "Bağlantı ekle",
+      "newTitle": "Bağlantı ekle",
+      "newDesc": "Veritabanlarınızdan birini adım adım bağlayın",
+      "editCrumb": "Düzenle",
+      "editTitle": "{name} düzenle",
+      "editDesc": "Ayarları değiştirin, ardından kaydetmeden önce test edin",
+      "engineLegend": "Veritabanı",
+      "builtInNote": "Formalie’nin yerleşik şifreli depolaması varsayılan olarak kalır. Bağlantı buna eklenir.",
+      "stepOf": "Adım {n} / {total}",
+      "step": {
+        "engine": "Veritabanı",
+        "server": "Sunucu",
+        "signin": "Oturum açma",
+        "security": "Güvenlik",
+        "access": "Erişim",
+        "review": "Ad ve test"
+      },
+      "title": {
+        "engine": "Hangi veritabanı?",
+        "server": "Nerede?",
+        "signin": "Formalie nasıl oturum açar?",
+        "security": "Bağlantı nasıl korunuyor?",
+        "access": "Formalie neler yapabilir?",
+        "review": "Adlandırın ve test edin"
+      },
+      "desc": {
+        "engine": "Her birinin kendi ayarları vardır. Daha sonra başkalarını da ekleyebilirsiniz.",
+        "server": "Formalie sunucularının {engine} veritabanınıza ulaşmak için kullandığı adres.",
+        "signin": "Formalie için oluşturulmuş bir hesap kullanın. Parolalar şifrelenir ve bir daha asla gösterilmez.",
+        "security": "Şifreleme ve özel ağlar için bir SSH tüneli.",
+        "access": "Salt okunur ile başlayın. Verilecek izinler seçiminize göre belirlenir.",
+        "review": "Test, Formalie sunucularından çalışır ve yalnızca okur."
+      },
+      "name": "Ad",
+      "nameDesc": "Bu bağlantının Formalie’de görünen adı.",
+      "namePlaceholder": "ör. Vaka yönetimi",
+      "testTitle": "Bağlantıyı test edin",
+      "testDesc": "Her adımı ve her izni kontrol eder. Siz kaydedene kadar hiçbir şey kaydedilmez.",
+      "test": "Bağlantıyı test et",
+      "testAgain": "Yeniden test et",
+      "fixStep": "Düzelt: {step}",
+      "save": "Bağlantıyı kaydet",
+      "testAndSave": "Test et ve kaydet",
+      "saveAnyway": "Yine de kaydet",
+      "saveFailedTitle": "Testi geçemeyen bir bağlantı kaydedilsin mi?",
+      "saveFailedDesc": "Başarısız olarak görünür ve bir test geçene kadar Formalie onu kullanmaz.",
+      "leaveTitle": "Kaydetmeden çıkılsın mı?",
+      "leaveDesc": "Girdiğiniz bağlantı ayarları kaybolacak.",
+      "leave": "Çık"
+    },
+    "help": {
+      "engine": {
+        "title": "Neye ihtiyacınız var",
+        "p1": "Sunucu adresi ve bağlantı noktası ile veritabanı adı.",
+        "p2": "Formalie’ye özel bir hesap. Bunu oluşturacak komutların tam hali Erişim adımında gelir.",
+        "p3": "Güvenlik duvarınızda izin verilen Formalie adresleri (aşağıda).",
+        "p4": "Özel ağdaki bir veritabanı için: Formalie’nin kullanabileceği bir SSH sunucusu."
+      },
+      "server": {
+        "title": "Veritabanınıza ulaşma",
+        "p1": "Ağınızın içinden değil, internetten çalışan adresi kullanın.",
+        "p2": "Veritabanı bağlantı noktasında Formalie’nin adreslerine izin verin.",
+        "p3": "Yalnızca özel ağ mı? Güvenlik adımında bir SSH tüneli ekleyin."
+      },
+      "signin": {
+        "title": "Özel bir hesap",
+        "p1": "Asla yönetici hesabı kullanmayın. Kullanırsanız test sizi uyarır.",
+        "p2": "Erişim adımı, hesabı tam doğru izinlerle oluşturacak komutları yazar.",
+        "p3": "Kimlik bilgileri şifreli gönderilir, şifreli saklanır ve bir daha asla gösterilmez.",
+        "sqlserver": {
+          "p1": "SQL Server hesabı: parolalı bir oturum açma hesabı.",
+          "p2": "Microsoft Entra ID: parolalı bir kullanıcı veya istemci gizli anahtarı olan bir uygulama (hizmet sorumlusu).",
+          "p3": "Erişim adımı, ikisinden birini tam doğru izinlerle oluşturacak komutları yazar."
+        }
+      },
+      "security": {
+        "title": "Bağlantıyı koruma",
+        "p1": "Her zaman şifreleyin. Sertifikayı kontrol etmek doğru sunucuya ulaştığınızı da kanıtlar.",
+        "p2": "SSH tüneli, izin verdiğiniz bir sunucu üzerinden özel bir veritabanına ulaşır.",
+        "p3": "Anahtarlar ve sertifikalar Formalie sunucularında şifreli olarak kalır.",
+        "postgresql": {
+          "p1": "require trafiği şifreler.",
+          "p2": "verify-full ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir).",
+          "p3": "verify-ca ve verify-full için CA sertifikasını yapıştırın."
+        },
+        "mysql": {
+          "p1": "Zorunlu, trafiği şifreler.",
+          "p2": "Kimliği doğrula ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir).",
+          "p3": "Doğrulama seçenekleri için CA sertifikasını ekleyin."
+        },
+        "mariadb": {
+          "p1": "Zorunlu, trafiği şifreler.",
+          "p2": "Kimliği doğrula ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir).",
+          "p3": "Doğrulama seçenekleri için CA sertifikasını ekleyin."
+        },
+        "sqlserver": {
+          "p1": "Zorunlu, şifreler ve sertifikayı kontrol eder.",
+          "p2": "Katı (TDS 8.0), oturum açmadan önce şifreler; SQL Server 2022 ve Azure SQL için.",
+          "p3": "Sertifikaya kontrol etmeden güvenmek yalnızca test içindir."
+        },
+        "oracle": {
+          "p1": "TCPS, TLS ile şifreler ve önerilir.",
+          "p2": "TCP ile yerel ağ şifrelemesini her iki tarafta da Zorunlu olarak ayarlayın.",
+          "p3": "TCPS için cüzdanınızdaki (wallet) CA sertifikasını yapıştırın."
+        }
+      },
+      "access": {
+        "title": "En az ayrıcalık",
+        "p1": "Yalnızca bu bağlantının kullandığını verin. Daha fazlasına ihtiyaç duyan her özellik size bildirir.",
+        "p2": "Salt okunur, ne istenirse istensin verilerinizi asla değiştiremez.",
+        "p3": "Formalie asla tablo veya sütun silmez.",
+        "p4": "Her sorgu, değişiklik, içe aktarma ve dışa aktarma denetim kaydına yazılır."
+      },
+      "review": {
+        "title": "Test neleri kontrol eder",
+        "p1": "Formalie sunucularının adrese ve bağlantı noktasına ulaştığını.",
+        "p2": "Şifrelemeyi, sertifikayı ve oturum açmayı.",
+        "p3": "Veritabanının açıldığını ve bu bağlantının ihtiyaç duyduğu her izni.",
+        "p4": "Yalnızca okur: veritabanınızda hiçbir şey değişmez."
+      }
     }
   },
   "apiService": {

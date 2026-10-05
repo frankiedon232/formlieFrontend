@@ -160,7 +160,19 @@ const RESOURCE_NAV: AppNavItem[] = [
  */
 const DATA_NAV: AppNavItem[] = [
   { key: 'dataOverview', icon: 'i-lucide-layout-grid', to: '/data-sources', shortcut: 'g-d', exact: true },
-  { key: 'dataConnections', icon: 'i-lucide-database', to: '/data-sources/connections' },
+  {
+    key: 'dataConnections',
+    icon: 'i-lucide-database',
+    to: '/data-sources/connections',
+    children: [
+      { key: 'connectionsAll', to: '/data-sources/connections', dot: 'bg-(--ui-text-dimmed)', count: c => c.datasources.total },
+      { key: 'connectionsConnected', to: '/data-sources/connections', query: { status: 'connected' }, dot: 'bg-green-500', count: c => c.datasources.connected },
+      { key: 'connectionsAttention', to: '/data-sources/connections', query: { status: 'attention' }, dot: 'bg-amber-500', count: c => c.datasources.attention },
+      { key: 'connectionsFailing', to: '/data-sources/connections', query: { status: 'failing' }, dot: 'bg-red-500', count: c => c.datasources.failing },
+      { key: 'connectionsDisabled', to: '/data-sources/connections', query: { status: 'disabled' }, dot: 'bg-(--ui-text-dimmed)', count: c => c.datasources.disabled, hideZero: true },
+      { key: 'connectionsNew', icon: 'i-lucide-plus', to: '/data-sources/connections/new' },
+    ],
+  },
   { key: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
   { key: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
   { key: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
