@@ -24,6 +24,10 @@ export interface AppNavItem {
   exact?: boolean
   /** Paths under this item that belong to another menu entry (e.g. themes under settings). */
   except?: string[]
+  /** Paths matching this belong to another menu entry (e.g. a form's responses under Forms). */
+  exceptMatch?: RegExp
+  /** Paths elsewhere that belong to this entry (a form's responses open the Responses menu). */
+  alsoMatch?: RegExp
   /** Text as is (data such as a template name) instead of the `nav.<key>` translation. */
   label?: string
   /** Children built from the sidebar data (recent templates / themes), before the static ones. */
@@ -34,11 +38,15 @@ export interface AppNavItem {
  * Single source for the sidebar (MAIN MENU / RESOURCES / SYSTEM), command palette and
  * go-to shortcuts. Layout follows docs/design (Screenshot 2026-10-02 084447.png).
  */
+/** A form's responses (`/forms/{id}/responses`) belong to the Responses menu, not Forms (owner, 2026-10-05). */
+const FORM_RESPONSES = /^\/forms\/[^/]+\/responses(\/|$)/
+
 const MAIN_NAV: AppNavItem[] = [
   {
     key: 'forms',
     icon: 'i-lucide-file-text',
     to: '/forms',
+    exceptMatch: FORM_RESPONSES,
     shortcut: 'g-f',
     children: [
       { key: 'formsAll', to: '/forms', dot: 'bg-(--ui-text-dimmed)', count: c => c.forms.all },
@@ -76,6 +84,7 @@ const MAIN_NAV: AppNavItem[] = [
     key: 'responses',
     icon: 'i-lucide-inbox',
     to: '/responses',
+    alsoMatch: FORM_RESPONSES,
     shortcut: 'g-r',
     children: [
       { key: 'responsesAll', to: '/responses', dot: 'bg-(--ui-text-dimmed)', count: c => c.responses.all },
@@ -223,6 +232,8 @@ export function useNavigation() {
 
   function isActive(item: AppNavItem): boolean {
     if (item.except?.some(path => route.path === path || route.path.startsWith(`${path}/`))) return false
+    if (item.exceptMatch?.test(route.path)) return false
+    if (item.alsoMatch?.test(route.path)) return true
     if (item.query)
       return route.path === item.to && Object.entries(item.query).every(([k, v]) => route.query[k] === v)
     if (item.dot) return route.path === item.to && !route.query.status
