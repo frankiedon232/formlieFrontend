@@ -906,6 +906,8 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 **Goal:** the workspace home, built after everything else so it shows what matters (design reference 2). Replaces the Forms redirect on `/` once done.
 
+**Not replaced by Analytics or the Data sources overview** (owner, 2026-10-05): F18 Analytics is the forms' analysis page and the Data sources overview is that area's landing page; the dashboards here are still built, near the end, as planned. They may reuse `ChartsKpi`, `ChartsFlow` and the analytics endpoints.
+
 - ⬜ KPI cards with trend vs previous period (active forms, responses, completion rate, pending reviews, overdue / closing soon)
 - ⬜ Date range + Daily / Weekly / Monthly / Yearly switch
 - ⬜ Responses over time chart with tooltip
