@@ -4452,7 +4452,6 @@
       "required": "Обов'язково",
       "new": "Новий",
       "fillsFor": "Чим заповнюється {column}",
-      "columnFor": "Стовпець для {item}",
       "chooseAnswers": "Виберіть, які відповіді зберігати"
     },
     "options": {

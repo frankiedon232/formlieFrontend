@@ -4452,7 +4452,6 @@
       "required": "必须填写",
       "new": "新",
       "fillsFor": "{column} 的填入内容",
-      "columnFor": "{item} 的列",
       "chooseAnswers": "选择要存储的回答"
     },
     "options": {

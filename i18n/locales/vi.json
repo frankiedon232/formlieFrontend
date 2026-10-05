@@ -4452,7 +4452,6 @@
       "required": "Bắt buộc",
       "new": "Mới",
       "fillsFor": "Dữ liệu cho {column}",
-      "columnFor": "Cột cho {item}",
       "chooseAnswers": "Chọn câu trả lời cần lưu"
     },
     "options": {

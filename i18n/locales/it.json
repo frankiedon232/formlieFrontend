@@ -4452,7 +4452,6 @@
       "required": "Obbligatoria",
       "new": "Nuova",
       "fillsFor": "Cosa compila {column}",
-      "columnFor": "Colonna per {item}",
       "chooseAnswers": "Scegliete quali risposte archiviare"
     },
     "options": {

@@ -1,7 +1,7 @@
 /**
  * State for setting up (or changing) where a form's responses are stored (F12 M2): the
  * connection, a new table from the form or a table of theirs, the columns, the options. Columns of
- * a new table follow the form and the options (renames are kept); an existing table's columns are
+ * a new table follow the form and the options (names from the question keys, not editable); an existing table's columns are
  * matched to the form once, then edited by hand. Checks run on every change.
  */
 import type { DataSourceDetail, DataSourceRow } from '#shared/types/datasources'
@@ -24,7 +24,6 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
   const existingKey = ref<string | null>(input.destination && !input.destination.table.created ? `${input.destination.table.schema}.${input.destination.table.name}` : null)
   const settings = ref<DestinationSettings>(input.destination ? { ...input.destination.settings } : { write_mode: 'insert', key_column: 'response_id', multi_value: 'json', choices: 'value' })
   const extraMeta = ref<MetaColumn[]>([])
-  const renames = ref<Record<string, string>>({})
   const skipped = ref<string[]>([])
   const manual = ref<DestinationColumn[] | null>(input.destination ? input.destination.columns.map(column => ({ ...column })) : null)
 
@@ -95,10 +94,8 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
     if (!engine.value) return []
     const fields = input.fields().filter(field => !skipped.value.includes(field.key))
     const meta: MetaColumn[] = ['response_id', 'submitted_at', 'form_version', 'language', ...extraMeta.value]
-    return columnsForForm(engine.value, fields as never[], settings.value, meta).map(column => {
-      const key = column.source ? `${column.source.kind}:${column.source.key}` : ''
-      return renames.value[key] ? { ...column, column: renames.value[key]! } : column
-    })
+    // Names come from the question keys (owner 2026-10-05: not editable; readable names live in the view).
+    return columnsForForm(engine.value, fields as never[], settings.value, meta)
   })
   /** Tables Formalie creates always follow its standard (one row per response, by its id). */
   const standard = computed(() => (input.destination ? input.destination.table.created : mode.value === 'create'))
@@ -112,6 +109,6 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
     manual.value = [...manual.value, { column: name, type: metaTypeFor(engine.value, 'response_id'), source: { kind: 'meta', key: 'response_id' }, nullable: true, existing: false }]
   }
 
-  return { sources, sourceId, source, tables, loadingTables, mode, tableName, nameRest, nameProblem, restMax, existingKey, settings, effective, standard, extraMeta, renames, skipped, manual, engine, fullAccess, tablesSchema, prefix, theirTables, existing, nameTaken, columns, issues, loadSources, suggestedName, addKeyColumn }
+  return { sources, sourceId, source, tables, loadingTables, mode, tableName, nameRest, nameProblem, restMax, existingKey, settings, effective, standard, extraMeta, skipped, manual, engine, fullAccess, tablesSchema, prefix, theirTables, existing, nameTaken, columns, issues, loadSources, suggestedName, addKeyColumn }
 }
 

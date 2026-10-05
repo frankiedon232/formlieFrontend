@@ -4452,7 +4452,6 @@
       "required": "Lazima ijazwe",
       "new": "Mpya",
       "fillsFor": "Kinachojaza {column}",
-      "columnFor": "Safuwima ya {item}",
       "chooseAnswers": "Chagua majibu ya kuhifadhi"
     },
     "options": {

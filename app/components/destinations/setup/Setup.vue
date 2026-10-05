@@ -25,7 +25,7 @@ const index = computed(() => steps.value.indexOf(current.value))
 const setup = useStorageSetup({ formName: () => props.formName, fields: () => props.fields, destination: props.destination })
 const nameError = ref<string>()
 const touched = ref(false)
-watch([setup.sourceId, setup.tableName, setup.existingKey, setup.settings, setup.manual, setup.renames, setup.skipped, setup.extraMeta], () => (touched.value = true), { deep: true })
+watch([setup.sourceId, setup.tableName, setup.existingKey, setup.settings, setup.manual, setup.skipped, setup.extraMeta], () => (touched.value = true), { deep: true })
 watch(touched, value => emit('dirty', value))
 
 function check(step: Step): boolean {

@@ -4452,7 +4452,6 @@
       "required": "يجب ملؤه",
       "new": "جديد",
       "fillsFor": "ما يملأ {column}",
-      "columnFor": "عمود {item}",
       "chooseAnswers": "اختر الإجابات التي تُخزّن"
     },
     "options": {

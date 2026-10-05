@@ -4452,7 +4452,6 @@
       "required": "入力必須",
       "new": "新規",
       "fillsFor": "{column} に入れる内容",
-      "columnFor": "{item} の列",
       "chooseAnswers": "保存する回答を選択"
     },
     "options": {

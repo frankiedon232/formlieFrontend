@@ -1,11 +1,11 @@
 <!--
-  Step 3: the columns. A new table: one column per answer after the response facts; rename a
-  column or leave an answer out. A table of theirs: pick what goes in each column (an answer, a
+  Step 3: the columns. A new table: one column per answer after the response facts, named from
+  the question keys (fixed; the view gives readable names); answers can be left out. A table of theirs: pick what goes in each column (an answer, a
   fact about the response, or nothing); required columns must get something, and a place for the
   response id is needed (Formalie can add one). Problems and warnings show above the list.
 -->
 <script setup lang="ts">
-import type { ColumnSource, MetaColumn, StorageField  } from '#shared/types/destinations'
+import type { ColumnSource, MetaColumn, StorageField } from '#shared/types/destinations'
 import { META_COLUMNS } from '#shared/types/destinations'
 import { blocking } from '#shared/utils/datasources/tables'
 
@@ -27,9 +27,6 @@ function setSource(index: number, value: string) {
   const [kind, ...rest] = value.split(':')
   const source: ColumnSource | null = !value ? null : kind === 'meta' ? { kind: 'meta', key: rest.join(':') as MetaColumn } : { kind: 'field', key: rest.join(':') }
   s.manual.value = s.manual.value.map((column, i) => (i === index ? { ...column, source } : column))
-}
-function rename(key: string, value: string) {
-  s.renames.value = { ...s.renames.value, [key]: value.trim() }
 }
 const toggleSkip = (key: string, store: boolean) => (s.skipped.value = store ? s.skipped.value.filter(item => item !== key) : [...s.skipped.value, key])
 const manualMode = computed(() => s.mode.value === 'existing' || props.editing)
@@ -83,7 +80,7 @@ const issueText = (issue: ReturnType<typeof useStorageSetup>['issues']['value'][
               <UIcon :name="sourceIcon(column.source)" class="size-4 shrink-0 text-muted" />
               <span class="truncate text-highlighted">{{ sourceLabel(column.source) }}</span>
             </span>
-            <UInput :model-value="column.column" size="sm" class="w-full font-mono" dir="ltr" maxlength="63" spellcheck="false" :aria-label="t('destinations.columns.columnFor', { item: sourceLabel(column.source) })" @update:model-value="value => rename(keyOf(column.source), String(value))" />
+            <code class="truncate text-start font-mono text-xs text-highlighted" dir="ltr">{{ column.column }}</code>
             <code class="truncate font-mono text-[11px] text-muted" dir="ltr">{{ column.type }}</code>
           </li>
         </template>

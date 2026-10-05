@@ -4452,7 +4452,6 @@
       "required": "Must be filled",
       "new": "New",
       "fillsFor": "What fills {column}",
-      "columnFor": "Column for {item}",
       "chooseAnswers": "Choose which answers to store"
     },
     "options": {

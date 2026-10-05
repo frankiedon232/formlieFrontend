@@ -4452,7 +4452,6 @@
       "required": "Moet gevuld zijn",
       "new": "Nieuw",
       "fillsFor": "Waarmee {column} wordt gevuld",
-      "columnFor": "Kolom voor {item}",
       "chooseAnswers": "Kies welke antwoorden u opslaat"
     },
     "options": {

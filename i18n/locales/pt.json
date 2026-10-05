@@ -4452,7 +4452,6 @@
       "required": "Obrigatória",
       "new": "Nova",
       "fillsFor": "O que preenche {column}",
-      "columnFor": "Coluna para {item}",
       "chooseAnswers": "Escolha quais respostas armazenar"
     },
     "options": {

@@ -4452,7 +4452,6 @@
       "required": "필수 입력",
       "new": "새 항목",
       "fillsFor": "{column}에 들어갈 내용",
-      "columnFor": "{item}의 열",
       "chooseAnswers": "저장할 답변 선택"
     },
     "options": {

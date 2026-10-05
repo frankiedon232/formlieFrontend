@@ -4452,7 +4452,6 @@
       "required": "Doldurulmalı",
       "new": "Yeni",
       "fillsFor": "{column} sütununu ne doldurur",
-      "columnFor": "{item} için sütun",
       "chooseAnswers": "Hangi yanıtların saklanacağını seçin"
     },
     "options": {

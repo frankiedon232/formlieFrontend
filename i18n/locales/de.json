@@ -4452,7 +4452,6 @@
       "required": "Muss gefüllt sein",
       "new": "Neu",
       "fillsFor": "Was {column} füllt",
-      "columnFor": "Spalte für {item}",
       "chooseAnswers": "Wählen Sie, welche Antworten gespeichert werden"
     },
     "options": {

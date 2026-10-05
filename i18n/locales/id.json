@@ -4452,7 +4452,6 @@
       "required": "Wajib diisi",
       "new": "Baru",
       "fillsFor": "Pengisi {column}",
-      "columnFor": "Kolom untuk {item}",
       "chooseAnswers": "Pilih jawaban yang disimpan"
     },
     "options": {

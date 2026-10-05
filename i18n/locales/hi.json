@@ -4452,7 +4452,6 @@
       "required": "भरना ज़रूरी",
       "new": "नया",
       "fillsFor": "{column} किससे भरा जाता है",
-      "columnFor": "{item} के लिए कॉलम",
       "chooseAnswers": "चुनें कि कौन से उत्तर सहेजने हैं"
     },
     "options": {

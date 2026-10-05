@@ -4452,7 +4452,6 @@
       "required": "পূরণ করতেই হবে",
       "new": "নতুন",
       "fillsFor": "{column} কী দিয়ে পূরণ হয়",
-      "columnFor": "{item}-এর কলাম",
       "chooseAnswers": "কোন উত্তরগুলো রাখবেন বেছে নিন"
     },
     "options": {

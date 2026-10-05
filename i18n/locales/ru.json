@@ -4452,7 +4452,6 @@
       "required": "Обязательно",
       "new": "Новый",
       "fillsFor": "Чем заполняется {column}",
-      "columnFor": "Столбец для {item}",
       "chooseAnswers": "Выберите, какие ответы хранить"
     },
     "options": {
