@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Eerdere reacties worden al verzonden. Wacht tot dat klaar is.",
     "FRM-DEST-1018": "Er bestaat al een rij met deze sleutel.",
     "FRM-DEST-1019": "De rijen van deze tabel kunnen hier niet worden gewijzigd.",
-    "FRM-DEST-1022": "Die naam wordt al gebruikt. Kies een andere."
+    "FRM-DEST-1022": "Die naam wordt al gebruikt. Kies een andere.",
+    "FRM-DEST-1023": "Deze instructie wijzigt gegevens. Bevestig om ze uit te voeren.",
+    "FRM-DEST-1024": "Deze verbinding is hier alleen-lezen: alleen lezende instructies worden uitgevoerd.",
+    "FRM-DEST-1025": "De database kon deze instructie niet uitvoeren.",
+    "FRM-DEST-1026": "Voer één instructie tegelijk uit: selecteer ze, of zet de cursor erin."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Tabel aangemaakt in een database",
       "data_table_altered": "Tabelstructuur gewijzigd",
       "data_table_truncated": "Tabel leeggemaakt",
-      "data_table_dropped": "Tabel verwijderd"
+      "data_table_dropped": "Tabel verwijderd",
+      "data_query_run": "Query uitgevoerd op een database"
     },
     "detail": {
       "who": "Wie",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "De browser heeft het lezen van het klembord geblokkeerd. Druk op Ctrl+V (⌘V op een Mac) om te plakken.",
     "clipboardBlocked": "De browser heeft het klembord geblokkeerd. Selecteer de tekst en druk op Ctrl+C (⌘C op een Mac).",
     "page": "Deze pagina"
+  },
+  "query": {
+    "tabTitle": "Query {n}",
+    "tabs": "Querytabbladen",
+    "renameTab": "Naam van tabblad",
+    "tabHint": "Dubbelklik om de naam te wijzigen",
+    "closeTab": "{name} sluiten",
+    "newTab": "Nieuw tabblad",
+    "run": "Uitvoeren",
+    "cancel": "Stoppen",
+    "cancelled": "Gestopt. Er is niets meer uitgevoerd.",
+    "params": "Parameters",
+    "paramValue": "Waarde",
+    "paramFor": "Waarde voor :{name}",
+    "fillParams": "Vul eerst {names} in.",
+    "placeholder": "Schrijf hier SQL. Ctrl + Enter voert de instructie bij de cursor uit, of de selectie.",
+    "resizeEditor": "Grootte van de editor wijzigen",
+    "startTitle": "Een instructie uitvoeren",
+    "startDesc": "Schrijf hierboven SQL en druk op Ctrl + Enter (⌘ + Enter op een Mac). De resultaten verschijnen hier.",
+    "noRows": "Geen rijen",
+    "showing": "Rijen {from}–{to} van {total}",
+    "took": "{ms} ms",
+    "problemTitle": "De database kon deze instructie niet uitvoeren",
+    "previewUnsupported": "Deze voorbeeldweergave voert SELECT, INSERT, UPDATE en DELETE uit in hun gangbare vormen. De echte verbinding voert alle SQL uit die het account mag uitvoeren.",
+    "goToLine": "Ga naar regel {n}",
+    "structurePreview": "Gecontroleerd. Structuurinstructies worden op de echte verbinding uitgevoerd; de voorbeeldweergave wijzigt de tabellen niet.",
+    "done": {
+      "insert": "{n} rij toegevoegd | {n} rijen toegevoegd",
+      "update": "{n} rij gewijzigd | {n} rijen gewijzigd",
+      "delete": "{n} rij verwijderd | {n} rijen verwijderd",
+      "structure": "Klaar | Klaar",
+      "other": "Klaar | Klaar"
+    },
+    "kind": {
+      "read": "Lezen",
+      "insert": "Invoegen",
+      "update": "Bijwerken",
+      "delete": "Verwijderen",
+      "structure": "Structuur",
+      "other": "Overig"
+    },
+    "confirm": {
+      "insert": "Rijen toevoegen aan {tables}?",
+      "update": "Rijen wijzigen in {tables}?",
+      "delete": "Rijen verwijderen uit {tables}?",
+      "structure": "De structuur van {tables} wijzigen?",
+      "other": "Deze instructie uitvoeren op {tables}?",
+      "read": "Deze instructie uitvoeren op {tables}?",
+      "theTable": "de database",
+      "rows": "Dit raakt {n} rij. | Dit raakt {n} rijen.",
+      "cantUndo": "Dit kan niet ongedaan worden gemaakt.",
+      "run": "Uitvoeren"
+    },
+    "side": {
+      "title": "Tabellen & geschiedenis",
+      "tables": "Tabellen",
+      "history": "Geschiedenis",
+      "insertName": "Invoegen bij cursor",
+      "selectRows": "De eerste 100 rijen selecteren",
+      "openNewTab": "Openen in een nieuw tabblad",
+      "openHere": "Openen in dit tabblad",
+      "insertAtCursor": "Invoegen bij cursor",
+      "remove": "Uit geschiedenis verwijderen",
+      "noHistory": "Nog geen instructies",
+      "noHistoryDesc": "Wat u op deze verbinding uitvoert, verschijnt hier.",
+      "rows": "{n} rij | {n} rijen",
+      "clear": "Geschiedenis wissen"
+    }
   }
 }

@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "As respostas anteriores já estão sendo enviadas. Aguarde até terminar.",
     "FRM-DEST-1018": "Já existe uma linha com esta chave.",
     "FRM-DEST-1019": "As linhas desta tabela não podem ser alteradas aqui.",
-    "FRM-DEST-1022": "Esse nome já está em uso. Escolha outro."
+    "FRM-DEST-1022": "Esse nome já está em uso. Escolha outro.",
+    "FRM-DEST-1023": "Esta instrução altera dados. Confirme para executá-la.",
+    "FRM-DEST-1024": "Aqui esta conexão é somente leitura: apenas instruções de leitura são executadas.",
+    "FRM-DEST-1025": "O banco de dados não conseguiu executar esta instrução.",
+    "FRM-DEST-1026": "Execute uma instrução por vez: selecione-a ou coloque o cursor nela."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Tabela criada em um banco de dados",
       "data_table_altered": "Estrutura da tabela alterada",
       "data_table_truncated": "Tabela esvaziada",
-      "data_table_dropped": "Tabela excluída"
+      "data_table_dropped": "Tabela excluída",
+      "data_query_run": "Consulta executada em um banco de dados"
     },
     "detail": {
       "who": "Quem",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "O navegador bloqueou a leitura da área de transferência. Pressione Ctrl+V (⌘V em um Mac) para colar.",
     "clipboardBlocked": "O navegador bloqueou a área de transferência. Selecione o texto e pressione Ctrl+C (⌘C em um Mac).",
     "page": "Esta página"
+  },
+  "query": {
+    "tabTitle": "Consulta {n}",
+    "tabs": "Abas de consulta",
+    "renameTab": "Nome da aba",
+    "tabHint": "Clique duas vezes para renomear",
+    "closeTab": "Fechar {name}",
+    "newTab": "Nova aba",
+    "run": "Executar",
+    "cancel": "Parar",
+    "cancelled": "Parado. Nada mais foi executado.",
+    "params": "Parâmetros",
+    "paramValue": "Valor",
+    "paramFor": "Valor para :{name}",
+    "fillParams": "Preencha {names} primeiro.",
+    "placeholder": "Escreva SQL aqui. Ctrl + Enter executa a instrução no cursor, ou a seleção.",
+    "resizeEditor": "Redimensionar o editor",
+    "startTitle": "Execute uma instrução",
+    "startDesc": "Escreva SQL acima e pressione Ctrl + Enter (⌘ + Enter no Mac). Os resultados aparecem aqui.",
+    "noRows": "Nenhuma linha",
+    "showing": "Linhas {from}–{to} de {total}",
+    "took": "{ms} ms",
+    "problemTitle": "O banco de dados não conseguiu executar esta instrução",
+    "previewUnsupported": "Esta prévia executa SELECT, INSERT, UPDATE e DELETE nas formas mais comuns. A conexão real executa qualquer SQL que a conta dela tenha permissão para executar.",
+    "goToLine": "Ir para a linha {n}",
+    "structurePreview": "Verificado. Instruções de estrutura são executadas na conexão real; a prévia não altera as tabelas.",
+    "done": {
+      "insert": "{n} linha adicionada | {n} linhas adicionadas",
+      "update": "{n} linha alterada | {n} linhas alteradas",
+      "delete": "{n} linha excluída | {n} linhas excluídas",
+      "structure": "Concluído | Concluído",
+      "other": "Concluído | Concluído"
+    },
+    "kind": {
+      "read": "Leitura",
+      "insert": "Inserção",
+      "update": "Atualização",
+      "delete": "Exclusão",
+      "structure": "Estrutura",
+      "other": "Outra"
+    },
+    "confirm": {
+      "insert": "{tables}: adicionar linhas?",
+      "update": "{tables}: alterar linhas?",
+      "delete": "{tables}: excluir linhas?",
+      "structure": "{tables}: alterar a estrutura?",
+      "other": "{tables}: executar esta instrução?",
+      "read": "{tables}: executar esta instrução?",
+      "theTable": "Banco de dados",
+      "rows": "Afeta {n} linha. | Afeta {n} linhas.",
+      "cantUndo": "Não é possível desfazer.",
+      "run": "Executar"
+    },
+    "side": {
+      "title": "Tabelas e histórico",
+      "tables": "Tabelas",
+      "history": "Histórico",
+      "insertName": "Inserir no cursor",
+      "selectRows": "Selecionar as primeiras 100 linhas",
+      "openNewTab": "Abrir em uma nova aba",
+      "openHere": "Abrir nesta aba",
+      "insertAtCursor": "Inserir no cursor",
+      "remove": "Remover do histórico",
+      "noHistory": "Nenhuma instrução ainda",
+      "noHistoryDesc": "O que você executar nesta conexão aparece aqui.",
+      "rows": "{n} linha | {n} linhas",
+      "clear": "Limpar histórico"
+    }
   }
 }

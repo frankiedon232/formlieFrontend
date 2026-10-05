@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Frühere Antworten werden bereits gesendet. Warten Sie, bis das abgeschlossen ist.",
     "FRM-DEST-1018": "Eine Zeile mit diesem Schlüssel gibt es bereits.",
     "FRM-DEST-1019": "Die Zeilen dieser Tabelle können hier nicht geändert werden.",
-    "FRM-DEST-1022": "Dieser Name wird bereits verwendet. Wählen Sie einen anderen."
+    "FRM-DEST-1022": "Dieser Name wird bereits verwendet. Wählen Sie einen anderen.",
+    "FRM-DEST-1023": "Diese Anweisung ändert Daten. Bestätigen Sie, um sie auszuführen.",
+    "FRM-DEST-1024": "Diese Verbindung ist hier schreibgeschützt: Nur lesende Anweisungen werden ausgeführt.",
+    "FRM-DEST-1025": "Die Datenbank konnte diese Anweisung nicht ausführen.",
+    "FRM-DEST-1026": "Führen Sie jeweils eine Anweisung aus: Markieren Sie sie oder setzen Sie den Cursor hinein."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Tabelle in einer Datenbank angelegt",
       "data_table_altered": "Tabellenstruktur geändert",
       "data_table_truncated": "Tabelle geleert",
-      "data_table_dropped": "Tabelle gelöscht"
+      "data_table_dropped": "Tabelle gelöscht",
+      "data_query_run": "Abfrage auf einer Datenbank ausgeführt"
     },
     "detail": {
       "who": "Wer",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Der Browser hat das Lesen der Zwischenablage blockiert. Drücken Sie zum Einfügen Ctrl+V (⌘V auf einem Mac).",
     "clipboardBlocked": "Der Browser hat die Zwischenablage blockiert. Markieren Sie den Text und drücken Sie Ctrl+C (⌘C auf einem Mac).",
     "page": "Diese Seite"
+  },
+  "query": {
+    "tabTitle": "Abfrage {n}",
+    "tabs": "Abfrage-Tabs",
+    "renameTab": "Tab-Name",
+    "tabHint": "Zum Umbenennen doppelklicken",
+    "closeTab": "{name} schließen",
+    "newTab": "Neuer Tab",
+    "run": "Ausführen",
+    "cancel": "Stoppen",
+    "cancelled": "Gestoppt. Es wurde nichts weiter ausgeführt.",
+    "params": "Parameter",
+    "paramValue": "Wert",
+    "paramFor": "Wert für :{name}",
+    "fillParams": "Füllen Sie zuerst {names} aus.",
+    "placeholder": "Schreiben Sie hier SQL. Ctrl + Enter führt die Anweisung am Cursor oder die Auswahl aus.",
+    "resizeEditor": "Größe des Editors ändern",
+    "startTitle": "Anweisung ausführen",
+    "startDesc": "Schreiben Sie oben SQL und drücken Sie Ctrl + Enter (⌘ + Enter auf einem Mac). Die Ergebnisse erscheinen hier.",
+    "noRows": "Keine Zeilen",
+    "showing": "Zeilen {from}–{to} von {total}",
+    "took": "{ms} ms",
+    "problemTitle": "Die Datenbank konnte diese Anweisung nicht ausführen",
+    "previewUnsupported": "Diese Vorschau führt SELECT, INSERT, UPDATE und DELETE in ihren üblichen Formen aus. Die echte Verbindung führt jedes SQL aus, das ihr Konto ausführen darf.",
+    "goToLine": "Zu Zeile {n}",
+    "structurePreview": "Geprüft. Strukturanweisungen laufen auf der echten Verbindung; die Vorschau ändert die Tabellen nicht.",
+    "done": {
+      "insert": "{n} Zeile hinzugefügt | {n} Zeilen hinzugefügt",
+      "update": "{n} Zeile geändert | {n} Zeilen geändert",
+      "delete": "{n} Zeile gelöscht | {n} Zeilen gelöscht",
+      "structure": "Fertig | Fertig",
+      "other": "Fertig | Fertig"
+    },
+    "kind": {
+      "read": "Lesen",
+      "insert": "Einfügen",
+      "update": "Ändern",
+      "delete": "Löschen",
+      "structure": "Struktur",
+      "other": "Sonstiges"
+    },
+    "confirm": {
+      "insert": "Zeilen zu {tables} hinzufügen?",
+      "update": "Zeilen in {tables} ändern?",
+      "delete": "Zeilen aus {tables} löschen?",
+      "structure": "Struktur von {tables} ändern?",
+      "other": "Diese Anweisung auf {tables} ausführen?",
+      "read": "Diese Anweisung auf {tables} ausführen?",
+      "theTable": "der Datenbank",
+      "rows": "Das betrifft {n} Zeile. | Das betrifft {n} Zeilen.",
+      "cantUndo": "Das lässt sich nicht rückgängig machen.",
+      "run": "Ausführen"
+    },
+    "side": {
+      "title": "Tabellen & Verlauf",
+      "tables": "Tabellen",
+      "history": "Verlauf",
+      "insertName": "Am Cursor einfügen",
+      "selectRows": "Die ersten 100 Zeilen abfragen",
+      "openNewTab": "In neuem Tab öffnen",
+      "openHere": "In diesem Tab öffnen",
+      "insertAtCursor": "Am Cursor einfügen",
+      "remove": "Aus dem Verlauf entfernen",
+      "noHistory": "Noch keine Anweisungen",
+      "noHistoryDesc": "Was Sie auf dieser Verbindung ausführen, erscheint hier.",
+      "rows": "{n} Zeile | {n} Zeilen",
+      "clear": "Verlauf leeren"
+    }
   }
 }

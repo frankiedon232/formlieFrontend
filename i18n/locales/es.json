@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Ya se están enviando respuestas anteriores. Espera a que termine.",
     "FRM-DEST-1018": "Ya existe una fila con esta clave.",
     "FRM-DEST-1019": "Las filas de esta tabla no se pueden cambiar aquí.",
-    "FRM-DEST-1022": "Ese nombre ya está en uso. Elige otro."
+    "FRM-DEST-1022": "Ese nombre ya está en uso. Elige otro.",
+    "FRM-DEST-1023": "Esta instrucción cambia datos. Confirma para ejecutarla.",
+    "FRM-DEST-1024": "Aquí esta conexión es de solo lectura: solo se ejecutan instrucciones de lectura.",
+    "FRM-DEST-1025": "La base de datos no pudo ejecutar esta instrucción.",
+    "FRM-DEST-1026": "Ejecuta una instrucción cada vez: selecciónala o pon el cursor en ella."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Tabla creada en una base de datos",
       "data_table_altered": "Estructura de la tabla cambiada",
       "data_table_truncated": "Tabla vaciada",
-      "data_table_dropped": "Tabla eliminada"
+      "data_table_dropped": "Tabla eliminada",
+      "data_query_run": "Consulta ejecutada en una base de datos"
     },
     "detail": {
       "who": "Quién",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "El navegador ha bloqueado la lectura del portapapeles. Pulsa Ctrl+V (⌘V en un Mac) para pegar.",
     "clipboardBlocked": "El navegador ha bloqueado el portapapeles. Selecciona el texto y pulsa Ctrl+C (⌘C en un Mac).",
     "page": "Esta página"
+  },
+  "query": {
+    "tabTitle": "Consulta {n}",
+    "tabs": "Pestañas de consulta",
+    "renameTab": "Nombre de la pestaña",
+    "tabHint": "Doble clic para renombrar",
+    "closeTab": "Cerrar {name}",
+    "newTab": "Nueva pestaña",
+    "run": "Ejecutar",
+    "cancel": "Detener",
+    "cancelled": "Detenido. No se ejecutó nada más.",
+    "params": "Parámetros",
+    "paramValue": "Valor",
+    "paramFor": "Valor para :{name}",
+    "fillParams": "Rellena primero {names}.",
+    "placeholder": "Escribe SQL aquí. Ctrl + Enter ejecuta la instrucción del cursor o la selección.",
+    "resizeEditor": "Cambiar el tamaño del editor",
+    "startTitle": "Ejecuta una instrucción",
+    "startDesc": "Escribe SQL arriba y pulsa Ctrl + Enter (⌘ + Enter en un Mac). Los resultados aparecen aquí.",
+    "noRows": "Sin filas",
+    "showing": "Filas {from}–{to} de {total}",
+    "took": "{ms} ms",
+    "problemTitle": "La base de datos no pudo ejecutar esta instrucción",
+    "previewUnsupported": "Esta vista previa ejecuta SELECT, INSERT, UPDATE y DELETE en sus formas habituales. La conexión real ejecuta cualquier SQL que su cuenta pueda ejecutar.",
+    "goToLine": "Ir a la línea {n}",
+    "structurePreview": "Comprobado. Las instrucciones de estructura se ejecutan en la conexión real; la vista previa no cambia las tablas.",
+    "done": {
+      "insert": "{n} fila añadida | {n} filas añadidas",
+      "update": "{n} fila modificada | {n} filas modificadas",
+      "delete": "{n} fila eliminada | {n} filas eliminadas",
+      "structure": "Hecho | Hecho",
+      "other": "Hecho | Hecho"
+    },
+    "kind": {
+      "read": "Lectura",
+      "insert": "Inserción",
+      "update": "Actualización",
+      "delete": "Eliminación",
+      "structure": "Estructura",
+      "other": "Otra"
+    },
+    "confirm": {
+      "insert": "¿Añadir filas a {tables}?",
+      "update": "¿Modificar filas en {tables}?",
+      "delete": "¿Eliminar filas de {tables}?",
+      "structure": "¿Cambiar la estructura de {tables}?",
+      "other": "¿Ejecutar esta instrucción en {tables}?",
+      "read": "¿Ejecutar esta instrucción en {tables}?",
+      "theTable": "la base de datos",
+      "rows": "Afecta a {n} fila. | Afecta a {n} filas.",
+      "cantUndo": "No se puede deshacer.",
+      "run": "Ejecutar"
+    },
+    "side": {
+      "title": "Tablas e historial",
+      "tables": "Tablas",
+      "history": "Historial",
+      "insertName": "Insertar en el cursor",
+      "selectRows": "Seleccionar las primeras 100 filas",
+      "openNewTab": "Abrir en una pestaña nueva",
+      "openHere": "Abrir en esta pestaña",
+      "insertAtCursor": "Insertar en el cursor",
+      "remove": "Quitar del historial",
+      "noHistory": "Aún no hay instrucciones",
+      "noHistoryDesc": "Lo que ejecutes en esta conexión aparece aquí.",
+      "rows": "{n} fila | {n} filas",
+      "clear": "Borrar historial"
+    }
   }
 }

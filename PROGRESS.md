@@ -541,7 +541,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
-**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes in their own tables, export). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes in their own tables, export). **M4** 🟡 Query editor (part 1 ✅ editor, run, results, safety, history; part 2 saved queries, export, format). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -590,10 +590,10 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 4. Query editor
 
-- ⬜ SQL editor with syntax highlighting, table / column completion from the explorer, format query, multiple tabs, **needs a code editor package (e.g. CodeMirror 6), ask before adding**
-- ⬜ Run all or the selection (Ctrl / ⌘ + Enter), cancel a running query, time limit and row limit, results grid with paging, run time, rows affected, errors pointing at the line
-- ⬜ Read-only by default: on read-only connections only reading statements run; on read + write connections a changing statement shows what it will do and needs a confirm; structure changes (create / alter / drop) blocked unless the connection allows them
-- ⬜ Parameters (`:name` → input boxes), query history, saved queries (personal or shared with the workspace), export results (CSV / XLSX)
+- ✅ SQL editor (CodeMirror 6, owner-approved 2026-10-05) with the connection's SQL dialect, syntax colours from the theme, schema / table / column completion, several tabs (rename, close, kept per connection on the device); format query: part 2
+- ✅ Run the selection or the statement at the cursor (Ctrl / ⌘ + Enter), stop (Esc), results grid built for query output (row numbers, resizable columns, NULL dimmed, right-click copy) with paging, run time, rows affected, the database's problem marking its line with Go to line
+- ✅ Read only connections run only reading statements; a changing statement says what it will do (rows, tables) and needs a confirm; never Formalie's response tables; structure changes need Full access
+- 🟡 Parameters (`:name` → input boxes) ✅, query history ✅; saved queries (personal or shared) and export results: part 2
 - ⬜ Use a saved read query as a dynamic option list source (F15e) and, later, on the dashboard (F21)
 
 ### 5. Other database operations
@@ -1078,7 +1078,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | No data types beside column names in the explorer (tree, row form, row panel); Help & support moves from the menu to the foot of the rail (always in place, short lines between items, level with the account card); in explorer mode Help sits above the account | F12 / shell | ✅ |
 | 2026-10-05 | The app's own right-click menu everywhere (never the browser's): rows of every list, the explorer's tree, rows and table area (DDL, export, rows), text fields (cut, copy, paste, select all), links, the app's items (back, search, theme, …) | shell / F12 | ✅ |
 | 2026-10-05 | Explorer dialogs that change data or structure don't close on an outside click (Esc, ✕ and Cancel still do) | F12 M3 | ✅ |
-| 2026-10-05 | Query editor (M4) uses the same mode as the explorer: its panel in the menu column, full width for the editor | F12 M4 | ⬜ |
+| 2026-10-05 | Query editor (M4) uses the same mode as the explorer: its panel in the menu column, full width for the editor; its own results grid | F12 M4 | ✅ |
 | 2026-10-05 | Every empty, not-found and error state: a better, evenly centred look with fitting icons | all | ✅ |
 | 2026-10-05 | Explorer export: this page by default; "All rows" is a deliberate choice capped at 5,000 rows (server load), with a note when more matched | F12 M3 | ✅ |
 | 2026-10-05 | Explorer works like a database editor: double-click a cell to edit it in place (not keys, auto-numbered or UUID columns, not read-only tables), drag the line between headers to resize columns (double-click fits, ← / →), widths remembered per table; explorer only | F12 M3 | ✅ |
@@ -1260,3 +1260,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | all | One empty / not-found / error state everywhere (`AppEmpty`, replacing UEmpty in 35 files and 15 hand-made ones): evenly centred, a layered icon tile, title, short description, next step; sizes md / sm / xs; error icons tint red. |
 | 2026-10-05 | F12 | Explorer export scope: this page (default) or all matching rows up to 5,000 (`EXPORT_MAX_ROWS`, `TableExport.scope / total / capped`), in the button and the right-click menus. |
 | 2026-10-05 | F12 | Explorer as an editor: in-place cell editing (`ExplorerEditCell`, one value per PATCH, same checks as the row form, a click opens the panel after a short pause so a double-click can edit) and resizable columns (DataView `resizable`, `useColumnWidths`, start widths by type, fixed table layout). |
+| 2026-10-05 | F12 | M4 part 1, Query editor: CodeMirror 6 (owner-approved) with the connection's dialect and schema completion, tabs, run selection / statement at cursor, stop, `:name` parameters, results grid (row numbers, resizable, paging, copy), changing statements confirmed with what they touch, Read only and response-table protection, the database's problem on its line, history in the side panel, audit `data.query_run`. Mock runner for common SELECT / INSERT / UPDATE / DELETE. Tests: `datasources/sql`. |

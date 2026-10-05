@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Majibu ya awali tayari yanatumwa. Subiri hadi imalizike.",
     "FRM-DEST-1018": "Safu yenye ufunguo huu tayari ipo.",
     "FRM-DEST-1019": "Safu za jedwali hili haziwezi kubadilishwa hapa.",
-    "FRM-DEST-1022": "Jina hilo tayari linatumika. Chagua jingine."
+    "FRM-DEST-1022": "Jina hilo tayari linatumika. Chagua jingine.",
+    "FRM-DEST-1023": "Amri hii inabadilisha data. Thibitisha ili kuiendesha.",
+    "FRM-DEST-1024": "Muunganisho huu ni wa kusoma tu hapa: amri za kusoma pekee ndizo huendeshwa.",
+    "FRM-DEST-1025": "Hifadhidata imeshindwa kuendesha amri hii.",
+    "FRM-DEST-1026": "Endesha amri moja kwa wakati: ichague, au weka kishale ndani yake."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Jedwali limeundwa kwenye hifadhidata",
       "data_table_altered": "Muundo wa jedwali umebadilishwa",
       "data_table_truncated": "Yaliyomo kwenye jedwali yamefutwa",
-      "data_table_dropped": "Jedwali limefutwa"
+      "data_table_dropped": "Jedwali limefutwa",
+      "data_query_run": "Hoja imeendeshwa kwenye hifadhidata"
     },
     "detail": {
       "who": "Nani",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Kivinjari kimezuia kusoma ubao wa kunakili. Bonyeza Ctrl+V (⌘V kwenye Mac) ili kubandika.",
     "clipboardBlocked": "Kivinjari kimezuia ubao wa kunakili. Chagua maandishi kisha ubonyeze Ctrl+C (⌘C kwenye Mac).",
     "page": "Ukurasa huu"
+  },
+  "query": {
+    "tabTitle": "Hoja {n}",
+    "tabs": "Vichupo vya hoja",
+    "renameTab": "Jina la kichupo",
+    "tabHint": "Bofya mara mbili ili kubadilisha jina",
+    "closeTab": "Funga {name}",
+    "newTab": "Kichupo kipya",
+    "run": "Endesha",
+    "cancel": "Simamisha",
+    "cancelled": "Imesimamishwa. Hakuna kingine kilichoendeshwa.",
+    "params": "Vigezo",
+    "paramValue": "Thamani",
+    "paramFor": "Thamani ya :{name}",
+    "fillParams": "Jaza {names} kwanza.",
+    "placeholder": "Andika SQL hapa. Ctrl + Enter huendesha amri iliyo kwenye kishale, au uteuzi.",
+    "resizeEditor": "Badilisha ukubwa wa kihariri",
+    "startTitle": "Endesha amri",
+    "startDesc": "Andika SQL hapo juu na ubonyeze Ctrl + Enter (⌘ + Enter kwenye Mac). Matokeo yanaonekana hapa.",
+    "noRows": "Hakuna safu",
+    "showing": "Safu {from}–{to} kati ya {total}",
+    "took": "{ms} ms",
+    "problemTitle": "Hifadhidata imeshindwa kuendesha amri hii",
+    "previewUnsupported": "Onyesho hili la kukagua huendesha SELECT, INSERT, UPDATE na DELETE katika miundo yake ya kawaida. Muunganisho halisi huendesha SQL yoyote ambayo akaunti yake inaruhusiwa.",
+    "goToLine": "Nenda kwenye mstari {n}",
+    "structurePreview": "Imekaguliwa. Amri za muundo huendeshwa kwenye muunganisho halisi; onyesho la kukagua halibadilishi majedwali.",
+    "done": {
+      "insert": "Safu {n} imeongezwa | Safu {n} zimeongezwa",
+      "update": "Safu {n} imebadilishwa | Safu {n} zimebadilishwa",
+      "delete": "Safu {n} imefutwa | Safu {n} zimefutwa",
+      "structure": "Imekamilika | Imekamilika",
+      "other": "Imekamilika | Imekamilika"
+    },
+    "kind": {
+      "read": "Kusoma",
+      "insert": "Kuingiza",
+      "update": "Kusasisha",
+      "delete": "Kufuta",
+      "structure": "Muundo",
+      "other": "Nyingine"
+    },
+    "confirm": {
+      "insert": "Ongeza safu kwenye {tables}?",
+      "update": "Badilisha safu kwenye {tables}?",
+      "delete": "Futa safu kutoka {tables}?",
+      "structure": "Badilisha muundo wa {tables}?",
+      "other": "Endesha amri hii kwenye {tables}?",
+      "read": "Endesha amri hii kwenye {tables}?",
+      "theTable": "hifadhidata",
+      "rows": "Inagusa safu {n}. | Inagusa safu {n}.",
+      "cantUndo": "Hili haliwezi kutenduliwa.",
+      "run": "Endesha"
+    },
+    "side": {
+      "title": "Majedwali na historia",
+      "tables": "Majedwali",
+      "history": "Historia",
+      "insertName": "Weka kwenye kishale",
+      "selectRows": "Chagua safu 100 za kwanza",
+      "openNewTab": "Fungua kwenye kichupo kipya",
+      "openHere": "Fungua kwenye kichupo hiki",
+      "insertAtCursor": "Weka kwenye kishale",
+      "remove": "Ondoa kwenye historia",
+      "noHistory": "Bado hakuna amri",
+      "noHistoryDesc": "Unachoendesha kwenye muunganisho huu kinaonekana hapa.",
+      "rows": "Safu {n} | Safu {n}",
+      "clear": "Futa historia"
+    }
   }
 }

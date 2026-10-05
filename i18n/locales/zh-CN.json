@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "之前的回复正在发送中。请等待其完成。",
     "FRM-DEST-1018": "已存在使用此键的行。",
     "FRM-DEST-1019": "此表的行无法在此处更改。",
-    "FRM-DEST-1022": "该名称已被使用。请另选一个。"
+    "FRM-DEST-1022": "该名称已被使用。请另选一个。",
+    "FRM-DEST-1023": "此语句会更改数据。请确认后运行。",
+    "FRM-DEST-1024": "此连接在这里为只读：只运行读取语句。",
+    "FRM-DEST-1025": "数据库无法运行此语句。",
+    "FRM-DEST-1026": "一次只运行一条语句：选中它，或将光标放在其中。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "在数据库中创建了表",
       "data_table_altered": "更改了表结构",
       "data_table_truncated": "清空了表",
-      "data_table_dropped": "删除了表"
+      "data_table_dropped": "删除了表",
+      "data_query_run": "在数据库上运行了查询"
     },
     "detail": {
       "who": "谁",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "浏览器阻止了读取剪贴板。请按 Ctrl+V（Mac 上为 ⌘V）粘贴。",
     "clipboardBlocked": "浏览器阻止了剪贴板。请选中文本并按 Ctrl+C（Mac 上为 ⌘C）。",
     "page": "此页面"
+  },
+  "query": {
+    "tabTitle": "查询 {n}",
+    "tabs": "查询标签页",
+    "renameTab": "标签页名称",
+    "tabHint": "双击可重命名",
+    "closeTab": "关闭 {name}",
+    "newTab": "新标签页",
+    "run": "运行",
+    "cancel": "停止",
+    "cancelled": "已停止。没有再运行其他内容。",
+    "params": "参数",
+    "paramValue": "值",
+    "paramFor": ":{name} 的值",
+    "fillParams": "请先填写 {names}。",
+    "placeholder": "在此编写 SQL。Ctrl + Enter 运行光标所在的语句或所选内容。",
+    "resizeEditor": "调整编辑器大小",
+    "startTitle": "运行语句",
+    "startDesc": "在上方编写 SQL，然后按 Ctrl + Enter（Mac 上按 ⌘ + Enter）。结果显示在这里。",
+    "noRows": "没有行",
+    "showing": "第 {from}–{to} 行，共 {total} 行",
+    "took": "{ms} ms",
+    "problemTitle": "数据库无法运行此语句",
+    "previewUnsupported": "此预览以常见形式运行 SELECT、INSERT、UPDATE 和 DELETE。实际连接可运行其账户允许的任何 SQL。",
+    "goToLine": "转到第 {n} 行",
+    "structurePreview": "已检查。结构语句在实际连接上运行；预览不会更改表。",
+    "done": {
+      "insert": "已添加 {n} 行 | 已添加 {n} 行",
+      "update": "已更改 {n} 行 | 已更改 {n} 行",
+      "delete": "已删除 {n} 行 | 已删除 {n} 行",
+      "structure": "完成 | 完成",
+      "other": "完成 | 完成"
+    },
+    "kind": {
+      "read": "读取",
+      "insert": "插入",
+      "update": "更新",
+      "delete": "删除",
+      "structure": "结构",
+      "other": "其他"
+    },
+    "confirm": {
+      "insert": "向 {tables} 添加行？",
+      "update": "更改 {tables} 中的行？",
+      "delete": "从 {tables} 删除行？",
+      "structure": "更改 {tables} 的结构？",
+      "other": "在 {tables} 上运行此语句？",
+      "read": "在 {tables} 上运行此语句？",
+      "theTable": "数据库",
+      "rows": "将影响 {n} 行。 | 将影响 {n} 行。",
+      "cantUndo": "此操作无法撤销。",
+      "run": "运行"
+    },
+    "side": {
+      "title": "表和历史记录",
+      "tables": "表",
+      "history": "历史记录",
+      "insertName": "在光标处插入",
+      "selectRows": "选择前 100 行",
+      "openNewTab": "在新标签页中打开",
+      "openHere": "在此标签页中打开",
+      "insertAtCursor": "在光标处插入",
+      "remove": "从历史记录中移除",
+      "noHistory": "还没有语句",
+      "noHistoryDesc": "你在此连接上运行的内容会显示在这里。",
+      "rows": "{n} 行 | {n} 行",
+      "clear": "清除历史记录"
+    }
   }
 }

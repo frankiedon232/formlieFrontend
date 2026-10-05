@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Earlier responses are already being sent. Wait until that finishes.",
     "FRM-DEST-1018": "A row with this key already exists.",
     "FRM-DEST-1019": "This table's rows can't be changed here.",
-    "FRM-DEST-1022": "That name is already used. Choose another one."
+    "FRM-DEST-1022": "That name is already used. Choose another one.",
+    "FRM-DEST-1023": "This statement changes data. Confirm to run it.",
+    "FRM-DEST-1024": "This connection is read only here: only reading statements run.",
+    "FRM-DEST-1025": "The database couldn't run this statement.",
+    "FRM-DEST-1026": "Run one statement at a time: select it, or put the cursor in it."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Table created in a database",
       "data_table_altered": "Table structure changed",
       "data_table_truncated": "Table emptied",
-      "data_table_dropped": "Table deleted"
+      "data_table_dropped": "Table deleted",
+      "data_query_run": "Query run on a database"
     },
     "detail": {
       "who": "Who",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "The browser blocked reading the clipboard. Press Ctrl+V (⌘V on a Mac) to paste.",
     "clipboardBlocked": "The browser blocked the clipboard. Select the text and press Ctrl+C (⌘C on a Mac).",
     "page": "This page"
+  },
+  "query": {
+    "tabTitle": "Query {n}",
+    "tabs": "Query tabs",
+    "renameTab": "Tab name",
+    "tabHint": "Double-click to rename",
+    "closeTab": "Close {name}",
+    "newTab": "New tab",
+    "run": "Run",
+    "cancel": "Stop",
+    "cancelled": "Stopped. Nothing more ran.",
+    "params": "Parameters",
+    "paramValue": "Value",
+    "paramFor": "Value for :{name}",
+    "fillParams": "Fill in {names} first.",
+    "placeholder": "Write SQL here. Ctrl + Enter runs the statement at the cursor, or the selection.",
+    "resizeEditor": "Resize the editor",
+    "startTitle": "Run a statement",
+    "startDesc": "Write SQL above and press Ctrl + Enter (⌘ + Enter on a Mac). Results show here.",
+    "noRows": "No rows",
+    "showing": "Rows {from}–{to} of {total}",
+    "took": "{ms} ms",
+    "problemTitle": "The database couldn't run this statement",
+    "previewUnsupported": "This preview runs SELECT, INSERT, UPDATE and DELETE in their common forms. The live connection runs any SQL its account may run.",
+    "goToLine": "Go to line {n}",
+    "structurePreview": "Checked. Structure statements run on the live connection; the preview doesn't change the tables.",
+    "done": {
+      "insert": "{n} row added | {n} rows added",
+      "update": "{n} row changed | {n} rows changed",
+      "delete": "{n} row deleted | {n} rows deleted",
+      "structure": "Done | Done",
+      "other": "Done | Done"
+    },
+    "kind": {
+      "read": "Read",
+      "insert": "Insert",
+      "update": "Update",
+      "delete": "Delete",
+      "structure": "Structure",
+      "other": "Other"
+    },
+    "confirm": {
+      "insert": "Add rows to {tables}?",
+      "update": "Change rows in {tables}?",
+      "delete": "Delete rows from {tables}?",
+      "structure": "Change the structure of {tables}?",
+      "other": "Run this statement on {tables}?",
+      "read": "Run this statement on {tables}?",
+      "theTable": "the database",
+      "rows": "It touches {n} row. | It touches {n} rows.",
+      "cantUndo": "This can't be undone.",
+      "run": "Run it"
+    },
+    "side": {
+      "title": "Tables & history",
+      "tables": "Tables",
+      "history": "History",
+      "insertName": "Insert at cursor",
+      "selectRows": "Select the first 100 rows",
+      "openNewTab": "Open in a new tab",
+      "openHere": "Open in this tab",
+      "insertAtCursor": "Insert at cursor",
+      "remove": "Remove from history",
+      "noHistory": "No statements yet",
+      "noHistoryDesc": "What you run on this connection shows here.",
+      "rows": "{n} row | {n} rows",
+      "clear": "Clear history"
+    }
   }
 }

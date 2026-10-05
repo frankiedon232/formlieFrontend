@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "以前の回答を既に送信中です。完了するまでお待ちください。",
     "FRM-DEST-1018": "このキーの行はすでに存在します。",
     "FRM-DEST-1019": "このテーブルの行はここでは変更できません。",
-    "FRM-DEST-1022": "その名前はすでに使われています。別の名前を選んでください。"
+    "FRM-DEST-1022": "その名前はすでに使われています。別の名前を選んでください。",
+    "FRM-DEST-1023": "この文はデータを変更します。実行するには確認してください。",
+    "FRM-DEST-1024": "ここではこの接続は読み取り専用です。読み取りの文だけが実行されます。",
+    "FRM-DEST-1025": "データベースはこの文を実行できませんでした。",
+    "FRM-DEST-1026": "文は一度に 1 つずつ実行してください。文を選択するか、文の中にカーソルを置きます。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "データベースにテーブルを作成しました",
       "data_table_altered": "テーブル構造を変更しました",
       "data_table_truncated": "テーブルを空にしました",
-      "data_table_dropped": "テーブルを削除しました"
+      "data_table_dropped": "テーブルを削除しました",
+      "data_query_run": "データベースでクエリを実行"
     },
     "detail": {
       "who": "誰が",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "ブラウザーがクリップボードの読み取りをブロックしました。貼り付けるには Ctrl+V（Mac では ⌘V）を押してください。",
     "clipboardBlocked": "ブラウザーがクリップボードをブロックしました。テキストを選択して Ctrl+C（Mac では ⌘C）を押してください。",
     "page": "このページ"
+  },
+  "query": {
+    "tabTitle": "クエリ {n}",
+    "tabs": "クエリのタブ",
+    "renameTab": "タブ名",
+    "tabHint": "ダブルクリックで名前を変更",
+    "closeTab": "{name} を閉じる",
+    "newTab": "新しいタブ",
+    "run": "実行",
+    "cancel": "停止",
+    "cancelled": "停止しました。これ以上は実行されていません。",
+    "params": "パラメーター",
+    "paramValue": "値",
+    "paramFor": ":{name} の値",
+    "fillParams": "先に {names} を入力してください。",
+    "placeholder": "ここに SQL を書きます。Ctrl + Enter でカーソル位置の文、または選択範囲を実行します。",
+    "resizeEditor": "エディターのサイズを変更",
+    "startTitle": "文を実行する",
+    "startDesc": "上に SQL を書いて Ctrl + Enter（Mac では ⌘ + Enter）を押します。結果はここに表示されます。",
+    "noRows": "行がありません",
+    "showing": "{total} 行中 {from}–{to} 行",
+    "took": "{ms} ms",
+    "problemTitle": "データベースはこの文を実行できませんでした",
+    "previewUnsupported": "このプレビューでは、一般的な形式の SELECT、INSERT、UPDATE、DELETE を実行します。実際の接続では、そのアカウントに許可されたすべての SQL を実行します。",
+    "goToLine": "{n} 行目へ移動",
+    "structurePreview": "確認しました。構造の文は実際の接続で実行されます。プレビューではテーブルは変更されません。",
+    "done": {
+      "insert": "{n} 行を追加しました | {n} 行を追加しました",
+      "update": "{n} 行を変更しました | {n} 行を変更しました",
+      "delete": "{n} 行を削除しました | {n} 行を削除しました",
+      "structure": "完了 | 完了",
+      "other": "完了 | 完了"
+    },
+    "kind": {
+      "read": "読み取り",
+      "insert": "挿入",
+      "update": "更新",
+      "delete": "削除",
+      "structure": "構造",
+      "other": "その他"
+    },
+    "confirm": {
+      "insert": "{tables} に行を追加しますか？",
+      "update": "{tables} の行を変更しますか？",
+      "delete": "{tables} から行を削除しますか？",
+      "structure": "{tables} の構造を変更しますか？",
+      "other": "{tables} でこの文を実行しますか？",
+      "read": "{tables} でこの文を実行しますか？",
+      "theTable": "データベース",
+      "rows": "{n} 行が対象です。 | {n} 行が対象です。",
+      "cantUndo": "元に戻すことはできません。",
+      "run": "実行する"
+    },
+    "side": {
+      "title": "テーブルと履歴",
+      "tables": "テーブル",
+      "history": "履歴",
+      "insertName": "カーソル位置に挿入",
+      "selectRows": "最初の 100 行を選択",
+      "openNewTab": "新しいタブで開く",
+      "openHere": "このタブで開く",
+      "insertAtCursor": "カーソル位置に挿入",
+      "remove": "履歴から削除",
+      "noHistory": "まだ文がありません",
+      "noHistoryDesc": "この接続で実行したものがここに表示されます。",
+      "rows": "{n} 行 | {n} 行",
+      "clear": "履歴を消去"
+    }
   }
 }

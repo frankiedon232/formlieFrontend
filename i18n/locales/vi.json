@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Các phản hồi trước đó đang được gửi. Hãy đợi đến khi hoàn tất.",
     "FRM-DEST-1018": "Đã có một hàng với khóa này.",
     "FRM-DEST-1019": "Không thể thay đổi các hàng của bảng này tại đây.",
-    "FRM-DEST-1022": "Tên đó đã được dùng. Hãy chọn tên khác."
+    "FRM-DEST-1022": "Tên đó đã được dùng. Hãy chọn tên khác.",
+    "FRM-DEST-1023": "Câu lệnh này thay đổi dữ liệu. Hãy xác nhận để chạy.",
+    "FRM-DEST-1024": "Kết nối này ở đây chỉ đọc: chỉ các câu lệnh đọc được chạy.",
+    "FRM-DEST-1025": "Cơ sở dữ liệu không chạy được câu lệnh này.",
+    "FRM-DEST-1026": "Mỗi lần chỉ chạy một câu lệnh: hãy chọn nó, hoặc đặt con trỏ vào trong."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Đã tạo bảng trong cơ sở dữ liệu",
       "data_table_altered": "Đã thay đổi cấu trúc bảng",
       "data_table_truncated": "Đã làm trống bảng",
-      "data_table_dropped": "Đã xóa bảng"
+      "data_table_dropped": "Đã xóa bảng",
+      "data_query_run": "Đã chạy truy vấn trên cơ sở dữ liệu"
     },
     "detail": {
       "who": "Ai",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Trình duyệt đã chặn việc đọc bộ nhớ tạm. Nhấn Ctrl+V (⌘V trên Mac) để dán.",
     "clipboardBlocked": "Trình duyệt đã chặn bộ nhớ tạm. Hãy chọn văn bản và nhấn Ctrl+C (⌘C trên Mac).",
     "page": "Trang này"
+  },
+  "query": {
+    "tabTitle": "Truy vấn {n}",
+    "tabs": "Các tab truy vấn",
+    "renameTab": "Tên tab",
+    "tabHint": "Nhấp đúp để đổi tên",
+    "closeTab": "Đóng {name}",
+    "newTab": "Tab mới",
+    "run": "Chạy",
+    "cancel": "Dừng",
+    "cancelled": "Đã dừng. Không có gì khác được chạy.",
+    "params": "Tham số",
+    "paramValue": "Giá trị",
+    "paramFor": "Giá trị cho :{name}",
+    "fillParams": "Hãy điền {names} trước.",
+    "placeholder": "Viết SQL tại đây. Ctrl + Enter chạy câu lệnh tại con trỏ, hoặc phần đã chọn.",
+    "resizeEditor": "Đổi kích thước trình soạn",
+    "startTitle": "Chạy một câu lệnh",
+    "startDesc": "Viết SQL ở trên và nhấn Ctrl + Enter (⌘ + Enter trên Mac). Kết quả hiện ở đây.",
+    "noRows": "Không có hàng",
+    "showing": "Hàng {from}–{to} trên {total}",
+    "took": "{ms} ms",
+    "problemTitle": "Cơ sở dữ liệu không chạy được câu lệnh này",
+    "previewUnsupported": "Bản xem trước này chạy SELECT, INSERT, UPDATE và DELETE ở dạng thông dụng. Kết nối thật chạy mọi SQL mà tài khoản của nó được phép chạy.",
+    "goToLine": "Đến dòng {n}",
+    "structurePreview": "Đã kiểm tra. Câu lệnh cấu trúc chạy trên kết nối thật; bản xem trước không thay đổi các bảng.",
+    "done": {
+      "insert": "Đã thêm {n} hàng | Đã thêm {n} hàng",
+      "update": "Đã thay đổi {n} hàng | Đã thay đổi {n} hàng",
+      "delete": "Đã xóa {n} hàng | Đã xóa {n} hàng",
+      "structure": "Xong | Xong",
+      "other": "Xong | Xong"
+    },
+    "kind": {
+      "read": "Đọc",
+      "insert": "Chèn",
+      "update": "Cập nhật",
+      "delete": "Xóa",
+      "structure": "Cấu trúc",
+      "other": "Khác"
+    },
+    "confirm": {
+      "insert": "Thêm hàng vào {tables}?",
+      "update": "Thay đổi hàng trong {tables}?",
+      "delete": "Xóa hàng khỏi {tables}?",
+      "structure": "Thay đổi cấu trúc của {tables}?",
+      "other": "Chạy câu lệnh này trên {tables}?",
+      "read": "Chạy câu lệnh này trên {tables}?",
+      "theTable": "cơ sở dữ liệu",
+      "rows": "Câu lệnh ảnh hưởng đến {n} hàng. | Câu lệnh ảnh hưởng đến {n} hàng.",
+      "cantUndo": "Không thể hoàn tác.",
+      "run": "Chạy"
+    },
+    "side": {
+      "title": "Bảng & lịch sử",
+      "tables": "Bảng",
+      "history": "Lịch sử",
+      "insertName": "Chèn tại con trỏ",
+      "selectRows": "Chọn 100 hàng đầu tiên",
+      "openNewTab": "Mở trong tab mới",
+      "openHere": "Mở trong tab này",
+      "insertAtCursor": "Chèn tại con trỏ",
+      "remove": "Xóa khỏi lịch sử",
+      "noHistory": "Chưa có câu lệnh nào",
+      "noHistoryDesc": "Những gì bạn chạy trên kết nối này sẽ hiện ở đây.",
+      "rows": "{n} hàng | {n} hàng",
+      "clear": "Xóa lịch sử"
+    }
   }
 }

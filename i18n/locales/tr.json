@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Önceki yanıtlar zaten gönderiliyor. Bitmesini bekleyin.",
     "FRM-DEST-1018": "Bu anahtara sahip bir satır zaten var.",
     "FRM-DEST-1019": "Bu tablonun satırları burada değiştirilemez.",
-    "FRM-DEST-1022": "Bu ad zaten kullanılıyor. Başka bir ad seçin."
+    "FRM-DEST-1022": "Bu ad zaten kullanılıyor. Başka bir ad seçin.",
+    "FRM-DEST-1023": "Bu ifade verileri değiştirir. Çalıştırmak için onaylayın.",
+    "FRM-DEST-1024": "Bu bağlantı burada salt okunur: yalnızca okuma ifadeleri çalışır.",
+    "FRM-DEST-1025": "Veritabanı bu ifadeyi çalıştıramadı.",
+    "FRM-DEST-1026": "Her seferinde tek bir ifade çalıştırın: ifadeyi seçin ya da imleci içine koyun."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Bir veritabanında tablo oluşturuldu",
       "data_table_altered": "Tablo yapısı değiştirildi",
       "data_table_truncated": "Tablo boşaltıldı",
-      "data_table_dropped": "Tablo silindi"
+      "data_table_dropped": "Tablo silindi",
+      "data_query_run": "Bir veritabanında sorgu çalıştırıldı"
     },
     "detail": {
       "who": "Kim",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Tarayıcı panoyu okumayı engelledi. Yapıştırmak için Ctrl+V’ye (Mac’te ⌘V) basın.",
     "clipboardBlocked": "Tarayıcı panoyu engelledi. Metni seçip Ctrl+C’ye (Mac’te ⌘C) basın.",
     "page": "Bu sayfa"
+  },
+  "query": {
+    "tabTitle": "Sorgu {n}",
+    "tabs": "Sorgu sekmeleri",
+    "renameTab": "Sekme adı",
+    "tabHint": "Yeniden adlandırmak için çift tıklayın",
+    "closeTab": "{name} kapat",
+    "newTab": "Yeni sekme",
+    "run": "Çalıştır",
+    "cancel": "Durdur",
+    "cancelled": "Durduruldu. Başka bir şey çalıştırılmadı.",
+    "params": "Parametreler",
+    "paramValue": "Değer",
+    "paramFor": ":{name} için değer",
+    "fillParams": "Önce şunları doldurun: {names}.",
+    "placeholder": "SQL’i buraya yazın. Ctrl + Enter imleçteki ifadeyi ya da seçimi çalıştırır.",
+    "resizeEditor": "Düzenleyiciyi yeniden boyutlandır",
+    "startTitle": "Bir ifade çalıştırın",
+    "startDesc": "Yukarıya SQL yazın ve Ctrl + Enter’a basın (Mac’te ⌘ + Enter). Sonuçlar burada görünür.",
+    "noRows": "Satır yok",
+    "showing": "Satır {from}–{to} / {total}",
+    "took": "{ms} ms",
+    "problemTitle": "Veritabanı bu ifadeyi çalıştıramadı",
+    "previewUnsupported": "Bu önizleme SELECT, INSERT, UPDATE ve DELETE ifadelerini yaygın biçimleriyle çalıştırır. Gerçek bağlantı, hesabının izin verdiği her SQL’i çalıştırır.",
+    "goToLine": "{n}. satıra git",
+    "structurePreview": "Denetlendi. Yapı ifadeleri gerçek bağlantıda çalışır; önizleme tabloları değiştirmez.",
+    "done": {
+      "insert": "{n} satır eklendi | {n} satır eklendi",
+      "update": "{n} satır değiştirildi | {n} satır değiştirildi",
+      "delete": "{n} satır silindi | {n} satır silindi",
+      "structure": "Tamam | Tamam",
+      "other": "Tamam | Tamam"
+    },
+    "kind": {
+      "read": "Okuma",
+      "insert": "Ekleme",
+      "update": "Güncelleme",
+      "delete": "Silme",
+      "structure": "Yapı",
+      "other": "Diğer"
+    },
+    "confirm": {
+      "insert": "{tables}: satır eklensin mi?",
+      "update": "{tables}: satırlar değiştirilsin mi?",
+      "delete": "{tables}: satırlar silinsin mi?",
+      "structure": "{tables}: yapı değiştirilsin mi?",
+      "other": "{tables}: bu ifade çalıştırılsın mı?",
+      "read": "{tables}: bu ifade çalıştırılsın mı?",
+      "theTable": "Veritabanı",
+      "rows": "{n} satırı etkiler. | {n} satırı etkiler.",
+      "cantUndo": "Bu işlem geri alınamaz.",
+      "run": "Çalıştır"
+    },
+    "side": {
+      "title": "Tablolar ve geçmiş",
+      "tables": "Tablolar",
+      "history": "Geçmiş",
+      "insertName": "İmlece ekle",
+      "selectRows": "İlk 100 satırı seç",
+      "openNewTab": "Yeni sekmede aç",
+      "openHere": "Bu sekmede aç",
+      "insertAtCursor": "İmlece ekle",
+      "remove": "Geçmişten kaldır",
+      "noHistory": "Henüz ifade yok",
+      "noHistoryDesc": "Bu bağlantıda çalıştırdıklarınız burada görünür.",
+      "rows": "{n} satır | {n} satır",
+      "clear": "Geçmişi temizle"
+    }
   }
 }

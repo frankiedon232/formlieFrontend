@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Respons sebelumnya sedang dikirim. Tunggu hingga selesai.",
     "FRM-DEST-1018": "Baris dengan kunci ini sudah ada.",
     "FRM-DEST-1019": "Baris tabel ini tidak dapat diubah di sini.",
-    "FRM-DEST-1022": "Nama itu sudah dipakai. Pilih nama lain."
+    "FRM-DEST-1022": "Nama itu sudah dipakai. Pilih nama lain.",
+    "FRM-DEST-1023": "Pernyataan ini mengubah data. Konfirmasi untuk menjalankannya.",
+    "FRM-DEST-1024": "Koneksi ini hanya-baca di sini: hanya pernyataan baca yang dijalankan.",
+    "FRM-DEST-1025": "Database tidak dapat menjalankan pernyataan ini.",
+    "FRM-DEST-1026": "Jalankan satu pernyataan sekaligus: pilih pernyataannya, atau letakkan kursor di dalamnya."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Tabel dibuat di database",
       "data_table_altered": "Struktur tabel diubah",
       "data_table_truncated": "Tabel dikosongkan",
-      "data_table_dropped": "Tabel dihapus"
+      "data_table_dropped": "Tabel dihapus",
+      "data_query_run": "Kueri dijalankan di database"
     },
     "detail": {
       "who": "Siapa",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Browser memblokir pembacaan papan klip. Tekan Ctrl+V (⌘V di Mac) untuk menempel.",
     "clipboardBlocked": "Browser memblokir papan klip. Pilih teks lalu tekan Ctrl+C (⌘C di Mac).",
     "page": "Halaman ini"
+  },
+  "query": {
+    "tabTitle": "Kueri {n}",
+    "tabs": "Tab kueri",
+    "renameTab": "Nama tab",
+    "tabHint": "Klik dua kali untuk mengganti nama",
+    "closeTab": "Tutup {name}",
+    "newTab": "Tab baru",
+    "run": "Jalankan",
+    "cancel": "Hentikan",
+    "cancelled": "Dihentikan. Tidak ada lagi yang dijalankan.",
+    "params": "Parameter",
+    "paramValue": "Nilai",
+    "paramFor": "Nilai untuk :{name}",
+    "fillParams": "Isi {names} terlebih dahulu.",
+    "placeholder": "Tulis SQL di sini. Ctrl + Enter menjalankan pernyataan di kursor, atau pilihan.",
+    "resizeEditor": "Ubah ukuran editor",
+    "startTitle": "Jalankan pernyataan",
+    "startDesc": "Tulis SQL di atas lalu tekan Ctrl + Enter (⌘ + Enter di Mac). Hasilnya muncul di sini.",
+    "noRows": "Tidak ada baris",
+    "showing": "Baris {from}–{to} dari {total}",
+    "took": "{ms} ms",
+    "problemTitle": "Database tidak dapat menjalankan pernyataan ini",
+    "previewUnsupported": "Pratinjau ini menjalankan SELECT, INSERT, UPDATE, dan DELETE dalam bentuk umumnya. Koneksi sebenarnya menjalankan SQL apa pun yang diizinkan untuk akunnya.",
+    "goToLine": "Buka baris {n}",
+    "structurePreview": "Sudah diperiksa. Pernyataan struktur berjalan di koneksi sebenarnya; pratinjau tidak mengubah tabel.",
+    "done": {
+      "insert": "{n} baris ditambahkan | {n} baris ditambahkan",
+      "update": "{n} baris diubah | {n} baris diubah",
+      "delete": "{n} baris dihapus | {n} baris dihapus",
+      "structure": "Selesai | Selesai",
+      "other": "Selesai | Selesai"
+    },
+    "kind": {
+      "read": "Baca",
+      "insert": "Sisip",
+      "update": "Ubah",
+      "delete": "Hapus",
+      "structure": "Struktur",
+      "other": "Lainnya"
+    },
+    "confirm": {
+      "insert": "Tambahkan baris ke {tables}?",
+      "update": "Ubah baris di {tables}?",
+      "delete": "Hapus baris dari {tables}?",
+      "structure": "Ubah struktur {tables}?",
+      "other": "Jalankan pernyataan ini di {tables}?",
+      "read": "Jalankan pernyataan ini di {tables}?",
+      "theTable": "database",
+      "rows": "Ini memengaruhi {n} baris. | Ini memengaruhi {n} baris.",
+      "cantUndo": "Ini tidak dapat dibatalkan.",
+      "run": "Jalankan"
+    },
+    "side": {
+      "title": "Tabel & riwayat",
+      "tables": "Tabel",
+      "history": "Riwayat",
+      "insertName": "Sisipkan di kursor",
+      "selectRows": "Pilih 100 baris pertama",
+      "openNewTab": "Buka di tab baru",
+      "openHere": "Buka di tab ini",
+      "insertAtCursor": "Sisipkan di kursor",
+      "remove": "Hapus dari riwayat",
+      "noHistory": "Belum ada pernyataan",
+      "noHistoryDesc": "Yang Anda jalankan di koneksi ini muncul di sini.",
+      "rows": "{n} baris | {n} baris",
+      "clear": "Hapus riwayat"
+    }
   }
 }

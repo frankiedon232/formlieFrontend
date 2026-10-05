@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Le risposte precedenti sono già in fase di invio. Attendete che finisca.",
     "FRM-DEST-1018": "Esiste già una riga con questa chiave.",
     "FRM-DEST-1019": "Le righe di questa tabella non possono essere modificate qui.",
-    "FRM-DEST-1022": "Questo nome è già usato. Sceglietene un altro."
+    "FRM-DEST-1022": "Questo nome è già usato. Sceglietene un altro.",
+    "FRM-DEST-1023": "Questa istruzione modifica i dati. Confermate per eseguirla.",
+    "FRM-DEST-1024": "Qui questa connessione è di sola lettura: vengono eseguite solo istruzioni di lettura.",
+    "FRM-DEST-1025": "Il database non è riuscito a eseguire questa istruzione.",
+    "FRM-DEST-1026": "Eseguite un’istruzione alla volta: selezionatela, o mettete il cursore al suo interno."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Tabella creata in un database",
       "data_table_altered": "Struttura della tabella modificata",
       "data_table_truncated": "Tabella svuotata",
-      "data_table_dropped": "Tabella eliminata"
+      "data_table_dropped": "Tabella eliminata",
+      "data_query_run": "Query eseguita su un database"
     },
     "detail": {
       "who": "Chi",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Il browser ha bloccato la lettura degli appunti. Premi Ctrl+V (⌘V su un Mac) per incollare.",
     "clipboardBlocked": "Il browser ha bloccato gli appunti. Seleziona il testo e premi Ctrl+C (⌘C su un Mac).",
     "page": "Questa pagina"
+  },
+  "query": {
+    "tabTitle": "Query {n}",
+    "tabs": "Schede delle query",
+    "renameTab": "Nome della scheda",
+    "tabHint": "Doppio clic per rinominare",
+    "closeTab": "Chiudi {name}",
+    "newTab": "Nuova scheda",
+    "run": "Esegui",
+    "cancel": "Interrompi",
+    "cancelled": "Interrotto. Non è stato eseguito altro.",
+    "params": "Parametri",
+    "paramValue": "Valore",
+    "paramFor": "Valore per :{name}",
+    "fillParams": "Compilate prima {names}.",
+    "placeholder": "Scrivete qui l’SQL. Ctrl + Enter esegue l’istruzione al cursore, o la selezione.",
+    "resizeEditor": "Ridimensiona l’editor",
+    "startTitle": "Eseguite un’istruzione",
+    "startDesc": "Scrivete l’SQL qui sopra e premete Ctrl + Enter (⌘ + Enter su Mac). I risultati compaiono qui.",
+    "noRows": "Nessuna riga",
+    "showing": "Righe {from}–{to} di {total}",
+    "took": "{ms} ms",
+    "problemTitle": "Il database non è riuscito a eseguire questa istruzione",
+    "previewUnsupported": "Questa anteprima esegue SELECT, INSERT, UPDATE e DELETE nelle loro forme comuni. La connessione reale esegue qualsiasi SQL consentito al suo account.",
+    "goToLine": "Vai alla riga {n}",
+    "structurePreview": "Verificato. Le istruzioni di struttura vengono eseguite sulla connessione reale; l’anteprima non modifica le tabelle.",
+    "done": {
+      "insert": "{n} riga aggiunta | {n} righe aggiunte",
+      "update": "{n} riga modificata | {n} righe modificate",
+      "delete": "{n} riga eliminata | {n} righe eliminate",
+      "structure": "Fatto | Fatto",
+      "other": "Fatto | Fatto"
+    },
+    "kind": {
+      "read": "Lettura",
+      "insert": "Inserimento",
+      "update": "Modifica",
+      "delete": "Eliminazione",
+      "structure": "Struttura",
+      "other": "Altro"
+    },
+    "confirm": {
+      "insert": "Aggiungere righe a {tables}?",
+      "update": "Modificare righe in {tables}?",
+      "delete": "Eliminare righe da {tables}?",
+      "structure": "Modificare la struttura di {tables}?",
+      "other": "Eseguire l’istruzione su {tables}?",
+      "read": "Eseguire l’istruzione su {tables}?",
+      "theTable": "questo database",
+      "rows": "Riguarda {n} riga. | Riguarda {n} righe.",
+      "cantUndo": "L’operazione non si può annullare.",
+      "run": "Esegui"
+    },
+    "side": {
+      "title": "Tabelle e cronologia",
+      "tables": "Tabelle",
+      "history": "Cronologia",
+      "insertName": "Inserisci al cursore",
+      "selectRows": "Seleziona le prime 100 righe",
+      "openNewTab": "Apri in una nuova scheda",
+      "openHere": "Apri in questa scheda",
+      "insertAtCursor": "Inserisci al cursore",
+      "remove": "Rimuovi dalla cronologia",
+      "noHistory": "Ancora nessuna istruzione",
+      "noHistoryDesc": "Ciò che eseguite su questa connessione compare qui.",
+      "rows": "{n} riga | {n} righe",
+      "clear": "Cancella cronologia"
+    }
   }
 }

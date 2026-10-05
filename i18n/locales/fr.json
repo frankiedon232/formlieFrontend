@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Des réponses antérieures sont déjà en cours d’envoi. Attendez la fin de l’opération.",
     "FRM-DEST-1018": "Une ligne avec cette clé existe déjà.",
     "FRM-DEST-1019": "Les lignes de cette table ne peuvent pas être modifiées ici.",
-    "FRM-DEST-1022": "Ce nom est déjà utilisé. Choisissez-en un autre."
+    "FRM-DEST-1022": "Ce nom est déjà utilisé. Choisissez-en un autre.",
+    "FRM-DEST-1023": "Cette instruction modifie des données. Confirmez pour l’exécuter.",
+    "FRM-DEST-1024": "Cette connexion est en lecture seule ici : seules les instructions de lecture s’exécutent.",
+    "FRM-DEST-1025": "La base de données n’a pas pu exécuter cette instruction.",
+    "FRM-DEST-1026": "Exécutez une instruction à la fois : sélectionnez-la, ou placez le curseur dedans."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Table créée dans une base de données",
       "data_table_altered": "Structure de table modifiée",
       "data_table_truncated": "Table vidée",
-      "data_table_dropped": "Table supprimée"
+      "data_table_dropped": "Table supprimée",
+      "data_query_run": "Requête exécutée sur une base de données"
     },
     "detail": {
       "who": "Qui",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Le navigateur a bloqué la lecture du presse-papiers. Appuyez sur Ctrl+V (⌘V sur un Mac) pour coller.",
     "clipboardBlocked": "Le navigateur a bloqué le presse-papiers. Sélectionnez le texte et appuyez sur Ctrl+C (⌘C sur un Mac).",
     "page": "Cette page"
+  },
+  "query": {
+    "tabTitle": "Requête {n}",
+    "tabs": "Onglets de requête",
+    "renameTab": "Nom de l’onglet",
+    "tabHint": "Double-cliquez pour renommer",
+    "closeTab": "Fermer {name}",
+    "newTab": "Nouvel onglet",
+    "run": "Exécuter",
+    "cancel": "Arrêter",
+    "cancelled": "Arrêté. Rien d’autre n’a été exécuté.",
+    "params": "Paramètres",
+    "paramValue": "Valeur",
+    "paramFor": "Valeur pour :{name}",
+    "fillParams": "Renseignez d’abord {names}.",
+    "placeholder": "Écrivez du SQL ici. Ctrl + Enter exécute l’instruction sous le curseur, ou la sélection.",
+    "resizeEditor": "Redimensionner l’éditeur",
+    "startTitle": "Exécuter une instruction",
+    "startDesc": "Écrivez du SQL ci-dessus et appuyez sur Ctrl + Enter (⌘ + Enter sur Mac). Les résultats s’affichent ici.",
+    "noRows": "Aucune ligne",
+    "showing": "Lignes {from}–{to} sur {total}",
+    "took": "{ms} ms",
+    "problemTitle": "La base de données n’a pas pu exécuter cette instruction",
+    "previewUnsupported": "Cet aperçu exécute SELECT, INSERT, UPDATE et DELETE sous leurs formes courantes. La connexion réelle exécute tout SQL autorisé pour son compte.",
+    "goToLine": "Aller à la ligne {n}",
+    "structurePreview": "Vérifié. Les instructions de structure s’exécutent sur la connexion réelle ; l’aperçu ne modifie pas les tables.",
+    "done": {
+      "insert": "{n} ligne ajoutée | {n} lignes ajoutées",
+      "update": "{n} ligne modifiée | {n} lignes modifiées",
+      "delete": "{n} ligne supprimée | {n} lignes supprimées",
+      "structure": "Terminé | Terminé",
+      "other": "Terminé | Terminé"
+    },
+    "kind": {
+      "read": "Lecture",
+      "insert": "Insertion",
+      "update": "Modification",
+      "delete": "Suppression",
+      "structure": "Structure",
+      "other": "Autre"
+    },
+    "confirm": {
+      "insert": "Ajouter des lignes à {tables} ?",
+      "update": "Modifier des lignes dans {tables} ?",
+      "delete": "Supprimer des lignes de {tables} ?",
+      "structure": "Modifier la structure de {tables} ?",
+      "other": "Exécuter cette instruction sur {tables} ?",
+      "read": "Exécuter cette instruction sur {tables} ?",
+      "theTable": "la base de données",
+      "rows": "Cela touche {n} ligne. | Cela touche {n} lignes.",
+      "cantUndo": "Cette action est irréversible.",
+      "run": "Exécuter"
+    },
+    "side": {
+      "title": "Tables et historique",
+      "tables": "Tables",
+      "history": "Historique",
+      "insertName": "Insérer au curseur",
+      "selectRows": "Sélectionner les 100 premières lignes",
+      "openNewTab": "Ouvrir dans un nouvel onglet",
+      "openHere": "Ouvrir dans cet onglet",
+      "insertAtCursor": "Insérer au curseur",
+      "remove": "Retirer de l’historique",
+      "noHistory": "Aucune instruction pour l’instant",
+      "noHistoryDesc": "Ce que vous exécutez sur cette connexion s’affiche ici.",
+      "rows": "{n} ligne | {n} lignes",
+      "clear": "Effacer l’historique"
+    }
   }
 }

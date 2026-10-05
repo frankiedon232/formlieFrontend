@@ -551,7 +551,11 @@
     "FRM-DEST-1017": "Wcześniejsze odpowiedzi są już wysyłane. Poczekaj, aż to się zakończy.",
     "FRM-DEST-1018": "Wiersz z tym kluczem już istnieje.",
     "FRM-DEST-1019": "Wierszy tej tabeli nie można tu zmieniać.",
-    "FRM-DEST-1022": "Ta nazwa jest już używana. Wybierz inną."
+    "FRM-DEST-1022": "Ta nazwa jest już używana. Wybierz inną.",
+    "FRM-DEST-1023": "Ta instrukcja zmienia dane. Potwierdź, aby ją uruchomić.",
+    "FRM-DEST-1024": "To połączenie jest tutaj tylko do odczytu: działają wyłącznie instrukcje odczytu.",
+    "FRM-DEST-1025": "Baza danych nie mogła wykonać tej instrukcji.",
+    "FRM-DEST-1026": "Uruchamiaj jedną instrukcję naraz: zaznacz ją lub umieść w niej kursor."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -946,7 +950,8 @@
       "data_user_table_created": "Utworzono tabelę w bazie danych",
       "data_table_altered": "Zmieniono strukturę tabeli",
       "data_table_truncated": "Opróżniono tabelę",
-      "data_table_dropped": "Usunięto tabelę"
+      "data_table_dropped": "Usunięto tabelę",
+      "data_query_run": "Uruchomiono zapytanie w bazie danych"
     },
     "detail": {
       "who": "Kto",
@@ -4817,5 +4822,73 @@
     "pasteBlocked": "Przeglądarka zablokowała odczyt schowka. Naciśnij Ctrl+V (⌘V na Macu), aby wkleić.",
     "clipboardBlocked": "Przeglądarka zablokowała schowek. Zaznacz tekst i naciśnij Ctrl+C (⌘C na Macu).",
     "page": "Ta strona"
+  },
+  "query": {
+    "tabTitle": "Zapytanie {n}",
+    "tabs": "Karty zapytań",
+    "renameTab": "Nazwa karty",
+    "tabHint": "Kliknij dwukrotnie, aby zmienić nazwę",
+    "closeTab": "Zamknij {name}",
+    "newTab": "Nowa karta",
+    "run": "Uruchom",
+    "cancel": "Zatrzymaj",
+    "cancelled": "Zatrzymano. Nic więcej nie zostało uruchomione.",
+    "params": "Parametry",
+    "paramValue": "Wartość",
+    "paramFor": "Wartość dla :{name}",
+    "fillParams": "Najpierw uzupełnij {names}.",
+    "placeholder": "Wpisz tutaj SQL. Ctrl + Enter uruchamia instrukcję przy kursorze lub zaznaczenie.",
+    "resizeEditor": "Zmień rozmiar edytora",
+    "startTitle": "Uruchom instrukcję",
+    "startDesc": "Wpisz SQL powyżej i naciśnij Ctrl + Enter (⌘ + Enter na Macu). Wyniki pojawią się tutaj.",
+    "noRows": "Brak wierszy",
+    "showing": "Wiersze {from}–{to} z {total}",
+    "took": "{ms} ms",
+    "problemTitle": "Baza danych nie mogła wykonać tej instrukcji",
+    "previewUnsupported": "Ten podgląd wykonuje SELECT, INSERT, UPDATE i DELETE w ich typowych formach. Prawdziwe połączenie wykona każdy SQL, na który pozwala jego konto.",
+    "goToLine": "Przejdź do wiersza {n}",
+    "structurePreview": "Sprawdzono. Instrukcje struktury działają na prawdziwym połączeniu; podgląd nie zmienia tabel.",
+    "done": {
+      "insert": "Dodane wiersze: {n} | Dodane wiersze: {n}",
+      "update": "Zmienione wiersze: {n} | Zmienione wiersze: {n}",
+      "delete": "Usunięte wiersze: {n} | Usunięte wiersze: {n}",
+      "structure": "Gotowe | Gotowe",
+      "other": "Gotowe | Gotowe"
+    },
+    "kind": {
+      "read": "Odczyt",
+      "insert": "Wstawianie",
+      "update": "Aktualizacja",
+      "delete": "Usuwanie",
+      "structure": "Struktura",
+      "other": "Inne"
+    },
+    "confirm": {
+      "insert": "{tables}: dodać wiersze?",
+      "update": "{tables}: zmienić wiersze?",
+      "delete": "{tables}: usunąć wiersze?",
+      "structure": "{tables}: zmienić strukturę?",
+      "other": "{tables}: uruchomić tę instrukcję?",
+      "read": "{tables}: uruchomić tę instrukcję?",
+      "theTable": "Baza danych",
+      "rows": "Dotyczy wierszy: {n}. | Dotyczy wierszy: {n}.",
+      "cantUndo": "Tego nie można cofnąć.",
+      "run": "Uruchom"
+    },
+    "side": {
+      "title": "Tabele i historia",
+      "tables": "Tabele",
+      "history": "Historia",
+      "insertName": "Wstaw przy kursorze",
+      "selectRows": "Wybierz pierwsze 100 wierszy",
+      "openNewTab": "Otwórz w nowej karcie",
+      "openHere": "Otwórz w tej karcie",
+      "insertAtCursor": "Wstaw przy kursorze",
+      "remove": "Usuń z historii",
+      "noHistory": "Brak instrukcji",
+      "noHistoryDesc": "To, co uruchomisz na tym połączeniu, pojawi się tutaj.",
+      "rows": "Wiersze: {n} | Wiersze: {n}",
+      "clear": "Wyczyść historię"
+    }
   }
 }

@@ -1,12 +1,219 @@
-<!-- Data sources → dataQuery (placeholder until F12; plan in PROGRESS.md → F12). -->
+<!--
+  Data sources → Query editor (F12 M4; the explorer's mode, owner 2026-10-05: the connection,
+  tables and history in the menu column, the full page for the work). Tabs of statements, a SQL
+  editor (CodeMirror 6) above the results, a line between them to drag. Ctrl / ⌘ + Enter runs the
+  selection or the statement at the cursor; `:name` parameters get input boxes. Reading statements
+  page through results; anything that changes rows or structure asks first (what it will do, how
+  many rows) and follows the connection's access. Esc cancels a running statement. `?ds=` keeps
+  the connection.
+-->
 <script setup lang="ts">
+import type { DataSourceRow } from '#shared/types/datasources'
+import type { DatabaseTable } from '#shared/types/destinations'
+import { parametersIn } from '#shared/utils/datasources/sql'
+
 definePageMeta({ breadcrumb: 'nav.dataQuery' })
 const { t } = useI18n()
+const api = useApi()
+const route = useRoute()
+const router = useRouter()
+const toast = useToast()
+const { handle, messageFor } = useErrorHandler()
 useHead({ title: () => t('nav.dataQuery') })
+
+// Connections and their tables (for the tree and completion)
+const sources = ref<DataSourceRow[] | null>(null)
+const dsId = computed(() => (typeof route.query.ds === 'string' ? route.query.ds : null))
+const source = computed(() => sources.value?.find(item => item.id === dsId.value) ?? null)
+const go = (ds: string) => void router.replace({ query: { ds } })
+onMounted(async () => {
+  try {
+    sources.value = (await api.list<DataSourceRow>('/datasources', { page_size: 100, sort: 'name' })).data.filter(item => item.enabled)
+    if (!dsId.value && sources.value.length) go((sources.value.find(item => item.status === 'connected') ?? sources.value[0])!.id)
+  } catch (error) {
+    sources.value = []
+    handle(error)
+  }
+})
+const tables = ref<DatabaseTable[] | null>(null)
+const tablesError = ref<ApiError | null>(null)
+async function loadTables() {
+  if (!dsId.value) return
+  tables.value = null
+  tablesError.value = null
+  try {
+    tables.value = (await api.get<DatabaseTable[]>(`/datasources/${dsId.value}/explorer/tables`)).data
+  } catch (error) {
+    tablesError.value = handle(error, { silent: true })
+  }
+}
+/** Completion: `schema.table` and `table` → its columns. */
+const completion = computed(() => Object.fromEntries((tables.value ?? []).flatMap(table => [[`${table.schema}.${table.name}`, table.columns.map(column => column.name)], [table.name, table.columns.map(column => column.name)]])))
+const defaultSchema = computed(() => source.value?.access.schemas[0] ?? tables.value?.find(table => !table.formalie)?.schema)
+
+// The menu column holds the connection, tables and history (the explorer's mode)
+const takeover = useSidebarTakeover()
+takeover.claim(() => t('nav.dataQuery'), 'i-lucide-square-terminal')
+const sideOpen = ref(false)
+watch(takeover.shown, shown => shown && (sideOpen.value = false))
+
+// Tabs, the editor and running
+const tabs = useQueryTabs(dsId)
+const editor = useTemplateRef<{ runText: () => { text: string; from: number } | null; lineAt: (position: number) => number; insert: (text: string) => void; goToLine: (line: number) => void; focus: () => void }>('editor')
+const runner = useQueryRunner(dsId, position => editor.value?.lineAt(position) ?? 1)
+const state = computed(() => runner.stateOf(tabs.active.value.id))
+const text = computed({ get: () => tabs.active.value.sql, set: value => tabs.update(tabs.active.value.id, value) })
+watch(dsId, () => {
+  void loadTables()
+  void runner.loadHistory()
+}, { immediate: true })
+
+// :name parameters of the tab, values kept per tab in memory
+const paramValues = reactive(new Map<string, Record<string, string>>())
+const paramNames = computed(() => parametersIn(text.value))
+const valuesOf = (tabId: string) => {
+  if (!paramValues.has(tabId)) paramValues.set(tabId, {})
+  return paramValues.get(tabId)!
+}
+
+function run() {
+  const target = editor.value?.runText()
+  if (!target || !dsId.value) return
+  const names = parametersIn(target.text)
+  const values = valuesOf(tabs.active.value.id)
+  const missing = names.filter(name => !(name in values) || values[name] === '')
+  if (missing.length) return void toast.add({ title: t('query.fillParams', { names: missing.map(name => `:${name}`).join(', ') }), color: 'warning', icon: 'i-lucide-variable' })
+  void runner.run(tabs.active.value.id, target.text, target.from, Object.fromEntries(names.map(name => [name, values[name]!])))
+}
+const cancel = () => runner.cancel(tabs.active.value.id)
+defineShortcuts({
+  meta_enter: { usingInput: true, handler: run },
+  escape: { usingInput: true, handler: () => state.value.running && cancel() },
+})
+
+function open(sql: string, newTab: boolean) {
+  if (newTab || tabs.active.value.sql.trim()) tabs.add(sql)
+  else text.value = sql
+  void nextTick(() => editor.value?.focus())
+}
+const insert = (value: string) => editor.value?.insert(value)
+
+// The line between the editor and the results (dragged; remembered on this device)
+const editorHeight = useLocalStorage('formalie:query-editor-height', 260)
+let resizing: { start: number; height: number } | null = null
+function resizeStart(event: PointerEvent) {
+  resizing = { start: event.clientY, height: editorHeight.value }
+  ;(event.target as HTMLElement).setPointerCapture(event.pointerId)
+}
+const resizeMove = (event: PointerEvent) => resizing && (editorHeight.value = Math.max(120, Math.min(900, resizing.height + event.clientY - resizing.start)))
+const resizeKey = (event: KeyboardEvent) => {
+  const step = event.key === 'ArrowDown' ? 24 : event.key === 'ArrowUp' ? -24 : 0
+  if (!step) return
+  event.preventDefault()
+  editorHeight.value = Math.max(120, Math.min(900, editorHeight.value + step))
+}
+
+const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, loading: !tables.value && !tablesError.value, history: runner.history.value, engine: source.value?.engine ?? null }))
+const navigatorEvents = {
+  onSource: (id: string) => go(id),
+  onInsert: insert,
+  onOpen: open,
+  onSelect: (table: DatabaseTable) => insert(`${table.schema}.${table.name}`),
+  onRemove: (id?: string) => void runner.removeHistory(id),
+}
 </script>
 
 <template>
-  <AppPanel id="data-query" :title="t('nav.dataQuery')" :subtitle="t('dataSources.section.query')">
-    <AppComingSoon icon="i-lucide-square-terminal" title-key="nav.dataQuery" description-key="dataSources.section.query" :back="{ labelKey: 'dataSources.back', icon: 'i-lucide-layout-grid', to: '/data-sources' }" />
+  <AppPanel id="data-query" :title="t('nav.dataQuery')" :subtitle="source ? `${source.name} · ${engineName(source.engine)}` : t('dataSources.section.query')" subtitle-icon="i-lucide-square-terminal">
+    <template #actions>
+      <UButton v-if="!takeover.shown.value" :label="t('query.side.title')" icon="i-lucide-list-tree" color="neutral" variant="outline" @click="sideOpen = true" />
+      <UButton :label="t('query.newTab')" icon="i-lucide-plus" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="tabs.add()" />
+      <UButton v-if="state.running" :label="t('query.cancel')" icon="i-lucide-square" color="neutral" variant="outline" @click="cancel">
+        <template #trailing><UKbd value="Esc" size="sm" class="hidden sm:inline-flex" /></template>
+      </UButton>
+      <UButton :label="t('query.run')" icon="i-lucide-play" color="neutral" :loading="state.running" :disabled="!dsId || !text.trim()" @click="run">
+        <template #trailing><span class="hidden items-center gap-0.5 sm:inline-flex"><UKbd value="meta" size="sm" /><UKbd value="enter" size="sm" /></span></template>
+      </UButton>
+    </template>
+
+    <AppEmpty
+      v-if="sources && !sources.length"
+      icon="i-lucide-database"
+      :title="t('explorer.noConnections')"
+      :description="t('explorer.noConnectionsDesc')"
+      :actions="[{ label: t('dataSources.add'), icon: 'i-lucide-plus', color: 'neutral', to: '/data-sources/connections/new' }]"
+    />
+    <AppEmpty
+      v-else-if="tablesError"
+      icon="i-lucide-plug-zap"
+      :title="t('explorer.cantReach')"
+      :description="messageFor(tablesError)"
+      :actions="[
+        { label: t('common.retry'), icon: 'i-lucide-rotate-cw', color: 'neutral', variant: 'outline', onClick: () => void loadTables() },
+        { label: t('explorer.checkConnection'), icon: 'i-lucide-activity', color: 'neutral', to: { path: '/data-sources/connections', query: { connection: dsId } } },
+      ]"
+    />
+    <div v-else class="flex h-[calc(100dvh-10.5rem)] min-h-[32rem] flex-col overflow-hidden rounded-lg border border-default">
+      <QueryTabBar :tabs="tabs.tabs.value" :active="tabs.active.value.id" :running="id => runner.stateOf(id).running" @select="tabs.select" @close="tabs.close" @add="tabs.add()" @rename="tabs.rename" />
+
+      <!-- :name parameters -->
+      <div v-if="paramNames.length" class="flex flex-wrap items-center gap-2 border-b border-default bg-elevated/30 px-3 py-1.5">
+        <span class="flex items-center gap-1 text-xs text-muted"><UIcon name="i-lucide-variable" class="size-3.5" /> {{ t('query.params') }}</span>
+        <UFieldGroup v-for="name in paramNames" :key="name" size="xs">
+          <UBadge :label="`:${name}`" color="neutral" variant="outline" class="font-mono" />
+          <UInput
+            :model-value="valuesOf(tabs.active.value.id)[name] ?? ''"
+            :placeholder="t('query.paramValue')"
+            class="w-36"
+            :aria-label="t('query.paramFor', { name })"
+            @update:model-value="value => (valuesOf(tabs.active.value.id)[name] = String(value))"
+          />
+        </UFieldGroup>
+      </div>
+
+      <div class="shrink-0" :style="{ height: `${editorHeight}px` }">
+        <ClientOnly>
+          <QuerySqlEditor
+            ref="editor"
+            :key="`${dsId}:${tabs.active.value.id}`"
+            v-model="text"
+            :engine="source?.engine ?? 'postgresql'"
+            :schema="completion"
+            :default-schema="defaultSchema"
+            :error-line="state.problem?.line ?? null"
+            :placeholder-text="t('query.placeholder')"
+            @run="run"
+          />
+          <template #fallback><USkeleton class="m-3 h-40" /></template>
+        </ClientOnly>
+      </div>
+
+      <div
+        role="separator"
+        tabindex="0"
+        aria-orientation="horizontal"
+        :aria-label="t('query.resizeEditor')"
+        :aria-valuenow="editorHeight"
+        class="group relative h-2 shrink-0 cursor-row-resize touch-none border-y border-default bg-elevated/40 focus-visible:outline-none"
+        @pointerdown="resizeStart"
+        @pointermove="resizeMove"
+        @pointerup="resizing = null"
+        @pointercancel="resizing = null"
+        @keydown="resizeKey"
+      >
+        <span class="absolute inset-x-0 top-1/2 mx-auto h-0.5 w-10 -translate-y-1/2 rounded-full bg-(--ui-border-accented) group-hover:bg-(--ui-border-inverted) group-focus-visible:bg-(--ui-border-inverted)" />
+      </div>
+
+      <QueryOutput :state="state" @page="page => runner.page(tabs.active.value.id, page)" @line="line => editor?.goToLine(line)" />
+    </div>
+
+    <Teleport v-if="takeover.shown.value" :to="`#${SIDEBAR_TAKEOVER_ID}`" defer>
+      <QueryNavigator v-bind="{ ...navigator, ...navigatorEvents }" />
+    </Teleport>
+    <USlideover v-model:open="sideOpen" side="left" :title="t('query.side.title')" :ui="{ content: 'w-full max-w-xs', body: 'flex p-0 sm:p-0' }">
+      <template #body>
+        <QueryNavigator v-bind="{ ...navigator, ...navigatorEvents }" />
+      </template>
+    </USlideover>
   </AppPanel>
 </template>
