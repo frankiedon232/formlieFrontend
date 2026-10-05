@@ -2,7 +2,8 @@
  * The mock's SQL runner for the Query editor (F12 M4). Nothing connects to a database: it reads
  * the same tables and rows as the explorer and understands the common shapes,
  *
- *   SELECT cols | * | COUNT(*) FROM table [WHERE a = v AND b LIKE v …] [ORDER BY c [DESC]] [LIMIT n] [OFFSET m]
+ *   SELECT cols | * | COUNT(*) · SUM · AVG · MIN · MAX [AS x] FROM table [WHERE … AND …] [GROUP BY …] [HAVING agg op n]
+ *     [ORDER BY col / alias [DESC], …] [LIMIT n] [OFFSET m]
  *   INSERT INTO table (a, b) VALUES (…), (…)
  *   UPDATE table SET a = v, b = v [WHERE …]
  *   DELETE FROM table [WHERE …]
@@ -138,37 +139,111 @@ export function runSelect(tenant: MockTenant, source: StoredDataSource, tables: 
       rows: [list.map(item => valueOf(item.replace(/\s+AS\s+[\w"]+$/i, ''), params, 7))],
     }
   }
-  const match = /^SELECT\s+(?:TOP\s+(\d+)\s+)?([\s\S]+?)\s+FROM\s+([\w."`[\]]+)(?:\s+(?:AS\s+)?(?!WHERE\b|ORDER\b|LIMIT\b|OFFSET\b|FETCH\b)\w+)?(?:\s+WHERE\s+([\s\S]+?))?(?:\s+ORDER\s+BY\s+([\s\S]+?))?(?:\s+LIMIT\s+(\d+))?(?:\s+OFFSET\s+(\d+)(?:\s+ROWS?)?)?(?:\s+FETCH\s+(?:FIRST|NEXT)\s+(\d+)\s+ROWS?\s+ONLY)?\s*$/i.exec(statement)
+  const match = /^SELECT\s+(?:TOP\s+(\d+)\s+)?([\s\S]+?)\s+FROM\s+([\w."`[\]]+)(?:\s+(?:AS\s+)?(?!WHERE\b|GROUP\b|ORDER\b|LIMIT\b|OFFSET\b|FETCH\b|HAVING\b)\w+)?(?:\s+WHERE\s+([\s\S]+?))?(?:\s+GROUP\s+BY\s+([\s\S]+?))?(?:\s+HAVING\s+([\s\S]+?))?(?:\s+ORDER\s+BY\s+([\s\S]+?))?(?:\s+LIMIT\s+(\d+))?(?:\s+OFFSET\s+(\d+)(?:\s+ROWS?)?)?(?:\s+FETCH\s+(?:FIRST|NEXT)\s+(\d+)\s+ROWS?\s+ONLY)?\s*$/i.exec(statement)
   if (!match) throw preview()
-  const [, top, list, written, where, order, limit, offset, fetch] = match
+  const [, top, list, written, where, groupBy, having, order, limit, offset, fetch] = match
   const resolved = resolveTable(tenant, source, tables, written!, after(statement, /\bFROM\s+/i))
   const { structure } = resolved
-  let rows = rowsOf(tenant, source, resolved.tables, structure).filter(whereTest(where, structure, params, after(statement, /\bWHERE\s+/i)))
-  if (order) {
-    const [name, direction] = order.trim().split(/\s+/)
-    const column = structure.columns.find(item => item.name.toLowerCase() === unquote(name!).toLowerCase())
-    if (!column) throw sqlProblem(`column "${unquote(name!)}" does not exist`, after(statement, /\bORDER\s+BY\s+/i))
-    const desc = /^DESC$/i.test(direction ?? '')
-    rows = [...rows].sort((a, b) => {
-      const x = a[column.name]
-      const y = b[column.name]
-      if (x == null) return 1
-      if (y == null) return -1
-      const result = typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y), undefined, { numeric: true })
-      return desc ? -result : result
+  const rows = rowsOf(tenant, source, resolved.tables, structure).filter(whereTest(where, structure, params, after(statement, /\bWHERE\s+/i)))
+  const columnNamed = (name: string, at: number) => {
+    const column = structure.columns.find(item => item.name.toLowerCase() === unquote(name.split('.').pop()!).toLowerCase())
+    if (!column) throw sqlProblem(`column "${unquote(name.split('.').pop()!)}" does not exist`, at)
+    return column
+  }
+
+  // The select list: columns and aggregates (COUNT(*), COUNT(DISTINCT c), SUM, AVG, MIN, MAX), with aliases
+  interface Item { name: string; key: string; type: string | null; column?: string; agg?: { fn: string; column: string | null; distinct: boolean } }
+  const items: Item[] = list!.trim() === '*'
+    ? structure.columns.map(column => ({ name: column.name, key: column.name.toLowerCase(), type: column.type, column: column.name }))
+    : splitOutside(list!, /^,/).map(item => {
+        // `expr [AS] alias`, where expr is a column or ends with ")"
+        const alias = /^([\s\S]+?)\s+(?:AS\s+)?"?([A-Za-z_]\w*)"?$/i.exec(item.trim())
+        const hasAlias = !!alias && (/\)$/.test(alias[1]!.trim()) || /^[\w."]+$/.test(alias[1]!.trim()))
+        const body = hasAlias ? alias![1]!.trim() : item.trim()
+        const aliasName = hasAlias ? alias![2]! : null
+        const agg = /^(COUNT|SUM|AVG|MIN|MAX)\s*\(\s*(DISTINCT\s+)?(\*|[\w."]+)\s*\)$/i.exec(body)
+        if (agg) {
+          const fn = agg[1]!.toLowerCase()
+          const column = agg[3] === '*' ? null : columnNamed(agg[3]!, 7).name
+          const type = fn === 'count' ? 'BIGINT' : fn === 'avg' ? 'NUMERIC' : column ? (structure.columns.find(c => c.name === column)?.type ?? null) : null
+          return { name: aliasName ?? fn, key: body.toLowerCase().replace(/\s+/g, ''), type, agg: { fn, column, distinct: !!agg[2] } }
+        }
+        const column = columnNamed(body, 7)
+        return { name: aliasName ?? column.name, key: column.name.toLowerCase(), type: column.type, column: column.name }
+      })
+  const grouped = !!groupBy || items.some(item => item.agg)
+  const aggregate = (fn: string, values: unknown[]) => {
+    const present = values.filter(value => value != null)
+    if (fn === 'count') return present.length
+    if (!present.length) return null
+    const numbers = present.map(Number).filter(value => Number.isFinite(value))
+    if (fn === 'sum') return Math.round(numbers.reduce((sum, value) => sum + value, 0) * 100) / 100
+    if (fn === 'avg') return Math.round((numbers.reduce((sum, value) => sum + value, 0) / numbers.length) * 100) / 100
+    const sorted = [...present].sort((x, y) => (typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y), undefined, { numeric: true })))
+    return fn === 'min' ? sorted[0] : sorted[sorted.length - 1]
+  }
+  let output: unknown[][]
+  if (grouped) {
+    const keys = groupBy ? splitOutside(groupBy, /^,/).map(name => columnNamed(name, after(statement, /\bGROUP\s+BY\s+/i)).name) : []
+    const groups = new Map<string, TableRow[]>()
+    for (const row of rows) {
+      const key = JSON.stringify(keys.map(name => row[name] ?? null))
+      groups.set(key, [...(groups.get(key) ?? []), row])
+    }
+    if (!keys.length && !groups.size) groups.set('[]', [])
+    output = [...groups.values()].map(group =>
+      items.map(item => {
+        if (!item.agg) {
+          if (keys.length && !keys.includes(item.column!)) throw sqlProblem(`column "${item.column}" must appear in the GROUP BY clause or be used in an aggregate function`, 7)
+          return group[0]?.[item.column!] ?? null
+        }
+        const values = item.agg.column ? group.map(row => row[item.agg!.column!]) : group.map(() => 1)
+        return aggregate(item.agg.fn, item.agg.distinct ? [...new Set(values.map(value => JSON.stringify(value)))].map(value => JSON.parse(value) as unknown) : values)
+      }),
+    )
+  } else output = rows.map(row => items.map(item => row[item.column!] ?? null))
+
+  // HAVING / ORDER BY name a column of the result: an alias, a column or an aggregate as written
+  const indexOf = (expr: string, at: number) => {
+    const text = expr.trim().toLowerCase().replace(/\s+/g, '')
+    const found = items.findIndex(item => item.name.toLowerCase() === unquote(text) || item.key === text || item.key === unquote(text.split('.').pop()!))
+    if (found < 0) throw sqlProblem(`column "${expr.trim()}" does not exist`, at)
+    return found
+  }
+  if (having) {
+    const at = after(statement, /\bHAVING\s+/i)
+    const condition = /^([\s\S]+?)\s*(>=|<=|<>|!=|=|>|<)\s*(-?\d+(?:\.\d+)?)$/.exec(having.trim())
+    if (!condition) throw preview()
+    const index = indexOf(condition[1]!, at)
+    const [op, limitValue] = [condition[2]!, Number(condition[3])]
+    output = output.filter(row => {
+      const value = Number(row[index])
+      return op === '>' ? value > limitValue : op === '<' ? value < limitValue : op === '>=' ? value >= limitValue : op === '<=' ? value <= limitValue : op === '=' ? value === limitValue : value !== limitValue
     })
   }
-  rows = rows.slice(Number(offset ?? 0))
+  if (order) {
+    const at = after(statement, /\bORDER\s+BY\s+/i)
+    const keys = splitOutside(order, /^,/).map(part => {
+      const [, expr, direction] = /^([\s\S]+?)(?:\s+(ASC|DESC))?$/i.exec(part.trim())!
+      return { index: indexOf(expr!, at), desc: /DESC/i.test(direction ?? '') }
+    })
+    output = [...output].sort((a, b) => {
+      for (const key of keys) {
+        const x = a[key.index]
+        const y = b[key.index]
+        if (x == null && y == null) continue
+        if (x == null) return 1
+        if (y == null) return -1
+        const result = typeof x === 'number' && typeof y === 'number' ? x - y : String(x).localeCompare(String(y), undefined, { numeric: true })
+        if (result) return key.desc ? -result : result
+      }
+      return 0
+    })
+  }
+  output = output.slice(Number(offset ?? 0))
   const cut = Number(top ?? limit ?? fetch ?? 0)
-  if (cut) rows = rows.slice(0, cut)
-  if (/^COUNT\s*\(\s*\*\s*\)(\s+AS\s+\w+)?$/i.test(list!.trim())) return { columns: [{ name: /AS\s+(\w+)/i.exec(list!)?.[1] ?? 'count', type: 'BIGINT' }], rows: [[rows.length]] }
-  const wanted = list!.trim() === '*' ? structure.columns : splitOutside(list!, /^,/).map(item => {
-    const name = unquote(item.replace(/\s+AS\s+.+$/i, '').split('.').pop()!)
-    const column = structure.columns.find(col => col.name.toLowerCase() === name.toLowerCase())
-    if (!column) throw sqlProblem(`column "${name}" does not exist`, 7)
-    return column
-  })
-  return { columns: wanted.map(column => ({ name: column.name, type: column.type })), rows: rows.map(row => wanted.map(column => row[column.name] ?? null)) }
+  if (cut) output = output.slice(0, cut)
+  return { columns: items.map(item => ({ name: item.name, type: item.type })), rows: output }
 }
 
 /** The rows a changing statement will touch (for the confirm), and how to apply it. */

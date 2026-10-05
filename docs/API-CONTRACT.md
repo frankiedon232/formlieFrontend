@@ -318,7 +318,7 @@ Admins only until F22. One statement per run, on Formalie's servers through the 
 | PATCH | `/saved-queries/{id}` | `{ name?, description?, sql?, shared? }`; only its owner (`FRM-DEST-1027`) |
 | DELETE | `/saved-queries/{id}` | only its owner; audit `data.saved_query_deleted`. Running a saved query from the editor sends `saved_id` with the run, which counts it |
 
-Mock: the runner understands `SELECT … FROM … [WHERE … AND …] [ORDER BY …] [LIMIT / OFFSET / TOP / FETCH FIRST]`, `COUNT(*)`, `SELECT` without `FROM`, and simple `INSERT … VALUES`, `UPDATE … SET … WHERE`, `DELETE … WHERE` against the explorer's tables (other SQL answers with `message: preview_unsupported`; structure statements are checked and confirmed but not applied). The real backend runs any SQL the connection's account may run.
+Mock: the runner understands `SELECT … FROM … [WHERE … AND …] [GROUP BY …] [HAVING agg op n] [ORDER BY col / alias [DESC], …] [LIMIT / OFFSET / TOP / FETCH FIRST]` with `COUNT(*)`, `COUNT(DISTINCT c)`, `SUM`, `AVG`, `MIN`, `MAX` and aliases, `SELECT` without `FROM`, and simple `INSERT … VALUES`, `UPDATE … SET … WHERE`, `DELETE … WHERE` against the explorer's tables (other SQL answers with `message: preview_unsupported`; structure statements are checked and confirmed but not applied). The real backend runs any SQL the connection's account may run.
 
 ## Data sources activity (F12 M5)
 
