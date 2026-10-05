@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "その他のテーブルがあるスキーマ",
       "databases": "その他のテーブルがあるデータベース",
-      "schemasHint": "1 つ入力するごとに Enter を押します。空欄の場合は {schema} のみ。",
-      "databasesHint": "1 つ入力するごとに Enter を押します。空欄の場合は {schema} のみ。",
+      "schemasHint": "1 つ入力するごとに Enter、スペース、またはカンマを押します。空欄の場合は {schema} のみ。",
+      "databasesHint": "1 つ入力するごとに Enter、スペース、またはカンマを押します。空欄の場合は {schema} のみ。",
       "permissionsTitle": "付与する権限",
       "permissionsDesc": "すべての機能が動作するよう、アカウントにこれらを付与してください。回答の保存先は必須で、その他はその他のテーブルについての選択に従います。",
       "tabOperations": "Formalie が行う操作",
@@ -3311,7 +3311,7 @@
         "none": "回答のみ"
       },
       "optional": "任意",
-      "schemasHintOracle": "Formalie にテーブルの使用を許可するスキーマ（所有者）を 1 つ入力するごとに Enter を押します。"
+      "schemasHintOracle": "Formalie にテーブルの使用を許可するスキーマ（所有者）を 1 つ入力するごとに Enter、スペース、またはカンマを押します。"
     },
     "summary": {
       "engine": "データベース",

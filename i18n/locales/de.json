@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Schemas mit Ihren anderen Tabellen",
       "databases": "Datenbanken mit Ihren anderen Tabellen",
-      "schemasHint": "Nach jedem Eintrag Enter drücken. Leer: nur {schema}.",
-      "databasesHint": "Nach jedem Eintrag Enter drücken. Leer: nur {schema}.",
+      "schemasHint": "Nach jedem Eintrag Enter, Leertaste oder Komma drücken. Leer: nur {schema}.",
+      "databasesHint": "Nach jedem Eintrag Enter, Leertaste oder Komma drücken. Leer: nur {schema}.",
       "permissionsTitle": "Zu erteilende Berechtigungen",
       "permissionsDesc": "Erteilen Sie dem Konto diese, damit jede Funktion läuft. Ihre Antworten sind erforderlich; der Rest folgt Ihrer Auswahl für Ihre anderen Tabellen.",
       "tabOperations": "Was Formalie tut",
@@ -3311,7 +3311,7 @@
         "none": "Nur Antworten"
       },
       "optional": "Optional",
-      "schemasHintOracle": "Drücken Sie Enter nach jedem Schema (Eigentümer), dessen Tabellen Formalie nutzen darf."
+      "schemasHintOracle": "Drücken Sie Enter, Leertaste oder Komma nach jedem Schema (Eigentümer), dessen Tabellen Formalie nutzen darf."
     },
     "summary": {
       "engine": "Datenbank",

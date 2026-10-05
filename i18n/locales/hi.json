@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "आपकी अन्य टेबल वाले स्कीमा",
       "databases": "आपकी अन्य टेबल वाले डेटाबेस",
-      "schemasHint": "हर एक के बाद Enter दबाएँ। खाली: केवल {schema}।",
-      "databasesHint": "हर एक के बाद Enter दबाएँ। खाली: केवल {schema}।",
+      "schemasHint": "हर एक के बाद Enter, स्पेस या कॉमा दबाएँ। खाली: केवल {schema}।",
+      "databasesHint": "हर एक के बाद Enter, स्पेस या कॉमा दबाएँ। खाली: केवल {schema}।",
       "permissionsTitle": "दी जाने वाली अनुमतियाँ",
       "permissionsDesc": "हर सुविधा काम करे, इसके लिए खाते को ये दें। आपके उत्तर ज़रूरी हैं; बाकी आपकी अन्य टेबल के लिए आपकी पसंद के अनुसार।",
       "tabOperations": "Formalie क्या करता है",
@@ -3311,7 +3311,7 @@
         "none": "केवल उत्तर"
       },
       "optional": "वैकल्पिक",
-      "schemasHintOracle": "हर उस स्कीमा (मालिक) के बाद Enter दबाएँ जिसकी टेबल Formalie उपयोग कर सकता है।"
+      "schemasHintOracle": "हर उस स्कीमा (मालिक) के बाद Enter, स्पेस या कॉमा दबाएँ जिसकी टेबल Formalie उपयोग कर सकता है।"
     },
     "summary": {
       "engine": "डेटाबेस",

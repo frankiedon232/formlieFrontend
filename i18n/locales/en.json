@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Schemas with your other tables",
       "databases": "Databases with your other tables",
-      "schemasHint": "Press Enter after each one. Empty: only {schema}.",
-      "databasesHint": "Press Enter after each one. Empty: only {schema}.",
+      "schemasHint": "Press Enter, space or comma after each one. Empty: only {schema}.",
+      "databasesHint": "Press Enter, space or comma after each one. Empty: only {schema}.",
       "permissionsTitle": "Permissions to grant",
       "permissionsDesc": "Grant the account these so every feature works. Your responses are required; the rest follows your choice for your other tables.",
       "tabOperations": "What Formalie does",
@@ -3311,7 +3311,7 @@
         "none": "Responses only"
       },
       "optional": "Optional",
-      "schemasHintOracle": "Press Enter after each schema (owner) whose tables Formalie may use."
+      "schemasHintOracle": "Press Enter, space or comma after each schema (owner) whose tables Formalie may use."
     },
     "summary": {
       "engine": "Database",

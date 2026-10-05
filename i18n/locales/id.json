@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Skema dengan tabel Anda yang lain",
       "databases": "Database dengan tabel Anda yang lain",
-      "schemasHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
-      "databasesHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
+      "schemasHint": "Tekan Enter, spasi, atau koma setelah setiap entri. Kosong: hanya {schema}.",
+      "databasesHint": "Tekan Enter, spasi, atau koma setelah setiap entri. Kosong: hanya {schema}.",
       "permissionsTitle": "Izin yang perlu diberikan",
       "permissionsDesc": "Berikan izin ini ke akun agar setiap fitur berfungsi. Respons Anda wajib; sisanya mengikuti pilihan Anda untuk tabel Anda yang lain.",
       "tabOperations": "Yang dilakukan Formalie",
@@ -3311,7 +3311,7 @@
         "none": "Hanya respons"
       },
       "optional": "Opsional",
-      "schemasHintOracle": "Tekan Enter setelah setiap skema (pemilik) yang tabelnya boleh digunakan Formalie."
+      "schemasHintOracle": "Tekan Enter, spasi, atau koma setelah setiap skema (pemilik) yang tabelnya boleh digunakan Formalie."
     },
     "summary": {
       "engine": "Database",

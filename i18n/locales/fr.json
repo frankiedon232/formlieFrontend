@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Schémas contenant vos autres tables",
       "databases": "Bases de données contenant vos autres tables",
-      "schemasHint": "Appuyez sur Entrée après chacun. Vide : uniquement {schema}.",
-      "databasesHint": "Appuyez sur Entrée après chacune. Vide : uniquement {schema}.",
+      "schemasHint": "Appuyez sur Entrée, Espace ou virgule après chacun. Vide : uniquement {schema}.",
+      "databasesHint": "Appuyez sur Entrée, Espace ou virgule après chacune. Vide : uniquement {schema}.",
       "permissionsTitle": "Autorisations à accorder",
       "permissionsDesc": "Accordez-les au compte pour que chaque fonction marche. Vos réponses sont obligatoires ; le reste suit votre choix pour vos autres tables.",
       "tabOperations": "Ce que fait Formalie",
@@ -3311,7 +3311,7 @@
         "none": "Réponses uniquement"
       },
       "optional": "Facultatif",
-      "schemasHintOracle": "Appuyez sur Entrée après chaque schéma (propriétaire) dont Formalie peut utiliser les tables."
+      "schemasHintOracle": "Appuyez sur Entrée, Espace ou virgule après chaque schéma (propriétaire) dont Formalie peut utiliser les tables."
     },
     "summary": {
       "engine": "Base de données",

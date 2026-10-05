@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Schematy z pozostałymi tabelami",
       "databases": "Bazy danych z pozostałymi tabelami",
-      "schemasHint": "Naciśnij Enter po każdej pozycji. Puste: tylko {schema}.",
-      "databasesHint": "Naciśnij Enter po każdej pozycji. Puste: tylko {schema}.",
+      "schemasHint": "Naciśnij Enter, spację lub przecinek po każdej pozycji. Puste: tylko {schema}.",
+      "databasesHint": "Naciśnij Enter, spację lub przecinek po każdej pozycji. Puste: tylko {schema}.",
       "permissionsTitle": "Uprawnienia do nadania",
       "permissionsDesc": "Nadaj kontu te uprawnienia, aby każda funkcja działała. Twoje odpowiedzi są wymagane; reszta zależy od Twojego wyboru dla pozostałych tabel.",
       "tabOperations": "Co robi Formalie",
@@ -3311,7 +3311,7 @@
         "none": "Tylko odpowiedzi"
       },
       "optional": "Opcjonalne",
-      "schemasHintOracle": "Naciśnij Enter po każdym schemacie (właścicielu), którego tabel Formalie może używać."
+      "schemasHintOracle": "Naciśnij Enter, spację lub przecinek po każdym schemacie (właścicielu), którego tabel Formalie może używać."
     },
     "summary": {
       "engine": "Baza danych",

@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "包含您其他表的架构",
       "databases": "包含您其他表的数据库",
-      "schemasHint": "每输入一个后按 Enter。留空：仅 {schema}。",
-      "databasesHint": "每输入一个后按 Enter。留空：仅 {schema}。",
+      "schemasHint": "每输入一个后按 Enter、空格或逗号。留空：仅 {schema}。",
+      "databasesHint": "每输入一个后按 Enter、空格或逗号。留空：仅 {schema}。",
       "permissionsTitle": "需授予的权限",
       "permissionsDesc": "为账户授予这些权限，确保所有功能正常。您的回复是必需的；其余取决于您对其他表的选择。",
       "tabOperations": "Formalie 执行的操作",
@@ -3311,7 +3311,7 @@
         "none": "仅回复"
       },
       "optional": "可选",
-      "schemasHintOracle": "每输入一个允许 Formalie 使用其表的架构（所有者）后按 Enter。"
+      "schemasHintOracle": "每输入一个允许 Formalie 使用其表的架构（所有者）后按 Enter、空格或逗号。"
     },
     "summary": {
       "engine": "数据库",

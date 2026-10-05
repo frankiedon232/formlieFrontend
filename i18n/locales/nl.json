@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Schema’s met uw andere tabellen",
       "databases": "Databases met uw andere tabellen",
-      "schemasHint": "Druk na elk item op Enter. Leeg: alleen {schema}.",
-      "databasesHint": "Druk na elk item op Enter. Leeg: alleen {schema}.",
+      "schemasHint": "Druk na elk item op Enter, spatie of komma. Leeg: alleen {schema}.",
+      "databasesHint": "Druk na elk item op Enter, spatie of komma. Leeg: alleen {schema}.",
       "permissionsTitle": "Toe te kennen rechten",
       "permissionsDesc": "Ken het account deze rechten toe zodat elke functie werkt. Uw reacties zijn vereist; de rest volgt uw keuze voor uw andere tabellen.",
       "tabOperations": "Wat Formalie doet",
@@ -3311,7 +3311,7 @@
         "none": "Alleen reacties"
       },
       "optional": "Optioneel",
-      "schemasHintOracle": "Druk op Enter na elk schema (eigenaar) waarvan Formalie de tabellen mag gebruiken."
+      "schemasHintOracle": "Druk op Enter, spatie of komma na elk schema (eigenaar) waarvan Formalie de tabellen mag gebruiken."
     },
     "summary": {
       "engine": "Database",

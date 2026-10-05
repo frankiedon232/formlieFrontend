@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "المخططات التي تضم جداولك الأخرى",
       "databases": "قواعد البيانات التي تضم جداولك الأخرى",
-      "schemasHint": "اضغط Enter بعد كل واحد. فارغ: {schema} فقط.",
-      "databasesHint": "اضغط Enter بعد كل واحدة. فارغ: {schema} فقط.",
+      "schemasHint": "اضغط Enter أو المسافة أو الفاصلة بعد كل واحد. فارغ: {schema} فقط.",
+      "databasesHint": "اضغط Enter أو المسافة أو الفاصلة بعد كل واحدة. فارغ: {schema} فقط.",
       "permissionsTitle": "الأذونات المطلوب منحها",
       "permissionsDesc": "امنح الحساب هذه الأذونات كي تعمل كل ميزة. ردودك مطلوبة؛ والباقي يتبع اختيارك لجداولك الأخرى.",
       "tabOperations": "ما يفعله Formalie",
@@ -3311,7 +3311,7 @@
         "none": "الردود فقط"
       },
       "optional": "اختياري",
-      "schemasHintOracle": "اضغط Enter بعد كل مخطط (مالك) يمكن لـ Formalie استخدام جداوله."
+      "schemasHintOracle": "اضغط Enter أو المسافة أو الفاصلة بعد كل مخطط (مالك) يمكن لـ Formalie استخدام جداوله."
     },
     "summary": {
       "engine": "قاعدة البيانات",

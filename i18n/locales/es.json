@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Esquemas con tus otras tablas",
       "databases": "Bases de datos con tus otras tablas",
-      "schemasHint": "Pulsa Intro después de cada uno. Vacío: solo {schema}.",
-      "databasesHint": "Pulsa Intro después de cada una. Vacío: solo {schema}.",
+      "schemasHint": "Pulsa Intro, espacio o coma después de cada uno. Vacío: solo {schema}.",
+      "databasesHint": "Pulsa Intro, espacio o coma después de cada una. Vacío: solo {schema}.",
       "permissionsTitle": "Permisos que conceder",
       "permissionsDesc": "Concede estos permisos a la cuenta para que todo funcione. Tus respuestas son obligatorias; el resto sigue tu elección para tus otras tablas.",
       "tabOperations": "Qué hace Formalie",
@@ -3311,7 +3311,7 @@
         "none": "Solo respuestas"
       },
       "optional": "Opcional",
-      "schemasHintOracle": "Pulsa Intro después de cada esquema (propietario) cuyas tablas pueda usar Formalie."
+      "schemasHintOracle": "Pulsa Intro, espacio o coma después de cada esquema (propietario) cuyas tablas pueda usar Formalie."
     },
     "summary": {
       "engine": "Base de datos",

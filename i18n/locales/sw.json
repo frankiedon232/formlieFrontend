@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Skima zenye majedwali yako mengine",
       "databases": "Hifadhidata zenye majedwali yako mengine",
-      "schemasHint": "Bonyeza Enter baada ya kila moja. Ikiwa wazi: {schema} pekee.",
-      "databasesHint": "Bonyeza Enter baada ya kila moja. Ikiwa wazi: {schema} pekee.",
+      "schemasHint": "Bonyeza Enter, nafasi au koma baada ya kila moja. Ikiwa wazi: {schema} pekee.",
+      "databasesHint": "Bonyeza Enter, nafasi au koma baada ya kila moja. Ikiwa wazi: {schema} pekee.",
       "permissionsTitle": "Ruhusa za kutoa",
       "permissionsDesc": "Ipe akaunti ruhusa hizi ili kila kipengele kifanye kazi. Majibu yako yanahitajika; mengine yanafuata chaguo lako kwa majedwali yako mengine.",
       "tabOperations": "Formalie hufanya nini",
@@ -3311,7 +3311,7 @@
         "none": "Majibu tu"
       },
       "optional": "Hiari",
-      "schemasHintOracle": "Bonyeza Enter baada ya kila skima (mmiliki) ambayo majedwali yake Formalie inaweza kutumia."
+      "schemasHintOracle": "Bonyeza Enter, nafasi au koma baada ya kila skima (mmiliki) ambayo majedwali yake Formalie inaweza kutumia."
     },
     "summary": {
       "engine": "Hifadhidata",

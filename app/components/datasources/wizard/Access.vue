@@ -25,6 +25,19 @@ const isMysql = computed(() => props.engine === 'mysql' || props.engine === 'mar
 const tablesSchema = computed(() => tablesSchemaOf(props.engine, props.settings, { ...access.value, tables_schema: '' }))
 const example = computed(() => `${access.value.table_prefix}job_application`)
 const schemaHint = computed(() => (props.engine === 'oracle' ? t('dataSources.access.schemasHintOracle') : t(isMysql.value ? 'dataSources.access.databasesHint' : 'dataSources.access.schemasHint', { schema: defaultSchemaOf(props.engine, props.settings) || '…' })))
+/**
+ * Space, comma and semicolon add a schema, like Enter (owner 2026-10-05). Read from what was typed
+ * (not key presses), so phone keyboards and pasted lists work too; the unfinished part stays.
+ */
+function splitTyped(event: Event) {
+  const input = event.target as HTMLInputElement
+  if (input.tagName !== 'INPUT' || !/[\s,;]/.test(input.value)) return
+  const parts = input.value.split(/[\s,;]+/)
+  const rest = parts.pop() ?? ''
+  const added = parts.map(part => part.trim()).filter(Boolean)
+  if (added.length) set({ schemas: [...new Set([...access.value.schemas, ...added])].slice(0, 20) })
+  input.value = rest
+}
 const tab = ref('operations')
 const tabs = computed(() => [
   { value: 'operations', label: t('dataSources.access.tabOperations'), icon: 'i-lucide-list-checks' },
@@ -84,7 +97,7 @@ const tabs = computed(() => [
         @update:model-value="value => set({ other: value as OtherTablesAccess })"
       />
       <UFormField v-if="access.other !== 'none'" :label="isMysql ? t('dataSources.access.databases') : t('dataSources.access.schemas')" :description="schemaHint">
-        <UInputTags :model-value="access.schemas" :max-length="128" class="w-full font-mono" dir="ltr" @update:model-value="value => set({ schemas: (value as string[]).map(item => item.trim()).filter(Boolean).slice(0, 20) })" />
+        <UInputTags :model-value="access.schemas" :max-length="128" add-on-paste add-on-blur class="w-full font-mono" dir="ltr" @input.capture="splitTyped" @update:model-value="value => set({ schemas: [...new Set((value as string[]).flatMap(item => item.split(/[\s,;]+/)).map(item => item.trim()).filter(Boolean))].slice(0, 20) })" />
       </UFormField>
     </section>
 

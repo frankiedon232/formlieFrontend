@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Diğer tablolarınızın bulunduğu şemalar",
       "databases": "Diğer tablolarınızın bulunduğu veritabanları",
-      "schemasHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
-      "databasesHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
+      "schemasHint": "Her birinden sonra Enter’a, boşluğa veya virgüle basın. Boş: yalnızca {schema}.",
+      "databasesHint": "Her birinden sonra Enter’a, boşluğa veya virgüle basın. Boş: yalnızca {schema}.",
       "permissionsTitle": "Verilecek izinler",
       "permissionsDesc": "Her özelliğin çalışması için hesaba bunları verin. Yanıtlarınız gereklidir; gerisi diğer tablolarınız için yaptığınız seçime göre belirlenir.",
       "tabOperations": "Formalie ne yapar",
@@ -3311,7 +3311,7 @@
         "none": "Yalnızca yanıtlar"
       },
       "optional": "İsteğe bağlı",
-      "schemasHintOracle": "Formalie’nin tablolarını kullanabileceği her şemadan (sahip) sonra Enter’a basın."
+      "schemasHintOracle": "Formalie’nin tablolarını kullanabileceği her şemadan (sahip) sonra Enter’a, boşluğa veya virgüle basın."
     },
     "summary": {
       "engine": "Veritabanı",

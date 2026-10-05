@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "다른 테이블이 있는 스키마",
       "databases": "다른 테이블이 있는 데이터베이스",
-      "schemasHint": "하나씩 입력한 후 Enter를 누르세요. 비워 두면 {schema}만 사용합니다.",
-      "databasesHint": "하나씩 입력한 후 Enter를 누르세요. 비워 두면 {schema}만 사용합니다.",
+      "schemasHint": "하나씩 입력한 후 Enter, 스페이스 또는 쉼표를 누르세요. 비워 두면 {schema}만 사용합니다.",
+      "databasesHint": "하나씩 입력한 후 Enter, 스페이스 또는 쉼표를 누르세요. 비워 두면 {schema}만 사용합니다.",
       "permissionsTitle": "부여할 권한",
       "permissionsDesc": "모든 기능이 작동하도록 계정에 이 권한을 부여하세요. 내 응답은 필수이며, 나머지는 다른 테이블에 대한 선택을 따릅니다.",
       "tabOperations": "Formalie가 하는 작업",
@@ -3311,7 +3311,7 @@
         "none": "응답만"
       },
       "optional": "선택 사항",
-      "schemasHintOracle": "Formalie가 테이블을 사용할 수 있는 스키마(소유자)를 하나씩 입력한 후 Enter를 누르세요."
+      "schemasHintOracle": "Formalie가 테이블을 사용할 수 있는 스키마(소유자)를 하나씩 입력한 후 Enter, 스페이스 또는 쉼표를 누르세요."
     },
     "summary": {
       "engine": "데이터베이스",

@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Lược đồ chứa các bảng khác của bạn",
       "databases": "Cơ sở dữ liệu chứa các bảng khác của bạn",
-      "schemasHint": "Nhấn Enter sau mỗi mục. Để trống: chỉ {schema}.",
-      "databasesHint": "Nhấn Enter sau mỗi mục. Để trống: chỉ {schema}.",
+      "schemasHint": "Nhấn Enter, dấu cách hoặc dấu phẩy sau mỗi mục. Để trống: chỉ {schema}.",
+      "databasesHint": "Nhấn Enter, dấu cách hoặc dấu phẩy sau mỗi mục. Để trống: chỉ {schema}.",
       "permissionsTitle": "Quyền cần cấp",
       "permissionsDesc": "Cấp các quyền này cho tài khoản để mọi tính năng hoạt động. Phản hồi của bạn là bắt buộc; phần còn lại theo lựa chọn của bạn cho các bảng khác.",
       "tabOperations": "Formalie làm gì",
@@ -3311,7 +3311,7 @@
         "none": "Chỉ phản hồi"
       },
       "optional": "Tùy chọn",
-      "schemasHintOracle": "Nhấn Enter sau mỗi lược đồ (chủ sở hữu) mà Formalie được dùng các bảng của nó."
+      "schemasHintOracle": "Nhấn Enter, dấu cách hoặc dấu phẩy sau mỗi lược đồ (chủ sở hữu) mà Formalie được dùng các bảng của nó."
     },
     "summary": {
       "engine": "Cơ sở dữ liệu",

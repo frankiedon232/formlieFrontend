@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Schemi con le vostre altre tabelle",
       "databases": "Database con le vostre altre tabelle",
-      "schemasHint": "Premete Invio dopo ciascuno. Vuoto: solo {schema}.",
-      "databasesHint": "Premete Invio dopo ciascuno. Vuoto: solo {schema}.",
+      "schemasHint": "Premete Invio, spazio o virgola dopo ciascuno. Vuoto: solo {schema}.",
+      "databasesHint": "Premete Invio, spazio o virgola dopo ciascuno. Vuoto: solo {schema}.",
       "permissionsTitle": "Permessi da concedere",
       "permissionsDesc": "Concedete questi permessi all’account perché ogni funzione lavori. Le vostre risposte sono obbligatorie; il resto segue la vostra scelta per le altre tabelle.",
       "tabOperations": "Cosa fa Formalie",
@@ -3311,7 +3311,7 @@
         "none": "Solo risposte"
       },
       "optional": "Facoltativo",
-      "schemasHintOracle": "Premete Invio dopo ogni schema (proprietario) le cui tabelle Formalie può usare."
+      "schemasHintOracle": "Premete Invio, spazio o virgola dopo ogni schema (proprietario) le cui tabelle Formalie può usare."
     },
     "summary": {
       "engine": "Database",

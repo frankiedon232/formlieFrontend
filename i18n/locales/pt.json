@@ -3273,8 +3273,8 @@
     "access": {
       "schemas": "Esquemas com suas outras tabelas",
       "databases": "Bancos de dados com suas outras tabelas",
-      "schemasHint": "Pressione Enter após cada um. Vazio: somente {schema}.",
-      "databasesHint": "Pressione Enter após cada um. Vazio: somente {schema}.",
+      "schemasHint": "Pressione Enter, espaço ou vírgula após cada um. Vazio: somente {schema}.",
+      "databasesHint": "Pressione Enter, espaço ou vírgula após cada um. Vazio: somente {schema}.",
       "permissionsTitle": "Permissões a conceder",
       "permissionsDesc": "Conceda estas permissões à conta para que todos os recursos funcionem. Suas respostas são obrigatórias; o restante segue sua escolha para suas outras tabelas.",
       "tabOperations": "O que o Formalie faz",
@@ -3311,7 +3311,7 @@
         "none": "Somente respostas"
       },
       "optional": "Opcional",
-      "schemasHintOracle": "Pressione Enter após cada esquema (proprietário) cujas tabelas o Formalie pode usar."
+      "schemasHintOracle": "Pressione Enter, espaço ou vírgula após cada esquema (proprietário) cujas tabelas o Formalie pode usar."
     },
     "summary": {
       "engine": "Banco de dados",
