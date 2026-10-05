@@ -593,7 +593,9 @@
       "show": "Hiện {name}",
       "up": "Đưa {name} lên",
       "down": "Đưa {name} xuống"
-    }
+    },
+    "resizeColumn": "Đổi độ rộng cột {name}",
+    "resizeHint": "Kéo để đổi độ rộng; nhấp đúp để vừa với nội dung"
   },
   "status": {
     "draft": "Bản nháp",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Trang này",
     "exportAllRows": "Tất cả các hàng, tối đa {max}",
     "exportMatching": "Tất cả các hàng phù hợp, tối đa {max}",
-    "exportCapped": "Có {total} hàng phù hợp; mỗi tệp chứa tối đa {max}. Thu hẹp danh sách bằng tìm kiếm hoặc bộ lọc để xuất phần còn lại."
+    "exportCapped": "Có {total} hàng phù hợp; mỗi tệp chứa tối đa {max}. Thu hẹp danh sách bằng tìm kiếm hoặc bộ lọc để xuất phần còn lại.",
+    "cellSaved": "Đã lưu {column}",
+    "cellEditHint": "Nhấp đúp để sửa",
+    "cellEdit": "Sửa {column}"
   },
   "contextMenu": {
     "open": "Mở",

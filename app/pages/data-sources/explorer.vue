@@ -396,6 +396,7 @@ const readOnlyText = computed(() =>
               :structure="structure"
               :facets="facets"
               :row-menu="menus.rowMenu"
+              @edit-row="editRow"
               @open="openRow"
             />
             <ExplorerStructure

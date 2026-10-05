@@ -593,7 +593,9 @@
       "show": "{name} tonen",
       "up": "{name} omhoog",
       "down": "{name} omlaag"
-    }
+    },
+    "resizeColumn": "Breedte van kolom {name} aanpassen",
+    "resizeHint": "Sleep om de breedte aan te passen; dubbelklik om aan de inhoud aan te passen"
   },
   "status": {
     "draft": "Concept",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Deze pagina",
     "exportAllRows": "Alle rijen, tot {max}",
     "exportMatching": "Alle overeenkomende rijen, tot {max}",
-    "exportCapped": "{total} rijen komen overeen; een bestand bevat er tot {max}. Verklein de lijst met zoeken of filters om de rest te exporteren."
+    "exportCapped": "{total} rijen komen overeen; een bestand bevat er tot {max}. Verklein de lijst met zoeken of filters om de rest te exporteren.",
+    "cellSaved": "{column} opgeslagen",
+    "cellEditHint": "Dubbelklik om te bewerken",
+    "cellEdit": "{column} bewerken"
   },
   "contextMenu": {
     "open": "Openen",

@@ -593,7 +593,9 @@
       "show": "Pokaż: {name}",
       "up": "Przesuń w górę: {name}",
       "down": "Przesuń w dół: {name}"
-    }
+    },
+    "resizeColumn": "Zmień szerokość kolumny {name}",
+    "resizeHint": "Przeciągnij, aby zmienić szerokość; kliknij dwukrotnie, aby dopasować do zawartości"
   },
   "status": {
     "draft": "Szkic",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Ta strona",
     "exportAllRows": "Wszystkie wiersze, do {max}",
     "exportMatching": "Wszystkie pasujące wiersze, do {max}",
-    "exportCapped": "Pasujące wiersze: {total}; plik mieści do {max}. Zawęź listę wyszukiwaniem lub filtrami, aby wyeksportować resztę."
+    "exportCapped": "Pasujące wiersze: {total}; plik mieści do {max}. Zawęź listę wyszukiwaniem lub filtrami, aby wyeksportować resztę.",
+    "cellSaved": "Zapisano: {column}",
+    "cellEditHint": "Kliknij dwukrotnie, aby edytować",
+    "cellEdit": "Edytuj {column}"
   },
   "contextMenu": {
     "open": "Otwórz",

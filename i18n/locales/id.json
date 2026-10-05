@@ -593,7 +593,9 @@
       "show": "Tampilkan {name}",
       "up": "Naikkan {name}",
       "down": "Turunkan {name}"
-    }
+    },
+    "resizeColumn": "Ubah lebar kolom {name}",
+    "resizeHint": "Seret untuk mengubah lebar; klik dua kali untuk menyesuaikan dengan isi"
   },
   "status": {
     "draft": "Draf",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Halaman ini",
     "exportAllRows": "Semua baris, hingga {max}",
     "exportMatching": "Semua baris yang cocok, hingga {max}",
-    "exportCapped": "{total} baris cocok; satu file memuat hingga {max}. Persempit daftar dengan pencarian atau filter untuk mengekspor sisanya."
+    "exportCapped": "{total} baris cocok; satu file memuat hingga {max}. Persempit daftar dengan pencarian atau filter untuk mengekspor sisanya.",
+    "cellSaved": "{column} disimpan",
+    "cellEditHint": "Klik dua kali untuk mengedit",
+    "cellEdit": "Edit {column}"
   },
   "contextMenu": {
     "open": "Buka",

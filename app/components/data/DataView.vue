@@ -32,6 +32,8 @@ const props = withDefaults(
     dense?: boolean
     /** Only the table, no Table / Grid switch (raw data such as database rows; owner 2026-10-05). */
     tableOnly?: boolean
+    /** Drag the line between headers to resize columns (the database explorer only, owner 2026-10-05). */
+    resizable?: boolean
     emptyIcon?: string
     emptyTitle?: string
     emptyDescription?: string
@@ -50,6 +52,7 @@ const props = withDefaults(
     columnsMenu: undefined,
     dense: false,
     tableOnly: false,
+    resizable: false,
     emptyIcon: 'i-lucide-inbox',
     emptyTitle: undefined,
     emptyDescription: undefined,
@@ -68,6 +71,11 @@ const DENSE_TABLE_UI = {
   th: 'h-8 px-3 py-0 text-xs text-default font-medium border-e border-default last:border-e-0 whitespace-nowrap',
   td: 'h-7 px-3 py-0 text-xs text-default border-e border-default last:border-e-0 whitespace-nowrap',
 }
+
+const tableUi = computed(() => {
+  const base = props.dense ? DENSE_TABLE_UI : TABLE_UI
+  return props.resizable ? { ...base, base: 'table-fixed w-(--dv-table-w)' } : base
+})
 
 const slots = defineSlots<
   {
@@ -113,7 +121,10 @@ function toggleColumn(key: string, on: boolean) {
   const { hidden, shown } = layout.value
   layout.value = { ...layout.value, hidden: on ? hidden.filter(k => k !== key) : [...new Set([...hidden, key])], shown: on ? [...new Set([...shown, key])] : shown.filter(k => k !== key) }
 }
-const resetColumns = () => (layout.value = { order: [], hidden: [], shown: [] })
+const resetColumns = () => {
+  layout.value = { order: [], hidden: [], shown: [] }
+  columnWidths?.reset()
+}
 
 const HIDE = { sm: 'hidden sm:table-cell', md: 'hidden md:table-cell', lg: 'hidden lg:table-cell' }
 
@@ -146,18 +157,33 @@ const selectedRows = computed(() =>
   state.rows.value.filter(row => rowSelection.value[String(row[props.rowKey])]),
 )
 
+// Resizable columns (explorer): widths per list, a fixed table layout so they hold
+const tableRoot = useTemplateRef<HTMLElement>('root')
+const columnWidths = props.resizable ? useColumnWidths(props.id, tableRoot) : null
+const px = (value: number) => `${value}px`
+
 const tableColumns = computed<TableColumn<T>[]>(() => {
-  const columns: TableColumn<T>[] = orderedColumns.value.map(column => ({
-    accessorKey: column.key,
-    id: column.key,
-    header: column.sortable ? () => sortHeader(column) : column.label,
-    meta: {
-      class: {
-        th: [column.hideBelow && HIDE[column.hideBelow], column.class].filter(Boolean).join(' '),
-        td: [column.hideBelow && HIDE[column.hideBelow], column.class].filter(Boolean).join(' '),
-      },
-    },
-  }))
+  const columns: TableColumn<T>[] = orderedColumns.value.map(column => {
+    const classes = [column.hideBelow && HIDE[column.hideBelow], column.class].filter(Boolean).join(' ')
+    if (!columnWidths)
+      return {
+        accessorKey: column.key,
+        id: column.key,
+        header: column.sortable ? () => sortHeader(column) : column.label,
+        meta: { class: { th: classes, td: classes } },
+      }
+    const size = columnWidths.sizeOf(column.key, column.width)
+    const width = px(size)
+    return {
+      accessorKey: column.key,
+      id: column.key,
+      size,
+      minSize: COLUMN_WIDTH.min,
+      maxSize: COLUMN_WIDTH.max,
+      header: ({ header }) => columnWidths.withHandle(column.key, column.label, header, column.sortable ? sortHeader(column) : column.label),
+      meta: { class: { th: `relative ${classes}`, td: `overflow-hidden ${classes}` }, style: { th: { width }, td: { width, maxWidth: width } } },
+    }
+  })
   if (props.selectable) {
     columns.unshift({
       id: 'select',
@@ -216,7 +242,7 @@ const showSkeleton = computed(() => state.loading.value && !state.loaded.value)
 const isEmpty = computed(() => state.loaded.value && !state.error.value && state.rows.value.length === 0)
 
 // Right-click on a row or a card: its own menu (the app's items follow, AppContextMenu)
-const root = useTemplateRef<HTMLElement>('root')
+const root = tableRoot
 useContextMenu().register(root, target => {
   const card = target.closest('[data-row-index]')
   const tr = card ? null : target.closest('tbody tr')
@@ -364,7 +390,11 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
         :meta="tableMeta"
         :on-select="openRow ? (_: Event, row: { original: T }) => openRow!(row.original) : undefined"
         sticky
-        :ui="dense ? DENSE_TABLE_UI : TABLE_UI"
+        :ui="tableUi"
+        :column-sizing="columnWidths ? columnWidths.widths.value : undefined"
+        :column-sizing-options="columnWidths ? { enableColumnResizing: true, columnResizeMode: 'onChange' } : undefined"
+        :style="columnWidths ? { '--dv-table-w': px(columnWidths.total(orderedColumns)) } : undefined"
+        @update:column-sizing="value => columnWidths && value && (columnWidths.widths.value = value)"
       >
         <template v-for="name in cellSlots" :key="name" #[name]="slotProps">
           <slot :name="name" v-bind="slotProps" />

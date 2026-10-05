@@ -593,7 +593,9 @@
       "show": "{name} göster",
       "up": "{name} yukarı",
       "down": "{name} aşağı"
-    }
+    },
+    "resizeColumn": "{name} sütununu yeniden boyutlandır",
+    "resizeHint": "Boyutlandırmak için sürükleyin; içeriğe sığdırmak için çift tıklayın"
   },
   "status": {
     "draft": "Taslak",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Bu sayfa",
     "exportAllRows": "Tüm satırlar, en fazla {max}",
     "exportMatching": "Eşleşen tüm satırlar, en fazla {max}",
-    "exportCapped": "{total} satır eşleşti; bir dosya en fazla {max} satır alır. Kalanını dışa aktarmak için listeyi arama veya filtrelerle daraltın."
+    "exportCapped": "{total} satır eşleşti; bir dosya en fazla {max} satır alır. Kalanını dışa aktarmak için listeyi arama veya filtrelerle daraltın.",
+    "cellSaved": "{column} kaydedildi",
+    "cellEditHint": "Düzenlemek için çift tıklayın",
+    "cellEdit": "{column} düzenle"
   },
   "contextMenu": {
     "open": "Aç",

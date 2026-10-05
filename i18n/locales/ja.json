@@ -593,7 +593,9 @@
       "show": "{name} を表示",
       "up": "{name} を上へ",
       "down": "{name} を下へ"
-    }
+    },
+    "resizeColumn": "列 {name} の幅を変更",
+    "resizeHint": "ドラッグで幅を変更、ダブルクリックで内容に合わせます"
   },
   "status": {
     "draft": "下書き",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "このページ",
     "exportAllRows": "すべての行（最大 {max}）",
     "exportMatching": "一致するすべての行（最大 {max}）",
-    "exportCapped": "{total} 行が一致しました。1 つのファイルは最大 {max} 行です。残りを書き出すには、検索やフィルターで絞り込んでください。"
+    "exportCapped": "{total} 行が一致しました。1 つのファイルは最大 {max} 行です。残りを書き出すには、検索やフィルターで絞り込んでください。",
+    "cellSaved": "{column} を保存しました",
+    "cellEditHint": "ダブルクリックで編集",
+    "cellEdit": "{column} を編集"
   },
   "contextMenu": {
     "open": "開く",

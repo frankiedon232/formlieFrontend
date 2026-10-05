@@ -593,7 +593,9 @@
       "show": "{name} anzeigen",
       "up": "{name} nach oben",
       "down": "{name} nach unten"
-    }
+    },
+    "resizeColumn": "Spalte {name} in der Breite ändern",
+    "resizeHint": "Ziehen zum Ändern; Doppelklick passt die Breite an den Inhalt an"
   },
   "status": {
     "draft": "Entwurf",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Diese Seite",
     "exportAllRows": "Alle Zeilen, bis zu {max}",
     "exportMatching": "Alle passenden Zeilen, bis zu {max}",
-    "exportCapped": "{total} Zeilen passen; eine Datei enthält bis zu {max}. Grenzen Sie die Liste mit Suche oder Filtern ein, um den Rest zu exportieren."
+    "exportCapped": "{total} Zeilen passen; eine Datei enthält bis zu {max}. Grenzen Sie die Liste mit Suche oder Filtern ein, um den Rest zu exportieren.",
+    "cellSaved": "{column} gespeichert",
+    "cellEditHint": "Zum Bearbeiten doppelklicken",
+    "cellEdit": "{column} bearbeiten"
   },
   "contextMenu": {
     "open": "Öffnen",

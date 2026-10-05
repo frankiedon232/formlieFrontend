@@ -593,7 +593,9 @@
       "show": "Mostrar {name}",
       "up": "Subir {name}",
       "down": "Descer {name}"
-    }
+    },
+    "resizeColumn": "Redimensionar a coluna {name}",
+    "resizeHint": "Arraste para redimensionar; clique duas vezes para ajustar ao conteúdo"
   },
   "status": {
     "draft": "Rascunho",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Esta página",
     "exportAllRows": "Todas as linhas, até {max}",
     "exportMatching": "Todas as linhas correspondentes, até {max}",
-    "exportCapped": "{total} linhas correspondem; um arquivo contém até {max}. Restrinja a lista com a busca ou os filtros para exportar o restante."
+    "exportCapped": "{total} linhas correspondem; um arquivo contém até {max}. Restrinja a lista com a busca ou os filtros para exportar o restante.",
+    "cellSaved": "{column} salvo",
+    "cellEditHint": "Clique duas vezes para editar",
+    "cellEdit": "Editar {column}"
   },
   "contextMenu": {
     "open": "Abrir",

@@ -593,7 +593,9 @@
       "show": "{name} 표시",
       "up": "{name} 위로",
       "down": "{name} 아래로"
-    }
+    },
+    "resizeColumn": "{name} 열 너비 조정",
+    "resizeHint": "드래그하여 너비를 조정하고, 두 번 클릭하면 내용에 맞춥니다"
   },
   "status": {
     "draft": "초안",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "이 페이지",
     "exportAllRows": "모든 행, 최대 {max}",
     "exportMatching": "일치하는 모든 행, 최대 {max}",
-    "exportCapped": "{total}행이 일치합니다. 파일 하나에는 최대 {max}행이 들어갑니다. 나머지를 내보내려면 검색이나 필터로 목록을 좁히세요."
+    "exportCapped": "{total}행이 일치합니다. 파일 하나에는 최대 {max}행이 들어갑니다. 나머지를 내보내려면 검색이나 필터로 목록을 좁히세요.",
+    "cellSaved": "{column} 저장됨",
+    "cellEditHint": "두 번 클릭하여 편집",
+    "cellEdit": "{column} 편집"
   },
   "contextMenu": {
     "open": "열기",

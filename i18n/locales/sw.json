@@ -593,7 +593,9 @@
       "show": "Onyesha {name}",
       "up": "Pandisha {name}",
       "down": "Shusha {name}"
-    }
+    },
+    "resizeColumn": "Badilisha upana wa safuwima {name}",
+    "resizeHint": "Buruta kubadilisha upana; bofya mara mbili kutosheleza maudhui"
   },
   "status": {
     "draft": "Rasimu",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Ukurasa huu",
     "exportAllRows": "Safu zote, hadi {max}",
     "exportMatching": "Safu zote zinazolingana, hadi {max}",
-    "exportCapped": "Safu {total} zimelingana; faili moja hubeba hadi {max}. Punguza orodha kwa utafutaji au vichujio ili kuhamisha zilizobaki."
+    "exportCapped": "Safu {total} zimelingana; faili moja hubeba hadi {max}. Punguza orodha kwa utafutaji au vichujio ili kuhamisha zilizobaki.",
+    "cellSaved": "{column} imehifadhiwa",
+    "cellEditHint": "Bofya mara mbili kuhariri",
+    "cellEdit": "Hariri {column}"
   },
   "contextMenu": {
     "open": "Fungua",

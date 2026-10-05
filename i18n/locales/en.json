@@ -593,7 +593,9 @@
       "show": "Show {name}",
       "up": "Move {name} up",
       "down": "Move {name} down"
-    }
+    },
+    "resizeColumn": "Resize column {name}",
+    "resizeHint": "Drag to resize; double-click to fit the content"
   },
   "status": {
     "draft": "Draft",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "This page",
     "exportAllRows": "All rows, up to {max}",
     "exportMatching": "All matching rows, up to {max}",
-    "exportCapped": "{total} rows matched; a file holds up to {max}. Narrow the list with search or filters to export the rest."
+    "exportCapped": "{total} rows matched; a file holds up to {max}. Narrow the list with search or filters to export the rest.",
+    "cellSaved": "{column} saved",
+    "cellEditHint": "Double-click to edit",
+    "cellEdit": "Edit {column}"
   },
   "contextMenu": {
     "open": "Open",

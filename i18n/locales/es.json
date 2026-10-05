@@ -593,7 +593,9 @@
       "show": "Mostrar {name}",
       "up": "Subir {name}",
       "down": "Bajar {name}"
-    }
+    },
+    "resizeColumn": "Cambiar el ancho de la columna {name}",
+    "resizeHint": "Arrastra para cambiar el ancho; doble clic para ajustarlo al contenido"
   },
   "status": {
     "draft": "Borrador",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "Esta página",
     "exportAllRows": "Todas las filas, hasta {max}",
     "exportMatching": "Todas las filas que coinciden, hasta {max}",
-    "exportCapped": "Coinciden {total} filas; un archivo admite hasta {max}. Acota la lista con la búsqueda o los filtros para exportar el resto."
+    "exportCapped": "Coinciden {total} filas; un archivo admite hasta {max}. Acota la lista con la búsqueda o los filtros para exportar el resto.",
+    "cellSaved": "{column} guardado",
+    "cellEditHint": "Doble clic para editar",
+    "cellEdit": "Editar {column}"
   },
   "contextMenu": {
     "open": "Abrir",

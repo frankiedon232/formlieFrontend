@@ -33,6 +33,8 @@ export interface DataColumn {
   hidden?: boolean
   /** Always shown (can still be moved). */
   fixed?: boolean
+  /** Starting width in pixels on resizable lists (the explorer sizes by type). */
+  width?: number
 }
 
 export interface DataQuery {

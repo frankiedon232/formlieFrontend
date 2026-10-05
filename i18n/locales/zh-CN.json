@@ -593,7 +593,9 @@
       "show": "显示{name}",
       "up": "上移{name}",
       "down": "下移{name}"
-    }
+    },
+    "resizeColumn": "调整列 {name} 的宽度",
+    "resizeHint": "拖动调整宽度；双击按内容自适应"
   },
   "status": {
     "draft": "草稿",
@@ -4788,7 +4790,10 @@
     "exportThisPage": "本页",
     "exportAllRows": "所有行，最多 {max}",
     "exportMatching": "所有匹配的行，最多 {max}",
-    "exportCapped": "共有 {total} 行匹配；一个文件最多包含 {max} 行。请用搜索或筛选缩小列表以导出其余行。"
+    "exportCapped": "共有 {total} 行匹配；一个文件最多包含 {max} 行。请用搜索或筛选缩小列表以导出其余行。",
+    "cellSaved": "已保存 {column}",
+    "cellEditHint": "双击编辑",
+    "cellEdit": "编辑 {column}"
   },
   "contextMenu": {
     "open": "打开",
