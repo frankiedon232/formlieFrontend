@@ -30,10 +30,10 @@ export const MOCK_OWNERS: FormOwner[] = [
 ]
 
 export const MOCK_FOLDERS: FormFolder[] = [
-  { id: uuid(), name: 'Marketing' },
-  { id: uuid(), name: 'HR' },
-  { id: uuid(), name: 'Operations' },
-  { id: uuid(), name: 'Compliance' },
+  { id: uuid(), name: 'Marketing', color: 'pink' },
+  { id: uuid(), name: 'HR', color: 'teal' },
+  { id: uuid(), name: 'Operations', color: 'amber' },
+  { id: uuid(), name: 'Compliance', color: 'violet' },
 ]
 
 const NAMES = [

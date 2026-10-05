@@ -106,6 +106,7 @@ export const AUDIT_FIELDS = [
   'folder',
   'role',
   'brand_colour',
+  'colour',
   'session_timeout_minutes',
   'sign_in_methods',
   'response_status',

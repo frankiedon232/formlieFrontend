@@ -401,7 +401,10 @@
     "pagesAll": "All landing pages",
     "pagesSystem": "Formalie",
     "pagesSaved": "Saved",
-    "pagesCreated": "Created"
+    "pagesCreated": "Created",
+    "folders": "Folders",
+    "foldersAll": "All folders",
+    "foldersShowAll": "Show all folders"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -814,7 +817,8 @@
       "date_format": "Date format",
       "number_format": "Number format",
       "week_start": "First day of the week",
-      "tags": "Tags"
+      "tags": "Tags",
+      "colour": "Colour"
     },
     "action": {
       "auth_login_succeeded": "Signed in",
@@ -3604,5 +3608,44 @@
     "manage": "Manage landing pages",
     "replaceTitle": "Replace this landing page?",
     "replaceDesc": "The landing page around this form changes to the one you picked. The form itself stays as it is, and you can undo it."
+  },
+  "folders": {
+    "editTitle": "Edit folder",
+    "editDesc": "Its name and colour show in the sidebar and on its page.",
+    "namePlaceholder": "e.g. Human resources",
+    "color": "Colour",
+    "colors": {
+      "ink": "Ink",
+      "red": "Red",
+      "orange": "Orange",
+      "amber": "Amber",
+      "green": "Green",
+      "teal": "Teal",
+      "violet": "Violet",
+      "pink": "Pink"
+    },
+    "toast": {
+      "saved": "Folder saved",
+      "created": "Folder “{name}” created"
+    },
+    "subtitle": "{n} form · active {when} | {n} forms · active {when}",
+    "notFound": "This folder isn't available",
+    "responses30": "Last 30 days",
+    "active": "Active {when}",
+    "noActivity": "No activity yet",
+    "empty": "No forms yet",
+    "col": {
+      "folder": "Folder",
+      "activity": "Last activity"
+    },
+    "sort": {
+      "forms": "Most forms",
+      "responses": "Most responses",
+      "activity": "Recently active"
+    },
+    "open": "Open folder",
+    "search": "Search folders…",
+    "emptyTitle": "No folders yet",
+    "emptyDesc": "Create folders to group forms by team, client or project."
   }
 }

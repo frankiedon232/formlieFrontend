@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F11, Responses (M1, M2 and M3 done; next M4: Folders workspace, polish and review). Landing pages library built in between (owner request).
+**Last updated:** 2026-10-05 · **Current phase:** F11, Responses (M1 to M3 done, M4 Folders done; left: polish and review, then the owner's phase review). Landing pages library built in between (owner request).
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -21,7 +21,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
-| F11   | Responses                                         | 🟡     | ~85% |
+| F11   | Responses                                         | 🟡     | ~95% |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
@@ -528,12 +528,12 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ M3 In the designer and the theme editor: a "Landing pages" group to pick one (only the page changes, undoable), "Save landing page"; a theme and a landing page combine; Starting points and Your themes collapse like the other groups
 - ✅ Renamed from "Pages" to "Landing pages" everywhere people see it (`/settings/landing-pages`)
 
-### Folders workspace (owner request 2026-10-02, built here because the stats need response data)
+### Folders workspace ✅ (owner request 2026-10-02, built here because the stats need response data; decision 109)
 
-- ⬜ Sidebar "Folders" group (design RESOURCES style): coloured folder icons, form count on the end, **+** to create, "Show all" when long
-- ⬜ Folder colour chosen when creating / editing a folder
-- ⬜ Folder page `/folders/[id]`: name + actions in the header, KPI cards (forms, published, responses, avg. completion, last activity), the folder's forms in DataView
-- ⬜ All folders `/folders`: every folder with the same stats, Table / Grid, sort
+- ✅ Sidebar "Folders" group (design RESOURCES style): coloured folder icons, form count on the end, **+** to create, "Show all" when long
+- ✅ Folder colour chosen when creating / editing a folder
+- ✅ Folder page `/folders/[id]`: name + actions in the header, KPI cards (forms, published, responses, avg. completion, last activity), the folder's forms in DataView
+- ✅ All folders `/folders`: every folder with the same stats, Table / Grid, sort
 
 ---
 
@@ -961,7 +961,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-02 | In-page loading bar (left-to-right sweep) when moving between pages, not only on reload                                                                                                                                                                                                                                                                           | F2 / all                                                                          | ✅         |
 | 2026-10-02 | Design images are style, not features, follow the look exactly, don’t copy widgets                                                                                                                                                                                                                                                                               | all                                                                               | ✅         |
 | 2026-10-02 | New form: richer Blank tab (live mini preview + what you get), form details card, Continue button under every tab                                                                                                                                                                                                                                                 | F6                                                                                | ✅         |
-| 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F11                                                                               | ⬜         |
+| 2026-10-02 | Folders in the sidebar with counts, folder pages and an all-folders view with statistics                                                                                                                                                                                                                                                                          | F11                                                                               | ✅         |
 | 2026-10-02 | Builder feedback (18 points): inline rename, try fields on the canvas, read-only keys with suffix, help as info icon, smaller radius, tighter spacing, label position, Nuxt UI dates, saved fields + lists, file-type picker, thumbnails, option numbers in formulas, clearer + complete logic, read-only / disabled with required guards, phone preview stacking | F7                                                                                | ✅         |
 | 2026-10-02 | Form themes: header, footer, body, images and text design carried on shared forms; default theme when none is chosen                                                                                                                                                                                                                                              | F8                                                                                | ✅         |
 | 2026-10-02 | Builder canvas uses the full width; full-screen toggle with fields · canvas · settings and visible save status                                                                                                                                                                                                                                                    | F7                                                                                | ✅         |
@@ -1189,3 +1189,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F11 | Owner: Excel downloaded as CSV. The mock now writes a real .xlsx (small built-in writer, no new library: bold frozen header row, column widths, numbers as numbers, formula-looking text kept as text) for response exports and the audit trail export. |
 | 2026-10-05 | F11 | Owner: the PDF export was plain text "with no life". Now a designed report in the form's own colour: cover band with the organisation, form, who exported what and when; status tiles (responses, new, reviewed, approved, rejected); one card per response (number, name, coloured status pill, email, submitted, channel, tags) with questions and answers in two columns; cards never start at a page foot and continue with "(continued)"; brand bar, form and organisation on every page and "Page x of y". Small layout writer `server/mock/core/pdfDoc.ts` (measured Helvetica text, rounded boxes); the plain-text writer is gone. |
 | 2026-10-05 | F11 / F14 | Owner: the PDF used the form's theme colour, not the application's look. The report now uses the portal's monochrome ink and status colours. New request recorded in F14: Settings → Appearance, each workspace customises the whole portal (colours, background, rail, menu, header, footer, main body, light / dark), and exports follow it. |
+| 2026-10-05 | F11 | M4 Folders (decision 109): folder colours (create / edit dialog with a swatch palette, keyboard friendly), sidebar FOLDERS group (coloured icons, counts, up to six, All folders, + creates and opens), `/folders` (table / locked card with numbers and sparklines; edit, new form, delete when empty), folder page (colour, Edit / Delete / New form, two chart cards, the folder's forms in the same list as the Forms page). The Forms page list became `FormsListBrowser` (shared). New form accepts `?folder=`. Archived forms are left out of folder counts everywhere. API `/folders/overview`, `/folders/{id}`, colour on create / PATCH. |

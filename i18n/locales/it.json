@@ -401,7 +401,10 @@
     "pagesAll": "Tutte le landing page",
     "pagesSystem": "Formalie",
     "pagesSaved": "Salvate",
-    "pagesCreated": "Create"
+    "pagesCreated": "Create",
+    "folders": "Cartelle",
+    "foldersAll": "Tutte le cartelle",
+    "foldersShowAll": "Mostra tutte le cartelle"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -814,7 +817,8 @@
       "date_format": "Formato data",
       "number_format": "Formato numeri",
       "week_start": "Primo giorno della settimana",
-      "tags": "Tag"
+      "tags": "Tag",
+      "colour": "Colore"
     },
     "action": {
       "auth_login_succeeded": "Accesso effettuato",
@@ -3604,5 +3608,44 @@
     "manage": "Gestisci landing page",
     "replaceTitle": "Sostituire questa landing page?",
     "replaceDesc": "La landing page di questo modulo passa a quella scelta. Il modulo resta com’è e puoi annullare."
+  },
+  "folders": {
+    "editTitle": "Modifica cartella",
+    "editDesc": "Il nome e il colore appaiono nella barra laterale e nella sua pagina.",
+    "namePlaceholder": "es. Risorse umane",
+    "color": "Colore",
+    "colors": {
+      "ink": "Inchiostro",
+      "red": "Rosso",
+      "orange": "Arancione",
+      "amber": "Ambra",
+      "green": "Verde",
+      "teal": "Ottanio",
+      "violet": "Viola",
+      "pink": "Rosa"
+    },
+    "toast": {
+      "saved": "Cartella salvata",
+      "created": "Cartella “{name}” creata"
+    },
+    "subtitle": "{n} modulo · attiva {when} | {n} moduli · attiva {when}",
+    "notFound": "Questa cartella non è disponibile",
+    "responses30": "Ultimi 30 giorni",
+    "active": "Attiva {when}",
+    "noActivity": "Nessuna attività finora",
+    "empty": "Ancora nessun modulo",
+    "col": {
+      "folder": "Cartella",
+      "activity": "Ultima attività"
+    },
+    "sort": {
+      "forms": "Più moduli",
+      "responses": "Più risposte",
+      "activity": "Attive di recente"
+    },
+    "open": "Apri cartella",
+    "search": "Cerca cartelle…",
+    "emptyTitle": "Ancora nessuna cartella",
+    "emptyDesc": "Crea cartelle per raggruppare i moduli per team, cliente o progetto."
   }
 }

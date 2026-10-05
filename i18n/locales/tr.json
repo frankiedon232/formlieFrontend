@@ -401,7 +401,10 @@
     "pagesAll": "Tüm açılış sayfaları",
     "pagesSystem": "Formalie",
     "pagesSaved": "Kaydedilenler",
-    "pagesCreated": "Oluşturulanlar"
+    "pagesCreated": "Oluşturulanlar",
+    "folders": "Klasörler",
+    "foldersAll": "Tüm klasörler",
+    "foldersShowAll": "Tüm klasörleri göster"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -814,7 +817,8 @@
       "date_format": "Tarih biçimi",
       "number_format": "Sayı biçimi",
       "week_start": "Haftanın ilk günü",
-      "tags": "Etiketler"
+      "tags": "Etiketler",
+      "colour": "Renk"
     },
     "action": {
       "auth_login_succeeded": "Giriş yapıldı",
@@ -3604,5 +3608,44 @@
     "manage": "Açılış sayfalarını yönet",
     "replaceTitle": "Bu açılış sayfası değiştirilsin mi?",
     "replaceDesc": "Bu formun açılış sayfası seçtiğinize geçer. Formun kendisi aynı kalır ve geri alabilirsiniz."
+  },
+  "folders": {
+    "editTitle": "Klasörü düzenle",
+    "editDesc": "Adı ve rengi kenar çubuğunda ve kendi sayfasında görünür.",
+    "namePlaceholder": "örn. İnsan kaynakları",
+    "color": "Renk",
+    "colors": {
+      "ink": "Mürekkep",
+      "red": "Kırmızı",
+      "orange": "Turuncu",
+      "amber": "Kehribar",
+      "green": "Yeşil",
+      "teal": "Deniz mavisi",
+      "violet": "Mor",
+      "pink": "Pembe"
+    },
+    "toast": {
+      "saved": "Klasör kaydedildi",
+      "created": "“{name}” klasörü oluşturuldu"
+    },
+    "subtitle": "{n} form · {when} etkin | {n} form · {when} etkin",
+    "notFound": "Bu klasör kullanılamıyor",
+    "responses30": "Son 30 gün",
+    "active": "{when} etkin",
+    "noActivity": "Henüz etkinlik yok",
+    "empty": "Henüz form yok",
+    "col": {
+      "folder": "Klasör",
+      "activity": "Son etkinlik"
+    },
+    "sort": {
+      "forms": "En çok form",
+      "responses": "En çok yanıt",
+      "activity": "Yakın zamanda etkin"
+    },
+    "open": "Klasörü aç",
+    "search": "Klasör ara…",
+    "emptyTitle": "Henüz klasör yok",
+    "emptyDesc": "Formları ekip, müşteri veya projeye göre gruplamak için klasör oluşturun."
   }
 }

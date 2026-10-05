@@ -401,7 +401,10 @@
     "pagesAll": "모든 랜딩 페이지",
     "pagesSystem": "Formalie",
     "pagesSaved": "저장됨",
-    "pagesCreated": "만든 항목"
+    "pagesCreated": "만든 항목",
+    "folders": "폴더",
+    "foldersAll": "모든 폴더",
+    "foldersShowAll": "모든 폴더 보기"
   },
   "navbar": {
     "breadcrumb": "이동 경로",
@@ -814,7 +817,8 @@
       "date_format": "날짜 형식",
       "number_format": "숫자 형식",
       "week_start": "한 주의 시작 요일",
-      "tags": "태그"
+      "tags": "태그",
+      "colour": "색상"
     },
     "action": {
       "auth_login_succeeded": "로그인함",
@@ -3604,5 +3608,44 @@
     "manage": "랜딩 페이지 관리",
     "replaceTitle": "이 랜딩 페이지를 바꿀까요?",
     "replaceDesc": "이 양식의 랜딩 페이지가 선택한 것으로 바뀝니다. 양식은 그대로이며 되돌릴 수 있습니다."
+  },
+  "folders": {
+    "editTitle": "폴더 편집",
+    "editDesc": "이름과 색상은 사이드바와 폴더 페이지에 표시됩니다.",
+    "namePlaceholder": "예: 인사",
+    "color": "색상",
+    "colors": {
+      "ink": "잉크",
+      "red": "빨강",
+      "orange": "주황",
+      "amber": "앰버",
+      "green": "초록",
+      "teal": "청록",
+      "violet": "보라",
+      "pink": "분홍"
+    },
+    "toast": {
+      "saved": "폴더 저장됨",
+      "created": "폴더 “{name}” 생성됨"
+    },
+    "subtitle": "양식 {n}개 · {when} 활동 | 양식 {n}개 · {when} 활동",
+    "notFound": "이 폴더를 사용할 수 없습니다",
+    "responses30": "최근 30일",
+    "active": "{when} 활동",
+    "noActivity": "아직 활동 없음",
+    "empty": "아직 양식 없음",
+    "col": {
+      "folder": "폴더",
+      "activity": "최근 활동"
+    },
+    "sort": {
+      "forms": "양식 많은 순",
+      "responses": "응답 많은 순",
+      "activity": "최근 활동 순"
+    },
+    "open": "폴더 열기",
+    "search": "폴더 검색…",
+    "emptyTitle": "아직 폴더가 없습니다",
+    "emptyDesc": "팀, 고객, 프로젝트별로 양식을 묶을 폴더를 만드세요."
   }
 }

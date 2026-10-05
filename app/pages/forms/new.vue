@@ -41,7 +41,8 @@ onMounted(async () => {
   }
 })
 const NONE = '__none__'
-const folderId = ref(NONE)
+// Opened from a folder page (F11 M4): that folder is preselected.
+const folderId = ref(typeof route.query.folder === 'string' && route.query.folder ? route.query.folder : NONE)
 const folderItems = computed(() => [
   { value: NONE, label: t('forms.noFolder'), icon: 'i-lucide-folder-minus' },
   ...folders.value.map(folder => ({ value: folder.id, label: folder.name, icon: 'i-lucide-folder' })),

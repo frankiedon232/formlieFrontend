@@ -401,7 +401,10 @@
     "pagesAll": "Semua halaman arahan",
     "pagesSystem": "Formalie",
     "pagesSaved": "Tersimpan",
-    "pagesCreated": "Dibuat"
+    "pagesCreated": "Dibuat",
+    "folders": "Folder",
+    "foldersAll": "Semua folder",
+    "foldersShowAll": "Tampilkan semua folder"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -814,7 +817,8 @@
       "date_format": "Format tanggal",
       "number_format": "Format angka",
       "week_start": "Hari pertama dalam minggu",
-      "tags": "Tag"
+      "tags": "Tag",
+      "colour": "Warna"
     },
     "action": {
       "auth_login_succeeded": "Masuk",
@@ -3604,5 +3608,44 @@
     "manage": "Kelola halaman arahan",
     "replaceTitle": "Ganti halaman arahan ini?",
     "replaceDesc": "Halaman arahan formulir ini berubah ke yang Anda pilih. Formulirnya tetap, dan Anda bisa membatalkannya."
+  },
+  "folders": {
+    "editTitle": "Edit folder",
+    "editDesc": "Nama dan warnanya tampil di bilah samping dan di halamannya.",
+    "namePlaceholder": "mis. Sumber daya manusia",
+    "color": "Warna",
+    "colors": {
+      "ink": "Tinta",
+      "red": "Merah",
+      "orange": "Oranye",
+      "amber": "Kuning tua",
+      "green": "Hijau",
+      "teal": "Hijau kebiruan",
+      "violet": "Ungu",
+      "pink": "Merah muda"
+    },
+    "toast": {
+      "saved": "Folder disimpan",
+      "created": "Folder “{name}” dibuat"
+    },
+    "subtitle": "{n} formulir · aktif {when} | {n} formulir · aktif {when}",
+    "notFound": "Folder ini tidak tersedia",
+    "responses30": "30 hari terakhir",
+    "active": "Aktif {when}",
+    "noActivity": "Belum ada aktivitas",
+    "empty": "Belum ada formulir",
+    "col": {
+      "folder": "Folder",
+      "activity": "Aktivitas terakhir"
+    },
+    "sort": {
+      "forms": "Formulir terbanyak",
+      "responses": "Respons terbanyak",
+      "activity": "Baru aktif"
+    },
+    "open": "Buka folder",
+    "search": "Cari folder…",
+    "emptyTitle": "Belum ada folder",
+    "emptyDesc": "Buat folder untuk mengelompokkan formulir per tim, klien, atau proyek."
   }
 }

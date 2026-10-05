@@ -14,6 +14,7 @@ import type {
   FormStatus,
 } from '#shared/types/forms'
 import { formSchemaV1 } from '#shared/utils/forms/schema'
+import { FOLDER_COLOR_KEYS, type FolderColor } from '#shared/utils/forms/folders'
 import { allTemplates, blankFormSchema, schemaForTemplate } from '../data/templateStore'
 
 import type { AuditAction } from '#shared/utils/audit/events'
@@ -454,7 +455,11 @@ export const bulkForms = defineMockRoute(({ event, body }) => {
 
 // ── Folders ───────────────────────────────────────────────────────────────────────
 
-const folderSchema = z.object({ name: z.string().trim().min(1, 'Give the folder a name.').max(60) })
+const folderSchema = z.object({
+  name: z.string().trim().min(1, 'Give the folder a name.').max(60),
+  /** Icon colour (F11 M4), a key of FOLDER_COLORS. */
+  color: z.enum(FOLDER_COLOR_KEYS as [FolderColor, ...FolderColor[]]).optional(),
+})
 
 function assertFolderName(tenant: MockTenant, folderName: string, exceptId?: string) {
   const taken = formsOf(tenant).folders.some(
@@ -488,7 +493,8 @@ export const listFolders = defineMockRoute(({ event }) => {
       .map(folder => ({
         ...folder,
         // Only forms this person can see (people access): hidden forms don't show up as numbers either.
-        forms_count: store.forms.filter(form => !form.deleted_at && form.folder?.id === folder.id && canSee(form, user)).length,
+        // Archived forms are not counted, like the forms list and the sidebar.
+        forms_count: store.forms.filter(form => !form.deleted_at && form.status !== 'archived' && form.folder?.id === folder.id && canSee(form, user)).length,
       }))
       .sort((a, b) => a.name.localeCompare(b.name)),
   )
@@ -496,9 +502,9 @@ export const listFolders = defineMockRoute(({ event }) => {
 
 export const createFolder = defineMockRoute(({ event, body }) => {
   const { user, tenant } = requireAuth(event)
-  const { name: folderName } = parseBody(folderSchema, body)
+  const { name: folderName, color } = parseBody(folderSchema, body)
   assertFolderName(tenant, folderName)
-  const folder: FormFolder = { id: crypto.randomUUID(), name: folderName }
+  const folder: FormFolder = { id: crypto.randomUUID(), name: folderName, color: color ?? 'ink' }
   formsOf(tenant).folders.push(folder)
   saveForms()
   folderAudit(event, tenant, user, 'forms.folder_created', folder)
@@ -510,17 +516,22 @@ export const renameFolder = defineMockRoute(({ event, body }) => {
   const store = formsOf(tenant)
   const folder = store.folders.find(item => item.id === getRouterParam(event, 'id'))
   if (!folder) throw new MockError('FRM-GEN-1004')
-  const { name: folderName } = parseBody(folderSchema, body)
+  // PATCH: the name, the colour, or both (F11 M4).
+  const input = parseBody(folderSchema.partial(), body)
+  const folderName = input.name ?? folder.name
   assertFolderName(tenant, folderName, folder.id)
   const before = folder.name
+  const beforeColor = folder.color ?? 'ink'
   folder.name = folderName
+  if (input.color) folder.color = input.color
   for (const form of store.forms)
-    if (form.folder?.id === folder.id) form.folder = { id: folder.id, name: folderName }
+    if (form.folder?.id === folder.id) form.folder = { id: folder.id, name: folderName, color: folder.color ?? null }
   saveForms()
-  if (before !== folderName)
-    folderAudit(event, tenant, user, 'forms.folder_renamed', folder, [
-      { field: 'name', before, after: folderName },
-    ])
+  const changes = [
+    ...(before !== folderName ? [{ field: 'name', before, after: folderName }] : []),
+    ...(input.color && input.color !== beforeColor ? [{ field: 'colour', before: beforeColor, after: input.color }] : []),
+  ]
+  if (changes.length) folderAudit(event, tenant, user, 'forms.folder_renamed', folder, changes)
   return ok(folder)
 })
 

@@ -401,7 +401,10 @@
     "pagesAll": "Alle Landingpages",
     "pagesSystem": "Formalie",
     "pagesSaved": "Gespeichert",
-    "pagesCreated": "Erstellt"
+    "pagesCreated": "Erstellt",
+    "folders": "Ordner",
+    "foldersAll": "Alle Ordner",
+    "foldersShowAll": "Alle Ordner anzeigen"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -814,7 +817,8 @@
       "date_format": "Datumsformat",
       "number_format": "Zahlenformat",
       "week_start": "Erster Wochentag",
-      "tags": "Tags"
+      "tags": "Tags",
+      "colour": "Farbe"
     },
     "action": {
       "auth_login_succeeded": "Angemeldet",
@@ -3604,5 +3608,44 @@
     "manage": "Landingpages verwalten",
     "replaceTitle": "Diese Landingpage ersetzen?",
     "replaceDesc": "Die Landingpage um dieses Formular wechselt zur gewählten. Das Formular selbst bleibt, wie es ist, und Sie können es rückgängig machen."
+  },
+  "folders": {
+    "editTitle": "Ordner bearbeiten",
+    "editDesc": "Name und Farbe erscheinen in der Seitenleiste und auf seiner Seite.",
+    "namePlaceholder": "z. B. Personal",
+    "color": "Farbe",
+    "colors": {
+      "ink": "Tinte",
+      "red": "Rot",
+      "orange": "Orange",
+      "amber": "Bernstein",
+      "green": "Grün",
+      "teal": "Petrol",
+      "violet": "Violett",
+      "pink": "Rosa"
+    },
+    "toast": {
+      "saved": "Ordner gespeichert",
+      "created": "Ordner „{name}“ erstellt"
+    },
+    "subtitle": "{n} Formular · aktiv {when} | {n} Formulare · aktiv {when}",
+    "notFound": "Dieser Ordner ist nicht verfügbar",
+    "responses30": "Letzte 30 Tage",
+    "active": "Aktiv {when}",
+    "noActivity": "Noch keine Aktivität",
+    "empty": "Noch keine Formulare",
+    "col": {
+      "folder": "Ordner",
+      "activity": "Letzte Aktivität"
+    },
+    "sort": {
+      "forms": "Meiste Formulare",
+      "responses": "Meiste Antworten",
+      "activity": "Zuletzt aktiv"
+    },
+    "open": "Ordner öffnen",
+    "search": "Ordner suchen…",
+    "emptyTitle": "Noch keine Ordner",
+    "emptyDesc": "Erstellen Sie Ordner, um Formulare nach Team, Kunde oder Projekt zu gruppieren."
   }
 }

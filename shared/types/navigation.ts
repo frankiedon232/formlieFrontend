@@ -11,4 +11,6 @@ export interface NavCounts {
   /** Themes by kind (owner, 2026-10-03: the menu lists kinds, not every saved theme). */
   themes: { total: number; system: number; saved: number; created: number }
   pages: { total: number; system: number; saved: number; created: number }
+  /** Folders for the sidebar (name, colour, forms this person can see), A to Z. */
+  folders: { id: string; name: string; color: string | null; count: number }[]
 }

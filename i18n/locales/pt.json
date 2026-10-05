@@ -401,7 +401,10 @@
     "pagesAll": "Todas as páginas de destino",
     "pagesSystem": "Formalie",
     "pagesSaved": "Salvas",
-    "pagesCreated": "Criadas"
+    "pagesCreated": "Criadas",
+    "folders": "Pastas",
+    "foldersAll": "Todas as pastas",
+    "foldersShowAll": "Ver todas as pastas"
   },
   "navbar": {
     "breadcrumb": "Trilha de navegação",
@@ -814,7 +817,8 @@
       "date_format": "Formato de data",
       "number_format": "Formato de número",
       "week_start": "Primeiro dia da semana",
-      "tags": "Tags"
+      "tags": "Tags",
+      "colour": "Cor"
     },
     "action": {
       "auth_login_succeeded": "Entrou",
@@ -3604,5 +3608,44 @@
     "manage": "Gerenciar páginas de destino",
     "replaceTitle": "Substituir esta página de destino?",
     "replaceDesc": "A página de destino deste formulário muda para a escolhida. O formulário continua igual, e você pode desfazer."
+  },
+  "folders": {
+    "editTitle": "Editar pasta",
+    "editDesc": "O nome e a cor aparecem na barra lateral e na página da pasta.",
+    "namePlaceholder": "ex.: Recursos humanos",
+    "color": "Cor",
+    "colors": {
+      "ink": "Tinta",
+      "red": "Vermelho",
+      "orange": "Laranja",
+      "amber": "Âmbar",
+      "green": "Verde",
+      "teal": "Verde-azulado",
+      "violet": "Violeta",
+      "pink": "Rosa"
+    },
+    "toast": {
+      "saved": "Pasta salva",
+      "created": "Pasta “{name}” criada"
+    },
+    "subtitle": "{n} formulário · ativa {when} | {n} formulários · ativa {when}",
+    "notFound": "Esta pasta não está disponível",
+    "responses30": "Últimos 30 dias",
+    "active": "Ativa {when}",
+    "noActivity": "Ainda sem atividade",
+    "empty": "Ainda sem formulários",
+    "col": {
+      "folder": "Pasta",
+      "activity": "Última atividade"
+    },
+    "sort": {
+      "forms": "Mais formulários",
+      "responses": "Mais respostas",
+      "activity": "Ativas recentemente"
+    },
+    "open": "Abrir pasta",
+    "search": "Pesquisar pastas…",
+    "emptyTitle": "Ainda sem pastas",
+    "emptyDesc": "Crie pastas para agrupar formulários por equipe, cliente ou projeto."
   }
 }

@@ -401,7 +401,10 @@
     "pagesAll": "Tất cả trang đích",
     "pagesSystem": "Formalie",
     "pagesSaved": "Đã lưu",
-    "pagesCreated": "Đã tạo"
+    "pagesCreated": "Đã tạo",
+    "folders": "Thư mục",
+    "foldersAll": "Tất cả thư mục",
+    "foldersShowAll": "Xem tất cả thư mục"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -814,7 +817,8 @@
       "date_format": "Định dạng ngày",
       "number_format": "Định dạng số",
       "week_start": "Ngày đầu tuần",
-      "tags": "Thẻ"
+      "tags": "Thẻ",
+      "colour": "Màu"
     },
     "action": {
       "auth_login_succeeded": "Đã đăng nhập",
@@ -3604,5 +3608,44 @@
     "manage": "Quản lý trang đích",
     "replaceTitle": "Thay trang đích này?",
     "replaceDesc": "Trang đích của biểu mẫu này đổi sang trang bạn chọn. Bản thân biểu mẫu giữ nguyên và bạn có thể hoàn tác."
+  },
+  "folders": {
+    "editTitle": "Sửa thư mục",
+    "editDesc": "Tên và màu hiển thị ở thanh bên và trên trang của thư mục.",
+    "namePlaceholder": "vd: Nhân sự",
+    "color": "Màu",
+    "colors": {
+      "ink": "Mực",
+      "red": "Đỏ",
+      "orange": "Cam",
+      "amber": "Hổ phách",
+      "green": "Xanh lá",
+      "teal": "Xanh mòng két",
+      "violet": "Tím",
+      "pink": "Hồng"
+    },
+    "toast": {
+      "saved": "Đã lưu thư mục",
+      "created": "Đã tạo thư mục “{name}”"
+    },
+    "subtitle": "{n} biểu mẫu · hoạt động {when} | {n} biểu mẫu · hoạt động {when}",
+    "notFound": "Thư mục này không khả dụng",
+    "responses30": "30 ngày qua",
+    "active": "Hoạt động {when}",
+    "noActivity": "Chưa có hoạt động",
+    "empty": "Chưa có biểu mẫu",
+    "col": {
+      "folder": "Thư mục",
+      "activity": "Hoạt động gần nhất"
+    },
+    "sort": {
+      "forms": "Nhiều biểu mẫu nhất",
+      "responses": "Nhiều phản hồi nhất",
+      "activity": "Hoạt động gần đây"
+    },
+    "open": "Mở thư mục",
+    "search": "Tìm thư mục…",
+    "emptyTitle": "Chưa có thư mục",
+    "emptyDesc": "Tạo thư mục để nhóm biểu mẫu theo nhóm, khách hàng hoặc dự án."
   }
 }

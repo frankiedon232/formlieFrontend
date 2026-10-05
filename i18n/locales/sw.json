@@ -401,7 +401,10 @@
     "pagesAll": "Kurasa zote za kutua",
     "pagesSystem": "Formalie",
     "pagesSaved": "Zilizohifadhiwa",
-    "pagesCreated": "Zilizoundwa"
+    "pagesCreated": "Zilizoundwa",
+    "folders": "Folda",
+    "foldersAll": "Folda zote",
+    "foldersShowAll": "Onyesha folda zote"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -814,7 +817,8 @@
       "date_format": "Muundo wa tarehe",
       "number_format": "Muundo wa namba",
       "week_start": "Siku ya kwanza ya wiki",
-      "tags": "Lebo"
+      "tags": "Lebo",
+      "colour": "Rangi"
     },
     "action": {
       "auth_login_succeeded": "Ameingia",
@@ -3604,5 +3608,44 @@
     "manage": "Simamia kurasa za kutua",
     "replaceTitle": "Badilisha ukurasa huu wa kutua?",
     "replaceDesc": "Ukurasa wa kutua wa fomu hii utabadilika kuwa ule uliochagua. Fomu yenyewe inabaki kama ilivyo, na unaweza kutendua."
+  },
+  "folders": {
+    "editTitle": "Hariri folda",
+    "editDesc": "Jina na rangi yake huonekana kwenye upau wa pembeni na kwenye ukurasa wake.",
+    "namePlaceholder": "mf. Rasilimali watu",
+    "color": "Rangi",
+    "colors": {
+      "ink": "Wino",
+      "red": "Nyekundu",
+      "orange": "Machungwa",
+      "amber": "Kahawia-njano",
+      "green": "Kijani",
+      "teal": "Kijani-bluu",
+      "violet": "Zambarau",
+      "pink": "Waridi"
+    },
+    "toast": {
+      "saved": "Folda imehifadhiwa",
+      "created": "Folda “{name}” imeundwa"
+    },
+    "subtitle": "Fomu {n} · hai {when} | Fomu {n} · hai {when}",
+    "notFound": "Folda hii haipatikani",
+    "responses30": "Siku 30 zilizopita",
+    "active": "Hai {when}",
+    "noActivity": "Bado hakuna shughuli",
+    "empty": "Bado hakuna fomu",
+    "col": {
+      "folder": "Folda",
+      "activity": "Shughuli ya mwisho"
+    },
+    "sort": {
+      "forms": "Fomu nyingi zaidi",
+      "responses": "Majibu mengi zaidi",
+      "activity": "Zilizo hai hivi karibuni"
+    },
+    "open": "Fungua folda",
+    "search": "Tafuta folda…",
+    "emptyTitle": "Bado hakuna folda",
+    "emptyDesc": "Unda folda kupanga fomu kwa timu, mteja au mradi."
   }
 }

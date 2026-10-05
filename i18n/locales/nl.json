@@ -401,7 +401,10 @@
     "pagesAll": "Alle landingspagina’s",
     "pagesSystem": "Formalie",
     "pagesSaved": "Opgeslagen",
-    "pagesCreated": "Gemaakt"
+    "pagesCreated": "Gemaakt",
+    "folders": "Mappen",
+    "foldersAll": "Alle mappen",
+    "foldersShowAll": "Alle mappen tonen"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -814,7 +817,8 @@
       "date_format": "Datumnotatie",
       "number_format": "Getalnotatie",
       "week_start": "Eerste dag van de week",
-      "tags": "Tags"
+      "tags": "Tags",
+      "colour": "Kleur"
     },
     "action": {
       "auth_login_succeeded": "Ingelogd",
@@ -3604,5 +3608,44 @@
     "manage": "Landingspagina’s beheren",
     "replaceTitle": "Deze landingspagina vervangen?",
     "replaceDesc": "De landingspagina van dit formulier wordt de gekozen pagina. Het formulier zelf blijft zoals het is, en u kunt het ongedaan maken."
+  },
+  "folders": {
+    "editTitle": "Map bewerken",
+    "editDesc": "De naam en kleur staan in de zijbalk en op de pagina van de map.",
+    "namePlaceholder": "bijv. Personeelszaken",
+    "color": "Kleur",
+    "colors": {
+      "ink": "Inkt",
+      "red": "Rood",
+      "orange": "Oranje",
+      "amber": "Amber",
+      "green": "Groen",
+      "teal": "Blauwgroen",
+      "violet": "Violet",
+      "pink": "Roze"
+    },
+    "toast": {
+      "saved": "Map opgeslagen",
+      "created": "Map “{name}” gemaakt"
+    },
+    "subtitle": "{n} formulier · actief {when} | {n} formulieren · actief {when}",
+    "notFound": "Deze map is niet beschikbaar",
+    "responses30": "Laatste 30 dagen",
+    "active": "Actief {when}",
+    "noActivity": "Nog geen activiteit",
+    "empty": "Nog geen formulieren",
+    "col": {
+      "folder": "Map",
+      "activity": "Laatste activiteit"
+    },
+    "sort": {
+      "forms": "Meeste formulieren",
+      "responses": "Meeste reacties",
+      "activity": "Recent actief"
+    },
+    "open": "Map openen",
+    "search": "Mappen zoeken…",
+    "emptyTitle": "Nog geen mappen",
+    "emptyDesc": "Maak mappen om formulieren per team, klant of project te groeperen."
   }
 }

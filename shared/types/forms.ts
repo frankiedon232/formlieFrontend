@@ -13,8 +13,30 @@ export interface FormOwner {
 export interface FormFolder {
   id: string
   name: string
+  /** Icon colour (shared/utils/forms/folders.ts), `ink` when not set. */
+  color?: string | null
   /** Forms in the folder (not counting trash). */
   forms_count?: number
+}
+
+/** GET /folders/overview and /folders/{id}: a folder with its numbers (F11 M4, the Folders pages). */
+export interface FolderRow {
+  id: string
+  name: string
+  color: string | null
+  /** Like the forms list, archived forms are not counted (see `status_counts.archived`). */
+  forms_count: number
+  status_counts: { draft: number; published: number; closed: number; archived: number }
+  /** All time, and in the last 30 days (with the 30 days one by one). */
+  responses_count: number
+  responses_30d: number
+  previous_30d: number
+  daily: { date: string; count: number }[]
+  /** Average completion of the folder's published forms (0–100), null when none. */
+  completion_rate: number | null
+  /** Latest form change or response. */
+  last_activity_at: string | null
+  owners: { id: string; name: string }[]
 }
 
 export interface FormSummary {

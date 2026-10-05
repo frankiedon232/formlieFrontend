@@ -8,7 +8,10 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 const props = defineProps<{ collapsible?: boolean }>()
 const emit = defineEmits<{ collapse: [] }>()
 const { t } = useI18n()
-const { mainItems, resourceItems, systemItems, areaLabel } = useNavigation()
+const { mainItems, resourceItems, folderItems, systemItems, areaLabel, area } = useNavigation()
+// FOLDERS (F11 M4): + creates a folder and opens its page.
+const folderOpen = ref(false)
+const onFolderCreated = (folder: { id: string }) => navigateTo(`/folders/${folder.id}`)
 const mainHeading = computed(() => t(areaLabel.value))
 const colorMode = useColorMode()
 
@@ -119,6 +122,21 @@ const menuUi = {
         </div>
         <UNavigationMenu :items="resourceItems" orientation="vertical" color="neutral" :ui="menuUi" v-bind="accordion" />
       </nav>
+
+      <template v-if="area === 'forms'">
+        <USeparator />
+        <nav :aria-label="t('nav.folders')">
+          <div class="mb-1 flex items-center justify-between ps-2.5">
+            <p class="text-xs font-medium text-muted uppercase">{{ t('nav.folders') }}</p>
+            <UTooltip :text="t('forms.folders.new')">
+              <UButton icon="i-lucide-plus" color="neutral" variant="ghost" size="xs" square :aria-label="t('forms.folders.new')" @click="folderOpen = true" />
+            </UTooltip>
+          </div>
+          <UNavigationMenu v-if="folderItems.length" :items="folderItems" orientation="vertical" color="neutral" :ui="menuUi" />
+          <UButton v-else :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" variant="link" size="sm" class="px-2.5 text-muted" @click="folderOpen = true" />
+        </nav>
+        <FoldersEditModal v-model:open="folderOpen" @saved="onFolderCreated" />
+      </template>
 
       <nav :aria-label="t('nav.system')" class="mt-auto">
         <p class="mb-1 px-2.5 text-xs font-medium text-muted uppercase">{{ t('nav.system') }}</p>

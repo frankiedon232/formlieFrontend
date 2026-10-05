@@ -401,7 +401,10 @@
     "pagesAll": "所有落地页",
     "pagesSystem": "Formalie",
     "pagesSaved": "已保存",
-    "pagesCreated": "已创建"
+    "pagesCreated": "已创建",
+    "folders": "文件夹",
+    "foldersAll": "所有文件夹",
+    "foldersShowAll": "显示所有文件夹"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -814,7 +817,8 @@
       "date_format": "日期格式",
       "number_format": "数字格式",
       "week_start": "每周第一天",
-      "tags": "标签"
+      "tags": "标签",
+      "colour": "颜色"
     },
     "action": {
       "auth_login_succeeded": "已登录",
@@ -3604,5 +3608,44 @@
     "manage": "管理落地页",
     "replaceTitle": "替换此落地页？",
     "replaceDesc": "此表单的落地页会换成你选的。表单本身保持不变，并且可以撤销。"
+  },
+  "folders": {
+    "editTitle": "编辑文件夹",
+    "editDesc": "名称和颜色显示在侧边栏和文件夹页面上。",
+    "namePlaceholder": "例如：人力资源",
+    "color": "颜色",
+    "colors": {
+      "ink": "墨色",
+      "red": "红色",
+      "orange": "橙色",
+      "amber": "琥珀色",
+      "green": "绿色",
+      "teal": "青色",
+      "violet": "紫色",
+      "pink": "粉色"
+    },
+    "toast": {
+      "saved": "文件夹已保存",
+      "created": "已创建文件夹“{name}”"
+    },
+    "subtitle": "{n} 个表单 · {when}有动态 | {n} 个表单 · {when}有动态",
+    "notFound": "此文件夹不可用",
+    "responses30": "最近 30 天",
+    "active": "{when}有动态",
+    "noActivity": "暂无动态",
+    "empty": "暂无表单",
+    "col": {
+      "folder": "文件夹",
+      "activity": "最近动态"
+    },
+    "sort": {
+      "forms": "表单最多",
+      "responses": "回复最多",
+      "activity": "最近活跃"
+    },
+    "open": "打开文件夹",
+    "search": "搜索文件夹…",
+    "emptyTitle": "还没有文件夹",
+    "emptyDesc": "创建文件夹，按团队、客户或项目归类表单。"
   }
 }

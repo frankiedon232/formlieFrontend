@@ -60,5 +60,8 @@ export const navigationCounts = defineMockRoute(({ event }) => {
       saved: pages.filter(page => (page.source ?? 'saved') === 'saved').length,
       created: pages.filter(page => page.source === 'created').length,
     },
+    folders: formsOf(tenant)
+      .folders.map(folder => ({ id: folder.id, name: folder.name, color: folder.color ?? null, count: live.filter(form => form.folder?.id === folder.id && form.status !== 'archived').length }))
+      .sort((a, b) => a.name.localeCompare(b.name)),
   })
 })

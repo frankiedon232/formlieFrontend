@@ -401,7 +401,10 @@
     "pagesAll": "Toutes les pages de destination",
     "pagesSystem": "Formalie",
     "pagesSaved": "Enregistrées",
-    "pagesCreated": "Créées"
+    "pagesCreated": "Créées",
+    "folders": "Dossiers",
+    "foldersAll": "Tous les dossiers",
+    "foldersShowAll": "Voir tous les dossiers"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -814,7 +817,8 @@
       "date_format": "Format de date",
       "number_format": "Format des nombres",
       "week_start": "Premier jour de la semaine",
-      "tags": "Étiquettes"
+      "tags": "Étiquettes",
+      "colour": "Couleur"
     },
     "action": {
       "auth_login_succeeded": "Connexion",
@@ -3604,5 +3608,44 @@
     "manage": "Gérer les pages de destination",
     "replaceTitle": "Remplacer cette page de destination ?",
     "replaceDesc": "La page de destination de ce formulaire passe à celle choisie. Le formulaire lui-même reste tel quel, et vous pouvez annuler."
+  },
+  "folders": {
+    "editTitle": "Modifier le dossier",
+    "editDesc": "Son nom et sa couleur s’affichent dans la barre latérale et sur sa page.",
+    "namePlaceholder": "p. ex. Ressources humaines",
+    "color": "Couleur",
+    "colors": {
+      "ink": "Encre",
+      "red": "Rouge",
+      "orange": "Orange",
+      "amber": "Ambre",
+      "green": "Vert",
+      "teal": "Sarcelle",
+      "violet": "Violet",
+      "pink": "Rose"
+    },
+    "toast": {
+      "saved": "Dossier enregistré",
+      "created": "Dossier « {name} » créé"
+    },
+    "subtitle": "{n} formulaire · actif {when} | {n} formulaires · actif {when}",
+    "notFound": "Ce dossier n’est pas disponible",
+    "responses30": "30 derniers jours",
+    "active": "Actif {when}",
+    "noActivity": "Aucune activité pour l’instant",
+    "empty": "Aucun formulaire pour l’instant",
+    "col": {
+      "folder": "Dossier",
+      "activity": "Dernière activité"
+    },
+    "sort": {
+      "forms": "Le plus de formulaires",
+      "responses": "Le plus de réponses",
+      "activity": "Actifs récemment"
+    },
+    "open": "Ouvrir le dossier",
+    "search": "Rechercher des dossiers…",
+    "emptyTitle": "Aucun dossier pour l’instant",
+    "emptyDesc": "Créez des dossiers pour regrouper les formulaires par équipe, client ou projet."
   }
 }

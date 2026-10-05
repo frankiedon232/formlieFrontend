@@ -298,6 +298,25 @@ export function useNavigation() {
   const areaMenu = computed(() => NAV_AREAS.find(a => a.key === area.value)?.menu)
   const mainItems = computed(() => (areaMenu.value ?? MAIN_NAV).map(item => toMenuItem(item)))
   const resourceItems = computed(() => (areaMenu.value ? [] : RESOURCE_NAV.map(item => toMenuItem(item))))
+  /**
+   * FOLDERS (F11 M4, owner 2026-10-02): the workspace's folders with their colour and form count, up
+   * to six, then "All folders"; only in the Forms area.
+   */
+  const FOLDERS_SHOWN = 6
+  const folderItems = computed(() => {
+    if (areaMenu.value || !counts.value) return []
+    const folders = (counts.value as NavCounts).folders ?? []
+    const shown: AppNavItem[] = folders.slice(0, FOLDERS_SHOWN).map(folder => ({
+      key: `folder_${folder.id}`,
+      label: folder.name,
+      icon: 'i-lucide-folder',
+      iconClass: folderColor(folder.color).text,
+      to: `/folders/${folder.id}`,
+      count: () => folder.count,
+    }))
+    if (folders.length) shown.push({ key: folders.length > FOLDERS_SHOWN ? 'foldersShowAll' : 'foldersAll', icon: 'i-lucide-folders', to: '/folders', exact: true })
+    return shown.map(item => toMenuItem(item))
+  })
   /** Sidebar heading for the main list: the area's name, or "Main menu" for Forms. */
   const areaLabel = computed(() => NAV_AREAS.find(a => a.key === area.value)?.label ?? 'nav.main')
   const systemItems = computed(() => SYSTEM_NAV.filter(allowed).map(item => toMenuItem(item)))
@@ -315,5 +334,5 @@ export function useNavigation() {
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
 
-  return { mainItems, resourceItems, systemItems, destinations, areaDestinations, area, areaLabel, areas: NAV_AREAS, isActive }
+  return { mainItems, resourceItems, folderItems, systemItems, destinations, areaDestinations, area, areaLabel, areas: NAV_AREAS, isActive }
 }

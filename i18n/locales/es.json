@@ -401,7 +401,10 @@
     "pagesAll": "Todas las páginas de destino",
     "pagesSystem": "Formalie",
     "pagesSaved": "Guardadas",
-    "pagesCreated": "Creadas"
+    "pagesCreated": "Creadas",
+    "folders": "Carpetas",
+    "foldersAll": "Todas las carpetas",
+    "foldersShowAll": "Ver todas las carpetas"
   },
   "navbar": {
     "breadcrumb": "Ruta de navegación",
@@ -814,7 +817,8 @@
       "date_format": "Formato de fecha",
       "number_format": "Formato de número",
       "week_start": "Primer día de la semana",
-      "tags": "Etiquetas"
+      "tags": "Etiquetas",
+      "colour": "Color"
     },
     "action": {
       "auth_login_succeeded": "Sesión iniciada",
@@ -3604,5 +3608,44 @@
     "manage": "Gestionar páginas de destino",
     "replaceTitle": "¿Reemplazar esta página de destino?",
     "replaceDesc": "La página de destino de este formulario cambia a la que elegiste. El formulario sigue igual y puedes deshacerlo."
+  },
+  "folders": {
+    "editTitle": "Editar carpeta",
+    "editDesc": "Su nombre y color se muestran en la barra lateral y en su página.",
+    "namePlaceholder": "p. ej., Recursos humanos",
+    "color": "Color",
+    "colors": {
+      "ink": "Tinta",
+      "red": "Rojo",
+      "orange": "Naranja",
+      "amber": "Ámbar",
+      "green": "Verde",
+      "teal": "Turquesa",
+      "violet": "Violeta",
+      "pink": "Rosa"
+    },
+    "toast": {
+      "saved": "Carpeta guardada",
+      "created": "Carpeta «{name}» creada"
+    },
+    "subtitle": "{n} formulario · activa {when} | {n} formularios · activa {when}",
+    "notFound": "Esta carpeta no está disponible",
+    "responses30": "Últimos 30 días",
+    "active": "Activa {when}",
+    "noActivity": "Aún sin actividad",
+    "empty": "Aún no hay formularios",
+    "col": {
+      "folder": "Carpeta",
+      "activity": "Última actividad"
+    },
+    "sort": {
+      "forms": "Más formularios",
+      "responses": "Más respuestas",
+      "activity": "Activas recientemente"
+    },
+    "open": "Abrir carpeta",
+    "search": "Buscar carpetas…",
+    "emptyTitle": "Aún no hay carpetas",
+    "emptyDesc": "Crea carpetas para agrupar formularios por equipo, cliente o proyecto."
   }
 }

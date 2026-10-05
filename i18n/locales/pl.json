@@ -401,7 +401,10 @@
     "pagesAll": "Wszystkie strony docelowe",
     "pagesSystem": "Formalie",
     "pagesSaved": "Zapisane",
-    "pagesCreated": "Utworzone"
+    "pagesCreated": "Utworzone",
+    "folders": "Foldery",
+    "foldersAll": "Wszystkie foldery",
+    "foldersShowAll": "Pokaż wszystkie foldery"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -814,7 +817,8 @@
       "date_format": "Format daty",
       "number_format": "Format liczb",
       "week_start": "Pierwszy dzień tygodnia",
-      "tags": "Tagi"
+      "tags": "Tagi",
+      "colour": "Kolor"
     },
     "action": {
       "auth_login_succeeded": "Zalogowano",
@@ -3604,5 +3608,44 @@
     "manage": "Zarządzaj stronami docelowymi",
     "replaceTitle": "Zastąpić tę stronę docelową?",
     "replaceDesc": "Strona docelowa tego formularza zmieni się na wybraną. Sam formularz zostaje bez zmian i możesz to cofnąć."
+  },
+  "folders": {
+    "editTitle": "Edytuj folder",
+    "editDesc": "Jego nazwa i kolor są widoczne na pasku bocznym i na jego stronie.",
+    "namePlaceholder": "np. Kadry",
+    "color": "Kolor",
+    "colors": {
+      "ink": "Atrament",
+      "red": "Czerwony",
+      "orange": "Pomarańczowy",
+      "amber": "Bursztynowy",
+      "green": "Zielony",
+      "teal": "Morski",
+      "violet": "Fioletowy",
+      "pink": "Różowy"
+    },
+    "toast": {
+      "saved": "Zapisano folder",
+      "created": "Utworzono folder „{name}”"
+    },
+    "subtitle": "Formularze: {n} · aktywny {when} | Formularze: {n} · aktywny {when}",
+    "notFound": "Ten folder jest niedostępny",
+    "responses30": "Ostatnie 30 dni",
+    "active": "Aktywny {when}",
+    "noActivity": "Brak aktywności",
+    "empty": "Brak formularzy",
+    "col": {
+      "folder": "Folder",
+      "activity": "Ostatnia aktywność"
+    },
+    "sort": {
+      "forms": "Najwięcej formularzy",
+      "responses": "Najwięcej odpowiedzi",
+      "activity": "Ostatnio aktywne"
+    },
+    "open": "Otwórz folder",
+    "search": "Szukaj folderów…",
+    "emptyTitle": "Brak folderów",
+    "emptyDesc": "Utwórz foldery, aby grupować formularze według zespołu, klienta lub projektu."
   }
 }

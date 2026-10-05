@@ -8,6 +8,7 @@ import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
 import * as responseExports from './routes/responseExports'
+import * as folders from './routes/folders'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
@@ -99,6 +100,8 @@ const router = createRouter()
   .post('/forms/:id/versions/:vid/restore', formDraft.restoreVersion)
   .post('/forms/:id/:action', forms.formLifecycle)
   .get('/folders', forms.listFolders)
+  .get('/folders/overview', folders.folderOverview)
+  .get('/folders/:id', folders.getFolder)
   .post('/folders', forms.createFolder)
   .patch('/folders/:id', forms.renameFolder)
   .delete('/folders/:id', forms.deleteFolder)

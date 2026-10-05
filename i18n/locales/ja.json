@@ -401,7 +401,10 @@
     "pagesAll": "すべてのランディングページ",
     "pagesSystem": "Formalie",
     "pagesSaved": "保存済み",
-    "pagesCreated": "作成済み"
+    "pagesCreated": "作成済み",
+    "folders": "フォルダー",
+    "foldersAll": "すべてのフォルダー",
+    "foldersShowAll": "すべてのフォルダーを表示"
   },
   "navbar": {
     "breadcrumb": "パンくずリスト",
@@ -814,7 +817,8 @@
       "date_format": "日付の形式",
       "number_format": "数値の形式",
       "week_start": "週の始まり",
-      "tags": "タグ"
+      "tags": "タグ",
+      "colour": "色"
     },
     "action": {
       "auth_login_succeeded": "ログインしました",
@@ -3604,5 +3608,44 @@
     "manage": "ランディングページを管理",
     "replaceTitle": "このランディングページを置き換えますか？",
     "replaceDesc": "このフォームのランディングページが選んだものに変わります。フォーム自体はそのままで、元に戻せます。"
+  },
+  "folders": {
+    "editTitle": "フォルダーを編集",
+    "editDesc": "名前と色はサイドバーとフォルダーのページに表示されます。",
+    "namePlaceholder": "例：人事",
+    "color": "色",
+    "colors": {
+      "ink": "インク",
+      "red": "赤",
+      "orange": "オレンジ",
+      "amber": "アンバー",
+      "green": "緑",
+      "teal": "ティール",
+      "violet": "紫",
+      "pink": "ピンク"
+    },
+    "toast": {
+      "saved": "フォルダーを保存しました",
+      "created": "フォルダー「{name}」を作成しました"
+    },
+    "subtitle": "{n} 件のフォーム · {when}に更新 | {n} 件のフォーム · {when}に更新",
+    "notFound": "このフォルダーは利用できません",
+    "responses30": "過去 30 日",
+    "active": "{when}に更新",
+    "noActivity": "まだ動きはありません",
+    "empty": "まだフォームはありません",
+    "col": {
+      "folder": "フォルダー",
+      "activity": "最終更新"
+    },
+    "sort": {
+      "forms": "フォームが多い順",
+      "responses": "回答が多い順",
+      "activity": "最近の更新順"
+    },
+    "open": "フォルダーを開く",
+    "search": "フォルダーを検索…",
+    "emptyTitle": "フォルダーはまだありません",
+    "emptyDesc": "チーム、顧客、プロジェクトごとにフォームをまとめるフォルダーを作成しましょう。"
   }
 }
