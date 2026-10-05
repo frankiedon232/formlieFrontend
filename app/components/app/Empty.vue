@@ -1,6 +1,6 @@
 <!--
   The one empty / not-found / error state for the portal (owner 2026-10-05): evenly centred in the
-  space it has, a layered icon tile (dashed frame, solid card), a clear title, a short muted
+  space it has, a layered icon tile (soft frame, solid card) inside a softly framed area with smooth corners, a clear title, a short muted
   description and the next step as buttons. Same props and slots as Nuxt UI's UEmpty, plus `tone`
   (error tints the icon). Use instead of UEmpty everywhere.
 -->
@@ -28,7 +28,9 @@ const ui = computed(() => ({
   root: [
     'flex w-full flex-1 flex-col items-center justify-center gap-0 text-center',
     tiny.value ? 'px-3 py-5' : compact.value ? 'min-h-40 px-4 py-8' : 'min-h-64 px-6 py-12',
-    props.variant === 'outline' ? 'rounded-xl border border-dashed border-default bg-transparent' : '',
+    // A soft frame with smooth corners around every empty state (owner 2026-10-05)
+    tiny.value ? 'rounded-xl' : 'rounded-2xl',
+    'border border-default/70 bg-elevated/25',
   ].join(' '),
   header: 'flex flex-col items-center gap-0',
   title: tiny.value ? 'mt-2.5 text-xs font-semibold text-highlighted' : compact.value ? 'mt-4 text-sm font-semibold text-highlighted' : 'mt-5 text-base font-semibold text-highlighted',
@@ -46,8 +48,8 @@ const forwarded = computed(() => Object.keys(slots).filter(name => name !== 'lea
   <UEmpty :title="title" :description="description" :actions="actions" :size="tiny ? 'xs' : compact ? 'sm' : 'md'" variant="naked" :ui="ui">
     <template #leading>
       <slot name="leading">
-        <!-- Layered tile: a dashed frame around a solid card holding the icon -->
-        <span class="relative flex items-center justify-center border border-dashed border-accented" :class="tiny ? 'size-10 rounded-xl' : compact ? 'size-14 rounded-2xl' : 'size-18 rounded-2xl'" aria-hidden="true">
+        <!-- Layered tile: a soft frame around a solid card holding the icon -->
+        <span class="relative flex items-center justify-center border border-default bg-elevated/40" :class="tiny ? 'size-10 rounded-xl' : compact ? 'size-14 rounded-2xl' : 'size-18 rounded-2xl'" aria-hidden="true">
           <span class="flex items-center justify-center border border-default bg-default shadow-sm" :class="tiny ? 'size-7 rounded-lg' : compact ? 'size-10 rounded-xl' : 'size-12 rounded-xl'">
             <UIcon :name="icon" :class="[tiny ? 'size-4' : compact ? 'size-5' : 'size-6', toneClass]" />
           </span>
