@@ -4802,7 +4802,8 @@
     "exportCapped": "{total} rows matched; a file holds up to {max}. Narrow the list with search or filters to export the rest.",
     "cellSaved": "{column} saved",
     "cellEditHint": "Double-click to edit",
-    "cellEdit": "Edit {column}"
+    "cellEdit": "Edit {column}",
+    "treeTruncated": "Showing {shown} of {n} tables. Search to find the others."
   },
   "contextMenu": {
     "open": "Open",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} shared"
       }
     },
-    "exportResult": "The result ({n} row) | The result ({n} rows)"
+    "exportResult": "The result ({n} row) | The result ({n} rows)",
+    "runAll": {
+      "button": "Run all",
+      "results": "Results per statement",
+      "summary": "{done} of {n} ran",
+      "skipped": "Not run",
+      "skippedDesc": "An earlier statement stopped the run. Fix it and run all again."
+    }
   },
   "dataActivity": {
     "kind": {

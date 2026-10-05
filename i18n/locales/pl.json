@@ -4802,7 +4802,8 @@
     "exportCapped": "Pasujące wiersze: {total}; plik mieści do {max}. Zawęź listę wyszukiwaniem lub filtrami, aby wyeksportować resztę.",
     "cellSaved": "Zapisano: {column}",
     "cellEditHint": "Kliknij dwukrotnie, aby edytować",
-    "cellEdit": "Edytuj {column}"
+    "cellEdit": "Edytuj {column}",
+    "treeTruncated": "Wyświetlono {shown} z {n} tabel. Wyszukaj, aby znaleźć pozostałe."
   },
   "contextMenu": {
     "open": "Otwórz",
@@ -4957,7 +4958,14 @@
         "sharedCount": "Udostępnione: {n}"
       }
     },
-    "exportResult": "Wynik (wiersze: {n}) | Wynik (wiersze: {n})"
+    "exportResult": "Wynik (wiersze: {n}) | Wynik (wiersze: {n})",
+    "runAll": {
+      "button": "Uruchom wszystko",
+      "results": "Wyniki dla każdej instrukcji",
+      "summary": "Uruchomiono {done} z {n}",
+      "skipped": "Nie uruchomiono",
+      "skippedDesc": "Wcześniejsza instrukcja zatrzymała uruchamianie. Popraw ją i uruchom wszystko ponownie."
+    }
   },
   "dataActivity": {
     "kind": {

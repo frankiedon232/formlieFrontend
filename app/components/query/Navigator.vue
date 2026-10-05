@@ -7,13 +7,13 @@
 -->
 <script setup lang="ts">
 import type { DataSourceRow } from '#shared/types/datasources'
-import type { DatabaseTable } from '#shared/types/destinations'
+import type { DatabaseTable, TableColumn } from '#shared/types/destinations'
 import type { ExplorerNode } from '#shared/types/explorer'
 import type { QueryHistoryItem, SavedQuery } from '#shared/types/query'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
-const props = defineProps<{ sources: DataSourceRow[] | null; sourceId: string | null; tables: DatabaseTable[] | null; loading?: boolean; history: QueryHistoryItem[] | null; engine: DbEngine | null; saved: SavedQuery[] | null; savedBusy?: string | null }>()
-const emit = defineEmits<{ source: [id: string]; insert: [text: string]; open: [sql: string, newTab: boolean]; select: [table: DatabaseTable]; remove: [id?: string]; openSaved: [item: SavedQuery]; editSaved: [item: SavedQuery]; shareSaved: [item: SavedQuery]; deleteSaved: [item: SavedQuery] }>()
+const props = defineProps<{ sources: DataSourceRow[] | null; sourceId: string | null; tables: DatabaseTable[] | null; columns: Map<string, TableColumn[]>; truncated?: boolean; total?: number; loading?: boolean; history: QueryHistoryItem[] | null; engine: DbEngine | null; saved: SavedQuery[] | null; savedBusy?: string | null }>()
+const emit = defineEmits<{ source: [id: string]; insert: [text: string]; open: [sql: string, newTab: boolean]; select: [table: DatabaseTable]; expand: [table: DatabaseTable]; search: [q: string]; remove: [id?: string]; openSaved: [item: SavedQuery]; editSaved: [item: SavedQuery]; shareSaved: [item: SavedQuery]; deleteSaved: [item: SavedQuery] }>()
 const { t } = useI18n()
 const { relative, number } = useFormat()
 const toast = useToast()
@@ -107,7 +107,7 @@ useContextMenu().register(root, target => {
     />
     <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" size="xs" :ui="{ ...SEGMENTED_UI, root: 'w-full', list: `${SEGMENTED_UI.list} w-full`, trigger: `${SEGMENTED_UI.trigger} flex-1 justify-center px-1.5` }" />
 
-    <ExplorerTree v-if="tab === 'tables'" :tables="tables" :selected="null" :loading="loading" class="flex-1" @select="table => emit('select', table)" />
+    <ExplorerTree v-if="tab === 'tables'" :tables="tables" :columns="columns" :truncated="truncated" :total="total" :selected="null" :loading="loading" class="flex-1" @select="table => emit('select', table)" @expand="table => emit('expand', table)" @search="q => emit('search', q)" />
 
     <template v-else-if="tab === 'saved'">
       <div v-if="!saved" class="flex flex-col gap-2"><USkeleton v-for="n in 4" :key="n" class="h-12 rounded-md" /></div>

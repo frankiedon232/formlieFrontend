@@ -4802,7 +4802,8 @@
     "exportCapped": "{total}행이 일치합니다. 파일 하나에는 최대 {max}행이 들어갑니다. 나머지를 내보내려면 검색이나 필터로 목록을 좁히세요.",
     "cellSaved": "{column} 저장됨",
     "cellEditHint": "두 번 클릭하여 편집",
-    "cellEdit": "{column} 편집"
+    "cellEdit": "{column} 편집",
+    "treeTruncated": "테이블 {n}개 중 {shown}개를 표시합니다. 나머지는 검색해 찾으세요."
   },
   "contextMenu": {
     "open": "열기",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n}개 공유됨"
       }
     },
-    "exportResult": "결과({n}행) | 결과({n}행)"
+    "exportResult": "결과({n}행) | 결과({n}행)",
+    "runAll": {
+      "button": "모두 실행",
+      "results": "문장별 결과",
+      "summary": "{n}개 중 {done}개 실행됨",
+      "skipped": "실행 안 됨",
+      "skippedDesc": "이전 문장에서 실행이 멈췄습니다. 수정한 뒤 모두 다시 실행하세요."
+    }
   },
   "dataActivity": {
     "kind": {

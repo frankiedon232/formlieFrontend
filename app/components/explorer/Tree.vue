@@ -1,32 +1,37 @@
 <!--
   The database tree (F12 M3): schemas → tables → columns (names only; types are in Structure), with each table's row count; every
-  table has the same square bullet. Search narrows by table or column name; one table open at a time. Nuxt UI's tree gives keyboard
-  navigation (arrows move and open, Enter selects); picking a table opens it.
+  table has the same square bullet. Search narrows by table name (on the server when the database has more tables than were
+  listed) and by the columns already loaded; one table open at a time; a table's columns load when it is opened (lazy, for very
+  large databases). Nuxt UI's tree gives keyboard navigation (arrows move and open, Enter selects); picking a table opens it.
 -->
 <script setup lang="ts">
 import type { TreeItem } from '@nuxt/ui'
-import type { DatabaseTable } from '#shared/types/destinations'
+import type { DatabaseTable, TableColumn } from '#shared/types/destinations'
 
-const props = defineProps<{ tables: DatabaseTable[] | null; selected: string | null; loading?: boolean }>()
-const emit = defineEmits<{ select: [table: DatabaseTable] }>()
+const props = defineProps<{ tables: DatabaseTable[] | null; columns: Map<string, TableColumn[]>; selected: string | null; loading?: boolean; truncated?: boolean; total?: number }>()
+const emit = defineEmits<{ select: [table: DatabaseTable]; expand: [table: DatabaseTable]; search: [q: string] }>()
 const { t } = useI18n()
 const { number } = useFormat()
 const search = ref('')
+watch(search, q => emit('search', q))
 const keyOf = (table: Pick<DatabaseTable, 'schema' | 'name'>) => `${table.schema}.${table.name}`
 
 const items = computed<TreeItem[]>(() => {
   const q = search.value.trim().toLowerCase()
   const bySchema = new Map<string, TreeItem[]>()
   for (const table of props.tables ?? []) {
-    const columns = table.columns.filter(column => !q || column.name.toLowerCase().includes(q))
-    if (q && !table.name.toLowerCase().includes(q) && !columns.length) continue
+    const loaded = props.columns.get(keyOf(table))
+    const named = !q || keyOf(table).toLowerCase().includes(q)
+    const columns = (loaded ?? []).filter(column => !q || column.name.toLowerCase().includes(q))
+    if (!named && !columns.length) continue
     const node: TreeItem = {
       label: table.name,
       key: keyOf(table),
       table,
-      defaultExpanded: !!q && !table.name.toLowerCase().includes(q),
+      defaultExpanded: !named,
       onSelect: () => emit('select', table),
-      children: (q && !table.name.toLowerCase().includes(q) ? columns : table.columns).map(column => ({
+      // Not loaded yet: one "Loading…" row so the table can be opened
+      children: !loaded ? [{ label: t('common.loading'), key: `${keyOf(table)}.__loading`, placeholder: true, onSelect: (event: Event) => event.preventDefault() }] : (named ? loaded : columns).map(column => ({
         label: column.name,
         key: `${keyOf(table)}.${column.name}`,
         icon: column.primary ? 'i-lucide-key-round' : 'i-lucide-columns-2',
@@ -41,19 +46,23 @@ const items = computed<TreeItem[]>(() => {
 })
 
 /** What a tree row is, for the right-click menu (read by ExplorerNavigator). */
-const nodeOf = (item: TreeItem) => JSON.stringify(item.column ? { kind: 'column', schema: item.parentTable.schema, table: item.parentTable.name, column: item.column.name } : item.table ? { kind: 'table', schema: item.table.schema, table: item.table.name } : { kind: 'schema', schema: item.label })
+const nodeOf = (item: TreeItem) => item.placeholder ? undefined : JSON.stringify(item.column ? { kind: 'column', schema: item.parentTable.schema, table: item.parentTable.name, column: item.column.name } : item.table ? { kind: 'table', schema: item.table.schema, table: item.table.name } : { kind: 'schema', schema: item.label })
 
 // One table open at a time (owner 2026-10-05): opening a table closes the others; schemas stay as they are.
 const expanded = ref<string[]>([])
 watch(
-  items,
-  list => {
-    expanded.value = list.flatMap(schema => [String(schema.key), ...(schema.children ?? []).filter(table => table.defaultExpanded).map(table => String(table.key))])
+  () => [search.value, props.tables] as const,
+  () => {
+    expanded.value = items.value.flatMap(schema => [String(schema.key), ...(schema.children ?? []).filter(table => table.defaultExpanded).map(table => String(table.key))])
   },
   { immediate: true },
 )
 function onExpanded(keys: string[]) {
   const opened = keys.filter(key => !expanded.value.includes(key) && !key.startsWith('schema:'))
+  for (const key of opened) {
+    const table = props.tables?.find(item => keyOf(item) === key)
+    if (table && !props.columns.has(key)) emit('expand', table)
+  }
   expanded.value = opened.length ? keys.filter(key => key.startsWith('schema:') || opened.includes(key)) : keys
 }
 </script>
@@ -69,14 +78,16 @@ function onExpanded(keys: string[]) {
         <span v-if="item.table" class="flex size-4 shrink-0 items-center justify-center" aria-hidden="true">
           <span class="size-1.5 rounded-[1px] bg-current" :class="keyOf(item.table) === selected ? 'text-highlighted' : 'text-muted'" />
         </span>
+        <UIcon v-else-if="item.placeholder" name="i-lucide-loader-circle" class="size-3.5 shrink-0 animate-spin text-muted" />
         <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.linkLeadingIcon()" />
       </template>
       <template #item-label="{ item }">
-        <span class="truncate" :data-explorer-node="nodeOf(item)" :title="String(item.label)" :class="[item.table && keyOf(item.table) === selected ? 'font-semibold text-highlighted' : '', item.column ? 'font-mono text-xs' : '']" dir="ltr">{{ item.label }}</span>
+        <span class="truncate" :data-explorer-node="nodeOf(item)" :title="String(item.label)" :class="[item.table && keyOf(item.table) === selected ? 'font-semibold text-highlighted' : '', item.column ? 'font-mono text-xs' : '', item.placeholder ? 'text-xs text-muted' : '']" dir="ltr">{{ item.label }}</span>
       </template>
       <template #item-trailing="{ item }">
         <span v-if="item.table && item.table.rows_estimate !== null" class="ms-auto ps-2 text-[11px] text-muted tabular-nums">{{ number(item.table.rows_estimate) }}</span>
       </template>
     </UTree>
+    <p v-if="items.length && truncated && !search && total" class="px-1 text-[11px] text-muted">{{ t('explorer.treeTruncated', { shown: number(tables?.length ?? 0), n: number(total) }) }}</p>
   </div>
 </template>

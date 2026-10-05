@@ -4802,7 +4802,8 @@
     "exportCapped": "{total} satır eşleşti; bir dosya en fazla {max} satır alır. Kalanını dışa aktarmak için listeyi arama veya filtrelerle daraltın.",
     "cellSaved": "{column} kaydedildi",
     "cellEditHint": "Düzenlemek için çift tıklayın",
-    "cellEdit": "{column} düzenle"
+    "cellEdit": "{column} düzenle",
+    "treeTruncated": "{n} tablodan {shown} tanesi gösteriliyor. Diğerlerini bulmak için arayın."
   },
   "contextMenu": {
     "open": "Aç",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} paylaşılan"
       }
     },
-    "exportResult": "Sonuç ({n} satır) | Sonuç ({n} satır)"
+    "exportResult": "Sonuç ({n} satır) | Sonuç ({n} satır)",
+    "runAll": {
+      "button": "Tümünü çalıştır",
+      "results": "İfade başına sonuçlar",
+      "summary": "{n} ifadeden {done} tanesi çalıştı",
+      "skipped": "Çalıştırılmadı",
+      "skippedDesc": "Önceki bir ifade çalıştırmayı durdurdu. Düzeltin ve tümünü yeniden çalıştırın."
+    }
   },
   "dataActivity": {
     "kind": {

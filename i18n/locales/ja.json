@@ -4802,7 +4802,8 @@
     "exportCapped": "{total} 行が一致しました。1 つのファイルは最大 {max} 行です。残りを書き出すには、検索やフィルターで絞り込んでください。",
     "cellSaved": "{column} を保存しました",
     "cellEditHint": "ダブルクリックで編集",
-    "cellEdit": "{column} を編集"
+    "cellEdit": "{column} を編集",
+    "treeTruncated": "{n} 個中 {shown} 個のテーブルを表示しています。ほかのテーブルは検索してください。"
   },
   "contextMenu": {
     "open": "開く",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} 件共有"
       }
     },
-    "exportResult": "結果（{n} 行） | 結果（{n} 行）"
+    "exportResult": "結果（{n} 行） | 結果（{n} 行）",
+    "runAll": {
+      "button": "すべて実行",
+      "results": "ステートメントごとの結果",
+      "summary": "{n} 件中 {done} 件を実行",
+      "skipped": "未実行",
+      "skippedDesc": "前のステートメントで実行が止まりました。修正してもう一度すべて実行してください。"
+    }
   },
   "dataActivity": {
     "kind": {

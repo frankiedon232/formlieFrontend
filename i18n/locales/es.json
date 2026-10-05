@@ -4802,7 +4802,8 @@
     "exportCapped": "Coinciden {total} filas; un archivo admite hasta {max}. Acota la lista con la búsqueda o los filtros para exportar el resto.",
     "cellSaved": "{column} guardado",
     "cellEditHint": "Doble clic para editar",
-    "cellEdit": "Editar {column}"
+    "cellEdit": "Editar {column}",
+    "treeTruncated": "Se muestran {shown} de {n} tablas. Busca para encontrar las demás."
   },
   "contextMenu": {
     "open": "Abrir",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} compartidas"
       }
     },
-    "exportResult": "El resultado ({n} fila) | El resultado ({n} filas)"
+    "exportResult": "El resultado ({n} fila) | El resultado ({n} filas)",
+    "runAll": {
+      "button": "Ejecutar todo",
+      "results": "Resultados por sentencia",
+      "summary": "{done} de {n} ejecutadas",
+      "skipped": "No ejecutada",
+      "skippedDesc": "Una sentencia anterior detuvo la ejecución. Corrígela y vuelve a ejecutar todo."
+    }
   },
   "dataActivity": {
     "kind": {

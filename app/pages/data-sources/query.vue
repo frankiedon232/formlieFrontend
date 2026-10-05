@@ -12,7 +12,7 @@
 import type { DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable } from '#shared/types/destinations'
 import type { SavedQuery } from '#shared/types/query'
-import { formatSql, parametersIn, splitStatements } from '#shared/utils/datasources/sql'
+import { formatSql, parametersIn, splitStatements, tablesIn } from '#shared/utils/datasources/sql'
 
 definePageMeta({ breadcrumb: 'nav.dataQuery' })
 const { t } = useI18n()
@@ -37,20 +37,15 @@ onMounted(async () => {
     handle(error)
   }
 })
-const tables = ref<DatabaseTable[] | null>(null)
-const tablesError = ref<ApiError | null>(null)
-async function loadTables() {
-  if (!dsId.value) return
-  tables.value = null
-  tablesError.value = null
-  try {
-    tables.value = (await api.get<DatabaseTable[]>(`/datasources/${dsId.value}/explorer/tables`)).data
-  } catch (error) {
-    tablesError.value = handle(error, { silent: true })
-  }
-}
-/** Completion: `schema.table` and `table` → its columns. */
-const completion = computed(() => Object.fromEntries((tables.value ?? []).flatMap(table => [[`${table.schema}.${table.name}`, table.columns.map(column => column.name)], [table.name, table.columns.map(column => column.name)]])))
+// Tables (names first) and their columns, loaded when a table is opened in the tree or named in the editor
+const db = useDatabaseTables(dsId)
+const { tables, error: tablesError } = db
+const loadTables = () => db.load()
+/** Completion: every `schema.table` and `table`; the columns of those loaded so far. */
+const completion = computed(() => Object.fromEntries((tables.value ?? []).flatMap(table => {
+  const columns = (db.columns.get(db.keyOf(table)) ?? []).map(column => column.name)
+  return [[`${table.schema}.${table.name}`, columns], [table.name, columns]]
+})))
 const defaultSchema = computed(() => source.value?.access.schemas[0] ?? tables.value?.find(table => !table.formalie)?.schema)
 
 // The menu column holds the connection, tables and history (the explorer's mode)
@@ -65,9 +60,20 @@ const editor = useTemplateRef<{ runText: () => { text: string; from: number } | 
 const runner = useQueryRunner(dsId, position => editor.value?.lineAt(position) ?? 1)
 const state = computed(() => runner.stateOf(tabs.active.value.id))
 const text = computed({ get: () => tabs.active.value.sql, set: value => tabs.update(tabs.active.value.id, value) })
+// Columns of the tables the tab names (for completion), a moment after typing stops
+watchDebounced(
+  [text, tables],
+  () => {
+    for (const name of tablesIn(text.value)) {
+      const lower = name.toLowerCase()
+      const table = tables.value?.find(item => db.keyOf(item).toLowerCase() === lower || item.name.toLowerCase() === lower)
+      if (table) void db.loadColumns(table)
+    }
+  },
+  { debounce: 400, immediate: true },
+)
 const saved = useSavedQueries(dsId)
 watch(dsId, () => {
-  void loadTables()
   void runner.loadHistory()
   void saved.load()
 }, { immediate: true })
@@ -92,6 +98,18 @@ function run() {
   const savedId = tab.savedId && splitStatements(tab.savedSql ?? '').some(statement => statement.text === target.text.trim().replace(/;$/, '')) ? tab.savedId : undefined
   void runner.run(tab.id, target.text, target.from, Object.fromEntries(names.map(name => [name, values[name]!])), 1, false, savedId)
 }
+// Run all (Ctrl / Cmd + Shift + Enter): every statement of the tab, top to bottom, stopping at the first problem
+function runAll() {
+  const statements = splitStatements(text.value)
+  if (!statements.length || !dsId.value) return
+  const values = valuesOf(tabs.active.value.id)
+  const names = [...new Set(statements.flatMap(statement => parametersIn(statement.text)))]
+  const missing = names.filter(name => !(name in values) || values[name] === '')
+  if (missing.length) return void toast.add({ title: t('query.fillParams', { names: missing.map(name => `:${name}`).join(', ') }), color: 'warning', icon: 'i-lucide-variable' })
+  const paramsOf = (sql: string) => Object.fromEntries(parametersIn(sql).map(name => [name, values[name]!]))
+  void runner.runAll(tabs.active.value.id, statements.map(statement => ({ text: statement.text, from: statement.from, params: paramsOf(statement.text) })))
+}
+const statementCount = computed(() => splitStatements(text.value).length)
 const cancel = () => runner.cancel(tabs.active.value.id)
 // Save (Ctrl / Cmd + S): updates your saved query, or asks for a name; Format (Shift + Alt + F)
 const saveOpen = ref(false)
@@ -174,6 +192,7 @@ defineShortcuts({
   meta_s: { usingInput: true, handler: () => void save() },
   shift_alt_f: { usingInput: true, handler: format },
   meta_enter: { usingInput: true, handler: run },
+  meta_shift_enter: { usingInput: true, handler: runAll },
   escape: { usingInput: true, handler: () => state.value.running && cancel() },
 })
 
@@ -199,12 +218,14 @@ const resizeKey = (event: KeyboardEvent) => {
   editorHeight.value = Math.max(120, Math.min(900, editorHeight.value + step))
 }
 
-const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, loading: !tables.value && !tablesError.value, history: runner.history.value, engine: source.value?.engine ?? null, saved: saved.list.value, savedBusy: saved.busy.value }))
+const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, columns: db.columns, truncated: db.truncated.value, total: db.total.value, loading: db.loading.value, history: runner.history.value, engine: source.value?.engine ?? null, saved: saved.list.value, savedBusy: saved.busy.value }))
 const navigatorEvents = {
   onSource: (id: string) => go(id),
   onInsert: insert,
   onOpen: open,
   onSelect: (table: DatabaseTable) => insert(`${table.schema}.${table.name}`),
+  onExpand: (table: DatabaseTable) => void db.loadColumns(table),
+  onSearch: db.search,
   onRemove: (id?: string) => void runner.removeHistory(id),
   onOpenSaved: openSaved,
   onEditSaved: edit,
@@ -223,6 +244,9 @@ const navigatorEvents = {
       </UButton>
       <UButton v-if="state.running" :label="t('query.cancel')" icon="i-lucide-square" color="neutral" variant="outline" @click="cancel">
         <template #trailing><UKbd value="Esc" size="sm" class="hidden sm:inline-flex" /></template>
+      </UButton>
+      <UButton v-if="statementCount > 1" :label="t('query.runAll.button')" icon="i-lucide-list-video" color="neutral" variant="outline" class="hidden md:inline-flex" :disabled="!dsId || state.running" @click="runAll">
+        <template #trailing><span class="hidden items-center gap-0.5 xl:inline-flex"><UKbd value="meta" size="sm" /><UKbd value="shift" size="sm" /><UKbd value="enter" size="sm" /></span></template>
       </UButton>
       <UButton :label="t('query.run')" icon="i-lucide-play" color="neutral" :loading="state.running" :disabled="!dsId || !text.trim()" @click="run">
         <template #trailing><span class="hidden items-center gap-0.5 sm:inline-flex"><UKbd value="meta" size="sm" /><UKbd value="enter" size="sm" /></span></template>
@@ -273,7 +297,7 @@ const navigatorEvents = {
             :engine="source?.engine ?? 'postgresql'"
             :schema="completion"
             :default-schema="defaultSchema"
-            :error-line="state.problem?.line ?? null"
+            :error-line="(state.batch ? state.batch.find(item => item.problem)?.problem?.line : state.problem?.line) ?? null"
             :placeholder-text="t('query.placeholder')"
             @run="run"
           />
@@ -297,7 +321,7 @@ const navigatorEvents = {
         <span class="absolute inset-x-0 top-1/2 mx-auto h-0.5 w-10 -translate-y-1/2 rounded-full bg-(--ui-border-accented) group-hover:bg-(--ui-border-inverted) group-focus-visible:bg-(--ui-border-inverted)" />
       </div>
 
-      <QueryOutput :state="state" :source-id="dsId" @page="page => runner.page(tabs.active.value.id, page)" @line="line => editor?.goToLine(line)" />
+      <QueryOutput :state="state" :source-id="dsId" @page="page => runner.page(tabs.active.value.id, page)" @line="line => editor?.goToLine(line)" @show="index => (state.active = index)" />
     </div>
 
     <Teleport v-if="takeover.shown.value" :to="`#${SIDEBAR_TAKEOVER_ID}`" defer>

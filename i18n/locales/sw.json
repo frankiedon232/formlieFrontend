@@ -4802,7 +4802,8 @@
     "exportCapped": "Safu {total} zimelingana; faili moja hubeba hadi {max}. Punguza orodha kwa utafutaji au vichujio ili kuhamisha zilizobaki.",
     "cellSaved": "{column} imehifadhiwa",
     "cellEditHint": "Bofya mara mbili kuhariri",
-    "cellEdit": "Hariri {column}"
+    "cellEdit": "Hariri {column}",
+    "treeTruncated": "Inaonyesha jedwali {shown} kati ya {n}. Tafuta ili kupata mengine."
   },
   "contextMenu": {
     "open": "Fungua",
@@ -4957,7 +4958,14 @@
         "sharedCount": "Zilizoshirikiwa: {n}"
       }
     },
-    "exportResult": "Matokeo (safu {n}) | Matokeo (safu {n})"
+    "exportResult": "Matokeo (safu {n}) | Matokeo (safu {n})",
+    "runAll": {
+      "button": "Endesha zote",
+      "results": "Matokeo kwa kila kauli",
+      "summary": "{done} kati ya {n} zimeendeshwa",
+      "skipped": "Haijaendeshwa",
+      "skippedDesc": "Kauli ya awali ilisimamisha uendeshaji. Irekebishe kisha uendeshe zote tena."
+    }
   },
   "dataActivity": {
     "kind": {

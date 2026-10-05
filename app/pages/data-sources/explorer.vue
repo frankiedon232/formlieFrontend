@@ -41,24 +41,9 @@ onMounted(async () => {
   }
 })
 
-// Tables of the connection
-const tables = ref<DatabaseTable[] | null>(null)
-const tablesError = ref<ApiError | null>(null)
-const loadingTables = ref(false)
-async function loadTables(keep = false) {
-  if (!dsId.value) return
-  loadingTables.value = true
-  tablesError.value = null
-  if (!keep) tables.value = null
-  try {
-    tables.value = (await api.get<DatabaseTable[]>(`/datasources/${dsId.value}/explorer/tables`)).data
-  } catch (error) {
-    tablesError.value = handle(error, { silent: true })
-  } finally {
-    loadingTables.value = false
-  }
-}
-watch(dsId, () => void loadTables(), { immediate: true })
+// Tables of the connection (names first; a table's columns load when it is opened)
+const db = useDatabaseTables(dsId)
+const { tables, error: tablesError } = db
 
 // The table opened
 const structure = ref<TableStructure | null>(null)
@@ -102,7 +87,7 @@ const openRef = (ref: { schema: string; table: string }) => {
   rowOpen.value = false
   open({ schema: ref.schema, name: ref.table })
 }
-const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, selected: objectKey.value, loading: loadingTables.value }))
+const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, columns: db.columns, truncated: db.truncated.value, total: db.total.value, selected: objectKey.value, loading: db.loading.value }))
 const tab = ref<'data' | 'structure'>('data')
 const tabs = computed(() => [
   { value: 'data', label: t('explorer.tab.data'), icon: 'i-lucide-rows-3' },
@@ -188,7 +173,7 @@ const tableMenu = computed<DropdownMenuItem[][]>(() => [
   ],
 ])
 async function schemaChanged(result: SchemaResult) {
-  await loadTables(true)
+  await db.refresh(structure.value ?? undefined)
   if (!result.table) return go({ ds: dsId.value ?? undefined })
   const key = `${result.table.schema}.${result.table.name}`
   if (key !== objectKey.value) return go({ ds: dsId.value ?? undefined, object: key })
@@ -207,7 +192,7 @@ const menus = useExplorerMenus({
   canCreate,
   isFormalie: (schemaName, table) => !!tables.value?.find(item => item.schema === schemaName && item.name === table)?.formalie,
   open: (table, nextTab) => open(table, nextTab),
-  refresh: () => void Promise.all([loadTables(true), loadTable()]),
+  refresh: () => void Promise.all([db.refresh(), loadTable()]),
   newTable,
   addRow: () => editRow(null),
   openRow: row => openRow(row, data.value?.rows() ?? [row]),
@@ -220,7 +205,7 @@ const content = useTemplateRef<HTMLElement>('content')
 useContextMenu().register(content, () => menus.tableMenu())
 
 function tableCreated(table: { schema: string; name: string }) {
-  void loadTables(true)
+  void db.refresh()
   tab.value = 'structure'
   go({ ds: dsId.value ?? undefined, object: `${table.schema}.${table.name}` })
 }
@@ -297,7 +282,7 @@ const readOnlyText = computed(() =>
           icon: 'i-lucide-rotate-cw',
           color: 'neutral',
           variant: 'outline',
-          onClick: () => void loadTables(),
+          onClick: () => void db.load(),
         },
         {
           label: t('explorer.checkConnection'),
@@ -416,7 +401,7 @@ const readOnlyText = computed(() =>
     </div>
 
     <Teleport v-if="takeover.shown.value" :to="`#${SIDEBAR_TAKEOVER_ID}`" defer>
-      <ExplorerNavigator v-bind="navigator" :menu="menus.nodeMenu" @source="id => go({ ds: id })" @select="open" />
+      <ExplorerNavigator v-bind="navigator" :menu="menus.nodeMenu" @source="id => go({ ds: id })" @select="open" @expand="table => void db.loadColumns(table)" @search="db.search" />
     </Teleport>
     <USlideover
       v-model:open="treeOpen"
@@ -425,7 +410,7 @@ const readOnlyText = computed(() =>
       :ui="{ content: 'w-full max-w-xs', body: 'flex p-0 sm:p-0' }"
     >
       <template #body>
-        <ExplorerNavigator v-bind="navigator" :menu="menus.nodeMenu" @source="id => go({ ds: id })" @select="open" />
+        <ExplorerNavigator v-bind="navigator" :menu="menus.nodeMenu" @source="id => go({ ds: id })" @select="open" @expand="table => void db.loadColumns(table)" @search="db.search" />
       </template>
     </USlideover>
     <ExplorerRowDetail

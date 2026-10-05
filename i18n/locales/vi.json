@@ -4802,7 +4802,8 @@
     "exportCapped": "Có {total} hàng phù hợp; mỗi tệp chứa tối đa {max}. Thu hẹp danh sách bằng tìm kiếm hoặc bộ lọc để xuất phần còn lại.",
     "cellSaved": "Đã lưu {column}",
     "cellEditHint": "Nhấp đúp để sửa",
-    "cellEdit": "Sửa {column}"
+    "cellEdit": "Sửa {column}",
+    "treeTruncated": "Đang hiển thị {shown}/{n} bảng. Hãy tìm kiếm để thấy các bảng khác."
   },
   "contextMenu": {
     "open": "Mở",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} đã chia sẻ"
       }
     },
-    "exportResult": "Kết quả ({n} hàng) | Kết quả ({n} hàng)"
+    "exportResult": "Kết quả ({n} hàng) | Kết quả ({n} hàng)",
+    "runAll": {
+      "button": "Chạy tất cả",
+      "results": "Kết quả theo từng câu lệnh",
+      "summary": "Đã chạy {done}/{n}",
+      "skipped": "Chưa chạy",
+      "skippedDesc": "Một câu lệnh trước đã dừng lần chạy. Hãy sửa nó rồi chạy lại tất cả."
+    }
   },
   "dataActivity": {
     "kind": {

@@ -4802,7 +4802,8 @@
     "exportCapped": "{total} rijen komen overeen; een bestand bevat er tot {max}. Verklein de lijst met zoeken of filters om de rest te exporteren.",
     "cellSaved": "{column} opgeslagen",
     "cellEditHint": "Dubbelklik om te bewerken",
-    "cellEdit": "{column} bewerken"
+    "cellEdit": "{column} bewerken",
+    "treeTruncated": "{shown} van {n} tabellen getoond. Zoek om de andere te vinden."
   },
   "contextMenu": {
     "open": "Openen",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} gedeeld"
       }
     },
-    "exportResult": "Het resultaat ({n} rij) | Het resultaat ({n} rijen)"
+    "exportResult": "Het resultaat ({n} rij) | Het resultaat ({n} rijen)",
+    "runAll": {
+      "button": "Alles uitvoeren",
+      "results": "Resultaten per statement",
+      "summary": "{done} van {n} uitgevoerd",
+      "skipped": "Niet uitgevoerd",
+      "skippedDesc": "Een eerder statement heeft de uitvoering gestopt. Los het op en voer alles opnieuw uit."
+    }
   },
   "dataActivity": {
     "kind": {

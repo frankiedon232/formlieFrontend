@@ -594,28 +594,30 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ Run the selection or the statement at the cursor (Ctrl / ⌘ + Enter), stop (Esc), results grid built for query output (row numbers, resizable columns, NULL dimmed, right-click copy) with paging, run time, rows affected, the database's problem marking its line with Go to line
 - ✅ Read only connections run only reading statements; a changing statement says what it will do (rows, tables) and needs a confirm; never Formalie's response tables; structure changes need Full access
 - ✅ Parameters (`:name` → input boxes), query history, saved queries (personal or shared with the workspace; Ctrl / ⌘ + S; side panel tab and the Saved queries page with chart cards, table and cards), export results (this page or up to 5,000 rows; CSV / Excel / JSON)
-- ⬜ Use a saved read query as a dynamic option list source (F15e) and, later, on the dashboard (F21)
+- ➖ Use a saved read query as a dynamic option list source: moved to F15e (option sets); on the dashboard: F21
+- ✅ Run all (Ctrl / ⌘ + Shift + Enter): every statement of the tab in order, stopping at the first problem or a declined confirm; a result tab per statement (status, its own paging and export); the problem's line marked
+- ✅ Lazy tree for very large databases: table names first (up to 500, server search beyond that), a table's columns load when it is opened or named in the editor (`GET …/explorer/columns`), cached per connection
 
 ### 5. Other database operations
 
 - ✅ Insert, edit and delete rows from the table view (form generated from the columns, type-checked, confirm on delete; read + write connections only)
-- ⬜ Create a table from a form; add columns for new fields (preview + confirm)
+- ✅ Create a table from a form; add columns for new fields (preview + confirm): done in M2 (response storage: table from the form, Add columns, the exact SQL first)
 - ➖ Import CSV / XLSX into a table: not supported for now (owner 2026-10-05)
 - ✅ Activity (M5): everything on the connections from the audit trail (queries, row and structure changes, exports, response storage, connection events), two chart cards (30 days with daily bars; by kind with a legend that filters), the list with connection, kind and result filters and a date range, each event opens the audit trail's panel; Exports in the menu opens Activity filtered to exports (imports aren't supported for now)
-- ⬜ Scheduled exports and saved-query snapshots (later)
+- ➖ Scheduled exports and saved-query snapshots: later, after F21 (needs the backend's job runner)
 
 ### 6. Safety (enforced by the backend, visible in the UI)
 
-- ⬜ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps, never from the browser
+- ✅ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps, never from the browser: every call goes through the API; the rules are in API-CONTRACT (paging in the database, count capped at 10,000, 5 s per statement, exports up to 5,000 rows) for the backend to enforce
 - ✅ Every query, row change, structure change and export is recorded in the audit trail (who, connection, statement, rows affected, duration; never result values)
-- ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data), wired up in F22; until then admins only
-- ⬜ Rate limits; no credentials or result data in logs; results never stored in the browser
-- ⬜ Clear wording: we provide controls (encryption, audit, least privilege), never certifications
+- ➖ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data): moved to F22; until then admins only
+- ✅ No credentials or result data in logs (the audit trail keeps statements and counts, never values); results never stored in the browser (only the tabs' SQL text); rate limits are the backend's (in API-CONTRACT)
+- ✅ Clear wording: the Data sources pages promise controls (encryption, audit, least privilege), never certifications
 
 ### 7. Navigation, API and docs
 
-- ✅ Own rail area (owner, 2026-10-02): Data sources icon under the workspace button, with its own menu, Overview · Connections · Database explorer · Query editor · Saved queries · Destinations · Imports & exports · Activity; placeholder pages in place (`/data-sources/**`), old `/integrations/destinations` redirects; Integrations keeps Webhooks · API keys
-- ⬜ Mock first, then API: `/datasources` (CRUD, test, health, change credentials) · `/datasources/{id}/schema` · `/datasources/{id}/tables/{table}/rows` (list, insert, update, delete, import, export) · `/datasources/{id}/query` (+ cancel) · `/saved-queries` · `/forms/{id}/destinations` (+ mapping, create table, backfill, deliveries, retry); error codes `FRM-DEST-*`; contract updated
+- ✅ Own rail area (owner, 2026-10-02): Data sources icon under the workspace button, with its own menu, Overview · Connections · Database explorer · Query editor · Saved queries · Destinations · Exports · Activity; every page live since M5 (`/data-sources/**`), old `/integrations/destinations` redirects; Integrations keeps Webhooks · API keys
+- ✅ Mock first, then API: the mock covers `/datasources` (CRUD, test, permissions), `/datasources/{id}/explorer/*` (tables, structure, rows with insert / update / delete, facets, exports, structure changes), `/datasources/{id}/query` (+ export, history), `/saved-queries`, `/datasources/activity/insights` and the destinations routes; error codes `FRM-DEST-1001…1027`; API-CONTRACT is the backend's spec
 
 ---
 
@@ -807,7 +809,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ **F15b Large lists + autocomplete:** items on the server, "search as you type" field mode, paging
 - ⬜ **F15c Cascading lists (levels):** tree lists (e.g. State → City → Location, up to 5 levels), "Cascading choice" field group, child opens with the parent's items only, changing the parent clears children
 - ⬜ **F15d Details + auto-fill:** extra columns on items; choosing an item fills other fields (optionally read-only); columns usable in formulas and logic
-- ⬜ **F15e Dynamic lists:** live sources, another form's responses, a connected database (read-only query), a JSON URL, a refreshed CSV; refresh schedule and sync log
+- ⬜ **F15e Dynamic lists:** live sources, another form's responses, a connected database (a saved read query from the F12 Query editor), a JSON URL, a refreshed CSV; refresh schedule and sync log
 - ⬜ Public option lookups for respondents (rate limited, published lists only); answers store value + label (+ path)
 
 ### Destinations (where responses go)
@@ -919,6 +921,7 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ Role assignment per user and per organisation; form-level access
 - ⬜ Access overview ("who can see what")
 - ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
+- ⬜ Data sources permissions (from F12): view the explorer · change rows and structure · run read queries · run changing queries · manage connections · send form data to a database; until then admins only
 
 ## F23, Platform admin (super admin) ⬜
 
@@ -1084,6 +1087,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | Explorer works like a database editor: double-click a cell to edit it in place (not keys, auto-numbered or UUID columns, not read-only tables), drag the line between headers to resize columns (double-click fits, ← / →), widths remembered per table; explorer only | F12 M3 | ✅ |
 | 2026-10-05 | M5: Activity for the connections; "Imports & exports" becomes Exports (Activity filtered to exports); polish sweep of every Data sources page on phone, tablet and desktop | F12 M5 | ✅ |
 | 2026-10-05 | SQL reserved words in blue in the Query editor | F12 M4 | ✅ |
+| 2026-10-05 | Query editor: Run all (every statement, a result per statement); a lazy tree for very large databases (columns load when a table is opened); open F12 items resolved (done, or moved to F15e / F22 / later) | F12 | ✅ |
 
 ---
 
@@ -1265,3 +1269,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | M4 part 1, Query editor: CodeMirror 6 (owner-approved) with the connection's dialect and schema completion, tabs, run selection / statement at cursor, stop, `:name` parameters, results grid (row numbers, resizable, paging, copy), changing statements confirmed with what they touch, Read only and response-table protection, the database's problem on its line, history in the side panel, audit `data.query_run`. Mock runner for common SELECT / INSERT / UPDATE / DELETE. Tests: `datasources/sql`. |
 | 2026-10-05 | F12 | M4 part 2: saved queries (personal / shared, owner-only changes, run counts; Save with Ctrl / ⌘ + S, an unsaved-changes dot on the tab, a Saved tab in the side panel, `?saved=` links) and the Saved queries page (two chart cards, DataView table and cards, edit / share / delete), export of results (CSV / Excel / JSON, this page or up to 5,000 rows, through the explorer's export flow), Format (built-in SQL formatter). M4 complete. Tests: `datasources/sql` (format). |
 | 2026-10-05 | F12 | M5: Activity page (audit trail area `data`, kinds in `shared/utils/datasources/activity.ts`, insights `GET /datasources/activity/insights`, the audit panel per event), Exports opens Activity filtered to exports, overview marks every section live, seeded data events in the mock's history; phone (375) and tablet (768) sweep of all eight Data sources pages: no overflow. F12 complete; stopped for the owner's review. |
+| 2026-10-05 | F12 | Run all in the Query editor (`useQueryRunner.runAll`, a result tab per statement in `QueryOutput`, Ctrl / ⌘ + Shift + Enter) and a lazy tree (`useDatabaseTables`: names first with `columns=none`, up to 500 and server search beyond, columns per table from `GET /explorer/columns` when opened or named in the editor). PROGRESS tidy: every open F12 item resolved (done, or moved to F15e option sets, F22 permissions, later for scheduled exports). F12 still waiting for the owner's review. |

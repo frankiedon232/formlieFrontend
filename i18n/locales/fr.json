@@ -4802,7 +4802,8 @@
     "exportCapped": "{total} lignes correspondent ; un fichier en contient jusqu’à {max}. Affinez la liste avec la recherche ou les filtres pour exporter le reste.",
     "cellSaved": "{column} enregistré",
     "cellEditHint": "Double-cliquez pour modifier",
-    "cellEdit": "Modifier {column}"
+    "cellEdit": "Modifier {column}",
+    "treeTruncated": "{shown} tables affichées sur {n}. Recherchez pour trouver les autres."
   },
   "contextMenu": {
     "open": "Ouvrir",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} partagées"
       }
     },
-    "exportResult": "Le résultat ({n} ligne) | Le résultat ({n} lignes)"
+    "exportResult": "Le résultat ({n} ligne) | Le résultat ({n} lignes)",
+    "runAll": {
+      "button": "Tout exécuter",
+      "results": "Résultats par instruction",
+      "summary": "{done} sur {n} exécutées",
+      "skipped": "Non exécutée",
+      "skippedDesc": "Une instruction précédente a arrêté l’exécution. Corrigez-la et exécutez tout à nouveau."
+    }
   },
   "dataActivity": {
     "kind": {

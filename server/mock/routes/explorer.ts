@@ -3,7 +3,8 @@
  * F22. Everything runs on Formalie's servers through the connection (never from the browser);
  * a connection that isn't working answers with its error, a disabled one with FRM-DEST-1009.
  *
- *   GET  /datasources/:id/explorer/tables                     the tree: schemas, tables, columns
+ *   GET  /datasources/:id/explorer/tables                     the tree: schemas, tables (columns=none: names only; q, up to 500)
+ *   GET  /datasources/:id/explorer/columns?schema&table       one table's columns (loaded when it is opened)
  *   GET  /datasources/:id/explorer/structure?schema&table     columns, keys, indexes, definition
  *   GET  /datasources/:id/explorer/rows?schema&table&…        rows (paged, sorted, searched, filtered)
  *   GET  /datasources/:id/explorer/facets?schema&table        values of low-variety columns (filters)
@@ -101,11 +102,31 @@ function select(rows: TableRow[], query: Record<string, unknown>): TableRow[] {
 /** Rows are counted up to this many; beyond it the list says "10,000+" and keeps paging. */
 const COUNT_CAP = 10_000
 
-/** GET /datasources/:id/explorer/tables, the tree (fails like the connection does). */
-export const explorerTables = defineMockRoute(({ event }) => {
+/** The tree lists up to this many tables at once; the rest are found by searching. */
+const TREE_MAX = 500
+
+/**
+ * GET /datasources/:id/explorer/tables, the tree (fails like the connection does). `columns=none`
+ * lists names only (columns load per table, for very large databases); `q` searches table names;
+ * `page_size` up to 500; meta.total says how many there are.
+ */
+export const explorerTables = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAdmin(event)
   const source = usable(tenant, getRouterParam(event, 'id'))
-  return ok(tablesOf(source, createdTablesOn(tenant, source)))
+  const q = typeof query.q === 'string' ? query.q.trim().toLowerCase() : ''
+  const all = tablesOf(source, createdTablesOn(tenant, source)).filter(table => !q || `${table.schema}.${table.name}`.toLowerCase().includes(q))
+  const pageSize = Math.min(TREE_MAX, Math.max(1, Number(query.page_size) || TREE_MAX))
+  const list = all.slice(0, pageSize).map(table => (query.columns === 'none' ? { ...table, columns: [] } : table))
+  return ok(list, { page: 1, page_size: pageSize, total: all.length, total_pages: Math.max(1, Math.ceil(all.length / pageSize)) })
+})
+
+/** GET /datasources/:id/explorer/columns?schema&table, one table's columns (the tree, completion). */
+export const tableColumns = defineMockRoute(({ event, query }) => {
+  const { tenant } = requireAdmin(event)
+  const source = usable(tenant, getRouterParam(event, 'id'))
+  const table = tablesOf(source, createdTablesOn(tenant, source)).find(item => item.schema === String(query.schema ?? '') && item.name === String(query.table ?? ''))
+  if (!table) throw new MockError('FRM-GEN-1004')
+  return ok(table.columns)
 })
 
 export const tableStructure = defineMockRoute(({ event, query }) => {

@@ -4802,7 +4802,8 @@
     "exportCapped": "{total} baris cocok; satu file memuat hingga {max}. Persempit daftar dengan pencarian atau filter untuk mengekspor sisanya.",
     "cellSaved": "{column} disimpan",
     "cellEditHint": "Klik dua kali untuk mengedit",
-    "cellEdit": "Edit {column}"
+    "cellEdit": "Edit {column}",
+    "treeTruncated": "Menampilkan {shown} dari {n} tabel. Cari untuk menemukan yang lain."
   },
   "contextMenu": {
     "open": "Buka",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} dibagikan"
       }
     },
-    "exportResult": "Hasil ({n} baris) | Hasil ({n} baris)"
+    "exportResult": "Hasil ({n} baris) | Hasil ({n} baris)",
+    "runAll": {
+      "button": "Jalankan semua",
+      "results": "Hasil per pernyataan",
+      "summary": "{done} dari {n} dijalankan",
+      "skipped": "Tidak dijalankan",
+      "skippedDesc": "Pernyataan sebelumnya menghentikan proses. Perbaiki lalu jalankan semua lagi."
+    }
   },
   "dataActivity": {
     "kind": {

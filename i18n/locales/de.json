@@ -4802,7 +4802,8 @@
     "exportCapped": "{total} Zeilen passen; eine Datei enthält bis zu {max}. Grenzen Sie die Liste mit Suche oder Filtern ein, um den Rest zu exportieren.",
     "cellSaved": "{column} gespeichert",
     "cellEditHint": "Zum Bearbeiten doppelklicken",
-    "cellEdit": "{column} bearbeiten"
+    "cellEdit": "{column} bearbeiten",
+    "treeTruncated": "{shown} von {n} Tabellen angezeigt. Suchen Sie, um die anderen zu finden."
   },
   "contextMenu": {
     "open": "Öffnen",
@@ -4957,7 +4958,14 @@
         "sharedCount": "{n} geteilt"
       }
     },
-    "exportResult": "Das Ergebnis ({n} Zeile) | Das Ergebnis ({n} Zeilen)"
+    "exportResult": "Das Ergebnis ({n} Zeile) | Das Ergebnis ({n} Zeilen)",
+    "runAll": {
+      "button": "Alle ausführen",
+      "results": "Ergebnisse pro Anweisung",
+      "summary": "{done} von {n} ausgeführt",
+      "skipped": "Nicht ausgeführt",
+      "skippedDesc": "Eine frühere Anweisung hat den Lauf gestoppt. Korrigieren Sie sie und führen Sie alle erneut aus."
+    }
   },
   "dataActivity": {
     "kind": {

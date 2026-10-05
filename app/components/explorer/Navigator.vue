@@ -6,11 +6,11 @@
 -->
 <script setup lang="ts">
 import type { DataSourceRow } from '#shared/types/datasources'
-import type { DatabaseTable } from '#shared/types/destinations'
+import type { DatabaseTable, TableColumn } from '#shared/types/destinations'
 import type { ExplorerNode } from '#shared/types/explorer'
 
-const props = defineProps<{ sources: DataSourceRow[] | null; sourceId: string | null; tables: DatabaseTable[] | null; selected: string | null; loading?: boolean; menu?: (node: ExplorerNode) => ContextMenuGroups }>()
-const emit = defineEmits<{ source: [id: string]; select: [table: DatabaseTable] }>()
+const props = defineProps<{ sources: DataSourceRow[] | null; sourceId: string | null; tables: DatabaseTable[] | null; columns: Map<string, TableColumn[]>; truncated?: boolean; total?: number; selected: string | null; loading?: boolean; menu?: (node: ExplorerNode) => ContextMenuGroups }>()
+const emit = defineEmits<{ source: [id: string]; select: [table: DatabaseTable]; expand: [table: DatabaseTable]; search: [q: string] }>()
 const { t } = useI18n()
 
 // Right-click on a schema, table or column: its own menu (the page decides what it offers)
@@ -36,6 +36,6 @@ useContextMenu().register(root, target => {
       :aria-label="t('explorer.connection')"
       @update:model-value="value => emit('source', String(value))"
     />
-    <ExplorerTree v-if="sources?.length !== 0" :tables="tables" :selected="selected" :loading="loading" class="flex-1" @select="table => emit('select', table)" />
+    <ExplorerTree v-if="sources?.length !== 0" :tables="tables" :columns="columns" :truncated="truncated" :total="total" :selected="selected" :loading="loading" class="flex-1" @select="table => emit('select', table)" @expand="table => emit('expand', table)" @search="q => emit('search', q)" />
   </div>
 </template>
