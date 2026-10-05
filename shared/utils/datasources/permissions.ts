@@ -138,7 +138,7 @@ export const hasTablesSchema = (engine: DbEngine) => engine === 'postgresql' || 
 export function tablesSchemaOf(engine: DbEngine, settings: DataSourceSettings, access: DataSourceAccessSettings): string {
   switch (engine) {
     case 'postgresql':
-      return access.tables_schema || String(settings.schema || 'public')
+      return access.tables_schema || 'public'
     case 'sqlserver':
       return access.tables_schema || 'formalie'
     case 'oracle':
@@ -178,7 +178,7 @@ function otherSchemas(engine: DbEngine, settings: DataSourceSettings, access: Da
   const list = access.schemas.filter(Boolean)
   if (list.length) return list
   if (engine === 'mysql' || engine === 'mariadb') return [String(settings.database || 'your_database')]
-  if (engine === 'oracle') return [String(settings.schema || 'APP')]
+  if (engine === 'oracle') return ['YOUR_SCHEMA']
   return [defaultSchemaOf(engine, settings) || (engine === 'sqlserver' ? 'dbo' : 'public')]
 }
 

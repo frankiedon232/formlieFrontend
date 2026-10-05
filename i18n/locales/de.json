@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "Diese Verbindung ist deaktiviert. Aktivieren Sie sie zuerst.",
     "FRM-DEST-1010": "Formulare senden ihre Antworten noch an diese Verbindung.",
     "FRM-DEST-1011": "Die Datenbank hat zu lange für eine Antwort gebraucht.",
-    "FRM-DEST-1012": "Dieses Konto kann die Tabellen von Formalie nicht erstellen oder verwenden."
+    "FRM-DEST-1012": "Dieses Konto kann die Antworttabellen nicht erstellen oder verwenden."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -2985,7 +2985,6 @@
       "host": "Serveradresse",
       "port": "Port",
       "database": "Datenbank",
-      "schema": "Schema",
       "charset": "Zeichensatz",
       "time_zone": "Zeitzone der Sitzung",
       "connect_timeout": "Zeitlimit für die Verbindung (Sekunden)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "Wenn das Zertifikat auf einen anderen Namen als die Serveradresse ausgestellt ist.",
       "multi_subnet_failover": "Schnelleres Failover für Always On-Verfügbarkeitsgruppen über Subnetze hinweg.",
       "descriptor": "Easy Connect oder ein vollständiger TNS-Deskriptor, wie in tnsnames.ora.",
-      "schema": "Wo Formalie standardmäßig nach Tabellen sucht.",
       "postgresql": {
-        "schema": "Wo Formalie standardmäßig nach Tabellen sucht (Suchpfad).",
         "ssl_mode": "require verschlüsselt; verify-full prüft zusätzlich Zertifikat und Hostnamen (empfohlen)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "Nur für eine benannte Instanz. Lassen Sie den Port unverändert oder nutzen Sie den eigenen Port der Instanz.",
-        "schema": "Standardschema für den Formalie-Benutzer.",
         "encrypt": "Strikt nutzt TDS 8.0 und prüft immer das Zertifikat (SQL Server 2022 und Azure SQL)."
       },
       "oracle": {
-        "schema": "Das Schema (Eigentümer), dessen Tabellen Formalie verwendet. Leer: das eigene des Benutzers.",
         "protocol": "TCPS verschlüsselt mit TLS (empfohlen). TCP setzt auf native Netzwerkverschlüsselung."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "Ihre anderen Tabellen lesen",
       "write": "Ihre anderen Tabellen ändern",
-      "own": "Tabellen von Formalie"
+      "own": "Ihre Antworten"
     },
     "levelDesc": {
       "read": "Datenbank-Explorer, Abfragen, Optionslisten aus Ihren Daten",
@@ -3204,7 +3199,7 @@
         "account": "1. Das Konto (überspringen, um ein vorhandenes zu verwenden)",
         "read": "3. Ihre anderen Tabellen lesen",
         "write": "4. Ihre anderen Tabellen ändern",
-        "own": "2. Tabellen von Formalie (erforderlich)"
+        "own": "2. Ihre Antworten (erforderlich)"
       },
       "note": {
         "host_limit": "Ersetzen Sie '%' nach Möglichkeit durch die Adressen von Formalie, damit das Konto nur von dort aus funktioniert.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "Prüfen Sie den Namen der Datenbank (oder des Dienstes) und ob das Konto Zugriff darauf hat.",
       "FRM-DEST-1006": "Erteilen Sie die unten fehlenden Berechtigungen und testen Sie erneut.",
       "FRM-DEST-1011": "Der Server hat nicht rechtzeitig geantwortet. Prüfen Sie Adresse und Firewall oder erhöhen Sie das Zeitlimit unter Weitere Optionen.",
-      "FRM-DEST-1012": "Erteilen Sie die Berechtigungen unter „Tabellen von Formalie“ im Schritt Zugriff und testen Sie erneut. Sie werden zum Speichern der Antworten benötigt."
+      "FRM-DEST-1012": "Erteilen Sie die Berechtigungen unter „Ihre Antworten“ im Schritt Zugriff und testen Sie erneut. Sie sind zum Speichern der Antworten erforderlich."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "Nach jedem Eintrag Enter drücken. Leer: nur {schema}.",
       "databasesHint": "Nach jedem Eintrag Enter drücken. Leer: nur {schema}.",
       "permissionsTitle": "Zu erteilende Berechtigungen",
-      "permissionsDesc": "Erteilen Sie dem Konto diese, damit jede Funktion läuft. Die Tabellen von Formalie sind erforderlich; der Rest folgt Ihrer Auswahl oben.",
+      "permissionsDesc": "Erteilen Sie dem Konto diese, damit jede Funktion läuft. Ihre Antworten sind erforderlich; der Rest folgt Ihrer Auswahl für Ihre anderen Tabellen.",
       "tabOperations": "Was Formalie tut",
       "tabScript": "Auszuführende Anweisungen",
-      "ownTitle": "Tabellen von Formalie",
-      "ownDesc": "Formalie erstellt eine Tabelle pro Formular, speichert dort jede Antwort und liest sie zur Anzeige zurück. Es kann Zeilen ändern und entfernen sowie Spalten hinzufügen, nur in den eigenen Tabellen. Dafür ist eine Verbindung da.",
+      "ownTitle": "Ihre Antworten",
+      "ownDesc": "Formalie speichert hier die Antworten jedes Formulars, in Tabellen, die es erstellt und mit dem Präfix unten benennt. Es liest sie zur Anzeige zurück und kann Zeilen ändern und entfernen sowie Spalten hinzufügen, nur in den eigenen Tabellen.",
       "always": "Erforderlich",
       "prefix": "Präfix für Tabellennamen",
       "prefixDesc": "Jede Tabelle, die Formalie erstellt, beginnt damit, zum Beispiel {example}.",
-      "tablesSchema": "Schema für die Tabellen von Formalie",
-      "tablesDatabase": "Datenbank für die Tabellen von Formalie",
+      "tablesSchema": "Schema für die Antworttabellen",
+      "tablesDatabase": "Datenbank für die Antworttabellen",
       "tablesSchemaDesc": {
-        "postgresql": "Leer: das Schema der Verbindung. Formalie ist Eigentümer der Tabellen, die es dort erstellt.",
+        "postgresql": "Leer: public. Formalie ist Eigentümer der Tabellen, die es dort erstellt.",
         "sqlserver": "Ein eigenes Schema, das dem Konto gehört (erstellt durch die Anweisungen unten).",
         "oracle": "Das eigene Schema des Kontos, sodass Ihre Schemas unberührt bleiben.",
         "mysql": "Die Datenbank der Verbindung.",
@@ -3305,16 +3300,18 @@
         "none": "Nicht freigegeben"
       },
       "otherDesc": {
-        "read_write": "Durchsuchen, abfragen, als Optionslisten nutzen, Zeilen bearbeiten und Dateien importieren.",
-        "read": "Durchsuchen, abfragen und als Optionslisten nutzen. Darin ändert sich nichts.",
-        "none": "Formalie verwendet nur seine eigenen Tabellen."
+        "read_write": "Durchsuchen, abfragen, für Auswahllisten in Formularen nutzen, Zeilen bearbeiten und Dateien importieren.",
+        "read": "Durchsuchen, abfragen und für Auswahllisten in Formularen nutzen. Darin ändert sich nichts.",
+        "none": "Formalie sieht sie nicht. Es nutzt nur die eigenen Antworttabellen."
       },
-      "otherHint": "Optional und zum Speichern von Antworten nicht nötig. Sie können es später ändern.",
+      "otherHint": "Nicht für Antworten verwendet. Das sind Ihre bestehenden Tabellen, für den Explorer, Abfragen, Auswahllisten in Formularen und Importe. Sie können das später ändern.",
       "short": {
         "read_write": "Andere lesen und schreiben",
         "read": "Andere lesen",
-        "none": "Nur eigene Tabellen"
-      }
+        "none": "Nur Antworten"
+      },
+      "optional": "Optional",
+      "schemasHintOracle": "Drücken Sie Enter nach jedem Schema (Eigentümer), dessen Tabellen Formalie nutzen darf."
     },
     "summary": {
       "engine": "Datenbank",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "Nicht verschlüsselt",
       "ssh": "SSH-Tunnel",
       "change": "{item} ändern",
-      "tables": "Tabellen von Formalie"
+      "tables": "Antworten gespeichert in"
     },
     "wizard": {
       "newCrumb": "Verbindung hinzufügen",
@@ -3353,7 +3350,7 @@
         "server": "Wo befindet sie sich?",
         "signin": "Wie meldet sich Formalie an?",
         "security": "Wie ist die Verbindung geschützt?",
-        "access": "Wo Formalie Ihre Antworten speichert",
+        "access": "Wo Ihre Antworten gespeichert werden",
         "review": "Benennen und testen"
       },
       "desc": {

@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "Deze verbinding is uitgeschakeld. Schakel hem eerst in.",
     "FRM-DEST-1010": "Er zijn nog formulieren die hun reacties naar deze verbinding sturen.",
     "FRM-DEST-1011": "De database deed er te lang over om te antwoorden.",
-    "FRM-DEST-1012": "Dit account kan de tabellen van Formalie niet maken of gebruiken."
+    "FRM-DEST-1012": "Dit account kan de reactietabellen niet maken of gebruiken."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -2985,7 +2985,6 @@
       "host": "Serveradres",
       "port": "Poort",
       "database": "Database",
-      "schema": "Schema",
       "charset": "Tekenset",
       "time_zone": "Tijdzone van de sessie",
       "connect_timeout": "Tijdslimiet verbinding (seconden)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "Als het certificaat op een andere naam staat dan het serveradres.",
       "multi_subnet_failover": "Snellere failover voor Always On-beschikbaarheidsgroepen over subnetten heen.",
       "descriptor": "Easy Connect of een volledige TNS-descriptor, zoals in tnsnames.ora.",
-      "schema": "Waar Formalie standaard naar tabellen zoekt.",
       "postgresql": {
-        "schema": "Waar Formalie standaard naar tabellen zoekt (zoekpad).",
         "ssl_mode": "require versleutelt; verify-full controleert ook het certificaat en de hostnaam (aanbevolen)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "Alleen voor een benoemde instantie. Laat de poort staan, of gebruik de eigen poort van de instantie.",
-        "schema": "Standaardschema voor de Formalie-gebruiker.",
         "encrypt": "Strikt gebruikt TDS 8.0 en controleert altijd het certificaat (SQL Server 2022 en Azure SQL)."
       },
       "oracle": {
-        "schema": "Het schema (eigenaar) waarvan Formalie de tabellen gebruikt. Leeg: dat van de gebruiker zelf.",
         "protocol": "TCPS versleutelt met TLS (aanbevolen). TCP vertrouwt op native netwerkversleuteling."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "Uw andere tabellen lezen",
       "write": "Uw andere tabellen wijzigen",
-      "own": "Tabellen van Formalie"
+      "own": "Uw reacties"
     },
     "levelDesc": {
       "read": "Database-verkenner, query’s, optielijsten uit uw gegevens",
@@ -3204,7 +3199,7 @@
         "account": "1. Het account (sla over om een bestaand account te gebruiken)",
         "read": "3. Uw andere tabellen lezen",
         "write": "4. Uw andere tabellen wijzigen",
-        "own": "2. Tabellen van Formalie (vereist)"
+        "own": "2. Uw reacties (vereist)"
       },
       "note": {
         "host_limit": "Vervang indien mogelijk '%' door de adressen van Formalie, zodat het account alleen vanaf daar werkt.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "Controleer de naam van de database (of service), en of het account er toegang toe heeft.",
       "FRM-DEST-1006": "Ken de ontbrekende rechten hieronder toe en test daarna opnieuw.",
       "FRM-DEST-1011": "De server antwoordde niet op tijd. Controleer het adres en de firewall, of verhoog de tijdslimiet onder Meer opties.",
-      "FRM-DEST-1012": "Ken de rechten onder “Tabellen van Formalie” toe in de stap Toegang en test opnieuw. Ze zijn nodig om reacties op te slaan."
+      "FRM-DEST-1012": "Ken de rechten onder “Uw reacties” toe in de stap Toegang en test opnieuw. Ze zijn nodig om reacties op te slaan."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "Druk na elk item op Enter. Leeg: alleen {schema}.",
       "databasesHint": "Druk na elk item op Enter. Leeg: alleen {schema}.",
       "permissionsTitle": "Toe te kennen rechten",
-      "permissionsDesc": "Ken het account deze rechten toe zodat elke functie werkt. De tabellen van Formalie zijn vereist; de rest volgt uw keuze hierboven.",
+      "permissionsDesc": "Ken het account deze rechten toe zodat elke functie werkt. Uw reacties zijn vereist; de rest volgt uw keuze voor uw andere tabellen.",
       "tabOperations": "Wat Formalie doet",
       "tabScript": "Uit te voeren statements",
-      "ownTitle": "Tabellen van Formalie",
-      "ownDesc": "Formalie maakt een tabel per formulier, slaat daar elke reactie op en leest ze terug om ze te tonen. Het kan rijen wijzigen en verwijderen en kolommen toevoegen, alleen in de eigen tabellen. Daar dient een verbinding voor.",
+      "ownTitle": "Uw reacties",
+      "ownDesc": "Formalie slaat hier de reacties van elk formulier op, in tabellen die het zelf maakt en een naam geeft met het voorvoegsel hieronder. Het leest ze terug om ze te tonen en kan rijen wijzigen en verwijderen en kolommen toevoegen, alleen in de eigen tabellen.",
       "always": "Vereist",
       "prefix": "Voorvoegsel voor tabelnamen",
       "prefixDesc": "Elke tabel die Formalie maakt, begint hiermee, bijvoorbeeld {example}.",
-      "tablesSchema": "Schema voor de tabellen van Formalie",
-      "tablesDatabase": "Database voor de tabellen van Formalie",
+      "tablesSchema": "Schema voor de reactietabellen",
+      "tablesDatabase": "Database voor de reactietabellen",
       "tablesSchemaDesc": {
-        "postgresql": "Leeg: het schema van de verbinding. Formalie is eigenaar van de tabellen die het daar maakt.",
+        "postgresql": "Leeg: public. Formalie is eigenaar van de tabellen die het daar maakt.",
         "sqlserver": "Een eigen schema, eigendom van het account (gemaakt door de statements hieronder).",
         "oracle": "Het eigen schema van het account, zodat uw schema’s onaangeroerd blijven.",
         "mysql": "De database van de verbinding.",
@@ -3305,16 +3300,18 @@
         "none": "Niet gedeeld"
       },
       "otherDesc": {
-        "read_write": "Verkennen, query’s uitvoeren, als optielijsten gebruiken, rijen bewerken en bestanden importeren.",
-        "read": "Verkennen, query’s uitvoeren en als optielijsten gebruiken. Er verandert niets in.",
-        "none": "Formalie gebruikt alleen de eigen tabellen."
+        "read_write": "Verkennen, query’s uitvoeren, gebruiken voor keuzelijsten in formulieren, rijen bewerken en bestanden importeren.",
+        "read": "Verkennen, query’s uitvoeren en gebruiken voor keuzelijsten in formulieren. Er verandert niets in.",
+        "none": "Formalie kan ze niet zien. Het gebruikt alleen de eigen reactietabellen."
       },
-      "otherHint": "Optioneel, en niet nodig om reacties op te slaan. U kunt dit later wijzigen.",
+      "otherHint": "Niet gebruikt voor reacties. Dit zijn uw bestaande tabellen, voor de verkenner, query’s, keuzelijsten in formulieren en imports. U kunt dit later wijzigen.",
       "short": {
         "read_write": "Andere lezen en schrijven",
         "read": "Andere lezen",
-        "none": "Alleen eigen tabellen"
-      }
+        "none": "Alleen reacties"
+      },
+      "optional": "Optioneel",
+      "schemasHintOracle": "Druk op Enter na elk schema (eigenaar) waarvan Formalie de tabellen mag gebruiken."
     },
     "summary": {
       "engine": "Database",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "Niet versleuteld",
       "ssh": "SSH-tunnel",
       "change": "{item} wijzigen",
-      "tables": "Tabellen van Formalie"
+      "tables": "Reacties opgeslagen in"
     },
     "wizard": {
       "newCrumb": "Verbinding toevoegen",
@@ -3353,7 +3350,7 @@
         "server": "Waar staat hij?",
         "signin": "Hoe meldt Formalie zich aan?",
         "security": "Hoe is de verbinding beveiligd?",
-        "access": "Waar Formalie uw reacties bewaart",
+        "access": "Waar uw reacties worden opgeslagen",
         "review": "Geef hem een naam en test hem"
       },
       "desc": {

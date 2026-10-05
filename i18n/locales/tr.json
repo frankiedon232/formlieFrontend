@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "Bu bağlantı devre dışı. Önce etkinleştirin.",
     "FRM-DEST-1010": "Formlar yanıtlarını hâlâ bu bağlantıya gönderiyor.",
     "FRM-DEST-1011": "Veritabanının yanıt vermesi çok uzun sürdü.",
-    "FRM-DEST-1012": "Bu hesap Formalie’nin tablolarını oluşturamıyor veya kullanamıyor."
+    "FRM-DEST-1012": "Bu hesap yanıt tablolarını oluşturamıyor veya kullanamıyor."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -2985,7 +2985,6 @@
       "host": "Sunucu adresi",
       "port": "Bağlantı noktası",
       "database": "Veritabanı",
-      "schema": "Şema",
       "charset": "Karakter kümesi",
       "time_zone": "Oturum saat dilimi",
       "connect_timeout": "Bağlantı zaman sınırı (saniye)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "Sertifika, sunucu adresinden farklı bir ada verildiğinde.",
       "multi_subnet_failover": "Alt ağlara yayılan Always On kullanılabilirlik grupları için daha hızlı yük devretme.",
       "descriptor": "tnsnames.ora’daki gibi Easy Connect veya tam bir TNS tanımlayıcısı.",
-      "schema": "Formalie’nin tabloları varsayılan olarak aradığı yer.",
       "postgresql": {
-        "schema": "Formalie’nin tabloları varsayılan olarak aradığı yer (search path).",
         "ssl_mode": "require şifreler; verify-full ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "Yalnızca adlandırılmış bir örnek için. Bağlantı noktasını olduğu gibi bırakın veya örneğin kendi bağlantı noktasını girin.",
-        "schema": "Formalie kullanıcısının varsayılan şeması.",
         "encrypt": "Katı, TDS 8.0 kullanır ve sertifikayı her zaman kontrol eder (SQL Server 2022 ve Azure SQL)."
       },
       "oracle": {
-        "schema": "Formalie’nin tablolarını kullandığı şema (sahip). Boş: kullanıcının kendi şeması.",
         "protocol": "TCPS, TLS ile şifreler (önerilir). TCP, yerel ağ şifrelemesine dayanır."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "Diğer tablolarınızı okuma",
       "write": "Diğer tablolarınızı değiştirme",
-      "own": "Formalie’nin tabloları"
+      "own": "Yanıtlarınız"
     },
     "levelDesc": {
       "read": "Veritabanı gezgini, sorgular, verilerinizden seçenek listeleri",
@@ -3204,7 +3199,7 @@
         "account": "1. Hesap (mevcut bir hesabı kullanmak için atlayın)",
         "read": "3. Diğer tablolarınızı okuma",
         "write": "4. Diğer tablolarınızı değiştirme",
-        "own": "2. Formalie’nin tabloları (gerekli)"
+        "own": "2. Yanıtlarınız (gerekli)"
       },
       "note": {
         "host_limit": "Mümkünse '%' yerine Formalie’nin adreslerini yazın, böylece hesap yalnızca oradan çalışır.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "Veritabanı (veya hizmet) adını ve hesabın ona erişimi olduğunu kontrol edin.",
       "FRM-DEST-1006": "Aşağıdaki eksik izinleri verin, ardından yeniden test edin.",
       "FRM-DEST-1011": "Sunucu zamanında yanıt vermedi. Adresi ve güvenlik duvarını kontrol edin veya Diğer seçenekler altında zaman sınırını artırın.",
-      "FRM-DEST-1012": "Erişim adımında “Formalie’nin tabloları” altındaki izinleri verin, sonra yeniden test edin. Yanıtları saklamak için gereklidir."
+      "FRM-DEST-1012": "Erişim adımında “Yanıtlarınız” altındaki izinleri verin, sonra yeniden test edin. Yanıtları saklamak için gereklidir."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
       "databasesHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
       "permissionsTitle": "Verilecek izinler",
-      "permissionsDesc": "Her özelliğin çalışması için hesaba bunları verin. Formalie’nin tabloları gereklidir; gerisi yukarıdaki seçiminize göre belirlenir.",
+      "permissionsDesc": "Her özelliğin çalışması için hesaba bunları verin. Yanıtlarınız gereklidir; gerisi diğer tablolarınız için yaptığınız seçime göre belirlenir.",
       "tabOperations": "Formalie ne yapar",
       "tabScript": "Çalıştırılacak komutlar",
-      "ownTitle": "Formalie’nin tabloları",
-      "ownDesc": "Formalie her form için bir tablo oluşturur, her yanıtı orada saklar ve göstermek için geri okur. Yalnızca kendi tablolarında satırları değiştirebilir, silebilir ve sütun ekleyebilir. Bağlantı tam olarak bunun içindir.",
+      "ownTitle": "Yanıtlarınız",
+      "ownDesc": "Formalie her formun yanıtlarını burada, kendi oluşturduğu ve aşağıdaki önekle adlandırdığı tablolarda saklar. Göstermek için onları geri okur; yalnızca kendi tablolarında satırları değiştirebilir, silebilir ve sütun ekleyebilir.",
       "always": "Gerekli",
       "prefix": "Tablo adı öneki",
       "prefixDesc": "Formalie’nin oluşturduğu her tablo bununla başlar, örneğin {example}.",
-      "tablesSchema": "Formalie’nin tabloları için şema",
-      "tablesDatabase": "Formalie’nin tabloları için veritabanı",
+      "tablesSchema": "Yanıt tabloları için şema",
+      "tablesDatabase": "Yanıt tabloları için veritabanı",
       "tablesSchemaDesc": {
-        "postgresql": "Boş: bağlantının şeması. Formalie orada oluşturduğu tabloların sahibidir.",
+        "postgresql": "Boş: public. Formalie orada oluşturduğu tabloların sahibidir.",
         "sqlserver": "Hesabın sahibi olduğu ayrı bir şema (aşağıdaki komutlarla oluşturulur).",
         "oracle": "Hesabın kendi şeması, böylece şemalarınıza dokunulmaz.",
         "mysql": "Bağlantının veritabanı.",
@@ -3305,16 +3300,18 @@
         "none": "Paylaşılmıyor"
       },
       "otherDesc": {
-        "read_write": "Gezinme, sorgulama, seçenek listesi olarak kullanma, satır düzenleme ve dosya içe aktarma.",
-        "read": "Gezinme, sorgulama ve seçenek listesi olarak kullanma. İçlerinde hiçbir şey değişmez.",
-        "none": "Formalie yalnızca kendi tablolarını kullanır."
+        "read_write": "Gezinme, sorgulama, formlarda açılır listeler için kullanma, satır düzenleme ve dosya içe aktarma.",
+        "read": "Gezinme, sorgulama ve formlarda açılır listeler için kullanma. İçlerinde hiçbir şey değişmez.",
+        "none": "Formalie bunları göremez. Yalnızca kendi yanıt tablolarını kullanır."
       },
-      "otherHint": "İsteğe bağlıdır ve yanıtları saklamak için gerekmez. Daha sonra değiştirebilirsiniz.",
+      "otherHint": "Yanıtlar için kullanılmaz. Bunlar mevcut tablolarınızdır; gezgin, sorgular, formlardaki açılır listeler ve içe aktarmalar içindir. Daha sonra değiştirebilirsiniz.",
       "short": {
         "read_write": "Diğerlerini okuma ve yazma",
         "read": "Diğerlerini okuma",
-        "none": "Yalnızca kendi tabloları"
-      }
+        "none": "Yalnızca yanıtlar"
+      },
+      "optional": "İsteğe bağlı",
+      "schemasHintOracle": "Formalie’nin tablolarını kullanabileceği her şemadan (sahip) sonra Enter’a basın."
     },
     "summary": {
       "engine": "Veritabanı",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "Şifresiz",
       "ssh": "SSH tüneli",
       "change": "Değiştir: {item}",
-      "tables": "Formalie’nin tabloları"
+      "tables": "Yanıtların saklandığı yer"
     },
     "wizard": {
       "newCrumb": "Bağlantı ekle",
@@ -3353,7 +3350,7 @@
         "server": "Nerede?",
         "signin": "Formalie nasıl oturum açar?",
         "security": "Bağlantı nasıl korunuyor?",
-        "access": "Formalie yanıtlarınızı nerede saklar",
+        "access": "Yanıtlarınız nerede saklanır",
         "review": "Adlandırın ve test edin"
       },
       "desc": {

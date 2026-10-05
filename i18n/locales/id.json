@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "Koneksi ini dinonaktifkan. Aktifkan terlebih dahulu.",
     "FRM-DEST-1010": "Masih ada formulir yang mengirim responsnya ke koneksi ini.",
     "FRM-DEST-1011": "Database terlalu lama merespons.",
-    "FRM-DEST-1012": "Akun ini tidak dapat membuat atau menggunakan tabel Formalie."
+    "FRM-DEST-1012": "Akun ini tidak dapat membuat atau menggunakan tabel respons."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -2985,7 +2985,6 @@
       "host": "Alamat server",
       "port": "Port",
       "database": "Database",
-      "schema": "Skema",
       "charset": "Set karakter",
       "time_zone": "Zona waktu sesi",
       "connect_timeout": "Batas waktu koneksi (detik)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "Jika sertifikat diterbitkan untuk nama lain selain alamat server.",
       "multi_subnet_failover": "Failover lebih cepat untuk grup ketersediaan Always On di beberapa subnet.",
       "descriptor": "Easy Connect atau deskriptor TNS lengkap, seperti di tnsnames.ora.",
-      "schema": "Tempat Formalie mencari tabel secara default.",
       "postgresql": {
-        "schema": "Tempat Formalie mencari tabel secara default (search path).",
         "ssl_mode": "require mengenkripsi; verify-full juga memeriksa sertifikat dan nama host (disarankan)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "Hanya untuk instans bernama. Biarkan port apa adanya, atau isi port milik instans tersebut.",
-        "schema": "Skema default untuk pengguna Formalie.",
         "encrypt": "Ketat menggunakan TDS 8.0 dan selalu memeriksa sertifikat (SQL Server 2022 dan Azure SQL)."
       },
       "oracle": {
-        "schema": "Skema (pemilik) yang tabelnya digunakan Formalie. Kosong: skema milik pengguna.",
         "protocol": "TCPS mengenkripsi dengan TLS (disarankan). TCP mengandalkan enkripsi jaringan native."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "Membaca tabel Anda yang lain",
       "write": "Mengubah tabel Anda yang lain",
-      "own": "Tabel Formalie"
+      "own": "Respons Anda"
     },
     "levelDesc": {
       "read": "Penjelajah database, kueri, daftar opsi dari data Anda",
@@ -3204,7 +3199,7 @@
         "account": "1. Akun (lewati untuk menggunakan akun yang sudah ada)",
         "read": "3. Membaca tabel Anda yang lain",
         "write": "4. Mengubah tabel Anda yang lain",
-        "own": "2. Tabel Formalie (wajib)"
+        "own": "2. Respons Anda (wajib)"
       },
       "note": {
         "host_limit": "Jika bisa, ganti '%' dengan alamat Formalie agar akun hanya berfungsi dari sana.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "Periksa nama database (atau layanan), serta pastikan akun memiliki akses ke sana.",
       "FRM-DEST-1006": "Berikan izin yang belum ada di bawah, lalu uji lagi.",
       "FRM-DEST-1011": "Server tidak merespons tepat waktu. Periksa alamat, firewall, atau naikkan batas waktu di Opsi lainnya.",
-      "FRM-DEST-1012": "Berikan izin di bawah “Tabel Formalie” pada langkah Akses, lalu uji lagi. Izin ini diperlukan untuk menyimpan respons."
+      "FRM-DEST-1012": "Berikan izin di bawah “Respons Anda” pada langkah Akses, lalu uji lagi. Izin ini wajib untuk menyimpan respons."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
       "databasesHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
       "permissionsTitle": "Izin yang perlu diberikan",
-      "permissionsDesc": "Berikan izin ini ke akun agar setiap fitur berfungsi. Tabel Formalie wajib; sisanya mengikuti pilihan Anda di atas.",
+      "permissionsDesc": "Berikan izin ini ke akun agar setiap fitur berfungsi. Respons Anda wajib; sisanya mengikuti pilihan Anda untuk tabel Anda yang lain.",
       "tabOperations": "Yang dilakukan Formalie",
       "tabScript": "Pernyataan untuk dijalankan",
-      "ownTitle": "Tabel Formalie",
-      "ownDesc": "Formalie membuat satu tabel untuk setiap formulir, menyimpan setiap respons di sana, dan membacanya kembali untuk menampilkannya. Formalie dapat mengubah serta menghapus baris dan menambah kolom, hanya di tabelnya sendiri. Inilah fungsi sebuah koneksi.",
+      "ownTitle": "Respons Anda",
+      "ownDesc": "Formalie menyimpan respons setiap formulir di sini, dalam tabel yang dibuatnya dan dinamai dengan awalan di bawah. Formalie membacanya kembali untuk menampilkannya, dan dapat mengubah serta menghapus baris dan menambah kolom, hanya di tabelnya sendiri.",
       "always": "Wajib",
       "prefix": "Awalan nama tabel",
       "prefixDesc": "Setiap tabel yang dibuat Formalie diawali dengan ini, misalnya {example}.",
-      "tablesSchema": "Skema untuk tabel Formalie",
-      "tablesDatabase": "Database untuk tabel Formalie",
+      "tablesSchema": "Skema untuk tabel respons",
+      "tablesDatabase": "Database untuk tabel respons",
       "tablesSchemaDesc": {
-        "postgresql": "Kosong: skema koneksi. Formalie memiliki tabel yang dibuatnya di sana.",
+        "postgresql": "Kosong: public. Formalie memiliki tabel yang dibuatnya di sana.",
         "sqlserver": "Skema tersendiri yang dimiliki akun (dibuat oleh pernyataan di bawah).",
         "oracle": "Skema milik akun itu sendiri, sehingga skema Anda tidak tersentuh.",
         "mysql": "Database koneksi.",
@@ -3305,16 +3300,18 @@
         "none": "Tidak dibagikan"
       },
       "otherDesc": {
-        "read_write": "Menjelajahi, membuat kueri, menggunakan sebagai daftar opsi, mengedit baris, dan mengimpor file.",
-        "read": "Menjelajahi, membuat kueri, dan menggunakan sebagai daftar opsi. Tidak ada yang berubah di dalamnya.",
-        "none": "Formalie hanya menggunakan tabelnya sendiri."
+        "read_write": "Jelajahi, kueri, gunakan untuk daftar dropdown di formulir, edit baris, dan impor file.",
+        "read": "Jelajahi, kueri, dan gunakan untuk daftar dropdown di formulir. Tidak ada yang berubah di dalamnya.",
+        "none": "Formalie tidak dapat melihatnya. Formalie hanya menggunakan tabel responsnya sendiri."
       },
-      "otherHint": "Opsional, dan tidak diperlukan untuk menyimpan respons. Anda dapat mengubahnya nanti.",
+      "otherHint": "Tidak digunakan untuk respons. Ini adalah tabel yang sudah Anda miliki, untuk penjelajah, kueri, daftar dropdown di formulir, dan impor. Anda dapat mengubahnya nanti.",
       "short": {
         "read_write": "Baca dan tulis lainnya",
         "read": "Baca lainnya",
-        "none": "Hanya tabel sendiri"
-      }
+        "none": "Hanya respons"
+      },
+      "optional": "Opsional",
+      "schemasHintOracle": "Tekan Enter setelah setiap skema (pemilik) yang tabelnya boleh digunakan Formalie."
     },
     "summary": {
       "engine": "Database",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "Tidak terenkripsi",
       "ssh": "Tunnel SSH",
       "change": "Ubah {item}",
-      "tables": "Tabel Formalie"
+      "tables": "Respons disimpan di"
     },
     "wizard": {
       "newCrumb": "Tambah koneksi",
@@ -3353,7 +3350,7 @@
         "server": "Di mana lokasinya?",
         "signin": "Bagaimana Formalie masuk?",
         "security": "Bagaimana koneksi dilindungi?",
-        "access": "Tempat Formalie menyimpan respons Anda",
+        "access": "Tempat respons Anda disimpan",
         "review": "Beri nama dan uji"
       },
       "desc": {

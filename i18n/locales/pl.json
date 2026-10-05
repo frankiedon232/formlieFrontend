@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "To połączenie jest wyłączone. Najpierw je włącz.",
     "FRM-DEST-1010": "Formularze nadal wysyłają odpowiedzi do tego połączenia.",
     "FRM-DEST-1011": "Baza danych zbyt długo nie odpowiadała.",
-    "FRM-DEST-1012": "To konto nie może tworzyć ani używać tabel Formalie."
+    "FRM-DEST-1012": "To konto nie może tworzyć ani używać tabel odpowiedzi."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -2985,7 +2985,6 @@
       "host": "Adres serwera",
       "port": "Port",
       "database": "Baza danych",
-      "schema": "Schemat",
       "charset": "Zestaw znaków",
       "time_zone": "Strefa czasowa sesji",
       "connect_timeout": "Limit czasu połączenia (sekundy)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "Gdy certyfikat wystawiono na inną nazwę niż adres serwera.",
       "multi_subnet_failover": "Szybsze przełączanie awaryjne dla grup dostępności Always On w wielu podsieciach.",
       "descriptor": "Easy Connect lub pełny deskryptor TNS, jak w tnsnames.ora.",
-      "schema": "Gdzie Formalie domyślnie szuka tabel.",
       "postgresql": {
-        "schema": "Gdzie Formalie domyślnie szuka tabel (ścieżka wyszukiwania).",
         "ssl_mode": "require szyfruje; verify-full dodatkowo sprawdza certyfikat i nazwę hosta (zalecane)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "Tylko dla nazwanej instancji. Zostaw port bez zmian albo podaj port tej instancji.",
-        "schema": "Domyślny schemat użytkownika Formalie.",
         "encrypt": "Ścisłe używa TDS 8.0 i zawsze sprawdza certyfikat (SQL Server 2022 i Azure SQL)."
       },
       "oracle": {
-        "schema": "Schemat (właściciel), którego tabel używa Formalie. Puste: schemat użytkownika.",
         "protocol": "TCPS szyfruje za pomocą TLS (zalecane). TCP opiera się na natywnym szyfrowaniu sieciowym."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "Odczyt pozostałych tabel",
       "write": "Zmiana pozostałych tabel",
-      "own": "Tabele Formalie"
+      "own": "Twoje odpowiedzi"
     },
     "levelDesc": {
       "read": "Eksplorator baz, zapytania, listy opcji z Twoich danych",
@@ -3204,7 +3199,7 @@
         "account": "1. Konto (pomiń, aby użyć istniejącego)",
         "read": "3. Odczyt pozostałych tabel",
         "write": "4. Zmiana pozostałych tabel",
-        "own": "2. Tabele Formalie (wymagane)"
+        "own": "2. Twoje odpowiedzi (wymagane)"
       },
       "note": {
         "host_limit": "Jeśli możesz, zastąp '%' adresami Formalie, aby konto działało tylko z nich.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "Sprawdź nazwę bazy danych (lub usługi) oraz czy konto ma do niej dostęp.",
       "FRM-DEST-1006": "Nadaj brakujące uprawnienia poniżej, a potem przetestuj ponownie.",
       "FRM-DEST-1011": "Serwer nie odpowiedział na czas. Sprawdź adres i zaporę albo zwiększ limit czasu w sekcji Więcej opcji.",
-      "FRM-DEST-1012": "Nadaj uprawnienia z sekcji „Tabele Formalie” w kroku Dostęp, a potem przetestuj ponownie. Są wymagane do zapisywania odpowiedzi."
+      "FRM-DEST-1012": "Nadaj uprawnienia z sekcji „Twoje odpowiedzi” w kroku Dostęp, a potem przetestuj ponownie. Są wymagane do zapisywania odpowiedzi."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "Naciśnij Enter po każdej pozycji. Puste: tylko {schema}.",
       "databasesHint": "Naciśnij Enter po każdej pozycji. Puste: tylko {schema}.",
       "permissionsTitle": "Uprawnienia do nadania",
-      "permissionsDesc": "Nadaj kontu te uprawnienia, aby każda funkcja działała. Tabele Formalie są wymagane; reszta zależy od Twojego wyboru powyżej.",
+      "permissionsDesc": "Nadaj kontu te uprawnienia, aby każda funkcja działała. Twoje odpowiedzi są wymagane; reszta zależy od Twojego wyboru dla pozostałych tabel.",
       "tabOperations": "Co robi Formalie",
       "tabScript": "Polecenia do uruchomienia",
-      "ownTitle": "Tabele Formalie",
-      "ownDesc": "Formalie tworzy tabelę dla każdego formularza, zapisuje w niej każdą odpowiedź i odczytuje je, aby je wyświetlić. Może zmieniać i usuwać wiersze oraz dodawać kolumny, wyłącznie we własnych tabelach. Do tego służy połączenie.",
+      "ownTitle": "Twoje odpowiedzi",
+      "ownDesc": "Formalie zapisuje tutaj odpowiedzi z każdego formularza, w tabelach, które tworzy i nazywa z prefiksem poniżej. Odczytuje je, aby je wyświetlić, może zmieniać i usuwać wiersze oraz dodawać kolumny, wyłącznie we własnych tabelach.",
       "always": "Wymagane",
       "prefix": "Prefiks nazw tabel",
       "prefixDesc": "Od niego zaczyna się każda tabela tworzona przez Formalie, na przykład {example}.",
-      "tablesSchema": "Schemat dla tabel Formalie",
-      "tablesDatabase": "Baza danych dla tabel Formalie",
+      "tablesSchema": "Schemat dla tabel odpowiedzi",
+      "tablesDatabase": "Baza danych dla tabel odpowiedzi",
       "tablesSchemaDesc": {
-        "postgresql": "Puste: schemat połączenia. Formalie jest właścicielem tabel, które w nim tworzy.",
+        "postgresql": "Puste: public. Formalie jest właścicielem tabel, które w nim tworzy.",
         "sqlserver": "Osobny schemat, którego właścicielem jest konto (tworzony przez poniższe polecenia).",
         "oracle": "Własny schemat konta, więc Twoje schematy pozostają nietknięte.",
         "mysql": "Baza danych połączenia.",
@@ -3305,16 +3300,18 @@
         "none": "Nieudostępniane"
       },
       "otherDesc": {
-        "read_write": "Przeglądanie, zapytania, użycie jako list opcji, edycja wierszy i import plików.",
-        "read": "Przeglądanie, zapytania i użycie jako list opcji. Nic się w nich nie zmienia.",
-        "none": "Formalie używa tylko własnych tabel."
+        "read_write": "Przeglądanie, zapytania, użycie w listach rozwijanych w formularzach, edycja wierszy i import plików.",
+        "read": "Przeglądanie, zapytania i użycie w listach rozwijanych w formularzach. Nic się w nich nie zmienia.",
+        "none": "Formalie ich nie widzi. Używa tylko własnych tabel odpowiedzi."
       },
-      "otherHint": "Opcjonalne i niepotrzebne do zapisywania odpowiedzi. Możesz to zmienić później.",
+      "otherHint": "Nieużywane do odpowiedzi. To tabele, które już masz, dla eksploratora, zapytań, list rozwijanych w formularzach i importu. Możesz to zmienić później.",
       "short": {
         "read_write": "Odczyt i zapis pozostałych",
         "read": "Odczyt pozostałych",
-        "none": "Tylko własne tabele"
-      }
+        "none": "Tylko odpowiedzi"
+      },
+      "optional": "Opcjonalne",
+      "schemasHintOracle": "Naciśnij Enter po każdym schemacie (właścicielu), którego tabel Formalie może używać."
     },
     "summary": {
       "engine": "Baza danych",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "Nieszyfrowane",
       "ssh": "Tunel SSH",
       "change": "Zmień: {item}",
-      "tables": "Tabele Formalie"
+      "tables": "Odpowiedzi przechowywane w"
     },
     "wizard": {
       "newCrumb": "Dodaj połączenie",
@@ -3353,7 +3350,7 @@
         "server": "Gdzie się znajduje?",
         "signin": "Jak loguje się Formalie?",
         "security": "Jak chronione jest połączenie?",
-        "access": "Gdzie Formalie przechowuje Twoje odpowiedzi",
+        "access": "Gdzie są przechowywane Twoje odpowiedzi",
         "review": "Nadaj nazwę i przetestuj"
       },
       "desc": {

@@ -21,9 +21,10 @@ describe('engine catalogue', () => {
   })
 
   it('uses each engine’s own properties', () => {
-    expect(defaultSettings('postgresql')).toMatchObject({ port: 5432, schema: 'public', ssl_mode: 'require' })
+    expect(defaultSettings('postgresql')).toMatchObject({ port: 5432, ssl_mode: 'require' })
+    expect(defaultSettings('postgresql')).not.toHaveProperty('schema')
     expect(defaultSettings('mysql')).toMatchObject({ port: 3306, charset: 'utf8mb4', ssl_mode: 'required' })
-    expect(defaultSettings('sqlserver')).toMatchObject({ port: 1433, schema: 'dbo', auth: 'sql', encrypt: 'mandatory', trust_server_certificate: false })
+    expect(defaultSettings('sqlserver')).toMatchObject({ port: 1433, auth: 'sql', encrypt: 'mandatory', trust_server_certificate: false })
     expect(defaultSettings('oracle')).toMatchObject({ port: 1521, connect_by: 'service_name', protocol: 'tcps' })
   })
 
@@ -109,8 +110,8 @@ describe('permissions', () => {
     expect(sql).not.toContain('GRANT INSERT')
     expect(script('sqlserver', { database: 'People', auth: 'entra_service_principal', client_id: 'abc' }, readOnly)).toContain('FROM EXTERNAL PROVIDER')
 
-    expect(script('oracle', { schema: 'finance', username: 'app' }, full, { oracle23: true })).toContain('GRANT SELECT ANY TABLE ON SCHEMA "FINANCE" TO "APP";')
-    const oracle19 = script('oracle', { schema: 'finance', username: 'app' }, full)
+    expect(script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] }, { oracle23: true })).toContain('GRANT SELECT ANY TABLE ON SCHEMA "FINANCE" TO "APP";')
+    const oracle19 = script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] })
     expect(oracle19).toContain("FROM all_sequences WHERE sequence_owner = 'FINANCE'")
     expect(oracle19).toContain('GRANT CREATE TABLE, CREATE SEQUENCE TO "APP";')
   })

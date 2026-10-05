@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "Kết nối này đang tắt. Hãy bật trước.",
     "FRM-DEST-1010": "Vẫn có biểu mẫu gửi phản hồi đến kết nối này.",
     "FRM-DEST-1011": "Cơ sở dữ liệu phản hồi quá lâu.",
-    "FRM-DEST-1012": "Tài khoản này không thể tạo hoặc dùng các bảng của Formalie."
+    "FRM-DEST-1012": "Tài khoản này không thể tạo hoặc dùng các bảng phản hồi."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -2985,7 +2985,6 @@
       "host": "Địa chỉ máy chủ",
       "port": "Cổng",
       "database": "Cơ sở dữ liệu",
-      "schema": "Lược đồ",
       "charset": "Bộ ký tự",
       "time_zone": "Múi giờ phiên",
       "connect_timeout": "Giới hạn thời gian kết nối (giây)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "Khi chứng chỉ được cấp cho một tên khác với địa chỉ máy chủ.",
       "multi_subnet_failover": "Chuyển đổi dự phòng nhanh hơn cho nhóm khả dụng Always On trên nhiều mạng con.",
       "descriptor": "Easy Connect hoặc descriptor TNS đầy đủ, như trong tnsnames.ora.",
-      "schema": "Nơi Formalie tìm bảng theo mặc định.",
       "postgresql": {
-        "schema": "Nơi Formalie tìm bảng theo mặc định (search path).",
         "ssl_mode": "require mã hóa; verify-full còn kiểm tra chứng chỉ và tên máy chủ (khuyến nghị)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "Chỉ cho phiên bản có tên. Giữ nguyên cổng, hoặc dùng cổng riêng của phiên bản.",
-        "schema": "Lược đồ mặc định cho người dùng Formalie.",
         "encrypt": "Nghiêm ngặt dùng TDS 8.0 và luôn kiểm tra chứng chỉ (SQL Server 2022 và Azure SQL)."
       },
       "oracle": {
-        "schema": "Lược đồ (chủ sở hữu) có các bảng Formalie dùng. Để trống: lược đồ của chính người dùng.",
         "protocol": "TCPS mã hóa bằng TLS (khuyến nghị). TCP dựa vào mã hóa mạng gốc."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "Đọc các bảng khác của bạn",
       "write": "Thay đổi các bảng khác của bạn",
-      "own": "Bảng của Formalie"
+      "own": "Phản hồi của bạn"
     },
     "levelDesc": {
       "read": "Trình duyệt CSDL, truy vấn, danh sách lựa chọn từ dữ liệu của bạn",
@@ -3204,7 +3199,7 @@
         "account": "1. Tài khoản (bỏ qua để dùng tài khoản sẵn có)",
         "read": "3. Đọc các bảng khác của bạn",
         "write": "4. Thay đổi các bảng khác của bạn",
-        "own": "2. Bảng của Formalie (bắt buộc)"
+        "own": "2. Phản hồi của bạn (bắt buộc)"
       },
       "note": {
         "host_limit": "Nếu có thể, hãy thay '%' bằng địa chỉ của Formalie để tài khoản chỉ hoạt động từ đó.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "Kiểm tra tên cơ sở dữ liệu (hoặc dịch vụ), và tài khoản có quyền truy cập không.",
       "FRM-DEST-1006": "Cấp các quyền còn thiếu bên dưới, rồi kiểm tra lại.",
       "FRM-DEST-1011": "Máy chủ không phản hồi kịp. Kiểm tra địa chỉ, tường lửa, hoặc tăng giới hạn thời gian trong Tùy chọn khác.",
-      "FRM-DEST-1012": "Cấp các quyền trong mục “Bảng của Formalie” ở bước Quyền truy cập, rồi kiểm tra lại. Các quyền này là bắt buộc để lưu phản hồi."
+      "FRM-DEST-1012": "Cấp các quyền trong mục “Phản hồi của bạn” ở bước Quyền truy cập, rồi kiểm tra lại. Các quyền này là bắt buộc để lưu phản hồi."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "Nhấn Enter sau mỗi mục. Để trống: chỉ {schema}.",
       "databasesHint": "Nhấn Enter sau mỗi mục. Để trống: chỉ {schema}.",
       "permissionsTitle": "Quyền cần cấp",
-      "permissionsDesc": "Cấp các quyền này cho tài khoản để mọi tính năng hoạt động. Bảng của Formalie là bắt buộc; phần còn lại theo lựa chọn của bạn ở trên.",
+      "permissionsDesc": "Cấp các quyền này cho tài khoản để mọi tính năng hoạt động. Phản hồi của bạn là bắt buộc; phần còn lại theo lựa chọn của bạn cho các bảng khác.",
       "tabOperations": "Formalie làm gì",
       "tabScript": "Câu lệnh cần chạy",
-      "ownTitle": "Bảng của Formalie",
-      "ownDesc": "Formalie tạo một bảng cho mỗi biểu mẫu, lưu mọi phản hồi ở đó và đọc lại để hiển thị. Nó có thể thay đổi, xóa hàng và thêm cột, chỉ trong các bảng của chính nó. Đây chính là mục đích của kết nối.",
+      "ownTitle": "Phản hồi của bạn",
+      "ownDesc": "Formalie lưu phản hồi của mọi biểu mẫu tại đây, trong các bảng nó tự tạo và đặt tên với tiền tố bên dưới. Nó đọc lại để hiển thị, có thể thay đổi, xóa hàng và thêm cột, chỉ trong các bảng của chính nó.",
       "always": "Bắt buộc",
       "prefix": "Tiền tố tên bảng",
       "prefixDesc": "Mọi bảng Formalie tạo đều bắt đầu bằng tiền tố này, ví dụ {example}.",
-      "tablesSchema": "Lược đồ cho bảng của Formalie",
-      "tablesDatabase": "Cơ sở dữ liệu cho bảng của Formalie",
+      "tablesSchema": "Lược đồ cho các bảng phản hồi",
+      "tablesDatabase": "Cơ sở dữ liệu cho các bảng phản hồi",
       "tablesSchemaDesc": {
-        "postgresql": "Để trống: lược đồ của kết nối. Formalie sở hữu các bảng nó tạo ở đó.",
+        "postgresql": "Để trống: public. Formalie sở hữu các bảng nó tạo ở đó.",
         "sqlserver": "Một lược đồ riêng do tài khoản sở hữu (được tạo bởi các câu lệnh bên dưới).",
         "oracle": "Lược đồ riêng của tài khoản, nên lược đồ của bạn không bị động đến.",
         "mysql": "Cơ sở dữ liệu của kết nối.",
@@ -3305,16 +3300,18 @@
         "none": "Không chia sẻ"
       },
       "otherDesc": {
-        "read_write": "Khám phá, truy vấn, dùng làm danh sách lựa chọn, sửa hàng và nhập tệp.",
-        "read": "Khám phá, truy vấn và dùng làm danh sách lựa chọn. Không có gì trong đó bị thay đổi.",
-        "none": "Formalie chỉ dùng các bảng của chính nó."
+        "read_write": "Khám phá, truy vấn, dùng cho danh sách thả xuống trong biểu mẫu, sửa hàng và nhập tệp.",
+        "read": "Khám phá, truy vấn và dùng cho danh sách thả xuống trong biểu mẫu. Không có gì trong đó bị thay đổi.",
+        "none": "Formalie không thấy các bảng này. Nó chỉ dùng các bảng phản hồi của chính nó."
       },
-      "otherHint": "Tùy chọn, không cần để lưu phản hồi. Bạn có thể thay đổi sau.",
+      "otherHint": "Không dùng cho phản hồi. Đây là các bảng bạn đã có, dùng cho trình khám phá, truy vấn, danh sách thả xuống trong biểu mẫu và nhập dữ liệu. Bạn có thể thay đổi sau.",
       "short": {
         "read_write": "Đọc và ghi bảng khác",
         "read": "Đọc bảng khác",
-        "none": "Chỉ bảng riêng"
-      }
+        "none": "Chỉ phản hồi"
+      },
+      "optional": "Tùy chọn",
+      "schemasHintOracle": "Nhấn Enter sau mỗi lược đồ (chủ sở hữu) mà Formalie được dùng các bảng của nó."
     },
     "summary": {
       "engine": "Cơ sở dữ liệu",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "Không mã hóa",
       "ssh": "Đường hầm SSH",
       "change": "Thay đổi {item}",
-      "tables": "Bảng của Formalie"
+      "tables": "Phản hồi được lưu tại"
     },
     "wizard": {
       "newCrumb": "Thêm kết nối",
@@ -3353,7 +3350,7 @@
         "server": "Nó ở đâu?",
         "signin": "Formalie đăng nhập như thế nào?",
         "security": "Kết nối được bảo vệ ra sao?",
-        "access": "Nơi Formalie lưu phản hồi của bạn",
+        "access": "Nơi lưu phản hồi của bạn",
         "review": "Đặt tên và kiểm tra"
       },
       "desc": {

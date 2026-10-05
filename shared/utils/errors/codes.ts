@@ -82,7 +82,7 @@ export const ERROR_CODES = {
   'FRM-DEST-1009': { status: 409, message: 'This connection is disabled. Enable it first.' },
   'FRM-DEST-1010': { status: 409, message: 'Forms still send their responses to this connection.' },
   'FRM-DEST-1011': { status: 400, message: 'The database took too long to answer.' },
-  'FRM-DEST-1012': { status: 400, message: "This account can't create or use Formalie's tables." },
+  'FRM-DEST-1012': { status: 400, message: "This account can't create or use the response tables." },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },
 } as const satisfies Record<string, ErrorCodeDefinition>

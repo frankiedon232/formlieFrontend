@@ -24,7 +24,7 @@ const others = computed(() =>
 const isMysql = computed(() => props.engine === 'mysql' || props.engine === 'mariadb')
 const tablesSchema = computed(() => tablesSchemaOf(props.engine, props.settings, { ...access.value, tables_schema: '' }))
 const example = computed(() => `${access.value.table_prefix}job_application`)
-const schemaHint = computed(() => t(isMysql.value ? 'dataSources.access.databasesHint' : 'dataSources.access.schemasHint', { schema: defaultSchemaOf(props.engine, props.settings) || '…' }))
+const schemaHint = computed(() => (props.engine === 'oracle' ? t('dataSources.access.schemasHintOracle') : t(isMysql.value ? 'dataSources.access.databasesHint' : 'dataSources.access.schemasHint', { schema: defaultSchemaOf(props.engine, props.settings) || '…' })))
 const tab = ref('operations')
 const tabs = computed(() => [
   { value: 'operations', label: t('dataSources.access.tabOperations'), icon: 'i-lucide-list-checks' },
@@ -34,7 +34,7 @@ const tabs = computed(() => [
 
 <template>
   <div class="flex flex-col gap-5">
-    <!-- Formalie's tables: always -->
+    <!-- Your responses: Formalie's own tables, always -->
     <section class="flex flex-col gap-4 rounded-lg border border-inverted/40 p-3 sm:p-4">
       <div class="flex items-start justify-between gap-3">
         <div class="flex min-w-0 items-start gap-2.5">
@@ -61,21 +61,32 @@ const tabs = computed(() => [
       </div>
     </section>
 
-    <!-- The organisation's other tables: optional -->
-    <URadioGroup
-      :model-value="access.other"
-      :items="others"
-      variant="card"
-      indicator="end"
-      color="neutral"
-      :legend="t('dataSources.access.otherLegend')"
-      :ui="{ fieldset: 'grid grid-cols-1 gap-3 sm:grid-cols-3', legend: 'mb-1 text-sm font-medium text-highlighted', item: 'items-start has-data-[state=checked]:border-inverted' }"
-      @update:model-value="value => set({ other: value as OtherTablesAccess })"
-    />
-    <p class="-mt-3 text-xs text-muted">{{ t('dataSources.access.otherHint') }}</p>
-    <UFormField v-if="access.other !== 'none'" :label="isMysql ? t('dataSources.access.databases') : t('dataSources.access.schemas')" :description="schemaHint">
-      <UInputTags :model-value="access.schemas" :max-length="128" class="w-full font-mono" dir="ltr" @update:model-value="value => set({ schemas: (value as string[]).map(item => item.trim()).filter(Boolean).slice(0, 20) })" />
-    </UFormField>
+    <!-- The organisation's other tables: optional, never used for responses -->
+    <section class="flex flex-col gap-4 rounded-lg border border-default p-3 sm:p-4">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex min-w-0 items-start gap-2.5">
+          <UIcon name="i-lucide-database" class="mt-0.5 size-4 shrink-0 text-muted" />
+          <div class="flex min-w-0 flex-col gap-0.5">
+            <h3 class="text-sm font-semibold text-highlighted">{{ t('dataSources.access.otherLegend') }}</h3>
+            <p class="text-xs text-muted">{{ t('dataSources.access.otherHint') }}</p>
+          </div>
+        </div>
+        <UBadge :label="t('dataSources.access.optional')" color="neutral" variant="outline" size="sm" class="shrink-0 rounded-md" />
+      </div>
+      <URadioGroup
+        :model-value="access.other"
+        :items="others"
+        variant="card"
+        indicator="end"
+        color="neutral"
+        :legend="t('dataSources.access.otherLegend')"
+        :ui="{ fieldset: 'grid grid-cols-1 gap-3 sm:grid-cols-3', legend: 'sr-only', item: 'items-start has-data-[state=checked]:border-inverted' }"
+        @update:model-value="value => set({ other: value as OtherTablesAccess })"
+      />
+      <UFormField v-if="access.other !== 'none'" :label="isMysql ? t('dataSources.access.databases') : t('dataSources.access.schemas')" :description="schemaHint">
+        <UInputTags :model-value="access.schemas" :max-length="128" class="w-full font-mono" dir="ltr" @update:model-value="value => set({ schemas: (value as string[]).map(item => item.trim()).filter(Boolean).slice(0, 20) })" />
+      </UFormField>
+    </section>
 
     <div class="flex flex-col gap-3 rounded-lg border border-default p-3 sm:p-4">
       <div class="flex items-start gap-2">

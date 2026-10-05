@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "This connection is disabled. Enable it first.",
     "FRM-DEST-1010": "Forms still send their responses to this connection.",
     "FRM-DEST-1011": "The database took too long to answer.",
-    "FRM-DEST-1012": "This account can't create or use Formalie's tables."
+    "FRM-DEST-1012": "This account can't create or use the response tables."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -2985,7 +2985,6 @@
       "host": "Server address",
       "port": "Port",
       "database": "Database",
-      "schema": "Schema",
       "charset": "Character set",
       "time_zone": "Session time zone",
       "connect_timeout": "Connection time limit (seconds)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "When the certificate is issued to another name than the server address.",
       "multi_subnet_failover": "Faster failover for Always On availability groups across subnets.",
       "descriptor": "Easy Connect or a full TNS descriptor, as in tnsnames.ora.",
-      "schema": "Where Formalie looks for tables by default.",
       "postgresql": {
-        "schema": "Where Formalie looks for tables by default (search path).",
         "ssl_mode": "require encrypts; verify-full also checks the certificate and the host name (recommended)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "Only for a named instance. Leave the port as is, or the instance's own port.",
-        "schema": "Default schema for the Formalie user.",
         "encrypt": "Strict uses TDS 8.0 and always checks the certificate (SQL Server 2022 and Azure SQL)."
       },
       "oracle": {
-        "schema": "The schema (owner) whose tables Formalie uses. Empty: the user's own.",
         "protocol": "TCPS encrypts with TLS (recommended). TCP relies on native network encryption."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "Read your other tables",
       "write": "Change your other tables",
-      "own": "Formalie's tables"
+      "own": "Your responses"
     },
     "levelDesc": {
       "read": "Database explorer, queries, option lists from your data",
@@ -3204,7 +3199,7 @@
         "account": "1. The account (skip it to use one you have)",
         "read": "3. Read your other tables",
         "write": "4. Change your other tables",
-        "own": "2. Formalie's tables (required)"
+        "own": "2. Your responses (required)"
       },
       "note": {
         "host_limit": "If you can, replace '%' with Formalie's addresses so the account only works from there.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "Check the database (or service) name, and that the account has access to it.",
       "FRM-DEST-1006": "Grant the missing permissions below, then test again.",
       "FRM-DEST-1011": "The server did not answer in time. Check the address, the firewall, or raise the time limit under More options.",
-      "FRM-DEST-1012": "Grant the permissions under “Formalie's tables” in the Access step, then test again. They are required to store responses."
+      "FRM-DEST-1012": "Grant the permissions under “Your responses” in the Access step, then test again. They are required to store responses."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "Press Enter after each one. Empty: only {schema}.",
       "databasesHint": "Press Enter after each one. Empty: only {schema}.",
       "permissionsTitle": "Permissions to grant",
-      "permissionsDesc": "Grant the account these so every feature works. Formalie's tables are required; the rest follows your choice above.",
+      "permissionsDesc": "Grant the account these so every feature works. Your responses are required; the rest follows your choice for your other tables.",
       "tabOperations": "What Formalie does",
       "tabScript": "Statements to run",
-      "ownTitle": "Formalie's tables",
-      "ownDesc": "Formalie creates a table for each form, stores every response there and reads them back to show them. It can change and remove rows and add columns, in its own tables only. This is what a connection is for.",
+      "ownTitle": "Your responses",
+      "ownDesc": "Formalie stores every form's responses here, in tables it creates and names with the prefix below. It reads them back to show them, and can change and remove rows and add columns, in its own tables only.",
       "always": "Required",
       "prefix": "Table name prefix",
       "prefixDesc": "Every table Formalie creates starts with it, for example {example}.",
-      "tablesSchema": "Schema for Formalie's tables",
-      "tablesDatabase": "Database for Formalie's tables",
+      "tablesSchema": "Schema for the response tables",
+      "tablesDatabase": "Database for the response tables",
       "tablesSchemaDesc": {
-        "postgresql": "Empty: the connection's schema. Formalie owns the tables it creates there.",
+        "postgresql": "Empty: public. Formalie owns the tables it creates there.",
         "sqlserver": "A schema of its own, owned by the account (created by the statements below).",
         "oracle": "The account's own schema, so your schemas stay untouched.",
         "mysql": "The connection's database.",
@@ -3305,16 +3300,18 @@
         "none": "Not shared"
       },
       "otherDesc": {
-        "read_write": "Explore, query, use as option lists, edit rows and import files.",
-        "read": "Explore, query and use as option lists. Nothing in them changes.",
-        "none": "Formalie uses only its own tables."
+        "read_write": "Browse, query, use for dropdown lists in forms, edit rows and import files.",
+        "read": "Browse, query and use for dropdown lists in forms. Nothing in them changes.",
+        "none": "Formalie can't see them. It only uses its own response tables."
       },
-      "otherHint": "Optional, and not needed to store responses. You can change it later.",
+      "otherHint": "Not used for responses. These are the tables you already have, for the explorer, queries, dropdown lists in forms and imports. You can change this later.",
       "short": {
         "read_write": "Read and write others",
         "read": "Read others",
-        "none": "Own tables only"
-      }
+        "none": "Responses only"
+      },
+      "optional": "Optional",
+      "schemasHintOracle": "Press Enter after each schema (owner) whose tables Formalie may use."
     },
     "summary": {
       "engine": "Database",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "Not encrypted",
       "ssh": "SSH tunnel",
       "change": "Change {item}",
-      "tables": "Formalie's tables"
+      "tables": "Responses stored in"
     },
     "wizard": {
       "newCrumb": "Add connection",
@@ -3353,7 +3350,7 @@
         "server": "Where is it?",
         "signin": "How does Formalie sign in?",
         "security": "How is the connection protected?",
-        "access": "Where Formalie keeps your responses",
+        "access": "Where your responses are stored",
         "review": "Name it and test it"
       },
       "desc": {

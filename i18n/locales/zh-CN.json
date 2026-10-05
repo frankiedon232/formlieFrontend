@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "此连接已停用。请先启用。",
     "FRM-DEST-1010": "仍有表单将回复发送到此连接。",
     "FRM-DEST-1011": "数据库响应超时。",
-    "FRM-DEST-1012": "此账户无法创建或使用 Formalie 的表。"
+    "FRM-DEST-1012": "此账户无法创建或使用回复表。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -2985,7 +2985,6 @@
       "host": "服务器地址",
       "port": "端口",
       "database": "数据库",
-      "schema": "架构",
       "charset": "字符集",
       "time_zone": "会话时区",
       "connect_timeout": "连接超时（秒）",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "当证书颁发给与服务器地址不同的名称时填写。",
       "multi_subnet_failover": "为跨子网的 Always On 可用性组提供更快的故障转移。",
       "descriptor": "Easy Connect 或完整的 TNS 描述符，与 tnsnames.ora 中的一致。",
-      "schema": "Formalie 默认查找表的位置。",
       "postgresql": {
-        "schema": "Formalie 默认查找表的位置（搜索路径）。",
         "ssl_mode": "require 会加密；verify-full 还会检查证书和主机名（推荐）。"
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "仅适用于命名实例。端口保持不变，或填写该实例自己的端口。",
-        "schema": "Formalie 用户的默认架构。",
         "encrypt": "“严格”使用 TDS 8.0 并始终检查证书（SQL Server 2022 和 Azure SQL）。"
       },
       "oracle": {
-        "schema": "Formalie 使用其表的架构（所有者）。留空：使用该用户自己的架构。",
         "protocol": "TCPS 使用 TLS 加密（推荐）。TCP 依赖原生网络加密。"
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "读取您的其他表",
       "write": "更改您的其他表",
-      "own": "Formalie 的表"
+      "own": "您的回复"
     },
     "levelDesc": {
       "read": "数据库浏览器、查询、来自您数据的选项列表",
@@ -3204,7 +3199,7 @@
         "account": "1. 账户（如使用现有账户可跳过）",
         "read": "3. 读取您的其他表",
         "write": "4. 更改您的其他表",
-        "own": "2. Formalie 的表（必需）"
+        "own": "2. 您的回复（必需）"
       },
       "note": {
         "host_limit": "如果可以，请将 '%' 替换为 Formalie 的地址，使该账户只能从这些地址使用。",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "检查数据库（或服务）名称，并确认该账户有权访问。",
       "FRM-DEST-1006": "授予下方缺少的权限，然后重新测试。",
       "FRM-DEST-1011": "服务器未及时响应。请检查地址、防火墙，或在“更多选项”中提高超时时间。",
-      "FRM-DEST-1012": "在“访问权限”步骤中授予“Formalie 的表”下的权限，然后重新测试。存储回复需要这些权限。"
+      "FRM-DEST-1012": "在“访问权限”步骤中授予“您的回复”下的权限，然后重新测试。存储回复需要这些权限。"
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "每输入一个后按 Enter。留空：仅 {schema}。",
       "databasesHint": "每输入一个后按 Enter。留空：仅 {schema}。",
       "permissionsTitle": "需授予的权限",
-      "permissionsDesc": "为账户授予这些权限，确保所有功能正常。Formalie 的表是必需的；其余取决于您在上方的选择。",
+      "permissionsDesc": "为账户授予这些权限，确保所有功能正常。您的回复是必需的；其余取决于您对其他表的选择。",
       "tabOperations": "Formalie 执行的操作",
       "tabScript": "需运行的语句",
-      "ownTitle": "Formalie 的表",
-      "ownDesc": "Formalie 为每个表单创建一张表，在其中存储每条回复，并读取回复以便显示。它可以更改和删除行并添加列，但仅限于它自己的表。这正是连接的用途。",
+      "ownTitle": "您的回复",
+      "ownDesc": "Formalie 将每个表单的回复存储在这里，使用它自己创建并以下方前缀命名的表。它会读取回复以便显示，并可更改和删除行、添加列，但仅限于它自己的表。",
       "always": "必需",
       "prefix": "表名前缀",
       "prefixDesc": "Formalie 创建的每张表都以此开头，例如 {example}。",
-      "tablesSchema": "Formalie 的表所在架构",
-      "tablesDatabase": "Formalie 的表所在数据库",
+      "tablesSchema": "回复表所在架构",
+      "tablesDatabase": "回复表所在数据库",
       "tablesSchemaDesc": {
-        "postgresql": "留空：使用连接的架构。Formalie 拥有它在其中创建的表。",
+        "postgresql": "留空：public。Formalie 拥有它在其中创建的表。",
         "sqlserver": "由该账户拥有的独立架构（由下方语句创建）。",
         "oracle": "该账户自己的架构，因此您的架构不受影响。",
         "mysql": "连接的数据库。",
@@ -3305,16 +3300,18 @@
         "none": "不共享"
       },
       "otherDesc": {
-        "read_write": "浏览、查询、用作选项列表、编辑行和导入文件。",
-        "read": "浏览、查询和用作选项列表。其中的内容不会改变。",
-        "none": "Formalie 仅使用它自己的表。"
+        "read_write": "浏览、查询、用于表单中的下拉列表、编辑行和导入文件。",
+        "read": "浏览、查询和用于表单中的下拉列表。其中的内容不会改变。",
+        "none": "Formalie 看不到这些表，仅使用它自己的回复表。"
       },
-      "otherHint": "可选，存储回复不需要此项。您可以稍后更改。",
+      "otherHint": "不用于存储回复。这些是您已有的表，用于浏览器、查询、表单中的下拉列表和导入。您可以稍后更改。",
       "short": {
         "read_write": "读写其他表",
         "read": "读取其他表",
-        "none": "仅自己的表"
-      }
+        "none": "仅回复"
+      },
+      "optional": "可选",
+      "schemasHintOracle": "每输入一个允许 Formalie 使用其表的架构（所有者）后按 Enter。"
     },
     "summary": {
       "engine": "数据库",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "未加密",
       "ssh": "SSH 隧道",
       "change": "更改{item}",
-      "tables": "Formalie 的表"
+      "tables": "回复存储位置"
     },
     "wizard": {
       "newCrumb": "添加连接",
@@ -3353,7 +3350,7 @@
         "server": "它在哪里？",
         "signin": "Formalie 如何登录？",
         "security": "连接如何受保护？",
-        "access": "Formalie 在哪里保存您的回复",
+        "access": "您的回复存储在哪里",
         "review": "命名并测试"
       },
       "desc": {

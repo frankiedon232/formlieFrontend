@@ -74,9 +74,9 @@ function seed(tenant: MockTenant): StoredDataSource[] {
     }
   }
   return [
-    make(1, 'Case management', 'postgresql', { host: 'cases-db.example.net', database: 'cases', schema: 'public', ssl_mode: 'verify-full', username: 'formalie_app' }, { password: 'mock', ca_certificate: PEM }, { table_prefix: 'formalie_', tables_schema: 'formalie', other: 'read_write', schemas: ['public', 'intake'] }, { ageDays: 120 }),
-    make(2, 'People records', 'sqlserver', { host: 'hr-sql.example.net', database: 'People', schema: 'dbo', username: 'formalie_reader' }, { password: 'mock' }, { table_prefix: 'formalie_', tables_schema: '', other: 'read', schemas: [] }, { ageDays: 75 }),
-    make(3, 'Finance warehouse', 'oracle', { host: 'fin-ora.example.net', port: 2484, service_name: 'FINPDB1', schema: 'FINANCE', username: 'formalie_limited' }, { password: 'mock' }, { table_prefix: 'fmly_', tables_schema: '', other: 'read', schemas: [] }, { ageDays: 40 }),
+    make(1, 'Case management', 'postgresql', { host: 'cases-db.example.net', database: 'cases', ssl_mode: 'verify-full', username: 'formalie_app' }, { password: 'mock', ca_certificate: PEM }, { table_prefix: 'formalie_', tables_schema: 'formalie', other: 'read_write', schemas: ['public', 'intake'] }, { ageDays: 120 }),
+    make(2, 'People records', 'sqlserver', { host: 'hr-sql.example.net', database: 'People', username: 'formalie_reader' }, { password: 'mock' }, { table_prefix: 'formalie_', tables_schema: '', other: 'read', schemas: [] }, { ageDays: 75 }),
+    make(3, 'Finance warehouse', 'oracle', { host: 'fin-ora.example.net', port: 2484, service_name: 'FINPDB1', username: 'formalie_limited' }, { password: 'mock' }, { table_prefix: 'fmly_', tables_schema: '', other: 'read', schemas: ['FINANCE'] }, { ageDays: 40 }),
     make(4, 'Website leads', 'mysql', { host: 'leads-db.example.net', database: 'leads', username: 'formalie_app' }, { password: 'mock' }, { table_prefix: 'formalie_', tables_schema: '', other: 'read_write', schemas: [] }, { ageDays: 22, fail: { step: 'network', code: 'FRM-DEST-1011' } }),
     make(5, 'Legacy intake', 'mariadb', { host: 'legacy-db.example.net', database: 'intake_2019', username: 'formalie_app' }, { password: 'mock' }, { table_prefix: 'form_', tables_schema: '', other: 'none', schemas: [] }, { ageDays: 300, enabled: false }),
   ]
@@ -85,6 +85,13 @@ function seed(tenant: MockTenant): StoredDataSource[] {
 /** Connections saved before the access model changed (2026-10-05) get the new shape. */
 function upgrade(source: StoredDataSource): StoredDataSource {
   const access = source.access as Partial<DataSourceAccessSettings> & { mode?: string }
+  // The server step no longer has a schema (owner 2026-10-05): it moves to the Access settings.
+  if ('schema' in source.settings) {
+    const schema = String(source.settings.schema || '')
+    delete source.settings.schema
+    if (schema && access.table_prefix && !source.access.schemas.length && !['public', 'dbo'].includes(schema)) source.access.schemas = [schema]
+    saveDataSources()
+  }
   if (access.table_prefix) return source
   source.access = { table_prefix: 'formalie_', tables_schema: '', other: access.mode === 'read_only' ? 'read' : 'read_write', schemas: access.schemas ?? [] }
   // Its last test is read again under the new permission levels.

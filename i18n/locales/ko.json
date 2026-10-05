@@ -542,7 +542,7 @@
     "FRM-DEST-1009": "이 연결은 비활성화되어 있습니다. 먼저 활성화하세요.",
     "FRM-DEST-1010": "아직 이 연결로 응답을 보내는 양식이 있습니다.",
     "FRM-DEST-1011": "데이터베이스 응답 시간이 너무 오래 걸렸습니다.",
-    "FRM-DEST-1012": "이 계정으로는 Formalie의 테이블을 만들거나 사용할 수 없습니다."
+    "FRM-DEST-1012": "이 계정으로는 응답 테이블을 만들거나 사용할 수 없습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -2985,7 +2985,6 @@
       "host": "서버 주소",
       "port": "포트",
       "database": "데이터베이스",
-      "schema": "스키마",
       "charset": "문자 집합",
       "time_zone": "세션 시간대",
       "connect_timeout": "연결 제한 시간(초)",
@@ -3035,9 +3034,7 @@
       "host_name_in_certificate": "인증서가 서버 주소와 다른 이름으로 발급된 경우.",
       "multi_subnet_failover": "서브넷에 걸친 Always On 가용성 그룹에서 더 빠른 장애 조치.",
       "descriptor": "Easy Connect 또는 tnsnames.ora에 있는 전체 TNS 디스크립터.",
-      "schema": "Formalie가 기본적으로 테이블을 찾는 위치입니다.",
       "postgresql": {
-        "schema": "Formalie가 기본적으로 테이블을 찾는 위치입니다(검색 경로).",
         "ssl_mode": "require는 암호화하고, verify-full은 인증서와 호스트 이름도 확인합니다(권장)."
       },
       "mysql": {
@@ -3048,11 +3045,9 @@
       },
       "sqlserver": {
         "instance": "명명된 인스턴스에만 해당합니다. 포트는 그대로 두거나 인스턴스 고유 포트를 입력하세요.",
-        "schema": "Formalie 사용자의 기본 스키마.",
         "encrypt": "엄격은 TDS 8.0을 사용하며 항상 인증서를 확인합니다(SQL Server 2022 및 Azure SQL)."
       },
       "oracle": {
-        "schema": "Formalie가 사용하는 테이블의 스키마(소유자). 비워 두면 사용자 자신의 스키마.",
         "protocol": "TCPS는 TLS로 암호화합니다(권장). TCP는 기본 네트워크 암호화에 의존합니다."
       }
     },
@@ -3126,7 +3121,7 @@
     "level": {
       "read": "다른 테이블 읽기",
       "write": "다른 테이블 변경",
-      "own": "Formalie의 테이블"
+      "own": "내 응답"
     },
     "levelDesc": {
       "read": "DB 탐색기, 쿼리, 데이터 기반 옵션 목록",
@@ -3204,7 +3199,7 @@
         "account": "1. 계정(기존 계정을 사용하려면 건너뛰기)",
         "read": "3. 다른 테이블 읽기",
         "write": "4. 다른 테이블 변경",
-        "own": "2. Formalie의 테이블(필수)"
+        "own": "2. 내 응답(필수)"
       },
       "note": {
         "host_limit": "가능하면 '%'를 Formalie 주소로 바꿔 계정이 그곳에서만 작동하도록 하세요.",
@@ -3244,7 +3239,7 @@
       "FRM-DEST-1005": "데이터베이스(또는 서비스) 이름과 계정에 액세스 권한이 있는지 확인하세요.",
       "FRM-DEST-1006": "아래 누락된 권한을 부여한 다음 다시 테스트하세요.",
       "FRM-DEST-1011": "서버가 제시간에 응답하지 않았습니다. 주소와 방화벽을 확인하거나 추가 옵션에서 제한 시간을 늘리세요.",
-      "FRM-DEST-1012": "액세스 단계에서 “Formalie의 테이블” 아래 권한을 부여한 다음 다시 테스트하세요. 응답을 저장하는 데 필요합니다."
+      "FRM-DEST-1012": "액세스 단계에서 “내 응답” 아래 권한을 부여한 다음 다시 테스트하세요. 응답을 저장하는 데 필수입니다."
     },
     "test": {
       "heading": {
@@ -3281,18 +3276,18 @@
       "schemasHint": "하나씩 입력한 후 Enter를 누르세요. 비워 두면 {schema}만 사용합니다.",
       "databasesHint": "하나씩 입력한 후 Enter를 누르세요. 비워 두면 {schema}만 사용합니다.",
       "permissionsTitle": "부여할 권한",
-      "permissionsDesc": "모든 기능이 작동하도록 계정에 이 권한을 부여하세요. Formalie의 테이블은 필수이며, 나머지는 위에서 선택한 내용을 따릅니다.",
+      "permissionsDesc": "모든 기능이 작동하도록 계정에 이 권한을 부여하세요. 내 응답은 필수이며, 나머지는 다른 테이블에 대한 선택을 따릅니다.",
       "tabOperations": "Formalie가 하는 작업",
       "tabScript": "실행할 문",
-      "ownTitle": "Formalie의 테이블",
-      "ownDesc": "Formalie는 양식마다 테이블을 만들고 모든 응답을 그곳에 저장한 뒤 다시 읽어 표시합니다. 행 변경과 삭제, 열 추가는 자체 테이블에서만 합니다. 이것이 연결의 목적입니다.",
+      "ownTitle": "내 응답",
+      "ownDesc": "Formalie는 모든 양식의 응답을 이곳에 저장합니다. Formalie가 만들고 아래 접두사로 이름을 붙인 테이블에 저장하며, 다시 읽어 표시합니다. 행 변경과 삭제, 열 추가는 자체 테이블에서만 합니다.",
       "always": "필수",
       "prefix": "테이블 이름 접두사",
       "prefixDesc": "Formalie가 만드는 모든 테이블은 이것으로 시작합니다. 예: {example}",
-      "tablesSchema": "Formalie의 테이블용 스키마",
-      "tablesDatabase": "Formalie의 테이블용 데이터베이스",
+      "tablesSchema": "응답 테이블용 스키마",
+      "tablesDatabase": "응답 테이블용 데이터베이스",
       "tablesSchemaDesc": {
-        "postgresql": "비워 두면 연결의 스키마. Formalie는 그곳에 만든 테이블을 소유합니다.",
+        "postgresql": "비워 두면 public. Formalie는 그곳에 만든 테이블을 소유합니다.",
         "sqlserver": "계정이 소유한 전용 스키마(아래 문으로 생성).",
         "oracle": "계정 자체 스키마이므로 여러분의 스키마는 그대로 유지됩니다.",
         "mysql": "연결의 데이터베이스.",
@@ -3305,16 +3300,18 @@
         "none": "공유 안 함"
       },
       "otherDesc": {
-        "read_write": "탐색, 쿼리, 옵션 목록으로 사용, 행 편집, 파일 가져오기.",
-        "read": "탐색, 쿼리, 옵션 목록으로 사용. 내용은 변경되지 않습니다.",
-        "none": "Formalie는 자체 테이블만 사용합니다."
+        "read_write": "탐색, 쿼리, 양식의 드롭다운 목록으로 사용, 행 편집, 파일 가져오기.",
+        "read": "탐색, 쿼리, 양식의 드롭다운 목록으로 사용. 내용은 변경되지 않습니다.",
+        "none": "Formalie는 이 테이블을 볼 수 없습니다. 자체 응답 테이블만 사용합니다."
       },
-      "otherHint": "선택 사항이며 응답 저장에는 필요하지 않습니다. 나중에 변경할 수 있습니다.",
+      "otherHint": "응답에는 사용되지 않습니다. 이미 보유한 테이블로, 탐색기, 쿼리, 양식의 드롭다운 목록, 가져오기에 사용됩니다. 나중에 변경할 수 있습니다.",
       "short": {
         "read_write": "다른 테이블 읽기 및 쓰기",
         "read": "다른 테이블 읽기",
-        "none": "자체 테이블만"
-      }
+        "none": "응답만"
+      },
+      "optional": "선택 사항",
+      "schemasHintOracle": "Formalie가 테이블을 사용할 수 있는 스키마(소유자)를 하나씩 입력한 후 Enter를 누르세요."
     },
     "summary": {
       "engine": "데이터베이스",
@@ -3328,7 +3325,7 @@
       "notEncrypted": "암호화 안 됨",
       "ssh": "SSH 터널",
       "change": "{item} 변경",
-      "tables": "Formalie의 테이블"
+      "tables": "응답 저장 위치"
     },
     "wizard": {
       "newCrumb": "연결 추가",
@@ -3353,7 +3350,7 @@
         "server": "어디에 있나요?",
         "signin": "Formalie는 어떻게 로그인하나요?",
         "security": "연결은 어떻게 보호되나요?",
-        "access": "Formalie가 응답을 보관하는 곳",
+        "access": "응답이 저장되는 곳",
         "review": "이름을 지정하고 테스트하세요"
       },
       "desc": {

@@ -4,12 +4,15 @@
  * summary on a connection's panel:
  *
  *   MySQL / MariaDB  host · port · database · charset · time zone · TLS mode (disabled → verify identity)
- *   PostgreSQL       host · port · database · schema · sslmode (disable → verify-full) · target session
- *   SQL Server       host · instance · port · database · schema · SQL / Microsoft Entra sign-in ·
+ *   PostgreSQL       host · port · database · sslmode (disable → verify-full) · target session
+ *   SQL Server       host · instance · port · database · SQL / Microsoft Entra sign-in ·
  *                    encrypt (mandatory / strict / optional) · trust certificate · application intent
- *   Oracle           host · port · service name / SID / full descriptor · schema owner · TCPS or
+ *   Oracle           host · port · service name / SID / full descriptor · TCPS or
  *                    native network encryption · certificate DN match
  *   every engine     optional SSH tunnel (host, port, user, private key, passphrase) · connect timeout
+ *
+ * Schemas are chosen in the Access step only (where the response tables go, which other schemas
+ * Formalie may use); the server step only says how to reach the database.
  *
  * Labels live in i18n (`dataSources.field.<key>`, hints `dataSources.hint.<key>`, choices
  * `dataSources.option.<key>.<value>`). Secret fields never come back from the API.
@@ -89,7 +92,6 @@ export const ENGINE_FIELDS: Record<DbEngine, EngineField[]> = {
     host(),
     port(5432),
     { key: 'database', step: 'server', type: 'text', required: true, half: true, placeholder: 'cases' },
-    { key: 'schema', step: 'server', type: 'text', default: 'public', format: 'identifier', half: true },
     { key: 'target_session_attrs', step: 'server', type: 'select', options: ['any', 'read-write', 'read-only', 'primary', 'standby', 'prefer-standby'], default: 'any', advanced: true, half: true },
     timeout(10),
     username(),
@@ -104,7 +106,6 @@ export const ENGINE_FIELDS: Record<DbEngine, EngineField[]> = {
     { key: 'instance', step: 'server', type: 'text', half: true, placeholder: 'SQLEXPRESS', format: 'identifier' },
     port(1433),
     { key: 'database', step: 'server', type: 'text', required: true, half: true, placeholder: 'People' },
-    { key: 'schema', step: 'server', type: 'text', default: 'dbo', format: 'identifier', half: true },
     { key: 'application_intent', step: 'server', type: 'select', options: ['read_write', 'read_only'], default: 'read_write', advanced: true, half: true },
     { key: 'multi_subnet_failover', step: 'server', type: 'switch', default: false, advanced: true },
     timeout(15),
@@ -127,7 +128,6 @@ export const ENGINE_FIELDS: Record<DbEngine, EngineField[]> = {
     { key: 'service_name', step: 'server', type: 'text', required: true, half: true, placeholder: 'FINPDB1', when: is('connect_by', 'service_name') },
     { key: 'sid', step: 'server', type: 'text', required: true, half: true, placeholder: 'ORCL', format: 'identifier', when: is('connect_by', 'sid') },
     { key: 'descriptor', step: 'server', type: 'text', required: true, placeholder: '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCPS)(HOST=db.example.net)(PORT=2484))(CONNECT_DATA=(SERVICE_NAME=FINPDB1)))', when: is('connect_by', 'descriptor') },
-    { key: 'schema', step: 'server', type: 'text', format: 'identifier', half: true, placeholder: 'FINANCE' },
     timeout(10),
     username(),
     password(),
@@ -259,11 +259,11 @@ export function databaseNameOf(engine: DbEngine, settings: DataSourceSettings): 
   return String(settings.service_name ?? '')
 }
 
-/** The schema Formalie works in by default. */
+/** The engine's usual schema for existing tables (MySQL / MariaDB: the database; Oracle: the account's own). */
 export function defaultSchemaOf(engine: DbEngine, settings: DataSourceSettings): string {
   if (engine === 'mysql' || engine === 'mariadb') return String(settings.database ?? '')
-  if (engine === 'oracle') return String(settings.schema || settings.username || '').toUpperCase()
-  return String(settings.schema || (engine === 'postgresql' ? 'public' : 'dbo'))
+  if (engine === 'oracle') return String(settings.username || '').toUpperCase()
+  return engine === 'postgresql' ? 'public' : 'dbo'
 }
 
 /** Is traffic to the database encrypted with these settings? */
