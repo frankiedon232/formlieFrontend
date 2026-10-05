@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Bu ifade verileri değiştirir. Çalıştırmak için onaylayın.",
     "FRM-DEST-1024": "Bu bağlantı burada salt okunur: yalnızca okuma ifadeleri çalışır.",
     "FRM-DEST-1025": "Veritabanı bu ifadeyi çalıştıramadı.",
-    "FRM-DEST-1026": "Her seferinde tek bir ifade çalıştırın: ifadeyi seçin ya da imleci içine koyun."
+    "FRM-DEST-1026": "Her seferinde tek bir ifade çalıştırın: ifadeyi seçin ya da imleci içine koyun.",
+    "FRM-DEST-1027": "Bu sorguyu yalnızca kaydeden kişi değiştirebilir."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Tablo yapısı değiştirildi",
       "data_table_truncated": "Tablo boşaltıldı",
       "data_table_dropped": "Tablo silindi",
-      "data_query_run": "Bir veritabanında sorgu çalıştırıldı"
+      "data_query_run": "Bir veritabanında sorgu çalıştırıldı",
+      "data_query_exported": "Sorgu sonuçları dışa aktarıldı",
+      "data_saved_query_saved": "Sorgu kaydedildi",
+      "data_saved_query_deleted": "Kayıtlı sorgu silindi"
     },
     "detail": {
       "who": "Kim",
@@ -4888,7 +4892,70 @@
       "noHistory": "Henüz ifade yok",
       "noHistoryDesc": "Bu bağlantıda çalıştırdıklarınız burada görünür.",
       "rows": "{n} satır | {n} satır",
-      "clear": "Geçmişi temizle"
+      "clear": "Geçmişi temizle",
+      "saved": "Kayıtlı",
+      "noSaved": "Henüz kayıtlı sorgu yok",
+      "noSavedDesc": "Bir ifadeyi burada bulmak için Ctrl + S ile kaydedin."
+    },
+    "format": "Biçimlendir",
+    "unsaved": "Kaydedilmemiş değişiklikler",
+    "saved": {
+      "saveTitle": "Sorguyu kaydet",
+      "editTitle": "Kayıtlı sorguyu düzenle",
+      "name": "Ad",
+      "namePlaceholder": "Bu haftaki açık vakalar",
+      "description": "Açıklama",
+      "descriptionPlaceholder": "Ne gösterdiği ve ne zaman kullanılacağı",
+      "shareLabel": "Çalışma alanıyla paylaş",
+      "shareDesc": "Çalışma alanındaki herkes görebilir ve çalıştırabilir; yalnızca siz değiştirebilir veya silebilirsiniz.",
+      "saveButton": "Kaydet",
+      "nameRequired": "Bir ad girin.",
+      "created": "{name} olarak kaydedildi",
+      "updated": "{name} kaydedildi",
+      "open": "Yeni sekmede aç",
+      "openEditor": "Sorgu düzenleyicide aç",
+      "edit": "Düzenle",
+      "share": "Çalışma alanıyla paylaş",
+      "unshare": "Kişisel yap",
+      "sharedToast": "{name} çalışma alanıyla paylaşıldı",
+      "unshared": "{name} artık kişisel",
+      "delete": "Sil",
+      "deleteTitle": "{name} silinsin mi?",
+      "deleteDesc": "Kayıtlı sorgu herkes için kaldırılır. Sorgunun açık olduğu sekmeler SQL’lerini korur.",
+      "deleted": "{name} silindi",
+      "sharedShort": "Paylaşılan",
+      "personal": "Kişisel",
+      "runs": "{n} çalıştırma | {n} çalıştırma",
+      "you": "Siz",
+      "lastRun": "Çalıştırıldı: {when}",
+      "neverRun": "Henüz çalıştırılmadı",
+      "kindRead": "Veri okur",
+      "kindChange": "Veri değiştirir",
+      "filterMine": "Benimkiler",
+      "sortMostRun": "En çok çalıştırılan",
+      "sortRecentRun": "Son çalıştırılan",
+      "sortChanged": "Son değiştirilen",
+      "search": "Kayıtlı sorgularda ara…",
+      "emptyTitle": "Kayıtlı sorgu yok",
+      "emptyDesc": "Yeniden kullanmak veya ekibinizle paylaşmak için Sorgu düzenleyicide bir ifade kaydedin (Ctrl + S).",
+      "new": "Yeni sorgu",
+      "col": {
+        "name": "Ad",
+        "kind": "İşlev",
+        "sharing": "Paylaşım",
+        "runs": "Çalıştırma",
+        "lastRun": "Son çalıştırma",
+        "updated": "Değiştirildi",
+        "owner": "Kaydeden"
+      },
+      "kpi": {
+        "saved": "Kayıtlı",
+        "yours": "Sizin",
+        "shared": "Paylaşılan",
+        "runs": "Kayıtlı sorguların çalıştırılması",
+        "byKind": "İşlevine göre kayıtlı sorgular",
+        "sharedCount": "{n} paylaşılan"
+      }
     }
   }
 }

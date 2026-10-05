@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Deze instructie wijzigt gegevens. Bevestig om ze uit te voeren.",
     "FRM-DEST-1024": "Deze verbinding is hier alleen-lezen: alleen lezende instructies worden uitgevoerd.",
     "FRM-DEST-1025": "De database kon deze instructie niet uitvoeren.",
-    "FRM-DEST-1026": "Voer één instructie tegelijk uit: selecteer ze, of zet de cursor erin."
+    "FRM-DEST-1026": "Voer één instructie tegelijk uit: selecteer ze, of zet de cursor erin.",
+    "FRM-DEST-1027": "Alleen wie deze query heeft opgeslagen, kan ze wijzigen."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Tabelstructuur gewijzigd",
       "data_table_truncated": "Tabel leeggemaakt",
       "data_table_dropped": "Tabel verwijderd",
-      "data_query_run": "Query uitgevoerd op een database"
+      "data_query_run": "Query uitgevoerd op een database",
+      "data_query_exported": "Queryresultaten geëxporteerd",
+      "data_saved_query_saved": "Query opgeslagen",
+      "data_saved_query_deleted": "Opgeslagen query verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -4888,7 +4892,70 @@
       "noHistory": "Nog geen instructies",
       "noHistoryDesc": "Wat u op deze verbinding uitvoert, verschijnt hier.",
       "rows": "{n} rij | {n} rijen",
-      "clear": "Geschiedenis wissen"
+      "clear": "Geschiedenis wissen",
+      "saved": "Opgeslagen",
+      "noSaved": "Nog geen opgeslagen query’s",
+      "noSavedDesc": "Sla een instructie op met Ctrl + S om ze hier terug te vinden."
+    },
+    "format": "Opmaken",
+    "unsaved": "Niet-opgeslagen wijzigingen",
+    "saved": {
+      "saveTitle": "Query opslaan",
+      "editTitle": "Opgeslagen query bewerken",
+      "name": "Naam",
+      "namePlaceholder": "Open zaken deze week",
+      "description": "Beschrijving",
+      "descriptionPlaceholder": "Wat ze toont en wanneer je ze gebruikt",
+      "shareLabel": "Delen met de werkruimte",
+      "shareDesc": "Iedereen in de werkruimte kan ze zien en uitvoeren; alleen jij kunt ze wijzigen of verwijderen.",
+      "saveButton": "Opslaan",
+      "nameRequired": "Vul een naam in.",
+      "created": "Opgeslagen als {name}",
+      "updated": "{name} opgeslagen",
+      "open": "Openen in een nieuw tabblad",
+      "openEditor": "Openen in de query-editor",
+      "edit": "Bewerken",
+      "share": "Delen met de werkruimte",
+      "unshare": "Persoonlijk maken",
+      "sharedToast": "{name} is gedeeld met de werkruimte",
+      "unshared": "{name} is nu persoonlijk",
+      "delete": "Verwijderen",
+      "deleteTitle": "{name} verwijderen?",
+      "deleteDesc": "De opgeslagen query wordt voor iedereen verwijderd. Tabbladen waarin ze open staat, houden hun SQL.",
+      "deleted": "{name} verwijderd",
+      "sharedShort": "Gedeeld",
+      "personal": "Persoonlijk",
+      "runs": "{n} keer uitgevoerd | {n} keer uitgevoerd",
+      "you": "Jij",
+      "lastRun": "Uitgevoerd {when}",
+      "neverRun": "Nog niet uitgevoerd",
+      "kindRead": "Leest gegevens",
+      "kindChange": "Wijzigt gegevens",
+      "filterMine": "Van mij",
+      "sortMostRun": "Vaakst uitgevoerd",
+      "sortRecentRun": "Onlangs uitgevoerd",
+      "sortChanged": "Onlangs gewijzigd",
+      "search": "Opgeslagen query’s zoeken…",
+      "emptyTitle": "Geen opgeslagen query’s",
+      "emptyDesc": "Sla een instructie op in de query-editor (Ctrl + S) om ze opnieuw te gebruiken of met je team te delen.",
+      "new": "Nieuwe query",
+      "col": {
+        "name": "Naam",
+        "kind": "Doet",
+        "sharing": "Delen",
+        "runs": "Uitvoeringen",
+        "lastRun": "Laatst uitgevoerd",
+        "updated": "Gewijzigd",
+        "owner": "Opgeslagen door"
+      },
+      "kpi": {
+        "saved": "Opgeslagen",
+        "yours": "Van jou",
+        "shared": "Gedeeld",
+        "runs": "Uitvoeringen van opgeslagen query’s",
+        "byKind": "Opgeslagen query’s naar wat ze doen",
+        "sharedCount": "{n} gedeeld"
+      }
     }
   }
 }

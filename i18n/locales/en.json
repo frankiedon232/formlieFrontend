@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "This statement changes data. Confirm to run it.",
     "FRM-DEST-1024": "This connection is read only here: only reading statements run.",
     "FRM-DEST-1025": "The database couldn't run this statement.",
-    "FRM-DEST-1026": "Run one statement at a time: select it, or put the cursor in it."
+    "FRM-DEST-1026": "Run one statement at a time: select it, or put the cursor in it.",
+    "FRM-DEST-1027": "Only the person who saved this query can change it."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Table structure changed",
       "data_table_truncated": "Table emptied",
       "data_table_dropped": "Table deleted",
-      "data_query_run": "Query run on a database"
+      "data_query_run": "Query run on a database",
+      "data_query_exported": "Query results exported",
+      "data_saved_query_saved": "Query saved",
+      "data_saved_query_deleted": "Saved query deleted"
     },
     "detail": {
       "who": "Who",
@@ -4888,7 +4892,70 @@
       "noHistory": "No statements yet",
       "noHistoryDesc": "What you run on this connection shows here.",
       "rows": "{n} row | {n} rows",
-      "clear": "Clear history"
+      "clear": "Clear history",
+      "saved": "Saved",
+      "noSaved": "No saved queries yet",
+      "noSavedDesc": "Save a statement with Ctrl + S to find it here."
+    },
+    "format": "Format",
+    "unsaved": "Unsaved changes",
+    "saved": {
+      "saveTitle": "Save query",
+      "editTitle": "Edit saved query",
+      "name": "Name",
+      "namePlaceholder": "Open cases this week",
+      "description": "Description",
+      "descriptionPlaceholder": "What it shows and when to use it",
+      "shareLabel": "Share with the workspace",
+      "shareDesc": "Everyone in the workspace can see and run it; only you can change or delete it.",
+      "saveButton": "Save",
+      "nameRequired": "Enter a name.",
+      "created": "Saved as {name}",
+      "updated": "{name} saved",
+      "open": "Open in a new tab",
+      "openEditor": "Open in the Query editor",
+      "edit": "Edit",
+      "share": "Share with the workspace",
+      "unshare": "Make personal",
+      "sharedToast": "{name} is shared with the workspace",
+      "unshared": "{name} is personal now",
+      "delete": "Delete",
+      "deleteTitle": "Delete {name}?",
+      "deleteDesc": "The saved query is removed for everyone. Tabs that have it open keep their SQL.",
+      "deleted": "{name} deleted",
+      "sharedShort": "Shared",
+      "personal": "Personal",
+      "runs": "{n} run | {n} runs",
+      "you": "You",
+      "lastRun": "Ran {when}",
+      "neverRun": "Not run yet",
+      "kindRead": "Reads data",
+      "kindChange": "Changes data",
+      "filterMine": "Mine",
+      "sortMostRun": "Most run",
+      "sortRecentRun": "Recently run",
+      "sortChanged": "Recently changed",
+      "search": "Search saved queries…",
+      "emptyTitle": "No saved queries",
+      "emptyDesc": "Save a statement in the Query editor (Ctrl + S) to reuse it or share it with your team.",
+      "new": "New query",
+      "col": {
+        "name": "Name",
+        "kind": "Does",
+        "sharing": "Sharing",
+        "runs": "Runs",
+        "lastRun": "Last run",
+        "updated": "Changed",
+        "owner": "Saved by"
+      },
+      "kpi": {
+        "saved": "Saved",
+        "yours": "Yours",
+        "shared": "Shared",
+        "runs": "Runs of saved queries",
+        "byKind": "Saved queries by what they do",
+        "sharedCount": "{n} shared"
+      }
     }
   }
 }

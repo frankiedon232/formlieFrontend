@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { parametersIn, splitStatements, statementAt, statementKind, tablesIn } from '#shared/utils/datasources/sql'
+import { formatSql, parametersIn, splitStatements, statementAt, statementKind, tablesIn } from '#shared/utils/datasources/sql'
 
 describe('statements', () => {
   it('splits on semicolons outside quotes, comments and dollar quotes', () => {
@@ -41,5 +41,23 @@ describe('tables and parameters', () => {
 
   it('finds :name parameters, never casts or quoted text', () => {
     expect(parametersIn("SELECT * FROM t WHERE a = :status AND b::text = ':nope' AND c > :since AND d = :status")).toEqual(['status', 'since'])
+  })
+})
+
+describe('format', () => {
+  it('puts clauses on their own lines and indents lists and conditions', () => {
+    expect(formatSql("select id, full_name from public.clients where status = 'open' and phone is null order by id desc limit 10")).toBe(
+      ["SELECT", "  id,", "  full_name", "FROM public.clients", "WHERE status = 'open'", "  AND phone IS NULL", "ORDER BY", "  id DESC", "LIMIT 10;"].join('\n'),
+    )
+  })
+
+  it('keeps strings, quoted names and functions as they are', () => {
+    expect(formatSql(`select count(*) from "My Table" where note = 'select from where'`)).toBe(['SELECT', '  COUNT(*)', 'FROM "My Table"', "WHERE note = 'select from where';"].join('\n'))
+  })
+
+  it('formats changes and several statements', () => {
+    expect(formatSql("update t set a = 1, b = 'x' where id in (1, 2); delete from t where id = 3")).toBe(
+      ['UPDATE t', 'SET', '  a = 1,', "  b = 'x'", 'WHERE id IN (1, 2);', '', 'DELETE FROM t', 'WHERE id = 3;'].join('\n'),
+    )
   })
 })

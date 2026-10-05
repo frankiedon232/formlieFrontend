@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Pernyataan ini mengubah data. Konfirmasi untuk menjalankannya.",
     "FRM-DEST-1024": "Koneksi ini hanya-baca di sini: hanya pernyataan baca yang dijalankan.",
     "FRM-DEST-1025": "Database tidak dapat menjalankan pernyataan ini.",
-    "FRM-DEST-1026": "Jalankan satu pernyataan sekaligus: pilih pernyataannya, atau letakkan kursor di dalamnya."
+    "FRM-DEST-1026": "Jalankan satu pernyataan sekaligus: pilih pernyataannya, atau letakkan kursor di dalamnya.",
+    "FRM-DEST-1027": "Hanya orang yang menyimpan kueri ini yang dapat mengubahnya."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Struktur tabel diubah",
       "data_table_truncated": "Tabel dikosongkan",
       "data_table_dropped": "Tabel dihapus",
-      "data_query_run": "Kueri dijalankan di database"
+      "data_query_run": "Kueri dijalankan di database",
+      "data_query_exported": "Hasil kueri diekspor",
+      "data_saved_query_saved": "Kueri disimpan",
+      "data_saved_query_deleted": "Kueri tersimpan dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -4888,7 +4892,70 @@
       "noHistory": "Belum ada pernyataan",
       "noHistoryDesc": "Yang Anda jalankan di koneksi ini muncul di sini.",
       "rows": "{n} baris | {n} baris",
-      "clear": "Hapus riwayat"
+      "clear": "Hapus riwayat",
+      "saved": "Tersimpan",
+      "noSaved": "Belum ada kueri tersimpan",
+      "noSavedDesc": "Simpan pernyataan dengan Ctrl + S agar bisa ditemukan di sini."
+    },
+    "format": "Rapikan",
+    "unsaved": "Perubahan belum disimpan",
+    "saved": {
+      "saveTitle": "Simpan kueri",
+      "editTitle": "Edit kueri tersimpan",
+      "name": "Nama",
+      "namePlaceholder": "Kasus terbuka minggu ini",
+      "description": "Deskripsi",
+      "descriptionPlaceholder": "Apa yang ditampilkan dan kapan memakainya",
+      "shareLabel": "Bagikan ke ruang kerja",
+      "shareDesc": "Semua orang di ruang kerja dapat melihat dan menjalankannya; hanya Anda yang dapat mengubah atau menghapusnya.",
+      "saveButton": "Simpan",
+      "nameRequired": "Masukkan nama.",
+      "created": "Disimpan sebagai {name}",
+      "updated": "{name} disimpan",
+      "open": "Buka di tab baru",
+      "openEditor": "Buka di Editor kueri",
+      "edit": "Edit",
+      "share": "Bagikan ke ruang kerja",
+      "unshare": "Jadikan pribadi",
+      "sharedToast": "{name} dibagikan ke ruang kerja",
+      "unshared": "{name} sekarang pribadi",
+      "delete": "Hapus",
+      "deleteTitle": "Hapus {name}?",
+      "deleteDesc": "Kueri tersimpan dihapus untuk semua orang. Tab yang sedang membukanya tetap menyimpan SQL-nya.",
+      "deleted": "{name} dihapus",
+      "sharedShort": "Dibagikan",
+      "personal": "Pribadi",
+      "runs": "{n} kali dijalankan | {n} kali dijalankan",
+      "you": "Anda",
+      "lastRun": "Dijalankan {when}",
+      "neverRun": "Belum dijalankan",
+      "kindRead": "Membaca data",
+      "kindChange": "Mengubah data",
+      "filterMine": "Milik saya",
+      "sortMostRun": "Paling sering dijalankan",
+      "sortRecentRun": "Baru dijalankan",
+      "sortChanged": "Baru diubah",
+      "search": "Cari kueri tersimpan…",
+      "emptyTitle": "Tidak ada kueri tersimpan",
+      "emptyDesc": "Simpan pernyataan di Editor kueri (Ctrl + S) untuk memakainya lagi atau membagikannya ke tim Anda.",
+      "new": "Kueri baru",
+      "col": {
+        "name": "Nama",
+        "kind": "Fungsi",
+        "sharing": "Berbagi",
+        "runs": "Dijalankan",
+        "lastRun": "Terakhir dijalankan",
+        "updated": "Diubah",
+        "owner": "Disimpan oleh"
+      },
+      "kpi": {
+        "saved": "Tersimpan",
+        "yours": "Milik Anda",
+        "shared": "Dibagikan",
+        "runs": "Jumlah kueri tersimpan dijalankan",
+        "byKind": "Kueri tersimpan menurut fungsinya",
+        "sharedCount": "{n} dibagikan"
+      }
     }
   }
 }

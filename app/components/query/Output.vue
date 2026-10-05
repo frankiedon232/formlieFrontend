@@ -4,10 +4,15 @@
   shortcut; a slim progress bar while it runs (old results stay, dimmed).
 -->
 <script setup lang="ts">
-defineProps<{ state: RunState }>()
+import type { TableExport } from '#shared/types/explorer'
+const props = defineProps<{ state: RunState; sourceId: string | null }>()
 const emit = defineEmits<{ page: [page: number]; line: [line: number] }>()
 const { t } = useI18n()
 const { number } = useFormat()
+const api = useApi()
+// Export: the same statement again on the server, this page or up to 5,000 rows (never from the browser's copy)
+const exportResults = async (format: TableExport['format'], scope: TableExport['scope']) =>
+  (await api.post<TableExport>(`/datasources/${props.sourceId}/query/export`, { sql: props.state.last!.text, params: props.state.last!.params, format, scope, page: props.state.result!.page, page_size: props.state.result!.page_size })).data
 </script>
 
 <template>
@@ -23,7 +28,11 @@ const { number } = useFormat()
     />
     <template v-else-if="state.result">
       <div class="flex min-h-0 flex-1 flex-col transition-opacity" :class="state.running ? 'opacity-60' : ''">
-        <QueryResults v-if="state.result.kind === 'read'" :result="state.result" @page="page => emit('page', page)" />
+        <QueryResults v-if="state.result.kind === 'read'" :result="state.result" @page="page => emit('page', page)">
+          <template #actions>
+            <ExplorerExportButton v-if="sourceId && state.last && state.result.rows.length" :source-id="sourceId" :page-rows="state.result.rows.length" :create="exportResults" :formats="['xlsx', 'csv', 'json']" size="xs" />
+          </template>
+        </QueryResults>
         <AppEmpty
           v-else
           size="sm"

@@ -18,7 +18,7 @@ export interface RunState {
   result: QueryResult | null
   problem: QueryProblem | null
   /** What ran last, to page through it again. */
-  last: { text: string; from: number; params: Record<string, string>; confirmed: boolean } | null
+  last: { text: string; from: number; params: Record<string, string>; confirmed: boolean; savedId?: string } | null
 }
 
 export function useQueryRunner(sourceId: Ref<string | null>, lineAt: (position: number) => number) {
@@ -54,7 +54,7 @@ export function useQueryRunner(sourceId: Ref<string | null>, lineAt: (position: 
     }
   }
 
-  async function run(tabId: string, text: string, from: number, params: Record<string, string>, page = 1, confirmed = false) {
+  async function run(tabId: string, text: string, from: number, params: Record<string, string>, page = 1, confirmed = false, savedId?: string) {
     if (!sourceId.value) return
     const state = stateOf(tabId)
     controllers.get(tabId)?.abort()
@@ -63,9 +63,9 @@ export function useQueryRunner(sourceId: Ref<string | null>, lineAt: (position: 
     state.running = true
     state.problem = null
     try {
-      const { data } = await api.post<QueryResult>(`/datasources/${sourceId.value}/query`, { sql: text, params, page, page_size: 50, confirm: confirmed }, { signal: controller.signal })
+      const { data } = await api.post<QueryResult>(`/datasources/${sourceId.value}/query`, { sql: text, params, page, page_size: 50, confirm: confirmed, saved_id: page === 1 ? savedId : undefined }, { signal: controller.signal })
       state.result = data
-      state.last = { text, from, params, confirmed }
+      state.last = { text, from, params, confirmed, savedId }
     } catch (error) {
       if (controller.signal.aborted) return
       const normalised = handle(error, { silent: true })
@@ -82,7 +82,7 @@ export function useQueryRunner(sourceId: Ref<string | null>, lineAt: (position: 
           confirmLabel: t('query.confirm.run'),
           danger: kind === 'delete' || kind === 'structure',
         })
-        if (yes) await run(tabId, text, from, params, page, true)
+        if (yes) await run(tabId, text, from, params, page, true, savedId)
         return
       }
       const message = detail('message')
@@ -119,7 +119,7 @@ export function useQueryRunner(sourceId: Ref<string | null>, lineAt: (position: 
 
   const page = (tabId: string, to: number) => {
     const last = stateOf(tabId).last
-    if (last) void run(tabId, last.text, last.from, last.params, to, last.confirmed)
+    if (last) void run(tabId, last.text, last.from, last.params, to, last.confirmed, last.savedId)
   }
 
   return { stateOf, run, cancel, page, history, loadHistory, removeHistory }

@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "此语句会更改数据。请确认后运行。",
     "FRM-DEST-1024": "此连接在这里为只读：只运行读取语句。",
     "FRM-DEST-1025": "数据库无法运行此语句。",
-    "FRM-DEST-1026": "一次只运行一条语句：选中它，或将光标放在其中。"
+    "FRM-DEST-1026": "一次只运行一条语句：选中它，或将光标放在其中。",
+    "FRM-DEST-1027": "只有保存此查询的人才能更改它。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "更改了表结构",
       "data_table_truncated": "清空了表",
       "data_table_dropped": "删除了表",
-      "data_query_run": "在数据库上运行了查询"
+      "data_query_run": "在数据库上运行了查询",
+      "data_query_exported": "已导出查询结果",
+      "data_saved_query_saved": "已保存查询",
+      "data_saved_query_deleted": "已删除已保存的查询"
     },
     "detail": {
       "who": "谁",
@@ -4888,7 +4892,70 @@
       "noHistory": "还没有语句",
       "noHistoryDesc": "你在此连接上运行的内容会显示在这里。",
       "rows": "{n} 行 | {n} 行",
-      "clear": "清除历史记录"
+      "clear": "清除历史记录",
+      "saved": "已保存",
+      "noSaved": "还没有已保存的查询",
+      "noSavedDesc": "按 Ctrl + S 保存语句，即可在这里找到。"
+    },
+    "format": "格式化",
+    "unsaved": "未保存的更改",
+    "saved": {
+      "saveTitle": "保存查询",
+      "editTitle": "编辑已保存的查询",
+      "name": "名称",
+      "namePlaceholder": "本周未结案件",
+      "description": "描述",
+      "descriptionPlaceholder": "它显示什么，何时使用",
+      "shareLabel": "与工作区共享",
+      "shareDesc": "工作区中的所有人都可以查看和运行；只有你可以更改或删除。",
+      "saveButton": "保存",
+      "nameRequired": "请输入名称。",
+      "created": "已保存为 {name}",
+      "updated": "已保存 {name}",
+      "open": "在新标签页中打开",
+      "openEditor": "在查询编辑器中打开",
+      "edit": "编辑",
+      "share": "与工作区共享",
+      "unshare": "设为个人",
+      "sharedToast": "已与工作区共享 {name}",
+      "unshared": "{name} 现在是个人的",
+      "delete": "删除",
+      "deleteTitle": "删除 {name}？",
+      "deleteDesc": "已保存的查询将对所有人删除。已打开它的标签页会保留其 SQL。",
+      "deleted": "已删除 {name}",
+      "sharedShort": "已共享",
+      "personal": "个人",
+      "runs": "运行 {n} 次 | 运行 {n} 次",
+      "you": "你",
+      "lastRun": "运行于 {when}",
+      "neverRun": "尚未运行",
+      "kindRead": "读取数据",
+      "kindChange": "更改数据",
+      "filterMine": "我的",
+      "sortMostRun": "运行最多",
+      "sortRecentRun": "最近运行",
+      "sortChanged": "最近更改",
+      "search": "搜索已保存的查询…",
+      "emptyTitle": "没有已保存的查询",
+      "emptyDesc": "在查询编辑器中保存语句 (Ctrl + S)，即可重复使用或与团队共享。",
+      "new": "新建查询",
+      "col": {
+        "name": "名称",
+        "kind": "作用",
+        "sharing": "共享",
+        "runs": "运行次数",
+        "lastRun": "上次运行",
+        "updated": "更改时间",
+        "owner": "保存者"
+      },
+      "kpi": {
+        "saved": "已保存",
+        "yours": "我的",
+        "shared": "已共享",
+        "runs": "已保存查询的运行次数",
+        "byKind": "按作用划分的已保存查询",
+        "sharedCount": "{n} 个已共享"
+      }
     }
   }
 }

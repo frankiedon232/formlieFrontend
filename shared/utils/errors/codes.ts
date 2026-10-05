@@ -118,6 +118,7 @@ export const ERROR_CODES = {
   'FRM-DEST-1024': { status: 403, message: 'This connection is read only here: only reading statements run.' },
   'FRM-DEST-1025': { status: 400, message: "The database couldn't run this statement." },
   'FRM-DEST-1026': { status: 400, message: 'Run one statement at a time: select it, or put the cursor in it.' },
+  'FRM-DEST-1027': { status: 403, message: 'Only the person who saved this query can change it.' },
   'FRM-DEST-1012': { status: 400, message: "This account can't create or use the response tables." },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },

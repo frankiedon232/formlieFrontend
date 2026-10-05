@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Diese Anweisung ändert Daten. Bestätigen Sie, um sie auszuführen.",
     "FRM-DEST-1024": "Diese Verbindung ist hier schreibgeschützt: Nur lesende Anweisungen werden ausgeführt.",
     "FRM-DEST-1025": "Die Datenbank konnte diese Anweisung nicht ausführen.",
-    "FRM-DEST-1026": "Führen Sie jeweils eine Anweisung aus: Markieren Sie sie oder setzen Sie den Cursor hinein."
+    "FRM-DEST-1026": "Führen Sie jeweils eine Anweisung aus: Markieren Sie sie oder setzen Sie den Cursor hinein.",
+    "FRM-DEST-1027": "Nur die Person, die diese Abfrage gespeichert hat, kann sie ändern."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Tabellenstruktur geändert",
       "data_table_truncated": "Tabelle geleert",
       "data_table_dropped": "Tabelle gelöscht",
-      "data_query_run": "Abfrage auf einer Datenbank ausgeführt"
+      "data_query_run": "Abfrage auf einer Datenbank ausgeführt",
+      "data_query_exported": "Abfrageergebnisse exportiert",
+      "data_saved_query_saved": "Abfrage gespeichert",
+      "data_saved_query_deleted": "Gespeicherte Abfrage gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -4888,7 +4892,70 @@
       "noHistory": "Noch keine Anweisungen",
       "noHistoryDesc": "Was Sie auf dieser Verbindung ausführen, erscheint hier.",
       "rows": "{n} Zeile | {n} Zeilen",
-      "clear": "Verlauf leeren"
+      "clear": "Verlauf leeren",
+      "saved": "Gespeichert",
+      "noSaved": "Noch keine gespeicherten Abfragen",
+      "noSavedDesc": "Speichern Sie eine Anweisung mit Ctrl + S, um sie hier zu finden."
+    },
+    "format": "Formatieren",
+    "unsaved": "Ungespeicherte Änderungen",
+    "saved": {
+      "saveTitle": "Abfrage speichern",
+      "editTitle": "Gespeicherte Abfrage bearbeiten",
+      "name": "Name",
+      "namePlaceholder": "Offene Fälle dieser Woche",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Was sie zeigt und wann man sie nutzt",
+      "shareLabel": "Mit dem Arbeitsbereich teilen",
+      "shareDesc": "Alle im Arbeitsbereich können sie sehen und ausführen; nur Sie können sie ändern oder löschen.",
+      "saveButton": "Speichern",
+      "nameRequired": "Geben Sie einen Namen ein.",
+      "created": "Gespeichert als {name}",
+      "updated": "{name} gespeichert",
+      "open": "In neuem Tab öffnen",
+      "openEditor": "Im Abfrage-Editor öffnen",
+      "edit": "Bearbeiten",
+      "share": "Mit dem Arbeitsbereich teilen",
+      "unshare": "Privat machen",
+      "sharedToast": "{name} ist mit dem Arbeitsbereich geteilt",
+      "unshared": "{name} ist jetzt privat",
+      "delete": "Löschen",
+      "deleteTitle": "{name} löschen?",
+      "deleteDesc": "Die gespeicherte Abfrage wird für alle entfernt. Tabs, in denen sie offen ist, behalten ihr SQL.",
+      "deleted": "{name} gelöscht",
+      "sharedShort": "Geteilt",
+      "personal": "Privat",
+      "runs": "{n} Ausführung | {n} Ausführungen",
+      "you": "Sie",
+      "lastRun": "Ausgeführt {when}",
+      "neverRun": "Noch nicht ausgeführt",
+      "kindRead": "Liest Daten",
+      "kindChange": "Ändert Daten",
+      "filterMine": "Meine",
+      "sortMostRun": "Am häufigsten ausgeführt",
+      "sortRecentRun": "Zuletzt ausgeführt",
+      "sortChanged": "Zuletzt geändert",
+      "search": "Gespeicherte Abfragen suchen…",
+      "emptyTitle": "Keine gespeicherten Abfragen",
+      "emptyDesc": "Speichern Sie eine Anweisung im Abfrage-Editor (Ctrl + S), um sie wiederzuverwenden oder mit Ihrem Team zu teilen.",
+      "new": "Neue Abfrage",
+      "col": {
+        "name": "Name",
+        "kind": "Wirkung",
+        "sharing": "Freigabe",
+        "runs": "Ausführungen",
+        "lastRun": "Zuletzt ausgeführt",
+        "updated": "Geändert",
+        "owner": "Gespeichert von"
+      },
+      "kpi": {
+        "saved": "Gespeichert",
+        "yours": "Ihre",
+        "shared": "Geteilt",
+        "runs": "Ausführungen gespeicherter Abfragen",
+        "byKind": "Gespeicherte Abfragen nach Wirkung",
+        "sharedCount": "{n} geteilt"
+      }
     }
   }
 }

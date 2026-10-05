@@ -116,6 +116,9 @@ export const AUDIT_EVENTS = {
   'data.table_truncated': { area: 'data', icon: 'i-lucide-eraser' },
   'data.table_dropped': { area: 'data', icon: 'i-lucide-trash-2' },
   'data.query_run': { area: 'data', icon: 'i-lucide-square-terminal' },
+  'data.query_exported': { area: 'data', icon: 'i-lucide-file-down' },
+  'data.saved_query_saved': { area: 'data', icon: 'i-lucide-bookmark' },
+  'data.saved_query_deleted': { area: 'data', icon: 'i-lucide-bookmark-x' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>

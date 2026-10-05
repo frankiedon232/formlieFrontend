@@ -4,13 +4,15 @@
   editor (CodeMirror 6) above the results, a line between them to drag. Ctrl / ⌘ + Enter runs the
   selection or the statement at the cursor; `:name` parameters get input boxes. Reading statements
   page through results; anything that changes rows or structure asks first (what it will do, how
-  many rows) and follows the connection's access. Esc cancels a running statement. `?ds=` keeps
-  the connection.
+  many rows) and follows the connection's access. Esc cancels a running statement. Ctrl / Cmd + S
+  saves (yours: updated; otherwise a name and sharing), Shift + Alt + F formats. `?ds=` keeps the
+  connection, `?saved=` opens a saved query.
 -->
 <script setup lang="ts">
 import type { DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable } from '#shared/types/destinations'
-import { parametersIn } from '#shared/utils/datasources/sql'
+import type { SavedQuery } from '#shared/types/query'
+import { formatSql, parametersIn } from '#shared/utils/datasources/sql'
 
 definePageMeta({ breadcrumb: 'nav.dataQuery' })
 const { t } = useI18n()
@@ -63,9 +65,11 @@ const editor = useTemplateRef<{ runText: () => { text: string; from: number } | 
 const runner = useQueryRunner(dsId, position => editor.value?.lineAt(position) ?? 1)
 const state = computed(() => runner.stateOf(tabs.active.value.id))
 const text = computed({ get: () => tabs.active.value.sql, set: value => tabs.update(tabs.active.value.id, value) })
+const saved = useSavedQueries(dsId)
 watch(dsId, () => {
   void loadTables()
   void runner.loadHistory()
+  void saved.load()
 }, { immediate: true })
 
 // :name parameters of the tab, values kept per tab in memory
@@ -83,10 +87,92 @@ function run() {
   const values = valuesOf(tabs.active.value.id)
   const missing = names.filter(name => !(name in values) || values[name] === '')
   if (missing.length) return void toast.add({ title: t('query.fillParams', { names: missing.map(name => `:${name}`).join(', ') }), color: 'warning', icon: 'i-lucide-variable' })
-  void runner.run(tabs.active.value.id, target.text, target.from, Object.fromEntries(names.map(name => [name, values[name]!])))
+  // A saved query's run is counted on it when the whole saved statement runs
+  const tab = tabs.active.value
+  const savedId = tab.savedId && target.text.trim().replace(/;$/, '') === (tab.savedSql ?? '').trim().replace(/;$/, '') ? tab.savedId : undefined
+  void runner.run(tab.id, target.text, target.from, Object.fromEntries(names.map(name => [name, values[name]!])), 1, false, savedId)
 }
 const cancel = () => runner.cancel(tabs.active.value.id)
+// Save (Ctrl / Cmd + S): updates your saved query, or asks for a name; Format (Shift + Alt + F)
+const saveOpen = ref(false)
+const saveBusy = ref(false)
+const editing = ref<SavedQuery | null>(null)
+async function save() {
+  const tab = tabs.active.value
+  if (!tab.sql.trim()) return
+  const linked = tab.savedId ? saved.list.value?.find(item => item.id === tab.savedId) : undefined
+  if (linked?.mine) {
+    saveBusy.value = true
+    try {
+      const data = await saved.update(linked.id, { sql: tab.sql })
+      tabs.link(tab.id, data)
+      toast.add({ title: t('query.saved.updated', { name: data.name }), color: 'success', icon: 'i-lucide-circle-check' })
+    } catch (error) {
+      handle(error)
+    } finally {
+      saveBusy.value = false
+    }
+    return
+  }
+  editing.value = null
+  saveOpen.value = true
+}
+async function saveFromModal(values: { name: string; description: string | null; shared: boolean }) {
+  saveBusy.value = true
+  try {
+    if (editing.value) {
+      const data = await saved.update(editing.value.id, values)
+      for (const tab of tabs.tabs.value.filter(item => item.savedId === data.id)) tabs.rename(tab.id, data.name)
+      toast.add({ title: t('query.saved.updated', { name: data.name }), color: 'success', icon: 'i-lucide-circle-check' })
+    } else {
+      const data = await saved.create({ ...values, sql: tabs.active.value.sql })
+      tabs.link(tabs.active.value.id, data)
+      toast.add({ title: t('query.saved.created', { name: data.name }), color: 'success', icon: 'i-lucide-circle-check' })
+    }
+    saveOpen.value = false
+  } catch (error) {
+    handle(error)
+  } finally {
+    saveBusy.value = false
+  }
+}
+function edit(item: SavedQuery) {
+  editing.value = item
+  saveOpen.value = true
+}
+async function removeSaved(item: SavedQuery) {
+  if (await saved.remove(item)) tabs.unlink(item.id)
+}
+const openSaved = (item: SavedQuery) => {
+  tabs.add(item.sql, item.name, { id: item.id, sql: item.sql })
+  void nextTick(() => editor.value?.focus())
+}
+function format() {
+  if (!text.value.trim()) return
+  text.value = formatSql(text.value)
+}
+
+// ?saved= (from the Saved queries page): open it here, on its connection
+watch(
+  () => route.query.saved,
+  async id => {
+    if (typeof id !== 'string') return
+    try {
+      const item = await saved.get(id)
+      if (item.datasource.id !== dsId.value) await router.replace({ query: { ds: item.datasource.id, saved: id } })
+      await nextTick()
+      openSaved(item)
+      void router.replace({ query: { ds: item.datasource.id } })
+    } catch (error) {
+      handle(error)
+    }
+  },
+  { immediate: true },
+)
+
 defineShortcuts({
+  meta_s: { usingInput: true, handler: () => void save() },
+  shift_alt_f: { usingInput: true, handler: format },
   meta_enter: { usingInput: true, handler: run },
   escape: { usingInput: true, handler: () => state.value.running && cancel() },
 })
@@ -113,13 +199,17 @@ const resizeKey = (event: KeyboardEvent) => {
   editorHeight.value = Math.max(120, Math.min(900, editorHeight.value + step))
 }
 
-const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, loading: !tables.value && !tablesError.value, history: runner.history.value, engine: source.value?.engine ?? null }))
+const navigator = computed(() => ({ sources: sources.value, sourceId: dsId.value, tables: tables.value, loading: !tables.value && !tablesError.value, history: runner.history.value, engine: source.value?.engine ?? null, saved: saved.list.value, savedBusy: saved.busy.value }))
 const navigatorEvents = {
   onSource: (id: string) => go(id),
   onInsert: insert,
   onOpen: open,
   onSelect: (table: DatabaseTable) => insert(`${table.schema}.${table.name}`),
   onRemove: (id?: string) => void runner.removeHistory(id),
+  onOpenSaved: openSaved,
+  onEditSaved: edit,
+  onShareSaved: (item: SavedQuery) => void saved.toggleShare(item),
+  onDeleteSaved: (item: SavedQuery) => void removeSaved(item),
 }
 </script>
 
@@ -127,7 +217,10 @@ const navigatorEvents = {
   <AppPanel id="data-query" :title="t('nav.dataQuery')" :subtitle="source ? `${source.name} · ${engineName(source.engine)}` : t('dataSources.section.query')" subtitle-icon="i-lucide-square-terminal">
     <template #actions>
       <UButton v-if="!takeover.shown.value" :label="t('query.side.title')" icon="i-lucide-list-tree" color="neutral" variant="outline" @click="sideOpen = true" />
-      <UButton :label="t('query.newTab')" icon="i-lucide-plus" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="tabs.add()" />
+      <UButton :label="t('query.format')" icon="i-lucide-align-left" color="neutral" variant="outline" class="hidden lg:inline-flex" :disabled="!text.trim()" @click="format" />
+      <UButton :label="t('query.saved.saveButton')" icon="i-lucide-bookmark" color="neutral" variant="outline" class="hidden sm:inline-flex" :loading="saveBusy" :disabled="!dsId || !text.trim()" @click="save">
+        <template #trailing><span class="hidden items-center gap-0.5 xl:inline-flex"><UKbd value="meta" size="sm" /><UKbd value="s" size="sm" /></span></template>
+      </UButton>
       <UButton v-if="state.running" :label="t('query.cancel')" icon="i-lucide-square" color="neutral" variant="outline" @click="cancel">
         <template #trailing><UKbd value="Esc" size="sm" class="hidden sm:inline-flex" /></template>
       </UButton>
@@ -154,7 +247,7 @@ const navigatorEvents = {
       ]"
     />
     <div v-else class="flex h-[calc(100dvh-10.5rem)] min-h-[32rem] flex-col overflow-hidden rounded-lg border border-default">
-      <QueryTabBar :tabs="tabs.tabs.value" :active="tabs.active.value.id" :running="id => runner.stateOf(id).running" @select="tabs.select" @close="tabs.close" @add="tabs.add()" @rename="tabs.rename" />
+      <QueryTabBar :tabs="tabs.tabs.value" :active="tabs.active.value.id" :running="id => runner.stateOf(id).running" :dirty="tabs.dirty" @select="tabs.select" @close="tabs.close" @add="tabs.add()" @rename="tabs.rename" />
 
       <!-- :name parameters -->
       <div v-if="paramNames.length" class="flex flex-wrap items-center gap-2 border-b border-default bg-elevated/30 px-3 py-1.5">
@@ -204,12 +297,13 @@ const navigatorEvents = {
         <span class="absolute inset-x-0 top-1/2 mx-auto h-0.5 w-10 -translate-y-1/2 rounded-full bg-(--ui-border-accented) group-hover:bg-(--ui-border-inverted) group-focus-visible:bg-(--ui-border-inverted)" />
       </div>
 
-      <QueryOutput :state="state" @page="page => runner.page(tabs.active.value.id, page)" @line="line => editor?.goToLine(line)" />
+      <QueryOutput :state="state" :source-id="dsId" @page="page => runner.page(tabs.active.value.id, page)" @line="line => editor?.goToLine(line)" />
     </div>
 
     <Teleport v-if="takeover.shown.value" :to="`#${SIDEBAR_TAKEOVER_ID}`" defer>
       <QueryNavigator v-bind="{ ...navigator, ...navigatorEvents }" />
     </Teleport>
+    <QuerySaveModal v-model:open="saveOpen" v-model:busy="saveBusy" :sql="text" :connection="source?.name ?? ''" :existing="editing" :suggested-name="tabs.active.value.title" @save="saveFromModal" />
     <USlideover v-model:open="sideOpen" side="left" :title="t('query.side.title')" :ui="{ content: 'w-full max-w-xs', body: 'flex p-0 sm:p-0' }">
       <template #body>
         <QueryNavigator v-bind="{ ...navigator, ...navigatorEvents }" />

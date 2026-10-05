@@ -14,6 +14,7 @@ import * as destinations from './routes/destinations'
 import * as explorer from './routes/explorer'
 import * as explorerSchema from './routes/explorerSchema'
 import * as query from './routes/query'
+import * as savedQueries from './routes/savedQueries'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
@@ -128,6 +129,13 @@ const router = createRouter()
   .post('/datasources/:id/query', query.runQuery)
   .get('/datasources/:id/query-history', query.queryHistory)
   .delete('/datasources/:id/query-history', query.clearQueryHistory)
+  .post('/datasources/:id/query/export', query.exportQuery)
+  .get('/saved-queries', savedQueries.listSavedQueries)
+  .get('/saved-queries/insights', savedQueries.savedQueryInsights)
+  .get('/saved-queries/:id', savedQueries.getSavedQuery)
+  .post('/saved-queries', savedQueries.createSavedQuery)
+  .patch('/saved-queries/:id', savedQueries.updateSavedQuery)
+  .delete('/saved-queries/:id', savedQueries.deleteSavedQuery)
   .get('/datasources/:id/explorer/structure', explorer.tableStructure)
   .get('/datasources/:id/explorer/rows', explorer.tableRows)
   .get('/datasources/:id/explorer/facets', explorer.tableFacets)

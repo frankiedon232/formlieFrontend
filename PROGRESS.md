@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done, M3 Database explorer done; next M4 Query editor (needs CodeMirror 6, ask first).
+**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done, M3 Database explorer done; M4 Query editor done; next M5 Activity, polish and review.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -541,7 +541,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
-**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes in their own tables, export). **M4** 🟡 Query editor (part 1 ✅ editor, run, results, safety, history; part 2 saved queries, export, format). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes in their own tables, export). **M4** ✅ Query editor (editor, run, results, safety, history, saved queries, export, format). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -590,10 +590,10 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 4. Query editor
 
-- ✅ SQL editor (CodeMirror 6, owner-approved 2026-10-05) with the connection's SQL dialect, syntax colours from the theme, schema / table / column completion, several tabs (rename, close, kept per connection on the device); format query: part 2
+- ✅ SQL editor (CodeMirror 6, owner-approved 2026-10-05) with the connection's SQL dialect, syntax colours from the theme, schema / table / column completion, several tabs (rename, close, kept per connection on the device), Format (Shift + Alt + F, built in, no package)
 - ✅ Run the selection or the statement at the cursor (Ctrl / ⌘ + Enter), stop (Esc), results grid built for query output (row numbers, resizable columns, NULL dimmed, right-click copy) with paging, run time, rows affected, the database's problem marking its line with Go to line
 - ✅ Read only connections run only reading statements; a changing statement says what it will do (rows, tables) and needs a confirm; never Formalie's response tables; structure changes need Full access
-- 🟡 Parameters (`:name` → input boxes) ✅, query history ✅; saved queries (personal or shared) and export results: part 2
+- ✅ Parameters (`:name` → input boxes), query history, saved queries (personal or shared with the workspace; Ctrl / ⌘ + S; side panel tab and the Saved queries page with chart cards, table and cards), export results (this page or up to 5,000 rows; CSV / Excel / JSON)
 - ⬜ Use a saved read query as a dynamic option list source (F15e) and, later, on the dashboard (F21)
 
 ### 5. Other database operations
@@ -1261,3 +1261,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Explorer export scope: this page (default) or all matching rows up to 5,000 (`EXPORT_MAX_ROWS`, `TableExport.scope / total / capped`), in the button and the right-click menus. |
 | 2026-10-05 | F12 | Explorer as an editor: in-place cell editing (`ExplorerEditCell`, one value per PATCH, same checks as the row form, a click opens the panel after a short pause so a double-click can edit) and resizable columns (DataView `resizable`, `useColumnWidths`, start widths by type, fixed table layout). |
 | 2026-10-05 | F12 | M4 part 1, Query editor: CodeMirror 6 (owner-approved) with the connection's dialect and schema completion, tabs, run selection / statement at cursor, stop, `:name` parameters, results grid (row numbers, resizable, paging, copy), changing statements confirmed with what they touch, Read only and response-table protection, the database's problem on its line, history in the side panel, audit `data.query_run`. Mock runner for common SELECT / INSERT / UPDATE / DELETE. Tests: `datasources/sql`. |
+| 2026-10-05 | F12 | M4 part 2: saved queries (personal / shared, owner-only changes, run counts; Save with Ctrl / ⌘ + S, an unsaved-changes dot on the tab, a Saved tab in the side panel, `?saved=` links) and the Saved queries page (two chart cards, DataView table and cards, edit / share / delete), export of results (CSV / Excel / JSON, this page or up to 5,000 rows, through the explorer's export flow), Format (built-in SQL formatter). M4 complete. Tests: `datasources/sql` (format). |

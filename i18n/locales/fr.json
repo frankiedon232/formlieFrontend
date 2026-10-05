@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Cette instruction modifie des données. Confirmez pour l’exécuter.",
     "FRM-DEST-1024": "Cette connexion est en lecture seule ici : seules les instructions de lecture s’exécutent.",
     "FRM-DEST-1025": "La base de données n’a pas pu exécuter cette instruction.",
-    "FRM-DEST-1026": "Exécutez une instruction à la fois : sélectionnez-la, ou placez le curseur dedans."
+    "FRM-DEST-1026": "Exécutez une instruction à la fois : sélectionnez-la, ou placez le curseur dedans.",
+    "FRM-DEST-1027": "Seule la personne qui a enregistré cette requête peut la modifier."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Structure de table modifiée",
       "data_table_truncated": "Table vidée",
       "data_table_dropped": "Table supprimée",
-      "data_query_run": "Requête exécutée sur une base de données"
+      "data_query_run": "Requête exécutée sur une base de données",
+      "data_query_exported": "Résultats de requête exportés",
+      "data_saved_query_saved": "Requête enregistrée",
+      "data_saved_query_deleted": "Requête enregistrée supprimée"
     },
     "detail": {
       "who": "Qui",
@@ -4888,7 +4892,70 @@
       "noHistory": "Aucune instruction pour l’instant",
       "noHistoryDesc": "Ce que vous exécutez sur cette connexion s’affiche ici.",
       "rows": "{n} ligne | {n} lignes",
-      "clear": "Effacer l’historique"
+      "clear": "Effacer l’historique",
+      "saved": "Enregistrées",
+      "noSaved": "Aucune requête enregistrée pour l’instant",
+      "noSavedDesc": "Enregistrez une instruction avec Ctrl + S pour la retrouver ici."
+    },
+    "format": "Formater",
+    "unsaved": "Modifications non enregistrées",
+    "saved": {
+      "saveTitle": "Enregistrer la requête",
+      "editTitle": "Modifier la requête enregistrée",
+      "name": "Nom",
+      "namePlaceholder": "Dossiers ouverts cette semaine",
+      "description": "Description",
+      "descriptionPlaceholder": "Ce qu’elle affiche et quand l’utiliser",
+      "shareLabel": "Partager avec l’espace de travail",
+      "shareDesc": "Tout l’espace de travail peut la voir et l’exécuter ; vous seul pouvez la modifier ou la supprimer.",
+      "saveButton": "Enregistrer",
+      "nameRequired": "Saisissez un nom.",
+      "created": "Enregistrée sous {name}",
+      "updated": "{name} enregistrée",
+      "open": "Ouvrir dans un nouvel onglet",
+      "openEditor": "Ouvrir dans l’éditeur de requêtes",
+      "edit": "Modifier",
+      "share": "Partager avec l’espace de travail",
+      "unshare": "Rendre personnelle",
+      "sharedToast": "{name} est partagée avec l’espace de travail",
+      "unshared": "{name} est maintenant personnelle",
+      "delete": "Supprimer",
+      "deleteTitle": "Supprimer {name} ?",
+      "deleteDesc": "La requête enregistrée est supprimée pour tout le monde. Les onglets où elle est ouverte gardent leur SQL.",
+      "deleted": "{name} supprimée",
+      "sharedShort": "Partagée",
+      "personal": "Personnelle",
+      "runs": "{n} exécution | {n} exécutions",
+      "you": "Vous",
+      "lastRun": "Exécutée {when}",
+      "neverRun": "Pas encore exécutée",
+      "kindRead": "Lit des données",
+      "kindChange": "Modifie des données",
+      "filterMine": "Les miennes",
+      "sortMostRun": "Les plus exécutées",
+      "sortRecentRun": "Exécutées récemment",
+      "sortChanged": "Modifiées récemment",
+      "search": "Rechercher des requêtes enregistrées…",
+      "emptyTitle": "Aucune requête enregistrée",
+      "emptyDesc": "Enregistrez une instruction dans l’éditeur de requêtes (Ctrl + S) pour la réutiliser ou la partager avec votre équipe.",
+      "new": "Nouvelle requête",
+      "col": {
+        "name": "Nom",
+        "kind": "Effet",
+        "sharing": "Partage",
+        "runs": "Exécutions",
+        "lastRun": "Dernière exécution",
+        "updated": "Modifiée",
+        "owner": "Enregistrée par"
+      },
+      "kpi": {
+        "saved": "Enregistrées",
+        "yours": "Les vôtres",
+        "shared": "Partagées",
+        "runs": "Exécutions des requêtes enregistrées",
+        "byKind": "Requêtes enregistrées selon leur effet",
+        "sharedCount": "{n} partagées"
+      }
     }
   }
 }

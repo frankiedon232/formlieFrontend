@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Câu lệnh này thay đổi dữ liệu. Hãy xác nhận để chạy.",
     "FRM-DEST-1024": "Kết nối này ở đây chỉ đọc: chỉ các câu lệnh đọc được chạy.",
     "FRM-DEST-1025": "Cơ sở dữ liệu không chạy được câu lệnh này.",
-    "FRM-DEST-1026": "Mỗi lần chỉ chạy một câu lệnh: hãy chọn nó, hoặc đặt con trỏ vào trong."
+    "FRM-DEST-1026": "Mỗi lần chỉ chạy một câu lệnh: hãy chọn nó, hoặc đặt con trỏ vào trong.",
+    "FRM-DEST-1027": "Chỉ người đã lưu truy vấn này mới có thể thay đổi nó."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Đã thay đổi cấu trúc bảng",
       "data_table_truncated": "Đã làm trống bảng",
       "data_table_dropped": "Đã xóa bảng",
-      "data_query_run": "Đã chạy truy vấn trên cơ sở dữ liệu"
+      "data_query_run": "Đã chạy truy vấn trên cơ sở dữ liệu",
+      "data_query_exported": "Đã xuất kết quả truy vấn",
+      "data_saved_query_saved": "Đã lưu truy vấn",
+      "data_saved_query_deleted": "Đã xóa truy vấn đã lưu"
     },
     "detail": {
       "who": "Ai",
@@ -4888,7 +4892,70 @@
       "noHistory": "Chưa có câu lệnh nào",
       "noHistoryDesc": "Những gì bạn chạy trên kết nối này sẽ hiện ở đây.",
       "rows": "{n} hàng | {n} hàng",
-      "clear": "Xóa lịch sử"
+      "clear": "Xóa lịch sử",
+      "saved": "Đã lưu",
+      "noSaved": "Chưa có truy vấn đã lưu",
+      "noSavedDesc": "Lưu câu lệnh bằng Ctrl + S để tìm lại tại đây."
+    },
+    "format": "Định dạng",
+    "unsaved": "Thay đổi chưa lưu",
+    "saved": {
+      "saveTitle": "Lưu truy vấn",
+      "editTitle": "Sửa truy vấn đã lưu",
+      "name": "Tên",
+      "namePlaceholder": "Hồ sơ đang mở tuần này",
+      "description": "Mô tả",
+      "descriptionPlaceholder": "Truy vấn hiển thị gì và khi nào nên dùng",
+      "shareLabel": "Chia sẻ với không gian làm việc",
+      "shareDesc": "Mọi người trong không gian làm việc đều xem và chạy được; chỉ bạn mới có thể thay đổi hoặc xóa.",
+      "saveButton": "Lưu",
+      "nameRequired": "Nhập tên.",
+      "created": "Đã lưu thành {name}",
+      "updated": "Đã lưu {name}",
+      "open": "Mở trong tab mới",
+      "openEditor": "Mở trong Trình soạn truy vấn",
+      "edit": "Sửa",
+      "share": "Chia sẻ với không gian làm việc",
+      "unshare": "Chuyển thành cá nhân",
+      "sharedToast": "Đã chia sẻ {name} với không gian làm việc",
+      "unshared": "{name} giờ là cá nhân",
+      "delete": "Xóa",
+      "deleteTitle": "Xóa {name}?",
+      "deleteDesc": "Truy vấn đã lưu sẽ bị xóa với mọi người. Các tab đang mở truy vấn này vẫn giữ SQL của chúng.",
+      "deleted": "Đã xóa {name}",
+      "sharedShort": "Đã chia sẻ",
+      "personal": "Cá nhân",
+      "runs": "{n} lần chạy | {n} lần chạy",
+      "you": "Bạn",
+      "lastRun": "Đã chạy {when}",
+      "neverRun": "Chưa chạy",
+      "kindRead": "Đọc dữ liệu",
+      "kindChange": "Thay đổi dữ liệu",
+      "filterMine": "Của tôi",
+      "sortMostRun": "Chạy nhiều nhất",
+      "sortRecentRun": "Chạy gần đây",
+      "sortChanged": "Thay đổi gần đây",
+      "search": "Tìm truy vấn đã lưu…",
+      "emptyTitle": "Không có truy vấn đã lưu",
+      "emptyDesc": "Lưu câu lệnh trong Trình soạn truy vấn (Ctrl + S) để dùng lại hoặc chia sẻ với nhóm của bạn.",
+      "new": "Truy vấn mới",
+      "col": {
+        "name": "Tên",
+        "kind": "Chức năng",
+        "sharing": "Chia sẻ",
+        "runs": "Lần chạy",
+        "lastRun": "Lần chạy cuối",
+        "updated": "Đã thay đổi",
+        "owner": "Người lưu"
+      },
+      "kpi": {
+        "saved": "Đã lưu",
+        "yours": "Của bạn",
+        "shared": "Đã chia sẻ",
+        "runs": "Số lần chạy truy vấn đã lưu",
+        "byKind": "Truy vấn đã lưu theo chức năng",
+        "sharedCount": "{n} đã chia sẻ"
+      }
     }
   }
 }

@@ -4,7 +4,7 @@
   shows a spinner.
 -->
 <script setup lang="ts">
-const props = defineProps<{ tabs: QueryTab[]; active: string; running: (id: string) => boolean }>()
+const props = defineProps<{ tabs: QueryTab[]; active: string; running: (id: string) => boolean; dirty: (tab: QueryTab) => boolean }>()
 const emit = defineEmits<{ select: [id: string]; close: [id: string]; add: []; rename: [id: string, title: string] }>()
 const { t } = useI18n()
 const editing = ref<string | null>(null)
@@ -39,7 +39,7 @@ function onKey(event: KeyboardEvent, index: number) {
       :class="tab.id === active ? 'border-default bg-default text-highlighted' : 'border-transparent text-muted hover:bg-elevated/60 hover:text-default'"
     >
       <UIcon v-if="running(tab.id)" name="i-lucide-loader-circle" class="size-3.5 shrink-0 animate-spin" />
-      <UIcon v-else name="i-lucide-square-terminal" class="size-3.5 shrink-0 opacity-70" />
+      <UIcon v-else :name="tab.savedId ? 'i-lucide-bookmark' : 'i-lucide-square-terminal'" class="size-3.5 shrink-0 opacity-70" />
       <input
         v-if="editing === tab.id"
         :id="`query-tab-name-${tab.id}`"
@@ -66,6 +66,7 @@ function onKey(event: KeyboardEvent, index: number) {
       >
         {{ tab.title }}
       </button>
+      <span v-if="dirty(tab)" class="size-1.5 shrink-0 rounded-full bg-(--ui-text-highlighted)" :title="t('query.unsaved')" :aria-label="t('query.unsaved')" />
       <UButton icon="i-lucide-x" color="neutral" variant="ghost" size="xs" square class="size-5 rounded-sm p-0.5 opacity-60 group-hover:opacity-100" :aria-label="t('query.closeTab', { name: tab.title })" @click="emit('close', tab.id)" />
     </div>
     <UTooltip :text="t('query.newTab')">

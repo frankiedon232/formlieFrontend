@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Questa istruzione modifica i dati. Confermate per eseguirla.",
     "FRM-DEST-1024": "Qui questa connessione è di sola lettura: vengono eseguite solo istruzioni di lettura.",
     "FRM-DEST-1025": "Il database non è riuscito a eseguire questa istruzione.",
-    "FRM-DEST-1026": "Eseguite un’istruzione alla volta: selezionatela, o mettete il cursore al suo interno."
+    "FRM-DEST-1026": "Eseguite un’istruzione alla volta: selezionatela, o mettete il cursore al suo interno.",
+    "FRM-DEST-1027": "Solo chi ha salvato questa query può modificarla."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Struttura della tabella modificata",
       "data_table_truncated": "Tabella svuotata",
       "data_table_dropped": "Tabella eliminata",
-      "data_query_run": "Query eseguita su un database"
+      "data_query_run": "Query eseguita su un database",
+      "data_query_exported": "Risultati della query esportati",
+      "data_saved_query_saved": "Query salvata",
+      "data_saved_query_deleted": "Query salvata eliminata"
     },
     "detail": {
       "who": "Chi",
@@ -4888,7 +4892,70 @@
       "noHistory": "Ancora nessuna istruzione",
       "noHistoryDesc": "Ciò che eseguite su questa connessione compare qui.",
       "rows": "{n} riga | {n} righe",
-      "clear": "Cancella cronologia"
+      "clear": "Cancella cronologia",
+      "saved": "Salvate",
+      "noSaved": "Ancora nessuna query salvata",
+      "noSavedDesc": "Salvate un’istruzione con Ctrl + S per ritrovarla qui."
+    },
+    "format": "Formatta",
+    "unsaved": "Modifiche non salvate",
+    "saved": {
+      "saveTitle": "Salva query",
+      "editTitle": "Modifica query salvata",
+      "name": "Nome",
+      "namePlaceholder": "Casi aperti questa settimana",
+      "description": "Descrizione",
+      "descriptionPlaceholder": "Cosa mostra e quando usarla",
+      "shareLabel": "Condividi con lo spazio di lavoro",
+      "shareDesc": "Tutti nello spazio di lavoro possono vederla ed eseguirla; solo voi potete modificarla o eliminarla.",
+      "saveButton": "Salva",
+      "nameRequired": "Inserite un nome.",
+      "created": "Salvata come {name}",
+      "updated": "{name} salvata",
+      "open": "Apri in una nuova scheda",
+      "openEditor": "Apri nell’editor di query",
+      "edit": "Modifica",
+      "share": "Condividi con lo spazio di lavoro",
+      "unshare": "Rendi personale",
+      "sharedToast": "{name} è condivisa con lo spazio di lavoro",
+      "unshared": "{name} ora è personale",
+      "delete": "Elimina",
+      "deleteTitle": "Eliminare {name}?",
+      "deleteDesc": "La query salvata viene rimossa per tutti. Le schede in cui è aperta mantengono il loro SQL.",
+      "deleted": "{name} eliminata",
+      "sharedShort": "Condivisa",
+      "personal": "Personale",
+      "runs": "{n} esecuzione | {n} esecuzioni",
+      "you": "Voi",
+      "lastRun": "Eseguita {when}",
+      "neverRun": "Non ancora eseguita",
+      "kindRead": "Legge dati",
+      "kindChange": "Modifica dati",
+      "filterMine": "Mie",
+      "sortMostRun": "Più eseguite",
+      "sortRecentRun": "Eseguite di recente",
+      "sortChanged": "Modificate di recente",
+      "search": "Cerca query salvate…",
+      "emptyTitle": "Nessuna query salvata",
+      "emptyDesc": "Salvate un’istruzione nell’editor di query (Ctrl + S) per riutilizzarla o condividerla con il vostro team.",
+      "new": "Nuova query",
+      "col": {
+        "name": "Nome",
+        "kind": "Effetto",
+        "sharing": "Condivisione",
+        "runs": "Esecuzioni",
+        "lastRun": "Ultima esecuzione",
+        "updated": "Modificata",
+        "owner": "Salvata da"
+      },
+      "kpi": {
+        "saved": "Salvate",
+        "yours": "Vostre",
+        "shared": "Condivise",
+        "runs": "Esecuzioni delle query salvate",
+        "byKind": "Query salvate per effetto",
+        "sharedCount": "{n} condivise"
+      }
     }
   }
 }

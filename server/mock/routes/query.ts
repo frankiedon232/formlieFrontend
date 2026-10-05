@@ -4,6 +4,7 @@
  *   POST   /datasources/:id/query            { sql, params?, page?, page_size?, confirm? } → QueryResult
  *   GET    /datasources/:id/query-history    this person's recent statements on the connection (50)
  *   DELETE /datasources/:id/query-history    ?id= one, or all of them
+ *   POST   /datasources/:id/query/export     a reading statement's results as CSV / XLSX / JSON (this page, or up to 5,000 rows)
  *
  * One statement per run (FRM-DEST-1026). Reading: paged, counted up to 10,000. Changing rows or
  * structure: Full access only (FRM-DEST-1024), never Formalie's response tables (FRM-DEST-1019),
@@ -22,7 +23,11 @@ import { parseBody } from '../core/validate'
 import { tablesOf } from '../data/databaseTables'
 import { createdTablesOn } from '../data/destinationStore'
 import { planChange, resolveTable, runSelect } from '../data/queryEngine'
-import { usableSource } from './explorer'
+import { countRun } from '../data/savedQueryStore'
+import { EXPORT_MAX_ROWS, jsonExport } from '#shared/utils/datasources/exportFormats'
+import { xlsx } from '../core/xlsx'
+import { registerExport, usableSource } from './explorer'
+import { csvCell } from './responseExports'
 
 const COUNT_CAP = 10_000
 const history = new Map<string, QueryHistoryItem[]>()
@@ -38,6 +43,7 @@ export const runQuery = defineMockRoute(({ event, body }) => {
       page: z.coerce.number().int().min(1).default(1),
       page_size: z.coerce.number().int().min(1).max(100).default(50),
       confirm: z.boolean().optional(),
+      saved_id: z.string().optional(),
     }),
     body,
   )
@@ -94,6 +100,7 @@ export const runQuery = defineMockRoute(({ event, body }) => {
       }
     }
     record({ duration_ms: result.duration_ms, rows: result.total ?? result.rows_affected, ok: true, error_code: null })
+    if (input.saved_id) countRun(tenant, input.saved_id)
     recordAudit(event, tenant, {
       action: 'data.query_run',
       actor: actorOf(user),
@@ -121,4 +128,39 @@ export const clearQueryHistory = defineMockRoute(({ event, query }) => {
   const id = typeof query.id === 'string' ? query.id : null
   history.set(key, id ? (history.get(key) ?? []).filter(item => item.id !== id) : [])
   return ok({ cleared: true })
+})
+
+const cellText = (value: unknown) => (value == null ? '' : typeof value === 'object' ? JSON.stringify(value) : String(value))
+
+export const exportQuery = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const source = usableSource(tenant, getRouterParam(event, 'id'))
+  const input = parseBody(
+    z.object({
+      sql: z.string().max(100_000),
+      params: z.record(z.string(), z.string()).optional(),
+      format: z.enum(['csv', 'xlsx', 'json']),
+      scope: z.enum(['page', 'all']).default('page'),
+      page: z.coerce.number().int().min(1).default(1),
+      page_size: z.coerce.number().int().min(1).max(100).default(50),
+    }),
+    body,
+  )
+  const statements = splitStatements(input.sql)
+  if (statements.length !== 1) throw new MockError('FRM-DEST-1026', [{ field: 'sql', message: String(statements.length) }])
+  const sql = statements[0]!.text
+  if (statementKind(sql) !== 'read') throw new MockError('FRM-GEN-1002', [{ field: 'sql', message: 'read_only' }])
+  const read = runSelect(tenant, source, tablesOf(source, createdTablesOn(tenant, source)), sql, input.params ?? {})
+  // This page, or every row up to the limit (never a whole large result at once)
+  const rows = input.scope === 'page' ? read.rows.slice((input.page - 1) * input.page_size, input.page * input.page_size) : read.rows.slice(0, EXPORT_MAX_ROWS)
+  const head = read.columns.map(column => column.name)
+  const bytes =
+    input.format === 'xlsx'
+      ? xlsx('Results', [head, ...rows.map(row => row.map(cellText))])
+      : input.format === 'json'
+        ? jsonExport(read.columns.map(column => ({ name: column.name, type: column.type ?? 'TEXT' })), rows.map(row => Object.fromEntries(head.map((name, index) => [name, row[index] ?? null]))))
+        : String.fromCharCode(0xfeff) + [head, ...rows.map(row => row.map(cellText))].map(line => line.map(csvCell).join(',')).join('\r\n')
+  const result = registerExport(tenant.id, { label: source.name, format: input.format, scope: input.scope, total: input.scope === 'page' ? rows.length : read.rows.length, capped: input.scope === 'all' && read.rows.length > EXPORT_MAX_ROWS, rows: rows.length, bytes, fileName: `query-results.${input.format}` })
+  recordAudit(event, tenant, { action: 'data.query_exported', actor: actorOf(user), resource: { type: 'data_source', id: source.id, name: source.name }, metadata: { statement: sql.slice(0, 300), format: input.format, scope: input.scope, rows: String(rows.length) } })
+  return ok(result, {}, 201)
 })

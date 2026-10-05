@@ -126,6 +126,8 @@ const pages = computed(() => (props.result.total ? Math.ceil(props.result.total 
         {{ result.total === 0 ? t('query.noRows') : t('query.showing', { from: number(offset + 1), to: number(offset + result.rows.length), total: `${number(result.total ?? 0)}${result.capped ? '+' : ''}` }) }}
         · {{ t('query.took', { ms: number(result.duration_ms) }) }}
       </span>
+      <div class="flex items-center gap-2">
+        <slot name="actions" />
       <UPagination
         v-if="pages > 1"
         :page="result.page"
@@ -136,6 +138,7 @@ const pages = computed(() => (props.result.total ? Math.ceil(props.result.total 
         size="xs"
         @update:page="(page: number) => emit('page', page)"
       />
+      </div>
     </div>
   </div>
 </template>

@@ -412,3 +412,26 @@ export const deleteRow = defineMockRoute(({ event, query }) => {
 
 /** For the structure-change routes (explorerSchema.ts). */
 export const usableSource = usable
+
+/** Keeps a file made elsewhere (the Query editor's results) for the same progress / link / download routes. */
+export function registerExport(tenantId: string, input: { label: string; format: TableExport['format']; scope: TableExport['scope']; total: number; capped: boolean; rows: number; bytes: Uint8Array | string; fileName: string }): TableExport {
+  const item: StoredTableExport = {
+    id: crypto.randomUUID(),
+    table: input.label,
+    format: input.format,
+    scope: input.scope,
+    total: input.total,
+    capped: input.capped,
+    status: 'running',
+    progress: 0,
+    rows: input.rows,
+    size: null,
+    tenantId,
+    started: Date.now(),
+    speed: Math.max(400, input.rows / 3),
+    bytes: input.bytes,
+    file_name: input.fileName,
+  }
+  exports.set(item.id, item)
+  return view(item)
+}

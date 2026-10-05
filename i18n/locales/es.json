@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Esta instrucción cambia datos. Confirma para ejecutarla.",
     "FRM-DEST-1024": "Aquí esta conexión es de solo lectura: solo se ejecutan instrucciones de lectura.",
     "FRM-DEST-1025": "La base de datos no pudo ejecutar esta instrucción.",
-    "FRM-DEST-1026": "Ejecuta una instrucción cada vez: selecciónala o pon el cursor en ella."
+    "FRM-DEST-1026": "Ejecuta una instrucción cada vez: selecciónala o pon el cursor en ella.",
+    "FRM-DEST-1027": "Solo quien guardó esta consulta puede cambiarla."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Estructura de la tabla cambiada",
       "data_table_truncated": "Tabla vaciada",
       "data_table_dropped": "Tabla eliminada",
-      "data_query_run": "Consulta ejecutada en una base de datos"
+      "data_query_run": "Consulta ejecutada en una base de datos",
+      "data_query_exported": "Resultados de consulta exportados",
+      "data_saved_query_saved": "Consulta guardada",
+      "data_saved_query_deleted": "Consulta guardada eliminada"
     },
     "detail": {
       "who": "Quién",
@@ -4888,7 +4892,70 @@
       "noHistory": "Aún no hay instrucciones",
       "noHistoryDesc": "Lo que ejecutes en esta conexión aparece aquí.",
       "rows": "{n} fila | {n} filas",
-      "clear": "Borrar historial"
+      "clear": "Borrar historial",
+      "saved": "Guardadas",
+      "noSaved": "Aún no hay consultas guardadas",
+      "noSavedDesc": "Guarda una instrucción con Ctrl + S para encontrarla aquí."
+    },
+    "format": "Formatear",
+    "unsaved": "Cambios sin guardar",
+    "saved": {
+      "saveTitle": "Guardar consulta",
+      "editTitle": "Editar consulta guardada",
+      "name": "Nombre",
+      "namePlaceholder": "Casos abiertos esta semana",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Qué muestra y cuándo usarla",
+      "shareLabel": "Compartir con el espacio de trabajo",
+      "shareDesc": "Todos en el espacio de trabajo pueden verla y ejecutarla; solo tú puedes cambiarla o eliminarla.",
+      "saveButton": "Guardar",
+      "nameRequired": "Escribe un nombre.",
+      "created": "Guardada como {name}",
+      "updated": "{name} guardada",
+      "open": "Abrir en una pestaña nueva",
+      "openEditor": "Abrir en el editor de consultas",
+      "edit": "Editar",
+      "share": "Compartir con el espacio de trabajo",
+      "unshare": "Hacer personal",
+      "sharedToast": "{name} se comparte con el espacio de trabajo",
+      "unshared": "{name} ahora es personal",
+      "delete": "Eliminar",
+      "deleteTitle": "¿Eliminar {name}?",
+      "deleteDesc": "La consulta guardada se elimina para todos. Las pestañas que la tienen abierta conservan su SQL.",
+      "deleted": "{name} eliminada",
+      "sharedShort": "Compartida",
+      "personal": "Personal",
+      "runs": "{n} ejecución | {n} ejecuciones",
+      "you": "Tú",
+      "lastRun": "Ejecutada {when}",
+      "neverRun": "Aún sin ejecutar",
+      "kindRead": "Lee datos",
+      "kindChange": "Cambia datos",
+      "filterMine": "Mías",
+      "sortMostRun": "Más ejecutadas",
+      "sortRecentRun": "Ejecutadas recientemente",
+      "sortChanged": "Cambiadas recientemente",
+      "search": "Buscar consultas guardadas…",
+      "emptyTitle": "No hay consultas guardadas",
+      "emptyDesc": "Guarda una instrucción en el editor de consultas (Ctrl + S) para reutilizarla o compartirla con tu equipo.",
+      "new": "Nueva consulta",
+      "col": {
+        "name": "Nombre",
+        "kind": "Acción",
+        "sharing": "Compartir",
+        "runs": "Ejecuciones",
+        "lastRun": "Última ejecución",
+        "updated": "Cambiada",
+        "owner": "Guardada por"
+      },
+      "kpi": {
+        "saved": "Guardadas",
+        "yours": "Tuyas",
+        "shared": "Compartidas",
+        "runs": "Ejecuciones de consultas guardadas",
+        "byKind": "Consultas guardadas según lo que hacen",
+        "sharedCount": "{n} compartidas"
+      }
     }
   }
 }

@@ -5,6 +5,7 @@
  * access (Read only: reading only; never Formalie's response tables).
  */
 import type { StatementKind } from '#shared/utils/datasources/sql'
+import type { DbEngine } from '#shared/utils/integrations/databases'
 
 export interface QueryRequest {
   sql: string
@@ -14,6 +15,8 @@ export interface QueryRequest {
   page_size?: number
   /** The person confirmed a changing statement. */
   confirm?: boolean
+  /** Run from a saved query (counted on it). */
+  saved_id?: string
 }
 
 export interface QueryColumn {
@@ -55,4 +58,35 @@ export interface QueryHistoryItem {
   rows: number | null
   ok: boolean
   error_code: string | null
+}
+
+/** A saved statement (F12 M4 part 2): personal, or shared with the workspace (read by all, changed by its owner). */
+export interface SavedQuery {
+  id: string
+  name: string
+  description: string | null
+  sql: string
+  kind: StatementKind
+  datasource: { id: string; name: string; engine: DbEngine }
+  shared: boolean
+  /** The signed-in person saved it (may change and delete it). */
+  mine: boolean
+  owner: { id: string; name: string }
+  run_count: number
+  last_run_at: string | null
+  /** Runs in the last 30 days, day by day. */
+  daily: { date: string; count: number }[]
+  created_at: string
+  updated_at: string
+}
+
+export interface SavedQueryInsights {
+  total: number
+  mine: number
+  shared: number
+  runs_30d: number
+  previous_30d: number
+  daily: { date: string; count: number }[]
+  /** Saved statements that read vs change data. */
+  by_kind: { read: number; change: number }
 }

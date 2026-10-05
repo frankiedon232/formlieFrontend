@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Ta instrukcja zmienia dane. Potwierdź, aby ją uruchomić.",
     "FRM-DEST-1024": "To połączenie jest tutaj tylko do odczytu: działają wyłącznie instrukcje odczytu.",
     "FRM-DEST-1025": "Baza danych nie mogła wykonać tej instrukcji.",
-    "FRM-DEST-1026": "Uruchamiaj jedną instrukcję naraz: zaznacz ją lub umieść w niej kursor."
+    "FRM-DEST-1026": "Uruchamiaj jedną instrukcję naraz: zaznacz ją lub umieść w niej kursor.",
+    "FRM-DEST-1027": "Tylko osoba, która zapisała to zapytanie, może je zmienić."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Zmieniono strukturę tabeli",
       "data_table_truncated": "Opróżniono tabelę",
       "data_table_dropped": "Usunięto tabelę",
-      "data_query_run": "Uruchomiono zapytanie w bazie danych"
+      "data_query_run": "Uruchomiono zapytanie w bazie danych",
+      "data_query_exported": "Wyeksportowano wyniki zapytania",
+      "data_saved_query_saved": "Zapisano zapytanie",
+      "data_saved_query_deleted": "Usunięto zapisane zapytanie"
     },
     "detail": {
       "who": "Kto",
@@ -4888,7 +4892,70 @@
       "noHistory": "Brak instrukcji",
       "noHistoryDesc": "To, co uruchomisz na tym połączeniu, pojawi się tutaj.",
       "rows": "Wiersze: {n} | Wiersze: {n}",
-      "clear": "Wyczyść historię"
+      "clear": "Wyczyść historię",
+      "saved": "Zapisane",
+      "noSaved": "Nie ma jeszcze zapisanych zapytań",
+      "noSavedDesc": "Zapisz instrukcję skrótem Ctrl + S, aby znaleźć ją tutaj."
+    },
+    "format": "Formatuj",
+    "unsaved": "Niezapisane zmiany",
+    "saved": {
+      "saveTitle": "Zapisz zapytanie",
+      "editTitle": "Edytuj zapisane zapytanie",
+      "name": "Nazwa",
+      "namePlaceholder": "Otwarte sprawy w tym tygodniu",
+      "description": "Opis",
+      "descriptionPlaceholder": "Co pokazuje i kiedy go używać",
+      "shareLabel": "Udostępnij w obszarze roboczym",
+      "shareDesc": "Każdy w obszarze roboczym może je zobaczyć i uruchomić; tylko Ty możesz je zmienić lub usunąć.",
+      "saveButton": "Zapisz",
+      "nameRequired": "Wpisz nazwę.",
+      "created": "Zapisano jako {name}",
+      "updated": "Zapisano {name}",
+      "open": "Otwórz w nowej karcie",
+      "openEditor": "Otwórz w edytorze zapytań",
+      "edit": "Edytuj",
+      "share": "Udostępnij w obszarze roboczym",
+      "unshare": "Ustaw jako osobiste",
+      "sharedToast": "Udostępniono {name} w obszarze roboczym",
+      "unshared": "{name} jest teraz osobiste",
+      "delete": "Usuń",
+      "deleteTitle": "Usunąć {name}?",
+      "deleteDesc": "Zapisane zapytanie zostanie usunięte dla wszystkich. Karty, w których jest otwarte, zachowają swój SQL.",
+      "deleted": "Usunięto {name}",
+      "sharedShort": "Udostępnione",
+      "personal": "Osobiste",
+      "runs": "Uruchomienia: {n} | Uruchomienia: {n}",
+      "you": "Ty",
+      "lastRun": "Uruchomiono {when}",
+      "neverRun": "Jeszcze nie uruchomiono",
+      "kindRead": "Odczytuje dane",
+      "kindChange": "Zmienia dane",
+      "filterMine": "Moje",
+      "sortMostRun": "Najczęściej uruchamiane",
+      "sortRecentRun": "Ostatnio uruchamiane",
+      "sortChanged": "Ostatnio zmieniane",
+      "search": "Szukaj zapisanych zapytań…",
+      "emptyTitle": "Brak zapisanych zapytań",
+      "emptyDesc": "Zapisz instrukcję w edytorze zapytań (Ctrl + S), aby użyć jej ponownie lub udostępnić zespołowi.",
+      "new": "Nowe zapytanie",
+      "col": {
+        "name": "Nazwa",
+        "kind": "Działanie",
+        "sharing": "Udostępnianie",
+        "runs": "Uruchomienia",
+        "lastRun": "Ostatnie uruchomienie",
+        "updated": "Zmieniono",
+        "owner": "Zapisał(a)"
+      },
+      "kpi": {
+        "saved": "Zapisane",
+        "yours": "Twoje",
+        "shared": "Udostępnione",
+        "runs": "Uruchomienia zapisanych zapytań",
+        "byKind": "Zapisane zapytania według działania",
+        "sharedCount": "Udostępnione: {n}"
+      }
     }
   }
 }

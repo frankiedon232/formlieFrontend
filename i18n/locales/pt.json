@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Esta instrução altera dados. Confirme para executá-la.",
     "FRM-DEST-1024": "Aqui esta conexão é somente leitura: apenas instruções de leitura são executadas.",
     "FRM-DEST-1025": "O banco de dados não conseguiu executar esta instrução.",
-    "FRM-DEST-1026": "Execute uma instrução por vez: selecione-a ou coloque o cursor nela."
+    "FRM-DEST-1026": "Execute uma instrução por vez: selecione-a ou coloque o cursor nela.",
+    "FRM-DEST-1027": "Somente quem salvou esta consulta pode alterá-la."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Estrutura da tabela alterada",
       "data_table_truncated": "Tabela esvaziada",
       "data_table_dropped": "Tabela excluída",
-      "data_query_run": "Consulta executada em um banco de dados"
+      "data_query_run": "Consulta executada em um banco de dados",
+      "data_query_exported": "Resultados da consulta exportados",
+      "data_saved_query_saved": "Consulta salva",
+      "data_saved_query_deleted": "Consulta salva excluída"
     },
     "detail": {
       "who": "Quem",
@@ -4888,7 +4892,70 @@
       "noHistory": "Nenhuma instrução ainda",
       "noHistoryDesc": "O que você executar nesta conexão aparece aqui.",
       "rows": "{n} linha | {n} linhas",
-      "clear": "Limpar histórico"
+      "clear": "Limpar histórico",
+      "saved": "Salvas",
+      "noSaved": "Ainda não há consultas salvas",
+      "noSavedDesc": "Salve uma instrução com Ctrl + S para encontrá-la aqui."
+    },
+    "format": "Formatar",
+    "unsaved": "Alterações não salvas",
+    "saved": {
+      "saveTitle": "Salvar consulta",
+      "editTitle": "Editar consulta salva",
+      "name": "Nome",
+      "namePlaceholder": "Casos abertos nesta semana",
+      "description": "Descrição",
+      "descriptionPlaceholder": "O que ela mostra e quando usá-la",
+      "shareLabel": "Compartilhar com o espaço de trabalho",
+      "shareDesc": "Todos no espaço de trabalho podem vê-la e executá-la; só você pode alterá-la ou excluí-la.",
+      "saveButton": "Salvar",
+      "nameRequired": "Informe um nome.",
+      "created": "Salva como {name}",
+      "updated": "{name} salva",
+      "open": "Abrir em uma nova aba",
+      "openEditor": "Abrir no editor de consultas",
+      "edit": "Editar",
+      "share": "Compartilhar com o espaço de trabalho",
+      "unshare": "Tornar pessoal",
+      "sharedToast": "{name} está compartilhada com o espaço de trabalho",
+      "unshared": "{name} agora é pessoal",
+      "delete": "Excluir",
+      "deleteTitle": "Excluir {name}?",
+      "deleteDesc": "A consulta salva é removida para todos. As abas em que ela está aberta mantêm o SQL.",
+      "deleted": "{name} excluída",
+      "sharedShort": "Compartilhada",
+      "personal": "Pessoal",
+      "runs": "{n} execução | {n} execuções",
+      "you": "Você",
+      "lastRun": "Executada {when}",
+      "neverRun": "Ainda não executada",
+      "kindRead": "Lê dados",
+      "kindChange": "Altera dados",
+      "filterMine": "Minhas",
+      "sortMostRun": "Mais executadas",
+      "sortRecentRun": "Executadas recentemente",
+      "sortChanged": "Alteradas recentemente",
+      "search": "Pesquisar consultas salvas…",
+      "emptyTitle": "Nenhuma consulta salva",
+      "emptyDesc": "Salve uma instrução no editor de consultas (Ctrl + S) para reutilizá-la ou compartilhá-la com sua equipe.",
+      "new": "Nova consulta",
+      "col": {
+        "name": "Nome",
+        "kind": "Ação",
+        "sharing": "Compartilhamento",
+        "runs": "Execuções",
+        "lastRun": "Última execução",
+        "updated": "Alterada",
+        "owner": "Salva por"
+      },
+      "kpi": {
+        "saved": "Salvas",
+        "yours": "Suas",
+        "shared": "Compartilhadas",
+        "runs": "Execuções de consultas salvas",
+        "byKind": "Consultas salvas pelo que fazem",
+        "sharedCount": "{n} compartilhadas"
+      }
     }
   }
 }

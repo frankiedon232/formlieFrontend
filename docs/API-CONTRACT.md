@@ -310,12 +310,18 @@ Admins only until F22. One statement per run, on Formalie's servers through the 
 | POST | `/datasources/{id}/query` | `{ sql, params? ({ name: value } for `:name`, bound by the database, never pasted into the SQL), page?, page_size? (≤ 100, default 50), confirm? }` → `QueryResult { run_id, kind: read\|insert\|update\|delete\|structure\|other, columns [{ name, type }], rows (this page, values in column order), page, page_size, total (≤ 10,000) \| null, capped, rows_affected \| null, duration_ms, notice }`. Several statements → `FRM-DEST-1026`. Anything but reading needs Full access (`FRM-DEST-1024`), never touches Formalie's response tables (`FRM-DEST-1019`, `message: response_table`) and runs only with `confirm: true`; without it the answer is `FRM-DEST-1023` with details `kind`, `tables` (comma separated), `estimate` (rows it touches, when known). Database problems: `FRM-DEST-1025` with details `message` (the database's own words) and `position` (character offset in the statement; the editor marks that line). A cancelled request stops the statement (`pg_cancel_backend` / `KILL QUERY` / the driver's cancel). Audit `data.query_run` (kind, the statement's first 300 characters, rows, duration; never result values) |
 | GET | `/datasources/{id}/query-history` | this person's last 50 statements on the connection: `[{ id, sql, kind, ran_at, duration_ms, rows, ok, error_code }]` (confirm requests aren't runs) |
 | DELETE | `/datasources/{id}/query-history?id=` | one entry, or all without `id` |
+| POST | `/datasources/{id}/query/export` | `{ sql, params?, format: csv\|xlsx\|json, scope: page\|all, page?, page_size? }` → 201 `TableExport` (then the explorer's `/explorer-exports/{id}` progress, `/link` and download). A reading statement only (`FRM-GEN-1002` otherwise); run again on the server (never the browser's copy); this page, or up to 5,000 rows. Audit `data.query_exported` |
+| GET | `/saved-queries` | `SavedQuery { id, name, description, sql, kind, datasource { id, name, engine }, shared, mine, owner { id, name }, run_count, last_run_at, daily (30 days of runs), created_at, updated_at }`; yours and the shared ones; `q`, `sort` (name · -run_count · -last_run_at · -updated_at), `filter[datasource]`, `filter[scope]=mine,shared`, `filter[kind]=read,change` |
+| GET | `/saved-queries/insights` | `{ total, mine, shared, runs_30d, previous_30d, daily, by_kind { read, change } }` |
+| GET | `/saved-queries/{id}` | one (yours or shared) |
+| POST | `/saved-queries` | `{ name, description?, sql (one statement), datasource_id, shared }` → 201; audit `data.saved_query_saved` |
+| PATCH | `/saved-queries/{id}` | `{ name?, description?, sql?, shared? }`; only its owner (`FRM-DEST-1027`) |
+| DELETE | `/saved-queries/{id}` | only its owner; audit `data.saved_query_deleted`. Running a saved query from the editor sends `saved_id` with the run, which counts it |
 
 Mock: the runner understands `SELECT … FROM … [WHERE … AND …] [ORDER BY …] [LIMIT / OFFSET / TOP / FETCH FIRST]`, `COUNT(*)`, `SELECT` without `FROM`, and simple `INSERT … VALUES`, `UPDATE … SET … WHERE`, `DELETE … WHERE` against the explorer's tables (other SQL answers with `message: preview_unsupported`; structure statements are checked and confirmed but not applied). The real backend runs any SQL the connection's account may run.
 
 ## Integrations, settings, analytics
 
-| CRUD | `/saved-queries` (personal / shared) | planned (F12) |
 | CRUD | `/webhooks` · `/api-keys` | planned (F15) |
 | GET/PATCH | `/settings/{section}` | company, branding, auth, security, localisation, notifications, retention, embed |
 | GET | `/forms/{id}/analytics?from=&to=` | summary, timeseries, per-field stats, drop-off |

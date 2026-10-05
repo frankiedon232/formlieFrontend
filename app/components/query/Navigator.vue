@@ -1,6 +1,7 @@
 <!--
   The Query editor's panel in the menu column (F12 M4, the explorer's mode): the connection, then
-  Tables (the explorer's tree; a click puts the table's name at the cursor) and History (this
+  Tables (the explorer's tree; a click puts the table's name at the cursor), Saved (yours and shared
+  ones; a click opens one) and History (this
   person's recent statements on the connection; a click opens one in a new tab). Right-click for
   more: SELECT the first rows, insert or copy a name, open / copy / remove a statement.
 -->
@@ -8,19 +9,21 @@
 import type { DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable } from '#shared/types/destinations'
 import type { ExplorerNode } from '#shared/types/explorer'
-import type { QueryHistoryItem } from '#shared/types/query'
+import type { QueryHistoryItem, SavedQuery } from '#shared/types/query'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
-const props = defineProps<{ sources: DataSourceRow[] | null; sourceId: string | null; tables: DatabaseTable[] | null; loading?: boolean; history: QueryHistoryItem[] | null; engine: DbEngine | null }>()
-const emit = defineEmits<{ source: [id: string]; insert: [text: string]; open: [sql: string, newTab: boolean]; select: [table: DatabaseTable]; remove: [id?: string] }>()
+const props = defineProps<{ sources: DataSourceRow[] | null; sourceId: string | null; tables: DatabaseTable[] | null; loading?: boolean; history: QueryHistoryItem[] | null; engine: DbEngine | null; saved: SavedQuery[] | null; savedBusy?: string | null }>()
+const emit = defineEmits<{ source: [id: string]; insert: [text: string]; open: [sql: string, newTab: boolean]; select: [table: DatabaseTable]; remove: [id?: string]; openSaved: [item: SavedQuery]; editSaved: [item: SavedQuery]; shareSaved: [item: SavedQuery]; deleteSaved: [item: SavedQuery] }>()
 const { t } = useI18n()
 const { relative, number } = useFormat()
 const toast = useToast()
 const { copy } = useClipboard({ legacy: true })
-const tab = ref<'tables' | 'history'>('tables')
+const tab = ref<'tables' | 'saved' | 'history'>('tables')
 const tabs = computed(() => [
-  { value: 'tables', label: t('query.side.tables'), icon: 'i-lucide-list-tree' },
-  { value: 'history', label: t('query.side.history'), icon: 'i-lucide-history' },
+  // Words only: three tabs fit the menu column's width
+  { value: 'tables', label: t('query.side.tables') },
+  { value: 'saved', label: t('query.side.saved') },
+  { value: 'history', label: t('query.side.history') },
 ])
 
 const name = (schema: string, table: string) => `${schema}.${table}`
@@ -52,6 +55,25 @@ useContextMenu().register(root, target => {
       ],
     ]
   }
+  const savedId = target.closest('[data-saved]')?.getAttribute('data-saved')
+  const saved = savedId ? props.saved?.find(entry => entry.id === savedId) : undefined
+  if (saved)
+    return [
+      [
+        { label: t('query.saved.open'), icon: 'i-lucide-square-plus', onSelect: () => emit('openSaved', saved) },
+        { label: t('query.side.insertAtCursor'), icon: 'i-lucide-text-cursor-input', onSelect: () => emit('insert', saved.sql) },
+        { label: t('contextMenu.copy'), icon: 'i-lucide-copy', onSelect: () => copyText(saved.sql) },
+      ],
+      ...(saved.mine
+        ? [
+            [
+              { label: t('query.saved.edit'), icon: 'i-lucide-pencil', onSelect: () => emit('editSaved', saved) },
+              { label: saved.shared ? t('query.saved.unshare') : t('query.saved.share'), icon: saved.shared ? 'i-lucide-lock' : 'i-lucide-users', onSelect: () => emit('shareSaved', saved) },
+            ],
+            [{ label: t('query.saved.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('deleteSaved', saved) }],
+          ]
+        : []),
+    ]
   const id = target.closest('[data-history]')?.getAttribute('data-history')
   const item = id ? props.history?.find(entry => entry.id === id) : undefined
   if (item)
@@ -83,9 +105,35 @@ useContextMenu().register(root, target => {
       :aria-label="t('explorer.connection')"
       @update:model-value="value => emit('source', String(value))"
     />
-    <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" size="xs" :ui="{ ...SEGMENTED_UI, root: 'w-full', list: `${SEGMENTED_UI.list} w-full`, trigger: `${SEGMENTED_UI.trigger} flex-1` }" />
+    <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" size="xs" :ui="{ ...SEGMENTED_UI, root: 'w-full', list: `${SEGMENTED_UI.list} w-full`, trigger: `${SEGMENTED_UI.trigger} flex-1 justify-center px-1.5` }" />
 
     <ExplorerTree v-if="tab === 'tables'" :tables="tables" :selected="null" :loading="loading" class="flex-1" @select="table => emit('select', table)" />
+
+    <template v-else-if="tab === 'saved'">
+      <div v-if="!saved" class="flex flex-col gap-2"><USkeleton v-for="n in 4" :key="n" class="h-12 rounded-md" /></div>
+      <AppEmpty v-else-if="!saved.length" size="xs" icon="i-lucide-bookmark" :title="t('query.side.noSaved')" :description="t('query.side.noSavedDesc')" />
+      <ul v-else class="-mx-1 flex min-h-0 flex-1 flex-col gap-0.5 overflow-y-auto">
+        <li v-for="item in saved" :key="item.id" :class="savedBusy === item.id ? 'pointer-events-none animate-pulse opacity-60' : ''">
+          <button
+            type="button"
+            :data-saved="item.id"
+            class="flex w-full flex-col gap-0.5 rounded-md px-2 py-1.5 text-start hover:bg-elevated focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
+            :title="item.description ?? item.sql"
+            @click="emit('openSaved', item)"
+          >
+            <span class="flex min-w-0 items-center gap-1.5">
+              <UIcon :name="item.shared ? 'i-lucide-users' : 'i-lucide-lock'" class="size-3.5 shrink-0 text-muted" :aria-label="item.shared ? t('query.saved.sharedShort') : t('query.saved.personal')" />
+              <span class="truncate text-sm text-highlighted">{{ item.name }}</span>
+            </span>
+            <span class="flex items-center gap-1.5 ps-5 text-[10px] text-muted">
+              <span>{{ t(`query.kind.${item.kind}`) }}</span>
+              <span v-if="!item.mine" class="truncate">· {{ item.owner.name }}</span>
+              <span class="ms-auto tabular-nums">{{ t('query.saved.runs', { n: number(item.run_count) }, item.run_count) }}</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+    </template>
 
     <template v-else>
       <div v-if="!history" class="flex flex-col gap-2"><USkeleton v-for="n in 5" :key="n" class="h-12 rounded-md" /></div>

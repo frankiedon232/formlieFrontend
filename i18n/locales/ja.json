@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "この文はデータを変更します。実行するには確認してください。",
     "FRM-DEST-1024": "ここではこの接続は読み取り専用です。読み取りの文だけが実行されます。",
     "FRM-DEST-1025": "データベースはこの文を実行できませんでした。",
-    "FRM-DEST-1026": "文は一度に 1 つずつ実行してください。文を選択するか、文の中にカーソルを置きます。"
+    "FRM-DEST-1026": "文は一度に 1 つずつ実行してください。文を選択するか、文の中にカーソルを置きます。",
+    "FRM-DEST-1027": "このクエリを変更できるのは、保存した本人だけです。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "テーブル構造を変更しました",
       "data_table_truncated": "テーブルを空にしました",
       "data_table_dropped": "テーブルを削除しました",
-      "data_query_run": "データベースでクエリを実行"
+      "data_query_run": "データベースでクエリを実行",
+      "data_query_exported": "クエリ結果をエクスポートしました",
+      "data_saved_query_saved": "クエリを保存しました",
+      "data_saved_query_deleted": "保存済みクエリを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -4888,7 +4892,70 @@
       "noHistory": "まだ文がありません",
       "noHistoryDesc": "この接続で実行したものがここに表示されます。",
       "rows": "{n} 行 | {n} 行",
-      "clear": "履歴を消去"
+      "clear": "履歴を消去",
+      "saved": "保存済み",
+      "noSaved": "保存済みクエリはまだありません",
+      "noSavedDesc": "Ctrl + S で文を保存すると、ここに表示されます。"
+    },
+    "format": "整形",
+    "unsaved": "未保存の変更",
+    "saved": {
+      "saveTitle": "クエリを保存",
+      "editTitle": "保存済みクエリを編集",
+      "name": "名前",
+      "namePlaceholder": "今週の未処理案件",
+      "description": "説明",
+      "descriptionPlaceholder": "表示内容と使うタイミング",
+      "shareLabel": "ワークスペースと共有",
+      "shareDesc": "ワークスペースの全員が表示・実行できます。変更や削除ができるのはあなただけです。",
+      "saveButton": "保存",
+      "nameRequired": "名前を入力してください。",
+      "created": "{name} として保存しました",
+      "updated": "{name} を保存しました",
+      "open": "新しいタブで開く",
+      "openEditor": "クエリエディターで開く",
+      "edit": "編集",
+      "share": "ワークスペースと共有",
+      "unshare": "個人用にする",
+      "sharedToast": "{name} をワークスペースと共有しました",
+      "unshared": "{name} は個人用になりました",
+      "delete": "削除",
+      "deleteTitle": "{name} を削除しますか？",
+      "deleteDesc": "保存済みクエリは全員から削除されます。開いているタブの SQL はそのまま残ります。",
+      "deleted": "{name} を削除しました",
+      "sharedShort": "共有",
+      "personal": "個人用",
+      "runs": "{n} 回実行 | {n} 回実行",
+      "you": "あなた",
+      "lastRun": "{when} に実行",
+      "neverRun": "未実行",
+      "kindRead": "データを読み取る",
+      "kindChange": "データを変更する",
+      "filterMine": "自分のもの",
+      "sortMostRun": "実行回数が多い順",
+      "sortRecentRun": "最近実行した順",
+      "sortChanged": "最近変更した順",
+      "search": "保存済みクエリを検索…",
+      "emptyTitle": "保存済みクエリはありません",
+      "emptyDesc": "クエリエディターで文を保存 (Ctrl + S) すると、再利用したりチームと共有したりできます。",
+      "new": "新しいクエリ",
+      "col": {
+        "name": "名前",
+        "kind": "動作",
+        "sharing": "共有",
+        "runs": "実行回数",
+        "lastRun": "最終実行",
+        "updated": "変更日時",
+        "owner": "保存者"
+      },
+      "kpi": {
+        "saved": "保存済み",
+        "yours": "自分",
+        "shared": "共有",
+        "runs": "保存済みクエリの実行回数",
+        "byKind": "動作別の保存済みクエリ",
+        "sharedCount": "{n} 件共有"
+      }
     }
   }
 }

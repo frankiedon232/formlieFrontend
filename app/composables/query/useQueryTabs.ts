@@ -6,6 +6,9 @@ export interface QueryTab {
   id: string
   title: string
   sql: string
+  /** The saved query it came from (Save updates it), and its text as saved (a dot shows changes). */
+  savedId?: string
+  savedSql?: string
 }
 interface TabsState {
   tabs: QueryTab[]
@@ -35,8 +38,10 @@ export function useQueryTabs(sourceId: Ref<string | null>) {
   const tabs = computed(() => state.value.tabs)
   const active = computed(() => tabs.value.find(tab => tab.id === state.value.active) ?? tabs.value[0]!)
 
-  function add(sql = '', title?: string) {
-    const tab: QueryTab = { id: newId(), title: title ?? nextTitle(tabs.value), sql }
+  function add(sql = '', title?: string, saved?: { id: string; sql: string }) {
+    const open = saved ? tabs.value.find(tab => tab.savedId === saved.id) : undefined
+    if (open) return (select(open.id), open)
+    const tab: QueryTab = { id: newId(), title: title ?? nextTitle(tabs.value), sql, ...(saved ? { savedId: saved.id, savedSql: saved.sql } : {}) }
     save({ tabs: [...tabs.value, tab], active: tab.id })
     return tab
   }
@@ -49,6 +54,11 @@ export function useQueryTabs(sourceId: Ref<string | null>) {
   const select = (id: string) => save({ ...state.value, active: id })
   const update = (id: string, sql: string) => save({ ...state.value, tabs: tabs.value.map(tab => (tab.id === id ? { ...tab, sql } : tab)) })
   const rename = (id: string, title: string) => save({ ...state.value, tabs: tabs.value.map(tab => (tab.id === id ? { ...tab, title } : tab)) })
+  /** The tab now belongs to a saved query (after Save, or when it was updated). */
+  const link = (id: string, saved: { id: string; name: string; sql: string }) =>
+    save({ ...state.value, tabs: tabs.value.map(tab => (tab.id === id ? { ...tab, title: saved.name, savedId: saved.id, savedSql: saved.sql } : tab)) })
+  const unlink = (savedId: string) => save({ ...state.value, tabs: tabs.value.map(tab => (tab.savedId === savedId ? { ...tab, savedId: undefined, savedSql: undefined } : tab)) })
+  const dirty = (tab: QueryTab) => !!tab.savedId && tab.sql.trim() !== (tab.savedSql ?? '').trim()
 
-  return { tabs, active, add, close, select, update, rename }
+  return { tabs, active, add, close, select, update, rename, link, unlink, dirty }
 }

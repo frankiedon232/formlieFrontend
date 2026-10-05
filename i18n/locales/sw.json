@@ -555,7 +555,8 @@
     "FRM-DEST-1023": "Amri hii inabadilisha data. Thibitisha ili kuiendesha.",
     "FRM-DEST-1024": "Muunganisho huu ni wa kusoma tu hapa: amri za kusoma pekee ndizo huendeshwa.",
     "FRM-DEST-1025": "Hifadhidata imeshindwa kuendesha amri hii.",
-    "FRM-DEST-1026": "Endesha amri moja kwa wakati: ichague, au weka kishale ndani yake."
+    "FRM-DEST-1026": "Endesha amri moja kwa wakati: ichague, au weka kishale ndani yake.",
+    "FRM-DEST-1027": "Ni aliyehifadhi hoja hii tu anayeweza kuibadilisha."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -951,7 +952,10 @@
       "data_table_altered": "Muundo wa jedwali umebadilishwa",
       "data_table_truncated": "Yaliyomo kwenye jedwali yamefutwa",
       "data_table_dropped": "Jedwali limefutwa",
-      "data_query_run": "Hoja imeendeshwa kwenye hifadhidata"
+      "data_query_run": "Hoja imeendeshwa kwenye hifadhidata",
+      "data_query_exported": "Matokeo ya hoja yamehamishwa",
+      "data_saved_query_saved": "Hoja imehifadhiwa",
+      "data_saved_query_deleted": "Hoja iliyohifadhiwa imefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -4888,7 +4892,70 @@
       "noHistory": "Bado hakuna amri",
       "noHistoryDesc": "Unachoendesha kwenye muunganisho huu kinaonekana hapa.",
       "rows": "Safu {n} | Safu {n}",
-      "clear": "Futa historia"
+      "clear": "Futa historia",
+      "saved": "Zilizohifadhiwa",
+      "noSaved": "Bado hakuna hoja zilizohifadhiwa",
+      "noSavedDesc": "Hifadhi amri kwa Ctrl + S ili uipate hapa."
+    },
+    "format": "Panga",
+    "unsaved": "Mabadiliko hayajahifadhiwa",
+    "saved": {
+      "saveTitle": "Hifadhi hoja",
+      "editTitle": "Hariri hoja iliyohifadhiwa",
+      "name": "Jina",
+      "namePlaceholder": "Kesi zilizo wazi wiki hii",
+      "description": "Maelezo",
+      "descriptionPlaceholder": "Inaonyesha nini na wakati wa kuitumia",
+      "shareLabel": "Shiriki na eneo la kazi",
+      "shareDesc": "Kila mtu katika eneo la kazi anaweza kuiona na kuiendesha; ni wewe tu unayeweza kuibadilisha au kuifuta.",
+      "saveButton": "Hifadhi",
+      "nameRequired": "Weka jina.",
+      "created": "Imehifadhiwa kama {name}",
+      "updated": "{name} imehifadhiwa",
+      "open": "Fungua kwenye kichupo kipya",
+      "openEditor": "Fungua kwenye Kihariri cha hoja",
+      "edit": "Hariri",
+      "share": "Shiriki na eneo la kazi",
+      "unshare": "Fanya iwe binafsi",
+      "sharedToast": "{name} imeshirikiwa na eneo la kazi",
+      "unshared": "{name} sasa ni binafsi",
+      "delete": "Futa",
+      "deleteTitle": "Ungependa kufuta {name}?",
+      "deleteDesc": "Hoja iliyohifadhiwa inaondolewa kwa kila mtu. Vichupo vilivyoifungua vinabaki na SQL yake.",
+      "deleted": "{name} imefutwa",
+      "sharedShort": "Imeshirikiwa",
+      "personal": "Binafsi",
+      "runs": "Imeendeshwa mara {n} | Imeendeshwa mara {n}",
+      "you": "Wewe",
+      "lastRun": "Iliendeshwa {when}",
+      "neverRun": "Bado haijaendeshwa",
+      "kindRead": "Husoma data",
+      "kindChange": "Hubadilisha data",
+      "filterMine": "Zangu",
+      "sortMostRun": "Zilizoendeshwa zaidi",
+      "sortRecentRun": "Zilizoendeshwa karibuni",
+      "sortChanged": "Zilizobadilishwa karibuni",
+      "search": "Tafuta hoja zilizohifadhiwa…",
+      "emptyTitle": "Hakuna hoja zilizohifadhiwa",
+      "emptyDesc": "Hifadhi amri kwenye Kihariri cha hoja (Ctrl + S) ili uitumie tena au uishiriki na timu yako.",
+      "new": "Hoja mpya",
+      "col": {
+        "name": "Jina",
+        "kind": "Hufanya",
+        "sharing": "Kushiriki",
+        "runs": "Mara za kuendeshwa",
+        "lastRun": "Iliendeshwa mwisho",
+        "updated": "Ilibadilishwa",
+        "owner": "Ilihifadhiwa na"
+      },
+      "kpi": {
+        "saved": "Zilizohifadhiwa",
+        "yours": "Zako",
+        "shared": "Zilizoshirikiwa",
+        "runs": "Mara hoja zilizohifadhiwa zilivyoendeshwa",
+        "byKind": "Hoja zilizohifadhiwa kwa kazi zake",
+        "sharedCount": "Zilizoshirikiwa: {n}"
+      }
     }
   }
 }
