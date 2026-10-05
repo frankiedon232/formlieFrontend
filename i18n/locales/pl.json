@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "Tabela o tej nazwie już istnieje.",
     "FRM-DEST-1015": "Ten formularz już zapisuje swoje odpowiedzi w bazie danych.",
     "FRM-DEST-1016": "Formularz i tabela jeszcze do siebie nie pasują.",
-    "FRM-DEST-1017": "Wcześniejsze odpowiedzi są już wysyłane. Poczekaj, aż to się zakończy."
+    "FRM-DEST-1017": "Wcześniejsze odpowiedzi są już wysyłane. Poczekaj, aż to się zakończy.",
+    "FRM-DEST-1018": "Wiersz z tym kluczem już istnieje.",
+    "FRM-DEST-1019": "Wierszy tej tabeli nie można tu zmieniać.",
+    "FRM-DEST-1020": "Nie udało się odczytać pliku. Użyj pliku CSV lub Excel (.xlsx) z wierszem nagłówka.",
+    "FRM-DEST-1021": "Plik jest za duży: do 5 MB i 50 000 wierszy."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -933,7 +937,11 @@
       "data_column_added": "Dodano kolumny do tabeli odpowiedzi",
       "data_backfill_started": "Wysłano wcześniejsze odpowiedzi do bazy danych",
       "data_deliveries_retried": "Ponowiono nieudane dostarczenia",
-      "data_table_exported": "Wyeksportowano tabelę"
+      "data_table_exported": "Wyeksportowano tabelę",
+      "data_row_inserted": "Dodano wiersz do tabeli",
+      "data_row_updated": "Zmieniono wiersz w tabeli",
+      "data_row_deleted": "Usunięto wiersz z tabeli",
+      "data_rows_imported": "Zaimportowano plik do tabeli"
     },
     "detail": {
       "who": "Kto",
@@ -4639,6 +4647,50 @@
       "relations": "Relacje",
       "noRelations": "Żadna kolumna nie wskazuje innych tabel.",
       "definition": "Definicja"
+    },
+    "addRow": "Dodaj wiersz",
+    "editRow": "Zmień wiersz {key}",
+    "edit": "Edytuj",
+    "deleteRow": "Usuń wiersz",
+    "deleteTitle": "Usunąć wiersz {key}?",
+    "deleteDesc": "Wiersz zostanie trwale usunięty z tabeli. Zostanie to zapisane w dzienniku audytu.",
+    "rowAdded": "Dodano wiersz",
+    "rowSaved": "Zapisano wiersz",
+    "rowDeleted": "Usunięto wiersz",
+    "emptyIsNull": "Puste (NULL)",
+    "setAutomatically": "Ustawiane automatycznie",
+    "problem": {
+      "required": "Wypełnij to pole.",
+      "integer": "Wpisz liczbę całkowitą.",
+      "number": "Wpisz liczbę.",
+      "boolean": "Użyj tak lub nie (true / false, 1 / 0).",
+      "date": "Wpisz datę w formacie YYYY-MM-DD.",
+      "datetime": "Wpisz datę i godzinę.",
+      "time": "Wpisz godzinę w formacie HH:MM.",
+      "json": "Wpisz poprawny JSON.",
+      "length": "Za długie dla tej kolumny (maksymalna liczba znaków: {max}).",
+      "duplicate": "Wiersz z tym kluczem już istnieje.",
+      "taken": "Wiersz z tym kluczem już istnieje."
+    },
+    "import": {
+      "button": "Importuj",
+      "title": "Importuj plik do tej tabeli",
+      "pick": "Wybierz plik CSV lub Excel (.xlsx)",
+      "pickDesc": "Pierwszy wiersz zawiera nazwy kolumn. Do 5 MB i 50 000 wierszy.",
+      "choose": "Wybierz plik",
+      "found": "Znalezione wiersze w pliku {file}: {n}. Wybierz, która kolumna pliku wypełnia każdą kolumnę tabeli. | Znalezione wiersze w pliku {file}: {n}. Wybierz, która kolumna pliku wypełnia każdą kolumnę tabeli.",
+      "fileColumn": "Z pliku",
+      "firstRow": "Pierwszy wiersz",
+      "leaveEmpty": "Zostaw puste",
+      "needed": "Te kolumny muszą być wypełnione: {columns}",
+      "note": "Wiersze z problemem są pomijane i wypisywane, pozostałe zostają dodane. Nic nie jest dodawane dwa razy.",
+      "start": "Importuj wiersze: {n} | Importuj wiersze: {n}",
+      "running": "Importowanie wierszy: {n}…",
+      "finished": "Import zakończony",
+      "added": "Dodane",
+      "skipped": "Pominięte",
+      "whySkipped": "Dlaczego wiersze zostały pominięte (pierwsze 100):",
+      "rowN": "Wiersz {n}"
     }
   }
 }

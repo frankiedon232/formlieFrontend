@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "已存在同名的表。",
     "FRM-DEST-1015": "此表单已将回复存储在数据库中。",
     "FRM-DEST-1016": "表单与表尚不匹配。",
-    "FRM-DEST-1017": "之前的回复正在发送中。请等待其完成。"
+    "FRM-DEST-1017": "之前的回复正在发送中。请等待其完成。",
+    "FRM-DEST-1018": "已存在使用此键的行。",
+    "FRM-DEST-1019": "此表的行无法在此处更改。",
+    "FRM-DEST-1020": "无法读取该文件。请使用带标题行的 CSV 或 Excel (.xlsx) 文件。",
+    "FRM-DEST-1021": "文件过大：最多 5 MB、50,000 行。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -933,7 +937,11 @@
       "data_column_added": "已向回复表添加列",
       "data_backfill_started": "已将之前的回复发送到数据库",
       "data_deliveries_retried": "已重试失败的投递",
-      "data_table_exported": "已导出表"
+      "data_table_exported": "已导出表",
+      "data_row_inserted": "已向表中添加行",
+      "data_row_updated": "已更改表中的行",
+      "data_row_deleted": "已从表中删除行",
+      "data_rows_imported": "已将文件导入表"
     },
     "detail": {
       "who": "谁",
@@ -4639,6 +4647,50 @@
       "relations": "关系",
       "noRelations": "没有列指向其他表。",
       "definition": "定义"
+    },
+    "addRow": "添加行",
+    "editRow": "更改行 {key}",
+    "edit": "编辑",
+    "deleteRow": "删除行",
+    "deleteTitle": "删除行 {key}？",
+    "deleteDesc": "该行将从您的表中永久删除。此操作会记录在审计日志中。",
+    "rowAdded": "已添加行",
+    "rowSaved": "已保存行",
+    "rowDeleted": "已删除行",
+    "emptyIsNull": "空（NULL）",
+    "setAutomatically": "自动设置",
+    "problem": {
+      "required": "请填写此项。",
+      "integer": "请输入整数。",
+      "number": "请输入数字。",
+      "boolean": "请使用是或否（true / false, 1 / 0）。",
+      "date": "请按 YYYY-MM-DD 格式输入日期。",
+      "datetime": "请输入日期和时间。",
+      "time": "请按 HH:MM 格式输入时间。",
+      "json": "请输入有效的 JSON。",
+      "length": "对此列来说太长（最多 {max} 个字符）。",
+      "duplicate": "已存在使用此键的行。",
+      "taken": "已存在使用此键的行。"
+    },
+    "import": {
+      "button": "导入",
+      "title": "将文件导入此表",
+      "pick": "选择 CSV 或 Excel (.xlsx) 文件",
+      "pickDesc": "第一行为列名。最多 5 MB、50,000 行。",
+      "choose": "选择文件",
+      "found": "在 {file} 中找到 {n} 行。请为每个表列选择用于填充的文件列。 | 在 {file} 中找到 {n} 行。请为每个表列选择用于填充的文件列。",
+      "fileColumn": "来自文件",
+      "firstRow": "第一行",
+      "leaveEmpty": "留空",
+      "needed": "以下列必须填写：{columns}",
+      "note": "有问题的行会被跳过并列出，其余的行会被添加。不会重复添加任何内容。",
+      "start": "导入 {n} 行 | 导入 {n} 行",
+      "running": "正在导入 {n} 行…",
+      "finished": "导入完成",
+      "added": "已添加",
+      "skipped": "已跳过",
+      "whySkipped": "行被跳过的原因（前 100 条）：",
+      "rowN": "第 {n} 行"
     }
   }
 }

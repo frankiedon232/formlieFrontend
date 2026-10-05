@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "A table with this name already exists.",
     "FRM-DEST-1015": "This form already stores its responses in a database.",
     "FRM-DEST-1016": "The form and the table don't match yet.",
-    "FRM-DEST-1017": "Earlier responses are already being sent. Wait until that finishes."
+    "FRM-DEST-1017": "Earlier responses are already being sent. Wait until that finishes.",
+    "FRM-DEST-1018": "A row with this key already exists.",
+    "FRM-DEST-1019": "This table's rows can't be changed here.",
+    "FRM-DEST-1020": "The file couldn't be read. Use a CSV or Excel (.xlsx) file with a header row.",
+    "FRM-DEST-1021": "The file is too large: up to 5 MB and 50,000 rows."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -933,7 +937,11 @@
       "data_column_added": "Columns added to a response table",
       "data_backfill_started": "Earlier responses sent to a database",
       "data_deliveries_retried": "Failed deliveries retried",
-      "data_table_exported": "Table exported"
+      "data_table_exported": "Table exported",
+      "data_row_inserted": "Row added to a table",
+      "data_row_updated": "Row changed in a table",
+      "data_row_deleted": "Row deleted from a table",
+      "data_rows_imported": "File imported into a table"
     },
     "detail": {
       "who": "Who",
@@ -4639,6 +4647,50 @@
       "relations": "Relations",
       "noRelations": "No columns point to other tables.",
       "definition": "Definition"
+    },
+    "addRow": "Add row",
+    "editRow": "Change row {key}",
+    "edit": "Edit",
+    "deleteRow": "Delete row",
+    "deleteTitle": "Delete row {key}?",
+    "deleteDesc": "The row is removed from your table for good. This is recorded in the audit trail.",
+    "rowAdded": "Row added",
+    "rowSaved": "Row saved",
+    "rowDeleted": "Row deleted",
+    "emptyIsNull": "Empty (NULL)",
+    "setAutomatically": "Set automatically",
+    "problem": {
+      "required": "Fill this in.",
+      "integer": "Enter a whole number.",
+      "number": "Enter a number.",
+      "boolean": "Use yes or no (true / false, 1 / 0).",
+      "date": "Enter a date as YYYY-MM-DD.",
+      "datetime": "Enter a date and time.",
+      "time": "Enter a time as HH:MM.",
+      "json": "Enter valid JSON.",
+      "length": "Too long for this column (at most {max} characters).",
+      "duplicate": "A row with this key already exists.",
+      "taken": "A row with this key already exists."
+    },
+    "import": {
+      "button": "Import",
+      "title": "Import a file into this table",
+      "pick": "Choose a CSV or Excel (.xlsx) file",
+      "pickDesc": "The first row holds the column names. Up to 5 MB and 50,000 rows.",
+      "choose": "Choose a file",
+      "found": "{n} row found in {file}. Choose which file column fills each table column. | {n} rows found in {file}. Choose which file column fills each table column.",
+      "fileColumn": "From the file",
+      "firstRow": "First row",
+      "leaveEmpty": "Leave empty",
+      "needed": "These columns must be filled: {columns}",
+      "note": "Rows with a problem are skipped and listed; the rest are added. Nothing is added twice.",
+      "start": "Import {n} row | Import {n} rows",
+      "running": "Importing {n} rows…",
+      "finished": "Import finished",
+      "added": "Added",
+      "skipped": "Skipped",
+      "whySkipped": "Why rows were skipped (the first 100):",
+      "rowN": "Row {n}"
     }
   }
 }

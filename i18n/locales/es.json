@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "Ya existe una tabla con este nombre.",
     "FRM-DEST-1015": "Este formulario ya guarda sus respuestas en una base de datos.",
     "FRM-DEST-1016": "El formulario y la tabla aún no coinciden.",
-    "FRM-DEST-1017": "Ya se están enviando respuestas anteriores. Espera a que termine."
+    "FRM-DEST-1017": "Ya se están enviando respuestas anteriores. Espera a que termine.",
+    "FRM-DEST-1018": "Ya existe una fila con esta clave.",
+    "FRM-DEST-1019": "Las filas de esta tabla no se pueden cambiar aquí.",
+    "FRM-DEST-1020": "No se pudo leer el archivo. Usa un archivo CSV o Excel (.xlsx) con una fila de encabezado.",
+    "FRM-DEST-1021": "El archivo es demasiado grande: hasta 5 MB y 50.000 filas."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -933,7 +937,11 @@
       "data_column_added": "Columnas añadidas a una tabla de respuestas",
       "data_backfill_started": "Respuestas anteriores enviadas a una base de datos",
       "data_deliveries_retried": "Entregas fallidas reintentadas",
-      "data_table_exported": "Tabla exportada"
+      "data_table_exported": "Tabla exportada",
+      "data_row_inserted": "Fila añadida a una tabla",
+      "data_row_updated": "Fila cambiada en una tabla",
+      "data_row_deleted": "Fila eliminada de una tabla",
+      "data_rows_imported": "Archivo importado a una tabla"
     },
     "detail": {
       "who": "Quién",
@@ -4639,6 +4647,50 @@
       "relations": "Relaciones",
       "noRelations": "Ninguna columna apunta a otras tablas.",
       "definition": "Definición"
+    },
+    "addRow": "Añadir fila",
+    "editRow": "Cambiar fila {key}",
+    "edit": "Editar",
+    "deleteRow": "Eliminar fila",
+    "deleteTitle": "¿Eliminar la fila {key}?",
+    "deleteDesc": "La fila se elimina de tu tabla para siempre. Esto queda anotado en el registro de auditoría.",
+    "rowAdded": "Fila añadida",
+    "rowSaved": "Fila guardada",
+    "rowDeleted": "Fila eliminada",
+    "emptyIsNull": "Vacío (NULL)",
+    "setAutomatically": "Se rellena automáticamente",
+    "problem": {
+      "required": "Completa este campo.",
+      "integer": "Introduce un número entero.",
+      "number": "Introduce un número.",
+      "boolean": "Usa sí o no (true / false, 1 / 0).",
+      "date": "Introduce una fecha como YYYY-MM-DD.",
+      "datetime": "Introduce una fecha y una hora.",
+      "time": "Introduce una hora como HH:MM.",
+      "json": "Introduce un JSON válido.",
+      "length": "Demasiado largo para esta columna (como máximo {max} caracteres).",
+      "duplicate": "Ya existe una fila con esta clave.",
+      "taken": "Ya existe una fila con esta clave."
+    },
+    "import": {
+      "button": "Importar",
+      "title": "Importar un archivo a esta tabla",
+      "pick": "Elige un archivo CSV o Excel (.xlsx)",
+      "pickDesc": "La primera fila contiene los nombres de las columnas. Hasta 5 MB y 50.000 filas.",
+      "choose": "Elegir un archivo",
+      "found": "{n} fila encontrada en {file}. Elige qué columna del archivo rellena cada columna de la tabla. | {n} filas encontradas en {file}. Elige qué columna del archivo rellena cada columna de la tabla.",
+      "fileColumn": "Del archivo",
+      "firstRow": "Primera fila",
+      "leaveEmpty": "Dejar vacío",
+      "needed": "Estas columnas deben rellenarse: {columns}",
+      "note": "Las filas con algún problema se omiten y se enumeran; el resto se añade. Nada se añade dos veces.",
+      "start": "Importar {n} fila | Importar {n} filas",
+      "running": "Importando {n} filas…",
+      "finished": "Importación terminada",
+      "added": "Añadidas",
+      "skipped": "Omitidas",
+      "whySkipped": "Por qué se omitieron filas (las primeras 100):",
+      "rowN": "Fila {n}"
     }
   }
 }

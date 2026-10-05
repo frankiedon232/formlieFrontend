@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "Eine Tabelle mit diesem Namen gibt es bereits.",
     "FRM-DEST-1015": "Dieses Formular speichert seine Antworten bereits in einer Datenbank.",
     "FRM-DEST-1016": "Formular und Tabelle passen noch nicht zusammen.",
-    "FRM-DEST-1017": "Frühere Antworten werden bereits gesendet. Warten Sie, bis das abgeschlossen ist."
+    "FRM-DEST-1017": "Frühere Antworten werden bereits gesendet. Warten Sie, bis das abgeschlossen ist.",
+    "FRM-DEST-1018": "Eine Zeile mit diesem Schlüssel gibt es bereits.",
+    "FRM-DEST-1019": "Die Zeilen dieser Tabelle können hier nicht geändert werden.",
+    "FRM-DEST-1020": "Die Datei konnte nicht gelesen werden. Verwenden Sie eine CSV- oder Excel (.xlsx)-Datei mit einer Kopfzeile.",
+    "FRM-DEST-1021": "Die Datei ist zu groß: bis zu 5 MB und 50.000 Zeilen."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -933,7 +937,11 @@
       "data_column_added": "Spalten zu einer Antworttabelle hinzugefügt",
       "data_backfill_started": "Frühere Antworten an eine Datenbank gesendet",
       "data_deliveries_retried": "Fehlgeschlagene Zustellungen wiederholt",
-      "data_table_exported": "Tabelle exportiert"
+      "data_table_exported": "Tabelle exportiert",
+      "data_row_inserted": "Zeile zu einer Tabelle hinzugefügt",
+      "data_row_updated": "Zeile in einer Tabelle geändert",
+      "data_row_deleted": "Zeile aus einer Tabelle gelöscht",
+      "data_rows_imported": "Datei in eine Tabelle importiert"
     },
     "detail": {
       "who": "Wer",
@@ -4639,6 +4647,50 @@
       "relations": "Beziehungen",
       "noRelations": "Keine Spalten verweisen auf andere Tabellen.",
       "definition": "Definition"
+    },
+    "addRow": "Zeile hinzufügen",
+    "editRow": "Zeile {key} ändern",
+    "edit": "Bearbeiten",
+    "deleteRow": "Zeile löschen",
+    "deleteTitle": "Zeile {key} löschen?",
+    "deleteDesc": "Die Zeile wird endgültig aus Ihrer Tabelle entfernt. Dies wird im Audit-Protokoll festgehalten.",
+    "rowAdded": "Zeile hinzugefügt",
+    "rowSaved": "Zeile gespeichert",
+    "rowDeleted": "Zeile gelöscht",
+    "emptyIsNull": "Leer (NULL)",
+    "setAutomatically": "Wird automatisch gesetzt",
+    "problem": {
+      "required": "Bitte ausfüllen.",
+      "integer": "Geben Sie eine ganze Zahl ein.",
+      "number": "Geben Sie eine Zahl ein.",
+      "boolean": "Verwenden Sie ja oder nein (true / false, 1 / 0).",
+      "date": "Geben Sie ein Datum als YYYY-MM-DD ein.",
+      "datetime": "Geben Sie Datum und Uhrzeit ein.",
+      "time": "Geben Sie eine Uhrzeit als HH:MM ein.",
+      "json": "Geben Sie gültiges JSON ein.",
+      "length": "Zu lang für diese Spalte (höchstens {max} Zeichen).",
+      "duplicate": "Eine Zeile mit diesem Schlüssel gibt es bereits.",
+      "taken": "Eine Zeile mit diesem Schlüssel gibt es bereits."
+    },
+    "import": {
+      "button": "Importieren",
+      "title": "Datei in diese Tabelle importieren",
+      "pick": "Wählen Sie eine CSV- oder Excel (.xlsx)-Datei",
+      "pickDesc": "Die erste Zeile enthält die Spaltennamen. Bis zu 5 MB und 50.000 Zeilen.",
+      "choose": "Datei auswählen",
+      "found": "{n} Zeile in {file} gefunden. Wählen Sie, welche Dateispalte jede Tabellenspalte füllt. | {n} Zeilen in {file} gefunden. Wählen Sie, welche Dateispalte jede Tabellenspalte füllt.",
+      "fileColumn": "Aus der Datei",
+      "firstRow": "Erste Zeile",
+      "leaveEmpty": "Leer lassen",
+      "needed": "Diese Spalten müssen gefüllt werden: {columns}",
+      "note": "Zeilen mit einem Problem werden übersprungen und aufgelistet, der Rest wird hinzugefügt. Nichts wird doppelt hinzugefügt.",
+      "start": "{n} Zeile importieren | {n} Zeilen importieren",
+      "running": "{n} Zeilen werden importiert…",
+      "finished": "Import abgeschlossen",
+      "added": "Hinzugefügt",
+      "skipped": "Übersprungen",
+      "whySkipped": "Warum Zeilen übersprungen wurden (die ersten 100):",
+      "rowN": "Zeile {n}"
     }
   }
 }

@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "Une table portant ce nom existe déjà.",
     "FRM-DEST-1015": "Ce formulaire stocke déjà ses réponses dans une base de données.",
     "FRM-DEST-1016": "Le formulaire et la table ne correspondent pas encore.",
-    "FRM-DEST-1017": "Des réponses antérieures sont déjà en cours d’envoi. Attendez la fin de l’opération."
+    "FRM-DEST-1017": "Des réponses antérieures sont déjà en cours d’envoi. Attendez la fin de l’opération.",
+    "FRM-DEST-1018": "Une ligne avec cette clé existe déjà.",
+    "FRM-DEST-1019": "Les lignes de cette table ne peuvent pas être modifiées ici.",
+    "FRM-DEST-1020": "Impossible de lire le fichier. Utilisez un fichier CSV ou Excel (.xlsx) avec une ligne d’en-tête.",
+    "FRM-DEST-1021": "Le fichier est trop volumineux : jusqu’à 5 Mo et 50 000 lignes."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -933,7 +937,11 @@
       "data_column_added": "Colonnes ajoutées à une table de réponses",
       "data_backfill_started": "Réponses antérieures envoyées vers une base de données",
       "data_deliveries_retried": "Livraisons échouées relancées",
-      "data_table_exported": "Table exportée"
+      "data_table_exported": "Table exportée",
+      "data_row_inserted": "Ligne ajoutée à une table",
+      "data_row_updated": "Ligne modifiée dans une table",
+      "data_row_deleted": "Ligne supprimée d’une table",
+      "data_rows_imported": "Fichier importé dans une table"
     },
     "detail": {
       "who": "Qui",
@@ -4639,6 +4647,50 @@
       "relations": "Relations",
       "noRelations": "Aucune colonne ne pointe vers d’autres tables.",
       "definition": "Définition"
+    },
+    "addRow": "Ajouter une ligne",
+    "editRow": "Modifier la ligne {key}",
+    "edit": "Modifier",
+    "deleteRow": "Supprimer la ligne",
+    "deleteTitle": "Supprimer la ligne {key} ?",
+    "deleteDesc": "La ligne est retirée définitivement de votre table. Cette action est consignée dans le journal d’audit.",
+    "rowAdded": "Ligne ajoutée",
+    "rowSaved": "Ligne enregistrée",
+    "rowDeleted": "Ligne supprimée",
+    "emptyIsNull": "Vide (NULL)",
+    "setAutomatically": "Défini automatiquement",
+    "problem": {
+      "required": "Remplissez ce champ.",
+      "integer": "Saisissez un nombre entier.",
+      "number": "Saisissez un nombre.",
+      "boolean": "Utilisez oui ou non (true / false, 1 / 0).",
+      "date": "Saisissez une date au format YYYY-MM-DD.",
+      "datetime": "Saisissez une date et une heure.",
+      "time": "Saisissez une heure au format HH:MM.",
+      "json": "Saisissez un JSON valide.",
+      "length": "Trop long pour cette colonne ({max} caractères au maximum).",
+      "duplicate": "Une ligne avec cette clé existe déjà.",
+      "taken": "Une ligne avec cette clé existe déjà."
+    },
+    "import": {
+      "button": "Importer",
+      "title": "Importer un fichier dans cette table",
+      "pick": "Choisissez un fichier CSV ou Excel (.xlsx)",
+      "pickDesc": "La première ligne contient les noms des colonnes. Jusqu’à 5 Mo et 50 000 lignes.",
+      "choose": "Choisir un fichier",
+      "found": "{n} ligne trouvée dans {file}. Choisissez quelle colonne du fichier remplit chaque colonne de la table. | {n} lignes trouvées dans {file}. Choisissez quelle colonne du fichier remplit chaque colonne de la table.",
+      "fileColumn": "Depuis le fichier",
+      "firstRow": "Première ligne",
+      "leaveEmpty": "Laisser vide",
+      "needed": "Ces colonnes doivent être remplies : {columns}",
+      "note": "Les lignes posant problème sont ignorées et listées ; les autres sont ajoutées. Rien n’est ajouté deux fois.",
+      "start": "Importer {n} ligne | Importer {n} lignes",
+      "running": "Import de {n} lignes…",
+      "finished": "Import terminé",
+      "added": "Ajoutées",
+      "skipped": "Ignorées",
+      "whySkipped": "Pourquoi des lignes ont été ignorées (les 100 premières) :",
+      "rowN": "Ligne {n}"
     }
   }
 }

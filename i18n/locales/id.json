@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "Tabel dengan nama ini sudah ada.",
     "FRM-DEST-1015": "Formulir ini sudah menyimpan responsnya di database.",
     "FRM-DEST-1016": "Formulir dan tabel belum cocok.",
-    "FRM-DEST-1017": "Respons sebelumnya sedang dikirim. Tunggu hingga selesai."
+    "FRM-DEST-1017": "Respons sebelumnya sedang dikirim. Tunggu hingga selesai.",
+    "FRM-DEST-1018": "Baris dengan kunci ini sudah ada.",
+    "FRM-DEST-1019": "Baris tabel ini tidak dapat diubah di sini.",
+    "FRM-DEST-1020": "File tidak dapat dibaca. Gunakan file CSV atau Excel (.xlsx) dengan baris judul.",
+    "FRM-DEST-1021": "File terlalu besar: hingga 5 MB dan 50.000 baris."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -933,7 +937,11 @@
       "data_column_added": "Kolom ditambahkan ke tabel respons",
       "data_backfill_started": "Respons sebelumnya dikirim ke database",
       "data_deliveries_retried": "Pengiriman yang gagal dicoba ulang",
-      "data_table_exported": "Tabel diekspor"
+      "data_table_exported": "Tabel diekspor",
+      "data_row_inserted": "Baris ditambahkan ke tabel",
+      "data_row_updated": "Baris diubah di tabel",
+      "data_row_deleted": "Baris dihapus dari tabel",
+      "data_rows_imported": "File diimpor ke tabel"
     },
     "detail": {
       "who": "Siapa",
@@ -4639,6 +4647,50 @@
       "relations": "Relasi",
       "noRelations": "Tidak ada kolom yang menunjuk ke tabel lain.",
       "definition": "Definisi"
+    },
+    "addRow": "Tambah baris",
+    "editRow": "Ubah baris {key}",
+    "edit": "Edit",
+    "deleteRow": "Hapus baris",
+    "deleteTitle": "Hapus baris {key}?",
+    "deleteDesc": "Baris dihapus permanen dari tabel Anda. Ini tercatat di jejak audit.",
+    "rowAdded": "Baris ditambahkan",
+    "rowSaved": "Baris disimpan",
+    "rowDeleted": "Baris dihapus",
+    "emptyIsNull": "Kosong (NULL)",
+    "setAutomatically": "Diisi otomatis",
+    "problem": {
+      "required": "Wajib diisi.",
+      "integer": "Masukkan bilangan bulat.",
+      "number": "Masukkan angka.",
+      "boolean": "Gunakan ya atau tidak (true / false, 1 / 0).",
+      "date": "Masukkan tanggal dengan format YYYY-MM-DD.",
+      "datetime": "Masukkan tanggal dan waktu.",
+      "time": "Masukkan waktu dengan format HH:MM.",
+      "json": "Masukkan JSON yang valid.",
+      "length": "Terlalu panjang untuk kolom ini (maksimal {max} karakter).",
+      "duplicate": "Baris dengan kunci ini sudah ada.",
+      "taken": "Baris dengan kunci ini sudah ada."
+    },
+    "import": {
+      "button": "Impor",
+      "title": "Impor file ke tabel ini",
+      "pick": "Pilih file CSV atau Excel (.xlsx)",
+      "pickDesc": "Baris pertama berisi nama kolom. Hingga 5 MB dan 50.000 baris.",
+      "choose": "Pilih file",
+      "found": "{n} baris ditemukan di {file}. Pilih kolom file yang mengisi setiap kolom tabel. | {n} baris ditemukan di {file}. Pilih kolom file yang mengisi setiap kolom tabel.",
+      "fileColumn": "Dari file",
+      "firstRow": "Baris pertama",
+      "leaveEmpty": "Biarkan kosong",
+      "needed": "Kolom ini wajib diisi: {columns}",
+      "note": "Baris yang bermasalah dilewati dan dicantumkan; sisanya ditambahkan. Tidak ada yang ditambahkan dua kali.",
+      "start": "Impor {n} baris | Impor {n} baris",
+      "running": "Mengimpor {n} baris…",
+      "finished": "Impor selesai",
+      "added": "Ditambahkan",
+      "skipped": "Dilewati",
+      "whySkipped": "Alasan baris dilewati (100 pertama):",
+      "rowN": "Baris {n}"
     }
   }
 }

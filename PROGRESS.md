@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done, M3 Database explorer: browsing done, row changes and import next.
+**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done, M3 Database explorer done; next M4 Query editor (needs CodeMirror 6, ask first).
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -22,7 +22,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
-| F12   | Data sources & databases                          | 🟡     | ~55% |
+| F12   | Data sources & databases                          | 🟡     | ~70% |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
@@ -486,7 +486,6 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ---
 
-
 ### Milestone 4 review (2026-10-04) ✅
 
 - ✅ Out-of-date translations marked: "Changed since translated" + "Still right", "N to check" per language; web addresses and email examples are not offered for translation
@@ -542,7 +541,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
-**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** 🟡 Database explorer (browsing ✅; row changes and import next). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes, import). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -581,6 +580,11 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ Skeletons for the tree and the table; empty states; a connection that isn't working shows its error with Try again and Check connection
 - ✅ Response tables are read only here (they change through Formalie); what is visible follows the connection's access
 
+**M3 part 2 ✅ (2026-10-05): changing data.**
+
+- ✅ Add, change and delete rows of the organisation's own tables (Full access, primary key): a form built from the columns (the right control per type, empty is NULL, the key set automatically and never changed), checks per column type here and on the server, confirm before deleting; audit records which row, never its values
+- ✅ Import a CSV or Excel (.xlsx) file into a table: read on Formalie's servers (no library), columns matched by name and adjustable, first row preview, progress, rows added and skipped with the reason (row, column, problem), nothing added twice; audit `data.rows_imported`
+
 ### 4. Query editor
 
 - ⬜ SQL editor with syntax highlighting, table / column completion from the explorer, format query, multiple tabs, **needs a code editor package (e.g. CodeMirror 6), ask before adding**
@@ -591,9 +595,9 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 5. Other database operations
 
-- ⬜ Insert, edit and delete rows from the table view (form generated from the columns, type-checked, confirm on delete; read + write connections only)
+- ✅ Insert, edit and delete rows from the table view (form generated from the columns, type-checked, confirm on delete; read + write connections only)
 - ⬜ Create a table from a form; add columns for new fields (preview + confirm)
-- ⬜ Import CSV / XLSX into a table: column mapping, preview, validation, progress, error report
+- ✅ Import CSV / XLSX into a table: column mapping, preview, validation, progress, error report
 - ⬜ Per-connection activity: delivery queue, failures, throughput, recent queries
 - ⬜ Scheduled exports and saved-query snapshots (later)
 
@@ -913,7 +917,6 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 - ⬜ Access overview ("who can see what")
 - ⬜ Permission to view and export the audit trail (`audit.read`, `audit.export`)
 
-
 ## F23, Platform admin (super admin) ⬜
 
 The Formalie team's own console (owner, 2026-10-03: "a place for me to manage everything"), separate from any workspace, on its own host (`admin.formalie.com`), signed in with platform staff accounts and strong second factor; every action audited.
@@ -934,6 +937,7 @@ The Formalie team's own console (owner, 2026-10-03: "a place for me to manage ev
 
 - ⬜ System templates and themes (publish, retire), template content languages
 - ⬜ Platform audit trail and security events
+
 ---
 
 ## Switching to the real backend ⏸
@@ -949,7 +953,7 @@ The Formalie team's own console (owner, 2026-10-03: "a place for me to manage ev
 Owner requests added during development, and where they landed.
 
 | Date       | Request                                                                                                                                                                                                                                                                                                                                                           | Where                                                                             | Status     |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ---------- |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
 | 2026-10-02 | Support many languages (at least 15) → 20 languages                                                                                                                                                                                                                                                                                                               | F0                                                                                | ✅         |
 | 2026-10-02 | Organise files in sub-folders (max two levels)                                                                                                                                                                                                                                                                                                                    | all                                                                               | ✅         |
 | 2026-10-02 | Works on every host (manage, workspaces, localhost, IP)                                                                                                                                                                                                                                                                                                           | F0                                                                                | ✅         |
@@ -1231,3 +1235,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | New response tables store the response number and review status by default; the respondent's email stays opt-in (personal data). |
 | 2026-10-05 | F12 | Response tables: `language` VARCHAR(35) and `review_status` VARCHAR(16) (were email-sized); an index on `submitted_at` is created with the table. |
 | 2026-10-05 | F12 | M3 part 1, Database explorer (decision 114): tree, rows (DataView with search, filters, sort, Columns, Table / Grid), row panel, structure, export with progress; failing connections show their error. Fix found while testing: a response table on a PostgreSQL connection had been saved with MySQL types (a slower answer for an earlier-picked connection replaced the chosen one); the setup now ignores stale answers, the server sets the types of tables Formalie creates itself, and stored tables were repaired. |
+| 2026-10-05 | F12 | M3 part 2, changing data: add / change / delete rows of the organisation's tables (Full access) with a form built from the columns and one set of value rules on both sides; import CSV / Excel with column matching, preview, progress and a report of skipped rows (CSV and .xlsx read without a library). Tests: `datasources/values`, `datasources/tabular`, `datasources/import`. M3 complete. |

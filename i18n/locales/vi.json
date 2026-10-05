@@ -547,7 +547,11 @@
     "FRM-DEST-1014": "Đã có một bảng mang tên này.",
     "FRM-DEST-1015": "Biểu mẫu này đã lưu phản hồi vào một cơ sở dữ liệu.",
     "FRM-DEST-1016": "Biểu mẫu và bảng chưa khớp nhau.",
-    "FRM-DEST-1017": "Các phản hồi trước đó đang được gửi. Hãy đợi đến khi hoàn tất."
+    "FRM-DEST-1017": "Các phản hồi trước đó đang được gửi. Hãy đợi đến khi hoàn tất.",
+    "FRM-DEST-1018": "Đã có một hàng với khóa này.",
+    "FRM-DEST-1019": "Không thể thay đổi các hàng của bảng này tại đây.",
+    "FRM-DEST-1020": "Không đọc được tệp. Hãy dùng tệp CSV hoặc Excel (.xlsx) có hàng tiêu đề.",
+    "FRM-DEST-1021": "Tệp quá lớn: tối đa 5 MB và 50.000 hàng."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -933,7 +937,11 @@
       "data_column_added": "Đã thêm cột vào bảng phản hồi",
       "data_backfill_started": "Đã gửi các phản hồi trước đó vào cơ sở dữ liệu",
       "data_deliveries_retried": "Đã thử lại các lần gửi thất bại",
-      "data_table_exported": "Đã xuất bảng"
+      "data_table_exported": "Đã xuất bảng",
+      "data_row_inserted": "Đã thêm hàng vào bảng",
+      "data_row_updated": "Đã thay đổi hàng trong bảng",
+      "data_row_deleted": "Đã xóa hàng khỏi bảng",
+      "data_rows_imported": "Đã nhập tệp vào bảng"
     },
     "detail": {
       "who": "Ai",
@@ -4639,6 +4647,50 @@
       "relations": "Quan hệ",
       "noRelations": "Không có cột nào trỏ đến bảng khác.",
       "definition": "Định nghĩa"
+    },
+    "addRow": "Thêm hàng",
+    "editRow": "Thay đổi hàng {key}",
+    "edit": "Sửa",
+    "deleteRow": "Xóa hàng",
+    "deleteTitle": "Xóa hàng {key}?",
+    "deleteDesc": "Hàng sẽ bị xóa vĩnh viễn khỏi bảng của bạn. Việc này được ghi vào nhật ký kiểm tra.",
+    "rowAdded": "Đã thêm hàng",
+    "rowSaved": "Đã lưu hàng",
+    "rowDeleted": "Đã xóa hàng",
+    "emptyIsNull": "Trống (NULL)",
+    "setAutomatically": "Được đặt tự động",
+    "problem": {
+      "required": "Vui lòng điền mục này.",
+      "integer": "Nhập một số nguyên.",
+      "number": "Nhập một số.",
+      "boolean": "Dùng có hoặc không (true / false, 1 / 0).",
+      "date": "Nhập ngày theo dạng YYYY-MM-DD.",
+      "datetime": "Nhập ngày và giờ.",
+      "time": "Nhập giờ theo dạng HH:MM.",
+      "json": "Nhập JSON hợp lệ.",
+      "length": "Quá dài cho cột này (tối đa {max} ký tự).",
+      "duplicate": "Đã có một hàng với khóa này.",
+      "taken": "Đã có một hàng với khóa này."
+    },
+    "import": {
+      "button": "Nhập",
+      "title": "Nhập tệp vào bảng này",
+      "pick": "Chọn tệp CSV hoặc Excel (.xlsx)",
+      "pickDesc": "Hàng đầu tiên chứa tên cột. Tối đa 5 MB và 50.000 hàng.",
+      "choose": "Chọn tệp",
+      "found": "Tìm thấy {n} hàng trong {file}. Chọn cột của tệp sẽ điền vào từng cột của bảng. | Tìm thấy {n} hàng trong {file}. Chọn cột của tệp sẽ điền vào từng cột của bảng.",
+      "fileColumn": "Từ tệp",
+      "firstRow": "Hàng đầu tiên",
+      "leaveEmpty": "Để trống",
+      "needed": "Các cột này phải được điền: {columns}",
+      "note": "Các hàng có vấn đề sẽ bị bỏ qua và liệt kê; phần còn lại được thêm. Không có gì bị thêm hai lần.",
+      "start": "Nhập {n} hàng | Nhập {n} hàng",
+      "running": "Đang nhập {n} hàng…",
+      "finished": "Đã nhập xong",
+      "added": "Đã thêm",
+      "skipped": "Đã bỏ qua",
+      "whySkipped": "Lý do các hàng bị bỏ qua (100 hàng đầu tiên):",
+      "rowN": "Hàng {n}"
     }
   }
 }
