@@ -10,7 +10,6 @@ import { z } from 'zod'
 import type { H3Event } from 'h3'
 import type { ResponseExport, ResponseExportFormat } from '#shared/types/responses'
 import { answerText } from '#shared/utils/forms/answer-text'
-import { resolveTheme } from '#shared/utils/forms/theme'
 import { requireAuth, tenantOf } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { xlsx } from '../core/xlsx'
@@ -24,6 +23,8 @@ import { responseReport } from '../data/responseReport'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { filterResponses, formFor, questionsOf } from './responses'
 
+/** The portal's ink colour (docs/design: monochrome). */
+const APP_INK = '#18181b'
 const KEEP_MS = 7 * 24 * 60 * 60 * 1000
 const LINK_MS = 5 * 60 * 1000
 
@@ -106,10 +107,12 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
   const file_name = `${slug(form.name)}-responses-${stamp}.${extension[input.format]}`
   let bytes: Uint8Array
   if (input.format === 'pdf') {
-    // A designed report in the form's own colour (owner 2026-10-05), not a text dump.
+    // A designed report (owner 2026-10-05), not a text dump.
     const counts = { new: 0, reviewed: 0, approved: 0, rejected: 0 }
     for (const { entry } of picked) counts[entry.status]++
-    const brand = resolveTheme(form.schema?.theme, { logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null }).colors.primary
+    // The application's own look (owner 2026-10-05), not the form's theme: monochrome ink with the
+    // app's status colours. Follows the workspace's appearance once F14 Settings → Appearance exists.
+    const brand = APP_INK
     const SCOPE = { all: 'All responses', filtered: 'Matching the filters', selected: 'Selected responses' }
     bytes = responseReport({
       org: tenant.name,

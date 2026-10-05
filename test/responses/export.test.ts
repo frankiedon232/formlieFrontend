@@ -66,7 +66,7 @@ describe('response report PDF', () => {
         { question: 'Work arrangement', answer: 'Remote' },
       ],
     }))
-    const bytes = responseReport({ org: 'Remedy Legal', form: 'Job application 2', brand: '#2f6f5e', exportedBy: 'Frankie Don', exportedAt: new Date('2026-10-05T10:00:00Z'), scope: 'All responses', counts: { new: 3, reviewed: 2, approved: 2, rejected: 2 }, responses })
+    const bytes = responseReport({ org: 'Remedy Legal', form: 'Job application 2', brand: '#18181b', exportedBy: 'Frankie Don', exportedAt: new Date('2026-10-05T10:00:00Z'), scope: 'All responses', counts: { new: 3, reviewed: 2, approved: 2, rejected: 2 }, responses })
     const text = new TextDecoder('latin1').decode(bytes)
     expect(text.startsWith('%PDF-1.4')).toBe(true)
     expect(Number(/\/Count (\d+)/.exec(text)?.[1])).toBeGreaterThan(1)

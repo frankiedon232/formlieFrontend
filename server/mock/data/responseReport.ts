@@ -1,6 +1,7 @@
 /**
  * The PDF of a response export (owner 2026-10-05: "no arrangement, no branding, no theme, no life").
- * A designed report in the form's own colour: a cover band with the organisation, the form and who
+ * A designed report in the application's own look (monochrome ink, the app's status colours;
+ * later the workspace's chosen appearance, F14): a cover band with the organisation, the form and who
  * exported what and when; a row of status tiles; then one card per response (number, name, status
  * pill, email, submitted, channel, tags) with its questions and answers in two columns. Cards never
  * start at the foot of a page and continue cleanly onto the next; every page has a slim brand bar,

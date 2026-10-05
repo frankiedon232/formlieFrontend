@@ -691,6 +691,22 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ⬜ Company profile: legal name, display name, industry, size, address, country, tax / registration number, support email and phone
 - ⬜ Branding: logo (light + dark), favicon, brand colour, sign-in page image and message; live preview of the workspace sign-in page
 
+### Appearance: the workspace's own look of the portal (owner request 2026-10-05)
+
+Organisations run on different brand colours, so each workspace can change the look and feel of the whole application (not only its forms). One Appearance page with a live preview of the portal (sidebar, header, a list page, a dialog) on desktop / tablet / phone, ready-made appearance presets plus full control, "Reset to Formalie", and every change in the audit trail.
+
+- ⬜ **Colours:** primary (brand) colour and the neutral palette (zinc, slate, stone, gray…), accent use (buttons, links, focus rings, active menu item), status colours kept readable (contrast checked)
+- ⬜ **Background:** page background (plain, subtle tint, soft gradient), card and panel surfaces, borders (light / none), corner radius (sharp → round)
+- ⬜ **Rail:** colour (light, dark, brand), icon style, active marker
+- ⬜ **Menu (sidebar):** colour (light, dark, brand, transparent), width (compact / comfortable), group labels, active item style (pill, bar, filled), count badges on / off
+- ⬜ **Header (navbar):** colour, height, show / hide breadcrumbs and search, bottom border / shadow
+- ⬜ **Footer:** show / hide, text, links (help, terms), colour
+- ⬜ **Main body:** density (compact / comfortable), content width (full / centred), typography (font family and base size from a safe set)
+- ⬜ **Light and dark:** separate colours per mode, the workspace's default mode, people may still switch (rule 9)
+- ⬜ Applied app-wide through Nuxt UI theme tokens (`app.config` / CSS variables at runtime), never per-page styling; loads with the session so the first paint already uses it
+- ⬜ Files and messages follow it too: the PDF export report, email templates, the sign-in page (with Branding above)
+- ⬜ Who may change it: workspace owners / admins (Roles & access, F22, refines this)
+
 ### Organisation data (owner, 2026-10-03, decision 79)
 
 Every workspace sets up its own reference data here; the builder, field access and logic only ever offer what the workspace has (no built-in samples once Settings exist), with an empty state that links straight to the right settings page.
@@ -1023,6 +1039,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | Rename "Pages" to "Landing pages" (a form's own pages stay "pages") | F10 / F9 | ✅ |
 | 2026-10-05 | Date range ("Any time") on the Responses page and Exports, like every list (filter standard) | F11 | ✅ |
 | 2026-10-05 | All-forms Insights not one-sided: more details, balanced rows | F11 | ✅ |
+| 2026-10-05 | Appearance in Settings: each workspace customises the portal's look (colours, background, rail, menu, header, footer, main body, light / dark); exports and emails follow it | F14 | ⬜ |
+| 2026-10-05 | PDF export in the application's own colours (not the form's theme) until Appearance exists | F11 | ✅ |
 | 2026-10-04 | Responses, following the design image: two top cards with charts; grid cards like the design's task cards; theme status colours (no blue); panel without history, answers grouped by likeness with chips, equal tiles, sliders; a file viewer like the preview (download when not previewable); move and show / hide columns in every table | F11 M1 | ✅ |
 | 2026-10-04 | Responses layout: slim top strip and the table right below; Responses | Insights switch on the table's toolbar line; very rich grid cards; a super rich response panel with Previous / Next floating in the footer | F11 M1 | ✅ |
 | 2026-10-04 | Responses: a beautiful, clean page with a lot of insight, slim charts, table; and every page must show test responses ("connect all the dots") | F11 M1 | ✅ |
@@ -1170,3 +1188,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F11 | Owner: an outside click closed the export dialog mid-export (looked like a failure). Once Export is pressed (preparing, progress, ready) the dialog only closes with Close or ✕, never by an outside click or Esc; same for the audit trail's export dialog. |
 | 2026-10-05 | F11 | Owner: Excel downloaded as CSV. The mock now writes a real .xlsx (small built-in writer, no new library: bold frozen header row, column widths, numbers as numbers, formula-looking text kept as text) for response exports and the audit trail export. |
 | 2026-10-05 | F11 | Owner: the PDF export was plain text "with no life". Now a designed report in the form's own colour: cover band with the organisation, form, who exported what and when; status tiles (responses, new, reviewed, approved, rejected); one card per response (number, name, coloured status pill, email, submitted, channel, tags) with questions and answers in two columns; cards never start at a page foot and continue with "(continued)"; brand bar, form and organisation on every page and "Page x of y". Small layout writer `server/mock/core/pdfDoc.ts` (measured Helvetica text, rounded boxes); the plain-text writer is gone. |
+| 2026-10-05 | F11 / F14 | Owner: the PDF used the form's theme colour, not the application's look. The report now uses the portal's monochrome ink and status colours. New request recorded in F14: Settings → Appearance, each workspace customises the whole portal (colours, background, rail, menu, header, footer, main body, light / dark), and exports follow it. |
