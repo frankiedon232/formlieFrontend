@@ -4597,7 +4597,6 @@
     "searchTables": "テーブルと列を検索…",
     "noMatch": "一致するものはありません。",
     "noTables": "この接続には Formalie が参照できるテーブルがありません。",
-    "responseTable": "回答テーブル（Formalie が作成）",
     "noConnections": "接続はまだありません",
     "noConnectionsDesc": "データベースを接続すると、ここでテーブルを閲覧できます。",
     "cantReach": "この接続は現在機能していません",

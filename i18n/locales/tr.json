@@ -4597,7 +4597,6 @@
     "searchTables": "Tablo ve sütun ara…",
     "noMatch": "Eşleşen bir şey yok.",
     "noTables": "Bu bağlantıda Formalie’nin görebileceği tablo yok.",
-    "responseTable": "Yanıt tablosu (Formalie tarafından oluşturuldu)",
     "noConnections": "Henüz bağlantı yok",
     "noConnectionsDesc": "Tablolarına buradan göz atmak için veritabanlarınızdan birini bağlayın.",
     "cantReach": "Bu bağlantı şu anda çalışmıyor",

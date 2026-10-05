@@ -4597,7 +4597,6 @@
     "searchTables": "Tabellen en kolommen zoeken…",
     "noMatch": "Niets gevonden.",
     "noTables": "Geen tabellen die Formalie op deze verbinding mag zien.",
-    "responseTable": "Reactietabel (gemaakt door Formalie)",
     "noConnections": "Nog geen verbinding",
     "noConnectionsDesc": "Verbind een van uw databases om hier de tabellen te bekijken.",
     "cantReach": "Deze verbinding werkt op dit moment niet",

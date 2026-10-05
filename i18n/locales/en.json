@@ -4597,7 +4597,6 @@
     "searchTables": "Search tables and columns…",
     "noMatch": "Nothing matches.",
     "noTables": "No tables Formalie may see on this connection.",
-    "responseTable": "Response table (created by Formalie)",
     "noConnections": "No connection yet",
     "noConnectionsDesc": "Connect one of your databases to browse its tables here.",
     "cantReach": "This connection isn't working right now",

@@ -4597,7 +4597,6 @@
     "searchTables": "搜索表和列…",
     "noMatch": "没有匹配项。",
     "noTables": "此连接上没有 Formalie 可查看的表。",
-    "responseTable": "回复表（由 Formalie 创建）",
     "noConnections": "还没有连接",
     "noConnectionsDesc": "连接您的一个数据库，即可在此浏览其表。",
     "cantReach": "此连接当前无法使用",

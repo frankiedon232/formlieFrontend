@@ -4597,7 +4597,6 @@
     "searchTables": "Tìm bảng và cột…",
     "noMatch": "Không có kết quả phù hợp.",
     "noTables": "Không có bảng nào Formalie được phép xem trên kết nối này.",
-    "responseTable": "Bảng phản hồi (do Formalie tạo)",
     "noConnections": "Chưa có kết nối nào",
     "noConnectionsDesc": "Kết nối một cơ sở dữ liệu của bạn để duyệt các bảng tại đây.",
     "cantReach": "Kết nối này hiện không hoạt động",

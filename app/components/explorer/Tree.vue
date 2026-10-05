@@ -1,6 +1,6 @@
 <!--
-  The database tree (F12 M3): schemas → tables → columns (type on hover), with each table's row count; Formalie's
-  response tables marked. Search narrows by table or column name. Nuxt UI's tree gives keyboard
+  The database tree (F12 M3): schemas → tables → columns (type on hover), with each table's row count; every
+  table has the same square bullet. Search narrows by table or column name. Nuxt UI's tree gives keyboard
   navigation (arrows move and open, Enter selects); picking a table opens it.
 -->
 <script setup lang="ts">
@@ -23,7 +23,6 @@ const items = computed<TreeItem[]>(() => {
     const node: TreeItem = {
       label: table.name,
       key: keyOf(table),
-      icon: table.formalie ? 'i-lucide-inbox' : 'i-lucide-table-2',
       table,
       defaultExpanded: !!q && !table.name.toLowerCase().includes(q),
       onSelect: () => emit('select', table),
@@ -47,6 +46,13 @@ const items = computed<TreeItem[]>(() => {
     <div v-if="loading && !tables" class="flex flex-col gap-2"><USkeleton v-for="n in 8" :key="n" class="h-6 rounded-md" :class="n % 3 ? 'ms-5' : ''" /></div>
     <p v-else-if="!items.length" class="px-1 text-sm text-muted">{{ search ? t('explorer.noMatch') : t('explorer.noTables') }}</p>
     <UTree v-else :key="search" :items="items" :get-key="item => String(item.key)" color="neutral" size="sm" class="-mx-1 min-h-0 flex-1 overflow-y-auto">
+      <!-- Every table gets the same square bullet (owner 2026-10-05); schemas and columns keep their icons -->
+      <template #item-leading="{ item, ui }">
+        <span v-if="item.table" class="flex size-4 shrink-0 items-center justify-center" aria-hidden="true">
+          <span class="size-1.5 rounded-[1px] bg-current" :class="keyOf(item.table) === selected ? 'text-highlighted' : 'text-muted'" />
+        </span>
+        <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.linkLeadingIcon()" />
+      </template>
       <template #item-label="{ item }">
         <span class="truncate" :title="item.column ? `${item.label} · ${item.column.type}` : String(item.label)" :class="[item.table && keyOf(item.table) === selected ? 'font-semibold text-highlighted' : '', item.column ? 'font-mono text-xs' : '']" dir="ltr">{{ item.label }}</span>
       </template>
@@ -54,6 +60,5 @@ const items = computed<TreeItem[]>(() => {
         <span v-if="item.table && item.table.rows_estimate !== null" class="ms-auto ps-2 text-[11px] text-muted tabular-nums">{{ number(item.table.rows_estimate) }}</span>
       </template>
     </UTree>
-    <p class="mt-auto flex shrink-0 items-center gap-1.5 border-t border-default px-1 pt-2.5 text-[11px] text-muted"><UIcon name="i-lucide-inbox" class="size-3.5" /> {{ t('explorer.responseTable') }}</p>
   </div>
 </template>

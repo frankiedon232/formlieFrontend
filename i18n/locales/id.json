@@ -4597,7 +4597,6 @@
     "searchTables": "Cari tabel dan kolom…",
     "noMatch": "Tidak ada yang cocok.",
     "noTables": "Tidak ada tabel yang boleh dilihat Formalie di koneksi ini.",
-    "responseTable": "Tabel respons (dibuat oleh Formalie)",
     "noConnections": "Belum ada koneksi",
     "noConnectionsDesc": "Hubungkan salah satu database Anda untuk menjelajahi tabelnya di sini.",
     "cantReach": "Koneksi ini sedang tidak berfungsi",

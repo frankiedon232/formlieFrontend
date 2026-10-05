@@ -4597,7 +4597,6 @@
     "searchTables": "테이블 및 열 검색…",
     "noMatch": "일치하는 항목이 없습니다.",
     "noTables": "이 연결에는 Formalie가 볼 수 있는 테이블이 없습니다.",
-    "responseTable": "응답 테이블(Formalie에서 생성)",
     "noConnections": "아직 연결이 없습니다",
     "noConnectionsDesc": "데이터베이스를 연결하면 여기에서 테이블을 탐색할 수 있습니다.",
     "cantReach": "이 연결은 현재 작동하지 않습니다",

@@ -4597,7 +4597,6 @@
     "searchTables": "Tabellen und Spalten suchen…",
     "noMatch": "Keine Treffer.",
     "noTables": "Auf dieser Verbindung gibt es keine Tabellen, die Formalie sehen darf.",
-    "responseTable": "Antworttabelle (von Formalie erstellt)",
     "noConnections": "Noch keine Verbindung",
     "noConnectionsDesc": "Verbinden Sie eine Ihrer Datenbanken, um hier ihre Tabellen zu durchsuchen.",
     "cantReach": "Diese Verbindung funktioniert gerade nicht",
