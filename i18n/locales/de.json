@@ -3497,6 +3497,37 @@
         "p3": "Dass sich die Datenbank öffnen lässt, und jede Berechtigung, die diese Verbindung benötigt.",
         "p4": "Er liest nur: In Ihrer Datenbank ändert sich nichts."
       }
+    },
+    "home": {
+      "traffic": "Datenbankverkehr",
+      "operations": "{n} Vorgang | {n} Vorgänge",
+      "delivered": "{n} Antwort an Ihre Datenbanken übermittelt | {n} Antworten an Ihre Datenbanken übermittelt",
+      "quiet": "Keine Datenbankaktivität in den letzten 30 Tagen",
+      "quietDesc": "Übermittlungen, Explorer-Aktionen und Abfragen erscheinen hier, sobald sie stattfinden.",
+      "allOperations": "Vorgänge",
+      "deliveredLabel": "Übermittelte Antworten",
+      "other": "Sonstige Aktivität",
+      "connection": "Verbindungsübersicht",
+      "previous": "Vorherige Verbindung",
+      "next": "Nächste Verbindung",
+      "openConnection": "Diese Verbindung öffnen",
+      "ops30": "Vorgänge",
+      "latest": "Letzte Aktivität",
+      "noEvents": "Noch nichts aufgezeichnet.",
+      "recent": "Letzte Aktivität",
+      "seeAll": "Alle anzeigen",
+      "col": {
+        "event": "Was passiert ist",
+        "where": "Wo",
+        "who": "Von",
+        "when": "Wann"
+      },
+      "connected": "{n} verbunden",
+      "formsStoring": "Formulare speichern",
+      "inDatabases": "in Ihren Datenbanken",
+      "lookHint": "Verbindungen oder Übermittlungen",
+      "shortcuts": "Mit Ihren Daten arbeiten",
+      "formsShort": "Formulare"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Höchster",
       "inTable": "Jede Antwort finden Sie in der Antwortliste.",
       "empty": "Noch nichts zusammenzufassen",
-      "emptyDesc": "Antworten erscheinen hier, sobald welche für diesen Zeitraum eingehen."
+      "emptyDesc": "Antworten erscheinen hier, sobald welche für diesen Zeitraum eingehen.",
+      "nps": "Net Promoter Score",
+      "detractors": "Kritiker",
+      "passives": "Passive",
+      "promoters": "Promotoren"
     },
     "detail": {
       "noAnswer": "Keine Antwort",
@@ -4991,5 +5026,92 @@
     "search": "Aktivität suchen…",
     "emptyTitle": "Noch keine Aktivität",
     "emptyDesc": "Abfragen, Exporte und Änderungen an Ihren Verbindungen erscheinen hier."
+  },
+  "charts": {
+    "flowHint": "Diagramm. Mit den Pfeiltasten links und rechts wechseln Sie zwischen den Tagen."
+  },
+  "analytics": {
+    "subtitle": "Wie Personen durch Ihre Formulare navigieren",
+    "open": "{name} öffnen",
+    "fromPrevious": "gegenüber dem letzten Zeitraum",
+    "daily": "Täglich",
+    "weekly": "Wöchentlich",
+    "monthly": "Monatlich",
+    "step": "Gruppieren nach",
+    "started": "Begonnen",
+    "completedLabel": "Abgeschlossen",
+    "views": "Aufrufe",
+    "rate": "Abschlussquote",
+    "time": "Ausfüllzeit",
+    "download": "Herunterladen",
+    "downloaded": "Analysen heruntergeladen",
+    "search": "Formulare suchen",
+    "emptyTitle": "Keine Formularaktivität in diesem Zeitraum",
+    "emptyDesc": "Teilen Sie ein Formular oder wählen Sie einen längeren Zeitraum, um zu sehen, wie es ausgefüllt wird.",
+    "lastYear": "Letzte 12 Monate anzeigen",
+    "conversion": {
+      "title": "Konversionsübersicht",
+      "completed": "{n} abgeschlossen | {n} abgeschlossen",
+      "perDay": "Ø {n} abgeschlossen pro Tag",
+      "empty": "In diesem Zeitraum hat niemand ein Formular geöffnet",
+      "emptyDesc": "Aufrufe, Starts und Abschlüsse erscheinen hier, sobald Personen Ihre Formulare öffnen.",
+      "left": "Ohne Abschluss verlassen"
+    },
+    "focus": {
+      "title": "Formularübersicht",
+      "previous": "Vorheriges Formular",
+      "next": "Nächstes Formular",
+      "details": "Analysen dieses Formulars öffnen",
+      "empty": "Noch kein Formular hatte Besucher",
+      "emptyDesc": "Sobald ein Formular geöffnet wird, erscheinen hier seine Zahlen.",
+      "views": "{n} Aufruf | {n} Aufrufe",
+      "summary": "{starts} begonnen, {completions} abgeschlossen",
+      "time": "etwa {time} zum Ausfüllen",
+      "stops": "Wo Personen abbrechen",
+      "noStops": "In diesem Zeitraum hat niemand mittendrin abgebrochen.",
+      "page": "Seite {n}",
+      "leftShare": "{n} % der Beginnenden sind hier ausgestiegen",
+      "view": "Anzeigen"
+    },
+    "card": {
+      "rate": "{n} % abgeschlossen",
+      "flag": "Weniger als 4 von 10 Personen schließen dieses Formular ab",
+      "stop": "Die meisten brechen ab bei: {label}",
+      "noStop": "Niemand hat mittendrin abgebrochen",
+      "completions": "{n} abgeschlossen | {n} abgeschlossen"
+    },
+    "col": {
+      "form": "Formular",
+      "status": "Status",
+      "stop": "Größter Ausstieg"
+    },
+    "sort": {
+      "completions": "Meiste Abschlüsse",
+      "views": "Meiste Aufrufe",
+      "rateLow": "Niedrigste Abschlussquote",
+      "rateHigh": "Höchste Abschlussquote"
+    },
+    "actions": {
+      "details": "Trichter und Fragen",
+      "perQuestion": "Antworten pro Frage",
+      "openForm": "Formular öffnen",
+      "responses": "Antworten",
+      "builder": "Im Builder öffnen"
+    },
+    "detail": {
+      "subtitle": "{from} bis {to}",
+      "navigate": "Zwischen Formularen wechseln",
+      "left": "Mittendrin abgebrochen",
+      "funnel": "Trichter",
+      "ofPrevious": "des vorherigen Schritts",
+      "questions": "Fragen",
+      "pages": "Seiten",
+      "noQuestions": "Dieses Formular hat noch keine Fragen",
+      "biggestStop": "Hier steigen die meisten aus",
+      "reached": "{n} erreicht",
+      "leftHere": "{n} hier ausgestiegen",
+      "required": "Pflichtfeld",
+      "answered": "{n} % beantwortet"
+    }
   }
 }

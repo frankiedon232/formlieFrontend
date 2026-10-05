@@ -3497,6 +3497,37 @@
         "p3": "Veritabanının açıldığını ve bu bağlantının ihtiyaç duyduğu her izni.",
         "p4": "Yalnızca okur: veritabanınızda hiçbir şey değişmez."
       }
+    },
+    "home": {
+      "traffic": "Veritabanı trafiği",
+      "operations": "{n} işlem | {n} işlem",
+      "delivered": "{n} yanıt veritabanlarınıza iletildi | {n} yanıt veritabanlarınıza iletildi",
+      "quiet": "Son 30 günde veritabanı etkinliği yok",
+      "quietDesc": "Teslimatlar, gezgin işlemleri ve sorgular gerçekleştiği anda burada görünür.",
+      "allOperations": "İşlemler",
+      "deliveredLabel": "İletilen yanıtlar",
+      "other": "Diğer işler",
+      "connection": "Bağlantı özeti",
+      "previous": "Önceki bağlantı",
+      "next": "Sonraki bağlantı",
+      "openConnection": "Bu bağlantıyı aç",
+      "ops30": "İşlemler",
+      "latest": "Son etkinlik",
+      "noEvents": "Henüz kayıt yok.",
+      "recent": "Son etkinlik",
+      "seeAll": "Tümünü gör",
+      "col": {
+        "event": "Ne oldu",
+        "where": "Nerede",
+        "who": "Kim",
+        "when": "Ne zaman"
+      },
+      "connected": "{n} bağlı",
+      "formsStoring": "Depolayan formlar",
+      "inDatabases": "veritabanlarınızda",
+      "lookHint": "bağlantılar veya teslimatlar",
+      "shortcuts": "Verilerinizle çalışın",
+      "formsShort": "Formlar"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "En yüksek",
       "inTable": "Her yanıtı Yanıtlar listesinde görün.",
       "empty": "Henüz özetlenecek bir şey yok",
-      "emptyDesc": "Bu dönemde yanıt geldikçe burada görünür."
+      "emptyDesc": "Bu dönemde yanıt geldikçe burada görünür.",
+      "nps": "Net Tavsiye Skoru",
+      "detractors": "Eleştirenler",
+      "passives": "Pasifler",
+      "promoters": "Destekçiler"
     },
     "detail": {
       "noAnswer": "Yanıt yok",
@@ -4991,5 +5026,92 @@
     "search": "Etkinlik ara…",
     "emptyTitle": "Henüz etkinlik yok",
     "emptyDesc": "Bağlantılarınızdaki sorgular, dışa aktarımlar ve değişiklikler burada görünür."
+  },
+  "charts": {
+    "flowHint": "Grafik. Günler arasında geçmek için sol ve sağ ok tuşlarını kullanın."
+  },
+  "analytics": {
+    "subtitle": "İnsanların formlarınızda nasıl ilerlediği",
+    "open": "{name} öğesini aç",
+    "fromPrevious": "önceki döneme göre",
+    "daily": "Günlük",
+    "weekly": "Haftalık",
+    "monthly": "Aylık",
+    "step": "Gruplandır",
+    "started": "Başlayan",
+    "completedLabel": "Tamamlanan",
+    "views": "Görüntüleme",
+    "rate": "Tamamlama oranı",
+    "time": "Doldurma süresi",
+    "download": "İndir",
+    "downloaded": "Analizler indirildi",
+    "search": "Form ara",
+    "emptyTitle": "Bu dönemde form etkinliği yok",
+    "emptyDesc": "İnsanların formu nasıl doldurduğunu görmek için bir form paylaşın veya daha uzun bir dönem seçin.",
+    "lastYear": "Son 12 ayı göster",
+    "conversion": {
+      "title": "Dönüşüm özeti",
+      "completed": "{n} tamamlandı | {n} tamamlandı",
+      "perDay": "günde ortalama {n} tamamlandı",
+      "empty": "Bu dönemde kimse form açmadı",
+      "emptyDesc": "İnsanlar formlarınızı açar açmaz görüntüleme, başlama ve tamamlama sayıları burada görünür.",
+      "left": "Bitirmeden ayrılan"
+    },
+    "focus": {
+      "title": "Form özeti",
+      "previous": "Önceki form",
+      "next": "Sonraki form",
+      "details": "Bu formun analizlerini aç",
+      "empty": "Henüz hiçbir forma ziyaretçi gelmedi",
+      "emptyDesc": "Bir form açıldığında sayıları burada görünür.",
+      "views": "{n} görüntüleme | {n} görüntüleme",
+      "summary": "{starts} başladı, {completions} tamamladı",
+      "time": "doldurması yaklaşık {time}",
+      "stops": "İnsanlar nerede bırakıyor",
+      "noStops": "Bu dönemde kimse yarıda bırakmadı.",
+      "page": "Sayfa {n}",
+      "leftShare": "Başlayanların %{n} kadarı burada ayrıldı",
+      "view": "Görüntüle"
+    },
+    "card": {
+      "rate": "%{n} tamamlandı",
+      "flag": "Her 10 kişiden 4'ünden azı bu formu bitiriyor",
+      "stop": "Çoğu şurada ayrılıyor: {label}",
+      "noStop": "Kimse yarıda bırakmadı",
+      "completions": "{n} tamamlandı | {n} tamamlandı"
+    },
+    "col": {
+      "form": "Form",
+      "status": "Durum",
+      "stop": "En büyük ayrılma noktası"
+    },
+    "sort": {
+      "completions": "En çok tamamlanan",
+      "views": "En çok görüntülenen",
+      "rateLow": "En düşük tamamlama oranı",
+      "rateHigh": "En yüksek tamamlama oranı"
+    },
+    "actions": {
+      "details": "Huni ve sorular",
+      "perQuestion": "Soru başına yanıtlar",
+      "openForm": "Formu aç",
+      "responses": "Yanıtlar",
+      "builder": "Oluşturucuda aç"
+    },
+    "detail": {
+      "subtitle": "{from} - {to}",
+      "navigate": "Formlar arasında geç",
+      "left": "Yarıda bırakan",
+      "funnel": "Huni",
+      "ofPrevious": "önceki adımın",
+      "questions": "Sorular",
+      "pages": "Sayfalar",
+      "noQuestions": "Bu formda henüz soru yok",
+      "biggestStop": "İnsanların çoğu burada ayrılıyor",
+      "reached": "{n} ulaştı",
+      "leftHere": "{n} burada ayrıldı",
+      "required": "Zorunlu",
+      "answered": "%{n} yanıtlandı"
+    }
   }
 }

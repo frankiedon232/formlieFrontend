@@ -3497,6 +3497,37 @@
         "p3": "That the database opens, and every permission this connection needs.",
         "p4": "It only reads: nothing in your database changes."
       }
+    },
+    "home": {
+      "traffic": "Database traffic",
+      "operations": "{n} operation | {n} operations",
+      "delivered": "{n} response delivered to your databases | {n} responses delivered to your databases",
+      "quiet": "No database work in the last 30 days",
+      "quietDesc": "Deliveries, explorer work and queries show here as soon as they happen.",
+      "allOperations": "Operations",
+      "deliveredLabel": "Responses delivered",
+      "other": "Other work",
+      "connection": "Connection overview",
+      "previous": "Previous connection",
+      "next": "Next connection",
+      "openConnection": "Open this connection",
+      "ops30": "Operations",
+      "latest": "Latest activity",
+      "noEvents": "Nothing recorded yet.",
+      "recent": "Recent activity",
+      "seeAll": "See all",
+      "col": {
+        "event": "What happened",
+        "where": "Where",
+        "who": "By",
+        "when": "When"
+      },
+      "connected": "{n} connected",
+      "formsStoring": "Forms storing",
+      "inDatabases": "in your databases",
+      "lookHint": "connections or deliveries",
+      "shortcuts": "Work with your data",
+      "formsShort": "Forms"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Highest",
       "inTable": "See each answer in the Responses list.",
       "empty": "Nothing to summarise yet",
-      "emptyDesc": "Answers appear here once responses come in for this period."
+      "emptyDesc": "Answers appear here once responses come in for this period.",
+      "nps": "Net Promoter Score",
+      "detractors": "Detractors",
+      "passives": "Passives",
+      "promoters": "Promoters"
     },
     "detail": {
       "noAnswer": "No answer",
@@ -4991,5 +5026,92 @@
     "search": "Search activity…",
     "emptyTitle": "No activity yet",
     "emptyDesc": "Queries, exports and changes on your connections show here."
+  },
+  "charts": {
+    "flowHint": "Chart. Use the left and right arrow keys to move between days."
+  },
+  "analytics": {
+    "subtitle": "How people move through your forms",
+    "open": "Open {name}",
+    "fromPrevious": "from last period",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "step": "Group by",
+    "started": "Started",
+    "completedLabel": "Completed",
+    "views": "Views",
+    "rate": "Completion rate",
+    "time": "Time to fill in",
+    "download": "Download",
+    "downloaded": "Analytics downloaded",
+    "search": "Search forms",
+    "emptyTitle": "No form activity in this period",
+    "emptyDesc": "Share a form or choose a longer period to see how people fill it in.",
+    "lastYear": "Show the last 12 months",
+    "conversion": {
+      "title": "Conversion overview",
+      "completed": "{n} completed | {n} completed",
+      "perDay": "{n} completed per day on average",
+      "empty": "Nobody opened a form in this period",
+      "emptyDesc": "Views, starts and completions show here as soon as people open your forms.",
+      "left": "Left without finishing"
+    },
+    "focus": {
+      "title": "Form overview",
+      "previous": "Previous form",
+      "next": "Next form",
+      "details": "Open this form's analytics",
+      "empty": "No form had visitors yet",
+      "emptyDesc": "Once a form is opened, its numbers show here.",
+      "views": "{n} view | {n} views",
+      "summary": "{starts} started, {completions} completed",
+      "time": "about {time} to fill in",
+      "stops": "Where people stop",
+      "noStops": "Nobody left part way in this period.",
+      "page": "Page {n}",
+      "leftShare": "{n}% of starters left here",
+      "view": "View"
+    },
+    "card": {
+      "rate": "{n}% complete",
+      "flag": "Fewer than 4 in 10 people finish this form",
+      "stop": "Most leave at: {label}",
+      "noStop": "Nobody left part way",
+      "completions": "{n} completed | {n} completed"
+    },
+    "col": {
+      "form": "Form",
+      "status": "Status",
+      "stop": "Biggest stop"
+    },
+    "sort": {
+      "completions": "Most completed",
+      "views": "Most viewed",
+      "rateLow": "Lowest completion rate",
+      "rateHigh": "Highest completion rate"
+    },
+    "actions": {
+      "details": "Funnel and questions",
+      "perQuestion": "Answers per question",
+      "openForm": "Open the form",
+      "responses": "Responses",
+      "builder": "Open in the builder"
+    },
+    "detail": {
+      "subtitle": "{from} to {to}",
+      "navigate": "Move between forms",
+      "left": "Left part way",
+      "funnel": "Funnel",
+      "ofPrevious": "of the step before",
+      "questions": "Questions",
+      "pages": "Pages",
+      "noQuestions": "This form has no questions yet",
+      "biggestStop": "Most people leave here",
+      "reached": "{n} reached",
+      "leftHere": "{n} left here",
+      "required": "Required",
+      "answered": "{n}% answered"
+    }
   }
 }

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: all milestones done (M1 Connections, M2 Response storage, M3 Database explorer, M4 Query editor, M5 Activity and polish); **waiting for the owner's review**.
+**Last updated:** 2026-10-05 · **Current phase:** F12 and F18 (Analytics, brought forward) done with a new Data sources overview; **waiting for the owner's review**, then F13 (API service & integrations).
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -28,7 +28,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
-| F18   | Analytics                                         | ⬜     | 0%   |
+| F18   | Analytics                                         | ✅     | 100% |
 | F19   | AI assistant                                      | 🟡     | ~2%  |
 | F20   | Live collaboration (optional)                     | ⬜     | 0%   |
 | F21   | Dashboard                                         | ⬜     | 0%   |
@@ -846,12 +846,14 @@ Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-0
 
 ---
 
-## F18, Analytics ⬜
+## F18, Analytics ✅ (brought forward by the owner, 2026-10-05; waiting for review)
 
-- ⬜ Per form: views, starts, completions, completion rate, average time
-- ⬜ Drop-off per page and field
-- ⬜ Per-question charts, NPS
-- ⬜ Date range, export
+- ✅ Analytics page in the design's dashboard style (`/analytics`, Forms menu): five KPI cards (views, started, completed, completion rate, time to fill in) with their change against the period before; conversion overview (started vs completed as the design's flow chart, hatched gap = left without finishing, Daily / Weekly / Monthly, tooltip with the completion rate and its change); form overview card (‹ form ›, completion bar, "Where people stop" timeline with links to the builder)
+- ✅ Per form: views, starts, completions, completion rate, median time; DataView table and cards (rule 21) with the biggest stop and a 30-day sparkline; a row opens the panel (fact tiles, funnel, pages and questions: reached, answered, left, time; Previous / Next)
+- ✅ Drop-off per page and field (`GET /analytics/forms/{id}/funnel`)
+- ✅ Per-question charts: Responses → Insights (linked from Analytics as "Answers per question"); NPS score with detractors / passives / promoters on every 0 to 10 question
+- ✅ Date range (in the address, last 30 days by default, up to a year) and Download as CSV (counts only, formula-safe cells)
+- ✅ Mock first: `/analytics/overview`, `/analytics/forms`, `/analytics/forms/{id}/funnel`; completions, days, channels and times come from the response data, views / starts / stops are stable estimates until the backend counts the fill-in page's events; contract updated
 
 ---
 
@@ -1088,6 +1090,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | M5: Activity for the connections; "Imports & exports" becomes Exports (Activity filtered to exports); polish sweep of every Data sources page on phone, tablet and desktop | F12 M5 | ✅ |
 | 2026-10-05 | SQL reserved words in blue in the Query editor | F12 M4 | ✅ |
 | 2026-10-05 | Query editor: Run all (every statement, a result per statement); a lazy tree for very large databases (columns load when a table is opened); open F12 items resolved (done, or moved to F15e / F22 / later) | F12 | ✅ |
+| 2026-10-05 | Before F13: Forms → Analytics (still a placeholder) and Data sources → Overview must be finished and look "Wao" in the design's dashboard style | F18 (brought forward) · F12 overview | ✅ |
 
 ---
 
@@ -1270,3 +1273,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | M4 part 2: saved queries (personal / shared, owner-only changes, run counts; Save with Ctrl / ⌘ + S, an unsaved-changes dot on the tab, a Saved tab in the side panel, `?saved=` links) and the Saved queries page (two chart cards, DataView table and cards, edit / share / delete), export of results (CSV / Excel / JSON, this page or up to 5,000 rows, through the explorer's export flow), Format (built-in SQL formatter). M4 complete. Tests: `datasources/sql` (format). |
 | 2026-10-05 | F12 | M5: Activity page (audit trail area `data`, kinds in `shared/utils/datasources/activity.ts`, insights `GET /datasources/activity/insights`, the audit panel per event), Exports opens Activity filtered to exports, overview marks every section live, seeded data events in the mock's history; phone (375) and tablet (768) sweep of all eight Data sources pages: no overflow. F12 complete; stopped for the owner's review. |
 | 2026-10-05 | F12 | Run all in the Query editor (`useQueryRunner.runAll`, a result tab per statement in `QueryOutput`, Ctrl / ⌘ + Shift + Enter) and a lazy tree (`useDatabaseTables`: names first with `columns=none`, up to 500 and server search beyond, columns per table from `GET /explorer/columns` when opened or named in the editor). PROGRESS tidy: every open F12 item resolved (done, or moved to F15e option sets, F22 permissions, later for scheduled exports). F12 still waiting for the owner's review. |
+| 2026-10-05 | F18 / F12 | Analytics (F18, brought forward): dashboard page with KPI cards (`ChartsKpi`), the conversion flow chart (`ChartsFlow`, the design's hatched two-line chart), form overview with where people stop, DataView of every form with cards and a funnel panel, CSV download, NPS on 0 to 10 questions in Responses → Insights; mock `/analytics/*`. Data sources overview rebuilt the same way: KPI cards, database traffic (operations vs responses delivered, kinds that open Activity), connection overview with uptime and latest activity, recent activity table, supported databases and shortcuts. Phone (375) checked: no overflow. Tests: `analytics/csv`. |

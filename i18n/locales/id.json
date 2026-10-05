@@ -3497,6 +3497,37 @@
         "p3": "Bahwa database dapat dibuka, dan setiap izin yang diperlukan koneksi ini.",
         "p4": "Hanya membaca: tidak ada yang berubah di database Anda."
       }
+    },
+    "home": {
+      "traffic": "Lalu lintas database",
+      "operations": "{n} operasi | {n} operasi",
+      "delivered": "{n} respons dikirim ke database Anda | {n} respons dikirim ke database Anda",
+      "quiet": "Tidak ada aktivitas database dalam 30 hari terakhir",
+      "quietDesc": "Pengiriman, aktivitas penjelajah, dan kueri akan muncul di sini begitu terjadi.",
+      "allOperations": "Operasi",
+      "deliveredLabel": "Respons terkirim",
+      "other": "Pekerjaan lainnya",
+      "connection": "Ringkasan koneksi",
+      "previous": "Koneksi sebelumnya",
+      "next": "Koneksi berikutnya",
+      "openConnection": "Buka koneksi ini",
+      "ops30": "Operasi",
+      "latest": "Aktivitas terbaru",
+      "noEvents": "Belum ada yang tercatat.",
+      "recent": "Aktivitas terbaru",
+      "seeAll": "Lihat semua",
+      "col": {
+        "event": "Apa yang terjadi",
+        "where": "Di mana",
+        "who": "Oleh",
+        "when": "Kapan"
+      },
+      "connected": "{n} terhubung",
+      "formsStoring": "Formulir yang menyimpan",
+      "inDatabases": "di database Anda",
+      "lookHint": "koneksi atau pengiriman",
+      "shortcuts": "Kerjakan data Anda",
+      "formsShort": "Formulir"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Tertinggi",
       "inTable": "Lihat setiap jawaban di daftar tanggapan.",
       "empty": "Belum ada yang bisa diringkas",
-      "emptyDesc": "Jawaban muncul di sini saat tanggapan masuk pada periode ini."
+      "emptyDesc": "Jawaban muncul di sini saat tanggapan masuk pada periode ini.",
+      "nps": "Net Promoter Score",
+      "detractors": "Pengkritik",
+      "passives": "Pasif",
+      "promoters": "Promotor"
     },
     "detail": {
       "noAnswer": "Tidak dijawab",
@@ -4991,5 +5026,92 @@
     "search": "Cari aktivitas…",
     "emptyTitle": "Belum ada aktivitas",
     "emptyDesc": "Kueri, ekspor, dan perubahan di koneksi Anda muncul di sini."
+  },
+  "charts": {
+    "flowHint": "Grafik. Gunakan tombol panah kiri dan kanan untuk berpindah antarhari."
+  },
+  "analytics": {
+    "subtitle": "Bagaimana orang melewati formulir Anda",
+    "open": "Buka {name}",
+    "fromPrevious": "dari periode lalu",
+    "daily": "Harian",
+    "weekly": "Mingguan",
+    "monthly": "Bulanan",
+    "step": "Kelompokkan menurut",
+    "started": "Dimulai",
+    "completedLabel": "Selesai",
+    "views": "Tayangan",
+    "rate": "Tingkat penyelesaian",
+    "time": "Waktu pengisian",
+    "download": "Unduh",
+    "downloaded": "Analitik diunduh",
+    "search": "Cari formulir",
+    "emptyTitle": "Tidak ada aktivitas formulir pada periode ini",
+    "emptyDesc": "Bagikan formulir atau pilih periode yang lebih panjang untuk melihat bagaimana formulir diisi.",
+    "lastYear": "Tampilkan 12 bulan terakhir",
+    "conversion": {
+      "title": "Ringkasan konversi",
+      "completed": "{n} selesai | {n} selesai",
+      "perDay": "rata-rata {n} selesai per hari",
+      "empty": "Tidak ada yang membuka formulir pada periode ini",
+      "emptyDesc": "Tayangan, pengisian yang dimulai, dan penyelesaian akan muncul di sini begitu orang membuka formulir Anda.",
+      "left": "Keluar sebelum selesai"
+    },
+    "focus": {
+      "title": "Ringkasan formulir",
+      "previous": "Formulir sebelumnya",
+      "next": "Formulir berikutnya",
+      "details": "Buka analitik formulir ini",
+      "empty": "Belum ada formulir yang dikunjungi",
+      "emptyDesc": "Setelah formulir dibuka, angkanya akan muncul di sini.",
+      "views": "{n} tayangan | {n} tayangan",
+      "summary": "{starts} dimulai, {completions} selesai",
+      "time": "sekitar {time} untuk mengisi",
+      "stops": "Di mana orang berhenti",
+      "noStops": "Tidak ada yang berhenti di tengah jalan pada periode ini.",
+      "page": "Halaman {n}",
+      "leftShare": "{n}% dari yang memulai keluar di sini",
+      "view": "Lihat"
+    },
+    "card": {
+      "rate": "{n}% selesai",
+      "flag": "Kurang dari 4 dari 10 orang yang menyelesaikan formulir ini",
+      "stop": "Sebagian besar keluar di: {label}",
+      "noStop": "Tidak ada yang berhenti di tengah jalan",
+      "completions": "{n} selesai | {n} selesai"
+    },
+    "col": {
+      "form": "Formulir",
+      "status": "Status",
+      "stop": "Titik keluar terbesar"
+    },
+    "sort": {
+      "completions": "Paling banyak selesai",
+      "views": "Paling banyak dilihat",
+      "rateLow": "Tingkat penyelesaian terendah",
+      "rateHigh": "Tingkat penyelesaian tertinggi"
+    },
+    "actions": {
+      "details": "Corong dan pertanyaan",
+      "perQuestion": "Jawaban per pertanyaan",
+      "openForm": "Buka formulir",
+      "responses": "Respons",
+      "builder": "Buka di pembuat formulir"
+    },
+    "detail": {
+      "subtitle": "{from} sampai {to}",
+      "navigate": "Berpindah antarformulir",
+      "left": "Berhenti di tengah jalan",
+      "funnel": "Corong",
+      "ofPrevious": "dari langkah sebelumnya",
+      "questions": "Pertanyaan",
+      "pages": "Halaman",
+      "noQuestions": "Formulir ini belum memiliki pertanyaan",
+      "biggestStop": "Sebagian besar keluar di sini",
+      "reached": "{n} sampai",
+      "leftHere": "{n} keluar di sini",
+      "required": "Wajib",
+      "answered": "{n}% terjawab"
+    }
   }
 }

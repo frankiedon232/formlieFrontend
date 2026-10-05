@@ -3497,6 +3497,37 @@
         "p3": "Que la base de données s’ouvre, et chaque autorisation nécessaire à cette connexion.",
         "p4": "Il ne fait que lire : rien ne change dans votre base de données."
       }
+    },
+    "home": {
+      "traffic": "Trafic des bases de données",
+      "operations": "{n} opération | {n} opérations",
+      "delivered": "{n} réponse livrée à vos bases de données | {n} réponses livrées à vos bases de données",
+      "quiet": "Aucune activité de base de données ces 30 derniers jours",
+      "quietDesc": "Les livraisons, les actions de l'explorateur et les requêtes s'afficheront ici dès qu'elles auront lieu.",
+      "allOperations": "Opérations",
+      "deliveredLabel": "Réponses livrées",
+      "other": "Autres opérations",
+      "connection": "Aperçu de la connexion",
+      "previous": "Connexion précédente",
+      "next": "Connexion suivante",
+      "openConnection": "Ouvrir cette connexion",
+      "ops30": "Opérations",
+      "latest": "Dernière activité",
+      "noEvents": "Rien d'enregistré pour le moment.",
+      "recent": "Activité récente",
+      "seeAll": "Tout afficher",
+      "col": {
+        "event": "Ce qui s'est passé",
+        "where": "Où",
+        "who": "Par",
+        "when": "Quand"
+      },
+      "connected": "{n} connectées",
+      "formsStoring": "Formulaires qui stockent",
+      "inDatabases": "dans vos bases de données",
+      "lookHint": "connexions ou livraisons",
+      "shortcuts": "Travailler avec vos données",
+      "formsShort": "Formulaires"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Maximum",
       "inTable": "Voir chaque réponse dans la liste des réponses.",
       "empty": "Rien à résumer pour l'instant",
-      "emptyDesc": "Les réponses apparaîtront ici dès qu'il y en aura sur cette période."
+      "emptyDesc": "Les réponses apparaîtront ici dès qu'il y en aura sur cette période.",
+      "nps": "Net Promoter Score",
+      "detractors": "Détracteurs",
+      "passives": "Passifs",
+      "promoters": "Promoteurs"
     },
     "detail": {
       "noAnswer": "Sans réponse",
@@ -4991,5 +5026,92 @@
     "search": "Rechercher dans l’activité…",
     "emptyTitle": "Aucune activité pour l’instant",
     "emptyDesc": "Les requêtes, exports et modifications sur vos connexions s’affichent ici."
+  },
+  "charts": {
+    "flowHint": "Graphique. Utilisez les flèches gauche et droite pour passer d'un jour à l'autre."
+  },
+  "analytics": {
+    "subtitle": "Comment les personnes parcourent vos formulaires",
+    "open": "Ouvrir {name}",
+    "fromPrevious": "par rapport à la période précédente",
+    "daily": "Par jour",
+    "weekly": "Par semaine",
+    "monthly": "Par mois",
+    "step": "Regrouper par",
+    "started": "Commencés",
+    "completedLabel": "Terminés",
+    "views": "Vues",
+    "rate": "Taux d'achèvement",
+    "time": "Temps de remplissage",
+    "download": "Télécharger",
+    "downloaded": "Statistiques téléchargées",
+    "search": "Rechercher des formulaires",
+    "emptyTitle": "Aucune activité sur les formulaires pour cette période",
+    "emptyDesc": "Partagez un formulaire ou choisissez une période plus longue pour voir comment il est rempli.",
+    "lastYear": "Afficher les 12 derniers mois",
+    "conversion": {
+      "title": "Aperçu de la conversion",
+      "completed": "{n} terminé | {n} terminés",
+      "perDay": "{n} terminés par jour en moyenne",
+      "empty": "Personne n'a ouvert de formulaire sur cette période",
+      "emptyDesc": "Les vues, débuts et envois s'afficheront ici dès que vos formulaires seront ouverts.",
+      "left": "Abandons avant la fin"
+    },
+    "focus": {
+      "title": "Aperçu du formulaire",
+      "previous": "Formulaire précédent",
+      "next": "Formulaire suivant",
+      "details": "Ouvrir les statistiques de ce formulaire",
+      "empty": "Aucun formulaire n'a encore reçu de visiteurs",
+      "emptyDesc": "Dès qu'un formulaire est ouvert, ses chiffres s'affichent ici.",
+      "views": "{n} vue | {n} vues",
+      "summary": "{starts} commencés, {completions} terminés",
+      "time": "environ {time} pour le remplir",
+      "stops": "Où les personnes s'arrêtent",
+      "noStops": "Personne n'a abandonné en cours de route sur cette période.",
+      "page": "Page {n}",
+      "leftShare": "{n} % des personnes ayant commencé ont abandonné ici",
+      "view": "Afficher"
+    },
+    "card": {
+      "rate": "{n} % terminé",
+      "flag": "Moins de 4 personnes sur 10 terminent ce formulaire",
+      "stop": "La plupart abandonnent à : {label}",
+      "noStop": "Personne n'a abandonné en cours de route",
+      "completions": "{n} terminé | {n} terminés"
+    },
+    "col": {
+      "form": "Formulaire",
+      "status": "Statut",
+      "stop": "Principal abandon"
+    },
+    "sort": {
+      "completions": "Le plus de terminés",
+      "views": "Le plus de vues",
+      "rateLow": "Taux d'achèvement le plus bas",
+      "rateHigh": "Taux d'achèvement le plus élevé"
+    },
+    "actions": {
+      "details": "Entonnoir et questions",
+      "perQuestion": "Réponses par question",
+      "openForm": "Ouvrir le formulaire",
+      "responses": "Réponses",
+      "builder": "Ouvrir dans le générateur"
+    },
+    "detail": {
+      "subtitle": "Du {from} au {to}",
+      "navigate": "Passer d'un formulaire à l'autre",
+      "left": "Abandons en cours de route",
+      "funnel": "Entonnoir",
+      "ofPrevious": "de l'étape précédente",
+      "questions": "Questions",
+      "pages": "Pages",
+      "noQuestions": "Ce formulaire n'a pas encore de questions",
+      "biggestStop": "La plupart abandonnent ici",
+      "reached": "{n} arrivés",
+      "leftHere": "{n} ont abandonné ici",
+      "required": "Obligatoire",
+      "answered": "{n} % de réponses"
+    }
   }
 }

@@ -329,11 +329,20 @@ The list is the audit trail: `GET /audit-logs?filter[area]=data` (plus `filter[a
 | ------ | ---- | ----- |
 | GET | `/datasources/activity/insights` | `{ total_30d, previous_30d, failed_30d, daily (30 × { date, count }), by_kind { queries, rows, structure, exports, storage, connections }, by_connection [{ id, name, count }] (busiest first) }` |
 
-## Integrations, settings, analytics
+## Analytics (F18)
+
+A view is the form opened, a start is the first answer, a completion is a submitted response. `from` / `to` are dates (default the last 30 days, at most a year); every count covers forms the person may see responses of. Nothing names a respondent. The backend counts views and starts from the fill-in page's events (one per session) and stops from the last question answered before leaving.
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/analytics/overview?from&to&form?` | `AnalyticsOverview { from, to, totals, previous (the same length before), daily [{ date, views, starts, completions }], channels { link, embed, api }, active_forms }`; `totals` = `{ views, starts, completions, completion_rate (0 to 100), median_seconds \| null }` |
+| GET | `/analytics/forms?from&to&q&sort&page&page_size` | `FormAnalyticsRow` (totals + `id, name, status, change` (completions vs before, %) `, trend` (completions per day) `, drop_off { page, page_title, field, field_label, rate } \| null`); drafts without views are left out; sort by name, views, starts, completions, completion_rate, median_seconds |
+| GET | `/analytics/forms/{id}/funnel?from&to` | `FormFunnel { form, totals, pages [{ index, title, reached, left }], fields [{ key, label, type, page, required, reached, answered, left, seconds }] }` |
+
+## Integrations, settings
 
 | CRUD | `/webhooks` · `/api-keys` | planned (F15) |
 | GET/PATCH | `/settings/{section}` | company, branding, auth, security, localisation, notifications, retention, embed |
-| GET | `/forms/{id}/analytics?from=&to=` | summary, timeseries, per-field stats, drop-off |
 | GET | `/platform/countries`, `/platform/states?country=`, `/platform/timezones`, `/platform/currencies` | |
 
 ## Later (last phases)

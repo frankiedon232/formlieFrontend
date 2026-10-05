@@ -3497,6 +3497,37 @@
         "p3": "Czy baza danych się otwiera oraz każde uprawnienie potrzebne temu połączeniu.",
         "p4": "Tylko odczytuje: nic w Twojej bazie danych się nie zmienia."
       }
+    },
+    "home": {
+      "traffic": "Ruch w bazach danych",
+      "operations": "{n} operacja | {n} operacji",
+      "delivered": "{n} odpowiedź dostarczona do Twoich baz danych | {n} odpowiedzi dostarczonych do Twoich baz danych",
+      "quiet": "Brak aktywności w bazach danych w ostatnich 30 dniach",
+      "quietDesc": "Dostarczenia, praca w eksploratorze i zapytania pojawią się tutaj, gdy tylko nastąpią.",
+      "allOperations": "Operacje",
+      "deliveredLabel": "Dostarczone odpowiedzi",
+      "other": "Inne działania",
+      "connection": "Przegląd połączenia",
+      "previous": "Poprzednie połączenie",
+      "next": "Następne połączenie",
+      "openConnection": "Otwórz to połączenie",
+      "ops30": "Operacje",
+      "latest": "Ostatnia aktywność",
+      "noEvents": "Nic jeszcze nie zapisano.",
+      "recent": "Ostatnia aktywność",
+      "seeAll": "Zobacz wszystko",
+      "col": {
+        "event": "Co się stało",
+        "where": "Gdzie",
+        "who": "Kto",
+        "when": "Kiedy"
+      },
+      "connected": "Połączone: {n}",
+      "formsStoring": "Formularze zapisujące",
+      "inDatabases": "w Twoich bazach danych",
+      "lookHint": "połączenia lub dostarczenia",
+      "shortcuts": "Pracuj ze swoimi danymi",
+      "formsShort": "Formularze"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Najwyższa",
       "inTable": "Każdą odpowiedź zobaczysz na liście odpowiedzi.",
       "empty": "Na razie nic do podsumowania",
-      "emptyDesc": "Odpowiedzi pojawią się tutaj, gdy wpłyną w tym okresie."
+      "emptyDesc": "Odpowiedzi pojawią się tutaj, gdy wpłyną w tym okresie.",
+      "nps": "Net Promoter Score",
+      "detractors": "Krytycy",
+      "passives": "Neutralni",
+      "promoters": "Promotorzy"
     },
     "detail": {
       "noAnswer": "Brak odpowiedzi",
@@ -4991,5 +5026,92 @@
     "search": "Szukaj w aktywności…",
     "emptyTitle": "Brak aktywności",
     "emptyDesc": "Tutaj pojawiają się zapytania, eksporty i zmiany na Twoich połączeniach."
+  },
+  "charts": {
+    "flowHint": "Wykres. Użyj strzałek w lewo i w prawo, aby przechodzić między dniami."
+  },
+  "analytics": {
+    "subtitle": "Jak użytkownicy przechodzą przez Twoje formularze",
+    "open": "Otwórz {name}",
+    "fromPrevious": "w porównaniu z poprzednim okresem",
+    "daily": "Dziennie",
+    "weekly": "Tygodniowo",
+    "monthly": "Miesięcznie",
+    "step": "Grupuj według",
+    "started": "Rozpoczęte",
+    "completedLabel": "Ukończone",
+    "views": "Wyświetlenia",
+    "rate": "Współczynnik ukończenia",
+    "time": "Czas wypełniania",
+    "download": "Pobierz",
+    "downloaded": "Pobrano analitykę",
+    "search": "Szukaj formularzy",
+    "emptyTitle": "Brak aktywności formularzy w tym okresie",
+    "emptyDesc": "Udostępnij formularz lub wybierz dłuższy okres, aby zobaczyć, jak jest wypełniany.",
+    "lastYear": "Pokaż ostatnie 12 miesięcy",
+    "conversion": {
+      "title": "Przegląd konwersji",
+      "completed": "{n} ukończony | {n} ukończonych",
+      "perDay": "średnio {n} ukończonych dziennie",
+      "empty": "Nikt nie otworzył formularza w tym okresie",
+      "emptyDesc": "Wyświetlenia, rozpoczęcia i ukończenia pojawią się tutaj, gdy tylko ktoś otworzy Twoje formularze.",
+      "left": "Zrezygnowali przed ukończeniem"
+    },
+    "focus": {
+      "title": "Przegląd formularza",
+      "previous": "Poprzedni formularz",
+      "next": "Następny formularz",
+      "details": "Otwórz analitykę tego formularza",
+      "empty": "Żaden formularz nie miał jeszcze odwiedzających",
+      "emptyDesc": "Gdy formularz zostanie otwarty, jego liczby pojawią się tutaj.",
+      "views": "{n} wyświetlenie | {n} wyświetleń",
+      "summary": "{starts} rozpoczętych, {completions} ukończonych",
+      "time": "około {time} na wypełnienie",
+      "stops": "Gdzie ludzie przerywają",
+      "noStops": "Nikt nie przerwał w trakcie w tym okresie.",
+      "page": "Strona {n}",
+      "leftShare": "{n}% rozpoczynających zrezygnowało tutaj",
+      "view": "Pokaż"
+    },
+    "card": {
+      "rate": "Ukończono {n}%",
+      "flag": "Mniej niż 4 na 10 osób kończy ten formularz",
+      "stop": "Większość rezygnuje na: {label}",
+      "noStop": "Nikt nie przerwał w trakcie",
+      "completions": "{n} ukończony | {n} ukończonych"
+    },
+    "col": {
+      "form": "Formularz",
+      "status": "Status",
+      "stop": "Największy punkt rezygnacji"
+    },
+    "sort": {
+      "completions": "Najwięcej ukończeń",
+      "views": "Najwięcej wyświetleń",
+      "rateLow": "Najniższy współczynnik ukończenia",
+      "rateHigh": "Najwyższy współczynnik ukończenia"
+    },
+    "actions": {
+      "details": "Lejek i pytania",
+      "perQuestion": "Odpowiedzi na pytanie",
+      "openForm": "Otwórz formularz",
+      "responses": "Odpowiedzi",
+      "builder": "Otwórz w kreatorze"
+    },
+    "detail": {
+      "subtitle": "Od {from} do {to}",
+      "navigate": "Przechodź między formularzami",
+      "left": "Przerwali w trakcie",
+      "funnel": "Lejek",
+      "ofPrevious": "poprzedniego kroku",
+      "questions": "Pytania",
+      "pages": "Strony",
+      "noQuestions": "Ten formularz nie ma jeszcze pytań",
+      "biggestStop": "Tutaj rezygnuje najwięcej osób",
+      "reached": "Dotarło: {n}",
+      "leftHere": "Zrezygnowało tutaj: {n}",
+      "required": "Wymagane",
+      "answered": "Odpowiedziano na {n}%"
+    }
   }
 }

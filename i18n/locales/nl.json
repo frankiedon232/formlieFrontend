@@ -3497,6 +3497,37 @@
         "p3": "Dat de database opent, en elk recht dat deze verbinding nodig heeft.",
         "p4": "Hij leest alleen: er verandert niets in uw database."
       }
+    },
+    "home": {
+      "traffic": "Databaseverkeer",
+      "operations": "{n} bewerking | {n} bewerkingen",
+      "delivered": "{n} antwoord afgeleverd in uw databases | {n} antwoorden afgeleverd in uw databases",
+      "quiet": "Geen databaseactiviteit in de afgelopen 30 dagen",
+      "quietDesc": "Leveringen, verkenneracties en query's verschijnen hier zodra ze plaatsvinden.",
+      "allOperations": "Bewerkingen",
+      "deliveredLabel": "Afgeleverde antwoorden",
+      "other": "Overig werk",
+      "connection": "Verbindingsoverzicht",
+      "previous": "Vorige verbinding",
+      "next": "Volgende verbinding",
+      "openConnection": "Deze verbinding openen",
+      "ops30": "Bewerkingen",
+      "latest": "Laatste activiteit",
+      "noEvents": "Nog niets vastgelegd.",
+      "recent": "Recente activiteit",
+      "seeAll": "Alles bekijken",
+      "col": {
+        "event": "Wat er gebeurde",
+        "where": "Waar",
+        "who": "Door",
+        "when": "Wanneer"
+      },
+      "connected": "{n} verbonden",
+      "formsStoring": "Formulieren die opslaan",
+      "inDatabases": "in uw databases",
+      "lookHint": "verbindingen of leveringen",
+      "shortcuts": "Werken met uw gegevens",
+      "formsShort": "Formulieren"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Hoogste",
       "inTable": "Bekijk elk antwoord in de antwoordenlijst.",
       "empty": "Nog niets om samen te vatten",
-      "emptyDesc": "Antwoorden verschijnen hier zodra ze in deze periode binnenkomen."
+      "emptyDesc": "Antwoorden verschijnen hier zodra ze in deze periode binnenkomen.",
+      "nps": "Net Promoter Score",
+      "detractors": "Criticasters",
+      "passives": "Passieven",
+      "promoters": "Promotors"
     },
     "detail": {
       "noAnswer": "Geen antwoord",
@@ -4991,5 +5026,92 @@
     "search": "Activiteit zoeken…",
     "emptyTitle": "Nog geen activiteit",
     "emptyDesc": "Query's, exports en wijzigingen op je verbindingen verschijnen hier."
+  },
+  "charts": {
+    "flowHint": "Grafiek. Gebruik de pijltjestoetsen links en rechts om tussen dagen te wisselen."
+  },
+  "analytics": {
+    "subtitle": "Hoe mensen door uw formulieren gaan",
+    "open": "{name} openen",
+    "fromPrevious": "ten opzichte van de vorige periode",
+    "daily": "Dagelijks",
+    "weekly": "Wekelijks",
+    "monthly": "Maandelijks",
+    "step": "Groeperen op",
+    "started": "Gestart",
+    "completedLabel": "Voltooid",
+    "views": "Weergaven",
+    "rate": "Voltooiingspercentage",
+    "time": "Invultijd",
+    "download": "Downloaden",
+    "downloaded": "Analyses gedownload",
+    "search": "Formulieren zoeken",
+    "emptyTitle": "Geen formulieractiviteit in deze periode",
+    "emptyDesc": "Deel een formulier of kies een langere periode om te zien hoe het wordt ingevuld.",
+    "lastYear": "Laatste 12 maanden tonen",
+    "conversion": {
+      "title": "Conversieoverzicht",
+      "completed": "{n} voltooid | {n} voltooid",
+      "perDay": "gemiddeld {n} voltooid per dag",
+      "empty": "Niemand heeft in deze periode een formulier geopend",
+      "emptyDesc": "Weergaven, starts en voltooiingen verschijnen hier zodra mensen uw formulieren openen.",
+      "left": "Afgehaakt zonder te voltooien"
+    },
+    "focus": {
+      "title": "Formulieroverzicht",
+      "previous": "Vorig formulier",
+      "next": "Volgend formulier",
+      "details": "Analyses van dit formulier openen",
+      "empty": "Nog geen enkel formulier had bezoekers",
+      "emptyDesc": "Zodra een formulier is geopend, verschijnen de cijfers hier.",
+      "views": "{n} weergave | {n} weergaven",
+      "summary": "{starts} gestart, {completions} voltooid",
+      "time": "ongeveer {time} om in te vullen",
+      "stops": "Waar mensen stoppen",
+      "noStops": "Niemand is in deze periode halverwege gestopt.",
+      "page": "Pagina {n}",
+      "leftShare": "{n}% van de starters haakte hier af",
+      "view": "Bekijken"
+    },
+    "card": {
+      "rate": "{n}% voltooid",
+      "flag": "Minder dan 4 op de 10 mensen voltooien dit formulier",
+      "stop": "De meesten haken af bij: {label}",
+      "noStop": "Niemand is halverwege gestopt",
+      "completions": "{n} voltooid | {n} voltooid"
+    },
+    "col": {
+      "form": "Formulier",
+      "status": "Status",
+      "stop": "Grootste afhaker"
+    },
+    "sort": {
+      "completions": "Meest voltooid",
+      "views": "Meest bekeken",
+      "rateLow": "Laagste voltooiingspercentage",
+      "rateHigh": "Hoogste voltooiingspercentage"
+    },
+    "actions": {
+      "details": "Trechter en vragen",
+      "perQuestion": "Antwoorden per vraag",
+      "openForm": "Het formulier openen",
+      "responses": "Antwoorden",
+      "builder": "Openen in de builder"
+    },
+    "detail": {
+      "subtitle": "{from} tot {to}",
+      "navigate": "Wisselen tussen formulieren",
+      "left": "Halverwege gestopt",
+      "funnel": "Trechter",
+      "ofPrevious": "van de vorige stap",
+      "questions": "Vragen",
+      "pages": "Pagina's",
+      "noQuestions": "Dit formulier heeft nog geen vragen",
+      "biggestStop": "Hier haken de meesten af",
+      "reached": "{n} bereikt",
+      "leftHere": "{n} haakten hier af",
+      "required": "Verplicht",
+      "answered": "{n}% beantwoord"
+    }
   }
 }

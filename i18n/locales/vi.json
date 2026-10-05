@@ -3497,6 +3497,37 @@
         "p3": "Cơ sở dữ liệu mở được, và từng quyền mà kết nối này cần.",
         "p4": "Chỉ đọc: không có gì trong cơ sở dữ liệu của bạn thay đổi."
       }
+    },
+    "home": {
+      "traffic": "Lưu lượng cơ sở dữ liệu",
+      "operations": "{n} thao tác | {n} thao tác",
+      "delivered": "{n} phản hồi đã được gửi đến cơ sở dữ liệu của bạn | {n} phản hồi đã được gửi đến cơ sở dữ liệu của bạn",
+      "quiet": "Không có hoạt động cơ sở dữ liệu trong 30 ngày qua",
+      "quietDesc": "Các lần gửi, thao tác trong trình khám phá và truy vấn sẽ hiển thị ở đây ngay khi xảy ra.",
+      "allOperations": "Thao tác",
+      "deliveredLabel": "Phản hồi đã gửi",
+      "other": "Công việc khác",
+      "connection": "Tổng quan kết nối",
+      "previous": "Kết nối trước",
+      "next": "Kết nối tiếp theo",
+      "openConnection": "Mở kết nối này",
+      "ops30": "Thao tác",
+      "latest": "Hoạt động mới nhất",
+      "noEvents": "Chưa có gì được ghi lại.",
+      "recent": "Hoạt động gần đây",
+      "seeAll": "Xem tất cả",
+      "col": {
+        "event": "Điều đã xảy ra",
+        "where": "Ở đâu",
+        "who": "Bởi",
+        "when": "Khi nào"
+      },
+      "connected": "{n} đã kết nối",
+      "formsStoring": "Biểu mẫu đang lưu trữ",
+      "inDatabases": "trong cơ sở dữ liệu của bạn",
+      "lookHint": "kết nối hoặc lượt gửi",
+      "shortcuts": "Làm việc với dữ liệu của bạn",
+      "formsShort": "Biểu mẫu"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Cao nhất",
       "inTable": "Xem từng câu trả lời trong danh sách phản hồi.",
       "empty": "Chưa có gì để tóm tắt",
-      "emptyDesc": "Câu trả lời sẽ hiện ở đây khi có phản hồi trong kỳ này."
+      "emptyDesc": "Câu trả lời sẽ hiện ở đây khi có phản hồi trong kỳ này.",
+      "nps": "Chỉ số NPS",
+      "detractors": "Người phản đối",
+      "passives": "Người trung lập",
+      "promoters": "Người ủng hộ"
     },
     "detail": {
       "noAnswer": "Không trả lời",
@@ -4991,5 +5026,92 @@
     "search": "Tìm hoạt động…",
     "emptyTitle": "Chưa có hoạt động",
     "emptyDesc": "Truy vấn, bản xuất và thay đổi trên các kết nối của bạn sẽ hiện ở đây."
+  },
+  "charts": {
+    "flowHint": "Biểu đồ. Dùng phím mũi tên trái và phải để chuyển giữa các ngày."
+  },
+  "analytics": {
+    "subtitle": "Cách mọi người đi qua các biểu mẫu của bạn",
+    "open": "Mở {name}",
+    "fromPrevious": "so với kỳ trước",
+    "daily": "Hằng ngày",
+    "weekly": "Hằng tuần",
+    "monthly": "Hằng tháng",
+    "step": "Nhóm theo",
+    "started": "Đã bắt đầu",
+    "completedLabel": "Đã hoàn thành",
+    "views": "Lượt xem",
+    "rate": "Tỷ lệ hoàn thành",
+    "time": "Thời gian điền",
+    "download": "Tải xuống",
+    "downloaded": "Đã tải xuống số liệu phân tích",
+    "search": "Tìm biểu mẫu",
+    "emptyTitle": "Không có hoạt động biểu mẫu trong kỳ này",
+    "emptyDesc": "Hãy chia sẻ biểu mẫu hoặc chọn kỳ dài hơn để xem mọi người điền như thế nào.",
+    "lastYear": "Hiển thị 12 tháng gần nhất",
+    "conversion": {
+      "title": "Tổng quan chuyển đổi",
+      "completed": "{n} hoàn thành | {n} hoàn thành",
+      "perDay": "trung bình {n} hoàn thành mỗi ngày",
+      "empty": "Không ai mở biểu mẫu nào trong kỳ này",
+      "emptyDesc": "Lượt xem, lượt bắt đầu và lượt hoàn thành sẽ hiển thị ở đây ngay khi mọi người mở biểu mẫu của bạn.",
+      "left": "Rời đi khi chưa hoàn thành"
+    },
+    "focus": {
+      "title": "Tổng quan biểu mẫu",
+      "previous": "Biểu mẫu trước",
+      "next": "Biểu mẫu tiếp theo",
+      "details": "Mở phân tích của biểu mẫu này",
+      "empty": "Chưa có biểu mẫu nào có người truy cập",
+      "emptyDesc": "Khi một biểu mẫu được mở, số liệu của nó sẽ hiển thị ở đây.",
+      "views": "{n} lượt xem | {n} lượt xem",
+      "summary": "{starts} bắt đầu, {completions} hoàn thành",
+      "time": "khoảng {time} để điền",
+      "stops": "Nơi mọi người dừng lại",
+      "noStops": "Không ai bỏ dở giữa chừng trong kỳ này.",
+      "page": "Trang {n}",
+      "leftShare": "{n}% số người bắt đầu đã rời đi tại đây",
+      "view": "Xem"
+    },
+    "card": {
+      "rate": "Hoàn thành {n}%",
+      "flag": "Chưa đến 4 trên 10 người hoàn thành biểu mẫu này",
+      "stop": "Hầu hết rời đi tại: {label}",
+      "noStop": "Không ai bỏ dở giữa chừng",
+      "completions": "{n} hoàn thành | {n} hoàn thành"
+    },
+    "col": {
+      "form": "Biểu mẫu",
+      "status": "Trạng thái",
+      "stop": "Điểm rời đi lớn nhất"
+    },
+    "sort": {
+      "completions": "Hoàn thành nhiều nhất",
+      "views": "Xem nhiều nhất",
+      "rateLow": "Tỷ lệ hoàn thành thấp nhất",
+      "rateHigh": "Tỷ lệ hoàn thành cao nhất"
+    },
+    "actions": {
+      "details": "Phễu và câu hỏi",
+      "perQuestion": "Câu trả lời theo câu hỏi",
+      "openForm": "Mở biểu mẫu",
+      "responses": "Phản hồi",
+      "builder": "Mở trong trình tạo"
+    },
+    "detail": {
+      "subtitle": "Từ {from} đến {to}",
+      "navigate": "Chuyển giữa các biểu mẫu",
+      "left": "Bỏ dở giữa chừng",
+      "funnel": "Phễu",
+      "ofPrevious": "so với bước trước",
+      "questions": "Câu hỏi",
+      "pages": "Trang",
+      "noQuestions": "Biểu mẫu này chưa có câu hỏi nào",
+      "biggestStop": "Hầu hết mọi người rời đi tại đây",
+      "reached": "{n} đã đến",
+      "leftHere": "{n} đã rời đi tại đây",
+      "required": "Bắt buộc",
+      "answered": "{n}% đã trả lời"
+    }
   }
 }

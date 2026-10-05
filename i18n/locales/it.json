@@ -3497,6 +3497,37 @@
         "p3": "Che il database si apra, e ogni permesso necessario a questa connessione.",
         "p4": "Legge soltanto: nel vostro database non cambia nulla."
       }
+    },
+    "home": {
+      "traffic": "Traffico del database",
+      "operations": "{n} operazione | {n} operazioni",
+      "delivered": "{n} risposta consegnata ai tuoi database | {n} risposte consegnate ai tuoi database",
+      "quiet": "Nessuna attività del database negli ultimi 30 giorni",
+      "quietDesc": "Consegne, lavoro in Esplora e query compariranno qui non appena avvengono.",
+      "allOperations": "Operazioni",
+      "deliveredLabel": "Risposte consegnate",
+      "other": "Altre attività",
+      "connection": "Panoramica della connessione",
+      "previous": "Connessione precedente",
+      "next": "Connessione successiva",
+      "openConnection": "Apri questa connessione",
+      "ops30": "Operazioni",
+      "latest": "Ultima attività",
+      "noEvents": "Ancora nulla di registrato.",
+      "recent": "Attività recente",
+      "seeAll": "Mostra tutto",
+      "col": {
+        "event": "Cosa è successo",
+        "where": "Dove",
+        "who": "Da",
+        "when": "Quando"
+      },
+      "connected": "{n} connesse",
+      "formsStoring": "Moduli che archiviano",
+      "inDatabases": "nei tuoi database",
+      "lookHint": "connessioni o consegne",
+      "shortcuts": "Lavora con i tuoi dati",
+      "formsShort": "Moduli"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Massimo",
       "inTable": "Vedi ogni risposta nell'elenco delle risposte.",
       "empty": "Ancora niente da riassumere",
-      "emptyDesc": "Le risposte compaiono qui quando arrivano in questo periodo."
+      "emptyDesc": "Le risposte compaiono qui quando arrivano in questo periodo.",
+      "nps": "Net Promoter Score",
+      "detractors": "Detrattori",
+      "passives": "Passivi",
+      "promoters": "Promotori"
     },
     "detail": {
       "noAnswer": "Nessuna risposta",
@@ -4991,5 +5026,92 @@
     "search": "Cerca attività…",
     "emptyTitle": "Ancora nessuna attività",
     "emptyDesc": "Qui compaiono query, esportazioni e modifiche sulle tue connessioni."
+  },
+  "charts": {
+    "flowHint": "Grafico. Usa le frecce sinistra e destra per spostarti tra i giorni."
+  },
+  "analytics": {
+    "subtitle": "Come le persone percorrono i tuoi moduli",
+    "open": "Apri {name}",
+    "fromPrevious": "rispetto al periodo precedente",
+    "daily": "Giornaliero",
+    "weekly": "Settimanale",
+    "monthly": "Mensile",
+    "step": "Raggruppa per",
+    "started": "Avviati",
+    "completedLabel": "Completati",
+    "views": "Visualizzazioni",
+    "rate": "Tasso di completamento",
+    "time": "Tempo di compilazione",
+    "download": "Scarica",
+    "downloaded": "Analisi scaricate",
+    "search": "Cerca moduli",
+    "emptyTitle": "Nessuna attività sui moduli in questo periodo",
+    "emptyDesc": "Condividi un modulo o scegli un periodo più lungo per vedere come viene compilato.",
+    "lastYear": "Mostra gli ultimi 12 mesi",
+    "conversion": {
+      "title": "Panoramica delle conversioni",
+      "completed": "{n} completato | {n} completati",
+      "perDay": "{n} completati al giorno in media",
+      "empty": "Nessuno ha aperto un modulo in questo periodo",
+      "emptyDesc": "Visualizzazioni, avvii e completamenti compariranno qui non appena i tuoi moduli verranno aperti.",
+      "left": "Abbandonato prima della fine"
+    },
+    "focus": {
+      "title": "Panoramica del modulo",
+      "previous": "Modulo precedente",
+      "next": "Modulo successivo",
+      "details": "Apri le analisi di questo modulo",
+      "empty": "Nessun modulo ha ancora avuto visitatori",
+      "emptyDesc": "Quando un modulo viene aperto, i suoi numeri compariranno qui.",
+      "views": "{n} visualizzazione | {n} visualizzazioni",
+      "summary": "{starts} avviati, {completions} completati",
+      "time": "circa {time} per compilarlo",
+      "stops": "Dove si fermano le persone",
+      "noStops": "Nessuno ha abbandonato a metà in questo periodo.",
+      "page": "Pagina {n}",
+      "leftShare": "Il {n}% di chi ha iniziato ha abbandonato qui",
+      "view": "Visualizza"
+    },
+    "card": {
+      "rate": "{n}% completato",
+      "flag": "Meno di 4 persone su 10 completano questo modulo",
+      "stop": "La maggior parte abbandona a: {label}",
+      "noStop": "Nessuno ha abbandonato a metà",
+      "completions": "{n} completato | {n} completati"
+    },
+    "col": {
+      "form": "Modulo",
+      "status": "Stato",
+      "stop": "Abbandono maggiore"
+    },
+    "sort": {
+      "completions": "Più completati",
+      "views": "Più visualizzati",
+      "rateLow": "Tasso di completamento più basso",
+      "rateHigh": "Tasso di completamento più alto"
+    },
+    "actions": {
+      "details": "Funnel e domande",
+      "perQuestion": "Risposte per domanda",
+      "openForm": "Apri il modulo",
+      "responses": "Risposte",
+      "builder": "Apri nel builder"
+    },
+    "detail": {
+      "subtitle": "Dal {from} al {to}",
+      "navigate": "Passa da un modulo all'altro",
+      "left": "Abbandonato a metà",
+      "funnel": "Funnel",
+      "ofPrevious": "del passaggio precedente",
+      "questions": "Domande",
+      "pages": "Pagine",
+      "noQuestions": "Questo modulo non ha ancora domande",
+      "biggestStop": "Qui abbandona la maggior parte",
+      "reached": "{n} arrivati",
+      "leftHere": "{n} hanno abbandonato qui",
+      "required": "Obbligatoria",
+      "answered": "{n}% con risposta"
+    }
   }
 }

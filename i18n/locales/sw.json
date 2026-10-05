@@ -3497,6 +3497,37 @@
         "p3": "Kwamba hifadhidata inafunguka, na kila ruhusa ambayo muunganisho huu unahitaji.",
         "p4": "Husoma tu: hakuna kinachobadilika kwenye hifadhidata yako."
       }
+    },
+    "home": {
+      "traffic": "Msongamano wa hifadhidata",
+      "operations": "Operesheni {n} | Operesheni {n}",
+      "delivered": "Jibu {n} limewasilishwa kwenye hifadhidata zako | Majibu {n} yamewasilishwa kwenye hifadhidata zako",
+      "quiet": "Hakuna shughuli za hifadhidata katika siku 30 zilizopita",
+      "quietDesc": "Uwasilishaji, kazi za kichunguzi na hoja zitaonekana hapa mara zitakapotokea.",
+      "allOperations": "Operesheni",
+      "deliveredLabel": "Majibu yaliyowasilishwa",
+      "other": "Kazi nyingine",
+      "connection": "Muhtasari wa muunganisho",
+      "previous": "Muunganisho uliotangulia",
+      "next": "Muunganisho unaofuata",
+      "openConnection": "Fungua muunganisho huu",
+      "ops30": "Operesheni",
+      "latest": "Shughuli ya hivi karibuni",
+      "noEvents": "Hakuna kilichorekodiwa bado.",
+      "recent": "Shughuli za hivi karibuni",
+      "seeAll": "Tazama zote",
+      "col": {
+        "event": "Kilichotokea",
+        "where": "Wapi",
+        "who": "Na",
+        "when": "Lini"
+      },
+      "connected": "{n} zimeunganishwa",
+      "formsStoring": "Fomu zinazohifadhi",
+      "inDatabases": "katika hifadhidata zako",
+      "lookHint": "miunganisho au uwasilishaji",
+      "shortcuts": "Fanya kazi na data yako",
+      "formsShort": "Fomu"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "Juu zaidi",
       "inTable": "Tazama kila jibu kwenye orodha ya majibu.",
       "empty": "Bado hakuna cha kufupisha",
-      "emptyDesc": "Majibu yataonekana hapa yakifika katika kipindi hiki."
+      "emptyDesc": "Majibu yataonekana hapa yakifika katika kipindi hiki.",
+      "nps": "Alama ya NPS",
+      "detractors": "Wakosoaji",
+      "passives": "Wasioegemea",
+      "promoters": "Wapendekezaji"
     },
     "detail": {
       "noAnswer": "Hakuna jibu",
@@ -4991,5 +5026,92 @@
     "search": "Tafuta shughuli…",
     "emptyTitle": "Bado hakuna shughuli",
     "emptyDesc": "Hoja, uhamishaji na mabadiliko kwenye miunganisho yako huonekana hapa."
+  },
+  "charts": {
+    "flowHint": "Chati. Tumia vitufe vya mshale wa kushoto na kulia kuhama kati ya siku."
+  },
+  "analytics": {
+    "subtitle": "Jinsi watu wanavyopitia fomu zako",
+    "open": "Fungua {name}",
+    "fromPrevious": "kutoka kipindi kilichopita",
+    "daily": "Kila siku",
+    "weekly": "Kila wiki",
+    "monthly": "Kila mwezi",
+    "step": "Panga kwa",
+    "started": "Zilizoanzishwa",
+    "completedLabel": "Zilizokamilika",
+    "views": "Mionekano",
+    "rate": "Kiwango cha ukamilishaji",
+    "time": "Muda wa kujaza",
+    "download": "Pakua",
+    "downloaded": "Uchanganuzi umepakuliwa",
+    "search": "Tafuta fomu",
+    "emptyTitle": "Hakuna shughuli za fomu katika kipindi hiki",
+    "emptyDesc": "Shiriki fomu au chagua kipindi kirefu zaidi ili uone jinsi watu wanavyoijaza.",
+    "lastYear": "Onyesha miezi 12 iliyopita",
+    "conversion": {
+      "title": "Muhtasari wa ubadilishaji",
+      "completed": "{n} imekamilika | {n} zimekamilika",
+      "perDay": "wastani wa {n} zilizokamilika kwa siku",
+      "empty": "Hakuna aliyefungua fomu katika kipindi hiki",
+      "emptyDesc": "Mionekano, zilizoanzishwa na zilizokamilika zitaonekana hapa mara watu watakapofungua fomu zako.",
+      "left": "Waliondoka bila kumaliza"
+    },
+    "focus": {
+      "title": "Muhtasari wa fomu",
+      "previous": "Fomu iliyotangulia",
+      "next": "Fomu inayofuata",
+      "details": "Fungua uchanganuzi wa fomu hii",
+      "empty": "Hakuna fomu iliyopata wageni bado",
+      "emptyDesc": "Fomu ikifunguliwa, nambari zake zitaonekana hapa.",
+      "views": "Mwonekano {n} | Mionekano {n}",
+      "summary": "{starts} zilizoanzishwa, {completions} zilizokamilika",
+      "time": "takriban {time} kujaza",
+      "stops": "Mahali watu wanapoacha",
+      "noStops": "Hakuna aliyeacha katikati katika kipindi hiki.",
+      "page": "Ukurasa wa {n}",
+      "leftShare": "{n}% ya walioanza waliondoka hapa",
+      "view": "Tazama"
+    },
+    "card": {
+      "rate": "{n}% imekamilika",
+      "flag": "Chini ya watu 4 kati ya 10 wanamaliza fomu hii",
+      "stop": "Wengi huondoka kwenye: {label}",
+      "noStop": "Hakuna aliyeacha katikati",
+      "completions": "{n} imekamilika | {n} zimekamilika"
+    },
+    "col": {
+      "form": "Fomu",
+      "status": "Hali",
+      "stop": "Mahali pa kuondoka zaidi"
+    },
+    "sort": {
+      "completions": "Zilizokamilika zaidi",
+      "views": "Zilizotazamwa zaidi",
+      "rateLow": "Kiwango cha chini cha ukamilishaji",
+      "rateHigh": "Kiwango cha juu cha ukamilishaji"
+    },
+    "actions": {
+      "details": "Faneli na maswali",
+      "perQuestion": "Majibu kwa kila swali",
+      "openForm": "Fungua fomu",
+      "responses": "Majibu",
+      "builder": "Fungua kwenye kijenzi"
+    },
+    "detail": {
+      "subtitle": "Kuanzia {from} hadi {to}",
+      "navigate": "Hamia kati ya fomu",
+      "left": "Waliacha katikati",
+      "funnel": "Faneli",
+      "ofPrevious": "ya hatua iliyotangulia",
+      "questions": "Maswali",
+      "pages": "Kurasa",
+      "noQuestions": "Fomu hii haina maswali bado",
+      "biggestStop": "Wengi huondoka hapa",
+      "reached": "{n} walifika",
+      "leftHere": "{n} waliondoka hapa",
+      "required": "Inahitajika",
+      "answered": "{n}% imejibiwa"
+    }
   }
 }

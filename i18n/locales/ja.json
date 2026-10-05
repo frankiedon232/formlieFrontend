@@ -3497,6 +3497,37 @@
         "p3": "データベースが開けること、およびこの接続に必要なすべての権限。",
         "p4": "読み取りのみで、データベース内のものは何も変わりません。"
       }
+    },
+    "home": {
+      "traffic": "データベーストラフィック",
+      "operations": "{n}件の操作 | {n}件の操作",
+      "delivered": "{n}件の回答をデータベースに配信しました | {n}件の回答をデータベースに配信しました",
+      "quiet": "過去30日間のデータベースアクティビティはありません",
+      "quietDesc": "配信、エクスプローラーでの作業、クエリは、発生するとここに表示されます。",
+      "allOperations": "操作",
+      "deliveredLabel": "配信された回答",
+      "other": "その他の作業",
+      "connection": "接続の概要",
+      "previous": "前の接続",
+      "next": "次の接続",
+      "openConnection": "この接続を開く",
+      "ops30": "操作",
+      "latest": "最新のアクティビティ",
+      "noEvents": "まだ記録はありません。",
+      "recent": "最近のアクティビティ",
+      "seeAll": "すべて表示",
+      "col": {
+        "event": "内容",
+        "where": "場所",
+        "who": "実行者",
+        "when": "日時"
+      },
+      "connected": "{n}件接続済み",
+      "formsStoring": "保存しているフォーム",
+      "inDatabases": "データベース内",
+      "lookHint": "接続または配信",
+      "shortcuts": "データを操作",
+      "formsShort": "フォーム"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "最大",
       "inTable": "各回答は回答一覧で確認できます。",
       "empty": "まだ集計するものがありません",
-      "emptyDesc": "この期間に回答が届くとここに表示されます。"
+      "emptyDesc": "この期間に回答が届くとここに表示されます。",
+      "nps": "ネットプロモータースコア",
+      "detractors": "批判者",
+      "passives": "中立者",
+      "promoters": "推奨者"
     },
     "detail": {
       "noAnswer": "未回答",
@@ -4991,5 +5026,92 @@
     "search": "アクティビティを検索…",
     "emptyTitle": "まだアクティビティはありません",
     "emptyDesc": "接続でのクエリ、エクスポート、変更がここに表示されます。"
+  },
+  "charts": {
+    "flowHint": "グラフ。左右の矢印キーで日を移動できます。"
+  },
+  "analytics": {
+    "subtitle": "ユーザーがフォームをどのように進むか",
+    "open": "{name}を開く",
+    "fromPrevious": "前の期間との比較",
+    "daily": "日別",
+    "weekly": "週別",
+    "monthly": "月別",
+    "step": "グループ化",
+    "started": "開始",
+    "completedLabel": "完了",
+    "views": "表示回数",
+    "rate": "完了率",
+    "time": "入力所要時間",
+    "download": "ダウンロード",
+    "downloaded": "分析をダウンロードしました",
+    "search": "フォームを検索",
+    "emptyTitle": "この期間のフォームのアクティビティはありません",
+    "emptyDesc": "フォームを共有するか、より長い期間を選ぶと、入力状況を確認できます。",
+    "lastYear": "過去12か月を表示",
+    "conversion": {
+      "title": "コンバージョンの概要",
+      "completed": "{n}件完了 | {n}件完了",
+      "perDay": "1日あたり平均{n}件完了",
+      "empty": "この期間にフォームを開いた人はいません",
+      "emptyDesc": "フォームが開かれると、表示回数、開始数、完了数がここに表示されます。",
+      "left": "完了前に離脱"
+    },
+    "focus": {
+      "title": "フォームの概要",
+      "previous": "前のフォーム",
+      "next": "次のフォーム",
+      "details": "このフォームの分析を開く",
+      "empty": "まだ訪問者のいるフォームはありません",
+      "emptyDesc": "フォームが開かれると、その数値がここに表示されます。",
+      "views": "{n}回表示 | {n}回表示",
+      "summary": "開始 {starts}件、完了 {completions}件",
+      "time": "入力に約{time}",
+      "stops": "離脱が多い箇所",
+      "noStops": "この期間に途中で離脱した人はいません。",
+      "page": "{n}ページ",
+      "leftShare": "開始した人の{n}%がここで離脱",
+      "view": "表示"
+    },
+    "card": {
+      "rate": "{n}%完了",
+      "flag": "このフォームを完了する人は10人中4人未満です",
+      "stop": "多くの人が離脱する箇所: {label}",
+      "noStop": "途中で離脱した人はいません",
+      "completions": "{n}件完了 | {n}件完了"
+    },
+    "col": {
+      "form": "フォーム",
+      "status": "ステータス",
+      "stop": "最大の離脱箇所"
+    },
+    "sort": {
+      "completions": "完了数が多い順",
+      "views": "表示回数が多い順",
+      "rateLow": "完了率が低い順",
+      "rateHigh": "完了率が高い順"
+    },
+    "actions": {
+      "details": "ファネルと質問",
+      "perQuestion": "質問ごとの回答",
+      "openForm": "フォームを開く",
+      "responses": "回答",
+      "builder": "ビルダーで開く"
+    },
+    "detail": {
+      "subtitle": "{from}から{to}まで",
+      "navigate": "フォーム間を移動",
+      "left": "途中で離脱",
+      "funnel": "ファネル",
+      "ofPrevious": "前のステップに対する割合",
+      "questions": "質問",
+      "pages": "ページ",
+      "noQuestions": "このフォームにはまだ質問がありません",
+      "biggestStop": "多くの人がここで離脱",
+      "reached": "{n}人が到達",
+      "leftHere": "{n}人がここで離脱",
+      "required": "必須",
+      "answered": "{n}%が回答"
+    }
   }
 }

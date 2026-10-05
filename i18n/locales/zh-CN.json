@@ -3497,6 +3497,37 @@
         "p3": "数据库能否打开，以及此连接所需的每项权限。",
         "p4": "测试只读取：您的数据库不会有任何变化。"
       }
+    },
+    "home": {
+      "traffic": "数据库流量",
+      "operations": "{n} 次操作 | {n} 次操作",
+      "delivered": "已向您的数据库投递 {n} 份回复 | 已向您的数据库投递 {n} 份回复",
+      "quiet": "过去 30 天没有数据库活动",
+      "quietDesc": "投递、资源管理器操作和查询一旦发生，就会显示在这里。",
+      "allOperations": "操作",
+      "deliveredLabel": "已投递的回复",
+      "other": "其他工作",
+      "connection": "连接概览",
+      "previous": "上一个连接",
+      "next": "下一个连接",
+      "openConnection": "打开此连接",
+      "ops30": "操作",
+      "latest": "最新活动",
+      "noEvents": "暂无记录。",
+      "recent": "最近活动",
+      "seeAll": "查看全部",
+      "col": {
+        "event": "发生了什么",
+        "where": "位置",
+        "who": "操作人",
+        "when": "时间"
+      },
+      "connected": "已连接 {n} 个",
+      "formsStoring": "正在存储的表单",
+      "inDatabases": "在您的数据库中",
+      "lookHint": "连接或投递",
+      "shortcuts": "处理您的数据",
+      "formsShort": "表单"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "最高",
       "inTable": "可在回复列表中查看每个答案。",
       "empty": "暂无可汇总的内容",
-      "emptyDesc": "此期间有回复后会显示在这里。"
+      "emptyDesc": "此期间有回复后会显示在这里。",
+      "nps": "净推荐值",
+      "detractors": "贬损者",
+      "passives": "被动者",
+      "promoters": "推荐者"
     },
     "detail": {
       "noAnswer": "未作答",
@@ -4991,5 +5026,92 @@
     "search": "搜索活动…",
     "emptyTitle": "暂无活动",
     "emptyDesc": "你的连接上的查询、导出和更改会显示在这里。"
+  },
+  "charts": {
+    "flowHint": "图表。使用左右方向键在日期之间移动。"
+  },
+  "analytics": {
+    "subtitle": "用户如何填写您的表单",
+    "open": "打开{name}",
+    "fromPrevious": "较上一周期",
+    "daily": "每日",
+    "weekly": "每周",
+    "monthly": "每月",
+    "step": "分组方式",
+    "started": "已开始",
+    "completedLabel": "已完成",
+    "views": "浏览量",
+    "rate": "完成率",
+    "time": "填写耗时",
+    "download": "下载",
+    "downloaded": "已下载分析数据",
+    "search": "搜索表单",
+    "emptyTitle": "此期间没有表单活动",
+    "emptyDesc": "分享表单或选择更长的时间范围，查看用户如何填写。",
+    "lastYear": "显示最近 12 个月",
+    "conversion": {
+      "title": "转化概览",
+      "completed": "{n} 份已完成 | {n} 份已完成",
+      "perDay": "平均每天完成 {n} 份",
+      "empty": "此期间没有人打开表单",
+      "emptyDesc": "用户一打开您的表单，浏览量、开始数和完成数就会显示在这里。",
+      "left": "未完成就离开"
+    },
+    "focus": {
+      "title": "表单概览",
+      "previous": "上一个表单",
+      "next": "下一个表单",
+      "details": "打开此表单的分析",
+      "empty": "还没有表单有访客",
+      "emptyDesc": "表单被打开后，其数据会显示在这里。",
+      "views": "{n} 次浏览 | {n} 次浏览",
+      "summary": "已开始 {starts} 份，已完成 {completions} 份",
+      "time": "填写约需 {time}",
+      "stops": "用户在哪里停止",
+      "noStops": "此期间没有人中途退出。",
+      "page": "第 {n} 页",
+      "leftShare": "{n}% 的开始者在此离开",
+      "view": "查看"
+    },
+    "card": {
+      "rate": "已完成 {n}%",
+      "flag": "不到 4/10 的用户会完成此表单",
+      "stop": "大多数人在此离开：{label}",
+      "noStop": "没有人中途退出",
+      "completions": "{n} 份已完成 | {n} 份已完成"
+    },
+    "col": {
+      "form": "表单",
+      "status": "状态",
+      "stop": "最大流失点"
+    },
+    "sort": {
+      "completions": "完成最多",
+      "views": "浏览最多",
+      "rateLow": "完成率最低",
+      "rateHigh": "完成率最高"
+    },
+    "actions": {
+      "details": "漏斗和问题",
+      "perQuestion": "每个问题的回答",
+      "openForm": "打开表单",
+      "responses": "回复",
+      "builder": "在构建器中打开"
+    },
+    "detail": {
+      "subtitle": "{from} 至 {to}",
+      "navigate": "在表单之间切换",
+      "left": "中途退出",
+      "funnel": "漏斗",
+      "ofPrevious": "占上一步的比例",
+      "questions": "问题",
+      "pages": "页面",
+      "noQuestions": "此表单还没有问题",
+      "biggestStop": "大多数人在此离开",
+      "reached": "{n} 人到达",
+      "leftHere": "{n} 人在此离开",
+      "required": "必填",
+      "answered": "{n}% 已回答"
+    }
   }
 }

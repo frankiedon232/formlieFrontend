@@ -7,6 +7,7 @@ import * as audit from './routes/audit'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
+import * as analytics from './routes/analytics'
 import * as responseExports from './routes/responseExports'
 import * as folders from './routes/folders'
 import * as dataSources from './routes/dataSources'
@@ -84,6 +85,9 @@ const router = createRouter()
   .get('/forms/:id/responses/insights', responses.formInsights)
   .get('/forms/:id/responses/tags', responses.formResponseTags)
   .get('/responses/insights', responses.inboxInsights)
+  .get('/analytics/overview', analytics.analyticsOverview)
+  .get('/analytics/forms', analytics.analyticsForms)
+  .get('/analytics/forms/:id/funnel', analytics.formFunnel)
   .get('/responses/forms', responses.listResponseForms)
   .post('/responses/bulk', responses.bulkResponses)
   .post('/forms/:id/responses/export', responseExports.exportFormResponses)

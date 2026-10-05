@@ -49,7 +49,7 @@ function onKey(event: KeyboardEvent, index: number) {
         @keydown.enter.prevent="finishRename"
         @keydown.esc.prevent="editing = null"
         @blur="finishRename"
-      />
+      >
       <button
         v-else
         :id="`query-tab-${tab.id}`"

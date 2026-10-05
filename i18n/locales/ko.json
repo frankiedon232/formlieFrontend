@@ -3497,6 +3497,37 @@
         "p3": "데이터베이스가 열리는지, 그리고 이 연결에 필요한 모든 권한.",
         "p4": "읽기만 하므로 데이터베이스의 어떤 것도 바뀌지 않습니다."
       }
+    },
+    "home": {
+      "traffic": "데이터베이스 트래픽",
+      "operations": "작업 {n}건 | 작업 {n}건",
+      "delivered": "응답 {n}건을 데이터베이스에 전달했습니다 | 응답 {n}건을 데이터베이스에 전달했습니다",
+      "quiet": "최근 30일간 데이터베이스 활동이 없습니다",
+      "quietDesc": "전달, 탐색기 작업, 쿼리가 발생하면 여기에 표시됩니다.",
+      "allOperations": "작업",
+      "deliveredLabel": "전달된 응답",
+      "other": "기타 작업",
+      "connection": "연결 개요",
+      "previous": "이전 연결",
+      "next": "다음 연결",
+      "openConnection": "이 연결 열기",
+      "ops30": "작업",
+      "latest": "최근 활동",
+      "noEvents": "아직 기록된 내용이 없습니다.",
+      "recent": "최근 활동",
+      "seeAll": "모두 보기",
+      "col": {
+        "event": "발생한 일",
+        "where": "위치",
+        "who": "실행자",
+        "when": "시간"
+      },
+      "connected": "{n}개 연결됨",
+      "formsStoring": "저장 중인 양식",
+      "inDatabases": "데이터베이스에",
+      "lookHint": "연결 또는 전달",
+      "shortcuts": "데이터 작업하기",
+      "formsShort": "양식"
     }
   },
   "apiService": {
@@ -3995,7 +4026,11 @@
       "max": "최고",
       "inTable": "각 답변은 응답 목록에서 확인하세요.",
       "empty": "아직 요약할 내용이 없습니다",
-      "emptyDesc": "이 기간에 응답이 들어오면 여기에 표시됩니다."
+      "emptyDesc": "이 기간에 응답이 들어오면 여기에 표시됩니다.",
+      "nps": "순추천지수",
+      "detractors": "비추천 고객",
+      "passives": "중립 고객",
+      "promoters": "추천 고객"
     },
     "detail": {
       "noAnswer": "답변 없음",
@@ -4991,5 +5026,92 @@
     "search": "활동 검색…",
     "emptyTitle": "아직 활동이 없습니다",
     "emptyDesc": "연결에서 실행한 쿼리, 내보내기, 변경 사항이 여기에 표시됩니다."
+  },
+  "charts": {
+    "flowHint": "차트. 왼쪽 및 오른쪽 화살표 키로 날짜 사이를 이동하세요."
+  },
+  "analytics": {
+    "subtitle": "사람들이 양식을 진행하는 방식",
+    "open": "{name} 열기",
+    "fromPrevious": "지난 기간 대비",
+    "daily": "일별",
+    "weekly": "주별",
+    "monthly": "월별",
+    "step": "그룹화 기준",
+    "started": "시작됨",
+    "completedLabel": "완료됨",
+    "views": "조회수",
+    "rate": "완료율",
+    "time": "작성 소요 시간",
+    "download": "다운로드",
+    "downloaded": "분석 데이터를 다운로드했습니다",
+    "search": "양식 검색",
+    "emptyTitle": "이 기간에는 양식 활동이 없습니다",
+    "emptyDesc": "양식을 공유하거나 더 긴 기간을 선택하여 작성 현황을 확인하세요.",
+    "lastYear": "최근 12개월 보기",
+    "conversion": {
+      "title": "전환 개요",
+      "completed": "{n}개 완료 | {n}개 완료",
+      "perDay": "하루 평균 {n}개 완료",
+      "empty": "이 기간에는 양식을 연 사람이 없습니다",
+      "emptyDesc": "사람들이 양식을 열면 조회수, 시작 수, 완료 수가 여기에 표시됩니다.",
+      "left": "완료하지 않고 이탈"
+    },
+    "focus": {
+      "title": "양식 개요",
+      "previous": "이전 양식",
+      "next": "다음 양식",
+      "details": "이 양식의 분석 열기",
+      "empty": "아직 방문자가 있는 양식이 없습니다",
+      "emptyDesc": "양식이 열리면 수치가 여기에 표시됩니다.",
+      "views": "조회 {n}회 | 조회 {n}회",
+      "summary": "시작 {starts}건, 완료 {completions}건",
+      "time": "작성에 약 {time} 소요",
+      "stops": "사람들이 멈추는 지점",
+      "noStops": "이 기간에는 중간에 그만둔 사람이 없습니다.",
+      "page": "{n}페이지",
+      "leftShare": "시작한 사람의 {n}%가 여기서 이탈",
+      "view": "보기"
+    },
+    "card": {
+      "rate": "{n}% 완료",
+      "flag": "이 양식을 끝까지 작성하는 사람은 10명 중 4명 미만입니다",
+      "stop": "대부분 이탈하는 지점: {label}",
+      "noStop": "중간에 그만둔 사람이 없습니다",
+      "completions": "{n}개 완료 | {n}개 완료"
+    },
+    "col": {
+      "form": "양식",
+      "status": "상태",
+      "stop": "가장 큰 이탈 지점"
+    },
+    "sort": {
+      "completions": "완료 많은 순",
+      "views": "조회 많은 순",
+      "rateLow": "완료율 낮은 순",
+      "rateHigh": "완료율 높은 순"
+    },
+    "actions": {
+      "details": "퍼널 및 질문",
+      "perQuestion": "질문별 답변",
+      "openForm": "양식 열기",
+      "responses": "응답",
+      "builder": "빌더에서 열기"
+    },
+    "detail": {
+      "subtitle": "{from}부터 {to}까지",
+      "navigate": "양식 간 이동",
+      "left": "중간에 이탈",
+      "funnel": "퍼널",
+      "ofPrevious": "이전 단계 대비",
+      "questions": "질문",
+      "pages": "페이지",
+      "noQuestions": "이 양식에는 아직 질문이 없습니다",
+      "biggestStop": "대부분 여기서 이탈합니다",
+      "reached": "{n}명 도달",
+      "leftHere": "{n}명이 여기서 이탈",
+      "required": "필수",
+      "answered": "{n}% 답변함"
+    }
   }
 }
