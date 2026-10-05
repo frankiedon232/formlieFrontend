@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Ook opslaan",
       "extraDesc": "De reactie-id, het moment van indienen, de formulierversie en de taal worden altijd opgeslagen.",
-      "standardDesc": "Elke rij wordt gevonden via de reactie-id. Een nieuwe reactie voegt haar rij toe, een bewerking of beoordelingswijziging werkt die rij bij, en een opnieuw geprobeerde levering voegt nooit een duplicaat toe. Zo schrijft Formalie naar de tabellen die het maakt."
+      "standardDesc": "Elke rij wordt gevonden via de reactie-id. Een nieuwe reactie voegt haar rij toe, een bewerking of beoordelingswijziging werkt die rij bij, en een opnieuw geprobeerde levering voegt nooit een duplicaat toe. Zo schrijft Formalie naar de tabellen die het maakt.",
+      "setAtCreation": "Antwoorden met meerdere waarden en keuzes zijn vastgelegd toen deze tabel werd ingesteld, zodat alle rijen gelijk blijven."
     },
     "setup": {
       "step": {

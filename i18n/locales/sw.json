@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Pia hifadhi",
       "extraDesc": "Kitambulisho cha jibu, muda lilipowasilishwa, toleo la fomu na lugha huhifadhiwa kila wakati.",
-      "standardDesc": "Kila safu hupatikana kwa kitambulisho cha jibu lake. Jibu jipya huongeza safu yake, uhariri au badiliko la ukaguzi husasisha safu hiyo, na uwasilishaji unaojaribiwa tena hauongezi nakala kamwe. Hivi ndivyo Formalie huandika kwenye majedwali inayounda."
+      "standardDesc": "Kila safu hupatikana kwa kitambulisho cha jibu lake. Jibu jipya huongeza safu yake, uhariri au badiliko la ukaguzi husasisha safu hiyo, na uwasilishaji unaojaribiwa tena hauongezi nakala kamwe. Hivi ndivyo Formalie huandika kwenye majedwali inayounda.",
+      "setAtCreation": "Majibu yenye thamani kadhaa na chaguo yaliwekwa jedwali hili lilipowekwa, ili kila safu ibaki sawa."
     },
     "setup": {
       "step": {

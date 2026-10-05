@@ -213,7 +213,10 @@ export const patchDestination = defineMockRoute(({ event, body }) => {
   }
   if (input.settings || input.columns) {
     const columns = (input.columns as DestinationColumn[] | undefined) ?? destination.columns
-    const settings = destination.table.created ? standardSettings(input.settings ?? destination.settings, columns) : (input.settings ?? destination.settings)
+    const asked = input.settings ?? destination.settings
+    // How several values and choices are written is set when the table is set up (mixing would make the data inconsistent).
+    const kept = { ...asked, multi_value: destination.settings.multi_value, choices: destination.settings.choices }
+    const settings = destination.table.created ? standardSettings(kept, columns) : kept
     checkColumns(columns, inputFieldsOf(form), settings)
     destination.settings = settings
     destination.columns = columns

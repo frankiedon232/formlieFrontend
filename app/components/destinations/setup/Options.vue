@@ -41,7 +41,11 @@ const ui = { fieldset: 'grid grid-cols-1 gap-3 sm:grid-cols-2', legend: 'mb-2 te
       <USelect :model-value="s.settings.value.key_column" :items="keyItems" value-key="value" class="w-full font-mono sm:w-80" @update:model-value="value => set({ key_column: String(value) })" />
     </UFormField>
     <URadioGroup :model-value="s.settings.value.multi_value" :items="radio('multi', ['json', 'text'])" variant="card" indicator="end" color="neutral" :legend="t('destinations.options.multiLegend')" :ui="ui" :disabled="editing" @update:model-value="value => set({ multi_value: value as DestinationSettings['multi_value'] })" />
-    <URadioGroup :model-value="s.settings.value.choices" :items="radio('choices', ['value', 'label'])" variant="card" indicator="end" color="neutral" :legend="t('destinations.options.choicesLegend')" :ui="ui" @update:model-value="value => set({ choices: value as DestinationSettings['choices'] })" />
+    <URadioGroup :model-value="s.settings.value.choices" :items="radio('choices', ['value', 'label'])" variant="card" indicator="end" color="neutral" :legend="t('destinations.options.choicesLegend')" :ui="ui" :disabled="editing" @update:model-value="value => set({ choices: value as DestinationSettings['choices'] })" />
+    <p v-if="editing" class="-mt-3 flex items-center gap-1.5 text-xs text-muted">
+      <UIcon name="i-lucide-lock" class="size-3.5 shrink-0" />
+      {{ t('destinations.options.setAtCreation') }}
+    </p>
     <fieldset v-if="s.mode.value === 'create' && !editing" class="flex flex-col gap-2">
       <legend class="mb-2 text-sm font-medium text-highlighted">{{ t('destinations.options.extraLegend') }}</legend>
       <p class="-mt-1 mb-1 text-xs text-muted">{{ t('destinations.options.extraDesc') }}</p>

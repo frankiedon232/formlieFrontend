@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Guardar también",
       "extraDesc": "El ID de respuesta, la fecha de envío, la versión del formulario y el idioma se guardan siempre.",
-      "standardDesc": "Cada fila se encuentra por su ID de respuesta. Una respuesta nueva añade su fila, una edición o un cambio de revisión actualiza esa fila, y una entrega reintentada nunca añade un duplicado. Así escribe Formalie en las tablas que crea."
+      "standardDesc": "Cada fila se encuentra por su ID de respuesta. Una respuesta nueva añade su fila, una edición o un cambio de revisión actualiza esa fila, y una entrega reintentada nunca añade un duplicado. Así escribe Formalie en las tablas que crea.",
+      "setAtCreation": "Las respuestas con varios valores y las opciones se fijaron al configurar esta tabla, para que todas las filas sean iguales."
     },
     "setup": {
       "step": {

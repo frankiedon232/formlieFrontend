@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Ayrıca sakla",
       "extraDesc": "Yanıt kimliği, gönderilme zamanı, form sürümü ve dil her zaman saklanır.",
-      "standardDesc": "Her satır yanıt kimliğiyle bulunur. Yeni bir yanıt kendi satırını ekler, bir düzenleme veya inceleme değişikliği o satırı günceller ve yeniden denenen bir teslimat asla kopya eklemez. Formalie oluşturduğu tablolara böyle yazar."
+      "standardDesc": "Her satır yanıt kimliğiyle bulunur. Yeni bir yanıt kendi satırını ekler, bir düzenleme veya inceleme değişikliği o satırı günceller ve yeniden denenen bir teslimat asla kopya eklemez. Formalie oluşturduğu tablolara böyle yazar.",
+      "setAtCreation": "Birden çok değerli yanıtlar ve seçenekler bu tablo kurulurken belirlendi, böylece tüm satırlar aynı kalır."
     },
     "setup": {
       "step": {

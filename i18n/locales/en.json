@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Also store",
       "extraDesc": "The response id, when it was submitted, the form version and the language are always stored.",
-      "standardDesc": "Each row is found by its response id. A new response adds its row, an edit or a review change updates that row, and a retried delivery never adds a duplicate. This is how Formalie writes to the tables it creates."
+      "standardDesc": "Each row is found by its response id. A new response adds its row, an edit or a review change updates that row, and a retried delivery never adds a duplicate. This is how Formalie writes to the tables it creates.",
+      "setAtCreation": "Answers with several values and choices were set when this table was set up, so every row stays alike."
     },
     "setup": {
       "step": {

@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Lưu thêm",
       "extraDesc": "Id phản hồi, thời điểm gửi, phiên bản biểu mẫu và ngôn ngữ luôn được lưu.",
-      "standardDesc": "Mỗi hàng được tìm theo id phản hồi. Phản hồi mới thêm hàng của nó, chỉnh sửa hoặc thay đổi xem xét cập nhật hàng đó, và lần gửi thử lại không bao giờ thêm bản trùng. Đây là cách Formalie ghi vào các bảng nó tạo."
+      "standardDesc": "Mỗi hàng được tìm theo id phản hồi. Phản hồi mới thêm hàng của nó, chỉnh sửa hoặc thay đổi xem xét cập nhật hàng đó, và lần gửi thử lại không bao giờ thêm bản trùng. Đây là cách Formalie ghi vào các bảng nó tạo.",
+      "setAtCreation": "Câu trả lời có nhiều giá trị và lựa chọn đã được đặt khi thiết lập bảng này, để mọi hàng luôn thống nhất."
     },
     "setup": {
       "step": {

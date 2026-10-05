@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Armazenar também",
       "extraDesc": "O id da resposta, quando foi enviada, a versão do formulário e o idioma são sempre armazenados.",
-      "standardDesc": "Cada linha é encontrada pelo seu id da resposta. Uma resposta nova adiciona sua linha, uma edição ou mudança de revisão atualiza essa linha, e uma entrega repetida nunca adiciona uma duplicata. É assim que o Formalie escreve nas tabelas que cria."
+      "standardDesc": "Cada linha é encontrada pelo seu id da resposta. Uma resposta nova adiciona sua linha, uma edição ou mudança de revisão atualiza essa linha, e uma entrega repetida nunca adiciona uma duplicata. É assim que o Formalie escreve nas tabelas que cria.",
+      "setAtCreation": "Respostas com vários valores e opções foram definidas ao configurar esta tabela, para que todas as linhas fiquem iguais."
     },
     "setup": {
       "step": {

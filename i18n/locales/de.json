@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Auch speichern",
       "extraDesc": "Antwort-ID, Sendezeitpunkt, Formularversion und Sprache werden immer gespeichert.",
-      "standardDesc": "Jede Zeile wird über ihre Antwort-ID gefunden. Eine neue Antwort fügt ihre Zeile hinzu, eine Bearbeitung oder Prüfänderung aktualisiert diese Zeile, und eine wiederholte Zustellung fügt nie ein Duplikat hinzu. So schreibt Formalie in die Tabellen, die es erstellt."
+      "standardDesc": "Jede Zeile wird über ihre Antwort-ID gefunden. Eine neue Antwort fügt ihre Zeile hinzu, eine Bearbeitung oder Prüfänderung aktualisiert diese Zeile, und eine wiederholte Zustellung fügt nie ein Duplikat hinzu. So schreibt Formalie in die Tabellen, die es erstellt.",
+      "setAtCreation": "Antworten mit mehreren Werten und Auswahlen wurden beim Einrichten dieser Tabelle festgelegt, damit alle Zeilen einheitlich bleiben."
     },
     "setup": {
       "step": {

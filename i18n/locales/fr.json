@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Stocker aussi",
       "extraDesc": "L’ID de réponse, la date d’envoi, la version du formulaire et la langue sont toujours stockés.",
-      "standardDesc": "Chaque ligne est retrouvée grâce à son ID de réponse. Une nouvelle réponse ajoute sa ligne, une modification ou un changement de révision met cette ligne à jour, et une livraison relancée n’ajoute jamais de doublon. C’est ainsi que Formalie écrit dans les tables qu’il crée."
+      "standardDesc": "Chaque ligne est retrouvée grâce à son ID de réponse. Une nouvelle réponse ajoute sa ligne, une modification ou un changement de révision met cette ligne à jour, et une livraison relancée n’ajoute jamais de doublon. C’est ainsi que Formalie écrit dans les tables qu’il crée.",
+      "setAtCreation": "Les réponses à plusieurs valeurs et les choix ont été fixés lors de la configuration de cette table, pour que toutes les lignes restent cohérentes."
     },
     "setup": {
       "step": {

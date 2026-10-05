@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Zapisuj też",
       "extraDesc": "Id odpowiedzi, czas przesłania, wersja formularza i język są zawsze zapisywane.",
-      "standardDesc": "Każdy wiersz jest odnajdywany po id odpowiedzi. Nowa odpowiedź dodaje swój wiersz, edycja lub zmiana przeglądu aktualizuje ten wiersz, a ponowiona dostawa nigdy nie dodaje duplikatu. Tak Formalie zapisuje do tabel, które tworzy."
+      "standardDesc": "Każdy wiersz jest odnajdywany po id odpowiedzi. Nowa odpowiedź dodaje swój wiersz, edycja lub zmiana przeglądu aktualizuje ten wiersz, a ponowiona dostawa nigdy nie dodaje duplikatu. Tak Formalie zapisuje do tabel, które tworzy.",
+      "setAtCreation": "Odpowiedzi z wieloma wartościami i wybory ustalono podczas konfiguracji tej tabeli, aby wszystkie wiersze były spójne."
     },
     "setup": {
       "step": {

@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Simpan juga",
       "extraDesc": "ID respons, waktu pengiriman, versi formulir, dan bahasa selalu disimpan.",
-      "standardDesc": "Setiap baris ditemukan berdasarkan ID responsnya. Respons baru menambah barisnya, pengeditan atau perubahan tinjauan memperbarui baris tersebut, dan pengiriman yang dicoba ulang tidak pernah menambah duplikat. Begitulah Formalie menulis ke tabel yang dibuatnya."
+      "standardDesc": "Setiap baris ditemukan berdasarkan ID responsnya. Respons baru menambah barisnya, pengeditan atau perubahan tinjauan memperbarui baris tersebut, dan pengiriman yang dicoba ulang tidak pernah menambah duplikat. Begitulah Formalie menulis ke tabel yang dibuatnya.",
+      "setAtCreation": "Jawaban dengan beberapa nilai dan pilihan ditetapkan saat tabel ini disiapkan, agar setiap baris tetap seragam."
     },
     "setup": {
       "step": {

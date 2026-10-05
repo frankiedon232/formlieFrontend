@@ -4487,7 +4487,8 @@
       },
       "extraLegend": "Archivia anche",
       "extraDesc": "L’id della risposta, quando è stata inviata, la versione del modulo e la lingua vengono sempre archiviati.",
-      "standardDesc": "Ogni riga viene trovata tramite il suo id della risposta. Una nuova risposta aggiunge la sua riga, una modifica o un cambio di revisione aggiorna quella riga, e una consegna ritentata non aggiunge mai un duplicato. È così che Formalie scrive nelle tabelle che crea."
+      "standardDesc": "Ogni riga viene trovata tramite il suo id della risposta. Una nuova risposta aggiunge la sua riga, una modifica o un cambio di revisione aggiorna quella riga, e una consegna ritentata non aggiunge mai un duplicato. È così che Formalie scrive nelle tabelle che crea.",
+      "setAtCreation": "Le risposte con più valori e le scelte sono state fissate quando avete configurato questa tabella, così ogni riga resta uniforme."
     },
     "setup": {
       "step": {
