@@ -1,6 +1,6 @@
 <!--
-  Data sources overview (own rail area, F12). What each section does, with links (Connections is
-  live since F12 M1; the rest follow), and the supported databases. The full plan is in PROGRESS.md → F12.
+  Data sources overview (own rail area, F12). What each section does, with links (all live since
+  F12 M5), and the supported databases. The full plan is in PROGRESS.md → F12.
 -->
 <script setup lang="ts">
 import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
@@ -12,11 +12,11 @@ useHead({ title: () => t('nav.dataSources') })
 const sections = [
   { key: 'connections', nav: 'dataConnections', icon: 'i-lucide-database', to: '/data-sources/connections', live: true },
   { key: 'explorer', nav: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer', live: true },
-  { key: 'query', nav: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
-  { key: 'savedQueries', nav: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
+  { key: 'query', nav: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query', live: true },
+  { key: 'savedQueries', nav: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries', live: true },
   { key: 'destinations', nav: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations', live: true },
-  { key: 'transfers', nav: 'dataTransfers', icon: 'i-lucide-arrow-left-right', to: '/data-sources/transfers' },
-  { key: 'activity', nav: 'dataActivity', icon: 'i-lucide-activity', to: '/data-sources/activity' },
+  { key: 'transfers', nav: 'dataTransfers', icon: 'i-lucide-file-down', to: '/data-sources/transfers', live: true },
+  { key: 'activity', nav: 'dataActivity', icon: 'i-lucide-activity', to: '/data-sources/activity', live: true },
 ]
 </script>
 

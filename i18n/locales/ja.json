@@ -365,7 +365,7 @@
     "dataExplorer": "DBエクスプローラー",
     "dataQuery": "クエリエディター",
     "dataSavedQueries": "保存済みクエリ",
-    "dataTransfers": "インポート/エクスポート",
+    "dataTransfers": "エクスポート",
     "dataActivity": "アクティビティ",
     "apiService": "API サービス",
     "apiOverview": "概要",
@@ -2913,8 +2913,8 @@
       "query": "データベースで SQL を実行します。既定は読み取り専用で、すべての実行が記録されます。",
       "savedQueries": "チームがよく使うクエリを保存して共有します。",
       "destinations": "各フォームの回答の送信先を選び、フィールドを列に対応付けます。",
-      "transfers": "ファイルをテーブルにインポートし、テーブルやクエリ結果をエクスポートします。",
-      "activity": "各接続の配信、失敗、最近のクエリ。"
+      "transfers": "テーブルやクエリ結果からエクスポートしたファイル。アクティビティに一覧表示されます。",
+      "activity": "監査ログから、クエリ、変更、エクスポート、接続のイベントを表示します。"
     },
     "add": "接続を追加",
     "search": "接続、サーバー、データベースを検索…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} 件共有"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "クエリ",
+      "rows": "行の変更",
+      "structure": "構造の変更",
+      "exports": "エクスポート",
+      "storage": "回答の保存先",
+      "connections": "接続"
+    },
+    "failed": "失敗",
+    "kpi": {
+      "title": "接続のアクティビティ",
+      "byKind": "種類別のアクティビティ",
+      "busiest": "最も多い接続: {name}"
+    },
+    "col": {
+      "details": "詳細",
+      "kind": "種類"
+    },
+    "rows": "{n} 行 | {n} 行",
+    "fullTrail": "監査ログをすべて表示",
+    "search": "アクティビティを検索…",
+    "emptyTitle": "まだアクティビティはありません",
+    "emptyDesc": "接続でのクエリ、エクスポート、変更がここに表示されます。"
   }
 }

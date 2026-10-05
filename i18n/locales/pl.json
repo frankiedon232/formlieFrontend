@@ -365,7 +365,7 @@
     "dataExplorer": "Eksplorator baz",
     "dataQuery": "Edytor zapytań",
     "dataSavedQueries": "Zapisane zapytania",
-    "dataTransfers": "Import i eksport",
+    "dataTransfers": "Eksporty",
     "dataActivity": "Aktywność",
     "apiService": "Usługa API",
     "apiOverview": "Przegląd",
@@ -2913,8 +2913,8 @@
       "query": "Uruchamiaj SQL na swoich bazach danych. Domyślnie tylko do odczytu, każde wykonanie jest rejestrowane.",
       "savedQueries": "Zapisuj i udostępniaj zapytania najczęściej używane przez zespół.",
       "destinations": "Wybierz, dokąd każdy formularz wysyła odpowiedzi, i przypisz pola do kolumn.",
-      "transfers": "Importuj pliki do tabel i eksportuj tabele lub wyniki zapytań.",
-      "activity": "Dostarczenia, błędy i ostatnie zapytania dla każdego połączenia."
+      "transfers": "Pliki wyeksportowane z tabel i wyników zapytań, widoczne w Aktywności.",
+      "activity": "Zapytania, zmiany, eksporty i zdarzenia połączeń z dziennika audytu."
     },
     "add": "Dodaj połączenie",
     "search": "Szukaj połączeń, serwerów lub baz danych…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "Udostępnione: {n}"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Zapytania",
+      "rows": "Zmiany wierszy",
+      "structure": "Zmiany struktury",
+      "exports": "Eksporty",
+      "storage": "Zapisywanie odpowiedzi",
+      "connections": "Połączenia"
+    },
+    "failed": "Niepowodzenie",
+    "kpi": {
+      "title": "Aktywność na Twoich połączeniach",
+      "byKind": "Aktywność według rodzaju",
+      "busiest": "Najaktywniejsze: {name}"
+    },
+    "col": {
+      "details": "Szczegóły",
+      "kind": "Rodzaj"
+    },
+    "rows": "Wiersze: {n} | Wiersze: {n}",
+    "fullTrail": "Pełny dziennik audytu",
+    "search": "Szukaj w aktywności…",
+    "emptyTitle": "Brak aktywności",
+    "emptyDesc": "Tutaj pojawiają się zapytania, eksporty i zmiany na Twoich połączeniach."
   }
 }

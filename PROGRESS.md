@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done, M3 Database explorer done; M4 Query editor done; next M5 Activity, polish and review.
+**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: all milestones done (M1 Connections, M2 Response storage, M3 Database explorer, M4 Query editor, M5 Activity and polish); **waiting for the owner's review**.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -22,7 +22,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
-| F12   | Data sources & databases                          | 🟡     | ~70% |
+| F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
@@ -537,11 +537,11 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ---
 
-## F12, Data sources & databases 🟡
+## F12, Data sources & databases ✅ (waiting for review)
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
-**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes in their own tables, export). **M4** ✅ Query editor (editor, run, results, safety, history, saved queries, export, format). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes in their own tables, export). **M4** ✅ Query editor (editor, run, results, safety, history, saved queries, export, format). **M5** ✅ Activity, polish and review (stopped for the owner's review).
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -601,13 +601,13 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ Insert, edit and delete rows from the table view (form generated from the columns, type-checked, confirm on delete; read + write connections only)
 - ⬜ Create a table from a form; add columns for new fields (preview + confirm)
 - ➖ Import CSV / XLSX into a table: not supported for now (owner 2026-10-05)
-- ⬜ Per-connection activity: delivery queue, failures, throughput, recent queries
+- ✅ Activity (M5): everything on the connections from the audit trail (queries, row and structure changes, exports, response storage, connection events), two chart cards (30 days with daily bars; by kind with a legend that filters), the list with connection, kind and result filters and a date range, each event opens the audit trail's panel; Exports in the menu opens Activity filtered to exports (imports aren't supported for now)
 - ⬜ Scheduled exports and saved-query snapshots (later)
 
 ### 6. Safety (enforced by the backend, visible in the UI)
 
 - ⬜ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps, never from the browser
-- ⬜ Every query, row change and export is recorded in the audit trail (who, connection, statement, rows affected, duration)
+- ✅ Every query, row change, structure change and export is recorded in the audit trail (who, connection, statement, rows affected, duration; never result values)
 - ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data), wired up in F22; until then admins only
 - ⬜ Rate limits; no credentials or result data in logs; results never stored in the browser
 - ⬜ Clear wording: we provide controls (encryption, audit, least privilege), never certifications
@@ -1082,6 +1082,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | Every empty, not-found and error state: a better, evenly centred look with fitting icons | all | ✅ |
 | 2026-10-05 | Explorer export: this page by default; "All rows" is a deliberate choice capped at 5,000 rows (server load), with a note when more matched | F12 M3 | ✅ |
 | 2026-10-05 | Explorer works like a database editor: double-click a cell to edit it in place (not keys, auto-numbered or UUID columns, not read-only tables), drag the line between headers to resize columns (double-click fits, ← / →), widths remembered per table; explorer only | F12 M3 | ✅ |
+| 2026-10-05 | M5: Activity for the connections; "Imports & exports" becomes Exports (Activity filtered to exports); polish sweep of every Data sources page on phone, tablet and desktop | F12 M5 | ✅ |
+| 2026-10-05 | SQL reserved words in blue in the Query editor | F12 M4 | ✅ |
 
 ---
 
@@ -1262,3 +1264,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Explorer as an editor: in-place cell editing (`ExplorerEditCell`, one value per PATCH, same checks as the row form, a click opens the panel after a short pause so a double-click can edit) and resizable columns (DataView `resizable`, `useColumnWidths`, start widths by type, fixed table layout). |
 | 2026-10-05 | F12 | M4 part 1, Query editor: CodeMirror 6 (owner-approved) with the connection's dialect and schema completion, tabs, run selection / statement at cursor, stop, `:name` parameters, results grid (row numbers, resizable, paging, copy), changing statements confirmed with what they touch, Read only and response-table protection, the database's problem on its line, history in the side panel, audit `data.query_run`. Mock runner for common SELECT / INSERT / UPDATE / DELETE. Tests: `datasources/sql`. |
 | 2026-10-05 | F12 | M4 part 2: saved queries (personal / shared, owner-only changes, run counts; Save with Ctrl / ⌘ + S, an unsaved-changes dot on the tab, a Saved tab in the side panel, `?saved=` links) and the Saved queries page (two chart cards, DataView table and cards, edit / share / delete), export of results (CSV / Excel / JSON, this page or up to 5,000 rows, through the explorer's export flow), Format (built-in SQL formatter). M4 complete. Tests: `datasources/sql` (format). |
+| 2026-10-05 | F12 | M5: Activity page (audit trail area `data`, kinds in `shared/utils/datasources/activity.ts`, insights `GET /datasources/activity/insights`, the audit panel per event), Exports opens Activity filtered to exports, overview marks every section live, seeded data events in the mock's history; phone (375) and tablet (768) sweep of all eight Data sources pages: no overflow. F12 complete; stopped for the owner's review. |

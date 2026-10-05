@@ -365,7 +365,7 @@
     "dataExplorer": "Kivinjari cha hifadhidata",
     "dataQuery": "Kihariri cha hoja",
     "dataSavedQueries": "Hoja zilizohifadhiwa",
-    "dataTransfers": "Kuingiza na kuhamisha",
+    "dataTransfers": "Uhamishaji",
     "dataActivity": "Shughuli",
     "apiService": "Huduma ya API",
     "apiOverview": "Muhtasari",
@@ -2913,8 +2913,8 @@
       "query": "Endesha SQL kwenye hifadhidata zako. Ni kusoma tu kwa chaguo-msingi, na kila uendeshaji hurekodiwa.",
       "savedQueries": "Hifadhi na ushiriki hoja ambazo timu yako hutumia zaidi.",
       "destinations": "Chagua mahali kila fomu inapotuma majibu yake na ulinganishe sehemu na safuwima.",
-      "transfers": "Ingiza faili kwenye majedwali na uhamishe majedwali au matokeo ya hoja.",
-      "activity": "Uwasilishaji, hitilafu na hoja za hivi karibuni kwa kila muunganisho."
+      "transfers": "Faili zilizohamishwa kutoka kwenye majedwali na matokeo ya hoja, zimeorodheshwa katika Shughuli.",
+      "activity": "Hoja, mabadiliko, uhamishaji na matukio ya miunganisho, kutoka kwenye kumbukumbu za ukaguzi."
     },
     "add": "Ongeza muunganisho",
     "search": "Tafuta miunganisho, seva au hifadhidata…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "Zilizoshirikiwa: {n}"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Hoja",
+      "rows": "Mabadiliko ya safu",
+      "structure": "Mabadiliko ya muundo",
+      "exports": "Uhamishaji",
+      "storage": "Hifadhi ya majibu",
+      "connections": "Miunganisho"
+    },
+    "failed": "Imeshindikana",
+    "kpi": {
+      "title": "Shughuli kwenye miunganisho yako",
+      "byKind": "Shughuli kwa aina",
+      "busiest": "Yenye shughuli nyingi: {name}"
+    },
+    "col": {
+      "details": "Maelezo",
+      "kind": "Aina"
+    },
+    "rows": "Safu {n} | Safu {n}",
+    "fullTrail": "Kumbukumbu kamili za ukaguzi",
+    "search": "Tafuta shughuli…",
+    "emptyTitle": "Bado hakuna shughuli",
+    "emptyDesc": "Hoja, uhamishaji na mabadiliko kwenye miunganisho yako huonekana hapa."
   }
 }

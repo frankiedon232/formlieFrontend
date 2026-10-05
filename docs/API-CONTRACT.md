@@ -320,6 +320,14 @@ Admins only until F22. One statement per run, on Formalie's servers through the 
 
 Mock: the runner understands `SELECT … FROM … [WHERE … AND …] [ORDER BY …] [LIMIT / OFFSET / TOP / FETCH FIRST]`, `COUNT(*)`, `SELECT` without `FROM`, and simple `INSERT … VALUES`, `UPDATE … SET … WHERE`, `DELETE … WHERE` against the explorer's tables (other SQL answers with `message: preview_unsupported`; structure statements are checked and confirmed but not applied). The real backend runs any SQL the connection's account may run.
 
+## Data sources activity (F12 M5)
+
+The list is the audit trail: `GET /audit-logs?filter[area]=data` (plus `filter[action]` for a kind, `filter[resource_id]` for a connection, `from` / `to`, `q`, `sort`). Kinds and their actions: `shared/utils/datasources/activity.ts`.
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/datasources/activity/insights` | `{ total_30d, previous_30d, failed_30d, daily (30 × { date, count }), by_kind { queries, rows, structure, exports, storage, connections }, by_connection [{ id, name, count }] (busiest first) }` |
+
 ## Integrations, settings, analytics
 
 | CRUD | `/webhooks` · `/api-keys` | planned (F15) |

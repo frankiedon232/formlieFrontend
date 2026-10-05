@@ -365,7 +365,7 @@
     "dataExplorer": "Database-verkenner",
     "dataQuery": "Query-editor",
     "dataSavedQueries": "Opgeslagen query’s",
-    "dataTransfers": "Import & export",
+    "dataTransfers": "Exports",
     "dataActivity": "Activiteit",
     "apiService": "API-service",
     "apiOverview": "Overzicht",
@@ -2913,8 +2913,8 @@
       "query": "Voer SQL uit op uw databases. Standaard alleen-lezen, elke uitvoering wordt vastgelegd.",
       "savedQueries": "Bewaar en deel de query’s die uw team het meest gebruikt.",
       "destinations": "Kies waar elk formulier zijn reacties naartoe stuurt en koppel velden aan kolommen.",
-      "transfers": "Importeer bestanden in tabellen en exporteer tabellen of queryresultaten.",
-      "activity": "Leveringen, fouten en recente query’s voor elke verbinding."
+      "transfers": "Bestanden geëxporteerd uit tabellen en queryresultaten, vermeld onder Activiteit.",
+      "activity": "Query's, wijzigingen, exports en verbindingsgebeurtenissen, uit de audittrail."
     },
     "add": "Verbinding toevoegen",
     "search": "Zoek verbindingen, servers of databases…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} gedeeld"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Query's",
+      "rows": "Rijwijzigingen",
+      "structure": "Structuurwijzigingen",
+      "exports": "Exports",
+      "storage": "Opslag van reacties",
+      "connections": "Verbindingen"
+    },
+    "failed": "Mislukt",
+    "kpi": {
+      "title": "Activiteit op je verbindingen",
+      "byKind": "Activiteit per soort",
+      "busiest": "Drukst: {name}"
+    },
+    "col": {
+      "details": "Details",
+      "kind": "Soort"
+    },
+    "rows": "{n} rij | {n} rijen",
+    "fullTrail": "Volledige audittrail",
+    "search": "Activiteit zoeken…",
+    "emptyTitle": "Nog geen activiteit",
+    "emptyDesc": "Query's, exports en wijzigingen op je verbindingen verschijnen hier."
   }
 }

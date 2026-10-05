@@ -365,7 +365,7 @@
     "dataExplorer": "Penjelajah database",
     "dataQuery": "Editor kueri",
     "dataSavedQueries": "Kueri tersimpan",
-    "dataTransfers": "Impor & ekspor",
+    "dataTransfers": "Ekspor",
     "dataActivity": "Aktivitas",
     "apiService": "Layanan API",
     "apiOverview": "Ringkasan",
@@ -2913,8 +2913,8 @@
       "query": "Jalankan SQL di database Anda. Hanya-baca secara default, setiap eksekusi tercatat.",
       "savedQueries": "Simpan dan bagikan kueri yang paling sering digunakan tim Anda.",
       "destinations": "Pilih ke mana setiap formulir mengirim responsnya dan cocokkan kolom isian dengan kolom tabel.",
-      "transfers": "Impor file ke tabel dan ekspor tabel atau hasil kueri.",
-      "activity": "Pengiriman, kegagalan, dan kueri terbaru untuk setiap koneksi."
+      "transfers": "File yang diekspor dari tabel dan hasil kueri, tercantum di Aktivitas.",
+      "activity": "Kueri, perubahan, ekspor, dan peristiwa koneksi, dari jejak audit."
     },
     "add": "Tambah koneksi",
     "search": "Cari koneksi, server, atau database…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} dibagikan"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Kueri",
+      "rows": "Perubahan baris",
+      "structure": "Perubahan struktur",
+      "exports": "Ekspor",
+      "storage": "Penyimpanan respons",
+      "connections": "Koneksi"
+    },
+    "failed": "Gagal",
+    "kpi": {
+      "title": "Aktivitas di koneksi Anda",
+      "byKind": "Aktivitas per jenis",
+      "busiest": "Tersibuk: {name}"
+    },
+    "col": {
+      "details": "Detail",
+      "kind": "Jenis"
+    },
+    "rows": "{n} baris | {n} baris",
+    "fullTrail": "Jejak audit lengkap",
+    "search": "Cari aktivitas…",
+    "emptyTitle": "Belum ada aktivitas",
+    "emptyDesc": "Kueri, ekspor, dan perubahan di koneksi Anda muncul di sini."
   }
 }

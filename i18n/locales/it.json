@@ -365,7 +365,7 @@
     "dataExplorer": "Esplora database",
     "dataQuery": "Editor di query",
     "dataSavedQueries": "Query salvate",
-    "dataTransfers": "Importa ed esporta",
+    "dataTransfers": "Esportazioni",
     "dataActivity": "Attività",
     "apiService": "Servizio API",
     "apiOverview": "Panoramica",
@@ -2913,8 +2913,8 @@
       "query": "Eseguite SQL sui vostri database: in sola lettura per impostazione predefinita, ogni esecuzione viene registrata.",
       "savedQueries": "Conservate e condividete le query più usate dal vostro team.",
       "destinations": "Scegliete dove ogni modulo invia le risposte e associate i campi alle colonne.",
-      "transfers": "Importate file nelle tabelle ed esportate tabelle o risultati delle query.",
-      "activity": "Consegne, errori e query recenti per ogni connessione."
+      "transfers": "File esportati da tabelle e risultati delle query, elencati in Attività.",
+      "activity": "Query, modifiche, esportazioni ed eventi di connessione, dal registro di audit."
     },
     "add": "Aggiungi connessione",
     "search": "Cerca connessioni, server o database…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} condivise"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Query",
+      "rows": "Modifiche alle righe",
+      "structure": "Modifiche alla struttura",
+      "exports": "Esportazioni",
+      "storage": "Archiviazione delle risposte",
+      "connections": "Connessioni"
+    },
+    "failed": "Non riuscito",
+    "kpi": {
+      "title": "Attività sulle tue connessioni",
+      "byKind": "Attività per tipo",
+      "busiest": "Più attiva: {name}"
+    },
+    "col": {
+      "details": "Dettagli",
+      "kind": "Tipo"
+    },
+    "rows": "{n} riga | {n} righe",
+    "fullTrail": "Registro di audit completo",
+    "search": "Cerca attività…",
+    "emptyTitle": "Ancora nessuna attività",
+    "emptyDesc": "Qui compaiono query, esportazioni e modifiche sulle tue connessioni."
   }
 }

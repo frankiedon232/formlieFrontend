@@ -15,6 +15,7 @@ import * as explorer from './routes/explorer'
 import * as explorerSchema from './routes/explorerSchema'
 import * as query from './routes/query'
 import * as savedQueries from './routes/savedQueries'
+import * as dataActivity from './routes/dataActivity'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
@@ -130,6 +131,7 @@ const router = createRouter()
   .get('/datasources/:id/query-history', query.queryHistory)
   .delete('/datasources/:id/query-history', query.clearQueryHistory)
   .post('/datasources/:id/query/export', query.exportQuery)
+  .get('/datasources/activity/insights', dataActivity.dataActivityInsights)
   .get('/saved-queries', savedQueries.listSavedQueries)
   .get('/saved-queries/insights', savedQueries.savedQueryInsights)
   .get('/saved-queries/:id', savedQueries.getSavedQuery)

@@ -365,7 +365,7 @@
     "dataExplorer": "Explorateur de BDD",
     "dataQuery": "Éditeur de requêtes",
     "dataSavedQueries": "Requêtes enregistrées",
-    "dataTransfers": "Imports et exports",
+    "dataTransfers": "Exports",
     "dataActivity": "Activité",
     "apiService": "Service API",
     "apiOverview": "Vue d’ensemble",
@@ -2913,8 +2913,8 @@
       "query": "Exécutez du SQL sur vos bases de données. En lecture seule par défaut, chaque exécution est journalisée.",
       "savedQueries": "Conservez et partagez les requêtes les plus utilisées par votre équipe.",
       "destinations": "Choisissez où chaque formulaire envoie ses réponses et associez les champs aux colonnes.",
-      "transfers": "Importez des fichiers dans des tables et exportez des tables ou des résultats de requêtes.",
-      "activity": "Livraisons, échecs et requêtes récentes pour chaque connexion."
+      "transfers": "Fichiers exportés depuis des tables et des résultats de requêtes, listés dans Activité.",
+      "activity": "Requêtes, modifications, exports et événements de connexion, issus du journal d’audit."
     },
     "add": "Ajouter une connexion",
     "search": "Rechercher des connexions, serveurs ou bases de données…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} partagées"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Requêtes",
+      "rows": "Modifications de lignes",
+      "structure": "Modifications de structure",
+      "exports": "Exports",
+      "storage": "Stockage des réponses",
+      "connections": "Connexions"
+    },
+    "failed": "Échoué",
+    "kpi": {
+      "title": "Activité sur vos connexions",
+      "byKind": "Activité par type",
+      "busiest": "La plus active : {name}"
+    },
+    "col": {
+      "details": "Détails",
+      "kind": "Type"
+    },
+    "rows": "{n} ligne | {n} lignes",
+    "fullTrail": "Journal d’audit complet",
+    "search": "Rechercher dans l’activité…",
+    "emptyTitle": "Aucune activité pour l’instant",
+    "emptyDesc": "Les requêtes, exports et modifications sur vos connexions s’affichent ici."
   }
 }

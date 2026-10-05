@@ -365,7 +365,7 @@
     "dataExplorer": "Datenbank-Explorer",
     "dataQuery": "Abfrage-Editor",
     "dataSavedQueries": "Gespeicherte Abfragen",
-    "dataTransfers": "Import & Export",
+    "dataTransfers": "Exporte",
     "dataActivity": "Aktivität",
     "apiService": "API-Dienst",
     "apiOverview": "Übersicht",
@@ -2913,8 +2913,8 @@
       "query": "Führen Sie SQL auf Ihren Datenbanken aus. Standardmäßig schreibgeschützt, jede Ausführung wird protokolliert.",
       "savedQueries": "Speichern und teilen Sie die Abfragen, die Ihr Team am häufigsten nutzt.",
       "destinations": "Legen Sie fest, wohin jedes Formular seine Antworten sendet, und ordnen Sie Felder den Spalten zu.",
-      "transfers": "Importieren Sie Dateien in Tabellen und exportieren Sie Tabellen oder Abfrageergebnisse.",
-      "activity": "Zustellungen, Fehler und letzte Abfragen für jede Verbindung."
+      "transfers": "Aus Tabellen und Abfrageergebnissen exportierte Dateien, aufgeführt unter Aktivität.",
+      "activity": "Abfragen, Änderungen, Exporte und Verbindungsereignisse aus dem Audit-Protokoll."
     },
     "add": "Verbindung hinzufügen",
     "search": "Verbindungen, Server oder Datenbanken suchen…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} geteilt"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Abfragen",
+      "rows": "Zeilenänderungen",
+      "structure": "Strukturänderungen",
+      "exports": "Exporte",
+      "storage": "Antwortspeicher",
+      "connections": "Verbindungen"
+    },
+    "failed": "Fehlgeschlagen",
+    "kpi": {
+      "title": "Aktivität Ihrer Verbindungen",
+      "byKind": "Aktivität nach Art",
+      "busiest": "Am aktivsten: {name}"
+    },
+    "col": {
+      "details": "Details",
+      "kind": "Art"
+    },
+    "rows": "{n} Zeile | {n} Zeilen",
+    "fullTrail": "Vollständiges Audit-Protokoll",
+    "search": "Aktivität suchen…",
+    "emptyTitle": "Noch keine Aktivität",
+    "emptyDesc": "Abfragen, Exporte und Änderungen an Ihren Verbindungen erscheinen hier."
   }
 }

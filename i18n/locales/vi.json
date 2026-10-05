@@ -365,7 +365,7 @@
     "dataExplorer": "Trình duyệt CSDL",
     "dataQuery": "Trình soạn truy vấn",
     "dataSavedQueries": "Truy vấn đã lưu",
-    "dataTransfers": "Nhập & xuất",
+    "dataTransfers": "Xuất dữ liệu",
     "dataActivity": "Hoạt động",
     "apiService": "Dịch vụ API",
     "apiOverview": "Tổng quan",
@@ -2913,8 +2913,8 @@
       "query": "Chạy SQL trên cơ sở dữ liệu của bạn. Mặc định chỉ đọc, mọi lần chạy đều được ghi lại.",
       "savedQueries": "Lưu và chia sẻ các truy vấn nhóm của bạn dùng nhiều nhất.",
       "destinations": "Chọn nơi mỗi biểu mẫu gửi phản hồi và ánh xạ trường với cột.",
-      "transfers": "Nhập tệp vào bảng và xuất bảng hoặc kết quả truy vấn.",
-      "activity": "Lượt gửi, lỗi và truy vấn gần đây của mọi kết nối."
+      "transfers": "Các tệp xuất từ bảng và kết quả truy vấn, liệt kê trong Hoạt động.",
+      "activity": "Truy vấn, thay đổi, bản xuất và sự kiện kết nối, từ nhật ký kiểm tra."
     },
     "add": "Thêm kết nối",
     "search": "Tìm kết nối, máy chủ hoặc cơ sở dữ liệu…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} đã chia sẻ"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Truy vấn",
+      "rows": "Thay đổi hàng",
+      "structure": "Thay đổi cấu trúc",
+      "exports": "Xuất dữ liệu",
+      "storage": "Nơi lưu phản hồi",
+      "connections": "Kết nối"
+    },
+    "failed": "Thất bại",
+    "kpi": {
+      "title": "Hoạt động trên các kết nối của bạn",
+      "byKind": "Hoạt động theo loại",
+      "busiest": "Bận nhất: {name}"
+    },
+    "col": {
+      "details": "Chi tiết",
+      "kind": "Loại"
+    },
+    "rows": "{n} hàng | {n} hàng",
+    "fullTrail": "Toàn bộ nhật ký kiểm tra",
+    "search": "Tìm hoạt động…",
+    "emptyTitle": "Chưa có hoạt động",
+    "emptyDesc": "Truy vấn, bản xuất và thay đổi trên các kết nối của bạn sẽ hiện ở đây."
   }
 }

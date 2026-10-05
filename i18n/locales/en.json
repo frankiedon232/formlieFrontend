@@ -365,7 +365,7 @@
     "dataExplorer": "Database explorer",
     "dataQuery": "Query editor",
     "dataSavedQueries": "Saved queries",
-    "dataTransfers": "Imports & exports",
+    "dataTransfers": "Exports",
     "dataActivity": "Activity",
     "apiService": "API service",
     "apiOverview": "Overview",
@@ -2913,8 +2913,8 @@
       "query": "Run SQL on your databases. Read-only by default, every run recorded.",
       "savedQueries": "Keep and share the queries your team uses most.",
       "destinations": "Choose where each form sends its responses and match fields to columns.",
-      "transfers": "Import files into tables and export tables or query results.",
-      "activity": "Deliveries, failures and recent queries for every connection."
+      "transfers": "Files exported from tables and query results, listed in Activity.",
+      "activity": "Queries, changes, exports and connection events, from the audit trail."
     },
     "add": "Add connection",
     "search": "Search connections, servers or databases…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} shared"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Queries",
+      "rows": "Row changes",
+      "structure": "Structure changes",
+      "exports": "Exports",
+      "storage": "Response storage",
+      "connections": "Connections"
+    },
+    "failed": "Failed",
+    "kpi": {
+      "title": "Activity on your connections",
+      "byKind": "Activity by kind",
+      "busiest": "Busiest: {name}"
+    },
+    "col": {
+      "details": "Details",
+      "kind": "Kind"
+    },
+    "rows": "{n} row | {n} rows",
+    "fullTrail": "Full audit trail",
+    "search": "Search activity…",
+    "emptyTitle": "No activity yet",
+    "emptyDesc": "Queries, exports and changes on your connections show here."
   }
 }

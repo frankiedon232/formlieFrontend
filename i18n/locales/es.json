@@ -365,7 +365,7 @@
     "dataExplorer": "Explorador de BD",
     "dataQuery": "Editor de consultas",
     "dataSavedQueries": "Consultas guardadas",
-    "dataTransfers": "Importar y exportar",
+    "dataTransfers": "Exportaciones",
     "dataActivity": "Actividad",
     "apiService": "Servicio API",
     "apiOverview": "Resumen",
@@ -2913,8 +2913,8 @@
       "query": "Ejecuta SQL en tus bases de datos: de solo lectura por defecto y con cada ejecución registrada.",
       "savedQueries": "Guarda y comparte las consultas que tu equipo usa más.",
       "destinations": "Elige adónde envía cada formulario sus respuestas y asocia los campos con las columnas.",
-      "transfers": "Importe archivos a tablas y exporte tablas o resultados de consultas.",
-      "activity": "Entregas, errores y consultas recientes de cada conexión."
+      "transfers": "Archivos exportados de tablas y resultados de consultas, listados en Actividad.",
+      "activity": "Consultas, cambios, exportaciones y eventos de conexión, del registro de auditoría."
     },
     "add": "Añadir conexión",
     "search": "Buscar conexiones, servidores o bases de datos…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} compartidas"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Consultas",
+      "rows": "Cambios de filas",
+      "structure": "Cambios de estructura",
+      "exports": "Exportaciones",
+      "storage": "Almacenamiento de respuestas",
+      "connections": "Conexiones"
+    },
+    "failed": "Fallido",
+    "kpi": {
+      "title": "Actividad en tus conexiones",
+      "byKind": "Actividad por tipo",
+      "busiest": "Más activa: {name}"
+    },
+    "col": {
+      "details": "Detalles",
+      "kind": "Tipo"
+    },
+    "rows": "{n} fila | {n} filas",
+    "fullTrail": "Registro de auditoría completo",
+    "search": "Buscar actividad…",
+    "emptyTitle": "Aún no hay actividad",
+    "emptyDesc": "Aquí aparecen las consultas, exportaciones y cambios en tus conexiones."
   }
 }

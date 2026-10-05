@@ -7,6 +7,7 @@ import type { AuditActor, AuditChange, AuditDevice, AuditEvent, AuditLocation } 
 import { AUDIT_EVENTS, type AuditAction } from '#shared/utils/audit/events'
 import { MOCK_FORMS, MOCK_OWNERS } from './forms'
 import { MOCK_USERS, type MockTenant } from './tenants'
+import { dataSourcesOf } from './dataSourceStore'
 
 function seeded(seed: number) {
   let state = seed
@@ -280,6 +281,48 @@ export function seedAuditHistory(tenant: MockTenant): AuditEvent[] {
       }
     }
   }
+
+  // ── Data sources (F12): queries, exports, row and structure changes, tests, deliveries ──
+  const sources = dataSourcesOf(tenant)
+  const STATEMENTS = [
+    'SELECT id, full_name, email FROM public.clients ORDER BY created_at DESC LIMIT 50',
+    "SELECT * FROM intake.cases WHERE status = 'open'",
+    'SELECT COUNT(*) FROM public.referrals',
+    'UPDATE public.clients SET phone = NULL WHERE id = 42',
+  ]
+  const TABLES = ['public.clients', 'public.referrals', 'intake.cases']
+  if (sources.length)
+    for (let day = 44; day >= 0; day--) {
+      const dayStart = startedAt - day * DAY - DAY
+      if (new Date(dayStart).getUTCDay() % 6 === 0) continue
+      const count = 1 + Math.floor(random() * 4)
+      for (let n = 0; n < count; n++) {
+        const who = pick(people)
+        const source = pick(sources)
+        const resource = { type: 'data_source' as const, id: source.id, name: source.name }
+        const at = Math.min(startedAt - 60_000, dayStart + Math.floor(random() * DAY))
+        const roll = random()
+        const table = pick(TABLES)
+        if (roll < 0.42) {
+          const statement = pick(STATEMENTS)
+          add(at, who, 'data.query_run', { resource, metadata: { kind: statement.startsWith('UPDATE') ? 'update' : 'read', statement, rows: String(Math.floor(random() * 400)), duration_ms: String(4 + Math.floor(random() * 90)) } })
+        } else if (roll < 0.47) {
+          add(at, who, 'data.query_run', { resource, outcome: 'failure', reason: 'FRM-DEST-1025', metadata: { kind: 'read', statement: 'SELECT id FROM public.clientz' } })
+        } else if (roll < 0.57) {
+          add(at, who, random() < 0.6 ? 'data.table_exported' : 'data.query_exported', { resource, metadata: { table, format: pick(['xlsx', 'csv', 'json']), scope: random() < 0.7 ? 'page' : 'all', rows: String(20 + Math.floor(random() * 900)) } })
+        } else if (roll < 0.72) {
+          add(at, who, pick(['data.row_updated', 'data.row_inserted', 'data.row_deleted'] as const), { resource, metadata: { table, key: String(1 + Math.floor(random() * 400)) } })
+        } else if (roll < 0.82) {
+          add(at, who, 'data.connection_tested', { resource, outcome: random() < 0.9 ? 'success' : 'failure', reason: undefined, metadata: { latency_ms: String(8 + Math.floor(random() * 60)) } })
+        } else if (roll < 0.87) {
+          add(at, who, 'data.table_altered', { resource, metadata: { table, change: 'add_column', column: pick(['notes', 'source', 'region']) } })
+        } else if (roll < 0.93) {
+          add(at, who, 'data.saved_query_saved', { resource, metadata: { name: pick(['Newest clients', 'Open cases', 'Clients without a phone number']), kind: 'read', shared: String(random() < 0.5) } })
+        } else {
+          add(at, who, 'data.deliveries_retried', { resource, metadata: { count: String(1 + Math.floor(random() * 6)) } })
+        }
+      }
+    }
 
   // ── A few security moments ──────────────────────────────────────────────────────
   const target = pick(people)

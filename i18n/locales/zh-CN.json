@@ -365,7 +365,7 @@
     "dataExplorer": "数据库浏览器",
     "dataQuery": "查询编辑器",
     "dataSavedQueries": "已保存的查询",
-    "dataTransfers": "导入与导出",
+    "dataTransfers": "导出",
     "dataActivity": "活动",
     "apiService": "API 服务",
     "apiOverview": "概览",
@@ -2913,8 +2913,8 @@
       "query": "在数据库上运行 SQL。默认只读，每次运行均有记录。",
       "savedQueries": "保存并共享团队最常用的查询。",
       "destinations": "选择每个表单发送回复的位置，并将字段映射到列。",
-      "transfers": "将文件导入表中，并导出表或查询结果。",
-      "activity": "每个连接的投递、失败和最近查询。"
+      "transfers": "从表和查询结果导出的文件，列在“活动”中。",
+      "activity": "来自审计日志的查询、更改、导出和连接事件。"
     },
     "add": "添加连接",
     "search": "搜索连接、服务器或数据库…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} 个已共享"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "查询",
+      "rows": "行更改",
+      "structure": "结构更改",
+      "exports": "导出",
+      "storage": "回复存储",
+      "connections": "连接"
+    },
+    "failed": "失败",
+    "kpi": {
+      "title": "连接上的活动",
+      "byKind": "按类型统计的活动",
+      "busiest": "最活跃：{name}"
+    },
+    "col": {
+      "details": "详情",
+      "kind": "类型"
+    },
+    "rows": "{n} 行 | {n} 行",
+    "fullTrail": "完整审计日志",
+    "search": "搜索活动…",
+    "emptyTitle": "暂无活动",
+    "emptyDesc": "你的连接上的查询、导出和更改会显示在这里。"
   }
 }

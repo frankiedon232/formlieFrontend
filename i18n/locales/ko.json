@@ -365,7 +365,7 @@
     "dataExplorer": "DB 탐색기",
     "dataQuery": "쿼리 편집기",
     "dataSavedQueries": "저장된 쿼리",
-    "dataTransfers": "가져오기 및 내보내기",
+    "dataTransfers": "내보내기",
     "dataActivity": "활동",
     "apiService": "API 서비스",
     "apiOverview": "개요",
@@ -2913,8 +2913,8 @@
       "query": "데이터베이스에서 SQL을 실행하세요. 기본값은 읽기 전용이며 모든 실행이 기록됩니다.",
       "savedQueries": "팀에서 가장 많이 사용하는 쿼리를 저장하고 공유하세요.",
       "destinations": "각 양식이 응답을 보낼 위치를 선택하고 필드를 열에 매핑하세요.",
-      "transfers": "파일을 테이블로 가져오고 테이블이나 쿼리 결과를 내보내세요.",
-      "activity": "각 연결의 전송, 실패 및 최근 쿼리."
+      "transfers": "테이블과 쿼리 결과에서 내보낸 파일로, 활동에 표시됩니다.",
+      "activity": "감사 로그의 쿼리, 변경, 내보내기, 연결 이벤트입니다."
     },
     "add": "연결 추가",
     "search": "연결, 서버 또는 데이터베이스 검색…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n}개 공유됨"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "쿼리",
+      "rows": "행 변경",
+      "structure": "구조 변경",
+      "exports": "내보내기",
+      "storage": "응답 저장소",
+      "connections": "연결"
+    },
+    "failed": "실패",
+    "kpi": {
+      "title": "연결 활동",
+      "byKind": "종류별 활동",
+      "busiest": "가장 활발한 연결: {name}"
+    },
+    "col": {
+      "details": "세부 정보",
+      "kind": "종류"
+    },
+    "rows": "{n}개 행 | {n}개 행",
+    "fullTrail": "전체 감사 로그",
+    "search": "활동 검색…",
+    "emptyTitle": "아직 활동이 없습니다",
+    "emptyDesc": "연결에서 실행한 쿼리, 내보내기, 변경 사항이 여기에 표시됩니다."
   }
 }

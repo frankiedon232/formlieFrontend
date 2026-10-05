@@ -365,7 +365,7 @@
     "dataExplorer": "Veritabanı gezgini",
     "dataQuery": "Sorgu düzenleyici",
     "dataSavedQueries": "Kayıtlı sorgular",
-    "dataTransfers": "İçe ve dışa aktarma",
+    "dataTransfers": "Dışa aktarımlar",
     "dataActivity": "Etkinlik",
     "apiService": "API hizmeti",
     "apiOverview": "Genel bakış",
@@ -2913,8 +2913,8 @@
       "query": "Veritabanlarınızda SQL çalıştırın. Varsayılan olarak salt okunurdur ve her çalıştırma kaydedilir.",
       "savedQueries": "Ekibinizin en çok kullandığı sorguları saklayın ve paylaşın.",
       "destinations": "Her formun yanıtlarını nereye göndereceğini seçin ve alanları sütunlarla eşleştirin.",
-      "transfers": "Dosyaları tablolara içe aktarın, tabloları veya sorgu sonuçlarını dışa aktarın.",
-      "activity": "Her bağlantı için teslimatlar, hatalar ve son sorgular."
+      "transfers": "Tablolardan ve sorgu sonuçlarından dışa aktarılan dosyalar, Etkinlik bölümünde listelenir.",
+      "activity": "Denetim kaydından sorgular, değişiklikler, dışa aktarımlar ve bağlantı olayları."
     },
     "add": "Bağlantı ekle",
     "search": "Bağlantı, sunucu veya veritabanı ara…",
@@ -4957,5 +4957,30 @@
         "sharedCount": "{n} paylaşılan"
       }
     }
+  },
+  "dataActivity": {
+    "kind": {
+      "queries": "Sorgular",
+      "rows": "Satır değişiklikleri",
+      "structure": "Yapı değişiklikleri",
+      "exports": "Dışa aktarımlar",
+      "storage": "Yanıt depolaması",
+      "connections": "Bağlantılar"
+    },
+    "failed": "Başarısız",
+    "kpi": {
+      "title": "Bağlantılarınızdaki etkinlik",
+      "byKind": "Türe göre etkinlik",
+      "busiest": "En yoğun: {name}"
+    },
+    "col": {
+      "details": "Ayrıntılar",
+      "kind": "Tür"
+    },
+    "rows": "{n} satır | {n} satır",
+    "fullTrail": "Tam denetim kaydı",
+    "search": "Etkinlik ara…",
+    "emptyTitle": "Henüz etkinlik yok",
+    "emptyDesc": "Bağlantılarınızdaki sorgular, dışa aktarımlar ve değişiklikler burada görünür."
   }
 }

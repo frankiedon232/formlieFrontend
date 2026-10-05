@@ -179,7 +179,7 @@ const DATA_NAV: AppNavItem[] = [
   { key: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
   { key: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
   { key: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations', count: c => c.destinations.total },
-  { key: 'dataTransfers', icon: 'i-lucide-arrow-left-right', to: '/data-sources/transfers' },
+  { key: 'dataTransfers', icon: 'i-lucide-file-down', to: '/data-sources/transfers' },
   { key: 'dataActivity', icon: 'i-lucide-activity', to: '/data-sources/activity' },
 ]
 
