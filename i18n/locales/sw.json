@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "Fomu na jedwali bado havilingani.",
     "FRM-DEST-1017": "Majibu ya awali tayari yanatumwa. Subiri hadi imalizike.",
     "FRM-DEST-1018": "Safu yenye ufunguo huu tayari ipo.",
-    "FRM-DEST-1019": "Safu za jedwali hili haziwezi kubadilishwa hapa.",
-    "FRM-DEST-1020": "Faili haikuweza kusomwa. Tumia faili ya CSV au Excel (.xlsx) yenye safu ya vichwa.",
-    "FRM-DEST-1021": "Faili ni kubwa mno: hadi MB 5 na safu 50,000."
+    "FRM-DEST-1019": "Safu za jedwali hili haziwezi kubadilishwa hapa."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "Jedwali limehamishwa",
       "data_row_inserted": "Safu imeongezwa kwenye jedwali",
       "data_row_updated": "Safu imebadilishwa kwenye jedwali",
-      "data_row_deleted": "Safu imefutwa kwenye jedwali",
-      "data_rows_imported": "Faili imeingizwa kwenye jedwali"
+      "data_row_deleted": "Safu imefutwa kwenye jedwali"
     },
     "detail": {
       "who": "Nani",
@@ -4671,26 +4668,6 @@
       "length": "Ni ndefu mno kwa safuwima hii (herufi zisizozidi {max}).",
       "duplicate": "Safu yenye ufunguo huu tayari ipo.",
       "taken": "Safu yenye ufunguo huu tayari ipo."
-    },
-    "import": {
-      "button": "Ingiza",
-      "title": "Ingiza faili kwenye jedwali hili",
-      "pick": "Chagua faili ya CSV au Excel (.xlsx)",
-      "pickDesc": "Safu ya kwanza ina majina ya safuwima. Hadi MB 5 na safu 50,000.",
-      "choose": "Chagua faili",
-      "found": "Safu {n} imepatikana katika {file}. Chagua safuwima ya faili itakayojaza kila safuwima ya jedwali. | Safu {n} zimepatikana katika {file}. Chagua safuwima ya faili itakayojaza kila safuwima ya jedwali.",
-      "fileColumn": "Kutoka kwenye faili",
-      "firstRow": "Safu ya kwanza",
-      "leaveEmpty": "Acha tupu",
-      "needed": "Safuwima hizi lazima zijazwe: {columns}",
-      "note": "Safu zenye tatizo zinarukwa na kuorodheshwa; zilizobaki zinaongezwa. Hakuna kinachoongezwa mara mbili.",
-      "start": "Ingiza safu {n} | Ingiza safu {n}",
-      "running": "Inaingiza safu {n}…",
-      "finished": "Uingizaji umekamilika",
-      "added": "Zimeongezwa",
-      "skipped": "Zimerukwa",
-      "whySkipped": "Kwa nini safu zilirukwa (100 za kwanza):",
-      "rowN": "Safu {n}"
     },
     "readOnlyShort": "Kusoma tu",
     "exportJson": "JSON",

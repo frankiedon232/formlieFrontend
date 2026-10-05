@@ -541,7 +541,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
-**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes, import). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ✅ Database explorer (browsing, row changes in their own tables, export). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -583,7 +583,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 **M3 part 2 ✅ (2026-10-05): changing data.**
 
 - ✅ Add, change and delete rows of the organisation's own tables (Full access, primary key): a form built from the columns (the right control per type, empty is NULL, the key set automatically and never changed), checks per column type here and on the server, confirm before deleting; audit records which row, never its values
-- ✅ Import a CSV or Excel (.xlsx) file into a table: read on Formalie's servers (no library), columns matched by name and adjustable, first row preview, progress, rows added and skipped with the reason (row, column, problem), nothing added twice; audit `data.rows_imported`
+- ➖ Import CSV / Excel: built, then removed (owner 2026-10-05: not supported for now)
 - ✅ Layout (owner 2026-10-05): the connection and tree take the sidebar's menu column on desktop (`useSidebarTakeover`; rail stays; back arrow to the menu and a button back to the tree; same width as the menu, drag to resize); the page keeps the full width; a slim one-line table strip; extra slim rows with column lines (DataView `dense`), table only (DataView `table-only`, no grid); phones, tablets and a folded sidebar open the same panel from "Tables"
 - ✅ Export also as JSON (row objects, JSON columns parsed) and SQL INSERT statements for the connection's engine (`shared/utils/datasources/exportFormats.ts`); the tree keeps one table open at a time; the account avatar sits at the foot of the rail while the tree holds the menu column
 
@@ -599,14 +599,14 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 - ✅ Insert, edit and delete rows from the table view (form generated from the columns, type-checked, confirm on delete; read + write connections only)
 - ⬜ Create a table from a form; add columns for new fields (preview + confirm)
-- ✅ Import CSV / XLSX into a table: column mapping, preview, validation, progress, error report
+- ➖ Import CSV / XLSX into a table: not supported for now (owner 2026-10-05)
 - ⬜ Per-connection activity: delivery queue, failures, throughput, recent queries
 - ⬜ Scheduled exports and saved-query snapshots (later)
 
 ### 6. Safety (enforced by the backend, visible in the UI)
 
 - ⬜ Queries and data changes run only on the server, through the connection's pool, with statement time-outs and row caps, never from the browser
-- ⬜ Every query, row change, import and export is recorded in the audit trail (who, connection, statement, rows affected, duration)
+- ⬜ Every query, row change and export is recorded in the audit trail (who, connection, statement, rows affected, duration)
 - ⬜ Permissions per role (view explorer · run read queries · run changing queries · manage connections · send form data), wired up in F22; until then admins only
 - ⬜ Rate limits; no credentials or result data in logs; results never stored in the browser
 - ⬜ Clear wording: we provide controls (encryption, audit, least privilege), never certifications
@@ -1071,6 +1071,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | French form: labels, sections, help and thank-you stayed English; "already filled in" showed only after the form flashed for seconds; spam check not visible anywhere | F10 | ✅ |
 | 2026-10-05 | Database explorer: the connection and table tree take the sidebar's whole menu column (rail stays) with a back arrow to the menu, same width as the menu and adjustable; extra slim table rows; no grid for table rows | F12 M3 | ✅ |
 | 2026-10-05 | Explorer: export tables as JSON and SQL INSERT statements too; one table open at a time in the tree; account avatar at the foot of the rail (with a line above) while the tree holds the menu column; slimmer tree search and connection picker; one square bullet for every table | F12 M3 | ✅ |
+| 2026-10-05 | Explorer: no import for now (removed); adding, changing and deleting rows only in tables created outside Formalie, never in response tables | F12 M3 | ✅ |
 
 ---
 
@@ -1242,3 +1243,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | M3 part 2, changing data: add / change / delete rows of the organisation's tables (Full access) with a form built from the columns and one set of value rules on both sides; import CSV / Excel with column matching, preview, progress and a report of skipped rows (CSV and .xlsx read without a library). Tests: `datasources/values`, `datasources/tabular`, `datasources/import`. M3 complete. |
 | 2026-10-05 | F12 | Explorer layout (owner): connection and table tree in the sidebar's menu column with a back arrow to the menu (`useSidebarTakeover`, `AppSidebarTakeover`, page content teleported); same, resizable width as the menu; one-line table strip; DataView `dense` (28px rows, column lines) and `table-only` (no grid). |
 | 2026-10-05 | F12 | Explorer: JSON and SQL (INSERT per engine) exports; one open table in the tree; account at the rail's foot in explorer mode. Test: `datasources/exportFormats`. |
+| 2026-10-05 | F12 | Import into tables removed (owner: not supported for now): dialog, routes, file readers, errors FRM-DEST-1020 / 1021, audit `data.rows_imported`. Row changes stay limited to the organisation's own tables. |

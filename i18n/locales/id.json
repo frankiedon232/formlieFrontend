@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "Formulir dan tabel belum cocok.",
     "FRM-DEST-1017": "Respons sebelumnya sedang dikirim. Tunggu hingga selesai.",
     "FRM-DEST-1018": "Baris dengan kunci ini sudah ada.",
-    "FRM-DEST-1019": "Baris tabel ini tidak dapat diubah di sini.",
-    "FRM-DEST-1020": "File tidak dapat dibaca. Gunakan file CSV atau Excel (.xlsx) dengan baris judul.",
-    "FRM-DEST-1021": "File terlalu besar: hingga 5 MB dan 50.000 baris."
+    "FRM-DEST-1019": "Baris tabel ini tidak dapat diubah di sini."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "Tabel diekspor",
       "data_row_inserted": "Baris ditambahkan ke tabel",
       "data_row_updated": "Baris diubah di tabel",
-      "data_row_deleted": "Baris dihapus dari tabel",
-      "data_rows_imported": "File diimpor ke tabel"
+      "data_row_deleted": "Baris dihapus dari tabel"
     },
     "detail": {
       "who": "Siapa",
@@ -4671,26 +4668,6 @@
       "length": "Terlalu panjang untuk kolom ini (maksimal {max} karakter).",
       "duplicate": "Baris dengan kunci ini sudah ada.",
       "taken": "Baris dengan kunci ini sudah ada."
-    },
-    "import": {
-      "button": "Impor",
-      "title": "Impor file ke tabel ini",
-      "pick": "Pilih file CSV atau Excel (.xlsx)",
-      "pickDesc": "Baris pertama berisi nama kolom. Hingga 5 MB dan 50.000 baris.",
-      "choose": "Pilih file",
-      "found": "{n} baris ditemukan di {file}. Pilih kolom file yang mengisi setiap kolom tabel. | {n} baris ditemukan di {file}. Pilih kolom file yang mengisi setiap kolom tabel.",
-      "fileColumn": "Dari file",
-      "firstRow": "Baris pertama",
-      "leaveEmpty": "Biarkan kosong",
-      "needed": "Kolom ini wajib diisi: {columns}",
-      "note": "Baris yang bermasalah dilewati dan dicantumkan; sisanya ditambahkan. Tidak ada yang ditambahkan dua kali.",
-      "start": "Impor {n} baris | Impor {n} baris",
-      "running": "Mengimpor {n} baris…",
-      "finished": "Impor selesai",
-      "added": "Ditambahkan",
-      "skipped": "Dilewati",
-      "whySkipped": "Alasan baris dilewati (100 pertama):",
-      "rowN": "Baris {n}"
     },
     "readOnlyShort": "Hanya baca",
     "exportJson": "JSON",

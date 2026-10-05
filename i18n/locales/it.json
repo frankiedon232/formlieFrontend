@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "Il modulo e la tabella non corrispondono ancora.",
     "FRM-DEST-1017": "Le risposte precedenti sono già in fase di invio. Attendete che finisca.",
     "FRM-DEST-1018": "Esiste già una riga con questa chiave.",
-    "FRM-DEST-1019": "Le righe di questa tabella non possono essere modificate qui.",
-    "FRM-DEST-1020": "Impossibile leggere il file. Usate un file CSV o Excel (.xlsx) con una riga di intestazione.",
-    "FRM-DEST-1021": "Il file è troppo grande: fino a 5 MB e 50.000 righe."
+    "FRM-DEST-1019": "Le righe di questa tabella non possono essere modificate qui."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "Tabella esportata",
       "data_row_inserted": "Riga aggiunta a una tabella",
       "data_row_updated": "Riga modificata in una tabella",
-      "data_row_deleted": "Riga eliminata da una tabella",
-      "data_rows_imported": "File importato in una tabella"
+      "data_row_deleted": "Riga eliminata da una tabella"
     },
     "detail": {
       "who": "Chi",
@@ -4671,26 +4668,6 @@
       "length": "Troppo lungo per questa colonna (al massimo {max} caratteri).",
       "duplicate": "Esiste già una riga con questa chiave.",
       "taken": "Esiste già una riga con questa chiave."
-    },
-    "import": {
-      "button": "Importa",
-      "title": "Importa un file in questa tabella",
-      "pick": "Scegliete un file CSV o Excel (.xlsx)",
-      "pickDesc": "La prima riga contiene i nomi delle colonne. Fino a 5 MB e 50.000 righe.",
-      "choose": "Scegliete un file",
-      "found": "{n} riga trovata in {file}. Scegliete quale colonna del file riempie ogni colonna della tabella. | {n} righe trovate in {file}. Scegliete quale colonna del file riempie ogni colonna della tabella.",
-      "fileColumn": "Dal file",
-      "firstRow": "Prima riga",
-      "leaveEmpty": "Lascia vuoto",
-      "needed": "Queste colonne devono essere compilate: {columns}",
-      "note": "Le righe con un problema vengono saltate ed elencate; le altre vengono aggiunte. Nulla viene aggiunto due volte.",
-      "start": "Importa {n} riga | Importa {n} righe",
-      "running": "Importazione di {n} righe…",
-      "finished": "Importazione completata",
-      "added": "Aggiunte",
-      "skipped": "Saltate",
-      "whySkipped": "Perché alcune righe sono state saltate (le prime 100):",
-      "rowN": "Riga {n}"
     },
     "readOnlyShort": "Sola lettura",
     "exportJson": "JSON",

@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "Formularz i tabela jeszcze do siebie nie pasują.",
     "FRM-DEST-1017": "Wcześniejsze odpowiedzi są już wysyłane. Poczekaj, aż to się zakończy.",
     "FRM-DEST-1018": "Wiersz z tym kluczem już istnieje.",
-    "FRM-DEST-1019": "Wierszy tej tabeli nie można tu zmieniać.",
-    "FRM-DEST-1020": "Nie udało się odczytać pliku. Użyj pliku CSV lub Excel (.xlsx) z wierszem nagłówka.",
-    "FRM-DEST-1021": "Plik jest za duży: do 5 MB i 50 000 wierszy."
+    "FRM-DEST-1019": "Wierszy tej tabeli nie można tu zmieniać."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "Wyeksportowano tabelę",
       "data_row_inserted": "Dodano wiersz do tabeli",
       "data_row_updated": "Zmieniono wiersz w tabeli",
-      "data_row_deleted": "Usunięto wiersz z tabeli",
-      "data_rows_imported": "Zaimportowano plik do tabeli"
+      "data_row_deleted": "Usunięto wiersz z tabeli"
     },
     "detail": {
       "who": "Kto",
@@ -4671,26 +4668,6 @@
       "length": "Za długie dla tej kolumny (maksymalna liczba znaków: {max}).",
       "duplicate": "Wiersz z tym kluczem już istnieje.",
       "taken": "Wiersz z tym kluczem już istnieje."
-    },
-    "import": {
-      "button": "Importuj",
-      "title": "Importuj plik do tej tabeli",
-      "pick": "Wybierz plik CSV lub Excel (.xlsx)",
-      "pickDesc": "Pierwszy wiersz zawiera nazwy kolumn. Do 5 MB i 50 000 wierszy.",
-      "choose": "Wybierz plik",
-      "found": "Znalezione wiersze w pliku {file}: {n}. Wybierz, która kolumna pliku wypełnia każdą kolumnę tabeli. | Znalezione wiersze w pliku {file}: {n}. Wybierz, która kolumna pliku wypełnia każdą kolumnę tabeli.",
-      "fileColumn": "Z pliku",
-      "firstRow": "Pierwszy wiersz",
-      "leaveEmpty": "Zostaw puste",
-      "needed": "Te kolumny muszą być wypełnione: {columns}",
-      "note": "Wiersze z problemem są pomijane i wypisywane, pozostałe zostają dodane. Nic nie jest dodawane dwa razy.",
-      "start": "Importuj wiersze: {n} | Importuj wiersze: {n}",
-      "running": "Importowanie wierszy: {n}…",
-      "finished": "Import zakończony",
-      "added": "Dodane",
-      "skipped": "Pominięte",
-      "whySkipped": "Dlaczego wiersze zostały pominięte (pierwsze 100):",
-      "rowN": "Wiersz {n}"
     },
     "readOnlyShort": "Tylko odczyt",
     "exportJson": "JSON",

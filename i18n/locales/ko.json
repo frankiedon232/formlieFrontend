@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "양식과 테이블이 아직 일치하지 않습니다.",
     "FRM-DEST-1017": "이전 응답을 이미 보내는 중입니다. 완료될 때까지 기다려 주세요.",
     "FRM-DEST-1018": "이 키를 가진 행이 이미 있습니다.",
-    "FRM-DEST-1019": "이 테이블의 행은 여기에서 변경할 수 없습니다.",
-    "FRM-DEST-1020": "파일을 읽을 수 없습니다. 머리글 행이 있는 CSV 또는 Excel (.xlsx) 파일을 사용하세요.",
-    "FRM-DEST-1021": "파일이 너무 큽니다. 최대 5MB, 50,000행까지 가능합니다."
+    "FRM-DEST-1019": "이 테이블의 행은 여기에서 변경할 수 없습니다."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "테이블 내보냄",
       "data_row_inserted": "테이블에 행 추가됨",
       "data_row_updated": "테이블의 행 변경됨",
-      "data_row_deleted": "테이블에서 행 삭제됨",
-      "data_rows_imported": "테이블로 파일 가져옴"
+      "data_row_deleted": "테이블에서 행 삭제됨"
     },
     "detail": {
       "who": "누가",
@@ -4671,26 +4668,6 @@
       "length": "이 열에 비해 너무 깁니다(최대 {max}자).",
       "duplicate": "이 키를 가진 행이 이미 있습니다.",
       "taken": "이 키를 가진 행이 이미 있습니다."
-    },
-    "import": {
-      "button": "가져오기",
-      "title": "이 테이블로 파일 가져오기",
-      "pick": "CSV 또는 Excel (.xlsx) 파일 선택",
-      "pickDesc": "첫 번째 행에는 열 이름이 들어 있습니다. 최대 5MB, 50,000행.",
-      "choose": "파일 선택",
-      "found": "{file}에서 {n}개 행을 찾았습니다. 각 테이블 열을 채울 파일 열을 선택하세요. | {file}에서 {n}개 행을 찾았습니다. 각 테이블 열을 채울 파일 열을 선택하세요.",
-      "fileColumn": "파일에서",
-      "firstRow": "첫 번째 행",
-      "leaveEmpty": "비워 두기",
-      "needed": "다음 열은 반드시 채워야 합니다: {columns}",
-      "note": "문제가 있는 행은 건너뛰고 목록으로 표시하며, 나머지는 추가됩니다. 중복으로 추가되는 것은 없습니다.",
-      "start": "{n}개 행 가져오기 | {n}개 행 가져오기",
-      "running": "{n}개 행을 가져오는 중…",
-      "finished": "가져오기 완료",
-      "added": "추가됨",
-      "skipped": "건너뜀",
-      "whySkipped": "행을 건너뛴 이유(처음 100개):",
-      "rowN": "행 {n}"
     },
     "readOnlyShort": "읽기 전용",
     "exportJson": "JSON",

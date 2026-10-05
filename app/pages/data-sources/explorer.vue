@@ -128,7 +128,6 @@ const data = useTemplateRef<{
 const confirm = useConfirm()
 const toast = useToast()
 const formOpen = ref(false)
-const importOpen = ref(false)
 const editing = ref<TableRow | null>(null)
 function editRow(item: TableRow | null) {
   editing.value = item
@@ -186,14 +185,6 @@ const readOnlyText = computed(() =>
         @click="treeOpen = true"
       />
       <template v-if="structure && dsId && !structure.read_only">
-        <UButton
-          :label="t('explorer.import.button')"
-          icon="i-lucide-file-up"
-          color="neutral"
-          variant="outline"
-          class="hidden sm:inline-flex"
-          @click="importOpen = true"
-        />
         <UButton :label="t('explorer.addRow')" icon="i-lucide-plus" color="neutral" @click="editRow(null)" />
       </template>
       <ExplorerExportButton
@@ -371,12 +362,6 @@ const readOnlyText = computed(() =>
         :structure="structure"
         :row="editing"
         @saved="saved"
-      />
-      <ExplorerImportModal
-        v-model:open="importOpen"
-        :source-id="dsId"
-        :structure="structure"
-        @done="() => data?.refresh()"
       />
     </template>
   </AppPanel>

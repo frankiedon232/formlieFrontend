@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "Form ve tablo henüz eşleşmiyor.",
     "FRM-DEST-1017": "Önceki yanıtlar zaten gönderiliyor. Bitmesini bekleyin.",
     "FRM-DEST-1018": "Bu anahtara sahip bir satır zaten var.",
-    "FRM-DEST-1019": "Bu tablonun satırları burada değiştirilemez.",
-    "FRM-DEST-1020": "Dosya okunamadı. Başlık satırı olan bir CSV veya Excel (.xlsx) dosyası kullanın.",
-    "FRM-DEST-1021": "Dosya çok büyük: en fazla 5 MB ve 50.000 satır."
+    "FRM-DEST-1019": "Bu tablonun satırları burada değiştirilemez."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "Tablo dışa aktarıldı",
       "data_row_inserted": "Bir tabloya satır eklendi",
       "data_row_updated": "Bir tablodaki satır değiştirildi",
-      "data_row_deleted": "Bir tablodan satır silindi",
-      "data_rows_imported": "Bir tabloya dosya içe aktarıldı"
+      "data_row_deleted": "Bir tablodan satır silindi"
     },
     "detail": {
       "who": "Kim",
@@ -4671,26 +4668,6 @@
       "length": "Bu sütun için çok uzun (en fazla {max} karakter).",
       "duplicate": "Bu anahtara sahip bir satır zaten var.",
       "taken": "Bu anahtara sahip bir satır zaten var."
-    },
-    "import": {
-      "button": "İçe aktar",
-      "title": "Bu tabloya bir dosya içe aktarın",
-      "pick": "Bir CSV veya Excel (.xlsx) dosyası seçin",
-      "pickDesc": "İlk satır sütun adlarını içerir. En fazla 5 MB ve 50.000 satır.",
-      "choose": "Dosya seç",
-      "found": "{file} içinde {n} satır bulundu. Her tablo sütununu hangi dosya sütununun dolduracağını seçin. | {file} içinde {n} satır bulundu. Her tablo sütununu hangi dosya sütununun dolduracağını seçin.",
-      "fileColumn": "Dosyadan",
-      "firstRow": "İlk satır",
-      "leaveEmpty": "Boş bırak",
-      "needed": "Bu sütunlar doldurulmalı: {columns}",
-      "note": "Sorunlu satırlar atlanır ve listelenir, geri kalanı eklenir. Hiçbir şey iki kez eklenmez.",
-      "start": "{n} satırı içe aktar | {n} satırı içe aktar",
-      "running": "{n} satır içe aktarılıyor…",
-      "finished": "İçe aktarma tamamlandı",
-      "added": "Eklendi",
-      "skipped": "Atlandı",
-      "whySkipped": "Satırların neden atlandığı (ilk 100):",
-      "rowN": "Satır {n}"
     },
     "readOnlyShort": "Salt okunur",
     "exportJson": "JSON",

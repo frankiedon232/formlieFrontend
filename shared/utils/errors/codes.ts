@@ -113,11 +113,6 @@ export const ERROR_CODES = {
   },
   'FRM-DEST-1018': { status: 409, message: 'A row with this key already exists.' },
   'FRM-DEST-1019': { status: 403, message: "This table's rows can't be changed here." },
-  'FRM-DEST-1020': {
-    status: 400,
-    message: "The file couldn't be read. Use a CSV or Excel (.xlsx) file with a header row.",
-  },
-  'FRM-DEST-1021': { status: 413, message: 'The file is too large: up to 5 MB and 50,000 rows.' },
   'FRM-DEST-1012': { status: 400, message: "This account can't create or use the response tables." },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },

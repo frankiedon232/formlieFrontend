@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "Formular und Tabelle passen noch nicht zusammen.",
     "FRM-DEST-1017": "Frühere Antworten werden bereits gesendet. Warten Sie, bis das abgeschlossen ist.",
     "FRM-DEST-1018": "Eine Zeile mit diesem Schlüssel gibt es bereits.",
-    "FRM-DEST-1019": "Die Zeilen dieser Tabelle können hier nicht geändert werden.",
-    "FRM-DEST-1020": "Die Datei konnte nicht gelesen werden. Verwenden Sie eine CSV- oder Excel (.xlsx)-Datei mit einer Kopfzeile.",
-    "FRM-DEST-1021": "Die Datei ist zu groß: bis zu 5 MB und 50.000 Zeilen."
+    "FRM-DEST-1019": "Die Zeilen dieser Tabelle können hier nicht geändert werden."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "Tabelle exportiert",
       "data_row_inserted": "Zeile zu einer Tabelle hinzugefügt",
       "data_row_updated": "Zeile in einer Tabelle geändert",
-      "data_row_deleted": "Zeile aus einer Tabelle gelöscht",
-      "data_rows_imported": "Datei in eine Tabelle importiert"
+      "data_row_deleted": "Zeile aus einer Tabelle gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -4671,26 +4668,6 @@
       "length": "Zu lang für diese Spalte (höchstens {max} Zeichen).",
       "duplicate": "Eine Zeile mit diesem Schlüssel gibt es bereits.",
       "taken": "Eine Zeile mit diesem Schlüssel gibt es bereits."
-    },
-    "import": {
-      "button": "Importieren",
-      "title": "Datei in diese Tabelle importieren",
-      "pick": "Wählen Sie eine CSV- oder Excel (.xlsx)-Datei",
-      "pickDesc": "Die erste Zeile enthält die Spaltennamen. Bis zu 5 MB und 50.000 Zeilen.",
-      "choose": "Datei auswählen",
-      "found": "{n} Zeile in {file} gefunden. Wählen Sie, welche Dateispalte jede Tabellenspalte füllt. | {n} Zeilen in {file} gefunden. Wählen Sie, welche Dateispalte jede Tabellenspalte füllt.",
-      "fileColumn": "Aus der Datei",
-      "firstRow": "Erste Zeile",
-      "leaveEmpty": "Leer lassen",
-      "needed": "Diese Spalten müssen gefüllt werden: {columns}",
-      "note": "Zeilen mit einem Problem werden übersprungen und aufgelistet, der Rest wird hinzugefügt. Nichts wird doppelt hinzugefügt.",
-      "start": "{n} Zeile importieren | {n} Zeilen importieren",
-      "running": "{n} Zeilen werden importiert…",
-      "finished": "Import abgeschlossen",
-      "added": "Hinzugefügt",
-      "skipped": "Übersprungen",
-      "whySkipped": "Warum Zeilen übersprungen wurden (die ersten 100):",
-      "rowN": "Zeile {n}"
     },
     "readOnlyShort": "Nur Lesen",
     "exportJson": "JSON",

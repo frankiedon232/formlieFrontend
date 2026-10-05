@@ -550,9 +550,7 @@
     "FRM-DEST-1016": "Het formulier en de tabel komen nog niet overeen.",
     "FRM-DEST-1017": "Eerdere reacties worden al verzonden. Wacht tot dat klaar is.",
     "FRM-DEST-1018": "Er bestaat al een rij met deze sleutel.",
-    "FRM-DEST-1019": "De rijen van deze tabel kunnen hier niet worden gewijzigd.",
-    "FRM-DEST-1020": "Het bestand kon niet worden gelezen. Gebruik een CSV- of Excel (.xlsx)-bestand met een kopregel.",
-    "FRM-DEST-1021": "Het bestand is te groot: maximaal 5 MB en 50.000 rijen."
+    "FRM-DEST-1019": "De rijen van deze tabel kunnen hier niet worden gewijzigd."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -941,8 +939,7 @@
       "data_table_exported": "Tabel geëxporteerd",
       "data_row_inserted": "Rij toegevoegd aan een tabel",
       "data_row_updated": "Rij gewijzigd in een tabel",
-      "data_row_deleted": "Rij verwijderd uit een tabel",
-      "data_rows_imported": "Bestand geïmporteerd in een tabel"
+      "data_row_deleted": "Rij verwijderd uit een tabel"
     },
     "detail": {
       "who": "Wie",
@@ -4671,26 +4668,6 @@
       "length": "Te lang voor deze kolom (maximaal {max} tekens).",
       "duplicate": "Er bestaat al een rij met deze sleutel.",
       "taken": "Er bestaat al een rij met deze sleutel."
-    },
-    "import": {
-      "button": "Importeren",
-      "title": "Een bestand in deze tabel importeren",
-      "pick": "Kies een CSV- of Excel (.xlsx)-bestand",
-      "pickDesc": "De eerste rij bevat de kolomnamen. Tot 5 MB en 50.000 rijen.",
-      "choose": "Kies een bestand",
-      "found": "{n} rij gevonden in {file}. Kies welke bestandskolom elke tabelkolom vult. | {n} rijen gevonden in {file}. Kies welke bestandskolom elke tabelkolom vult.",
-      "fileColumn": "Uit het bestand",
-      "firstRow": "Eerste rij",
-      "leaveEmpty": "Leeg laten",
-      "needed": "Deze kolommen moeten worden ingevuld: {columns}",
-      "note": "Rijen met een probleem worden overgeslagen en vermeld; de rest wordt toegevoegd. Niets wordt twee keer toegevoegd.",
-      "start": "{n} rij importeren | {n} rijen importeren",
-      "running": "Bezig met importeren van {n} rijen…",
-      "finished": "Import voltooid",
-      "added": "Toegevoegd",
-      "skipped": "Overgeslagen",
-      "whySkipped": "Waarom rijen zijn overgeslagen (de eerste 100):",
-      "rowN": "Rij {n}"
     },
     "readOnlyShort": "Alleen lezen",
     "exportJson": "JSON",

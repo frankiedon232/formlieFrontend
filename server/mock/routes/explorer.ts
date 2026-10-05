@@ -12,8 +12,6 @@
  *   POST /explorer-exports/:id/link                           a one-time private download link (5 min)
  *   GET  /datasource-exports/:token                           the file (plain download)
  *   POST · PATCH · DELETE /datasources/:id/explorer/rows      add, change, delete a row (Full access, their tables)
- *   POST /datasources/:id/explorer/imports                    read a CSV / Excel file: headers, sample, suggested mapping
- *   POST /explorer-imports/:id/run · GET /explorer-imports/:id   import with progress: inserted, failed, errors
  */
 import { z } from 'zod'
 import type { H3Event } from 'h3'
@@ -32,8 +30,6 @@ import { tablesOf } from '../data/databaseTables'
 import { dataSourcesOf, statusOf, type StoredDataSource } from '../data/dataSourceStore'
 import { createdTablesOn } from '../data/destinationStore'
 import type { MockTenant, MockUser } from '../data/tenants'
-import { parseCsv, parseXlsx, type Tabular } from '../core/tabularRead'
-import { importRow } from '../data/importRows'
 import { csvCell } from './responseExports'
 
 /** The connection, if it can be used right now (the real backend would just fail to connect). */
@@ -390,171 +386,4 @@ export const deleteRow = defineMockRoute(({ event, query }) => {
   changes.deleted.push(key)
   rowAudit(event, tenant, user, 'data.row_deleted', source, structure, key)
   return ok({ deleted: true })
-})
-
-// ── Imports ──────────────────────────────────────────────────────────────────────────────
-
-interface ImportSession {
-  id: string
-  tenantId: string
-  sourceId: string
-  schema: string
-  table: string
-  file: string
-  headers: string[]
-  rows: string[][]
-  started: number | null
-  speed: number
-  result: {
-    inserted: number
-    failed: number
-    errors: { row: number; column: string; problem: string }[]
-  } | null
-}
-const imports = new Map<string, ImportSession>()
-const MAX_BYTES = 5 * 1024 * 1024
-const MAX_ROWS = 50_000
-const normalised = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '')
-
-export const startImport = defineMockRoute(({ event, body }) => {
-  const { tenant } = requireAdmin(event)
-  const input = parseBody(
-    z.object({
-      schema: z.string(),
-      table: z.string(),
-      file_name: z.string().max(200),
-      content: z.string().max(Math.ceil((MAX_BYTES * 4) / 3) + 8),
-    }),
-    body,
-  )
-  const source = usable(tenant, getRouterParam(event, 'id'))
-  const { structure } = writable(tenant, source, input)
-  const bytes = Buffer.from(input.content, 'base64')
-  if (bytes.length > MAX_BYTES) throw new MockError('FRM-DEST-1021')
-  let parsed: Tabular
-  try {
-    parsed = /\.xlsx$/i.test(input.file_name) ? parseXlsx(bytes) : parseCsv(bytes.toString('utf8'))
-  } catch {
-    throw new MockError('FRM-DEST-1020')
-  }
-  if (!parsed.headers.length) throw new MockError('FRM-DEST-1020')
-  if (parsed.rows.length > MAX_ROWS) throw new MockError('FRM-DEST-1021')
-  const session: ImportSession = {
-    id: crypto.randomUUID(),
-    tenantId: tenant.id,
-    sourceId: source.id,
-    schema: structure.schema,
-    table: structure.name,
-    file: input.file_name,
-    headers: parsed.headers,
-    rows: parsed.rows,
-    started: null,
-    speed: 0,
-    result: null,
-  }
-  imports.set(session.id, session)
-  // Columns matched to headers by name (ignoring case, spaces and punctuation).
-  const mapping = Object.fromEntries(
-    structure.columns.map(column => [
-      column.name,
-      parsed.headers.find(header => normalised(header) === normalised(column.name)) ?? null,
-    ]),
-  )
-  return ok(
-    {
-      id: session.id,
-      headers: parsed.headers,
-      sample: parsed.rows.slice(0, 5),
-      total: parsed.rows.length,
-      mapping,
-    },
-    {},
-    201,
-  )
-})
-
-function findImport(tenant: MockTenant, id: string | undefined) {
-  const session = id ? imports.get(id) : undefined
-  if (!session || session.tenantId !== tenant.id) throw new MockError('FRM-DEST-1008')
-  return session
-}
-
-function importView(session: ImportSession) {
-  const total = session.rows.length
-  const done =
-    session.started === null
-      ? 0
-      : Math.min(total, Math.floor(((Date.now() - session.started) / 1000) * session.speed))
-  const finished = session.result !== null && done >= total
-  return {
-    id: session.id,
-    status: session.started === null ? 'ready' : finished ? 'done' : 'running',
-    progress: total ? Math.round((done / total) * 100) : 100,
-    total,
-    ...(finished ? session.result : { inserted: 0, failed: 0, errors: [] }),
-  }
-}
-
-export const runImport = defineMockRoute(({ event, body }) => {
-  const { tenant, user } = requireAdmin(event)
-  const session = findImport(tenant, getRouterParam(event, 'id'))
-  if (session.started !== null) throw new MockError('FRM-DEST-1017')
-  const { mapping } = parseBody(z.object({ mapping: z.record(z.string(), z.string().nullable()) }), body)
-  const source = usable(tenant, session.sourceId)
-  const { tables, structure } = writable(tenant, source, { schema: session.schema, table: session.table })
-  // A column that must be filled needs a file column (or its own default).
-  const missing = structure.columns.filter(
-    column => !column.nullable && !column.has_default && !mapping[column.name],
-  )
-  if (missing.length)
-    throw new MockError(
-      'FRM-GEN-1002',
-      missing.map(column => ({ field: column.name, message: 'required' })),
-    )
-  const existing = rowsOf(tenant, source, tables, structure)
-  const keys = new Set(existing.map(row => row.__key))
-  const changes = changesOf(source, structure)
-  const errors: { row: number; column: string; problem: string }[] = []
-  let inserted = 0
-  let failed = 0
-  let next = structure.primary_key.length ? nextKey(existing, structure.primary_key[0]!) : 1
-  session.rows.forEach((line, index) => {
-    const result = importRow(structure, session.headers, line, mapping)
-    let problem: { column: string; problem: string } | null = 'problem' in result ? result.problem : null
-    if ('values' in result) {
-      const values = result.values
-      for (const name of structure.primary_key) if (values[name] == null) values[name] = next++
-      const key = keyFor(structure, values)
-      if (keys.has(key)) problem = { column: structure.primary_key[0] ?? '', problem: 'duplicate' }
-      else {
-        keys.add(key)
-        changes.inserted.push({ ...values, __key: key } as TableRow)
-        inserted++
-      }
-    }
-    if (problem) {
-      failed++
-      if (errors.length < 100) errors.push({ row: index + 2, ...problem })
-    }
-  })
-  session.result = { inserted, failed, errors }
-  session.started = Date.now()
-  session.speed = Math.max(300, session.rows.length / 4)
-  recordAudit(event, tenant, {
-    action: 'data.rows_imported',
-    actor: actorOf(user),
-    resource: { type: 'data_source', id: source.id, name: source.name },
-    metadata: {
-      table: `${structure.schema}.${structure.name}`,
-      file: session.file,
-      inserted: String(inserted),
-      failed: String(failed),
-    },
-  })
-  return ok(importView(session))
-})
-
-export const getImport = defineMockRoute(({ event }) => {
-  const { tenant } = requireAdmin(event)
-  return ok(importView(findImport(tenant, getRouterParam(event, 'id'))))
 })

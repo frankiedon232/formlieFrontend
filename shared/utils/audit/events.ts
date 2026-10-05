@@ -111,7 +111,6 @@ export const AUDIT_EVENTS = {
   'data.row_inserted': { area: 'data', icon: 'i-lucide-list-plus' },
   'data.row_updated': { area: 'data', icon: 'i-lucide-pencil-line' },
   'data.row_deleted': { area: 'data', icon: 'i-lucide-list-x' },
-  'data.rows_imported': { area: 'data', icon: 'i-lucide-file-up' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>
