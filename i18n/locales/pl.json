@@ -873,7 +873,9 @@
       "responses_submitted": "Otrzymano odpowiedź",
       "forms_page_design_created": "Zapisano stronę docelową",
       "forms_page_design_updated": "Zaktualizowano stronę docelową",
-      "forms_page_design_deleted": "Usunięto stronę docelową"
+      "forms_page_design_deleted": "Usunięto stronę docelową",
+      "responses_export_downloaded": "Pobrano eksport",
+      "responses_export_deleted": "Usunięto eksport"
     },
     "detail": {
       "who": "Kto",
@@ -3449,6 +3451,75 @@
       "inUse": "Używane tagi",
       "add": "Dodaj do zaznaczonych ({n}) | Dodaj do zaznaczonych ({n})",
       "remove": "Usuń"
+    },
+    "export": {
+      "button": "Eksportuj",
+      "title": "Eksport odpowiedzi",
+      "desc": "Wybierz format i odpowiedzi. Plik będzie gotowy za chwilę.",
+      "formatLabel": "Format",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Otwiera się w Excelu, Numbers lub Arkuszach Google.",
+        "csv": "Zwykły tekst do dowolnego arkusza lub systemu.",
+        "pdf": "Dokument do druku, odpowiedź po odpowiedzi."
+      },
+      "which": "Które odpowiedzi",
+      "scope": {
+        "all": "Wszystkie odpowiedzi ({n}) | Wszystkie odpowiedzi ({n})",
+        "filtered": "Zgodne z filtrami ({n}) | Zgodne z filtrami ({n})",
+        "selected": "Zaznaczone ({n}) | Zaznaczone ({n})"
+      },
+      "allQuestions": "Wszystkie pytania",
+      "allQuestionsOn": "Wszystkie pytania formularza, po kolei.",
+      "allQuestionsOff": "Pytania widoczne w tabeli: {n} | Pytania widoczne w tabeli: {n}, w tej kolejności",
+      "details": "Szczegóły przeglądu",
+      "detailsHint": "Status, tagi, źródło, język, czas wypełniania i notatki.",
+      "start": "Eksportuj",
+      "making": "Tworzenie pliku…",
+      "rows": "Odpowiedzi: {n} | Odpowiedzi: {n}",
+      "ready": "Plik jest gotowy",
+      "kept": "Zapisany w Odpowiedzi → Eksporty, zostanie usunięty {when}.",
+      "download": "Pobierz",
+      "allExports": "Wszystkie eksporty"
+    },
+    "exports": {
+      "subtitle": "Twoje pliki odpowiedzi, przechowywane 7 dni",
+      "search": "Szukaj plików lub formularzy…",
+      "emptyTitle": "Brak eksportów",
+      "emptyDesc": "Otwórz odpowiedzi formularza i wybierz Eksportuj.",
+      "made": "Utworzono {when}",
+      "available": "Dostępny",
+      "openForm": "Otwórz odpowiedzi",
+      "delete": "Usuń",
+      "deleteTitle": "Usunąć „{name}”?",
+      "deleteDesc": "Plik zostanie usunięty na stałe. Możesz wyeksportować ponownie w każdej chwili.",
+      "deleted": "Eksport usunięty",
+      "col": {
+        "file": "Plik",
+        "status": "Stan",
+        "rows": "Odpowiedzi",
+        "columns": "Kolumny",
+        "scope": "Zakres",
+        "size": "Rozmiar",
+        "by": "Utworzył",
+        "made": "Utworzono"
+      },
+      "scope": {
+        "all": "Wszystkie",
+        "filtered": "Przefiltrowane",
+        "selected": "Zaznaczone"
+      },
+      "status": {
+        "queued": "W przygotowaniu",
+        "running": "W przygotowaniu",
+        "ready": "Gotowy",
+        "expired": "Wygasł",
+        "failed": "Błąd"
+      }
     }
   },
   "pages": {

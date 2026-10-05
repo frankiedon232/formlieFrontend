@@ -873,7 +873,9 @@
       "responses_submitted": "Reactie ontvangen",
       "forms_page_design_created": "Landingspagina opgeslagen",
       "forms_page_design_updated": "Landingspagina bijgewerkt",
-      "forms_page_design_deleted": "Landingspagina verwijderd"
+      "forms_page_design_deleted": "Landingspagina verwijderd",
+      "responses_export_downloaded": "Export gedownload",
+      "responses_export_deleted": "Export verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -3449,6 +3451,75 @@
       "inUse": "Gebruikte tags",
       "add": "Toevoegen aan {n} | Toevoegen aan {n}",
       "remove": "Verwijderen"
+    },
+    "export": {
+      "button": "Exporteren",
+      "title": "Reacties exporteren",
+      "desc": "Kies een formaat en welke reacties. Het bestand is zo klaar.",
+      "formatLabel": "Formaat",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Opent in Excel, Numbers of Google Sheets.",
+        "csv": "Platte tekst voor elk spreadsheet of systeem.",
+        "pdf": "Een afdrukbaar document, de ene reactie na de andere."
+      },
+      "which": "Welke reacties",
+      "scope": {
+        "all": "Alle reacties ({n}) | Alle reacties ({n})",
+        "filtered": "Passend bij de filters ({n}) | Passend bij de filters ({n})",
+        "selected": "Geselecteerd ({n}) | Geselecteerd ({n})"
+      },
+      "allQuestions": "Alle vragen",
+      "allQuestionsOn": "Alle vragen van het formulier, op volgorde.",
+      "allQuestionsOff": "De {n} vraag uit de tabel | De {n} vragen uit de tabel, in hun volgorde",
+      "details": "Beoordelingsgegevens",
+      "detailsHint": "Status, tags, binnengekomen via, taal, benodigde tijd en notities.",
+      "start": "Exporteren",
+      "making": "Uw bestand wordt gemaakt…",
+      "rows": "{n} reactie | {n} reacties",
+      "ready": "Uw bestand is klaar",
+      "kept": "Bewaard in Reacties → Exports, wordt {when} verwijderd.",
+      "download": "Downloaden",
+      "allExports": "Alle exports"
+    },
+    "exports": {
+      "subtitle": "Uw reactiebestanden, 7 dagen bewaard",
+      "search": "Bestanden of formulieren zoeken…",
+      "emptyTitle": "Nog geen exports",
+      "emptyDesc": "Open de reacties van een formulier en kies Exporteren.",
+      "made": "Gemaakt {when}",
+      "available": "Beschikbaar",
+      "openForm": "Reacties openen",
+      "delete": "Verwijderen",
+      "deleteTitle": "“{name}” verwijderen?",
+      "deleteDesc": "Het bestand wordt definitief verwijderd. U kunt altijd opnieuw exporteren.",
+      "deleted": "Export verwijderd",
+      "col": {
+        "file": "Bestand",
+        "status": "Status",
+        "rows": "Reacties",
+        "columns": "Kolommen",
+        "scope": "Welke",
+        "size": "Grootte",
+        "by": "Gemaakt door",
+        "made": "Gemaakt"
+      },
+      "scope": {
+        "all": "Alle",
+        "filtered": "Gefilterd",
+        "selected": "Geselecteerd"
+      },
+      "status": {
+        "queued": "Wordt voorbereid",
+        "running": "Wordt voorbereid",
+        "ready": "Klaar",
+        "expired": "Verlopen",
+        "failed": "Mislukt"
+      }
     }
   },
   "pages": {

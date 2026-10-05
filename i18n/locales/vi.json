@@ -873,7 +873,9 @@
       "responses_submitted": "Đã nhận phản hồi",
       "forms_page_design_created": "Đã lưu trang đích",
       "forms_page_design_updated": "Đã cập nhật trang đích",
-      "forms_page_design_deleted": "Đã xoá trang đích"
+      "forms_page_design_deleted": "Đã xoá trang đích",
+      "responses_export_downloaded": "Đã tải bản xuất",
+      "responses_export_deleted": "Đã xoá bản xuất"
     },
     "detail": {
       "who": "Ai",
@@ -3449,6 +3451,75 @@
       "inUse": "Thẻ đang dùng",
       "add": "Thêm vào {n} | Thêm vào {n}",
       "remove": "Gỡ"
+    },
+    "export": {
+      "button": "Xuất",
+      "title": "Xuất phản hồi",
+      "desc": "Chọn định dạng và phản hồi nào. Tệp sẽ sẵn sàng ngay.",
+      "formatLabel": "Định dạng",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Mở được bằng Excel, Numbers hoặc Google Trang tính.",
+        "csv": "Văn bản thuần cho mọi bảng tính hoặc hệ thống.",
+        "pdf": "Tài liệu để in, lần lượt từng phản hồi."
+      },
+      "which": "Phản hồi nào",
+      "scope": {
+        "all": "Tất cả phản hồi ({n}) | Tất cả phản hồi ({n})",
+        "filtered": "Khớp bộ lọc ({n}) | Khớp bộ lọc ({n})",
+        "selected": "Đã chọn ({n}) | Đã chọn ({n})"
+      },
+      "allQuestions": "Mọi câu hỏi",
+      "allQuestionsOn": "Tất cả câu hỏi của biểu mẫu, theo thứ tự.",
+      "allQuestionsOff": "{n} câu hỏi đang hiện trong bảng | {n} câu hỏi đang hiện trong bảng, theo thứ tự của chúng",
+      "details": "Chi tiết xét duyệt",
+      "detailsHint": "Trạng thái, thẻ, nguồn gửi, ngôn ngữ, thời gian làm và ghi chú.",
+      "start": "Xuất",
+      "making": "Đang tạo tệp…",
+      "rows": "{n} phản hồi | {n} phản hồi",
+      "ready": "Tệp của bạn đã sẵn sàng",
+      "kept": "Lưu trong Phản hồi → Bản xuất, sẽ bị xoá {when}.",
+      "download": "Tải xuống",
+      "allExports": "Tất cả bản xuất"
+    },
+    "exports": {
+      "subtitle": "Tệp phản hồi của bạn, lưu 7 ngày",
+      "search": "Tìm tệp hoặc biểu mẫu…",
+      "emptyTitle": "Chưa có bản xuất nào",
+      "emptyDesc": "Mở phản hồi của một biểu mẫu và chọn Xuất.",
+      "made": "Tạo {when}",
+      "available": "Còn dùng được",
+      "openForm": "Mở phản hồi",
+      "delete": "Xoá",
+      "deleteTitle": "Xoá “{name}”?",
+      "deleteDesc": "Tệp sẽ bị xoá vĩnh viễn. Bạn có thể xuất lại bất cứ lúc nào.",
+      "deleted": "Đã xoá bản xuất",
+      "col": {
+        "file": "Tệp",
+        "status": "Trạng thái",
+        "rows": "Phản hồi",
+        "columns": "Cột",
+        "scope": "Phạm vi",
+        "size": "Kích thước",
+        "by": "Người tạo",
+        "made": "Ngày tạo"
+      },
+      "scope": {
+        "all": "Tất cả",
+        "filtered": "Đã lọc",
+        "selected": "Đã chọn"
+      },
+      "status": {
+        "queued": "Đang chuẩn bị",
+        "running": "Đang chuẩn bị",
+        "ready": "Sẵn sàng",
+        "expired": "Hết hạn",
+        "failed": "Thất bại"
+      }
     }
   },
   "pages": {

@@ -873,7 +873,9 @@
       "responses_submitted": "Respons diterima",
       "forms_page_design_created": "Halaman arahan disimpan",
       "forms_page_design_updated": "Halaman arahan diperbarui",
-      "forms_page_design_deleted": "Halaman arahan dihapus"
+      "forms_page_design_deleted": "Halaman arahan dihapus",
+      "responses_export_downloaded": "Ekspor diunduh",
+      "responses_export_deleted": "Ekspor dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -3449,6 +3451,75 @@
       "inUse": "Tag yang dipakai",
       "add": "Tambah ke {n} | Tambah ke {n}",
       "remove": "Hapus"
+    },
+    "export": {
+      "button": "Ekspor",
+      "title": "Ekspor respons",
+      "desc": "Pilih format dan respons mana. File siap sebentar lagi.",
+      "formatLabel": "Format",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Terbuka di Excel, Numbers, atau Google Sheets.",
+        "csv": "Teks biasa untuk spreadsheet atau sistem apa pun.",
+        "pdf": "Dokumen yang bisa dicetak, satu respons demi satu."
+      },
+      "which": "Respons mana",
+      "scope": {
+        "all": "Semua respons ({n}) | Semua respons ({n})",
+        "filtered": "Sesuai filter ({n}) | Sesuai filter ({n})",
+        "selected": "Terpilih ({n}) | Terpilih ({n})"
+      },
+      "allQuestions": "Semua pertanyaan",
+      "allQuestionsOn": "Semua pertanyaan formulir, berurutan.",
+      "allQuestionsOff": "{n} pertanyaan yang tampil di tabel | {n} pertanyaan yang tampil di tabel, sesuai urutannya",
+      "details": "Detail tinjauan",
+      "detailsHint": "Status, tag, asal masuk, bahasa, waktu yang dipakai, dan catatan.",
+      "start": "Ekspor",
+      "making": "Membuat file Anda…",
+      "rows": "{n} respons | {n} respons",
+      "ready": "File Anda siap",
+      "kept": "Disimpan di Respons → Ekspor, dihapus {when}.",
+      "download": "Unduh",
+      "allExports": "Semua ekspor"
+    },
+    "exports": {
+      "subtitle": "File respons Anda, disimpan 7 hari",
+      "search": "Cari file atau formulir…",
+      "emptyTitle": "Belum ada ekspor",
+      "emptyDesc": "Buka respons formulir dan pilih Ekspor.",
+      "made": "Dibuat {when}",
+      "available": "Tersedia",
+      "openForm": "Buka respons",
+      "delete": "Hapus",
+      "deleteTitle": "Hapus “{name}”?",
+      "deleteDesc": "File dihapus permanen. Anda bisa mengekspor lagi kapan saja.",
+      "deleted": "Ekspor dihapus",
+      "col": {
+        "file": "File",
+        "status": "Keadaan",
+        "rows": "Respons",
+        "columns": "Kolom",
+        "scope": "Cakupan",
+        "size": "Ukuran",
+        "by": "Dibuat oleh",
+        "made": "Dibuat"
+      },
+      "scope": {
+        "all": "Semua",
+        "filtered": "Tersaring",
+        "selected": "Terpilih"
+      },
+      "status": {
+        "queued": "Disiapkan",
+        "running": "Disiapkan",
+        "ready": "Siap",
+        "expired": "Kedaluwarsa",
+        "failed": "Gagal"
+      }
     }
   },
   "pages": {

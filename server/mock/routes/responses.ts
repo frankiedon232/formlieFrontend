@@ -33,7 +33,7 @@ const list = (query: Query, key: string) => {
 }
 const day = (value: unknown, end: boolean) => (typeof value === 'string' && value ? Date.parse(value) + (end ? DAY - 1 : 0) : null)
 
-function formFor(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
+export function formFor(tenant: MockTenant, user: MockUser, id: string | undefined): StoredForm {
   const form = formsOf(tenant).forms.find(item => item.id === id && !item.deleted_at)
   if (!form) throw new MockError('FRM-GEN-1004')
   requireLevel(form, user, 'responses')
@@ -41,7 +41,7 @@ function formFor(tenant: MockTenant, user: MockUser, id: string | undefined): St
 }
 
 /** Questions a respondent can answer (no headings, hidden or calculated fields). */
-const questionsOf = (form: StoredForm) =>
+export const questionsOf = (form: StoredForm) =>
   allFields(responseSchema(form) ?? { schema_version: 1, pages: [] }).filter(field => isInputField(field.type) && !['hidden', 'calculated', 'payment'].includes(field.type))
 const filled = (value: unknown) => value != null && value !== '' && value !== false && !(Array.isArray(value) && !value.length)
 
@@ -69,8 +69,8 @@ function rowOf(form: StoredForm, entry: IndexedResponse, withAnswers: boolean): 
   }
 }
 
-/** Status, tag, channel, date and search filters, then sort and one page. */
-function pageOf(items: { form: StoredForm; entry: IndexedResponse }[], query: Query, searchAnswers: boolean) {
+/** Status, tag, channel, date, answer and search filters, then sort (the list and exports share it). */
+export function filterResponses(items: { form: StoredForm; entry: IndexedResponse }[], query: Query, searchAnswers: boolean) {
   const status = list(query, 'status')
   const tag = list(query, 'tag')
   const channel = list(query, 'channel')
@@ -93,7 +93,7 @@ function pageOf(items: { form: StoredForm; entry: IndexedResponse }[], query: Qu
     const data = answersOf(form, entry)
     return answerFilters.every(item => answerMatches(data[item.key], item.wanted)) && (!empty || empty.every(key => isEmptyAnswer(data[key])))
   }
-  let result = items.filter(
+  const result = items.filter(
     ({ form, entry }) =>
       (!status || status.includes(entry.status)) &&
       (!tag || entry.tags.some(item => tag.includes(item))) &&
@@ -114,11 +114,16 @@ function pageOf(items: { form: StoredForm; entry: IndexedResponse }[], query: Qu
   const ORDER: Record<ResponseStatus, number> = { new: 0, reviewed: 1, approved: 2, rejected: 3 }
   const value = ({ form, entry }: { form: StoredForm; entry: IndexedResponse }): string | number =>
     key === 'number' ? entry.number : key === 'status' ? ORDER[entry.status] : key === 'respondent' ? (entry.respondent.name ?? entry.respondent.email ?? '~').toLowerCase() : key === 'form' ? form.name.toLowerCase() : entry.at
-  result = [...result].sort((a, b) => {
+  return [...result].sort((a, b) => {
     const x = value(a)
     const y = value(b)
     return (x < y ? -1 : x > y ? 1 : b.entry.at - a.entry.at) * (desc ? -1 : 1)
   })
+}
+
+/** Filtered, sorted, and one page of it. */
+function pageOf(items: { form: StoredForm; entry: IndexedResponse }[], query: Query, searchAnswers: boolean) {
+  const result = filterResponses(items, query, searchAnswers)
   const page = Math.max(1, Number(query.page) || 1)
   const pageSize = Math.min(100, Math.max(1, Number(query.page_size) || 20))
   return {

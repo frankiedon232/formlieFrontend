@@ -128,7 +128,7 @@ const canEdit = computed(() => canEditForm(form.value))
     <div v-else-if="form && insights" class="flex flex-col gap-4">
       <FormsResponsesOverview :insights="insights" per-form :status="statusFilter" @status="filterStatus" @insights="view = 'insights'" />
 
-      <FormsResponsesList v-if="view === 'responses' && insights.schema" ref="list" :form-id="id" :schema="insights.schema" :can-edit="canEdit" @open="openRow" @changed="changed">
+      <FormsResponsesList v-if="view === 'responses' && insights.schema" ref="list" :form-id="id" :schema="insights.schema" :can-edit="canEdit" :total="insights.total" @open="openRow" @changed="changed">
         <template #start><FormsResponsesViewSwitch v-model="view" /></template>
       </FormsResponsesList>
       <template v-else-if="view === 'insights'">

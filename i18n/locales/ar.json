@@ -873,7 +873,9 @@
       "responses_submitted": "استُلم رد",
       "forms_page_design_created": "تم حفظ صفحة هبوط",
       "forms_page_design_updated": "تم تحديث صفحة هبوط",
-      "forms_page_design_deleted": "تم حذف صفحة هبوط"
+      "forms_page_design_deleted": "تم حذف صفحة هبوط",
+      "responses_export_downloaded": "تم تنزيل تصدير",
+      "responses_export_deleted": "تم حذف تصدير"
     },
     "detail": {
       "who": "من",
@@ -3449,6 +3451,75 @@
       "inUse": "وسوم مستخدمة",
       "add": "إضافة إلى {n} | إضافة إلى {n}",
       "remove": "إزالة"
+    },
+    "export": {
+      "button": "تصدير",
+      "title": "تصدير الردود",
+      "desc": "اختر التنسيق والردود. سيكون الملف جاهزًا خلال لحظات.",
+      "formatLabel": "التنسيق",
+      "format": {
+        "xlsx": "Excel ‏(.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "يُفتح في Excel أو Numbers أو Google Sheets.",
+        "csv": "نص عادي لأي جدول بيانات أو نظام.",
+        "pdf": "مستند قابل للطباعة، ردّ تلو الآخر."
+      },
+      "which": "أي الردود",
+      "scope": {
+        "all": "كل الردود ({n}) | كل الردود ({n})",
+        "filtered": "المطابقة للمرشحات ({n}) | المطابقة للمرشحات ({n})",
+        "selected": "المحددة ({n}) | المحددة ({n})"
+      },
+      "allQuestions": "كل الأسئلة",
+      "allQuestionsOn": "كل أسئلة النموذج بالترتيب.",
+      "allQuestionsOff": "السؤال الظاهر في الجدول ({n}) | الأسئلة الظاهرة في الجدول ({n}) بترتيبها",
+      "details": "تفاصيل المراجعة",
+      "detailsHint": "الحالة والوسوم ومصدر الوصول واللغة والوقت المستغرق والملاحظات.",
+      "start": "تصدير",
+      "making": "جارٍ إعداد ملفك…",
+      "rows": "{n} رد | {n} ردود",
+      "ready": "ملفك جاهز",
+      "kept": "محفوظ في الردود ← التصديرات، ويُحذف {when}.",
+      "download": "تنزيل",
+      "allExports": "كل التصديرات"
+    },
+    "exports": {
+      "subtitle": "ملفات الردود لديك، محفوظة 7 أيام",
+      "search": "ابحث في الملفات أو النماذج…",
+      "emptyTitle": "لا توجد تصديرات بعد",
+      "emptyDesc": "افتح ردود نموذج واختر تصدير.",
+      "made": "أُنشئ {when}",
+      "available": "متاح",
+      "openForm": "فتح الردود",
+      "delete": "حذف",
+      "deleteTitle": "حذف «{name}»؟",
+      "deleteDesc": "يُحذف الملف نهائيًا. يمكنك التصدير مجددًا في أي وقت.",
+      "deleted": "تم حذف التصدير",
+      "col": {
+        "file": "الملف",
+        "status": "الحالة",
+        "rows": "الردود",
+        "columns": "الأعمدة",
+        "scope": "النطاق",
+        "size": "الحجم",
+        "by": "أنشأه",
+        "made": "أُنشئ"
+      },
+      "scope": {
+        "all": "الكل",
+        "filtered": "المصفّاة",
+        "selected": "المحددة"
+      },
+      "status": {
+        "queued": "قيد الإعداد",
+        "running": "قيد الإعداد",
+        "ready": "جاهز",
+        "expired": "منتهي الصلاحية",
+        "failed": "فشل"
+      }
     }
   },
   "pages": {

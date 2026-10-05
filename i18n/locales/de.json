@@ -873,7 +873,9 @@
       "responses_submitted": "Antwort eingegangen",
       "forms_page_design_created": "Landingpage gespeichert",
       "forms_page_design_updated": "Landingpage aktualisiert",
-      "forms_page_design_deleted": "Landingpage gelöscht"
+      "forms_page_design_deleted": "Landingpage gelöscht",
+      "responses_export_downloaded": "Export heruntergeladen",
+      "responses_export_deleted": "Export gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -3449,6 +3451,75 @@
       "inUse": "Verwendete Tags",
       "add": "Zu {n} hinzufügen | Zu {n} hinzufügen",
       "remove": "Entfernen"
+    },
+    "export": {
+      "button": "Exportieren",
+      "title": "Antworten exportieren",
+      "desc": "Wählen Sie Format und Antworten. Die Datei ist gleich fertig.",
+      "formatLabel": "Format",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Öffnet in Excel, Numbers oder Google Sheets.",
+        "csv": "Reiner Text für jede Tabelle und jedes System.",
+        "pdf": "Ein druckbares Dokument, eine Antwort nach der anderen."
+      },
+      "which": "Welche Antworten",
+      "scope": {
+        "all": "Alle Antworten ({n}) | Alle Antworten ({n})",
+        "filtered": "Passend zu den Filtern ({n}) | Passend zu den Filtern ({n})",
+        "selected": "Ausgewählt ({n}) | Ausgewählt ({n})"
+      },
+      "allQuestions": "Alle Fragen",
+      "allQuestionsOn": "Alle Fragen des Formulars, in Reihenfolge.",
+      "allQuestionsOff": "Die {n} Frage aus der Tabelle | Die {n} Fragen aus der Tabelle, in ihrer Reihenfolge",
+      "details": "Prüfdetails",
+      "detailsHint": "Status, Tags, Eingangsweg, Sprache, benötigte Zeit und Notizen.",
+      "start": "Exportieren",
+      "making": "Ihre Datei wird erstellt…",
+      "rows": "{n} Antwort | {n} Antworten",
+      "ready": "Ihre Datei ist fertig",
+      "kept": "Unter Antworten → Exporte gespeichert, wird {when} entfernt.",
+      "download": "Herunterladen",
+      "allExports": "Alle Exporte"
+    },
+    "exports": {
+      "subtitle": "Ihre Antwortdateien, 7 Tage aufbewahrt",
+      "search": "Dateien oder Formulare suchen…",
+      "emptyTitle": "Noch keine Exporte",
+      "emptyDesc": "Öffnen Sie die Antworten eines Formulars und wählen Sie Exportieren.",
+      "made": "Erstellt {when}",
+      "available": "Verfügbar",
+      "openForm": "Antworten öffnen",
+      "delete": "Löschen",
+      "deleteTitle": "„{name}“ löschen?",
+      "deleteDesc": "Die Datei wird endgültig entfernt. Sie können jederzeit erneut exportieren.",
+      "deleted": "Export gelöscht",
+      "col": {
+        "file": "Datei",
+        "status": "Zustand",
+        "rows": "Antworten",
+        "columns": "Spalten",
+        "scope": "Umfang",
+        "size": "Größe",
+        "by": "Erstellt von",
+        "made": "Erstellt"
+      },
+      "scope": {
+        "all": "Alle",
+        "filtered": "Gefiltert",
+        "selected": "Ausgewählt"
+      },
+      "status": {
+        "queued": "Wird vorbereitet",
+        "running": "Wird vorbereitet",
+        "ready": "Bereit",
+        "expired": "Abgelaufen",
+        "failed": "Fehlgeschlagen"
+      }
     }
   },
   "pages": {

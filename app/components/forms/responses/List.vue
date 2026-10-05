@@ -3,7 +3,8 @@
   status, every question (the first four useful ones shown; move or show / hide any in Columns,
   remembered per form; ratings as slim bars like the design's progress column), notes. Filters: status, channel, possible duplicates, tags, and
   under "Questions" one per choice, yes / no or rating question plus "Left empty" (F11 M2); search covers
-  the answers too. A row (or card) opens the response; bulk: set status, add / remove a tag, delete (editors).
+  the answers too. A row (or card) opens the response; bulk: set status, add / remove a tag, export, delete (editors).
+  Export (F11 M3) on the toolbar line and for the selection: the list's filters and table columns.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -13,13 +14,29 @@ import { isInputField } from '#shared/utils/forms/fields'
 import { ANSWER_FILTER_PREFIX, filterValues } from '#shared/utils/forms/answer-filter'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 
-const props = defineProps<{ formId: string; schema: FormSchemaV1; canEdit: boolean }>()
+const props = defineProps<{ formId: string; schema: FormSchemaV1; canEdit: boolean; total?: number }>()
 const emit = defineEmits<{ open: [row: ResponseRow, rows: ResponseRow[]]; changed: [] }>()
 const { t } = useI18n()
 const api = useApi()
 const { relative, dateTime, number } = useFormat()
 const { text } = useResponseFormat()
-const view = useTemplateRef<{ refresh: () => Promise<void>; state: { rows: { value: ResponseRow[] } } }>('view')
+const view = useTemplateRef<{ refresh: () => Promise<void>; shownColumns: () => string[]; state: { rows: { value: ResponseRow[] }; meta: { value: { total: number } | null }; params: () => Record<string, string | number> } }>('view')
+
+// Export (F11 M3): the list's own filters, count and table columns, or the selected rows.
+const exportOpen = ref(false)
+const exportIds = ref<string[]>([])
+const exportQuery = ref<Record<string, string | number>>({})
+const exportColumns = ref<string[]>([])
+function openExport(ids: string[] = []) {
+  exportIds.value = ids
+  exportQuery.value = view.value?.state.params() ?? {}
+  exportColumns.value = (view.value?.shownColumns() ?? []).filter(key => key.startsWith('q_')).map(key => key.slice(2))
+  exportOpen.value = true
+}
+function exportSelected(ids: string[], clear: () => void) {
+  openExport(ids)
+  clear()
+}
 
 // ── Question columns: all of them, the first four useful ones shown (Columns moves / shows / hides)
 const questions = computed(() => allFields(props.schema).filter(field => isInputField(field.type) && field.type !== 'payment'))
@@ -173,7 +190,11 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
       <FormsResponsesCard :row="row" :fields="cardFields(shown)" :actions="rowActions(row)" @open="openRow(row)" />
     </template>
 
+    <template #toolbar-end>
+      <UButton :label="t('responses.export.button')" icon="i-lucide-file-down" color="neutral" variant="outline" class="@max-xl:[&>span:last-child]:sr-only" @click="openExport()" />
+    </template>
     <template #bulk-actions="{ selected, clear }">
+      <UButton :label="t('responses.export.button')" icon="i-lucide-file-down" color="neutral" variant="outline" size="sm" @click="exportSelected(selected.map(row => row.id), clear)" />
       <UDropdownMenu :items="statusItems(selected.map(row => row.id), clear)">
         <UButton :label="t('responses.list.markAs')" icon="i-lucide-circle-dot" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" />
       </UDropdownMenu>
@@ -181,4 +202,13 @@ defineExpose({ refresh: () => view.value?.refresh(), rows: () => view.value?.sta
       <UButton v-if="canEdit" :label="t('responses.list.delete')" icon="i-lucide-trash-2" color="error" variant="outline" size="sm" @click="bulk(selected.map(row => row.id), 'delete').then(clear)" />
     </template>
   </DataView>
+  <FormsResponsesExportModal
+    v-model:open="exportOpen"
+    :form-id="formId"
+    :query="exportQuery"
+    :total="total ?? view?.state.meta.value?.total ?? 0"
+    :filtered="view?.state.meta.value?.total ?? 0"
+    :selected-ids="exportIds"
+    :columns="exportColumns"
+  />
 </template>

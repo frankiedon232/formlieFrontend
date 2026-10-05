@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-04 · **Current phase:** F11, Responses (M1 and M2 done; next M3 exports, then M4 folders and review). Landing pages library built in between (owner request).
+**Last updated:** 2026-10-05 · **Current phase:** F11, Responses (M1, M2 and M3 done; next M4: Folders workspace, polish and review). Landing pages library built in between (owner request).
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -21,7 +21,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
-| F11   | Responses                                         | 🟡     | ~70% |
+| F11   | Responses                                         | 🟡     | ~85% |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
@@ -506,7 +506,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 
 ## F11, Responses 🟡
 
-**Plan (2026-10-04, milestones):** **M1** ✅ one response source for every page (decision 100), per-form Responses page with insights and slim charts, Summary per question, list, response panel, Responses page grouped by form. **M2** ✅ editing answers (with history), filters by answers and tags, bulk tags, possible-duplicate review. **M3** ⬜ exports (XLSX / CSV / PDF) with progress and the Exports page. **M4** ⬜ Folders workspace, polish and review (then stop for the owner's review).
+**Plan (2026-10-04, milestones):** **M1** ✅ one response source for every page (decision 100), per-form Responses page with insights and slim charts, Summary per question, list, response panel, Responses page grouped by form. **M2** ✅ editing answers (with history), filters by answers and tags, bulk tags, possible-duplicate review. **M3** ✅ exports (XLSX / CSV / PDF) with progress and the Exports page. **M4** ⬜ Folders workspace, polish and review (then stop for the owner's review).
 
 - ✅ One response source (decision 100): real submissions + stable sample responses for seeded forms; overview, sidebar counts and form lists read from it (owner, 2026-10-04: "connect all the dots")
 - ✅ Per-form responses `/forms/[id]/responses` (DataView, Table / Grid, columns from the form picked in "Columns" and remembered, ratings as slim bars)
@@ -517,7 +517,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Response detail slide-over with next / previous (`J` / `K`), facts, answers grouped by likeness in a scroll-free chip row, files side by side in the shared viewer, possible-duplicate notice (Not a duplicate / Reject as duplicate)
 - ✅ Status (new, reviewed, approved, rejected), tags, notes, history in the audit trail · editing answers in the panel (decision 104: pencil per answer, same control and rules as the form, Edited mark, audit)
 - ✅ Bulk actions: set status, add / remove a tag (type one or pick one in use), delete (editors)
-- ⬜ M3 Export XLSX / CSV / PDF (all, filtered, selected) with progress and download, and the Exports page (Responses → Exports)
+- ✅ M3 Export XLSX / CSV / PDF (all, filtered, selected) with progress and download, and the Exports page (Responses → Exports), decision 108
 
 ### Landing pages library ✅ (owner request 2026-10-04: "add more pages, just like Themes on its menu"; decisions 106, 107)
 
@@ -1160,3 +1160,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | F10 / F9 | Page designs M3: the designer (and the theme editor) has a Page designs group with every design as a miniature (yours first); one click puts that page around the form (only the page changes, undoable; asks when it replaces a page you made), "Save page" stores this form's page in Resources → Pages. Picking a theme or a starting point keeps an applied page design. Designer: Starting points and Your themes are collapsible groups like the rest, open groups get more space below. |
 | 2026-10-04 | F10 / F9 | Renamed to Landing pages (decision 107): menu, `/settings/landing-pages`, designer groups ("Landing pages", "Landing page style"), editor, toasts and audit labels in all 20 languages. |
 | 2026-10-04 | All | PROGRESS brought up to date (owner): F10 marked done after the owner's review, F11 milestones M1 and M2 done with current wording, Landing pages library recorded as done, built requests closed in the New requests log. Next: F11 M3 exports. |
+| 2026-10-05 | F11 | M3 exports: Export on the Responses toolbar and selection bar (Excel · CSV · PDF; all / matching filters / selected; table columns or every question; review details), background file with a percentage bar, then Download over a one-time private link; Responses → Exports lists every export (table and locked card, live progress, Download, Delete, kept 7 days). API `POST /forms/{id}/responses/export`, `/responses/exports…`, audit exported / downloaded / deleted. Tests: `responses/export`. |

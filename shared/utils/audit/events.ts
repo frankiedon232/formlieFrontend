@@ -73,6 +73,8 @@ export const AUDIT_EVENTS = {
   'responses.submitted': { area: 'responses', icon: 'i-lucide-inbox' },
   'responses.updated': { area: 'responses', icon: 'i-lucide-square-pen' },
   'responses.exported': { area: 'responses', icon: 'i-lucide-file-down' },
+  'responses.export_downloaded': { area: 'responses', icon: 'i-lucide-download' },
+  'responses.export_deleted': { area: 'responses', icon: 'i-lucide-file-x' },
   'responses.deleted': { area: 'responses', icon: 'i-lucide-trash' },
   // Settings
   'settings.updated': { area: 'settings', icon: 'i-lucide-settings-2' },

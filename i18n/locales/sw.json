@@ -873,7 +873,9 @@
       "responses_submitted": "Jibu limepokelewa",
       "forms_page_design_created": "Ukurasa wa kutua umehifadhiwa",
       "forms_page_design_updated": "Ukurasa wa kutua umesasishwa",
-      "forms_page_design_deleted": "Ukurasa wa kutua umefutwa"
+      "forms_page_design_deleted": "Ukurasa wa kutua umefutwa",
+      "responses_export_downloaded": "Uhamishaji umepakuliwa",
+      "responses_export_deleted": "Uhamishaji umefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -3449,6 +3451,75 @@
       "inUse": "Lebo zinazotumika",
       "add": "Ongeza kwa {n} | Ongeza kwa {n}",
       "remove": "Ondoa"
+    },
+    "export": {
+      "button": "Hamisha",
+      "title": "Hamisha majibu",
+      "desc": "Chagua muundo na majibu yapi. Faili itakuwa tayari punde.",
+      "formatLabel": "Muundo",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Hufunguka kwenye Excel, Numbers au Google Sheets.",
+        "csv": "Maandishi matupu kwa jedwali au mfumo wowote.",
+        "pdf": "Hati ya kuchapisha, jibu moja baada ya jingine."
+      },
+      "which": "Majibu yapi",
+      "scope": {
+        "all": "Majibu yote ({n}) | Majibu yote ({n})",
+        "filtered": "Yanayolingana na vichujio ({n}) | Yanayolingana na vichujio ({n})",
+        "selected": "Yaliyochaguliwa ({n}) | Yaliyochaguliwa ({n})"
+      },
+      "allQuestions": "Kila swali",
+      "allQuestionsOn": "Maswali yote ya fomu, kwa mpangilio.",
+      "allQuestionsOff": "Swali {n} linaloonyeshwa kwenye jedwali | Maswali {n} yanayoonyeshwa kwenye jedwali, kwa mpangilio wake",
+      "details": "Maelezo ya ukaguzi",
+      "detailsHint": "Hali, lebo, jinsi lilivyoingia, lugha, muda uliotumika na maelezo.",
+      "start": "Hamisha",
+      "making": "Tunaandaa faili yako…",
+      "rows": "Jibu {n} | Majibu {n}",
+      "ready": "Faili yako iko tayari",
+      "kept": "Imehifadhiwa kwenye Majibu → Uhamishaji, itaondolewa {when}.",
+      "download": "Pakua",
+      "allExports": "Uhamishaji wote"
+    },
+    "exports": {
+      "subtitle": "Faili zako za majibu, huhifadhiwa siku 7",
+      "search": "Tafuta faili au fomu…",
+      "emptyTitle": "Bado hakuna uhamishaji",
+      "emptyDesc": "Fungua majibu ya fomu na uchague Hamisha.",
+      "made": "Imeundwa {when}",
+      "available": "Inapatikana",
+      "openForm": "Fungua majibu",
+      "delete": "Futa",
+      "deleteTitle": "Futa “{name}”?",
+      "deleteDesc": "Faili itaondolewa kabisa. Unaweza kuhamisha tena wakati wowote.",
+      "deleted": "Uhamishaji umefutwa",
+      "col": {
+        "file": "Faili",
+        "status": "Hali",
+        "rows": "Majibu",
+        "columns": "Safu",
+        "scope": "Yapi",
+        "size": "Ukubwa",
+        "by": "Imeundwa na",
+        "made": "Imeundwa"
+      },
+      "scope": {
+        "all": "Yote",
+        "filtered": "Yaliyochujwa",
+        "selected": "Yaliyochaguliwa"
+      },
+      "status": {
+        "queued": "Inaandaliwa",
+        "running": "Inaandaliwa",
+        "ready": "Tayari",
+        "expired": "Imeisha muda",
+        "failed": "Imeshindikana"
+      }
     }
   },
   "pages": {

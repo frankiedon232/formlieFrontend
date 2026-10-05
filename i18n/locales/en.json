@@ -873,7 +873,9 @@
       "responses_submitted": "Response received",
       "forms_page_design_created": "Landing page saved",
       "forms_page_design_updated": "Landing page updated",
-      "forms_page_design_deleted": "Landing page deleted"
+      "forms_page_design_deleted": "Landing page deleted",
+      "responses_export_downloaded": "Export downloaded",
+      "responses_export_deleted": "Export deleted"
     },
     "detail": {
       "who": "Who",
@@ -3449,6 +3451,75 @@
       "inUse": "Tags in use",
       "add": "Add to {n} | Add to {n}",
       "remove": "Remove"
+    },
+    "export": {
+      "button": "Export",
+      "title": "Export responses",
+      "desc": "Choose a format and which responses. The file is ready in a moment.",
+      "formatLabel": "Format",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Opens in Excel, Numbers or Google Sheets.",
+        "csv": "Plain text for any spreadsheet or system.",
+        "pdf": "A printable document, one response after another."
+      },
+      "which": "Which responses",
+      "scope": {
+        "all": "All responses ({n}) | All responses ({n})",
+        "filtered": "Matching the filters ({n}) | Matching the filters ({n})",
+        "selected": "Selected ({n}) | Selected ({n})"
+      },
+      "allQuestions": "Every question",
+      "allQuestionsOn": "All the form's questions, in order.",
+      "allQuestionsOff": "The {n} question shown in the table | The {n} questions shown in the table, in their order",
+      "details": "Review details",
+      "detailsHint": "Status, tags, how it came in, language, time taken and notes.",
+      "start": "Export",
+      "making": "Making your file…",
+      "rows": "{n} response | {n} responses",
+      "ready": "Your file is ready",
+      "kept": "Kept on Responses → Exports, removed {when}.",
+      "download": "Download",
+      "allExports": "All exports"
+    },
+    "exports": {
+      "subtitle": "Your response files, kept for 7 days",
+      "search": "Search files or forms…",
+      "emptyTitle": "No exports yet",
+      "emptyDesc": "Open a form's responses and choose Export.",
+      "made": "Made {when}",
+      "available": "Available",
+      "openForm": "Open responses",
+      "delete": "Delete",
+      "deleteTitle": "Delete “{name}”?",
+      "deleteDesc": "The file is removed for good. You can export again any time.",
+      "deleted": "Export deleted",
+      "col": {
+        "file": "File",
+        "status": "State",
+        "rows": "Responses",
+        "columns": "Columns",
+        "scope": "Which",
+        "size": "Size",
+        "by": "Made by",
+        "made": "Made"
+      },
+      "scope": {
+        "all": "All",
+        "filtered": "Filtered",
+        "selected": "Selected"
+      },
+      "status": {
+        "queued": "Preparing",
+        "running": "Preparing",
+        "ready": "Ready",
+        "expired": "Expired",
+        "failed": "Failed"
+      }
     }
   },
   "pages": {

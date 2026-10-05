@@ -15,6 +15,12 @@ const COLORS: Record<string, BadgeProps['color']> = {
   reviewed: 'warning',
   approved: 'success',
   rejected: 'error',
+  // Exports (F11 M3): the file's state.
+  queued: 'warning',
+  running: 'warning',
+  ready: 'success',
+  expired: 'neutral',
+  failed: 'error',
 }
 
 // Deeper text than Nuxt UI's subtle default (500 shade), so status reads crisply (owner, 2026-10-03; docs/design).

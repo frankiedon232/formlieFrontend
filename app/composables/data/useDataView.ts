@@ -133,6 +133,18 @@ export function useDataView<T>(options: UseDataViewOptions<T>) {
   const error = shallowRef<ApiError | null>(null)
   let controller: AbortController | null = null
 
+  /** The list's search, sort, date range and filters as API params (no paging): the list and exports share them. */
+  function params(): Record<string, string | number> {
+    const { q, sort, from, to, filters } = query.value
+    const out: Record<string, string | number> = {}
+    if (q) out.q = q
+    if (sort) out.sort = sort
+    if (from) out.from = from
+    if (to) out.to = to
+    for (const [key, values] of Object.entries(filters)) if (values.length) out[`filter[${key}]`] = values.join(',')
+    return out
+  }
+
   async function load() {
     controller?.abort()
     const current = new AbortController()
@@ -140,16 +152,8 @@ export function useDataView<T>(options: UseDataViewOptions<T>) {
     loading.value = true
     error.value = null
     try {
-      const { page, pageSize, q, sort, from, to, filters } = query.value
-      const params: Record<string, string | number> = { page, page_size: pageSize }
-      if (q) params.q = q
-      if (sort) params.sort = sort
-      if (from) params.from = from
-      if (to) params.to = to
-      for (const [key, values] of Object.entries(filters))
-        if (values.length) params[`filter[${key}]`] = values.join(',')
-
-      const result = await options.fetcher(params, current.signal)
+      const { page, pageSize } = query.value
+      const result = await options.fetcher({ page, page_size: pageSize, ...params() }, current.signal)
       if (current !== controller) return
       rows.value = result.data
       meta.value = result.meta
@@ -186,6 +190,7 @@ export function useDataView<T>(options: UseDataViewOptions<T>) {
     loaded,
     error,
     refresh: load,
+    params,
     setPage,
     setPageSize,
     setSearch,

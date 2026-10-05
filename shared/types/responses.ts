@@ -120,3 +120,27 @@ export interface ResponseFormRow {
   daily: number[]
 }
 
+
+/**
+ * Response exports (F11 M3): a file of a form's responses, made in the background with progress.
+ * `scope`: all responses, the ones matching the list's filters, or the selected ones. The file is
+ * kept 7 days (`expires_at`); each download asks for a one-time private link.
+ */
+export type ResponseExportFormat = 'xlsx' | 'csv' | 'pdf'
+export type ResponseExportScope = 'all' | 'filtered' | 'selected'
+export interface ResponseExport {
+  id: string
+  form: { id: string; name: string }
+  format: ResponseExportFormat
+  scope: ResponseExportScope
+  status: 'queued' | 'running' | 'ready' | 'expired' | 'failed'
+  /** 0–100 */
+  progress: number
+  rows: number
+  columns: number
+  file_name: string
+  size: number | null
+  created_by: { id: string; name: string }
+  created_at: string
+  expires_at: string
+}

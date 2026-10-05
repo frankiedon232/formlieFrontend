@@ -873,7 +873,9 @@
       "responses_submitted": "回答を受信しました",
       "forms_page_design_created": "ランディングページを保存しました",
       "forms_page_design_updated": "ランディングページを更新しました",
-      "forms_page_design_deleted": "ランディングページを削除しました"
+      "forms_page_design_deleted": "ランディングページを削除しました",
+      "responses_export_downloaded": "エクスポートをダウンロードしました",
+      "responses_export_deleted": "エクスポートを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -3449,6 +3451,75 @@
       "inUse": "使用中のタグ",
       "add": "{n} 件に追加 | {n} 件に追加",
       "remove": "外す"
+    },
+    "export": {
+      "button": "エクスポート",
+      "title": "回答をエクスポート",
+      "desc": "形式と対象の回答を選んでください。ファイルはすぐに用意できます。",
+      "formatLabel": "形式",
+      "format": {
+        "xlsx": "Excel（.xlsx）",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Excel、Numbers、Google スプレッドシートで開けます。",
+        "csv": "どんな表計算ソフトやシステムでも使えるテキスト。",
+        "pdf": "印刷できる文書。回答を順に並べます。"
+      },
+      "which": "対象の回答",
+      "scope": {
+        "all": "すべての回答（{n}） | すべての回答（{n}）",
+        "filtered": "フィルターに一致（{n}） | フィルターに一致（{n}）",
+        "selected": "選択した回答（{n}） | 選択した回答（{n}）"
+      },
+      "allQuestions": "すべての質問",
+      "allQuestionsOn": "フォームのすべての質問を順番どおりに。",
+      "allQuestionsOff": "表に表示中の {n} 件の質問 | 表に表示中の {n} 件の質問（表示順）",
+      "details": "レビュー情報",
+      "detailsHint": "ステータス、タグ、受付経路、言語、所要時間、メモ。",
+      "start": "エクスポート",
+      "making": "ファイルを作成しています…",
+      "rows": "{n} 件の回答 | {n} 件の回答",
+      "ready": "ファイルの準備ができました",
+      "kept": "回答 → エクスポートに保存され、{when}に削除されます。",
+      "download": "ダウンロード",
+      "allExports": "すべてのエクスポート"
+    },
+    "exports": {
+      "subtitle": "回答ファイル（7 日間保存）",
+      "search": "ファイルやフォームを検索…",
+      "emptyTitle": "エクスポートはまだありません",
+      "emptyDesc": "フォームの回答を開いてエクスポートを選んでください。",
+      "made": "{when}に作成",
+      "available": "利用可能",
+      "openForm": "回答を開く",
+      "delete": "削除",
+      "deleteTitle": "「{name}」を削除しますか？",
+      "deleteDesc": "ファイルは完全に削除されます。いつでも再度エクスポートできます。",
+      "deleted": "エクスポートを削除しました",
+      "col": {
+        "file": "ファイル",
+        "status": "状態",
+        "rows": "回答",
+        "columns": "列",
+        "scope": "対象",
+        "size": "サイズ",
+        "by": "作成者",
+        "made": "作成"
+      },
+      "scope": {
+        "all": "すべて",
+        "filtered": "絞り込み",
+        "selected": "選択"
+      },
+      "status": {
+        "queued": "準備中",
+        "running": "準備中",
+        "ready": "準備完了",
+        "expired": "期限切れ",
+        "failed": "失敗"
+      }
     }
   },
   "pages": {

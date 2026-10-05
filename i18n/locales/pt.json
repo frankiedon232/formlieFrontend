@@ -873,7 +873,9 @@
       "responses_submitted": "Resposta recebida",
       "forms_page_design_created": "Página de destino salva",
       "forms_page_design_updated": "Página de destino atualizada",
-      "forms_page_design_deleted": "Página de destino excluída"
+      "forms_page_design_deleted": "Página de destino excluída",
+      "responses_export_downloaded": "Exportação baixada",
+      "responses_export_deleted": "Exportação excluída"
     },
     "detail": {
       "who": "Quem",
@@ -3449,6 +3451,75 @@
       "inUse": "Etiquetas em uso",
       "add": "Adicionar a {n} | Adicionar a {n}",
       "remove": "Remover"
+    },
+    "export": {
+      "button": "Exportar",
+      "title": "Exportar respostas",
+      "desc": "Escolha o formato e quais respostas. O arquivo fica pronto em instantes.",
+      "formatLabel": "Formato",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Abre no Excel, Numbers ou Google Planilhas.",
+        "csv": "Texto simples para qualquer planilha ou sistema.",
+        "pdf": "Um documento para imprimir, uma resposta após a outra."
+      },
+      "which": "Quais respostas",
+      "scope": {
+        "all": "Todas as respostas ({n}) | Todas as respostas ({n})",
+        "filtered": "Que atendem aos filtros ({n}) | Que atendem aos filtros ({n})",
+        "selected": "Selecionadas ({n}) | Selecionadas ({n})"
+      },
+      "allQuestions": "Todas as perguntas",
+      "allQuestionsOn": "Todas as perguntas do formulário, em ordem.",
+      "allQuestionsOff": "A {n} pergunta mostrada na tabela | As {n} perguntas mostradas na tabela, na ordem delas",
+      "details": "Detalhes da revisão",
+      "detailsHint": "Status, etiquetas, canal, idioma, tempo gasto e notas.",
+      "start": "Exportar",
+      "making": "Criando seu arquivo…",
+      "rows": "{n} resposta | {n} respostas",
+      "ready": "Seu arquivo está pronto",
+      "kept": "Guardado em Respostas → Exportações, removido {when}.",
+      "download": "Baixar",
+      "allExports": "Todas as exportações"
+    },
+    "exports": {
+      "subtitle": "Seus arquivos de respostas, guardados por 7 dias",
+      "search": "Pesquisar arquivos ou formulários…",
+      "emptyTitle": "Nenhuma exportação ainda",
+      "emptyDesc": "Abra as respostas de um formulário e escolha Exportar.",
+      "made": "Criado {when}",
+      "available": "Disponível",
+      "openForm": "Abrir respostas",
+      "delete": "Excluir",
+      "deleteTitle": "Excluir “{name}”?",
+      "deleteDesc": "O arquivo é removido para sempre. Você pode exportar de novo quando quiser.",
+      "deleted": "Exportação excluída",
+      "col": {
+        "file": "Arquivo",
+        "status": "Estado",
+        "rows": "Respostas",
+        "columns": "Colunas",
+        "scope": "Quais",
+        "size": "Tamanho",
+        "by": "Criado por",
+        "made": "Criado"
+      },
+      "scope": {
+        "all": "Todas",
+        "filtered": "Filtradas",
+        "selected": "Selecionadas"
+      },
+      "status": {
+        "queued": "Preparando",
+        "running": "Preparando",
+        "ready": "Pronto",
+        "expired": "Expirado",
+        "failed": "Falhou"
+      }
     }
   },
   "pages": {

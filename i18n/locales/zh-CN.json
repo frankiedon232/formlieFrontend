@@ -873,7 +873,9 @@
       "responses_submitted": "已收到回复",
       "forms_page_design_created": "已保存落地页",
       "forms_page_design_updated": "已更新落地页",
-      "forms_page_design_deleted": "已删除落地页"
+      "forms_page_design_deleted": "已删除落地页",
+      "responses_export_downloaded": "已下载导出",
+      "responses_export_deleted": "已删除导出"
     },
     "detail": {
       "who": "谁",
@@ -3449,6 +3451,75 @@
       "inUse": "已用标签",
       "add": "添加到 {n} 条 | 添加到 {n} 条",
       "remove": "移除"
+    },
+    "export": {
+      "button": "导出",
+      "title": "导出回复",
+      "desc": "选择格式和要导出的回复。文件很快就好。",
+      "formatLabel": "格式",
+      "format": {
+        "xlsx": "Excel（.xlsx）",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "可在 Excel、Numbers 或 Google 表格中打开。",
+        "csv": "纯文本，适用于任何表格或系统。",
+        "pdf": "可打印的文档，逐条列出回复。"
+      },
+      "which": "导出哪些回复",
+      "scope": {
+        "all": "全部回复（{n}） | 全部回复（{n}）",
+        "filtered": "符合筛选条件（{n}） | 符合筛选条件（{n}）",
+        "selected": "已选回复（{n}） | 已选回复（{n}）"
+      },
+      "allQuestions": "所有问题",
+      "allQuestionsOn": "表单的全部问题，按顺序。",
+      "allQuestionsOff": "表格中显示的 {n} 个问题 | 表格中显示的 {n} 个问题（按显示顺序）",
+      "details": "审核信息",
+      "detailsHint": "状态、标签、来源、语言、用时和备注。",
+      "start": "导出",
+      "making": "正在生成文件…",
+      "rows": "{n} 条回复 | {n} 条回复",
+      "ready": "文件已就绪",
+      "kept": "保存在 回复 → 导出，{when}删除。",
+      "download": "下载",
+      "allExports": "全部导出"
+    },
+    "exports": {
+      "subtitle": "你的回复文件，保留 7 天",
+      "search": "搜索文件或表单…",
+      "emptyTitle": "还没有导出",
+      "emptyDesc": "打开某个表单的回复并选择导出。",
+      "made": "{when}创建",
+      "available": "可用",
+      "openForm": "打开回复",
+      "delete": "删除",
+      "deleteTitle": "删除“{name}”？",
+      "deleteDesc": "文件将被永久删除。你可以随时重新导出。",
+      "deleted": "已删除导出",
+      "col": {
+        "file": "文件",
+        "status": "状态",
+        "rows": "回复",
+        "columns": "列",
+        "scope": "范围",
+        "size": "大小",
+        "by": "创建者",
+        "made": "创建时间"
+      },
+      "scope": {
+        "all": "全部",
+        "filtered": "已筛选",
+        "selected": "已选"
+      },
+      "status": {
+        "queued": "准备中",
+        "running": "准备中",
+        "ready": "就绪",
+        "expired": "已过期",
+        "failed": "失败"
+      }
     }
   },
   "pages": {

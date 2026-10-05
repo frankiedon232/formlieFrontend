@@ -873,7 +873,9 @@
       "responses_submitted": "Risposta ricevuta",
       "forms_page_design_created": "Landing page salvata",
       "forms_page_design_updated": "Landing page aggiornata",
-      "forms_page_design_deleted": "Landing page eliminata"
+      "forms_page_design_deleted": "Landing page eliminata",
+      "responses_export_downloaded": "Esportazione scaricata",
+      "responses_export_deleted": "Esportazione eliminata"
     },
     "detail": {
       "who": "Chi",
@@ -3449,6 +3451,75 @@
       "inUse": "Tag in uso",
       "add": "Aggiungi a {n} | Aggiungi a {n}",
       "remove": "Rimuovi"
+    },
+    "export": {
+      "button": "Esporta",
+      "title": "Esporta risposte",
+      "desc": "Scegli il formato e quali risposte. Il file è pronto tra un attimo.",
+      "formatLabel": "Formato",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Si apre in Excel, Numbers o Google Sheets.",
+        "csv": "Testo semplice per qualsiasi foglio di calcolo o sistema.",
+        "pdf": "Un documento stampabile, una risposta dopo l’altra."
+      },
+      "which": "Quali risposte",
+      "scope": {
+        "all": "Tutte le risposte ({n}) | Tutte le risposte ({n})",
+        "filtered": "Corrispondenti ai filtri ({n}) | Corrispondenti ai filtri ({n})",
+        "selected": "Selezionate ({n}) | Selezionate ({n})"
+      },
+      "allQuestions": "Tutte le domande",
+      "allQuestionsOn": "Tutte le domande del modulo, in ordine.",
+      "allQuestionsOff": "La {n} domanda mostrata in tabella | Le {n} domande mostrate in tabella, nel loro ordine",
+      "details": "Dettagli di revisione",
+      "detailsHint": "Stato, tag, provenienza, lingua, tempo impiegato e note.",
+      "start": "Esporta",
+      "making": "Creazione del file…",
+      "rows": "{n} risposta | {n} risposte",
+      "ready": "Il tuo file è pronto",
+      "kept": "Conservato in Risposte → Esportazioni, rimosso {when}.",
+      "download": "Scarica",
+      "allExports": "Tutte le esportazioni"
+    },
+    "exports": {
+      "subtitle": "I tuoi file di risposte, conservati 7 giorni",
+      "search": "Cerca file o moduli…",
+      "emptyTitle": "Ancora nessuna esportazione",
+      "emptyDesc": "Apri le risposte di un modulo e scegli Esporta.",
+      "made": "Creato {when}",
+      "available": "Disponibile",
+      "openForm": "Apri risposte",
+      "delete": "Elimina",
+      "deleteTitle": "Eliminare “{name}”?",
+      "deleteDesc": "Il file viene rimosso definitivamente. Puoi esportare di nuovo in qualsiasi momento.",
+      "deleted": "Esportazione eliminata",
+      "col": {
+        "file": "File",
+        "status": "Stato",
+        "rows": "Risposte",
+        "columns": "Colonne",
+        "scope": "Quali",
+        "size": "Dimensione",
+        "by": "Creato da",
+        "made": "Creato"
+      },
+      "scope": {
+        "all": "Tutte",
+        "filtered": "Filtrate",
+        "selected": "Selezionate"
+      },
+      "status": {
+        "queued": "In preparazione",
+        "running": "In preparazione",
+        "ready": "Pronto",
+        "expired": "Scaduto",
+        "failed": "Non riuscito"
+      }
     }
   },
   "pages": {

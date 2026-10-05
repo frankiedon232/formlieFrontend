@@ -873,7 +873,9 @@
       "responses_submitted": "응답 접수됨",
       "forms_page_design_created": "랜딩 페이지 저장됨",
       "forms_page_design_updated": "랜딩 페이지 업데이트됨",
-      "forms_page_design_deleted": "랜딩 페이지 삭제됨"
+      "forms_page_design_deleted": "랜딩 페이지 삭제됨",
+      "responses_export_downloaded": "내보내기 다운로드됨",
+      "responses_export_deleted": "내보내기 삭제됨"
     },
     "detail": {
       "who": "누가",
@@ -3449,6 +3451,75 @@
       "inUse": "사용 중인 태그",
       "add": "{n}개에 추가 | {n}개에 추가",
       "remove": "제거"
+    },
+    "export": {
+      "button": "내보내기",
+      "title": "응답 내보내기",
+      "desc": "형식과 대상 응답을 고르세요. 파일은 곧 준비됩니다.",
+      "formatLabel": "형식",
+      "format": {
+        "xlsx": "Excel(.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Excel, Numbers, Google 스프레드시트에서 열립니다.",
+        "csv": "어떤 스프레드시트나 시스템에서도 쓰는 일반 텍스트.",
+        "pdf": "인쇄용 문서, 응답을 하나씩 차례로."
+      },
+      "which": "대상 응답",
+      "scope": {
+        "all": "모든 응답({n}) | 모든 응답({n})",
+        "filtered": "필터와 일치({n}) | 필터와 일치({n})",
+        "selected": "선택한 응답({n}) | 선택한 응답({n})"
+      },
+      "allQuestions": "모든 질문",
+      "allQuestionsOn": "양식의 모든 질문을 순서대로.",
+      "allQuestionsOff": "표에 표시된 질문 {n}개 | 표에 표시된 질문 {n}개(표시 순서)",
+      "details": "검토 정보",
+      "detailsHint": "상태, 태그, 유입 경로, 언어, 소요 시간, 메모.",
+      "start": "내보내기",
+      "making": "파일을 만드는 중…",
+      "rows": "응답 {n}개 | 응답 {n}개",
+      "ready": "파일이 준비되었습니다",
+      "kept": "응답 → 내보내기에 보관되며 {when} 삭제됩니다.",
+      "download": "다운로드",
+      "allExports": "모든 내보내기"
+    },
+    "exports": {
+      "subtitle": "응답 파일, 7일간 보관",
+      "search": "파일 또는 양식 검색…",
+      "emptyTitle": "아직 내보내기가 없습니다",
+      "emptyDesc": "양식의 응답을 열고 내보내기를 선택하세요.",
+      "made": "{when} 생성",
+      "available": "사용 가능",
+      "openForm": "응답 열기",
+      "delete": "삭제",
+      "deleteTitle": "“{name}”을(를) 삭제할까요?",
+      "deleteDesc": "파일이 영구적으로 삭제됩니다. 언제든 다시 내보낼 수 있습니다.",
+      "deleted": "내보내기 삭제됨",
+      "col": {
+        "file": "파일",
+        "status": "상태",
+        "rows": "응답",
+        "columns": "열",
+        "scope": "대상",
+        "size": "크기",
+        "by": "만든 사람",
+        "made": "생성"
+      },
+      "scope": {
+        "all": "전체",
+        "filtered": "필터됨",
+        "selected": "선택됨"
+      },
+      "status": {
+        "queued": "준비 중",
+        "running": "준비 중",
+        "ready": "준비됨",
+        "expired": "만료됨",
+        "failed": "실패"
+      }
     }
   },
   "pages": {

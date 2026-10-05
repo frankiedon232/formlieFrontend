@@ -7,6 +7,7 @@ import * as audit from './routes/audit'
 import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
+import * as responseExports from './routes/responseExports'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
@@ -77,6 +78,12 @@ const router = createRouter()
   .get('/responses/insights', responses.inboxInsights)
   .get('/responses/forms', responses.listResponseForms)
   .post('/responses/bulk', responses.bulkResponses)
+  .post('/forms/:id/responses/export', responseExports.exportFormResponses)
+  .get('/responses/exports', responseExports.listResponseExports)
+  .get('/responses/exports/:id', responseExports.getResponseExport)
+  .post('/responses/exports/:id/link', responseExports.responseExportLink)
+  .delete('/responses/exports/:id', responseExports.deleteResponseExport)
+  .get('/response-exports/:token', responseExports.downloadResponseExport)
   .get('/responses', responses.listResponses)
   .get('/responses/:id', responses.getResponse)
   .patch('/responses/:id', responses.patchResponse)

@@ -192,7 +192,7 @@ function openFromCard(event: MouseEvent, row: T) {
 const showSkeleton = computed(() => state.loading.value && !state.loaded.value)
 const isEmpty = computed(() => state.loaded.value && !state.error.value && state.rows.value.length === 0)
 
-defineExpose({ refresh: state.refresh, state })
+defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns.value.map(column => column.key) })
 </script>
 
 <template>

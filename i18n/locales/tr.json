@@ -873,7 +873,9 @@
       "responses_submitted": "Yanıt alındı",
       "forms_page_design_created": "Açılış sayfası kaydedildi",
       "forms_page_design_updated": "Açılış sayfası güncellendi",
-      "forms_page_design_deleted": "Açılış sayfası silindi"
+      "forms_page_design_deleted": "Açılış sayfası silindi",
+      "responses_export_downloaded": "Dışa aktarım indirildi",
+      "responses_export_deleted": "Dışa aktarım silindi"
     },
     "detail": {
       "who": "Kim",
@@ -3449,6 +3451,75 @@
       "inUse": "Kullanılan etiketler",
       "add": "{n} yanıta ekle | {n} yanıta ekle",
       "remove": "Kaldır"
+    },
+    "export": {
+      "button": "Dışa aktar",
+      "title": "Yanıtları dışa aktar",
+      "desc": "Biçimi ve hangi yanıtları seçin. Dosya birazdan hazır olur.",
+      "formatLabel": "Biçim",
+      "format": {
+        "xlsx": "Excel (.xlsx)",
+        "csv": "CSV",
+        "pdf": "PDF"
+      },
+      "formatDesc": {
+        "xlsx": "Excel, Numbers veya Google E-Tablolar'da açılır.",
+        "csv": "Her tablo ya da sistem için düz metin.",
+        "pdf": "Yazdırılabilir belge, yanıtlar art arda."
+      },
+      "which": "Hangi yanıtlar",
+      "scope": {
+        "all": "Tüm yanıtlar ({n}) | Tüm yanıtlar ({n})",
+        "filtered": "Filtrelere uyanlar ({n}) | Filtrelere uyanlar ({n})",
+        "selected": "Seçilenler ({n}) | Seçilenler ({n})"
+      },
+      "allQuestions": "Tüm sorular",
+      "allQuestionsOn": "Formun tüm soruları, sırasıyla.",
+      "allQuestionsOff": "Tabloda görünen {n} soru | Tabloda görünen {n} soru, kendi sırasıyla",
+      "details": "İnceleme ayrıntıları",
+      "detailsHint": "Durum, etiketler, geliş yolu, dil, harcanan süre ve notlar.",
+      "start": "Dışa aktar",
+      "making": "Dosyanız hazırlanıyor…",
+      "rows": "{n} yanıt | {n} yanıt",
+      "ready": "Dosyanız hazır",
+      "kept": "Yanıtlar → Dışa aktarımlar'da saklanır, {when} silinir.",
+      "download": "İndir",
+      "allExports": "Tüm dışa aktarımlar"
+    },
+    "exports": {
+      "subtitle": "Yanıt dosyalarınız, 7 gün saklanır",
+      "search": "Dosya veya form ara…",
+      "emptyTitle": "Henüz dışa aktarım yok",
+      "emptyDesc": "Bir formun yanıtlarını açıp Dışa aktar'ı seçin.",
+      "made": "{when} oluşturuldu",
+      "available": "Kullanılabilir",
+      "openForm": "Yanıtları aç",
+      "delete": "Sil",
+      "deleteTitle": "“{name}” silinsin mi?",
+      "deleteDesc": "Dosya kalıcı olarak silinir. İstediğiniz zaman yeniden dışa aktarabilirsiniz.",
+      "deleted": "Dışa aktarım silindi",
+      "col": {
+        "file": "Dosya",
+        "status": "Durum",
+        "rows": "Yanıtlar",
+        "columns": "Sütunlar",
+        "scope": "Hangileri",
+        "size": "Boyut",
+        "by": "Oluşturan",
+        "made": "Oluşturuldu"
+      },
+      "scope": {
+        "all": "Tümü",
+        "filtered": "Filtrelenmiş",
+        "selected": "Seçilenler"
+      },
+      "status": {
+        "queued": "Hazırlanıyor",
+        "running": "Hazırlanıyor",
+        "ready": "Hazır",
+        "expired": "Süresi doldu",
+        "failed": "Başarısız"
+      }
     }
   },
   "pages": {
