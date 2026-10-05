@@ -167,7 +167,8 @@ export const listResponses = defineMockRoute(({ event, query }) => {
  * GET /responses/forms, the Responses page grouped by form (owner 2026-10-04): one row per form the
  * person may see that has responses, with counts by review status, last response and a 30-day
  * trend. `q` (form name), `filter[form_status]`, `filter[folder_id]`, `filter[review]` (forms with
- * responses in that review status), sort `-new` (default) · `-last_at` · `-total` · `name`; paged.
+ * responses in that review status), `from` / `to` (only responses received in that period count;
+ * forms without any drop out), sort `-new` (default) · `-last_at` · `-total` · `name`; paged.
  * With a review status asked for, the default sort counts that status instead (most approved first…),
  * so the sidebar's New / Reviewed / Approved / Rejected each give their own order.
  */
@@ -176,13 +177,15 @@ export const listResponseForms = defineMockRoute(({ event, query }) => {
   const formStatus = list(query, 'form_status')
   const folder = list(query, 'folder_id')
   const review = list(query, 'review') as ResponseStatus[] | null
+  const from = day(query.from, false)
+  const to = day(query.to, true)
   const q = typeof query.q === 'string' ? query.q.trim().toLowerCase() : ''
   const today = Date.parse(new Date().toISOString().slice(0, 10))
   const rows: ResponseFormRow[] = []
   for (const form of formsOf(tenant).forms) {
     if (form.deleted_at || levelOf(form, user) === 'none') continue
     if ((formStatus && !formStatus.includes(form.status)) || (folder && !folder.includes(form.folder?.id ?? 'none')) || (q && !form.name.toLowerCase().includes(q))) continue
-    const entries = formResponses(tenant, form)
+    const entries = formResponses(tenant, form).filter(entry => (from === null || entry.at >= from) && (to === null || entry.at <= to))
     if (!entries.length) continue
     const counts: Record<ResponseStatus, number> = { new: 0, reviewed: 0, approved: 0, rejected: 0 }
     const daily = Array.from({ length: 30 }, () => 0)

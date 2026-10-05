@@ -147,16 +147,19 @@ function findExport(tenant: MockTenant, user: MockUser, id: string | undefined) 
   return item
 }
 
-/** GET /responses/exports, the Exports page: filter[format], filter[status] (ready / expired), filter[form], q, sort, paged. */
+/** GET /responses/exports, the Exports page: filter[format], filter[status] (ready / expired), filter[form], from / to (made in that period), q, sort, paged. */
 export const listResponseExports = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAuth(event)
   const pick = (key: string) => (typeof query[`filter[${key}]`] === 'string' && query[`filter[${key}]`] ? String(query[`filter[${key}]`]).split(',') : null)
   const formats = pick('format')
   const statuses = pick('status')
   const formIds = pick('form')
+  const day = (value: unknown, end: boolean) => (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? Date.parse(value) + (end ? 86_400_000 - 1 : 0) : null)
+  const from = day(query.from, false)
+  const to = day(query.to, true)
   const items = visible(tenant, user)
     .map(view)
-    .filter(item => (!formats || formats.includes(item.format)) && (!statuses || statuses.includes(item.status === 'running' || item.status === 'queued' ? 'running' : item.status)) && (!formIds || formIds.includes(item.form.id)))
+    .filter(item => (!formats || formats.includes(item.format)) && (!statuses || statuses.includes(item.status === 'running' || item.status === 'queued' ? 'running' : item.status)) && (!formIds || formIds.includes(item.form.id)) && (from === null || Date.parse(item.created_at) >= from) && (to === null || Date.parse(item.created_at) <= to))
   const { data, meta } = paginate(items, { sort: '-created_at', ...query }, (item, q) => item.file_name.toLowerCase().includes(q) || item.form.name.toLowerCase().includes(q))
   return ok(data, meta)
 })

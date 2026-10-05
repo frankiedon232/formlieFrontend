@@ -104,6 +104,7 @@ const openRow = (item: ResponseExport) => (item.status === 'ready' ? void downlo
       :filters="filters"
       :sort-options="sortOptions"
       default-sort="-created_at"
+      date-range
       :row-actions="rowActions"
       :busy="row => busyIds.has(row.id)"
       :open-row="openRow"

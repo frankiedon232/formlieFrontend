@@ -74,6 +74,7 @@ const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.st
     :sort-options="sortOptions"
     default-sort="-new"
     default-view="grid"
+    date-range
     :row-actions="rowActions"
     :open-row="row => navigateTo(target(row))"
     :search-placeholder="t('responses.byForm.search')"
