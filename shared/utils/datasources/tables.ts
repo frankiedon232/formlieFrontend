@@ -79,14 +79,14 @@ export const normaliseTableRest = (engine: DbEngine, text: string) => {
 
 // ── Types ────────────────────────────────────────────────────────────────────────────────
 
-type Kind = 'short' | 'long' | 'code' | 'decimal' | 'integer' | 'date' | 'time' | 'datetime' | 'boolean' | 'json' | 'links' | 'uuid'
+type Kind = 'short' | 'long' | 'code' | 'decimal' | 'integer' | 'date' | 'time' | 'datetime' | 'boolean' | 'json' | 'links' | 'uuid' | 'lang' | 'state'
 
 const TYPES: Record<DbEngine, Record<Kind, string>> = {
-  postgresql: { short: 'VARCHAR(1000)', long: 'TEXT', code: 'VARCHAR(320)', decimal: 'NUMERIC(18,4)', integer: 'INTEGER', date: 'DATE', time: 'TIME', datetime: 'TIMESTAMPTZ', boolean: 'BOOLEAN', json: 'JSONB', links: 'JSONB', uuid: 'UUID' },
-  mysql: { short: 'VARCHAR(1000)', long: 'LONGTEXT', code: 'VARCHAR(320)', decimal: 'DECIMAL(18,4)', integer: 'INT', date: 'DATE', time: 'TIME', datetime: 'DATETIME(3)', boolean: 'TINYINT(1)', json: 'JSON', links: 'JSON', uuid: 'CHAR(36)' },
-  mariadb: { short: 'VARCHAR(1000)', long: 'LONGTEXT', code: 'VARCHAR(320)', decimal: 'DECIMAL(18,4)', integer: 'INT', date: 'DATE', time: 'TIME', datetime: 'DATETIME(3)', boolean: 'TINYINT(1)', json: 'LONGTEXT', links: 'LONGTEXT', uuid: 'CHAR(36)' },
-  sqlserver: { short: 'NVARCHAR(1000)', long: 'NVARCHAR(MAX)', code: 'NVARCHAR(320)', decimal: 'DECIMAL(18,4)', integer: 'INT', date: 'DATE', time: 'TIME', datetime: 'DATETIMEOFFSET', boolean: 'BIT', json: 'NVARCHAR(MAX)', links: 'NVARCHAR(MAX)', uuid: 'UNIQUEIDENTIFIER' },
-  oracle: { short: 'VARCHAR2(1000 CHAR)', long: 'CLOB', code: 'VARCHAR2(320 CHAR)', decimal: 'NUMBER(18,4)', integer: 'NUMBER(10)', date: 'DATE', time: 'VARCHAR2(8)', datetime: 'TIMESTAMP WITH TIME ZONE', boolean: 'NUMBER(1)', json: 'CLOB', links: 'CLOB', uuid: 'VARCHAR2(36)' },
+  postgresql: { short: 'VARCHAR(1000)', long: 'TEXT', code: 'VARCHAR(320)', decimal: 'NUMERIC(18,4)', integer: 'INTEGER', date: 'DATE', time: 'TIME', datetime: 'TIMESTAMPTZ', boolean: 'BOOLEAN', json: 'JSONB', links: 'JSONB', uuid: 'UUID', lang: 'VARCHAR(35)', state: 'VARCHAR(16)' },
+  mysql: { short: 'VARCHAR(1000)', long: 'LONGTEXT', code: 'VARCHAR(320)', decimal: 'DECIMAL(18,4)', integer: 'INT', date: 'DATE', time: 'TIME', datetime: 'DATETIME(3)', boolean: 'TINYINT(1)', json: 'JSON', links: 'JSON', uuid: 'CHAR(36)', lang: 'VARCHAR(35)', state: 'VARCHAR(16)' },
+  mariadb: { short: 'VARCHAR(1000)', long: 'LONGTEXT', code: 'VARCHAR(320)', decimal: 'DECIMAL(18,4)', integer: 'INT', date: 'DATE', time: 'TIME', datetime: 'DATETIME(3)', boolean: 'TINYINT(1)', json: 'LONGTEXT', links: 'LONGTEXT', uuid: 'CHAR(36)', lang: 'VARCHAR(35)', state: 'VARCHAR(16)' },
+  sqlserver: { short: 'NVARCHAR(1000)', long: 'NVARCHAR(MAX)', code: 'NVARCHAR(320)', decimal: 'DECIMAL(18,4)', integer: 'INT', date: 'DATE', time: 'TIME', datetime: 'DATETIMEOFFSET', boolean: 'BIT', json: 'NVARCHAR(MAX)', links: 'NVARCHAR(MAX)', uuid: 'UNIQUEIDENTIFIER', lang: 'NVARCHAR(35)', state: 'NVARCHAR(16)' },
+  oracle: { short: 'VARCHAR2(1000 CHAR)', long: 'CLOB', code: 'VARCHAR2(320 CHAR)', decimal: 'NUMBER(18,4)', integer: 'NUMBER(10)', date: 'DATE', time: 'VARCHAR2(8)', datetime: 'TIMESTAMP WITH TIME ZONE', boolean: 'NUMBER(1)', json: 'CLOB', links: 'CLOB', uuid: 'VARCHAR2(36)', lang: 'VARCHAR2(35 CHAR)', state: 'VARCHAR2(16 CHAR)' },
 }
 
 const SEVERAL = new Set(['checkbox', 'multi_select', 'ranking', 'matrix', 'date_range', 'duration', 'full_name', 'address'])
@@ -136,7 +136,7 @@ function kindOfField(type: string, multi: MultiValue): Kind {
   }
 }
 
-const META_KIND: Record<MetaColumn, Kind> = { response_id: 'uuid', submitted_at: 'datetime', form_version: 'integer', language: 'code', response_number: 'integer', respondent_email: 'code', review_status: 'code' }
+const META_KIND: Record<MetaColumn, Kind> = { response_id: 'uuid', submitted_at: 'datetime', form_version: 'integer', language: 'lang', response_number: 'integer', respondent_email: 'code', review_status: 'state' }
 
 export const columnTypeFor = (engine: DbEngine, field: Pick<FormField, 'type'>, multi: MultiValue) => TYPES[engine][kindOfField(field.type, multi)]
 export const metaTypeFor = (engine: DbEngine, meta: MetaColumn) => TYPES[engine][META_KIND[meta]]
@@ -163,7 +163,16 @@ export function createTableSql(engine: DbEngine, schema: string, table: string, 
   const key = columns.find(column => column.source?.kind === 'meta' && column.source.key === 'response_id')
   const lines = columns.map(column => `  ${quoteName(engine, column.column)} ${column.type}${column.nullable ? '' : ' NOT NULL'}`)
   if (key) lines.push(`  CONSTRAINT ${quoteName(engine, `${table}_pk`.slice(0, MAX_NAME[engine]))} PRIMARY KEY (${quoteName(engine, key.column)})`)
-  return `CREATE TABLE ${qualified(engine, schema, table)} (\n${lines.join(',\n')}\n);`
+  const create = `CREATE TABLE ${qualified(engine, schema, table)} (\n${lines.join(',\n')}\n);`
+  // Most queries on a response table filter or sort by date: index it with the table.
+  const submitted = columns.find(column => column.source?.kind === 'meta' && column.source.key === 'submitted_at')
+  return submitted ? `${create}\n${indexSql(engine, schema, table, submitted.column)}` : create
+}
+
+/** A plain index on one column (named <table>_<column>_idx, within the engine's limit). */
+export function indexSql(engine: DbEngine, schema: string, table: string, column: string): string {
+  const name = `${table}_${column}_idx`.slice(0, MAX_NAME[engine])
+  return `CREATE INDEX ${quoteName(engine, name)} ON ${qualified(engine, schema, table)} (${quoteName(engine, column)});`
 }
 
 /** ALTER TABLE … ADD for a field added to the form later (never drops anything). */

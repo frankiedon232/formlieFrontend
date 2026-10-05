@@ -38,6 +38,8 @@ describe('response tables', () => {
     expect(sql).toContain('CREATE TABLE "formalie"."formalie_job_application" (')
     expect(sql).toContain('"response_id" UUID NOT NULL')
     expect(sql).toContain('PRIMARY KEY ("response_id")')
+    expect(sql).toContain('"language" VARCHAR(35)')
+    expect(sql).toContain('CREATE INDEX "formalie_job_application_submitted_at_idx" ON "formalie"."formalie_job_application" ("submitted_at");')
     expect(createTableSql('sqlserver', 'formalie', 't', pg.slice(0, 2))).toContain('CREATE TABLE [formalie].[t]')
     expect(addColumnSql('oracle', 'APP', 'T', { column: 'NOTE', type: 'CLOB' })).toBe('ALTER TABLE "APP"."T" ADD ("NOTE" CLOB);')
     expect(addColumnSql('postgresql', 'public', 't', { column: 'note', type: 'TEXT' })).toBe('ALTER TABLE "public"."t" ADD COLUMN "note" TEXT;')
