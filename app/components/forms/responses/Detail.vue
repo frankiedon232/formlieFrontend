@@ -72,7 +72,7 @@ async function remove() {
     v-model:open="open"
     :content="{ onOpenAutoFocus: (event: Event) => event.preventDefault() }"
     :title="response?.respondent.name || response?.respondent.email || t('responses.crumb')"
-    :ui="{ content: 'w-full sm:max-w-2xl', header: 'border-b-0 pb-2', body: 'flex flex-col gap-5 pb-40', footer: 'pointer-events-none absolute inset-x-0 bottom-0 justify-center border-t-0 bg-gradient-to-t from-(--ui-bg) via-(--ui-bg)/85 to-transparent pt-10 pb-4' }"
+    :ui="{ content: 'w-full sm:max-w-2xl', header: 'border-b-0 pb-2', body: 'flex flex-col gap-5 pb-56', footer: 'pointer-events-none absolute inset-x-0 bottom-0 justify-center border-t-0 bg-gradient-to-t from-(--ui-bg) via-(--ui-bg)/85 to-transparent pt-10 pb-4' }"
   >
     <template #header>
       <div v-if="!response" class="flex w-full items-center gap-3.5">
