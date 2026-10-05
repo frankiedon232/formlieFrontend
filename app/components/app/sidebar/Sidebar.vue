@@ -62,7 +62,7 @@ defineShortcuts({
     :ui="{ body: 'flex-row gap-0 p-0 overflow-hidden', root: 'bg-default' }"
   >
     <template #default="{ collapsed: isCollapsed }">
-      <AppSidebarRail :collapsed="isCollapsed" @expand="collapsed = false" />
+      <AppSidebarRail :collapsed="isCollapsed" :account="takeover.shown.value" @expand="collapsed = false" />
       <!-- A page may hold the menu column (Database explorer); the rail stays -->
       <AppSidebarTakeover v-if="!isCollapsed && takeover.shown.value" @collapse="collapsed = true" />
       <AppSidebarMenu v-else-if="!isCollapsed" collapsible @collapse="collapsed = true" />

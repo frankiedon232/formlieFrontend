@@ -4692,6 +4692,10 @@
       "whySkipped": "行被跳过的原因（前 100 条）：",
       "rowN": "第 {n} 行"
     },
-    "readOnlyShort": "只读"
+    "readOnlyShort": "只读",
+    "exportJson": "JSON",
+    "exportJsonDesc": "每行一个对象，供开发者和其他系统使用",
+    "exportSql": "SQL（INSERT 语句）",
+    "exportSqlDesc": "按此数据库编写，用于将行复制到另一个数据库"
   }
 }

@@ -7,7 +7,7 @@
  *   GET  /datasources/:id/explorer/structure?schema&table     columns, keys, indexes, definition
  *   GET  /datasources/:id/explorer/rows?schema&table&…        rows (paged, sorted, searched, filtered)
  *   GET  /datasources/:id/explorer/facets?schema&table        values of low-variety columns (filters)
- *   POST /datasources/:id/explorer/exports                    a table or the filtered rows as CSV / XLSX
+ *   POST /datasources/:id/explorer/exports                    a table or the filtered rows as CSV / XLSX / JSON / SQL
  *   GET  /explorer-exports/:id                                its progress
  *   POST /explorer-exports/:id/link                           a one-time private download link (5 min)
  *   GET  /datasource-exports/:token                           the file (plain download)
@@ -18,6 +18,7 @@
 import { z } from 'zod'
 import type { H3Event } from 'h3'
 import { parseValue } from '#shared/utils/datasources/values'
+import { jsonExport, sqlInsertScript } from '#shared/utils/datasources/exportFormats'
 import type { DatabaseTable } from '#shared/types/destinations'
 import type { ColumnFacet, TableExport, TableRow, TableStructure } from '#shared/types/explorer'
 import { actorOf, recordAudit } from '../core/audit'
@@ -180,7 +181,7 @@ export const startTableExport = defineMockRoute(({ event, body }) => {
     z.object({
       schema: z.string(),
       table: z.string(),
-      format: z.enum(['csv', 'xlsx']),
+      format: z.enum(['csv', 'xlsx', 'json', 'sql']),
       q: z.string().optional(),
       sort: z.string().optional(),
       filter: z.record(z.string(), z.string()).optional(),
@@ -195,7 +196,11 @@ export const startTableExport = defineMockRoute(({ event, body }) => {
   const bytes =
     input.format === 'xlsx'
       ? xlsx(structure.name.slice(0, 31), [head, ...lines])
-      : String.fromCharCode(0xfeff) + [head, ...lines].map(line => line.map(csvCell).join(',')).join('\r\n')
+      : input.format === 'json'
+        ? jsonExport(structure.columns, rows)
+        : input.format === 'sql'
+          ? sqlInsertScript(source.engine, { schema: structure.schema, table: structure.name }, structure.columns, rows)
+          : String.fromCharCode(0xfeff) + [head, ...lines].map(line => line.map(csvCell).join(',')).join('\r\n')
   const item: StoredTableExport = {
     id: crypto.randomUUID(),
     table: `${structure.schema}.${structure.name}`,
@@ -264,9 +269,12 @@ export const downloadTableExport = defineEventHandler(event => {
   setHeader(
     event,
     'content-type',
-    item.format === 'xlsx'
-      ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      : 'text/csv; charset=utf-8',
+    {
+      xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      csv: 'text/csv; charset=utf-8',
+      json: 'application/json; charset=utf-8',
+      sql: 'application/sql; charset=utf-8',
+    }[item.format],
   )
   setHeader(event, 'content-disposition', `attachment; filename="${item.file_name}"`)
   setHeader(event, 'cache-control', 'no-store')

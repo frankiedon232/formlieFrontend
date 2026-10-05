@@ -4692,6 +4692,10 @@
       "whySkipped": "سبب تخطي الصفوف (أول 100):",
       "rowN": "الصف {n}"
     },
-    "readOnlyShort": "للقراءة فقط"
+    "readOnlyShort": "للقراءة فقط",
+    "exportJson": "JSON",
+    "exportJsonDesc": "كائن واحد لكل صف، للمطورين والأنظمة الأخرى",
+    "exportSql": "SQL (عبارات INSERT)",
+    "exportSqlDesc": "مكتوب لقاعدة البيانات هذه، لنسخ الصفوف إلى قاعدة أخرى"
   }
 }

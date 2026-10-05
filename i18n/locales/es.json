@@ -4692,6 +4692,10 @@
       "whySkipped": "Por qué se omitieron filas (las primeras 100):",
       "rowN": "Fila {n}"
     },
-    "readOnlyShort": "Solo lectura"
+    "readOnlyShort": "Solo lectura",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Un objeto por fila, para desarrolladores y otros sistemas",
+    "exportSql": "SQL (sentencias INSERT)",
+    "exportSqlDesc": "Escrito para esta base de datos, para copiar las filas a otra"
   }
 }

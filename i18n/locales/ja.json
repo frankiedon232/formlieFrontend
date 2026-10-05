@@ -4692,6 +4692,10 @@
       "whySkipped": "行がスキップされた理由（最初の 100 件）：",
       "rowN": "行 {n}"
     },
-    "readOnlyShort": "読み取り専用"
+    "readOnlyShort": "読み取り専用",
+    "exportJson": "JSON",
+    "exportJsonDesc": "1 行につき 1 つのオブジェクト。開発者や他のシステム向け",
+    "exportSql": "SQL（INSERT 文）",
+    "exportSqlDesc": "このデータベース向けに作成。行を別のデータベースにコピーできます"
   }
 }

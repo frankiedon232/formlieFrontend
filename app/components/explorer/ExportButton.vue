@@ -1,5 +1,6 @@
 <!--
-  Export the table, or the rows matching the current search and filters, as CSV or Excel (F12 M3).
+  Export the table, or the rows matching the current search and filters, as CSV, Excel, JSON or SQL
+  INSERT statements for the connection's engine (F12 M3).
   The file is made on Formalie's servers with a percentage shown on the button, then downloaded
   through a one-time private link. Recorded in the audit trail.
 -->
@@ -14,7 +15,7 @@ const { handle } = useErrorHandler()
 const job = ref<TableExport | null>(null)
 const running = computed(() => !!job.value && job.value.status === 'running')
 
-async function start(format: 'csv' | 'xlsx') {
+async function start(format: TableExport['format']) {
   const { q, sort, ...rest } = props.params()
   const filter = Object.fromEntries(Object.entries(rest).filter(([key]) => key.startsWith('filter[')).map(([key, value]) => [key.slice(7, -1), String(value)]))
   try {
@@ -40,6 +41,10 @@ const items = computed(() => [
   [
     { label: t('responses.export.format.xlsx'), icon: 'i-lucide-file-spreadsheet', onSelect: () => void start('xlsx') },
     { label: t('responses.export.format.csv'), icon: 'i-lucide-file-text', onSelect: () => void start('csv') },
+  ],
+  [
+    { label: t('explorer.exportJson'), description: t('explorer.exportJsonDesc'), icon: 'i-lucide-file-json', onSelect: () => void start('json') },
+    { label: t('explorer.exportSql'), description: t('explorer.exportSqlDesc'), icon: 'i-lucide-file-code', onSelect: () => void start('sql') },
   ],
 ])
 </script>

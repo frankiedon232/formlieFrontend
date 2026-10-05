@@ -1,10 +1,10 @@
 <!--
-  Account card (design: avatar · name · email · ⇅). `compact` = avatar only (collapsed rail).
+  Account card (design: avatar · name · email · ⇅). `compact` = avatar only (collapsed rail); `large` = a bigger avatar (foot of the rail).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 
-const props = defineProps<{ compact?: boolean }>()
+const props = defineProps<{ compact?: boolean; large?: boolean }>()
 const { t } = useI18n()
 const colorMode = useColorMode()
 const { shortcutsOpen } = useAppUi()
@@ -91,9 +91,10 @@ const items = computed<DropdownMenuItem[][]>(() => [
   >
     <UButton
       v-if="props.compact"
-      :avatar="avatar"
+      :avatar="{ ...avatar, size: props.large ? 'lg' : undefined }"
       color="neutral"
       variant="ghost"
+      :size="props.large ? 'lg' : undefined"
       square
       :aria-label="t('user.account')"
     />

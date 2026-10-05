@@ -4692,6 +4692,10 @@
       "whySkipped": "Dlaczego wiersze zostały pominięte (pierwsze 100):",
       "rowN": "Wiersz {n}"
     },
-    "readOnlyShort": "Tylko odczyt"
+    "readOnlyShort": "Tylko odczyt",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Jeden obiekt na wiersz, dla programistów i innych systemów",
+    "exportSql": "SQL (instrukcje INSERT)",
+    "exportSqlDesc": "Napisane dla tej bazy danych, aby skopiować wiersze do innej"
   }
 }

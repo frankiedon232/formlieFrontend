@@ -57,7 +57,7 @@ export interface ColumnFacet {
 export interface TableExport {
   id: string
   table: string
-  format: 'csv' | 'xlsx'
+  format: 'csv' | 'xlsx' | 'json' | 'sql'
   status: 'running' | 'ready'
   progress: number
   rows: number

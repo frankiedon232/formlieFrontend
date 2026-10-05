@@ -4692,6 +4692,10 @@
       "whySkipped": "Por que linhas foram ignoradas (as primeiras 100):",
       "rowN": "Linha {n}"
     },
-    "readOnlyShort": "Somente leitura"
+    "readOnlyShort": "Somente leitura",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Um objeto por linha, para desenvolvedores e outros sistemas",
+    "exportSql": "SQL (instruções INSERT)",
+    "exportSqlDesc": "Escrito para este banco de dados, para copiar as linhas para outro"
   }
 }

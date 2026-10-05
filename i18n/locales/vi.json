@@ -4692,6 +4692,10 @@
       "whySkipped": "Lý do các hàng bị bỏ qua (100 hàng đầu tiên):",
       "rowN": "Hàng {n}"
     },
-    "readOnlyShort": "Chỉ đọc"
+    "readOnlyShort": "Chỉ đọc",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Mỗi hàng một đối tượng, dành cho nhà phát triển và hệ thống khác",
+    "exportSql": "SQL (câu lệnh INSERT)",
+    "exportSqlDesc": "Viết cho cơ sở dữ liệu này, để sao chép các hàng sang cơ sở dữ liệu khác"
   }
 }

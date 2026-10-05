@@ -1,12 +1,13 @@
 <!--
   Far-left rail (design: ⋯ · + · workspaces), then the other areas (Data sources, API service, AI assistant), each with
   its own menu; the workspace button is the Forms area. When the menu is collapsed it also carries the current area's section icons
-  with tooltips, an expand button and the account avatar.
+  with tooltips, an expand button and the account avatar; the avatar also sits at the foot while a page
+  holds the menu column (Database explorer).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 
-const props = defineProps<{ collapsed?: boolean }>()
+const props = defineProps<{ collapsed?: boolean; account?: boolean }>()
 const emit = defineEmits<{ expand: [] }>()
 const { t } = useI18n()
 const { areaDestinations, area, areas, isActive } = useNavigation()
@@ -134,5 +135,9 @@ const workspaces = computed(() => [
       </UTooltip>
       <AppUserMenu compact />
     </template>
+    <!-- A page holds the menu column (Database explorer): the account moves to the rail's foot -->
+    <div v-else-if="props.account" class="-mb-1 mt-auto flex w-full justify-center border-t border-default pt-3">
+      <AppUserMenu compact large />
+    </div>
   </div>
 </template>

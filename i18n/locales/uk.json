@@ -4692,6 +4692,10 @@
       "whySkipped": "Чому рядки було пропущено (перші 100):",
       "rowN": "Рядок {n}"
     },
-    "readOnlyShort": "Лише читання"
+    "readOnlyShort": "Лише читання",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Один об’єкт на рядок, для розробників та інших систем",
+    "exportSql": "SQL (оператори INSERT)",
+    "exportSqlDesc": "Для цієї бази даних, щоб скопіювати рядки в іншу"
   }
 }

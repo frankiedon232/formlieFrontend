@@ -585,6 +585,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ Add, change and delete rows of the organisation's own tables (Full access, primary key): a form built from the columns (the right control per type, empty is NULL, the key set automatically and never changed), checks per column type here and on the server, confirm before deleting; audit records which row, never its values
 - ✅ Import a CSV or Excel (.xlsx) file into a table: read on Formalie's servers (no library), columns matched by name and adjustable, first row preview, progress, rows added and skipped with the reason (row, column, problem), nothing added twice; audit `data.rows_imported`
 - ✅ Layout (owner 2026-10-05): the connection and tree take the sidebar's menu column on desktop (`useSidebarTakeover`; rail stays; back arrow to the menu and a button back to the tree; same width as the menu, drag to resize); the page keeps the full width; a slim one-line table strip; extra slim rows with column lines (DataView `dense`), table only (DataView `table-only`, no grid); phones, tablets and a folded sidebar open the same panel from "Tables"
+- ✅ Export also as JSON (row objects, JSON columns parsed) and SQL INSERT statements for the connection's engine (`shared/utils/datasources/exportFormats.ts`); the tree keeps one table open at a time; the account avatar sits at the foot of the rail while the tree holds the menu column
 
 ### 4. Query editor
 
@@ -1069,6 +1070,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-04 | Forms in several languages open in the form's main language (not the browser's); language switcher beside "Visit website" | F10 M4 | ✅ |
 | 2026-10-04 | French form: labels, sections, help and thank-you stayed English; "already filled in" showed only after the form flashed for seconds; spam check not visible anywhere | F10 | ✅ |
 | 2026-10-05 | Database explorer: the connection and table tree take the sidebar's whole menu column (rail stays) with a back arrow to the menu, same width as the menu and adjustable; extra slim table rows; no grid for table rows | F12 M3 | ✅ |
+| 2026-10-05 | Explorer: export tables as JSON and SQL INSERT statements too; one table open at a time in the tree; account avatar at the foot of the rail (with a line above) while the tree holds the menu column; slimmer tree search and connection picker; one square bullet for every table | F12 M3 | ✅ |
 
 ---
 
@@ -1239,3 +1241,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | M3 part 1, Database explorer (decision 114): tree, rows (DataView with search, filters, sort, Columns, Table / Grid), row panel, structure, export with progress; failing connections show their error. Fix found while testing: a response table on a PostgreSQL connection had been saved with MySQL types (a slower answer for an earlier-picked connection replaced the chosen one); the setup now ignores stale answers, the server sets the types of tables Formalie creates itself, and stored tables were repaired. |
 | 2026-10-05 | F12 | M3 part 2, changing data: add / change / delete rows of the organisation's tables (Full access) with a form built from the columns and one set of value rules on both sides; import CSV / Excel with column matching, preview, progress and a report of skipped rows (CSV and .xlsx read without a library). Tests: `datasources/values`, `datasources/tabular`, `datasources/import`. M3 complete. |
 | 2026-10-05 | F12 | Explorer layout (owner): connection and table tree in the sidebar's menu column with a back arrow to the menu (`useSidebarTakeover`, `AppSidebarTakeover`, page content teleported); same, resizable width as the menu; one-line table strip; DataView `dense` (28px rows, column lines) and `table-only` (no grid). |
+| 2026-10-05 | F12 | Explorer: JSON and SQL (INSERT per engine) exports; one open table in the tree; account at the rail's foot in explorer mode. Test: `datasources/exportFormats`. |

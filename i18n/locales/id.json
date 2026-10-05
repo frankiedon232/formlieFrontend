@@ -4692,6 +4692,10 @@
       "whySkipped": "Alasan baris dilewati (100 pertama):",
       "rowN": "Baris {n}"
     },
-    "readOnlyShort": "Hanya baca"
+    "readOnlyShort": "Hanya baca",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Satu objek per baris, untuk pengembang dan sistem lain",
+    "exportSql": "SQL (pernyataan INSERT)",
+    "exportSqlDesc": "Ditulis untuk database ini, untuk menyalin baris ke database lain"
   }
 }

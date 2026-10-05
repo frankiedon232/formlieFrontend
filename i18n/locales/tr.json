@@ -4692,6 +4692,10 @@
       "whySkipped": "Satırların neden atlandığı (ilk 100):",
       "rowN": "Satır {n}"
     },
-    "readOnlyShort": "Salt okunur"
+    "readOnlyShort": "Salt okunur",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Satır başına bir nesne, geliştiriciler ve diğer sistemler için",
+    "exportSql": "SQL (INSERT ifadeleri)",
+    "exportSqlDesc": "Bu veritabanı için yazılır, satırları başka birine kopyalamak için"
   }
 }

@@ -4692,6 +4692,10 @@
       "whySkipped": "Warum Zeilen übersprungen wurden (die ersten 100):",
       "rowN": "Zeile {n}"
     },
-    "readOnlyShort": "Nur Lesen"
+    "readOnlyShort": "Nur Lesen",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Ein Objekt pro Zeile, für Entwickler und andere Systeme",
+    "exportSql": "SQL (INSERT-Anweisungen)",
+    "exportSqlDesc": "Für diese Datenbank geschrieben, um die Zeilen in eine andere zu kopieren"
   }
 }

@@ -274,7 +274,7 @@ Admins only until F22. Runs on Formalie's servers through the connection; a conn
 | GET | `/datasources/{id}/explorer/structure?schema&table` | `TableStructure { columns [{ name, type, nullable, default, primary, unique, references }], primary_key, indexes, foreign_keys, rows_estimate, ddl, form, read_only: response_table\|read_access\|no_key\|view\|null }` |
 | GET | `/datasources/{id}/explorer/rows?schema&table&page&page_size&sort&q&filter[column]` | rows as stored, each with `__key` (its primary key); `q` searches every column; `sort` any column (`-` for descending) |
 | GET | `/datasources/{id}/explorer/facets?schema&table` | `[{ column, values [{ value, count }] }]` for columns with 2 to 12 distinct values (the Filter menu) |
-| POST | `/datasources/{id}/explorer/exports` | `{ schema, table, format: csv\|xlsx, q?, sort?, filter? }` → 201 `TableExport { id, status, progress, rows, size }`; audit `data.table_exported` |
+| POST | `/datasources/{id}/explorer/exports` | `{ schema, table, format: csv\|xlsx\|json\|sql, q?, sort?, filter? }` → 201 `TableExport { id, status, progress, rows, size }`. JSON: an array of row objects (JSON columns parsed, types kept). SQL: INSERT statements for the connection's engine (names quoted its way, one statement per row, in one transaction; SQL Server switches IDENTITY_INSERT on for an auto-numbered key; Oracle DATE / TIMESTAMP literals). Audit `data.table_exported` |
 | GET | `/explorer-exports/{id}` | progress |
 | POST | `/explorer-exports/{id}/link` | `{ url, expires_at }`: one-time private link, 5 minutes |
 | GET | `/datasource-exports/{token}` | **plain** file download (CSV with BOM and formula-safe cells, or XLSX) |

@@ -4692,6 +4692,10 @@
       "whySkipped": "Waarom rijen zijn overgeslagen (de eerste 100):",
       "rowN": "Rij {n}"
     },
-    "readOnlyShort": "Alleen lezen"
+    "readOnlyShort": "Alleen lezen",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Eén object per rij, voor ontwikkelaars en andere systemen",
+    "exportSql": "SQL (INSERT-statements)",
+    "exportSqlDesc": "Geschreven voor deze database, om de rijen naar een andere te kopiëren"
   }
 }

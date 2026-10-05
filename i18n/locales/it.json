@@ -4692,6 +4692,10 @@
       "whySkipped": "Perché alcune righe sono state saltate (le prime 100):",
       "rowN": "Riga {n}"
     },
-    "readOnlyShort": "Sola lettura"
+    "readOnlyShort": "Sola lettura",
+    "exportJson": "JSON",
+    "exportJsonDesc": "Un oggetto per riga, per sviluppatori e altri sistemi",
+    "exportSql": "SQL (istruzioni INSERT)",
+    "exportSqlDesc": "Scritto per questo database, per copiare le righe in un altro"
   }
 }

@@ -4692,6 +4692,10 @@
       "whySkipped": "Why rows were skipped (the first 100):",
       "rowN": "Row {n}"
     },
-    "readOnlyShort": "Read only"
+    "readOnlyShort": "Read only",
+    "exportJson": "JSON",
+    "exportJsonDesc": "One object per row, for developers and other systems",
+    "exportSql": "SQL (INSERT statements)",
+    "exportSqlDesc": "Written for this database, to copy the rows into another one"
   }
 }

@@ -1,6 +1,6 @@
 <!--
   The database tree (F12 M3): schemas → tables → columns (type on hover), with each table's row count; every
-  table has the same square bullet. Search narrows by table or column name. Nuxt UI's tree gives keyboard
+  table has the same square bullet. Search narrows by table or column name; one table open at a time. Nuxt UI's tree gives keyboard
   navigation (arrows move and open, Enter selects); picking a table opens it.
 -->
 <script setup lang="ts">
@@ -38,6 +38,20 @@ const items = computed<TreeItem[]>(() => {
   }
   return [...bySchema].map(([schema, tables]) => ({ label: schema, key: `schema:${schema}`, icon: 'i-lucide-folder-tree', defaultExpanded: true, children: tables, onSelect: (event: Event) => event.preventDefault() }))
 })
+
+// One table open at a time (owner 2026-10-05): opening a table closes the others; schemas stay as they are.
+const expanded = ref<string[]>([])
+watch(
+  items,
+  list => {
+    expanded.value = list.flatMap(schema => [String(schema.key), ...(schema.children ?? []).filter(table => table.defaultExpanded).map(table => String(table.key))])
+  },
+  { immediate: true },
+)
+function onExpanded(keys: string[]) {
+  const opened = keys.filter(key => !expanded.value.includes(key) && !key.startsWith('schema:'))
+  expanded.value = opened.length ? keys.filter(key => key.startsWith('schema:') || opened.includes(key)) : keys
+}
 </script>
 
 <template>
@@ -45,7 +59,7 @@ const items = computed<TreeItem[]>(() => {
     <UInput v-model="search" icon="i-lucide-search" size="xs" :ui="{ base: 'h-7 rounded-sm' }" :placeholder="t('explorer.searchTables')" class="w-full" :aria-label="t('explorer.searchTables')" />
     <div v-if="loading && !tables" class="flex flex-col gap-2"><USkeleton v-for="n in 8" :key="n" class="h-6 rounded-md" :class="n % 3 ? 'ms-5' : ''" /></div>
     <p v-else-if="!items.length" class="px-1 text-sm text-muted">{{ search ? t('explorer.noMatch') : t('explorer.noTables') }}</p>
-    <UTree v-else :key="search" :items="items" :get-key="item => String(item.key)" color="neutral" size="sm" class="-mx-1 min-h-0 flex-1 overflow-y-auto">
+    <UTree v-else :key="search" :items="items" :get-key="item => String(item.key)" :expanded="expanded" color="neutral" size="sm" class="-mx-1 min-h-0 flex-1 overflow-y-auto" @update:expanded="keys => onExpanded(keys as string[])">
       <!-- Every table gets the same square bullet (owner 2026-10-05); schemas and columns keep their icons -->
       <template #item-leading="{ item, ui }">
         <span v-if="item.table" class="flex size-4 shrink-0 items-center justify-center" aria-hidden="true">
