@@ -36,10 +36,10 @@ function copyText(key: string, text: string) {
     <section v-for="block in blocks" :key="block.key" class="overflow-hidden rounded-lg border border-default">
       <header class="flex items-center justify-between gap-2 bg-elevated/50 px-3 py-1.5">
         <h4 class="text-xs font-semibold text-highlighted">{{ t(`dataSources.grant.block.${block.key}`) }}</h4>
-        <UButton :icon="copied === block.key ? 'i-lucide-check' : 'i-lucide-copy'" color="neutral" variant="ghost" size="xs" :aria-label="t('common.copy')" @click="copyText(block.key, block.sql)" />
+        <UButton v-if="block.sql" :icon="copied === block.key ? 'i-lucide-check' : 'i-lucide-copy'" color="neutral" variant="ghost" size="xs" :aria-label="t('common.copy')" @click="copyText(block.key, block.sql)" />
       </header>
-      <pre class="overflow-x-auto px-3 py-2.5 font-mono text-[11px] leading-relaxed text-default" dir="ltr" tabindex="0" :aria-label="t(`dataSources.grant.block.${block.key}`)">{{ block.sql }}</pre>
-      <ul v-if="block.notes.length" class="flex flex-col gap-1 border-t border-default px-3 py-2">
+      <pre v-if="block.sql" class="overflow-x-auto px-3 py-2.5 font-mono text-[11px] leading-relaxed text-default" dir="ltr" tabindex="0" :aria-label="t(`dataSources.grant.block.${block.key}`)">{{ block.sql }}</pre>
+      <ul v-if="block.notes.length" class="flex flex-col gap-1 px-3 py-2" :class="block.sql ? 'border-t border-default' : ''">
         <li v-for="note in block.notes" :key="note" class="flex gap-1.5 text-xs text-muted">
           <UIcon name="i-lucide-info" class="mt-0.5 size-3.5 shrink-0" />
           <span>{{ t(`dataSources.grant.note.${note}`) }}</span>

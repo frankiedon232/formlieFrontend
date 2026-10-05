@@ -7,7 +7,7 @@
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
-import { DATASOURCE_STATUSES, type DataSourceDetail, type DataSourceInsights, type DataSourceRow } from '#shared/types/datasources'
+import { DATASOURCE_STATUSES, type DataSourceDetail, type DataSourceInsights, type DataSourceRow, type OtherTablesAccess } from '#shared/types/datasources'
 import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
 
 definePageMeta({ breadcrumb: 'nav.dataConnections' })
@@ -51,7 +51,7 @@ const columns = computed<DataColumn[]>(() => [
 const filters = computed<DataFilter[]>(() => [
   { key: 'status', label: t('dataSources.col.status'), icon: 'i-lucide-circle-dot', options: DATASOURCE_STATUSES.map(status => ({ value: status, label: t(`status.${status}`), dot: DATASOURCE_STATUS_META[status].fill })) },
   { key: 'engine', label: t('dataSources.summary.engine'), icon: 'i-lucide-database', options: SUPPORTED_DATABASES.map(db => ({ value: db.key, label: db.name })) },
-  { key: 'access', label: t('dataSources.summary.access'), icon: 'i-lucide-key-round', options: ['read_only', 'read_write'].map(mode => ({ value: mode, label: t(`dataSources.access.${mode}`) })) },
+  { key: 'access', label: t('dataSources.summary.access'), icon: 'i-lucide-key-round', options: (['read_write', 'read', 'none'] as const).map(other => ({ value: other, label: t(`dataSources.access.other.${other}`) })) },
 ])
 const sortOptions = computed(() => [
   { label: t('forms.sortName'), value: 'name' },
@@ -170,7 +170,7 @@ const rowActions = (row: DataSourceRow): DropdownMenuItem[][] => [
         <span class="font-mono text-xs" dir="ltr">{{ row.original.database }}</span>
       </template>
       <template #access-cell="{ row }">
-        <UBadge :label="t(`dataSources.access.${row.original.access.mode}`)" :icon="row.original.access.mode === 'read_only' ? 'i-lucide-eye' : 'i-lucide-pencil-line'" color="neutral" variant="outline" size="sm" class="rounded-md" />
+        <UBadge :label="t(`dataSources.access.other.${row.original.access.other}`)" :icon="OTHER_ICON[row.original.access.other as OtherTablesAccess]" color="neutral" variant="outline" size="sm" class="rounded-md" />
       </template>
       <template #status-cell="{ row }">
         <div class="flex items-center gap-1.5">

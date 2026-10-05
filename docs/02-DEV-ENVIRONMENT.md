@@ -92,10 +92,9 @@ Seeded workspaces have five connections in every state (connected read + write, 
 | Certificate problem (`1003`) | a host containing `badcert` (with encryption on) |
 | Sign-in refused (`1002`) | password or client secret `wrong` |
 | Database not found (`1005`) | a database / service name containing `missing` |
-| Missing write and structure permissions | a user name containing `readonly` |
-| Missing row counts and structure | a user name containing `limited` |
-| Administrator account warning | `root`, `sa`, `sys`, `system`, `postgres` or a name containing `admin` |
-| More rights than needed | a user name containing `writer` on a read-only connection |
+| Can't create Formalie's tables (`1012`, the test fails: required) | a user name containing `nocreate` |
+| Missing write on your other tables (needs attention) | a user name containing `readonly` |
+| Missing row counts (needs attention) | a user name containing `limited` |
 
 `localhost`, `127.*`, `169.254.*` and similar are refused as server addresses (by design).
 

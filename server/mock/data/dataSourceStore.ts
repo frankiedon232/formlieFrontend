@@ -49,7 +49,7 @@ function seed(tenant: MockTenant): StoredDataSource[] {
     const plan = planTest({ engine, settings: merged, access }, secrets, { fail: extra.fail })
     const testId = uuidFrom(`${id}:test`)
     const ops: Record<string, number> = {}
-    const level = access.mode === 'read_write' ? 900 : 300
+    const level = access.other === 'read_write' ? 900 : 300
     for (let day = 0; day < 60; day++) {
       const time = now - day * DAY
       if (time < created) break
@@ -74,16 +74,32 @@ function seed(tenant: MockTenant): StoredDataSource[] {
     }
   }
   return [
-    make(1, 'Case management', 'postgresql', { host: 'cases-db.example.net', database: 'cases', schema: 'public', ssl_mode: 'verify-full', username: 'formalie_app' }, { password: 'mock', ca_certificate: PEM }, { mode: 'read_write', structure: true, schemas: ['public', 'intake'] }, { ageDays: 120 }),
-    make(2, 'People records', 'sqlserver', { host: 'hr-sql.example.net', database: 'People', schema: 'dbo', username: 'formalie_reader' }, { password: 'mock' }, { mode: 'read_only', structure: false, schemas: [] }, { ageDays: 75 }),
-    make(3, 'Finance warehouse', 'oracle', { host: 'fin-ora.example.net', port: 2484, service_name: 'FINPDB1', schema: 'FINANCE', username: 'formalie_limited' }, { password: 'mock' }, { mode: 'read_only', structure: false, schemas: [] }, { ageDays: 40 }),
-    make(4, 'Website leads', 'mysql', { host: 'leads-db.example.net', database: 'leads', username: 'formalie_app' }, { password: 'mock' }, { mode: 'read_write', structure: false, schemas: [] }, { ageDays: 22, fail: { step: 'network', code: 'FRM-DEST-1011' } }),
-    make(5, 'Legacy intake', 'mariadb', { host: 'legacy-db.example.net', database: 'intake_2019', username: 'formalie_app' }, { password: 'mock' }, { mode: 'read_only', structure: false, schemas: [] }, { ageDays: 300, enabled: false }),
+    make(1, 'Case management', 'postgresql', { host: 'cases-db.example.net', database: 'cases', schema: 'public', ssl_mode: 'verify-full', username: 'formalie_app' }, { password: 'mock', ca_certificate: PEM }, { table_prefix: 'formalie_', tables_schema: 'formalie', other: 'read_write', schemas: ['public', 'intake'] }, { ageDays: 120 }),
+    make(2, 'People records', 'sqlserver', { host: 'hr-sql.example.net', database: 'People', schema: 'dbo', username: 'formalie_reader' }, { password: 'mock' }, { table_prefix: 'formalie_', tables_schema: '', other: 'read', schemas: [] }, { ageDays: 75 }),
+    make(3, 'Finance warehouse', 'oracle', { host: 'fin-ora.example.net', port: 2484, service_name: 'FINPDB1', schema: 'FINANCE', username: 'formalie_limited' }, { password: 'mock' }, { table_prefix: 'fmly_', tables_schema: '', other: 'read', schemas: [] }, { ageDays: 40 }),
+    make(4, 'Website leads', 'mysql', { host: 'leads-db.example.net', database: 'leads', username: 'formalie_app' }, { password: 'mock' }, { table_prefix: 'formalie_', tables_schema: '', other: 'read_write', schemas: [] }, { ageDays: 22, fail: { step: 'network', code: 'FRM-DEST-1011' } }),
+    make(5, 'Legacy intake', 'mariadb', { host: 'legacy-db.example.net', database: 'intake_2019', username: 'formalie_app' }, { password: 'mock' }, { table_prefix: 'form_', tables_schema: '', other: 'none', schemas: [] }, { ageDays: 300, enabled: false }),
   ]
 }
 
+/** Connections saved before the access model changed (2026-10-05) get the new shape. */
+function upgrade(source: StoredDataSource): StoredDataSource {
+  const access = source.access as Partial<DataSourceAccessSettings> & { mode?: string }
+  if (access.table_prefix) return source
+  source.access = { table_prefix: 'formalie_', tables_schema: '', other: access.mode === 'read_only' ? 'read' : 'read_write', schemas: access.schemas ?? [] }
+  // Its last test is read again under the new permission levels.
+  if (source.last_test?.finished_at) {
+    const failed = source.last_test.steps.find(step => step.status === 'failed')
+    const plan = planTest(source, source.secrets, failed && failed.key === 'network' && failed.error_code ? { fail: { step: 'network', code: failed.error_code } } : {})
+    source.last_test = finishedTest(source.last_test.id, plan, Date.parse(source.last_test.started_at))
+  }
+  saveDataSources()
+  return source
+}
+
 export function dataSourcesOf(tenant: MockTenant): StoredDataSource[] {
-  let list = stores.get(tenant.id)
+  let list = stores.get(tenant.id)?.map(upgrade)
+  if (list) stores.set(tenant.id, list)
   if (!list) {
     list = SEEDED_TENANT_IDS.has(tenant.id) ? seed(tenant) : []
     stores.set(tenant.id, list)

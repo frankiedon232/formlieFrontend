@@ -3,11 +3,12 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { TEST_STEPS, type DataSourceAccessSettings } from '../../shared/types/datasources'
 import { ENGINE_FIELDS, addressOf, checkConfig, cleanSecrets, cleanSettings, databaseNameOf, defaultSettings, fieldsFor, isBlockedHost, isEncrypted } from '../../shared/utils/datasources/engines'
-import { DB_OPERATIONS, grantScript, grantScriptText, levelsFor, operationsFor } from '../../shared/utils/datasources/permissions'
+import { DB_OPERATIONS, grantScript, grantScriptText, levelsFor, operationsFor, tablesSchemaOf } from '../../shared/utils/datasources/permissions'
 import { DB_ENGINES } from '../../shared/utils/integrations/databases'
 
-const readOnly: DataSourceAccessSettings = { mode: 'read_only', structure: false, schemas: [] }
-const full: DataSourceAccessSettings = { mode: 'read_write', structure: true, schemas: [] }
+const readOnly: DataSourceAccessSettings = { table_prefix: 'formalie_', tables_schema: '', other: 'read', schemas: [] }
+const ownOnly: DataSourceAccessSettings = { ...readOnly, other: 'none' }
+const full: DataSourceAccessSettings = { ...readOnly, other: 'read_write' }
 
 describe('engine catalogue', () => {
   it('every engine has server, sign-in and security fields and secure defaults', () => {
@@ -70,39 +71,52 @@ describe('engine catalogue', () => {
 })
 
 describe('permissions', () => {
-  it('needs only the levels the connection uses', () => {
-    expect(levelsFor(readOnly)).toEqual(['read'])
-    expect(levelsFor({ ...full, structure: false })).toEqual(['read', 'write'])
-    expect(operationsFor('mysql', readOnly).filter(op => op.needed).map(op => op.key)).toEqual(['connect', 'read_schema', 'row_counts', 'read_rows', 'cancel'])
+  it('always needs Formalie’s own tables; the other tables follow the choice', () => {
+    expect(levelsFor(ownOnly)).toEqual(['own'])
+    expect(levelsFor(readOnly)).toEqual(['own', 'read'])
+    expect(levelsFor(full)).toEqual(['own', 'read', 'write'])
+    expect(operationsFor('mysql', ownOnly).filter(op => op.needed).map(op => op.key)).toEqual(['connect', 'create_table', 'own_rows', 'alter_table', 'create_index', 'cancel'])
     expect(operationsFor('mysql', full).map(op => op.key)).not.toContain('sequences')
     expect(operationsFor('postgresql', full).map(op => op.key)).toContain('sequences')
   })
 
+  it('keeps Formalie’s tables apart where the engine allows', () => {
+    const settings = (engine: Parameters<typeof tablesSchemaOf>[0], extra: Record<string, string> = {}) => ({ ...defaultSettings(engine), username: 'app', database: 'leads', ...extra })
+    expect(tablesSchemaOf('postgresql', settings('postgresql'), full)).toBe('public')
+    expect(tablesSchemaOf('postgresql', settings('postgresql'), { ...full, tables_schema: 'forms' })).toBe('forms')
+    expect(tablesSchemaOf('sqlserver', settings('sqlserver'), full)).toBe('formalie')
+    expect(tablesSchemaOf('oracle', settings('oracle'), full)).toBe('APP')
+    expect(tablesSchemaOf('mysql', settings('mysql'), full)).toBe('leads')
+  })
+
   it('writes a grant script per engine with the connection’s own names', () => {
     const script = (engine: Parameters<typeof grantScript>[0], settings: Record<string, string | number | boolean>, access = full, options = {}) => grantScriptText(grantScript(engine, { ...defaultSettings(engine), ...settings }, access, options))
-    const mysql = script('mysql', { database: 'leads', username: 'app' })
+    const mysql = script('mysql', { database: 'leads', username: 'app' }, ownOnly)
     expect(mysql).toContain("CREATE USER 'app'@'%'")
-    expect(mysql).toContain('GRANT SELECT, SHOW VIEW ON `leads`.*')
-    expect(mysql).toContain('GRANT CREATE, ALTER, INDEX, REFERENCES')
-    expect(script('mysql', { database: 'leads' }, readOnly)).not.toContain('INSERT')
+    expect(mysql).toContain('GRANT CREATE, ALTER, INDEX, REFERENCES, SELECT, INSERT, UPDATE, DELETE ON `leads`.*')
+    expect(script('mysql', { database: 'leads', username: 'app' }, { ...full, schemas: ['crm'] })).toContain('GRANT INSERT, UPDATE, DELETE ON `crm`.*')
 
-    const pg = script('postgresql', { database: 'cases', username: 'app' }, { ...full, schemas: ['public', 'intake'] })
+    const pgOwn = script('postgresql', { database: 'cases', username: 'app' }, ownOnly)
+    expect(pgOwn).toContain('GRANT USAGE, CREATE ON SCHEMA "public" TO "app";')
+    expect(pgOwn).not.toContain('SELECT ON ALL TABLES')
+    const pg = script('postgresql', { database: 'cases', username: 'app' }, { ...full, tables_schema: 'formalie', schemas: ['public', 'intake'] })
+    expect(pg).toContain('GRANT USAGE, CREATE ON SCHEMA "formalie"')
     expect(pg).toContain('GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "intake"')
-    expect(pg).toContain('GRANT CREATE ON SCHEMA "public"')
 
     const sql = script('sqlserver', { database: 'People', username: 'app' }, readOnly)
+    expect(sql).toContain('CREATE SCHEMA [formalie] AUTHORIZATION [app];')
     expect(sql).toContain('GRANT SELECT, VIEW DEFINITION ON SCHEMA::[dbo] TO [app];')
-    expect(sql).toContain('GRANT VIEW DATABASE STATE')
+    expect(sql).not.toContain('GRANT INSERT')
     expect(script('sqlserver', { database: 'People', auth: 'entra_service_principal', client_id: 'abc' }, readOnly)).toContain('FROM EXTERNAL PROVIDER')
 
     expect(script('oracle', { schema: 'finance', username: 'app' }, full, { oracle23: true })).toContain('GRANT SELECT ANY TABLE ON SCHEMA "FINANCE" TO "APP";')
     const oracle19 = script('oracle', { schema: 'finance', username: 'app' }, full)
     expect(oracle19).toContain("FROM all_sequences WHERE sequence_owner = 'FINANCE'")
-    expect(oracle19).toContain('GRANT CREATE TABLE TO "APP";')
+    expect(oracle19).toContain('GRANT CREATE TABLE, CREATE SEQUENCE TO "APP";')
   })
 
   it('quotes names safely', () => {
-    const text = grantScriptText(grantScript('mysql', { ...defaultSettings('mysql'), database: 'a`b', username: "o'k" }, readOnly))
+    const text = grantScriptText(grantScript('mysql', { ...defaultSettings('mysql'), database: 'a`b', username: "o'k" }, ownOnly))
     expect(text).toContain('`a``b`')
     expect(text).toContain("'o''k'@'%'")
   })
@@ -122,15 +136,17 @@ describe('data source labels', () => {
 
   it('labels every operation, level, test step and finding', () => {
     for (const operation of DB_OPERATIONS) expect([ds.op[operation.key]?.label, ds.op[operation.key]?.uses].every(Boolean), operation.key).toBe(true)
-    for (const level of ['read', 'write', 'structure']) expect(ds.level[level] && ds.levelDesc[level] && ds.grant.block[level]).toBeTruthy()
+    for (const level of ['own', 'read', 'write']) expect(ds.level[level] && ds.levelDesc[level] && ds.grant.block[level]).toBeTruthy()
     for (const step of TEST_STEPS) expect(ds.step[step] && ds.stepDesc[step], step).toBeTruthy()
-    for (const finding of ['admin_account', 'extra_write', 'tls_off', 'trust_certificate', 'missing_permissions']) expect(ds.finding[finding]?.title, finding).toBeTruthy()
-    for (const engine of DB_ENGINES) expect(ds.engineDesc[engine], engine).toBeTruthy()
+    for (const finding of ['tls_off', 'trust_certificate', 'missing_permissions']) expect(ds.finding[finding]?.title, finding).toBeTruthy()
+    for (const engine of DB_ENGINES) expect(ds.engineDesc[engine] && ds.access.tablesSchemaDesc[engine], engine).toBeTruthy()
+    for (const other of ['none', 'read', 'read_write']) expect(ds.access.other[other] && ds.access.otherDesc[other] && ds.access.short[other], other).toBeTruthy()
   })
 
   it('labels every note a grant script can carry', () => {
     for (const engine of DB_ENGINES)
       for (const oracle23 of [true, false])
-        for (const block of grantScript(engine, defaultSettings(engine), full, { oracle23 })) for (const note of block.notes) expect(ds.grant.note[note], note).toBeTruthy()
+        for (const access of [ownOnly, readOnly, full])
+          for (const block of grantScript(engine, defaultSettings(engine), access, { oracle23 })) for (const note of block.notes) expect(ds.grant.note[note], note).toBeTruthy()
   })
 })

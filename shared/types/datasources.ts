@@ -12,18 +12,30 @@ export type { DbEngine }
 export const DATASOURCE_STATUSES = ['connected', 'attention', 'failing', 'disabled', 'untested'] as const
 export type DataSourceStatus = (typeof DATASOURCE_STATUSES)[number]
 
-export type DataSourceAccess = 'read_only' | 'read_write'
+/** Prefixes for the tables Formalie creates (owner 2026-10-05). */
+export const TABLE_PREFIXES = ['formalie_', 'fmly_', 'form_'] as const
+export type TablePrefix = (typeof TABLE_PREFIXES)[number]
+/** The organisation's other tables (optional): not shared · read · read and write. */
+export type OtherTablesAccess = 'none' | 'read' | 'read_write'
 
 /** Non-secret, engine-specific settings (host, port, database, TLS mode, …). */
 export type DataSourceSettings = Record<string, string | number | boolean>
 /** Secret values, only ever sent to the server (create, or change credentials). */
 export type DataSourceSecrets = Record<string, string>
 
+/**
+ * A connection exists to store the workspace's responses (owner 2026-10-05, not negotiable):
+ * Formalie always creates its own tables (one per form, named with the prefix), writes every
+ * response there, reads them back to show them, changes and removes rows and adds columns, in its
+ * own tables only. Access to the organisation's other tables is optional, for the explorer,
+ * queries, option lists from their data and imports.
+ */
 export interface DataSourceAccessSettings {
-  mode: DataSourceAccess
-  /** Create tables and add columns for form destinations (read + write only). */
-  structure: boolean
-  /** Schemas Formalie may use; empty = the default schema. */
+  table_prefix: TablePrefix
+  /** Schema for Formalie's tables (PostgreSQL, SQL Server); empty = the engine's default. */
+  tables_schema: string
+  other: OtherTablesAccess
+  /** Schemas (MySQL / MariaDB: databases) with the other tables; empty = the connection's own. */
   schemas: string[]
 }
 
@@ -82,7 +94,7 @@ export interface DataSourceDetail extends DataSourceRow {
 export interface DataSourceInsights {
   total: number
   by_status: Record<DataSourceStatus, number>
-  read_write: number
+  forms_sending: number
   operations_30d: number
   previous_30d: number
   daily: { date: string; count: number }[]
@@ -117,7 +129,7 @@ export interface PermissionResult {
 }
 
 /** Something worth changing although the connection works (least privilege, encryption). */
-export type TestFinding = 'admin_account' | 'extra_write' | 'tls_off' | 'trust_certificate' | 'missing_permissions'
+export type TestFinding = 'tls_off' | 'trust_certificate' | 'missing_permissions'
 
 export interface ConnectionTest {
   id: string

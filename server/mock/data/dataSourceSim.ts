@@ -10,9 +10,8 @@
  *   host contains "badcert" → TLS fails (FRM-DEST-1003)
  *   password / client secret "wrong" → sign-in fails (FRM-DEST-1002)
  *   database / service name contains "missing" → FRM-DEST-1005
- *   user name contains "readonly" → no write or structure grants · "limited" → no row counts,
- *   no structure · root / sa / sys / system / postgres / "admin" → administrator account warning ·
- *   "writer" on a read-only connection → more rights than needed
+ *   user name contains "readonly" → no write on other tables · "limited" → no row counts ·
+ *   "nocreate" → can't create its own tables (required, so the test fails)
  */
 import { createHash } from 'node:crypto'
 import { TEST_STEPS, type ConnectionTest, type DataSourceConfig, type DataSourceSecrets, type PermissionResult, type TestFinding, type TestStep, type TestStepKey } from '#shared/types/datasources'
@@ -36,8 +35,6 @@ export interface TestPlan {
   result: Omit<ConnectionTest, 'id' | 'status' | 'started_at' | 'finished_at' | 'steps'>
 }
 
-const ADMIN = /^(root|sa|sys|system|postgres|dbadmin)$|admin/i
-
 /** Decide what a test of this configuration finds. */
 export function planTest(config: DataSourceConfig, secrets: DataSourceSecrets, options: { fail?: { step: TestStepKey; code: string } } = {}): TestPlan {
   const { engine, settings, access } = config
@@ -55,17 +52,19 @@ export function planTest(config: DataSourceConfig, secrets: DataSourceSecrets, o
   if (databaseNameOf(engine, settings).toLowerCase().includes('missing')) failWith('database', 'FRM-DEST-1005')
 
   const missing = new Set<string>()
-  if (user.includes('readonly')) ['insert', 'update', 'delete', 'sequences', 'create_table', 'alter_table', 'create_index'].forEach(key => missing.add(key))
-  if (user.includes('limited')) ['row_counts', 'create_table', 'alter_table', 'create_index'].forEach(key => missing.add(key))
+  if (user.includes('readonly')) ['insert', 'update', 'delete', 'sequences'].forEach(key => missing.add(key))
+  if (user.includes('limited')) missing.add('row_counts')
+  if (user.includes('nocreate')) missing.add('create_table')
   const permissions: PermissionResult[] = operationsFor(engine, access).map(operation => ({
     operation: operation.key,
     status: !operation.needed ? 'not_needed' : missing.has(operation.key) ? 'missing' : 'granted',
   }))
 
+  // Formalie's own tables are what the connection is for: without them the test fails.
+  const ownMissing = operationsFor(engine, access).some(operation => operation.level === 'own' && missing.has(operation.key))
+  if (ownMissing) failWith('permissions', 'FRM-DEST-1012')
   const findings: TestFinding[] = []
-  if (permissions.some(item => item.status === 'missing')) findings.push('missing_permissions')
-  if (ADMIN.test(user)) findings.push('admin_account')
-  if (access.mode === 'read_only' && user.includes('writer')) findings.push('extra_write')
+  if (!ownMissing && permissions.some(item => item.status === 'missing')) findings.push('missing_permissions')
   if (!encrypted) findings.push('tls_off')
   if (engine === 'sqlserver' && settings.trust_server_certificate) findings.push('trust_certificate')
 
@@ -90,7 +89,7 @@ export function planTest(config: DataSourceConfig, secrets: DataSourceSecrets, o
     result: {
       server_version: failed && steps.findIndex(step => step.outcome === 'failed') < 3 ? null : VERSIONS[engine],
       latency_ms: steps[0]!.outcome === 'failed' ? null : 12 + (seed % 48),
-      permissions: failed ? [] : permissions,
+      permissions: failed && !ownMissing ? [] : permissions,
       findings: failed ? [] : findings,
       schemas: failed ? [] : schemas,
       tables_count: failed ? null : 12 + (seed % 37),

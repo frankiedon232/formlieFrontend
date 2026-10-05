@@ -18,7 +18,7 @@ const stats = computed(() => {
   if (!data) return []
   return [
     { label: t('nav.dataConnections'), value: number(data.total) },
-    { label: t('dataSources.access.read_write'), value: number(data.read_write) },
+    { label: t('dataSources.formsUsing'), value: number(data.forms_sending) },
     { label: t('dataSources.kpi.latency'), value: data.avg_latency_ms === null ? '–' : t('dataSources.ms', { n: data.avg_latency_ms }) },
     { label: t('dataSources.kpi.missing'), value: number(data.missing_permissions) },
   ]

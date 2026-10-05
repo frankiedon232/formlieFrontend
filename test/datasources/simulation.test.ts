@@ -3,7 +3,7 @@ import type { DataSourceAccessSettings } from '../../shared/types/datasources'
 import { defaultSettings } from '../../shared/utils/datasources/engines'
 import { finishedTest, planTest, testAt } from '../../server/mock/data/dataSourceSim'
 
-const access: DataSourceAccessSettings = { mode: 'read_write', structure: true, schemas: [] }
+const access: DataSourceAccessSettings = { table_prefix: 'formalie_', tables_schema: '', other: 'read_write', schemas: [] }
 const config = (settings: Record<string, string | number | boolean>, engine: 'postgresql' | 'sqlserver' = 'postgresql') => ({ engine, settings: { ...defaultSettings(engine), host: 'db.example.net', database: 'cases', username: 'formalie_app', ...settings }, access })
 
 describe('mock connection test', () => {
@@ -25,8 +25,15 @@ describe('mock connection test', () => {
     const limited = finishedTest('t', planTest(config({ username: 'formalie_readonly' }), { password: 'x' }), 0)
     expect(limited.status).toBe('warning')
     expect(limited.permissions.filter(item => item.status === 'missing').map(item => item.operation)).toContain('insert')
-    expect(finishedTest('t', planTest(config({ username: 'postgres' }), { password: 'x' }), 0).findings).toContain('admin_account')
+    expect(finishedTest('t', planTest(config({ username: 'postgres' }), { password: 'x' }), 0).status).toBe('passed')
     expect(finishedTest('t', planTest(config({ ssl_mode: 'disable' }), { password: 'x' }), 0).findings).toContain('tls_off')
+  })
+
+  it('fails when Formalie can’t create its own tables (required)', () => {
+    const test = finishedTest('t', planTest(config({ username: 'formalie_nocreate' }), { password: 'x' }), 0)
+    expect(test.status).toBe('failed')
+    expect(test.steps.at(-1)).toMatchObject({ key: 'permissions', status: 'failed', error_code: 'FRM-DEST-1012' })
+    expect(test.permissions.find(item => item.operation === 'create_table')!.status).toBe('missing')
   })
 
   it('reveals the steps over time', () => {

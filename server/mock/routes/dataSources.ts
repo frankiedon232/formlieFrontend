@@ -16,8 +16,9 @@
  */
 import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
-import { DATASOURCE_STATUSES, type ConnectionTest, type DataSourceConfig, type DataSourceInsights, type DataSourceSecrets } from '#shared/types/datasources'
+import { DATASOURCE_STATUSES, TABLE_PREFIXES, type ConnectionTest, type DataSourceConfig, type DataSourceInsights, type DataSourceSecrets } from '#shared/types/datasources'
 import { addressOf, checkConfig, cleanSecrets, cleanSettings } from '#shared/utils/datasources/engines'
+import { hasTablesSchema } from '#shared/utils/datasources/permissions'
 import { DB_ENGINES } from '#shared/utils/integrations/databases'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
@@ -30,8 +31,9 @@ import { platformEgressIps } from '../data/platformStore'
 import type { MockTenant } from '../data/tenants'
 
 const accessSchema = z.object({
-  mode: z.enum(['read_only', 'read_write']),
-  structure: z.boolean().default(false),
+  table_prefix: z.enum(TABLE_PREFIXES).default('formalie_'),
+  tables_schema: z.string().trim().max(128).regex(/^$|^[\p{L}_][\p{L}\p{N}_$]*$/u).default(''),
+  other: z.enum(['none', 'read', 'read_write']).default('read_write'),
   schemas: z.array(z.string().trim().min(1).max(128)).max(20).default([]),
 })
 const configSchema = z.object({
@@ -60,7 +62,8 @@ function validate(config: DataSourceConfig, secrets: DataSourceSecrets, secretsS
 function normalise(input: z.infer<typeof configSchema>): DataSourceConfig & { secrets: DataSourceSecrets } {
   const engine = input.engine as DataSourceConfig['engine']
   const settings = cleanSettings(engine, input.settings)
-  const access = { ...input.access, structure: input.access.mode === 'read_write' && input.access.structure }
+  // Only PostgreSQL and SQL Server put Formalie's tables in a schema chosen here.
+  const access = { ...input.access, tables_schema: hasTablesSchema(engine) ? input.access.tables_schema : '' }
   return { engine, settings, access, secrets: cleanSecrets(engine, settings, input.secrets) }
 }
 
@@ -150,7 +153,7 @@ export const listDataSources = defineMockRoute(({ event, query }) => {
   const filter = (query.filter ?? {}) as Record<string, unknown>
   const rows = dataSourcesOf(tenant)
     .map(rowOf)
-    .filter(row => inList(filter.status, row.status) && inList(filter.engine, row.engine) && inList(filter.access, row.access.mode))
+    .filter(row => inList(filter.status, row.status) && inList(filter.engine, row.engine) && inList(filter.access, row.access.other))
   const { data, meta } = paginate(rows, { sort: 'name', ...query }, (row, q) => [row.name, row.address, row.database, row.engine].some(text => text.toLowerCase().includes(q)))
   return ok(data, meta)
 })
@@ -165,7 +168,7 @@ export const dataSourceInsights = defineMockRoute(({ event }) => {
   return ok<DataSourceInsights>({
     total: rows.length,
     by_status,
-    read_write: rows.filter(row => row.access.mode === 'read_write').length,
+    forms_sending: rows.reduce((sum, row) => sum + row.forms_count, 0),
     operations_30d: rows.reduce((sum, row) => sum + row.operations_30d, 0),
     previous_30d: sources.reduce((sum, source) => sum + previousOps(source), 0),
     daily,
@@ -211,7 +214,7 @@ export const createDataSource = defineMockRoute(({ event, body }) => {
     action: 'data.connection_created',
     actor: actorOf(user),
     resource: resource(source),
-    metadata: { engine: source.engine, address: addressOf(source.engine, source.settings), access: source.access.mode, status: statusOf(source) },
+    metadata: { engine: source.engine, address: addressOf(source.engine, source.settings), access: source.access.other, prefix: source.access.table_prefix, status: statusOf(source) },
   })
   return ok(detailOf(source), {}, 201)
 })
@@ -248,7 +251,7 @@ export const patchDataSource = defineMockRoute(({ event, body }) => {
     const before = addressOf(source.engine, source.settings)
     const after = addressOf(config.engine, config.settings)
     if (before !== after) changes.push({ field: 'host', before, after })
-    if (JSON.stringify(source.access) !== JSON.stringify(config.access)) changes.push({ field: 'access', before: source.access.mode, after: config.access.mode })
+    if (JSON.stringify(source.access) !== JSON.stringify(config.access)) changes.push({ field: 'access', before: source.access.other, after: config.access.other })
     if (JSON.stringify(source.settings) !== JSON.stringify(config.settings) && before === after) changes.push({ field: 'security', before: null, after: null })
     source.settings = config.settings
     source.access = config.access

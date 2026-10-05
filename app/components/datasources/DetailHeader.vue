@@ -44,7 +44,7 @@ const menu = computed<DropdownMenuItem[][]>(() => [
         <div class="mt-1 flex flex-wrap items-center gap-1.5">
           <DataStatusBadge :status="source.status" />
           <UBadge :label="`${engineName(source.engine)}${source.server_version ? ` ${source.server_version}` : ''}`" color="neutral" variant="outline" size="sm" class="rounded-md" />
-          <UBadge :label="t(`dataSources.access.${source.access.mode}`)" :icon="source.access.mode === 'read_only' ? 'i-lucide-eye' : 'i-lucide-pencil-line'" color="neutral" variant="soft" size="sm" class="rounded-md" />
+          <UBadge :label="t(`dataSources.access.short.${source.access.other}`)" :icon="OTHER_ICON[source.access.other]" color="neutral" variant="soft" size="sm" class="rounded-md" />
         </div>
       </div>
       <div class="flex shrink-0 items-center gap-1">

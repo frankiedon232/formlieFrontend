@@ -541,7 +541,8 @@
     "FRM-DEST-1008": "Jaribio hili la muunganisho halipatikani tena. Liendeshe tena.",
     "FRM-DEST-1009": "Muunganisho huu umezimwa. Uwashe kwanza.",
     "FRM-DEST-1010": "Fomu bado zinatuma majibu yake kwenye muunganisho huu.",
-    "FRM-DEST-1011": "Hifadhidata ilichukua muda mrefu sana kujibu."
+    "FRM-DEST-1011": "Hifadhidata ilichukua muda mrefu sana kujibu.",
+    "FRM-DEST-1012": "Akaunti hii haiwezi kuunda wala kutumia majedwali ya Formalie."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -2881,7 +2882,7 @@
     "add": "Ongeza muunganisho",
     "search": "Tafuta miunganisho, seva au hifadhidata…",
     "emptyTitle": "Bado hakuna miunganisho",
-    "emptyDesc": "Unganisha mojawapo ya hifadhidata zako ili kutuma data ya fomu kwake na kuifanyia kazi hapa. Hifadhi iliyojengewa ndani ya Formalie inaendelea kufanya kazi wakati huo.",
+    "emptyDesc": "Unganisha mojawapo ya hifadhidata zako na Formalie itahifadhi majibu yako humo, katika majedwali yake yenyewe, ili uweze kuyatumia pia katika mifumo yako. Hifadhi iliyojengewa ndani ya Formalie inaendelea kufanya kazi wakati huo.",
     "notFound": "Muunganisho huu haupatikani",
     "ms": "{n} ms",
     "checked": "Ilikaguliwa {when}",
@@ -3022,12 +3023,12 @@
     "hint": {
       "host": "Jina la seva au anwani ya IP, kama seva za Formalie zinavyoifikia. Mitandao binafsi: tumia njia ya SSH.",
       "connect_timeout": "Muda wa kusubiri seva kabla ya kuacha.",
-      "username": "Akaunti maalum kwa ajili ya Formalie, kamwe si msimamizi.",
-      "ca_certificate": "Bandika maandishi ya PEM ya mamlaka ya vyeti iliyosaini cheti cha seva.",
+      "username": "Akaunti ambayo Formalie huingia nayo. Akaunti yoyote inafaa, mradi ina ruhusa za hatua ya Ufikiaji.",
+      "ca_certificate": "Unahitajika tu unapochagua chaguo linalothibitisha cheti. Bandika maandishi ya PEM ya mamlaka ya vyeti iliyosaini cheti cha seva.",
       "client_certificate": "Pale tu seva inapoomba cheti cha mteja (TLS ya pande mbili).",
       "client_key": "Ufunguo binafsi wa cheti cha mteja, katika PEM.",
-      "ssh": "Kwa hifadhidata iliyo kwenye mtandao binafsi: Formalie huunganisha kwenye seva unayoiruhusu, ambayo hupeleka kwenye hifadhidata.",
-      "ssh_private_key": "Ufunguo binafsi wa PEM wa mtumiaji wa SSH. Tumia ufunguo uliotengenezwa kwa ajili ya Formalie pekee.",
+      "ssh": "Tu wakati hifadhidata yako iko kwenye mtandao binafsi ambao Formalie haiwezi kuufikia moja kwa moja. Iwashe ili kuweka seva ya SSH, mtumiaji na ufunguo; vinginevyo iache imezimwa.",
+      "ssh_private_key": "Ufunguo binafsi wa mtumiaji wa SSH, katika PEM. Unahitajika kwa njia tu, na huhifadhiwa ukiwa umesimbwa.",
       "time_zone": "Tarehe hutumwa na kusomwa kwa saa za eneo hili. UTC (+00:00) inapendekezwa.",
       "target_session_attrs": "Kwa makundi ya seva: seva ipi Formalie inaweza kutumia.",
       "trust_server_certificate": "Haipendekezwi: yeyote aliye katikati anaweza kusoma mawasiliano. Tumia kwa majaribio tu.",
@@ -3123,14 +3124,14 @@
       "taken": "Muunganisho wenye jina hili tayari upo."
     },
     "level": {
-      "read": "Kusoma",
-      "write": "Kuandika",
-      "structure": "Muundo"
+      "read": "Soma majedwali yako mengine",
+      "write": "Badilisha majedwali yako mengine",
+      "own": "Majedwali ya Formalie"
     },
     "levelDesc": {
-      "read": "Vinjari majedwali, soma safu, hamisha, endesha hoja za kusoma",
-      "write": "Tuma majibu ya fomu, sasisha na ufute safu, ingiza",
-      "structure": "Unda majedwali kutoka fomu, ongeza safuwima kwa sehemu mpya"
+      "read": "Kivinjari cha hifadhidata, hoja, orodha za chaguo kutoka data yako",
+      "write": "Hariri safu kwenye kivinjari na ingiza faili kwenye majedwali yako",
+      "own": "Unda jedwali kwa kila fomu, hifadhi majibu, yaonyeshe, yabadilishe, ongeza safuwima"
     },
     "perm": {
       "needed": "Inahitajika",
@@ -3154,7 +3155,7 @@
       },
       "read_rows": {
         "label": "Soma safu",
-        "uses": "Vinjari na uhamishe majedwali, hoja za kusoma, orodha za chaguo"
+        "uses": "Vinjari na uhamishe majedwali yako, hoja za kusoma, orodha za chaguo"
       },
       "cancel": {
         "label": "Ghairi hoja yake mwenyewe",
@@ -3162,11 +3163,11 @@
       },
       "insert": {
         "label": "Ongeza safu",
-        "uses": "Tuma majibu ya fomu, uingizaji, safu mpya"
+        "uses": "Safu mpya na uingizaji kwenye majedwali yako"
       },
       "update": {
         "label": "Badilisha safu",
-        "uses": "Sasisha au ingiza kwa ufunguo, mabadiliko kwenye kivinjari"
+        "uses": "Mabadiliko kwenye kivinjari"
       },
       "delete": {
         "label": "Futa safu",
@@ -3174,19 +3175,23 @@
       },
       "sequences": {
         "label": "Tumia mfuatano",
-        "uses": "Vitambulisho vinavyozalishwa kwa safu mpya"
+        "uses": "Vitambulisho vinavyozalishwa kwa safu mpya kwenye majedwali yako"
       },
       "create_table": {
-        "label": "Unda majedwali",
-        "uses": "Jedwali lililoundwa kutoka fomu"
+        "label": "Unda majedwali yake",
+        "uses": "Jedwali kwa kila fomu, lenye jina linaloanza na kiambishi"
       },
       "alter_table": {
         "label": "Ongeza safuwima",
-        "uses": "Safuwima kwa sehemu iliyoongezwa kwenye fomu"
+        "uses": "Safuwima kwa kila sehemu iliyoongezwa kwenye fomu"
       },
       "create_index": {
         "label": "Ongeza ufunguo wa kipekee",
-        "uses": "Ufunguo ambao sasisha au ingiza hulinganisha"
+        "uses": "Ufunguo ambao kila safu ya jibu hupatikana kwao"
+      },
+      "own_rows": {
+        "label": "Soma na uandike safu zake",
+        "uses": "Hifadhi majibu, yaonyeshe, yabadilishe na uyaondoe"
       }
     },
     "grant": {
@@ -3196,21 +3201,23 @@
       "oracle23": "Oracle 23ai au mpya zaidi",
       "oracle23Desc": "Ruhusa kwa kila skima. Zima kwa 19c na za awali (ruhusa kwa kila jedwali).",
       "block": {
-        "account": "1. Unda akaunti",
-        "read": "2. Kusoma",
-        "write": "3. Kuandika",
-        "structure": "4. Muundo"
+        "account": "1. Akaunti (iruke ili kutumia uliyonayo)",
+        "read": "3. Soma majedwali yako mengine",
+        "write": "4. Badilisha majedwali yako mengine",
+        "own": "2. Majedwali ya Formalie (inahitajika)"
       },
       "note": {
         "host_limit": "Ukiweza, badilisha '%' kwa anwani za Formalie ili akaunti ifanye kazi kutoka hapo tu.",
         "pool": "Formalie hufungua miunganisho isiyozidi 10 kwa wakati mmoja.",
         "default_privileges": "Endesha kama jukumu linalomiliki majedwali, ili majedwali yatakayoundwa baadaye nayo yahusike.",
-        "owner_alter": "Formalie inamiliki majedwali inayounda na inaweza kuyaongezea safuwima. Majedwali yaliyopo yanabaki kuwa yako.",
         "entra": "Endesha kwenye hifadhidata ukiwa umeingia kwa akaunti ya Microsoft Entra. Jina ni mtumiaji au programu ya Entra.",
         "contained": "Kwenye Azure SQL Database, badala yake unda mtumiaji wa ndani (contained user): CREATE USER ... WITH PASSWORD.",
-        "no_sysdba": "Kamwe usitumie SYS, SYSTEM au jukumu la SYSDBA kwa Formalie.",
         "oracle_new_tables": "Majedwali yatakayoongezwa baadaye nayo yanahitaji ruhusa: endesha kizuizi tena, au tumia ruhusa za skima za Oracle 23ai.",
-        "oracle_own_schema": "Kabla ya 23ai, Formalie huunda majedwali yake kwenye skima yake yenyewe, hivyo haihitaji haki kwenye zako."
+        "oracle_own_schema": "Majedwali ya Formalie huwekwa katika skima ya akaunti yenyewe, hivyo haihitaji haki kwenye skima zako ili kuhifadhi majibu.",
+        "owner_tables": "Formalie inamiliki majedwali inayoyaunda, hivyo inaweza kuyasoma, kuyaandikia na kuyaongezea safuwima, na si kitu kingine chochote katika skima hii.",
+        "own_schema": "Majedwali ya Formalie huwekwa katika skima yake yenyewe inayomilikiwa na akaunti. Skima zako nyingine haziguswi isipokuwa utoe zaidi hapa chini.",
+        "mysql_database": "MySQL na MariaDB hutoa haki kwa kila hifadhidata, hivyo haki hizi pia zinafikia majedwali yako mengine humo. Ili kuiwekea Formalie mipaka kwa majedwali yake, ipe hifadhidata yake yenyewe.",
+        "mysql_covered": "Hakuna zaidi cha kuendesha: haki za majedwali ya Formalie tayari zinashughulikia hifadhidata hii. Ongeza hifadhidata nyingine hapo juu ili kuzipa haki hapa."
       }
     },
     "step": {
@@ -3236,7 +3243,8 @@
       "FRM-DEST-1004": "Kagua seva ya SSH, mtumiaji na ufunguo binafsi, na kwamba seva ya SSH inaweza kufikia hifadhidata.",
       "FRM-DEST-1005": "Kagua jina la hifadhidata (au huduma), na kwamba akaunti ina ufikiaji kwake.",
       "FRM-DEST-1006": "Toa ruhusa zinazokosekana hapa chini, kisha jaribu tena.",
-      "FRM-DEST-1011": "Seva haikujibu kwa wakati. Kagua anwani, ngome, au ongeza kikomo cha muda chini ya Chaguo zaidi."
+      "FRM-DEST-1011": "Seva haikujibu kwa wakati. Kagua anwani, ngome, au ongeza kikomo cha muda chini ya Chaguo zaidi.",
+      "FRM-DEST-1012": "Toa ruhusa zilizo chini ya “Majedwali ya Formalie” katika hatua ya Ufikiaji, kisha jaribu tena. Zinahitajika ili kuhifadhi majibu."
     },
     "test": {
       "heading": {
@@ -3254,14 +3262,6 @@
       "safe": "Jaribio husoma tu. Kamwe halibadilishi data yako."
     },
     "finding": {
-      "admin_account": {
-        "title": "Hii ni akaunti ya msimamizi",
-        "desc": "Unda akaunti maalum yenye ruhusa zilizoorodheshwa tu, ili Formalie isiweze kamwe kufanya zaidi ya inavyohitaji."
-      },
-      "extra_write": {
-        "title": "Akaunti hii inaweza kubadilisha data",
-        "desc": "Muunganisho ni wa kusoma tu, kwa hivyo Formalie itasoma tu. Kwa haki ndogo kabisa, ondoa ruhusa zake za kuandika."
-      },
       "tls_off": {
         "title": "Mawasiliano hayasimbwi",
         "desc": "Chagua chaguo linalosimba chini ya Usalama ili data na manenosiri yalindwe njiani."
@@ -3276,21 +3276,45 @@
       }
     },
     "access": {
-      "legend": "Formalie inaweza kufanya nini",
-      "read_only": "Kusoma tu",
-      "read_write": "Kusoma na kuandika",
-      "readOnlyDesc": "Vinjari, hamisha na endesha hoja za kusoma. Hakuna kinachoweza kubadilika kwenye hifadhidata.",
-      "readWriteDesc": "Pia tuma majibu ya fomu kwenye majedwali, hariri safu na ingiza faili.",
-      "structure": "Ruhusu Formalie kuunda majedwali na kuongeza safuwima",
-      "structureDesc": "Kwa maeneo ya fomu: jedwali lililoundwa kutoka fomu na safuwima kwa kila sehemu mpya. Haifuti chochote kamwe.",
-      "schemas": "Skima ambazo Formalie inaweza kutumia",
-      "databases": "Hifadhidata ambazo Formalie inaweza kutumia",
+      "schemas": "Skima zenye majedwali yako mengine",
+      "databases": "Hifadhidata zenye majedwali yako mengine",
       "schemasHint": "Bonyeza Enter baada ya kila moja. Ikiwa wazi: {schema} pekee.",
       "databasesHint": "Bonyeza Enter baada ya kila moja. Ikiwa wazi: {schema} pekee.",
       "permissionsTitle": "Ruhusa za kutoa",
-      "permissionsDesc": "Ipe akaunti ruhusa hizi hasa, si zaidi, ili kila kipengele kifanye kazi na hakuna kingine kinachowezekana.",
+      "permissionsDesc": "Ipe akaunti ruhusa hizi ili kila kipengele kifanye kazi. Majedwali ya Formalie yanahitajika; mengine yanafuata chaguo lako hapo juu.",
       "tabOperations": "Formalie hufanya nini",
-      "tabScript": "Amri za kuendesha"
+      "tabScript": "Amri za kuendesha",
+      "ownTitle": "Majedwali ya Formalie",
+      "ownDesc": "Formalie huunda jedwali kwa kila fomu, huhifadhi kila jibu humo na kuyasoma tena ili kuyaonyesha. Inaweza kubadilisha na kuondoa safu na kuongeza safuwima, katika majedwali yake tu. Hiki ndicho muunganisho unachokusudiwa.",
+      "always": "Inahitajika",
+      "prefix": "Kiambishi cha jina la jedwali",
+      "prefixDesc": "Kila jedwali ambalo Formalie huunda huanza nacho, kwa mfano {example}.",
+      "tablesSchema": "Skima ya majedwali ya Formalie",
+      "tablesDatabase": "Hifadhidata ya majedwali ya Formalie",
+      "tablesSchemaDesc": {
+        "postgresql": "Tupu: skima ya muunganisho. Formalie inamiliki majedwali inayoyaunda humo.",
+        "sqlserver": "Skima yake yenyewe, inayomilikiwa na akaunti (huundwa na amri zilizo hapa chini).",
+        "oracle": "Skima ya akaunti yenyewe, hivyo skima zako hazijaguswa.",
+        "mysql": "Hifadhidata ya muunganisho.",
+        "mariadb": "Hifadhidata ya muunganisho."
+      },
+      "otherLegend": "Majedwali yako mengine",
+      "other": {
+        "read_write": "Kusoma na kuandika",
+        "read": "Kusoma tu",
+        "none": "Haishirikiwi"
+      },
+      "otherDesc": {
+        "read_write": "Vinjari, uliza hoja, tumia kama orodha za chaguo, hariri safu na ingiza faili.",
+        "read": "Vinjari, uliza hoja na tumia kama orodha za chaguo. Hakuna kinachobadilika ndani yake.",
+        "none": "Formalie hutumia majedwali yake tu."
+      },
+      "otherHint": "Ni hiari, na haihitajiki kuhifadhi majibu. Unaweza kuibadilisha baadaye.",
+      "short": {
+        "read_write": "Kusoma na kuandika mengine",
+        "read": "Kusoma mengine",
+        "none": "Majedwali yake tu"
+      }
     },
     "summary": {
       "engine": "Hifadhidata",
@@ -3298,13 +3322,13 @@
       "database": "Hifadhidata",
       "account": "Akaunti",
       "security": "Usalama",
-      "access": "Ufikiaji",
+      "access": "Majedwali yako mengine",
       "descriptor": "Kielezo cha muunganisho",
       "encrypted": "Imesimbwa",
       "notEncrypted": "Haijasimbwa",
       "ssh": "Njia ya SSH",
-      "structure": "huunda majedwali",
-      "change": "Badilisha {item}"
+      "change": "Badilisha {item}",
+      "tables": "Majedwali ya Formalie"
     },
     "wizard": {
       "newCrumb": "Ongeza muunganisho",
@@ -3329,15 +3353,15 @@
         "server": "Iko wapi?",
         "signin": "Formalie inaingiaje?",
         "security": "Muunganisho unalindwa vipi?",
-        "access": "Formalie inaweza kufanya nini?",
+        "access": "Mahali Formalie inapohifadhi majibu yako",
         "review": "Ipe jina na uijaribu"
       },
       "desc": {
         "engine": "Kila moja ina mipangilio yake. Unaweza kuongeza zaidi baadaye.",
         "server": "Anwani ambayo seva za Formalie hutumia kufikia hifadhidata yako ya {engine}.",
-        "signin": "Tumia akaunti iliyoundwa kwa ajili ya Formalie. Manenosiri husimbwa na hayaonyeshwi tena kamwe.",
-        "security": "Usimbaji na, kwa mitandao binafsi, njia ya SSH.",
-        "access": "Anza na kusoma tu. Ruhusa za kutoa hufuata chaguo lako.",
+        "signin": "Akaunti yoyote yenye ruhusa za hatua ya Ufikiaji. Kila unachoingiza husimbwa kabla ya kuhifadhiwa.",
+        "security": "Usimbaji wa muunganisho, na njia ya SSH tu ikiwa hifadhidata yako iko kwenye mtandao binafsi.",
+        "access": "Formalie huhifadhi majibu ya eneo hili la kazi hapa, katika majedwali yake yenyewe. Ufikiaji wa majedwali yako mengine ni wa hiari.",
         "review": "Jaribio huendeshwa kutoka seva za Formalie na husoma tu."
       },
       "name": "Jina",
@@ -3361,7 +3385,7 @@
       "engine": {
         "title": "Unachohitaji",
         "p1": "Anwani na mlango wa seva, na jina la hifadhidata.",
-        "p2": "Akaunti maalum kwa ajili ya Formalie. Amri kamili za kuiunda zinakuja katika hatua ya Ufikiaji.",
+        "p2": "Akaunti kwa ajili ya Formalie. Hatua ya Ufikiaji inaonyesha hasa ruhusa inazohitaji, na amri za kuzitoa.",
         "p3": "Anwani za Formalie zikiruhusiwa kwenye ngome yako (hapa chini).",
         "p4": "Kwa hifadhidata iliyo kwenye mtandao binafsi: seva ya SSH ambayo Formalie inaweza kutumia."
       },
@@ -3372,53 +3396,58 @@
         "p3": "Mtandao binafsi tu? Ongeza njia ya SSH katika hatua ya Usalama."
       },
       "signin": {
-        "title": "Akaunti maalum",
-        "p1": "Kamwe usitumie akaunti ya msimamizi. Jaribio litakuonya ukifanya hivyo.",
-        "p2": "Hatua ya Ufikiaji huandika amri za kuunda akaunti yenye ruhusa sahihi tu.",
-        "p3": "Vitambulisho hutumwa vikiwa vimesimbwa, huhifadhiwa vikiwa vimesimbwa, na havionyeshwi tena kamwe.",
+        "title": "Akaunti",
+        "p1": "Tumia akaunti yoyote unayopenda, mradi ina ruhusa zilizoorodheshwa katika hatua ya Ufikiaji.",
+        "p2": "Hatua ya Ufikiaji pia huandika amri za kuunda akaunti ya Formalie pekee, ukipenda hivyo.",
+        "p3": "Kila unachoingiza husimbwa kabla ya kuhifadhiwa, na hufumbuliwa tu Formalie inapounganisha.",
         "sqlserver": {
           "p1": "Akaunti ya SQL Server: login yenye nenosiri.",
           "p2": "Microsoft Entra ID: mtumiaji mwenye nenosiri, au programu (service principal) yenye siri ya mteja.",
-          "p3": "Hatua ya Ufikiaji huandika amri za kuunda yoyote kati ya hizo yenye ruhusa sahihi tu."
+          "p3": "Kila unachoingiza husimbwa kabla ya kuhifadhiwa, na hufumbuliwa tu Formalie inapounganisha."
         }
       },
       "security": {
         "title": "Kulinda muunganisho",
         "p1": "Simba kila wakati. Kukagua cheti pia kunathibitisha kuwa unafikia seva sahihi.",
-        "p2": "Njia ya SSH hufikia hifadhidata binafsi kupitia seva unayoiruhusu.",
-        "p3": "Funguo na vyeti hubaki kwenye seva za Formalie, vikiwa vimesimbwa.",
+        "p2": "Njia ya SSH: tu wakati hifadhidata yako iko kwenye mtandao binafsi. Seva, mtumiaji na ufunguo wake huombwa wakati huo tu.",
+        "p3": "Funguo na vyeti huhifadhiwa vikiwa vimesimbwa, kama kila kitu kingine hapa.",
         "postgresql": {
           "p1": "require husimba mawasiliano.",
           "p2": "verify-full pia hukagua cheti na jina la seva (inapendekezwa).",
-          "p3": "Bandika cheti cha CA kwa verify-ca na verify-full."
+          "p3": "Bandika cheti cha CA kwa verify-ca na verify-full.",
+          "p4": "Njia ya SSH: tu wakati hifadhidata yako iko kwenye mtandao binafsi. Seva, mtumiaji na ufunguo wake huombwa wakati huo tu."
         },
         "mysql": {
           "p1": "Inahitajika husimba mawasiliano.",
           "p2": "Thibitisha utambulisho pia hukagua cheti na jina la seva (inapendekezwa).",
-          "p3": "Ongeza cheti cha CA kwa chaguo za uthibitishaji."
+          "p3": "Ongeza cheti cha CA kwa chaguo za uthibitishaji.",
+          "p4": "Njia ya SSH: tu wakati hifadhidata yako iko kwenye mtandao binafsi. Seva, mtumiaji na ufunguo wake huombwa wakati huo tu."
         },
         "mariadb": {
           "p1": "Inahitajika husimba mawasiliano.",
           "p2": "Thibitisha utambulisho pia hukagua cheti na jina la seva (inapendekezwa).",
-          "p3": "Ongeza cheti cha CA kwa chaguo za uthibitishaji."
+          "p3": "Ongeza cheti cha CA kwa chaguo za uthibitishaji.",
+          "p4": "Njia ya SSH: tu wakati hifadhidata yako iko kwenye mtandao binafsi. Seva, mtumiaji na ufunguo wake huombwa wakati huo tu."
         },
         "sqlserver": {
           "p1": "Lazima husimba na kukagua cheti.",
           "p2": "Madhubuti (TDS 8.0) husimba kabla ya kuingia, kwa SQL Server 2022 na Azure SQL.",
-          "p3": "Kuamini cheti bila kukikagua ni kwa majaribio tu."
+          "p3": "Kuamini cheti bila kukikagua ni kwa majaribio tu.",
+          "p4": "Njia ya SSH: tu wakati hifadhidata yako iko kwenye mtandao binafsi. Seva, mtumiaji na ufunguo wake huombwa wakati huo tu."
         },
         "oracle": {
           "p1": "TCPS husimba kwa TLS na inapendekezwa.",
           "p2": "Ukitumia TCP, weka usimbaji wa asili wa mtandao kuwa Inahitajika pande zote mbili.",
-          "p3": "Bandika cheti cha CA kutoka kwenye wallet yako kwa TCPS."
+          "p3": "Bandika cheti cha CA kutoka kwenye wallet yako kwa TCPS.",
+          "p4": "Njia ya SSH: tu wakati hifadhidata yako iko kwenye mtandao binafsi. Seva, mtumiaji na ufunguo wake huombwa wakati huo tu."
         }
       },
       "access": {
-        "title": "Haki ndogo kabisa",
-        "p1": "Toa tu kile ambacho muunganisho huu unatumia. Kila kipengele kinachohitaji zaidi kitakuambia.",
-        "p2": "Kusoma tu hakuwezi kamwe kubadilisha data yako, hata ikiombwa nini.",
-        "p3": "Formalie kamwe haifuti majedwali wala safuwima.",
-        "p4": "Kila hoja, mabadiliko, uingizaji na uhamishaji hurekodiwa kwenye kumbukumbu za ukaguzi."
+        "title": "Kwa nini muunganisho",
+        "p1": "Muunganisho ndipo Formalie inapohifadhi majibu yako: jedwali kwa kila fomu, lenye jina linaloanza na kiambishi chako.",
+        "p2": "Formalie huyasoma tena ili kuyaonyesha, na inaweza kubadilisha, kuondoa na kuongeza safuwima, katika majedwali yake tu.",
+        "p3": "Data yako inabaki kwenye hifadhidata yako, tayari kwa mifumo na ripoti zako.",
+        "p4": "Kusoma au kubadilisha majedwali yako mengine ni hiari, kwa kivinjari, hoja, orodha za chaguo na uingizaji."
       },
       "review": {
         "title": "Jaribio hukagua nini",

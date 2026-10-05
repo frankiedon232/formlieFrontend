@@ -541,7 +541,8 @@
     "FRM-DEST-1008": "Ce test de connexion n’est plus disponible. Relancez-le.",
     "FRM-DEST-1009": "Cette connexion est désactivée. Activez-la d’abord.",
     "FRM-DEST-1010": "Des formulaires envoient encore leurs réponses à cette connexion.",
-    "FRM-DEST-1011": "La base de données a mis trop de temps à répondre."
+    "FRM-DEST-1011": "La base de données a mis trop de temps à répondre.",
+    "FRM-DEST-1012": "Ce compte ne peut pas créer ni utiliser les tables de Formalie."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -2881,7 +2882,7 @@
     "add": "Ajouter une connexion",
     "search": "Rechercher des connexions, serveurs ou bases de données…",
     "emptyTitle": "Aucune connexion pour l’instant",
-    "emptyDesc": "Connectez l’une de vos bases de données pour y envoyer les données des formulaires et les exploiter ici. Le stockage intégré de Formalie continue de fonctionner entre-temps.",
+    "emptyDesc": "Connectez l’une de vos bases de données et Formalie y stocke vos réponses, dans ses propres tables, pour que vous puissiez aussi les utiliser dans vos systèmes. Le stockage intégré de Formalie continue de fonctionner en attendant.",
     "notFound": "Cette connexion n’est pas disponible",
     "ms": "{n} ms",
     "checked": "Vérifiée {when}",
@@ -3022,12 +3023,12 @@
     "hint": {
       "host": "Nom d’hôte ou adresse IP, tel que les serveurs de Formalie l’atteignent. Réseaux privés : utilisez un tunnel SSH.",
       "connect_timeout": "Durée d’attente du serveur avant d’abandonner.",
-      "username": "Un compte dédié à Formalie, jamais un administrateur.",
-      "ca_certificate": "Collez le texte PEM de l’autorité de certification qui a signé le certificat du serveur.",
+      "username": "Le compte avec lequel Formalie se connecte. N’importe quel compte convient, tant qu’il dispose des autorisations de l’étape Accès.",
+      "ca_certificate": "Nécessaire uniquement si vous choisissez une option qui vérifie le certificat. Collez le texte PEM de l’autorité de certification qui a signé le certificat du serveur.",
       "client_certificate": "Uniquement si le serveur demande un certificat client (TLS mutuel).",
       "client_key": "La clé privée du certificat client, au format PEM.",
-      "ssh": "Pour une base de données sur un réseau privé : Formalie se connecte à un serveur que vous autorisez, qui transmet vers la base.",
-      "ssh_private_key": "Clé privée PEM de l’utilisateur SSH. Utilisez une clé créée uniquement pour Formalie.",
+      "ssh": "Uniquement si votre base de données se trouve sur un réseau privé que Formalie ne peut pas atteindre directement. Activez-le pour saisir le serveur SSH, l’utilisateur et la clé ; sinon, laissez-le désactivé.",
+      "ssh_private_key": "La clé privée de l’utilisateur SSH, au format PEM. Nécessaire uniquement pour le tunnel, et stockée chiffrée.",
       "time_zone": "Les dates sont envoyées et lues dans ce fuseau horaire. UTC (+00:00) est recommandé.",
       "target_session_attrs": "Pour les clusters : quel serveur Formalie peut utiliser.",
       "trust_server_certificate": "Déconseillé : un intermédiaire pourrait lire le trafic. À utiliser uniquement pour des tests.",
@@ -3123,14 +3124,14 @@
       "taken": "Une connexion portant ce nom existe déjà."
     },
     "level": {
-      "read": "Lecture",
-      "write": "Écriture",
-      "structure": "Structure"
+      "read": "Lire vos autres tables",
+      "write": "Modifier vos autres tables",
+      "own": "Tables de Formalie"
     },
     "levelDesc": {
-      "read": "Parcourir les tables, lire les lignes, exporter, exécuter des requêtes de lecture",
-      "write": "Envoyer les réponses aux formulaires, modifier et supprimer des lignes, importer",
-      "structure": "Créer des tables à partir d’un formulaire, ajouter des colonnes pour les nouveaux champs"
+      "read": "Explorateur de BDD, requêtes, listes d’options à partir de vos données",
+      "write": "Modifier des lignes dans l’explorateur et importer des fichiers dans vos tables",
+      "own": "Créer une table par formulaire, stocker les réponses, les afficher, les modifier, ajouter des colonnes"
     },
     "perm": {
       "needed": "Nécessaire",
@@ -3154,7 +3155,7 @@
       },
       "read_rows": {
         "label": "Lire les lignes",
-        "uses": "Parcourir et exporter les tables, requêtes de lecture, listes d’options"
+        "uses": "Parcourir et exporter vos tables, requêtes de lecture, listes d’options"
       },
       "cancel": {
         "label": "Annuler sa propre requête",
@@ -3162,11 +3163,11 @@
       },
       "insert": {
         "label": "Ajouter des lignes",
-        "uses": "Envoi des réponses aux formulaires, imports, nouvelles lignes"
+        "uses": "Nouvelles lignes et imports dans vos tables"
       },
       "update": {
         "label": "Modifier des lignes",
-        "uses": "Mise à jour ou insertion sur une clé, modifications dans l’explorateur"
+        "uses": "Modifications dans l’explorateur"
       },
       "delete": {
         "label": "Supprimer des lignes",
@@ -3174,19 +3175,23 @@
       },
       "sequences": {
         "label": "Utiliser les séquences",
-        "uses": "ID générés pour les nouvelles lignes"
+        "uses": "Identifiants générés pour les nouvelles lignes de vos tables"
       },
       "create_table": {
-        "label": "Créer des tables",
-        "uses": "Une table créée à partir d’un formulaire"
+        "label": "Créer ses tables",
+        "uses": "Une table par formulaire, nommée avec le préfixe"
       },
       "alter_table": {
         "label": "Ajouter des colonnes",
-        "uses": "Une colonne pour un champ ajouté au formulaire"
+        "uses": "Une colonne pour chaque champ ajouté à un formulaire"
       },
       "create_index": {
         "label": "Ajouter une clé unique",
-        "uses": "La clé sur laquelle s’appuie une mise à jour ou insertion"
+        "uses": "La clé qui permet de retrouver chaque ligne de réponse"
+      },
+      "own_rows": {
+        "label": "Lire et écrire ses lignes",
+        "uses": "Stocker les réponses, les afficher, les modifier et les supprimer"
       }
     },
     "grant": {
@@ -3196,21 +3201,23 @@
       "oracle23": "Oracle 23ai ou version ultérieure",
       "oracle23Desc": "Autorisations par schéma. Désactivez pour 19c et versions antérieures (autorisations par table).",
       "block": {
-        "account": "1. Créer le compte",
-        "read": "2. Lecture",
-        "write": "3. Écriture",
-        "structure": "4. Structure"
+        "account": "1. Le compte (passez cette étape pour utiliser un compte existant)",
+        "read": "3. Lire vos autres tables",
+        "write": "4. Modifier vos autres tables",
+        "own": "2. Tables de Formalie (obligatoire)"
       },
       "note": {
         "host_limit": "Si possible, remplacez '%' par les adresses de Formalie afin que le compte ne fonctionne que depuis celles-ci.",
         "pool": "Formalie ouvre au maximum 10 connexions simultanées.",
         "default_privileges": "Exécutez avec le rôle propriétaire des tables, afin que les tables créées plus tard soient aussi couvertes.",
-        "owner_alter": "Formalie est propriétaire des tables qu’il crée et peut y ajouter des colonnes. Les tables existantes restent les vôtres.",
         "entra": "Exécutez dans la base de données en étant connecté avec un compte Microsoft Entra. Le nom est celui de l’utilisateur ou de l’application Entra.",
         "contained": "Sur Azure SQL Database, créez plutôt un utilisateur autonome : CREATE USER ... WITH PASSWORD.",
-        "no_sysdba": "N’utilisez jamais SYS, SYSTEM ou le rôle SYSDBA pour Formalie.",
         "oracle_new_tables": "Les tables ajoutées plus tard ont aussi besoin de l’autorisation : relancez le bloc, ou utilisez les autorisations par schéma d’Oracle 23ai.",
-        "oracle_own_schema": "Avant 23ai, Formalie crée ses tables dans son propre schéma et n’a donc besoin d’aucun droit sur les vôtres."
+        "oracle_own_schema": "Les tables de Formalie se trouvent dans le schéma propre du compte : il n’a donc besoin d’aucun droit sur vos schémas pour stocker les réponses.",
+        "owner_tables": "Formalie est propriétaire des tables qu’il crée : il peut donc les lire, y écrire et leur ajouter des colonnes, et rien d’autre dans ce schéma.",
+        "own_schema": "Les tables de Formalie se trouvent dans un schéma dédié appartenant au compte. Vos autres schémas restent intacts, sauf si vous accordez plus ci-dessous.",
+        "mysql_database": "MySQL et MariaDB accordent les droits par base de données : ces droits couvrent donc aussi vos autres tables de cette base. Pour limiter Formalie à ses propres tables, donnez-lui une base dédiée.",
+        "mysql_covered": "Rien de plus à exécuter : les droits sur les tables de Formalie couvrent déjà cette base. Ajoutez d’autres bases ci-dessus pour les accorder ici."
       }
     },
     "step": {
@@ -3236,7 +3243,8 @@
       "FRM-DEST-1004": "Vérifiez le serveur SSH, l’utilisateur et la clé privée, et que le serveur SSH peut atteindre la base de données.",
       "FRM-DEST-1005": "Vérifiez le nom de la base de données (ou du service), et que le compte y a accès.",
       "FRM-DEST-1006": "Accordez les autorisations manquantes ci-dessous, puis testez à nouveau.",
-      "FRM-DEST-1011": "Le serveur n’a pas répondu à temps. Vérifiez l’adresse, le pare-feu, ou augmentez le délai dans Plus d’options."
+      "FRM-DEST-1011": "Le serveur n’a pas répondu à temps. Vérifiez l’adresse, le pare-feu, ou augmentez le délai dans Plus d’options.",
+      "FRM-DEST-1012": "Accordez les autorisations de « Tables de Formalie » à l’étape Accès, puis testez à nouveau. Elles sont nécessaires pour stocker les réponses."
     },
     "test": {
       "heading": {
@@ -3254,14 +3262,6 @@
       "safe": "Le test ne fait que lire. Il ne modifie jamais vos données."
     },
     "finding": {
-      "admin_account": {
-        "title": "Il s’agit d’un compte administrateur",
-        "desc": "Créez un compte dédié avec uniquement les autorisations listées, pour que Formalie ne puisse jamais faire plus que nécessaire."
-      },
-      "extra_write": {
-        "title": "Ce compte peut modifier des données",
-        "desc": "La connexion est en lecture seule, Formalie se contentera donc de lire. Pour le moindre privilège, retirez ses autorisations d’écriture."
-      },
       "tls_off": {
         "title": "Le trafic n’est pas chiffré",
         "desc": "Choisissez une option de chiffrement dans Sécurité pour protéger les données et les mots de passe en transit."
@@ -3276,21 +3276,45 @@
       }
     },
     "access": {
-      "legend": "Ce que Formalie peut faire",
-      "read_only": "Lecture seule",
-      "read_write": "Lecture et écriture",
-      "readOnlyDesc": "Parcourir, exporter et exécuter des requêtes de lecture. Rien ne peut changer dans la base de données.",
-      "readWriteDesc": "Envoyer aussi les réponses aux formulaires vers des tables, modifier des lignes et importer des fichiers.",
-      "structure": "Autoriser Formalie à créer des tables et ajouter des colonnes",
-      "structureDesc": "Pour les destinations de formulaires : une table créée à partir d’un formulaire et une colonne pour chaque nouveau champ. Ne supprime jamais rien.",
-      "schemas": "Schémas que Formalie peut utiliser",
-      "databases": "Bases de données que Formalie peut utiliser",
+      "schemas": "Schémas contenant vos autres tables",
+      "databases": "Bases de données contenant vos autres tables",
       "schemasHint": "Appuyez sur Entrée après chacun. Vide : uniquement {schema}.",
       "databasesHint": "Appuyez sur Entrée après chacune. Vide : uniquement {schema}.",
       "permissionsTitle": "Autorisations à accorder",
-      "permissionsDesc": "Accordez au compte exactement celles-ci, rien de plus, pour que chaque fonction marche et que rien d’autre ne soit possible.",
+      "permissionsDesc": "Accordez-les au compte pour que chaque fonction marche. Les tables de Formalie sont obligatoires ; le reste suit votre choix ci-dessus.",
       "tabOperations": "Ce que fait Formalie",
-      "tabScript": "Instructions à exécuter"
+      "tabScript": "Instructions à exécuter",
+      "ownTitle": "Tables de Formalie",
+      "ownDesc": "Formalie crée une table par formulaire, y stocke chaque réponse et la relit pour l’afficher. Il peut modifier et supprimer des lignes et ajouter des colonnes, dans ses propres tables uniquement. C’est le rôle d’une connexion.",
+      "always": "Obligatoire",
+      "prefix": "Préfixe des noms de table",
+      "prefixDesc": "Chaque table créée par Formalie commence par ce préfixe, par exemple {example}.",
+      "tablesSchema": "Schéma des tables de Formalie",
+      "tablesDatabase": "Base de données des tables de Formalie",
+      "tablesSchemaDesc": {
+        "postgresql": "Vide : le schéma de la connexion. Formalie est propriétaire des tables qu’il y crée.",
+        "sqlserver": "Un schéma dédié, appartenant au compte (créé par les instructions ci-dessous).",
+        "oracle": "Le schéma propre du compte, pour que vos schémas restent intacts.",
+        "mysql": "La base de données de la connexion.",
+        "mariadb": "La base de données de la connexion."
+      },
+      "otherLegend": "Vos autres tables",
+      "other": {
+        "read_write": "Lecture et écriture",
+        "read": "Lecture seule",
+        "none": "Non partagées"
+      },
+      "otherDesc": {
+        "read_write": "Explorer, interroger, utiliser comme listes d’options, modifier des lignes et importer des fichiers.",
+        "read": "Explorer, interroger et utiliser comme listes d’options. Rien n’y est modifié.",
+        "none": "Formalie n’utilise que ses propres tables."
+      },
+      "otherHint": "Facultatif, et inutile pour stocker les réponses. Vous pourrez le modifier plus tard.",
+      "short": {
+        "read_write": "Lit et écrit les autres",
+        "read": "Lit les autres",
+        "none": "Ses tables uniquement"
+      }
     },
     "summary": {
       "engine": "Base de données",
@@ -3298,13 +3322,13 @@
       "database": "Base de données",
       "account": "Compte",
       "security": "Sécurité",
-      "access": "Accès",
+      "access": "Vos autres tables",
       "descriptor": "Descripteur de connexion",
       "encrypted": "Chiffrée",
       "notEncrypted": "Non chiffrée",
       "ssh": "Tunnel SSH",
-      "structure": "crée des tables",
-      "change": "Modifier {item}"
+      "change": "Modifier {item}",
+      "tables": "Tables de Formalie"
     },
     "wizard": {
       "newCrumb": "Ajouter une connexion",
@@ -3329,15 +3353,15 @@
         "server": "Où se trouve-t-elle ?",
         "signin": "Comment Formalie se connecte-t-il ?",
         "security": "Comment la connexion est-elle protégée ?",
-        "access": "Que peut faire Formalie ?",
+        "access": "Où Formalie conserve vos réponses",
         "review": "Nommez-la et testez-la"
       },
       "desc": {
         "engine": "Chacune a ses propres paramètres. Vous pourrez en ajouter d’autres plus tard.",
         "server": "L’adresse que les serveurs de Formalie utilisent pour atteindre votre base de données {engine}.",
-        "signin": "Utilisez un compte créé pour Formalie. Les mots de passe sont chiffrés et ne sont plus jamais affichés.",
-        "security": "Le chiffrement et, pour les réseaux privés, un tunnel SSH.",
-        "access": "Commencez en lecture seule. Les autorisations à accorder découlent de votre choix.",
+        "signin": "Tout compte disposant des autorisations de l’étape Accès. Tout ce que vous saisissez est chiffré avant d’être stocké.",
+        "security": "Le chiffrement de la connexion, et un tunnel SSH uniquement si votre base de données est sur un réseau privé.",
+        "access": "Formalie stocke ici les réponses de cet espace de travail, dans ses propres tables. L’accès à vos autres tables est facultatif.",
         "review": "Le test s’exécute depuis les serveurs de Formalie et ne fait que lire."
       },
       "name": "Nom",
@@ -3361,7 +3385,7 @@
       "engine": {
         "title": "Ce qu’il vous faut",
         "p1": "L’adresse et le port du serveur, ainsi que le nom de la base de données.",
-        "p2": "Un compte dédié à Formalie. Les instructions exactes pour le créer sont fournies à l’étape Accès.",
+        "p2": "Un compte pour Formalie. L’étape Accès indique exactement les autorisations nécessaires et les instructions pour les accorder.",
         "p3": "Les adresses de Formalie autorisées dans votre pare-feu (ci-dessous).",
         "p4": "Pour une base de données sur un réseau privé : un serveur SSH que Formalie peut utiliser."
       },
@@ -3372,53 +3396,58 @@
         "p3": "Réseau privé uniquement ? Ajoutez un tunnel SSH à l’étape Sécurité."
       },
       "signin": {
-        "title": "Un compte dédié",
-        "p1": "N’utilisez jamais un compte administrateur. Le test vous avertit si c’est le cas.",
-        "p2": "L’étape Accès rédige les instructions pour créer le compte avec exactement les bonnes autorisations.",
-        "p3": "Les identifiants sont envoyés chiffrés, stockés chiffrés et ne sont plus jamais affichés.",
+        "title": "Le compte",
+        "p1": "Utilisez le compte de votre choix, tant qu’il dispose des autorisations listées à l’étape Accès.",
+        "p2": "L’étape Accès rédige aussi les instructions pour créer un compte réservé à Formalie, si vous le préférez.",
+        "p3": "Tout ce que vous saisissez est chiffré avant d’être stocké, et déchiffré uniquement lorsque Formalie se connecte.",
         "sqlserver": {
           "p1": "Compte SQL Server : une connexion avec un mot de passe.",
           "p2": "Microsoft Entra ID : un utilisateur avec un mot de passe, ou une application (principal de service) avec un secret client.",
-          "p3": "L’étape Accès rédige les instructions pour créer l’un ou l’autre avec exactement les bonnes autorisations."
+          "p3": "Tout ce que vous saisissez est chiffré avant d’être stocké, et déchiffré uniquement lorsque Formalie se connecte."
         }
       },
       "security": {
         "title": "Protéger la connexion",
         "p1": "Chiffrez toujours. Vérifier le certificat prouve aussi que vous atteignez le bon serveur.",
-        "p2": "Un tunnel SSH atteint une base de données privée via un serveur que vous autorisez.",
-        "p3": "Les clés et certificats restent chiffrés sur les serveurs de Formalie.",
+        "p2": "Tunnel SSH : uniquement si votre base de données est sur un réseau privé. Son serveur, son utilisateur et sa clé ne sont demandés qu’à ce moment-là.",
+        "p3": "Les clés et les certificats sont stockés chiffrés, comme tout le reste ici.",
         "postgresql": {
           "p1": "require chiffre le trafic.",
           "p2": "verify-full vérifie aussi le certificat et le nom d’hôte (recommandé).",
-          "p3": "Collez le certificat CA pour verify-ca et verify-full."
+          "p3": "Collez le certificat CA pour verify-ca et verify-full.",
+          "p4": "Tunnel SSH : uniquement si votre base de données est sur un réseau privé. Son serveur, son utilisateur et sa clé ne sont demandés qu’à ce moment-là."
         },
         "mysql": {
           "p1": "Obligatoire chiffre le trafic.",
           "p2": "Vérifier l’identité contrôle aussi le certificat et le nom d’hôte (recommandé).",
-          "p3": "Ajoutez le certificat CA pour les options de vérification."
+          "p3": "Ajoutez le certificat CA pour les options de vérification.",
+          "p4": "Tunnel SSH : uniquement si votre base de données est sur un réseau privé. Son serveur, son utilisateur et sa clé ne sont demandés qu’à ce moment-là."
         },
         "mariadb": {
           "p1": "Obligatoire chiffre le trafic.",
           "p2": "Vérifier l’identité contrôle aussi le certificat et le nom d’hôte (recommandé).",
-          "p3": "Ajoutez le certificat CA pour les options de vérification."
+          "p3": "Ajoutez le certificat CA pour les options de vérification.",
+          "p4": "Tunnel SSH : uniquement si votre base de données est sur un réseau privé. Son serveur, son utilisateur et sa clé ne sont demandés qu’à ce moment-là."
         },
         "sqlserver": {
           "p1": "Obligatoire chiffre et vérifie le certificat.",
           "p2": "Strict (TDS 8.0) chiffre avant la connexion, pour SQL Server 2022 et Azure SQL.",
-          "p3": "Faire confiance au certificat sans le vérifier est réservé aux tests."
+          "p3": "Faire confiance au certificat sans le vérifier est réservé aux tests.",
+          "p4": "Tunnel SSH : uniquement si votre base de données est sur un réseau privé. Son serveur, son utilisateur et sa clé ne sont demandés qu’à ce moment-là."
         },
         "oracle": {
           "p1": "TCPS chiffre avec TLS et est recommandé.",
           "p2": "Avec TCP, réglez le chiffrement réseau natif sur Obligatoire des deux côtés.",
-          "p3": "Collez le certificat CA de votre portefeuille (wallet) pour TCPS."
+          "p3": "Collez le certificat CA de votre portefeuille (wallet) pour TCPS.",
+          "p4": "Tunnel SSH : uniquement si votre base de données est sur un réseau privé. Son serveur, son utilisateur et sa clé ne sont demandés qu’à ce moment-là."
         }
       },
       "access": {
-        "title": "Moindre privilège",
-        "p1": "N’accordez que ce que cette connexion utilise. Chaque fonction qui a besoin de plus vous le signale.",
-        "p2": "La lecture seule ne peut jamais modifier vos données, quelle que soit la demande.",
-        "p3": "Formalie ne supprime jamais de tables ni de colonnes.",
-        "p4": "Chaque requête, modification, import et export est enregistré dans le journal d’audit."
+        "title": "Pourquoi une connexion",
+        "p1": "Une connexion, c’est l’endroit où Formalie stocke vos réponses : une table par formulaire, nommée avec votre préfixe.",
+        "p2": "Formalie les relit pour les afficher, et peut modifier et supprimer des lignes et ajouter des colonnes, dans ses propres tables uniquement.",
+        "p3": "Vos données restent dans votre base, prêtes pour vos propres systèmes et rapports.",
+        "p4": "Lire ou modifier vos autres tables est facultatif, pour l’explorateur, les requêtes, les listes d’options et les imports."
       },
       "review": {
         "title": "Ce que vérifie le test",

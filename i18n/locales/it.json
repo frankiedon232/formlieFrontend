@@ -541,7 +541,8 @@
     "FRM-DEST-1008": "Questo test di connessione non è più disponibile. Eseguitelo di nuovo.",
     "FRM-DEST-1009": "Questa connessione è disattivata. Attivatela prima.",
     "FRM-DEST-1010": "Alcuni moduli inviano ancora le risposte a questa connessione.",
-    "FRM-DEST-1011": "Il database ha impiegato troppo tempo a rispondere."
+    "FRM-DEST-1011": "Il database ha impiegato troppo tempo a rispondere.",
+    "FRM-DEST-1012": "Questo account non può creare né usare le tabelle di Formalie."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -2881,7 +2882,7 @@
     "add": "Aggiungi connessione",
     "search": "Cerca connessioni, server o database…",
     "emptyTitle": "Ancora nessuna connessione",
-    "emptyDesc": "Collegate uno dei vostri database per inviargli i dati dei moduli e lavorarci qui. Nel frattempo l’archiviazione integrata di Formalie continua a funzionare.",
+    "emptyDesc": "Collegate uno dei vostri database e Formalie vi archivia le risposte, in tabelle proprie, così potete usarle anche nei vostri sistemi. Nel frattempo l’archiviazione integrata di Formalie continua a funzionare.",
     "notFound": "Questa connessione non è disponibile",
     "ms": "{n} ms",
     "checked": "Controllata {when}",
@@ -3022,12 +3023,12 @@
     "hint": {
       "host": "Nome host o indirizzo IP, come lo raggiungono i server di Formalie. Reti private: usate un tunnel SSH.",
       "connect_timeout": "Quanto attendere il server prima di rinunciare.",
-      "username": "Un account dedicato a Formalie, mai un amministratore.",
-      "ca_certificate": "Incollate il testo PEM dell’autorità di certificazione che ha firmato il certificato del server.",
+      "username": "L’account con cui accede Formalie. Va bene qualsiasi account, purché abbia i permessi del passo Permessi.",
+      "ca_certificate": "Serve solo se scegliete un’opzione che verifica il certificato. Incollate il testo PEM dell’autorità di certificazione che ha firmato il certificato del server.",
       "client_certificate": "Solo se il server richiede un certificato client (TLS reciproco).",
       "client_key": "La chiave privata del certificato client, in formato PEM.",
-      "ssh": "Per un database in una rete privata: Formalie si collega a un server da voi autorizzato, che inoltra al database.",
-      "ssh_private_key": "Chiave privata PEM dell’utente SSH. Usate una chiave creata solo per Formalie.",
+      "ssh": "Solo se il database si trova in una rete privata che Formalie non raggiunge direttamente. Attivatelo per inserire server SSH, utente e chiave; altrimenti lasciatelo disattivato.",
+      "ssh_private_key": "La chiave privata dell’utente SSH, in formato PEM. Serve solo per il tunnel ed è archiviata crittografata.",
       "time_zone": "Le date vengono inviate e lette in questo fuso orario. Si consiglia UTC (+00:00).",
       "target_session_attrs": "Per i cluster: quale server può usare Formalie.",
       "trust_server_certificate": "Sconsigliato: chiunque si trovi nel mezzo potrebbe leggere il traffico. Usatelo solo per i test.",
@@ -3123,14 +3124,14 @@
       "taken": "Esiste già una connessione con questo nome."
     },
     "level": {
-      "read": "Lettura",
-      "write": "Scrittura",
-      "structure": "Struttura"
+      "read": "Leggere le altre tabelle",
+      "write": "Modificare le altre tabelle",
+      "own": "Tabelle di Formalie"
     },
     "levelDesc": {
-      "read": "Sfogliare tabelle, leggere righe, esportare, eseguire query di lettura",
-      "write": "Inviare le risposte dei moduli, aggiornare ed eliminare righe, importare",
-      "structure": "Creare tabelle da un modulo, aggiungere colonne per i nuovi campi"
+      "read": "Esplora database, query, elenchi di opzioni dai vostri dati",
+      "write": "Modificare righe nell’esploratore e importare file nelle vostre tabelle",
+      "own": "Creare una tabella per modulo, archiviare le risposte, mostrarle, modificarle, aggiungere colonne"
     },
     "perm": {
       "needed": "Necessario",
@@ -3154,7 +3155,7 @@
       },
       "read_rows": {
         "label": "Leggere le righe",
-        "uses": "Sfogliare ed esportare tabelle, query di lettura, elenchi di opzioni"
+        "uses": "Sfogliare ed esportare le vostre tabelle, query di lettura, elenchi di opzioni"
       },
       "cancel": {
         "label": "Annullare le proprie query",
@@ -3162,11 +3163,11 @@
       },
       "insert": {
         "label": "Aggiungere righe",
-        "uses": "Invio delle risposte dei moduli, importazioni, nuove righe"
+        "uses": "Nuove righe e importazioni nelle vostre tabelle"
       },
       "update": {
         "label": "Modificare righe",
-        "uses": "Aggiornamento o inserimento su una chiave, modifiche nell’esploratore"
+        "uses": "Modifiche nell’esploratore"
       },
       "delete": {
         "label": "Eliminare righe",
@@ -3174,19 +3175,23 @@
       },
       "sequences": {
         "label": "Usare le sequenze",
-        "uses": "ID generati per le nuove righe"
+        "uses": "ID generati per le nuove righe nelle vostre tabelle"
       },
       "create_table": {
-        "label": "Creare tabelle",
-        "uses": "Una tabella creata da un modulo"
+        "label": "Creare le proprie tabelle",
+        "uses": "Una tabella per ogni modulo, con il prefisso nel nome"
       },
       "alter_table": {
         "label": "Aggiungere colonne",
-        "uses": "Una colonna per un campo aggiunto al modulo"
+        "uses": "Una colonna per ogni campo aggiunto a un modulo"
       },
       "create_index": {
         "label": "Aggiungere una chiave univoca",
-        "uses": "La chiave su cui si basa un aggiornamento o inserimento"
+        "uses": "La chiave con cui si trova ogni riga di risposta"
+      },
+      "own_rows": {
+        "label": "Leggere e scrivere le proprie righe",
+        "uses": "Archiviare le risposte, mostrarle, modificarle e rimuoverle"
       }
     },
     "grant": {
@@ -3196,21 +3201,23 @@
       "oracle23": "Oracle 23ai o successivo",
       "oracle23Desc": "Permessi per schema. Disattivate per 19c e versioni precedenti (permessi per tabella).",
       "block": {
-        "account": "1. Creare l’account",
-        "read": "2. Lettura",
-        "write": "3. Scrittura",
-        "structure": "4. Struttura"
+        "account": "1. L’account (saltatelo per usarne uno esistente)",
+        "read": "3. Leggere le altre tabelle",
+        "write": "4. Modificare le altre tabelle",
+        "own": "2. Tabelle di Formalie (obbligatorio)"
       },
       "note": {
         "host_limit": "Se possibile, sostituite '%' con gli indirizzi di Formalie, così l’account funziona solo da lì.",
         "pool": "Formalie apre al massimo 10 connessioni alla volta.",
         "default_privileges": "Eseguite come il ruolo proprietario delle tabelle, così sono coperte anche le tabelle create in seguito.",
-        "owner_alter": "Formalie è proprietario delle tabelle che crea e può aggiungervi colonne. Le tabelle esistenti restano vostre.",
         "entra": "Eseguite nel database dopo aver effettuato l’accesso con un account Microsoft Entra. Il nome è quello dell’utente o dell’applicazione Entra.",
         "contained": "Su Azure SQL Database, create invece un utente indipendente: CREATE USER ... WITH PASSWORD.",
-        "no_sysdba": "Non usate mai SYS, SYSTEM o il ruolo SYSDBA per Formalie.",
         "oracle_new_tables": "Anche le tabelle aggiunte in seguito richiedono il permesso: eseguite di nuovo il blocco, oppure usate i permessi per schema di Oracle 23ai.",
-        "oracle_own_schema": "Prima di 23ai, Formalie crea le sue tabelle nel proprio schema, quindi non gli servono diritti sui vostri."
+        "oracle_own_schema": "Le tabelle di Formalie vanno nello schema dell’account stesso, quindi non servono diritti sui vostri schemi per archiviare le risposte.",
+        "owner_tables": "Formalie è proprietario delle tabelle che crea, quindi può leggerle, scriverle e aggiungervi colonne, e nient’altro in questo schema.",
+        "own_schema": "Le tabelle di Formalie vanno in uno schema proprio, di proprietà dell’account. Gli altri vostri schemi restano intatti, a meno che non concediate altro qui sotto.",
+        "mysql_database": "MySQL e MariaDB concedono i diritti per database, quindi questi raggiungono anche le altre tabelle al suo interno. Per limitare Formalie alle proprie tabelle, dategli un database tutto suo.",
+        "mysql_covered": "Nient’altro da eseguire: i diritti per le tabelle di Formalie coprono già questo database. Aggiungete altri database qui sopra per concederli qui."
       }
     },
     "step": {
@@ -3236,7 +3243,8 @@
       "FRM-DEST-1004": "Controllate server SSH, utente e chiave privata, e che il server SSH possa raggiungere il database.",
       "FRM-DEST-1005": "Controllate il nome del database (o del servizio), e che l’account vi abbia accesso.",
       "FRM-DEST-1006": "Concedete i permessi mancanti qui sotto, poi testate di nuovo.",
-      "FRM-DEST-1011": "Il server non ha risposto in tempo. Controllate l’indirizzo, il firewall, oppure aumentate il tempo limite in Altre opzioni."
+      "FRM-DEST-1011": "Il server non ha risposto in tempo. Controllate l’indirizzo, il firewall, oppure aumentate il tempo limite in Altre opzioni.",
+      "FRM-DEST-1012": "Concedete i permessi sotto «Tabelle di Formalie» nel passo Permessi, poi testate di nuovo. Sono necessari per archiviare le risposte."
     },
     "test": {
       "heading": {
@@ -3254,14 +3262,6 @@
       "safe": "Il test legge soltanto. Non modifica mai i vostri dati."
     },
     "finding": {
-      "admin_account": {
-        "title": "Questo è un account amministratore",
-        "desc": "Create un account dedicato con solo i permessi elencati, così Formalie non potrà mai fare più del necessario."
-      },
-      "extra_write": {
-        "title": "Questo account può modificare i dati",
-        "desc": "La connessione è in sola lettura, quindi Formalie leggerà soltanto. Per il privilegio minimo, rimuovete i suoi permessi di scrittura."
-      },
       "tls_off": {
         "title": "Il traffico non è crittografato",
         "desc": "Scegliete un’opzione con crittografia in Sicurezza, così dati e password sono protetti durante il transito."
@@ -3276,21 +3276,45 @@
       }
     },
     "access": {
-      "legend": "Cosa può fare Formalie",
-      "read_only": "Sola lettura",
-      "read_write": "Lettura e scrittura",
-      "readOnlyDesc": "Sfogliare, esportare ed eseguire query di lettura. Nel database non può cambiare nulla.",
-      "readWriteDesc": "Inoltre inviare le risposte dei moduli alle tabelle, modificare righe e importare file.",
-      "structure": "Consenti a Formalie di creare tabelle e aggiungere colonne",
-      "structureDesc": "Per le destinazioni dei moduli: una tabella creata da un modulo e una colonna per ogni nuovo campo. Non elimina mai nulla.",
-      "schemas": "Schemi che Formalie può usare",
-      "databases": "Database che Formalie può usare",
+      "schemas": "Schemi con le vostre altre tabelle",
+      "databases": "Database con le vostre altre tabelle",
       "schemasHint": "Premete Invio dopo ciascuno. Vuoto: solo {schema}.",
       "databasesHint": "Premete Invio dopo ciascuno. Vuoto: solo {schema}.",
       "permissionsTitle": "Permessi da concedere",
-      "permissionsDesc": "Concedete all’account esattamente questi, niente di più, così ogni funzione lavora e nient’altro è possibile.",
+      "permissionsDesc": "Concedete questi permessi all’account perché ogni funzione lavori. Le tabelle di Formalie sono obbligatorie; il resto segue la vostra scelta qui sopra.",
       "tabOperations": "Cosa fa Formalie",
-      "tabScript": "Istruzioni da eseguire"
+      "tabScript": "Istruzioni da eseguire",
+      "ownTitle": "Tabelle di Formalie",
+      "ownDesc": "Formalie crea una tabella per ogni modulo, vi archivia ogni risposta e la rilegge per mostrarla. Può modificare e rimuovere righe e aggiungere colonne, solo nelle proprie tabelle. È a questo che serve una connessione.",
+      "always": "Obbligatorio",
+      "prefix": "Prefisso dei nomi delle tabelle",
+      "prefixDesc": "Ogni tabella creata da Formalie inizia così, ad esempio {example}.",
+      "tablesSchema": "Schema per le tabelle di Formalie",
+      "tablesDatabase": "Database per le tabelle di Formalie",
+      "tablesSchemaDesc": {
+        "postgresql": "Vuoto: lo schema della connessione. Formalie è proprietario delle tabelle che vi crea.",
+        "sqlserver": "Uno schema proprio, di proprietà dell’account (creato dalle istruzioni qui sotto).",
+        "oracle": "Lo schema dell’account stesso, così i vostri schemi restano intatti.",
+        "mysql": "Il database della connessione.",
+        "mariadb": "Il database della connessione."
+      },
+      "otherLegend": "Le vostre altre tabelle",
+      "other": {
+        "read_write": "Lettura e scrittura",
+        "read": "Sola lettura",
+        "none": "Non condivise"
+      },
+      "otherDesc": {
+        "read_write": "Esplorare, interrogare, usare come elenchi di opzioni, modificare righe e importare file.",
+        "read": "Esplorare, interrogare e usare come elenchi di opzioni. Nulla al loro interno cambia.",
+        "none": "Formalie usa solo le proprie tabelle."
+      },
+      "otherHint": "Facoltativo e non necessario per archiviare le risposte. Potete cambiarlo in seguito.",
+      "short": {
+        "read_write": "Lettura e scrittura altre",
+        "read": "Lettura altre",
+        "none": "Solo tabelle proprie"
+      }
     },
     "summary": {
       "engine": "Database",
@@ -3298,13 +3322,13 @@
       "database": "Database",
       "account": "Account",
       "security": "Sicurezza",
-      "access": "Accesso",
+      "access": "Le vostre altre tabelle",
       "descriptor": "Descrittore di connessione",
       "encrypted": "Crittografata",
       "notEncrypted": "Non crittografata",
       "ssh": "Tunnel SSH",
-      "structure": "crea tabelle",
-      "change": "Modifica {item}"
+      "change": "Modifica {item}",
+      "tables": "Tabelle di Formalie"
     },
     "wizard": {
       "newCrumb": "Aggiungi connessione",
@@ -3329,15 +3353,15 @@
         "server": "Dove si trova?",
         "signin": "Come accede Formalie?",
         "security": "Come è protetta la connessione?",
-        "access": "Cosa può fare Formalie?",
+        "access": "Dove Formalie conserva le vostre risposte",
         "review": "Datele un nome e testatela"
       },
       "desc": {
         "engine": "Ognuno ha le proprie impostazioni. Potete aggiungerne altri in seguito.",
         "server": "L’indirizzo che i server di Formalie usano per raggiungere il vostro database {engine}.",
-        "signin": "Usate un account creato per Formalie. Le password sono crittografate e non vengono più mostrate.",
-        "security": "Crittografia e, per le reti private, un tunnel SSH.",
-        "access": "Iniziate con la sola lettura. I permessi da concedere dipendono dalla vostra scelta.",
+        "signin": "Qualsiasi account con i permessi del passo Permessi. Tutto ciò che inserite è crittografato prima di essere archiviato.",
+        "security": "Crittografia per la connessione e un tunnel SSH solo se il database è in una rete privata.",
+        "access": "Formalie archivia qui le risposte di questo workspace, in tabelle proprie. L’accesso alle vostre altre tabelle è facoltativo.",
         "review": "Il test viene eseguito dai server di Formalie e legge soltanto."
       },
       "name": "Nome",
@@ -3361,7 +3385,7 @@
       "engine": {
         "title": "Cosa vi serve",
         "p1": "Indirizzo e porta del server, e il nome del database.",
-        "p2": "Un account dedicato a Formalie. Le istruzioni esatte per crearlo arrivano nel passo Permessi.",
+        "p2": "Un account per Formalie. Il passo Permessi mostra esattamente quali permessi gli servono e le istruzioni per concederli.",
         "p3": "Gli indirizzi di Formalie consentiti nel vostro firewall (qui sotto).",
         "p4": "Per un database in una rete privata: un server SSH che Formalie può usare."
       },
@@ -3372,53 +3396,58 @@
         "p3": "Solo rete privata? Aggiungete un tunnel SSH nel passo Sicurezza."
       },
       "signin": {
-        "title": "Un account dedicato",
-        "p1": "Non usate mai un account amministratore. Il test vi avvisa se lo fate.",
-        "p2": "Il passo Permessi scrive le istruzioni per creare l’account con i permessi giusti, e solo quelli.",
-        "p3": "Le credenziali vengono inviate e archiviate crittografate, e non vengono più mostrate.",
+        "title": "L’account",
+        "p1": "Usate l’account che preferite, purché abbia i permessi elencati nel passo Permessi.",
+        "p2": "Il passo Permessi scrive anche le istruzioni per creare un account solo per Formalie, se lo preferite.",
+        "p3": "Tutto ciò che inserite è crittografato prima di essere archiviato e decrittografato solo quando Formalie si collega.",
         "sqlserver": {
           "p1": "Account SQL Server: un login con password.",
           "p2": "Microsoft Entra ID: un utente con password, oppure un’applicazione (entità servizio) con un segreto client.",
-          "p3": "Il passo Permessi scrive le istruzioni per creare l’uno o l’altra con i permessi giusti, e solo quelli."
+          "p3": "Tutto ciò che inserite è crittografato prima di essere archiviato e decrittografato solo quando Formalie si collega."
         }
       },
       "security": {
         "title": "Proteggere la connessione",
         "p1": "Crittografate sempre. Verificare il certificato dimostra anche che raggiungete il server giusto.",
-        "p2": "Un tunnel SSH raggiunge un database privato tramite un server da voi autorizzato.",
-        "p3": "Chiavi e certificati restano crittografati sui server di Formalie.",
+        "p2": "Tunnel SSH: solo se il database è in una rete privata. Server, utente e chiave vengono richiesti solo in quel caso.",
+        "p3": "Chiavi e certificati sono archiviati crittografati, come tutto il resto qui.",
         "postgresql": {
           "p1": "require crittografa il traffico.",
           "p2": "verify-full controlla anche il certificato e il nome host (consigliato).",
-          "p3": "Incollate il certificato CA per verify-ca e verify-full."
+          "p3": "Incollate il certificato CA per verify-ca e verify-full.",
+          "p4": "Tunnel SSH: solo se il database è in una rete privata. Server, utente e chiave vengono richiesti solo in quel caso."
         },
         "mysql": {
           "p1": "Obbligatoria crittografa il traffico.",
           "p2": "Verifica identità controlla anche il certificato e il nome host (consigliato).",
-          "p3": "Aggiungete il certificato CA per le opzioni di verifica."
+          "p3": "Aggiungete il certificato CA per le opzioni di verifica.",
+          "p4": "Tunnel SSH: solo se il database è in una rete privata. Server, utente e chiave vengono richiesti solo in quel caso."
         },
         "mariadb": {
           "p1": "Obbligatoria crittografa il traffico.",
           "p2": "Verifica identità controlla anche il certificato e il nome host (consigliato).",
-          "p3": "Aggiungete il certificato CA per le opzioni di verifica."
+          "p3": "Aggiungete il certificato CA per le opzioni di verifica.",
+          "p4": "Tunnel SSH: solo se il database è in una rete privata. Server, utente e chiave vengono richiesti solo in quel caso."
         },
         "sqlserver": {
           "p1": "Obbligatoria crittografa e verifica il certificato.",
           "p2": "Rigorosa (TDS 8.0) crittografa prima dell’accesso, per SQL Server 2022 e Azure SQL.",
-          "p3": "Considerare attendibile il certificato senza verificarlo è solo per i test."
+          "p3": "Considerare attendibile il certificato senza verificarlo è solo per i test.",
+          "p4": "Tunnel SSH: solo se il database è in una rete privata. Server, utente e chiave vengono richiesti solo in quel caso."
         },
         "oracle": {
           "p1": "TCPS crittografa con TLS ed è consigliato.",
           "p2": "Con TCP, impostate la crittografia di rete nativa su Obbligatoria da entrambe le parti.",
-          "p3": "Incollate il certificato CA dal vostro wallet per TCPS."
+          "p3": "Incollate il certificato CA dal vostro wallet per TCPS.",
+          "p4": "Tunnel SSH: solo se il database è in una rete privata. Server, utente e chiave vengono richiesti solo in quel caso."
         }
       },
       "access": {
-        "title": "Privilegio minimo",
-        "p1": "Concedete solo ciò che questa connessione usa. Ogni funzione che richiede di più ve lo segnala.",
-        "p2": "La sola lettura non può mai modificare i vostri dati, qualunque cosa venga richiesta.",
-        "p3": "Formalie non elimina mai tabelle o colonne.",
-        "p4": "Ogni query, modifica, importazione ed esportazione viene registrata nel registro di audit."
+        "title": "Perché una connessione",
+        "p1": "Una connessione è il luogo in cui Formalie archivia le vostre risposte: una tabella per ogni modulo, con il vostro prefisso nel nome.",
+        "p2": "Formalie le rilegge per mostrarle e può modificare, rimuovere e aggiungere colonne, solo nelle proprie tabelle.",
+        "p3": "I vostri dati restano nel vostro database, pronti per i vostri sistemi e report.",
+        "p4": "Leggere o modificare le vostre altre tabelle è facoltativo, per l’esploratore, le query, gli elenchi di opzioni e le importazioni."
       },
       "review": {
         "title": "Cosa controlla il test",

@@ -541,7 +541,8 @@
     "FRM-DEST-1008": "This connection test is no longer available. Run it again.",
     "FRM-DEST-1009": "This connection is disabled. Enable it first.",
     "FRM-DEST-1010": "Forms still send their responses to this connection.",
-    "FRM-DEST-1011": "The database took too long to answer."
+    "FRM-DEST-1011": "The database took too long to answer.",
+    "FRM-DEST-1012": "This account can't create or use Formalie's tables."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -2881,7 +2882,7 @@
     "add": "Add connection",
     "search": "Search connections, servers or databases…",
     "emptyTitle": "No connections yet",
-    "emptyDesc": "Connect one of your databases to send form data to it and work with it here. Formalie's built-in storage keeps working meanwhile.",
+    "emptyDesc": "Connect one of your databases and Formalie stores your responses there, in tables of its own, so you can use them in your own systems too. Formalie's built-in storage keeps working meanwhile.",
     "notFound": "This connection isn't available",
     "ms": "{n} ms",
     "checked": "Checked {when}",
@@ -3022,12 +3023,12 @@
     "hint": {
       "host": "Host name or IP address, as Formalie's servers reach it. Private networks: use an SSH tunnel.",
       "connect_timeout": "How long to wait for the server before giving up.",
-      "username": "A dedicated account for Formalie, never an administrator.",
-      "ca_certificate": "Paste the PEM text of the certificate authority that signed the server's certificate.",
+      "username": "The account Formalie signs in with. Any account works, as long as it has the permissions from the Access step.",
+      "ca_certificate": "Only needed when you choose an option that verifies the certificate. Paste the PEM text of the certificate authority that signed the server's certificate.",
       "client_certificate": "Only when the server asks for a client certificate (mutual TLS).",
       "client_key": "The private key for the client certificate, in PEM.",
-      "ssh": "For a database on a private network: Formalie connects to a server you allow, which forwards to the database.",
-      "ssh_private_key": "PEM private key of the SSH user. Use a key made only for Formalie.",
+      "ssh": "Only when your database sits on a private network that Formalie can't reach directly. Turn it on to enter the SSH server, user and key; otherwise leave it off.",
+      "ssh_private_key": "The SSH user's private key, in PEM. Needed only for the tunnel, and stored encrypted.",
       "time_zone": "Dates are sent and read in this time zone. UTC (+00:00) is recommended.",
       "target_session_attrs": "For clusters: which server Formalie may use.",
       "trust_server_certificate": "Not recommended: anyone in between could read the traffic. Use only for testing.",
@@ -3123,14 +3124,14 @@
       "taken": "A connection with this name already exists."
     },
     "level": {
-      "read": "Read",
-      "write": "Write",
-      "structure": "Structure"
+      "read": "Read your other tables",
+      "write": "Change your other tables",
+      "own": "Formalie's tables"
     },
     "levelDesc": {
-      "read": "Browse tables, read rows, export, run read queries",
-      "write": "Send form responses, update and delete rows, import",
-      "structure": "Create tables from a form, add columns for new fields"
+      "read": "Database explorer, queries, option lists from your data",
+      "write": "Edit rows in the explorer and import files into your tables",
+      "own": "Create a table per form, store responses, show them, change them, add columns"
     },
     "perm": {
       "needed": "Needed",
@@ -3154,7 +3155,7 @@
       },
       "read_rows": {
         "label": "Read rows",
-        "uses": "Browse and export tables, read queries, option lists"
+        "uses": "Browse and export your tables, read queries, option lists"
       },
       "cancel": {
         "label": "Cancel its own query",
@@ -3162,11 +3163,11 @@
       },
       "insert": {
         "label": "Add rows",
-        "uses": "Send form responses, imports, new rows"
+        "uses": "New rows and imports into your tables"
       },
       "update": {
         "label": "Change rows",
-        "uses": "Update-or-insert on a key, edits in the explorer"
+        "uses": "Edits in the explorer"
       },
       "delete": {
         "label": "Delete rows",
@@ -3174,19 +3175,23 @@
       },
       "sequences": {
         "label": "Use sequences",
-        "uses": "Generated ids for new rows"
+        "uses": "Generated ids for new rows in your tables"
       },
       "create_table": {
-        "label": "Create tables",
-        "uses": "A table made from a form"
+        "label": "Create its tables",
+        "uses": "A table for each form, named with the prefix"
       },
       "alter_table": {
         "label": "Add columns",
-        "uses": "A column for a field added to the form"
+        "uses": "A column for each field added to a form"
       },
       "create_index": {
         "label": "Add a unique key",
-        "uses": "The key an update-or-insert matches on"
+        "uses": "The key each response row is found by"
+      },
+      "own_rows": {
+        "label": "Read and write its rows",
+        "uses": "Store responses, show them, change and remove them"
       }
     },
     "grant": {
@@ -3196,21 +3201,23 @@
       "oracle23": "Oracle 23ai or later",
       "oracle23Desc": "Grants per schema. Turn off for 19c and earlier (grants per table).",
       "block": {
-        "account": "1. Create the account",
-        "read": "2. Read",
-        "write": "3. Write",
-        "structure": "4. Structure"
+        "account": "1. The account (skip it to use one you have)",
+        "read": "3. Read your other tables",
+        "write": "4. Change your other tables",
+        "own": "2. Formalie's tables (required)"
       },
       "note": {
         "host_limit": "If you can, replace '%' with Formalie's addresses so the account only works from there.",
         "pool": "Formalie opens at most 10 connections at a time.",
         "default_privileges": "Run as the role that owns the tables, so tables created later are covered too.",
-        "owner_alter": "Formalie owns the tables it creates and can add columns to them. Existing tables stay yours.",
         "entra": "Run in the database while signed in with a Microsoft Entra account. The name is the Entra user or application.",
         "contained": "On Azure SQL Database, create a contained user instead: CREATE USER ... WITH PASSWORD.",
-        "no_sysdba": "Never use SYS, SYSTEM or the SYSDBA role for Formalie.",
         "oracle_new_tables": "Tables added later need the grant too: run the block again, or use Oracle 23ai schema grants.",
-        "oracle_own_schema": "Before 23ai, Formalie creates its tables in its own schema, so it needs no rights on yours."
+        "oracle_own_schema": "Formalie's tables go in the account's own schema, so it needs no rights on your schemas to store responses.",
+        "owner_tables": "Formalie owns the tables it creates, so it can read, write and add columns to them, and to nothing else in this schema.",
+        "own_schema": "Formalie's tables go in a schema of their own that the account owns. Your other schemas stay untouched unless you grant more below.",
+        "mysql_database": "MySQL and MariaDB grant per database, so these rights also reach your other tables in it. To keep Formalie to its own tables, give it a database of its own.",
+        "mysql_covered": "Nothing more to run: the grants for Formalie's tables already cover this database. Add other databases above to grant them here."
       }
     },
     "step": {
@@ -3236,7 +3243,8 @@
       "FRM-DEST-1004": "Check the SSH server, user and private key, and that the SSH server may reach the database.",
       "FRM-DEST-1005": "Check the database (or service) name, and that the account has access to it.",
       "FRM-DEST-1006": "Grant the missing permissions below, then test again.",
-      "FRM-DEST-1011": "The server did not answer in time. Check the address, the firewall, or raise the time limit under More options."
+      "FRM-DEST-1011": "The server did not answer in time. Check the address, the firewall, or raise the time limit under More options.",
+      "FRM-DEST-1012": "Grant the permissions under “Formalie's tables” in the Access step, then test again. They are required to store responses."
     },
     "test": {
       "heading": {
@@ -3254,14 +3262,6 @@
       "safe": "The test only reads. It never changes your data."
     },
     "finding": {
-      "admin_account": {
-        "title": "This is an administrator account",
-        "desc": "Create a dedicated account with only the permissions listed, so Formalie can never do more than it needs."
-      },
-      "extra_write": {
-        "title": "This account can change data",
-        "desc": "The connection is read only, so Formalie will only read. For least privilege, remove its write permissions."
-      },
       "tls_off": {
         "title": "Traffic is not encrypted",
         "desc": "Choose an encrypting option under Security so data and passwords are protected on the way."
@@ -3276,21 +3276,45 @@
       }
     },
     "access": {
-      "legend": "What Formalie may do",
-      "read_only": "Read only",
-      "read_write": "Read and write",
-      "readOnlyDesc": "Browse, export and run read queries. Nothing in the database can change.",
-      "readWriteDesc": "Also send form responses to tables, edit rows and import files.",
-      "structure": "Let Formalie create tables and add columns",
-      "structureDesc": "For form destinations: a table made from a form and a column for each new field. Never drops anything.",
-      "schemas": "Schemas Formalie may use",
-      "databases": "Databases Formalie may use",
+      "schemas": "Schemas with your other tables",
+      "databases": "Databases with your other tables",
       "schemasHint": "Press Enter after each one. Empty: only {schema}.",
       "databasesHint": "Press Enter after each one. Empty: only {schema}.",
       "permissionsTitle": "Permissions to grant",
-      "permissionsDesc": "Give the account exactly these, nothing more, so every feature works and nothing else is possible.",
+      "permissionsDesc": "Grant the account these so every feature works. Formalie's tables are required; the rest follows your choice above.",
       "tabOperations": "What Formalie does",
-      "tabScript": "Statements to run"
+      "tabScript": "Statements to run",
+      "ownTitle": "Formalie's tables",
+      "ownDesc": "Formalie creates a table for each form, stores every response there and reads them back to show them. It can change and remove rows and add columns, in its own tables only. This is what a connection is for.",
+      "always": "Required",
+      "prefix": "Table name prefix",
+      "prefixDesc": "Every table Formalie creates starts with it, for example {example}.",
+      "tablesSchema": "Schema for Formalie's tables",
+      "tablesDatabase": "Database for Formalie's tables",
+      "tablesSchemaDesc": {
+        "postgresql": "Empty: the connection's schema. Formalie owns the tables it creates there.",
+        "sqlserver": "A schema of its own, owned by the account (created by the statements below).",
+        "oracle": "The account's own schema, so your schemas stay untouched.",
+        "mysql": "The connection's database.",
+        "mariadb": "The connection's database."
+      },
+      "otherLegend": "Your other tables",
+      "other": {
+        "read_write": "Read and write",
+        "read": "Read only",
+        "none": "Not shared"
+      },
+      "otherDesc": {
+        "read_write": "Explore, query, use as option lists, edit rows and import files.",
+        "read": "Explore, query and use as option lists. Nothing in them changes.",
+        "none": "Formalie uses only its own tables."
+      },
+      "otherHint": "Optional, and not needed to store responses. You can change it later.",
+      "short": {
+        "read_write": "Read and write others",
+        "read": "Read others",
+        "none": "Own tables only"
+      }
     },
     "summary": {
       "engine": "Database",
@@ -3298,13 +3322,13 @@
       "database": "Database",
       "account": "Account",
       "security": "Security",
-      "access": "Access",
+      "access": "Your other tables",
       "descriptor": "Connect descriptor",
       "encrypted": "Encrypted",
       "notEncrypted": "Not encrypted",
       "ssh": "SSH tunnel",
-      "structure": "creates tables",
-      "change": "Change {item}"
+      "change": "Change {item}",
+      "tables": "Formalie's tables"
     },
     "wizard": {
       "newCrumb": "Add connection",
@@ -3329,15 +3353,15 @@
         "server": "Where is it?",
         "signin": "How does Formalie sign in?",
         "security": "How is the connection protected?",
-        "access": "What may Formalie do?",
+        "access": "Where Formalie keeps your responses",
         "review": "Name it and test it"
       },
       "desc": {
         "engine": "Each one has its own settings. You can add more later.",
         "server": "The address Formalie's servers use to reach your {engine} database.",
-        "signin": "Use an account made for Formalie. Passwords are encrypted and never shown again.",
-        "security": "Encryption and, for private networks, an SSH tunnel.",
-        "access": "Start with read only. The permissions to grant follow from your choice.",
+        "signin": "Any account with the permissions from the Access step. Everything you enter is encrypted before it is stored.",
+        "security": "Encryption for the connection, and an SSH tunnel only if your database is on a private network.",
+        "access": "Formalie stores this workspace's responses here, in tables of its own. Access to your other tables is optional.",
         "review": "The test runs from Formalie's servers and only reads."
       },
       "name": "Name",
@@ -3361,7 +3385,7 @@
       "engine": {
         "title": "What you need",
         "p1": "The server address and port, and the database name.",
-        "p2": "A dedicated account for Formalie. The exact statements to create it come in the Access step.",
+        "p2": "An account for Formalie. The Access step shows exactly which permissions it needs, and the statements to grant them.",
         "p3": "Formalie's addresses allowed in your firewall (below).",
         "p4": "For a database on a private network: an SSH server Formalie may use."
       },
@@ -3372,53 +3396,58 @@
         "p3": "Private network only? Add an SSH tunnel in the Security step."
       },
       "signin": {
-        "title": "A dedicated account",
-        "p1": "Never use an administrator account. The test warns you if you do.",
-        "p2": "The Access step writes the statements to create the account with just the right permissions.",
-        "p3": "Credentials are sent encrypted, stored encrypted, and never shown again.",
+        "title": "The account",
+        "p1": "Use any account you like, as long as it has the permissions listed in the Access step.",
+        "p2": "The Access step also writes the statements to create an account just for Formalie, if you prefer one.",
+        "p3": "Everything you enter is encrypted before it is stored, and decrypted only when Formalie connects.",
         "sqlserver": {
           "p1": "SQL Server account: a login with a password.",
           "p2": "Microsoft Entra ID: a user with a password, or an application (service principal) with a client secret.",
-          "p3": "The Access step writes the statements to create either one with just the right permissions."
+          "p3": "Everything you enter is encrypted before it is stored, and decrypted only when Formalie connects."
         }
       },
       "security": {
         "title": "Protecting the connection",
         "p1": "Always encrypt. Checking the certificate also proves you reach the right server.",
-        "p2": "An SSH tunnel reaches a private database through a server you allow.",
-        "p3": "Keys and certificates stay on Formalie's servers, encrypted.",
+        "p2": "SSH tunnel: only when your database is on a private network. Its server, user and key are asked for only then.",
+        "p3": "Keys and certificates are stored encrypted, like everything else here.",
         "postgresql": {
           "p1": "require encrypts the traffic.",
           "p2": "verify-full also checks the certificate and the host name (recommended).",
-          "p3": "Paste the CA certificate for verify-ca and verify-full."
+          "p3": "Paste the CA certificate for verify-ca and verify-full.",
+          "p4": "SSH tunnel: only when your database is on a private network. Its server, user and key are asked for only then."
         },
         "mysql": {
           "p1": "Required encrypts the traffic.",
           "p2": "Verify identity also checks the certificate and the host name (recommended).",
-          "p3": "Add the CA certificate for the verify options."
+          "p3": "Add the CA certificate for the verify options.",
+          "p4": "SSH tunnel: only when your database is on a private network. Its server, user and key are asked for only then."
         },
         "mariadb": {
           "p1": "Required encrypts the traffic.",
           "p2": "Verify identity also checks the certificate and the host name (recommended).",
-          "p3": "Add the CA certificate for the verify options."
+          "p3": "Add the CA certificate for the verify options.",
+          "p4": "SSH tunnel: only when your database is on a private network. Its server, user and key are asked for only then."
         },
         "sqlserver": {
           "p1": "Mandatory encrypts and checks the certificate.",
           "p2": "Strict (TDS 8.0) encrypts before signing in, for SQL Server 2022 and Azure SQL.",
-          "p3": "Trusting the certificate without checking it is for testing only."
+          "p3": "Trusting the certificate without checking it is for testing only.",
+          "p4": "SSH tunnel: only when your database is on a private network. Its server, user and key are asked for only then."
         },
         "oracle": {
           "p1": "TCPS encrypts with TLS and is recommended.",
           "p2": "With TCP, set native network encryption to Required on both sides.",
-          "p3": "Paste the CA certificate from your wallet for TCPS."
+          "p3": "Paste the CA certificate from your wallet for TCPS.",
+          "p4": "SSH tunnel: only when your database is on a private network. Its server, user and key are asked for only then."
         }
       },
       "access": {
-        "title": "Least privilege",
-        "p1": "Grant only what this connection uses. Every feature that needs more tells you.",
-        "p2": "Read only can never change your data, whatever is asked.",
-        "p3": "Formalie never drops tables or columns.",
-        "p4": "Every query, change, import and export is recorded in the audit trail."
+        "title": "Why a connection",
+        "p1": "A connection is where Formalie stores your responses: a table for each form, named with your prefix.",
+        "p2": "Formalie reads them back to show them, and can change, remove and add columns, in its own tables only.",
+        "p3": "Your data stays in your database, ready for your own systems and reports.",
+        "p4": "Reading or changing your other tables is optional, for the explorer, queries, option lists and imports."
       },
       "review": {
         "title": "What the test checks",

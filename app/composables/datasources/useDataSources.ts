@@ -4,7 +4,7 @@
  * steps until it finishes; Cancel stops following).
  */
 import type { BadgeProps } from '@nuxt/ui'
-import type { ConnectionTest, ConnectionTestRequest, DataSourceStatus } from '#shared/types/datasources'
+import type { ConnectionTest, ConnectionTestRequest, DataSourceStatus, OtherTablesAccess } from '#shared/types/datasources'
 import { databaseOf } from '#shared/utils/integrations/databases'
 
 export const DATASOURCE_STATUS_META: Record<DataSourceStatus, { color: BadgeProps['color']; fill: string; icon: string }> = {
@@ -14,6 +14,9 @@ export const DATASOURCE_STATUS_META: Record<DataSourceStatus, { color: BadgeProp
   disabled: { color: 'neutral', fill: 'bg-(--ui-text-dimmed)', icon: 'i-lucide-circle-pause' },
   untested: { color: 'secondary', fill: 'bg-violet-600', icon: 'i-lucide-circle-help' },
 }
+
+/** The icon for how much of the organisation's other tables Formalie may use. */
+export const OTHER_ICON: Record<OtherTablesAccess, string> = { none: 'i-lucide-inbox', read: 'i-lucide-eye', read_write: 'i-lucide-pencil-line' }
 
 export const engineName = (engine: string) => databaseOf(engine)?.name ?? engine
 export const engineIcon = (engine: string) => databaseOf(engine)?.icon ?? 'i-lucide-database'

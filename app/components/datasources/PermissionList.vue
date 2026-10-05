@@ -1,6 +1,7 @@
 <!--
-  Every operation Formalie performs on this database, grouped by level (read · write · structure),
-  with what it is used for and the privilege behind it on this engine. Without test results it
+  Every operation Formalie performs on this database, grouped by level (Formalie's tables, always;
+  reading and changing the other tables, optional), with what it is used for and the privilege
+  behind it on this engine. Without test results it
   marks what this connection needs; with them (a finished test) each line says granted or missing.
 -->
 <script setup lang="ts">
@@ -10,7 +11,7 @@ import { operationsFor, type PermissionLevel } from '#shared/utils/datasources/p
 const props = defineProps<{ engine: DbEngine; access: DataSourceAccessSettings; results?: PermissionResult[] | null }>()
 const { t } = useI18n()
 
-const LEVELS: PermissionLevel[] = ['read', 'write', 'structure']
+const LEVELS: PermissionLevel[] = ['own', 'read', 'write']
 const groups = computed(() => {
   const operations = operationsFor(props.engine, props.access)
   const result = (key: string) => props.results?.find(item => item.operation === key)?.status
@@ -37,7 +38,7 @@ const stateOf = (item: { needed: boolean; result?: string }) => (item.result ===
           <h4 class="text-sm font-semibold text-highlighted">{{ t(`dataSources.level.${group.level}`) }}</h4>
           <p class="text-xs text-muted">{{ t(`dataSources.levelDesc.${group.level}`) }}</p>
         </div>
-        <UBadge :label="group.needed ? t('dataSources.perm.needed') : t('dataSources.perm.notNeeded')" color="neutral" :variant="group.needed ? 'solid' : 'outline'" size="sm" class="shrink-0 rounded-md" />
+        <UBadge :label="group.level === 'own' ? t('dataSources.access.always') : group.needed ? t('dataSources.perm.needed') : t('dataSources.perm.notNeeded')" color="neutral" :variant="group.needed ? 'solid' : 'outline'" size="sm" class="shrink-0 rounded-md" />
       </header>
       <ul class="divide-y divide-default">
         <li v-for="item in group.items" :key="item.key" class="flex items-start gap-2.5 px-3 py-2">

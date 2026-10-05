@@ -541,7 +541,8 @@
     "FRM-DEST-1008": "Ten test połączenia nie jest już dostępny. Uruchom go ponownie.",
     "FRM-DEST-1009": "To połączenie jest wyłączone. Najpierw je włącz.",
     "FRM-DEST-1010": "Formularze nadal wysyłają odpowiedzi do tego połączenia.",
-    "FRM-DEST-1011": "Baza danych zbyt długo nie odpowiadała."
+    "FRM-DEST-1011": "Baza danych zbyt długo nie odpowiadała.",
+    "FRM-DEST-1012": "To konto nie może tworzyć ani używać tabel Formalie."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -2881,7 +2882,7 @@
     "add": "Dodaj połączenie",
     "search": "Szukaj połączeń, serwerów lub baz danych…",
     "emptyTitle": "Brak połączeń",
-    "emptyDesc": "Połącz jedną ze swoich baz danych, aby wysyłać do niej dane z formularzy i pracować z nimi tutaj. Wbudowany magazyn Formalie działa w tym czasie bez zmian.",
+    "emptyDesc": "Połącz jedną ze swoich baz danych, a Formalie będzie zapisywać w niej odpowiedzi, we własnych tabelach, aby można było ich używać także w Twoich systemach. Wbudowany magazyn Formalie działa w tym czasie bez zmian.",
     "notFound": "To połączenie jest niedostępne",
     "ms": "{n} ms",
     "checked": "Sprawdzono {when}",
@@ -3022,12 +3023,12 @@
     "hint": {
       "host": "Nazwa hosta lub adres IP osiągalny dla serwerów Formalie. Sieci prywatne: użyj tunelu SSH.",
       "connect_timeout": "Jak długo czekać na serwer przed rezygnacją.",
-      "username": "Osobne konto dla Formalie, nigdy administrator.",
-      "ca_certificate": "Wklej tekst PEM urzędu certyfikacji, który podpisał certyfikat serwera.",
+      "username": "Konto, którym loguje się Formalie. Może to być dowolne konto, o ile ma uprawnienia z kroku Dostęp.",
+      "ca_certificate": "Potrzebny tylko wtedy, gdy wybierzesz opcję weryfikującą certyfikat. Wklej tekst PEM urzędu certyfikacji, który podpisał certyfikat serwera.",
       "client_certificate": "Tylko gdy serwer wymaga certyfikatu klienta (wzajemne TLS).",
       "client_key": "Klucz prywatny certyfikatu klienta w formacie PEM.",
-      "ssh": "Dla bazy danych w sieci prywatnej: Formalie łączy się z dozwolonym przez Ciebie serwerem, który przekazuje ruch do bazy.",
-      "ssh_private_key": "Klucz prywatny PEM użytkownika SSH. Użyj klucza utworzonego tylko dla Formalie.",
+      "ssh": "Tylko gdy baza danych znajduje się w sieci prywatnej, do której Formalie nie ma bezpośredniego dostępu. Włącz, aby podać serwer SSH, użytkownika i klucz; w przeciwnym razie pozostaw wyłączone.",
+      "ssh_private_key": "Klucz prywatny użytkownika SSH w formacie PEM. Potrzebny tylko do tunelu i przechowywany w postaci zaszyfrowanej.",
       "time_zone": "Daty są wysyłane i odczytywane w tej strefie czasowej. Zalecamy UTC (+00:00).",
       "target_session_attrs": "Dla klastrów: którego serwera może używać Formalie.",
       "trust_server_certificate": "Niezalecane: każdy pośrednik mógłby odczytać ruch. Używaj tylko do testów.",
@@ -3123,14 +3124,14 @@
       "taken": "Połączenie o tej nazwie już istnieje."
     },
     "level": {
-      "read": "Odczyt",
-      "write": "Zapis",
-      "structure": "Struktura"
+      "read": "Odczyt pozostałych tabel",
+      "write": "Zmiana pozostałych tabel",
+      "own": "Tabele Formalie"
     },
     "levelDesc": {
-      "read": "Przeglądanie tabel, odczyt wierszy, eksport, zapytania odczytujące",
-      "write": "Wysyłanie odpowiedzi z formularzy, aktualizacja i usuwanie wierszy, import",
-      "structure": "Tworzenie tabel z formularza, dodawanie kolumn dla nowych pól"
+      "read": "Eksplorator baz, zapytania, listy opcji z Twoich danych",
+      "write": "Edycja wierszy w eksploratorze i import plików do Twoich tabel",
+      "own": "Tworzenie tabeli dla każdego formularza, zapisywanie, wyświetlanie i zmiana odpowiedzi, dodawanie kolumn"
     },
     "perm": {
       "needed": "Potrzebne",
@@ -3154,7 +3155,7 @@
       },
       "read_rows": {
         "label": "Odczyt wierszy",
-        "uses": "Przeglądanie i eksport tabel, zapytania odczytujące, listy opcji"
+        "uses": "Przeglądanie i eksport Twoich tabel, zapytania odczytujące, listy opcji"
       },
       "cancel": {
         "label": "Anulowanie własnego zapytania",
@@ -3162,11 +3163,11 @@
       },
       "insert": {
         "label": "Dodawanie wierszy",
-        "uses": "Wysyłanie odpowiedzi z formularzy, importy, nowe wiersze"
+        "uses": "Nowe wiersze i importy do Twoich tabel"
       },
       "update": {
         "label": "Zmiana wierszy",
-        "uses": "Aktualizacja lub wstawienie według klucza, edycja w eksploratorze"
+        "uses": "Edycja w eksploratorze"
       },
       "delete": {
         "label": "Usuwanie wierszy",
@@ -3174,19 +3175,23 @@
       },
       "sequences": {
         "label": "Używanie sekwencji",
-        "uses": "Generowane identyfikatory nowych wierszy"
+        "uses": "Generowane identyfikatory nowych wierszy w Twoich tabelach"
       },
       "create_table": {
-        "label": "Tworzenie tabel",
-        "uses": "Tabela utworzona z formularza"
+        "label": "Tworzenie własnych tabel",
+        "uses": "Tabela dla każdego formularza, z prefiksem w nazwie"
       },
       "alter_table": {
         "label": "Dodawanie kolumn",
-        "uses": "Kolumna dla pola dodanego do formularza"
+        "uses": "Kolumna dla każdego pola dodanego do formularza"
       },
       "create_index": {
-        "label": "Dodawanie klucza unikalnego",
-        "uses": "Klucz, według którego działa aktualizacja lub wstawienie"
+        "label": "Dodanie klucza unikalnego",
+        "uses": "Klucz, po którym odnajdywany jest każdy wiersz odpowiedzi"
+      },
+      "own_rows": {
+        "label": "Odczyt i zapis własnych wierszy",
+        "uses": "Zapisywanie, wyświetlanie, zmiana i usuwanie odpowiedzi"
       }
     },
     "grant": {
@@ -3196,21 +3201,23 @@
       "oracle23": "Oracle 23ai lub nowszy",
       "oracle23Desc": "Uprawnienia na poziomie schematu. Wyłącz dla 19c i starszych (uprawnienia na poziomie tabel).",
       "block": {
-        "account": "1. Utwórz konto",
-        "read": "2. Odczyt",
-        "write": "3. Zapis",
-        "structure": "4. Struktura"
+        "account": "1. Konto (pomiń, aby użyć istniejącego)",
+        "read": "3. Odczyt pozostałych tabel",
+        "write": "4. Zmiana pozostałych tabel",
+        "own": "2. Tabele Formalie (wymagane)"
       },
       "note": {
         "host_limit": "Jeśli możesz, zastąp '%' adresami Formalie, aby konto działało tylko z nich.",
         "pool": "Formalie otwiera jednocześnie najwyżej 10 połączeń.",
         "default_privileges": "Uruchom jako rola będąca właścicielem tabel, aby objąć także tabele utworzone później.",
-        "owner_alter": "Formalie jest właścicielem tworzonych przez siebie tabel i może dodawać do nich kolumny. Istniejące tabele pozostają Twoje.",
         "entra": "Uruchom w bazie danych po zalogowaniu kontem Microsoft Entra. Nazwa to użytkownik lub aplikacja Entra.",
         "contained": "W Azure SQL Database utwórz zamiast tego użytkownika zawartego: CREATE USER ... WITH PASSWORD.",
-        "no_sysdba": "Nigdy nie używaj SYS, SYSTEM ani roli SYSDBA dla Formalie.",
         "oracle_new_tables": "Tabele dodane później także wymagają uprawnień: uruchom blok ponownie lub użyj uprawnień schematu z Oracle 23ai.",
-        "oracle_own_schema": "Przed 23ai Formalie tworzy tabele we własnym schemacie, więc nie potrzebuje uprawnień do Twojego."
+        "oracle_own_schema": "Tabele Formalie trafiają do własnego schematu konta, więc do zapisywania odpowiedzi nie potrzebuje ono uprawnień do Twoich schematów.",
+        "owner_tables": "Formalie jest właścicielem tworzonych przez siebie tabel, więc może je odczytywać, zapisywać i dodawać do nich kolumny, i nic więcej w tym schemacie.",
+        "own_schema": "Tabele Formalie trafiają do osobnego schematu, którego właścicielem jest konto. Pozostałe schematy pozostają nietknięte, chyba że nadasz więcej poniżej.",
+        "mysql_database": "MySQL i MariaDB nadają uprawnienia na poziomie bazy danych, więc obejmują one także pozostałe tabele w tej bazie. Aby ograniczyć Formalie do własnych tabel, przydziel mu osobną bazę danych.",
+        "mysql_covered": "Nic więcej do uruchomienia: uprawnienia dla tabel Formalie obejmują już tę bazę danych. Dodaj inne bazy danych powyżej, aby nadać je tutaj."
       }
     },
     "step": {
@@ -3236,7 +3243,8 @@
       "FRM-DEST-1004": "Sprawdź serwer SSH, użytkownika i klucz prywatny oraz czy serwer SSH ma dostęp do bazy danych.",
       "FRM-DEST-1005": "Sprawdź nazwę bazy danych (lub usługi) oraz czy konto ma do niej dostęp.",
       "FRM-DEST-1006": "Nadaj brakujące uprawnienia poniżej, a potem przetestuj ponownie.",
-      "FRM-DEST-1011": "Serwer nie odpowiedział na czas. Sprawdź adres i zaporę albo zwiększ limit czasu w sekcji Więcej opcji."
+      "FRM-DEST-1011": "Serwer nie odpowiedział na czas. Sprawdź adres i zaporę albo zwiększ limit czasu w sekcji Więcej opcji.",
+      "FRM-DEST-1012": "Nadaj uprawnienia z sekcji „Tabele Formalie” w kroku Dostęp, a potem przetestuj ponownie. Są wymagane do zapisywania odpowiedzi."
     },
     "test": {
       "heading": {
@@ -3254,14 +3262,6 @@
       "safe": "Test tylko odczytuje. Nigdy nie zmienia Twoich danych."
     },
     "finding": {
-      "admin_account": {
-        "title": "To jest konto administratora",
-        "desc": "Utwórz osobne konto tylko z wymienionymi uprawnieniami, aby Formalie nigdy nie mogło zrobić więcej, niż potrzebuje."
-      },
-      "extra_write": {
-        "title": "To konto może zmieniać dane",
-        "desc": "Połączenie jest tylko do odczytu, więc Formalie będzie tylko odczytywać. Zgodnie z zasadą minimalnych uprawnień usuń uprawnienia zapisu."
-      },
       "tls_off": {
         "title": "Ruch nie jest szyfrowany",
         "desc": "Wybierz opcję z szyfrowaniem w sekcji Bezpieczeństwo, aby dane i hasła były chronione w drodze."
@@ -3276,21 +3276,45 @@
       }
     },
     "access": {
-      "legend": "Co może robić Formalie",
-      "read_only": "Tylko odczyt",
-      "read_write": "Odczyt i zapis",
-      "readOnlyDesc": "Przeglądanie, eksport i zapytania odczytujące. Nic w bazie danych nie może się zmienić.",
-      "readWriteDesc": "Dodatkowo wysyłanie odpowiedzi z formularzy do tabel, edycja wierszy i import plików.",
-      "structure": "Pozwól Formalie tworzyć tabele i dodawać kolumny",
-      "structureDesc": "Dla miejsc docelowych formularzy: tabela utworzona z formularza i kolumna dla każdego nowego pola. Nigdy niczego nie usuwa.",
-      "schemas": "Schematy, których może używać Formalie",
-      "databases": "Bazy danych, których może używać Formalie",
+      "schemas": "Schematy z pozostałymi tabelami",
+      "databases": "Bazy danych z pozostałymi tabelami",
       "schemasHint": "Naciśnij Enter po każdej pozycji. Puste: tylko {schema}.",
       "databasesHint": "Naciśnij Enter po każdej pozycji. Puste: tylko {schema}.",
       "permissionsTitle": "Uprawnienia do nadania",
-      "permissionsDesc": "Nadaj kontu dokładnie te uprawnienia, nic więcej, aby każda funkcja działała, a nic innego nie było możliwe.",
+      "permissionsDesc": "Nadaj kontu te uprawnienia, aby każda funkcja działała. Tabele Formalie są wymagane; reszta zależy od Twojego wyboru powyżej.",
       "tabOperations": "Co robi Formalie",
-      "tabScript": "Polecenia do uruchomienia"
+      "tabScript": "Polecenia do uruchomienia",
+      "ownTitle": "Tabele Formalie",
+      "ownDesc": "Formalie tworzy tabelę dla każdego formularza, zapisuje w niej każdą odpowiedź i odczytuje je, aby je wyświetlić. Może zmieniać i usuwać wiersze oraz dodawać kolumny, wyłącznie we własnych tabelach. Do tego służy połączenie.",
+      "always": "Wymagane",
+      "prefix": "Prefiks nazw tabel",
+      "prefixDesc": "Od niego zaczyna się każda tabela tworzona przez Formalie, na przykład {example}.",
+      "tablesSchema": "Schemat dla tabel Formalie",
+      "tablesDatabase": "Baza danych dla tabel Formalie",
+      "tablesSchemaDesc": {
+        "postgresql": "Puste: schemat połączenia. Formalie jest właścicielem tabel, które w nim tworzy.",
+        "sqlserver": "Osobny schemat, którego właścicielem jest konto (tworzony przez poniższe polecenia).",
+        "oracle": "Własny schemat konta, więc Twoje schematy pozostają nietknięte.",
+        "mysql": "Baza danych połączenia.",
+        "mariadb": "Baza danych połączenia."
+      },
+      "otherLegend": "Pozostałe tabele",
+      "other": {
+        "read_write": "Odczyt i zapis",
+        "read": "Tylko odczyt",
+        "none": "Nieudostępniane"
+      },
+      "otherDesc": {
+        "read_write": "Przeglądanie, zapytania, użycie jako list opcji, edycja wierszy i import plików.",
+        "read": "Przeglądanie, zapytania i użycie jako list opcji. Nic się w nich nie zmienia.",
+        "none": "Formalie używa tylko własnych tabel."
+      },
+      "otherHint": "Opcjonalne i niepotrzebne do zapisywania odpowiedzi. Możesz to zmienić później.",
+      "short": {
+        "read_write": "Odczyt i zapis pozostałych",
+        "read": "Odczyt pozostałych",
+        "none": "Tylko własne tabele"
+      }
     },
     "summary": {
       "engine": "Baza danych",
@@ -3298,13 +3322,13 @@
       "database": "Baza danych",
       "account": "Konto",
       "security": "Bezpieczeństwo",
-      "access": "Dostęp",
+      "access": "Pozostałe tabele",
       "descriptor": "Deskryptor połączenia",
       "encrypted": "Szyfrowane",
       "notEncrypted": "Nieszyfrowane",
       "ssh": "Tunel SSH",
-      "structure": "tworzy tabele",
-      "change": "Zmień: {item}"
+      "change": "Zmień: {item}",
+      "tables": "Tabele Formalie"
     },
     "wizard": {
       "newCrumb": "Dodaj połączenie",
@@ -3329,15 +3353,15 @@
         "server": "Gdzie się znajduje?",
         "signin": "Jak loguje się Formalie?",
         "security": "Jak chronione jest połączenie?",
-        "access": "Co może robić Formalie?",
+        "access": "Gdzie Formalie przechowuje Twoje odpowiedzi",
         "review": "Nadaj nazwę i przetestuj"
       },
       "desc": {
         "engine": "Każda ma własne ustawienia. Więcej możesz dodać później.",
         "server": "Adres, pod którym serwery Formalie łączą się z Twoją bazą danych {engine}.",
-        "signin": "Użyj konta utworzonego dla Formalie. Hasła są szyfrowane i nigdy więcej nie są wyświetlane.",
-        "security": "Szyfrowanie oraz, dla sieci prywatnych, tunel SSH.",
-        "access": "Zacznij od trybu tylko do odczytu. Uprawnienia do nadania wynikają z Twojego wyboru.",
+        "signin": "Dowolne konto z uprawnieniami z kroku Dostęp. Wszystko, co wpiszesz, jest szyfrowane przed zapisaniem.",
+        "security": "Szyfrowanie połączenia oraz tunel SSH tylko wtedy, gdy baza danych jest w sieci prywatnej.",
+        "access": "Formalie zapisuje tutaj odpowiedzi z tej przestrzeni roboczej, we własnych tabelach. Dostęp do pozostałych tabel jest opcjonalny.",
         "review": "Test jest uruchamiany z serwerów Formalie i tylko odczytuje."
       },
       "name": "Nazwa",
@@ -3361,7 +3385,7 @@
       "engine": {
         "title": "Czego potrzebujesz",
         "p1": "Adresu i portu serwera oraz nazwy bazy danych.",
-        "p2": "Osobnego konta dla Formalie. Dokładne polecenia do jego utworzenia pojawią się w kroku Dostęp.",
+        "p2": "Konto dla Formalie. Krok Dostęp pokazuje dokładnie, jakich uprawnień potrzebuje, oraz polecenia do ich nadania.",
         "p3": "Adresów Formalie dozwolonych w Twojej zaporze (poniżej).",
         "p4": "Dla bazy danych w sieci prywatnej: serwera SSH, z którego może korzystać Formalie."
       },
@@ -3372,53 +3396,58 @@
         "p3": "Tylko sieć prywatna? Dodaj tunel SSH w kroku Bezpieczeństwo."
       },
       "signin": {
-        "title": "Osobne konto",
-        "p1": "Nigdy nie używaj konta administratora. Test ostrzeże Cię, jeśli to zrobisz.",
-        "p2": "Krok Dostęp przygotuje polecenia do utworzenia konta z dokładnie właściwymi uprawnieniami.",
-        "p3": "Dane logowania są wysyłane i przechowywane w postaci zaszyfrowanej i nigdy więcej nie są wyświetlane.",
+        "title": "Konto",
+        "p1": "Użyj dowolnego konta, o ile ma uprawnienia wymienione w kroku Dostęp.",
+        "p2": "Krok Dostęp generuje też polecenia tworzące konto tylko dla Formalie, jeśli wolisz takie rozwiązanie.",
+        "p3": "Wszystko, co wpiszesz, jest szyfrowane przed zapisaniem i odszyfrowywane tylko wtedy, gdy Formalie się łączy.",
         "sqlserver": {
           "p1": "Konto SQL Server: login z hasłem.",
           "p2": "Microsoft Entra ID: użytkownik z hasłem lub aplikacja (jednostka usługi) z kluczem tajnym klienta.",
-          "p3": "Krok Dostęp przygotuje polecenia do utworzenia jednego z nich z dokładnie właściwymi uprawnieniami."
+          "p3": "Wszystko, co wpiszesz, jest szyfrowane przed zapisaniem i odszyfrowywane tylko wtedy, gdy Formalie się łączy."
         }
       },
       "security": {
         "title": "Ochrona połączenia",
         "p1": "Zawsze szyfruj. Sprawdzenie certyfikatu potwierdza też, że łączysz się z właściwym serwerem.",
-        "p2": "Tunel SSH prowadzi do prywatnej bazy danych przez dozwolony przez Ciebie serwer.",
-        "p3": "Klucze i certyfikaty pozostają zaszyfrowane na serwerach Formalie.",
+        "p2": "Tunel SSH: tylko gdy baza danych jest w sieci prywatnej. O serwer, użytkownika i klucz pytamy tylko wtedy.",
+        "p3": "Klucze i certyfikaty są przechowywane w postaci zaszyfrowanej, jak wszystko inne tutaj.",
         "postgresql": {
           "p1": "require szyfruje ruch.",
           "p2": "verify-full dodatkowo sprawdza certyfikat i nazwę hosta (zalecane).",
-          "p3": "Dla verify-ca i verify-full wklej certyfikat CA."
+          "p3": "Dla verify-ca i verify-full wklej certyfikat CA.",
+          "p4": "Tunel SSH: tylko gdy baza danych jest w sieci prywatnej. O serwer, użytkownika i klucz pytamy tylko wtedy."
         },
         "mysql": {
           "p1": "Wymagane szyfruje ruch.",
           "p2": "Weryfikuj tożsamość dodatkowo sprawdza certyfikat i nazwę hosta (zalecane).",
-          "p3": "Dla opcji weryfikacji dodaj certyfikat CA."
+          "p3": "Dla opcji weryfikacji dodaj certyfikat CA.",
+          "p4": "Tunel SSH: tylko gdy baza danych jest w sieci prywatnej. O serwer, użytkownika i klucz pytamy tylko wtedy."
         },
         "mariadb": {
           "p1": "Wymagane szyfruje ruch.",
           "p2": "Weryfikuj tożsamość dodatkowo sprawdza certyfikat i nazwę hosta (zalecane).",
-          "p3": "Dla opcji weryfikacji dodaj certyfikat CA."
+          "p3": "Dla opcji weryfikacji dodaj certyfikat CA.",
+          "p4": "Tunel SSH: tylko gdy baza danych jest w sieci prywatnej. O serwer, użytkownika i klucz pytamy tylko wtedy."
         },
         "sqlserver": {
           "p1": "Obowiązkowe szyfruje i sprawdza certyfikat.",
           "p2": "Ścisłe (TDS 8.0) szyfruje przed zalogowaniem, dla SQL Server 2022 i Azure SQL.",
-          "p3": "Ufanie certyfikatowi bez sprawdzania jest tylko do testów."
+          "p3": "Ufanie certyfikatowi bez sprawdzania jest tylko do testów.",
+          "p4": "Tunel SSH: tylko gdy baza danych jest w sieci prywatnej. O serwer, użytkownika i klucz pytamy tylko wtedy."
         },
         "oracle": {
           "p1": "TCPS szyfruje za pomocą TLS i jest zalecane.",
           "p2": "Przy TCP ustaw natywne szyfrowanie sieciowe na Wymagane po obu stronach.",
-          "p3": "Dla TCPS wklej certyfikat CA ze swojego portfela (wallet)."
+          "p3": "Dla TCPS wklej certyfikat CA ze swojego portfela (wallet).",
+          "p4": "Tunel SSH: tylko gdy baza danych jest w sieci prywatnej. O serwer, użytkownika i klucz pytamy tylko wtedy."
         }
       },
       "access": {
-        "title": "Minimalne uprawnienia",
-        "p1": "Nadaj tylko to, czego używa to połączenie. Każda funkcja, która potrzebuje więcej, poinformuje Cię o tym.",
-        "p2": "Tryb tylko do odczytu nigdy nie zmieni Twoich danych, bez względu na polecenie.",
-        "p3": "Formalie nigdy nie usuwa tabel ani kolumn.",
-        "p4": "Każde zapytanie, zmiana, import i eksport są zapisywane w dzienniku audytu."
+        "title": "Po co połączenie",
+        "p1": "Połączenie to miejsce, w którym Formalie zapisuje Twoje odpowiedzi: jedna tabela na formularz, z Twoim prefiksem w nazwie.",
+        "p2": "Formalie odczytuje je, aby je wyświetlić, i może zmieniać, usuwać oraz dodawać kolumny, wyłącznie we własnych tabelach.",
+        "p3": "Twoje dane zostają w Twojej bazie danych, gotowe dla Twoich systemów i raportów.",
+        "p4": "Odczyt lub zmiana pozostałych tabel jest opcjonalna, dla eksploratora, zapytań, list opcji i importów."
       },
       "review": {
         "title": "Co sprawdza test",

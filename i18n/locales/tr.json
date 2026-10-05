@@ -541,7 +541,8 @@
     "FRM-DEST-1008": "Bu bağlantı testi artık kullanılamıyor. Yeniden çalıştırın.",
     "FRM-DEST-1009": "Bu bağlantı devre dışı. Önce etkinleştirin.",
     "FRM-DEST-1010": "Formlar yanıtlarını hâlâ bu bağlantıya gönderiyor.",
-    "FRM-DEST-1011": "Veritabanının yanıt vermesi çok uzun sürdü."
+    "FRM-DEST-1011": "Veritabanının yanıt vermesi çok uzun sürdü.",
+    "FRM-DEST-1012": "Bu hesap Formalie’nin tablolarını oluşturamıyor veya kullanamıyor."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -2881,7 +2882,7 @@
     "add": "Bağlantı ekle",
     "search": "Bağlantı, sunucu veya veritabanı ara…",
     "emptyTitle": "Henüz bağlantı yok",
-    "emptyDesc": "Form verilerini göndermek ve burada üzerinde çalışmak için veritabanlarınızdan birini bağlayın. Bu sırada Formalie’nin yerleşik depolaması çalışmaya devam eder.",
+    "emptyDesc": "Veritabanlarınızdan birini bağlayın; Formalie yanıtlarınızı orada kendi tablolarında saklar, böylece onları kendi sistemlerinizde de kullanabilirsiniz. Bu sırada Formalie’nin yerleşik depolaması çalışmaya devam eder.",
     "notFound": "Bu bağlantı kullanılamıyor",
     "ms": "{n} ms",
     "checked": "Kontrol edildi: {when}",
@@ -3022,12 +3023,12 @@
     "hint": {
       "host": "Formalie sunucularının ulaştığı ana bilgisayar adı veya IP adresi. Özel ağlar için SSH tüneli kullanın.",
       "connect_timeout": "Vazgeçmeden önce sunucunun ne kadar bekleneceği.",
-      "username": "Formalie’ye özel bir hesap, asla yönetici hesabı değil.",
-      "ca_certificate": "Sunucunun sertifikasını imzalayan sertifika yetkilisinin PEM metnini yapıştırın.",
+      "username": "Formalie’nin oturum açtığı hesap. Erişim adımındaki izinlere sahip olduğu sürece herhangi bir hesap olur.",
+      "ca_certificate": "Yalnızca sertifikayı doğrulayan bir seçenek seçtiğinizde gerekir. Sunucunun sertifikasını imzalayan sertifika yetkilisinin PEM metnini yapıştırın.",
       "client_certificate": "Yalnızca sunucu bir istemci sertifikası istediğinde (karşılıklı TLS).",
       "client_key": "İstemci sertifikasının PEM biçimindeki özel anahtarı.",
-      "ssh": "Özel ağdaki bir veritabanı için: Formalie, izin verdiğiniz ve trafiği veritabanına yönlendiren bir sunucuya bağlanır.",
-      "ssh_private_key": "SSH kullanıcısının PEM özel anahtarı. Yalnızca Formalie için oluşturulmuş bir anahtar kullanın.",
+      "ssh": "Yalnızca veritabanınız Formalie’nin doğrudan ulaşamadığı özel bir ağdaysa. SSH sunucusunu, kullanıcıyı ve anahtarı girmek için açın; aksi halde kapalı bırakın.",
+      "ssh_private_key": "SSH kullanıcısının PEM biçimindeki özel anahtarı. Yalnızca tünel için gerekir ve şifreli saklanır.",
       "time_zone": "Tarihler bu saat diliminde gönderilir ve okunur. UTC (+00:00) önerilir.",
       "target_session_attrs": "Kümeler için: Formalie’nin hangi sunucuyu kullanabileceği.",
       "trust_server_certificate": "Önerilmez: aradaki herkes trafiği okuyabilir. Yalnızca test için kullanın.",
@@ -3123,14 +3124,14 @@
       "taken": "Bu ada sahip bir bağlantı zaten var."
     },
     "level": {
-      "read": "Okuma",
-      "write": "Yazma",
-      "structure": "Yapı"
+      "read": "Diğer tablolarınızı okuma",
+      "write": "Diğer tablolarınızı değiştirme",
+      "own": "Formalie’nin tabloları"
     },
     "levelDesc": {
-      "read": "Tablolara göz atma, satır okuma, dışa aktarma, okuma sorguları çalıştırma",
-      "write": "Form yanıtlarını gönderme, satır güncelleme ve silme, içe aktarma",
-      "structure": "Formdan tablo oluşturma, yeni alanlar için sütun ekleme"
+      "read": "Veritabanı gezgini, sorgular, verilerinizden seçenek listeleri",
+      "write": "Gezginde satırları düzenleme ve tablolarınıza dosya içe aktarma",
+      "own": "Her form için tablo oluşturma, yanıtları saklama, gösterme, değiştirme, sütun ekleme"
     },
     "perm": {
       "needed": "Gerekli",
@@ -3154,7 +3155,7 @@
       },
       "read_rows": {
         "label": "Satırları oku",
-        "uses": "Tablolara göz atma ve dışa aktarma, okuma sorguları, seçenek listeleri"
+        "uses": "Tablolarınıza göz atma ve dışa aktarma, okuma sorguları, seçenek listeleri"
       },
       "cancel": {
         "label": "Kendi sorgusunu iptal et",
@@ -3162,11 +3163,11 @@
       },
       "insert": {
         "label": "Satır ekle",
-        "uses": "Form yanıtlarını gönderme, içe aktarmalar, yeni satırlar"
+        "uses": "Tablolarınıza yeni satırlar ve içe aktarmalar"
       },
       "update": {
         "label": "Satırları değiştir",
-        "uses": "Anahtara göre güncelle veya ekle, gezginde düzenlemeler"
+        "uses": "Gezginde düzenlemeler"
       },
       "delete": {
         "label": "Satırları sil",
@@ -3174,19 +3175,23 @@
       },
       "sequences": {
         "label": "Dizileri kullan",
-        "uses": "Yeni satırlar için üretilen kimlikler"
+        "uses": "Tablolarınızdaki yeni satırlar için üretilen kimlikler"
       },
       "create_table": {
-        "label": "Tablo oluştur",
-        "uses": "Bir formdan oluşturulan tablo"
+        "label": "Kendi tablolarını oluşturma",
+        "uses": "Her form için önekle adlandırılmış bir tablo"
       },
       "alter_table": {
         "label": "Sütun ekle",
-        "uses": "Forma eklenen bir alan için sütun"
+        "uses": "Forma eklenen her alan için bir sütun"
       },
       "create_index": {
         "label": "Benzersiz anahtar ekle",
-        "uses": "Güncelle veya ekle işleminin eşleştiği anahtar"
+        "uses": "Her yanıt satırının bulunduğu anahtar"
+      },
+      "own_rows": {
+        "label": "Kendi satırlarını okuma ve yazma",
+        "uses": "Yanıtları saklama, gösterme, değiştirme ve silme"
       }
     },
     "grant": {
@@ -3196,21 +3201,23 @@
       "oracle23": "Oracle 23ai veya üzeri",
       "oracle23Desc": "Şema başına izinler. 19c ve öncesi için kapatın (tablo başına izinler).",
       "block": {
-        "account": "1. Hesabı oluştur",
-        "read": "2. Okuma",
-        "write": "3. Yazma",
-        "structure": "4. Yapı"
+        "account": "1. Hesap (mevcut bir hesabı kullanmak için atlayın)",
+        "read": "3. Diğer tablolarınızı okuma",
+        "write": "4. Diğer tablolarınızı değiştirme",
+        "own": "2. Formalie’nin tabloları (gerekli)"
       },
       "note": {
         "host_limit": "Mümkünse '%' yerine Formalie’nin adreslerini yazın, böylece hesap yalnızca oradan çalışır.",
         "pool": "Formalie aynı anda en fazla 10 bağlantı açar.",
         "default_privileges": "Daha sonra oluşturulan tabloların da kapsanması için tabloların sahibi olan rolle çalıştırın.",
-        "owner_alter": "Formalie oluşturduğu tabloların sahibidir ve bunlara sütun ekleyebilir. Mevcut tablolar sizin kalır.",
         "entra": "Bir Microsoft Entra hesabıyla oturum açmışken veritabanında çalıştırın. Ad, Entra kullanıcısı veya uygulamasıdır.",
         "contained": "Azure SQL Database’de bunun yerine kapsanan bir kullanıcı oluşturun: CREATE USER ... WITH PASSWORD.",
-        "no_sysdba": "Formalie için asla SYS, SYSTEM veya SYSDBA rolünü kullanmayın.",
         "oracle_new_tables": "Sonradan eklenen tabloların da izne ihtiyacı vardır: bloğu yeniden çalıştırın veya Oracle 23ai şema izinlerini kullanın.",
-        "oracle_own_schema": "23ai öncesinde Formalie tablolarını kendi şemasında oluşturur, bu yüzden sizinkilerde hak gerektirmez."
+        "oracle_own_schema": "Formalie’nin tabloları hesabın kendi şemasına gider, bu yüzden yanıtları saklamak için şemalarınızda hak gerekmez.",
+        "owner_tables": "Formalie oluşturduğu tabloların sahibidir; bu yüzden onları okuyabilir, onlara yazabilir ve sütun ekleyebilir, bu şemadaki başka hiçbir şeye değil.",
+        "own_schema": "Formalie’nin tabloları, hesabın sahibi olduğu ayrı bir şemaya gider. Aşağıda daha fazlasını vermedikçe diğer şemalarınıza dokunulmaz.",
+        "mysql_database": "MySQL ve MariaDB hakları veritabanı başına verir, bu yüzden bu haklar oradaki diğer tablolarınızı da kapsar. Formalie’yi kendi tablolarıyla sınırlamak için ona ayrı bir veritabanı verin.",
+        "mysql_covered": "Çalıştırılacak başka bir şey yok: Formalie’nin tabloları için verilen haklar bu veritabanını zaten kapsıyor. Burada hak vermek için yukarıdan başka veritabanları ekleyin."
       }
     },
     "step": {
@@ -3236,7 +3243,8 @@
       "FRM-DEST-1004": "SSH sunucusunu, kullanıcıyı ve özel anahtarı, ayrıca SSH sunucusunun veritabanına ulaşabildiğini kontrol edin.",
       "FRM-DEST-1005": "Veritabanı (veya hizmet) adını ve hesabın ona erişimi olduğunu kontrol edin.",
       "FRM-DEST-1006": "Aşağıdaki eksik izinleri verin, ardından yeniden test edin.",
-      "FRM-DEST-1011": "Sunucu zamanında yanıt vermedi. Adresi ve güvenlik duvarını kontrol edin veya Diğer seçenekler altında zaman sınırını artırın."
+      "FRM-DEST-1011": "Sunucu zamanında yanıt vermedi. Adresi ve güvenlik duvarını kontrol edin veya Diğer seçenekler altında zaman sınırını artırın.",
+      "FRM-DEST-1012": "Erişim adımında “Formalie’nin tabloları” altındaki izinleri verin, sonra yeniden test edin. Yanıtları saklamak için gereklidir."
     },
     "test": {
       "heading": {
@@ -3254,14 +3262,6 @@
       "safe": "Test yalnızca okur. Verilerinizi asla değiştirmez."
     },
     "finding": {
-      "admin_account": {
-        "title": "Bu bir yönetici hesabı",
-        "desc": "Yalnızca listelenen izinlere sahip özel bir hesap oluşturun, böylece Formalie asla ihtiyacından fazlasını yapamaz."
-      },
-      "extra_write": {
-        "title": "Bu hesap verileri değiştirebilir",
-        "desc": "Bağlantı salt okunur olduğundan Formalie yalnızca okur. En az ayrıcalık için hesabın yazma izinlerini kaldırın."
-      },
       "tls_off": {
         "title": "Trafik şifrelenmiyor",
         "desc": "Veriler ve parolalar yolda korunsun diye Güvenlik altında şifreleyen bir seçenek belirleyin."
@@ -3276,21 +3276,45 @@
       }
     },
     "access": {
-      "legend": "Formalie neler yapabilir",
-      "read_only": "Salt okunur",
-      "read_write": "Okuma ve yazma",
-      "readOnlyDesc": "Göz atma, dışa aktarma ve okuma sorguları çalıştırma. Veritabanında hiçbir şey değişemez.",
-      "readWriteDesc": "Ayrıca form yanıtlarını tablolara gönderme, satırları düzenleme ve dosya içe aktarma.",
-      "structure": "Formalie’nin tablo oluşturmasına ve sütun eklemesine izin ver",
-      "structureDesc": "Form hedefleri için: formdan oluşturulan bir tablo ve her yeni alan için bir sütun. Hiçbir şeyi silmez.",
-      "schemas": "Formalie’nin kullanabileceği şemalar",
-      "databases": "Formalie’nin kullanabileceği veritabanları",
+      "schemas": "Diğer tablolarınızın bulunduğu şemalar",
+      "databases": "Diğer tablolarınızın bulunduğu veritabanları",
       "schemasHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
       "databasesHint": "Her birinden sonra Enter’a basın. Boş: yalnızca {schema}.",
       "permissionsTitle": "Verilecek izinler",
-      "permissionsDesc": "Hesaba tam olarak bunları verin, fazlasını değil; böylece her özellik çalışır ve başka hiçbir şey mümkün olmaz.",
+      "permissionsDesc": "Her özelliğin çalışması için hesaba bunları verin. Formalie’nin tabloları gereklidir; gerisi yukarıdaki seçiminize göre belirlenir.",
       "tabOperations": "Formalie ne yapar",
-      "tabScript": "Çalıştırılacak komutlar"
+      "tabScript": "Çalıştırılacak komutlar",
+      "ownTitle": "Formalie’nin tabloları",
+      "ownDesc": "Formalie her form için bir tablo oluşturur, her yanıtı orada saklar ve göstermek için geri okur. Yalnızca kendi tablolarında satırları değiştirebilir, silebilir ve sütun ekleyebilir. Bağlantı tam olarak bunun içindir.",
+      "always": "Gerekli",
+      "prefix": "Tablo adı öneki",
+      "prefixDesc": "Formalie’nin oluşturduğu her tablo bununla başlar, örneğin {example}.",
+      "tablesSchema": "Formalie’nin tabloları için şema",
+      "tablesDatabase": "Formalie’nin tabloları için veritabanı",
+      "tablesSchemaDesc": {
+        "postgresql": "Boş: bağlantının şeması. Formalie orada oluşturduğu tabloların sahibidir.",
+        "sqlserver": "Hesabın sahibi olduğu ayrı bir şema (aşağıdaki komutlarla oluşturulur).",
+        "oracle": "Hesabın kendi şeması, böylece şemalarınıza dokunulmaz.",
+        "mysql": "Bağlantının veritabanı.",
+        "mariadb": "Bağlantının veritabanı."
+      },
+      "otherLegend": "Diğer tablolarınız",
+      "other": {
+        "read_write": "Okuma ve yazma",
+        "read": "Salt okunur",
+        "none": "Paylaşılmıyor"
+      },
+      "otherDesc": {
+        "read_write": "Gezinme, sorgulama, seçenek listesi olarak kullanma, satır düzenleme ve dosya içe aktarma.",
+        "read": "Gezinme, sorgulama ve seçenek listesi olarak kullanma. İçlerinde hiçbir şey değişmez.",
+        "none": "Formalie yalnızca kendi tablolarını kullanır."
+      },
+      "otherHint": "İsteğe bağlıdır ve yanıtları saklamak için gerekmez. Daha sonra değiştirebilirsiniz.",
+      "short": {
+        "read_write": "Diğerlerini okuma ve yazma",
+        "read": "Diğerlerini okuma",
+        "none": "Yalnızca kendi tabloları"
+      }
     },
     "summary": {
       "engine": "Veritabanı",
@@ -3298,13 +3322,13 @@
       "database": "Veritabanı",
       "account": "Hesap",
       "security": "Güvenlik",
-      "access": "Erişim",
+      "access": "Diğer tablolarınız",
       "descriptor": "Bağlantı tanımlayıcısı",
       "encrypted": "Şifreli",
       "notEncrypted": "Şifresiz",
       "ssh": "SSH tüneli",
-      "structure": "tablo oluşturur",
-      "change": "Değiştir: {item}"
+      "change": "Değiştir: {item}",
+      "tables": "Formalie’nin tabloları"
     },
     "wizard": {
       "newCrumb": "Bağlantı ekle",
@@ -3329,15 +3353,15 @@
         "server": "Nerede?",
         "signin": "Formalie nasıl oturum açar?",
         "security": "Bağlantı nasıl korunuyor?",
-        "access": "Formalie neler yapabilir?",
+        "access": "Formalie yanıtlarınızı nerede saklar",
         "review": "Adlandırın ve test edin"
       },
       "desc": {
         "engine": "Her birinin kendi ayarları vardır. Daha sonra başkalarını da ekleyebilirsiniz.",
         "server": "Formalie sunucularının {engine} veritabanınıza ulaşmak için kullandığı adres.",
-        "signin": "Formalie için oluşturulmuş bir hesap kullanın. Parolalar şifrelenir ve bir daha asla gösterilmez.",
-        "security": "Şifreleme ve özel ağlar için bir SSH tüneli.",
-        "access": "Salt okunur ile başlayın. Verilecek izinler seçiminize göre belirlenir.",
+        "signin": "Erişim adımındaki izinlere sahip herhangi bir hesap. Girdiğiniz her şey saklanmadan önce şifrelenir.",
+        "security": "Bağlantı için şifreleme ve yalnızca veritabanınız özel bir ağdaysa bir SSH tüneli.",
+        "access": "Formalie bu çalışma alanının yanıtlarını burada, kendi tablolarında saklar. Diğer tablolarınıza erişim isteğe bağlıdır.",
         "review": "Test, Formalie sunucularından çalışır ve yalnızca okur."
       },
       "name": "Ad",
@@ -3361,7 +3385,7 @@
       "engine": {
         "title": "Neye ihtiyacınız var",
         "p1": "Sunucu adresi ve bağlantı noktası ile veritabanı adı.",
-        "p2": "Formalie’ye özel bir hesap. Bunu oluşturacak komutların tam hali Erişim adımında gelir.",
+        "p2": "Formalie için bir hesap. Erişim adımı tam olarak hangi izinlere ihtiyaç duyduğunu ve bunları verecek komutları gösterir.",
         "p3": "Güvenlik duvarınızda izin verilen Formalie adresleri (aşağıda).",
         "p4": "Özel ağdaki bir veritabanı için: Formalie’nin kullanabileceği bir SSH sunucusu."
       },
@@ -3372,53 +3396,58 @@
         "p3": "Yalnızca özel ağ mı? Güvenlik adımında bir SSH tüneli ekleyin."
       },
       "signin": {
-        "title": "Özel bir hesap",
-        "p1": "Asla yönetici hesabı kullanmayın. Kullanırsanız test sizi uyarır.",
-        "p2": "Erişim adımı, hesabı tam doğru izinlerle oluşturacak komutları yazar.",
-        "p3": "Kimlik bilgileri şifreli gönderilir, şifreli saklanır ve bir daha asla gösterilmez.",
+        "title": "Hesap",
+        "p1": "Erişim adımında listelenen izinlere sahip olduğu sürece istediğiniz hesabı kullanın.",
+        "p2": "Tercih ederseniz Erişim adımı, yalnızca Formalie için bir hesap oluşturacak komutları da yazar.",
+        "p3": "Girdiğiniz her şey saklanmadan önce şifrelenir ve yalnızca Formalie bağlanırken çözülür.",
         "sqlserver": {
           "p1": "SQL Server hesabı: parolalı bir oturum açma hesabı.",
           "p2": "Microsoft Entra ID: parolalı bir kullanıcı veya istemci gizli anahtarı olan bir uygulama (hizmet sorumlusu).",
-          "p3": "Erişim adımı, ikisinden birini tam doğru izinlerle oluşturacak komutları yazar."
+          "p3": "Girdiğiniz her şey saklanmadan önce şifrelenir ve yalnızca Formalie bağlanırken çözülür."
         }
       },
       "security": {
         "title": "Bağlantıyı koruma",
         "p1": "Her zaman şifreleyin. Sertifikayı kontrol etmek doğru sunucuya ulaştığınızı da kanıtlar.",
-        "p2": "SSH tüneli, izin verdiğiniz bir sunucu üzerinden özel bir veritabanına ulaşır.",
-        "p3": "Anahtarlar ve sertifikalar Formalie sunucularında şifreli olarak kalır.",
+        "p2": "SSH tüneli: yalnızca veritabanınız özel bir ağdaysa. Sunucusu, kullanıcısı ve anahtarı yalnızca o zaman istenir.",
+        "p3": "Anahtarlar ve sertifikalar, buradaki her şey gibi şifreli saklanır.",
         "postgresql": {
           "p1": "require trafiği şifreler.",
           "p2": "verify-full ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir).",
-          "p3": "verify-ca ve verify-full için CA sertifikasını yapıştırın."
+          "p3": "verify-ca ve verify-full için CA sertifikasını yapıştırın.",
+          "p4": "SSH tüneli: yalnızca veritabanınız özel bir ağdaysa. Sunucusu, kullanıcısı ve anahtarı yalnızca o zaman istenir."
         },
         "mysql": {
           "p1": "Zorunlu, trafiği şifreler.",
           "p2": "Kimliği doğrula ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir).",
-          "p3": "Doğrulama seçenekleri için CA sertifikasını ekleyin."
+          "p3": "Doğrulama seçenekleri için CA sertifikasını ekleyin.",
+          "p4": "SSH tüneli: yalnızca veritabanınız özel bir ağdaysa. Sunucusu, kullanıcısı ve anahtarı yalnızca o zaman istenir."
         },
         "mariadb": {
           "p1": "Zorunlu, trafiği şifreler.",
           "p2": "Kimliği doğrula ayrıca sertifikayı ve ana bilgisayar adını kontrol eder (önerilir).",
-          "p3": "Doğrulama seçenekleri için CA sertifikasını ekleyin."
+          "p3": "Doğrulama seçenekleri için CA sertifikasını ekleyin.",
+          "p4": "SSH tüneli: yalnızca veritabanınız özel bir ağdaysa. Sunucusu, kullanıcısı ve anahtarı yalnızca o zaman istenir."
         },
         "sqlserver": {
           "p1": "Zorunlu, şifreler ve sertifikayı kontrol eder.",
           "p2": "Katı (TDS 8.0), oturum açmadan önce şifreler; SQL Server 2022 ve Azure SQL için.",
-          "p3": "Sertifikaya kontrol etmeden güvenmek yalnızca test içindir."
+          "p3": "Sertifikaya kontrol etmeden güvenmek yalnızca test içindir.",
+          "p4": "SSH tüneli: yalnızca veritabanınız özel bir ağdaysa. Sunucusu, kullanıcısı ve anahtarı yalnızca o zaman istenir."
         },
         "oracle": {
           "p1": "TCPS, TLS ile şifreler ve önerilir.",
           "p2": "TCP ile yerel ağ şifrelemesini her iki tarafta da Zorunlu olarak ayarlayın.",
-          "p3": "TCPS için cüzdanınızdaki (wallet) CA sertifikasını yapıştırın."
+          "p3": "TCPS için cüzdanınızdaki (wallet) CA sertifikasını yapıştırın.",
+          "p4": "SSH tüneli: yalnızca veritabanınız özel bir ağdaysa. Sunucusu, kullanıcısı ve anahtarı yalnızca o zaman istenir."
         }
       },
       "access": {
-        "title": "En az ayrıcalık",
-        "p1": "Yalnızca bu bağlantının kullandığını verin. Daha fazlasına ihtiyaç duyan her özellik size bildirir.",
-        "p2": "Salt okunur, ne istenirse istensin verilerinizi asla değiştiremez.",
-        "p3": "Formalie asla tablo veya sütun silmez.",
-        "p4": "Her sorgu, değişiklik, içe aktarma ve dışa aktarma denetim kaydına yazılır."
+        "title": "Neden bir bağlantı",
+        "p1": "Bağlantı, Formalie’nin yanıtlarınızı sakladığı yerdir: her form için önekinizle adlandırılmış bir tablo.",
+        "p2": "Formalie bunları göstermek için geri okur; yalnızca kendi tablolarında değiştirebilir, silebilir ve sütun ekleyebilir.",
+        "p3": "Verileriniz kendi veritabanınızda kalır, kendi sistemleriniz ve raporlarınız için hazırdır.",
+        "p4": "Diğer tablolarınızı okumak veya değiştirmek isteğe bağlıdır; gezgin, sorgular, seçenek listeleri ve içe aktarmalar için."
       },
       "review": {
         "title": "Test neleri kontrol eder",

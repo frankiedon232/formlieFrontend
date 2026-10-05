@@ -541,7 +541,8 @@
     "FRM-DEST-1008": "Uji koneksi ini sudah tidak tersedia. Jalankan lagi.",
     "FRM-DEST-1009": "Koneksi ini dinonaktifkan. Aktifkan terlebih dahulu.",
     "FRM-DEST-1010": "Masih ada formulir yang mengirim responsnya ke koneksi ini.",
-    "FRM-DEST-1011": "Database terlalu lama merespons."
+    "FRM-DEST-1011": "Database terlalu lama merespons.",
+    "FRM-DEST-1012": "Akun ini tidak dapat membuat atau menggunakan tabel Formalie."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -2881,7 +2882,7 @@
     "add": "Tambah koneksi",
     "search": "Cari koneksi, server, atau database…",
     "emptyTitle": "Belum ada koneksi",
-    "emptyDesc": "Hubungkan salah satu database Anda untuk mengirim data formulir ke sana dan mengelolanya di sini. Sementara itu, penyimpanan bawaan Formalie tetap berjalan.",
+    "emptyDesc": "Hubungkan salah satu database Anda dan Formalie menyimpan respons Anda di sana, dalam tabelnya sendiri, sehingga Anda juga dapat menggunakannya di sistem Anda. Sementara itu, penyimpanan bawaan Formalie tetap berjalan.",
     "notFound": "Koneksi ini tidak tersedia",
     "ms": "{n} md",
     "checked": "Diperiksa {when}",
@@ -3022,12 +3023,12 @@
     "hint": {
       "host": "Nama host atau alamat IP, sebagaimana dijangkau server Formalie. Jaringan privat: gunakan tunnel SSH.",
       "connect_timeout": "Berapa lama menunggu server sebelum menyerah.",
-      "username": "Akun khusus untuk Formalie, jangan pernah akun administrator.",
-      "ca_certificate": "Tempel teks PEM dari otoritas sertifikat yang menandatangani sertifikat server.",
+      "username": "Akun yang digunakan Formalie untuk masuk. Akun apa pun bisa, asalkan memiliki izin dari langkah Akses.",
+      "ca_certificate": "Hanya diperlukan jika Anda memilih opsi yang memverifikasi sertifikat. Tempel teks PEM dari otoritas sertifikat yang menandatangani sertifikat server.",
       "client_certificate": "Hanya jika server meminta sertifikat klien (TLS mutual).",
       "client_key": "Kunci privat untuk sertifikat klien, dalam format PEM.",
-      "ssh": "Untuk database di jaringan privat: Formalie terhubung ke server yang Anda izinkan, yang meneruskan ke database.",
-      "ssh_private_key": "Kunci privat PEM milik pengguna SSH. Gunakan kunci yang dibuat khusus untuk Formalie.",
+      "ssh": "Hanya jika database Anda berada di jaringan privat yang tidak dapat dijangkau Formalie secara langsung. Aktifkan untuk memasukkan server SSH, pengguna, dan kunci; jika tidak, biarkan nonaktif.",
+      "ssh_private_key": "Kunci privat pengguna SSH, dalam format PEM. Hanya diperlukan untuk tunnel, dan disimpan terenkripsi.",
       "time_zone": "Tanggal dikirim dan dibaca dalam zona waktu ini. UTC (+00:00) disarankan.",
       "target_session_attrs": "Untuk klaster: server mana yang boleh digunakan Formalie.",
       "trust_server_certificate": "Tidak disarankan: pihak di tengah dapat membaca lalu lintas. Gunakan hanya untuk pengujian.",
@@ -3123,14 +3124,14 @@
       "taken": "Koneksi dengan nama ini sudah ada."
     },
     "level": {
-      "read": "Baca",
-      "write": "Tulis",
-      "structure": "Struktur"
+      "read": "Membaca tabel Anda yang lain",
+      "write": "Mengubah tabel Anda yang lain",
+      "own": "Tabel Formalie"
     },
     "levelDesc": {
-      "read": "Menjelajahi tabel, membaca baris, mengekspor, menjalankan kueri baca",
-      "write": "Mengirim respons formulir, memperbarui dan menghapus baris, mengimpor",
-      "structure": "Membuat tabel dari formulir, menambah kolom untuk isian baru"
+      "read": "Penjelajah database, kueri, daftar opsi dari data Anda",
+      "write": "Mengedit baris di penjelajah dan mengimpor file ke tabel Anda",
+      "own": "Membuat tabel per formulir, menyimpan respons, menampilkan, mengubahnya, menambah kolom"
     },
     "perm": {
       "needed": "Diperlukan",
@@ -3154,7 +3155,7 @@
       },
       "read_rows": {
         "label": "Membaca baris",
-        "uses": "Menjelajahi dan mengekspor tabel, kueri baca, daftar opsi"
+        "uses": "Menjelajahi dan mengekspor tabel Anda, kueri baca, daftar opsi"
       },
       "cancel": {
         "label": "Membatalkan kuerinya sendiri",
@@ -3162,11 +3163,11 @@
       },
       "insert": {
         "label": "Menambah baris",
-        "uses": "Mengirim respons formulir, impor, baris baru"
+        "uses": "Baris baru dan impor ke tabel Anda"
       },
       "update": {
         "label": "Mengubah baris",
-        "uses": "Perbarui-atau-sisipkan berdasarkan kunci, pengeditan di penjelajah"
+        "uses": "Pengeditan di penjelajah"
       },
       "delete": {
         "label": "Menghapus baris",
@@ -3174,19 +3175,23 @@
       },
       "sequences": {
         "label": "Menggunakan sequence",
-        "uses": "ID yang dibuat otomatis untuk baris baru"
+        "uses": "ID yang dibuat otomatis untuk baris baru di tabel Anda"
       },
       "create_table": {
-        "label": "Membuat tabel",
-        "uses": "Tabel yang dibuat dari formulir"
+        "label": "Membuat tabelnya",
+        "uses": "Satu tabel untuk setiap formulir, dinamai dengan awalan"
       },
       "alter_table": {
         "label": "Menambah kolom",
-        "uses": "Kolom untuk isian yang ditambahkan ke formulir"
+        "uses": "Satu kolom untuk setiap bidang yang ditambahkan ke formulir"
       },
       "create_index": {
         "label": "Menambah kunci unik",
-        "uses": "Kunci yang dicocokkan oleh perbarui-atau-sisipkan"
+        "uses": "Kunci untuk menemukan setiap baris respons"
+      },
+      "own_rows": {
+        "label": "Membaca dan menulis barisnya",
+        "uses": "Menyimpan respons, menampilkan, mengubah, dan menghapusnya"
       }
     },
     "grant": {
@@ -3196,21 +3201,23 @@
       "oracle23": "Oracle 23ai atau lebih baru",
       "oracle23Desc": "Izin per skema. Matikan untuk 19c dan versi sebelumnya (izin per tabel).",
       "block": {
-        "account": "1. Buat akun",
-        "read": "2. Baca",
-        "write": "3. Tulis",
-        "structure": "4. Struktur"
+        "account": "1. Akun (lewati untuk menggunakan akun yang sudah ada)",
+        "read": "3. Membaca tabel Anda yang lain",
+        "write": "4. Mengubah tabel Anda yang lain",
+        "own": "2. Tabel Formalie (wajib)"
       },
       "note": {
         "host_limit": "Jika bisa, ganti '%' dengan alamat Formalie agar akun hanya berfungsi dari sana.",
         "pool": "Formalie membuka paling banyak 10 koneksi sekaligus.",
         "default_privileges": "Jalankan sebagai peran pemilik tabel, agar tabel yang dibuat kemudian juga tercakup.",
-        "owner_alter": "Formalie memiliki tabel yang dibuatnya dan dapat menambah kolom ke tabel tersebut. Tabel yang sudah ada tetap milik Anda.",
         "entra": "Jalankan di database saat masuk dengan akun Microsoft Entra. Namanya adalah pengguna atau aplikasi Entra.",
         "contained": "Di Azure SQL Database, buat contained user sebagai gantinya: CREATE USER ... WITH PASSWORD.",
-        "no_sysdba": "Jangan pernah gunakan SYS, SYSTEM, atau peran SYSDBA untuk Formalie.",
         "oracle_new_tables": "Tabel yang ditambahkan kemudian juga memerlukan izin: jalankan blok ini lagi, atau gunakan izin skema Oracle 23ai.",
-        "oracle_own_schema": "Sebelum 23ai, Formalie membuat tabelnya di skemanya sendiri, sehingga tidak memerlukan hak atas skema Anda."
+        "oracle_own_schema": "Tabel Formalie berada di skema milik akun itu sendiri, sehingga tidak memerlukan hak apa pun atas skema Anda untuk menyimpan respons.",
+        "owner_tables": "Formalie memiliki tabel yang dibuatnya, sehingga dapat membaca, menulis, dan menambah kolom ke tabel tersebut, dan tidak ada yang lain di skema ini.",
+        "own_schema": "Tabel Formalie berada di skema tersendiri yang dimiliki akun. Skema Anda yang lain tidak tersentuh kecuali Anda memberikan lebih di bawah.",
+        "mysql_database": "MySQL dan MariaDB memberikan izin per database, sehingga hak ini juga menjangkau tabel Anda yang lain di dalamnya. Untuk membatasi Formalie pada tabelnya sendiri, berikan database tersendiri.",
+        "mysql_covered": "Tidak ada lagi yang perlu dijalankan: izin untuk tabel Formalie sudah mencakup database ini. Tambahkan database lain di atas untuk memberikan izin di sini."
       }
     },
     "step": {
@@ -3236,7 +3243,8 @@
       "FRM-DEST-1004": "Periksa server SSH, pengguna, dan kunci privat, serta pastikan server SSH dapat menjangkau database.",
       "FRM-DEST-1005": "Periksa nama database (atau layanan), serta pastikan akun memiliki akses ke sana.",
       "FRM-DEST-1006": "Berikan izin yang belum ada di bawah, lalu uji lagi.",
-      "FRM-DEST-1011": "Server tidak merespons tepat waktu. Periksa alamat, firewall, atau naikkan batas waktu di Opsi lainnya."
+      "FRM-DEST-1011": "Server tidak merespons tepat waktu. Periksa alamat, firewall, atau naikkan batas waktu di Opsi lainnya.",
+      "FRM-DEST-1012": "Berikan izin di bawah “Tabel Formalie” pada langkah Akses, lalu uji lagi. Izin ini diperlukan untuk menyimpan respons."
     },
     "test": {
       "heading": {
@@ -3254,14 +3262,6 @@
       "safe": "Pengujian hanya membaca. Data Anda tidak pernah diubah."
     },
     "finding": {
-      "admin_account": {
-        "title": "Ini akun administrator",
-        "desc": "Buat akun khusus dengan hanya izin yang tercantum, agar Formalie tidak pernah bisa melakukan lebih dari yang diperlukan."
-      },
-      "extra_write": {
-        "title": "Akun ini dapat mengubah data",
-        "desc": "Koneksi ini hanya baca, jadi Formalie hanya akan membaca. Untuk hak akses minimum, hapus izin tulisnya."
-      },
       "tls_off": {
         "title": "Lalu lintas tidak dienkripsi",
         "desc": "Pilih opsi yang mengenkripsi di Keamanan agar data dan kata sandi terlindungi selama pengiriman."
@@ -3276,21 +3276,45 @@
       }
     },
     "access": {
-      "legend": "Apa yang boleh dilakukan Formalie",
-      "read_only": "Hanya baca",
-      "read_write": "Baca dan tulis",
-      "readOnlyDesc": "Menjelajahi, mengekspor, dan menjalankan kueri baca. Tidak ada yang bisa berubah di database.",
-      "readWriteDesc": "Juga mengirim respons formulir ke tabel, mengedit baris, dan mengimpor file.",
-      "structure": "Izinkan Formalie membuat tabel dan menambah kolom",
-      "structureDesc": "Untuk tujuan formulir: tabel yang dibuat dari formulir dan kolom untuk setiap isian baru. Tidak pernah menghapus apa pun.",
-      "schemas": "Skema yang boleh digunakan Formalie",
-      "databases": "Database yang boleh digunakan Formalie",
+      "schemas": "Skema dengan tabel Anda yang lain",
+      "databases": "Database dengan tabel Anda yang lain",
       "schemasHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
       "databasesHint": "Tekan Enter setelah setiap entri. Kosong: hanya {schema}.",
       "permissionsTitle": "Izin yang perlu diberikan",
-      "permissionsDesc": "Berikan akun tepat izin ini, tidak lebih, agar setiap fitur berfungsi dan tidak ada hal lain yang mungkin.",
+      "permissionsDesc": "Berikan izin ini ke akun agar setiap fitur berfungsi. Tabel Formalie wajib; sisanya mengikuti pilihan Anda di atas.",
       "tabOperations": "Yang dilakukan Formalie",
-      "tabScript": "Pernyataan untuk dijalankan"
+      "tabScript": "Pernyataan untuk dijalankan",
+      "ownTitle": "Tabel Formalie",
+      "ownDesc": "Formalie membuat satu tabel untuk setiap formulir, menyimpan setiap respons di sana, dan membacanya kembali untuk menampilkannya. Formalie dapat mengubah serta menghapus baris dan menambah kolom, hanya di tabelnya sendiri. Inilah fungsi sebuah koneksi.",
+      "always": "Wajib",
+      "prefix": "Awalan nama tabel",
+      "prefixDesc": "Setiap tabel yang dibuat Formalie diawali dengan ini, misalnya {example}.",
+      "tablesSchema": "Skema untuk tabel Formalie",
+      "tablesDatabase": "Database untuk tabel Formalie",
+      "tablesSchemaDesc": {
+        "postgresql": "Kosong: skema koneksi. Formalie memiliki tabel yang dibuatnya di sana.",
+        "sqlserver": "Skema tersendiri yang dimiliki akun (dibuat oleh pernyataan di bawah).",
+        "oracle": "Skema milik akun itu sendiri, sehingga skema Anda tidak tersentuh.",
+        "mysql": "Database koneksi.",
+        "mariadb": "Database koneksi."
+      },
+      "otherLegend": "Tabel Anda yang lain",
+      "other": {
+        "read_write": "Baca dan tulis",
+        "read": "Hanya baca",
+        "none": "Tidak dibagikan"
+      },
+      "otherDesc": {
+        "read_write": "Menjelajahi, membuat kueri, menggunakan sebagai daftar opsi, mengedit baris, dan mengimpor file.",
+        "read": "Menjelajahi, membuat kueri, dan menggunakan sebagai daftar opsi. Tidak ada yang berubah di dalamnya.",
+        "none": "Formalie hanya menggunakan tabelnya sendiri."
+      },
+      "otherHint": "Opsional, dan tidak diperlukan untuk menyimpan respons. Anda dapat mengubahnya nanti.",
+      "short": {
+        "read_write": "Baca dan tulis lainnya",
+        "read": "Baca lainnya",
+        "none": "Hanya tabel sendiri"
+      }
     },
     "summary": {
       "engine": "Database",
@@ -3298,13 +3322,13 @@
       "database": "Database",
       "account": "Akun",
       "security": "Keamanan",
-      "access": "Akses",
+      "access": "Tabel Anda yang lain",
       "descriptor": "Deskriptor koneksi",
       "encrypted": "Terenkripsi",
       "notEncrypted": "Tidak terenkripsi",
       "ssh": "Tunnel SSH",
-      "structure": "membuat tabel",
-      "change": "Ubah {item}"
+      "change": "Ubah {item}",
+      "tables": "Tabel Formalie"
     },
     "wizard": {
       "newCrumb": "Tambah koneksi",
@@ -3329,15 +3353,15 @@
         "server": "Di mana lokasinya?",
         "signin": "Bagaimana Formalie masuk?",
         "security": "Bagaimana koneksi dilindungi?",
-        "access": "Apa yang boleh dilakukan Formalie?",
+        "access": "Tempat Formalie menyimpan respons Anda",
         "review": "Beri nama dan uji"
       },
       "desc": {
         "engine": "Masing-masing punya pengaturan sendiri. Anda dapat menambahkan yang lain nanti.",
         "server": "Alamat yang digunakan server Formalie untuk menjangkau database {engine} Anda.",
-        "signin": "Gunakan akun yang dibuat untuk Formalie. Kata sandi dienkripsi dan tidak pernah ditampilkan lagi.",
-        "security": "Enkripsi dan, untuk jaringan privat, tunnel SSH.",
-        "access": "Mulailah dengan hanya baca. Izin yang perlu diberikan mengikuti pilihan Anda.",
+        "signin": "Akun apa pun dengan izin dari langkah Akses. Semua yang Anda masukkan dienkripsi sebelum disimpan.",
+        "security": "Enkripsi untuk koneksi, dan tunnel SSH hanya jika database Anda berada di jaringan privat.",
+        "access": "Formalie menyimpan respons ruang kerja ini di sini, dalam tabelnya sendiri. Akses ke tabel Anda yang lain bersifat opsional.",
         "review": "Pengujian dijalankan dari server Formalie dan hanya membaca."
       },
       "name": "Nama",
@@ -3361,7 +3385,7 @@
       "engine": {
         "title": "Yang Anda perlukan",
         "p1": "Alamat dan port server, serta nama database.",
-        "p2": "Akun khusus untuk Formalie. Pernyataan persis untuk membuatnya ada di langkah Akses.",
+        "p2": "Akun untuk Formalie. Langkah Akses menunjukkan dengan tepat izin yang diperlukan, beserta pernyataan untuk memberikannya.",
         "p3": "Alamat Formalie diizinkan di firewall Anda (di bawah).",
         "p4": "Untuk database di jaringan privat: server SSH yang boleh digunakan Formalie."
       },
@@ -3372,53 +3396,58 @@
         "p3": "Hanya jaringan privat? Tambahkan tunnel SSH di langkah Keamanan."
       },
       "signin": {
-        "title": "Akun khusus",
-        "p1": "Jangan pernah gunakan akun administrator. Pengujian akan memperingatkan Anda jika demikian.",
-        "p2": "Langkah Akses menuliskan pernyataan untuk membuat akun dengan izin yang tepat.",
-        "p3": "Kredensial dikirim terenkripsi, disimpan terenkripsi, dan tidak pernah ditampilkan lagi.",
+        "title": "Akun",
+        "p1": "Gunakan akun apa pun yang Anda suka, asalkan memiliki izin yang tercantum di langkah Akses.",
+        "p2": "Langkah Akses juga menuliskan pernyataan untuk membuat akun khusus Formalie, jika Anda lebih suka.",
+        "p3": "Semua yang Anda masukkan dienkripsi sebelum disimpan, dan hanya didekripsi saat Formalie terhubung.",
         "sqlserver": {
           "p1": "Akun SQL Server: login dengan kata sandi.",
-          "p2": "Microsoft Entra ID: pengguna dengan kata sandi, atau aplikasi (service principal) dengan rahasia klien.",
-          "p3": "Langkah Akses menuliskan pernyataan untuk membuat salah satunya dengan izin yang tepat."
+          "p2": "Microsoft Entra ID: pengguna dengan kata sandi, atau aplikasi (service principal) dengan client secret.",
+          "p3": "Semua yang Anda masukkan dienkripsi sebelum disimpan, dan hanya didekripsi saat Formalie terhubung."
         }
       },
       "security": {
         "title": "Melindungi koneksi",
         "p1": "Selalu enkripsi. Memeriksa sertifikat juga membuktikan Anda menjangkau server yang benar.",
-        "p2": "Tunnel SSH menjangkau database privat melalui server yang Anda izinkan.",
-        "p3": "Kunci dan sertifikat tetap tersimpan terenkripsi di server Formalie.",
+        "p2": "Tunnel SSH: hanya jika database Anda berada di jaringan privat. Server, pengguna, dan kuncinya hanya diminta saat itu.",
+        "p3": "Kunci dan sertifikat disimpan terenkripsi, seperti semua hal lain di sini.",
         "postgresql": {
           "p1": "require mengenkripsi lalu lintas.",
           "p2": "verify-full juga memeriksa sertifikat dan nama host (disarankan).",
-          "p3": "Tempel sertifikat CA untuk verify-ca dan verify-full."
+          "p3": "Tempel sertifikat CA untuk verify-ca dan verify-full.",
+          "p4": "Tunnel SSH: hanya jika database Anda berada di jaringan privat. Server, pengguna, dan kuncinya hanya diminta saat itu."
         },
         "mysql": {
           "p1": "Wajib mengenkripsi lalu lintas.",
           "p2": "Verifikasi identitas juga memeriksa sertifikat dan nama host (disarankan).",
-          "p3": "Tambahkan sertifikat CA untuk opsi verifikasi."
+          "p3": "Tambahkan sertifikat CA untuk opsi verifikasi.",
+          "p4": "Tunnel SSH: hanya jika database Anda berada di jaringan privat. Server, pengguna, dan kuncinya hanya diminta saat itu."
         },
         "mariadb": {
           "p1": "Wajib mengenkripsi lalu lintas.",
           "p2": "Verifikasi identitas juga memeriksa sertifikat dan nama host (disarankan).",
-          "p3": "Tambahkan sertifikat CA untuk opsi verifikasi."
+          "p3": "Tambahkan sertifikat CA untuk opsi verifikasi.",
+          "p4": "Tunnel SSH: hanya jika database Anda berada di jaringan privat. Server, pengguna, dan kuncinya hanya diminta saat itu."
         },
         "sqlserver": {
           "p1": "Wajib mengenkripsi dan memeriksa sertifikat.",
           "p2": "Ketat (TDS 8.0) mengenkripsi sebelum masuk, untuk SQL Server 2022 dan Azure SQL.",
-          "p3": "Memercayai sertifikat tanpa memeriksanya hanya untuk pengujian."
+          "p3": "Memercayai sertifikat tanpa memeriksanya hanya untuk pengujian.",
+          "p4": "Tunnel SSH: hanya jika database Anda berada di jaringan privat. Server, pengguna, dan kuncinya hanya diminta saat itu."
         },
         "oracle": {
           "p1": "TCPS mengenkripsi dengan TLS dan disarankan.",
           "p2": "Dengan TCP, atur enkripsi jaringan native ke Wajib di kedua sisi.",
-          "p3": "Tempel sertifikat CA dari wallet Anda untuk TCPS."
+          "p3": "Tempel sertifikat CA dari wallet Anda untuk TCPS.",
+          "p4": "Tunnel SSH: hanya jika database Anda berada di jaringan privat. Server, pengguna, dan kuncinya hanya diminta saat itu."
         }
       },
       "access": {
-        "title": "Hak akses minimum",
-        "p1": "Berikan hanya yang digunakan koneksi ini. Setiap fitur yang memerlukan lebih akan memberi tahu Anda.",
-        "p2": "Hanya baca tidak pernah dapat mengubah data Anda, apa pun yang diminta.",
-        "p3": "Formalie tidak pernah menghapus tabel atau kolom.",
-        "p4": "Setiap kueri, perubahan, impor, dan ekspor dicatat di jejak audit."
+        "title": "Mengapa koneksi",
+        "p1": "Koneksi adalah tempat Formalie menyimpan respons Anda: satu tabel untuk setiap formulir, dinamai dengan awalan Anda.",
+        "p2": "Formalie membacanya kembali untuk menampilkannya, dan dapat mengubah serta menghapus baris dan menambah kolom, hanya di tabelnya sendiri.",
+        "p3": "Data Anda tetap di database Anda, siap untuk sistem dan laporan Anda sendiri.",
+        "p4": "Membaca atau mengubah tabel Anda yang lain bersifat opsional, untuk penjelajah, kueri, daftar opsi, dan impor."
       },
       "review": {
         "title": "Yang diperiksa pengujian",

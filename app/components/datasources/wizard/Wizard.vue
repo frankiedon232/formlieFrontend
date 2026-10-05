@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import type { DataSourceAccessSettings, DataSourceDetail, DataSourceSaveRequest, DataSourceSecrets, DataSourceSettings, DbEngine } from '#shared/types/datasources'
 import { checkConfig, cleanSecrets, databaseNameOf, defaultSettings, type FieldStep } from '#shared/utils/datasources/engines'
+import { DEFAULT_ACCESS } from '#shared/utils/datasources/permissions'
 
 const props = defineProps<{ source?: DataSourceDetail | null }>()
 const emit = defineEmits<{ saved: [source: DataSourceDetail]; dirty: [value: boolean] }>()
@@ -28,7 +29,7 @@ const index = computed(() => steps.value.indexOf(current.value))
 const engine = ref<DbEngine | null>(props.source?.engine ?? null)
 const settings = ref<DataSourceSettings>(props.source ? { ...props.source.settings } : {})
 const secrets = ref<DataSourceSecrets>({})
-const access = ref<DataSourceAccessSettings>(props.source ? { ...props.source.access, schemas: [...props.source.access.schemas] } : { mode: 'read_only', structure: false, schemas: [] })
+const access = ref<DataSourceAccessSettings>(props.source ? { ...props.source.access, schemas: [...props.source.access.schemas] } : { ...DEFAULT_ACCESS })
 const name = ref(props.source?.name ?? '')
 const secretsSet = computed(() => props.source?.secrets_set ?? [])
 const errors = ref<Record<string, string>>({})

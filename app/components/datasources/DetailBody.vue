@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import type { DataSourceDetail } from '#shared/types/datasources'
 import { fieldsFor, isSecretField, type EngineField } from '#shared/utils/datasources/engines'
+import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 
 const props = defineProps<{ source: DataSourceDetail }>()
 const { t } = useI18n()
@@ -98,6 +99,12 @@ const scriptOpen = ref(false)
 
     <section v-show="show('permissions')" class="flex flex-col gap-2">
       <h3 class="text-xs font-semibold tracking-wide text-muted uppercase">{{ t('dataSources.detail.permissions') }}</h3>
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-default px-3 py-2 text-sm">
+        <UIcon name="i-lucide-inbox" class="size-4 shrink-0 text-muted" />
+        <span class="text-muted">{{ t('dataSources.summary.tables') }}</span>
+        <code class="font-mono text-xs text-highlighted" dir="ltr">{{ tablesSchemaOf(source.engine, source.settings, source.access) }}.{{ source.access.table_prefix }}…</code>
+        <UBadge :label="t(`dataSources.access.short.${source.access.other}`)" :icon="OTHER_ICON[source.access.other]" color="neutral" variant="outline" size="sm" class="ms-auto rounded-md" />
+      </div>
       <p class="text-xs text-muted">{{ source.last_test?.finished_at ? t('dataSources.detail.permissionsFrom', { when: relative(source.last_test.finished_at) }) : t('dataSources.detail.permissionsUntested') }}</p>
       <UAlert v-for="finding in source.last_test?.findings ?? []" :key="finding" :icon="finding === 'missing_permissions' ? 'i-lucide-key-round' : 'i-lucide-shield-alert'" color="warning" variant="subtle" :title="t(`dataSources.finding.${finding}.title`)" :description="t(`dataSources.finding.${finding}.desc`)" />
       <DatasourcesPermissionList :engine="source.engine" :access="source.access" :results="source.last_test?.permissions" />

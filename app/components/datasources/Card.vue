@@ -15,7 +15,7 @@ const flagged = computed(() => props.source.status === 'failing' || props.source
 const facts = computed(() => [
   { key: 'address', label: t('dataSources.summary.address'), value: props.source.address, ltr: true },
   { key: 'database', label: t('dataSources.summary.database'), value: props.source.database, ltr: true },
-  { key: 'access', label: t('dataSources.summary.access'), value: t(`dataSources.access.${props.source.access.mode}`) },
+  { key: 'access', label: t('dataSources.summary.access'), value: t(`dataSources.access.other.${props.source.access.other}`) },
   { key: 'latency', label: t('dataSources.kpi.latency'), value: props.source.latency_ms === null ? '–' : t('dataSources.ms', { n: props.source.latency_ms }) },
 ])
 </script>

@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import type { ConnectionTest, DataSourceAccessSettings, DataSourceSettings, DbEngine, TestStepKey } from '#shared/types/datasources'
 import { addressOf, databaseNameOf, isEncrypted } from '#shared/utils/datasources/engines'
+import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 
 const props = defineProps<{ engine: DbEngine; settings: DataSourceSettings; access: DataSourceAccessSettings; test: ConnectionTest | null; starting: boolean; running: boolean; nameError?: string }>()
 const name = defineModel<string>('name', { required: true })
@@ -17,7 +18,8 @@ const rows = computed(() => [
   { key: 'database', step: 'server', icon: 'i-lucide-database', label: t('dataSources.summary.database'), value: databaseNameOf(props.engine, props.settings), ltr: true },
   { key: 'account', step: 'signin', icon: 'i-lucide-user-round', label: t('dataSources.summary.account'), value: String(props.settings.username || props.settings.client_id || ''), ltr: true },
   { key: 'security', step: 'security', icon: isEncrypted(props.engine, props.settings) ? 'i-lucide-lock' : 'i-lucide-lock-open', label: t('dataSources.summary.security'), value: [isEncrypted(props.engine, props.settings) ? t('dataSources.summary.encrypted') : t('dataSources.summary.notEncrypted'), props.settings.ssh ? t('dataSources.summary.ssh') : null].filter(Boolean).join(' · ') },
-  { key: 'access', step: 'access', icon: props.access.mode === 'read_only' ? 'i-lucide-eye' : 'i-lucide-pencil-line', label: t('dataSources.summary.access'), value: [t(`dataSources.access.${props.access.mode}`), props.access.structure ? t('dataSources.summary.structure') : null].filter(Boolean).join(' · ') },
+  { key: 'tables', step: 'access', icon: 'i-lucide-inbox', label: t('dataSources.summary.tables'), value: `${tablesSchemaOf(props.engine, props.settings, props.access)}.${props.access.table_prefix}…`, ltr: true },
+  { key: 'access', step: 'access', icon: OTHER_ICON[props.access.other], label: t('dataSources.summary.access'), value: t(`dataSources.access.other.${props.access.other}`) },
 ])
 const STEP_OF: Record<TestStepKey, string> = { network: 'server', ssh: 'security', tls: 'security', sign_in: 'signin', database: 'server', permissions: 'access' }
 const failedStep = computed(() => props.test?.steps.find(step => step.status === 'failed' || (step.key === 'permissions' && step.status === 'warning')))
