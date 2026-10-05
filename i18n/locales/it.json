@@ -4956,7 +4956,8 @@
         "byKind": "Query salvate per effetto",
         "sharedCount": "{n} condivise"
       }
-    }
+    },
+    "exportResult": "Il risultato ({n} riga) | Il risultato ({n} righe)"
   },
   "dataActivity": {
     "kind": {

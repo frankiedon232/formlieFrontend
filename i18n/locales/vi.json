@@ -4956,7 +4956,8 @@
         "byKind": "Truy vấn đã lưu theo chức năng",
         "sharedCount": "{n} đã chia sẻ"
       }
-    }
+    },
+    "exportResult": "Kết quả ({n} hàng) | Kết quả ({n} hàng)"
   },
   "dataActivity": {
     "kind": {

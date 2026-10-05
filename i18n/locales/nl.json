@@ -4956,7 +4956,8 @@
         "byKind": "Opgeslagen query’s naar wat ze doen",
         "sharedCount": "{n} gedeeld"
       }
-    }
+    },
+    "exportResult": "Het resultaat ({n} rij) | Het resultaat ({n} rijen)"
   },
   "dataActivity": {
     "kind": {

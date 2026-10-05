@@ -4956,7 +4956,8 @@
         "byKind": "動作別の保存済みクエリ",
         "sharedCount": "{n} 件共有"
       }
-    }
+    },
+    "exportResult": "結果（{n} 行） | 結果（{n} 行）"
   },
   "dataActivity": {
     "kind": {

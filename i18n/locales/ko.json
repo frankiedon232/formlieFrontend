@@ -4956,7 +4956,8 @@
         "byKind": "동작별 저장된 쿼리",
         "sharedCount": "{n}개 공유됨"
       }
-    }
+    },
+    "exportResult": "결과({n}행) | 결과({n}행)"
   },
   "dataActivity": {
     "kind": {

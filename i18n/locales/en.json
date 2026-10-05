@@ -4956,7 +4956,8 @@
         "byKind": "Saved queries by what they do",
         "sharedCount": "{n} shared"
       }
-    }
+    },
+    "exportResult": "The result ({n} row) | The result ({n} rows)"
   },
   "dataActivity": {
     "kind": {

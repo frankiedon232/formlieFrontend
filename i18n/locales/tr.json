@@ -4956,7 +4956,8 @@
         "byKind": "İşlevine göre kayıtlı sorgular",
         "sharedCount": "{n} paylaşılan"
       }
-    }
+    },
+    "exportResult": "Sonuç ({n} satır) | Sonuç ({n} satır)"
   },
   "dataActivity": {
     "kind": {

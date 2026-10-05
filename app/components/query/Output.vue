@@ -5,12 +5,13 @@
 -->
 <script setup lang="ts">
 import type { TableExport } from '#shared/types/explorer'
+import { EXPORT_MAX_ROWS } from '#shared/utils/datasources/exportFormats'
 const props = defineProps<{ state: RunState; sourceId: string | null }>()
 const emit = defineEmits<{ page: [page: number]; line: [line: number] }>()
 const { t } = useI18n()
 const { number } = useFormat()
 const api = useApi()
-// Export: the same statement again on the server, this page or up to 5,000 rows (never from the browser's copy)
+// Export the result (owner 2026-10-05): the same statement again on the server, all its rows up to 5,000 (never the browser's copy)
 const exportResults = async (format: TableExport['format'], scope: TableExport['scope']) =>
   (await api.post<TableExport>(`/datasources/${props.sourceId}/query/export`, { sql: props.state.last!.text, params: props.state.last!.params, format, scope, page: props.state.result!.page, page_size: props.state.result!.page_size })).data
 </script>
@@ -30,7 +31,7 @@ const exportResults = async (format: TableExport['format'], scope: TableExport['
       <div class="flex min-h-0 flex-1 flex-col transition-opacity" :class="state.running ? 'opacity-60' : ''">
         <QueryResults v-if="state.result.kind === 'read'" :result="state.result" @page="page => emit('page', page)">
           <template #actions>
-            <ExplorerExportButton v-if="sourceId && state.last && state.result.rows.length" :source-id="sourceId" :page-rows="state.result.rows.length" :create="exportResults" :formats="['xlsx', 'csv', 'json']" size="xs" />
+            <ExplorerExportButton v-if="sourceId && state.last && state.result.rows.length" :source-id="sourceId" :page-rows="state.result.rows.length" :create="exportResults" :formats="['xlsx', 'csv', 'json']" :result-label="t('query.exportResult', { n: number(Math.min(state.result.total ?? 0, EXPORT_MAX_ROWS)) }, Math.min(state.result.total ?? 0, EXPORT_MAX_ROWS))" size="xs" />
           </template>
         </QueryResults>
         <AppEmpty

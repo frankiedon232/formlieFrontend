@@ -4956,7 +4956,8 @@
         "byKind": "Gespeicherte Abfragen nach Wirkung",
         "sharedCount": "{n} geteilt"
       }
-    }
+    },
+    "exportResult": "Das Ergebnis ({n} Zeile) | Das Ergebnis ({n} Zeilen)"
   },
   "dataActivity": {
     "kind": {

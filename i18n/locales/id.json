@@ -4956,7 +4956,8 @@
         "byKind": "Kueri tersimpan menurut fungsinya",
         "sharedCount": "{n} dibagikan"
       }
-    }
+    },
+    "exportResult": "Hasil ({n} baris) | Hasil ({n} baris)"
   },
   "dataActivity": {
     "kind": {

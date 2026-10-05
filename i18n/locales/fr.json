@@ -4956,7 +4956,8 @@
         "byKind": "Requêtes enregistrées selon leur effet",
         "sharedCount": "{n} partagées"
       }
-    }
+    },
+    "exportResult": "Le résultat ({n} ligne) | Le résultat ({n} lignes)"
   },
   "dataActivity": {
     "kind": {

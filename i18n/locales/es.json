@@ -4956,7 +4956,8 @@
         "byKind": "Consultas guardadas según lo que hacen",
         "sharedCount": "{n} compartidas"
       }
-    }
+    },
+    "exportResult": "El resultado ({n} fila) | El resultado ({n} filas)"
   },
   "dataActivity": {
     "kind": {

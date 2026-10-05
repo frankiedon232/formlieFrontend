@@ -4956,7 +4956,8 @@
         "byKind": "按作用划分的已保存查询",
         "sharedCount": "{n} 个已共享"
       }
-    }
+    },
+    "exportResult": "结果（{n} 行） | 结果（{n} 行）"
   },
   "dataActivity": {
     "kind": {

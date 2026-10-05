@@ -20,9 +20,11 @@ const props = withDefaults(
     /** Make the file another way (the Query editor exports a statement's results). */
     create?: (format: TableExport['format'], scope: TableExport['scope']) => Promise<TableExport>
     formats?: TableExport['format'][]
+    /** Only one choice: the whole result (the Query editor), labelled with this. */
+    resultLabel?: string
     size?: 'xs' | 'sm' | 'md'
   }>(),
-  { schema: '', table: '', params: () => ({}), filtered: false, create: undefined, formats: () => ['xlsx', 'csv', 'json', 'sql'], size: 'md' },
+  { schema: '', table: '', params: () => ({}), filtered: false, create: undefined, formats: () => ['xlsx', 'csv', 'json', 'sql'], size: 'md', resultLabel: undefined },
 )
 const { t } = useI18n()
 const api = useApi()
@@ -62,7 +64,7 @@ async function start(format: TableExport['format'], scope: TableExport['scope'] 
 defineExpose({ start, running })
 const FORMATS = { xlsx: ['responses.export.format.xlsx', 'i-lucide-file-spreadsheet'], csv: ['responses.export.format.csv', 'i-lucide-file-text'], json: ['explorer.exportJson', 'i-lucide-file-json'], sql: ['explorer.exportSql', 'i-lucide-file-code'] } as const
 const formats = (scope: TableExport['scope']) => props.formats.map(format => ({ label: t(FORMATS[format][0]), icon: FORMATS[format][1], onSelect: () => void start(format, scope) }))
-const items = computed(() => [
+const items = computed(() => props.resultLabel ? [[{ type: 'label' as const, label: props.resultLabel }, ...formats('all')]] : [
   [{ type: 'label' as const, label: t('explorer.exportPage', { n: number(props.pageRows) }, props.pageRows) }, ...formats('page')],
   [{ type: 'label' as const, label: props.filtered ? t('explorer.exportMatching', { max: number(EXPORT_MAX_ROWS) }) : t('explorer.exportAllRows', { max: number(EXPORT_MAX_ROWS) }) }, ...formats('all')],
 ])

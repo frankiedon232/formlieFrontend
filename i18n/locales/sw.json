@@ -4956,7 +4956,8 @@
         "byKind": "Hoja zilizohifadhiwa kwa kazi zake",
         "sharedCount": "Zilizoshirikiwa: {n}"
       }
-    }
+    },
+    "exportResult": "Matokeo (safu {n}) | Matokeo (safu {n})"
   },
   "dataActivity": {
     "kind": {

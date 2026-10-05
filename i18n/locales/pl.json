@@ -4956,7 +4956,8 @@
         "byKind": "Zapisane zapytania według działania",
         "sharedCount": "Udostępnione: {n}"
       }
-    }
+    },
+    "exportResult": "Wynik (wiersze: {n}) | Wynik (wiersze: {n})"
   },
   "dataActivity": {
     "kind": {
