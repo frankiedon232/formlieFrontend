@@ -3484,7 +3484,9 @@
       "ready": "Uw bestand is klaar",
       "kept": "Bewaard in Reacties → Exports, wordt {when} verwijderd.",
       "download": "Downloaden",
-      "allExports": "Alle exports"
+      "allExports": "Alle exports",
+      "form": "Formulier",
+      "pickForm": "Kies een formulier"
     },
     "exports": {
       "subtitle": "Uw reactiebestanden, 7 dagen bewaard",
@@ -3519,7 +3521,9 @@
         "ready": "Klaar",
         "expired": "Verlopen",
         "failed": "Mislukt"
-      }
+      },
+      "new": "Nieuwe export",
+      "exportForm": "Reacties exporteren"
     },
     "glance": {
       "inPeriod": "In deze periode",

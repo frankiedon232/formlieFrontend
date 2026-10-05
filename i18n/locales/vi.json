@@ -3484,7 +3484,9 @@
       "ready": "Tệp của bạn đã sẵn sàng",
       "kept": "Lưu trong Phản hồi → Bản xuất, sẽ bị xoá {when}.",
       "download": "Tải xuống",
-      "allExports": "Tất cả bản xuất"
+      "allExports": "Tất cả bản xuất",
+      "form": "Biểu mẫu",
+      "pickForm": "Chọn biểu mẫu"
     },
     "exports": {
       "subtitle": "Tệp phản hồi của bạn, lưu 7 ngày",
@@ -3519,7 +3521,9 @@
         "ready": "Sẵn sàng",
         "expired": "Hết hạn",
         "failed": "Thất bại"
-      }
+      },
+      "new": "Bản xuất mới",
+      "exportForm": "Xuất phản hồi"
     },
     "glance": {
       "inPeriod": "Trong kỳ này",

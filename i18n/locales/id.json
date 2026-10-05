@@ -3484,7 +3484,9 @@
       "ready": "File Anda siap",
       "kept": "Disimpan di Respons → Ekspor, dihapus {when}.",
       "download": "Unduh",
-      "allExports": "Semua ekspor"
+      "allExports": "Semua ekspor",
+      "form": "Formulir",
+      "pickForm": "Pilih formulir"
     },
     "exports": {
       "subtitle": "File respons Anda, disimpan 7 hari",
@@ -3519,7 +3521,9 @@
         "ready": "Siap",
         "expired": "Kedaluwarsa",
         "failed": "Gagal"
-      }
+      },
+      "new": "Ekspor baru",
+      "exportForm": "Ekspor respons"
     },
     "glance": {
       "inPeriod": "Dalam periode ini",

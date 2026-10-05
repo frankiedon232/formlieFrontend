@@ -3484,7 +3484,9 @@
       "ready": "Dosyanız hazır",
       "kept": "Yanıtlar → Dışa aktarımlar'da saklanır, {when} silinir.",
       "download": "İndir",
-      "allExports": "Tüm dışa aktarımlar"
+      "allExports": "Tüm dışa aktarımlar",
+      "form": "Form",
+      "pickForm": "Bir form seçin"
     },
     "exports": {
       "subtitle": "Yanıt dosyalarınız, 7 gün saklanır",
@@ -3519,7 +3521,9 @@
         "ready": "Hazır",
         "expired": "Süresi doldu",
         "failed": "Başarısız"
-      }
+      },
+      "new": "Yeni dışa aktarım",
+      "exportForm": "Yanıtları dışa aktar"
     },
     "glance": {
       "inPeriod": "Bu dönemde",

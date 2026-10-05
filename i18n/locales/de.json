@@ -3484,7 +3484,9 @@
       "ready": "Ihre Datei ist fertig",
       "kept": "Unter Antworten → Exporte gespeichert, wird {when} entfernt.",
       "download": "Herunterladen",
-      "allExports": "Alle Exporte"
+      "allExports": "Alle Exporte",
+      "form": "Formular",
+      "pickForm": "Formular wählen"
     },
     "exports": {
       "subtitle": "Ihre Antwortdateien, 7 Tage aufbewahrt",
@@ -3519,7 +3521,9 @@
         "ready": "Bereit",
         "expired": "Abgelaufen",
         "failed": "Fehlgeschlagen"
-      }
+      },
+      "new": "Neuer Export",
+      "exportForm": "Antworten exportieren"
     },
     "glance": {
       "inPeriod": "In diesem Zeitraum",

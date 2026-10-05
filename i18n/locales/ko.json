@@ -3484,7 +3484,9 @@
       "ready": "파일이 준비되었습니다",
       "kept": "응답 → 내보내기에 보관되며 {when} 삭제됩니다.",
       "download": "다운로드",
-      "allExports": "모든 내보내기"
+      "allExports": "모든 내보내기",
+      "form": "양식",
+      "pickForm": "양식 선택"
     },
     "exports": {
       "subtitle": "응답 파일, 7일간 보관",
@@ -3519,7 +3521,9 @@
         "ready": "준비됨",
         "expired": "만료됨",
         "failed": "실패"
-      }
+      },
+      "new": "새 내보내기",
+      "exportForm": "응답 내보내기"
     },
     "glance": {
       "inPeriod": "이 기간",

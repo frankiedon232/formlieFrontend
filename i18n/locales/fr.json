@@ -3484,7 +3484,9 @@
       "ready": "Votre fichier est prêt",
       "kept": "Conservé dans Réponses → Exports, supprimé {when}.",
       "download": "Télécharger",
-      "allExports": "Tous les exports"
+      "allExports": "Tous les exports",
+      "form": "Formulaire",
+      "pickForm": "Choisissez un formulaire"
     },
     "exports": {
       "subtitle": "Vos fichiers de réponses, conservés 7 jours",
@@ -3519,7 +3521,9 @@
         "ready": "Prêt",
         "expired": "Expiré",
         "failed": "Échec"
-      }
+      },
+      "new": "Nouvel export",
+      "exportForm": "Exporter les réponses"
     },
     "glance": {
       "inPeriod": "Sur cette période",

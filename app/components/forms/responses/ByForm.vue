@@ -61,7 +61,15 @@ const rowActions = (row: ResponseFormRow): DropdownMenuItem[][] => [
     { label: t('responses.tabs.summary'), icon: 'i-lucide-chart-no-axes-combined', to: `/forms/${row.id}/responses?view=insights` },
     { label: t('responses.byForm.openForm'), icon: 'i-lucide-file-text', to: `/forms/${row.id}` },
   ],
+  [{ label: t('responses.exports.exportForm'), icon: 'i-lucide-file-down', onSelect: () => openExport(row) }],
 ]
+// Export a form's responses from here (owner 2026-10-05: export must be easy to find).
+const exporting = ref<ResponseFormRow | null>(null)
+const exportOpen = ref(false)
+function openExport(row: ResponseFormRow) {
+  exporting.value = row
+  exportOpen.value = true
+}
 const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.status_counts.new) / row.total : 0)
 </script>
 
@@ -125,4 +133,5 @@ const reviewedShare = (row: ResponseFormRow) => (row.total ? (row.total - row.st
       <FormsResponsesFormCard :row="row" :actions="rowActions(row)" :focus="focus" :to="target(row)" />
     </template>
   </DataView>
+  <FormsResponsesExportModal v-model:open="exportOpen" :form-id="exporting?.id" :total="exporting?.total ?? 0" />
 </template>

@@ -3484,7 +3484,9 @@
       "ready": "ファイルの準備ができました",
       "kept": "回答 → エクスポートに保存され、{when}に削除されます。",
       "download": "ダウンロード",
-      "allExports": "すべてのエクスポート"
+      "allExports": "すべてのエクスポート",
+      "form": "フォーム",
+      "pickForm": "フォームを選択"
     },
     "exports": {
       "subtitle": "回答ファイル（7 日間保存）",
@@ -3519,7 +3521,9 @@
         "ready": "準備完了",
         "expired": "期限切れ",
         "failed": "失敗"
-      }
+      },
+      "new": "新しいエクスポート",
+      "exportForm": "回答をエクスポート"
     },
     "glance": {
       "inPeriod": "この期間",

@@ -3484,7 +3484,9 @@
       "ready": "文件已就绪",
       "kept": "保存在 回复 → 导出，{when}删除。",
       "download": "下载",
-      "allExports": "全部导出"
+      "allExports": "全部导出",
+      "form": "表单",
+      "pickForm": "选择表单"
     },
     "exports": {
       "subtitle": "你的回复文件，保留 7 天",
@@ -3519,7 +3521,9 @@
         "ready": "就绪",
         "expired": "已过期",
         "failed": "失败"
-      }
+      },
+      "new": "新建导出",
+      "exportForm": "导出回复"
     },
     "glance": {
       "inPeriod": "本期",

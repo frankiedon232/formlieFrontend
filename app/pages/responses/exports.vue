@@ -4,6 +4,7 @@
   format, which responses, rows, state, who made it, when, available until. Filter by format and
   state, search by file or form. A ready file downloads over a one-time private link; files are
   kept 7 days; remove deletes one for good. Exports being made update in the background.
+  "New export" (owner 2026-10-05) starts one here: pick the form, then the usual export dialog.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
@@ -88,12 +89,14 @@ const rowActions = (item: ResponseExport): DropdownMenuItem[][] => [
   [{ label: t('responses.exports.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(item) }],
 ]
 const openRow = (item: ResponseExport) => (item.status === 'ready' ? void download(item) : undefined)
+const newOpen = ref(false)
 </script>
 
 <template>
   <AppPanel id="responses-exports" :title="t('nav.responsesExports')" :subtitle="t('responses.exports.subtitle')" subtitle-icon="i-lucide-file-down">
     <template #actions>
       <UButton :label="t('nav.responses')" icon="i-lucide-inbox" color="neutral" variant="outline" to="/responses" />
+      <UButton :label="t('responses.exports.new')" icon="i-lucide-file-plus" color="neutral" @click="newOpen = true" />
     </template>
 
     <DataView
@@ -147,11 +150,13 @@ const openRow = (item: ResponseExport) => (item.status === 'ready' ? void downlo
         <span class="whitespace-nowrap" :class="row.original.status === 'expired' ? 'text-dimmed' : 'text-muted'">{{ row.original.status === 'expired' ? t('responses.exports.status.expired') : relative(row.original.expires_at) }}</span>
       </template>
       <template #empty-actions>
-        <UButton :label="t('nav.responses')" icon="i-lucide-inbox" color="neutral" to="/responses" />
+        <UButton :label="t('nav.responses')" icon="i-lucide-inbox" color="neutral" variant="outline" to="/responses" />
+        <UButton :label="t('responses.exports.new')" icon="i-lucide-file-plus" color="neutral" @click="newOpen = true" />
       </template>
       <template #grid-card="{ row }">
         <FormsResponsesExportCard :item="row" :actions="rowActions(row)" :busy="busyIds.has(row.id)" @download="download(row)" />
       </template>
     </DataView>
+    <FormsResponsesExportModal v-model:open="newOpen" @created="view?.refresh()" />
   </AppPanel>
 </template>
