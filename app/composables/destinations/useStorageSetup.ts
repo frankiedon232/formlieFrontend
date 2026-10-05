@@ -23,7 +23,8 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
   const tableName = ref(input.destination?.table.name ?? '')
   const existingKey = ref<string | null>(input.destination && !input.destination.table.created ? `${input.destination.table.schema}.${input.destination.table.name}` : null)
   const settings = ref<DestinationSettings>(input.destination ? { ...input.destination.settings } : { write_mode: 'insert', key_column: 'response_id', multi_value: 'json', choices: 'value' })
-  const extraMeta = ref<MetaColumn[]>([])
+  // Response number and review status by default (how people refer to responses; what their systems act on); the respondent's email is personal data, so opt-in.
+  const extraMeta = ref<MetaColumn[]>(['response_number', 'review_status'])
   const skipped = ref<string[]>([])
   const manual = ref<DestinationColumn[] | null>(input.destination ? input.destination.columns.map(column => ({ ...column })) : null)
 

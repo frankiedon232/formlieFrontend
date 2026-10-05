@@ -1225,3 +1225,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Owner: the table name's prefix is a fixed label attached to the field; people type only the rest (at least 6 characters, letters, numbers and underscores, within the engine's limit), checked in the form and on the server. Short form names get "_responses" in the suggestion. |
 | 2026-10-05 | F12 | Owner: column names of tables Formalie creates are fixed (from the question keys); readable names come from the view. Answers can still be left out. |
 | 2026-10-05 | F12 | Owner: how several values and choices are written is chosen at setup and locked afterwards (UI and API), so every row stays alike. |
+| 2026-10-05 | F12 | New response tables store the response number and review status by default; the respondent's email stays opt-in (personal data). |
