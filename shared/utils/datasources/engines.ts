@@ -103,7 +103,7 @@ export const ENGINE_FIELDS: Record<DbEngine, EngineField[]> = {
   ],
   sqlserver: [
     host(),
-    { key: 'instance', step: 'server', type: 'text', half: true, placeholder: 'SQLEXPRESS', format: 'identifier' },
+    { key: 'instance', step: 'server', type: 'text', half: true, placeholder: 'PROD01', format: 'identifier' },
     port(1433),
     { key: 'database', step: 'server', type: 'text', required: true, half: true, placeholder: 'People' },
     { key: 'application_intent', step: 'server', type: 'select', options: ['read_write', 'read_only'], default: 'read_write', advanced: true, half: true },

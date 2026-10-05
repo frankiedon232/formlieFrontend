@@ -5,6 +5,8 @@ import type { EngineField } from '#shared/utils/datasources/engines'
 const props = defineProps<{ field: EngineField; label: string; hint?: string; error?: string; items: { value: string; label: string }[]; saved: boolean; value: unknown; shown: boolean }>()
 const emit = defineEmits<{ update: [value: unknown]; toggle: []; file: [] }>()
 const { t } = useI18n()
+// Optional text, secret and certificate fields say so beside their label (e.g. SQL Server's instance name).
+const optional = computed(() => !props.field.required && ['text', 'secret', 'certificate'].includes(props.field.type))
 const wide = computed(() => !props.field.half || props.field.type === 'certificate' || props.field.type === 'switch')
 const technical = computed(() => ['host', 'port', 'pem', 'uuid', 'identifier'].includes(props.field.format ?? '') || ['username', 'database', 'descriptor', 'service_name', 'instance', 'time_zone'].includes(props.field.key))
 </script>
@@ -12,7 +14,7 @@ const technical = computed(() => ['host', 'port', 'pem', 'uuid', 'identifier'].i
 <template>
   <div :class="wide ? 'sm:col-span-2' : ''">
     <USwitch v-if="field.type === 'switch'" :model-value="!!value" :label="label" :description="hint" @update:model-value="emit('update', $event)" />
-    <UFormField v-else :label="label" :name="field.key" :description="field.type === 'certificate' ? undefined : hint" :help="field.type === 'certificate' ? hint : undefined" :error="error" :required="field.required && !saved">
+    <UFormField v-else :label="label" :name="field.key" :description="field.type === 'certificate' ? undefined : hint" :help="field.type === 'certificate' ? hint : undefined" :error="error" :required="field.required && !saved" :hint="optional ? t('onboarding.optional') : undefined">
       <USelect v-if="field.type === 'select'" :model-value="String(value ?? '')" :items="items" value-key="value" class="w-full" @update:model-value="emit('update', $event)" />
       <UInput
         v-else-if="field.type === 'secret'"
