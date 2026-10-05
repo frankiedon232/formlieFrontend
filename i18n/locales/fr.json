@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "Réponses enregistrées dans {name}",
-      "formalie": "Réponses enregistrées dans Formalie"
+      "database": "Réponses enregistrées dans {name}"
     }
   }
 }

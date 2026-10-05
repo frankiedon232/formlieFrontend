@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "Yanıtlar {name} içinde saklanıyor",
-      "formalie": "Yanıtlar Formalie içinde saklanıyor"
+      "database": "Yanıtlar {name} içinde saklanıyor"
     }
   }
 }

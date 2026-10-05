@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "Câu trả lời được lưu trong {name}",
-      "formalie": "Câu trả lời được lưu trong Formalie"
+      "database": "Câu trả lời được lưu trong {name}"
     }
   }
 }

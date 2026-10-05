@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "जवाब {name} में सहेजे गए",
-      "formalie": "जवाब Formalie में सहेजे गए"
+      "database": "जवाब {name} में सहेजे गए"
     }
   }
 }

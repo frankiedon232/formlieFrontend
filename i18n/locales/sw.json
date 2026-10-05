@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "Majibu yamehifadhiwa katika {name}",
-      "formalie": "Majibu yamehifadhiwa katika Formalie"
+      "database": "Majibu yamehifadhiwa katika {name}"
     }
   }
 }

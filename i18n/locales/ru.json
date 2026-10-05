@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "Ответы хранятся в {name}",
-      "formalie": "Ответы хранятся в Formalie"
+      "database": "Ответы хранятся в {name}"
     }
   }
 }

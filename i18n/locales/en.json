@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "Responses stored in {name}",
-      "formalie": "Responses stored in Formalie"
+      "database": "Responses stored in {name}"
     }
   }
 }

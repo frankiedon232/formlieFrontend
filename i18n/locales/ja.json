@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "回答の保存先: {name}",
-      "formalie": "回答の保存先: Formalie"
+      "database": "回答の保存先: {name}"
     }
   }
 }

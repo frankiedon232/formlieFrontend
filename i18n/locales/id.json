@@ -4569,8 +4569,7 @@
       }
     },
     "mark": {
-      "database": "Respons disimpan di {name}",
-      "formalie": "Respons disimpan di Formalie"
+      "database": "Respons disimpan di {name}"
     }
   }
 }
