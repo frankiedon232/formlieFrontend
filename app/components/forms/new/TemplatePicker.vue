@@ -65,7 +65,7 @@ const shown = computed(() => {
           <span class="size-2 shrink-0 rounded-[1px]" :class="categoryOf(card.category)?.dot" aria-hidden="true" />
         </span>
       </button>
-      <p v-if="!shown.length" class="col-span-full py-6 text-center text-sm text-muted">{{ t('templates.emptyTitle') }}</p>
+      <AppEmpty v-if="!shown.length" size="sm" icon="i-lucide-search-x" class="col-span-full" :title="t('templates.emptyTitle')" />
     </div>
   </div>
 </template>

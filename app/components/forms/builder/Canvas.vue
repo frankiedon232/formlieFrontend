@@ -208,7 +208,10 @@ const afterDrop = () => page.value && builder.normaliseRows(page.value)
         class="pointer-events-none -mt-28 flex flex-col items-center gap-3 rounded-lg border border-dashed border-default px-4 py-10 text-center"
       >
         <!-- Lets drags pass through to the drop area underneath; only the buttons take clicks. -->
-        <UIcon name="i-lucide-mouse-pointer-click" class="size-6 text-muted" />
+        <!-- The same layered tile as every empty state (AppEmpty) -->
+        <span class="flex size-14 items-center justify-center rounded-2xl border border-dashed border-accented" aria-hidden="true">
+          <span class="flex size-10 items-center justify-center rounded-xl border border-default bg-default shadow-sm"><UIcon name="i-lucide-mouse-pointer-click" class="size-5 text-highlighted" /></span>
+        </span>
         <div>
           <p class="font-medium text-highlighted">{{ t('builder.empty.title') }}</p>
           <p class="text-sm text-muted">{{ t('builder.empty.desc') }}</p>

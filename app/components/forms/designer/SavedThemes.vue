@@ -31,7 +31,7 @@ async function apply(saved: SavedTheme) {
     <div v-if="library.loading.value && !library.loaded.value" class="grid grid-cols-2 gap-2" :aria-label="t('common.loading')">
       <USkeleton v-for="i in 2" :key="i" class="h-24" />
     </div>
-    <p v-else-if="!library.themes.value.length" class="text-xs text-muted">{{ t('themes.noneYet') }}</p>
+    <AppEmpty v-else-if="!library.themes.value.length" size="xs" icon="i-lucide-palette" :title="t('themes.noneYet')" />
     <div v-else class="grid max-h-64 grid-cols-2 gap-2 overflow-y-auto">
       <button
         v-for="saved in library.themes.value"

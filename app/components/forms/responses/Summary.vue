@@ -11,7 +11,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <UEmpty
+  <AppEmpty
     v-if="!insights.period.count"
     icon="i-lucide-chart-no-axes-column"
     :title="t('responses.summary.empty')"

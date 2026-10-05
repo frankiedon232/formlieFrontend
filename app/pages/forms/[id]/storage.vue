@@ -52,7 +52,7 @@ onBeforeRouteLeave(async () => (!dirty.value || done.value ? true : await confir
     <template #actions>
       <UButton :label="t('common.cancel')" icon="i-lucide-x" color="neutral" variant="outline" :to="`/forms/${formId}`" />
     </template>
-    <UEmpty
+    <AppEmpty
       v-if="failed"
       icon="i-lucide-cloud-alert"
       :title="t('dataView.errorTitle')"
@@ -66,8 +66,8 @@ onBeforeRouteLeave(async () => (!dirty.value || done.value ? true : await confir
       <USkeleton class="h-[28rem] rounded-lg" />
       <USkeleton class="h-48 rounded-lg" />
     </div>
-    <UEmpty v-else-if="!storage.can_manage" icon="i-lucide-shield" :title="t('destinations.adminsOnly')" :description="t('destinations.adminsOnlyDesc')" :actions="[{ label: t('common.back'), icon: 'i-lucide-arrow-left', to: `/forms/${formId}`, color: 'neutral', variant: 'outline', class: 'rtl:[&_.iconify]:-scale-x-100' }]" class="my-auto" />
-    <UEmpty v-else-if="!storage.fields.length" icon="i-lucide-file-question" :title="t('destinations.noFields')" :description="t('destinations.noFieldsDesc')" :actions="[{ label: t('forms.detail.edit'), icon: 'i-lucide-pencil-ruler', to: `/forms/${formId}/build`, color: 'neutral' }]" class="my-auto" />
+    <AppEmpty v-else-if="!storage.can_manage" icon="i-lucide-shield" :title="t('destinations.adminsOnly')" :description="t('destinations.adminsOnlyDesc')" :actions="[{ label: t('common.back'), icon: 'i-lucide-arrow-left', to: `/forms/${formId}`, color: 'neutral', variant: 'outline', class: 'rtl:[&_.iconify]:-scale-x-100' }]" class="my-auto" />
+    <AppEmpty v-else-if="!storage.fields.length" icon="i-lucide-file-question" :title="t('destinations.noFields')" :description="t('destinations.noFieldsDesc')" :actions="[{ label: t('forms.detail.edit'), icon: 'i-lucide-pencil-ruler', to: `/forms/${formId}/build`, color: 'neutral' }]" class="my-auto" />
     <DestinationsSetup v-else :form-id="formId" :form-name="formName" :fields="storage.fields" :destination="destination" @saved="saved" @dirty="value => (dirty = value)" />
   </AppPanel>
 </template>

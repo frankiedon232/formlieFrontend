@@ -90,7 +90,7 @@ async function duplicate() {
       </div>
     </div>
 
-    <UEmpty
+    <AppEmpty
       v-else-if="notFound"
       icon="i-lucide-layout-template"
       :title="t('templates.notFound')"

@@ -123,7 +123,7 @@ function edit(field: FormField) {
         </div>
       </dl>
     </div>
-    <UEmpty v-if="!shown.length" icon="i-lucide-filter-x" :title="t('responses.detail.nothingHere')" variant="naked" size="sm" />
+    <AppEmpty v-if="!shown.length" icon="i-lucide-filter-x" :title="t('responses.detail.nothingHere')" variant="naked" size="sm" />
     <FormsResponsesEditAnswer v-if="response.can.edit" v-model:open="editOpen" :response="response" :field="editing" @saved="value => emit('updated', value)" />
   </section>
 </template>

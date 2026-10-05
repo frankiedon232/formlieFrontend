@@ -12,7 +12,7 @@ useHead({ title: () => (suspended.value ? t('errors.FRM-TEN-1002') : t('error.wo
 </script>
 
 <template>
-  <UEmpty
+  <AppEmpty
     :icon="suspended ? 'i-lucide-pause-circle' : 'i-lucide-building-2'"
     :title="suspended ? t('errors.FRM-TEN-1002') : t('error.workspaceTitle')"
     :description="suspended ? t('error.workspaceSuspendedDesc') : t('error.workspaceDesc', { host })"

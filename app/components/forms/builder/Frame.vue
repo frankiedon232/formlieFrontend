@@ -109,7 +109,7 @@ defineShortcuts({
     </slot>
 
     <!-- "Can view" / "Responses only" (people access, decision 97): never the editor, only the way back. -->
-    <UEmpty
+    <AppEmpty
       v-else-if="s.failed.value === 'FRM-PERM-1001' || !s.canEdit.value"
       icon="i-lucide-eye"
       :title="t('share.people.noEditor')"
@@ -120,7 +120,7 @@ defineShortcuts({
       ]"
       variant="outline"
     />
-    <UEmpty
+    <AppEmpty
       v-else-if="s.failed.value"
       icon="i-lucide-file-question"
       :title="s.failed.value === 'FRM-GEN-1004' ? t('forms.detail.notFound') : t('dataView.errorTitle')"

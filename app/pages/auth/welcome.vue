@@ -30,7 +30,7 @@ onMounted(async () => {
       <h1 class="text-xl font-semibold text-highlighted">{{ t('auth.welcome.title') }}</h1>
       <p class="text-sm text-muted">{{ t('auth.welcome.desc') }}</p>
     </template>
-    <UEmpty
+    <AppEmpty
       v-else
       icon="i-lucide-link-2-off"
       :title="t('auth.welcome.failed')"

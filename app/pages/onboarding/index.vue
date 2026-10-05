@@ -106,7 +106,7 @@ async function skip() {
       </div>
     </template>
 
-    <UEmpty
+    <AppEmpty
       v-else-if="onboarding.error.value && !state"
       icon="i-lucide-cloud-alert"
       :title="t('dataView.errorTitle')"

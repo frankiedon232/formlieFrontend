@@ -100,7 +100,7 @@ const hasDraftChanges = computed(() => !versions.value.length || !!form.value?.h
       <div v-if="loading" class="flex flex-col gap-4" :aria-label="t('common.loading')">
         <USkeleton v-for="i in 3" :key="i" class="h-14 w-full" />
       </div>
-      <UEmpty
+      <AppEmpty
         v-else-if="failed"
         icon="i-lucide-cloud-alert"
         :title="t('dataView.errorTitle')"

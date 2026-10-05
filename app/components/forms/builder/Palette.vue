@@ -99,7 +99,7 @@ const cloneField = (item: { type: FieldType }) => drag.track(builder.createField
           </UButton>
         </VueDraggable>
       </section>
-      <p v-if="!groups.length" class="px-1 text-sm text-muted">{{ t('builder.palette.none') }}</p>
+      <AppEmpty v-if="!groups.length" size="xs" icon="i-lucide-search-x" :title="t('builder.palette.none')" />
     </div>
 
     <FormsBuilderPaletteSaved v-else-if="tab === 'saved'" :query="query" @added="emit('added')" />

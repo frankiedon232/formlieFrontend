@@ -98,7 +98,7 @@ const set = (item: FormText, value: unknown) => translations.set(props.language,
           <UInput v-model="search" icon="i-lucide-search" size="sm" :placeholder="t('common.search')" class="sm:ms-auto sm:w-56" :aria-label="t('common.search')" />
         </div>
 
-        <UEmpty
+        <AppEmpty
           v-if="!groups.length"
           icon="i-lucide-check-check"
           :title="search ? t('builder.translate.noMatch') : t('builder.translate.allDone')"

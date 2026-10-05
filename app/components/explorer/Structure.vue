@@ -106,7 +106,7 @@ function copyDdl() {
           <UButton v-if="structure.alterable && !index.primary" icon="i-lucide-trash-2" color="neutral" variant="ghost" size="xs" square :loading="removing === index.name" :aria-label="t('explorer.ddl.dropIndexNamed', { index: index.name })" @click="emit('dropIndex', index)" />
         </li>
       </ul>
-      <p v-else class="text-sm text-muted">{{ t('explorer.structure.noIndexes') }}</p>
+      <AppEmpty v-else size="xs" variant="outline" icon="i-lucide-list-tree" :title="t('explorer.structure.noIndexes')" />
     </section>
 
     <section class="flex flex-col gap-2">
@@ -118,7 +118,7 @@ function copyDdl() {
           <UButton :label="`${key.references.schema}.${key.references.table} (${key.references.columns.join(', ')})`" color="neutral" variant="link" size="xs" class="px-0 font-mono" @click="emit('table', { schema: key.references.schema, table: key.references.table })" />
         </li>
       </ul>
-      <p v-else class="text-sm text-muted">{{ t('explorer.structure.noRelations') }}</p>
+      <AppEmpty v-else size="xs" variant="outline" icon="i-lucide-git-fork" :title="t('explorer.structure.noRelations')" />
     </section>
 
     <section class="flex flex-col gap-2 xl:col-span-2">

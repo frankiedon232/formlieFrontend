@@ -91,7 +91,7 @@ const changed = () => Promise.all([load(), counts.refresh(true)])
       <UButton :label="t('nav.newForm')" icon="i-lucide-plus" color="neutral" :to="{ path: '/forms/new', query: { folder: folder.id } }" />
     </template>
 
-    <UEmpty
+    <AppEmpty
       v-if="failed"
       icon="i-lucide-folder-x"
       :title="t('folders.notFound')"

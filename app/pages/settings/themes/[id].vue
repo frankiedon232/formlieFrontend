@@ -190,7 +190,7 @@ const panelOpen = ref(false)
       <USkeleton class="h-[70vh] w-full" />
     </div>
 
-    <UEmpty
+    <AppEmpty
       v-else-if="notFound"
       icon="i-lucide-palette"
       :title="t('themes.editor.notFound')"

@@ -148,7 +148,7 @@ const counts = computed(() => ({
     </div>
 
     <div v-if="loading" class="flex flex-col gap-2"><USkeleton v-for="n in 2" :key="n" class="h-10 w-full" /></div>
-    <p v-else-if="!invitations.length" class="text-xs text-muted">{{ t('share.invite.none') }}</p>
+    <AppEmpty v-else-if="!invitations.length" size="xs" icon="i-lucide-mail" :title="t('share.invite.none')" />
     <ul v-else class="flex max-h-72 flex-col divide-y divide-default overflow-y-auto rounded-md border border-default bg-default">
       <li v-for="item in invitations" :key="item.id" class="flex flex-wrap items-center gap-2 px-3 py-2" :class="working === item.id ? 'opacity-60' : ''">
         <div class="min-w-0 flex-1">

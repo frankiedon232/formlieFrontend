@@ -114,7 +114,7 @@ const canEdit = computed(() => canEditForm(form.value))
       <USkeleton class="h-96 rounded-lg" />
     </div>
 
-    <UEmpty
+    <AppEmpty
       v-else-if="failed"
       :icon="failed === 'FRM-GEN-1004' ? 'i-lucide-file-question' : 'i-lucide-cloud-alert'"
       :title="failed === 'FRM-GEN-1004' ? t('forms.detail.notFound') : t('dataView.errorTitle')"

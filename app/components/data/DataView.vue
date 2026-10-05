@@ -276,7 +276,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
       />
     </div>
 
-    <UEmpty
+    <AppEmpty
       v-if="state.error.value"
       icon="i-lucide-cloud-alert"
       :title="t('dataView.errorTitle')"
@@ -293,7 +293,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
       variant="outline"
     />
 
-    <UEmpty
+    <AppEmpty
       v-else-if="isEmpty"
       :icon="state.hasActiveFilters.value ? 'i-lucide-search-x' : emptyIcon"
       :title="
@@ -318,7 +318,7 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
       <template v-if="!state.hasActiveFilters.value && slots['empty-actions']" #actions>
         <slot name="empty-actions" />
       </template>
-    </UEmpty>
+    </AppEmpty>
 
     <template v-else-if="viewMode === 'grid'">
       <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" :aria-busy="state.loading.value">

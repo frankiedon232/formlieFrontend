@@ -142,7 +142,7 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
     </div>
     <USkeleton class="h-72 w-full rounded-lg" />
   </div>
-  <UEmpty
+  <AppEmpty
     v-else-if="failed || !settings || !form"
     icon="i-lucide-cloud-off"
     :title="t('dataView.errorTitle')"

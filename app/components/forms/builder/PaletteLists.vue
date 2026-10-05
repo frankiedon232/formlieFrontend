@@ -74,12 +74,8 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
       <div v-if="library.loading.value && !library.loaded.value" class="flex flex-col gap-1.5" :aria-label="t('common.loading')">
         <USkeleton v-for="i in 4" :key="i" class="h-9 w-full" />
       </div>
-      <div v-else-if="!library.lists.value.length" class="flex flex-col items-center gap-2 px-2 py-8 text-center">
-        <UIcon name="i-lucide-list" class="size-6 text-muted" />
-        <p class="text-sm font-medium text-highlighted">{{ t('library.listsEmptyTitle') }}</p>
-        <p class="text-xs text-muted">{{ t('library.listsEmptyDesc') }}</p>
-      </div>
-      <p v-else-if="!items.length" class="px-1 text-sm text-muted">{{ t('builder.palette.none') }}</p>
+      <AppEmpty v-else-if="!library.lists.value.length" size="xs" icon="i-lucide-list" :title="t('library.listsEmptyTitle')" :description="t('library.listsEmptyDesc')" />
+      <AppEmpty v-else-if="!items.length" size="xs" icon="i-lucide-search-x" :title="t('builder.palette.none')" />
       <VueDraggable
         v-else
         :model-value="items"

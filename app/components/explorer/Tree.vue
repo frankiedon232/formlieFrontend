@@ -62,7 +62,7 @@ function onExpanded(keys: string[]) {
   <div class="flex min-h-0 flex-col gap-2">
     <UInput v-model="search" icon="i-lucide-search" size="xs" :ui="{ base: 'h-7 rounded-sm' }" :placeholder="t('explorer.searchTables')" class="w-full" :aria-label="t('explorer.searchTables')" />
     <div v-if="loading && !tables" class="flex flex-col gap-2"><USkeleton v-for="n in 8" :key="n" class="h-6 rounded-md" :class="n % 3 ? 'ms-5' : ''" /></div>
-    <p v-else-if="!items.length" class="px-1 text-sm text-muted">{{ search ? t('explorer.noMatch') : t('explorer.noTables') }}</p>
+    <AppEmpty v-else-if="!items.length" size="xs" :icon="search ? 'i-lucide-search-x' : 'i-lucide-database'" :title="search ? t('explorer.noMatch') : t('explorer.noTables')" />
     <UTree v-else :key="search" :items="items" :get-key="item => String(item.key)" :expanded="expanded" color="neutral" size="sm" class="-mx-1 min-h-0 flex-1 overflow-y-auto" @update:expanded="keys => onExpanded(keys as string[])">
       <!-- Every table gets the same square bullet (owner 2026-10-05); schemas and columns keep their icons -->
       <template #item-leading="{ item, ui }">

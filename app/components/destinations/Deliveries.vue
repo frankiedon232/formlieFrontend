@@ -79,8 +79,8 @@ async function retry(delivery: Delivery) {
     </AppChipScroller>
 
     <div v-if="loading && !rows.length" class="flex flex-col gap-2"><USkeleton v-for="n in 5" :key="n" class="h-12 rounded-lg" /></div>
-    <UEmpty v-else-if="failed && !rows.length" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => load() }]" variant="naked" />
-    <p v-else-if="!rows.length" class="rounded-lg border border-dashed border-default px-3 py-6 text-center text-sm text-muted">{{ t('destinations.deliveries.empty') }}</p>
+    <AppEmpty v-else-if="failed && !rows.length" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => load() }]" variant="naked" />
+    <AppEmpty v-else-if="!rows.length" size="sm" variant="outline" icon="i-lucide-send" :title="t('destinations.deliveries.empty')" />
     <ul v-else class="divide-y divide-default rounded-lg border border-default transition-opacity" :class="loading ? 'opacity-60' : ''">
       <li v-for="delivery in rows" :key="delivery.response_id" class="flex flex-col gap-1 px-3 py-2">
         <div class="flex items-center gap-2.5 text-sm">

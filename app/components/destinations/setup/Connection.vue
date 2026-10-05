@@ -18,7 +18,7 @@ const items = computed(() =>
 <template>
   <div class="flex flex-col gap-4">
     <div v-if="!setup.sources.value" class="grid grid-cols-1 gap-3 sm:grid-cols-2"><USkeleton v-for="n in 4" :key="n" class="h-20 rounded-lg" /></div>
-    <UEmpty
+    <AppEmpty
       v-else-if="!items.length"
       icon="i-lucide-database"
       :title="t('destinations.setup.noConnections')"

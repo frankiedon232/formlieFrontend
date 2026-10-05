@@ -44,7 +44,7 @@ function open(event: MouseEvent, row: ResponseRow) {
     <div v-if="rows === null" class="grid gap-3 sm:grid-cols-2">
       <USkeleton v-for="n in 2" :key="n" class="h-56 rounded-lg" />
     </div>
-    <UEmpty
+    <AppEmpty
       v-else-if="!rows.length"
       icon="i-lucide-inbox"
       :title="t('responses.list.empty')"

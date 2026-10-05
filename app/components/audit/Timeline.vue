@@ -80,7 +80,7 @@ const items = computed<(TimelineItem & { event: AuditEvent })[]>(() =>
         @click="load"
       />
     </p>
-    <p v-else-if="!items.length" class="text-sm text-muted">{{ t('audit.timeline.empty') }}</p>
+    <AppEmpty v-else-if="!items.length" size="xs" icon="i-lucide-history" :title="t('audit.timeline.empty')" />
     <template v-else>
       <UTimeline :items="items" color="neutral" size="xs" :ui="{ title: 'text-sm', description: 'text-xs' }">
         <template #title="{ item }">

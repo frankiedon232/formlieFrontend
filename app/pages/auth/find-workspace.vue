@@ -134,7 +134,7 @@ function startOver() {
           </UButton>
         </li>
       </ul>
-      <UEmpty
+      <AppEmpty
         v-else
         icon="i-lucide-search-x"
         :title="t('auth.find.none')"

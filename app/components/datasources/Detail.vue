@@ -121,7 +121,7 @@ async function remove() {
         <div class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div>
         <USkeleton v-for="n in 4" :key="n" class="h-16 w-full rounded-lg" />
       </div>
-      <UEmpty v-else-if="failed && !source" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" variant="naked" />
+      <AppEmpty v-else-if="failed && !source" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" variant="naked" />
       <div v-else-if="source" class="flex flex-col gap-5 transition-opacity" :class="loading || busy ? 'opacity-60' : ''" :aria-busy="loading || busy || undefined">
         <div v-if="runner.test.value || runner.starting.value" class="rounded-lg border border-default p-3 sm:p-4">
           <DatasourcesTestProgress :test="runner.test.value" :starting="runner.starting.value" />

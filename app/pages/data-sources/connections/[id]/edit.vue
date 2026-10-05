@@ -43,7 +43,7 @@ onBeforeRouteLeave(async () => (!dirty.value || done.value ? true : await confir
     <template #actions>
       <UButton :label="t('common.cancel')" icon="i-lucide-x" color="neutral" variant="outline" :to="{ path: '/data-sources/connections', query: source ? { connection: source.id } : undefined }" />
     </template>
-    <UEmpty
+    <AppEmpty
       v-if="failed"
       icon="i-lucide-database-backup"
       :title="t('dataSources.notFound')"

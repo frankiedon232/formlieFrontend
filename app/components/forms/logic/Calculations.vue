@@ -27,7 +27,7 @@ const scored = (f: FormField) => !!f.options?.some(o => typeof o.score === 'numb
       <UBadge :label="String(logic.calculated.value.length)" color="neutral" variant="outline" size="sm" class="rounded-md" />
     </template>
 
-    <UEmpty
+    <AppEmpty
       v-if="!logic.calculated.value.length"
       icon="i-lucide-calculator"
       :title="t('logic.calc.emptyTitle')"

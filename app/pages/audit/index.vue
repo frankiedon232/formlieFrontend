@@ -199,7 +199,7 @@ defineShortcuts({ e: () => canView.value && (exportOpen.value = true) })
       </UButton>
     </template>
 
-    <UEmpty
+    <AppEmpty
       v-if="!canView"
       icon="i-lucide-lock"
       :title="t('audit.noAccessTitle')"

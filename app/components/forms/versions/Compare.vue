@@ -45,7 +45,7 @@ const signed = (n: number) => (n > 0 ? `+${n}` : String(n))
       />
     </template>
 
-    <UEmpty v-if="!versions.length && !loading" icon="i-lucide-git-compare" :title="t('versions.noneTitle')" :description="t('versions.noneDesc')" variant="naked" size="sm" />
+    <AppEmpty v-if="!versions.length && !loading" icon="i-lucide-git-compare" :title="t('versions.noneTitle')" :description="t('versions.noneDesc')" variant="naked" size="sm" />
     <div v-else-if="loading || !diff" class="flex flex-col gap-2" :aria-label="t('common.loading')">
       <USkeleton v-for="i in 4" :key="i" class="h-6 w-full" />
     </div>

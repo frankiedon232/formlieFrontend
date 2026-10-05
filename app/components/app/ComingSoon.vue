@@ -13,7 +13,7 @@ const back = computed(() => props.back ?? { labelKey: 'nav.forms', icon: 'i-luci
 </script>
 
 <template>
-  <UEmpty
+  <AppEmpty
     :icon="props.icon"
     :title="t(props.titleKey)"
     :description="t(props.descriptionKey ?? 'placeholder.description')"

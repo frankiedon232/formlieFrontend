@@ -125,7 +125,7 @@ const subtitle = computed(() =>
       </div>
     </div>
 
-    <UEmpty
+    <AppEmpty
       v-else-if="notFound"
       icon="i-lucide-file-question"
       :title="t('forms.detail.notFound')"

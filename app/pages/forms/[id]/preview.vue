@@ -140,7 +140,7 @@ defineShortcuts({
       <USkeleton class="h-[calc(100dvh-16rem)] min-h-96 w-full rounded-lg" />
     </div>
 
-    <UEmpty
+    <AppEmpty
       v-else-if="failed || !schema"
       icon="i-lucide-file-question"
       :title="failed === 'FRM-GEN-1004' ? t('forms.detail.notFound') : t('dataView.errorTitle')"

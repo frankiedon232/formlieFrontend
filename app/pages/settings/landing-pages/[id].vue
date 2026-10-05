@@ -128,7 +128,7 @@ const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[3
       <USkeleton class="h-[70vh] w-full" />
     </div>
 
-    <UEmpty
+    <AppEmpty
       v-else-if="notFound"
       icon="i-lucide-panels-top-left"
       :title="t('pages.editor.notFound')"

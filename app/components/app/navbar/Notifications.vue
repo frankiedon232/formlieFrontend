@@ -8,7 +8,7 @@ const { endSide } = useAppLocale()
 <template>
   <USlideover v-model:open="notificationsOpen" :title="t('navbar.notifications')" :side="endSide">
     <template #body>
-      <UEmpty
+      <AppEmpty
         icon="i-lucide-bell"
         :title="t('navbar.noNotifications')"
         :description="t('navbar.noNotificationsDesc')"

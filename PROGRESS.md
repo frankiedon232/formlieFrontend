@@ -1079,7 +1079,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | The app's own right-click menu everywhere (never the browser's): rows of every list, the explorer's tree, rows and table area (DDL, export, rows), text fields (cut, copy, paste, select all), links, the app's items (back, search, theme, …) | shell / F12 | ✅ |
 | 2026-10-05 | Explorer dialogs that change data or structure don't close on an outside click (Esc, ✕ and Cancel still do) | F12 M3 | ✅ |
 | 2026-10-05 | Query editor (M4) uses the same mode as the explorer: its panel in the menu column, full width for the editor | F12 M4 | ⬜ |
-| 2026-10-05 | Every empty, not-found and error state: a better, evenly centred look with fitting icons | all | 🟡 |
+| 2026-10-05 | Every empty, not-found and error state: a better, evenly centred look with fitting icons | all | ✅ |
 
 ---
 
@@ -1255,3 +1255,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Explorer backend rules in API-CONTRACT (paging in the database, count capped at 10,000 with `meta.total_capped` shown as "10,000+", 5 s statement limit → FRM-DEST-1011, capped facets, catalogue-only tree, streamed and capped exports, workspace check). Fixed duplicate auto-import warnings (`DbEngine` imported from its one home, connection `FieldType` renamed `ConnectionFieldType`, one `quoteName`). |
 | 2026-10-05 | F12 | Explorer structure changes (owner): New table, columns, indexes, rename, empty, delete for their own tables with Full access, never Formalie's; statements per engine shown first and run as shown; mock keeps the changes (`server/mock/data/tableEdits.ts`). Tests: `datasources/ddl`. |
 | 2026-10-05 | shell / F12 | Right-click menus everywhere (`AppContextMenu`, `useContextMenu`, DataView `rowMenu`, explorer `useExplorerMenus`); Help & support at the rail's foot; no types beside column names; explorer dialogs keep their input on outside clicks (`AppModal keep-open`). |
+| 2026-10-05 | all | One empty / not-found / error state everywhere (`AppEmpty`, replacing UEmpty in 35 files and 15 hand-made ones): evenly centred, a layered icon tile, title, short description, next step; sizes md / sm / xs; error icons tint red. |

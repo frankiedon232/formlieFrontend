@@ -44,12 +44,8 @@ async function remove(item: SavedField) {
     <div v-if="library.loading.value && !library.loaded.value" class="flex flex-col gap-1.5" :aria-label="t('common.loading')">
       <USkeleton v-for="i in 4" :key="i" class="h-9 w-full" />
     </div>
-    <div v-else-if="!library.savedFields.value.length" class="flex flex-col items-center gap-2 px-2 py-8 text-center">
-      <UIcon name="i-lucide-bookmark" class="size-6 text-muted" />
-      <p class="text-sm font-medium text-highlighted">{{ t('library.savedEmptyTitle') }}</p>
-      <p class="text-xs text-muted">{{ t('library.savedEmptyDesc') }}</p>
-    </div>
-    <p v-else-if="!items.length" class="px-1 text-sm text-muted">{{ t('builder.palette.none') }}</p>
+    <AppEmpty v-else-if="!library.savedFields.value.length" size="xs" icon="i-lucide-bookmark" :title="t('library.savedEmptyTitle')" :description="t('library.savedEmptyDesc')" />
+    <AppEmpty v-else-if="!items.length" size="xs" icon="i-lucide-search-x" :title="t('builder.palette.none')" />
     <VueDraggable
       v-else
       :model-value="items"

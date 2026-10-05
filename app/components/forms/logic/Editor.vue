@@ -58,7 +58,7 @@ defineShortcuts({ n: { handler: () => canAdd.value && add(), usingInput: false }
         </UButton>
       </template>
 
-      <UEmpty
+      <AppEmpty
         v-if="!logic.sources.value.length"
         icon="i-lucide-layout-panel-top"
         :title="t('logic.noFieldsTitle')"
@@ -68,11 +68,7 @@ defineShortcuts({ n: { handler: () => canAdd.value && add(), usingInput: false }
         class="py-10"
       />
       <div v-else-if="!logic.rules.value.length" class="flex flex-col gap-4 py-4">
-        <div class="flex flex-col items-center gap-1 text-center">
-          <UIcon name="i-lucide-git-branch" class="size-6 text-muted" />
-          <p class="font-medium text-highlighted">{{ t('logic.emptyTitle') }}</p>
-          <p class="max-w-md text-sm text-muted">{{ t('logic.emptyDesc') }}</p>
-        </div>
+        <AppEmpty size="sm" icon="i-lucide-git-branch" :title="t('logic.emptyTitle')" :description="t('logic.emptyDesc')" class="min-h-0 py-2" />
         <div class="grid gap-2 sm:grid-cols-2">
           <UButton
             v-for="starter in starters"

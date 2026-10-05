@@ -47,6 +47,6 @@ const unit = (n: number) => t('responses.count', { n: number(n) }, n)
       <UTabs v-model="step" :items="steps" :content="false" color="neutral" size="xs" :ui="SEGMENTED_UI" :aria-label="t('responses.trend.step')" />
     </div>
     <ChartsBars v-if="insights.period.count" :points="points" :unit="unit" />
-    <UEmpty v-else icon="i-lucide-chart-column" :title="t('responses.trend.empty')" :description="t('responses.trend.emptyDesc')" variant="naked" size="sm" />
+    <AppEmpty v-else icon="i-lucide-chart-column" :title="t('responses.trend.empty')" :description="t('responses.trend.emptyDesc')" variant="naked" size="sm" />
   </UCard>
 </template>

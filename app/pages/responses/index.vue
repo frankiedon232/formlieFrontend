@@ -73,7 +73,7 @@ const filterReview = (status: ResponseStatus) =>
       <div class="grid gap-4 lg:grid-cols-2"><USkeleton v-for="n in 2" :key="n" class="h-40 rounded-lg" /></div>
       <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-64 rounded-lg" /></div>
     </div>
-    <UEmpty
+    <AppEmpty
       v-else-if="failed || !insights"
       icon="i-lucide-cloud-alert"
       :title="t('dataView.errorTitle')"

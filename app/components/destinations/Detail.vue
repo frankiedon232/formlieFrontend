@@ -119,7 +119,7 @@ function started(result: DestinationDetail) {
         <div class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div>
         <USkeleton v-for="n in 4" :key="n" class="h-14 w-full rounded-lg" />
       </div>
-      <UEmpty v-else-if="failed && !destination" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" variant="naked" />
+      <AppEmpty v-else-if="failed && !destination" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" variant="naked" />
       <div v-else-if="destination" class="transition-opacity" :class="loading || busy ? 'opacity-60' : ''" :aria-busy="loading || busy || undefined">
         <DestinationsDetailBody :destination="destination" :refresh-key="refreshKey" :busy="busy" @add-columns="addColumns" @retried="() => id && load(id, true)" />
       </div>

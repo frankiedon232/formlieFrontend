@@ -269,7 +269,7 @@ const readOnlyText = computed(() =>
     </template>
 
     <!-- No connections -->
-    <UEmpty
+    <AppEmpty
       v-if="sources && !sources.length"
       icon="i-lucide-database"
       :title="t('explorer.noConnections')"
@@ -285,7 +285,7 @@ const readOnlyText = computed(() =>
       class="my-auto"
     />
     <!-- The connection isn't working -->
-    <UEmpty
+    <AppEmpty
       v-else-if="tablesError"
       icon="i-lucide-plug-zap"
       :title="t('explorer.cantReach')"
@@ -308,13 +308,12 @@ const readOnlyText = computed(() =>
       class="my-auto"
     />
     <div v-else ref="content" class="flex min-h-0 min-w-0 flex-1 flex-col">
-      <div class="flex min-w-0 flex-col gap-4">
-        <UEmpty
+      <div class="flex min-h-0 min-w-0 flex-1 flex-col gap-4">
+        <AppEmpty
           v-if="!objectKey"
-          icon="i-lucide-mouse-pointer-click"
+          icon="i-lucide-list-tree"
           :title="t('explorer.pickTable')"
           :description="t('explorer.pickTableDesc')"
-          variant="outline"
           :actions="[
             {
               label: t('explorer.tables'),
@@ -326,7 +325,7 @@ const readOnlyText = computed(() =>
             },
           ]"
         />
-        <UEmpty
+        <AppEmpty
           v-else-if="tableError"
           icon="i-lucide-cloud-alert"
           :title="t('dataView.errorTitle')"
@@ -340,7 +339,6 @@ const readOnlyText = computed(() =>
               onClick: () => void loadTable(),
             },
           ]"
-          variant="outline"
         />
         <template v-else-if="!structure">
           <USkeleton class="h-20 rounded-lg" />
