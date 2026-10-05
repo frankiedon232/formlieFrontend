@@ -3621,7 +3621,18 @@
       "green": "Hijau",
       "teal": "Hijau kebiruan",
       "violet": "Ungu",
-      "pink": "Merah muda"
+      "pink": "Merah muda",
+      "yellow": "Kuning",
+      "lime": "Limau",
+      "emerald": "Zamrud",
+      "cyan": "Sian",
+      "sky": "Biru langit",
+      "blue": "Biru",
+      "indigo": "Nila",
+      "purple": "Ungu tua",
+      "fuchsia": "Fuksia",
+      "rose": "Mawar",
+      "custom": "Warna khusus"
     },
     "toast": {
       "saved": "Folder disimpan",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Buat folder untuk mengelompokkan formulir per tim, klien, atau proyek.",
     "pin": "Sematkan di bilah samping",
     "unpin": "Lepas dari bilah samping",
-    "pinFull": "Maksimal 5 folder bisa disematkan"
+    "pinFull": "Maksimal 5 folder bisa disematkan",
+    "hex": "Warna hex"
   }
 }

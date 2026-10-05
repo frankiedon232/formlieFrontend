@@ -457,8 +457,8 @@ export const bulkForms = defineMockRoute(({ event, body }) => {
 
 const folderSchema = z.object({
   name: z.string().trim().min(1, 'Give the folder a name.').max(60),
-  /** Icon colour (F11 M4), a key of FOLDER_COLORS. */
-  color: z.enum(FOLDER_COLOR_KEYS as [FolderColor, ...FolderColor[]]).optional(),
+  /** Icon colour (F11 M4): a key of FOLDER_COLORS, or any custom colour as #rrggbb. */
+  color: z.union([z.enum(FOLDER_COLOR_KEYS as [FolderColor, ...FolderColor[]]), z.string().regex(/^#[0-9a-fA-F]{6}$/)]).optional(),
 })
 
 function assertFolderName(tenant: MockTenant, folderName: string, exceptId?: string) {

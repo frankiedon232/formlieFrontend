@@ -3621,7 +3621,18 @@
       "green": "Groen",
       "teal": "Blauwgroen",
       "violet": "Violet",
-      "pink": "Roze"
+      "pink": "Roze",
+      "yellow": "Geel",
+      "lime": "Limoen",
+      "emerald": "Smaragd",
+      "cyan": "Cyaan",
+      "sky": "Hemelsblauw",
+      "blue": "Blauw",
+      "indigo": "Indigo",
+      "purple": "Paars",
+      "fuchsia": "Fuchsia",
+      "rose": "Roze",
+      "custom": "Eigen kleur"
     },
     "toast": {
       "saved": "Map opgeslagen",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Maak mappen om formulieren per team, klant of project te groeperen.",
     "pin": "Vastzetten in de zijbalk",
     "unpin": "Losmaken uit de zijbalk",
-    "pinFull": "U kunt maximaal 5 mappen vastzetten"
+    "pinFull": "U kunt maximaal 5 mappen vastzetten",
+    "hex": "Hexkleur"
   }
 }

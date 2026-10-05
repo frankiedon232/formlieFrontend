@@ -3621,7 +3621,18 @@
       "green": "Vert",
       "teal": "Sarcelle",
       "violet": "Violet",
-      "pink": "Rose"
+      "pink": "Rose",
+      "yellow": "Jaune",
+      "lime": "Citron vert",
+      "emerald": "Émeraude",
+      "cyan": "Cyan",
+      "sky": "Ciel",
+      "blue": "Bleu",
+      "indigo": "Indigo",
+      "purple": "Pourpre",
+      "fuchsia": "Fuchsia",
+      "rose": "Rose vif",
+      "custom": "Couleur personnalisée"
     },
     "toast": {
       "saved": "Dossier enregistré",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Créez des dossiers pour regrouper les formulaires par équipe, client ou projet.",
     "pin": "Épingler dans la barre latérale",
     "unpin": "Retirer de la barre latérale",
-    "pinFull": "Jusqu’à 5 dossiers peuvent être épinglés"
+    "pinFull": "Jusqu’à 5 dossiers peuvent être épinglés",
+    "hex": "Couleur hex"
   }
 }

@@ -3621,7 +3621,18 @@
       "green": "Grün",
       "teal": "Petrol",
       "violet": "Violett",
-      "pink": "Rosa"
+      "pink": "Rosa",
+      "yellow": "Gelb",
+      "lime": "Limette",
+      "emerald": "Smaragd",
+      "cyan": "Cyan",
+      "sky": "Himmelblau",
+      "blue": "Blau",
+      "indigo": "Indigo",
+      "purple": "Lila",
+      "fuchsia": "Fuchsia",
+      "rose": "Rosé",
+      "custom": "Eigene Farbe"
     },
     "toast": {
       "saved": "Ordner gespeichert",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Erstellen Sie Ordner, um Formulare nach Team, Kunde oder Projekt zu gruppieren.",
     "pin": "In der Seitenleiste anheften",
     "unpin": "Aus der Seitenleiste lösen",
-    "pinFull": "Bis zu 5 Ordner lassen sich anheften"
+    "pinFull": "Bis zu 5 Ordner lassen sich anheften",
+    "hex": "Hex-Farbe"
   }
 }

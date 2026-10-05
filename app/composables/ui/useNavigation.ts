@@ -310,6 +310,9 @@ export function useNavigation() {
     if (!folders.length) return []
     const shown = sidebarFolders.pick(folders).map(folder => ({
       ...toMenuItem({ key: `folder_${folder.id}`, label: folder.name, icon: 'i-lucide-folder', iconClass: folderColor(folder.color).text, to: `/folders/${folder.id}`, count: () => folder.count }),
+      // Its own leading slot (Menu.vue): named colours are classes, custom ones an inline style.
+      slot: 'folder',
+      folderColor: folder.color,
       ...(sidebarFolders.isPinned(folder.id) ? { trailingIcon: 'i-lucide-pin' } : {}),
     }))
     return [...shown, toMenuItem({ key: 'foldersAll', icon: 'i-lucide-folders', to: '/folders', exact: true, count: () => folders.length })]

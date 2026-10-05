@@ -4,6 +4,7 @@
 -->
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import { folderColor } from '#shared/utils/forms/folders'
 
 const props = defineProps<{ collapsible?: boolean }>()
 const emit = defineEmits<{ collapse: [] }>()
@@ -11,6 +12,7 @@ const { t } = useI18n()
 const { mainItems, resourceItems, folderItems, systemItems, areaLabel, area } = useNavigation()
 // FOLDERS (F11 M4): + creates a folder and opens its page.
 const folderOpen = ref(false)
+const folderOf = (item: unknown) => (item as { folderColor?: string | null }).folderColor
 const sidebarFolders = useSidebarFolders()
 function onFolderCreated(folder: { id: string }) {
   sidebarFolders.visit(folder.id)
@@ -147,7 +149,11 @@ const menuUi = {
             </UTooltip>
           </div>
           <div v-show="sidebarFolders.open.value" id="sidebar-folders">
-            <UNavigationMenu v-if="folderItems.length" :items="folderItems" orientation="vertical" color="neutral" :ui="menuUi" />
+            <UNavigationMenu v-if="folderItems.length" :items="folderItems" orientation="vertical" color="neutral" :ui="menuUi">
+            <template #folder-leading="{ item }">
+              <UIcon name="i-lucide-folder" class="size-5 shrink-0" :class="folderColor(folderOf(item)).text" :style="folderColor(folderOf(item)).textStyle" />
+            </template>
+          </UNavigationMenu>
           </div>
           <UButton v-if="!folderItems.length && sidebarFolders.open.value" :label="t('forms.folders.new')" icon="i-lucide-folder-plus" color="neutral" variant="link" size="sm" class="px-2.5 text-muted" @click="folderOpen = true" />
         </nav>

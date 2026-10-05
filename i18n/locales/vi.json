@@ -3621,7 +3621,18 @@
       "green": "Xanh lá",
       "teal": "Xanh mòng két",
       "violet": "Tím",
-      "pink": "Hồng"
+      "pink": "Hồng",
+      "yellow": "Vàng",
+      "lime": "Xanh chanh",
+      "emerald": "Ngọc lục bảo",
+      "cyan": "Lục lam",
+      "sky": "Xanh da trời",
+      "blue": "Xanh dương",
+      "indigo": "Chàm",
+      "purple": "Tím đậm",
+      "fuchsia": "Hồng tím",
+      "rose": "Hồng đậm",
+      "custom": "Màu tuỳ chọn"
     },
     "toast": {
       "saved": "Đã lưu thư mục",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Tạo thư mục để nhóm biểu mẫu theo nhóm, khách hàng hoặc dự án.",
     "pin": "Ghim vào thanh bên",
     "unpin": "Bỏ ghim khỏi thanh bên",
-    "pinFull": "Có thể ghim tối đa 5 thư mục"
+    "pinFull": "Có thể ghim tối đa 5 thư mục",
+    "hex": "Mã màu hex"
   }
 }

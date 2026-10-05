@@ -80,6 +80,8 @@ const changed = () => Promise.all([load(), counts.refresh(true)])
     :title="folder?.name ?? t('nav.folders')"
     :subtitle="folder ? (folder.last_activity_at ? t('folders.subtitle', { n: folder.forms_count, when: relative(folder.last_activity_at) }, folder.forms_count) : t('forms.folders.count', { count: folder.forms_count }, folder.forms_count)) : undefined"
     subtitle-icon="i-lucide-folder"
+    :subtitle-icon-class="folder ? folderColor(folder.color).text : undefined"
+    :subtitle-icon-style="folder ? folderColor(folder.color).textStyle : undefined"
   >
     <template v-if="folder" #actions>
       <UButton :label="t('folders.editTitle')" icon="i-lucide-pencil" color="neutral" variant="outline" class="hidden sm:inline-flex" @click="editOpen = true" />
@@ -102,7 +104,7 @@ const changed = () => Promise.all([load(), counts.refresh(true)])
     </div>
     <div v-else class="flex flex-col gap-4">
       <div class="flex items-center gap-2 text-sm text-muted sm:hidden">
-        <UIcon name="i-lucide-folder" class="size-4" :class="folderColor(folder.color).text" />{{ t('forms.folders.count', { count: folder.forms_count }, folder.forms_count) }}
+        <UIcon name="i-lucide-folder" class="size-4" :class="folderColor(folder.color).text" :style="folderColor(folder.color).textStyle" />{{ t('forms.folders.count', { count: folder.forms_count }, folder.forms_count) }}
       </div>
       <FoldersOverview :folder="folder" :status="statusFilter" :dots="STATUS_DOTS" @status="filterStatus" />
       <FormsListBrowser :key="folder.id" :folder-id="folder.id" @changed="changed" />

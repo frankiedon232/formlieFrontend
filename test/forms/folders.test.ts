@@ -23,3 +23,11 @@ describe('sidebar folders', () => {
     expect(folderColor(null)).toEqual(folderColor('ink'))
   })
 })
+
+describe('custom folder colours', () => {
+  it('keeps a custom colour as an inline style', () => {
+    expect(folderColor('#3A7BD5').textStyle).toEqual({ color: '#3A7BD5' })
+    expect(folderColor('#3a7bd5').text).toBe('')
+    expect(folderColor('#3a7').textStyle).toBeUndefined()
+  })
+})

@@ -113,7 +113,7 @@ const rowActions = (folder: FolderRow): DropdownMenuItem[][] => [
     >
       <template #name-cell="{ row }">
         <NuxtLink :to="`/folders/${row.original.id}`" class="flex min-w-0 items-center gap-2 rounded-sm focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">
-          <UIcon name="i-lucide-folder" class="size-4 shrink-0" :class="folderColor(row.original.color).text" />
+          <UIcon name="i-lucide-folder" class="size-4 shrink-0" :class="folderColor(row.original.color).text" :style="folderColor(row.original.color).textStyle" />
           <span class="truncate font-medium text-highlighted">{{ row.original.name }}</span>
         </NuxtLink>
       </template>

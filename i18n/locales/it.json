@@ -3621,7 +3621,18 @@
       "green": "Verde",
       "teal": "Ottanio",
       "violet": "Viola",
-      "pink": "Rosa"
+      "pink": "Rosa",
+      "yellow": "Giallo",
+      "lime": "Lime",
+      "emerald": "Smeraldo",
+      "cyan": "Ciano",
+      "sky": "Azzurro",
+      "blue": "Blu",
+      "indigo": "Indaco",
+      "purple": "Porpora",
+      "fuchsia": "Fucsia",
+      "rose": "Rosa intenso",
+      "custom": "Colore personalizzato"
     },
     "toast": {
       "saved": "Cartella salvata",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Crea cartelle per raggruppare i moduli per team, cliente o progetto.",
     "pin": "Fissa nella barra laterale",
     "unpin": "Rimuovi dalla barra laterale",
-    "pinFull": "Si possono fissare fino a 5 cartelle"
+    "pinFull": "Si possono fissare fino a 5 cartelle",
+    "hex": "Colore hex"
   }
 }

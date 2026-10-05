@@ -3621,7 +3621,18 @@
       "green": "Yeşil",
       "teal": "Deniz mavisi",
       "violet": "Mor",
-      "pink": "Pembe"
+      "pink": "Pembe",
+      "yellow": "Sarı",
+      "lime": "Limon yeşili",
+      "emerald": "Zümrüt",
+      "cyan": "Camgöbeği",
+      "sky": "Gök mavisi",
+      "blue": "Mavi",
+      "indigo": "Çivit",
+      "purple": "Eflatun",
+      "fuchsia": "Fuşya",
+      "rose": "Gül kurusu",
+      "custom": "Özel renk"
     },
     "toast": {
       "saved": "Klasör kaydedildi",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Formları ekip, müşteri veya projeye göre gruplamak için klasör oluşturun.",
     "pin": "Kenar çubuğuna sabitle",
     "unpin": "Kenar çubuğundan kaldır",
-    "pinFull": "En fazla 5 klasör sabitlenebilir"
+    "pinFull": "En fazla 5 klasör sabitlenebilir",
+    "hex": "Hex renk"
   }
 }

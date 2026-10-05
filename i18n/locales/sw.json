@@ -3621,7 +3621,18 @@
       "green": "Kijani",
       "teal": "Kijani-bluu",
       "violet": "Zambarau",
-      "pink": "Waridi"
+      "pink": "Waridi",
+      "yellow": "Njano",
+      "lime": "Ndimu",
+      "emerald": "Zumaridi",
+      "cyan": "Samawati",
+      "sky": "Bluu ya anga",
+      "blue": "Bluu",
+      "indigo": "Nili",
+      "purple": "Zambarau iliyokolea",
+      "fuchsia": "Fuksia",
+      "rose": "Waridi iliyokolea",
+      "custom": "Rangi maalum"
     },
     "toast": {
       "saved": "Folda imehifadhiwa",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Unda folda kupanga fomu kwa timu, mteja au mradi.",
     "pin": "Bandika kwenye upau wa pembeni",
     "unpin": "Bandua kutoka upau wa pembeni",
-    "pinFull": "Unaweza kubandika folda hadi 5"
+    "pinFull": "Unaweza kubandika folda hadi 5",
+    "hex": "Rangi ya hex"
   }
 }

@@ -35,7 +35,7 @@ const facts = computed(() => [
 
     <!-- Folder and forms -->
     <div class="mt-3 flex min-w-0 items-center gap-2">
-      <UIcon name="i-lucide-folder" class="size-5 shrink-0" :class="folderColor(folder.color).text" />
+      <UIcon name="i-lucide-folder" class="size-5 shrink-0" :class="folderColor(folder.color).text" :style="folderColor(folder.color).textStyle" />
       <NuxtLink :to="`/folders/${folder.id}`" class="truncate text-base font-semibold text-highlighted hover:underline focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)">{{ folder.name }}</NuxtLink>
     </div>
     <p class="text-sm text-muted">{{ t('forms.folders.count', { count: folder.forms_count }, folder.forms_count) }}</p>

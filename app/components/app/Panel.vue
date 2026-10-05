@@ -9,6 +9,9 @@ defineProps<{
   title: string
   subtitle?: string
   subtitleIcon?: string
+  /** Colour for the subtitle icon (e.g. a folder's colour): a class and / or an inline style. */
+  subtitleIconClass?: string
+  subtitleIconStyle?: Record<string, string>
   /** Busy headers (form workspace): search shows as an icon button only. */
   compactSearch?: boolean
 }>()
@@ -25,7 +28,7 @@ const visible = computed(() => busy.value && showBar.value)
   <UDashboardPanel :id="id" :ui="{ body: 'gap-6 sm:gap-6 p-4 sm:p-6' }">
     <template #header>
       <div class="relative">
-        <AppNavbar :title="title" :subtitle="subtitle" :subtitle-icon="subtitleIcon" :compact-search="compactSearch">
+        <AppNavbar :title="title" :subtitle="subtitle" :subtitle-icon="subtitleIcon" :subtitle-icon-class="subtitleIconClass" :subtitle-icon-style="subtitleIconStyle" :compact-search="compactSearch">
           <template v-if="$slots.title" #title>
             <slot name="title" />
           </template>

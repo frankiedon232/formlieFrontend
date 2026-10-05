@@ -3621,7 +3621,18 @@
       "green": "Zielony",
       "teal": "Morski",
       "violet": "Fioletowy",
-      "pink": "Różowy"
+      "pink": "Różowy",
+      "yellow": "Żółty",
+      "lime": "Limonkowy",
+      "emerald": "Szmaragdowy",
+      "cyan": "Cyjan",
+      "sky": "Błękitny",
+      "blue": "Niebieski",
+      "indigo": "Indygo",
+      "purple": "Purpurowy",
+      "fuchsia": "Fuksja",
+      "rose": "Różany",
+      "custom": "Własny kolor"
     },
     "toast": {
       "saved": "Zapisano folder",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Utwórz foldery, aby grupować formularze według zespołu, klienta lub projektu.",
     "pin": "Przypnij na pasku bocznym",
     "unpin": "Odepnij z paska bocznego",
-    "pinFull": "Można przypiąć maksymalnie 5 folderów"
+    "pinFull": "Można przypiąć maksymalnie 5 folderów",
+    "hex": "Kolor hex"
   }
 }

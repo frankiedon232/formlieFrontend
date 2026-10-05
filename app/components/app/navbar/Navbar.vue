@@ -9,6 +9,8 @@ const props = defineProps<{
   title: string
   subtitle?: string
   subtitleIcon?: string
+  subtitleIconClass?: string
+  subtitleIconStyle?: Record<string, string>
   /** Search as an icon button at every width (headers with many actions). */
   compactSearch?: boolean
 }>()
@@ -51,7 +53,7 @@ const languageItems = computed(() =>
           <!-- #meta: live status line (design: "Last sync: Just now"), e.g. "Draft · Saved just now". -->
           <slot name="meta">
             <span v-if="props.subtitle" class="flex min-w-0 items-center gap-1 truncate">
-              <UIcon v-if="props.subtitleIcon" :name="props.subtitleIcon" class="size-3 shrink-0" />
+              <UIcon v-if="props.subtitleIcon" :name="props.subtitleIcon" class="size-3 shrink-0" :class="props.subtitleIconClass" :style="props.subtitleIconStyle" />
               <span class="truncate">{{ props.subtitle }}</span>
             </span>
           </slot>

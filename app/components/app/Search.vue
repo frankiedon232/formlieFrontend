@@ -12,6 +12,7 @@ const { destinations } = useNavigation()
 const { shortcutsOpen } = useAppUi()
 const { locales, changeLocale } = useAppLocale()
 const { counts } = useNavCounts()
+const folderOf = (item: unknown) => (item as { folderColor?: string | null }).folderColor
 
 const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
   {
@@ -32,7 +33,8 @@ const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
           items: counts.value.folders.map(folder => ({
             label: folder.name,
             icon: 'i-lucide-folder',
-            ui: { itemLeadingIcon: folderColor(folder.color).text },
+            slot: 'folder' as const,
+            folderColor: folder.color,
             suffix: t('forms.folders.count', { count: folder.count }, folder.count),
             to: `/folders/${folder.id}`,
           })),
@@ -73,5 +75,10 @@ const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
     :title="t('search.title')"
     :description="t('search.placeholder')"
     :placeholder="t('search.placeholder')"
-  />
+  >
+    <!-- Folders in their colour (custom colours are an inline style) -->
+    <template #folder-leading="{ item }">
+      <UIcon name="i-lucide-folder" class="size-5 shrink-0" :class="folderColor(folderOf(item)).text" :style="folderColor(folderOf(item)).textStyle" />
+    </template>
+  </UDashboardSearch>
 </template>

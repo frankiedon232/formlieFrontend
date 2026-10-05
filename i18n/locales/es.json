@@ -3621,7 +3621,18 @@
       "green": "Verde",
       "teal": "Turquesa",
       "violet": "Violeta",
-      "pink": "Rosa"
+      "pink": "Rosa",
+      "yellow": "Amarillo",
+      "lime": "Lima",
+      "emerald": "Esmeralda",
+      "cyan": "Cian",
+      "sky": "Celeste",
+      "blue": "Azul",
+      "indigo": "Índigo",
+      "purple": "Púrpura",
+      "fuchsia": "Fucsia",
+      "rose": "Rosa intenso",
+      "custom": "Color personalizado"
     },
     "toast": {
       "saved": "Carpeta guardada",
@@ -3648,6 +3659,7 @@
     "emptyDesc": "Crea carpetas para agrupar formularios por equipo, cliente o proyecto.",
     "pin": "Fijar en la barra lateral",
     "unpin": "Quitar de la barra lateral",
-    "pinFull": "Se pueden fijar hasta 5 carpetas"
+    "pinFull": "Se pueden fijar hasta 5 carpetas",
+    "hex": "Color hex"
   }
 }
