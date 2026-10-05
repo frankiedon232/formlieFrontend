@@ -52,10 +52,13 @@ async function submit(event: FormSubmitEvent<z.output<typeof schema>>) {
   open.value = false
 }
 
-/** Arrow keys move between the named colours (radio group). */
-function step(by: number) {
+/** Arrow keys move between the named colours (radio group); focus follows the choice. */
+const swatches = useTemplateRef<HTMLElement>('swatches')
+async function step(by: number) {
   const index = Math.max(0, FOLDER_COLOR_KEYS.indexOf(color.value as (typeof FOLDER_COLOR_KEYS)[number]))
   color.value = FOLDER_COLOR_KEYS[(index + by + FOLDER_COLOR_KEYS.length) % FOLDER_COLOR_KEYS.length]!
+  await nextTick()
+  swatches.value?.querySelector<HTMLElement>('[role="radio"][aria-checked="true"]')?.focus()
 }
 const preview = computed(() => folderColor(color.value))
 </script>
@@ -71,6 +74,7 @@ const preview = computed(() => folderColor(color.value))
         </UFormField>
         <UFormField :label="t('folders.color')">
           <div
+            ref="swatches"
             class="grid grid-cols-7 gap-2 sm:grid-cols-10"
             role="radiogroup"
             :aria-label="t('folders.color')"

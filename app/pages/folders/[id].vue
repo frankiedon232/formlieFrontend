@@ -95,7 +95,10 @@ const changed = () => Promise.all([load(), counts.refresh(true)])
       v-if="failed"
       icon="i-lucide-folder-x"
       :title="t('folders.notFound')"
-      :actions="[{ label: t('nav.foldersAll'), icon: 'i-lucide-arrow-left', to: '/folders', color: 'neutral', variant: 'subtle' }]"
+      :actions="[
+        { label: t('common.retry'), icon: 'i-lucide-rotate-cw', color: 'neutral', variant: 'outline', onClick: () => void load() },
+        { label: t('nav.foldersAll'), icon: 'i-lucide-arrow-left', to: '/folders', color: 'neutral', variant: 'subtle', class: 'rtl:[&_.iconify]:-scale-x-100' },
+      ]"
       class="my-auto"
     />
     <div v-else-if="!folder" class="flex flex-col gap-4" :aria-label="t('common.loading')">

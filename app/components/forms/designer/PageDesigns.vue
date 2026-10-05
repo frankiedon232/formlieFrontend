@@ -51,7 +51,7 @@ async function apply(page: PageDesign) {
         </span>
       </button>
     </div>
-    <UButton :label="t('pages.manage')" trailing-icon="i-lucide-arrow-up-right" color="neutral" variant="link" size="xs" to="/settings/landing-pages" target="_blank" class="self-start px-0" />
+    <UButton :label="t('pages.manage')" trailing-icon="i-lucide-arrow-up-right" color="neutral" variant="link" size="xs" to="/settings/landing-pages" target="_blank" class="self-start px-0 rtl:[&_.iconify]:-scale-x-100" />
     <FormsDesignerSavePageModal v-model:open="saveOpen" :current="current" />
   </div>
 </template>

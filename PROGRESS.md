@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F11, Responses (M1 to M3 done, M4 Folders done; left: polish and review, then the owner's phase review). Landing pages library built in between (owner request).
+**Last updated:** 2026-10-05 · **Current phase:** F11, Responses complete (M1 to M4, polish and review done), waiting for the owner's phase review. Next: F12, Data sources & databases.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -21,7 +21,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F8    | Designer (themes)                                 | ✅     | 100% |
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
-| F11   | Responses                                         | 🟡     | ~95% |
+| F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | 🟡     | ~3%  |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
@@ -504,9 +504,9 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Watchers on public pages belong to the page (no leftovers after leaving it)
 - ✅ Checked clean: every English text exists in all 19 other languages, no left/right utilities or dashes in F10 files, no direct fetch in components, icon buttons named, access checks on every editor / share / template / lifecycle route
 
-## F11, Responses 🟡
+## F11, Responses ✅
 
-**Plan (2026-10-04, milestones):** **M1** ✅ one response source for every page (decision 100), per-form Responses page with insights and slim charts, Summary per question, list, response panel, Responses page grouped by form. **M2** ✅ editing answers (with history), filters by answers and tags, bulk tags, possible-duplicate review. **M3** ✅ exports (XLSX / CSV / PDF) with progress and the Exports page. **M4** ⬜ Folders workspace, polish and review (then stop for the owner's review).
+**Plan (2026-10-04, milestones):** **M1** ✅ one response source for every page (decision 100), per-form Responses page with insights and slim charts, Summary per question, list, response panel, Responses page grouped by form. **M2** ✅ editing answers (with history), filters by answers and tags, bulk tags, possible-duplicate review. **M3** ✅ exports (XLSX / CSV / PDF) with progress and the Exports page. **M4** ✅ Folders workspace, polish and review (then stop for the owner's review).
 
 - ✅ One response source (decision 100): real submissions + stable sample responses for seeded forms; overview, sidebar counts and form lists read from it (owner, 2026-10-04: "connect all the dots")
 - ✅ Per-form responses `/forms/[id]/responses` (DataView, Table / Grid, columns from the form picked in "Columns" and remembered, ratings as slim bars)
@@ -518,6 +518,7 @@ Total at launch: **84 templates in 11 categories** (a few names appear in two ca
 - ✅ Status (new, reviewed, approved, rejected), tags, notes, history in the audit trail · editing answers in the panel (decision 104: pencil per answer, same control and rules as the form, Edited mark, audit)
 - ✅ Bulk actions: set status, add / remove a tag (type one or pick one in use), delete (editors)
 - ✅ M3 Export XLSX / CSV / PDF (all, filtered, selected) with progress and download, and the Exports page (Responses → Exports), decision 108
+- ✅ M4 Polish and review: phone / tablet overflow sweep of every F11 page, Arabic (RTL) check with mirrored arrows, light and dark mode, keyboard (focus rings, colour swatches move focus with the arrow keys, Esc closes), empty and error states offer the next step (folder page: Try again)
 
 ### Landing pages library ✅ (owner request 2026-10-04: "add more pages, just like Themes on its menu"; decisions 106, 107)
 
@@ -1195,3 +1196,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F11 | Folders as they grow (owner): the sidebar shows at most five per person (pinned first, then recently opened, then the busiest; `pickSidebarFolders`), pin / unpin from the folder menus (up to five, pin mark in the sidebar), the FOLDERS group folds away (remembered), "All folders" shows the total, and every folder is in the command palette (Ctrl / ⌘ K) in its colour with its count. Pickers were already searchable. A line now separates FOLDERS from SYSTEM. Test: `forms/folders`. |
 | 2026-10-05 | F11 | Folder colours (owner): 18 named colours plus Custom (Nuxt UI colour picker and a hex box, saved as #rrggbb); the folder's colour now also shows on its page header (desktop), and custom colours work everywhere (sidebar, command palette, cards, table, header) through a class-or-style helper. A folder created a moment before the server picked up colours had lost its colour; creating with a colour works. |
 | 2026-10-05 | F11 | Fix (owner): in the response panel the Notes "Add note" button sat under the floating Previous / Next bar. More room at the bottom of the panel, so the button now ends well above the bar and its fade. |
+| 2026-10-05 | F11 | M4 polish and review: no overflow at 375 / 768 px on Responses, Exports, Folders, Landing pages, Themes, Templates and Forms; Arabic (RTL) checked, forward arrows now mirror; light mode checked; folder colour swatches now move keyboard focus with the arrow keys; the folder page error state offers Try again. F11 complete, waiting for the owner's review. |

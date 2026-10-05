@@ -35,7 +35,7 @@ const stats = computed(() => [
     <UCard variant="outline" :ui="{ body: 'flex h-full flex-col gap-4 p-4 sm:p-5' }">
       <div class="flex items-start justify-between gap-2">
         <h2 class="text-sm font-semibold text-highlighted">{{ t('responses.overview.responses') }}</h2>
-        <UButton icon="i-lucide-arrow-up-right" color="neutral" variant="outline" size="xs" square :aria-label="t('responses.tabs.summary')" @click="emit('insights')" />
+        <UButton icon="i-lucide-arrow-up-right" color="neutral" variant="outline" size="xs" square class="rtl:[&_.iconify]:-scale-x-100" :aria-label="t('responses.tabs.summary')" @click="emit('insights')" />
       </div>
       <div class="flex flex-1 items-end gap-5">
         <div class="flex shrink-0 flex-col gap-3">

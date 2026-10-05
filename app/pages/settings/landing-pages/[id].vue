@@ -113,7 +113,7 @@ const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[3
     :subtitle-icon="dirty ? 'i-lucide-circle-dot' : 'i-lucide-panels-top-left'"
   >
     <template v-if="readOnly" #actions>
-      <UButton :label="t('nav.pagesAll')" icon="i-lucide-arrow-left" color="neutral" variant="outline" to="/settings/landing-pages" />
+      <UButton :label="t('nav.pagesAll')" icon="i-lucide-arrow-left" color="neutral" variant="outline" to="/settings/landing-pages" class="rtl:[&_.iconify]:-scale-x-100" />
       <UButton :label="t('themes.duplicateToEdit')" icon="i-lucide-copy-plus" color="neutral" :loading="duplicating" @click="duplicateToEdit" />
     </template>
     <template v-else #actions>
@@ -132,7 +132,7 @@ const WIDTH = { desktop: 'max-w-full', tablet: 'max-w-[768px]', phone: 'max-w-[3
       v-else-if="notFound"
       icon="i-lucide-panels-top-left"
       :title="t('pages.editor.notFound')"
-      :actions="[{ label: t('nav.pagesAll'), icon: 'i-lucide-arrow-left', to: '/settings/landing-pages', color: 'neutral', variant: 'subtle' }]"
+      :actions="[{ label: t('nav.pagesAll'), icon: 'i-lucide-arrow-left', to: '/settings/landing-pages', color: 'neutral', variant: 'subtle', class: 'rtl:[&_.iconify]:-scale-x-100' }]"
       class="my-auto"
     />
 
