@@ -13,13 +13,15 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div class="flex min-h-0 flex-1 flex-col gap-3 p-3">
-    <USkeleton v-if="!sources" class="h-8 rounded-md" />
+  <div class="flex min-h-0 flex-1 flex-col gap-2 p-3">
+    <USkeleton v-if="!sources" class="h-7 rounded-sm" />
     <USelectMenu
       v-else-if="sources.length"
       :model-value="sourceId ?? undefined"
       :items="sources.map(item => ({ value: item.id, label: item.name, icon: engineIcon(item.engine) }))"
       value-key="value"
+      size="xs"
+      :ui="{ base: 'h-7 rounded-sm' }"
       :icon="engineIcon(sources.find(item => item.id === sourceId)?.engine ?? '')"
       class="w-full"
       :aria-label="t('explorer.connection')"

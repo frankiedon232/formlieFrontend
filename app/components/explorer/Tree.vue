@@ -41,8 +41,8 @@ const items = computed<TreeItem[]>(() => {
 </script>
 
 <template>
-  <div class="flex min-h-0 flex-col gap-3">
-    <UInput v-model="search" icon="i-lucide-search" :placeholder="t('explorer.searchTables')" class="w-full" :aria-label="t('explorer.searchTables')" />
+  <div class="flex min-h-0 flex-col gap-2">
+    <UInput v-model="search" icon="i-lucide-search" size="xs" :ui="{ base: 'h-7 rounded-sm' }" :placeholder="t('explorer.searchTables')" class="w-full" :aria-label="t('explorer.searchTables')" />
     <div v-if="loading && !tables" class="flex flex-col gap-2"><USkeleton v-for="n in 8" :key="n" class="h-6 rounded-md" :class="n % 3 ? 'ms-5' : ''" /></div>
     <p v-else-if="!items.length" class="px-1 text-sm text-muted">{{ search ? t('explorer.noMatch') : t('explorer.noTables') }}</p>
     <UTree v-else :key="search" :items="items" :get-key="item => String(item.key)" color="neutral" size="sm" class="-mx-1 min-h-0 flex-1 overflow-y-auto">
