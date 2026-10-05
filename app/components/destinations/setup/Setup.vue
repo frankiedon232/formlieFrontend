@@ -67,13 +67,13 @@ async function save() {
   try {
     const columns = setup.columns.value
     const { data } = props.destination
-      ? await api.patch<DestinationDetail>(`/destinations/${props.destination.id}`, { settings: setup.settings.value, columns })
+      ? await api.patch<DestinationDetail>(`/destinations/${props.destination.id}`, { settings: setup.effective.value, columns })
       : await api.post<DestinationDetail>('/destinations', {
           form_id: props.formId,
           datasource_id: setup.sourceId.value,
           table: setup.mode.value === 'create' ? { mode: 'create', schema: setup.tablesSchema.value, name: setup.tableName.value.trim() } : { mode: 'existing', schema: setup.existing.value!.schema, name: setup.existing.value!.name },
           columns,
-          settings: setup.settings.value,
+          settings: setup.effective.value,
         })
     touched.value = false
     emit('saved', data, !props.destination)

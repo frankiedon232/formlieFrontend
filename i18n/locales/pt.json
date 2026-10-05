@@ -4399,7 +4399,9 @@
       "addColumns": "Adicionar {n} coluna | Adicionar {n} colunas",
       "navigate": "Navegar entre formulários",
       "previous": "Formulário anterior",
-      "next": "Próximo formulário"
+      "next": "Próximo formulário",
+      "viewTitle": "Use nos seus sistemas",
+      "viewDesc": "Execute isto no seu banco de dados para obter uma view com cada coluna nomeada pela sua pergunta. O Formalie não a executa; seus sistemas leem a view, e a tabela continua sendo do Formalie."
     },
     "deliveries": {
       "filter": "Mostrar",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Gravação de linhas",
       "write": {
         "insert": "Uma nova linha para cada resposta",
-        "upsert": "Atualizar a linha com a mesma chave"
+        "upsert": "Atualizar a linha com a mesma chave",
+        "standard": "Uma linha por resposta"
       },
       "writeDesc": {
         "insert": "Cada resposta adiciona uma linha. Edições e mudanças de revisão atualizam essa linha.",
@@ -4484,7 +4487,8 @@
         "label": "As palavras que as pessoas viram, fáceis de ler em relatórios."
       },
       "extraLegend": "Armazenar também",
-      "extraDesc": "O id da resposta, quando foi enviada, a versão do formulário e o idioma são sempre armazenados."
+      "extraDesc": "O id da resposta, quando foi enviada, a versão do formulário e o idioma são sempre armazenados.",
+      "standardDesc": "Cada linha é encontrada pelo seu id da resposta. Uma resposta nova adiciona sua linha, uma edição ou mudança de revisão atualiza essa linha, e uma entrega repetida nunca adiciona uma duplicata. É assim que o Formalie escreve nas tabelas que cria."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Criar uma tabela a partir do formulário",
       "createDesc": "O Formalie a cria com uma coluna para cada resposta e a mantém atualizada conforme o formulário muda.",
       "existing": "Usar uma tabela sua",
-      "existingDesc": "Escolha uma tabela que você já tem e defina em qual coluna vai cada resposta.",
+      "existingDesc": "Para uma tabela que outros sistemas já usam. Escolha em qual coluna vai cada resposta. Mudanças posteriores nessa tabela podem interromper as entregas.",
       "existingNeedsFull": "Exige Acesso total nesta conexão (Outras operações no banco de dados).",
       "tableName": "Nome da tabela",
       "tableNameDesc": "Começa com {prefix}. Letras, números e sublinhados.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "A tabela já tem todas as colunas necessárias. As novas respostas são enviadas assim que você salvar.",
       "createAndStart": "Criar a tabela e começar",
       "start": "Começar a armazenar aqui",
-      "leaveDesc": "O armazenamento de respostas que você configurou será perdido."
+      "leaveDesc": "O armazenamento de respostas que você configurou será perdido.",
+      "recommended": "Recomendado"
     },
     "help": {
       "connection": {

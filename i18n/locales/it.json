@@ -4399,7 +4399,9 @@
       "addColumns": "Aggiungi {n} colonna | Aggiungi {n} colonne",
       "navigate": "Spostatevi tra i moduli",
       "previous": "Modulo precedente",
-      "next": "Modulo successivo"
+      "next": "Modulo successivo",
+      "viewTitle": "Usatelo nei vostri sistemi",
+      "viewDesc": "Eseguite questo nel vostro database per ottenere una vista con ogni colonna chiamata come la sua domanda. Formalie non lo esegue; i vostri sistemi leggono la vista e la tabella resta di Formalie."
     },
     "deliveries": {
       "filter": "Mostra",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Scrittura delle righe",
       "write": {
         "insert": "Una nuova riga per ogni risposta",
-        "upsert": "Aggiorna la riga con la stessa chiave"
+        "upsert": "Aggiorna la riga con la stessa chiave",
+        "standard": "Una riga per risposta"
       },
       "writeDesc": {
         "insert": "Ogni risposta aggiunge una riga. Modifiche e cambi di revisione aggiornano quella riga.",
@@ -4484,7 +4487,8 @@
         "label": "Le parole viste dalle persone, facili da leggere nei report."
       },
       "extraLegend": "Archivia anche",
-      "extraDesc": "L’id della risposta, quando è stata inviata, la versione del modulo e la lingua vengono sempre archiviati."
+      "extraDesc": "L’id della risposta, quando è stata inviata, la versione del modulo e la lingua vengono sempre archiviati.",
+      "standardDesc": "Ogni riga viene trovata tramite il suo id della risposta. Una nuova risposta aggiunge la sua riga, una modifica o un cambio di revisione aggiorna quella riga, e una consegna ritentata non aggiunge mai un duplicato. È così che Formalie scrive nelle tabelle che crea."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Crea una tabella dal modulo",
       "createDesc": "Formalie la crea con una colonna per ogni risposta e la mantiene aggiornata quando il modulo cambia.",
       "existing": "Usa una vostra tabella",
-      "existingDesc": "Scegliete una tabella che avete già e indicate in quale colonna va ogni risposta.",
+      "existingDesc": "Per una tabella che altri sistemi usano già. Scegliete in quale colonna va ogni risposta. Modifiche successive a quella tabella possono interrompere le consegne.",
       "existingNeedsFull": "Richiede l’Accesso completo su questa connessione (Altre operazioni sul database).",
       "tableName": "Nome della tabella",
       "tableNameDesc": "Inizia con {prefix}. Lettere, numeri e trattini bassi.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "La tabella ha già tutte le colonne necessarie. Le nuove risposte vengono inviate appena salvate.",
       "createAndStart": "Crea la tabella e avvia",
       "start": "Inizia ad archiviare qui",
-      "leaveDesc": "L’archiviazione delle risposte che avete configurato andrà persa."
+      "leaveDesc": "L’archiviazione delle risposte che avete configurato andrà persa.",
+      "recommended": "Consigliato"
     },
     "help": {
       "connection": {

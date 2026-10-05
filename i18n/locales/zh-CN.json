@@ -4399,7 +4399,9 @@
       "addColumns": "添加 {n} 列 | 添加 {n} 列",
       "navigate": "在表单间切换",
       "previous": "上一个表单",
-      "next": "下一个表单"
+      "next": "下一个表单",
+      "viewTitle": "在您的系统中使用",
+      "viewDesc": "在您的数据库中运行此语句，即可获得一个视图，其中每列以对应的问题命名。Formalie 不会运行它；您的系统读取该视图，表仍归 Formalie 管理。"
     },
     "deliveries": {
       "filter": "显示",
@@ -4457,7 +4459,8 @@
       "writeLegend": "写入行",
       "write": {
         "insert": "每条回复新增一行",
-        "upsert": "更新具有相同键的行"
+        "upsert": "更新具有相同键的行",
+        "standard": "每条回复一行"
       },
       "writeDesc": {
         "insert": "每条回复添加一行。编辑和审核变更会更新该行。",
@@ -4484,7 +4487,8 @@
         "label": "填写人看到的文字，便于在报表中阅读。"
       },
       "extraLegend": "同时存储",
-      "extraDesc": "回复 ID、提交时间、表单版本和语言始终会被存储。"
+      "extraDesc": "回复 ID、提交时间、表单版本和语言始终会被存储。",
+      "standardDesc": "每一行通过其回复 ID 查找。新回复会添加对应的行，编辑或审核变更会更新该行，重试的投递绝不会添加重复行。Formalie 写入它所创建的表时就是这样做的。"
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "根据表单创建表",
       "createDesc": "Formalie 会为每个回答创建一列，并在表单变化时保持表的更新。",
       "existing": "使用您的自有表",
-      "existingDesc": "选择您已有的表，并选择每个回答写入哪一列。",
+      "existingDesc": "适用于其他系统已在使用的表。选择每个回答写入哪一列。之后更改该表可能会导致投递停止。",
       "existingNeedsFull": "需要此连接具有完全访问权限（其他数据库操作）。",
       "tableName": "表名",
       "tableNameDesc": "以 {prefix} 开头。可使用字母、数字和下划线。",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "表中已包含所需的全部列。保存后即开始发送新回复。",
       "createAndStart": "创建表并开始",
       "start": "开始存储到此处",
-      "leaveDesc": "您设置的回复存储将会丢失。"
+      "leaveDesc": "您设置的回复存储将会丢失。",
+      "recommended": "推荐"
     },
     "help": {
       "connection": {

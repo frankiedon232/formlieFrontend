@@ -4399,7 +4399,9 @@
       "addColumns": "{n} kolom toevoegen | {n} kolommen toevoegen",
       "navigate": "Tussen formulieren bladeren",
       "previous": "Vorig formulier",
-      "next": "Volgend formulier"
+      "next": "Volgend formulier",
+      "viewTitle": "Gebruik het in uw systemen",
+      "viewDesc": "Voer dit uit in uw database om een view te krijgen waarin elke kolom naar zijn vraag is genoemd. Formalie voert het niet uit; uw systemen lezen de view en de tabel blijft van Formalie."
     },
     "deliveries": {
       "filter": "Tonen",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Rijen schrijven",
       "write": {
         "insert": "Een nieuwe rij per reactie",
-        "upsert": "De rij met dezelfde sleutel bijwerken"
+        "upsert": "De rij met dezelfde sleutel bijwerken",
+        "standard": "Eén rij per reactie"
       },
       "writeDesc": {
         "insert": "Elke reactie voegt een rij toe. Bewerkingen en beoordelingswijzigingen werken die rij bij.",
@@ -4484,7 +4487,8 @@
         "label": "De woorden die mensen zagen, makkelijk te lezen in rapporten."
       },
       "extraLegend": "Ook opslaan",
-      "extraDesc": "De reactie-id, het moment van indienen, de formulierversie en de taal worden altijd opgeslagen."
+      "extraDesc": "De reactie-id, het moment van indienen, de formulierversie en de taal worden altijd opgeslagen.",
+      "standardDesc": "Elke rij wordt gevonden via de reactie-id. Een nieuwe reactie voegt haar rij toe, een bewerking of beoordelingswijziging werkt die rij bij, en een opnieuw geprobeerde levering voegt nooit een duplicaat toe. Zo schrijft Formalie naar de tabellen die het maakt."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Een tabel maken op basis van het formulier",
       "createDesc": "Formalie maakt de tabel met een kolom voor elk antwoord en houdt die bij als het formulier verandert.",
       "existing": "Een tabel van u gebruiken",
-      "existingDesc": "Kies een tabel die u al hebt en bepaal in welke kolom elk antwoord komt.",
+      "existingDesc": "Voor een tabel die andere systemen al gebruiken. Kies in welke kolom elk antwoord komt. Latere wijzigingen aan die tabel kunnen leveringen stoppen.",
       "existingNeedsFull": "Vereist Volledige toegang op deze verbinding (Andere databasebewerkingen).",
       "tableName": "Tabelnaam",
       "tableNameDesc": "Begint met {prefix}. Letters, cijfers en underscores.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "De tabel heeft al elke benodigde kolom. Nieuwe reacties worden verzonden zodra u opslaat.",
       "createAndStart": "Tabel maken en starten",
       "start": "Hier beginnen met opslaan",
-      "leaveDesc": "De opslag van reacties die u hebt ingesteld, gaat verloren."
+      "leaveDesc": "De opslag van reacties die u hebt ingesteld, gaat verloren.",
+      "recommended": "Aanbevolen"
     },
     "help": {
       "connection": {

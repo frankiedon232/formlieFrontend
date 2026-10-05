@@ -4399,7 +4399,9 @@
       "addColumns": "Thêm {n} cột | Thêm {n} cột",
       "navigate": "Chuyển giữa các biểu mẫu",
       "previous": "Biểu mẫu trước",
-      "next": "Biểu mẫu tiếp theo"
+      "next": "Biểu mẫu tiếp theo",
+      "viewTitle": "Dùng trong hệ thống của bạn",
+      "viewDesc": "Chạy lệnh này trong cơ sở dữ liệu của bạn để có một view với mỗi cột được đặt tên theo câu hỏi của nó. Formalie không chạy lệnh này; hệ thống của bạn đọc view, còn bảng vẫn thuộc về Formalie."
     },
     "deliveries": {
       "filter": "Hiển thị",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Ghi hàng",
       "write": {
         "insert": "Một hàng mới cho mỗi phản hồi",
-        "upsert": "Cập nhật hàng có cùng khóa"
+        "upsert": "Cập nhật hàng có cùng khóa",
+        "standard": "Một hàng cho mỗi phản hồi"
       },
       "writeDesc": {
         "insert": "Mỗi phản hồi thêm một hàng. Chỉnh sửa và thay đổi xem xét sẽ cập nhật hàng đó.",
@@ -4484,7 +4487,8 @@
         "label": "Từ ngữ mọi người đã thấy, dễ đọc trong báo cáo."
       },
       "extraLegend": "Lưu thêm",
-      "extraDesc": "Id phản hồi, thời điểm gửi, phiên bản biểu mẫu và ngôn ngữ luôn được lưu."
+      "extraDesc": "Id phản hồi, thời điểm gửi, phiên bản biểu mẫu và ngôn ngữ luôn được lưu.",
+      "standardDesc": "Mỗi hàng được tìm theo id phản hồi. Phản hồi mới thêm hàng của nó, chỉnh sửa hoặc thay đổi xem xét cập nhật hàng đó, và lần gửi thử lại không bao giờ thêm bản trùng. Đây là cách Formalie ghi vào các bảng nó tạo."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Tạo bảng từ biểu mẫu",
       "createDesc": "Formalie tạo bảng với một cột cho mỗi câu trả lời và cập nhật theo các thay đổi của biểu mẫu.",
       "existing": "Dùng một bảng của bạn",
-      "existingDesc": "Chọn một bảng bạn đã có và chọn cột cho từng câu trả lời.",
+      "existingDesc": "Dành cho bảng mà các hệ thống khác đang dùng. Chọn cột cho từng câu trả lời. Thay đổi bảng đó về sau có thể làm dừng việc gửi.",
       "existingNeedsFull": "Cần Toàn quyền trên kết nối này (Các thao tác cơ sở dữ liệu khác).",
       "tableName": "Tên bảng",
       "tableNameDesc": "Bắt đầu bằng {prefix}. Chữ cái, chữ số và dấu gạch dưới.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "Bảng đã có mọi cột cần thiết. Phản hồi mới được gửi ngay khi bạn lưu.",
       "createAndStart": "Tạo bảng và bắt đầu",
       "start": "Bắt đầu lưu tại đây",
-      "leaveDesc": "Thiết lập nơi lưu phản hồi của bạn sẽ bị mất."
+      "leaveDesc": "Thiết lập nơi lưu phản hồi của bạn sẽ bị mất.",
+      "recommended": "Khuyên dùng"
     },
     "help": {
       "connection": {

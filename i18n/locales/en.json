@@ -4399,7 +4399,9 @@
       "addColumns": "Add {n} column | Add {n} columns",
       "navigate": "Move between forms",
       "previous": "Previous form",
-      "next": "Next form"
+      "next": "Next form",
+      "viewTitle": "Use it in your systems",
+      "viewDesc": "Run this in your database to get a view with each column named after its question. Formalie doesn't run it; your systems read the view, and the table stays Formalie's."
     },
     "deliveries": {
       "filter": "Show",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Writing rows",
       "write": {
         "insert": "A new row for each response",
-        "upsert": "Update the row with the same key"
+        "upsert": "Update the row with the same key",
+        "standard": "One row per response"
       },
       "writeDesc": {
         "insert": "Every response adds a row. Edits and review changes update that row.",
@@ -4484,7 +4487,8 @@
         "label": "The words people saw, easy to read in reports."
       },
       "extraLegend": "Also store",
-      "extraDesc": "The response id, when it was submitted, the form version and the language are always stored."
+      "extraDesc": "The response id, when it was submitted, the form version and the language are always stored.",
+      "standardDesc": "Each row is found by its response id. A new response adds its row, an edit or a review change updates that row, and a retried delivery never adds a duplicate. This is how Formalie writes to the tables it creates."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Create a table from the form",
       "createDesc": "Formalie creates it with a column for each answer and keeps it up to date as the form changes.",
       "existing": "Use a table of yours",
-      "existingDesc": "Pick a table you already have and choose which column each answer goes in.",
+      "existingDesc": "For a table other systems already use. Choose which column each answer goes in. Changes to that table later can stop deliveries.",
       "existingNeedsFull": "Needs Full access on this connection (Other database operations).",
       "tableName": "Table name",
       "tableNameDesc": "Starts with {prefix}. Letters, numbers and underscores.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "The table already has every column needed. New responses are sent as soon as you save.",
       "createAndStart": "Create the table and start",
       "start": "Start storing here",
-      "leaveDesc": "The response storage you set up will be lost."
+      "leaveDesc": "The response storage you set up will be lost.",
+      "recommended": "Recommended"
     },
     "help": {
       "connection": {

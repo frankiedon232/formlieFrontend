@@ -4399,7 +4399,9 @@
       "addColumns": "Tambahkan {n} kolom | Tambahkan {n} kolom",
       "navigate": "Berpindah antarformulir",
       "previous": "Formulir sebelumnya",
-      "next": "Formulir berikutnya"
+      "next": "Formulir berikutnya",
+      "viewTitle": "Gunakan di sistem Anda",
+      "viewDesc": "Jalankan ini di database Anda untuk mendapatkan view dengan setiap kolom dinamai sesuai pertanyaannya. Formalie tidak menjalankannya; sistem Anda membaca view tersebut, dan tabelnya tetap milik Formalie."
     },
     "deliveries": {
       "filter": "Tampilkan",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Menulis baris",
       "write": {
         "insert": "Baris baru untuk setiap respons",
-        "upsert": "Perbarui baris dengan kunci yang sama"
+        "upsert": "Perbarui baris dengan kunci yang sama",
+        "standard": "Satu baris per respons"
       },
       "writeDesc": {
         "insert": "Setiap respons menambah satu baris. Perubahan dan perubahan tinjauan memperbarui baris tersebut.",
@@ -4484,7 +4487,8 @@
         "label": "Kata-kata yang dilihat orang, mudah dibaca di laporan."
       },
       "extraLegend": "Simpan juga",
-      "extraDesc": "ID respons, waktu pengiriman, versi formulir, dan bahasa selalu disimpan."
+      "extraDesc": "ID respons, waktu pengiriman, versi formulir, dan bahasa selalu disimpan.",
+      "standardDesc": "Setiap baris ditemukan berdasarkan ID responsnya. Respons baru menambah barisnya, pengeditan atau perubahan tinjauan memperbarui baris tersebut, dan pengiriman yang dicoba ulang tidak pernah menambah duplikat. Begitulah Formalie menulis ke tabel yang dibuatnya."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Buat tabel dari formulir",
       "createDesc": "Formalie membuatnya dengan satu kolom untuk setiap jawaban dan terus memperbaruinya saat formulir berubah.",
       "existing": "Gunakan tabel Anda sendiri",
-      "existingDesc": "Pilih tabel yang sudah Anda miliki dan tentukan kolom untuk setiap jawaban.",
+      "existingDesc": "Untuk tabel yang sudah dipakai sistem lain. Pilih kolom untuk setiap jawaban. Perubahan pada tabel itu nanti dapat menghentikan pengiriman.",
       "existingNeedsFull": "Memerlukan Akses penuh pada koneksi ini (Operasi database lainnya).",
       "tableName": "Nama tabel",
       "tableNameDesc": "Diawali {prefix}. Huruf, angka, dan garis bawah.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "Tabel sudah punya semua kolom yang diperlukan. Respons baru dikirim begitu Anda menyimpan.",
       "createAndStart": "Buat tabel dan mulai",
       "start": "Mulai simpan di sini",
-      "leaveDesc": "Penyimpanan respons yang Anda siapkan akan hilang."
+      "leaveDesc": "Penyimpanan respons yang Anda siapkan akan hilang.",
+      "recommended": "Disarankan"
     },
     "help": {
       "connection": {

@@ -7,7 +7,7 @@
 import type { DataSourceDetail, DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable, DestinationColumn, DestinationDetail, DestinationSettings, MetaColumn, StorageField } from '#shared/types/destinations'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
-import { checkMapping, columnsForForm, matchColumns, metaTypeFor, tableNameFor } from '#shared/utils/datasources/tables'
+import { checkMapping, columnsForForm, matchColumns, metaTypeFor, standardSettings, tableNameFor } from '#shared/utils/datasources/tables'
 
 export function useStorageSetup(input: { formName: () => string; fields: () => StorageField[]; destination?: DestinationDetail | null }) {
   const api = useApi()
@@ -86,7 +86,10 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
       return renames.value[key] ? { ...column, column: renames.value[key]! } : column
     })
   })
-  const issues = computed(() => checkMapping(columns.value, input.fields() as never[], settings.value))
+  /** Tables Formalie creates always follow its standard (one row per response, by its id). */
+  const standard = computed(() => (input.destination ? input.destination.table.created : mode.value === 'create'))
+  const effective = computed(() => (standard.value ? standardSettings(settings.value, columns.value) : settings.value))
+  const issues = computed(() => checkMapping(columns.value, input.fields() as never[], effective.value))
 
   /** A table of theirs without a place for the response id: add a column for it (Full access). */
   function addKeyColumn() {
@@ -95,6 +98,6 @@ export function useStorageSetup(input: { formName: () => string; fields: () => S
     manual.value = [...manual.value, { column: name, type: metaTypeFor(engine.value, 'response_id'), source: { kind: 'meta', key: 'response_id' }, nullable: true, existing: false }]
   }
 
-  return { sources, sourceId, source, tables, loadingTables, mode, tableName, existingKey, settings, extraMeta, renames, skipped, manual, engine, fullAccess, tablesSchema, prefix, theirTables, existing, nameTaken, columns, issues, loadSources, suggestedName, addKeyColumn }
+  return { sources, sourceId, source, tables, loadingTables, mode, tableName, existingKey, settings, effective, standard, extraMeta, renames, skipped, manual, engine, fullAccess, tablesSchema, prefix, theirTables, existing, nameTaken, columns, issues, loadSources, suggestedName, addKeyColumn }
 }
 

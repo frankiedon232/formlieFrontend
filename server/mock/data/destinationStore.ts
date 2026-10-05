@@ -16,7 +16,7 @@
 import type { BackfillJob, ColumnSource, Delivery, DeliveryStatus, DestinationColumn, DestinationDetail, DestinationRow, DestinationSettings, DestinationStatus } from '#shared/types/destinations'
 import { allFields } from '#shared/utils/forms/build'
 import { isInputField } from '#shared/utils/forms/fields'
-import { columnNameFor, columnTypeFor, columnsForForm, matchColumns, tableNameFor } from '#shared/utils/datasources/tables'
+import { columnNameFor, columnTypeFor, columnsForForm, matchColumns, standardSettings, tableNameFor } from '#shared/utils/datasources/tables'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { tablesOf, type CreatedTable } from './databaseTables'
@@ -124,6 +124,8 @@ export function destinationsOf(tenant: MockTenant): StoredDestination[] {
     stores.set(tenant.id, list)
     saveDestinations()
   }
+  // Tables Formalie created follow its standard (also those saved before it was set).
+  for (const item of list) if (item.table.created && item.settings.write_mode !== 'upsert') item.settings = standardSettings(item.settings, item.columns)
   return list
 }
 

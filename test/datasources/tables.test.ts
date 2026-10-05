@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { DestinationSettings, TableColumn } from '../../shared/types/destinations'
-import { addColumnSql, blocking, checkMapping, columnNameFor, columnsForForm, createTableSql, matchColumns, rowFor, snake, tableNameFor } from '../../shared/utils/datasources/tables'
+import { addColumnSql, blocking, checkMapping, columnNameFor, columnsForForm, createTableSql, matchColumns, rowFor, snake, standardSettings, tableNameFor, viewSql } from '../../shared/utils/datasources/tables'
 
 const settings: DestinationSettings = { write_mode: 'insert', key_column: 'response_id', multi_value: 'json', choices: 'value' }
 const fields = [
@@ -65,5 +65,20 @@ describe('response tables', () => {
     expect(row).toMatchObject({ response_id: 'r1', form_version: 3, order_value: 12, skills: '["SQL","Vue"]', agree: true, cv: '["https://files.example/cv.pdf"]', start_date: null })
     expect(JSON.parse(row.full_name as string)).toEqual({ first: 'Ada', last: 'Lovelace' })
     expect(rowFor(columns, fields, answers, facts, { multi_value: 'text', choices: 'label' }).skills).toBe('SQL; Vue')
+  })
+
+  it('writes Formalie’s own tables one row per response, by its id', () => {
+    const columns = columnsForForm('oracle', fields, settings)
+    expect(standardSettings({ ...settings, write_mode: 'insert', key_column: 'x' }, columns)).toMatchObject({ write_mode: 'upsert', key_column: 'RESPONSE_ID' })
+  })
+
+  it('offers a view named after the questions', () => {
+    const columns = columnsForForm('postgresql', fields, settings)
+    const sql = viewSql('postgresql', 'public', 'formalie_jobs', columns, new Map([['email', 'Email'], ['order', 'Order "no"']]))
+    expect(sql).toContain('CREATE OR REPLACE VIEW "public"."formalie_jobs_view" AS')
+    expect(sql).toContain('"email" AS "Email"')
+    expect(sql).toContain('"order_value" AS "Order no"')
+    expect(sql).toContain('FROM "public"."formalie_jobs";')
+    expect(viewSql('sqlserver', 'formalie', 't', columns.slice(0, 1), new Map())).toContain('CREATE OR ALTER VIEW [formalie].[t_view]')
   })
 })

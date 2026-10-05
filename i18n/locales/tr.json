@@ -4399,7 +4399,9 @@
       "addColumns": "{n} sütun ekle | {n} sütun ekle",
       "navigate": "Formlar arasında geçiş",
       "previous": "Önceki form",
-      "next": "Sonraki form"
+      "next": "Sonraki form",
+      "viewTitle": "Sistemlerinizde kullanın",
+      "viewDesc": "Her sütunu kendi sorusunun adını taşıyan bir görünüm elde etmek için bunu veritabanınızda çalıştırın. Formalie bunu çalıştırmaz; sistemleriniz görünümü okur, tablo ise Formalie'nin kalır."
     },
     "deliveries": {
       "filter": "Göster",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Satır yazma",
       "write": {
         "insert": "Her yanıt için yeni bir satır",
-        "upsert": "Aynı anahtara sahip satırı güncelle"
+        "upsert": "Aynı anahtara sahip satırı güncelle",
+        "standard": "Yanıt başına bir satır"
       },
       "writeDesc": {
         "insert": "Her yanıt bir satır ekler. Düzenlemeler ve inceleme değişiklikleri o satırı günceller.",
@@ -4484,7 +4487,8 @@
         "label": "İnsanların gördüğü sözcükler, raporlarda kolay okunur."
       },
       "extraLegend": "Ayrıca sakla",
-      "extraDesc": "Yanıt kimliği, gönderilme zamanı, form sürümü ve dil her zaman saklanır."
+      "extraDesc": "Yanıt kimliği, gönderilme zamanı, form sürümü ve dil her zaman saklanır.",
+      "standardDesc": "Her satır yanıt kimliğiyle bulunur. Yeni bir yanıt kendi satırını ekler, bir düzenleme veya inceleme değişikliği o satırı günceller ve yeniden denenen bir teslimat asla kopya eklemez. Formalie oluşturduğu tablolara böyle yazar."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Formdan bir tablo oluştur",
       "createDesc": "Formalie onu her yanıt için bir sütunla oluşturur ve form değiştikçe güncel tutar.",
       "existing": "Kendi tablonuzu kullanın",
-      "existingDesc": "Zaten sahip olduğunuz bir tabloyu seçin ve her yanıtın hangi sütuna gideceğini belirleyin.",
+      "existingDesc": "Başka sistemlerin zaten kullandığı bir tablo için. Her yanıtın hangi sütuna gideceğini seçin. Bu tabloda sonradan yapılan değişiklikler teslimatları durdurabilir.",
       "existingNeedsFull": "Bu bağlantıda Tam erişim gerekir (Diğer veritabanı işlemleri).",
       "tableName": "Tablo adı",
       "tableNameDesc": "{prefix} ile başlar. Harf, rakam ve alt çizgi.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "Tabloda gereken tüm sütunlar zaten var. Yeni yanıtlar, kaydettiğiniz anda gönderilir.",
       "createAndStart": "Tabloyu oluştur ve başlat",
       "start": "Burada saklamaya başla",
-      "leaveDesc": "Kurduğunuz yanıt depolaması kaybolacak."
+      "leaveDesc": "Kurduğunuz yanıt depolaması kaybolacak.",
+      "recommended": "Önerilen"
     },
     "help": {
       "connection": {

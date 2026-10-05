@@ -156,6 +156,35 @@ export function uniqueKeySql(engine: DbEngine, schema: string, table: string, co
   return `CREATE UNIQUE INDEX ${quoteName(engine, `${table}_${column}_uq`.slice(0, MAX_NAME[engine]))} ON ${qualified(engine, schema, table)} (${quoteName(engine, column)});`
 }
 
+/**
+ * Formalie's standard for the tables it creates (owner 2026-10-05, not a choice): one row per
+ * response, found by its response id. A new response adds the row, an edit or a review change
+ * updates it, and a retried delivery can never add a duplicate.
+ */
+export function standardSettings<T extends Pick<DestinationSettings, 'write_mode' | 'key_column'>>(settings: T, columns: DestinationColumn[]): T {
+  const id = columns.find(column => column.source?.kind === 'meta' && column.source.key === 'response_id')
+  return { ...settings, write_mode: 'upsert', key_column: id?.column ?? settings.key_column }
+}
+
+/**
+ * A view over a response table with each column named after its question, for the organisation's
+ * own systems and reports (they run it in their database; Formalie never does).
+ */
+export function viewSql(engine: DbEngine, schema: string, table: string, columns: DestinationColumn[], labels: Map<string, string>): string {
+  const view = `${table}_view`.slice(0, MAX_NAME[engine])
+  const used = new Set<string>()
+  const lines = columns.map(column => {
+    const key = column.source?.kind === 'field' ? column.source.key : null
+    let alias = (key && labels.get(key)?.trim()) || column.column
+    alias = alias.replace(/["`[\]]/g, '').slice(0, MAX_NAME[engine])
+    for (let n = 2; used.has(alias.toLowerCase()); n++) alias = `${alias.slice(0, MAX_NAME[engine] - 3)} ${n}`
+    used.add(alias.toLowerCase())
+    return `  ${quoteName(engine, column.column)} AS ${quoteName(engine, alias)}`
+  })
+  const create = engine === 'sqlserver' ? 'CREATE OR ALTER VIEW' : 'CREATE OR REPLACE VIEW'
+  return `${create} ${qualified(engine, schema, view)} AS\nSELECT\n${lines.join(',\n')}\nFROM ${qualified(engine, schema, table)};`
+}
+
 // ── Matching an existing table ───────────────────────────────────────────────────────────
 
 const norm = (name: string) => snake(name).replace(/_/g, '')

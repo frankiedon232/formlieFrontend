@@ -44,7 +44,7 @@ const menu = computed<DropdownMenuItem[][]>(() => [
         <div class="mt-1 flex flex-wrap items-center gap-1.5">
           <DataStatusBadge :status="destination.status" :label="t(`destinations.status.${destination.status}`)" />
           <UBadge :label="destination.table.created ? t('destinations.table.created') : t('destinations.table.yours')" color="neutral" variant="outline" size="sm" class="rounded-md" />
-          <UBadge :label="t(`destinations.options.write.${destination.settings.write_mode}`)" color="neutral" variant="soft" size="sm" class="rounded-md" />
+          <UBadge :label="destination.table.created ? t('destinations.options.write.standard') : t(`destinations.options.write.${destination.settings.write_mode}`)" color="neutral" variant="soft" size="sm" class="rounded-md" />
         </div>
       </div>
       <div class="flex shrink-0 items-center gap-1">

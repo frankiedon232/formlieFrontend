@@ -18,7 +18,7 @@
 import { z } from 'zod'
 import { META_COLUMNS, type DestinationColumn, type DestinationInsights, type FormStorage } from '#shared/types/destinations'
 import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
-import { blocking, checkMapping, columnNameFor, columnTypeFor } from '#shared/utils/datasources/tables'
+import { blocking, checkMapping, columnNameFor, columnTypeFor, standardSettings } from '#shared/utils/datasources/tables'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin, requireAuth } from '../core/auth'
 import { MockError, ok, paginate } from '../core/respond'
@@ -161,6 +161,8 @@ export const createDestination = defineMockRoute(({ event, body }) => {
     table = { schema, name, created: true }
   }
   const columns = input.columns as DestinationColumn[]
+  // Tables Formalie creates always follow its standard (one row per response, by its id).
+  if (table.created) input.settings = standardSettings(input.settings, columns)
   checkColumns(columns, fields, input.settings)
   const now = new Date().toISOString()
   const destination: StoredDestination = {
@@ -209,8 +211,8 @@ export const patchDestination = defineMockRoute(({ event, body }) => {
     recordAudit(event, tenant, { action: input.paused ? 'data.destination_paused' : 'data.destination_resumed', actor, resource: resource(tenant, destination) })
   }
   if (input.settings || input.columns) {
-    const settings = input.settings ?? destination.settings
     const columns = (input.columns as DestinationColumn[] | undefined) ?? destination.columns
+    const settings = destination.table.created ? standardSettings(input.settings ?? destination.settings, columns) : (input.settings ?? destination.settings)
     checkColumns(columns, inputFieldsOf(form), settings)
     destination.settings = settings
     destination.columns = columns

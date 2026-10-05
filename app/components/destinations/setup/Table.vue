@@ -30,7 +30,14 @@ const tableItems = computed(() =>
         :legend="t('destinations.setup.step.table')"
         :ui="{ fieldset: 'grid grid-cols-1 gap-3 sm:grid-cols-2', legend: 'sr-only', item: 'items-start has-data-[state=checked]:border-inverted' }"
         @update:model-value="value => (s.mode.value = value as 'create' | 'existing')"
-      />
+      >
+        <template #label="{ item }">
+          <span class="flex flex-wrap items-center gap-2">
+            <span class="font-medium text-highlighted">{{ item.label }}</span>
+            <UBadge v-if="item.value === 'create'" :label="t('destinations.setup.recommended')" color="neutral" size="sm" class="rounded-md" />
+          </span>
+        </template>
+      </URadioGroup>
 
       <div v-if="s.mode.value === 'create'" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <UFormField :label="t('destinations.setup.tableName')" :description="t('destinations.setup.tableNameDesc', { prefix: s.prefix.value })" name="table" :error="nameError ?? (s.nameTaken.value ? t('errors.FRM-DEST-1014') : undefined)" required>

@@ -4399,7 +4399,9 @@
       "addColumns": "Ajouter {n} colonne | Ajouter {n} colonnes",
       "navigate": "Passer d’un formulaire à l’autre",
       "previous": "Formulaire précédent",
-      "next": "Formulaire suivant"
+      "next": "Formulaire suivant",
+      "viewTitle": "L’utiliser dans vos systèmes",
+      "viewDesc": "Exécutez ceci dans votre base de données pour obtenir une vue dont chaque colonne porte le nom de sa question. Formalie ne l’exécute pas ; vos systèmes lisent la vue, et la table reste celle de Formalie."
     },
     "deliveries": {
       "filter": "Afficher",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Écriture des lignes",
       "write": {
         "insert": "Une nouvelle ligne par réponse",
-        "upsert": "Mettre à jour la ligne ayant la même clé"
+        "upsert": "Mettre à jour la ligne ayant la même clé",
+        "standard": "Une ligne par réponse"
       },
       "writeDesc": {
         "insert": "Chaque réponse ajoute une ligne. Les modifications et les changements de révision mettent cette ligne à jour.",
@@ -4484,7 +4487,8 @@
         "label": "Les mots que les gens ont vus, faciles à lire dans les rapports."
       },
       "extraLegend": "Stocker aussi",
-      "extraDesc": "L’ID de réponse, la date d’envoi, la version du formulaire et la langue sont toujours stockés."
+      "extraDesc": "L’ID de réponse, la date d’envoi, la version du formulaire et la langue sont toujours stockés.",
+      "standardDesc": "Chaque ligne est retrouvée grâce à son ID de réponse. Une nouvelle réponse ajoute sa ligne, une modification ou un changement de révision met cette ligne à jour, et une livraison relancée n’ajoute jamais de doublon. C’est ainsi que Formalie écrit dans les tables qu’il crée."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Créer une table à partir du formulaire",
       "createDesc": "Formalie la crée avec une colonne par réponse et la tient à jour quand le formulaire change.",
       "existing": "Utiliser une de vos tables",
-      "existingDesc": "Choisissez une table existante et indiquez dans quelle colonne va chaque réponse.",
+      "existingDesc": "Pour une table que d’autres systèmes utilisent déjà. Choisissez dans quelle colonne va chaque réponse. Des modifications ultérieures de cette table peuvent interrompre les livraisons.",
       "existingNeedsFull": "Nécessite l’Accès complet sur cette connexion (Autres opérations sur la base).",
       "tableName": "Nom de la table",
       "tableNameDesc": "Commence par {prefix}. Lettres, chiffres et traits de soulignement.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "La table a déjà toutes les colonnes nécessaires. Les nouvelles réponses sont envoyées dès que vous enregistrez.",
       "createAndStart": "Créer la table et démarrer",
       "start": "Commencer à stocker ici",
-      "leaveDesc": "Le stockage des réponses que vous avez configuré sera perdu."
+      "leaveDesc": "Le stockage des réponses que vous avez configuré sera perdu.",
+      "recommended": "Recommandé"
     },
     "help": {
       "connection": {

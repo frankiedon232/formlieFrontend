@@ -4399,7 +4399,9 @@
       "addColumns": "Dodaj kolumny: {n} | Dodaj kolumny: {n}",
       "navigate": "Przechodź między formularzami",
       "previous": "Poprzedni formularz",
-      "next": "Następny formularz"
+      "next": "Następny formularz",
+      "viewTitle": "Użyj w swoich systemach",
+      "viewDesc": "Uruchom to w swojej bazie danych, aby uzyskać widok, w którym każda kolumna nosi nazwę swojego pytania. Formalie tego nie uruchamia; Twoje systemy czytają widok, a tabela pozostaje tabelą Formalie."
     },
     "deliveries": {
       "filter": "Pokaż",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Zapisywanie wierszy",
       "write": {
         "insert": "Nowy wiersz dla każdej odpowiedzi",
-        "upsert": "Aktualizuj wiersz z tym samym kluczem"
+        "upsert": "Aktualizuj wiersz z tym samym kluczem",
+        "standard": "Jeden wiersz na odpowiedź"
       },
       "writeDesc": {
         "insert": "Każda odpowiedź dodaje wiersz. Edycje i zmiany przeglądu aktualizują ten wiersz.",
@@ -4484,7 +4487,8 @@
         "label": "Słowa, które widzieli ludzie, łatwe do czytania w raportach."
       },
       "extraLegend": "Zapisuj też",
-      "extraDesc": "Id odpowiedzi, czas przesłania, wersja formularza i język są zawsze zapisywane."
+      "extraDesc": "Id odpowiedzi, czas przesłania, wersja formularza i język są zawsze zapisywane.",
+      "standardDesc": "Każdy wiersz jest odnajdywany po id odpowiedzi. Nowa odpowiedź dodaje swój wiersz, edycja lub zmiana przeglądu aktualizuje ten wiersz, a ponowiona dostawa nigdy nie dodaje duplikatu. Tak Formalie zapisuje do tabel, które tworzy."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Utwórz tabelę z formularza",
       "createDesc": "Formalie utworzy ją z kolumną dla każdej odpowiedzi i będzie ją aktualizować, gdy formularz się zmieni.",
       "existing": "Użyj swojej tabeli",
-      "existingDesc": "Wybierz tabelę, którą już masz, i wskaż, do której kolumny trafia każda odpowiedź.",
+      "existingDesc": "Dla tabeli, której inne systemy już używają. Wskaż, do której kolumny trafia każda odpowiedź. Późniejsze zmiany w tej tabeli mogą zatrzymać dostarczanie.",
       "existingNeedsFull": "Wymaga Pełnego dostępu na tym połączeniu (Inne operacje na bazie danych).",
       "tableName": "Nazwa tabeli",
       "tableNameDesc": "Zaczyna się od {prefix}. Litery, cyfry i podkreślenia.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "Tabela ma już wszystkie potrzebne kolumny. Nowe odpowiedzi będą wysyłane od razu po zapisaniu.",
       "createAndStart": "Utwórz tabelę i rozpocznij",
       "start": "Zacznij zapisywać tutaj",
-      "leaveDesc": "Skonfigurowane zapisywanie odpowiedzi zostanie utracone."
+      "leaveDesc": "Skonfigurowane zapisywanie odpowiedzi zostanie utracone.",
+      "recommended": "Zalecane"
     },
     "help": {
       "connection": {

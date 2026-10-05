@@ -17,7 +17,7 @@ const share = computed(() => {
 })
 const facts = computed(() => [
   { key: 'table', label: t('destinations.col.table'), value: `${props.destination.table.schema}.${props.destination.table.name}`, ltr: true },
-  { key: 'write', label: t('destinations.options.writeLegend'), value: t(`destinations.options.write.${props.destination.settings.write_mode}`) },
+  { key: 'write', label: t('destinations.options.writeLegend'), value: props.destination.table.created ? t('destinations.options.write.standard') : t(`destinations.options.write.${props.destination.settings.write_mode}`) },
   { key: 'pending', label: t('destinations.kpi.pending'), value: number(props.destination.pending) },
   { key: 'failed', label: t('destinations.kpi.failed'), value: number(props.destination.failed), warn: props.destination.failed > 0 },
 ])

@@ -5,7 +5,7 @@
 -->
 <script setup lang="ts">
 import type { DestinationDetail } from '#shared/types/destinations'
-import { addColumnSql } from '#shared/utils/datasources/tables'
+import { addColumnSql, viewSql } from '#shared/utils/datasources/tables'
 
 const props = defineProps<{ destination: DestinationDetail; refreshKey: number; busy: boolean }>()
 const emit = defineEmits<{ addColumns: [keys: string[]]; retried: [] }>()
@@ -34,6 +34,14 @@ const job = computed(() => props.destination.backfill)
 const percent = computed(() => (job.value && job.value.total ? Math.round((job.value.done / job.value.total) * 100) : 100))
 const sourceLabel = (column: DestinationDetail['columns'][number]) =>
   !column.source ? t('destinations.columns.nothing') : column.source.kind === 'meta' ? t(`destinations.meta.${column.source.key}`) : (props.destination.fields.find(field => field.key === column.source!.key)?.label ?? column.source.key)
+// A view naming each column after its question, for their own systems (tables Formalie created).
+const view = computed(() => viewSql(props.destination.datasource.engine, props.destination.table.schema, props.destination.table.name, props.destination.columns, new Map(props.destination.fields.map(field => [field.key, field.label]))))
+const toast = useToast()
+const { copy } = useClipboard({ legacy: true })
+function copyView() {
+  void copy(view.value)
+  toast.add({ title: t('dataSources.grant.copied'), color: 'success', icon: 'i-lucide-check' })
+}
 const addSql = computed(() => props.destination.unmapped_fields.map(field => addColumnSql(props.destination.datasource.engine, props.destination.table.schema, props.destination.table.name, field)).join('\n'))
 </script>
 
@@ -98,6 +106,20 @@ const addSql = computed(() => props.destination.unmapped_fields.map(field => add
           <code class="truncate text-end font-mono text-[11px] text-muted" dir="ltr">{{ column.type }}</code>
         </li>
       </ul>
+      <UCollapsible v-if="destination.table.created" class="flex flex-col gap-2">
+        <UButton :label="t('destinations.detail.viewTitle')" icon="i-lucide-eye" trailing-icon="i-lucide-chevron-down" color="neutral" variant="outline" size="sm" class="w-fit" />
+        <template #content>
+          <div class="flex flex-col gap-2 pt-1">
+            <p class="text-xs text-muted">{{ t('destinations.detail.viewDesc') }}</p>
+            <div class="overflow-hidden rounded-lg border border-default">
+              <div class="flex justify-end bg-elevated/50 px-2 py-1">
+                <UButton icon="i-lucide-copy" color="neutral" variant="ghost" size="xs" :aria-label="t('common.copy')" @click="copyView" />
+              </div>
+              <pre class="max-h-72 overflow-auto px-3 py-2 font-mono text-[11px] leading-relaxed text-default" dir="ltr" tabindex="0">{{ view }}</pre>
+            </div>
+          </div>
+        </template>
+      </UCollapsible>
     </section>
   </div>
 </template>

@@ -20,8 +20,8 @@ const sql = computed(() => {
   if (!engine || !table) return ''
   if (s.mode.value === 'create' && !props.editing) return createTableSql(engine, table.schema, table.name, s.columns.value)
   const statements = s.columns.value.filter(column => !column.existing).map(column => addColumnSql(engine, table.schema, table.name, column))
-  const keyColumn = s.existing.value?.columns.find(column => column.name === s.settings.value.key_column)
-  if (s.settings.value.write_mode === 'upsert' && keyColumn && !keyColumn.unique && !keyColumn.primary) statements.push(uniqueKeySql(engine, table.schema, table.name, keyColumn.name))
+  const keyColumn = s.existing.value?.columns.find(column => column.name === s.effective.value.key_column)
+  if (s.effective.value.write_mode === 'upsert' && keyColumn && !keyColumn.unique && !keyColumn.primary) statements.push(uniqueKeySql(engine, table.schema, table.name, keyColumn.name))
   return statements.join('\n')
 })
 const filled = computed(() => s.columns.value.filter(column => column.source).length)
@@ -29,7 +29,7 @@ const rows = computed(() => [
   { key: 'connection', step: 'connection', icon: s.engine.value ? engineIcon(s.engine.value) : 'i-lucide-database', label: t('destinations.setup.step.connection'), value: s.source.value?.name ?? '' },
   { key: 'table', step: 'table', icon: 'i-lucide-table-2', label: t('destinations.setup.step.table'), value: target.value ? `${target.value.schema}.${target.value.name}` : '', ltr: true },
   { key: 'columns', step: 'columns', icon: 'i-lucide-columns-3', label: t('destinations.setup.step.columns'), value: t('destinations.setup.columnsCount', { filled: filled.value, total: s.columns.value.length }) },
-  { key: 'write', step: 'options', icon: 'i-lucide-pencil-line', label: t('destinations.options.writeLegend'), value: t(`destinations.options.write.${s.settings.value.write_mode}`) },
+  { key: 'write', step: 'options', icon: 'i-lucide-pencil-line', label: t('destinations.options.writeLegend'), value: s.standard.value ? t('destinations.options.write.standard') : t(`destinations.options.write.${s.settings.value.write_mode}`) },
 ])
 function copySql() {
   void copy(sql.value)

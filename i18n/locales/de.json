@@ -4399,7 +4399,9 @@
       "addColumns": "{n} Spalte hinzufügen | {n} Spalten hinzufügen",
       "navigate": "Zwischen Formularen wechseln",
       "previous": "Vorheriges Formular",
-      "next": "Nächstes Formular"
+      "next": "Nächstes Formular",
+      "viewTitle": "In Ihren Systemen nutzen",
+      "viewDesc": "Führen Sie dies in Ihrer Datenbank aus, um eine View zu erhalten, deren Spalten nach den Fragen benannt sind. Formalie führt es nicht aus; Ihre Systeme lesen die View, und die Tabelle bleibt die von Formalie."
     },
     "deliveries": {
       "filter": "Anzeigen",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Zeilen schreiben",
       "write": {
         "insert": "Eine neue Zeile pro Antwort",
-        "upsert": "Zeile mit demselben Schlüssel aktualisieren"
+        "upsert": "Zeile mit demselben Schlüssel aktualisieren",
+        "standard": "Eine Zeile pro Antwort"
       },
       "writeDesc": {
         "insert": "Jede Antwort fügt eine Zeile hinzu. Bearbeitungen und Prüfänderungen aktualisieren diese Zeile.",
@@ -4484,7 +4487,8 @@
         "label": "Die Wörter, die die Leute gesehen haben, gut lesbar in Berichten."
       },
       "extraLegend": "Auch speichern",
-      "extraDesc": "Antwort-ID, Sendezeitpunkt, Formularversion und Sprache werden immer gespeichert."
+      "extraDesc": "Antwort-ID, Sendezeitpunkt, Formularversion und Sprache werden immer gespeichert.",
+      "standardDesc": "Jede Zeile wird über ihre Antwort-ID gefunden. Eine neue Antwort fügt ihre Zeile hinzu, eine Bearbeitung oder Prüfänderung aktualisiert diese Zeile, und eine wiederholte Zustellung fügt nie ein Duplikat hinzu. So schreibt Formalie in die Tabellen, die es erstellt."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Tabelle aus dem Formular erstellen",
       "createDesc": "Formalie erstellt sie mit einer Spalte pro Antwort und hält sie aktuell, wenn sich das Formular ändert.",
       "existing": "Eigene Tabelle verwenden",
-      "existingDesc": "Wählen Sie eine vorhandene Tabelle und legen Sie fest, in welche Spalte jede Antwort kommt.",
+      "existingDesc": "Für eine Tabelle, die andere Systeme bereits nutzen. Legen Sie fest, in welche Spalte jede Antwort kommt. Spätere Änderungen an dieser Tabelle können Zustellungen stoppen.",
       "existingNeedsFull": "Erfordert Vollzugriff auf dieser Verbindung (Weitere Datenbankvorgänge).",
       "tableName": "Tabellenname",
       "tableNameDesc": "Beginnt mit {prefix}. Buchstaben, Ziffern und Unterstriche.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "Die Tabelle hat bereits alle nötigen Spalten. Neue Antworten werden gesendet, sobald Sie speichern.",
       "createAndStart": "Tabelle erstellen und starten",
       "start": "Hier speichern starten",
-      "leaveDesc": "Der eingerichtete Antwortspeicher geht verloren."
+      "leaveDesc": "Der eingerichtete Antwortspeicher geht verloren.",
+      "recommended": "Empfohlen"
     },
     "help": {
       "connection": {

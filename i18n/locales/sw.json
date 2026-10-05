@@ -4399,7 +4399,9 @@
       "addColumns": "Ongeza safuwima {n} | Ongeza safuwima {n}",
       "navigate": "Hamia kati ya fomu",
       "previous": "Fomu iliyotangulia",
-      "next": "Fomu inayofuata"
+      "next": "Fomu inayofuata",
+      "viewTitle": "Tumia katika mifumo yako",
+      "viewDesc": "Endesha hii katika hifadhidata yako ili upate mwonekano (view) wenye kila safuwima iliyopewa jina la swali lake. Formalie haiendeshi; mifumo yako husoma mwonekano huo, na jedwali hubaki kuwa la Formalie."
     },
     "deliveries": {
       "filter": "Onyesha",
@@ -4457,7 +4459,8 @@
       "writeLegend": "Kuandika safu",
       "write": {
         "insert": "Safu mpya kwa kila jibu",
-        "upsert": "Sasisha safu yenye ufunguo uleule"
+        "upsert": "Sasisha safu yenye ufunguo uleule",
+        "standard": "Safu moja kwa kila jibu"
       },
       "writeDesc": {
         "insert": "Kila jibu huongeza safu. Mabadiliko na mabadiliko ya ukaguzi husasisha safu hiyo.",
@@ -4484,7 +4487,8 @@
         "label": "Maneno ambayo watu waliona, rahisi kusoma katika ripoti."
       },
       "extraLegend": "Pia hifadhi",
-      "extraDesc": "Kitambulisho cha jibu, muda lilipowasilishwa, toleo la fomu na lugha huhifadhiwa kila wakati."
+      "extraDesc": "Kitambulisho cha jibu, muda lilipowasilishwa, toleo la fomu na lugha huhifadhiwa kila wakati.",
+      "standardDesc": "Kila safu hupatikana kwa kitambulisho cha jibu lake. Jibu jipya huongeza safu yake, uhariri au badiliko la ukaguzi husasisha safu hiyo, na uwasilishaji unaojaribiwa tena hauongezi nakala kamwe. Hivi ndivyo Formalie huandika kwenye majedwali inayounda."
     },
     "setup": {
       "step": {
@@ -4515,7 +4519,7 @@
       "create": "Unda jedwali kutoka kwa fomu",
       "createDesc": "Formalie huunda jedwali lenye safuwima kwa kila jibu na kulisasisha kadiri fomu inavyobadilika.",
       "existing": "Tumia jedwali lako",
-      "existingDesc": "Chagua jedwali ulilo nalo tayari na uchague safuwima ambayo kila jibu linaingia.",
+      "existingDesc": "Kwa jedwali ambalo mifumo mingine tayari inatumia. Chagua safuwima ambayo kila jibu linaingia. Mabadiliko ya baadaye kwenye jedwali hilo yanaweza kusimamisha uwasilishaji.",
       "existingNeedsFull": "Inahitaji Ufikiaji kamili kwenye muunganisho huu (Shughuli nyingine za hifadhidata).",
       "tableName": "Jina la jedwali",
       "tableNameDesc": "Huanza na {prefix}. Herufi, nambari na mistari ya chini.",
@@ -4534,7 +4538,8 @@
       "sqlNoneNote": "Jedwali tayari lina kila safuwima inayohitajika. Majibu mapya yanatumwa mara tu unapohifadhi.",
       "createAndStart": "Unda jedwali na uanze",
       "start": "Anza kuhifadhi hapa",
-      "leaveDesc": "Hifadhi ya majibu uliyoweka itapotea."
+      "leaveDesc": "Hifadhi ya majibu uliyoweka itapotea.",
+      "recommended": "Inapendekezwa"
     },
     "help": {
       "connection": {

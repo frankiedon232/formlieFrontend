@@ -25,8 +25,19 @@ const ui = { fieldset: 'grid grid-cols-1 gap-3 sm:grid-cols-2', legend: 'mb-2 te
 
 <template>
   <div class="flex flex-col gap-6">
-    <URadioGroup :model-value="s.settings.value.write_mode" :items="radio('write', ['insert', 'upsert'])" variant="card" indicator="end" color="neutral" :legend="t('destinations.options.writeLegend')" :ui="ui" @update:model-value="value => set({ write_mode: value as DestinationSettings['write_mode'] })" />
-    <UFormField v-if="s.settings.value.write_mode === 'upsert'" :label="t('destinations.options.keyColumn')" :description="t('destinations.options.keyColumnDesc')">
+    <!-- Tables Formalie creates: its standard, no choice -->
+    <section v-if="s.standard.value" class="flex flex-col gap-1.5">
+      <h3 class="text-sm font-medium text-highlighted">{{ t('destinations.options.writeLegend') }}</h3>
+      <div class="flex items-start gap-2.5 rounded-lg border border-default p-3">
+        <UIcon name="i-lucide-shield-check" class="mt-0.5 size-4 shrink-0 text-highlighted" />
+        <div class="flex min-w-0 flex-col gap-0.5">
+          <span class="text-sm font-medium text-highlighted">{{ t('destinations.options.write.standard') }}</span>
+          <span class="text-xs text-muted">{{ t('destinations.options.standardDesc') }}</span>
+        </div>
+      </div>
+    </section>
+    <URadioGroup v-else :model-value="s.settings.value.write_mode" :items="radio('write', ['insert', 'upsert'])" variant="card" indicator="end" color="neutral" :legend="t('destinations.options.writeLegend')" :ui="ui" @update:model-value="value => set({ write_mode: value as DestinationSettings['write_mode'] })" />
+    <UFormField v-if="!s.standard.value && s.settings.value.write_mode === 'upsert'" :label="t('destinations.options.keyColumn')" :description="t('destinations.options.keyColumnDesc')">
       <USelect :model-value="s.settings.value.key_column" :items="keyItems" value-key="value" class="w-full font-mono sm:w-80" @update:model-value="value => set({ key_column: String(value) })" />
     </UFormField>
     <URadioGroup :model-value="s.settings.value.multi_value" :items="radio('multi', ['json', 'text'])" variant="card" indicator="end" color="neutral" :legend="t('destinations.options.multiLegend')" :ui="ui" :disabled="editing" @update:model-value="value => set({ multi_value: value as DestinationSettings['multi_value'] })" />
