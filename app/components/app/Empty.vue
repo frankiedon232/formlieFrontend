@@ -33,16 +33,17 @@ const compact = computed(() => props.size === 'xs' || props.size === 'sm')
 /** xs: inside a small panel or list (no minimum height). */
 const tiny = computed(() => props.size === 'xs')
 /** The free space it sits in: the frame stays compact and centred inside it. */
-const spaceClass = computed(() => (tiny.value ? 'py-1' : compact.value ? 'min-h-40 py-4' : 'min-h-64 py-8'))
+// A full page: the box sits a little above the middle (owner 2026-10-05), not dead centre.
+const spaceClass = computed(() => (tiny.value ? 'py-1' : compact.value ? 'min-h-40 py-4' : 'min-h-64 pt-6 pb-[14vh]'))
 const ui = computed(() => ({
   // A compact, softly framed card with smooth corners (owner 2026-10-05: not large)
   root: [
-    'flex w-full flex-col items-center justify-center gap-0 text-center border border-default bg-elevated/25',
+    'flex w-full flex-col items-center justify-center gap-0 text-center border border-default/60 bg-elevated/20',
     tiny.value
       ? 'max-w-60 rounded-xl px-3 py-3.5'
       : compact.value
         ? 'max-w-lg rounded-2xl px-8 py-9'
-        : 'max-w-2xl rounded-2xl px-10 py-14',
+        : 'max-w-4xl rounded-2xl px-10 py-16',
   ].join(' '),
   header: 'flex flex-col items-center gap-0',
   title: tiny.value
