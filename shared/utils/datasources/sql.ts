@@ -209,3 +209,10 @@ export function formatSql(sql: string): string {
     .map(statement => `${formatStatement(statement.text)};`)
     .join('\n\n')
 }
+
+/** A whole script's kind: its strongest statement (structure > delete > update > insert > other > read). */
+export function scriptKind(sql: string): StatementKind {
+  const order: StatementKind[] = ['structure', 'delete', 'update', 'insert', 'other', 'read']
+  const kinds = splitStatements(sql).map(statement => statementKind(statement.text))
+  return order.find(kind => kinds.includes(kind)) ?? 'read'
+}

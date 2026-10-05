@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatSql, parametersIn, splitStatements, statementAt, statementKind, tablesIn } from '#shared/utils/datasources/sql'
+import { formatSql, parametersIn, scriptKind, splitStatements, statementAt, statementKind, tablesIn } from '#shared/utils/datasources/sql'
 
 describe('statements', () => {
   it('splits on semicolons outside quotes, comments and dollar quotes', () => {
@@ -30,6 +30,11 @@ describe('kinds', () => {
     expect(statementKind('-- note\nDROP TABLE t')).toBe('structure')
     expect(statementKind('TRUNCATE t')).toBe('structure')
     expect(statementKind('VACUUM')).toBe('other')
+  })
+
+  it('gives a script the kind of its strongest statement', () => {
+    expect(scriptKind('SELECT client_id, title FROM intake.cases;\n\nSELECT * FROM intake.cases;')).toBe('read')
+    expect(scriptKind('SELECT 1; DELETE FROM t WHERE id = 1; UPDATE t SET a = 1')).toBe('delete')
   })
 })
 

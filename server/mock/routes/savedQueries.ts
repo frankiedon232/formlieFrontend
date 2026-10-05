@@ -4,7 +4,7 @@
  *   GET    /saved-queries              list (q, sort, filter[datasource], filter[scope]=mine|shared, filter[kind]=read|change)
  *   GET    /saved-queries/insights     counts, runs in the last 30 days, read vs change
  *   GET    /saved-queries/:id          one
- *   POST   /saved-queries              { name, description?, sql, datasource_id, shared }
+ *   POST   /saved-queries              { name, description?, sql (one statement or a script), datasource_id, shared }
  *   PATCH  /saved-queries/:id          { name?, description?, sql?, shared? } (its owner only, FRM-DEST-1027)
  *   DELETE /saved-queries/:id          (its owner only)
  *
@@ -12,7 +12,7 @@
  */
 import { z } from 'zod'
 import type { SavedQueryInsights } from '#shared/types/query'
-import { splitStatements, statementKind } from '#shared/utils/datasources/sql'
+import { scriptKind, splitStatements } from '#shared/utils/datasources/sql'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
 import { MockError, ok, paginate } from '../core/respond'
@@ -86,12 +86,13 @@ export const createSavedQuery = defineMockRoute(({ event, body }) => {
   const values = parseBody(input, body)
   const source = dataSourcesOf(tenant).find(item => item.id === values.datasource_id)
   if (!source) throw new MockError('FRM-GEN-1002', [{ field: 'datasource_id', message: 'required' }])
-  if (splitStatements(values.sql).length !== 1) throw new MockError('FRM-DEST-1026', [{ field: 'sql', message: 'one' }])
+  // A saved query may hold a script (several statements); the editor runs one at a time
+  if (!splitStatements(values.sql).length) throw new MockError('FRM-GEN-1002', [{ field: 'sql', message: 'required' }])
   const now = new Date().toISOString()
   const item = { id: crypto.randomUUID(), name: values.name, description: values.description || null, sql: values.sql.trim(), datasource_id: source.id, shared: values.shared, owner_id: user.id, runs: {}, last_run_at: null, created_at: now, updated_at: now }
   savedQueriesOf(tenant).unshift(item)
   saveSavedQueries()
-  recordAudit(event, tenant, { action: 'data.saved_query_saved', actor: actorOf(user), resource: { type: 'data_source', id: source.id, name: source.name }, metadata: { name: item.name, kind: statementKind(item.sql), shared: String(item.shared) } })
+  recordAudit(event, tenant, { action: 'data.saved_query_saved', actor: actorOf(user), resource: { type: 'data_source', id: source.id, name: source.name }, metadata: { name: item.name, kind: scriptKind(item.sql), shared: String(item.shared) } })
   return ok(toSavedQuery(tenant, user, item), {}, 201)
 })
 
@@ -100,7 +101,7 @@ export const updateSavedQuery = defineMockRoute(({ event, body }) => {
   const item = find(tenant, user, getRouterParam(event, 'id'))
   if (item.owner_id !== user.id) throw new MockError('FRM-DEST-1027')
   const values = parseBody(input.partial().omit({ datasource_id: true }), body)
-  if (values.sql !== undefined && splitStatements(values.sql).length !== 1) throw new MockError('FRM-DEST-1026', [{ field: 'sql', message: 'one' }])
+  if (values.sql !== undefined && !splitStatements(values.sql).length) throw new MockError('FRM-GEN-1002', [{ field: 'sql', message: 'required' }])
   Object.assign(item, {
     ...(values.name !== undefined ? { name: values.name } : {}),
     ...(values.description !== undefined ? { description: values.description || null } : {}),
@@ -110,7 +111,7 @@ export const updateSavedQuery = defineMockRoute(({ event, body }) => {
   })
   saveSavedQueries()
   const source = dataSourcesOf(tenant).find(entry => entry.id === item.datasource_id)
-  recordAudit(event, tenant, { action: 'data.saved_query_saved', actor: actorOf(user), resource: { type: 'data_source', id: item.datasource_id, name: source?.name ?? '' }, metadata: { name: item.name, kind: statementKind(item.sql), shared: String(item.shared) } })
+  recordAudit(event, tenant, { action: 'data.saved_query_saved', actor: actorOf(user), resource: { type: 'data_source', id: item.datasource_id, name: source?.name ?? '' }, metadata: { name: item.name, kind: scriptKind(item.sql), shared: String(item.shared) } })
   return ok(toSavedQuery(tenant, user, item))
 })
 

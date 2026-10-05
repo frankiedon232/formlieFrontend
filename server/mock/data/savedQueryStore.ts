@@ -4,7 +4,7 @@
  * connection the first time it is read; runs from the editor are counted day by day.
  */
 import type { SavedQuery } from '#shared/types/query'
-import { statementKind } from '#shared/utils/datasources/sql'
+import { scriptKind } from '#shared/utils/datasources/sql'
 import { loadPersisted, savePersisted } from '../core/persist'
 import { seedOf } from './dataSourceSim'
 import { dataSourcesOf, type StoredDataSource } from './dataSourceStore'
@@ -84,7 +84,7 @@ export function toSavedQuery(tenant: MockTenant, user: MockUser, item: StoredSav
     name: item.name,
     description: item.description,
     sql: item.sql,
-    kind: statementKind(item.sql),
+    kind: scriptKind(item.sql),
     datasource: { id: item.datasource_id, name: source?.name ?? '', engine: source?.engine ?? 'postgresql' },
     shared: item.shared,
     mine: item.owner_id === user.id,

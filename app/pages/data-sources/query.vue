@@ -12,7 +12,7 @@
 import type { DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable } from '#shared/types/destinations'
 import type { SavedQuery } from '#shared/types/query'
-import { formatSql, parametersIn } from '#shared/utils/datasources/sql'
+import { formatSql, parametersIn, splitStatements } from '#shared/utils/datasources/sql'
 
 definePageMeta({ breadcrumb: 'nav.dataQuery' })
 const { t } = useI18n()
@@ -87,9 +87,9 @@ function run() {
   const values = valuesOf(tabs.active.value.id)
   const missing = names.filter(name => !(name in values) || values[name] === '')
   if (missing.length) return void toast.add({ title: t('query.fillParams', { names: missing.map(name => `:${name}`).join(', ') }), color: 'warning', icon: 'i-lucide-variable' })
-  // A saved query's run is counted on it when the whole saved statement runs
+  // A saved query's run is counted on it when one of its saved statements runs
   const tab = tabs.active.value
-  const savedId = tab.savedId && target.text.trim().replace(/;$/, '') === (tab.savedSql ?? '').trim().replace(/;$/, '') ? tab.savedId : undefined
+  const savedId = tab.savedId && splitStatements(tab.savedSql ?? '').some(statement => statement.text === target.text.trim().replace(/;$/, '')) ? tab.savedId : undefined
   void runner.run(tab.id, target.text, target.from, Object.fromEntries(names.map(name => [name, values[name]!])), 1, false, savedId)
 }
 const cancel = () => runner.cancel(tabs.active.value.id)

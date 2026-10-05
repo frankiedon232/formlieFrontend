@@ -314,7 +314,7 @@ Admins only until F22. One statement per run, on Formalie's servers through the 
 | GET | `/saved-queries` | `SavedQuery { id, name, description, sql, kind, datasource { id, name, engine }, shared, mine, owner { id, name }, run_count, last_run_at, daily (30 days of runs), created_at, updated_at }`; yours and the shared ones; `q`, `sort` (name · -run_count · -last_run_at · -updated_at), `filter[datasource]`, `filter[scope]=mine,shared`, `filter[kind]=read,change` |
 | GET | `/saved-queries/insights` | `{ total, mine, shared, runs_30d, previous_30d, daily, by_kind { read, change } }` |
 | GET | `/saved-queries/{id}` | one (yours or shared) |
-| POST | `/saved-queries` | `{ name, description?, sql (one statement), datasource_id, shared }` → 201; audit `data.saved_query_saved` |
+| POST | `/saved-queries` | `{ name, description?, sql (one statement or a script of several; the editor runs one at a time), datasource_id, shared }` → 201; `kind` is the script's strongest statement (structure > delete > update > insert > other > read); audit `data.saved_query_saved` |
 | PATCH | `/saved-queries/{id}` | `{ name?, description?, sql?, shared? }`; only its owner (`FRM-DEST-1027`) |
 | DELETE | `/saved-queries/{id}` | only its owner; audit `data.saved_query_deleted`. Running a saved query from the editor sends `saved_id` with the run, which counts it |
 
