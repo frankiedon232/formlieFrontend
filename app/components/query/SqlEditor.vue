@@ -2,8 +2,8 @@
   The SQL editor (F12 M4, CodeMirror 6, owner-approved): the connection's own SQL dialect,
   completion of its schemas, tables and columns, line numbers, bracket matching, undo history.
   Ctrl / ⌘ + Enter runs the selection, or the statement the cursor is in. A database problem marks
-  its line. Colours come from the theme (ink, muted, success for text, warning for numbers), so it
-  follows light and dark mode.
+  its line. Colours come from the theme (reserved words in info blue, success for text, warning for
+  numbers, muted for the rest), so it follows light and dark mode.
 -->
 <script setup lang="ts">
 import { autocompletion, closeBrackets, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete'
@@ -42,7 +42,8 @@ const errorLineField = StateField.define({
 })
 
 const highlight = HighlightStyle.define([
-  { tag: [tags.keyword, tags.operatorKeyword, tags.modifier], color: 'var(--ui-text-highlighted)', fontWeight: '600' },
+  // Reserved words in the theme's blue (owner 2026-10-05; follows light and dark mode)
+  { tag: [tags.keyword, tags.operatorKeyword, tags.modifier], color: 'var(--ui-info)', fontWeight: '600' },
   { tag: [tags.string, tags.special(tags.string)], color: 'var(--ui-success)' },
   { tag: [tags.number, tags.bool, tags.null], color: 'var(--ui-warning)' },
   { tag: [tags.lineComment, tags.blockComment, tags.comment], color: 'var(--ui-text-dimmed)', fontStyle: 'italic' },
