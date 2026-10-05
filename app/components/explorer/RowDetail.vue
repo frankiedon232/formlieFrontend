@@ -130,7 +130,6 @@ function copyRow() {
               <UIcon v-if="column.primary" name="i-lucide-key-round" class="size-3 shrink-0 text-muted" />
               {{ column.name }}
             </span>
-            <span class="truncate font-mono text-[10px] text-dimmed" dir="ltr">{{ column.type }}</span>
           </dt>
           <dd class="min-w-0 text-sm text-default">
             <ExplorerCell :value="row[column.name]" full />

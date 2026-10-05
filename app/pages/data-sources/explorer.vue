@@ -11,7 +11,7 @@
 import type { DataSourceRow } from '#shared/types/datasources'
 import type { DatabaseTable } from '#shared/types/destinations'
 import type { DropdownMenuItem } from '@nuxt/ui'
-import type { ColumnFacet, ExplorerColumn, SchemaResult, TableIndex, TableRow, TableStructure } from '#shared/types/explorer'
+import type { ColumnFacet, ExplorerColumn, SchemaResult, TableExport, TableIndex, TableRow, TableStructure } from '#shared/types/explorer'
 
 definePageMeta({ breadcrumb: 'nav.dataExplorer' })
 const { t } = useI18n()
@@ -93,9 +93,9 @@ const treeOpen = ref(false)
 const takeover = useSidebarTakeover()
 takeover.claim(() => t('nav.dataExplorer'), 'i-lucide-table-2')
 watch(takeover.shown, shown => shown && (treeOpen.value = false))
-function open(table: Pick<DatabaseTable, 'schema' | 'name'>) {
+function open(table: Pick<DatabaseTable, 'schema' | 'name'>, nextTab: 'data' | 'structure' = 'data') {
   treeOpen.value = false
-  tab.value = 'data'
+  tab.value = nextTab
   go({ ds: dsId.value ?? undefined, object: `${table.schema}.${table.name}` })
 }
 const openRef = (ref: { schema: string; table: string }) => {
@@ -123,6 +123,7 @@ const data = useTemplateRef<{
   refresh: () => Promise<void>
   params: () => Record<string, string | number>
   filtered: () => boolean
+  rows: () => TableRow[]
 }>('data')
 
 // Changing rows (Full access, their own tables)
@@ -172,7 +173,7 @@ const newTableOpen = ref(false)
 const schemas = computed(() => {
   const theirs = [...new Set([...(tables.value ?? []).filter(item => !item.formalie).map(item => item.schema), ...(source.value?.access.schemas ?? [])])]
   const list = theirs.length ? theirs : [...new Set((tables.value ?? []).map(item => item.schema))]
-  const first = structure.value?.schema ?? source.value?.access.schemas[0] ?? (tables.value ?? []).find(item => item.formalie)?.schema
+  const first = newTableSchema.value ?? structure.value?.schema ?? source.value?.access.schemas[0] ?? (tables.value ?? []).find(item => item.formalie)?.schema
   return first && list.includes(first) ? [first, ...list.filter(item => item !== first)] : list
 })
 const tableMenu = computed<DropdownMenuItem[][]>(() => [
@@ -194,6 +195,30 @@ async function schemaChanged(result: SchemaResult) {
   await loadTable()
   await data.value?.refresh()
 }
+// Right-click menus (owner 2026-10-05): tree nodes, rows and the table area
+const exporter = useTemplateRef<{ start: (format: TableExport['format']) => Promise<void> }>('exporter')
+const newTableSchema = ref<string | null>(null)
+function newTable(schemaName?: string) {
+  newTableSchema.value = schemaName ?? null
+  newTableOpen.value = true
+}
+const menus = useExplorerMenus({
+  structure,
+  canCreate,
+  isFormalie: (schemaName, table) => !!tables.value?.find(item => item.schema === schemaName && item.name === table)?.formalie,
+  open: (table, nextTab) => open(table, nextTab),
+  refresh: () => void Promise.all([loadTables(true), loadTable()]),
+  newTable,
+  addRow: () => editRow(null),
+  openRow: row => openRow(row, data.value?.rows() ?? [row]),
+  editRow: row => editRow(row),
+  removeRow: row => void removeRow(row),
+  exportAs: format => void exporter.value?.start(format),
+  schema: () => schema.value,
+})
+const content = useTemplateRef<HTMLElement>('content')
+useContextMenu().register(content, () => menus.tableMenu())
+
 function tableCreated(table: { schema: string; name: string }) {
   void loadTables(true)
   tab.value = 'structure'
@@ -227,13 +252,14 @@ const readOnlyText = computed(() =>
         color="neutral"
         variant="outline"
         class="hidden sm:inline-flex"
-        @click="newTableOpen = true"
+        @click="newTable()"
       />
       <template v-if="structure && dsId && !structure.read_only">
         <UButton :label="t('explorer.addRow')" icon="i-lucide-plus" color="neutral" @click="editRow(null)" />
       </template>
       <ExplorerExportButton
         v-if="structure && dsId"
+        ref="exporter"
         :source-id="dsId"
         :schema="structure.schema"
         :table="structure.name"
@@ -281,7 +307,7 @@ const readOnlyText = computed(() =>
       ]"
       class="my-auto"
     />
-    <div v-else class="flex min-h-0 min-w-0 flex-1 flex-col">
+    <div v-else ref="content" class="flex min-h-0 min-w-0 flex-1 flex-col">
       <div class="flex min-w-0 flex-col gap-4">
         <UEmpty
           v-if="!objectKey"
@@ -370,6 +396,7 @@ const readOnlyText = computed(() =>
               :source-id="dsId"
               :structure="structure"
               :facets="facets"
+              :row-menu="menus.rowMenu"
               @open="openRow"
             />
             <ExplorerStructure
@@ -389,7 +416,7 @@ const readOnlyText = computed(() =>
     </div>
 
     <Teleport v-if="takeover.shown.value" :to="`#${SIDEBAR_TAKEOVER_ID}`" defer>
-      <ExplorerNavigator v-bind="navigator" @source="id => go({ ds: id })" @select="open" />
+      <ExplorerNavigator v-bind="navigator" :menu="menus.nodeMenu" @source="id => go({ ds: id })" @select="open" />
     </Teleport>
     <USlideover
       v-model:open="treeOpen"
@@ -398,7 +425,7 @@ const readOnlyText = computed(() =>
       :ui="{ content: 'w-full max-w-xs', body: 'flex p-0 sm:p-0' }"
     >
       <template #body>
-        <ExplorerNavigator v-bind="navigator" @source="id => go({ ds: id })" @select="open" />
+        <ExplorerNavigator v-bind="navigator" :menu="menus.nodeMenu" @source="id => go({ ds: id })" @select="open" />
       </template>
     </USlideover>
     <ExplorerRowDetail

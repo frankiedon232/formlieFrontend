@@ -45,7 +45,7 @@ async function submit() {
 </script>
 
 <template>
-  <AppModal v-model:open="open" :title="t(`explorer.ddl.${mode}Title`, { table: structure.name })" :description="`${structure.schema}.${structure.name}`" :dismissible="!busy" :ui="{ content: 'sm:max-w-lg' }">
+  <AppModal keep-open v-model:open="open" :title="t(`explorer.ddl.${mode}Title`, { table: structure.name })" :description="`${structure.schema}.${structure.name}`" :dismissible="!busy" :ui="{ content: 'sm:max-w-lg' }">
     <template #body>
       <form id="table-form" class="flex flex-col gap-4" novalidate @submit.prevent="submit">
         <UFormField v-if="mode === 'rename'" :label="t('explorer.ddl.tableName')" :error="errors.name" required>

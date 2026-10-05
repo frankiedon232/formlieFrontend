@@ -4777,7 +4777,39 @@
         "rename": "Tabelle in {table} umbenannt",
         "truncate": "Tabelle {table} geleert",
         "drop": "Tabelle {table} gelöscht"
-      }
+      },
+      "newTableHere": "Neue Tabelle hier",
+      "copyName": "Namen kopieren"
+    },
+    "menu": {
+      "openData": "Daten öffnen",
+      "openStructure": "Struktur öffnen",
+      "refresh": "Aktualisieren",
+      "openRow": "Zeile öffnen",
+      "copyValue": "Wert kopieren"
     }
+  },
+  "contextMenu": {
+    "open": "Öffnen",
+    "back": "Zurück",
+    "forward": "Vorwärts",
+    "reload": "Neu laden",
+    "search": "Suchen",
+    "shortcuts": "Tastenkürzel",
+    "theme": "Design",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "Wie das Gerät",
+    "copyPageLink": "Link zu dieser Seite kopieren",
+    "cut": "Ausschneiden",
+    "copy": "Kopieren",
+    "paste": "Einfügen",
+    "selectAll": "Alles auswählen",
+    "copySelection": "Kopieren",
+    "openNewTab": "In neuem Tab öffnen",
+    "copyLinkAddress": "Link kopieren",
+    "pasteBlocked": "Der Browser hat das Lesen der Zwischenablage blockiert. Drücken Sie zum Einfügen Ctrl+V (⌘V auf einem Mac).",
+    "clipboardBlocked": "Der Browser hat die Zwischenablage blockiert. Markieren Sie den Text und drücken Sie Ctrl+C (⌘C auf einem Mac).",
+    "page": "Diese Seite"
   }
 }

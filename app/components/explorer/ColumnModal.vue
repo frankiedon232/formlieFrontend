@@ -43,7 +43,7 @@ async function submit() {
 </script>
 
 <template>
-  <AppModal
+  <AppModal keep-open
     v-model:open="open"
     :title="column ? t('explorer.ddl.editColumn', { column: column.name }) : t('explorer.ddl.addColumn')"
     :description="`${structure.schema}.${structure.name}`"

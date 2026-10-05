@@ -1,5 +1,5 @@
 <!--
-  The database tree (F12 M3): schemas → tables → columns (type on hover), with each table's row count; every
+  The database tree (F12 M3): schemas → tables → columns (names only; types are in Structure), with each table's row count; every
   table has the same square bullet. Search narrows by table or column name; one table open at a time. Nuxt UI's tree gives keyboard
   navigation (arrows move and open, Enter selects); picking a table opens it.
 -->
@@ -31,6 +31,7 @@ const items = computed<TreeItem[]>(() => {
         key: `${keyOf(table)}.${column.name}`,
         icon: column.primary ? 'i-lucide-key-round' : 'i-lucide-columns-2',
         column,
+        parentTable: { schema: table.schema, name: table.name },
         onSelect: (event: Event) => event.preventDefault(),
       })),
     }
@@ -38,6 +39,9 @@ const items = computed<TreeItem[]>(() => {
   }
   return [...bySchema].map(([schema, tables]) => ({ label: schema, key: `schema:${schema}`, icon: 'i-lucide-folder-tree', defaultExpanded: true, children: tables, onSelect: (event: Event) => event.preventDefault() }))
 })
+
+/** What a tree row is, for the right-click menu (read by ExplorerNavigator). */
+const nodeOf = (item: TreeItem) => JSON.stringify(item.column ? { kind: 'column', schema: item.parentTable.schema, table: item.parentTable.name, column: item.column.name } : item.table ? { kind: 'table', schema: item.table.schema, table: item.table.name } : { kind: 'schema', schema: item.label })
 
 // One table open at a time (owner 2026-10-05): opening a table closes the others; schemas stay as they are.
 const expanded = ref<string[]>([])
@@ -68,7 +72,7 @@ function onExpanded(keys: string[]) {
         <UIcon v-else-if="item.icon" :name="item.icon" :class="ui.linkLeadingIcon()" />
       </template>
       <template #item-label="{ item }">
-        <span class="truncate" :title="item.column ? `${item.label} · ${item.column.type}` : String(item.label)" :class="[item.table && keyOf(item.table) === selected ? 'font-semibold text-highlighted' : '', item.column ? 'font-mono text-xs' : '']" dir="ltr">{{ item.label }}</span>
+        <span class="truncate" :data-explorer-node="nodeOf(item)" :title="String(item.label)" :class="[item.table && keyOf(item.table) === selected ? 'font-semibold text-highlighted' : '', item.column ? 'font-mono text-xs' : '']" dir="ltr">{{ item.label }}</span>
       </template>
       <template #item-trailing="{ item }">
         <span v-if="item.table && item.table.rows_estimate !== null" class="ms-auto ps-2 text-[11px] text-muted tabular-nums">{{ number(item.table.rows_estimate) }}</span>

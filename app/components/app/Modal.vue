@@ -9,9 +9,11 @@ const props = withDefaults(
     description?: string
     /** false = no closing by outside click / Esc (e.g. unsaved changes). */
     dismissible?: boolean
+    /** An outside click doesn't close it (forms people fill in, owner 2026-10-05); Esc, ✕ and Cancel still do. */
+    keepOpen?: boolean
     ui?: Record<string, string>
   }>(),
-  { description: undefined, dismissible: true, ui: undefined },
+  { description: undefined, dismissible: true, keepOpen: false, ui: undefined },
 )
 
 const open = defineModel<boolean>('open', { default: false })
@@ -24,6 +26,9 @@ const ui = computed(() => ({ wrapper: 'flex-1 min-w-0', close: 'static shrink-0'
 /** A clear close button: a soft round button, darker on hover. */
 const closeButton = { color: 'neutral' as const, variant: 'soft' as const, size: 'sm' as const, square: true, class: 'rounded-full text-highlighted hover:bg-accented' }
 
+const stay = (event: Event) => event.preventDefault()
+const content = computed(() => (props.keepOpen ? { onPointerDownOutside: stay, onInteractOutside: stay } : undefined))
+
 watch(open, value => {
   if (value) nextTick(reset)
 })
@@ -35,6 +40,7 @@ watch(open, value => {
     :title="props.title"
     :description="props.description"
     :dismissible="props.dismissible"
+    :content="content"
     :close="closeButton"
     close-icon="i-lucide-x"
     :ui="ui"

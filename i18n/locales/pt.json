@@ -4777,7 +4777,39 @@
         "rename": "Tabela renomeada para {table}",
         "truncate": "Tabela {table} esvaziada",
         "drop": "Tabela {table} excluída"
-      }
+      },
+      "newTableHere": "Nova tabela aqui",
+      "copyName": "Copiar nome"
+    },
+    "menu": {
+      "openData": "Abrir dados",
+      "openStructure": "Abrir estrutura",
+      "refresh": "Atualizar",
+      "openRow": "Abrir linha",
+      "copyValue": "Copiar valor"
     }
+  },
+  "contextMenu": {
+    "open": "Abrir",
+    "back": "Voltar",
+    "forward": "Avançar",
+    "reload": "Recarregar",
+    "search": "Pesquisar",
+    "shortcuts": "Atalhos de teclado",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Igual ao dispositivo",
+    "copyPageLink": "Copiar link desta página",
+    "cut": "Recortar",
+    "copy": "Copiar",
+    "paste": "Colar",
+    "selectAll": "Selecionar tudo",
+    "copySelection": "Copiar",
+    "openNewTab": "Abrir em nova guia",
+    "copyLinkAddress": "Copiar link",
+    "pasteBlocked": "O navegador bloqueou a leitura da área de transferência. Pressione Ctrl+V (⌘V em um Mac) para colar.",
+    "clipboardBlocked": "O navegador bloqueou a área de transferência. Selecione o texto e pressione Ctrl+C (⌘C em um Mac).",
+    "page": "Esta página"
   }
 }

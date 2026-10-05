@@ -4777,7 +4777,39 @@
         "rename": "テーブル名を {table} に変更しました",
         "truncate": "テーブル {table} を空にしました",
         "drop": "テーブル {table} を削除しました"
-      }
+      },
+      "newTableHere": "ここに新しいテーブル",
+      "copyName": "名前をコピー"
+    },
+    "menu": {
+      "openData": "データを開く",
+      "openStructure": "構造を開く",
+      "refresh": "更新",
+      "openRow": "行を開く",
+      "copyValue": "値をコピー"
     }
+  },
+  "contextMenu": {
+    "open": "開く",
+    "back": "戻る",
+    "forward": "進む",
+    "reload": "再読み込み",
+    "search": "検索",
+    "shortcuts": "キーボードショートカット",
+    "theme": "テーマ",
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "デバイスの設定に合わせる",
+    "copyPageLink": "このページへのリンクをコピー",
+    "cut": "切り取り",
+    "copy": "コピー",
+    "paste": "貼り付け",
+    "selectAll": "すべて選択",
+    "copySelection": "コピー",
+    "openNewTab": "新しいタブで開く",
+    "copyLinkAddress": "リンクをコピー",
+    "pasteBlocked": "ブラウザーがクリップボードの読み取りをブロックしました。貼り付けるには Ctrl+V（Mac では ⌘V）を押してください。",
+    "clipboardBlocked": "ブラウザーがクリップボードをブロックしました。テキストを選択して Ctrl+C（Mac では ⌘C）を押してください。",
+    "page": "このページ"
   }
 }

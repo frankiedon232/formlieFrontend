@@ -4777,7 +4777,39 @@
         "rename": "Table renommée en {table}",
         "truncate": "Table {table} vidée",
         "drop": "Table {table} supprimée"
-      }
+      },
+      "newTableHere": "Nouvelle table ici",
+      "copyName": "Copier le nom"
+    },
+    "menu": {
+      "openData": "Ouvrir les données",
+      "openStructure": "Ouvrir la structure",
+      "refresh": "Actualiser",
+      "openRow": "Ouvrir la ligne",
+      "copyValue": "Copier la valeur"
     }
+  },
+  "contextMenu": {
+    "open": "Ouvrir",
+    "back": "Retour",
+    "forward": "Suivant",
+    "reload": "Actualiser",
+    "search": "Rechercher",
+    "shortcuts": "Raccourcis clavier",
+    "theme": "Thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Comme l’appareil",
+    "copyPageLink": "Copier le lien de cette page",
+    "cut": "Couper",
+    "copy": "Copier",
+    "paste": "Coller",
+    "selectAll": "Tout sélectionner",
+    "copySelection": "Copier",
+    "openNewTab": "Ouvrir dans un nouvel onglet",
+    "copyLinkAddress": "Copier le lien",
+    "pasteBlocked": "Le navigateur a bloqué la lecture du presse-papiers. Appuyez sur Ctrl+V (⌘V sur un Mac) pour coller.",
+    "clipboardBlocked": "Le navigateur a bloqué le presse-papiers. Sélectionnez le texte et appuyez sur Ctrl+C (⌘C sur un Mac).",
+    "page": "Cette page"
   }
 }

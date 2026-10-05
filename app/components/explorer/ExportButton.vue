@@ -36,6 +36,7 @@ async function start(format: TableExport['format']) {
     job.value = null
   }
 }
+defineExpose({ start, running })
 const items = computed(() => [
   [{ type: 'label' as const, label: props.filtered ? t('explorer.exportFiltered') : t('explorer.exportAll') }],
   [

@@ -24,6 +24,8 @@ const props = withDefaults(
     busy?: (row: T) => boolean
     /** Click (or Enter on) a row opens it, e.g. a detail panel (F11 responses). */
     openRow?: (row: T) => void
+    /** Right-click on a row or card (owner 2026-10-05); default: Open + the row's ⋯ actions. */
+    rowMenu?: (row: T, target: HTMLElement) => ContextMenuGroups
     /** The Columns menu: move and show / hide columns (owner 2026-10-04); on for 4+ columns. */
     columnsMenu?: boolean
     /** Extra slim rows with column lines, for raw data such as database tables (F12 M3). */
@@ -44,6 +46,7 @@ const props = withDefaults(
     rowActions: undefined,
     busy: undefined,
     openRow: undefined,
+    rowMenu: undefined,
     columnsMenu: undefined,
     dense: false,
     tableOnly: false,
@@ -212,11 +215,25 @@ function openFromCard(event: MouseEvent, row: T) {
 const showSkeleton = computed(() => state.loading.value && !state.loaded.value)
 const isEmpty = computed(() => state.loaded.value && !state.error.value && state.rows.value.length === 0)
 
+// Right-click on a row or a card: its own menu (the app's items follow, AppContextMenu)
+const root = useTemplateRef<HTMLElement>('root')
+useContextMenu().register(root, target => {
+  const card = target.closest('[data-row-index]')
+  const tr = card ? null : target.closest('tbody tr')
+  const row = card ? state.rows.value[Number(card.getAttribute('data-row-index'))] : tr?.parentElement ? state.rows.value[[...tr.parentElement.children].indexOf(tr)] : undefined
+  if (!row) return null
+  if (props.rowMenu) return props.rowMenu(row, target)
+  return [
+    ...(props.openRow && !props.rowActions ? [[{ label: t('contextMenu.open'), icon: 'i-lucide-square-arrow-out-up-right', onSelect: () => props.openRow!(row) }]] : []),
+    ...((props.rowActions?.(row) ?? []) as ContextMenuGroups),
+  ]
+})
+
 defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns.value.map(column => column.key) })
 </script>
 
 <template>
-  <section class="flex flex-col gap-4">
+  <section ref="root" class="flex flex-col gap-4">
     <DataToolbar
       :state="state as DataViewState<unknown>"
       :search-placeholder="searchPlaceholder"
@@ -310,8 +327,9 @@ defineExpose({ refresh: state.refresh, state, shownColumns: () => orderedColumns
         </template>
         <template v-else>
           <div
-            v-for="row in state.rows.value"
+            v-for="(row, rowIndex) in state.rows.value"
             :key="String(row[rowKey])"
+            :data-row-index="rowIndex"
             class="h-full"
             :class="[state.loading.value ? 'opacity-60' : busy?.(row) ? BUSY_ROW : '', openRow ? 'cursor-pointer' : '']"
             :aria-busy="busy?.(row) || undefined"

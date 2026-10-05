@@ -4777,7 +4777,39 @@
         "rename": "टेबल का नाम बदलकर {table} किया गया",
         "truncate": "टेबल {table} खाली की गई",
         "drop": "टेबल {table} हटाई गई"
-      }
+      },
+      "newTableHere": "यहाँ नई टेबल",
+      "copyName": "नाम कॉपी करें"
+    },
+    "menu": {
+      "openData": "डेटा खोलें",
+      "openStructure": "संरचना खोलें",
+      "refresh": "रीफ़्रेश करें",
+      "openRow": "पंक्ति खोलें",
+      "copyValue": "मान कॉपी करें"
     }
+  },
+  "contextMenu": {
+    "open": "खोलें",
+    "back": "वापस",
+    "forward": "आगे",
+    "reload": "रीलोड करें",
+    "search": "खोजें",
+    "shortcuts": "कीबोर्ड शॉर्टकट",
+    "theme": "थीम",
+    "light": "लाइट",
+    "dark": "डार्क",
+    "system": "डिवाइस के अनुसार",
+    "copyPageLink": "इस पेज का लिंक कॉपी करें",
+    "cut": "कट करें",
+    "copy": "कॉपी करें",
+    "paste": "पेस्ट करें",
+    "selectAll": "सभी चुनें",
+    "copySelection": "कॉपी करें",
+    "openNewTab": "नए टैब में खोलें",
+    "copyLinkAddress": "लिंक कॉपी करें",
+    "pasteBlocked": "ब्राउज़र ने क्लिपबोर्ड पढ़ने से रोक दिया। पेस्ट करने के लिए Ctrl+V (Mac पर ⌘V) दबाएँ।",
+    "clipboardBlocked": "ब्राउज़र ने क्लिपबोर्ड को रोक दिया। टेक्स्ट चुनें और Ctrl+C (Mac पर ⌘C) दबाएँ।",
+    "page": "यह पेज"
   }
 }

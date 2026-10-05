@@ -71,3 +71,9 @@ export interface SchemaResult {
   statements: string[]
   table: { schema: string; name: string } | null
 }
+
+/** A row of the explorer's tree (its right-click menu). */
+export type ExplorerNode =
+  | { kind: 'schema'; schema: string }
+  | { kind: 'table'; schema: string; table: string }
+  | { kind: 'column'; schema: string; table: string; column: string }

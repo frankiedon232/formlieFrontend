@@ -4777,7 +4777,39 @@
         "rename": "Nama tabel diganti menjadi {table}",
         "truncate": "Tabel {table} dikosongkan",
         "drop": "Tabel {table} dihapus"
-      }
+      },
+      "newTableHere": "Tabel baru di sini",
+      "copyName": "Salin nama"
+    },
+    "menu": {
+      "openData": "Buka data",
+      "openStructure": "Buka struktur",
+      "refresh": "Segarkan",
+      "openRow": "Buka baris",
+      "copyValue": "Salin nilai"
     }
+  },
+  "contextMenu": {
+    "open": "Buka",
+    "back": "Kembali",
+    "forward": "Maju",
+    "reload": "Muat ulang",
+    "search": "Cari",
+    "shortcuts": "Pintasan keyboard",
+    "theme": "Tema",
+    "light": "Terang",
+    "dark": "Gelap",
+    "system": "Sama seperti perangkat",
+    "copyPageLink": "Salin tautan ke halaman ini",
+    "cut": "Potong",
+    "copy": "Salin",
+    "paste": "Tempel",
+    "selectAll": "Pilih semua",
+    "copySelection": "Salin",
+    "openNewTab": "Buka di tab baru",
+    "copyLinkAddress": "Salin tautan",
+    "pasteBlocked": "Browser memblokir pembacaan papan klip. Tekan Ctrl+V (⌘V di Mac) untuk menempel.",
+    "clipboardBlocked": "Browser memblokir papan klip. Pilih teks lalu tekan Ctrl+C (⌘C di Mac).",
+    "page": "Halaman ini"
   }
 }

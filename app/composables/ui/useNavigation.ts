@@ -20,6 +20,8 @@ export interface AppNavItem {
   hideZero?: boolean
   /** Workspace owners / admins only (until Roles & access, F22). */
   adminOnly?: boolean
+  /** Sits at the foot of the rail instead of the menu (Help & support, owner 2026-10-05). */
+  railFoot?: boolean
   /** Active on its own path only (an overview whose sections live under it). */
   exact?: boolean
   /** Paths under this item that belong to another menu entry (e.g. themes under settings). */
@@ -231,7 +233,7 @@ const areaOf = (path: string): NavArea =>
 const SYSTEM_NAV: AppNavItem[] = [
   { key: 'settings', icon: 'i-lucide-settings', to: '/settings', shortcut: 'g-s', except: ['/settings/themes'] },
   { key: 'audit', icon: 'i-lucide-scroll-text', to: '/audit', shortcut: 'g-l', adminOnly: true },
-  { key: 'help', icon: 'i-lucide-circle-help', to: '/help' },
+  { key: 'help', icon: 'i-lucide-circle-help', to: '/help', railFoot: true },
 ]
 
 export function useNavigation() {
@@ -331,7 +333,7 @@ export function useNavigation() {
   })
   /** Sidebar heading for the main list: the area's name, or "Main menu" for Forms. */
   const areaLabel = computed(() => NAV_AREAS.find(a => a.key === area.value)?.label ?? 'nav.main')
-  const systemItems = computed(() => SYSTEM_NAV.filter(allowed).map(item => toMenuItem(item)))
+  const systemItems = computed(() => SYSTEM_NAV.filter(item => allowed(item) && !item.railFoot).map(item => toMenuItem(item)))
 
   /** Flat list of top-level destinations (children with their own page included), for search, rail and shortcuts. */
   const destinations = computed(() =>
@@ -342,7 +344,7 @@ export function useNavigation() {
   /** Collapsed rail: the current area's sections plus System. */
   const areaDestinations = computed(() =>
     [...(areaMenu.value ?? [...MAIN_NAV, ...RESOURCE_NAV]), ...SYSTEM_NAV]
-      .filter(allowed)
+      .filter(item => allowed(item) && !item.railFoot)
       .flatMap(item => (item.children && !item.children[0]?.dot ? item.children : [item])),
   )
 

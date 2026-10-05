@@ -4777,7 +4777,39 @@
         "rename": "已将表重命名为 {table}",
         "truncate": "已清空表 {table}",
         "drop": "已删除表 {table}"
-      }
+      },
+      "newTableHere": "在此新建表",
+      "copyName": "复制名称"
+    },
+    "menu": {
+      "openData": "打开数据",
+      "openStructure": "打开结构",
+      "refresh": "刷新",
+      "openRow": "打开行",
+      "copyValue": "复制值"
     }
+  },
+  "contextMenu": {
+    "open": "打开",
+    "back": "后退",
+    "forward": "前进",
+    "reload": "重新加载",
+    "search": "搜索",
+    "shortcuts": "键盘快捷键",
+    "theme": "主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随设备",
+    "copyPageLink": "复制此页面链接",
+    "cut": "剪切",
+    "copy": "复制",
+    "paste": "粘贴",
+    "selectAll": "全选",
+    "copySelection": "复制",
+    "openNewTab": "在新标签页中打开",
+    "copyLinkAddress": "复制链接",
+    "pasteBlocked": "浏览器阻止了读取剪贴板。请按 Ctrl+V（Mac 上为 ⌘V）粘贴。",
+    "clipboardBlocked": "浏览器阻止了剪贴板。请选中文本并按 Ctrl+C（Mac 上为 ⌘C）。",
+    "page": "此页面"
   }
 }

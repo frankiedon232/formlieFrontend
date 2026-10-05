@@ -4777,7 +4777,39 @@
         "rename": "Tablonun adı {table} olarak değiştirildi",
         "truncate": "{table} tablosu boşaltıldı",
         "drop": "{table} tablosu silindi"
-      }
+      },
+      "newTableHere": "Buraya yeni tablo",
+      "copyName": "Adı kopyala"
+    },
+    "menu": {
+      "openData": "Verileri aç",
+      "openStructure": "Yapıyı aç",
+      "refresh": "Yenile",
+      "openRow": "Satırı aç",
+      "copyValue": "Değeri kopyala"
     }
+  },
+  "contextMenu": {
+    "open": "Aç",
+    "back": "Geri",
+    "forward": "İleri",
+    "reload": "Yeniden yükle",
+    "search": "Ara",
+    "shortcuts": "Klavye kısayolları",
+    "theme": "Tema",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Cihazla aynı",
+    "copyPageLink": "Bu sayfanın bağlantısını kopyala",
+    "cut": "Kes",
+    "copy": "Kopyala",
+    "paste": "Yapıştır",
+    "selectAll": "Tümünü seç",
+    "copySelection": "Kopyala",
+    "openNewTab": "Yeni sekmede aç",
+    "copyLinkAddress": "Bağlantıyı kopyala",
+    "pasteBlocked": "Tarayıcı panoyu okumayı engelledi. Yapıştırmak için Ctrl+V’ye (Mac’te ⌘V) basın.",
+    "clipboardBlocked": "Tarayıcı panoyu engelledi. Metni seçip Ctrl+C’ye (Mac’te ⌘C) basın.",
+    "page": "Bu sayfa"
   }
 }

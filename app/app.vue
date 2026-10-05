@@ -16,8 +16,11 @@ useHead({
   <UApp :locale="uiLocale">
     <NuxtLoadingIndicator color="var(--ui-primary)" :height="3" />
     <NuxtRouteAnnouncer />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <!-- The app's own right-click menu everywhere in the portal (never the browser's) -->
+    <AppContextMenu>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </AppContextMenu>
   </UApp>
 </template>

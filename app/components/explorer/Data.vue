@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { ColumnFacet, TableRow, TableStructure } from '#shared/types/explorer'
 
-const props = defineProps<{ sourceId: string; structure: TableStructure; facets: ColumnFacet[] }>()
+const props = defineProps<{ sourceId: string; structure: TableStructure; facets: ColumnFacet[]; rowMenu?: (row: TableRow, target: HTMLElement) => ContextMenuGroups }>()
 const emit = defineEmits<{ open: [row: TableRow, rows: TableRow[]] }>()
 const { t } = useI18n()
 const api = useApi()
@@ -49,6 +49,7 @@ const fetcher: DataFetcher<TableRow> = (params, signal) =>
 const openRow = (row: TableRow) => emit('open', row, view.value?.state.rows.value ?? [row])
 defineExpose({
   refresh: () => view.value?.refresh(),
+  rows: () => view.value?.state.rows.value ?? [],
   params: () => view.value?.state.params() ?? {},
   filtered: () => !!view.value?.state.hasActiveFilters.value || !!view.value?.state.params().q,
 })
@@ -65,6 +66,7 @@ defineExpose({
     dense
     table-only
     :open-row="openRow"
+    :row-menu="rowMenu"
     :search-placeholder="t('explorer.searchRows')"
     empty-icon="i-lucide-table-2"
     :empty-title="t('explorer.emptyRows')"

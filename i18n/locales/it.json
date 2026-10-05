@@ -4777,7 +4777,39 @@
         "rename": "Tabella rinominata in {table}",
         "truncate": "Tabella {table} svuotata",
         "drop": "Tabella {table} eliminata"
-      }
+      },
+      "newTableHere": "Nuova tabella qui",
+      "copyName": "Copia nome"
+    },
+    "menu": {
+      "openData": "Apri dati",
+      "openStructure": "Apri struttura",
+      "refresh": "Aggiorna",
+      "openRow": "Apri riga",
+      "copyValue": "Copia valore"
     }
+  },
+  "contextMenu": {
+    "open": "Apri",
+    "back": "Indietro",
+    "forward": "Avanti",
+    "reload": "Ricarica",
+    "search": "Cerca",
+    "shortcuts": "Scorciatoie da tastiera",
+    "theme": "Tema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "system": "Come il dispositivo",
+    "copyPageLink": "Copia link a questa pagina",
+    "cut": "Taglia",
+    "copy": "Copia",
+    "paste": "Incolla",
+    "selectAll": "Seleziona tutto",
+    "copySelection": "Copia",
+    "openNewTab": "Apri in una nuova scheda",
+    "copyLinkAddress": "Copia link",
+    "pasteBlocked": "Il browser ha bloccato la lettura degli appunti. Premi Ctrl+V (⌘V su un Mac) per incollare.",
+    "clipboardBlocked": "Il browser ha bloccato gli appunti. Seleziona il testo e premi Ctrl+C (⌘C su un Mac).",
+    "page": "Questa pagina"
   }
 }

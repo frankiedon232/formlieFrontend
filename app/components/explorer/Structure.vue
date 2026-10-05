@@ -24,6 +24,25 @@ const columnMenu = (column: ExplorerColumn): DropdownMenuItem[][] => [
   [{ label: column.primary ? t('explorer.ddl.renameColumn') : t('explorer.ddl.editColumnShort'), icon: 'i-lucide-pencil', onSelect: () => emit('editColumn', column) }],
   ...(column.primary || props.structure.columns.length === 1 ? [] : [[{ label: t('explorer.ddl.dropColumn'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('dropColumn', column) }]]),
 ]
+// Right-click on a column or an index: its actions (elsewhere the page's table menu answers)
+const root = useTemplateRef<HTMLElement>('root')
+const copyName = (name: string) => {
+  void copy(name)
+  toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })
+}
+useContextMenu().register(root, target => {
+  const columnName = target.closest('[data-column]')?.getAttribute('data-column')
+  const column = columnName ? props.structure.columns.find(item => item.name === columnName) : undefined
+  if (column) return [...(props.structure.alterable ? columnMenu(column) : []), [{ label: t('explorer.ddl.copyName'), icon: 'i-lucide-copy', onSelect: () => copyName(column.name) }]]
+  const indexName = target.closest('[data-index]')?.getAttribute('data-index')
+  const index = indexName ? props.structure.indexes.find(item => item.name === indexName) : undefined
+  if (index)
+    return [
+      ...(props.structure.alterable && !index.primary ? [[{ label: t('explorer.ddl.dropIndex'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => emit('dropIndex', index) }]] : []),
+      [{ label: t('explorer.ddl.copyName'), icon: 'i-lucide-copy', onSelect: () => copyName(index.name) }],
+    ]
+  return null
+})
 function copyDdl() {
   void copy(props.structure.ddl)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })
@@ -31,7 +50,7 @@ function copyDdl() {
 </script>
 
 <template>
-  <div class="grid grid-cols-1 gap-4 xl:grid-cols-2">
+  <div ref="root" class="grid grid-cols-1 gap-4 xl:grid-cols-2">
     <section class="flex flex-col gap-2 xl:col-span-2">
       <div class="flex items-center justify-between gap-2">
         <h3 class="text-xs font-semibold tracking-wide text-muted uppercase">{{ t('explorer.structure.columns', { n: structure.columns.length }) }}</h3>
@@ -50,7 +69,7 @@ function copyDdl() {
             </tr>
           </thead>
           <tbody class="divide-y divide-default">
-            <tr v-for="column in structure.columns" :key="column.name" :class="removing === column.name ? 'pointer-events-none animate-pulse opacity-60' : ''">
+            <tr v-for="column in structure.columns" :key="column.name" :data-column="column.name" :class="removing === column.name ? 'pointer-events-none animate-pulse opacity-60' : ''">
               <td class="px-3 py-2 font-mono text-xs text-highlighted" dir="ltr">{{ column.name }}</td>
               <td class="px-3 py-2 font-mono text-xs text-default" dir="ltr">{{ column.type }}</td>
               <td class="px-3 py-2 text-xs" :class="column.nullable ? 'text-muted' : 'text-highlighted'">{{ column.nullable ? t('dataSources.yes') : t('dataSources.no') }}</td>
@@ -79,7 +98,7 @@ function copyDdl() {
         <UButton v-if="structure.alterable" :label="t('explorer.ddl.addIndex')" icon="i-lucide-plus" color="neutral" variant="outline" size="xs" @click="emit('addIndex')" />
       </div>
       <ul v-if="structure.indexes.length" class="divide-y divide-default rounded-lg border border-default">
-        <li v-for="index in structure.indexes" :key="index.name" class="flex flex-wrap items-center gap-2 px-3 py-2 text-sm" :class="removing === index.name ? 'animate-pulse opacity-60' : ''">
+        <li v-for="index in structure.indexes" :key="index.name" :data-index="index.name" class="flex flex-wrap items-center gap-2 px-3 py-2 text-sm" :class="removing === index.name ? 'animate-pulse opacity-60' : ''">
           <code class="min-w-0 flex-1 truncate font-mono text-xs text-highlighted" dir="ltr">{{ index.name }}</code>
           <code class="font-mono text-xs text-muted" dir="ltr">({{ index.columns.join(', ') }})</code>
           <UBadge v-if="index.primary" :label="t('explorer.structure.pk')" color="neutral" size="sm" class="rounded-md" />

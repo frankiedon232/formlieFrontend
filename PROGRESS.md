@@ -1075,6 +1075,11 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | Explorer: no import for now (removed); adding, changing and deleting rows only in tables created outside Formalie, never in response tables | F12 M3 | ✅ |
 | 2026-10-05 | Make sure nothing loads a whole table at once: paging in the database, a capped count ("10,000+"), a time limit on every explorer statement (backend rules in the contract) | F12 M3 | ✅ |
 | 2026-10-05 | Table and column management in the explorer (CREATE TABLE, add / change / delete columns, indexes, rename, empty, delete), only on tables that aren't Formalie's, with Full access | F12 M3 | ✅ |
+| 2026-10-05 | No data types beside column names in the explorer (tree, row form, row panel); Help & support moves from the menu to the foot of the rail (always in place, short lines between items, level with the account card); in explorer mode Help sits above the account | F12 / shell | ✅ |
+| 2026-10-05 | The app's own right-click menu everywhere (never the browser's): rows of every list, the explorer's tree, rows and table area (DDL, export, rows), text fields (cut, copy, paste, select all), links, the app's items (back, search, theme, …) | shell / F12 | ✅ |
+| 2026-10-05 | Explorer dialogs that change data or structure don't close on an outside click (Esc, ✕ and Cancel still do) | F12 M3 | ✅ |
+| 2026-10-05 | Query editor (M4) uses the same mode as the explorer: its panel in the menu column, full width for the editor | F12 M4 | ⬜ |
+| 2026-10-05 | Every empty, not-found and error state: a better, evenly centred look with fitting icons | all | 🟡 |
 
 ---
 
@@ -1249,3 +1254,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Import into tables removed (owner: not supported for now): dialog, routes, file readers, errors FRM-DEST-1020 / 1021, audit `data.rows_imported`. Row changes stay limited to the organisation's own tables. |
 | 2026-10-05 | F12 | Explorer backend rules in API-CONTRACT (paging in the database, count capped at 10,000 with `meta.total_capped` shown as "10,000+", 5 s statement limit → FRM-DEST-1011, capped facets, catalogue-only tree, streamed and capped exports, workspace check). Fixed duplicate auto-import warnings (`DbEngine` imported from its one home, connection `FieldType` renamed `ConnectionFieldType`, one `quoteName`). |
 | 2026-10-05 | F12 | Explorer structure changes (owner): New table, columns, indexes, rename, empty, delete for their own tables with Full access, never Formalie's; statements per engine shown first and run as shown; mock keeps the changes (`server/mock/data/tableEdits.ts`). Tests: `datasources/ddl`. |
+| 2026-10-05 | shell / F12 | Right-click menus everywhere (`AppContextMenu`, `useContextMenu`, DataView `rowMenu`, explorer `useExplorerMenus`); Help & support at the rail's foot; no types beside column names; explorer dialogs keep their input on outside clicks (`AppModal keep-open`). |

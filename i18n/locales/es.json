@@ -4777,7 +4777,39 @@
         "rename": "Tabla renombrada a {table}",
         "truncate": "Tabla {table} vaciada",
         "drop": "Tabla {table} eliminada"
-      }
+      },
+      "newTableHere": "Nueva tabla aquí",
+      "copyName": "Copiar nombre"
+    },
+    "menu": {
+      "openData": "Abrir datos",
+      "openStructure": "Abrir estructura",
+      "refresh": "Actualizar",
+      "openRow": "Abrir fila",
+      "copyValue": "Copiar valor"
     }
+  },
+  "contextMenu": {
+    "open": "Abrir",
+    "back": "Atrás",
+    "forward": "Adelante",
+    "reload": "Recargar",
+    "search": "Buscar",
+    "shortcuts": "Atajos de teclado",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Igual que el dispositivo",
+    "copyPageLink": "Copiar enlace a esta página",
+    "cut": "Cortar",
+    "copy": "Copiar",
+    "paste": "Pegar",
+    "selectAll": "Seleccionar todo",
+    "copySelection": "Copiar",
+    "openNewTab": "Abrir en una pestaña nueva",
+    "copyLinkAddress": "Copiar enlace",
+    "pasteBlocked": "El navegador ha bloqueado la lectura del portapapeles. Pulsa Ctrl+V (⌘V en un Mac) para pegar.",
+    "clipboardBlocked": "El navegador ha bloqueado el portapapeles. Selecciona el texto y pulsa Ctrl+C (⌘C en un Mac).",
+    "page": "Esta página"
   }
 }

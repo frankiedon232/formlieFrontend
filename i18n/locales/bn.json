@@ -4777,7 +4777,39 @@
         "rename": "টেবিলের নাম বদলে {table} করা হয়েছে",
         "truncate": "টেবিল {table} খালি করা হয়েছে",
         "drop": "টেবিল {table} মুছে ফেলা হয়েছে"
-      }
+      },
+      "newTableHere": "এখানে নতুন টেবিল",
+      "copyName": "নাম কপি করুন"
+    },
+    "menu": {
+      "openData": "ডেটা খুলুন",
+      "openStructure": "গঠন খুলুন",
+      "refresh": "রিফ্রেশ করুন",
+      "openRow": "সারি খুলুন",
+      "copyValue": "মান কপি করুন"
     }
+  },
+  "contextMenu": {
+    "open": "খুলুন",
+    "back": "পিছনে",
+    "forward": "সামনে",
+    "reload": "রিলোড করুন",
+    "search": "খুঁজুন",
+    "shortcuts": "কীবোর্ড শর্টকাট",
+    "theme": "থিম",
+    "light": "লাইট",
+    "dark": "ডার্ক",
+    "system": "ডিভাইসের মতো",
+    "copyPageLink": "এই পেজের লিংক কপি করুন",
+    "cut": "কাট করুন",
+    "copy": "কপি করুন",
+    "paste": "পেস্ট করুন",
+    "selectAll": "সব নির্বাচন",
+    "copySelection": "কপি করুন",
+    "openNewTab": "নতুন ট্যাবে খুলুন",
+    "copyLinkAddress": "লিংক কপি করুন",
+    "pasteBlocked": "ব্রাউজার ক্লিপবোর্ড পড়া আটকে দিয়েছে। পেস্ট করতে Ctrl+V (Mac-এ ⌘V) চাপুন।",
+    "clipboardBlocked": "ব্রাউজার ক্লিপবোর্ড আটকে দিয়েছে। টেক্সট নির্বাচন করে Ctrl+C (Mac-এ ⌘C) চাপুন।",
+    "page": "এই পেজ"
   }
 }

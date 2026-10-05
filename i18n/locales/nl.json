@@ -4777,7 +4777,39 @@
         "rename": "Tabel hernoemd naar {table}",
         "truncate": "Tabel {table} leeggemaakt",
         "drop": "Tabel {table} verwijderd"
-      }
+      },
+      "newTableHere": "Nieuwe tabel hier",
+      "copyName": "Naam kopiëren"
+    },
+    "menu": {
+      "openData": "Gegevens openen",
+      "openStructure": "Structuur openen",
+      "refresh": "Vernieuwen",
+      "openRow": "Rij openen",
+      "copyValue": "Waarde kopiëren"
     }
+  },
+  "contextMenu": {
+    "open": "Openen",
+    "back": "Terug",
+    "forward": "Vooruit",
+    "reload": "Opnieuw laden",
+    "search": "Zoeken",
+    "shortcuts": "Sneltoetsen",
+    "theme": "Thema",
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Zoals het apparaat",
+    "copyPageLink": "Link naar deze pagina kopiëren",
+    "cut": "Knippen",
+    "copy": "Kopiëren",
+    "paste": "Plakken",
+    "selectAll": "Alles selecteren",
+    "copySelection": "Kopiëren",
+    "openNewTab": "Openen in nieuw tabblad",
+    "copyLinkAddress": "Link kopiëren",
+    "pasteBlocked": "De browser heeft het lezen van het klembord geblokkeerd. Druk op Ctrl+V (⌘V op een Mac) om te plakken.",
+    "clipboardBlocked": "De browser heeft het klembord geblokkeerd. Selecteer de tekst en druk op Ctrl+C (⌘C op een Mac).",
+    "page": "Deze pagina"
   }
 }

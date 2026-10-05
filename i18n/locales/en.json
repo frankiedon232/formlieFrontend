@@ -4777,7 +4777,39 @@
         "rename": "Table renamed to {table}",
         "truncate": "Table {table} emptied",
         "drop": "Table {table} deleted"
-      }
+      },
+      "newTableHere": "New table here",
+      "copyName": "Copy name"
+    },
+    "menu": {
+      "openData": "Open data",
+      "openStructure": "Open structure",
+      "refresh": "Refresh",
+      "openRow": "Open row",
+      "copyValue": "Copy value"
     }
+  },
+  "contextMenu": {
+    "open": "Open",
+    "back": "Back",
+    "forward": "Forward",
+    "reload": "Reload",
+    "search": "Search",
+    "shortcuts": "Keyboard shortcuts",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "Same as the device",
+    "copyPageLink": "Copy link to this page",
+    "cut": "Cut",
+    "copy": "Copy",
+    "paste": "Paste",
+    "selectAll": "Select all",
+    "copySelection": "Copy",
+    "openNewTab": "Open in a new tab",
+    "copyLinkAddress": "Copy link",
+    "pasteBlocked": "The browser blocked reading the clipboard. Press Ctrl+V (⌘V on a Mac) to paste.",
+    "clipboardBlocked": "The browser blocked the clipboard. Select the text and press Ctrl+C (⌘C on a Mac).",
+    "page": "This page"
   }
 }

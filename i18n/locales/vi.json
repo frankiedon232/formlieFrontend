@@ -4777,7 +4777,39 @@
         "rename": "Đã đổi tên bảng thành {table}",
         "truncate": "Đã làm trống bảng {table}",
         "drop": "Đã xóa bảng {table}"
-      }
+      },
+      "newTableHere": "Bảng mới tại đây",
+      "copyName": "Sao chép tên"
+    },
+    "menu": {
+      "openData": "Mở dữ liệu",
+      "openStructure": "Mở cấu trúc",
+      "refresh": "Làm mới",
+      "openRow": "Mở hàng",
+      "copyValue": "Sao chép giá trị"
     }
+  },
+  "contextMenu": {
+    "open": "Mở",
+    "back": "Quay lại",
+    "forward": "Tiến",
+    "reload": "Tải lại",
+    "search": "Tìm kiếm",
+    "shortcuts": "Phím tắt",
+    "theme": "Giao diện",
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Giống thiết bị",
+    "copyPageLink": "Sao chép liên kết đến trang này",
+    "cut": "Cắt",
+    "copy": "Sao chép",
+    "paste": "Dán",
+    "selectAll": "Chọn tất cả",
+    "copySelection": "Sao chép",
+    "openNewTab": "Mở trong thẻ mới",
+    "copyLinkAddress": "Sao chép liên kết",
+    "pasteBlocked": "Trình duyệt đã chặn việc đọc bộ nhớ tạm. Nhấn Ctrl+V (⌘V trên Mac) để dán.",
+    "clipboardBlocked": "Trình duyệt đã chặn bộ nhớ tạm. Hãy chọn văn bản và nhấn Ctrl+C (⌘C trên Mac).",
+    "page": "Trang này"
   }
 }

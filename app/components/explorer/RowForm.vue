@@ -89,7 +89,7 @@ async function save() {
 </script>
 
 <template>
-  <AppModal
+  <AppModal keep-open
     v-model:open="open"
     :title="row ? t('explorer.editRow', { key: row.__key }) : t('explorer.addRow')"
     :description="`${structure.schema}.${structure.name}`"
@@ -110,7 +110,6 @@ async function save() {
         >
           <template #label>
             <span class="font-mono text-xs" dir="ltr">{{ column.name }}</span>
-            <span class="ms-1.5 font-mono text-[10px] text-dimmed" dir="ltr">{{ column.type }}</span>
           </template>
           <UInput
             v-if="locked(column)"

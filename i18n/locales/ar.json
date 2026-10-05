@@ -4777,7 +4777,39 @@
         "rename": "أُعيدت تسمية الجدول إلى {table}",
         "truncate": "فُرّغ الجدول {table}",
         "drop": "حُذف الجدول {table}"
-      }
+      },
+      "newTableHere": "جدول جديد هنا",
+      "copyName": "نسخ الاسم"
+    },
+    "menu": {
+      "openData": "فتح البيانات",
+      "openStructure": "فتح البنية",
+      "refresh": "تحديث",
+      "openRow": "فتح الصف",
+      "copyValue": "نسخ القيمة"
     }
+  },
+  "contextMenu": {
+    "open": "فتح",
+    "back": "رجوع",
+    "forward": "تقدّم",
+    "reload": "إعادة التحميل",
+    "search": "بحث",
+    "shortcuts": "اختصارات لوحة المفاتيح",
+    "theme": "المظهر",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "مثل الجهاز",
+    "copyPageLink": "نسخ رابط هذه الصفحة",
+    "cut": "قص",
+    "copy": "نسخ",
+    "paste": "لصق",
+    "selectAll": "تحديد الكل",
+    "copySelection": "نسخ",
+    "openNewTab": "فتح في علامة تبويب جديدة",
+    "copyLinkAddress": "نسخ الرابط",
+    "pasteBlocked": "منع المتصفح قراءة الحافظة. اضغط Ctrl+V (أو ⌘V على Mac) للصق.",
+    "clipboardBlocked": "منع المتصفح الوصول إلى الحافظة. حدّد النص واضغط Ctrl+C (أو ⌘C على Mac).",
+    "page": "هذه الصفحة"
   }
 }

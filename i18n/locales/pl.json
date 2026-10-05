@@ -4777,7 +4777,39 @@
         "rename": "Zmieniono nazwę tabeli na {table}",
         "truncate": "Opróżniono tabelę {table}",
         "drop": "Usunięto tabelę {table}"
-      }
+      },
+      "newTableHere": "Nowa tabela tutaj",
+      "copyName": "Kopiuj nazwę"
+    },
+    "menu": {
+      "openData": "Otwórz dane",
+      "openStructure": "Otwórz strukturę",
+      "refresh": "Odśwież",
+      "openRow": "Otwórz wiersz",
+      "copyValue": "Kopiuj wartość"
     }
+  },
+  "contextMenu": {
+    "open": "Otwórz",
+    "back": "Wstecz",
+    "forward": "Dalej",
+    "reload": "Załaduj ponownie",
+    "search": "Szukaj",
+    "shortcuts": "Skróty klawiszowe",
+    "theme": "Motyw",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "system": "Jak na urządzeniu",
+    "copyPageLink": "Kopiuj link do tej strony",
+    "cut": "Wytnij",
+    "copy": "Kopiuj",
+    "paste": "Wklej",
+    "selectAll": "Zaznacz wszystko",
+    "copySelection": "Kopiuj",
+    "openNewTab": "Otwórz w nowej karcie",
+    "copyLinkAddress": "Kopiuj link",
+    "pasteBlocked": "Przeglądarka zablokowała odczyt schowka. Naciśnij Ctrl+V (⌘V na Macu), aby wkleić.",
+    "clipboardBlocked": "Przeglądarka zablokowała schowek. Zaznacz tekst i naciśnij Ctrl+C (⌘C na Macu).",
+    "page": "Ta strona"
   }
 }

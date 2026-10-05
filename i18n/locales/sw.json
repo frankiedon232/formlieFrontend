@@ -4777,7 +4777,39 @@
         "rename": "Jina la jedwali limebadilishwa kuwa {table}",
         "truncate": "Yaliyomo kwenye jedwali {table} yamefutwa",
         "drop": "Jedwali {table} limefutwa"
-      }
+      },
+      "newTableHere": "Jedwali jipya hapa",
+      "copyName": "Nakili jina"
+    },
+    "menu": {
+      "openData": "Fungua data",
+      "openStructure": "Fungua muundo",
+      "refresh": "Onyesha upya",
+      "openRow": "Fungua safu",
+      "copyValue": "Nakili thamani"
     }
+  },
+  "contextMenu": {
+    "open": "Fungua",
+    "back": "Rudi",
+    "forward": "Mbele",
+    "reload": "Pakia upya",
+    "search": "Tafuta",
+    "shortcuts": "Njia za mkato za kibodi",
+    "theme": "Mandhari",
+    "light": "Angavu",
+    "dark": "Giza",
+    "system": "Sawa na kifaa",
+    "copyPageLink": "Nakili kiungo cha ukurasa huu",
+    "cut": "Kata",
+    "copy": "Nakili",
+    "paste": "Bandika",
+    "selectAll": "Chagua zote",
+    "copySelection": "Nakili",
+    "openNewTab": "Fungua katika kichupo kipya",
+    "copyLinkAddress": "Nakili kiungo",
+    "pasteBlocked": "Kivinjari kimezuia kusoma ubao wa kunakili. Bonyeza Ctrl+V (⌘V kwenye Mac) ili kubandika.",
+    "clipboardBlocked": "Kivinjari kimezuia ubao wa kunakili. Chagua maandishi kisha ubonyeze Ctrl+C (⌘C kwenye Mac).",
+    "page": "Ukurasa huu"
   }
 }

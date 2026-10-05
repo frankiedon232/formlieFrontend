@@ -4777,7 +4777,39 @@
         "rename": "테이블 이름을 {table}(으)로 바꿨습니다",
         "truncate": "{table} 테이블을 비웠습니다",
         "drop": "{table} 테이블을 삭제했습니다"
-      }
+      },
+      "newTableHere": "여기에 새 테이블",
+      "copyName": "이름 복사"
+    },
+    "menu": {
+      "openData": "데이터 열기",
+      "openStructure": "구조 열기",
+      "refresh": "새로고침",
+      "openRow": "행 열기",
+      "copyValue": "값 복사"
     }
+  },
+  "contextMenu": {
+    "open": "열기",
+    "back": "뒤로",
+    "forward": "앞으로",
+    "reload": "새로고침",
+    "search": "검색",
+    "shortcuts": "키보드 단축키",
+    "theme": "테마",
+    "light": "라이트",
+    "dark": "다크",
+    "system": "기기 설정과 동일",
+    "copyPageLink": "이 페이지 링크 복사",
+    "cut": "잘라내기",
+    "copy": "복사",
+    "paste": "붙여넣기",
+    "selectAll": "모두 선택",
+    "copySelection": "복사",
+    "openNewTab": "새 탭에서 열기",
+    "copyLinkAddress": "링크 복사",
+    "pasteBlocked": "브라우저가 클립보드 읽기를 차단했습니다. 붙여넣으려면 Ctrl+V(Mac에서는 ⌘V)를 누르세요.",
+    "clipboardBlocked": "브라우저가 클립보드를 차단했습니다. 텍스트를 선택하고 Ctrl+C(Mac에서는 ⌘C)를 누르세요.",
+    "page": "이 페이지"
   }
 }
