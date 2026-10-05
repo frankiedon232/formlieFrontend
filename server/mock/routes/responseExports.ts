@@ -3,16 +3,16 @@
  * as a file: all of them, the ones matching the list's filters, or the selected ones; the table's
  * columns or every question; with or without review details. The file is made in the background
  * (progress), kept 7 days, and each download gets a one-time private link (5 minutes). The mock
- * writes a real .xlsx (core/xlsx.ts), CSV, and a simple text PDF.
+ * writes a real .xlsx (core/xlsx.ts), CSV, and a designed PDF report (data/responseReport.ts).
  * Every export, download and removal is in the audit trail.
  */
 import { z } from 'zod'
 import type { H3Event } from 'h3'
 import type { ResponseExport, ResponseExportFormat } from '#shared/types/responses'
 import { answerText } from '#shared/utils/forms/answer-text'
+import { resolveTheme } from '#shared/utils/forms/theme'
 import { requireAuth, tenantOf } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
-import { textPdf } from '../core/pdf'
 import { xlsx } from '../core/xlsx'
 import { MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -20,6 +20,7 @@ import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
 import { levelOf } from '../data/formPermissions'
 import { answersOf, formResponses } from '../data/responseData'
+import { responseReport } from '../data/responseReport'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { filterResponses, formFor, questionsOf } from './responses'
 
@@ -105,8 +106,34 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
   const file_name = `${slug(form.name)}-responses-${stamp}.${extension[input.format]}`
   let bytes: Uint8Array
   if (input.format === 'pdf') {
-    const lines = rows.flatMap(row => [`# #${row[0]}  ${row[2] || row[3] || ''}  ${String(row[1]).slice(0, 16).replace('T', ' ')}`, ...head.slice(4).map((name, i) => `${name}: ${row[i + 4] === '' ? '-' : row[i + 4]}`), ''])
-    bytes = textPdf(`${form.name} - ${rows.length} responses`, lines)
+    // A designed report in the form's own colour (owner 2026-10-05), not a text dump.
+    const counts = { new: 0, reviewed: 0, approved: 0, rejected: 0 }
+    for (const { entry } of picked) counts[entry.status]++
+    const brand = resolveTheme(form.schema?.theme, { logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null }).colors.primary
+    const SCOPE = { all: 'All responses', filtered: 'Matching the filters', selected: 'Selected responses' }
+    bytes = responseReport({
+      org: tenant.name,
+      form: form.name,
+      brand,
+      exportedBy: `${user.first_name} ${user.last_name}`.trim(),
+      exportedAt: new Date(),
+      scope: SCOPE[input.scope],
+      counts,
+      responses: picked.map(({ entry }) => {
+        const data = answersOf(form, entry)
+        const at = new Date(entry.at)
+        return {
+          number: entry.number,
+          name: entry.respondent.name ?? '',
+          email: entry.respondent.email ?? '',
+          submitted: `${at.toISOString().slice(0, 10)} ${at.toISOString().slice(11, 16)} UTC`,
+          status: entry.status,
+          channel: entry.channel,
+          tags: input.details ? entry.tags : [],
+          answers: fields.map(field => ({ question: field.label?.trim() || field.key, answer: answerText(field, data[field.key]) })),
+        }
+      }),
+    })
   } else if (input.format === 'xlsx') {
     bytes = xlsx(form.name, [head, ...rows])
   } else {

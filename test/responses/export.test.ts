@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { textPdf } from '../../server/mock/core/pdf'
 import { answerText } from '../../shared/utils/forms/answer-text'
 
-// Response exports (F11 M3): answers as plain text for files, and the mock's PDF writer.
+// Response exports (F11 M3): answers as plain text for files, the Excel writer and the PDF report.
 describe('answers in export files', () => {
   const choice = { type: 'checkbox', options: [{ value: 'a', label: 'Apples' }, { value: 'b', label: 'Bananas' }] } as never
 
@@ -26,22 +25,6 @@ describe('answers in export files', () => {
   })
 })
 
-describe('mock PDF writer', () => {
-  it('writes a valid PDF and adds pages when the text is long', () => {
-    const short = new TextDecoder('latin1').decode(textPdf('Title', ['# One', 'Line']))
-    expect(short.startsWith('%PDF-1.4')).toBe(true)
-    expect(short.trimEnd().endsWith('%%EOF')).toBe(true)
-    expect(short).toContain('/Count 1')
-    const long = new TextDecoder('latin1').decode(textPdf('Title', Array.from({ length: 200 }, (_, i) => `Line ${i}`)))
-    expect(Number(/\/Count (\d+)/.exec(long)?.[1])).toBeGreaterThan(1)
-  })
-
-  it('escapes brackets and keeps accented Latin letters', () => {
-    const text = new TextDecoder('latin1').decode(textPdf('Café (test)', []))
-    expect(text).toContain('Café \\(test\\)')
-  })
-})
-
 describe('mock Excel writer', () => {
   it('writes a ZIP workbook with the sheet, header style and every cell', async () => {
     const { xlsx } = await import('../../server/mock/core/xlsx')
@@ -61,5 +44,34 @@ describe('mock Excel writer', () => {
     expect(sheet).not.toContain('<f>')
     expect(sheet).toContain('name="Job application  2024 1"')
     if (process.env.XLSX_OUT) (await import('node:fs')).writeFileSync(process.env.XLSX_OUT, bytes)
+  })
+})
+
+describe('response report PDF', () => {
+  it('lays out a cover, status tiles and one card per response over several pages', async () => {
+    const { responseReport } = await import('../../server/mock/data/responseReport')
+    const responses = Array.from({ length: 9 }, (_, i) => ({
+      number: 1936 - i,
+      name: ['Arjun Johansson', 'Selin Haddad', 'Liam Kowalski'][i % 3]!,
+      email: `person${i}@example.org`,
+      submitted: '2026-10-05 09:30 UTC',
+      status: (['new', 'reviewed', 'approved', 'rejected'] as const)[i % 4]!,
+      channel: i % 2 ? 'embed' : 'link',
+      tags: i % 3 ? [] : ['priority'],
+      answers: [
+        { question: 'Full name', answer: 'Arjun Johansson' },
+        { question: 'Email', answer: 'arjun@example.org' },
+        { question: 'Why do you want to join our team? Tell us in a few sentences.', answer: 'I enjoy building tools that help people work better together, and your mission matches what I care about. '.repeat(3) },
+        { question: 'Country of residence', answer: '' },
+        { question: 'Work arrangement', answer: 'Remote' },
+      ],
+    }))
+    const bytes = responseReport({ org: 'Remedy Legal', form: 'Job application 2', brand: '#2f6f5e', exportedBy: 'Frankie Don', exportedAt: new Date('2026-10-05T10:00:00Z'), scope: 'All responses', counts: { new: 3, reviewed: 2, approved: 2, rejected: 2 }, responses })
+    const text = new TextDecoder('latin1').decode(bytes)
+    expect(text.startsWith('%PDF-1.4')).toBe(true)
+    expect(Number(/\/Count (\d+)/.exec(text)?.[1])).toBeGreaterThan(1)
+    expect(text).toContain('(Page 1 of ')
+    expect(text).toContain('(Job application 2)')
+    if (process.env.PDF_OUT) (await import('node:fs')).writeFileSync(process.env.PDF_OUT, bytes)
   })
 })
