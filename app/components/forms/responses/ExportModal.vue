@@ -4,6 +4,8 @@
   and whether to add review details; then the file is made with a progress bar and downloaded over
   a one-time private link. It stays 7 days on Responses → Exports.
   Without `formId` (Exports page "New export", owner 2026-10-05) it first asks which form, with search.
+  Once Export is pressed (preparing, progress, ready) it only closes with Close or ✕, never by a
+  click outside or Esc, so nobody thinks the export failed (owner 2026-10-05).
 -->
 <script setup lang="ts">
 import type { ResponseExport, ResponseExportFormat, ResponseExportScope, ResponseFormRow } from '#shared/types/responses'
@@ -114,7 +116,7 @@ const working = computed(() => !!job.value && (job.value.status === 'queued' || 
 </script>
 
 <template>
-  <AppModal v-model:open="open" :title="t('responses.export.title')" :description="t('responses.export.desc')" :dismissible="!busy && !working" :ui="{ content: 'sm:max-w-lg' }">
+  <AppModal v-model:open="open" :title="t('responses.export.title')" :description="t('responses.export.desc')" :dismissible="!busy && !job" :ui="{ content: 'sm:max-w-lg' }">
     <template #body>
       <div v-if="!job" class="flex flex-col gap-5">
         <UFormField v-if="!props.formId" :label="t('responses.export.form')" required>

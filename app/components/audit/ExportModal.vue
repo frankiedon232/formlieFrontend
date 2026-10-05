@@ -73,7 +73,7 @@ const ready = computed(() => job.value?.status === 'done' && !!job.value.downloa
     v-model:open="open"
     :title="t('audit.export.title')"
     :description="t('audit.export.desc')"
-    :dismissible="!running"
+    :dismissible="!running && !job"
   >
     <template #body>
       <div v-if="!job" class="flex flex-col gap-4">
