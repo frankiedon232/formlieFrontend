@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Muunganisho huu umezimwa. Uwashe kwanza.",
     "FRM-DEST-1010": "Fomu bado zinatuma majibu yake kwenye muunganisho huu.",
     "FRM-DEST-1011": "Hifadhidata ilichukua muda mrefu sana kujibu.",
-    "FRM-DEST-1012": "Akaunti hii haiwezi kuunda wala kutumia majedwali ya majibu."
+    "FRM-DEST-1012": "Akaunti hii haiwezi kuunda wala kutumia majedwali ya majibu.",
+    "FRM-DEST-1013": "Kuhifadhi majibu katika jedwali lako kunahitaji Ufikiaji kamili kwenye muunganisho huu.",
+    "FRM-DEST-1014": "Jedwali lenye jina hili tayari lipo.",
+    "FRM-DEST-1015": "Fomu hii tayari inahifadhi majibu yake katika hifadhidata.",
+    "FRM-DEST-1016": "Fomu na jedwali bado havilingani.",
+    "FRM-DEST-1017": "Majibu ya awali tayari yanatumwa. Subiri hadi imalizike."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Muunganisho umewashwa",
       "data_connection_disabled": "Muunganisho umezimwa",
       "data_connection_deleted": "Muunganisho umefutwa",
-      "data_credentials_changed": "Vitambulisho vya muunganisho vimebadilishwa"
+      "data_credentials_changed": "Vitambulisho vya muunganisho vimebadilishwa",
+      "data_destination_created": "Hifadhi ya majibu imewekwa",
+      "data_destination_updated": "Hifadhi ya majibu imebadilishwa",
+      "data_destination_paused": "Uwasilishaji wa majibu umesitishwa",
+      "data_destination_resumed": "Uwasilishaji wa majibu umeendelea",
+      "data_destination_removed": "Majibu yamerudishwa kwenye hifadhi ya Formalie",
+      "data_table_created": "Jedwali la majibu limeundwa",
+      "data_column_added": "Safuwima zimeongezwa kwenye jedwali la majibu",
+      "data_backfill_started": "Majibu ya awali yametumwa kwenye hifadhidata",
+      "data_deliveries_retried": "Uwasilishaji ulioshindwa umejaribiwa tena"
     },
     "detail": {
       "who": "Nani",
@@ -4283,5 +4297,276 @@
     "unpin": "Bandua kutoka upau wa pembeni",
     "pinFull": "Unaweza kubandika folda hadi 5",
     "hex": "Rangi ya hex"
+  },
+  "destinations": {
+    "crumb": "Hifadhi ya majibu",
+    "setupTitle": "Hifadhi majibu katika hifadhidata yako",
+    "editTitle": "Badilisha hifadhi ya majibu",
+    "add": "Hifadhi majibu ya fomu",
+    "search": "Tafuta fomu, miunganisho au majedwali…",
+    "emptyTitle": "Bado hakuna fomu inayohifadhi majibu yake katika hifadhidata",
+    "emptyDesc": "Fungua fomu na uchague “Hifadhi katika hifadhidata yako” kwenye muhtasari wake. Formalie huunda jedwali na kutuma kila jibu humo.",
+    "adminsOnly": "Wasimamizi wa eneo la kazi pekee ndio wanaoweza kubadilisha mahali majibu yanapohifadhiwa",
+    "adminsOnlyDesc": "Muulize mmiliki au msimamizi wa eneo hili la kazi.",
+    "noFields": "Fomu hii bado haina maswali",
+    "noFieldsDesc": "Ongeza maswali kwenye fomu kwanza; kila swali hupata safuwima.",
+    "delivering": "Inawasilisha",
+    "paused": "Imesitishwa",
+    "status": {
+      "active": "Inawasilisha",
+      "paused": "Imesitishwa",
+      "failing": "Inashindwa"
+    },
+    "delivery": {
+      "all": "Yote",
+      "sent": "Yametumwa",
+      "pending": "Yanasubiri",
+      "failed": "Yameshindwa",
+      "held": "Yamezuiwa",
+      "not_sent": "Hayajatumwa"
+    },
+    "table": {
+      "created": "Limeundwa na Formalie",
+      "yours": "Jedwali lako"
+    },
+    "col": {
+      "form": "Fomu",
+      "connection": "Muunganisho",
+      "table": "Jedwali"
+    },
+    "sort": {
+      "busiest": "Yaliyowasilishwa zaidi",
+      "failed": "Yaliyoshindwa zaidi",
+      "recent": "Yaliyowasilishwa hivi karibuni"
+    },
+    "kpi": {
+      "delivered": "Majibu yaliyowasilishwa",
+      "byStatus": "Fomu kwa hali ya uwasilishaji",
+      "failingCount": "{n} zinashindwa",
+      "forms": "Fomu",
+      "sent30": "Yaliyotumwa (siku 30)",
+      "pending": "Yanasubiri",
+      "failed": "Yameshindwa",
+      "held": "Yamezuiwa",
+      "last": "Uwasilishaji wa mwisho",
+      "notSent": "Hayajatumwa (ya awali)",
+      "since": "Yanahifadhiwa hapa tangu",
+      "deliveredShare": "Yaliyowasilishwa (siku 30)"
+    },
+    "card": {
+      "title": "Mahali majibu yanapohifadhiwa",
+      "formalie": "Hifadhi iliyosimbwa ya Formalie",
+      "formalieDesc": "Majibu yanabaki ndani ya Formalie. Yahifadhi katika hifadhidata yako ili uyatumie pia katika mifumo yako.",
+      "store": "Hifadhi katika hifadhidata yako",
+      "addConnection": "Unganisha hifadhidata kwanza",
+      "last": "Iliwasilishwa mwisho {when}",
+      "none": "Bado hakuna kilichowasilishwa",
+      "newFields": "Swali {n} jipya bado halina safuwima | Maswali {n} mapya bado hayana safuwima",
+      "open": "Uwasilishaji",
+      "change": "Badilisha"
+    },
+    "actions": {
+      "backfill": "Tuma majibu ya awali",
+      "retryAll": "Jaribu tena {n} lililoshindwa | Jaribu tena {n} yaliyoshindwa",
+      "pause": "Sitisha uwasilishaji",
+      "resume": "Endelea kuwasilisha",
+      "openForm": "Fungua fomu",
+      "openConnection": "Fungua muunganisho",
+      "change": "Badilisha safuwima na chaguo",
+      "remove": "Hifadhi tena ndani ya Formalie"
+    },
+    "remove": {
+      "title": "Hifadhi tena majibu ya “{form}” ndani ya Formalie?",
+      "desc": "Majibu mapya yanabaki katika hifadhi ya Formalie. Jedwali na safu zilizo tayari katika hifadhidata yako haziguswi.",
+      "confirm": "Hifadhi ndani ya Formalie"
+    },
+    "toast": {
+      "created": "Majibu sasa yanakwenda {table}",
+      "saved": "Hifadhi ya majibu imehifadhiwa",
+      "paused": "Uwasilishaji umesitishwa. Majibu mapya yanasubiri hadi utakapoendelea",
+      "resumed": "Uwasilishaji umeendelea. Majibu yaliyokuwa yakisubiri yako njiani",
+      "retried": "Inajaribu tena uwasilishaji {n} | Inajaribu tena uwasilishaji {n}",
+      "columnsAdded": "Safuwima {n} imeongezwa | Safuwima {n} zimeongezwa",
+      "removed": "Majibu yanahifadhiwa tena ndani ya Formalie"
+    },
+    "detail": {
+      "all": "Yote",
+      "deliveries": "Uwasilishaji",
+      "columns": "Safuwima",
+      "fields": "Maswali mapya",
+      "fieldsTitle": "Swali {n} lililoongezwa kwenye fomu halina safuwima | Maswali {n} yaliyoongezwa kwenye fomu hayana safuwima",
+      "fieldsDesc": "Majibu yake hayahifadhiwi katika jedwali hadi uongeze safuwima. Hakuna kingine kinachobadilika.",
+      "addColumns": "Ongeza safuwima {n} | Ongeza safuwima {n}",
+      "navigate": "Hamia kati ya fomu",
+      "previous": "Fomu iliyotangulia",
+      "next": "Fomu inayofuata"
+    },
+    "deliveries": {
+      "filter": "Onyesha",
+      "empty": "Hakuna majibu hapa.",
+      "attempts": "Jaribio {n} | Majaribio {n}",
+      "nextRetry": "jaribio lijalo {when}",
+      "retryOne": "Jaribu tena jibu #{n}",
+      "more": "Onyesha zaidi ({shown} kati ya {total})"
+    },
+    "backfill": {
+      "title": "Tuma majibu ya awali",
+      "desc": "Majibu ya kabla fomu hii haijaanza kuhifadhi hapa yanatumwa chinichini, kwa njia ileile kama mapya.",
+      "notSent": "Jibu {n} la kabla ya {date} halikutumwa. | Majibu {n} ya kabla ya {date} hayakutumwa.",
+      "from": "Kuanzia",
+      "to": "Hadi",
+      "order": "Chagua tarehe baada ya tarehe ya kuanza.",
+      "note": "Hakuna kilicho tayari katika jedwali kinachotumwa mara mbili. Unaweza kuendelea kufanya kazi wakati huo.",
+      "start": "Yatume",
+      "started": "Inatuma majibu ya awali",
+      "running": "Inatuma majibu ya awali: {done} kati ya {total}",
+      "done": "Jibu {n} la awali limetumwa | Majibu {n} ya awali yametumwa"
+    },
+    "meta": {
+      "response_id": "Kitambulisho cha jibu",
+      "submitted_at": "Muda wa kuwasilishwa",
+      "form_version": "Toleo la fomu",
+      "language": "Lugha",
+      "response_number": "Nambari ya jibu",
+      "respondent_email": "Barua pepe ya mjibuji",
+      "review_status": "Hali ya ukaguzi"
+    },
+    "issue": {
+      "no_key": "Chagua safuwima ya kitambulisho cha jibu, ili Formalie iweze kupata kila safu tena.",
+      "required_unmapped": "{column} lazima ijazwe: chagua kinachoingia ndani yake.",
+      "type_mismatch": "{column} huenda isikubali “{field}” kama ilivyo. Kagua aina ya safuwima.",
+      "duplicate_source": "{column} inarudia kitu ambacho safuwima nyingine tayari inahifadhi.",
+      "upsert_key": "Safuwima ya ufunguo {column} lazima ijazwe ili kusasisha safu."
+    },
+    "columns": {
+      "problems": "Rekebisha haya kwanza",
+      "warnings": "Yanahitaji kuangaliwa",
+      "addKey": "Ongeza safuwima ya kitambulisho cha jibu",
+      "column": "Safuwima",
+      "answer": "Jibu au taarifa",
+      "fills": "Hujazwa na",
+      "type": "Aina",
+      "nothing": "Hakuna kitu",
+      "required": "Lazima ijazwe",
+      "new": "Mpya",
+      "fillsFor": "Kinachojaza {column}",
+      "columnFor": "Safuwima ya {item}",
+      "chooseAnswers": "Chagua majibu ya kuhifadhi"
+    },
+    "options": {
+      "writeLegend": "Kuandika safu",
+      "write": {
+        "insert": "Safu mpya kwa kila jibu",
+        "upsert": "Sasisha safu yenye ufunguo uleule"
+      },
+      "writeDesc": {
+        "insert": "Kila jibu huongeza safu. Mabadiliko na mabadiliko ya ukaguzi husasisha safu hiyo.",
+        "upsert": "Jibu ambalo ufunguo wake tayari upo katika jedwali husasisha safu hiyo badala yake."
+      },
+      "keyColumn": "Safuwima ya ufunguo",
+      "keyColumnDesc": "Safu zenye thamani ileile hapa ni rekodi moja.",
+      "multiLegend": "Majibu yenye thamani kadhaa",
+      "multi": {
+        "json": "Kama JSON",
+        "text": "Kama maandishi yanayosomeka"
+      },
+      "multiDesc": {
+        "json": "Machaguo, mipangilio ya nafasi, majina, anwani na viungo vya faili huhifadhiwa kama data iliyopangwa.",
+        "text": "Huunganishwa katika mstari mmoja, kwa mfano “SQL; Vue”."
+      },
+      "choicesLegend": "Machaguo",
+      "choices": {
+        "value": "Kwa thamani yake",
+        "label": "Kwa lebo yake"
+      },
+      "choicesDesc": {
+        "value": "Misimbo thabiti isiyobadilika lebo inapoandikwa upya.",
+        "label": "Maneno ambayo watu waliona, rahisi kusoma katika ripoti."
+      },
+      "extraLegend": "Pia hifadhi",
+      "extraDesc": "Kitambulisho cha jibu, muda lilipowasilishwa, toleo la fomu na lugha huhifadhiwa kila wakati."
+    },
+    "setup": {
+      "step": {
+        "connection": "Muunganisho",
+        "table": "Jedwali",
+        "columns": "Safuwima",
+        "options": "Chaguo",
+        "review": "Kagua"
+      },
+      "title": {
+        "connection": "Hifadhidata ipi?",
+        "table": "Jedwali lipi?",
+        "columns": "Safuwima ipi kwa kila jibu?",
+        "options": "Majibu yanaandikwaje?",
+        "review": "Kagua na uanze"
+      },
+      "desc": {
+        "connection": "Majibu ya “{form}” yatahifadhiwa kwenye muunganisho huu.",
+        "table": "Jedwali jipya lililoundwa kutoka kwa fomu, au jedwali ulilo nalo tayari.",
+        "columns": "Kila jibu na taarifa chache kuhusu uwasilishaji hupata safuwima.",
+        "options": "Chaguo-msingi zinazofaa zimechaguliwa; zibadilishe ikiwa mifumo yako inahitaji.",
+        "review": "Hiki ndicho hasa Formalie itafanya kwenye hifadhidata yako."
+      },
+      "noConnections": "Bado hakuna muunganisho",
+      "noConnectionsDesc": "Unganisha mojawapo ya hifadhidata zako kwanza, kisha urudi kuhifadhi majibu ya fomu hii humo.",
+      "connectionWarn": "Muunganisho huu haufanyi kazi kwa sasa",
+      "connectionWarnDesc": "Bado unaweza kuuweka. Majibu yanasubiri na kujaribiwa tena hadi muunganisho ufanye kazi tena.",
+      "create": "Unda jedwali kutoka kwa fomu",
+      "createDesc": "Formalie huunda jedwali lenye safuwima kwa kila jibu na kulisasisha kadiri fomu inavyobadilika.",
+      "existing": "Tumia jedwali lako",
+      "existingDesc": "Chagua jedwali ulilo nalo tayari na uchague safuwima ambayo kila jibu linaingia.",
+      "existingNeedsFull": "Inahitaji Ufikiaji kamili kwenye muunganisho huu (Shughuli nyingine za hifadhidata).",
+      "tableName": "Jina la jedwali",
+      "tableNameDesc": "Huanza na {prefix}. Herufi, nambari na mistari ya chini.",
+      "suggest": "Tumia jina lililopendekezwa",
+      "schemaFromConnection": "Huwekwa kwenye muunganisho, chini ya Ufikiaji.",
+      "mustStartWith": "Anza jina na {prefix}.",
+      "nameChars": "Tumia herufi, nambari na mistari ya chini, ukianza na herufi.",
+      "pickTable": "Chagua jedwali",
+      "pickTableDesc": "Majedwali ambayo Formalie inaweza kuona kwenye muunganisho huu.",
+      "searchTables": "Tafuta majedwali…",
+      "tableFacts": "Safuwima {columns} · takriban safu {rows}",
+      "columnsCount": "{filled} kati ya {total} zimejazwa",
+      "sqlTitle": "Formalie itakachoendesha",
+      "sqlNone": "Hakuna cha kubadilisha katika jedwali",
+      "sqlNote": "Formalie huendesha hii kwenye hifadhidata yako unapohifadhi, kisha huanza kutuma majibu mapya.",
+      "sqlNoneNote": "Jedwali tayari lina kila safuwima inayohitajika. Majibu mapya yanatumwa mara tu unapohifadhi.",
+      "createAndStart": "Unda jedwali na uanze",
+      "start": "Anza kuhifadhi hapa",
+      "leaveDesc": "Hifadhi ya majibu uliyoweka itapotea."
+    },
+    "help": {
+      "connection": {
+        "title": "Kuchagua hifadhidata",
+        "p1": "Muunganisho wowote wa eneo hili la kazi unaweza kuhifadhi majibu ya fomu.",
+        "p2": "Formalie huweka kila jibu katika foleni yake iliyosimbwa hadi hifadhidata ithibitishe kulipokea.",
+        "p3": "Unaweza kuona na kuonyesha majibu kwa njia ileile popote yanapohifadhiwa."
+      },
+      "table": {
+        "title": "Jedwali jipya au lililopo",
+        "p1": "Jedwali jipya hupewa jina lenye kiambishi cha muunganisho, hivyo ni rahisi kulitambua.",
+        "p2": "Jedwali lako linahitaji Ufikiaji kamili, kwa sababu Formalie huandika ndani yake na inaweza kuongeza safuwima.",
+        "p3": "Formalie kamwe haifuti jedwali wala safuwima."
+      },
+      "columns": {
+        "title": "Safuwima",
+        "p1": "Majina ya safuwima yanatoka kwenye funguo za maswali na yanaweza kubadilishwa.",
+        "p2": "Kitambulisho cha jibu huiwezesha Formalie kupata safu tena, kwa mabadiliko na mabadiliko ya ukaguzi.",
+        "p3": "Maswali yanayoongezwa kwenye fomu baadaye hupata safuwima kwa mbofyo mmoja."
+      },
+      "options": {
+        "title": "Chaguo",
+        "p1": "Safu mpya kwa kila jibu inafaa matumizi mengi.",
+        "p2": "Sasisha au ingiza huweka safu moja kwa kila ufunguo, kwa mfano moja kwa kila mwombaji.",
+        "p3": "JSON huhifadhi muundo; maandishi ni rahisi kusoma katika ripoti."
+      },
+      "review": {
+        "title": "Kinachofuata",
+        "p1": "Majibu mapya yanatumwa chinichini ndani ya sekunde chache.",
+        "p2": "Uwasilishaji ulioshindwa hujaribiwa tena kwa vipindi vinavyoongezeka; unaweza pia kuujaribu tena mwenyewe.",
+        "p3": "Majibu ya awali yanaweza kutumwa baadaye, kwa kipindi chochote cha tarehe."
+      }
+    }
   }
 }

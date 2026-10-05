@@ -246,13 +246,31 @@ Errors: `FRM-DEST-1001` can't reach · `1002` sign-in refused · `1003` TLS / ce
 
 **Permissions** (`shared/utils/datasources/permissions.ts`, decision 112): a connection stores responses, so Formalie's own tables are always required: own (sign in, create its tables with the prefix, read and write their rows, add columns, add the unique key, cancel its own query) · optional read on the other tables (structure, row counts, rows) · write, "Full access" (add, change, delete rows; sequences on PostgreSQL / Oracle; create and change tables in their schemas; also what storing responses in a table of theirs needs). Settings and credentials are encrypted at rest (backend: Fernet). The test checks each one the connection needs (`SHOW GRANTS`, `has_*_privilege`, `fn_my_permissions`, `SESSION_PRIVS` / `ALL_TAB_PRIVS`); `grantScript()` writes the statements for the connection's own database, schemas and account.
 
+## Response storage (F12 M2)
+
+Decision 113. Admins only until F22 (`GET /forms/{id}/storage` for anyone who can see the form). Shapes in `shared/types/destinations.ts`; names, types, SQL and rows in `shared/utils/datasources/tables.ts`.
+
+| Method | Path | Notes |
+| --- | --- | --- |
+| GET | `/forms/{id}/storage` | `{ mode: formalie\|database, destination: DestinationRow \| null, connections, fields [{ key, label, type, options }], can_manage }` |
+| GET | `/datasources/{id}/tables` | `DatabaseTable[]` `{ schema, name, columns [{ name, type, nullable, has_default, primary, unique }], rows_estimate, formalie }`: Formalie's response tables and, per the connection's access, the organisation's |
+| GET | `/destinations` | `DestinationRow[]` `{ id, form, datasource { id, name, engine, status }, table { schema, name, created }, status: active\|paused\|failing, settings, sent_30d, pending, failed, last_delivery_at, daily, new_fields, created_by, … }`; `q`, `sort`, `filter[status\|datasource\|table (created\|existing)]` |
+| GET | `/destinations/insights` | `{ total, by_status, sent_30d, previous_30d, daily, deliveries { sent, pending, failed, held } }` |
+| POST | `/destinations` | `{ form_id, datasource_id, table { mode: create\|existing, schema, name }, columns [{ column, type, source: { kind: field\|meta, key } \| null, nullable, existing }], settings { write_mode: insert\|upsert, key_column, multi_value: json\|text, choices: value\|label } }` → 201 `DestinationDetail`. Creates the table (name must start with the connection's prefix) or adds the columns marked `existing: false`. Errors `FRM-DEST-1009` disabled, `1013` existing table without Full access, `1014` name taken, `1015` form already stores in a database, `1016` mapping problems (`{ field: column, message: no_key\|required_unmapped\|duplicate_source\|upsert_key }`) |
+| GET | `/destinations/{id}` | `DestinationDetail`: the row plus `columns`, `fields`, `unmapped_fields [{ key, label, column, type }]`, `backfill`, `covers_from`, `not_sent` |
+| PATCH | `/destinations/{id}` | `{ paused?, settings?, columns? }` (resuming sends held responses) |
+| POST | `/destinations/{id}/columns` | `{ keys }` → adds a column per new question (`ALTER TABLE … ADD`) |
+| GET | `/destinations/{id}/deliveries` | `Delivery[]` `{ response_id, number, submitted_at, respondent, status: sent\|pending\|failed\|held\|not_sent, attempts, error_code, at, next_retry_at }`, newest first; `filter[status]`, `q` (#number, respondent) |
+| POST | `/destinations/{id}/retry` | `{ response_ids? }` (all failed when empty) → `{ retried }` |
+| POST | `/destinations/{id}/backfill` | `{ from, to }` (dates) → `DestinationDetail` with `backfill { total, done, status, … }`; `FRM-DEST-1017` while one runs |
+| DELETE | `/destinations/{id}` | back to Formalie's storage; the table and its rows stay |
+
 ## Integrations, settings, analytics
 
 | GET | `/datasources/{id}/schema` (schemas → tables / views → columns, keys, indexes, row counts) | planned (F12) |
 | CRUD | `/datasources/{id}/tables/{table}/rows` (paged list with sort / filters; insert / update / delete on read + write connections; import; export job) | planned (F12) |
 | POST | `/datasources/{id}/query` `{ sql, params, limit }` → `{ columns, rows, rows_affected, duration_ms }` (+ `/query/{run_id}/cancel`); read-only unless the connection allows changes; every run audited | planned (F12) |
 | CRUD | `/saved-queries` (personal / shared) | planned (F12) |
-| CRUD | `/forms/{id}/destinations` (+ mapping, create table, backfill, deliveries, retry) | planned (F12) |
 | CRUD | `/webhooks` · `/api-keys` | planned (F15) |
 | GET/PATCH | `/settings/{section}` | company, branding, auth, security, localisation, notifications, retention, embed |
 | GET | `/forms/{id}/analytics?from=&to=` | summary, timeseries, per-field stats, drop-off |

@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "To połączenie jest wyłączone. Najpierw je włącz.",
     "FRM-DEST-1010": "Formularze nadal wysyłają odpowiedzi do tego połączenia.",
     "FRM-DEST-1011": "Baza danych zbyt długo nie odpowiadała.",
-    "FRM-DEST-1012": "To konto nie może tworzyć ani używać tabel odpowiedzi."
+    "FRM-DEST-1012": "To konto nie może tworzyć ani używać tabel odpowiedzi.",
+    "FRM-DEST-1013": "Zapisywanie odpowiedzi w Twojej tabeli wymaga Pełnego dostępu na tym połączeniu.",
+    "FRM-DEST-1014": "Tabela o tej nazwie już istnieje.",
+    "FRM-DEST-1015": "Ten formularz już zapisuje swoje odpowiedzi w bazie danych.",
+    "FRM-DEST-1016": "Formularz i tabela jeszcze do siebie nie pasują.",
+    "FRM-DEST-1017": "Wcześniejsze odpowiedzi są już wysyłane. Poczekaj, aż to się zakończy."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Włączono połączenie",
       "data_connection_disabled": "Wyłączono połączenie",
       "data_connection_deleted": "Usunięto połączenie",
-      "data_credentials_changed": "Zmieniono dane logowania połączenia"
+      "data_credentials_changed": "Zmieniono dane logowania połączenia",
+      "data_destination_created": "Skonfigurowano zapisywanie odpowiedzi",
+      "data_destination_updated": "Zmieniono zapisywanie odpowiedzi",
+      "data_destination_paused": "Wstrzymano dostarczanie odpowiedzi",
+      "data_destination_resumed": "Wznowiono dostarczanie odpowiedzi",
+      "data_destination_removed": "Odpowiedzi wróciły do magazynu Formalie",
+      "data_table_created": "Utworzono tabelę odpowiedzi",
+      "data_column_added": "Dodano kolumny do tabeli odpowiedzi",
+      "data_backfill_started": "Wysłano wcześniejsze odpowiedzi do bazy danych",
+      "data_deliveries_retried": "Ponowiono nieudane dostarczenia"
     },
     "detail": {
       "who": "Kto",
@@ -4283,5 +4297,276 @@
     "unpin": "Odepnij z paska bocznego",
     "pinFull": "Można przypiąć maksymalnie 5 folderów",
     "hex": "Kolor hex"
+  },
+  "destinations": {
+    "crumb": "Zapisywanie odpowiedzi",
+    "setupTitle": "Zapisuj odpowiedzi w swojej bazie danych",
+    "editTitle": "Zmień zapisywanie odpowiedzi",
+    "add": "Zapisuj odpowiedzi formularza",
+    "search": "Szukaj formularzy, połączeń lub tabel…",
+    "emptyTitle": "Żaden formularz nie zapisuje jeszcze odpowiedzi w bazie danych",
+    "emptyDesc": "Otwórz formularz i wybierz „Zapisuj w swojej bazie danych” w jego przeglądzie. Formalie utworzy tabelę i wyśle do niej każdą odpowiedź.",
+    "adminsOnly": "Tylko administratorzy obszaru roboczego mogą zmienić miejsce zapisywania odpowiedzi",
+    "adminsOnlyDesc": "Poproś właściciela lub administratora tego obszaru roboczego.",
+    "noFields": "Ten formularz nie ma jeszcze pytań",
+    "noFieldsDesc": "Najpierw dodaj pytania do formularza; każde dostanie kolumnę.",
+    "delivering": "Dostarczanie",
+    "paused": "Wstrzymane",
+    "status": {
+      "active": "Dostarczanie",
+      "paused": "Wstrzymane",
+      "failing": "Błędy"
+    },
+    "delivery": {
+      "all": "Wszystkie",
+      "sent": "Wysłane",
+      "pending": "Oczekujące",
+      "failed": "Nieudane",
+      "held": "Wstrzymane",
+      "not_sent": "Niewysłane"
+    },
+    "table": {
+      "created": "Utworzona przez Formalie",
+      "yours": "Twoja tabela"
+    },
+    "col": {
+      "form": "Formularz",
+      "connection": "Połączenie",
+      "table": "Tabela"
+    },
+    "sort": {
+      "busiest": "Najwięcej dostarczonych",
+      "failed": "Najwięcej nieudanych",
+      "recent": "Ostatnio dostarczone"
+    },
+    "kpi": {
+      "delivered": "Dostarczone odpowiedzi",
+      "byStatus": "Formularze według stanu dostarczania",
+      "failingCount": "Z błędami: {n}",
+      "forms": "Formularze",
+      "sent30": "Wysłane (30 dni)",
+      "pending": "Oczekujące",
+      "failed": "Nieudane",
+      "held": "Wstrzymane",
+      "last": "Ostatnie dostarczenie",
+      "notSent": "Niewysłane (wcześniejsze)",
+      "since": "Zapisywane tutaj od",
+      "deliveredShare": "Dostarczone (30 dni)"
+    },
+    "card": {
+      "title": "Gdzie zapisywane są odpowiedzi",
+      "formalie": "Szyfrowany magazyn Formalie",
+      "formalieDesc": "Odpowiedzi pozostają w Formalie. Zapisuj je w swojej bazie danych, aby używać ich także w swoich systemach.",
+      "store": "Zapisuj w swojej bazie danych",
+      "addConnection": "Najpierw połącz bazę danych",
+      "last": "Ostatnio dostarczono {when}",
+      "none": "Jeszcze nic nie dostarczono",
+      "newFields": "Nowe pytania bez kolumny: {n} | Nowe pytania bez kolumny: {n}",
+      "open": "Dostarczenia",
+      "change": "Zmień"
+    },
+    "actions": {
+      "backfill": "Wyślij wcześniejsze odpowiedzi",
+      "retryAll": "Ponów nieudane: {n} | Ponów nieudane: {n}",
+      "pause": "Wstrzymaj dostarczanie",
+      "resume": "Wznów dostarczanie",
+      "openForm": "Otwórz formularz",
+      "openConnection": "Otwórz połączenie",
+      "change": "Zmień kolumny i opcje",
+      "remove": "Znów zapisuj w Formalie"
+    },
+    "remove": {
+      "title": "Znów zapisywać odpowiedzi z „{form}” w Formalie?",
+      "desc": "Nowe odpowiedzi pozostaną w magazynie Formalie. Tabela i wiersze już zapisane w Twojej bazie danych pozostaną nietknięte.",
+      "confirm": "Zapisuj w Formalie"
+    },
+    "toast": {
+      "created": "Odpowiedzi trafiają teraz do {table}",
+      "saved": "Zapisano ustawienia zapisywania odpowiedzi",
+      "paused": "Dostarczanie wstrzymane. Nowe odpowiedzi czekają, aż je wznowisz",
+      "resumed": "Dostarczanie wznowione. Oczekujące odpowiedzi są w drodze",
+      "retried": "Ponawiane dostarczenia: {n} | Ponawiane dostarczenia: {n}",
+      "columnsAdded": "Dodane kolumny: {n} | Dodane kolumny: {n}",
+      "removed": "Odpowiedzi znów są zapisywane w Formalie"
+    },
+    "detail": {
+      "all": "Wszystko",
+      "deliveries": "Dostarczenia",
+      "columns": "Kolumny",
+      "fields": "Nowe pytania",
+      "fieldsTitle": "Pytania dodane do formularza bez kolumny: {n} | Pytania dodane do formularza bez kolumny: {n}",
+      "fieldsDesc": "Ich odpowiedzi nie są zapisywane w tabeli, dopóki nie dodasz kolumn. Nic innego się nie zmienia.",
+      "addColumns": "Dodaj kolumny: {n} | Dodaj kolumny: {n}",
+      "navigate": "Przechodź między formularzami",
+      "previous": "Poprzedni formularz",
+      "next": "Następny formularz"
+    },
+    "deliveries": {
+      "filter": "Pokaż",
+      "empty": "Brak odpowiedzi.",
+      "attempts": "Próby: {n} | Próby: {n}",
+      "nextRetry": "następna próba {when}",
+      "retryOne": "Ponów odpowiedź nr {n}",
+      "more": "Pokaż więcej ({shown} z {total})"
+    },
+    "backfill": {
+      "title": "Wyślij wcześniejsze odpowiedzi",
+      "desc": "Odpowiedzi sprzed zapisywania tego formularza tutaj są wysyłane w tle, tak samo jak nowe.",
+      "notSent": "Niewysłane odpowiedzi sprzed {date}: {n}. | Niewysłane odpowiedzi sprzed {date}: {n}.",
+      "from": "Od",
+      "to": "Do",
+      "order": "Wybierz datę późniejszą niż data początkowa.",
+      "note": "Nic, co już jest w tabeli, nie zostanie wysłane dwa razy. Możesz pracować dalej w trakcie wysyłania.",
+      "start": "Wyślij",
+      "started": "Wysyłanie wcześniejszych odpowiedzi",
+      "running": "Wysyłanie wcześniejszych odpowiedzi: {done} z {total}",
+      "done": "Wysłane wcześniejsze odpowiedzi: {n} | Wysłane wcześniejsze odpowiedzi: {n}"
+    },
+    "meta": {
+      "response_id": "Id odpowiedzi",
+      "submitted_at": "Data przesłania",
+      "form_version": "Wersja formularza",
+      "language": "Język",
+      "response_number": "Numer odpowiedzi",
+      "respondent_email": "E-mail respondenta",
+      "review_status": "Stan przeglądu"
+    },
+    "issue": {
+      "no_key": "Wybierz kolumnę na id odpowiedzi, aby Formalie mogło ponownie znaleźć każdy wiersz.",
+      "required_unmapped": "{column} musi być wypełniona: wybierz, co ma się w niej znaleźć.",
+      "type_mismatch": "{column} może nie przyjąć „{field}” w obecnej postaci. Sprawdź typ kolumny.",
+      "duplicate_source": "{column} powtarza dane, które zapisuje już inna kolumna.",
+      "upsert_key": "Kolumna klucza {column} musi być wypełniona, aby aktualizować wiersze."
+    },
+    "columns": {
+      "problems": "Najpierw popraw te",
+      "warnings": "Warto sprawdzić",
+      "addKey": "Dodaj kolumnę na id odpowiedzi",
+      "column": "Kolumna",
+      "answer": "Odpowiedź lub informacja",
+      "fills": "Wypełniana przez",
+      "type": "Typ",
+      "nothing": "Nic",
+      "required": "Wymagana",
+      "new": "Nowa",
+      "fillsFor": "Co wypełnia {column}",
+      "columnFor": "Kolumna dla {item}",
+      "chooseAnswers": "Wybierz, które odpowiedzi zapisywać"
+    },
+    "options": {
+      "writeLegend": "Zapisywanie wierszy",
+      "write": {
+        "insert": "Nowy wiersz dla każdej odpowiedzi",
+        "upsert": "Aktualizuj wiersz z tym samym kluczem"
+      },
+      "writeDesc": {
+        "insert": "Każda odpowiedź dodaje wiersz. Edycje i zmiany przeglądu aktualizują ten wiersz.",
+        "upsert": "Odpowiedź, której klucz jest już w tabeli, aktualizuje zamiast tego ten wiersz."
+      },
+      "keyColumn": "Kolumna klucza",
+      "keyColumnDesc": "Wiersze z tą samą wartością w tej kolumnie to ten sam rekord.",
+      "multiLegend": "Odpowiedzi z wieloma wartościami",
+      "multi": {
+        "json": "Jako JSON",
+        "text": "Jako czytelny tekst"
+      },
+      "multiDesc": {
+        "json": "Wybory, rankingi, imiona i nazwiska, adresy i linki do plików zachowane jako dane strukturalne.",
+        "text": "Połączone w jeden wiersz, na przykład „SQL; Vue”."
+      },
+      "choicesLegend": "Wybory",
+      "choices": {
+        "value": "Według wartości",
+        "label": "Według etykiety"
+      },
+      "choicesDesc": {
+        "value": "Stałe kody, które nie zmieniają się po przeredagowaniu etykiety.",
+        "label": "Słowa, które widzieli ludzie, łatwe do czytania w raportach."
+      },
+      "extraLegend": "Zapisuj też",
+      "extraDesc": "Id odpowiedzi, czas przesłania, wersja formularza i język są zawsze zapisywane."
+    },
+    "setup": {
+      "step": {
+        "connection": "Połączenie",
+        "table": "Tabela",
+        "columns": "Kolumny",
+        "options": "Opcje",
+        "review": "Przegląd"
+      },
+      "title": {
+        "connection": "Która baza danych?",
+        "table": "Która tabela?",
+        "columns": "Która kolumna dla każdej odpowiedzi?",
+        "options": "Jak zapisywać odpowiedzi?",
+        "review": "Sprawdź i rozpocznij"
+      },
+      "desc": {
+        "connection": "Odpowiedzi z „{form}” będą zapisywane na tym połączeniu.",
+        "table": "Nowa tabela utworzona z formularza lub tabela, którą już masz.",
+        "columns": "Każda odpowiedź i kilka informacji o niej dostają kolumnę.",
+        "options": "Wybrano rozsądne ustawienia domyślne; zmień je, jeśli wymagają tego Twoje systemy.",
+        "review": "Dokładnie to Formalie zrobi w Twojej bazie danych."
+      },
+      "noConnections": "Brak połączeń",
+      "noConnectionsDesc": "Najpierw połącz jedną ze swoich baz danych, a potem wróć, aby zapisywać w niej odpowiedzi tego formularza.",
+      "connectionWarn": "To połączenie w tej chwili nie działa",
+      "connectionWarnDesc": "Możesz je mimo to skonfigurować. Odpowiedzi czekają i są ponawiane, aż połączenie znów zadziała.",
+      "create": "Utwórz tabelę z formularza",
+      "createDesc": "Formalie utworzy ją z kolumną dla każdej odpowiedzi i będzie ją aktualizować, gdy formularz się zmieni.",
+      "existing": "Użyj swojej tabeli",
+      "existingDesc": "Wybierz tabelę, którą już masz, i wskaż, do której kolumny trafia każda odpowiedź.",
+      "existingNeedsFull": "Wymaga Pełnego dostępu na tym połączeniu (Inne operacje na bazie danych).",
+      "tableName": "Nazwa tabeli",
+      "tableNameDesc": "Zaczyna się od {prefix}. Litery, cyfry i podkreślenia.",
+      "suggest": "Użyj proponowanej nazwy",
+      "schemaFromConnection": "Ustawiany w połączeniu, w sekcji Dostęp.",
+      "mustStartWith": "Nazwa musi zaczynać się od {prefix}.",
+      "nameChars": "Użyj liter, cyfr i podkreśleń, zaczynając od litery.",
+      "pickTable": "Wybierz tabelę",
+      "pickTableDesc": "Tabele, które Formalie może widzieć na tym połączeniu.",
+      "searchTables": "Szukaj tabel…",
+      "tableFacts": "Kolumny: {columns} · wiersze: około {rows}",
+      "columnsCount": "Wypełnione: {filled} z {total}",
+      "sqlTitle": "Co uruchomi Formalie",
+      "sqlNone": "Nic do zmiany w tabeli",
+      "sqlNote": "Formalie uruchomi to w Twojej bazie danych po zapisaniu, a potem zacznie wysyłać nowe odpowiedzi.",
+      "sqlNoneNote": "Tabela ma już wszystkie potrzebne kolumny. Nowe odpowiedzi będą wysyłane od razu po zapisaniu.",
+      "createAndStart": "Utwórz tabelę i rozpocznij",
+      "start": "Zacznij zapisywać tutaj",
+      "leaveDesc": "Skonfigurowane zapisywanie odpowiedzi zostanie utracone."
+    },
+    "help": {
+      "connection": {
+        "title": "Wybór bazy danych",
+        "p1": "Każde połączenie tego obszaru roboczego może przechowywać odpowiedzi formularza.",
+        "p2": "Formalie trzyma każdą odpowiedź w swojej szyfrowanej kolejce, dopóki baza danych jej nie potwierdzi.",
+        "p3": "Odpowiedzi możesz przeglądać i wyświetlać tak samo, niezależnie od miejsca zapisu."
+      },
+      "table": {
+        "title": "Nowa czy istniejąca tabela",
+        "p1": "Nowa tabela dostaje prefiks połączenia, więc łatwo ją rozpoznać.",
+        "p2": "Twoja tabela wymaga Pełnego dostępu, bo Formalie zapisuje w niej dane i może dodawać kolumny.",
+        "p3": "Formalie nigdy nie usuwa tabeli ani kolumny."
+      },
+      "columns": {
+        "title": "Kolumny",
+        "p1": "Nazwy kolumn pochodzą z kluczy pytań i można je zmienić.",
+        "p2": "Id odpowiedzi pozwala Formalie ponownie znaleźć wiersz przy edycjach i zmianach przeglądu.",
+        "p3": "Pytania dodane później do formularza dostają kolumnę jednym kliknięciem."
+      },
+      "options": {
+        "title": "Opcje",
+        "p1": "Nowy wiersz dla każdej odpowiedzi sprawdza się w większości zastosowań.",
+        "p2": "Aktualizacja lub wstawienie zachowuje jeden wiersz na klucz, na przykład jeden na kandydata.",
+        "p3": "JSON zachowuje strukturę; tekst łatwiej czytać w raportach."
+      },
+      "review": {
+        "title": "Co dalej",
+        "p1": "Nowe odpowiedzi są wysyłane w tle w ciągu kilku sekund.",
+        "p2": "Nieudane dostarczenia są ponawiane z coraz dłuższymi przerwami; możesz je też ponowić samodzielnie.",
+        "p3": "Wcześniejsze odpowiedzi można wysłać później, dla dowolnego zakresu dat."
+      }
+    }
   }
 }

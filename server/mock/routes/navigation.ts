@@ -12,6 +12,7 @@ import { allTemplates } from '../data/templateStore'
 import { SYSTEM_THEME_COUNT } from './themes'
 import { SYSTEM_PAGE_COUNT } from './pageDesigns'
 import { dataSourcesOf, statusOf } from '../data/dataSourceStore'
+import { destinationsOf, rowOfDestination } from '../data/destinationStore'
 
 /** GET /navigation/counts, cheap counters and short lists for the sidebar. */
 export const navigationCounts = defineMockRoute(({ event }) => {
@@ -65,6 +66,10 @@ export const navigationCounts = defineMockRoute(({ event }) => {
     folders: formsOf(tenant)
       .folders.map(folder => ({ id: folder.id, name: folder.name, color: folder.color ?? null, count: live.filter(form => form.folder?.id === folder.id && form.status !== 'archived').length }))
       .sort((a, b) => a.name.localeCompare(b.name)),
+    destinations: (() => {
+      const rows = destinationsOf(tenant).map(item => rowOfDestination(tenant, item))
+      return { total: rows.filter(Boolean).length, failing: rows.filter(row => row?.status === 'failing').length }
+    })(),
     datasources: {
       total: dataSourcesOf(tenant).length,
       ...(Object.fromEntries(DATASOURCE_STATUSES.map(status => [status, dataSourcesOf(tenant).filter(source => statusOf(source) === status).length])) as Record<DataSourceStatus, number>),

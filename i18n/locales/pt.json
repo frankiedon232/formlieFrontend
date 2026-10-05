@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Esta conexão está desativada. Ative-a primeiro.",
     "FRM-DEST-1010": "Ainda há formulários enviando respostas para esta conexão.",
     "FRM-DEST-1011": "O banco de dados demorou demais para responder.",
-    "FRM-DEST-1012": "Esta conta não pode criar nem usar as tabelas de respostas."
+    "FRM-DEST-1012": "Esta conta não pode criar nem usar as tabelas de respostas.",
+    "FRM-DEST-1013": "Armazenar respostas em uma tabela sua exige Acesso total nesta conexão.",
+    "FRM-DEST-1014": "Já existe uma tabela com este nome.",
+    "FRM-DEST-1015": "Este formulário já armazena suas respostas em um banco de dados.",
+    "FRM-DEST-1016": "O formulário e a tabela ainda não correspondem.",
+    "FRM-DEST-1017": "As respostas anteriores já estão sendo enviadas. Aguarde até terminar."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Conexão ativada",
       "data_connection_disabled": "Conexão desativada",
       "data_connection_deleted": "Conexão excluída",
-      "data_credentials_changed": "Credenciais da conexão alteradas"
+      "data_credentials_changed": "Credenciais da conexão alteradas",
+      "data_destination_created": "Armazenamento de respostas configurado",
+      "data_destination_updated": "Armazenamento de respostas alterado",
+      "data_destination_paused": "Entrega de respostas pausada",
+      "data_destination_resumed": "Entrega de respostas retomada",
+      "data_destination_removed": "Respostas de volta ao armazenamento do Formalie",
+      "data_table_created": "Tabela de respostas criada",
+      "data_column_added": "Colunas adicionadas a uma tabela de respostas",
+      "data_backfill_started": "Respostas anteriores enviadas a um banco de dados",
+      "data_deliveries_retried": "Entregas com falha tentadas novamente"
     },
     "detail": {
       "who": "Quem",
@@ -4283,5 +4297,276 @@
     "unpin": "Desafixar da barra lateral",
     "pinFull": "É possível fixar até 5 pastas",
     "hex": "Cor hex"
+  },
+  "destinations": {
+    "crumb": "Armazenamento de respostas",
+    "setupTitle": "Armazenar respostas no seu banco de dados",
+    "editTitle": "Alterar armazenamento de respostas",
+    "add": "Armazenar as respostas de um formulário",
+    "search": "Pesquisar formulários, conexões ou tabelas…",
+    "emptyTitle": "Nenhum formulário armazena respostas em um banco de dados ainda",
+    "emptyDesc": "Abra um formulário e escolha “Armazenar no seu banco de dados” na visão geral. O Formalie cria a tabela e envia cada resposta para lá.",
+    "adminsOnly": "Apenas administradores do espaço de trabalho podem alterar onde as respostas são armazenadas",
+    "adminsOnlyDesc": "Peça a um proprietário ou administrador deste espaço de trabalho.",
+    "noFields": "Este formulário ainda não tem perguntas",
+    "noFieldsDesc": "Adicione perguntas ao formulário primeiro; cada uma ganha uma coluna.",
+    "delivering": "Entregando",
+    "paused": "Pausado",
+    "status": {
+      "active": "Entregando",
+      "paused": "Pausado",
+      "failing": "Com falhas"
+    },
+    "delivery": {
+      "all": "Todas",
+      "sent": "Enviadas",
+      "pending": "Pendentes",
+      "failed": "Com falha",
+      "held": "Retidas",
+      "not_sent": "Não enviadas"
+    },
+    "table": {
+      "created": "Criada pelo Formalie",
+      "yours": "Sua tabela"
+    },
+    "col": {
+      "form": "Formulário",
+      "connection": "Conexão",
+      "table": "Tabela"
+    },
+    "sort": {
+      "busiest": "Mais entregues",
+      "failed": "Mais falhas",
+      "recent": "Entregues recentemente"
+    },
+    "kpi": {
+      "delivered": "Respostas entregues",
+      "byStatus": "Formulários por status de entrega",
+      "failingCount": "{n} com falhas",
+      "forms": "Formulários",
+      "sent30": "Enviadas (30 dias)",
+      "pending": "Pendentes",
+      "failed": "Com falha",
+      "held": "Retidas",
+      "last": "Última entrega",
+      "notSent": "Não enviadas (anteriores)",
+      "since": "Armazenadas aqui desde",
+      "deliveredShare": "Entregues (30 dias)"
+    },
+    "card": {
+      "title": "Onde as respostas são armazenadas",
+      "formalie": "Armazenamento criptografado do Formalie",
+      "formalieDesc": "As respostas ficam no Formalie. Armazene-as no seu próprio banco de dados para usá-las também nos seus sistemas.",
+      "store": "Armazenar no seu banco de dados",
+      "addConnection": "Conecte um banco de dados primeiro",
+      "last": "Última entrega {when}",
+      "none": "Nada entregue ainda",
+      "newFields": "{n} pergunta nova ainda não tem coluna | {n} perguntas novas ainda não têm coluna",
+      "open": "Entregas",
+      "change": "Alterar"
+    },
+    "actions": {
+      "backfill": "Enviar respostas anteriores",
+      "retryAll": "Tentar novamente {n} com falha | Tentar novamente {n} com falha",
+      "pause": "Pausar entrega",
+      "resume": "Retomar entrega",
+      "openForm": "Abrir o formulário",
+      "openConnection": "Abrir a conexão",
+      "change": "Alterar colunas e opções",
+      "remove": "Armazenar no Formalie novamente"
+    },
+    "remove": {
+      "title": "Armazenar as respostas de “{form}” no Formalie novamente?",
+      "desc": "As novas respostas ficam no armazenamento do Formalie. A tabela e as linhas já no seu banco de dados não são alteradas.",
+      "confirm": "Armazenar no Formalie"
+    },
+    "toast": {
+      "created": "As respostas agora vão para {table}",
+      "saved": "Armazenamento de respostas salvo",
+      "paused": "Entrega pausada. Novas respostas aguardam até você retomar",
+      "resumed": "Entrega retomada. As respostas em espera estão a caminho",
+      "retried": "Tentando novamente {n} entrega | Tentando novamente {n} entregas",
+      "columnsAdded": "{n} coluna adicionada | {n} colunas adicionadas",
+      "removed": "As respostas voltaram a ser armazenadas no Formalie"
+    },
+    "detail": {
+      "all": "Tudo",
+      "deliveries": "Entregas",
+      "columns": "Colunas",
+      "fields": "Perguntas novas",
+      "fieldsTitle": "{n} pergunta adicionada ao formulário não tem coluna | {n} perguntas adicionadas ao formulário não têm coluna",
+      "fieldsDesc": "As respostas delas não são armazenadas na tabela até você adicionar as colunas. Nada mais muda.",
+      "addColumns": "Adicionar {n} coluna | Adicionar {n} colunas",
+      "navigate": "Navegar entre formulários",
+      "previous": "Formulário anterior",
+      "next": "Próximo formulário"
+    },
+    "deliveries": {
+      "filter": "Mostrar",
+      "empty": "Nenhuma resposta aqui.",
+      "attempts": "{n} tentativa | {n} tentativas",
+      "nextRetry": "próxima tentativa {when}",
+      "retryOne": "Tentar novamente a resposta nº {n}",
+      "more": "Mostrar mais ({shown} de {total})"
+    },
+    "backfill": {
+      "title": "Enviar respostas anteriores",
+      "desc": "As respostas de antes de este formulário armazenar aqui são enviadas em segundo plano, como as novas.",
+      "notSent": "{n} resposta anterior a {date} não foi enviada. | {n} respostas anteriores a {date} não foram enviadas.",
+      "from": "De",
+      "to": "Até",
+      "order": "Escolha uma data posterior à data de início.",
+      "note": "Nada que já esteja na tabela é enviado duas vezes. Você pode continuar trabalhando enquanto isso acontece.",
+      "start": "Enviar",
+      "started": "Enviando respostas anteriores",
+      "running": "Enviando respostas anteriores: {done} de {total}",
+      "done": "{n} resposta anterior enviada | {n} respostas anteriores enviadas"
+    },
+    "meta": {
+      "response_id": "Id da resposta",
+      "submitted_at": "Enviada em",
+      "form_version": "Versão do formulário",
+      "language": "Idioma",
+      "response_number": "Número da resposta",
+      "respondent_email": "E-mail do respondente",
+      "review_status": "Status da revisão"
+    },
+    "issue": {
+      "no_key": "Escolha uma coluna para o id da resposta, para que o Formalie encontre cada linha novamente.",
+      "required_unmapped": "{column} precisa ser preenchida: escolha o que vai nela.",
+      "type_mismatch": "{column} pode não aceitar “{field}” como está. Verifique o tipo da coluna.",
+      "duplicate_source": "{column} repete algo que outra coluna já armazena.",
+      "upsert_key": "A coluna-chave {column} precisa ser preenchida para atualizar linhas."
+    },
+    "columns": {
+      "problems": "Corrija estes primeiro",
+      "warnings": "Vale a pena conferir",
+      "addKey": "Adicionar uma coluna para o id da resposta",
+      "column": "Coluna",
+      "answer": "Resposta ou dado",
+      "fills": "Preenchida com",
+      "type": "Tipo",
+      "nothing": "Nada",
+      "required": "Obrigatória",
+      "new": "Nova",
+      "fillsFor": "O que preenche {column}",
+      "columnFor": "Coluna para {item}",
+      "chooseAnswers": "Escolha quais respostas armazenar"
+    },
+    "options": {
+      "writeLegend": "Gravação de linhas",
+      "write": {
+        "insert": "Uma nova linha para cada resposta",
+        "upsert": "Atualizar a linha com a mesma chave"
+      },
+      "writeDesc": {
+        "insert": "Cada resposta adiciona uma linha. Edições e mudanças de revisão atualizam essa linha.",
+        "upsert": "Uma resposta cuja chave já está na tabela atualiza essa linha em vez disso."
+      },
+      "keyColumn": "Coluna-chave",
+      "keyColumnDesc": "Linhas com o mesmo valor aqui são o mesmo registro.",
+      "multiLegend": "Respostas com vários valores",
+      "multi": {
+        "json": "Como JSON",
+        "text": "Como texto legível"
+      },
+      "multiDesc": {
+        "json": "Escolhas, classificações, nomes, endereços e links de arquivos mantidos como dados estruturados.",
+        "text": "Unidos em uma linha, por exemplo “SQL; Vue”."
+      },
+      "choicesLegend": "Opções de escolha",
+      "choices": {
+        "value": "Pelo valor",
+        "label": "Pelo rótulo"
+      },
+      "choicesDesc": {
+        "value": "Códigos estáveis que não mudam quando um rótulo é reescrito.",
+        "label": "As palavras que as pessoas viram, fáceis de ler em relatórios."
+      },
+      "extraLegend": "Armazenar também",
+      "extraDesc": "O id da resposta, quando foi enviada, a versão do formulário e o idioma são sempre armazenados."
+    },
+    "setup": {
+      "step": {
+        "connection": "Conexão",
+        "table": "Tabela",
+        "columns": "Colunas",
+        "options": "Opções",
+        "review": "Revisão"
+      },
+      "title": {
+        "connection": "Qual banco de dados?",
+        "table": "Qual tabela?",
+        "columns": "Qual coluna para cada resposta?",
+        "options": "Como as respostas são gravadas?",
+        "review": "Confira e comece"
+      },
+      "desc": {
+        "connection": "As respostas de “{form}” serão armazenadas nesta conexão.",
+        "table": "Uma nova tabela criada a partir do formulário, ou uma tabela que você já tem.",
+        "columns": "Cada resposta e alguns dados sobre ela ganham uma coluna.",
+        "options": "Padrões sensatos já estão escolhidos; altere-os se seus sistemas precisarem.",
+        "review": "Isto é exatamente o que o Formalie fará no seu banco de dados."
+      },
+      "noConnections": "Nenhuma conexão ainda",
+      "noConnectionsDesc": "Conecte primeiro um dos seus bancos de dados e depois volte para armazenar lá as respostas deste formulário.",
+      "connectionWarn": "Esta conexão não está funcionando no momento",
+      "connectionWarnDesc": "Você pode configurá-la mesmo assim. As respostas aguardam e são tentadas novamente até a conexão voltar a funcionar.",
+      "create": "Criar uma tabela a partir do formulário",
+      "createDesc": "O Formalie a cria com uma coluna para cada resposta e a mantém atualizada conforme o formulário muda.",
+      "existing": "Usar uma tabela sua",
+      "existingDesc": "Escolha uma tabela que você já tem e defina em qual coluna vai cada resposta.",
+      "existingNeedsFull": "Exige Acesso total nesta conexão (Outras operações no banco de dados).",
+      "tableName": "Nome da tabela",
+      "tableNameDesc": "Começa com {prefix}. Letras, números e sublinhados.",
+      "suggest": "Usar o nome sugerido",
+      "schemaFromConnection": "Definido na conexão, em Acesso.",
+      "mustStartWith": "Comece o nome com {prefix}.",
+      "nameChars": "Use letras, números e sublinhados, começando com uma letra.",
+      "pickTable": "Escolha uma tabela",
+      "pickTableDesc": "Tabelas que o Formalie pode ver nesta conexão.",
+      "searchTables": "Pesquisar tabelas…",
+      "tableFacts": "{columns} colunas · cerca de {rows} linhas",
+      "columnsCount": "{filled} de {total} preenchidas",
+      "sqlTitle": "O que o Formalie vai executar",
+      "sqlNone": "Nada a alterar na tabela",
+      "sqlNote": "O Formalie executa isto no seu banco de dados quando você salva e depois começa a enviar as novas respostas.",
+      "sqlNoneNote": "A tabela já tem todas as colunas necessárias. As novas respostas são enviadas assim que você salvar.",
+      "createAndStart": "Criar a tabela e começar",
+      "start": "Começar a armazenar aqui",
+      "leaveDesc": "O armazenamento de respostas que você configurou será perdido."
+    },
+    "help": {
+      "connection": {
+        "title": "Escolher um banco de dados",
+        "p1": "Qualquer conexão deste espaço de trabalho pode guardar as respostas de um formulário.",
+        "p2": "O Formalie mantém cada resposta em sua fila criptografada até o banco de dados confirmá-la.",
+        "p3": "Você pode ver e exibir as respostas da mesma forma, onde quer que estejam armazenadas."
+      },
+      "table": {
+        "title": "Tabela nova ou existente",
+        "p1": "Uma nova tabela recebe o prefixo da conexão, para ser fácil de reconhecer.",
+        "p2": "Uma tabela sua exige Acesso total, porque o Formalie grava nela e pode adicionar colunas.",
+        "p3": "O Formalie nunca exclui uma tabela ou uma coluna."
+      },
+      "columns": {
+        "title": "Colunas",
+        "p1": "Os nomes das colunas vêm das chaves das perguntas e podem ser alterados.",
+        "p2": "O id da resposta permite que o Formalie encontre uma linha novamente, para edições e mudanças de revisão.",
+        "p3": "Perguntas adicionadas depois ao formulário ganham uma coluna com um clique."
+      },
+      "options": {
+        "title": "Opções",
+        "p1": "Uma nova linha por resposta atende à maioria dos usos.",
+        "p2": "Atualizar ou inserir mantém uma linha por chave, por exemplo uma por candidato.",
+        "p3": "JSON mantém a estrutura; texto é mais fácil de ler em relatórios."
+      },
+      "review": {
+        "title": "O que acontece a seguir",
+        "p1": "As novas respostas são enviadas em segundo plano em poucos segundos.",
+        "p2": "Entregas com falha são tentadas novamente com esperas crescentes; você também pode tentar de novo.",
+        "p3": "As respostas anteriores podem ser enviadas depois, para qualquer intervalo de datas."
+      }
+    }
   }
 }

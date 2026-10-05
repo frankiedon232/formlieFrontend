@@ -15,4 +15,6 @@ export interface NavCounts {
   folders: { id: string; name: string; color: string | null; count: number }[]
   /** Data sources (F12): connections by status. */
   datasources: { total: number; connected: number; attention: number; failing: number; disabled: number; untested: number }
+  /** Response storage (F12 M2): forms storing in a database, and how many are failing. */
+  destinations: { total: number; failing: number }
 }

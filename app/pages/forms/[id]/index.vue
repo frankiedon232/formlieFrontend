@@ -166,6 +166,7 @@ const subtitle = computed(() =>
         <div class="flex min-w-0 flex-col gap-4">
           <FormsOverviewShare :form="form" :read-only="!editable" :accent="(overview.theme.colors as { primary?: string } | undefined)?.primary" />
           <FormsOverviewDetails :form="form" :template="overview.template" :read-only="!editable" @availability="availabilityOpen = true" />
+          <FormsOverviewStorage :form-id="form.id" />
           <UCard v-if="canSeeActivity" variant="outline" :ui="{ body: 'p-4 sm:p-5' }">
             <h2 class="mb-4 text-sm font-semibold text-highlighted">{{ t('forms.detail.activity') }}</h2>
             <AuditTimeline

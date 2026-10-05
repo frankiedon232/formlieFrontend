@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Diese Verbindung ist deaktiviert. Aktivieren Sie sie zuerst.",
     "FRM-DEST-1010": "Formulare senden ihre Antworten noch an diese Verbindung.",
     "FRM-DEST-1011": "Die Datenbank hat zu lange für eine Antwort gebraucht.",
-    "FRM-DEST-1012": "Dieses Konto kann die Antworttabellen nicht erstellen oder verwenden."
+    "FRM-DEST-1012": "Dieses Konto kann die Antworttabellen nicht erstellen oder verwenden.",
+    "FRM-DEST-1013": "Um Antworten in einer eigenen Tabelle zu speichern, braucht diese Verbindung Vollzugriff.",
+    "FRM-DEST-1014": "Eine Tabelle mit diesem Namen gibt es bereits.",
+    "FRM-DEST-1015": "Dieses Formular speichert seine Antworten bereits in einer Datenbank.",
+    "FRM-DEST-1016": "Formular und Tabelle passen noch nicht zusammen.",
+    "FRM-DEST-1017": "Frühere Antworten werden bereits gesendet. Warten Sie, bis das abgeschlossen ist."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Verbindung aktiviert",
       "data_connection_disabled": "Verbindung deaktiviert",
       "data_connection_deleted": "Verbindung gelöscht",
-      "data_credentials_changed": "Zugangsdaten der Verbindung geändert"
+      "data_credentials_changed": "Zugangsdaten der Verbindung geändert",
+      "data_destination_created": "Antwortspeicher eingerichtet",
+      "data_destination_updated": "Antwortspeicher geändert",
+      "data_destination_paused": "Zustellung der Antworten pausiert",
+      "data_destination_resumed": "Zustellung der Antworten fortgesetzt",
+      "data_destination_removed": "Antworten zurück in den Formalie-Speicher verlegt",
+      "data_table_created": "Antworttabelle erstellt",
+      "data_column_added": "Spalten zu einer Antworttabelle hinzugefügt",
+      "data_backfill_started": "Frühere Antworten an eine Datenbank gesendet",
+      "data_deliveries_retried": "Fehlgeschlagene Zustellungen wiederholt"
     },
     "detail": {
       "who": "Wer",
@@ -4283,5 +4297,276 @@
     "unpin": "Aus der Seitenleiste lösen",
     "pinFull": "Bis zu 5 Ordner lassen sich anheften",
     "hex": "Hex-Farbe"
+  },
+  "destinations": {
+    "crumb": "Antwortspeicher",
+    "setupTitle": "Antworten in Ihrer Datenbank speichern",
+    "editTitle": "Antwortspeicher ändern",
+    "add": "Antworten eines Formulars speichern",
+    "search": "Formulare, Verbindungen oder Tabellen suchen…",
+    "emptyTitle": "Noch kein Formular speichert seine Antworten in einer Datenbank",
+    "emptyDesc": "Öffnen Sie ein Formular und wählen Sie in der Übersicht „In Ihrer Datenbank speichern“. Formalie erstellt die Tabelle und sendet jede Antwort dorthin.",
+    "adminsOnly": "Nur Admins des Arbeitsbereichs können ändern, wo Antworten gespeichert werden",
+    "adminsOnlyDesc": "Wenden Sie sich an einen Inhaber oder Admin dieses Arbeitsbereichs.",
+    "noFields": "Dieses Formular hat noch keine Fragen",
+    "noFieldsDesc": "Fügen Sie dem Formular zuerst Fragen hinzu; jede erhält eine Spalte.",
+    "delivering": "Wird zugestellt",
+    "paused": "Pausiert",
+    "status": {
+      "active": "Wird zugestellt",
+      "paused": "Pausiert",
+      "failing": "Fehlerhaft"
+    },
+    "delivery": {
+      "all": "Alle",
+      "sent": "Gesendet",
+      "pending": "Ausstehend",
+      "failed": "Fehlgeschlagen",
+      "held": "Zurückgehalten",
+      "not_sent": "Nicht gesendet"
+    },
+    "table": {
+      "created": "Von Formalie erstellt",
+      "yours": "Ihre Tabelle"
+    },
+    "col": {
+      "form": "Formular",
+      "connection": "Verbindung",
+      "table": "Tabelle"
+    },
+    "sort": {
+      "busiest": "Meiste Zustellungen",
+      "failed": "Meiste Fehler",
+      "recent": "Zuletzt zugestellt"
+    },
+    "kpi": {
+      "delivered": "Zugestellte Antworten",
+      "byStatus": "Formulare nach Zustellstatus",
+      "failingCount": "{n} fehlerhaft",
+      "forms": "Formulare",
+      "sent30": "Gesendet (30 Tage)",
+      "pending": "Ausstehend",
+      "failed": "Fehlgeschlagen",
+      "held": "Zurückgehalten",
+      "last": "Letzte Zustellung",
+      "notSent": "Nicht gesendet (früher)",
+      "since": "Hier gespeichert seit",
+      "deliveredShare": "Zugestellt (30 Tage)"
+    },
+    "card": {
+      "title": "Wo Antworten gespeichert werden",
+      "formalie": "Verschlüsselter Speicher von Formalie",
+      "formalieDesc": "Antworten bleiben in Formalie. Speichern Sie sie in Ihrer eigenen Datenbank, um sie auch in Ihren Systemen zu nutzen.",
+      "store": "In Ihrer Datenbank speichern",
+      "addConnection": "Zuerst eine Datenbank verbinden",
+      "last": "Zuletzt zugestellt {when}",
+      "none": "Noch nichts zugestellt",
+      "newFields": "{n} neue Frage hat noch keine Spalte | {n} neue Fragen haben noch keine Spalte",
+      "open": "Zustellungen",
+      "change": "Ändern"
+    },
+    "actions": {
+      "backfill": "Frühere Antworten senden",
+      "retryAll": "{n} fehlgeschlagene wiederholen | {n} fehlgeschlagene wiederholen",
+      "pause": "Zustellung pausieren",
+      "resume": "Zustellung fortsetzen",
+      "openForm": "Formular öffnen",
+      "openConnection": "Verbindung öffnen",
+      "change": "Spalten und Optionen ändern",
+      "remove": "Wieder in Formalie speichern"
+    },
+    "remove": {
+      "title": "Antworten von „{form}“ wieder in Formalie speichern?",
+      "desc": "Neue Antworten bleiben im Speicher von Formalie. Die Tabelle und die Zeilen in Ihrer Datenbank bleiben unverändert.",
+      "confirm": "In Formalie speichern"
+    },
+    "toast": {
+      "created": "Antworten gehen jetzt an {table}",
+      "saved": "Antwortspeicher gespeichert",
+      "paused": "Zustellung pausiert. Neue Antworten warten, bis Sie fortsetzen",
+      "resumed": "Zustellung fortgesetzt. Wartende Antworten sind unterwegs",
+      "retried": "{n} Zustellung wird wiederholt | {n} Zustellungen werden wiederholt",
+      "columnsAdded": "{n} Spalte hinzugefügt | {n} Spalten hinzugefügt",
+      "removed": "Antworten werden wieder in Formalie gespeichert"
+    },
+    "detail": {
+      "all": "Alle",
+      "deliveries": "Zustellungen",
+      "columns": "Spalten",
+      "fields": "Neue Fragen",
+      "fieldsTitle": "{n} zum Formular hinzugefügte Frage hat keine Spalte | {n} zum Formular hinzugefügte Fragen haben keine Spalte",
+      "fieldsDesc": "Ihre Antworten werden erst in der Tabelle gespeichert, wenn Sie die Spalten hinzufügen. Sonst ändert sich nichts.",
+      "addColumns": "{n} Spalte hinzufügen | {n} Spalten hinzufügen",
+      "navigate": "Zwischen Formularen wechseln",
+      "previous": "Vorheriges Formular",
+      "next": "Nächstes Formular"
+    },
+    "deliveries": {
+      "filter": "Anzeigen",
+      "empty": "Keine Antworten hier.",
+      "attempts": "{n} Versuch | {n} Versuche",
+      "nextRetry": "nächster Versuch {when}",
+      "retryOne": "Antwort #{n} erneut senden",
+      "more": "Mehr anzeigen ({shown} von {total})"
+    },
+    "backfill": {
+      "title": "Frühere Antworten senden",
+      "desc": "Antworten aus der Zeit, bevor dieses Formular hier speicherte, werden im Hintergrund gesendet, genau wie neue.",
+      "notSent": "{n} Antwort von vor dem {date} wurde nicht gesendet. | {n} Antworten von vor dem {date} wurden nicht gesendet.",
+      "from": "Von",
+      "to": "Bis",
+      "order": "Wählen Sie ein Datum nach dem Startdatum.",
+      "note": "Nichts, was schon in der Tabelle ist, wird doppelt gesendet. Sie können währenddessen weiterarbeiten.",
+      "start": "Senden",
+      "started": "Frühere Antworten werden gesendet",
+      "running": "Frühere Antworten werden gesendet: {done} von {total}",
+      "done": "{n} frühere Antwort gesendet | {n} frühere Antworten gesendet"
+    },
+    "meta": {
+      "response_id": "Antwort-ID",
+      "submitted_at": "Gesendet am",
+      "form_version": "Formularversion",
+      "language": "Sprache",
+      "response_number": "Antwortnummer",
+      "respondent_email": "E-Mail der antwortenden Person",
+      "review_status": "Prüfstatus"
+    },
+    "issue": {
+      "no_key": "Wählen Sie eine Spalte für die Antwort-ID, damit Formalie jede Zeile wiederfindet.",
+      "required_unmapped": "{column} muss gefüllt werden: Wählen Sie, was hineinkommt.",
+      "type_mismatch": "{column} kann „{field}“ so evtl. nicht aufnehmen. Prüfen Sie den Typ der Spalte.",
+      "duplicate_source": "{column} wiederholt etwas, das bereits eine andere Spalte speichert.",
+      "upsert_key": "Die Schlüsselspalte {column} muss gefüllt sein, um Zeilen zu aktualisieren."
+    },
+    "columns": {
+      "problems": "Zuerst beheben",
+      "warnings": "Einen Blick wert",
+      "addKey": "Spalte für die Antwort-ID hinzufügen",
+      "column": "Spalte",
+      "answer": "Antwort oder Angabe",
+      "fills": "Gefüllt mit",
+      "type": "Typ",
+      "nothing": "Nichts",
+      "required": "Muss gefüllt sein",
+      "new": "Neu",
+      "fillsFor": "Was {column} füllt",
+      "columnFor": "Spalte für {item}",
+      "chooseAnswers": "Wählen Sie, welche Antworten gespeichert werden"
+    },
+    "options": {
+      "writeLegend": "Zeilen schreiben",
+      "write": {
+        "insert": "Eine neue Zeile pro Antwort",
+        "upsert": "Zeile mit demselben Schlüssel aktualisieren"
+      },
+      "writeDesc": {
+        "insert": "Jede Antwort fügt eine Zeile hinzu. Bearbeitungen und Prüfänderungen aktualisieren diese Zeile.",
+        "upsert": "Eine Antwort, deren Schlüssel schon in der Tabelle ist, aktualisiert stattdessen diese Zeile."
+      },
+      "keyColumn": "Schlüsselspalte",
+      "keyColumnDesc": "Zeilen mit demselben Wert hier sind derselbe Datensatz.",
+      "multiLegend": "Antworten mit mehreren Werten",
+      "multi": {
+        "json": "Als JSON",
+        "text": "Als lesbarer Text"
+      },
+      "multiDesc": {
+        "json": "Auswahlen, Rangfolgen, Namen, Adressen und Dateilinks bleiben strukturierte Daten.",
+        "text": "In einer Zeile zusammengefasst, zum Beispiel „SQL; Vue“."
+      },
+      "choicesLegend": "Auswahloptionen",
+      "choices": {
+        "value": "Nach ihrem Wert",
+        "label": "Nach ihrer Beschriftung"
+      },
+      "choicesDesc": {
+        "value": "Feste Codes, die sich nicht ändern, wenn eine Beschriftung umformuliert wird.",
+        "label": "Die Wörter, die die Leute gesehen haben, gut lesbar in Berichten."
+      },
+      "extraLegend": "Auch speichern",
+      "extraDesc": "Antwort-ID, Sendezeitpunkt, Formularversion und Sprache werden immer gespeichert."
+    },
+    "setup": {
+      "step": {
+        "connection": "Verbindung",
+        "table": "Tabelle",
+        "columns": "Spalten",
+        "options": "Optionen",
+        "review": "Prüfen"
+      },
+      "title": {
+        "connection": "Welche Datenbank?",
+        "table": "Welche Tabelle?",
+        "columns": "Welche Spalte für jede Antwort?",
+        "options": "Wie werden Antworten geschrieben?",
+        "review": "Prüfen und starten"
+      },
+      "desc": {
+        "connection": "Antworten auf „{form}“ werden über diese Verbindung gespeichert.",
+        "table": "Eine neue Tabelle aus dem Formular oder eine Tabelle, die Sie schon haben.",
+        "columns": "Jede Antwort und einige Angaben zur Antwort erhalten eine Spalte.",
+        "options": "Sinnvolle Standardwerte sind gewählt; ändern Sie sie, wenn Ihre Systeme es erfordern.",
+        "review": "Genau das wird Formalie in Ihrer Datenbank tun."
+      },
+      "noConnections": "Noch keine Verbindung",
+      "noConnectionsDesc": "Verbinden Sie zuerst eine Ihrer Datenbanken und kommen Sie dann zurück, um die Antworten dieses Formulars dort zu speichern.",
+      "connectionWarn": "Diese Verbindung funktioniert gerade nicht",
+      "connectionWarnDesc": "Sie können sie trotzdem einrichten. Antworten warten und werden wiederholt, bis die Verbindung wieder funktioniert.",
+      "create": "Tabelle aus dem Formular erstellen",
+      "createDesc": "Formalie erstellt sie mit einer Spalte pro Antwort und hält sie aktuell, wenn sich das Formular ändert.",
+      "existing": "Eigene Tabelle verwenden",
+      "existingDesc": "Wählen Sie eine vorhandene Tabelle und legen Sie fest, in welche Spalte jede Antwort kommt.",
+      "existingNeedsFull": "Erfordert Vollzugriff auf dieser Verbindung (Weitere Datenbankvorgänge).",
+      "tableName": "Tabellenname",
+      "tableNameDesc": "Beginnt mit {prefix}. Buchstaben, Ziffern und Unterstriche.",
+      "suggest": "Vorgeschlagenen Namen verwenden",
+      "schemaFromConnection": "Wird an der Verbindung unter Zugriff festgelegt.",
+      "mustStartWith": "Der Name muss mit {prefix} beginnen.",
+      "nameChars": "Verwenden Sie Buchstaben, Ziffern und Unterstriche, beginnend mit einem Buchstaben.",
+      "pickTable": "Tabelle wählen",
+      "pickTableDesc": "Tabellen, die Formalie auf dieser Verbindung sehen darf.",
+      "searchTables": "Tabellen suchen…",
+      "tableFacts": "{columns} Spalten · etwa {rows} Zeilen",
+      "columnsCount": "{filled} von {total} gefüllt",
+      "sqlTitle": "Was Formalie ausführt",
+      "sqlNone": "An der Tabelle ist nichts zu ändern",
+      "sqlNote": "Formalie führt dies beim Speichern in Ihrer Datenbank aus und beginnt dann, neue Antworten zu senden.",
+      "sqlNoneNote": "Die Tabelle hat bereits alle nötigen Spalten. Neue Antworten werden gesendet, sobald Sie speichern.",
+      "createAndStart": "Tabelle erstellen und starten",
+      "start": "Hier speichern starten",
+      "leaveDesc": "Der eingerichtete Antwortspeicher geht verloren."
+    },
+    "help": {
+      "connection": {
+        "title": "Eine Datenbank wählen",
+        "p1": "Jede Verbindung dieses Arbeitsbereichs kann die Antworten eines Formulars aufnehmen.",
+        "p2": "Formalie hält jede Antwort in seiner verschlüsselten Warteschlange, bis die Datenbank sie bestätigt.",
+        "p3": "Sie können Antworten überall gleich ansehen und anzeigen, egal wo sie gespeichert sind."
+      },
+      "table": {
+        "title": "Neue oder vorhandene Tabelle",
+        "p1": "Eine neue Tabelle erhält das Präfix der Verbindung und ist so leicht zu erkennen.",
+        "p2": "Eine eigene Tabelle braucht Vollzugriff, weil Formalie hineinschreibt und Spalten hinzufügen kann.",
+        "p3": "Formalie löscht nie eine Tabelle oder Spalte."
+      },
+      "columns": {
+        "title": "Spalten",
+        "p1": "Spaltennamen stammen von den Schlüsseln der Fragen und lassen sich ändern.",
+        "p2": "Mit der Antwort-ID findet Formalie eine Zeile wieder, für Bearbeitungen und Prüfänderungen.",
+        "p3": "Später hinzugefügte Fragen erhalten mit einem Klick eine Spalte."
+      },
+      "options": {
+        "title": "Optionen",
+        "p1": "Eine neue Zeile pro Antwort passt für die meisten Zwecke.",
+        "p2": "Aktualisieren oder einfügen hält eine Zeile pro Schlüssel, zum Beispiel eine pro Bewerber.",
+        "p3": "JSON bewahrt die Struktur; Text ist in Berichten leichter zu lesen."
+      },
+      "review": {
+        "title": "Wie es weitergeht",
+        "p1": "Neue Antworten werden innerhalb von Sekunden im Hintergrund gesendet.",
+        "p2": "Fehlgeschlagene Zustellungen werden mit wachsenden Pausen wiederholt; Sie können sie auch selbst wiederholen.",
+        "p3": "Frühere Antworten lassen sich danach für jeden Zeitraum senden."
+      }
+    }
   }
 }

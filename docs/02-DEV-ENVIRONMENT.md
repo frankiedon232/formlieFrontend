@@ -98,6 +98,8 @@ Seeded workspaces have five connections in every state (connected read + write, 
 
 `localhost`, `127.*`, `169.254.*` and similar are refused as server addresses (by design).
 
+Response storage (M2): seeded workspaces have two forms storing in a database (a table Formalie created on Case management, all delivered; the `leads` table on Website leads, failing like its connection). Each connection shows a believable set of tables by its purpose plus the response tables. Delivery status is worked out per response when read (sent a few seconds after submitting; failed while the connection fails; held while paused), so new submissions show up as pending, then sent.
+
 ## Project env (`.env`, copy from `.env.example`)
 
 | Variable                           | Purpose                                                                                   |

@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Koneksi ini dinonaktifkan. Aktifkan terlebih dahulu.",
     "FRM-DEST-1010": "Masih ada formulir yang mengirim responsnya ke koneksi ini.",
     "FRM-DEST-1011": "Database terlalu lama merespons.",
-    "FRM-DEST-1012": "Akun ini tidak dapat membuat atau menggunakan tabel respons."
+    "FRM-DEST-1012": "Akun ini tidak dapat membuat atau menggunakan tabel respons.",
+    "FRM-DEST-1013": "Menyimpan respons di tabel Anda sendiri memerlukan Akses penuh pada koneksi ini.",
+    "FRM-DEST-1014": "Tabel dengan nama ini sudah ada.",
+    "FRM-DEST-1015": "Formulir ini sudah menyimpan responsnya di database.",
+    "FRM-DEST-1016": "Formulir dan tabel belum cocok.",
+    "FRM-DEST-1017": "Respons sebelumnya sedang dikirim. Tunggu hingga selesai."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Koneksi diaktifkan",
       "data_connection_disabled": "Koneksi dinonaktifkan",
       "data_connection_deleted": "Koneksi dihapus",
-      "data_credentials_changed": "Kredensial koneksi diubah"
+      "data_credentials_changed": "Kredensial koneksi diubah",
+      "data_destination_created": "Penyimpanan respons disiapkan",
+      "data_destination_updated": "Penyimpanan respons diubah",
+      "data_destination_paused": "Pengiriman respons dijeda",
+      "data_destination_resumed": "Pengiriman respons dilanjutkan",
+      "data_destination_removed": "Respons dikembalikan ke penyimpanan Formalie",
+      "data_table_created": "Tabel respons dibuat",
+      "data_column_added": "Kolom ditambahkan ke tabel respons",
+      "data_backfill_started": "Respons sebelumnya dikirim ke database",
+      "data_deliveries_retried": "Pengiriman yang gagal dicoba ulang"
     },
     "detail": {
       "who": "Siapa",
@@ -4283,5 +4297,276 @@
     "unpin": "Lepas dari bilah samping",
     "pinFull": "Maksimal 5 folder bisa disematkan",
     "hex": "Warna hex"
+  },
+  "destinations": {
+    "crumb": "Penyimpanan respons",
+    "setupTitle": "Simpan respons di database Anda",
+    "editTitle": "Ubah penyimpanan respons",
+    "add": "Simpan respons formulir",
+    "search": "Cari formulir, koneksi, atau tabel…",
+    "emptyTitle": "Belum ada formulir yang menyimpan responsnya di database",
+    "emptyDesc": "Buka formulir dan pilih “Simpan di database Anda” pada ringkasannya. Formalie membuat tabelnya dan mengirim setiap respons ke sana.",
+    "adminsOnly": "Hanya admin ruang kerja yang dapat mengubah tempat respons disimpan",
+    "adminsOnlyDesc": "Minta bantuan pemilik atau admin ruang kerja ini.",
+    "noFields": "Formulir ini belum punya pertanyaan",
+    "noFieldsDesc": "Tambahkan pertanyaan ke formulir terlebih dahulu; setiap pertanyaan mendapat satu kolom.",
+    "delivering": "Mengirim",
+    "paused": "Dijeda",
+    "status": {
+      "active": "Mengirim",
+      "paused": "Dijeda",
+      "failing": "Gagal"
+    },
+    "delivery": {
+      "all": "Semua",
+      "sent": "Terkirim",
+      "pending": "Menunggu",
+      "failed": "Gagal",
+      "held": "Ditahan",
+      "not_sent": "Tidak terkirim"
+    },
+    "table": {
+      "created": "Dibuat oleh Formalie",
+      "yours": "Tabel Anda"
+    },
+    "col": {
+      "form": "Formulir",
+      "connection": "Koneksi",
+      "table": "Tabel"
+    },
+    "sort": {
+      "busiest": "Paling banyak terkirim",
+      "failed": "Paling banyak gagal",
+      "recent": "Baru terkirim"
+    },
+    "kpi": {
+      "delivered": "Respons terkirim",
+      "byStatus": "Formulir menurut status pengiriman",
+      "failingCount": "{n} gagal",
+      "forms": "Formulir",
+      "sent30": "Terkirim (30 hari)",
+      "pending": "Menunggu",
+      "failed": "Gagal",
+      "held": "Ditahan",
+      "last": "Pengiriman terakhir",
+      "notSent": "Tidak terkirim (sebelumnya)",
+      "since": "Disimpan di sini sejak",
+      "deliveredShare": "Terkirim (30 hari)"
+    },
+    "card": {
+      "title": "Tempat respons disimpan",
+      "formalie": "Penyimpanan terenkripsi Formalie",
+      "formalieDesc": "Respons tetap di Formalie. Simpan di database Anda sendiri agar bisa dipakai juga di sistem Anda.",
+      "store": "Simpan di database Anda",
+      "addConnection": "Hubungkan database terlebih dahulu",
+      "last": "Terakhir terkirim {when}",
+      "none": "Belum ada yang terkirim",
+      "newFields": "{n} pertanyaan baru belum punya kolom | {n} pertanyaan baru belum punya kolom",
+      "open": "Pengiriman",
+      "change": "Ubah"
+    },
+    "actions": {
+      "backfill": "Kirim respons sebelumnya",
+      "retryAll": "Coba ulang {n} yang gagal | Coba ulang {n} yang gagal",
+      "pause": "Jeda pengiriman",
+      "resume": "Lanjutkan pengiriman",
+      "openForm": "Buka formulir",
+      "openConnection": "Buka koneksi",
+      "change": "Ubah kolom dan opsi",
+      "remove": "Simpan lagi di Formalie"
+    },
+    "remove": {
+      "title": "Simpan lagi respons “{form}” di Formalie?",
+      "desc": "Respons baru tetap di penyimpanan Formalie. Tabel dan baris yang sudah ada di database Anda tidak diubah.",
+      "confirm": "Simpan di Formalie"
+    },
+    "toast": {
+      "created": "Respons sekarang dikirim ke {table}",
+      "saved": "Penyimpanan respons disimpan",
+      "paused": "Pengiriman dijeda. Respons baru menunggu hingga Anda melanjutkan",
+      "resumed": "Pengiriman dilanjutkan. Respons yang menunggu sedang dikirim",
+      "retried": "Mencoba ulang {n} pengiriman | Mencoba ulang {n} pengiriman",
+      "columnsAdded": "{n} kolom ditambahkan | {n} kolom ditambahkan",
+      "removed": "Respons kembali disimpan di Formalie"
+    },
+    "detail": {
+      "all": "Semua",
+      "deliveries": "Pengiriman",
+      "columns": "Kolom",
+      "fields": "Pertanyaan baru",
+      "fieldsTitle": "{n} pertanyaan yang ditambahkan ke formulir belum punya kolom | {n} pertanyaan yang ditambahkan ke formulir belum punya kolom",
+      "fieldsDesc": "Jawabannya tidak disimpan di tabel sampai Anda menambahkan kolomnya. Tidak ada yang lain berubah.",
+      "addColumns": "Tambahkan {n} kolom | Tambahkan {n} kolom",
+      "navigate": "Berpindah antarformulir",
+      "previous": "Formulir sebelumnya",
+      "next": "Formulir berikutnya"
+    },
+    "deliveries": {
+      "filter": "Tampilkan",
+      "empty": "Tidak ada respons di sini.",
+      "attempts": "{n} percobaan | {n} percobaan",
+      "nextRetry": "percobaan berikutnya {when}",
+      "retryOne": "Coba ulang respons #{n}",
+      "more": "Tampilkan lagi ({shown} dari {total})"
+    },
+    "backfill": {
+      "title": "Kirim respons sebelumnya",
+      "desc": "Respons dari sebelum formulir ini disimpan di sini dikirim di latar belakang, sama seperti respons baru.",
+      "notSent": "{n} respons dari sebelum {date} tidak dikirim. | {n} respons dari sebelum {date} tidak dikirim.",
+      "from": "Dari",
+      "to": "Sampai",
+      "order": "Pilih tanggal setelah tanggal mulai.",
+      "note": "Tidak ada yang sudah ada di tabel dikirim dua kali. Anda bisa tetap bekerja selama prosesnya berjalan.",
+      "start": "Kirim sekarang",
+      "started": "Mengirim respons sebelumnya",
+      "running": "Mengirim respons sebelumnya: {done} dari {total}",
+      "done": "{n} respons sebelumnya terkirim | {n} respons sebelumnya terkirim"
+    },
+    "meta": {
+      "response_id": "ID respons",
+      "submitted_at": "Dikirim pada",
+      "form_version": "Versi formulir",
+      "language": "Bahasa",
+      "response_number": "Nomor respons",
+      "respondent_email": "Email responden",
+      "review_status": "Status tinjauan"
+    },
+    "issue": {
+      "no_key": "Pilih kolom untuk ID respons, agar Formalie dapat menemukan setiap baris lagi.",
+      "required_unmapped": "{column} wajib diisi: pilih apa yang masuk ke sana.",
+      "type_mismatch": "{column} mungkin tidak dapat menerima “{field}” apa adanya. Periksa tipe kolomnya.",
+      "duplicate_source": "{column} mengulang sesuatu yang sudah disimpan kolom lain.",
+      "upsert_key": "Kolom kunci {column} wajib diisi untuk memperbarui baris."
+    },
+    "columns": {
+      "problems": "Perbaiki ini dulu",
+      "warnings": "Perlu dicek",
+      "addKey": "Tambahkan kolom ID respons",
+      "column": "Kolom",
+      "answer": "Jawaban atau info",
+      "fills": "Diisi dengan",
+      "type": "Tipe",
+      "nothing": "Tidak ada",
+      "required": "Wajib diisi",
+      "new": "Baru",
+      "fillsFor": "Pengisi {column}",
+      "columnFor": "Kolom untuk {item}",
+      "chooseAnswers": "Pilih jawaban yang disimpan"
+    },
+    "options": {
+      "writeLegend": "Menulis baris",
+      "write": {
+        "insert": "Baris baru untuk setiap respons",
+        "upsert": "Perbarui baris dengan kunci yang sama"
+      },
+      "writeDesc": {
+        "insert": "Setiap respons menambah satu baris. Perubahan dan perubahan tinjauan memperbarui baris tersebut.",
+        "upsert": "Respons yang kuncinya sudah ada di tabel akan memperbarui baris tersebut."
+      },
+      "keyColumn": "Kolom kunci",
+      "keyColumnDesc": "Baris dengan nilai yang sama di sini adalah catatan yang sama.",
+      "multiLegend": "Jawaban dengan beberapa nilai",
+      "multi": {
+        "json": "Sebagai JSON",
+        "text": "Sebagai teks yang mudah dibaca"
+      },
+      "multiDesc": {
+        "json": "Pilihan, peringkat, nama, alamat, dan tautan file disimpan sebagai data terstruktur.",
+        "text": "Digabung dalam satu baris, misalnya “SQL; Vue”."
+      },
+      "choicesLegend": "Pilihan",
+      "choices": {
+        "value": "Berdasarkan nilainya",
+        "label": "Berdasarkan labelnya"
+      },
+      "choicesDesc": {
+        "value": "Kode tetap yang tidak berubah saat label diubah kata-katanya.",
+        "label": "Kata-kata yang dilihat orang, mudah dibaca di laporan."
+      },
+      "extraLegend": "Simpan juga",
+      "extraDesc": "ID respons, waktu pengiriman, versi formulir, dan bahasa selalu disimpan."
+    },
+    "setup": {
+      "step": {
+        "connection": "Koneksi",
+        "table": "Tabel",
+        "columns": "Kolom",
+        "options": "Opsi",
+        "review": "Tinjau"
+      },
+      "title": {
+        "connection": "Database yang mana?",
+        "table": "Tabel yang mana?",
+        "columns": "Kolom mana untuk setiap jawaban?",
+        "options": "Bagaimana respons ditulis?",
+        "review": "Periksa dan mulai"
+      },
+      "desc": {
+        "connection": "Respons untuk “{form}” akan disimpan di koneksi ini.",
+        "table": "Tabel baru yang dibuat dari formulir, atau tabel yang sudah Anda miliki.",
+        "columns": "Setiap jawaban dan beberapa info tentang respons mendapat satu kolom.",
+        "options": "Nilai bawaan yang wajar sudah dipilih; ubah jika sistem Anda memerlukannya.",
+        "review": "Inilah tepatnya yang akan dilakukan Formalie di database Anda."
+      },
+      "noConnections": "Belum ada koneksi",
+      "noConnectionsDesc": "Hubungkan salah satu database Anda terlebih dahulu, lalu kembali untuk menyimpan respons formulir ini di sana.",
+      "connectionWarn": "Koneksi ini sedang tidak berfungsi",
+      "connectionWarnDesc": "Anda tetap bisa menyiapkannya. Respons menunggu dan dicoba ulang sampai koneksi berfungsi lagi.",
+      "create": "Buat tabel dari formulir",
+      "createDesc": "Formalie membuatnya dengan satu kolom untuk setiap jawaban dan terus memperbaruinya saat formulir berubah.",
+      "existing": "Gunakan tabel Anda sendiri",
+      "existingDesc": "Pilih tabel yang sudah Anda miliki dan tentukan kolom untuk setiap jawaban.",
+      "existingNeedsFull": "Memerlukan Akses penuh pada koneksi ini (Operasi database lainnya).",
+      "tableName": "Nama tabel",
+      "tableNameDesc": "Diawali {prefix}. Huruf, angka, dan garis bawah.",
+      "suggest": "Gunakan nama yang disarankan",
+      "schemaFromConnection": "Diatur pada koneksi, di bagian Akses.",
+      "mustStartWith": "Awali nama dengan {prefix}.",
+      "nameChars": "Gunakan huruf, angka, dan garis bawah, diawali dengan huruf.",
+      "pickTable": "Pilih tabel",
+      "pickTableDesc": "Tabel yang boleh dilihat Formalie pada koneksi ini.",
+      "searchTables": "Cari tabel…",
+      "tableFacts": "{columns} kolom · sekitar {rows} baris",
+      "columnsCount": "{filled} dari {total} terisi",
+      "sqlTitle": "Yang akan dijalankan Formalie",
+      "sqlNone": "Tidak ada yang perlu diubah di tabel",
+      "sqlNote": "Formalie menjalankan ini di database Anda saat Anda menyimpan, lalu mulai mengirim respons baru.",
+      "sqlNoneNote": "Tabel sudah punya semua kolom yang diperlukan. Respons baru dikirim begitu Anda menyimpan.",
+      "createAndStart": "Buat tabel dan mulai",
+      "start": "Mulai simpan di sini",
+      "leaveDesc": "Penyimpanan respons yang Anda siapkan akan hilang."
+    },
+    "help": {
+      "connection": {
+        "title": "Memilih database",
+        "p1": "Koneksi mana pun di ruang kerja ini dapat menyimpan respons formulir.",
+        "p2": "Formalie menyimpan setiap respons di antrean terenkripsinya sampai database mengonfirmasinya.",
+        "p3": "Anda dapat melihat dan menampilkan respons dengan cara yang sama, di mana pun disimpan."
+      },
+      "table": {
+        "title": "Tabel baru atau yang sudah ada",
+        "p1": "Tabel baru diberi awalan koneksi, sehingga mudah dikenali.",
+        "p2": "Tabel Anda sendiri memerlukan Akses penuh, karena Formalie menulis ke dalamnya dan mungkin menambahkan kolom.",
+        "p3": "Formalie tidak pernah menghapus tabel atau kolom."
+      },
+      "columns": {
+        "title": "Kolom",
+        "p1": "Nama kolom berasal dari kunci pertanyaan dan dapat diubah.",
+        "p2": "ID respons memungkinkan Formalie menemukan baris lagi, untuk perubahan dan perubahan tinjauan.",
+        "p3": "Pertanyaan yang ditambahkan ke formulir nanti mendapat kolom dengan sekali klik."
+      },
+      "options": {
+        "title": "Opsi",
+        "p1": "Baris baru untuk setiap respons cocok untuk sebagian besar kebutuhan.",
+        "p2": "Perbarui atau sisipkan menjaga satu baris per kunci, misalnya satu per pelamar.",
+        "p3": "JSON menjaga struktur; teks lebih mudah dibaca di laporan."
+      },
+      "review": {
+        "title": "Yang terjadi selanjutnya",
+        "p1": "Respons baru dikirim di latar belakang dalam hitungan detik.",
+        "p2": "Pengiriman yang gagal dicoba ulang dengan jeda yang makin panjang; Anda juga bisa mencobanya ulang sendiri.",
+        "p3": "Respons sebelumnya dapat dikirim kemudian, untuk rentang tanggal mana pun."
+      }
+    }
   }
 }

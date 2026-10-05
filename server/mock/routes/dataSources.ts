@@ -29,6 +29,7 @@ import { finishedTest, planTest, testAt, type TestPlan } from '../data/dataSourc
 import { countOp, dataSourcesOf, detailOf, previousOps, rowOf, saveDataSources, statusOf, type StoredDataSource } from '../data/dataSourceStore'
 import { platformEgressIps } from '../data/platformStore'
 import type { MockTenant } from '../data/tenants'
+import { formsOnConnection } from './destinations'
 
 const accessSchema = z.object({
   table_prefix: z.enum(TABLE_PREFIXES).default('formalie_'),
@@ -71,6 +72,12 @@ function find(tenant: MockTenant, id: string | undefined): StoredDataSource {
   const source = dataSourcesOf(tenant).find(item => item.id === id)
   if (!source) throw new MockError('FRM-GEN-1004')
   return source
+}
+
+/** Forms storing their responses on a connection (from the destinations). */
+function withForms<T extends { id: string; forms_count: number; forms?: { id: string; name: string }[] }>(tenant: MockTenant, item: T): T {
+  const forms = formsOnConnection(tenant, item.id)
+  return { ...item, forms_count: forms.length, ...('forms' in item ? { forms } : {}) }
 }
 
 const nameTaken = (tenant: MockTenant, name: string, except?: string) => dataSourcesOf(tenant).some(item => item.id !== except && item.name.toLowerCase() === name.toLowerCase())
@@ -152,7 +159,7 @@ export const listDataSources = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAdmin(event)
   const filter = (query.filter ?? {}) as Record<string, unknown>
   const rows = dataSourcesOf(tenant)
-    .map(rowOf)
+    .map(source => withForms(tenant, rowOf(source)))
     .filter(row => inList(filter.status, row.status) && inList(filter.engine, row.engine) && inList(filter.access, row.access.other))
   const { data, meta } = paginate(rows, { sort: 'name', ...query }, (row, q) => [row.name, row.address, row.database, row.engine].some(text => text.toLowerCase().includes(q)))
   return ok(data, meta)
@@ -221,7 +228,7 @@ export const createDataSource = defineMockRoute(({ event, body }) => {
 
 export const getDataSource = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
-  return ok(detailOf(find(tenant, getRouterParam(event, 'id'))))
+  return ok(withForms(tenant, detailOf(find(tenant, getRouterParam(event, 'id')))))
 })
 
 export const patchDataSource = defineMockRoute(({ event, body }) => {
@@ -302,7 +309,7 @@ export const duplicateDataSource = defineMockRoute(({ event }) => {
 export const deleteDataSource = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAdmin(event)
   const source = find(tenant, getRouterParam(event, 'id'))
-  if (source.forms.length) throw new MockError('FRM-DEST-1010')
+  if (formsOnConnection(tenant, source.id).length) throw new MockError('FRM-DEST-1010')
   const list = dataSourcesOf(tenant)
   list.splice(list.indexOf(source), 1)
   saveDataSources()

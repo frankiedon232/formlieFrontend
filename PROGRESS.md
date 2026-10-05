@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections done; next M2 Sending form data (destinations).
+**Last updated:** 2026-10-05 · **Current phase:** F12, Data sources & databases: M1 Connections and M2 Response storage done; next M3 Database explorer.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -22,7 +22,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F9    | Templates gallery                                 | ✅     | 100% |
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
-| F12   | Data sources & databases                          | 🟡     | ~20% |
+| F12   | Data sources & databases                          | 🟡     | ~45% |
 | F13   | API service & integrations                        | 🟡     | ~2%  |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
@@ -542,7 +542,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** organisations connect their own databases, send form data to them, and work with that data from the portal, browse it, query it and manage it, safely, with every action audited (owner request 2026-10-02). Comes after Responses (there is data to send) and before Option sets (dynamic lists read from these connections, F15e). Launch engines: MySQL, MariaDB, Oracle, PostgreSQL, SQL Server (`shared/utils/integrations/databases.ts`); built-in encrypted storage stays the default.
 
-**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ⬜ Sending form data (destinations, mapping, deliveries, backfill). **M3** ⬜ Database explorer and row operations (incl. import). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
+**Plan (2026-10-05, milestones):** **M1** ✅ Connections (per-engine settings, test, permissions guide, panel). **M2** ✅ Sending form data (response storage, tables, columns, deliveries, backfill). **M3** ⬜ Database explorer and row operations (incl. import). **M4** ⬜ Query editor (needs CodeMirror 6, ask first). **M5** ⬜ Activity, polish and review (then stop for the owner's review).
 
 ### 1. Connections (Integrations → Data sources)
 
@@ -558,13 +558,17 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 2. Sending form data (destinations)
 
-- ⬜ Per form (form settings → Destination): built-in storage (default) or one of the connections; several destinations allowed
-- ⬜ Table: choose an existing table, or create one from the form, generated table preview (column names from field keys, types from field types), confirm, then create
-- ⬜ Field → column mapping: auto-match by key, type-mismatch warnings, required-column check, extra columns (response id, submitted at, form version, language, respondent details), multi-value fields (JSON / joined / child table), files as secure links
-- ⬜ Write mode: insert, or update-or-insert on a key column
-- ⬜ Delivery runs in the background: queued per response, retries with back-off, status per response (sent · pending · failed), error log with retry / retry all, pause / resume
-- ⬜ Backfill: send existing responses (date range) with a progress bar
-- ⬜ A form gains a field → offer "Add column" with a preview; a removed field is never dropped from the table automatically
+**M2 ✅ (2026-10-05; decision 113).**
+
+- ✅ Per form, "Where responses are stored" (form overview card): Formalie's encrypted storage (default) or one connection (one storage per form, decision 113); set up at `/forms/[id]/storage`, admins only
+- ✅ Table: a new table from the form (named with the connection's prefix, in its response-table schema; CREATE TABLE shown before saving) or a table of theirs (needs Full access; tables listed per connection)
+- ✅ Columns: from the questions' keys (renamable, answers can be left out; reserved words and length limits per engine) with per-engine types; an existing table is matched automatically (names, common aliases) with checks (response id needed, required columns, type warnings, repeats) and "Add a response id column"; extra facts (response number, respondent's email, review status); answers with several values as JSON or text, choices by value or label, files as secure links
+- ✅ Write mode: a new row per response, or update-or-insert on a key column (unique key added when needed)
+- ✅ Delivery in the background: status per response (sent · pending · failed · held while paused · not sent), retries with growing waits, retry one / retry all, pause / resume (held responses go out on resume)
+- ✅ Send earlier responses (date range) with live progress; nothing is sent twice
+- ✅ A form gains a question → "N new questions have no column" (card and panel) and "Add columns" with the SQL; nothing is ever dropped
+- ✅ Data sources → Destinations (locked list format): chart cards (responses delivered, forms by delivery status), table / card, filters (status, connection, table kind), panel (Delivering switch, Send earlier responses, Retry failed, facts, deliveries, columns, new questions; J / K); connection panels list the forms storing there, and a connection in use can't be deleted
+- ✅ Audit: `data.destination_created · updated · paused · resumed · removed`, `data.table_created`, `data.column_added`, `data.backfill_started`, `data.deliveries_retried`
 
 ### 3. Database explorer
 
@@ -1213,3 +1217,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | Owner wording: no "not used for responses" or "optional" (a form may store responses in a table of theirs). Access step: "Your responses" (Formalie's tables or a table of yours) and "Other database operations" (Full access · Read only · None, default Full access); Full access now also creates and changes tables in their schemas (new operation and grants per engine). |
 | 2026-10-05 | F12 | Owner: ports are the usual defaults, not a rule. Engine cards say "Default port …"; the Port field explains it is prefilled with the engine's usual port and to enter their own if the database uses another (Oracle: TCPS often 2484). |
 | 2026-10-05 | F12 | Owner: optional connection fields (e.g. SQL Server instance name, SSH key passphrase, certificates) now say "Optional" beside their label; instance placeholder PROD01 instead of SQLEXPRESS (a development edition). |
+| 2026-10-05 | F12 | M2 Response storage (decision 113): per-form "Where responses are stored" (overview card, setup at /forms/[id]/storage: connection → table (create from the form or a table of yours) → columns (per-engine types, auto-matching, checks) → options (new row or update-or-insert, JSON or text, value or label, extra facts) → review with the exact SQL); background delivery with statuses, retries, pause / resume, send earlier responses with progress, add columns for new questions; Destinations page (chart cards, table / card, panel). Mock: synthetic tables per connection, delivery status derived per response. Tests: `datasources/tables`. |

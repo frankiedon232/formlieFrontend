@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "此连接已停用。请先启用。",
     "FRM-DEST-1010": "仍有表单将回复发送到此连接。",
     "FRM-DEST-1011": "数据库响应超时。",
-    "FRM-DEST-1012": "此账户无法创建或使用回复表。"
+    "FRM-DEST-1012": "此账户无法创建或使用回复表。",
+    "FRM-DEST-1013": "将回复存储到您的自有表需要此连接具有完全访问权限。",
+    "FRM-DEST-1014": "已存在同名的表。",
+    "FRM-DEST-1015": "此表单已将回复存储在数据库中。",
+    "FRM-DEST-1016": "表单与表尚不匹配。",
+    "FRM-DEST-1017": "之前的回复正在发送中。请等待其完成。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "已启用连接",
       "data_connection_disabled": "已停用连接",
       "data_connection_deleted": "已删除连接",
-      "data_credentials_changed": "已更改连接凭据"
+      "data_credentials_changed": "已更改连接凭据",
+      "data_destination_created": "已设置回复存储",
+      "data_destination_updated": "已更改回复存储",
+      "data_destination_paused": "已暂停回复投递",
+      "data_destination_resumed": "已恢复回复投递",
+      "data_destination_removed": "回复已移回 Formalie 存储",
+      "data_table_created": "已创建回复表",
+      "data_column_added": "已向回复表添加列",
+      "data_backfill_started": "已将之前的回复发送到数据库",
+      "data_deliveries_retried": "已重试失败的投递"
     },
     "detail": {
       "who": "谁",
@@ -4283,5 +4297,276 @@
     "unpin": "从侧边栏取消固定",
     "pinFull": "最多可固定 5 个文件夹",
     "hex": "十六进制颜色"
+  },
+  "destinations": {
+    "crumb": "回复存储",
+    "setupTitle": "将回复存储到您的数据库",
+    "editTitle": "更改回复存储",
+    "add": "存储表单的回复",
+    "search": "搜索表单、连接或表…",
+    "emptyTitle": "还没有表单将回复存储在数据库中",
+    "emptyDesc": "打开一个表单，在其概览中选择“存储到您的数据库”。Formalie 会创建表并将每条回复发送到那里。",
+    "adminsOnly": "只有工作区管理员可以更改回复的存储位置",
+    "adminsOnlyDesc": "请联系此工作区的所有者或管理员。",
+    "noFields": "此表单还没有问题",
+    "noFieldsDesc": "请先向表单添加问题；每个问题对应一列。",
+    "delivering": "投递中",
+    "paused": "已暂停",
+    "status": {
+      "active": "投递中",
+      "paused": "已暂停",
+      "failing": "失败中"
+    },
+    "delivery": {
+      "all": "全部",
+      "sent": "已发送",
+      "pending": "待发送",
+      "failed": "失败",
+      "held": "已暂扣",
+      "not_sent": "未发送"
+    },
+    "table": {
+      "created": "由 Formalie 创建",
+      "yours": "您的表"
+    },
+    "col": {
+      "form": "表单",
+      "connection": "连接",
+      "table": "表"
+    },
+    "sort": {
+      "busiest": "投递最多",
+      "failed": "失败最多",
+      "recent": "最近投递"
+    },
+    "kpi": {
+      "delivered": "已投递的回复",
+      "byStatus": "按投递状态统计的表单",
+      "failingCount": "{n} 个失败中",
+      "forms": "表单",
+      "sent30": "已发送（30 天）",
+      "pending": "待发送",
+      "failed": "失败",
+      "held": "已暂扣",
+      "last": "上次投递",
+      "notSent": "未发送（之前的）",
+      "since": "在此存储始于",
+      "deliveredShare": "已投递（30 天）"
+    },
+    "card": {
+      "title": "回复的存储位置",
+      "formalie": "Formalie 加密存储",
+      "formalieDesc": "回复保留在 Formalie 中。将其存储到您自己的数据库，即可在您的系统中使用。",
+      "store": "存储到您的数据库",
+      "addConnection": "请先连接数据库",
+      "last": "上次投递于 {when}",
+      "none": "尚未投递任何内容",
+      "newFields": "{n} 个新问题还没有列 | {n} 个新问题还没有列",
+      "open": "投递",
+      "change": "更改"
+    },
+    "actions": {
+      "backfill": "发送之前的回复",
+      "retryAll": "重试 {n} 条失败 | 重试 {n} 条失败",
+      "pause": "暂停投递",
+      "resume": "恢复投递",
+      "openForm": "打开表单",
+      "openConnection": "打开连接",
+      "change": "更改列和选项",
+      "remove": "重新存储在 Formalie"
+    },
+    "remove": {
+      "title": "将“{form}”的回复重新存储在 Formalie？",
+      "desc": "新回复将保留在 Formalie 存储中。表以及您数据库中已有的行不会受到影响。",
+      "confirm": "存储在 Formalie"
+    },
+    "toast": {
+      "created": "回复现在发送到 {table}",
+      "saved": "回复存储已保存",
+      "paused": "投递已暂停。新回复将等待，直到您恢复投递",
+      "resumed": "投递已恢复。等待中的回复正在发送",
+      "retried": "正在重试 {n} 次投递 | 正在重试 {n} 次投递",
+      "columnsAdded": "已添加 {n} 列 | 已添加 {n} 列",
+      "removed": "回复已重新存储在 Formalie"
+    },
+    "detail": {
+      "all": "全部",
+      "deliveries": "投递",
+      "columns": "列",
+      "fields": "新问题",
+      "fieldsTitle": "表单中新增的 {n} 个问题没有列 | 表单中新增的 {n} 个问题没有列",
+      "fieldsDesc": "在您添加列之前，这些问题的回答不会存入表中。其他内容不变。",
+      "addColumns": "添加 {n} 列 | 添加 {n} 列",
+      "navigate": "在表单间切换",
+      "previous": "上一个表单",
+      "next": "下一个表单"
+    },
+    "deliveries": {
+      "filter": "显示",
+      "empty": "这里没有回复。",
+      "attempts": "{n} 次尝试 | {n} 次尝试",
+      "nextRetry": "下次尝试 {when}",
+      "retryOne": "重试回复 #{n}",
+      "more": "显示更多（{shown} / {total}）"
+    },
+    "backfill": {
+      "title": "发送之前的回复",
+      "desc": "此表单开始存储到这里之前的回复将在后台发送，方式与新回复相同。",
+      "notSent": "{date} 之前的 {n} 条回复未发送。 | {date} 之前的 {n} 条回复未发送。",
+      "from": "从",
+      "to": "至",
+      "order": "请选择晚于开始日期的日期。",
+      "note": "表中已有的内容不会重复发送。运行期间您可以继续工作。",
+      "start": "发送",
+      "started": "正在发送之前的回复",
+      "running": "正在发送之前的回复：{done} / {total}",
+      "done": "已发送 {n} 条之前的回复 | 已发送 {n} 条之前的回复"
+    },
+    "meta": {
+      "response_id": "回复 ID",
+      "submitted_at": "提交时间",
+      "form_version": "表单版本",
+      "language": "语言",
+      "response_number": "回复编号",
+      "respondent_email": "填写人邮箱",
+      "review_status": "审核状态"
+    },
+    "issue": {
+      "no_key": "请为回复 ID 选择一列，以便 Formalie 再次找到每一行。",
+      "required_unmapped": "{column} 必须填写：请选择要填入的内容。",
+      "type_mismatch": "{column} 可能无法直接接受“{field}”。请检查该列的类型。",
+      "duplicate_source": "{column} 重复了另一列已存储的内容。",
+      "upsert_key": "要更新行，键列 {column} 必须填写。"
+    },
+    "columns": {
+      "problems": "请先修复这些问题",
+      "warnings": "值得查看",
+      "addKey": "添加回复 ID 列",
+      "column": "列",
+      "answer": "回答或信息",
+      "fills": "填入内容",
+      "type": "类型",
+      "nothing": "无",
+      "required": "必须填写",
+      "new": "新",
+      "fillsFor": "{column} 的填入内容",
+      "columnFor": "{item} 的列",
+      "chooseAnswers": "选择要存储的回答"
+    },
+    "options": {
+      "writeLegend": "写入行",
+      "write": {
+        "insert": "每条回复新增一行",
+        "upsert": "更新具有相同键的行"
+      },
+      "writeDesc": {
+        "insert": "每条回复添加一行。编辑和审核变更会更新该行。",
+        "upsert": "如果回复的键已在表中，则改为更新该行。"
+      },
+      "keyColumn": "键列",
+      "keyColumnDesc": "此处值相同的行视为同一条记录。",
+      "multiLegend": "包含多个值的回答",
+      "multi": {
+        "json": "以 JSON 格式",
+        "text": "以可读文本"
+      },
+      "multiDesc": {
+        "json": "选项、排序、姓名、地址和文件链接保存为结构化数据。",
+        "text": "合并为一行，例如“SQL; Vue”。"
+      },
+      "choicesLegend": "选项",
+      "choices": {
+        "value": "按值",
+        "label": "按标签"
+      },
+      "choicesDesc": {
+        "value": "稳定的代码，标签改写时不会变化。",
+        "label": "填写人看到的文字，便于在报表中阅读。"
+      },
+      "extraLegend": "同时存储",
+      "extraDesc": "回复 ID、提交时间、表单版本和语言始终会被存储。"
+    },
+    "setup": {
+      "step": {
+        "connection": "连接",
+        "table": "表",
+        "columns": "列",
+        "options": "选项",
+        "review": "检查"
+      },
+      "title": {
+        "connection": "哪个数据库？",
+        "table": "哪张表？",
+        "columns": "每个回答对应哪一列？",
+        "options": "回复如何写入？",
+        "review": "检查并开始"
+      },
+      "desc": {
+        "connection": "“{form}”的回复将存储在此连接上。",
+        "table": "根据表单新建的表，或您已有的表。",
+        "columns": "每个回答以及回复的几项信息各对应一列。",
+        "options": "已选择合理的默认值；如您的系统需要，可以更改。",
+        "review": "这正是 Formalie 将在您的数据库上执行的操作。"
+      },
+      "noConnections": "还没有连接",
+      "noConnectionsDesc": "请先连接您的一个数据库，然后返回此处将此表单的回复存储到那里。",
+      "connectionWarn": "此连接当前无法使用",
+      "connectionWarnDesc": "您仍然可以进行设置。回复会等待并重试，直到连接恢复正常。",
+      "create": "根据表单创建表",
+      "createDesc": "Formalie 会为每个回答创建一列，并在表单变化时保持表的更新。",
+      "existing": "使用您的自有表",
+      "existingDesc": "选择您已有的表，并选择每个回答写入哪一列。",
+      "existingNeedsFull": "需要此连接具有完全访问权限（其他数据库操作）。",
+      "tableName": "表名",
+      "tableNameDesc": "以 {prefix} 开头。可使用字母、数字和下划线。",
+      "suggest": "使用建议的名称",
+      "schemaFromConnection": "在连接的“访问”中设置。",
+      "mustStartWith": "名称须以 {prefix} 开头。",
+      "nameChars": "请使用字母、数字和下划线，并以字母开头。",
+      "pickTable": "选择表",
+      "pickTableDesc": "Formalie 在此连接上可见的表。",
+      "searchTables": "搜索表…",
+      "tableFacts": "{columns} 列 · 约 {rows} 行",
+      "columnsCount": "已填 {filled} / {total}",
+      "sqlTitle": "Formalie 将运行的内容",
+      "sqlNone": "表无需任何更改",
+      "sqlNote": "保存时，Formalie 会在您的数据库上运行这些语句，然后开始发送新回复。",
+      "sqlNoneNote": "表中已包含所需的全部列。保存后即开始发送新回复。",
+      "createAndStart": "创建表并开始",
+      "start": "开始存储到此处",
+      "leaveDesc": "您设置的回复存储将会丢失。"
+    },
+    "help": {
+      "connection": {
+        "title": "选择数据库",
+        "p1": "此工作区的任何连接都可以存储表单的回复。",
+        "p2": "Formalie 会将每条回复保存在其加密队列中，直到数据库确认接收。",
+        "p3": "无论回复存储在哪里，您都可以用相同的方式查看和展示。"
+      },
+      "table": {
+        "title": "新表或现有表",
+        "p1": "新表以连接的前缀命名，便于识别。",
+        "p2": "您的自有表需要完全访问权限，因为 Formalie 会写入数据并可能添加列。",
+        "p3": "Formalie 从不删除表或列。"
+      },
+      "columns": {
+        "title": "列",
+        "p1": "列名来自问题的键，可以更改。",
+        "p2": "回复 ID 让 Formalie 在编辑和审核变更时能再次找到对应行。",
+        "p3": "之后添加到表单的问题只需点击一下即可获得一列。"
+      },
+      "options": {
+        "title": "选项",
+        "p1": "每条回复新增一行适合大多数用途。",
+        "p2": "更新或插入会为每个键保留一行，例如每位申请人一行。",
+        "p3": "JSON 保留结构；文本在报表中更易阅读。"
+      },
+      "review": {
+        "title": "接下来会发生什么",
+        "p1": "新回复会在几秒内于后台发送。",
+        "p2": "失败的投递会以逐渐延长的间隔重试；您也可以手动重试。",
+        "p3": "之前的回复可以稍后按任意日期范围发送。"
+      }
+    }
   }
 }

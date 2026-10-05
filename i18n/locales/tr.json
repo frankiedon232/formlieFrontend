@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Bu bağlantı devre dışı. Önce etkinleştirin.",
     "FRM-DEST-1010": "Formlar yanıtlarını hâlâ bu bağlantıya gönderiyor.",
     "FRM-DEST-1011": "Veritabanının yanıt vermesi çok uzun sürdü.",
-    "FRM-DEST-1012": "Bu hesap yanıt tablolarını oluşturamıyor veya kullanamıyor."
+    "FRM-DEST-1012": "Bu hesap yanıt tablolarını oluşturamıyor veya kullanamıyor.",
+    "FRM-DEST-1013": "Yanıtları kendi tablonuzda saklamak için bu bağlantıda Tam erişim gerekir.",
+    "FRM-DEST-1014": "Bu adda bir tablo zaten var.",
+    "FRM-DEST-1015": "Bu form yanıtlarını zaten bir veritabanında saklıyor.",
+    "FRM-DEST-1016": "Form ve tablo henüz eşleşmiyor.",
+    "FRM-DEST-1017": "Önceki yanıtlar zaten gönderiliyor. Bitmesini bekleyin."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Bağlantı etkinleştirildi",
       "data_connection_disabled": "Bağlantı devre dışı bırakıldı",
       "data_connection_deleted": "Bağlantı silindi",
-      "data_credentials_changed": "Bağlantı kimlik bilgileri değiştirildi"
+      "data_credentials_changed": "Bağlantı kimlik bilgileri değiştirildi",
+      "data_destination_created": "Yanıt depolaması kuruldu",
+      "data_destination_updated": "Yanıt depolaması değiştirildi",
+      "data_destination_paused": "Yanıt teslimi duraklatıldı",
+      "data_destination_resumed": "Yanıt teslimi sürdürüldü",
+      "data_destination_removed": "Yanıtlar Formalie depolamasına geri taşındı",
+      "data_table_created": "Yanıt tablosu oluşturuldu",
+      "data_column_added": "Bir yanıt tablosuna sütun eklendi",
+      "data_backfill_started": "Önceki yanıtlar bir veritabanına gönderildi",
+      "data_deliveries_retried": "Başarısız teslimler yeniden denendi"
     },
     "detail": {
       "who": "Kim",
@@ -4283,5 +4297,276 @@
     "unpin": "Kenar çubuğundan kaldır",
     "pinFull": "En fazla 5 klasör sabitlenebilir",
     "hex": "Hex renk"
+  },
+  "destinations": {
+    "crumb": "Yanıt depolaması",
+    "setupTitle": "Yanıtları veritabanınızda saklayın",
+    "editTitle": "Yanıt depolamasını değiştir",
+    "add": "Bir formun yanıtlarını sakla",
+    "search": "Form, bağlantı veya tablo ara…",
+    "emptyTitle": "Henüz yanıtlarını veritabanında saklayan form yok",
+    "emptyDesc": "Bir form açın ve genel bakışında “Veritabanınızda saklayın” seçeneğini seçin. Formalie tabloyu oluşturur ve her yanıtı oraya gönderir.",
+    "adminsOnly": "Yanıtların nerede saklanacağını yalnızca çalışma alanı yöneticileri değiştirebilir",
+    "adminsOnlyDesc": "Bu çalışma alanının sahibine veya bir yöneticisine danışın.",
+    "noFields": "Bu formda henüz soru yok",
+    "noFieldsDesc": "Önce forma soru ekleyin; her soru bir sütun alır.",
+    "delivering": "Teslim ediliyor",
+    "paused": "Duraklatıldı",
+    "status": {
+      "active": "Teslim ediliyor",
+      "paused": "Duraklatıldı",
+      "failing": "Hata veriyor"
+    },
+    "delivery": {
+      "all": "Tümü",
+      "sent": "Gönderildi",
+      "pending": "Bekliyor",
+      "failed": "Başarısız",
+      "held": "Bekletiliyor",
+      "not_sent": "Gönderilmedi"
+    },
+    "table": {
+      "created": "Formalie oluşturdu",
+      "yours": "Tablonuz"
+    },
+    "col": {
+      "form": "Form",
+      "connection": "Bağlantı",
+      "table": "Tablo"
+    },
+    "sort": {
+      "busiest": "En çok teslim edilen",
+      "failed": "En çok başarısız olan",
+      "recent": "En son teslim edilen"
+    },
+    "kpi": {
+      "delivered": "Teslim edilen yanıtlar",
+      "byStatus": "Teslim durumuna göre formlar",
+      "failingCount": "{n} hata veriyor",
+      "forms": "Formlar",
+      "sent30": "Gönderilen (30 gün)",
+      "pending": "Bekliyor",
+      "failed": "Başarısız",
+      "held": "Bekletiliyor",
+      "last": "Son teslim",
+      "notSent": "Gönderilmedi (önceki)",
+      "since": "Burada saklandığı tarih",
+      "deliveredShare": "Teslim edilen (30 gün)"
+    },
+    "card": {
+      "title": "Yanıtların saklandığı yer",
+      "formalie": "Formalie’nin şifreli depolaması",
+      "formalieDesc": "Yanıtlar Formalie’de kalır. Kendi sistemlerinizde de kullanmak için onları kendi veritabanınızda saklayın.",
+      "store": "Veritabanınızda saklayın",
+      "addConnection": "Önce bir veritabanı bağlayın",
+      "last": "Son teslim {when}",
+      "none": "Henüz hiçbir şey teslim edilmedi",
+      "newFields": "{n} yeni sorunun henüz sütunu yok | {n} yeni sorunun henüz sütunu yok",
+      "open": "Teslimler",
+      "change": "Değiştir"
+    },
+    "actions": {
+      "backfill": "Önceki yanıtları gönder",
+      "retryAll": "{n} başarısızı yeniden dene | {n} başarısızı yeniden dene",
+      "pause": "Teslimi duraklat",
+      "resume": "Teslimi sürdür",
+      "openForm": "Formu aç",
+      "openConnection": "Bağlantıyı aç",
+      "change": "Sütunları ve seçenekleri değiştir",
+      "remove": "Yeniden Formalie’de sakla"
+    },
+    "remove": {
+      "title": "“{form}” yanıtları yeniden Formalie’de saklansın mı?",
+      "desc": "Yeni yanıtlar Formalie’nin depolamasında kalır. Tabloya ve veritabanınızdaki mevcut satırlara dokunulmaz.",
+      "confirm": "Formalie’de sakla"
+    },
+    "toast": {
+      "created": "Yanıtlar artık {table} tablosuna gidiyor",
+      "saved": "Yanıt depolaması kaydedildi",
+      "paused": "Teslim duraklatıldı. Yeni yanıtlar siz sürdürene kadar bekler",
+      "resumed": "Teslim sürdürüldü. Bekleyen yanıtlar yolda",
+      "retried": "{n} teslim yeniden deneniyor | {n} teslim yeniden deneniyor",
+      "columnsAdded": "{n} sütun eklendi | {n} sütun eklendi",
+      "removed": "Yanıtlar yeniden Formalie’de saklanıyor"
+    },
+    "detail": {
+      "all": "Tümü",
+      "deliveries": "Teslimler",
+      "columns": "Sütunlar",
+      "fields": "Yeni sorular",
+      "fieldsTitle": "Forma eklenen {n} sorunun sütunu yok | Forma eklenen {n} sorunun sütunu yok",
+      "fieldsDesc": "Sütunları ekleyene kadar bu soruların yanıtları tabloda saklanmaz. Başka hiçbir şey değişmez.",
+      "addColumns": "{n} sütun ekle | {n} sütun ekle",
+      "navigate": "Formlar arasında geçiş",
+      "previous": "Önceki form",
+      "next": "Sonraki form"
+    },
+    "deliveries": {
+      "filter": "Göster",
+      "empty": "Burada yanıt yok.",
+      "attempts": "{n} deneme | {n} deneme",
+      "nextRetry": "sonraki deneme {when}",
+      "retryOne": "#{n} yanıtını yeniden dene",
+      "more": "Daha fazla göster ({shown} / {total})"
+    },
+    "backfill": {
+      "title": "Önceki yanıtları gönder",
+      "desc": "Bu form burada saklamaya başlamadan önceki yanıtlar, yenileri gibi arka planda gönderilir.",
+      "notSent": "{date} öncesine ait {n} yanıt gönderilmedi. | {date} öncesine ait {n} yanıt gönderilmedi.",
+      "from": "Başlangıç",
+      "to": "Bitiş",
+      "order": "Başlangıç tarihinden sonra bir tarih seçin.",
+      "note": "Tabloda zaten olan hiçbir şey iki kez gönderilmez. Bu sırada çalışmaya devam edebilirsiniz.",
+      "start": "Gönder",
+      "started": "Önceki yanıtlar gönderiliyor",
+      "running": "Önceki yanıtlar gönderiliyor: {done} / {total}",
+      "done": "{n} önceki yanıt gönderildi | {n} önceki yanıt gönderildi"
+    },
+    "meta": {
+      "response_id": "Yanıt kimliği",
+      "submitted_at": "Gönderilme zamanı",
+      "form_version": "Form sürümü",
+      "language": "Dil",
+      "response_number": "Yanıt numarası",
+      "respondent_email": "Yanıtlayanın e-postası",
+      "review_status": "İnceleme durumu"
+    },
+    "issue": {
+      "no_key": "Formalie’nin her satırı yeniden bulabilmesi için yanıt kimliğine bir sütun seçin.",
+      "required_unmapped": "{column} doldurulmalıdır: içine ne gireceğini seçin.",
+      "type_mismatch": "{column}, “{field}” değerini olduğu gibi kabul etmeyebilir. Sütunun türünü kontrol edin.",
+      "duplicate_source": "{column}, başka bir sütunun zaten sakladığı bir şeyi tekrarlıyor.",
+      "upsert_key": "Satırları güncellemek için {column} anahtar sütunu doldurulmalıdır."
+    },
+    "columns": {
+      "problems": "Önce bunları düzeltin",
+      "warnings": "Göz atılmalı",
+      "addKey": "Yanıt kimliği sütunu ekle",
+      "column": "Sütun",
+      "answer": "Yanıt veya bilgi",
+      "fills": "Dolduran",
+      "type": "Tür",
+      "nothing": "Hiçbir şey",
+      "required": "Doldurulmalı",
+      "new": "Yeni",
+      "fillsFor": "{column} sütununu ne doldurur",
+      "columnFor": "{item} için sütun",
+      "chooseAnswers": "Hangi yanıtların saklanacağını seçin"
+    },
+    "options": {
+      "writeLegend": "Satır yazma",
+      "write": {
+        "insert": "Her yanıt için yeni bir satır",
+        "upsert": "Aynı anahtara sahip satırı güncelle"
+      },
+      "writeDesc": {
+        "insert": "Her yanıt bir satır ekler. Düzenlemeler ve inceleme değişiklikleri o satırı günceller.",
+        "upsert": "Anahtarı tabloda zaten bulunan bir yanıt, bunun yerine o satırı günceller."
+      },
+      "keyColumn": "Anahtar sütun",
+      "keyColumnDesc": "Burada aynı değere sahip satırlar aynı kayıttır.",
+      "multiLegend": "Birden çok değerli yanıtlar",
+      "multi": {
+        "json": "JSON olarak",
+        "text": "Okunabilir metin olarak"
+      },
+      "multiDesc": {
+        "json": "Seçimler, sıralamalar, adlar, adresler ve dosya bağlantıları yapılandırılmış veri olarak tutulur.",
+        "text": "Tek satırda birleştirilir, örneğin “SQL; Vue”."
+      },
+      "choicesLegend": "Seçenekler",
+      "choices": {
+        "value": "Değerlerine göre",
+        "label": "Etiketlerine göre"
+      },
+      "choicesDesc": {
+        "value": "Bir etiket yeniden yazıldığında değişmeyen sabit kodlar.",
+        "label": "İnsanların gördüğü sözcükler, raporlarda kolay okunur."
+      },
+      "extraLegend": "Ayrıca sakla",
+      "extraDesc": "Yanıt kimliği, gönderilme zamanı, form sürümü ve dil her zaman saklanır."
+    },
+    "setup": {
+      "step": {
+        "connection": "Bağlantı",
+        "table": "Tablo",
+        "columns": "Sütunlar",
+        "options": "Seçenekler",
+        "review": "Gözden geçir"
+      },
+      "title": {
+        "connection": "Hangi veritabanı?",
+        "table": "Hangi tablo?",
+        "columns": "Her yanıt için hangi sütun?",
+        "options": "Yanıtlar nasıl yazılsın?",
+        "review": "Kontrol edin ve başlatın"
+      },
+      "desc": {
+        "connection": "“{form}” yanıtları bu bağlantıda saklanacak.",
+        "table": "Formdan oluşturulan yeni bir tablo veya zaten sahip olduğunuz bir tablo.",
+        "columns": "Her yanıt ve yanıtla ilgili birkaç bilgi bir sütun alır.",
+        "options": "Makul varsayılanlar seçildi; sistemleriniz gerektiriyorsa değiştirin.",
+        "review": "Formalie’nin veritabanınızda yapacağı tam olarak budur."
+      },
+      "noConnections": "Henüz bağlantı yok",
+      "noConnectionsDesc": "Önce veritabanlarınızdan birini bağlayın, ardından bu formun yanıtlarını orada saklamak için geri gelin.",
+      "connectionWarn": "Bu bağlantı şu anda çalışmıyor",
+      "connectionWarnDesc": "Yine de kurabilirsiniz. Yanıtlar bekler ve bağlantı yeniden çalışana kadar tekrar denenir.",
+      "create": "Formdan bir tablo oluştur",
+      "createDesc": "Formalie onu her yanıt için bir sütunla oluşturur ve form değiştikçe güncel tutar.",
+      "existing": "Kendi tablonuzu kullanın",
+      "existingDesc": "Zaten sahip olduğunuz bir tabloyu seçin ve her yanıtın hangi sütuna gideceğini belirleyin.",
+      "existingNeedsFull": "Bu bağlantıda Tam erişim gerekir (Diğer veritabanı işlemleri).",
+      "tableName": "Tablo adı",
+      "tableNameDesc": "{prefix} ile başlar. Harf, rakam ve alt çizgi.",
+      "suggest": "Önerilen adı kullan",
+      "schemaFromConnection": "Bağlantıda, Erişim altında ayarlanır.",
+      "mustStartWith": "Adı {prefix} ile başlatın.",
+      "nameChars": "Harf, rakam ve alt çizgi kullanın; bir harfle başlayın.",
+      "pickTable": "Bir tablo seçin",
+      "pickTableDesc": "Formalie’nin bu bağlantıda görebildiği tablolar.",
+      "searchTables": "Tablo ara…",
+      "tableFacts": "{columns} sütun · yaklaşık {rows} satır",
+      "columnsCount": "{filled} / {total} dolu",
+      "sqlTitle": "Formalie’nin çalıştıracakları",
+      "sqlNone": "Tabloda değiştirilecek bir şey yok",
+      "sqlNote": "Kaydettiğinizde Formalie bunu veritabanınızda çalıştırır, ardından yeni yanıtları göndermeye başlar.",
+      "sqlNoneNote": "Tabloda gereken tüm sütunlar zaten var. Yeni yanıtlar, kaydettiğiniz anda gönderilir.",
+      "createAndStart": "Tabloyu oluştur ve başlat",
+      "start": "Burada saklamaya başla",
+      "leaveDesc": "Kurduğunuz yanıt depolaması kaybolacak."
+    },
+    "help": {
+      "connection": {
+        "title": "Veritabanı seçme",
+        "p1": "Bu çalışma alanının herhangi bir bağlantısı bir formun yanıtlarını saklayabilir.",
+        "p2": "Formalie her yanıtı, veritabanı onaylayana kadar şifreli kuyruğunda tutar.",
+        "p3": "Yanıtları nerede saklanırsa saklansın aynı şekilde görüntüleyip gösterebilirsiniz."
+      },
+      "table": {
+        "title": "Yeni veya mevcut tablo",
+        "p1": "Yeni bir tablo, bağlantının önekiyle adlandırılır, böylece kolayca tanınır.",
+        "p2": "Kendi tablonuz Tam erişim gerektirir, çünkü Formalie ona yazar ve sütun ekleyebilir.",
+        "p3": "Formalie hiçbir zaman bir tabloyu veya sütunu silmez."
+      },
+      "columns": {
+        "title": "Sütunlar",
+        "p1": "Sütun adları soruların anahtarlarından gelir ve değiştirilebilir.",
+        "p2": "Yanıt kimliği, Formalie’nin düzenlemeler ve inceleme değişiklikleri için bir satırı yeniden bulmasını sağlar.",
+        "p3": "Forma sonradan eklenen sorular tek tıklamayla bir sütun alır."
+      },
+      "options": {
+        "title": "Seçenekler",
+        "p1": "Her yanıt için yeni bir satır çoğu kullanıma uygundur.",
+        "p2": "Güncelle veya ekle, anahtar başına bir satır tutar, örneğin başvuran başına bir satır.",
+        "p3": "JSON yapıyı korur; metin raporlarda daha kolay okunur."
+      },
+      "review": {
+        "title": "Bundan sonra ne olur",
+        "p1": "Yeni yanıtlar saniyeler içinde arka planda gönderilir.",
+        "p2": "Başarısız teslimler giderek uzayan aralıklarla yeniden denenir; bunları kendiniz de yeniden deneyebilirsiniz.",
+        "p3": "Önceki yanıtlar daha sonra, herhangi bir tarih aralığı için gönderilebilir."
+      }
+    }
   }
 }

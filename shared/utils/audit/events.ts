@@ -98,6 +98,15 @@ export const AUDIT_EVENTS = {
   'data.connection_disabled': { area: 'data', icon: 'i-lucide-circle-pause' },
   'data.connection_deleted': { area: 'data', icon: 'i-lucide-trash-2' },
   'data.credentials_changed': { area: 'data', icon: 'i-lucide-key-round' },
+  'data.destination_created': { area: 'data', icon: 'i-lucide-send' },
+  'data.destination_updated': { area: 'data', icon: 'i-lucide-send' },
+  'data.destination_paused': { area: 'data', icon: 'i-lucide-circle-pause' },
+  'data.destination_resumed': { area: 'data', icon: 'i-lucide-circle-play' },
+  'data.destination_removed': { area: 'data', icon: 'i-lucide-undo-2' },
+  'data.table_created': { area: 'data', icon: 'i-lucide-table-properties' },
+  'data.column_added': { area: 'data', icon: 'i-lucide-columns-3' },
+  'data.backfill_started': { area: 'data', icon: 'i-lucide-history' },
+  'data.deliveries_retried': { area: 'data', icon: 'i-lucide-rotate-cw' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>

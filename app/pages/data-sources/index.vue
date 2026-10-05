@@ -14,7 +14,7 @@ const sections = [
   { key: 'explorer', nav: 'dataExplorer', icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
   { key: 'query', nav: 'dataQuery', icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
   { key: 'savedQueries', nav: 'dataSavedQueries', icon: 'i-lucide-bookmark', to: '/data-sources/saved-queries' },
-  { key: 'destinations', nav: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations' },
+  { key: 'destinations', nav: 'destinations', icon: 'i-lucide-send', to: '/data-sources/destinations', live: true },
   { key: 'transfers', nav: 'dataTransfers', icon: 'i-lucide-arrow-left-right', to: '/data-sources/transfers' },
   { key: 'activity', nav: 'dataActivity', icon: 'i-lucide-activity', to: '/data-sources/activity' },
 ]

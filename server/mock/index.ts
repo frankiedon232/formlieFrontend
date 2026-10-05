@@ -10,6 +10,7 @@ import * as responses from './routes/responses'
 import * as responseExports from './routes/responseExports'
 import * as folders from './routes/folders'
 import * as dataSources from './routes/dataSources'
+import * as destinations from './routes/destinations'
 import * as responseFiles from './routes/responseFiles'
 import * as publicForms from './routes/publicForms'
 import * as templates from './routes/templates'
@@ -117,6 +118,18 @@ const router = createRouter()
   .patch('/datasources/:id', dataSources.patchDataSource)
   .post('/datasources/:id/test', dataSources.testSavedConnection)
   .post('/datasources/:id/duplicate', dataSources.duplicateDataSource)
+  .get('/datasources/:id/tables', destinations.listTables)
+  .get('/forms/:id/storage', destinations.formStorage)
+  .get('/destinations', destinations.listDestinations)
+  .get('/destinations/insights', destinations.destinationInsights)
+  .post('/destinations', destinations.createDestination)
+  .get('/destinations/:id', destinations.getDestination)
+  .patch('/destinations/:id', destinations.patchDestination)
+  .delete('/destinations/:id', destinations.removeDestination)
+  .post('/destinations/:id/columns', destinations.addColumns)
+  .get('/destinations/:id/deliveries', destinations.listDeliveries)
+  .post('/destinations/:id/retry', destinations.retryDeliveries)
+  .post('/destinations/:id/backfill', destinations.startBackfill)
   .delete('/datasources/:id', dataSources.deleteDataSource)
   .get('/field-library', library.listSavedFields)
   .post('/field-library', library.saveField)

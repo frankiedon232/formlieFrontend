@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Deze verbinding is uitgeschakeld. Schakel hem eerst in.",
     "FRM-DEST-1010": "Er zijn nog formulieren die hun reacties naar deze verbinding sturen.",
     "FRM-DEST-1011": "De database deed er te lang over om te antwoorden.",
-    "FRM-DEST-1012": "Dit account kan de reactietabellen niet maken of gebruiken."
+    "FRM-DEST-1012": "Dit account kan de reactietabellen niet maken of gebruiken.",
+    "FRM-DEST-1013": "Voor het opslaan van reacties in een tabel van u is Volledige toegang op deze verbinding nodig.",
+    "FRM-DEST-1014": "Er bestaat al een tabel met deze naam.",
+    "FRM-DEST-1015": "Dit formulier slaat zijn reacties al op in een database.",
+    "FRM-DEST-1016": "Het formulier en de tabel komen nog niet overeen.",
+    "FRM-DEST-1017": "Eerdere reacties worden al verzonden. Wacht tot dat klaar is."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Verbinding ingeschakeld",
       "data_connection_disabled": "Verbinding uitgeschakeld",
       "data_connection_deleted": "Verbinding verwijderd",
-      "data_credentials_changed": "Inloggegevens van verbinding gewijzigd"
+      "data_credentials_changed": "Inloggegevens van verbinding gewijzigd",
+      "data_destination_created": "Opslag van reacties ingesteld",
+      "data_destination_updated": "Opslag van reacties gewijzigd",
+      "data_destination_paused": "Levering van reacties gepauzeerd",
+      "data_destination_resumed": "Levering van reacties hervat",
+      "data_destination_removed": "Reacties terug naar de opslag van Formalie",
+      "data_table_created": "Reactietabel gemaakt",
+      "data_column_added": "Kolommen toegevoegd aan een reactietabel",
+      "data_backfill_started": "Eerdere reacties naar een database verzonden",
+      "data_deliveries_retried": "Mislukte leveringen opnieuw geprobeerd"
     },
     "detail": {
       "who": "Wie",
@@ -4283,5 +4297,276 @@
     "unpin": "Losmaken uit de zijbalk",
     "pinFull": "U kunt maximaal 5 mappen vastzetten",
     "hex": "Hexkleur"
+  },
+  "destinations": {
+    "crumb": "Opslag van reacties",
+    "setupTitle": "Reacties opslaan in uw database",
+    "editTitle": "Opslag van reacties wijzigen",
+    "add": "Reacties van een formulier opslaan",
+    "search": "Zoek formulieren, verbindingen of tabellen…",
+    "emptyTitle": "Nog geen formulier slaat zijn reacties op in een database",
+    "emptyDesc": "Open een formulier en kies “Opslaan in uw database” in het overzicht. Formalie maakt de tabel en stuurt elke reactie daarheen.",
+    "adminsOnly": "Alleen beheerders van de werkruimte kunnen wijzigen waar reacties worden opgeslagen",
+    "adminsOnlyDesc": "Vraag het aan een eigenaar of beheerder van deze werkruimte.",
+    "noFields": "Dit formulier heeft nog geen vragen",
+    "noFieldsDesc": "Voeg eerst vragen toe aan het formulier; elke vraag krijgt een kolom.",
+    "delivering": "Wordt geleverd",
+    "paused": "Gepauzeerd",
+    "status": {
+      "active": "Wordt geleverd",
+      "paused": "Gepauzeerd",
+      "failing": "Mislukt"
+    },
+    "delivery": {
+      "all": "Alle",
+      "sent": "Verzonden",
+      "pending": "In afwachting",
+      "failed": "Mislukt",
+      "held": "Vastgehouden",
+      "not_sent": "Niet verzonden"
+    },
+    "table": {
+      "created": "Gemaakt door Formalie",
+      "yours": "Uw tabel"
+    },
+    "col": {
+      "form": "Formulier",
+      "connection": "Verbinding",
+      "table": "Tabel"
+    },
+    "sort": {
+      "busiest": "Meest geleverd",
+      "failed": "Meest mislukt",
+      "recent": "Recent geleverd"
+    },
+    "kpi": {
+      "delivered": "Geleverde reacties",
+      "byStatus": "Formulieren per leveringsstatus",
+      "failingCount": "{n} mislukt",
+      "forms": "Formulieren",
+      "sent30": "Verzonden (30 dagen)",
+      "pending": "In afwachting",
+      "failed": "Mislukt",
+      "held": "Vastgehouden",
+      "last": "Laatste levering",
+      "notSent": "Niet verzonden (eerder)",
+      "since": "Hier opgeslagen sinds",
+      "deliveredShare": "Geleverd (30 dagen)"
+    },
+    "card": {
+      "title": "Waar reacties worden opgeslagen",
+      "formalie": "Versleutelde opslag van Formalie",
+      "formalieDesc": "Reacties blijven in Formalie. Sla ze op in uw eigen database om ze ook in uw systemen te gebruiken.",
+      "store": "Opslaan in uw database",
+      "addConnection": "Koppel eerst een database",
+      "last": "Laatst geleverd {when}",
+      "none": "Nog niets geleverd",
+      "newFields": "{n} nieuwe vraag heeft nog geen kolom | {n} nieuwe vragen hebben nog geen kolom",
+      "open": "Leveringen",
+      "change": "Wijzigen"
+    },
+    "actions": {
+      "backfill": "Eerdere reacties verzenden",
+      "retryAll": "{n} mislukte opnieuw proberen | {n} mislukte opnieuw proberen",
+      "pause": "Leveren pauzeren",
+      "resume": "Leveren hervatten",
+      "openForm": "Formulier openen",
+      "openConnection": "Verbinding openen",
+      "change": "Kolommen en opties wijzigen",
+      "remove": "Weer opslaan in Formalie"
+    },
+    "remove": {
+      "title": "Reacties van “{form}” weer opslaan in Formalie?",
+      "desc": "Nieuwe reacties blijven in de opslag van Formalie. De tabel en de rijen die al in uw database staan, blijven onaangeroerd.",
+      "confirm": "Opslaan in Formalie"
+    },
+    "toast": {
+      "created": "Reacties gaan nu naar {table}",
+      "saved": "Opslag van reacties opgeslagen",
+      "paused": "Leveren gepauzeerd. Nieuwe reacties wachten tot u hervat",
+      "resumed": "Leveren hervat. Wachtende reacties zijn onderweg",
+      "retried": "{n} levering wordt opnieuw geprobeerd | {n} leveringen worden opnieuw geprobeerd",
+      "columnsAdded": "{n} kolom toegevoegd | {n} kolommen toegevoegd",
+      "removed": "Reacties worden weer in Formalie opgeslagen"
+    },
+    "detail": {
+      "all": "Alles",
+      "deliveries": "Leveringen",
+      "columns": "Kolommen",
+      "fields": "Nieuwe vragen",
+      "fieldsTitle": "{n} vraag die aan het formulier is toegevoegd, heeft geen kolom | {n} vragen die aan het formulier zijn toegevoegd, hebben geen kolom",
+      "fieldsDesc": "Hun antwoorden worden pas in de tabel opgeslagen als u de kolommen toevoegt. Verder verandert er niets.",
+      "addColumns": "{n} kolom toevoegen | {n} kolommen toevoegen",
+      "navigate": "Tussen formulieren bladeren",
+      "previous": "Vorig formulier",
+      "next": "Volgend formulier"
+    },
+    "deliveries": {
+      "filter": "Tonen",
+      "empty": "Geen reacties hier.",
+      "attempts": "{n} poging | {n} pogingen",
+      "nextRetry": "volgende poging {when}",
+      "retryOne": "Reactie #{n} opnieuw proberen",
+      "more": "Meer tonen ({shown} van {total})"
+    },
+    "backfill": {
+      "title": "Eerdere reacties verzenden",
+      "desc": "Reacties van voordat dit formulier hier opsloeg, worden op de achtergrond verzonden, net als nieuwe.",
+      "notSent": "{n} reactie van vóór {date} is niet verzonden. | {n} reacties van vóór {date} zijn niet verzonden.",
+      "from": "Van",
+      "to": "Tot",
+      "order": "Kies een datum na de begindatum.",
+      "note": "Wat al in de tabel staat, wordt niet twee keer verzonden. U kunt doorwerken terwijl het loopt.",
+      "start": "Verzenden",
+      "started": "Eerdere reacties worden verzonden",
+      "running": "Eerdere reacties worden verzonden: {done} van {total}",
+      "done": "{n} eerdere reactie verzonden | {n} eerdere reacties verzonden"
+    },
+    "meta": {
+      "response_id": "Reactie-id",
+      "submitted_at": "Ingediend op",
+      "form_version": "Formulierversie",
+      "language": "Taal",
+      "response_number": "Reactienummer",
+      "respondent_email": "E-mail van de invuller",
+      "review_status": "Beoordelingsstatus"
+    },
+    "issue": {
+      "no_key": "Kies een kolom voor de reactie-id, zodat Formalie elke rij terugvindt.",
+      "required_unmapped": "{column} moet gevuld zijn: kies wat erin komt.",
+      "type_mismatch": "{column} accepteert “{field}” mogelijk niet zoals het is. Controleer het type van de kolom.",
+      "duplicate_source": "{column} herhaalt iets wat een andere kolom al opslaat.",
+      "upsert_key": "De sleutelkolom {column} moet gevuld zijn om rijen bij te werken."
+    },
+    "columns": {
+      "problems": "Los deze eerst op",
+      "warnings": "Het bekijken waard",
+      "addKey": "Kolom voor reactie-id toevoegen",
+      "column": "Kolom",
+      "answer": "Antwoord of gegeven",
+      "fills": "Gevuld met",
+      "type": "Type",
+      "nothing": "Niets",
+      "required": "Moet gevuld zijn",
+      "new": "Nieuw",
+      "fillsFor": "Waarmee {column} wordt gevuld",
+      "columnFor": "Kolom voor {item}",
+      "chooseAnswers": "Kies welke antwoorden u opslaat"
+    },
+    "options": {
+      "writeLegend": "Rijen schrijven",
+      "write": {
+        "insert": "Een nieuwe rij per reactie",
+        "upsert": "De rij met dezelfde sleutel bijwerken"
+      },
+      "writeDesc": {
+        "insert": "Elke reactie voegt een rij toe. Bewerkingen en beoordelingswijzigingen werken die rij bij.",
+        "upsert": "Een reactie waarvan de sleutel al in de tabel staat, werkt in plaats daarvan die rij bij."
+      },
+      "keyColumn": "Sleutelkolom",
+      "keyColumnDesc": "Rijen met dezelfde waarde hier zijn hetzelfde record.",
+      "multiLegend": "Antwoorden met meerdere waarden",
+      "multi": {
+        "json": "Als JSON",
+        "text": "Als leesbare tekst"
+      },
+      "multiDesc": {
+        "json": "Keuzes, rangschikkingen, namen, adressen en bestandslinks bewaard als gestructureerde gegevens.",
+        "text": "Samengevoegd tot één regel, bijvoorbeeld “SQL; Vue”."
+      },
+      "choicesLegend": "Keuzes",
+      "choices": {
+        "value": "Op waarde",
+        "label": "Op label"
+      },
+      "choicesDesc": {
+        "value": "Vaste codes die niet veranderen als een label anders wordt verwoord.",
+        "label": "De woorden die mensen zagen, makkelijk te lezen in rapporten."
+      },
+      "extraLegend": "Ook opslaan",
+      "extraDesc": "De reactie-id, het moment van indienen, de formulierversie en de taal worden altijd opgeslagen."
+    },
+    "setup": {
+      "step": {
+        "connection": "Verbinding",
+        "table": "Tabel",
+        "columns": "Kolommen",
+        "options": "Opties",
+        "review": "Controleren"
+      },
+      "title": {
+        "connection": "Welke database?",
+        "table": "Welke tabel?",
+        "columns": "Welke kolom voor elk antwoord?",
+        "options": "Hoe worden reacties geschreven?",
+        "review": "Controleren en starten"
+      },
+      "desc": {
+        "connection": "Reacties op “{form}” worden op deze verbinding opgeslagen.",
+        "table": "Een nieuwe tabel gemaakt op basis van het formulier, of een tabel die u al hebt.",
+        "columns": "Elk antwoord en enkele gegevens over de reactie krijgen een kolom.",
+        "options": "Er zijn verstandige standaarden gekozen; wijzig ze als uw systemen dat vragen.",
+        "review": "Dit is precies wat Formalie in uw database doet."
+      },
+      "noConnections": "Nog geen verbinding",
+      "noConnectionsDesc": "Koppel eerst een van uw databases en kom dan terug om de reacties van dit formulier daar op te slaan.",
+      "connectionWarn": "Deze verbinding werkt op dit moment niet",
+      "connectionWarnDesc": "U kunt het toch instellen. Reacties wachten en worden opnieuw geprobeerd tot de verbinding weer werkt.",
+      "create": "Een tabel maken op basis van het formulier",
+      "createDesc": "Formalie maakt de tabel met een kolom voor elk antwoord en houdt die bij als het formulier verandert.",
+      "existing": "Een tabel van u gebruiken",
+      "existingDesc": "Kies een tabel die u al hebt en bepaal in welke kolom elk antwoord komt.",
+      "existingNeedsFull": "Vereist Volledige toegang op deze verbinding (Andere databasebewerkingen).",
+      "tableName": "Tabelnaam",
+      "tableNameDesc": "Begint met {prefix}. Letters, cijfers en underscores.",
+      "suggest": "Voorgestelde naam gebruiken",
+      "schemaFromConnection": "Ingesteld op de verbinding, onder Toegang.",
+      "mustStartWith": "Begin de naam met {prefix}.",
+      "nameChars": "Gebruik letters, cijfers en underscores, en begin met een letter.",
+      "pickTable": "Kies een tabel",
+      "pickTableDesc": "Tabellen die Formalie op deze verbinding mag zien.",
+      "searchTables": "Tabellen zoeken…",
+      "tableFacts": "{columns} kolommen · ongeveer {rows} rijen",
+      "columnsCount": "{filled} van {total} gevuld",
+      "sqlTitle": "Wat Formalie uitvoert",
+      "sqlNone": "Niets te wijzigen in de tabel",
+      "sqlNote": "Formalie voert dit uit in uw database wanneer u opslaat en begint daarna nieuwe reacties te verzenden.",
+      "sqlNoneNote": "De tabel heeft al elke benodigde kolom. Nieuwe reacties worden verzonden zodra u opslaat.",
+      "createAndStart": "Tabel maken en starten",
+      "start": "Hier beginnen met opslaan",
+      "leaveDesc": "De opslag van reacties die u hebt ingesteld, gaat verloren."
+    },
+    "help": {
+      "connection": {
+        "title": "Een database kiezen",
+        "p1": "Elke verbinding van deze werkruimte kan de reacties van een formulier bewaren.",
+        "p2": "Formalie bewaart elke reactie in zijn versleutelde wachtrij tot de database die bevestigt.",
+        "p3": "U kunt reacties op dezelfde manier bekijken en tonen, waar ze ook zijn opgeslagen."
+      },
+      "table": {
+        "title": "Nieuwe of bestaande tabel",
+        "p1": "Een nieuwe tabel krijgt het voorvoegsel van de verbinding, zodat die makkelijk te herkennen is.",
+        "p2": "Een tabel van u vereist Volledige toegang, omdat Formalie erin schrijft en er kolommen aan kan toevoegen.",
+        "p3": "Formalie verwijdert nooit een tabel of kolom."
+      },
+      "columns": {
+        "title": "Kolommen",
+        "p1": "Kolomnamen komen van de sleutels van de vragen en kunnen worden gewijzigd.",
+        "p2": "Met de reactie-id vindt Formalie een rij terug, voor bewerkingen en beoordelingswijzigingen.",
+        "p3": "Vragen die later aan het formulier worden toegevoegd, krijgen met één klik een kolom."
+      },
+      "options": {
+        "title": "Opties",
+        "p1": "Een nieuwe rij per reactie past bij de meeste toepassingen.",
+        "p2": "Bijwerken of invoegen houdt één rij per sleutel, bijvoorbeeld één per sollicitant.",
+        "p3": "JSON behoudt de structuur; tekst is makkelijker te lezen in rapporten."
+      },
+      "review": {
+        "title": "Wat er nu gebeurt",
+        "p1": "Nieuwe reacties worden binnen enkele seconden op de achtergrond verzonden.",
+        "p2": "Mislukte leveringen worden opnieuw geprobeerd met steeds langere pauzes; u kunt ze ook zelf opnieuw proberen.",
+        "p3": "Eerdere reacties kunt u achteraf verzenden, voor elke periode."
+      }
+    }
   }
 }

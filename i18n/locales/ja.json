@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "この接続は無効になっています。先に有効にしてください。",
     "FRM-DEST-1010": "この接続に回答を送信しているフォームがまだあります。",
     "FRM-DEST-1011": "データベースの応答に時間がかかりすぎました。",
-    "FRM-DEST-1012": "このアカウントでは回答用テーブルを作成または使用できません。"
+    "FRM-DEST-1012": "このアカウントでは回答用テーブルを作成または使用できません。",
+    "FRM-DEST-1013": "お使いのテーブルに回答を保存するには、この接続でフルアクセスが必要です。",
+    "FRM-DEST-1014": "この名前のテーブルは既に存在します。",
+    "FRM-DEST-1015": "このフォームは既に回答をデータベースに保存しています。",
+    "FRM-DEST-1016": "フォームとテーブルがまだ一致していません。",
+    "FRM-DEST-1017": "以前の回答を既に送信中です。完了するまでお待ちください。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "接続を有効にしました",
       "data_connection_disabled": "接続を無効にしました",
       "data_connection_deleted": "接続を削除しました",
-      "data_credentials_changed": "接続の認証情報を変更しました"
+      "data_credentials_changed": "接続の認証情報を変更しました",
+      "data_destination_created": "回答の保存先を設定",
+      "data_destination_updated": "回答の保存先を変更",
+      "data_destination_paused": "回答の配信を一時停止",
+      "data_destination_resumed": "回答の配信を再開",
+      "data_destination_removed": "回答の保存先を Formalie のストレージに戻しました",
+      "data_table_created": "回答テーブルを作成",
+      "data_column_added": "回答テーブルに列を追加",
+      "data_backfill_started": "以前の回答をデータベースに送信",
+      "data_deliveries_retried": "失敗した配信を再試行"
     },
     "detail": {
       "who": "誰が",
@@ -4283,5 +4297,276 @@
     "unpin": "サイドバーのピン留めを外す",
     "pinFull": "ピン留めできるのは 5 つまでです",
     "hex": "16 進カラー"
+  },
+  "destinations": {
+    "crumb": "回答の保存先",
+    "setupTitle": "回答をお使いのデータベースに保存",
+    "editTitle": "回答の保存先を変更",
+    "add": "フォームの回答を保存",
+    "search": "フォーム、接続、テーブルを検索…",
+    "emptyTitle": "回答をデータベースに保存しているフォームはまだありません",
+    "emptyDesc": "フォームを開き、概要で「データベースに保存」を選んでください。Formalie がテーブルを作成し、すべての回答をそこに送信します。",
+    "adminsOnly": "回答の保存先を変更できるのはワークスペースの管理者のみです",
+    "adminsOnlyDesc": "このワークスペースのオーナーまたは管理者に依頼してください。",
+    "noFields": "このフォームにはまだ質問がありません",
+    "noFieldsDesc": "まずフォームに質問を追加してください。質問ごとに列が作られます。",
+    "delivering": "配信中",
+    "paused": "一時停止中",
+    "status": {
+      "active": "配信中",
+      "paused": "一時停止中",
+      "failing": "失敗あり"
+    },
+    "delivery": {
+      "all": "すべて",
+      "sent": "送信済み",
+      "pending": "保留中",
+      "failed": "失敗",
+      "held": "待機中",
+      "not_sent": "未送信"
+    },
+    "table": {
+      "created": "Formalie が作成",
+      "yours": "お使いのテーブル"
+    },
+    "col": {
+      "form": "フォーム",
+      "connection": "接続",
+      "table": "テーブル"
+    },
+    "sort": {
+      "busiest": "配信が多い順",
+      "failed": "失敗が多い順",
+      "recent": "最近配信した順"
+    },
+    "kpi": {
+      "delivered": "配信した回答",
+      "byStatus": "配信ステータス別のフォーム",
+      "failingCount": "{n} 件失敗",
+      "forms": "フォーム",
+      "sent30": "送信済み (30日間)",
+      "pending": "保留中",
+      "failed": "失敗",
+      "held": "待機中",
+      "last": "最新の配信",
+      "notSent": "未送信 (以前の回答)",
+      "since": "ここに保存開始",
+      "deliveredShare": "配信済み (30日間)"
+    },
+    "card": {
+      "title": "回答の保存先",
+      "formalie": "Formalie の暗号化ストレージ",
+      "formalieDesc": "回答は Formalie に保存されます。お使いのデータベースにも保存すると、自社のシステムで利用できます。",
+      "store": "データベースに保存",
+      "addConnection": "まずデータベースを接続",
+      "last": "最新の配信 {when}",
+      "none": "まだ配信はありません",
+      "newFields": "新しい質問 {n} 件にまだ列がありません | 新しい質問 {n} 件にまだ列がありません",
+      "open": "配信",
+      "change": "変更"
+    },
+    "actions": {
+      "backfill": "以前の回答を送信",
+      "retryAll": "失敗した {n} 件を再試行 | 失敗した {n} 件を再試行",
+      "pause": "配信を一時停止",
+      "resume": "配信を再開",
+      "openForm": "フォームを開く",
+      "openConnection": "接続を開く",
+      "change": "列とオプションを変更",
+      "remove": "Formalie に保存し直す"
+    },
+    "remove": {
+      "title": "「{form}」の回答を Formalie に保存し直しますか？",
+      "desc": "新しい回答は Formalie のストレージに保存されます。お使いのデータベースにあるテーブルと既存の行には触れません。",
+      "confirm": "Formalie に保存"
+    },
+    "toast": {
+      "created": "回答の送信先が {table} になりました",
+      "saved": "回答の保存先を保存しました",
+      "paused": "配信を一時停止しました。新しい回答は再開まで待機します",
+      "resumed": "配信を再開しました。待機中の回答を送信しています",
+      "retried": "{n} 件の配信を再試行しています | {n} 件の配信を再試行しています",
+      "columnsAdded": "{n} 列を追加しました | {n} 列を追加しました",
+      "removed": "回答は再び Formalie に保存されます"
+    },
+    "detail": {
+      "all": "すべて",
+      "deliveries": "配信",
+      "columns": "列",
+      "fields": "新しい質問",
+      "fieldsTitle": "フォームに追加された質問 {n} 件に列がありません | フォームに追加された質問 {n} 件に列がありません",
+      "fieldsDesc": "列を追加するまで、これらの回答はテーブルに保存されません。その他は変わりません。",
+      "addColumns": "{n} 列を追加 | {n} 列を追加",
+      "navigate": "フォーム間を移動",
+      "previous": "前のフォーム",
+      "next": "次のフォーム"
+    },
+    "deliveries": {
+      "filter": "表示",
+      "empty": "ここには回答がありません。",
+      "attempts": "{n} 回試行 | {n} 回試行",
+      "nextRetry": "次の試行 {when}",
+      "retryOne": "回答 #{n} を再試行",
+      "more": "さらに表示 ({total} 件中 {shown} 件)"
+    },
+    "backfill": {
+      "title": "以前の回答を送信",
+      "desc": "このフォームがここに保存を始める前の回答を、新しい回答と同じようにバックグラウンドで送信します。",
+      "notSent": "{date} より前の回答 {n} 件が送信されていません。 | {date} より前の回答 {n} 件が送信されていません。",
+      "from": "開始",
+      "to": "終了",
+      "order": "開始日より後の日付を選んでください。",
+      "note": "テーブルに既にあるものが二重に送信されることはありません。実行中も作業を続けられます。",
+      "start": "送信する",
+      "started": "以前の回答を送信しています",
+      "running": "以前の回答を送信中: {total} 件中 {done} 件",
+      "done": "以前の回答 {n} 件を送信しました | 以前の回答 {n} 件を送信しました"
+    },
+    "meta": {
+      "response_id": "回答 ID",
+      "submitted_at": "送信日時",
+      "form_version": "フォームのバージョン",
+      "language": "言語",
+      "response_number": "回答番号",
+      "respondent_email": "回答者のメール",
+      "review_status": "確認ステータス"
+    },
+    "issue": {
+      "no_key": "回答 ID 用の列を選んでください。Formalie が各行を再び見つけられるようになります。",
+      "required_unmapped": "{column} は入力必須です。入れる内容を選んでください。",
+      "type_mismatch": "{column} は「{field}」をそのまま受け付けない可能性があります。列の型を確認してください。",
+      "duplicate_source": "{column} は別の列に既に保存されている内容を繰り返しています。",
+      "upsert_key": "行を更新するには、キー列 {column} の入力が必要です。"
+    },
+    "columns": {
+      "problems": "まずこれらを修正してください",
+      "warnings": "確認をおすすめします",
+      "addKey": "回答 ID の列を追加",
+      "column": "列",
+      "answer": "回答または情報",
+      "fills": "入力内容",
+      "type": "型",
+      "nothing": "なし",
+      "required": "入力必須",
+      "new": "新規",
+      "fillsFor": "{column} に入れる内容",
+      "columnFor": "{item} の列",
+      "chooseAnswers": "保存する回答を選択"
+    },
+    "options": {
+      "writeLegend": "行の書き込み",
+      "write": {
+        "insert": "回答ごとに新しい行",
+        "upsert": "同じキーの行を更新"
+      },
+      "writeDesc": {
+        "insert": "回答ごとに行を追加します。編集や確認ステータスの変更はその行を更新します。",
+        "upsert": "キーが既にテーブルにある回答は、代わりにその行を更新します。"
+      },
+      "keyColumn": "キー列",
+      "keyColumnDesc": "ここの値が同じ行は同じレコードとして扱われます。",
+      "multiLegend": "複数の値を持つ回答",
+      "multi": {
+        "json": "JSON として",
+        "text": "読みやすいテキストとして"
+      },
+      "multiDesc": {
+        "json": "選択肢、順位、氏名、住所、ファイルリンクを構造化データとして保持します。",
+        "text": "1 行にまとめます。例: 「SQL; Vue」"
+      },
+      "choicesLegend": "選択肢",
+      "choices": {
+        "value": "値で保存",
+        "label": "ラベルで保存"
+      },
+      "choicesDesc": {
+        "value": "ラベルの表現を変えても変わらない、安定したコードです。",
+        "label": "回答者が見た言葉で、レポートで読みやすくなります。"
+      },
+      "extraLegend": "追加で保存",
+      "extraDesc": "回答 ID、送信日時、フォームのバージョン、言語は常に保存されます。"
+    },
+    "setup": {
+      "step": {
+        "connection": "接続",
+        "table": "テーブル",
+        "columns": "列",
+        "options": "オプション",
+        "review": "確認"
+      },
+      "title": {
+        "connection": "どのデータベースに保存しますか？",
+        "table": "どのテーブルに保存しますか？",
+        "columns": "各回答をどの列に入れますか？",
+        "options": "回答をどのように書き込みますか？",
+        "review": "確認して開始"
+      },
+      "desc": {
+        "connection": "「{form}」の回答はこの接続に保存されます。",
+        "table": "フォームから作成する新しいテーブル、または既にお持ちのテーブル。",
+        "columns": "各回答と、回答に関するいくつかの情報にそれぞれ列が作られます。",
+        "options": "適切な既定値が選ばれています。お使いのシステムで必要な場合は変更してください。",
+        "review": "Formalie がお使いのデータベースで行う操作は以下のとおりです。"
+      },
+      "noConnections": "接続はまだありません",
+      "noConnectionsDesc": "まずお使いのデータベースを接続してから、ここに戻ってこのフォームの回答を保存してください。",
+      "connectionWarn": "この接続は現在動作していません",
+      "connectionWarnDesc": "このまま設定できます。接続が回復するまで、回答は待機して再試行されます。",
+      "create": "フォームからテーブルを作成",
+      "createDesc": "Formalie が回答ごとの列を持つテーブルを作成し、フォームの変更に合わせて最新の状態に保ちます。",
+      "existing": "お使いのテーブルを使用",
+      "existingDesc": "既にお持ちのテーブルを選び、各回答を入れる列を選択します。",
+      "existingNeedsFull": "この接続でフルアクセスが必要です (その他のデータベース操作)。",
+      "tableName": "テーブル名",
+      "tableNameDesc": "{prefix} で始まります。英字、数字、アンダースコアが使えます。",
+      "suggest": "提案された名前を使用",
+      "schemaFromConnection": "接続の「アクセス」で設定します。",
+      "mustStartWith": "名前は {prefix} で始めてください。",
+      "nameChars": "英字、数字、アンダースコアを使い、英字で始めてください。",
+      "pickTable": "テーブルを選択",
+      "pickTableDesc": "この接続で Formalie が参照できるテーブルです。",
+      "searchTables": "テーブルを検索…",
+      "tableFacts": "{columns} 列 · 約 {rows} 行",
+      "columnsCount": "{total} 件中 {filled} 件入力済み",
+      "sqlTitle": "Formalie が実行する内容",
+      "sqlNone": "テーブルに変更はありません",
+      "sqlNote": "保存すると Formalie がお使いのデータベースでこれを実行し、新しい回答の送信を開始します。",
+      "sqlNoneNote": "テーブルには必要な列がすべてあります。保存するとすぐに新しい回答が送信されます。",
+      "createAndStart": "テーブルを作成して開始",
+      "start": "ここへの保存を開始",
+      "leaveDesc": "設定した回答の保存先は失われます。"
+    },
+    "help": {
+      "connection": {
+        "title": "データベースの選択",
+        "p1": "このワークスペースのどの接続でも、フォームの回答を保存できます。",
+        "p2": "Formalie はデータベースが受信を確認するまで、各回答を暗号化されたキューに保持します。",
+        "p3": "保存先に関係なく、回答は同じように表示できます。"
+      },
+      "table": {
+        "title": "新しいテーブルか既存のテーブルか",
+        "p1": "新しいテーブルには接続のプレフィックスが付くため、見分けやすくなります。",
+        "p2": "お使いのテーブルには、Formalie が書き込みや列の追加を行うため、フルアクセスが必要です。",
+        "p3": "Formalie がテーブルや列を削除することはありません。"
+      },
+      "columns": {
+        "title": "列",
+        "p1": "列名は質問のキーから付けられ、変更できます。",
+        "p2": "回答 ID により、Formalie は編集や確認ステータスの変更時に行を再び見つけられます。",
+        "p3": "後からフォームに追加した質問も、ワンクリックで列を追加できます。"
+      },
+      "options": {
+        "title": "オプション",
+        "p1": "ほとんどの用途では、回答ごとに新しい行で十分です。",
+        "p2": "更新または挿入では、キーごとに 1 行を保ちます。例: 応募者ごとに 1 行。",
+        "p3": "JSON は構造を保持し、テキストはレポートで読みやすくなります。"
+      },
+      "review": {
+        "title": "この後の流れ",
+        "p1": "新しい回答は数秒以内にバックグラウンドで送信されます。",
+        "p2": "失敗した配信は間隔を広げながら再試行されます。手動で再試行することもできます。",
+        "p3": "以前の回答は、後から任意の期間を指定して送信できます。"
+      }
+    }
   }
 }

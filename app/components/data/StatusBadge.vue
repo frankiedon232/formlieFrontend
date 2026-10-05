@@ -27,6 +27,13 @@ const COLORS: Record<string, BadgeProps['color']> = {
   failing: 'error',
   disabled: 'neutral',
   untested: 'secondary',
+  // Response storage (F12 M2): a destination and its deliveries.
+  active: 'success',
+  paused: 'neutral',
+  sent: 'success',
+  pending: 'warning',
+  held: 'neutral',
+  not_sent: 'neutral',
 }
 
 // Deeper text than Nuxt UI's subtle default (500 shade), so status reads crisply (owner, 2026-10-03; docs/design).

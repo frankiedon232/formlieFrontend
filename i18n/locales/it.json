@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Questa connessione è disattivata. Attivatela prima.",
     "FRM-DEST-1010": "Alcuni moduli inviano ancora le risposte a questa connessione.",
     "FRM-DEST-1011": "Il database ha impiegato troppo tempo a rispondere.",
-    "FRM-DEST-1012": "Questo account non può creare né usare le tabelle delle risposte."
+    "FRM-DEST-1012": "Questo account non può creare né usare le tabelle delle risposte.",
+    "FRM-DEST-1013": "Per archiviare le risposte in una vostra tabella serve l’Accesso completo su questa connessione.",
+    "FRM-DEST-1014": "Esiste già una tabella con questo nome.",
+    "FRM-DEST-1015": "Questo modulo archivia già le sue risposte in un database.",
+    "FRM-DEST-1016": "Il modulo e la tabella non corrispondono ancora.",
+    "FRM-DEST-1017": "Le risposte precedenti sono già in fase di invio. Attendete che finisca."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Connessione attivata",
       "data_connection_disabled": "Connessione disattivata",
       "data_connection_deleted": "Connessione eliminata",
-      "data_credentials_changed": "Credenziali della connessione modificate"
+      "data_credentials_changed": "Credenziali della connessione modificate",
+      "data_destination_created": "Archiviazione delle risposte configurata",
+      "data_destination_updated": "Archiviazione delle risposte modificata",
+      "data_destination_paused": "Consegna delle risposte in pausa",
+      "data_destination_resumed": "Consegna delle risposte ripresa",
+      "data_destination_removed": "Risposte riportate nell’archivio di Formalie",
+      "data_table_created": "Tabella delle risposte creata",
+      "data_column_added": "Colonne aggiunte a una tabella delle risposte",
+      "data_backfill_started": "Risposte precedenti inviate a un database",
+      "data_deliveries_retried": "Consegne non riuscite ritentate"
     },
     "detail": {
       "who": "Chi",
@@ -4283,5 +4297,276 @@
     "unpin": "Rimuovi dalla barra laterale",
     "pinFull": "Si possono fissare fino a 5 cartelle",
     "hex": "Colore hex"
+  },
+  "destinations": {
+    "crumb": "Archiviazione risposte",
+    "setupTitle": "Archiviate le risposte nel vostro database",
+    "editTitle": "Modifica archiviazione risposte",
+    "add": "Archivia le risposte di un modulo",
+    "search": "Cerca moduli, connessioni o tabelle…",
+    "emptyTitle": "Nessun modulo archivia ancora le risposte in un database",
+    "emptyDesc": "Aprite un modulo e scegliete «Archivia nel vostro database» nella sua panoramica. Formalie crea la tabella e vi invia ogni risposta.",
+    "adminsOnly": "Solo gli amministratori dello spazio di lavoro possono cambiare dove sono archiviate le risposte",
+    "adminsOnlyDesc": "Chiedete a un proprietario o a un amministratore di questo spazio di lavoro.",
+    "noFields": "Questo modulo non ha ancora domande",
+    "noFieldsDesc": "Aggiungete prima le domande al modulo; ognuna riceve una colonna.",
+    "delivering": "In consegna",
+    "paused": "In pausa",
+    "status": {
+      "active": "In consegna",
+      "paused": "In pausa",
+      "failing": "Con errori"
+    },
+    "delivery": {
+      "all": "Tutte",
+      "sent": "Inviate",
+      "pending": "In attesa",
+      "failed": "Non riuscite",
+      "held": "Trattenute",
+      "not_sent": "Non inviate"
+    },
+    "table": {
+      "created": "Creata da Formalie",
+      "yours": "Vostra tabella"
+    },
+    "col": {
+      "form": "Modulo",
+      "connection": "Connessione",
+      "table": "Tabella"
+    },
+    "sort": {
+      "busiest": "Più consegne",
+      "failed": "Più errori",
+      "recent": "Consegnate di recente"
+    },
+    "kpi": {
+      "delivered": "Risposte consegnate",
+      "byStatus": "Moduli per stato di consegna",
+      "failingCount": "{n} con errori",
+      "forms": "Moduli",
+      "sent30": "Inviate (30 giorni)",
+      "pending": "In attesa",
+      "failed": "Non riuscite",
+      "held": "Trattenute",
+      "last": "Ultima consegna",
+      "notSent": "Non inviate (precedenti)",
+      "since": "Archiviate qui dal",
+      "deliveredShare": "Consegnate (30 giorni)"
+    },
+    "card": {
+      "title": "Dove sono archiviate le risposte",
+      "formalie": "Archivio cifrato di Formalie",
+      "formalieDesc": "Le risposte restano in Formalie. Archiviatele nel vostro database per usarle anche nei vostri sistemi.",
+      "store": "Archivia nel vostro database",
+      "addConnection": "Prima collegate un database",
+      "last": "Ultima consegna {when}",
+      "none": "Ancora nessuna consegna",
+      "newFields": "{n} nuova domanda non ha ancora una colonna | {n} nuove domande non hanno ancora una colonna",
+      "open": "Consegne",
+      "change": "Modifica"
+    },
+    "actions": {
+      "backfill": "Invia le risposte precedenti",
+      "retryAll": "Riprova {n} non riuscita | Riprova {n} non riuscite",
+      "pause": "Sospendi la consegna",
+      "resume": "Riprendi la consegna",
+      "openForm": "Apri il modulo",
+      "openConnection": "Apri la connessione",
+      "change": "Modifica colonne e opzioni",
+      "remove": "Archivia di nuovo in Formalie"
+    },
+    "remove": {
+      "title": "Archiviare di nuovo in Formalie le risposte di «{form}»?",
+      "desc": "Le nuove risposte restano nell’archivio di Formalie. La tabella e le righe già nel vostro database non vengono toccate.",
+      "confirm": "Archivia in Formalie"
+    },
+    "toast": {
+      "created": "Ora le risposte vanno in {table}",
+      "saved": "Archiviazione delle risposte salvata",
+      "paused": "Consegna sospesa. Le nuove risposte attendono finché non riprendete",
+      "resumed": "Consegna ripresa. Le risposte in attesa sono in arrivo",
+      "retried": "Nuovo tentativo per {n} consegna | Nuovo tentativo per {n} consegne",
+      "columnsAdded": "{n} colonna aggiunta | {n} colonne aggiunte",
+      "removed": "Le risposte sono di nuovo archiviate in Formalie"
+    },
+    "detail": {
+      "all": "Tutto",
+      "deliveries": "Consegne",
+      "columns": "Colonne",
+      "fields": "Nuove domande",
+      "fieldsTitle": "{n} domanda aggiunta al modulo non ha una colonna | {n} domande aggiunte al modulo non hanno una colonna",
+      "fieldsDesc": "Le loro risposte non vengono archiviate nella tabella finché non aggiungete le colonne. Nient’altro cambia.",
+      "addColumns": "Aggiungi {n} colonna | Aggiungi {n} colonne",
+      "navigate": "Spostatevi tra i moduli",
+      "previous": "Modulo precedente",
+      "next": "Modulo successivo"
+    },
+    "deliveries": {
+      "filter": "Mostra",
+      "empty": "Nessuna risposta qui.",
+      "attempts": "{n} tentativo | {n} tentativi",
+      "nextRetry": "prossimo tentativo {when}",
+      "retryOne": "Riprova la risposta n. {n}",
+      "more": "Mostra altro ({shown} di {total})"
+    },
+    "backfill": {
+      "title": "Invia le risposte precedenti",
+      "desc": "Le risposte di prima che questo modulo archiviasse qui vengono inviate in background, come quelle nuove.",
+      "notSent": "{n} risposta precedente al {date} non è stata inviata. | {n} risposte precedenti al {date} non sono state inviate.",
+      "from": "Da",
+      "to": "A",
+      "order": "Scegliete una data successiva alla data di inizio.",
+      "note": "Nulla di ciò che è già nella tabella viene inviato due volte. Potete continuare a lavorare durante l’invio.",
+      "start": "Inviale",
+      "started": "Invio delle risposte precedenti",
+      "running": "Invio delle risposte precedenti: {done} di {total}",
+      "done": "{n} risposta precedente inviata | {n} risposte precedenti inviate"
+    },
+    "meta": {
+      "response_id": "Id della risposta",
+      "submitted_at": "Inviata il",
+      "form_version": "Versione del modulo",
+      "language": "Lingua",
+      "response_number": "Numero della risposta",
+      "respondent_email": "Email di chi risponde",
+      "review_status": "Stato della revisione"
+    },
+    "issue": {
+      "no_key": "Scegliete una colonna per l’id della risposta, così Formalie ritrova ogni riga.",
+      "required_unmapped": "{column} deve essere compilata: scegliete cosa inserirvi.",
+      "type_mismatch": "{column} potrebbe non accettare «{field}» così com’è. Controllate il tipo della colonna.",
+      "duplicate_source": "{column} ripete un dato che un’altra colonna archivia già.",
+      "upsert_key": "La colonna chiave {column} deve essere compilata per aggiornare le righe."
+    },
+    "columns": {
+      "problems": "Correggete prima questi",
+      "warnings": "Da controllare",
+      "addKey": "Aggiungi una colonna per l’id della risposta",
+      "column": "Colonna",
+      "answer": "Risposta o dato",
+      "fills": "Compilata con",
+      "type": "Tipo",
+      "nothing": "Niente",
+      "required": "Obbligatoria",
+      "new": "Nuova",
+      "fillsFor": "Cosa compila {column}",
+      "columnFor": "Colonna per {item}",
+      "chooseAnswers": "Scegliete quali risposte archiviare"
+    },
+    "options": {
+      "writeLegend": "Scrittura delle righe",
+      "write": {
+        "insert": "Una nuova riga per ogni risposta",
+        "upsert": "Aggiorna la riga con la stessa chiave"
+      },
+      "writeDesc": {
+        "insert": "Ogni risposta aggiunge una riga. Modifiche e cambi di revisione aggiornano quella riga.",
+        "upsert": "Una risposta la cui chiave è già nella tabella aggiorna invece quella riga."
+      },
+      "keyColumn": "Colonna chiave",
+      "keyColumnDesc": "Le righe con lo stesso valore qui sono lo stesso record.",
+      "multiLegend": "Risposte con più valori",
+      "multi": {
+        "json": "Come JSON",
+        "text": "Come testo leggibile"
+      },
+      "multiDesc": {
+        "json": "Scelte, classifiche, nomi, indirizzi e link ai file conservati come dati strutturati.",
+        "text": "Uniti in una riga, ad esempio «SQL; Vue»."
+      },
+      "choicesLegend": "Scelte",
+      "choices": {
+        "value": "Per valore",
+        "label": "Per etichetta"
+      },
+      "choicesDesc": {
+        "value": "Codici stabili che non cambiano quando un’etichetta viene riformulata.",
+        "label": "Le parole viste dalle persone, facili da leggere nei report."
+      },
+      "extraLegend": "Archivia anche",
+      "extraDesc": "L’id della risposta, quando è stata inviata, la versione del modulo e la lingua vengono sempre archiviati."
+    },
+    "setup": {
+      "step": {
+        "connection": "Connessione",
+        "table": "Tabella",
+        "columns": "Colonne",
+        "options": "Opzioni",
+        "review": "Verifica"
+      },
+      "title": {
+        "connection": "Quale database?",
+        "table": "Quale tabella?",
+        "columns": "Quale colonna per ogni risposta?",
+        "options": "Come vengono scritte le risposte?",
+        "review": "Verificate e avviate"
+      },
+      "desc": {
+        "connection": "Le risposte a «{form}» saranno archiviate su questa connessione.",
+        "table": "Una nuova tabella creata dal modulo, oppure una tabella che avete già.",
+        "columns": "Ogni risposta e alcuni dati sulla risposta ricevono una colonna.",
+        "options": "Sono scelte impostazioni predefinite sensate; cambiatele se i vostri sistemi lo richiedono.",
+        "review": "Ecco esattamente cosa farà Formalie sul vostro database."
+      },
+      "noConnections": "Ancora nessuna connessione",
+      "noConnectionsDesc": "Collegate prima uno dei vostri database, poi tornate qui per archiviarvi le risposte di questo modulo.",
+      "connectionWarn": "Questa connessione al momento non funziona",
+      "connectionWarnDesc": "Potete configurarla comunque. Le risposte attendono e vengono ritentate finché la connessione non torna a funzionare.",
+      "create": "Crea una tabella dal modulo",
+      "createDesc": "Formalie la crea con una colonna per ogni risposta e la mantiene aggiornata quando il modulo cambia.",
+      "existing": "Usa una vostra tabella",
+      "existingDesc": "Scegliete una tabella che avete già e indicate in quale colonna va ogni risposta.",
+      "existingNeedsFull": "Richiede l’Accesso completo su questa connessione (Altre operazioni sul database).",
+      "tableName": "Nome della tabella",
+      "tableNameDesc": "Inizia con {prefix}. Lettere, numeri e trattini bassi.",
+      "suggest": "Usa il nome suggerito",
+      "schemaFromConnection": "Impostato sulla connessione, in Accesso.",
+      "mustStartWith": "Il nome deve iniziare con {prefix}.",
+      "nameChars": "Usate lettere, numeri e trattini bassi, iniziando con una lettera.",
+      "pickTable": "Scegliete una tabella",
+      "pickTableDesc": "Tabelle che Formalie può vedere su questa connessione.",
+      "searchTables": "Cerca tabelle…",
+      "tableFacts": "{columns} colonne · circa {rows} righe",
+      "columnsCount": "{filled} di {total} compilate",
+      "sqlTitle": "Cosa eseguirà Formalie",
+      "sqlNone": "Nulla da cambiare nella tabella",
+      "sqlNote": "Formalie esegue questo sul vostro database quando salvate, poi inizia a inviare le nuove risposte.",
+      "sqlNoneNote": "La tabella ha già tutte le colonne necessarie. Le nuove risposte vengono inviate appena salvate.",
+      "createAndStart": "Crea la tabella e avvia",
+      "start": "Inizia ad archiviare qui",
+      "leaveDesc": "L’archiviazione delle risposte che avete configurato andrà persa."
+    },
+    "help": {
+      "connection": {
+        "title": "Scegliere un database",
+        "p1": "Qualsiasi connessione di questo spazio di lavoro può conservare le risposte di un modulo.",
+        "p2": "Formalie conserva ogni risposta nella sua coda cifrata finché il database non la conferma.",
+        "p3": "Potete vedere e mostrare le risposte allo stesso modo, ovunque siano archiviate."
+      },
+      "table": {
+        "title": "Tabella nuova o esistente",
+        "p1": "Una nuova tabella prende il prefisso della connessione, così è facile riconoscerla.",
+        "p2": "Una vostra tabella richiede l’Accesso completo, perché Formalie vi scrive e può aggiungervi colonne.",
+        "p3": "Formalie non elimina mai una tabella o una colonna."
+      },
+      "columns": {
+        "title": "Colonne",
+        "p1": "I nomi delle colonne derivano dalle chiavi delle domande e si possono cambiare.",
+        "p2": "L’id della risposta permette a Formalie di ritrovare una riga, per modifiche e cambi di revisione.",
+        "p3": "Le domande aggiunte in seguito al modulo ricevono una colonna con un clic."
+      },
+      "options": {
+        "title": "Opzioni",
+        "p1": "Una nuova riga per risposta va bene per la maggior parte degli usi.",
+        "p2": "Aggiorna o inserisci mantiene una riga per chiave, ad esempio una per candidato.",
+        "p3": "JSON mantiene la struttura; il testo è più facile da leggere nei report."
+      },
+      "review": {
+        "title": "Cosa succede dopo",
+        "p1": "Le nuove risposte vengono inviate in background entro pochi secondi.",
+        "p2": "Le consegne non riuscite vengono ritentate con attese crescenti; potete ritentarle voi stessi.",
+        "p3": "Le risposte precedenti si possono inviare in seguito, per qualsiasi intervallo di date."
+      }
+    }
   }
 }

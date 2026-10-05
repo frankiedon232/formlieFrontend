@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "This connection is disabled. Enable it first.",
     "FRM-DEST-1010": "Forms still send their responses to this connection.",
     "FRM-DEST-1011": "The database took too long to answer.",
-    "FRM-DEST-1012": "This account can't create or use the response tables."
+    "FRM-DEST-1012": "This account can't create or use the response tables.",
+    "FRM-DEST-1013": "Storing responses in a table of yours needs Full access on this connection.",
+    "FRM-DEST-1014": "A table with this name already exists.",
+    "FRM-DEST-1015": "This form already stores its responses in a database.",
+    "FRM-DEST-1016": "The form and the table don't match yet.",
+    "FRM-DEST-1017": "Earlier responses are already being sent. Wait until that finishes."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Connection enabled",
       "data_connection_disabled": "Connection disabled",
       "data_connection_deleted": "Connection deleted",
-      "data_credentials_changed": "Connection credentials changed"
+      "data_credentials_changed": "Connection credentials changed",
+      "data_destination_created": "Response storage set up",
+      "data_destination_updated": "Response storage changed",
+      "data_destination_paused": "Response delivery paused",
+      "data_destination_resumed": "Response delivery resumed",
+      "data_destination_removed": "Responses moved back to Formalie's storage",
+      "data_table_created": "Response table created",
+      "data_column_added": "Columns added to a response table",
+      "data_backfill_started": "Earlier responses sent to a database",
+      "data_deliveries_retried": "Failed deliveries retried"
     },
     "detail": {
       "who": "Who",
@@ -4283,5 +4297,276 @@
     "unpin": "Unpin from sidebar",
     "pinFull": "Up to 5 folders can be pinned",
     "hex": "Hex colour"
+  },
+  "destinations": {
+    "crumb": "Response storage",
+    "setupTitle": "Store responses in your database",
+    "editTitle": "Change response storage",
+    "add": "Store a form's responses",
+    "search": "Search forms, connections or tables…",
+    "emptyTitle": "No form stores its responses in a database yet",
+    "emptyDesc": "Open a form and choose \"Store in your database\" on its overview. Formalie creates the table and sends every response there.",
+    "adminsOnly": "Only workspace admins can change where responses are stored",
+    "adminsOnlyDesc": "Ask an owner or admin of this workspace.",
+    "noFields": "This form has no questions yet",
+    "noFieldsDesc": "Add questions to the form first; each one gets a column.",
+    "delivering": "Delivering",
+    "paused": "Paused",
+    "status": {
+      "active": "Delivering",
+      "paused": "Paused",
+      "failing": "Failing"
+    },
+    "delivery": {
+      "all": "All",
+      "sent": "Sent",
+      "pending": "Pending",
+      "failed": "Failed",
+      "held": "Held",
+      "not_sent": "Not sent"
+    },
+    "table": {
+      "created": "Created by Formalie",
+      "yours": "Your table"
+    },
+    "col": {
+      "form": "Form",
+      "connection": "Connection",
+      "table": "Table"
+    },
+    "sort": {
+      "busiest": "Most delivered",
+      "failed": "Most failed",
+      "recent": "Recently delivered"
+    },
+    "kpi": {
+      "delivered": "Responses delivered",
+      "byStatus": "Forms by delivery status",
+      "failingCount": "{n} failing",
+      "forms": "Forms",
+      "sent30": "Sent (30 days)",
+      "pending": "Pending",
+      "failed": "Failed",
+      "held": "Held",
+      "last": "Last delivery",
+      "notSent": "Not sent (earlier)",
+      "since": "Stored here since",
+      "deliveredShare": "Delivered (30 days)"
+    },
+    "card": {
+      "title": "Where responses are stored",
+      "formalie": "Formalie's encrypted storage",
+      "formalieDesc": "Responses stay in Formalie. Store them in your own database to use them in your systems too.",
+      "store": "Store in your database",
+      "addConnection": "Connect a database first",
+      "last": "Last delivered {when}",
+      "none": "Nothing delivered yet",
+      "newFields": "{n} new question has no column yet | {n} new questions have no column yet",
+      "open": "Deliveries",
+      "change": "Change"
+    },
+    "actions": {
+      "backfill": "Send earlier responses",
+      "retryAll": "Retry {n} failed | Retry {n} failed",
+      "pause": "Pause delivering",
+      "resume": "Resume delivering",
+      "openForm": "Open the form",
+      "openConnection": "Open the connection",
+      "change": "Change columns and options",
+      "remove": "Store in Formalie again"
+    },
+    "remove": {
+      "title": "Store “{form}” responses in Formalie again?",
+      "desc": "New responses stay in Formalie's storage. The table and the rows already in your database are not touched.",
+      "confirm": "Store in Formalie"
+    },
+    "toast": {
+      "created": "Responses now go to {table}",
+      "saved": "Response storage saved",
+      "paused": "Delivering paused. New responses wait until you resume",
+      "resumed": "Delivering resumed. Waiting responses are on their way",
+      "retried": "Retrying {n} delivery | Retrying {n} deliveries",
+      "columnsAdded": "{n} column added | {n} columns added",
+      "removed": "Responses are stored in Formalie again"
+    },
+    "detail": {
+      "all": "All",
+      "deliveries": "Deliveries",
+      "columns": "Columns",
+      "fields": "New questions",
+      "fieldsTitle": "{n} question added to the form has no column | {n} questions added to the form have no column",
+      "fieldsDesc": "Their answers aren't stored in the table until you add the columns. Nothing else changes.",
+      "addColumns": "Add {n} column | Add {n} columns",
+      "navigate": "Move between forms",
+      "previous": "Previous form",
+      "next": "Next form"
+    },
+    "deliveries": {
+      "filter": "Show",
+      "empty": "No responses here.",
+      "attempts": "{n} attempt | {n} attempts",
+      "nextRetry": "next try {when}",
+      "retryOne": "Retry response #{n}",
+      "more": "Show more ({shown} of {total})"
+    },
+    "backfill": {
+      "title": "Send earlier responses",
+      "desc": "Responses from before this form stored here are sent in the background, the same way as new ones.",
+      "notSent": "{n} response from before {date} was not sent. | {n} responses from before {date} were not sent.",
+      "from": "From",
+      "to": "To",
+      "order": "Choose a date after the start date.",
+      "note": "Nothing already in the table is sent twice. You can keep working while it runs.",
+      "start": "Send them",
+      "started": "Sending earlier responses",
+      "running": "Sending earlier responses: {done} of {total}",
+      "done": "{n} earlier response sent | {n} earlier responses sent"
+    },
+    "meta": {
+      "response_id": "Response id",
+      "submitted_at": "Submitted at",
+      "form_version": "Form version",
+      "language": "Language",
+      "response_number": "Response number",
+      "respondent_email": "Respondent's email",
+      "review_status": "Review status"
+    },
+    "issue": {
+      "no_key": "Pick a column for the response id, so Formalie can find each row again.",
+      "required_unmapped": "{column} must be filled: choose what goes in it.",
+      "type_mismatch": "{column} may not take “{field}” as it is. Check the column's type.",
+      "duplicate_source": "{column} repeats something another column already stores.",
+      "upsert_key": "The key column {column} must be filled to update rows."
+    },
+    "columns": {
+      "problems": "Fix these first",
+      "warnings": "Worth a look",
+      "addKey": "Add a response id column",
+      "column": "Column",
+      "answer": "Answer or fact",
+      "fills": "Filled with",
+      "type": "Type",
+      "nothing": "Nothing",
+      "required": "Must be filled",
+      "new": "New",
+      "fillsFor": "What fills {column}",
+      "columnFor": "Column for {item}",
+      "chooseAnswers": "Choose which answers to store"
+    },
+    "options": {
+      "writeLegend": "Writing rows",
+      "write": {
+        "insert": "A new row for each response",
+        "upsert": "Update the row with the same key"
+      },
+      "writeDesc": {
+        "insert": "Every response adds a row. Edits and review changes update that row.",
+        "upsert": "A response whose key is already in the table updates that row instead."
+      },
+      "keyColumn": "Key column",
+      "keyColumnDesc": "Rows with the same value here are the same record.",
+      "multiLegend": "Answers with several values",
+      "multi": {
+        "json": "As JSON",
+        "text": "As readable text"
+      },
+      "multiDesc": {
+        "json": "Picks, rankings, names, addresses and file links kept as structured data.",
+        "text": "Joined into one line, for example \"SQL; Vue\"."
+      },
+      "choicesLegend": "Choices",
+      "choices": {
+        "value": "By their value",
+        "label": "By their label"
+      },
+      "choicesDesc": {
+        "value": "Stable codes that don't change when a label is reworded.",
+        "label": "The words people saw, easy to read in reports."
+      },
+      "extraLegend": "Also store",
+      "extraDesc": "The response id, when it was submitted, the form version and the language are always stored."
+    },
+    "setup": {
+      "step": {
+        "connection": "Connection",
+        "table": "Table",
+        "columns": "Columns",
+        "options": "Options",
+        "review": "Review"
+      },
+      "title": {
+        "connection": "Which database?",
+        "table": "Which table?",
+        "columns": "Which column for each answer?",
+        "options": "How are responses written?",
+        "review": "Check and start"
+      },
+      "desc": {
+        "connection": "Responses to “{form}” will be stored on this connection.",
+        "table": "A new table made from the form, or a table you already have.",
+        "columns": "Each answer and a few facts about the response get a column.",
+        "options": "Sensible defaults are chosen; change them if your systems need it.",
+        "review": "This is exactly what Formalie will do on your database."
+      },
+      "noConnections": "No connection yet",
+      "noConnectionsDesc": "Connect one of your databases first, then come back to store this form's responses there.",
+      "connectionWarn": "This connection isn't working right now",
+      "connectionWarnDesc": "You can set it up anyway. Responses wait and are retried until the connection works again.",
+      "create": "Create a table from the form",
+      "createDesc": "Formalie creates it with a column for each answer and keeps it up to date as the form changes.",
+      "existing": "Use a table of yours",
+      "existingDesc": "Pick a table you already have and choose which column each answer goes in.",
+      "existingNeedsFull": "Needs Full access on this connection (Other database operations).",
+      "tableName": "Table name",
+      "tableNameDesc": "Starts with {prefix}. Letters, numbers and underscores.",
+      "suggest": "Use the suggested name",
+      "schemaFromConnection": "Set on the connection, under Access.",
+      "mustStartWith": "Start the name with {prefix}.",
+      "nameChars": "Use letters, numbers and underscores, starting with a letter.",
+      "pickTable": "Choose a table",
+      "pickTableDesc": "Tables Formalie may see on this connection.",
+      "searchTables": "Search tables…",
+      "tableFacts": "{columns} columns · about {rows} rows",
+      "columnsCount": "{filled} of {total} filled",
+      "sqlTitle": "What Formalie will run",
+      "sqlNone": "Nothing to change in the table",
+      "sqlNote": "Formalie runs this on your database when you save, then starts sending new responses.",
+      "sqlNoneNote": "The table already has every column needed. New responses are sent as soon as you save.",
+      "createAndStart": "Create the table and start",
+      "start": "Start storing here",
+      "leaveDesc": "The response storage you set up will be lost."
+    },
+    "help": {
+      "connection": {
+        "title": "Choosing a database",
+        "p1": "Any connection of this workspace can keep a form's responses.",
+        "p2": "Formalie keeps each response in its encrypted queue until the database confirms it.",
+        "p3": "You can see and show responses the same way wherever they are stored."
+      },
+      "table": {
+        "title": "New or existing table",
+        "p1": "A new table is named with the connection's prefix, so it's easy to recognise.",
+        "p2": "A table of yours needs Full access, because Formalie writes and may add columns to it.",
+        "p3": "Formalie never drops a table or a column."
+      },
+      "columns": {
+        "title": "Columns",
+        "p1": "Column names come from the questions' keys and can be changed.",
+        "p2": "The response id lets Formalie find a row again, for edits and review changes.",
+        "p3": "Questions added to the form later get a column with one click."
+      },
+      "options": {
+        "title": "Options",
+        "p1": "A new row per response suits most uses.",
+        "p2": "Update-or-insert keeps one row per key, for example one per applicant.",
+        "p3": "JSON keeps structure; text is easier to read in reports."
+      },
+      "review": {
+        "title": "What happens next",
+        "p1": "New responses are sent in the background within seconds.",
+        "p2": "Failed deliveries are retried with growing waits; you can retry them yourself.",
+        "p3": "Earlier responses can be sent afterwards, for any date range."
+      }
+    }
   }
 }

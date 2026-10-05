@@ -542,7 +542,12 @@
     "FRM-DEST-1009": "Kết nối này đang tắt. Hãy bật trước.",
     "FRM-DEST-1010": "Vẫn có biểu mẫu gửi phản hồi đến kết nối này.",
     "FRM-DEST-1011": "Cơ sở dữ liệu phản hồi quá lâu.",
-    "FRM-DEST-1012": "Tài khoản này không thể tạo hoặc dùng các bảng phản hồi."
+    "FRM-DEST-1012": "Tài khoản này không thể tạo hoặc dùng các bảng phản hồi.",
+    "FRM-DEST-1013": "Lưu phản hồi vào một bảng của bạn cần Toàn quyền trên kết nối này.",
+    "FRM-DEST-1014": "Đã có một bảng mang tên này.",
+    "FRM-DEST-1015": "Biểu mẫu này đã lưu phản hồi vào một cơ sở dữ liệu.",
+    "FRM-DEST-1016": "Biểu mẫu và bảng chưa khớp nhau.",
+    "FRM-DEST-1017": "Các phản hồi trước đó đang được gửi. Hãy đợi đến khi hoàn tất."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -918,7 +923,16 @@
       "data_connection_enabled": "Đã bật kết nối",
       "data_connection_disabled": "Đã tắt kết nối",
       "data_connection_deleted": "Đã xóa kết nối",
-      "data_credentials_changed": "Đã thay đổi thông tin xác thực kết nối"
+      "data_credentials_changed": "Đã thay đổi thông tin xác thực kết nối",
+      "data_destination_created": "Đã thiết lập nơi lưu phản hồi",
+      "data_destination_updated": "Đã thay đổi nơi lưu phản hồi",
+      "data_destination_paused": "Đã tạm dừng gửi phản hồi",
+      "data_destination_resumed": "Đã tiếp tục gửi phản hồi",
+      "data_destination_removed": "Phản hồi đã chuyển về bộ lưu trữ của Formalie",
+      "data_table_created": "Đã tạo bảng phản hồi",
+      "data_column_added": "Đã thêm cột vào bảng phản hồi",
+      "data_backfill_started": "Đã gửi các phản hồi trước đó vào cơ sở dữ liệu",
+      "data_deliveries_retried": "Đã thử lại các lần gửi thất bại"
     },
     "detail": {
       "who": "Ai",
@@ -4283,5 +4297,276 @@
     "unpin": "Bỏ ghim khỏi thanh bên",
     "pinFull": "Có thể ghim tối đa 5 thư mục",
     "hex": "Mã màu hex"
+  },
+  "destinations": {
+    "crumb": "Nơi lưu phản hồi",
+    "setupTitle": "Lưu phản hồi vào cơ sở dữ liệu của bạn",
+    "editTitle": "Thay đổi nơi lưu phản hồi",
+    "add": "Lưu phản hồi của biểu mẫu",
+    "search": "Tìm biểu mẫu, kết nối hoặc bảng…",
+    "emptyTitle": "Chưa có biểu mẫu nào lưu phản hồi vào cơ sở dữ liệu",
+    "emptyDesc": "Mở một biểu mẫu và chọn “Lưu vào cơ sở dữ liệu của bạn” trong phần tổng quan. Formalie tạo bảng và gửi mọi phản hồi vào đó.",
+    "adminsOnly": "Chỉ quản trị viên không gian làm việc mới có thể đổi nơi lưu phản hồi",
+    "adminsOnlyDesc": "Hãy hỏi chủ sở hữu hoặc quản trị viên của không gian làm việc này.",
+    "noFields": "Biểu mẫu này chưa có câu hỏi",
+    "noFieldsDesc": "Hãy thêm câu hỏi vào biểu mẫu trước; mỗi câu hỏi sẽ có một cột.",
+    "delivering": "Đang gửi",
+    "paused": "Đã tạm dừng",
+    "status": {
+      "active": "Đang gửi",
+      "paused": "Đã tạm dừng",
+      "failing": "Đang lỗi"
+    },
+    "delivery": {
+      "all": "Tất cả",
+      "sent": "Đã gửi",
+      "pending": "Đang chờ",
+      "failed": "Thất bại",
+      "held": "Bị giữ lại",
+      "not_sent": "Chưa gửi"
+    },
+    "table": {
+      "created": "Do Formalie tạo",
+      "yours": "Bảng của bạn"
+    },
+    "col": {
+      "form": "Biểu mẫu",
+      "connection": "Kết nối",
+      "table": "Bảng"
+    },
+    "sort": {
+      "busiest": "Gửi nhiều nhất",
+      "failed": "Lỗi nhiều nhất",
+      "recent": "Gửi gần đây"
+    },
+    "kpi": {
+      "delivered": "Phản hồi đã gửi",
+      "byStatus": "Biểu mẫu theo trạng thái gửi",
+      "failingCount": "{n} đang lỗi",
+      "forms": "Biểu mẫu",
+      "sent30": "Đã gửi (30 ngày)",
+      "pending": "Đang chờ",
+      "failed": "Thất bại",
+      "held": "Bị giữ lại",
+      "last": "Lần gửi gần nhất",
+      "notSent": "Chưa gửi (trước đó)",
+      "since": "Lưu tại đây từ",
+      "deliveredShare": "Đã gửi (30 ngày)"
+    },
+    "card": {
+      "title": "Nơi lưu phản hồi",
+      "formalie": "Bộ lưu trữ mã hóa của Formalie",
+      "formalieDesc": "Phản hồi được giữ trong Formalie. Lưu chúng vào cơ sở dữ liệu của bạn để dùng cả trong hệ thống của mình.",
+      "store": "Lưu vào cơ sở dữ liệu của bạn",
+      "addConnection": "Kết nối một cơ sở dữ liệu trước",
+      "last": "Gửi lần cuối {when}",
+      "none": "Chưa gửi gì",
+      "newFields": "{n} câu hỏi mới chưa có cột | {n} câu hỏi mới chưa có cột",
+      "open": "Lần gửi",
+      "change": "Thay đổi"
+    },
+    "actions": {
+      "backfill": "Gửi các phản hồi trước đó",
+      "retryAll": "Thử lại {n} lần thất bại | Thử lại {n} lần thất bại",
+      "pause": "Tạm dừng gửi",
+      "resume": "Tiếp tục gửi",
+      "openForm": "Mở biểu mẫu",
+      "openConnection": "Mở kết nối",
+      "change": "Thay đổi cột và tùy chọn",
+      "remove": "Lưu lại trong Formalie"
+    },
+    "remove": {
+      "title": "Lưu lại phản hồi của “{form}” trong Formalie?",
+      "desc": "Phản hồi mới sẽ được giữ trong bộ lưu trữ của Formalie. Bảng và các hàng đã có trong cơ sở dữ liệu của bạn không bị động đến.",
+      "confirm": "Lưu trong Formalie"
+    },
+    "toast": {
+      "created": "Phản hồi giờ được gửi đến {table}",
+      "saved": "Đã lưu nơi lưu phản hồi",
+      "paused": "Đã tạm dừng gửi. Phản hồi mới sẽ chờ đến khi bạn tiếp tục",
+      "resumed": "Đã tiếp tục gửi. Các phản hồi đang chờ đang được chuyển đi",
+      "retried": "Đang thử lại {n} lần gửi | Đang thử lại {n} lần gửi",
+      "columnsAdded": "Đã thêm {n} cột | Đã thêm {n} cột",
+      "removed": "Phản hồi lại được lưu trong Formalie"
+    },
+    "detail": {
+      "all": "Tất cả",
+      "deliveries": "Lần gửi",
+      "columns": "Cột",
+      "fields": "Câu hỏi mới",
+      "fieldsTitle": "{n} câu hỏi được thêm vào biểu mẫu chưa có cột | {n} câu hỏi được thêm vào biểu mẫu chưa có cột",
+      "fieldsDesc": "Câu trả lời của chúng không được lưu vào bảng cho đến khi bạn thêm cột. Không có gì khác thay đổi.",
+      "addColumns": "Thêm {n} cột | Thêm {n} cột",
+      "navigate": "Chuyển giữa các biểu mẫu",
+      "previous": "Biểu mẫu trước",
+      "next": "Biểu mẫu tiếp theo"
+    },
+    "deliveries": {
+      "filter": "Hiển thị",
+      "empty": "Không có phản hồi nào ở đây.",
+      "attempts": "{n} lần thử | {n} lần thử",
+      "nextRetry": "lần thử tiếp theo {when}",
+      "retryOne": "Thử lại phản hồi #{n}",
+      "more": "Hiện thêm ({shown} / {total})"
+    },
+    "backfill": {
+      "title": "Gửi các phản hồi trước đó",
+      "desc": "Các phản hồi có trước khi biểu mẫu này lưu tại đây sẽ được gửi ở chế độ nền, giống như phản hồi mới.",
+      "notSent": "{n} phản hồi trước {date} chưa được gửi. | {n} phản hồi trước {date} chưa được gửi.",
+      "from": "Từ",
+      "to": "Đến",
+      "order": "Chọn một ngày sau ngày bắt đầu.",
+      "note": "Những gì đã có trong bảng sẽ không bị gửi hai lần. Bạn có thể tiếp tục làm việc trong lúc chạy.",
+      "start": "Gửi",
+      "started": "Đang gửi các phản hồi trước đó",
+      "running": "Đang gửi các phản hồi trước đó: {done} / {total}",
+      "done": "Đã gửi {n} phản hồi trước đó | Đã gửi {n} phản hồi trước đó"
+    },
+    "meta": {
+      "response_id": "Id phản hồi",
+      "submitted_at": "Thời điểm gửi",
+      "form_version": "Phiên bản biểu mẫu",
+      "language": "Ngôn ngữ",
+      "response_number": "Số phản hồi",
+      "respondent_email": "Email người trả lời",
+      "review_status": "Trạng thái xem xét"
+    },
+    "issue": {
+      "no_key": "Chọn một cột cho id phản hồi để Formalie có thể tìm lại từng hàng.",
+      "required_unmapped": "{column} bắt buộc phải có giá trị: hãy chọn dữ liệu cho cột này.",
+      "type_mismatch": "{column} có thể không nhận “{field}” như hiện tại. Hãy kiểm tra kiểu của cột.",
+      "duplicate_source": "{column} lặp lại dữ liệu mà một cột khác đã lưu.",
+      "upsert_key": "Cột khóa {column} phải có giá trị để cập nhật hàng."
+    },
+    "columns": {
+      "problems": "Sửa những mục này trước",
+      "warnings": "Nên xem lại",
+      "addKey": "Thêm cột id phản hồi",
+      "column": "Cột",
+      "answer": "Câu trả lời hoặc thông tin",
+      "fills": "Điền bằng",
+      "type": "Kiểu",
+      "nothing": "Không có gì",
+      "required": "Bắt buộc",
+      "new": "Mới",
+      "fillsFor": "Dữ liệu cho {column}",
+      "columnFor": "Cột cho {item}",
+      "chooseAnswers": "Chọn câu trả lời cần lưu"
+    },
+    "options": {
+      "writeLegend": "Ghi hàng",
+      "write": {
+        "insert": "Một hàng mới cho mỗi phản hồi",
+        "upsert": "Cập nhật hàng có cùng khóa"
+      },
+      "writeDesc": {
+        "insert": "Mỗi phản hồi thêm một hàng. Chỉnh sửa và thay đổi xem xét sẽ cập nhật hàng đó.",
+        "upsert": "Phản hồi có khóa đã tồn tại trong bảng sẽ cập nhật hàng đó thay vì thêm mới."
+      },
+      "keyColumn": "Cột khóa",
+      "keyColumnDesc": "Các hàng có cùng giá trị ở đây là cùng một bản ghi.",
+      "multiLegend": "Câu trả lời có nhiều giá trị",
+      "multi": {
+        "json": "Dạng JSON",
+        "text": "Dạng văn bản dễ đọc"
+      },
+      "multiDesc": {
+        "json": "Lựa chọn, xếp hạng, tên, địa chỉ và liên kết tệp được giữ dưới dạng dữ liệu có cấu trúc.",
+        "text": "Gộp thành một dòng, ví dụ “SQL; Vue”."
+      },
+      "choicesLegend": "Lựa chọn",
+      "choices": {
+        "value": "Theo giá trị",
+        "label": "Theo nhãn"
+      },
+      "choicesDesc": {
+        "value": "Mã ổn định, không đổi khi nhãn được viết lại.",
+        "label": "Từ ngữ mọi người đã thấy, dễ đọc trong báo cáo."
+      },
+      "extraLegend": "Lưu thêm",
+      "extraDesc": "Id phản hồi, thời điểm gửi, phiên bản biểu mẫu và ngôn ngữ luôn được lưu."
+    },
+    "setup": {
+      "step": {
+        "connection": "Kết nối",
+        "table": "Bảng",
+        "columns": "Cột",
+        "options": "Tùy chọn",
+        "review": "Xem lại"
+      },
+      "title": {
+        "connection": "Cơ sở dữ liệu nào?",
+        "table": "Bảng nào?",
+        "columns": "Cột nào cho mỗi câu trả lời?",
+        "options": "Phản hồi được ghi như thế nào?",
+        "review": "Kiểm tra và bắt đầu"
+      },
+      "desc": {
+        "connection": "Phản hồi của “{form}” sẽ được lưu trên kết nối này.",
+        "table": "Một bảng mới tạo từ biểu mẫu, hoặc một bảng bạn đã có.",
+        "columns": "Mỗi câu trả lời và một vài thông tin về phản hồi đều có một cột.",
+        "options": "Các giá trị mặc định hợp lý đã được chọn; hãy thay đổi nếu hệ thống của bạn cần.",
+        "review": "Đây chính xác là những gì Formalie sẽ làm trên cơ sở dữ liệu của bạn."
+      },
+      "noConnections": "Chưa có kết nối nào",
+      "noConnectionsDesc": "Hãy kết nối một cơ sở dữ liệu của bạn trước, rồi quay lại để lưu phản hồi của biểu mẫu này vào đó.",
+      "connectionWarn": "Kết nối này hiện không hoạt động",
+      "connectionWarnDesc": "Bạn vẫn có thể thiết lập. Phản hồi sẽ chờ và được thử lại cho đến khi kết nối hoạt động trở lại.",
+      "create": "Tạo bảng từ biểu mẫu",
+      "createDesc": "Formalie tạo bảng với một cột cho mỗi câu trả lời và cập nhật theo các thay đổi của biểu mẫu.",
+      "existing": "Dùng một bảng của bạn",
+      "existingDesc": "Chọn một bảng bạn đã có và chọn cột cho từng câu trả lời.",
+      "existingNeedsFull": "Cần Toàn quyền trên kết nối này (Các thao tác cơ sở dữ liệu khác).",
+      "tableName": "Tên bảng",
+      "tableNameDesc": "Bắt đầu bằng {prefix}. Chữ cái, chữ số và dấu gạch dưới.",
+      "suggest": "Dùng tên được gợi ý",
+      "schemaFromConnection": "Được đặt trên kết nối, trong mục Quyền truy cập.",
+      "mustStartWith": "Tên phải bắt đầu bằng {prefix}.",
+      "nameChars": "Dùng chữ cái, chữ số và dấu gạch dưới, bắt đầu bằng một chữ cái.",
+      "pickTable": "Chọn một bảng",
+      "pickTableDesc": "Các bảng Formalie được phép thấy trên kết nối này.",
+      "searchTables": "Tìm bảng…",
+      "tableFacts": "{columns} cột · khoảng {rows} hàng",
+      "columnsCount": "Đã điền {filled} / {total}",
+      "sqlTitle": "Những gì Formalie sẽ chạy",
+      "sqlNone": "Không cần thay đổi gì trong bảng",
+      "sqlNote": "Formalie chạy lệnh này trên cơ sở dữ liệu của bạn khi bạn lưu, sau đó bắt đầu gửi phản hồi mới.",
+      "sqlNoneNote": "Bảng đã có mọi cột cần thiết. Phản hồi mới được gửi ngay khi bạn lưu.",
+      "createAndStart": "Tạo bảng và bắt đầu",
+      "start": "Bắt đầu lưu tại đây",
+      "leaveDesc": "Thiết lập nơi lưu phản hồi của bạn sẽ bị mất."
+    },
+    "help": {
+      "connection": {
+        "title": "Chọn cơ sở dữ liệu",
+        "p1": "Bất kỳ kết nối nào của không gian làm việc này đều có thể lưu phản hồi của biểu mẫu.",
+        "p2": "Formalie giữ mỗi phản hồi trong hàng đợi mã hóa của mình cho đến khi cơ sở dữ liệu xác nhận đã nhận.",
+        "p3": "Bạn có thể xem và hiển thị phản hồi theo cùng một cách, dù chúng được lưu ở đâu."
+      },
+      "table": {
+        "title": "Bảng mới hoặc bảng có sẵn",
+        "p1": "Bảng mới được đặt tên với tiền tố của kết nối, nên dễ nhận ra.",
+        "p2": "Bảng của bạn cần Toàn quyền, vì Formalie ghi vào đó và có thể thêm cột.",
+        "p3": "Formalie không bao giờ xóa bảng hay cột."
+      },
+      "columns": {
+        "title": "Cột",
+        "p1": "Tên cột lấy từ khóa của câu hỏi và có thể thay đổi.",
+        "p2": "Id phản hồi giúp Formalie tìm lại một hàng khi có chỉnh sửa và thay đổi xem xét.",
+        "p3": "Câu hỏi được thêm vào biểu mẫu sau này sẽ có cột chỉ với một cú nhấp."
+      },
+      "options": {
+        "title": "Tùy chọn",
+        "p1": "Một hàng mới cho mỗi phản hồi phù hợp với hầu hết nhu cầu.",
+        "p2": "Cập nhật hoặc chèn giữ một hàng cho mỗi khóa, ví dụ một hàng cho mỗi người nộp đơn.",
+        "p3": "JSON giữ được cấu trúc; văn bản dễ đọc hơn trong báo cáo."
+      },
+      "review": {
+        "title": "Điều gì xảy ra tiếp theo",
+        "p1": "Phản hồi mới được gửi ở chế độ nền trong vài giây.",
+        "p2": "Các lần gửi thất bại được thử lại với thời gian chờ tăng dần; bạn cũng có thể tự thử lại.",
+        "p3": "Các phản hồi trước đó có thể được gửi sau, cho bất kỳ khoảng ngày nào."
+      }
+    }
   }
 }
