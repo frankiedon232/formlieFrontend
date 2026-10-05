@@ -95,7 +95,7 @@ describe('permissions', () => {
     const mysql = script('mysql', { database: 'leads', username: 'app' }, ownOnly)
     expect(mysql).toContain("CREATE USER 'app'@'%'")
     expect(mysql).toContain('GRANT CREATE, ALTER, INDEX, REFERENCES, SELECT, INSERT, UPDATE, DELETE ON `leads`.*')
-    expect(script('mysql', { database: 'leads', username: 'app' }, { ...full, schemas: ['crm'] })).toContain('GRANT INSERT, UPDATE, DELETE ON `crm`.*')
+    expect(script('mysql', { database: 'leads', username: 'app' }, { ...full, schemas: ['crm'] })).toContain('GRANT INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX ON `crm`.*')
 
     const pgOwn = script('postgresql', { database: 'cases', username: 'app' }, ownOnly)
     expect(pgOwn).toContain('GRANT USAGE, CREATE ON SCHEMA "public" TO "app";')
@@ -103,6 +103,8 @@ describe('permissions', () => {
     const pg = script('postgresql', { database: 'cases', username: 'app' }, { ...full, tables_schema: 'formalie', schemas: ['public', 'intake'] })
     expect(pg).toContain('GRANT USAGE, CREATE ON SCHEMA "formalie"')
     expect(pg).toContain('GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "intake"')
+    expect(pg).toContain('GRANT CREATE ON SCHEMA "intake"')
+    expect(script('sqlserver', { database: 'People', username: 'app' }, full)).toContain('GRANT INSERT, UPDATE, DELETE, ALTER ON SCHEMA::[dbo] TO [app];')
 
     const sql = script('sqlserver', { database: 'People', username: 'app' }, readOnly)
     expect(sql).toContain('CREATE SCHEMA [formalie] AUTHORIZATION [app];')
@@ -111,6 +113,7 @@ describe('permissions', () => {
     expect(script('sqlserver', { database: 'People', auth: 'entra_service_principal', client_id: 'abc' }, readOnly)).toContain('FROM EXTERNAL PROVIDER')
 
     expect(script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] }, { oracle23: true })).toContain('GRANT SELECT ANY TABLE ON SCHEMA "FINANCE" TO "APP";')
+    expect(script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] }, { oracle23: true })).toContain('GRANT CREATE ANY TABLE, ALTER ANY TABLE, CREATE ANY INDEX ON SCHEMA "FINANCE"')
     const oracle19 = script('oracle', { username: 'app' }, { ...full, schemas: ['finance'] })
     expect(oracle19).toContain("FROM all_sequences WHERE sequence_owner = 'FINANCE'")
     expect(oracle19).toContain('GRANT CREATE TABLE, CREATE SEQUENCE TO "APP";')

@@ -2975,11 +2975,11 @@
       "copy": "Copia {ip}"
     },
     "engineDesc": {
-      "mysql": "Porta 3306 · modalità TLS fino alla verifica dell’identità · tunnel SSH",
-      "mariadb": "Porta 3306 · modalità TLS fino alla verifica dell’identità · tunnel SSH",
-      "oracle": "Porta 1521 · nome del servizio, SID o descrittore · TCPS o crittografia nativa",
-      "postgresql": "Porta 5432 · schemi · sslmode fino a verify-full · tunnel SSH",
-      "sqlserver": "Porta 1433 · istanze · accesso SQL o Microsoft Entra · crittografia rigorosa"
+      "mysql": "Porta predefinita 3306 · modalità TLS fino alla verifica dell’identità · tunnel SSH",
+      "mariadb": "Porta predefinita 3306 · modalità TLS fino alla verifica dell’identità · tunnel SSH",
+      "oracle": "Porta predefinita 1521 · nome del servizio, SID o descrittore · TCPS o crittografia nativa",
+      "postgresql": "Porta predefinita 5432 · sslmode fino a verify-full · tunnel SSH",
+      "sqlserver": "Porta predefinita 1433 · istanze · accesso SQL o Microsoft Entra · crittografia rigorosa"
     },
     "field": {
       "host": "Indirizzo del server",
@@ -3048,8 +3048,10 @@
         "encrypt": "Rigorosa usa TDS 8.0 e verifica sempre il certificato (SQL Server 2022 e Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS crittografa con TLS (consigliato). TCP si affida alla crittografia di rete nativa."
-      }
+        "protocol": "TCPS crittografa con TLS (consigliato). TCP si affida alla crittografia di rete nativa.",
+        "port": "Precompilato con la porta abituale di Oracle ({port}); TCPS usa spesso la 2484. Se il tuo database è in ascolto su un’altra porta, inseriscila."
+      },
+      "port": "Precompilato con la porta abituale di {engine} ({port}). Se il tuo database è configurato su un’altra porta, inseriscila."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Esiste già una connessione con questo nome."
     },
     "level": {
-      "read": "Leggere le altre tabelle",
-      "write": "Modificare le altre tabelle",
+      "read": "Leggere il resto del database",
+      "write": "Accesso completo al resto",
       "own": "Le vostre risposte"
     },
     "levelDesc": {
-      "read": "Esplora database, query, elenchi di opzioni dai vostri dati",
-      "write": "Modificare righe nell’esploratore e importare file nelle vostre tabelle",
+      "read": "Esplorare e ispezionare tabelle, query, elenchi a discesa nei moduli",
+      "write": "Creare e modificare tabelle, modificare righe, importare, archiviare risposte nelle vostre tabelle",
       "own": "Creare una tabella per modulo, archiviare le risposte, mostrarle, modificarle, aggiungere colonne"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Aggiungere righe",
-        "uses": "Nuove righe e importazioni nelle vostre tabelle"
+        "uses": "Nuove righe, importazioni, risposte archiviate in una vostra tabella"
       },
       "update": {
         "label": "Modificare righe",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Leggere e scrivere le proprie righe",
         "uses": "Archiviare le risposte, mostrarle, modificarle e rimuoverle"
+      },
+      "other_structure": {
+        "label": "Creare e modificare tabelle",
+        "uses": "Nuove tabelle e colonne nei vostri schemi, dall’esploratore e dalle importazioni"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Permessi per schema. Disattivate per 19c e versioni precedenti (permessi per tabella).",
       "block": {
         "account": "1. L’account (saltatelo per usarne uno esistente)",
-        "read": "3. Leggere le altre tabelle",
-        "write": "4. Modificare le altre tabelle",
+        "read": "3. Leggere il resto del database",
+        "write": "4. Accesso completo al resto",
         "own": "2. Le vostre risposte (obbligatorio)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie è proprietario delle tabelle che crea, quindi può leggerle, scriverle e aggiungervi colonne, e nient’altro in questo schema.",
         "own_schema": "Le tabelle di Formalie vanno in uno schema proprio, di proprietà dell’account. Gli altri vostri schemi restano intatti, a meno che non concediate altro qui sotto.",
         "mysql_database": "MySQL e MariaDB concedono i diritti per database, quindi questi raggiungono anche le altre tabelle al suo interno. Per limitare Formalie alle proprie tabelle, dategli un database tutto suo.",
-        "mysql_covered": "Nient’altro da eseguire: i diritti per le tabelle di Formalie coprono già questo database. Aggiungete altri database qui sopra per concederli qui."
+        "mysql_covered": "Nient’altro da eseguire: i diritti per le tabelle di Formalie coprono già questo database. Aggiungete altri database qui sopra per concederli qui.",
+        "owner_alter_other": "Le nuove tabelle che Formalie vi crea sono sue. Per permettergli di modificare una tabella esistente, rendete l’account proprietario di quella tabella.",
+        "oracle_create_other": "Prima di 23ai, Oracle non può concedere la creazione di tabelle in un solo schema, quindi Formalie crea le nuove tabelle nel proprio schema."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Schemi con le vostre altre tabelle",
-      "databases": "Database con le vostre altre tabelle",
+      "schemas": "Schemi in cui Formalie può lavorare",
+      "databases": "Database in cui Formalie può lavorare",
       "schemasHint": "Premete Invio, spazio o virgola dopo ciascuno. Vuoto: solo {schema}.",
       "databasesHint": "Premete Invio, spazio o virgola dopo ciascuno. Vuoto: solo {schema}.",
       "permissionsTitle": "Permessi da concedere",
-      "permissionsDesc": "Concedete questi permessi all’account perché ogni funzione lavori. Le vostre risposte sono obbligatorie; il resto segue la vostra scelta per le altre tabelle.",
+      "permissionsDesc": "Concedete questi permessi all’account perché ogni funzione lavori. Le vostre risposte sono obbligatorie; il resto segue la vostra scelta per le altre operazioni sul database.",
       "tabOperations": "Cosa fa Formalie",
       "tabScript": "Istruzioni da eseguire",
       "ownTitle": "Le vostre risposte",
-      "ownDesc": "Formalie archivia qui le risposte di ogni modulo, in tabelle che crea e nomina con il prefisso qui sotto. Le rilegge per mostrarle e può modificare e rimuovere righe e aggiungere colonne, solo nelle proprie tabelle.",
+      "ownDesc": "Formalie archivia qui le risposte di ogni modulo: in tabelle che crea e nomina con il prefisso qui sotto, oppure in una vostra tabella che scegliete per un modulo. Le rilegge per mostrarle e può modificare e rimuovere righe e aggiungere colonne.",
       "always": "Obbligatorio",
       "prefix": "Prefisso dei nomi delle tabelle",
       "prefixDesc": "Ogni tabella creata da Formalie inizia così, ad esempio {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "Il database della connessione.",
         "mariadb": "Il database della connessione."
       },
-      "otherLegend": "Le vostre altre tabelle",
+      "otherLegend": "Altre operazioni sul database",
       "other": {
-        "read_write": "Lettura e scrittura",
+        "read_write": "Accesso completo",
         "read": "Sola lettura",
-        "none": "Non condivise"
+        "none": "Nessuno"
       },
       "otherDesc": {
-        "read_write": "Sfogliare, interrogare, usare negli elenchi a discesa dei moduli, modificare righe e importare file.",
-        "read": "Sfogliare, interrogare e usare negli elenchi a discesa dei moduli. Nulla viene modificato.",
-        "none": "Formalie non può vederle. Usa solo le proprie tabelle delle risposte."
+        "read_write": "Esplorare, interrogare, creare e modificare tabelle, modificare righe e importare. Necessario anche per archiviare le risposte in una vostra tabella.",
+        "read": "Esplorare, ispezionare, interrogare e usare tabelle come elenchi a discesa nei moduli. Nulla viene modificato.",
+        "none": "Formalie lavora solo con le tabelle che crea per le vostre risposte."
       },
-      "otherHint": "Non usate per le risposte. Sono le tabelle che avete già, per l’explorer, le query, gli elenchi a discesa nei moduli e le importazioni. Potete cambiarlo in seguito.",
+      "otherHint": "Oltre alle vostre risposte, Formalie può lavorare con il resto di questo database: esplorare e ispezionare tabelle, eseguire query, usare tabelle come elenchi a discesa nei moduli, creare e modificare tabelle, modificare righe, importare ed esportare dati. Scegliete quanto può fare. Potete cambiarlo in seguito.",
       "short": {
-        "read_write": "Lettura e scrittura altre",
-        "read": "Lettura altre",
-        "none": "Solo risposte"
+        "read_write": "Accesso completo",
+        "read": "Sola lettura",
+        "none": "Solo tabelle delle risposte"
       },
-      "optional": "Facoltativo",
       "schemasHintOracle": "Premete Invio, spazio o virgola dopo ogni schema (proprietario) le cui tabelle Formalie può usare."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Database",
       "account": "Account",
       "security": "Sicurezza",
-      "access": "Le vostre altre tabelle",
+      "access": "Altre operazioni sul database",
       "descriptor": "Descrittore di connessione",
       "encrypted": "Crittografata",
       "notEncrypted": "Non crittografata",
@@ -3358,7 +3365,7 @@
         "server": "L’indirizzo che i server di Formalie usano per raggiungere il vostro database {engine}.",
         "signin": "Qualsiasi account con i permessi del passo Permessi. Tutto ciò che inserite è crittografato prima di essere archiviato.",
         "security": "Crittografia per la connessione e un tunnel SSH solo se il database è in una rete privata.",
-        "access": "Formalie archivia qui le risposte di questo workspace, in tabelle proprie. L’accesso alle vostre altre tabelle è facoltativo.",
+        "access": "Formalie archivia qui le risposte di questo workspace. Poi scegliete con quanta parte del resto del database può lavorare.",
         "review": "Il test viene eseguito dai server di Formalie e legge soltanto."
       },
       "name": "Nome",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Perché una connessione",
-        "p1": "Una connessione è il luogo in cui Formalie archivia le vostre risposte: una tabella per ogni modulo, con il vostro prefisso nel nome.",
-        "p2": "Formalie le rilegge per mostrarle e può modificare, rimuovere e aggiungere colonne, solo nelle proprie tabelle.",
+        "p1": "Una connessione è il luogo in cui Formalie archivia le vostre risposte: in tabelle che crea per ogni modulo, con il vostro prefisso nel nome, oppure in una vostra tabella.",
+        "p2": "Formalie le rilegge per mostrarle e può modificare righe e aggiungere colonne.",
         "p3": "I vostri dati restano nel vostro database, pronti per i vostri sistemi e report.",
-        "p4": "Leggere o modificare le vostre altre tabelle è facoltativo, per l’esploratore, le query, gli elenchi di opzioni e le importazioni."
+        "p4": "Le altre operazioni sul database (esploratore, query, elenchi a discesa, creazione di tabelle, importazioni) seguono la vostra scelta: accesso completo, sola lettura o nessuno."
       },
       "review": {
         "title": "Cosa controlla il test",

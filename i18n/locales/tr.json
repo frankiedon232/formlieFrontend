@@ -2975,11 +2975,11 @@
       "copy": "{ip} kopyala"
     },
     "engineDesc": {
-      "mysql": "Bağlantı noktası 3306 · kimlik doğrulamaya kadar TLS modları · SSH tüneli",
-      "mariadb": "Bağlantı noktası 3306 · kimlik doğrulamaya kadar TLS modları · SSH tüneli",
-      "oracle": "Bağlantı noktası 1521 · hizmet adı, SID veya tanımlayıcı · TCPS veya yerel şifreleme",
-      "postgresql": "Bağlantı noktası 5432 · şemalar · verify-full’a kadar sslmode · SSH tüneli",
-      "sqlserver": "Bağlantı noktası 1433 · örnekler · SQL veya Microsoft Entra ile oturum açma · katı şifreleme"
+      "mysql": "Varsayılan bağlantı noktası 3306 · kimlik doğrulamaya kadar TLS modları · SSH tüneli",
+      "mariadb": "Varsayılan bağlantı noktası 3306 · kimlik doğrulamaya kadar TLS modları · SSH tüneli",
+      "oracle": "Varsayılan bağlantı noktası 1521 · hizmet adı, SID veya tanımlayıcı · TCPS veya yerel şifreleme",
+      "postgresql": "Varsayılan bağlantı noktası 5432 · verify-full’a kadar sslmode · SSH tüneli",
+      "sqlserver": "Varsayılan bağlantı noktası 1433 · örnekler · SQL veya Microsoft Entra ile oturum açma · katı şifreleme"
     },
     "field": {
       "host": "Sunucu adresi",
@@ -3048,8 +3048,10 @@
         "encrypt": "Katı, TDS 8.0 kullanır ve sertifikayı her zaman kontrol eder (SQL Server 2022 ve Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS, TLS ile şifreler (önerilir). TCP, yerel ağ şifrelemesine dayanır."
-      }
+        "protocol": "TCPS, TLS ile şifreler (önerilir). TCP, yerel ağ şifrelemesine dayanır.",
+        "port": "Oracle için olağan bağlantı noktası ({port}) dolduruldu; TCPS genellikle 2484 kullanır. Veritabanınız başka bir bağlantı noktasını dinliyorsa onu girin."
+      },
+      "port": "{engine} için olağan bağlantı noktası ({port}) dolduruldu. Veritabanınız başka bir bağlantı noktasında kurulduysa onu girin."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Bu ada sahip bir bağlantı zaten var."
     },
     "level": {
-      "read": "Diğer tablolarınızı okuma",
-      "write": "Diğer tablolarınızı değiştirme",
+      "read": "Veritabanının geri kalanını okuma",
+      "write": "Geri kalanına tam erişim",
       "own": "Yanıtlarınız"
     },
     "levelDesc": {
-      "read": "Veritabanı gezgini, sorgular, verilerinizden seçenek listeleri",
-      "write": "Gezginde satırları düzenleme ve tablolarınıza dosya içe aktarma",
+      "read": "Tablolarda gezinme ve inceleme, sorgular, formlarda açılır listeler",
+      "write": "Tablo oluşturma ve değiştirme, satır düzenleme, içe aktarma, yanıtları tablolarınızda saklama",
       "own": "Her form için tablo oluşturma, yanıtları saklama, gösterme, değiştirme, sütun ekleme"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Satır ekle",
-        "uses": "Tablolarınıza yeni satırlar ve içe aktarmalar"
+        "uses": "Yeni satırlar, içe aktarmalar, kendi tablonuzda saklanan yanıtlar"
       },
       "update": {
         "label": "Satırları değiştir",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Kendi satırlarını okuma ve yazma",
         "uses": "Yanıtları saklama, gösterme, değiştirme ve silme"
+      },
+      "other_structure": {
+        "label": "Tablo oluşturma ve değiştirme",
+        "uses": "Gezginden ve içe aktarmalardan şemalarınızda yeni tablolar ve sütunlar"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Şema başına izinler. 19c ve öncesi için kapatın (tablo başına izinler).",
       "block": {
         "account": "1. Hesap (mevcut bir hesabı kullanmak için atlayın)",
-        "read": "3. Diğer tablolarınızı okuma",
-        "write": "4. Diğer tablolarınızı değiştirme",
+        "read": "3. Veritabanının geri kalanını okuma",
+        "write": "4. Geri kalanına tam erişim",
         "own": "2. Yanıtlarınız (gerekli)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie oluşturduğu tabloların sahibidir; bu yüzden onları okuyabilir, onlara yazabilir ve sütun ekleyebilir, bu şemadaki başka hiçbir şeye değil.",
         "own_schema": "Formalie’nin tabloları, hesabın sahibi olduğu ayrı bir şemaya gider. Aşağıda daha fazlasını vermedikçe diğer şemalarınıza dokunulmaz.",
         "mysql_database": "MySQL ve MariaDB hakları veritabanı başına verir, bu yüzden bu haklar oradaki diğer tablolarınızı da kapsar. Formalie’yi kendi tablolarıyla sınırlamak için ona ayrı bir veritabanı verin.",
-        "mysql_covered": "Çalıştırılacak başka bir şey yok: Formalie’nin tabloları için verilen haklar bu veritabanını zaten kapsıyor. Burada hak vermek için yukarıdan başka veritabanları ekleyin."
+        "mysql_covered": "Çalıştırılacak başka bir şey yok: Formalie’nin tabloları için verilen haklar bu veritabanını zaten kapsıyor. Burada hak vermek için yukarıdan başka veritabanları ekleyin.",
+        "owner_alter_other": "Formalie’nin orada oluşturduğu yeni tablolar kendisine aittir. Mevcut bir tabloyu değiştirebilmesi için hesabı o tablonun sahibi yapın.",
+        "oracle_create_other": "Oracle, 23ai öncesinde tablo oluşturma iznini tek bir şemayla sınırlayamaz; bu yüzden Formalie yeni tabloları kendi şemasında oluşturur."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Diğer tablolarınızın bulunduğu şemalar",
-      "databases": "Diğer tablolarınızın bulunduğu veritabanları",
+      "schemas": "Formalie’nin çalışabileceği şemalar",
+      "databases": "Formalie’nin çalışabileceği veritabanları",
       "schemasHint": "Her birinden sonra Enter’a, boşluğa veya virgüle basın. Boş: yalnızca {schema}.",
       "databasesHint": "Her birinden sonra Enter’a, boşluğa veya virgüle basın. Boş: yalnızca {schema}.",
       "permissionsTitle": "Verilecek izinler",
-      "permissionsDesc": "Her özelliğin çalışması için hesaba bunları verin. Yanıtlarınız gereklidir; gerisi diğer tablolarınız için yaptığınız seçime göre belirlenir.",
+      "permissionsDesc": "Her özelliğin çalışması için hesaba bunları verin. Yanıtlarınız gereklidir; gerisi diğer veritabanı işlemleri için yaptığınız seçime göre belirlenir.",
       "tabOperations": "Formalie ne yapar",
       "tabScript": "Çalıştırılacak komutlar",
       "ownTitle": "Yanıtlarınız",
-      "ownDesc": "Formalie her formun yanıtlarını burada, kendi oluşturduğu ve aşağıdaki önekle adlandırdığı tablolarda saklar. Göstermek için onları geri okur; yalnızca kendi tablolarında satırları değiştirebilir, silebilir ve sütun ekleyebilir.",
+      "ownDesc": "Formalie her formun yanıtlarını burada saklar: kendi oluşturduğu ve aşağıdaki önekle adlandırdığı tablolarda ya da bir form için seçtiğiniz kendi tablonuzda. Göstermek için onları geri okur; satırları değiştirebilir, silebilir ve sütun ekleyebilir.",
       "always": "Gerekli",
       "prefix": "Tablo adı öneki",
       "prefixDesc": "Formalie’nin oluşturduğu her tablo bununla başlar, örneğin {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "Bağlantının veritabanı.",
         "mariadb": "Bağlantının veritabanı."
       },
-      "otherLegend": "Diğer tablolarınız",
+      "otherLegend": "Diğer veritabanı işlemleri",
       "other": {
-        "read_write": "Okuma ve yazma",
+        "read_write": "Tam erişim",
         "read": "Salt okunur",
-        "none": "Paylaşılmıyor"
+        "none": "Yok"
       },
       "otherDesc": {
-        "read_write": "Gezinme, sorgulama, formlarda açılır listeler için kullanma, satır düzenleme ve dosya içe aktarma.",
-        "read": "Gezinme, sorgulama ve formlarda açılır listeler için kullanma. İçlerinde hiçbir şey değişmez.",
-        "none": "Formalie bunları göremez. Yalnızca kendi yanıt tablolarını kullanır."
+        "read_write": "Gezinme, sorgulama, tablo oluşturma ve değiştirme, satır düzenleme ve içe aktarma. Yanıtları kendi tablonuzda saklamak için de gereklidir.",
+        "read": "Gezinme, inceleme, sorgulama ve tabloları formlarda açılır liste olarak kullanma. İçlerinde hiçbir şey değişmez.",
+        "none": "Formalie yalnızca yanıtlarınız için oluşturduğu tablolarla çalışır."
       },
-      "otherHint": "Yanıtlar için kullanılmaz. Bunlar mevcut tablolarınızdır; gezgin, sorgular, formlardaki açılır listeler ve içe aktarmalar içindir. Daha sonra değiştirebilirsiniz.",
+      "otherHint": "Formalie yanıtlarınızın yanı sıra bu veritabanının geri kalanıyla da çalışabilir: tablolarda gezinme ve inceleme, sorgu çalıştırma, tabloları formlarda açılır liste olarak kullanma, tablo oluşturma ve değiştirme, satır düzenleme, veri içe ve dışa aktarma. Ne kadarına izin vereceğinizi seçin. Daha sonra değiştirebilirsiniz.",
       "short": {
-        "read_write": "Diğerlerini okuma ve yazma",
-        "read": "Diğerlerini okuma",
-        "none": "Yalnızca yanıtlar"
+        "read_write": "Tam erişim",
+        "read": "Salt okunur",
+        "none": "Yalnızca yanıt tabloları"
       },
-      "optional": "İsteğe bağlı",
       "schemasHintOracle": "Formalie’nin tablolarını kullanabileceği her şemadan (sahip) sonra Enter’a, boşluğa veya virgüle basın."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Veritabanı",
       "account": "Hesap",
       "security": "Güvenlik",
-      "access": "Diğer tablolarınız",
+      "access": "Diğer veritabanı işlemleri",
       "descriptor": "Bağlantı tanımlayıcısı",
       "encrypted": "Şifreli",
       "notEncrypted": "Şifresiz",
@@ -3358,7 +3365,7 @@
         "server": "Formalie sunucularının {engine} veritabanınıza ulaşmak için kullandığı adres.",
         "signin": "Erişim adımındaki izinlere sahip herhangi bir hesap. Girdiğiniz her şey saklanmadan önce şifrelenir.",
         "security": "Bağlantı için şifreleme ve yalnızca veritabanınız özel bir ağdaysa bir SSH tüneli.",
-        "access": "Formalie bu çalışma alanının yanıtlarını burada, kendi tablolarında saklar. Diğer tablolarınıza erişim isteğe bağlıdır.",
+        "access": "Formalie bu çalışma alanının yanıtlarını burada saklar. Ardından veritabanının geri kalanının ne kadarıyla çalışabileceğini seçin.",
         "review": "Test, Formalie sunucularından çalışır ve yalnızca okur."
       },
       "name": "Ad",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Neden bir bağlantı",
-        "p1": "Bağlantı, Formalie’nin yanıtlarınızı sakladığı yerdir: her form için önekinizle adlandırılmış bir tablo.",
-        "p2": "Formalie bunları göstermek için geri okur; yalnızca kendi tablolarında değiştirebilir, silebilir ve sütun ekleyebilir.",
+        "p1": "Bağlantı, Formalie’nin yanıtlarınızı sakladığı yerdir: her form için oluşturduğu, önekinizle adlandırılmış tablolarda ya da kendi tablonuzda.",
+        "p2": "Formalie bunları göstermek için geri okur; satırları değiştirebilir ve sütun ekleyebilir.",
         "p3": "Verileriniz kendi veritabanınızda kalır, kendi sistemleriniz ve raporlarınız için hazırdır.",
-        "p4": "Diğer tablolarınızı okumak veya değiştirmek isteğe bağlıdır; gezgin, sorgular, seçenek listeleri ve içe aktarmalar için."
+        "p4": "Diğer veritabanı işlemleri (gezinme, sorgular, açılır listeler, tablo oluşturma, içe aktarmalar) seçiminize göre belirlenir: tam erişim, salt okunur veya yok."
       },
       "review": {
         "title": "Test neleri kontrol eder",

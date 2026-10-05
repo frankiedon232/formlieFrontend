@@ -2975,11 +2975,11 @@
       "copy": "Sao chép {ip}"
     },
     "engineDesc": {
-      "mysql": "Cổng 3306 · chế độ TLS đến xác minh danh tính · đường hầm SSH",
-      "mariadb": "Cổng 3306 · chế độ TLS đến xác minh danh tính · đường hầm SSH",
-      "oracle": "Cổng 1521 · tên dịch vụ, SID hoặc descriptor · TCPS hoặc mã hóa gốc",
-      "postgresql": "Cổng 5432 · lược đồ · sslmode đến verify-full · đường hầm SSH",
-      "sqlserver": "Cổng 1433 · phiên bản (instance) · đăng nhập SQL hoặc Microsoft Entra · mã hóa nghiêm ngặt"
+      "mysql": "Cổng mặc định 3306 · chế độ TLS đến xác minh danh tính · đường hầm SSH",
+      "mariadb": "Cổng mặc định 3306 · chế độ TLS đến xác minh danh tính · đường hầm SSH",
+      "oracle": "Cổng mặc định 1521 · tên dịch vụ, SID hoặc descriptor · TCPS hoặc mã hóa gốc",
+      "postgresql": "Cổng mặc định 5432 · sslmode đến verify-full · đường hầm SSH",
+      "sqlserver": "Cổng mặc định 1433 · phiên bản (instance) · đăng nhập SQL hoặc Microsoft Entra · mã hóa nghiêm ngặt"
     },
     "field": {
       "host": "Địa chỉ máy chủ",
@@ -3048,8 +3048,10 @@
         "encrypt": "Nghiêm ngặt dùng TDS 8.0 và luôn kiểm tra chứng chỉ (SQL Server 2022 và Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS mã hóa bằng TLS (khuyến nghị). TCP dựa vào mã hóa mạng gốc."
-      }
+        "protocol": "TCPS mã hóa bằng TLS (khuyến nghị). TCP dựa vào mã hóa mạng gốc.",
+        "port": "Đã điền sẵn cổng thông dụng của Oracle ({port}); TCPS thường dùng 2484. Nếu cơ sở dữ liệu của bạn lắng nghe trên cổng khác, hãy nhập cổng đó."
+      },
+      "port": "Đã điền sẵn cổng thông dụng của {engine} ({port}). Nếu cơ sở dữ liệu của bạn được thiết lập trên cổng khác, hãy nhập cổng đó."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Đã có kết nối với tên này."
     },
     "level": {
-      "read": "Đọc các bảng khác của bạn",
-      "write": "Thay đổi các bảng khác của bạn",
+      "read": "Đọc phần còn lại của cơ sở dữ liệu",
+      "write": "Toàn quyền với phần còn lại",
       "own": "Phản hồi của bạn"
     },
     "levelDesc": {
-      "read": "Trình duyệt CSDL, truy vấn, danh sách lựa chọn từ dữ liệu của bạn",
-      "write": "Sửa hàng trong trình duyệt CSDL và nhập tệp vào bảng của bạn",
+      "read": "Khám phá và kiểm tra bảng, truy vấn, danh sách thả xuống trong biểu mẫu",
+      "write": "Tạo và thay đổi bảng, sửa hàng, nhập dữ liệu, lưu phản hồi vào bảng của bạn",
       "own": "Tạo bảng cho mỗi biểu mẫu, lưu phản hồi, hiển thị, thay đổi, thêm cột"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Thêm hàng",
-        "uses": "Hàng mới và dữ liệu nhập vào bảng của bạn"
+        "uses": "Hàng mới, dữ liệu nhập, phản hồi lưu trong một bảng của bạn"
       },
       "update": {
         "label": "Thay đổi hàng",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Đọc và ghi hàng của nó",
         "uses": "Lưu, hiển thị, thay đổi và xóa phản hồi"
+      },
+      "other_structure": {
+        "label": "Tạo và thay đổi bảng",
+        "uses": "Bảng và cột mới trong lược đồ của bạn, từ trình khám phá và khi nhập dữ liệu"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Cấp quyền theo lược đồ. Tắt cho 19c trở về trước (cấp quyền theo từng bảng).",
       "block": {
         "account": "1. Tài khoản (bỏ qua để dùng tài khoản sẵn có)",
-        "read": "3. Đọc các bảng khác của bạn",
-        "write": "4. Thay đổi các bảng khác của bạn",
+        "read": "3. Đọc phần còn lại của cơ sở dữ liệu",
+        "write": "4. Toàn quyền với phần còn lại",
         "own": "2. Phản hồi của bạn (bắt buộc)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie sở hữu các bảng nó tạo, nên có thể đọc, ghi và thêm cột vào chúng, và không gì khác trong lược đồ này.",
         "own_schema": "Các bảng của Formalie nằm trong một lược đồ riêng do tài khoản sở hữu. Các lược đồ khác của bạn không bị động đến trừ khi bạn cấp thêm bên dưới.",
         "mysql_database": "MySQL và MariaDB cấp quyền theo từng cơ sở dữ liệu, nên các quyền này cũng áp dụng cho các bảng khác của bạn trong đó. Để Formalie chỉ dùng bảng của mình, hãy cho nó một cơ sở dữ liệu riêng.",
-        "mysql_covered": "Không cần chạy gì thêm: quyền cho bảng của Formalie đã bao gồm cơ sở dữ liệu này. Thêm cơ sở dữ liệu khác ở trên để cấp quyền cho chúng tại đây."
+        "mysql_covered": "Không cần chạy gì thêm: quyền cho bảng của Formalie đã bao gồm cơ sở dữ liệu này. Thêm cơ sở dữ liệu khác ở trên để cấp quyền cho chúng tại đây.",
+        "owner_alter_other": "Các bảng mới Formalie tạo ở đó thuộc về nó. Để nó thay đổi một bảng có sẵn, hãy đặt tài khoản làm chủ sở hữu bảng đó.",
+        "oracle_create_other": "Trước 23ai, Oracle không thể chỉ cấp quyền tạo bảng trong một lược đồ, nên Formalie tạo bảng mới trong lược đồ riêng của nó."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Lược đồ chứa các bảng khác của bạn",
-      "databases": "Cơ sở dữ liệu chứa các bảng khác của bạn",
+      "schemas": "Lược đồ Formalie được phép làm việc",
+      "databases": "Cơ sở dữ liệu Formalie được phép làm việc",
       "schemasHint": "Nhấn Enter, dấu cách hoặc dấu phẩy sau mỗi mục. Để trống: chỉ {schema}.",
       "databasesHint": "Nhấn Enter, dấu cách hoặc dấu phẩy sau mỗi mục. Để trống: chỉ {schema}.",
       "permissionsTitle": "Quyền cần cấp",
-      "permissionsDesc": "Cấp các quyền này cho tài khoản để mọi tính năng hoạt động. Phản hồi của bạn là bắt buộc; phần còn lại theo lựa chọn của bạn cho các bảng khác.",
+      "permissionsDesc": "Cấp các quyền này cho tài khoản để mọi tính năng hoạt động. Phản hồi của bạn là bắt buộc; phần còn lại theo lựa chọn của bạn cho các thao tác cơ sở dữ liệu khác.",
       "tabOperations": "Formalie làm gì",
       "tabScript": "Câu lệnh cần chạy",
       "ownTitle": "Phản hồi của bạn",
-      "ownDesc": "Formalie lưu phản hồi của mọi biểu mẫu tại đây, trong các bảng nó tự tạo và đặt tên với tiền tố bên dưới. Nó đọc lại để hiển thị, có thể thay đổi, xóa hàng và thêm cột, chỉ trong các bảng của chính nó.",
+      "ownDesc": "Formalie lưu phản hồi của mọi biểu mẫu tại đây: trong các bảng nó tự tạo và đặt tên với tiền tố bên dưới, hoặc trong một bảng của bạn mà bạn chọn cho biểu mẫu. Nó đọc lại để hiển thị, có thể thay đổi, xóa hàng và thêm cột.",
       "always": "Bắt buộc",
       "prefix": "Tiền tố tên bảng",
       "prefixDesc": "Mọi bảng Formalie tạo đều bắt đầu bằng tiền tố này, ví dụ {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "Cơ sở dữ liệu của kết nối.",
         "mariadb": "Cơ sở dữ liệu của kết nối."
       },
-      "otherLegend": "Các bảng khác của bạn",
+      "otherLegend": "Các thao tác cơ sở dữ liệu khác",
       "other": {
-        "read_write": "Đọc và ghi",
+        "read_write": "Toàn quyền",
         "read": "Chỉ đọc",
-        "none": "Không chia sẻ"
+        "none": "Không"
       },
       "otherDesc": {
-        "read_write": "Khám phá, truy vấn, dùng cho danh sách thả xuống trong biểu mẫu, sửa hàng và nhập tệp.",
-        "read": "Khám phá, truy vấn và dùng cho danh sách thả xuống trong biểu mẫu. Không có gì trong đó bị thay đổi.",
-        "none": "Formalie không thấy các bảng này. Nó chỉ dùng các bảng phản hồi của chính nó."
+        "read_write": "Khám phá, truy vấn, tạo và thay đổi bảng, sửa hàng và nhập dữ liệu. Cũng cần để lưu phản hồi vào một bảng của bạn.",
+        "read": "Khám phá, kiểm tra, truy vấn và dùng bảng làm danh sách thả xuống trong biểu mẫu. Không có gì trong đó bị thay đổi.",
+        "none": "Formalie chỉ làm việc với các bảng nó tạo cho phản hồi của bạn."
       },
-      "otherHint": "Không dùng cho phản hồi. Đây là các bảng bạn đã có, dùng cho trình khám phá, truy vấn, danh sách thả xuống trong biểu mẫu và nhập dữ liệu. Bạn có thể thay đổi sau.",
+      "otherHint": "Ngoài phản hồi của bạn, Formalie có thể làm việc với phần còn lại của cơ sở dữ liệu này: khám phá và kiểm tra bảng, chạy truy vấn, dùng bảng làm danh sách thả xuống trong biểu mẫu, tạo và thay đổi bảng, sửa hàng, nhập và xuất dữ liệu. Chọn mức độ nó được phép làm. Bạn có thể thay đổi sau.",
       "short": {
-        "read_write": "Đọc và ghi bảng khác",
-        "read": "Đọc bảng khác",
-        "none": "Chỉ phản hồi"
+        "read_write": "Toàn quyền",
+        "read": "Chỉ đọc",
+        "none": "Chỉ bảng phản hồi"
       },
-      "optional": "Tùy chọn",
       "schemasHintOracle": "Nhấn Enter, dấu cách hoặc dấu phẩy sau mỗi lược đồ (chủ sở hữu) mà Formalie được dùng các bảng của nó."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Cơ sở dữ liệu",
       "account": "Tài khoản",
       "security": "Bảo mật",
-      "access": "Các bảng khác của bạn",
+      "access": "Các thao tác cơ sở dữ liệu khác",
       "descriptor": "Descriptor kết nối",
       "encrypted": "Đã mã hóa",
       "notEncrypted": "Không mã hóa",
@@ -3358,7 +3365,7 @@
         "server": "Địa chỉ mà máy chủ của Formalie dùng để truy cập cơ sở dữ liệu {engine} của bạn.",
         "signin": "Bất kỳ tài khoản nào có các quyền ở bước Quyền truy cập. Mọi thứ bạn nhập đều được mã hóa trước khi lưu.",
         "security": "Mã hóa cho kết nối, và đường hầm SSH chỉ khi cơ sở dữ liệu nằm trong mạng riêng.",
-        "access": "Formalie lưu phản hồi của không gian làm việc này tại đây, trong các bảng riêng. Truy cập các bảng khác của bạn là tùy chọn.",
+        "access": "Formalie lưu phản hồi của không gian làm việc này tại đây. Sau đó, chọn mức độ Formalie được phép làm việc với phần còn lại của cơ sở dữ liệu.",
         "review": "Bài kiểm tra chạy từ máy chủ của Formalie và chỉ đọc."
       },
       "name": "Tên",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Vì sao cần kết nối",
-        "p1": "Kết nối là nơi Formalie lưu phản hồi của bạn: mỗi biểu mẫu một bảng, đặt tên theo tiền tố của bạn.",
-        "p2": "Formalie đọc lại chúng để hiển thị, và có thể thay đổi, xóa và thêm cột, chỉ trong các bảng của chính nó.",
+        "p1": "Kết nối là nơi Formalie lưu phản hồi của bạn: trong các bảng nó tạo cho mỗi biểu mẫu, đặt tên theo tiền tố của bạn, hoặc trong một bảng của bạn.",
+        "p2": "Formalie đọc lại chúng để hiển thị, và có thể thay đổi hàng và thêm cột.",
         "p3": "Dữ liệu của bạn vẫn nằm trong cơ sở dữ liệu của bạn, sẵn sàng cho hệ thống và báo cáo của bạn.",
-        "p4": "Đọc hoặc thay đổi các bảng khác của bạn là tùy chọn, dành cho trình duyệt CSDL, truy vấn, danh sách lựa chọn và nhập dữ liệu."
+        "p4": "Các thao tác cơ sở dữ liệu khác (khám phá, truy vấn, danh sách thả xuống, tạo bảng, nhập dữ liệu) theo lựa chọn của bạn: toàn quyền, chỉ đọc hoặc không."
       },
       "review": {
         "title": "Những gì được kiểm tra",

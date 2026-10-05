@@ -1,10 +1,9 @@
 <!--
-  Access step (owner 2026-10-05): a connection exists to store the workspace's responses, so
-  Formalie's own tables are always part of it: a table per form named with the chosen prefix,
-  responses written there and read back to show them, rows changed and removed, columns added, in
-  its own tables only (PostgreSQL / SQL Server: in the schema chosen here). The organisation's
-  other tables are optional (not shared · read · read and write, default read and write) for the
-  explorer, queries, option lists and imports. Below: every operation with its privilege, and the
+  Access step (owner 2026-10-05): "Your responses" (required): Formalie stores every form's
+  responses here, in tables it creates with the chosen prefix (PostgreSQL / SQL Server: in the
+  schema chosen here), or in a table of the organisation's chosen for a form. "Other database
+  operations": how much of the rest of the database Formalie may work with (explore, query, dropdown
+  lists, create and change tables, edit rows, import): full access (default) · read only · none. Below: every operation with its privilege, and the
   statements to run, written for this connection.
 -->
 <script setup lang="ts">
@@ -74,17 +73,16 @@ const tabs = computed(() => [
       </div>
     </section>
 
-    <!-- The organisation's other tables: optional, never used for responses -->
+    <!-- Other database operations: how much of the rest of the database Formalie may work with -->
     <section class="flex flex-col gap-4 rounded-lg border border-default p-3 sm:p-4">
-      <div class="flex items-start justify-between gap-3">
+      <div class="flex items-start gap-3">
         <div class="flex min-w-0 items-start gap-2.5">
-          <UIcon name="i-lucide-database" class="mt-0.5 size-4 shrink-0 text-muted" />
+          <UIcon name="i-lucide-database-zap" class="mt-0.5 size-4 shrink-0 text-highlighted" />
           <div class="flex min-w-0 flex-col gap-0.5">
             <h3 class="text-sm font-semibold text-highlighted">{{ t('dataSources.access.otherLegend') }}</h3>
             <p class="text-xs text-muted">{{ t('dataSources.access.otherHint') }}</p>
           </div>
         </div>
-        <UBadge :label="t('dataSources.access.optional')" color="neutral" variant="outline" size="sm" class="shrink-0 rounded-md" />
       </div>
       <URadioGroup
         :model-value="access.other"

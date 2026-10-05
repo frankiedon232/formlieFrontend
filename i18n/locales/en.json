@@ -2975,11 +2975,11 @@
       "copy": "Copy {ip}"
     },
     "engineDesc": {
-      "mysql": "Port 3306 · TLS modes up to verify identity · SSH tunnel",
-      "mariadb": "Port 3306 · TLS modes up to verify identity · SSH tunnel",
-      "oracle": "Port 1521 · service name, SID or descriptor · TCPS or native encryption",
-      "postgresql": "Port 5432 · schemas · sslmode up to verify-full · SSH tunnel",
-      "sqlserver": "Port 1433 · instances · SQL or Microsoft Entra sign-in · strict encryption"
+      "mysql": "Default port 3306 · TLS modes up to verify identity · SSH tunnel",
+      "mariadb": "Default port 3306 · TLS modes up to verify identity · SSH tunnel",
+      "oracle": "Default port 1521 · service name, SID or descriptor · TCPS or native encryption",
+      "postgresql": "Default port 5432 · sslmode up to verify-full · SSH tunnel",
+      "sqlserver": "Default port 1433 · instances · SQL or Microsoft Entra sign-in · strict encryption"
     },
     "field": {
       "host": "Server address",
@@ -3048,8 +3048,10 @@
         "encrypt": "Strict uses TDS 8.0 and always checks the certificate (SQL Server 2022 and Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS encrypts with TLS (recommended). TCP relies on native network encryption."
-      }
+        "protocol": "TCPS encrypts with TLS (recommended). TCP relies on native network encryption.",
+        "port": "Filled in with Oracle's usual port ({port}); TCPS often uses 2484. If your database listens on another port, enter that one."
+      },
+      "port": "Filled in with {engine}'s usual port ({port}). If your database was set up on another port, enter that one."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "A connection with this name already exists."
     },
     "level": {
-      "read": "Read your other tables",
-      "write": "Change your other tables",
+      "read": "Read the rest of the database",
+      "write": "Full access to the rest",
       "own": "Your responses"
     },
     "levelDesc": {
-      "read": "Database explorer, queries, option lists from your data",
-      "write": "Edit rows in the explorer and import files into your tables",
+      "read": "Explore and inspect tables, run queries, dropdown lists in forms",
+      "write": "Create and change tables, edit rows, import, store responses in your tables",
       "own": "Create a table per form, store responses, show them, change them, add columns"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Add rows",
-        "uses": "New rows and imports into your tables"
+        "uses": "New rows, imports, responses stored in a table of yours"
       },
       "update": {
         "label": "Change rows",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Read and write its rows",
         "uses": "Store responses, show them, change and remove them"
+      },
+      "other_structure": {
+        "label": "Create and change tables",
+        "uses": "New tables and columns in your schemas, from the explorer and imports"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Grants per schema. Turn off for 19c and earlier (grants per table).",
       "block": {
         "account": "1. The account (skip it to use one you have)",
-        "read": "3. Read your other tables",
-        "write": "4. Change your other tables",
+        "read": "3. Read the rest of the database",
+        "write": "4. Full access to the rest",
         "own": "2. Your responses (required)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie owns the tables it creates, so it can read, write and add columns to them, and to nothing else in this schema.",
         "own_schema": "Formalie's tables go in a schema of their own that the account owns. Your other schemas stay untouched unless you grant more below.",
         "mysql_database": "MySQL and MariaDB grant per database, so these rights also reach your other tables in it. To keep Formalie to its own tables, give it a database of its own.",
-        "mysql_covered": "Nothing more to run: the grants for Formalie's tables already cover this database. Add other databases above to grant them here."
+        "mysql_covered": "Nothing more to run: the grants for Formalie's tables already cover this database. Add other databases above to grant them here.",
+        "owner_alter_other": "New tables Formalie creates there are its own. To let it change an existing table, make the account that table's owner.",
+        "oracle_create_other": "Before 23ai, Oracle can't grant creating tables in one schema only, so Formalie creates new tables in its own schema."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Schemas with your other tables",
-      "databases": "Databases with your other tables",
+      "schemas": "Schemas Formalie may work in",
+      "databases": "Databases Formalie may work in",
       "schemasHint": "Press Enter, space or comma after each one. Empty: only {schema}.",
       "databasesHint": "Press Enter, space or comma after each one. Empty: only {schema}.",
       "permissionsTitle": "Permissions to grant",
-      "permissionsDesc": "Grant the account these so every feature works. Your responses are required; the rest follows your choice for your other tables.",
+      "permissionsDesc": "Grant the account these so every feature works. Your responses are required; the rest follows your choice for other database operations.",
       "tabOperations": "What Formalie does",
       "tabScript": "Statements to run",
       "ownTitle": "Your responses",
-      "ownDesc": "Formalie stores every form's responses here, in tables it creates and names with the prefix below. It reads them back to show them, and can change and remove rows and add columns, in its own tables only.",
+      "ownDesc": "Formalie stores every form's responses here: in tables it creates and names with the prefix below, or in a table of yours that you choose for a form. It reads them back to show them, and can change and remove rows and add columns.",
       "always": "Required",
       "prefix": "Table name prefix",
       "prefixDesc": "Every table Formalie creates starts with it, for example {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "The connection's database.",
         "mariadb": "The connection's database."
       },
-      "otherLegend": "Your other tables",
+      "otherLegend": "Other database operations",
       "other": {
-        "read_write": "Read and write",
+        "read_write": "Full access",
         "read": "Read only",
-        "none": "Not shared"
+        "none": "None"
       },
       "otherDesc": {
-        "read_write": "Browse, query, use for dropdown lists in forms, edit rows and import files.",
-        "read": "Browse, query and use for dropdown lists in forms. Nothing in them changes.",
-        "none": "Formalie can't see them. It only uses its own response tables."
+        "read_write": "Explore, query, create and change tables, edit rows and import. Also needed to store responses in a table of yours.",
+        "read": "Explore, inspect, query and use tables as dropdown lists in forms. Nothing in them changes.",
+        "none": "Formalie works only with the tables it creates for your responses."
       },
-      "otherHint": "Not used for responses. These are the tables you already have, for the explorer, queries, dropdown lists in forms and imports. You can change this later.",
+      "otherHint": "Besides your responses, Formalie can work with the rest of this database: explore and inspect tables, run queries, use tables as dropdown lists in forms, create and change tables, edit rows, and import and export data. Choose how much it may do. You can change this later.",
       "short": {
-        "read_write": "Read and write others",
-        "read": "Read others",
-        "none": "Responses only"
+        "read_write": "Full access",
+        "read": "Read only",
+        "none": "Response tables only"
       },
-      "optional": "Optional",
       "schemasHintOracle": "Press Enter, space or comma after each schema (owner) whose tables Formalie may use."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Database",
       "account": "Account",
       "security": "Security",
-      "access": "Your other tables",
+      "access": "Other database operations",
       "descriptor": "Connect descriptor",
       "encrypted": "Encrypted",
       "notEncrypted": "Not encrypted",
@@ -3358,7 +3365,7 @@
         "server": "The address Formalie's servers use to reach your {engine} database.",
         "signin": "Any account with the permissions from the Access step. Everything you enter is encrypted before it is stored.",
         "security": "Encryption for the connection, and an SSH tunnel only if your database is on a private network.",
-        "access": "Formalie stores this workspace's responses here, in tables of its own. Access to your other tables is optional.",
+        "access": "Formalie stores this workspace's responses here. Then choose how much of the rest of the database it may work with.",
         "review": "The test runs from Formalie's servers and only reads."
       },
       "name": "Name",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Why a connection",
-        "p1": "A connection is where Formalie stores your responses: a table for each form, named with your prefix.",
-        "p2": "Formalie reads them back to show them, and can change, remove and add columns, in its own tables only.",
+        "p1": "A connection is where Formalie stores your responses: in tables it creates for each form, named with your prefix, or in a table of yours.",
+        "p2": "Formalie reads them back to show them, and can change rows and add columns.",
         "p3": "Your data stays in your database, ready for your own systems and reports.",
-        "p4": "Reading or changing your other tables is optional, for the explorer, queries, option lists and imports."
+        "p4": "Other database operations (explore, queries, dropdown lists, creating tables, imports) follow your choice: full access, read only or none."
       },
       "review": {
         "title": "What the test checks",

@@ -2975,11 +2975,11 @@
       "copy": "Salin {ip}"
     },
     "engineDesc": {
-      "mysql": "Port 3306 · mode TLS hingga verifikasi identitas · tunnel SSH",
-      "mariadb": "Port 3306 · mode TLS hingga verifikasi identitas · tunnel SSH",
-      "oracle": "Port 1521 · nama layanan, SID, atau deskriptor · TCPS atau enkripsi native",
-      "postgresql": "Port 5432 · skema · sslmode hingga verify-full · tunnel SSH",
-      "sqlserver": "Port 1433 · instans · masuk dengan SQL atau Microsoft Entra · enkripsi ketat"
+      "mysql": "Port bawaan 3306 · mode TLS hingga verifikasi identitas · tunnel SSH",
+      "mariadb": "Port bawaan 3306 · mode TLS hingga verifikasi identitas · tunnel SSH",
+      "oracle": "Port bawaan 1521 · nama layanan, SID, atau deskriptor · TCPS atau enkripsi native",
+      "postgresql": "Port bawaan 5432 · sslmode hingga verify-full · tunnel SSH",
+      "sqlserver": "Port bawaan 1433 · instans · masuk dengan SQL atau Microsoft Entra · enkripsi ketat"
     },
     "field": {
       "host": "Alamat server",
@@ -3048,8 +3048,10 @@
         "encrypt": "Ketat menggunakan TDS 8.0 dan selalu memeriksa sertifikat (SQL Server 2022 dan Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS mengenkripsi dengan TLS (disarankan). TCP mengandalkan enkripsi jaringan native."
-      }
+        "protocol": "TCPS mengenkripsi dengan TLS (disarankan). TCP mengandalkan enkripsi jaringan native.",
+        "port": "Diisi dengan port umum Oracle ({port}); TCPS sering memakai 2484. Jika database Anda mendengarkan di port lain, masukkan port tersebut."
+      },
+      "port": "Diisi dengan port umum {engine} ({port}). Jika database Anda diatur di port lain, masukkan port tersebut."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Koneksi dengan nama ini sudah ada."
     },
     "level": {
-      "read": "Membaca tabel Anda yang lain",
-      "write": "Mengubah tabel Anda yang lain",
+      "read": "Membaca bagian lain database",
+      "write": "Akses penuh ke bagian lain",
       "own": "Respons Anda"
     },
     "levelDesc": {
-      "read": "Penjelajah database, kueri, daftar opsi dari data Anda",
-      "write": "Mengedit baris di penjelajah dan mengimpor file ke tabel Anda",
+      "read": "Menjelajahi dan memeriksa tabel, kueri, daftar dropdown di formulir",
+      "write": "Membuat dan mengubah tabel, mengedit baris, mengimpor, menyimpan respons di tabel Anda",
       "own": "Membuat tabel per formulir, menyimpan respons, menampilkan, mengubahnya, menambah kolom"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Menambah baris",
-        "uses": "Baris baru dan impor ke tabel Anda"
+        "uses": "Baris baru, impor, respons yang disimpan di tabel Anda"
       },
       "update": {
         "label": "Mengubah baris",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Membaca dan menulis barisnya",
         "uses": "Menyimpan respons, menampilkan, mengubah, dan menghapusnya"
+      },
+      "other_structure": {
+        "label": "Membuat dan mengubah tabel",
+        "uses": "Tabel dan kolom baru di skema Anda, dari penjelajah dan impor"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Izin per skema. Matikan untuk 19c dan versi sebelumnya (izin per tabel).",
       "block": {
         "account": "1. Akun (lewati untuk menggunakan akun yang sudah ada)",
-        "read": "3. Membaca tabel Anda yang lain",
-        "write": "4. Mengubah tabel Anda yang lain",
+        "read": "3. Membaca bagian lain database",
+        "write": "4. Akses penuh ke bagian lain",
         "own": "2. Respons Anda (wajib)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie memiliki tabel yang dibuatnya, sehingga dapat membaca, menulis, dan menambah kolom ke tabel tersebut, dan tidak ada yang lain di skema ini.",
         "own_schema": "Tabel Formalie berada di skema tersendiri yang dimiliki akun. Skema Anda yang lain tidak tersentuh kecuali Anda memberikan lebih di bawah.",
         "mysql_database": "MySQL dan MariaDB memberikan izin per database, sehingga hak ini juga menjangkau tabel Anda yang lain di dalamnya. Untuk membatasi Formalie pada tabelnya sendiri, berikan database tersendiri.",
-        "mysql_covered": "Tidak ada lagi yang perlu dijalankan: izin untuk tabel Formalie sudah mencakup database ini. Tambahkan database lain di atas untuk memberikan izin di sini."
+        "mysql_covered": "Tidak ada lagi yang perlu dijalankan: izin untuk tabel Formalie sudah mencakup database ini. Tambahkan database lain di atas untuk memberikan izin di sini.",
+        "owner_alter_other": "Tabel baru yang dibuat Formalie di sana adalah miliknya. Agar dapat mengubah tabel yang sudah ada, jadikan akun sebagai pemilik tabel tersebut.",
+        "oracle_create_other": "Sebelum 23ai, Oracle tidak dapat memberi izin membuat tabel hanya di satu skema, jadi Formalie membuat tabel baru di skemanya sendiri."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Skema dengan tabel Anda yang lain",
-      "databases": "Database dengan tabel Anda yang lain",
+      "schemas": "Skema tempat Formalie boleh bekerja",
+      "databases": "Database tempat Formalie boleh bekerja",
       "schemasHint": "Tekan Enter, spasi, atau koma setelah setiap entri. Kosong: hanya {schema}.",
       "databasesHint": "Tekan Enter, spasi, atau koma setelah setiap entri. Kosong: hanya {schema}.",
       "permissionsTitle": "Izin yang perlu diberikan",
-      "permissionsDesc": "Berikan izin ini ke akun agar setiap fitur berfungsi. Respons Anda wajib; sisanya mengikuti pilihan Anda untuk tabel Anda yang lain.",
+      "permissionsDesc": "Berikan izin ini ke akun agar setiap fitur berfungsi. Respons Anda wajib; sisanya mengikuti pilihan Anda untuk operasi database lainnya.",
       "tabOperations": "Yang dilakukan Formalie",
       "tabScript": "Pernyataan untuk dijalankan",
       "ownTitle": "Respons Anda",
-      "ownDesc": "Formalie menyimpan respons setiap formulir di sini, dalam tabel yang dibuatnya dan dinamai dengan awalan di bawah. Formalie membacanya kembali untuk menampilkannya, dan dapat mengubah serta menghapus baris dan menambah kolom, hanya di tabelnya sendiri.",
+      "ownDesc": "Formalie menyimpan respons setiap formulir di sini: dalam tabel yang dibuatnya dan dinamai dengan awalan di bawah, atau dalam tabel Anda yang Anda pilih untuk sebuah formulir. Formalie membacanya kembali untuk menampilkannya, dan dapat mengubah serta menghapus baris dan menambah kolom.",
       "always": "Wajib",
       "prefix": "Awalan nama tabel",
       "prefixDesc": "Setiap tabel yang dibuat Formalie diawali dengan ini, misalnya {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "Database koneksi.",
         "mariadb": "Database koneksi."
       },
-      "otherLegend": "Tabel Anda yang lain",
+      "otherLegend": "Operasi database lainnya",
       "other": {
-        "read_write": "Baca dan tulis",
+        "read_write": "Akses penuh",
         "read": "Hanya baca",
-        "none": "Tidak dibagikan"
+        "none": "Tidak ada"
       },
       "otherDesc": {
-        "read_write": "Jelajahi, kueri, gunakan untuk daftar dropdown di formulir, edit baris, dan impor file.",
-        "read": "Jelajahi, kueri, dan gunakan untuk daftar dropdown di formulir. Tidak ada yang berubah di dalamnya.",
-        "none": "Formalie tidak dapat melihatnya. Formalie hanya menggunakan tabel responsnya sendiri."
+        "read_write": "Jelajahi, kueri, buat dan ubah tabel, edit baris, dan impor. Juga diperlukan untuk menyimpan respons di tabel Anda.",
+        "read": "Jelajahi, periksa, kueri, dan gunakan tabel sebagai daftar dropdown di formulir. Tidak ada yang berubah di dalamnya.",
+        "none": "Formalie hanya bekerja dengan tabel yang dibuatnya untuk respons Anda."
       },
-      "otherHint": "Tidak digunakan untuk respons. Ini adalah tabel yang sudah Anda miliki, untuk penjelajah, kueri, daftar dropdown di formulir, dan impor. Anda dapat mengubahnya nanti.",
+      "otherHint": "Selain respons Anda, Formalie dapat bekerja dengan bagian lain database ini: menjelajahi dan memeriksa tabel, menjalankan kueri, memakai tabel sebagai daftar dropdown di formulir, membuat dan mengubah tabel, mengedit baris, serta mengimpor dan mengekspor data. Pilih seberapa banyak yang boleh dilakukannya. Anda dapat mengubahnya nanti.",
       "short": {
-        "read_write": "Baca dan tulis lainnya",
-        "read": "Baca lainnya",
-        "none": "Hanya respons"
+        "read_write": "Akses penuh",
+        "read": "Hanya baca",
+        "none": "Hanya tabel respons"
       },
-      "optional": "Opsional",
       "schemasHintOracle": "Tekan Enter, spasi, atau koma setelah setiap skema (pemilik) yang tabelnya boleh digunakan Formalie."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Database",
       "account": "Akun",
       "security": "Keamanan",
-      "access": "Tabel Anda yang lain",
+      "access": "Operasi database lainnya",
       "descriptor": "Deskriptor koneksi",
       "encrypted": "Terenkripsi",
       "notEncrypted": "Tidak terenkripsi",
@@ -3358,7 +3365,7 @@
         "server": "Alamat yang digunakan server Formalie untuk menjangkau database {engine} Anda.",
         "signin": "Akun apa pun dengan izin dari langkah Akses. Semua yang Anda masukkan dienkripsi sebelum disimpan.",
         "security": "Enkripsi untuk koneksi, dan tunnel SSH hanya jika database Anda berada di jaringan privat.",
-        "access": "Formalie menyimpan respons ruang kerja ini di sini, dalam tabelnya sendiri. Akses ke tabel Anda yang lain bersifat opsional.",
+        "access": "Formalie menyimpan respons ruang kerja ini di sini. Lalu pilih seberapa banyak bagian lain dari database yang boleh digunakannya.",
         "review": "Pengujian dijalankan dari server Formalie dan hanya membaca."
       },
       "name": "Nama",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Mengapa koneksi",
-        "p1": "Koneksi adalah tempat Formalie menyimpan respons Anda: satu tabel untuk setiap formulir, dinamai dengan awalan Anda.",
-        "p2": "Formalie membacanya kembali untuk menampilkannya, dan dapat mengubah serta menghapus baris dan menambah kolom, hanya di tabelnya sendiri.",
+        "p1": "Koneksi adalah tempat Formalie menyimpan respons Anda: dalam tabel yang dibuatnya untuk setiap formulir, dinamai dengan awalan Anda, atau dalam tabel Anda.",
+        "p2": "Formalie membacanya kembali untuk menampilkannya, dan dapat mengubah baris serta menambah kolom.",
         "p3": "Data Anda tetap di database Anda, siap untuk sistem dan laporan Anda sendiri.",
-        "p4": "Membaca atau mengubah tabel Anda yang lain bersifat opsional, untuk penjelajah, kueri, daftar opsi, dan impor."
+        "p4": "Operasi database lainnya (penjelajah, kueri, daftar dropdown, membuat tabel, impor) mengikuti pilihan Anda: akses penuh, hanya baca, atau tidak ada."
       },
       "review": {
         "title": "Yang diperiksa pengujian",

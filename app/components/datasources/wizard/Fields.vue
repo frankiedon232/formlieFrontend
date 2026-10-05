@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import type { DataSourceSecrets, DataSourceSettings, DbEngine } from '#shared/types/datasources'
 import { fieldsFor, isSecretField, type EngineField, type FieldStep } from '#shared/utils/datasources/engines'
+import { databaseOf } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ engine: DbEngine; step: FieldStep; secretsSet?: string[]; errors: Record<string, string> }>()
 const settings = defineModel<DataSourceSettings>('settings', { required: true })
@@ -21,7 +22,10 @@ const moreOpen = ref(false)
 watch(() => props.errors, errors => advanced.value.some(field => errors[field.key]) && (moreOpen.value = true))
 
 const label = (field: EngineField) => t(`dataSources.field.${field.key}`)
-const hint = (field: EngineField) => (te(`dataSources.hint.${props.engine}.${field.key}`) ? t(`dataSources.hint.${props.engine}.${field.key}`) : te(`dataSources.hint.${field.key}`) ? t(`dataSources.hint.${field.key}`) : undefined)
+// Hints can name the engine and its usual port ("Filled in with PostgreSQL's usual port, 5432 …").
+const hintParams = computed(() => ({ engine: engineName(props.engine), port: databaseOf(props.engine)?.defaultPort ?? '' }))
+const hint = (field: EngineField) =>
+  te(`dataSources.hint.${props.engine}.${field.key}`) ? t(`dataSources.hint.${props.engine}.${field.key}`, hintParams.value) : te(`dataSources.hint.${field.key}`) ? t(`dataSources.hint.${field.key}`, hintParams.value) : undefined
 const error = (field: EngineField) => (props.errors[field.key] ? t(`dataSources.invalid.${props.errors[field.key]}`) : undefined)
 const items = (field: EngineField) => (field.options ?? []).map(value => ({ value, label: t(`dataSources.option.${field.key}.${value}`) }))
 const isSaved = (field: EngineField) => isSecretField(field) && !!props.secretsSet?.includes(field.key)

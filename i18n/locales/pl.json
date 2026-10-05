@@ -2975,11 +2975,11 @@
       "copy": "Kopiuj {ip}"
     },
     "engineDesc": {
-      "mysql": "Port 3306 · tryby TLS aż do weryfikacji tożsamości · tunel SSH",
-      "mariadb": "Port 3306 · tryby TLS aż do weryfikacji tożsamości · tunel SSH",
-      "oracle": "Port 1521 · nazwa usługi, SID lub deskryptor · TCPS lub szyfrowanie natywne",
-      "postgresql": "Port 5432 · schematy · sslmode aż do verify-full · tunel SSH",
-      "sqlserver": "Port 1433 · instancje · logowanie SQL lub Microsoft Entra · ścisłe szyfrowanie"
+      "mysql": "Domyślny port 3306 · tryby TLS aż do weryfikacji tożsamości · tunel SSH",
+      "mariadb": "Domyślny port 3306 · tryby TLS aż do weryfikacji tożsamości · tunel SSH",
+      "oracle": "Domyślny port 1521 · nazwa usługi, SID lub deskryptor · TCPS lub szyfrowanie natywne",
+      "postgresql": "Domyślny port 5432 · sslmode aż do verify-full · tunel SSH",
+      "sqlserver": "Domyślny port 1433 · instancje · logowanie SQL lub Microsoft Entra · ścisłe szyfrowanie"
     },
     "field": {
       "host": "Adres serwera",
@@ -3048,8 +3048,10 @@
         "encrypt": "Ścisłe używa TDS 8.0 i zawsze sprawdza certyfikat (SQL Server 2022 i Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS szyfruje za pomocą TLS (zalecane). TCP opiera się na natywnym szyfrowaniu sieciowym."
-      }
+        "protocol": "TCPS szyfruje za pomocą TLS (zalecane). TCP opiera się na natywnym szyfrowaniu sieciowym.",
+        "port": "Wypełniono typowym portem Oracle ({port}); TCPS często używa 2484. Jeśli baza danych nasłuchuje na innym porcie, wpisz go."
+      },
+      "port": "Wypełniono typowym portem {engine} ({port}). Jeśli baza danych działa na innym porcie, wpisz go."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Połączenie o tej nazwie już istnieje."
     },
     "level": {
-      "read": "Odczyt pozostałych tabel",
-      "write": "Zmiana pozostałych tabel",
+      "read": "Odczyt reszty bazy danych",
+      "write": "Pełny dostęp do reszty",
       "own": "Twoje odpowiedzi"
     },
     "levelDesc": {
-      "read": "Eksplorator baz, zapytania, listy opcji z Twoich danych",
-      "write": "Edycja wierszy w eksploratorze i import plików do Twoich tabel",
+      "read": "Przeglądanie i sprawdzanie tabel, zapytania, listy rozwijane w formularzach",
+      "write": "Tworzenie i zmiana tabel, edycja wierszy, import, zapisywanie odpowiedzi w Twoich tabelach",
       "own": "Tworzenie tabeli dla każdego formularza, zapisywanie, wyświetlanie i zmiana odpowiedzi, dodawanie kolumn"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Dodawanie wierszy",
-        "uses": "Nowe wiersze i importy do Twoich tabel"
+        "uses": "Nowe wiersze, importy, odpowiedzi zapisywane w Twojej tabeli"
       },
       "update": {
         "label": "Zmiana wierszy",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Odczyt i zapis własnych wierszy",
         "uses": "Zapisywanie, wyświetlanie, zmiana i usuwanie odpowiedzi"
+      },
+      "other_structure": {
+        "label": "Tworzenie i zmiana tabel",
+        "uses": "Nowe tabele i kolumny w Twoich schematach, z eksploratora i importów"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Uprawnienia na poziomie schematu. Wyłącz dla 19c i starszych (uprawnienia na poziomie tabel).",
       "block": {
         "account": "1. Konto (pomiń, aby użyć istniejącego)",
-        "read": "3. Odczyt pozostałych tabel",
-        "write": "4. Zmiana pozostałych tabel",
+        "read": "3. Odczyt reszty bazy danych",
+        "write": "4. Pełny dostęp do reszty",
         "own": "2. Twoje odpowiedzi (wymagane)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie jest właścicielem tworzonych przez siebie tabel, więc może je odczytywać, zapisywać i dodawać do nich kolumny, i nic więcej w tym schemacie.",
         "own_schema": "Tabele Formalie trafiają do osobnego schematu, którego właścicielem jest konto. Pozostałe schematy pozostają nietknięte, chyba że nadasz więcej poniżej.",
         "mysql_database": "MySQL i MariaDB nadają uprawnienia na poziomie bazy danych, więc obejmują one także pozostałe tabele w tej bazie. Aby ograniczyć Formalie do własnych tabel, przydziel mu osobną bazę danych.",
-        "mysql_covered": "Nic więcej do uruchomienia: uprawnienia dla tabel Formalie obejmują już tę bazę danych. Dodaj inne bazy danych powyżej, aby nadać je tutaj."
+        "mysql_covered": "Nic więcej do uruchomienia: uprawnienia dla tabel Formalie obejmują już tę bazę danych. Dodaj inne bazy danych powyżej, aby nadać je tutaj.",
+        "owner_alter_other": "Nowe tabele, które Formalie tam tworzy, należą do niego. Aby mógł zmienić istniejącą tabelę, ustaw konto jako jej właściciela.",
+        "oracle_create_other": "Przed wersją 23ai Oracle nie pozwala ograniczyć tworzenia tabel do jednego schematu, więc Formalie tworzy nowe tabele we własnym schemacie."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Schematy z pozostałymi tabelami",
-      "databases": "Bazy danych z pozostałymi tabelami",
+      "schemas": "Schematy, w których Formalie może pracować",
+      "databases": "Bazy danych, w których Formalie może pracować",
       "schemasHint": "Naciśnij Enter, spację lub przecinek po każdej pozycji. Puste: tylko {schema}.",
       "databasesHint": "Naciśnij Enter, spację lub przecinek po każdej pozycji. Puste: tylko {schema}.",
       "permissionsTitle": "Uprawnienia do nadania",
-      "permissionsDesc": "Nadaj kontu te uprawnienia, aby każda funkcja działała. Twoje odpowiedzi są wymagane; reszta zależy od Twojego wyboru dla pozostałych tabel.",
+      "permissionsDesc": "Nadaj kontu te uprawnienia, aby każda funkcja działała. Twoje odpowiedzi są wymagane; reszta zależy od Twojego wyboru dla innych operacji na bazie danych.",
       "tabOperations": "Co robi Formalie",
       "tabScript": "Polecenia do uruchomienia",
       "ownTitle": "Twoje odpowiedzi",
-      "ownDesc": "Formalie zapisuje tutaj odpowiedzi z każdego formularza, w tabelach, które tworzy i nazywa z prefiksem poniżej. Odczytuje je, aby je wyświetlić, może zmieniać i usuwać wiersze oraz dodawać kolumny, wyłącznie we własnych tabelach.",
+      "ownDesc": "Formalie zapisuje tutaj odpowiedzi z każdego formularza: w tabelach, które tworzy i nazywa z prefiksem poniżej, lub w Twojej tabeli wybranej dla formularza. Odczytuje je, aby je wyświetlić, może zmieniać i usuwać wiersze oraz dodawać kolumny.",
       "always": "Wymagane",
       "prefix": "Prefiks nazw tabel",
       "prefixDesc": "Od niego zaczyna się każda tabela tworzona przez Formalie, na przykład {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "Baza danych połączenia.",
         "mariadb": "Baza danych połączenia."
       },
-      "otherLegend": "Pozostałe tabele",
+      "otherLegend": "Inne operacje na bazie danych",
       "other": {
-        "read_write": "Odczyt i zapis",
+        "read_write": "Pełny dostęp",
         "read": "Tylko odczyt",
-        "none": "Nieudostępniane"
+        "none": "Brak"
       },
       "otherDesc": {
-        "read_write": "Przeglądanie, zapytania, użycie w listach rozwijanych w formularzach, edycja wierszy i import plików.",
-        "read": "Przeglądanie, zapytania i użycie w listach rozwijanych w formularzach. Nic się w nich nie zmienia.",
-        "none": "Formalie ich nie widzi. Używa tylko własnych tabel odpowiedzi."
+        "read_write": "Przeglądanie, zapytania, tworzenie i zmiana tabel, edycja wierszy i import. Potrzebne także do zapisywania odpowiedzi w Twojej tabeli.",
+        "read": "Przeglądanie, sprawdzanie, zapytania i użycie tabel jako list rozwijanych w formularzach. Nic się w nich nie zmienia.",
+        "none": "Formalie pracuje tylko z tabelami, które tworzy dla Twoich odpowiedzi."
       },
-      "otherHint": "Nieużywane do odpowiedzi. To tabele, które już masz, dla eksploratora, zapytań, list rozwijanych w formularzach i importu. Możesz to zmienić później.",
+      "otherHint": "Oprócz Twoich odpowiedzi Formalie może pracować z resztą tej bazy danych: przeglądać i sprawdzać tabele, wykonywać zapytania, używać tabel jako list rozwijanych w formularzach, tworzyć i zmieniać tabele, edytować wiersze oraz importować i eksportować dane. Wybierz, na ile może sobie pozwolić. Możesz to zmienić później.",
       "short": {
-        "read_write": "Odczyt i zapis pozostałych",
-        "read": "Odczyt pozostałych",
-        "none": "Tylko odpowiedzi"
+        "read_write": "Pełny dostęp",
+        "read": "Tylko odczyt",
+        "none": "Tylko tabele odpowiedzi"
       },
-      "optional": "Opcjonalne",
       "schemasHintOracle": "Naciśnij Enter, spację lub przecinek po każdym schemacie (właścicielu), którego tabel Formalie może używać."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Baza danych",
       "account": "Konto",
       "security": "Bezpieczeństwo",
-      "access": "Pozostałe tabele",
+      "access": "Inne operacje na bazie danych",
       "descriptor": "Deskryptor połączenia",
       "encrypted": "Szyfrowane",
       "notEncrypted": "Nieszyfrowane",
@@ -3358,7 +3365,7 @@
         "server": "Adres, pod którym serwery Formalie łączą się z Twoją bazą danych {engine}.",
         "signin": "Dowolne konto z uprawnieniami z kroku Dostęp. Wszystko, co wpiszesz, jest szyfrowane przed zapisaniem.",
         "security": "Szyfrowanie połączenia oraz tunel SSH tylko wtedy, gdy baza danych jest w sieci prywatnej.",
-        "access": "Formalie zapisuje tutaj odpowiedzi z tej przestrzeni roboczej, we własnych tabelach. Dostęp do pozostałych tabel jest opcjonalny.",
+        "access": "Formalie zapisuje tutaj odpowiedzi z tej przestrzeni roboczej. Następnie wybierz, z jaką częścią reszty bazy danych może pracować.",
         "review": "Test jest uruchamiany z serwerów Formalie i tylko odczytuje."
       },
       "name": "Nazwa",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Po co połączenie",
-        "p1": "Połączenie to miejsce, w którym Formalie zapisuje Twoje odpowiedzi: jedna tabela na formularz, z Twoim prefiksem w nazwie.",
-        "p2": "Formalie odczytuje je, aby je wyświetlić, i może zmieniać, usuwać oraz dodawać kolumny, wyłącznie we własnych tabelach.",
+        "p1": "Połączenie to miejsce, w którym Formalie zapisuje Twoje odpowiedzi: w tabelach tworzonych dla każdego formularza, z Twoim prefiksem w nazwie, lub w Twojej tabeli.",
+        "p2": "Formalie odczytuje je, aby je wyświetlić, i może zmieniać wiersze oraz dodawać kolumny.",
         "p3": "Twoje dane zostają w Twojej bazie danych, gotowe dla Twoich systemów i raportów.",
-        "p4": "Odczyt lub zmiana pozostałych tabel jest opcjonalna, dla eksploratora, zapytań, list opcji i importów."
+        "p4": "Inne operacje na bazie danych (przeglądanie, zapytania, listy rozwijane, tworzenie tabel, importy) zależą od Twojego wyboru: pełny dostęp, tylko odczyt lub brak."
       },
       "review": {
         "title": "Co sprawdza test",

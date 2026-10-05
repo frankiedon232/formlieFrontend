@@ -2975,11 +2975,11 @@
       "copy": "Copiar {ip}"
     },
     "engineDesc": {
-      "mysql": "Porta 3306 · modos TLS até verificação de identidade · túnel SSH",
-      "mariadb": "Porta 3306 · modos TLS até verificação de identidade · túnel SSH",
-      "oracle": "Porta 1521 · nome de serviço, SID ou descritor · TCPS ou criptografia nativa",
-      "postgresql": "Porta 5432 · esquemas · sslmode até verify-full · túnel SSH",
-      "sqlserver": "Porta 1433 · instâncias · login SQL ou Microsoft Entra · criptografia estrita"
+      "mysql": "Porta padrão 3306 · modos TLS até verificação de identidade · túnel SSH",
+      "mariadb": "Porta padrão 3306 · modos TLS até verificação de identidade · túnel SSH",
+      "oracle": "Porta padrão 1521 · nome de serviço, SID ou descritor · TCPS ou criptografia nativa",
+      "postgresql": "Porta padrão 5432 · sslmode até verify-full · túnel SSH",
+      "sqlserver": "Porta padrão 1433 · instâncias · login SQL ou Microsoft Entra · criptografia estrita"
     },
     "field": {
       "host": "Endereço do servidor",
@@ -3048,8 +3048,10 @@
         "encrypt": "Estrito usa TDS 8.0 e sempre verifica o certificado (SQL Server 2022 e Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS criptografa com TLS (recomendado). TCP depende da criptografia de rede nativa."
-      }
+        "protocol": "TCPS criptografa com TLS (recomendado). TCP depende da criptografia de rede nativa.",
+        "port": "Preenchido com a porta habitual do Oracle ({port}); TCPS costuma usar 2484. Se o seu banco de dados escuta em outra porta, informe-a."
+      },
+      "port": "Preenchido com a porta habitual do {engine} ({port}). Se o seu banco de dados foi configurado em outra porta, informe-a."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Já existe uma conexão com este nome."
     },
     "level": {
-      "read": "Ler suas outras tabelas",
-      "write": "Alterar suas outras tabelas",
+      "read": "Ler o restante do banco de dados",
+      "write": "Acesso total ao restante",
       "own": "Suas respostas"
     },
     "levelDesc": {
-      "read": "Explorador de BD, consultas, listas de opções a partir dos seus dados",
-      "write": "Editar linhas no explorador e importar arquivos para suas tabelas",
+      "read": "Explorar e inspecionar tabelas, consultas, listas suspensas em formulários",
+      "write": "Criar e alterar tabelas, editar linhas, importar, armazenar respostas nas suas tabelas",
       "own": "Criar uma tabela por formulário, armazenar respostas, exibi-las, alterá-las, adicionar colunas"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Adicionar linhas",
-        "uses": "Novas linhas e importações nas suas tabelas"
+        "uses": "Novas linhas, importações, respostas armazenadas em uma tabela sua"
       },
       "update": {
         "label": "Alterar linhas",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Ler e gravar as próprias linhas",
         "uses": "Armazenar respostas, exibi-las, alterá-las e removê-las"
+      },
+      "other_structure": {
+        "label": "Criar e alterar tabelas",
+        "uses": "Novas tabelas e colunas nos seus esquemas, a partir do explorador e de importações"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Concessões por esquema. Desative para 19c e anteriores (concessões por tabela).",
       "block": {
         "account": "1. A conta (pule para usar uma existente)",
-        "read": "3. Ler suas outras tabelas",
-        "write": "4. Alterar suas outras tabelas",
+        "read": "3. Ler o restante do banco de dados",
+        "write": "4. Acesso total ao restante",
         "own": "2. Suas respostas (obrigatório)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "O Formalie é dono das tabelas que cria, então pode lê-las, gravar nelas e adicionar colunas, e nada mais neste esquema.",
         "own_schema": "As tabelas do Formalie ficam em um esquema próprio, de propriedade da conta. Seus outros esquemas permanecem intocados, a menos que você conceda mais abaixo.",
         "mysql_database": "MySQL e MariaDB concedem direitos por banco de dados, então esses direitos também alcançam suas outras tabelas nele. Para limitar o Formalie às próprias tabelas, dê a ele um banco de dados exclusivo.",
-        "mysql_covered": "Nada mais a executar: os direitos para as tabelas do Formalie já cobrem este banco de dados. Adicione outros bancos de dados acima para concedê-los aqui."
+        "mysql_covered": "Nada mais a executar: os direitos para as tabelas do Formalie já cobrem este banco de dados. Adicione outros bancos de dados acima para concedê-los aqui.",
+        "owner_alter_other": "As novas tabelas que o Formalie cria ali são dele. Para que ele altere uma tabela existente, torne a conta proprietária dessa tabela.",
+        "oracle_create_other": "Antes do 23ai, o Oracle não permite conceder a criação de tabelas em um único esquema, então o Formalie cria novas tabelas no próprio esquema."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Esquemas com suas outras tabelas",
-      "databases": "Bancos de dados com suas outras tabelas",
+      "schemas": "Esquemas em que o Formalie pode trabalhar",
+      "databases": "Bancos de dados em que o Formalie pode trabalhar",
       "schemasHint": "Pressione Enter, espaço ou vírgula após cada um. Vazio: somente {schema}.",
       "databasesHint": "Pressione Enter, espaço ou vírgula após cada um. Vazio: somente {schema}.",
       "permissionsTitle": "Permissões a conceder",
-      "permissionsDesc": "Conceda estas permissões à conta para que todos os recursos funcionem. Suas respostas são obrigatórias; o restante segue sua escolha para suas outras tabelas.",
+      "permissionsDesc": "Conceda estas permissões à conta para que todos os recursos funcionem. Suas respostas são obrigatórias; o restante segue sua escolha para outras operações no banco de dados.",
       "tabOperations": "O que o Formalie faz",
       "tabScript": "Comandos a executar",
       "ownTitle": "Suas respostas",
-      "ownDesc": "O Formalie armazena aqui as respostas de cada formulário, em tabelas que ele cria e nomeia com o prefixo abaixo. Ele as lê de volta para exibi-las e pode alterar e remover linhas e adicionar colunas, somente nas próprias tabelas.",
+      "ownDesc": "O Formalie armazena aqui as respostas de cada formulário: em tabelas que ele cria e nomeia com o prefixo abaixo, ou em uma tabela sua escolhida para um formulário. Ele as lê de volta para exibi-las e pode alterar e remover linhas e adicionar colunas.",
       "always": "Obrigatório",
       "prefix": "Prefixo dos nomes das tabelas",
       "prefixDesc": "Toda tabela que o Formalie cria começa com ele, por exemplo {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "O banco de dados da conexão.",
         "mariadb": "O banco de dados da conexão."
       },
-      "otherLegend": "Suas outras tabelas",
+      "otherLegend": "Outras operações no banco de dados",
       "other": {
-        "read_write": "Leitura e gravação",
+        "read_write": "Acesso total",
         "read": "Somente leitura",
-        "none": "Não compartilhadas"
+        "none": "Nenhum"
       },
       "otherDesc": {
-        "read_write": "Explorar, consultar, usar em listas suspensas nos formulários, editar linhas e importar arquivos.",
-        "read": "Explorar, consultar e usar em listas suspensas nos formulários. Nada nelas muda.",
-        "none": "O Formalie não as vê. Ele usa somente as próprias tabelas de respostas."
+        "read_write": "Explorar, consultar, criar e alterar tabelas, editar linhas e importar. Também necessário para armazenar respostas em uma tabela sua.",
+        "read": "Explorar, inspecionar, consultar e usar tabelas como listas suspensas em formulários. Nada nelas muda.",
+        "none": "O Formalie trabalha somente com as tabelas que cria para suas respostas."
       },
-      "otherHint": "Não usado para respostas. São as tabelas que você já tem, para o explorador, consultas, listas suspensas em formulários e importações. Você pode mudar isso depois.",
+      "otherHint": "Além das suas respostas, o Formalie pode trabalhar com o restante deste banco de dados: explorar e inspecionar tabelas, executar consultas, usar tabelas como listas suspensas em formulários, criar e alterar tabelas, editar linhas e importar e exportar dados. Escolha o quanto ele pode fazer. Você pode mudar isso depois.",
       "short": {
-        "read_write": "Ler e gravar outras",
-        "read": "Ler outras",
-        "none": "Somente respostas"
+        "read_write": "Acesso total",
+        "read": "Somente leitura",
+        "none": "Somente tabelas de respostas"
       },
-      "optional": "Opcional",
       "schemasHintOracle": "Pressione Enter, espaço ou vírgula após cada esquema (proprietário) cujas tabelas o Formalie pode usar."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Banco de dados",
       "account": "Conta",
       "security": "Segurança",
-      "access": "Suas outras tabelas",
+      "access": "Outras operações no banco de dados",
       "descriptor": "Descritor de conexão",
       "encrypted": "Criptografada",
       "notEncrypted": "Sem criptografia",
@@ -3358,7 +3365,7 @@
         "server": "O endereço que os servidores do Formalie usam para alcançar seu banco de dados {engine}.",
         "signin": "Qualquer conta com as permissões da etapa Acesso. Tudo o que você informar é criptografado antes de ser armazenado.",
         "security": "Criptografia para a conexão e um túnel SSH somente se o banco de dados estiver em uma rede privada.",
-        "access": "O Formalie armazena aqui as respostas deste espaço de trabalho, em tabelas próprias. O acesso às suas outras tabelas é opcional.",
+        "access": "O Formalie armazena aqui as respostas deste espaço de trabalho. Depois, escolha com quanto do resto do banco de dados ele pode trabalhar.",
         "review": "O teste é executado a partir dos servidores do Formalie e apenas lê."
       },
       "name": "Nome",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Por que uma conexão",
-        "p1": "Uma conexão é onde o Formalie armazena suas respostas: uma tabela para cada formulário, com o seu prefixo no nome.",
-        "p2": "O Formalie as lê de volta para exibi-las e pode alterar, remover e adicionar colunas, somente nas próprias tabelas.",
+        "p1": "Uma conexão é onde o Formalie armazena suas respostas: em tabelas que ele cria para cada formulário, com o seu prefixo no nome, ou em uma tabela sua.",
+        "p2": "O Formalie as lê de volta para exibi-las e pode alterar linhas e adicionar colunas.",
         "p3": "Seus dados ficam no seu banco de dados, prontos para os seus sistemas e relatórios.",
-        "p4": "Ler ou alterar suas outras tabelas é opcional, para o explorador, consultas, listas de opções e importações."
+        "p4": "Outras operações no banco de dados (explorar, consultas, listas suspensas, criar tabelas, importações) seguem sua escolha: acesso total, somente leitura ou nenhum."
       },
       "review": {
         "title": "O que o teste verifica",

@@ -2975,11 +2975,11 @@
       "copy": "{ip} kopiëren"
     },
     "engineDesc": {
-      "mysql": "Poort 3306 · TLS-modi tot en met identiteit verifiëren · SSH-tunnel",
-      "mariadb": "Poort 3306 · TLS-modi tot en met identiteit verifiëren · SSH-tunnel",
-      "oracle": "Poort 1521 · servicenaam, SID of descriptor · TCPS of native versleuteling",
-      "postgresql": "Poort 5432 · schema’s · sslmode tot en met verify-full · SSH-tunnel",
-      "sqlserver": "Poort 1433 · instanties · SQL- of Microsoft Entra-aanmelding · strikte versleuteling"
+      "mysql": "Standaardpoort 3306 · TLS-modi tot en met identiteit verifiëren · SSH-tunnel",
+      "mariadb": "Standaardpoort 3306 · TLS-modi tot en met identiteit verifiëren · SSH-tunnel",
+      "oracle": "Standaardpoort 1521 · servicenaam, SID of descriptor · TCPS of native versleuteling",
+      "postgresql": "Standaardpoort 5432 · sslmode tot en met verify-full · SSH-tunnel",
+      "sqlserver": "Standaardpoort 1433 · instanties · SQL- of Microsoft Entra-aanmelding · strikte versleuteling"
     },
     "field": {
       "host": "Serveradres",
@@ -3048,8 +3048,10 @@
         "encrypt": "Strikt gebruikt TDS 8.0 en controleert altijd het certificaat (SQL Server 2022 en Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS versleutelt met TLS (aanbevolen). TCP vertrouwt op native netwerkversleuteling."
-      }
+        "protocol": "TCPS versleutelt met TLS (aanbevolen). TCP vertrouwt op native netwerkversleuteling.",
+        "port": "Ingevuld met de gebruikelijke poort van Oracle ({port}); TCPS gebruikt vaak 2484. Luistert je database op een andere poort, vul die dan in."
+      },
+      "port": "Ingevuld met de gebruikelijke poort van {engine} ({port}). Is je database op een andere poort ingesteld, vul die dan in."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Er bestaat al een verbinding met deze naam."
     },
     "level": {
-      "read": "Uw andere tabellen lezen",
-      "write": "Uw andere tabellen wijzigen",
+      "read": "De rest van de database lezen",
+      "write": "Volledige toegang tot de rest",
       "own": "Uw reacties"
     },
     "levelDesc": {
-      "read": "Database-verkenner, query’s, optielijsten uit uw gegevens",
-      "write": "Rijen bewerken in de verkenner en bestanden importeren in uw tabellen",
+      "read": "Tabellen verkennen en bekijken, query’s, keuzelijsten in formulieren",
+      "write": "Tabellen maken en wijzigen, rijen bewerken, importeren, reacties opslaan in uw tabellen",
       "own": "Een tabel per formulier maken, reacties opslaan, tonen, wijzigen, kolommen toevoegen"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Rijen toevoegen",
-        "uses": "Nieuwe rijen en imports in uw tabellen"
+        "uses": "Nieuwe rijen, imports, reacties opgeslagen in een tabel van u"
       },
       "update": {
         "label": "Rijen wijzigen",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Eigen rijen lezen en schrijven",
         "uses": "Reacties opslaan, tonen, wijzigen en verwijderen"
+      },
+      "other_structure": {
+        "label": "Tabellen maken en wijzigen",
+        "uses": "Nieuwe tabellen en kolommen in uw schema’s, vanuit de verkenner en imports"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Rechten per schema. Zet uit voor 19c en ouder (rechten per tabel).",
       "block": {
         "account": "1. Het account (sla over om een bestaand account te gebruiken)",
-        "read": "3. Uw andere tabellen lezen",
-        "write": "4. Uw andere tabellen wijzigen",
+        "read": "3. De rest van de database lezen",
+        "write": "4. Volledige toegang tot de rest",
         "own": "2. Uw reacties (vereist)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie is eigenaar van de tabellen die het maakt, dus het kan ze lezen, erin schrijven en er kolommen aan toevoegen, en verder niets in dit schema.",
         "own_schema": "De tabellen van Formalie komen in een eigen schema dat het account bezit. Uw andere schema’s blijven onaangeroerd, tenzij u hieronder meer toekent.",
         "mysql_database": "MySQL en MariaDB kennen rechten per database toe, dus deze rechten gelden ook voor uw andere tabellen erin. Om Formalie tot de eigen tabellen te beperken, geeft u het een eigen database.",
-        "mysql_covered": "Verder niets uit te voeren: de rechten voor de tabellen van Formalie dekken deze database al. Voeg hierboven andere databases toe om ze hier toe te kennen."
+        "mysql_covered": "Verder niets uit te voeren: de rechten voor de tabellen van Formalie dekken deze database al. Voeg hierboven andere databases toe om ze hier toe te kennen.",
+        "owner_alter_other": "Nieuwe tabellen die Formalie daar maakt, zijn van Formalie zelf. Maak het account eigenaar van een bestaande tabel om Formalie die te laten wijzigen.",
+        "oracle_create_other": "Vóór 23ai kan Oracle het maken van tabellen niet tot één schema beperken, dus maakt Formalie nieuwe tabellen in het eigen schema."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Schema’s met uw andere tabellen",
-      "databases": "Databases met uw andere tabellen",
+      "schemas": "Schema’s waarin Formalie mag werken",
+      "databases": "Databases waarin Formalie mag werken",
       "schemasHint": "Druk na elk item op Enter, spatie of komma. Leeg: alleen {schema}.",
       "databasesHint": "Druk na elk item op Enter, spatie of komma. Leeg: alleen {schema}.",
       "permissionsTitle": "Toe te kennen rechten",
-      "permissionsDesc": "Ken het account deze rechten toe zodat elke functie werkt. Uw reacties zijn vereist; de rest volgt uw keuze voor uw andere tabellen.",
+      "permissionsDesc": "Ken het account deze rechten toe zodat elke functie werkt. Uw reacties zijn vereist; de rest volgt uw keuze voor andere databasebewerkingen.",
       "tabOperations": "Wat Formalie doet",
       "tabScript": "Uit te voeren statements",
       "ownTitle": "Uw reacties",
-      "ownDesc": "Formalie slaat hier de reacties van elk formulier op, in tabellen die het zelf maakt en een naam geeft met het voorvoegsel hieronder. Het leest ze terug om ze te tonen en kan rijen wijzigen en verwijderen en kolommen toevoegen, alleen in de eigen tabellen.",
+      "ownDesc": "Formalie slaat hier de reacties van elk formulier op: in tabellen die het zelf maakt en een naam geeft met het voorvoegsel hieronder, of in een tabel van u die u voor een formulier kiest. Het leest ze terug om ze te tonen en kan rijen wijzigen en verwijderen en kolommen toevoegen.",
       "always": "Vereist",
       "prefix": "Voorvoegsel voor tabelnamen",
       "prefixDesc": "Elke tabel die Formalie maakt, begint hiermee, bijvoorbeeld {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "De database van de verbinding.",
         "mariadb": "De database van de verbinding."
       },
-      "otherLegend": "Uw andere tabellen",
+      "otherLegend": "Andere databasebewerkingen",
       "other": {
-        "read_write": "Lezen en schrijven",
+        "read_write": "Volledige toegang",
         "read": "Alleen lezen",
-        "none": "Niet gedeeld"
+        "none": "Geen"
       },
       "otherDesc": {
-        "read_write": "Verkennen, query’s uitvoeren, gebruiken voor keuzelijsten in formulieren, rijen bewerken en bestanden importeren.",
-        "read": "Verkennen, query’s uitvoeren en gebruiken voor keuzelijsten in formulieren. Er verandert niets in.",
-        "none": "Formalie kan ze niet zien. Het gebruikt alleen de eigen reactietabellen."
+        "read_write": "Verkennen, query’s uitvoeren, tabellen maken en wijzigen, rijen bewerken en importeren. Ook nodig om reacties in een tabel van u op te slaan.",
+        "read": "Verkennen, bekijken, query’s uitvoeren en tabellen gebruiken als keuzelijsten in formulieren. Er verandert niets in.",
+        "none": "Formalie werkt alleen met de tabellen die het voor uw reacties maakt."
       },
-      "otherHint": "Niet gebruikt voor reacties. Dit zijn uw bestaande tabellen, voor de verkenner, query’s, keuzelijsten in formulieren en imports. U kunt dit later wijzigen.",
+      "otherHint": "Naast uw reacties kan Formalie met de rest van deze database werken: tabellen verkennen en bekijken, query’s uitvoeren, tabellen gebruiken als keuzelijsten in formulieren, tabellen maken en wijzigen, rijen bewerken en gegevens importeren en exporteren. Kies hoeveel het mag doen. U kunt dit later wijzigen.",
       "short": {
-        "read_write": "Andere lezen en schrijven",
-        "read": "Andere lezen",
-        "none": "Alleen reacties"
+        "read_write": "Volledige toegang",
+        "read": "Alleen lezen",
+        "none": "Alleen reactietabellen"
       },
-      "optional": "Optioneel",
       "schemasHintOracle": "Druk op Enter, spatie of komma na elk schema (eigenaar) waarvan Formalie de tabellen mag gebruiken."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Database",
       "account": "Account",
       "security": "Beveiliging",
-      "access": "Uw andere tabellen",
+      "access": "Andere databasebewerkingen",
       "descriptor": "Connect-descriptor",
       "encrypted": "Versleuteld",
       "notEncrypted": "Niet versleuteld",
@@ -3358,7 +3365,7 @@
         "server": "Het adres waarmee de servers van Formalie uw {engine}-database bereiken.",
         "signin": "Elk account met de rechten uit de stap Toegang. Alles wat u invoert, wordt versleuteld voordat het wordt opgeslagen.",
         "security": "Versleuteling voor de verbinding, en alleen een SSH-tunnel als uw database in een privénetwerk staat.",
-        "access": "Formalie slaat de reacties van deze werkruimte hier op, in eigen tabellen. Toegang tot uw andere tabellen is optioneel.",
+        "access": "Formalie slaat de reacties van deze werkruimte hier op. Kies daarna met hoeveel van de rest van de database het mag werken.",
         "review": "De test draait vanaf de servers van Formalie en leest alleen."
       },
       "name": "Naam",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Waarom een verbinding",
-        "p1": "Een verbinding is waar Formalie uw reacties opslaat: een tabel per formulier, met uw voorvoegsel in de naam.",
-        "p2": "Formalie leest ze terug om ze te tonen, en kan wijzigen, verwijderen en kolommen toevoegen, alleen in de eigen tabellen.",
+        "p1": "Een verbinding is waar Formalie uw reacties opslaat: in tabellen die het per formulier maakt, met uw voorvoegsel in de naam, of in een tabel van u.",
+        "p2": "Formalie leest ze terug om ze te tonen en kan rijen wijzigen en kolommen toevoegen.",
         "p3": "Uw gegevens blijven in uw database, klaar voor uw eigen systemen en rapporten.",
-        "p4": "Uw andere tabellen lezen of wijzigen is optioneel, voor de verkenner, query’s, optielijsten en imports."
+        "p4": "Andere databasebewerkingen (verkennen, query’s, keuzelijsten, tabellen maken, imports) volgen uw keuze: volledige toegang, alleen lezen of geen."
       },
       "review": {
         "title": "Wat de test controleert",

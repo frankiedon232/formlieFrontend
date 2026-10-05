@@ -2975,11 +2975,11 @@
       "copy": "Nakili {ip}"
     },
     "engineDesc": {
-      "mysql": "Mlango 3306 · hali za TLS hadi kuthibitisha utambulisho · njia ya SSH",
-      "mariadb": "Mlango 3306 · hali za TLS hadi kuthibitisha utambulisho · njia ya SSH",
-      "oracle": "Mlango 1521 · jina la huduma, SID au kielezo · TCPS au usimbaji wa asili",
-      "postgresql": "Mlango 5432 · skima · sslmode hadi verify-full · njia ya SSH",
-      "sqlserver": "Mlango 1433 · matukio · kuingia kwa SQL au Microsoft Entra · usimbaji madhubuti"
+      "mysql": "Mlango chaguo-msingi 3306 · hali za TLS hadi kuthibitisha utambulisho · njia ya SSH",
+      "mariadb": "Mlango chaguo-msingi 3306 · hali za TLS hadi kuthibitisha utambulisho · njia ya SSH",
+      "oracle": "Mlango chaguo-msingi 1521 · jina la huduma, SID au kielezo · TCPS au usimbaji wa asili",
+      "postgresql": "Mlango chaguo-msingi 5432 · sslmode hadi verify-full · njia ya SSH",
+      "sqlserver": "Mlango chaguo-msingi 1433 · matukio · kuingia kwa SQL au Microsoft Entra · usimbaji madhubuti"
     },
     "field": {
       "host": "Anwani ya seva",
@@ -3048,8 +3048,10 @@
         "encrypt": "Madhubuti hutumia TDS 8.0 na hukagua cheti kila wakati (SQL Server 2022 na Azure SQL)."
       },
       "oracle": {
-        "protocol": "TCPS husimba kwa TLS (inapendekezwa). TCP hutegemea usimbaji wa asili wa mtandao."
-      }
+        "protocol": "TCPS husimba kwa TLS (inapendekezwa). TCP hutegemea usimbaji wa asili wa mtandao.",
+        "port": "Umejazwa na mlango wa kawaida wa Oracle ({port}); TCPS mara nyingi hutumia 2484. Ikiwa hifadhidata yako inasikiliza kwenye mlango mwingine, uweke huo."
+      },
+      "port": "Umejazwa na mlango wa kawaida wa {engine} ({port}). Ikiwa hifadhidata yako iliwekwa kwenye mlango mwingine, uweke huo."
     },
     "option": {
       "charset": {
@@ -3119,13 +3121,13 @@
       "taken": "Muunganisho wenye jina hili tayari upo."
     },
     "level": {
-      "read": "Soma majedwali yako mengine",
-      "write": "Badilisha majedwali yako mengine",
+      "read": "Soma sehemu iliyobaki ya hifadhidata",
+      "write": "Ufikiaji kamili wa sehemu iliyobaki",
       "own": "Majibu yako"
     },
     "levelDesc": {
-      "read": "Kivinjari cha hifadhidata, hoja, orodha za chaguo kutoka data yako",
-      "write": "Hariri safu kwenye kivinjari na ingiza faili kwenye majedwali yako",
+      "read": "Vinjari na kagua majedwali, hoja, orodha kunjuzi katika fomu",
+      "write": "Unda na badilisha majedwali, hariri safu, ingiza, hifadhi majibu katika majedwali yako",
       "own": "Unda jedwali kwa kila fomu, hifadhi majibu, yaonyeshe, yabadilishe, ongeza safuwima"
     },
     "perm": {
@@ -3158,7 +3160,7 @@
       },
       "insert": {
         "label": "Ongeza safu",
-        "uses": "Safu mpya na uingizaji kwenye majedwali yako"
+        "uses": "Safu mpya, uingizaji, majibu yaliyohifadhiwa katika jedwali lako"
       },
       "update": {
         "label": "Badilisha safu",
@@ -3187,6 +3189,10 @@
       "own_rows": {
         "label": "Soma na uandike safu zake",
         "uses": "Hifadhi majibu, yaonyeshe, yabadilishe na uyaondoe"
+      },
+      "other_structure": {
+        "label": "Unda na badilisha majedwali",
+        "uses": "Majedwali na safuwima mpya katika skima zako, kutoka kwa kivinjari na uingizaji"
       }
     },
     "grant": {
@@ -3197,8 +3203,8 @@
       "oracle23Desc": "Ruhusa kwa kila skima. Zima kwa 19c na za awali (ruhusa kwa kila jedwali).",
       "block": {
         "account": "1. Akaunti (iruke ili kutumia uliyonayo)",
-        "read": "3. Soma majedwali yako mengine",
-        "write": "4. Badilisha majedwali yako mengine",
+        "read": "3. Soma sehemu iliyobaki ya hifadhidata",
+        "write": "4. Ufikiaji kamili wa sehemu iliyobaki",
         "own": "2. Majibu yako (inahitajika)"
       },
       "note": {
@@ -3212,7 +3218,9 @@
         "owner_tables": "Formalie inamiliki majedwali inayoyaunda, hivyo inaweza kuyasoma, kuyaandikia na kuyaongezea safuwima, na si kitu kingine chochote katika skima hii.",
         "own_schema": "Majedwali ya Formalie huwekwa katika skima yake yenyewe inayomilikiwa na akaunti. Skima zako nyingine haziguswi isipokuwa utoe zaidi hapa chini.",
         "mysql_database": "MySQL na MariaDB hutoa haki kwa kila hifadhidata, hivyo haki hizi pia zinafikia majedwali yako mengine humo. Ili kuiwekea Formalie mipaka kwa majedwali yake, ipe hifadhidata yake yenyewe.",
-        "mysql_covered": "Hakuna zaidi cha kuendesha: haki za majedwali ya Formalie tayari zinashughulikia hifadhidata hii. Ongeza hifadhidata nyingine hapo juu ili kuzipa haki hapa."
+        "mysql_covered": "Hakuna zaidi cha kuendesha: haki za majedwali ya Formalie tayari zinashughulikia hifadhidata hii. Ongeza hifadhidata nyingine hapo juu ili kuzipa haki hapa.",
+        "owner_alter_other": "Majedwali mapya ambayo Formalie huunda humo ni yake. Ili iweze kubadilisha jedwali lililopo, ifanye akaunti kuwa mmiliki wa jedwali hilo.",
+        "oracle_create_other": "Kabla ya 23ai, Oracle haiwezi kuruhusu kuunda majedwali katika skima moja tu, hivyo Formalie huunda majedwali mapya katika skima yake yenyewe."
       }
     },
     "step": {
@@ -3271,16 +3279,16 @@
       }
     },
     "access": {
-      "schemas": "Skima zenye majedwali yako mengine",
-      "databases": "Hifadhidata zenye majedwali yako mengine",
+      "schemas": "Skima ambazo Formalie inaweza kufanya kazi ndani yake",
+      "databases": "Hifadhidata ambazo Formalie inaweza kufanya kazi ndani yake",
       "schemasHint": "Bonyeza Enter, nafasi au koma baada ya kila moja. Ikiwa wazi: {schema} pekee.",
       "databasesHint": "Bonyeza Enter, nafasi au koma baada ya kila moja. Ikiwa wazi: {schema} pekee.",
       "permissionsTitle": "Ruhusa za kutoa",
-      "permissionsDesc": "Ipe akaunti ruhusa hizi ili kila kipengele kifanye kazi. Majibu yako yanahitajika; mengine yanafuata chaguo lako kwa majedwali yako mengine.",
+      "permissionsDesc": "Ipe akaunti ruhusa hizi ili kila kipengele kifanye kazi. Majibu yako yanahitajika; mengine yanafuata chaguo lako kwa shughuli nyingine za hifadhidata.",
       "tabOperations": "Formalie hufanya nini",
       "tabScript": "Amri za kuendesha",
       "ownTitle": "Majibu yako",
-      "ownDesc": "Formalie huhifadhi majibu ya kila fomu hapa, katika majedwali inayoyaunda na kuyapa majina yenye kiambishi kilicho hapa chini. Huyasoma tena ili kuyaonyesha, na inaweza kubadilisha na kuondoa safu na kuongeza safuwima, katika majedwali yake tu.",
+      "ownDesc": "Formalie huhifadhi majibu ya kila fomu hapa: katika majedwali inayoyaunda na kuyapa majina yenye kiambishi kilicho hapa chini, au katika jedwali lako unalolichagua kwa fomu. Huyasoma tena ili kuyaonyesha, na inaweza kubadilisha na kuondoa safu na kuongeza safuwima.",
       "always": "Inahitajika",
       "prefix": "Kiambishi cha jina la jedwali",
       "prefixDesc": "Kila jedwali ambalo Formalie huunda huanza nacho, kwa mfano {example}.",
@@ -3293,24 +3301,23 @@
         "mysql": "Hifadhidata ya muunganisho.",
         "mariadb": "Hifadhidata ya muunganisho."
       },
-      "otherLegend": "Majedwali yako mengine",
+      "otherLegend": "Shughuli nyingine za hifadhidata",
       "other": {
-        "read_write": "Kusoma na kuandika",
+        "read_write": "Ufikiaji kamili",
         "read": "Kusoma tu",
-        "none": "Haishirikiwi"
+        "none": "Hakuna"
       },
       "otherDesc": {
-        "read_write": "Vinjari, uliza hoja, tumia kwa orodha kunjuzi katika fomu, hariri safu na ingiza faili.",
-        "read": "Vinjari, uliza hoja na tumia kwa orodha kunjuzi katika fomu. Hakuna kinachobadilika ndani yake.",
-        "none": "Formalie haiyaoni. Hutumia majedwali yake ya majibu tu."
+        "read_write": "Vinjari, uliza hoja, unda na badilisha majedwali, hariri safu na ingiza. Pia inahitajika kuhifadhi majibu katika jedwali lako.",
+        "read": "Vinjari, kagua, uliza hoja na tumia majedwali kama orodha kunjuzi katika fomu. Hakuna kinachobadilika ndani yake.",
+        "none": "Formalie hufanya kazi tu na majedwali inayoyaunda kwa majibu yako."
       },
-      "otherHint": "Hayatumiki kwa majibu. Haya ni majedwali uliyo nayo tayari, kwa kivinjari cha data, hoja, orodha kunjuzi katika fomu na uingizaji. Unaweza kubadilisha hili baadaye.",
+      "otherHint": "Mbali na majibu yako, Formalie inaweza kufanya kazi na sehemu iliyobaki ya hifadhidata hii: kuvinjari na kukagua majedwali, kuendesha hoja, kutumia majedwali kama orodha kunjuzi katika fomu, kuunda na kubadilisha majedwali, kuhariri safu, na kuingiza na kuhamisha data. Chagua kiasi inachoruhusiwa kufanya. Unaweza kubadilisha hili baadaye.",
       "short": {
-        "read_write": "Kusoma na kuandika mengine",
-        "read": "Kusoma mengine",
-        "none": "Majibu tu"
+        "read_write": "Ufikiaji kamili",
+        "read": "Kusoma tu",
+        "none": "Majedwali ya majibu tu"
       },
-      "optional": "Hiari",
       "schemasHintOracle": "Bonyeza Enter, nafasi au koma baada ya kila skima (mmiliki) ambayo majedwali yake Formalie inaweza kutumia."
     },
     "summary": {
@@ -3319,7 +3326,7 @@
       "database": "Hifadhidata",
       "account": "Akaunti",
       "security": "Usalama",
-      "access": "Majedwali yako mengine",
+      "access": "Shughuli nyingine za hifadhidata",
       "descriptor": "Kielezo cha muunganisho",
       "encrypted": "Imesimbwa",
       "notEncrypted": "Haijasimbwa",
@@ -3358,7 +3365,7 @@
         "server": "Anwani ambayo seva za Formalie hutumia kufikia hifadhidata yako ya {engine}.",
         "signin": "Akaunti yoyote yenye ruhusa za hatua ya Ufikiaji. Kila unachoingiza husimbwa kabla ya kuhifadhiwa.",
         "security": "Usimbaji wa muunganisho, na njia ya SSH tu ikiwa hifadhidata yako iko kwenye mtandao binafsi.",
-        "access": "Formalie huhifadhi majibu ya eneo hili la kazi hapa, katika majedwali yake yenyewe. Ufikiaji wa majedwali yako mengine ni wa hiari.",
+        "access": "Formalie huhifadhi majibu ya eneo hili la kazi hapa. Kisha chagua ni kiasi gani cha sehemu nyingine ya hifadhidata inaweza kufanya kazi nacho.",
         "review": "Jaribio huendeshwa kutoka seva za Formalie na husoma tu."
       },
       "name": "Jina",
@@ -3441,10 +3448,10 @@
       },
       "access": {
         "title": "Kwa nini muunganisho",
-        "p1": "Muunganisho ndipo Formalie inapohifadhi majibu yako: jedwali kwa kila fomu, lenye jina linaloanza na kiambishi chako.",
-        "p2": "Formalie huyasoma tena ili kuyaonyesha, na inaweza kubadilisha, kuondoa na kuongeza safuwima, katika majedwali yake tu.",
+        "p1": "Muunganisho ndipo Formalie inapohifadhi majibu yako: katika majedwali inayoyaunda kwa kila fomu, yenye kiambishi chako katika jina, au katika jedwali lako.",
+        "p2": "Formalie huyasoma tena ili kuyaonyesha, na inaweza kubadilisha safu na kuongeza safuwima.",
         "p3": "Data yako inabaki kwenye hifadhidata yako, tayari kwa mifumo na ripoti zako.",
-        "p4": "Kusoma au kubadilisha majedwali yako mengine ni hiari, kwa kivinjari, hoja, orodha za chaguo na uingizaji."
+        "p4": "Shughuli nyingine za hifadhidata (kuvinjari, hoja, orodha kunjuzi, kuunda majedwali, uingizaji) zinafuata chaguo lako: ufikiaji kamili, kusoma tu au hakuna."
       },
       "review": {
         "title": "Jaribio hukagua nini",
