@@ -393,7 +393,7 @@
     "apiAccess": "Règles d’accès",
     "apiLogs": "Journaux",
     "apiAnalytics": "Statistiques",
-    "apiDocs": "Docs et tests",
+    "apiDocs": "Documentation API",
     "ai": "Assistant IA",
     "aiOverview": "Vue d'ensemble",
     "aiCreateForm": "Créer un formulaire",
@@ -4016,7 +4016,7 @@
       "viewLater": "Vous pourrez le revoir plus tard dans le panneau du jeton, après avoir confirmé votre mot de passe.",
       "next": {
         "title": "La suite",
-        "test": "Utilisez ce jeton de test pour essayer l'endpoint dans Docs et tests. Rien n'est enregistré. Créez un jeton live quand vous êtes prêt pour de vrais appels.",
+        "test": "Utilisez ce jeton de test pour essayer l'endpoint dans Documentation API. Rien n'est enregistré. Créez un jeton live quand vous êtes prêt pour de vrais appels.",
         "live": "Si vous voulez, limitez qui peut l'utiliser avec des règles d'accès, testez-le, puis activez l'endpoint.",
         "rule": "Ajouter une règle d'accès"
       },
@@ -4260,7 +4260,7 @@
         "title": "La règle est active",
         "block": "Les appelants correspondant à {values} sont refusés sur {where}.",
         "allow": "Seuls les appelants correspondant à {values} (ou à une autre règle d'autorisation) entrent sur {where}.",
-        "next": "Vérifiez un appelant avec Tester un appelant, essayez ensuite l'endpoint dans Docs et tests et activez-le."
+        "next": "Vérifiez un appelant avec Tester un appelant, essayez ensuite l'endpoint dans Documentation API et activez-le."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Tester et passer en direct",
-        "text": "Essayez-le dans Docs et tests, puis activez l'endpoint pour que les jetons live puissent l'utiliser.",
-        "action": "Ouvrir Docs et tests"
+        "text": "Essayez-le dans Documentation API, puis activez l'endpoint pour que les jetons live puissent l'utiliser.",
+        "action": "Ouvrir Documentation API"
       }
     },
     "intro": {

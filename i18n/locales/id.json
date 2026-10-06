@@ -393,7 +393,7 @@
     "apiAccess": "Aturan akses",
     "apiLogs": "Log permintaan",
     "apiAnalytics": "Analitik",
-    "apiDocs": "Dokumen & uji",
+    "apiDocs": "Dokumentasi API",
     "ai": "Asisten AI",
     "aiOverview": "Ikhtisar",
     "aiCreateForm": "Buat formulir",
@@ -4016,7 +4016,7 @@
       "viewLater": "Kamu bisa melihatnya lagi nanti di panel token, setelah mengonfirmasi kata sandi.",
       "next": {
         "title": "Selanjutnya",
-        "test": "Pakai token uji ini untuk mencoba endpoint di Dokumen & uji. Tidak ada yang disimpan. Buat token live saat kamu siap untuk panggilan sungguhan.",
+        "test": "Pakai token uji ini untuk mencoba endpoint di Dokumentasi API. Tidak ada yang disimpan. Buat token live saat kamu siap untuk panggilan sungguhan.",
         "live": "Jika mau, batasi siapa yang boleh memakainya dengan aturan akses, ujilah, lalu nyalakan endpoint.",
         "rule": "Tambah aturan akses"
       },
@@ -4260,7 +4260,7 @@
         "title": "Aturan aktif",
         "block": "Pemanggil yang cocok dengan {values} ditolak di {where}.",
         "allow": "Hanya pemanggil yang cocok dengan {values} (atau aturan izinkan lain) yang masuk di {where}.",
-        "next": "Periksa pemanggil dengan Uji pemanggil, lalu coba endpoint di Dokumen & uji dan nyalakan."
+        "next": "Periksa pemanggil dengan Uji pemanggil, lalu coba endpoint di Dokumentasi API dan nyalakan."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Uji dan aktifkan",
-        "text": "Coba di Dokumen & uji, lalu nyalakan endpoint agar token live bisa memakainya.",
-        "action": "Buka Dokumen & uji"
+        "text": "Coba di Dokumentasi API, lalu nyalakan endpoint agar token live bisa memakainya.",
+        "action": "Buka Dokumentasi API"
       }
     },
     "intro": {

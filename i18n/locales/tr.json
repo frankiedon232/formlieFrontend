@@ -393,7 +393,7 @@
     "apiAccess": "Erişim kuralları",
     "apiLogs": "İstek kayıtları",
     "apiAnalytics": "Analitik",
-    "apiDocs": "Belgeler ve test",
+    "apiDocs": "API Belgeleri",
     "ai": "YZ asistanı",
     "aiOverview": "Genel bakış",
     "aiCreateForm": "Form oluştur",
@@ -4016,7 +4016,7 @@
       "viewLater": "Parolanızı doğruladıktan sonra token panelinde onu daha sonra tekrar görebilirsiniz.",
       "next": {
         "title": "Sırada ne var",
-        "test": "Endpoint'i Belgeler ve test bölümünde denemek için bu test token'ını kullanın. Hiçbir şey kaydedilmez. Gerçek çağrılara hazır olduğunuzda bir live token oluşturun.",
+        "test": "Endpoint'i API Belgeleri bölümünde denemek için bu test token'ını kullanın. Hiçbir şey kaydedilmez. Gerçek çağrılara hazır olduğunuzda bir live token oluşturun.",
         "live": "İsterseniz erişim kurallarıyla kimin kullanabileceğini sınırlayın, test edin, sonra endpoint'i açın.",
         "rule": "Erişim kuralı ekle"
       },
@@ -4260,7 +4260,7 @@
         "title": "Kural açık",
         "block": "{values} ile eşleşen çağıranlar {where} için reddedilir.",
         "allow": "Yalnızca {values} (veya başka bir izin kuralı) ile eşleşen çağıranlar {where} için içeri girer.",
-        "next": "Bir çağıranı, Bir çağıranı test et bölümüyle kontrol edin, sonra endpoint'i Belgeler ve test bölümünde deneyin ve açın."
+        "next": "Bir çağıranı, Bir çağıranı test et bölümüyle kontrol edin, sonra endpoint'i API Belgeleri bölümünde deneyin ve açın."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Test edin ve yayına alın",
-        "text": "Belgeler ve test bölümünde deneyin, sonra endpoint'i açın ki live token'lar kullanabilsin.",
-        "action": "Belgeler ve test'i aç"
+        "text": "API Belgeleri bölümünde deneyin, sonra endpoint'i açın ki live token'lar kullanabilsin.",
+        "action": "API Belgeleri'ni aç"
       }
     },
     "intro": {

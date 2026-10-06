@@ -393,7 +393,7 @@
     "apiAccess": "Regras de acesso",
     "apiLogs": "Logs de pedidos",
     "apiAnalytics": "Análises",
-    "apiDocs": "Docs e testes",
+    "apiDocs": "Documentação da API",
     "ai": "Assistente de IA",
     "aiOverview": "Visão geral",
     "aiCreateForm": "Criar um formulário",
@@ -4016,7 +4016,7 @@
       "viewLater": "Você poderá vê-lo de novo mais tarde no painel do token, depois de confirmar sua senha.",
       "next": {
         "title": "O que vem a seguir",
-        "test": "Use este token de teste para experimentar o endpoint em Docs e testes. Nada é salvo. Crie um token live quando estiver pronto para chamadas reais.",
+        "test": "Use este token de teste para experimentar o endpoint em Documentação da API. Nada é salvo. Crie um token live quando estiver pronto para chamadas reais.",
         "live": "Se quiser, limite quem pode usá-lo com regras de acesso, teste e depois ative o endpoint.",
         "rule": "Adicionar uma regra de acesso"
       },
@@ -4260,7 +4260,7 @@
         "title": "A regra está ativa",
         "block": "Quem corresponde a {values} é recusado em {where}.",
         "allow": "Só entra em {where} quem corresponde a {values} (ou a outra regra de permitir).",
-        "next": "Verifique quem chama com Testar um chamador, depois experimente o endpoint em Docs e testes e ative-o."
+        "next": "Verifique quem chama com Testar um chamador, depois experimente o endpoint em Documentação da API e ative-o."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Testar e publicar",
-        "text": "Experimente em Docs e testes e depois ative o endpoint para que tokens live possam usá-lo.",
-        "action": "Abrir Docs e testes"
+        "text": "Experimente em Documentação da API e depois ative o endpoint para que tokens live possam usá-lo.",
+        "action": "Abrir Documentação da API"
       }
     },
     "intro": {

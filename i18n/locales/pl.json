@@ -393,7 +393,7 @@
     "apiAccess": "Reguły dostępu",
     "apiLogs": "Logi żądań",
     "apiAnalytics": "Analityka",
-    "apiDocs": "Dokumentacja i testy",
+    "apiDocs": "Dokumentacja API",
     "ai": "Asystent AI",
     "aiOverview": "Przegląd",
     "aiCreateForm": "Utwórz formularz",
@@ -4016,7 +4016,7 @@
       "viewLater": "Zobaczysz go ponownie później w panelu tokenu, po potwierdzeniu hasła.",
       "next": {
         "title": "Co dalej",
-        "test": "Użyj tego tokenu testowego, aby wypróbować endpoint w Dokumentacja i testy. Nic nie jest zapisywane. Utwórz token live, gdy będziesz gotowy na prawdziwe wywołania.",
+        "test": "Użyj tego tokenu testowego, aby wypróbować endpoint w Dokumentacja API. Nic nie jest zapisywane. Utwórz token live, gdy będziesz gotowy na prawdziwe wywołania.",
         "live": "W razie potrzeby ogranicz regułami dostępu, kto może z niego korzystać, przetestuj go, a potem włącz endpoint.",
         "rule": "Dodaj regułę dostępu"
       },
@@ -4260,7 +4260,7 @@
         "title": "Reguła działa",
         "block": "Wywołujący pasujący do {values} są odrzucani w {where}.",
         "allow": "Tylko wywołujący pasujący do {values} (lub innej reguły zezwalającej) wchodzą w {where}.",
-        "next": "Sprawdź wywołującego przez Przetestuj wywołującego, potem wypróbuj endpoint w Dokumentacja i testy i włącz go."
+        "next": "Sprawdź wywołującego przez Przetestuj wywołującego, potem wypróbuj endpoint w Dokumentacja API i włącz go."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Przetestuj i uruchom",
-        "text": "Wypróbuj w Dokumentacja i testy, a potem włącz endpoint, aby mogły go używać tokeny live.",
-        "action": "Otwórz Dokumentacja i testy"
+        "text": "Wypróbuj w Dokumentacja API, a potem włącz endpoint, aby mogły go używać tokeny live.",
+        "action": "Otwórz Dokumentacja API"
       }
     },
     "intro": {

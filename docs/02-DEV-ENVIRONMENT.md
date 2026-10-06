@@ -113,7 +113,7 @@ With `NUXT_PUBLIC_API_MOCK=true` the mock answers real calls to your endpoints (
 6. Access rules and rate limits apply in the mock too (anonymous networks: `X-Debug-Network: vpn`, `proxy`, `tor` or `hosting`). To try them from Postman, these mock-only headers stand in for what the real service reads from the connection: `X-Forwarded-For: 203.0.113.10` (the caller's IP) and `X-Debug-Country: GB` (the caller's country). `Origin: https://shop.example.com` acts as a browser caller for domain rules. A refused call answers 403 `FRM-API-1015`; over a rate limit 429 with `Retry-After`.
 
 7. Files: first `POST …/{endpoint}/files?field={question key}` with Body → form-data, key `file` (type File). The answer has an `id`; send it in the JSON under that question, e.g. `"cv_resume": ["<id>"]`. The question must be accepted by the endpoint.
-8. Docs & testing has every call ready as code and a Download OpenAPI button (Postman: Import → the file).
+8. API Documentation has every call ready as code and a Download OpenAPI button (Postman: Import → the file).
 
 9. Management API: API service → API keys → New API key, then `GET https://localhost:2202/public-api/v1/forms` with `Authorization: Bearer formalie_key_…` (see API-CONTRACT → Management API).
 10. Webhooks: a receiver on your machine works while developing (`http://localhost:{port}/…`); any small server that logs the request and answers 200 will do. Send a test from the webhook's panel, then check the signature with the code under Checking the signature.

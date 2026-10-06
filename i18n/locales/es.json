@@ -393,7 +393,7 @@
     "apiAccess": "Reglas de acceso",
     "apiLogs": "Registros",
     "apiAnalytics": "Analítica",
-    "apiDocs": "Docs y pruebas",
+    "apiDocs": "Documentación de la API",
     "ai": "Asistente de IA",
     "aiOverview": "Resumen",
     "aiCreateForm": "Crear un formulario",
@@ -4016,7 +4016,7 @@
       "viewLater": "Podrás verlo de nuevo más tarde en el panel del token, tras confirmar tu contraseña.",
       "next": {
         "title": "Qué sigue",
-        "test": "Usa este token de prueba para probar el endpoint en Docs y pruebas. No se guarda nada. Crea un token live cuando estés listo para llamadas reales.",
+        "test": "Usa este token de prueba para probar el endpoint en Documentación de la API. No se guarda nada. Crea un token live cuando estés listo para llamadas reales.",
         "live": "Si quieres, limita quién puede usarlo con reglas de acceso, pruébalo y luego activa el endpoint.",
         "rule": "Añadir una regla de acceso"
       },
@@ -4260,7 +4260,7 @@
         "title": "La regla está activa",
         "block": "Quienes coincidan con {values} son rechazados en {where}.",
         "allow": "Solo entran en {where} quienes coincidan con {values} (u otra regla de permitir).",
-        "next": "Comprueba a quien llama con Probar un llamador, luego prueba el endpoint en Docs y pruebas y actívalo."
+        "next": "Comprueba a quien llama con Probar un llamador, luego prueba el endpoint en Documentación de la API y actívalo."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Probar y publicar",
-        "text": "Pruébalo en Docs y pruebas y luego activa el endpoint para que los tokens live puedan usarlo.",
-        "action": "Abrir Docs y pruebas"
+        "text": "Pruébalo en Documentación de la API y luego activa el endpoint para que los tokens live puedan usarlo.",
+        "action": "Abrir Documentación de la API"
       }
     },
     "intro": {

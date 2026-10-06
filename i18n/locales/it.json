@@ -393,7 +393,7 @@
     "apiAccess": "Regole di accesso",
     "apiLogs": "Log richieste",
     "apiAnalytics": "Statistiche",
-    "apiDocs": "Docs e test",
+    "apiDocs": "Documentazione API",
     "ai": "Assistente IA",
     "aiOverview": "Panoramica",
     "aiCreateForm": "Crea un modulo",
@@ -4016,7 +4016,7 @@
       "viewLater": "Potrai rivederlo più tardi nel pannello del token, dopo aver confermato la password.",
       "next": {
         "title": "Cosa viene dopo",
-        "test": "Usa questo token di test per provare l'endpoint in Docs e test. Nulla viene salvato. Crea un token live quando sei pronto per chiamate reali.",
+        "test": "Usa questo token di test per provare l'endpoint in Documentazione API. Nulla viene salvato. Crea un token live quando sei pronto per chiamate reali.",
         "live": "Se vuoi, limita chi può usarlo con regole di accesso, provalo, poi attiva l'endpoint.",
         "rule": "Aggiungi una regola di accesso"
       },
@@ -4260,7 +4260,7 @@
         "title": "La regola è attiva",
         "block": "I chiamanti che corrispondono a {values} vengono rifiutati su {where}.",
         "allow": "Entrano su {where} solo i chiamanti che corrispondono a {values} (o a un'altra regola di consenso).",
-        "next": "Controlla un chiamante con Prova un chiamante, poi prova l'endpoint in Docs e test e attivalo."
+        "next": "Controlla un chiamante con Prova un chiamante, poi prova l'endpoint in Documentazione API e attivalo."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Prova e vai live",
-        "text": "Provalo in Docs e test, poi attiva l'endpoint così i token live possono usarlo.",
-        "action": "Apri Docs e test"
+        "text": "Provalo in Documentazione API, poi attiva l'endpoint così i token live possono usarlo.",
+        "action": "Apri Documentazione API"
       }
     },
     "intro": {

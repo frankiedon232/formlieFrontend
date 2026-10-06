@@ -393,7 +393,7 @@
     "apiAccess": "Access rules",
     "apiLogs": "Request logs",
     "apiAnalytics": "Analytics",
-    "apiDocs": "Docs & testing",
+    "apiDocs": "API Documentation",
     "ai": "AI assistant",
     "aiOverview": "Overview",
     "aiCreateForm": "Create a form",
@@ -4016,7 +4016,7 @@
       "viewLater": "You can see it again later in the token's panel, after confirming your password.",
       "next": {
         "title": "What comes next",
-        "test": "Use this test token to try the endpoint in Docs & testing. Nothing is stored. Make a live token when you are ready for real calls.",
+        "test": "Use this test token to try the endpoint in API Documentation. Nothing is stored. Make a live token when you are ready for real calls.",
         "live": "Limit who may use it with access rules if you want, test it, then switch the endpoint on.",
         "rule": "Add an access rule"
       },
@@ -4260,7 +4260,7 @@
         "title": "The rule is on",
         "block": "Callers matching {values} are refused on {where}.",
         "allow": "Only callers matching {values} (or another allow rule) get in on {where}.",
-        "next": "Check a caller with Test a caller, then try the endpoint in Docs & testing and switch it on."
+        "next": "Check a caller with Test a caller, then try the endpoint in API Documentation and switch it on."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Test and go live",
-        "text": "Try it in Docs & testing, then switch the endpoint on so live tokens can use it.",
-        "action": "Open Docs & testing"
+        "text": "Try it in API Documentation, then switch the endpoint on so live tokens can use it.",
+        "action": "Open API Documentation"
       }
     },
     "intro": {

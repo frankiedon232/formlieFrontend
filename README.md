@@ -69,7 +69,7 @@ Workspaces created through signup live until the dev server restarts.
 
 Sign in as `admin@remedylegal.test` (password above) and open **API service** in the rail. Everything below runs against the mock (`NUXT_PUBLIC_API_MOCK=true`), which answers real HTTP calls, so Postman works too. Setup for Postman (address, certificate, files): [docs/02-DEV-ENVIRONMENT.md → API service from Postman](docs/02-DEV-ENVIRONMENT.md).
 
-**Addresses.** The API address is shown in **Docs & testing** (`https://api.formalie.dev/{key}/…`). From Postman use `https://localhost:2202/public-api/{key}/{endpoint}` (or `https://api.formalie.dev:2202/…` with a hosts entry).
+**Addresses.** The API address is shown in **API Documentation** (`https://api.formalie.dev/{key}/…`). From Postman use `https://localhost:2202/public-api/{key}/{endpoint}` (or `https://api.formalie.dev:2202/…` with a hosts entry).
 
 **Mock-only headers** (they stand in for what the real service reads from the connection): `X-Forwarded-For: 203.0.113.9` sets the caller's IP, `X-Debug-Country: GB` its country, `X-Debug-Network: vpn` (or `proxy`, `tor`, `hosting`) its anonymous network.
 
@@ -79,7 +79,7 @@ Sign in as `admin@remedylegal.test` (password above) and open **API service** in
 2. **No service yet:** in a workspace without services, _Endpoints → New endpoint_ shows "Create a service first" with a **New service** button; creating one there brings you straight back to the wizard.
 3. **New endpoint:** the page explains what an endpoint is (Got it hides that). Pick a published form, name, methods, questions. The review step says it is created **not live**. After **Create endpoint** the page shows _Before it goes live_: service and form, a token, who may call (optional), test, go live.
 4. **Token for this endpoint** (from that list): the token dialog opens with the name and _What it may call_ already set to this endpoint. Choose **Test**, create it, copy the token. The last step says what comes next.
-5. **Test it:** _Try it_ on the list (or Docs & testing) sends a call with a test token. It works although the endpoint is not live yet.
+5. **Test it:** _Try it_ on the list (or API Documentation) sends a call with a test token. It works although the endpoint is not live yet.
 6. **Go live:** switch it on in the list. A live token is needed for real calls; until there is one, the list says so.
 7. The endpoint's panel keeps showing _Before it goes live_ until it is live with a live token. The Overview shows the five steps until one endpoint is live with a live token.
 
@@ -111,7 +111,7 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 4. **Test a caller** (header button): pick an endpoint, an IP, a website, a country and networks, and see whether it gets in and which rule decided.
 5. From Postman, with a block rule on `vpn`: send `X-Debug-Network: vpn` → `403 FRM-API-1015` (`blocked: vpn`).
 
-### 4. Docs & testing
+### 4. API Documentation
 
 1. Wide screens: the navigation on the left (Getting started, every endpoint with its methods in colour: GET green, POST violet, PUT amber, DELETE red), the part on screen marked as you scroll; click to jump. Smaller screens: a sliding row of endpoints.
 2. Each method: what it does, the questions with type, required and allowed values (or the query options), and on the right the code (curl, JavaScript, Python, PHP, C#; Copy) and the answers it can give (200 / 201, 401, 422, 404, 429).
@@ -120,7 +120,7 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 
 ### 5. Every failure has a clear answer (Postman)
 
-**Two ways to sign in, never both.** A token is a _Bearer token_ (send it as `Authorization: Bearer …`) or a _Client id and secret_ (POST them to `…/token`, then send the short-lived `access_token` as Bearer). Docs & testing and each endpoint's example say which way that endpoint's token uses and show the `/token` step when needed.
+**Two ways to sign in, never both.** A token is a _Bearer token_ (send it as `Authorization: Bearer …`) or a _Client id and secret_ (POST them to `…/token`, then send the short-lived `access_token` as Bearer). API Documentation and each endpoint's example say which way that endpoint's token uses and show the `/token` step when needed.
 
 **Headers, and no others:** every call sends `Authorization: Bearer <token>` and `Content-Type: application/json`. **POST** also sends `Formalie-Key: <a new unique id>` (required; in Postman `{{$guid}}` makes a new one per send). On GET, PUT and DELETE the key is optional (checked if you send one). The key: 16 to 100 letters, digits and `. _ : -`, not a simple pattern (`1111…`, `abab…`, `1234…`). The same key and body within 24 hours answer with the first record (`meta.replayed`); the same key with a different body is refused. Every answer tells the token's expiry: the `Formalie-Token-Expires` header and `meta.token_expires_at` / `meta.token_expires_in_days` next to the data.
 

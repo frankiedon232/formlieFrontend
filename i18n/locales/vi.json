@@ -393,7 +393,7 @@
     "apiAccess": "Quy tắc truy cập",
     "apiLogs": "Nhật ký yêu cầu",
     "apiAnalytics": "Phân tích",
-    "apiDocs": "Tài liệu & kiểm thử",
+    "apiDocs": "Tài liệu API",
     "ai": "Trợ lý AI",
     "aiOverview": "Tổng quan",
     "aiCreateForm": "Tạo biểu mẫu",
@@ -4016,7 +4016,7 @@
       "viewLater": "Bạn có thể xem lại nó sau trong bảng token, sau khi xác nhận mật khẩu.",
       "next": {
         "title": "Tiếp theo là gì",
-        "test": "Dùng token thử nghiệm này để thử endpoint trong Tài liệu & kiểm thử. Không có gì được lưu. Hãy tạo token live khi bạn sẵn sàng cho lệnh gọi thật.",
+        "test": "Dùng token thử nghiệm này để thử endpoint trong Tài liệu API. Không có gì được lưu. Hãy tạo token live khi bạn sẵn sàng cho lệnh gọi thật.",
         "live": "Nếu muốn, hãy giới hạn ai được dùng nó bằng quy tắc truy cập, thử nó, rồi bật endpoint.",
         "rule": "Thêm quy tắc truy cập"
       },
@@ -4260,7 +4260,7 @@
         "title": "Quy tắc đã bật",
         "block": "Bên gọi khớp với {values} bị từ chối tại {where}.",
         "allow": "Chỉ bên gọi khớp với {values} (hoặc quy tắc cho phép khác) mới vào được {where}.",
-        "next": "Kiểm tra một bên gọi bằng Kiểm tra một bên gọi, rồi thử endpoint trong Tài liệu & kiểm thử và bật nó."
+        "next": "Kiểm tra một bên gọi bằng Kiểm tra một bên gọi, rồi thử endpoint trong Tài liệu API và bật nó."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Thử nghiệm và đưa vào hoạt động",
-        "text": "Thử trong Tài liệu & kiểm thử, rồi bật endpoint để các token live có thể dùng.",
-        "action": "Mở Tài liệu & kiểm thử"
+        "text": "Thử trong Tài liệu API, rồi bật endpoint để các token live có thể dùng.",
+        "action": "Mở Tài liệu API"
       }
     },
     "intro": {

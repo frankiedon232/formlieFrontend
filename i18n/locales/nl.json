@@ -393,7 +393,7 @@
     "apiAccess": "Toegangsregels",
     "apiLogs": "Verzoeklogs",
     "apiAnalytics": "Analyses",
-    "apiDocs": "Docs & testen",
+    "apiDocs": "API-documentatie",
     "ai": "AI-assistent",
     "aiOverview": "Overzicht",
     "aiCreateForm": "Formulier maken",
@@ -4016,7 +4016,7 @@
       "viewLater": "Je kunt het later opnieuw bekijken in het paneel van het token, na bevestiging van je wachtwoord.",
       "next": {
         "title": "Wat volgt",
-        "test": "Gebruik dit testtoken om het endpoint te proberen in Docs & testen. Er wordt niets opgeslagen. Maak een livetoken als je klaar bent voor echte aanroepen.",
+        "test": "Gebruik dit testtoken om het endpoint te proberen in API-documentatie. Er wordt niets opgeslagen. Maak een livetoken als je klaar bent voor echte aanroepen.",
         "live": "Beperk eventueel met toegangsregels wie het mag gebruiken, test het en zet daarna het endpoint aan.",
         "rule": "Voeg een toegangsregel toe"
       },
@@ -4260,7 +4260,7 @@
         "title": "De regel is aan",
         "block": "Aanroepers die passen bij {values} worden geweigerd op {where}.",
         "allow": "Alleen aanroepers die passen bij {values} (of een andere toestaan-regel) komen binnen op {where}.",
-        "next": "Controleer een aanroeper met Een aanroeper testen, probeer dan het endpoint in Docs & testen en zet het aan."
+        "next": "Controleer een aanroeper met Een aanroeper testen, probeer dan het endpoint in API-documentatie en zet het aan."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Test en ga live",
-        "text": "Probeer het in Docs & testen en zet het endpoint daarna aan zodat livetokens het kunnen gebruiken.",
-        "action": "Docs & testen openen"
+        "text": "Probeer het in API-documentatie en zet het endpoint daarna aan zodat livetokens het kunnen gebruiken.",
+        "action": "API-documentatie openen"
       }
     },
     "intro": {

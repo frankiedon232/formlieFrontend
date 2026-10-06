@@ -393,7 +393,7 @@
     "apiAccess": "Sheria za ufikiaji",
     "apiLogs": "Kumbukumbu za maombi",
     "apiAnalytics": "Takwimu",
-    "apiDocs": "Nyaraka na majaribio",
+    "apiDocs": "Nyaraka za API",
     "ai": "Msaidizi wa AI",
     "aiOverview": "Muhtasari",
     "aiCreateForm": "Unda fomu",
@@ -4016,7 +4016,7 @@
       "viewLater": "Unaweza kuiona tena baadaye katika paneli ya tokeni, baada ya kuthibitisha nenosiri lako.",
       "next": {
         "title": "Kinachofuata",
-        "test": "Tumia tokeni hii ya majaribio kujaribu endpoint katika Nyaraka na majaribio. Hakuna kinachohifadhiwa. Tengeneza tokeni ya live ukiwa tayari kwa simu halisi.",
+        "test": "Tumia tokeni hii ya majaribio kujaribu endpoint katika Nyaraka za API. Hakuna kinachohifadhiwa. Tengeneza tokeni ya live ukiwa tayari kwa simu halisi.",
         "live": "Ukitaka, weka kikomo cha nani anaweza kuitumia kwa kanuni za ufikiaji, ijaribu, kisha washa endpoint.",
         "rule": "Ongeza kanuni ya ufikiaji"
       },
@@ -4260,7 +4260,7 @@
         "title": "Kanuni imewashwa",
         "block": "Wapigaji wanaolingana na {values} wanakataliwa katika {where}.",
         "allow": "Ni wapigaji wanaolingana na {values} (au kanuni nyingine ya kuruhusu) tu ndio huingia katika {where}.",
-        "next": "Kagua mpigaji kwa Jaribu mpigaji, kisha jaribu endpoint katika Nyaraka na majaribio na uiwashe."
+        "next": "Kagua mpigaji kwa Jaribu mpigaji, kisha jaribu endpoint katika Nyaraka za API na uiwashe."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Jaribu na uende live",
-        "text": "Ijaribu katika Nyaraka na majaribio, kisha iwashe endpoint ili tokeni za live ziweze kuitumia.",
-        "action": "Fungua Nyaraka na majaribio"
+        "text": "Ijaribu katika Nyaraka za API, kisha iwashe endpoint ili tokeni za live ziweze kuitumia.",
+        "action": "Fungua Nyaraka za API"
       }
     },
     "intro": {

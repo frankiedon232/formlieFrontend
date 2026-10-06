@@ -393,7 +393,7 @@
     "apiAccess": "Zugriffsregeln",
     "apiLogs": "Anfrageprotokolle",
     "apiAnalytics": "Analysen",
-    "apiDocs": "Doku & Tests",
+    "apiDocs": "API-Dokumentation",
     "ai": "KI-Assistent",
     "aiOverview": "Übersicht",
     "aiCreateForm": "Formular erstellen",
@@ -4016,7 +4016,7 @@
       "viewLater": "Du kannst es später im Token-Panel wieder ansehen, nachdem du dein Passwort bestätigt hast.",
       "next": {
         "title": "Wie es weitergeht",
-        "test": "Nutze dieses Test-Token, um den Endpunkt unter Doku & Tests auszuprobieren. Nichts wird gespeichert. Erstelle ein Live-Token, wenn du für echte Aufrufe bereit bist.",
+        "test": "Nutze dieses Test-Token, um den Endpunkt unter API-Dokumentation auszuprobieren. Nichts wird gespeichert. Erstelle ein Live-Token, wenn du für echte Aufrufe bereit bist.",
         "live": "Beschränke bei Bedarf mit Zugriffsregeln, wer es nutzen darf, teste es und schalte dann den Endpunkt ein.",
         "rule": "Zugriffsregel hinzufügen"
       },
@@ -4260,7 +4260,7 @@
         "title": "Die Regel ist aktiv",
         "block": "Aufrufer, die zu {values} passen, werden bei {where} abgelehnt.",
         "allow": "Nur Aufrufer, die zu {values} (oder einer anderen Erlauben-Regel) passen, kommen bei {where} hinein.",
-        "next": "Prüfe einen Aufrufer mit Aufrufer testen, probiere dann den Endpunkt unter Doku & Tests aus und schalte ihn ein."
+        "next": "Prüfe einen Aufrufer mit Aufrufer testen, probiere dann den Endpunkt unter API-Dokumentation aus und schalte ihn ein."
       }
     },
     "home": {
@@ -4465,8 +4465,8 @@
       },
       "live": {
         "title": "Testen und live gehen",
-        "text": "Probiere es unter Doku & Tests aus und schalte dann den Endpunkt ein, damit Live-Tokens ihn nutzen können.",
-        "action": "Doku & Tests öffnen"
+        "text": "Probiere es unter API-Dokumentation aus und schalte dann den Endpunkt ein, damit Live-Tokens ihn nutzen können.",
+        "action": "API-Dokumentation öffnen"
       }
     },
     "intro": {
