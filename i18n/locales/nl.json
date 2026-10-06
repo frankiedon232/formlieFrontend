@@ -4059,7 +4059,17 @@
         "always": "Elke aanroep"
       },
       "expiryTitle": "Verloop van het token in elk antwoord",
-      "expiryDesc": "Elk antwoord vermeldt wanneer het token dat de aanroep deed verloopt, zodat je app het op tijd kan vernieuwen."
+      "expiryDesc": "Elk antwoord vermeldt wanneer het token dat de aanroep deed verloopt, zodat je app het op tijd kan vernieuwen.",
+      "expiryField": {
+        "header": "Wanneer het token verloopt, als datum en tijd, of nooit.",
+        "at": "Dezelfde datum en tijd, naast de gegevens.",
+        "days": "Resterende dagen. Leeg bij een token dat nooit verloopt."
+      },
+      "expiryWhere": {
+        "header": "Header",
+        "body": "In het antwoord"
+      },
+      "expirySample": "Een voorbeeldantwoord"
     },
     "access": {
       "rules": "Regels",

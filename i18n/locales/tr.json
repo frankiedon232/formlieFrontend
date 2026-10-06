@@ -4059,7 +4059,17 @@
         "always": "Her çağrı"
       },
       "expiryTitle": "Her yanıtta jetonun bitiş zamanı",
-      "expiryDesc": "Her yanıt, çağrıyı yapan jetonun ne zaman sona ereceğini söyler; böylece uygulamanız jetonu zamanında yenileyebilir."
+      "expiryDesc": "Her yanıt, çağrıyı yapan jetonun ne zaman sona ereceğini söyler; böylece uygulamanız jetonu zamanında yenileyebilir.",
+      "expiryField": {
+        "header": "Belirtecin ne zaman sona ereceği: tarih ve saat olarak veya hiçbir zaman.",
+        "at": "Aynı tarih ve saat, verinin yanında.",
+        "days": "Kalan gün. Süresi dolmayan belirteçte boştur."
+      },
+      "expiryWhere": {
+        "header": "Başlık",
+        "body": "Yanıtın içinde"
+      },
+      "expirySample": "Örnek yanıt"
     },
     "access": {
       "rules": "Kurallar",

@@ -4059,7 +4059,17 @@
         "always": "Każde wywołanie"
       },
       "expiryTitle": "Wygaśnięcie tokenu w każdej odpowiedzi",
-      "expiryDesc": "Każda odpowiedź podaje, kiedy wygasa token, który wykonał wywołanie, aby Twoja aplikacja mogła go odnowić na czas."
+      "expiryDesc": "Każda odpowiedź podaje, kiedy wygasa token, który wykonał wywołanie, aby Twoja aplikacja mogła go odnowić na czas.",
+      "expiryField": {
+        "header": "Kiedy token wygasa, jako data i godzina, albo nigdy.",
+        "at": "Ta sama data i godzina, obok danych.",
+        "days": "Pozostałe dni. Puste dla tokenu, który nigdy nie wygasa."
+      },
+      "expiryWhere": {
+        "header": "Nagłówek",
+        "body": "W odpowiedzi"
+      },
+      "expirySample": "Przykładowa odpowiedź"
     },
     "access": {
       "rules": "Reguły",

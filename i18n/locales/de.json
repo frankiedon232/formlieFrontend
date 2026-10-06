@@ -4059,7 +4059,17 @@
         "always": "Jeder Aufruf"
       },
       "expiryTitle": "Ablauf des Tokens in jeder Antwort",
-      "expiryDesc": "Jede Antwort nennt, wann das Token, das den Aufruf gemacht hat, abläuft, damit Ihre App es rechtzeitig erneuern kann."
+      "expiryDesc": "Jede Antwort nennt, wann das Token, das den Aufruf gemacht hat, abläuft, damit Ihre App es rechtzeitig erneuern kann.",
+      "expiryField": {
+        "header": "Wann das Token abläuft, als Datum und Uhrzeit, oder nie.",
+        "at": "Dasselbe Datum und dieselbe Uhrzeit, neben den Daten.",
+        "days": "Verbleibende Tage. Leer bei einem Token, das nie abläuft."
+      },
+      "expiryWhere": {
+        "header": "Header",
+        "body": "In der Antwort"
+      },
+      "expirySample": "Eine Beispielantwort"
     },
     "access": {
       "rules": "Regeln",

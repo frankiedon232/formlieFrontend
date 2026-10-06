@@ -4059,7 +4059,17 @@
         "always": "Kila mwito"
       },
       "expiryTitle": "Kuisha kwa tokeni katika kila jibu",
-      "expiryDesc": "Kila jibu linasema tokeni iliyofanya mwito itaisha lini, ili programu yako iweze kuifanya upya kwa wakati."
+      "expiryDesc": "Kila jibu linasema tokeni iliyofanya mwito itaisha lini, ili programu yako iweze kuifanya upya kwa wakati.",
+      "expiryField": {
+        "header": "Tokeni inapoisha muda, kama tarehe na saa, au kamwe.",
+        "at": "Tarehe na saa ile ile, kando ya data.",
+        "days": "Siku zilizobaki. Tupu kwa tokeni isiyoisha muda."
+      },
+      "expiryWhere": {
+        "header": "Header",
+        "body": "Ndani ya jibu"
+      },
+      "expirySample": "Jibu la mfano"
     },
     "access": {
       "rules": "Kanuni",

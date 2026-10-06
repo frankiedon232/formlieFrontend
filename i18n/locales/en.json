@@ -4059,7 +4059,17 @@
         "always": "Every call"
       },
       "expiryTitle": "Token expiry in every answer",
-      "expiryDesc": "Every answer says when the token that made the call expires, so your app can renew it in time."
+      "expiryDesc": "Every answer says when the token that made the call expires, so your app can renew it in time.",
+      "expiryField": {
+        "header": "When the token expires, as a date and time, or never.",
+        "at": "The same date and time, next to the data.",
+        "days": "Days left. Empty for a token that never expires."
+      },
+      "expiryWhere": {
+        "header": "Header",
+        "body": "In the answer"
+      },
+      "expirySample": "A sample answer"
     },
     "access": {
       "rules": "Rules",

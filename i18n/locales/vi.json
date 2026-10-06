@@ -4059,7 +4059,17 @@
         "always": "Mọi lệnh gọi"
       },
       "expiryTitle": "Hạn của token trong mọi phản hồi",
-      "expiryDesc": "Mỗi phản hồi cho biết khi nào token đã thực hiện lượt gọi hết hạn, để ứng dụng của bạn gia hạn kịp thời."
+      "expiryDesc": "Mỗi phản hồi cho biết khi nào token đã thực hiện lượt gọi hết hạn, để ứng dụng của bạn gia hạn kịp thời.",
+      "expiryField": {
+        "header": "Khi nào token hết hạn, dưới dạng ngày giờ, hoặc không bao giờ.",
+        "at": "Cùng ngày giờ đó, nằm cạnh dữ liệu.",
+        "days": "Số ngày còn lại. Để trống nếu token không bao giờ hết hạn."
+      },
+      "expiryWhere": {
+        "header": "Header",
+        "body": "Trong phản hồi"
+      },
+      "expirySample": "Một phản hồi mẫu"
     },
     "access": {
       "rules": "Quy tắc",

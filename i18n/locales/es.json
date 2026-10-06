@@ -4059,7 +4059,17 @@
         "always": "Cada llamada"
       },
       "expiryTitle": "Caducidad del token en cada respuesta",
-      "expiryDesc": "Cada respuesta indica cuándo caduca el token que hizo la llamada, para que tu app pueda renovarlo a tiempo."
+      "expiryDesc": "Cada respuesta indica cuándo caduca el token que hizo la llamada, para que tu app pueda renovarlo a tiempo.",
+      "expiryField": {
+        "header": "Cuándo caduca el token, como fecha y hora, o nunca.",
+        "at": "La misma fecha y hora, junto a los datos.",
+        "days": "Días restantes. Vacío si el token nunca caduca."
+      },
+      "expiryWhere": {
+        "header": "Cabecera",
+        "body": "En la respuesta"
+      },
+      "expirySample": "Una respuesta de ejemplo"
     },
     "access": {
       "rules": "Reglas",

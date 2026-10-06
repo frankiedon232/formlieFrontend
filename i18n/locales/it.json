@@ -4059,7 +4059,17 @@
         "always": "Ogni chiamata"
       },
       "expiryTitle": "Scadenza del token in ogni risposta",
-      "expiryDesc": "Ogni risposta indica quando scade il token che ha fatto la chiamata, così la tua app può rinnovarlo in tempo."
+      "expiryDesc": "Ogni risposta indica quando scade il token che ha fatto la chiamata, così la tua app può rinnovarlo in tempo.",
+      "expiryField": {
+        "header": "Quando scade il token, come data e ora, oppure mai.",
+        "at": "La stessa data e ora, accanto ai dati.",
+        "days": "Giorni rimanenti. Vuoto per un token che non scade mai."
+      },
+      "expiryWhere": {
+        "header": "Header",
+        "body": "Nella risposta"
+      },
+      "expirySample": "Una risposta di esempio"
     },
     "access": {
       "rules": "Regole",

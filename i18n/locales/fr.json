@@ -4059,7 +4059,17 @@
         "always": "Chaque appel"
       },
       "expiryTitle": "Expiration du jeton dans chaque réponse",
-      "expiryDesc": "Chaque réponse indique quand expire le jeton qui a fait l'appel, pour que votre app puisse le renouveler à temps."
+      "expiryDesc": "Chaque réponse indique quand expire le jeton qui a fait l'appel, pour que votre app puisse le renouveler à temps.",
+      "expiryField": {
+        "header": "Quand le jeton expire, en date et heure, ou jamais.",
+        "at": "La même date et heure, à côté des données.",
+        "days": "Jours restants. Vide pour un jeton qui n'expire jamais."
+      },
+      "expiryWhere": {
+        "header": "En-tête",
+        "body": "Dans la réponse"
+      },
+      "expirySample": "Un exemple de réponse"
     },
     "access": {
       "rules": "Règles",

@@ -4059,7 +4059,17 @@
         "always": "Setiap panggilan"
       },
       "expiryTitle": "Masa berlaku token di setiap jawaban",
-      "expiryDesc": "Setiap jawaban menyebutkan kapan token yang melakukan panggilan kedaluwarsa, agar aplikasi Anda bisa memperbaruinya tepat waktu."
+      "expiryDesc": "Setiap jawaban menyebutkan kapan token yang melakukan panggilan kedaluwarsa, agar aplikasi Anda bisa memperbaruinya tepat waktu.",
+      "expiryField": {
+        "header": "Kapan token kedaluwarsa, berupa tanggal dan waktu, atau tidak pernah.",
+        "at": "Tanggal dan waktu yang sama, di samping data.",
+        "days": "Sisa hari. Kosong untuk token yang tidak pernah kedaluwarsa."
+      },
+      "expiryWhere": {
+        "header": "Header",
+        "body": "Di dalam respons"
+      },
+      "expirySample": "Contoh respons"
     },
     "access": {
       "rules": "Aturan",
