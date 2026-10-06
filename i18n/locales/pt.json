@@ -634,7 +634,11 @@
     "active": "Ativo",
     "expiring": "Expira em breve",
     "expired": "Expirado",
-    "revoked": "Revogado"
+    "revoked": "Revogado",
+    "paused": "Em pausa",
+    "delivered": "Entregue",
+    "retrying": "Tentando novamente",
+    "failed": "Falhou"
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Regra de acesso desativada",
       "api_rule_deleted": "Regra de acesso excluída",
       "api_limits_changed": "Limites de taxa da API alterados",
-      "api_logging_changed": "Configurações do registo de pedidos da API alteradas"
+      "api_logging_changed": "Configurações do registo de pedidos da API alteradas",
+      "integrations_webhook_updated": "Webhook alterado",
+      "integrations_webhook_enabled": "Webhook ativado",
+      "integrations_webhook_disabled": "Webhook desativado",
+      "integrations_webhook_paused": "Webhook pausado após falhas repetidas",
+      "integrations_webhook_secret_rotated": "Segredo do webhook substituído",
+      "integrations_webhook_deleted": "Webhook excluído",
+      "integrations_webhook_resent": "Entrega do webhook enviada novamente",
+      "integrations_api_key_updated": "Chave de API alterada",
+      "integrations_api_key_deleted": "Chave de API excluída"
     },
     "detail": {
       "who": "Quem",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} saíram aqui",
       "required": "Obrigatória",
       "answered": "{n}% respondida"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Novo webhook",
+      "editTitle": "Editar webhook",
+      "desc": "A Formalie chama este endereço sempre que um dos eventos escolhidos acontece, com uma assinatura para você verificar que veio de nós.",
+      "create": "Criar webhook",
+      "namePlaceholder": "ex.: Sincronização de CRM",
+      "urlHelp": "HTTPS em um endereço público. A Formalie envia um POST com JSON e aguarda até 10 segundos por uma resposta 2xx.",
+      "enabled": "Ativado",
+      "allForms": "Todos os formulários",
+      "someForms": "Formulários escolhidos",
+      "pickForms": "Escolher formulários",
+      "eventsAndForms": "Eventos e formulários",
+      "eventsCount": "{n} evento | {n} eventos",
+      "formsCount": "{n} formulário | {n} formulários",
+      "search": "Buscar webhooks…",
+      "searchDeliveries": "Buscar entregas…",
+      "viewSwitch": "Webhooks ou entregas",
+      "deliveries": "Entregas",
+      "allDeliveries": "Todas as entregas",
+      "empty": "Nenhum webhook ainda",
+      "emptyDesc": "Envie cada nova resposta para os seus próprios sistemas assim que chegar.",
+      "noDeliveries": "Nenhuma entrega ainda",
+      "noDeliveriesDesc": "As entregas aparecem aqui conforme os eventos acontecem. Envie um teste para experimentar o endereço agora.",
+      "lastDelivery": "Última {when}",
+      "secret": "Segredo de assinatura",
+      "secretTitle": "Segredo de assinatura de {name}",
+      "secretHint": "Guarde-o apenas no seu servidor. Verifique a assinatura de cada chamada antes de confiar nela (veja Verificação da assinatura no painel do webhook).",
+      "rotate": "Novo segredo",
+      "rotateTitle": "Substituir o segredo de assinatura?",
+      "rotateDesc": "O novo segredo é usado a partir da próxima entrega e o antigo deixa de funcionar na hora. Atualize seu receptor imediatamente.",
+      "deleteTitle": "Excluir este webhook?",
+      "deleteDesc": "{name} deixa de receber chamadas e o registro de entregas é removido. Isso não pode ser desfeito.",
+      "sendTest": "Enviar um teste",
+      "test": "Teste",
+      "testOk": "Teste entregue",
+      "testFailed": "O teste não foi entregue",
+      "details": "Detalhes",
+      "sendAgain": "Enviar novamente",
+      "retryNow": "Tentar agora",
+      "openWebhook": "Abrir webhook",
+      "request": "Requisição",
+      "masked": "As respostas pessoais estão mascaradas nesta cópia. Seu receptor recebeu os valores completos.",
+      "noAnswer": "Sem resposta",
+      "emptyBody": "(vazio)",
+      "nextTry": "Próxima tentativa",
+      "nextTryAt": "Próxima tentativa {when}",
+      "tryN": "Tentativa {n}",
+      "triesCount": "{n} tentativa | {n} tentativas",
+      "autoPaused": "Pausado após {n} entregas com falha seguidas",
+      "autoPausedDesc": "Nada se perde: corrija o receptor, ative o webhook novamente e reenvie as entregas com falha pelo registro.",
+      "failingTitle": "A última entrega falhou | As últimas {n} entregas falharam",
+      "failingDesc": "A Formalie tenta novamente após 1, 5, 15, 60 e 360 minutos. Verifique se o seu endereço responde com um status 2xx.",
+      "col": {
+        "name": "Webhook",
+        "url": "Endereço",
+        "status": "Status",
+        "events": "Eventos",
+        "forms": "Formulários",
+        "deliveries": "Entregas",
+        "last": "Última entrega",
+        "event": "Evento",
+        "result": "Resultado",
+        "webhook": "Webhook",
+        "tries": "Tentativas",
+        "form": "Formulário",
+        "at": "Quando",
+        "code": "Código de status"
+      },
+      "status": {
+        "active": "Ativo",
+        "failing": "Com falhas",
+        "paused": "Em pausa"
+      },
+      "delivery": {
+        "delivered": "Entregue",
+        "retrying": "Tentando novamente",
+        "failed": "Falhou"
+      },
+      "event": {
+        "response_created": "Nova resposta",
+        "response_updated": "Resposta alterada",
+        "response_status_changed": "Status alterado",
+        "response_deleted": "Resposta excluída",
+        "ping": "Teste"
+      },
+      "eventHint": {
+        "response_created": "Alguém envia um formulário, por qualquer canal",
+        "response_updated": "As respostas são alteradas no portal ou na API",
+        "response_status_changed": "Uma resposta é revisada, aprovada ou rejeitada",
+        "response_deleted": "Uma resposta é removida"
+      },
+      "error": {
+        "timeout": "Sem resposta em 10 segundos",
+        "dns": "Não foi possível encontrar o endereço",
+        "refused": "A conexão foi recusada",
+        "tls": "A conexão segura falhou (certificado)",
+        "failed": "Não foi possível fazer a chamada"
+      },
+      "invalid": {
+        "required": "Informe o endereço",
+        "url": "Informe um endereço completo, ex.: https://example.com/hooks",
+        "https": "Use um endereço https://",
+        "host": "A Formalie não pode chamar os próprios endereços",
+        "private": "Use um endereço público, não uma rede privada",
+        "events": "Escolha pelo menos um evento",
+        "forms": "Escolha pelo menos um formulário"
+      },
+      "kpi": {
+        "deliveries": "Entregas",
+        "webhooks": "Webhooks",
+        "delivered": "Entregues",
+        "failed": "Com falha",
+        "byStatus": "Webhooks por status",
+        "retries": "Até 5 novas tentativas"
+      },
+      "sort": {
+        "name": "Nome",
+        "deliveries": "Mais entregas",
+        "worst": "Menos entregues",
+        "newest": "Mais recentes primeiro",
+        "oldest": "Mais antigos primeiro",
+        "tries": "Mais tentativas",
+        "slowest": "Mais lentos"
+      },
+      "toast": {
+        "saved": "Webhook salvo",
+        "on": "Webhook ativado",
+        "off": "Webhook desativado",
+        "rotated": "Novo segredo criado",
+        "deleted": "Webhook excluído",
+        "resent": "Entregue",
+        "resentFailed": "Enviado, mas não entregue: veja a entrega"
+      },
+      "verify": {
+        "title": "Verificação da assinatura",
+        "text": "Cada chamada traz estes cabeçalhos. Recalcule a assinatura a partir do carimbo de data e hora e do corpo bruto com o seu segredo, e recuse a chamada se diferir ou for mais antiga que cinco minutos.",
+        "answer": "Responda com qualquer status 2xx em até 10 segundos e faça o trabalho real depois. Qualquer outra resposta é tentada novamente."
+      }
+    },
+    "onceDesc": "O Formalie não pode mostrá-la novamente. Se for perdida, crie uma nova.",
+    "keys": {
+      "newTitle": "Nova chave de API",
+      "editTitle": "Editar chave de API",
+      "desc": "Uma chave permite que seu próprio código use a API de gerenciamento do Formalie: ler formulários e respostas, alterar status e mais.",
+      "create": "Criar chave",
+      "namePlaceholder": "ex.: Script de relatórios",
+      "scopesHelp": "Dê a cada chave apenas o que ela precisa.",
+      "scopesCount": "{n} permissão | {n} permissões",
+      "search": "Pesquisar chaves de API…",
+      "empty": "Nenhuma chave de API ainda",
+      "emptyDesc": "Crie uma chave para ler formulários e respostas a partir do seu código.",
+      "lastUsed": "Usada {when}",
+      "neverUsed": "Nunca usada",
+      "lastFrom": "Último uso a partir de",
+      "noCalls": "Nenhuma chamada nos últimos 30 dias",
+      "secret": "Chave de API",
+      "secretTitle": "Chave de API para {name}",
+      "secretHint": "Guarde-a apenas no seu servidor, nunca em um site ou app que outras pessoas possam baixar.",
+      "revoke": "Revogar",
+      "revokeTitle": "Revogar esta chave?",
+      "revokeDesc": "{name} para de funcionar imediatamente. O código que ainda a usa recebe um erro.",
+      "deleteTitle": "Excluir esta chave?",
+      "deleteDesc": "{name} é removida da lista. O registro de auditoria mantém o que ela fez.",
+      "expiringTitle": "Expira {when}",
+      "expiringDesc": "Crie uma nova chave, troque seu código para ela e depois revogue esta.",
+      "howToCall": "Como chamar",
+      "howToCallText": "Envie a chave como token bearer. As listas respondem com data e meta (page, per_page, total); os erros, com um código que você pode consultar em Docs e testes.",
+      "col": {
+        "name": "Chave",
+        "status": "Status",
+        "scopes": "Permissões",
+        "calls": "Chamadas",
+        "lastUsed": "Último uso"
+      },
+      "scope": {
+        "forms_read": "Ler formulários",
+        "forms_write": "Abrir e fechar formulários",
+        "responses_read": "Ler respostas",
+        "responses_write": "Alterar respostas",
+        "webhooks_read": "Ler webhooks",
+        "audit_read": "Ler o registro de auditoria"
+      },
+      "scopeHint": {
+        "forms_read": "Listar formulários e suas perguntas",
+        "forms_write": "Alternar um formulário publicado entre aberto e fechado",
+        "responses_read": "Listar respostas com seus valores",
+        "responses_write": "Alterar status e tags, excluir respostas",
+        "webhooks_read": "Listar webhooks e seus eventos",
+        "audit_read": "Ler o que aconteceu e quem fez"
+      },
+      "invalid": {
+        "scopes": "Escolha pelo menos uma permissão"
+      },
+      "kpi": {
+        "calls": "Chamadas com chaves de API",
+        "keys": "Chaves",
+        "unused": "Sem uso há 90 dias",
+        "byStatus": "Chaves por status",
+        "expiringHint": "Expirando = em até 14 dias"
+      },
+      "sort": {
+        "lastUsed": "Usadas por último",
+        "expires": "Expiram primeiro"
+      },
+      "toast": {
+        "saved": "Chave de API salva",
+        "revoked": "Chave de API revogada",
+        "deleted": "Chave de API excluída"
+      }
     }
   }
 }

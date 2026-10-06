@@ -634,7 +634,11 @@
     "active": "有効",
     "expiring": "まもなく期限切れ",
     "expired": "期限切れ",
-    "revoked": "取り消し済み"
+    "revoked": "取り消し済み",
+    "paused": "一時停止中",
+    "delivered": "配信済み",
+    "retrying": "再試行中",
+    "failed": "失敗"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "アクセスルールをオフにしました",
       "api_rule_deleted": "アクセスルールを削除しました",
       "api_limits_changed": "API のレート制限を変更しました",
-      "api_logging_changed": "APIリクエストログの設定を変更しました"
+      "api_logging_changed": "APIリクエストログの設定を変更しました",
+      "integrations_webhook_updated": "Webhookを変更しました",
+      "integrations_webhook_enabled": "Webhookをオンにしました",
+      "integrations_webhook_disabled": "Webhookをオフにしました",
+      "integrations_webhook_paused": "失敗が続いたためWebhookを一時停止しました",
+      "integrations_webhook_secret_rotated": "Webhookのシークレットを入れ替えました",
+      "integrations_webhook_deleted": "Webhookを削除しました",
+      "integrations_webhook_resent": "Webhookの配信を再送しました",
+      "integrations_api_key_updated": "APIキーを変更しました",
+      "integrations_api_key_deleted": "APIキーを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n}人がここで離脱",
       "required": "必須",
       "answered": "{n}%が回答"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "新しいWebhook",
+      "editTitle": "Webhookを編集",
+      "desc": "選択したイベントが発生するたびに、Formalieがこのアドレスを呼び出します。呼び出しには署名が付くので、当社からのものか確認できます。",
+      "create": "Webhookを作成",
+      "namePlaceholder": "例: CRM連携",
+      "urlHelp": "公開アドレスのHTTPS。FormalieはJSON付きのPOSTを送り、2xxの応答を最大10秒待ちます。",
+      "enabled": "オン",
+      "allForms": "すべてのフォーム",
+      "someForms": "選択したフォーム",
+      "pickForms": "フォームを選択",
+      "eventsAndForms": "イベントとフォーム",
+      "eventsCount": "{n}件のイベント | {n}件のイベント",
+      "formsCount": "{n}件のフォーム | {n}件のフォーム",
+      "search": "Webhookを検索…",
+      "searchDeliveries": "配信を検索…",
+      "viewSwitch": "Webhookまたは配信",
+      "deliveries": "配信",
+      "allDeliveries": "すべての配信",
+      "empty": "Webhookはまだありません",
+      "emptyDesc": "新しい回答が届くたびに、自社のシステムへ送信できます。",
+      "noDeliveries": "配信はまだありません",
+      "noDeliveriesDesc": "イベントが発生すると、ここに配信が表示されます。テストを送って今すぐアドレスを試せます。",
+      "lastDelivery": "最終 {when}",
+      "secret": "署名シークレット",
+      "secretTitle": "{name}の署名シークレット",
+      "secretHint": "サーバー内だけで保管してください。信頼する前に、毎回の呼び出しで署名を確認してください（Webhookのパネルにある「署名の確認」を参照）。",
+      "rotate": "新しいシークレット",
+      "rotateTitle": "署名シークレットを入れ替えますか？",
+      "rotateDesc": "新しいシークレットは次の配信から使われ、古いものはすぐに使えなくなります。受信側をすぐに更新してください。",
+      "deleteTitle": "このWebhookを削除しますか？",
+      "deleteDesc": "{name}は呼び出しを受け取らなくなり、配信ログも削除されます。この操作は元に戻せません。",
+      "sendTest": "テストを送信",
+      "test": "テスト",
+      "testOk": "テストを配信しました",
+      "testFailed": "テストは配信されませんでした",
+      "details": "詳細",
+      "sendAgain": "再送",
+      "retryNow": "今すぐ再試行",
+      "openWebhook": "Webhookを開く",
+      "request": "リクエスト",
+      "masked": "このコピーでは個人情報の回答はマスクされています。受信側には完全な値が届いています。",
+      "noAnswer": "応答なし",
+      "emptyBody": "（空）",
+      "nextTry": "次の試行",
+      "nextTryAt": "次の試行 {when}",
+      "tryN": "{n}回目の試行",
+      "triesCount": "{n}回の試行 | {n}回の試行",
+      "autoPaused": "{n}回連続で配信に失敗したため一時停止",
+      "autoPausedDesc": "失われたものはありません。受信側を修正し、Webhookを再びオンにして、ログから失敗した配信を再送してください。",
+      "failingTitle": "直近の配信が失敗しました | 直近{n}件の配信が失敗しました",
+      "failingDesc": "Formalieは1分、5分、15分、60分、360分後に再試行します。アドレスが2xxのステータスで応答するか確認してください。",
+      "col": {
+        "name": "Webhook",
+        "url": "アドレス",
+        "status": "ステータス",
+        "events": "イベント",
+        "forms": "フォーム",
+        "deliveries": "配信",
+        "last": "最終配信",
+        "event": "イベント",
+        "result": "結果",
+        "webhook": "Webhook",
+        "tries": "試行",
+        "form": "フォーム",
+        "at": "日時",
+        "code": "ステータスコード"
+      },
+      "status": {
+        "active": "有効",
+        "failing": "失敗中",
+        "paused": "一時停止中"
+      },
+      "delivery": {
+        "delivered": "配信済み",
+        "retrying": "再試行中",
+        "failed": "失敗"
+      },
+      "event": {
+        "response_created": "新しい回答",
+        "response_updated": "回答が変更された",
+        "response_status_changed": "ステータスが変更された",
+        "response_deleted": "回答が削除された",
+        "ping": "テスト"
+      },
+      "eventHint": {
+        "response_created": "誰かがフォームを送信したとき（どの経路でも）",
+        "response_updated": "ポータルまたはAPIで回答が変更されたとき",
+        "response_status_changed": "回答が確認、承認、却下されたとき",
+        "response_deleted": "回答が削除されたとき"
+      },
+      "error": {
+        "timeout": "10秒以内に応答がありません",
+        "dns": "アドレスが見つかりませんでした",
+        "refused": "接続が拒否されました",
+        "tls": "安全な接続に失敗しました（証明書）",
+        "failed": "呼び出しを実行できませんでした"
+      },
+      "invalid": {
+        "required": "アドレスを入力してください",
+        "url": "完全なアドレスを入力してください。例: https://example.com/hooks",
+        "https": "https://のアドレスを使ってください",
+        "host": "Formalieは自身のアドレスを呼び出せません",
+        "private": "プライベートネットワークではなく、公開アドレスを使ってください",
+        "events": "イベントを1つ以上選んでください",
+        "forms": "フォームを1つ以上選んでください"
+      },
+      "kpi": {
+        "deliveries": "配信",
+        "webhooks": "Webhook",
+        "delivered": "配信済み",
+        "failed": "失敗",
+        "byStatus": "ステータス別のWebhook",
+        "retries": "最大5回まで再試行"
+      },
+      "sort": {
+        "name": "名前",
+        "deliveries": "配信が多い順",
+        "worst": "配信率が低い順",
+        "newest": "新しい順",
+        "oldest": "古い順",
+        "tries": "試行が多い順",
+        "slowest": "遅い順"
+      },
+      "toast": {
+        "saved": "Webhookを保存しました",
+        "on": "Webhookをオンにしました",
+        "off": "Webhookをオフにしました",
+        "rotated": "新しいシークレットを作成しました",
+        "deleted": "Webhookを削除しました",
+        "resent": "配信しました",
+        "resentFailed": "送信しましたが配信されませんでした。配信の詳細を確認してください"
+      },
+      "verify": {
+        "title": "署名の確認",
+        "text": "すべての呼び出しにこれらのヘッダーが付きます。タイムスタンプと生のボディからシークレットで署名を再計算し、一致しない場合や5分より古い場合は呼び出しを拒否してください。",
+        "answer": "10秒以内にいずれかの2xxステータスで応答し、本来の処理はその後に行ってください。それ以外は再試行されます。"
+      }
+    },
+    "onceDesc": "Formalie では再表示できません。紛失した場合は新しく作成してください。",
+    "keys": {
+      "newTitle": "新しい API キー",
+      "editTitle": "API キーを編集",
+      "desc": "キーを使うと、自分のコードから Formalie の管理 API を利用できます。フォームや回答の読み取り、ステータスの変更などが可能です。",
+      "create": "キーを作成",
+      "namePlaceholder": "例: レポート用スクリプト",
+      "scopesHelp": "各キーには必要な権限だけを付与してください。",
+      "scopesCount": "{n} 件の権限 | {n} 件の権限",
+      "search": "API キーを検索…",
+      "empty": "API キーはまだありません",
+      "emptyDesc": "キーを作成して、自分のコードからフォームと回答を読み取りましょう。",
+      "lastUsed": "{when}に使用",
+      "neverUsed": "未使用",
+      "lastFrom": "最後の使用元",
+      "noCalls": "過去 30 日間の呼び出しなし",
+      "secret": "API キー",
+      "secretTitle": "{name} の API キー",
+      "secretHint": "自分のサーバーにのみ保管し、他の人がダウンロードできる Web サイトやアプリには置かないでください。",
+      "revoke": "無効化",
+      "revokeTitle": "このキーを無効化しますか？",
+      "revokeDesc": "{name} は直ちに使えなくなります。まだ使っているコードはエラーになります。",
+      "deleteTitle": "このキーを削除しますか？",
+      "deleteDesc": "{name} は一覧から削除されます。実行内容は監査ログに残ります。",
+      "expiringTitle": "{when}に期限切れ",
+      "expiringDesc": "新しいキーを作成し、コードを切り替えてから、このキーを無効化してください。",
+      "howToCall": "呼び出し方",
+      "howToCallText": "キーを Bearer トークンとして送信します。一覧は data と meta (page, per_page, total) で返され、エラーはドキュメントとテストで調べられるコードで返されます。",
+      "col": {
+        "name": "キー",
+        "status": "ステータス",
+        "scopes": "権限",
+        "calls": "呼び出し",
+        "lastUsed": "最終使用"
+      },
+      "scope": {
+        "forms_read": "フォームの読み取り",
+        "forms_write": "フォームの公開と終了",
+        "responses_read": "回答の読み取り",
+        "responses_write": "回答の変更",
+        "webhooks_read": "Webhook の読み取り",
+        "audit_read": "監査ログの読み取り"
+      },
+      "scopeHint": {
+        "forms_read": "フォームとその質問を一覧表示",
+        "forms_write": "公開済みフォームの受付中と終了を切り替え",
+        "responses_read": "回答とその内容を一覧表示",
+        "responses_write": "ステータスとタグの変更、回答の削除",
+        "webhooks_read": "Webhook とそのイベントを一覧表示",
+        "audit_read": "何が起きたか、誰が行ったかを読み取り"
+      },
+      "invalid": {
+        "scopes": "権限を 1 つ以上選択してください"
+      },
+      "kpi": {
+        "calls": "API キーによる呼び出し",
+        "keys": "キー",
+        "unused": "90 日間未使用",
+        "byStatus": "ステータス別のキー",
+        "expiringHint": "期限間近 = 14 日以内"
+      },
+      "sort": {
+        "lastUsed": "最近使用順",
+        "expires": "期限が近い順"
+      },
+      "toast": {
+        "saved": "API キーを保存しました",
+        "revoked": "API キーを無効化しました",
+        "deleted": "API キーを削除しました"
+      }
     }
   }
 }

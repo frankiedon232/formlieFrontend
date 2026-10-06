@@ -37,6 +37,8 @@ import * as onboarding from './routes/onboarding'
 import * as uploads from './routes/uploads'
 import { csrf, handshake, health } from './routes/system'
 import * as tenants from './routes/tenants'
+import * as webhooks from './routes/webhooks'
+import * as apiKeys from './routes/apiKeys'
 
 const router = createRouter()
   // system
@@ -128,6 +130,24 @@ const router = createRouter()
   .post('/api-endpoints', apiService.createApiEndpoint)
   .get('/api-endpoints/:id', apiService.getApiEndpoint)
   .post('/api-endpoints/:id/try', apiDocs.tryEndpoint)
+  .get('/webhooks', webhooks.listWebhooks)
+  .get('/webhooks/insights', webhooks.webhookInsights)
+  .post('/webhooks', webhooks.createWebhook)
+  .get('/webhooks/:id', webhooks.getWebhook)
+  .patch('/webhooks/:id', webhooks.updateWebhook)
+  .delete('/webhooks/:id', webhooks.deleteWebhook)
+  .post('/webhooks/:id/rotate', webhooks.rotateWebhookSecret)
+  .post('/webhooks/:id/test', webhooks.testWebhook)
+  .get('/webhook-deliveries', webhooks.listDeliveries)
+  .get('/webhook-deliveries/:id', webhooks.getDelivery)
+  .post('/webhook-deliveries/:id/resend', webhooks.resendDelivery)
+  .get('/api-keys', apiKeys.listApiKeys)
+  .get('/api-keys/insights', apiKeys.apiKeyInsights)
+  .post('/api-keys', apiKeys.createApiKey)
+  .get('/api-keys/:id', apiKeys.getApiKey)
+  .patch('/api-keys/:id', apiKeys.updateApiKey)
+  .post('/api-keys/:id/revoke', apiKeys.revokeApiKey)
+  .delete('/api-keys/:id', apiKeys.deleteApiKey)
   .patch('/api-endpoints/:id', apiService.updateApiEndpoint)
   .delete('/api-endpoints/:id', apiService.deleteApiEndpoint)
   .get('/analytics/forms', analytics.analyticsForms)

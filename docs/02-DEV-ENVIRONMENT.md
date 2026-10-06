@@ -115,6 +115,9 @@ With `NUXT_PUBLIC_API_MOCK=true` the mock answers real calls to your endpoints (
 7. Files: first `POST …/{endpoint}/files?field={question key}` with Body → form-data, key `file` (type File). The answer has an `id`; send it in the JSON under that question, e.g. `"cv_resume": ["<id>"]`. The question must be accepted by the endpoint.
 8. Docs & testing has every call ready as code and a Download OpenAPI button (Postman: Import → the file).
 
+9. Management API: API service → API keys → New API key, then `GET https://localhost:2202/public-api/v1/forms` with `Authorization: Bearer formalie_key_…` (see API-CONTRACT → Management API).
+10. Webhooks: a receiver on your machine works while developing (`http://localhost:{port}/…`); any small server that logs the request and answers 200 will do. Send a test from the webhook's panel, then check the signature with the code under Checking the signature.
+
 A response sent with a live token shows up under the form's Responses (channel API). The mock keeps tokens and responses in `.data/mock`.
 
 ## Project env (`.env`, copy from `.env.example`)

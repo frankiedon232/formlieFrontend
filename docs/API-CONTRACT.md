@@ -399,7 +399,17 @@ A view is the form opened, a start is the first answer, a completion is a submit
 
 ## Integrations, settings
 
-| CRUD | `/webhooks` · `/api-keys` | planned (F15) |
+| GET · POST | `/webhooks` (q, sort, `filter[status]`, `filter[event]`) · `/webhooks/insights` | `Webhook { id, name, url, events, forms, enabled, status (active · failing · paused), paused_reason, secret_preview, deliveries_30d, failed_30d, success_rate, avg_ms, last_delivery, consecutive_failures, daily }`; POST `{ name, url, events, form_ids ([] = every form), enabled? }` → `{ webhook, secret }` (once). URL: HTTPS, public host, never Formalie (`FRM-GEN-1002` url: required · url · https · host · private) |
+| GET · PATCH · DELETE | `/webhooks/{id}` | PATCH the same body, or `{ enabled }` alone; DELETE removes its deliveries too. Audit `integrations.webhook_*` |
+| POST | `/webhooks/{id}/rotate` · `/webhooks/{id}/test` | a new secret → `{ webhook, secret }`; a `ping` delivery now → `WebhookDeliveryDetail` |
+| GET | `/webhook-deliveries` (from, to, q, sort, `filter[webhook]`, `filter[status]`, `filter[event]`) · `/webhook-deliveries/{id}` | `WebhookDelivery { id, webhook, event, status (delivered · retrying · failed), attempts, status_code, duration_ms, at, next_retry_at, test, form, response_id }`; detail adds `request { headers (signature masked), body (personal answers masked) }`, `response`, `history [{ at, status_code, duration_ms, error (timeout · dns · refused · tls · failed · HTTP n) }]` |
+| POST | `/webhook-deliveries/{id}/resend` | the same body as a new delivery (while retrying: retry now) |
+| GET · POST | `/api-keys` (q, sort, `filter[status]`, `filter[scope]`) · `/api-keys/insights` | `ManagementKey { id, name, preview, scopes, status (active · expiring · expired · revoked), expires_at, last_used_at, last_used_ip, calls_30d, daily }`; POST `{ name, scopes, expires_at? }` → `{ key, secret }` (once, `formalie_key_…`) |
+| GET · PATCH · DELETE | `/api-keys/{id}` · POST `/api-keys/{id}/revoke` | PATCH `{ name, scopes }` (revoked: `FRM-API-1004`); DELETE only when revoked or expired (`FRM-API-1005`). Audit `integrations.api_key_*` |
+
+**Webhook deliveries.** `POST` to the address with JSON `{ id: "evt_…", type, created_at, test, data: { form { id, name }, response { id, submitted_at, status, channel, answers }, previous_status? } }` (a deletion carries only the ids). Headers: `X-Formalie-Event`, `X-Formalie-Delivery`, `X-Formalie-Timestamp` (unix seconds), `X-Formalie-Signature: sha256=` hex HMAC-SHA256 of `{timestamp}.{raw body}` with the webhook's secret. A 2xx within 10 seconds is delivered; anything else is retried after 1, 5, 15, 60 and 360 minutes; 20 failures in a row pause the webhook.
+
+**Management API** (`https://api.formalie.dev/v1/…`, `Authorization: Bearer formalie_key_…`; mock: `/public-api/v1/…`): `GET /forms` (forms:read; page, per_page, status) · `GET /forms/{id}` (with questions) · `PATCH /forms/{id}` `{ status: published | closed }` (forms:write) · `GET /forms/{id}/responses` (responses:read; page, per_page, status, since) · `GET /responses/{id}` · `PATCH /responses/{id}` `{ status?, tags? }` and `DELETE` (responses:write) · `GET /webhooks` (webhooks:read) · `GET /audit` (audit:read). Errors: `FRM-API-1010` (key missing, wrong, revoked or expired), `FRM-API-1009` (permission), `FRM-GEN-1004`, `FRM-API-1008`, `FRM-GEN-1029` (600 a minute per key). Ids are references.
 | GET/PATCH | `/settings/{section}` | company, branding, auth, security, localisation, notifications, retention, embed |
 | GET | `/platform/countries`, `/platform/states?country=`, `/platform/timezones`, `/platform/currencies` | |
 

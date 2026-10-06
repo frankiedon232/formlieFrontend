@@ -634,7 +634,11 @@
     "active": "Aktiv",
     "expiring": "Läuft bald ab",
     "expired": "Abgelaufen",
-    "revoked": "Widerrufen"
+    "revoked": "Widerrufen",
+    "paused": "Pausiert",
+    "delivered": "Zugestellt",
+    "retrying": "Wiederholung läuft",
+    "failed": "Fehlgeschlagen"
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Zugriffsregel ausgeschaltet",
       "api_rule_deleted": "Zugriffsregel gelöscht",
       "api_limits_changed": "API-Ratenlimits geändert",
-      "api_logging_changed": "API-Anfrageprotokoll-Einstellungen geändert"
+      "api_logging_changed": "API-Anfrageprotokoll-Einstellungen geändert",
+      "integrations_webhook_updated": "Webhook geändert",
+      "integrations_webhook_enabled": "Webhook eingeschaltet",
+      "integrations_webhook_disabled": "Webhook ausgeschaltet",
+      "integrations_webhook_paused": "Webhook nach wiederholten Fehlern pausiert",
+      "integrations_webhook_secret_rotated": "Webhook-Geheimnis ersetzt",
+      "integrations_webhook_deleted": "Webhook gelöscht",
+      "integrations_webhook_resent": "Webhook-Zustellung erneut gesendet",
+      "integrations_api_key_updated": "API-Schlüssel geändert",
+      "integrations_api_key_deleted": "API-Schlüssel gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} hier ausgestiegen",
       "required": "Pflichtfeld",
       "answered": "{n} % beantwortet"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Neuer Webhook",
+      "editTitle": "Webhook bearbeiten",
+      "desc": "Formalie ruft diese Adresse auf, sobald eines der gewählten Ereignisse eintritt, und signiert den Aufruf, damit Sie prüfen können, dass er von uns kommt.",
+      "create": "Webhook erstellen",
+      "namePlaceholder": "z. B. CRM-Sync",
+      "urlHelp": "HTTPS auf einer öffentlichen Adresse. Formalie sendet einen POST mit JSON und wartet bis zu 10 Sekunden auf eine 2xx-Antwort.",
+      "enabled": "Eingeschaltet",
+      "allForms": "Jedes Formular",
+      "someForms": "Ausgewählte Formulare",
+      "pickForms": "Formulare auswählen",
+      "eventsAndForms": "Ereignisse und Formulare",
+      "eventsCount": "{n} Ereignis | {n} Ereignisse",
+      "formsCount": "{n} Formular | {n} Formulare",
+      "search": "Webhooks suchen…",
+      "searchDeliveries": "Zustellungen suchen…",
+      "viewSwitch": "Webhooks oder Zustellungen",
+      "deliveries": "Zustellungen",
+      "allDeliveries": "Alle Zustellungen",
+      "empty": "Noch keine Webhooks",
+      "emptyDesc": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme.",
+      "noDeliveries": "Noch keine Zustellungen",
+      "noDeliveriesDesc": "Zustellungen erscheinen hier, sobald Ereignisse eintreten. Senden Sie jetzt einen Test an die Adresse.",
+      "lastDelivery": "Zuletzt {when}",
+      "secret": "Signaturgeheimnis",
+      "secretTitle": "Signaturgeheimnis für {name}",
+      "secretHint": "Bewahren Sie es nur auf Ihrem Server auf. Prüfen Sie bei jedem Aufruf die Signatur, bevor Sie ihm vertrauen (siehe Signatur prüfen im Bereich des Webhooks).",
+      "rotate": "Neues Geheimnis",
+      "rotateTitle": "Signaturgeheimnis ersetzen?",
+      "rotateDesc": "Das neue Geheimnis gilt ab der nächsten Zustellung, das alte funktioniert sofort nicht mehr. Aktualisieren Sie Ihren Empfänger umgehend.",
+      "deleteTitle": "Diesen Webhook löschen?",
+      "deleteDesc": "{name} erhält keine Aufrufe mehr und das Zustellprotokoll wird entfernt. Das kann nicht rückgängig gemacht werden.",
+      "sendTest": "Test senden",
+      "test": "Test",
+      "testOk": "Test zugestellt",
+      "testFailed": "Der Test wurde nicht zugestellt",
+      "details": "Details",
+      "sendAgain": "Erneut senden",
+      "retryNow": "Jetzt wiederholen",
+      "openWebhook": "Webhook öffnen",
+      "request": "Anfrage",
+      "masked": "Persönliche Antworten sind in dieser Kopie maskiert. Ihr Empfänger hat die vollständigen Werte erhalten.",
+      "noAnswer": "Keine Antwort",
+      "emptyBody": "(leer)",
+      "nextTry": "Nächster Versuch",
+      "nextTryAt": "Nächster Versuch {when}",
+      "tryN": "Versuch {n}",
+      "triesCount": "{n} Versuch | {n} Versuche",
+      "autoPaused": "Nach {n} fehlgeschlagenen Zustellungen in Folge pausiert",
+      "autoPausedDesc": "Nichts geht verloren: Beheben Sie den Empfänger, schalten Sie den Webhook wieder ein und senden Sie die fehlgeschlagenen Zustellungen aus dem Protokoll erneut.",
+      "failingTitle": "Die letzte Zustellung ist fehlgeschlagen | Die letzten {n} Zustellungen sind fehlgeschlagen",
+      "failingDesc": "Formalie versucht es nach 1, 5, 15, 60 und 360 Minuten erneut. Prüfen Sie, ob Ihre Adresse mit einem 2xx-Status antwortet.",
+      "col": {
+        "name": "Webhook",
+        "url": "Adresse",
+        "status": "Status",
+        "events": "Ereignisse",
+        "forms": "Formulare",
+        "deliveries": "Zustellungen",
+        "last": "Letzte Zustellung",
+        "event": "Ereignis",
+        "result": "Ergebnis",
+        "webhook": "Webhook",
+        "tries": "Versuche",
+        "form": "Formular",
+        "at": "Wann",
+        "code": "Statuscode"
+      },
+      "status": {
+        "active": "Aktiv",
+        "failing": "Fehlerhaft",
+        "paused": "Pausiert"
+      },
+      "delivery": {
+        "delivered": "Zugestellt",
+        "retrying": "Wiederholung läuft",
+        "failed": "Fehlgeschlagen"
+      },
+      "event": {
+        "response_created": "Neue Antwort",
+        "response_updated": "Antwort geändert",
+        "response_status_changed": "Status geändert",
+        "response_deleted": "Antwort gelöscht",
+        "ping": "Test"
+      },
+      "eventHint": {
+        "response_created": "Jemand sendet ein Formular, über einen beliebigen Kanal",
+        "response_updated": "Antworten werden im Portal oder über die API geändert",
+        "response_status_changed": "Eine Antwort wird geprüft, genehmigt oder abgelehnt",
+        "response_deleted": "Eine Antwort wird entfernt"
+      },
+      "error": {
+        "timeout": "Keine Antwort innerhalb von 10 Sekunden",
+        "dns": "Die Adresse wurde nicht gefunden",
+        "refused": "Die Verbindung wurde abgelehnt",
+        "tls": "Die sichere Verbindung ist fehlgeschlagen (Zertifikat)",
+        "failed": "Der Aufruf konnte nicht ausgeführt werden"
+      },
+      "invalid": {
+        "required": "Geben Sie die Adresse ein",
+        "url": "Geben Sie eine vollständige Adresse ein, z. B. https://example.com/hooks",
+        "https": "Verwenden Sie eine https://-Adresse",
+        "host": "Formalie kann seine eigenen Adressen nicht aufrufen",
+        "private": "Verwenden Sie eine öffentliche Adresse, kein privates Netzwerk",
+        "events": "Wählen Sie mindestens ein Ereignis",
+        "forms": "Wählen Sie mindestens ein Formular"
+      },
+      "kpi": {
+        "deliveries": "Zustellungen",
+        "webhooks": "Webhooks",
+        "delivered": "Zugestellt",
+        "failed": "Fehlgeschlagen",
+        "byStatus": "Webhooks nach Status",
+        "retries": "Bis zu 5 Wiederholungen"
+      },
+      "sort": {
+        "name": "Name",
+        "deliveries": "Meiste Zustellungen",
+        "worst": "Am wenigsten zugestellt",
+        "newest": "Neueste zuerst",
+        "oldest": "Älteste zuerst",
+        "tries": "Meiste Versuche",
+        "slowest": "Langsamste"
+      },
+      "toast": {
+        "saved": "Webhook gespeichert",
+        "on": "Webhook eingeschaltet",
+        "off": "Webhook ausgeschaltet",
+        "rotated": "Neues Geheimnis erstellt",
+        "deleted": "Webhook gelöscht",
+        "resent": "Zugestellt",
+        "resentFailed": "Gesendet, aber nicht zugestellt: siehe Zustellung"
+      },
+      "verify": {
+        "title": "Signatur prüfen",
+        "text": "Jeder Aufruf enthält diese Header. Berechnen Sie die Signatur aus Zeitstempel und Rohdaten mit Ihrem Geheimnis neu und weisen Sie den Aufruf ab, wenn sie abweicht oder älter als fünf Minuten ist.",
+        "answer": "Antworten Sie innerhalb von 10 Sekunden mit einem beliebigen 2xx-Status und erledigen Sie die eigentliche Arbeit danach. Alles andere wird wiederholt."
+      }
+    },
+    "onceDesc": "Formalie kann ihn nicht erneut anzeigen. Wenn er verloren geht, erstelle einen neuen.",
+    "keys": {
+      "newTitle": "Neuer API-Schlüssel",
+      "editTitle": "API-Schlüssel bearbeiten",
+      "desc": "Mit einem Schlüssel nutzt dein eigener Code die Management-API von Formalie: Formulare und Antworten lesen, Status ändern und mehr.",
+      "create": "Schlüssel erstellen",
+      "namePlaceholder": "z. B. Reporting-Skript",
+      "scopesHelp": "Gib jedem Schlüssel nur, was er braucht.",
+      "scopesCount": "{n} Berechtigung | {n} Berechtigungen",
+      "search": "API-Schlüssel suchen…",
+      "empty": "Noch keine API-Schlüssel",
+      "emptyDesc": "Erstelle einen Schlüssel, um Formulare und Antworten aus deinem Code zu lesen.",
+      "lastUsed": "Verwendet {when}",
+      "neverUsed": "Nie verwendet",
+      "lastFrom": "Zuletzt verwendet von",
+      "noCalls": "Keine Aufrufe in den letzten 30 Tagen",
+      "secret": "API-Schlüssel",
+      "secretTitle": "API-Schlüssel für {name}",
+      "secretHint": "Bewahre ihn nur auf deinem Server auf, nie in einer Website oder App, die andere herunterladen können.",
+      "revoke": "Widerrufen",
+      "revokeTitle": "Diesen Schlüssel widerrufen?",
+      "revokeDesc": "{name} funktioniert sofort nicht mehr. Code, der ihn noch nutzt, erhält einen Fehler.",
+      "deleteTitle": "Diesen Schlüssel löschen?",
+      "deleteDesc": "{name} wird aus der Liste entfernt. Das Audit-Protokoll behält, was er getan hat.",
+      "expiringTitle": "Läuft ab {when}",
+      "expiringDesc": "Erstelle einen neuen Schlüssel, stelle deinen Code um und widerrufe dann diesen.",
+      "howToCall": "So rufst du auf",
+      "howToCallText": "Sende den Schlüssel als Bearer-Token. Listen antworten mit data und meta (page, per_page, total); Fehler mit einem Code, den du unter Doku & Tests nachschlagen kannst.",
+      "col": {
+        "name": "Schlüssel",
+        "status": "Status",
+        "scopes": "Berechtigungen",
+        "calls": "Aufrufe",
+        "lastUsed": "Zuletzt verwendet"
+      },
+      "scope": {
+        "forms_read": "Formulare lesen",
+        "forms_write": "Formulare öffnen und schließen",
+        "responses_read": "Antworten lesen",
+        "responses_write": "Antworten ändern",
+        "webhooks_read": "Webhooks lesen",
+        "audit_read": "Audit-Protokoll lesen"
+      },
+      "scopeHint": {
+        "forms_read": "Formulare und ihre Fragen auflisten",
+        "forms_write": "Ein veröffentlichtes Formular zwischen offen und geschlossen umschalten",
+        "responses_read": "Antworten mit ihren Einträgen auflisten",
+        "responses_write": "Status und Tags ändern, Antworten löschen",
+        "webhooks_read": "Webhooks und ihre Ereignisse auflisten",
+        "audit_read": "Lesen, was passiert ist und wer es getan hat"
+      },
+      "invalid": {
+        "scopes": "Wähle mindestens eine Berechtigung"
+      },
+      "kpi": {
+        "calls": "Aufrufe mit API-Schlüsseln",
+        "keys": "Schlüssel",
+        "unused": "90 Tage ungenutzt",
+        "byStatus": "Schlüssel nach Status",
+        "expiringHint": "Läuft ab = innerhalb von 14 Tagen"
+      },
+      "sort": {
+        "lastUsed": "Zuletzt verwendet",
+        "expires": "Läuft zuerst ab"
+      },
+      "toast": {
+        "saved": "API-Schlüssel gespeichert",
+        "revoked": "API-Schlüssel widerrufen",
+        "deleted": "API-Schlüssel gelöscht"
+      }
     }
   }
 }

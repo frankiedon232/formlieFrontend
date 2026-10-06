@@ -634,7 +634,11 @@
     "active": "活跃",
     "expiring": "即将过期",
     "expired": "已过期",
-    "revoked": "已吊销"
+    "revoked": "已吊销",
+    "paused": "已暂停",
+    "delivered": "已送达",
+    "retrying": "重试中",
+    "failed": "失败"
   },
   "footer": {
     "rights": "保留所有权利。",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "已停用访问规则",
       "api_rule_deleted": "已删除访问规则",
       "api_limits_changed": "已更改 API 速率限制",
-      "api_logging_changed": "API 请求日志设置已更改"
+      "api_logging_changed": "API 请求日志设置已更改",
+      "integrations_webhook_updated": "Webhook 已更改",
+      "integrations_webhook_enabled": "Webhook 已开启",
+      "integrations_webhook_disabled": "Webhook 已关闭",
+      "integrations_webhook_paused": "Webhook 因多次失败已暂停",
+      "integrations_webhook_secret_rotated": "Webhook 密钥已更换",
+      "integrations_webhook_deleted": "Webhook 已删除",
+      "integrations_webhook_resent": "Webhook 投递已重新发送",
+      "integrations_api_key_updated": "API 密钥已更改",
+      "integrations_api_key_deleted": "API 密钥已删除"
     },
     "detail": {
       "who": "谁",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} 人在此离开",
       "required": "必填",
       "answered": "{n}% 已回答"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "新建 Webhook",
+      "editTitle": "编辑 Webhook",
+      "desc": "所选事件发生时，Formalie 会调用此地址，并附带签名，方便你确认请求来自我们。",
+      "create": "创建 Webhook",
+      "namePlaceholder": "例如 CRM 同步",
+      "urlHelp": "公开地址上的 HTTPS。Formalie 会发送带 JSON 的 POST 请求，并最多等待 10 秒以获得 2xx 响应。",
+      "enabled": "已开启",
+      "allForms": "所有表单",
+      "someForms": "指定表单",
+      "pickForms": "选择表单",
+      "eventsAndForms": "事件和表单",
+      "eventsCount": "{n} 个事件 | {n} 个事件",
+      "formsCount": "{n} 个表单 | {n} 个表单",
+      "search": "搜索 Webhook…",
+      "searchDeliveries": "搜索投递…",
+      "viewSwitch": "Webhook 或投递",
+      "deliveries": "投递",
+      "allDeliveries": "所有投递",
+      "empty": "还没有 Webhook",
+      "emptyDesc": "每收到一条新回复，就发送到你自己的系统。",
+      "noDeliveries": "还没有投递",
+      "noDeliveriesDesc": "事件发生后，投递会显示在这里。发送一次测试，立即试试这个地址。",
+      "lastDelivery": "最近 {when}",
+      "secret": "签名密钥",
+      "secretTitle": "{name} 的签名密钥",
+      "secretHint": "只保存在你的服务器上。信任每次调用之前，请先校验签名（见 Webhook 面板中的“校验签名”）。",
+      "rotate": "新密钥",
+      "rotateTitle": "更换签名密钥？",
+      "rotateDesc": "新密钥从下一次投递开始使用，旧密钥会立即失效。请马上更新你的接收端。",
+      "deleteTitle": "删除此 Webhook？",
+      "deleteDesc": "{name} 将不再收到调用，其投递日志也会被删除。此操作无法撤销。",
+      "sendTest": "发送测试",
+      "test": "测试",
+      "testOk": "测试已送达",
+      "testFailed": "测试未送达",
+      "details": "详情",
+      "sendAgain": "重新发送",
+      "retryNow": "立即重试",
+      "openWebhook": "打开 Webhook",
+      "request": "请求",
+      "masked": "此副本中的个人回答已被遮蔽。你的接收端收到的是完整内容。",
+      "noAnswer": "无响应",
+      "emptyBody": "（空）",
+      "nextTry": "下次重试",
+      "nextTryAt": "下次重试 {when}",
+      "tryN": "第 {n} 次尝试",
+      "triesCount": "{n} 次尝试 | {n} 次尝试",
+      "autoPaused": "连续 {n} 次投递失败后已暂停",
+      "autoPausedDesc": "不会丢失任何内容：修复接收端，重新开启 Webhook，并从日志中重新发送失败的投递。",
+      "failingTitle": "最近一次投递失败 | 最近 {n} 次投递失败",
+      "failingDesc": "Formalie 会在 1、5、15、60 和 360 分钟后重试。请确认你的地址返回 2xx 状态。",
+      "col": {
+        "name": "Webhook",
+        "url": "地址",
+        "status": "状态",
+        "events": "事件",
+        "forms": "表单",
+        "deliveries": "投递",
+        "last": "最近投递",
+        "event": "事件",
+        "result": "结果",
+        "webhook": "Webhook",
+        "tries": "尝试次数",
+        "form": "表单",
+        "at": "时间",
+        "code": "状态码"
+      },
+      "status": {
+        "active": "正常",
+        "failing": "异常",
+        "paused": "已暂停"
+      },
+      "delivery": {
+        "delivered": "已送达",
+        "retrying": "重试中",
+        "failed": "失败"
+      },
+      "event": {
+        "response_created": "新回复",
+        "response_updated": "回复已更改",
+        "response_status_changed": "状态已更改",
+        "response_deleted": "回复已删除",
+        "ping": "测试"
+      },
+      "eventHint": {
+        "response_created": "有人通过任意渠道提交表单",
+        "response_updated": "回答在门户或 API 中被修改",
+        "response_status_changed": "回复被审核、批准或拒绝",
+        "response_deleted": "回复被移除"
+      },
+      "error": {
+        "timeout": "10 秒内无响应",
+        "dns": "找不到该地址",
+        "refused": "连接被拒绝",
+        "tls": "安全连接失败（证书）",
+        "failed": "无法发起调用"
+      },
+      "invalid": {
+        "required": "请输入地址",
+        "url": "请输入完整地址，例如 https://example.com/hooks",
+        "https": "请使用 https:// 地址",
+        "host": "Formalie 无法调用自己的地址",
+        "private": "请使用公开地址，而不是私有网络",
+        "events": "请至少选择一个事件",
+        "forms": "请至少选择一个表单"
+      },
+      "kpi": {
+        "deliveries": "投递",
+        "webhooks": "Webhook",
+        "delivered": "已送达",
+        "failed": "失败",
+        "byStatus": "按状态统计的 Webhook",
+        "retries": "最多重试 5 次"
+      },
+      "sort": {
+        "name": "名称",
+        "deliveries": "投递最多",
+        "worst": "送达最少",
+        "newest": "最新优先",
+        "oldest": "最早优先",
+        "tries": "尝试最多",
+        "slowest": "最慢"
+      },
+      "toast": {
+        "saved": "Webhook 已保存",
+        "on": "Webhook 已开启",
+        "off": "Webhook 已关闭",
+        "rotated": "已生成新密钥",
+        "deleted": "Webhook 已删除",
+        "resent": "已送达",
+        "resentFailed": "已发送，但未送达：请查看投递详情"
+      },
+      "verify": {
+        "title": "校验签名",
+        "text": "每次调用都带有这些请求头。用你的密钥，根据时间戳和原始请求体重新计算签名，若不一致或超过五分钟，请拒绝该调用。",
+        "answer": "请在 10 秒内返回任意 2xx 状态，真正的处理放在之后。其他响应都会重试。"
+      }
+    },
+    "onceDesc": "Formalie 无法再次显示。如果丢失，请新建一个。",
+    "keys": {
+      "newTitle": "新建 API 密钥",
+      "editTitle": "编辑 API 密钥",
+      "desc": "密钥可让你自己的代码使用 Formalie 的管理 API：读取表单和回复、更改状态等。",
+      "create": "创建密钥",
+      "namePlaceholder": "例如：报表脚本",
+      "scopesHelp": "只给每个密钥它需要的权限。",
+      "scopesCount": "{n} 项权限 | {n} 项权限",
+      "search": "搜索 API 密钥…",
+      "empty": "还没有 API 密钥",
+      "emptyDesc": "创建一个密钥，用你自己的代码读取表单和回复。",
+      "lastUsed": "{when}使用",
+      "neverUsed": "从未使用",
+      "lastFrom": "上次使用来源",
+      "noCalls": "过去 30 天没有调用",
+      "secret": "API 密钥",
+      "secretTitle": "{name} 的 API 密钥",
+      "secretHint": "只保存在你的服务器上，切勿放进他人可下载的网站或应用。",
+      "revoke": "吊销",
+      "revokeTitle": "吊销此密钥？",
+      "revokeDesc": "{name} 会立即失效。仍在使用它的代码会收到错误。",
+      "deleteTitle": "删除此密钥？",
+      "deleteDesc": "{name} 将从列表中移除。审计日志会保留它的操作记录。",
+      "expiringTitle": "{when}到期",
+      "expiringDesc": "新建一个密钥，把代码切换过去，然后吊销此密钥。",
+      "howToCall": "调用方式",
+      "howToCallText": "将密钥作为 Bearer 令牌发送。列表返回 data 和 meta（page、per_page、total）；错误返回可在文档与测试中查询的代码。",
+      "col": {
+        "name": "密钥",
+        "status": "状态",
+        "scopes": "权限",
+        "calls": "调用",
+        "lastUsed": "上次使用"
+      },
+      "scope": {
+        "forms_read": "读取表单",
+        "forms_write": "开启和关闭表单",
+        "responses_read": "读取回复",
+        "responses_write": "更改回复",
+        "webhooks_read": "读取 Webhook",
+        "audit_read": "读取审计日志"
+      },
+      "scopeHint": {
+        "forms_read": "列出表单及其问题",
+        "forms_write": "将已发布的表单在开启和关闭之间切换",
+        "responses_read": "列出回复及其答案",
+        "responses_write": "更改状态和标签，删除回复",
+        "webhooks_read": "列出 Webhook 及其事件",
+        "audit_read": "读取发生了什么以及是谁操作的"
+      },
+      "invalid": {
+        "scopes": "请至少选择一项权限"
+      },
+      "kpi": {
+        "calls": "使用 API 密钥的调用",
+        "keys": "密钥",
+        "unused": "90 天未使用",
+        "byStatus": "按状态统计密钥",
+        "expiringHint": "即将到期 = 14 天内"
+      },
+      "sort": {
+        "lastUsed": "最近使用",
+        "expires": "最先到期"
+      },
+      "toast": {
+        "saved": "API 密钥已保存",
+        "revoked": "API 密钥已吊销",
+        "deleted": "API 密钥已删除"
+      }
     }
   }
 }

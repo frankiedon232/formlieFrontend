@@ -41,6 +41,9 @@ import { updateReview } from './data/responseReview'
 import { responsesOf, saveResponses } from './data/responseStore'
 import { MOCK_TENANTS, type MockTenant } from './data/tenants'
 import { recordLog } from './data/apiTraffic'
+import { maskAnswers, PERSONAL_TYPES } from './core/mask'
+import { emitResponse } from './data/integrationStore'
+import { handleManagementApi } from './managementApi'
 
 class PublicError extends Error {
   constructor(
@@ -178,17 +181,11 @@ interface CallContext {
   caller?: AccessCaller
 }
 /** Answers whose question type holds personal data are masked in kept bodies. */
-const PERSONAL = new Set(['email', 'phone', 'full_name', 'address', 'iban', 'bic', 'ip_address', 'signature', 'date'])
-const maskText = (value: unknown): unknown =>
-  typeof value === 'string' ? (value.length <= 2 ? '••' : `${value[0]}•••${value.slice(-1)}`) : Array.isArray(value) ? value.map(maskText) : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).map(([k, v]) => [k, maskText(v)])) : value == null ? value : '•••'
-function maskAnswers(value: unknown, personal: Set<string>): unknown {
-  if (Array.isArray(value)) return value.map(item => maskAnswers(item, personal))
-  if (!value || typeof value !== 'object') return value
-  return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([key, item]) => [key, personal.has(key) ? maskText(item) : key === 'data' ? maskAnswers(item, personal) : maskAnswers(item, personal)]))
-}
-
 /** Handles a call and writes it to the request log (when the address key belongs to a workspace). */
 export async function handlePublicApi(event: H3Event, path: string) {
+  // Formalie's own management API (F13 M6): /v1/…, API keys instead of endpoint tokens
+  const parts = path.split('?')[0]!.split('/').filter(Boolean)
+  if (parts[0] === 'v1') return handleManagementApi(event, parts.slice(1))
   const context: CallContext = { raw: '' }
   const started = Date.now()
   const result = (await handle(event, path, context)) as { error?: { code?: string } } | undefined
@@ -197,7 +194,7 @@ export async function handlePublicApi(event: H3Event, path: string) {
   const api = apiOf(tenant)
   const endpoint = context.endpoint
   const schema = endpoint ? (() => { const form = formsOf(tenant).forms.find(item => item.id === endpoint.form_id); return form ? schemaOf(form, endpoint.version) : null })() : null
-  const personal = new Set(schema ? allFields(schema).filter(field => PERSONAL.has(field.type)).map(field => field.key) : [])
+  const personal = new Set(schema ? allFields(schema).filter(field => PERSONAL_TYPES.has(field.type)).map(field => field.key) : [])
   const keep = api.logging?.keep_bodies ?? false
   let requestBody: unknown = null
   if (keep && context.raw) {
@@ -389,6 +386,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       form.responses_count += 1
       saveForms()
       recordAudit(event, tenant, { action: 'responses.submitted', actor, resource: { type: 'form', id: form.id, name: form.name }, changes: [{ field: 'channel', before: null, after: 'api' }], metadata: { endpoint: endpoint.name } })
+      emitResponse(event, tenant, 'response.created', form, stored.id)
       const entry = formResponses(tenant, form).find(item => item.id === stored.id)!
       return send(event, 201, { data: record(form, entry, choices) })
     }
@@ -401,6 +399,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       if (!test) {
         updateReview(form.id, entry!.id, review => (review.deleted_at = new Date().toISOString()))
         recordAudit(event, tenant, { action: 'responses.deleted', actor, resource: { type: 'response', id: entry!.id, name: form.name }, metadata: { endpoint: endpoint.name } })
+        emitResponse(event, tenant, 'response.deleted', form, entry!.id)
       }
       return send(event, 200, { data: { id: recordRef, deleted: true }, ...(test ? { meta: { test: true } } : {}) })
     }
@@ -418,6 +417,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       review.history = [...Object.entries(body).map(([field, value]) => ({ id: crypto.randomUUID(), at: new Date().toISOString(), by: { id: token.id, name: actor.name }, field: `answer:${field}`, before: before[field] ?? null, after: value ?? null })), ...(review.history ?? [])].slice(0, 200)
     })
     recordAudit(event, tenant, { action: 'responses.updated', actor, resource: { type: 'response', id: entry.id, name: form.name }, changes: Object.keys(body).map(field => ({ field: fields.get(field)?.label ?? field, before: JSON.stringify(before[field] ?? null), after: JSON.stringify(body[field] ?? null) })), metadata: { endpoint: endpoint.name } })
+    emitResponse(event, tenant, 'response.updated', form, entry.id)
     const updated = formResponses(tenant, form).find(item => item.id === entry.id)!
     return send(event, 200, { data: record(form, updated, choices) })
   } catch (error) {

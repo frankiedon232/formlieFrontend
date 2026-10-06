@@ -634,7 +634,11 @@
     "active": "Đang hoạt động",
     "expiring": "Sắp hết hạn",
     "expired": "Đã hết hạn",
-    "revoked": "Đã thu hồi"
+    "revoked": "Đã thu hồi",
+    "paused": "Tạm dừng",
+    "delivered": "Đã gửi tới",
+    "retrying": "Đang thử lại",
+    "failed": "Thất bại"
   },
   "footer": {
     "rights": "Bảo lưu mọi quyền.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Đã tắt quy tắc truy cập",
       "api_rule_deleted": "Đã xóa quy tắc truy cập",
       "api_limits_changed": "Đã thay đổi giới hạn tốc độ API",
-      "api_logging_changed": "Đã thay đổi cài đặt nhật ký yêu cầu API"
+      "api_logging_changed": "Đã thay đổi cài đặt nhật ký yêu cầu API",
+      "integrations_webhook_updated": "Đã thay đổi webhook",
+      "integrations_webhook_enabled": "Đã bật webhook",
+      "integrations_webhook_disabled": "Đã tắt webhook",
+      "integrations_webhook_paused": "Webhook bị tạm dừng sau nhiều lần thất bại liên tiếp",
+      "integrations_webhook_secret_rotated": "Đã thay bí mật webhook",
+      "integrations_webhook_deleted": "Đã xóa webhook",
+      "integrations_webhook_resent": "Đã gửi lại lượt gửi webhook",
+      "integrations_api_key_updated": "Đã thay đổi khóa API",
+      "integrations_api_key_deleted": "Đã xóa khóa API"
     },
     "detail": {
       "who": "Ai",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} đã rời đi tại đây",
       "required": "Bắt buộc",
       "answered": "{n}% đã trả lời"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Webhook mới",
+      "editTitle": "Sửa webhook",
+      "desc": "Formalie gọi địa chỉ này mỗi khi một trong các sự kiện đã chọn xảy ra, có chữ ký để bạn kiểm tra cuộc gọi đến từ chúng tôi.",
+      "create": "Tạo webhook",
+      "namePlaceholder": "VD: Đồng bộ CRM",
+      "urlHelp": "HTTPS trên địa chỉ công khai. Formalie gửi một POST với JSON và chờ tối đa 10 giây để nhận phản hồi 2xx.",
+      "enabled": "Đã bật",
+      "allForms": "Mọi biểu mẫu",
+      "someForms": "Biểu mẫu đã chọn",
+      "pickForms": "Chọn biểu mẫu",
+      "eventsAndForms": "Sự kiện và biểu mẫu",
+      "eventsCount": "{n} sự kiện | {n} sự kiện",
+      "formsCount": "{n} biểu mẫu | {n} biểu mẫu",
+      "search": "Tìm webhook…",
+      "searchDeliveries": "Tìm lượt gửi…",
+      "viewSwitch": "Webhook hoặc lượt gửi",
+      "deliveries": "Lượt gửi",
+      "allDeliveries": "Tất cả lượt gửi",
+      "empty": "Chưa có webhook",
+      "emptyDesc": "Gửi mỗi phản hồi mới tới hệ thống của bạn ngay khi nó đến.",
+      "noDeliveries": "Chưa có lượt gửi",
+      "noDeliveriesDesc": "Các lượt gửi sẽ hiện ở đây khi có sự kiện. Hãy gửi thử để thử địa chỉ ngay.",
+      "lastDelivery": "Gần nhất {when}",
+      "secret": "Bí mật chữ ký",
+      "secretTitle": "Bí mật chữ ký của {name}",
+      "secretHint": "Chỉ giữ nó trên máy chủ của bạn. Kiểm tra chữ ký của mọi cuộc gọi trước khi tin tưởng (xem Kiểm tra chữ ký trong bảng của webhook).",
+      "rotate": "Bí mật mới",
+      "rotateTitle": "Thay bí mật chữ ký?",
+      "rotateDesc": "Bí mật mới được dùng từ lượt gửi tiếp theo, bí mật cũ ngừng hoạt động ngay. Hãy cập nhật bên nhận của bạn ngay.",
+      "deleteTitle": "Xóa webhook này?",
+      "deleteDesc": "{name} không còn nhận cuộc gọi và nhật ký lượt gửi bị xóa. Không thể hoàn tác thao tác này.",
+      "sendTest": "Gửi thử",
+      "test": "Thử",
+      "testOk": "Đã gửi thử thành công",
+      "testFailed": "Lượt gửi thử không thành công",
+      "details": "Chi tiết",
+      "sendAgain": "Gửi lại",
+      "retryNow": "Thử lại ngay",
+      "openWebhook": "Mở webhook",
+      "request": "Yêu cầu",
+      "masked": "Câu trả lời cá nhân được ẩn trong bản sao này. Bên nhận của bạn đã nhận đủ giá trị.",
+      "noAnswer": "Không có phản hồi",
+      "emptyBody": "(trống)",
+      "nextTry": "Lần thử tiếp theo",
+      "nextTryAt": "Lần thử tiếp theo {when}",
+      "tryN": "Lần thử {n}",
+      "triesCount": "{n} lần thử | {n} lần thử",
+      "autoPaused": "Tạm dừng sau {n} lượt gửi thất bại liên tiếp",
+      "autoPausedDesc": "Không mất gì cả: hãy sửa bên nhận, bật lại webhook và gửi lại các lượt gửi thất bại từ nhật ký.",
+      "failingTitle": "Lượt gửi gần nhất thất bại | {n} lượt gửi gần nhất thất bại",
+      "failingDesc": "Formalie thử lại sau 1, 5, 15, 60 và 360 phút. Hãy kiểm tra địa chỉ của bạn trả lời với trạng thái 2xx.",
+      "col": {
+        "name": "Webhook",
+        "url": "Địa chỉ",
+        "status": "Trạng thái",
+        "events": "Sự kiện",
+        "forms": "Biểu mẫu",
+        "deliveries": "Lượt gửi",
+        "last": "Lượt gửi gần nhất",
+        "event": "Sự kiện",
+        "result": "Kết quả",
+        "webhook": "Webhook",
+        "tries": "Lần thử",
+        "form": "Biểu mẫu",
+        "at": "Khi nào",
+        "code": "Mã trạng thái"
+      },
+      "status": {
+        "active": "Hoạt động",
+        "failing": "Đang lỗi",
+        "paused": "Tạm dừng"
+      },
+      "delivery": {
+        "delivered": "Đã gửi tới",
+        "retrying": "Đang thử lại",
+        "failed": "Thất bại"
+      },
+      "event": {
+        "response_created": "Phản hồi mới",
+        "response_updated": "Phản hồi đã thay đổi",
+        "response_status_changed": "Trạng thái đã thay đổi",
+        "response_deleted": "Phản hồi đã xóa",
+        "ping": "Thử"
+      },
+      "eventHint": {
+        "response_created": "Ai đó gửi biểu mẫu, qua bất kỳ kênh nào",
+        "response_updated": "Câu trả lời được thay đổi trong cổng thông tin hoặc API",
+        "response_status_changed": "Một phản hồi được xem xét, duyệt hoặc từ chối",
+        "response_deleted": "Một phản hồi bị xóa"
+      },
+      "error": {
+        "timeout": "Không có phản hồi trong 10 giây",
+        "dns": "Không tìm thấy địa chỉ",
+        "refused": "Kết nối bị từ chối",
+        "tls": "Kết nối bảo mật thất bại (chứng chỉ)",
+        "failed": "Không thể thực hiện cuộc gọi"
+      },
+      "invalid": {
+        "required": "Nhập địa chỉ",
+        "url": "Nhập địa chỉ đầy đủ, VD: https://example.com/hooks",
+        "https": "Dùng địa chỉ https://",
+        "host": "Formalie không thể gọi địa chỉ của chính mình",
+        "private": "Dùng địa chỉ công khai, không dùng mạng riêng",
+        "events": "Chọn ít nhất một sự kiện",
+        "forms": "Chọn ít nhất một biểu mẫu"
+      },
+      "kpi": {
+        "deliveries": "Lượt gửi",
+        "webhooks": "Webhook",
+        "delivered": "Đã gửi tới",
+        "failed": "Thất bại",
+        "byStatus": "Webhook theo trạng thái",
+        "retries": "Thử lại tối đa 5 lần"
+      },
+      "sort": {
+        "name": "Tên",
+        "deliveries": "Nhiều lượt gửi nhất",
+        "worst": "Gửi tới ít nhất",
+        "newest": "Mới nhất trước",
+        "oldest": "Cũ nhất trước",
+        "tries": "Nhiều lần thử nhất",
+        "slowest": "Chậm nhất"
+      },
+      "toast": {
+        "saved": "Đã lưu webhook",
+        "on": "Đã bật webhook",
+        "off": "Đã tắt webhook",
+        "rotated": "Đã tạo bí mật mới",
+        "deleted": "Đã xóa webhook",
+        "resent": "Đã gửi tới",
+        "resentFailed": "Đã gửi nhưng chưa tới nơi: xem lượt gửi"
+      },
+      "verify": {
+        "title": "Kiểm tra chữ ký",
+        "text": "Mỗi cuộc gọi mang các header này. Tính lại chữ ký từ dấu thời gian và nội dung thô bằng bí mật của bạn, và từ chối cuộc gọi nếu khác hoặc cũ hơn năm phút.",
+        "answer": "Trả lời bằng bất kỳ trạng thái 2xx nào trong 10 giây; làm việc thật sau đó. Mọi phản hồi khác sẽ được thử lại."
+      }
+    },
+    "onceDesc": "Formalie không thể hiển thị lại. Nếu bị mất, hãy tạo khóa mới.",
+    "keys": {
+      "newTitle": "Khóa API mới",
+      "editTitle": "Sửa khóa API",
+      "desc": "Khóa cho phép mã của bạn dùng API quản lý của Formalie: đọc biểu mẫu và phản hồi, đổi trạng thái và nhiều hơn nữa.",
+      "create": "Tạo khóa",
+      "namePlaceholder": "vd. Tập lệnh báo cáo",
+      "scopesHelp": "Chỉ cấp cho mỗi khóa những gì nó cần.",
+      "scopesCount": "{n} quyền | {n} quyền",
+      "search": "Tìm khóa API…",
+      "empty": "Chưa có khóa API",
+      "emptyDesc": "Tạo khóa để đọc biểu mẫu và phản hồi từ mã của bạn.",
+      "lastUsed": "Dùng {when}",
+      "neverUsed": "Chưa từng dùng",
+      "lastFrom": "Dùng lần cuối từ",
+      "noCalls": "Không có lệnh gọi nào trong 30 ngày qua",
+      "secret": "Khóa API",
+      "secretTitle": "Khóa API cho {name}",
+      "secretHint": "Chỉ giữ trên máy chủ của bạn, không bao giờ đặt trong trang web hay ứng dụng mà người khác có thể tải về.",
+      "revoke": "Thu hồi",
+      "revokeTitle": "Thu hồi khóa này?",
+      "revokeDesc": "{name} ngừng hoạt động ngay lập tức. Mã vẫn dùng nó sẽ nhận lỗi.",
+      "deleteTitle": "Xóa khóa này?",
+      "deleteDesc": "{name} bị xóa khỏi danh sách. Nhật ký kiểm tra vẫn giữ những gì nó đã làm.",
+      "expiringTitle": "Hết hạn {when}",
+      "expiringDesc": "Tạo khóa mới, chuyển mã của bạn sang, rồi thu hồi khóa này.",
+      "howToCall": "Cách gọi",
+      "howToCallText": "Gửi khóa dưới dạng bearer token. Danh sách trả về data và meta (page, per_page, total); lỗi trả về mã mà bạn có thể tra trong Tài liệu & kiểm thử.",
+      "col": {
+        "name": "Khóa",
+        "status": "Trạng thái",
+        "scopes": "Quyền",
+        "calls": "Lệnh gọi",
+        "lastUsed": "Dùng lần cuối"
+      },
+      "scope": {
+        "forms_read": "Đọc biểu mẫu",
+        "forms_write": "Mở và đóng biểu mẫu",
+        "responses_read": "Đọc phản hồi",
+        "responses_write": "Sửa phản hồi",
+        "webhooks_read": "Đọc webhook",
+        "audit_read": "Đọc nhật ký kiểm tra"
+      },
+      "scopeHint": {
+        "forms_read": "Liệt kê biểu mẫu và câu hỏi của chúng",
+        "forms_write": "Chuyển biểu mẫu đã xuất bản giữa mở và đóng",
+        "responses_read": "Liệt kê phản hồi cùng câu trả lời",
+        "responses_write": "Đổi trạng thái và thẻ, xóa phản hồi",
+        "webhooks_read": "Liệt kê webhook và sự kiện của chúng",
+        "audit_read": "Đọc điều gì đã xảy ra và ai đã làm"
+      },
+      "invalid": {
+        "scopes": "Chọn ít nhất một quyền"
+      },
+      "kpi": {
+        "calls": "Lệnh gọi bằng khóa API",
+        "keys": "Khóa",
+        "unused": "Không dùng 90 ngày",
+        "byStatus": "Khóa theo trạng thái",
+        "expiringHint": "Sắp hết hạn = trong 14 ngày"
+      },
+      "sort": {
+        "lastUsed": "Dùng gần nhất",
+        "expires": "Hết hạn sớm nhất"
+      },
+      "toast": {
+        "saved": "Đã lưu khóa API",
+        "revoked": "Đã thu hồi khóa API",
+        "deleted": "Đã xóa khóa API"
+      }
     }
   }
 }

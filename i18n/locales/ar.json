@@ -634,7 +634,11 @@
     "active": "نشط",
     "expiring": "ينتهي قريبًا",
     "expired": "منتهي الصلاحية",
-    "revoked": "ملغى"
+    "revoked": "ملغى",
+    "paused": "متوقف مؤقتًا",
+    "delivered": "تم التسليم",
+    "retrying": "جارٍ إعادة المحاولة",
+    "failed": "فشل"
   },
   "footer": {
     "rights": "جميع الحقوق محفوظة.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "تم إيقاف قاعدة الوصول",
       "api_rule_deleted": "تم حذف قاعدة الوصول",
       "api_limits_changed": "تم تغيير حدود معدل استدعاءات API",
-      "api_logging_changed": "تم تغيير إعدادات سجل طلبات API"
+      "api_logging_changed": "تم تغيير إعدادات سجل طلبات API",
+      "integrations_webhook_updated": "تم تغيير الـ webhook",
+      "integrations_webhook_enabled": "تم تشغيل الـ webhook",
+      "integrations_webhook_disabled": "تم إيقاف الـ webhook",
+      "integrations_webhook_paused": "تم إيقاف الـ webhook مؤقتًا بعد إخفاقات متكررة",
+      "integrations_webhook_secret_rotated": "تم استبدال سر الـ webhook",
+      "integrations_webhook_deleted": "تم حذف الـ webhook",
+      "integrations_webhook_resent": "أُعيد إرسال تسليم الـ webhook",
+      "integrations_api_key_updated": "تم تغيير مفتاح API",
+      "integrations_api_key_deleted": "تم حذف مفتاح API"
     },
     "detail": {
       "who": "من",
@@ -5789,6 +5802,218 @@
       "leftHere": "غادر {n} هنا",
       "required": "مطلوب",
       "answered": "تمت الإجابة على {n}%"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "webhook جديد",
+      "editTitle": "تعديل الـ webhook",
+      "desc": "تستدعي Formalie هذا العنوان كلما وقع أحد الأحداث المختارة، مع توقيع لتتحقق من أن الطلب جاء منا.",
+      "create": "إنشاء webhook",
+      "namePlaceholder": "مثل: مزامنة CRM",
+      "urlHelp": "HTTPS على عنوان عام. ترسل Formalie طلب POST بصيغة JSON وتنتظر حتى 10 ثوانٍ للحصول على ردّ 2xx.",
+      "enabled": "مفعّل",
+      "allForms": "كل نموذج",
+      "someForms": "نماذج مختارة",
+      "pickForms": "اختيار النماذج",
+      "eventsAndForms": "الأحداث والنماذج",
+      "eventsCount": "حدث {n} | {n} أحداث",
+      "formsCount": "نموذج {n} | {n} نماذج",
+      "search": "البحث في الـ webhooks…",
+      "searchDeliveries": "البحث في التسليمات…",
+      "viewSwitch": "webhooks أو تسليمات",
+      "deliveries": "التسليمات",
+      "allDeliveries": "كل التسليمات",
+      "empty": "لا توجد webhooks بعد",
+      "emptyDesc": "أرسل كل ردّ جديد إلى أنظمتك فور وصوله.",
+      "noDeliveries": "لا توجد تسليمات بعد",
+      "noDeliveriesDesc": "تظهر التسليمات هنا عند وقوع الأحداث. أرسل اختبارًا لتجربة العنوان الآن.",
+      "lastDelivery": "آخر {when}",
+      "secret": "سر التوقيع",
+      "secretTitle": "سر التوقيع لـ {name}",
+      "secretHint": "احتفظ به على خادمك فقط. تحقّق من التوقيع في كل استدعاء قبل الوثوق به (راجع التحقق من التوقيع في لوحة الـ webhook).",
+      "rotate": "سر جديد",
+      "rotateTitle": "استبدال سر التوقيع؟",
+      "rotateDesc": "يُستخدم السر الجديد من التسليم التالي، ويتوقف القديم عن العمل فورًا. حدّث جهة الاستقبال لديك على الفور.",
+      "deleteTitle": "حذف هذا الـ webhook؟",
+      "deleteDesc": "لن يستقبل {name} استدعاءات بعد الآن وسيُحذف سجل تسليماته. لا يمكن التراجع عن هذا الإجراء.",
+      "sendTest": "إرسال اختبار",
+      "test": "اختبار",
+      "testOk": "تم تسليم الاختبار",
+      "testFailed": "لم يتم تسليم الاختبار",
+      "details": "التفاصيل",
+      "sendAgain": "إعادة الإرسال",
+      "retryNow": "إعادة المحاولة الآن",
+      "openWebhook": "فتح الـ webhook",
+      "request": "الطلب",
+      "masked": "الإجابات الشخصية مخفية في هذه النسخة. تلقّت جهة الاستقبال لديك القيم كاملة.",
+      "noAnswer": "لا يوجد ردّ",
+      "emptyBody": "(فارغ)",
+      "nextTry": "المحاولة التالية",
+      "nextTryAt": "المحاولة التالية {when}",
+      "tryN": "المحاولة {n}",
+      "triesCount": "محاولة {n} | {n} محاولات",
+      "autoPaused": "أُوقف مؤقتًا بعد {n} تسليمات فاشلة متتالية",
+      "autoPausedDesc": "لم يضع شيء: أصلح جهة الاستقبال، وشغّل الـ webhook من جديد، وأعد إرسال التسليمات الفاشلة من السجل.",
+      "failingTitle": "فشل آخر تسليم | فشلت آخر {n} تسليمات",
+      "failingDesc": "تعيد Formalie المحاولة بعد 1 و5 و15 و60 و360 دقيقة. تأكد من أن عنوانك يردّ بحالة 2xx.",
+      "col": {
+        "name": "الـ webhook",
+        "url": "العنوان",
+        "status": "الحالة",
+        "events": "الأحداث",
+        "forms": "النماذج",
+        "deliveries": "التسليمات",
+        "last": "آخر تسليم",
+        "event": "الحدث",
+        "result": "النتيجة",
+        "webhook": "الـ webhook",
+        "tries": "المحاولات",
+        "form": "النموذج",
+        "at": "الوقت",
+        "code": "رمز الحالة"
+      },
+      "status": {
+        "active": "نشط",
+        "failing": "متعثّر",
+        "paused": "متوقف مؤقتًا"
+      },
+      "delivery": {
+        "delivered": "تم التسليم",
+        "retrying": "جارٍ إعادة المحاولة",
+        "failed": "فشل"
+      },
+      "event": {
+        "response_created": "ردّ جديد",
+        "response_updated": "تم تغيير ردّ",
+        "response_status_changed": "تم تغيير الحالة",
+        "response_deleted": "تم حذف ردّ",
+        "ping": "اختبار"
+      },
+      "eventHint": {
+        "response_created": "يرسل شخص ما نموذجًا عبر أي قناة",
+        "response_updated": "تُغيَّر الإجابات في البوابة أو عبر API",
+        "response_status_changed": "تتم مراجعة ردّ أو الموافقة عليه أو رفضه",
+        "response_deleted": "تتم إزالة ردّ"
+      },
+      "error": {
+        "timeout": "لا يوجد ردّ خلال 10 ثوانٍ",
+        "dns": "تعذّر العثور على العنوان",
+        "refused": "تم رفض الاتصال",
+        "tls": "فشل الاتصال الآمن (الشهادة)",
+        "failed": "تعذّر إجراء الاستدعاء"
+      },
+      "invalid": {
+        "required": "أدخل العنوان",
+        "url": "أدخل عنوانًا كاملًا، مثل https://example.com/hooks",
+        "https": "استخدم عنوانًا يبدأ بـ https://",
+        "host": "لا تستطيع Formalie استدعاء عناوينها الخاصة",
+        "private": "استخدم عنوانًا عامًا وليس شبكة خاصة",
+        "events": "اختر حدثًا واحدًا على الأقل",
+        "forms": "اختر نموذجًا واحدًا على الأقل"
+      },
+      "kpi": {
+        "deliveries": "التسليمات",
+        "webhooks": "الـ webhooks",
+        "delivered": "تم التسليم",
+        "failed": "فشل",
+        "byStatus": "الـ webhooks حسب الحالة",
+        "retries": "تُعاد المحاولة حتى 5 مرات"
+      },
+      "sort": {
+        "name": "الاسم",
+        "deliveries": "الأكثر تسليمًا",
+        "worst": "الأقل تسليمًا",
+        "newest": "الأحدث أولًا",
+        "oldest": "الأقدم أولًا",
+        "tries": "الأكثر محاولات",
+        "slowest": "الأبطأ"
+      },
+      "toast": {
+        "saved": "تم حفظ الـ webhook",
+        "on": "تم تشغيل الـ webhook",
+        "off": "تم إيقاف الـ webhook",
+        "rotated": "تم إنشاء سر جديد",
+        "deleted": "تم حذف الـ webhook",
+        "resent": "تم التسليم",
+        "resentFailed": "أُرسل لكنه لم يُسلَّم: راجع التسليم"
+      },
+      "verify": {
+        "title": "التحقق من التوقيع",
+        "text": "يحمل كل استدعاء هذه الترويسات. أعد حساب التوقيع من الطابع الزمني والمحتوى الخام باستخدام سرّك، وارفض الاستدعاء إذا اختلف أو كان أقدم من خمس دقائق.",
+        "answer": "أجب بأي حالة 2xx خلال 10 ثوانٍ، ونفّذ العمل الفعلي بعد ذلك. أي ردّ آخر تُعاد محاولته."
+      }
+    },
+    "onceDesc": "لا يستطيع Formalie عرضه مرة أخرى. إذا فُقد، أنشئ مفتاحًا جديدًا.",
+    "keys": {
+      "newTitle": "مفتاح API جديد",
+      "editTitle": "تعديل مفتاح API",
+      "desc": "يتيح المفتاح لشيفرتك استخدام واجهة API الإدارية في Formalie: قراءة النماذج والردود، وتغيير الحالات، وغير ذلك.",
+      "create": "إنشاء مفتاح",
+      "namePlaceholder": "مثال: سكربت التقارير",
+      "scopesHelp": "امنح كل مفتاح ما يحتاجه فقط.",
+      "scopesCount": "{n} صلاحية | {n} صلاحيات",
+      "search": "ابحث في مفاتيح API…",
+      "empty": "لا توجد مفاتيح API بعد",
+      "emptyDesc": "أنشئ مفتاحًا لقراءة النماذج والردود من شيفرتك.",
+      "lastUsed": "استُخدم {when}",
+      "neverUsed": "لم يُستخدم قط",
+      "lastFrom": "آخر استخدام من",
+      "noCalls": "لا استدعاءات في آخر 30 يومًا",
+      "secret": "مفتاح API",
+      "secretTitle": "مفتاح API لـ {name}",
+      "secretHint": "احتفظ به على خادمك فقط، وليس في موقع أو تطبيق يمكن للآخرين تنزيله.",
+      "revoke": "إلغاء",
+      "revokeTitle": "إلغاء هذا المفتاح؟",
+      "revokeDesc": "يتوقف {name} عن العمل فورًا. الشيفرة التي ما زالت تستخدمه ستتلقى خطأ.",
+      "deleteTitle": "حذف هذا المفتاح؟",
+      "deleteDesc": "تتم إزالة {name} من القائمة. يحتفظ سجل التدقيق بما قام به.",
+      "expiringTitle": "ينتهي {when}",
+      "expiringDesc": "أنشئ مفتاحًا جديدًا، وحوّل شيفرتك إليه، ثم ألغِ هذا المفتاح.",
+      "howToCall": "كيفية الاستدعاء",
+      "howToCallText": "أرسل المفتاح كرمز Bearer. تردّ القوائم بالحقلين data وmeta (page وper_page وtotal)، وترد الأخطاء برمز يمكنك البحث عنه في المستندات والاختبار.",
+      "col": {
+        "name": "المفتاح",
+        "status": "الحالة",
+        "scopes": "الصلاحيات",
+        "calls": "الاستدعاءات",
+        "lastUsed": "آخر استخدام"
+      },
+      "scope": {
+        "forms_read": "قراءة النماذج",
+        "forms_write": "فتح النماذج وإغلاقها",
+        "responses_read": "قراءة الردود",
+        "responses_write": "تغيير الردود",
+        "webhooks_read": "قراءة الـ webhooks",
+        "audit_read": "قراءة سجل التدقيق"
+      },
+      "scopeHint": {
+        "forms_read": "عرض النماذج وأسئلتها",
+        "forms_write": "تبديل نموذج منشور بين مفتوح ومغلق",
+        "responses_read": "عرض الردود مع إجاباتها",
+        "responses_write": "تغيير الحالة والوسوم وحذف الردود",
+        "webhooks_read": "عرض الـ webhooks وأحداثها",
+        "audit_read": "قراءة ما حدث ومن قام به"
+      },
+      "invalid": {
+        "scopes": "اختر صلاحية واحدة على الأقل"
+      },
+      "kpi": {
+        "calls": "استدعاءات بمفاتيح API",
+        "keys": "المفاتيح",
+        "unused": "غير مستخدمة منذ 90 يومًا",
+        "byStatus": "المفاتيح حسب الحالة",
+        "expiringHint": "قارب الانتهاء = خلال 14 يومًا"
+      },
+      "sort": {
+        "lastUsed": "الأحدث استخدامًا",
+        "expires": "الأسبق انتهاءً"
+      },
+      "toast": {
+        "saved": "تم حفظ مفتاح API",
+        "revoked": "تم إلغاء مفتاح API",
+        "deleted": "تم حذف مفتاح API"
+      }
     }
   }
 }

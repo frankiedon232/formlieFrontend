@@ -634,7 +634,11 @@
     "active": "Actief",
     "expiring": "Verloopt binnenkort",
     "expired": "Verlopen",
-    "revoked": "Ingetrokken"
+    "revoked": "Ingetrokken",
+    "paused": "Gepauzeerd",
+    "delivered": "Afgeleverd",
+    "retrying": "Opnieuw proberen",
+    "failed": "Mislukt"
   },
   "footer": {
     "rights": "Alle rechten voorbehouden.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Toegangsregel uitgeschakeld",
       "api_rule_deleted": "Toegangsregel verwijderd",
       "api_limits_changed": "API-snelheidslimieten gewijzigd",
-      "api_logging_changed": "Instellingen voor het API-aanvraaglogboek gewijzigd"
+      "api_logging_changed": "Instellingen voor het API-aanvraaglogboek gewijzigd",
+      "integrations_webhook_updated": "Webhook gewijzigd",
+      "integrations_webhook_enabled": "Webhook ingeschakeld",
+      "integrations_webhook_disabled": "Webhook uitgeschakeld",
+      "integrations_webhook_paused": "Webhook gepauzeerd na herhaalde fouten",
+      "integrations_webhook_secret_rotated": "Webhookgeheim vervangen",
+      "integrations_webhook_deleted": "Webhook verwijderd",
+      "integrations_webhook_resent": "Webhooklevering opnieuw verzonden",
+      "integrations_api_key_updated": "API-sleutel gewijzigd",
+      "integrations_api_key_deleted": "API-sleutel verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} haakten hier af",
       "required": "Verplicht",
       "answered": "{n}% beantwoord"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Nieuwe webhook",
+      "editTitle": "Webhook bewerken",
+      "desc": "Formalie roept dit adres aan zodra een van de gekozen gebeurtenissen plaatsvindt, ondertekend zodat je kunt controleren dat het van ons komt.",
+      "create": "Webhook maken",
+      "namePlaceholder": "bijv. CRM-synchronisatie",
+      "urlHelp": "HTTPS op een openbaar adres. Formalie stuurt een POST met JSON en wacht maximaal 10 seconden op een 2xx-antwoord.",
+      "enabled": "Ingeschakeld",
+      "allForms": "Elk formulier",
+      "someForms": "Gekozen formulieren",
+      "pickForms": "Kies formulieren",
+      "eventsAndForms": "Gebeurtenissen en formulieren",
+      "eventsCount": "{n} gebeurtenis | {n} gebeurtenissen",
+      "formsCount": "{n} formulier | {n} formulieren",
+      "search": "Webhooks zoeken…",
+      "searchDeliveries": "Leveringen zoeken…",
+      "viewSwitch": "Webhooks of leveringen",
+      "deliveries": "Leveringen",
+      "allDeliveries": "Alle leveringen",
+      "empty": "Nog geen webhooks",
+      "emptyDesc": "Stuur elke nieuwe reactie naar je eigen systemen zodra die binnenkomt.",
+      "noDeliveries": "Nog geen leveringen",
+      "noDeliveriesDesc": "Leveringen verschijnen hier zodra er gebeurtenissen plaatsvinden. Stuur nu een test om het adres uit te proberen.",
+      "lastDelivery": "Laatste {when}",
+      "secret": "Ondertekeningsgeheim",
+      "secretTitle": "Ondertekeningsgeheim voor {name}",
+      "secretHint": "Bewaar het alleen op je server. Controleer bij elke aanroep de handtekening voordat je erop vertrouwt (zie De handtekening controleren in het paneel van de webhook).",
+      "rotate": "Nieuw geheim",
+      "rotateTitle": "Het ondertekeningsgeheim vervangen?",
+      "rotateDesc": "Het nieuwe geheim wordt gebruikt vanaf de volgende levering en het oude werkt direct niet meer. Werk je ontvanger meteen bij.",
+      "deleteTitle": "Deze webhook verwijderen?",
+      "deleteDesc": "{name} ontvangt geen aanroepen meer en het leveringslogboek wordt verwijderd. Dit kan niet ongedaan worden gemaakt.",
+      "sendTest": "Test versturen",
+      "test": "Test",
+      "testOk": "Test afgeleverd",
+      "testFailed": "De test is niet afgeleverd",
+      "details": "Details",
+      "sendAgain": "Opnieuw versturen",
+      "retryNow": "Nu opnieuw proberen",
+      "openWebhook": "Webhook openen",
+      "request": "Verzoek",
+      "masked": "Persoonlijke antwoorden zijn in deze kopie gemaskeerd. Je ontvanger kreeg de volledige waarden.",
+      "noAnswer": "Geen antwoord",
+      "emptyBody": "(leeg)",
+      "nextTry": "Volgende poging",
+      "nextTryAt": "Volgende poging {when}",
+      "tryN": "Poging {n}",
+      "triesCount": "{n} poging | {n} pogingen",
+      "autoPaused": "Gepauzeerd na {n} mislukte leveringen achter elkaar",
+      "autoPausedDesc": "Er gaat niets verloren: herstel de ontvanger, schakel de webhook weer in en verstuur de mislukte leveringen opnieuw vanuit het logboek.",
+      "failingTitle": "De laatste levering is mislukt | De laatste {n} leveringen zijn mislukt",
+      "failingDesc": "Formalie probeert het opnieuw na 1, 5, 15, 60 en 360 minuten. Controleer of je adres antwoordt met een 2xx-status.",
+      "col": {
+        "name": "Webhook",
+        "url": "Adres",
+        "status": "Status",
+        "events": "Gebeurtenissen",
+        "forms": "Formulieren",
+        "deliveries": "Leveringen",
+        "last": "Laatste levering",
+        "event": "Gebeurtenis",
+        "result": "Resultaat",
+        "webhook": "Webhook",
+        "tries": "Pogingen",
+        "form": "Formulier",
+        "at": "Wanneer",
+        "code": "Statuscode"
+      },
+      "status": {
+        "active": "Actief",
+        "failing": "Foutief",
+        "paused": "Gepauzeerd"
+      },
+      "delivery": {
+        "delivered": "Afgeleverd",
+        "retrying": "Opnieuw proberen",
+        "failed": "Mislukt"
+      },
+      "event": {
+        "response_created": "Nieuwe reactie",
+        "response_updated": "Reactie gewijzigd",
+        "response_status_changed": "Status gewijzigd",
+        "response_deleted": "Reactie verwijderd",
+        "ping": "Test"
+      },
+      "eventHint": {
+        "response_created": "Iemand verstuurt een formulier, via welk kanaal dan ook",
+        "response_updated": "Antwoorden worden gewijzigd in het portaal of de API",
+        "response_status_changed": "Een reactie wordt beoordeeld, goedgekeurd of afgewezen",
+        "response_deleted": "Een reactie wordt verwijderd"
+      },
+      "error": {
+        "timeout": "Geen antwoord binnen 10 seconden",
+        "dns": "Het adres is niet gevonden",
+        "refused": "De verbinding is geweigerd",
+        "tls": "De beveiligde verbinding is mislukt (certificaat)",
+        "failed": "De aanroep kon niet worden gedaan"
+      },
+      "invalid": {
+        "required": "Vul het adres in",
+        "url": "Vul een volledig adres in, bijv. https://example.com/hooks",
+        "https": "Gebruik een https://-adres",
+        "host": "Formalie kan zijn eigen adressen niet aanroepen",
+        "private": "Gebruik een openbaar adres, geen privénetwerk",
+        "events": "Kies minstens één gebeurtenis",
+        "forms": "Kies minstens één formulier"
+      },
+      "kpi": {
+        "deliveries": "Leveringen",
+        "webhooks": "Webhooks",
+        "delivered": "Afgeleverd",
+        "failed": "Mislukt",
+        "byStatus": "Webhooks per status",
+        "retries": "Tot 5 keer opnieuw geprobeerd"
+      },
+      "sort": {
+        "name": "Naam",
+        "deliveries": "Meeste leveringen",
+        "worst": "Minst afgeleverd",
+        "newest": "Nieuwste eerst",
+        "oldest": "Oudste eerst",
+        "tries": "Meeste pogingen",
+        "slowest": "Langzaamste"
+      },
+      "toast": {
+        "saved": "Webhook opgeslagen",
+        "on": "Webhook ingeschakeld",
+        "off": "Webhook uitgeschakeld",
+        "rotated": "Nieuw geheim gemaakt",
+        "deleted": "Webhook verwijderd",
+        "resent": "Afgeleverd",
+        "resentFailed": "Verzonden, maar niet afgeleverd: bekijk de levering"
+      },
+      "verify": {
+        "title": "De handtekening controleren",
+        "text": "Elke aanroep bevat deze headers. Bereken de handtekening opnieuw uit het tijdstempel en de ruwe inhoud met je geheim en weiger de aanroep als die afwijkt of ouder is dan vijf minuten.",
+        "answer": "Antwoord binnen 10 seconden met een willekeurige 2xx-status en doe het echte werk daarna. Alles anders wordt opnieuw geprobeerd."
+      }
+    },
+    "onceDesc": "Formalie kan hem niet opnieuw tonen. Raakt hij kwijt, maak dan een nieuwe.",
+    "keys": {
+      "newTitle": "Nieuwe API-sleutel",
+      "editTitle": "API-sleutel bewerken",
+      "desc": "Met een sleutel gebruikt je eigen code de beheer-API van Formalie: formulieren en antwoorden lezen, statussen wijzigen en meer.",
+      "create": "Sleutel maken",
+      "namePlaceholder": "bijv. Rapportagescript",
+      "scopesHelp": "Geef elke sleutel alleen wat hij nodig heeft.",
+      "scopesCount": "{n} machtiging | {n} machtigingen",
+      "search": "API-sleutels zoeken…",
+      "empty": "Nog geen API-sleutels",
+      "emptyDesc": "Maak een sleutel om formulieren en antwoorden vanuit je eigen code te lezen.",
+      "lastUsed": "Gebruikt {when}",
+      "neverUsed": "Nooit gebruikt",
+      "lastFrom": "Laatst gebruikt vanaf",
+      "noCalls": "Geen aanroepen in de afgelopen 30 dagen",
+      "secret": "API-sleutel",
+      "secretTitle": "API-sleutel voor {name}",
+      "secretHint": "Bewaar hem alleen op je server, nooit in een website of app die anderen kunnen downloaden.",
+      "revoke": "Intrekken",
+      "revokeTitle": "Deze sleutel intrekken?",
+      "revokeDesc": "{name} werkt meteen niet meer. Code die hem nog gebruikt krijgt een foutmelding.",
+      "deleteTitle": "Deze sleutel verwijderen?",
+      "deleteDesc": "{name} wordt uit de lijst verwijderd. Het auditlogboek bewaart wat hij deed.",
+      "expiringTitle": "Verloopt {when}",
+      "expiringDesc": "Maak een nieuwe sleutel, schakel je code over en trek dan deze in.",
+      "howToCall": "Hoe aanroepen",
+      "howToCallText": "Stuur de sleutel mee als bearer-token. Lijsten antwoorden met data en meta (page, per_page, total); fouten met een code die je kunt opzoeken in Docs en testen.",
+      "col": {
+        "name": "Sleutel",
+        "status": "Status",
+        "scopes": "Machtigingen",
+        "calls": "Aanroepen",
+        "lastUsed": "Laatst gebruikt"
+      },
+      "scope": {
+        "forms_read": "Formulieren lezen",
+        "forms_write": "Formulieren openen en sluiten",
+        "responses_read": "Antwoorden lezen",
+        "responses_write": "Antwoorden wijzigen",
+        "webhooks_read": "Webhooks lezen",
+        "audit_read": "Het auditlogboek lezen"
+      },
+      "scopeHint": {
+        "forms_read": "Formulieren en hun vragen weergeven",
+        "forms_write": "Een gepubliceerd formulier openen of sluiten",
+        "responses_read": "Antwoorden met hun waarden weergeven",
+        "responses_write": "Status en tags wijzigen, antwoorden verwijderen",
+        "webhooks_read": "Webhooks en hun gebeurtenissen weergeven",
+        "audit_read": "Lezen wat er gebeurde en wie het deed"
+      },
+      "invalid": {
+        "scopes": "Kies minstens één machtiging"
+      },
+      "kpi": {
+        "calls": "Aanroepen met API-sleutels",
+        "keys": "Sleutels",
+        "unused": "90 dagen ongebruikt",
+        "byStatus": "Sleutels per status",
+        "expiringHint": "Verloopt binnenkort = binnen 14 dagen"
+      },
+      "sort": {
+        "lastUsed": "Laatst gebruikt",
+        "expires": "Verlopen eerst"
+      },
+      "toast": {
+        "saved": "API-sleutel opgeslagen",
+        "revoked": "API-sleutel ingetrokken",
+        "deleted": "API-sleutel verwijderd"
+      }
     }
   }
 }

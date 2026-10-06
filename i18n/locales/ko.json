@@ -634,7 +634,11 @@
     "active": "활성",
     "expiring": "곧 만료",
     "expired": "만료됨",
-    "revoked": "폐기됨"
+    "revoked": "폐기됨",
+    "paused": "일시 중지됨",
+    "delivered": "전달됨",
+    "retrying": "재시도 중",
+    "failed": "실패"
   },
   "footer": {
     "rights": "모든 권리 보유.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "액세스 규칙을 껐습니다",
       "api_rule_deleted": "액세스 규칙을 삭제했습니다",
       "api_limits_changed": "API 요청 제한을 변경했습니다",
-      "api_logging_changed": "API 요청 로그 설정이 변경되었습니다"
+      "api_logging_changed": "API 요청 로그 설정이 변경되었습니다",
+      "integrations_webhook_updated": "웹훅이 변경되었습니다",
+      "integrations_webhook_enabled": "웹훅을 켰습니다",
+      "integrations_webhook_disabled": "웹훅을 껐습니다",
+      "integrations_webhook_paused": "반복 실패로 웹훅이 일시 중지되었습니다",
+      "integrations_webhook_secret_rotated": "웹훅 시크릿이 교체되었습니다",
+      "integrations_webhook_deleted": "웹훅이 삭제되었습니다",
+      "integrations_webhook_resent": "웹훅 전송을 다시 보냈습니다",
+      "integrations_api_key_updated": "API 키가 변경되었습니다",
+      "integrations_api_key_deleted": "API 키가 삭제되었습니다"
     },
     "detail": {
       "who": "누가",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n}명이 여기서 이탈",
       "required": "필수",
       "answered": "{n}% 답변함"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "새 웹훅",
+      "editTitle": "웹훅 편집",
+      "desc": "선택한 이벤트가 발생할 때마다 Formalie가 이 주소를 호출합니다. 호출에는 서명이 포함되어 우리가 보낸 것인지 확인할 수 있습니다.",
+      "create": "웹훅 만들기",
+      "namePlaceholder": "예: CRM 동기화",
+      "urlHelp": "공개 주소의 HTTPS입니다. Formalie는 JSON이 담긴 POST를 보내고 2xx 응답을 최대 10초 기다립니다.",
+      "enabled": "켜짐",
+      "allForms": "모든 양식",
+      "someForms": "선택한 양식",
+      "pickForms": "양식 선택",
+      "eventsAndForms": "이벤트와 양식",
+      "eventsCount": "이벤트 {n}개 | 이벤트 {n}개",
+      "formsCount": "양식 {n}개 | 양식 {n}개",
+      "search": "웹훅 검색…",
+      "searchDeliveries": "전송 검색…",
+      "viewSwitch": "웹훅 또는 전송",
+      "deliveries": "전송",
+      "allDeliveries": "모든 전송",
+      "empty": "아직 웹훅이 없습니다",
+      "emptyDesc": "새 응답이 도착하는 즉시 자체 시스템으로 보내세요.",
+      "noDeliveries": "아직 전송이 없습니다",
+      "noDeliveriesDesc": "이벤트가 발생하면 전송 내역이 여기에 표시됩니다. 테스트를 보내 지금 주소를 시험해 보세요.",
+      "lastDelivery": "마지막 {when}",
+      "secret": "서명 시크릿",
+      "secretTitle": "{name}의 서명 시크릿",
+      "secretHint": "서버에만 보관하세요. 호출을 신뢰하기 전에 매번 서명을 확인하세요(웹훅 패널의 서명 확인 참조).",
+      "rotate": "새 시크릿",
+      "rotateTitle": "서명 시크릿을 교체할까요?",
+      "rotateDesc": "새 시크릿은 다음 전송부터 사용되며 이전 시크릿은 즉시 작동을 멈춥니다. 수신 측을 바로 업데이트하세요.",
+      "deleteTitle": "이 웹훅을 삭제할까요?",
+      "deleteDesc": "{name}은(는) 더 이상 호출을 받지 않으며 전송 로그도 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
+      "sendTest": "테스트 보내기",
+      "test": "테스트",
+      "testOk": "테스트가 전달되었습니다",
+      "testFailed": "테스트가 전달되지 않았습니다",
+      "details": "세부 정보",
+      "sendAgain": "다시 보내기",
+      "retryNow": "지금 재시도",
+      "openWebhook": "웹훅 열기",
+      "request": "요청",
+      "masked": "이 사본에서는 개인 답변이 가려져 있습니다. 수신 측은 전체 값을 받았습니다.",
+      "noAnswer": "응답 없음",
+      "emptyBody": "(비어 있음)",
+      "nextTry": "다음 시도",
+      "nextTryAt": "다음 시도 {when}",
+      "tryN": "{n}번째 시도",
+      "triesCount": "시도 {n}회 | 시도 {n}회",
+      "autoPaused": "연속 {n}회 전송 실패로 일시 중지됨",
+      "autoPausedDesc": "잃어버린 것은 없습니다. 수신 측을 고치고 웹훅을 다시 켠 뒤 로그에서 실패한 전송을 다시 보내세요.",
+      "failingTitle": "마지막 전송이 실패했습니다 | 마지막 {n}개 전송이 실패했습니다",
+      "failingDesc": "Formalie는 1분, 5분, 15분, 60분, 360분 후에 다시 시도합니다. 주소가 2xx 상태로 응답하는지 확인하세요.",
+      "col": {
+        "name": "웹훅",
+        "url": "주소",
+        "status": "상태",
+        "events": "이벤트",
+        "forms": "양식",
+        "deliveries": "전송",
+        "last": "마지막 전송",
+        "event": "이벤트",
+        "result": "결과",
+        "webhook": "웹훅",
+        "tries": "시도",
+        "form": "양식",
+        "at": "시각",
+        "code": "상태 코드"
+      },
+      "status": {
+        "active": "활성",
+        "failing": "실패 중",
+        "paused": "일시 중지됨"
+      },
+      "delivery": {
+        "delivered": "전달됨",
+        "retrying": "재시도 중",
+        "failed": "실패"
+      },
+      "event": {
+        "response_created": "새 응답",
+        "response_updated": "응답 변경됨",
+        "response_status_changed": "상태 변경됨",
+        "response_deleted": "응답 삭제됨",
+        "ping": "테스트"
+      },
+      "eventHint": {
+        "response_created": "누군가 어떤 채널로든 양식을 제출할 때",
+        "response_updated": "포털이나 API에서 답변이 변경될 때",
+        "response_status_changed": "응답이 검토, 승인 또는 거부될 때",
+        "response_deleted": "응답이 삭제될 때"
+      },
+      "error": {
+        "timeout": "10초 안에 응답이 없습니다",
+        "dns": "주소를 찾을 수 없습니다",
+        "refused": "연결이 거부되었습니다",
+        "tls": "보안 연결에 실패했습니다(인증서)",
+        "failed": "호출을 할 수 없었습니다"
+      },
+      "invalid": {
+        "required": "주소를 입력하세요",
+        "url": "전체 주소를 입력하세요. 예: https://example.com/hooks",
+        "https": "https:// 주소를 사용하세요",
+        "host": "Formalie는 자체 주소를 호출할 수 없습니다",
+        "private": "사설 네트워크가 아닌 공개 주소를 사용하세요",
+        "events": "이벤트를 하나 이상 선택하세요",
+        "forms": "양식을 하나 이상 선택하세요"
+      },
+      "kpi": {
+        "deliveries": "전송",
+        "webhooks": "웹훅",
+        "delivered": "전달됨",
+        "failed": "실패",
+        "byStatus": "상태별 웹훅",
+        "retries": "최대 5회 재시도"
+      },
+      "sort": {
+        "name": "이름",
+        "deliveries": "전송 많은 순",
+        "worst": "전달률 낮은 순",
+        "newest": "최신순",
+        "oldest": "오래된 순",
+        "tries": "시도 많은 순",
+        "slowest": "느린 순"
+      },
+      "toast": {
+        "saved": "웹훅이 저장되었습니다",
+        "on": "웹훅이 켜졌습니다",
+        "off": "웹훅이 꺼졌습니다",
+        "rotated": "새 시크릿이 만들어졌습니다",
+        "deleted": "웹훅이 삭제되었습니다",
+        "resent": "전달됨",
+        "resentFailed": "보냈지만 전달되지 않았습니다: 전송 내역을 확인하세요"
+      },
+      "verify": {
+        "title": "서명 확인",
+        "text": "모든 호출에는 이 헤더가 포함됩니다. 타임스탬프와 원본 본문으로 시크릿을 사용해 서명을 다시 계산하고, 다르거나 5분보다 오래되었으면 호출을 거부하세요.",
+        "answer": "10초 안에 아무 2xx 상태로 응답하고 실제 작업은 그 뒤에 하세요. 그 외의 응답은 재시도됩니다."
+      }
+    },
+    "onceDesc": "Formalie에서는 다시 표시할 수 없습니다. 분실하면 새로 만드세요.",
+    "keys": {
+      "newTitle": "새 API 키",
+      "editTitle": "API 키 편집",
+      "desc": "키를 사용하면 내 코드에서 Formalie 관리 API를 쓸 수 있습니다. 폼과 응답 읽기, 상태 변경 등이 가능합니다.",
+      "create": "키 만들기",
+      "namePlaceholder": "예: 리포트 스크립트",
+      "scopesHelp": "각 키에는 필요한 권한만 부여하세요.",
+      "scopesCount": "권한 {n}개 | 권한 {n}개",
+      "search": "API 키 검색…",
+      "empty": "아직 API 키가 없습니다",
+      "emptyDesc": "키를 만들어 내 코드에서 폼과 응답을 읽어 보세요.",
+      "lastUsed": "{when} 사용",
+      "neverUsed": "사용한 적 없음",
+      "lastFrom": "마지막 사용 위치",
+      "noCalls": "최근 30일간 호출 없음",
+      "secret": "API 키",
+      "secretTitle": "{name}의 API 키",
+      "secretHint": "내 서버에만 보관하고, 다른 사람이 내려받을 수 있는 웹사이트나 앱에는 절대 넣지 마세요.",
+      "revoke": "폐기",
+      "revokeTitle": "이 키를 폐기할까요?",
+      "revokeDesc": "{name}은(는) 즉시 작동을 멈춥니다. 아직 사용 중인 코드는 오류를 받습니다.",
+      "deleteTitle": "이 키를 삭제할까요?",
+      "deleteDesc": "{name}이(가) 목록에서 제거됩니다. 수행한 작업은 감사 로그에 남습니다.",
+      "expiringTitle": "{when} 만료",
+      "expiringDesc": "새 키를 만들고 코드를 전환한 다음 이 키를 폐기하세요.",
+      "howToCall": "호출 방법",
+      "howToCallText": "키를 Bearer 토큰으로 보내세요. 목록은 data와 meta(page, per_page, total)로 응답하고, 오류는 문서 및 테스트에서 찾아볼 수 있는 코드로 응답합니다.",
+      "col": {
+        "name": "키",
+        "status": "상태",
+        "scopes": "권한",
+        "calls": "호출",
+        "lastUsed": "마지막 사용"
+      },
+      "scope": {
+        "forms_read": "폼 읽기",
+        "forms_write": "폼 열기 및 닫기",
+        "responses_read": "응답 읽기",
+        "responses_write": "응답 변경",
+        "webhooks_read": "웹훅 읽기",
+        "audit_read": "감사 로그 읽기"
+      },
+      "scopeHint": {
+        "forms_read": "폼과 질문 목록 보기",
+        "forms_write": "게시된 폼을 열림과 닫힘으로 전환",
+        "responses_read": "응답과 답변 목록 보기",
+        "responses_write": "상태와 태그 변경, 응답 삭제",
+        "webhooks_read": "웹훅과 이벤트 목록 보기",
+        "audit_read": "무슨 일이 있었고 누가 했는지 읽기"
+      },
+      "invalid": {
+        "scopes": "권한을 하나 이상 선택하세요"
+      },
+      "kpi": {
+        "calls": "API 키 호출",
+        "keys": "키",
+        "unused": "90일간 미사용",
+        "byStatus": "상태별 키",
+        "expiringHint": "만료 예정 = 14일 이내"
+      },
+      "sort": {
+        "lastUsed": "최근 사용순",
+        "expires": "만료 임박순"
+      },
+      "toast": {
+        "saved": "API 키를 저장했습니다",
+        "revoked": "API 키를 폐기했습니다",
+        "deleted": "API 키를 삭제했습니다"
+      }
     }
   }
 }

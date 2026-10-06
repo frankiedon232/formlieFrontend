@@ -634,7 +634,11 @@
     "active": "Aktywny",
     "expiring": "Wkrótce wygasa",
     "expired": "Wygasły",
-    "revoked": "Unieważniony"
+    "revoked": "Unieważniony",
+    "paused": "Wstrzymany",
+    "delivered": "Dostarczony",
+    "retrying": "Ponawianie",
+    "failed": "Nieudany"
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Wyłączono regułę dostępu",
       "api_rule_deleted": "Usunięto regułę dostępu",
       "api_limits_changed": "Zmieniono limity zapytań API",
-      "api_logging_changed": "Zmieniono ustawienia dziennika żądań API"
+      "api_logging_changed": "Zmieniono ustawienia dziennika żądań API",
+      "integrations_webhook_updated": "Webhook zmieniony",
+      "integrations_webhook_enabled": "Webhook włączony",
+      "integrations_webhook_disabled": "Webhook wyłączony",
+      "integrations_webhook_paused": "Webhook wstrzymany po powtarzających się błędach",
+      "integrations_webhook_secret_rotated": "Sekret webhooka zastąpiony",
+      "integrations_webhook_deleted": "Webhook usunięty",
+      "integrations_webhook_resent": "Dostawa webhooka wysłana ponownie",
+      "integrations_api_key_updated": "Klucz API zmieniony",
+      "integrations_api_key_deleted": "Klucz API usunięty"
     },
     "detail": {
       "who": "Kto",
@@ -5789,6 +5802,218 @@
       "leftHere": "Zrezygnowało tutaj: {n}",
       "required": "Wymagane",
       "answered": "Odpowiedziano na {n}%"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Nowy webhook",
+      "editTitle": "Edytuj webhook",
+      "desc": "Formalie wywołuje ten adres za każdym razem, gdy wystąpi jedno z wybranych zdarzeń, z podpisem, dzięki któremu możesz sprawdzić, że wywołanie pochodzi od nas.",
+      "create": "Utwórz webhook",
+      "namePlaceholder": "np. Synchronizacja CRM",
+      "urlHelp": "HTTPS na adresie publicznym. Formalie wysyła POST z JSON i czeka do 10 sekund na odpowiedź 2xx.",
+      "enabled": "Włączony",
+      "allForms": "Każdy formularz",
+      "someForms": "Wybrane formularze",
+      "pickForms": "Wybierz formularze",
+      "eventsAndForms": "Zdarzenia i formularze",
+      "eventsCount": "{n} zdarzenie | {n} zdarzeń",
+      "formsCount": "{n} formularz | {n} formularzy",
+      "search": "Szukaj webhooków…",
+      "searchDeliveries": "Szukaj dostaw…",
+      "viewSwitch": "Webhooki lub dostawy",
+      "deliveries": "Dostawy",
+      "allDeliveries": "Wszystkie dostawy",
+      "empty": "Brak webhooków",
+      "emptyDesc": "Wysyłaj każdą nową odpowiedź do własnych systemów zaraz po jej otrzymaniu.",
+      "noDeliveries": "Brak dostaw",
+      "noDeliveriesDesc": "Dostawy pojawiają się tutaj, gdy wystąpią zdarzenia. Wyślij test, aby od razu wypróbować adres.",
+      "lastDelivery": "Ostatnia {when}",
+      "secret": "Sekret podpisu",
+      "secretTitle": "Sekret podpisu dla {name}",
+      "secretHint": "Przechowuj go tylko na swoim serwerze. Sprawdzaj podpis każdego wywołania, zanim mu zaufasz (zobacz Sprawdzanie podpisu w panelu webhooka).",
+      "rotate": "Nowy sekret",
+      "rotateTitle": "Zastąpić sekret podpisu?",
+      "rotateDesc": "Nowy sekret obowiązuje od następnej dostawy, a stary przestaje działać natychmiast. Od razu zaktualizuj swój odbiornik.",
+      "deleteTitle": "Usunąć ten webhook?",
+      "deleteDesc": "{name} przestaje otrzymywać wywołania, a jego dziennik dostaw zostaje usunięty. Tej operacji nie można cofnąć.",
+      "sendTest": "Wyślij test",
+      "test": "Test",
+      "testOk": "Test dostarczony",
+      "testFailed": "Test nie został dostarczony",
+      "details": "Szczegóły",
+      "sendAgain": "Wyślij ponownie",
+      "retryNow": "Ponów teraz",
+      "openWebhook": "Otwórz webhook",
+      "request": "Żądanie",
+      "masked": "Odpowiedzi osobowe są zamaskowane w tej kopii. Twój odbiornik otrzymał pełne wartości.",
+      "noAnswer": "Brak odpowiedzi",
+      "emptyBody": "(puste)",
+      "nextTry": "Następna próba",
+      "nextTryAt": "Następna próba {when}",
+      "tryN": "Próba {n}",
+      "triesCount": "{n} próba | {n} prób",
+      "autoPaused": "Wstrzymany po {n} nieudanych dostawach z rzędu",
+      "autoPausedDesc": "Nic nie ginie: napraw odbiornik, włącz webhook ponownie i wyślij nieudane dostawy jeszcze raz z dziennika.",
+      "failingTitle": "Ostatnia dostawa nie powiodła się | Ostatnie {n} dostawy nie powiodły się",
+      "failingDesc": "Formalie ponawia próbę po 1, 5, 15, 60 i 360 minutach. Sprawdź, czy Twój adres odpowiada statusem 2xx.",
+      "col": {
+        "name": "Webhook",
+        "url": "Adres",
+        "status": "Status",
+        "events": "Zdarzenia",
+        "forms": "Formularze",
+        "deliveries": "Dostawy",
+        "last": "Ostatnia dostawa",
+        "event": "Zdarzenie",
+        "result": "Wynik",
+        "webhook": "Webhook",
+        "tries": "Próby",
+        "form": "Formularz",
+        "at": "Kiedy",
+        "code": "Kod statusu"
+      },
+      "status": {
+        "active": "Aktywny",
+        "failing": "Z błędami",
+        "paused": "Wstrzymany"
+      },
+      "delivery": {
+        "delivered": "Dostarczony",
+        "retrying": "Ponawianie",
+        "failed": "Nieudany"
+      },
+      "event": {
+        "response_created": "Nowa odpowiedź",
+        "response_updated": "Odpowiedź zmieniona",
+        "response_status_changed": "Status zmieniony",
+        "response_deleted": "Odpowiedź usunięta",
+        "ping": "Test"
+      },
+      "eventHint": {
+        "response_created": "Ktoś wysyła formularz, dowolnym kanałem",
+        "response_updated": "Odpowiedzi są zmieniane w portalu lub przez API",
+        "response_status_changed": "Odpowiedź jest sprawdzana, zatwierdzana lub odrzucana",
+        "response_deleted": "Odpowiedź zostaje usunięta"
+      },
+      "error": {
+        "timeout": "Brak odpowiedzi w ciągu 10 sekund",
+        "dns": "Nie znaleziono adresu",
+        "refused": "Połączenie zostało odrzucone",
+        "tls": "Bezpieczne połączenie nie powiodło się (certyfikat)",
+        "failed": "Nie udało się wykonać wywołania"
+      },
+      "invalid": {
+        "required": "Wpisz adres",
+        "url": "Wpisz pełny adres, np. https://example.com/hooks",
+        "https": "Użyj adresu https://",
+        "host": "Formalie nie może wywoływać własnych adresów",
+        "private": "Użyj adresu publicznego, nie sieci prywatnej",
+        "events": "Wybierz co najmniej jedno zdarzenie",
+        "forms": "Wybierz co najmniej jeden formularz"
+      },
+      "kpi": {
+        "deliveries": "Dostawy",
+        "webhooks": "Webhooki",
+        "delivered": "Dostarczone",
+        "failed": "Nieudane",
+        "byStatus": "Webhooki wg statusu",
+        "retries": "Ponawiane do 5 razy"
+      },
+      "sort": {
+        "name": "Nazwa",
+        "deliveries": "Najwięcej dostaw",
+        "worst": "Najmniej dostarczone",
+        "newest": "Najnowsze najpierw",
+        "oldest": "Najstarsze najpierw",
+        "tries": "Najwięcej prób",
+        "slowest": "Najwolniejsze"
+      },
+      "toast": {
+        "saved": "Webhook zapisany",
+        "on": "Webhook włączony",
+        "off": "Webhook wyłączony",
+        "rotated": "Utworzono nowy sekret",
+        "deleted": "Webhook usunięty",
+        "resent": "Dostarczono",
+        "resentFailed": "Wysłano, ale nie dostarczono: zobacz dostawę"
+      },
+      "verify": {
+        "title": "Sprawdzanie podpisu",
+        "text": "Każde wywołanie zawiera te nagłówki. Oblicz podpis ponownie z sygnatury czasowej i surowej treści za pomocą swojego sekretu i odrzuć wywołanie, gdy się różni lub jest starsze niż pięć minut.",
+        "answer": "Odpowiedz dowolnym statusem 2xx w ciągu 10 sekund, a właściwą pracę wykonaj potem. Każda inna odpowiedź jest ponawiana."
+      }
+    },
+    "onceDesc": "Formalie nie może pokazać go ponownie. Jeśli się zgubi, utwórz nowy.",
+    "keys": {
+      "newTitle": "Nowy klucz API",
+      "editTitle": "Edytuj klucz API",
+      "desc": "Klucz pozwala Twojemu kodowi korzystać z API zarządzania Formalie: czytać formularze i odpowiedzi, zmieniać statusy i więcej.",
+      "create": "Utwórz klucz",
+      "namePlaceholder": "np. Skrypt raportowy",
+      "scopesHelp": "Daj każdemu kluczowi tylko to, czego potrzebuje.",
+      "scopesCount": "{n} uprawnienie | {n} uprawnień",
+      "search": "Szukaj kluczy API…",
+      "empty": "Brak kluczy API",
+      "emptyDesc": "Utwórz klucz, aby czytać formularze i odpowiedzi z własnego kodu.",
+      "lastUsed": "Użyto {when}",
+      "neverUsed": "Nigdy nie użyto",
+      "lastFrom": "Ostatnio użyty z",
+      "noCalls": "Brak wywołań w ostatnich 30 dniach",
+      "secret": "Klucz API",
+      "secretTitle": "Klucz API dla {name}",
+      "secretHint": "Trzymaj go tylko na swoim serwerze, nigdy w witrynie ani aplikacji, którą inni mogą pobrać.",
+      "revoke": "Unieważnij",
+      "revokeTitle": "Unieważnić ten klucz?",
+      "revokeDesc": "{name} przestaje działać od razu. Kod, który go nadal używa, dostanie błąd.",
+      "deleteTitle": "Usunąć ten klucz?",
+      "deleteDesc": "{name} znika z listy. Dziennik audytu zachowuje, co zrobił.",
+      "expiringTitle": "Wygasa {when}",
+      "expiringDesc": "Utwórz nowy klucz, przełącz na niego kod, a potem unieważnij ten.",
+      "howToCall": "Jak wywołać",
+      "howToCallText": "Wyślij klucz jako token bearer. Listy odpowiadają polami data i meta (page, per_page, total); błędy kodem, który sprawdzisz w Dokumentacji i testach.",
+      "col": {
+        "name": "Klucz",
+        "status": "Status",
+        "scopes": "Uprawnienia",
+        "calls": "Wywołania",
+        "lastUsed": "Ostatnie użycie"
+      },
+      "scope": {
+        "forms_read": "Odczyt formularzy",
+        "forms_write": "Otwieranie i zamykanie formularzy",
+        "responses_read": "Odczyt odpowiedzi",
+        "responses_write": "Zmiana odpowiedzi",
+        "webhooks_read": "Odczyt webhooków",
+        "audit_read": "Odczyt dziennika audytu"
+      },
+      "scopeHint": {
+        "forms_read": "Lista formularzy i ich pytań",
+        "forms_write": "Przełączanie opublikowanego formularza między otwartym a zamkniętym",
+        "responses_read": "Lista odpowiedzi z ich wartościami",
+        "responses_write": "Zmiana statusu i tagów, usuwanie odpowiedzi",
+        "webhooks_read": "Lista webhooków i ich zdarzeń",
+        "audit_read": "Odczyt tego, co się stało i kto to zrobił"
+      },
+      "invalid": {
+        "scopes": "Wybierz co najmniej jedno uprawnienie"
+      },
+      "kpi": {
+        "calls": "Wywołania z kluczami API",
+        "keys": "Klucze",
+        "unused": "Nieużywane 90 dni",
+        "byStatus": "Klucze według statusu",
+        "expiringHint": "Wygasa wkrótce = w ciągu 14 dni"
+      },
+      "sort": {
+        "lastUsed": "Ostatnio użyte",
+        "expires": "Wygasają najpierw"
+      },
+      "toast": {
+        "saved": "Zapisano klucz API",
+        "revoked": "Unieważniono klucz API",
+        "deleted": "Usunięto klucz API"
+      }
     }
   }
 }

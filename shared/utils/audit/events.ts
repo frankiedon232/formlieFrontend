@@ -88,8 +88,17 @@ export const AUDIT_EVENTS = {
   // Integrations
   'integrations.destination_connected': { area: 'integrations', icon: 'i-lucide-database' },
   'integrations.webhook_created': { area: 'integrations', icon: 'i-lucide-webhook' },
+  'integrations.webhook_updated': { area: 'integrations', icon: 'i-lucide-pencil' },
+  'integrations.webhook_enabled': { area: 'integrations', icon: 'i-lucide-circle-play' },
+  'integrations.webhook_disabled': { area: 'integrations', icon: 'i-lucide-circle-pause' },
+  'integrations.webhook_paused': { area: 'integrations', icon: 'i-lucide-octagon-pause' },
+  'integrations.webhook_secret_rotated': { area: 'integrations', icon: 'i-lucide-refresh-cw' },
+  'integrations.webhook_deleted': { area: 'integrations', icon: 'i-lucide-trash-2' },
+  'integrations.webhook_resent': { area: 'integrations', icon: 'i-lucide-send' },
   'integrations.api_key_created': { area: 'integrations', icon: 'i-lucide-key' },
   'integrations.api_key_revoked': { area: 'integrations', icon: 'i-lucide-key-square' },
+  'integrations.api_key_updated': { area: 'integrations', icon: 'i-lucide-pencil' },
+  'integrations.api_key_deleted': { area: 'integrations', icon: 'i-lucide-trash-2' },
   // Data sources (F12)
   'data.connection_created': { area: 'data', icon: 'i-lucide-database' },
   'data.connection_updated': { area: 'data', icon: 'i-lucide-database-zap' },

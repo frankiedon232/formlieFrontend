@@ -5,6 +5,7 @@
  * Every change is recorded in the response's history and the audit trail.
  */
 import { z } from 'zod'
+import { emitResponse } from '../data/integrationStore'
 import { RESPONSE_STATUSES, type ResponseDetail, type ResponseFormRow, type ResponseRow, type ResponseStatus } from '#shared/types/responses'
 import { canEditAnswer } from '#shared/utils/forms/answer-edit'
 import { ANSWER_FILTER_PREFIX, answerMatches, isEmptyAnswer } from '#shared/utils/forms/answer-filter'
@@ -334,6 +335,8 @@ export const patchResponse = defineMockRoute(({ event, body: raw }) => {
     // The audit trail names the question as people know it; the response keeps the key.
     const labels = new Map(allFields(schemaOf(form, entry)).map(field => [`answer:${field.key}`, field.label?.trim() || field.key]))
     audit(event, tenant, user, 'responses.updated', form, entry, changes.map(change => ({ ...change, field: labels.get(change.field) ?? change.field })))
+    if (input.status && input.status !== entry.status) emitResponse(event, tenant, 'response.status_changed', form, entry.id, entry.status)
+    if (changes.some(change => change.field.startsWith('answer:'))) emitResponse(event, tenant, 'response.updated', form, entry.id)
   }
   const updated = findResponse(tenant, entry.id)!
   return ok(detailOf(updated.form, updated.entry, user))
@@ -361,6 +364,7 @@ export const deleteResponse = defineMockRoute(({ event }) => {
   updateReview(form.id, entry.id, review => (review.deleted_at = new Date().toISOString()))
   formResponses(tenant, form)
   audit(event, tenant, user, 'responses.deleted', form, entry)
+  emitResponse(event, tenant, 'response.deleted', form, entry.id)
   return ok({ deleted: 1 })
 })
 
@@ -390,6 +394,7 @@ export const bulkResponses = defineMockRoute(({ event, body: raw }) => {
     if (input.action === 'delete') {
       updateReview(form.id, entry.id, review => (review.deleted_at = new Date().toISOString()))
       audit(event, tenant, user, 'responses.deleted', form, entry)
+      emitResponse(event, tenant, 'response.deleted', form, entry.id)
     } else {
       const field = input.action === 'status' ? 'status' : 'tags'
       const after = input.action === 'status' ? input.value : input.action === 'tag' ? [...new Set([...entry.tags, input.value!])] : entry.tags.filter(tag => tag !== input.value)
@@ -402,6 +407,7 @@ export const bulkResponses = defineMockRoute(({ event, body: raw }) => {
           review.history = [{ id: crypto.randomUUID(), at: new Date().toISOString(), by, field, before, after }, ...(review.history ?? [])].slice(0, 200)
         })
         audit(event, tenant, user, 'responses.updated', form, entry, [{ field, before, after }])
+        if (input.action === 'status') emitResponse(event, tenant, 'response.status_changed', form, entry.id, entry.status)
       }
     }
     touched.add(form)

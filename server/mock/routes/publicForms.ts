@@ -8,6 +8,7 @@
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
 import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
+import { emitResponse } from '../data/integrationStore'
 import { z } from 'zod'
 import { availabilityOf } from '#shared/utils/forms/availability'
 import { identityOf, maskEmail, matchIdentity, normaliseEmail } from '#shared/utils/forms/identity'
@@ -352,6 +353,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   if (stored) {
     stored.responses_count += 1
     saveForms()
+    emitResponse(event, tenant, 'response.created', stored, response.id)
   }
   recordAudit(event, tenant, {
     action: 'responses.submitted',

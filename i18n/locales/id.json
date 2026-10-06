@@ -634,7 +634,11 @@
     "active": "Aktif",
     "expiring": "Segera kedaluwarsa",
     "expired": "Kedaluwarsa",
-    "revoked": "Dicabut"
+    "revoked": "Dicabut",
+    "paused": "Dijeda",
+    "delivered": "Terkirim",
+    "retrying": "Mencoba lagi",
+    "failed": "Gagal"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Aturan akses dinonaktifkan",
       "api_rule_deleted": "Aturan akses dihapus",
       "api_limits_changed": "Batas laju API diubah",
-      "api_logging_changed": "Pengaturan log permintaan API diubah"
+      "api_logging_changed": "Pengaturan log permintaan API diubah",
+      "integrations_webhook_updated": "Webhook diubah",
+      "integrations_webhook_enabled": "Webhook diaktifkan",
+      "integrations_webhook_disabled": "Webhook dinonaktifkan",
+      "integrations_webhook_paused": "Webhook dijeda setelah gagal berulang kali",
+      "integrations_webhook_secret_rotated": "Rahasia webhook diganti",
+      "integrations_webhook_deleted": "Webhook dihapus",
+      "integrations_webhook_resent": "Pengiriman webhook dikirim ulang",
+      "integrations_api_key_updated": "Kunci API diubah",
+      "integrations_api_key_deleted": "Kunci API dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} keluar di sini",
       "required": "Wajib",
       "answered": "{n}% terjawab"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Webhook baru",
+      "editTitle": "Ubah webhook",
+      "desc": "Formalie memanggil alamat ini setiap kali salah satu peristiwa yang dipilih terjadi, dengan tanda tangan agar Anda dapat memeriksa bahwa panggilan berasal dari kami.",
+      "create": "Buat webhook",
+      "namePlaceholder": "mis. Sinkronisasi CRM",
+      "urlHelp": "HTTPS pada alamat publik. Formalie mengirim POST dengan JSON dan menunggu hingga 10 detik untuk jawaban 2xx.",
+      "enabled": "Aktif",
+      "allForms": "Setiap formulir",
+      "someForms": "Formulir pilihan",
+      "pickForms": "Pilih formulir",
+      "eventsAndForms": "Peristiwa dan formulir",
+      "eventsCount": "{n} peristiwa | {n} peristiwa",
+      "formsCount": "{n} formulir | {n} formulir",
+      "search": "Cari webhook…",
+      "searchDeliveries": "Cari pengiriman…",
+      "viewSwitch": "Webhook atau pengiriman",
+      "deliveries": "Pengiriman",
+      "allDeliveries": "Semua pengiriman",
+      "empty": "Belum ada webhook",
+      "emptyDesc": "Kirim setiap respons baru ke sistem Anda sendiri begitu masuk.",
+      "noDeliveries": "Belum ada pengiriman",
+      "noDeliveriesDesc": "Pengiriman muncul di sini saat peristiwa terjadi. Kirim tes untuk langsung mencoba alamat.",
+      "lastDelivery": "Terakhir {when}",
+      "secret": "Rahasia tanda tangan",
+      "secretTitle": "Rahasia tanda tangan untuk {name}",
+      "secretHint": "Simpan hanya di server Anda. Periksa tanda tangan di setiap panggilan sebelum memercayainya (lihat Memeriksa tanda tangan di panel webhook).",
+      "rotate": "Rahasia baru",
+      "rotateTitle": "Ganti rahasia tanda tangan?",
+      "rotateDesc": "Rahasia baru dipakai mulai pengiriman berikutnya, dan yang lama langsung berhenti berfungsi. Segera perbarui penerima Anda.",
+      "deleteTitle": "Hapus webhook ini?",
+      "deleteDesc": "{name} tidak lagi menerima panggilan dan log pengirimannya dihapus. Tindakan ini tidak dapat dibatalkan.",
+      "sendTest": "Kirim tes",
+      "test": "Tes",
+      "testOk": "Tes terkirim",
+      "testFailed": "Tes tidak terkirim",
+      "details": "Detail",
+      "sendAgain": "Kirim ulang",
+      "retryNow": "Coba lagi sekarang",
+      "openWebhook": "Buka webhook",
+      "request": "Permintaan",
+      "masked": "Jawaban pribadi disamarkan dalam salinan ini. Penerima Anda mendapat nilai lengkap.",
+      "noAnswer": "Tidak ada jawaban",
+      "emptyBody": "(kosong)",
+      "nextTry": "Percobaan berikutnya",
+      "nextTryAt": "Percobaan berikutnya {when}",
+      "tryN": "Percobaan {n}",
+      "triesCount": "{n} percobaan | {n} percobaan",
+      "autoPaused": "Dijeda setelah {n} pengiriman gagal berturut-turut",
+      "autoPausedDesc": "Tidak ada yang hilang: perbaiki penerima, aktifkan webhook lagi, dan kirim ulang pengiriman yang gagal dari log.",
+      "failingTitle": "Pengiriman terakhir gagal | {n} pengiriman terakhir gagal",
+      "failingDesc": "Formalie mencoba lagi setelah 1, 5, 15, 60 dan 360 menit. Pastikan alamat Anda menjawab dengan status 2xx.",
+      "col": {
+        "name": "Webhook",
+        "url": "Alamat",
+        "status": "Status",
+        "events": "Peristiwa",
+        "forms": "Formulir",
+        "deliveries": "Pengiriman",
+        "last": "Pengiriman terakhir",
+        "event": "Peristiwa",
+        "result": "Hasil",
+        "webhook": "Webhook",
+        "tries": "Percobaan",
+        "form": "Formulir",
+        "at": "Kapan",
+        "code": "Kode status"
+      },
+      "status": {
+        "active": "Aktif",
+        "failing": "Bermasalah",
+        "paused": "Dijeda"
+      },
+      "delivery": {
+        "delivered": "Terkirim",
+        "retrying": "Mencoba lagi",
+        "failed": "Gagal"
+      },
+      "event": {
+        "response_created": "Respons baru",
+        "response_updated": "Respons diubah",
+        "response_status_changed": "Status diubah",
+        "response_deleted": "Respons dihapus",
+        "ping": "Tes"
+      },
+      "eventHint": {
+        "response_created": "Seseorang mengirim formulir, lewat saluran apa pun",
+        "response_updated": "Jawaban diubah di portal atau API",
+        "response_status_changed": "Respons ditinjau, disetujui, atau ditolak",
+        "response_deleted": "Respons dihapus"
+      },
+      "error": {
+        "timeout": "Tidak ada jawaban dalam 10 detik",
+        "dns": "Alamat tidak ditemukan",
+        "refused": "Koneksi ditolak",
+        "tls": "Koneksi aman gagal (sertifikat)",
+        "failed": "Panggilan tidak dapat dilakukan"
+      },
+      "invalid": {
+        "required": "Masukkan alamat",
+        "url": "Masukkan alamat lengkap, mis. https://example.com/hooks",
+        "https": "Gunakan alamat https://",
+        "host": "Formalie tidak dapat memanggil alamatnya sendiri",
+        "private": "Gunakan alamat publik, bukan jaringan pribadi",
+        "events": "Pilih setidaknya satu peristiwa",
+        "forms": "Pilih setidaknya satu formulir"
+      },
+      "kpi": {
+        "deliveries": "Pengiriman",
+        "webhooks": "Webhook",
+        "delivered": "Terkirim",
+        "failed": "Gagal",
+        "byStatus": "Webhook menurut status",
+        "retries": "Dicoba ulang hingga 5 kali"
+      },
+      "sort": {
+        "name": "Nama",
+        "deliveries": "Pengiriman terbanyak",
+        "worst": "Paling sedikit terkirim",
+        "newest": "Terbaru dulu",
+        "oldest": "Terlama dulu",
+        "tries": "Percobaan terbanyak",
+        "slowest": "Paling lambat"
+      },
+      "toast": {
+        "saved": "Webhook disimpan",
+        "on": "Webhook diaktifkan",
+        "off": "Webhook dinonaktifkan",
+        "rotated": "Rahasia baru dibuat",
+        "deleted": "Webhook dihapus",
+        "resent": "Terkirim",
+        "resentFailed": "Terkirim, tetapi tidak sampai: lihat pengiriman"
+      },
+      "verify": {
+        "title": "Memeriksa tanda tangan",
+        "text": "Setiap panggilan membawa header ini. Hitung ulang tanda tangan dari stempel waktu dan isi mentah dengan rahasia Anda, dan tolak panggilan jika berbeda atau lebih lama dari lima menit.",
+        "answer": "Jawab dengan status 2xx apa pun dalam 10 detik; kerjakan pekerjaan sebenarnya setelahnya. Jawaban lain akan dicoba ulang."
+      }
+    },
+    "onceDesc": "Formalie tidak dapat menampilkannya lagi. Jika hilang, buat yang baru.",
+    "keys": {
+      "newTitle": "Kunci API baru",
+      "editTitle": "Edit kunci API",
+      "desc": "Kunci memungkinkan kode Anda sendiri memakai API manajemen Formalie: membaca formulir dan respons, mengubah status, dan lainnya.",
+      "create": "Buat kunci",
+      "namePlaceholder": "mis. Skrip pelaporan",
+      "scopesHelp": "Beri setiap kunci hanya yang dibutuhkan.",
+      "scopesCount": "{n} izin | {n} izin",
+      "search": "Cari kunci API…",
+      "empty": "Belum ada kunci API",
+      "emptyDesc": "Buat kunci untuk membaca formulir dan respons dari kode Anda sendiri.",
+      "lastUsed": "Dipakai {when}",
+      "neverUsed": "Belum pernah dipakai",
+      "lastFrom": "Terakhir dipakai dari",
+      "noCalls": "Tidak ada panggilan dalam 30 hari terakhir",
+      "secret": "Kunci API",
+      "secretTitle": "Kunci API untuk {name}",
+      "secretHint": "Simpan hanya di server Anda, jangan di situs web atau aplikasi yang bisa diunduh orang lain.",
+      "revoke": "Cabut",
+      "revokeTitle": "Cabut kunci ini?",
+      "revokeDesc": "{name} langsung berhenti berfungsi. Kode yang masih memakainya akan mendapat error.",
+      "deleteTitle": "Hapus kunci ini?",
+      "deleteDesc": "{name} dihapus dari daftar. Jejak audit menyimpan apa yang pernah dilakukannya.",
+      "expiringTitle": "Kedaluwarsa {when}",
+      "expiringDesc": "Buat kunci baru, alihkan kode Anda, lalu cabut kunci ini.",
+      "howToCall": "Cara memanggil",
+      "howToCallText": "Kirim kunci sebagai bearer token. Daftar dijawab dengan data dan meta (page, per_page, total); error dengan kode yang bisa dicari di Dokumen & uji coba.",
+      "col": {
+        "name": "Kunci",
+        "status": "Status",
+        "scopes": "Izin",
+        "calls": "Panggilan",
+        "lastUsed": "Terakhir dipakai"
+      },
+      "scope": {
+        "forms_read": "Baca formulir",
+        "forms_write": "Buka dan tutup formulir",
+        "responses_read": "Baca respons",
+        "responses_write": "Ubah respons",
+        "webhooks_read": "Baca webhook",
+        "audit_read": "Baca jejak audit"
+      },
+      "scopeHint": {
+        "forms_read": "Tampilkan formulir dan pertanyaannya",
+        "forms_write": "Alihkan formulir terbit antara terbuka dan tertutup",
+        "responses_read": "Tampilkan respons beserta jawabannya",
+        "responses_write": "Ubah status dan tag, hapus respons",
+        "webhooks_read": "Tampilkan webhook dan eventnya",
+        "audit_read": "Baca apa yang terjadi dan siapa pelakunya"
+      },
+      "invalid": {
+        "scopes": "Pilih setidaknya satu izin"
+      },
+      "kpi": {
+        "calls": "Panggilan dengan kunci API",
+        "keys": "Kunci",
+        "unused": "Tidak dipakai 90 hari",
+        "byStatus": "Kunci menurut status",
+        "expiringHint": "Segera kedaluwarsa = dalam 14 hari"
+      },
+      "sort": {
+        "lastUsed": "Terakhir dipakai",
+        "expires": "Kedaluwarsa duluan"
+      },
+      "toast": {
+        "saved": "Kunci API disimpan",
+        "revoked": "Kunci API dicabut",
+        "deleted": "Kunci API dihapus"
+      }
     }
   }
 }

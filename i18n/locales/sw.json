@@ -634,7 +634,11 @@
     "active": "Inatumika",
     "expiring": "Inakaribia kuisha",
     "expired": "Imeisha muda",
-    "revoked": "Imebatilishwa"
+    "revoked": "Imebatilishwa",
+    "paused": "Imesitishwa",
+    "delivered": "Imewasilishwa",
+    "retrying": "Inajaribu tena",
+    "failed": "Imeshindwa"
   },
   "footer": {
     "rights": "Haki zote zimehifadhiwa.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Kanuni ya ufikiaji imezimwa",
       "api_rule_deleted": "Kanuni ya ufikiaji imefutwa",
       "api_limits_changed": "Mipaka ya kasi ya API imebadilishwa",
-      "api_logging_changed": "Mipangilio ya kumbukumbu ya maombi ya API imebadilishwa"
+      "api_logging_changed": "Mipangilio ya kumbukumbu ya maombi ya API imebadilishwa",
+      "integrations_webhook_updated": "Webhook imebadilishwa",
+      "integrations_webhook_enabled": "Webhook imewashwa",
+      "integrations_webhook_disabled": "Webhook imezimwa",
+      "integrations_webhook_paused": "Webhook imesitishwa baada ya kushindwa mara kwa mara",
+      "integrations_webhook_secret_rotated": "Siri ya webhook imebadilishwa",
+      "integrations_webhook_deleted": "Webhook imefutwa",
+      "integrations_webhook_resent": "Uwasilishaji wa webhook umetumwa tena",
+      "integrations_api_key_updated": "Ufunguo wa API umebadilishwa",
+      "integrations_api_key_deleted": "Ufunguo wa API umefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} waliondoka hapa",
       "required": "Inahitajika",
       "answered": "{n}% imejibiwa"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Webhook mpya",
+      "editTitle": "Hariri webhook",
+      "desc": "Formalie huita anwani hii kila tukio moja kati ya yaliyochaguliwa linapotokea, ikiwa na sahihi ili uweze kuthibitisha kuwa simu imetoka kwetu.",
+      "create": "Unda webhook",
+      "namePlaceholder": "mf. Usawazishaji wa CRM",
+      "urlHelp": "HTTPS kwenye anwani ya umma. Formalie hutuma POST yenye JSON na husubiri hadi sekunde 10 kupata jibu la 2xx.",
+      "enabled": "Imewashwa",
+      "allForms": "Kila fomu",
+      "someForms": "Fomu zilizochaguliwa",
+      "pickForms": "Chagua fomu",
+      "eventsAndForms": "Matukio na fomu",
+      "eventsCount": "tukio {n} | matukio {n}",
+      "formsCount": "fomu {n} | fomu {n}",
+      "search": "Tafuta webhook…",
+      "searchDeliveries": "Tafuta uwasilishaji…",
+      "viewSwitch": "Webhook au uwasilishaji",
+      "deliveries": "Uwasilishaji",
+      "allDeliveries": "Uwasilishaji wote",
+      "empty": "Bado hakuna webhook",
+      "emptyDesc": "Tuma kila jibu jipya kwenye mifumo yako mwenyewe mara linapofika.",
+      "noDeliveries": "Bado hakuna uwasilishaji",
+      "noDeliveriesDesc": "Uwasilishaji huonekana hapa matukio yanapotokea. Tuma jaribio ili ujaribu anwani sasa.",
+      "lastDelivery": "Mwisho {when}",
+      "secret": "Siri ya sahihi",
+      "secretTitle": "Siri ya sahihi ya {name}",
+      "secretHint": "Iweke kwenye seva yako pekee. Angalia sahihi ya kila simu kabla ya kuiamini (tazama Kuangalia sahihi kwenye paneli ya webhook).",
+      "rotate": "Siri mpya",
+      "rotateTitle": "Kubadilisha siri ya sahihi?",
+      "rotateDesc": "Siri mpya hutumika kuanzia uwasilishaji unaofuata, na ya zamani huacha kufanya kazi mara moja. Sasisha kipokezi chako mara moja.",
+      "deleteTitle": "Kufuta webhook hii?",
+      "deleteDesc": "{name} haitapokea simu tena na kumbukumbu ya uwasilishaji wake itaondolewa. Hili haliwezi kutenduliwa.",
+      "sendTest": "Tuma jaribio",
+      "test": "Jaribio",
+      "testOk": "Jaribio limewasilishwa",
+      "testFailed": "Jaribio halikuwasilishwa",
+      "details": "Maelezo",
+      "sendAgain": "Tuma tena",
+      "retryNow": "Jaribu tena sasa",
+      "openWebhook": "Fungua webhook",
+      "request": "Ombi",
+      "masked": "Majibu ya kibinafsi yamefichwa kwenye nakala hii. Kipokezi chako kilipata thamani kamili.",
+      "noAnswer": "Hakuna jibu",
+      "emptyBody": "(tupu)",
+      "nextTry": "Jaribio linalofuata",
+      "nextTryAt": "Jaribio linalofuata {when}",
+      "tryN": "Jaribio la {n}",
+      "triesCount": "jaribio {n} | majaribio {n}",
+      "autoPaused": "Imesitishwa baada ya uwasilishaji {n} kushindwa mfululizo",
+      "autoPausedDesc": "Hakuna kinachopotea: rekebisha kipokezi, washa webhook tena na utume tena uwasilishaji ulioshindwa kutoka kwenye kumbukumbu.",
+      "failingTitle": "Uwasilishaji wa mwisho umeshindwa | Uwasilishaji {n} wa mwisho umeshindwa",
+      "failingDesc": "Formalie hujaribu tena baada ya dakika 1, 5, 15, 60 na 360. Hakikisha anwani yako inajibu kwa hali ya 2xx.",
+      "col": {
+        "name": "Webhook",
+        "url": "Anwani",
+        "status": "Hali",
+        "events": "Matukio",
+        "forms": "Fomu",
+        "deliveries": "Uwasilishaji",
+        "last": "Uwasilishaji wa mwisho",
+        "event": "Tukio",
+        "result": "Matokeo",
+        "webhook": "Webhook",
+        "tries": "Majaribio",
+        "form": "Fomu",
+        "at": "Lini",
+        "code": "Msimbo wa hali"
+      },
+      "status": {
+        "active": "Inatumika",
+        "failing": "Inashindwa",
+        "paused": "Imesitishwa"
+      },
+      "delivery": {
+        "delivered": "Imewasilishwa",
+        "retrying": "Inajaribu tena",
+        "failed": "Imeshindwa"
+      },
+      "event": {
+        "response_created": "Jibu jipya",
+        "response_updated": "Jibu limebadilishwa",
+        "response_status_changed": "Hali imebadilishwa",
+        "response_deleted": "Jibu limefutwa",
+        "ping": "Jaribio"
+      },
+      "eventHint": {
+        "response_created": "Mtu anatuma fomu, kupitia njia yoyote",
+        "response_updated": "Majibu yanabadilishwa kwenye lango au API",
+        "response_status_changed": "Jibu linakaguliwa, linaidhinishwa au linakataliwa",
+        "response_deleted": "Jibu linaondolewa"
+      },
+      "error": {
+        "timeout": "Hakuna jibu ndani ya sekunde 10",
+        "dns": "Anwani haikupatikana",
+        "refused": "Muunganisho ulikataliwa",
+        "tls": "Muunganisho salama umeshindwa (cheti)",
+        "failed": "Simu haikuweza kupigwa"
+      },
+      "invalid": {
+        "required": "Weka anwani",
+        "url": "Weka anwani kamili, mf. https://example.com/hooks",
+        "https": "Tumia anwani ya https://",
+        "host": "Formalie haiwezi kupiga anwani zake yenyewe",
+        "private": "Tumia anwani ya umma, si mtandao wa kibinafsi",
+        "events": "Chagua angalau tukio moja",
+        "forms": "Chagua angalau fomu moja"
+      },
+      "kpi": {
+        "deliveries": "Uwasilishaji",
+        "webhooks": "Webhook",
+        "delivered": "Zilizowasilishwa",
+        "failed": "Zilizoshindwa",
+        "byStatus": "Webhook kwa hali",
+        "retries": "Hujaribiwa tena hadi mara 5"
+      },
+      "sort": {
+        "name": "Jina",
+        "deliveries": "Uwasilishaji mwingi zaidi",
+        "worst": "Zilizowasilishwa chache zaidi",
+        "newest": "Mpya kwanza",
+        "oldest": "Za zamani kwanza",
+        "tries": "Majaribio mengi zaidi",
+        "slowest": "Polepole zaidi"
+      },
+      "toast": {
+        "saved": "Webhook imehifadhiwa",
+        "on": "Webhook imewashwa",
+        "off": "Webhook imezimwa",
+        "rotated": "Siri mpya imeundwa",
+        "deleted": "Webhook imefutwa",
+        "resent": "Imewasilishwa",
+        "resentFailed": "Imetumwa, lakini haijawasilishwa: tazama uwasilishaji"
+      },
+      "verify": {
+        "title": "Kuangalia sahihi",
+        "text": "Kila simu hubeba vichwa hivi. Hesabu upya sahihi kutoka kwa muhuri wa muda na mwili ghafi ukitumia siri yako, na ukatae simu ikiwa inatofautiana au ni ya zamani kuliko dakika tano.",
+        "answer": "Jibu kwa hali yoyote ya 2xx ndani ya sekunde 10; fanya kazi halisi baadaye. Jibu lingine lolote hujaribiwa tena."
+      }
+    },
+    "onceDesc": "Formalie haiwezi kuionyesha tena. Ikipotea, tengeneza mpya.",
+    "keys": {
+      "newTitle": "Ufunguo mpya wa API",
+      "editTitle": "Hariri ufunguo wa API",
+      "desc": "Ufunguo huruhusu msimbo wako mwenyewe kutumia API ya usimamizi ya Formalie: kusoma fomu na majibu, kubadilisha hali na zaidi.",
+      "create": "Tengeneza ufunguo",
+      "namePlaceholder": "k.m. Hati ya ripoti",
+      "scopesHelp": "Mpe kila ufunguo kile unachohitaji tu.",
+      "scopesCount": "Ruhusa {n} | Ruhusa {n}",
+      "search": "Tafuta funguo za API…",
+      "empty": "Bado hakuna funguo za API",
+      "emptyDesc": "Tengeneza ufunguo wa kusoma fomu na majibu kutoka kwenye msimbo wako.",
+      "lastUsed": "Ilitumika {when}",
+      "neverUsed": "Haujawahi kutumika",
+      "lastFrom": "Ilitumika mara ya mwisho kutoka",
+      "noCalls": "Hakuna miito katika siku 30 zilizopita",
+      "secret": "Ufunguo wa API",
+      "secretTitle": "Ufunguo wa API wa {name}",
+      "secretHint": "Uweke kwenye seva yako pekee, kamwe usiuweke kwenye tovuti au programu ambayo wengine wanaweza kupakua.",
+      "revoke": "Batilisha",
+      "revokeTitle": "Kubatilisha ufunguo huu?",
+      "revokeDesc": "{name} huacha kufanya kazi mara moja. Msimbo unaoutumia bado utapata hitilafu.",
+      "deleteTitle": "Kufuta ufunguo huu?",
+      "deleteDesc": "{name} huondolewa kwenye orodha. Kumbukumbu ya ukaguzi huhifadhi ulichofanya.",
+      "expiringTitle": "Unaisha {when}",
+      "expiringDesc": "Tengeneza ufunguo mpya, hamishia msimbo wako kwake, kisha batilisha huu.",
+      "howToCall": "Jinsi ya kuita",
+      "howToCallText": "Tuma ufunguo kama bearer token. Orodha hujibu kwa data na meta (page, per_page, total); hitilafu kwa msimbo unaoweza kuutafuta katika Hati na majaribio.",
+      "col": {
+        "name": "Ufunguo",
+        "status": "Hali",
+        "scopes": "Ruhusa",
+        "calls": "Miito",
+        "lastUsed": "Ilitumika mwisho"
+      },
+      "scope": {
+        "forms_read": "Soma fomu",
+        "forms_write": "Fungua na funga fomu",
+        "responses_read": "Soma majibu",
+        "responses_write": "Badilisha majibu",
+        "webhooks_read": "Soma webhook",
+        "audit_read": "Soma kumbukumbu ya ukaguzi"
+      },
+      "scopeHint": {
+        "forms_read": "Orodhesha fomu na maswali yake",
+        "forms_write": "Badilisha fomu iliyochapishwa kati ya wazi na imefungwa",
+        "responses_read": "Orodhesha majibu pamoja na thamani zake",
+        "responses_write": "Badilisha hali na lebo, futa majibu",
+        "webhooks_read": "Orodhesha webhook na matukio yake",
+        "audit_read": "Soma kilichotokea na nani alifanya"
+      },
+      "invalid": {
+        "scopes": "Chagua angalau ruhusa moja"
+      },
+      "kpi": {
+        "calls": "Miito kwa funguo za API",
+        "keys": "Funguo",
+        "unused": "Haijatumika siku 90",
+        "byStatus": "Funguo kwa hali",
+        "expiringHint": "Inakaribia kuisha = ndani ya siku 14"
+      },
+      "sort": {
+        "lastUsed": "Zilizotumika hivi karibuni",
+        "expires": "Zinazoisha kwanza"
+      },
+      "toast": {
+        "saved": "Ufunguo wa API umehifadhiwa",
+        "revoked": "Ufunguo wa API umebatilishwa",
+        "deleted": "Ufunguo wa API umefutwa"
+      }
     }
   }
 }

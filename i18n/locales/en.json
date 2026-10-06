@@ -634,7 +634,11 @@
     "active": "Active",
     "expiring": "Expiring",
     "expired": "Expired",
-    "revoked": "Revoked"
+    "revoked": "Revoked",
+    "paused": "Paused",
+    "delivered": "Delivered",
+    "retrying": "Retrying",
+    "failed": "Failed"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Access rule switched off",
       "api_rule_deleted": "Access rule deleted",
       "api_limits_changed": "API rate limits changed",
-      "api_logging_changed": "API request log settings changed"
+      "api_logging_changed": "API request log settings changed",
+      "integrations_webhook_updated": "Webhook changed",
+      "integrations_webhook_enabled": "Webhook switched on",
+      "integrations_webhook_disabled": "Webhook switched off",
+      "integrations_webhook_paused": "Webhook paused after repeated failures",
+      "integrations_webhook_secret_rotated": "Webhook secret replaced",
+      "integrations_webhook_deleted": "Webhook deleted",
+      "integrations_webhook_resent": "Webhook delivery sent again",
+      "integrations_api_key_updated": "API key changed",
+      "integrations_api_key_deleted": "API key deleted"
     },
     "detail": {
       "who": "Who",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} left here",
       "required": "Required",
       "answered": "{n}% answered"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "New webhook",
+      "editTitle": "Edit webhook",
+      "desc": "Formalie calls this address whenever one of the chosen events happens, signed so you can check it came from us.",
+      "create": "Create webhook",
+      "namePlaceholder": "e.g. CRM sync",
+      "urlHelp": "HTTPS on a public address. Formalie sends a POST with JSON and waits up to 10 seconds for a 2xx answer.",
+      "enabled": "Switched on",
+      "allForms": "Every form",
+      "someForms": "Chosen forms",
+      "pickForms": "Pick forms",
+      "eventsAndForms": "Events and forms",
+      "eventsCount": "{n} event | {n} events",
+      "formsCount": "{n} form | {n} forms",
+      "search": "Search webhooks…",
+      "searchDeliveries": "Search deliveries…",
+      "viewSwitch": "Webhooks or deliveries",
+      "deliveries": "Deliveries",
+      "allDeliveries": "All deliveries",
+      "empty": "No webhooks yet",
+      "emptyDesc": "Send each new response to your own systems as it arrives.",
+      "noDeliveries": "No deliveries yet",
+      "noDeliveriesDesc": "Deliveries show up here as events happen. Send a test to try the address now.",
+      "lastDelivery": "Last {when}",
+      "secret": "Signing secret",
+      "secretTitle": "Signing secret for {name}",
+      "secretHint": "Keep it on your server only. Check the signature on every call before trusting it (see Checking the signature in the webhook's panel).",
+      "rotate": "New secret",
+      "rotateTitle": "Replace the signing secret?",
+      "rotateDesc": "The new secret is used from the next delivery on, and the old one stops working at once. Update your receiver right away.",
+      "deleteTitle": "Delete this webhook?",
+      "deleteDesc": "{name} stops receiving calls and its delivery log is removed. This can not be undone.",
+      "sendTest": "Send a test",
+      "test": "Test",
+      "testOk": "Test delivered",
+      "testFailed": "The test was not delivered",
+      "details": "Details",
+      "sendAgain": "Send again",
+      "retryNow": "Retry now",
+      "openWebhook": "Open webhook",
+      "request": "Request",
+      "masked": "Personal answers are masked in this copy. Your receiver got the full values.",
+      "noAnswer": "No answer",
+      "emptyBody": "(empty)",
+      "nextTry": "Next try",
+      "nextTryAt": "Next try {when}",
+      "tryN": "Try {n}",
+      "triesCount": "{n} try | {n} tries",
+      "autoPaused": "Paused after {n} failed deliveries in a row",
+      "autoPausedDesc": "Nothing is lost: fix the receiver, switch the webhook on again and send the failed deliveries again from the log.",
+      "failingTitle": "The last delivery failed | The last {n} deliveries failed",
+      "failingDesc": "Formalie keeps retrying after 1, 5, 15, 60 and 360 minutes. Check that your address answers with a 2xx status.",
+      "col": {
+        "name": "Webhook",
+        "url": "Address",
+        "status": "Status",
+        "events": "Events",
+        "forms": "Forms",
+        "deliveries": "Deliveries",
+        "last": "Last delivery",
+        "event": "Event",
+        "result": "Result",
+        "webhook": "Webhook",
+        "tries": "Tries",
+        "form": "Form",
+        "at": "When",
+        "code": "Status code"
+      },
+      "status": {
+        "active": "Active",
+        "failing": "Failing",
+        "paused": "Paused"
+      },
+      "delivery": {
+        "delivered": "Delivered",
+        "retrying": "Retrying",
+        "failed": "Failed"
+      },
+      "event": {
+        "response_created": "New response",
+        "response_updated": "Response changed",
+        "response_status_changed": "Status changed",
+        "response_deleted": "Response deleted",
+        "ping": "Test"
+      },
+      "eventHint": {
+        "response_created": "Someone sends a form, through any channel",
+        "response_updated": "Answers are changed in the portal or the API",
+        "response_status_changed": "A response is reviewed, approved or rejected",
+        "response_deleted": "A response is removed"
+      },
+      "error": {
+        "timeout": "No answer within 10 seconds",
+        "dns": "The address could not be found",
+        "refused": "The connection was refused",
+        "tls": "The secure connection failed (certificate)",
+        "failed": "The call could not be made"
+      },
+      "invalid": {
+        "required": "Enter the address",
+        "url": "Enter a full address, e.g. https://example.com/hooks",
+        "https": "Use an https:// address",
+        "host": "Formalie can not call its own addresses",
+        "private": "Use a public address, not a private network",
+        "events": "Choose at least one event",
+        "forms": "Choose at least one form"
+      },
+      "kpi": {
+        "deliveries": "Deliveries",
+        "webhooks": "Webhooks",
+        "delivered": "Delivered",
+        "failed": "Failed",
+        "byStatus": "Webhooks by status",
+        "retries": "Retried up to 5 times"
+      },
+      "sort": {
+        "name": "Name",
+        "deliveries": "Most deliveries",
+        "worst": "Least delivered",
+        "newest": "Newest first",
+        "oldest": "Oldest first",
+        "tries": "Most tries",
+        "slowest": "Slowest"
+      },
+      "toast": {
+        "saved": "Webhook saved",
+        "on": "Webhook switched on",
+        "off": "Webhook switched off",
+        "rotated": "New secret made",
+        "deleted": "Webhook deleted",
+        "resent": "Delivered",
+        "resentFailed": "Sent, but not delivered: see the delivery"
+      },
+      "verify": {
+        "title": "Checking the signature",
+        "text": "Every call carries these headers. Recompute the signature from the timestamp and the raw body with your secret, and refuse the call when it differs or is older than five minutes.",
+        "answer": "Answer with any 2xx status within 10 seconds; do the real work afterwards. Anything else is retried."
+      }
+    },
+    "onceDesc": "Formalie can not show it again. If it gets lost, make a new one.",
+    "keys": {
+      "newTitle": "New API key",
+      "editTitle": "Edit API key",
+      "desc": "A key lets your own code use Formalie's management API: read forms and responses, change statuses and more.",
+      "create": "Create key",
+      "namePlaceholder": "e.g. Reporting script",
+      "scopesHelp": "Give each key only what it needs.",
+      "scopesCount": "{n} permission | {n} permissions",
+      "search": "Search API keys…",
+      "empty": "No API keys yet",
+      "emptyDesc": "Make a key to read forms and responses from your own code.",
+      "lastUsed": "Used {when}",
+      "neverUsed": "Never used",
+      "lastFrom": "Last used from",
+      "noCalls": "No calls in the last 30 days",
+      "secret": "API key",
+      "secretTitle": "API key for {name}",
+      "secretHint": "Keep it on your server only, never in a website or app that others can download.",
+      "revoke": "Revoke",
+      "revokeTitle": "Revoke this key?",
+      "revokeDesc": "{name} stops working at once. Code that still uses it gets an error.",
+      "deleteTitle": "Delete this key?",
+      "deleteDesc": "{name} is removed from the list. The audit trail keeps what it did.",
+      "expiringTitle": "Expires {when}",
+      "expiringDesc": "Make a new key, switch your code over, then revoke this one.",
+      "howToCall": "How to call",
+      "howToCallText": "Send the key as a bearer token. Lists answer with data and meta (page, per_page, total); errors with a code you can look up in Docs & testing.",
+      "col": {
+        "name": "Key",
+        "status": "Status",
+        "scopes": "Permissions",
+        "calls": "Calls",
+        "lastUsed": "Last used"
+      },
+      "scope": {
+        "forms_read": "Read forms",
+        "forms_write": "Open and close forms",
+        "responses_read": "Read responses",
+        "responses_write": "Change responses",
+        "webhooks_read": "Read webhooks",
+        "audit_read": "Read the audit trail"
+      },
+      "scopeHint": {
+        "forms_read": "List forms and their questions",
+        "forms_write": "Switch a published form between open and closed",
+        "responses_read": "List responses with their answers",
+        "responses_write": "Change status and tags, delete responses",
+        "webhooks_read": "List webhooks and their events",
+        "audit_read": "Read what happened and who did it"
+      },
+      "invalid": {
+        "scopes": "Choose at least one permission"
+      },
+      "kpi": {
+        "calls": "Calls with API keys",
+        "keys": "Keys",
+        "unused": "Unused 90 days",
+        "byStatus": "Keys by status",
+        "expiringHint": "Expiring = within 14 days"
+      },
+      "sort": {
+        "lastUsed": "Used last",
+        "expires": "Expires first"
+      },
+      "toast": {
+        "saved": "API key saved",
+        "revoked": "API key revoked",
+        "deleted": "API key deleted"
+      }
     }
   }
 }

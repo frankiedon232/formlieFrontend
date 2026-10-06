@@ -634,7 +634,11 @@
     "active": "Etkin",
     "expiring": "Yakında sona erecek",
     "expired": "Süresi doldu",
-    "revoked": "İptal edildi"
+    "revoked": "İptal edildi",
+    "paused": "Duraklatıldı",
+    "delivered": "Teslim edildi",
+    "retrying": "Yeniden deneniyor",
+    "failed": "Başarısız"
   },
   "footer": {
     "rights": "Tüm hakları saklıdır.",
@@ -1002,7 +1006,16 @@
       "api_rule_disabled": "Erişim kuralı kapatıldı",
       "api_rule_deleted": "Erişim kuralı silindi",
       "api_limits_changed": "API hız sınırları değiştirildi",
-      "api_logging_changed": "API istek günlüğü ayarları değiştirildi"
+      "api_logging_changed": "API istek günlüğü ayarları değiştirildi",
+      "integrations_webhook_updated": "Webhook değiştirildi",
+      "integrations_webhook_enabled": "Webhook açıldı",
+      "integrations_webhook_disabled": "Webhook kapatıldı",
+      "integrations_webhook_paused": "Webhook tekrarlanan hatalar nedeniyle duraklatıldı",
+      "integrations_webhook_secret_rotated": "Webhook sırrı değiştirildi",
+      "integrations_webhook_deleted": "Webhook silindi",
+      "integrations_webhook_resent": "Webhook teslimatı yeniden gönderildi",
+      "integrations_api_key_updated": "API anahtarı değiştirildi",
+      "integrations_api_key_deleted": "API anahtarı silindi"
     },
     "detail": {
       "who": "Kim",
@@ -5789,6 +5802,218 @@
       "leftHere": "{n} burada ayrıldı",
       "required": "Zorunlu",
       "answered": "%{n} yanıtlandı"
+    }
+  },
+  "integrations": {
+    "webhooks": {
+      "newTitle": "Yeni webhook",
+      "editTitle": "Webhook düzenle",
+      "desc": "Formalie, seçilen olaylardan biri gerçekleştiğinde bu adresi çağırır ve çağrının bizden geldiğini doğrulayabilmeniz için imzalar.",
+      "create": "Webhook oluştur",
+      "namePlaceholder": "örn. CRM senkronizasyonu",
+      "urlHelp": "Herkese açık bir adreste HTTPS. Formalie JSON ile bir POST gönderir ve 2xx yanıtı için en fazla 10 saniye bekler.",
+      "enabled": "Açık",
+      "allForms": "Her form",
+      "someForms": "Seçilen formlar",
+      "pickForms": "Form seç",
+      "eventsAndForms": "Olaylar ve formlar",
+      "eventsCount": "{n} olay | {n} olay",
+      "formsCount": "{n} form | {n} form",
+      "search": "Webhook ara…",
+      "searchDeliveries": "Teslimat ara…",
+      "viewSwitch": "Webhook'lar veya teslimatlar",
+      "deliveries": "Teslimatlar",
+      "allDeliveries": "Tüm teslimatlar",
+      "empty": "Henüz webhook yok",
+      "emptyDesc": "Her yeni yanıtı gelir gelmez kendi sistemlerinize gönderin.",
+      "noDeliveries": "Henüz teslimat yok",
+      "noDeliveriesDesc": "Olaylar gerçekleştikçe teslimatlar burada görünür. Adresi hemen denemek için bir test gönderin.",
+      "lastDelivery": "Son: {when}",
+      "secret": "İmza sırrı",
+      "secretTitle": "{name} için imza sırrı",
+      "secretHint": "Yalnızca sunucunuzda saklayın. Her çağrıya güvenmeden önce imzasını kontrol edin (webhook panelindeki İmzayı kontrol etme bölümüne bakın).",
+      "rotate": "Yeni sır",
+      "rotateTitle": "İmza sırrı değiştirilsin mi?",
+      "rotateDesc": "Yeni sır bir sonraki teslimattan itibaren kullanılır, eskisi hemen çalışmayı bırakır. Alıcınızı hemen güncelleyin.",
+      "deleteTitle": "Bu webhook silinsin mi?",
+      "deleteDesc": "{name} artık çağrı almaz ve teslimat günlüğü silinir. Bu işlem geri alınamaz.",
+      "sendTest": "Test gönder",
+      "test": "Test",
+      "testOk": "Test teslim edildi",
+      "testFailed": "Test teslim edilemedi",
+      "details": "Ayrıntılar",
+      "sendAgain": "Yeniden gönder",
+      "retryNow": "Şimdi tekrar dene",
+      "openWebhook": "Webhook'u aç",
+      "request": "İstek",
+      "masked": "Kişisel yanıtlar bu kopyada maskelenmiştir. Alıcınız tam değerleri aldı.",
+      "noAnswer": "Yanıt yok",
+      "emptyBody": "(boş)",
+      "nextTry": "Sonraki deneme",
+      "nextTryAt": "Sonraki deneme {when}",
+      "tryN": "{n}. deneme",
+      "triesCount": "{n} deneme | {n} deneme",
+      "autoPaused": "Art arda {n} başarısız teslimattan sonra duraklatıldı",
+      "autoPausedDesc": "Hiçbir şey kaybolmaz: alıcıyı düzeltin, webhook'u yeniden açın ve başarısız teslimatları günlükten tekrar gönderin.",
+      "failingTitle": "Son teslimat başarısız oldu | Son {n} teslimat başarısız oldu",
+      "failingDesc": "Formalie 1, 5, 15, 60 ve 360 dakika sonra yeniden dener. Adresinizin 2xx durumuyla yanıt verdiğinden emin olun.",
+      "col": {
+        "name": "Webhook",
+        "url": "Adres",
+        "status": "Durum",
+        "events": "Olaylar",
+        "forms": "Formlar",
+        "deliveries": "Teslimatlar",
+        "last": "Son teslimat",
+        "event": "Olay",
+        "result": "Sonuç",
+        "webhook": "Webhook",
+        "tries": "Denemeler",
+        "form": "Form",
+        "at": "Ne zaman",
+        "code": "Durum kodu"
+      },
+      "status": {
+        "active": "Etkin",
+        "failing": "Hatalı",
+        "paused": "Duraklatıldı"
+      },
+      "delivery": {
+        "delivered": "Teslim edildi",
+        "retrying": "Yeniden deneniyor",
+        "failed": "Başarısız"
+      },
+      "event": {
+        "response_created": "Yeni yanıt",
+        "response_updated": "Yanıt değiştirildi",
+        "response_status_changed": "Durum değiştirildi",
+        "response_deleted": "Yanıt silindi",
+        "ping": "Test"
+      },
+      "eventHint": {
+        "response_created": "Biri herhangi bir kanaldan bir form gönderir",
+        "response_updated": "Yanıtlar portalda veya API'de değiştirilir",
+        "response_status_changed": "Bir yanıt incelenir, onaylanır veya reddedilir",
+        "response_deleted": "Bir yanıt kaldırılır"
+      },
+      "error": {
+        "timeout": "10 saniye içinde yanıt yok",
+        "dns": "Adres bulunamadı",
+        "refused": "Bağlantı reddedildi",
+        "tls": "Güvenli bağlantı başarısız oldu (sertifika)",
+        "failed": "Çağrı yapılamadı"
+      },
+      "invalid": {
+        "required": "Adresi girin",
+        "url": "Tam bir adres girin, örn. https://example.com/hooks",
+        "https": "https:// ile başlayan bir adres kullanın",
+        "host": "Formalie kendi adreslerini çağıramaz",
+        "private": "Özel bir ağ değil, herkese açık bir adres kullanın",
+        "events": "En az bir olay seçin",
+        "forms": "En az bir form seçin"
+      },
+      "kpi": {
+        "deliveries": "Teslimatlar",
+        "webhooks": "Webhook'lar",
+        "delivered": "Teslim edildi",
+        "failed": "Başarısız",
+        "byStatus": "Duruma göre webhook'lar",
+        "retries": "5 defaya kadar yeniden denendi"
+      },
+      "sort": {
+        "name": "Ad",
+        "deliveries": "En çok teslimat",
+        "worst": "En az teslim edilen",
+        "newest": "Önce en yeni",
+        "oldest": "Önce en eski",
+        "tries": "En çok deneme",
+        "slowest": "En yavaş"
+      },
+      "toast": {
+        "saved": "Webhook kaydedildi",
+        "on": "Webhook açıldı",
+        "off": "Webhook kapatıldı",
+        "rotated": "Yeni sır oluşturuldu",
+        "deleted": "Webhook silindi",
+        "resent": "Teslim edildi",
+        "resentFailed": "Gönderildi ama teslim edilmedi: teslimata bakın"
+      },
+      "verify": {
+        "title": "İmzayı kontrol etme",
+        "text": "Her çağrı bu üstbilgileri taşır. İmzayı zaman damgası ve ham gövdeden sırrınızla yeniden hesaplayın; farklıysa veya beş dakikadan eskiyse çağrıyı reddedin.",
+        "answer": "10 saniye içinde herhangi bir 2xx durumuyla yanıt verin, asıl işi sonra yapın. Başka her yanıt yeniden denenir."
+      }
+    },
+    "onceDesc": "Formalie bunu yeniden gösteremez. Kaybolursa yenisini oluşturun.",
+    "keys": {
+      "newTitle": "Yeni API anahtarı",
+      "editTitle": "API anahtarını düzenle",
+      "desc": "Bir anahtar, kendi kodunuzun Formalie yönetim API'sini kullanmasını sağlar: formları ve yanıtları okuma, durumları değiştirme ve daha fazlası.",
+      "create": "Anahtar oluştur",
+      "namePlaceholder": "örn. Raporlama betiği",
+      "scopesHelp": "Her anahtara yalnızca ihtiyacı olanı verin.",
+      "scopesCount": "{n} izin | {n} izin",
+      "search": "API anahtarlarında ara…",
+      "empty": "Henüz API anahtarı yok",
+      "emptyDesc": "Kendi kodunuzdan form ve yanıtları okumak için bir anahtar oluşturun.",
+      "lastUsed": "{when} kullanıldı",
+      "neverUsed": "Hiç kullanılmadı",
+      "lastFrom": "Son kullanım yeri",
+      "noCalls": "Son 30 günde çağrı yok",
+      "secret": "API anahtarı",
+      "secretTitle": "{name} için API anahtarı",
+      "secretHint": "Yalnızca sunucunuzda tutun, başkalarının indirebileceği bir web sitesinde veya uygulamada asla.",
+      "revoke": "İptal et",
+      "revokeTitle": "Bu anahtar iptal edilsin mi?",
+      "revokeDesc": "{name} hemen çalışmayı bırakır. Hâlâ kullanan kod hata alır.",
+      "deleteTitle": "Bu anahtar silinsin mi?",
+      "deleteDesc": "{name} listeden kaldırılır. Denetim kaydı yaptıklarını saklar.",
+      "expiringTitle": "{when} sona erer",
+      "expiringDesc": "Yeni bir anahtar oluşturun, kodunuzu ona geçirin, sonra bunu iptal edin.",
+      "howToCall": "Nasıl çağrılır",
+      "howToCallText": "Anahtarı bearer token olarak gönderin. Listeler data ve meta (page, per_page, total) ile yanıt verir; hatalar, Belgeler ve test bölümünde arayabileceğiniz bir kodla gelir.",
+      "col": {
+        "name": "Anahtar",
+        "status": "Durum",
+        "scopes": "İzinler",
+        "calls": "Çağrılar",
+        "lastUsed": "Son kullanım"
+      },
+      "scope": {
+        "forms_read": "Formları oku",
+        "forms_write": "Formları aç ve kapat",
+        "responses_read": "Yanıtları oku",
+        "responses_write": "Yanıtları değiştir",
+        "webhooks_read": "Webhook'ları oku",
+        "audit_read": "Denetim kaydını oku"
+      },
+      "scopeHint": {
+        "forms_read": "Formları ve sorularını listele",
+        "forms_write": "Yayınlanmış bir formu açık ve kapalı arasında değiştir",
+        "responses_read": "Yanıtları değerleriyle listele",
+        "responses_write": "Durum ve etiketleri değiştir, yanıtları sil",
+        "webhooks_read": "Webhook'ları ve olaylarını listele",
+        "audit_read": "Ne olduğunu ve kimin yaptığını oku"
+      },
+      "invalid": {
+        "scopes": "En az bir izin seçin"
+      },
+      "kpi": {
+        "calls": "API anahtarlarıyla çağrılar",
+        "keys": "Anahtarlar",
+        "unused": "90 gündür kullanılmayan",
+        "byStatus": "Duruma göre anahtarlar",
+        "expiringHint": "Süresi dolmak üzere = 14 gün içinde"
+      },
+      "sort": {
+        "lastUsed": "En son kullanılan",
+        "expires": "Önce süresi dolan"
+      },
+      "toast": {
+        "saved": "API anahtarı kaydedildi",
+        "revoked": "API anahtarı iptal edildi",
+        "deleted": "API anahtarı silindi"
+      }
     }
   }
 }

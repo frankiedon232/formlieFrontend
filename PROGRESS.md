@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules and M4 Request logs, analytics and the overview and M5 Docs and testing done; next M6 Webhooks and API keys.
+**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules and M1 to M6 done (services and endpoints, tokens and headers, access rules, logs and analytics, docs and testing, webhooks and API keys); stopped for the owner's review.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -23,7 +23,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
-| F13   | API service & integrations                        | 🟡     | ~85% |
+| F13   | API service & integrations                        | ✅     | 100% (review) |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
@@ -625,7 +625,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** turn any form into an API so organisations collect data from every side, **links, embeds and API**, all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** ✅ Access rules and rate limits. **M4** ✅ Request logs, analytics and the API service overview in the dashboard style. **M5** ✅ Docs and testing (try-it console, Test button, files). **M6** Webhooks and Formalie's own API keys. App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
+**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** ✅ Access rules and rate limits. **M4** ✅ Request logs, analytics and the API service overview in the dashboard style. **M5** ✅ Docs and testing (try-it console, Test button, files). **M6** ✅ Webhooks and Formalie's own API keys (management API). App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
 
 ### Addresses (decided 2026-10-03, see 03-DECISIONS → 61)
 
@@ -692,8 +692,8 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 ### 9. Integrations (moved here from F15, owner 2026-10-03)
 
 - ✅ Menu entries in the API service area: Webhooks · API keys · App integrations (placeholders; old `/integrations/*` links redirect)
-- ⬜ Webhooks: create (URL, events, secret), signed payloads, test delivery; delivery log with retries and response details
-- ⬜ API keys (Formalie's own management API): create (name, scopes, expiry), show once, copy, revoke, last used
+- ✅ Webhooks (`/api-service/webhooks`, rule 21; view switch Webhooks | Deliveries): name, HTTPS address (public hosts only; `http://localhost` while developing), events (new response, response changed, status changed, response deleted), every form or chosen ones; signing secret shown once, new secret; Send a test (the receiver's answer in the panel); every delivery signed (`X-Formalie-Timestamp`, `X-Formalie-Signature: sha256=HMAC(secret, "{timestamp}.{body}")`, `X-Formalie-Event`, `X-Formalie-Delivery`), retried after 1, 5, 15, 60 and 360 minutes, paused by itself after 20 failures in a row; delivery log with tries, request (personal answers masked), answer, Send again / Retry now; signature check code (Node.js, Python, PHP). The mock really calls the address
+- ✅ API keys (`/api-service/api-keys`, rule 21): name, permissions (read forms, open / close forms, read / change responses, read webhooks, read the audit trail), expiry; shown once (`formalie_key_…`), edit, revoke, delete once revoked or expired; calls per day, last used and from where. Mock management API at `{base}/v1/…` (forms, a form's responses, one response: read, change status and tags, delete; webhooks; audit trail), permissions checked, changes audited as the key, webhooks fire
 - ➖ App integrations: Google Sheets, Slack / team chat, email notifications to external addresses: moved to after F21 (owner-confirmed 2026-10-06)
 
 ### 10. API (mock first)
@@ -1290,3 +1290,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 | M3 Access rules: Access rules page (rule 21; view switch Rules | Rate limits), rule dialog (allow / block; IPs and ranges, domains, countries, regions; all, a service or an endpoint), rule panel, Test a caller, rate limits per token / IP / endpoint; shared rules `shared/utils/apiService/access.ts` (IPv4 / IPv6 ranges, continents); mock `/api-access-rules` (+ insights, test), `/api-service/limits`; the mock public API applies rules (`FRM-API-1015`) and limits (`429` + `Retry-After`). Also: token prefixes `formalie_…`, header `Formalie-Key` (owner). Tests: `apiService/access`. |
 | 2026-10-06 | F13 | M4 Request logs and analytics: Request logs page (rule 21, panel with headers and kept bodies, log settings, CSV download), API Analytics page and the API service Overview in the dashboard style (`ChartsKpi`, `ChartsFlow`, endpoint overview, breakdowns, recent calls); mock `/api-logs` (+ insights, settings, one), `/api-analytics`; the mock public API logs every call (bodies only when kept, personal answers masked); sample history of 7 days from the endpoints' daily numbers, respecting token scopes. |
 | 2026-10-06 | F13 | M5 Docs and testing: Docs & testing page (per service: endpoints, per-method body tables with real allowed values, query options, code in five languages, answers, a shared guide with tokens, `Formalie-Key`, files, signing and error codes), Download OpenAPI 3.1, try-it console (endpoint panel Test button too; console test token, nothing stored; mock `POST /api-endpoints/{id}/try`). Files through the API: `POST {apiKey}/{endpoint}/files?field=` (multipart `file`, the form page's type and size checks) → an id for the JSON. Fixed: the public API now uses the same worked-out question choices as the portal (a form-required question is always accepted); currency, duration and IBAN examples match the form's checks. Tests: `apiService/snippets`, `apiService/samples`. |
+| 2026-10-06 | F13 | M6 Webhooks and API keys: Webhooks page (chart cards, DataView, panel with Send a test, recent deliveries, events and forms, signature check code; Deliveries view with its panel, Send again / Retry now), signed deliveries really sent by the mock with retries and auto-pause, fired from the form page, the API service, the portal and the management API (`server/mock/data/integrationStore.ts`, `routes/webhooks.ts`); API keys page and panel, mock management API `/v1/…` (`server/mock/managementApi.ts`, `routes/apiKeys.ts`); shared `shared/types/integrations.ts`, `shared/utils/integrations/webhooks.ts`; masking moved to `server/mock/core/mask.ts`. Checked with a local receiver (signature verified, status events with the previous status) and with a key (permissions, 401, 404). F13 complete; stopped for the owner's review. Tests: `integrations/webhooks`. |
