@@ -145,7 +145,7 @@ export interface ApiToken extends ApiUsage {
   kind: ApiTokenKind
   mode: ApiTokenMode
   status: ApiTokenStatus
-  /** The visible part: its prefix and last 4 characters (`fml_live_…a1B2`), or the client id. */
+  /** The visible part: its prefix and last 4 characters (`formalie_live_…a1B2`), or the client id. */
   preview: string
   client_id: string | null
   /** Client credentials: minutes a short-lived token lasts. */
@@ -212,4 +212,78 @@ export interface ApiHeaderDraft {
   name: string
   value: string | null
   preview: string | null
+}
+
+// ── Access rules and rate limits (F13 M3) ────────────────────────────────────────────────
+
+export const API_RULE_KINDS = ['ip', 'domain', 'country', 'region'] as const
+export type ApiRuleKind = (typeof API_RULE_KINDS)[number]
+export type ApiRuleAction = 'allow' | 'block'
+/** Where a rule applies: everywhere, one service or one endpoint. */
+export interface ApiRuleScope {
+  type: 'all' | 'service' | 'endpoint'
+  id: string | null
+  name: string | null
+}
+
+export interface ApiAccessRule {
+  id: string
+  action: ApiRuleAction
+  kind: ApiRuleKind
+  /** IP addresses or ranges, domains (`*.example.com`), ISO countries or regions (continents). */
+  values: string[]
+  scope: ApiRuleScope
+  note: string | null
+  enabled: boolean
+  /** Calls this rule decided in the last 30 days (allowed in, or refused). */
+  hits_30d: number
+  daily: { date: string; count: number }[]
+  last_hit_at: string | null
+  created_by: { id: string; name: string }
+  created_at: string
+  updated_at: string
+}
+
+export interface ApiAccessRuleSaveRequest {
+  action: ApiRuleAction
+  kind: ApiRuleKind
+  values: string[]
+  scope: { type: ApiRuleScope['type']; id: string | null }
+  note?: string | null
+  enabled?: boolean
+}
+
+export interface ApiAccessInsights {
+  total: number
+  by_action: Record<ApiRuleAction, number>
+  by_kind: Record<ApiRuleKind, number>
+  /** Calls refused by rules in the last 30 days. */
+  refused_30d: number
+  previous_30d: number
+  daily: { date: string; count: number }[]
+  limited_30d: number
+}
+
+/** Calls per minute; null = no limit. */
+export interface ApiRateLimits {
+  per_token: number | null
+  per_ip: number | null
+  per_endpoint: number | null
+  updated_at: string | null
+}
+
+/** POST /api-access-rules/test: would this caller get in? */
+export interface ApiAccessTestRequest {
+  endpoint_id: string
+  ip: string
+  origin?: string | null
+  country?: string | null
+}
+export interface ApiAccessTestResult {
+  allowed: boolean
+  reason: 'blocked' | 'not_allowed' | null
+  rule: { id: string; action: ApiRuleAction; value: string; kind: ApiRuleKind; scope: ApiRuleScope } | null
+  /** Rules that applied to the endpoint, in the order they were checked. */
+  checked: number
+  region: string | null
 }

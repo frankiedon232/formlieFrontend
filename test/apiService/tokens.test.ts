@@ -4,15 +4,18 @@ import { checkHeaderName, checkHeaderValue, maskValue, scopeAllows, secretPrevie
 const DAY = 86_400_000
 
 describe('token secrets', () => {
-  it('tells live and test apart by prefix', () => {
-    expect(tokenPrefix('static', 'live')).toBe('fml_live_')
-    expect(tokenPrefix('client', 'test')).toBe('fcs_test_')
-    expect(tokenPrefix('client_id', 'live')).toBe('cli_live_')
-    expect(tokenPrefix('signing', 'test')).toBe('fsg_test_')
+  it('says Formalie and tells live and test apart by prefix', () => {
+    expect(tokenPrefix('static', 'live')).toBe('formalie_live_')
+    expect(tokenPrefix('static', 'test')).toBe('formalie_test_')
+    expect(tokenPrefix('client', 'test')).toBe('formalie_secret_test_')
+    expect(tokenPrefix('client_id', 'live')).toBe('formalie_client_live_')
+    expect(tokenPrefix('signing', 'test')).toBe('formalie_sign_test_')
+    expect(tokenPrefix('access', 'live')).toBe('formalie_access_live_')
   })
 
   it('shows only the prefix and the last 4 characters', () => {
-    expect(secretPreview('fml_live_abcdefghijklmnopqrstuvwxyz123456')).toBe('fml_live_…3456')
+    expect(secretPreview('formalie_live_abcdefghijklmnopqrstuvwxyz123456')).toBe('formalie_live_…3456')
+    expect(secretPreview('formalie_secret_test_abcdefghijklmnopqrstuvwxyz9876')).toBe('formalie_secret_test_…9876')
     expect(maskValue('partner-42')).toBe('••••r-42')
     expect(maskValue('abc')).toBe('••••')
   })

@@ -6,15 +6,19 @@
 import type { ApiTokenKind, ApiTokenMode, ApiTokenScopes, ApiTokenStatus } from '#shared/types/apiService'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
-/** `fml_live_` / `fml_test_` (bearer tokens), `fcs_…` (client secrets), `cli_…` (client ids), `fsg_…` (signing secrets). */
-export function tokenPrefix(kind: ApiTokenKind | 'client_id' | 'signing', mode: ApiTokenMode) {
-  const head = kind === 'static' ? 'fml' : kind === 'client' ? 'fcs' : kind === 'client_id' ? 'cli' : 'fsg'
-  return `${head}_${mode}_`
+/**
+ * Every secret says Formalie (owner, 2026-10-06): `formalie_live_` / `formalie_test_` (bearer tokens),
+ * `formalie_client_…` (client ids), `formalie_secret_…` (client secrets), `formalie_sign_…` (signing
+ * secrets), `formalie_access_…` (short-lived tokens from the token address).
+ */
+export function tokenPrefix(kind: ApiTokenKind | 'client_id' | 'signing' | 'access', mode: ApiTokenMode) {
+  const part = kind === 'static' ? '' : kind === 'client' ? 'secret_' : kind === 'client_id' ? 'client_' : kind === 'signing' ? 'sign_' : 'access_'
+  return `formalie_${part}${mode}_`
 }
 
 /** The visible part of a secret: its prefix and last 4 characters. */
 export function secretPreview(secret: string) {
-  const prefix = /^[a-z]+_(?:live|test)_/.exec(secret)?.[0] ?? ''
+  const prefix = /^formalie_(?:[a-z]+_)?(?:live|test)_/.exec(secret)?.[0] ?? ''
   return `${prefix}…${secret.slice(-4)}`
 }
 

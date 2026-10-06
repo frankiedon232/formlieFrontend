@@ -21,7 +21,7 @@ import { allFields } from '#shared/utils/forms/build'
 import { isFileField } from '#shared/utils/forms/file-answers'
 import { validateAnswer } from '#shared/utils/forms/validate'
 import { exampleRecord } from '#shared/utils/apiService/endpoints'
-import { scopeAllows, tokenStatusOf } from '#shared/utils/apiService/tokens'
+import { scopeAllows, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
 import type { ApiMethod } from '#shared/utils/urls/public'
 import { recordAudit } from './core/audit'
@@ -75,7 +75,7 @@ const matches = (token: StoredApiToken, secret: string) => {
 function issueAccessToken(event: H3Event, tenant: MockTenant, body: Record<string, unknown>) {
   const token = apiOf(tenant).tokens.find(item => item.kind === 'client' && item.client_id === body.client_id)
   if (!token || typeof body.client_secret !== 'string' || !matches(token, body.client_secret) || !live(token)) throw new PublicError('FRM-API-1010')
-  const access = `fat_${token.mode}_${crypto.randomUUID().replace(/-/g, '')}`
+  const access = `${tokenPrefix('access', token.mode)}${crypto.randomUUID().replace(/-/g, '')}`
   const seconds = (token.lifetime_minutes ?? 15) * 60
   accessTokens.set(access, { tenant: tenant.id, token: token.id, expires: Date.now() + seconds * 1000 })
   token.last_used_at = new Date().toISOString()

@@ -106,7 +106,7 @@ With `NUXT_PUBLIC_API_MOCK=true` the mock answers real calls to your endpoints (
 
 1. Address: `https://api.formalie.dev:2202/{apiKey}/{endpoint}` (needs the hosts line `127.0.0.1 api.formalie.dev`) or `https://localhost:2202/public-api/{apiKey}/{endpoint}`. The endpoint panel shows the full address; the key is in Tokens & headers → Headers.
 2. A token: Tokens & headers → New token (Live stores real responses in the mock, Test checks everything but stores nothing). Copy it when it is shown; it is not shown again.
-3. Postman: Authorization → Bearer Token, or a header `Authorization: Bearer fml_live_…`. For POST / PUT: Body → raw → JSON with the question keys from the endpoint's Example call. Add the endpoint's required headers, if any.
+3. Postman: Authorization → Bearer Token, or a header `Authorization: Bearer formalie_live_…`. For POST / PUT: Body → raw → JSON with the question keys from the endpoint's Example call. Add the endpoint's required headers, if any.
 4. Postman checks certificates: turn off "SSL certificate verification" (Settings → General) or add the mkcert root CA (`mkcert -CAROOT` → `rootCA.pem`) under Settings → Certificates.
 5. Client id + secret: `POST …/{apiKey}/token` with `{ "client_id": "…", "client_secret": "…" }`, then use the `access_token` as the bearer.
 
