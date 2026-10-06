@@ -65,7 +65,7 @@ const STATUS_DOTS = { active: 'bg-green-500', expiring: 'bg-amber-500', expired:
 const filters = computed<DataFilter[]>(() => [
   { key: 'status', label: t('apiService.col.status'), icon: 'i-lucide-circle-dot', options: (['active', 'expiring', 'expired', 'revoked'] as const).map(value => ({ value, label: t(`status.${value}`), dot: STATUS_DOTS[value] })) },
   { key: 'mode', label: t('apiService.tokens.col.mode'), icon: 'i-lucide-flask-conical', options: [{ value: 'live', label: t('apiService.tokens.mode.live') }, { value: 'test', label: t('apiService.tokens.mode.test') }] },
-  { key: 'kind', label: t('apiService.tokens.col.kind'), icon: 'i-lucide-key-round', options: [{ value: 'static', label: t('apiService.tokens.kind.static') }, { value: 'client', label: t('apiService.tokens.kind.client') }] },
+  { key: 'kind', label: t('apiService.tokens.col.kind'), icon: 'i-lucide-key-round', options: [{ value: 'static', label: t('apiService.tokens.kind.static') }, { value: 'client', label: t('apiService.tokens.kind.client') }, { value: 'webhook', label: t('apiService.tokens.kind.webhook') }] },
 ])
 const sortOptions = computed(() => [
   { label: t('apiService.sort.created'), value: '-created_at' },

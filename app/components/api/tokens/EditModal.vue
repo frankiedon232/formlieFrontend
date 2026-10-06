@@ -6,7 +6,7 @@
   and what comes next. Editing: name, what it may call and the expiry on one page.
 -->
 <script setup lang="ts">
-import type { ApiEndpoint, ApiService, ApiToken, ApiTokenCreated, ApiTokenSaveRequest } from '#shared/types/apiService'
+import type { ApiEndpoint, ApiService, ApiToken, ApiTokenCreated, ApiTokenKind, ApiTokenSaveRequest } from '#shared/types/apiService'
 import { TOKEN_EXPIRY_DAYS, TOKEN_LIFETIMES } from '#shared/utils/apiService/tokens'
 import { API_METHODS, type ApiMethod } from '#shared/utils/urls/public'
 
@@ -18,7 +18,7 @@ const api = useApi()
 const { handle } = useErrorHandler()
 const setup = useApiSetup()
 
-const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: undefined as 'static' | 'client' | undefined, services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], expiry: '365', custom: '', lifetime: 15 })
+const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: undefined as ApiTokenKind | undefined, services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], expiry: '365', custom: '', lifetime: 15 })
 const services = ref<ApiService[]>([])
 const endpoints = ref<ApiEndpoint[]>([])
 const created = ref<ApiTokenCreated | null>(null)
@@ -65,7 +65,7 @@ const steps = computed(() => [
   { title: t('apiService.tokens.steps.done'), icon: 'i-lucide-check' },
 ].map((item, i) => ({ ...item, value: i + 1 })))
 const modes = computed(() => (['live', 'test'] as const).map(mode => ({ value: mode, label: t(`apiService.tokens.mode.${mode}`), description: t(`apiService.tokens.modeHint.${mode}`) })))
-const kinds = computed(() => (['static', 'client'] as const).map(kind => ({ value: kind, label: t(`apiService.tokens.kind.${kind}`), description: t(`apiService.tokens.kindHint.${kind}`) })))
+const kinds = computed(() => (['static', 'client', 'webhook'] as const).map(kind => ({ value: kind, label: t(`apiService.tokens.kind.${kind}`), description: t(`apiService.tokens.kindHint.${kind}`) })))
 const serviceItems = computed(() => services.value.map(item => ({ label: item.name, value: item.id })))
 const endpointItems = computed(() => endpoints.value.filter(item => !state.services.length || state.services.includes(item.service.id)).map(item => ({ label: `/${item.name}`, value: item.id })))
 const expiryItems = computed(() => [...TOKEN_EXPIRY_DAYS.map(days => ({ value: days == null ? 'never' : String(days), label: days == null ? t('apiService.tokens.never') : t('apiService.tokens.inDays', { n: days }, days) })), { value: 'custom', label: t('apiService.tokens.customDate') }])
@@ -169,11 +169,11 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
                 <p class="text-sm text-muted">{{ t('apiService.tokens.about.text') }}</p>
               </div>
             </div>
-            <UFormField :label="t('apiService.tokens.col.mode')">
+            <UFormField v-if="state.kind !== 'webhook'" :label="t('apiService.tokens.col.mode')">
               <URadioGroup v-model="state.mode" :items="modes" variant="card" color="neutral" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-2', item: 'w-full' }" />
             </UFormField>
             <UFormField :label="t('apiService.tokens.signIn')" :help="t('apiService.tokens.signInHelp')" :error="kindError" required>
-              <URadioGroup v-model="state.kind" :items="kinds" variant="card" color="neutral" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-2', item: 'w-full' }" />
+              <URadioGroup v-model="state.kind" :items="kinds" variant="card" color="neutral" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-3', item: 'w-full' }" />
             </UFormField>
           </template>
 
@@ -182,7 +182,8 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
             <UFormField :label="t('apiService.service.name')" :error="nameError" :help="t('apiService.tokens.nameHelp')" required>
               <UInput v-model="state.name" :placeholder="t('apiService.tokens.namePlaceholder')" class="w-full" maxlength="80" @update:model-value="nameTouched = true" />
             </UFormField>
-            <UFormField :label="t('apiService.tokens.scope.title')" :help="t('apiService.tokens.scope.help')">
+            <p v-if="state.kind === 'webhook'" class="flex items-start gap-2 rounded-md border border-default px-3 py-2 text-xs text-muted"><UIcon name="i-lucide-webhook" class="mt-0.5 size-4 shrink-0" />{{ t('apiService.tokens.webhookScope') }}</p>
+            <UFormField v-else :label="t('apiService.tokens.scope.title')" :help="t('apiService.tokens.scope.help')">
               <div class="flex flex-col gap-2">
                 <USelectMenu v-model="state.services" :items="serviceItems" value-key="value" multiple :placeholder="t('apiService.tokens.scope.allServices')" class="w-full" />
                 <USelectMenu v-model="state.endpoints" :items="endpointItems" value-key="value" multiple :placeholder="t('apiService.tokens.scope.allEndpoints')" class="w-full" :ui="{ itemLabel: 'font-mono' }" />
@@ -193,7 +194,7 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
                 </div>
               </div>
             </UFormField>
-            <p class="flex items-center gap-2 rounded-md border border-default px-3 py-2 text-xs text-muted"><UIcon name="i-lucide-target" class="size-4 shrink-0" />{{ scopeSummary }}</p>
+            <p v-if="state.kind !== 'webhook'" class="flex items-center gap-2 rounded-md border border-default px-3 py-2 text-xs text-muted"><UIcon name="i-lucide-target" class="size-4 shrink-0" />{{ scopeSummary }}</p>
           </template>
 
           <!-- 3 · Expiry, lifetime -->

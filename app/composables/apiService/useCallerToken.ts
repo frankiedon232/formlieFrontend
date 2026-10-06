@@ -6,7 +6,7 @@
  * client id and secret. Also tells how an endpoint signs in: a token is one kind or the other, never
  * both (owner, 2026-10-06), so examples show the /token step for client tokens. Loaded once and shared.
  */
-import type { ApiToken, ApiTokenKind } from '#shared/types/apiService'
+import type { ApiToken } from '#shared/types/apiService'
 import { scopeAllows } from '#shared/utils/apiService/tokens'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
@@ -25,14 +25,14 @@ export function useCallerToken() {
     return loading
   }
   const usable = (endpoint: Target, methods: ApiMethod[]) =>
-    (tokens.value ?? []).filter(token => (token.status === 'active' || token.status === 'expiring') && methods.some(method => scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service.id, method })))
+    (tokens.value ?? []).filter(token => token.kind !== 'webhook' && (token.status === 'active' || token.status === 'expiring') && methods.some(method => scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service.id, method })))
   const rank = (endpoint: Target, token: ApiToken) => (token.scopes.endpoints.includes(endpoint.id) ? 0 : token.scopes.services.includes(endpoint.service.id) ? 4 : 8) + (token.mode === 'live' ? 0 : 2) + (token.kind === 'static' ? 0 : 1)
   /** The best token for this endpoint and method, or null when none may call it. */
   function pick(endpoint: Target, method: ApiMethod): ApiToken | null {
     return usable(endpoint, [method]).sort((a, b) => rank(endpoint, a) - rank(endpoint, b))[0] ?? null
   }
   /** The tokens that may call it, by how they sign in. */
-  function kindsFor(endpoint: Target, methods: ApiMethod[]): Record<ApiTokenKind, ApiToken[]> {
+  function kindsFor(endpoint: Target, methods: ApiMethod[]): Record<'static' | 'client', ApiToken[]> {
     const list = usable(endpoint, methods).sort((a, b) => rank(endpoint, a) - rank(endpoint, b))
     return { static: list.filter(token => token.kind === 'static'), client: list.filter(token => token.kind === 'client') }
   }

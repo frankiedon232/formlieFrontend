@@ -3657,7 +3657,7 @@
       "logs": "Jeder Aufruf mit Status, Dauer und Aufrufer.",
       "analytics": "Aufrufe, Fehler und Antwortzeiten pro Dienst und Endpunkt.",
       "docs": "Fertige Dokumentation und ein Ort zum Testen jedes Endpunkts.",
-      "webhooks": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme, signiert und mit Wiederholungsversuchen.",
+      "webhooks": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme, mit Ihrem Webhook-Token und mit Wiederholungsversuchen.",
       "apiKeys": "Schlüssel für die Formalie-API: Verwalten Sie Formulare und Antworten aus Ihrem Code.",
       "apps": "Verbinden Sie Apps wie Tabellenkalkulationen und Team-Chat."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Bearer-Token",
-        "client": "Client-ID und Secret"
+        "client": "Client-ID und Secret",
+        "webhook": "Für Webhooks"
       },
       "kindHint": {
         "static": "Ein langlebiges Token, das die App bei jedem Aufruf sendet.",
-        "client": "Die App tauscht sie gegen ein kurzlebiges Token ein. Das ist sicherer, falls ein Token durchsickert."
+        "client": "Die App tauscht sie gegen ein kurzlebiges Token ein. Das ist sicherer, falls ein Token durchsickert.",
+        "webhook": "Formalie sendet ihn an deine Webhook-Adresse, damit dein Empfänger erkennt, dass der Aufruf echt ist. Er kann die API nicht aufrufen."
       },
       "scope": {
         "title": "Was aufgerufen werden darf",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "So meldet es sich an",
       "signInHelp": "Ein Token ist entweder das eine oder das andere, nie beides. Ein Bearer-Token wird unverändert gesendet; Client-ID und Secret werden bei /token gegen ein kurzlebiges Token getauscht.",
-      "kindRequired": "Wähle, wie sich dieses Token anmeldet."
+      "kindRequired": "Wähle, wie sich dieses Token anmeldet.",
+      "webhookScope": "Ein Webhook-Token kann die API nicht aufrufen. Formalie sendet ihn als Authorization: Bearer bei jedem Aufruf an die Webhooks, die ihn nutzen, damit dein Empfänger prüfen kann, ob der Aufruf echt ist.",
+      "webhookShort": "Nur für Webhooks",
+      "webhookUsage": "Dein Empfänger prüft jeden Aufruf:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (die Zustell-ID, bei jedem erneuten Versuch gleich)"
     },
     "rotate": {
       "title": "{name} rotieren",
@@ -4334,7 +4339,7 @@
         "keepHint": "Hilft herauszufinden, warum ein Aufruf abgelehnt wurde. Antworten auf persönliche Fragen (Namen, E-Mails, Telefonnummern, Adressen, Bankdaten) werden immer maskiert.",
         "for": "Speichern für",
         "days": "{n} Tag | {n} Tage",
-        "never": "Tokens werden nie protokolliert, nur ihr sichtbarer Teil. Erforderliche Header-Werte und Signaturen werden maskiert.",
+        "never": "Tokens werden nie protokolliert, nur ihr sichtbarer Teil.",
         "saved": "Protokolleinstellungen gespeichert"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Neuer Webhook",
       "editTitle": "Webhook bearbeiten",
-      "desc": "Formalie ruft diese Adresse auf, sobald eines der gewählten Ereignisse eintritt, und signiert den Aufruf, damit Sie prüfen können, dass er von uns kommt.",
+      "desc": "Formalie ruft diese Adresse auf, sobald eines der gewählten Ereignisse eintritt, mit Ihrem Webhook-Token, damit Sie prüfen können, dass der Aufruf von uns kommt.",
       "create": "Webhook erstellen",
       "namePlaceholder": "z. B. CRM-Sync",
       "urlHelp": "HTTPS auf einer öffentlichen Adresse. Formalie sendet einen POST mit JSON und wartet bis zu 10 Sekunden auf eine 2xx-Antwort.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Noch keine Zustellungen",
       "noDeliveriesDesc": "Zustellungen erscheinen hier, sobald Ereignisse eintreten. Senden Sie jetzt einen Test an die Adresse.",
       "lastDelivery": "Zuletzt {when}",
-      "secret": "Signaturgeheimnis",
-      "secretTitle": "Signaturgeheimnis für {name}",
-      "secretHint": "Bewahren Sie es nur auf Ihrem Server auf. Prüfen Sie bei jedem Aufruf die Signatur, bevor Sie ihm vertrauen (siehe Signatur prüfen im Bereich des Webhooks).",
-      "rotate": "Neues Geheimnis",
-      "rotateTitle": "Signaturgeheimnis ersetzen?",
-      "rotateDesc": "Das neue Geheimnis gilt ab der nächsten Zustellung, das alte funktioniert sofort nicht mehr. Aktualisieren Sie Ihren Empfänger umgehend.",
+      "secretHint": "Bewahre ihn nur auf deinem Server auf. Lehne jeden Aufruf ab, dessen Authorization-Header nicht genau diesem entspricht (siehe Token prüfen im Webhook-Panel).",
       "deleteTitle": "Diesen Webhook löschen?",
       "deleteDesc": "{name} erhält keine Aufrufe mehr und das Zustellprotokoll wird entfernt. Das kann nicht rückgängig gemacht werden.",
       "sendTest": "Test senden",
@@ -6174,7 +6174,8 @@
         "dns": "Die Adresse wurde nicht gefunden",
         "refused": "Die Verbindung wurde abgelehnt",
         "tls": "Die sichere Verbindung ist fehlgeschlagen (Zertifikat)",
-        "failed": "Der Aufruf konnte nicht ausgeführt werden"
+        "failed": "Der Aufruf konnte nicht ausgeführt werden",
+        "token": "Kein nutzbarer Token (widerrufen, abgelaufen oder gelöscht): wähle im Webhook einen anderen"
       },
       "invalid": {
         "required": "Geben Sie die Adresse ein",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook gespeichert",
         "on": "Webhook eingeschaltet",
         "off": "Webhook ausgeschaltet",
-        "rotated": "Neues Geheimnis erstellt",
         "deleted": "Webhook gelöscht",
         "resent": "Zugestellt",
         "resentFailed": "Gesendet, aber nicht zugestellt: siehe Zustellung"
       },
       "verify": {
-        "title": "Signatur prüfen",
-        "text": "Jeder Aufruf enthält diese Header. Berechnen Sie die Signatur aus Zeitstempel und Rohdaten mit Ihrem Geheimnis neu und weisen Sie den Aufruf ab, wenn sie abweicht oder älter als fünf Minuten ist.",
+        "title": "Token prüfen",
+        "text": "Jeder Aufruf trägt diese Header. Lehne ihn ab, außer Authorization lautet genau Bearer und dein Webhook-Token (in konstanter Zeit vergleichen). Der Formalie-Key ist die Zustell-ID und bleibt bei Wiederholungen gleich: überspringe, was du schon verarbeitet hast.",
         "answer": "Antworten Sie innerhalb von 10 Sekunden mit einem beliebigen 2xx-Status und erledigen Sie die eigentliche Arbeit danach. Alles andere wird wiederholt."
-      }
+      },
+      "token": "Webhook-Token",
+      "tokenHelp": "Formalie sendet ihn bei jedem Aufruf als Authorization: Bearer, mit denselben Headern wie die API. Webhook-Tokens werden unter Tokens & Header erstellt und verwaltet.",
+      "tokenNew": "Neuer Webhook-Token: {name} · Webhook",
+      "tokenTitle": "Webhook-Token {name}",
+      "tokenGone": "Sein Token wurde widerrufen, ist abgelaufen oder wurde gelöscht: Zustellungen schlagen fehl, bis du einen anderen wählst.",
+      "tokenOpen": "Token öffnen"
     },
     "onceDesc": "Kopieren Sie es jetzt. Sie können es später in seinem Bereich wieder ansehen, nach Bestätigung Ihres Passworts."
   },

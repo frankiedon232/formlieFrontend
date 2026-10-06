@@ -10,7 +10,9 @@ import { NEW_KEY } from '#shared/utils/apiService/snippets'
 const props = defineProps<{ token: ApiToken; secrets: ApiTokenSecrets; base: string }>()
 const { t } = useI18n()
 const usage = computed(() =>
-  props.token.kind === 'static'
+  props.token.kind === 'webhook'
+    ? t('apiService.tokens.webhookUsage', { token: props.secrets.token ?? '<token>' })
+    : props.token.kind === 'static'
     ? `Authorization: Bearer ${props.secrets.token ?? '<token>'}\nContent-Type: application/json\nFormalie-Key: ${NEW_KEY}   (POST)`
     : `POST ${props.base}/token\nContent-Type: application/json\n\n{ "client_id": "${props.token.client_id}", "client_secret": "<client secret>" }`,
 )

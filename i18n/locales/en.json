@@ -3657,7 +3657,7 @@
       "logs": "Every call with its status, time taken and caller.",
       "analytics": "Calls, errors and response times per service and endpoint.",
       "docs": "Ready-made documentation and a place to try each endpoint.",
-      "webhooks": "Send each new response to your own systems as it arrives, signed and retried.",
+      "webhooks": "Send each new response to your own systems as it arrives, with your webhook token, and retried.",
       "apiKeys": "Keys for Formalie's own API: manage forms and responses from your code.",
       "apps": "Connect apps such as spreadsheets and team chat."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Bearer token",
-        "client": "Client id and secret"
+        "client": "Client id and secret",
+        "webhook": "For webhooks"
       },
       "kindHint": {
         "static": "One long-lived token the app sends with every call.",
-        "client": "The app trades them for a short-lived token, which is safer if a token leaks."
+        "client": "The app trades them for a short-lived token, which is safer if a token leaks.",
+        "webhook": "Formalie sends it to your webhook address so your receiver knows the call is real. It can not call the API."
       },
       "scope": {
         "title": "What it may call",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "How it signs in",
       "signInHelp": "A token is one or the other, never both. A bearer token is sent as it is; a client id and secret are traded at /token for a short-lived token.",
-      "kindRequired": "Choose how this token signs in."
+      "kindRequired": "Choose how this token signs in.",
+      "webhookScope": "A webhook token can not call the API. Formalie sends it as Authorization: Bearer with every call to the webhooks that use it, so your receiver can check the call is real.",
+      "webhookShort": "Webhooks only",
+      "webhookUsage": "Your receiver checks every call:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (the delivery id, the same on every retry)"
     },
     "rotate": {
       "title": "Rotate {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Helps find out why a call was refused. Answers to personal questions (names, emails, phone numbers, addresses, bank details) are always masked.",
         "for": "Keep them for",
         "days": "{n} day | {n} days",
-        "never": "Tokens are never logged, only their visible part. Required header values and signatures are masked.",
+        "never": "Tokens are never logged, only their visible part.",
         "saved": "Log settings saved"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "New webhook",
       "editTitle": "Edit webhook",
-      "desc": "Formalie calls this address whenever one of the chosen events happens, signed so you can check it came from us.",
+      "desc": "Formalie calls this address whenever one of the chosen events happens, with your webhook token so you can check it came from us.",
       "create": "Create webhook",
       "namePlaceholder": "e.g. CRM sync",
       "urlHelp": "HTTPS on a public address. Formalie sends a POST with JSON and waits up to 10 seconds for a 2xx answer.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "No deliveries yet",
       "noDeliveriesDesc": "Deliveries show up here as events happen. Send a test to try the address now.",
       "lastDelivery": "Last {when}",
-      "secret": "Signing secret",
-      "secretTitle": "Signing secret for {name}",
-      "secretHint": "Keep it on your server only. Check the signature on every call before trusting it (see Checking the signature in the webhook's panel).",
-      "rotate": "New secret",
-      "rotateTitle": "Replace the signing secret?",
-      "rotateDesc": "The new secret is used from the next delivery on, and the old one stops working at once. Update your receiver right away.",
+      "secretHint": "Keep it on your server only. Refuse any call whose Authorization header is not exactly this (see Checking the token in the webhook's panel).",
       "deleteTitle": "Delete this webhook?",
       "deleteDesc": "{name} stops receiving calls and its delivery log is removed. This can not be undone.",
       "sendTest": "Send a test",
@@ -6174,7 +6174,8 @@
         "dns": "The address could not be found",
         "refused": "The connection was refused",
         "tls": "The secure connection failed (certificate)",
-        "failed": "The call could not be made"
+        "failed": "The call could not be made",
+        "token": "No usable token (revoked, expired or deleted): pick another one in the webhook"
       },
       "invalid": {
         "required": "Enter the address",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook saved",
         "on": "Webhook switched on",
         "off": "Webhook switched off",
-        "rotated": "New secret made",
         "deleted": "Webhook deleted",
         "resent": "Delivered",
         "resentFailed": "Sent, but not delivered: see the delivery"
       },
       "verify": {
-        "title": "Checking the signature",
-        "text": "Every call carries these headers. Recompute the signature from the timestamp and the raw body with your secret, and refuse the call when it differs or is older than five minutes.",
+        "title": "Checking the token",
+        "text": "Every call carries these headers. Refuse it unless Authorization is exactly Bearer and your webhook token (compare in constant time). The Formalie-Key is the delivery id and stays the same on retries: skip one you already handled.",
         "answer": "Answer with any 2xx status within 10 seconds; do the real work afterwards. Anything else is retried."
-      }
+      },
+      "token": "Webhook token",
+      "tokenHelp": "Formalie sends it as Authorization: Bearer with every call, the same headers as the API. Webhook tokens are made and managed in Tokens & headers.",
+      "tokenNew": "A new webhook token: {name} · webhook",
+      "tokenTitle": "Webhook token {name}",
+      "tokenGone": "Its token was revoked, expired or deleted: deliveries fail until you pick another one.",
+      "tokenOpen": "Open the token"
     },
     "onceDesc": "Copy it now. You can see it again later in its panel, after confirming your password."
   },

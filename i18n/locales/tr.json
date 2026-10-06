@@ -3657,7 +3657,7 @@
       "logs": "Her çağrı; durumu, süresi ve çağıranıyla birlikte.",
       "analytics": "Hizmet ve uç nokta başına çağrılar, hatalar ve yanıt süreleri.",
       "docs": "Hazır belgeler ve her uç noktayı denemek için bir alan.",
-      "webhooks": "Her yeni yanıtı geldiği anda kendi sistemlerinize gönderin. İmzalı ve yeniden denemeli.",
+      "webhooks": "Her yeni yanıtı geldiği anda kendi sistemlerinize gönderin. Webhook token'ınızla ve yeniden denemeli.",
       "apiKeys": "Formalie API'si için anahtarlar: formları ve yanıtları kodunuzdan yönetin.",
       "apps": "E-tablolar ve ekip sohbeti gibi uygulamaları bağlayın."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Bearer token",
-        "client": "İstemci kimliği ve gizli anahtar"
+        "client": "İstemci kimliği ve gizli anahtar",
+        "webhook": "Webhook'lar için"
       },
       "kindHint": {
         "static": "Uygulamanın her çağrıyla gönderdiği tek bir uzun ömürlü token.",
-        "client": "Uygulama bunları kısa ömürlü bir token ile takas eder; bir token sızarsa daha güvenlidir."
+        "client": "Uygulama bunları kısa ömürlü bir token ile takas eder; bir token sızarsa daha güvenlidir.",
+        "webhook": "Formalie bunu webhook adresinize gönderir, böylece alıcınız çağrının gerçek olduğunu bilir. API'yi çağıramaz."
       },
       "scope": {
         "title": "Neleri çağırabilir",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Nasıl giriş yapar",
       "signInHelp": "Bir token ya biridir ya ötekidir, asla ikisi birden değil. Bearer token olduğu gibi gönderilir; istemci kimliği ve gizli anahtar /token'da kısa ömürlü bir token ile değiştirilir.",
-      "kindRequired": "Bu token'ın nasıl giriş yapacağını seçin."
+      "kindRequired": "Bu token'ın nasıl giriş yapacağını seçin.",
+      "webhookScope": "Webhook token'ı API'yi çağıramaz. Formalie, onu kullanan webhook'lara yaptığı her çağrıda Authorization: Bearer olarak gönderir, böylece alıcınız çağrının gerçek olduğunu doğrulayabilir.",
+      "webhookShort": "Yalnızca webhook'lar",
+      "webhookUsage": "Alıcınız her çağrıyı kontrol eder:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (teslimat kimliği, her yeniden denemede aynı)"
     },
     "rotate": {
       "title": "{name} yenile",
@@ -4334,7 +4339,7 @@
         "keepHint": "Bir çağrının neden reddedildiğini bulmaya yardımcı olur. Kişisel sorulara verilen yanıtlar (adlar, e-postalar, telefon numaraları, adresler, banka bilgileri) her zaman maskelenir.",
         "for": "Saklama süresi",
         "days": "{n} gün | {n} gün",
-        "never": "Token'lar asla günlüğe kaydedilmez, yalnızca görünen kısımları kaydedilir. Gerekli üst bilgi değerleri ve imzalar maskelenir.",
+        "never": "Token'lar asla günlüğe kaydedilmez, yalnızca görünen kısımları kaydedilir.",
         "saved": "Günlük ayarları kaydedildi"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Yeni webhook",
       "editTitle": "Webhook düzenle",
-      "desc": "Formalie, seçilen olaylardan biri gerçekleştiğinde bu adresi çağırır ve çağrının bizden geldiğini doğrulayabilmeniz için imzalar.",
+      "desc": "Formalie, seçilen olaylardan biri gerçekleştiğinde bu adresi webhook token'ınızla çağırır, böylece çağrının bizden geldiğini doğrulayabilirsiniz.",
       "create": "Webhook oluştur",
       "namePlaceholder": "örn. CRM senkronizasyonu",
       "urlHelp": "Herkese açık bir adreste HTTPS. Formalie JSON ile bir POST gönderir ve 2xx yanıtı için en fazla 10 saniye bekler.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Henüz teslimat yok",
       "noDeliveriesDesc": "Olaylar gerçekleştikçe teslimatlar burada görünür. Adresi hemen denemek için bir test gönderin.",
       "lastDelivery": "Son: {when}",
-      "secret": "İmza sırrı",
-      "secretTitle": "{name} için imza sırrı",
-      "secretHint": "Yalnızca sunucunuzda saklayın. Her çağrıya güvenmeden önce imzasını kontrol edin (webhook panelindeki İmzayı kontrol etme bölümüne bakın).",
-      "rotate": "Yeni sır",
-      "rotateTitle": "İmza sırrı değiştirilsin mi?",
-      "rotateDesc": "Yeni sır bir sonraki teslimattan itibaren kullanılır, eskisi hemen çalışmayı bırakır. Alıcınızı hemen güncelleyin.",
+      "secretHint": "Yalnızca sunucunuzda saklayın. Authorization header'ı tam olarak bu olmayan her çağrıyı reddedin (webhook panelindeki Token'ı kontrol etme bölümüne bakın).",
       "deleteTitle": "Bu webhook silinsin mi?",
       "deleteDesc": "{name} artık çağrı almaz ve teslimat günlüğü silinir. Bu işlem geri alınamaz.",
       "sendTest": "Test gönder",
@@ -6174,7 +6174,8 @@
         "dns": "Adres bulunamadı",
         "refused": "Bağlantı reddedildi",
         "tls": "Güvenli bağlantı başarısız oldu (sertifika)",
-        "failed": "Çağrı yapılamadı"
+        "failed": "Çağrı yapılamadı",
+        "token": "Kullanılabilir token yok (iptal edildi, süresi doldu veya silindi): webhook'ta başka birini seçin"
       },
       "invalid": {
         "required": "Adresi girin",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook kaydedildi",
         "on": "Webhook açıldı",
         "off": "Webhook kapatıldı",
-        "rotated": "Yeni sır oluşturuldu",
         "deleted": "Webhook silindi",
         "resent": "Teslim edildi",
         "resentFailed": "Gönderildi ama teslim edilmedi: teslimata bakın"
       },
       "verify": {
-        "title": "İmzayı kontrol etme",
-        "text": "Her çağrı bu üstbilgileri taşır. İmzayı zaman damgası ve ham gövdeden sırrınızla yeniden hesaplayın; farklıysa veya beş dakikadan eskiyse çağrıyı reddedin.",
+        "title": "Token'ı kontrol etme",
+        "text": "Her çağrı bu header'ları taşır. Authorization tam olarak Bearer ve webhook token'ınız değilse reddedin (sabit sürede karşılaştırın). Formalie-Key teslimat kimliğidir ve yeniden denemelerde aynı kalır: zaten işlediğinizi atlayın.",
         "answer": "10 saniye içinde herhangi bir 2xx durumuyla yanıt verin, asıl işi sonra yapın. Başka her yanıt yeniden denenir."
-      }
+      },
+      "token": "Webhook token'ı",
+      "tokenHelp": "Formalie bunu her çağrıda Authorization: Bearer olarak gönderir, API ile aynı header'lar. Webhook token'ları Token'lar & header'lar bölümünde oluşturulur ve yönetilir.",
+      "tokenNew": "Yeni webhook token'ı: {name} · webhook",
+      "tokenTitle": "Webhook token'ı {name}",
+      "tokenGone": "Token'ı iptal edildi, süresi doldu veya silindi: başka birini seçene kadar teslimatlar başarısız olur.",
+      "tokenOpen": "Token'ı aç"
     },
     "onceDesc": "Şimdi kopyalayın. Parolanızı doğruladıktan sonra daha sonra panelinde yeniden görebilirsiniz."
   },

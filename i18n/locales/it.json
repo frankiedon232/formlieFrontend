@@ -3657,7 +3657,7 @@
       "logs": "Ogni chiamata con stato, durata e chiamante.",
       "analytics": "Chiamate, errori e tempi di risposta per servizio ed endpoint.",
       "docs": "Documentazione pronta e uno spazio per provare ogni endpoint.",
-      "webhooks": "Invia ogni nuova risposta ai tuoi sistemi appena arriva, firmata e con nuovi tentativi.",
+      "webhooks": "Invia ogni nuova risposta ai tuoi sistemi appena arriva, con il tuo token webhook e con nuovi tentativi.",
       "apiKeys": "Chiavi per l'API di Formalie: gestisci moduli e risposte dal tuo codice.",
       "apps": "Collega app come fogli di calcolo e chat del team."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Token Bearer",
-        "client": "ID client e segreto"
+        "client": "ID client e segreto",
+        "webhook": "Per i webhook"
       },
       "kindHint": {
         "static": "Un token di lunga durata che l'app invia a ogni chiamata.",
-        "client": "L'app li scambia con un token di breve durata, più sicuro in caso di fuga di un token."
+        "client": "L'app li scambia con un token di breve durata, più sicuro in caso di fuga di un token.",
+        "webhook": "Formalie lo invia all'indirizzo del tuo webhook così il tuo ricevitore sa che la chiamata è vera. Non può chiamare l'API."
       },
       "scope": {
         "title": "Cosa può chiamare",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Come accede",
       "signInHelp": "Un token è l'uno o l'altro, mai entrambi. Un token Bearer si invia così com'è; ID client e segreto si scambiano su /token con un token di breve durata.",
-      "kindRequired": "Scegli come accede questo token."
+      "kindRequired": "Scegli come accede questo token.",
+      "webhookScope": "Un token webhook non può chiamare l'API. Formalie lo invia come Authorization: Bearer a ogni chiamata ai webhook che lo usano, così il tuo ricevitore può verificare che la chiamata sia vera.",
+      "webhookShort": "Solo webhook",
+      "webhookUsage": "Il tuo ricevitore controlla ogni chiamata:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (l'id di consegna, uguale a ogni nuovo tentativo)"
     },
     "rotate": {
       "title": "Ruota {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Aiuta a capire perché una chiamata è stata rifiutata. Le risposte a domande personali (nomi, e-mail, numeri di telefono, indirizzi, dati bancari) sono sempre mascherate.",
         "for": "Conservali per",
         "days": "{n} giorno | {n} giorni",
-        "never": "I token non vengono mai registrati, solo la loro parte visibile. I valori delle intestazioni obbligatorie e le firme sono mascherati.",
+        "never": "I token non vengono mai registrati, solo la loro parte visibile.",
         "saved": "Impostazioni del registro salvate"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Nuovo webhook",
       "editTitle": "Modifica webhook",
-      "desc": "Formalie chiama questo indirizzo ogni volta che si verifica uno degli eventi scelti, con una firma per verificare che la chiamata arrivi da noi.",
+      "desc": "Formalie chiama questo indirizzo ogni volta che si verifica uno degli eventi scelti, con il tuo token webhook per verificare che la chiamata arrivi da noi.",
       "create": "Crea webhook",
       "namePlaceholder": "es. Sincronizzazione CRM",
       "urlHelp": "HTTPS su un indirizzo pubblico. Formalie invia un POST con JSON e attende fino a 10 secondi una risposta 2xx.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Ancora nessuna consegna",
       "noDeliveriesDesc": "Le consegne compaiono qui man mano che accadono gli eventi. Invia un test per provare subito l'indirizzo.",
       "lastDelivery": "Ultima {when}",
-      "secret": "Segreto di firma",
-      "secretTitle": "Segreto di firma per {name}",
-      "secretHint": "Tienilo solo sul tuo server. Controlla la firma di ogni chiamata prima di fidarti (vedi Verifica della firma nel pannello del webhook).",
-      "rotate": "Nuovo segreto",
-      "rotateTitle": "Sostituire il segreto di firma?",
-      "rotateDesc": "Il nuovo segreto viene usato dalla prossima consegna e quello vecchio smette subito di funzionare. Aggiorna subito il tuo ricevitore.",
+      "secretHint": "Tienilo solo sul tuo server. Rifiuta ogni chiamata il cui header Authorization non sia esattamente questo (vedi Verifica del token nel pannello del webhook).",
       "deleteTitle": "Eliminare questo webhook?",
       "deleteDesc": "{name} non riceve più chiamate e il suo registro delle consegne viene rimosso. Questa azione non può essere annullata.",
       "sendTest": "Invia un test",
@@ -6174,7 +6174,8 @@
         "dns": "Impossibile trovare l'indirizzo",
         "refused": "La connessione è stata rifiutata",
         "tls": "La connessione sicura non è riuscita (certificato)",
-        "failed": "Impossibile effettuare la chiamata"
+        "failed": "Impossibile effettuare la chiamata",
+        "token": "Nessun token utilizzabile (revocato, scaduto o eliminato): scegline un altro nel webhook"
       },
       "invalid": {
         "required": "Inserisci l'indirizzo",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook salvato",
         "on": "Webhook attivato",
         "off": "Webhook disattivato",
-        "rotated": "Nuovo segreto creato",
         "deleted": "Webhook eliminato",
         "resent": "Consegnato",
         "resentFailed": "Inviato, ma non consegnato: vedi la consegna"
       },
       "verify": {
-        "title": "Verifica della firma",
-        "text": "Ogni chiamata contiene queste intestazioni. Ricalcola la firma da timestamp e corpo grezzo con il tuo segreto e rifiuta la chiamata se differisce o ha più di cinque minuti.",
+        "title": "Verifica del token",
+        "text": "Ogni chiamata porta questi header. Rifiutala a meno che Authorization sia esattamente Bearer e il tuo token webhook (confronta in tempo costante). La Formalie-Key è l'id di consegna e resta uguale ai nuovi tentativi: salta quella già gestita.",
         "answer": "Rispondi con uno stato 2xx entro 10 secondi e fai il lavoro vero dopo. Ogni altra risposta viene ritentata."
-      }
+      },
+      "token": "Token webhook",
+      "tokenHelp": "Formalie lo invia come Authorization: Bearer a ogni chiamata, con gli stessi header dell'API. I token webhook si creano e si gestiscono in Token e header.",
+      "tokenNew": "Nuovo token webhook: {name} · webhook",
+      "tokenTitle": "Token webhook {name}",
+      "tokenGone": "Il suo token è stato revocato, è scaduto o è stato eliminato: le consegne falliscono finché non ne scegli un altro.",
+      "tokenOpen": "Apri il token"
     },
     "onceDesc": "Copialo ora. Potrai rivederlo in seguito nel suo pannello, dopo aver confermato la password."
   },

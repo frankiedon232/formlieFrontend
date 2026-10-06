@@ -1,30 +1,35 @@
 <!--
   New / edit webhook (F13 M6): a name, the HTTPS address that receives the calls (checked as you
-  type: public hosts only), the events, every form or chosen ones, on / off. A new webhook returns
-  its signing secret once (the page shows it).
+  type: public hosts only), the events, every form or chosen ones, the webhook token it sends
+  (owner 2026-10-06: tokens from Tokens & headers, no separate secrets; a new one is made and named
+  after the webhook unless one is picked), on / off.
 -->
 <script setup lang="ts">
 import type { FormSummary } from '#shared/types/forms'
-import { WEBHOOK_EVENTS, type Webhook, type WebhookEvent, type WebhookSaveRequest, type WebhookWithSecret } from '#shared/types/integrations'
+import type { ApiToken } from '#shared/types/apiService'
+import { WEBHOOK_EVENTS, type Webhook, type WebhookCreated, type WebhookEvent, type WebhookSaveRequest } from '#shared/types/integrations'
 import { checkWebhookUrl, eventLabelKey } from '#shared/utils/integrations/webhooks'
 
 const props = defineProps<{ webhook?: Webhook | null }>()
 const open = defineModel<boolean>('open', { default: false })
-const emit = defineEmits<{ saved: [webhook: Webhook]; created: [result: WebhookWithSecret] }>()
+const emit = defineEmits<{ saved: [webhook: Webhook]; created: [result: WebhookCreated] }>()
 const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
 
-const state = reactive({ name: '', url: '', events: [] as WebhookEvent[], scope: 'all' as 'all' | 'some', forms: [] as string[], enabled: true })
+const state = reactive({ name: '', url: '', events: [] as WebhookEvent[], scope: 'all' as 'all' | 'some', forms: [] as string[], enabled: true, token: 'new' })
 const forms = ref<FormSummary[]>([])
+const tokens = ref<ApiToken[]>([])
 const shown = ref(false)
 watch(open, async value => {
   if (!value) return
   shown.value = false
   const hook = props.webhook
-  Object.assign(state, { name: hook?.name ?? '', url: hook?.url ?? 'https://', events: hook ? [...hook.events] : ['response.created'], scope: hook?.forms.length ? 'some' : 'all', forms: hook?.forms.map(form => form.id) ?? [], enabled: hook?.enabled ?? true })
+  Object.assign(state, { name: hook?.name ?? '', url: hook?.url ?? 'https://', events: hook ? [...hook.events] : ['response.created'], scope: hook?.forms.length ? 'some' : 'all', forms: hook?.forms.map(form => form.id) ?? [], enabled: hook?.enabled ?? true, token: hook?.token?.id ?? 'new' })
   try {
-    forms.value = (await api.list<FormSummary>('/forms', { page_size: 100, sort: 'name' }, { background: true })).data
+    const [a, b] = await Promise.all([api.list<FormSummary>('/forms', { page_size: 100, sort: 'name' }, { background: true }), api.list<ApiToken>('/api-tokens', { 'filter[kind]': 'webhook', 'filter[status]': 'active,expiring', page_size: 100, sort: 'name' }, { background: true })])
+    forms.value = a.data
+    tokens.value = b.data
   } catch {
     forms.value = []
   }
@@ -35,6 +40,7 @@ const scopes = computed(() => [
   { value: 'all', label: t('integrations.webhooks.allForms') },
   { value: 'some', label: t('integrations.webhooks.someForms') },
 ])
+const tokenItems = computed(() => [{ value: 'new', label: t('integrations.webhooks.tokenNew', { name: state.name.trim() || t('integrations.webhooks.col.name') }) }, ...tokens.value.map(token => ({ value: token.id, label: `${token.name} · ${token.preview}` }))])
 const urlProblem = computed(() => checkWebhookUrl(state.url, { allowLocal: import.meta.dev }))
 const errors = computed(() => ({
   name: !state.name.trim() ? t('apiService.invalid.required') : undefined,
@@ -49,9 +55,9 @@ async function save() {
   if (Object.values(errors.value).some(Boolean) || saving.value) return
   saving.value = true
   try {
-    const body: WebhookSaveRequest = { name: state.name.trim(), url: state.url.trim(), events: state.events, form_ids: state.scope === 'all' ? [] : state.forms, enabled: state.enabled }
+    const body: WebhookSaveRequest = { name: state.name.trim(), url: state.url.trim(), events: state.events, form_ids: state.scope === 'all' ? [] : state.forms, enabled: state.enabled, token_id: state.token }
     if (props.webhook) emit('saved', (await api.patch<Webhook>(`/webhooks/${props.webhook.id}`, body)).data)
-    else emit('created', (await api.post<WebhookWithSecret>('/webhooks', body)).data)
+    else emit('created', (await api.post<WebhookCreated>('/webhooks', body)).data)
     open.value = false
   } catch (error) {
     handle(error)
@@ -79,6 +85,9 @@ async function save() {
             <USelect v-model="state.scope" :items="scopes" class="w-full sm:w-44" />
             <USelectMenu v-if="state.scope === 'some'" v-model="state.forms" :items="formItems" value-key="value" multiple :placeholder="t('integrations.webhooks.pickForms')" class="min-w-0 flex-1" />
           </div>
+        </UFormField>
+        <UFormField :label="t('integrations.webhooks.token')" :help="t('integrations.webhooks.tokenHelp')">
+          <USelect v-model="state.token" :items="tokenItems" class="w-full" :ui="{ itemLabel: 'font-mono text-xs' }" />
         </UFormField>
         <USwitch v-model="state.enabled" :label="t('integrations.webhooks.enabled')" />
       </form>

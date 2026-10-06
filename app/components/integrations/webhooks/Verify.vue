@@ -1,6 +1,7 @@
 <!--
-  How a receiver checks that a call came from Formalie (F13 M6): the headers sent, then the
-  signature over `{timestamp}.{body}` with the webhook's secret, in a few languages (copy).
+  How a receiver checks that a call came from Formalie (F13 M6; owner 2026-10-06: the same headers as the
+  API, no signatures): the Authorization header must be the webhook's token (compared in constant time),
+  and the Formalie-Key (the delivery id, the same on every retry) lets it skip a delivery it already has.
 -->
 <script setup lang="ts">
 const { t } = useI18n()
@@ -14,40 +15,47 @@ const languages = [
 ]
 const CODE = {
   javascript: [
-    "import { createHmac, timingSafeEqual } from 'node:crypto'",
+    "import { timingSafeEqual } from 'node:crypto'",
     '',
-    '// rawBody: the request body exactly as received (a string)',
-    'function fromFormalie(headers, rawBody, secret) {',
-    "  const timestamp = headers['x-formalie-timestamp']",
-    "  const sent = (headers['x-formalie-signature'] ?? '').replace('sha256=', '')",
-    '  if (Math.abs(Date.now() / 1000 - Number(timestamp)) > 300) return false',
-    "  const expected = createHmac('sha256', secret).update(timestamp + '.' + rawBody).digest('hex')",
-    '  return sent.length === expected.length && timingSafeEqual(Buffer.from(sent), Buffer.from(expected))',
+    '// token: the webhook token from Tokens & headers, kept on your server',
+    'const seen = new Set() // use your database in real life',
+    'function fromFormalie(headers, token) {',
+    "  const sent = headers['authorization'] ?? ''",
+    '  const expected = `Bearer ${token}`',
+    '  if (sent.length !== expected.length || !timingSafeEqual(Buffer.from(sent), Buffer.from(expected))) return false',
+    "  const key = headers['formalie-key']",
+    '  if (seen.has(key)) return \'already handled\'',
+    '  seen.add(key)',
+    '  return true',
     '}',
   ].join('\n'),
   python: [
-    'import hashlib, hmac, time',
+    'import hmac',
     '',
-    'def from_formalie(headers, raw_body: bytes, secret: str) -> bool:',
-    '    timestamp = headers["X-Formalie-Timestamp"]',
-    '    sent = headers.get("X-Formalie-Signature", "").removeprefix("sha256=")',
-    '    if abs(time.time() - int(timestamp)) > 300:',
+    '# token: the webhook token from Tokens & headers, kept on your server',
+    'seen = set()  # use your database in real life',
+    'def from_formalie(headers, token: str):',
+    '    sent = headers.get("Authorization", "")',
+    '    if not hmac.compare_digest(sent, f"Bearer {token}"):',
     '        return False',
-    '    expected = hmac.new(secret.encode(), timestamp.encode() + b"." + raw_body, hashlib.sha256).hexdigest()',
-    '    return hmac.compare_digest(sent, expected)',
+    '    key = headers.get("Formalie-Key")',
+    '    if key in seen:',
+    '        return "already handled"',
+    '    seen.add(key)',
+    '    return True',
   ].join('\n'),
   php: [
     '<?php',
-    'function fromFormalie(array $headers, string $rawBody, string $secret): bool {',
-    "    $timestamp = $headers['X-Formalie-Timestamp'] ?? '';",
-    "    $sent = str_replace('sha256=', '', $headers['X-Formalie-Signature'] ?? '');",
-    '    if (abs(time() - (int) $timestamp) > 300) return false;',
-    "    $expected = hash_hmac('sha256', $timestamp . '.' . $rawBody, $secret);",
-    '    return hash_equals($expected, $sent);',
+    '// $token: the webhook token from Tokens & headers, kept on your server',
+    'function fromFormalie(array $headers, string $token): bool {',
+    "    $sent = $headers['Authorization'] ?? '';",
+    "    if (!hash_equals('Bearer ' . $token, $sent)) return false;",
+    "    // $headers['Formalie-Key'] is the delivery id: skip one you already handled",
+    '    return true;',
     '}',
   ].join('\n'),
 }
-const HEADERS = ['X-Formalie-Event: response.created', 'X-Formalie-Delivery: dlv_…', 'X-Formalie-Timestamp: 1767225600', 'X-Formalie-Signature: sha256=…'].join('\n')
+const HEADERS = ['Authorization: Bearer formalie_hook_live_…', 'Content-Type: application/json', 'Formalie-Key: dlv_…   (the same on every retry)'].join('\n')
 function copyCode() {
   void copy(CODE[language.value])
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })

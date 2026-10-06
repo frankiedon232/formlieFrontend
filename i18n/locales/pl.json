@@ -3657,7 +3657,7 @@
       "logs": "Każde wywołanie ze statusem, czasem trwania i wywołującym.",
       "analytics": "Wywołania, błędy i czasy odpowiedzi według usługi i endpointu.",
       "docs": "Gotowa dokumentacja i miejsce do testowania każdego endpointu.",
-      "webhooks": "Każda nowa odpowiedź trafia od razu do Państwa systemów, podpisana i ponawiana w razie błędu.",
+      "webhooks": "Każda nowa odpowiedź trafia od razu do Państwa systemów, z Państwa tokenem webhooka i ponawiana w razie błędu.",
       "apiKeys": "Klucze do API Formalie: zarządzanie formularzami i odpowiedziami z poziomu kodu.",
       "apps": "Połączenie z aplikacjami, takimi jak arkusze kalkulacyjne i czat zespołu."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Token Bearer",
-        "client": "ID klienta i sekret"
+        "client": "ID klienta i sekret",
+        "webhook": "Dla webhooków"
       },
       "kindHint": {
         "static": "Jeden długotrwały token, który aplikacja wysyła z każdym wywołaniem.",
-        "client": "Aplikacja wymienia je na krótkotrwały token, co jest bezpieczniejsze, jeśli token wycieknie."
+        "client": "Aplikacja wymienia je na krótkotrwały token, co jest bezpieczniejsze, jeśli token wycieknie.",
+        "webhook": "Formalie wysyła go na adres Twojego webhooka, aby odbiorca wiedział, że wywołanie jest prawdziwe. Nie może wywoływać API."
       },
       "scope": {
         "title": "Co może wywoływać",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Jak się loguje",
       "signInHelp": "Token jest albo jednym, albo drugim, nigdy obydwoma. Token Bearer wysyła się bez zmian; ID klienta i sekret wymienia się w /token na krótkotrwały token.",
-      "kindRequired": "Wybierz, jak ten token się loguje."
+      "kindRequired": "Wybierz, jak ten token się loguje.",
+      "webhookScope": "Token webhooka nie może wywoływać API. Formalie wysyła go jako Authorization: Bearer z każdym wywołaniem webhooków, które go używają, aby Twój odbiorca mógł sprawdzić, że wywołanie jest prawdziwe.",
+      "webhookShort": "Tylko webhooki",
+      "webhookUsage": "Twój odbiorca sprawdza każde wywołanie:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id dostarczenia, takie samo przy każdej ponownej próbie)"
     },
     "rotate": {
       "title": "Rotuj {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Pomaga ustalić, dlaczego wywołanie zostało odrzucone. Odpowiedzi na pytania osobiste (imiona i nazwiska, adresy e-mail, numery telefonów, adresy, dane bankowe) są zawsze maskowane.",
         "for": "Przechowuj przez",
         "days": "{n} dzień | {n} dni",
-        "never": "Tokeny nigdy nie są zapisywane w dzienniku, tylko ich widoczna część. Wymagane wartości nagłówków i podpisy są maskowane.",
+        "never": "Tokeny nigdy nie są zapisywane w dzienniku, tylko ich widoczna część.",
         "saved": "Zapisano ustawienia dziennika"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Nowy webhook",
       "editTitle": "Edytuj webhook",
-      "desc": "Formalie wywołuje ten adres za każdym razem, gdy wystąpi jedno z wybranych zdarzeń, z podpisem, dzięki któremu możesz sprawdzić, że wywołanie pochodzi od nas.",
+      "desc": "Formalie wywołuje ten adres za każdym razem, gdy wystąpi jedno z wybranych zdarzeń, z tokenem webhooka, dzięki któremu możesz sprawdzić, że wywołanie pochodzi od nas.",
       "create": "Utwórz webhook",
       "namePlaceholder": "np. Synchronizacja CRM",
       "urlHelp": "HTTPS na adresie publicznym. Formalie wysyła POST z JSON i czeka do 10 sekund na odpowiedź 2xx.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Brak dostaw",
       "noDeliveriesDesc": "Dostawy pojawiają się tutaj, gdy wystąpią zdarzenia. Wyślij test, aby od razu wypróbować adres.",
       "lastDelivery": "Ostatnia {when}",
-      "secret": "Sekret podpisu",
-      "secretTitle": "Sekret podpisu dla {name}",
-      "secretHint": "Przechowuj go tylko na swoim serwerze. Sprawdzaj podpis każdego wywołania, zanim mu zaufasz (zobacz Sprawdzanie podpisu w panelu webhooka).",
-      "rotate": "Nowy sekret",
-      "rotateTitle": "Zastąpić sekret podpisu?",
-      "rotateDesc": "Nowy sekret obowiązuje od następnej dostawy, a stary przestaje działać natychmiast. Od razu zaktualizuj swój odbiornik.",
+      "secretHint": "Trzymaj go tylko na swoim serwerze. Odrzucaj każde wywołanie, którego nagłówek Authorization nie jest dokładnie taki (zobacz Sprawdzanie tokenu w panelu webhooka).",
       "deleteTitle": "Usunąć ten webhook?",
       "deleteDesc": "{name} przestaje otrzymywać wywołania, a jego dziennik dostaw zostaje usunięty. Tej operacji nie można cofnąć.",
       "sendTest": "Wyślij test",
@@ -6174,7 +6174,8 @@
         "dns": "Nie znaleziono adresu",
         "refused": "Połączenie zostało odrzucone",
         "tls": "Bezpieczne połączenie nie powiodło się (certyfikat)",
-        "failed": "Nie udało się wykonać wywołania"
+        "failed": "Nie udało się wykonać wywołania",
+        "token": "Brak użytecznego tokenu (unieważniony, wygasły lub usunięty): wybierz inny w webhooku"
       },
       "invalid": {
         "required": "Wpisz adres",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook zapisany",
         "on": "Webhook włączony",
         "off": "Webhook wyłączony",
-        "rotated": "Utworzono nowy sekret",
         "deleted": "Webhook usunięty",
         "resent": "Dostarczono",
         "resentFailed": "Wysłano, ale nie dostarczono: zobacz dostawę"
       },
       "verify": {
-        "title": "Sprawdzanie podpisu",
-        "text": "Każde wywołanie zawiera te nagłówki. Oblicz podpis ponownie z sygnatury czasowej i surowej treści za pomocą swojego sekretu i odrzuć wywołanie, gdy się różni lub jest starsze niż pięć minut.",
+        "title": "Sprawdzanie tokenu",
+        "text": "Każde wywołanie niesie te nagłówki. Odrzuć je, chyba że Authorization to dokładnie Bearer i token Twojego webhooka (porównuj w stałym czasie). Formalie-Key to id dostarczenia i przy ponownych próbach pozostaje takie samo: pomiń to, co już obsłużyłeś.",
         "answer": "Odpowiedz dowolnym statusem 2xx w ciągu 10 sekund, a właściwą pracę wykonaj potem. Każda inna odpowiedź jest ponawiana."
-      }
+      },
+      "token": "Token webhooka",
+      "tokenHelp": "Formalie wysyła go jako Authorization: Bearer z każdym wywołaniem, z tymi samymi nagłówkami co API. Tokeny webhooków tworzysz i zarządzasz nimi w Tokeny i nagłówki.",
+      "tokenNew": "Nowy token webhooka: {name} · webhook",
+      "tokenTitle": "Token webhooka {name}",
+      "tokenGone": "Jego token został unieważniony, wygasł lub został usunięty: dostarczenia nie powiodą się, dopóki nie wybierzesz innego.",
+      "tokenOpen": "Otwórz token"
     },
     "onceDesc": "Skopiuj go teraz. Później możesz zobaczyć go ponownie w jego panelu, po potwierdzeniu hasła."
   },

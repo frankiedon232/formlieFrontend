@@ -3657,7 +3657,7 @@
       "logs": "Cada chamada com o seu estado, duração e chamador.",
       "analytics": "Chamadas, erros e tempos de resposta por serviço e endpoint.",
       "docs": "Documentação pronta e um espaço para testar cada endpoint.",
-      "webhooks": "Envie cada nova resposta para seus próprios sistemas assim que chegar, assinada e com novas tentativas.",
+      "webhooks": "Envie cada nova resposta para seus próprios sistemas assim que chegar, com seu token de webhook e com novas tentativas.",
       "apiKeys": "Chaves da API da Formalie: gerencie formulários e respostas pelo seu código.",
       "apps": "Conecte apps como planilhas e chat da equipe."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Token Bearer",
-        "client": "ID e segredo do cliente"
+        "client": "ID e segredo do cliente",
+        "webhook": "Para webhooks"
       },
       "kindHint": {
         "static": "Um token de longa duração que o app envia em toda chamada.",
-        "client": "O app os troca por um token de curta vida, mais seguro se um token vazar."
+        "client": "O app os troca por um token de curta vida, mais seguro se um token vazar.",
+        "webhook": "A Formalie envia-o para o endereço do seu webhook para que o seu recetor saiba que a chamada é real. Não pode chamar a API."
       },
       "scope": {
         "title": "O que pode chamar",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Como ele entra",
       "signInHelp": "Um token é um ou outro, nunca os dois. Um token Bearer é enviado como está; um ID e segredo do cliente são trocados em /token por um token de curta duração.",
-      "kindRequired": "Escolha como este token entra."
+      "kindRequired": "Escolha como este token entra.",
+      "webhookScope": "Um token de webhook não pode chamar a API. A Formalie envia-o como Authorization: Bearer em cada chamada aos webhooks que o usam, para que o seu recetor confirme que a chamada é real.",
+      "webhookShort": "Só webhooks",
+      "webhookUsage": "O seu recetor verifica cada chamada:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (o id de entrega, igual em cada nova tentativa)"
     },
     "rotate": {
       "title": "Rotacionar {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Ajuda a descobrir porque é que uma chamada foi recusada. As respostas a perguntas pessoais (nomes, e-mails, telefones, moradas, dados bancários) são sempre mascaradas.",
         "for": "Guardar durante",
         "days": "{n} dia | {n} dias",
-        "never": "Os tokens nunca são registados, apenas a sua parte visível. Os valores de cabeçalhos obrigatórios e as assinaturas são mascarados.",
+        "never": "Os tokens nunca são registados, apenas a sua parte visível.",
         "saved": "Definições do registo guardadas"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Novo webhook",
       "editTitle": "Editar webhook",
-      "desc": "A Formalie chama este endereço sempre que um dos eventos escolhidos acontece, com uma assinatura para você verificar que veio de nós.",
+      "desc": "A Formalie chama este endereço sempre que um dos eventos escolhidos acontece, com seu token de webhook para você verificar que veio de nós.",
       "create": "Criar webhook",
       "namePlaceholder": "ex.: Sincronização de CRM",
       "urlHelp": "HTTPS em um endereço público. A Formalie envia um POST com JSON e aguarda até 10 segundos por uma resposta 2xx.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Nenhuma entrega ainda",
       "noDeliveriesDesc": "As entregas aparecem aqui conforme os eventos acontecem. Envie um teste para experimentar o endereço agora.",
       "lastDelivery": "Última {when}",
-      "secret": "Segredo de assinatura",
-      "secretTitle": "Segredo de assinatura de {name}",
-      "secretHint": "Guarde-o apenas no seu servidor. Verifique a assinatura de cada chamada antes de confiar nela (veja Verificação da assinatura no painel do webhook).",
-      "rotate": "Novo segredo",
-      "rotateTitle": "Substituir o segredo de assinatura?",
-      "rotateDesc": "O novo segredo é usado a partir da próxima entrega e o antigo deixa de funcionar na hora. Atualize seu receptor imediatamente.",
+      "secretHint": "Guarde-o apenas no seu servidor. Recuse qualquer chamada cujo cabeçalho Authorization não seja exatamente este (veja Verificação do token no painel do webhook).",
       "deleteTitle": "Excluir este webhook?",
       "deleteDesc": "{name} deixa de receber chamadas e o registro de entregas é removido. Isso não pode ser desfeito.",
       "sendTest": "Enviar um teste",
@@ -6174,7 +6174,8 @@
         "dns": "Não foi possível encontrar o endereço",
         "refused": "A conexão foi recusada",
         "tls": "A conexão segura falhou (certificado)",
-        "failed": "Não foi possível fazer a chamada"
+        "failed": "Não foi possível fazer a chamada",
+        "token": "Sem token utilizável (revogado, expirado ou eliminado): escolha outro no webhook"
       },
       "invalid": {
         "required": "Informe o endereço",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook salvo",
         "on": "Webhook ativado",
         "off": "Webhook desativado",
-        "rotated": "Novo segredo criado",
         "deleted": "Webhook excluído",
         "resent": "Entregue",
         "resentFailed": "Enviado, mas não entregue: veja a entrega"
       },
       "verify": {
-        "title": "Verificação da assinatura",
-        "text": "Cada chamada traz estes cabeçalhos. Recalcule a assinatura a partir do carimbo de data e hora e do corpo bruto com o seu segredo, e recuse a chamada se diferir ou for mais antiga que cinco minutos.",
+        "title": "Verificação do token",
+        "text": "Cada chamada leva estes cabeçalhos. Recuse-a, a menos que Authorization seja exatamente Bearer e o seu token de webhook (compare em tempo constante). A Formalie-Key é o id de entrega e mantém-se igual nas novas tentativas: ignore a que já tratou.",
         "answer": "Responda com qualquer status 2xx em até 10 segundos e faça o trabalho real depois. Qualquer outra resposta é tentada novamente."
-      }
+      },
+      "token": "Token de webhook",
+      "tokenHelp": "A Formalie envia-o como Authorization: Bearer em cada chamada, com os mesmos cabeçalhos da API. Os tokens de webhook são criados e geridos em Tokens e cabeçalhos.",
+      "tokenNew": "Novo token de webhook: {name} · webhook",
+      "tokenTitle": "Token de webhook {name}",
+      "tokenGone": "O token foi revogado, expirou ou foi eliminado: as entregas falham até escolher outro.",
+      "tokenOpen": "Abrir o token"
     },
     "onceDesc": "Copie agora. Você poderá vê-lo de novo depois no painel dele, após confirmar sua senha."
   },

@@ -29,7 +29,7 @@ import { confirmPassword } from '../core/confirm'
 import { MockError, ok, paginate, filtersOf } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
-import { API_BASE_URL, apiOf, endpointUsage, hashSecret, newSecret, saveApi, schemaOf, sumUsage, toEndpoint, toEndpointDetail, toService, toToken, type StoredApiEndpoint, type StoredApiToken } from '../data/apiStore'
+import { API_BASE_URL, apiOf, endpointUsage, hashSecret, newSecret, saveApi, schemaOf, sumUsage, toEndpoint, toEndpointDetail, toService, toToken, type StoredApiEndpoint, type StoredApiToken, createToken } from '../data/apiStore'
 import { formsOf } from '../data/formStore'
 import { channelsOf } from '#shared/types/forms'
 import type { MockTenant } from '../data/tenants'
@@ -349,7 +349,7 @@ export const apiEndpointFormFields = defineMockRoute(({ event, query }) => {
 
 const tokenInput = z.object({
   name: z.string().trim().min(1).max(80),
-  kind: z.enum(['static', 'client']),
+  kind: z.enum(['static', 'client', 'webhook']),
   mode: z.enum(API_TOKEN_MODES),
   scopes: z.object({ services: z.array(z.string()).max(100), endpoints: z.array(z.string()).max(500), methods: z.array(z.enum(API_METHODS)).max(4) }),
   expires_at: z.string().datetime().nullable(),
@@ -382,7 +382,7 @@ function issue(token: StoredApiToken) {
   token.secret = secret
   token.preview = secretPreview(secret)
   token.signing_secret = null
-  return { ...(token.kind === 'static' ? { token: secret } : { client_secret: secret }) }
+  return { ...(token.kind === 'client' ? { client_secret: secret } : { token: secret }) }
 }
 
 export const listApiTokens = defineMockRoute(({ event, query }) => {
@@ -422,30 +422,10 @@ export const createApiToken = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   const values = parseBody(tokenInput, body)
   checkToken(tenant, values)
-  const token: StoredApiToken = {
-    id: crypto.randomUUID(),
-    name: values.name,
-    kind: values.kind,
-    mode: values.mode,
-    secret_hash: '',
-    preview: '',
-    previous_hash: null,
-    rotating_until: null,
-    client_id: values.kind === 'client' ? newSecret('client_id', values.mode) : null,
-    lifetime_minutes: values.kind === 'client' ? (values.lifetime_minutes ?? 15) : null,
-    signing: false, // No signed calls (owner, 2026-10-06)
-    signing_secret: null,
-    scopes: values.scopes,
-    expires_at: values.expires_at,
-    last_used_at: null,
-    created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` },
-    created_at: now(),
-    revoked_at: null,
-  }
-  const secrets = issue(token)
-  apiOf(tenant).tokens.unshift(token)
-  saveApi()
-  recordAudit(event, tenant, { action: 'api.token_created', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name }, metadata: { kind: token.kind, mode: token.mode, preview: token.kind === 'client' ? token.client_id! : token.preview } })
+  // A webhook token is live and calls nothing (owner, 2026-10-06)
+  const { token, secret } = createToken(tenant, { ...values, mode: values.kind === 'webhook' ? 'live' : values.mode }, { id: user.id, name: `${user.first_name} ${user.last_name}` })
+  const secrets = token.kind === 'client' ? { client_secret: secret } : { token: secret }
+  recordAudit(event, tenant, { action: 'api.token_created', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name }, metadata: { kind: token.kind, mode: token.mode } })
   const created: ApiTokenCreated = { token: toToken(tenant, token), secrets }
   return ok(created, {}, 201)
 })
@@ -509,7 +489,7 @@ export const deleteApiToken = defineMockRoute(({ event }) => {
 export const apiSetup = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
   const api = apiOf(tenant)
-  const tokens = api.tokens.filter(token => !token.revoked_at && (!token.expires_at || Date.parse(token.expires_at) > Date.now()))
+  const tokens = api.tokens.filter(token => token.kind !== 'webhook' && !token.revoked_at && (!token.expires_at || Date.parse(token.expires_at) > Date.now()))
   const setup: ApiSetupSummary = {
     services: api.services.length,
     endpoints: api.endpoints.length,

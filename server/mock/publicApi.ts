@@ -51,7 +51,8 @@ import { emitResponse } from './data/integrationStore'
 class PublicError extends Error {
   constructor(
     readonly code: ErrorCode,
-    readonly details: { field: string; message: string }[] = [],
+    // Extra facts sit next to field and message as plain values (owner, 2026-10-06: clean answers, no JSON in a string)
+    readonly details: ({ field: string; message: string } & Record<string, string | null>)[] = [],
     readonly headers: Record<string, string> = {},
   ) {
     super(code)
@@ -147,6 +148,8 @@ function callerToken(event: H3Event, tenant: MockTenant): StoredApiToken {
   const short = accessTokens.get(bearer)
   const valid = short && short.tenant === tenant.id && short.expires > Date.now()
   const token = short ? (valid ? (short.token === CONSOLE ? consoleToken() : tokens.find(item => item.id === short.token)) : undefined) : tokens.find(item => item.kind === 'static' && matches(item, bearer))
+  // A webhook token only identifies Formalie's calls to a webhook (owner, 2026-10-06)
+  if (!token && tokens.some(item => item.kind === 'webhook' && matches(item, bearer))) throw new PublicError('FRM-API-1010', [{ field: 'Authorization', message: 'webhook_token: it only identifies Formalie\'s calls to your webhooks and can not call the API' }])
   // Two ways to sign in, never both (owner, 2026-10-06): a client id or secret sent as Bearer says so
   if (!token && tokens.some(item => item.kind === 'client' && (item.client_id === bearer || matches(item, bearer)))) throw new PublicError('FRM-API-1010', [{ field: 'Authorization', message: 'client_credentials: post the client id and secret to /token first, then send that short-lived token as Bearer' }])
   if (!token || !live(token)) throw new PublicError('FRM-API-1010')
@@ -415,8 +418,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       const identity = identityOf(schema)
       if (identity.email) {
         const match = matchIdentity(schema, answers, earlierResponses, identity)
-        const hint = JSON.stringify({ at: match.record?.submitted_at, email: maskEmail(match.record?.data[identity.email]) })
-        if (match.level === 'clear') throw new PublicError('FRM-RESP-1006', [{ field: identity.email, message: hint }])
+        if (match.level === 'clear') throw new PublicError('FRM-RESP-1006', [{ field: identity.email, message: 'already_submitted', submitted_at: match.record?.submitted_at ?? null, email: maskEmail(match.record?.data[identity.email]) || null }])
         if (match.level === 'likely') possibleDuplicate = { of: match.record!.id, reason: match.reason! }
       }
       const submissionId = `api:${endpoint.id}:${crypto.randomUUID()}`

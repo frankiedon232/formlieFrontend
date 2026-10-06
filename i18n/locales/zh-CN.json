@@ -3657,7 +3657,7 @@
       "logs": "每次调用及其状态、耗时和调用方。",
       "analytics": "按服务和端点统计的调用量、错误和响应时间。",
       "docs": "现成的文档，以及试用每个端点的地方。",
-      "webhooks": "每条新回复到达后立即发送到您自己的系统，已签名并自动重试。",
+      "webhooks": "每条新回复到达后立即发送到您自己的系统，附带您的 webhook 令牌并自动重试。",
       "apiKeys": "Formalie 自有 API 的密钥：通过代码管理表单和回复。",
       "apps": "连接电子表格、团队聊天等应用。"
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Bearer 令牌",
-        "client": "客户端 ID 和密钥"
+        "client": "客户端 ID 和密钥",
+        "webhook": "用于 webhook"
       },
       "kindHint": {
         "static": "应用在每次调用中发送的一个长期令牌。",
-        "client": "应用用它们换取短期令牌，令牌泄露时更安全。"
+        "client": "应用用它们换取短期令牌，令牌泄露时更安全。",
+        "webhook": "Formalie 会把它发送到你的 webhook 地址,让接收方确认调用是真的。它不能调用 API。"
       },
       "scope": {
         "title": "可调用的内容",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "登录方式",
       "signInHelp": "一个令牌只能是其中一种,不能两者兼有。Bearer 令牌原样发送;客户端 ID 和密钥在 /token 换取短期令牌。",
-      "kindRequired": "选择此令牌的登录方式。"
+      "kindRequired": "选择此令牌的登录方式。",
+      "webhookScope": "webhook 令牌不能调用 API。Formalie 会在每次调用使用它的 webhook 时,以 Authorization: Bearer 的形式发送它,让接收方确认调用是真的。",
+      "webhookShort": "仅限 webhook",
+      "webhookUsage": "你的接收方会检查每次调用:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (投递 ID,每次重试都相同)"
     },
     "rotate": {
       "title": "轮换 {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "有助于查明调用被拒绝的原因。对个人问题的回答（姓名、电子邮件、电话号码、地址、银行信息）始终会被遮蔽。",
         "for": "保存时长",
         "days": "{n} 天 | {n} 天",
-        "never": "令牌绝不会被记录，只记录其可见部分。必需的请求头值和签名会被遮蔽。",
+        "never": "令牌绝不会被记录，只记录其可见部分。",
         "saved": "日志设置已保存"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "新建 Webhook",
       "editTitle": "编辑 Webhook",
-      "desc": "所选事件发生时，Formalie 会调用此地址，并附带签名，方便你确认请求来自我们。",
+      "desc": "所选事件发生时，Formalie 会调用此地址，并附带你的 webhook 令牌，方便你确认请求来自我们。",
       "create": "创建 Webhook",
       "namePlaceholder": "例如 CRM 同步",
       "urlHelp": "公开地址上的 HTTPS。Formalie 会发送带 JSON 的 POST 请求，并最多等待 10 秒以获得 2xx 响应。",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "还没有投递",
       "noDeliveriesDesc": "事件发生后，投递会显示在这里。发送一次测试，立即试试这个地址。",
       "lastDelivery": "最近 {when}",
-      "secret": "签名密钥",
-      "secretTitle": "{name} 的签名密钥",
-      "secretHint": "只保存在你的服务器上。信任每次调用之前，请先校验签名（见 Webhook 面板中的“校验签名”）。",
-      "rotate": "新密钥",
-      "rotateTitle": "更换签名密钥？",
-      "rotateDesc": "新密钥从下一次投递开始使用，旧密钥会立即失效。请马上更新你的接收端。",
+      "secretHint": "只保存在你的服务器上。拒绝任何 Authorization 请求头与此不完全一致的调用(见 webhook 面板中的校验令牌)。",
       "deleteTitle": "删除此 Webhook？",
       "deleteDesc": "{name} 将不再收到调用，其投递日志也会被删除。此操作无法撤销。",
       "sendTest": "发送测试",
@@ -6174,7 +6174,8 @@
         "dns": "找不到该地址",
         "refused": "连接被拒绝",
         "tls": "安全连接失败（证书）",
-        "failed": "无法发起调用"
+        "failed": "无法发起调用",
+        "token": "没有可用的令牌(已吊销、过期或删除):请在 webhook 中选择另一个"
       },
       "invalid": {
         "required": "请输入地址",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook 已保存",
         "on": "Webhook 已开启",
         "off": "Webhook 已关闭",
-        "rotated": "已生成新密钥",
         "deleted": "Webhook 已删除",
         "resent": "已送达",
         "resentFailed": "已发送，但未送达：请查看投递详情"
       },
       "verify": {
-        "title": "校验签名",
-        "text": "每次调用都带有这些请求头。用你的密钥，根据时间戳和原始请求体重新计算签名，若不一致或超过五分钟，请拒绝该调用。",
+        "title": "校验令牌",
+        "text": "每次调用都带有这些请求头。除非 Authorization 恰好是 Bearer 加你的 webhook 令牌,否则请拒绝(用恒定时间比较)。Formalie-Key 是投递 ID,重试时保持不变:跳过已处理过的。",
         "answer": "请在 10 秒内返回任意 2xx 状态，真正的处理放在之后。其他响应都会重试。"
-      }
+      },
+      "token": "webhook 令牌",
+      "tokenHelp": "Formalie 每次调用都会以 Authorization: Bearer 的形式发送它,请求头与 API 相同。webhook 令牌在令牌和请求头中创建和管理。",
+      "tokenNew": "新的 webhook 令牌:{name} · webhook",
+      "tokenTitle": "webhook 令牌 {name}",
+      "tokenGone": "它的令牌已被吊销、过期或删除:在你选择另一个之前,投递会失败。",
+      "tokenOpen": "打开令牌"
     },
     "onceDesc": "请现在复制。之后确认密码，即可在其面板中再次查看。"
   },

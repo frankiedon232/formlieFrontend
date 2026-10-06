@@ -101,7 +101,7 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 2. **See it again later:** open the token's panel → _Secret_ → **Show** → enter your password. A wrong password says how many tries are left; five wrong tries lock it for 15 minutes. The right one shows the token with Copy for 60 seconds, then it hides again. The audit trail records _API token viewed_.
 3. Tokens made before this change can't be shown again ("Rotate it to get one you can view later"); rotate them once.
 4. Rotate (old secret keeps working for the chosen grace time), Revoke (calls get `401`), Delete (only once revoked or expired).
-5. Webhook secrets (webhook panel) can be seen again the same way.
+5. Webhook tokens (type _For webhooks_) are tokens too: seen again, rotated and revoked the same way.
 
 ### 3. Access rules
 
@@ -165,9 +165,19 @@ And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` wi
 
 ### 7. Webhooks
 
-Webhooks call your own address when something happens to a response. To see them while developing, run the local receiver that comes with the project, `pnpm webhook:listen` (`scripts/webhook-receiver.mjs`, no extra installs). It prints every delivery and checks its signature. Run it in a second terminal next to `pnpm dev`.
+Webhooks call your own address when something happens to a response. Every call carries the **same headers as an API call** (no separate secrets or signatures):
 
-The commands below are for PowerShell (the default terminal on Windows). In Git Bash or macOS / Linux write `WEBHOOK_SECRET=... pnpm webhook:listen` and `FAIL=500 pnpm webhook:listen` instead.
+```
+Authorization: Bearer <webhook token>
+Content-Type: application/json
+Formalie-Key: dlv_…   (the delivery id, the same on every retry)
+```
+
+The webhook token is a token of the type **For webhooks**, made and managed in **Tokens & headers** like any other (see it again with your password, rotate, revoke). It can never call the API (`401 FRM-API-1010`, `webhook_token`), so a leak at the receiver exposes nothing.
+
+To see webhooks while developing, run the local receiver that comes with the project, `pnpm webhook:listen` (`scripts/webhook-receiver.mjs`, no extra installs). It prints every delivery, checks the token and notices repeats by their Formalie-Key. Run it in a second terminal next to `pnpm dev`.
+
+The commands below are for PowerShell (the default terminal on Windows). In Git Bash or macOS / Linux write `WEBHOOK_TOKEN=... pnpm webhook:listen` and `FAIL=500 pnpm webhook:listen` instead.
 
 **1. Start the receiver**
 
@@ -181,24 +191,25 @@ It listens on `http://localhost:4000/hooks` (set `$env:PORT="4100"` first for an
 
 - Address: `http://localhost:4000/hooks` (`http://localhost` is allowed while developing; real ones must be public HTTPS addresses).
 - Pick the events and the forms (every form, or only some).
-- **Copy the secret** it shows.
+- **Webhook token:** leave _A new webhook token_ (made and named after the webhook, e.g. "Local test · webhook") or pick one you made in Tokens & headers (type _For webhooks_).
+- Create it: a new token is shown once with the headers to expect. **Copy it.**
 
-**3. Restart the receiver with the secret** (Ctrl + C, then), so it checks every signature:
+**3. Restart the receiver with the token** (Ctrl + C, then), so it checks every call:
 
 ```bash
-$env:WEBHOOK_SECRET="formalie_hook_..."; pnpm webhook:listen
+$env:WEBHOOK_TOKEN="formalie_hook_live_..."; pnpm webhook:listen
 ```
 
-**4. Test each event.** Every one prints a block in the receiver's terminal: the event, the delivery id, `signature valid` and the JSON.
+**4. Test each event.** Every one prints a block in the receiver's terminal: the event, the Formalie-Key, `token valid` and the JSON.
 
-| Do this                                                         | Event arrives                                          |
-| --------------------------------------------------------------- | ------------------------------------------------------ |
-| **Send a test** in the webhook's panel                          | `ping`                                                 |
-| Submit the form, or POST to one of its endpoints                | `response.created`                                     |
-| Edit an answer of a response                                    | `response.updated`                                     |
-| Change a response's status in Responses                         | `response.status_changed` (with the previous status)   |
-| Delete a response                                               | `response.deleted`                                     |
-| Webhook limited to some forms: submit a form that is not one of them | nothing arrives                                   |
+| Do this                                                              | Event arrives                                        |
+| -------------------------------------------------------------------- | ---------------------------------------------------- |
+| **Send a test** in the webhook's panel                               | `ping`                                               |
+| Submit the form, or POST to one of its endpoints                     | `response.created`                                   |
+| Edit an answer of a response                                         | `response.updated`                                   |
+| Change a response's status in Responses                              | `response.status_changed` (with the previous status) |
+| Delete a response                                                    | `response.deleted`                                   |
+| Webhook limited to some forms: submit a form that is not one of them | nothing arrives                                      |
 
 **5. Failures and retries.** Restart the receiver so it answers with an error:
 
@@ -206,15 +217,15 @@ $env:WEBHOOK_SECRET="formalie_hook_..."; pnpm webhook:listen
 $env:FAIL="500"; pnpm webhook:listen
 ```
 
-Submit once, then open the webhook's **Deliveries**: the delivery shows as retrying (it tries again after 1, 5, 15, 60 and 360 minutes); **Retry now** and **Send again** work; after repeated failures the webhook **pauses itself** (nothing is lost, deliveries can be sent again). Back to normal:
+Submit once, then open the webhook's **Deliveries**: the delivery shows as retrying (it tries again after 1, 5, 15, 60 and 360 minutes) and each retry arrives with the **same Formalie-Key** (the receiver says _seen before_); **Retry now** and **Send again** work; after repeated failures the webhook **pauses itself** (nothing is lost, deliveries can be sent again). Back to normal:
 
 ```bash
 Remove-Item Env:FAIL; pnpm webhook:listen
 ```
 
-**6. Wrong secret.** Start the receiver with a made-up `WEBHOOK_SECRET`: every delivery shows `signature WRONG`, which is exactly what a real receiver must refuse. Signatures are `X-Formalie-Signature: sha256=<hex>`, the HMAC-SHA256 of `{X-Formalie-Timestamp}.{raw body}` with the secret; refuse anything older than 5 minutes.
+**6. Wrong or missing token.** Start the receiver with a made-up `WEBHOOK_TOKEN`: every delivery shows `token WRONG`, which is exactly what a real receiver must refuse. Revoke the webhook's token in Tokens & headers: the webhook's panel warns, and deliveries fail with _No usable token_ until you pick another one (Edit).
 
-**7. What Formalie shows:** each delivery in Deliveries with its tries, the request sent (personal answers masked) and your receiver's answer.
+**7. What Formalie shows:** each delivery in Deliveries with its tries, the request sent (the token masked, personal answers masked) and your receiver's answer.
 
 ### 8. Logs
 

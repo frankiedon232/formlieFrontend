@@ -26,7 +26,8 @@ export interface Webhook {
   status: WebhookStatus
   /** Why it is paused: by someone, or automatically after repeated failures. */
   paused_reason: 'manual' | 'failures' | null
-  secret_preview: string
+  /** The webhook token it sends as Authorization: Bearer (made in Tokens & headers); null when it was deleted. */
+  token: { id: string; name: string; preview: string; status: string } | null
   deliveries_30d: number
   failed_30d: number
   /** Share delivered on the first or a later try, 0–1; null without deliveries. */
@@ -46,12 +47,14 @@ export interface WebhookSaveRequest {
   events: WebhookEvent[]
   form_ids: string[]
   enabled?: boolean
+  /** A webhook token's id, or 'new' to make one named after the webhook. */
+  token_id?: string
 }
 
-/** Returned once, when a webhook is made or its secret is rotated. */
-export interface WebhookWithSecret {
+/** A new webhook, with the token it sends when one was made for it (shown once here; again later after the password). */
+export interface WebhookCreated {
   webhook: Webhook
-  secret: string
+  token: { id: string; name: string; secret: string } | null
 }
 
 export interface WebhookAttempt {

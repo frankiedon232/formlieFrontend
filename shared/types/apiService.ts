@@ -163,7 +163,9 @@ export interface ApiServiceSettings {
 export const API_TOKEN_MODES = ['live', 'test'] as const
 export type ApiTokenMode = (typeof API_TOKEN_MODES)[number]
 /** A long-lived bearer token, or a client id + secret that gets short-lived tokens from `/{apiKey}/token`. */
-export type ApiTokenKind = 'static' | 'client'
+/** How a token signs in: a bearer token, a client id + secret, or (owner, 2026-10-06) a webhook token, which only
+ * identifies Formalie's calls to a webhook's address and can never call the API. */
+export type ApiTokenKind = 'static' | 'client' | 'webhook'
 export const API_TOKEN_STATUSES = ['active', 'expiring', 'expired', 'revoked'] as const
 export type ApiTokenStatus = (typeof API_TOKEN_STATUSES)[number]
 

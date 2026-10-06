@@ -3657,7 +3657,7 @@
       "logs": "Setiap panggilan beserta status, durasi, dan pemanggilnya.",
       "analytics": "Panggilan, galat, dan waktu respons per layanan dan endpoint.",
       "docs": "Dokumentasi siap pakai dan tempat untuk mencoba setiap endpoint.",
-      "webhooks": "Kirim setiap tanggapan baru ke sistem Anda sendiri begitu masuk, ditandatangani dan dicoba ulang.",
+      "webhooks": "Kirim setiap tanggapan baru ke sistem Anda sendiri begitu masuk, dengan token webhook Anda dan dicoba ulang.",
       "apiKeys": "Kunci untuk API Formalie: kelola formulir dan tanggapan dari kode Anda.",
       "apps": "Hubungkan aplikasi seperti spreadsheet dan obrolan tim."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Token Bearer",
-        "client": "ID klien dan secret"
+        "client": "ID klien dan secret",
+        "webhook": "Untuk webhook"
       },
       "kindHint": {
         "static": "Satu token jangka panjang yang dikirim aplikasi di setiap panggilan.",
-        "client": "Aplikasi menukarnya dengan token jangka pendek, yang lebih aman jika token bocor."
+        "client": "Aplikasi menukarnya dengan token jangka pendek, yang lebih aman jika token bocor.",
+        "webhook": "Formalie mengirimnya ke alamat webhook Anda agar penerima Anda tahu panggilan itu asli. Token ini tidak bisa memanggil API."
       },
       "scope": {
         "title": "Apa yang boleh dipanggil",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Cara masuknya",
       "signInHelp": "Sebuah token adalah salah satunya, tidak pernah keduanya. Token Bearer dikirim apa adanya; ID klien dan secret ditukar di /token dengan token berumur pendek.",
-      "kindRequired": "Pilih cara token ini masuk."
+      "kindRequired": "Pilih cara token ini masuk.",
+      "webhookScope": "Token webhook tidak bisa memanggil API. Formalie mengirimnya sebagai Authorization: Bearer di setiap panggilan ke webhook yang memakainya, agar penerima Anda bisa memeriksa bahwa panggilan itu asli.",
+      "webhookShort": "Hanya webhook",
+      "webhookUsage": "Penerima Anda memeriksa setiap panggilan:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id pengiriman, sama di setiap percobaan ulang)"
     },
     "rotate": {
       "title": "Rotasi {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Membantu mencari tahu mengapa panggilan ditolak. Jawaban atas pertanyaan pribadi (nama, email, nomor telepon, alamat, data bank) selalu disamarkan.",
         "for": "Simpan selama",
         "days": "{n} hari | {n} hari",
-        "never": "Token tidak pernah dicatat di log, hanya bagian yang terlihat. Nilai header wajib dan tanda tangan disamarkan.",
+        "never": "Token tidak pernah dicatat di log, hanya bagian yang terlihat.",
         "saved": "Pengaturan log disimpan"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Webhook baru",
       "editTitle": "Ubah webhook",
-      "desc": "Formalie memanggil alamat ini setiap kali salah satu peristiwa yang dipilih terjadi, dengan tanda tangan agar Anda dapat memeriksa bahwa panggilan berasal dari kami.",
+      "desc": "Formalie memanggil alamat ini setiap kali salah satu peristiwa yang dipilih terjadi, dengan token webhook Anda agar Anda dapat memeriksa bahwa panggilan berasal dari kami.",
       "create": "Buat webhook",
       "namePlaceholder": "mis. Sinkronisasi CRM",
       "urlHelp": "HTTPS pada alamat publik. Formalie mengirim POST dengan JSON dan menunggu hingga 10 detik untuk jawaban 2xx.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Belum ada pengiriman",
       "noDeliveriesDesc": "Pengiriman muncul di sini saat peristiwa terjadi. Kirim tes untuk langsung mencoba alamat.",
       "lastDelivery": "Terakhir {when}",
-      "secret": "Rahasia tanda tangan",
-      "secretTitle": "Rahasia tanda tangan untuk {name}",
-      "secretHint": "Simpan hanya di server Anda. Periksa tanda tangan di setiap panggilan sebelum memercayainya (lihat Memeriksa tanda tangan di panel webhook).",
-      "rotate": "Rahasia baru",
-      "rotateTitle": "Ganti rahasia tanda tangan?",
-      "rotateDesc": "Rahasia baru dipakai mulai pengiriman berikutnya, dan yang lama langsung berhenti berfungsi. Segera perbarui penerima Anda.",
+      "secretHint": "Simpan hanya di server Anda. Tolak setiap panggilan yang header Authorization-nya tidak persis sama dengan ini (lihat Memeriksa token di panel webhook).",
       "deleteTitle": "Hapus webhook ini?",
       "deleteDesc": "{name} tidak lagi menerima panggilan dan log pengirimannya dihapus. Tindakan ini tidak dapat dibatalkan.",
       "sendTest": "Kirim tes",
@@ -6174,7 +6174,8 @@
         "dns": "Alamat tidak ditemukan",
         "refused": "Koneksi ditolak",
         "tls": "Koneksi aman gagal (sertifikat)",
-        "failed": "Panggilan tidak dapat dilakukan"
+        "failed": "Panggilan tidak dapat dilakukan",
+        "token": "Tidak ada token yang bisa dipakai (dicabut, kedaluwarsa, atau dihapus): pilih yang lain di webhook"
       },
       "invalid": {
         "required": "Masukkan alamat",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook disimpan",
         "on": "Webhook diaktifkan",
         "off": "Webhook dinonaktifkan",
-        "rotated": "Rahasia baru dibuat",
         "deleted": "Webhook dihapus",
         "resent": "Terkirim",
         "resentFailed": "Terkirim, tetapi tidak sampai: lihat pengiriman"
       },
       "verify": {
-        "title": "Memeriksa tanda tangan",
-        "text": "Setiap panggilan membawa header ini. Hitung ulang tanda tangan dari stempel waktu dan isi mentah dengan rahasia Anda, dan tolak panggilan jika berbeda atau lebih lama dari lima menit.",
+        "title": "Memeriksa token",
+        "text": "Setiap panggilan membawa header ini. Tolak kecuali Authorization persis Bearer dan token webhook Anda (bandingkan dalam waktu konstan). Formalie-Key adalah id pengiriman dan tetap sama saat dicoba ulang: lewati yang sudah Anda tangani.",
         "answer": "Jawab dengan status 2xx apa pun dalam 10 detik; kerjakan pekerjaan sebenarnya setelahnya. Jawaban lain akan dicoba ulang."
-      }
+      },
+      "token": "Token webhook",
+      "tokenHelp": "Formalie mengirimnya sebagai Authorization: Bearer di setiap panggilan, dengan header yang sama seperti API. Token webhook dibuat dan dikelola di Token & header.",
+      "tokenNew": "Token webhook baru: {name} · webhook",
+      "tokenTitle": "Token webhook {name}",
+      "tokenGone": "Tokennya dicabut, kedaluwarsa, atau dihapus: pengiriman gagal sampai Anda memilih yang lain.",
+      "tokenOpen": "Buka token"
     },
     "onceDesc": "Salin sekarang. Anda bisa melihatnya lagi nanti di panelnya, setelah mengonfirmasi kata sandi."
   },

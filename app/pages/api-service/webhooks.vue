@@ -2,12 +2,13 @@
   API service → Webhooks (F13 M6; locked list format, rule 21). Two chart cards (deliveries in 30
   days; webhooks by status, the legend filters), then the view switch Webhooks | Deliveries
   (`?view=deliveries`). Webhooks: DataView (table / cards) with status and event filters; a webhook
-  opens its panel (`?hook=`); ⋯ / right-click: open, edit, send a test, on / off, new secret,
-  delete. Deliveries: every call made, a delivery opens its panel (`?delivery=`). Secrets are shown once.
+  opens its panel (`?hook=`); ⋯ / right-click: open, edit, send a test, on / off, delete.
+  Deliveries: every call made, a delivery opens its panel (`?delivery=`). A webhook sends a webhook token
+  from Tokens & headers (a new one is shown once here; later after the password there).
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
-import { WEBHOOK_EVENTS, type Webhook, type WebhookInsights, type WebhookWithSecret } from '#shared/types/integrations'
+import { WEBHOOK_EVENTS, type Webhook, type WebhookCreated, type WebhookInsights } from '#shared/types/integrations'
 import { eventLabelKey } from '#shared/utils/integrations/webhooks'
 
 definePageMeta({ breadcrumb: 'nav.webhooks' })
@@ -83,7 +84,7 @@ function openDelivery(id: string) {
 }
 const showAll = (webhook: Pick<Webhook, 'id'>) => void router.replace({ query: { view: 'deliveries', webhook: webhook.id } })
 
-// New / edit / test / on-off / rotate / delete
+// New / edit / test / on-off / delete
 const editOpen = ref(false)
 const editing = ref<Webhook | null>(null)
 function edit(webhook: Webhook | null) {
@@ -91,17 +92,18 @@ function edit(webhook: Webhook | null) {
   editOpen.value = true
 }
 const secretOpen = ref(false)
-const secret = ref<WebhookWithSecret | null>(null)
-// The new webhook's panel opens once its secret has been seen (two overlays at once would close each other)
+const secret = ref<WebhookCreated | null>(null)
+// The new webhook's panel opens once its new token has been seen (two overlays at once would close each other)
 const pendingOpen = ref<string | null>(null)
-function showSecret(result: WebhookWithSecret) {
+function showSecret(result: WebhookCreated) {
   pendingOpen.value = result.webhook.id
   if (openId.value) panelOpen.value = false
   secret.value = result
   secretOpen.value = true
 }
-async function created(result: WebhookWithSecret) {
-  showSecret(result)
+async function created(result: WebhookCreated) {
+  if (result.token) showSecret(result)
+  else openRow({ id: result.webhook.id })
   await refreshAll()
 }
 watch(secretOpen, value => {
@@ -113,7 +115,8 @@ async function saved() {
   toast.add({ title: t('integrations.webhooks.toast.saved'), color: 'success', icon: 'i-lucide-circle-check' })
   await refreshAll()
 }
-const usage = computed(() => [`X-Formalie-Timestamp: <unix seconds>`, `X-Formalie-Signature: sha256=HMAC_SHA256(secret, "{timestamp}.{raw body}")`].join('\n'))
+// Every delivery carries the same headers as an API call (owner, 2026-10-06)
+const usage = computed(() => [`Authorization: Bearer ${secret.value?.token?.secret ?? '<webhook token>'}`, 'Content-Type: application/json', 'Formalie-Key: dlv_…   (the delivery id, the same on every retry)'].join('\n'))
 const busy = ref<string | null>(null)
 async function act(id: string, work: () => Promise<unknown>, success?: string) {
   if (busy.value) return false
@@ -131,12 +134,6 @@ async function act(id: string, work: () => Promise<unknown>, success?: string) {
   }
 }
 const toggle = (webhook: Webhook, on: boolean) => void act(webhook.id, () => api.patch(`/webhooks/${webhook.id}`, { enabled: on }), on ? t('integrations.webhooks.toast.on') : t('integrations.webhooks.toast.off'))
-async function rotate(webhook: Webhook) {
-  if (!(await confirm({ title: t('integrations.webhooks.rotateTitle'), description: t('integrations.webhooks.rotateDesc'), confirmLabel: t('integrations.webhooks.rotate') }))) return
-  await act(webhook.id, async () => {
-    showSecret((await api.post<WebhookWithSecret>(`/webhooks/${webhook.id}/rotate`)).data)
-  }, t('integrations.webhooks.toast.rotated'))
-}
 async function remove(webhook: Webhook) {
   if (!(await confirm({ title: t('integrations.webhooks.deleteTitle'), description: t('integrations.webhooks.deleteDesc', { name: webhook.name }), confirmLabel: t('apiService.delete.confirm'), danger: true }))) return
   if ((await act(webhook.id, () => api.del(`/webhooks/${webhook.id}`), t('integrations.webhooks.toast.deleted'))) && openId.value === webhook.id) panelOpen.value = false
@@ -152,7 +149,6 @@ const rowActions = (row: Webhook): DropdownMenuItem[][] => [
     { label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', onSelect: () => edit(row) },
     { label: t('integrations.webhooks.sendTest'), icon: 'i-lucide-send', onSelect: () => sendTest(row) },
     { label: row.enabled ? t('apiService.actions.turnOff') : t('apiService.actions.turnOn'), icon: row.enabled ? 'i-lucide-circle-pause' : 'i-lucide-circle-play', onSelect: () => toggle(row, !row.enabled) },
-    { label: t('integrations.webhooks.rotate'), icon: 'i-lucide-refresh-cw', onSelect: () => void rotate(row) },
   ],
   [{ label: t('apiService.actions.delete'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(row) }],
 ]
@@ -239,9 +235,9 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
       </template>
     </IntegrationsWebhooksDeliveries>
 
-    <IntegrationsWebhooksDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!busy" @go="go" @edit="edit" @toggle="toggle" @remove="remove" @rotate="rotate" @delivery="openDelivery" @all="showAll" />
+    <IntegrationsWebhooksDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!busy" @go="go" @edit="edit" @toggle="toggle" @remove="remove" @delivery="openDelivery" @all="showAll" />
     <IntegrationsWebhooksDeliveryDetail :id="deliveryId" v-model:open="deliveryOpen" :ids="deliveryIds.length ? deliveryIds : deliveryId ? [deliveryId] : []" @go="openDelivery" @webhook="id => openRow({ id })" @sent="id => { refreshAll(); openDelivery(id) }" />
     <IntegrationsWebhooksEditModal v-model:open="editOpen" :webhook="editing" @saved="saved" @created="created" />
-    <IntegrationsSecretModal v-model:open="secretOpen" :title="t('integrations.webhooks.secretTitle', { name: secret?.webhook.name ?? '' })" :secret="secret?.secret ?? null" :label="t('integrations.webhooks.secret')" :usage="usage" :hint="t('integrations.webhooks.secretHint')" />
+    <IntegrationsSecretModal v-model:open="secretOpen" :title="t('integrations.webhooks.tokenTitle', { name: secret?.token?.name ?? '' })" :secret="secret?.token?.secret ?? null" :label="t('integrations.webhooks.token')" :usage="usage" :hint="t('integrations.webhooks.secretHint')" />
   </AppPanel>
 </template>

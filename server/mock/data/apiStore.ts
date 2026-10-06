@@ -467,7 +467,7 @@ export function toEndpointDetail(tenant: MockTenant, endpoint: StoredApiEndpoint
 /** How far the endpoint is set up (owner, 2026-10-06): service on, form published, tokens that can call it, access rules, live. */
 function endpointSetup(tenant: MockTenant, endpoint: StoredApiEndpoint, form: StoredForm | undefined): ApiEndpointSetup {
   const api = apiOf(tenant)
-  const callers = api.tokens.filter(token => tokenStatusOf(token) !== 'revoked' && tokenStatusOf(token) !== 'expired' && endpoint.methods.some(method => scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service_id, method })))
+  const callers = api.tokens.filter(token => token.kind !== 'webhook' && tokenStatusOf(token) !== 'revoked' && tokenStatusOf(token) !== 'expired' && endpoint.methods.some(method => scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service_id, method })))
   return {
     service_active: api.services.find(item => item.id === endpoint.service_id)?.status === 'active',
     form_published: form?.status === 'published',
@@ -491,3 +491,33 @@ export function toService(tenant: MockTenant, service: StoredApiService): ApiSer
 }
 
 export { sumUsage }
+
+/** A new token with its secret (the token route and webhooks both make them here). Returns the token and its secret. */
+export function createToken(tenant: MockTenant, values: { name: string; kind: ApiTokenKind; mode: ApiTokenMode; scopes: ApiTokenScopes; expires_at: string | null; lifetime_minutes?: number | null }, by: { id: string; name: string }) {
+  const secret = newSecret(values.kind, values.mode)
+  const token: StoredApiToken = {
+    id: crypto.randomUUID(),
+    name: values.name,
+    kind: values.kind,
+    mode: values.mode,
+    secret_hash: hashSecret(secret),
+    secret,
+    preview: secretPreview(secret),
+    previous_hash: null,
+    rotating_until: null,
+    client_id: values.kind === 'client' ? newSecret('client_id', values.mode) : null,
+    lifetime_minutes: values.kind === 'client' ? (values.lifetime_minutes ?? 15) : null,
+    signing: false,
+    signing_secret: null,
+    // A webhook token calls nothing: no scope at all
+    scopes: values.kind === 'webhook' ? { services: [], endpoints: [], methods: [] } : values.scopes,
+    expires_at: values.expires_at,
+    last_used_at: null,
+    created_by: by,
+    created_at: new Date().toISOString(),
+    revoked_at: null,
+  }
+  apiOf(tenant).tokens.unshift(token)
+  saveApi()
+  return { token, secret }
+}

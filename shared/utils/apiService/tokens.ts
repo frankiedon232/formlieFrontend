@@ -12,7 +12,7 @@ import type { ApiMethod } from '#shared/utils/urls/public'
  * secrets), `formalie_access_…` (short-lived tokens from the token address).
  */
 export function tokenPrefix(kind: ApiTokenKind | 'client_id' | 'signing' | 'access', mode: ApiTokenMode) {
-  const part = kind === 'static' ? '' : kind === 'client' ? 'secret_' : kind === 'client_id' ? 'client_' : kind === 'signing' ? 'sign_' : 'access_'
+  const part = kind === 'static' ? '' : kind === 'client' ? 'secret_' : kind === 'client_id' ? 'client_' : kind === 'signing' ? 'sign_' : kind === 'webhook' ? 'hook_' : 'access_'
   return `formalie_${part}${mode}_`
 }
 

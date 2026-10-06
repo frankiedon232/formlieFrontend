@@ -2,26 +2,26 @@
  * Mock webhooks (F13 M6, docs/API-CONTRACT.md → Integrations). Admins only until F22.
  *
  *   GET    /webhooks                         list (q, sort, filter[status|event]) · /insights · /:id
- *   POST   /webhooks                         { name, url, events, form_ids, enabled? } → { webhook, secret } (secret once)
+ *   POST   /webhooks                         { name, url, events, form_ids, token_id ('new' makes one), enabled? } → { webhook, token }
+ *                                            Each delivery sends the webhook token (Tokens & headers) as Authorization: Bearer.
  *   PATCH  /webhooks/:id                     the same, or { enabled } alone · DELETE (its deliveries go too)
- *   POST   /webhooks/:id/rotate              a new secret → { webhook, secret }
  *   POST   /webhooks/:id/test                a "ping" delivery now → the delivery with the receiver's answer
  *   GET    /webhook-deliveries               (from, to, q, sort, filter[webhook|status|event]) · /:id
  *   POST   /webhook-deliveries/:id/resend    the same body again as a new delivery
  */
 import { z } from 'zod'
-import type { WebhookInsights, WebhookWithSecret } from '#shared/types/integrations'
+import type { WebhookCreated, WebhookInsights } from '#shared/types/integrations'
 import { WEBHOOK_EVENTS } from '#shared/types/integrations'
 import { checkWebhookUrl, webhookStatusOf } from '#shared/utils/integrations/webhooks'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
-import { confirmPassword } from '../core/confirm'
 import { encodeId } from '../core/ids'
 import { filtersOf, MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { formsOf } from '../data/formStore'
-import { attempt, integrationsOf, newWebhookSecret, queueDelivery, resumeRetries, saveIntegrations, toDelivery, toDeliveryDetail, toWebhook, type StoredWebhook } from '../data/integrationStore'
+import { apiOf, createToken } from '../data/apiStore'
+import { attempt, integrationsOf, queueDelivery, resumeRetries, saveIntegrations, toDelivery, toDeliveryDetail, toWebhook, type StoredWebhook } from '../data/integrationStore'
 import type { MockTenant } from '../data/tenants'
 
 const DAY = 86_400_000
@@ -31,6 +31,7 @@ const input = z.object({
   events: z.array(z.enum(WEBHOOK_EVENTS)).min(1),
   form_ids: z.array(z.string()).max(100),
   enabled: z.boolean().optional(),
+  token_id: z.string().max(100).optional(),
 })
 const listOf = (value: string | undefined) => (value ? value.split(',') : [])
 
@@ -49,6 +50,20 @@ function checked(tenant: MockTenant, values: z.infer<typeof input>) {
   return { name: values.name, url: values.url.trim(), events: [...new Set(values.events)], form_ids: [...new Set(values.form_ids)] }
 }
 const resource = (webhook: StoredWebhook) => ({ type: 'webhook', id: webhook.id, name: webhook.name })
+
+/** The webhook token it sends: one of this organisation's webhook tokens, or 'new' (made and named after it). */
+function tokenFor(tenant: MockTenant, tokenId: string | undefined, name: string, by: { id: string; name: string }) {
+  if (tokenId === 'new' || !tokenId) {
+    const taken = new Set(apiOf(tenant).tokens.map(item => item.name.toLowerCase()))
+    let label = `${name} · webhook`
+    for (let n = 2; taken.has(label.toLowerCase()); n++) label = `${name} · webhook ${n}`
+    const made = createToken(tenant, { name: label, kind: 'webhook', mode: 'live', scopes: { services: [], endpoints: [], methods: [] }, expires_at: null }, by)
+    return { id: made.token.id, made: { id: made.token.id, name: made.token.name, secret: made.secret } }
+  }
+  const token = apiOf(tenant).tokens.find(item => item.id === tokenId && item.kind === 'webhook' && !item.revoked_at)
+  if (!token) throw new MockError('FRM-GEN-1002', [{ field: 'token_id', message: 'webhook_token' }])
+  return { id: token.id, made: null }
+}
 
 export const listWebhooks = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAdmin(event)
@@ -104,12 +119,15 @@ export const createWebhook = defineMockRoute(({ event, body }) => {
   const { tenant, user } = requireAdmin(event)
   const values = parseBody(input, body)
   const now = new Date().toISOString()
-  const secret = newWebhookSecret()
-  const webhook: StoredWebhook = { id: crypto.randomUUID(), ...checked(tenant, values), enabled: values.enabled ?? true, paused_reason: values.enabled === false ? 'manual' : null, secret, consecutive_failures: 0, created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` }, created_at: now, updated_at: now }
+  const by = { id: user.id, name: `${user.first_name} ${user.last_name}` }
+  const fields = checked(tenant, values)
+  const token = tokenFor(tenant, values.token_id, fields.name, by)
+  const webhook: StoredWebhook = { id: crypto.randomUUID(), ...fields, enabled: values.enabled ?? true, paused_reason: values.enabled === false ? 'manual' : null, token_id: token.id, consecutive_failures: 0, created_by: by, created_at: now, updated_at: now }
   integrationsOf(tenant).webhooks.unshift(webhook)
   saveIntegrations()
   recordAudit(event, tenant, { action: 'integrations.webhook_created', actor: actorOf(user), resource: resource(webhook), metadata: { url: webhook.url, events: webhook.events.join(', ') } })
-  const result: WebhookWithSecret = { webhook: toWebhook(tenant, webhook), secret }
+  if (token.made) recordAudit(event, tenant, { action: 'api.token_created', actor: actorOf(user), resource: { type: 'api_token', id: token.made.id, name: token.made.name }, metadata: { kind: 'webhook', webhook: webhook.name } })
+  const result: WebhookCreated = { webhook: toWebhook(tenant, webhook), token: token.made }
   return ok(result, {}, 201)
 })
 
@@ -130,7 +148,10 @@ export const updateWebhook = defineMockRoute(({ event, body }) => {
   }
   const values = parseBody(input, body)
   const before = { url: webhook.url, events: webhook.events.join(', ') }
-  Object.assign(webhook, checked(tenant, values), { updated_at: new Date().toISOString() })
+  const fields = checked(tenant, values)
+  const beforeToken = webhook.token_id
+  if (values.token_id && values.token_id !== webhook.token_id) webhook.token_id = tokenFor(tenant, values.token_id, fields.name, { id: user.id, name: `${user.first_name} ${user.last_name}` }).id
+  Object.assign(webhook, fields, { updated_at: new Date().toISOString() })
   if (values.enabled !== undefined && values.enabled !== webhook.enabled) {
     webhook.enabled = values.enabled
     webhook.paused_reason = values.enabled ? null : 'manual'
@@ -144,6 +165,7 @@ export const updateWebhook = defineMockRoute(({ event, body }) => {
     changes: [
       ...(before.url !== webhook.url ? [{ field: 'url', before: before.url, after: webhook.url }] : []),
       ...(before.events !== webhook.events.join(', ') ? [{ field: 'events', before: before.events, after: webhook.events.join(', ') }] : []),
+      ...(beforeToken !== webhook.token_id ? [{ field: 'token', before: apiOf(tenant).tokens.find(item => item.id === beforeToken)?.name ?? null, after: apiOf(tenant).tokens.find(item => item.id === webhook.token_id)?.name ?? null }] : []),
     ],
   })
   return ok(toWebhook(tenant, webhook))
@@ -158,17 +180,6 @@ export const deleteWebhook = defineMockRoute(({ event }) => {
   saveIntegrations()
   recordAudit(event, tenant, { action: 'integrations.webhook_deleted', actor: actorOf(user), resource: resource(webhook) })
   return ok({ deleted: true })
-})
-
-export const rotateWebhookSecret = defineMockRoute(({ event }) => {
-  const { tenant, user } = requireAdmin(event)
-  const webhook = findWebhook(tenant, getRouterParam(event, 'id'))
-  webhook.secret = newWebhookSecret()
-  webhook.updated_at = new Date().toISOString()
-  saveIntegrations()
-  recordAudit(event, tenant, { action: 'integrations.webhook_secret_rotated', actor: actorOf(user), resource: resource(webhook) })
-  const result: WebhookWithSecret = { webhook: toWebhook(tenant, webhook), secret: webhook.secret }
-  return ok(result)
 })
 
 /** A "ping" with a sample of what a response event looks like; waits for the receiver's answer. */
@@ -239,13 +250,4 @@ export const resendDelivery = defineMockRoute(async ({ event }) => {
   await done
   recordAudit(event, tenant, { action: 'integrations.webhook_resent', actor: actorOf(user), resource: resource(webhook), metadata: { event: source.event } })
   return ok(toDeliveryDetail(tenant, delivery))
-})
-
-/** POST /webhooks/:id/reveal { password }: the signing secret again, after the password. */
-export const revealWebhookSecret = defineMockRoute(({ event, body }) => {
-  const { tenant, user } = requireAdmin(event)
-  const webhook = findWebhook(tenant, getRouterParam(event, 'id'))
-  confirmPassword(user, (body as { password?: unknown } | null)?.password)
-  recordAudit(event, tenant, { action: 'integrations.webhook_secret_revealed', actor: actorOf(user), resource: resource(webhook) })
-  return ok({ secret: webhook.secret })
 })

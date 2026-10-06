@@ -3657,7 +3657,7 @@
       "logs": "Kila mwito pamoja na hali yake, muda uliotumika na mpigaji.",
       "analytics": "Miito, hitilafu na muda wa majibu kwa kila huduma na endpoint.",
       "docs": "Nyaraka zilizo tayari na mahali pa kujaribu kila endpoint.",
-      "webhooks": "Tuma kila jibu jipya kwa mifumo yako mara linapofika. Limesainiwa na hujaribiwa tena.",
+      "webhooks": "Tuma kila jibu jipya kwa mifumo yako mara linapofika, ukiwa na tokeni yako ya webhook, na hujaribiwa tena.",
       "apiKeys": "Funguo za API ya Formalie: dhibiti fomu na majibu kutoka kwenye msimbo wako.",
       "apps": "Unganisha programu kama lahajedwali na gumzo la timu."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Tokeni ya Bearer",
-        "client": "Client id na secret"
+        "client": "Client id na secret",
+        "webhook": "Kwa webhook"
       },
       "kindHint": {
         "static": "Tokeni moja ya muda mrefu ambayo programu hutuma kwa kila mwito.",
-        "client": "Programu huzibadilisha kwa tokeni ya muda mfupi, ambayo ni salama zaidi tokeni ikivuja."
+        "client": "Programu huzibadilisha kwa tokeni ya muda mfupi, ambayo ni salama zaidi tokeni ikivuja.",
+        "webhook": "Formalie huutuma kwa anwani ya webhook yako ili mpokeaji wako ajue simu ni halisi. Hauwezi kuita API."
       },
       "scope": {
         "title": "Inaweza kuita nini",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Jinsi unavyoingia",
       "signInHelp": "Tokeni ni moja au nyingine, kamwe zote mbili. Tokeni ya Bearer hutumwa kama ilivyo; client id na secret hubadilishwa kwa /token kupata tokeni ya muda mfupi.",
-      "kindRequired": "Chagua jinsi tokeni hii inavyoingia."
+      "kindRequired": "Chagua jinsi tokeni hii inavyoingia.",
+      "webhookScope": "Tokeni ya webhook haiwezi kuita API. Formalie huituma kama Authorization: Bearer kwa kila simu kwa webhook zinazoitumia, ili mpokeaji wako athibitishe kuwa simu ni halisi.",
+      "webhookShort": "Webhook pekee",
+      "webhookUsage": "Mpokeaji wako huangalia kila simu:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (kitambulisho cha uwasilishaji, sawa kila jaribio jipya)"
     },
     "rotate": {
       "title": "Zungusha {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Husaidia kujua kwa nini mwito ulikataliwa. Majibu ya maswali ya kibinafsi (majina, barua pepe, nambari za simu, anwani, taarifa za benki) hufichwa kila wakati.",
         "for": "Zihifadhi kwa",
         "days": "siku {n} | siku {n}",
-        "never": "Tokeni hazirekodiwi kamwe kwenye kumbukumbu, ni sehemu yake inayoonekana tu. Thamani za vichwa vinavyohitajika na saini hufichwa.",
+        "never": "Tokeni hazirekodiwi kamwe kwenye kumbukumbu, ni sehemu yake inayoonekana tu.",
         "saved": "Mipangilio ya kumbukumbu imehifadhiwa"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Webhook mpya",
       "editTitle": "Hariri webhook",
-      "desc": "Formalie huita anwani hii kila tukio moja kati ya yaliyochaguliwa linapotokea, ikiwa na sahihi ili uweze kuthibitisha kuwa simu imetoka kwetu.",
+      "desc": "Formalie huita anwani hii kila tukio moja kati ya yaliyochaguliwa linapotokea, ikiwa na tokeni yako ya webhook ili uweze kuthibitisha kuwa simu imetoka kwetu.",
       "create": "Unda webhook",
       "namePlaceholder": "mf. Usawazishaji wa CRM",
       "urlHelp": "HTTPS kwenye anwani ya umma. Formalie hutuma POST yenye JSON na husubiri hadi sekunde 10 kupata jibu la 2xx.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Bado hakuna uwasilishaji",
       "noDeliveriesDesc": "Uwasilishaji huonekana hapa matukio yanapotokea. Tuma jaribio ili ujaribu anwani sasa.",
       "lastDelivery": "Mwisho {when}",
-      "secret": "Siri ya sahihi",
-      "secretTitle": "Siri ya sahihi ya {name}",
-      "secretHint": "Iweke kwenye seva yako pekee. Angalia sahihi ya kila simu kabla ya kuiamini (tazama Kuangalia sahihi kwenye paneli ya webhook).",
-      "rotate": "Siri mpya",
-      "rotateTitle": "Kubadilisha siri ya sahihi?",
-      "rotateDesc": "Siri mpya hutumika kuanzia uwasilishaji unaofuata, na ya zamani huacha kufanya kazi mara moja. Sasisha kipokezi chako mara moja.",
+      "secretHint": "Iweke kwenye seva yako pekee. Kataa simu yoyote ambayo header ya Authorization si hii hasa (angalia Kuangalia tokeni katika paneli ya webhook).",
       "deleteTitle": "Kufuta webhook hii?",
       "deleteDesc": "{name} haitapokea simu tena na kumbukumbu ya uwasilishaji wake itaondolewa. Hili haliwezi kutenduliwa.",
       "sendTest": "Tuma jaribio",
@@ -6174,7 +6174,8 @@
         "dns": "Anwani haikupatikana",
         "refused": "Muunganisho ulikataliwa",
         "tls": "Muunganisho salama umeshindwa (cheti)",
-        "failed": "Simu haikuweza kupigwa"
+        "failed": "Simu haikuweza kupigwa",
+        "token": "Hakuna tokeni inayoweza kutumika (imefutwa, imeisha muda au imeondolewa): chagua nyingine kwenye webhook"
       },
       "invalid": {
         "required": "Weka anwani",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook imehifadhiwa",
         "on": "Webhook imewashwa",
         "off": "Webhook imezimwa",
-        "rotated": "Siri mpya imeundwa",
         "deleted": "Webhook imefutwa",
         "resent": "Imewasilishwa",
         "resentFailed": "Imetumwa, lakini haijawasilishwa: tazama uwasilishaji"
       },
       "verify": {
-        "title": "Kuangalia sahihi",
-        "text": "Kila simu hubeba vichwa hivi. Hesabu upya sahihi kutoka kwa muhuri wa muda na mwili ghafi ukitumia siri yako, na ukatae simu ikiwa inatofautiana au ni ya zamani kuliko dakika tano.",
+        "title": "Kuangalia tokeni",
+        "text": "Kila simu hubeba header hizi. Ikatae isipokuwa Authorization ni Bearer na tokeni ya webhook yako hasa (linganisha kwa muda uleule). Formalie-Key ni kitambulisho cha uwasilishaji na hubaki sawa kwenye majaribio mapya: ruka ile uliyoshughulikia tayari.",
         "answer": "Jibu kwa hali yoyote ya 2xx ndani ya sekunde 10; fanya kazi halisi baadaye. Jibu lingine lolote hujaribiwa tena."
-      }
+      },
+      "token": "Tokeni ya webhook",
+      "tokenHelp": "Formalie huituma kama Authorization: Bearer kwa kila simu, kwa header zilezile za API. Tokeni za webhook hutengenezwa na kusimamiwa katika Tokeni na header.",
+      "tokenNew": "Tokeni mpya ya webhook: {name} · webhook",
+      "tokenTitle": "Tokeni ya webhook {name}",
+      "tokenGone": "Tokeni yake imefutwa, imeisha muda au imeondolewa: uwasilishaji unashindwa hadi uchague nyingine.",
+      "tokenOpen": "Fungua tokeni"
     },
     "onceDesc": "Nakili sasa. Unaweza kuiona tena baadaye kwenye paneli yake, baada ya kuthibitisha nenosiri lako."
   },

@@ -1,15 +1,14 @@
 /**
  * Webhooks in the mock (F13 M6), kept in `.data/mock/integrations.json`.
  * Webhooks really call their address: each response event becomes a delivery, signed with the
- * webhook's secret, retried after 1, 5, 15, 60 and 360 minutes (timers in this process; due retries
+ * webhook's token (made in Tokens & headers, sent as Authorization: Bearer), retried after 1, 5, 15, 60 and 360 minutes (timers in this process; due retries
  * are also picked up whenever the lists are read), and a webhook pauses itself after 20 failures in a
  * row. Delivery logs show the body with personal answers masked; the body as sent is kept for
  * retries and Send again (the real backend keeps it encrypted, 30 days). A few samples are seeded.
  */
-import { createHash, createHmac, randomBytes } from 'node:crypto'
 import type { H3Event } from 'h3'
 import type { Webhook, WebhookAttempt, WebhookDelivery, WebhookDeliveryDetail, WebhookDeliveryStatus, WebhookEvent } from '#shared/types/integrations'
-import { signedPayload, WEBHOOK_AUTO_PAUSE, WEBHOOK_RETRY_MINUTES, WEBHOOK_TIMEOUT_MS, webhookStatusOf } from '#shared/utils/integrations/webhooks'
+import { WEBHOOK_AUTO_PAUSE, WEBHOOK_RETRY_MINUTES, WEBHOOK_TIMEOUT_MS, webhookStatusOf } from '#shared/utils/integrations/webhooks'
 import { allFields } from '#shared/utils/forms/build'
 import { recordAudit } from '../core/audit'
 import { encodeId } from '../core/ids'
@@ -18,7 +17,8 @@ import { loadPersisted, savePersisted } from '../core/persist'
 import { seedOf } from './dataSourceSim'
 import { formsOf, type StoredForm } from './formStore'
 import { answersOf, findResponse } from './responseData'
-import { schemaOf } from './apiStore'
+import { apiOf, createToken, schemaOf } from './apiStore'
+import { secretPreview, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { MOCK_TENANTS, MOCK_USERS, type MockTenant } from './tenants'
 
 export interface StoredWebhook {
@@ -29,8 +29,10 @@ export interface StoredWebhook {
   form_ids: string[]
   enabled: boolean
   paused_reason: 'manual' | 'failures' | null
-  /** HMAC needs the secret itself: encrypted at rest by the real backend, plain in the mock. */
-  secret: string
+  /** The webhook token it sends (Tokens & headers, kind webhook; owner 2026-10-06: no separate secrets). */
+  token_id: string | null
+  /** Before webhook tokens: its own signing secret (moved into a token on first read). */
+  secret?: string
   consecutive_failures: number
   created_by: { id: string; name: string }
   created_at: string
@@ -67,15 +69,19 @@ export const saveIntegrations = () => savePersisted('integrations', () => Object
 const iso = (time: number) => new Date(time).toISOString()
 const dayOf = (time: number) => iso(time).slice(0, 10)
 
-export const newWebhookSecret = () => `formalie_hook_${randomBytes(24).toString('base64url')}`
-export const hashKey = (secret: string) => createHash('sha256').update(secret).digest('hex')
-export const keyPreview = (secret: string) => `${/^formalie_[a-z]+_/.exec(secret)?.[0] ?? ''}…${secret.slice(-4)}`
 
 export function integrationsOf(tenant: MockTenant): TenantIntegrations {
   let store = stores.get(tenant.id)
   if (!store) {
     store = seed(tenant)
     stores.set(tenant.id, store)
+    saveIntegrations()
+  }
+  // Webhooks send a webhook token now (owner, 2026-10-06): each one with its own secret gets a token of its own
+  for (const webhook of store.webhooks) {
+    if (webhook.token_id && !webhook.secret) continue
+    if (!webhook.token_id) webhook.token_id = createToken(tenant, { name: `${webhook.name} · webhook`, kind: 'webhook', mode: 'live', scopes: { services: [], endpoints: [], methods: [] }, expires_at: null }, webhook.created_by).token.id
+    delete webhook.secret
     saveIntegrations()
   }
   // API keys were folded into tokens (owner, 2026-10-06): saved keys are dropped
@@ -101,7 +107,7 @@ function seed(tenant: MockTenant): TenantIntegrations {
   const deliveries: StoredDelivery[] = []
   samples.forEach((sample, i) => {
     const created = Date.now() - (90 - i * 20) * DAY
-    const webhook: StoredWebhook = { id: crypto.randomUUID(), name: sample.name, url: sample.url, events: sample.events, form_ids: sample.form_ids, enabled: sample.enabled, paused_reason: sample.enabled ? null : 'manual', secret: newWebhookSecret(), consecutive_failures: sample.failing, created_by: by, created_at: iso(created), updated_at: iso(created + DAY) }
+    const webhook: StoredWebhook = { id: crypto.randomUUID(), name: sample.name, url: sample.url, events: sample.events, form_ids: sample.form_ids, enabled: sample.enabled, paused_reason: sample.enabled ? null : 'manual', token_id: null, consecutive_failures: sample.failing, created_by: by, created_at: iso(created), updated_at: iso(created + DAY) }
     webhooks.push(webhook)
     // A month of made-up deliveries (no bodies to resend: they are samples)
     for (let d = 29; d >= 0; d--) {
@@ -146,7 +152,7 @@ function sampleDelivery(webhook: StoredWebhook, event: WebhookEvent, form: Store
     next_retry_at: retrying ? iso(Math.max(Date.now() + 10 * 60_000, lastAt + WEBHOOK_RETRY_MINUTES[history.length - 1]! * 60_000)) : null,
     body: null,
     logged_body: body,
-    request_headers: deliveryHeaders(event, id, Math.floor(at / 1000), '••••'),
+    request_headers: deliveryHeaders(id, 'formalie_hook_live_…'),
     response: { headers: { 'content-type': ok ? 'application/json' : 'text/html' }, body: ok ? '{"received":true}' : null },
     history,
   }
@@ -175,7 +181,7 @@ export function toWebhook(tenant: MockTenant, webhook: StoredWebhook): Webhook {
     enabled: webhook.enabled,
     status: webhookStatusOf(webhook),
     paused_reason: webhook.enabled ? null : webhook.paused_reason,
-    secret_preview: keyPreview(webhook.secret),
+    token: tokenOf(tenant, webhook),
     deliveries_30d: recent.length,
     failed_30d: recent.filter(item => item.status === 'failed').length,
     success_rate: finished.length ? finished.filter(item => item.status === 'delivered').length / finished.length : null,
@@ -216,15 +222,16 @@ export function toDeliveryDetail(tenant: MockTenant, delivery: StoredDelivery): 
 
 // ── Delivering ────────────────────────────────────────────────────────────────────────────────
 
-function deliveryHeaders(event: WebhookEvent | 'ping', id: string, timestamp: number, signature: string): Record<string, string> {
-  return {
-    'Content-Type': 'application/json',
-    'User-Agent': 'Formalie-Webhooks/1.0',
-    'X-Formalie-Event': event,
-    'X-Formalie-Delivery': `dlv_${encodeId(id)}`,
-    'X-Formalie-Timestamp': String(timestamp),
-    'X-Formalie-Signature': signature,
-  }
+/** The webhook's token, if it still exists. */
+function tokenOf(tenant: MockTenant, webhook: StoredWebhook) {
+  const token = webhook.token_id ? apiOf(tenant).tokens.find(item => item.id === webhook.token_id) : undefined
+  return token ? { id: token.id, name: token.name, preview: token.preview, status: tokenStatusOf(token) } : null
+}
+
+/** The same headers as an API call (owner, 2026-10-06): the token as Bearer, JSON, and the delivery id as the
+ * Formalie-Key (the same on every retry of a delivery, so a receiver can skip one it already has). */
+function deliveryHeaders(id: string, bearer: string): Record<string, string> {
+  return { 'Authorization': `Bearer ${bearer}`, 'Content-Type': 'application/json', 'Formalie-Key': `dlv_${encodeId(id)}`, 'User-Agent': 'Formalie-Webhooks/1.0' }
 }
 
 const timers = new Map<string, ReturnType<typeof setTimeout>>()
@@ -254,17 +261,21 @@ const reasonOf = (error: unknown) => {
   return 'failed'
 }
 
-/** One try: signs the body with the current secret, POSTs it and records the answer. */
+/** One try: sends the body with the webhook's token, POSTs it and records the answer. */
 export async function attempt(tenant: MockTenant, delivery: StoredDelivery, event: H3Event | null): Promise<StoredDelivery> {
   const store = integrationsOf(tenant)
   const webhook = store.webhooks.find(item => item.id === delivery.webhook_id)
   if (!webhook || !delivery.body) return delivery
-  const timestamp = Math.floor(Date.now() / 1000)
-  const signature = `sha256=${createHmac('sha256', webhook.secret).update(signedPayload(timestamp, delivery.body)).digest('hex')}`
-  const headers = deliveryHeaders(delivery.event, delivery.id, timestamp, signature)
+  const token = webhook.token_id ? apiOf(tenant).tokens.find(item => item.id === webhook.token_id) : undefined
+  const usable = token && token.secret && ['active', 'expiring'].includes(tokenStatusOf(token))
+  const headers = deliveryHeaders(delivery.id, usable ? token.secret! : '')
   const started = Date.now()
   let entry: WebhookAttempt
-  try {
+  // No token to send (deleted, revoked or expired): nothing goes out; it counts as a failure to fix
+  if (!usable) {
+    entry = { at: iso(started), status_code: null, duration_ms: 0, error: 'token' }
+    delivery.response = null
+  } else try {
     const answer = await fetch(webhook.url, { method: 'POST', headers, body: delivery.body, redirect: 'manual', signal: AbortSignal.timeout(WEBHOOK_TIMEOUT_MS) })
     const text = (await answer.text()).slice(0, 2000)
     entry = { at: iso(started), status_code: answer.status, duration_ms: Date.now() - started, error: answer.ok ? null : `HTTP ${answer.status}` }
@@ -274,7 +285,7 @@ export async function attempt(tenant: MockTenant, delivery: StoredDelivery, even
     delivery.response = null
   }
   delivery.history.push(entry)
-  delivery.request_headers = { ...headers, 'X-Formalie-Signature': 'sha256=••••' }
+  delivery.request_headers = { ...headers, Authorization: `Bearer ${token ? secretPreview(token.secret ?? '') || token.preview : '—'}` }
   const ok = entry.status_code !== null && entry.status_code >= 200 && entry.status_code < 300
   if (ok) {
     delivery.status = 'delivered'

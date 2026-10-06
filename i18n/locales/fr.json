@@ -3657,7 +3657,7 @@
       "logs": "Chaque appel avec son statut, sa durée et son appelant.",
       "analytics": "Appels, erreurs et temps de réponse par service et par endpoint.",
       "docs": "Une documentation prête à l’emploi et un espace pour tester chaque endpoint.",
-      "webhooks": "Envoyez chaque nouvelle réponse à vos propres systèmes dès son arrivée, signée et relancée en cas d'échec.",
+      "webhooks": "Envoyez chaque nouvelle réponse à vos propres systèmes dès son arrivée, avec votre jeton de webhook, et relancée en cas d'échec.",
       "apiKeys": "Clés pour l'API de Formalie : gérez formulaires et réponses depuis votre code.",
       "apps": "Connectez des apps comme des tableurs et une messagerie d'équipe."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Jeton Bearer",
-        "client": "ID client et secret"
+        "client": "ID client et secret",
+        "webhook": "Pour les webhooks"
       },
       "kindHint": {
         "static": "Un jeton longue durée que l'application envoie à chaque appel.",
-        "client": "L'application les échange contre un jeton de courte durée, plus sûr en cas de fuite."
+        "client": "L'application les échange contre un jeton de courte durée, plus sûr en cas de fuite.",
+        "webhook": "Formalie l'envoie à l'adresse de votre webhook pour que votre récepteur sache que l'appel est réel. Il ne peut pas appeler l'API."
       },
       "scope": {
         "title": "Ce qu'il peut appeler",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Comment il se connecte",
       "signInHelp": "Un jeton est l'un ou l'autre, jamais les deux. Un jeton Bearer est envoyé tel quel ; un ID client et un secret sont échangés sur /token contre un jeton de courte durée.",
-      "kindRequired": "Choisissez comment ce jeton se connecte."
+      "kindRequired": "Choisissez comment ce jeton se connecte.",
+      "webhookScope": "Un jeton de webhook ne peut pas appeler l'API. Formalie l'envoie en Authorization: Bearer à chaque appel des webhooks qui l'utilisent, pour que votre récepteur vérifie que l'appel est réel.",
+      "webhookShort": "Webhooks uniquement",
+      "webhookUsage": "Votre récepteur vérifie chaque appel :\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (l'id de livraison, identique à chaque nouvelle tentative)"
     },
     "rotate": {
       "title": "Renouveler {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Aide à comprendre pourquoi un appel a été refusé. Les réponses aux questions personnelles (noms, e-mails, numéros de téléphone, adresses, coordonnées bancaires) sont toujours masquées.",
         "for": "Les conserver pendant",
         "days": "{n} jour | {n} jours",
-        "never": "Les tokens ne sont jamais journalisés, seulement leur partie visible. Les valeurs d'en-têtes requises et les signatures sont masquées.",
+        "never": "Les tokens ne sont jamais journalisés, seulement leur partie visible.",
         "saved": "Paramètres du journal enregistrés"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Nouveau webhook",
       "editTitle": "Modifier le webhook",
-      "desc": "Formalie appelle cette adresse chaque fois que l'un des événements choisis se produit, avec une signature pour vérifier que l'appel vient de nous.",
+      "desc": "Formalie appelle cette adresse chaque fois que l'un des événements choisis se produit, avec votre jeton de webhook pour vérifier que l'appel vient de nous.",
       "create": "Créer un webhook",
       "namePlaceholder": "p. ex. Synchro CRM",
       "urlHelp": "HTTPS sur une adresse publique. Formalie envoie un POST avec du JSON et attend jusqu'à 10 secondes une réponse 2xx.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Aucune livraison pour le moment",
       "noDeliveriesDesc": "Les livraisons apparaissent ici au fil des événements. Envoyez un test pour essayer l'adresse maintenant.",
       "lastDelivery": "Dernière {when}",
-      "secret": "Secret de signature",
-      "secretTitle": "Secret de signature de {name}",
-      "secretHint": "Gardez-le uniquement sur votre serveur. Vérifiez la signature de chaque appel avant de lui faire confiance (voir Vérification de la signature dans le panneau du webhook).",
-      "rotate": "Nouveau secret",
-      "rotateTitle": "Remplacer le secret de signature ?",
-      "rotateDesc": "Le nouveau secret est utilisé dès la prochaine livraison et l'ancien cesse de fonctionner immédiatement. Mettez à jour votre récepteur sans attendre.",
+      "secretHint": "Gardez-le uniquement sur votre serveur. Refusez tout appel dont l'en-tête Authorization n'est pas exactement celui-ci (voir Vérification du jeton dans le panneau du webhook).",
       "deleteTitle": "Supprimer ce webhook ?",
       "deleteDesc": "{name} ne reçoit plus d'appels et son journal de livraisons est supprimé. Cette action est irréversible.",
       "sendTest": "Envoyer un test",
@@ -6174,7 +6174,8 @@
         "dns": "L'adresse est introuvable",
         "refused": "La connexion a été refusée",
         "tls": "La connexion sécurisée a échoué (certificat)",
-        "failed": "L'appel n'a pas pu être effectué"
+        "failed": "L'appel n'a pas pu être effectué",
+        "token": "Aucun jeton utilisable (révoqué, expiré ou supprimé) : choisissez-en un autre dans le webhook"
       },
       "invalid": {
         "required": "Saisissez l'adresse",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook enregistré",
         "on": "Webhook activé",
         "off": "Webhook désactivé",
-        "rotated": "Nouveau secret créé",
         "deleted": "Webhook supprimé",
         "resent": "Livré",
         "resentFailed": "Envoyé, mais non livré : voir la livraison"
       },
       "verify": {
-        "title": "Vérification de la signature",
-        "text": "Chaque appel contient ces en-têtes. Recalculez la signature à partir de l'horodatage et du corps brut avec votre secret, et refusez l'appel si elle diffère ou date de plus de cinq minutes.",
+        "title": "Vérification du jeton",
+        "text": "Chaque appel porte ces en-têtes. Refusez-le sauf si Authorization est exactement Bearer suivi de votre jeton de webhook (comparez en temps constant). La Formalie-Key est l'id de livraison et reste la même lors des nouvelles tentatives : ignorez un appel déjà traité.",
         "answer": "Répondez avec un statut 2xx en moins de 10 secondes et faites le vrai travail ensuite. Toute autre réponse est retentée."
-      }
+      },
+      "token": "Jeton de webhook",
+      "tokenHelp": "Formalie l'envoie en Authorization: Bearer à chaque appel, avec les mêmes en-têtes que l'API. Les jetons de webhook se créent et se gèrent dans Jetons & en-têtes.",
+      "tokenNew": "Nouveau jeton de webhook : {name} · webhook",
+      "tokenTitle": "Jeton de webhook {name}",
+      "tokenGone": "Son jeton a été révoqué, a expiré ou a été supprimé : les livraisons échouent tant que vous n'en choisissez pas un autre.",
+      "tokenOpen": "Ouvrir le jeton"
     },
     "onceDesc": "Copiez-le maintenant. Vous pourrez le revoir plus tard dans son panneau, après confirmation de votre mot de passe."
   },

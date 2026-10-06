@@ -3657,7 +3657,7 @@
       "logs": "Elke aanroep met status, duur en aanroeper.",
       "analytics": "Aanroepen, fouten en responstijden per service en endpoint.",
       "docs": "Kant-en-klare documentatie en een plek om elk endpoint te testen.",
-      "webhooks": "Stuur elke nieuwe reactie direct naar je eigen systemen, ondertekend en met herhaalpogingen.",
+      "webhooks": "Stuur elke nieuwe reactie direct naar je eigen systemen, met je webhooktoken en met herhaalpogingen.",
       "apiKeys": "Sleutels voor de API van Formalie: beheer formulieren en reacties vanuit je code.",
       "apps": "Koppel apps zoals spreadsheets en teamchat."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Bearer-token",
-        "client": "Client-id en geheim"
+        "client": "Client-id en geheim",
+        "webhook": "Voor webhooks"
       },
       "kindHint": {
         "static": "Eén langlevend token dat de app bij elke aanroep meestuurt.",
-        "client": "De app wisselt ze in voor een kortlevend token, wat veiliger is als een token uitlekt."
+        "client": "De app wisselt ze in voor een kortlevend token, wat veiliger is als een token uitlekt.",
+        "webhook": "Formalie stuurt het naar je webhookadres zodat je ontvanger weet dat de aanroep echt is. Het kan de API niet aanroepen."
       },
       "scope": {
         "title": "Wat het mag aanroepen",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Hoe het zich aanmeldt",
       "signInHelp": "Een token is het een of het ander, nooit beide. Een Bearer-token wordt ongewijzigd verstuurd; een client-id en geheim worden bij /token ingeruild voor een kortlevend token.",
-      "kindRequired": "Kies hoe dit token zich aanmeldt."
+      "kindRequired": "Kies hoe dit token zich aanmeldt.",
+      "webhookScope": "Een webhooktoken kan de API niet aanroepen. Formalie stuurt het als Authorization: Bearer mee met elke aanroep naar de webhooks die het gebruiken, zodat je ontvanger kan controleren of de aanroep echt is.",
+      "webhookShort": "Alleen webhooks",
+      "webhookUsage": "Je ontvanger controleert elke aanroep:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (de bezorg-id, bij elke nieuwe poging hetzelfde)"
     },
     "rotate": {
       "title": "{name} roteren",
@@ -4334,7 +4339,7 @@
         "keepHint": "Helpt te achterhalen waarom een aanroep is geweigerd. Antwoorden op persoonlijke vragen (namen, e-mailadressen, telefoonnummers, adressen, bankgegevens) worden altijd gemaskeerd.",
         "for": "Bewaren gedurende",
         "days": "{n} dag | {n} dagen",
-        "never": "Tokens worden nooit gelogd, alleen het zichtbare deel. Vereiste headerwaarden en handtekeningen worden gemaskeerd.",
+        "never": "Tokens worden nooit gelogd, alleen het zichtbare deel.",
         "saved": "Loginstellingen opgeslagen"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Nieuwe webhook",
       "editTitle": "Webhook bewerken",
-      "desc": "Formalie roept dit adres aan zodra een van de gekozen gebeurtenissen plaatsvindt, ondertekend zodat je kunt controleren dat het van ons komt.",
+      "desc": "Formalie roept dit adres aan zodra een van de gekozen gebeurtenissen plaatsvindt, met je webhooktoken zodat je kunt controleren dat het van ons komt.",
       "create": "Webhook maken",
       "namePlaceholder": "bijv. CRM-synchronisatie",
       "urlHelp": "HTTPS op een openbaar adres. Formalie stuurt een POST met JSON en wacht maximaal 10 seconden op een 2xx-antwoord.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Nog geen leveringen",
       "noDeliveriesDesc": "Leveringen verschijnen hier zodra er gebeurtenissen plaatsvinden. Stuur nu een test om het adres uit te proberen.",
       "lastDelivery": "Laatste {when}",
-      "secret": "Ondertekeningsgeheim",
-      "secretTitle": "Ondertekeningsgeheim voor {name}",
-      "secretHint": "Bewaar het alleen op je server. Controleer bij elke aanroep de handtekening voordat je erop vertrouwt (zie De handtekening controleren in het paneel van de webhook).",
-      "rotate": "Nieuw geheim",
-      "rotateTitle": "Het ondertekeningsgeheim vervangen?",
-      "rotateDesc": "Het nieuwe geheim wordt gebruikt vanaf de volgende levering en het oude werkt direct niet meer. Werk je ontvanger meteen bij.",
+      "secretHint": "Bewaar het alleen op je server. Weiger elke aanroep waarvan de Authorization-header niet precies dit is (zie Het token controleren in het paneel van de webhook).",
       "deleteTitle": "Deze webhook verwijderen?",
       "deleteDesc": "{name} ontvangt geen aanroepen meer en het leveringslogboek wordt verwijderd. Dit kan niet ongedaan worden gemaakt.",
       "sendTest": "Test versturen",
@@ -6174,7 +6174,8 @@
         "dns": "Het adres is niet gevonden",
         "refused": "De verbinding is geweigerd",
         "tls": "De beveiligde verbinding is mislukt (certificaat)",
-        "failed": "De aanroep kon niet worden gedaan"
+        "failed": "De aanroep kon niet worden gedaan",
+        "token": "Geen bruikbaar token (ingetrokken, verlopen of verwijderd): kies een ander in de webhook"
       },
       "invalid": {
         "required": "Vul het adres in",
@@ -6206,16 +6207,21 @@
         "saved": "Webhook opgeslagen",
         "on": "Webhook ingeschakeld",
         "off": "Webhook uitgeschakeld",
-        "rotated": "Nieuw geheim gemaakt",
         "deleted": "Webhook verwijderd",
         "resent": "Afgeleverd",
         "resentFailed": "Verzonden, maar niet afgeleverd: bekijk de levering"
       },
       "verify": {
-        "title": "De handtekening controleren",
-        "text": "Elke aanroep bevat deze headers. Bereken de handtekening opnieuw uit het tijdstempel en de ruwe inhoud met je geheim en weiger de aanroep als die afwijkt of ouder is dan vijf minuten.",
+        "title": "Het token controleren",
+        "text": "Elke aanroep bevat deze headers. Weiger hem tenzij Authorization precies Bearer en je webhooktoken is (vergelijk in constante tijd). De Formalie-Key is de bezorg-id en blijft bij nieuwe pogingen hetzelfde: sla over wat je al hebt verwerkt.",
         "answer": "Antwoord binnen 10 seconden met een willekeurige 2xx-status en doe het echte werk daarna. Alles anders wordt opnieuw geprobeerd."
-      }
+      },
+      "token": "Webhooktoken",
+      "tokenHelp": "Formalie stuurt het mee als Authorization: Bearer bij elke aanroep, met dezelfde headers als de API. Webhooktokens maak en beheer je in Tokens & headers.",
+      "tokenNew": "Nieuw webhooktoken: {name} · webhook",
+      "tokenTitle": "Webhooktoken {name}",
+      "tokenGone": "Het token is ingetrokken, verlopen of verwijderd: bezorgingen mislukken tot je een ander kiest.",
+      "tokenOpen": "Open het token"
     },
     "onceDesc": "Kopieer het nu. Je kunt het later opnieuw bekijken in het paneel, na bevestiging van je wachtwoord."
   },

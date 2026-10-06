@@ -3657,7 +3657,7 @@
       "logs": "Mọi lượt gọi kèm trạng thái, thời gian xử lý và bên gọi.",
       "analytics": "Lượt gọi, lỗi và thời gian phản hồi theo dịch vụ và endpoint.",
       "docs": "Tài liệu sẵn có và nơi để thử từng endpoint.",
-      "webhooks": "Gửi từng phản hồi mới đến hệ thống của bạn ngay khi có. Được ký và tự thử lại.",
+      "webhooks": "Gửi từng phản hồi mới đến hệ thống của bạn ngay khi có, kèm token webhook của bạn và tự thử lại.",
       "apiKeys": "Khóa cho API của Formalie: quản lý biểu mẫu và phản hồi từ mã của bạn.",
       "apps": "Kết nối các ứng dụng như bảng tính và trò chuyện nhóm."
     },
@@ -3957,11 +3957,13 @@
       },
       "kind": {
         "static": "Bearer token",
-        "client": "Client id và secret"
+        "client": "Client id và secret",
+        "webhook": "Cho webhook"
       },
       "kindHint": {
         "static": "Một token dài hạn mà ứng dụng gửi kèm mỗi lệnh gọi.",
-        "client": "Ứng dụng đổi chúng lấy một token ngắn hạn, an toàn hơn nếu token bị lộ."
+        "client": "Ứng dụng đổi chúng lấy một token ngắn hạn, an toàn hơn nếu token bị lộ.",
+        "webhook": "Formalie gửi nó đến địa chỉ webhook của bạn để bên nhận biết cuộc gọi là thật. Nó không gọi được API."
       },
       "scope": {
         "title": "Có thể gọi gì",
@@ -4028,7 +4030,10 @@
       },
       "signIn": "Cách đăng nhập",
       "signInHelp": "Một token là cái này hoặc cái kia, không bao giờ cả hai. Bearer token được gửi nguyên trạng; client id và secret được đổi tại /token lấy một token ngắn hạn.",
-      "kindRequired": "Chọn cách token này đăng nhập."
+      "kindRequired": "Chọn cách token này đăng nhập.",
+      "webhookScope": "Token webhook không gọi được API. Formalie gửi nó dưới dạng Authorization: Bearer trong mỗi cuộc gọi tới các webhook dùng nó, để bên nhận kiểm tra cuộc gọi là thật.",
+      "webhookShort": "Chỉ cho webhook",
+      "webhookUsage": "Bên nhận của bạn kiểm tra mỗi cuộc gọi:\nAuthorization: Bearer {token}\nContent-Type: application/json\nFormalie-Key: dlv_…   (id giao, giống nhau ở mỗi lần thử lại)"
     },
     "rotate": {
       "title": "Xoay {name}",
@@ -4334,7 +4339,7 @@
         "keepHint": "Giúp tìm ra lý do lệnh gọi bị từ chối. Câu trả lời cho các câu hỏi cá nhân (tên, email, số điện thoại, địa chỉ, thông tin ngân hàng) luôn được che.",
         "for": "Lưu trong",
         "days": "{n} ngày | {n} ngày",
-        "never": "Token không bao giờ được ghi vào nhật ký, chỉ phần hiển thị của chúng. Giá trị header bắt buộc và chữ ký được che.",
+        "never": "Token không bao giờ được ghi vào nhật ký, chỉ phần hiển thị của chúng.",
         "saved": "Đã lưu cài đặt nhật ký"
       }
     },
@@ -6081,7 +6086,7 @@
     "webhooks": {
       "newTitle": "Webhook mới",
       "editTitle": "Sửa webhook",
-      "desc": "Formalie gọi địa chỉ này mỗi khi một trong các sự kiện đã chọn xảy ra, có chữ ký để bạn kiểm tra cuộc gọi đến từ chúng tôi.",
+      "desc": "Formalie gọi địa chỉ này mỗi khi một trong các sự kiện đã chọn xảy ra, kèm token webhook của bạn để bạn kiểm tra cuộc gọi đến từ chúng tôi.",
       "create": "Tạo webhook",
       "namePlaceholder": "VD: Đồng bộ CRM",
       "urlHelp": "HTTPS trên địa chỉ công khai. Formalie gửi một POST với JSON và chờ tối đa 10 giây để nhận phản hồi 2xx.",
@@ -6102,12 +6107,7 @@
       "noDeliveries": "Chưa có lượt gửi",
       "noDeliveriesDesc": "Các lượt gửi sẽ hiện ở đây khi có sự kiện. Hãy gửi thử để thử địa chỉ ngay.",
       "lastDelivery": "Gần nhất {when}",
-      "secret": "Bí mật chữ ký",
-      "secretTitle": "Bí mật chữ ký của {name}",
-      "secretHint": "Chỉ giữ nó trên máy chủ của bạn. Kiểm tra chữ ký của mọi cuộc gọi trước khi tin tưởng (xem Kiểm tra chữ ký trong bảng của webhook).",
-      "rotate": "Bí mật mới",
-      "rotateTitle": "Thay bí mật chữ ký?",
-      "rotateDesc": "Bí mật mới được dùng từ lượt gửi tiếp theo, bí mật cũ ngừng hoạt động ngay. Hãy cập nhật bên nhận của bạn ngay.",
+      "secretHint": "Chỉ giữ nó trên máy chủ của bạn. Từ chối mọi cuộc gọi có header Authorization không khớp chính xác với giá trị này (xem Kiểm tra token trong bảng của webhook).",
       "deleteTitle": "Xóa webhook này?",
       "deleteDesc": "{name} không còn nhận cuộc gọi và nhật ký lượt gửi bị xóa. Không thể hoàn tác thao tác này.",
       "sendTest": "Gửi thử",
@@ -6174,7 +6174,8 @@
         "dns": "Không tìm thấy địa chỉ",
         "refused": "Kết nối bị từ chối",
         "tls": "Kết nối bảo mật thất bại (chứng chỉ)",
-        "failed": "Không thể thực hiện cuộc gọi"
+        "failed": "Không thể thực hiện cuộc gọi",
+        "token": "Không có token dùng được (đã thu hồi, hết hạn hoặc bị xóa): chọn token khác trong webhook"
       },
       "invalid": {
         "required": "Nhập địa chỉ",
@@ -6206,16 +6207,21 @@
         "saved": "Đã lưu webhook",
         "on": "Đã bật webhook",
         "off": "Đã tắt webhook",
-        "rotated": "Đã tạo bí mật mới",
         "deleted": "Đã xóa webhook",
         "resent": "Đã gửi tới",
         "resentFailed": "Đã gửi nhưng chưa tới nơi: xem lượt gửi"
       },
       "verify": {
-        "title": "Kiểm tra chữ ký",
-        "text": "Mỗi cuộc gọi mang các header này. Tính lại chữ ký từ dấu thời gian và nội dung thô bằng bí mật của bạn, và từ chối cuộc gọi nếu khác hoặc cũ hơn năm phút.",
+        "title": "Kiểm tra token",
+        "text": "Mỗi cuộc gọi mang các header này. Hãy từ chối nếu Authorization không đúng là Bearer và token webhook của bạn (so sánh trong thời gian không đổi). Formalie-Key là id giao và giữ nguyên khi thử lại: bỏ qua cuộc gọi bạn đã xử lý.",
         "answer": "Trả lời bằng bất kỳ trạng thái 2xx nào trong 10 giây; làm việc thật sau đó. Mọi phản hồi khác sẽ được thử lại."
-      }
+      },
+      "token": "Token webhook",
+      "tokenHelp": "Formalie gửi nó dưới dạng Authorization: Bearer trong mỗi cuộc gọi, cùng header như API. Token webhook được tạo và quản lý trong Token & header.",
+      "tokenNew": "Token webhook mới: {name} · webhook",
+      "tokenTitle": "Token webhook {name}",
+      "tokenGone": "Token của nó đã bị thu hồi, hết hạn hoặc bị xóa: việc giao thất bại cho đến khi bạn chọn token khác.",
+      "tokenOpen": "Mở token"
     },
     "onceDesc": "Hãy sao chép ngay. Bạn có thể xem lại sau trong bảng của nó, sau khi xác nhận mật khẩu."
   },
