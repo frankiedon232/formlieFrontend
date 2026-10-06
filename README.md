@@ -163,7 +163,7 @@ And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` wi
 
 ### 7. Webhooks, logs
 
-1. **Webhooks:** New webhook → an address (`http://localhost:{port}/…` works while developing) and events. **Send a test** shows the receiver's answer. Change a response's status in Responses → a `response.status_changed` delivery with the previous status. Deliveries: tries, request (personal answers masked), answer, **Send again**. Check the signature with the code under _Checking the signature_.
+1. **Webhooks:** start the local receiver in a terminal: `pnpm webhook:listen` (listens on `http://localhost:4000/hooks` and prints every delivery). New webhook → address `http://localhost:4000/hooks`, the events, every form or some → copy the secret, stop the receiver and start it again as `WEBHOOK_SECRET=<secret> pnpm webhook:listen` so it checks each signature (`valid` / `WRONG`). **Send a test** shows the receiver's answer. Then: submit a form (or POST to an endpoint) → `response.created`; edit an answer → `response.updated`; change a status in Responses → `response.status_changed` with the previous status; delete a response → `response.deleted`. Retries: start it as `FAIL=500 pnpm webhook:listen`, submit once, and watch the delivery retry (1, 5, 15, 60, 360 minutes) and the webhook pause itself after repeated failures; **Send again** / **Retry now** in Deliveries. Deliveries show tries, the request (personal answers masked) and the answer.
 2. **Request logs and Analytics:** every call above appears with status, code, time, token and caller; Analytics and the Overview count them.
 
 ## Checks
