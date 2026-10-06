@@ -29,3 +29,16 @@ describe('icons from labels', () => {
     expect(iconFromLabel('Something', 'first_name_w6r3')).toBe('i-lucide-user')
   })
 })
+
+describe('more labels', () => {
+  it('cover questions and common business words', () => {
+    expect(iconFromLabel('What could we do better?')).toBe('i-lucide-message-square')
+    expect(iconFromLabel('When did it happen?')).toBe('i-lucide-calendar')
+    expect(iconFromLabel('Where did it happen?')).toBe('i-lucide-map-pin')
+    expect(iconFromLabel('Campaign source')).toBe('i-lucide-megaphone')
+    expect(iconFromLabel('Review priority')).toBe('i-lucide-signal-high')
+    expect(iconFromLabel('Accessibility needs')).toBe('i-lucide-accessibility')
+    expect(iconFromLabel('Subtotal')).toBe('i-lucide-banknote')
+    expect(iconFromLabel('Reported by')).toBe('i-lucide-user-round-check')
+  })
+})
