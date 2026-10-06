@@ -165,64 +165,123 @@ And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` wi
 
 ### 7. Webhooks
 
-Webhooks call your own address when something happens to a response. Every call carries the **same headers as an API call** (no separate secrets or signatures):
+**What a webhook is.** When something happens to a response (it is sent, changed, reviewed or deleted), Formalie calls an address of yours with the details, so your own system hears about it straight away. You choose the address, the events and the forms.
+
+**How your system knows the call is really from Formalie.** Every call carries the same headers as an API call, and nothing else:
 
 ```
 Authorization: Bearer <webhook token>
 Content-Type: application/json
-Formalie-Key: dlv_…   (the delivery id, the same on every retry)
+Formalie-Key: dlv_…
 ```
 
-The webhook token is a token of the type **For webhooks**, made and managed in **Tokens & headers** like any other (see it again with your password, rotate, revoke). It can never call the API (`401 FRM-API-1010`, `webhook_token`), so a leak at the receiver exposes nothing.
+- The **webhook token** is a token of the type _For webhooks_, kept in **API service → Tokens & headers** like your other tokens (see it again with your password, rotate it, revoke it). Your system must refuse any call whose `Authorization` is not exactly `Bearer <that token>`. A webhook token can never call the API, so if it leaks, nothing is exposed.
+- The **Formalie-Key** is the delivery's id. If Formalie has to send the same delivery again (your system did not answer), it keeps the same Formalie-Key, so your system can see it already handled it.
 
-To see webhooks while developing, run the local receiver that comes with the project, `pnpm webhook:listen` (`scripts/webhook-receiver.mjs`, no extra installs). It behaves like a real receiver must: it **requires the webhook token**, refuses any call without it or with a wrong one (`401`, the body is not even read), answers a retry it already handled without handling it again (same Formalie-Key), and prints each delivery. Run it in a second terminal next to `pnpm dev`.
+#### Testing webhooks on your computer
 
-The commands below are for PowerShell (the default terminal on Windows). In Git Bash or macOS / Linux write `WEBHOOK_TOKEN=... pnpm webhook:listen` instead.
+The project comes with a small **test receiver** that plays the part of "your system": `pnpm webhook:listen` (file `scripts/webhook-receiver.mjs`, nothing to install). It listens on `http://localhost:4000/hooks`, prints every call it gets, and behaves like a real receiver must:
 
-**1. Make the webhook:** API service → Webhooks → **New webhook**
+- it **will not start without the webhook token**;
+- a call **without the token or with a wrong one is refused** (`401`, the body is not even read);
+- a call it **already handled** (same Formalie-Key) is answered but not handled twice.
 
-- Address: `http://localhost:4000/hooks` (`http://localhost` is allowed while developing; real ones must be public HTTPS addresses).
-- Pick the events and the forms (every form, or only some).
-- **Webhook token:** leave _A new webhook token_ (made and named after the webhook, e.g. "Local test · webhook") or pick one you made in Tokens & headers (type _For webhooks_).
-- Create it: a new token is shown once with the headers to expect. **Copy it.** (Later: Tokens & headers → the token → Show, with your password.)
+You need **two terminals**: one running the portal (`pnpm dev`, as usual), one for the receiver. The commands below are for **PowerShell** (the default terminal on Windows). In Git Bash, macOS or Linux, write them as shown in the note under each one.
 
-**2. Start the receiver with the token.** It will not start without one:
+**Step 1 · Make the webhook in the portal**
+
+1. Open **API service → Webhooks → New webhook**.
+2. **Name:** anything, e.g. `Local test`.
+3. **Address:** `http://localhost:4000/hooks` (plain `http://localhost` is only allowed while developing; real webhooks need a public `https://` address).
+4. **Events:** tick the ones you want to see, e.g. all four.
+5. **Forms:** _Every form_ (or pick some).
+6. **Webhook token:** leave **A new webhook token**. Formalie makes one for this webhook and names it after it ("Local test · webhook"). You can also pick a webhook token you made before in Tokens & headers.
+7. Click **Create webhook**. A window shows the new token **once**. Click Copy.
+   Lost it? **Tokens & headers → Local test · webhook → Secret → Show** (asks for your password).
+
+**Step 2 · Start the test receiver with that token** (in the second terminal, inside the project folder)
 
 ```bash
 $env:WEBHOOK_TOKEN="formalie_hook_live_..."; pnpm webhook:listen
 ```
 
-It listens on `http://localhost:4000/hooks` (set `$env:PORT="4100"` first for another port).
+Git Bash / macOS / Linux: `WEBHOOK_TOKEN=formalie_hook_live_... pnpm webhook:listen`
 
-**3. Send a test** in the webhook's panel: the receiver prints `token valid`, the event `ping` and the Formalie-Key.
+You should see: `Webhook receiver on http://localhost:4000/hooks (token required)`.
+If you see `WEBHOOK_TOKEN is required…`, the token was not set: run the line again with your token pasted between the quotes.
+Port 4000 taken? Run `$env:PORT="4100"` first and use `http://localhost:4100/hooks` as the address in Step 1.
 
-**4. Test each event.** Every one prints a block in the receiver's terminal: `token valid`, the event, the Formalie-Key and the JSON (answers by their clean names, as in the API).
+**Step 3 · Send a test**
 
-| Do this                                                              | Event arrives                                        |
-| -------------------------------------------------------------------- | ---------------------------------------------------- |
-| Submit the form, or POST to one of its endpoints                     | `response.created`                                   |
-| Edit an answer of a response                                         | `response.updated`                                   |
-| Change a response's status in Responses                              | `response.status_changed` (with the previous status) |
-| Delete a response                                                    | `response.deleted`                                   |
-| Webhook limited to some forms: submit a form that is not one of them | nothing arrives                                      |
+In the portal, open the webhook (Webhooks list → Local test) and click **Send a test**. The panel shows _Delivered · 200_, and the receiver prints:
 
-**5. Failures and retries.** Restart the receiver so it answers with an error:
+```
+#1 5:27:12 PM  POST /hooks
+  token         valid
+  event         ping
+  Formalie-Key  dlv_2OBaQabeRLqRsM3MAn84Qn5FHYQ
+  { …the JSON… }
+  answered      200
+```
+
+**Step 4 · Try each event**
+
+| Do this in the portal (or with Postman)                               | The receiver shows                                     |
+| --------------------------------------------------------------------- | ------------------------------------------------------ |
+| Fill in a form, or POST to one of its endpoints                       | `response.created`                                     |
+| Change an answer of a response                                        | `response.updated`                                     |
+| Change a response's status in Responses                               | `response.status_changed`, with `previous_status`      |
+| Delete a response                                                     | `response.deleted`                                     |
+| Webhook set to some forms only: fill in a form that is not one of them | nothing (correct: that form is not listened to)       |
+
+The answers come with the same clean names as the API (`first_name`, `email_address`, …).
+
+**Step 5 · See what happens when your system fails**
+
+Stop the receiver (Ctrl + C) and start it so it answers every call with an error:
 
 ```bash
 $env:FAIL="500"; pnpm webhook:listen
 ```
 
-(`WEBHOOK_TOKEN` is still set in the same terminal.)
+(The token is still set in this terminal. Git Bash / macOS / Linux: `WEBHOOK_TOKEN=... FAIL=500 pnpm webhook:listen`.)
 
-Submit once, then open the webhook's **Deliveries**: the delivery shows as retrying (it tries again after 1, 5, 15, 60 and 360 minutes) and each retry arrives with the **same Formalie-Key** (the receiver says _seen before_); **Retry now** and **Send again** work; after repeated failures the webhook **pauses itself** (nothing is lost, deliveries can be sent again). Back to normal:
+Fill in a form once, then in the portal open the webhook → **Deliveries**:
+
+- the delivery shows as **retrying**; Formalie tries again after 1, 5, 15, 60 and 360 minutes;
+- every retry reaches the receiver with the **same Formalie-Key** as the first try;
+- **Retry now** sends it again at once; **Send again** sends a finished one as a new delivery;
+- after several failures in a row the webhook **pauses itself** and the panel says so (nothing is lost: switch it back on, then send the deliveries again).
+
+Back to normal: Ctrl + C, then
 
 ```bash
 Remove-Item Env:FAIL; pnpm webhook:listen
 ```
 
-**6. Wrong or missing token.** Start the receiver with a made-up `WEBHOOK_TOKEN`: every delivery is refused with `401` (`token WRONG`) and Formalie retries it, which is exactly what a real receiver must do. Revoke the webhook's token in Tokens & headers: the webhook's panel warns, and deliveries fail with _No usable token_ until you pick another one (Edit).
+**Step 6 · Check that a wrong token is refused**
 
-**7. What Formalie shows:** each delivery in Deliveries with its tries, the request sent (the token masked, personal answers masked) and your receiver's answer.
+Stop the receiver and start it with a made-up token:
+
+```bash
+$env:WEBHOOK_TOKEN="formalie_hook_live_wrong"; pnpm webhook:listen
+```
+
+Click **Send a test**: the receiver prints `token WRONG: refused` and answers `401`, and the portal shows the delivery as failed. That is exactly what a real receiver must do with a call that does not carry its token. Start it again with the right token afterwards.
+
+Also try: **Tokens & headers → Local test · webhook → Revoke**. The webhook's panel then warns that its token is gone, and deliveries fail with _No usable token_ until you pick another token (webhook → Edit → Webhook token).
+
+**What Formalie keeps:** every delivery in the webhook's **Deliveries**, with each try, the request it sent (the token shown masked, personal answers masked) and your system's answer.
+
+**If something does not work**
+
+| You see                                                    | Why, and what to do                                                                                   |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `WEBHOOK_TOKEN is required…` when starting the receiver     | The token was not set. Run the Step 2 line with your token between the quotes.                        |
+| Receiver prints `token WRONG` for real deliveries           | The token you started it with is not this webhook's token. Copy it again (Tokens & headers → Show).   |
+| Portal: _The connection was refused_                        | The receiver is not running, or listens on another port than the webhook's address.                   |
+| Portal: _No usable token_                                   | The webhook's token was revoked, expired or deleted. Webhook → Edit → pick or make another token.     |
+| Nothing arrives                                             | The webhook is switched off, does not listen to that event, or is set to other forms.                 |
 
 ### 8. Logs
 
