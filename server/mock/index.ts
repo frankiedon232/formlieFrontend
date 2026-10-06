@@ -34,6 +34,7 @@ import * as formInvites from './routes/formInvites'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
+import * as settings from './routes/settings'
 import * as uploads from './routes/uploads'
 import { csrf, handshake, health } from './routes/system'
 import * as tenants from './routes/tenants'
@@ -270,6 +271,13 @@ const router = createRouter()
   .delete('/page-designs/:id', pageDesigns.deletePageDesign)
   .get('/navigation/counts', navigationCounts)
   // onboarding + uploads
+  // workspace settings (F14)
+  .get('/settings', settings.getSettings)
+  .get('/settings/localisation', settings.getLocalisation)
+  // The exact address wins over /settings/:section in the router, so saving it needs its own line
+  .patch('/settings/localisation', settings.patchSection)
+  .get('/settings/:section', settings.getSection)
+  .patch('/settings/:section', settings.patchSection)
   .get('/onboarding', onboarding.getOnboarding)
   .patch('/onboarding', onboarding.patchOnboarding)
   .post('/onboarding/finish', onboarding.finishOnboarding)

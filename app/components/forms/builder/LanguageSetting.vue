@@ -21,8 +21,10 @@ const schema = builder.schema
 const session = injectBuilderSession()
 const translations = useFormTranslations()
 
-const items = computed(() => APP_LOCALES.map(item => ({ value: item.code, label: item.name, description: item.englishName, icon: item.flag })))
 const current = computed(() => schema.value?.settings?.language ?? 'en')
+// Only the languages the workspace offers for forms (Settings → Language and region, F14); the form's own stays
+const { locale: workspace } = useWorkspaceLocale()
+const items = computed(() => APP_LOCALES.filter(item => !workspace.value || workspace.value.form_languages.includes(item.code) || item.code === current.value).map(item => ({ value: item.code, label: item.name, description: item.englishName, icon: item.flag })))
 const flag = computed(() => APP_LOCALES.find(item => item.code === current.value)?.flag)
 const nameOf = (code: string) => APP_LOCALES.find(item => item.code === code)?.name ?? code
 

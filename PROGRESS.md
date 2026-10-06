@@ -24,7 +24,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
-| F14   | Settings                                          | ⬜     | 0%   |
+| F14   | Settings                                          | 🟡     | ~15% (M1 ✅) |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
@@ -711,20 +711,22 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ---
 
-## F14, Settings ⬜
+## F14, Settings 🟡
 
 **Goal:** one place where workspace admins control everything about their workspace. Each section is its own page under `/settings/*`, with a section menu (sidebar list on desktop, select on phones), unsaved-changes warning and a save bar.
 
+**Plan (2026-10-06, milestones):** **M1** ✅ Settings frame, Company, Branding, Language and region. **M2** Organisation data (departments, job titles, teams and locations; builder reads them). **M3** Sign-in and security. **M4** Notifications and emails (incl. emailing responses to the team and outside addresses). **M5** Privacy, data and form defaults. **M6** Appearance. **M7** Address, domain and organisations. Billing moved to F23.
+
 ### Settings shell
 
-- ⬜ `/settings` overview: section cards with a one-line status each (e.g. "2 sign-in methods enabled")
-- ⬜ Section navigation (desktop list, phone select), breadcrumbs, unsaved-changes guard
-- ⬜ Search inside settings (also from the command palette)
+- ✅ `/settings` overview: the workspace at a glance (logo, name, address), setup ring with the next step, section cards in groups with a live one-line status ("3 of 8 details filled in") or "Soon"
+- ✅ Section navigation: the Settings navigator in the menu column (sidebar takeover) on desktop, a Sections side panel elsewhere; breadcrumbs; Save / Discard in the header with Ctrl / ⌘ + S; unsaved-changes mark and leave warning (also on closing the tab)
+- ✅ Search inside settings (the navigator's search box) and from the command palette (admins)
 
 ### Company & branding
 
-- ⬜ Company profile: legal name, display name, industry, size, address, country, tax / registration number, support email and phone
-- ⬜ Branding: logo (light + dark), favicon, brand colour, sign-in page image and message; live preview of the workspace sign-in page
+- ✅ Company profile: legal name, display name, industry, size, website, address, country, tax / registration number, support email and phone, with a live "where it shows" card
+- ✅ Branding: logo (light + dark), favicon, brand colour, sign-in page image and message; live preview of the workspace sign-in page (light / dark); the real sign-in page and the browser tab follow
 
 ### Appearance: the workspace's own look of the portal (owner request 2026-10-05)
 
@@ -781,8 +783,8 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ### Localisation
 
-- ⬜ Default language, timezone, date and number format, first day of week, currency
-- ⬜ Languages offered on public forms
+- ✅ Default language, timezone, date and number format, first day of week, currency, with a live "how things will look" card; applied across the portal (useFormat)
+- ✅ Languages offered on public forms (form language pickers only offer these)
 
 ### Notifications & email templates
 
@@ -802,7 +804,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 - 🟡 Themes library (created in the designer, F8): list, rename, delete done in F8; set workspace default ⬜
 - ⬜ Embed defaults (allowed domains, size), default form settings (progress bar, save and resume)
 
-### Billing & subscription
+### Billing & subscription (moved to F23 Platform admin, owner 2026-10-06)
 
 - ⬜ Current plan, usage against limits (forms, responses per month, seats, destinations)
 - ⬜ Upgrade / change plan, payment method, invoices
@@ -1347,3 +1349,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 | "Docs & testing" is now "API Documentation" (owner): `nav.apiDocs` (menu, page title, breadcrumb, command palette) and the four guidance sentences that name it, in every language; README and dev guide follow. |
 | 2026-10-06 | F13 | Webhooks, owner review: the local receiver now requires `WEBHOOK_TOKEN` (will not start without it), refuses a missing or wrong token with 401 before reading the body, answers a repeated Formalie-Key without handling it again; webhook answers use the clean API names (the form's endpoint names, else from the labels; masking follows), never internal keys. Checked: no token 401, wrong 401, right 200, retry not handled twice; a real response.created arrived with token valid and clean names. |
 | 2026-10-06 | F13 | Owner tested the whole API service end to end (services, endpoints, tokens of all three kinds, access rules, API Documentation, Postman, duplicates and Formalie-Key, webhooks with the local receiver): phase closed. Stale open items ticked; left for the backend: TLS only and CORS for browser callers; dashboard and roles stay in F21 / F22. |
+| 2026-10-06 | F14 | M1 Settings frame and basics: one saved settings record per workspace (`settingsStore`, onboarding reads and writes it), `/settings` routes with shared validation (`shared/utils/settings/schemas.ts`) and field-by-field audit; Settings navigator in the menu column (takeover) or a Sections panel, overview with setup ring, next step and section statuses, search (navigator and Ctrl+K); Company (with a receipt-style preview), Branding (pictures upload at once; live sign-in preview; the sign-in page, its showcase and the browser tab icon use the branding), Language and region (live preview; useFormat applies time zone, short date format, number signs and currency everywhere; form language pickers follow form languages). Checked in the browser: overview statuses, Company save with a field error refused then saved, Branding uploads and preview, tab icon after reload, number format applied on another page (13.735), leave warning, phone layout; test edits undone. Tests: settings rules. |

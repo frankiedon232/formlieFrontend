@@ -16,8 +16,11 @@ const translations = useFormTranslations()
 const { main, extras } = translations
 
 const localeOf = (code: string) => APP_LOCALES.find(item => item.code === code)
+// Only the languages the workspace offers for forms (Settings → Language and region, F14)
+const { locale: workspace } = useWorkspaceLocale()
+const offered = (code: string) => !workspace.value || workspace.value.form_languages.includes(code)
 const addable = computed(() =>
-  APP_LOCALES.filter(item => item.code !== main.value && !extras.value.includes(item.code)).map(item => ({
+  APP_LOCALES.filter(item => item.code !== main.value && !extras.value.includes(item.code) && offered(item.code)).map(item => ({
     value: item.code,
     label: item.name,
     description: item.englishName,

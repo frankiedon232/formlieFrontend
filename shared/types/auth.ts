@@ -13,6 +13,11 @@ export interface TenantPublicProfile {
   name: string
   subdomain: string
   logo_url: string | null
+  /** Settings → Branding (F14): logo for dark backgrounds, browser tab icon, sign-in picture and welcome. */
+  logo_dark_url?: string | null
+  favicon_url?: string | null
+  signin_image_url?: string | null
+  signin_message?: string | null
   colors: { primary: string | null }
   /** The organisation's own website (public form pages link to it); null on manage.*. */
   website?: string | null

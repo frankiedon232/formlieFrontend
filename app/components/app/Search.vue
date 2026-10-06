@@ -1,5 +1,5 @@
 <!--
-  Command palette (Ctrl/⌘+K): pages, every folder (F11 M4: any folder one search away, however many
+  Command palette (Ctrl/⌘+K): pages, every folder, Settings sections (F14, admins) (F11 M4: any folder one search away, however many
   there are; each in its colour with its form count), actions, language. Theme toggle is built into
   UDashboardSearch.
 -->
@@ -13,6 +13,8 @@ const { shortcutsOpen } = useAppUi()
 const { locales, changeLocale } = useAppLocale()
 const { counts } = useNavCounts()
 const folderOf = (item: unknown) => (item as { folderColor?: string | null }).folderColor
+const settingsSections = useSettingsSections()
+const session = useSession()
 
 const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
   {
@@ -38,6 +40,16 @@ const groups = computed<CommandPaletteGroup<CommandPaletteItem>[]>(() => [
             suffix: t('forms.folders.count', { count: folder.count }, folder.count),
             to: `/folders/${folder.id}`,
           })),
+        },
+      ]
+    : []),
+  // Settings sections (F14), for admins: one search away
+  ...(session.user.value?.role !== 'member'
+    ? [
+        {
+          id: 'settings',
+          label: t('nav.settings'),
+          items: settingsSections.live.value.map(item => ({ label: settingsSections.label(item), suffix: settingsSections.description(item), icon: item.icon, to: item.to })),
         },
       ]
     : []),

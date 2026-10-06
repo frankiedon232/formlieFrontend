@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { current, uiLocale } = useAppLocale()
+const tenant = useTenant()
+// The workspace's own tab icon (Settings → Branding, F14), else its logo, else Formalie's
+const tabIcon = computed(() => (tenant.profile.value?.mode === 'tenant' ? (tenant.profile.value.favicon_url ?? tenant.profile.value.logo_url) : null) ?? null)
 
 // URLs are the same in every language (no_prefix), so no hreflang alternates, just lang/dir.
 useHead({
@@ -9,6 +12,7 @@ useHead({
     dir: () => current.value.dir,
   },
   titleTemplate: title => (title ? `${title} · ${t('app.name')}` : t('app.name')),
+  link: () => (tabIcon.value ? [{ key: 'workspace-icon', rel: 'icon', href: tabIcon.value }] : []),
 })
 </script>
 

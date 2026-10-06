@@ -91,7 +91,13 @@ export function useTenant() {
       lastWorkspace.value = { name: profile.value.name, subdomain: profile.value.subdomain }
   }
 
+  /** Settings → Branding / Company saved (F14): the sign-in page, tab icon and portal follow at once. */
+  function updateProfile(patch: Partial<TenantPublicProfile>) {
+    if (profile.value) profile.value = { ...profile.value, ...patch }
+  }
+
   return {
+    updateProfile,
     context: readonly(context),
     profile: readonly(profile),
     status: readonly(status),

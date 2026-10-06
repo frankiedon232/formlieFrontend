@@ -1,6 +1,7 @@
 /**
- * Locale-aware formatting (CLAUDE.md rule 17) via Intl, following the active language.
- * Tenant timezone/currency defaults arrive with Settings → Localisation (F14).
+ * Locale-aware formatting (CLAUDE.md rule 17) via Intl, following the active language, with the
+ * workspace's own language and region (Settings → Language and region, F14): its time zone for dates
+ * and times, its date format for short dates, its group / decimal signs for numbers, its currency.
  */
 const RELATIVE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
   ['year', 31_536_000],
@@ -15,6 +16,8 @@ const RELATIVE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
 export function useFormat() {
   const { current } = useAppLocale()
   const lang = computed(() => current.value.language)
+  const { locale: workspace } = useWorkspaceLocale()
+  const timeZone = computed(() => workspace.value?.timezone)
 
   const toDate = (value: string | number | Date) => (value instanceof Date ? value : new Date(value))
 
@@ -23,14 +26,14 @@ export function useFormat() {
     style: Intl.DateTimeFormatOptions['dateStyle'] = 'medium',
   ) {
     if (value == null || value === '') return ''
-    return new Intl.DateTimeFormat(lang.value, { dateStyle: style }).format(toDate(value))
+    // Short dates follow the workspace's date format (31/12/2026, 2026-12-31…)
+    if (style === 'short' && workspace.value) return formatDatePattern(toDate(value), workspace.value.date_format, workspace.value.timezone)
+    return new Intl.DateTimeFormat(lang.value, { dateStyle: style, timeZone: timeZone.value }).format(toDate(value))
   }
 
   function dateTime(value: string | number | Date | null | undefined) {
     if (value == null || value === '') return ''
-    return new Intl.DateTimeFormat(lang.value, { dateStyle: 'medium', timeStyle: 'short' }).format(
-      toDate(value),
-    )
+    return new Intl.DateTimeFormat(lang.value, { dateStyle: 'medium', timeStyle: 'short', timeZone: timeZone.value }).format(toDate(value))
   }
 
   /** "3 minutes ago", "in 2 days", falls back to "now" under 5 s. */
@@ -45,14 +48,21 @@ export function useFormat() {
 
   function number(value: number | null | undefined, options?: Intl.NumberFormatOptions) {
     if (value == null || Number.isNaN(value)) return ''
-    return new Intl.NumberFormat(lang.value, options).format(value)
+    const formatter = new Intl.NumberFormat(lang.value, options)
+    const signs = workspace.value ? NUMBER_SIGNS[workspace.value.number_format] : null
+    if (!signs) return formatter.format(value)
+    // The workspace's group and decimal signs, the rest (words, symbols) in the person's language
+    return formatter
+      .formatToParts(value)
+      .map(part => (part.type === 'group' ? signs.group : part.type === 'decimal' ? signs.decimal : part.value))
+      .join('')
   }
 
   const compact = (value: number | null | undefined) =>
     number(value, { notation: 'compact', maximumFractionDigits: 1 })
   const percent = (value: number | null | undefined, digits = 0) =>
     number(value, { style: 'percent', maximumFractionDigits: digits })
-  const currency = (value: number | null | undefined, code = 'USD') =>
+  const currency = (value: number | null | undefined, code = workspace.value?.currency ?? 'USD') =>
     number(value, { style: 'currency', currency: code })
 
   function fileSize(bytes: number | null | undefined) {

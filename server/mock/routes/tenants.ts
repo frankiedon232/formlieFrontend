@@ -14,6 +14,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { MOCK_TENANTS, MOCK_USERS } from '../data/tenants'
 import { websiteOf } from './onboarding'
+import { settingsOf } from '../data/settingsStore'
 
 /** GET /tenants/public, branding + enabled sign-in methods for this host. */
 export const publicProfile = defineMockRoute(({ event }) => {
@@ -31,12 +32,18 @@ export const publicProfile = defineMockRoute(({ event }) => {
     })
   }
   if (!tenant) throw new MockError('FRM-TEN-1001')
+  // The workspace's own name and branding from Settings (F14)
+  const { company, branding } = settingsOf(tenant)
   return ok<TenantPublicProfile>({
     mode: 'tenant',
-    name: tenant.name,
+    name: company.display_name || tenant.name,
     subdomain: tenant.subdomain,
-    logo_url: tenant.logo_url ?? null,
-    colors: { primary: tenant.brand_color ?? null },
+    logo_url: branding.logo_url,
+    logo_dark_url: branding.logo_dark_url,
+    favicon_url: branding.favicon_url,
+    signin_image_url: branding.signin_image_url,
+    signin_message: branding.signin_message,
+    colors: { primary: branding.brand_color },
     website: websiteOf(tenant),
     auth_providers: tenant.auth_providers,
     status: tenant.status,

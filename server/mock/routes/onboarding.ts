@@ -24,11 +24,12 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { MOCK_USERS, SEEDED_TENANT_IDS, type MockTenant } from '../data/tenants'
 import { completedUploadUrl } from './uploads'
+import { settingsOf, writeSettings } from '../data/settingsStore'
 
 const states = new Map<string, Onboarding>()
 
 /** The organisation's website as set in onboarding / Settings → Company (public pages, F10). */
-export const websiteOf = (tenant: MockTenant): string | null => stateOf(tenant).company.website ?? tenant.website ?? null
+export const websiteOf = (tenant: MockTenant): string | null => settingsOf(tenant).company.website ?? tenant.website ?? null
 
 function stateOf(tenant: MockTenant): Onboarding {
   let state = states.get(tenant.id)
@@ -41,21 +42,20 @@ function stateOf(tenant: MockTenant): Onboarding {
       steps: Object.fromEntries(
         ONBOARDING_STEPS.map(step => [step, seeded ? 'done' : 'todo']),
       ) as Onboarding['steps'],
-      company: { name: tenant.organisation.name, industry: null, size: null, country: null, website: tenant.website ?? null },
-      branding: { logo_url: tenant.logo_url ?? null, brand_color: tenant.brand_color ?? null },
-      localisation: {
-        language: 'en',
-        timezone: 'UTC',
-        currency: 'USD',
-        date_format: 'DD/MM/YYYY',
-        number_format: '1,234.56',
-        week_start: 'monday',
-      },
+      company: { name: tenant.organisation.name, industry: null, size: null, country: null, website: null },
+      branding: { logo_url: null, brand_color: null },
+      localisation: { language: 'en', timezone: 'UTC', currency: 'USD', date_format: 'DD/MM/YYYY', number_format: '1,234.56', week_start: 'monday' },
       invites: [],
       first_form: { choice: null, template_key: null },
     }
     states.set(tenant.id, state)
   }
+  // Company, branding and localisation live in the workspace settings (F14): onboarding shows what is saved there
+  const saved = settingsOf(tenant)
+  state.company = { name: saved.company.display_name, industry: saved.company.industry, size: saved.company.size, country: saved.company.address.country, website: saved.company.website }
+  state.branding = { logo_url: saved.branding.logo_url, brand_color: saved.branding.brand_color }
+  const { form_languages: _languages, ...localisation } = saved.localisation
+  state.localisation = localisation
   return state
 }
 
@@ -127,8 +127,9 @@ export const patchOnboarding = defineMockRoute(({ event, body }) => {
     if (input.step === 'company') {
       const data = parseBody(company, input.data)
       const changes = diff(state.company, data, ['name', 'industry', 'size', 'country', 'website'])
+      const saved = settingsOf(tenant).company
+      writeSettings(tenant, 'company', { ...saved, display_name: data.name, legal_name: saved.legal_name || data.name, industry: data.industry, size: data.size, website: data.website, address: { ...saved.address, country: data.country } }, `${user.first_name} ${user.last_name}`)
       state.company = data
-      tenant.organisation.name = data.name
       if (changes.length)
         recordAudit(event, tenant, {
           action: 'workspace.updated',
@@ -152,8 +153,7 @@ export const patchOnboarding = defineMockRoute(({ event, body }) => {
         ]),
       ]
       state.branding = next
-      tenant.logo_url = next.logo_url
-      tenant.brand_color = next.brand_color
+      writeSettings(tenant, 'branding', { ...settingsOf(tenant).branding, logo_url: next.logo_url, brand_color: next.brand_color }, `${user.first_name} ${user.last_name}`)
       if (changes.length)
         recordAudit(event, tenant, {
           action: 'settings.updated',
@@ -173,6 +173,7 @@ export const patchOnboarding = defineMockRoute(({ event, body }) => {
         'week_start',
       ])
       state.localisation = data
+      writeSettings(tenant, 'localisation', { ...settingsOf(tenant).localisation, ...data }, `${user.first_name} ${user.last_name}`)
       if (changes.length)
         recordAudit(event, tenant, {
           action: 'settings.updated',

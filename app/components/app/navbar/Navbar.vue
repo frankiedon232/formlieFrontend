@@ -48,7 +48,7 @@ const languageItems = computed(() =>
           class="hidden min-w-0 items-center gap-1.5 text-xs text-muted sm:flex"
         >
           <AppBreadcrumbs v-if="showCrumbs" class="min-w-0 shrink-0" compact />
-          <span v-if="showCrumbs && props.subtitle" aria-hidden="true">·</span>
+          <span v-if="showCrumbs && props.subtitle && !$slots.meta" aria-hidden="true">·</span>
           <span v-if="showCrumbs && $slots.meta" aria-hidden="true">·</span>
           <!-- #meta: live status line (design: "Last sync: Just now"), e.g. "Draft · Saved just now". -->
           <slot name="meta">
