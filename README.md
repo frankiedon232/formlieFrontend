@@ -161,10 +161,62 @@ And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` wi
 2. `POST …/{endpoint}/files?field={question key}` with Body → form-data, key `file` (type File) → `201` with an `id`. A `.exe` gets `422 FRM-RESP-1001` (`file_type`).
 3. Send the id in the JSON: `"cv_resume": ["<id>"]`.
 
-### 7. Webhooks, logs
+### 7. Webhooks
 
-1. **Webhooks:** start the local receiver in a terminal: `pnpm webhook:listen` (listens on `http://localhost:4000/hooks` and prints every delivery). New webhook → address `http://localhost:4000/hooks`, the events, every form or some → copy the secret, stop the receiver and start it again as `WEBHOOK_SECRET=<secret> pnpm webhook:listen` so it checks each signature (`valid` / `WRONG`). **Send a test** shows the receiver's answer. Then: submit a form (or POST to an endpoint) → `response.created`; edit an answer → `response.updated`; change a status in Responses → `response.status_changed` with the previous status; delete a response → `response.deleted`. Retries: start it as `FAIL=500 pnpm webhook:listen`, submit once, and watch the delivery retry (1, 5, 15, 60, 360 minutes) and the webhook pause itself after repeated failures; **Send again** / **Retry now** in Deliveries. Deliveries show tries, the request (personal answers masked) and the answer.
-2. **Request logs and Analytics:** every call above appears with status, code, time, token and caller; Analytics and the Overview count them.
+Webhooks call your own address when something happens to a response. To see them while developing, run the local receiver that comes with the project, `pnpm webhook:listen` (`scripts/webhook-receiver.mjs`, no extra installs). It prints every delivery and checks its signature. Run it in a second terminal next to `pnpm dev`.
+
+The commands below are for PowerShell (the default terminal on Windows). In Git Bash or macOS / Linux write `WEBHOOK_SECRET=... pnpm webhook:listen` and `FAIL=500 pnpm webhook:listen` instead.
+
+**1. Start the receiver**
+
+```bash
+pnpm webhook:listen
+```
+
+It listens on `http://localhost:4000/hooks` (set `$env:PORT="4100"` first for another port).
+
+**2. Make the webhook:** API service → Webhooks → **New webhook**
+
+- Address: `http://localhost:4000/hooks` (`http://localhost` is allowed while developing; real ones must be public HTTPS addresses).
+- Pick the events and the forms (every form, or only some).
+- **Copy the secret** it shows.
+
+**3. Restart the receiver with the secret** (Ctrl + C, then), so it checks every signature:
+
+```bash
+$env:WEBHOOK_SECRET="formalie_hook_..."; pnpm webhook:listen
+```
+
+**4. Test each event.** Every one prints a block in the receiver's terminal: the event, the delivery id, `signature valid` and the JSON.
+
+| Do this                                                         | Event arrives                                          |
+| --------------------------------------------------------------- | ------------------------------------------------------ |
+| **Send a test** in the webhook's panel                          | `ping`                                                 |
+| Submit the form, or POST to one of its endpoints                | `response.created`                                     |
+| Edit an answer of a response                                    | `response.updated`                                     |
+| Change a response's status in Responses                         | `response.status_changed` (with the previous status)   |
+| Delete a response                                               | `response.deleted`                                     |
+| Webhook limited to some forms: submit a form that is not one of them | nothing arrives                                   |
+
+**5. Failures and retries.** Restart the receiver so it answers with an error:
+
+```bash
+$env:FAIL="500"; pnpm webhook:listen
+```
+
+Submit once, then open the webhook's **Deliveries**: the delivery shows as retrying (it tries again after 1, 5, 15, 60 and 360 minutes); **Retry now** and **Send again** work; after repeated failures the webhook **pauses itself** (nothing is lost, deliveries can be sent again). Back to normal:
+
+```bash
+Remove-Item Env:FAIL; pnpm webhook:listen
+```
+
+**6. Wrong secret.** Start the receiver with a made-up `WEBHOOK_SECRET`: every delivery shows `signature WRONG`, which is exactly what a real receiver must refuse. Signatures are `X-Formalie-Signature: sha256=<hex>`, the HMAC-SHA256 of `{X-Formalie-Timestamp}.{raw body}` with the secret; refuse anything older than 5 minutes.
+
+**7. What Formalie shows:** each delivery in Deliveries with its tries, the request sent (personal answers masked) and your receiver's answer.
+
+### 8. Logs
+
+**Request logs and Analytics:** every call above appears with status, code, time, token and caller; Analytics and the Overview count them.
 
 ## Checks
 
