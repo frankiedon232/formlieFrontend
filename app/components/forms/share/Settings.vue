@@ -19,12 +19,13 @@ const settings = ref<FormShareSettings | null>(null)
 const loading = ref(true)
 const failed = ref(false)
 
-const draft = reactive<ShareDraft>({ access: 'public', password: '', limitOn: false, limit: 10, link: '', embedLimited: false, domains: [], seoTitle: '', seoDescription: '', seoImage: null, noindex: false, teamAccess: 'edit', grants: [] })
+const draft = reactive<ShareDraft>({ channels: ['link', 'embed', 'api'], access: 'public', password: '', limitOn: false, limit: 10, link: '', embedLimited: false, domains: [], seoTitle: '', seoDescription: '', seoImage: null, noindex: false, teamAccess: 'edit', grants: [] })
 /** The custom link can be saved (empty, unchanged or checked as free). */
 const linkOk = ref(true)
 
 function reset(from: FormShareSettings) {
   Object.assign(draft, {
+    channels: [...from.channels],
     access: from.access,
     password: '',
     limitOn: from.response_limit != null,
@@ -57,6 +58,8 @@ async function load() {
 }
 onMounted(load)
 
+/** The form has a web address (its link or an embed). */
+const web = computed(() => draft.channels.some(channel => channel !== 'api'))
 /** Embed websites as they will be saved: none when "any website" is chosen. */
 const embedDomains = () => (draft.embedLimited ? draft.domains : [])
 
@@ -66,6 +69,7 @@ const dirty = computed(() => {
   const s = settings.value
   if (!s) return false
   return (
+    draft.channels.join() !== s.channels.join() ||
     draft.access !== s.access ||
     !!draft.password ||
     (draft.limitOn ? draft.limit : null) !== s.response_limit ||
@@ -87,7 +91,7 @@ const canSave = computed(() => canEdit.value && dirty.value && linkOk.value && !
 function applyToSession(next: FormShareSettings) {
   rowVersion.value = next.row_version
   if (form.value)
-    form.value = { ...form.value, access: next.access, custom_link: next.custom_link, response_limit: next.response_limit, opens_at: next.opens_at, closes_at: next.closes_at, row_version: next.row_version, short_code: next.short_link?.code ?? null }
+    form.value = { ...form.value, channels: next.channels, access: next.access, custom_link: next.custom_link, response_limit: next.response_limit, opens_at: next.opens_at, closes_at: next.closes_at, row_version: next.row_version, short_code: next.short_link?.code ?? null }
 }
 
 const { busy, run } = useBusy()
@@ -99,6 +103,7 @@ async function save() {
         row_version: rowVersion.value,
         // The password first, so "password" access can be switched on in the same save.
         ...(draft.password ? { password: draft.password } : {}),
+        channels: draft.channels,
         access: draft.access,
         response_limit: draft.limitOn ? draft.limit : null,
         custom_link: draft.link.trim() || null,
@@ -154,13 +159,16 @@ onBeforeRouteLeave(async () => (dirty.value ? await useConfirm()({ title: t('sha
       <div class="flex min-w-0 flex-col gap-4">
         <!-- Two worlds, kept apart (owner, 2026-10-04): the people the form is sent to, and your team. -->
         <FormsShareSection icon="i-lucide-send" :title="t('share.section.answering')" :description="t('share.section.answeringDesc')" />
-        <FormsShareAccessCard v-model:draft="draft" :settings="settings" :form-id="form.id" />
+        <FormsShareChannelsCard v-model:draft="draft" />
+        <FormsShareAccessCard v-if="web" v-model:draft="draft" :settings="settings" :form-id="form.id" />
         <FormsShareLimitsCard v-model:draft="draft" :settings="settings" @availability="availabilityOpen = true" />
-        <FormsShareLinksGuide :settings="settings" :form="form" />
-        <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
-        <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
-        <FormsShareEmbedCard v-model:draft="draft" :settings="settings" :form="form" />
-        <FormsShareSeoCard v-model:draft="draft" :settings="settings" :form="form" />
+        <template v-if="draft.channels.includes('link')">
+          <FormsShareLinksGuide :settings="settings" :form="form" />
+          <FormsShareLinkCard v-model:draft="draft" v-model:ok="linkOk" :settings="settings" :form="form" />
+          <FormsShareShortLinkCard :settings="settings" :form="form" @changed="shortChanged" />
+        </template>
+        <FormsShareEmbedCard v-if="draft.channels.includes('embed')" v-model:draft="draft" :settings="settings" :form="form" />
+        <FormsShareSeoCard v-if="draft.channels.includes('link')" v-model:draft="draft" :settings="settings" :form="form" />
         <FormsShareSection icon="i-lucide-users" :title="t('share.section.team')" :description="t('share.section.teamDesc')" class="mt-4" />
         <FormsSharePeopleCard v-model:draft="draft" :settings="settings" />
       </div>

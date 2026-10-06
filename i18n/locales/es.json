@@ -328,6 +328,21 @@
       "updated": "Actualizado {when}",
       "access": "Acceso",
       "noTags": "Sin etiquetas"
+    },
+    "channels": {
+      "title": "Dónde pueden responder las personas",
+      "desc": "Elige cómo recibe respuestas este formulario. Desactiva lo que no uses.",
+      "link": "Enlace web",
+      "embed": "Insertar",
+      "api": "Servicio de API",
+      "linkHint": "Su propia dirección, enlace corto y código QR.",
+      "embedHint": "Dentro de tu sitio web, en un marco.",
+      "apiHint": "Otras apps envían y leen respuestas mediante endpoints.",
+      "makeApiOnly": "Solo API",
+      "allThree": "Los tres",
+      "apiOnly": "Solo API",
+      "apiOnlyHint": "Este formulario no tiene dirección web: su enlace, enlace corto e inserción responden “no encontrado”, como un formulario que no existe. Las apps solo llegan a él mediante tus endpoints de API.",
+      "openShare": "Abrir ajustes de Compartir"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "La contraseña no es correcta.",
     "FRM-API-1016": "Este secreto no se puede mostrar: se creó antes de que los secretos pudieran verse de nuevo. Rótalo para obtener uno nuevo.",
     "FRM-API-1017": "Envía el cuerpo como JSON con Content-Type: application/json.",
-    "FRM-API-1018": "El cuerpo es demasiado grande (máximo 1 MB; envía los archivos mediante el paso de carga)."
+    "FRM-API-1018": "El cuerpo es demasiado grande (máximo 1 MB; envía los archivos mediante el paso de carga).",
+    "FRM-API-1019": "Este formulario no está abierto al servicio de API. Activa la API en sus ajustes de Compartir."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Añade tu sitio web en Configuración → Empresa para mostrar el enlace.",
       "showFacts": "Datos rápidos",
       "showFactsHint": "Cuánto tarda, cuántas preguntas tiene y que las respuestas están cifradas."
-    }
+    },
+    "applied": "“{name}” aplicado"
   },
   "themes": {
     "subtitle": "Diseños guardados que puede usar en cualquier formulario",
@@ -3851,7 +3868,14 @@
         "DELETE": "Eliminar una respuesta por su id; queda en el registro de auditoría."
       },
       "afterTitle": "Qué pasa después",
-      "afterText": "El endpoint se crea sin activar. Los tokens de prueba ya pueden llamarlo, así que puedes probarlo con seguridad. Después dale un token live, añade reglas de acceso si quieres y actívalo."
+      "afterText": "El endpoint se crea sin activar. Los tokens de prueba ya pueden llamarlo, así que puedes probarlo con seguridad. Después dale un token live, añade reglas de acceso si quieres y actívalo.",
+      "notReady": "Aún no está listo para la API",
+      "draftHint": "Aún no publicado. Publícalo solo para la API: nunca tendrá dirección web.",
+      "closedHint": "Publicado, pero no abierto al servicio de API.",
+      "publishForApi": "Publicar solo para la API",
+      "openToApi": "Abrir a la API",
+      "publishedForApi": "“{name}” está publicado solo para la API",
+      "openedToApi": "“{name}” está abierto a la API"
     },
     "tokens": {
       "title": "Tokens",
@@ -4429,7 +4453,8 @@
         "title": "Servicio y formulario",
         "ok": "En {service}, responde con el formulario {form}.",
         "serviceOff": "Su servicio {name} está apagado, así que el endpoint no puede responder. Enciende el servicio.",
-        "formOff": "Su formulario no está publicado, así que el endpoint no puede responder. Publica el formulario."
+        "formOff": "Su formulario no está publicado, así que el endpoint no puede responder. Publica el formulario.",
+        "formNoApi": "Su formulario no está abierto al servicio de API, así que el endpoint no puede responder. Activa la API en los ajustes de Compartir del formulario."
       },
       "token": {
         "title": "Un token que pueda llamarlo",

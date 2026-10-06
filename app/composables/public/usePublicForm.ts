@@ -9,7 +9,8 @@ const INTERNAL_TOKEN_HEADER = 'x-formalie-internal'
  * response already holds the whole form. In the browser (later visits within the app) it falls
  * back to the enveloped public API.
  */
-export async function usePublicForm(key: string) {
+/** `channel`: the embed page asks as 'embed' (a form without that channel is not found there). */
+export async function usePublicForm(key: string, channel: 'link' | 'embed' = 'link') {
   const config = useRuntimeConfig()
   const requestFetch = import.meta.server ? useRequestFetch() : null
   const host = import.meta.server ? useRequestURL().host : ''
@@ -23,15 +24,15 @@ export async function usePublicForm(key: string) {
   const legal = useState<PublicForm['legal'] | null>('public:legal', () => null)
 
   // Not awaited yet: the watchers below are set up first, so they belong to the page (and stop with it).
-  const loading = useAsyncData(`public-form:${key}`, async () => {
+  const loading = useAsyncData(`public-form:${channel}:${key}`, async () => {
     if (import.meta.server && requestFetch) {
-      return requestFetch<{ data?: PublicForm; error?: { code: string } }>(`/_ssr/public-forms/${encodeURIComponent(key)}`, {
+      return requestFetch<{ data?: PublicForm; error?: { code: string } }>(`/_ssr/public-forms/${encodeURIComponent(key)}?channel=${channel}`, {
         headers: { [INTERNAL_TOKEN_HEADER]: String(config.internalToken ?? ''), 'x-forwarded-host': host, cookie },
         ignoreResponseError: true,
       })
     }
     try {
-      return { data: (await api.get<PublicForm>(`/public/forms/${encodeURIComponent(key)}`)).data }
+      return { data: (await api.get<PublicForm>(`/public/forms/${encodeURIComponent(key)}`, { channel })).data }
     } catch (error) {
       return { error: { code: (error as { code?: string }).code ?? 'FRM-GEN-5000' } }
     }

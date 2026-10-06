@@ -138,6 +138,7 @@ export const ERROR_CODES = {
   'FRM-API-1015': { status: 403, message: 'This caller is not allowed by the access rules.' },
   'FRM-API-1017': { status: 415, message: 'Send the body as JSON with Content-Type: application/json.' },
   'FRM-API-1018': { status: 413, message: 'The body is too large (1 MB at most; send files through the upload step).' },
+  'FRM-API-1019': { status: 422, message: 'This form is not open to the API service. Turn the API on in its Share settings.' },
   'FRM-API-1016': { status: 409, message: 'This secret can not be shown: it was made before secrets could be viewed again. Rotate it for a new one.' },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },

@@ -44,6 +44,7 @@ import { MOCK_TENANTS, type MockTenant } from './data/tenants'
 import { recordLog } from './data/apiTraffic'
 import { maskAnswers, PERSONAL_TYPES } from './core/mask'
 import { API_NETWORKS } from '#shared/types/apiService'
+import { channelsOf } from '#shared/types/forms'
 import { emitResponse } from './data/integrationStore'
 import { handleManagementApi } from './managementApi'
 
@@ -302,6 +303,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const schema = form ? schemaOf(form, endpoint.version) : null
     if (service?.status !== 'active') throw new PublicError('FRM-API-1007', [{ field: 'service', message: 'switched_off' }])
     if (!form || form.status !== 'published' || !schema) throw new PublicError('FRM-API-1007', [{ field: 'form', message: 'not_published' }])
+    if (!channelsOf(form).includes('api')) throw new PublicError('FRM-API-1007', [{ field: 'form', message: 'not_for_api' }])
     // Not live yet: only test tokens get through, so it can be tried before going live (owner, 2026-10-06)
     if (endpoint.status !== 'active' && token.mode !== 'test') throw new PublicError('FRM-API-1007', [{ field: 'endpoint', message: 'not_live' }])
     // The choices as the portal shows them: worked out from the form (a question the form requires is always accepted)

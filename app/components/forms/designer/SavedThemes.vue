@@ -1,6 +1,6 @@
 <!--
-  "Your themes" in the designer: the workspace's saved designs (apply in one click, confirm when
-  it replaces a custom design) and "Save as theme" / "Update theme" for the current design.
+  "Your themes" in the designer: the workspace's saved designs (apply in one click, no confirm:
+  Undo is one click away, owner 2026-10-06) and "Save as theme" / "Update theme" for the current design.
 -->
 <script setup lang="ts">
 import type { SavedTheme } from '#shared/types/forms'
@@ -8,16 +8,15 @@ import type { SavedTheme } from '#shared/types/forms'
 const { t } = useI18n()
 const d = useDesigner()
 const library = useThemes()
-const confirm = useConfirm()
 onMounted(() => library.load())
 
 const saveOpen = ref(false)
 const current = computed(() => library.themes.value.find(item => item.id === d.themeId.value) ?? null)
 
-async function apply(saved: SavedTheme) {
-  if (d.customised.value && d.themeId.value !== saved.id && !(await confirm({ title: t('designer.replaceTitle'), description: t('designer.replaceDesc'), confirmLabel: t('designer.replace') })))
-    return
+function apply(saved: SavedTheme) {
+  if (d.themeId.value === saved.id) return
   d.applySaved(saved)
+  d.applied(saved.name)
 }
 </script>
 

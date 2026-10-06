@@ -10,6 +10,7 @@ import { createHash, randomBytes } from 'node:crypto'
 import type { ApiAccessRule, ApiEndpoint, ApiEndpointDetail, ApiEndpointSetup, ApiRateLimits, ApiRuleAction, ApiRuleKind, ApiService, ApiStatus, ApiToken, ApiTokenKind, ApiTokenMode, ApiTokenScopes, ApiUsage } from '#shared/types/apiService'
 import { maskValue, scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { rulesFor } from '#shared/utils/apiService/access'
+import { channelsOf } from '#shared/types/forms'
 import { endpointFieldsOf, endpointNameFrom } from '#shared/utils/apiService/endpoints'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { API_METHODS, apiEndpointUrl, type ApiMethod } from '#shared/utils/urls/public'
@@ -426,7 +427,7 @@ export function toEndpointDetail(tenant: MockTenant, endpoint: StoredApiEndpoint
     ...toEndpoint(tenant, endpoint),
     fields: schema ? endpointFieldsOf(schema, endpoint.fields) : [],
     page_size: endpoint.page_size,
-    headers: (endpoint.headers ?? []).map(header => ({ name: header.name, preview: maskValue(header.value) })),
+    headers: (endpoint.headers ?? []).map(header => ({ name: header.name, preview: maskValue(header.value), value: header.value })),
     versions: (form?.versions ?? []).map(item => item.number).sort((a, b) => b - a),
     setup: endpointSetup(tenant, endpoint, form),
   }
@@ -439,6 +440,7 @@ function endpointSetup(tenant: MockTenant, endpoint: StoredApiEndpoint, form: St
   return {
     service_active: api.services.find(item => item.id === endpoint.service_id)?.status === 'active',
     form_published: form?.status === 'published',
+    form_api: !!form && channelsOf(form).includes('api'),
     tokens_live: callers.filter(token => token.mode === 'live').length,
     tokens_test: callers.filter(token => token.mode === 'test').length,
     rules: rulesFor(api.rules, endpoint).filter(rule => rule.enabled).length,

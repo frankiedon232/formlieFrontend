@@ -15,10 +15,10 @@ const items = computed(() => [
   {
     key: 'basics',
     icon: 'i-lucide-boxes',
-    done: s.value.service_active && s.value.form_published,
+    done: s.value.service_active && s.value.form_published && s.value.form_api,
     title: t('apiService.setup.basics.title'),
-    text: !s.value.service_active ? t('apiService.setup.basics.serviceOff', { name: props.endpoint.service.name }) : !s.value.form_published ? t('apiService.setup.basics.formOff') : t('apiService.setup.basics.ok', { service: props.endpoint.service.name, form: props.endpoint.form.name }),
-    action: !s.value.service_active ? { label: t('apiService.actions.openService'), to: { path: '/api-service/services', query: { service: props.endpoint.service.id } } } : !s.value.form_published ? { label: t('apiService.actions.openForm'), to: `/forms/${props.endpoint.form.id}` } : null,
+    text: !s.value.service_active ? t('apiService.setup.basics.serviceOff', { name: props.endpoint.service.name }) : !s.value.form_published ? t('apiService.setup.basics.formOff') : !s.value.form_api ? t('apiService.setup.basics.formNoApi') : t('apiService.setup.basics.ok', { service: props.endpoint.service.name, form: props.endpoint.form.name }),
+    action: !s.value.service_active ? { label: t('apiService.actions.openService'), to: { path: '/api-service/services', query: { service: props.endpoint.service.id } } } : !s.value.form_published ? { label: t('apiService.actions.openForm'), to: `/forms/${props.endpoint.form.id}` } : !s.value.form_api ? { label: t('forms.channels.openShare'), to: `/forms/${props.endpoint.form.id}/share` } : null,
   },
   {
     key: 'token',
@@ -46,7 +46,7 @@ const items = computed(() => [
     action: null,
   },
 ])
-const ready = computed(() => s.value.service_active && s.value.form_published)
+const ready = computed(() => s.value.service_active && s.value.form_published && s.value.form_api)
 </script>
 
 <template>

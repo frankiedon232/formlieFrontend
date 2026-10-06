@@ -31,6 +31,7 @@ import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { API_BASE_URL, apiOf, endpointUsage, hashSecret, newSecret, saveApi, schemaOf, sumUsage, toEndpoint, toEndpointDetail, toService, toToken, type StoredApiEndpoint, type StoredApiToken } from '../data/apiStore'
 import { formsOf } from '../data/formStore'
+import { channelsOf } from '#shared/types/forms'
 import type { MockTenant } from '../data/tenants'
 
 const serviceInput = z.object({
@@ -249,6 +250,7 @@ function checked(tenant: MockTenant, values: z.infer<typeof endpointInput>, exce
   if (!form) throw new MockError('FRM-GEN-1002', [{ field: 'form_id', message: 'required' }])
   const schema = schemaOf(form, values.version)
   if (!schema || form.status !== 'published') throw new MockError('FRM-API-1002', [{ field: 'form_id', message: 'not_published' }])
+  if (!channelsOf(form).includes('api')) throw new MockError('FRM-API-1019', [{ field: 'form_id', message: 'not_for_api' }])
   if (!values.methods.length) throw new MockError('FRM-GEN-1002', [{ field: 'methods', message: 'required' }])
   const fields = endpointFieldsOf(schema, values.fields)
   const writes = values.methods.some(method => method === 'POST' || method === 'PUT')

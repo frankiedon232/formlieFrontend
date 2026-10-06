@@ -328,6 +328,21 @@
       "updated": "Geändert {when}",
       "access": "Zugang",
       "noTags": "Keine Tags"
+    },
+    "channels": {
+      "title": "Wo Leute antworten können",
+      "desc": "Wähle, wie dieses Formular Antworten annimmt. Schalte aus, was du nicht nutzt.",
+      "link": "Weblink",
+      "embed": "Einbetten",
+      "api": "API-Dienst",
+      "linkHint": "Eigene Adresse, Kurzlink und QR-Code.",
+      "embedHint": "In deiner Website, in einem Frame.",
+      "apiHint": "Andere Apps senden und lesen Antworten über Endpunkte.",
+      "makeApiOnly": "Nur API",
+      "allThree": "Alle drei",
+      "apiOnly": "Nur API",
+      "apiOnlyHint": "Dieses Formular hat keine Webadresse: Link, Kurzlink und Einbettung antworten mit „nicht gefunden“, wie bei einem Formular, das es nicht gibt. Apps erreichen es nur über deine API-Endpunkte.",
+      "openShare": "Teilen-Einstellungen öffnen"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "Das Passwort ist nicht richtig.",
     "FRM-API-1016": "Dieses Geheimnis kann nicht angezeigt werden: Es wurde erstellt, bevor Geheimnisse wieder sichtbar sein konnten. Rotieren Sie es für ein neues.",
     "FRM-API-1017": "Senden Sie den Body als JSON mit Content-Type: application/json.",
-    "FRM-API-1018": "Der Body ist zu groß (maximal 1 MB; Dateien über den Upload-Schritt senden)."
+    "FRM-API-1018": "Der Body ist zu groß (maximal 1 MB; Dateien über den Upload-Schritt senden).",
+    "FRM-API-1019": "Dieses Formular ist für den API-Dienst nicht geöffnet. Schalte die API in den Teilen-Einstellungen ein."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Website unter Einstellungen → Unternehmen hinzufügen, um den Link anzuzeigen.",
       "showFacts": "Kurzinfos",
       "showFactsHint": "Wie lange es dauert, wie viele Fragen es gibt und dass Antworten verschlüsselt sind."
-    }
+    },
+    "applied": "“{name}” angewendet"
   },
   "themes": {
     "subtitle": "Gespeicherte Designs, die Sie in jedem Formular verwenden können",
@@ -3851,7 +3868,14 @@
         "DELETE": "Eine Antwort per ID entfernen; im Audit-Protokoll festgehalten."
       },
       "afterTitle": "Wie es weitergeht",
-      "afterText": "Der Endpunkt wird nicht live erstellt. Test-Tokens können ihn schon aufrufen, du kannst ihn also gefahrlos ausprobieren. Gib ihm dann ein Live-Token, füge bei Bedarf Zugriffsregeln hinzu und schalte ihn ein."
+      "afterText": "Der Endpunkt wird nicht live erstellt. Test-Tokens können ihn schon aufrufen, du kannst ihn also gefahrlos ausprobieren. Gib ihm dann ein Live-Token, füge bei Bedarf Zugriffsregeln hinzu und schalte ihn ein.",
+      "notReady": "Noch nicht bereit für die API",
+      "draftHint": "Noch nicht veröffentlicht. Veröffentliche es nur für die API: Es bekommt nie eine Webadresse.",
+      "closedHint": "Veröffentlicht, aber nicht für den API-Dienst geöffnet.",
+      "publishForApi": "Nur für die API veröffentlichen",
+      "openToApi": "Für die API öffnen",
+      "publishedForApi": "“{name}” ist nur für die API veröffentlicht",
+      "openedToApi": "“{name}” ist für die API geöffnet"
     },
     "tokens": {
       "title": "Tokens",
@@ -4429,7 +4453,8 @@
         "title": "Dienst und Formular",
         "ok": "In {service}, antwortet mit dem Formular {form}.",
         "serviceOff": "Sein Dienst {name} ist ausgeschaltet, der Endpunkt kann daher nicht antworten. Schalte den Dienst ein.",
-        "formOff": "Sein Formular ist nicht veröffentlicht, der Endpunkt kann daher nicht antworten. Veröffentliche das Formular."
+        "formOff": "Sein Formular ist nicht veröffentlicht, der Endpunkt kann daher nicht antworten. Veröffentliche das Formular.",
+        "formNoApi": "Das Formular ist für den API-Dienst nicht geöffnet, daher kann der Endpunkt nicht antworten. Schalte die API in den Teilen-Einstellungen des Formulars ein."
       },
       "token": {
         "title": "Ein Token, das ihn aufrufen darf",

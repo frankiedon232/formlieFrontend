@@ -328,6 +328,21 @@
       "updated": "Aggiornato {when}",
       "access": "Accesso",
       "noTags": "Nessun tag"
+    },
+    "channels": {
+      "title": "Dove le persone possono rispondere",
+      "desc": "Scegli come questo modulo riceve le risposte. Disattiva ciò che non usi.",
+      "link": "Link web",
+      "embed": "Incorpora",
+      "api": "Servizio API",
+      "linkHint": "Indirizzo proprio, link breve e codice QR.",
+      "embedHint": "Dentro il tuo sito web, in un frame.",
+      "apiHint": "Altre app inviano e leggono risposte tramite endpoint.",
+      "makeApiOnly": "Solo API",
+      "allThree": "Tutti e tre",
+      "apiOnly": "Solo API",
+      "apiOnlyHint": "Questo modulo non ha un indirizzo web: link, link breve e incorporamento rispondono “non trovato”, come un modulo inesistente. Le app lo raggiungono solo tramite i tuoi endpoint API.",
+      "openShare": "Apri impostazioni di Condivisione"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "La password non è corretta.",
     "FRM-API-1016": "Questo segreto non può essere mostrato: è stato creato prima che i segreti potessero essere rivisti. Ruotalo per ottenerne uno nuovo.",
     "FRM-API-1017": "Invia il corpo come JSON con Content-Type: application/json.",
-    "FRM-API-1018": "Il corpo è troppo grande (massimo 1 MB; invia i file tramite il passaggio di caricamento)."
+    "FRM-API-1018": "Il corpo è troppo grande (massimo 1 MB; invia i file tramite il passaggio di caricamento).",
+    "FRM-API-1019": "Questo modulo non è aperto al servizio API. Attiva l’API nelle sue impostazioni di Condivisione."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Aggiungi il tuo sito in Impostazioni → Azienda per mostrare il link.",
       "showFacts": "Info rapide",
       "showFactsHint": "Quanto tempo serve, quante domande ci sono e che le risposte sono crittografate."
-    }
+    },
+    "applied": "“{name}” applicato"
   },
   "themes": {
     "subtitle": "Design salvati da usare in qualsiasi modulo",
@@ -3851,7 +3868,14 @@
         "DELETE": "Rimuovere una risposta tramite il suo id; resta nel registro di controllo."
       },
       "afterTitle": "Cosa succede dopo",
-      "afterText": "L'endpoint viene creato non live. I token di test possono già chiamarlo, quindi puoi provarlo in sicurezza. Poi dagli un token live, aggiungi regole di accesso se vuoi e attivalo."
+      "afterText": "L'endpoint viene creato non live. I token di test possono già chiamarlo, quindi puoi provarlo in sicurezza. Poi dagli un token live, aggiungi regole di accesso se vuoi e attivalo.",
+      "notReady": "Non ancora pronto per l’API",
+      "draftHint": "Non ancora pubblicato. Pubblicalo solo per l’API: non avrà mai un indirizzo web.",
+      "closedHint": "Pubblicato, ma non aperto al servizio API.",
+      "publishForApi": "Pubblica solo per l’API",
+      "openToApi": "Apri all’API",
+      "publishedForApi": "“{name}” è pubblicato solo per l’API",
+      "openedToApi": "“{name}” è aperto all’API"
     },
     "tokens": {
       "title": "Token",
@@ -4429,7 +4453,8 @@
         "title": "Servizio e modulo",
         "ok": "In {service}, risponde con il modulo {form}.",
         "serviceOff": "Il suo servizio {name} è spento, quindi l'endpoint non può rispondere. Accendi il servizio.",
-        "formOff": "Il suo modulo non è pubblicato, quindi l'endpoint non può rispondere. Pubblica il modulo."
+        "formOff": "Il suo modulo non è pubblicato, quindi l'endpoint non può rispondere. Pubblica il modulo.",
+        "formNoApi": "Il suo modulo non è aperto al servizio API, quindi l’endpoint non può rispondere. Attiva l’API nelle impostazioni di Condivisione del modulo."
       },
       "token": {
         "title": "Un token che possa chiamarlo",

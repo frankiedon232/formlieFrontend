@@ -8,6 +8,7 @@
 import type { FormPreview } from '#shared/types/forms'
 import { formLanguages, translateSchema } from '#shared/utils/forms/translations'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
+import { channelsOf } from '#shared/types/forms'
 
 definePageMeta({ breadcrumb: 'preview.crumb' })
 
@@ -119,7 +120,7 @@ defineShortcuts({
         :aria-label="t('preview.version')"
       />
       <UButton
-        v-if="data.live && version === 'live'"
+        v-if="data.live && version === 'live' && channelsOf(data.form).includes('link')"
         :to="address"
         external
         target="_blank"

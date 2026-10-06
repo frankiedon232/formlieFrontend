@@ -40,6 +40,8 @@ export interface FolderRow {
 }
 
 export interface FormSummary {
+  /** Where people can answer (missing = all three). */
+  channels?: FormChannel[]
   /** Where its responses are kept (lists only; F12 M2). */
   storage?: import('./destinations').StorageMark
   id: string
@@ -82,7 +84,15 @@ export type FormAccessLevel = 'none' | 'responses' | 'view' | 'edit'
 export type FormAccess = 'public' | 'password' | 'invite' | 'organisation'
 
 /** GET /forms/{id}/share, everything about how a form is shared (the password itself is never returned). */
+/** Where people can answer a form (owner, 2026-10-06): its web link, an embed, the API service. API only = no web address at all. */
+export const FORM_CHANNELS = ['link', 'embed', 'api'] as const
+export type FormChannel = (typeof FORM_CHANNELS)[number]
+/** A form's channels; missing (forms made before) = all three. */
+export const channelsOf = (form: { channels?: FormChannel[] | null }): FormChannel[] => (form.channels?.length ? form.channels : [...FORM_CHANNELS])
+
 export interface FormShareSettings {
+  /** Where people can answer: web link, embed, API (at least one). */
+  channels: FormChannel[]
   access: FormAccess
   /** A password is set (required for access "password"). */
   has_password: boolean
@@ -134,6 +144,8 @@ export interface EmailChip {
 
 /** The Share tab's unsaved changes (portal only). */
 export interface ShareDraft {
+  /** Where people can answer (at least one). */
+  channels: FormChannel[]
   access: FormAccess
   /** A new password (empty = keep the current one). */
   password: string

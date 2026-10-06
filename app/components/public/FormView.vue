@@ -17,7 +17,7 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const url = useRequestURL()
 
-const { form, errorCode, refresh } = await usePublicForm(props.formKey)
+const { form, errorCode, refresh } = await usePublicForm(props.formKey, props.embed ? 'embed' : 'link')
 const resumeOn = computed(() => !!form.value?.schema?.settings?.save_resume)
 const resume = usePublicResume(props.formKey, resumeOn)
 const { submit, alreadySent, another, confirmDifferent, sendCode, confirmCode, prepareProof } = usePublicSubmit(props.formKey, props.embed ? 'embed' : 'link', resume)

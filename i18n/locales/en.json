@@ -328,6 +328,21 @@
       "updated": "Updated {when}",
       "access": "Access",
       "noTags": "No tags"
+    },
+    "channels": {
+      "title": "Where people can answer",
+      "desc": "Choose how this form takes responses. Switch off what you don't use.",
+      "link": "Web link",
+      "embed": "Embed",
+      "api": "API service",
+      "linkHint": "Its own address, short link and QR code.",
+      "embedHint": "Inside your website, in a frame.",
+      "apiHint": "Other apps send and read responses through endpoints.",
+      "makeApiOnly": "API only",
+      "allThree": "All three",
+      "apiOnly": "API only",
+      "apiOnlyHint": "This form has no web address: its link, short link and embed answer \"not found\", like a form that does not exist. Apps reach it only through your API endpoints.",
+      "openShare": "Open Share settings"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "That password is not right.",
     "FRM-API-1016": "This secret can not be shown: it was made before secrets could be viewed again. Rotate it for a new one.",
     "FRM-API-1017": "Send the body as JSON with Content-Type: application/json.",
-    "FRM-API-1018": "The body is too large (1 MB at most; send files through the upload step)."
+    "FRM-API-1018": "The body is too large (1 MB at most; send files through the upload step).",
+    "FRM-API-1019": "This form is not open to the API service. Turn the API on in its Share settings."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Add your website in Settings → Company to show the link.",
       "showFacts": "Quick facts",
       "showFactsHint": "How long it takes, how many questions, and that answers are encrypted."
-    }
+    },
+    "applied": "“{name}” applied"
   },
   "themes": {
     "subtitle": "Saved designs you can use on any form",
@@ -3851,7 +3868,14 @@
         "DELETE": "Remove a response by its id; kept in the audit trail."
       },
       "afterTitle": "What happens next",
-      "afterText": "The endpoint is created not live. Test tokens can already call it, so you can try it safely. Then give it a live token, add access rules if you want, and switch it on."
+      "afterText": "The endpoint is created not live. Test tokens can already call it, so you can try it safely. Then give it a live token, add access rules if you want, and switch it on.",
+      "notReady": "Not ready for the API yet",
+      "draftHint": "Not published yet. Publish it for the API only: it never gets a web address.",
+      "closedHint": "Published, but not open to the API service.",
+      "publishForApi": "Publish for the API only",
+      "openToApi": "Open to the API",
+      "publishedForApi": "“{name}” is published for the API only",
+      "openedToApi": "“{name}” is open to the API"
     },
     "tokens": {
       "title": "Tokens",
@@ -4429,7 +4453,8 @@
         "title": "Service and form",
         "ok": "In {service}, answering with the form {form}.",
         "serviceOff": "Its service {name} is switched off, so the endpoint can not answer. Switch the service on.",
-        "formOff": "Its form is not published, so the endpoint can not answer. Publish the form."
+        "formOff": "Its form is not published, so the endpoint can not answer. Publish the form.",
+        "formNoApi": "Its form is not open to the API service, so the endpoint can not answer. Turn the API on in the form's Share settings."
       },
       "token": {
         "title": "A token that may call it",

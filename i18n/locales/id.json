@@ -328,6 +328,21 @@
       "updated": "Diperbarui {when}",
       "access": "Akses",
       "noTags": "Tanpa tag"
+    },
+    "channels": {
+      "title": "Tempat orang bisa menjawab",
+      "desc": "Pilih cara formulir ini menerima respons. Matikan yang tidak Anda pakai.",
+      "link": "Tautan web",
+      "embed": "Sematkan",
+      "api": "Layanan API",
+      "linkHint": "Alamat sendiri, tautan pendek, dan kode QR.",
+      "embedHint": "Di dalam situs web Anda, dalam frame.",
+      "apiHint": "Aplikasi lain mengirim dan membaca respons lewat endpoint.",
+      "makeApiOnly": "Hanya API",
+      "allThree": "Ketiganya",
+      "apiOnly": "Hanya API",
+      "apiOnlyHint": "Formulir ini tidak punya alamat web: tautan, tautan pendek, dan sematannya menjawab “tidak ditemukan”, seperti formulir yang tidak ada. Aplikasi hanya menjangkaunya lewat endpoint API Anda.",
+      "openShare": "Buka pengaturan Bagikan"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "Kata sandi salah.",
     "FRM-API-1016": "Rahasia ini tidak dapat ditampilkan: dibuat sebelum rahasia bisa dilihat lagi. Rotasi untuk mendapatkan yang baru.",
     "FRM-API-1017": "Kirim isi permintaan sebagai JSON dengan Content-Type: application/json.",
-    "FRM-API-1018": "Isi permintaan terlalu besar (maksimal 1 MB; kirim file melalui langkah unggah)."
+    "FRM-API-1018": "Isi permintaan terlalu besar (maksimal 1 MB; kirim file melalui langkah unggah).",
+    "FRM-API-1019": "Formulir ini tidak terbuka untuk layanan API. Aktifkan API di pengaturan Bagikan."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Tambahkan situs web Anda di Pengaturan → Perusahaan untuk menampilkan tautan.",
       "showFacts": "Info singkat",
       "showFactsHint": "Berapa lama waktunya, berapa banyak pertanyaan, dan bahwa jawaban dienkripsi."
-    }
+    },
+    "applied": "“{name}” diterapkan"
   },
   "themes": {
     "subtitle": "Desain tersimpan yang dapat Anda gunakan di formulir mana pun",
@@ -3851,7 +3868,14 @@
         "DELETE": "Hapus respons berdasarkan id-nya; tetap tercatat di jejak audit."
       },
       "afterTitle": "Apa yang terjadi selanjutnya",
-      "afterText": "Endpoint dibuat dalam keadaan tidak live. Token uji sudah bisa memanggilnya, jadi kamu bisa mencobanya dengan aman. Lalu beri token live, tambahkan aturan akses jika mau, dan nyalakan."
+      "afterText": "Endpoint dibuat dalam keadaan tidak live. Token uji sudah bisa memanggilnya, jadi kamu bisa mencobanya dengan aman. Lalu beri token live, tambahkan aturan akses jika mau, dan nyalakan.",
+      "notReady": "Belum siap untuk API",
+      "draftHint": "Belum dipublikasikan. Publikasikan hanya untuk API: formulir ini tidak akan pernah punya alamat web.",
+      "closedHint": "Dipublikasikan, tetapi tidak terbuka untuk layanan API.",
+      "publishForApi": "Publikasikan hanya untuk API",
+      "openToApi": "Buka untuk API",
+      "publishedForApi": "“{name}” dipublikasikan hanya untuk API",
+      "openedToApi": "“{name}” terbuka untuk API"
     },
     "tokens": {
       "title": "Token",
@@ -4429,7 +4453,8 @@
         "title": "Layanan dan formulir",
         "ok": "Di {service}, menjawab dengan formulir {form}.",
         "serviceOff": "Layanannya, {name}, sedang mati, jadi endpoint tidak bisa menjawab. Nyalakan layanan.",
-        "formOff": "Formulirnya belum terbit, jadi endpoint tidak bisa menjawab. Terbitkan formulir."
+        "formOff": "Formulirnya belum terbit, jadi endpoint tidak bisa menjawab. Terbitkan formulir.",
+        "formNoApi": "Formulirnya tidak terbuka untuk layanan API, jadi endpoint tidak bisa menjawab. Aktifkan API di pengaturan Bagikan formulir."
       },
       "token": {
         "title": "Token yang boleh memanggilnya",

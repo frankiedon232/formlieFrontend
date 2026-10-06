@@ -35,7 +35,8 @@ export function snippetFor(language: SnippetLanguage, call: SnippetCall): string
 
 /** The calls an endpoint answers, with the headers and an example body each needs. */
 export function endpointCalls(endpoint: Pick<ApiEndpointDetail, 'methods' | 'url' | 'fields' | 'headers' | 'page_size'>, token = '<token>'): SnippetCall[] {
-  const extra = Object.fromEntries(endpoint.headers.map(header => [header.name, `<${header.name}>`]))
+  // The endpoint's required headers with their real values, so the examples copy and run as they are
+  const extra = Object.fromEntries(endpoint.headers.map(header => [header.name, (header as { value?: string }).value || `<${header.name}>`]))
   const auth = { Authorization: `Bearer ${token}` }
   const body = exampleRequestBody(endpoint.fields)
   return endpoint.methods.map(method => {
@@ -98,7 +99,7 @@ export function openApiFor(service: { name: string; description: string | null }
     const accepted = endpoint.fields.filter(field => field.accept)
     const record = { type: 'object', properties: { id: { type: 'string' }, submitted_at: { type: 'string', format: 'date-time' }, status: { type: 'string' }, data: { type: 'object', properties: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.key, fieldSchema(field)])) } } }
     const input = { type: 'object', properties: Object.fromEntries(accepted.map(field => [field.key, fieldSchema(field)])), required: accepted.filter(field => field.required).map(field => field.key), additionalProperties: false }
-    const headers = endpoint.headers.map(header => ({ name: header.name, in: 'header', required: true, schema: { type: 'string' } }))
+    const headers = endpoint.headers.map(header => ({ name: header.name, in: 'header', required: true, schema: { type: 'string', ...((header as { value?: string }).value ? { example: (header as { value?: string }).value } : {}) } }))
     const errors = { '401': { description: 'FRM-API-1010' }, '403': { description: 'FRM-API-1009, FRM-API-1015' }, '422': { description: 'FRM-RESP-1001, FRM-API-1014' }, '429': { description: 'FRM-GEN-1029' } }
     const one = `/${endpoint.name}/{id}`
     const list = `/${endpoint.name}`

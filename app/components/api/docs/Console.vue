@@ -34,7 +34,7 @@ watch([open, () => props.endpoint?.id], ([value]) => {
   state.body = JSON.stringify(exampleRequestBody(props.endpoint.fields), null, 2)
   state.key = newKey()
   state.keepKey = false
-  state.headers = Object.fromEntries(props.endpoint.headers.map(header => [header.name, '']))
+  state.headers = Object.fromEntries(props.endpoint.headers.map(header => [header.name, header.value ?? '']))
   tab.value = state.method === 'POST' || state.method === 'PUT' ? 'body' : 'headers'
 }, { immediate: true })
 const writes = computed(() => state.method === 'POST' || state.method === 'PUT')

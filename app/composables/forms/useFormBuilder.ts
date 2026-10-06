@@ -15,8 +15,14 @@ export function useFormBuilder() {
   const schema = ref<FormSchemaV1 | null>(null)
   const selected = ref<string[]>([])
   const pageId = ref<string | null>(null)
-  /** Keys stop following labels once the form has been published (responses are stored by key). */
-  const keysLocked = ref(false)
+  /**
+   * Keys any published version used (owner, 2026-10-06: clean keys like first_name). Those are fixed
+   * (responses, endpoints, storage tables and exports know them) and never reused for another
+   * question; every other key follows its label: "First name" → first_name, a clash → first_name_2.
+   */
+  const publishedKeys = ref<Set<string>>(new Set())
+  /** A clean key for a new field: from its label, unique among the fields and every published key. */
+  const newKey = (label: string, except?: string) => keyFromLabel(label, [...fields.value.filter(f => f.id !== except).map(f => f.key), ...publishedKeys.value])
   /** A field is being dragged (the canvas shows where it can land). */
   const dragging = ref(false)
 
@@ -65,11 +71,7 @@ export function useFormBuilder() {
     const id = newId('fld')
     const field: FormField = {
       id,
-      key: fieldKey(
-        label || type,
-        id,
-        fields.value.map(f => f.key),
-      ),
+      key: newKey(label || type),
       type,
       label,
       // New fields start at half width (owner) so they pair up when dropped side by side; layout
@@ -92,14 +94,14 @@ export function useFormBuilder() {
   function createFromSaved(saved: SavedField): FormField {
     const id = newId('fld')
     const field = structuredClone(toRaw(saved.field)) as Omit<FormField, 'id'>
-    return { ...field, id, key: fieldKey(field.label || field.type, id, fields.value.map(f => f.key)) }
+    return { ...field, id, key: newKey(field.label || field.type) }
   }
 
   /** A choice field filled from an option list (a copy of its options; the list id is kept). */
   function createFromList(list: OptionList, type: FieldType = 'dropdown'): FormField {
     const field = createField(type)
     field.label = list.name
-    field.key = fieldKey(list.name, field.id, fields.value.map(f => f.key))
+    field.key = newKey(list.name)
     field.options = structuredClone(toRaw(list.options))
     field.option_set_id = list.id
     return field
@@ -136,16 +138,16 @@ export function useFormBuilder() {
           f.props = { ...f.props, formula: f.props.formula.replaceAll(`{${oldKey}}`, `{${patch.key}}`) }
   }
 
-  /** New label; while drafting (never published) the key follows it: "Full name" → full_name_k3x9. */
+  /** New label; a key no published version used follows it: "Full name" → full_name. */
   function renameField(id: string, label: string) {
     const found = findField(id)
     if (!found) return
     const { field } = found
     const others = fields.value.filter(f => f.id !== id).map(f => f.key)
-    const follows =
-      !keysLocked.value &&
-      (field.key === fieldKey(field.label || field.type, id, others) || field.key === keyFromLabel(field.label, others))
-    updateField(id, follows ? { label, key: fieldKey(label || field.type, id, others) } : { label }, `field:${id}:label`)
+    // Only a key the field got automatically follows (a clean one, or the older label_suffix kind)
+    const auto = field.key === newKey(field.label || field.type, id) || field.key === fieldKey(field.label || field.type, id, others)
+    const follows = !publishedKeys.value.has(field.key) && auto
+    updateField(id, follows ? { label, key: newKey(label || field.type, id) } : { label }, `field:${id}:label`)
   }
 
   function updateProps(id: string, patch: Record<string, unknown>, group?: string) {
@@ -174,11 +176,7 @@ export function useFormBuilder() {
       const copy: FormField = {
         ...structuredClone(toRaw(found.field)),
         id: copyId,
-        key: fieldKey(
-          found.field.label || found.field.type,
-          copyId,
-          fields.value.map(f => f.key),
-        ),
+        key: newKey(found.field.label || found.field.type),
       }
       found.page.rows.splice(found.rowIndex + 1, 0, { id: newId('row'), fields: [copy] })
       copies.push(copy.id)
@@ -340,7 +338,7 @@ export function useFormBuilder() {
     selected,
     selectedFields,
     history,
-    keysLocked,
+    publishedKeys,
     dragging,
     load,
     findField,

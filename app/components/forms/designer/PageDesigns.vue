@@ -1,8 +1,7 @@
 <!--
   Designer → Page designs (owner 2026-10-04: "in design you can add it", listed like the themes):
   every page design, the workspace's own first, then Formalie's, as page miniatures. A click puts
-  that page around the form (only the page changes, one undo step; confirm when it replaces a
-  page you made yourself). "Save page as design" keeps this form's page in Resources → Landing pages.
+  that page around the form (only the page changes, one undo step, no confirm: the toast offers Undo). "Save page as design" keeps this form's page in Resources → Landing pages.
 -->
 <script setup lang="ts">
 import type { PageDesign } from '#shared/types/forms'
@@ -10,17 +9,16 @@ import type { PageDesign } from '#shared/types/forms'
 const { t } = useI18n()
 const d = useDesigner()
 const library = usePageDesigns()
-const confirm = useConfirm()
 onMounted(() => library.load())
 
 const ordered = computed(() => [...library.pages.value].sort((a, b) => Number(a.source === 'system') - Number(b.source === 'system')))
 const current = computed(() => library.pages.value.find(page => page.id === d.pageDesignId.value) ?? null)
 const saveOpen = ref(false)
 
-async function apply(page: PageDesign) {
+function apply(page: PageDesign) {
   if (page.id === d.pageDesignId.value) return
-  if (d.customised.value && !d.pageDesignId.value && !(await confirm({ title: t('pages.replaceTitle'), description: t('pages.replaceDesc'), confirmLabel: t('designer.replace') }))) return
   d.applyPage(page)
+  d.applied(page.name_key ? t(page.name_key) : page.name)
 }
 </script>
 

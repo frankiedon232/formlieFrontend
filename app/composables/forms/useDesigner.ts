@@ -61,5 +61,11 @@ export function useDesigner() {
     delete builder.schema.value.page_design_id
   }
 
-  return { theme, customised, themeId, pageDesignId, set, setLayout, applyPreset, applySaved, applyPage, reset, write }
+  /** After a one-click change (theme, starting point, page design): say so, with Undo (owner, 2026-10-06: no confirm, try freely). */
+  const toast = useToast()
+  const { t } = useI18n()
+  function applied(name: string) {
+    toast.add({ id: 'designer-applied', title: t('designer.applied', { name }), icon: 'i-lucide-palette', color: 'neutral', duration: 4000, actions: [{ label: t('builder.undo'), icon: 'i-lucide-undo-2', color: 'neutral', variant: 'outline', onClick: () => void builder.history.undo() }] })
+  }
+  return { theme, customised, themeId, pageDesignId, set, setLayout, applyPreset, applySaved, applyPage, reset, write, applied }
 }

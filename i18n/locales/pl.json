@@ -328,6 +328,21 @@
       "updated": "Zaktualizowano {when}",
       "access": "Dostęp",
       "noTags": "Brak tagów"
+    },
+    "channels": {
+      "title": "Gdzie ludzie mogą odpowiadać",
+      "desc": "Wybierz, jak ten formularz przyjmuje odpowiedzi. Wyłącz to, czego nie używasz.",
+      "link": "Link internetowy",
+      "embed": "Osadzanie",
+      "api": "Usługa API",
+      "linkHint": "Własny adres, krótki link i kod QR.",
+      "embedHint": "Wewnątrz Twojej strony, w ramce.",
+      "apiHint": "Inne aplikacje wysyłają i odczytują odpowiedzi przez endpointy.",
+      "makeApiOnly": "Tylko API",
+      "allThree": "Wszystkie trzy",
+      "apiOnly": "Tylko API",
+      "apiOnlyHint": "Ten formularz nie ma adresu internetowego: jego link, krótki link i osadzenie odpowiadają „nie znaleziono”, jak formularz, który nie istnieje. Aplikacje docierają do niego tylko przez Twoje endpointy API.",
+      "openShare": "Otwórz ustawienia Udostępniania"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "To hasło jest nieprawidłowe.",
     "FRM-API-1016": "Tego sekretu nie można pokazać: został utworzony, zanim sekrety można było ponownie wyświetlać. Użyj opcji Rotuj, aby uzyskać nowy.",
     "FRM-API-1017": "Wyślij treść jako JSON z nagłówkiem Content-Type: application/json.",
-    "FRM-API-1018": "Treść jest zbyt duża (maksymalnie 1 MB; pliki wysyłaj w kroku przesyłania)."
+    "FRM-API-1018": "Treść jest zbyt duża (maksymalnie 1 MB; pliki wysyłaj w kroku przesyłania).",
+    "FRM-API-1019": "Ten formularz nie jest otwarty dla usługi API. Włącz API w ustawieniach Udostępniania."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Dodaj witrynę w Ustawienia → Firma, aby pokazać link.",
       "showFacts": "Krótkie informacje",
       "showFactsHint": "Ile to trwa, ile jest pytań i że odpowiedzi są szyfrowane."
-    }
+    },
+    "applied": "Zastosowano „{name}”"
   },
   "themes": {
     "subtitle": "Zapisane projekty, których można użyć w dowolnym formularzu",
@@ -3851,7 +3868,14 @@
         "DELETE": "Usunięcie odpowiedzi według id; zapisane w dzienniku audytu."
       },
       "afterTitle": "Co dalej",
-      "afterText": "Endpoint powstaje jako nieaktywny. Tokeny testowe mogą go już wywoływać, więc możesz go bezpiecznie wypróbować. Potem nadaj mu token live, w razie potrzeby dodaj reguły dostępu i włącz go."
+      "afterText": "Endpoint powstaje jako nieaktywny. Tokeny testowe mogą go już wywoływać, więc możesz go bezpiecznie wypróbować. Potem nadaj mu token live, w razie potrzeby dodaj reguły dostępu i włącz go.",
+      "notReady": "Jeszcze nie gotowy na API",
+      "draftHint": "Jeszcze nie opublikowany. Opublikuj go tylko dla API: nigdy nie dostanie adresu internetowego.",
+      "closedHint": "Opublikowany, ale nieotwarty dla usługi API.",
+      "publishForApi": "Opublikuj tylko dla API",
+      "openToApi": "Otwórz dla API",
+      "publishedForApi": "„{name}” opublikowano tylko dla API",
+      "openedToApi": "„{name}” jest otwarty dla API"
     },
     "tokens": {
       "title": "Tokeny",
@@ -4429,7 +4453,8 @@
         "title": "Usługa i formularz",
         "ok": "W {service}, odpowiada formularzem {form}.",
         "serviceOff": "Jego usługa {name} jest wyłączona, więc endpoint nie może odpowiadać. Włącz usługę.",
-        "formOff": "Jego formularz nie jest opublikowany, więc endpoint nie może odpowiadać. Opublikuj formularz."
+        "formOff": "Jego formularz nie jest opublikowany, więc endpoint nie może odpowiadać. Opublikuj formularz.",
+        "formNoApi": "Jego formularz nie jest otwarty dla usługi API, więc endpoint nie może odpowiedzieć. Włącz API w ustawieniach Udostępniania formularza."
       },
       "token": {
         "title": "Token, który może go wywoływać",

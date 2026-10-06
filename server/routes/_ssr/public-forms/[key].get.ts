@@ -26,7 +26,7 @@ export default defineEventHandler(async event => {
 
   if (!config.public.apiMock) {
     try {
-      const data = await $fetch<PublicForm>(`${config.apiProxyTarget}/api/v1/internal/public-forms/${encodeURIComponent(key)}`, {
+      const data = await $fetch<PublicForm>(`${config.apiProxyTarget}/api/v1/internal/public-forms/${encodeURIComponent(key)}?channel=${getQuery(event).channel === 'embed' ? 'embed' : 'link'}`, {
         // The respondent's cookies go along: an unlocked password form stays unlocked (F10 M3).
         headers: { [INTERNAL_TOKEN_HEADER]: config.internalToken, 'x-forwarded-host': getRequestHost(event, { xForwardedHost: true }), cookie: getHeader(event, 'cookie') ?? '' },
       })

@@ -58,6 +58,7 @@ export const getBuilder = defineMockRoute(({ event }) => {
     form: { ...summaryOf(form), my_access: levelOf(form, user) },
     schema,
     published_version: form.versions?.[0]?.number ?? null,
+    published_keys: publishedKeys(form, schema),
   })
 })
 
@@ -218,3 +219,14 @@ export const restoreVersion = defineMockRoute(({ event }) => {
   })
   return ok({ form: summaryOf(form), schema: form.schema })
 })
+
+/**
+ * Every question key any published version used (owner, 2026-10-06: clean keys): those stay fixed
+ * (endpoints, storage tables, exports and webhooks know them) and are never given to another
+ * question. A form that is live without kept versions (samples) counts its whole schema.
+ */
+function publishedKeys(form: StoredForm, schema: FormSchemaV1): string[] {
+  const schemas = [...(form.versions ?? []).map(version => version.schema), ...(form.published_schema ? [form.published_schema] : [])]
+  if (!schemas.length && form.status !== 'draft') schemas.push(schema)
+  return [...new Set(schemas.flatMap(item => allFields(item).map(field => field.key)))]
+}

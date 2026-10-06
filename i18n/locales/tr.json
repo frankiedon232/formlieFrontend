@@ -328,6 +328,21 @@
       "updated": "Güncellendi {when}",
       "access": "Erişim",
       "noTags": "Etiket yok"
+    },
+    "channels": {
+      "title": "İnsanlar nerede yanıt verebilir",
+      "desc": "Bu formun yanıtları nasıl alacağını seçin. Kullanmadığınızı kapatın.",
+      "link": "Web bağlantısı",
+      "embed": "Gömme",
+      "api": "API hizmeti",
+      "linkHint": "Kendi adresi, kısa bağlantısı ve QR kodu.",
+      "embedHint": "Web sitenizin içinde, bir çerçevede.",
+      "apiHint": "Diğer uygulamalar uç noktalar üzerinden yanıt gönderir ve okur.",
+      "makeApiOnly": "Yalnızca API",
+      "allThree": "Üçü birden",
+      "apiOnly": "Yalnızca API",
+      "apiOnlyHint": "Bu formun web adresi yok: bağlantısı, kısa bağlantısı ve gömmesi, olmayan bir form gibi “bulunamadı” yanıtı verir. Uygulamalar ona yalnızca API uç noktalarınız üzerinden ulaşır.",
+      "openShare": "Paylaş ayarlarını aç"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "Parola doğru değil.",
     "FRM-API-1016": "Bu gizli anahtar gösterilemez: gizli anahtarlar yeniden görülebilir olmadan önce oluşturuldu. Yenisini almak için yenileyin.",
     "FRM-API-1017": "Gövdeyi JSON olarak ve Content-Type: application/json ile gönderin.",
-    "FRM-API-1018": "Gövde çok büyük (en fazla 1 MB; dosyaları yükleme adımıyla gönderin)."
+    "FRM-API-1018": "Gövde çok büyük (en fazla 1 MB; dosyaları yükleme adımıyla gönderin).",
+    "FRM-API-1019": "Bu form API hizmetine açık değil. Paylaş ayarlarından API’yi açın."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Bağlantıyı göstermek için Ayarlar → Şirket bölümünden web sitenizi ekleyin.",
       "showFacts": "Kısa bilgiler",
       "showFactsHint": "Ne kadar sürdüğü, kaç soru olduğu ve yanıtların şifrelendiği."
-    }
+    },
+    "applied": "“{name}” uygulandı"
   },
   "themes": {
     "subtitle": "Herhangi bir formda kullanabileceğiniz kayıtlı tasarımlar",
@@ -3851,7 +3868,14 @@
         "DELETE": "Bir yanıtı kimliğine göre kaldır; denetim kaydında tutulur."
       },
       "afterTitle": "Sonra ne olur",
-      "afterText": "Endpoint yayında olmadan oluşturulur. Test token'ları onu şimdiden çağırabilir, böylece güvenle deneyebilirsiniz. Sonra ona bir live token verin, isterseniz erişim kuralları ekleyin ve açın."
+      "afterText": "Endpoint yayında olmadan oluşturulur. Test token'ları onu şimdiden çağırabilir, böylece güvenle deneyebilirsiniz. Sonra ona bir live token verin, isterseniz erişim kuralları ekleyin ve açın.",
+      "notReady": "API için henüz hazır değil",
+      "draftHint": "Henüz yayında değil. Yalnızca API için yayınlayın: hiçbir zaman web adresi almaz.",
+      "closedHint": "Yayında, ancak API hizmetine açık değil.",
+      "publishForApi": "Yalnızca API için yayınla",
+      "openToApi": "API’ye aç",
+      "publishedForApi": "“{name}” yalnızca API için yayınlandı",
+      "openedToApi": "“{name}” API’ye açık"
     },
     "tokens": {
       "title": "Token'lar",
@@ -4429,7 +4453,8 @@
         "title": "Hizmet ve form",
         "ok": "{service} içinde, {form} formuyla yanıt veriyor.",
         "serviceOff": "Hizmeti {name} kapalı, bu yüzden endpoint yanıt veremez. Hizmeti açın.",
-        "formOff": "Formu yayımlanmamış, bu yüzden endpoint yanıt veremez. Formu yayımlayın."
+        "formOff": "Formu yayımlanmamış, bu yüzden endpoint yanıt veremez. Formu yayımlayın.",
+        "formNoApi": "Formu API hizmetine açık değil, bu yüzden uç nokta yanıt veremez. Formun Paylaş ayarlarından API’yi açın."
       },
       "token": {
         "title": "Onu çağırabilen bir token",

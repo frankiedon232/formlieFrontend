@@ -1,12 +1,12 @@
 <!--
   Starting points: mini previews of each preset (background, card, accent, button). Choosing one
-  replaces the design (one undo step). "Workspace default" follows the brand colour and logo.
+  replaces the design at once, no confirm (owner 2026-10-06: try freely; one undo step, the toast offers Undo).
+  "Workspace default" follows the brand colour and logo.
 -->
 <script setup lang="ts">
 const { t } = useI18n()
 const designer = useDesigner()
 const branding = useWorkspaceBranding()
-const confirm = useConfirm()
 
 const presets = computed(() =>
   THEME_PRESETS.map(preset => {
@@ -15,10 +15,9 @@ const presets = computed(() =>
   }),
 )
 
-async function pick(patch: (typeof THEME_PRESETS)[number]['patch']) {
-  if (designer.customised.value && !(await confirm({ title: t('designer.replaceTitle'), description: t('designer.replaceDesc'), confirmLabel: t('designer.replace') })))
-    return
-  designer.applyPreset(patch)
+function pick(preset: (typeof THEME_PRESETS)[number]) {
+  designer.applyPreset(preset.patch)
+  designer.applied(t(`designer.preset.${preset.key}`))
 }
 </script>
 
@@ -30,7 +29,7 @@ async function pick(patch: (typeof THEME_PRESETS)[number]['patch']) {
       type="button"
       class="group/preset flex flex-col gap-1.5 rounded-lg border border-default p-1.5 text-start transition-colors hover:border-accented focus-visible:outline-2 focus-visible:outline-(--ui-border-inverted)"
       :aria-label="t('designer.applyPreset', { name: t(`designer.preset.${preset.key}`) })"
-      @click="pick(preset.patch)"
+      @click="pick(preset)"
     >
       <FormsDesignerSwatch :theme="preset.theme" />
       <span class="truncate px-0.5 text-xs font-medium text-highlighted">{{ t(`designer.preset.${preset.key}`) }}</span>

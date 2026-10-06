@@ -5,8 +5,8 @@
   the Share settings (editors only, decision 97). Live once the form is published.
 -->
 <script setup lang="ts">
-import type { FormSummary } from '#shared/types/forms'
 import { formLink, publicHosts, shortLink } from '#shared/utils/urls/public'
+import { channelsOf, type FormSummary } from '#shared/types/forms'
 
 const props = defineProps<{ form: FormSummary; accent?: string; readOnly?: boolean }>()
 const { t } = useI18n()
@@ -41,10 +41,15 @@ const facts = computed(() => [
   },
   ...(props.form.closes_at ? [{ icon: 'i-lucide-calendar-x-2', label: t('share.summary.until', { date: date(props.form.closes_at) }) }] : []),
 ])
+// Where people can answer (owner, 2026-10-06): only what the form offers; API only = no address at all
+const channels = computed(() => channelsOf(props.form))
+const hasLink = computed(() => channels.value.includes('link'))
+const hasEmbed = computed(() => channels.value.includes('embed'))
+const apiOnly = computed(() => !hasLink.value && !hasEmbed.value)
 const actions = computed(() => [
-  { key: 'open', label: t('forms.overview.openLink'), icon: 'i-lucide-external-link', to: fill.value, disabled: !live.value },
-  { key: 'embed', label: t('forms.overview.embedCode'), icon: 'i-lucide-code-xml', onClick: () => (embedOpen.value = true) },
-  { key: 'qr', label: t('forms.overview.qr'), icon: 'i-lucide-qr-code', onClick: () => (qrOpen.value = true) },
+  ...(hasLink.value ? [{ key: 'open', label: t('forms.overview.openLink'), icon: 'i-lucide-external-link', to: fill.value, disabled: !live.value }] : []),
+  ...(hasEmbed.value ? [{ key: 'embed', label: t('forms.overview.embedCode'), icon: 'i-lucide-code-xml', onClick: () => (embedOpen.value = true) }] : []),
+  ...(hasLink.value ? [{ key: 'qr', label: t('forms.overview.qr'), icon: 'i-lucide-qr-code', onClick: () => (qrOpen.value = true) }] : []),
 ])
 </script>
 
@@ -62,14 +67,24 @@ const actions = computed(() => [
       <p class="text-xs text-muted">{{ live ? t('forms.overview.shareLive') : t('forms.overview.shareNotLive') }}</p>
     </div>
 
+    <!-- API only: no address to share -->
+    <div v-if="apiOnly" class="flex items-start gap-3 rounded-lg border border-dashed border-default p-3">
+      <UIcon name="i-lucide-code-xml" class="mt-0.5 size-5 shrink-0 text-highlighted" />
+      <div class="flex min-w-0 flex-col gap-1">
+        <span class="text-sm font-medium text-highlighted">{{ t('forms.channels.apiOnly') }}</span>
+        <span class="text-xs text-muted">{{ t('forms.channels.apiOnlyHint') }}</span>
+        <UButton :label="t('nav.apiEndpoints')" icon="i-lucide-route" color="neutral" variant="outline" size="xs" class="mt-1 self-start" to="/api-service/endpoints" />
+      </div>
+    </div>
+
     <!-- The link. -->
-    <div :class="live ? '' : 'opacity-60'">
+    <div v-if="hasLink" :class="live ? '' : 'opacity-60'">
       <AppCopyField :label="form.custom_link ? t('share.summary.customLink') : t('forms.overview.link')" :value="fill" monospace />
       <AppCopyField v-if="short" :label="t('share.short.label')" :value="short" monospace class="mt-3" />
     </div>
 
     <!-- Three equal actions. -->
-    <div class="grid grid-cols-3 gap-2">
+    <div v-if="actions.length" class="grid gap-2" :class="actions.length === 3 ? 'grid-cols-3' : actions.length === 2 ? 'grid-cols-2' : 'grid-cols-1'">
       <UButton
         v-for="action in actions"
         :key="action.key"

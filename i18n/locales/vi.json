@@ -328,6 +328,21 @@
       "updated": "Cập nhật {when}",
       "access": "Quyền truy cập",
       "noTags": "Không có thẻ"
+    },
+    "channels": {
+      "title": "Nơi mọi người có thể trả lời",
+      "desc": "Chọn cách biểu mẫu này nhận phản hồi. Tắt những gì bạn không dùng.",
+      "link": "Liên kết web",
+      "embed": "Nhúng",
+      "api": "Dịch vụ API",
+      "linkHint": "Địa chỉ riêng, liên kết ngắn và mã QR.",
+      "embedHint": "Bên trong trang web của bạn, trong một khung.",
+      "apiHint": "Ứng dụng khác gửi và đọc phản hồi qua các endpoint.",
+      "makeApiOnly": "Chỉ API",
+      "allThree": "Cả ba",
+      "apiOnly": "Chỉ API",
+      "apiOnlyHint": "Biểu mẫu này không có địa chỉ web: liên kết, liên kết ngắn và bản nhúng đều trả về “không tìm thấy”, như một biểu mẫu không tồn tại. Ứng dụng chỉ truy cập được qua các endpoint API của bạn.",
+      "openShare": "Mở cài đặt Chia sẻ"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "Mật khẩu không đúng.",
     "FRM-API-1016": "Không thể hiển thị bí mật này: nó được tạo trước khi bí mật có thể xem lại. Hãy xoay để nhận bí mật mới.",
     "FRM-API-1017": "Gửi nội dung dưới dạng JSON với Content-Type: application/json.",
-    "FRM-API-1018": "Nội dung quá lớn (tối đa 1 MB; hãy gửi tệp qua bước tải lên)."
+    "FRM-API-1018": "Nội dung quá lớn (tối đa 1 MB; hãy gửi tệp qua bước tải lên).",
+    "FRM-API-1019": "Biểu mẫu này chưa mở cho dịch vụ API. Hãy bật API trong cài đặt Chia sẻ."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Thêm trang web của bạn trong Cài đặt → Công ty để hiển thị liên kết.",
       "showFacts": "Thông tin nhanh",
       "showFactsHint": "Mất bao lâu, có bao nhiêu câu hỏi và câu trả lời được mã hóa."
-    }
+    },
+    "applied": "Đã áp dụng “{name}”"
   },
   "themes": {
     "subtitle": "Các thiết kế đã lưu mà bạn có thể dùng cho mọi biểu mẫu",
@@ -3851,7 +3868,14 @@
         "DELETE": "Xóa một phản hồi theo id; được lưu trong nhật ký kiểm tra."
       },
       "afterTitle": "Điều gì xảy ra tiếp theo",
-      "afterText": "Endpoint được tạo ở trạng thái chưa hoạt động. Token thử nghiệm đã có thể gọi nó, nên bạn có thể thử an toàn. Sau đó cấp token live, thêm quy tắc truy cập nếu muốn, rồi bật nó."
+      "afterText": "Endpoint được tạo ở trạng thái chưa hoạt động. Token thử nghiệm đã có thể gọi nó, nên bạn có thể thử an toàn. Sau đó cấp token live, thêm quy tắc truy cập nếu muốn, rồi bật nó.",
+      "notReady": "Chưa sẵn sàng cho API",
+      "draftHint": "Chưa xuất bản. Hãy xuất bản chỉ cho API: nó sẽ không bao giờ có địa chỉ web.",
+      "closedHint": "Đã xuất bản, nhưng chưa mở cho dịch vụ API.",
+      "publishForApi": "Xuất bản chỉ cho API",
+      "openToApi": "Mở cho API",
+      "publishedForApi": "“{name}” được xuất bản chỉ cho API",
+      "openedToApi": "“{name}” đã mở cho API"
     },
     "tokens": {
       "title": "Token",
@@ -4429,7 +4453,8 @@
         "title": "Dịch vụ và biểu mẫu",
         "ok": "Trong {service}, trả lời bằng biểu mẫu {form}.",
         "serviceOff": "Dịch vụ {name} của nó đang tắt, nên endpoint không thể trả lời. Hãy bật dịch vụ.",
-        "formOff": "Biểu mẫu của nó chưa được xuất bản, nên endpoint không thể trả lời. Hãy xuất bản biểu mẫu."
+        "formOff": "Biểu mẫu của nó chưa được xuất bản, nên endpoint không thể trả lời. Hãy xuất bản biểu mẫu.",
+        "formNoApi": "Biểu mẫu của nó chưa mở cho dịch vụ API nên endpoint không thể trả lời. Hãy bật API trong cài đặt Chia sẻ của biểu mẫu."
       },
       "token": {
         "title": "Một token được phép gọi nó",

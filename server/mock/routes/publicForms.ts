@@ -13,6 +13,7 @@ import { z } from 'zod'
 import { availabilityOf } from '#shared/utils/forms/availability'
 import { identityOf, maskEmail, matchIdentity, normaliseEmail } from '#shared/utils/forms/identity'
 import type { FileAnswer, PublicForm, PublicFormState, PublicSubmitResult } from '#shared/types/public'
+import { channelsOf } from '#shared/types/forms'
 import { checkSubmission } from '#shared/utils/forms/submission'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { resolveTheme } from '#shared/utils/forms/theme'
@@ -61,8 +62,12 @@ function fingerprintOf(answers: Record<string, unknown>): string {
   return createHash('sha256').update(JSON.stringify(stable)).digest('hex')
 }
 
-/** The form behind a public key on this host (a workspace host only serves its own forms). */
-function locate(event: Parameters<typeof tenantOf>[0], key: string): { tenant: MockTenant; form: StoredForm } {
+/**
+ * The form behind a public key on this host (a workspace host only serves its own forms). A form
+ * without the channel asked for (its web link, or the embed; without either: any web route) is
+ * answered exactly like one that does not exist (owner, 2026-10-06: API-only forms have no address).
+ */
+function locate(event: Parameters<typeof tenantOf>[0], key: string, channel?: 'link' | 'embed'): { tenant: MockTenant; form: StoredForm } {
   const { context, tenant } = tenantOf(event)
   const found =
     context.kind === 'tenant'
@@ -71,8 +76,12 @@ function locate(event: Parameters<typeof tenantOf>[0], key: string): { tenant: M
         : null
       : findByPublicKey(MOCK_TENANTS.filter(item => item.status !== 'suspended'), key, { sharedHost: true })
   if (!found) throw new MockError('FRM-FORM-1001')
+  const channels = channelsOf(found.form)
+  if (channel ? !channels.includes(channel) : !channels.some(item => item !== 'api')) throw new MockError('FRM-FORM-1001')
   return found
 }
+/** The channel a public request is for: `?channel=embed` from the embed page, else the web link. */
+const channelOf = (event: Parameters<typeof tenantOf>[0]): 'link' | 'embed' => (getQuery(event).channel === 'embed' ? 'embed' : 'link')
 
 /** The form's response limit is used up (Share settings, F10 M3). */
 const limitReached = (form: StoredForm) => form.response_limit != null && form.responses_count >= form.response_limit
@@ -89,8 +98,8 @@ function stateOf(form: StoredForm, { ignoreLimit = false } = {}): PublicFormStat
 
 // ── Who may open the form (F10 M3, data/formAccess.ts) ────────────────────────────────────
 /** The form takes responses from this visitor right now: open and unlocked for them, or the reason why not. */
-function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false } = {}) {
-  const { tenant, form } = locate(event, key)
+function takingResponses(event: Parameters<typeof tenantOf>[0], key: string, { ignoreLimit = false, channel }: { ignoreLimit?: boolean; channel?: 'link' | 'embed' } = {}) {
+  const { tenant, form } = locate(event, key, channel)
   const state = stateOf(form, { ignoreLimit })
   const schema = state === 'open' ? publishedSchema(tenant, form) : null
   if (!schema)
@@ -176,8 +185,8 @@ const branding = (tenant: MockTenant) => ({ logo_url: tenant.logo_url ?? null, p
 const offered = (schema: FormSchemaV1 | null) => mainLanguage(schema)
 
 /** The published form for respondents (also used by the server-rendered page, server/routes/_ssr). */
-export function publicFormView(event: Parameters<typeof tenantOf>[0], key: string): PublicForm {
-  const { tenant, form } = locate(event, key)
+export function publicFormView(event: Parameters<typeof tenantOf>[0], key: string, channel: 'link' | 'embed' = channelOf(event)): PublicForm {
+  const { tenant, form } = locate(event, key, channel)
   const state = stateOf(form)
   const visitor = state === 'open' ? visitorOf(event, form, tenant) : null
   const locked = state === 'open' && !visitor
@@ -247,7 +256,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   if (!SUBMISSION_ID.test(submissionId))
     throw new MockError('FRM-GEN-1002', [{ field: 'Formalie-Key', message: 'Send the fill-in session id as Formalie-Key.' }])
   const input = parseBody(submitBody, body)
-  const { tenant, form, schema, visitor } = takingResponses(event, key, { ignoreLimit: true })
+  const { tenant, form, schema, visitor } = takingResponses(event, key, { ignoreLimit: true, channel: input.channel })
   const known = visitorIdentity(visitor)
   // The thank-you message in the language the respondent filled in (decision 99).
   const thanks = translateSchema(schema, input.language ?? offered(schema)).thank_you
@@ -588,7 +597,7 @@ export const issueChallenge = defineMockRoute(({ event }) => {
 /** Where a short link leads (the visit is counted): the form's current link on its own host. */
 export function resolveShortLink(event: Parameters<typeof tenantOf>[0], code: string): string {
   const found = SHORT_CODE_PATTERN.test(code) ? findByShortCode(MOCK_TENANTS.filter(item => item.status !== 'suspended'), code) : null
-  if (!found) throw new MockError('FRM-FORM-1001')
+  if (!found || !channelsOf(found.form).includes('link')) throw new MockError('FRM-FORM-1001')
   const { tenant, form } = found
   form.short_clicks = (form.short_clicks ?? 0) + 1
   saveForms()

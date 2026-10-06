@@ -1,6 +1,6 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { formLink, publicHosts } from '#shared/utils/urls/public'
-import type { FormSummary } from '#shared/types/forms'
+import { channelsOf, type FormSummary } from '#shared/types/forms'
 
 interface FormMenuHandlers {
   rename: (form: FormSummary) => void
@@ -32,7 +32,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
         [
           { label: t('forms.actions.open'), icon: 'i-lucide-square-arrow-out-up-right', to: `/forms/${form.id}` },
           ...(form.my_access === 'view' ? [{ label: t('preview.crumb'), icon: 'i-lucide-eye', to: `/forms/${form.id}/preview` }] : []),
-          ...(form.status === 'published'
+          ...(form.status === 'published' && channelsOf(form).includes('link')
             ? [
                 {
                   label: t('forms.copyLink'),
@@ -85,7 +85,7 @@ export function useFormMenu(actions: ReturnType<typeof useFormActions>, handlers
         { label: t('forms.availability.menu'), icon: 'i-lucide-calendar-range', onSelect: () => handlers.availability(form) },
       ],
       [
-        ...(form.status === 'published'
+        ...(form.status === 'published' && channelsOf(form).includes('link')
           ? [
               {
                 label: t('forms.copyLink'),

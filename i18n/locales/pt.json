@@ -328,6 +328,21 @@
       "updated": "Atualizado {when}",
       "access": "Acesso",
       "noTags": "Sem etiquetas"
+    },
+    "channels": {
+      "title": "Onde as pessoas podem responder",
+      "desc": "Escolha como este formulário recebe respostas. Desative o que você não usa.",
+      "link": "Link da web",
+      "embed": "Incorporar",
+      "api": "Serviço de API",
+      "linkHint": "Endereço próprio, link curto e código QR.",
+      "embedHint": "Dentro do seu site, em um quadro.",
+      "apiHint": "Outros apps enviam e leem respostas por endpoints.",
+      "makeApiOnly": "Somente API",
+      "allThree": "Os três",
+      "apiOnly": "Somente API",
+      "apiOnlyHint": "Este formulário não tem endereço na web: o link, o link curto e a incorporação respondem “não encontrado”, como um formulário que não existe. Os apps só chegam a ele pelos seus endpoints de API.",
+      "openShare": "Abrir configurações de Compartilhar"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "A senha não está correta.",
     "FRM-API-1016": "Este segredo não pode ser exibido: foi criado antes de os segredos poderem ser vistos de novo. Rotacione para obter um novo.",
     "FRM-API-1017": "Envie o corpo como JSON com Content-Type: application/json.",
-    "FRM-API-1018": "O corpo é grande demais (máximo de 1 MB; envie arquivos pela etapa de upload)."
+    "FRM-API-1018": "O corpo é grande demais (máximo de 1 MB; envie arquivos pela etapa de upload).",
+    "FRM-API-1019": "Este formulário não está aberto ao serviço de API. Ative a API nas configurações de Compartilhar."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Adicione seu site em Configurações → Empresa para mostrar o link.",
       "showFacts": "Informações rápidas",
       "showFactsHint": "Quanto tempo leva, quantas perguntas há e que as respostas são criptografadas."
-    }
+    },
+    "applied": "“{name}” aplicado"
   },
   "themes": {
     "subtitle": "Designs guardados que pode usar em qualquer formulário",
@@ -3851,7 +3868,14 @@
         "DELETE": "Remover uma resposta pelo seu id; mantido na trilha de auditoria."
       },
       "afterTitle": "O que acontece depois",
-      "afterText": "O endpoint é criado desativado. Tokens de teste já podem chamá-lo, então você pode experimentar com segurança. Depois dê um token live, adicione regras de acesso se quiser e ative-o."
+      "afterText": "O endpoint é criado desativado. Tokens de teste já podem chamá-lo, então você pode experimentar com segurança. Depois dê um token live, adicione regras de acesso se quiser e ative-o.",
+      "notReady": "Ainda não está pronto para a API",
+      "draftHint": "Ainda não publicado. Publique somente para a API: ele nunca terá endereço na web.",
+      "closedHint": "Publicado, mas não aberto ao serviço de API.",
+      "publishForApi": "Publicar somente para a API",
+      "openToApi": "Abrir para a API",
+      "publishedForApi": "“{name}” está publicado somente para a API",
+      "openedToApi": "“{name}” está aberto para a API"
     },
     "tokens": {
       "title": "Tokens",
@@ -4429,7 +4453,8 @@
         "title": "Serviço e formulário",
         "ok": "Em {service}, responde com o formulário {form}.",
         "serviceOff": "O serviço {name} está desligado, então o endpoint não pode responder. Ligue o serviço.",
-        "formOff": "O formulário não está publicado, então o endpoint não pode responder. Publique o formulário."
+        "formOff": "O formulário não está publicado, então o endpoint não pode responder. Publique o formulário.",
+        "formNoApi": "O formulário dele não está aberto ao serviço de API, então o endpoint não pode responder. Ative a API nas configurações de Compartilhar do formulário."
       },
       "token": {
         "title": "Um token que possa chamá-lo",

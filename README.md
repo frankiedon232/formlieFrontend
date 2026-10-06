@@ -85,6 +85,14 @@ Sign in as `admin@remedylegal.test` (password above) and open **API service** in
 
 Expected API answers along the way: a **live** token on a not-live endpoint gets `503 FRM-API-1007` (`endpoint: not_live`); a **test** token gets through (and nothing is stored).
 
+### 1b. A form for the API only
+
+1. Open a form → **Share** → _Where people can answer_ → **API only** → Save changes. The link, short link, embed and access cards disappear; the overview says "API only".
+2. Open its link, its `…/embed` address and its short link in a private window: each says the form was not found (like a form that does not exist).
+3. A **draft** form: _New endpoint_ lists it under _Not ready for the API yet_ with **Publish for the API only**. One click makes it API only, publishes it and picks it.
+4. Turn the API off for a form that has an endpoint: calls answer `503 FRM-API-1007` (`form: not_for_api`) and the endpoint checklist says why.
+5. New questions get clean keys (`first_name`); a second "First name" gets `first_name_2`. After publishing, renaming a question keeps its key.
+
 ### 2. Tokens
 
 1. **New token** shows four steps: kind (live or test, bearer or client id + secret) → name and what it may call (a sentence sums it up) → expiry and signed calls → the token.

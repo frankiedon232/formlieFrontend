@@ -328,6 +328,21 @@
       "updated": "Bijgewerkt {when}",
       "access": "Toegang",
       "noTags": "Geen labels"
+    },
+    "channels": {
+      "title": "Waar mensen kunnen antwoorden",
+      "desc": "Kies hoe dit formulier antwoorden ontvangt. Zet uit wat je niet gebruikt.",
+      "link": "Weblink",
+      "embed": "Insluiten",
+      "api": "API-service",
+      "linkHint": "Eigen adres, korte link en QR-code.",
+      "embedHint": "In je website, in een frame.",
+      "apiHint": "Andere apps sturen en lezen antwoorden via endpoints.",
+      "makeApiOnly": "Alleen API",
+      "allThree": "Alle drie",
+      "apiOnly": "Alleen API",
+      "apiOnlyHint": "Dit formulier heeft geen webadres: de link, korte link en insluiting antwoorden “niet gevonden”, net als een formulier dat niet bestaat. Apps bereiken het alleen via je API-endpoints.",
+      "openShare": "Instellingen van Delen openen"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "Dat wachtwoord klopt niet.",
     "FRM-API-1016": "Dit geheim kan niet worden getoond: het is gemaakt voordat geheimen weer zichtbaar waren. Roteer het voor een nieuw geheim.",
     "FRM-API-1017": "Stuur de body als JSON met Content-Type: application/json.",
-    "FRM-API-1018": "De body is te groot (maximaal 1 MB; stuur bestanden via de uploadstap)."
+    "FRM-API-1018": "De body is te groot (maximaal 1 MB; stuur bestanden via de uploadstap).",
+    "FRM-API-1019": "Dit formulier staat niet open voor de API-service. Zet de API aan in de instellingen van Delen."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Voeg je website toe in Instellingen → Bedrijf om de link te tonen.",
       "showFacts": "Korte info",
       "showFactsHint": "Hoe lang het duurt, hoeveel vragen er zijn en dat antwoorden versleuteld zijn."
-    }
+    },
+    "applied": "“{name}” toegepast"
   },
   "themes": {
     "subtitle": "Opgeslagen ontwerpen die u op elk formulier kunt gebruiken",
@@ -3851,7 +3868,14 @@
         "DELETE": "Een antwoord verwijderen op id; bewaard in het auditlogboek."
       },
       "afterTitle": "Wat er daarna gebeurt",
-      "afterText": "Het endpoint wordt niet live aangemaakt. Testtokens kunnen het al aanroepen, dus je kunt het veilig proberen. Geef het daarna een livetoken, voeg eventueel toegangsregels toe en zet het aan."
+      "afterText": "Het endpoint wordt niet live aangemaakt. Testtokens kunnen het al aanroepen, dus je kunt het veilig proberen. Geef het daarna een livetoken, voeg eventueel toegangsregels toe en zet het aan.",
+      "notReady": "Nog niet klaar voor de API",
+      "draftHint": "Nog niet gepubliceerd. Publiceer het alleen voor de API: het krijgt nooit een webadres.",
+      "closedHint": "Gepubliceerd, maar niet open voor de API-service.",
+      "publishForApi": "Alleen voor de API publiceren",
+      "openToApi": "Openen voor de API",
+      "publishedForApi": "“{name}” is alleen voor de API gepubliceerd",
+      "openedToApi": "“{name}” staat open voor de API"
     },
     "tokens": {
       "title": "Tokens",
@@ -4429,7 +4453,8 @@
         "title": "Service en formulier",
         "ok": "In {service}, antwoordt met het formulier {form}.",
         "serviceOff": "De service {name} staat uit, dus het endpoint kan niet antwoorden. Zet de service aan.",
-        "formOff": "Het formulier is niet gepubliceerd, dus het endpoint kan niet antwoorden. Publiceer het formulier."
+        "formOff": "Het formulier is niet gepubliceerd, dus het endpoint kan niet antwoorden. Publiceer het formulier.",
+        "formNoApi": "Het formulier staat niet open voor de API-service, dus het endpoint kan niet antwoorden. Zet de API aan in de instellingen van Delen van het formulier."
       },
       "token": {
         "title": "Een token dat het mag aanroepen",

@@ -328,6 +328,21 @@
       "updated": "Ilisasishwa {when}",
       "access": "Ufikiaji",
       "noTags": "Hakuna lebo"
+    },
+    "channels": {
+      "title": "Mahali watu wanapoweza kujibu",
+      "desc": "Chagua jinsi fomu hii inavyopokea majibu. Zima usichotumia.",
+      "link": "Kiungo cha wavuti",
+      "embed": "Pachika",
+      "api": "Huduma ya API",
+      "linkHint": "Anwani yake yenyewe, kiungo kifupi na msimbo wa QR.",
+      "embedHint": "Ndani ya tovuti yako, kwenye fremu.",
+      "apiHint": "Programu nyingine hutuma na kusoma majibu kupitia endpoints.",
+      "makeApiOnly": "API pekee",
+      "allThree": "Zote tatu",
+      "apiOnly": "API pekee",
+      "apiOnlyHint": "Fomu hii haina anwani ya wavuti: kiungo chake, kiungo kifupi na upachikaji hujibu “haijapatikana”, kama fomu isiyokuwepo. Programu huifikia kupitia endpoints zako za API pekee.",
+      "openShare": "Fungua mipangilio ya Shiriki"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "Nenosiri si sahihi.",
     "FRM-API-1016": "Siri hii haiwezi kuonyeshwa: iliundwa kabla siri hazijaweza kuonekana tena. Izungushe ili upate mpya.",
     "FRM-API-1017": "Tuma mwili wa ombi kama JSON ukiwa na Content-Type: application/json.",
-    "FRM-API-1018": "Mwili wa ombi ni mkubwa mno (upeo wa 1 MB; tuma faili kupitia hatua ya upakiaji)."
+    "FRM-API-1018": "Mwili wa ombi ni mkubwa mno (upeo wa 1 MB; tuma faili kupitia hatua ya upakiaji).",
+    "FRM-API-1019": "Fomu hii haijafunguliwa kwa huduma ya API. Washa API kwenye mipangilio ya Shiriki."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Ongeza tovuti yako katika Mipangilio → Kampuni ili kuonyesha kiungo.",
       "showFacts": "Taarifa fupi",
       "showFactsHint": "Inachukua muda gani, maswali mangapi, na kwamba majibu yamesimbwa."
-    }
+    },
+    "applied": "“{name}” imetumika"
   },
   "themes": {
     "subtitle": "Miundo iliyohifadhiwa unayoweza kutumia kwenye fomu yoyote",
@@ -3851,7 +3868,14 @@
         "DELETE": "Ondoa jibu kwa kitambulisho chake; hubaki kwenye kumbukumbu ya ukaguzi."
       },
       "afterTitle": "Kinachofuata",
-      "afterText": "Endpoint huundwa bila kuwa live. Tokeni za majaribio zinaweza tayari kuipigia, kwa hiyo unaweza kuijaribu kwa usalama. Kisha ipe tokeni ya live, ongeza kanuni za ufikiaji ukitaka, na uiwashe."
+      "afterText": "Endpoint huundwa bila kuwa live. Tokeni za majaribio zinaweza tayari kuipigia, kwa hiyo unaweza kuijaribu kwa usalama. Kisha ipe tokeni ya live, ongeza kanuni za ufikiaji ukitaka, na uiwashe.",
+      "notReady": "Bado haijawa tayari kwa API",
+      "draftHint": "Bado haijachapishwa. Ichapishe kwa API pekee: kamwe haitapata anwani ya wavuti.",
+      "closedHint": "Imechapishwa, lakini haijafunguliwa kwa huduma ya API.",
+      "publishForApi": "Chapisha kwa API pekee",
+      "openToApi": "Fungua kwa API",
+      "publishedForApi": "“{name}” imechapishwa kwa API pekee",
+      "openedToApi": "“{name}” imefunguliwa kwa API"
     },
     "tokens": {
       "title": "Tokeni",
@@ -4429,7 +4453,8 @@
         "title": "Huduma na fomu",
         "ok": "Katika {service}, inajibu kwa fomu {form}.",
         "serviceOff": "Huduma yake {name} imezimwa, kwa hiyo endpoint haiwezi kujibu. Washa huduma.",
-        "formOff": "Fomu yake haijachapishwa, kwa hiyo endpoint haiwezi kujibu. Chapisha fomu."
+        "formOff": "Fomu yake haijachapishwa, kwa hiyo endpoint haiwezi kujibu. Chapisha fomu.",
+        "formNoApi": "Fomu yake haijafunguliwa kwa huduma ya API, kwa hiyo endpoint haiwezi kujibu. Washa API kwenye mipangilio ya Shiriki ya fomu."
       },
       "token": {
         "title": "Tokeni inayoweza kuipigia",

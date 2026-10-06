@@ -328,6 +328,21 @@
       "updated": "Modifié {when}",
       "access": "Accès",
       "noTags": "Aucune étiquette"
+    },
+    "channels": {
+      "title": "Où les gens peuvent répondre",
+      "desc": "Choisissez comment ce formulaire reçoit les réponses. Désactivez ce que vous n’utilisez pas.",
+      "link": "Lien web",
+      "embed": "Intégration",
+      "api": "Service d’API",
+      "linkHint": "Sa propre adresse, un lien court et un code QR.",
+      "embedHint": "Dans votre site web, dans un cadre.",
+      "apiHint": "D’autres applications envoient et lisent les réponses via des endpoints.",
+      "makeApiOnly": "API uniquement",
+      "allThree": "Les trois",
+      "apiOnly": "API uniquement",
+      "apiOnlyHint": "Ce formulaire n’a pas d’adresse web : son lien, son lien court et son intégration répondent « introuvable », comme un formulaire qui n’existe pas. Les applications n’y accèdent que par vos endpoints d’API.",
+      "openShare": "Ouvrir les paramètres de Partage"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "Ce mot de passe n’est pas correct.",
     "FRM-API-1016": "Ce secret ne peut pas être affiché : il a été créé avant que les secrets puissent être revus. Renouvelez-le pour en obtenir un nouveau.",
     "FRM-API-1017": "Envoyez le corps en JSON avec Content-Type: application/json.",
-    "FRM-API-1018": "Le corps est trop volumineux (1 MB au maximum ; envoyez les fichiers via l'étape de téléversement)."
+    "FRM-API-1018": "Le corps est trop volumineux (1 MB au maximum ; envoyez les fichiers via l'étape de téléversement).",
+    "FRM-API-1019": "Ce formulaire n’est pas ouvert au service d’API. Activez l’API dans ses paramètres de Partage."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "Ajoutez votre site dans Paramètres → Entreprise pour afficher le lien.",
       "showFacts": "L’essentiel",
       "showFactsHint": "La durée, le nombre de questions et le fait que les réponses sont chiffrées."
-    }
+    },
+    "applied": "« {name} » appliqué"
   },
   "themes": {
     "subtitle": "Des designs enregistrés à utiliser sur n’importe quel formulaire",
@@ -3851,7 +3868,14 @@
         "DELETE": "Supprimer une réponse par son id ; conservé dans le journal d'audit."
       },
       "afterTitle": "La suite",
-      "afterText": "L'endpoint est créé inactif. Les jetons de test peuvent déjà l'appeler, vous pouvez donc l'essayer sans risque. Donnez-lui ensuite un jeton live, ajoutez des règles d'accès si vous voulez, puis activez-le."
+      "afterText": "L'endpoint est créé inactif. Les jetons de test peuvent déjà l'appeler, vous pouvez donc l'essayer sans risque. Donnez-lui ensuite un jeton live, ajoutez des règles d'accès si vous voulez, puis activez-le.",
+      "notReady": "Pas encore prêt pour l’API",
+      "draftHint": "Pas encore publié. Publiez-le pour l’API uniquement : il n’aura jamais d’adresse web.",
+      "closedHint": "Publié, mais non ouvert au service d’API.",
+      "publishForApi": "Publier pour l’API uniquement",
+      "openToApi": "Ouvrir à l’API",
+      "publishedForApi": "« {name} » est publié pour l’API uniquement",
+      "openedToApi": "« {name} » est ouvert à l’API"
     },
     "tokens": {
       "title": "Jetons",
@@ -4429,7 +4453,8 @@
         "title": "Service et formulaire",
         "ok": "Dans {service}, répond avec le formulaire {form}.",
         "serviceOff": "Son service {name} est désactivé, l'endpoint ne peut donc pas répondre. Activez le service.",
-        "formOff": "Son formulaire n'est pas publié, l'endpoint ne peut donc pas répondre. Publiez le formulaire."
+        "formOff": "Son formulaire n'est pas publié, l'endpoint ne peut donc pas répondre. Publiez le formulaire.",
+        "formNoApi": "Son formulaire n’est pas ouvert au service d’API, l’endpoint ne peut donc pas répondre. Activez l’API dans les paramètres de Partage du formulaire."
       },
       "token": {
         "title": "Un jeton autorisé à l'appeler",

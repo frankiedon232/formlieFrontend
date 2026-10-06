@@ -8,7 +8,7 @@
 import { randomBytes, scryptSync } from 'node:crypto'
 import { z } from 'zod'
 import type { AuditChange } from '#shared/types/audit'
-import type { CustomLinkCheck, FormShareSettings } from '#shared/types/forms'
+import { channelsOf, FORM_CHANNELS, type CustomLinkCheck, type FormShareSettings } from '#shared/types/forms'
 import { customLinkProblem, FORM_KEY_PATTERN, newShortCode, tidyCustomLink } from '#shared/utils/urls/public'
 import { MAX_EMBED_DOMAINS, normaliseEmbedDomain } from '#shared/utils/urls/embed-domains'
 import { requireAuth } from '../core/auth'
@@ -35,6 +35,7 @@ function findForm(tenant: MockTenant, user: MockUser, id: string | undefined): S
 export const hashPassword = (password: string, salt: string) => scryptSync(password, salt, 32).toString('base64')
 
 const settingsOf = (form: StoredForm, tenant: MockTenant): FormShareSettings => ({
+  channels: channelsOf(form),
   access: form.access ?? 'public',
   has_password: !!form.password,
   password_changed_at: form.password?.changed_at ?? null,
@@ -172,6 +173,8 @@ const shareSchema = z.object({
       grants: z.array(z.object({ user_id: z.string().max(64), level: z.enum(['edit', 'view', 'responses']) })).max(500),
     })
     .optional(),
+  /** Where people can answer (at least one). */
+  channels: z.array(z.enum(FORM_CHANNELS)).min(1).max(3).optional(),
   /** Websites allowed to show the embed; [] = any website. */
   embed_domains: z.array(z.string().max(253)).max(MAX_EMBED_DOMAINS).optional(),
 })
@@ -243,6 +246,14 @@ export const saveShare = defineMockRoute(({ event, body }) => {
       if (before[field] !== next[field]) changes.push({ field: `seo_${field}`, before: before[field] == null ? null : String(before[field]), after: next[field] == null ? null : String(next[field]) })
     if (before.image_upload_id !== next.image_upload_id) changes.push({ field: 'seo_image', before: before.image_upload_id ? 'image' : null, after: next.image_upload_id ? 'image' : null })
     form.seo = next
+  }
+  if (input.channels !== undefined) {
+    const next = FORM_CHANNELS.filter(channel => input.channels!.includes(channel))
+    const before = channelsOf(form)
+    if (next.join() !== before.join()) {
+      changes.push({ field: 'channels', before: before.join(', '), after: next.join(', ') })
+      form.channels = next
+    }
   }
   if (input.embed_domains !== undefined) {
     const domains = [...new Set(input.embed_domains.map(normaliseEmbedDomain))]

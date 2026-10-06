@@ -107,6 +107,8 @@ export interface ApiSetupSummary {
 export interface ApiEndpointSetup {
   service_active: boolean
   form_published: boolean
+  /** The form is open to the API service (its channels, owner 2026-10-06). */
+  form_api: boolean
   /** Tokens (not revoked or expired) whose scope covers it. */
   tokens_live: number
   tokens_test: number
@@ -231,6 +233,8 @@ export interface ApiHeaderRule {
   name: string
   /** Shown masked except its last 4 characters. */
   preview: string
+  /** The value itself, for ready-to-copy examples in Docs & testing and Try it (admins only, owner 2026-10-06). */
+  value: string
 }
 export interface ApiHeaderInput {
   name: string

@@ -44,11 +44,12 @@ export function useBuilderSession(formId: string) {
     loading.value = true
     failed.value = null
     try {
-      const { data } = await api.get<{ form: FormSummary; schema: FormSchemaV1; published_version: number | null }>(
+      const { data } = await api.get<{ form: FormSummary; schema: FormSchemaV1; published_version: number | null; published_keys?: string[] }>(
         `/forms/${formId}/builder`,
       )
       apply(data.form, data.schema)
-      builder.keysLocked.value = data.form.status !== 'draft' || data.published_version !== null
+      // Keys a published version used stay fixed; the rest follow their labels (clean keys)
+      builder.publishedKeys.value = new Set(data.published_keys ?? (data.form.status !== 'draft' || data.published_version !== null ? allFields(data.schema).map(field => field.key) : []))
       setLabel(`/forms/${formId}`, data.form.name)
     } catch (error) {
       failed.value = handle(error, { silent: true }).code
@@ -83,7 +84,7 @@ export function useBuilderSession(formId: string) {
     )
     if (!result) return false
     apply(result.data.form)
-    builder.keysLocked.value = true
+    builder.publishedKeys.value = new Set([...builder.publishedKeys.value, ...builder.fields.value.map(field => field.key)])
     counts.refresh(true)
     toast.add({ title: t('builder.publish.done', { n: result.data.version.number }), icon: 'i-lucide-globe', color: 'success' })
     return true

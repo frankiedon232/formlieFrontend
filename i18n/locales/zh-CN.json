@@ -328,6 +328,21 @@
       "updated": "{when}更新",
       "access": "访问权限",
       "noTags": "无标签"
+    },
+    "channels": {
+      "title": "人们可以在哪里作答",
+      "desc": "选择此表单接收回复的方式。关闭不用的渠道。",
+      "link": "网页链接",
+      "embed": "嵌入",
+      "api": "API 服务",
+      "linkHint": "专属地址、短链接和 QR 码。",
+      "embedHint": "嵌入你的网站，以框架显示。",
+      "apiHint": "其他应用通过端点发送和读取回复。",
+      "makeApiOnly": "仅 API",
+      "allThree": "全部三个",
+      "apiOnly": "仅 API",
+      "apiOnlyHint": "此表单没有网页地址：它的链接、短链接和嵌入都会返回“未找到”，就像不存在的表单一样。应用只能通过你的 API 端点访问它。",
+      "openShare": "打开分享设置"
     }
   },
   "nav": {
@@ -584,7 +599,8 @@
     "FRM-AUTH-1013": "密码不正确。",
     "FRM-API-1016": "无法显示此密钥：它创建于密钥可再次查看之前。请轮换它以获得新的密钥。",
     "FRM-API-1017": "请以 JSON 格式发送请求体，并设置 Content-Type: application/json。",
-    "FRM-API-1018": "请求体过大（最多 1 MB；文件请通过上传步骤发送）。"
+    "FRM-API-1018": "请求体过大（最多 1 MB；文件请通过上传步骤发送）。",
+    "FRM-API-1019": "此表单未向 API 服务开放。请在分享设置中开启 API。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -2894,7 +2910,8 @@
       "noWebsite": "在 设置 → 公司 中添加网站即可显示链接。",
       "showFacts": "概要信息",
       "showFactsHint": "所需时间、问题数量，以及回答已加密。"
-    }
+    },
+    "applied": "已应用“{name}”"
   },
   "themes": {
     "subtitle": "可用于任意表单的已保存设计",
@@ -3851,7 +3868,14 @@
         "DELETE": "按 ID 删除回复;会保留在审计记录中。"
       },
       "afterTitle": "接下来会怎样",
-      "afterText": "端点创建后处于未上线状态。测试令牌已经可以调用它，所以你可以放心试用。之后为它配发正式令牌，按需添加访问规则，然后开启。"
+      "afterText": "端点创建后处于未上线状态。测试令牌已经可以调用它，所以你可以放心试用。之后为它配发正式令牌，按需添加访问规则，然后开启。",
+      "notReady": "尚未准备好用于 API",
+      "draftHint": "尚未发布。仅为 API 发布：它永远不会有网页地址。",
+      "closedHint": "已发布，但未向 API 服务开放。",
+      "publishForApi": "仅为 API 发布",
+      "openToApi": "向 API 开放",
+      "publishedForApi": "“{name}”已仅为 API 发布",
+      "openedToApi": "“{name}”已向 API 开放"
     },
     "tokens": {
       "title": "令牌",
@@ -4429,7 +4453,8 @@
         "title": "服务与表单",
         "ok": "位于 {service}，使用表单 {form} 作答。",
         "serviceOff": "它所属的服务 {name} 已关闭，因此端点无法响应。请开启该服务。",
-        "formOff": "它的表单尚未发布，因此端点无法响应。请发布该表单。"
+        "formOff": "它的表单尚未发布，因此端点无法响应。请发布该表单。",
+        "formNoApi": "其表单未向 API 服务开放，因此端点无法响应。请在表单的分享设置中开启 API。"
       },
       "token": {
         "title": "可以调用它的令牌",
