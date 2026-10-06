@@ -7,14 +7,20 @@
  *   POST   /api-services/:id/duplicate    a copy with copies of its endpoints (switched off)
  *   GET    /api-endpoints                 list (q, sort, filter[service|method|status]) · /insights
  *   GET    /api-endpoints/:id             one with its fields                  · POST · PATCH · DELETE
+ *   POST   /api-service/key/rotate        a new address handle; the old one works for a grace period
+ *   GET    /api-tokens                    list (q, sort, filter[status|mode|kind]) · /insights · /:id
+ *   POST   /api-tokens                    a token; its secrets come back once     · PATCH · DELETE (revoked / expired)
+ *   POST   /api-tokens/:id/rotate         new secrets (shown once); the old ones work for a grace period
+ *   POST   /api-tokens/:id/revoke         stops it at once
  *
  * Endpoint names are unique in the organisation (FRM-API-1001); an endpoint needs a published
  * form (FRM-API-1002). The form's own rules decide which questions can be sent: required
  * questions are always accepted on POST, read-only ones, files and calculated values never.
  */
 import { z } from 'zod'
-import type { ApiInsights, ApiServiceSettings, ApiUsage } from '#shared/types/apiService'
-import { API_STATUSES } from '#shared/types/apiService'
+import type { ApiInsights, ApiServiceSettings, ApiTokenCreated, ApiTokenInsights, ApiUsage } from '#shared/types/apiService'
+import { API_STATUSES, API_TOKEN_MODES, API_TOKEN_STATUSES } from '#shared/types/apiService'
+import { checkHeaderName, checkHeaderValue, MAX_REQUIRED_HEADERS, ROTATION_GRACE_HOURS, secretPreview, TOKEN_LIFETIMES } from '#shared/utils/apiService/tokens'
 import { checkEndpointName, endpointFieldsOf, API_PAGE_SIZE_MAX } from '#shared/utils/apiService/endpoints'
 import { API_METHODS, type ApiMethod } from '#shared/utils/urls/public'
 import { actorOf, recordAudit } from '../core/audit'
@@ -22,7 +28,7 @@ import { requireAdmin } from '../core/auth'
 import { MockError, ok, paginate, filtersOf } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
-import { API_BASE_URL, apiOf, endpointUsage, saveApi, schemaOf, sumUsage, toEndpoint, toEndpointDetail, toService, type StoredApiEndpoint } from '../data/apiStore'
+import { API_BASE_URL, apiOf, endpointUsage, hashSecret, newSecret, saveApi, schemaOf, sumUsage, toEndpoint, toEndpointDetail, toService, toToken, type StoredApiEndpoint, type StoredApiToken } from '../data/apiStore'
 import { formsOf } from '../data/formStore'
 import type { MockTenant } from '../data/tenants'
 
@@ -40,6 +46,7 @@ const endpointInput = z.object({
   methods: z.array(z.enum(API_METHODS)).max(4),
   fields: z.array(z.object({ key: z.string().max(64), accept: z.boolean(), required: z.boolean(), returned: z.boolean(), filter: z.boolean() })).max(500),
   page_size: z.number().int().min(1).max(API_PAGE_SIZE_MAX),
+  headers: z.array(z.object({ name: z.string().trim().max(64), value: z.string().max(200).nullable() })).max(MAX_REQUIRED_HEADERS).optional(),
   status: z.enum(API_STATUSES).optional(),
 })
 
@@ -70,10 +77,30 @@ function insightsOf(usage: ApiUsage, statuses: ('active' | 'disabled')[], method
 
 // ── Settings ─────────────────────────────────────────────────────────────────────────────
 
+function settingsOf(tenant: MockTenant): ApiServiceSettings {
+  const api = apiOf(tenant)
+  const graceLeft = api.previous_until && Date.parse(api.previous_until) > Date.now()
+  return { api_key: api.api_key, base_url: API_BASE_URL, previous_key: graceLeft ? (api.previous_key ?? null) : null, previous_until: graceLeft ? (api.previous_until ?? null) : null, rotated_at: api.rotated_at ?? null }
+}
+
 export const apiSettings = defineMockRoute(({ event }) => {
   const { tenant } = requireAdmin(event)
-  const settings: ApiServiceSettings = { api_key: apiOf(tenant).api_key, base_url: API_BASE_URL }
-  return ok(settings)
+  return ok(settingsOf(tenant))
+})
+
+/** A new address handle; every endpoint's address changes, the old handle keeps answering for `grace_hours`. */
+export const rotateApiKey = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const { grace_hours } = parseBody(z.object({ grace_hours: z.number().int().refine(n => ROTATION_GRACE_HOURS.includes(n)) }), body)
+  const api = apiOf(tenant)
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789'
+  api.previous_key = grace_hours ? api.api_key : null
+  api.previous_until = grace_hours ? new Date(Date.now() + grace_hours * 3_600_000).toISOString() : null
+  api.api_key = Array.from(crypto.getRandomValues(new Uint8Array(10)), byte => chars[byte % chars.length]).join('')
+  api.rotated_at = now()
+  saveApi()
+  recordAudit(event, tenant, { action: 'api.key_rotated', actor: actorOf(user), resource: { type: 'api_service', id: null, name: api.api_key }, metadata: { grace_hours: String(grace_hours) } })
+  return ok(settingsOf(tenant))
 })
 
 // ── Services ─────────────────────────────────────────────────────────────────────────────
@@ -155,7 +182,7 @@ export const duplicateApiService = defineMockRoute(({ event }) => {
   const copy = { ...source, id: crypto.randomUUID(), name: name.slice(0, 80), status: 'disabled' as const, created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` }, created_at: now(), updated_at: now() }
   api.services.push(copy)
   for (const endpoint of api.endpoints.filter(item => item.service_id === source.id))
-    api.endpoints.push({ ...endpoint, id: crypto.randomUUID(), service_id: copy.id, name: freeName(api, endpoint.name), status: 'disabled', fields: endpoint.fields.map(field => ({ ...field })), methods: [...endpoint.methods], created_at: now(), updated_at: now() })
+    api.endpoints.push({ ...endpoint, id: crypto.randomUUID(), service_id: copy.id, name: freeName(api, endpoint.name), status: 'disabled', fields: endpoint.fields.map(field => ({ ...field })), headers: (endpoint.headers ?? []).map(header => ({ ...header })), methods: [...endpoint.methods], created_at: now(), updated_at: now() })
   saveApi()
   recordAudit(event, tenant, { action: 'api.service_created', actor: actorOf(user), resource: { type: 'api_service', id: copy.id, name: copy.name }, metadata: { copy_of: source.name } })
   return ok(toService(tenant, copy), {}, 201)
@@ -223,7 +250,19 @@ function checked(tenant: MockTenant, values: z.infer<typeof endpointInput>, exce
   const writes = values.methods.some(method => method === 'POST' || method === 'PUT')
   if (writes && !fields.some(field => field.accept)) throw new MockError('FRM-GEN-1002', [{ field: 'fields', message: 'accept' }])
   if (values.methods.includes('GET') && !fields.some(field => field.returned)) throw new MockError('FRM-GEN-1002', [{ field: 'fields', message: 'returned' }])
+  // Required headers: valid, distinct names; a null value keeps the saved one
+  const saved = api.endpoints.find(item => item.id === exceptId)?.headers ?? []
+  const headers = (values.headers ?? saved.map(header => ({ name: header.name, value: null }))).map((header, index) => {
+    const nameProblem = checkHeaderName(header.name)
+    if (nameProblem) throw new MockError('FRM-GEN-1002', [{ field: `headers.${index}.name`, message: nameProblem }])
+    const value = header.value ?? saved.find(item => item.name.toLowerCase() === header.name.toLowerCase())?.value ?? ''
+    const valueProblem = checkHeaderValue(value)
+    if (valueProblem) throw new MockError('FRM-GEN-1002', [{ field: `headers.${index}.value`, message: valueProblem }])
+    return { name: header.name, value }
+  })
+  if (new Set(headers.map(header => header.name.toLowerCase())).size !== headers.length) throw new MockError('FRM-GEN-1002', [{ field: 'headers', message: 'duplicate' }])
   return {
+    headers,
     service_id: values.service_id,
     name: values.name,
     description: values.description || null,
@@ -288,4 +327,161 @@ export const apiEndpointFormFields = defineMockRoute(({ event, query }) => {
   const schema = schemaOf(form, version)
   if (!schema || form.status !== 'published') throw new MockError('FRM-API-1002')
   return ok({ fields: endpointFieldsOf(schema), versions: (form.versions ?? []).map(item => item.number).sort((a, b) => b - a) })
+})
+
+// ── Tokens (M2) ──────────────────────────────────────────────────────────────────────────
+
+const tokenInput = z.object({
+  name: z.string().trim().min(1).max(80),
+  kind: z.enum(['static', 'client']),
+  mode: z.enum(API_TOKEN_MODES),
+  scopes: z.object({ services: z.array(z.string()).max(100), endpoints: z.array(z.string()).max(500), methods: z.array(z.enum(API_METHODS)).max(4) }),
+  expires_at: z.string().datetime().nullable(),
+  lifetime_minutes: z.number().int().refine(n => TOKEN_LIFETIMES.includes(n)).nullish(),
+  signing: z.boolean().optional(),
+})
+
+function findToken(tenant: MockTenant, id: string | undefined) {
+  const token = apiOf(tenant).tokens.find(item => item.id === id)
+  if (!token) throw new MockError('FRM-GEN-1004')
+  return token
+}
+/** Scopes name services and endpoints of this organisation; an expiry is in the future and within 2 years. */
+function checkToken(tenant: MockTenant, values: Pick<z.infer<typeof tokenInput>, 'scopes' | 'expires_at'>) {
+  const api = apiOf(tenant)
+  if (values.scopes.services.some(id => !api.services.some(item => item.id === id))) throw new MockError('FRM-GEN-1002', [{ field: 'scopes', message: 'services' }])
+  if (values.scopes.endpoints.some(id => !api.endpoints.some(item => item.id === id))) throw new MockError('FRM-GEN-1002', [{ field: 'scopes', message: 'endpoints' }])
+  if (values.expires_at) {
+    const at = Date.parse(values.expires_at)
+    if (at <= Date.now() || at > Date.now() + 731 * 86_400_000) throw new MockError('FRM-GEN-1002', [{ field: 'expires_at', message: 'range' }])
+  }
+}
+/** New secrets for a token: the bearer token or client secret, and a signing secret when signing is on. */
+function issue(token: StoredApiToken) {
+  const secret = newSecret(token.kind, token.mode)
+  const signing = token.signing ? newSecret('signing', token.mode) : null
+  token.secret_hash = hashSecret(secret)
+  token.preview = secretPreview(secret)
+  token.signing_secret = signing
+  return { ...(token.kind === 'static' ? { token: secret } : { client_secret: secret }), ...(signing ? { signing_secret: signing } : {}) }
+}
+
+export const listApiTokens = defineMockRoute(({ event, query }) => {
+  const { tenant } = requireAdmin(event)
+  const filter = filtersOf(query)
+  let rows = apiOf(tenant).tokens.map(item => toToken(tenant, item))
+  if (filter.status) rows = rows.filter(row => listOf(filter.status).includes(row.status))
+  if (filter.mode) rows = rows.filter(row => listOf(filter.mode).includes(row.mode))
+  if (filter.kind) rows = rows.filter(row => listOf(filter.kind).includes(row.kind))
+  sortRows(rows as unknown as Record<string, unknown>[], typeof query.sort === 'string' && query.sort ? query.sort : '-created_at')
+  const { data, meta } = paginate(rows, { ...query, sort: undefined }, (row, q) => `${row.name} ${row.preview}`.toLowerCase().includes(q))
+  return ok(data, meta)
+})
+
+export const apiTokenInsights = defineMockRoute(({ event }) => {
+  const { tenant } = requireAdmin(event)
+  const tokens = apiOf(tenant).tokens.map(item => toToken(tenant, item))
+  const usage = sumUsage(tokens)
+  const insights: ApiTokenInsights = {
+    total: tokens.length,
+    by_status: Object.fromEntries(API_TOKEN_STATUSES.map(status => [status, tokens.filter(item => item.status === status).length])) as ApiTokenInsights['by_status'],
+    by_mode: { live: tokens.filter(item => item.mode === 'live').length, test: tokens.filter(item => item.mode === 'test').length },
+    calls_30d: usage.calls_30d,
+    previous_30d: usage.previous_30d,
+    daily: usage.daily,
+    unused_90d: tokens.filter(item => (item.status === 'active' || item.status === 'expiring') && Date.parse(item.last_used_at ?? item.created_at) < Date.now() - 90 * 86_400_000).length,
+  }
+  return ok(insights)
+})
+
+export const getApiToken = defineMockRoute(({ event }) => {
+  const { tenant } = requireAdmin(event)
+  return ok(toToken(tenant, findToken(tenant, getRouterParam(event, 'id'))))
+})
+
+export const createApiToken = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const values = parseBody(tokenInput, body)
+  checkToken(tenant, values)
+  const token: StoredApiToken = {
+    id: crypto.randomUUID(),
+    name: values.name,
+    kind: values.kind,
+    mode: values.mode,
+    secret_hash: '',
+    preview: '',
+    previous_hash: null,
+    rotating_until: null,
+    client_id: values.kind === 'client' ? newSecret('client_id', values.mode) : null,
+    lifetime_minutes: values.kind === 'client' ? (values.lifetime_minutes ?? 15) : null,
+    signing: !!values.signing,
+    signing_secret: null,
+    scopes: values.scopes,
+    expires_at: values.expires_at,
+    last_used_at: null,
+    created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` },
+    created_at: now(),
+    revoked_at: null,
+  }
+  const secrets = issue(token)
+  apiOf(tenant).tokens.unshift(token)
+  saveApi()
+  recordAudit(event, tenant, { action: 'api.token_created', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name }, metadata: { kind: token.kind, mode: token.mode, preview: token.kind === 'client' ? token.client_id! : token.preview } })
+  const created: ApiTokenCreated = { token: toToken(tenant, token), secrets }
+  return ok(created, {}, 201)
+})
+
+export const updateApiToken = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const token = findToken(tenant, getRouterParam(event, 'id'))
+  if (token.revoked_at) throw new MockError('FRM-API-1004')
+  const values = parseBody(tokenInput.pick({ name: true, scopes: true, expires_at: true, lifetime_minutes: true }).partial(), body)
+  checkToken(tenant, { scopes: values.scopes ?? token.scopes, expires_at: values.expires_at === undefined ? null : values.expires_at })
+  const before = token.name
+  if (values.name !== undefined) token.name = values.name
+  if (values.scopes !== undefined) token.scopes = values.scopes
+  if (values.expires_at !== undefined) token.expires_at = values.expires_at
+  if (values.lifetime_minutes != null && token.kind === 'client') token.lifetime_minutes = values.lifetime_minutes
+  saveApi()
+  recordAudit(event, tenant, { action: 'api.token_updated', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name }, changes: before !== token.name ? [{ field: 'name', before, after: token.name }] : [] })
+  return ok(toToken(tenant, token))
+})
+
+export const rotateApiToken = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const token = findToken(tenant, getRouterParam(event, 'id'))
+  if (token.revoked_at) throw new MockError('FRM-API-1004')
+  const { grace_hours } = parseBody(z.object({ grace_hours: z.number().int().refine(n => ROTATION_GRACE_HOURS.includes(n)) }), body)
+  token.previous_hash = grace_hours ? token.secret_hash : null
+  token.rotating_until = grace_hours ? new Date(Date.now() + grace_hours * 3_600_000).toISOString() : null
+  const secrets = issue(token)
+  saveApi()
+  recordAudit(event, tenant, { action: 'api.token_rotated', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name }, metadata: { grace_hours: String(grace_hours) } })
+  const created: ApiTokenCreated = { token: toToken(tenant, token), secrets }
+  return ok(created)
+})
+
+export const revokeApiToken = defineMockRoute(({ event }) => {
+  const { tenant, user } = requireAdmin(event)
+  const token = findToken(tenant, getRouterParam(event, 'id'))
+  if (!token.revoked_at) {
+    token.revoked_at = now()
+    token.previous_hash = null
+    token.rotating_until = null
+    saveApi()
+    recordAudit(event, tenant, { action: 'api.token_revoked', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name } })
+  }
+  return ok(toToken(tenant, token))
+})
+
+export const deleteApiToken = defineMockRoute(({ event }) => {
+  const { tenant, user } = requireAdmin(event)
+  const token = findToken(tenant, getRouterParam(event, 'id'))
+  const view = toToken(tenant, token)
+  if (view.status !== 'revoked' && view.status !== 'expired') throw new MockError('FRM-API-1005')
+  const list = apiOf(tenant).tokens
+  list.splice(list.indexOf(token), 1)
+  saveApi()
+  recordAudit(event, tenant, { action: 'api.token_deleted', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name } })
+  return ok({ deleted: true })
 })

@@ -5,8 +5,9 @@
   click away; picking another form starts its questions afresh.
 -->
 <script setup lang="ts">
-import type { ApiEndpointDetail, ApiEndpointField, ApiEndpointSaveRequest, ApiServiceSettings, ApiStatus } from '#shared/types/apiService'
+import type { ApiEndpointDetail, ApiEndpointField, ApiEndpointSaveRequest, ApiHeaderDraft, ApiServiceSettings, ApiStatus } from '#shared/types/apiService'
 import { checkEndpointName, endpointNameFrom } from '#shared/utils/apiService/endpoints'
+import { checkHeaderName, checkHeaderValue } from '#shared/utils/apiService/tokens'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
 const props = defineProps<{ endpoint?: ApiEndpointDetail | null; service?: string | null }>()
@@ -34,9 +35,11 @@ const pageSize = ref(e?.page_size ?? 50)
 const status = ref<ApiStatus>(e?.status ?? 'active')
 const fields = ref<ApiEndpointField[]>(e ? e.fields.map(field => ({ ...field })) : [])
 const versions = ref<number[]>(e?.versions ?? [])
+const headers = ref<ApiHeaderDraft[]>((e?.headers ?? []).map(header => ({ name: header.name, value: null, preview: header.preview })))
+const headerErrors = ref(false)
 const errors = ref<Record<string, string>>({})
 
-const snapshot = () => JSON.stringify([formId.value, serviceId.value, name.value, description.value, version.value, methods.value, pageSize.value, status.value, fields.value.map(f => [f.key, f.accept, f.required, f.returned, f.filter])])
+const snapshot = () => JSON.stringify([formId.value, serviceId.value, name.value, description.value, version.value, methods.value, pageSize.value, status.value, headers.value, fields.value.map(f => [f.key, f.accept, f.required, f.returned, f.filter])])
 const initial = ref(snapshot())
 watch(() => snapshot() !== initial.value, value => emit('dirty', value), { immediate: true })
 
@@ -95,6 +98,12 @@ function check(step: Step): boolean {
     if (problem) problems.name = t(`apiService.invalid.${problem}`)
   }
   if (step === 'methods' && !methods.value.length) problems.methods = t('apiService.invalid.methods')
+  if (step === 'methods') {
+    const names = headers.value.map(header => header.name.trim().toLowerCase())
+    const bad = headers.value.some((header, i) => checkHeaderName(header.name.trim()) || names.indexOf(names[i]!) !== i || (header.value === null ? !header.preview : checkHeaderValue(header.value)))
+    headerErrors.value = bad
+    if (bad) problems.headers = t('apiService.headers.invalid.fix')
+  }
   if (step === 'fields') {
     if (writes.value && !fields.value.some(field => field.accept)) problems.fields = t('apiService.invalid.accept')
     else if (reads.value && !fields.value.some(field => field.returned)) problems.fields = t('apiService.invalid.returned')
@@ -128,6 +137,7 @@ async function save() {
       methods: methods.value,
       fields: fields.value.map(({ key, accept, required, returned, filter }) => ({ key, accept, required, returned, filter })),
       page_size: pageSize.value,
+      headers: headers.value.map(header => ({ name: header.name.trim(), value: header.value })),
       status: status.value,
     }
     const { data } = props.endpoint ? await api.patch<ApiEndpointDetail>(`/api-endpoints/${props.endpoint.id}`, body) : await api.post<ApiEndpointDetail>('/api-endpoints', body)
@@ -163,7 +173,10 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
         <p v-if="errors.form" class="text-sm text-error">{{ errors.form }}</p>
       </div>
       <ApiWizardBasics v-else-if="current === 'basics'" v-model:service-id="serviceId" v-model:name="name" v-model:description="description" v-model:version="version" :base="base" :versions="versions" :errors="errors" />
-      <ApiWizardMethods v-else-if="current === 'methods'" v-model:methods="methods" v-model:page-size="pageSize" :error="errors.methods" />
+      <div v-else-if="current === 'methods'" class="flex flex-col gap-5">
+        <ApiWizardMethods v-model:methods="methods" v-model:page-size="pageSize" :error="errors.methods" />
+        <ApiWizardHeaders v-model="headers" :show-errors="headerErrors" />
+      </div>
       <div v-else-if="current === 'fields'" class="flex flex-col gap-3">
         <div v-if="loadingFields && !fields.length" class="flex flex-col gap-2"><USkeleton v-for="n in 5" :key="n" class="h-12 w-full" /></div>
         <ApiEndpointsFields v-else :fields="fields" editable :writes="writes" :reads="reads" :class="loadingFields ? 'opacity-60' : ''" @change="changeField" />
@@ -197,6 +210,6 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
       </template>
     </UCard>
 
-    <ApiWizardAside :url="url" :methods="methods" :fields="fields" :page-size="pageSize" :form-name="formName" />
+    <ApiWizardAside :url="url" :methods="methods" :fields="fields" :page-size="pageSize" :form-name="formName" :headers="headers.filter(header => header.name).map(header => ({ name: header.name, value: header.value || header.preview || '…' }))" />
   </div>
 </template>

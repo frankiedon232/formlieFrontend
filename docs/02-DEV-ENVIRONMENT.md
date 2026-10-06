@@ -100,6 +100,18 @@ Seeded workspaces have five connections in every state (connected read + write, 
 
 Response storage (M2): seeded workspaces have two forms storing in a database (a table Formalie created on Case management, all delivered; the `leads` table on Website leads, failing like its connection). Each connection shows a believable set of tables by its purpose plus the response tables. Delivery status is worked out per response when read (sent a few seconds after submitting; failed while the connection fails; held while paused), so new submissions show up as pending, then sent.
 
+## API service from Postman (F13, mock)
+
+With `NUXT_PUBLIC_API_MOCK=true` the mock answers real calls to your endpoints (`server/mock/publicApi.ts`), so you can try them before the backend exists.
+
+1. Address: `https://api.formalie.dev:2202/{apiKey}/{endpoint}` (needs the hosts line `127.0.0.1 api.formalie.dev`) or `https://localhost:2202/public-api/{apiKey}/{endpoint}`. The endpoint panel shows the full address; the key is in Tokens & headers → Headers.
+2. A token: Tokens & headers → New token (Live stores real responses in the mock, Test checks everything but stores nothing). Copy it when it is shown; it is not shown again.
+3. Postman: Authorization → Bearer Token, or a header `Authorization: Bearer fml_live_…`. For POST / PUT: Body → raw → JSON with the question keys from the endpoint's Example call. Add the endpoint's required headers, if any.
+4. Postman checks certificates: turn off "SSL certificate verification" (Settings → General) or add the mkcert root CA (`mkcert -CAROOT` → `rootCA.pem`) under Settings → Certificates.
+5. Client id + secret: `POST …/{apiKey}/token` with `{ "client_id": "…", "client_secret": "…" }`, then use the `access_token` as the bearer.
+
+A response sent with a live token shows up under the form's Responses (channel API). The mock keeps tokens and responses in `.data/mock`.
+
 ## Project env (`.env`, copy from `.env.example`)
 
 | Variable                           | Purpose                                                                                   |

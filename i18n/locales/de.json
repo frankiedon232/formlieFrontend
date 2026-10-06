@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Nur die Person, die diese Abfrage gespeichert hat, kann sie ändern.",
     "FRM-API-1001": "Dieser Endpoint-Name wird in Ihrer Organisation bereits verwendet.",
     "FRM-API-1002": "Veröffentlichen Sie das Formular, bevor es ein Endpoint werden kann.",
-    "FRM-API-1003": "Ein Service mit diesem Namen existiert bereits."
+    "FRM-API-1003": "Ein Service mit diesem Namen existiert bereits.",
+    "FRM-API-1004": "Dieses Token wurde widerrufen und kann nicht mehr geändert werden.",
+    "FRM-API-1005": "Widerrufen Sie das Token, bevor Sie es löschen.",
+    "FRM-API-1006": "Unter dieser Adresse gibt es keinen Endpoint.",
+    "FRM-API-1007": "Dieser Endpoint ist ausgeschaltet.",
+    "FRM-API-1008": "Dieser Endpoint beantwortet diese Methode nicht.",
+    "FRM-API-1009": "Dieses Token darf diesen Endpoint oder diese Methode nicht aufrufen.",
+    "FRM-API-1010": "Senden Sie ein gültiges Token als Authorization: Bearer <token>.",
+    "FRM-API-1011": "Ein Pflicht-Header fehlt oder hat einen falschen Wert.",
+    "FRM-API-1012": "Die Signatur der Anfrage fehlt, ist zu alt oder falsch.",
+    "FRM-API-1013": "Es gibt keinen Datensatz mit dieser ID.",
+    "FRM-API-1014": "Einige Felder können nicht an diesen Endpoint gesendet werden."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -619,7 +630,10 @@
     "failing": "Fehlerhaft",
     "disabled": "Deaktiviert",
     "untested": "Nicht getestet",
-    "active": "Aktiv"
+    "active": "Aktiv",
+    "expiring": "Läuft bald ab",
+    "expired": "Abgelaufen",
+    "revoked": "Widerrufen"
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -842,7 +856,8 @@
       "template": "Vorlage",
       "data_source": "Verbindung",
       "api_service": "API-Service",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "API-Token"
     },
     "field": {
       "name": "Name",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint geändert",
       "api_endpoint_enabled": "Endpoint eingeschaltet",
       "api_endpoint_disabled": "Endpoint ausgeschaltet",
-      "api_endpoint_deleted": "Endpoint gelöscht"
+      "api_endpoint_deleted": "Endpoint gelöscht",
+      "api_key_rotated": "API-Adressschlüssel rotiert",
+      "api_token_created": "API-Token erstellt",
+      "api_token_updated": "API-Token geändert",
+      "api_token_rotated": "API-Token rotiert",
+      "api_token_revoked": "API-Token widerrufen",
+      "api_token_deleted": "API-Token gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -3763,6 +3784,158 @@
         "POST": "Eine neue Antwort senden, geprüft wie auf der Formularseite.",
         "PUT": "Eine Antwort per ID ändern (nur die akzeptierten Fragen).",
         "DELETE": "Eine Antwort per ID entfernen; im Audit-Protokoll festgehalten."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "viewSwitch": "Tokens oder Header",
+      "newTitle": "Neues Token",
+      "editTitle": "Token bearbeiten",
+      "createdTitle": "{name} ist bereit",
+      "desc": "Mit einem Token kann eine App Ihre Endpunkte aufrufen. Geben Sie jeder App ein eigenes, damit Sie eines sperren können, ohne die anderen zu beeinträchtigen.",
+      "namePlaceholder": "z. B. Website-Anmeldungen",
+      "create": "Token erstellen",
+      "copiedDone": "Ich habe es kopiert",
+      "search": "Tokens suchen…",
+      "empty": "Noch keine Tokens",
+      "emptyDesc": "Erstellen Sie für jede App, die Ihre Endpunkte aufruft, ein Token.",
+      "needsLook": "Läuft bald ab oder seit 90 Tagen nicht verwendet",
+      "never": "Nie",
+      "inDays": "In {n} Tag | In {n} Tagen",
+      "customDate": "Datum wählen",
+      "expiredOn": "Abgelaufen am {date}",
+      "used": "Verwendet {when}",
+      "notUsed": "Noch nicht verwendet",
+      "minutes": "{n} Minuten",
+      "lifetime": "Kurzlebiges Token gilt",
+      "lifetimeHelp": "Wie lange jedes Token von der Token-Adresse gültig ist, bevor die App ein neues anfordert.",
+      "signing": "Signierte Anfragen",
+      "signingHelp": "Aufrufe müssen zusätzlich eine HMAC-Signatur der Anfrage enthalten. Für Aufrufer, die zusätzlichen Schutz benötigen.",
+      "signingHint": "Signieren Sie jeden Aufruf: X-Formalie-Timestamp (unix-Sekunden) und X-Formalie-Signature (sha256= HMAC aus Methode, Pfad, Zeitstempel und Body mit dem Signing Secret). Aufrufe, die älter als 5 Minuten sind, werden abgelehnt.",
+      "clientHint": "Die Antwort enthält ein Zugriffstoken, das {n} Minuten gültig ist. Senden Sie es als Authorization: Bearer und fordern Sie ein neues an, wenn es abläuft.",
+      "howToUse": "So verwenden Sie es",
+      "rotate": "Rotieren",
+      "revoke": "Widerrufen",
+      "revokeTitle": "{name} widerrufen?",
+      "revokeDesc": "Apps, die es verwenden, erhalten sofort einen Fehler. Das lässt sich nicht rückgängig machen. Erstellen Sie ein neues Token, falls Sie wieder eines brauchen.",
+      "revokedOn": "Widerrufen am {date}",
+      "revokedDesc": "Aufrufe mit diesem Token werden abgelehnt. Löschen Sie es, wenn Sie es nicht mehr in der Liste brauchen.",
+      "rotating": "Das alte Secret funktioniert noch bis {until}.",
+      "deleteTitle": "{name} löschen?",
+      "deleteDesc": "Es verschwindet aus dieser Liste. Sein Verlauf bleibt im Audit-Protokoll erhalten.",
+      "once": {
+        "title": "Jetzt kopieren: Es wird nur einmal angezeigt",
+        "desc": "Formalie speichert nur einen Fingerabdruck davon. Geht es verloren, rotieren Sie das Token, um ein neues zu erhalten."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "Client-ID",
+        "clientSecret": "Client-Secret",
+        "signing": "Signing Secret"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Aufrufe lesen und schreiben Ihre echten Antworten.",
+        "test": "Zum Entwickeln und Ausprobieren: Aufrufe berühren nie echte Antworten."
+      },
+      "kind": {
+        "static": "Bearer-Token",
+        "client": "Client-ID und Secret"
+      },
+      "kindHint": {
+        "static": "Ein langlebiges Token, das die App bei jedem Aufruf sendet.",
+        "client": "Die App tauscht sie gegen ein kurzlebiges Token ein. Das ist sicherer, falls ein Token durchsickert."
+      },
+      "scope": {
+        "title": "Was aufgerufen werden darf",
+        "help": "Lassen Sie ein Feld leer, um alles dieser Art zu erlauben.",
+        "all": "Alle Endpunkte",
+        "allServices": "Alle Services",
+        "allEndpoints": "Alle Endpunkte",
+        "allMethods": "Alle Methoden"
+      },
+      "col": {
+        "kind": "Typ",
+        "mode": "Modus",
+        "scope": "Darf aufrufen",
+        "expires": "Läuft ab",
+        "lastUsed": "Zuletzt verwendet"
+      },
+      "sort": {
+        "used": "Zuletzt verwendet",
+        "expires": "Zuerst ablaufende"
+      },
+      "kpi": {
+        "calls": "Aufrufe mit Tokens",
+        "tokens": "Tokens",
+        "byStatus": "Tokens nach Status",
+        "unused": "{n} seit 90 Tagen nicht verwendet | {n} seit 90 Tagen nicht verwendet"
+      },
+      "toast": {
+        "saved": "{name} gespeichert",
+        "revoked": "{name} widerrufen",
+        "deleted": "{name} gelöscht"
+      }
+    },
+    "rotate": {
+      "title": "{name} rotieren",
+      "desc": "Sie erhalten neue Secrets. Legen Sie fest, wie lange die alten weiter funktionieren, damit die App ohne Ausfallzeit wechseln kann.",
+      "keyTitle": "Adressschlüssel rotieren",
+      "keyDesc": "Jeder Endpunkt erhält eine neue Adresse. Legen Sie fest, wie lange die alten Adressen weiter funktionieren, während Ihre Apps umstellen.",
+      "graceLegend": "Das alte funktioniert weiter",
+      "confirm": "Rotieren",
+      "grace": {
+        "h0": "Endet sofort",
+        "h24": "24 Stunden lang",
+        "h168": "7 Tage lang"
+      },
+      "graceHint": {
+        "h0": "Verwenden Sie dies, falls es durchgesickert sein könnte.",
+        "h24": "Genug, um eine App zu aktualisieren.",
+        "h168": "Für mehrere Apps oder langsamere Releases."
+      },
+      "keyGrace": "Der alte Schlüssel {key} funktioniert noch bis {until}.",
+      "keyNow": "Der alte Schlüssel funktioniert nicht mehr."
+    },
+    "key": {
+      "title": "Adressschlüssel",
+      "desc": "Der erste Teil jeder Endpunktadresse. Er leitet Aufrufe nur weiter. Tokens entscheiden, wer aufrufen darf.",
+      "current": "Aktueller Schlüssel",
+      "previous": "Der alte Schlüssel {key} funktioniert noch bis {until}.",
+      "rotatedAt": "Rotiert {when}",
+      "rotate": "Schlüssel rotieren"
+    },
+    "headers": {
+      "title": "Header",
+      "standardTitle": "Header, die jeder Aufrufer sendet",
+      "standardDesc": "Formalie prüft diese bei jedem Aufruf. Antworten sind immer JSON.",
+      "customTitle": "Endpunkte mit eigenen Headern",
+      "customDesc": "Ein Endpunkt kann zusätzliche Header mit festem Wert verlangen, z. B. eine Partner-ID. Legen Sie sie im Schritt Methoden des Endpunkts fest.",
+      "none": "Kein Endpunkt verlangt zusätzliche Header",
+      "noneDesc": "Fügen Sie sie im Schritt Methoden eines Endpunkts hinzu, wenn sich ein Aufrufer weiter ausweisen muss.",
+      "requiredTitle": "Erforderliche Header",
+      "requiredDesc": "Aufrufe ohne diese Header und Werte werden abgelehnt. Optional, bis zu 5.",
+      "name": "Header-Name",
+      "value": "Erforderlicher Wert",
+      "keep": "{preview} (unverändert)",
+      "add": "Header hinzufügen",
+      "remove": "Header entfernen",
+      "when": {
+        "always": "Jeder Aufruf",
+        "body": "POST und PUT",
+        "post": "Optional, POST",
+        "signing": "Signierte Tokens"
+      },
+      "invalid": {
+        "required": "Bitte ausfüllen.",
+        "pattern": "Verwenden Sie Buchstaben, Ziffern und Bindestriche, beginnend mit einem Buchstaben (2 bis 64).",
+        "reserved": "Dieser Header wird von Formalie oder HTTP selbst gesetzt. Wählen Sie einen anderen Namen.",
+        "chars": "Verwenden Sie einfache Buchstaben, Ziffern und Symbole, bis zu 200.",
+        "duplicate": "Dieser Header steht bereits in der Liste.",
+        "fix": "Prüfen Sie die erforderlichen Header."
       }
     }
   },

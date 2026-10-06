@@ -210,7 +210,25 @@ Portal management (enveloped like the rest of the portal API; admins only until 
 | POST · PATCH | `/api-endpoints` · `/api-endpoints/{id}` | `{ name, description?, service_id, form_id, version, methods, fields [{ key, accept, required, returned, filter }], page_size (≤ 100), status? }`; PATCH with `{ status }` alone switches it on / off. Checks (`shared/utils/apiService/endpoints.ts`): name pattern (`FRM-GEN-1002` message required · pattern · reserved), unique in the organisation (`FRM-API-1001`), a published form (`FRM-API-1002`), at least one method; POST / PUT need an accepted question, GET a returned one; the form's required questions are always accepted and required; read-only, calculated, file and payment questions are never accepted. Audit `api.endpoint_created / _updated / _enabled / _disabled` |
 | DELETE | `/api-endpoints/{id}` | audit `api.endpoint_deleted` |
 
-Tokens, access rules, logs and analytics (`/api-tokens`, `/api-access-rules`, `/api-logs`, `/api-analytics`) follow in M2 to M4.
+**Tokens and headers (M2).** Secrets are returned once (create, rotate) and kept only as SHA-256 hashes; the signing secret is kept encrypted at rest (HMAC needs it). Audit `api.token_created / _updated / _rotated / _revoked / _deleted`, `api.key_rotated`.
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/api-service/settings` | also `previous_key`, `previous_until` (the old address key during its grace period), `rotated_at` |
+| POST | `/api-service/key/rotate` | `{ grace_hours: 0\|24\|168 }` → settings with the new key; every endpoint address changes, the old key keeps answering until `previous_until` |
+| GET | `/api-tokens` | `ApiToken { id, name, kind: static\|client, mode: live\|test, status: active\|expiring\|expired\|revoked, preview (prefix + last 4, or the client id), client_id, lifetime_minutes, signing, scopes { services, endpoints, methods } (empty = all), scope_names, expires_at, rotating_until, last_used_at, created_by, created_at, revoked_at, … usage }`; `q`, `sort`, `filter[status|mode|kind]` |
+| GET | `/api-tokens/insights` | `{ total, by_status, by_mode, calls_30d, previous_30d, daily, unused_90d }` |
+| POST | `/api-tokens` | `{ name, kind, mode, scopes, expires_at (future, ≤ 2 years) \| null, lifetime_minutes? (5\|15\|30\|60, client), signing? }` → 201 `{ token, secrets { token \| client_secret, signing_secret? } }` (shown once). Prefixes: `fml_live_` / `fml_test_` tokens, `cli_…` client ids, `fcs_…` client secrets, `fsg_…` signing secrets |
+| PATCH | `/api-tokens/{id}` | `{ name?, scopes?, expires_at?, lifetime_minutes? }` (not when revoked: `FRM-API-1004`) |
+| POST | `/api-tokens/{id}/rotate` | `{ grace_hours }` → `{ token, secrets }`; the old secret works until `rotating_until` |
+| POST | `/api-tokens/{id}/revoke` | stops it at once |
+| DELETE | `/api-tokens/{id}` | only revoked or expired (`FRM-API-1005`) |
+
+Endpoints (M2): `ApiEndpoint.required_headers` (names), `ApiEndpointDetail.headers [{ name, preview }]` (value masked but its last 4), save with `headers [{ name, value | null (keep) }]` (up to 5; names: a letter, then letters, numbers, hyphens; never Authorization, Content-Type, Idempotency-Key, Host, Cookie, Accept, Origin, Referer, User-Agent, Content-Length or `X-Formalie-*`; values printable, ≤ 200).
+
+**Calling an endpoint (the public API).** Plain HTTPS + JSON. Checks in this order: address key → endpoint (`FRM-API-1006`) → token (`FRM-API-1010`; a token only works under its own organisation's key) → endpoint, its service and its form switched on / published (`FRM-API-1007`) → method (`FRM-API-1008`) → scope (`FRM-API-1009`) → required headers (`FRM-API-1011`, details name the headers) → signature when the token signs (`FRM-API-1012`) → only accepted questions (`FRM-API-1014`, details `not_accepted`) → the endpoint's required questions and the form's own rules (`FRM-RESP-1001`, details per question). Records: `{ id (reference), submitted_at, status, data (returned questions only; file ids as references) }`. GET list: `page`, `per_page` (≤ the endpoint's page size), `sort=submitted_at` (default newest first), `{questionKey}=value` for filter questions → `{ data, meta { page, per_page, total, total_pages } }`. POST → 201; the same `Idempotency-Key` answers the first response again (200, `meta.replayed`). PUT changes only the answers sent (each checked like an edit). DELETE removes it (kept in the audit trail). Test tokens: everything is checked and answered, nothing is stored (`meta.test`); GET returns made-up records. Signature: `X-Formalie-Timestamp` (unix seconds, within 5 minutes) and `X-Formalie-Signature: sha256=` hex HMAC-SHA256 of `{timestamp}.{METHOD}.{path}.{raw body}` (path = `/{apiKey}/{endpoint}[/{id}]`). `POST /{apiKey}/token` with `{ client_id, client_secret }` → `{ access_token, token_type: "Bearer", expires_in }`. Every call made with a token is audited as that token (actor type `api_key`).
+
+Access rules, logs and analytics (`/api-access-rules`, `/api-logs`, `/api-analytics`) follow in M3 and M4.
 
 ## Responses
 

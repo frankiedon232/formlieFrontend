@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "只有保存此查询的人才能更改它。",
     "FRM-API-1001": "此端点名称已在您的组织中使用。",
     "FRM-API-1002": "请先发布表单,它才能成为端点。",
-    "FRM-API-1003": "已存在同名的服务。"
+    "FRM-API-1003": "已存在同名的服务。",
+    "FRM-API-1004": "此令牌已被吊销，无法再更改。",
+    "FRM-API-1005": "删除前请先吊销令牌。",
+    "FRM-API-1006": "此地址没有端点。",
+    "FRM-API-1007": "此端点已关闭。",
+    "FRM-API-1008": "此端点不响应该方法。",
+    "FRM-API-1009": "此令牌无权调用该端点或方法。",
+    "FRM-API-1010": "请以 Authorization: Bearer <token> 发送有效令牌。",
+    "FRM-API-1011": "缺少必需的请求头，或其值不正确。",
+    "FRM-API-1012": "请求签名缺失、已过期或不正确。",
+    "FRM-API-1013": "没有此 ID 的记录。",
+    "FRM-API-1014": "部分字段不能发送到此端点。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -619,7 +630,10 @@
     "failing": "失败",
     "disabled": "已停用",
     "untested": "未测试",
-    "active": "活跃"
+    "active": "活跃",
+    "expiring": "即将过期",
+    "expired": "已过期",
+    "revoked": "已吊销"
   },
   "footer": {
     "rights": "保留所有权利。",
@@ -842,7 +856,8 @@
       "template": "模板",
       "data_source": "连接",
       "api_service": "API 服务",
-      "api_endpoint": "端点"
+      "api_endpoint": "端点",
+      "api_token": "API 令牌"
     },
     "field": {
       "name": "名称",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "已更改端点",
       "api_endpoint_enabled": "已开启端点",
       "api_endpoint_disabled": "已关闭端点",
-      "api_endpoint_deleted": "已删除端点"
+      "api_endpoint_deleted": "已删除端点",
+      "api_key_rotated": "已轮换 API 地址密钥",
+      "api_token_created": "已创建 API 令牌",
+      "api_token_updated": "已更改 API 令牌",
+      "api_token_rotated": "已轮换 API 令牌",
+      "api_token_revoked": "已吊销 API 令牌",
+      "api_token_deleted": "已删除 API 令牌"
     },
     "detail": {
       "who": "谁",
@@ -3763,6 +3784,158 @@
         "POST": "发送新回复,检查方式与表单页面相同。",
         "PUT": "按 ID 更改回复 (仅限接受的问题)。",
         "DELETE": "按 ID 删除回复;会保留在审计记录中。"
+      }
+    },
+    "tokens": {
+      "title": "令牌",
+      "viewSwitch": "令牌或请求头",
+      "newTitle": "新建令牌",
+      "editTitle": "编辑令牌",
+      "createdTitle": "{name} 已就绪",
+      "desc": "令牌让应用可以调用您的端点。为每个应用分配各自的令牌，这样可以停用其中一个而不影响其他应用。",
+      "namePlaceholder": "例如：网站注册",
+      "create": "创建令牌",
+      "copiedDone": "我已复制",
+      "search": "搜索令牌…",
+      "empty": "暂无令牌",
+      "emptyDesc": "为每个调用您端点的应用创建一个令牌。",
+      "needsLook": "即将过期或 90 天未使用",
+      "never": "永不",
+      "inDays": "{n} 天后 | {n} 天后",
+      "customDate": "选择日期",
+      "expiredOn": "已于 {date} 过期",
+      "used": "使用于 {when}",
+      "notUsed": "尚未使用",
+      "minutes": "{n} 分钟",
+      "lifetime": "短期令牌有效期",
+      "lifetimeHelp": "从令牌地址获取的每个令牌在应用请求新令牌之前的有效时长。",
+      "signing": "签名请求",
+      "signingHelp": "调用还必须携带请求的 HMAC 签名。适用于需要额外保护的调用方。",
+      "signingHint": "为每次调用签名：X-Formalie-Timestamp（unix 秒）和 X-Formalie-Signature（使用签名密钥对方法、路径、时间戳和请求体计算的 sha256= HMAC）。超过 5 分钟的调用会被拒绝。",
+      "clientHint": "响应中包含一个有效期 {n} 分钟的访问令牌；请以 Authorization: Bearer 发送，过期后再请求新的。",
+      "howToUse": "使用方法",
+      "rotate": "轮换",
+      "revoke": "吊销",
+      "revokeTitle": "吊销 {name}？",
+      "revokeDesc": "使用它的应用会立即收到错误。此操作无法撤销；如需再次使用，请创建新令牌。",
+      "revokedOn": "已于 {date} 吊销",
+      "revokedDesc": "使用此令牌的调用会被拒绝。列表中不再需要时可将其删除。",
+      "rotating": "旧密钥在 {until} 之前仍然有效。",
+      "deleteTitle": "删除 {name}？",
+      "deleteDesc": "它将从此列表中消失。其历史记录仍保留在审计记录中。",
+      "once": {
+        "title": "请立即复制：仅显示一次",
+        "desc": "Formalie 只保存其指纹。如果丢失，请轮换令牌以获取新的。"
+      },
+      "secret": {
+        "token": "令牌",
+        "clientId": "客户端 ID",
+        "clientSecret": "客户端密钥",
+        "signing": "签名密钥"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "调用会读取并写入您的真实响应。",
+        "test": "用于构建和试用：调用绝不会触及真实响应。"
+      },
+      "kind": {
+        "static": "Bearer 令牌",
+        "client": "客户端 ID 和密钥"
+      },
+      "kindHint": {
+        "static": "应用在每次调用中发送的一个长期令牌。",
+        "client": "应用用它们换取短期令牌，令牌泄露时更安全。"
+      },
+      "scope": {
+        "title": "可调用的内容",
+        "help": "留空表示允许该类型的全部。",
+        "all": "所有端点",
+        "allServices": "所有服务",
+        "allEndpoints": "所有端点",
+        "allMethods": "所有方法"
+      },
+      "col": {
+        "kind": "类型",
+        "mode": "模式",
+        "scope": "可调用",
+        "expires": "过期时间",
+        "lastUsed": "最近使用"
+      },
+      "sort": {
+        "used": "最近使用",
+        "expires": "最先过期"
+      },
+      "kpi": {
+        "calls": "使用令牌的调用",
+        "tokens": "令牌",
+        "byStatus": "按状态统计的令牌",
+        "unused": "{n} 个 90 天未使用 | {n} 个 90 天未使用"
+      },
+      "toast": {
+        "saved": "已保存 {name}",
+        "revoked": "已吊销 {name}",
+        "deleted": "已删除 {name}"
+      }
+    },
+    "rotate": {
+      "title": "轮换 {name}",
+      "desc": "您将获得新密钥。选择旧密钥继续有效的时长，让应用可以无中断地切换。",
+      "keyTitle": "轮换地址密钥",
+      "keyDesc": "每个端点都会获得新地址。选择旧地址在应用切换期间继续有效的时长。",
+      "graceLegend": "旧的继续有效",
+      "confirm": "轮换",
+      "grace": {
+        "h0": "立即失效",
+        "h24": "24 小时",
+        "h168": "7 天"
+      },
+      "graceHint": {
+        "h0": "如果可能已泄露，请使用此项。",
+        "h24": "足够更新一个应用。",
+        "h168": "适用于多个应用或较慢的发布。"
+      },
+      "keyGrace": "旧密钥 {key} 在 {until} 之前仍然有效。",
+      "keyNow": "旧密钥已失效。"
+    },
+    "key": {
+      "title": "地址密钥",
+      "desc": "每个端点地址的第一部分。它只负责路由调用，由令牌决定谁可以调用。",
+      "current": "当前密钥",
+      "previous": "旧密钥 {key} 在 {until} 之前仍然有效。",
+      "rotatedAt": "轮换于 {when}",
+      "rotate": "轮换密钥"
+    },
+    "headers": {
+      "title": "请求头",
+      "standardTitle": "每个调用方发送的请求头",
+      "standardDesc": "Formalie 会在每次调用时检查这些请求头；响应始终为 JSON。",
+      "customTitle": "带有专属请求头的端点",
+      "customDesc": "端点可以要求带有固定值的额外请求头，例如合作伙伴 ID。请在端点的“方法”步骤中设置。",
+      "none": "没有端点要求额外请求头",
+      "noneDesc": "当调用方需要进一步表明身份时，请在端点的“方法”步骤中添加。",
+      "requiredTitle": "必需的请求头",
+      "requiredDesc": "缺少这些请求头和值的调用会被拒绝。可选，最多 5 个。",
+      "name": "请求头名称",
+      "value": "必须具有的值",
+      "keep": "{preview}（未更改）",
+      "add": "添加请求头",
+      "remove": "移除请求头",
+      "when": {
+        "always": "每次调用",
+        "body": "POST 和 PUT",
+        "post": "可选，POST",
+        "signing": "已签名令牌"
+      },
+      "invalid": {
+        "required": "请填写此项。",
+        "pattern": "使用字母、数字和连字符，以字母开头（2 到 64 个字符）。",
+        "reserved": "此请求头由 Formalie 或 HTTP 自行设置。请选择其他名称。",
+        "chars": "使用普通字母、数字和符号，最多 200 个字符。",
+        "duplicate": "此请求头已在列表中。",
+        "fix": "请检查必需的请求头。"
       }
     }
   },

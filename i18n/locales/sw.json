@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Ni aliyehifadhi hoja hii tu anayeweza kuibadilisha.",
     "FRM-API-1001": "Jina hili la endpoint tayari linatumika katika shirika lako.",
     "FRM-API-1002": "Chapisha fomu kabla haijawa endpoint.",
-    "FRM-API-1003": "Huduma yenye jina hili tayari ipo."
+    "FRM-API-1003": "Huduma yenye jina hili tayari ipo.",
+    "FRM-API-1004": "Tokeni hii imebatilishwa na haiwezi kubadilishwa tena.",
+    "FRM-API-1005": "Batilisha tokeni kabla ya kuifuta.",
+    "FRM-API-1006": "Hakuna endpoint kwenye anwani hii.",
+    "FRM-API-1007": "Endpoint hii imezimwa.",
+    "FRM-API-1008": "Endpoint hii haijibu njia hii.",
+    "FRM-API-1009": "Tokeni hii hairuhusiwi kuita endpoint au njia hii.",
+    "FRM-API-1010": "Tuma tokeni halali kama Authorization: Bearer <token>.",
+    "FRM-API-1011": "Kichwa kinachohitajika hakipo au kina thamani isiyo sahihi.",
+    "FRM-API-1012": "Saini ya ombi haipo, ni ya zamani mno au si sahihi.",
+    "FRM-API-1013": "Hakuna rekodi yenye kitambulisho hiki.",
+    "FRM-API-1014": "Baadhi ya sehemu haziwezi kutumwa kwa endpoint hii."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -619,7 +630,10 @@
     "failing": "Inashindwa",
     "disabled": "Imezimwa",
     "untested": "Haijajaribiwa",
-    "active": "Inatumika"
+    "active": "Inatumika",
+    "expiring": "Inakaribia kuisha",
+    "expired": "Imeisha muda",
+    "revoked": "Imebatilishwa"
   },
   "footer": {
     "rights": "Haki zote zimehifadhiwa.",
@@ -842,7 +856,8 @@
       "template": "Kiolezo",
       "data_source": "Muunganisho",
       "api_service": "Huduma ya API",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "Tokeni ya API"
     },
     "field": {
       "name": "Jina",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint imebadilishwa",
       "api_endpoint_enabled": "Endpoint imewashwa",
       "api_endpoint_disabled": "Endpoint imezimwa",
-      "api_endpoint_deleted": "Endpoint imefutwa"
+      "api_endpoint_deleted": "Endpoint imefutwa",
+      "api_key_rotated": "Ufunguo wa anwani ya API umebadilishwa",
+      "api_token_created": "Tokeni ya API imeundwa",
+      "api_token_updated": "Tokeni ya API imebadilishwa",
+      "api_token_rotated": "Tokeni ya API imezungushwa",
+      "api_token_revoked": "Tokeni ya API imebatilishwa",
+      "api_token_deleted": "Tokeni ya API imefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -3763,6 +3784,158 @@
         "POST": "Tuma jibu jipya, linalokaguliwa kama ukurasa wa fomu.",
         "PUT": "Badilisha jibu kwa kitambulisho chake (maswali yanayopokelewa pekee).",
         "DELETE": "Ondoa jibu kwa kitambulisho chake; hubaki kwenye kumbukumbu ya ukaguzi."
+      }
+    },
+    "tokens": {
+      "title": "Tokeni",
+      "viewSwitch": "Tokeni au header",
+      "newTitle": "Tokeni mpya",
+      "editTitle": "Hariri tokeni",
+      "createdTitle": "{name} iko tayari",
+      "desc": "Tokeni huruhusu programu kuita endpoint zako. Ipe kila programu tokeni yake, ili uweze kusimamisha moja bila kugusa nyingine.",
+      "namePlaceholder": "mf. Usajili wa tovuti",
+      "create": "Unda tokeni",
+      "copiedDone": "Nimeinakili",
+      "search": "Tafuta tokeni…",
+      "empty": "Bado hakuna tokeni",
+      "emptyDesc": "Unda tokeni kwa kila programu inayoita endpoint zako.",
+      "needsLook": "Inakaribia kuisha au haijatumika kwa siku 90",
+      "never": "Kamwe",
+      "inDays": "Baada ya siku {n} | Baada ya siku {n}",
+      "customDate": "Chagua tarehe",
+      "expiredOn": "Iliisha {date}",
+      "used": "Ilitumika {when}",
+      "notUsed": "Bado haijatumika",
+      "minutes": "Dakika {n}",
+      "lifetime": "Tokeni ya muda mfupi hudumu",
+      "lifetimeHelp": "Kila tokeni kutoka anwani ya tokeni hufanya kazi kwa muda gani kabla programu haijaomba mpya.",
+      "signing": "Maombi yaliyosainiwa",
+      "signingHelp": "Miito lazima pia iwe na saini ya HMAC ya ombi. Kwa wanaoita wanaohitaji ulinzi wa ziada.",
+      "signingHint": "Saini kila mwito: X-Formalie-Timestamp (sekunde za unix) na X-Formalie-Signature (sha256= HMAC ya njia, njia ya anwani, muhuri wa muda na mwili kwa siri ya kusaini). Miito ya zaidi ya dakika 5 inakataliwa.",
+      "clientHint": "Jibu lina tokeni ya ufikiaji inayofanya kazi kwa dakika {n}; itume kama Authorization: Bearer, kisha omba mpya inapoisha.",
+      "howToUse": "Jinsi ya kuitumia",
+      "rotate": "Zungusha",
+      "revoke": "Batilisha",
+      "revokeTitle": "Batilisha {name}?",
+      "revokeDesc": "Programu zinazoitumia hupata hitilafu mara moja. Hili haliwezi kutenduliwa; unda tokeni mpya ukihitaji tena.",
+      "revokedOn": "Imebatilishwa {date}",
+      "revokedDesc": "Miito yenye tokeni hii inakataliwa. Ifute usipoihitaji tena kwenye orodha.",
+      "rotating": "Siri ya zamani bado inafanya kazi hadi {until}.",
+      "deleteTitle": "Futa {name}?",
+      "deleteDesc": "Itatoweka kwenye orodha hii. Historia yake inabaki kwenye rekodi ya ukaguzi.",
+      "once": {
+        "title": "Inakili sasa: inaonyeshwa mara moja tu",
+        "desc": "Formalie huhifadhi alama ya vidole yake tu. Ikipotea, zungusha tokeni upate mpya."
+      },
+      "secret": {
+        "token": "Tokeni",
+        "clientId": "Client id",
+        "clientSecret": "Client secret",
+        "signing": "Siri ya kusaini"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Miito husoma na kuandika majibu yako halisi.",
+        "test": "Kwa kujenga na kujaribu: miito haigusi kamwe majibu halisi."
+      },
+      "kind": {
+        "static": "Tokeni ya Bearer",
+        "client": "Client id na secret"
+      },
+      "kindHint": {
+        "static": "Tokeni moja ya muda mrefu ambayo programu hutuma kwa kila mwito.",
+        "client": "Programu huzibadilisha kwa tokeni ya muda mfupi, ambayo ni salama zaidi tokeni ikivuja."
+      },
+      "scope": {
+        "title": "Inaweza kuita nini",
+        "help": "Acha kisanduku wazi ili kuruhusu kila kitu cha aina hiyo.",
+        "all": "Endpoint zote",
+        "allServices": "Huduma zote",
+        "allEndpoints": "Endpoint zote",
+        "allMethods": "Njia zote"
+      },
+      "col": {
+        "kind": "Aina",
+        "mode": "Hali",
+        "scope": "Inaweza kuita",
+        "expires": "Inaisha",
+        "lastUsed": "Ilitumika mwisho"
+      },
+      "sort": {
+        "used": "Zilizotumika hivi karibuni",
+        "expires": "Zinazoisha kwanza"
+      },
+      "kpi": {
+        "calls": "Miito yenye tokeni",
+        "tokens": "Tokeni",
+        "byStatus": "Tokeni kwa hali",
+        "unused": "{n} haijatumika kwa siku 90 | {n} hazijatumika kwa siku 90"
+      },
+      "toast": {
+        "saved": "{name} imehifadhiwa",
+        "revoked": "{name} imebatilishwa",
+        "deleted": "{name} imefutwa"
+      }
+    },
+    "rotate": {
+      "title": "Zungusha {name}",
+      "desc": "Unapata siri mpya. Chagua siri za zamani zidumu kwa muda gani, ili programu ibadilike bila kukatika.",
+      "keyTitle": "Zungusha ufunguo wa anwani",
+      "keyDesc": "Kila endpoint inapata anwani mpya. Chagua anwani za zamani zidumu kwa muda gani programu zako zikibadilika.",
+      "graceLegend": "Ya zamani inaendelea kufanya kazi",
+      "confirm": "Zungusha",
+      "grace": {
+        "h0": "Inasimama mara moja",
+        "h24": "Kwa saa 24",
+        "h168": "Kwa siku 7"
+      },
+      "graceHint": {
+        "h0": "Tumia hii ikiwa huenda imevuja.",
+        "h24": "Inatosha kusasisha programu moja.",
+        "h168": "Kwa programu kadhaa au matoleo ya polepole."
+      },
+      "keyGrace": "Ufunguo wa zamani {key} bado unafanya kazi hadi {until}.",
+      "keyNow": "Ufunguo wa zamani umeacha kufanya kazi."
+    },
+    "key": {
+      "title": "Ufunguo wa anwani",
+      "desc": "Sehemu ya kwanza ya kila anwani ya endpoint. Huelekeza miito tu; tokeni huamua nani anaweza kuita.",
+      "current": "Ufunguo wa sasa",
+      "previous": "Ufunguo wa zamani {key} bado unafanya kazi hadi {until}.",
+      "rotatedAt": "Imezungushwa {when}",
+      "rotate": "Zungusha ufunguo"
+    },
+    "headers": {
+      "title": "Header",
+      "standardTitle": "Header ambazo kila mwitaji hutuma",
+      "standardDesc": "Formalie huzikagua kwa kila mwito; majibu ni JSON kila wakati.",
+      "customTitle": "Endpoint zenye header zake",
+      "customDesc": "Endpoint inaweza kuhitaji header za ziada zenye thamani maalum, mf. kitambulisho cha mshirika. Ziweke kwenye hatua ya Njia ya endpoint.",
+      "none": "Hakuna endpoint inayohitaji header za ziada",
+      "noneDesc": "Ziongeze kwenye hatua ya Njia ya endpoint mwitaji anapohitaji kujitambulisha zaidi.",
+      "requiredTitle": "Header zinazohitajika",
+      "requiredDesc": "Miito isiyo na header na thamani hizi inakataliwa. Hiari, hadi 5.",
+      "name": "Jina la header",
+      "value": "Thamani inayopaswa kuwa nayo",
+      "keep": "{preview} (haijabadilika)",
+      "add": "Ongeza header",
+      "remove": "Ondoa header",
+      "when": {
+        "always": "Kila mwito",
+        "body": "POST na PUT",
+        "post": "Hiari, POST",
+        "signing": "Tokeni zilizosainiwa"
+      },
+      "invalid": {
+        "required": "Jaza hapa.",
+        "pattern": "Tumia herufi, nambari na vistariungio, ukianza na herufi (2 hadi 64).",
+        "reserved": "Formalie au HTTP huweka header hii yenyewe. Chagua jina lingine.",
+        "chars": "Tumia herufi, nambari na alama za kawaida, hadi 200.",
+        "duplicate": "Header hii tayari iko kwenye orodha.",
+        "fix": "Kagua header zinazohitajika."
       }
     }
   },

@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Only the person who saved this query can change it.",
     "FRM-API-1001": "This endpoint name is already used in your organisation.",
     "FRM-API-1002": "Publish the form before it can be an endpoint.",
-    "FRM-API-1003": "A service with this name already exists."
+    "FRM-API-1003": "A service with this name already exists.",
+    "FRM-API-1004": "This token was revoked and can no longer be changed.",
+    "FRM-API-1005": "Revoke the token before deleting it.",
+    "FRM-API-1006": "There is no endpoint at this address.",
+    "FRM-API-1007": "This endpoint is switched off.",
+    "FRM-API-1008": "This endpoint does not answer this method.",
+    "FRM-API-1009": "This token may not call this endpoint or method.",
+    "FRM-API-1010": "Send a valid token as Authorization: Bearer <token>.",
+    "FRM-API-1011": "A required header is missing or has the wrong value.",
+    "FRM-API-1012": "The request signature is missing, too old or wrong.",
+    "FRM-API-1013": "There is no record with this id.",
+    "FRM-API-1014": "Some fields can not be sent to this endpoint."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -619,7 +630,10 @@
     "failing": "Failing",
     "disabled": "Disabled",
     "untested": "Not tested",
-    "active": "Active"
+    "active": "Active",
+    "expiring": "Expiring",
+    "expired": "Expired",
+    "revoked": "Revoked"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -842,7 +856,8 @@
       "template": "Template",
       "data_source": "Connection",
       "api_service": "API service",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "API token"
     },
     "field": {
       "name": "Name",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint changed",
       "api_endpoint_enabled": "Endpoint switched on",
       "api_endpoint_disabled": "Endpoint switched off",
-      "api_endpoint_deleted": "Endpoint deleted"
+      "api_endpoint_deleted": "Endpoint deleted",
+      "api_key_rotated": "API address key rotated",
+      "api_token_created": "API token created",
+      "api_token_updated": "API token changed",
+      "api_token_rotated": "API token rotated",
+      "api_token_revoked": "API token revoked",
+      "api_token_deleted": "API token deleted"
     },
     "detail": {
       "who": "Who",
@@ -3763,6 +3784,158 @@
         "POST": "Send a new response, checked like the form page.",
         "PUT": "Change a response by its id (the accepted questions only).",
         "DELETE": "Remove a response by its id; kept in the audit trail."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "viewSwitch": "Tokens or headers",
+      "newTitle": "New token",
+      "editTitle": "Edit token",
+      "createdTitle": "{name} is ready",
+      "desc": "A token lets an app call your endpoints. Give each app its own, so you can stop one without touching the others.",
+      "namePlaceholder": "e.g. Website sign-ups",
+      "create": "Create token",
+      "copiedDone": "I've copied it",
+      "search": "Search tokens…",
+      "empty": "No tokens yet",
+      "emptyDesc": "Create a token for each app that calls your endpoints.",
+      "needsLook": "Expires soon or not used for 90 days",
+      "never": "Never",
+      "inDays": "In {n} day | In {n} days",
+      "customDate": "Pick a date",
+      "expiredOn": "Expired {date}",
+      "used": "Used {when}",
+      "notUsed": "Not used yet",
+      "minutes": "{n} minutes",
+      "lifetime": "Short-lived token lasts",
+      "lifetimeHelp": "How long each token from the token address works before the app asks for a new one.",
+      "signing": "Signed requests",
+      "signingHelp": "Calls must also carry an HMAC signature of the request. For callers that need extra protection.",
+      "signingHint": "Sign each call: X-Formalie-Timestamp (unix seconds) and X-Formalie-Signature (sha256= HMAC of method, path, timestamp and body with the signing secret). Calls older than 5 minutes are refused.",
+      "clientHint": "The answer holds an access token that works for {n} minutes; send it as Authorization: Bearer, and ask for a new one when it runs out.",
+      "howToUse": "How to use it",
+      "rotate": "Rotate",
+      "revoke": "Revoke",
+      "revokeTitle": "Revoke {name}?",
+      "revokeDesc": "Apps using it get an error at once. This can't be undone; create a new token if you need one again.",
+      "revokedOn": "Revoked {date}",
+      "revokedDesc": "Calls with this token are refused. Delete it when you no longer need it in the list.",
+      "rotating": "The old secret still works until {until}.",
+      "deleteTitle": "Delete {name}?",
+      "deleteDesc": "It disappears from this list. Its history stays in the audit trail.",
+      "once": {
+        "title": "Copy it now: it is shown only once",
+        "desc": "Formalie keeps only a fingerprint of it. If it gets lost, rotate the token to get a new one."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "Client id",
+        "clientSecret": "Client secret",
+        "signing": "Signing secret"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Calls read and write your real responses.",
+        "test": "For building and trying things out: calls never touch real responses."
+      },
+      "kind": {
+        "static": "Bearer token",
+        "client": "Client id and secret"
+      },
+      "kindHint": {
+        "static": "One long-lived token the app sends with every call.",
+        "client": "The app trades them for a short-lived token, which is safer if a token leaks."
+      },
+      "scope": {
+        "title": "What it may call",
+        "help": "Leave a box empty to allow everything of that kind.",
+        "all": "All endpoints",
+        "allServices": "All services",
+        "allEndpoints": "All endpoints",
+        "allMethods": "All methods"
+      },
+      "col": {
+        "kind": "Type",
+        "mode": "Mode",
+        "scope": "May call",
+        "expires": "Expires",
+        "lastUsed": "Last used"
+      },
+      "sort": {
+        "used": "Used last",
+        "expires": "Expiring first"
+      },
+      "kpi": {
+        "calls": "Calls with tokens",
+        "tokens": "Tokens",
+        "byStatus": "Tokens by status",
+        "unused": "{n} not used for 90 days | {n} not used for 90 days"
+      },
+      "toast": {
+        "saved": "{name} saved",
+        "revoked": "{name} revoked",
+        "deleted": "{name} deleted"
+      }
+    },
+    "rotate": {
+      "title": "Rotate {name}",
+      "desc": "You get new secrets. Choose how long the old ones keep working, so the app can switch without downtime.",
+      "keyTitle": "Rotate the address key",
+      "keyDesc": "Every endpoint gets a new address. Choose how long the old addresses keep working while your apps switch.",
+      "graceLegend": "The old one keeps working",
+      "confirm": "Rotate",
+      "grace": {
+        "h0": "Stops at once",
+        "h24": "For 24 hours",
+        "h168": "For 7 days"
+      },
+      "graceHint": {
+        "h0": "Use this if it may have leaked.",
+        "h24": "Enough to update one app.",
+        "h168": "For several apps or slower releases."
+      },
+      "keyGrace": "The old key {key} keeps working until {until}.",
+      "keyNow": "The old key stopped working."
+    },
+    "key": {
+      "title": "Address key",
+      "desc": "The first part of every endpoint address. It only routes calls; tokens decide who may call.",
+      "current": "Current key",
+      "previous": "The old key {key} still works until {until}.",
+      "rotatedAt": "Rotated {when}",
+      "rotate": "Rotate key"
+    },
+    "headers": {
+      "title": "Headers",
+      "standardTitle": "Headers every caller sends",
+      "standardDesc": "Formalie checks these on every call; answers are always JSON.",
+      "customTitle": "Endpoints with headers of their own",
+      "customDesc": "An endpoint can require extra headers with a set value, e.g. a partner id. Set them in the endpoint's Methods step.",
+      "none": "No endpoint requires extra headers",
+      "noneDesc": "Add them in an endpoint's Methods step when a caller must identify itself further.",
+      "requiredTitle": "Required headers",
+      "requiredDesc": "Calls without these headers and values are refused. Optional, up to 5.",
+      "name": "Header name",
+      "value": "Value it must have",
+      "keep": "{preview} (unchanged)",
+      "add": "Add header",
+      "remove": "Remove header",
+      "when": {
+        "always": "Every call",
+        "body": "POST and PUT",
+        "post": "Optional, POST",
+        "signing": "Signed tokens"
+      },
+      "invalid": {
+        "required": "Fill this in.",
+        "pattern": "Use letters, numbers and hyphens, starting with a letter (2 to 64).",
+        "reserved": "Formalie or HTTP sets this header itself. Choose another name.",
+        "chars": "Use plain letters, numbers and symbols, up to 200.",
+        "duplicate": "This header is already in the list.",
+        "fix": "Check the required headers."
       }
     }
   },

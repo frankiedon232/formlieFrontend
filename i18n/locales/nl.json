@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Alleen wie deze query heeft opgeslagen, kan ze wijzigen.",
     "FRM-API-1001": "Deze endpointnaam wordt al gebruikt in uw organisatie.",
     "FRM-API-1002": "Publiceer het formulier voordat het een endpoint kan zijn.",
-    "FRM-API-1003": "Er bestaat al een service met deze naam."
+    "FRM-API-1003": "Er bestaat al een service met deze naam.",
+    "FRM-API-1004": "Dit token is ingetrokken en kan niet meer worden gewijzigd.",
+    "FRM-API-1005": "Trek het token in voordat u het verwijdert.",
+    "FRM-API-1006": "Op dit adres is geen endpoint.",
+    "FRM-API-1007": "Dit endpoint staat uit.",
+    "FRM-API-1008": "Dit endpoint beantwoordt deze methode niet.",
+    "FRM-API-1009": "Dit token mag dit endpoint of deze methode niet aanroepen.",
+    "FRM-API-1010": "Stuur een geldig token als Authorization: Bearer <token>.",
+    "FRM-API-1011": "Een verplichte header ontbreekt of heeft een verkeerde waarde.",
+    "FRM-API-1012": "De handtekening van het verzoek ontbreekt, is te oud of klopt niet.",
+    "FRM-API-1013": "Er is geen record met dit id.",
+    "FRM-API-1014": "Sommige velden kunnen niet naar dit endpoint worden gestuurd."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -619,7 +630,10 @@
     "failing": "Mislukt",
     "disabled": "Uitgeschakeld",
     "untested": "Niet getest",
-    "active": "Actief"
+    "active": "Actief",
+    "expiring": "Verloopt binnenkort",
+    "expired": "Verlopen",
+    "revoked": "Ingetrokken"
   },
   "footer": {
     "rights": "Alle rechten voorbehouden.",
@@ -842,7 +856,8 @@
       "template": "Sjabloon",
       "data_source": "Verbinding",
       "api_service": "API-service",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "API-token"
     },
     "field": {
       "name": "Naam",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint gewijzigd",
       "api_endpoint_enabled": "Endpoint ingeschakeld",
       "api_endpoint_disabled": "Endpoint uitgeschakeld",
-      "api_endpoint_deleted": "Endpoint verwijderd"
+      "api_endpoint_deleted": "Endpoint verwijderd",
+      "api_key_rotated": "API-adressleutel geroteerd",
+      "api_token_created": "API-token aangemaakt",
+      "api_token_updated": "API-token gewijzigd",
+      "api_token_rotated": "API-token geroteerd",
+      "api_token_revoked": "API-token ingetrokken",
+      "api_token_deleted": "API-token verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -3763,6 +3784,158 @@
         "POST": "Een nieuw antwoord sturen, gecontroleerd zoals de formulierpagina.",
         "PUT": "Een antwoord wijzigen op id (alleen de geaccepteerde vragen).",
         "DELETE": "Een antwoord verwijderen op id; bewaard in het auditlogboek."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "viewSwitch": "Tokens of headers",
+      "newTitle": "Nieuw token",
+      "editTitle": "Token bewerken",
+      "createdTitle": "{name} is klaar",
+      "desc": "Met een token kan een app uw endpoints aanroepen. Geef elke app een eigen token, zodat u er één kunt stoppen zonder de andere te raken.",
+      "namePlaceholder": "bijv. Aanmeldingen website",
+      "create": "Token aanmaken",
+      "copiedDone": "Ik heb het gekopieerd",
+      "search": "Tokens zoeken…",
+      "empty": "Nog geen tokens",
+      "emptyDesc": "Maak een token aan voor elke app die uw endpoints aanroept.",
+      "needsLook": "Verloopt binnenkort of 90 dagen niet gebruikt",
+      "never": "Nooit",
+      "inDays": "Over {n} dag | Over {n} dagen",
+      "customDate": "Kies een datum",
+      "expiredOn": "Verlopen op {date}",
+      "used": "Gebruikt {when}",
+      "notUsed": "Nog niet gebruikt",
+      "minutes": "{n} minuten",
+      "lifetime": "Kortlevend token geldt",
+      "lifetimeHelp": "Hoe lang elk token van het tokenadres geldig is voordat de app een nieuw aanvraagt.",
+      "signing": "Ondertekende verzoeken",
+      "signingHelp": "Aanroepen moeten ook een HMAC-handtekening van het verzoek bevatten. Voor aanroepers die extra bescherming nodig hebben.",
+      "signingHint": "Onderteken elke aanroep: X-Formalie-Timestamp (unix-seconden) en X-Formalie-Signature (sha256= HMAC van methode, pad, tijdstempel en body met het ondertekeningsgeheim). Aanroepen ouder dan 5 minuten worden geweigerd.",
+      "clientHint": "Het antwoord bevat een toegangstoken dat {n} minuten geldig is. Stuur het mee als Authorization: Bearer en vraag een nieuw aan wanneer het verloopt.",
+      "howToUse": "Zo gebruikt u het",
+      "rotate": "Roteren",
+      "revoke": "Intrekken",
+      "revokeTitle": "{name} intrekken?",
+      "revokeDesc": "Apps die het gebruiken krijgen meteen een foutmelding. Dit kan niet ongedaan worden gemaakt. Maak een nieuw token aan als u er weer een nodig hebt.",
+      "revokedOn": "Ingetrokken op {date}",
+      "revokedDesc": "Aanroepen met dit token worden geweigerd. Verwijder het als u het niet meer nodig hebt in de lijst.",
+      "rotating": "Het oude geheim werkt nog tot {until}.",
+      "deleteTitle": "{name} verwijderen?",
+      "deleteDesc": "Het verdwijnt uit deze lijst. De geschiedenis blijft bewaard in het auditlogboek.",
+      "once": {
+        "title": "Kopieer het nu: het wordt maar één keer getoond",
+        "desc": "Formalie bewaart alleen een vingerafdruk ervan. Raakt u het kwijt, roteer dan het token om een nieuw te krijgen."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "Client-id",
+        "clientSecret": "Client-geheim",
+        "signing": "Ondertekeningsgeheim"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Aanroepen lezen en schrijven uw echte antwoorden.",
+        "test": "Om te bouwen en uit te proberen: aanroepen raken nooit echte antwoorden."
+      },
+      "kind": {
+        "static": "Bearer-token",
+        "client": "Client-id en geheim"
+      },
+      "kindHint": {
+        "static": "Eén langlevend token dat de app bij elke aanroep meestuurt.",
+        "client": "De app wisselt ze in voor een kortlevend token, wat veiliger is als een token uitlekt."
+      },
+      "scope": {
+        "title": "Wat het mag aanroepen",
+        "help": "Laat een vak leeg om alles van dat soort toe te staan.",
+        "all": "Alle endpoints",
+        "allServices": "Alle services",
+        "allEndpoints": "Alle endpoints",
+        "allMethods": "Alle methoden"
+      },
+      "col": {
+        "kind": "Type",
+        "mode": "Modus",
+        "scope": "Mag aanroepen",
+        "expires": "Verloopt",
+        "lastUsed": "Laatst gebruikt"
+      },
+      "sort": {
+        "used": "Laatst gebruikt",
+        "expires": "Eerst verlopend"
+      },
+      "kpi": {
+        "calls": "Aanroepen met tokens",
+        "tokens": "Tokens",
+        "byStatus": "Tokens per status",
+        "unused": "{n} 90 dagen niet gebruikt | {n} 90 dagen niet gebruikt"
+      },
+      "toast": {
+        "saved": "{name} opgeslagen",
+        "revoked": "{name} ingetrokken",
+        "deleted": "{name} verwijderd"
+      }
+    },
+    "rotate": {
+      "title": "{name} roteren",
+      "desc": "U krijgt nieuwe geheimen. Kies hoe lang de oude blijven werken, zodat de app zonder downtime kan overstappen.",
+      "keyTitle": "Adressleutel roteren",
+      "keyDesc": "Elk endpoint krijgt een nieuw adres. Kies hoe lang de oude adressen blijven werken terwijl uw apps overstappen.",
+      "graceLegend": "De oude blijft werken",
+      "confirm": "Roteren",
+      "grace": {
+        "h0": "Stopt direct",
+        "h24": "24 uur lang",
+        "h168": "7 dagen lang"
+      },
+      "graceHint": {
+        "h0": "Gebruik dit als het mogelijk is uitgelekt.",
+        "h24": "Genoeg om één app bij te werken.",
+        "h168": "Voor meerdere apps of tragere releases."
+      },
+      "keyGrace": "De oude sleutel {key} werkt nog tot {until}.",
+      "keyNow": "De oude sleutel werkt niet meer."
+    },
+    "key": {
+      "title": "Adressleutel",
+      "desc": "Het eerste deel van elk endpointadres. Het stuurt alleen aanroepen door. Tokens bepalen wie mag aanroepen.",
+      "current": "Huidige sleutel",
+      "previous": "De oude sleutel {key} werkt nog tot {until}.",
+      "rotatedAt": "Geroteerd {when}",
+      "rotate": "Sleutel roteren"
+    },
+    "headers": {
+      "title": "Headers",
+      "standardTitle": "Headers die elke aanroeper meestuurt",
+      "standardDesc": "Formalie controleert deze bij elke aanroep. Antwoorden zijn altijd JSON.",
+      "customTitle": "Endpoints met eigen headers",
+      "customDesc": "Een endpoint kan extra headers met een vaste waarde vereisen, bijv. een partner-id. Stel ze in bij de stap Methoden van het endpoint.",
+      "none": "Geen enkel endpoint vereist extra headers",
+      "noneDesc": "Voeg ze toe bij de stap Methoden van een endpoint als een aanroeper zich verder moet identificeren.",
+      "requiredTitle": "Vereiste headers",
+      "requiredDesc": "Aanroepen zonder deze headers en waarden worden geweigerd. Optioneel, maximaal 5.",
+      "name": "Headernaam",
+      "value": "Vereiste waarde",
+      "keep": "{preview} (ongewijzigd)",
+      "add": "Header toevoegen",
+      "remove": "Header verwijderen",
+      "when": {
+        "always": "Elke aanroep",
+        "body": "POST en PUT",
+        "post": "Optioneel, POST",
+        "signing": "Ondertekende tokens"
+      },
+      "invalid": {
+        "required": "Vul dit in.",
+        "pattern": "Gebruik letters, cijfers en koppeltekens, beginnend met een letter (2 tot 64).",
+        "reserved": "Formalie of HTTP stelt deze header zelf in. Kies een andere naam.",
+        "chars": "Gebruik gewone letters, cijfers en symbolen, maximaal 200.",
+        "duplicate": "Deze header staat al in de lijst.",
+        "fix": "Controleer de vereiste headers."
       }
     }
   },

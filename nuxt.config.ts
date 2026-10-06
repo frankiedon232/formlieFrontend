@@ -76,6 +76,8 @@ export default defineNuxtConfig({
 
   serverHandlers: [
     { route: '/api/**', handler: apiMock ? '~~/server/mock/index.ts' : '~~/server/proxy/api.ts' },
+    // The public API service in the mock (F13; Postman: https://localhost:2202/public-api/{apiKey}/{endpoint}).
+    ...(apiMock ? [{ route: '/public-api/**', handler: '~~/server/mock/publicApi.ts' }] : []),
   ],
 
   routeRules: {

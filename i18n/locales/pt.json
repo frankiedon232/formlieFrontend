@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Somente quem salvou esta consulta pode alterá-la.",
     "FRM-API-1001": "Este nome de endpoint já é usado na sua organização.",
     "FRM-API-1002": "Publique o formulário antes de ele poder ser um endpoint.",
-    "FRM-API-1003": "Já existe um serviço com este nome."
+    "FRM-API-1003": "Já existe um serviço com este nome.",
+    "FRM-API-1004": "Este token foi revogado e não pode mais ser alterado.",
+    "FRM-API-1005": "Revogue o token antes de excluí-lo.",
+    "FRM-API-1006": "Não há endpoint neste endereço.",
+    "FRM-API-1007": "Este endpoint está desativado.",
+    "FRM-API-1008": "Este endpoint não responde a este método.",
+    "FRM-API-1009": "Este token não pode chamar este endpoint ou método.",
+    "FRM-API-1010": "Envie um token válido como Authorization: Bearer <token>.",
+    "FRM-API-1011": "Falta um cabeçalho obrigatório ou o valor está errado.",
+    "FRM-API-1012": "A assinatura da solicitação está ausente, é antiga demais ou está errada.",
+    "FRM-API-1013": "Não há registro com este id.",
+    "FRM-API-1014": "Alguns campos não podem ser enviados para este endpoint."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -619,7 +630,10 @@
     "failing": "Com falha",
     "disabled": "Desativada",
     "untested": "Não testada",
-    "active": "Ativo"
+    "active": "Ativo",
+    "expiring": "Expira em breve",
+    "expired": "Expirado",
+    "revoked": "Revogado"
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
@@ -842,7 +856,8 @@
       "template": "Modelo",
       "data_source": "Conexão",
       "api_service": "Serviço de API",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "Token de API"
     },
     "field": {
       "name": "Nome",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint alterado",
       "api_endpoint_enabled": "Endpoint ativado",
       "api_endpoint_disabled": "Endpoint desativado",
-      "api_endpoint_deleted": "Endpoint excluído"
+      "api_endpoint_deleted": "Endpoint excluído",
+      "api_key_rotated": "Chave de endereço da API rotacionada",
+      "api_token_created": "Token de API criado",
+      "api_token_updated": "Token de API alterado",
+      "api_token_rotated": "Token de API rotacionado",
+      "api_token_revoked": "Token de API revogado",
+      "api_token_deleted": "Token de API excluído"
     },
     "detail": {
       "who": "Quem",
@@ -3763,6 +3784,158 @@
         "POST": "Enviar uma nova resposta, verificada como na página do formulário.",
         "PUT": "Alterar uma resposta pelo seu id (somente as perguntas aceitas).",
         "DELETE": "Remover uma resposta pelo seu id; mantido na trilha de auditoria."
+      }
+    },
+    "tokens": {
+      "title": "Tokens",
+      "viewSwitch": "Tokens ou cabeçalhos",
+      "newTitle": "Novo token",
+      "editTitle": "Editar token",
+      "createdTitle": "{name} está pronto",
+      "desc": "Um token permite que um app chame seus endpoints. Dê um a cada app, para poder interromper um sem afetar os outros.",
+      "namePlaceholder": "ex.: Cadastros do site",
+      "create": "Criar token",
+      "copiedDone": "Já copiei",
+      "search": "Buscar tokens…",
+      "empty": "Nenhum token ainda",
+      "emptyDesc": "Crie um token para cada app que chama seus endpoints.",
+      "needsLook": "Expira em breve ou sem uso há 90 dias",
+      "never": "Nunca",
+      "inDays": "Em {n} dia | Em {n} dias",
+      "customDate": "Escolher uma data",
+      "expiredOn": "Expirou em {date}",
+      "used": "Usado {when}",
+      "notUsed": "Ainda não usado",
+      "minutes": "{n} minutos",
+      "lifetime": "Duração do token de curta vida",
+      "lifetimeHelp": "Por quanto tempo cada token do endereço de tokens funciona antes de o app pedir um novo.",
+      "signing": "Requisições assinadas",
+      "signingHelp": "As chamadas também precisam levar uma assinatura HMAC da requisição. Para quem precisa de proteção extra.",
+      "signingHint": "Assine cada chamada: X-Formalie-Timestamp (segundos unix) e X-Formalie-Signature (HMAC sha256= do método, caminho, carimbo de data e hora e corpo com o segredo de assinatura). Chamadas com mais de 5 minutos são recusadas.",
+      "clientHint": "A resposta contém um token de acesso válido por {n} minutos; envie-o como Authorization: Bearer e peça um novo quando expirar.",
+      "howToUse": "Como usar",
+      "rotate": "Rotacionar",
+      "revoke": "Revogar",
+      "revokeTitle": "Revogar {name}?",
+      "revokeDesc": "Os apps que o usam recebem um erro imediatamente. Isso não pode ser desfeito; crie um novo token se precisar de um de novo.",
+      "revokedOn": "Revogado em {date}",
+      "revokedDesc": "As chamadas com este token são recusadas. Exclua-o quando não precisar mais dele na lista.",
+      "rotating": "O segredo antigo continua funcionando até {until}.",
+      "deleteTitle": "Excluir {name}?",
+      "deleteDesc": "Ele desaparece desta lista. Seu histórico permanece na trilha de auditoria.",
+      "once": {
+        "title": "Copie agora: ele é exibido só uma vez",
+        "desc": "A Formalie guarda apenas uma impressão digital dele. Se for perdido, rotacione o token para obter um novo."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "ID do cliente",
+        "clientSecret": "Segredo do cliente",
+        "signing": "Segredo de assinatura"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "As chamadas leem e gravam suas respostas reais.",
+        "test": "Para criar e testar: as chamadas nunca tocam em respostas reais."
+      },
+      "kind": {
+        "static": "Token Bearer",
+        "client": "ID e segredo do cliente"
+      },
+      "kindHint": {
+        "static": "Um token de longa duração que o app envia em toda chamada.",
+        "client": "O app os troca por um token de curta vida, mais seguro se um token vazar."
+      },
+      "scope": {
+        "title": "O que pode chamar",
+        "help": "Deixe uma caixa vazia para permitir tudo desse tipo.",
+        "all": "Todos os endpoints",
+        "allServices": "Todos os serviços",
+        "allEndpoints": "Todos os endpoints",
+        "allMethods": "Todos os métodos"
+      },
+      "col": {
+        "kind": "Tipo",
+        "mode": "Modo",
+        "scope": "Pode chamar",
+        "expires": "Expira",
+        "lastUsed": "Último uso"
+      },
+      "sort": {
+        "used": "Usados por último",
+        "expires": "Os que expiram primeiro"
+      },
+      "kpi": {
+        "calls": "Chamadas com tokens",
+        "tokens": "Tokens",
+        "byStatus": "Tokens por status",
+        "unused": "{n} sem uso há 90 dias | {n} sem uso há 90 dias"
+      },
+      "toast": {
+        "saved": "{name} salvo",
+        "revoked": "{name} revogado",
+        "deleted": "{name} excluído"
+      }
+    },
+    "rotate": {
+      "title": "Rotacionar {name}",
+      "desc": "Você recebe novos segredos. Escolha por quanto tempo os antigos continuam funcionando, para o app trocar sem indisponibilidade.",
+      "keyTitle": "Rotacionar a chave de endereço",
+      "keyDesc": "Cada endpoint recebe um novo endereço. Escolha por quanto tempo os endereços antigos continuam funcionando enquanto seus apps trocam.",
+      "graceLegend": "O antigo continua funcionando",
+      "confirm": "Rotacionar",
+      "grace": {
+        "h0": "Para imediatamente",
+        "h24": "Por 24 horas",
+        "h168": "Por 7 dias"
+      },
+      "graceHint": {
+        "h0": "Use se ele puder ter vazado.",
+        "h24": "O bastante para atualizar um app.",
+        "h168": "Para vários apps ou lançamentos mais lentos."
+      },
+      "keyGrace": "A chave antiga {key} continua funcionando até {until}.",
+      "keyNow": "A chave antiga parou de funcionar."
+    },
+    "key": {
+      "title": "Chave de endereço",
+      "desc": "A primeira parte de cada endereço de endpoint. Ela apenas roteia as chamadas; os tokens decidem quem pode chamar.",
+      "current": "Chave atual",
+      "previous": "A chave antiga {key} continua funcionando até {until}.",
+      "rotatedAt": "Rotacionada {when}",
+      "rotate": "Rotacionar chave"
+    },
+    "headers": {
+      "title": "Cabeçalhos",
+      "standardTitle": "Cabeçalhos que todo chamador envia",
+      "standardDesc": "A Formalie verifica estes em toda chamada; as respostas são sempre JSON.",
+      "customTitle": "Endpoints com cabeçalhos próprios",
+      "customDesc": "Um endpoint pode exigir cabeçalhos extras com um valor definido, por exemplo um ID de parceiro. Defina-os na etapa Métodos do endpoint.",
+      "none": "Nenhum endpoint exige cabeçalhos extras",
+      "noneDesc": "Adicione-os na etapa Métodos de um endpoint quando um chamador precisar se identificar melhor.",
+      "requiredTitle": "Cabeçalhos obrigatórios",
+      "requiredDesc": "Chamadas sem estes cabeçalhos e valores são recusadas. Opcional, até 5.",
+      "name": "Nome do cabeçalho",
+      "value": "Valor obrigatório",
+      "keep": "{preview} (inalterado)",
+      "add": "Adicionar cabeçalho",
+      "remove": "Remover cabeçalho",
+      "when": {
+        "always": "Toda chamada",
+        "body": "POST e PUT",
+        "post": "Opcional, POST",
+        "signing": "Tokens assinados"
+      },
+      "invalid": {
+        "required": "Preencha este campo.",
+        "pattern": "Use letras, números e hifens, começando com uma letra (2 a 64).",
+        "reserved": "A Formalie ou o HTTP define este cabeçalho por conta própria. Escolha outro nome.",
+        "chars": "Use letras, números e símbolos simples, até 200.",
+        "duplicate": "Este cabeçalho já está na lista.",
+        "fix": "Verifique os cabeçalhos obrigatórios."
       }
     }
   },

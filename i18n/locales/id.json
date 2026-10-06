@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Hanya orang yang menyimpan kueri ini yang dapat mengubahnya.",
     "FRM-API-1001": "Nama endpoint ini sudah digunakan di organisasi Anda.",
     "FRM-API-1002": "Publikasikan formulir sebelum bisa menjadi endpoint.",
-    "FRM-API-1003": "Layanan dengan nama ini sudah ada."
+    "FRM-API-1003": "Layanan dengan nama ini sudah ada.",
+    "FRM-API-1004": "Token ini sudah dicabut dan tidak bisa diubah lagi.",
+    "FRM-API-1005": "Cabut token sebelum menghapusnya.",
+    "FRM-API-1006": "Tidak ada endpoint di alamat ini.",
+    "FRM-API-1007": "Endpoint ini dimatikan.",
+    "FRM-API-1008": "Endpoint ini tidak menjawab metode ini.",
+    "FRM-API-1009": "Token ini tidak boleh memanggil endpoint atau metode ini.",
+    "FRM-API-1010": "Kirim token yang valid sebagai Authorization: Bearer <token>.",
+    "FRM-API-1011": "Header wajib tidak ada atau nilainya salah.",
+    "FRM-API-1012": "Tanda tangan permintaan tidak ada, terlalu lama, atau salah.",
+    "FRM-API-1013": "Tidak ada catatan dengan id ini.",
+    "FRM-API-1014": "Beberapa kolom tidak dapat dikirim ke endpoint ini."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -619,7 +630,10 @@
     "failing": "Gagal",
     "disabled": "Dinonaktifkan",
     "untested": "Belum diuji",
-    "active": "Aktif"
+    "active": "Aktif",
+    "expiring": "Segera kedaluwarsa",
+    "expired": "Kedaluwarsa",
+    "revoked": "Dicabut"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
@@ -842,7 +856,8 @@
       "template": "Templat",
       "data_source": "Koneksi",
       "api_service": "Layanan API",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "Token API"
     },
     "field": {
       "name": "Nama",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint diubah",
       "api_endpoint_enabled": "Endpoint dinyalakan",
       "api_endpoint_disabled": "Endpoint dimatikan",
-      "api_endpoint_deleted": "Endpoint dihapus"
+      "api_endpoint_deleted": "Endpoint dihapus",
+      "api_key_rotated": "Kunci alamat API dirotasi",
+      "api_token_created": "Token API dibuat",
+      "api_token_updated": "Token API diubah",
+      "api_token_rotated": "Token API dirotasi",
+      "api_token_revoked": "Token API dicabut",
+      "api_token_deleted": "Token API dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -3763,6 +3784,158 @@
         "POST": "Kirim respons baru, diperiksa seperti halaman formulir.",
         "PUT": "Ubah respons berdasarkan id-nya (hanya pertanyaan yang diterima).",
         "DELETE": "Hapus respons berdasarkan id-nya; tetap tercatat di jejak audit."
+      }
+    },
+    "tokens": {
+      "title": "Token",
+      "viewSwitch": "Token atau header",
+      "newTitle": "Token baru",
+      "editTitle": "Edit token",
+      "createdTitle": "{name} siap",
+      "desc": "Token memungkinkan aplikasi memanggil endpoint Anda. Beri setiap aplikasi token sendiri, sehingga Anda bisa menghentikan satu tanpa memengaruhi yang lain.",
+      "namePlaceholder": "mis. Pendaftaran situs web",
+      "create": "Buat token",
+      "copiedDone": "Sudah saya salin",
+      "search": "Cari token…",
+      "empty": "Belum ada token",
+      "emptyDesc": "Buat token untuk setiap aplikasi yang memanggil endpoint Anda.",
+      "needsLook": "Segera kedaluwarsa atau tidak dipakai selama 90 hari",
+      "never": "Tidak pernah",
+      "inDays": "Dalam {n} hari | Dalam {n} hari",
+      "customDate": "Pilih tanggal",
+      "expiredOn": "Kedaluwarsa {date}",
+      "used": "Dipakai {when}",
+      "notUsed": "Belum pernah dipakai",
+      "minutes": "{n} menit",
+      "lifetime": "Masa berlaku token jangka pendek",
+      "lifetimeHelp": "Berapa lama setiap token dari alamat token berlaku sebelum aplikasi meminta yang baru.",
+      "signing": "Permintaan bertanda tangan",
+      "signingHelp": "Panggilan juga harus membawa tanda tangan HMAC dari permintaan. Untuk pemanggil yang butuh perlindungan ekstra.",
+      "signingHint": "Tanda tangani setiap panggilan: X-Formalie-Timestamp (detik unix) dan X-Formalie-Signature (sha256= HMAC dari metode, path, stempel waktu, dan body dengan secret penandatanganan). Panggilan yang lebih lama dari 5 menit ditolak.",
+      "clientHint": "Respons berisi token akses yang berlaku selama {n} menit; kirim sebagai Authorization: Bearer, lalu minta yang baru saat habis.",
+      "howToUse": "Cara memakainya",
+      "rotate": "Rotasi",
+      "revoke": "Cabut",
+      "revokeTitle": "Cabut {name}?",
+      "revokeDesc": "Aplikasi yang memakainya langsung mendapat error. Ini tidak bisa dibatalkan; buat token baru jika Anda membutuhkannya lagi.",
+      "revokedOn": "Dicabut {date}",
+      "revokedDesc": "Panggilan dengan token ini ditolak. Hapus jika sudah tidak dibutuhkan di daftar.",
+      "rotating": "Secret lama masih berfungsi sampai {until}.",
+      "deleteTitle": "Hapus {name}?",
+      "deleteDesc": "Token hilang dari daftar ini. Riwayatnya tetap ada di jejak audit.",
+      "once": {
+        "title": "Salin sekarang: hanya ditampilkan satu kali",
+        "desc": "Formalie hanya menyimpan sidik jarinya. Jika hilang, rotasi token untuk mendapatkan yang baru."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "ID klien",
+        "clientSecret": "Secret klien",
+        "signing": "Secret penandatanganan"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Panggilan membaca dan menulis respons asli Anda.",
+        "test": "Untuk membangun dan mencoba: panggilan tidak pernah menyentuh respons asli."
+      },
+      "kind": {
+        "static": "Token Bearer",
+        "client": "ID klien dan secret"
+      },
+      "kindHint": {
+        "static": "Satu token jangka panjang yang dikirim aplikasi di setiap panggilan.",
+        "client": "Aplikasi menukarnya dengan token jangka pendek, yang lebih aman jika token bocor."
+      },
+      "scope": {
+        "title": "Apa yang boleh dipanggil",
+        "help": "Biarkan kotak kosong untuk mengizinkan semua jenis itu.",
+        "all": "Semua endpoint",
+        "allServices": "Semua layanan",
+        "allEndpoints": "Semua endpoint",
+        "allMethods": "Semua metode"
+      },
+      "col": {
+        "kind": "Tipe",
+        "mode": "Mode",
+        "scope": "Boleh memanggil",
+        "expires": "Kedaluwarsa",
+        "lastUsed": "Terakhir dipakai"
+      },
+      "sort": {
+        "used": "Terakhir dipakai",
+        "expires": "Paling cepat kedaluwarsa"
+      },
+      "kpi": {
+        "calls": "Panggilan dengan token",
+        "tokens": "Token",
+        "byStatus": "Token menurut status",
+        "unused": "{n} tidak dipakai selama 90 hari | {n} tidak dipakai selama 90 hari"
+      },
+      "toast": {
+        "saved": "{name} disimpan",
+        "revoked": "{name} dicabut",
+        "deleted": "{name} dihapus"
+      }
+    },
+    "rotate": {
+      "title": "Rotasi {name}",
+      "desc": "Anda mendapat secret baru. Pilih berapa lama yang lama tetap berfungsi, agar aplikasi bisa beralih tanpa downtime.",
+      "keyTitle": "Rotasi kunci alamat",
+      "keyDesc": "Setiap endpoint mendapat alamat baru. Pilih berapa lama alamat lama tetap berfungsi selama aplikasi Anda beralih.",
+      "graceLegend": "Yang lama tetap berfungsi",
+      "confirm": "Rotasi",
+      "grace": {
+        "h0": "Berhenti segera",
+        "h24": "Selama 24 jam",
+        "h168": "Selama 7 hari"
+      },
+      "graceHint": {
+        "h0": "Gunakan jika mungkin sudah bocor.",
+        "h24": "Cukup untuk memperbarui satu aplikasi.",
+        "h168": "Untuk beberapa aplikasi atau rilis yang lebih lambat."
+      },
+      "keyGrace": "Kunci lama {key} masih berfungsi sampai {until}.",
+      "keyNow": "Kunci lama sudah berhenti berfungsi."
+    },
+    "key": {
+      "title": "Kunci alamat",
+      "desc": "Bagian pertama dari setiap alamat endpoint. Hanya mengarahkan panggilan; token yang menentukan siapa yang boleh memanggil.",
+      "current": "Kunci saat ini",
+      "previous": "Kunci lama {key} masih berfungsi sampai {until}.",
+      "rotatedAt": "Dirotasi {when}",
+      "rotate": "Rotasi kunci"
+    },
+    "headers": {
+      "title": "Header",
+      "standardTitle": "Header yang dikirim setiap pemanggil",
+      "standardDesc": "Formalie memeriksanya di setiap panggilan; respons selalu berupa JSON.",
+      "customTitle": "Endpoint dengan header sendiri",
+      "customDesc": "Endpoint dapat mewajibkan header tambahan dengan nilai tertentu, mis. ID mitra. Atur di langkah Metode pada endpoint.",
+      "none": "Tidak ada endpoint yang mewajibkan header tambahan",
+      "noneDesc": "Tambahkan di langkah Metode pada endpoint saat pemanggil harus mengidentifikasi diri lebih lanjut.",
+      "requiredTitle": "Header wajib",
+      "requiredDesc": "Panggilan tanpa header dan nilai ini ditolak. Opsional, hingga 5.",
+      "name": "Nama header",
+      "value": "Nilai yang harus dimiliki",
+      "keep": "{preview} (tidak berubah)",
+      "add": "Tambah header",
+      "remove": "Hapus header",
+      "when": {
+        "always": "Setiap panggilan",
+        "body": "POST dan PUT",
+        "post": "Opsional, POST",
+        "signing": "Token bertanda tangan"
+      },
+      "invalid": {
+        "required": "Isi bagian ini.",
+        "pattern": "Gunakan huruf, angka, dan tanda hubung, diawali huruf (2 sampai 64).",
+        "reserved": "Header ini diatur sendiri oleh Formalie atau HTTP. Pilih nama lain.",
+        "chars": "Gunakan huruf, angka, dan simbol biasa, hingga 200.",
+        "duplicate": "Header ini sudah ada di daftar.",
+        "fix": "Periksa header wajib."
       }
     }
   },

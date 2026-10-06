@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Chỉ người đã lưu truy vấn này mới có thể thay đổi nó.",
     "FRM-API-1001": "Tên endpoint này đã được dùng trong tổ chức của bạn.",
     "FRM-API-1002": "Hãy xuất bản biểu mẫu trước khi nó có thể trở thành endpoint.",
-    "FRM-API-1003": "Đã có dịch vụ với tên này."
+    "FRM-API-1003": "Đã có dịch vụ với tên này.",
+    "FRM-API-1004": "Token này đã bị thu hồi và không thể thay đổi nữa.",
+    "FRM-API-1005": "Hãy thu hồi token trước khi xóa.",
+    "FRM-API-1006": "Không có endpoint ở địa chỉ này.",
+    "FRM-API-1007": "Endpoint này đang tắt.",
+    "FRM-API-1008": "Endpoint này không trả lời phương thức này.",
+    "FRM-API-1009": "Token này không được gọi endpoint hoặc phương thức này.",
+    "FRM-API-1010": "Hãy gửi token hợp lệ dạng Authorization: Bearer <token>.",
+    "FRM-API-1011": "Thiếu một header bắt buộc hoặc giá trị không đúng.",
+    "FRM-API-1012": "Chữ ký của yêu cầu bị thiếu, quá cũ hoặc sai.",
+    "FRM-API-1013": "Không có bản ghi với id này.",
+    "FRM-API-1014": "Một số trường không thể gửi tới endpoint này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -619,7 +630,10 @@
     "failing": "Đang lỗi",
     "disabled": "Đã tắt",
     "untested": "Chưa kiểm tra",
-    "active": "Đang hoạt động"
+    "active": "Đang hoạt động",
+    "expiring": "Sắp hết hạn",
+    "expired": "Đã hết hạn",
+    "revoked": "Đã thu hồi"
   },
   "footer": {
     "rights": "Bảo lưu mọi quyền.",
@@ -842,7 +856,8 @@
       "template": "Mẫu",
       "data_source": "Kết nối",
       "api_service": "Dịch vụ API",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "Token API"
     },
     "field": {
       "name": "Tên",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Đã thay đổi endpoint",
       "api_endpoint_enabled": "Đã bật endpoint",
       "api_endpoint_disabled": "Đã tắt endpoint",
-      "api_endpoint_deleted": "Đã xóa endpoint"
+      "api_endpoint_deleted": "Đã xóa endpoint",
+      "api_key_rotated": "Đã xoay khóa địa chỉ API",
+      "api_token_created": "Đã tạo token API",
+      "api_token_updated": "Đã thay đổi token API",
+      "api_token_rotated": "Đã xoay token API",
+      "api_token_revoked": "Đã thu hồi token API",
+      "api_token_deleted": "Đã xóa token API"
     },
     "detail": {
       "who": "Ai",
@@ -3763,6 +3784,158 @@
         "POST": "Gửi một phản hồi mới, được kiểm tra như trang biểu mẫu.",
         "PUT": "Thay đổi một phản hồi theo id (chỉ các câu hỏi được nhận).",
         "DELETE": "Xóa một phản hồi theo id; được lưu trong nhật ký kiểm tra."
+      }
+    },
+    "tokens": {
+      "title": "Token",
+      "viewSwitch": "Token hoặc header",
+      "newTitle": "Token mới",
+      "editTitle": "Sửa token",
+      "createdTitle": "{name} đã sẵn sàng",
+      "desc": "Token cho phép một ứng dụng gọi các endpoint của bạn. Hãy cấp cho mỗi ứng dụng một token riêng để có thể dừng một token mà không ảnh hưởng các token khác.",
+      "namePlaceholder": "vd. Đăng ký từ website",
+      "create": "Tạo token",
+      "copiedDone": "Tôi đã sao chép",
+      "search": "Tìm token…",
+      "empty": "Chưa có token",
+      "emptyDesc": "Hãy tạo token cho mỗi ứng dụng gọi các endpoint của bạn.",
+      "needsLook": "Sắp hết hạn hoặc 90 ngày chưa dùng",
+      "never": "Không bao giờ",
+      "inDays": "Sau {n} ngày | Sau {n} ngày",
+      "customDate": "Chọn ngày",
+      "expiredOn": "Hết hạn {date}",
+      "used": "Đã dùng {when}",
+      "notUsed": "Chưa dùng",
+      "minutes": "{n} phút",
+      "lifetime": "Thời hạn token ngắn hạn",
+      "lifetimeHelp": "Mỗi token lấy từ địa chỉ token có hiệu lực bao lâu trước khi ứng dụng yêu cầu token mới.",
+      "signing": "Yêu cầu có chữ ký",
+      "signingHelp": "Các lệnh gọi còn phải kèm chữ ký HMAC của yêu cầu. Dành cho bên gọi cần bảo vệ thêm.",
+      "signingHint": "Ký mỗi lệnh gọi: X-Formalie-Timestamp (giây unix) và X-Formalie-Signature (sha256= HMAC của phương thức, đường dẫn, dấu thời gian và nội dung bằng signing secret). Lệnh gọi cũ hơn 5 phút sẽ bị từ chối.",
+      "clientHint": "Phản hồi chứa một token truy cập có hiệu lực {n} phút; hãy gửi nó dưới dạng Authorization: Bearer và yêu cầu token mới khi hết hạn.",
+      "howToUse": "Cách dùng",
+      "rotate": "Xoay",
+      "revoke": "Thu hồi",
+      "revokeTitle": "Thu hồi {name}?",
+      "revokeDesc": "Các ứng dụng đang dùng nó sẽ nhận lỗi ngay. Không thể hoàn tác; hãy tạo token mới nếu bạn cần lại.",
+      "revokedOn": "Đã thu hồi {date}",
+      "revokedDesc": "Các lệnh gọi bằng token này bị từ chối. Hãy xóa nó khi không cần trong danh sách nữa.",
+      "rotating": "Secret cũ vẫn hoạt động đến {until}.",
+      "deleteTitle": "Xóa {name}?",
+      "deleteDesc": "Nó sẽ biến mất khỏi danh sách này. Lịch sử vẫn nằm trong nhật ký kiểm toán.",
+      "once": {
+        "title": "Hãy sao chép ngay: chỉ hiển thị một lần",
+        "desc": "Formalie chỉ giữ dấu vân tay của nó. Nếu mất, hãy xoay token để nhận token mới."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "Client id",
+        "clientSecret": "Client secret",
+        "signing": "Signing secret"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Các lệnh gọi đọc và ghi phản hồi thật của bạn.",
+        "test": "Để xây dựng và thử nghiệm: các lệnh gọi không bao giờ chạm vào phản hồi thật."
+      },
+      "kind": {
+        "static": "Bearer token",
+        "client": "Client id và secret"
+      },
+      "kindHint": {
+        "static": "Một token dài hạn mà ứng dụng gửi kèm mỗi lệnh gọi.",
+        "client": "Ứng dụng đổi chúng lấy một token ngắn hạn, an toàn hơn nếu token bị lộ."
+      },
+      "scope": {
+        "title": "Có thể gọi gì",
+        "help": "Để trống một ô để cho phép tất cả thuộc loại đó.",
+        "all": "Tất cả endpoint",
+        "allServices": "Tất cả dịch vụ",
+        "allEndpoints": "Tất cả endpoint",
+        "allMethods": "Tất cả phương thức"
+      },
+      "col": {
+        "kind": "Loại",
+        "mode": "Chế độ",
+        "scope": "Có thể gọi",
+        "expires": "Hết hạn",
+        "lastUsed": "Dùng lần cuối"
+      },
+      "sort": {
+        "used": "Dùng gần nhất",
+        "expires": "Sắp hết hạn trước"
+      },
+      "kpi": {
+        "calls": "Lệnh gọi bằng token",
+        "tokens": "Token",
+        "byStatus": "Token theo trạng thái",
+        "unused": "{n} chưa dùng trong 90 ngày | {n} chưa dùng trong 90 ngày"
+      },
+      "toast": {
+        "saved": "Đã lưu {name}",
+        "revoked": "Đã thu hồi {name}",
+        "deleted": "Đã xóa {name}"
+      }
+    },
+    "rotate": {
+      "title": "Xoay {name}",
+      "desc": "Bạn nhận được secret mới. Chọn thời gian các secret cũ còn hoạt động, để ứng dụng chuyển đổi mà không gián đoạn.",
+      "keyTitle": "Xoay khóa địa chỉ",
+      "keyDesc": "Mỗi endpoint nhận một địa chỉ mới. Chọn thời gian các địa chỉ cũ còn hoạt động trong lúc các ứng dụng chuyển đổi.",
+      "graceLegend": "Cái cũ vẫn hoạt động",
+      "confirm": "Xoay",
+      "grace": {
+        "h0": "Dừng ngay",
+        "h24": "Trong 24 giờ",
+        "h168": "Trong 7 ngày"
+      },
+      "graceHint": {
+        "h0": "Dùng nếu nó có thể đã bị lộ.",
+        "h24": "Đủ để cập nhật một ứng dụng.",
+        "h168": "Cho nhiều ứng dụng hoặc bản phát hành chậm hơn."
+      },
+      "keyGrace": "Khóa cũ {key} vẫn hoạt động đến {until}.",
+      "keyNow": "Khóa cũ đã ngừng hoạt động."
+    },
+    "key": {
+      "title": "Khóa địa chỉ",
+      "desc": "Phần đầu của mọi địa chỉ endpoint. Nó chỉ định tuyến lệnh gọi; token quyết định ai được gọi.",
+      "current": "Khóa hiện tại",
+      "previous": "Khóa cũ {key} vẫn hoạt động đến {until}.",
+      "rotatedAt": "Đã xoay {when}",
+      "rotate": "Xoay khóa"
+    },
+    "headers": {
+      "title": "Header",
+      "standardTitle": "Header mà mọi bên gọi đều gửi",
+      "standardDesc": "Formalie kiểm tra các header này ở mọi lệnh gọi; phản hồi luôn là JSON.",
+      "customTitle": "Endpoint có header riêng",
+      "customDesc": "Một endpoint có thể yêu cầu thêm header với giá trị cố định, ví dụ mã đối tác. Đặt chúng ở bước Phương thức của endpoint.",
+      "none": "Không endpoint nào yêu cầu thêm header",
+      "noneDesc": "Hãy thêm ở bước Phương thức của endpoint khi bên gọi phải xác định danh tính kỹ hơn.",
+      "requiredTitle": "Header bắt buộc",
+      "requiredDesc": "Các lệnh gọi thiếu những header và giá trị này sẽ bị từ chối. Tùy chọn, tối đa 5.",
+      "name": "Tên header",
+      "value": "Giá trị bắt buộc",
+      "keep": "{preview} (không đổi)",
+      "add": "Thêm header",
+      "remove": "Xóa header",
+      "when": {
+        "always": "Mọi lệnh gọi",
+        "body": "POST và PUT",
+        "post": "Tùy chọn, POST",
+        "signing": "Token có chữ ký"
+      },
+      "invalid": {
+        "required": "Hãy điền mục này.",
+        "pattern": "Dùng chữ cái, chữ số và dấu gạch ngang, bắt đầu bằng chữ cái (2 đến 64).",
+        "reserved": "Header này do Formalie hoặc HTTP tự đặt. Hãy chọn tên khác.",
+        "chars": "Dùng chữ cái, chữ số và ký hiệu thông thường, tối đa 200.",
+        "duplicate": "Header này đã có trong danh sách.",
+        "fix": "Hãy kiểm tra các header bắt buộc."
       }
     }
   },

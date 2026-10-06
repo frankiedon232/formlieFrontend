@@ -34,6 +34,9 @@ const COLORS: Record<string, BadgeProps['color']> = {
   pending: 'warning',
   held: 'neutral',
   not_sent: 'neutral',
+  // API tokens (F13 M2)
+  expiring: 'warning',
+  revoked: 'error',
 }
 
 // Deeper text than Nuxt UI's subtle default (500 shade), so status reads crisply (owner, 2026-10-03; docs/design).

@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Seule la personne qui a enregistré cette requête peut la modifier.",
     "FRM-API-1001": "Ce nom d'endpoint est déjà utilisé dans votre organisation.",
     "FRM-API-1002": "Publiez le formulaire avant de pouvoir en faire un endpoint.",
-    "FRM-API-1003": "Un service portant ce nom existe déjà."
+    "FRM-API-1003": "Un service portant ce nom existe déjà.",
+    "FRM-API-1004": "Ce jeton a été révoqué et ne peut plus être modifié.",
+    "FRM-API-1005": "Révoquez le jeton avant de le supprimer.",
+    "FRM-API-1006": "Aucun endpoint à cette adresse.",
+    "FRM-API-1007": "Cet endpoint est désactivé.",
+    "FRM-API-1008": "Cet endpoint ne répond pas à cette méthode.",
+    "FRM-API-1009": "Ce jeton ne peut pas appeler cet endpoint ou cette méthode.",
+    "FRM-API-1010": "Envoyez un jeton valide sous la forme Authorization: Bearer <token>.",
+    "FRM-API-1011": "Un en-tête obligatoire manque ou a une valeur incorrecte.",
+    "FRM-API-1012": "La signature de la requête manque, est trop ancienne ou est incorrecte.",
+    "FRM-API-1013": "Aucun enregistrement avec cet identifiant.",
+    "FRM-API-1014": "Certains champs ne peuvent pas être envoyés à cet endpoint."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -619,7 +630,10 @@
     "failing": "En échec",
     "disabled": "Désactivée",
     "untested": "Non testée",
-    "active": "Actif"
+    "active": "Actif",
+    "expiring": "Expire bientôt",
+    "expired": "Expiré",
+    "revoked": "Révoqué"
   },
   "footer": {
     "rights": "Tous droits réservés.",
@@ -842,7 +856,8 @@
       "template": "Modèle",
       "data_source": "Connexion",
       "api_service": "Service API",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "Jeton d'API"
     },
     "field": {
       "name": "Nom",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint modifié",
       "api_endpoint_enabled": "Endpoint activé",
       "api_endpoint_disabled": "Endpoint désactivé",
-      "api_endpoint_deleted": "Endpoint supprimé"
+      "api_endpoint_deleted": "Endpoint supprimé",
+      "api_key_rotated": "Clé d'adresse de l'API renouvelée",
+      "api_token_created": "Jeton d'API créé",
+      "api_token_updated": "Jeton d'API modifié",
+      "api_token_rotated": "Jeton d'API renouvelé",
+      "api_token_revoked": "Jeton d'API révoqué",
+      "api_token_deleted": "Jeton d'API supprimé"
     },
     "detail": {
       "who": "Qui",
@@ -3763,6 +3784,158 @@
         "POST": "Envoyer une nouvelle réponse, contrôlée comme sur la page du formulaire.",
         "PUT": "Modifier une réponse par son id (uniquement les questions acceptées).",
         "DELETE": "Supprimer une réponse par son id ; conservé dans le journal d'audit."
+      }
+    },
+    "tokens": {
+      "title": "Jetons",
+      "viewSwitch": "Jetons ou en-têtes",
+      "newTitle": "Nouveau jeton",
+      "editTitle": "Modifier le jeton",
+      "createdTitle": "{name} est prêt",
+      "desc": "Un jeton permet à une application d'appeler vos endpoints. Donnez-en un à chaque application pour pouvoir en arrêter un sans toucher aux autres.",
+      "namePlaceholder": "p. ex. Inscriptions du site web",
+      "create": "Créer le jeton",
+      "copiedDone": "Je l'ai copié",
+      "search": "Rechercher des jetons…",
+      "empty": "Aucun jeton pour l'instant",
+      "emptyDesc": "Créez un jeton pour chaque application qui appelle vos endpoints.",
+      "needsLook": "Expire bientôt ou inutilisé depuis 90 jours",
+      "never": "Jamais",
+      "inDays": "Dans {n} jour | Dans {n} jours",
+      "customDate": "Choisir une date",
+      "expiredOn": "Expiré le {date}",
+      "used": "Utilisé {when}",
+      "notUsed": "Pas encore utilisé",
+      "minutes": "{n} minutes",
+      "lifetime": "Durée du jeton de courte durée",
+      "lifetimeHelp": "Durée de validité de chaque jeton obtenu à l'adresse des jetons avant que l'application en demande un nouveau.",
+      "signing": "Requêtes signées",
+      "signingHelp": "Les appels doivent aussi porter une signature HMAC de la requête. Pour les appelants qui ont besoin d'une protection supplémentaire.",
+      "signingHint": "Signez chaque appel : X-Formalie-Timestamp (secondes unix) et X-Formalie-Signature (HMAC sha256= de la méthode, du chemin, de l'horodatage et du corps avec le secret de signature). Les appels de plus de 5 minutes sont refusés.",
+      "clientHint": "La réponse contient un jeton d'accès valable {n} minutes ; envoyez-le sous la forme Authorization: Bearer et demandez-en un nouveau lorsqu'il expire.",
+      "howToUse": "Comment l'utiliser",
+      "rotate": "Renouveler",
+      "revoke": "Révoquer",
+      "revokeTitle": "Révoquer {name} ?",
+      "revokeDesc": "Les applications qui l'utilisent reçoivent immédiatement une erreur. Cette action est irréversible ; créez un nouveau jeton si vous en avez de nouveau besoin.",
+      "revokedOn": "Révoqué le {date}",
+      "revokedDesc": "Les appels avec ce jeton sont refusés. Supprimez-le lorsque vous n'en avez plus besoin dans la liste.",
+      "rotating": "L'ancien secret fonctionne encore jusqu'au {until}.",
+      "deleteTitle": "Supprimer {name} ?",
+      "deleteDesc": "Il disparaît de cette liste. Son historique reste dans le journal d'audit.",
+      "once": {
+        "title": "Copiez-le maintenant : il n'est affiché qu'une seule fois",
+        "desc": "Formalie n'en conserve qu'une empreinte. S'il est perdu, renouvelez le jeton pour en obtenir un nouveau."
+      },
+      "secret": {
+        "token": "Jeton",
+        "clientId": "ID client",
+        "clientSecret": "Secret client",
+        "signing": "Secret de signature"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Les appels lisent et écrivent vos vraies réponses.",
+        "test": "Pour développer et essayer : les appels ne touchent jamais les vraies réponses."
+      },
+      "kind": {
+        "static": "Jeton Bearer",
+        "client": "ID client et secret"
+      },
+      "kindHint": {
+        "static": "Un jeton longue durée que l'application envoie à chaque appel.",
+        "client": "L'application les échange contre un jeton de courte durée, plus sûr en cas de fuite."
+      },
+      "scope": {
+        "title": "Ce qu'il peut appeler",
+        "help": "Laissez une case vide pour tout autoriser de ce type.",
+        "all": "Tous les endpoints",
+        "allServices": "Tous les services",
+        "allEndpoints": "Tous les endpoints",
+        "allMethods": "Toutes les méthodes"
+      },
+      "col": {
+        "kind": "Type",
+        "mode": "Mode",
+        "scope": "Peut appeler",
+        "expires": "Expire",
+        "lastUsed": "Dernière utilisation"
+      },
+      "sort": {
+        "used": "Utilisés en dernier",
+        "expires": "Expirent en premier"
+      },
+      "kpi": {
+        "calls": "Appels avec jetons",
+        "tokens": "Jetons",
+        "byStatus": "Jetons par statut",
+        "unused": "{n} inutilisé depuis 90 jours | {n} inutilisés depuis 90 jours"
+      },
+      "toast": {
+        "saved": "{name} enregistré",
+        "revoked": "{name} révoqué",
+        "deleted": "{name} supprimé"
+      }
+    },
+    "rotate": {
+      "title": "Renouveler {name}",
+      "desc": "Vous obtenez de nouveaux secrets. Choisissez combien de temps les anciens restent valables, pour que l'application puisse basculer sans interruption.",
+      "keyTitle": "Renouveler la clé d'adresse",
+      "keyDesc": "Chaque endpoint reçoit une nouvelle adresse. Choisissez combien de temps les anciennes adresses restent valables pendant la bascule de vos applications.",
+      "graceLegend": "L'ancien reste valable",
+      "confirm": "Renouveler",
+      "grace": {
+        "h0": "S'arrête immédiatement",
+        "h24": "Pendant 24 heures",
+        "h168": "Pendant 7 jours"
+      },
+      "graceHint": {
+        "h0": "À utiliser s'il a pu fuiter.",
+        "h24": "Suffisant pour mettre à jour une application.",
+        "h168": "Pour plusieurs applications ou des versions plus lentes."
+      },
+      "keyGrace": "L'ancienne clé {key} fonctionne encore jusqu'au {until}.",
+      "keyNow": "L'ancienne clé ne fonctionne plus."
+    },
+    "key": {
+      "title": "Clé d'adresse",
+      "desc": "La première partie de chaque adresse d'endpoint. Elle ne fait qu'acheminer les appels ; ce sont les jetons qui décident qui peut appeler.",
+      "current": "Clé actuelle",
+      "previous": "L'ancienne clé {key} fonctionne encore jusqu'au {until}.",
+      "rotatedAt": "Renouvelée {when}",
+      "rotate": "Renouveler la clé"
+    },
+    "headers": {
+      "title": "En-têtes",
+      "standardTitle": "En-têtes envoyés par chaque appelant",
+      "standardDesc": "Formalie les vérifie à chaque appel ; les réponses sont toujours en JSON.",
+      "customTitle": "Endpoints avec leurs propres en-têtes",
+      "customDesc": "Un endpoint peut exiger des en-têtes supplémentaires avec une valeur fixe, p. ex. un identifiant de partenaire. Définissez-les à l'étape Méthodes de l'endpoint.",
+      "none": "Aucun endpoint n'exige d'en-têtes supplémentaires",
+      "noneDesc": "Ajoutez-en à l'étape Méthodes d'un endpoint lorsqu'un appelant doit s'identifier davantage.",
+      "requiredTitle": "En-têtes obligatoires",
+      "requiredDesc": "Les appels sans ces en-têtes et valeurs sont refusés. Facultatif, jusqu'à 5.",
+      "name": "Nom de l'en-tête",
+      "value": "Valeur requise",
+      "keep": "{preview} (inchangé)",
+      "add": "Ajouter un en-tête",
+      "remove": "Supprimer l'en-tête",
+      "when": {
+        "always": "Chaque appel",
+        "body": "POST et PUT",
+        "post": "Facultatif, POST",
+        "signing": "Jetons signés"
+      },
+      "invalid": {
+        "required": "Renseignez ce champ.",
+        "pattern": "Utilisez des lettres, des chiffres et des tirets, en commençant par une lettre (2 à 64).",
+        "reserved": "Formalie ou HTTP définit lui-même cet en-tête. Choisissez un autre nom.",
+        "chars": "Utilisez des lettres, chiffres et symboles simples, jusqu'à 200.",
+        "duplicate": "Cet en-tête figure déjà dans la liste.",
+        "fix": "Vérifiez les en-têtes obligatoires."
       }
     }
   },

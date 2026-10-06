@@ -59,6 +59,17 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-API-1001  | 409  | This endpoint name is already used in your organisation.          | INFO     |
 | FRM-API-1002  | 422  | Publish the form before it can be an endpoint.                    | INFO     |
 | FRM-API-1003  | 409  | A service with this name already exists.                          | INFO     |
+| FRM-API-1004  | 409  | This token was revoked and can no longer be changed.              | INFO     |
+| FRM-API-1005  | 409  | Revoke the token before deleting it.                              | INFO     |
+| FRM-API-1006  | 404  | There is no endpoint at this address.                             | INFO     |
+| FRM-API-1007  | 503  | This endpoint is switched off.                                    | INFO     |
+| FRM-API-1008  | 405  | This endpoint does not answer this method.                        | INFO     |
+| FRM-API-1009  | 403  | This token may not call this endpoint or method.                  | WARNING  |
+| FRM-API-1010  | 401  | Send a valid token as Authorization: Bearer <token>.              | WARNING  |
+| FRM-API-1011  | 400  | A required header is missing or has the wrong value.              | INFO     |
+| FRM-API-1012  | 401  | The request signature is missing, too old or wrong.               | WARNING  |
+| FRM-API-1013  | 404  | There is no record with this id.                                  | INFO     |
+| FRM-API-1014  | 422  | Some fields can not be sent to this endpoint.                     | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
 

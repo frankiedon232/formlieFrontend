@@ -26,7 +26,7 @@ export interface StoredResponse {
   /** Who sent it, when the form knows (F10 M3): an invitation, or a signed-in member. */
   respondent?: { kind: 'invite' | 'member'; id: string; name: string | null; email: string }
   /** How it came in. */
-  channel: 'link' | 'embed'
+  channel: 'link' | 'embed' | 'api'
   meta: { ip: string; user_agent: string }
 }
 

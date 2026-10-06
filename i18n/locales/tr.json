@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Bu sorguyu yalnızca kaydeden kişi değiştirebilir.",
     "FRM-API-1001": "Bu endpoint adı kuruluşunuzda zaten kullanılıyor.",
     "FRM-API-1002": "Formun endpoint olabilmesi için önce yayımlayın.",
-    "FRM-API-1003": "Bu ada sahip bir hizmet zaten var."
+    "FRM-API-1003": "Bu ada sahip bir hizmet zaten var.",
+    "FRM-API-1004": "Bu token iptal edildi ve artık değiştirilemez.",
+    "FRM-API-1005": "Silmeden önce token'ı iptal edin.",
+    "FRM-API-1006": "Bu adreste endpoint yok.",
+    "FRM-API-1007": "Bu endpoint kapalı.",
+    "FRM-API-1008": "Bu endpoint bu metodu yanıtlamıyor.",
+    "FRM-API-1009": "Bu token bu endpoint veya metodu çağıramaz.",
+    "FRM-API-1010": "Geçerli bir token gönderin: Authorization: Bearer <token>.",
+    "FRM-API-1011": "Zorunlu bir başlık eksik ya da değeri yanlış.",
+    "FRM-API-1012": "İstek imzası eksik, çok eski ya da yanlış.",
+    "FRM-API-1013": "Bu id ile kayıt yok.",
+    "FRM-API-1014": "Bazı alanlar bu endpoint’e gönderilemez."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -619,7 +630,10 @@
     "failing": "Başarısız",
     "disabled": "Devre dışı",
     "untested": "Test edilmedi",
-    "active": "Etkin"
+    "active": "Etkin",
+    "expiring": "Yakında sona erecek",
+    "expired": "Süresi doldu",
+    "revoked": "İptal edildi"
   },
   "footer": {
     "rights": "Tüm hakları saklıdır.",
@@ -842,7 +856,8 @@
       "template": "Şablon",
       "data_source": "Bağlantı",
       "api_service": "API hizmeti",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "API token'ı"
     },
     "field": {
       "name": "Ad",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Endpoint değiştirildi",
       "api_endpoint_enabled": "Endpoint açıldı",
       "api_endpoint_disabled": "Endpoint kapatıldı",
-      "api_endpoint_deleted": "Endpoint silindi"
+      "api_endpoint_deleted": "Endpoint silindi",
+      "api_key_rotated": "API adres anahtarı yenilendi",
+      "api_token_created": "API token'ı oluşturuldu",
+      "api_token_updated": "API token'ı değiştirildi",
+      "api_token_rotated": "API token'ı yenilendi",
+      "api_token_revoked": "API token'ı iptal edildi",
+      "api_token_deleted": "API token'ı silindi"
     },
     "detail": {
       "who": "Kim",
@@ -3763,6 +3784,158 @@
         "POST": "Yeni bir yanıt gönder; form sayfasındaki gibi denetlenir.",
         "PUT": "Bir yanıtı kimliğine göre değiştir (yalnızca kabul edilen sorular).",
         "DELETE": "Bir yanıtı kimliğine göre kaldır; denetim kaydında tutulur."
+      }
+    },
+    "tokens": {
+      "title": "Token'lar",
+      "viewSwitch": "Token'lar veya header'lar",
+      "newTitle": "Yeni token",
+      "editTitle": "Token'ı düzenle",
+      "createdTitle": "{name} hazır",
+      "desc": "Token, bir uygulamanın endpoint'lerinizi çağırmasını sağlar. Her uygulamaya ayrı bir token verin; böylece diğerlerine dokunmadan birini durdurabilirsiniz.",
+      "namePlaceholder": "örn. Web sitesi kayıtları",
+      "create": "Token oluştur",
+      "copiedDone": "Kopyaladım",
+      "search": "Token ara…",
+      "empty": "Henüz token yok",
+      "emptyDesc": "Endpoint'lerinizi çağıran her uygulama için bir token oluşturun.",
+      "needsLook": "Yakında sona erecek veya 90 gündür kullanılmadı",
+      "never": "Asla",
+      "inDays": "{n} gün sonra | {n} gün sonra",
+      "customDate": "Tarih seç",
+      "expiredOn": "{date} tarihinde süresi doldu",
+      "used": "Kullanıldı {when}",
+      "notUsed": "Henüz kullanılmadı",
+      "minutes": "{n} dakika",
+      "lifetime": "Kısa ömürlü token süresi",
+      "lifetimeHelp": "Uygulama yenisini isteyene kadar token adresinden alınan her token'ın ne kadar çalışacağı.",
+      "signing": "İmzalı istekler",
+      "signingHelp": "Çağrılar ayrıca isteğin HMAC imzasını da taşımalıdır. Ekstra koruma gereken çağıranlar için.",
+      "signingHint": "Her çağrıyı imzalayın: X-Formalie-Timestamp (unix saniye) ve X-Formalie-Signature (yöntem, yol, zaman damgası ve gövdenin imzalama gizli anahtarıyla sha256= HMAC'i). 5 dakikadan eski çağrılar reddedilir.",
+      "clientHint": "Yanıt, {n} dakika geçerli bir erişim token'ı içerir; bunu Authorization: Bearer olarak gönderin ve süresi dolunca yenisini isteyin.",
+      "howToUse": "Nasıl kullanılır",
+      "rotate": "Yenile",
+      "revoke": "İptal et",
+      "revokeTitle": "{name} iptal edilsin mi?",
+      "revokeDesc": "Onu kullanan uygulamalar hemen hata alır. Bu geri alınamaz; yeniden gerekirse yeni bir token oluşturun.",
+      "revokedOn": "{date} tarihinde iptal edildi",
+      "revokedDesc": "Bu token'la yapılan çağrılar reddedilir. Listede artık gerekmediğinde silin.",
+      "rotating": "Eski gizli anahtar {until} tarihine kadar çalışır.",
+      "deleteTitle": "{name} silinsin mi?",
+      "deleteDesc": "Bu listeden kaybolur. Geçmişi denetim kaydında kalır.",
+      "once": {
+        "title": "Şimdi kopyalayın: yalnızca bir kez gösterilir",
+        "desc": "Formalie yalnızca bir parmak izini saklar. Kaybolursa yenisini almak için token'ı yenileyin."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "İstemci kimliği",
+        "clientSecret": "İstemci gizli anahtarı",
+        "signing": "İmzalama gizli anahtarı"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Çağrılar gerçek yanıtlarınızı okur ve yazar.",
+        "test": "Geliştirmek ve denemek için: çağrılar gerçek yanıtlara asla dokunmaz."
+      },
+      "kind": {
+        "static": "Bearer token",
+        "client": "İstemci kimliği ve gizli anahtar"
+      },
+      "kindHint": {
+        "static": "Uygulamanın her çağrıyla gönderdiği tek bir uzun ömürlü token.",
+        "client": "Uygulama bunları kısa ömürlü bir token ile takas eder; bir token sızarsa daha güvenlidir."
+      },
+      "scope": {
+        "title": "Neleri çağırabilir",
+        "help": "Bir türün tamamına izin vermek için kutuyu boş bırakın.",
+        "all": "Tüm endpoint'ler",
+        "allServices": "Tüm servisler",
+        "allEndpoints": "Tüm endpoint'ler",
+        "allMethods": "Tüm yöntemler"
+      },
+      "col": {
+        "kind": "Tür",
+        "mode": "Mod",
+        "scope": "Çağırabilir",
+        "expires": "Sona erme",
+        "lastUsed": "Son kullanım"
+      },
+      "sort": {
+        "used": "En son kullanılan",
+        "expires": "Önce sona erecek olan"
+      },
+      "kpi": {
+        "calls": "Token'lı çağrılar",
+        "tokens": "Token'lar",
+        "byStatus": "Duruma göre token'lar",
+        "unused": "{n} token 90 gündür kullanılmadı | {n} token 90 gündür kullanılmadı"
+      },
+      "toast": {
+        "saved": "{name} kaydedildi",
+        "revoked": "{name} iptal edildi",
+        "deleted": "{name} silindi"
+      }
+    },
+    "rotate": {
+      "title": "{name} yenile",
+      "desc": "Yeni gizli anahtarlar alırsınız. Uygulamanın kesinti olmadan geçebilmesi için eskilerin ne kadar çalışmaya devam edeceğini seçin.",
+      "keyTitle": "Adres anahtarını yenile",
+      "keyDesc": "Her endpoint yeni bir adres alır. Uygulamalarınız geçerken eski adreslerin ne kadar çalışmaya devam edeceğini seçin.",
+      "graceLegend": "Eskisi çalışmaya devam eder",
+      "confirm": "Yenile",
+      "grace": {
+        "h0": "Hemen durur",
+        "h24": "24 saat boyunca",
+        "h168": "7 gün boyunca"
+      },
+      "graceHint": {
+        "h0": "Sızmış olabilirse bunu kullanın.",
+        "h24": "Bir uygulamayı güncellemek için yeterli.",
+        "h168": "Birkaç uygulama veya daha yavaş sürümler için."
+      },
+      "keyGrace": "Eski {key} anahtarı {until} tarihine kadar çalışır.",
+      "keyNow": "Eski anahtar çalışmayı durdurdu."
+    },
+    "key": {
+      "title": "Adres anahtarı",
+      "desc": "Her endpoint adresinin ilk bölümü. Yalnızca çağrıları yönlendirir; kimin çağırabileceğine token'lar karar verir.",
+      "current": "Geçerli anahtar",
+      "previous": "Eski {key} anahtarı {until} tarihine kadar çalışır.",
+      "rotatedAt": "Yenilendi {when}",
+      "rotate": "Anahtarı yenile"
+    },
+    "headers": {
+      "title": "Header'lar",
+      "standardTitle": "Her çağıranın gönderdiği header'lar",
+      "standardDesc": "Formalie bunları her çağrıda denetler; yanıtlar her zaman JSON'dur.",
+      "customTitle": "Kendi header'ları olan endpoint'ler",
+      "customDesc": "Bir endpoint, örn. bir iş ortağı kimliği gibi belirli değere sahip ek header'lar isteyebilir. Bunları endpoint'in Yöntemler adımında ayarlayın.",
+      "none": "Hiçbir endpoint ek header istemiyor",
+      "noneDesc": "Bir çağıranın kendini daha fazla tanıtması gerektiğinde bunları endpoint'in Yöntemler adımında ekleyin.",
+      "requiredTitle": "Gerekli header'lar",
+      "requiredDesc": "Bu header'lar ve değerler olmadan yapılan çağrılar reddedilir. İsteğe bağlı, en fazla 5.",
+      "name": "Header adı",
+      "value": "Sahip olması gereken değer",
+      "keep": "{preview} (değişmedi)",
+      "add": "Header ekle",
+      "remove": "Header'ı kaldır",
+      "when": {
+        "always": "Her çağrı",
+        "body": "POST ve PUT",
+        "post": "İsteğe bağlı, POST",
+        "signing": "İmzalı token'lar"
+      },
+      "invalid": {
+        "required": "Bunu doldurun.",
+        "pattern": "Harf, rakam ve tire kullanın; bir harfle başlayın (2 ile 64 arası).",
+        "reserved": "Bu header'ı Formalie veya HTTP kendisi ayarlar. Başka bir ad seçin.",
+        "chars": "Düz harf, rakam ve simge kullanın, en fazla 200.",
+        "duplicate": "Bu header zaten listede.",
+        "fix": "Gerekli header'ları kontrol edin."
       }
     }
   },

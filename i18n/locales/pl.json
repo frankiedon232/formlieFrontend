@@ -559,7 +559,18 @@
     "FRM-DEST-1027": "Tylko osoba, która zapisała to zapytanie, może je zmienić.",
     "FRM-API-1001": "Ta nazwa endpointu jest już używana w Twojej organizacji.",
     "FRM-API-1002": "Opublikuj formularz, zanim będzie mógł być endpointem.",
-    "FRM-API-1003": "Usługa o tej nazwie już istnieje."
+    "FRM-API-1003": "Usługa o tej nazwie już istnieje.",
+    "FRM-API-1004": "Ten token został unieważniony i nie można go już zmienić.",
+    "FRM-API-1005": "Unieważnij token, zanim go usuniesz.",
+    "FRM-API-1006": "Pod tym adresem nie ma endpointu.",
+    "FRM-API-1007": "Ten endpoint jest wyłączony.",
+    "FRM-API-1008": "Ten endpoint nie obsługuje tej metody.",
+    "FRM-API-1009": "Ten token nie może wywoływać tego endpointu ani metody.",
+    "FRM-API-1010": "Wyślij prawidłowy token jako Authorization: Bearer <token>.",
+    "FRM-API-1011": "Brakuje wymaganego nagłówka lub ma on złą wartość.",
+    "FRM-API-1012": "Brakuje podpisu żądania, jest za stary lub nieprawidłowy.",
+    "FRM-API-1013": "Nie ma rekordu o tym id.",
+    "FRM-API-1014": "Niektórych pól nie można wysłać do tego endpointu."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -619,7 +630,10 @@
     "failing": "Błąd",
     "disabled": "Wyłączone",
     "untested": "Nieprzetestowane",
-    "active": "Aktywny"
+    "active": "Aktywny",
+    "expiring": "Wkrótce wygasa",
+    "expired": "Wygasły",
+    "revoked": "Unieważniony"
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
@@ -842,7 +856,8 @@
       "template": "Szablon",
       "data_source": "Połączenie",
       "api_service": "Usługa API",
-      "api_endpoint": "Endpoint"
+      "api_endpoint": "Endpoint",
+      "api_token": "Token API"
     },
     "field": {
       "name": "Nazwa",
@@ -972,7 +987,13 @@
       "api_endpoint_updated": "Zmieniono endpoint",
       "api_endpoint_enabled": "Włączono endpoint",
       "api_endpoint_disabled": "Wyłączono endpoint",
-      "api_endpoint_deleted": "Usunięto endpoint"
+      "api_endpoint_deleted": "Usunięto endpoint",
+      "api_key_rotated": "Klucz adresu API zmieniony",
+      "api_token_created": "Token API utworzony",
+      "api_token_updated": "Token API zmieniony",
+      "api_token_rotated": "Token API zrotowany",
+      "api_token_revoked": "Token API unieważniony",
+      "api_token_deleted": "Token API usunięty"
     },
     "detail": {
       "who": "Kto",
@@ -3763,6 +3784,158 @@
         "POST": "Wysłanie nowej odpowiedzi, sprawdzanej jak na stronie formularza.",
         "PUT": "Zmiana odpowiedzi według id (tylko przyjmowane pytania).",
         "DELETE": "Usunięcie odpowiedzi według id; zapisane w dzienniku audytu."
+      }
+    },
+    "tokens": {
+      "title": "Tokeny",
+      "viewSwitch": "Tokeny lub nagłówki",
+      "newTitle": "Nowy token",
+      "editTitle": "Edytuj token",
+      "createdTitle": "{name} jest gotowy",
+      "desc": "Token pozwala aplikacji wywoływać Twoje endpointy. Daj każdej aplikacji osobny token, aby móc zatrzymać jeden bez wpływu na pozostałe.",
+      "namePlaceholder": "np. Rejestracje ze strony",
+      "create": "Utwórz token",
+      "copiedDone": "Skopiowałem",
+      "search": "Szukaj tokenów…",
+      "empty": "Brak tokenów",
+      "emptyDesc": "Utwórz token dla każdej aplikacji, która wywołuje Twoje endpointy.",
+      "needsLook": "Wkrótce wygasa lub nieużywany od 90 dni",
+      "never": "Nigdy",
+      "inDays": "Za {n} dzień | Za {n} dni",
+      "customDate": "Wybierz datę",
+      "expiredOn": "Wygasł {date}",
+      "used": "Użyty {when}",
+      "notUsed": "Jeszcze nieużywany",
+      "minutes": "{n} min",
+      "lifetime": "Czas życia krótkotrwałego tokenu",
+      "lifetimeHelp": "Jak długo działa każdy token z adresu tokenów, zanim aplikacja poprosi o nowy.",
+      "signing": "Podpisane żądania",
+      "signingHelp": "Wywołania muszą też zawierać podpis HMAC żądania. Dla wywołujących, którzy potrzebują dodatkowej ochrony.",
+      "signingHint": "Podpisuj każde wywołanie: X-Formalie-Timestamp (sekundy unix) i X-Formalie-Signature (sha256= HMAC z metody, ścieżki, znacznika czasu i treści, z użyciem sekretu podpisu). Wywołania starsze niż 5 minut są odrzucane.",
+      "clientHint": "Odpowiedź zawiera token dostępu ważny przez {n} min; wysyłaj go jako Authorization: Bearer i poproś o nowy, gdy wygaśnie.",
+      "howToUse": "Jak go używać",
+      "rotate": "Rotuj",
+      "revoke": "Unieważnij",
+      "revokeTitle": "Unieważnić {name}?",
+      "revokeDesc": "Aplikacje, które go używają, od razu dostaną błąd. Tego nie można cofnąć; utwórz nowy token, jeśli znów go potrzebujesz.",
+      "revokedOn": "Unieważniony {date}",
+      "revokedDesc": "Wywołania z tym tokenem są odrzucane. Usuń go z listy, gdy nie będzie już potrzebny.",
+      "rotating": "Stary sekret działa jeszcze do {until}.",
+      "deleteTitle": "Usunąć {name}?",
+      "deleteDesc": "Zniknie z tej listy. Jego historia zostaje w dzienniku audytu.",
+      "once": {
+        "title": "Skopiuj go teraz: jest pokazywany tylko raz",
+        "desc": "Formalie przechowuje tylko jego odcisk. Jeśli go zgubisz, zrotuj token, aby otrzymać nowy."
+      },
+      "secret": {
+        "token": "Token",
+        "clientId": "ID klienta",
+        "clientSecret": "Sekret klienta",
+        "signing": "Sekret podpisu"
+      },
+      "mode": {
+        "live": "Live",
+        "test": "Test"
+      },
+      "modeHint": {
+        "live": "Wywołania odczytują i zapisują Twoje prawdziwe odpowiedzi.",
+        "test": "Do tworzenia i wypróbowywania: wywołania nigdy nie dotykają prawdziwych odpowiedzi."
+      },
+      "kind": {
+        "static": "Token Bearer",
+        "client": "ID klienta i sekret"
+      },
+      "kindHint": {
+        "static": "Jeden długotrwały token, który aplikacja wysyła z każdym wywołaniem.",
+        "client": "Aplikacja wymienia je na krótkotrwały token, co jest bezpieczniejsze, jeśli token wycieknie."
+      },
+      "scope": {
+        "title": "Co może wywoływać",
+        "help": "Zostaw pole puste, aby zezwolić na wszystko tego rodzaju.",
+        "all": "Wszystkie endpointy",
+        "allServices": "Wszystkie usługi",
+        "allEndpoints": "Wszystkie endpointy",
+        "allMethods": "Wszystkie metody"
+      },
+      "col": {
+        "kind": "Typ",
+        "mode": "Tryb",
+        "scope": "Może wywoływać",
+        "expires": "Wygasa",
+        "lastUsed": "Ostatnio użyty"
+      },
+      "sort": {
+        "used": "Ostatnio używane",
+        "expires": "Najpierw wygasające"
+      },
+      "kpi": {
+        "calls": "Wywołania z tokenami",
+        "tokens": "Tokeny",
+        "byStatus": "Tokeny według statusu",
+        "unused": "{n} nieużywany od 90 dni | {n} nieużywanych od 90 dni"
+      },
+      "toast": {
+        "saved": "{name} zapisany",
+        "revoked": "{name} unieważniony",
+        "deleted": "{name} usunięty"
+      }
+    },
+    "rotate": {
+      "title": "Rotuj {name}",
+      "desc": "Otrzymasz nowe sekrety. Wybierz, jak długo stare mają działać, aby aplikacja mogła przełączyć się bez przestoju.",
+      "keyTitle": "Rotuj klucz adresu",
+      "keyDesc": "Każdy endpoint dostaje nowy adres. Wybierz, jak długo stare adresy mają działać, gdy Twoje aplikacje się przełączają.",
+      "graceLegend": "Stary nadal działa",
+      "confirm": "Rotuj",
+      "grace": {
+        "h0": "Przestaje od razu",
+        "h24": "Przez 24 godziny",
+        "h168": "Przez 7 dni"
+      },
+      "graceHint": {
+        "h0": "Użyj tego, jeśli mógł wyciec.",
+        "h24": "Wystarczy na aktualizację jednej aplikacji.",
+        "h168": "Dla kilku aplikacji lub wolniejszych wydań."
+      },
+      "keyGrace": "Stary klucz {key} działa jeszcze do {until}.",
+      "keyNow": "Stary klucz przestał działać."
+    },
+    "key": {
+      "title": "Klucz adresu",
+      "desc": "Pierwsza część każdego adresu endpointu. Tylko kieruje wywołania; to tokeny decydują, kto może wywoływać.",
+      "current": "Bieżący klucz",
+      "previous": "Stary klucz {key} działa jeszcze do {until}.",
+      "rotatedAt": "Zrotowany {when}",
+      "rotate": "Rotuj klucz"
+    },
+    "headers": {
+      "title": "Nagłówki",
+      "standardTitle": "Nagłówki wysyłane przez każdego wywołującego",
+      "standardDesc": "Formalie sprawdza je przy każdym wywołaniu; odpowiedzi są zawsze w formacie JSON.",
+      "customTitle": "Endpointy z własnymi nagłówkami",
+      "customDesc": "Endpoint może wymagać dodatkowych nagłówków o stałej wartości, np. identyfikatora partnera. Ustaw je w kroku Metody endpointu.",
+      "none": "Żaden endpoint nie wymaga dodatkowych nagłówków",
+      "noneDesc": "Dodaj je w kroku Metody endpointu, gdy wywołujący musi dodatkowo się zidentyfikować.",
+      "requiredTitle": "Wymagane nagłówki",
+      "requiredDesc": "Wywołania bez tych nagłówków i wartości są odrzucane. Opcjonalne, do 5.",
+      "name": "Nazwa nagłówka",
+      "value": "Wymagana wartość",
+      "keep": "{preview} (bez zmian)",
+      "add": "Dodaj nagłówek",
+      "remove": "Usuń nagłówek",
+      "when": {
+        "always": "Każde wywołanie",
+        "body": "POST i PUT",
+        "post": "Opcjonalnie, POST",
+        "signing": "Podpisane tokeny"
+      },
+      "invalid": {
+        "required": "Wypełnij to pole.",
+        "pattern": "Użyj liter, cyfr i myślników, zaczynając od litery (od 2 do 64).",
+        "reserved": "Ten nagłówek ustawia sam Formalie lub HTTP. Wybierz inną nazwę.",
+        "chars": "Użyj zwykłych liter, cyfr i symboli, do 200.",
+        "duplicate": "Ten nagłówek jest już na liście.",
+        "fix": "Sprawdź wymagane nagłówki."
       }
     }
   },
