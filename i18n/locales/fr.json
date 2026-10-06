@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint a ses propres en-têtes. | {n} endpoints ont leurs propres en-têtes.",
       "noneOwn": "Aucun endpoint n'a encore ses propres en-têtes. Ajoutez-en un à l'étape Méthodes d'un endpoint quand les appelants doivent s'identifier davantage.",
       "noOwn": "Aucun en-tête propre.",
-      "addOwn": "Ajouter un en-tête"
+      "addOwn": "Ajouter un en-tête",
+      "collapseAll": "Tout replier",
+      "expandAll": "Tout déplier",
+      "ownShort": "{n} avec en-têtes propres"
     },
     "access": {
       "rules": "Règles",

@@ -4090,7 +4090,10 @@
       "ownCount": "{n} uç noktanın kendi başlıkları var. | {n} uç noktanın kendi başlıkları var.",
       "noneOwn": "Henüz hiçbir uç noktanın kendi başlığı yok. Çağıranların kendilerini daha fazla tanıtması gerektiğinde bir uç noktanın Yöntemler adımında ekleyin.",
       "noOwn": "Kendi başlığı yok.",
-      "addOwn": "Başlık ekle"
+      "addOwn": "Başlık ekle",
+      "collapseAll": "Tümünü daralt",
+      "expandAll": "Tümünü genişlet",
+      "ownShort": "Kendi başlıkları olan {n}"
     },
     "access": {
       "rules": "Kurallar",

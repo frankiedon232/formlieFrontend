@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint tiene cabeceras propias. | {n} endpoints tienen cabeceras propias.",
       "noneOwn": "Ningún endpoint tiene cabeceras propias todavía. Añade una en el paso Métodos de un endpoint cuando quienes llaman deban identificarse más.",
       "noOwn": "Sin cabeceras propias.",
-      "addOwn": "Añadir cabecera"
+      "addOwn": "Añadir cabecera",
+      "collapseAll": "Contraer todo",
+      "expandAll": "Expandir todo",
+      "ownShort": "{n} con encabezados propios"
     },
     "access": {
       "rules": "Reglas",

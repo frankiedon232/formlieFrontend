@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint ma własne nagłówki. | Liczba endpointów z własnymi nagłówkami: {n}.",
       "noneOwn": "Żaden endpoint nie ma jeszcze własnych nagłówków. Dodaj nagłówek w kroku Metody endpointu, gdy wywołujący muszą dodatkowo się identyfikować.",
       "noOwn": "Brak własnych nagłówków.",
-      "addOwn": "Dodaj nagłówek"
+      "addOwn": "Dodaj nagłówek",
+      "collapseAll": "Zwiń wszystko",
+      "expandAll": "Rozwiń wszystko",
+      "ownShort": "{n} z własnymi nagłówkami"
     },
     "access": {
       "rules": "Reguły",

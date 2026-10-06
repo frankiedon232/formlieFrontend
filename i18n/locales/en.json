@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint has headers of its own. | {n} endpoints have headers of their own.",
       "noneOwn": "No endpoint has headers of its own yet. Add one in an endpoint's Methods step when callers must identify themselves further.",
       "noOwn": "No headers of its own.",
-      "addOwn": "Add a header"
+      "addOwn": "Add a header",
+      "collapseAll": "Collapse all",
+      "expandAll": "Expand all",
+      "ownShort": "{n} with own headers"
     },
     "access": {
       "rules": "Rules",

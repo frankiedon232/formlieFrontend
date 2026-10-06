@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint punya header sendiri. | {n} endpoint punya header sendiri.",
       "noneOwn": "Belum ada endpoint yang punya header sendiri. Tambahkan di langkah Metode sebuah endpoint saat pemanggil perlu mengidentifikasi diri lebih lanjut.",
       "noOwn": "Tidak ada header sendiri.",
-      "addOwn": "Tambah header"
+      "addOwn": "Tambah header",
+      "collapseAll": "Ciutkan semua",
+      "expandAll": "Bentangkan semua",
+      "ownShort": "{n} dengan header sendiri"
     },
     "access": {
       "rules": "Aturan",

@@ -4090,7 +4090,10 @@
       "ownCount": "Endpoint {n} ina vichwa vyake. | Endpoint {n} zina vichwa vyake.",
       "noneOwn": "Bado hakuna endpoint yenye vichwa vyake. Ongeza kimoja katika hatua ya Mbinu ya endpoint wakati wapigaji wanahitaji kujitambulisha zaidi.",
       "noOwn": "Hakuna vichwa vyake.",
-      "addOwn": "Ongeza kichwa"
+      "addOwn": "Ongeza kichwa",
+      "collapseAll": "Kunja zote",
+      "expandAll": "Panua zote",
+      "ownShort": "{n} zenye vichwa vyake"
     },
     "access": {
       "rules": "Kanuni",

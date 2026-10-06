@@ -4090,7 +4090,10 @@
       "ownCount": "{n} Endpunkt hat eigene Header. | {n} Endpunkte haben eigene Header.",
       "noneOwn": "Noch kein Endpunkt hat eigene Header. Fügen Sie im Schritt Methoden eines Endpunkts einen hinzu, wenn sich Aufrufer näher ausweisen müssen.",
       "noOwn": "Keine eigenen Header.",
-      "addOwn": "Header hinzufügen"
+      "addOwn": "Header hinzufügen",
+      "collapseAll": "Alle einklappen",
+      "expandAll": "Alle ausklappen",
+      "ownShort": "{n} mit eigenen Headern"
     },
     "access": {
       "rules": "Regeln",

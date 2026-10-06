@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint ha header propri. | {n} endpoint hanno header propri.",
       "noneOwn": "Nessun endpoint ha ancora header propri. Aggiungine uno nel passaggio Metodi di un endpoint quando i chiamanti devono identificarsi ulteriormente.",
       "noOwn": "Nessun header proprio.",
-      "addOwn": "Aggiungi un header"
+      "addOwn": "Aggiungi un header",
+      "collapseAll": "Comprimi tutto",
+      "expandAll": "Espandi tutto",
+      "ownShort": "{n} con intestazioni proprie"
     },
     "access": {
       "rules": "Regole",

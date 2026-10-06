@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint tem cabeçalhos próprios. | {n} endpoints têm cabeçalhos próprios.",
       "noneOwn": "Nenhum endpoint tem cabeçalhos próprios ainda. Adicione um no passo Métodos de um endpoint quando os chamadores precisarem se identificar mais.",
       "noOwn": "Sem cabeçalhos próprios.",
-      "addOwn": "Adicionar cabeçalho"
+      "addOwn": "Adicionar cabeçalho",
+      "collapseAll": "Recolher tudo",
+      "expandAll": "Expandir tudo",
+      "ownShort": "{n} com cabeçalhos próprios"
     },
     "access": {
       "rules": "Regras",

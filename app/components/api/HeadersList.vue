@@ -50,6 +50,12 @@ function copyValue(value: string) {
   void copy(value)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })
 }
+// Collapsible services (owner, 2026-10-06), remembered per browser; open by default
+const closed = useLocalStorage<string[]>('formalie:api-headers-closed', [])
+const isOpen = (id: string) => !closed.value.includes(id)
+const flip = (id: string) => (closed.value = isOpen(id) ? [...closed.value, id] : closed.value.filter(item => item !== id))
+const allOpen = computed(() => (groups.value ?? []).every(group => isOpen(group.service.id)))
+const setAll = (open: boolean) => (closed.value = open ? [] : (groups.value ?? []).map(group => group.service.id))
 const editLabel = (endpoint: ApiEndpointDetail) => (endpoint.headers.length ? t('apiService.actions.edit') : t('apiService.headers.addOwn'))
 </script>
 
@@ -58,14 +64,25 @@ const editLabel = (endpoint: ApiEndpointDetail) => (endpoint.headers.length ? t(
     <div v-if="!groups" class="flex flex-col gap-2"><USkeleton v-for="n in 4" :key="n" class="h-10 rounded-lg" /></div>
     <AppEmpty v-else-if="!groups.length" size="xs" icon="i-lucide-route" :title="t('apiService.emptyEndpoints')" :description="t('apiService.emptyEndpointsDesc')" />
     <template v-else>
-      <p class="text-xs text-muted">{{ withOwn ? t('apiService.headers.ownCount', { n: withOwn }, withOwn) : t('apiService.headers.noneOwn') }}</p>
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <p class="min-w-0 text-xs text-muted">{{ withOwn ? t('apiService.headers.ownCount', { n: withOwn }, withOwn) : t('apiService.headers.noneOwn') }}</p>
+        <UButton :label="allOpen ? t('apiService.headers.collapseAll') : t('apiService.headers.expandAll')" :icon="allOpen ? 'i-lucide-chevrons-down-up' : 'i-lucide-chevrons-up-down'" color="neutral" variant="ghost" size="xs" @click="setAll(!allOpen)" />
+      </div>
       <section v-for="group in groups" :key="group.service.id" class="overflow-hidden rounded-lg border border-default">
-        <div class="flex items-center gap-2 border-b border-default bg-elevated/40 px-3 py-1.5">
-          <UIcon name="i-lucide-boxes" class="size-3.5 text-muted" />
-          <NuxtLink :to="{ path: '/api-service/services', query: { service: group.service.id } }" class="truncate text-xs font-semibold text-highlighted hover:underline">{{ group.service.name }}</NuxtLink>
+        <button
+          type="button"
+          class="flex w-full items-center gap-2 bg-elevated/40 px-3 py-1.5 text-start transition-colors hover:bg-elevated focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--ui-border-inverted)"
+          :class="isOpen(group.service.id) ? 'border-b border-default' : ''"
+          :aria-expanded="isOpen(group.service.id)"
+          @click="flip(group.service.id)"
+        >
+          <UIcon name="i-lucide-chevron-right" class="size-3.5 shrink-0 text-muted transition-transform rtl:-scale-x-100" :class="isOpen(group.service.id) ? 'rotate-90 rtl:-rotate-90' : ''" />
+          <UIcon name="i-lucide-boxes" class="size-3.5 shrink-0 text-muted" />
+          <span class="truncate text-xs font-semibold text-highlighted">{{ group.service.name }}</span>
           <span class="text-[11px] text-muted tabular-nums">· {{ group.endpoints.length }}</span>
-        </div>
-        <ul class="divide-y divide-default">
+          <UBadge v-if="group.endpoints.some(item => item.headers.length)" :label="t('apiService.headers.ownShort', { n: group.endpoints.filter(item => item.headers.length).length })" color="neutral" variant="soft" size="xs" class="ms-auto rounded-md" />
+        </button>
+        <ul v-show="isOpen(group.service.id)" class="divide-y divide-default">
           <li v-for="endpoint in group.endpoints" :key="endpoint.id" class="flex flex-wrap items-center gap-x-3 gap-y-1.5 px-3 py-2">
             <div class="flex min-w-0 items-center gap-2 sm:w-64">
               <NuxtLink :to="{ path: '/api-service/endpoints', query: { endpoint: endpoint.id } }" class="truncate font-mono text-xs font-semibold text-highlighted hover:underline" dir="ltr">/{{ endpoint.name }}</NuxtLink>

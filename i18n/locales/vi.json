@@ -4090,7 +4090,10 @@
       "ownCount": "{n} endpoint có header riêng. | {n} endpoint có header riêng.",
       "noneOwn": "Chưa có endpoint nào có header riêng. Hãy thêm ở bước Phương thức của endpoint khi bên gọi cần xác định danh tính thêm.",
       "noOwn": "Không có header riêng.",
-      "addOwn": "Thêm header"
+      "addOwn": "Thêm header",
+      "collapseAll": "Thu gọn tất cả",
+      "expandAll": "Mở rộng tất cả",
+      "ownShort": "{n} có header riêng"
     },
     "access": {
       "rules": "Quy tắc",
