@@ -3821,7 +3821,11 @@
       "method": "Phương thức",
       "request": "Yêu cầu",
       "answer": "Phản hồi",
-      "note": "Các giá trị chỉ là ví dụ. Cần có token để gọi thật."
+      "note": "Các giá trị chỉ là ví dụ. Cần có token để gọi thật.",
+      "tokenUsed": "Token đang hiển thị:",
+      "tokenWhere": "(đã ẩn). Mở nó trong Token và Header để xem và sao chép token đầy đủ.",
+      "noToken": "Chưa có token nào gọi được mục này.",
+      "makeToken": "Tạo token"
     },
     "invalid": {
       "required": "Hãy điền mục này.",
@@ -4003,7 +4007,6 @@
         "text": "Ứng dụng gửi token kèm mỗi lệnh gọi để chứng minh danh tính. Hãy cấp cho mỗi ứng dụng token riêng, và chỉ những gì nó cần, để bạn có thể dừng một token mà không ảnh hưởng các token khác."
       },
       "nameHelp": "Đặt tên theo ứng dụng sẽ dùng nó.",
-      "presetName": "Token cho /{name}",
       "scopeSummary": {
         "all": "Nó có thể gọi mọi endpoint, bằng mọi phương thức.",
         "services": "Nó có thể gọi các endpoint của {n} dịch vụ. | Nó có thể gọi các endpoint của {n} dịch vụ.",
@@ -4033,6 +4036,10 @@
         "title": "Quản lý biểu mẫu và phản hồi",
         "help": "Tùy chọn. Cho phép token này dùng cả API quản lý (/v1): liệt kê biểu mẫu, mở hoặc đóng chúng, đọc và thay đổi phản hồi. Để tắt tất cả nếu token chỉ gọi endpoint.",
         "none": "Không có. Token này chỉ gọi endpoint."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "Token {service}"
       }
     },
     "rotate": {

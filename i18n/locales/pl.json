@@ -3821,7 +3821,11 @@
       "method": "Metoda",
       "request": "Żądanie",
       "answer": "Odpowiedź",
-      "note": "Wartości są przykładowe. Do prawdziwego wywołania potrzebny jest token."
+      "note": "Wartości są przykładowe. Do prawdziwego wywołania potrzebny jest token.",
+      "tokenUsed": "Pokazany token:",
+      "tokenWhere": "(zamaskowany). Otwórz go w Tokeny i nagłówki, aby zobaczyć i skopiować pełny token.",
+      "noToken": "Żaden token nie może jeszcze tego wywołać.",
+      "makeToken": "Utwórz token"
     },
     "invalid": {
       "required": "Uzupełnij to pole.",
@@ -4003,7 +4007,6 @@
         "text": "Aplikacje wysyłają token z każdym wywołaniem, aby potwierdzić tożsamość. Daj każdej aplikacji własny i tylko to, czego potrzebuje, aby móc zatrzymać jedną bez dotykania pozostałych."
       },
       "nameHelp": "Nazwij go po aplikacji, która będzie z niego korzystać.",
-      "presetName": "Token dla /{name}",
       "scopeSummary": {
         "all": "Może wywoływać każdy endpoint, każdą metodą.",
         "services": "Może wywoływać endpointy {n} usługi. | Może wywoływać endpointy usług: {n}.",
@@ -4033,6 +4036,10 @@
         "title": "Zarządzaj formularzami i odpowiedziami",
         "help": "Opcjonalne. Pozwala temu tokenowi korzystać także z API zarządzania (/v1): wyświetlać formularze, otwierać je lub zamykać, odczytywać i zmieniać odpowiedzi. Zostaw wszystko wyłączone dla tokenu, który tylko wywołuje endpointy.",
         "none": "Brak. Ten token tylko wywołuje endpointy."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "Token {service}"
       }
     },
     "rotate": {

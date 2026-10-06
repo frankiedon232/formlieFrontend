@@ -3821,7 +3821,11 @@
       "method": "Metode",
       "request": "Permintaan",
       "answer": "Jawaban",
-      "note": "Nilainya hanya contoh. Pemanggil memerlukan token untuk memanggilnya sungguhan."
+      "note": "Nilainya hanya contoh. Pemanggil memerlukan token untuk memanggilnya sungguhan.",
+      "tokenUsed": "Token yang ditampilkan:",
+      "tokenWhere": "(disamarkan). Buka di Token dan Header untuk melihat dan menyalin token lengkap.",
+      "noToken": "Belum ada token yang bisa memanggil ini.",
+      "makeToken": "Buat token"
     },
     "invalid": {
       "required": "Isi bagian ini.",
@@ -4003,7 +4007,6 @@
         "text": "Aplikasi mengirim token di setiap panggilan untuk membuktikan identitasnya. Beri setiap aplikasi tokennya sendiri, hanya sesuai kebutuhan, agar kamu bisa menghentikan satu tanpa menyentuh yang lain."
       },
       "nameHelp": "Beri nama sesuai aplikasi yang akan memakainya.",
-      "presetName": "Token untuk /{name}",
       "scopeSummary": {
         "all": "Boleh memanggil semua endpoint, dengan semua metode.",
         "services": "Boleh memanggil endpoint dari {n} layanan. | Boleh memanggil endpoint dari {n} layanan.",
@@ -4033,6 +4036,10 @@
         "title": "Kelola formulir dan jawaban",
         "help": "Opsional. Memungkinkan token ini memakai API manajemen (/v1) juga: melihat daftar formulir, membuka atau menutupnya, membaca dan mengubah jawaban. Biarkan semuanya mati untuk token yang hanya memanggil endpoint.",
         "none": "Tidak ada. Token ini hanya memanggil endpoint."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "Token {service}"
       }
     },
     "rotate": {

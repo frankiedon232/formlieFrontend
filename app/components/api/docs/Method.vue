@@ -17,7 +17,11 @@ const EXPIRY = { token_expires_at: '2027-01-01T00:00:00Z', token_expires_in_days
 const props = defineProps<{ endpoint: ApiEndpointDetail; method: ApiMethod }>()
 const emit = defineEmits<{ try: [method: ApiMethod] }>()
 const { t } = useI18n()
-const call = computed(() => endpointCalls(props.endpoint).find(item => item.method === props.method)!)
+// The workspace's own token that may call it, masked, like the endpoint panel (owner, 2026-10-06)
+const callers = useCallerToken()
+void callers.load()
+const token = computed(() => (callers.tokens.value ? callers.pick(props.endpoint, props.method) : null))
+const call = computed(() => endpointCalls(props.endpoint, token.value?.preview).find(item => item.method === props.method)!)
 const writes = computed(() => props.method === 'POST' || props.method === 'PUT')
 const accepted = computed(() => props.endpoint.fields.filter(field => field.accept))
 const filters = computed(() => props.endpoint.fields.filter(field => field.filter))
@@ -108,6 +112,18 @@ watch(() => props.method, () => (shownAnswer.value = 0))
 
       <div class="flex min-w-0 flex-col gap-3 border-t border-default bg-neutral-950 p-4 text-neutral-100 sm:p-5 lg:border-s lg:border-t-0">
         <ApiDocsSnippets :call="call" dark />
+        <p v-if="callers.tokens.value" class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-neutral-400">
+          <UIcon name="i-lucide-key-round" class="size-3.5 shrink-0" />
+          <template v-if="token">
+            {{ t('apiService.call.tokenUsed') }}
+            <ULink :to="{ path: '/api-service/auth', query: { token: token.id } }" class="font-medium text-neutral-100 underline-offset-2 hover:underline">{{ token.name }}</ULink>
+            <span>{{ t('apiService.call.tokenWhere') }}</span>
+          </template>
+          <template v-else>
+            {{ t('apiService.call.noToken') }}
+            <ULink :to="{ path: '/api-service/auth', query: { new: '1', endpoint: endpoint.id } }" class="font-medium text-neutral-100 underline-offset-2 hover:underline">{{ t('apiService.call.makeToken') }}</ULink>
+          </template>
+        </p>
         <div class="flex flex-col gap-2">
           <div class="flex flex-wrap items-center gap-1">
             <span class="me-2 text-[11px] font-semibold tracking-wide text-neutral-400 uppercase">{{ t('apiService.call.answer') }}</span>

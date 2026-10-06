@@ -3821,7 +3821,11 @@
       "method": "Method",
       "request": "Request",
       "answer": "Answer",
-      "note": "Values are made up. Callers need a token to call it for real."
+      "note": "Values are made up. Callers need a token to call it for real.",
+      "tokenUsed": "Token shown:",
+      "tokenWhere": "(masked). Open it in Tokens & headers to see and copy the full token.",
+      "noToken": "No token can call this yet.",
+      "makeToken": "Make a token"
     },
     "invalid": {
       "required": "Fill this in.",
@@ -4003,7 +4007,6 @@
         "text": "Apps send a token with every call to prove who they are. Give each app its own, and only what it needs, so you can stop one without touching the others."
       },
       "nameHelp": "Name it after the app that will use it.",
-      "presetName": "Token for /{name}",
       "scopeSummary": {
         "all": "It may call every endpoint, with every method.",
         "services": "It may call the endpoints of {n} service. | It may call the endpoints of {n} services.",
@@ -4033,6 +4036,10 @@
           "webhooks_read": "Read webhooks",
           "audit_read": "Read the audit trail"
         }
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "{service} token"
       }
     },
     "rotate": {

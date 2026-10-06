@@ -3821,7 +3821,11 @@
       "method": "Método",
       "request": "Solicitud",
       "answer": "Respuesta",
-      "note": "Los valores son inventados. Quien llame necesita un token para usarlo de verdad."
+      "note": "Los valores son inventados. Quien llame necesita un token para usarlo de verdad.",
+      "tokenUsed": "Token mostrado:",
+      "tokenWhere": "(oculto). Ábrelo en Tokens y encabezados para ver y copiar el token completo.",
+      "noToken": "Ningún token puede llamar a esto todavía.",
+      "makeToken": "Crear un token"
     },
     "invalid": {
       "required": "Rellene este campo.",
@@ -4003,7 +4007,6 @@
         "text": "Las apps envían un token con cada llamada para demostrar quiénes son. Da a cada app el suyo, y solo lo que necesita, para poder detener una sin tocar las demás."
       },
       "nameHelp": "Ponle el nombre de la app que lo usará.",
-      "presetName": "Token para /{name}",
       "scopeSummary": {
         "all": "Puede llamar a todos los endpoints, con todos los métodos.",
         "services": "Puede llamar a los endpoints de {n} servicio. | Puede llamar a los endpoints de {n} servicios.",
@@ -4033,6 +4036,10 @@
         "title": "Gestionar formularios y respuestas",
         "help": "Opcional. Permite que este token use también la API de gestión (/v1): listar formularios, abrirlos o cerrarlos, leer y cambiar respuestas. Deje todo desactivado si el token solo llama a endpoints.",
         "none": "Ninguno. Este token solo llama a endpoints."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "Token de {service}"
       }
     },
     "rotate": {

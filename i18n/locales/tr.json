@@ -3821,7 +3821,11 @@
       "method": "Yöntem",
       "request": "İstek",
       "answer": "Yanıt",
-      "note": "Değerler örnektir. Gerçekten çağırmak için bir token gerekir."
+      "note": "Değerler örnektir. Gerçekten çağırmak için bir token gerekir.",
+      "tokenUsed": "Gösterilen token:",
+      "tokenWhere": "(maskeli). Tam token'ı görmek ve kopyalamak için Token'lar ve Header'lar bölümünde açın.",
+      "noToken": "Henüz hiçbir token bunu çağıramıyor.",
+      "makeToken": "Token oluştur"
     },
     "invalid": {
       "required": "Bunu doldurun.",
@@ -4003,7 +4007,6 @@
         "text": "Uygulamalar kimliklerini kanıtlamak için her çağrıyla bir token gönderir. Her uygulamaya kendi token'ını ve yalnızca ihtiyacı olanı verin, böylece diğerlerine dokunmadan birini durdurabilirsiniz."
       },
       "nameHelp": "Onu kullanacak uygulamanın adını verin.",
-      "presetName": "/{name} için token",
       "scopeSummary": {
         "all": "Her endpoint'i, her yöntemle çağırabilir.",
         "services": "{n} hizmetin endpoint'lerini çağırabilir. | {n} hizmetin endpoint'lerini çağırabilir.",
@@ -4033,6 +4036,10 @@
         "title": "Formları ve yanıtları yönet",
         "help": "İsteğe bağlı. Bu token'ın yönetim API'sini (/v1) de kullanmasını sağlar: formları listeleme, açma veya kapatma, yanıtları okuma ve değiştirme. Yalnızca endpoint çağıran bir token için hepsini kapalı bırakın.",
         "none": "Yok. Bu token yalnızca endpoint çağırır."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "{service} token'ı"
       }
     },
     "rotate": {

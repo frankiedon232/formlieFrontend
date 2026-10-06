@@ -3821,7 +3821,11 @@
       "method": "Methode",
       "request": "Anfrage",
       "answer": "Antwort",
-      "note": "Die Werte sind erfunden. Für echte Aufrufe brauchen Aufrufer ein Token."
+      "note": "Die Werte sind erfunden. Für echte Aufrufe brauchen Aufrufer ein Token.",
+      "tokenUsed": "Angezeigtes Token:",
+      "tokenWhere": "(maskiert). Öffne es unter Tokens und Header, um das ganze Token zu sehen und zu kopieren.",
+      "noToken": "Noch kein Token kann dies aufrufen.",
+      "makeToken": "Token erstellen"
     },
     "invalid": {
       "required": "Bitte ausfüllen.",
@@ -4003,7 +4007,6 @@
         "text": "Apps senden mit jedem Aufruf ein Token, um sich auszuweisen. Gib jeder App ein eigenes, und nur das, was sie braucht, damit du eine stoppen kannst, ohne die anderen zu berühren."
       },
       "nameHelp": "Benenne es nach der App, die es nutzt.",
-      "presetName": "Token für /{name}",
       "scopeSummary": {
         "all": "Es darf jeden Endpunkt mit jeder Methode aufrufen.",
         "services": "Es darf die Endpunkte von {n} Dienst aufrufen. | Es darf die Endpunkte von {n} Diensten aufrufen.",
@@ -4033,6 +4036,10 @@
         "title": "Formulare und Antworten verwalten",
         "help": "Optional. Erlaubt diesem Token auch die Verwaltungs-API (/v1): Formulare auflisten, öffnen oder schließen, Antworten lesen und ändern. Lassen Sie alles aus, wenn das Token nur Endpunkte aufruft.",
         "none": "Keine. Dieses Token ruft nur Endpunkte auf."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "{service}-Token"
       }
     },
     "rotate": {

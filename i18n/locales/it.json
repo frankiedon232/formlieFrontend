@@ -3821,7 +3821,11 @@
       "method": "Metodo",
       "request": "Richiesta",
       "answer": "Risposta",
-      "note": "I valori sono inventati. Per chiamarlo davvero serve un token."
+      "note": "I valori sono inventati. Per chiamarlo davvero serve un token.",
+      "tokenUsed": "Token mostrato:",
+      "tokenWhere": "(mascherato). Aprilo in Token e Header per vedere e copiare il token completo.",
+      "noToken": "Nessun token può ancora chiamare questo.",
+      "makeToken": "Crea un token"
     },
     "invalid": {
       "required": "Compila questo campo.",
@@ -4003,7 +4007,6 @@
         "text": "Le app inviano un token con ogni chiamata per dimostrare chi sono. Dai a ogni app il suo, e solo ciò che serve, così puoi fermarne una senza toccare le altre."
       },
       "nameHelp": "Chiamalo come l'app che lo userà.",
-      "presetName": "Token per /{name}",
       "scopeSummary": {
         "all": "Può chiamare ogni endpoint, con ogni metodo.",
         "services": "Può chiamare gli endpoint di {n} servizio. | Può chiamare gli endpoint di {n} servizi.",
@@ -4033,6 +4036,10 @@
         "title": "Gestisci moduli e risposte",
         "help": "Facoltativo. Permette a questo token di usare anche l'API di gestione (/v1): elencare i moduli, aprirli o chiuderli, leggere e modificare le risposte. Lascia tutto disattivato per un token che chiama solo endpoint.",
         "none": "Nessuno. Questo token chiama solo endpoint."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "Token {service}"
       }
     },
     "rotate": {

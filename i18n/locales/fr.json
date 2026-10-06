@@ -3821,7 +3821,11 @@
       "method": "Méthode",
       "request": "Requête",
       "answer": "Réponse",
-      "note": "Les valeurs sont fictives. Les appelants ont besoin d’un jeton pour l’appeler réellement."
+      "note": "Les valeurs sont fictives. Les appelants ont besoin d’un jeton pour l’appeler réellement.",
+      "tokenUsed": "Jeton affiché :",
+      "tokenWhere": "(masqué). Ouvrez-le dans Jetons et en-têtes pour voir et copier le jeton complet.",
+      "noToken": "Aucun jeton ne peut encore appeler ceci.",
+      "makeToken": "Créer un jeton"
     },
     "invalid": {
       "required": "Renseignez ce champ.",
@@ -4003,7 +4007,6 @@
         "text": "Les applis envoient un jeton avec chaque appel pour prouver leur identité. Donnez à chaque appli le sien, et seulement ce qu'il lui faut, pour pouvoir en arrêter un sans toucher aux autres."
       },
       "nameHelp": "Nommez-le d'après l'appli qui l'utilisera.",
-      "presetName": "Jeton pour /{name}",
       "scopeSummary": {
         "all": "Il peut appeler tous les endpoints, avec toutes les méthodes.",
         "services": "Il peut appeler les endpoints de {n} service. | Il peut appeler les endpoints de {n} services.",
@@ -4033,6 +4036,10 @@
         "title": "Gérer les formulaires et les réponses",
         "help": "Facultatif. Permet à ce jeton d'utiliser aussi l'API de gestion (/v1) : lister les formulaires, les ouvrir ou les fermer, lire et modifier les réponses. Laissez tout désactivé pour un jeton qui n'appelle que des endpoints.",
         "none": "Aucun. Ce jeton n'appelle que des endpoints."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "Jeton {service}"
       }
     },
     "rotate": {

@@ -3821,7 +3821,11 @@
       "method": "Mbinu",
       "request": "Ombi",
       "answer": "Jibu",
-      "note": "Thamani ni za mfano. Wanaopiga wanahitaji tokeni ili kuuita kweli."
+      "note": "Thamani ni za mfano. Wanaopiga wanahitaji tokeni ili kuuita kweli.",
+      "tokenUsed": "Tokeni inayoonyeshwa:",
+      "tokenWhere": "(imefichwa). Ifungue katika Tokeni na Header ili kuona na kunakili tokeni kamili.",
+      "noToken": "Hakuna tokeni inayoweza kuita hii bado.",
+      "makeToken": "Tengeneza tokeni"
     },
     "invalid": {
       "required": "Jaza hapa.",
@@ -4003,7 +4007,6 @@
         "text": "Programu hutuma tokeni kwa kila simu kujithibitisha. Ipe kila programu yake, na kile inachohitaji tu, ili uweze kusimamisha moja bila kugusa nyingine."
       },
       "nameHelp": "Ipe jina la programu itakayoitumia.",
-      "presetName": "Tokeni ya /{name}",
       "scopeSummary": {
         "all": "Inaweza kupiga kila endpoint, kwa kila njia.",
         "services": "Inaweza kupiga endpoints za huduma {n}. | Inaweza kupiga endpoints za huduma {n}.",
@@ -4033,6 +4036,10 @@
         "title": "Simamia fomu na majibu",
         "help": "Hiari. Huruhusu tokeni hii itumie pia API ya usimamizi (/v1): kuorodhesha fomu, kuzifungua au kuzifunga, kusoma na kubadilisha majibu. Acha vyote vimezimwa kwa tokeni inayoita endpoint pekee.",
         "none": "Hakuna. Tokeni hii huita endpoint pekee."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "Tokeni ya {service}"
       }
     },
     "rotate": {

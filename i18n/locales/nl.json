@@ -3821,7 +3821,11 @@
       "method": "Methode",
       "request": "Verzoek",
       "answer": "Antwoord",
-      "note": "De waarden zijn verzonnen. Aanroepers hebben een token nodig om het echt aan te roepen."
+      "note": "De waarden zijn verzonnen. Aanroepers hebben een token nodig om het echt aan te roepen.",
+      "tokenUsed": "Getoond token:",
+      "tokenWhere": "(gemaskeerd). Open het in Tokens en Headers om het volledige token te zien en te kopiëren.",
+      "noToken": "Nog geen token kan dit aanroepen.",
+      "makeToken": "Maak een token"
     },
     "invalid": {
       "required": "Vul dit in.",
@@ -4003,7 +4007,6 @@
         "text": "Apps sturen bij elke aanroep een token mee om te bewijzen wie ze zijn. Geef elke app een eigen token, en alleen wat nodig is, zodat je er een kunt stoppen zonder de andere aan te raken."
       },
       "nameHelp": "Noem het naar de app die het gebruikt.",
-      "presetName": "Token voor /{name}",
       "scopeSummary": {
         "all": "Het mag elk endpoint aanroepen, met elke methode.",
         "services": "Het mag de endpoints van {n} service aanroepen. | Het mag de endpoints van {n} services aanroepen.",
@@ -4033,6 +4036,10 @@
         "title": "Formulieren en reacties beheren",
         "help": "Optioneel. Laat dit token ook de beheer-API (/v1) gebruiken: formulieren weergeven, openen of sluiten, reacties lezen en wijzigen. Laat alles uit voor een token dat alleen endpoints aanroept.",
         "none": "Geen. Dit token roept alleen endpoints aan."
+      },
+      "autoName": {
+        "endpoint": "{service} · /{name}",
+        "service": "{service}-token"
       }
     },
     "rotate": {

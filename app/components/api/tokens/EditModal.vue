@@ -25,11 +25,16 @@ const endpoints = ref<ApiEndpoint[]>([])
 const created = ref<ApiTokenCreated | null>(null)
 const nameError = ref<string>()
 const step = ref(0)
+// New tokens are named after what they may call until the person types a name (owner, 2026-10-06)
+const nameTouched = ref(false)
+const callers = useCallerToken()
 watch(open, async value => {
   if (!value) return
   created.value = null
   nameError.value = undefined
   step.value = 0
+  nameTouched.value = false
+  if (!props.token) void callers.load(true)
   const token = props.token
   Object.assign(state, {
     name: token?.name ?? '',
@@ -47,8 +52,7 @@ watch(open, async value => {
     const [a, b] = await Promise.all([api.list<ApiService>('/api-services', { page_size: 100, sort: 'name' }, { background: true }), api.list<ApiEndpoint>('/api-endpoints', { page_size: 100, sort: 'name' }, { background: true })])
     services.value = a.data
     endpoints.value = b.data
-    const preset = props.presetEndpoint ? b.data.find(item => item.id === props.presetEndpoint) : undefined
-    if (preset && !token && !state.name) state.name = t('apiService.tokens.presetName', { name: preset.name })
+    autoName()
   } catch {
     services.value = []
   }
@@ -68,6 +72,18 @@ const lifetimeItems = TOKEN_LIFETIMES.map(n => ({ value: n, label: t('apiService
 const toggleManage = (scope: ManageScope, on: boolean) => (state.manage = on ? MANAGE_SCOPES.filter(item => item === scope || state.manage.includes(item)) : state.manage.filter(item => item !== scope))
 const toggleMethod = (method: ApiMethod, on: boolean) => (state.methods = on ? API_METHODS.filter(item => item === method || state.methods.includes(item)) : state.methods.filter(item => item !== method))
 watch(() => state.services, list => (state.endpoints = state.endpoints.filter(id => !list.length || endpoints.value.find(item => item.id === id && list.includes(item.service.id)))))
+/** "Account Service · /account", or the service's name, kept unique among the workspace's tokens. */
+function autoName() {
+  if (props.token || nameTouched.value) return
+  const endpoint = state.endpoints.length === 1 ? endpoints.value.find(item => item.id === state.endpoints[0]) : undefined
+  const service = endpoint ? endpoint.service : state.services.length === 1 ? services.value.find(item => item.id === state.services[0]) : undefined
+  const base = endpoint ? t('apiService.tokens.autoName.endpoint', { service: endpoint.service.name, name: endpoint.name }) : service ? t('apiService.tokens.autoName.service', { service: service.name }) : ''
+  const taken = new Set((callers.tokens.value ?? []).map(item => item.name.toLowerCase()))
+  let name = base
+  for (let n = 2; base && taken.has(name.toLowerCase()); n++) name = `${base} ${n}`
+  state.name = name
+}
+watch(() => [state.services, state.endpoints, callers.tokens.value], autoName, { deep: true })
 const scopeSummary = computed(() => {
   if (state.endpoints.length) return t('apiService.tokens.scopeSummary.endpoints', { n: state.endpoints.length }, state.endpoints.length)
   if (state.services.length) return t('apiService.tokens.scopeSummary.services', { n: state.services.length }, state.services.length)
@@ -157,7 +173,7 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
           <!-- 2 · Name and what it may call -->
           <template v-if="token || step === 1">
             <UFormField :label="t('apiService.service.name')" :error="nameError" :help="t('apiService.tokens.nameHelp')" required>
-              <UInput v-model="state.name" :placeholder="t('apiService.tokens.namePlaceholder')" class="w-full" maxlength="80" />
+              <UInput v-model="state.name" :placeholder="t('apiService.tokens.namePlaceholder')" class="w-full" maxlength="80" @update:model-value="nameTouched = true" />
             </UFormField>
             <UFormField :label="t('apiService.tokens.scope.title')" :help="t('apiService.tokens.scope.help')">
               <div class="flex flex-col gap-2">

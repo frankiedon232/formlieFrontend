@@ -1,7 +1,8 @@
 <!--
   What a call to an endpoint looks like (F13 M1), generated from its chosen fields: the method and
-  address, the headers, the JSON body for POST / PUT and the JSON answer, each with Copy. A token
-  is never shown here (tokens come from Tokens & headers); values are made up.
+  address, the headers, the JSON body for POST / PUT and the JSON answer, each with Copy. Values are
+  made up; the token is one of the workspace's own that may call it, masked, with a link to it in
+  Tokens & headers (owner 2026-10-06), or a link to make one when none may.
 -->
 <script setup lang="ts">
 import type { ApiEndpointField } from '#shared/types/apiService'
@@ -12,7 +13,7 @@ import type { ApiMethod } from '#shared/utils/urls/public'
 // Every answer carries the token's expiry (the expiry tracker, owner 2026-10-06)
 const EXPIRY = { token_expires_at: '2027-01-01T00:00:00Z', token_expires_in_days: 87 }
 
-const props = defineProps<{ methods: ApiMethod[]; url: string; fields: ApiEndpointField[]; pageSize: number }>()
+const props = defineProps<{ methods: ApiMethod[]; url: string; fields: ApiEndpointField[]; pageSize: number; endpoint?: { id: string; service: { id: string } } | null }>()
 const { t } = useI18n()
 const { copy } = useClipboard({ legacy: true })
 const toast = useToast()
@@ -36,7 +37,10 @@ const example = computed(() => {
   }
 })
 // The three headers every call sends, on every method, none optional (owner, 2026-10-06)
-const headers = ['Authorization: Bearer <token>', 'Content-Type: application/json', `Formalie-Key: ${NEW_KEY}`].join('\n')
+const callers = useCallerToken()
+if (props.endpoint) void callers.load(true)
+const token = computed(() => (props.endpoint && callers.tokens.value ? callers.pick(props.endpoint, method.value) : null))
+const headers = computed(() => [`Authorization: Bearer ${token.value?.preview ?? '<token>'}`, 'Content-Type: application/json', `Formalie-Key: ${NEW_KEY}`].join('\n'))
 function copyText(text: string) {
   void copy(text)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })
@@ -57,6 +61,19 @@ function copyText(text: string) {
 <span class="text-muted">{{ headers }}</span><template v-if="example.body">
 
 {{ example.body }}</template></pre>
+        <p v-if="endpoint && callers.tokens.value" class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted">
+          <UIcon name="i-lucide-key-round" class="size-3.5 shrink-0" />
+          <template v-if="token">
+            {{ t('apiService.call.tokenUsed') }}
+            <ULink :to="{ path: '/api-service/auth', query: { token: token.id } }" class="font-medium text-highlighted underline-offset-2 hover:underline">{{ token.name }}</ULink>
+            <UBadge :label="t(`apiService.tokens.mode.${token.mode}`)" color="neutral" variant="outline" size="xs" class="rounded-md" />
+            <span>{{ t('apiService.call.tokenWhere') }}</span>
+          </template>
+          <template v-else>
+            {{ t('apiService.call.noToken') }}
+            <ULink :to="{ path: '/api-service/auth', query: { new: '1', endpoint: endpoint.id } }" class="font-medium text-highlighted underline-offset-2 hover:underline">{{ t('apiService.call.makeToken') }}</ULink>
+          </template>
+        </p>
       </div>
       <div class="flex flex-col gap-1.5">
         <div class="flex items-center justify-between gap-2">
