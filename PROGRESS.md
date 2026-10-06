@@ -680,6 +680,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 - ⬜ Generated documentation per service (OpenAPI), code snippets (curl, JavaScript, Python, PHP, C#), copy buttons
 - ⬜ Try-it console with a test token; sandbox / test mode that doesn't write live data
+- ⬜ Files through the API (owner-agreed 2026-10-06), after tokens (M2) and rate limits (M3): upload first to `{apiKey}/files` (multipart; same type, size and scan checks as the form page) → a file reference, then send the reference in the JSON; file questions then become acceptable in the wizard
 
 ### 8. Safety and audit
 
@@ -1096,6 +1097,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | Query editor: Run all (every statement, a result per statement); a lazy tree for very large databases (columns load when a table is opened); open F12 items resolved (done, or moved to F15e / F22 / later) | F12 | ✅ |
 | 2026-10-05 | Before F13: Forms → Analytics (still a placeholder) and Data sources → Overview must be finished and look "Wao" in the design's dashboard style | F18 (brought forward) · F12 overview | ✅ |
 | 2026-10-06 | F13 tokens: separate test and live tokens from the start; app integrations (Sheets, team chat, email) after F21 | F13 M2 · after F21 | ✅ decided |
+| 2026-10-06 | Files through the API: not in M1 (JSON only); a separate upload step with the form page's checks, once tokens and rate limits exist | F13 M5 | ⬜ |
 
 ---
 
