@@ -71,6 +71,10 @@ onBeforeRouteLeave(async () => (!dirty.value || created.value ? true : await con
         </div>
       </div>
       <ApiEndpointsSetup :endpoint="created" :busy="busy" @test="consoleOpen = true" @live="live" />
+      <!-- Also at the bottom, under Go live, where people look last (owner, 2026-10-06) -->
+      <div class="flex justify-end">
+        <UButton :label="t('apiService.setup.openEndpoint')" icon="i-lucide-panel-right-open" color="neutral" :to="{ path: '/api-service/endpoints', query: { endpoint: created.id } }" />
+      </div>
       <ApiDocsConsole v-model:open="consoleOpen" :endpoint="created" />
     </div>
 
