@@ -3858,8 +3858,8 @@
       "preview": "Seu endpoint",
       "where": "Os dados enviados a ele passam pelas verificações do próprio formulário e são armazenados onde o formulário guarda suas respostas.",
       "searchForms": "Pesquisar formulários publicados…",
-      "noForms": "Nenhum formulário publicado ainda",
-      "noFormsDesc": "Somente formulários publicados podem ser endpoints, para que os dados de quem chama passem pelas mesmas verificações da página do formulário.",
+      "noForms": "Nenhum formulário está pronto para a API ainda",
+      "noFormsDesc": "Aqui aparecem apenas os formulários publicados e abertos ao serviço de API. No formulário, ative a API em Compartilhar (Onde as pessoas podem responder), publique-o e volte.",
       "toForms": "Ir para Formulários",
       "pickService": "Escolha um serviço",
       "newService": "Novo serviço",
@@ -3901,14 +3901,7 @@
         "DELETE": "Remover uma resposta pelo seu id; mantido na trilha de auditoria."
       },
       "afterTitle": "O que acontece depois",
-      "afterText": "O endpoint é criado desativado. Tokens de teste já podem chamá-lo, então você pode experimentar com segurança. Depois dê um token live, adicione regras de acesso se quiser e ative-o.",
-      "notReady": "Ainda não está pronto para a API",
-      "draftHint": "Ainda não publicado. Publique somente para a API: ele nunca terá endereço na web.",
-      "closedHint": "Publicado, mas não aberto ao serviço de API.",
-      "publishForApi": "Publicar somente para a API",
-      "openToApi": "Abrir para a API",
-      "publishedForApi": "“{name}” está publicado somente para a API",
-      "openedToApi": "“{name}” está aberto para a API"
+      "afterText": "O endpoint é criado desativado. Tokens de teste já podem chamá-lo, então você pode experimentar com segurança. Depois dê um token live, adicione regras de acesso se quiser e ative-o."
     },
     "tokens": {
       "title": "Tokens",

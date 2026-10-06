@@ -3858,8 +3858,8 @@
       "preview": "Endpoint'iniz",
       "where": "Ona gönderilen veriler formun kendi denetimlerinden geçer ve formun yanıtlarını sakladığı yerde saklanır.",
       "searchForms": "Yayımlanmış formlarda ara…",
-      "noForms": "Henüz yayımlanmış form yok",
-      "noFormsDesc": "Yalnızca yayımlanmış formlar endpoint olabilir; böylece çağıranların verileri form sayfasıyla aynı denetimlerden geçer.",
+      "noForms": "API için hazır bir form henüz yok",
+      "noFormsDesc": "Burada yalnızca API hizmetine açık, yayınlanmış formlar listelenir. Formda Paylaş (İnsanlar nerede yanıt verebilir) bölümünden API'yi açın, formu yayınlayın ve sonra geri dönün.",
       "toForms": "Formlara git",
       "pickService": "Bir hizmet seçin",
       "newService": "Yeni hizmet",
@@ -3901,14 +3901,7 @@
         "DELETE": "Bir yanıtı kimliğine göre kaldır; denetim kaydında tutulur."
       },
       "afterTitle": "Sonra ne olur",
-      "afterText": "Endpoint yayında olmadan oluşturulur. Test token'ları onu şimdiden çağırabilir, böylece güvenle deneyebilirsiniz. Sonra ona bir live token verin, isterseniz erişim kuralları ekleyin ve açın.",
-      "notReady": "API için henüz hazır değil",
-      "draftHint": "Henüz yayında değil. Yalnızca API için yayınlayın: hiçbir zaman web adresi almaz.",
-      "closedHint": "Yayında, ancak API hizmetine açık değil.",
-      "publishForApi": "Yalnızca API için yayınla",
-      "openToApi": "API’ye aç",
-      "publishedForApi": "“{name}” yalnızca API için yayınlandı",
-      "openedToApi": "“{name}” API’ye açık"
+      "afterText": "Endpoint yayında olmadan oluşturulur. Test token'ları onu şimdiden çağırabilir, böylece güvenle deneyebilirsiniz. Sonra ona bir live token verin, isterseniz erişim kuralları ekleyin ve açın."
     },
     "tokens": {
       "title": "Token'lar",

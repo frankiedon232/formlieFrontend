@@ -3858,8 +3858,8 @@
       "preview": "Su endpoint",
       "where": "Los datos que se le envían pasan por las comprobaciones del propio formulario y se guardan donde el formulario guarda sus respuestas.",
       "searchForms": "Buscar formularios publicados…",
-      "noForms": "Aún no hay formularios publicados",
-      "noFormsDesc": "Solo los formularios publicados pueden ser endpoints, para que los datos de quienes llaman pasen las mismas comprobaciones que la página del formulario.",
+      "noForms": "Aún no hay ningún formulario listo para la API",
+      "noFormsDesc": "Aquí solo aparecen los formularios publicados y abiertos al servicio de API. En el formulario, activa API en Compartir (Dónde pueden responder las personas), publícalo y vuelve.",
       "toForms": "Ir a Formularios",
       "pickService": "Elija un servicio",
       "newService": "Nuevo servicio",
@@ -3901,14 +3901,7 @@
         "DELETE": "Eliminar una respuesta por su id; queda en el registro de auditoría."
       },
       "afterTitle": "Qué pasa después",
-      "afterText": "El endpoint se crea sin activar. Los tokens de prueba ya pueden llamarlo, así que puedes probarlo con seguridad. Después dale un token live, añade reglas de acceso si quieres y actívalo.",
-      "notReady": "Aún no está listo para la API",
-      "draftHint": "Aún no publicado. Publícalo solo para la API: nunca tendrá dirección web.",
-      "closedHint": "Publicado, pero no abierto al servicio de API.",
-      "publishForApi": "Publicar solo para la API",
-      "openToApi": "Abrir a la API",
-      "publishedForApi": "“{name}” está publicado solo para la API",
-      "openedToApi": "“{name}” está abierto a la API"
+      "afterText": "El endpoint se crea sin activar. Los tokens de prueba ya pueden llamarlo, así que puedes probarlo con seguridad. Después dale un token live, añade reglas de acceso si quieres y actívalo."
     },
     "tokens": {
       "title": "Tokens",

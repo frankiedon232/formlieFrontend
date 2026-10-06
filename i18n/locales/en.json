@@ -3858,8 +3858,8 @@
       "preview": "Your endpoint",
       "where": "Data sent to it goes through the form's own checks and is stored where the form keeps its responses.",
       "searchForms": "Search published forms…",
-      "noForms": "No published forms yet",
-      "noFormsDesc": "Only published forms can be endpoints, so callers' data passes the same checks as the form page.",
+      "noForms": "No form is ready for the API yet",
+      "noFormsDesc": "Only published forms that are open to the API service are listed here. In the form, turn on API under Share (Where people can answer) and publish it, then come back.",
       "toForms": "Go to Forms",
       "pickService": "Choose a service",
       "newService": "New service",
@@ -3901,14 +3901,7 @@
         "DELETE": "Remove a response by its id; kept in the audit trail."
       },
       "afterTitle": "What happens next",
-      "afterText": "The endpoint is created not live. Test tokens can already call it, so you can try it safely. Then give it a live token, add access rules if you want, and switch it on.",
-      "notReady": "Not ready for the API yet",
-      "draftHint": "Not published yet. Publish it for the API only: it never gets a web address.",
-      "closedHint": "Published, but not open to the API service.",
-      "publishForApi": "Publish for the API only",
-      "openToApi": "Open to the API",
-      "publishedForApi": "“{name}” is published for the API only",
-      "openedToApi": "“{name}” is open to the API"
+      "afterText": "The endpoint is created not live. Test tokens can already call it, so you can try it safely. Then give it a live token, add access rules if you want, and switch it on."
     },
     "tokens": {
       "title": "Tokens",

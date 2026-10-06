@@ -3858,8 +3858,8 @@
       "preview": "Endpoint Anda",
       "where": "Data yang dikirim ke sana melewati pemeriksaan formulir itu sendiri dan disimpan di tempat formulir menyimpan responsnya.",
       "searchForms": "Cari formulir yang dipublikasikan…",
-      "noForms": "Belum ada formulir yang dipublikasikan",
-      "noFormsDesc": "Hanya formulir yang dipublikasikan yang bisa menjadi endpoint, agar data dari pemanggil melewati pemeriksaan yang sama dengan halaman formulir.",
+      "noForms": "Belum ada formulir yang siap untuk API",
+      "noFormsDesc": "Hanya formulir yang sudah diterbitkan dan terbuka untuk layanan API yang tampil di sini. Di formulir, aktifkan API di Bagikan (Tempat orang bisa menjawab), terbitkan, lalu kembali ke sini.",
       "toForms": "Buka Formulir",
       "pickService": "Pilih layanan",
       "newService": "Layanan baru",
@@ -3901,14 +3901,7 @@
         "DELETE": "Hapus respons berdasarkan id-nya; tetap tercatat di jejak audit."
       },
       "afterTitle": "Apa yang terjadi selanjutnya",
-      "afterText": "Endpoint dibuat dalam keadaan tidak live. Token uji sudah bisa memanggilnya, jadi kamu bisa mencobanya dengan aman. Lalu beri token live, tambahkan aturan akses jika mau, dan nyalakan.",
-      "notReady": "Belum siap untuk API",
-      "draftHint": "Belum dipublikasikan. Publikasikan hanya untuk API: formulir ini tidak akan pernah punya alamat web.",
-      "closedHint": "Dipublikasikan, tetapi tidak terbuka untuk layanan API.",
-      "publishForApi": "Publikasikan hanya untuk API",
-      "openToApi": "Buka untuk API",
-      "publishedForApi": "“{name}” dipublikasikan hanya untuk API",
-      "openedToApi": "“{name}” terbuka untuk API"
+      "afterText": "Endpoint dibuat dalam keadaan tidak live. Token uji sudah bisa memanggilnya, jadi kamu bisa mencobanya dengan aman. Lalu beri token live, tambahkan aturan akses jika mau, dan nyalakan."
     },
     "tokens": {
       "title": "Token",

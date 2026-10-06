@@ -3858,8 +3858,8 @@
       "preview": "Endpoint của bạn",
       "where": "Dữ liệu gửi đến nó phải qua các bước kiểm tra riêng của biểu mẫu và được lưu ở nơi biểu mẫu lưu các phản hồi.",
       "searchForms": "Tìm biểu mẫu đã xuất bản…",
-      "noForms": "Chưa có biểu mẫu nào được xuất bản",
-      "noFormsDesc": "Chỉ biểu mẫu đã xuất bản mới có thể là endpoint, để dữ liệu của bên gọi qua cùng các bước kiểm tra như trang biểu mẫu.",
+      "noForms": "Chưa có biểu mẫu nào sẵn sàng cho API",
+      "noFormsDesc": "Ở đây chỉ hiện các biểu mẫu đã xuất bản và mở cho dịch vụ API. Trong biểu mẫu, bật API tại Chia sẻ (Nơi mọi người có thể trả lời), xuất bản biểu mẫu rồi quay lại đây.",
       "toForms": "Đến Biểu mẫu",
       "pickService": "Chọn một dịch vụ",
       "newService": "Dịch vụ mới",
@@ -3901,14 +3901,7 @@
         "DELETE": "Xóa một phản hồi theo id; được lưu trong nhật ký kiểm tra."
       },
       "afterTitle": "Điều gì xảy ra tiếp theo",
-      "afterText": "Endpoint được tạo ở trạng thái chưa hoạt động. Token thử nghiệm đã có thể gọi nó, nên bạn có thể thử an toàn. Sau đó cấp token live, thêm quy tắc truy cập nếu muốn, rồi bật nó.",
-      "notReady": "Chưa sẵn sàng cho API",
-      "draftHint": "Chưa xuất bản. Hãy xuất bản chỉ cho API: nó sẽ không bao giờ có địa chỉ web.",
-      "closedHint": "Đã xuất bản, nhưng chưa mở cho dịch vụ API.",
-      "publishForApi": "Xuất bản chỉ cho API",
-      "openToApi": "Mở cho API",
-      "publishedForApi": "“{name}” được xuất bản chỉ cho API",
-      "openedToApi": "“{name}” đã mở cho API"
+      "afterText": "Endpoint được tạo ở trạng thái chưa hoạt động. Token thử nghiệm đã có thể gọi nó, nên bạn có thể thử an toàn. Sau đó cấp token live, thêm quy tắc truy cập nếu muốn, rồi bật nó."
     },
     "tokens": {
       "title": "Token",

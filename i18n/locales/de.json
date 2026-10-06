@@ -3858,8 +3858,8 @@
       "preview": "Ihr Endpoint",
       "where": "Daten, die gesendet werden, durchlaufen die eigenen Prüfungen des Formulars und werden dort gespeichert, wo das Formular seine Antworten ablegt.",
       "searchForms": "Veröffentlichte Formulare suchen…",
-      "noForms": "Noch keine veröffentlichten Formulare",
-      "noFormsDesc": "Nur veröffentlichte Formulare können Endpoints sein, damit die Daten der Aufrufer dieselben Prüfungen wie auf der Formularseite durchlaufen.",
+      "noForms": "Noch ist kein Formular für die API bereit",
+      "noFormsDesc": "Hier erscheinen nur veröffentlichte Formulare, die für den API-Dienst geöffnet sind. Aktiviere im Formular unter Teilen (Wo Leute antworten können) die API, veröffentliche es und komm dann zurück.",
       "toForms": "Zu Formulare",
       "pickService": "Service wählen",
       "newService": "Neuer Service",
@@ -3901,14 +3901,7 @@
         "DELETE": "Eine Antwort per ID entfernen; im Audit-Protokoll festgehalten."
       },
       "afterTitle": "Wie es weitergeht",
-      "afterText": "Der Endpunkt wird nicht live erstellt. Test-Tokens können ihn schon aufrufen, du kannst ihn also gefahrlos ausprobieren. Gib ihm dann ein Live-Token, füge bei Bedarf Zugriffsregeln hinzu und schalte ihn ein.",
-      "notReady": "Noch nicht bereit für die API",
-      "draftHint": "Noch nicht veröffentlicht. Veröffentliche es nur für die API: Es bekommt nie eine Webadresse.",
-      "closedHint": "Veröffentlicht, aber nicht für den API-Dienst geöffnet.",
-      "publishForApi": "Nur für die API veröffentlichen",
-      "openToApi": "Für die API öffnen",
-      "publishedForApi": "“{name}” ist nur für die API veröffentlicht",
-      "openedToApi": "“{name}” ist für die API geöffnet"
+      "afterText": "Der Endpunkt wird nicht live erstellt. Test-Tokens können ihn schon aufrufen, du kannst ihn also gefahrlos ausprobieren. Gib ihm dann ein Live-Token, füge bei Bedarf Zugriffsregeln hinzu und schalte ihn ein."
     },
     "tokens": {
       "title": "Tokens",

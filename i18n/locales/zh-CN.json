@@ -3858,8 +3858,8 @@
       "preview": "您的端点",
       "where": "发送给它的数据会经过表单自身的检查,并存储在表单保存回复的位置。",
       "searchForms": "搜索已发布的表单…",
-      "noForms": "还没有已发布的表单",
-      "noFormsDesc": "只有已发布的表单才能成为端点,这样调用方的数据会经过与表单页面相同的检查。",
+      "noForms": "还没有可用于 API 的表单",
+      "noFormsDesc": "这里只列出已发布且对 API 服务开放的表单。请在表单的分享(人们可以在哪里作答)中开启 API 并发布,然后回到这里。",
       "toForms": "前往表单",
       "pickService": "选择服务",
       "newService": "新建服务",
@@ -3901,14 +3901,7 @@
         "DELETE": "按 ID 删除回复;会保留在审计记录中。"
       },
       "afterTitle": "接下来会怎样",
-      "afterText": "端点创建后处于未上线状态。测试令牌已经可以调用它，所以你可以放心试用。之后为它配发正式令牌，按需添加访问规则，然后开启。",
-      "notReady": "尚未准备好用于 API",
-      "draftHint": "尚未发布。仅为 API 发布：它永远不会有网页地址。",
-      "closedHint": "已发布，但未向 API 服务开放。",
-      "publishForApi": "仅为 API 发布",
-      "openToApi": "向 API 开放",
-      "publishedForApi": "“{name}”已仅为 API 发布",
-      "openedToApi": "“{name}”已向 API 开放"
+      "afterText": "端点创建后处于未上线状态。测试令牌已经可以调用它，所以你可以放心试用。之后为它配发正式令牌，按需添加访问规则，然后开启。"
     },
     "tokens": {
       "title": "令牌",

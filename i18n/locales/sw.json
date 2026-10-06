@@ -3858,8 +3858,8 @@
       "preview": "Endpoint yako",
       "where": "Data inayotumwa kwake hupitia ukaguzi wa fomu yenyewe na huhifadhiwa mahali fomu inapohifadhi majibu yake.",
       "searchForms": "Tafuta fomu zilizochapishwa…",
-      "noForms": "Bado hakuna fomu zilizochapishwa",
-      "noFormsDesc": "Ni fomu zilizochapishwa pekee zinazoweza kuwa endpoint, ili data ya wanaoita ipitie ukaguzi uleule kama ukurasa wa fomu.",
+      "noForms": "Bado hakuna fomu iliyo tayari kwa API",
+      "noFormsDesc": "Hapa zinaonekana fomu zilizochapishwa tu na zilizo wazi kwa huduma ya API. Kwenye fomu, washa API chini ya Shiriki (Mahali watu wanapoweza kujibu), ichapishe, kisha rudi.",
       "toForms": "Nenda kwenye Fomu",
       "pickService": "Chagua huduma",
       "newService": "Huduma mpya",
@@ -3901,14 +3901,7 @@
         "DELETE": "Ondoa jibu kwa kitambulisho chake; hubaki kwenye kumbukumbu ya ukaguzi."
       },
       "afterTitle": "Kinachofuata",
-      "afterText": "Endpoint huundwa bila kuwa live. Tokeni za majaribio zinaweza tayari kuipigia, kwa hiyo unaweza kuijaribu kwa usalama. Kisha ipe tokeni ya live, ongeza kanuni za ufikiaji ukitaka, na uiwashe.",
-      "notReady": "Bado haijawa tayari kwa API",
-      "draftHint": "Bado haijachapishwa. Ichapishe kwa API pekee: kamwe haitapata anwani ya wavuti.",
-      "closedHint": "Imechapishwa, lakini haijafunguliwa kwa huduma ya API.",
-      "publishForApi": "Chapisha kwa API pekee",
-      "openToApi": "Fungua kwa API",
-      "publishedForApi": "“{name}” imechapishwa kwa API pekee",
-      "openedToApi": "“{name}” imefunguliwa kwa API"
+      "afterText": "Endpoint huundwa bila kuwa live. Tokeni za majaribio zinaweza tayari kuipigia, kwa hiyo unaweza kuijaribu kwa usalama. Kisha ipe tokeni ya live, ongeza kanuni za ufikiaji ukitaka, na uiwashe."
     },
     "tokens": {
       "title": "Tokeni",

@@ -3858,8 +3858,8 @@
       "preview": "Twój endpoint",
       "where": "Dane wysyłane do niego przechodzą przez własne kontrole formularza i są zapisywane tam, gdzie formularz przechowuje swoje odpowiedzi.",
       "searchForms": "Szukaj opublikowanych formularzy…",
-      "noForms": "Brak opublikowanych formularzy",
-      "noFormsDesc": "Endpointami mogą być tylko opublikowane formularze, aby dane od wywołujących przechodziły te same kontrole co strona formularza.",
+      "noForms": "Żaden formularz nie jest jeszcze gotowy dla API",
+      "noFormsDesc": "Tutaj widać tylko opublikowane formularze otwarte dla usługi API. W formularzu włącz API w sekcji Udostępnij (Gdzie ludzie mogą odpowiadać), opublikuj go i wróć tutaj.",
       "toForms": "Przejdź do Formularzy",
       "pickService": "Wybierz usługę",
       "newService": "Nowa usługa",
@@ -3901,14 +3901,7 @@
         "DELETE": "Usunięcie odpowiedzi według id; zapisane w dzienniku audytu."
       },
       "afterTitle": "Co dalej",
-      "afterText": "Endpoint powstaje jako nieaktywny. Tokeny testowe mogą go już wywoływać, więc możesz go bezpiecznie wypróbować. Potem nadaj mu token live, w razie potrzeby dodaj reguły dostępu i włącz go.",
-      "notReady": "Jeszcze nie gotowy na API",
-      "draftHint": "Jeszcze nie opublikowany. Opublikuj go tylko dla API: nigdy nie dostanie adresu internetowego.",
-      "closedHint": "Opublikowany, ale nieotwarty dla usługi API.",
-      "publishForApi": "Opublikuj tylko dla API",
-      "openToApi": "Otwórz dla API",
-      "publishedForApi": "„{name}” opublikowano tylko dla API",
-      "openedToApi": "„{name}” jest otwarty dla API"
+      "afterText": "Endpoint powstaje jako nieaktywny. Tokeny testowe mogą go już wywoływać, więc możesz go bezpiecznie wypróbować. Potem nadaj mu token live, w razie potrzeby dodaj reguły dostępu i włącz go."
     },
     "tokens": {
       "title": "Tokeny",

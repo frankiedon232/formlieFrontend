@@ -3858,8 +3858,8 @@
       "preview": "Votre endpoint",
       "where": "Les données qui lui sont envoyées passent par les contrôles propres au formulaire et sont stockées là où le formulaire conserve ses réponses.",
       "searchForms": "Rechercher des formulaires publiés…",
-      "noForms": "Aucun formulaire publié pour l'instant",
-      "noFormsDesc": "Seuls les formulaires publiés peuvent devenir des endpoints, afin que les données des appelants passent les mêmes contrôles que la page du formulaire.",
+      "noForms": "Aucun formulaire n’est encore prêt pour l’API",
+      "noFormsDesc": "Seuls les formulaires publiés et ouverts au service API apparaissent ici. Dans le formulaire, activez l’API sous Partager (Où les gens peuvent répondre), publiez-le, puis revenez.",
       "toForms": "Aller aux formulaires",
       "pickService": "Choisissez un service",
       "newService": "Nouveau service",
@@ -3901,14 +3901,7 @@
         "DELETE": "Supprimer une réponse par son id ; conservé dans le journal d'audit."
       },
       "afterTitle": "La suite",
-      "afterText": "L'endpoint est créé inactif. Les jetons de test peuvent déjà l'appeler, vous pouvez donc l'essayer sans risque. Donnez-lui ensuite un jeton live, ajoutez des règles d'accès si vous voulez, puis activez-le.",
-      "notReady": "Pas encore prêt pour l’API",
-      "draftHint": "Pas encore publié. Publiez-le pour l’API uniquement : il n’aura jamais d’adresse web.",
-      "closedHint": "Publié, mais non ouvert au service d’API.",
-      "publishForApi": "Publier pour l’API uniquement",
-      "openToApi": "Ouvrir à l’API",
-      "publishedForApi": "« {name} » est publié pour l’API uniquement",
-      "openedToApi": "« {name} » est ouvert à l’API"
+      "afterText": "L'endpoint est créé inactif. Les jetons de test peuvent déjà l'appeler, vous pouvez donc l'essayer sans risque. Donnez-lui ensuite un jeton live, ajoutez des règles d'accès si vous voulez, puis activez-le."
     },
     "tokens": {
       "title": "Jetons",

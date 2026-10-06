@@ -3858,8 +3858,8 @@
       "preview": "Il tuo endpoint",
       "where": "I dati inviati passano attraverso i controlli del modulo stesso e vengono archiviati dove il modulo conserva le sue risposte.",
       "searchForms": "Cerca moduli pubblicati…",
-      "noForms": "Nessun modulo pubblicato ancora",
-      "noFormsDesc": "Solo i moduli pubblicati possono essere endpoint, così i dati di chi chiama superano gli stessi controlli della pagina del modulo.",
+      "noForms": "Nessun modulo è ancora pronto per l’API",
+      "noFormsDesc": "Qui compaiono solo i moduli pubblicati e aperti al servizio API. Nel modulo, attiva API in Condividi (Dove le persone possono rispondere), pubblicalo e poi torna qui.",
       "toForms": "Vai a Moduli",
       "pickService": "Scegli un servizio",
       "newService": "Nuovo servizio",
@@ -3901,14 +3901,7 @@
         "DELETE": "Rimuovere una risposta tramite il suo id; resta nel registro di controllo."
       },
       "afterTitle": "Cosa succede dopo",
-      "afterText": "L'endpoint viene creato non live. I token di test possono già chiamarlo, quindi puoi provarlo in sicurezza. Poi dagli un token live, aggiungi regole di accesso se vuoi e attivalo.",
-      "notReady": "Non ancora pronto per l’API",
-      "draftHint": "Non ancora pubblicato. Pubblicalo solo per l’API: non avrà mai un indirizzo web.",
-      "closedHint": "Pubblicato, ma non aperto al servizio API.",
-      "publishForApi": "Pubblica solo per l’API",
-      "openToApi": "Apri all’API",
-      "publishedForApi": "“{name}” è pubblicato solo per l’API",
-      "openedToApi": "“{name}” è aperto all’API"
+      "afterText": "L'endpoint viene creato non live. I token di test possono già chiamarlo, quindi puoi provarlo in sicurezza. Poi dagli un token live, aggiungi regole di accesso se vuoi e attivalo."
     },
     "tokens": {
       "title": "Token",

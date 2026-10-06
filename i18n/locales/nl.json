@@ -3858,8 +3858,8 @@
       "preview": "Uw endpoint",
       "where": "Gegevens die ernaartoe worden gestuurd doorlopen de eigen controles van het formulier en worden opgeslagen waar het formulier zijn antwoorden bewaart.",
       "searchForms": "Gepubliceerde formulieren zoeken…",
-      "noForms": "Nog geen gepubliceerde formulieren",
-      "noFormsDesc": "Alleen gepubliceerde formulieren kunnen endpoints zijn, zodat de gegevens van aanroepers dezelfde controles doorlopen als de formulierpagina.",
+      "noForms": "Er is nog geen formulier klaar voor de API",
+      "noFormsDesc": "Hier staan alleen gepubliceerde formulieren die openstaan voor de API-service. Zet in het formulier API aan onder Delen (Waar mensen kunnen antwoorden), publiceer het en kom dan terug.",
       "toForms": "Naar Formulieren",
       "pickService": "Kies een service",
       "newService": "Nieuwe service",
@@ -3901,14 +3901,7 @@
         "DELETE": "Een antwoord verwijderen op id; bewaard in het auditlogboek."
       },
       "afterTitle": "Wat er daarna gebeurt",
-      "afterText": "Het endpoint wordt niet live aangemaakt. Testtokens kunnen het al aanroepen, dus je kunt het veilig proberen. Geef het daarna een livetoken, voeg eventueel toegangsregels toe en zet het aan.",
-      "notReady": "Nog niet klaar voor de API",
-      "draftHint": "Nog niet gepubliceerd. Publiceer het alleen voor de API: het krijgt nooit een webadres.",
-      "closedHint": "Gepubliceerd, maar niet open voor de API-service.",
-      "publishForApi": "Alleen voor de API publiceren",
-      "openToApi": "Openen voor de API",
-      "publishedForApi": "“{name}” is alleen voor de API gepubliceerd",
-      "openedToApi": "“{name}” staat open voor de API"
+      "afterText": "Het endpoint wordt niet live aangemaakt. Testtokens kunnen het al aanroepen, dus je kunt het veilig proberen. Geef het daarna een livetoken, voeg eventueel toegangsregels toe en zet het aan."
     },
     "tokens": {
       "title": "Tokens",
