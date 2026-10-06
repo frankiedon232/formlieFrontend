@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules and M1 to M6 done, and M7 (the owner's review: guided setup, secrets viewable again, access rule chips and anonymous networks, a clear answer for every failure, Docs & testing redesign, README test cases); stopped for the owner's review.
+**Last updated:** 2026-10-06 (F13 closed after owner testing)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -23,7 +23,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
-| F13   | API service & integrations                        | ✅     | 100% (review) |
+| F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
@@ -621,7 +621,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ---
 
-## F13, API service & integrations 🟡
+## F13, API service & integrations ✅
 
 **Goal:** turn any form into an API so organisations collect data from every side, **links, embeds and API**, all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
@@ -650,8 +650,8 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ Methods: **GET, POST, PUT, DELETE only** (for now); each switchable per endpoint
 - ✅ POST / PUT: choose the questions accepted and which are required; the form's required questions are always accepted and required; read-only, calculated, signature and payment questions are refused (with the reason shown); file questions are accepted since M5 (upload step); `shared/utils/apiService/endpoints.ts` (wizard and server alike)
 - ✅ GET: choose the questions returned and the ones it can filter by (choices, dates, numbers, short text, email), page size up to 100; never more than the chosen questions
-- ⬜ DELETE / PUT by record id; soft delete with the response kept in the audit trail
-- ⬜ Where data goes: the form's storage / destinations (built-in storage or a Data source, F12), the same pipeline as form submissions
+- ✅ DELETE / PUT by record id; soft delete with the response kept in the audit trail
+- ✅ Where data goes: the form's storage / destinations (built-in storage or a Data source, F12), the same pipeline as form submissions (API responses are stored with the form's other responses)
 - ✅ Switch each endpoint on / off (row menu, panel switch); pin a form version or follow the latest published one; "Test" button in the panel opens the try-it console (M5)
 - ✅ Example request and answer (JSON) per method, generated from the chosen questions, with Copy (panel and wizard)
 
@@ -674,7 +674,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 - ✅ Request logs (rule 21): time, call (method + address), result (2xx / 4xx / 5xx), error code, time taken, endpoint, token (never the token itself), caller IP and country, client, request id; filters (endpoint, result, method, live / test), date range (last 7 days by default), search, sort; panel with headers (secrets masked) and, when "Keep bodies" is on (1, 7 or 30 days), request and answer bodies with personal answers masked; Download (CSV of the calls in view, up to 1,000). Every call to the mock public API is logged
 - ✅ Analytics (separate from the form analytics), in the dashboard style: last 7 / 30 days; KPI cards (calls, error share, typical answer time p50, slowest 5 % p95, tokens used) with the change; traffic flow chart (calls vs calls that worked) beside one endpoint at a time; busiest endpoints, busiest tokens, countries, methods. The API service Overview rebuilt the same way (KPI cards, traffic, endpoint overview, recent calls, the three channels, shortcuts)
-- ⬜ Own dashboard in F21 (Forms, Data sources and API service each get one)
+- ➖ Own dashboard: in F21 (Forms, Data sources and API service each get one)
 
 ### 7. Docs and testing
 
@@ -685,9 +685,10 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 8. Safety and audit
 
-- ⬜ Every change to services, endpoints, tokens and rules is audited (`api.*`); tokens never shown again after creation
-- ⬜ TLS only; CORS per endpoint for browser callers; request size limits; no secrets or bodies in logs by default
-- ⬜ Permissions per role in F22; admins only until then
+- ✅ Every change to services, endpoints, tokens and rules is audited (`api.*`); tokens shown again only after the password (owner 2026-10-06, replaces "never shown again")
+- ✅ Request size limits (1 MB), no secrets in logs (tokens masked), bodies only when switched on
+- ⬜ Backend: TLS only; CORS for apps that call straight from a web browser (not in the mock; server apps, mobile apps and Postman are not affected)
+- ➖ Permissions per role: in F22 (admins only until then)
 
 ### 9. Integrations (moved here from F15, owner 2026-10-03)
 
@@ -707,7 +708,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 10. API (mock first)
 
-- ⬜ Portal management API: `/api-services` · `/api-services/{id}/endpoints` · `/api-tokens` · `/api-access-rules` · `/api-logs` · `/api-analytics`; error codes `FRM-API-*`; contract updated
+- ✅ Portal management API: `/api-services` · `/api-services/{id}/endpoints` · `/api-tokens` · `/api-access-rules` · `/api-logs` · `/api-analytics`; error codes `FRM-API-*`; contract updated
 
 ---
 
@@ -1346,3 +1347,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 | Webhook tokens (owner): token type `webhook` (no scope, live, `formalie_hook_live_`, refused by the API with `webhook_token`); webhook dialog picks one or makes "{name} · webhook" (shown once with the headers); panel shows the token with Open the token and a warning when it is gone; deliveries send Authorization / Content-Type / Formalie-Key (delivery id, same on retries), logged masked; no usable token → the try fails with `token`; webhook rotate / reveal routes and signing removed; existing webhooks migrated to tokens; Checking the token code (Node, Python, PHP); `pnpm webhook:listen` checks `WEBHOOK_TOKEN` and flags repeats. FRM-RESP-1006 details are plain fields. Checked: migration (CRM sync · webhook), a new webhook to the local receiver (token valid, Formalie-Key dlv_…), the webhook token refused by the API, masked log. |
 | 2026-10-06 | F13 | "Docs & testing" is now "API Documentation" (owner): `nav.apiDocs` (menu, page title, breadcrumb, command palette) and the four guidance sentences that name it, in every language; README and dev guide follow. |
 | 2026-10-06 | F13 | Webhooks, owner review: the local receiver now requires `WEBHOOK_TOKEN` (will not start without it), refuses a missing or wrong token with 401 before reading the body, answers a repeated Formalie-Key without handling it again; webhook answers use the clean API names (the form's endpoint names, else from the labels; masking follows), never internal keys. Checked: no token 401, wrong 401, right 200, retry not handled twice; a real response.created arrived with token valid and clean names. |
+| 2026-10-06 | F13 | Owner tested the whole API service end to end (services, endpoints, tokens of all three kinds, access rules, API Documentation, Postman, duplicates and Formalie-Key, webhooks with the local receiver): phase closed. Stale open items ticked; left for the backend: TLS only and CORS for browser callers; dashboard and roles stay in F21 / F22. |

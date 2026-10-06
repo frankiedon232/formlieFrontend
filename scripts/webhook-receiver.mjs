@@ -63,4 +63,8 @@ createServer((req, res) => {
     seen.add(key)
     answer(200, { received: true })
   })
-}).listen(PORT, () => console.log(`Webhook receiver on http://localhost:${PORT}/hooks (token required${FAIL ? `, answering ${FAIL}` : ''})`))
+}).listen(PORT, () =>
+  console.log(
+    `Webhook receiver on http://localhost:${PORT}/hooks (token required${FAIL ? `, answering ${FAIL}` : ''})`,
+  ),
+)
