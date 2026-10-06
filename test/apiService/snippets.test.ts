@@ -24,8 +24,9 @@ describe('calls', () => {
   it('give each method its address, headers and body', () => {
     const calls = Object.fromEntries(endpointCalls(endpoint).map(call => [call.method, call]))
     expect(calls.GET!.url).toBe(`${endpoint.url}?page=1&per_page=20`)
-    for (const call of Object.values(calls)) expect(call.headers).toEqual({ Authorization: 'Bearer <token>', 'Content-Type': 'application/json', 'Formalie-Key': NEW_KEY })
-    expect(Object.keys(calls.GET!.headers)).toEqual([...CALL_HEADERS])
+    expect(calls.POST!.headers).toEqual({ Authorization: 'Bearer <token>', 'Content-Type': 'application/json', 'Formalie-Key': NEW_KEY })
+    for (const method of ['GET', 'PUT', 'DELETE'] as const) expect(calls[method]!.headers).toEqual({ Authorization: 'Bearer <token>', 'Content-Type': 'application/json' })
+    expect(Object.keys(calls.POST!.headers)).toEqual([...CALL_HEADERS])
     expect(calls.POST!.body).toEqual({ full_name: expect.any(String), position: 'designer', cv: ['FILE_ID_FROM_FILES_UPLOAD'] })
     expect(calls.PUT!.url).toBe(`${endpoint.url}/<record id>`)
     expect(calls.DELETE!.body).toBeUndefined()
@@ -42,10 +43,12 @@ describe('calls', () => {
     for (const language of ['curl', 'javascript', 'python', 'php', 'csharp'] as const) expect(snippetFor(language, post)).not.toContain(NEW_KEY)
   })
 
-  it('send the three headers on a GET too', () => {
-    const get = endpointCalls(endpoint).find(call => call.method === 'GET')!
+  it('leave the Formalie-Key out of a GET (optional there) and show the masked token', () => {
+    const get = endpointCalls(endpoint, 'formalie_live_…a1b2').find(call => call.method === 'GET')!
     const curl = snippetFor('curl', get)
-    for (const name of CALL_HEADERS) expect(curl).toContain(`-H "${name}:`)
+    expect(curl).toContain('-H "Authorization: Bearer formalie_live_…a1b2"')
+    expect(curl).toContain('-H "Content-Type: application/json"')
+    expect(curl).not.toContain('Formalie-Key')
   })
 })
 
@@ -65,6 +68,8 @@ describe('OpenAPI', () => {
     expect(schema.required).toEqual(['full_name'])
     expect(Object.keys(doc.paths['/job-applications/{id}']!)).toEqual(['get', 'put', 'delete'])
     const get = doc.paths['/job-applications']!.get as { parameters: { name: string; required?: boolean }[] }
-    expect(get.parameters.find(item => item.name === 'Formalie-Key')).toMatchObject({ required: true })
+    expect(get.parameters.find(item => item.name === 'Formalie-Key')).toMatchObject({ required: false })
+    const created = doc.paths['/job-applications']!.post as { parameters: { name: string; required?: boolean }[] }
+    expect(created.parameters.find(item => item.name === 'Formalie-Key')).toMatchObject({ required: true })
   })
 })

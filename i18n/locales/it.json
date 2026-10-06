@@ -590,7 +590,7 @@
     "FRM-API-1008": "Questo endpoint non risponde a questo metodo.",
     "FRM-API-1009": "Questo token non può chiamare questo endpoint o metodo.",
     "FRM-API-1010": "Invia un token valido come Authorization: Bearer ….",
-    "FRM-API-1011": "L'header Formalie-Key manca o non è valido. Invia un nuovo id univoco a ogni chiamata.",
+    "FRM-API-1011": "L'header Formalie-Key manca o non è valido. Invia un nuovo id univoco (un UUID) a ogni POST.",
     "FRM-API-1012": "La firma della richiesta manca, è troppo vecchia o è errata.",
     "FRM-API-1013": "Non esiste un record con questo id.",
     "FRM-API-1014": "Alcuni campi non possono essere inviati a questo endpoint.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Questo segreto non può essere mostrato: è stato creato prima che i segreti potessero essere rivisti. Ruotalo per ottenerne uno nuovo.",
     "FRM-API-1017": "Invia il corpo come JSON con Content-Type: application/json.",
     "FRM-API-1018": "Il corpo è troppo grande (massimo 1 MB; invia i file tramite il passaggio di caricamento).",
-    "FRM-API-1019": "Questo modulo non è aperto al servizio API. Attiva l’API nelle sue impostazioni di Condivisione."
+    "FRM-API-1019": "Questo modulo non è aperto al servizio API. Attiva l’API nelle sue impostazioni di Condivisione.",
+    "FRM-API-1020": "Questa Formalie-Key è già stata usata per una richiesta diversa. Invia una nuova chiave per ogni nuovo record."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Può chiamare {n} servizio o endpoint eliminato | Può chiamare {n} servizi o endpoint eliminati",
         "text": "Sono stati eliminati, quindi questo token non può chiamarli. Non viene mai esteso a tutto; modifica cosa può chiamare per puntarlo al servizio giusto."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Leggere i moduli",
-          "forms_write": "Aprire e chiudere i moduli",
-          "responses_read": "Leggere le risposte",
-          "responses_write": "Modificare le risposte",
-          "webhooks_read": "Leggere i webhook",
-          "audit_read": "Leggere il registro di audit"
-        },
-        "title": "Gestisci moduli e risposte",
-        "help": "Facoltativo. Permette a questo token di usare anche l'API di gestione (/v1): elencare i moduli, aprirli o chiuderli, leggere e modificare le risposte. Lascia tutto disattivato per un token che chiama solo endpoint.",
-        "none": "Nessuno. Questo token chiama solo endpoint."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token {service}"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "I tre header che ogni chiamata invia",
-      "standardDesc": "Tutti e tre a ogni chiamata e con ogni metodo, nessuno è facoltativo. Formalie non accetta altri header.",
+      "standardTitle": "Gli header che una chiamata invia",
+      "standardDesc": "Authorization e Content-Type a ogni chiamata. Formalie-Key è obbligatoria su POST e facoltativa su GET, PUT e DELETE. Formalie non accetta altri header.",
       "when": {
-        "always": "Ogni chiamata"
+        "always": "Ogni chiamata",
+        "post": "Obbligatoria su POST, facoltativa sugli altri"
       },
       "expiryTitle": "Scadenza del token in ogni risposta",
       "expiryDesc": "Ogni risposta indica quando scade il token che ha fatto la chiamata, così la tua app può rinnovarlo in tempo.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Un nuovo id univoco per ogni chiamata (un UUID va bene; gli esempi ne creano uno per te). Ogni chiamata si trova con esso nei Log richieste, e se la rete cade e invii di nuovo lo stesso POST con la stessa chiave, Formalie risponde con il record che ha già creato."
+        "text": "Un nuovo id univoco per ogni POST: da 16 a 100 caratteri, e un UUID va bene (gli esempi ne creano uno per te). Schemi semplici come 1111… o 1234… vengono rifiutati. Se la rete cade e invii di nuovo lo stesso POST con la stessa chiave entro 24 ore, Formalie risponde con il record che ha già creato; la stessa chiave con un corpo diverso viene rifiutata, quindi una chiave riutilizzata non fa mai perdere un record. Sugli altri metodi è facoltativa e serve solo a ritrovare la chiamata nei Log richieste."
       },
       "files": {
         "title": "Invio di file",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Header",
-        "text": "Ogni chiamata invia questi tre header, qualunque sia il metodo: Authorization con il tuo token, Content-Type: application/json e una Formalie-Key. Nessuno è facoltativo e non servono altri header."
+        "text": "Ogni chiamata invia Authorization con il tuo token e Content-Type: application/json. Un POST invia anche una Formalie-Key; su GET, PUT e DELETE è facoltativa. Non servono altri header."
       },
       "expiry": {
         "title": "Scadenza del token",
         "text": "Ogni risposta riporta la scadenza del token: l'header Formalie-Token-Expires e, accanto ai dati, meta.token_expires_at e meta.token_expires_in_days (null per un token che non scade mai). Rinnova il token prima del giorno."
-      },
-      "manage": {
-        "title": "Gestisci moduli e risposte",
-        "text": "Oltre ai tuoi endpoint, un token può gestire il workspace tramite /v1: elencare i moduli, aprirli o chiuderli, leggere, modificare o eliminare le risposte e leggere webhook e audit trail. Dai al token questi diritti nel passaggio «Gestisci moduli e risposte». Valgono gli stessi tre header.",
-        "base": "Indirizzo"
       }
     },
     "journey": {

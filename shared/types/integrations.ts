@@ -1,7 +1,7 @@
 /**
  * Webhooks and Formalie's own API keys (F13 M6, docs/API-CONTRACT.md → Integrations). Webhooks send
  * each response event to the organisation's own address, signed and retried; API keys let their code
- * use Formalie's management API (`https://api.formalie.dev/v1/…`, with an API token that has management rights). Admins only until F22.
+ * read and write responses through their API service endpoints. Admins only until F22.
  */
 
 export const WEBHOOK_EVENTS = ['response.created', 'response.updated', 'response.status_changed', 'response.deleted'] as const

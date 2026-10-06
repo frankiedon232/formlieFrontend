@@ -168,16 +168,10 @@ export const API_TOKEN_STATUSES = ['active', 'expiring', 'expired', 'revoked'] a
 export type ApiTokenStatus = (typeof API_TOKEN_STATUSES)[number]
 
 /** What a token may call; an empty list means "all". */
-/** What a token may do in the management API (/v1: forms, responses, webhooks, audit), owner 2026-10-06: API keys folded into tokens. */
-export const MANAGE_SCOPES = ['forms:read', 'forms:write', 'responses:read', 'responses:write', 'webhooks:read', 'audit:read'] as const
-export type ManageScope = (typeof MANAGE_SCOPES)[number]
-
 export interface ApiTokenScopes {
   services: string[]
   endpoints: string[]
   methods: ApiMethod[]
-  /** Management API rights; none by default. */
-  manage?: ManageScope[]
 }
 
 export interface ApiToken extends ApiUsage {

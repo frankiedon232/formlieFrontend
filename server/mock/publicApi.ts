@@ -19,7 +19,7 @@
  * be tried from Postman (the real service takes the connection's address and GeoIP).
  * Test tokens never touch real responses: writes are checked and answered, nothing is stored.
  */
-import { timingSafeEqual } from 'node:crypto'
+import { createHash, timingSafeEqual } from 'node:crypto'
 import type { H3Event } from 'h3'
 import { checkSubmission } from '#shared/utils/forms/submission'
 import { allFields } from '#shared/utils/forms/build'
@@ -29,7 +29,7 @@ import type { FileAnswer } from '#shared/types/public'
 import { attachRespondentFiles, respondentFile, storeApiFile } from './routes/uploads'
 import { validateAnswer } from '#shared/utils/forms/validate'
 import { endpointFieldsOf, exampleRecord } from '#shared/utils/apiService/endpoints'
-import { scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
+import { canonicalJson, checkCallKey, scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { decideAccess, rulesFor, type AccessCaller } from '#shared/utils/apiService/access'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
 import type { ApiMethod } from '#shared/utils/urls/public'
@@ -46,7 +46,6 @@ import { maskAnswers, PERSONAL_TYPES } from './core/mask'
 import { API_NETWORKS } from '#shared/types/apiService'
 import { channelsOf } from '#shared/types/forms'
 import { emitResponse } from './data/integrationStore'
-import { handleManagementApi } from './managementApi'
 
 class PublicError extends Error {
   constructor(
@@ -147,22 +146,6 @@ function callerToken(event: H3Event, tenant: MockTenant): StoredApiToken {
   return token
 }
 
-/** The token behind a bearer in any workspace (the management API has no address key), or null. */
-export function tokenByBearer(bearer: string): { tenant: MockTenant; token: StoredApiToken } | null {
-  const short = accessTokens.get(bearer)
-  if (short) {
-    if (short.expires <= Date.now() || short.token === CONSOLE) return null
-    const tenant = MOCK_TENANTS.find(item => item.id === short.tenant)
-    const token = tenant ? apiOf(tenant).tokens.find(item => item.id === short.token) : undefined
-    return tenant && token && live(token) ? { tenant, token } : null
-  }
-  for (const tenant of MOCK_TENANTS) {
-    const token = apiOf(tenant).tokens.find(item => item.kind === 'static' && matches(item, bearer))
-    if (token) return live(token) ? { tenant, token } : null
-  }
-  return null
-}
-
 /** The Docs console (F13 M5): a test token that may call everything, never stored, lives a minute. */
 const CONSOLE = '__console__'
 const consoleToken = (): StoredApiToken => ({ id: CONSOLE, name: 'Docs console', kind: 'static', mode: 'test', secret_hash: '', preview: '', previous_hash: null, rotating_until: null, client_id: null, lifetime_minutes: null, signing: false, signing_secret: null, scopes: { services: [], endpoints: [], methods: [] }, expires_at: null, last_used_at: null, created_by: { id: 'system', name: 'Formalie' }, created_at: new Date().toISOString(), revoked_at: null })
@@ -201,11 +184,9 @@ interface CallContext {
 /** Answers whose question type holds personal data are masked in kept bodies. */
 /** Handles a call and writes it to the request log (when the address key belongs to a workspace). */
 export async function handlePublicApi(event: H3Event, path: string) {
-  // Formalie's own management API (F13 M6): /v1/…, called with an API token that has management rights
-  const parts = path.split('?')[0]!.split('/').filter(Boolean)
   const context: CallContext = { raw: '' }
   const started = Date.now()
-  const result = (parts[0] === 'v1' ? await handleManagementApi(event, parts.slice(1), context, tokenByBearer) : await handle(event, path, context)) as { error?: { code?: string }; data?: unknown; meta?: Record<string, unknown> } | undefined
+  const result = (await handle(event, path, context)) as { error?: { code?: string }; data?: unknown; meta?: Record<string, unknown> } | undefined
   // The token's expiry with every answer (owner, 2026-10-06: an expiry tracker in the data, never a surprise)
   if (context.token && context.token.id !== '__console__') {
     const expires = context.token.expires_at
@@ -323,12 +304,15 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       const part = methods.length && !methods.includes(method as ApiMethod) ? { field: 'method', message: 'not_allowed_for_token' } : endpoints.length && !endpoints.includes(endpoint.id) ? { field: 'endpoint', message: 'not_allowed_for_token' } : { field: 'service', message: services.some(id => !apiOf(tenant).services.some(item => item.id === id)) ? 'token_service_deleted' : 'not_allowed_for_token' }
       throw new PublicError('FRM-API-1009', [part])
     }
-    // The three headers every call sends (owner, 2026-10-06): Authorization (checked above), Content-Type (JSON by
-    // default) and Formalie-Key, a new unique id per call (a repeated POST answers with its first record; every call
-    // is found by it in Request logs). No custom headers and no signatures.
+    // The headers (owner, 2026-10-06): Authorization (checked above), Content-Type (JSON by default) and the
+    // Formalie-Key, a new unique id: required on POST (a retry with the same key and body answers with its first
+    // record), optional on GET, PUT and DELETE (checked when sent; Request logs find a call by it). No other headers.
     const callKey = getHeader(event, 'formalie-key')?.trim() ?? ''
-    if (!/^[A-Za-z0-9._:-]{8,100}$/.test(callKey)) throw new PublicError('FRM-API-1011', [{ field: 'Formalie-Key', message: callKey ? 'invalid' : 'missing' }])
-    context.callKey = callKey
+    if (method === 'POST' || callKey) {
+      const problem = checkCallKey(callKey)
+      if (problem) throw new PublicError('FRM-API-1011', [{ field: 'Formalie-Key', message: problem }])
+    }
+    context.callKey = callKey || undefined
     token.last_used_at = new Date().toISOString()
     saveApi()
     const test = token.mode === 'test'
@@ -400,17 +384,33 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       if (required.length) throw new PublicError('FRM-RESP-1001', required.map(field => ({ field: field.key, message: 'required' })))
       const { issues, answers } = checkSubmission(schema, body)
       if (issues.length) throw new PublicError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
-      const idempotency = getHeader(event, 'formalie-key')?.slice(0, 100)
-      const submissionId = idempotency ? `api:${endpoint.id}:${idempotency}` : `api:${crypto.randomUUID()}`
-      const earlier = idempotency ? responsesOf(tenant).responses.find(item => item.submission_id === submissionId) : undefined
+      // A retry within 24 hours: the same key and body answer with the first record; the same key with another
+      // body is refused, so a key reused by mistake never swallows a new record silently (owner, 2026-10-06)
+      const store = apiOf(tenant)
+      const since = Date.now() - 86_400_000
+      store.replays = (store.replays ?? []).filter(item => Date.parse(item.at) > since)
+      const replayKey = `${endpoint.id}:${context.callKey}`
+      const hash = createHash('sha256').update(canonicalJson(body)).digest('hex')
+      const earlier = store.replays.find(item => item.key === replayKey)
       if (earlier) {
-        const entry = formResponses(tenant, form).find(item => item.id === earlier.id)
+        if (earlier.hash !== hash) throw new PublicError('FRM-API-1020', [{ field: 'Formalie-Key', message: 'used_for_another_body' }])
+        if (earlier.answer) return send(event, 200, { ...(earlier.answer as object), meta: { replayed: true } })
+        const entry = earlier.response_id ? formResponses(tenant, form).find(item => item.id === earlier.response_id) : undefined
         if (entry) return send(event, 200, { data: record(form, entry, choices), meta: { replayed: true } })
       }
-      if (test) return send(event, 201, { data: { id: encodeId(crypto.randomUUID()), submitted_at: new Date().toISOString(), status: 'new', data: Object.fromEntries(choices.filter(field => field.returned).map(field => [field.name, answers[field.key] ?? null])) }, meta: { test: true } })
+      const submissionId = `api:${endpoint.id}:${crypto.randomUUID()}`
+      if (test) {
+        const answer = { data: { id: encodeId(crypto.randomUUID()), submitted_at: new Date().toISOString(), status: 'new', data: Object.fromEntries(choices.filter(field => field.returned).map(field => [field.name, answers[field.key] ?? null])) }, meta: { test: true } }
+        store.replays.unshift({ key: replayKey, hash, at: new Date().toISOString(), response_id: null, answer })
+        saveApi()
+        return send(event, 201, answer)
+      }
       const stored = { id: crypto.randomUUID(), form_id: form.id, form_version: endpoint.version ?? form.versions?.[0]?.number ?? null, submitted_at: new Date().toISOString(), language: schema.settings?.language ?? 'en', data: answers, submission_id: submissionId, channel: 'api' as const, meta: { ip: getRequestIP(event, { xForwardedFor: true }) ?? 'unknown', user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 300) } }
       responsesOf(tenant).responses.unshift(stored)
       saveResponses()
+      store.replays.unshift({ key: replayKey, hash, at: stored.submitted_at, response_id: stored.id })
+      store.replays.splice(5000)
+      saveApi()
       attachRespondentFiles(fileIds, stored.id)
       form.responses_count += 1
       saveForms()

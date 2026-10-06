@@ -590,7 +590,7 @@
     "FRM-API-1008": "이 엔드포인트는 이 메서드에 응답하지 않습니다.",
     "FRM-API-1009": "이 토큰은 이 엔드포인트나 메서드를 호출할 수 없습니다.",
     "FRM-API-1010": "유효한 토큰을 Authorization: Bearer … 형식으로 보내세요.",
-    "FRM-API-1011": "Formalie-Key 헤더가 없거나 올바르지 않습니다. 호출마다 새로운 고유 ID를 보내세요.",
+    "FRM-API-1011": "Formalie-Key 헤더가 없거나 올바르지 않습니다. POST마다 새로운 고유 ID(UUID)를 보내세요.",
     "FRM-API-1012": "요청 서명이 없거나 너무 오래되었거나 잘못되었습니다.",
     "FRM-API-1013": "이 ID의 레코드가 없습니다.",
     "FRM-API-1014": "일부 필드는 이 엔드포인트로 보낼 수 없습니다.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "이 시크릿은 표시할 수 없습니다. 시크릿을 다시 볼 수 있게 되기 전에 만들어졌습니다. 새로 받으려면 교체하세요.",
     "FRM-API-1017": "본문을 JSON으로 보내고 Content-Type: application/json을 지정하세요.",
     "FRM-API-1018": "본문이 너무 큽니다(최대 1 MB, 파일은 업로드 단계로 보내세요).",
-    "FRM-API-1019": "이 양식은 API 서비스에 열려 있지 않습니다. 공유 설정에서 API를 켜세요."
+    "FRM-API-1019": "이 양식은 API 서비스에 열려 있지 않습니다. 공유 설정에서 API를 켜세요.",
+    "FRM-API-1020": "이 Formalie-Key는 이미 다른 요청에 사용되었습니다. 새 레코드마다 새 키를 보내세요."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -4024,19 +4025,6 @@
         "title": "삭제된 서비스 또는 엔드포인트 {n}개를 호출할 수 있습니다 | 삭제된 서비스 또는 엔드포인트 {n}개를 호출할 수 있습니다",
         "text": "삭제되었기 때문에 이 토큰은 호출할 수 없습니다. 전체로 확대되지 않습니다. 올바른 서비스를 가리키도록 호출 가능한 대상을 수정하세요."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "폼 읽기",
-          "forms_write": "폼 열기 및 닫기",
-          "responses_read": "응답 읽기",
-          "responses_write": "응답 변경",
-          "webhooks_read": "웹훅 읽기",
-          "audit_read": "감사 로그 읽기"
-        },
-        "title": "양식 및 응답 관리",
-        "help": "선택 사항. 이 토큰이 관리 API(/v1)도 사용할 수 있게 합니다. 양식 목록 보기, 열기 또는 닫기, 응답 읽기와 변경이 가능합니다. 엔드포인트만 호출하는 토큰이라면 모두 끄세요.",
-        "none": "없음. 이 토큰은 엔드포인트만 호출합니다."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} 토큰"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "헤더",
-      "standardTitle": "모든 호출이 보내는 세 가지 헤더",
-      "standardDesc": "세 가지 모두 모든 호출과 모든 메서드에서 보내며, 선택 사항은 없습니다. Formalie는 다른 헤더를 받지 않습니다.",
+      "standardTitle": "호출이 보내는 헤더",
+      "standardDesc": "Authorization과 Content-Type은 모든 호출에서 보냅니다. Formalie-Key는 POST에서는 필수이고 GET, PUT, DELETE에서는 선택입니다. Formalie는 다른 헤더를 받지 않습니다.",
       "when": {
-        "always": "모든 호출"
+        "always": "모든 호출",
+        "post": "POST에서는 필수, 나머지는 선택"
       },
       "expiryTitle": "모든 응답에 토큰 만료 정보",
       "expiryDesc": "모든 응답에 호출한 토큰의 만료 시점이 담겨 있어, 앱이 제때 갱신할 수 있습니다.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "호출마다 새로운 고유 ID(UUID가 적합하며, 예제는 자동으로 만들어 줍니다). 모든 호출은 이 ID로 요청 로그에서 찾을 수 있고, 네트워크가 실패해 같은 키로 같은 POST를 다시 보내면 Formalie는 이미 만든 레코드로 응답합니다."
+        "text": "POST마다 새로운 고유 ID(16~100자, UUID가 적합하며 예제는 자동으로 만들어 줍니다). 1111… 또는 1234… 같은 단순한 패턴은 거부됩니다. 네트워크가 실패해 24시간 안에 같은 키로 같은 POST를 다시 보내면 Formalie는 이미 만든 레코드로 응답합니다. 같은 키에 다른 본문은 거부되므로 키를 재사용해도 레코드가 사라지지 않습니다. 다른 메서드에서는 선택 사항이며 요청 로그에서 호출을 찾는 데만 도움이 됩니다."
       },
       "files": {
         "title": "파일 보내기",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "헤더",
-        "text": "메서드와 관계없이 모든 호출은 이 세 헤더를 보냅니다. 토큰이 담긴 Authorization, Content-Type: application/json, 그리고 Formalie-Key입니다. 선택 사항은 없고 다른 헤더는 필요 없습니다."
+        "text": "모든 호출은 토큰이 담긴 Authorization과 Content-Type: application/json을 보냅니다. POST는 Formalie-Key도 함께 보내며, GET, PUT, DELETE에서는 선택입니다. 다른 헤더는 필요 없습니다."
       },
       "expiry": {
         "title": "토큰 만료",
         "text": "모든 응답에 토큰 만료 정보가 담깁니다. Formalie-Token-Expires 헤더와, 데이터 옆의 meta.token_expires_at 및 meta.token_expires_in_days입니다(만료되지 않는 토큰은 null). 그날이 오기 전에 토큰을 갱신하세요."
-      },
-      "manage": {
-        "title": "양식 및 응답 관리",
-        "text": "엔드포인트 외에도 토큰은 /v1로 워크스페이스를 관리할 수 있습니다. 양식 목록 보기, 열기 또는 닫기, 응답 읽기·변경·삭제, 웹훅과 감사 추적 읽기가 가능합니다. 토큰의 '양식 및 응답 관리' 단계에서 이 권한을 부여하세요. 같은 헤더 3개가 적용됩니다.",
-        "base": "주소"
       }
     },
     "journey": {

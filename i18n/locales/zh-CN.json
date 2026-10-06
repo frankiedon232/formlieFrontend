@@ -590,7 +590,7 @@
     "FRM-API-1008": "此端点不响应该方法。",
     "FRM-API-1009": "此令牌无权调用该端点或方法。",
     "FRM-API-1010": "请以 Authorization: Bearer … 发送有效令牌。",
-    "FRM-API-1011": "Formalie-Key 请求头缺失或无效。每次调用都请发送一个新的唯一 ID。",
+    "FRM-API-1011": "Formalie-Key 请求头缺失或无效。每个 POST 都请发送一个新的唯一 ID(UUID)。",
     "FRM-API-1012": "请求签名缺失、已过期或不正确。",
     "FRM-API-1013": "没有此 ID 的记录。",
     "FRM-API-1014": "部分字段不能发送到此端点。",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "无法显示此密钥：它创建于密钥可再次查看之前。请轮换它以获得新的密钥。",
     "FRM-API-1017": "请以 JSON 格式发送请求体，并设置 Content-Type: application/json。",
     "FRM-API-1018": "请求体过大（最多 1 MB；文件请通过上传步骤发送）。",
-    "FRM-API-1019": "此表单未向 API 服务开放。请在分享设置中开启 API。"
+    "FRM-API-1019": "此表单未向 API 服务开放。请在分享设置中开启 API。",
+    "FRM-API-1020": "这个 Formalie-Key 已用于另一个不同的请求。每条新记录都请发送新的密钥。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -4024,19 +4025,6 @@
         "title": "可能调用 {n} 个已删除的服务或端点 | 可能调用 {n} 个已删除的服务或端点",
         "text": "它们已被删除,因此此令牌无法调用。令牌不会被扩大到全部范围;请编辑其可调用的范围,指向正确的服务。"
       },
-      "manage": {
-        "scope": {
-          "forms_read": "读取表单",
-          "forms_write": "开启和关闭表单",
-          "responses_read": "读取回复",
-          "responses_write": "更改回复",
-          "webhooks_read": "读取 Webhook",
-          "audit_read": "读取审计日志"
-        },
-        "title": "管理表单和回复",
-        "help": "可选。让此令牌也能使用管理 API (/v1)：列出表单、打开或关闭表单、读取和修改回复。如果令牌只调用端点，请全部保持关闭。",
-        "none": "无。此令牌只调用端点。"
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} 令牌"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "请求头",
-      "standardTitle": "每次调用都会发送的三个请求头",
-      "standardDesc": "这三个在每次调用、每种方法中都会发送,没有可选的。Formalie 不接受其他请求头。",
+      "standardTitle": "调用会发送的请求头",
+      "standardDesc": "每次调用都会发送 Authorization 和 Content-Type。Formalie-Key 在 POST 中必填,在 GET、PUT 和 DELETE 中可选。Formalie 不接受其他请求头。",
       "when": {
-        "always": "每次调用"
+        "always": "每次调用",
+        "post": "POST 必填,其余可选"
       },
       "expiryTitle": "每个响应都带有令牌有效期",
       "expiryDesc": "每个响应都会说明发起调用的令牌何时到期,让你的应用能及时续期。",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "每次调用都用一个新的唯一 ID(UUID 很合适;示例会为你生成)。每次调用都能凭它在请求日志中找到,如果网络失败后你用同一个密钥再次发送同一个 POST,Formalie 会返回它已创建的记录。"
+        "text": "每个 POST 都用一个新的唯一 ID:16 到 100 个字符,UUID 很合适(示例会为你生成)。1111… 或 1234… 这类简单模式会被拒绝。如果网络失败后你在 24 小时内用同一个密钥再次发送同一个 POST,Formalie 会返回它已创建的记录;同一个密钥配不同的内容会被拒绝,因此重复使用密钥不会丢失记录。对其他方法它是可选的,只是帮你在请求日志中找到该调用。"
       },
       "files": {
         "title": "发送文件",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "请求头",
-        "text": "无论使用哪种方法,每次调用都会发送这三个请求头:带有你的令牌的 Authorization、Content-Type: application/json,以及 Formalie-Key。没有可选的,也不需要其他请求头。"
+        "text": "每次调用都会发送带有你的令牌的 Authorization 和 Content-Type: application/json。POST 还会发送 Formalie-Key;在 GET、PUT 和 DELETE 中它是可选的。不需要其他请求头。"
       },
       "expiry": {
         "title": "令牌有效期",
         "text": "每个响应都带有令牌的有效期:Formalie-Token-Expires 请求头,以及数据旁的 meta.token_expires_at 和 meta.token_expires_in_days(永不过期的令牌为 null)。请在到期日之前续期令牌。"
-      },
-      "manage": {
-        "title": "管理表单和回复",
-        "text": "除了您的端点，令牌还可以通过 /v1 管理工作区：列出表单、打开或关闭表单、读取、修改或删除回复，以及读取 Webhook 和审计追踪。请在令牌的“管理表单和回复”步骤中授予这些权限。同样适用那三个请求头。",
-        "base": "地址"
       }
     },
     "journey": {

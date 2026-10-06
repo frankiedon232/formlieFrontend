@@ -36,11 +36,11 @@ const example = computed(() => {
       return { line: `GET ${props.url}?page=1&per_page=${Math.min(20, props.pageSize)}`, body: null, status: '200 OK', answer: json({ data: [record], meta: { page: 1, per_page: Math.min(20, props.pageSize), total: 1, ...EXPIRY } }) }
   }
 })
-// The three headers every call sends, on every method, none optional (owner, 2026-10-06)
+// The headers a call sends (owner, 2026-10-06): Formalie-Key only on POST, where it is required
 const callers = useCallerToken()
 if (props.endpoint) void callers.load(true)
 const token = computed(() => (props.endpoint && callers.tokens.value ? callers.pick(props.endpoint, method.value) : null))
-const headers = computed(() => [`Authorization: Bearer ${token.value?.preview ?? '<token>'}`, 'Content-Type: application/json', `Formalie-Key: ${NEW_KEY}`].join('\n'))
+const headers = computed(() => [`Authorization: Bearer ${token.value?.preview ?? '<token>'}`, 'Content-Type: application/json', ...(method.value === 'POST' ? [`Formalie-Key: ${NEW_KEY}`] : [])].join('\n'))
 function copyText(text: string) {
   void copy(text)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })

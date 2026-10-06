@@ -3,8 +3,8 @@
   check, with a test token made for it (nothing is ever stored; not-live endpoints can be tried
   too). Left: the request, like an API client: the method (in its colour), the address with the
   record id in it, then Body or Headers (the token and Content-Type filled in and locked, a fresh
-  Formalie-Key for each call that can be kept to see a retry; the three headers every call sends,
-  owner 2026-10-06).
+  Formalie-Key for each POST that can be kept to see a retry; on other methods it is optional and
+  not sent, owner 2026-10-06).
   Right: the answer, its status, time and size, the JSON or its headers, and the last calls.
 -->
 <script setup lang="ts">
@@ -62,11 +62,11 @@ async function send() {
   }
   sending.value = true
   try {
-    const headers = { 'Formalie-Key': state.key }
+    const headers: Record<string, string> = state.method === 'POST' ? { 'Formalie-Key': state.key } : {}
     result.value = (await api.post<ApiTryResult>(`/api-endpoints/${props.endpoint.id}/try`, { method: state.method, record_id: state.record.trim() || null, body, headers })).data
     history.value = [{ method: state.method, status: result.value.status, ms: result.value.duration_ms, at: Date.now() }, ...history.value].slice(0, 5)
     answerTab.value = 'body'
-    if (!state.keepKey) state.key = newKey()
+    if (state.method === 'POST' && !state.keepKey) state.key = newKey()
   } catch (error) {
     handle(error)
   } finally {
@@ -148,7 +148,7 @@ const lines = computed(() => Math.max(state.body.split('\n').length, 12))
               <span class="min-w-0 flex-1 font-mono text-xs text-muted">application/json</span>
               <UIcon name="i-lucide-lock" class="size-3.5 text-muted" />
             </li>
-            <li class="flex flex-col gap-2 px-3 py-2">
+            <li v-if="state.method === 'POST'" class="flex flex-col gap-2 px-3 py-2">
               <div class="flex items-center gap-3">
                 <code class="w-36 shrink-0 font-mono text-xs text-highlighted">Formalie-Key</code>
                 <input v-model="state.key" class="min-w-0 flex-1 bg-transparent font-mono text-xs text-highlighted outline-none" dir="ltr" :aria-label="'Formalie-Key'" >

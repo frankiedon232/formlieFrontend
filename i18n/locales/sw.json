@@ -590,7 +590,7 @@
     "FRM-API-1008": "Endpoint hii haijibu njia hii.",
     "FRM-API-1009": "Tokeni hii hairuhusiwi kuita endpoint au njia hii.",
     "FRM-API-1010": "Tuma tokeni halali kama Authorization: Bearer ….",
-    "FRM-API-1011": "Kichwa Formalie-Key hakipo au si halali. Tuma kitambulisho kipya cha kipekee kwa kila mwito.",
+    "FRM-API-1011": "Kichwa Formalie-Key hakipo au si halali. Tuma kitambulisho kipya cha kipekee (UUID) kwa kila POST.",
     "FRM-API-1012": "Saini ya ombi haipo, ni ya zamani mno au si sahihi.",
     "FRM-API-1013": "Hakuna rekodi yenye kitambulisho hiki.",
     "FRM-API-1014": "Baadhi ya sehemu haziwezi kutumwa kwa endpoint hii.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Siri hii haiwezi kuonyeshwa: iliundwa kabla siri hazijaweza kuonekana tena. Izungushe ili upate mpya.",
     "FRM-API-1017": "Tuma mwili wa ombi kama JSON ukiwa na Content-Type: application/json.",
     "FRM-API-1018": "Mwili wa ombi ni mkubwa mno (upeo wa 1 MB; tuma faili kupitia hatua ya upakiaji).",
-    "FRM-API-1019": "Fomu hii haijafunguliwa kwa huduma ya API. Washa API kwenye mipangilio ya Shiriki."
+    "FRM-API-1019": "Fomu hii haijafunguliwa kwa huduma ya API. Washa API kwenye mipangilio ya Shiriki.",
+    "FRM-API-1020": "Formalie-Key hii imeshatumika kwa ombi tofauti. Tuma ufunguo mpya kwa kila rekodi mpya."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Inaweza kupiga huduma au endpoint {n} iliyofutwa | Inaweza kupiga huduma au endpoint {n} zilizofutwa",
         "text": "Zimefutwa, kwa hiyo tokeni hii haiwezi kuzipiga. Haipanuliwi kamwe kwa kila kitu; hariri inachoweza kupiga ili iielekeze kwenye huduma sahihi."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Soma fomu",
-          "forms_write": "Fungua na funga fomu",
-          "responses_read": "Soma majibu",
-          "responses_write": "Badilisha majibu",
-          "webhooks_read": "Soma webhook",
-          "audit_read": "Soma kumbukumbu ya ukaguzi"
-        },
-        "title": "Simamia fomu na majibu",
-        "help": "Hiari. Huruhusu tokeni hii itumie pia API ya usimamizi (/v1): kuorodhesha fomu, kuzifungua au kuzifunga, kusoma na kubadilisha majibu. Acha vyote vimezimwa kwa tokeni inayoita endpoint pekee.",
-        "none": "Hakuna. Tokeni hii huita endpoint pekee."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Tokeni ya {service}"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Vichwa vitatu ambavyo kila mwito hutuma",
-      "standardDesc": "Vyote vitatu kwa kila mwito na kila njia, hakuna cha hiari. Formalie haikubali vichwa vingine.",
+      "standardTitle": "Vichwa ambavyo mwito hutuma",
+      "standardDesc": "Authorization na Content-Type kwa kila mwito. Formalie-Key ni lazima kwenye POST na ni hiari kwenye GET, PUT na DELETE. Formalie haikubali vichwa vingine.",
       "when": {
-        "always": "Kila mwito"
+        "always": "Kila mwito",
+        "post": "Lazima kwenye POST, hiari kwa zingine"
       },
       "expiryTitle": "Kuisha kwa tokeni katika kila jibu",
       "expiryDesc": "Kila jibu linasema tokeni iliyofanya mwito itaisha lini, ili programu yako iweze kuifanya upya kwa wakati.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Kitambulisho kipya cha kipekee kwa kila mwito (UUID inafaa; mifano hukutengenezea kimoja). Kila mwito hupatikana kwa kitambulisho hicho katika Kumbukumbu za maombi, na mtandao ukifeli ukatuma POST ile ile kwa ufunguo ule ule, Formalie hujibu kwa rekodi iliyokwisha kuunda."
+        "text": "Kitambulisho kipya cha kipekee kwa kila POST: herufi 16 hadi 100, na UUID inafaa (mifano hukutengenezea kimoja). Mifumo rahisi kama 1111… au 1234… hukataliwa. Mtandao ukifeli ukatuma POST ile ile kwa ufunguo ule ule ndani ya saa 24, Formalie hujibu kwa rekodi iliyokwisha kuunda; ufunguo ule ule wenye maudhui tofauti hukataliwa, kwa hiyo ufunguo uliotumika tena haupotezi rekodi kamwe. Kwa njia nyingine ni hiari na husaidia tu kupata mwito katika Kumbukumbu za maombi."
       },
       "files": {
         "title": "Kutuma faili",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Vichwa",
-        "text": "Kila mwito hutuma vichwa hivi vitatu, njia yoyote iwe: Authorization na tokeni yako, Content-Type: application/json, na Formalie-Key. Hakuna cha hiari na hakuna vichwa vingine vinavyohitajika."
+        "text": "Kila mwito hutuma Authorization na tokeni yako na Content-Type: application/json. POST hutuma pia Formalie-Key; kwenye GET, PUT na DELETE ni hiari. Hakuna vichwa vingine vinavyohitajika."
       },
       "expiry": {
         "title": "Kuisha kwa tokeni",
         "text": "Kila jibu hubeba kuisha kwa tokeni: kichwa Formalie-Token-Expires na, karibu na data, meta.token_expires_at na meta.token_expires_in_days (null kwa tokeni isiyoisha kamwe). Fanya tokeni upya kabla siku haijafika."
-      },
-      "manage": {
-        "title": "Simamia fomu na majibu",
-        "text": "Mbali na endpoint zako, tokeni inaweza kusimamia nafasi ya kazi kupitia /v1: kuorodhesha fomu, kuzifungua au kuzifunga, kusoma, kubadilisha au kufuta majibu, na kusoma webhook na rekodi ya ukaguzi. Ipe tokeni haki hizi katika hatua ya “Simamia fomu na majibu”. Header zile zile tatu zinatumika.",
-        "base": "Anwani"
       }
     },
     "journey": {

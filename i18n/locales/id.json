@@ -590,7 +590,7 @@
     "FRM-API-1008": "Endpoint ini tidak menjawab metode ini.",
     "FRM-API-1009": "Token ini tidak boleh memanggil endpoint atau metode ini.",
     "FRM-API-1010": "Kirim token yang valid sebagai Authorization: Bearer ….",
-    "FRM-API-1011": "Header Formalie-Key hilang atau tidak valid. Kirim id unik baru di setiap panggilan.",
+    "FRM-API-1011": "Header Formalie-Key hilang atau tidak valid. Kirim id unik baru (UUID) di setiap POST.",
     "FRM-API-1012": "Tanda tangan permintaan tidak ada, terlalu lama, atau salah.",
     "FRM-API-1013": "Tidak ada catatan dengan id ini.",
     "FRM-API-1014": "Beberapa kolom tidak dapat dikirim ke endpoint ini.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Rahasia ini tidak dapat ditampilkan: dibuat sebelum rahasia bisa dilihat lagi. Rotasi untuk mendapatkan yang baru.",
     "FRM-API-1017": "Kirim isi permintaan sebagai JSON dengan Content-Type: application/json.",
     "FRM-API-1018": "Isi permintaan terlalu besar (maksimal 1 MB; kirim file melalui langkah unggah).",
-    "FRM-API-1019": "Formulir ini tidak terbuka untuk layanan API. Aktifkan API di pengaturan Bagikan."
+    "FRM-API-1019": "Formulir ini tidak terbuka untuk layanan API. Aktifkan API di pengaturan Bagikan.",
+    "FRM-API-1020": "Formalie-Key ini sudah dipakai untuk permintaan yang berbeda. Kirim key baru untuk setiap data baru."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Mungkin memanggil {n} layanan atau endpoint yang dihapus | Mungkin memanggil {n} layanan atau endpoint yang dihapus",
         "text": "Itu sudah dihapus, jadi token ini tidak dapat memanggilnya. Token tidak pernah diperluas ke semuanya; ubah apa yang boleh dipanggil agar mengarah ke layanan yang benar."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Baca formulir",
-          "forms_write": "Buka dan tutup formulir",
-          "responses_read": "Baca respons",
-          "responses_write": "Ubah respons",
-          "webhooks_read": "Baca webhook",
-          "audit_read": "Baca jejak audit"
-        },
-        "title": "Kelola formulir dan jawaban",
-        "help": "Opsional. Memungkinkan token ini memakai API manajemen (/v1) juga: melihat daftar formulir, membuka atau menutupnya, membaca dan mengubah jawaban. Biarkan semuanya mati untuk token yang hanya memanggil endpoint.",
-        "none": "Tidak ada. Token ini hanya memanggil endpoint."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token {service}"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Tiga header yang dikirim setiap panggilan",
-      "standardDesc": "Ketiganya di setiap panggilan dan setiap metode, tidak ada yang opsional. Formalie tidak menerima header lain.",
+      "standardTitle": "Header yang dikirim sebuah panggilan",
+      "standardDesc": "Authorization dan Content-Type di setiap panggilan. Formalie-Key wajib pada POST dan opsional pada GET, PUT, dan DELETE. Formalie tidak menerima header lain.",
       "when": {
-        "always": "Setiap panggilan"
+        "always": "Setiap panggilan",
+        "post": "Wajib pada POST, opsional pada lainnya"
       },
       "expiryTitle": "Masa berlaku token di setiap jawaban",
       "expiryDesc": "Setiap jawaban menyebutkan kapan token yang melakukan panggilan kedaluwarsa, agar aplikasi Anda bisa memperbaruinya tepat waktu.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Id unik baru untuk setiap panggilan (UUID cocok; contoh-contohnya membuatkannya untuk Anda). Setiap panggilan bisa ditemukan dengannya di Log permintaan, dan jika jaringan gagal lalu Anda mengirim POST yang sama dengan key yang sama, Formalie menjawab dengan data yang sudah dibuatnya."
+        "text": "Id unik baru untuk setiap POST: 16 sampai 100 karakter, dan UUID cocok (contoh-contohnya membuatkannya untuk Anda). Pola sederhana seperti 1111… atau 1234… ditolak. Jika jaringan gagal dan Anda mengirim POST yang sama dengan key yang sama dalam 24 jam, Formalie menjawab dengan data yang sudah dibuatnya; key yang sama dengan isi berbeda ditolak, jadi key yang dipakai ulang tidak pernah menghilangkan data. Pada metode lain sifatnya opsional dan hanya membantu menemukan panggilan di Log permintaan."
       },
       "files": {
         "title": "Mengirim file",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Header",
-        "text": "Setiap panggilan mengirim ketiga header ini, apa pun metodenya: Authorization dengan token Anda, Content-Type: application/json, dan Formalie-Key. Tidak ada yang opsional dan header lain tidak diperlukan."
+        "text": "Setiap panggilan mengirim Authorization dengan token Anda dan Content-Type: application/json. POST juga mengirim Formalie-Key; pada GET, PUT, dan DELETE sifatnya opsional. Header lain tidak diperlukan."
       },
       "expiry": {
         "title": "Masa berlaku token",
         "text": "Setiap jawaban membawa masa berlaku token: header Formalie-Token-Expires dan, di samping data, meta.token_expires_at serta meta.token_expires_in_days (null untuk token yang tidak pernah kedaluwarsa). Perbarui token sebelum harinya tiba."
-      },
-      "manage": {
-        "title": "Kelola formulir dan jawaban",
-        "text": "Selain endpoint Anda, token dapat mengelola workspace lewat /v1: melihat daftar formulir, membuka atau menutupnya, membaca, mengubah, atau menghapus jawaban, serta membaca webhook dan jejak audit. Berikan hak ini pada token di langkah “Kelola formulir dan jawaban”. Tiga header yang sama berlaku.",
-        "base": "Alamat"
       }
     },
     "journey": {

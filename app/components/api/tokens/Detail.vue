@@ -137,13 +137,6 @@ const menu = computed<DropdownMenuItem[][]>(() => {
               <span v-else class="text-sm text-highlighted">{{ t('apiService.tokens.scope.allMethods') }}</span>
             </div>
           </div>
-          <div class="flex flex-col gap-1.5 rounded-lg border border-default p-3">
-            <span class="text-[11px] text-muted">{{ t('apiService.tokens.manage.title') }}</span>
-            <div v-if="token.scopes.manage?.length" class="flex flex-wrap gap-1.5">
-              <UBadge v-for="scope in token.scopes.manage" :key="scope" :label="t(`apiService.tokens.manage.scope.${scope.replace(':', '_')}`)" color="neutral" variant="outline" size="sm" class="rounded-md" />
-            </div>
-            <span v-else class="text-sm text-highlighted">{{ t('apiService.tokens.manage.none') }}</span>
-          </div>
         </section>
 
         <section class="flex flex-col gap-3">

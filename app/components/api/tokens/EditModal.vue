@@ -1,13 +1,12 @@
 <!--
   New token / edit token (F13 M2; guided in steps since M7, owner 2026-10-06). New: 1 What a token
   is, live or test, bearer or client id + secret → 2 Name and what it may call (services,
-  endpoints, methods; empty = all; preset when opened from an endpoint; and, since API keys were
-  folded into tokens (owner 2026-10-06), the rights to manage forms and responses through /v1) → 3 Expiry, short-lived
+  endpoints, methods; empty = all; preset when opened from an endpoint) → 3 Expiry, short-lived
   lifetime → 4 Its secrets (also viewable later in the panel, after the password)
   and what comes next. Editing: name, what it may call and the expiry on one page.
 -->
 <script setup lang="ts">
-import { MANAGE_SCOPES, type ApiEndpoint, type ApiService, type ApiToken, type ApiTokenCreated, type ApiTokenSaveRequest, type ManageScope } from '#shared/types/apiService'
+import type { ApiEndpoint, ApiService, ApiToken, ApiTokenCreated, ApiTokenSaveRequest } from '#shared/types/apiService'
 import { TOKEN_EXPIRY_DAYS, TOKEN_LIFETIMES } from '#shared/utils/apiService/tokens'
 import { API_METHODS, type ApiMethod } from '#shared/utils/urls/public'
 
@@ -19,7 +18,7 @@ const api = useApi()
 const { handle } = useErrorHandler()
 const setup = useApiSetup()
 
-const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: 'static' as 'static' | 'client', services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], manage: [] as ManageScope[], expiry: '365', custom: '', lifetime: 15 })
+const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: 'static' as 'static' | 'client', services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], expiry: '365', custom: '', lifetime: 15 })
 const services = ref<ApiService[]>([])
 const endpoints = ref<ApiEndpoint[]>([])
 const created = ref<ApiTokenCreated | null>(null)
@@ -43,7 +42,6 @@ watch(open, async value => {
     services: [...(token?.scopes.services ?? [])],
     endpoints: [...(token?.scopes.endpoints ?? (props.presetEndpoint ? [props.presetEndpoint] : []))],
     methods: [...(token?.scopes.methods ?? [])],
-    manage: [...(token?.scopes.manage ?? [])],
     expiry: token ? (token.expires_at ? 'custom' : 'never') : '365',
     custom: token?.expires_at ? token.expires_at.slice(0, 10) : '',
     lifetime: token?.lifetime_minutes ?? 15,
@@ -69,7 +67,6 @@ const serviceItems = computed(() => services.value.map(item => ({ label: item.na
 const endpointItems = computed(() => endpoints.value.filter(item => !state.services.length || state.services.includes(item.service.id)).map(item => ({ label: `/${item.name}`, value: item.id })))
 const expiryItems = computed(() => [...TOKEN_EXPIRY_DAYS.map(days => ({ value: days == null ? 'never' : String(days), label: days == null ? t('apiService.tokens.never') : t('apiService.tokens.inDays', { n: days }, days) })), { value: 'custom', label: t('apiService.tokens.customDate') }])
 const lifetimeItems = TOKEN_LIFETIMES.map(n => ({ value: n, label: t('apiService.tokens.minutes', { n }) }))
-const toggleManage = (scope: ManageScope, on: boolean) => (state.manage = on ? MANAGE_SCOPES.filter(item => item === scope || state.manage.includes(item)) : state.manage.filter(item => item !== scope))
 const toggleMethod = (method: ApiMethod, on: boolean) => (state.methods = on ? API_METHODS.filter(item => item === method || state.methods.includes(item)) : state.methods.filter(item => item !== method))
 watch(() => state.services, list => (state.endpoints = state.endpoints.filter(id => !list.length || endpoints.value.find(item => item.id === id && list.includes(item.service.id)))))
 /** "Account Service · /account", or the service's name, kept unique among the workspace's tokens. */
@@ -113,7 +110,7 @@ async function save() {
   }
   saving.value = true
   try {
-    const scopes = { services: state.services, endpoints: state.endpoints, methods: state.methods, manage: state.manage }
+    const scopes = { services: state.services, endpoints: state.endpoints, methods: state.methods }
     if (props.token) {
       const { data } = await api.patch<ApiToken>(`/api-tokens/${props.token.id}`, { name: state.name.trim(), scopes, expires_at: expiresAt(), ...(props.token.kind === 'client' ? { lifetime_minutes: state.lifetime } : {}) })
       emit('saved', data)
@@ -187,11 +184,6 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
               </div>
             </UFormField>
             <p class="flex items-center gap-2 rounded-md border border-default px-3 py-2 text-xs text-muted"><UIcon name="i-lucide-target" class="size-4 shrink-0" />{{ scopeSummary }}</p>
-            <UFormField :label="t('apiService.tokens.manage.title')" :help="t('apiService.tokens.manage.help')">
-              <div class="grid gap-x-4 gap-y-2 rounded-lg border border-default p-3 sm:grid-cols-2">
-                <UCheckbox v-for="scope in MANAGE_SCOPES" :key="scope" :model-value="state.manage.includes(scope)" :label="t(`apiService.tokens.manage.scope.${scope.replace(':', '_')}`)" :description="scope" color="neutral" :ui="{ description: 'font-mono text-[11px]' }" @update:model-value="value => toggleManage(scope, !!value)" />
-              </div>
-            </UFormField>
           </template>
 
           <!-- 3 · Expiry, lifetime -->

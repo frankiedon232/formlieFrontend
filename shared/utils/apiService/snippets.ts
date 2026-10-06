@@ -39,17 +39,17 @@ export function snippetFor(language: SnippetLanguage, call: SnippetCall): string
 }
 
 /** The calls an endpoint answers, with the headers and an example body each needs. */
-/** The three headers every call sends (owner, 2026-10-06): no others exist. */
+/** The only headers a call sends (owner, 2026-10-06): Formalie-Key required on POST, optional on the other methods. */
 export const CALL_HEADERS = ['Authorization', 'Content-Type', 'Formalie-Key'] as const
 /** Placeholder the code samples turn into a generated id in each language. */
 export const NEW_KEY = '<new unique id>'
 
 export function endpointCalls(endpoint: Pick<ApiEndpointDetail, 'methods' | 'url' | 'fields' | 'page_size'>, token = '<token>'): SnippetCall[] {
-  const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', 'Formalie-Key': NEW_KEY }
+  const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
   const body = exampleRequestBody(endpoint.fields)
   return endpoint.methods.map(method => {
     if (method === 'GET') return { method, url: `${endpoint.url}?page=1&per_page=${Math.min(20, endpoint.page_size)}`, headers }
-    if (method === 'POST') return { method, url: endpoint.url, headers, body }
+    if (method === 'POST') return { method, url: endpoint.url, headers: { ...headers, 'Formalie-Key': NEW_KEY }, body }
     if (method === 'PUT') return { method, url: `${endpoint.url}/<record id>`, headers, body }
     return { method, url: `${endpoint.url}/<record id>`, headers }
   })
@@ -107,7 +107,8 @@ export function openApiFor(service: { name: string; description: string | null }
     const accepted = endpoint.fields.filter(field => field.accept)
     const record = { type: 'object', properties: { id: { type: 'string' }, submitted_at: { type: 'string', format: 'date-time' }, status: { type: 'string' }, data: { type: 'object', properties: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.name, fieldSchema(field)])) } } }
     const input = { type: 'object', properties: Object.fromEntries(accepted.map(field => [field.name, fieldSchema(field)])), required: accepted.filter(field => field.required).map(field => field.name), additionalProperties: false }
-    const headers = [{ name: 'Formalie-Key', in: 'header', required: true, schema: { type: 'string' }, description: 'A new unique id for every call. A repeated POST with the same key answers with its first record.' }]
+    const key = (required: boolean) => ({ name: 'Formalie-Key', in: 'header', required, schema: { type: 'string', minLength: 16, maxLength: 100, pattern: '^[A-Za-z0-9._:-]+$' }, description: required ? 'A new unique id (a UUID) for every POST. The same key and body within 24 hours answer with the first record; the same key with another body is refused (409).' : 'Optional: an id to find this call in Request logs.' })
+    const headers = [key(false)]
     const errors = { '401': { description: 'FRM-API-1010' }, '403': { description: 'FRM-API-1009, FRM-API-1015' }, '422': { description: 'FRM-RESP-1001, FRM-API-1014' }, '429': { description: 'FRM-GEN-1029' } }
     const one = `/${endpoint.name}/{id}`
     const list = `/${endpoint.name}`
@@ -116,7 +117,7 @@ export function openApiFor(service: { name: string; description: string | null }
         paths[list] = { ...paths[list], get: { summary: endpoint.description ?? endpoint.form.name, parameters: [...headers, { name: 'page', in: 'query', schema: { type: 'integer' } }, { name: 'per_page', in: 'query', schema: { type: 'integer', maximum: endpoint.page_size } }, ...endpoint.fields.filter(field => field.filter).map(field => ({ name: field.name, in: 'query', schema: fieldSchema(field) }))], responses: { '200': { description: 'OK', content: { 'application/json': { schema: { type: 'object', properties: { data: { type: 'array', items: record } } }, example: { data: [exampleRecord(endpoint.fields)] } } } }, ...errors } } }
         paths[one] = { ...paths[one], get: { parameters: [...headers, { name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { '200': { description: 'OK', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, '404': { description: 'FRM-API-1013' }, ...errors } } }
       }
-      if (method === 'POST') paths[list] = { ...paths[list], post: { parameters: headers, requestBody: { required: true, content: { 'application/json': { schema: input, example: exampleRequestBody(endpoint.fields) } } }, responses: { '201': { description: 'Created', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, ...errors } } }
+      if (method === 'POST') paths[list] = { ...paths[list], post: { parameters: [key(true)], requestBody: { required: true, content: { 'application/json': { schema: input, example: exampleRequestBody(endpoint.fields) } } }, responses: { '201': { description: 'Created', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, ...errors } } }
       if (method === 'PUT') paths[one] = { ...paths[one], put: { parameters: [...headers, { name: 'id', in: 'path', required: true, schema: { type: 'string' } }], requestBody: { content: { 'application/json': { schema: { ...input, required: [] } } } }, responses: { '200': { description: 'OK' }, '404': { description: 'FRM-API-1013' }, ...errors } } }
       if (method === 'DELETE') paths[one] = { ...paths[one], delete: { parameters: [...headers, { name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { '200': { description: 'Deleted' }, '404': { description: 'FRM-API-1013' }, ...errors } } }
     }

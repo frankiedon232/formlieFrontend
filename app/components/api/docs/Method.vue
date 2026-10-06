@@ -105,7 +105,7 @@ watch(() => props.method, () => (shownAnswer.value = 0))
             {{ t('apiService.docs.headers') }}
           </h4>
           <div class="flex flex-wrap gap-1.5">
-            <code v-for="header in CALL_HEADERS" :key="header" class="rounded-md border border-default px-2 py-0.5 font-mono text-xs text-highlighted" dir="ltr">{{ header }}</code>
+            <code v-for="header in CALL_HEADERS.filter(name => name !== 'Formalie-Key' || method === 'POST')" :key="header" class="rounded-md border border-default px-2 py-0.5 font-mono text-xs text-highlighted" dir="ltr">{{ header }}</code>
           </div>
         </div>
       </div>

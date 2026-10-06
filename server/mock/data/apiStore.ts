@@ -102,6 +102,19 @@ interface TenantApi {
   limited?: Record<string, number>
   /** Request log: keep request and response bodies (personal answers masked). */
   logging?: { keep_bodies: boolean; days: number }
+  /** POSTs by Formalie-Key for 24 hours: a retry answers with its first record, a different body is refused. */
+  replays?: StoredReplay[]
+}
+
+export interface StoredReplay {
+  /** `{endpoint id}:{Formalie-Key}` */
+  key: string
+  /** SHA-256 of the body as canonical JSON. */
+  hash: string
+  at: string
+  response_id: string | null
+  /** Test tokens store nothing: the answer they got, to give it again. */
+  answer?: unknown
 }
 
 const DAY = 86_400_000
@@ -166,6 +179,11 @@ export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[
   // Before the Formalie prefixes (owner, 2026-10-06): the sample tokens (nobody has their secrets) get new ones
   const SEEDED = ['Website sign-ups', 'Partner sandbox', 'Mobile app', 'Old import script']
   for (const token of api.tokens ?? []) {
+    // No management API any more (owner, 2026-10-06): its rights go
+    if ('manage' in token.scopes) {
+      delete (token.scopes as { manage?: unknown }).manage
+      saveApi()
+    }
     // No signed calls any more (owner, 2026-10-06: three headers, nothing else)
     if (token.signing || token.signing_secret) {
       token.signing = false

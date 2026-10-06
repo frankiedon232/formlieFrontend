@@ -590,7 +590,7 @@
     "FRM-API-1008": "Bu endpoint bu metodu yanıtlamıyor.",
     "FRM-API-1009": "Bu token bu endpoint veya metodu çağıramaz.",
     "FRM-API-1010": "Geçerli bir token gönderin: Authorization: Bearer ….",
-    "FRM-API-1011": "Formalie-Key başlığı eksik veya geçersiz. Her çağrıyla yeni bir benzersiz kimlik gönderin.",
+    "FRM-API-1011": "Formalie-Key başlığı eksik veya geçersiz. Her POST ile yeni bir benzersiz kimlik (UUID) gönderin.",
     "FRM-API-1012": "İstek imzası eksik, çok eski ya da yanlış.",
     "FRM-API-1013": "Bu id ile kayıt yok.",
     "FRM-API-1014": "Bazı alanlar bu endpoint’e gönderilemez.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Bu gizli anahtar gösterilemez: gizli anahtarlar yeniden görülebilir olmadan önce oluşturuldu. Yenisini almak için yenileyin.",
     "FRM-API-1017": "Gövdeyi JSON olarak ve Content-Type: application/json ile gönderin.",
     "FRM-API-1018": "Gövde çok büyük (en fazla 1 MB; dosyaları yükleme adımıyla gönderin).",
-    "FRM-API-1019": "Bu form API hizmetine açık değil. Paylaş ayarlarından API’yi açın."
+    "FRM-API-1019": "Bu form API hizmetine açık değil. Paylaş ayarlarından API’yi açın.",
+    "FRM-API-1020": "Bu Formalie-Key daha önce farklı bir istek için kullanıldı. Her yeni kayıt için yeni bir anahtar gönderin."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Silinmiş {n} servisi veya uç noktayı çağırabilir | Silinmiş {n} servisi veya uç noktayı çağırabilir",
         "text": "Bunlar silindi, bu yüzden bu token onları çağıramaz. Asla her şeye genişletilmez; doğru servise yöneltmek için çağırabileceklerini düzenleyin."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Formları oku",
-          "forms_write": "Formları aç ve kapat",
-          "responses_read": "Yanıtları oku",
-          "responses_write": "Yanıtları değiştir",
-          "webhooks_read": "Webhook'ları oku",
-          "audit_read": "Denetim kaydını oku"
-        },
-        "title": "Formları ve yanıtları yönet",
-        "help": "İsteğe bağlı. Bu token'ın yönetim API'sini (/v1) de kullanmasını sağlar: formları listeleme, açma veya kapatma, yanıtları okuma ve değiştirme. Yalnızca endpoint çağıran bir token için hepsini kapalı bırakın.",
-        "none": "Yok. Bu token yalnızca endpoint çağırır."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} token'ı"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Header'lar",
-      "standardTitle": "Her çağrının gönderdiği üç başlık",
-      "standardDesc": "Üçü de her çağrıda ve her yöntemde gönderilir, hiçbiri isteğe bağlı değildir. Formalie başka başlık kabul etmez.",
+      "standardTitle": "Bir çağrının gönderdiği başlıklar",
+      "standardDesc": "Her çağrıda Authorization ve Content-Type gönderilir. Formalie-Key POST'ta zorunlu, GET, PUT ve DELETE'te isteğe bağlıdır. Formalie başka başlık kabul etmez.",
       "when": {
-        "always": "Her çağrı"
+        "always": "Her çağrı",
+        "post": "POST'ta zorunlu, diğerlerinde isteğe bağlı"
       },
       "expiryTitle": "Her yanıtta jetonun bitiş zamanı",
       "expiryDesc": "Her yanıt, çağrıyı yapan jetonun ne zaman sona ereceğini söyler; böylece uygulamanız jetonu zamanında yenileyebilir.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Her çağrı için yeni bir benzersiz kimlik (UUID iyi çalışır; örnekler sizin için bir tane üretir). Her çağrı bununla İstek kayıtlarında bulunur ve ağ başarısız olursa aynı POST'u aynı anahtarla tekrar gönderdiğinizde Formalie daha önce oluşturduğu kayıtla yanıt verir."
+        "text": "Her POST için yeni bir benzersiz kimlik: 16 ile 100 karakter arası, UUID iyi çalışır (örnekler sizin için bir tane üretir). 1111… veya 1234… gibi basit desenler reddedilir. Ağ başarısız olursa ve 24 saat içinde aynı POST'u aynı anahtarla tekrar gönderirseniz Formalie daha önce oluşturduğu kayıtla yanıt verir; aynı anahtarla farklı bir gövde reddedilir, bu yüzden yeniden kullanılan anahtar hiçbir zaman kayıt kaybettirmez. Diğer yöntemlerde isteğe bağlıdır ve yalnızca çağrıyı İstek kayıtlarında bulmanıza yardımcı olur."
       },
       "files": {
         "title": "Dosya gönderme",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Başlıklar",
-        "text": "Her çağrı, yöntem ne olursa olsun şu üç başlığı gönderir: jetonunuzla Authorization, Content-Type: application/json ve bir Formalie-Key. Hiçbiri isteğe bağlı değildir ve başka başlığa gerek yoktur."
+        "text": "Her çağrı, jetonunuzla Authorization ve Content-Type: application/json gönderir. POST ayrıca bir Formalie-Key gönderir; GET, PUT ve DELETE'te isteğe bağlıdır. Başka başlığa gerek yoktur."
       },
       "expiry": {
         "title": "Jeton bitiş zamanı",
         "text": "Her yanıt jetonun bitiş zamanını taşır: Formalie-Token-Expires başlığı ve verinin yanında meta.token_expires_at ile meta.token_expires_in_days (hiç bitmeyen jeton için null). Jetonu o gün gelmeden yenileyin."
-      },
-      "manage": {
-        "title": "Formları ve yanıtları yönet",
-        "text": "Endpoint'lerinize ek olarak bir token, /v1 üzerinden çalışma alanını yönetebilir: formları listeleme, açma veya kapatma, yanıtları okuma, değiştirme veya silme, webhook'ları ve denetim kaydını okuma. Token'a bu hakları “Formları ve yanıtları yönet” adımında verin. Aynı üç header geçerlidir.",
-        "base": "Adres"
       }
     },
     "journey": {

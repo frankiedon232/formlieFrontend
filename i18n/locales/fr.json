@@ -590,7 +590,7 @@
     "FRM-API-1008": "Cet endpoint ne répond pas à cette méthode.",
     "FRM-API-1009": "Ce jeton ne peut pas appeler cet endpoint ou cette méthode.",
     "FRM-API-1010": "Envoyez un jeton valide sous la forme Authorization: Bearer ….",
-    "FRM-API-1011": "L'en-tête Formalie-Key est absent ou invalide. Envoyez un nouvel identifiant unique à chaque appel.",
+    "FRM-API-1011": "L'en-tête Formalie-Key est absent ou invalide. Envoyez un nouvel identifiant unique (un UUID) à chaque POST.",
     "FRM-API-1012": "La signature de la requête manque, est trop ancienne ou est incorrecte.",
     "FRM-API-1013": "Aucun enregistrement avec cet identifiant.",
     "FRM-API-1014": "Certains champs ne peuvent pas être envoyés à cet endpoint.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Ce secret ne peut pas être affiché : il a été créé avant que les secrets puissent être revus. Renouvelez-le pour en obtenir un nouveau.",
     "FRM-API-1017": "Envoyez le corps en JSON avec Content-Type: application/json.",
     "FRM-API-1018": "Le corps est trop volumineux (1 MB au maximum ; envoyez les fichiers via l'étape de téléversement).",
-    "FRM-API-1019": "Ce formulaire n’est pas ouvert au service d’API. Activez l’API dans ses paramètres de Partage."
+    "FRM-API-1019": "Ce formulaire n’est pas ouvert au service d’API. Activez l’API dans ses paramètres de Partage.",
+    "FRM-API-1020": "Cette Formalie-Key a déjà été utilisée pour une autre requête. Envoyez une nouvelle clé pour chaque nouvel enregistrement."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -4024,19 +4025,6 @@
         "title": "Peut appeler {n} service ou endpoint supprimé | Peut appeler {n} services ou endpoints supprimés",
         "text": "Ils ont été supprimés, donc ce jeton ne peut pas les appeler. Il n'est jamais étendu à tout; modifiez ce qu'il peut appeler pour le diriger vers le bon service."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Lire les formulaires",
-          "forms_write": "Ouvrir et fermer les formulaires",
-          "responses_read": "Lire les réponses",
-          "responses_write": "Modifier les réponses",
-          "webhooks_read": "Lire les webhooks",
-          "audit_read": "Lire le journal d'audit"
-        },
-        "title": "Gérer les formulaires et les réponses",
-        "help": "Facultatif. Permet à ce jeton d'utiliser aussi l'API de gestion (/v1) : lister les formulaires, les ouvrir ou les fermer, lire et modifier les réponses. Laissez tout désactivé pour un jeton qui n'appelle que des endpoints.",
-        "none": "Aucun. Ce jeton n'appelle que des endpoints."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Jeton {service}"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "En-têtes",
-      "standardTitle": "Les trois en-têtes envoyés par chaque appel",
-      "standardDesc": "Les trois sur chaque appel et chaque méthode, aucun n'est facultatif. Formalie n'accepte aucun autre en-tête.",
+      "standardTitle": "Les en-têtes envoyés par un appel",
+      "standardDesc": "Authorization et Content-Type sur chaque appel. Formalie-Key est obligatoire sur POST et facultative sur GET, PUT et DELETE. Formalie n'accepte aucun autre en-tête.",
       "when": {
-        "always": "Chaque appel"
+        "always": "Chaque appel",
+        "post": "Obligatoire sur POST, facultative sur les autres"
       },
       "expiryTitle": "Expiration du jeton dans chaque réponse",
       "expiryDesc": "Chaque réponse indique quand expire le jeton qui a fait l'appel, pour que votre app puisse le renouveler à temps.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Un nouvel identifiant unique pour chaque appel (un UUID convient bien ; les exemples en créent un pour vous). Chaque appel s'y retrouve dans les Journaux, et si le réseau échoue et que vous renvoyez le même POST avec la même clé, Formalie répond avec l'enregistrement déjà créé."
+        "text": "Un nouvel identifiant unique pour chaque POST : de 16 à 100 caractères, et un UUID convient bien (les exemples en créent un pour vous). Les motifs simples comme 1111… ou 1234… sont refusés. Si le réseau échoue et que vous renvoyez le même POST avec la même clé dans les 24 heures, Formalie répond avec l'enregistrement déjà créé ; la même clé avec un corps différent est refusée, donc une clé réutilisée ne fait jamais perdre d'enregistrement. Sur les autres méthodes, elle est facultative et sert seulement à retrouver l'appel dans les Journaux."
       },
       "files": {
         "title": "Envoi de fichiers",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "En-têtes",
-        "text": "Chaque appel envoie ces trois en-têtes, quelle que soit la méthode : Authorization avec votre jeton, Content-Type: application/json et une Formalie-Key. Aucun n'est facultatif et aucun autre en-tête n'est nécessaire."
+        "text": "Chaque appel envoie Authorization avec votre jeton et Content-Type: application/json. Un POST envoie aussi une Formalie-Key ; sur GET, PUT et DELETE elle est facultative. Aucun autre en-tête n'est nécessaire."
       },
       "expiry": {
         "title": "Expiration du jeton",
         "text": "Chaque réponse porte l'expiration du jeton : l'en-tête Formalie-Token-Expires et, à côté des données, meta.token_expires_at et meta.token_expires_in_days (null pour un jeton qui n'expire jamais). Renouvelez le jeton avant l'échéance."
-      },
-      "manage": {
-        "title": "Gérer les formulaires et les réponses",
-        "text": "En plus de vos endpoints, un jeton peut gérer l'espace de travail via /v1 : lister les formulaires, les ouvrir ou les fermer, lire, modifier ou supprimer des réponses, et lire les webhooks et le journal d'audit. Accordez ces droits au jeton à l'étape « Gérer les formulaires et les réponses ». Les trois mêmes en-têtes s'appliquent.",
-        "base": "Adresse"
       }
     },
     "journey": {

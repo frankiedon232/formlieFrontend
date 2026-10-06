@@ -590,7 +590,7 @@
     "FRM-API-1008": "Dieser Endpoint beantwortet diese Methode nicht.",
     "FRM-API-1009": "Dieses Token darf diesen Endpoint oder diese Methode nicht aufrufen.",
     "FRM-API-1010": "Senden Sie ein gültiges Token als Authorization: Bearer ….",
-    "FRM-API-1011": "Der Header Formalie-Key fehlt oder ist ungültig. Senden Sie bei jedem Aufruf eine neue eindeutige ID.",
+    "FRM-API-1011": "Der Header Formalie-Key fehlt oder ist ungültig. Senden Sie bei jedem POST eine neue eindeutige ID (eine UUID).",
     "FRM-API-1012": "Die Signatur der Anfrage fehlt, ist zu alt oder falsch.",
     "FRM-API-1013": "Es gibt keinen Datensatz mit dieser ID.",
     "FRM-API-1014": "Einige Felder können nicht an diesen Endpoint gesendet werden.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Dieses Geheimnis kann nicht angezeigt werden: Es wurde erstellt, bevor Geheimnisse wieder sichtbar sein konnten. Rotieren Sie es für ein neues.",
     "FRM-API-1017": "Senden Sie den Body als JSON mit Content-Type: application/json.",
     "FRM-API-1018": "Der Body ist zu groß (maximal 1 MB; Dateien über den Upload-Schritt senden).",
-    "FRM-API-1019": "Dieses Formular ist für den API-Dienst nicht geöffnet. Schalte die API in den Teilen-Einstellungen ein."
+    "FRM-API-1019": "Dieses Formular ist für den API-Dienst nicht geöffnet. Schalte die API in den Teilen-Einstellungen ein.",
+    "FRM-API-1020": "Dieser Formalie-Key wurde schon für eine andere Anfrage verwendet. Senden Sie für jeden neuen Datensatz einen neuen Key."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Kann {n} gelöschten Dienst oder Endpunkt aufrufen | Kann {n} gelöschte Dienste oder Endpunkte aufrufen",
         "text": "Diese wurden gelöscht, daher kann dieses Token sie nicht aufrufen. Es wird nie auf alles erweitert; bearbeiten Sie, was es aufrufen darf, um es auf den richtigen Dienst zu richten."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Formulare lesen",
-          "forms_write": "Formulare öffnen und schließen",
-          "responses_read": "Antworten lesen",
-          "responses_write": "Antworten ändern",
-          "webhooks_read": "Webhooks lesen",
-          "audit_read": "Audit-Protokoll lesen"
-        },
-        "title": "Formulare und Antworten verwalten",
-        "help": "Optional. Erlaubt diesem Token auch die Verwaltungs-API (/v1): Formulare auflisten, öffnen oder schließen, Antworten lesen und ändern. Lassen Sie alles aus, wenn das Token nur Endpunkte aufruft.",
-        "none": "Keine. Dieses Token ruft nur Endpunkte auf."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service}-Token"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Die drei Header, die jeder Aufruf sendet",
-      "standardDesc": "Alle drei bei jedem Aufruf und jeder Methode, keiner ist optional. Formalie akzeptiert keine anderen Header.",
+      "standardTitle": "Die Header, die ein Aufruf sendet",
+      "standardDesc": "Authorization und Content-Type bei jedem Aufruf. Formalie-Key ist bei POST Pflicht und bei GET, PUT und DELETE optional. Formalie akzeptiert keine anderen Header.",
       "when": {
-        "always": "Jeder Aufruf"
+        "always": "Jeder Aufruf",
+        "post": "Bei POST Pflicht, sonst optional"
       },
       "expiryTitle": "Ablauf des Tokens in jeder Antwort",
       "expiryDesc": "Jede Antwort nennt, wann das Token, das den Aufruf gemacht hat, abläuft, damit Ihre App es rechtzeitig erneuern kann.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Eine neue eindeutige ID für jeden Aufruf (eine UUID eignet sich gut; die Beispiele erzeugen eine für Sie). Anhand davon finden Sie jeden Aufruf in den Anfrageprotokollen, und wenn das Netzwerk ausfällt und Sie denselben POST mit demselben Key erneut senden, antwortet Formalie mit dem Datensatz, den es schon angelegt hat."
+        "text": "Eine neue eindeutige ID für jeden POST: 16 bis 100 Zeichen, eine UUID eignet sich gut (die Beispiele erzeugen eine für Sie). Einfache Muster wie 1111… oder 1234… werden abgelehnt. Wenn das Netzwerk ausfällt und Sie denselben POST innerhalb von 24 Stunden mit demselben Key erneut senden, antwortet Formalie mit dem Datensatz, den es schon angelegt hat; derselbe Key mit anderem Inhalt wird abgelehnt, ein wiederverwendeter Key kostet also nie einen Datensatz. Bei den anderen Methoden ist er optional und hilft nur, den Aufruf in den Anfrageprotokollen zu finden."
       },
       "files": {
         "title": "Dateien senden",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Header",
-        "text": "Jeder Aufruf sendet diese drei Header, egal welche Methode: Authorization mit Ihrem Token, Content-Type: application/json und einen Formalie-Key. Keiner ist optional, andere Header sind nicht nötig."
+        "text": "Jeder Aufruf sendet Authorization mit Ihrem Token und Content-Type: application/json. Ein POST sendet zusätzlich einen Formalie-Key; bei GET, PUT und DELETE ist er optional. Andere Header sind nicht nötig."
       },
       "expiry": {
         "title": "Ablauf des Tokens",
         "text": "Jede Antwort enthält den Ablauf des Tokens: den Header Formalie-Token-Expires und neben den Daten meta.token_expires_at und meta.token_expires_in_days (null bei einem Token, das nie abläuft). Erneuern Sie das Token vor Ablauf."
-      },
-      "manage": {
-        "title": "Formulare und Antworten verwalten",
-        "text": "Neben deinen Endpunkten kann ein Token den Workspace über /v1 verwalten: Formulare auflisten, öffnen oder schließen, Antworten lesen, ändern oder löschen sowie Webhooks und das Audit-Protokoll lesen. Gib dem Token diese Rechte im Schritt „Formulare und Antworten verwalten“. Es gelten dieselben drei Header.",
-        "base": "Adresse"
       }
     },
     "journey": {

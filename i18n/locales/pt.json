@@ -590,7 +590,7 @@
     "FRM-API-1008": "Este endpoint não responde a este método.",
     "FRM-API-1009": "Este token não pode chamar este endpoint ou método.",
     "FRM-API-1010": "Envie um token válido como Authorization: Bearer ….",
-    "FRM-API-1011": "O cabeçalho Formalie-Key falta ou não é válido. Envie um novo id único em cada chamada.",
+    "FRM-API-1011": "O cabeçalho Formalie-Key falta ou não é válido. Envie um novo id único (um UUID) em cada POST.",
     "FRM-API-1012": "A assinatura da solicitação está ausente, é antiga demais ou está errada.",
     "FRM-API-1013": "Não há registro com este id.",
     "FRM-API-1014": "Alguns campos não podem ser enviados para este endpoint.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Este segredo não pode ser exibido: foi criado antes de os segredos poderem ser vistos de novo. Rotacione para obter um novo.",
     "FRM-API-1017": "Envie o corpo como JSON com Content-Type: application/json.",
     "FRM-API-1018": "O corpo é grande demais (máximo de 1 MB; envie arquivos pela etapa de upload).",
-    "FRM-API-1019": "Este formulário não está aberto ao serviço de API. Ative a API nas configurações de Compartilhar."
+    "FRM-API-1019": "Este formulário não está aberto ao serviço de API. Ative a API nas configurações de Compartilhar.",
+    "FRM-API-1020": "Esta Formalie-Key já foi usada noutro pedido. Envie uma nova chave para cada novo registo."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Pode chamar {n} serviço ou endpoint excluído | Pode chamar {n} serviços ou endpoints excluídos",
         "text": "Foram excluídos, então este token não pode chamá-los. Ele nunca é ampliado para tudo; edite o que ele pode chamar para apontá-lo ao serviço certo."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Ler formulários",
-          "forms_write": "Abrir e fechar formulários",
-          "responses_read": "Ler respostas",
-          "responses_write": "Alterar respostas",
-          "webhooks_read": "Ler webhooks",
-          "audit_read": "Ler o registro de auditoria"
-        },
-        "title": "Gerenciar formulários e respostas",
-        "help": "Opcional. Permite que este token use também a API de gerenciamento (/v1): listar formulários, abri-los ou fechá-los, ler e alterar respostas. Deixe tudo desativado para um token que só chama endpoints.",
-        "none": "Nenhum. Este token só chama endpoints."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token de {service}"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Cabeçalhos",
-      "standardTitle": "Os três cabeçalhos que cada chamada envia",
-      "standardDesc": "Os três em cada chamada e em cada método, nenhum é opcional. O Formalie não aceita outros cabeçalhos.",
+      "standardTitle": "Os cabeçalhos que uma chamada envia",
+      "standardDesc": "Authorization e Content-Type em cada chamada. A Formalie-Key é obrigatória em POST e opcional em GET, PUT e DELETE. O Formalie não aceita outros cabeçalhos.",
       "when": {
-        "always": "Toda chamada"
+        "always": "Toda chamada",
+        "post": "Obrigatória em POST, opcional nos restantes"
       },
       "expiryTitle": "Validade do token em cada resposta",
       "expiryDesc": "Cada resposta diz quando expira o token que fez a chamada, para a sua app o poder renovar a tempo.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Um novo id único para cada chamada (um UUID funciona bem; os exemplos criam um por si). Cada chamada encontra-se com ele nos Logs de pedidos, e se a rede falhar e enviar o mesmo POST outra vez com a mesma chave, o Formalie responde com o registo que já criou."
+        "text": "Um novo id único para cada POST: de 16 a 100 caracteres, e um UUID funciona bem (os exemplos criam um por si). Padrões simples como 1111… ou 1234… são recusados. Se a rede falhar e enviar o mesmo POST outra vez com a mesma chave em 24 horas, o Formalie responde com o registo que já criou; a mesma chave com um corpo diferente é recusada, por isso reutilizar uma chave nunca perde um registo. Nos outros métodos é opcional e só ajuda a encontrar a chamada nos Logs de pedidos."
       },
       "files": {
         "title": "Envio de arquivos",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Cabeçalhos",
-        "text": "Cada chamada envia estes três cabeçalhos, seja qual for o método: Authorization com o seu token, Content-Type: application/json e uma Formalie-Key. Nenhum é opcional e não são precisos outros cabeçalhos."
+        "text": "Cada chamada envia Authorization com o seu token e Content-Type: application/json. Um POST envia também uma Formalie-Key; em GET, PUT e DELETE é opcional. Não são precisos outros cabeçalhos."
       },
       "expiry": {
         "title": "Validade do token",
         "text": "Cada resposta traz a validade do token: o cabeçalho Formalie-Token-Expires e, junto aos dados, meta.token_expires_at e meta.token_expires_in_days (null para um token que nunca expira). Renove o token antes de o dia chegar."
-      },
-      "manage": {
-        "title": "Gerenciar formulários e respostas",
-        "text": "Além dos seus endpoints, um token pode gerenciar o espaço de trabalho por /v1: listar formulários, abri-los ou fechá-los, ler, alterar ou excluir respostas, e ler webhooks e a trilha de auditoria. Dê ao token esses direitos na etapa “Gerenciar formulários e respostas”. Valem os mesmos três cabeçalhos.",
-        "base": "Endereço"
       }
     },
     "journey": {

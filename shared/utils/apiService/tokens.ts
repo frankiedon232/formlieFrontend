@@ -75,3 +75,33 @@ export const MAX_REQUIRED_HEADERS = 5
 export const HEADER_NAME_PATTERN = /^[A-Za-z][A-Za-z0-9-]{1,63}$/
 /** Set by HTTP or by Formalie itself; never a custom required header. */
 export const RESERVED_HEADERS: string[] = ['authorization', 'content-type', 'content-length', 'host', 'cookie', 'formalie-key', 'accept', 'user-agent', 'origin', 'referer']
+
+/**
+ * A Formalie-Key (owner, 2026-10-06): required on POST, optional on GET, PUT and DELETE (checked when
+ * sent). 16 to 100 letters, digits and . _ : -, and not an obvious pattern: a key reused by mistake
+ * would make every later POST answer with the first record, so `1111…`, `abab…` and counting
+ * (`1234567890…`) are refused. A UUID always passes.
+ */
+export const CALL_KEY_MIN = 16
+export function checkCallKey(key: string): 'missing' | 'invalid' | 'short' | 'weak' | null {
+  if (!key) return 'missing'
+  if (key.length > 100 || !/^[A-Za-z0-9._:-]+$/.test(key)) return 'invalid'
+  if (key.length < CALL_KEY_MIN) return 'short'
+  const plain = key.toLowerCase().replace(/[._:-]/g, '')
+  if (new Set(plain).size <= 4) return 'weak'
+  let up = 0
+  let down = 0
+  for (let i = 1; i < plain.length; i++) {
+    const step = plain.charCodeAt(i) - plain.charCodeAt(i - 1)
+    if (step === 1) up++
+    if (step === -1) down++
+  }
+  return Math.max(up, down) >= (plain.length - 1) * 0.75 ? 'weak' : null
+}
+
+/** The same JSON whatever the order of its keys, so a retry is recognised as the same request. */
+export function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`
+  if (value && typeof value === 'object') return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonicalJson((value as Record<string, unknown>)[key])}`).join(',')}}`
+  return JSON.stringify(value ?? null)
+}

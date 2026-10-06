@@ -590,7 +590,7 @@
     "FRM-API-1008": "Dit endpoint beantwoordt deze methode niet.",
     "FRM-API-1009": "Dit token mag dit endpoint of deze methode niet aanroepen.",
     "FRM-API-1010": "Stuur een geldig token als Authorization: Bearer ….",
-    "FRM-API-1011": "De header Formalie-Key ontbreekt of is ongeldig. Stuur bij elke aanroep een nieuw uniek id mee.",
+    "FRM-API-1011": "De header Formalie-Key ontbreekt of is ongeldig. Stuur bij elke POST een nieuw uniek id (een UUID) mee.",
     "FRM-API-1012": "De handtekening van het verzoek ontbreekt, is te oud of klopt niet.",
     "FRM-API-1013": "Er is geen record met dit id.",
     "FRM-API-1014": "Sommige velden kunnen niet naar dit endpoint worden gestuurd.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Dit geheim kan niet worden getoond: het is gemaakt voordat geheimen weer zichtbaar waren. Roteer het voor een nieuw geheim.",
     "FRM-API-1017": "Stuur de body als JSON met Content-Type: application/json.",
     "FRM-API-1018": "De body is te groot (maximaal 1 MB; stuur bestanden via de uploadstap).",
-    "FRM-API-1019": "Dit formulier staat niet open voor de API-service. Zet de API aan in de instellingen van Delen."
+    "FRM-API-1019": "Dit formulier staat niet open voor de API-service. Zet de API aan in de instellingen van Delen.",
+    "FRM-API-1020": "Deze Formalie-Key is al gebruikt voor een ander verzoek. Stuur voor elk nieuw record een nieuwe key mee."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Roept mogelijk {n} verwijderde service of endpoint aan | Roept mogelijk {n} verwijderde services of endpoints aan",
         "text": "Die zijn verwijderd, dus deze token kan ze niet aanroepen. Hij wordt nooit uitgebreid naar alles; pas aan wat hij mag aanroepen om hem naar de juiste service te laten wijzen."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Formulieren lezen",
-          "forms_write": "Formulieren openen en sluiten",
-          "responses_read": "Antwoorden lezen",
-          "responses_write": "Antwoorden wijzigen",
-          "webhooks_read": "Webhooks lezen",
-          "audit_read": "Het auditlogboek lezen"
-        },
-        "title": "Formulieren en reacties beheren",
-        "help": "Optioneel. Laat dit token ook de beheer-API (/v1) gebruiken: formulieren weergeven, openen of sluiten, reacties lezen en wijzigen. Laat alles uit voor een token dat alleen endpoints aanroept.",
-        "none": "Geen. Dit token roept alleen endpoints aan."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service}-token"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Headers",
-      "standardTitle": "De drie headers die elke aanroep verstuurt",
-      "standardDesc": "Alle drie bij elke aanroep en elke methode, geen enkele is optioneel. Formalie accepteert geen andere headers.",
+      "standardTitle": "De headers die een aanroep verstuurt",
+      "standardDesc": "Authorization en Content-Type bij elke aanroep. Formalie-Key is verplicht bij POST en optioneel bij GET, PUT en DELETE. Formalie accepteert geen andere headers.",
       "when": {
-        "always": "Elke aanroep"
+        "always": "Elke aanroep",
+        "post": "Verplicht bij POST, optioneel bij de rest"
       },
       "expiryTitle": "Verloop van het token in elk antwoord",
       "expiryDesc": "Elk antwoord vermeldt wanneer het token dat de aanroep deed verloopt, zodat je app het op tijd kan vernieuwen.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Een nieuw uniek id voor elke aanroep (een UUID werkt goed; de voorbeelden maken er een voor je). Elke aanroep vind je ermee in de Verzoeklogs, en als het netwerk uitvalt en je dezelfde POST opnieuw verstuurt met dezelfde key, antwoordt Formalie met het record dat het al had gemaakt."
+        "text": "Een nieuw uniek id voor elke POST: 16 tot 100 tekens, en een UUID werkt goed (de voorbeelden maken er een voor je). Eenvoudige patronen zoals 1111… of 1234… worden geweigerd. Als het netwerk uitvalt en je binnen 24 uur dezelfde POST opnieuw verstuurt met dezelfde key, antwoordt Formalie met het record dat het al had gemaakt; dezelfde key met een andere body wordt geweigerd, dus een hergebruikte key kost nooit een record. Bij andere methoden is hij optioneel en helpt hij alleen om de aanroep te vinden in de Verzoeklogs."
       },
       "files": {
         "title": "Bestanden versturen",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Headers",
-        "text": "Elke aanroep verstuurt deze drie headers, ongeacht de methode: Authorization met je token, Content-Type: application/json en een Formalie-Key. Geen enkele is optioneel en andere headers zijn niet nodig."
+        "text": "Elke aanroep verstuurt Authorization met je token en Content-Type: application/json. Een POST verstuurt ook een Formalie-Key; bij GET, PUT en DELETE is die optioneel. Andere headers zijn niet nodig."
       },
       "expiry": {
         "title": "Verloop van het token",
         "text": "Elk antwoord bevat het verloop van het token: de header Formalie-Token-Expires en, naast de gegevens, meta.token_expires_at en meta.token_expires_in_days (null voor een token dat nooit verloopt). Vernieuw het token voordat de dag komt."
-      },
-      "manage": {
-        "title": "Formulieren en reacties beheren",
-        "text": "Naast je endpoints kan een token de werkruimte beheren via /v1: formulieren weergeven, openen of sluiten, reacties lezen, wijzigen of verwijderen, en webhooks en het auditlogboek lezen. Geef het token deze rechten in de stap “Formulieren en reacties beheren”. Dezelfde drie headers gelden.",
-        "base": "Adres"
       }
     },
     "journey": {

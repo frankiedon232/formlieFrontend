@@ -590,7 +590,7 @@
     "FRM-API-1008": "This endpoint does not answer this method.",
     "FRM-API-1009": "This token may not call this endpoint or method.",
     "FRM-API-1010": "Send a valid token as Authorization: Bearer ….",
-    "FRM-API-1011": "The Formalie-Key header is missing or not valid. Send a new unique id with every call.",
+    "FRM-API-1011": "The Formalie-Key header is missing or not valid. Send a new unique id (a UUID) with every POST.",
     "FRM-API-1012": "The request signature is missing, too old or wrong.",
     "FRM-API-1013": "There is no record with this id.",
     "FRM-API-1014": "Some fields can not be sent to this endpoint.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "This secret can not be shown: it was made before secrets could be viewed again. Rotate it for a new one.",
     "FRM-API-1017": "Send the body as JSON with Content-Type: application/json.",
     "FRM-API-1018": "The body is too large (1 MB at most; send files through the upload step).",
-    "FRM-API-1019": "This form is not open to the API service. Turn the API on in its Share settings."
+    "FRM-API-1019": "This form is not open to the API service. Turn the API on in its Share settings.",
+    "FRM-API-1020": "This Formalie-Key was already used for a different request. Send a new key for every new record."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -4024,19 +4025,6 @@
         "title": "It may call {n} deleted service or endpoint | It may call {n} deleted services or endpoints",
         "text": "Those were deleted, so this token can not call them. It is never widened to everything; edit what it may call to point it at the right service."
       },
-      "manage": {
-        "title": "Manage forms and responses",
-        "help": "Optional. Lets this token use the management API (/v1) as well: list forms, open or close them, read and change responses. Leave all off for a token that only calls endpoints.",
-        "none": "None. This token only calls endpoints.",
-        "scope": {
-          "forms_read": "Read forms",
-          "forms_write": "Open and close forms",
-          "responses_read": "Read responses",
-          "responses_write": "Change responses",
-          "webhooks_read": "Read webhooks",
-          "audit_read": "Read the audit trail"
-        }
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} token"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Headers",
-      "standardTitle": "The three headers every call sends",
-      "standardDesc": "All three on every call and every method, none optional. Formalie accepts no other headers.",
+      "standardTitle": "The headers a call sends",
+      "standardDesc": "Authorization and Content-Type on every call. Formalie-Key is required on POST and optional on GET, PUT and DELETE. Formalie accepts no other headers.",
       "when": {
-        "always": "Every call"
+        "always": "Every call",
+        "post": "Required on POST, optional on the rest"
       },
       "expiryTitle": "Token expiry in every answer",
       "expiryDesc": "Every answer says when the token that made the call expires, so your app can renew it in time.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "A new unique id for every call (a UUID works well; the examples make one for you). Every call is found by it in Request logs, and if the network fails and you send the same POST again with the same key, Formalie answers with the record it already made."
+        "text": "A new unique id for every POST: 16 to 100 characters, and a UUID works well (the examples make one for you). Simple patterns such as 1111… or 1234… are refused. If the network fails and you send the same POST again with the same key within 24 hours, Formalie answers with the record it already made; the same key with a different body is refused, so a reused key never loses a record. On other methods it is optional and only helps you find the call in Request logs."
       },
       "files": {
         "title": "Sending files",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Headers",
-        "text": "Every call sends these three headers, whatever the method: Authorization with your token, Content-Type: application/json, and a Formalie-Key. None is optional and no other headers are needed."
+        "text": "Every call sends Authorization with your token and Content-Type: application/json. A POST also sends a Formalie-Key; on GET, PUT and DELETE it is optional. No other headers are needed."
       },
       "expiry": {
         "title": "Token expiry",
         "text": "Every answer carries the token's expiry: the Formalie-Token-Expires header and, next to the data, meta.token_expires_at and meta.token_expires_in_days (null for a token that never expires). Renew the token before the day comes."
-      },
-      "manage": {
-        "title": "Manage forms and responses",
-        "text": "Besides your endpoints, a token can manage the workspace through /v1: list forms, open or close them, read, change or delete responses, and read webhooks and the audit trail. Give the token these rights in its Manage forms and responses step. The same three headers apply.",
-        "base": "Address"
       }
     },
     "journey": {

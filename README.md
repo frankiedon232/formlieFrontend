@@ -69,7 +69,7 @@ Workspaces created through signup live until the dev server restarts.
 
 Sign in as `admin@remedylegal.test` (password above) and open **API service** in the rail. Everything below runs against the mock (`NUXT_PUBLIC_API_MOCK=true`), which answers real HTTP calls, so Postman works too. Setup for Postman (address, certificate, files): [docs/02-DEV-ENVIRONMENT.md → API service from Postman](docs/02-DEV-ENVIRONMENT.md).
 
-**Addresses.** The API address is shown in **Docs & testing** (`https://api.formalie.dev/{key}/…`). From Postman use `https://localhost:2202/public-api/{key}/{endpoint}` (or `https://api.formalie.dev:2202/…` with a hosts entry). Formalie's own management API: `…/public-api/v1/…`.
+**Addresses.** The API address is shown in **Docs & testing** (`https://api.formalie.dev/{key}/…`). From Postman use `https://localhost:2202/public-api/{key}/{endpoint}` (or `https://api.formalie.dev:2202/…` with a hosts entry).
 
 **Mock-only headers** (they stand in for what the real service reads from the connection): `X-Forwarded-For: 203.0.113.9` sets the caller's IP, `X-Debug-Country: GB` its country, `X-Debug-Network: vpn` (or `proxy`, `tor`, `hosting`) its anonymous network.
 
@@ -115,12 +115,12 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 
 1. Wide screens: the navigation on the left (Getting started, every endpoint with its methods in colour: GET green, POST violet, PUT amber, DELETE red), the part on screen marked as you scroll; click to jump. Smaller screens: a sliding row of endpoints.
 2. Each method: what it does, the questions with type, required and allowed values (or the query options), and on the right the code (curl, JavaScript, Python, PHP, C#; Copy) and the answers it can give (200 / 201, 401, 422, 404, 429).
-3. **Try it** opens a drawer: method buttons in colour, the address with a record id box, Body (line numbers, the form's real values) and Headers (the three headers every call sends: the token and Content-Type filled in and locked, a fresh `Formalie-Key` for every call, _Keep this key_ to send a POST again and see it answered with the first record). **Send** (or Ctrl / ⌘ + Enter) shows status, time, size, the JSON or the answer's headers, and the last calls.
+3. **Try it** opens a drawer: method buttons in colour, the address with a record id box, Body (line numbers, the form's real values) and Headers (the token and Content-Type filled in and locked; on POST a fresh `Formalie-Key` each time, _Keep this key_ to send it again and see the first record come back). **Send** (or Ctrl / ⌘ + Enter) shows status, time, size, the JSON or the answer's headers, and the last calls.
 4. **Download OpenAPI** and import it into Postman (Import → file).
 
 ### 5. Every failure has a clear answer (Postman)
 
-**Every call sends three headers, on every method, and no others:** `Authorization: Bearer <token>`, `Content-Type: application/json` and `Formalie-Key: <a new unique id>` (in Postman: `{{$guid}}` as the value makes a new one per send). Every answer tells the token's expiry: the `Formalie-Token-Expires` header and `meta.token_expires_at` / `meta.token_expires_in_days` next to the data.
+**Headers, and no others:** every call sends `Authorization: Bearer <token>` and `Content-Type: application/json`. **POST** also sends `Formalie-Key: <a new unique id>` (required; in Postman `{{$guid}}` makes a new one per send). On GET, PUT and DELETE the key is optional (checked if you send one). The key: 16 to 100 letters, digits and `. _ : -`, not a simple pattern (`1111…`, `abab…`, `1234…`). The same key and body within 24 hours answer with the first record (`meta.replayed`); the same key with a different body is refused. Every answer tells the token's expiry: the `Formalie-Token-Expires` header and `meta.token_expires_at` / `meta.token_expires_in_days` next to the data.
 
 Use a live token unless the row says otherwise. Each answer is JSON `{ "error": { "code", "message", "details" } }` with an `X-Request-Id` header.
 
@@ -134,7 +134,11 @@ Use a live token unless the row says otherwise. Each answer is JSON `{ "error": 
 | Endpoint that isn't live, live token                                    | `503 FRM-API-1007` (`endpoint: not_live`)                          |
 | A method the endpoint doesn't answer, `PATCH`, or POST to `…/{id}`      | `405 FRM-API-1008`                                                 |
 | Token limited to other methods, services or endpoints                   | `403 FRM-API-1009`                                                 |
-| No `Formalie-Key`, or one shorter than 8 characters                     | `400 FRM-API-1011` (`Formalie-Key: missing` / `invalid`)           |
+| POST without `Formalie-Key`                                             | `400 FRM-API-1011` (`Formalie-Key: missing`)                       |
+| `Formalie-Key` under 16 characters (`1234567890`), on any method       | `400 FRM-API-1011` (`Formalie-Key: short`)                         |
+| `Formalie-Key` a simple pattern (`1234567890123456`, `aaaabbbbaaaabbbb`) | `400 FRM-API-1011` (`Formalie-Key: weak`)                          |
+| POST again with the same key and a different body (within 24 hours)    | `409 FRM-API-1020` (`Formalie-Key: used_for_another_body`)         |
+| GET, PUT or DELETE without `Formalie-Key`                               | works (`200`): the key is optional there                           |
 | Broken JSON, or a JSON list instead of an object                        | `400 FRM-GEN-1001`                                                 |
 | Body over 1 MB                                                          | `413 FRM-API-1018`                                                 |
 | A question the endpoint doesn't accept                                  | `422 FRM-API-1014` (`not_accepted`)                                |
@@ -144,9 +148,8 @@ Use a live token unless the row says otherwise. Each answer is JSON `{ "error": 
 | Blocked IP (`X-Forwarded-For`), range, website (`Origin`) or network    | `403 FRM-API-1015` (the matching value)                            |
 | Client id + wrong secret on `POST …/token`                              | `401 FRM-API-1010`                                                 |
 | More than the rate limit in a minute (per IP 120 by default)            | `429 FRM-GEN-1029` with `Retry-After`                              |
-| Management API: no token, wrong token / missing right / unknown form    | `401` `FRM-API-1010` / `403` `FRM-API-1009` / `404` `FRM-GEN-1004` |
 
-And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` with `Formalie-Key`; the same key again returns the first record with `meta.replayed`), change (`PUT`), delete (`DELETE`).
+And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` with `Formalie-Key`; the same key and body again within 24 hours return the first record with `meta.replayed`), change (`PUT`), delete (`DELETE`).
 
 ### 6. Files through the API
 
@@ -154,11 +157,10 @@ And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` wi
 2. `POST …/{endpoint}/files?field={question key}` with Body → form-data, key `file` (type File) → `201` with an `id`. A `.exe` gets `422 FRM-RESP-1001` (`file_type`).
 3. Send the id in the JSON: `"cv_resume": ["<id>"]`.
 
-### 7. Webhooks, managing forms and responses, logs
+### 7. Webhooks, logs
 
 1. **Webhooks:** New webhook → an address (`http://localhost:{port}/…` works while developing) and events. **Send a test** shows the receiver's answer. Change a response's status in Responses → a `response.status_changed` delivery with the previous status. Deliveries: tries, request (personal answers masked), answer, **Send again**. Check the signature with the code under _Checking the signature_.
-2. **Manage forms and responses** (API keys were folded into tokens): edit a token → _Manage forms and responses_ → tick _Read forms_. Then `GET …/public-api/v1/forms` with the same three headers (`Authorization: Bearer <that token>`, `Content-Type`, `Formalie-Key`). A right it doesn't have → `403 FRM-API-1009` (`manage: forms:write`); a token without any → the same. Old `formalie_key_…` keys → `401 FRM-API-1010`.
-3. **Request logs and Analytics:** every call above appears with status, code, time, token and caller; Analytics and the Overview count them.
+2. **Request logs and Analytics:** every call above appears with status, code, time, token and caller; Analytics and the Overview count them.
 
 ## Checks
 

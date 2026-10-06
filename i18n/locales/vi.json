@@ -590,7 +590,7 @@
     "FRM-API-1008": "Endpoint này không trả lời phương thức này.",
     "FRM-API-1009": "Token này không được gọi endpoint hoặc phương thức này.",
     "FRM-API-1010": "Hãy gửi token hợp lệ dạng Authorization: Bearer ….",
-    "FRM-API-1011": "Header Formalie-Key bị thiếu hoặc không hợp lệ. Hãy gửi một id duy nhất mới với mỗi lượt gọi.",
+    "FRM-API-1011": "Header Formalie-Key bị thiếu hoặc không hợp lệ. Hãy gửi một id duy nhất mới (UUID) với mỗi POST.",
     "FRM-API-1012": "Chữ ký của yêu cầu bị thiếu, quá cũ hoặc sai.",
     "FRM-API-1013": "Không có bản ghi với id này.",
     "FRM-API-1014": "Một số trường không thể gửi tới endpoint này.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Không thể hiển thị bí mật này: nó được tạo trước khi bí mật có thể xem lại. Hãy xoay để nhận bí mật mới.",
     "FRM-API-1017": "Gửi nội dung dưới dạng JSON với Content-Type: application/json.",
     "FRM-API-1018": "Nội dung quá lớn (tối đa 1 MB; hãy gửi tệp qua bước tải lên).",
-    "FRM-API-1019": "Biểu mẫu này chưa mở cho dịch vụ API. Hãy bật API trong cài đặt Chia sẻ."
+    "FRM-API-1019": "Biểu mẫu này chưa mở cho dịch vụ API. Hãy bật API trong cài đặt Chia sẻ.",
+    "FRM-API-1020": "Formalie-Key này đã được dùng cho một yêu cầu khác. Hãy gửi key mới cho mỗi bản ghi mới."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Có thể gọi {n} dịch vụ hoặc endpoint đã xóa | Có thể gọi {n} dịch vụ hoặc endpoint đã xóa",
         "text": "Chúng đã bị xóa nên token này không thể gọi. Token không bao giờ được mở rộng ra tất cả; hãy sửa phạm vi gọi để trỏ đến đúng dịch vụ."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Đọc biểu mẫu",
-          "forms_write": "Mở và đóng biểu mẫu",
-          "responses_read": "Đọc phản hồi",
-          "responses_write": "Sửa phản hồi",
-          "webhooks_read": "Đọc webhook",
-          "audit_read": "Đọc nhật ký kiểm tra"
-        },
-        "title": "Quản lý biểu mẫu và phản hồi",
-        "help": "Tùy chọn. Cho phép token này dùng cả API quản lý (/v1): liệt kê biểu mẫu, mở hoặc đóng chúng, đọc và thay đổi phản hồi. Để tắt tất cả nếu token chỉ gọi endpoint.",
-        "none": "Không có. Token này chỉ gọi endpoint."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token {service}"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Ba header mà mọi lượt gọi đều gửi",
-      "standardDesc": "Cả ba trong mọi lượt gọi và mọi phương thức, không cái nào là tùy chọn. Formalie không chấp nhận header nào khác.",
+      "standardTitle": "Các header mà một lượt gọi gửi",
+      "standardDesc": "Authorization và Content-Type trong mọi lượt gọi. Formalie-Key bắt buộc với POST và tùy chọn với GET, PUT và DELETE. Formalie không chấp nhận header nào khác.",
       "when": {
-        "always": "Mọi lệnh gọi"
+        "always": "Mọi lệnh gọi",
+        "post": "Bắt buộc với POST, tùy chọn với các phương thức còn lại"
       },
       "expiryTitle": "Hạn của token trong mọi phản hồi",
       "expiryDesc": "Mỗi phản hồi cho biết khi nào token đã thực hiện lượt gọi hết hạn, để ứng dụng của bạn gia hạn kịp thời.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Một id duy nhất mới cho mỗi lượt gọi (UUID dùng rất tốt; các ví dụ tự tạo giúp bạn). Mỗi lượt gọi được tìm thấy bằng id này trong Nhật ký yêu cầu, và nếu mạng lỗi rồi bạn gửi lại cùng POST với cùng key, Formalie sẽ trả lời bằng bản ghi đã tạo trước đó."
+        "text": "Một id duy nhất mới cho mỗi POST: từ 16 đến 100 ký tự, UUID dùng rất tốt (các ví dụ tự tạo giúp bạn). Các mẫu đơn giản như 1111… hoặc 1234… sẽ bị từ chối. Nếu mạng lỗi và bạn gửi lại cùng POST với cùng key trong vòng 24 giờ, Formalie sẽ trả lời bằng bản ghi đã tạo trước đó; cùng key nhưng nội dung khác sẽ bị từ chối, nên key dùng lại không bao giờ làm mất bản ghi. Với các phương thức khác, key là tùy chọn và chỉ giúp bạn tìm lượt gọi trong Nhật ký yêu cầu."
       },
       "files": {
         "title": "Gửi tệp",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Header",
-        "text": "Mỗi lượt gọi gửi ba header này, dù dùng phương thức nào: Authorization kèm token của bạn, Content-Type: application/json và một Formalie-Key. Không cái nào là tùy chọn và không cần header khác."
+        "text": "Mỗi lượt gọi gửi Authorization kèm token của bạn và Content-Type: application/json. POST còn gửi thêm một Formalie-Key; với GET, PUT và DELETE thì tùy chọn. Không cần header khác."
       },
       "expiry": {
         "title": "Hạn của token",
         "text": "Mỗi phản hồi mang hạn của token: header Formalie-Token-Expires và, bên cạnh dữ liệu, meta.token_expires_at và meta.token_expires_in_days (null với token không bao giờ hết hạn). Hãy gia hạn token trước khi đến ngày đó."
-      },
-      "manage": {
-        "title": "Quản lý biểu mẫu và phản hồi",
-        "text": "Ngoài các endpoint của bạn, token có thể quản lý không gian làm việc qua /v1: liệt kê biểu mẫu, mở hoặc đóng chúng, đọc, thay đổi hoặc xóa phản hồi, cùng đọc webhook và nhật ký kiểm tra. Hãy cấp các quyền này cho token ở bước “Quản lý biểu mẫu và phản hồi”. Vẫn áp dụng ba header như cũ.",
-        "base": "Địa chỉ"
       }
     },
     "journey": {

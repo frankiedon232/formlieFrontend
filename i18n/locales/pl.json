@@ -590,7 +590,7 @@
     "FRM-API-1008": "Ten endpoint nie obsługuje tej metody.",
     "FRM-API-1009": "Ten token nie może wywoływać tego endpointu ani metody.",
     "FRM-API-1010": "Wyślij prawidłowy token jako Authorization: Bearer ….",
-    "FRM-API-1011": "Nagłówek Formalie-Key jest pominięty lub nieprawidłowy. Wysyłaj nowy unikalny identyfikator przy każdym wywołaniu.",
+    "FRM-API-1011": "Nagłówek Formalie-Key jest pominięty lub nieprawidłowy. Wysyłaj nowy unikalny identyfikator (UUID) przy każdym POST.",
     "FRM-API-1012": "Brakuje podpisu żądania, jest za stary lub nieprawidłowy.",
     "FRM-API-1013": "Nie ma rekordu o tym id.",
     "FRM-API-1014": "Niektórych pól nie można wysłać do tego endpointu.",
@@ -599,7 +599,8 @@
     "FRM-API-1016": "Tego sekretu nie można pokazać: został utworzony, zanim sekrety można było ponownie wyświetlać. Użyj opcji Rotuj, aby uzyskać nowy.",
     "FRM-API-1017": "Wyślij treść jako JSON z nagłówkiem Content-Type: application/json.",
     "FRM-API-1018": "Treść jest zbyt duża (maksymalnie 1 MB; pliki wysyłaj w kroku przesyłania).",
-    "FRM-API-1019": "Ten formularz nie jest otwarty dla usługi API. Włącz API w ustawieniach Udostępniania."
+    "FRM-API-1019": "Ten formularz nie jest otwarty dla usługi API. Włącz API w ustawieniach Udostępniania.",
+    "FRM-API-1020": "Ten Formalie-Key został już użyty w innym żądaniu. Wysyłaj nowy klucz dla każdego nowego rekordu."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -4024,19 +4025,6 @@
         "title": "Może wywoływać {n} usuniętą usługę lub endpoint | Może wywoływać {n} usuniętych usług lub endpointów",
         "text": "Zostały usunięte, więc ten token nie może ich wywołać. Nigdy nie jest rozszerzany na wszystko; zmień, co może wywoływać, aby wskazać właściwą usługę."
       },
-      "manage": {
-        "scope": {
-          "forms_read": "Odczyt formularzy",
-          "forms_write": "Otwieranie i zamykanie formularzy",
-          "responses_read": "Odczyt odpowiedzi",
-          "responses_write": "Zmiana odpowiedzi",
-          "webhooks_read": "Odczyt webhooków",
-          "audit_read": "Odczyt dziennika audytu"
-        },
-        "title": "Zarządzaj formularzami i odpowiedziami",
-        "help": "Opcjonalne. Pozwala temu tokenowi korzystać także z API zarządzania (/v1): wyświetlać formularze, otwierać je lub zamykać, odczytywać i zmieniać odpowiedzi. Zostaw wszystko wyłączone dla tokenu, który tylko wywołuje endpointy.",
-        "none": "Brak. Ten token tylko wywołuje endpointy."
-      },
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token {service}"
@@ -4072,10 +4060,11 @@
     },
     "headers": {
       "title": "Nagłówki",
-      "standardTitle": "Trzy nagłówki wysyłane przy każdym wywołaniu",
-      "standardDesc": "Wszystkie trzy przy każdym wywołaniu i każdej metodzie, żaden nie jest opcjonalny. Formalie nie przyjmuje innych nagłówków.",
+      "standardTitle": "Nagłówki wysyłane przez wywołanie",
+      "standardDesc": "Authorization i Content-Type przy każdym wywołaniu. Formalie-Key jest wymagany przy POST i opcjonalny przy GET, PUT i DELETE. Formalie nie przyjmuje innych nagłówków.",
       "when": {
-        "always": "Każde wywołanie"
+        "always": "Każde wywołanie",
+        "post": "Wymagany przy POST, opcjonalny przy pozostałych"
       },
       "expiryTitle": "Wygaśnięcie tokenu w każdej odpowiedzi",
       "expiryDesc": "Każda odpowiedź podaje, kiedy wygasa token, który wykonał wywołanie, aby Twoja aplikacja mogła go odnowić na czas.",
@@ -4377,7 +4366,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Nowy unikalny identyfikator dla każdego wywołania (dobrze sprawdza się UUID; przykłady tworzą go za Ciebie). Każde wywołanie znajdziesz po nim w Logach żądań, a jeśli sieć zawiedzie i wyślesz ten sam POST ponownie z tym samym kluczem, Formalie odpowie rekordem, który już utworzył."
+        "text": "Nowy unikalny identyfikator dla każdego POST: od 16 do 100 znaków, dobrze sprawdza się UUID (przykłady tworzą go za Ciebie). Proste wzorce, takie jak 1111… czy 1234…, są odrzucane. Jeśli sieć zawiedzie i w ciągu 24 godzin wyślesz ten sam POST z tym samym kluczem, Formalie odpowie rekordem, który już utworzył; ten sam klucz z inną treścią jest odrzucany, więc ponownie użyty klucz nigdy nie gubi rekordu. Przy innych metodach jest opcjonalny i tylko pomaga znaleźć wywołanie w Logach żądań."
       },
       "files": {
         "title": "Wysyłanie plików",
@@ -4433,16 +4422,11 @@
       },
       "callHeaders": {
         "title": "Nagłówki",
-        "text": "Każde wywołanie wysyła te trzy nagłówki, niezależnie od metody: Authorization z Twoim tokenem, Content-Type: application/json oraz Formalie-Key. Żaden nie jest opcjonalny i nie trzeba innych nagłówków."
+        "text": "Każde wywołanie wysyła Authorization z Twoim tokenem i Content-Type: application/json. POST wysyła też Formalie-Key; przy GET, PUT i DELETE jest opcjonalny. Inne nagłówki nie są potrzebne."
       },
       "expiry": {
         "title": "Wygaśnięcie tokenu",
         "text": "Każda odpowiedź zawiera wygaśnięcie tokenu: nagłówek Formalie-Token-Expires oraz, obok danych, meta.token_expires_at i meta.token_expires_in_days (null dla tokenu, który nigdy nie wygasa). Odnów token, zanim nadejdzie ten dzień."
-      },
-      "manage": {
-        "title": "Zarządzaj formularzami i odpowiedziami",
-        "text": "Oprócz endpointów token może zarządzać przestrzenią roboczą przez /v1: wyświetlać formularze, otwierać je lub zamykać, odczytywać, zmieniać i usuwać odpowiedzi oraz odczytywać webhooki i dziennik audytu. Nadaj tokenowi te uprawnienia w kroku „Zarządzaj formularzami i odpowiedziami”. Obowiązują te same trzy nagłówki.",
-        "base": "Adres"
       }
     },
     "journey": {

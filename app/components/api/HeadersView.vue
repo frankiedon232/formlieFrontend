@@ -1,6 +1,6 @@
 <!--
-  Tokens & headers → Headers (F13 M2; owner 2026-10-06): the three headers every call sends, none
-  optional and no others (no custom headers), the organisation's address key with Rotate (the old
+  Tokens & headers → Headers (F13 M2; owner 2026-10-06): the only headers a call sends (Formalie-Key
+  required on POST, optional on the rest; no custom headers), the organisation's address key with Rotate (the old
   key keeps working for a grace period), and the expiry tracker every answer carries.
 -->
 <script setup lang="ts">
@@ -14,7 +14,7 @@ const { dateTime, relative } = useFormat()
 const STANDARD = [
   { name: 'Authorization', value: 'Bearer <token>', when: 'always' },
   { name: 'Content-Type', value: 'application/json', when: 'always' },
-  { name: 'Formalie-Key', value: '<new unique id>', when: 'always' },
+  { name: 'Formalie-Key', value: '<new unique id>', when: 'post' },
 ] as const
 // The expiry tracker: where each part comes back in an answer (owner, 2026-10-06)
 const EXPIRY = [
