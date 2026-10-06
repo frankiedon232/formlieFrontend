@@ -18,6 +18,7 @@ import { seedOf } from './dataSourceSim'
 import { formsOf, type StoredForm } from './formStore'
 import { answersOf, findResponse } from './responseData'
 import { apiOf, createToken, schemaOf } from './apiStore'
+import { endpointFieldsOf } from '#shared/utils/apiService/endpoints'
 import { secretPreview, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { MOCK_TENANTS, MOCK_USERS, type MockTenant } from './tenants'
 
@@ -347,14 +348,20 @@ export function emitResponseEvent(event: H3Event, tenant: MockTenant, type: Webh
     const hooks = integrationsOf(tenant).webhooks.filter(hook => hook.enabled && hook.events.includes(type) && (!hook.form_ids.length || hook.form_ids.includes(input.form.id)))
     if (!hooks.length) return
     const schema = schemaOf(input.form, null)
-    const personal = new Set(schema ? allFields(schema).filter(field => PERSONAL_TYPES.has(field.type)).map(field => field.key) : [])
+    // Answers by their clean API names, like the API answers (owner, 2026-10-06): the form's endpoint's names when
+    // it has one, else names from the labels; never the internal question keys
+    const endpoint = apiOf(tenant).endpoints.find(item => item.form_id === input.form.id)
+    const names = new Map(schema ? endpointFieldsOf(schema, endpoint?.fields).map(field => [field.key, field.name]) : [])
+    const nameOf = (key: string) => names.get(key) ?? key
+    const personal = new Set(schema ? allFields(schema).filter(field => PERSONAL_TYPES.has(field.type)).map(field => nameOf(field.key)) : [])
+    const answers = input.response.answers ? Object.fromEntries(Object.entries(input.response.answers).map(([key, value]) => [nameOf(key), value])) : undefined
     const body = {
       type,
       created_at: new Date().toISOString(),
       test: false,
       data: {
         form: { id: encodeId(input.form.id), name: input.form.name },
-        response: { id: encodeId(input.response.id), ...(input.response.submitted_at ? { submitted_at: input.response.submitted_at } : {}), ...(input.response.status ? { status: input.response.status } : {}), ...(input.response.channel ? { channel: input.response.channel } : {}), ...(input.response.answers ? { answers: input.response.answers } : {}) },
+        response: { id: encodeId(input.response.id), ...(input.response.submitted_at ? { submitted_at: input.response.submitted_at } : {}), ...(input.response.status ? { status: input.response.status } : {}), ...(input.response.channel ? { channel: input.response.channel } : {}), ...(answers ? { answers } : {}) },
         ...(input.previous_status ? { previous_status: input.previous_status } : {}),
       },
     }
