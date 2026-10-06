@@ -4,7 +4,7 @@
   shows beside the kind. A key column of an existing table only changes its name.
 -->
 <script setup lang="ts">
-import { kindsFor, normaliseName, typeFor, DECIMAL_DEFAULT, TEXT_LENGTH_DEFAULT, type ColumnSpec } from '#shared/utils/datasources/ddl'
+import { kindsFor, normaliseDbName, typeFor, DECIMAL_DEFAULT, TEXT_LENGTH_DEFAULT, type ColumnSpec } from '#shared/utils/datasources/ddl'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ engine: DbEngine; errors?: Record<string, string>; newTable?: boolean; keyColumn?: boolean; compact?: boolean }>()
@@ -31,7 +31,7 @@ const size = (value: string | number) => (value === '' ? null : Math.max(0, Math
         dir="ltr"
         :placeholder="engine === 'oracle' ? 'FULL_NAME' : 'full_name'"
         @update:model-value="value => set({ name: String(value) })"
-        @blur="set({ name: normaliseName(engine, spec.name) })"
+        @blur="set({ name: normaliseDbName(engine, spec.name) })"
       />
     </UFormField>
     <UFormField :label="t('explorer.ddl.kindLabel')" :error="errors?.kind" :hint="engineType">

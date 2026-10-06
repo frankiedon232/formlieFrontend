@@ -5,7 +5,7 @@
   run. Opens the new table when done.
 -->
 <script setup lang="ts">
-import { checkName, createTableStatements, normaliseName, type ColumnSpec } from '#shared/utils/datasources/ddl'
+import { checkName, createTableStatements, normaliseDbName, type ColumnSpec } from '#shared/utils/datasources/ddl'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ sourceId: string; engine: DbEngine; schemas: string[] }>()
@@ -38,7 +38,7 @@ function addColumn() {
 const removeColumn = (index: number) => (columns.value = columns.value.filter((_, i) => i !== index))
 
 async function submit() {
-  name.value = normaliseName(props.engine, name.value)
+  name.value = normaliseDbName(props.engine, name.value)
   const problem = checkName(props.engine, name.value, 'table')
   const local: Record<string, string> = {}
   if (problem) local.name = t(`explorer.ddl.problem.${problem}`)
@@ -65,7 +65,7 @@ async function submit() {
             <USelect v-model="schema" :items="schemas" class="w-full font-mono" />
           </UFormField>
           <UFormField :label="t('explorer.ddl.tableName')" :error="errors.name" required>
-            <UInput v-model="name" autofocus class="w-full font-mono" dir="ltr" :placeholder="upper ? 'SUPPLIER_CONTACTS' : 'supplier_contacts'" @blur="name = normaliseName(engine, name)" />
+            <UInput v-model="name" autofocus class="w-full font-mono" dir="ltr" :placeholder="upper ? 'SUPPLIER_CONTACTS' : 'supplier_contacts'" @blur="name = normaliseDbName(engine, name)" />
           </UFormField>
         </div>
         <section class="flex flex-col gap-2">

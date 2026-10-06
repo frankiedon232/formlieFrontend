@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import type { ExplorerColumn, SchemaResult, TableStructure } from '#shared/types/explorer'
-import { changeStatements, checkName, normaliseName, specOfType, typeChangeRisky, type ColumnSpec, type TableChange } from '#shared/utils/datasources/ddl'
+import { changeStatements, checkName, normaliseDbName, specOfType, typeChangeRisky, type ColumnSpec, type TableChange } from '#shared/utils/datasources/ddl'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ sourceId: string; engine: DbEngine; structure: TableStructure; column: ExplorerColumn | null }>()
@@ -30,7 +30,7 @@ const risky = computed(() => !!props.column && !props.column.primary && typeChan
 const fieldErrors = computed(() => Object.fromEntries(Object.entries(errors.value).map(([key, value]) => [key.split('.').pop()!, value])))
 
 async function submit() {
-  spec.value = { ...spec.value, name: normaliseName(props.engine, spec.value.name) }
+  spec.value = { ...spec.value, name: normaliseDbName(props.engine, spec.value.name) }
   const problem = checkName(props.engine, spec.value.name, 'column')
   if (problem) return void (errors.value = { name: t(`explorer.ddl.problem.${problem}`) })
   if (props.column && !statements.value.length) return void (open.value = false)

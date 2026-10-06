@@ -115,7 +115,7 @@ export function checkName(engine: DbEngine, name: string, what: 'table' | 'colum
 }
 
 /** Spaces become underscores; lower case (Oracle: upper case), like Formalie's own names. */
-export const normaliseName = (engine: DbEngine, text: string) => {
+export const normaliseDbName = (engine: DbEngine, text: string) => {
   const joined = text.trim().replace(/\s+/g, '_')
   return engine === 'oracle' ? joined.toUpperCase() : joined.toLowerCase()
 }

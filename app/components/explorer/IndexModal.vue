@@ -1,7 +1,7 @@
 <!-- Add an index to the organisation's own table (F12 M3): its columns in order, unique or not, the exact CREATE INDEX first. -->
 <script setup lang="ts">
 import type { SchemaResult, TableStructure } from '#shared/types/explorer'
-import { changeStatements, checkName, normaliseName } from '#shared/utils/datasources/ddl'
+import { changeStatements, checkName, normaliseDbName } from '#shared/utils/datasources/ddl'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ sourceId: string; engine: DbEngine; structure: TableStructure }>()
@@ -25,7 +25,7 @@ watch(open, isOpen => {
 // The name follows the columns until someone types one.
 watch([columns, unique], () => {
   if (named.value) return
-  name.value = columns.value.length ? normaliseName(props.engine, `${props.structure.name}_${columns.value.join('_')}_${unique.value ? 'uq' : 'idx'}`).slice(0, 60) : ''
+  name.value = columns.value.length ? normaliseDbName(props.engine, `${props.structure.name}_${columns.value.join('_')}_${unique.value ? 'uq' : 'idx'}`).slice(0, 60) : ''
 })
 const items = computed(() => props.structure.columns.map(column => column.name))
 const statements = computed(() => (name.value && columns.value.length ? changeStatements(props.engine, props.structure.schema, props.structure.name, { op: 'add_index', name: name.value, columns: columns.value, unique: unique.value }) : []))
@@ -54,7 +54,7 @@ async function submit() {
         </UFormField>
         <USwitch v-model="unique" :label="t('explorer.ddl.unique')" :description="t('explorer.ddl.uniqueDesc')" />
         <UFormField :label="t('explorer.ddl.indexName')" :error="errors.name" required>
-          <UInput :model-value="name" class="w-full font-mono" dir="ltr" @update:model-value="value => ((name = String(value)), (named = true))" @blur="name = normaliseName(engine, name)" />
+          <UInput :model-value="name" class="w-full font-mono" dir="ltr" @update:model-value="value => ((name = String(value)), (named = true))" @blur="name = normaliseDbName(engine, name)" />
         </UFormField>
         <ExplorerSqlPreview :statements="statements" />
       </form>

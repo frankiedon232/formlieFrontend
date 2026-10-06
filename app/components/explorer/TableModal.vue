@@ -5,7 +5,7 @@
 -->
 <script setup lang="ts">
 import type { SchemaResult, TableStructure } from '#shared/types/explorer'
-import { changeStatements, checkName, normaliseName, type TableChange } from '#shared/utils/datasources/ddl'
+import { changeStatements, checkName, normaliseDbName, type TableChange } from '#shared/utils/datasources/ddl'
 import type { DbEngine } from '#shared/utils/integrations/databases'
 
 const props = defineProps<{ sourceId: string; engine: DbEngine; structure: TableStructure; mode: 'rename' | 'truncate' | 'drop' }>()
@@ -30,7 +30,7 @@ const confirmed = computed(() => !danger.value || typed.value.trim() === props.s
 
 async function submit() {
   if (props.mode === 'rename') {
-    name.value = normaliseName(props.engine, name.value)
+    name.value = normaliseDbName(props.engine, name.value)
     if (name.value === props.structure.name) return void (open.value = false)
     const problem = checkName(props.engine, name.value, 'table')
     if (problem) return void (errors.value = { name: t(`explorer.ddl.problem.${problem}`) })
@@ -49,7 +49,7 @@ async function submit() {
     <template #body>
       <form id="table-form" class="flex flex-col gap-4" novalidate @submit.prevent="submit">
         <UFormField v-if="mode === 'rename'" :label="t('explorer.ddl.tableName')" :error="errors.name" required>
-          <UInput v-model="name" autofocus class="w-full font-mono" dir="ltr" @blur="name = normaliseName(engine, name)" />
+          <UInput v-model="name" autofocus class="w-full font-mono" dir="ltr" @blur="name = normaliseDbName(engine, name)" />
         </UFormField>
         <template v-else>
           <UAlert
