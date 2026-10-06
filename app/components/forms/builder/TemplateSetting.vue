@@ -26,6 +26,12 @@ async function load() {
   }
 }
 onMounted(load)
+// Opened from New template (`?save=template`): bring this setting into view
+const route = useRoute()
+const root = useTemplateRef<HTMLElement>('root')
+onMounted(() => {
+  if (route.query.save === 'template') setTimeout(() => root.value?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 600)
+})
 
 const form = computed(() => session?.form.value ?? null)
 const saveOpen = ref(false)
@@ -54,7 +60,7 @@ async function update() {
 </script>
 
 <template>
-  <section v-if="session" class="flex flex-col gap-3">
+  <section v-if="session" ref="root" class="flex flex-col gap-3" :class="route.query.save === 'template' && !linked ? '-m-2 rounded-lg p-2 ring-2 ring-(--ui-border-inverted)' : ''">
     <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.template.title') }}</h3>
 
     <USkeleton v-if="loading" class="h-16 w-full" />

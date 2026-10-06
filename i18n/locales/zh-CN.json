@@ -20,7 +20,8 @@
     "confirm": "确认",
     "copy": "复制",
     "copied": "已复制",
-    "next": "下一步"
+    "next": "下一步",
+    "removeItem": "移除 {name}"
   },
   "placeholder": {
     "title": "即将推出",
@@ -179,7 +180,10 @@
         "saveTitle": "边做边保存",
         "saveText": "在发布之前，每次更改都会保存为草稿。"
       },
-      "folderHint": "文件夹可让表单在列表和侧边栏中保持有序（例如按团队或项目）。它们不是模板分类。"
+      "folderHint": "文件夹可让表单在列表和侧边栏中保持有序（例如按团队或项目）。它们不是模板分类。",
+      "templateSubtitle": "像表单一样构建，然后另存为模板",
+      "templateTitle": "模板从表单开始",
+      "templateHint": "为它命名并创建。构建器打开后，表单设置中已备好另存为模板，方便你把模板复用于新表单。"
     },
     "detail": {
       "created": "创建时间",
@@ -411,7 +415,12 @@
     "connectionsFailing": "失败",
     "connectionsDisabled": "已停用",
     "connectionsNew": "添加连接",
-    "backToMenu": "返回菜单"
+    "backToMenu": "返回菜单",
+    "newTemplate": "新建模板",
+    "createForms": "表单",
+    "createOperations": "运营",
+    "addDatabase": "添加数据库",
+    "newApiService": "新建 API 服务"
   },
   "navbar": {
     "breadcrumb": "面包屑导航",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "请求签名缺失、已过期或不正确。",
     "FRM-API-1013": "没有此 ID 的记录。",
     "FRM-API-1014": "部分字段不能发送到此端点。",
-    "FRM-API-1015": "访问规则不允许此调用方。"
+    "FRM-API-1015": "访问规则不允许此调用方。",
+    "FRM-AUTH-1013": "密码不正确。",
+    "FRM-API-1016": "无法显示此密钥：它创建于密钥可再次查看之前。请轮换它以获得新的密钥。",
+    "FRM-API-1017": "请以 JSON 格式发送请求体，并设置 Content-Type: application/json。",
+    "FRM-API-1018": "请求体过大（最多 1 MB；文件请通过上传步骤发送）。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook 已删除",
       "integrations_webhook_resent": "Webhook 投递已重新发送",
       "integrations_api_key_updated": "API 密钥已更改",
-      "integrations_api_key_deleted": "API 密钥已删除"
+      "integrations_api_key_deleted": "API 密钥已删除",
+      "api_token_revealed": "已查看 API 令牌",
+      "integrations_webhook_secret_revealed": "已查看 Webhook 密钥",
+      "integrations_api_key_revealed": "已查看 API 密钥"
     },
     "detail": {
       "who": "谁",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "这些端点的用途",
       "active": "接收调用",
       "activeHint": "关闭后,其中每个端点都会返回明确的错误。",
-      "create": "创建服务"
+      "create": "创建服务",
+      "nameHelp": "按将要调用它的应用或合作伙伴命名，这样你就知道这些调用来自谁。",
+      "steps": {
+        "about": "简介",
+        "details": "详情",
+        "next": "下一步",
+        "continue": "继续",
+        "back": "返回"
+      },
+      "about": {
+        "app": "一个应用",
+        "service": "服务",
+        "endpoint1": "sign-ups",
+        "endpoint2": "bookings",
+        "endpoint3": "feedback",
+        "text": "服务把某个应用或合作伙伴使用的端点归在一起。应用调用端点；服务把它们放在一起管理。",
+        "group": "把每个应用或合作伙伴的端点放在同一处",
+        "switch": "一次性关闭它的所有端点，例如维护期间",
+        "watch": "集中查看它们的调用、错误和响应时间"
+      },
+      "done": {
+        "title": "{name} 已就绪",
+        "text": "服务已创建。它本身还什么都不做：至少需要一个端点。",
+        "nextTitle": "下一步：添加端点",
+        "nextText": "端点把一个已发布的表单变成此服务中的一个地址。你来选择表单、端点可以做什么，以及它接收和返回哪些答案。",
+        "later": "稍后",
+        "endpoint": "创建端点"
+      }
     },
     "fields": {
       "title": "问题",
@@ -3799,14 +3842,16 @@
         "basics": "它位于何处,叫什么名字。",
         "methods": "选择它响应的方法。以后可以更改。",
         "fields": "POST 和 PUT 接受什么,以及 GET 返回什么或可按什么筛选。",
-        "review": "请检查一下。调用方一有令牌,它就会开始响应。"
+        "review": "请仔细检查。创建时处于未上线状态，因此真实调用方暂不受影响。"
       },
       "method": {
         "GET": "读取回复:带分页和筛选的列表,或按 ID 读取单条。",
         "POST": "发送新回复,检查方式与表单页面相同。",
         "PUT": "按 ID 更改回复 (仅限接受的问题)。",
         "DELETE": "按 ID 删除回复;会保留在审计记录中。"
-      }
+      },
+      "afterTitle": "接下来会怎样",
+      "afterText": "端点创建后处于未上线状态。测试令牌已经可以调用它，所以你可以放心试用。之后为它配发正式令牌，按需添加访问规则，然后开启。"
     },
     "tokens": {
       "title": "令牌",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "删除 {name}？",
       "deleteDesc": "它将从此列表中消失。其历史记录仍保留在审计记录中。",
       "once": {
-        "title": "请立即复制：仅显示一次",
-        "desc": "Formalie 只保存其指纹。如果丢失，请轮换令牌以获取新的。"
+        "title": "现在复制",
+        "desc": "从现在起它会保持遮蔽。之后确认密码，即可在令牌面板中再次查看。"
       },
       "secret": {
         "token": "令牌",
         "clientId": "客户端 ID",
         "clientSecret": "客户端密钥",
-        "signing": "签名密钥"
+        "signing": "签名密钥",
+        "title": "密钥"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "已保存 {name}",
         "revoked": "已吊销 {name}",
         "deleted": "已删除 {name}"
+      },
+      "steps": {
+        "kind": "类型",
+        "access": "可调用范围",
+        "safety": "安全",
+        "done": "令牌"
+      },
+      "about": {
+        "title": "什么是令牌",
+        "text": "应用在每次调用时都会带上令牌来证明身份。为每个应用配发各自的令牌，并且只授予所需的权限，这样你就能停用其中一个而不影响其他。"
+      },
+      "nameHelp": "按将要使用它的应用命名。",
+      "presetName": "/{name} 的令牌",
+      "scopeSummary": {
+        "all": "它可以用所有方法调用所有端点。",
+        "services": "它可以调用 {n} 个服务的端点。 | 它可以调用 {n} 个服务的端点。",
+        "endpoints": "它可以调用 {n} 个端点。 | 它可以调用 {n} 个端点。"
+      },
+      "expiryHelp": "会过期的令牌更安全：到期前 14 天你会收到提醒。",
+      "viewLater": "确认密码后，你可以稍后在令牌面板中再次查看它。",
+      "next": {
+        "title": "接下来",
+        "test": "使用这个测试令牌在文档与测试中试用端点。不会保存任何内容。准备好进行真实调用时，再创建正式令牌。",
+        "live": "如有需要，可用访问规则限制谁能使用它，测试后再开启端点。",
+        "rule": "添加访问规则"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "IP 地址",
         "domain": "网站域名",
         "country": "国家或地区",
-        "region": "区域"
+        "region": "区域",
+        "network": "匿名网络"
       },
       "kindHint": {
         "ip": "单个地址或地址段（IPv4 和 IPv6）。",
         "domain": "浏览器调用来源的网站。",
         "country": "调用方地址所在的位置。",
-        "region": "一次选择整个大洲。"
+        "region": "一次选择整个大洲。",
+        "network": "VPN、代理、Tor 和托管服务商"
       },
       "valuesLabel": {
         "ip": "地址和地址段",
         "domain": "域名",
         "country": "国家或地区",
-        "region": "区域"
+        "region": "区域",
+        "network": "网络"
       },
       "valuesHelp": {
-        "ip": "每行一个，例如 203.0.113.10 或 198.51.100.0/24。",
-        "domain": "每行一个；*.example.com 涵盖所有子域名。",
+        "ip": "输入地址或范围，然后输入逗号、空格或按 Enter，例如 203.0.113.10 或 198.51.100.0/24。每一项都会被检查。",
+        "domain": "输入域名，然后输入逗号、空格或按 Enter，例如 example.com，或用 *.example.com 匹配其所有子域名。每一项都会被检查。",
         "country": "选择一个或多个。",
-        "region": "选择一个或多个。"
+        "region": "选择一个或多个。",
+        "network": "地址属于其中之一的调用方。"
       },
       "region": {
         "AF": "非洲",
@@ -4057,7 +4132,8 @@
         "ip": "“{value}”不是 IP 地址或地址段。",
         "domain": "“{value}”不是域名。",
         "country": "“{value}”不是国家或地区。",
-        "region": "“{value}”不是区域。"
+        "region": "“{value}”不是区域。",
+        "network": "从列表中选择一个网络"
       },
       "toast": {
         "created": "规则已创建",
@@ -4098,6 +4174,40 @@
         "answer": "超过限制时，调用方会收到 429 和 Retry-After（需等待的秒数）；每个响应都会说明限制和剩余次数。",
         "saved": "速率限制已保存",
         "changed": "更改于 {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "开放代理",
+        "tor": "Tor",
+        "hosting": "托管与云"
+      },
+      "networkHint": {
+        "vpn": "商用 VPN 出口",
+        "proxy": "公共和匿名代理",
+        "tor": "Tor 出口节点",
+        "hosting": "托管和云服务商的服务器"
+      },
+      "networkNote": "Formalie 根据每天更新的已知地址列表识别这些网络。当国家或地区必须准确时，请将 VPN 拦截与国家或地区规则一起使用。",
+      "geo": {
+        "title": "如何确定国家或地区",
+        "text": "根据调用方的 IP 地址，在位置数据库中查询：绝大多数情况下国家或地区是准确的。使用 VPN 或代理的人会显示为该服务器所在的国家或地区，因此如需阻止，请添加匿名网络规则。"
+      },
+      "scopeHelp": "所有位置、某个服务或某个端点。",
+      "steps": {
+        "what": "对象",
+        "values": "值",
+        "where": "范围",
+        "done": "完成"
+      },
+      "about": {
+        "title": "访问规则的作用",
+        "text": "它们在检查令牌之前就决定谁可以调用。阻止始终优先。一旦有任何允许规则生效，只有匹配其中一条的调用方才能进入。"
+      },
+      "done": {
+        "title": "规则已生效",
+        "block": "匹配 {values} 的调用方在 {where} 上会被拒绝。",
+        "allow": "只有匹配 {values}（或其他允许规则）的调用方才能进入 {where}。",
+        "next": "用测试调用方检查一个调用方，然后在文档与测试中试用端点并开启它。"
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "发送文件",
         "text": "先将每个文件作为表单数据上传，字段名为 file，问题键放在 field 中。响应会返回文件的 ID。",
-        "then": "然后把这些 ID 放在 JSON 请求体中该问题之下，例如 \"cv\": [\"id\"]。允许的文件类型和大小与表单相同。"
+        "then": "然后把这些 ID 放在 JSON 请求体中该问题之下，例如 \"cv\": [\"id\"]。允许的文件类型和大小与表单相同。",
+        "step1": "上传文件",
+        "step2": "将其 ID 与答案一起发送"
       },
       "signing": {
         "title": "签名调用",
@@ -4240,7 +4352,111 @@
         "testOnly": "测试模式：响应看起来是真实的，但不会创建、修改或删除任何回复。",
         "nothingYet": "发送调用以查看响应",
         "send": "发送",
-        "badJson": "这不是有效的 JSON。"
+        "badJson": "这不是有效的 JSON。",
+        "recordNeeded": "记录 ID（必填）",
+        "headers": "请求头",
+        "noBody": "此方法不发送请求体。它的请求头在“请求头”标签页。",
+        "bodyHint": "已填入表单的真实答案值。可随意修改后再次发送。",
+        "testToken": "为此控制台创建的测试令牌",
+        "recent": "最近的调用"
+      },
+      "navTitle": "本页内容",
+      "gettingStarted": "快速开始",
+      "heroKicker": "API 参考",
+      "heroText": "应用发送和读取此服务回复所需的一切：地址、登录方式，以及带示例的每个端点。",
+      "liveCount": "{n} 个已上线",
+      "bearer": "Bearer 令牌",
+      "tryFirst": "立即试用",
+      "notLiveNote": "尚未上线：测试令牌可以调用（试一试会使用一个），在开启之前，正式调用会被拒绝。",
+      "oneHint": "在地址后加上记录 ID，即可只读取该记录，例如 /job-applications/rsp_9fK2mQ7xLp。",
+      "deleteHint": "该回复会从列表和 API 中移除，但保留在审计记录中。测试令牌只检查调用。",
+      "errorShape": "错误的样子",
+      "op": {
+        "GET": "列出和读取",
+        "POST": "创建",
+        "PUT": "修改",
+        "DELETE": "删除"
+      }
+    },
+    "journey": {
+      "title": "设置你的 API",
+      "text": "从表单到其他应用可调用的地址，共五步。",
+      "progress": "已完成 {n}/{total}",
+      "service": {
+        "title": "创建服务",
+        "text": "用于存放某个应用或合作伙伴所用端点的文件夹。需要时可一次性全部关闭。",
+        "action": "新建服务"
+      },
+      "endpoint": {
+        "title": "添加端点",
+        "text": "把一个已发布的表单变成一个地址。选择它的作用：读取、添加、修改或删除回复。",
+        "action": "新建端点"
+      },
+      "token": {
+        "title": "发放令牌",
+        "text": "应用通过令牌证明身份。测试令牌可以尝试一切而不触及真实数据；正式令牌会发起真实调用。",
+        "action": "新建令牌"
+      },
+      "access": {
+        "title": "限制谁可以调用",
+        "text": "按 IP 地址、网站、国家或地区、区域或匿名网络来允许或阻止调用方。",
+        "action": "新建规则"
+      },
+      "live": {
+        "title": "测试并上线",
+        "text": "先在文档与测试中试用，然后开启端点，让正式令牌可以使用它。",
+        "action": "打开文档与测试"
+      }
+    },
+    "intro": {
+      "title": "什么是端点",
+      "text": "端点为一个已发布的表单提供专属地址，例如 /job-applications。其他应用在这里发送或读取回复，校验方式与表单页面完全相同。它属于某个服务，在你为它配置令牌并开启之前不会上线。",
+      "hide": "知道了"
+    },
+    "gate": {
+      "title": "请先创建服务",
+      "text": "每个端点都属于一个服务：每个应用或合作伙伴一个，这样你可以集中查看它们的调用，并一次性全部关闭。你还没有服务，请先从这里开始；完成后会直接回到这里。",
+      "action": "新建服务"
+    },
+    "setup": {
+      "title": "上线之前",
+      "isLive": "已上线",
+      "notLive": "未上线",
+      "openEndpoint": "打开端点",
+      "createdTitle": "/{name} 已创建",
+      "createdText": "它尚未上线：测试令牌可以调用它，在你开启之前，正式调用会被拒绝。请按下面的清单逐项完成。",
+      "basics": {
+        "title": "服务与表单",
+        "ok": "位于 {service}，使用表单 {form} 作答。",
+        "serviceOff": "它所属的服务 {name} 已关闭，因此端点无法响应。请开启该服务。",
+        "formOff": "它的表单尚未发布，因此端点无法响应。请发布该表单。"
+      },
+      "token": {
+        "title": "可以调用它的令牌",
+        "text": "还没有令牌可以调用它。请专门为此端点创建一个：测试令牌用于试用，正式令牌用于真实调用。",
+        "ok": "{live} 个正式令牌和 {test} 个测试令牌可以调用它。",
+        "action": "为此端点新建令牌"
+      },
+      "access": {
+        "title": "谁可以调用",
+        "text": "任何持有有效令牌的人都可以调用它。添加规则，可按 IP 地址、网站、国家或地区或匿名网络来允许或阻止调用方。",
+        "ok": "适用 {n} 条访问规则。 | 适用 {n} 条访问规则。",
+        "action": "为此端点新建规则"
+      },
+      "test": {
+        "title": "测试它",
+        "text": "使用测试令牌发送一次调用：所有真实校验都会运行，且不会保存任何内容。"
+      },
+      "live": {
+        "title": "上线",
+        "text": "准备好后开启。之后正式令牌即可调用它。",
+        "on": "正式令牌可以调用它。关闭它即可一次性停止所有正式调用。",
+        "noLiveToken": "还没有正式令牌可以调用它：正式调用仍会被拒绝。",
+        "action": "上线"
+      },
+      "toast": {
+        "live": "端点已上线",
+        "notLive": "端点未上线"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "请在 10 秒内返回任意 2xx 状态，真正的处理放在之后。其他响应都会重试。"
       }
     },
-    "onceDesc": "Formalie 无法再次显示。如果丢失，请新建一个。",
+    "onceDesc": "请现在复制。之后确认密码，即可在其面板中再次查看。",
     "keys": {
       "newTitle": "新建 API 密钥",
       "editTitle": "编辑 API 密钥",
@@ -6015,5 +6231,17 @@
         "deleted": "API 密钥已删除"
       }
     }
+  },
+  "secrets": {
+    "title": "密钥",
+    "show": "显示",
+    "hide": "隐藏（{n} 秒）",
+    "ask": "请确认密码后查看。此操作会记入审计记录。",
+    "password": "你的密码",
+    "confirm": "显示",
+    "wrong": "密码不正确。还剩 {n} 次机会。",
+    "locked": "错误次数过多。请 15 分钟后再试。",
+    "notViewable": "它创建于密钥可再次查看之前，因此无法显示。请轮换它，以获得之后可查看的密钥。",
+    "shownNote": "一分钟后它会自动再次隐藏。请只保存在你的服务器上。"
   }
 }

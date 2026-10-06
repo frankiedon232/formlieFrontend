@@ -1,7 +1,8 @@
 <!--
-  The part of the docs every endpoint shares (F13 M5): the address, signing in with a token, the
-  Formalie-Key, sending files (upload first, then the id in the JSON), signed requests and the
-  errors with their codes. Short tiles of equal height, the error list below.
+  Getting started, shared by every endpoint (F13 M5; redesigned in M7, owner 2026-10-06): the
+  address, signing in with a token, the Formalie-Key, sending files, signed calls and the errors.
+  Each topic its own anchored section, text on the left and a dark code panel on the right (stacked
+  on smaller screens); the error list underneath, grouped by status.
 -->
 <script setup lang="ts">
 import type { ApiEndpointDetail } from '#shared/types/apiService'
@@ -13,51 +14,77 @@ const { t } = useI18n()
 
 const fileField = computed(() => props.endpoint?.fields.find(field => field.accept && (field.type === 'file_upload' || field.type === 'image_upload')) ?? null)
 const tokenCall = computed<SnippetCall>(() => ({ method: 'POST', url: `${props.base}/token`, headers: { 'Content-Type': 'application/json' }, body: { client_id: '<client id>', client_secret: '<client secret>' } }))
-const fileCall = computed(() => `curl -X POST "${props.endpoint?.url ?? `${props.base}/<endpoint>`}/files?field=${fileField.value?.key ?? '<question key>'}" \\\n  -H "Authorization: Bearer <token>" \\\n  -F "file=@cv.pdf"`)
-const tiles = computed(() => [
-  { key: 'auth', icon: 'i-lucide-key-round' },
-  { key: 'key', icon: 'i-lucide-fingerprint' },
-  { key: 'files', icon: 'i-lucide-paperclip' },
-  { key: 'signing', icon: 'i-lucide-signature' },
+const topics = computed(() => [
+  { id: 'guide-auth', icon: 'i-lucide-key-round', key: 'auth', code: null as string | null },
+  { id: 'guide-key', icon: 'i-lucide-fingerprint', key: 'key', code: 'POST /…/job-applications\nAuthorization: Bearer <token>\nContent-Type: application/json\nFormalie-Key: 6f1c2a90-3d4b-4e8f-9a17-0c5d2b7e8f41' },
+  {
+    id: 'guide-files',
+    icon: 'i-lucide-paperclip',
+    key: 'files',
+    code: `# 1 · ${t('apiService.docs.files.step1')}\ncurl -X POST "${props.endpoint?.url ?? `${props.base}/<endpoint>`}/files?field=${fileField.value?.key ?? '<question key>'}" \\\n  -H "Authorization: Bearer <token>" \\\n  -F "file=@cv.pdf"\n\n# → { "data": { "id": "f_9Qm…", "name": "cv.pdf", … } }\n\n# 2 · ${t('apiService.docs.files.step2')}\n{ "${fileField.value?.key ?? 'cv'}": ["f_9Qm…"] }`,
+  },
+  { id: 'guide-signing', icon: 'i-lucide-signature', key: 'signing', code: 'X-Formalie-Timestamp: 1767225600\nX-Formalie-Signature: sha256=<hex>\n\n# hex = HMAC-SHA256(signing secret,\n#   "{timestamp}.{METHOD}.{path}.{raw body}")' },
 ])
-const codes: ErrorCode[] = ['FRM-API-1006', 'FRM-API-1007', 'FRM-API-1008', 'FRM-API-1009', 'FRM-API-1010', 'FRM-API-1011', 'FRM-API-1012', 'FRM-API-1013', 'FRM-API-1014', 'FRM-API-1015', 'FRM-RESP-1001', 'FRM-GEN-1029']
+const codes: ErrorCode[] = ['FRM-GEN-1001', 'FRM-API-1006', 'FRM-API-1007', 'FRM-API-1008', 'FRM-API-1009', 'FRM-API-1010', 'FRM-API-1011', 'FRM-API-1012', 'FRM-API-1013', 'FRM-API-1014', 'FRM-API-1015', 'FRM-RESP-1001', 'FRM-GEN-1029']
+const dot = (status: number) => (status === 429 ? 'bg-warning' : status === 401 || status === 403 ? 'bg-secondary' : 'bg-error')
 </script>
 
 <template>
-  <section class="flex flex-col gap-4" :aria-label="t('apiService.docs.guide')">
-    <div class="flex flex-col gap-2 rounded-lg border border-default p-4 sm:p-5">
-      <h3 class="text-sm font-semibold text-highlighted">{{ t('apiService.docs.baseUrl') }}</h3>
+  <div class="flex flex-col gap-5">
+    <section id="guide-address" data-docs-section class="scroll-mt-4 flex flex-col gap-3 rounded-xl border border-default p-4 sm:p-5">
+      <div class="flex items-center gap-2">
+        <span class="flex size-8 items-center justify-center rounded-md bg-elevated"><UIcon name="i-lucide-link" class="size-4 text-highlighted" /></span>
+        <h3 class="text-base font-semibold text-highlighted">{{ t('apiService.docs.baseUrl') }}</h3>
+      </div>
       <p class="text-sm text-muted">{{ t('apiService.docs.baseUrlHint') }}</p>
       <AppCopyField :value="base" monospace />
-    </div>
+    </section>
 
-    <div class="grid gap-4 md:grid-cols-2">
-      <article v-for="tile in tiles" :key="tile.key" class="flex h-full min-w-0 flex-col gap-3 rounded-lg border border-default p-4 sm:p-5">
+    <section v-for="topic in topics" :id="topic.id" :key="topic.id" data-docs-section class="scroll-mt-4 grid overflow-hidden rounded-xl border border-default lg:grid-cols-2">
+      <div class="flex min-w-0 flex-col gap-3 p-4 sm:p-5">
         <div class="flex items-center gap-2">
-          <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-highlighted" /></span>
-          <h3 class="text-sm font-semibold text-highlighted">{{ t(`apiService.docs.${tile.key}.title`) }}</h3>
+          <span class="flex size-8 items-center justify-center rounded-md bg-elevated"><UIcon :name="topic.icon" class="size-4 text-highlighted" /></span>
+          <h3 class="text-base font-semibold text-highlighted">{{ t(`apiService.docs.${topic.key}.title`) }}</h3>
         </div>
-        <p class="text-sm text-muted">{{ t(`apiService.docs.${tile.key}.text`) }}</p>
-        <ApiDocsSnippets v-if="tile.key === 'auth'" :call="tokenCall" />
-        <pre v-else-if="tile.key === 'files'" class="overflow-auto rounded-lg border border-default bg-elevated/50 p-3 font-mono text-xs leading-relaxed text-highlighted" dir="ltr">{{ fileCall }}</pre>
-        <pre v-else-if="tile.key === 'key'" class="overflow-auto rounded-lg border border-default bg-elevated/50 p-3 font-mono text-xs leading-relaxed text-highlighted" dir="ltr">Formalie-Key: 6f1c2a90-3d4b-4e8f-9a17-0c5d2b7e8f41</pre>
-        <pre v-else class="overflow-auto rounded-lg border border-default bg-elevated/50 p-3 font-mono text-xs leading-relaxed text-highlighted" dir="ltr">X-Formalie-Timestamp: 1767225600
-X-Formalie-Signature: sha256=HMAC(secret, "{timestamp}.{METHOD}.{path}.{body}")</pre>
-        <p v-if="tile.key === 'files'" class="mt-auto text-xs text-muted">{{ t('apiService.docs.files.then') }}</p>
-      </article>
-    </div>
+        <p class="text-sm text-muted">{{ t(`apiService.docs.${topic.key}.text`) }}</p>
+        <p v-if="topic.key === 'files'" class="text-sm text-muted">{{ t('apiService.docs.files.then') }}</p>
+      </div>
+      <div class="flex min-w-0 flex-col justify-center gap-2 border-t border-default bg-neutral-950 p-4 sm:p-5 lg:border-s lg:border-t-0">
+        <ApiDocsSnippets v-if="topic.key === 'auth'" :call="tokenCall" dark />
+        <pre v-else class="overflow-auto rounded-lg bg-neutral-900 p-3 font-mono text-xs leading-relaxed text-neutral-100" dir="ltr">{{ topic.code }}</pre>
+      </div>
+    </section>
 
-    <div class="flex flex-col gap-2 rounded-lg border border-default p-4 sm:p-5">
-      <h3 class="text-sm font-semibold text-highlighted">{{ t('apiService.docs.errors.title') }}</h3>
-      <p class="text-sm text-muted">{{ t('apiService.docs.errors.text') }}</p>
-      <pre class="overflow-auto rounded-lg border border-default bg-elevated/50 p-3 font-mono text-xs text-default" dir="ltr">{ "error": { "code": "FRM-API-1010", "message": "…", "details": null } }</pre>
-      <ul class="divide-y divide-default text-sm">
-        <li v-for="code in codes" :key="code" class="flex items-baseline gap-3 py-1.5">
-          <span class="w-10 shrink-0 font-mono text-xs text-muted tabular-nums">{{ ERROR_CODES[code].status }}</span>
-          <code class="w-28 shrink-0 font-mono text-xs text-highlighted">{{ code }}</code>
-          <span class="min-w-0 text-muted">{{ t(`errors.${code}`) }}</span>
-        </li>
-      </ul>
-    </div>
-  </section>
+    <section id="guide-errors" data-docs-section class="scroll-mt-4 grid overflow-hidden rounded-xl border border-default lg:grid-cols-2">
+      <div class="flex min-w-0 flex-col gap-3 p-4 sm:p-5">
+        <div class="flex items-center gap-2">
+          <span class="flex size-8 items-center justify-center rounded-md bg-elevated"><UIcon name="i-lucide-octagon-alert" class="size-4 text-highlighted" /></span>
+          <h3 class="text-base font-semibold text-highlighted">{{ t('apiService.docs.errors.title') }}</h3>
+        </div>
+        <p class="text-sm text-muted">{{ t('apiService.docs.errors.text') }}</p>
+        <ul class="flex flex-col divide-y divide-default rounded-lg border border-default text-sm">
+          <li v-for="code in codes" :key="code" class="flex items-baseline gap-3 px-3 py-2">
+            <span class="flex w-12 shrink-0 items-center gap-1.5 font-mono text-xs text-muted tabular-nums"><span class="size-1.5 rounded-full" :class="dot(ERROR_CODES[code].status)" />{{ ERROR_CODES[code].status }}</span>
+            <code class="w-28 shrink-0 font-mono text-xs text-highlighted">{{ code }}</code>
+            <span class="min-w-0 text-muted">{{ t(`errors.${code}`) }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="flex min-w-0 flex-col gap-2 border-t border-default bg-neutral-950 p-4 sm:p-5 lg:border-s lg:border-t-0">
+        <span class="text-[11px] font-semibold tracking-wide text-neutral-400 uppercase">{{ t('apiService.docs.errorShape') }}</span>
+        <pre class="overflow-auto rounded-lg bg-neutral-900 p-3 font-mono text-xs leading-relaxed text-neutral-100" dir="ltr">HTTP/1.1 422
+X-Request-Id: 9b2f…
+
+{
+  "error": {
+    "code": "FRM-RESP-1001",
+    "message": "Submission is invalid.",
+    "details": [
+      { "field": "email", "message": "email" }
+    ]
+  }
+}</pre>
+      </div>
+    </section>
+  </div>
 </template>

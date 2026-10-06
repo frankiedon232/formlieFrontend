@@ -18,13 +18,14 @@
  * questions are always accepted on POST, read-only ones, files and calculated values never.
  */
 import { z } from 'zod'
-import type { ApiInsights, ApiServiceSettings, ApiTokenCreated, ApiTokenInsights, ApiUsage } from '#shared/types/apiService'
+import type { ApiInsights, ApiServiceSettings, ApiSetupSummary, ApiTokenSecrets, ApiTokenCreated, ApiTokenInsights, ApiUsage } from '#shared/types/apiService'
 import { API_STATUSES, API_TOKEN_MODES, API_TOKEN_STATUSES } from '#shared/types/apiService'
 import { checkHeaderName, checkHeaderValue, MAX_REQUIRED_HEADERS, ROTATION_GRACE_HOURS, secretPreview, TOKEN_LIFETIMES } from '#shared/utils/apiService/tokens'
 import { checkEndpointName, endpointFieldsOf, API_PAGE_SIZE_MAX } from '#shared/utils/apiService/endpoints'
 import { API_METHODS, type ApiMethod } from '#shared/utils/urls/public'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
+import { confirmPassword } from '../core/confirm'
 import { MockError, ok, paginate, filtersOf } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
@@ -274,7 +275,8 @@ function checked(tenant: MockTenant, values: z.infer<typeof endpointInput>, exce
     methods: API_METHODS.filter(method => values.methods.includes(method)),
     fields: fields.map(({ key, accept, required, returned, filter }) => ({ key, accept, required, returned, filter })),
     page_size: values.page_size,
-    status: values.status ?? 'active',
+    // New endpoints start not live: test tokens can try them, live calls wait for Go live (owner, 2026-10-06)
+    status: values.status ?? 'disabled',
   }
 }
 
@@ -365,6 +367,7 @@ function issue(token: StoredApiToken) {
   const secret = newSecret(token.kind, token.mode)
   const signing = token.signing ? newSecret('signing', token.mode) : null
   token.secret_hash = hashSecret(secret)
+  token.secret = secret
   token.preview = secretPreview(secret)
   token.signing_secret = signing
   return { ...(token.kind === 'static' ? { token: secret } : { client_secret: secret }), ...(signing ? { signing_secret: signing } : {}) }
@@ -488,4 +491,33 @@ export const deleteApiToken = defineMockRoute(({ event }) => {
   saveApi()
   recordAudit(event, tenant, { action: 'api.token_deleted', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name } })
   return ok({ deleted: true })
+})
+
+/** GET /api-service/setup: how far the organisation is (guided setup, owner 2026-10-06). */
+export const apiSetup = defineMockRoute(({ event }) => {
+  const { tenant } = requireAdmin(event)
+  const api = apiOf(tenant)
+  const tokens = api.tokens.filter(token => !token.revoked_at && (!token.expires_at || Date.parse(token.expires_at) > Date.now()))
+  const setup: ApiSetupSummary = {
+    services: api.services.length,
+    endpoints: api.endpoints.length,
+    endpoints_live: api.endpoints.filter(item => item.status === 'active').length,
+    tokens_live: tokens.filter(token => token.mode === 'live').length,
+    tokens_test: tokens.filter(token => token.mode === 'test').length,
+    rules: api.rules.filter(rule => rule.enabled).length,
+  }
+  return ok(setup)
+})
+
+/** POST /api-tokens/:id/reveal { password }: the token's secrets again, after the password (owner, 2026-10-06). */
+export const revealApiToken = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const token = apiOf(tenant).tokens.find(item => item.id === getRouterParam(event, 'id'))
+  if (!token) throw new MockError('FRM-GEN-1004')
+  if (token.revoked_at) throw new MockError('FRM-API-1004')
+  confirmPassword(user, (body as { password?: unknown } | null)?.password)
+  if (!token.secret) throw new MockError('FRM-API-1016')
+  recordAudit(event, tenant, { action: 'api.token_revealed', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name } })
+  const secrets: ApiTokenSecrets = { ...(token.kind === 'static' ? { token: token.secret } : { client_secret: token.secret }), ...(token.signing_secret ? { signing_secret: token.signing_secret } : {}) }
+  return ok(secrets)
 })

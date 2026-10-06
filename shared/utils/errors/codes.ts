@@ -34,6 +34,7 @@ export const ERROR_CODES = {
   'FRM-AUTH-1010': { status: 401, message: 'Invalid token.' },
   'FRM-AUTH-1011': { status: 401, message: 'Session revoked.' },
   'FRM-AUTH-1012': { status: 401, message: 'Session ended for security reasons.' },
+  'FRM-AUTH-1013': { status: 422, message: 'That password is not right.' },
   'FRM-PERM-1001': { status: 403, message: "You don't have access to this." },
   'FRM-TEN-1001': { status: 404, message: 'Workspace not found.' },
   'FRM-TEN-1002': { status: 403, message: 'Workspace suspended.' },
@@ -135,6 +136,9 @@ export const ERROR_CODES = {
   'FRM-API-1013': { status: 404, message: 'There is no record with this id.' },
   'FRM-API-1014': { status: 422, message: 'Some fields can not be sent to this endpoint.' },
   'FRM-API-1015': { status: 403, message: 'This caller is not allowed by the access rules.' },
+  'FRM-API-1017': { status: 415, message: 'Send the body as JSON with Content-Type: application/json.' },
+  'FRM-API-1018': { status: 413, message: 'The body is too large (1 MB at most; send files through the upload step).' },
+  'FRM-API-1016': { status: 409, message: 'This secret can not be shown: it was made before secrets could be viewed again. Rotate it for a new one.' },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },
 } as const satisfies Record<string, ErrorCodeDefinition>

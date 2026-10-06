@@ -83,3 +83,19 @@ describe('the decision', () => {
     expect(rulesFor(rules, { id: 'e1', service_id: 's1' }).map(item => item.id)).toEqual(['1', '2', '4'])
   })
 })
+
+describe('anonymous networks', () => {
+  it('take only the known networks', () => {
+    expect(checkRuleValue('network', 'vpn')).toBeNull()
+    expect(checkRuleValue('network', 'TOR')).toBeNull()
+    expect(checkRuleValue('network', 'satellite')).toBe('network')
+    expect(normaliseRuleValue('network', ' Hosting ')).toBe('hosting')
+  })
+
+  it('block callers whose address belongs to one, whatever their country', () => {
+    const rules = [{ id: 'n', action: 'block' as const, kind: 'network' as const, values: ['vpn', 'tor'], enabled: true }]
+    expect(decideAccess(rules, { ip: '203.0.113.9', domain: null, country: 'GB', networks: ['vpn'] })).toMatchObject({ allowed: false, reason: 'blocked', rule: { value: 'vpn' } })
+    expect(decideAccess(rules, { ip: '203.0.113.9', domain: null, country: 'GB', networks: ['hosting'] }).allowed).toBe(true)
+    expect(decideAccess(rules, { ip: '203.0.113.9', domain: null, country: 'GB' }).allowed).toBe(true)
+  })
+})

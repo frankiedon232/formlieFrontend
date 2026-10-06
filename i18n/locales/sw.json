@@ -20,7 +20,8 @@
     "confirm": "Thibitisha",
     "copy": "Nakili",
     "copied": "Imenakiliwa",
-    "next": "Inayofuata"
+    "next": "Inayofuata",
+    "removeItem": "Ondoa {name}"
   },
   "placeholder": {
     "title": "Inakuja hivi karibuni",
@@ -179,7 +180,10 @@
         "saveTitle": "Huhifadhi unapoendelea",
         "saveText": "Kila badiliko huhifadhiwa kama rasimu hadi uchapishe."
       },
-      "folderHint": "Folda huweka fomu zako kwa mpangilio kwenye orodha na upau wa pembeni (kwa mfano kwa timu au mradi). Si kategoria za violezo."
+      "folderHint": "Folda huweka fomu zako kwa mpangilio kwenye orodha na upau wa pembeni (kwa mfano kwa timu au mradi). Si kategoria za violezo.",
+      "templateSubtitle": "Kijenge kama fomu, kisha kihifadhi kama kiolezo",
+      "templateTitle": "Kiolezo huanza kama fomu",
+      "templateHint": "Kipe jina na ukiunde. Kijenzi hufunguka na Hifadhi kama kiolezo tayari katika mipangilio ya fomu, ili kiolezo kiwe chako cha kutumia tena kwa fomu mpya."
     },
     "detail": {
       "created": "Iliundwa",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Inashindwa",
     "connectionsDisabled": "Imezimwa",
     "connectionsNew": "Ongeza muunganisho",
-    "backToMenu": "Rudi kwenye menyu"
+    "backToMenu": "Rudi kwenye menyu",
+    "newTemplate": "Kiolezo kipya",
+    "createForms": "Fomu",
+    "createOperations": "Shughuli",
+    "addDatabase": "Ongeza hifadhidata",
+    "newApiService": "Huduma mpya ya API"
   },
   "navbar": {
     "breadcrumb": "Njia ya urambazaji",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "Saini ya ombi haipo, ni ya zamani mno au si sahihi.",
     "FRM-API-1013": "Hakuna rekodi yenye kitambulisho hiki.",
     "FRM-API-1014": "Baadhi ya sehemu haziwezi kutumwa kwa endpoint hii.",
-    "FRM-API-1015": "Sheria za ufikiaji haziruhusu mpigaji huyu."
+    "FRM-API-1015": "Sheria za ufikiaji haziruhusu mpigaji huyu.",
+    "FRM-AUTH-1013": "Nenosiri si sahihi.",
+    "FRM-API-1016": "Siri hii haiwezi kuonyeshwa: iliundwa kabla siri hazijaweza kuonekana tena. Izungushe ili upate mpya.",
+    "FRM-API-1017": "Tuma mwili wa ombi kama JSON ukiwa na Content-Type: application/json.",
+    "FRM-API-1018": "Mwili wa ombi ni mkubwa mno (upeo wa 1 MB; tuma faili kupitia hatua ya upakiaji)."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook imefutwa",
       "integrations_webhook_resent": "Uwasilishaji wa webhook umetumwa tena",
       "integrations_api_key_updated": "Ufunguo wa API umebadilishwa",
-      "integrations_api_key_deleted": "Ufunguo wa API umefutwa"
+      "integrations_api_key_deleted": "Ufunguo wa API umefutwa",
+      "api_token_revealed": "Tokeni ya API imetazamwa",
+      "integrations_webhook_secret_revealed": "Siri ya webhook imetazamwa",
+      "integrations_api_key_revealed": "Ufunguo wa API umetazamwa"
     },
     "detail": {
       "who": "Nani",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "Endpoint hizi ni za nini",
       "active": "Inapokea miito",
       "activeHint": "Ikizimwa, kila endpoint ndani yake hujibu kwa hitilafu iliyo wazi.",
-      "create": "Unda huduma"
+      "create": "Unda huduma",
+      "nameHelp": "Ipe jina la programu au mshirika atakayeipigia, ili ujue simu hizi ni za nani.",
+      "steps": {
+        "about": "Kuhusu",
+        "details": "Maelezo",
+        "next": "Hatua inayofuata",
+        "continue": "Endelea",
+        "back": "Rudi"
+      },
+      "about": {
+        "app": "Programu",
+        "service": "Huduma",
+        "endpoint1": "usajili",
+        "endpoint2": "uhifadhi",
+        "endpoint3": "maoni",
+        "text": "Huduma hukusanya endpoints zinazotumiwa na programu moja au mshirika mmoja. Programu hupiga endpoints; huduma huziweka pamoja.",
+        "group": "Weka endpoints za kila programu au mshirika mahali pamoja",
+        "switch": "Zima endpoints zake zote kwa mara moja, kwa mfano wakati wa matengenezo",
+        "watch": "Ona simu, hitilafu na muda wa majibu pamoja"
+      },
+      "done": {
+        "title": "{name} iko tayari",
+        "text": "Huduma imeundwa. Peke yake bado haifanyi kitu: inahitaji angalau endpoint moja.",
+        "nextTitle": "Inayofuata: ongeza endpoint",
+        "nextText": "Endpoint hugeuza fomu moja iliyochapishwa kuwa anwani katika huduma hii. Unachagua fomu, kile endpoint inaweza kufanya na majibu inayopokea na kutoa.",
+        "later": "Baadaye",
+        "endpoint": "Unda endpoint"
+      }
     },
     "fields": {
       "title": "Maswali",
@@ -3799,14 +3842,16 @@
         "basics": "Iko wapi na inaitwaje.",
         "methods": "Chagua mbinu inazojibu. Unaweza kuzibadilisha baadaye.",
         "fields": "Kile POST na PUT hupokea, na kile GET hurudisha au kinachoweza kuchujwa.",
-        "review": "Ipitie. Huanza kujibu mara tu wanaoita wanapokuwa na token."
+        "review": "Ipitie vizuri. Imeundwa bila kuwa hewani, kwa hiyo wapigaji halisi bado hawaathiriwi."
       },
       "method": {
         "GET": "Soma majibu: orodha yenye kurasa na vichujio, au moja kwa kitambulisho chake.",
         "POST": "Tuma jibu jipya, linalokaguliwa kama ukurasa wa fomu.",
         "PUT": "Badilisha jibu kwa kitambulisho chake (maswali yanayopokelewa pekee).",
         "DELETE": "Ondoa jibu kwa kitambulisho chake; hubaki kwenye kumbukumbu ya ukaguzi."
-      }
+      },
+      "afterTitle": "Kinachofuata",
+      "afterText": "Endpoint huundwa bila kuwa live. Tokeni za majaribio zinaweza tayari kuipigia, kwa hiyo unaweza kuijaribu kwa usalama. Kisha ipe tokeni ya live, ongeza kanuni za ufikiaji ukitaka, na uiwashe."
     },
     "tokens": {
       "title": "Tokeni",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "Futa {name}?",
       "deleteDesc": "Itatoweka kwenye orodha hii. Historia yake inabaki kwenye rekodi ya ukaguzi.",
       "once": {
-        "title": "Inakili sasa: inaonyeshwa mara moja tu",
-        "desc": "Formalie huhifadhi alama ya vidole yake tu. Ikipotea, zungusha tokeni upate mpya."
+        "title": "Nakili sasa",
+        "desc": "Kuanzia sasa inabaki imefichwa. Unaweza kuiona tena baadaye kwenye paneli ya tokeni, baada ya kuthibitisha nenosiri lako."
       },
       "secret": {
         "token": "Tokeni",
         "clientId": "Client id",
         "clientSecret": "Client secret",
-        "signing": "Siri ya kusaini"
+        "signing": "Siri ya kusaini",
+        "title": "Siri"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} imehifadhiwa",
         "revoked": "{name} imebatilishwa",
         "deleted": "{name} imefutwa"
+      },
+      "steps": {
+        "kind": "Aina",
+        "access": "Inachoweza kupiga",
+        "safety": "Usalama",
+        "done": "Tokeni"
+      },
+      "about": {
+        "title": "Tokeni ni nini",
+        "text": "Programu hutuma tokeni kwa kila simu kujithibitisha. Ipe kila programu yake, na kile inachohitaji tu, ili uweze kusimamisha moja bila kugusa nyingine."
+      },
+      "nameHelp": "Ipe jina la programu itakayoitumia.",
+      "presetName": "Tokeni ya /{name}",
+      "scopeSummary": {
+        "all": "Inaweza kupiga kila endpoint, kwa kila njia.",
+        "services": "Inaweza kupiga endpoints za huduma {n}. | Inaweza kupiga endpoints za huduma {n}.",
+        "endpoints": "Inaweza kupiga endpoint {n}. | Inaweza kupiga endpoints {n}."
+      },
+      "expiryHelp": "Tokeni inayoisha muda ni salama zaidi: unapata ukumbusho siku 14 kabla.",
+      "viewLater": "Unaweza kuiona tena baadaye katika paneli ya tokeni, baada ya kuthibitisha nenosiri lako.",
+      "next": {
+        "title": "Kinachofuata",
+        "test": "Tumia tokeni hii ya majaribio kujaribu endpoint katika Nyaraka na majaribio. Hakuna kinachohifadhiwa. Tengeneza tokeni ya live ukiwa tayari kwa simu halisi.",
+        "live": "Ukitaka, weka kikomo cha nani anaweza kuitumia kwa kanuni za ufikiaji, ijaribu, kisha washa endpoint.",
+        "rule": "Ongeza kanuni ya ufikiaji"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "Anwani ya IP",
         "domain": "Kikoa cha tovuti",
         "country": "Nchi",
-        "region": "Eneo"
+        "region": "Eneo",
+        "network": "Mitandao isiyojulikana"
       },
       "kindHint": {
         "ip": "Anwani moja moja au safu (IPv4 na IPv6).",
         "domain": "Tovuti ambayo simu ya kivinjari inatoka.",
         "country": "Mahali anwani ya mpigaji ilipo.",
-        "region": "Mabara yote kwa wakati mmoja."
+        "region": "Mabara yote kwa wakati mmoja.",
+        "network": "VPN, proxy, Tor na watoa huduma za hosting"
       },
       "valuesLabel": {
         "ip": "Anwani na safu",
         "domain": "Vikoa",
         "country": "Nchi",
-        "region": "Maeneo"
+        "region": "Maeneo",
+        "network": "Mitandao"
       },
       "valuesHelp": {
-        "ip": "Moja kwa kila mstari, mfano 203.0.113.10 au 198.51.100.0/24.",
-        "domain": "Moja kwa kila mstari; *.example.com inajumuisha vikoa vidogo vyote.",
+        "ip": "Andika anwani au masafa, kisha koma, nafasi au Enter, mfano 203.0.113.10 au 198.51.100.0/24. Kila moja hukaguliwa.",
+        "domain": "Andika kikoa, kisha koma, nafasi au Enter, mfano example.com au *.example.com kwa vikoa vyake vidogo vyote. Kila kimoja hukaguliwa.",
         "country": "Chagua moja au zaidi.",
-        "region": "Chagua moja au zaidi."
+        "region": "Chagua moja au zaidi.",
+        "network": "Wapigaji ambao anwani yao ni ya mojawapo ya hii."
       },
       "region": {
         "AF": "Afrika",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" si anwani ya IP wala safu.",
         "domain": "\"{value}\" si kikoa.",
         "country": "\"{value}\" si nchi.",
-        "region": "\"{value}\" si eneo."
+        "region": "\"{value}\" si eneo.",
+        "network": "Chagua mtandao kutoka kwenye orodha"
       },
       "toast": {
         "created": "Kanuni imeundwa",
@@ -4098,6 +4174,40 @@
         "answer": "Kikomo kikipitwa, wapigaji hupata 429 pamoja na Retry-After (sekunde za kusubiri); kila jibu hutaja kikomo na kilichobaki.",
         "saved": "Mipaka ya kasi imehifadhiwa",
         "changed": "Imebadilishwa {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Proxy wazi",
+        "tor": "Tor",
+        "hosting": "Hosting na wingu"
+      },
+      "networkHint": {
+        "vpn": "Vituo vya kutoka vya VPN za kibiashara",
+        "proxy": "Proxy za umma na zisizojulikana",
+        "tor": "Nodi za kutoka za Tor",
+        "hosting": "Seva za watoa huduma za hosting na wingu"
+      },
+      "networkNote": "Formalie huvitambua kutoka orodha za anwani zinazojulikana zinazosasishwa kila siku. Zuia VPN pamoja na kanuni ya nchi wakati nchi lazima iwe sahihi.",
+      "geo": {
+        "title": "Jinsi nchi inavyopatikana",
+        "text": "Kutoka anwani ya IP ya mpigaji, ikitafutwa katika hifadhidata ya maeneo: sahihi kwa nchi katika visa vingi sana. Mtu anayetumia VPN au proxy huonekana katika nchi ya seva hiyo, kwa hiyo ongeza kanuni ya Mitandao isiyojulikana ukihitaji kuzuia hilo."
+      },
+      "scopeHelp": "Kila mahali, huduma moja au endpoint moja.",
+      "steps": {
+        "what": "Nini",
+        "values": "Thamani",
+        "where": "Wapi",
+        "done": "Imekamilika"
+      },
+      "about": {
+        "title": "Kanuni za ufikiaji hufanya nini",
+        "text": "Huamua nani anaweza kupiga hata kabla tokeni haijakaguliwa. Kuzuia hushinda kila mara. Kanuni yoyote ya kuruhusu ikitumika, ni wapigaji wanaolingana na mojawapo tu ndio huingia."
+      },
+      "done": {
+        "title": "Kanuni imewashwa",
+        "block": "Wapigaji wanaolingana na {values} wanakataliwa katika {where}.",
+        "allow": "Ni wapigaji wanaolingana na {values} (au kanuni nyingine ya kuruhusu) tu ndio huingia katika {where}.",
+        "next": "Kagua mpigaji kwa Jaribu mpigaji, kisha jaribu endpoint katika Nyaraka na majaribio na uiwashe."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Kutuma faili",
         "text": "Pakia kila faili kwanza, kama data ya fomu, kwa jina la sehemu file na ufunguo wa swali katika field. Jibu linatoa kitambulisho cha faili.",
-        "then": "Kisha weka vitambulisho kwenye mwili wa JSON chini ya swali hilo, mfano \"cv\": [\"id\"]. Aina na ukubwa wa faili ni sawa na kwenye fomu."
+        "then": "Kisha weka vitambulisho kwenye mwili wa JSON chini ya swali hilo, mfano \"cv\": [\"id\"]. Aina na ukubwa wa faili ni sawa na kwenye fomu.",
+        "step1": "Pakia faili",
+        "step2": "Tuma kitambulisho chake pamoja na majibu"
       },
       "signing": {
         "title": "Simu zilizotiwa saini",
@@ -4240,7 +4352,111 @@
         "testOnly": "Hali ya majaribio: majibu yanaonekana halisi, lakini hakuna jibu linaloundwa, kubadilishwa au kufutwa.",
         "nothingYet": "Tuma simu kuona jibu",
         "send": "Tuma",
-        "badJson": "Hii si JSON halali."
+        "badJson": "Hii si JSON halali.",
+        "recordNeeded": "kitambulisho cha rekodi (kinahitajika)",
+        "headers": "Vichwa",
+        "noBody": "Njia hii haitumi mwili. Vichwa vyake viko kwenye kichupo cha Vichwa.",
+        "bodyHint": "Imejazwa thamani halisi za majibu ya fomu. Badilisha chochote kisha tuma tena.",
+        "testToken": "tokeni ya majaribio iliyotengenezwa kwa kiweko hiki",
+        "recent": "Miito ya mwisho"
+      },
+      "navTitle": "Kwenye ukurasa huu",
+      "gettingStarted": "Kuanza",
+      "heroKicker": "Marejeleo ya API",
+      "heroText": "Kila kitu ambacho programu inahitaji kutuma na kusoma majibu ya huduma hii: anwani, jinsi ya kuingia na kila endpoint pamoja na mifano.",
+      "liveCount": "{n} zinatumika",
+      "bearer": "Tokeni ya Bearer",
+      "tryFirst": "Jaribu sasa",
+      "notLiveNote": "Bado haijaanza kutumika: tokeni za majaribio zinaweza kuiita (Jaribu hutumia moja), miito halisi inakataliwa hadi iwashwe.",
+      "oneHint": "Ongeza kitambulisho cha rekodi kwenye anwani ili kusoma rekodi hiyo tu, mfano /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "Jibu huondolewa kwenye orodha na API, na hubaki kwenye rekodi ya ukaguzi. Tokeni ya majaribio hukagua mwito tu.",
+      "errorShape": "Hitilafu inavyoonekana",
+      "op": {
+        "GET": "Orodhesha na soma",
+        "POST": "Unda",
+        "PUT": "Badilisha",
+        "DELETE": "Futa"
+      }
+    },
+    "journey": {
+      "title": "Sanidi API yako",
+      "text": "Hatua tano kutoka fomu hadi anwani ambayo programu nyingine zinaweza kuipigia.",
+      "progress": "{n} kati ya {total} zimekamilika",
+      "service": {
+        "title": "Unda huduma",
+        "text": "Folda ya endpoints zinazotumiwa na programu moja au mshirika mmoja. Zizime zote kwa mara moja ukihitaji.",
+        "action": "Huduma mpya"
+      },
+      "endpoint": {
+        "title": "Ongeza endpoint",
+        "text": "Hugeuza fomu moja iliyochapishwa kuwa anwani. Chagua inachofanya: kusoma, kuongeza, kubadilisha au kufuta majibu.",
+        "action": "Endpoint mpya"
+      },
+      "token": {
+        "title": "Ipe tokeni",
+        "text": "Programu hujithibitisha kwa tokeni. Tokeni ya majaribio inaweza kujaribu kila kitu bila kugusa data halisi; tokeni ya live hupiga simu halisi.",
+        "action": "Tokeni mpya"
+      },
+      "access": {
+        "title": "Weka kikomo cha nani anaweza kupiga",
+        "text": "Ruhusu au zuia wapigaji kwa anwani ya IP, tovuti, nchi, eneo au mitandao isiyojulikana.",
+        "action": "Kanuni mpya"
+      },
+      "live": {
+        "title": "Jaribu na uende live",
+        "text": "Ijaribu katika Nyaraka na majaribio, kisha iwashe endpoint ili tokeni za live ziweze kuitumia.",
+        "action": "Fungua Nyaraka na majaribio"
+      }
+    },
+    "intro": {
+      "title": "Endpoint ni nini",
+      "text": "Endpoint huipa fomu moja iliyochapishwa anwani yake, kwa mfano /job-applications. Programu nyingine hutuma au kusoma majibu huko, yakikaguliwa kama ukurasa wa fomu. Iko ndani ya huduma na haiko live hadi uipe tokeni na kuiwasha.",
+      "hide": "Nimeelewa"
+    },
+    "gate": {
+      "title": "Unda huduma kwanza",
+      "text": "Kila endpoint iko ndani ya huduma: moja kwa kila programu au mshirika, ili uone simu zao pamoja na kuzizima zote kwa mara moja. Bado huna huduma, kwa hiyo anza hapo; utarudi hapa moja kwa moja.",
+      "action": "Huduma mpya"
+    },
+    "setup": {
+      "title": "Kabla ya kwenda live",
+      "isLive": "Live",
+      "notLive": "Si live",
+      "openEndpoint": "Fungua endpoint",
+      "createdTitle": "/{name} imeundwa",
+      "createdText": "Bado si live: tokeni za majaribio zinaweza kuipigia, simu za live zinakataliwa hadi uiwashe. Pitia orodha iliyo hapa chini.",
+      "basics": {
+        "title": "Huduma na fomu",
+        "ok": "Katika {service}, inajibu kwa fomu {form}.",
+        "serviceOff": "Huduma yake {name} imezimwa, kwa hiyo endpoint haiwezi kujibu. Washa huduma.",
+        "formOff": "Fomu yake haijachapishwa, kwa hiyo endpoint haiwezi kujibu. Chapisha fomu."
+      },
+      "token": {
+        "title": "Tokeni inayoweza kuipigia",
+        "text": "Hakuna tokeni inayoweza kuipigia bado. Tengeneza moja kwa ajili ya endpoint hii tu: ya majaribio kujaribu, ya live kwa simu halisi.",
+        "ok": "Tokeni {live} za live na {test} za majaribio zinaweza kuipigia.",
+        "action": "Tokeni mpya ya endpoint hii"
+      },
+      "access": {
+        "title": "Nani anaweza kupiga",
+        "text": "Yeyote mwenye tokeni halali anaweza kuipigia. Ongeza kanuni za kuruhusu au kuzuia wapigaji kwa anwani ya IP, tovuti, nchi au mitandao isiyojulikana.",
+        "ok": "Kanuni {n} ya ufikiaji inatumika. | Kanuni {n} za ufikiaji zinatumika.",
+        "action": "Kanuni mpya ya endpoint hii"
+      },
+      "test": {
+        "title": "Ijaribu",
+        "text": "Tuma simu kwa tokeni ya majaribio: ukaguzi wote halisi hufanya kazi na hakuna kinachohifadhiwa."
+      },
+      "live": {
+        "title": "Nenda live",
+        "text": "Iwashe ukiwa tayari. Tokeni za live zinaweza kuipigia baada ya hapo.",
+        "on": "Tokeni za live zinaweza kuipigia. Izime ili kusimamisha simu zote za live kwa mara moja.",
+        "noLiveToken": "Hakuna tokeni ya live inayoweza kuipigia bado: simu za live bado zingekataliwa.",
+        "action": "Nenda live"
+      },
+      "toast": {
+        "live": "Endpoint iko live",
+        "notLive": "Endpoint si live"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Jibu kwa hali yoyote ya 2xx ndani ya sekunde 10; fanya kazi halisi baadaye. Jibu lingine lolote hujaribiwa tena."
       }
     },
-    "onceDesc": "Formalie haiwezi kuionyesha tena. Ikipotea, tengeneza mpya.",
+    "onceDesc": "Nakili sasa. Unaweza kuiona tena baadaye kwenye paneli yake, baada ya kuthibitisha nenosiri lako.",
     "keys": {
       "newTitle": "Ufunguo mpya wa API",
       "editTitle": "Hariri ufunguo wa API",
@@ -6015,5 +6231,17 @@
         "deleted": "Ufunguo wa API umefutwa"
       }
     }
+  },
+  "secrets": {
+    "title": "Siri",
+    "show": "Onyesha",
+    "hide": "Ficha ({n} s)",
+    "ask": "Thibitisha nenosiri lako ili kuiona. Hili linarekodiwa kwenye kumbukumbu ya ukaguzi.",
+    "password": "Nenosiri lako",
+    "confirm": "Onyesha",
+    "wrong": "Nenosiri si sahihi. Umebakiwa na majaribio {n}.",
+    "locked": "Majaribio mengi yasiyo sahihi. Jaribu tena baada ya dakika 15.",
+    "notViewable": "Iliundwa kabla siri hazijaweza kuonekana tena, kwa hiyo haiwezi kuonyeshwa. Izungushe ili upate unayoweza kuiona baadaye.",
+    "shownNote": "Hujificha tena yenyewe baada ya dakika moja. Iweke kwenye seva yako pekee."
   }
 }

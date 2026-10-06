@@ -98,6 +98,7 @@ const menu = computed<DropdownMenuItem[][]>(() => (apiKey.value && done.value ? 
       <div v-else-if="!apiKey" class="flex flex-col gap-4"><div class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div></div>
       <template v-else>
         <UAlert v-if="apiKey.status === 'expiring'" icon="i-lucide-calendar-clock" color="warning" variant="subtle" :title="t('integrations.keys.expiringTitle', { when: relative(apiKey.expires_at!) })" :description="t('integrations.keys.expiringDesc')" />
+        <AppSecretReveal v-if="apiKey.status !== 'revoked'" :preview="apiKey.preview" :endpoint="`/api-keys/${apiKey.id}/reveal`" :title="t('integrations.keys.secret')" :labels="{ secret: t('integrations.keys.secret') }" />
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
             <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-muted" /></span>

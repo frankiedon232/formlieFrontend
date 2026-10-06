@@ -33,8 +33,17 @@ const moreItems = computed<DropdownMenuItem[][]>(() => [
 
 const createItems = computed<DropdownMenuItem[][]>(() => [
   [
+    { type: 'label' as const, label: t('nav.createForms') },
     { label: t('nav.newForm'), icon: 'i-lucide-file-plus', to: '/forms/new' },
     { label: t('nav.fromTemplate'), icon: 'i-lucide-layout-template', to: '/templates' },
+    { label: t('nav.newTemplate'), icon: 'i-lucide-bookmark-plus', to: { path: '/forms/new', query: { purpose: 'template' } } },
+  ],
+  [
+    { type: 'label' as const, label: t('nav.createOperations') },
+    { label: t('nav.addDatabase'), icon: 'i-lucide-database', to: '/data-sources/connections/new' },
+    { label: t('nav.newApiService'), icon: 'i-lucide-boxes', to: { path: '/api-service/services', query: { new: '1' } } },
+    { label: t('nav.dataQuery'), icon: 'i-lucide-square-terminal', to: '/data-sources/query' },
+    { label: t('nav.dataExplorer'), icon: 'i-lucide-table-2', to: '/data-sources/explorer' },
   ],
 ])
 

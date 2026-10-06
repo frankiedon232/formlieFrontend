@@ -15,6 +15,7 @@ import { WEBHOOK_EVENTS } from '#shared/types/integrations'
 import { checkWebhookUrl, webhookStatusOf } from '#shared/utils/integrations/webhooks'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
+import { confirmPassword } from '../core/confirm'
 import { encodeId } from '../core/ids'
 import { filtersOf, MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
@@ -238,4 +239,13 @@ export const resendDelivery = defineMockRoute(async ({ event }) => {
   await done
   recordAudit(event, tenant, { action: 'integrations.webhook_resent', actor: actorOf(user), resource: resource(webhook), metadata: { event: source.event } })
   return ok(toDeliveryDetail(tenant, delivery))
+})
+
+/** POST /webhooks/:id/reveal { password }: the signing secret again, after the password. */
+export const revealWebhookSecret = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const webhook = findWebhook(tenant, getRouterParam(event, 'id'))
+  confirmPassword(user, (body as { password?: unknown } | null)?.password)
+  recordAudit(event, tenant, { action: 'integrations.webhook_secret_revealed', actor: actorOf(user), resource: resource(webhook) })
+  return ok({ secret: webhook.secret })
 })

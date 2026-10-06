@@ -59,6 +59,8 @@ export interface StoredManagementKey {
   id: string
   name: string
   secret_hash: string
+  /** The key itself, so it can be shown again after the password: encrypted at rest by the backend, plain in the mock. */
+  secret?: string | null
   preview: string
   scopes: ApiKeyScope[]
   expires_at: string | null
@@ -96,8 +98,16 @@ export function integrationsOf(tenant: MockTenant): TenantIntegrations {
     stores.set(tenant.id, store)
     saveIntegrations()
   }
+  // Before keys could be viewed again (owner, 2026-10-06): the samples get a viewable one
+  for (const key of store.keys) {
+    if (key.secret !== undefined || !SAMPLE_KEYS.includes(key.name)) continue
+    const fresh = newManagementKey()
+    Object.assign(key, { secret: fresh, secret_hash: hashKey(fresh), preview: keyPreview(fresh) })
+    saveIntegrations()
+  }
   return store
 }
+const SAMPLE_KEYS = ['Reporting script', 'Back-office sync', 'Old migration']
 
 // ── Seeds ─────────────────────────────────────────────────────────────────────────────────────
 
@@ -141,7 +151,7 @@ function seed(tenant: MockTenant): TenantIntegrations {
     const created = Date.now() - sample.days * DAY
     const calls: Record<string, number> = {}
     if (sample.used < 30) for (let d = 0; d < 30; d++) calls[dayOf(Date.now() - d * DAY)] = seedOf(`${sample.name}:${d}`) % 40
-    return { id: crypto.randomUUID(), name: sample.name, secret_hash: hashKey(secret), preview: keyPreview(secret), scopes: sample.scopes, expires_at: sample.expires == null ? null : iso(Date.now() + sample.expires * DAY), last_used_at: iso(Date.now() - sample.used * DAY), last_used_ip: '203.0.113.24', calls, created_by: by, created_at: iso(created), revoked_at: null }
+    return { id: crypto.randomUUID(), name: sample.name, secret_hash: hashKey(secret), secret, preview: keyPreview(secret), scopes: sample.scopes, expires_at: sample.expires == null ? null : iso(Date.now() + sample.expires * DAY), last_used_at: iso(Date.now() - sample.used * DAY), last_used_ip: '203.0.113.24', calls, created_by: by, created_at: iso(created), revoked_at: null }
   })
   return { webhooks, deliveries: deliveries.slice(0, MAX_DELIVERIES), keys }
 }

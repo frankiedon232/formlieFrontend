@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules and M1 to M6 done (services and endpoints, tokens and headers, access rules, logs and analytics, docs and testing, webhooks and API keys); stopped for the owner's review.
+**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules and M1 to M6 done, and M7 (the owner's review: guided setup, secrets viewable again, access rule chips and anonymous networks, a clear answer for every failure, Docs & testing redesign, README test cases); stopped for the owner's review.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -696,6 +696,15 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ API keys (`/api-service/api-keys`, rule 21): name, permissions (read forms, open / close forms, read / change responses, read webhooks, read the audit trail), expiry; shown once (`formalie_key_…`), edit, revoke, delete once revoked or expired; calls per day, last used and from where. Mock management API at `{base}/v1/…` (forms, a form's responses, one response: read, change status and tags, delete; webhooks; audit trail), permissions checked, changes audited as the key, webhooks fire
 - ➖ App integrations: Google Sheets, Slack / team chat, email notifications to external addresses: moved to after F21 (owner-confirmed 2026-10-06)
 
+### M7. Owner review (2026-10-06)
+
+- ✅ Guided setup: service → endpoint → token → access rules (optional) → test → go live; each dialog explains what it is and what comes next (steps); no endpoint without a service; new endpoints start not live (test tokens can already call them)
+- ✅ Secrets visible again: tokens, API keys and webhook secrets masked in their panels, shown after confirming the password, audited
+- ✅ Access rules: chips for IPs and domains with checks as you type; anonymous networks rule (VPN, proxy, Tor, hosting); how country detection works with VPNs (docs)
+- ✅ Every failure answers with a clear code (matrix checked with curl, listed in README)
+- ✅ Docs & testing redesign; Try it in a drawer; method colours everywhere (GET green, POST violet, PUT amber, DELETE red)
+- ✅ README: API service test cases
+
 ### 10. API (mock first)
 
 - ⬜ Portal management API: `/api-services` · `/api-services/{id}/endpoints` · `/api-tokens` · `/api-access-rules` · `/api-logs` · `/api-analytics`; error codes `FRM-API-*`; contract updated
@@ -1102,6 +1111,13 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | Test the API service with Postman already against the mock (tell the owner when it works) | F13 M2 (mock public API) | ✅ |
 | 2026-10-06 | Token prefixes and headers say Formalie: `formalie_live_…` tokens; `Formalie-Key` instead of `Idempotency-Key` (our own name, on purpose) | F13 M2 | ✅ |
 | 2026-10-06 | Examples with the form's real answer values; the console fills in `Formalie-Key` | F13 M5 | ✅ |
+| 2026-10-06 | Owner review of F13: guide people from service → endpoint → token → access rules → live, with explanations and steps in every dialog; a service is needed before an endpoint | F13 M7 | ✅ |
+| 2026-10-06 | Tokens can be seen again later: masked, click to view after confirming the password (API keys and webhook secrets alike) | F13 M7 | ✅ |
+| 2026-10-06 | Access rules: IPs and domains as chips (comma, Enter or space), each checked; country and region honest about VPNs, plus a rule for anonymous networks (VPN, proxy, Tor, hosting) | F13 M7 | ✅ |
+| 2026-10-06 | Confirm a proper answer for every failure (headers, access, service, endpoint, address) | F13 M7 | ✅ |
+| 2026-10-06 | Docs & testing redesigned (layout, method colours, code beside the text); Try it as a drawer | F13 M7 | ✅ |
+| 2026-10-06 | README: test cases for the whole API service | F13 M7 | ✅ |
+| 2026-10-06 | Rail "+" menu: Forms group (New form, From a template, New template) and Operations group (Add database, New API service, Query editor, Database explorer) | F1 shell | ✅ |
 
 ---
 
@@ -1291,3 +1307,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 | M4 Request logs and analytics: Request logs page (rule 21, panel with headers and kept bodies, log settings, CSV download), API Analytics page and the API service Overview in the dashboard style (`ChartsKpi`, `ChartsFlow`, endpoint overview, breakdowns, recent calls); mock `/api-logs` (+ insights, settings, one), `/api-analytics`; the mock public API logs every call (bodies only when kept, personal answers masked); sample history of 7 days from the endpoints' daily numbers, respecting token scopes. |
 | 2026-10-06 | F13 | M5 Docs and testing: Docs & testing page (per service: endpoints, per-method body tables with real allowed values, query options, code in five languages, answers, a shared guide with tokens, `Formalie-Key`, files, signing and error codes), Download OpenAPI 3.1, try-it console (endpoint panel Test button too; console test token, nothing stored; mock `POST /api-endpoints/{id}/try`). Files through the API: `POST {apiKey}/{endpoint}/files?field=` (multipart `file`, the form page's type and size checks) → an id for the JSON. Fixed: the public API now uses the same worked-out question choices as the portal (a form-required question is always accepted); currency, duration and IBAN examples match the form's checks. Tests: `apiService/snippets`, `apiService/samples`. |
 | 2026-10-06 | F13 | M6 Webhooks and API keys: Webhooks page (chart cards, DataView, panel with Send a test, recent deliveries, events and forms, signature check code; Deliveries view with its panel, Send again / Retry now), signed deliveries really sent by the mock with retries and auto-pause, fired from the form page, the API service, the portal and the management API (`server/mock/data/integrationStore.ts`, `routes/webhooks.ts`); API keys page and panel, mock management API `/v1/…` (`server/mock/managementApi.ts`, `routes/apiKeys.ts`); shared `shared/types/integrations.ts`, `shared/utils/integrations/webhooks.ts`; masking moved to `server/mock/core/mask.ts`. Checked with a local receiver (signature verified, status events with the previous status) and with a key (permissions, 401, 404). F13 complete; stopped for the owner's review. Tests: `integrations/webhooks`. |
+| 2026-10-06 | F13 | M7 owner review: guided setup (shared five-step journey on the Overview and in every dialog; service, token and access rule dialogs in steps with what each is and what comes next; New endpoint asks for a service first, starts not live and ends with a *Before it goes live* checklist that also sits in the endpoint panel; test tokens may call not-live endpoints); tokens, API keys and webhook secrets viewable again after the password (`FRM-AUTH-1013`, five tries per 15 minutes, audited); access rules with chips (comma, space, Enter, paste; wrong values stay with the reason) and an Anonymous networks kind (VPN, proxy, Tor, hosting; mock `X-Debug-Network`); `415 FRM-API-1017` and `413 FRM-API-1018`; not-found details name the wrong part; failure matrix of 44 calls all answered as documented; Docs & testing redesigned (sticky navigation with scroll spy, hero, getting started, method sections beside a dark code panel with answer tabs), Try it as a drawer, method colours everywhere; rail + menu grouped (Forms: New form, From a template, New template; Operations: Add database, New API service, Query editor, Database explorer); README test cases. Fixed: the dialog setup never ran when a page opened it on load; the sample signing token had no signing secret. |

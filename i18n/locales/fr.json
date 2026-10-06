@@ -20,7 +20,8 @@
     "confirm": "Confirmer",
     "copy": "Copier",
     "copied": "Copié",
-    "next": "Suivant"
+    "next": "Suivant",
+    "removeItem": "Retirer {name}"
   },
   "placeholder": {
     "title": "Bientôt disponible",
@@ -179,7 +180,10 @@
         "saveTitle": "Enregistrement automatique",
         "saveText": "Chaque modification est enregistrée en brouillon jusqu’à la publication."
       },
-      "folderHint": "Les dossiers gardent vos formulaires organisés dans la liste et la barre latérale (par exemple par équipe ou par projet). Ce ne sont pas des catégories de modèles."
+      "folderHint": "Les dossiers gardent vos formulaires organisés dans la liste et la barre latérale (par exemple par équipe ou par projet). Ce ne sont pas des catégories de modèles.",
+      "templateSubtitle": "Construisez-le comme un formulaire, puis enregistrez-le comme modèle",
+      "templateTitle": "Un modèle commence comme un formulaire",
+      "templateHint": "Donnez-lui un nom et créez-le. Le constructeur s'ouvre avec Enregistrer comme modèle prêt dans les paramètres du formulaire, pour réutiliser le modèle dans de nouveaux formulaires."
     },
     "detail": {
       "created": "Créé",
@@ -411,7 +415,12 @@
     "connectionsFailing": "En échec",
     "connectionsDisabled": "Désactivées",
     "connectionsNew": "Ajouter une connexion",
-    "backToMenu": "Retour au menu"
+    "backToMenu": "Retour au menu",
+    "newTemplate": "Nouveau modèle",
+    "createForms": "Formulaires",
+    "createOperations": "Opérations",
+    "addDatabase": "Ajouter une base de données",
+    "newApiService": "Nouveau service d'API"
   },
   "navbar": {
     "breadcrumb": "Fil d'Ariane",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "La signature de la requête manque, est trop ancienne ou est incorrecte.",
     "FRM-API-1013": "Aucun enregistrement avec cet identifiant.",
     "FRM-API-1014": "Certains champs ne peuvent pas être envoyés à cet endpoint.",
-    "FRM-API-1015": "Les règles d’accès n’autorisent pas cet appelant."
+    "FRM-API-1015": "Les règles d’accès n’autorisent pas cet appelant.",
+    "FRM-AUTH-1013": "Ce mot de passe n’est pas correct.",
+    "FRM-API-1016": "Ce secret ne peut pas être affiché : il a été créé avant que les secrets puissent être revus. Renouvelez-le pour en obtenir un nouveau.",
+    "FRM-API-1017": "Envoyez le corps en JSON avec Content-Type: application/json.",
+    "FRM-API-1018": "Le corps est trop volumineux (1 MB au maximum ; envoyez les fichiers via l'étape de téléversement)."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook supprimé",
       "integrations_webhook_resent": "Livraison du webhook renvoyée",
       "integrations_api_key_updated": "Clé API modifiée",
-      "integrations_api_key_deleted": "Clé API supprimée"
+      "integrations_api_key_deleted": "Clé API supprimée",
+      "api_token_revealed": "Jeton d’API consulté",
+      "integrations_webhook_secret_revealed": "Secret de webhook consulté",
+      "integrations_api_key_revealed": "Clé d’API consultée"
     },
     "detail": {
       "who": "Qui",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "À quoi servent ces endpoints",
       "active": "Répond aux appels",
       "activeHint": "Désactivé, chaque endpoint du service répond par une erreur explicite.",
-      "create": "Créer le service"
+      "create": "Créer le service",
+      "nameHelp": "Nommez-le d'après l'appli ou le partenaire qui l'appellera, pour savoir à qui sont ces appels.",
+      "steps": {
+        "about": "À propos",
+        "details": "Détails",
+        "next": "Étape suivante",
+        "continue": "Continuer",
+        "back": "Retour"
+      },
+      "about": {
+        "app": "Une appli",
+        "service": "Service",
+        "endpoint1": "inscriptions",
+        "endpoint2": "reservations",
+        "endpoint3": "avis",
+        "text": "Un service regroupe les endpoints qu'utilise une appli ou un partenaire. L'appli appelle les endpoints ; le service les garde ensemble.",
+        "group": "Gardez au même endroit les endpoints de chaque appli ou partenaire",
+        "switch": "Désactivez tous ses endpoints d'un coup, par exemple pendant une maintenance",
+        "watch": "Voyez leurs appels, erreurs et temps de réponse ensemble"
+      },
+      "done": {
+        "title": "{name} est prêt",
+        "text": "Le service est créé. Seul, il ne fait encore rien : il lui faut au moins un endpoint.",
+        "nextTitle": "Ensuite : ajouter un endpoint",
+        "nextText": "Un endpoint transforme un formulaire publié en adresse dans ce service. Vous choisissez le formulaire, ce que l'endpoint peut faire et quelles réponses il reçoit et renvoie.",
+        "later": "Plus tard",
+        "endpoint": "Créer un endpoint"
+      }
     },
     "fields": {
       "title": "Questions",
@@ -3799,14 +3842,16 @@
         "basics": "Où il se trouve et comment il s'appelle.",
         "methods": "Choisissez les méthodes auxquelles il répond. Vous pourrez les modifier plus tard.",
         "fields": "Ce que POST et PUT acceptent, et ce que GET renvoie ou permet de filtrer.",
-        "review": "Relisez. Il répond dès que les appelants ont un token."
+        "review": "Relisez tout. Il est créé hors ligne, donc les vrais appelants ne sont pas encore concernés."
       },
       "method": {
         "GET": "Lire des réponses : une liste avec pagination et filtres, ou une seule par son id.",
         "POST": "Envoyer une nouvelle réponse, contrôlée comme sur la page du formulaire.",
         "PUT": "Modifier une réponse par son id (uniquement les questions acceptées).",
         "DELETE": "Supprimer une réponse par son id ; conservé dans le journal d'audit."
-      }
+      },
+      "afterTitle": "La suite",
+      "afterText": "L'endpoint est créé inactif. Les jetons de test peuvent déjà l'appeler, vous pouvez donc l'essayer sans risque. Donnez-lui ensuite un jeton live, ajoutez des règles d'accès si vous voulez, puis activez-le."
     },
     "tokens": {
       "title": "Jetons",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "Supprimer {name} ?",
       "deleteDesc": "Il disparaît de cette liste. Son historique reste dans le journal d'audit.",
       "once": {
-        "title": "Copiez-le maintenant : il n'est affiché qu'une seule fois",
-        "desc": "Formalie n'en conserve qu'une empreinte. S'il est perdu, renouvelez le jeton pour en obtenir un nouveau."
+        "title": "Copiez-le maintenant",
+        "desc": "Il reste masqué à partir de maintenant. Vous pourrez le revoir plus tard dans le panneau du jeton, après confirmation de votre mot de passe."
       },
       "secret": {
         "token": "Jeton",
         "clientId": "ID client",
         "clientSecret": "Secret client",
-        "signing": "Secret de signature"
+        "signing": "Secret de signature",
+        "title": "Secret"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} enregistré",
         "revoked": "{name} révoqué",
         "deleted": "{name} supprimé"
+      },
+      "steps": {
+        "kind": "Type",
+        "access": "Ce qu'il peut appeler",
+        "safety": "Sécurité",
+        "done": "Jeton"
+      },
+      "about": {
+        "title": "Ce qu'est un jeton",
+        "text": "Les applis envoient un jeton avec chaque appel pour prouver leur identité. Donnez à chaque appli le sien, et seulement ce qu'il lui faut, pour pouvoir en arrêter un sans toucher aux autres."
+      },
+      "nameHelp": "Nommez-le d'après l'appli qui l'utilisera.",
+      "presetName": "Jeton pour /{name}",
+      "scopeSummary": {
+        "all": "Il peut appeler tous les endpoints, avec toutes les méthodes.",
+        "services": "Il peut appeler les endpoints de {n} service. | Il peut appeler les endpoints de {n} services.",
+        "endpoints": "Il peut appeler {n} endpoint. | Il peut appeler {n} endpoints."
+      },
+      "expiryHelp": "Un jeton qui expire est plus sûr : vous recevez un rappel 14 jours avant.",
+      "viewLater": "Vous pourrez le revoir plus tard dans le panneau du jeton, après avoir confirmé votre mot de passe.",
+      "next": {
+        "title": "La suite",
+        "test": "Utilisez ce jeton de test pour essayer l'endpoint dans Docs et tests. Rien n'est enregistré. Créez un jeton live quand vous êtes prêt pour de vrais appels.",
+        "live": "Si vous voulez, limitez qui peut l'utiliser avec des règles d'accès, testez-le, puis activez l'endpoint.",
+        "rule": "Ajouter une règle d'accès"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "Adresse IP",
         "domain": "Domaine de site web",
         "country": "Pays",
-        "region": "Région"
+        "region": "Région",
+        "network": "Réseaux anonymes"
       },
       "kindHint": {
         "ip": "Adresses uniques ou plages (IPv4 et IPv6).",
         "domain": "Le site web d'où provient un appel de navigateur.",
         "country": "Où se situe l'adresse de l'appelant.",
-        "region": "Des continents entiers en une fois."
+        "region": "Des continents entiers en une fois.",
+        "network": "VPN, proxys, Tor et hébergeurs"
       },
       "valuesLabel": {
         "ip": "Adresses et plages",
         "domain": "Domaines",
         "country": "Pays",
-        "region": "Régions"
+        "region": "Régions",
+        "network": "Réseaux"
       },
       "valuesHelp": {
-        "ip": "Une par ligne, p. ex. 203.0.113.10 ou 198.51.100.0/24.",
-        "domain": "Une par ligne ; *.example.com couvre tous les sous-domaines.",
+        "ip": "Saisissez une adresse ou une plage, puis une virgule, un espace ou Enter, p. ex. 203.0.113.10 ou 198.51.100.0/24. Chaque entrée est vérifiée.",
+        "domain": "Saisissez un domaine, puis une virgule, un espace ou Enter, p. ex. example.com ou *.example.com pour tous ses sous-domaines. Chaque entrée est vérifiée.",
         "country": "Choisissez-en une ou plusieurs.",
-        "region": "Choisissez-en une ou plusieurs."
+        "region": "Choisissez-en une ou plusieurs.",
+        "network": "Appelants dont l'adresse appartient à l'un d'eux."
       },
       "region": {
         "AF": "Afrique",
@@ -4057,7 +4132,8 @@
         "ip": "« {value} » n'est ni une adresse IP ni une plage.",
         "domain": "« {value} » n'est pas un domaine.",
         "country": "« {value} » n'est pas un pays.",
-        "region": "« {value} » n'est pas une région."
+        "region": "« {value} » n'est pas une région.",
+        "network": "Choisissez un réseau dans la liste"
       },
       "toast": {
         "created": "Règle créée",
@@ -4098,6 +4174,40 @@
         "answer": "Au-delà d'une limite, les appelants reçoivent 429 avec Retry-After (secondes à attendre) ; chaque réponse indique la limite et ce qu'il reste.",
         "saved": "Limites de débit enregistrées",
         "changed": "Modifié {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Proxy ouvert",
+        "tor": "Tor",
+        "hosting": "Hébergement et cloud"
+      },
+      "networkHint": {
+        "vpn": "Sorties de VPN commerciaux",
+        "proxy": "Proxys publics et anonymes",
+        "tor": "Nœuds de sortie Tor",
+        "hosting": "Serveurs d'hébergeurs et de fournisseurs cloud"
+      },
+      "networkNote": "Formalie les reconnaît à partir de listes d'adresses connues, mises à jour chaque jour. Bloquez les VPN avec une règle de pays quand le pays doit être exact.",
+      "geo": {
+        "title": "Comment le pays est trouvé",
+        "text": "À partir de l'adresse IP de l'appelant, recherchée dans une base de localisation : juste pour le pays dans la grande majorité des cas. Une personne sur un VPN ou un proxy apparaît dans le pays de ce serveur, ajoutez donc une règle Réseaux anonymes si vous devez l'empêcher."
+      },
+      "scopeHelp": "Partout, un service ou un endpoint.",
+      "steps": {
+        "what": "Quoi",
+        "values": "Valeurs",
+        "where": "Où",
+        "done": "Terminé"
+      },
+      "about": {
+        "title": "Ce que font les règles d'accès",
+        "text": "Elles décident qui peut appeler avant même la vérification du jeton. Bloquer l'emporte toujours. Dès qu'une règle d'autorisation s'applique, seuls entrent les appelants qui correspondent à l'une d'elles."
+      },
+      "done": {
+        "title": "La règle est active",
+        "block": "Les appelants correspondant à {values} sont refusés sur {where}.",
+        "allow": "Seuls les appelants correspondant à {values} (ou à une autre règle d'autorisation) entrent sur {where}.",
+        "next": "Vérifiez un appelant avec Tester un appelant, essayez ensuite l'endpoint dans Docs et tests et activez-le."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Envoi de fichiers",
         "text": "Envoyez d'abord chaque fichier comme données de formulaire, avec le nom de champ file et la clé de la question dans field. La réponse donne l'identifiant du fichier.",
-        "then": "Placez ensuite les identifiants dans le corps JSON sous cette question, par ex. \"cv\": [\"id\"]. Les mêmes types et tailles de fichiers que dans le formulaire sont acceptés."
+        "then": "Placez ensuite les identifiants dans le corps JSON sous cette question, par ex. \"cv\": [\"id\"]. Les mêmes types et tailles de fichiers que dans le formulaire sont acceptés.",
+        "step1": "Téléversez le fichier",
+        "step2": "Envoyez son identifiant avec les réponses"
       },
       "signing": {
         "title": "Appels signés",
@@ -4240,7 +4352,111 @@
         "testOnly": "Mode test : les réponses semblent réelles, mais aucune réponse n'est créée, modifiée ou supprimée.",
         "nothingYet": "Envoyez un appel pour voir la réponse",
         "send": "Envoyer",
-        "badJson": "Ce n'est pas un JSON valide."
+        "badJson": "Ce n'est pas un JSON valide.",
+        "recordNeeded": "identifiant de l'enregistrement (requis)",
+        "headers": "En-têtes",
+        "noBody": "Cette méthode n'envoie pas de corps. Ses en-têtes sont dans l'onglet En-têtes.",
+        "bodyHint": "Rempli avec les vraies valeurs de réponse du formulaire. Modifiez ce que vous voulez et renvoyez.",
+        "testToken": "un jeton de test créé pour cette console",
+        "recent": "Derniers appels"
+      },
+      "navTitle": "Sur cette page",
+      "gettingStarted": "Pour commencer",
+      "heroKicker": "Référence de l'API",
+      "heroText": "Tout ce dont une application a besoin pour envoyer et lire les réponses de ce service : l'adresse, la connexion et chaque endpoint avec des exemples.",
+      "liveCount": "{n} actifs",
+      "bearer": "Jeton Bearer",
+      "tryFirst": "Essayer maintenant",
+      "notLiveNote": "Pas encore actif : les jetons de test peuvent l'appeler (Essayer en utilise un), les appels en production sont refusés tant qu'il n'est pas activé.",
+      "oneHint": "Ajoutez un identifiant d'enregistrement à l'adresse pour lire uniquement celui-ci, p. ex. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "La réponse est retirée des listes et de l'API, et conservée dans le journal d'audit. Un jeton de test ne fait que vérifier l'appel.",
+      "errorShape": "À quoi ressemble une erreur",
+      "op": {
+        "GET": "Lister et lire",
+        "POST": "Créer",
+        "PUT": "Modifier",
+        "DELETE": "Supprimer"
+      }
+    },
+    "journey": {
+      "title": "Configurez votre API",
+      "text": "Cinq étapes pour passer d'un formulaire à une adresse que d'autres applis peuvent appeler.",
+      "progress": "{n} sur {total} faites",
+      "service": {
+        "title": "Créer un service",
+        "text": "Un dossier pour les endpoints qu'utilise une appli ou un partenaire. Désactivez-les tous d'un coup si besoin.",
+        "action": "Nouveau service"
+      },
+      "endpoint": {
+        "title": "Ajouter un endpoint",
+        "text": "Transforme un formulaire publié en adresse. Choisissez ce qu'il fait : lire, ajouter, modifier ou supprimer des réponses.",
+        "action": "Nouvel endpoint"
+      },
+      "token": {
+        "title": "Lui donner un jeton",
+        "text": "Les applis prouvent leur identité avec un jeton. Un jeton de test peut tout essayer sans toucher aux vraies données ; un jeton live fait de vrais appels.",
+        "action": "Nouveau jeton"
+      },
+      "access": {
+        "title": "Limiter qui peut appeler",
+        "text": "Autorisez ou bloquez les appelants par adresse IP, site web, pays, région ou réseaux anonymes.",
+        "action": "Nouvelle règle"
+      },
+      "live": {
+        "title": "Tester et passer en direct",
+        "text": "Essayez-le dans Docs et tests, puis activez l'endpoint pour que les jetons live puissent l'utiliser.",
+        "action": "Ouvrir Docs et tests"
+      }
+    },
+    "intro": {
+      "title": "Ce qu'est un endpoint",
+      "text": "Un endpoint donne à un formulaire publié sa propre adresse, par exemple /job-applications. D'autres applis y envoient ou y lisent des réponses, contrôlées exactement comme la page du formulaire. Il vit dans un service et reste inactif tant que vous ne lui donnez pas de jeton et ne l'activez pas.",
+      "hide": "Compris"
+    },
+    "gate": {
+      "title": "Créez d'abord un service",
+      "text": "Chaque endpoint vit dans un service : un par appli ou partenaire, pour voir leurs appels ensemble et les désactiver d'un coup. Vous n'avez pas encore de service, commencez par là ; vous revenez directement ici.",
+      "action": "Nouveau service"
+    },
+    "setup": {
+      "title": "Avant la mise en direct",
+      "isLive": "En direct",
+      "notLive": "Inactif",
+      "openEndpoint": "Ouvrir l'endpoint",
+      "createdTitle": "/{name} est créé",
+      "createdText": "Il n'est pas encore en direct : les jetons de test peuvent l'appeler, les appels live sont refusés tant que vous ne l'activez pas. Suivez la liste ci-dessous.",
+      "basics": {
+        "title": "Service et formulaire",
+        "ok": "Dans {service}, répond avec le formulaire {form}.",
+        "serviceOff": "Son service {name} est désactivé, l'endpoint ne peut donc pas répondre. Activez le service.",
+        "formOff": "Son formulaire n'est pas publié, l'endpoint ne peut donc pas répondre. Publiez le formulaire."
+      },
+      "token": {
+        "title": "Un jeton autorisé à l'appeler",
+        "text": "Aucun jeton ne peut encore l'appeler. Créez-en un rien que pour cet endpoint : test pour l'essayer, live pour de vrais appels.",
+        "ok": "{live} jetons live et {test} jetons de test peuvent l'appeler.",
+        "action": "Nouveau jeton pour cet endpoint"
+      },
+      "access": {
+        "title": "Qui peut appeler",
+        "text": "Toute personne avec un jeton valide peut l'appeler. Ajoutez des règles pour autoriser ou bloquer les appelants par adresse IP, site web, pays ou réseaux anonymes.",
+        "ok": "{n} règle d'accès s'applique. | {n} règles d'accès s'appliquent.",
+        "action": "Nouvelle règle pour cet endpoint"
+      },
+      "test": {
+        "title": "Testez-le",
+        "text": "Envoyez un appel avec un jeton de test : tous les vrais contrôles s'exécutent et rien n'est enregistré."
+      },
+      "live": {
+        "title": "Passer en direct",
+        "text": "Activez-le quand vous êtes prêt. Les jetons live pourront alors l'appeler.",
+        "on": "Les jetons live peuvent l'appeler. Désactivez-le pour arrêter tous les appels live d'un coup.",
+        "noLiveToken": "Aucun jeton live ne peut encore l'appeler : les appels live seraient toujours refusés.",
+        "action": "Passer en direct"
+      },
+      "toast": {
+        "live": "L'endpoint est en direct",
+        "notLive": "L'endpoint n'est pas en direct"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Répondez avec un statut 2xx en moins de 10 secondes et faites le vrai travail ensuite. Toute autre réponse est retentée."
       }
     },
-    "onceDesc": "Formalie ne peut pas l'afficher à nouveau. En cas de perte, créez-en une nouvelle.",
+    "onceDesc": "Copiez-le maintenant. Vous pourrez le revoir plus tard dans son panneau, après confirmation de votre mot de passe.",
     "keys": {
       "newTitle": "Nouvelle clé API",
       "editTitle": "Modifier la clé API",
@@ -6015,5 +6231,17 @@
         "deleted": "Clé API supprimée"
       }
     }
+  },
+  "secrets": {
+    "title": "Secret",
+    "show": "Afficher",
+    "hide": "Masquer ({n} s)",
+    "ask": "Confirmez votre mot de passe pour le voir. Cela est noté dans le journal d’audit.",
+    "password": "Votre mot de passe",
+    "confirm": "Afficher",
+    "wrong": "Ce mot de passe n’est pas correct. Il reste {n} essais.",
+    "locked": "Trop d’essais incorrects. Réessayez dans 15 minutes.",
+    "notViewable": "Créé avant que les secrets puissent être revus, il ne peut pas être affiché. Renouvelez-le pour en obtenir un que vous pourrez consulter plus tard.",
+    "shownNote": "Il se masque de nouveau tout seul au bout d’une minute. Gardez-le uniquement sur votre serveur."
   }
 }

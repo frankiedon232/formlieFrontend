@@ -105,6 +105,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
       <template v-else>
         <UAlert v-if="token.rotating_until" icon="i-lucide-refresh-cw" color="warning" variant="subtle" :title="t('apiService.tokens.rotating', { until: dateTime(token.rotating_until) })" />
         <UAlert v-if="token.status === 'revoked'" icon="i-lucide-ban" color="error" variant="subtle" :title="t('apiService.tokens.revokedOn', { date: dateTime(token.revoked_at!) })" :description="t('apiService.tokens.revokedDesc')" />
+        <AppSecretReveal v-if="token.status !== 'revoked'" :preview="token.kind === 'client' ? (token.client_id ?? token.preview) : token.preview" :endpoint="`/api-tokens/${token.id}/reveal`" :viewable="token.viewable" :title="t('apiService.tokens.secret.title')" :labels="{ token: t('apiService.tokens.secret.token'), client_secret: t('apiService.tokens.secret.clientSecret'), signing_secret: t('apiService.tokens.secret.signing') }" />
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
             <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-muted" /></span>

@@ -7,8 +7,9 @@
  * once, when made. Data saved before M2 is brought up to date the first time it is read.
  */
 import { createHash, randomBytes } from 'node:crypto'
-import type { ApiAccessRule, ApiEndpoint, ApiEndpointDetail, ApiRateLimits, ApiRuleAction, ApiRuleKind, ApiService, ApiStatus, ApiToken, ApiTokenKind, ApiTokenMode, ApiTokenScopes, ApiUsage } from '#shared/types/apiService'
-import { maskValue, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
+import type { ApiAccessRule, ApiEndpoint, ApiEndpointDetail, ApiEndpointSetup, ApiRateLimits, ApiRuleAction, ApiRuleKind, ApiService, ApiStatus, ApiToken, ApiTokenKind, ApiTokenMode, ApiTokenScopes, ApiUsage } from '#shared/types/apiService'
+import { maskValue, scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
+import { rulesFor } from '#shared/utils/apiService/access'
 import { endpointFieldsOf, endpointNameFrom } from '#shared/utils/apiService/endpoints'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { API_METHODS, apiEndpointUrl, type ApiMethod } from '#shared/utils/urls/public'
@@ -51,6 +52,8 @@ export interface StoredApiToken {
   mode: ApiTokenMode
   /** SHA-256 of the secret (bearer token or client secret) and its visible preview. */
   secret_hash: string
+  /** The secret itself, so it can be shown again after the password (owner, 2026-10-06): encrypted at rest by the backend, plain in the mock. Missing on tokens made before. */
+  secret?: string | null
   preview: string
   /** Before a rotation: the old secret's hash, valid until `rotating_until`. */
   previous_hash: string | null
@@ -162,9 +165,24 @@ export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[
   // Before the Formalie prefixes (owner, 2026-10-06): the sample tokens (nobody has their secrets) get new ones
   const SEEDED = ['Website sign-ups', 'Partner sandbox', 'Mobile app', 'Old import script']
   for (const token of api.tokens ?? []) {
+    // A signing token saved without its signing secret could never be called: give it one
+    if (token.signing && !token.signing_secret) {
+      token.signing_secret = newSecret('signing', token.mode)
+      saveApi()
+    }
+    // Before secrets could be viewed again (owner, 2026-10-06): the samples get a viewable one
+    if (SEEDED.includes(token.name) && token.preview.startsWith('formalie_') && token.secret === undefined) {
+      const fresh = newSecret(token.kind, token.mode)
+      token.secret_hash = hashSecret(fresh)
+      token.secret = fresh
+      token.preview = secretPreview(fresh)
+      saveApi()
+      continue
+    }
     if (!SEEDED.includes(token.name) || token.preview.startsWith('formalie_')) continue
     const secret = newSecret(token.kind, token.mode)
     token.secret_hash = hashSecret(secret)
+    token.secret = secret
     token.preview = secretPreview(secret)
     if (token.client_id) token.client_id = newSecret('client_id', token.mode)
     if (token.signing_secret) token.signing_secret = newSecret('signing', token.mode)
@@ -242,6 +260,7 @@ function seedTokens(api: TenantApi): StoredApiToken[] {
     return {
       id: crypto.randomUUID(),
       secret_hash: hashSecret(secret),
+      secret,
       preview: secretPreview(secret),
       previous_hash: null,
       rotating_until: null,
@@ -315,6 +334,7 @@ export function toToken(tenant: MockTenant, token: StoredApiToken): ApiToken {
     created_by: token.created_by,
     created_at: token.created_at,
     revoked_at: token.revoked_at,
+    viewable: !!token.secret && !token.revoked_at,
     ...tokenUsage(token),
   }
 }
@@ -408,6 +428,21 @@ export function toEndpointDetail(tenant: MockTenant, endpoint: StoredApiEndpoint
     page_size: endpoint.page_size,
     headers: (endpoint.headers ?? []).map(header => ({ name: header.name, preview: maskValue(header.value) })),
     versions: (form?.versions ?? []).map(item => item.number).sort((a, b) => b - a),
+    setup: endpointSetup(tenant, endpoint, form),
+  }
+}
+
+/** How far the endpoint is set up (owner, 2026-10-06): service on, form published, tokens that can call it, access rules, live. */
+function endpointSetup(tenant: MockTenant, endpoint: StoredApiEndpoint, form: StoredForm | undefined): ApiEndpointSetup {
+  const api = apiOf(tenant)
+  const callers = api.tokens.filter(token => tokenStatusOf(token) !== 'revoked' && tokenStatusOf(token) !== 'expired' && endpoint.methods.some(method => scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service_id, method })))
+  return {
+    service_active: api.services.find(item => item.id === endpoint.service_id)?.status === 'active',
+    form_published: form?.status === 'published',
+    tokens_live: callers.filter(token => token.mode === 'live').length,
+    tokens_test: callers.filter(token => token.mode === 'test').length,
+    rules: rulesFor(api.rules, endpoint).filter(rule => rule.enabled).length,
+    live: endpoint.status === 'active',
   }
 }
 

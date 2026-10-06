@@ -14,7 +14,8 @@
  * `https://api.formalie.dev:2202/…` (server/middleware/api-host.ts). Order of checks: address key →
  * endpoint → access rules (IP, Origin domain, country) → rate limit per IP → token → rate limits per
  * token and endpoint → switched on → method → scope → required headers → signature → the form's rules.
- * Mock only: `X-Forwarded-For` sets the caller's IP and `X-Debug-Country` its country, so rules can
+ * Mock only: `X-Forwarded-For` sets the caller's IP, `X-Debug-Country` its country and `X-Debug-Network`
+ * its anonymous networks (vpn, proxy, tor, hosting), so rules can
  * be tried from Postman (the real service takes the connection's address and GeoIP).
  * Test tokens never touch real responses: writes are checked and answered, nothing is stored.
  */
@@ -42,6 +43,7 @@ import { responsesOf, saveResponses } from './data/responseStore'
 import { MOCK_TENANTS, type MockTenant } from './data/tenants'
 import { recordLog } from './data/apiTraffic'
 import { maskAnswers, PERSONAL_TYPES } from './core/mask'
+import { API_NETWORKS } from '#shared/types/apiService'
 import { emitResponse } from './data/integrationStore'
 import { handleManagementApi } from './managementApi'
 
@@ -85,7 +87,9 @@ function callerOf(event: H3Event): AccessCaller {
     }
   }
   const country = getHeader(event, 'x-debug-country')?.trim().toUpperCase() || null
-  return { ip, domain, country: country && /^[A-Z]{2}$/.test(country) ? country : null }
+  // Mock only: X-Debug-Network (vpn, proxy, tor, hosting) stands in for the backend's IP intelligence
+  const networks = (getHeader(event, 'x-debug-network') ?? '').split(',').map(item => item.trim().toLowerCase()).filter(item => (API_NETWORKS as readonly string[]).includes(item))
+  return { ip, domain, country: country && /^[A-Z]{2}$/.test(country) ? country : null, networks }
 }
 /** Short-lived access tokens from `/{apiKey}/token` (memory only, like a cache). */
 const accessTokens = new Map<string, { tenant: string; token: string; expires: number }>()
@@ -239,12 +243,16 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const method = event.method.toUpperCase()
     const tenant = tenantByKey(key)
     context.tenant = tenant ?? undefined
-    if (!tenant || extra !== undefined) throw new PublicError('FRM-API-1006')
+    if (!tenant) throw new PublicError('FRM-API-1006', [{ field: 'address_key', message: 'unknown' }])
+    if (extra !== undefined) throw new PublicError('FRM-API-1006', [{ field: 'path', message: 'too_long' }])
     // A file upload carries multipart/form-data, every other write a JSON object
     const upload = recordRef === 'files' && method === 'POST'
     const raw = ['POST', 'PUT'].includes(method) && !upload ? ((await readRawBody(event, 'utf8')) ?? '') : ''
     context.raw = raw.slice(0, 20_000)
     let body: Record<string, unknown> = {}
+    // Bodies: 1 MB at most, and said to be JSON (owner, 2026-10-06: a clear answer for every mistake)
+    if (Buffer.byteLength(raw) > 1_000_000) throw new PublicError('FRM-API-1018', [{ field: 'body', message: '1 MB' }])
+    if (raw && !(getHeader(event, 'content-type') ?? '').toLowerCase().includes('application/json')) throw new PublicError('FRM-API-1017', [{ field: 'content-type', message: 'application/json' }])
     if (raw) {
       try {
         const parsed = JSON.parse(raw) as unknown
@@ -266,7 +274,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
 
     const api = apiOf(tenant)
     const endpoint = api.endpoints.find(item => item.name === name)
-    if (!endpoint) throw new PublicError('FRM-API-1006')
+    if (!endpoint) throw new PublicError('FRM-API-1006', [{ field: 'endpoint', message: 'unknown' }])
     context.endpoint = endpoint
     // Access rules: a block refuses; when allow rules apply, one must match
     const caller = callerOf(event)
@@ -292,7 +300,10 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const service = api.services.find(item => item.id === endpoint.service_id)
     const form = formsOf(tenant).forms.find(item => item.id === endpoint.form_id && !item.deleted_at)
     const schema = form ? schemaOf(form, endpoint.version) : null
-    if (endpoint.status !== 'active' || service?.status !== 'active' || !form || form.status !== 'published' || !schema) throw new PublicError('FRM-API-1007')
+    if (service?.status !== 'active') throw new PublicError('FRM-API-1007', [{ field: 'service', message: 'switched_off' }])
+    if (!form || form.status !== 'published' || !schema) throw new PublicError('FRM-API-1007', [{ field: 'form', message: 'not_published' }])
+    // Not live yet: only test tokens get through, so it can be tried before going live (owner, 2026-10-06)
+    if (endpoint.status !== 'active' && token.mode !== 'test') throw new PublicError('FRM-API-1007', [{ field: 'endpoint', message: 'not_live' }])
     // The choices as the portal shows them: worked out from the form (a question the form requires is always accepted)
     const choices = endpointFieldsOf(schema, endpoint.fields)
     const allowed: ApiMethod[] = endpoint.methods

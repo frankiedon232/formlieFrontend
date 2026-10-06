@@ -20,7 +20,8 @@
     "confirm": "Bevestigen",
     "copy": "Kopiëren",
     "copied": "Gekopieerd",
-    "next": "Volgende"
+    "next": "Volgende",
+    "removeItem": "{name} verwijderen"
   },
   "placeholder": {
     "title": "Binnenkort beschikbaar",
@@ -179,7 +180,10 @@
         "saveTitle": "Slaat automatisch op",
         "saveText": "Elke wijziging wordt als concept bewaard tot je publiceert."
       },
-      "folderHint": "Mappen houden uw formulieren overzichtelijk in de lijst en de zijbalk (bijvoorbeeld per team of project). Het zijn geen sjablooncategorieën."
+      "folderHint": "Mappen houden uw formulieren overzichtelijk in de lijst en de zijbalk (bijvoorbeeld per team of project). Het zijn geen sjablooncategorieën.",
+      "templateSubtitle": "Bouw het als een formulier en sla het daarna op als sjabloon",
+      "templateTitle": "Een sjabloon begint als formulier",
+      "templateHint": "Geef het een naam en maak het aan. De builder opent met Opslaan als sjabloon klaar in de formulierinstellingen, zodat je het sjabloon kunt hergebruiken voor nieuwe formulieren."
     },
     "detail": {
       "created": "Gemaakt",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Mislukt",
     "connectionsDisabled": "Uitgeschakeld",
     "connectionsNew": "Verbinding toevoegen",
-    "backToMenu": "Terug naar menu"
+    "backToMenu": "Terug naar menu",
+    "newTemplate": "Nieuw sjabloon",
+    "createForms": "Formulieren",
+    "createOperations": "Bewerkingen",
+    "addDatabase": "Database toevoegen",
+    "newApiService": "Nieuwe API-service"
   },
   "navbar": {
     "breadcrumb": "Kruimelpad",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "De handtekening van het verzoek ontbreekt, is te oud of klopt niet.",
     "FRM-API-1013": "Er is geen record met dit id.",
     "FRM-API-1014": "Sommige velden kunnen niet naar dit endpoint worden gestuurd.",
-    "FRM-API-1015": "De toegangsregels staan deze aanroeper niet toe."
+    "FRM-API-1015": "De toegangsregels staan deze aanroeper niet toe.",
+    "FRM-AUTH-1013": "Dat wachtwoord klopt niet.",
+    "FRM-API-1016": "Dit geheim kan niet worden getoond: het is gemaakt voordat geheimen weer zichtbaar waren. Roteer het voor een nieuw geheim.",
+    "FRM-API-1017": "Stuur de body als JSON met Content-Type: application/json.",
+    "FRM-API-1018": "De body is te groot (maximaal 1 MB; stuur bestanden via de uploadstap)."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook verwijderd",
       "integrations_webhook_resent": "Webhooklevering opnieuw verzonden",
       "integrations_api_key_updated": "API-sleutel gewijzigd",
-      "integrations_api_key_deleted": "API-sleutel verwijderd"
+      "integrations_api_key_deleted": "API-sleutel verwijderd",
+      "api_token_revealed": "API-token bekeken",
+      "integrations_webhook_secret_revealed": "Webhookgeheim bekeken",
+      "integrations_api_key_revealed": "API-sleutel bekeken"
     },
     "detail": {
       "who": "Wie",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "Waar deze endpoints voor dienen",
       "active": "Beantwoordt aanroepen",
       "activeHint": "Uitgeschakeld antwoordt elk endpoint erin met een duidelijke fout.",
-      "create": "Service aanmaken"
+      "create": "Service aanmaken",
+      "nameHelp": "Noem het naar de app of partner die het aanroept, zodat je weet van wie deze aanroepen zijn.",
+      "steps": {
+        "about": "Over",
+        "details": "Details",
+        "next": "Volgende stap",
+        "continue": "Doorgaan",
+        "back": "Terug"
+      },
+      "about": {
+        "app": "Een app",
+        "service": "Service",
+        "endpoint1": "aanmeldingen",
+        "endpoint2": "boekingen",
+        "endpoint3": "feedback",
+        "text": "Een service groepeert de endpoints die één app of partner gebruikt. De app roept de endpoints aan; de service houdt ze bij elkaar.",
+        "group": "Houd de endpoints van elke app of partner op één plek",
+        "switch": "Zet al zijn endpoints tegelijk uit, bijvoorbeeld tijdens onderhoud",
+        "watch": "Zie hun aanroepen, fouten en reactietijden samen"
+      },
+      "done": {
+        "title": "{name} is klaar",
+        "text": "De service is gemaakt. Op zichzelf doet hij nog niets: hij heeft minstens één endpoint nodig.",
+        "nextTitle": "Volgende: voeg een endpoint toe",
+        "nextText": "Een endpoint maakt van een gepubliceerd formulier een adres in deze service. Je kiest het formulier, wat het endpoint mag doen en welke antwoorden het aanneemt en teruggeeft.",
+        "later": "Later",
+        "endpoint": "Maak een endpoint"
+      }
     },
     "fields": {
       "title": "Vragen",
@@ -3799,14 +3842,16 @@
         "basics": "Waar het staat en hoe het heet.",
         "methods": "Kies de methoden waarop het antwoordt. U kunt ze later wijzigen.",
         "fields": "Wat POST en PUT accepteren, en wat GET teruggeeft of kan filteren.",
-        "review": "Bekijk het nog eens. Het begint te antwoorden zodra aanroepers een token hebben."
+        "review": "Neem het door. Het wordt niet live aangemaakt, dus echte aanroepers worden nog niet geraakt."
       },
       "method": {
         "GET": "Antwoorden lezen: een lijst met paginering en filters, of één op id.",
         "POST": "Een nieuw antwoord sturen, gecontroleerd zoals de formulierpagina.",
         "PUT": "Een antwoord wijzigen op id (alleen de geaccepteerde vragen).",
         "DELETE": "Een antwoord verwijderen op id; bewaard in het auditlogboek."
-      }
+      },
+      "afterTitle": "Wat er daarna gebeurt",
+      "afterText": "Het endpoint wordt niet live aangemaakt. Testtokens kunnen het al aanroepen, dus je kunt het veilig proberen. Geef het daarna een livetoken, voeg eventueel toegangsregels toe en zet het aan."
     },
     "tokens": {
       "title": "Tokens",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "{name} verwijderen?",
       "deleteDesc": "Het verdwijnt uit deze lijst. De geschiedenis blijft bewaard in het auditlogboek.",
       "once": {
-        "title": "Kopieer het nu: het wordt maar één keer getoond",
-        "desc": "Formalie bewaart alleen een vingerafdruk ervan. Raakt u het kwijt, roteer dan het token om een nieuw te krijgen."
+        "title": "Kopieer het nu",
+        "desc": "Het blijft vanaf nu verborgen. Je kunt het later opnieuw bekijken in het paneel van de token, na bevestiging van je wachtwoord."
       },
       "secret": {
         "token": "Token",
         "clientId": "Client-id",
         "clientSecret": "Client-geheim",
-        "signing": "Ondertekeningsgeheim"
+        "signing": "Ondertekeningsgeheim",
+        "title": "Geheim"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} opgeslagen",
         "revoked": "{name} ingetrokken",
         "deleted": "{name} verwijderd"
+      },
+      "steps": {
+        "kind": "Soort",
+        "access": "Wat het mag aanroepen",
+        "safety": "Veiligheid",
+        "done": "Token"
+      },
+      "about": {
+        "title": "Wat een token is",
+        "text": "Apps sturen bij elke aanroep een token mee om te bewijzen wie ze zijn. Geef elke app een eigen token, en alleen wat nodig is, zodat je er een kunt stoppen zonder de andere aan te raken."
+      },
+      "nameHelp": "Noem het naar de app die het gebruikt.",
+      "presetName": "Token voor /{name}",
+      "scopeSummary": {
+        "all": "Het mag elk endpoint aanroepen, met elke methode.",
+        "services": "Het mag de endpoints van {n} service aanroepen. | Het mag de endpoints van {n} services aanroepen.",
+        "endpoints": "Het mag {n} endpoint aanroepen. | Het mag {n} endpoints aanroepen."
+      },
+      "expiryHelp": "Een token dat verloopt is veiliger: je krijgt 14 dagen van tevoren een herinnering.",
+      "viewLater": "Je kunt het later opnieuw bekijken in het paneel van het token, na bevestiging van je wachtwoord.",
+      "next": {
+        "title": "Wat volgt",
+        "test": "Gebruik dit testtoken om het endpoint te proberen in Docs & testen. Er wordt niets opgeslagen. Maak een livetoken als je klaar bent voor echte aanroepen.",
+        "live": "Beperk eventueel met toegangsregels wie het mag gebruiken, test het en zet daarna het endpoint aan.",
+        "rule": "Voeg een toegangsregel toe"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "IP-adres",
         "domain": "Websitedomein",
         "country": "Land",
-        "region": "Regio"
+        "region": "Regio",
+        "network": "Anonieme netwerken"
       },
       "kindHint": {
         "ip": "Losse adressen of bereiken (IPv4 en IPv6).",
         "domain": "De website waarvandaan een browseraanroep komt.",
         "country": "Waar het adres van de aanroeper zich bevindt.",
-        "region": "Hele continenten in één keer."
+        "region": "Hele continenten in één keer.",
+        "network": "VPN's, proxy's, Tor en hostingproviders"
       },
       "valuesLabel": {
         "ip": "Adressen en bereiken",
         "domain": "Domeinen",
         "country": "Landen",
-        "region": "Regio's"
+        "region": "Regio's",
+        "network": "Netwerken"
       },
       "valuesHelp": {
-        "ip": "Eén per regel, bijv. 203.0.113.10 of 198.51.100.0/24.",
-        "domain": "Eén per regel; *.example.com omvat elk subdomein.",
+        "ip": "Typ een adres of bereik, gevolgd door een komma, spatie of Enter, bijv. 203.0.113.10 of 198.51.100.0/24. Elk item wordt gecontroleerd.",
+        "domain": "Typ een domein, gevolgd door een komma, spatie of Enter, bijv. example.com of *.example.com voor alle subdomeinen. Elk item wordt gecontroleerd.",
         "country": "Kies er een of meer.",
-        "region": "Kies er een of meer."
+        "region": "Kies er een of meer.",
+        "network": "Aanroepers van wie het adres bij een van deze hoort."
       },
       "region": {
         "AF": "Afrika",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" is geen IP-adres of bereik.",
         "domain": "\"{value}\" is geen domein.",
         "country": "\"{value}\" is geen land.",
-        "region": "\"{value}\" is geen regio."
+        "region": "\"{value}\" is geen regio.",
+        "network": "Kies een netwerk uit de lijst"
       },
       "toast": {
         "created": "Regel aangemaakt",
@@ -4098,6 +4174,40 @@
         "answer": "Boven een limiet krijgen aanroepers 429 met Retry-After (seconden wachttijd); elk antwoord vermeldt de limiet en wat er over is.",
         "saved": "Snelheidslimieten opgeslagen",
         "changed": "Gewijzigd {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Open proxy",
+        "tor": "Tor",
+        "hosting": "Hosting en cloud"
+      },
+      "networkHint": {
+        "vpn": "Commerciële VPN-uitgangen",
+        "proxy": "Openbare en anonieme proxy's",
+        "tor": "Tor-uitgangsnodes",
+        "hosting": "Servers bij hosting- en cloudproviders"
+      },
+      "networkNote": "Formalie herkent deze aan de hand van lijsten met bekende adressen die elke dag worden bijgewerkt. Blokkeer VPN's samen met een landregel als het land moet kloppen.",
+      "geo": {
+        "title": "Hoe het land wordt bepaald",
+        "text": "Uit het IP-adres van de aanroeper, opgezocht in een locatiedatabase: in de grote meerderheid van de gevallen juist voor het land. Wie een VPN of proxy gebruikt, verschijnt in het land van die server, dus voeg een regel voor Anonieme netwerken toe als je dat wilt stoppen."
+      },
+      "scopeHelp": "Overal, één service of één endpoint.",
+      "steps": {
+        "what": "Wat",
+        "values": "Waarden",
+        "where": "Waar",
+        "done": "Klaar"
+      },
+      "about": {
+        "title": "Wat toegangsregels doen",
+        "text": "Ze bepalen wie mag aanroepen nog voordat het token wordt gecontroleerd. Blokkeren wint altijd. Zodra een toestaan-regel geldt, komen alleen aanroepers binnen die bij een regel passen."
+      },
+      "done": {
+        "title": "De regel is aan",
+        "block": "Aanroepers die passen bij {values} worden geweigerd op {where}.",
+        "allow": "Alleen aanroepers die passen bij {values} (of een andere toestaan-regel) komen binnen op {where}.",
+        "next": "Controleer een aanroeper met Een aanroeper testen, probeer dan het endpoint in Docs & testen en zet het aan."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Bestanden versturen",
         "text": "Upload eerst elk bestand als formulierdata, met de veldnaam file en de vraagsleutel in field. Het antwoord geeft de id van het bestand.",
-        "then": "Zet de id's daarna in de JSON-body onder die vraag, bijv. \"cv\": [\"id\"]. Dezelfde bestandstypen en groottes als in het formulier zijn toegestaan."
+        "then": "Zet de id's daarna in de JSON-body onder die vraag, bijv. \"cv\": [\"id\"]. Dezelfde bestandstypen en groottes als in het formulier zijn toegestaan.",
+        "step1": "Upload het bestand",
+        "step2": "Stuur de id mee met de antwoorden"
       },
       "signing": {
         "title": "Ondertekende aanroepen",
@@ -4240,7 +4352,111 @@
         "testOnly": "Testmodus: de antwoorden lijken echt, maar er wordt geen antwoord gemaakt, gewijzigd of verwijderd.",
         "nothingYet": "Verstuur een aanroep om het antwoord te zien",
         "send": "Versturen",
-        "badJson": "Dit is geen geldige JSON."
+        "badJson": "Dit is geen geldige JSON.",
+        "recordNeeded": "record-id (vereist)",
+        "headers": "Headers",
+        "noBody": "Deze methode stuurt geen body. De headers staan op het tabblad Headers.",
+        "bodyHint": "Gevuld met de echte antwoordwaarden van het formulier. Pas iets aan en verstuur opnieuw.",
+        "testToken": "een testtoken gemaakt voor deze console",
+        "recent": "Laatste aanroepen"
+      },
+      "navTitle": "Op deze pagina",
+      "gettingStarted": "Aan de slag",
+      "heroKicker": "API-referentie",
+      "heroText": "Alles wat een app nodig heeft om de antwoorden van deze dienst te versturen en te lezen: het adres, hoe je inlogt en elk endpoint met voorbeelden.",
+      "liveCount": "{n} live",
+      "bearer": "Bearer-token",
+      "tryFirst": "Probeer het nu",
+      "notLiveNote": "Nog niet live: testtokens kunnen het aanroepen (Probeer het gebruikt er een), live aanroepen worden geweigerd tot het is ingeschakeld.",
+      "oneHint": "Voeg een record-id toe aan het adres om alleen dat record te lezen, bijv. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "Het antwoord verdwijnt uit lijsten en de API en blijft bewaard in het auditlogboek. Een testtoken controleert alleen de aanroep.",
+      "errorShape": "Hoe een fout eruitziet",
+      "op": {
+        "GET": "Weergeven en lezen",
+        "POST": "Aanmaken",
+        "PUT": "Wijzigen",
+        "DELETE": "Verwijderen"
+      }
+    },
+    "journey": {
+      "title": "Stel je API in",
+      "text": "Vijf stappen van een formulier naar een adres dat andere apps kunnen aanroepen.",
+      "progress": "{n} van {total} klaar",
+      "service": {
+        "title": "Maak een service",
+        "text": "Een map voor de endpoints die één app of partner gebruikt. Zet ze indien nodig allemaal tegelijk uit.",
+        "action": "Nieuwe service"
+      },
+      "endpoint": {
+        "title": "Voeg een endpoint toe",
+        "text": "Maakt van een gepubliceerd formulier een adres. Kies wat het doet: reacties lezen, toevoegen, wijzigen of verwijderen.",
+        "action": "Nieuw endpoint"
+      },
+      "token": {
+        "title": "Geef het een token",
+        "text": "Apps bewijzen wie ze zijn met een token. Een testtoken kan alles uitproberen zonder echte gegevens aan te raken; een livetoken doet echte aanroepen.",
+        "action": "Nieuw token"
+      },
+      "access": {
+        "title": "Beperk wie mag aanroepen",
+        "text": "Sta aanroepers toe of blokkeer ze op IP-adres, website, land, regio of anonieme netwerken.",
+        "action": "Nieuwe regel"
+      },
+      "live": {
+        "title": "Test en ga live",
+        "text": "Probeer het in Docs & testen en zet het endpoint daarna aan zodat livetokens het kunnen gebruiken.",
+        "action": "Docs & testen openen"
+      }
+    },
+    "intro": {
+      "title": "Wat een endpoint is",
+      "text": "Een endpoint geeft een gepubliceerd formulier een eigen adres, bijvoorbeeld /job-applications. Andere apps sturen of lezen daar reacties, precies zo gecontroleerd als de formulierpagina. Het hoort bij een service en blijft niet live tot je er een token aan geeft en het aanzet.",
+      "hide": "Begrepen"
+    },
+    "gate": {
+      "title": "Maak eerst een service",
+      "text": "Elk endpoint hoort bij een service: één per app of partner, zodat je hun aanroepen samen ziet en ze tegelijk kunt uitzetten. Je hebt nog geen service, begin dus daar; je komt meteen terug.",
+      "action": "Nieuwe service"
+    },
+    "setup": {
+      "title": "Voordat het live gaat",
+      "isLive": "Live",
+      "notLive": "Niet live",
+      "openEndpoint": "Open het endpoint",
+      "createdTitle": "/{name} is aangemaakt",
+      "createdText": "Het is nog niet live: testtokens kunnen het aanroepen, live aanroepen worden geweigerd tot je het aanzet. Werk de lijst hieronder af.",
+      "basics": {
+        "title": "Service en formulier",
+        "ok": "In {service}, antwoordt met het formulier {form}.",
+        "serviceOff": "De service {name} staat uit, dus het endpoint kan niet antwoorden. Zet de service aan.",
+        "formOff": "Het formulier is niet gepubliceerd, dus het endpoint kan niet antwoorden. Publiceer het formulier."
+      },
+      "token": {
+        "title": "Een token dat het mag aanroepen",
+        "text": "Nog geen token mag het aanroepen. Maak er een alleen voor dit endpoint: test om het te proberen, live voor echte aanroepen.",
+        "ok": "{live} live- en {test} testtokens mogen het aanroepen.",
+        "action": "Nieuw token voor dit endpoint"
+      },
+      "access": {
+        "title": "Wie mag aanroepen",
+        "text": "Iedereen met een geldig token kan het aanroepen. Voeg regels toe om aanroepers toe te staan of te blokkeren op IP-adres, website, land of anonieme netwerken.",
+        "ok": "{n} toegangsregel geldt. | {n} toegangsregels gelden.",
+        "action": "Nieuwe regel voor dit endpoint"
+      },
+      "test": {
+        "title": "Test het",
+        "text": "Stuur een aanroep met een testtoken: alle echte controles draaien en er wordt niets opgeslagen."
+      },
+      "live": {
+        "title": "Ga live",
+        "text": "Zet het aan als je klaar bent. Livetokens kunnen het dan aanroepen.",
+        "on": "Livetokens kunnen het aanroepen. Zet het uit om alle live aanroepen tegelijk te stoppen.",
+        "noLiveToken": "Nog geen livetoken mag het aanroepen: live aanroepen zouden nog steeds worden geweigerd.",
+        "action": "Ga live"
+      },
+      "toast": {
+        "live": "Het endpoint is live",
+        "notLive": "Het endpoint is niet live"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Antwoord binnen 10 seconden met een willekeurige 2xx-status en doe het echte werk daarna. Alles anders wordt opnieuw geprobeerd."
       }
     },
-    "onceDesc": "Formalie kan hem niet opnieuw tonen. Raakt hij kwijt, maak dan een nieuwe.",
+    "onceDesc": "Kopieer het nu. Je kunt het later opnieuw bekijken in het paneel, na bevestiging van je wachtwoord.",
     "keys": {
       "newTitle": "Nieuwe API-sleutel",
       "editTitle": "API-sleutel bewerken",
@@ -6015,5 +6231,17 @@
         "deleted": "API-sleutel verwijderd"
       }
     }
+  },
+  "secrets": {
+    "title": "Geheim",
+    "show": "Tonen",
+    "hide": "Verbergen ({n} s)",
+    "ask": "Bevestig je wachtwoord om het te zien. Dit wordt vastgelegd in het auditlogboek.",
+    "password": "Je wachtwoord",
+    "confirm": "Tonen",
+    "wrong": "Dat wachtwoord klopt niet. Nog {n} pogingen.",
+    "locked": "Te veel foute pogingen. Probeer het over 15 minuten opnieuw.",
+    "notViewable": "Gemaakt voordat geheimen weer zichtbaar waren, dus het kan niet worden getoond. Roteer het om er een te krijgen die je later kunt bekijken.",
+    "shownNote": "Het verbergt zich na een minuut vanzelf weer. Bewaar het alleen op je server."
   }
 }

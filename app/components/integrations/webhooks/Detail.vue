@@ -137,6 +137,7 @@ async function sendTest() {
         <UAlert v-if="webhook.paused_reason === 'failures'" icon="i-lucide-octagon-pause" color="error" variant="subtle" :title="t('integrations.webhooks.autoPaused', { n: WEBHOOK_AUTO_PAUSE })" :description="t('integrations.webhooks.autoPausedDesc')" />
         <UAlert v-else-if="webhook.status === 'failing'" icon="i-lucide-triangle-alert" color="warning" variant="subtle" :title="t('integrations.webhooks.failingTitle', { n: webhook.consecutive_failures }, webhook.consecutive_failures)" :description="t('integrations.webhooks.failingDesc')" />
 
+        <AppSecretReveal :preview="webhook.secret_preview" :endpoint="`/webhooks/${webhook.id}/reveal`" :title="t('integrations.webhooks.secret')" :labels="{ secret: t('integrations.webhooks.secret') }" />
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
             <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-muted" /></span>

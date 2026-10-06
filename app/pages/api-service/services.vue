@@ -68,10 +68,15 @@ function edit(service: ApiService | null) {
   editing.value = service
   editOpen.value = true
 }
+// `?new=1` (rail + menu, the setup guide) opens New service
+watch(() => route.query.new, value => {
+  if (!value) return
+  edit(null)
+  void router.replace({ query: { ...route.query, new: undefined } })
+}, { immediate: true })
 async function saved(service: ApiService) {
-  useToast().add({ title: editing.value ? t('apiService.toast.serviceSaved', { name: service.name }) : t('apiService.toast.serviceCreated', { name: service.name }), color: 'success', icon: 'i-lucide-circle-check' })
+  if (editing.value) useToast().add({ title: t('apiService.toast.serviceSaved', { name: service.name }), color: 'success', icon: 'i-lucide-circle-check' })
   await refreshAll()
-  if (!editing.value) openRow(service)
 }
 async function duplicate(service: ApiService) {
   const copy = await actions.duplicateService(service)

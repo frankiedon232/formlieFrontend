@@ -15,7 +15,9 @@ const route = useRoute()
 const router = useRouter()
 const counts = useNavCounts()
 const { busy, run } = useBusy()
-useHead({ title: () => t('nav.newForm') })
+// From the rail's New template (owner, 2026-10-06): a template starts as a form, then Save as template
+const forTemplate = computed(() => route.query.purpose === 'template')
+useHead({ title: () => (forTemplate.value ? t('nav.newTemplate') : t('nav.newForm')) })
 
 type Mode = 'blank' | 'template' | 'import'
 const mode = computed<Mode>({
@@ -106,15 +108,15 @@ async function create() {
   )
   if (!created) return
   counts.refresh(true)
-  await navigateTo(`/forms/${created.data.id}/build`)
+  await navigateTo({ path: `/forms/${created.data.id}/build`, query: forTemplate.value ? { save: 'template' } : undefined })
 }
 </script>
 
 <template>
   <AppPanel
     id="forms-new"
-    :title="t('nav.newForm')"
-    :subtitle="t('forms.new.subtitle')"
+    :title="forTemplate ? t('nav.newTemplate') : t('nav.newForm')"
+    :subtitle="forTemplate ? t('forms.new.templateSubtitle') : t('forms.new.subtitle')"
     subtitle-icon="i-lucide-sparkles"
   >
     <template #actions>
@@ -131,6 +133,7 @@ async function create() {
 
     <div class="mx-auto flex w-full max-w-3xl flex-col gap-6">
       <UTabs v-model="mode" :items="tabs" :content="false" color="neutral" variant="link" class="w-full" />
+      <UAlert v-if="forTemplate" icon="i-lucide-bookmark-plus" color="neutral" variant="subtle" :title="t('forms.new.templateTitle')" :description="t('forms.new.templateHint')" />
 
       <form class="flex flex-col gap-6" @submit.prevent="create">
         <FormsNewBlankIntro v-if="mode === 'blank'" :name="name" />

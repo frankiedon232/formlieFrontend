@@ -20,7 +20,8 @@
     "confirm": "Conferma",
     "copy": "Copia",
     "copied": "Copiato",
-    "next": "Avanti"
+    "next": "Avanti",
+    "removeItem": "Rimuovi {name}"
   },
   "placeholder": {
     "title": "Presto disponibile",
@@ -179,7 +180,10 @@
         "saveTitle": "Salvataggio automatico",
         "saveText": "Ogni modifica viene salvata come bozza finché non pubblichi."
       },
-      "folderHint": "Le cartelle mantengono i tuoi moduli organizzati nell'elenco e nella barra laterale (ad esempio per team o progetto). Non sono categorie di modelli."
+      "folderHint": "Le cartelle mantengono i tuoi moduli organizzati nell'elenco e nella barra laterale (ad esempio per team o progetto). Non sono categorie di modelli.",
+      "templateSubtitle": "Costruiscilo come un modulo, poi salvalo come modello",
+      "templateTitle": "Un modello inizia come un modulo",
+      "templateHint": "Dagli un nome e crealo. Il builder si apre con Salva come modello pronto nelle impostazioni del modulo, così il modello è tuo da riusare per nuovi moduli."
     },
     "detail": {
       "created": "Creato",
@@ -411,7 +415,12 @@
     "connectionsFailing": "In errore",
     "connectionsDisabled": "Disattivate",
     "connectionsNew": "Aggiungi connessione",
-    "backToMenu": "Torna al menu"
+    "backToMenu": "Torna al menu",
+    "newTemplate": "Nuovo modello",
+    "createForms": "Moduli",
+    "createOperations": "Operazioni",
+    "addDatabase": "Aggiungi database",
+    "newApiService": "Nuovo servizio API"
   },
   "navbar": {
     "breadcrumb": "Percorso di navigazione",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "La firma della richiesta manca, è troppo vecchia o è errata.",
     "FRM-API-1013": "Non esiste un record con questo id.",
     "FRM-API-1014": "Alcuni campi non possono essere inviati a questo endpoint.",
-    "FRM-API-1015": "Le regole di accesso non consentono questo chiamante."
+    "FRM-API-1015": "Le regole di accesso non consentono questo chiamante.",
+    "FRM-AUTH-1013": "La password non è corretta.",
+    "FRM-API-1016": "Questo segreto non può essere mostrato: è stato creato prima che i segreti potessero essere rivisti. Ruotalo per ottenerne uno nuovo.",
+    "FRM-API-1017": "Invia il corpo come JSON con Content-Type: application/json.",
+    "FRM-API-1018": "Il corpo è troppo grande (massimo 1 MB; invia i file tramite il passaggio di caricamento)."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook eliminato",
       "integrations_webhook_resent": "Consegna del webhook inviata di nuovo",
       "integrations_api_key_updated": "Chiave API modificata",
-      "integrations_api_key_deleted": "Chiave API eliminata"
+      "integrations_api_key_deleted": "Chiave API eliminata",
+      "api_token_revealed": "Token API visualizzato",
+      "integrations_webhook_secret_revealed": "Segreto del webhook visualizzato",
+      "integrations_api_key_revealed": "Chiave API visualizzata"
     },
     "detail": {
       "who": "Chi",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "A cosa servono questi endpoint",
       "active": "Risponde alle chiamate",
       "activeHint": "Se disattivato, ogni endpoint al suo interno risponde con un errore chiaro.",
-      "create": "Crea servizio"
+      "create": "Crea servizio",
+      "nameHelp": "Chiamalo come l'app o il partner che lo chiamerà, così sai di chi sono queste chiamate.",
+      "steps": {
+        "about": "Informazioni",
+        "details": "Dettagli",
+        "next": "Passo successivo",
+        "continue": "Continua",
+        "back": "Indietro"
+      },
+      "about": {
+        "app": "Un'app",
+        "service": "Servizio",
+        "endpoint1": "iscrizioni",
+        "endpoint2": "prenotazioni",
+        "endpoint3": "feedback",
+        "text": "Un servizio raggruppa gli endpoint usati da un'app o da un partner. L'app chiama gli endpoint; il servizio li tiene insieme.",
+        "group": "Tieni in un posto solo gli endpoint di ogni app o partner",
+        "switch": "Spegni tutti i suoi endpoint in una volta, per esempio durante la manutenzione",
+        "watch": "Vedi insieme chiamate, errori e tempi di risposta"
+      },
+      "done": {
+        "title": "{name} è pronto",
+        "text": "Il servizio è creato. Da solo non fa ancora nulla: serve almeno un endpoint.",
+        "nextTitle": "Poi: aggiungi un endpoint",
+        "nextText": "Un endpoint trasforma un modulo pubblicato in un indirizzo in questo servizio. Scegli il modulo, cosa può fare l'endpoint e quali risposte riceve e restituisce.",
+        "later": "Più tardi",
+        "endpoint": "Crea un endpoint"
+      }
     },
     "fields": {
       "title": "Domande",
@@ -3799,14 +3842,16 @@
         "basics": "Dove si trova e come si chiama.",
         "methods": "Scegli i metodi a cui risponde. Potrai cambiarli in seguito.",
         "fields": "Cosa accettano POST e PUT, e cosa restituisce GET o permette di filtrare.",
-        "review": "Dagli un'occhiata. Inizia a rispondere appena chi chiama ha un token."
+        "review": "Controlla tutto. Viene creato non attivo, quindi i chiamanti reali non sono ancora coinvolti."
       },
       "method": {
         "GET": "Leggere le risposte: un elenco con paginazione e filtri, o una singola tramite il suo id.",
         "POST": "Inviare una nuova risposta, controllata come nella pagina del modulo.",
         "PUT": "Modificare una risposta tramite il suo id (solo le domande accettate).",
         "DELETE": "Rimuovere una risposta tramite il suo id; resta nel registro di controllo."
-      }
+      },
+      "afterTitle": "Cosa succede dopo",
+      "afterText": "L'endpoint viene creato non live. I token di test possono già chiamarlo, quindi puoi provarlo in sicurezza. Poi dagli un token live, aggiungi regole di accesso se vuoi e attivalo."
     },
     "tokens": {
       "title": "Token",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "Eliminare {name}?",
       "deleteDesc": "Scompare da questo elenco. La sua cronologia resta nel registro di audit.",
       "once": {
-        "title": "Copialo ora: viene mostrato una sola volta",
-        "desc": "Formalie ne conserva solo un'impronta. Se lo perdi, ruota il token per ottenerne uno nuovo."
+        "title": "Copialo ora",
+        "desc": "Da ora resta mascherato. Potrai rivederlo in seguito nel pannello del token, dopo aver confermato la password."
       },
       "secret": {
         "token": "Token",
         "clientId": "ID client",
         "clientSecret": "Segreto client",
-        "signing": "Segreto di firma"
+        "signing": "Segreto di firma",
+        "title": "Segreto"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} salvato",
         "revoked": "{name} revocato",
         "deleted": "{name} eliminato"
+      },
+      "steps": {
+        "kind": "Tipo",
+        "access": "Cosa può chiamare",
+        "safety": "Sicurezza",
+        "done": "Token"
+      },
+      "about": {
+        "title": "Cos'è un token",
+        "text": "Le app inviano un token con ogni chiamata per dimostrare chi sono. Dai a ogni app il suo, e solo ciò che serve, così puoi fermarne una senza toccare le altre."
+      },
+      "nameHelp": "Chiamalo come l'app che lo userà.",
+      "presetName": "Token per /{name}",
+      "scopeSummary": {
+        "all": "Può chiamare ogni endpoint, con ogni metodo.",
+        "services": "Può chiamare gli endpoint di {n} servizio. | Può chiamare gli endpoint di {n} servizi.",
+        "endpoints": "Può chiamare {n} endpoint. | Può chiamare {n} endpoint."
+      },
+      "expiryHelp": "Un token che scade è più sicuro: ricevi un promemoria 14 giorni prima.",
+      "viewLater": "Potrai rivederlo più tardi nel pannello del token, dopo aver confermato la password.",
+      "next": {
+        "title": "Cosa viene dopo",
+        "test": "Usa questo token di test per provare l'endpoint in Docs e test. Nulla viene salvato. Crea un token live quando sei pronto per chiamate reali.",
+        "live": "Se vuoi, limita chi può usarlo con regole di accesso, provalo, poi attiva l'endpoint.",
+        "rule": "Aggiungi una regola di accesso"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "Indirizzo IP",
         "domain": "Dominio del sito web",
         "country": "Paese",
-        "region": "Regione"
+        "region": "Regione",
+        "network": "Reti anonime"
       },
       "kindHint": {
         "ip": "Singoli indirizzi o intervalli (IPv4 e IPv6).",
         "domain": "Il sito web da cui arriva una chiamata del browser.",
         "country": "Dove si trova l'indirizzo del chiamante.",
-        "region": "Interi continenti in una volta."
+        "region": "Interi continenti in una volta.",
+        "network": "VPN, proxy, Tor e provider di hosting"
       },
       "valuesLabel": {
         "ip": "Indirizzi e intervalli",
         "domain": "Domini",
         "country": "Paesi",
-        "region": "Regioni"
+        "region": "Regioni",
+        "network": "Reti"
       },
       "valuesHelp": {
-        "ip": "Uno per riga, ad es. 203.0.113.10 o 198.51.100.0/24.",
-        "domain": "Uno per riga; *.example.com copre ogni sottodominio.",
+        "ip": "Digita un indirizzo o un intervallo, poi una virgola, uno spazio o Enter, ad es. 203.0.113.10 o 198.51.100.0/24. Ognuno viene controllato.",
+        "domain": "Digita un dominio, poi una virgola, uno spazio o Enter, ad es. example.com o *.example.com per tutti i suoi sottodomini. Ognuno viene controllato.",
         "country": "Scegline uno o più.",
-        "region": "Scegline una o più."
+        "region": "Scegline una o più.",
+        "network": "Chiamanti il cui indirizzo appartiene a una di queste."
       },
       "region": {
         "AF": "Africa",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" non è un indirizzo IP né un intervallo.",
         "domain": "\"{value}\" non è un dominio.",
         "country": "\"{value}\" non è un paese.",
-        "region": "\"{value}\" non è una regione."
+        "region": "\"{value}\" non è una regione.",
+        "network": "Scegli una rete dall'elenco"
       },
       "toast": {
         "created": "Regola creata",
@@ -4098,6 +4174,40 @@
         "answer": "Oltre un limite, i chiamanti ricevono 429 con Retry-After (secondi di attesa); ogni risposta indica il limite e quanto resta.",
         "saved": "Limiti di frequenza salvati",
         "changed": "Modificato {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Proxy aperto",
+        "tor": "Tor",
+        "hosting": "Hosting e cloud"
+      },
+      "networkHint": {
+        "vpn": "Uscite di VPN commerciali",
+        "proxy": "Proxy pubblici e anonimi",
+        "tor": "Nodi di uscita Tor",
+        "hosting": "Server di provider di hosting e cloud"
+      },
+      "networkNote": "Formalie le riconosce da elenchi di indirizzi noti aggiornati ogni giorno. Blocca le VPN insieme a una regola per paese quando il paese deve essere esatto.",
+      "geo": {
+        "title": "Come si trova il paese",
+        "text": "Dall'indirizzo IP del chiamante, cercato in un database di posizione: corretto per il paese nella grande maggioranza dei casi. Chi usa una VPN o un proxy appare nel paese di quel server, quindi aggiungi una regola Reti anonime se devi impedirlo."
+      },
+      "scopeHelp": "Ovunque, un servizio o un endpoint.",
+      "steps": {
+        "what": "Cosa",
+        "values": "Valori",
+        "where": "Dove",
+        "done": "Fatto"
+      },
+      "about": {
+        "title": "Cosa fanno le regole di accesso",
+        "text": "Decidono chi può chiamare prima ancora di controllare il token. Bloccare vince sempre. Quando si applica una regola di consenso, entrano solo i chiamanti che ne rispettano una."
+      },
+      "done": {
+        "title": "La regola è attiva",
+        "block": "I chiamanti che corrispondono a {values} vengono rifiutati su {where}.",
+        "allow": "Entrano su {where} solo i chiamanti che corrispondono a {values} (o a un'altra regola di consenso).",
+        "next": "Controlla un chiamante con Prova un chiamante, poi prova l'endpoint in Docs e test e attivalo."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Invio di file",
         "text": "Carica prima ogni file come dati del modulo, con il nome del campo file e la chiave della domanda in field. La risposta restituisce l'id del file.",
-        "then": "Poi inserisci gli id nel corpo JSON sotto quella domanda, ad es. \"cv\": [\"id\"]. Sono consentiti gli stessi tipi e dimensioni di file del modulo."
+        "then": "Poi inserisci gli id nel corpo JSON sotto quella domanda, ad es. \"cv\": [\"id\"]. Sono consentiti gli stessi tipi e dimensioni di file del modulo.",
+        "step1": "Carica il file",
+        "step2": "Invia il suo id con le risposte"
       },
       "signing": {
         "title": "Chiamate firmate",
@@ -4240,7 +4352,111 @@
         "testOnly": "Modalità test: le risposte sembrano reali, ma nessuna risposta viene creata, modificata o eliminata.",
         "nothingYet": "Invia una chiamata per vedere la risposta",
         "send": "Invia",
-        "badJson": "Questo non è un JSON valido."
+        "badJson": "Questo non è un JSON valido.",
+        "recordNeeded": "id del record (obbligatorio)",
+        "headers": "Intestazioni",
+        "noBody": "Questo metodo non invia un corpo. Le sue intestazioni sono nella scheda Intestazioni.",
+        "bodyHint": "Compilato con i valori reali delle risposte del modulo. Cambia ciò che vuoi e invia di nuovo.",
+        "testToken": "un token di test creato per questa console",
+        "recent": "Ultime chiamate"
+      },
+      "navTitle": "In questa pagina",
+      "gettingStarted": "Per iniziare",
+      "heroKicker": "Riferimento API",
+      "heroText": "Tutto ciò che serve a un'app per inviare e leggere le risposte di questo servizio: l'indirizzo, come accedere e ogni endpoint con esempi.",
+      "liveCount": "{n} attivi",
+      "bearer": "Token Bearer",
+      "tryFirst": "Provalo ora",
+      "notLiveNote": "Non ancora attivo: i token di test possono chiamarlo (Prova ne usa uno), le chiamate live vengono rifiutate finché non viene attivato.",
+      "oneHint": "Aggiungi un id di record all'indirizzo per leggere solo quello, ad es. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "La risposta viene rimossa dagli elenchi e dall'API e resta nel registro di audit. Un token di test verifica solo la chiamata.",
+      "errorShape": "Come appare un errore",
+      "op": {
+        "GET": "Elenca e leggi",
+        "POST": "Crea",
+        "PUT": "Modifica",
+        "DELETE": "Elimina"
+      }
+    },
+    "journey": {
+      "title": "Configura la tua API",
+      "text": "Cinque passaggi da un modulo a un indirizzo che altre app possono chiamare.",
+      "progress": "{n} di {total} fatti",
+      "service": {
+        "title": "Crea un servizio",
+        "text": "Una cartella per gli endpoint usati da un'app o da un partner. Spegnili tutti insieme se serve.",
+        "action": "Nuovo servizio"
+      },
+      "endpoint": {
+        "title": "Aggiungi un endpoint",
+        "text": "Trasforma un modulo pubblicato in un indirizzo. Scegli cosa fa: leggere, aggiungere, modificare o eliminare risposte.",
+        "action": "Nuovo endpoint"
+      },
+      "token": {
+        "title": "Dagli un token",
+        "text": "Le app dimostrano chi sono con un token. Un token di test può provare tutto senza toccare dati reali; un token live fa chiamate reali.",
+        "action": "Nuovo token"
+      },
+      "access": {
+        "title": "Limita chi può chiamare",
+        "text": "Consenti o blocca i chiamanti per indirizzo IP, sito web, paese, regione o reti anonime.",
+        "action": "Nuova regola"
+      },
+      "live": {
+        "title": "Prova e vai live",
+        "text": "Provalo in Docs e test, poi attiva l'endpoint così i token live possono usarlo.",
+        "action": "Apri Docs e test"
+      }
+    },
+    "intro": {
+      "title": "Cos'è un endpoint",
+      "text": "Un endpoint dà a un modulo pubblicato un indirizzo tutto suo, per esempio /job-applications. Altre app vi inviano o leggono risposte, controllate esattamente come la pagina del modulo. Vive in un servizio e resta non live finché non gli dai un token e lo attivi.",
+      "hide": "Ho capito"
+    },
+    "gate": {
+      "title": "Crea prima un servizio",
+      "text": "Ogni endpoint vive in un servizio: uno per app o partner, così vedi le loro chiamate insieme e puoi spegnerle in una volta. Non hai ancora un servizio, quindi parti da lì; torni subito qui.",
+      "action": "Nuovo servizio"
+    },
+    "setup": {
+      "title": "Prima di andare live",
+      "isLive": "Live",
+      "notLive": "Non live",
+      "openEndpoint": "Apri l'endpoint",
+      "createdTitle": "/{name} è creato",
+      "createdText": "Non è ancora live: i token di test possono chiamarlo, le chiamate live vengono rifiutate finché non lo attivi. Segui l'elenco qui sotto.",
+      "basics": {
+        "title": "Servizio e modulo",
+        "ok": "In {service}, risponde con il modulo {form}.",
+        "serviceOff": "Il suo servizio {name} è spento, quindi l'endpoint non può rispondere. Accendi il servizio.",
+        "formOff": "Il suo modulo non è pubblicato, quindi l'endpoint non può rispondere. Pubblica il modulo."
+      },
+      "token": {
+        "title": "Un token che possa chiamarlo",
+        "text": "Nessun token può ancora chiamarlo. Creane uno solo per questo endpoint: di test per provarlo, live per chiamate reali.",
+        "ok": "{live} token live e {test} di test possono chiamarlo.",
+        "action": "Nuovo token per questo endpoint"
+      },
+      "access": {
+        "title": "Chi può chiamare",
+        "text": "Chiunque abbia un token valido può chiamarlo. Aggiungi regole per consentire o bloccare i chiamanti per indirizzo IP, sito web, paese o reti anonime.",
+        "ok": "Si applica {n} regola di accesso. | Si applicano {n} regole di accesso.",
+        "action": "Nuova regola per questo endpoint"
+      },
+      "test": {
+        "title": "Provalo",
+        "text": "Invia una chiamata con un token di test: tutti i controlli reali vengono eseguiti e nulla viene salvato."
+      },
+      "live": {
+        "title": "Vai live",
+        "text": "Attivalo quando sei pronto. I token live potranno allora chiamarlo.",
+        "on": "I token live possono chiamarlo. Spegnilo per fermare tutte le chiamate live in una volta.",
+        "noLiveToken": "Nessun token live può ancora chiamarlo: le chiamate live verrebbero comunque rifiutate.",
+        "action": "Vai live"
+      },
+      "toast": {
+        "live": "L'endpoint è live",
+        "notLive": "L'endpoint non è live"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Rispondi con uno stato 2xx entro 10 secondi e fai il lavoro vero dopo. Ogni altra risposta viene ritentata."
       }
     },
-    "onceDesc": "Formalie non può mostrarla di nuovo. Se la perdi, creane una nuova.",
+    "onceDesc": "Copialo ora. Potrai rivederlo in seguito nel suo pannello, dopo aver confermato la password.",
     "keys": {
       "newTitle": "Nuova chiave API",
       "editTitle": "Modifica chiave API",
@@ -6015,5 +6231,17 @@
         "deleted": "Chiave API eliminata"
       }
     }
+  },
+  "secrets": {
+    "title": "Segreto",
+    "show": "Mostra",
+    "hide": "Nascondi ({n} s)",
+    "ask": "Conferma la password per vederlo. Viene annotato nel registro di audit.",
+    "password": "La tua password",
+    "confirm": "Mostra",
+    "wrong": "La password non è corretta. Restano {n} tentativi.",
+    "locked": "Troppi tentativi errati. Riprova tra 15 minuti.",
+    "notViewable": "Creato prima che i segreti potessero essere rivisti, quindi non può essere mostrato. Ruotalo per ottenerne uno che potrai vedere in seguito.",
+    "shownNote": "Si nasconde di nuovo da solo dopo un minuto. Tienilo solo sul tuo server."
   }
 }

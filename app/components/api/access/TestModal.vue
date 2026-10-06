@@ -4,7 +4,7 @@
   the rule that decided, or "no allow rule matched".
 -->
 <script setup lang="ts">
-import type { ApiAccessTestRequest, ApiAccessTestResult, ApiEndpoint } from '#shared/types/apiService'
+import { API_NETWORKS, type ApiAccessTestRequest, type ApiAccessTestResult, type ApiEndpoint, type ApiNetwork } from '#shared/types/apiService'
 import { checkRuleValue } from '#shared/utils/apiService/access'
 
 const open = defineModel<boolean>('open', { default: false })
@@ -15,7 +15,8 @@ const { handle } = useErrorHandler()
 const countryOptions = useCountryOptions()
 const format = useRuleFormat()
 
-const state = reactive({ endpoint: '', ip: '', origin: '', country: '' })
+const state = reactive({ endpoint: '', ip: '', origin: '', country: '', networks: [] as ApiNetwork[] })
+const networkItems = computed(() => API_NETWORKS.map(value => ({ value, label: t(`apiService.access.network.${value}`) })))
 const endpoints = ref<ApiEndpoint[]>([])
 const result = ref<ApiAccessTestResult | null>(null)
 watch(open, async value => {
@@ -36,7 +37,7 @@ async function check() {
   if (!state.endpoint || !state.ip || ipError.value || busy.value) return
   busy.value = true
   try {
-    const body: ApiAccessTestRequest = { endpoint_id: state.endpoint, ip: state.ip.trim(), origin: state.origin.trim() || null, country: state.country || null }
+    const body: ApiAccessTestRequest = { endpoint_id: state.endpoint, ip: state.ip.trim(), origin: state.origin.trim() || null, country: state.country || null, networks: state.networks }
     result.value = (await api.post<ApiAccessTestResult>('/api-access-rules/test', body)).data
   } catch (error) {
     handle(error)
@@ -62,6 +63,9 @@ async function check() {
           </UFormField>
           <UFormField :label="t('apiService.access.kind.country')" :hint="t('apiService.optional')">
             <USelectMenu v-model="state.country" :items="countryOptions" value-key="value" class="w-full" :placeholder="t('apiService.access.test.anyCountry')" />
+          </UFormField>
+          <UFormField :label="t('apiService.access.kind.network')" :hint="t('apiService.optional')" class="sm:col-span-2">
+            <UCheckboxGroup v-model="state.networks" :items="networkItems" orientation="horizontal" color="neutral" />
           </UFormField>
         </div>
       </form>

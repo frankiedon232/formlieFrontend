@@ -15,6 +15,7 @@ const emit = defineEmits<{ saved: [endpoint: ApiEndpointDetail]; dirty: [value: 
 const { t } = useI18n()
 const api = useApi()
 const { handle } = useErrorHandler()
+const setup = useApiSetup()
 
 const STEPS = ['form', 'basics', 'methods', 'fields', 'review'] as const
 type Step = (typeof STEPS)[number]
@@ -32,7 +33,7 @@ const description = ref(e?.description ?? '')
 const version = ref<number | null>(e?.version ?? null)
 const methods = ref<ApiMethod[]>(e ? [...e.methods] : ['POST'])
 const pageSize = ref(e?.page_size ?? 50)
-const status = ref<ApiStatus>(e?.status ?? 'active')
+const status = ref<ApiStatus>(e?.status ?? 'disabled')
 const fields = ref<ApiEndpointField[]>(e ? e.fields.map(field => ({ ...field })) : [])
 const versions = ref<number[]>(e?.versions ?? [])
 const headers = ref<ApiHeaderDraft[]>((e?.headers ?? []).map(header => ({ name: header.name, value: null, preview: header.preview })))
@@ -189,18 +190,12 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
           <div class="flex min-w-0 flex-col"><dt class="text-xs text-muted">{{ t('apiService.col.methods') }}</dt><dd><ApiMethods :methods="methods" size="xs" /></dd></div>
           <div class="flex min-w-0 flex-col"><dt class="text-xs text-muted">{{ t('apiService.fields.title') }}</dt><dd class="text-sm text-highlighted">{{ t('apiService.wizard.fieldsSummary', { accepted: fields.filter(f => f.accept).length, returned: fields.filter(f => f.returned).length }) }}</dd></div>
         </dl>
-        <USwitch :model-value="status === 'active'" :label="t('apiService.answering')" :description="t('apiService.wizard.answeringHint')" @update:model-value="value => (status = value ? 'active' : 'disabled')" />
-        <UAlert
-          icon="i-lucide-key-round"
-          color="neutral"
-          variant="subtle"
-          :title="t('apiService.wizard.tokensTitle')"
-          :description="t('apiService.wizard.tokensDesc')"
-          :actions="[
-            { label: t('nav.apiAuth'), icon: 'i-lucide-key-round', color: 'neutral', variant: 'outline', size: 'xs', to: '/api-service/auth', target: '_blank' },
-            { label: t('nav.apiAccess'), icon: 'i-lucide-shield-check', color: 'neutral', variant: 'outline', size: 'xs', to: '/api-service/access', target: '_blank' },
-          ]"
-        />
+        <USwitch v-if="editing" :model-value="status === 'active'" :label="t('apiService.setup.isLive')" :description="t('apiService.wizard.answeringHint')" @update:model-value="value => (status = value ? 'active' : 'disabled')" />
+        <div v-else class="flex flex-col gap-3 rounded-lg bg-elevated/40 p-4">
+          <span class="flex items-center gap-2 text-sm font-semibold text-highlighted"><UIcon name="i-lucide-flag" class="size-4" />{{ t('apiService.wizard.afterTitle') }}</span>
+          <p class="text-sm text-muted">{{ t('apiService.wizard.afterText') }}</p>
+          <ApiJourney :summary="setup.summary.value" focus="token" compact :actions="false" />
+        </div>
       </div>
 
       <template #footer>

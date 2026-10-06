@@ -26,14 +26,14 @@ The mock API (`NUXT_PUBLIC_API_MOCK=true`) is seeded in [server/mock/data/tenant
 
 **Password for every account:** `Formalie!2026`
 
-| Workspace    | Person                                  | Email                              | Use it to test                                                                     |
-| ------------ | --------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| Workspace    | Person                                 | Email                              | Use it to test                                                                     |
+| ------------ | -------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
 | Remedy Legal | Frankie Don, workspace owner           | `admin@remedylegal.test`           | Normal sign-in; code by email or SMS; sees the **Audit trail**                     |
 | Remedy Legal | Marcus Reid, account disabled by admin | `marcus.reid@remedylegal.test`     | Correct password, but "Account disabled. Contact your administrator."              |
 | Remedy Legal | Lena Novak, staff member               | `staff@remedylegal.test`           | **Form test:** opening a form set to "Only my organisation" (Share tab), see below |
 | Samath Tax   | Elena Rossi, workspace owner           | `admin@samathtax.test`             | Sign-in with Google, Apple and Facebook buttons shown                              |
 | Both         | James Carter, external consultant      | `james.carter@carterpartners.test` | Member of both workspaces; **Find my workspace** lists both; no audit trail access |
-| Old Co       |,                                       |,                                  | Suspended workspace page (`https://oldco.formalie.dev:2202/`, needs a hosts entry) |
+| Old Co       | ,                                      | ,                                  | Suspended workspace page (`https://oldco.formalie.dev:2202/`, needs a hosts entry) |
 
 **Where to sign in**
 
@@ -43,27 +43,112 @@ The mock API (`NUXT_PUBLIC_API_MOCK=true`) is seeded in [server/mock/data/tenant
 | `https://samathtax.formalie.dev:2202/`   | Samath Tax sign-in                              |
 | `https://manage.formalie.dev:2202/`      | Find my workspace · Create a workspace (signup) |
 
-**Form test, "Only my organisation" (F10):** as the owner, open a published form → **Share** → *Who can open the form* → **Only my organisation** → Save. Open the form's link in a private window: it says "Only for members of Remedy Legal" → **Sign in to Remedy Legal** → sign in as `staff@remedylegal.test` → you come back to the form with "Filling in as Lena Novak (staff@remedylegal.test)". Each member can respond once. Someone without a Remedy Legal account (e.g. `admin@samathtax.test`) can't sign in there, so never reaches the form. Put the form back to *Anyone with the link* afterwards.
+**Form test, "Only my organisation" (F10):** as the owner, open a published form → **Share** → _Who can open the form_ → **Only my organisation** → Save. Open the form's link in a private window: it says "Only for members of Remedy Legal" → **Sign in to Remedy Legal** → sign in as `staff@remedylegal.test` → you come back to the form with "Filling in as Lena Novak (staff@remedylegal.test)". Each member can respond once. Someone without a Remedy Legal account (e.g. `admin@samathtax.test`) can't sign in there, so never reaches the form. Put the form back to _Anyone with the link_ afterwards.
 
-**Form test, "Only invited people" (F10):** invitations need no account, any valid email works (development sends no mail; the Share tab shows each person's personal link to copy). Paste these into *Invitations*:
+**Form test, "Only invited people" (F10):** invitations need no account, any valid email works (development sends no mail; the Share tab shows each person's personal link to copy). Paste these into _Invitations_:
 
 ```
 test1@example.org, test2@example.org, test3@example.org
 ```
 
-Open a personal link in a private window → "Filling in as test1@example.org"; the plain form link says "This form is by invitation only". Check the status (Invited → Opened → Responded), that a second response from the same link is refused, and that **Revoke** stops a link. To see invalid-address checking, add `not-an-email`, it turns red and blocks sending. Put the form back to *Anyone with the link* afterwards.
+Open a personal link in a private window → "Filling in as test1@example.org"; the plain form link says "This form is by invitation only". Check the status (Invited → Opened → Responded), that a second response from the same link is refused, and that **Revoke** stops a link. To see invalid-address checking, add `not-an-email`, it turns red and blocks sending. Put the form back to _Anyone with the link_ afterwards.
 
-**Form test, people access "Can view" (F10):** as the owner, open a form → **Share** → *Your team* → *People with access* → add Lena Novak → **Can view** → Save. Sign in as `staff@remedylegal.test`: the form's overview shows **Preview** (no Edit, no Save as template, no Share settings, no availability change), and editor addresses (`/build`, `/design`, `/logic`, `/share`, `/versions`) say "Only people who can edit open the editor".
+**Form test, people access "Can view" (F10):** as the owner, open a form → **Share** → _Your team_ → _People with access_ → add Lena Novak → **Can view** → Save. Sign in as `staff@remedylegal.test`: the form's overview shows **Preview** (no Edit, no Save as template, no Share settings, no availability change), and editor addresses (`/build`, `/design`, `/logic`, `/share`, `/versions`) say "Only people who can edit open the editor".
 
-**Form test, forms in several languages (F10):** in the editor, **Form settings** → *More languages* → add e.g. Français (the built-in dictionaries fill in what they know) → **Translate** to fill in the rest → Publish. Open the form link: the switcher sits at the top of the form and the address gets `?lang=fr`; `…/fill?lang=fr` opens French directly. Without `?lang=` the form always opens in its main language (Form settings → Form language), whatever the browser's language. Change a question afterwards: its translation shows "Changed since translated". **Preview** (form overview) shows the form in a phone, tablet or desktop frame with the same switcher.
+**Form test, forms in several languages (F10):** in the editor, **Form settings** → _More languages_ → add e.g. Français (the built-in dictionaries fill in what they know) → **Translate** to fill in the rest → Publish. Open the form link: the switcher sits at the top of the form and the address gets `?lang=fr`; `…/fill?lang=fr` opens French directly. Without `?lang=` the form always opens in its main language (Form settings → Form language), whatever the browser's language. Change a question afterwards: its translation shows "Changed since translated". **Preview** (form overview) shows the form in a phone, tablet or desktop frame with the same switcher.
 
-**Responses (F11):** open any published form → **View responses** (or **Responses** in the sidebar for all forms). Seeded forms have sample responses (stable, international sample people); your own test submissions appear there too, numbered after them, and in the form overview's trend. Try the period (7 / 30 / 90 days, 12 months), click a status in *Review status* to filter, switch to **Summary**, pick question **Columns**, open a response and use **J** / **K**, change its status, add a tag and a note.
+**Responses (F11):** open any published form → **View responses** (or **Responses** in the sidebar for all forms). Seeded forms have sample responses (stable, international sample people); your own test submissions appear there too, numbered after them, and in the form overview's trend. Try the period (7 / 30 / 90 days, 12 months), click a status in _Review status_ to filter, switch to **Summary**, pick question **Columns**, open a response and use **J** / **K**, change its status, add a tag and a note.
 
 **One-time code:** after the password, the code screen shows the mock's code in dev ("Development code: 123456"). It is also printed in the dev-server console as `[mock-otp]`. Five wrong codes lock the attempt.
 
 **Without a hosts entry** (e.g. `localhost` or a phone on Wi-Fi): add `?tenant=remedylegal` once, e.g. `https://localhost:2202/auth/login?tenant=remedylegal` (dev only, remembered for the tab).
 
 Workspaces created through signup live until the dev server restarts.
+
+## API service: test cases (F13)
+
+Sign in as `admin@remedylegal.test` (password above) and open **API service** in the rail. Everything below runs against the mock (`NUXT_PUBLIC_API_MOCK=true`), which answers real HTTP calls, so Postman works too. Setup for Postman (address, certificate, files): [docs/02-DEV-ENVIRONMENT.md → API service from Postman](docs/02-DEV-ENVIRONMENT.md).
+
+**Addresses.** The API address is shown in **Docs & testing** (`https://api.formalie.dev/{key}/…`). From Postman use `https://localhost:2202/public-api/{key}/{endpoint}` (or `https://api.formalie.dev:2202/…` with a hosts entry). Formalie's own management API: `…/public-api/v1/…`.
+
+**Mock-only headers** (they stand in for what the real service reads from the connection): `X-Forwarded-For: 203.0.113.9` sets the caller's IP, `X-Debug-Country: GB` its country, `X-Debug-Network: vpn` (or `proxy`, `tor`, `hosting`) its anonymous network.
+
+### 1. Guided setup, from nothing to a live endpoint
+
+1. **New service** (rail **+** → _New API service_, or Services → New service). Step 1 explains what a service is and shows the five setup steps; step 2 asks for the name; step 3 says it is ready and that an endpoint comes next. Click **Create an endpoint**: the wizard opens with the service already chosen.
+2. **No service yet:** in a workspace without services, _Endpoints → New endpoint_ shows "Create a service first" with a **New service** button; creating one there brings you straight back to the wizard.
+3. **New endpoint:** the page explains what an endpoint is (Got it hides that). Pick a published form, name, methods, questions. The review step says it is created **not live**. After **Create endpoint** the page shows _Before it goes live_: service and form, a token, who may call (optional), test, go live.
+4. **Token for this endpoint** (from that list): the token dialog opens with the name and _What it may call_ already set to this endpoint. Choose **Test**, create it, copy the token. The last step says what comes next.
+5. **Test it:** _Try it_ on the list (or Docs & testing) sends a call with a test token. It works although the endpoint is not live yet.
+6. **Go live:** switch it on in the list. A live token is needed for real calls; until there is one, the list says so.
+7. The endpoint's panel keeps showing _Before it goes live_ until it is live with a live token. The Overview shows the five steps until one endpoint is live with a live token.
+
+Expected API answers along the way: a **live** token on a not-live endpoint gets `503 FRM-API-1007` (`endpoint: not_live`); a **test** token gets through (and nothing is stored).
+
+### 2. Tokens
+
+1. **New token** shows four steps: kind (live or test, bearer or client id + secret) → name and what it may call (a sentence sums it up) → expiry and signed calls → the token.
+2. **See it again later:** open the token's panel → _Secret_ → **Show** → enter your password. A wrong password says how many tries are left; five wrong tries lock it for 15 minutes. The right one shows the token with Copy for 60 seconds, then it hides again. The audit trail records _API token viewed_.
+3. Tokens made before this change can't be shown again ("Rotate it to get one you can view later"); rotate them once.
+4. Rotate (old secret keeps working for the chosen grace time), Revoke (calls get `401`), Delete (only once revoked or expired).
+5. API keys (_API keys_) and webhook secrets (webhook panel) can be seen again the same way.
+
+### 3. Access rules
+
+1. **New rule:** step 1 explains what rules do, Allow or Block, and the type: IP address, Website domain, Country, Region, **Anonymous networks** (VPN, open proxy, Tor, hosting and cloud).
+2. **Chips:** for IPs type `203.0.113.5, 999.1.1.1 198.51.100.0/24`: comma, space or Enter turns each into a chip; `999.1.1.1` stays in the box in red ("isn't an IP address or range") until you fix it. Backspace in the empty box takes the last chip back. Domains work the same (`example.com`, `*.example.com`).
+3. Country and Region show how the country is found (from the IP; VPN users appear in the VPN's country) and point to Anonymous networks.
+4. **Test a caller** (header button): pick an endpoint, an IP, a website, a country and networks, and see whether it gets in and which rule decided.
+5. From Postman, with a block rule on `vpn`: send `X-Debug-Network: vpn` → `403 FRM-API-1015` (`blocked: vpn`).
+
+### 4. Docs & testing
+
+1. Wide screens: the navigation on the left (Getting started, every endpoint with its methods in colour: GET green, POST violet, PUT amber, DELETE red), the part on screen marked as you scroll; click to jump. Smaller screens: a sliding row of endpoints.
+2. Each method: what it does, the questions with type, required and allowed values (or the query options), and on the right the code (curl, JavaScript, Python, PHP, C#; Copy) and the answers it can give (200 / 201, 401, 422, 404, 429).
+3. **Try it** opens a drawer: method buttons in colour, the address with a record id box, Body (line numbers, the form's real values) and Headers (token and Content-Type filled in and locked, a fresh `Formalie-Key` per POST, _Keep this key_ to see a retry answered with the first record, required headers). **Send** (or Ctrl / ⌘ + Enter) shows status, time, size, the JSON or the answer's headers, and the last calls.
+4. **Download OpenAPI** and import it into Postman (Import → file).
+
+### 5. Every failure has a clear answer (Postman)
+
+Use a live token unless the row says otherwise. Each answer is JSON `{ "error": { "code", "message", "details" } }` with an `X-Request-Id` header.
+
+| Try this                                                                | Expected                                                           |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Wrong address key `…/public-api/NOPE123456/job-applications`            | `404 FRM-API-1006` (`address_key`)                                 |
+| Endpoint that doesn't exist                                             | `404 FRM-API-1006` (`endpoint`)                                    |
+| Extra path part `…/job-applications/a/b`                                | `404 FRM-API-1006` (`path`)                                        |
+| No `Authorization`, a wrong token, `Basic …`, a revoked token           | `401 FRM-API-1010`                                                 |
+| Endpoint whose service is switched off                                  | `503 FRM-API-1007` (`service`)                                     |
+| Endpoint that isn't live, live token                                    | `503 FRM-API-1007` (`endpoint: not_live`)                          |
+| A method the endpoint doesn't answer, `PATCH`, or POST to `…/{id}`      | `405 FRM-API-1008`                                                 |
+| Token limited to other methods, services or endpoints                   | `403 FRM-API-1009`                                                 |
+| Endpoint with a required header: header missing or wrong value          | `400 FRM-API-1011` (names the header)                              |
+| Body sent as `text/plain`                                               | `415 FRM-API-1017`                                                 |
+| Broken JSON, or a JSON list instead of an object                        | `400 FRM-GEN-1001`                                                 |
+| Body over 1 MB                                                          | `413 FRM-API-1018`                                                 |
+| A question the endpoint doesn't accept                                  | `422 FRM-API-1014` (`not_accepted`)                                |
+| Missing required answers or a wrong email (the form's own rules)        | `422 FRM-RESP-1001` (per question)                                 |
+| `PUT` / `DELETE` / `GET` on a record id that doesn't exist              | `404 FRM-API-1013`                                                 |
+| File upload for a question that doesn't take files                      | `422 FRM-API-1014`                                                 |
+| Blocked IP (`X-Forwarded-For`), range, website (`Origin`) or network    | `403 FRM-API-1015` (the matching value)                            |
+| Client id + wrong secret on `POST …/token`                              | `401 FRM-API-1010`                                                 |
+| Token with signed calls: no signature, a wrong one, or older than 5 min | `401 FRM-API-1012`                                                 |
+| More than the rate limit in a minute (per IP 120 by default)            | `429 FRM-GEN-1029` with `Retry-After`                              |
+| Management API: no key, wrong key / missing permission / unknown form   | `401` `FRM-API-1010` / `403` `FRM-API-1009` / `404` `FRM-GEN-1004` |
+
+And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` with `Formalie-Key`; the same key again returns the first record with `meta.replayed`), change (`PUT`), delete (`DELETE`).
+
+### 6. Files through the API
+
+1. Tick a file question as accepted in the endpoint wizard.
+2. `POST …/{endpoint}/files?field={question key}` with Body → form-data, key `file` (type File) → `201` with an `id`. A `.exe` gets `422 FRM-RESP-1001` (`file_type`).
+3. Send the id in the JSON: `"cv_resume": ["<id>"]`.
+
+### 7. Webhooks, API keys, logs
+
+1. **Webhooks:** New webhook → an address (`http://localhost:{port}/…` works while developing) and events. **Send a test** shows the receiver's answer. Change a response's status in Responses → a `response.status_changed` delivery with the previous status. Deliveries: tries, request (personal answers masked), answer, **Send again**. Check the signature with the code under _Checking the signature_.
+2. **API keys:** New API key (permissions, expiry), copy it, `GET …/public-api/v1/forms` with `Authorization: Bearer formalie_key_…`. A permission it doesn't have → `403 FRM-API-1009`. View it again with your password, revoke, delete.
+3. **Request logs and Analytics:** every call above appears with status, code, time, token and caller; Analytics and the Overview count them.
 
 ## Checks
 

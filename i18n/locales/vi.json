@@ -20,7 +20,8 @@
     "confirm": "Xác nhận",
     "copy": "Sao chép",
     "copied": "Đã sao chép",
-    "next": "Tiếp"
+    "next": "Tiếp",
+    "removeItem": "Xóa {name}"
   },
   "placeholder": {
     "title": "Sắp ra mắt",
@@ -179,7 +180,10 @@
         "saveTitle": "Tự lưu khi bạn làm",
         "saveText": "Mọi thay đổi được lưu dưới dạng bản nháp cho đến khi bạn xuất bản."
       },
-      "folderHint": "Thư mục giúp sắp xếp biểu mẫu trong danh sách và thanh bên (ví dụ theo nhóm hoặc dự án). Đây không phải là danh mục mẫu."
+      "folderHint": "Thư mục giúp sắp xếp biểu mẫu trong danh sách và thanh bên (ví dụ theo nhóm hoặc dự án). Đây không phải là danh mục mẫu.",
+      "templateSubtitle": "Xây dựng như một biểu mẫu, rồi lưu thành mẫu",
+      "templateTitle": "Một mẫu bắt đầu từ một biểu mẫu",
+      "templateHint": "Đặt tên và tạo. Trình xây dựng mở ra với Lưu thành mẫu sẵn sàng trong cài đặt biểu mẫu, để bạn dùng lại mẫu cho các biểu mẫu mới."
     },
     "detail": {
       "created": "Ngày tạo",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Đang lỗi",
     "connectionsDisabled": "Đã tắt",
     "connectionsNew": "Thêm kết nối",
-    "backToMenu": "Quay lại menu"
+    "backToMenu": "Quay lại menu",
+    "newTemplate": "Mẫu mới",
+    "createForms": "Biểu mẫu",
+    "createOperations": "Vận hành",
+    "addDatabase": "Thêm cơ sở dữ liệu",
+    "newApiService": "Dịch vụ API mới"
   },
   "navbar": {
     "breadcrumb": "Đường dẫn",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "Chữ ký của yêu cầu bị thiếu, quá cũ hoặc sai.",
     "FRM-API-1013": "Không có bản ghi với id này.",
     "FRM-API-1014": "Một số trường không thể gửi tới endpoint này.",
-    "FRM-API-1015": "Quy tắc truy cập không cho phép bên gọi này."
+    "FRM-API-1015": "Quy tắc truy cập không cho phép bên gọi này.",
+    "FRM-AUTH-1013": "Mật khẩu không đúng.",
+    "FRM-API-1016": "Không thể hiển thị bí mật này: nó được tạo trước khi bí mật có thể xem lại. Hãy xoay để nhận bí mật mới.",
+    "FRM-API-1017": "Gửi nội dung dưới dạng JSON với Content-Type: application/json.",
+    "FRM-API-1018": "Nội dung quá lớn (tối đa 1 MB; hãy gửi tệp qua bước tải lên)."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Đã xóa webhook",
       "integrations_webhook_resent": "Đã gửi lại lượt gửi webhook",
       "integrations_api_key_updated": "Đã thay đổi khóa API",
-      "integrations_api_key_deleted": "Đã xóa khóa API"
+      "integrations_api_key_deleted": "Đã xóa khóa API",
+      "api_token_revealed": "Đã xem token API",
+      "integrations_webhook_secret_revealed": "Đã xem bí mật webhook",
+      "integrations_api_key_revealed": "Đã xem khóa API"
     },
     "detail": {
       "who": "Ai",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "Các endpoint này dùng để làm gì",
       "active": "Đang nhận lệnh gọi",
       "activeHint": "Khi tắt, mọi endpoint trong đó đều trả về lỗi rõ ràng.",
-      "create": "Tạo dịch vụ"
+      "create": "Tạo dịch vụ",
+      "nameHelp": "Đặt tên theo ứng dụng hoặc đối tác sẽ gọi nó, để bạn biết các lệnh gọi này của ai.",
+      "steps": {
+        "about": "Giới thiệu",
+        "details": "Chi tiết",
+        "next": "Bước tiếp theo",
+        "continue": "Tiếp tục",
+        "back": "Quay lại"
+      },
+      "about": {
+        "app": "Một ứng dụng",
+        "service": "Dịch vụ",
+        "endpoint1": "dang-ky",
+        "endpoint2": "dat-cho",
+        "endpoint3": "phan-hoi",
+        "text": "Một dịch vụ gom các endpoint mà một ứng dụng hoặc đối tác dùng. Ứng dụng gọi các endpoint; dịch vụ giữ chúng lại với nhau.",
+        "group": "Giữ các endpoint của mỗi ứng dụng hoặc đối tác ở một nơi",
+        "switch": "Tắt tất cả endpoint của nó cùng lúc, ví dụ khi bảo trì",
+        "watch": "Xem các lệnh gọi, lỗi và thời gian phản hồi của họ cùng nhau"
+      },
+      "done": {
+        "title": "{name} đã sẵn sàng",
+        "text": "Dịch vụ đã được tạo. Một mình nó chưa làm được gì: cần ít nhất một endpoint.",
+        "nextTitle": "Tiếp theo: thêm một endpoint",
+        "nextText": "Endpoint biến một biểu mẫu đã xuất bản thành một địa chỉ trong dịch vụ này. Bạn chọn biểu mẫu, việc endpoint được phép làm và câu trả lời nó nhận và trả về.",
+        "later": "Để sau",
+        "endpoint": "Tạo một endpoint"
+      }
     },
     "fields": {
       "title": "Câu hỏi",
@@ -3799,14 +3842,16 @@
         "basics": "Nó nằm ở đâu và tên là gì.",
         "methods": "Chọn các phương thức mà nó phản hồi. Bạn có thể đổi sau.",
         "fields": "Những gì POST và PUT nhận, và những gì GET trả về hoặc có thể lọc theo.",
-        "review": "Hãy xem qua. Nó bắt đầu phản hồi ngay khi bên gọi có token."
+        "review": "Hãy xem kỹ. Nó được tạo ở trạng thái chưa hoạt động, nên người gọi thật chưa bị ảnh hưởng."
       },
       "method": {
         "GET": "Đọc phản hồi: một danh sách có phân trang và bộ lọc, hoặc một phản hồi theo id.",
         "POST": "Gửi một phản hồi mới, được kiểm tra như trang biểu mẫu.",
         "PUT": "Thay đổi một phản hồi theo id (chỉ các câu hỏi được nhận).",
         "DELETE": "Xóa một phản hồi theo id; được lưu trong nhật ký kiểm tra."
-      }
+      },
+      "afterTitle": "Điều gì xảy ra tiếp theo",
+      "afterText": "Endpoint được tạo ở trạng thái chưa hoạt động. Token thử nghiệm đã có thể gọi nó, nên bạn có thể thử an toàn. Sau đó cấp token live, thêm quy tắc truy cập nếu muốn, rồi bật nó."
     },
     "tokens": {
       "title": "Token",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "Xóa {name}?",
       "deleteDesc": "Nó sẽ biến mất khỏi danh sách này. Lịch sử vẫn nằm trong nhật ký kiểm toán.",
       "once": {
-        "title": "Hãy sao chép ngay: chỉ hiển thị một lần",
-        "desc": "Formalie chỉ giữ dấu vân tay của nó. Nếu mất, hãy xoay token để nhận token mới."
+        "title": "Sao chép ngay",
+        "desc": "Từ giờ nó luôn bị che. Bạn có thể xem lại sau trong bảng của token, sau khi xác nhận mật khẩu."
       },
       "secret": {
         "token": "Token",
         "clientId": "Client id",
         "clientSecret": "Client secret",
-        "signing": "Signing secret"
+        "signing": "Signing secret",
+        "title": "Bí mật"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "Đã lưu {name}",
         "revoked": "Đã thu hồi {name}",
         "deleted": "Đã xóa {name}"
+      },
+      "steps": {
+        "kind": "Loại",
+        "access": "Những gì nó được gọi",
+        "safety": "An toàn",
+        "done": "Token"
+      },
+      "about": {
+        "title": "Token là gì",
+        "text": "Ứng dụng gửi token kèm mỗi lệnh gọi để chứng minh danh tính. Hãy cấp cho mỗi ứng dụng token riêng, và chỉ những gì nó cần, để bạn có thể dừng một token mà không ảnh hưởng các token khác."
+      },
+      "nameHelp": "Đặt tên theo ứng dụng sẽ dùng nó.",
+      "presetName": "Token cho /{name}",
+      "scopeSummary": {
+        "all": "Nó có thể gọi mọi endpoint, bằng mọi phương thức.",
+        "services": "Nó có thể gọi các endpoint của {n} dịch vụ. | Nó có thể gọi các endpoint của {n} dịch vụ.",
+        "endpoints": "Nó có thể gọi {n} endpoint. | Nó có thể gọi {n} endpoint."
+      },
+      "expiryHelp": "Token có hạn sẽ an toàn hơn: bạn nhận được lời nhắc trước 14 ngày.",
+      "viewLater": "Bạn có thể xem lại nó sau trong bảng token, sau khi xác nhận mật khẩu.",
+      "next": {
+        "title": "Tiếp theo là gì",
+        "test": "Dùng token thử nghiệm này để thử endpoint trong Tài liệu & kiểm thử. Không có gì được lưu. Hãy tạo token live khi bạn sẵn sàng cho lệnh gọi thật.",
+        "live": "Nếu muốn, hãy giới hạn ai được dùng nó bằng quy tắc truy cập, thử nó, rồi bật endpoint.",
+        "rule": "Thêm quy tắc truy cập"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "Địa chỉ IP",
         "domain": "Tên miền trang web",
         "country": "Quốc gia",
-        "region": "Khu vực"
+        "region": "Khu vực",
+        "network": "Mạng ẩn danh"
       },
       "kindHint": {
         "ip": "Địa chỉ đơn lẻ hoặc dải địa chỉ (IPv4 và IPv6).",
         "domain": "Trang web nơi lệnh gọi từ trình duyệt đến.",
         "country": "Nơi đặt địa chỉ của bên gọi.",
-        "region": "Cả châu lục cùng một lúc."
+        "region": "Cả châu lục cùng một lúc.",
+        "network": "VPN, proxy, Tor và nhà cung cấp lưu trữ"
       },
       "valuesLabel": {
         "ip": "Địa chỉ và dải địa chỉ",
         "domain": "Tên miền",
         "country": "Quốc gia",
-        "region": "Khu vực"
+        "region": "Khu vực",
+        "network": "Mạng"
       },
       "valuesHelp": {
-        "ip": "Mỗi dòng một mục, ví dụ 203.0.113.10 hoặc 198.51.100.0/24.",
-        "domain": "Mỗi dòng một mục; *.example.com bao gồm mọi tên miền con.",
+        "ip": "Nhập một địa chỉ hoặc dải, rồi nhấn dấu phẩy, dấu cách hoặc Enter, ví dụ 203.0.113.10 hoặc 198.51.100.0/24. Mỗi mục đều được kiểm tra.",
+        "domain": "Nhập một tên miền, rồi nhấn dấu phẩy, dấu cách hoặc Enter, ví dụ example.com hoặc *.example.com cho mọi miền con. Mỗi mục đều được kiểm tra.",
         "country": "Chọn một hoặc nhiều.",
-        "region": "Chọn một hoặc nhiều."
+        "region": "Chọn một hoặc nhiều.",
+        "network": "Bên gọi có địa chỉ thuộc một trong các mạng này."
       },
       "region": {
         "AF": "Châu Phi",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" không phải địa chỉ IP hay dải địa chỉ.",
         "domain": "\"{value}\" không phải tên miền.",
         "country": "\"{value}\" không phải quốc gia.",
-        "region": "\"{value}\" không phải khu vực."
+        "region": "\"{value}\" không phải khu vực.",
+        "network": "Chọn một mạng trong danh sách"
       },
       "toast": {
         "created": "Đã tạo quy tắc",
@@ -4098,6 +4174,40 @@
         "answer": "Khi vượt giới hạn, bên gọi nhận 429 kèm Retry-After (số giây phải chờ); mỗi phản hồi nêu giới hạn và phần còn lại.",
         "saved": "Đã lưu giới hạn tốc độ",
         "changed": "Đã thay đổi {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Proxy mở",
+        "tor": "Tor",
+        "hosting": "Lưu trữ và đám mây"
+      },
+      "networkHint": {
+        "vpn": "Lối ra của VPN thương mại",
+        "proxy": "Proxy công khai và ẩn danh",
+        "tor": "Nút thoát của Tor",
+        "hosting": "Máy chủ của nhà cung cấp lưu trữ và đám mây"
+      },
+      "networkNote": "Formalie nhận ra chúng từ danh sách các địa chỉ đã biết, được cập nhật mỗi ngày. Hãy chặn VPN cùng với quy tắc quốc gia khi quốc gia phải chính xác.",
+      "geo": {
+        "title": "Quốc gia được xác định thế nào",
+        "text": "Từ địa chỉ IP của bên gọi, tra trong cơ sở dữ liệu vị trí: đúng về quốc gia trong phần lớn trường hợp. Người dùng VPN hoặc proxy sẽ hiện ở quốc gia của máy chủ đó, nên hãy thêm quy tắc Mạng ẩn danh nếu bạn cần chặn điều đó."
+      },
+      "scopeHelp": "Mọi nơi, một dịch vụ hoặc một endpoint.",
+      "steps": {
+        "what": "Cái gì",
+        "values": "Giá trị",
+        "where": "Ở đâu",
+        "done": "Xong"
+      },
+      "about": {
+        "title": "Quy tắc truy cập làm gì",
+        "text": "Chúng quyết định ai được gọi ngay cả trước khi token được kiểm tra. Chặn luôn thắng. Khi có bất kỳ quy tắc cho phép nào áp dụng, chỉ bên gọi khớp với một quy tắc mới vào được."
+      },
+      "done": {
+        "title": "Quy tắc đã bật",
+        "block": "Bên gọi khớp với {values} bị từ chối tại {where}.",
+        "allow": "Chỉ bên gọi khớp với {values} (hoặc quy tắc cho phép khác) mới vào được {where}.",
+        "next": "Kiểm tra một bên gọi bằng Kiểm tra một bên gọi, rồi thử endpoint trong Tài liệu & kiểm thử và bật nó."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Gửi tệp",
         "text": "Hãy tải từng tệp lên trước, dưới dạng dữ liệu biểu mẫu, với tên trường file và khóa câu hỏi trong field. Phản hồi cho biết id của tệp.",
-        "then": "Sau đó đặt các id vào nội dung JSON dưới câu hỏi đó, ví dụ \"cv\": [\"id\"]. Cho phép cùng loại và dung lượng tệp như trên biểu mẫu."
+        "then": "Sau đó đặt các id vào nội dung JSON dưới câu hỏi đó, ví dụ \"cv\": [\"id\"]. Cho phép cùng loại và dung lượng tệp như trên biểu mẫu.",
+        "step1": "Tải tệp lên",
+        "step2": "Gửi id của tệp cùng với câu trả lời"
       },
       "signing": {
         "title": "Lệnh gọi có chữ ký",
@@ -4240,7 +4352,111 @@
         "testOnly": "Chế độ thử nghiệm: phản hồi trông như thật, nhưng không có phản hồi nào được tạo, thay đổi hay xóa.",
         "nothingYet": "Gửi một lệnh gọi để xem phản hồi",
         "send": "Gửi",
-        "badJson": "Đây không phải JSON hợp lệ."
+        "badJson": "Đây không phải JSON hợp lệ.",
+        "recordNeeded": "id bản ghi (bắt buộc)",
+        "headers": "Header",
+        "noBody": "Phương thức này không gửi nội dung. Header của nó nằm ở tab Header.",
+        "bodyHint": "Đã điền sẵn giá trị câu trả lời thật của biểu mẫu. Sửa tùy ý rồi gửi lại.",
+        "testToken": "một token thử nghiệm tạo riêng cho bảng điều khiển này",
+        "recent": "Các lệnh gọi gần đây"
+      },
+      "navTitle": "Trên trang này",
+      "gettingStarted": "Bắt đầu",
+      "heroKicker": "Tài liệu API",
+      "heroText": "Mọi thứ một ứng dụng cần để gửi và đọc phản hồi của dịch vụ này: địa chỉ, cách đăng nhập và từng endpoint kèm ví dụ.",
+      "liveCount": "{n} đang chạy",
+      "bearer": "Token Bearer",
+      "tryFirst": "Thử ngay",
+      "notLiveNote": "Chưa chạy thật: token thử nghiệm có thể gọi (Dùng thử dùng một token), các lệnh gọi thật bị từ chối cho đến khi bật.",
+      "oneHint": "Thêm id bản ghi vào địa chỉ để chỉ đọc bản ghi đó, ví dụ /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "Phản hồi bị gỡ khỏi danh sách và API, nhưng vẫn được giữ trong nhật ký kiểm tra. Token thử nghiệm chỉ kiểm tra lệnh gọi.",
+      "errorShape": "Một lỗi trông như thế nào",
+      "op": {
+        "GET": "Liệt kê và đọc",
+        "POST": "Tạo",
+        "PUT": "Thay đổi",
+        "DELETE": "Xóa"
+      }
+    },
+    "journey": {
+      "title": "Thiết lập API của bạn",
+      "text": "Năm bước từ một biểu mẫu đến một địa chỉ mà các ứng dụng khác có thể gọi.",
+      "progress": "Xong {n} trên {total}",
+      "service": {
+        "title": "Tạo một dịch vụ",
+        "text": "Một thư mục cho các endpoint mà một ứng dụng hoặc đối tác dùng. Tắt tất cả cùng lúc nếu cần.",
+        "action": "Dịch vụ mới"
+      },
+      "endpoint": {
+        "title": "Thêm một endpoint",
+        "text": "Biến một biểu mẫu đã xuất bản thành một địa chỉ. Chọn việc nó làm: đọc, thêm, sửa hoặc xóa phản hồi.",
+        "action": "Endpoint mới"
+      },
+      "token": {
+        "title": "Cấp một token",
+        "text": "Ứng dụng chứng minh danh tính bằng token. Token thử nghiệm có thể thử mọi thứ mà không chạm vào dữ liệu thật; token live thực hiện các lệnh gọi thật.",
+        "action": "Token mới"
+      },
+      "access": {
+        "title": "Giới hạn ai có thể gọi",
+        "text": "Cho phép hoặc chặn bên gọi theo địa chỉ IP, trang web, quốc gia, khu vực hoặc mạng ẩn danh.",
+        "action": "Quy tắc mới"
+      },
+      "live": {
+        "title": "Thử nghiệm và đưa vào hoạt động",
+        "text": "Thử trong Tài liệu & kiểm thử, rồi bật endpoint để các token live có thể dùng.",
+        "action": "Mở Tài liệu & kiểm thử"
+      }
+    },
+    "intro": {
+      "title": "Endpoint là gì",
+      "text": "Endpoint cho một biểu mẫu đã xuất bản địa chỉ riêng, ví dụ /job-applications. Các ứng dụng khác gửi hoặc đọc phản hồi ở đó, được kiểm tra đúng như trang biểu mẫu. Nó nằm trong một dịch vụ và chưa hoạt động cho đến khi bạn cấp token và bật nó.",
+      "hide": "Đã hiểu"
+    },
+    "gate": {
+      "title": "Hãy tạo dịch vụ trước",
+      "text": "Mỗi endpoint nằm trong một dịch vụ: một dịch vụ cho mỗi ứng dụng hoặc đối tác, để bạn xem các lệnh gọi của họ cùng nhau và tắt cùng lúc. Bạn chưa có dịch vụ nào, nên hãy bắt đầu từ đó; bạn sẽ quay lại ngay đây.",
+      "action": "Dịch vụ mới"
+    },
+    "setup": {
+      "title": "Trước khi đưa vào hoạt động",
+      "isLive": "Đang hoạt động",
+      "notLive": "Chưa hoạt động",
+      "openEndpoint": "Mở endpoint",
+      "createdTitle": "/{name} đã được tạo",
+      "createdText": "Nó chưa hoạt động: token thử nghiệm có thể gọi nó, các lệnh gọi live bị từ chối cho đến khi bạn bật. Hãy làm theo danh sách bên dưới.",
+      "basics": {
+        "title": "Dịch vụ và biểu mẫu",
+        "ok": "Trong {service}, trả lời bằng biểu mẫu {form}.",
+        "serviceOff": "Dịch vụ {name} của nó đang tắt, nên endpoint không thể trả lời. Hãy bật dịch vụ.",
+        "formOff": "Biểu mẫu của nó chưa được xuất bản, nên endpoint không thể trả lời. Hãy xuất bản biểu mẫu."
+      },
+      "token": {
+        "title": "Một token được phép gọi nó",
+        "text": "Chưa có token nào được phép gọi nó. Hãy tạo một token riêng cho endpoint này: thử nghiệm để thử, live cho lệnh gọi thật.",
+        "ok": "{live} token live và {test} token thử nghiệm được phép gọi nó.",
+        "action": "Token mới cho endpoint này"
+      },
+      "access": {
+        "title": "Ai được gọi",
+        "text": "Bất kỳ ai có token hợp lệ đều có thể gọi nó. Thêm quy tắc để cho phép hoặc chặn bên gọi theo địa chỉ IP, trang web, quốc gia hoặc mạng ẩn danh.",
+        "ok": "Áp dụng {n} quy tắc truy cập. | Áp dụng {n} quy tắc truy cập.",
+        "action": "Quy tắc mới cho endpoint này"
+      },
+      "test": {
+        "title": "Thử nó",
+        "text": "Gửi một lệnh gọi bằng token thử nghiệm: mọi bước kiểm tra thật đều chạy và không có gì được lưu."
+      },
+      "live": {
+        "title": "Đưa vào hoạt động",
+        "text": "Bật khi bạn sẵn sàng. Khi đó các token live có thể gọi nó.",
+        "on": "Token live có thể gọi nó. Tắt để dừng mọi lệnh gọi live cùng lúc.",
+        "noLiveToken": "Chưa có token live nào được phép gọi nó: các lệnh gọi live vẫn sẽ bị từ chối.",
+        "action": "Đưa vào hoạt động"
+      },
+      "toast": {
+        "live": "Endpoint đang hoạt động",
+        "notLive": "Endpoint chưa hoạt động"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Trả lời bằng bất kỳ trạng thái 2xx nào trong 10 giây; làm việc thật sau đó. Mọi phản hồi khác sẽ được thử lại."
       }
     },
-    "onceDesc": "Formalie không thể hiển thị lại. Nếu bị mất, hãy tạo khóa mới.",
+    "onceDesc": "Hãy sao chép ngay. Bạn có thể xem lại sau trong bảng của nó, sau khi xác nhận mật khẩu.",
     "keys": {
       "newTitle": "Khóa API mới",
       "editTitle": "Sửa khóa API",
@@ -6015,5 +6231,17 @@
         "deleted": "Đã xóa khóa API"
       }
     }
+  },
+  "secrets": {
+    "title": "Bí mật",
+    "show": "Hiện",
+    "hide": "Ẩn ({n} giây)",
+    "ask": "Xác nhận mật khẩu của bạn để xem. Việc này được ghi vào nhật ký kiểm toán.",
+    "password": "Mật khẩu của bạn",
+    "confirm": "Hiện",
+    "wrong": "Mật khẩu không đúng. Còn {n} lần thử.",
+    "locked": "Sai quá nhiều lần. Hãy thử lại sau 15 phút.",
+    "notViewable": "Được tạo trước khi bí mật có thể xem lại, nên không thể hiển thị. Hãy xoay để nhận một bí mật bạn có thể xem sau.",
+    "shownNote": "Nó tự ẩn lại sau một phút. Chỉ giữ nó trên máy chủ của bạn."
   }
 }

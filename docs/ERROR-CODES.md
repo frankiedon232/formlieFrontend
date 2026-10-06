@@ -29,6 +29,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-AUTH-1010 | 401  | Invalid token.                                                    | WARNING  |
 | FRM-AUTH-1011 | 401  | Session revoked.                                                  | INFO     |
 | FRM-AUTH-1012 | 401  | Session ended for security reasons. (refresh reuse)               | CRITICAL |
+| FRM-AUTH-1013 | 422  | That password is not right. (confirming before a secret is shown) | WARNING  |
 | FRM-PERM-1001 | 403  | You don't have access to this.                                    | WARNING  |
 | FRM-TEN-1001  | 404  | Workspace not found.                                              | INFO     |
 | FRM-TEN-1002  | 403  | Workspace suspended.                                              | WARNING  |
@@ -71,6 +72,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-API-1013  | 404  | There is no record with this id.                                  | INFO     |
 | FRM-API-1014  | 422  | Some fields can not be sent to this endpoint.                     | INFO     |
 | FRM-API-1015  | 403  | This caller is not allowed by the access rules.                   | WARNING  |
+| FRM-API-1016  | 409  | This secret can not be shown (made before secrets were viewable). | INFO     |
+| FRM-API-1017  | 415  | Send the body as JSON with Content-Type: application/json.        | INFO     |
+| FRM-API-1018  | 413  | The body is too large (1 MB at most; files via the upload step).  | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
 

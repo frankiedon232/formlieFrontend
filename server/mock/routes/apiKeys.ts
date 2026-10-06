@@ -12,6 +12,7 @@ import { z } from 'zod'
 import { API_KEY_SCOPES, type ApiKeyInsights, type ManagementKeyWithSecret } from '#shared/types/integrations'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
+import { confirmPassword } from '../core/confirm'
 import { filtersOf, MockError, ok, paginate } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
@@ -76,7 +77,7 @@ export const createApiKey = defineMockRoute(({ event, body }) => {
   const values = parseBody(input.extend({ expires_at: z.string().datetime().nullish() }), body)
   if (values.expires_at && Date.parse(values.expires_at) <= Date.now()) throw new MockError('FRM-GEN-1002', [{ field: 'expires_at', message: 'future' }])
   const secret = newManagementKey()
-  const key: StoredManagementKey = { id: crypto.randomUUID(), name: values.name, secret_hash: hashKey(secret), preview: keyPreview(secret), scopes: [...new Set(values.scopes)], expires_at: values.expires_at ?? null, last_used_at: null, last_used_ip: null, calls: {}, created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` }, created_at: new Date().toISOString(), revoked_at: null }
+  const key: StoredManagementKey = { id: crypto.randomUUID(), name: values.name, secret_hash: hashKey(secret), secret, preview: keyPreview(secret), scopes: [...new Set(values.scopes)], expires_at: values.expires_at ?? null, last_used_at: null, last_used_ip: null, calls: {}, created_by: { id: user.id, name: `${user.first_name} ${user.last_name}` }, created_at: new Date().toISOString(), revoked_at: null }
   integrationsOf(tenant).keys.unshift(key)
   saveIntegrations()
   recordAudit(event, tenant, { action: 'integrations.api_key_created', actor: actorOf(user), resource: resource(key), metadata: { scopes: key.scopes.join(', '), expires: key.expires_at ?? 'never' } })
@@ -123,4 +124,15 @@ export const deleteApiKey = defineMockRoute(({ event }) => {
   saveIntegrations()
   recordAudit(event, tenant, { action: 'integrations.api_key_deleted', actor: actorOf(user), resource: resource(key) })
   return ok({ deleted: true })
+})
+
+/** POST /api-keys/:id/reveal { password }: the key again, after the password. */
+export const revealApiKey = defineMockRoute(({ event, body }) => {
+  const { tenant, user } = requireAdmin(event)
+  const key = findKey(tenant, getRouterParam(event, 'id'))
+  if (key.revoked_at) throw new MockError('FRM-API-1004')
+  confirmPassword(user, (body as { password?: unknown } | null)?.password)
+  if (!key.secret) throw new MockError('FRM-API-1016')
+  recordAudit(event, tenant, { action: 'integrations.api_key_revealed', actor: actorOf(user), resource: resource(key) })
+  return ok({ secret: key.secret })
 })

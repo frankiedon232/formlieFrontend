@@ -87,6 +87,32 @@ export interface ApiEndpointDetail extends ApiEndpoint {
   headers: ApiHeaderRule[]
   /** Published versions the endpoint can be pinned to (newest first). */
   versions: number[]
+  /** How far it is set up (guided setup, F13 M7). */
+  setup: ApiEndpointSetup
+}
+
+/** The guided setup's steps, in order (F13 M7). */
+export type ApiJourneyStep = 'service' | 'endpoint' | 'token' | 'access' | 'live'
+
+/** The organisation's setup so far (guided setup, F13 M7). */
+export interface ApiSetupSummary {
+  services: number
+  endpoints: number
+  endpoints_live: number
+  tokens_live: number
+  tokens_test: number
+  rules: number
+}
+
+export interface ApiEndpointSetup {
+  service_active: boolean
+  form_published: boolean
+  /** Tokens (not revoked or expired) whose scope covers it. */
+  tokens_live: number
+  tokens_test: number
+  /** Switched-on access rules that apply to it. */
+  rules: number
+  live: boolean
 }
 
 export interface ApiEndpointSaveRequest {
@@ -164,6 +190,8 @@ export interface ApiToken extends ApiUsage {
   created_by: { id: string; name: string }
   created_at: string
   revoked_at: string | null
+  /** Its secret can be shown again (after the password); false for tokens made before that existed. */
+  viewable: boolean
 }
 
 export interface ApiTokenSaveRequest {
@@ -218,7 +246,10 @@ export interface ApiHeaderDraft {
 
 // ── Access rules and rate limits (F13 M3) ────────────────────────────────────────────────
 
-export const API_RULE_KINDS = ['ip', 'domain', 'country', 'region'] as const
+export const API_RULE_KINDS = ['ip', 'domain', 'country', 'region', 'network'] as const
+/** Anonymous networks an IP can belong to (IP intelligence on the server): VPN exits, open proxies, Tor exits, hosting / cloud providers. */
+export const API_NETWORKS = ['vpn', 'proxy', 'tor', 'hosting'] as const
+export type ApiNetwork = (typeof API_NETWORKS)[number]
 export type ApiRuleKind = (typeof API_RULE_KINDS)[number]
 export type ApiRuleAction = 'allow' | 'block'
 /** Where a rule applies: everywhere, one service or one endpoint. */
@@ -280,6 +311,7 @@ export interface ApiAccessTestRequest {
   ip: string
   origin?: string | null
   country?: string | null
+  networks?: ApiNetwork[]
 }
 export interface ApiAccessTestResult {
   allowed: boolean

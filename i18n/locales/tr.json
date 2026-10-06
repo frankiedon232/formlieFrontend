@@ -20,7 +20,8 @@
     "confirm": "Onayla",
     "copy": "Kopyala",
     "copied": "Kopyalandı",
-    "next": "İleri"
+    "next": "İleri",
+    "removeItem": "{name} öğesini kaldır"
   },
   "placeholder": {
     "title": "Çok yakında",
@@ -179,7 +180,10 @@
         "saveTitle": "Siz çalışırken kaydeder",
         "saveText": "Yayınlayana kadar her değişiklik taslak olarak kaydedilir."
       },
-      "folderHint": "Klasörler formlarınızı listede ve kenar çubuğunda düzenli tutar (örneğin ekibe veya projeye göre). Şablon kategorisi değildir."
+      "folderHint": "Klasörler formlarınızı listede ve kenar çubuğunda düzenli tutar (örneğin ekibe veya projeye göre). Şablon kategorisi değildir.",
+      "templateSubtitle": "Form gibi oluşturun, sonra şablon olarak kaydedin",
+      "templateTitle": "Şablon bir form olarak başlar",
+      "templateHint": "Ona bir ad verip oluşturun. Oluşturucu, form ayarlarında Şablon olarak kaydet hazır şekilde açılır; böylece şablonu yeni formlar için yeniden kullanabilirsiniz."
     },
     "detail": {
       "created": "Oluşturulma",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Başarısız",
     "connectionsDisabled": "Devre dışı",
     "connectionsNew": "Bağlantı ekle",
-    "backToMenu": "Menüye dön"
+    "backToMenu": "Menüye dön",
+    "newTemplate": "Yeni şablon",
+    "createForms": "Formlar",
+    "createOperations": "İşlemler",
+    "addDatabase": "Veritabanı ekle",
+    "newApiService": "Yeni API hizmeti"
   },
   "navbar": {
     "breadcrumb": "İçerik haritası",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "İstek imzası eksik, çok eski ya da yanlış.",
     "FRM-API-1013": "Bu id ile kayıt yok.",
     "FRM-API-1014": "Bazı alanlar bu endpoint’e gönderilemez.",
-    "FRM-API-1015": "Erişim kuralları bu çağırana izin vermiyor."
+    "FRM-API-1015": "Erişim kuralları bu çağırana izin vermiyor.",
+    "FRM-AUTH-1013": "Parola doğru değil.",
+    "FRM-API-1016": "Bu gizli anahtar gösterilemez: gizli anahtarlar yeniden görülebilir olmadan önce oluşturuldu. Yenisini almak için yenileyin.",
+    "FRM-API-1017": "Gövdeyi JSON olarak ve Content-Type: application/json ile gönderin.",
+    "FRM-API-1018": "Gövde çok büyük (en fazla 1 MB; dosyaları yükleme adımıyla gönderin)."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook silindi",
       "integrations_webhook_resent": "Webhook teslimatı yeniden gönderildi",
       "integrations_api_key_updated": "API anahtarı değiştirildi",
-      "integrations_api_key_deleted": "API anahtarı silindi"
+      "integrations_api_key_deleted": "API anahtarı silindi",
+      "api_token_revealed": "API belirteci görüntülendi",
+      "integrations_webhook_secret_revealed": "Webhook gizli anahtarı görüntülendi",
+      "integrations_api_key_revealed": "API anahtarı görüntülendi"
     },
     "detail": {
       "who": "Kim",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "Bu endpoint'ler ne için",
       "active": "Çağrılara yanıt veriyor",
       "activeHint": "Kapalıyken içindeki her endpoint net bir hatayla yanıt verir.",
-      "create": "Hizmet oluştur"
+      "create": "Hizmet oluştur",
+      "nameHelp": "Onu çağıracak uygulamanın veya iş ortağının adını verin, böylece bu çağrıların kime ait olduğunu bilirsiniz.",
+      "steps": {
+        "about": "Hakkında",
+        "details": "Ayrıntılar",
+        "next": "Sonraki adım",
+        "continue": "Devam",
+        "back": "Geri"
+      },
+      "about": {
+        "app": "Bir uygulama",
+        "service": "Hizmet",
+        "endpoint1": "kayitlar",
+        "endpoint2": "rezervasyonlar",
+        "endpoint3": "geri-bildirim",
+        "text": "Hizmet, bir uygulamanın veya iş ortağının kullandığı endpoint'leri gruplar. Uygulama endpoint'leri çağırır; hizmet onları bir arada tutar.",
+        "group": "Her uygulamanın veya iş ortağının endpoint'lerini tek yerde tutun",
+        "switch": "Tüm endpoint'lerini tek seferde kapatın, örneğin bakım sırasında",
+        "watch": "Çağrılarını, hatalarını ve yanıt sürelerini birlikte görün"
+      },
+      "done": {
+        "title": "{name} hazır",
+        "text": "Hizmet oluşturuldu. Tek başına henüz bir şey yapmaz: en az bir endpoint gerekir.",
+        "nextTitle": "Sırada: endpoint ekleyin",
+        "nextText": "Endpoint, yayımlanmış bir formu bu hizmette bir adrese dönüştürür. Formu, endpoint'in neler yapabileceğini ve hangi yanıtları alıp vereceğini siz seçersiniz.",
+        "later": "Sonra",
+        "endpoint": "Endpoint oluştur"
+      }
     },
     "fields": {
       "title": "Sorular",
@@ -3799,14 +3842,16 @@
         "basics": "Nerede durduğu ve adı.",
         "methods": "Yanıt verdiği yöntemleri seçin. Daha sonra değiştirebilirsiniz.",
         "fields": "POST ve PUT'un ne kabul ettiği, GET'in ne döndürdüğü veya neye göre filtrelenebileceği.",
-        "review": "Göz atın. Çağıranların token'ı olur olmaz yanıt vermeye başlar."
+        "review": "Göz atın. Canlı olmadan oluşturulur, bu yüzden gerçek çağıranlar henüz etkilenmez."
       },
       "method": {
         "GET": "Yanıtları oku: sayfalama ve filtrelerle bir liste ya da kimliğine göre tek bir yanıt.",
         "POST": "Yeni bir yanıt gönder; form sayfasındaki gibi denetlenir.",
         "PUT": "Bir yanıtı kimliğine göre değiştir (yalnızca kabul edilen sorular).",
         "DELETE": "Bir yanıtı kimliğine göre kaldır; denetim kaydında tutulur."
-      }
+      },
+      "afterTitle": "Sonra ne olur",
+      "afterText": "Endpoint yayında olmadan oluşturulur. Test token'ları onu şimdiden çağırabilir, böylece güvenle deneyebilirsiniz. Sonra ona bir live token verin, isterseniz erişim kuralları ekleyin ve açın."
     },
     "tokens": {
       "title": "Token'lar",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "{name} silinsin mi?",
       "deleteDesc": "Bu listeden kaybolur. Geçmişi denetim kaydında kalır.",
       "once": {
-        "title": "Şimdi kopyalayın: yalnızca bir kez gösterilir",
-        "desc": "Formalie yalnızca bir parmak izini saklar. Kaybolursa yenisini almak için token'ı yenileyin."
+        "title": "Şimdi kopyalayın",
+        "desc": "Bundan sonra gizli kalır. Parolanızı doğruladıktan sonra daha sonra belirtecin panelinde yeniden görebilirsiniz."
       },
       "secret": {
         "token": "Token",
         "clientId": "İstemci kimliği",
         "clientSecret": "İstemci gizli anahtarı",
-        "signing": "İmzalama gizli anahtarı"
+        "signing": "İmzalama gizli anahtarı",
+        "title": "Gizli anahtar"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} kaydedildi",
         "revoked": "{name} iptal edildi",
         "deleted": "{name} silindi"
+      },
+      "steps": {
+        "kind": "Tür",
+        "access": "Neyi çağırabilir",
+        "safety": "Güvenlik",
+        "done": "Token"
+      },
+      "about": {
+        "title": "Token nedir",
+        "text": "Uygulamalar kimliklerini kanıtlamak için her çağrıyla bir token gönderir. Her uygulamaya kendi token'ını ve yalnızca ihtiyacı olanı verin, böylece diğerlerine dokunmadan birini durdurabilirsiniz."
+      },
+      "nameHelp": "Onu kullanacak uygulamanın adını verin.",
+      "presetName": "/{name} için token",
+      "scopeSummary": {
+        "all": "Her endpoint'i, her yöntemle çağırabilir.",
+        "services": "{n} hizmetin endpoint'lerini çağırabilir. | {n} hizmetin endpoint'lerini çağırabilir.",
+        "endpoints": "{n} endpoint'i çağırabilir. | {n} endpoint'i çağırabilir."
+      },
+      "expiryHelp": "Süresi dolan token daha güvenlidir: 14 gün önceden hatırlatma alırsınız.",
+      "viewLater": "Parolanızı doğruladıktan sonra token panelinde onu daha sonra tekrar görebilirsiniz.",
+      "next": {
+        "title": "Sırada ne var",
+        "test": "Endpoint'i Belgeler ve test bölümünde denemek için bu test token'ını kullanın. Hiçbir şey kaydedilmez. Gerçek çağrılara hazır olduğunuzda bir live token oluşturun.",
+        "live": "İsterseniz erişim kurallarıyla kimin kullanabileceğini sınırlayın, test edin, sonra endpoint'i açın.",
+        "rule": "Erişim kuralı ekle"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "IP adresi",
         "domain": "Web sitesi alan adı",
         "country": "Ülke",
-        "region": "Bölge"
+        "region": "Bölge",
+        "network": "Anonim ağlar"
       },
       "kindHint": {
         "ip": "Tek adresler veya aralıklar (IPv4 ve IPv6).",
         "domain": "Tarayıcı çağrısının geldiği web sitesi.",
         "country": "Çağıranın adresinin bulunduğu yer.",
-        "region": "Bir seferde tüm kıtalar."
+        "region": "Bir seferde tüm kıtalar.",
+        "network": "VPN'ler, proxy'ler, Tor ve barındırma sağlayıcıları"
       },
       "valuesLabel": {
         "ip": "Adresler ve aralıklar",
         "domain": "Alan adları",
         "country": "Ülkeler",
-        "region": "Bölgeler"
+        "region": "Bölgeler",
+        "network": "Ağlar"
       },
       "valuesHelp": {
-        "ip": "Satır başına bir tane, örn. 203.0.113.10 veya 198.51.100.0/24.",
-        "domain": "Satır başına bir tane; *.example.com tüm alt alan adlarını kapsar.",
+        "ip": "Bir adres veya aralık yazın, ardından virgül, boşluk veya Enter tuşuna basın, örn. 203.0.113.10 veya 198.51.100.0/24. Her biri denetlenir.",
+        "domain": "Bir alan adı yazın, ardından virgül, boşluk veya Enter tuşuna basın, örn. example.com veya tüm alt alan adları için *.example.com. Her biri denetlenir.",
         "country": "Bir veya daha fazlasını seçin.",
-        "region": "Bir veya daha fazlasını seçin."
+        "region": "Bir veya daha fazlasını seçin.",
+        "network": "Adresi bunlardan birine ait olan çağıranlar."
       },
       "region": {
         "AF": "Afrika",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" bir IP adresi veya aralığı değil.",
         "domain": "\"{value}\" bir alan adı değil.",
         "country": "\"{value}\" bir ülke değil.",
-        "region": "\"{value}\" bir bölge değil."
+        "region": "\"{value}\" bir bölge değil.",
+        "network": "Listeden bir ağ seçin"
       },
       "toast": {
         "created": "Kural oluşturuldu",
@@ -4098,6 +4174,40 @@
         "answer": "Sınır aşılırsa çağıranlar Retry-After ile 429 alır (beklenecek saniye); her yanıt sınırı ve kalanı bildirir.",
         "saved": "Hız sınırları kaydedildi",
         "changed": "Değiştirildi: {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Açık proxy",
+        "tor": "Tor",
+        "hosting": "Barındırma ve bulut"
+      },
+      "networkHint": {
+        "vpn": "Ticari VPN çıkışları",
+        "proxy": "Genel ve anonim proxy'ler",
+        "tor": "Tor çıkış düğümleri",
+        "hosting": "Barındırma ve bulut sağlayıcılarındaki sunucular"
+      },
+      "networkNote": "Formalie bunları her gün güncellenen bilinen adres listelerinden tanır. Ülkenin doğru olması gerektiğinde VPN'leri bir ülke kuralıyla birlikte engelleyin.",
+      "geo": {
+        "title": "Ülke nasıl bulunur",
+        "text": "Çağıranın IP adresinden, bir konum veritabanında aranarak: büyük çoğunlukla ülke için doğrudur. VPN veya proxy kullanan biri o sunucunun ülkesinde görünür, bunu durdurmanız gerekiyorsa Anonim ağlar kuralı ekleyin."
+      },
+      "scopeHelp": "Her yerde, tek bir hizmet veya tek bir endpoint.",
+      "steps": {
+        "what": "Ne",
+        "values": "Değerler",
+        "where": "Nerede",
+        "done": "Bitti"
+      },
+      "about": {
+        "title": "Erişim kuralları ne yapar",
+        "text": "Token daha kontrol edilmeden kimin çağırabileceğine karar verir. Engelleme her zaman kazanır. Herhangi bir izin kuralı geçerli olduğunda yalnızca birine uyan çağıranlar içeri girer."
+      },
+      "done": {
+        "title": "Kural açık",
+        "block": "{values} ile eşleşen çağıranlar {where} için reddedilir.",
+        "allow": "Yalnızca {values} (veya başka bir izin kuralı) ile eşleşen çağıranlar {where} için içeri girer.",
+        "next": "Bir çağıranı, Bir çağıranı test et bölümüyle kontrol edin, sonra endpoint'i Belgeler ve test bölümünde deneyin ve açın."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Dosya gönderme",
         "text": "Önce her dosyayı form verisi olarak yükleyin; alan adı file, soru anahtarı ise field içinde olsun. Yanıt dosyanın kimliğini verir.",
-        "then": "Sonra kimlikleri JSON gövdesinde o sorunun altına yazın, örn. \"cv\": [\"id\"]. Formdakiyle aynı dosya türleri ve boyutlarına izin verilir."
+        "then": "Sonra kimlikleri JSON gövdesinde o sorunun altına yazın, örn. \"cv\": [\"id\"]. Formdakiyle aynı dosya türleri ve boyutlarına izin verilir.",
+        "step1": "Dosyayı yükleyin",
+        "step2": "Kimliğini yanıtlarla birlikte gönderin"
       },
       "signing": {
         "title": "İmzalı çağrılar",
@@ -4240,7 +4352,111 @@
         "testOnly": "Test modu: yanıtlar gerçek gibi görünür, ancak hiçbir yanıt oluşturulmaz, değiştirilmez veya silinmez.",
         "nothingYet": "Yanıtı görmek için bir çağrı gönderin",
         "send": "Gönder",
-        "badJson": "Bu geçerli bir JSON değil."
+        "badJson": "Bu geçerli bir JSON değil.",
+        "recordNeeded": "kayıt kimliği (gerekli)",
+        "headers": "Başlıklar",
+        "noBody": "Bu yöntem gövde göndermez. Başlıkları Başlıklar sekmesindedir.",
+        "bodyHint": "Formun gerçek yanıt değerleriyle dolduruldu. İstediğinizi değiştirip yeniden gönderin.",
+        "testToken": "bu konsol için oluşturulmuş bir test belirteci",
+        "recent": "Son çağrılar"
+      },
+      "navTitle": "Bu sayfada",
+      "gettingStarted": "Başlarken",
+      "heroKicker": "API başvurusu",
+      "heroText": "Bir uygulamanın bu hizmetin yanıtlarını göndermesi ve okuması için gereken her şey: adres, oturum açma yöntemi ve örnekleriyle her uç nokta.",
+      "liveCount": "{n} canlı",
+      "bearer": "Bearer belirteci",
+      "tryFirst": "Şimdi deneyin",
+      "notLiveNote": "Henüz canlı değil: test belirteçleri çağırabilir (Dene bir tane kullanır), açılana kadar canlı çağrılar reddedilir.",
+      "oneHint": "Yalnızca bir kaydı okumak için adrese kayıt kimliğini ekleyin, örn. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "Yanıt listelerden ve API'den kaldırılır, denetim kaydında tutulur. Test belirteci yalnızca çağrıyı kontrol eder.",
+      "errorShape": "Bir hata nasıl görünür",
+      "op": {
+        "GET": "Listele ve oku",
+        "POST": "Oluştur",
+        "PUT": "Değiştir",
+        "DELETE": "Sil"
+      }
+    },
+    "journey": {
+      "title": "API'nizi kurun",
+      "text": "Bir formdan, diğer uygulamaların çağırabileceği bir adrese beş adım.",
+      "progress": "{n} / {total} tamamlandı",
+      "service": {
+        "title": "Hizmet oluşturun",
+        "text": "Bir uygulamanın veya iş ortağının kullandığı endpoint'ler için bir klasör. Gerekirse hepsini tek seferde kapatın.",
+        "action": "Yeni hizmet"
+      },
+      "endpoint": {
+        "title": "Endpoint ekleyin",
+        "text": "Yayımlanmış bir formu adrese dönüştürür. Ne yapacağını seçin: yanıtları okumak, eklemek, değiştirmek veya silmek.",
+        "action": "Yeni endpoint"
+      },
+      "token": {
+        "title": "Ona bir token verin",
+        "text": "Uygulamalar kimliklerini token ile kanıtlar. Test token'ı gerçek verilere dokunmadan her şeyi deneyebilir; live token gerçek çağrılar yapar.",
+        "action": "Yeni token"
+      },
+      "access": {
+        "title": "Kimin çağırabileceğini sınırlayın",
+        "text": "Çağıranları IP adresine, web sitesine, ülkeye, bölgeye veya anonim ağlara göre izin verin ya da engelleyin.",
+        "action": "Yeni kural"
+      },
+      "live": {
+        "title": "Test edin ve yayına alın",
+        "text": "Belgeler ve test bölümünde deneyin, sonra endpoint'i açın ki live token'lar kullanabilsin.",
+        "action": "Belgeler ve test'i aç"
+      }
+    },
+    "intro": {
+      "title": "Endpoint nedir",
+      "text": "Endpoint, yayımlanmış bir forma kendi adresini verir, örneğin /job-applications. Diğer uygulamalar yanıtları oraya gönderir veya oradan okur; kontroller form sayfasındakiyle aynıdır. Bir hizmette yaşar ve ona token verip açana kadar yayında değildir.",
+      "hide": "Anladım"
+    },
+    "gate": {
+      "title": "Önce bir hizmet oluşturun",
+      "text": "Her endpoint bir hizmette yaşar: uygulama veya iş ortağı başına bir tane, böylece çağrılarını birlikte görür ve tek seferde kapatabilirsiniz. Henüz hizmetiniz yok, önce oradan başlayın; hemen buraya dönersiniz.",
+      "action": "Yeni hizmet"
+    },
+    "setup": {
+      "title": "Yayına almadan önce",
+      "isLive": "Yayında",
+      "notLive": "Yayında değil",
+      "openEndpoint": "Endpoint'i aç",
+      "createdTitle": "/{name} oluşturuldu",
+      "createdText": "Henüz yayında değil: test token'ları onu çağırabilir, siz açana kadar live çağrılar reddedilir. Aşağıdaki listeyi tamamlayın.",
+      "basics": {
+        "title": "Hizmet ve form",
+        "ok": "{service} içinde, {form} formuyla yanıt veriyor.",
+        "serviceOff": "Hizmeti {name} kapalı, bu yüzden endpoint yanıt veremez. Hizmeti açın.",
+        "formOff": "Formu yayımlanmamış, bu yüzden endpoint yanıt veremez. Formu yayımlayın."
+      },
+      "token": {
+        "title": "Onu çağırabilen bir token",
+        "text": "Henüz hiçbir token onu çağıramaz. Yalnızca bu endpoint için bir tane oluşturun: denemek için test, gerçek çağrılar için live.",
+        "ok": "{live} live ve {test} test token'ı onu çağırabilir.",
+        "action": "Bu endpoint için yeni token"
+      },
+      "access": {
+        "title": "Kimler çağırabilir",
+        "text": "Geçerli token'ı olan herkes onu çağırabilir. Çağıranlara IP adresi, web sitesi, ülke veya anonim ağlara göre izin vermek ya da onları engellemek için kurallar ekleyin.",
+        "ok": "{n} erişim kuralı geçerli. | {n} erişim kuralı geçerli.",
+        "action": "Bu endpoint için yeni kural"
+      },
+      "test": {
+        "title": "Test edin",
+        "text": "Test token'ı ile bir çağrı gönderin: tüm gerçek kontroller çalışır ve hiçbir şey kaydedilmez."
+      },
+      "live": {
+        "title": "Yayına alın",
+        "text": "Hazır olduğunuzda açın. Live token'lar o zaman onu çağırabilir.",
+        "on": "Live token'lar onu çağırabilir. Tüm live çağrıları tek seferde durdurmak için kapatın.",
+        "noLiveToken": "Henüz hiçbir live token onu çağıramaz: live çağrılar yine reddedilir.",
+        "action": "Yayına al"
+      },
+      "toast": {
+        "live": "Endpoint yayında",
+        "notLive": "Endpoint yayında değil"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "10 saniye içinde herhangi bir 2xx durumuyla yanıt verin, asıl işi sonra yapın. Başka her yanıt yeniden denenir."
       }
     },
-    "onceDesc": "Formalie bunu yeniden gösteremez. Kaybolursa yenisini oluşturun.",
+    "onceDesc": "Şimdi kopyalayın. Parolanızı doğruladıktan sonra daha sonra panelinde yeniden görebilirsiniz.",
     "keys": {
       "newTitle": "Yeni API anahtarı",
       "editTitle": "API anahtarını düzenle",
@@ -6015,5 +6231,17 @@
         "deleted": "API anahtarı silindi"
       }
     }
+  },
+  "secrets": {
+    "title": "Gizli anahtar",
+    "show": "Göster",
+    "hide": "Gizle ({n} sn)",
+    "ask": "Görmek için parolanızı doğrulayın. Bu, denetim kaydına işlenir.",
+    "password": "Parolanız",
+    "confirm": "Göster",
+    "wrong": "Parola doğru değil. {n} deneme hakkınız kaldı.",
+    "locked": "Çok fazla yanlış deneme. 15 dakika sonra tekrar deneyin.",
+    "notViewable": "Gizli anahtarlar yeniden görülebilir olmadan önce oluşturuldu, bu yüzden gösterilemez. Sonra görebileceğiniz bir tane almak için yenileyin.",
+    "shownNote": "Bir dakika sonra kendiliğinden yeniden gizlenir. Yalnızca sunucunuzda saklayın."
   }
 }

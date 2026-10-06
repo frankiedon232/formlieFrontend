@@ -14,6 +14,11 @@ const api = useApi()
 const { handle } = useErrorHandler()
 const { number, percent } = useFormat()
 const config = useRuntimeConfig().public
+// Guided setup (owner, 2026-10-06): the five steps until an endpoint is live with a live token
+const setup = useApiSetup()
+onMounted(() => void setup.refresh())
+const setupDone = computed(() => { const s = setup.summary.value; return !!s && s.services > 0 && s.endpoints > 0 && s.endpoints_live > 0 && s.tokens_live > 0 })
+const setupCount = computed(() => { const s = setup.summary.value; return s ? [s.services > 0, s.endpoints > 0, s.tokens_live + s.tokens_test > 0, s.endpoints_live > 0 && s.tokens_live > 0].filter(Boolean).length : 0 })
 useHead({ title: () => t('nav.apiService') })
 
 const analytics = ref<ApiAnalytics | null>(null)
@@ -67,6 +72,17 @@ const shortcuts = [
       <UButton :label="t('apiService.tokens.newTitle')" icon="i-lucide-key-round" color="neutral" variant="outline" to="/api-service/auth" class="hidden sm:inline-flex" />
       <UButton :label="t('apiService.actions.newEndpoint')" icon="i-lucide-plus" color="neutral" to="/api-service/endpoints/new" />
     </template>
+
+    <UCard v-if="setup.summary.value && !setupDone" variant="outline" class="shrink-0" :ui="{ body: 'flex flex-col gap-4 p-4 sm:p-5' }">
+      <div class="flex flex-wrap items-start justify-between gap-2">
+        <div class="flex flex-col gap-0.5">
+          <h2 class="text-sm font-semibold text-highlighted">{{ t('apiService.journey.title') }}</h2>
+          <p class="text-xs text-muted">{{ t('apiService.journey.text') }}</p>
+        </div>
+        <UBadge :label="t('apiService.journey.progress', { n: setupCount, total: 4 })" color="neutral" variant="subtle" class="rounded-md tabular-nums" />
+      </div>
+      <ApiJourney :summary="setup.summary.value" />
+    </UCard>
 
     <div class="flex shrink-0 snap-x gap-3 overflow-x-auto [scrollbar-width:none] sm:grid sm:grid-cols-3 sm:overflow-visible xl:grid-cols-5">
       <ChartsKpi

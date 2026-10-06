@@ -92,6 +92,15 @@ function edit(token: ApiToken | null) {
   editing.value = token
   editOpen.value = true
 }
+// `?new=1` (setup guide, an endpoint's checklist; `&endpoint=` presets what it may call)
+const presetEndpoint = ref<string | null>(null)
+watch(() => route.query.new, value => {
+  if (!value) return
+  presetEndpoint.value = typeof route.query.endpoint === 'string' ? route.query.endpoint : null
+  edit(null)
+  void router.replace({ query: { ...route.query, new: undefined, endpoint: undefined } })
+}, { immediate: true })
+watch(editOpen, value => !value && (presetEndpoint.value = null))
 async function saved(token: ApiToken) {
   if (editing.value) toast.add({ title: t('apiService.tokens.toast.saved', { name: token.name }), color: 'success', icon: 'i-lucide-circle-check' })
   await refreshAll()
@@ -213,7 +222,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
     </template>
 
     <ApiTokensDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!busy" @go="go" @edit="edit" @rotate="rotate" @revoke="revoke" @remove="remove" />
-    <ApiTokensEditModal v-model:open="editOpen" :token="editing" :base="base" @saved="saved" />
+    <ApiTokensEditModal v-model:open="editOpen" :token="editing" :base="base" :preset-endpoint="presetEndpoint" @saved="saved" />
     <ApiTokensRotateModal v-model:open="rotateOpen" :token="rotating" :target="rotateTarget" :base="base" @rotated="() => void refreshAll()" @key="value => (settings = value)" />
   </AppPanel>
 </template>

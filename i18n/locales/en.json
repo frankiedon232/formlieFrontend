@@ -20,7 +20,8 @@
     "confirm": "Confirm",
     "copy": "Copy",
     "copied": "Copied",
-    "next": "Next"
+    "next": "Next",
+    "removeItem": "Remove {name}"
   },
   "placeholder": {
     "title": "Coming soon",
@@ -179,7 +180,10 @@
         "saveTitle": "Saves as you go",
         "saveText": "Every change is saved as a draft until you publish."
       },
-      "folderHint": "Folders keep your forms organised in the list and the sidebar (for example by team or project). They are not template categories."
+      "folderHint": "Folders keep your forms organised in the list and the sidebar (for example by team or project). They are not template categories.",
+      "templateSubtitle": "Build it like a form, then save it as a template",
+      "templateTitle": "A template starts as a form",
+      "templateHint": "Name it and create it. The builder opens with Save as template ready in the form settings, so the template is yours to reuse for new forms."
     },
     "detail": {
       "created": "Created",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Failing",
     "connectionsDisabled": "Disabled",
     "connectionsNew": "Add connection",
-    "backToMenu": "Back to menu"
+    "backToMenu": "Back to menu",
+    "newTemplate": "New template",
+    "createForms": "Forms",
+    "createOperations": "Operations",
+    "addDatabase": "Add database",
+    "newApiService": "New API service"
   },
   "navbar": {
     "breadcrumb": "Breadcrumb",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "The request signature is missing, too old or wrong.",
     "FRM-API-1013": "There is no record with this id.",
     "FRM-API-1014": "Some fields can not be sent to this endpoint.",
-    "FRM-API-1015": "This caller is not allowed by the access rules."
+    "FRM-API-1015": "This caller is not allowed by the access rules.",
+    "FRM-AUTH-1013": "That password is not right.",
+    "FRM-API-1016": "This secret can not be shown: it was made before secrets could be viewed again. Rotate it for a new one.",
+    "FRM-API-1017": "Send the body as JSON with Content-Type: application/json.",
+    "FRM-API-1018": "The body is too large (1 MB at most; send files through the upload step)."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook deleted",
       "integrations_webhook_resent": "Webhook delivery sent again",
       "integrations_api_key_updated": "API key changed",
-      "integrations_api_key_deleted": "API key deleted"
+      "integrations_api_key_deleted": "API key deleted",
+      "api_token_revealed": "API token viewed",
+      "integrations_webhook_secret_revealed": "Webhook secret viewed",
+      "integrations_api_key_revealed": "API key viewed"
     },
     "detail": {
       "who": "Who",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "What these endpoints are for",
       "active": "Answering calls",
       "activeHint": "Switched off, every endpoint in it answers with a clear error.",
-      "create": "Create service"
+      "create": "Create service",
+      "nameHelp": "Name it after the app or partner that will call it, so you know whose calls these are.",
+      "steps": {
+        "about": "About",
+        "details": "Details",
+        "next": "Next step",
+        "continue": "Continue",
+        "back": "Back"
+      },
+      "about": {
+        "app": "An app",
+        "service": "Service",
+        "endpoint1": "sign-ups",
+        "endpoint2": "bookings",
+        "endpoint3": "feedback",
+        "text": "A service groups the endpoints that one app or partner uses. The app calls the endpoints; the service keeps them together.",
+        "group": "Keep each app's or partner's endpoints in one place",
+        "switch": "Switch all of its endpoints off at once, for example during maintenance",
+        "watch": "See their calls, errors and response times together"
+      },
+      "done": {
+        "title": "{name} is ready",
+        "text": "The service is created. On its own it does nothing yet: it needs at least one endpoint.",
+        "nextTitle": "Next: add an endpoint",
+        "nextText": "An endpoint turns one published form into an address in this service. You choose the form, what the endpoint may do and which answers it takes and gives.",
+        "later": "Later",
+        "endpoint": "Create an endpoint"
+      }
     },
     "fields": {
       "title": "Questions",
@@ -3799,14 +3842,16 @@
         "basics": "Where it lives and what it is called.",
         "methods": "Choose the methods it answers. You can change them later.",
         "fields": "What POST and PUT accept, and what GET returns or can filter by.",
-        "review": "Look it over. It starts answering as soon as callers have a token."
+        "review": "Look it over. It is created not live, so real callers are not affected yet."
       },
       "method": {
         "GET": "Read responses: a list with paging and filters, or one by its id.",
         "POST": "Send a new response, checked like the form page.",
         "PUT": "Change a response by its id (the accepted questions only).",
         "DELETE": "Remove a response by its id; kept in the audit trail."
-      }
+      },
+      "afterTitle": "What happens next",
+      "afterText": "The endpoint is created not live. Test tokens can already call it, so you can try it safely. Then give it a live token, add access rules if you want, and switch it on."
     },
     "tokens": {
       "title": "Tokens",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "Delete {name}?",
       "deleteDesc": "It disappears from this list. Its history stays in the audit trail.",
       "once": {
-        "title": "Copy it now: it is shown only once",
-        "desc": "Formalie keeps only a fingerprint of it. If it gets lost, rotate the token to get a new one."
+        "title": "Copy it now",
+        "desc": "It stays masked from now on. You can see it again later in the token's panel, after confirming your password."
       },
       "secret": {
         "token": "Token",
         "clientId": "Client id",
         "clientSecret": "Client secret",
-        "signing": "Signing secret"
+        "signing": "Signing secret",
+        "title": "Secret"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} saved",
         "revoked": "{name} revoked",
         "deleted": "{name} deleted"
+      },
+      "steps": {
+        "kind": "Kind",
+        "access": "What it may call",
+        "safety": "Safety",
+        "done": "Token"
+      },
+      "about": {
+        "title": "What a token is",
+        "text": "Apps send a token with every call to prove who they are. Give each app its own, and only what it needs, so you can stop one without touching the others."
+      },
+      "nameHelp": "Name it after the app that will use it.",
+      "presetName": "Token for /{name}",
+      "scopeSummary": {
+        "all": "It may call every endpoint, with every method.",
+        "services": "It may call the endpoints of {n} service. | It may call the endpoints of {n} services.",
+        "endpoints": "It may call {n} endpoint. | It may call {n} endpoints."
+      },
+      "expiryHelp": "A token that expires is safer: you get a reminder 14 days before.",
+      "viewLater": "You can see it again later in the token's panel, after confirming your password.",
+      "next": {
+        "title": "What comes next",
+        "test": "Use this test token to try the endpoint in Docs & testing. Nothing is stored. Make a live token when you are ready for real calls.",
+        "live": "Limit who may use it with access rules if you want, test it, then switch the endpoint on.",
+        "rule": "Add an access rule"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "IP address",
         "domain": "Website domain",
         "country": "Country",
-        "region": "Region"
+        "region": "Region",
+        "network": "Anonymous networks"
       },
       "kindHint": {
         "ip": "Single addresses or ranges (IPv4 and IPv6).",
         "domain": "The website a browser call comes from.",
         "country": "Where the caller's address is located.",
-        "region": "Whole continents at once."
+        "region": "Whole continents at once.",
+        "network": "VPNs, proxies, Tor and hosting providers"
       },
       "valuesLabel": {
         "ip": "Addresses and ranges",
         "domain": "Domains",
         "country": "Countries",
-        "region": "Regions"
+        "region": "Regions",
+        "network": "Networks"
       },
       "valuesHelp": {
-        "ip": "One per line, e.g. 203.0.113.10 or 198.51.100.0/24.",
-        "domain": "One per line; *.example.com covers every subdomain.",
+        "ip": "Type an address or range, then a comma, space or Enter, e.g. 203.0.113.10 or 198.51.100.0/24. Each one is checked.",
+        "domain": "Type a domain, then a comma, space or Enter, e.g. example.com or *.example.com for all its subdomains. Each one is checked.",
         "country": "Pick one or more.",
-        "region": "Pick one or more."
+        "region": "Pick one or more.",
+        "network": "Callers whose address belongs to one of these."
       },
       "region": {
         "AF": "Africa",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" isn't an IP address or range.",
         "domain": "\"{value}\" isn't a domain.",
         "country": "\"{value}\" isn't a country.",
-        "region": "\"{value}\" isn't a region."
+        "region": "\"{value}\" isn't a region.",
+        "network": "Pick a network from the list"
       },
       "toast": {
         "created": "Rule created",
@@ -4098,6 +4174,40 @@
         "answer": "Over a limit, callers get 429 with Retry-After (seconds to wait); every answer says the limit and what is left.",
         "saved": "Rate limits saved",
         "changed": "Changed {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Open proxy",
+        "tor": "Tor",
+        "hosting": "Hosting and cloud"
+      },
+      "networkHint": {
+        "vpn": "Commercial VPN exits",
+        "proxy": "Public and anonymous proxies",
+        "tor": "Tor exit nodes",
+        "hosting": "Servers at hosting and cloud providers"
+      },
+      "networkNote": "Formalie recognises these from lists of known addresses that are updated every day. Block VPNs together with a country rule when the country must be right.",
+      "geo": {
+        "title": "How the country is found",
+        "text": "From the caller's IP address, looked up in a location database: right for the country in the large majority of cases. Someone on a VPN or proxy appears in that server's country, so add an Anonymous networks rule if you need to stop that."
+      },
+      "scopeHelp": "Everywhere, one service, or one endpoint.",
+      "steps": {
+        "what": "What",
+        "values": "Values",
+        "where": "Where",
+        "done": "Done"
+      },
+      "about": {
+        "title": "What access rules do",
+        "text": "They decide who may call before the token is even checked. Block always wins. Once any allow rule applies, only callers that match one get in."
+      },
+      "done": {
+        "title": "The rule is on",
+        "block": "Callers matching {values} are refused on {where}.",
+        "allow": "Only callers matching {values} (or another allow rule) get in on {where}.",
+        "next": "Check a caller with Test a caller, then try the endpoint in Docs & testing and switch it on."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Sending files",
         "text": "Upload each file first, as form data with the field name file and the question key in field. The answer gives the file's id.",
-        "then": "Then put the ids in the JSON body under that question, e.g. \"cv\": [\"id\"]. The same file types and sizes as on the form are allowed."
+        "then": "Then put the ids in the JSON body under that question, e.g. \"cv\": [\"id\"]. The same file types and sizes as on the form are allowed.",
+        "step1": "Upload the file",
+        "step2": "Send its id with the answers"
       },
       "signing": {
         "title": "Signed calls",
@@ -4240,7 +4352,111 @@
         "testOnly": "Test mode: answers look real, but no response is created, changed or deleted.",
         "nothingYet": "Send a call to see the answer",
         "send": "Send",
-        "badJson": "This is not valid JSON."
+        "badJson": "This is not valid JSON.",
+        "recordNeeded": "record id (needed)",
+        "headers": "Headers",
+        "noBody": "This method sends no body. Its headers are on the Headers tab.",
+        "bodyHint": "Filled in with the form's real answer values. Change anything and send again.",
+        "testToken": "a test token made for this console",
+        "recent": "Last calls"
+      },
+      "navTitle": "On this page",
+      "gettingStarted": "Getting started",
+      "heroKicker": "API reference",
+      "heroText": "Everything an app needs to send and read this service's responses: the address, how to sign in, and every endpoint with examples.",
+      "liveCount": "{n} live",
+      "bearer": "Bearer token",
+      "tryFirst": "Try it now",
+      "notLiveNote": "Not live yet: test tokens can call it (Try it uses one), live calls are refused until it is switched on.",
+      "oneHint": "Add a record id to the address to read just that one, e.g. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "The response is removed from lists and the API, and kept in the audit trail. A test token only checks the call.",
+      "errorShape": "What an error looks like",
+      "op": {
+        "GET": "List and read",
+        "POST": "Create",
+        "PUT": "Change",
+        "DELETE": "Delete"
+      }
+    },
+    "journey": {
+      "title": "Set up your API",
+      "text": "Five steps from a form to an address other apps can call.",
+      "progress": "{n} of {total} done",
+      "service": {
+        "title": "Create a service",
+        "text": "A folder for the endpoints one app or partner uses. Switch them all off at once if you need to.",
+        "action": "New service"
+      },
+      "endpoint": {
+        "title": "Add an endpoint",
+        "text": "Turns one published form into an address. Choose what it does: read, add, change or delete responses.",
+        "action": "New endpoint"
+      },
+      "token": {
+        "title": "Give it a token",
+        "text": "Apps prove who they are with a token. A test token can try everything without touching real data; a live token makes real calls.",
+        "action": "New token"
+      },
+      "access": {
+        "title": "Limit who can call",
+        "text": "Allow or block callers by IP address, website, country, region or anonymous networks.",
+        "action": "New rule"
+      },
+      "live": {
+        "title": "Test and go live",
+        "text": "Try it in Docs & testing, then switch the endpoint on so live tokens can use it.",
+        "action": "Open Docs & testing"
+      }
+    },
+    "intro": {
+      "title": "What an endpoint is",
+      "text": "An endpoint gives one published form its own address, for example /job-applications. Other apps send or read responses there, checked exactly like the form page. It lives in a service, and it stays not live until you give it a token and switch it on.",
+      "hide": "Got it"
+    },
+    "gate": {
+      "title": "Create a service first",
+      "text": "Every endpoint lives in a service: one per app or partner, so you can see their calls together and switch them off at once. You have no service yet, so start there; you come straight back here.",
+      "action": "New service"
+    },
+    "setup": {
+      "title": "Before it goes live",
+      "isLive": "Live",
+      "notLive": "Not live",
+      "openEndpoint": "Open the endpoint",
+      "createdTitle": "/{name} is created",
+      "createdText": "It is not live yet: test tokens can call it, live calls are refused until you switch it on. Work through the list below.",
+      "basics": {
+        "title": "Service and form",
+        "ok": "In {service}, answering with the form {form}.",
+        "serviceOff": "Its service {name} is switched off, so the endpoint can not answer. Switch the service on.",
+        "formOff": "Its form is not published, so the endpoint can not answer. Publish the form."
+      },
+      "token": {
+        "title": "A token that may call it",
+        "text": "No token may call it yet. Make one just for this endpoint: test to try it, live for real calls.",
+        "ok": "{live} live and {test} test tokens may call it.",
+        "action": "New token for this endpoint"
+      },
+      "access": {
+        "title": "Who may call",
+        "text": "Anyone with a valid token can call it. Add rules to allow or block callers by IP address, website, country or anonymous networks.",
+        "ok": "{n} access rule applies. | {n} access rules apply.",
+        "action": "New rule for this endpoint"
+      },
+      "test": {
+        "title": "Test it",
+        "text": "Send a call with a test token: every real check runs and nothing is stored."
+      },
+      "live": {
+        "title": "Go live",
+        "text": "Switch it on when you are ready. Live tokens can then call it.",
+        "on": "Live tokens can call it. Switch it off to stop all live calls at once.",
+        "noLiveToken": "No live token may call it yet: live calls would still be refused.",
+        "action": "Go live"
+      },
+      "toast": {
+        "live": "The endpoint is live",
+        "notLive": "The endpoint is not live"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Answer with any 2xx status within 10 seconds; do the real work afterwards. Anything else is retried."
       }
     },
-    "onceDesc": "Formalie can not show it again. If it gets lost, make a new one.",
+    "onceDesc": "Copy it now. You can see it again later in its panel, after confirming your password.",
     "keys": {
       "newTitle": "New API key",
       "editTitle": "Edit API key",
@@ -6015,5 +6231,17 @@
         "deleted": "API key deleted"
       }
     }
+  },
+  "secrets": {
+    "title": "Secret",
+    "show": "Show",
+    "hide": "Hide ({n} s)",
+    "ask": "Confirm your password to see it. This is noted in the audit trail.",
+    "password": "Your password",
+    "confirm": "Show",
+    "wrong": "That password is not right. {n} tries left.",
+    "locked": "Too many wrong tries. Try again in 15 minutes.",
+    "notViewable": "Made before secrets could be seen again, so it can not be shown. Rotate it to get one you can view later.",
+    "shownNote": "It hides again by itself in a minute. Keep it on your server only."
   }
 }

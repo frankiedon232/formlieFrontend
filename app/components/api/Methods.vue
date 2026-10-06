@@ -1,4 +1,4 @@
-<!-- The HTTP methods an endpoint answers, as small monospace outline badges (monochrome, rule 21). -->
+<!-- The HTTP methods an endpoint answers, as small monospace badges in the method colours (GET green, POST violet, PUT amber, DELETE red; owner 2026-10-06); methods it does not answer are struck through. -->
 <script setup lang="ts">
 import { API_METHODS, type ApiMethod } from '#shared/utils/urls/public'
 
@@ -13,11 +13,11 @@ const shown = computed(() => (props.all ? API_METHODS : API_METHODS.filter(metho
       v-for="method in shown"
       :key="method"
       :label="method"
-      color="neutral"
-      :variant="methods.includes(method) ? 'outline' : 'soft'"
+      :color="methods.includes(method) ? METHOD_COLOR[method] : 'neutral'"
+      :variant="methods.includes(method) ? 'subtle' : 'soft'"
       :size="size"
       class="rounded-md font-mono tracking-tight"
-      :class="methods.includes(method) ? 'text-highlighted' : 'text-dimmed line-through'"
+      :class="methods.includes(method) ? METHOD_TEXT[method] : 'text-dimmed line-through'"
     />
     <span v-if="!shown.length" class="text-muted">{{ t('apiService.noMethods') }}</span>
   </span>

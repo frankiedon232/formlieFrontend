@@ -4,7 +4,7 @@
  * decision: a matching block refuses; when allow rules apply, the caller must match one of them.
  * Domain rules use the browser's Origin (or Referer), so they only ever match browser callers.
  */
-import type { ApiAccessRule, ApiRuleKind } from '#shared/types/apiService'
+import { API_NETWORKS, type ApiAccessRule, type ApiRuleKind } from '#shared/types/apiService'
 import { isCountryCode } from '#shared/utils/platform/countries'
 
 export interface AccessCaller {
@@ -13,6 +13,8 @@ export interface AccessCaller {
   domain: string | null
   /** ISO country of the IP address (GeoIP on the server). */
   country: string | null
+  /** Anonymous networks the IP belongs to (IP intelligence: VPN, proxy, Tor, hosting); empty when none. */
+  networks?: string[]
 }
 export interface AccessDecision {
   allowed: boolean
@@ -21,20 +23,21 @@ export interface AccessDecision {
   rule: { id: string; action: 'allow' | 'block'; value: string } | null
 }
 
-/** Problems with one value of a rule: `required`, `ip`, `domain`, `country` or `region`. */
+/** Problems with one value of a rule: `required`, `ip`, `domain`, `country`, `region` or `network`. */
 export function checkRuleValue(kind: ApiRuleKind, value: string): string | null {
   const text = value.trim()
   if (!text) return 'required'
   if (kind === 'ip') return parseCidr(text) ? null : 'ip'
   if (kind === 'domain') return DOMAIN_PATTERN.test(text.toLowerCase()) ? null : 'domain'
   if (kind === 'country') return isCountryCode(text.toUpperCase()) ? null : 'country'
+  if (kind === 'network') return (API_NETWORKS as readonly string[]).includes(text.toLowerCase()) ? null : 'network'
   return text.toUpperCase() in REGIONS ? null : 'region'
 }
 
 /** A value as stored: IPs as typed, domains in lower case, countries and regions in upper case. */
 export function normaliseRuleValue(kind: ApiRuleKind, value: string) {
   const text = value.trim()
-  return kind === 'domain' ? text.toLowerCase() : kind === 'country' || kind === 'region' ? text.toUpperCase() : text
+  return kind === 'domain' || kind === 'network' ? text.toLowerCase() : kind === 'country' || kind === 'region' ? text.toUpperCase() : text
 }
 
 /** The region (continent) a country is in, or null. */
@@ -53,6 +56,7 @@ export function matchesValue(kind: ApiRuleKind, value: string, caller: AccessCal
     return value.startsWith('*.') ? domain.endsWith(value.slice(1)) && domain !== value.slice(2) : domain === value
   }
   if (kind === 'country') return !!caller.country && caller.country.toUpperCase() === value
+  if (kind === 'network') return !!caller.networks?.includes(value)
   return regionOf(caller.country) === value
 }
 

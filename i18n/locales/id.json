@@ -20,7 +20,8 @@
     "confirm": "Konfirmasi",
     "copy": "Salin",
     "copied": "Disalin",
-    "next": "Berikutnya"
+    "next": "Berikutnya",
+    "removeItem": "Hapus {name}"
   },
   "placeholder": {
     "title": "Segera hadir",
@@ -179,7 +180,10 @@
         "saveTitle": "Tersimpan otomatis",
         "saveText": "Setiap perubahan disimpan sebagai draf sampai Anda menerbitkan."
       },
-      "folderHint": "Folder menjaga formulir Anda tetap teratur di daftar dan bilah samping (misalnya per tim atau proyek). Folder bukan kategori templat."
+      "folderHint": "Folder menjaga formulir Anda tetap teratur di daftar dan bilah samping (misalnya per tim atau proyek). Folder bukan kategori templat.",
+      "templateSubtitle": "Buat seperti formulir, lalu simpan sebagai templat",
+      "templateTitle": "Templat dimulai sebagai formulir",
+      "templateHint": "Beri nama dan buat. Builder terbuka dengan Simpan sebagai templat siap di pengaturan formulir, sehingga templat bisa kamu pakai ulang untuk formulir baru."
     },
     "detail": {
       "created": "Dibuat",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Gagal",
     "connectionsDisabled": "Dinonaktifkan",
     "connectionsNew": "Tambah koneksi",
-    "backToMenu": "Kembali ke menu"
+    "backToMenu": "Kembali ke menu",
+    "newTemplate": "Templat baru",
+    "createForms": "Formulir",
+    "createOperations": "Operasi",
+    "addDatabase": "Tambah database",
+    "newApiService": "Layanan API baru"
   },
   "navbar": {
     "breadcrumb": "Jejak navigasi",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "Tanda tangan permintaan tidak ada, terlalu lama, atau salah.",
     "FRM-API-1013": "Tidak ada catatan dengan id ini.",
     "FRM-API-1014": "Beberapa kolom tidak dapat dikirim ke endpoint ini.",
-    "FRM-API-1015": "Aturan akses tidak mengizinkan pemanggil ini."
+    "FRM-API-1015": "Aturan akses tidak mengizinkan pemanggil ini.",
+    "FRM-AUTH-1013": "Kata sandi salah.",
+    "FRM-API-1016": "Rahasia ini tidak dapat ditampilkan: dibuat sebelum rahasia bisa dilihat lagi. Rotasi untuk mendapatkan yang baru.",
+    "FRM-API-1017": "Kirim isi permintaan sebagai JSON dengan Content-Type: application/json.",
+    "FRM-API-1018": "Isi permintaan terlalu besar (maksimal 1 MB; kirim file melalui langkah unggah)."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook dihapus",
       "integrations_webhook_resent": "Pengiriman webhook dikirim ulang",
       "integrations_api_key_updated": "Kunci API diubah",
-      "integrations_api_key_deleted": "Kunci API dihapus"
+      "integrations_api_key_deleted": "Kunci API dihapus",
+      "api_token_revealed": "Token API dilihat",
+      "integrations_webhook_secret_revealed": "Rahasia webhook dilihat",
+      "integrations_api_key_revealed": "Kunci API dilihat"
     },
     "detail": {
       "who": "Siapa",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "Untuk apa endpoint ini",
       "active": "Menerima panggilan",
       "activeHint": "Jika dimatikan, setiap endpoint di dalamnya menjawab dengan error yang jelas.",
-      "create": "Buat layanan"
+      "create": "Buat layanan",
+      "nameHelp": "Beri nama sesuai aplikasi atau mitra yang akan memanggilnya, agar kamu tahu milik siapa panggilan ini.",
+      "steps": {
+        "about": "Tentang",
+        "details": "Detail",
+        "next": "Langkah berikutnya",
+        "continue": "Lanjutkan",
+        "back": "Kembali"
+      },
+      "about": {
+        "app": "Sebuah aplikasi",
+        "service": "Layanan",
+        "endpoint1": "pendaftaran",
+        "endpoint2": "pemesanan",
+        "endpoint3": "masukan",
+        "text": "Layanan mengelompokkan endpoint yang dipakai satu aplikasi atau mitra. Aplikasi memanggil endpoint; layanan menyatukannya.",
+        "group": "Simpan endpoint setiap aplikasi atau mitra di satu tempat",
+        "switch": "Matikan semua endpoint-nya sekaligus, misalnya saat pemeliharaan",
+        "watch": "Lihat panggilan, kesalahan, dan waktu respons mereka bersama"
+      },
+      "done": {
+        "title": "{name} siap",
+        "text": "Layanan sudah dibuat. Sendirian belum berfungsi: butuh setidaknya satu endpoint.",
+        "nextTitle": "Berikutnya: tambah endpoint",
+        "nextText": "Endpoint mengubah satu formulir terbit menjadi alamat di layanan ini. Kamu memilih formulir, apa yang boleh dilakukan endpoint, dan jawaban apa yang diterima dan diberikannya.",
+        "later": "Nanti",
+        "endpoint": "Buat endpoint"
+      }
     },
     "fields": {
       "title": "Pertanyaan",
@@ -3799,14 +3842,16 @@
         "basics": "Di mana letaknya dan apa namanya.",
         "methods": "Pilih metode yang dijawabnya. Anda dapat mengubahnya nanti.",
         "fields": "Apa yang diterima POST dan PUT, serta apa yang dikembalikan atau dapat difilter oleh GET.",
-        "review": "Periksa dulu. Ia mulai menjawab begitu pemanggil memiliki token."
+        "review": "Periksa dulu. Dibuat dalam keadaan tidak aktif, jadi pemanggil sungguhan belum terpengaruh."
       },
       "method": {
         "GET": "Baca respons: daftar dengan halaman dan filter, atau satu berdasarkan id-nya.",
         "POST": "Kirim respons baru, diperiksa seperti halaman formulir.",
         "PUT": "Ubah respons berdasarkan id-nya (hanya pertanyaan yang diterima).",
         "DELETE": "Hapus respons berdasarkan id-nya; tetap tercatat di jejak audit."
-      }
+      },
+      "afterTitle": "Apa yang terjadi selanjutnya",
+      "afterText": "Endpoint dibuat dalam keadaan tidak live. Token uji sudah bisa memanggilnya, jadi kamu bisa mencobanya dengan aman. Lalu beri token live, tambahkan aturan akses jika mau, dan nyalakan."
     },
     "tokens": {
       "title": "Token",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "Hapus {name}?",
       "deleteDesc": "Token hilang dari daftar ini. Riwayatnya tetap ada di jejak audit.",
       "once": {
-        "title": "Salin sekarang: hanya ditampilkan satu kali",
-        "desc": "Formalie hanya menyimpan sidik jarinya. Jika hilang, rotasi token untuk mendapatkan yang baru."
+        "title": "Salin sekarang",
+        "desc": "Mulai sekarang tetap tersamarkan. Anda bisa melihatnya lagi nanti di panel token, setelah mengonfirmasi kata sandi."
       },
       "secret": {
         "token": "Token",
         "clientId": "ID klien",
         "clientSecret": "Secret klien",
-        "signing": "Secret penandatanganan"
+        "signing": "Secret penandatanganan",
+        "title": "Rahasia"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} disimpan",
         "revoked": "{name} dicabut",
         "deleted": "{name} dihapus"
+      },
+      "steps": {
+        "kind": "Jenis",
+        "access": "Yang boleh dipanggil",
+        "safety": "Keamanan",
+        "done": "Token"
+      },
+      "about": {
+        "title": "Apa itu token",
+        "text": "Aplikasi mengirim token di setiap panggilan untuk membuktikan identitasnya. Beri setiap aplikasi tokennya sendiri, hanya sesuai kebutuhan, agar kamu bisa menghentikan satu tanpa menyentuh yang lain."
+      },
+      "nameHelp": "Beri nama sesuai aplikasi yang akan memakainya.",
+      "presetName": "Token untuk /{name}",
+      "scopeSummary": {
+        "all": "Boleh memanggil semua endpoint, dengan semua metode.",
+        "services": "Boleh memanggil endpoint dari {n} layanan. | Boleh memanggil endpoint dari {n} layanan.",
+        "endpoints": "Boleh memanggil {n} endpoint. | Boleh memanggil {n} endpoint."
+      },
+      "expiryHelp": "Token yang kedaluwarsa lebih aman: kamu mendapat pengingat 14 hari sebelumnya.",
+      "viewLater": "Kamu bisa melihatnya lagi nanti di panel token, setelah mengonfirmasi kata sandi.",
+      "next": {
+        "title": "Selanjutnya",
+        "test": "Pakai token uji ini untuk mencoba endpoint di Dokumen & uji. Tidak ada yang disimpan. Buat token live saat kamu siap untuk panggilan sungguhan.",
+        "live": "Jika mau, batasi siapa yang boleh memakainya dengan aturan akses, ujilah, lalu nyalakan endpoint.",
+        "rule": "Tambah aturan akses"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "Alamat IP",
         "domain": "Domain situs web",
         "country": "Negara",
-        "region": "Wilayah"
+        "region": "Wilayah",
+        "network": "Jaringan anonim"
       },
       "kindHint": {
         "ip": "Alamat tunggal atau rentang (IPv4 dan IPv6).",
         "domain": "Situs web asal panggilan browser.",
         "country": "Lokasi alamat pemanggil.",
-        "region": "Seluruh benua sekaligus."
+        "region": "Seluruh benua sekaligus.",
+        "network": "VPN, proxy, Tor, dan penyedia hosting"
       },
       "valuesLabel": {
         "ip": "Alamat dan rentang",
         "domain": "Domain",
         "country": "Negara",
-        "region": "Wilayah"
+        "region": "Wilayah",
+        "network": "Jaringan"
       },
       "valuesHelp": {
-        "ip": "Satu per baris, mis. 203.0.113.10 atau 198.51.100.0/24.",
-        "domain": "Satu per baris; *.example.com mencakup semua subdomain.",
+        "ip": "Ketik alamat atau rentang, lalu koma, spasi, atau Enter, mis. 203.0.113.10 atau 198.51.100.0/24. Setiap entri diperiksa.",
+        "domain": "Ketik domain, lalu koma, spasi, atau Enter, mis. example.com atau *.example.com untuk semua subdomainnya. Setiap entri diperiksa.",
         "country": "Pilih satu atau lebih.",
-        "region": "Pilih satu atau lebih."
+        "region": "Pilih satu atau lebih.",
+        "network": "Pemanggil yang alamatnya termasuk salah satunya."
       },
       "region": {
         "AF": "Afrika",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" bukan alamat IP atau rentang.",
         "domain": "\"{value}\" bukan domain.",
         "country": "\"{value}\" bukan negara.",
-        "region": "\"{value}\" bukan wilayah."
+        "region": "\"{value}\" bukan wilayah.",
+        "network": "Pilih jaringan dari daftar"
       },
       "toast": {
         "created": "Aturan dibuat",
@@ -4098,6 +4174,40 @@
         "answer": "Jika melewati batas, pemanggil mendapat 429 dengan Retry-After (detik menunggu); setiap jawaban menyebutkan batas dan sisanya.",
         "saved": "Batas laju disimpan",
         "changed": "Diubah {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Proxy terbuka",
+        "tor": "Tor",
+        "hosting": "Hosting dan cloud"
+      },
+      "networkHint": {
+        "vpn": "Keluaran VPN komersial",
+        "proxy": "Proxy publik dan anonim",
+        "tor": "Node keluar Tor",
+        "hosting": "Server di penyedia hosting dan cloud"
+      },
+      "networkNote": "Formalie mengenalinya dari daftar alamat yang dikenal dan diperbarui setiap hari. Blokir VPN bersama aturan negara jika negaranya harus tepat.",
+      "geo": {
+        "title": "Cara negara ditemukan",
+        "text": "Dari alamat IP pemanggil, dicari di basis data lokasi: tepat untuk negara pada sebagian besar kasus. Orang yang memakai VPN atau proxy muncul di negara server itu, jadi tambahkan aturan Jaringan anonim jika perlu menghentikannya."
+      },
+      "scopeHelp": "Di mana saja, satu layanan, atau satu endpoint.",
+      "steps": {
+        "what": "Apa",
+        "values": "Nilai",
+        "where": "Di mana",
+        "done": "Selesai"
+      },
+      "about": {
+        "title": "Fungsi aturan akses",
+        "text": "Aturan ini menentukan siapa yang boleh memanggil bahkan sebelum token diperiksa. Blokir selalu menang. Begitu ada aturan izinkan yang berlaku, hanya pemanggil yang cocok dengan salah satunya yang masuk."
+      },
+      "done": {
+        "title": "Aturan aktif",
+        "block": "Pemanggil yang cocok dengan {values} ditolak di {where}.",
+        "allow": "Hanya pemanggil yang cocok dengan {values} (atau aturan izinkan lain) yang masuk di {where}.",
+        "next": "Periksa pemanggil dengan Uji pemanggil, lalu coba endpoint di Dokumen & uji dan nyalakan."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Mengirim file",
         "text": "Unggah setiap file lebih dulu sebagai data formulir, dengan nama bidang file dan kunci pertanyaan di field. Jawabannya memberi id file.",
-        "then": "Lalu taruh id di isi JSON pada pertanyaan itu, mis. \"cv\": [\"id\"]. Jenis dan ukuran file yang sama seperti di formulir diizinkan."
+        "then": "Lalu taruh id di isi JSON pada pertanyaan itu, mis. \"cv\": [\"id\"]. Jenis dan ukuran file yang sama seperti di formulir diizinkan.",
+        "step1": "Unggah file",
+        "step2": "Kirim id-nya bersama jawaban"
       },
       "signing": {
         "title": "Panggilan bertanda tangan",
@@ -4240,7 +4352,111 @@
         "testOnly": "Mode uji: jawaban tampak nyata, tetapi tidak ada jawaban yang dibuat, diubah, atau dihapus.",
         "nothingYet": "Kirim panggilan untuk melihat jawabannya",
         "send": "Kirim",
-        "badJson": "Ini bukan JSON yang valid."
+        "badJson": "Ini bukan JSON yang valid.",
+        "recordNeeded": "id catatan (wajib)",
+        "headers": "Header",
+        "noBody": "Metode ini tidak mengirim body. Header-nya ada di tab Header.",
+        "bodyHint": "Terisi dengan nilai jawaban asli formulir. Ubah apa saja lalu kirim lagi.",
+        "testToken": "token uji yang dibuat untuk konsol ini",
+        "recent": "Panggilan terakhir"
+      },
+      "navTitle": "Di halaman ini",
+      "gettingStarted": "Mulai",
+      "heroKicker": "Referensi API",
+      "heroText": "Semua yang dibutuhkan aplikasi untuk mengirim dan membaca respons layanan ini: alamat, cara masuk, dan setiap endpoint beserta contohnya.",
+      "liveCount": "{n} aktif",
+      "bearer": "Token Bearer",
+      "tryFirst": "Coba sekarang",
+      "notLiveNote": "Belum aktif: token uji dapat memanggilnya (Coba memakai satu), panggilan live ditolak sampai diaktifkan.",
+      "oneHint": "Tambahkan id catatan ke alamat untuk membaca satu catatan saja, mis. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "Respons dihapus dari daftar dan API, tetapi tetap ada di jejak audit. Token uji hanya memeriksa panggilan.",
+      "errorShape": "Seperti apa bentuk error",
+      "op": {
+        "GET": "Daftar dan baca",
+        "POST": "Buat",
+        "PUT": "Ubah",
+        "DELETE": "Hapus"
+      }
+    },
+    "journey": {
+      "title": "Siapkan API-mu",
+      "text": "Lima langkah dari formulir menjadi alamat yang bisa dipanggil aplikasi lain.",
+      "progress": "{n} dari {total} selesai",
+      "service": {
+        "title": "Buat layanan",
+        "text": "Folder untuk endpoint yang dipakai satu aplikasi atau mitra. Matikan semuanya sekaligus jika perlu.",
+        "action": "Layanan baru"
+      },
+      "endpoint": {
+        "title": "Tambah endpoint",
+        "text": "Mengubah satu formulir terbit menjadi alamat. Pilih fungsinya: membaca, menambah, mengubah, atau menghapus respons.",
+        "action": "Endpoint baru"
+      },
+      "token": {
+        "title": "Beri token",
+        "text": "Aplikasi membuktikan identitasnya dengan token. Token uji bisa mencoba semuanya tanpa menyentuh data asli; token live melakukan panggilan sungguhan.",
+        "action": "Token baru"
+      },
+      "access": {
+        "title": "Batasi siapa yang bisa memanggil",
+        "text": "Izinkan atau blokir pemanggil berdasarkan alamat IP, situs web, negara, wilayah, atau jaringan anonim.",
+        "action": "Aturan baru"
+      },
+      "live": {
+        "title": "Uji dan aktifkan",
+        "text": "Coba di Dokumen & uji, lalu nyalakan endpoint agar token live bisa memakainya.",
+        "action": "Buka Dokumen & uji"
+      }
+    },
+    "intro": {
+      "title": "Apa itu endpoint",
+      "text": "Endpoint memberi satu formulir terbit alamatnya sendiri, misalnya /job-applications. Aplikasi lain mengirim atau membaca respons di sana, diperiksa persis seperti halaman formulir. Endpoint berada di dalam layanan dan tetap tidak live sampai kamu memberinya token dan menyalakannya.",
+      "hide": "Mengerti"
+    },
+    "gate": {
+      "title": "Buat layanan dulu",
+      "text": "Setiap endpoint berada di dalam layanan: satu per aplikasi atau mitra, agar panggilan mereka terlihat bersama dan bisa dimatikan sekaligus. Kamu belum punya layanan, jadi mulai dari sana; kamu langsung kembali ke sini.",
+      "action": "Layanan baru"
+    },
+    "setup": {
+      "title": "Sebelum live",
+      "isLive": "Live",
+      "notLive": "Tidak live",
+      "openEndpoint": "Buka endpoint",
+      "createdTitle": "/{name} sudah dibuat",
+      "createdText": "Belum live: token uji bisa memanggilnya, panggilan live ditolak sampai kamu menyalakannya. Selesaikan daftar di bawah.",
+      "basics": {
+        "title": "Layanan dan formulir",
+        "ok": "Di {service}, menjawab dengan formulir {form}.",
+        "serviceOff": "Layanannya, {name}, sedang mati, jadi endpoint tidak bisa menjawab. Nyalakan layanan.",
+        "formOff": "Formulirnya belum terbit, jadi endpoint tidak bisa menjawab. Terbitkan formulir."
+      },
+      "token": {
+        "title": "Token yang boleh memanggilnya",
+        "text": "Belum ada token yang boleh memanggilnya. Buat satu khusus untuk endpoint ini: uji untuk mencoba, live untuk panggilan sungguhan.",
+        "ok": "{live} token live dan {test} token uji boleh memanggilnya.",
+        "action": "Token baru untuk endpoint ini"
+      },
+      "access": {
+        "title": "Siapa yang boleh memanggil",
+        "text": "Siapa pun dengan token valid bisa memanggilnya. Tambahkan aturan untuk mengizinkan atau memblokir pemanggil berdasarkan alamat IP, situs web, negara, atau jaringan anonim.",
+        "ok": "{n} aturan akses berlaku. | {n} aturan akses berlaku.",
+        "action": "Aturan baru untuk endpoint ini"
+      },
+      "test": {
+        "title": "Ujilah",
+        "text": "Kirim panggilan dengan token uji: semua pemeriksaan asli berjalan dan tidak ada yang disimpan."
+      },
+      "live": {
+        "title": "Aktifkan",
+        "text": "Nyalakan saat kamu siap. Token live lalu bisa memanggilnya.",
+        "on": "Token live bisa memanggilnya. Matikan untuk menghentikan semua panggilan live sekaligus.",
+        "noLiveToken": "Belum ada token live yang boleh memanggilnya: panggilan live tetap akan ditolak.",
+        "action": "Aktifkan"
+      },
+      "toast": {
+        "live": "Endpoint sudah live",
+        "notLive": "Endpoint tidak live"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Jawab dengan status 2xx apa pun dalam 10 detik; kerjakan pekerjaan sebenarnya setelahnya. Jawaban lain akan dicoba ulang."
       }
     },
-    "onceDesc": "Formalie tidak dapat menampilkannya lagi. Jika hilang, buat yang baru.",
+    "onceDesc": "Salin sekarang. Anda bisa melihatnya lagi nanti di panelnya, setelah mengonfirmasi kata sandi.",
     "keys": {
       "newTitle": "Kunci API baru",
       "editTitle": "Edit kunci API",
@@ -6015,5 +6231,17 @@
         "deleted": "Kunci API dihapus"
       }
     }
+  },
+  "secrets": {
+    "title": "Rahasia",
+    "show": "Tampilkan",
+    "hide": "Sembunyikan ({n} dtk)",
+    "ask": "Konfirmasi kata sandi Anda untuk melihatnya. Ini dicatat di jejak audit.",
+    "password": "Kata sandi Anda",
+    "confirm": "Tampilkan",
+    "wrong": "Kata sandi salah. Sisa {n} percobaan.",
+    "locked": "Terlalu banyak percobaan salah. Coba lagi dalam 15 menit.",
+    "notViewable": "Dibuat sebelum rahasia bisa dilihat lagi, jadi tidak dapat ditampilkan. Rotasi untuk mendapatkan yang bisa Anda lihat nanti.",
+    "shownNote": "Akan tersembunyi lagi sendiri dalam semenit. Simpan hanya di server Anda."
   }
 }

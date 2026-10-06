@@ -80,11 +80,19 @@ function edit(rule: ApiAccessRule | null) {
   editing.value = rule
   editOpen.value = true
 }
-async function saved(rule: ApiAccessRule) {
-  toast.add({ title: editing.value ? t('apiService.access.toast.saved') : t('apiService.access.toast.created'), color: 'success', icon: 'i-lucide-circle-check' })
+async function saved() {
+  if (editing.value) toast.add({ title: t('apiService.access.toast.saved'), color: 'success', icon: 'i-lucide-circle-check' })
   await refreshAll()
-  if (!editing.value) openRow(rule)
 }
+// `?new=1` (setup guide, an endpoint's checklist; `&endpoint=` presets where it applies)
+const presetEndpoint = ref<string | null>(null)
+watch(() => route.query.new, value => {
+  if (!value) return
+  presetEndpoint.value = typeof route.query.endpoint === 'string' ? route.query.endpoint : null
+  edit(null)
+  void router.replace({ query: { ...route.query, new: undefined, endpoint: undefined } })
+}, { immediate: true })
+watch(editOpen, value => !value && (presetEndpoint.value = null))
 const busy = ref<string | null>(null)
 async function act(id: string, work: () => Promise<unknown>, success: string) {
   if (busy.value) return false
@@ -196,7 +204,7 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
     </template>
 
     <ApiAccessDetail :id="openId" ref="panel" v-model:open="panelOpen" :ids="ids.length ? ids : openId ? [openId] : []" :busy="!!busy" @go="go" @edit="edit" @toggle="toggle" @remove="remove" />
-    <ApiAccessEditModal v-model:open="editOpen" :rule="editing" @saved="saved" />
+    <ApiAccessEditModal v-model:open="editOpen" :rule="editing" :preset-endpoint="presetEndpoint" @saved="saved" @test="testOpen = true" />
     <ApiAccessTestModal v-model:open="testOpen" @rule="fromTest" />
   </AppPanel>
 </template>

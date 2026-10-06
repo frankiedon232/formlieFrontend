@@ -20,7 +20,8 @@
     "confirm": "Bestätigen",
     "copy": "Kopieren",
     "copied": "Kopiert",
-    "next": "Weiter"
+    "next": "Weiter",
+    "removeItem": "{name} entfernen"
   },
   "placeholder": {
     "title": "Demnächst verfügbar",
@@ -179,7 +180,10 @@
         "saveTitle": "Speichert automatisch",
         "saveText": "Jede Änderung wird als Entwurf gespeichert, bis Sie veröffentlichen."
       },
-      "folderHint": "Ordner halten Ihre Formulare in der Liste und der Seitenleiste geordnet (zum Beispiel nach Team oder Projekt). Sie sind keine Vorlagenkategorien."
+      "folderHint": "Ordner halten Ihre Formulare in der Liste und der Seitenleiste geordnet (zum Beispiel nach Team oder Projekt). Sie sind keine Vorlagenkategorien.",
+      "templateSubtitle": "Baue sie wie ein Formular und speichere sie dann als Vorlage",
+      "templateTitle": "Eine Vorlage beginnt als Formular",
+      "templateHint": "Gib ihr einen Namen und lege sie an. Der Builder öffnet sich in den Formulareinstellungen mit Als Vorlage speichern, damit du die Vorlage für neue Formulare wiederverwenden kannst."
     },
     "detail": {
       "created": "Erstellt",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Fehlerhaft",
     "connectionsDisabled": "Deaktiviert",
     "connectionsNew": "Verbindung hinzufügen",
-    "backToMenu": "Zurück zum Menü"
+    "backToMenu": "Zurück zum Menü",
+    "newTemplate": "Neue Vorlage",
+    "createForms": "Formulare",
+    "createOperations": "Betrieb",
+    "addDatabase": "Datenbank hinzufügen",
+    "newApiService": "Neuer API-Dienst"
   },
   "navbar": {
     "breadcrumb": "Brotkrümelnavigation",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "Die Signatur der Anfrage fehlt, ist zu alt oder falsch.",
     "FRM-API-1013": "Es gibt keinen Datensatz mit dieser ID.",
     "FRM-API-1014": "Einige Felder können nicht an diesen Endpoint gesendet werden.",
-    "FRM-API-1015": "Die Zugriffsregeln lassen diesen Aufrufer nicht zu."
+    "FRM-API-1015": "Die Zugriffsregeln lassen diesen Aufrufer nicht zu.",
+    "FRM-AUTH-1013": "Das Passwort ist nicht richtig.",
+    "FRM-API-1016": "Dieses Geheimnis kann nicht angezeigt werden: Es wurde erstellt, bevor Geheimnisse wieder sichtbar sein konnten. Rotieren Sie es für ein neues.",
+    "FRM-API-1017": "Senden Sie den Body als JSON mit Content-Type: application/json.",
+    "FRM-API-1018": "Der Body ist zu groß (maximal 1 MB; Dateien über den Upload-Schritt senden)."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook gelöscht",
       "integrations_webhook_resent": "Webhook-Zustellung erneut gesendet",
       "integrations_api_key_updated": "API-Schlüssel geändert",
-      "integrations_api_key_deleted": "API-Schlüssel gelöscht"
+      "integrations_api_key_deleted": "API-Schlüssel gelöscht",
+      "api_token_revealed": "API-Token angesehen",
+      "integrations_webhook_secret_revealed": "Webhook-Geheimnis angesehen",
+      "integrations_api_key_revealed": "API-Schlüssel angesehen"
     },
     "detail": {
       "who": "Wer",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "Wofür diese Endpoints gedacht sind",
       "active": "Nimmt Aufrufe an",
       "activeHint": "Ausgeschaltet antworten alle Endpoints darin mit einem klaren Fehler.",
-      "create": "Service erstellen"
+      "create": "Service erstellen",
+      "nameHelp": "Benenne ihn nach der App oder dem Partner, die ihn aufrufen, damit du weißt, wessen Aufrufe das sind.",
+      "steps": {
+        "about": "Info",
+        "details": "Details",
+        "next": "Nächster Schritt",
+        "continue": "Weiter",
+        "back": "Zurück"
+      },
+      "about": {
+        "app": "Eine App",
+        "service": "Dienst",
+        "endpoint1": "anmeldungen",
+        "endpoint2": "buchungen",
+        "endpoint3": "feedback",
+        "text": "Ein Dienst fasst die Endpunkte zusammen, die eine App oder ein Partner nutzt. Die App ruft die Endpunkte auf; der Dienst hält sie zusammen.",
+        "group": "Halte die Endpunkte jeder App oder jedes Partners an einem Ort",
+        "switch": "Schalte alle Endpunkte auf einmal ab, zum Beispiel bei Wartungsarbeiten",
+        "watch": "Sieh Aufrufe, Fehler und Antwortzeiten gemeinsam"
+      },
+      "done": {
+        "title": "{name} ist bereit",
+        "text": "Der Dienst ist erstellt. Für sich allein tut er noch nichts: Er braucht mindestens einen Endpunkt.",
+        "nextTitle": "Als Nächstes: Endpunkt hinzufügen",
+        "nextText": "Ein Endpunkt macht aus einem veröffentlichten Formular eine Adresse in diesem Dienst. Du wählst das Formular, was der Endpunkt darf und welche Antworten er annimmt und liefert.",
+        "later": "Später",
+        "endpoint": "Endpunkt erstellen"
+      }
     },
     "fields": {
       "title": "Fragen",
@@ -3799,14 +3842,16 @@
         "basics": "Wo er liegt und wie er heißt.",
         "methods": "Wählen Sie die Methoden, auf die er antwortet. Sie können sie später ändern.",
         "fields": "Was POST und PUT akzeptieren und was GET zurückgibt oder wonach gefiltert werden kann.",
-        "review": "Sehen Sie alles durch. Er antwortet, sobald Aufrufer ein Token haben."
+        "review": "Prüfen Sie alles. Es wird nicht live erstellt, echte Aufrufer sind also noch nicht betroffen."
       },
       "method": {
         "GET": "Antworten lesen: eine Liste mit Seiten und Filtern oder eine einzelne per ID.",
         "POST": "Eine neue Antwort senden, geprüft wie auf der Formularseite.",
         "PUT": "Eine Antwort per ID ändern (nur die akzeptierten Fragen).",
         "DELETE": "Eine Antwort per ID entfernen; im Audit-Protokoll festgehalten."
-      }
+      },
+      "afterTitle": "Wie es weitergeht",
+      "afterText": "Der Endpunkt wird nicht live erstellt. Test-Tokens können ihn schon aufrufen, du kannst ihn also gefahrlos ausprobieren. Gib ihm dann ein Live-Token, füge bei Bedarf Zugriffsregeln hinzu und schalte ihn ein."
     },
     "tokens": {
       "title": "Tokens",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "{name} löschen?",
       "deleteDesc": "Es verschwindet aus dieser Liste. Sein Verlauf bleibt im Audit-Protokoll erhalten.",
       "once": {
-        "title": "Jetzt kopieren: Es wird nur einmal angezeigt",
-        "desc": "Formalie speichert nur einen Fingerabdruck davon. Geht es verloren, rotieren Sie das Token, um ein neues zu erhalten."
+        "title": "Jetzt kopieren",
+        "desc": "Es bleibt ab jetzt maskiert. Sie können es später im Bereich des Tokens wieder ansehen, nach Bestätigung Ihres Passworts."
       },
       "secret": {
         "token": "Token",
         "clientId": "Client-ID",
         "clientSecret": "Client-Secret",
-        "signing": "Signing Secret"
+        "signing": "Signing Secret",
+        "title": "Geheimnis"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} gespeichert",
         "revoked": "{name} widerrufen",
         "deleted": "{name} gelöscht"
+      },
+      "steps": {
+        "kind": "Art",
+        "access": "Was es aufrufen darf",
+        "safety": "Sicherheit",
+        "done": "Token"
+      },
+      "about": {
+        "title": "Was ein Token ist",
+        "text": "Apps senden mit jedem Aufruf ein Token, um sich auszuweisen. Gib jeder App ein eigenes, und nur das, was sie braucht, damit du eine stoppen kannst, ohne die anderen zu berühren."
+      },
+      "nameHelp": "Benenne es nach der App, die es nutzt.",
+      "presetName": "Token für /{name}",
+      "scopeSummary": {
+        "all": "Es darf jeden Endpunkt mit jeder Methode aufrufen.",
+        "services": "Es darf die Endpunkte von {n} Dienst aufrufen. | Es darf die Endpunkte von {n} Diensten aufrufen.",
+        "endpoints": "Es darf {n} Endpunkt aufrufen. | Es darf {n} Endpunkte aufrufen."
+      },
+      "expiryHelp": "Ein ablaufendes Token ist sicherer: Du bekommst 14 Tage vorher eine Erinnerung.",
+      "viewLater": "Du kannst es später im Token-Panel wieder ansehen, nachdem du dein Passwort bestätigt hast.",
+      "next": {
+        "title": "Wie es weitergeht",
+        "test": "Nutze dieses Test-Token, um den Endpunkt unter Doku & Tests auszuprobieren. Nichts wird gespeichert. Erstelle ein Live-Token, wenn du für echte Aufrufe bereit bist.",
+        "live": "Beschränke bei Bedarf mit Zugriffsregeln, wer es nutzen darf, teste es und schalte dann den Endpunkt ein.",
+        "rule": "Zugriffsregel hinzufügen"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "IP-Adresse",
         "domain": "Website-Domain",
         "country": "Land",
-        "region": "Region"
+        "region": "Region",
+        "network": "Anonyme Netzwerke"
       },
       "kindHint": {
         "ip": "Einzelne Adressen oder Bereiche (IPv4 und IPv6).",
         "domain": "Die Website, von der ein Browser-Aufruf kommt.",
         "country": "Wo sich die Adresse des Aufrufers befindet.",
-        "region": "Ganze Kontinente auf einmal."
+        "region": "Ganze Kontinente auf einmal.",
+        "network": "VPNs, Proxys, Tor und Hosting-Anbieter"
       },
       "valuesLabel": {
         "ip": "Adressen und Bereiche",
         "domain": "Domains",
         "country": "Länder",
-        "region": "Regionen"
+        "region": "Regionen",
+        "network": "Netzwerke"
       },
       "valuesHelp": {
-        "ip": "Eine pro Zeile, z. B. 203.0.113.10 oder 198.51.100.0/24.",
-        "domain": "Eine pro Zeile; *.example.com umfasst jede Subdomain.",
+        "ip": "Adresse oder Bereich eingeben, dann Komma, Leerzeichen oder Enter, z. B. 203.0.113.10 oder 198.51.100.0/24. Jeder Eintrag wird geprüft.",
+        "domain": "Domain eingeben, dann Komma, Leerzeichen oder Enter, z. B. example.com oder *.example.com für alle Subdomains. Jeder Eintrag wird geprüft.",
         "country": "Eine oder mehrere wählen.",
-        "region": "Eine oder mehrere wählen."
+        "region": "Eine oder mehrere wählen.",
+        "network": "Aufrufer, deren Adresse zu einem davon gehört."
       },
       "region": {
         "AF": "Afrika",
@@ -4057,7 +4132,8 @@
         "ip": "\"{value}\" ist keine IP-Adresse und kein Bereich.",
         "domain": "\"{value}\" ist keine Domain.",
         "country": "\"{value}\" ist kein Land.",
-        "region": "\"{value}\" ist keine Region."
+        "region": "\"{value}\" ist keine Region.",
+        "network": "Wähle ein Netzwerk aus der Liste"
       },
       "toast": {
         "created": "Regel erstellt",
@@ -4098,6 +4174,40 @@
         "answer": "Über dem Limit erhalten Aufrufer 429 mit Retry-After (Sekunden Wartezeit); jede Antwort nennt das Limit und den Rest.",
         "saved": "Ratenlimits gespeichert",
         "changed": "Geändert {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Offener Proxy",
+        "tor": "Tor",
+        "hosting": "Hosting und Cloud"
+      },
+      "networkHint": {
+        "vpn": "Kommerzielle VPN-Ausgänge",
+        "proxy": "Öffentliche und anonyme Proxys",
+        "tor": "Tor-Ausgangsknoten",
+        "hosting": "Server bei Hosting- und Cloud-Anbietern"
+      },
+      "networkNote": "Formalie erkennt diese anhand von Listen bekannter Adressen, die täglich aktualisiert werden. Blockiere VPNs zusammen mit einer Länderregel, wenn das Land stimmen muss.",
+      "geo": {
+        "title": "Wie das Land ermittelt wird",
+        "text": "Anhand der IP-Adresse des Aufrufers, nachgeschlagen in einer Standortdatenbank: In der großen Mehrheit der Fälle stimmt das Land. Wer ein VPN oder einen Proxy nutzt, erscheint im Land des Servers. Füge daher eine Regel für Anonyme Netzwerke hinzu, wenn du das verhindern willst."
+      },
+      "scopeHelp": "Überall, ein Dienst oder ein Endpunkt.",
+      "steps": {
+        "what": "Was",
+        "values": "Werte",
+        "where": "Wo",
+        "done": "Fertig"
+      },
+      "about": {
+        "title": "Was Zugriffsregeln tun",
+        "text": "Sie entscheiden, wer aufrufen darf, noch bevor das Token geprüft wird. Blockieren gewinnt immer. Sobald eine Erlauben-Regel gilt, kommen nur Aufrufer hinein, die zu einer passen."
+      },
+      "done": {
+        "title": "Die Regel ist aktiv",
+        "block": "Aufrufer, die zu {values} passen, werden bei {where} abgelehnt.",
+        "allow": "Nur Aufrufer, die zu {values} (oder einer anderen Erlauben-Regel) passen, kommen bei {where} hinein.",
+        "next": "Prüfe einen Aufrufer mit Aufrufer testen, probiere dann den Endpunkt unter Doku & Tests aus und schalte ihn ein."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Dateien senden",
         "text": "Lade jede Datei zuerst als Formulardaten hoch, mit dem Feldnamen file und dem Fragenschlüssel in field. Die Antwort enthält die ID der Datei.",
-        "then": "Trage die IDs dann im JSON-Body unter dieser Frage ein, z. B. \"cv\": [\"id\"]. Es gelten dieselben Dateitypen und Größen wie im Formular."
+        "then": "Trage die IDs dann im JSON-Body unter dieser Frage ein, z. B. \"cv\": [\"id\"]. Es gelten dieselben Dateitypen und Größen wie im Formular.",
+        "step1": "Datei hochladen",
+        "step2": "Ihre ID mit den Antworten senden"
       },
       "signing": {
         "title": "Signierte Aufrufe",
@@ -4240,7 +4352,111 @@
         "testOnly": "Testmodus: Die Antworten wirken echt, aber es wird keine Antwort erstellt, geändert oder gelöscht.",
         "nothingYet": "Sende einen Aufruf, um die Antwort zu sehen",
         "send": "Senden",
-        "badJson": "Das ist kein gültiges JSON."
+        "badJson": "Das ist kein gültiges JSON.",
+        "recordNeeded": "Datensatz-ID (erforderlich)",
+        "headers": "Header",
+        "noBody": "Diese Methode sendet keinen Body. Ihre Header stehen im Tab Header.",
+        "bodyHint": "Mit den echten Antwortwerten des Formulars gefüllt. Ändere beliebig und sende erneut.",
+        "testToken": "ein Test-Token für diese Konsole",
+        "recent": "Letzte Aufrufe"
+      },
+      "navTitle": "Auf dieser Seite",
+      "gettingStarted": "Erste Schritte",
+      "heroKicker": "API-Referenz",
+      "heroText": "Alles, was eine App braucht, um die Antworten dieses Dienstes zu senden und zu lesen: die Adresse, die Anmeldung und jeder Endpunkt mit Beispielen.",
+      "liveCount": "{n} live",
+      "bearer": "Bearer-Token",
+      "tryFirst": "Jetzt ausprobieren",
+      "notLiveNote": "Noch nicht live: Test-Tokens können ihn aufrufen (Ausprobieren nutzt eines), Live-Aufrufe werden abgelehnt, bis er eingeschaltet ist.",
+      "oneHint": "Hänge eine Datensatz-ID an die Adresse an, um nur diesen einen zu lesen, z. B. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "Die Antwort wird aus Listen und der API entfernt und bleibt im Audit-Protokoll erhalten. Ein Test-Token prüft den Aufruf nur.",
+      "errorShape": "So sieht ein Fehler aus",
+      "op": {
+        "GET": "Auflisten und lesen",
+        "POST": "Erstellen",
+        "PUT": "Ändern",
+        "DELETE": "Löschen"
+      }
+    },
+    "journey": {
+      "title": "Richte deine API ein",
+      "text": "Fünf Schritte vom Formular zu einer Adresse, die andere Apps aufrufen können.",
+      "progress": "{n} von {total} erledigt",
+      "service": {
+        "title": "Dienst erstellen",
+        "text": "Ein Ordner für die Endpunkte, die eine App oder ein Partner nutzt. Bei Bedarf schaltest du alle auf einmal ab.",
+        "action": "Neuer Dienst"
+      },
+      "endpoint": {
+        "title": "Endpunkt hinzufügen",
+        "text": "Macht aus einem veröffentlichten Formular eine Adresse. Lege fest, was sie tut: Antworten lesen, hinzufügen, ändern oder löschen.",
+        "action": "Neuer Endpunkt"
+      },
+      "token": {
+        "title": "Token vergeben",
+        "text": "Apps weisen sich mit einem Token aus. Ein Test-Token kann alles ausprobieren, ohne echte Daten zu berühren; ein Live-Token führt echte Aufrufe aus.",
+        "action": "Neues Token"
+      },
+      "access": {
+        "title": "Aufrufer einschränken",
+        "text": "Erlaube oder blockiere Aufrufer nach IP-Adresse, Website, Land, Region oder anonymen Netzwerken.",
+        "action": "Neue Regel"
+      },
+      "live": {
+        "title": "Testen und live gehen",
+        "text": "Probiere es unter Doku & Tests aus und schalte dann den Endpunkt ein, damit Live-Tokens ihn nutzen können.",
+        "action": "Doku & Tests öffnen"
+      }
+    },
+    "intro": {
+      "title": "Was ein Endpunkt ist",
+      "text": "Ein Endpunkt gibt einem veröffentlichten Formular eine eigene Adresse, zum Beispiel /job-applications. Andere Apps senden oder lesen dort Antworten, genau wie auf der Formularseite geprüft. Er gehört zu einem Dienst und bleibt nicht live, bis du ihm ein Token gibst und ihn einschaltest.",
+      "hide": "Verstanden"
+    },
+    "gate": {
+      "title": "Erstelle zuerst einen Dienst",
+      "text": "Jeder Endpunkt gehört zu einem Dienst: einer pro App oder Partner, damit du ihre Aufrufe gemeinsam siehst und sie auf einmal abschalten kannst. Du hast noch keinen Dienst, beginne also dort; du kommst direkt hierher zurück.",
+      "action": "Neuer Dienst"
+    },
+    "setup": {
+      "title": "Bevor es live geht",
+      "isLive": "Live",
+      "notLive": "Nicht live",
+      "openEndpoint": "Endpunkt öffnen",
+      "createdTitle": "/{name} ist erstellt",
+      "createdText": "Er ist noch nicht live: Test-Tokens können ihn aufrufen, Live-Aufrufe werden abgelehnt, bis du ihn einschaltest. Arbeite die Liste unten ab.",
+      "basics": {
+        "title": "Dienst und Formular",
+        "ok": "In {service}, antwortet mit dem Formular {form}.",
+        "serviceOff": "Sein Dienst {name} ist ausgeschaltet, der Endpunkt kann daher nicht antworten. Schalte den Dienst ein.",
+        "formOff": "Sein Formular ist nicht veröffentlicht, der Endpunkt kann daher nicht antworten. Veröffentliche das Formular."
+      },
+      "token": {
+        "title": "Ein Token, das ihn aufrufen darf",
+        "text": "Noch kein Token darf ihn aufrufen. Erstelle eines nur für diesen Endpunkt: Test zum Ausprobieren, Live für echte Aufrufe.",
+        "ok": "{live} Live- und {test} Test-Tokens dürfen ihn aufrufen.",
+        "action": "Neues Token für diesen Endpunkt"
+      },
+      "access": {
+        "title": "Wer aufrufen darf",
+        "text": "Jeder mit einem gültigen Token kann ihn aufrufen. Füge Regeln hinzu, um Aufrufer nach IP-Adresse, Website, Land oder anonymen Netzwerken zu erlauben oder zu blockieren.",
+        "ok": "{n} Zugriffsregel gilt. | {n} Zugriffsregeln gelten.",
+        "action": "Neue Regel für diesen Endpunkt"
+      },
+      "test": {
+        "title": "Teste ihn",
+        "text": "Sende einen Aufruf mit einem Test-Token: Alle echten Prüfungen laufen und nichts wird gespeichert."
+      },
+      "live": {
+        "title": "Live gehen",
+        "text": "Schalte ihn ein, wenn du bereit bist. Live-Tokens können ihn dann aufrufen.",
+        "on": "Live-Tokens können ihn aufrufen. Schalte ihn aus, um alle Live-Aufrufe auf einmal zu stoppen.",
+        "noLiveToken": "Noch kein Live-Token darf ihn aufrufen: Live-Aufrufe würden weiterhin abgelehnt.",
+        "action": "Live gehen"
+      },
+      "toast": {
+        "live": "Der Endpunkt ist live",
+        "notLive": "Der Endpunkt ist nicht live"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Antworten Sie innerhalb von 10 Sekunden mit einem beliebigen 2xx-Status und erledigen Sie die eigentliche Arbeit danach. Alles andere wird wiederholt."
       }
     },
-    "onceDesc": "Formalie kann ihn nicht erneut anzeigen. Wenn er verloren geht, erstelle einen neuen.",
+    "onceDesc": "Kopieren Sie es jetzt. Sie können es später in seinem Bereich wieder ansehen, nach Bestätigung Ihres Passworts.",
     "keys": {
       "newTitle": "Neuer API-Schlüssel",
       "editTitle": "API-Schlüssel bearbeiten",
@@ -6015,5 +6231,17 @@
         "deleted": "API-Schlüssel gelöscht"
       }
     }
+  },
+  "secrets": {
+    "title": "Geheimnis",
+    "show": "Anzeigen",
+    "hide": "Ausblenden ({n} s)",
+    "ask": "Bestätigen Sie Ihr Passwort, um es zu sehen. Das wird im Audit-Protokoll vermerkt.",
+    "password": "Ihr Passwort",
+    "confirm": "Anzeigen",
+    "wrong": "Das Passwort ist nicht richtig. Noch {n} Versuche.",
+    "locked": "Zu viele falsche Versuche. Versuchen Sie es in 15 Minuten erneut.",
+    "notViewable": "Erstellt, bevor Geheimnisse wieder sichtbar sein konnten, daher kann es nicht angezeigt werden. Rotieren Sie es, um eines zu erhalten, das Sie später ansehen können.",
+    "shownNote": "Es wird nach einer Minute von selbst wieder ausgeblendet. Bewahren Sie es nur auf Ihrem Server auf."
   }
 }

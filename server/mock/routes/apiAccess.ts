@@ -8,7 +8,7 @@
  */
 import { z } from 'zod'
 import type { ApiAccessInsights, ApiAccessTestResult, ApiRateLimits } from '#shared/types/apiService'
-import { API_RULE_KINDS } from '#shared/types/apiService'
+import { API_NETWORKS, API_RULE_KINDS } from '#shared/types/apiService'
 import { checkRuleValue, decideAccess, normaliseRuleValue, regionOf, rulesFor } from '#shared/utils/apiService/access'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
@@ -136,7 +136,7 @@ export const deleteAccessRule = defineMockRoute(({ event }) => {
 
 export const testAccess = defineMockRoute(({ event, body }) => {
   const { tenant } = requireAdmin(event)
-  const values = parseBody(z.object({ endpoint_id: z.string(), ip: z.string().trim().max(64), origin: z.string().trim().max(255).nullish(), country: z.string().trim().max(2).nullish() }), body)
+  const values = parseBody(z.object({ endpoint_id: z.string(), ip: z.string().trim().max(64), origin: z.string().trim().max(255).nullish(), country: z.string().trim().max(2).nullish(), networks: z.array(z.enum(API_NETWORKS)).max(4).optional() }), body)
   if (checkRuleValue('ip', values.ip) || values.ip.includes('/')) throw new MockError('FRM-GEN-1002', [{ field: 'ip', message: 'ip' }])
   const api = apiOf(tenant)
   const endpoint = api.endpoints.find(item => item.id === values.endpoint_id)
@@ -151,7 +151,7 @@ export const testAccess = defineMockRoute(({ event, body }) => {
   }
   const country = values.country ? values.country.toUpperCase() : null
   const applies = rulesFor(api.rules, endpoint)
-  const decision = decideAccess(applies, { ip: values.ip, domain, country })
+  const decision = decideAccess(applies, { ip: values.ip, domain, country, networks: values.networks ?? [] })
   const rule = decision.rule ? toRule(tenant, applies.find(item => item.id === decision.rule!.id)!) : null
   const result: ApiAccessTestResult = {
     allowed: decision.allowed,

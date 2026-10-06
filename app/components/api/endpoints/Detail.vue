@@ -103,11 +103,11 @@ const menu = computed<DropdownMenuItem[][]>(() => {
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <USwitch :model-value="endpoint.status === 'active'" :label="t('apiService.answering')" :disabled="busy" @update:model-value="value => emit('status', endpoint!, !!value)" />
+          <USwitch :model-value="endpoint.status === 'active'" :label="endpoint.status === 'active' ? t('apiService.setup.isLive') : t('apiService.setup.notLive')" :disabled="busy" @update:model-value="value => emit('status', endpoint!, !!value)" />
           <span class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
           <UButton :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" size="sm" :to="`/api-service/endpoints/${endpoint.id}/edit`" />
           <UButton :label="t('apiService.actions.copyUrl')" icon="i-lucide-link" color="neutral" variant="outline" size="sm" @click="emit('copy', endpoint)" />
-          <UButton :label="t('apiService.docs.test')" icon="i-lucide-play" color="neutral" variant="outline" size="sm" :disabled="endpoint.status !== 'active'" @click="consoleOpen = true" />
+          <UButton :label="t('apiService.docs.test')" icon="i-lucide-play" color="neutral" variant="outline" size="sm" :disabled="!endpoint.setup.service_active || !endpoint.setup.form_published" @click="consoleOpen = true" />
         </div>
       </div>
     </template>
@@ -117,6 +117,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
       <div v-else-if="!endpoint" class="flex flex-col gap-4"><USkeleton class="h-9 w-full" /><div class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div></div>
       <template v-else>
         <AppCopyField :value="endpoint.url" :label="t('apiService.address')" monospace />
+        <ApiEndpointsSetup v-if="!endpoint.setup.live || !endpoint.setup.tokens_live" :endpoint="endpoint" :busy="busy" @test="consoleOpen = true" @live="on => emit('status', endpoint!, on)" />
         <div v-if="endpoint.headers.length" class="flex flex-col gap-1.5">
           <span class="text-xs font-medium text-muted">{{ t('apiService.headers.requiredTitle') }}</span>
           <div class="flex flex-wrap gap-1.5">

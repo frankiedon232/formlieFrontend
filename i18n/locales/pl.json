@@ -20,7 +20,8 @@
     "confirm": "Potwierdź",
     "copy": "Kopiuj",
     "copied": "Skopiowano",
-    "next": "Dalej"
+    "next": "Dalej",
+    "removeItem": "Usuń {name}"
   },
   "placeholder": {
     "title": "Wkrótce",
@@ -179,7 +180,10 @@
         "saveTitle": "Zapisuje na bieżąco",
         "saveText": "Każda zmiana jest zapisywana jako wersja robocza do publikacji."
       },
-      "folderHint": "Foldery porządkują formularze na liście i w pasku bocznym (na przykład według zespołu lub projektu). Nie są to kategorie szablonów."
+      "folderHint": "Foldery porządkują formularze na liście i w pasku bocznym (na przykład według zespołu lub projektu). Nie są to kategorie szablonów.",
+      "templateSubtitle": "Zbuduj go jak formularz, a potem zapisz jako szablon",
+      "templateTitle": "Szablon zaczyna się jako formularz",
+      "templateHint": "Nadaj mu nazwę i utwórz. Kreator otwiera się z gotową opcją Zapisz jako szablon w ustawieniach formularza, więc szablon możesz wykorzystać przy nowych formularzach."
     },
     "detail": {
       "created": "Utworzono",
@@ -411,7 +415,12 @@
     "connectionsFailing": "Z błędami",
     "connectionsDisabled": "Wyłączone",
     "connectionsNew": "Dodaj połączenie",
-    "backToMenu": "Wróć do menu"
+    "backToMenu": "Wróć do menu",
+    "newTemplate": "Nowy szablon",
+    "createForms": "Formularze",
+    "createOperations": "Operacje",
+    "addDatabase": "Dodaj bazę danych",
+    "newApiService": "Nowa usługa API"
   },
   "navbar": {
     "breadcrumb": "Ścieżka nawigacji",
@@ -571,7 +580,11 @@
     "FRM-API-1012": "Brakuje podpisu żądania, jest za stary lub nieprawidłowy.",
     "FRM-API-1013": "Nie ma rekordu o tym id.",
     "FRM-API-1014": "Niektórych pól nie można wysłać do tego endpointu.",
-    "FRM-API-1015": "Reguły dostępu nie zezwalają temu wywołującemu."
+    "FRM-API-1015": "Reguły dostępu nie zezwalają temu wywołującemu.",
+    "FRM-AUTH-1013": "To hasło jest nieprawidłowe.",
+    "FRM-API-1016": "Tego sekretu nie można pokazać: został utworzony, zanim sekrety można było ponownie wyświetlać. Użyj opcji Rotuj, aby uzyskać nowy.",
+    "FRM-API-1017": "Wyślij treść jako JSON z nagłówkiem Content-Type: application/json.",
+    "FRM-API-1018": "Treść jest zbyt duża (maksymalnie 1 MB; pliki wysyłaj w kroku przesyłania)."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -1015,7 +1028,10 @@
       "integrations_webhook_deleted": "Webhook usunięty",
       "integrations_webhook_resent": "Dostawa webhooka wysłana ponownie",
       "integrations_api_key_updated": "Klucz API zmieniony",
-      "integrations_api_key_deleted": "Klucz API usunięty"
+      "integrations_api_key_deleted": "Klucz API usunięty",
+      "api_token_revealed": "Wyświetlono token API",
+      "integrations_webhook_secret_revealed": "Wyświetlono sekret webhooka",
+      "integrations_api_key_revealed": "Wyświetlono klucz API"
     },
     "detail": {
       "who": "Kto",
@@ -3714,7 +3730,34 @@
       "descriptionPlaceholder": "Do czego służą te endpointy",
       "active": "Odpowiada na wywołania",
       "activeHint": "Gdy usługa jest wyłączona, każdy jej endpoint odpowiada czytelnym błędem.",
-      "create": "Utwórz usługę"
+      "create": "Utwórz usługę",
+      "nameHelp": "Nazwij ją po aplikacji lub partnerze, który będzie z niej korzystać, abyś wiedział, czyje to wywołania.",
+      "steps": {
+        "about": "Informacje",
+        "details": "Szczegóły",
+        "next": "Następny krok",
+        "continue": "Dalej",
+        "back": "Wstecz"
+      },
+      "about": {
+        "app": "Aplikacja",
+        "service": "Usługa",
+        "endpoint1": "rejestracje",
+        "endpoint2": "rezerwacje",
+        "endpoint3": "opinie",
+        "text": "Usługa grupuje endpointy używane przez jedną aplikację lub partnera. Aplikacja wywołuje endpointy; usługa trzyma je razem.",
+        "group": "Trzymaj endpointy każdej aplikacji lub partnera w jednym miejscu",
+        "switch": "Wyłącz wszystkie jej endpointy naraz, na przykład podczas prac serwisowych",
+        "watch": "Zobacz ich wywołania, błędy i czasy odpowiedzi razem"
+      },
+      "done": {
+        "title": "{name} jest gotowa",
+        "text": "Usługa została utworzona. Sama jeszcze nic nie robi: potrzebuje co najmniej jednego endpointu.",
+        "nextTitle": "Dalej: dodaj endpoint",
+        "nextText": "Endpoint zamienia jeden opublikowany formularz w adres w tej usłudze. Wybierasz formularz, co endpoint może robić oraz jakie odpowiedzi przyjmuje i zwraca.",
+        "later": "Później",
+        "endpoint": "Utwórz endpoint"
+      }
     },
     "fields": {
       "title": "Pytania",
@@ -3799,14 +3842,16 @@
         "basics": "Gdzie się znajduje i jak się nazywa.",
         "methods": "Wybierz metody, na które odpowiada. Możesz je później zmienić.",
         "fields": "Co przyjmują POST i PUT oraz co zwraca GET lub według czego można filtrować.",
-        "review": "Przejrzyj. Zacznie odpowiadać, gdy tylko wywołujący otrzymają token."
+        "review": "Przejrzyj całość. Powstaje jako nieaktywny, więc prawdziwi wywołujący nie są jeszcze dotknięci."
       },
       "method": {
         "GET": "Odczyt odpowiedzi: lista ze stronicowaniem i filtrami albo jedna według id.",
         "POST": "Wysłanie nowej odpowiedzi, sprawdzanej jak na stronie formularza.",
         "PUT": "Zmiana odpowiedzi według id (tylko przyjmowane pytania).",
         "DELETE": "Usunięcie odpowiedzi według id; zapisane w dzienniku audytu."
-      }
+      },
+      "afterTitle": "Co dalej",
+      "afterText": "Endpoint powstaje jako nieaktywny. Tokeny testowe mogą go już wywoływać, więc możesz go bezpiecznie wypróbować. Potem nadaj mu token live, w razie potrzeby dodaj reguły dostępu i włącz go."
     },
     "tokens": {
       "title": "Tokeny",
@@ -3846,14 +3891,15 @@
       "deleteTitle": "Usunąć {name}?",
       "deleteDesc": "Zniknie z tej listy. Jego historia zostaje w dzienniku audytu.",
       "once": {
-        "title": "Skopiuj go teraz: jest pokazywany tylko raz",
-        "desc": "Formalie przechowuje tylko jego odcisk. Jeśli go zgubisz, zrotuj token, aby otrzymać nowy."
+        "title": "Skopiuj go teraz",
+        "desc": "Od teraz pozostaje zamaskowany. Później możesz zobaczyć go ponownie w panelu tokenu, po potwierdzeniu hasła."
       },
       "secret": {
         "token": "Token",
         "clientId": "ID klienta",
         "clientSecret": "Sekret klienta",
-        "signing": "Sekret podpisu"
+        "signing": "Sekret podpisu",
+        "title": "Sekret"
       },
       "mode": {
         "live": "Live",
@@ -3900,6 +3946,31 @@
         "saved": "{name} zapisany",
         "revoked": "{name} unieważniony",
         "deleted": "{name} usunięty"
+      },
+      "steps": {
+        "kind": "Rodzaj",
+        "access": "Co może wywoływać",
+        "safety": "Bezpieczeństwo",
+        "done": "Token"
+      },
+      "about": {
+        "title": "Czym jest token",
+        "text": "Aplikacje wysyłają token z każdym wywołaniem, aby potwierdzić tożsamość. Daj każdej aplikacji własny i tylko to, czego potrzebuje, aby móc zatrzymać jedną bez dotykania pozostałych."
+      },
+      "nameHelp": "Nazwij go po aplikacji, która będzie z niego korzystać.",
+      "presetName": "Token dla /{name}",
+      "scopeSummary": {
+        "all": "Może wywoływać każdy endpoint, każdą metodą.",
+        "services": "Może wywoływać endpointy {n} usługi. | Może wywoływać endpointy usług: {n}.",
+        "endpoints": "Może wywoływać {n} endpoint. | Może wywoływać endpointy: {n}."
+      },
+      "expiryHelp": "Token z datą ważności jest bezpieczniejszy: przypomnienie dostaniesz 14 dni wcześniej.",
+      "viewLater": "Zobaczysz go ponownie później w panelu tokenu, po potwierdzeniu hasła.",
+      "next": {
+        "title": "Co dalej",
+        "test": "Użyj tego tokenu testowego, aby wypróbować endpoint w Dokumentacja i testy. Nic nie jest zapisywane. Utwórz token live, gdy będziesz gotowy na prawdziwe wywołania.",
+        "live": "W razie potrzeby ogranicz regułami dostępu, kto może z niego korzystać, przetestuj go, a potem włącz endpoint.",
+        "rule": "Dodaj regułę dostępu"
       }
     },
     "rotate": {
@@ -3997,25 +4068,29 @@
         "ip": "Adres IP",
         "domain": "Domena witryny",
         "country": "Kraj",
-        "region": "Region"
+        "region": "Region",
+        "network": "Sieci anonimowe"
       },
       "kindHint": {
         "ip": "Pojedyncze adresy lub zakresy (IPv4 i IPv6).",
         "domain": "Witryna, z której pochodzi wywołanie przeglądarki.",
         "country": "Gdzie znajduje się adres wywołującego.",
-        "region": "Całe kontynenty naraz."
+        "region": "Całe kontynenty naraz.",
+        "network": "VPN, proxy, Tor i dostawcy hostingu"
       },
       "valuesLabel": {
         "ip": "Adresy i zakresy",
         "domain": "Domeny",
         "country": "Kraje",
-        "region": "Regiony"
+        "region": "Regiony",
+        "network": "Sieci"
       },
       "valuesHelp": {
-        "ip": "Po jednym w wierszu, np. 203.0.113.10 lub 198.51.100.0/24.",
-        "domain": "Po jednej w wierszu; *.example.com obejmuje każdą subdomenę.",
+        "ip": "Wpisz adres lub zakres, a potem przecinek, spację lub Enter, np. 203.0.113.10 lub 198.51.100.0/24. Każdy wpis jest sprawdzany.",
+        "domain": "Wpisz domenę, a potem przecinek, spację lub Enter, np. example.com lub *.example.com dla wszystkich jej subdomen. Każdy wpis jest sprawdzany.",
         "country": "Wybierz jeden lub więcej.",
-        "region": "Wybierz jeden lub więcej."
+        "region": "Wybierz jeden lub więcej.",
+        "network": "Wywołujący, których adres należy do jednej z nich."
       },
       "region": {
         "AF": "Afryka",
@@ -4057,7 +4132,8 @@
         "ip": "„{value}” nie jest adresem IP ani zakresem.",
         "domain": "„{value}” nie jest domeną.",
         "country": "„{value}” nie jest krajem.",
-        "region": "„{value}” nie jest regionem."
+        "region": "„{value}” nie jest regionem.",
+        "network": "Wybierz sieć z listy"
       },
       "toast": {
         "created": "Utworzono regułę",
@@ -4098,6 +4174,40 @@
         "answer": "Po przekroczeniu limitu wywołujący otrzymują 429 z Retry-After (sekundy oczekiwania); każda odpowiedź podaje limit i to, co zostało.",
         "saved": "Zapisano limity zapytań",
         "changed": "Zmieniono {when}"
+      },
+      "network": {
+        "vpn": "VPN",
+        "proxy": "Otwarte proxy",
+        "tor": "Tor",
+        "hosting": "Hosting i chmura"
+      },
+      "networkHint": {
+        "vpn": "Komercyjne wyjścia VPN",
+        "proxy": "Publiczne i anonimowe proxy",
+        "tor": "Węzły wyjściowe Tor",
+        "hosting": "Serwery dostawców hostingu i chmury"
+      },
+      "networkNote": "Formalie rozpoznaje je na podstawie list znanych adresów, aktualizowanych codziennie. Blokuj VPN razem z regułą kraju, gdy kraj musi się zgadzać.",
+      "geo": {
+        "title": "Jak ustalany jest kraj",
+        "text": "Na podstawie adresu IP wywołującego, sprawdzonego w bazie lokalizacji: w zdecydowanej większości przypadków kraj jest poprawny. Osoba korzystająca z VPN lub proxy pojawia się w kraju tego serwera, więc dodaj regułę Sieci anonimowe, jeśli chcesz to zatrzymać."
+      },
+      "scopeHelp": "Wszędzie, jedna usługa lub jeden endpoint.",
+      "steps": {
+        "what": "Co",
+        "values": "Wartości",
+        "where": "Gdzie",
+        "done": "Gotowe"
+      },
+      "about": {
+        "title": "Co robią reguły dostępu",
+        "text": "Decydują, kto może wywoływać, jeszcze zanim token zostanie sprawdzony. Blokada zawsze wygrywa. Gdy obowiązuje jakakolwiek reguła zezwalająca, wchodzą tylko wywołujący pasujący do jednej z nich."
+      },
+      "done": {
+        "title": "Reguła działa",
+        "block": "Wywołujący pasujący do {values} są odrzucani w {where}.",
+        "allow": "Tylko wywołujący pasujący do {values} (lub innej reguły zezwalającej) wchodzą w {where}.",
+        "next": "Sprawdź wywołującego przez Przetestuj wywołującego, potem wypróbuj endpoint w Dokumentacja i testy i włącz go."
       }
     },
     "home": {
@@ -4213,7 +4323,9 @@
       "files": {
         "title": "Wysyłanie plików",
         "text": "Najpierw prześlij każdy plik jako dane formularza, z nazwą pola file i kluczem pytania w field. Odpowiedź zawiera identyfikator pliku.",
-        "then": "Następnie umieść identyfikatory w treści JSON pod tym pytaniem, np. \"cv\": [\"id\"]. Obowiązują te same typy i rozmiary plików co w formularzu."
+        "then": "Następnie umieść identyfikatory w treści JSON pod tym pytaniem, np. \"cv\": [\"id\"]. Obowiązują te same typy i rozmiary plików co w formularzu.",
+        "step1": "Prześlij plik",
+        "step2": "Wyślij jego identyfikator razem z odpowiedziami"
       },
       "signing": {
         "title": "Podpisane wywołania",
@@ -4240,7 +4352,111 @@
         "testOnly": "Tryb testowy: odpowiedzi wyglądają prawdziwie, ale żadna odpowiedź nie jest tworzona, zmieniana ani usuwana.",
         "nothingYet": "Wyślij wywołanie, aby zobaczyć odpowiedź",
         "send": "Wyślij",
-        "badJson": "To nie jest poprawny JSON."
+        "badJson": "To nie jest poprawny JSON.",
+        "recordNeeded": "identyfikator rekordu (wymagany)",
+        "headers": "Nagłówki",
+        "noBody": "Ta metoda nie wysyła treści. Jej nagłówki są na karcie Nagłówki.",
+        "bodyHint": "Wypełnione prawdziwymi wartościami odpowiedzi formularza. Zmień, co chcesz, i wyślij ponownie.",
+        "testToken": "token testowy utworzony dla tej konsoli",
+        "recent": "Ostatnie wywołania"
+      },
+      "navTitle": "Na tej stronie",
+      "gettingStarted": "Pierwsze kroki",
+      "heroKicker": "Dokumentacja API",
+      "heroText": "Wszystko, czego aplikacja potrzebuje, by wysyłać i odczytywać odpowiedzi tej usługi: adres, sposób logowania i każdy endpoint z przykładami.",
+      "liveCount": "{n} aktywnych",
+      "bearer": "Token Bearer",
+      "tryFirst": "Wypróbuj teraz",
+      "notLiveNote": "Jeszcze nieaktywny: tokeny testowe mogą go wywołać (Wypróbuj używa jednego), wywołania produkcyjne są odrzucane do czasu włączenia.",
+      "oneHint": "Dodaj identyfikator rekordu do adresu, aby odczytać tylko ten rekord, np. /job-applications/rsp_9fK2mQ7xLp.",
+      "deleteHint": "Odpowiedź znika z list i z API, ale zostaje w dzienniku audytu. Token testowy tylko sprawdza wywołanie.",
+      "errorShape": "Jak wygląda błąd",
+      "op": {
+        "GET": "Lista i odczyt",
+        "POST": "Tworzenie",
+        "PUT": "Zmiana",
+        "DELETE": "Usuwanie"
+      }
+    },
+    "journey": {
+      "title": "Skonfiguruj swoje API",
+      "text": "Pięć kroków od formularza do adresu, który mogą wywoływać inne aplikacje.",
+      "progress": "Ukończono {n} z {total}",
+      "service": {
+        "title": "Utwórz usługę",
+        "text": "Folder na endpointy używane przez jedną aplikację lub partnera. W razie potrzeby wyłączysz je wszystkie naraz.",
+        "action": "Nowa usługa"
+      },
+      "endpoint": {
+        "title": "Dodaj endpoint",
+        "text": "Zamienia jeden opublikowany formularz w adres. Wybierz, co robi: odczytuje, dodaje, zmienia lub usuwa odpowiedzi.",
+        "action": "Nowy endpoint"
+      },
+      "token": {
+        "title": "Nadaj mu token",
+        "text": "Aplikacje potwierdzają tożsamość tokenem. Token testowy pozwala wszystko wypróbować bez dotykania prawdziwych danych; token live wykonuje prawdziwe wywołania.",
+        "action": "Nowy token"
+      },
+      "access": {
+        "title": "Ogranicz, kto może wywoływać",
+        "text": "Zezwalaj na wywołujących lub ich blokuj według adresu IP, strony internetowej, kraju, regionu lub sieci anonimowych.",
+        "action": "Nowa reguła"
+      },
+      "live": {
+        "title": "Przetestuj i uruchom",
+        "text": "Wypróbuj w Dokumentacja i testy, a potem włącz endpoint, aby mogły go używać tokeny live.",
+        "action": "Otwórz Dokumentacja i testy"
+      }
+    },
+    "intro": {
+      "title": "Czym jest endpoint",
+      "text": "Endpoint nadaje jednemu opublikowanemu formularzowi własny adres, na przykład /job-applications. Inne aplikacje wysyłają tam odpowiedzi lub je odczytują, a sprawdzane są dokładnie tak jak na stronie formularza. Działa w ramach usługi i pozostaje nieaktywny, dopóki nie nadasz mu tokenu i go nie włączysz.",
+      "hide": "Rozumiem"
+    },
+    "gate": {
+      "title": "Najpierw utwórz usługę",
+      "text": "Każdy endpoint należy do usługi: jednej na aplikację lub partnera, abyś widział ich wywołania razem i mógł je wyłączyć naraz. Nie masz jeszcze usługi, więc zacznij od niej; od razu wrócisz tutaj.",
+      "action": "Nowa usługa"
+    },
+    "setup": {
+      "title": "Zanim zostanie uruchomiony",
+      "isLive": "Aktywny",
+      "notLive": "Nieaktywny",
+      "openEndpoint": "Otwórz endpoint",
+      "createdTitle": "/{name} został utworzony",
+      "createdText": "Nie jest jeszcze aktywny: tokeny testowe mogą go wywoływać, wywołania live są odrzucane, dopóki go nie włączysz. Przejdź przez listę poniżej.",
+      "basics": {
+        "title": "Usługa i formularz",
+        "ok": "W {service}, odpowiada formularzem {form}.",
+        "serviceOff": "Jego usługa {name} jest wyłączona, więc endpoint nie może odpowiadać. Włącz usługę.",
+        "formOff": "Jego formularz nie jest opublikowany, więc endpoint nie może odpowiadać. Opublikuj formularz."
+      },
+      "token": {
+        "title": "Token, który może go wywoływać",
+        "text": "Żaden token nie może go jeszcze wywoływać. Utwórz token tylko dla tego endpointu: testowy do wypróbowania, live do prawdziwych wywołań.",
+        "ok": "Może go wywoływać {live} tokenów live i {test} testowych.",
+        "action": "Nowy token dla tego endpointu"
+      },
+      "access": {
+        "title": "Kto może wywoływać",
+        "text": "Każdy z ważnym tokenem może go wywoływać. Dodaj reguły, aby zezwalać na wywołujących lub ich blokować według adresu IP, strony internetowej, kraju lub sieci anonimowych.",
+        "ok": "Obowiązuje {n} reguła dostępu. | Obowiązuje reguł dostępu: {n}.",
+        "action": "Nowa reguła dla tego endpointu"
+      },
+      "test": {
+        "title": "Przetestuj go",
+        "text": "Wyślij wywołanie z tokenem testowym: wszystkie prawdziwe kontrole działają, a nic nie jest zapisywane."
+      },
+      "live": {
+        "title": "Uruchom",
+        "text": "Włącz go, gdy będziesz gotowy. Tokeny live będą wtedy mogły go wywoływać.",
+        "on": "Tokeny live mogą go wywoływać. Wyłącz go, aby zatrzymać wszystkie wywołania live naraz.",
+        "noLiveToken": "Żaden token live nie może go jeszcze wywoływać: wywołania live nadal byłyby odrzucane.",
+        "action": "Uruchom"
+      },
+      "toast": {
+        "live": "Endpoint jest aktywny",
+        "notLive": "Endpoint jest nieaktywny"
       }
     }
   },
@@ -5944,7 +6160,7 @@
         "answer": "Odpowiedz dowolnym statusem 2xx w ciągu 10 sekund, a właściwą pracę wykonaj potem. Każda inna odpowiedź jest ponawiana."
       }
     },
-    "onceDesc": "Formalie nie może pokazać go ponownie. Jeśli się zgubi, utwórz nowy.",
+    "onceDesc": "Skopiuj go teraz. Później możesz zobaczyć go ponownie w jego panelu, po potwierdzeniu hasła.",
     "keys": {
       "newTitle": "Nowy klucz API",
       "editTitle": "Edytuj klucz API",
@@ -6015,5 +6231,17 @@
         "deleted": "Usunięto klucz API"
       }
     }
+  },
+  "secrets": {
+    "title": "Sekret",
+    "show": "Pokaż",
+    "hide": "Ukryj ({n} s)",
+    "ask": "Potwierdź hasło, aby go zobaczyć. Zostanie to zapisane w dzienniku audytu.",
+    "password": "Twoje hasło",
+    "confirm": "Pokaż",
+    "wrong": "To hasło jest nieprawidłowe. Pozostało prób: {n}.",
+    "locked": "Zbyt wiele błędnych prób. Spróbuj ponownie za 15 minut.",
+    "notViewable": "Utworzony, zanim sekrety można było ponownie wyświetlać, więc nie można go pokazać. Użyj opcji Rotuj, aby uzyskać taki, który zobaczysz później.",
+    "shownNote": "Ukryje się ponownie sam po minucie. Trzymaj go tylko na swoim serwerze."
   }
 }

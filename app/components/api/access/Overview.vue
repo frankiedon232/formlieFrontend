@@ -21,7 +21,7 @@ const stats = computed(() =>
       ]
     : [],
 )
-const COLORS = { ip: 'bg-(--ui-text-highlighted)', domain: 'bg-violet-500', country: 'bg-amber-500', region: 'bg-green-500' } as const
+const COLORS = { ip: 'bg-(--ui-text-highlighted)', domain: 'bg-violet-500', country: 'bg-amber-500', region: 'bg-green-500', network: 'bg-red-500' } as const
 const parts = computed(() => API_RULE_KINDS.map(key => ({ key, label: t(`apiService.access.kind.${key}`), count: props.insights?.by_kind[key] ?? 0, color: COLORS[key] })))
 </script>
 
