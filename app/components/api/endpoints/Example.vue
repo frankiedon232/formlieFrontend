@@ -8,7 +8,7 @@ import type { ApiEndpointField } from '#shared/types/apiService'
 import { exampleRecord, exampleRequestBody } from '#shared/utils/apiService/endpoints'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
-const props = defineProps<{ methods: ApiMethod[]; url: string; fields: ApiEndpointField[]; pageSize: number; headers?: { name: string; value: string }[] }>()
+const props = defineProps<{ methods: ApiMethod[]; url: string; fields: ApiEndpointField[]; pageSize: number; headers?: { name: string; value: string }[]; signing?: boolean }>()
 const { t } = useI18n()
 const { copy } = useClipboard({ legacy: true })
 const toast = useToast()
@@ -31,7 +31,8 @@ const example = computed(() => {
       return { line: `GET ${props.url}?page=1&per_page=${Math.min(20, props.pageSize)}`, body: null, status: '200 OK', answer: json({ data: [record], meta: { page: 1, per_page: Math.min(20, props.pageSize), total: 1 } }) }
   }
 })
-const headers = computed(() => ['Authorization: Bearer <token>', ...(example.value.body ? ['Content-Type: application/json'] : []), ...(method.value === 'POST' ? ['Formalie-Key: <unique id>'] : []), ...(props.headers ?? []).map(header => `${header.name}: ${header.value}`)].join('\n'))
+// Every header the call needs (owner, 2026-10-06): signed tokens add the timestamp and signature, the endpoint its own
+const headers = computed(() => ['Authorization: Bearer <token>', ...(props.signing ? ['X-Formalie-Timestamp: <unix seconds>', 'X-Formalie-Signature: sha256=<hmac>'] : []), ...(example.value.body ? ['Content-Type: application/json'] : []), ...(method.value === 'POST' ? ['Formalie-Key: <unique id>'] : []), ...(props.headers ?? []).map(header => `${header.name}: ${header.value}`)].join('\n'))
 function copyText(text: string) {
   void copy(text)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })

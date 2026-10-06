@@ -3805,6 +3805,15 @@
         "payment": "malipo hayawezi kutumwa kupitia API",
         "locked": "kusoma tu kwenye fomu",
         "signature": "sahihi huchorwa kwenye ukurasa wa fomu"
+      },
+      "apiName": "Jina la API la {label}",
+      "namesHint": "Programu hutuma na kupokea kila jibu kwa jina lake la API, linalotokana na lebo (Jina la kwanza → first_name). Libadilishe hapa ukitaka; programu zikishaanza kulitumia, liache kama lilivyo.",
+      "nameInvalid": {
+        "required": "Lipe jina.",
+        "pattern": "Herufi ndogo, tarakimu na _ pekee, kuanzia na herufi.",
+        "reserved": "Jina hili linatumiwa na rekodi yenyewe (id, status, data…).",
+        "taken": "Swali lingine tayari linatumia jina hili.",
+        "fix": "Rekebisha majina ya API yaliyowekwa alama nyekundu."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Endpoint zote",
         "allServices": "Huduma zote",
         "allEndpoints": "Endpoint zote",
-        "allMethods": "Njia zote"
+        "allMethods": "Njia zote",
+        "gone": "Huduma au endpoint iliyofutwa (haipigi chochote)"
       },
       "col": {
         "kind": "Aina",
@@ -4010,6 +4020,10 @@
         "test": "Tumia tokeni hii ya majaribio kujaribu endpoint katika Nyaraka na majaribio. Hakuna kinachohifadhiwa. Tengeneza tokeni ya live ukiwa tayari kwa simu halisi.",
         "live": "Ukitaka, weka kikomo cha nani anaweza kuitumia kwa kanuni za ufikiaji, ijaribu, kisha washa endpoint.",
         "rule": "Ongeza kanuni ya ufikiaji"
+      },
+      "scopeGone": {
+        "title": "Inaweza kupiga huduma au endpoint {n} iliyofutwa | Inaweza kupiga huduma au endpoint {n} zilizofutwa",
+        "text": "Zimefutwa, kwa hiyo tokeni hii haiwezi kuzipiga. Haipanuliwi kamwe kwa kila kitu; hariri inachoweza kupiga ili iielekeze kwenye huduma sahihi."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Tumia herufi, nambari na alama za kawaida, hadi 200.",
         "duplicate": "Header hii tayari iko kwenye orodha.",
         "fix": "Kagua header zinazohitajika."
-      }
+      },
+      "withOwn": "Endpoint {n} yenye vichwa vyake | Endpoint {n} zenye vichwa vyake",
+      "withoutOwn": "{n} zaidi bila | {n} zaidi bila",
+      "show": "Onyesha thamani",
+      "hide": "Ficha thamani"
     },
     "access": {
       "rules": "Kanuni",

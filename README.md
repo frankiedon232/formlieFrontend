@@ -92,7 +92,8 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 3. A **draft** form: _New endpoint_ lists it under _Not ready for the API yet_ with **Publish for the API only**. One click makes it API only, publishes it and picks it.
 4. Turn the API off for a form that has an endpoint: calls answer `503 FRM-API-1007` (`form: not_for_api`) and the endpoint checklist says why.
 5. Change a form that has an endpoint: rename a question (Publish says nothing changes for apps), then add a required question and Publish: the dialog lists the endpoint and says the new key is now required. After publishing, the docs show the new question.
-6. New questions get clean keys (`first_name`); a second "First name" gets `first_name_2`. After publishing, renaming a question keeps its key.
+6. Every endpoint speaks label names: in Docs, the panel and the wizard you see `first_name`, not `first_name_w6r3`; send the old key and the answer refuses it by that name. Rename an API name in the endpoint wizard's Questions step.
+7. New questions get clean keys (`first_name`); a second "First name" gets `first_name_2`. After publishing, renaming a question keeps its key.
 
 ### 2. Tokens
 

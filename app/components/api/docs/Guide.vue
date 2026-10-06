@@ -21,7 +21,7 @@ const topics = computed(() => [
     id: 'guide-files',
     icon: 'i-lucide-paperclip',
     key: 'files',
-    code: `# 1 · ${t('apiService.docs.files.step1')}\ncurl -X POST "${props.endpoint?.url ?? `${props.base}/<endpoint>`}/files?field=${fileField.value?.key ?? '<question key>'}" \\\n  -H "Authorization: Bearer <token>" \\\n  -F "file=@cv.pdf"\n\n# → { "data": { "id": "f_9Qm…", "name": "cv.pdf", … } }\n\n# 2 · ${t('apiService.docs.files.step2')}\n{ "${fileField.value?.key ?? 'cv'}": ["f_9Qm…"] }`,
+    code: `# 1 · ${t('apiService.docs.files.step1')}\ncurl -X POST "${props.endpoint?.url ?? `${props.base}/<endpoint>`}/files?field=${fileField.value?.name ?? '<API name>'}" \\\n  -H "Authorization: Bearer <token>" \\\n  -F "file=@cv.pdf"\n\n# → { "data": { "id": "f_9Qm…", "name": "cv.pdf", … } }\n\n# 2 · ${t('apiService.docs.files.step2')}\n{ "${fileField.value?.name ?? 'cv'}": ["f_9Qm…"] }`,
   },
   { id: 'guide-signing', icon: 'i-lucide-signature', key: 'signing', code: 'X-Formalie-Timestamp: 1767225600\nX-Formalie-Signature: sha256=<hex>\n\n# hex = HMAC-SHA256(signing secret,\n#   "{timestamp}.{METHOD}.{path}.{raw body}")' },
 ])

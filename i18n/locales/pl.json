@@ -3805,6 +3805,15 @@
         "payment": "płatności nie można wysyłać przez API",
         "locked": "tylko do odczytu w formularzu",
         "signature": "podpisy rysuje się na stronie formularza"
+      },
+      "apiName": "Nazwa API dla {label}",
+      "namesHint": "Aplikacje wysyłają i odbierają każdą odpowiedź pod jej nazwą API, utworzoną z etykiety (Imię → first_name). Zmień ją tutaj, jeśli chcesz; gdy aplikacje zaczną jej używać, zostaw ją bez zmian.",
+      "nameInvalid": {
+        "required": "Podaj nazwę.",
+        "pattern": "Tylko małe litery, cyfry i _, zaczynając od litery.",
+        "reserved": "Ta nazwa jest zajęta przez sam rekord (id, status, data…).",
+        "taken": "Inne pytanie już używa tej nazwy.",
+        "fix": "Popraw nazwy API zaznaczone na czerwono."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Wszystkie endpointy",
         "allServices": "Wszystkie usługi",
         "allEndpoints": "Wszystkie endpointy",
-        "allMethods": "Wszystkie metody"
+        "allMethods": "Wszystkie metody",
+        "gone": "Usunięta usługa lub endpoint (nic nie wywołuje)"
       },
       "col": {
         "kind": "Typ",
@@ -4010,6 +4020,10 @@
         "test": "Użyj tego tokenu testowego, aby wypróbować endpoint w Dokumentacja i testy. Nic nie jest zapisywane. Utwórz token live, gdy będziesz gotowy na prawdziwe wywołania.",
         "live": "W razie potrzeby ogranicz regułami dostępu, kto może z niego korzystać, przetestuj go, a potem włącz endpoint.",
         "rule": "Dodaj regułę dostępu"
+      },
+      "scopeGone": {
+        "title": "Może wywoływać {n} usuniętą usługę lub endpoint | Może wywoływać {n} usuniętych usług lub endpointów",
+        "text": "Zostały usunięte, więc ten token nie może ich wywołać. Nigdy nie jest rozszerzany na wszystko; zmień, co może wywoływać, aby wskazać właściwą usługę."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Użyj zwykłych liter, cyfr i symboli, do 200.",
         "duplicate": "Ten nagłówek jest już na liście.",
         "fix": "Sprawdź wymagane nagłówki."
-      }
+      },
+      "withOwn": "{n} endpoint z własnymi nagłówkami | {n} endpointów z własnymi nagłówkami",
+      "withoutOwn": "jeszcze {n} bez | jeszcze {n} bez",
+      "show": "Pokaż wartość",
+      "hide": "Ukryj wartość"
     },
     "access": {
       "rules": "Reguły",

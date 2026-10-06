@@ -3805,6 +3805,15 @@
         "payment": "ödemeler API ile gönderilemez",
         "locked": "formda salt okunur",
         "signature": "imzalar form sayfasında çizilir"
+      },
+      "apiName": "{label} için API adı",
+      "namesHint": "Uygulamalar her yanıtı etiketten üretilen API adıyla gönderir ve alır (Ad → first_name). İsterseniz burada değiştirin; uygulamalar kullanmaya başladıktan sonra aynı bırakın.",
+      "nameInvalid": {
+        "required": "Bir ad verin.",
+        "pattern": "Yalnızca küçük harf, rakam ve _ kullanın, bir harfle başlayın.",
+        "reserved": "Bu ad kaydın kendisi tarafından kullanılıyor (id, status, data…).",
+        "taken": "Başka bir soru bu adı zaten kullanıyor.",
+        "fix": "Kırmızı işaretli API adlarını düzeltin."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Tüm endpoint'ler",
         "allServices": "Tüm servisler",
         "allEndpoints": "Tüm endpoint'ler",
-        "allMethods": "Tüm yöntemler"
+        "allMethods": "Tüm yöntemler",
+        "gone": "Silinmiş bir servis veya uç nokta (hiçbir şey çağırmaz)"
       },
       "col": {
         "kind": "Tür",
@@ -4010,6 +4020,10 @@
         "test": "Endpoint'i Belgeler ve test bölümünde denemek için bu test token'ını kullanın. Hiçbir şey kaydedilmez. Gerçek çağrılara hazır olduğunuzda bir live token oluşturun.",
         "live": "İsterseniz erişim kurallarıyla kimin kullanabileceğini sınırlayın, test edin, sonra endpoint'i açın.",
         "rule": "Erişim kuralı ekle"
+      },
+      "scopeGone": {
+        "title": "Silinmiş {n} servisi veya uç noktayı çağırabilir | Silinmiş {n} servisi veya uç noktayı çağırabilir",
+        "text": "Bunlar silindi, bu yüzden bu token onları çağıramaz. Asla her şeye genişletilmez; doğru servise yöneltmek için çağırabileceklerini düzenleyin."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Düz harf, rakam ve simge kullanın, en fazla 200.",
         "duplicate": "Bu header zaten listede.",
         "fix": "Gerekli header'ları kontrol edin."
-      }
+      },
+      "withOwn": "Kendi başlıkları olan {n} uç nokta | Kendi başlıkları olan {n} uç nokta",
+      "withoutOwn": "{n} tane daha başlıksız | {n} tane daha başlıksız",
+      "show": "Değeri göster",
+      "hide": "Değeri gizle"
     },
     "access": {
       "rules": "Kurallar",

@@ -3805,6 +3805,15 @@
         "payment": "betalingen kunnen niet via de API worden verstuurd",
         "locked": "alleen-lezen in het formulier",
         "signature": "handtekeningen worden op de formulierpagina getekend"
+      },
+      "apiName": "API-naam voor {label}",
+      "namesHint": "Apps sturen en ontvangen elk antwoord onder de API-naam, afgeleid van het label (Voornaam → first_name). Pas hem hier aan als je wilt; zodra apps hem gebruiken, laat je hem ongewijzigd.",
+      "nameInvalid": {
+        "required": "Geef het een naam.",
+        "pattern": "Alleen kleine letters, cijfers en _, beginnend met een letter.",
+        "reserved": "Deze naam is in gebruik door het record zelf (id, status, data…).",
+        "taken": "Een andere vraag gebruikt deze naam al.",
+        "fix": "Corrigeer de rood gemarkeerde API-namen."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Alle endpoints",
         "allServices": "Alle services",
         "allEndpoints": "Alle endpoints",
-        "allMethods": "Alle methoden"
+        "allMethods": "Alle methoden",
+        "gone": "Een verwijderde service of endpoint (roept niets aan)"
       },
       "col": {
         "kind": "Type",
@@ -4010,6 +4020,10 @@
         "test": "Gebruik dit testtoken om het endpoint te proberen in Docs & testen. Er wordt niets opgeslagen. Maak een livetoken als je klaar bent voor echte aanroepen.",
         "live": "Beperk eventueel met toegangsregels wie het mag gebruiken, test het en zet daarna het endpoint aan.",
         "rule": "Voeg een toegangsregel toe"
+      },
+      "scopeGone": {
+        "title": "Roept mogelijk {n} verwijderde service of endpoint aan | Roept mogelijk {n} verwijderde services of endpoints aan",
+        "text": "Die zijn verwijderd, dus deze token kan ze niet aanroepen. Hij wordt nooit uitgebreid naar alles; pas aan wat hij mag aanroepen om hem naar de juiste service te laten wijzen."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Gebruik gewone letters, cijfers en symbolen, maximaal 200.",
         "duplicate": "Deze header staat al in de lijst.",
         "fix": "Controleer de vereiste headers."
-      }
+      },
+      "withOwn": "{n} endpoint met eigen headers | {n} endpoints met eigen headers",
+      "withoutOwn": "{n} meer zonder | {n} meer zonder",
+      "show": "Waarde tonen",
+      "hide": "Waarde verbergen"
     },
     "access": {
       "rules": "Regels",

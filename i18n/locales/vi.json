@@ -3805,6 +3805,15 @@
         "payment": "không thể gửi thanh toán qua API",
         "locked": "chỉ đọc trên biểu mẫu",
         "signature": "chữ ký được vẽ trên trang biểu mẫu"
+      },
+      "apiName": "Tên API cho {label}",
+      "namesHint": "Ứng dụng gửi và nhận từng câu trả lời theo tên API, được tạo từ nhãn (Tên → first_name). Bạn có thể đổi ở đây; khi ứng dụng đã dùng, hãy giữ nguyên.",
+      "nameInvalid": {
+        "required": "Hãy đặt tên.",
+        "pattern": "Chỉ chữ thường, chữ số và _, bắt đầu bằng một chữ cái.",
+        "reserved": "Tên này đã được chính bản ghi sử dụng (id, status, data…).",
+        "taken": "Một câu hỏi khác đã dùng tên này.",
+        "fix": "Hãy sửa các tên API được đánh dấu đỏ."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Tất cả endpoint",
         "allServices": "Tất cả dịch vụ",
         "allEndpoints": "Tất cả endpoint",
-        "allMethods": "Tất cả phương thức"
+        "allMethods": "Tất cả phương thức",
+        "gone": "Dịch vụ hoặc endpoint đã xóa (không gọi gì)"
       },
       "col": {
         "kind": "Loại",
@@ -4010,6 +4020,10 @@
         "test": "Dùng token thử nghiệm này để thử endpoint trong Tài liệu & kiểm thử. Không có gì được lưu. Hãy tạo token live khi bạn sẵn sàng cho lệnh gọi thật.",
         "live": "Nếu muốn, hãy giới hạn ai được dùng nó bằng quy tắc truy cập, thử nó, rồi bật endpoint.",
         "rule": "Thêm quy tắc truy cập"
+      },
+      "scopeGone": {
+        "title": "Có thể gọi {n} dịch vụ hoặc endpoint đã xóa | Có thể gọi {n} dịch vụ hoặc endpoint đã xóa",
+        "text": "Chúng đã bị xóa nên token này không thể gọi. Token không bao giờ được mở rộng ra tất cả; hãy sửa phạm vi gọi để trỏ đến đúng dịch vụ."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Dùng chữ cái, chữ số và ký hiệu thông thường, tối đa 200.",
         "duplicate": "Header này đã có trong danh sách.",
         "fix": "Hãy kiểm tra các header bắt buộc."
-      }
+      },
+      "withOwn": "{n} endpoint có header riêng | {n} endpoint có header riêng",
+      "withoutOwn": "{n} endpoint nữa không có | {n} endpoint nữa không có",
+      "show": "Hiện giá trị",
+      "hide": "Ẩn giá trị"
     },
     "access": {
       "rules": "Quy tắc",

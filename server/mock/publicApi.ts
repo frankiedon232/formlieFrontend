@@ -166,7 +166,7 @@ function checkSignature(event: H3Event, token: StoredApiToken, method: string, p
 }
 
 /** A response as the API returns it: its reference, when, status and the returned answers (file ids as references too). */
-function record(form: Parameters<typeof answersOf>[0], entry: IndexedResponse, fields: { key: string; type: string; returned: boolean }[]) {
+function record(form: Parameters<typeof answersOf>[0], entry: IndexedResponse, fields: { key: string; name: string; type: string; returned: boolean }[]) {
   const data = answersOf(form, entry)
   const types = new Map(fields.map(field => [field.key, field.type]))
   const value = (key: string) => {
@@ -174,7 +174,7 @@ function record(form: Parameters<typeof answersOf>[0], entry: IndexedResponse, f
     if (!isFileField(types.get(key) ?? '') || !Array.isArray(answer)) return answer
     return answer.map(file => (file && typeof file === 'object' && 'id' in file ? { ...(file as Record<string, unknown>), id: encodeId(String((file as { id: unknown }).id)) } : file))
   }
-  return { id: encodeId(entry.id), submitted_at: new Date(entry.at).toISOString(), status: entry.status, data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.key, value(field.key)])) }
+  return { id: encodeId(entry.id), submitted_at: new Date(entry.at).toISOString(), status: entry.status, data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.name, value(field.key)])) }
 }
 
 /** What a call turned out to be, for the request log (filled in as the checks pass). */
@@ -184,6 +184,10 @@ interface CallContext {
   token?: StoredApiToken
   raw: string
   caller?: AccessCaller
+  /** Question key → API name, so error details name what the app sent. */
+  names?: Map<string, string>
+  /** Names the app sent that the endpoint does not know: reported exactly as sent. */
+  unknown?: Set<string>
 }
 /** Answers whose question type holds personal data are masked in kept bodies. */
 /** Handles a call and writes it to the request log (when the address key belongs to a workspace). */
@@ -308,6 +312,13 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     if (endpoint.status !== 'active' && token.mode !== 'test') throw new PublicError('FRM-API-1007', [{ field: 'endpoint', message: 'not_live' }])
     // The choices as the portal shows them: worked out from the form (a question the form requires is always accepted)
     const choices = endpointFieldsOf(schema, endpoint.fields)
+    // API names ↔ question keys (owner, 2026-10-06): apps send and get the names, the form keeps its keys
+    const keyOf = new Map(choices.map(field => [field.name, field.key]))
+    context.names = new Map(choices.map(field => [field.key, field.name]))
+    // Names this endpoint does not know are refused with the other not-accepted ones (below)
+    const unknownNames = Object.keys(body).filter(name => !keyOf.has(name))
+    context.unknown = new Set(unknownNames)
+    body = Object.fromEntries(Object.entries(body).filter(([name]) => keyOf.has(name)).map(([name, value]) => [keyOf.get(name)!, value]))
     const allowed: ApiMethod[] = endpoint.methods
     if (!(['GET', 'POST', 'PUT', 'DELETE'] as const).includes(method as ApiMethod) || !allowed.includes(method as ApiMethod) || (recordRef && !upload ? method === 'POST' : method === 'PUT' || method === 'DELETE')) throw new PublicError('FRM-API-1008')
     if (!scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service_id, method: method as ApiMethod })) throw new PublicError('FRM-API-1009')
@@ -322,9 +333,10 @@ async function handle(event: H3Event, path: string, context: CallContext) {
 
     // Files: checked like the form page, stored at once (test tokens: checked only) → an id for the JSON
     if (upload) {
-      const key = String(getQuery(event).field ?? '')
+      const asked = String(getQuery(event).field ?? '')
+      const key = keyOf.get(asked) ?? ''
       const definition = fields.get(key)
-      if (!definition || !isFileField(definition.type) || !choices.some(item => item.key === key && item.accept)) throw new PublicError('FRM-API-1014', [{ field: key || 'field', message: 'not_accepted' }])
+      if (!definition || !isFileField(definition.type) || !choices.some(item => item.key === key && item.accept)) throw new PublicError('FRM-API-1014', [{ field: asked || 'field', message: 'not_accepted' }])
       const file = (await readMultipartFormData(event))?.find(part => part.name === 'file' && part.filename)
       if (!file) throw new PublicError('FRM-GEN-1001', [{ field: 'file', message: 'Send the file as multipart/form-data in a field named file.' }])
       const props = (definition.props ?? {}) as Record<string, unknown>
@@ -351,8 +363,8 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         return send(event, 200, { data: record(form, entry, choices) })
       }
       const query = getQuery(event)
-      const filters = choices.filter(field => field.filter && typeof query[field.key] === 'string')
-      let list = filters.length ? entries.filter(entry => { const data = answersOf(form, entry); return filters.every(field => { const value = data[field.key]; const wanted = String(query[field.key]); return Array.isArray(value) ? value.map(String).includes(wanted) : String(value ?? '') === wanted }) }) : entries
+      const filters = choices.filter(field => field.filter && typeof query[field.name] === 'string')
+      let list = filters.length ? entries.filter(entry => { const data = answersOf(form, entry); return filters.every(field => { const value = data[field.key]; const wanted = String(query[field.name]); return Array.isArray(value) ? value.map(String).includes(wanted) : String(value ?? '') === wanted }) }) : entries
       list = [...list].sort((a, b) => (query.sort === 'submitted_at' ? a.at - b.at : b.at - a.at))
       const perPage = Math.min(endpoint.page_size, Math.max(1, Number(query.per_page) || Math.min(20, endpoint.page_size)))
       const page = Math.max(1, Number(query.page) || 1)
@@ -361,7 +373,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
 
     // Writing: only accepted questions, then the form's own rules
     const accepted = new Set(choices.filter(field => field.accept).map(field => field.key))
-    const refused = Object.keys(body).filter(item => !accepted.has(item))
+    const refused = [...unknownNames, ...Object.keys(body).filter(item => !accepted.has(item))]
     if (refused.length) throw new PublicError('FRM-API-1014', refused.map(item => ({ field: item, message: 'not_accepted' })))
     // File answers: ids from …/files (or { id }) → the stored files of this form and question, not used by another response
     const fileIds: string[] = []
@@ -391,7 +403,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         const entry = formResponses(tenant, form).find(item => item.id === earlier.id)
         if (entry) return send(event, 200, { data: record(form, entry, choices), meta: { replayed: true } })
       }
-      if (test) return send(event, 201, { data: { id: encodeId(crypto.randomUUID()), submitted_at: new Date().toISOString(), status: 'new', data: Object.fromEntries(choices.filter(field => field.returned).map(field => [field.key, answers[field.key] ?? null])) }, meta: { test: true } })
+      if (test) return send(event, 201, { data: { id: encodeId(crypto.randomUUID()), submitted_at: new Date().toISOString(), status: 'new', data: Object.fromEntries(choices.filter(field => field.returned).map(field => [field.name, answers[field.key] ?? null])) }, meta: { test: true } })
       const stored = { id: crypto.randomUUID(), form_id: form.id, form_version: endpoint.version ?? form.versions?.[0]?.number ?? null, submitted_at: new Date().toISOString(), language: schema.settings?.language ?? 'en', data: answers, submission_id: submissionId, channel: 'api' as const, meta: { ip: getRequestIP(event, { xForwardedFor: true }) ?? 'unknown', user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 300) } }
       responsesOf(tenant).responses.unshift(stored)
       saveResponses()
@@ -434,7 +446,11 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const updated = formResponses(tenant, form).find(item => item.id === entry.id)!
     return send(event, 200, { data: record(form, updated, choices) })
   } catch (error) {
-    if (error instanceof PublicError) return fail(event, error)
+    if (error instanceof PublicError) {
+      // Details name what the app sent: the API name, not the question key
+      const names = context.names
+      return fail(event, names ? Object.assign(new PublicError(error.code, error.details.map(detail => ({ ...detail, field: context.unknown?.has(detail.field) ? detail.field : (names.get(detail.field) ?? detail.field) })), error.headers)) : error)
+    }
     console.error('[public-api]', error)
     return fail(event, new PublicError('FRM-GEN-5000'))
   }

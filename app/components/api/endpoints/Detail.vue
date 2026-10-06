@@ -152,7 +152,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
             </UButton>
           </div>
           <ApiEndpointsFields v-if="tab === 'fields'" :fields="endpoint.fields" :writes="writes" :reads="reads" />
-          <ApiEndpointsExample v-else :methods="endpoint.methods" :url="endpoint.url" :fields="endpoint.fields" :page-size="endpoint.page_size" :headers="endpoint.headers.map(header => ({ name: header.name, value: header.value || header.preview }))" />
+          <ApiEndpointsExample v-else :methods="endpoint.methods" :url="endpoint.url" :fields="endpoint.fields" :page-size="endpoint.page_size" :headers="endpoint.headers.map(header => ({ name: header.name, value: header.value || header.preview }))" :signing="!!endpoint.setup.signing_tokens" />
         </section>
       </template>
     </template>

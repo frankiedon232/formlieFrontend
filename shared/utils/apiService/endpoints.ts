@@ -4,13 +4,16 @@
  * request / record shown in the portal and the docs. Values in examples are neutral, made up.
  */
 import type { ApiEndpointField } from '#shared/types/apiService'
-import { allFields, type FormField } from '#shared/utils/forms/build'
+import { allFields, keyFromLabel, type FormField } from '#shared/utils/forms/build'
+import { iconFromLabel } from '#shared/utils/forms/label-icons'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import { ENDPOINT_PATTERN } from '#shared/utils/urls/public'
 
 /** One question as an endpoint field, with the defaults for a new endpoint. */
-export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; accept: boolean; required: boolean; returned: boolean; filter: boolean }[]): ApiEndpointField[] {
+export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; name?: string; accept: boolean; required: boolean; returned: boolean; filter: boolean }[]): ApiEndpointField[] {
   const byKey = new Map((saved ?? []).map(item => [item.key, item]))
+  // API names: the saved one when it is valid and free, else a clean one from the label (first_name, first_name_2)
+  const taken = new Set<string>()
   const pageOf = new Map(schema.pages.flatMap((page, index) => page.rows.flatMap(row => row.fields.map(field => [field.id, index] as const))))
   return allFields(schema)
     .filter(field => !LAYOUT_TYPES.includes(field.type))
@@ -20,8 +23,12 @@ export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; ac
       const formRequired = !!field.required && acceptable
       const own = byKey.get(field.key)
       const accept = acceptable && (formRequired || (own ? own.accept : true))
+      const kept = own?.name && !checkApiName(own.name) && !taken.has(own.name) ? own.name : null
+      const name = kept ?? keyFromLabel(field.label?.trim() || field.key, [...taken, ...RESERVED_API_NAMES])
+      taken.add(name)
       return {
         key: field.key,
+        name,
         label: field.label,
         type: field.type,
         page: pageOf.get(field.id) ?? 0,
@@ -86,7 +93,10 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
     case 'url':
     case 'domain':
       return field.type === 'url' ? 'https://example.com' : 'example.com'
-    case 'number':
+    case 'number': {
+      const fromLabel = sampleForLabel(field)
+      return typeof fromLabel === 'number' ? fromLabel : 42
+    }
     case 'slider':
       return 42
     case 'currency':
@@ -96,7 +106,7 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
     case 'full_name':
       return { first: 'Alex', last: 'Morgan' }
     case 'date':
-      return '2026-10-06'
+      return sampleForLabel(field) === '1990-04-12' ? '1990-04-12' : '2026-10-06'
     case 'time':
       return '09:30'
     case 'datetime':
@@ -148,15 +158,17 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
     case 'long_text':
     case 'rich_text':
       return 'A few sentences of text.'
-    default:
-      return /name/.test(key) ? 'Alex Morgan' : /company|organi[sz]ation/.test(key) ? 'Example Ltd' : 'Some text'
+    default: {
+      const fromLabel = sampleForLabel(field)
+      return typeof fromLabel === 'string' ? fromLabel : /name/.test(key) ? 'Alex Morgan' : /company|organi[sz]ation/.test(key) ? 'Example Ltd' : 'Some text'
+    }
   }
 }
 
 /** The JSON body a POST / PUT sends: every accepted field (required first). */
 export function exampleRequestBody(fields: ApiEndpointField[]) {
   const sent = fields.filter(field => field.accept).sort((a, b) => Number(b.required) - Number(a.required))
-  return Object.fromEntries(sent.map(field => [field.key, sampleValue(field)]))
+  return Object.fromEntries(sent.map(field => [field.name, sampleValue(field)]))
 }
 
 /** One record as GET returns it: the reference, when, its status and every returned field. */
@@ -165,7 +177,7 @@ export function exampleRecord(fields: ApiEndpointField[]) {
     id: 'rsp_9fK2mQ7xLp',
     submitted_at: '2026-10-06T09:30:00Z',
     status: 'new',
-    data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.key, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : sampleValue(field)])),
+    data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.name, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : sampleValue(field)])),
   }
 }
 
@@ -195,5 +207,66 @@ export function apiChanges(live: { key: string; label: string; required: boolean
     added: after.filter(field => !before.has(field.key)).map(field => ({ key: field.key, label: field.label ?? field.key, required: !!field.required })),
     removed: [...before.values()].filter(field => !keys.has(field.key)).map(field => ({ key: field.key, label: field.label })),
     nowRequired: after.filter(field => field.required && before.has(field.key) && !before.get(field.key)!.required && !field.readonly && !field.disabled).map(field => ({ key: field.key, label: field.label ?? field.key })),
+  }
+}
+
+/** Words an API name can not be: they are the record's own fields and the list options. */
+export const RESERVED_API_NAMES = ['id', 'submitted_at', 'status', 'data', 'meta', 'page', 'per_page', 'sort', 'error']
+/** An API name: lower-case letters, digits and underscores, starting with a letter, up to 64. */
+export function checkApiName(name: string): 'required' | 'pattern' | 'reserved' | null {
+  if (!name.trim()) return 'required'
+  if (!/^[a-z][a-z0-9_]{0,63}$/.test(name)) return 'pattern'
+  return RESERVED_API_NAMES.includes(name) ? 'reserved' : null
+}
+
+/** An example text answer that fits the label (owner, 2026-10-06: "First name" → Alex, "City" → a city). */
+export function sampleForLabel(field: Pick<ApiEndpointField, 'key' | 'label'>): string | number | null {
+  const text = ` ${(field.label || field.key).toLowerCase().replace(/[_-]+/g, ' ')} `
+  if (/ (first|given) name /.test(text) || /prénom|vorname|nombre /.test(text)) return 'Alex'
+  if (/ (last|family) name | surname /.test(text) || /apellido|nachname/.test(text)) return 'Morgan'
+  switch (iconFromLabel(field.label, field.key)) {
+    case 'i-lucide-user':
+      return 'Alex Morgan'
+    case 'i-lucide-mail':
+      return 'alex.morgan@example.com'
+    case 'i-lucide-phone':
+      return '+44 7700 900123'
+    case 'i-lucide-building-2':
+      return 'Example Ltd'
+    case 'i-lucide-briefcase':
+      return 'Product designer'
+    case 'i-lucide-map-pin':
+      return '1 Example Street'
+    case 'i-lucide-building':
+      return 'Sample City'
+    case 'i-lucide-map':
+      return 'Sample Region'
+    case 'i-lucide-mailbox':
+      return '10115'
+    case 'i-lucide-earth':
+      return 'GB'
+    case 'i-lucide-globe':
+    case 'i-lucide-link':
+      return 'https://example.com'
+    case 'i-lucide-cake':
+      return '1990-04-12'
+    case 'i-lucide-banknote':
+      return 1250
+    case 'i-lucide-hash':
+      return 2
+    case 'i-lucide-hourglass':
+      return 34
+    case 'i-lucide-message-square':
+      return 'A few sentences of text.'
+    case 'i-lucide-tag':
+      return 'General enquiry'
+    case 'i-lucide-at-sign':
+      return 'alexmorgan'
+    case 'i-lucide-receipt':
+      return 'INV-2026-0042'
+    case 'i-lucide-id-card':
+      return 'X1234567'
+    default:
+      return null
   }
 }

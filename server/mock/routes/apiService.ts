@@ -21,7 +21,7 @@ import { z } from 'zod'
 import type { ApiInsights, ApiServiceSettings, ApiSetupSummary, ApiTokenSecrets, ApiTokenCreated, ApiTokenInsights, ApiUsage } from '#shared/types/apiService'
 import { API_STATUSES, API_TOKEN_MODES, API_TOKEN_STATUSES } from '#shared/types/apiService'
 import { checkHeaderName, checkHeaderValue, MAX_REQUIRED_HEADERS, ROTATION_GRACE_HOURS, secretPreview, TOKEN_LIFETIMES } from '#shared/utils/apiService/tokens'
-import { checkEndpointName, endpointFieldsOf, API_PAGE_SIZE_MAX } from '#shared/utils/apiService/endpoints'
+import { checkApiName, checkEndpointName, endpointFieldsOf, API_PAGE_SIZE_MAX } from '#shared/utils/apiService/endpoints'
 import { API_METHODS, type ApiMethod } from '#shared/utils/urls/public'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
@@ -46,7 +46,7 @@ const endpointInput = z.object({
   form_id: z.string(),
   version: z.number().int().positive().nullable(),
   methods: z.array(z.enum(API_METHODS)).max(4),
-  fields: z.array(z.object({ key: z.string().max(64), accept: z.boolean(), required: z.boolean(), returned: z.boolean(), filter: z.boolean() })).max(500),
+  fields: z.array(z.object({ key: z.string().max(64), name: z.string().max(64).optional(), accept: z.boolean(), required: z.boolean(), returned: z.boolean(), filter: z.boolean() })).max(500),
   page_size: z.number().int().min(1).max(API_PAGE_SIZE_MAX),
   headers: z.array(z.object({ name: z.string().trim().max(64), value: z.string().max(200).nullable() })).max(MAX_REQUIRED_HEADERS).optional(),
   status: z.enum(API_STATUSES).optional(),
@@ -253,6 +253,12 @@ function checked(tenant: MockTenant, values: z.infer<typeof endpointInput>, exce
   if (!schema || form.status !== 'published') throw new MockError('FRM-API-1002', [{ field: 'form_id', message: 'not_published' }])
   if (!channelsOf(form).includes('api')) throw new MockError('FRM-API-1019', [{ field: 'form_id', message: 'not_for_api' }])
   if (!values.methods.length) throw new MockError('FRM-GEN-1002', [{ field: 'methods', message: 'required' }])
+  // API names: valid and unique (the saved names are what apps use)
+  const names = values.fields.filter(item => item.name !== undefined)
+  const badName = names.find(item => checkApiName(item.name!))
+  if (badName) throw new MockError('FRM-GEN-1002', [{ field: `fields.${badName.key}.name`, message: checkApiName(badName.name!)! }])
+  const twice = names.find((item, index) => names.findIndex(other => other.name === item.name) !== index)
+  if (twice) throw new MockError('FRM-GEN-1002', [{ field: `fields.${twice.key}.name`, message: 'taken' }])
   const fields = endpointFieldsOf(schema, values.fields)
   const writes = values.methods.some(method => method === 'POST' || method === 'PUT')
   if (writes && !fields.some(field => field.accept)) throw new MockError('FRM-GEN-1002', [{ field: 'fields', message: 'accept' }])
@@ -276,7 +282,7 @@ function checked(tenant: MockTenant, values: z.infer<typeof endpointInput>, exce
     form_id: form.id,
     version: values.version,
     methods: API_METHODS.filter(method => values.methods.includes(method)),
-    fields: fields.map(({ key, accept, required, returned, filter }) => ({ key, accept, required, returned, filter })),
+    fields: fields.map(({ key, name, accept, required, returned, filter }) => ({ key, name, accept, required, returned, filter })),
     page_size: values.page_size,
     // New endpoints start not live: test tokens can try them, live calls wait for Go live (owner, 2026-10-06)
     status: values.status ?? 'disabled',

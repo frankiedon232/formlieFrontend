@@ -3805,6 +3805,15 @@
         "payment": "pembayaran tidak dapat dikirim melalui API",
         "locked": "hanya baca di formulir",
         "signature": "tanda tangan dibuat di halaman formulir"
+      },
+      "apiName": "Nama API untuk {label}",
+      "namesHint": "Aplikasi mengirim dan menerima setiap jawaban dengan nama API-nya, dibuat dari label (Nama depan → first_name). Ubah di sini jika perlu; setelah aplikasi memakainya, biarkan tetap sama.",
+      "nameInvalid": {
+        "required": "Beri nama.",
+        "pattern": "Hanya huruf kecil, angka, dan _, diawali huruf.",
+        "reserved": "Nama ini dipakai oleh rekaman itu sendiri (id, status, data…).",
+        "taken": "Pertanyaan lain sudah memakai nama ini.",
+        "fix": "Perbaiki nama API yang ditandai merah."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Semua endpoint",
         "allServices": "Semua layanan",
         "allEndpoints": "Semua endpoint",
-        "allMethods": "Semua metode"
+        "allMethods": "Semua metode",
+        "gone": "Layanan atau endpoint yang dihapus (tidak memanggil apa pun)"
       },
       "col": {
         "kind": "Tipe",
@@ -4010,6 +4020,10 @@
         "test": "Pakai token uji ini untuk mencoba endpoint di Dokumen & uji. Tidak ada yang disimpan. Buat token live saat kamu siap untuk panggilan sungguhan.",
         "live": "Jika mau, batasi siapa yang boleh memakainya dengan aturan akses, ujilah, lalu nyalakan endpoint.",
         "rule": "Tambah aturan akses"
+      },
+      "scopeGone": {
+        "title": "Mungkin memanggil {n} layanan atau endpoint yang dihapus | Mungkin memanggil {n} layanan atau endpoint yang dihapus",
+        "text": "Itu sudah dihapus, jadi token ini tidak dapat memanggilnya. Token tidak pernah diperluas ke semuanya; ubah apa yang boleh dipanggil agar mengarah ke layanan yang benar."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Gunakan huruf, angka, dan simbol biasa, hingga 200.",
         "duplicate": "Header ini sudah ada di daftar.",
         "fix": "Periksa header wajib."
-      }
+      },
+      "withOwn": "{n} endpoint dengan header sendiri | {n} endpoint dengan header sendiri",
+      "withoutOwn": "{n} lagi tanpa header | {n} lagi tanpa header",
+      "show": "Tampilkan nilai",
+      "hide": "Sembunyikan nilai"
     },
     "access": {
       "rules": "Aturan",

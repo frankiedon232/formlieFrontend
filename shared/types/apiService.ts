@@ -41,7 +41,10 @@ export interface ApiServiceSaveRequest {
 
 /** One question of the form, as the endpoint uses it. */
 export interface ApiEndpointField {
+  /** The question's key in the form (internal: stored answers, tables, exports). */
   key: string
+  /** Its name in the API's payloads and answers (owner, 2026-10-06): from the label (`first_name`), editable per endpoint. */
+  name: string
   label: string
   type: string
   page: number
@@ -112,6 +115,8 @@ export interface ApiEndpointSetup {
   /** Tokens (not revoked or expired) whose scope covers it. */
   tokens_live: number
   tokens_test: number
+  /** Of those, tokens with signed calls on: their calls also need X-Formalie-Timestamp and X-Formalie-Signature. */
+  signing_tokens: number
   /** Switched-on access rules that apply to it. */
   rules: number
   live: boolean
@@ -124,7 +129,7 @@ export interface ApiEndpointSaveRequest {
   form_id: string
   version: number | null
   methods: ApiMethod[]
-  fields: { key: string; accept: boolean; required: boolean; returned: boolean; filter: boolean }[]
+  fields: { key: string; name?: string; accept: boolean; required: boolean; returned: boolean; filter: boolean }[]
   page_size: number
   headers?: ApiHeaderInput[]
   status?: ApiStatus
@@ -194,6 +199,8 @@ export interface ApiToken extends ApiUsage {
   revoked_at: string | null
   /** Its secret can be shown again (after the password); false for tokens made before that existed. */
   viewable: boolean
+  /** Deleted services or endpoints still in its scope (it can not call them; never widened to everything). */
+  scope_gone: number
 }
 
 export interface ApiTokenSaveRequest {

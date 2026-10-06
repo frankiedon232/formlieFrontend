@@ -34,10 +34,12 @@ export function snippetFor(language: SnippetLanguage, call: SnippetCall): string
 }
 
 /** The calls an endpoint answers, with the headers and an example body each needs. */
-export function endpointCalls(endpoint: Pick<ApiEndpointDetail, 'methods' | 'url' | 'fields' | 'headers' | 'page_size'>, token = '<token>'): SnippetCall[] {
+export function endpointCalls(endpoint: Pick<ApiEndpointDetail, 'methods' | 'url' | 'fields' | 'headers' | 'page_size'> & { setup?: { signing_tokens?: number } }, token = '<token>'): SnippetCall[] {
   // The endpoint's required headers with their real values, so the examples copy and run as they are
   const extra = Object.fromEntries(endpoint.headers.map(header => [header.name, (header as { value?: string }).value || `<${header.name}>`]))
-  const auth = { Authorization: `Bearer ${token}` }
+  // Tokens with signed calls on (owner, 2026-10-06: every header a call needs is in the example)
+  const signed: Record<string, string> = endpoint.setup?.signing_tokens ? { 'X-Formalie-Timestamp': '<unix seconds>', 'X-Formalie-Signature': 'sha256=<hmac>' } : {}
+  const auth = { Authorization: `Bearer ${token}`, ...signed }
   const body = exampleRequestBody(endpoint.fields)
   return endpoint.methods.map(method => {
     if (method === 'GET') return { method, url: `${endpoint.url}?page=1&per_page=${Math.min(20, endpoint.page_size)}`, headers: { ...auth, ...extra } }
@@ -97,15 +99,15 @@ export function openApiFor(service: { name: string; description: string | null }
   const base = endpoints[0] ? endpoints[0].url.replace(/\/[^/]+$/, '') : ''
   for (const endpoint of endpoints) {
     const accepted = endpoint.fields.filter(field => field.accept)
-    const record = { type: 'object', properties: { id: { type: 'string' }, submitted_at: { type: 'string', format: 'date-time' }, status: { type: 'string' }, data: { type: 'object', properties: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.key, fieldSchema(field)])) } } }
-    const input = { type: 'object', properties: Object.fromEntries(accepted.map(field => [field.key, fieldSchema(field)])), required: accepted.filter(field => field.required).map(field => field.key), additionalProperties: false }
+    const record = { type: 'object', properties: { id: { type: 'string' }, submitted_at: { type: 'string', format: 'date-time' }, status: { type: 'string' }, data: { type: 'object', properties: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.name, fieldSchema(field)])) } } }
+    const input = { type: 'object', properties: Object.fromEntries(accepted.map(field => [field.name, fieldSchema(field)])), required: accepted.filter(field => field.required).map(field => field.name), additionalProperties: false }
     const headers = endpoint.headers.map(header => ({ name: header.name, in: 'header', required: true, schema: { type: 'string', ...((header as { value?: string }).value ? { example: (header as { value?: string }).value } : {}) } }))
     const errors = { '401': { description: 'FRM-API-1010' }, '403': { description: 'FRM-API-1009, FRM-API-1015' }, '422': { description: 'FRM-RESP-1001, FRM-API-1014' }, '429': { description: 'FRM-GEN-1029' } }
     const one = `/${endpoint.name}/{id}`
     const list = `/${endpoint.name}`
     for (const method of endpoint.methods) {
       if (method === 'GET') {
-        paths[list] = { ...paths[list], get: { summary: endpoint.description ?? endpoint.form.name, parameters: [...headers, { name: 'page', in: 'query', schema: { type: 'integer' } }, { name: 'per_page', in: 'query', schema: { type: 'integer', maximum: endpoint.page_size } }, ...endpoint.fields.filter(field => field.filter).map(field => ({ name: field.key, in: 'query', schema: fieldSchema(field) }))], responses: { '200': { description: 'OK', content: { 'application/json': { schema: { type: 'object', properties: { data: { type: 'array', items: record } } }, example: { data: [exampleRecord(endpoint.fields)] } } } }, ...errors } } }
+        paths[list] = { ...paths[list], get: { summary: endpoint.description ?? endpoint.form.name, parameters: [...headers, { name: 'page', in: 'query', schema: { type: 'integer' } }, { name: 'per_page', in: 'query', schema: { type: 'integer', maximum: endpoint.page_size } }, ...endpoint.fields.filter(field => field.filter).map(field => ({ name: field.name, in: 'query', schema: fieldSchema(field) }))], responses: { '200': { description: 'OK', content: { 'application/json': { schema: { type: 'object', properties: { data: { type: 'array', items: record } } }, example: { data: [exampleRecord(endpoint.fields)] } } } }, ...errors } } }
         paths[one] = { ...paths[one], get: { parameters: [...headers, { name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { '200': { description: 'OK', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, '404': { description: 'FRM-API-1013' }, ...errors } } }
       }
       if (method === 'POST') paths[list] = { ...paths[list], post: { parameters: [...headers, { name: 'Formalie-Key', in: 'header', schema: { type: 'string' }, description: 'Same key, same record: a retry never makes a second one.' }], requestBody: { required: true, content: { 'application/json': { schema: input, example: exampleRequestBody(endpoint.fields) } } }, responses: { '201': { description: 'Created', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, ...errors } } }

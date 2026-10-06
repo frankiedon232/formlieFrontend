@@ -4,22 +4,13 @@
   require headers of their own (set in the endpoint's Methods step), each with Edit.
 -->
 <script setup lang="ts">
-import type { ApiEndpoint, ApiServiceSettings } from '#shared/types/apiService'
+import type { ApiServiceSettings } from '#shared/types/apiService'
 
 const props = defineProps<{ settings: ApiServiceSettings | null }>()
 const emit = defineEmits<{ rotateKey: [] }>()
 const { t } = useI18n()
-const api = useApi()
 const { dateTime, relative } = useFormat()
 
-const endpoints = ref<ApiEndpoint[] | null>(null)
-onMounted(async () => {
-  try {
-    endpoints.value = (await api.list<ApiEndpoint>('/api-endpoints', { page_size: 100, sort: 'name' })).data.filter(item => item.required_headers.length)
-  } catch {
-    endpoints.value = []
-  }
-})
 const STANDARD = [
   { name: 'Authorization', value: 'Bearer <token>', when: 'always' },
   { name: 'Content-Type', value: 'application/json', when: 'body' },
@@ -66,19 +57,7 @@ const base = computed(() => (props.settings ? `${props.settings.base_url}/${prop
         <h2 class="text-sm font-semibold text-highlighted">{{ t('apiService.headers.customTitle') }}</h2>
         <p class="text-xs text-muted">{{ t('apiService.headers.customDesc') }}</p>
       </div>
-      <div v-if="!endpoints" class="grid gap-2 sm:grid-cols-2"><USkeleton v-for="n in 2" :key="n" class="h-16 rounded-lg" /></div>
-      <AppEmpty v-else-if="!endpoints.length" size="xs" icon="i-lucide-heading" :title="t('apiService.headers.none')" :description="t('apiService.headers.noneDesc')" />
-      <div v-else class="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-        <div v-for="endpoint in endpoints" :key="endpoint.id" class="flex h-full flex-col gap-2 rounded-lg border border-default p-3">
-          <div class="flex items-center justify-between gap-2">
-            <NuxtLink :to="{ path: '/api-service/endpoints', query: { endpoint: endpoint.id } }" class="truncate font-mono text-sm font-semibold text-highlighted hover:underline" dir="ltr">/{{ endpoint.name }}</NuxtLink>
-            <UButton :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" variant="ghost" size="xs" :to="`/api-service/endpoints/${endpoint.id}/edit`" />
-          </div>
-          <div class="mt-auto flex flex-wrap gap-1">
-            <UBadge v-for="name in endpoint.required_headers" :key="name" :label="name" color="neutral" variant="outline" size="sm" class="rounded-md font-mono" />
-          </div>
-        </div>
-      </div>
+      <ApiHeadersList />
     </UCard>
   </div>
 </template>

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import type { ApiEndpointDetail } from '../../shared/types/apiService'
 import { endpointCalls, fieldSchema, openApiFor, snippetFor } from '../../shared/utils/apiService/snippets'
 
-const f = (key: string, type: string, extra: Record<string, unknown> = {}) => ({ key, label: key, type, page: 0, form_required: false, acceptable: true, accept: true, required: false, returned: true, filterable: true, filter: false, ...extra })
+const f = (key: string, type: string, extra: Record<string, unknown> = {}) => ({ key, name: key, label: key, type, page: 0, form_required: false, acceptable: true, accept: true, required: false, returned: true, filterable: true, filter: false, ...extra })
 const endpoint = {
   id: 'e1',
   name: 'job-applications',

@@ -6,11 +6,11 @@
 -->
 <script setup lang="ts">
 import type { ApiEndpointField } from '#shared/types/apiService'
-import { notAcceptedReason } from '#shared/utils/apiService/endpoints'
+import { checkApiName, notAcceptedReason } from '#shared/utils/apiService/endpoints'
 import { FIELD_TYPES } from '#shared/utils/forms/fields'
 
 const props = defineProps<{ fields: ApiEndpointField[]; editable?: boolean; writes: boolean; reads: boolean }>()
-const emit = defineEmits<{ change: [key: string, patch: Partial<Pick<ApiEndpointField, 'accept' | 'required' | 'returned' | 'filter'>>] }>()
+const emit = defineEmits<{ change: [key: string, patch: Partial<Pick<ApiEndpointField, 'accept' | 'required' | 'returned' | 'filter' | 'name'>>] }>()
 const { t } = useI18n()
 
 const icon = (type: string) => (FIELD_TYPES as Record<string, { icon: string }>)[type]?.icon ?? 'i-lucide-circle-help'
@@ -30,6 +30,12 @@ function set(field: ApiEndpointField, flag: Flag, value: boolean) {
   if (flag === 'accept' && !value) patch.required = false
   if (flag === 'returned' && !value) patch.filter = false
   emit('change', field.key, patch)
+}
+/** API names: valid and unique (what apps send and get). */
+const nameProblem = (field: ApiEndpointField) => {
+  const problem = checkApiName(field.name)
+  if (problem) return t(`apiService.fields.nameInvalid.${problem}`)
+  return props.fields.some(other => other.key !== field.key && other.name === field.name) ? t('apiService.fields.nameInvalid.taken') : null
 }
 const why = (field: ApiEndpointField) => {
   const reason = notAcceptedReason(field)
@@ -51,7 +57,22 @@ const why = (field: ApiEndpointField) => {
             <span class="flex size-7 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="icon(field.type)" class="size-3.5 text-muted" /></span>
             <div class="flex min-w-0 flex-col">
               <span class="truncate text-sm text-highlighted">{{ field.label }}</span>
-              <span class="truncate text-[11px] text-muted"><code class="font-mono" dir="ltr">{{ field.key }}</code><template v-if="why(field) && writes"> · {{ why(field) }}</template></span>
+              <div v-if="editable" class="mt-1 flex flex-col gap-0.5">
+                <UInput
+                  :model-value="field.name"
+                  size="xs"
+                  :color="nameProblem(field) ? 'error' : 'neutral'"
+                  :highlight="!!nameProblem(field)"
+                  class="w-full max-w-64"
+                  :ui="{ base: 'font-mono' }"
+                  dir="ltr"
+                  :aria-label="t('apiService.fields.apiName', { label: field.label })"
+                  @update:model-value="value => emit('change', field.key, { name: String(value).trim().toLowerCase() })"
+                />
+                <span v-if="nameProblem(field)" class="text-[11px] text-error">{{ nameProblem(field) }}</span>
+                <span v-else-if="why(field) && writes" class="text-[11px] text-muted">{{ why(field) }}</span>
+              </div>
+              <span v-else class="truncate text-[11px] text-muted"><code class="font-mono text-highlighted" dir="ltr">{{ field.name }}</code><template v-if="why(field) && writes"> · {{ why(field) }}</template></span>
             </div>
           </div>
           <div class="flex flex-wrap gap-x-4 gap-y-1.5 ps-9.5 sm:flex-nowrap sm:gap-0 sm:ps-0">

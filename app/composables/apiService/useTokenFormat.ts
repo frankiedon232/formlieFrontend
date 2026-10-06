@@ -6,9 +6,9 @@ export function useTokenFormat() {
   const { date, relative } = useFormat()
   const kindLabel = (token: Pick<ApiToken, 'kind'>) => t(`apiService.tokens.kind.${token.kind}`)
   /** "All endpoints", or the services / endpoints it is limited to, then the methods. */
-  function scopeText(token: Pick<ApiToken, 'scopes' | 'scope_names'>) {
+  function scopeText(token: Pick<ApiToken, 'scopes' | 'scope_names' | 'scope_gone'>) {
     const where = [...token.scope_names.services, ...token.scope_names.endpoints.map(name => `/${name}`)]
-    const target = where.length ? where.join(', ') : t('apiService.tokens.scope.all')
+    const target = where.length ? where.join(', ') : token.scope_gone ? t('apiService.tokens.scope.gone') : t('apiService.tokens.scope.all')
     return token.scopes.methods.length ? `${target} · ${token.scopes.methods.join(', ')}` : target
   }
   const expiresText = (token: Pick<ApiToken, 'expires_at' | 'status'>) =>

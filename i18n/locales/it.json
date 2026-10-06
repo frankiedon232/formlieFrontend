@@ -3805,6 +3805,15 @@
         "payment": "i pagamenti non possono essere inviati tramite l'API",
         "locked": "in sola lettura nel modulo",
         "signature": "le firme si disegnano nella pagina del modulo"
+      },
+      "apiName": "Nome API per {label}",
+      "namesHint": "Le app inviano e ricevono ogni risposta con il suo nome API, ricavato dall'etichetta (Nome → first_name). Modificalo qui se vuoi; quando le app lo usano, lascialo invariato.",
+      "nameInvalid": {
+        "required": "Dagli un nome.",
+        "pattern": "Solo lettere minuscole, cifre e _, a partire da una lettera.",
+        "reserved": "Questo nome è usato dal record stesso (id, status, data…).",
+        "taken": "Un'altra domanda usa già questo nome.",
+        "fix": "Correggi i nomi API segnati in rosso."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Tutti gli endpoint",
         "allServices": "Tutti i servizi",
         "allEndpoints": "Tutti gli endpoint",
-        "allMethods": "Tutti i metodi"
+        "allMethods": "Tutti i metodi",
+        "gone": "Un servizio o endpoint eliminato (non chiama nulla)"
       },
       "col": {
         "kind": "Tipo",
@@ -4010,6 +4020,10 @@
         "test": "Usa questo token di test per provare l'endpoint in Docs e test. Nulla viene salvato. Crea un token live quando sei pronto per chiamate reali.",
         "live": "Se vuoi, limita chi può usarlo con regole di accesso, provalo, poi attiva l'endpoint.",
         "rule": "Aggiungi una regola di accesso"
+      },
+      "scopeGone": {
+        "title": "Può chiamare {n} servizio o endpoint eliminato | Può chiamare {n} servizi o endpoint eliminati",
+        "text": "Sono stati eliminati, quindi questo token non può chiamarli. Non viene mai esteso a tutto; modifica cosa può chiamare per puntarlo al servizio giusto."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Usa lettere, numeri e simboli semplici, fino a 200.",
         "duplicate": "Questo header è già nell'elenco.",
         "fix": "Controlla gli header obbligatori."
-      }
+      },
+      "withOwn": "{n} endpoint con header propri | {n} endpoint con header propri",
+      "withoutOwn": "altri {n} senza | altri {n} senza",
+      "show": "Mostra il valore",
+      "hide": "Nascondi il valore"
     },
     "access": {
       "rules": "Regole",

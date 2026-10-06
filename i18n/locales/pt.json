@@ -3805,6 +3805,15 @@
         "payment": "pagamentos não podem ser enviados pela API",
         "locked": "somente leitura no formulário",
         "signature": "as assinaturas são desenhadas na página do formulário"
+      },
+      "apiName": "Nome de API para {label}",
+      "namesHint": "Os apps enviam e recebem cada resposta pelo seu nome de API, criado a partir do rótulo (Nome → first_name). Altere aqui se quiser; depois que os apps o usarem, mantenha-o igual.",
+      "nameInvalid": {
+        "required": "Dê um nome.",
+        "pattern": "Apenas letras minúsculas, dígitos e _, começando por uma letra.",
+        "reserved": "Este nome é usado pelo próprio registro (id, status, data…).",
+        "taken": "Outra pergunta já usa este nome.",
+        "fix": "Corrija os nomes de API marcados em vermelho."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Todos os endpoints",
         "allServices": "Todos os serviços",
         "allEndpoints": "Todos os endpoints",
-        "allMethods": "Todos os métodos"
+        "allMethods": "Todos os métodos",
+        "gone": "Um serviço ou endpoint excluído (não chama nada)"
       },
       "col": {
         "kind": "Tipo",
@@ -4010,6 +4020,10 @@
         "test": "Use este token de teste para experimentar o endpoint em Docs e testes. Nada é salvo. Crie um token live quando estiver pronto para chamadas reais.",
         "live": "Se quiser, limite quem pode usá-lo com regras de acesso, teste e depois ative o endpoint.",
         "rule": "Adicionar uma regra de acesso"
+      },
+      "scopeGone": {
+        "title": "Pode chamar {n} serviço ou endpoint excluído | Pode chamar {n} serviços ou endpoints excluídos",
+        "text": "Foram excluídos, então este token não pode chamá-los. Ele nunca é ampliado para tudo; edite o que ele pode chamar para apontá-lo ao serviço certo."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Use letras, números e símbolos simples, até 200.",
         "duplicate": "Este cabeçalho já está na lista.",
         "fix": "Verifique os cabeçalhos obrigatórios."
-      }
+      },
+      "withOwn": "{n} endpoint com cabeçalhos próprios | {n} endpoints com cabeçalhos próprios",
+      "withoutOwn": "mais {n} sem | mais {n} sem",
+      "show": "Mostrar o valor",
+      "hide": "Ocultar o valor"
     },
     "access": {
       "rules": "Regras",

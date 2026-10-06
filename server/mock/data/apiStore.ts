@@ -37,7 +37,7 @@ export interface StoredApiEndpoint {
   form_id: string
   version: number | null
   methods: ApiMethod[]
-  fields: { key: string; accept: boolean; required: boolean; returned: boolean; filter: boolean }[]
+  fields: { key: string; name?: string; accept: boolean; required: boolean; returned: boolean; filter: boolean }[]
   page_size: number
   /** Headers every call must send, with their values (F13 M2). */
   headers: { name: string; value: string }[]
@@ -145,7 +145,7 @@ export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[
         form_id: form.id,
         version: null,
         methods: SEED_METHODS[i % SEED_METHODS.length]!,
-        fields: schema ? endpointFieldsOf(schema).map(({ key, accept, required, returned, filter }) => ({ key, accept, required, returned, filter })) : [],
+        fields: schema ? endpointFieldsOf(schema).map(({ key, name, accept, required, returned, filter }) => ({ key, name, accept, required, returned, filter })) : [],
         page_size: 50,
         headers: [],
         status: 'active',
@@ -187,6 +187,16 @@ export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[
     token.preview = secretPreview(secret)
     if (token.client_id) token.client_id = newSecret('client_id', token.mode)
     if (token.signing_secret) token.signing_secret = newSecret('signing', token.mode)
+    saveApi()
+  }
+  // Before API names (owner, 2026-10-06): every endpoint gets clean names from the labels, once, then they stay
+  for (const endpoint of api.endpoints) {
+    if (endpoint.fields.every(field => field.name)) continue
+    const form = formsOf(tenant).forms.find(item => item.id === endpoint.form_id)
+    const schema = form ? schemaOf(form, endpoint.version) : null
+    if (!schema) continue
+    const named = new Map(endpointFieldsOf(schema, endpoint.fields).map(field => [field.key, field.name]))
+    endpoint.fields = endpoint.fields.map(field => ({ ...field, name: named.get(field.key) ?? field.key }))
     saveApi()
   }
   // Saved before M3: access rules and rate limits
@@ -336,6 +346,8 @@ export function toToken(tenant: MockTenant, token: StoredApiToken): ApiToken {
     created_at: token.created_at,
     revoked_at: token.revoked_at,
     viewable: !!token.secret && !token.revoked_at,
+    // Services or endpoints in its scope that were deleted: kept (dropping them would widen the token), shown as such
+    scope_gone: token.scopes.services.filter(id => !api.services.some(item => item.id === id)).length + token.scopes.endpoints.filter(id => !api.endpoints.some(item => item.id === id)).length,
     ...tokenUsage(token),
   }
 }
@@ -443,6 +455,7 @@ function endpointSetup(tenant: MockTenant, endpoint: StoredApiEndpoint, form: St
     form_api: !!form && channelsOf(form).includes('api'),
     tokens_live: callers.filter(token => token.mode === 'live').length,
     tokens_test: callers.filter(token => token.mode === 'test').length,
+    signing_tokens: callers.filter(token => token.signing).length,
     rules: rulesFor(api.rules, endpoint).filter(rule => rule.enabled).length,
     live: endpoint.status === 'active',
   }

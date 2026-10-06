@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { apiChanges, checkEndpointName, endpointFieldsOf, endpointNameFrom, exampleRecord, exampleRequestBody, notAcceptedReason } from '../../shared/utils/apiService/endpoints'
+import { apiChanges, checkApiName, checkEndpointName, endpointFieldsOf, endpointNameFrom, exampleRecord, exampleRequestBody, notAcceptedReason } from '../../shared/utils/apiService/endpoints'
 import type { FormSchemaV1 } from '../../shared/utils/forms/schema'
 
 const field = (key: string, type: string, extra: Record<string, unknown> = {}) => ({ id: `f_${key}`, key, type, label: key.replace(/_/g, ' '), ...extra })
@@ -99,5 +99,30 @@ describe('what a new version changes for apps', () => {
       nowRequired: [{ key: 'email', label: 'Email' }],
     })
     expect(apiChanges(live.slice(0, 2), live.slice(0, 2).map(field => ({ ...field, label: `${field.label}!` })))).toEqual({ added: [], removed: [], nowRequired: [] })
+  })
+})
+
+describe('API names', () => {
+  const suffixed = { schema_version: 1, pages: [{ id: 'p', rows: [{ id: 'r', fields: [field('first_name_w6r3', 'short_text', { label: 'First Name' }), field('status_x1', 'short_text', { label: 'Status' }), field('first_name_a9', 'short_text', { label: 'First name' }), field('phone_number_4cde', 'short_text', { label: 'Phone Number' })] }] }] } as unknown as FormSchemaV1
+
+  it('come from the label, never reserved, unique', () => {
+    expect(endpointFieldsOf(suffixed).map(item => item.name)).toEqual(['first_name', 'status_2', 'first_name_2', 'phone_number'])
+  })
+
+  it('keep a saved name, fix an invalid one', () => {
+    const fields = endpointFieldsOf(suffixed, [
+      { key: 'first_name_w6r3', name: 'given', accept: true, required: false, returned: true, filter: false },
+      { key: 'status_x1', name: 'Bad Name', accept: true, required: false, returned: true, filter: false },
+    ])
+    expect(fields.map(item => item.name)).toEqual(['given', 'status_2', 'first_name', 'phone_number'])
+    expect(checkApiName('first_name')).toBeNull()
+    expect(checkApiName('id')).toBe('reserved')
+    expect(checkApiName('First')).toBe('pattern')
+  })
+
+  it('shape the examples, with values that fit the label', () => {
+    const body = exampleRequestBody(endpointFieldsOf(suffixed))
+    expect(body).toMatchObject({ first_name: 'Alex', phone_number: '+44 7700 900123' })
+    expect(Object.keys(exampleRecord(endpointFieldsOf(suffixed)).data)).toContain('first_name')
   })
 })

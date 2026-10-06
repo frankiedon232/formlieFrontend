@@ -3805,6 +3805,15 @@
         "payment": "les paiements ne peuvent pas être envoyés via l'API",
         "locked": "en lecture seule dans le formulaire",
         "signature": "les signatures se dessinent sur la page du formulaire"
+      },
+      "apiName": "Nom d'API pour {label}",
+      "namesHint": "Les applications envoient et reçoivent chaque réponse sous son nom d'API, tiré du libellé (Prénom → first_name). Modifiez-le ici si vous voulez ; une fois utilisé par des applications, gardez-le identique.",
+      "nameInvalid": {
+        "required": "Donnez-lui un nom.",
+        "pattern": "Lettres minuscules, chiffres et _ uniquement, en commençant par une lettre.",
+        "reserved": "Ce nom est pris par l'enregistrement lui-même (id, status, data…).",
+        "taken": "Une autre question utilise déjà ce nom.",
+        "fix": "Corrigez les noms d'API marqués en rouge."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Tous les endpoints",
         "allServices": "Tous les services",
         "allEndpoints": "Tous les endpoints",
-        "allMethods": "Toutes les méthodes"
+        "allMethods": "Toutes les méthodes",
+        "gone": "Un service ou endpoint supprimé (n'appelle rien)"
       },
       "col": {
         "kind": "Type",
@@ -4010,6 +4020,10 @@
         "test": "Utilisez ce jeton de test pour essayer l'endpoint dans Docs et tests. Rien n'est enregistré. Créez un jeton live quand vous êtes prêt pour de vrais appels.",
         "live": "Si vous voulez, limitez qui peut l'utiliser avec des règles d'accès, testez-le, puis activez l'endpoint.",
         "rule": "Ajouter une règle d'accès"
+      },
+      "scopeGone": {
+        "title": "Peut appeler {n} service ou endpoint supprimé | Peut appeler {n} services ou endpoints supprimés",
+        "text": "Ils ont été supprimés, donc ce jeton ne peut pas les appeler. Il n'est jamais étendu à tout; modifiez ce qu'il peut appeler pour le diriger vers le bon service."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Utilisez des lettres, chiffres et symboles simples, jusqu'à 200.",
         "duplicate": "Cet en-tête figure déjà dans la liste.",
         "fix": "Vérifiez les en-têtes obligatoires."
-      }
+      },
+      "withOwn": "{n} endpoint avec ses propres en-têtes | {n} endpoints avec leurs propres en-têtes",
+      "withoutOwn": "{n} de plus sans | {n} de plus sans",
+      "show": "Afficher la valeur",
+      "hide": "Masquer la valeur"
     },
     "access": {
       "rules": "Règles",

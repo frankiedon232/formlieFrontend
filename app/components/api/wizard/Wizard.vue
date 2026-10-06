@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import type { ApiEndpointDetail, ApiEndpointField, ApiEndpointSaveRequest, ApiHeaderDraft, ApiServiceSettings, ApiStatus } from '#shared/types/apiService'
-import { checkEndpointName, endpointNameFrom } from '#shared/utils/apiService/endpoints'
+import { checkApiName, checkEndpointName, endpointNameFrom } from '#shared/utils/apiService/endpoints'
 import { checkHeaderName, checkHeaderValue } from '#shared/utils/apiService/tokens'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
@@ -67,7 +67,7 @@ async function loadFields() {
       const own = before.get(field.key)
       if (!own) return field
       const accept = field.acceptable && (field.form_required || own.accept)
-      return { ...field, accept, required: accept && (field.form_required || own.required), returned: own.returned, filter: field.filterable && own.returned && own.filter }
+      return { ...field, name: own.name, accept, required: accept && (field.form_required || own.required), returned: own.returned, filter: field.filterable && own.returned && own.filter }
     })
     versions.value = data.versions
   } catch (error) {
@@ -106,7 +106,9 @@ function check(step: Step): boolean {
     if (bad) problems.headers = t('apiService.headers.invalid.fix')
   }
   if (step === 'fields') {
-    if (writes.value && !fields.value.some(field => field.accept)) problems.fields = t('apiService.invalid.accept')
+    const names = fields.value.map(field => field.name)
+    if (fields.value.some((field, i) => checkApiName(field.name) || names.indexOf(field.name) !== i)) problems.fields = t('apiService.fields.nameInvalid.fix')
+    else if (writes.value && !fields.value.some(field => field.accept)) problems.fields = t('apiService.invalid.accept')
     else if (reads.value && !fields.value.some(field => field.returned)) problems.fields = t('apiService.invalid.returned')
   }
   errors.value = problems
@@ -136,7 +138,7 @@ async function save() {
       form_id: formId.value!,
       version: version.value,
       methods: methods.value,
-      fields: fields.value.map(({ key, accept, required, returned, filter }) => ({ key, accept, required, returned, filter })),
+      fields: fields.value.map(({ key, name, accept, required, returned, filter }) => ({ key, name, accept, required, returned, filter })),
       page_size: pageSize.value,
       headers: headers.value.map(header => ({ name: header.name.trim(), value: header.value })),
       status: status.value,
@@ -179,6 +181,7 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
         <ApiWizardHeaders v-model="headers" :show-errors="headerErrors" />
       </div>
       <div v-else-if="current === 'fields'" class="flex flex-col gap-3">
+        <p class="flex items-start gap-2 text-xs text-muted"><UIcon name="i-lucide-braces" class="mt-0.5 size-3.5 shrink-0" />{{ t('apiService.fields.namesHint') }}</p>
         <div v-if="loadingFields && !fields.length" class="flex flex-col gap-2"><USkeleton v-for="n in 5" :key="n" class="h-12 w-full" /></div>
         <ApiEndpointsFields v-else :fields="fields" editable :writes="writes" :reads="reads" :class="loadingFields ? 'opacity-60' : ''" @change="changeField" />
         <p v-if="errors.fields" class="text-sm text-error">{{ errors.fields }}</p>

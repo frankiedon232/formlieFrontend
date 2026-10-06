@@ -105,6 +105,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
       <template v-else>
         <UAlert v-if="token.rotating_until" icon="i-lucide-refresh-cw" color="warning" variant="subtle" :title="t('apiService.tokens.rotating', { until: dateTime(token.rotating_until) })" />
         <UAlert v-if="token.status === 'revoked'" icon="i-lucide-ban" color="error" variant="subtle" :title="t('apiService.tokens.revokedOn', { date: dateTime(token.revoked_at!) })" :description="t('apiService.tokens.revokedDesc')" />
+        <UAlert v-if="token.scope_gone && token.status !== 'revoked'" icon="i-lucide-triangle-alert" color="warning" variant="subtle" :title="t('apiService.tokens.scopeGone.title', { n: token.scope_gone }, token.scope_gone)" :description="t('apiService.tokens.scopeGone.text')" :actions="[{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', color: 'neutral', variant: 'outline', size: 'xs', onClick: () => emit('edit', token!) }]" />
         <AppSecretReveal v-if="token.status !== 'revoked'" :preview="token.kind === 'client' ? (token.client_id ?? token.preview) : token.preview" :endpoint="`/api-tokens/${token.id}/reveal`" :viewable="token.viewable" :title="t('apiService.tokens.secret.title')" :labels="{ token: t('apiService.tokens.secret.token'), client_secret: t('apiService.tokens.secret.clientSecret'), signing_secret: t('apiService.tokens.secret.signing') }" />
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
@@ -121,11 +122,11 @@ const menu = computed<DropdownMenuItem[][]>(() => {
           <div class="grid gap-2 sm:grid-cols-3">
             <div class="flex h-full flex-col gap-1.5 rounded-lg border border-default p-3">
               <span class="text-[11px] text-muted">{{ t('nav.apiServices') }}</span>
-              <span class="text-sm text-highlighted">{{ token.scope_names.services.join(', ') || t('apiService.tokens.scope.allServices') }}</span>
+              <span class="text-sm text-highlighted">{{ token.scope_names.services.join(', ') || (token.scopes.services.length ? t('apiService.tokens.scope.gone') : t('apiService.tokens.scope.allServices')) }}</span>
             </div>
             <div class="flex h-full flex-col gap-1.5 rounded-lg border border-default p-3">
               <span class="text-[11px] text-muted">{{ t('nav.apiEndpoints') }}</span>
-              <span class="text-sm text-highlighted" :class="token.scope_names.endpoints.length ? 'font-mono' : ''" dir="ltr">{{ token.scope_names.endpoints.map(name => `/${name}`).join(', ') || t('apiService.tokens.scope.allEndpoints') }}</span>
+              <span class="text-sm text-highlighted" :class="token.scope_names.endpoints.length ? 'font-mono' : ''" dir="ltr">{{ token.scope_names.endpoints.map(name => `/${name}`).join(', ') || (token.scopes.endpoints.length ? t('apiService.tokens.scope.gone') : t('apiService.tokens.scope.allEndpoints')) }}</span>
             </div>
             <div class="flex h-full flex-col gap-1.5 rounded-lg border border-default p-3">
               <span class="text-[11px] text-muted">{{ t('apiService.col.methods') }}</span>

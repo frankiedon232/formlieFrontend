@@ -3805,6 +3805,15 @@
         "payment": "Zahlungen können nicht über die API gesendet werden",
         "locked": "im Formular schreibgeschützt",
         "signature": "Unterschriften werden auf der Formularseite gezeichnet"
+      },
+      "apiName": "API-Name für {label}",
+      "namesHint": "Apps senden und empfangen jede Antwort unter ihrem API-Namen, der aus der Bezeichnung entsteht (Vorname → first_name). Ändern Sie ihn hier nach Wunsch; sobald Apps ihn nutzen, lassen Sie ihn unverändert.",
+      "nameInvalid": {
+        "required": "Geben Sie einen Namen ein.",
+        "pattern": "Nur Kleinbuchstaben, Ziffern und _, beginnend mit einem Buchstaben.",
+        "reserved": "Dieser Name ist für den Datensatz selbst reserviert (id, status, data…).",
+        "taken": "Eine andere Frage verwendet diesen Namen bereits.",
+        "fix": "Korrigieren Sie die rot markierten API-Namen."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "Alle Endpunkte",
         "allServices": "Alle Services",
         "allEndpoints": "Alle Endpunkte",
-        "allMethods": "Alle Methoden"
+        "allMethods": "Alle Methoden",
+        "gone": "Ein gelöschter Dienst oder Endpunkt (ruft nichts auf)"
       },
       "col": {
         "kind": "Typ",
@@ -4010,6 +4020,10 @@
         "test": "Nutze dieses Test-Token, um den Endpunkt unter Doku & Tests auszuprobieren. Nichts wird gespeichert. Erstelle ein Live-Token, wenn du für echte Aufrufe bereit bist.",
         "live": "Beschränke bei Bedarf mit Zugriffsregeln, wer es nutzen darf, teste es und schalte dann den Endpunkt ein.",
         "rule": "Zugriffsregel hinzufügen"
+      },
+      "scopeGone": {
+        "title": "Kann {n} gelöschten Dienst oder Endpunkt aufrufen | Kann {n} gelöschte Dienste oder Endpunkte aufrufen",
+        "text": "Diese wurden gelöscht, daher kann dieses Token sie nicht aufrufen. Es wird nie auf alles erweitert; bearbeiten Sie, was es aufrufen darf, um es auf den richtigen Dienst zu richten."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Verwenden Sie einfache Buchstaben, Ziffern und Symbole, bis zu 200.",
         "duplicate": "Dieser Header steht bereits in der Liste.",
         "fix": "Prüfen Sie die erforderlichen Header."
-      }
+      },
+      "withOwn": "{n} Endpunkt mit eigenen Headern | {n} Endpunkte mit eigenen Headern",
+      "withoutOwn": "{n} weitere ohne | {n} weitere ohne",
+      "show": "Wert anzeigen",
+      "hide": "Wert ausblenden"
     },
     "access": {
       "rules": "Regeln",

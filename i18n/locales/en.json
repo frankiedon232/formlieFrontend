@@ -3805,6 +3805,15 @@
         "payment": "payments can't be sent through the API",
         "locked": "read-only on the form",
         "signature": "signatures are drawn on the form page"
+      },
+      "apiName": "API name for {label}",
+      "namesHint": "Apps send and receive each answer under its API name, made from the label (First name → first_name). Change it here if you like; once apps use it, keep it the same.",
+      "nameInvalid": {
+        "required": "Give it a name.",
+        "pattern": "Lower-case letters, digits and _ only, starting with a letter.",
+        "reserved": "This name is taken by the record itself (id, status, data…).",
+        "taken": "Another question already uses this name.",
+        "fix": "Fix the API names marked in red."
       }
     },
     "call": {
@@ -3962,7 +3971,8 @@
         "all": "All endpoints",
         "allServices": "All services",
         "allEndpoints": "All endpoints",
-        "allMethods": "All methods"
+        "allMethods": "All methods",
+        "gone": "A deleted service or endpoint (calls nothing)"
       },
       "col": {
         "kind": "Type",
@@ -4010,6 +4020,10 @@
         "test": "Use this test token to try the endpoint in Docs & testing. Nothing is stored. Make a live token when you are ready for real calls.",
         "live": "Limit who may use it with access rules if you want, test it, then switch the endpoint on.",
         "rule": "Add an access rule"
+      },
+      "scopeGone": {
+        "title": "It may call {n} deleted service or endpoint | It may call {n} deleted services or endpoints",
+        "text": "Those were deleted, so this token can not call them. It is never widened to everything; edit what it may call to point it at the right service."
       }
     },
     "rotate": {
@@ -4068,7 +4082,11 @@
         "chars": "Use plain letters, numbers and symbols, up to 200.",
         "duplicate": "This header is already in the list.",
         "fix": "Check the required headers."
-      }
+      },
+      "withOwn": "{n} endpoint with its own headers | {n} endpoints with their own headers",
+      "withoutOwn": "{n} more without own headers | {n} more without own headers",
+      "show": "Show the value",
+      "hide": "Hide the value"
     },
     "access": {
       "rules": "Rules",
