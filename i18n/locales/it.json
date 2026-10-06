@@ -570,7 +570,8 @@
     "FRM-API-1011": "Manca un header obbligatorio oppure ha un valore errato.",
     "FRM-API-1012": "La firma della richiesta manca, è troppo vecchia o è errata.",
     "FRM-API-1013": "Non esiste un record con questo id.",
-    "FRM-API-1014": "Alcuni campi non possono essere inviati a questo endpoint."
+    "FRM-API-1014": "Alcuni campi non possono essere inviati a questo endpoint.",
+    "FRM-API-1015": "Le regole di accesso non consentono questo chiamante."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Connessione",
       "api_service": "Servizio API",
       "api_endpoint": "Endpoint",
-      "api_token": "Token API"
+      "api_token": "Token API",
+      "api_rule": "Regola di accesso"
     },
     "field": {
       "name": "Nome",
@@ -993,7 +995,13 @@
       "api_token_updated": "Token API modificato",
       "api_token_rotated": "Token API ruotato",
       "api_token_revoked": "Token API revocato",
-      "api_token_deleted": "Token API eliminato"
+      "api_token_deleted": "Token API eliminato",
+      "api_rule_created": "Regola di accesso creata",
+      "api_rule_updated": "Regola di accesso modificata",
+      "api_rule_enabled": "Regola di accesso attivata",
+      "api_rule_disabled": "Regola di accesso disattivata",
+      "api_rule_deleted": "Regola di accesso eliminata",
+      "api_limits_changed": "Limiti di frequenza dell'API modificati"
     },
     "detail": {
       "who": "Chi",
@@ -3936,6 +3944,146 @@
         "chars": "Usa lettere, numeri e simboli semplici, fino a 200.",
         "duplicate": "Questo header è già nell'elenco.",
         "fix": "Controlla gli header obbligatori."
+      }
+    },
+    "access": {
+      "rules": "Regole",
+      "viewSwitch": "Regole o limiti di frequenza",
+      "newTitle": "Nuova regola",
+      "editTitle": "Modifica regola",
+      "desc": "Decidi chi può chiamare i tuoi endpoint. Un blocco prevale sempre; quando si applicano regole di consenso, entrano solo i chiamanti che ne soddisfano una.",
+      "create": "Crea regola",
+      "search": "Cerca indirizzi, domini o note…",
+      "empty": "Ancora nessuna regola di accesso",
+      "emptyDesc": "Senza regole, ogni chiamante con un token valido entra. Blocca gli indirizzi di cui non ti fidi, oppure consenti solo i tuoi.",
+      "enabled": "La regola è attiva",
+      "on": "Attiva",
+      "off": "Disattiva",
+      "lastHit": "Deciso {when}",
+      "neverHit": "Non ancora usata",
+      "noHits": "Nessuna chiamata decisa da questa regola negli ultimi 30 giorni.",
+      "noNote": "Nessuna nota",
+      "notePlaceholder": "Perché esiste questa regola",
+      "pickTarget": "Scegline una",
+      "pickCountries": "Scegli i paesi",
+      "searchCountries": "Cerca paesi…",
+      "valuesCount": "{n} valore | {n} valori",
+      "domainAllowNote": "Le regole di dominio corrispondono solo alle chiamate dai browser (leggono il sito web da cui arriva una chiamata). Con una regola di consenso di questo tipo, le chiamate da server e Postman non corrispondono, quindi aggiungi anche una regola di consenso per i loro indirizzi IP.",
+      "deleteTitle": "Eliminare questa regola?",
+      "deleteDesc": "{values} non verrà più controllato. Le chiamate che bloccava potranno entrare di nuovo.",
+      "action": {
+        "allow": "Consenti",
+        "block": "Blocca"
+      },
+      "actionHint": {
+        "allow": "Entrano solo i chiamanti che soddisfano una regola di consenso (dove si applicano regole di consenso).",
+        "block": "I chiamanti corrispondenti vengono rifiutati, anche se un'altra regola li consente."
+      },
+      "kind": {
+        "ip": "Indirizzo IP",
+        "domain": "Dominio del sito web",
+        "country": "Paese",
+        "region": "Regione"
+      },
+      "kindHint": {
+        "ip": "Singoli indirizzi o intervalli (IPv4 e IPv6).",
+        "domain": "Il sito web da cui arriva una chiamata del browser.",
+        "country": "Dove si trova l'indirizzo del chiamante.",
+        "region": "Interi continenti in una volta."
+      },
+      "valuesLabel": {
+        "ip": "Indirizzi e intervalli",
+        "domain": "Domini",
+        "country": "Paesi",
+        "region": "Regioni"
+      },
+      "valuesHelp": {
+        "ip": "Uno per riga, ad es. 203.0.113.10 o 198.51.100.0/24.",
+        "domain": "Uno per riga; *.example.com copre ogni sottodominio.",
+        "country": "Scegline uno o più.",
+        "region": "Scegline una o più."
+      },
+      "region": {
+        "AF": "Africa",
+        "AS": "Asia",
+        "EU": "Europa",
+        "NA": "America del Nord e Centrale",
+        "OC": "Oceania",
+        "SA": "America del Sud"
+      },
+      "scope": {
+        "all": "Tutti gli endpoint",
+        "service": "Un servizio",
+        "endpoint": "Un endpoint"
+      },
+      "col": {
+        "values": "Corrisponde a",
+        "action": "Regola",
+        "kind": "Tipo",
+        "scope": "Si applica a",
+        "state": "Attiva",
+        "hits": "Chiamate decise (30 giorni)",
+        "lastHit": "Ultimo utilizzo",
+        "note": "Nota"
+      },
+      "sort": {
+        "hits": "Più usate",
+        "lastHit": "Usate di recente",
+        "blockFirst": "Prima i blocchi"
+      },
+      "kpi": {
+        "refused": "Chiamate rifiutate dalle regole",
+        "rules": "Regole",
+        "limited": "Rallentate",
+        "byKind": "Regole per tipo",
+        "blockWins": "Il blocco prevale sempre"
+      },
+      "invalid": {
+        "required": "Aggiungi almeno un valore.",
+        "ip": "\"{value}\" non è un indirizzo IP né un intervallo.",
+        "domain": "\"{value}\" non è un dominio.",
+        "country": "\"{value}\" non è un paese.",
+        "region": "\"{value}\" non è una regione."
+      },
+      "toast": {
+        "created": "Regola creata",
+        "saved": "Regola salvata",
+        "on": "Regola attivata",
+        "off": "Regola disattivata",
+        "deleted": "Regola eliminata"
+      },
+      "test": {
+        "title": "Prova un chiamante",
+        "desc": "Verifica se un chiamante entra in un endpoint e quale regola decide.",
+        "ip": "Indirizzo IP del chiamante",
+        "origin": "Sito web da cui chiama",
+        "anyCountry": "Sconosciuto",
+        "check": "Verifica",
+        "allowed": "Entra",
+        "refused": "Rifiutato",
+        "because": {
+          "allow": "Consentito dalla regola per {value} ({scope}).",
+          "block": "Bloccato dalla regola per {value} ({scope})."
+        },
+        "noAllow": "A questo endpoint si applicano regole di consenso e nessuna corrisponde a questo chiamante.",
+        "noRules": "Nessuna regola lo ferma ({n} regola controllata). | Nessuna regola lo ferma ({n} regole controllate).",
+        "region": "Regione: {region}",
+        "openRule": "Apri la regola"
+      },
+      "limits": {
+        "title": "Limiti di frequenza",
+        "desc": "Quante chiamate al minuto sono consentite prima che i chiamanti debbano rallentare.",
+        "per_token": "Per token",
+        "per_tokenHint": "Tutte le chiamate fatte con un token, su tutti i tuoi endpoint.",
+        "per_ip": "Per indirizzo IP",
+        "per_ipHint": "Tutte le chiamate da un indirizzo, con o senza token valido.",
+        "per_endpoint": "Per endpoint",
+        "per_endpointHint": "Tutte le chiamate a un endpoint, da tutti i chiamanti insieme.",
+        "perMinute": "{n} al minuto",
+        "none": "Nessun limite",
+        "answer": "Oltre un limite, i chiamanti ricevono 429 con Retry-After (secondi di attesa); ogni risposta indica il limite e quanto resta.",
+        "saved": "Limiti di frequenza salvati",
+        "changed": "Modificato {when}"
       }
     }
   },

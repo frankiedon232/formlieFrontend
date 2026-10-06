@@ -54,6 +54,8 @@ describe('required headers', () => {
     expect(checkHeaderName('Authorization')).toBe('reserved')
     expect(checkHeaderName('content-type')).toBe('reserved')
     expect(checkHeaderName('X-Formalie-Anything')).toBe('reserved')
+    expect(checkHeaderName('Formalie-Key')).toBe('reserved')
+    expect(checkHeaderName('formalie-anything')).toBe('reserved')
   })
   it('wants a printable value of up to 200 characters', () => {
     expect(checkHeaderValue('acme-42')).toBeNull()

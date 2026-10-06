@@ -570,7 +570,8 @@
     "FRM-API-1011": "Thiếu một header bắt buộc hoặc giá trị không đúng.",
     "FRM-API-1012": "Chữ ký của yêu cầu bị thiếu, quá cũ hoặc sai.",
     "FRM-API-1013": "Không có bản ghi với id này.",
-    "FRM-API-1014": "Một số trường không thể gửi tới endpoint này."
+    "FRM-API-1014": "Một số trường không thể gửi tới endpoint này.",
+    "FRM-API-1015": "Quy tắc truy cập không cho phép bên gọi này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Kết nối",
       "api_service": "Dịch vụ API",
       "api_endpoint": "Endpoint",
-      "api_token": "Token API"
+      "api_token": "Token API",
+      "api_rule": "Quy tắc truy cập"
     },
     "field": {
       "name": "Tên",
@@ -993,7 +995,13 @@
       "api_token_updated": "Đã thay đổi token API",
       "api_token_rotated": "Đã xoay token API",
       "api_token_revoked": "Đã thu hồi token API",
-      "api_token_deleted": "Đã xóa token API"
+      "api_token_deleted": "Đã xóa token API",
+      "api_rule_created": "Đã tạo quy tắc truy cập",
+      "api_rule_updated": "Đã thay đổi quy tắc truy cập",
+      "api_rule_enabled": "Đã bật quy tắc truy cập",
+      "api_rule_disabled": "Đã tắt quy tắc truy cập",
+      "api_rule_deleted": "Đã xóa quy tắc truy cập",
+      "api_limits_changed": "Đã thay đổi giới hạn tốc độ API"
     },
     "detail": {
       "who": "Ai",
@@ -3936,6 +3944,146 @@
         "chars": "Dùng chữ cái, chữ số và ký hiệu thông thường, tối đa 200.",
         "duplicate": "Header này đã có trong danh sách.",
         "fix": "Hãy kiểm tra các header bắt buộc."
+      }
+    },
+    "access": {
+      "rules": "Quy tắc",
+      "viewSwitch": "Quy tắc hoặc giới hạn tốc độ",
+      "newTitle": "Quy tắc mới",
+      "editTitle": "Sửa quy tắc",
+      "desc": "Quyết định ai được gọi các endpoint của bạn. Chặn luôn được ưu tiên; khi có quy tắc cho phép, chỉ những bên gọi khớp với một quy tắc mới vào được.",
+      "create": "Tạo quy tắc",
+      "search": "Tìm địa chỉ, tên miền hoặc ghi chú…",
+      "empty": "Chưa có quy tắc truy cập",
+      "emptyDesc": "Không có quy tắc, mọi bên gọi có token hợp lệ đều vào được. Hãy chặn các địa chỉ bạn không tin tưởng, hoặc chỉ cho phép địa chỉ của bạn.",
+      "enabled": "Quy tắc đang bật",
+      "on": "Bật",
+      "off": "Tắt",
+      "lastHit": "Đã quyết định {when}",
+      "neverHit": "Chưa dùng",
+      "noHits": "Không có lệnh gọi nào do quy tắc này quyết định trong 30 ngày qua.",
+      "noNote": "Không có ghi chú",
+      "notePlaceholder": "Vì sao có quy tắc này",
+      "pickTarget": "Chọn một",
+      "pickCountries": "Chọn quốc gia",
+      "searchCountries": "Tìm quốc gia…",
+      "valuesCount": "{n} giá trị | {n} giá trị",
+      "domainAllowNote": "Quy tắc tên miền chỉ khớp với lệnh gọi từ trình duyệt (chúng đọc trang web nơi lệnh gọi đến). Với quy tắc cho phép như vậy, lệnh gọi từ máy chủ và Postman không khớp, vì vậy hãy thêm cả quy tắc cho phép cho địa chỉ IP của chúng.",
+      "deleteTitle": "Xóa quy tắc này?",
+      "deleteDesc": "{values} sẽ không còn được kiểm tra. Các lệnh gọi mà nó từng chặn có thể vào lại.",
+      "action": {
+        "allow": "Cho phép",
+        "block": "Chặn"
+      },
+      "actionHint": {
+        "allow": "Chỉ những bên gọi khớp với một quy tắc cho phép mới vào được (nơi áp dụng quy tắc cho phép).",
+        "block": "Bên gọi khớp sẽ bị từ chối, kể cả khi quy tắc khác cho phép."
+      },
+      "kind": {
+        "ip": "Địa chỉ IP",
+        "domain": "Tên miền trang web",
+        "country": "Quốc gia",
+        "region": "Khu vực"
+      },
+      "kindHint": {
+        "ip": "Địa chỉ đơn lẻ hoặc dải địa chỉ (IPv4 và IPv6).",
+        "domain": "Trang web nơi lệnh gọi từ trình duyệt đến.",
+        "country": "Nơi đặt địa chỉ của bên gọi.",
+        "region": "Cả châu lục cùng một lúc."
+      },
+      "valuesLabel": {
+        "ip": "Địa chỉ và dải địa chỉ",
+        "domain": "Tên miền",
+        "country": "Quốc gia",
+        "region": "Khu vực"
+      },
+      "valuesHelp": {
+        "ip": "Mỗi dòng một mục, ví dụ 203.0.113.10 hoặc 198.51.100.0/24.",
+        "domain": "Mỗi dòng một mục; *.example.com bao gồm mọi tên miền con.",
+        "country": "Chọn một hoặc nhiều.",
+        "region": "Chọn một hoặc nhiều."
+      },
+      "region": {
+        "AF": "Châu Phi",
+        "AS": "Châu Á",
+        "EU": "Châu Âu",
+        "NA": "Bắc và Trung Mỹ",
+        "OC": "Châu Đại Dương",
+        "SA": "Nam Mỹ"
+      },
+      "scope": {
+        "all": "Tất cả endpoint",
+        "service": "Một dịch vụ",
+        "endpoint": "Một endpoint"
+      },
+      "col": {
+        "values": "Khớp với",
+        "action": "Quy tắc",
+        "kind": "Loại",
+        "scope": "Áp dụng cho",
+        "state": "Bật",
+        "hits": "Lệnh gọi đã quyết định (30 ngày)",
+        "lastHit": "Dùng gần nhất",
+        "note": "Ghi chú"
+      },
+      "sort": {
+        "hits": "Dùng nhiều nhất",
+        "lastHit": "Dùng gần đây",
+        "blockFirst": "Chặn trước"
+      },
+      "kpi": {
+        "refused": "Lệnh gọi bị quy tắc từ chối",
+        "rules": "Quy tắc",
+        "limited": "Bị làm chậm",
+        "byKind": "Quy tắc theo loại",
+        "blockWins": "Chặn luôn được ưu tiên"
+      },
+      "invalid": {
+        "required": "Thêm ít nhất một giá trị.",
+        "ip": "\"{value}\" không phải địa chỉ IP hay dải địa chỉ.",
+        "domain": "\"{value}\" không phải tên miền.",
+        "country": "\"{value}\" không phải quốc gia.",
+        "region": "\"{value}\" không phải khu vực."
+      },
+      "toast": {
+        "created": "Đã tạo quy tắc",
+        "saved": "Đã lưu quy tắc",
+        "on": "Đã bật quy tắc",
+        "off": "Đã tắt quy tắc",
+        "deleted": "Đã xóa quy tắc"
+      },
+      "test": {
+        "title": "Kiểm tra một bên gọi",
+        "desc": "Xem bên gọi có vào được endpoint không và quy tắc nào quyết định.",
+        "ip": "Địa chỉ IP của bên gọi",
+        "origin": "Trang web nơi gọi đến",
+        "anyCountry": "Không rõ",
+        "check": "Kiểm tra",
+        "allowed": "Vào được",
+        "refused": "Bị từ chối",
+        "because": {
+          "allow": "Được cho phép bởi quy tắc cho {value} ({scope}).",
+          "block": "Bị chặn bởi quy tắc cho {value} ({scope})."
+        },
+        "noAllow": "Endpoint này áp dụng quy tắc cho phép và không quy tắc nào khớp với bên gọi này.",
+        "noRules": "Không quy tắc nào chặn (đã kiểm tra {n} quy tắc). | Không quy tắc nào chặn (đã kiểm tra {n} quy tắc).",
+        "region": "Khu vực: {region}",
+        "openRule": "Mở quy tắc"
+      },
+      "limits": {
+        "title": "Giới hạn tốc độ",
+        "desc": "Số lệnh gọi mỗi phút được phép trước khi bên gọi phải chậm lại.",
+        "per_token": "Theo token",
+        "per_tokenHint": "Mọi lệnh gọi bằng một token, trên tất cả endpoint của bạn.",
+        "per_ip": "Theo địa chỉ IP",
+        "per_ipHint": "Mọi lệnh gọi từ một địa chỉ, có hoặc không có token hợp lệ.",
+        "per_endpoint": "Theo endpoint",
+        "per_endpointHint": "Mọi lệnh gọi đến một endpoint, từ tất cả bên gọi cộng lại.",
+        "perMinute": "{n} mỗi phút",
+        "none": "Không giới hạn",
+        "answer": "Khi vượt giới hạn, bên gọi nhận 429 kèm Retry-After (số giây phải chờ); mỗi phản hồi nêu giới hạn và phần còn lại.",
+        "saved": "Đã lưu giới hạn tốc độ",
+        "changed": "Đã thay đổi {when}"
       }
     }
   },

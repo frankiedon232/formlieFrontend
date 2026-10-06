@@ -570,7 +570,8 @@
     "FRM-API-1011": "Un en-tête obligatoire manque ou a une valeur incorrecte.",
     "FRM-API-1012": "La signature de la requête manque, est trop ancienne ou est incorrecte.",
     "FRM-API-1013": "Aucun enregistrement avec cet identifiant.",
-    "FRM-API-1014": "Certains champs ne peuvent pas être envoyés à cet endpoint."
+    "FRM-API-1014": "Certains champs ne peuvent pas être envoyés à cet endpoint.",
+    "FRM-API-1015": "Les règles d’accès n’autorisent pas cet appelant."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -857,7 +858,8 @@
       "data_source": "Connexion",
       "api_service": "Service API",
       "api_endpoint": "Endpoint",
-      "api_token": "Jeton d'API"
+      "api_token": "Jeton d'API",
+      "api_rule": "Règle d'accès"
     },
     "field": {
       "name": "Nom",
@@ -993,7 +995,13 @@
       "api_token_updated": "Jeton d'API modifié",
       "api_token_rotated": "Jeton d'API renouvelé",
       "api_token_revoked": "Jeton d'API révoqué",
-      "api_token_deleted": "Jeton d'API supprimé"
+      "api_token_deleted": "Jeton d'API supprimé",
+      "api_rule_created": "Règle d'accès créée",
+      "api_rule_updated": "Règle d'accès modifiée",
+      "api_rule_enabled": "Règle d'accès activée",
+      "api_rule_disabled": "Règle d'accès désactivée",
+      "api_rule_deleted": "Règle d'accès supprimée",
+      "api_limits_changed": "Limites de débit de l'API modifiées"
     },
     "detail": {
       "who": "Qui",
@@ -3936,6 +3944,146 @@
         "chars": "Utilisez des lettres, chiffres et symboles simples, jusqu'à 200.",
         "duplicate": "Cet en-tête figure déjà dans la liste.",
         "fix": "Vérifiez les en-têtes obligatoires."
+      }
+    },
+    "access": {
+      "rules": "Règles",
+      "viewSwitch": "Règles ou limites de débit",
+      "newTitle": "Nouvelle règle",
+      "editTitle": "Modifier la règle",
+      "desc": "Choisissez qui peut appeler vos points de terminaison. Un blocage l'emporte toujours ; dès que des règles d'autorisation s'appliquent, seuls les appelants correspondant à l'une d'elles entrent.",
+      "create": "Créer une règle",
+      "search": "Rechercher des adresses, domaines ou notes…",
+      "empty": "Aucune règle d'accès pour l'instant",
+      "emptyDesc": "Sans règle, tout appelant disposant d'un jeton valide entre. Bloquez les adresses dont vous vous méfiez, ou n'autorisez que les vôtres.",
+      "enabled": "La règle est activée",
+      "on": "Activée",
+      "off": "Désactivée",
+      "lastHit": "Décidé {when}",
+      "neverHit": "Pas encore utilisée",
+      "noHits": "Aucun appel décidé par cette règle ces 30 derniers jours.",
+      "noNote": "Aucune note",
+      "notePlaceholder": "Pourquoi cette règle existe",
+      "pickTarget": "Choisir une option",
+      "pickCountries": "Choisir des pays",
+      "searchCountries": "Rechercher des pays…",
+      "valuesCount": "{n} valeur | {n} valeurs",
+      "domainAllowNote": "Les règles de domaine ne correspondent qu'aux appels issus de navigateurs (ils lisent le site web d'où vient l'appel). Avec une telle règle d'autorisation, les appels depuis des serveurs et Postman ne correspondent pas ; ajoutez donc aussi une règle d'autorisation pour leurs adresses IP.",
+      "deleteTitle": "Supprimer cette règle ?",
+      "deleteDesc": "{values} ne sera plus vérifié. Les appels qu'elle bloquait pourront de nouveau entrer.",
+      "action": {
+        "allow": "Autoriser",
+        "block": "Bloquer"
+      },
+      "actionHint": {
+        "allow": "Seuls les appelants correspondant à une règle d'autorisation entrent (là où des règles d'autorisation s'appliquent).",
+        "block": "Les appelants correspondants sont refusés, même si une autre règle les autorise."
+      },
+      "kind": {
+        "ip": "Adresse IP",
+        "domain": "Domaine de site web",
+        "country": "Pays",
+        "region": "Région"
+      },
+      "kindHint": {
+        "ip": "Adresses uniques ou plages (IPv4 et IPv6).",
+        "domain": "Le site web d'où provient un appel de navigateur.",
+        "country": "Où se situe l'adresse de l'appelant.",
+        "region": "Des continents entiers en une fois."
+      },
+      "valuesLabel": {
+        "ip": "Adresses et plages",
+        "domain": "Domaines",
+        "country": "Pays",
+        "region": "Régions"
+      },
+      "valuesHelp": {
+        "ip": "Une par ligne, p. ex. 203.0.113.10 ou 198.51.100.0/24.",
+        "domain": "Une par ligne ; *.example.com couvre tous les sous-domaines.",
+        "country": "Choisissez-en une ou plusieurs.",
+        "region": "Choisissez-en une ou plusieurs."
+      },
+      "region": {
+        "AF": "Afrique",
+        "AS": "Asie",
+        "EU": "Europe",
+        "NA": "Amérique du Nord et centrale",
+        "OC": "Océanie",
+        "SA": "Amérique du Sud"
+      },
+      "scope": {
+        "all": "Tous les points de terminaison",
+        "service": "Un service",
+        "endpoint": "Un point de terminaison"
+      },
+      "col": {
+        "values": "Correspond à",
+        "action": "Règle",
+        "kind": "Type",
+        "scope": "S'applique à",
+        "state": "Activée",
+        "hits": "Appels décidés (30 jours)",
+        "lastHit": "Dernière utilisation",
+        "note": "Note"
+      },
+      "sort": {
+        "hits": "Les plus utilisées",
+        "lastHit": "Utilisées en dernier",
+        "blockFirst": "Blocages d'abord"
+      },
+      "kpi": {
+        "refused": "Appels refusés par des règles",
+        "rules": "Règles",
+        "limited": "Ralentis",
+        "byKind": "Règles par type",
+        "blockWins": "Le blocage l'emporte toujours"
+      },
+      "invalid": {
+        "required": "Ajoutez au moins une valeur.",
+        "ip": "« {value} » n'est ni une adresse IP ni une plage.",
+        "domain": "« {value} » n'est pas un domaine.",
+        "country": "« {value} » n'est pas un pays.",
+        "region": "« {value} » n'est pas une région."
+      },
+      "toast": {
+        "created": "Règle créée",
+        "saved": "Règle enregistrée",
+        "on": "Règle activée",
+        "off": "Règle désactivée",
+        "deleted": "Règle supprimée"
+      },
+      "test": {
+        "title": "Tester un appelant",
+        "desc": "Vérifiez si un appelant entre sur un point de terminaison et quelle règle décide.",
+        "ip": "Adresse IP de l'appelant",
+        "origin": "Site web depuis lequel il appelle",
+        "anyCountry": "Inconnu",
+        "check": "Vérifier",
+        "allowed": "Entre",
+        "refused": "Refusé",
+        "because": {
+          "allow": "Autorisé par la règle pour {value} ({scope}).",
+          "block": "Bloqué par la règle pour {value} ({scope})."
+        },
+        "noAllow": "Des règles d'autorisation s'appliquent à ce point de terminaison et aucune ne correspond à cet appelant.",
+        "noRules": "Aucune règle ne l'arrête ({n} règle vérifiée). | Aucune règle ne l'arrête ({n} règles vérifiées).",
+        "region": "Région : {region}",
+        "openRule": "Ouvrir la règle"
+      },
+      "limits": {
+        "title": "Limites de débit",
+        "desc": "Combien d'appels par minute sont autorisés avant que les appelants doivent ralentir.",
+        "per_token": "Par jeton",
+        "per_tokenHint": "Tous les appels effectués avec un jeton, sur l'ensemble de vos points de terminaison.",
+        "per_ip": "Par adresse IP",
+        "per_ipHint": "Tous les appels d'une adresse, avec ou sans jeton valide.",
+        "per_endpoint": "Par point de terminaison",
+        "per_endpointHint": "Tous les appels vers un point de terminaison, tous appelants confondus.",
+        "perMinute": "{n} par minute",
+        "none": "Aucune limite",
+        "answer": "Au-delà d'une limite, les appelants reçoivent 429 avec Retry-After (secondes à attendre) ; chaque réponse indique la limite et ce qu'il reste.",
+        "saved": "Limites de débit enregistrées",
+        "changed": "Modifié {when}"
       }
     }
   },

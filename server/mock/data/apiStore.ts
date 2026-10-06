@@ -7,7 +7,7 @@
  * once, when made. Data saved before M2 is brought up to date the first time it is read.
  */
 import { createHash, randomBytes } from 'node:crypto'
-import type { ApiEndpoint, ApiEndpointDetail, ApiService, ApiStatus, ApiToken, ApiTokenKind, ApiTokenMode, ApiTokenScopes, ApiUsage } from '#shared/types/apiService'
+import type { ApiAccessRule, ApiEndpoint, ApiEndpointDetail, ApiRateLimits, ApiRuleAction, ApiRuleKind, ApiService, ApiStatus, ApiToken, ApiTokenKind, ApiTokenMode, ApiTokenScopes, ApiUsage } from '#shared/types/apiService'
 import { maskValue, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { endpointFieldsOf, endpointNameFrom } from '#shared/utils/apiService/endpoints'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
@@ -68,6 +68,22 @@ export interface StoredApiToken {
   revoked_at: string | null
 }
 
+export interface StoredAccessRule {
+  id: string
+  action: ApiRuleAction
+  kind: ApiRuleKind
+  values: string[]
+  scope: { type: 'all' | 'service' | 'endpoint'; id: string | null }
+  note: string | null
+  enabled: boolean
+  /** Calls the rule decided, per day (made-up history for seeded rules, plus real calls). */
+  hits: Record<string, number>
+  last_hit_at: string | null
+  created_by: { id: string; name: string }
+  created_at: string
+  updated_at: string
+}
+
 interface TenantApi {
   api_key: string
   previous_key?: string | null
@@ -76,6 +92,10 @@ interface TenantApi {
   services: StoredApiService[]
   endpoints: StoredApiEndpoint[]
   tokens?: StoredApiToken[]
+  rules?: StoredAccessRule[]
+  limits?: ApiRateLimits
+  /** Calls refused by a rate limit, per day. */
+  limited?: Record<string, number>
 }
 
 const DAY = 86_400_000
@@ -98,7 +118,7 @@ const SEED_SERVICES = [
 const SEED_METHODS: ApiMethod[][] = [['POST'], ['GET', 'POST', 'PUT'], ['GET', 'POST', 'PUT', 'DELETE'], ['GET'], ['POST', 'GET']]
 
 /** The workspace's API service (seeded once on its published forms). */
-export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[] } {
+export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[]; rules: StoredAccessRule[]; limits: ApiRateLimits; limited: Record<string, number> } {
   let api = stores.get(tenant.id)
   if (!api) {
     const owner = MOCK_USERS.find(user => user.tenant_id === tenant.id && user.role === 'owner') ?? MOCK_USERS.find(user => user.tenant_id === tenant.id)
@@ -137,7 +157,70 @@ export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[
     api.tokens = seedTokens(api)
     saveApi()
   }
-  return api as TenantApi & { tokens: StoredApiToken[] }
+  // Before the Formalie prefixes (owner, 2026-10-06): the sample tokens (nobody has their secrets) get new ones
+  const SEEDED = ['Website sign-ups', 'Partner sandbox', 'Mobile app', 'Old import script']
+  for (const token of api.tokens ?? []) {
+    if (!SEEDED.includes(token.name) || token.preview.startsWith('formalie_')) continue
+    const secret = newSecret(token.kind, token.mode)
+    token.secret_hash = hashSecret(secret)
+    token.preview = secretPreview(secret)
+    if (token.client_id) token.client_id = newSecret('client_id', token.mode)
+    if (token.signing_secret) token.signing_secret = newSecret('signing', token.mode)
+    saveApi()
+  }
+  // Saved before M3: access rules and rate limits
+  if (!api.rules || !api.limits) {
+    api.rules ??= seedRules(api)
+    api.limits ??= { per_token: 600, per_ip: 120, per_endpoint: 1200, updated_at: null }
+    api.limited ??= {}
+    saveApi()
+  }
+  return api as TenantApi & { tokens: StoredApiToken[]; rules: StoredAccessRule[]; limits: ApiRateLimits; limited: Record<string, number> }
+}
+
+/** Sample rules that never get in the way of testing: blocks on documentation addresses, and a website-only rule switched off. */
+function seedRules(api: TenantApi): StoredAccessRule[] {
+  const by = api.services[0]?.created_by ?? { id: 'system', name: 'Formalie' }
+  const hits = (seed: string, base: number) => {
+    const out: Record<string, number> = {}
+    for (let i = 0; i < 30; i++) {
+      const count = Math.round(base * ((seedOf(`${seed}:${i}`) % 100) / 100))
+      if (count) out[new Date(Date.now() - i * DAY).toISOString().slice(0, 10)] = count
+    }
+    return out
+  }
+  const at = (days: number) => iso(Date.now() - days * DAY)
+  const website = api.services[0]
+  return [
+    { id: crypto.randomUUID(), action: 'block', kind: 'ip', values: ['192.0.2.66', '198.51.100.0/28'], scope: { type: 'all', id: null }, note: 'Seen scraping; blocked everywhere.', enabled: true, hits: hits('block-ip', 14), last_hit_at: at(0.2), created_by: by, created_at: at(40), updated_at: at(40) },
+    { id: crypto.randomUUID(), action: 'block', kind: 'domain', values: ['*.spam-example.net'], scope: { type: 'all', id: null }, note: null, enabled: true, hits: hits('block-domain', 5), last_hit_at: at(2), created_by: by, created_at: at(25), updated_at: at(25) },
+    { id: crypto.randomUUID(), action: 'allow', kind: 'domain', values: ['example.com', '*.example.com'], scope: { type: website ? 'service' : 'all', id: website?.id ?? null }, note: 'Website only: switch on when the new site is live.', enabled: false, hits: {}, last_hit_at: null, created_by: by, created_at: at(10), updated_at: at(10) },
+  ]
+}
+
+export function toRule(tenant: MockTenant, rule: StoredAccessRule): ApiAccessRule {
+  const api = apiOf(tenant)
+  const today = Date.parse(new Date().toISOString().slice(0, 10))
+  const daily = Array.from({ length: 30 }, (_, i) => {
+    const date = new Date(today - (29 - i) * DAY).toISOString().slice(0, 10)
+    return { date, count: rule.hits[date] ?? 0 }
+  })
+  const name = rule.scope.type === 'service' ? (api.services.find(item => item.id === rule.scope.id)?.name ?? null) : rule.scope.type === 'endpoint' ? (api.endpoints.find(item => item.id === rule.scope.id)?.name ?? null) : null
+  return {
+    id: rule.id,
+    action: rule.action,
+    kind: rule.kind,
+    values: rule.values,
+    scope: { ...rule.scope, name },
+    note: rule.note,
+    enabled: rule.enabled,
+    hits_30d: daily.reduce((sum, day) => sum + day.count, 0),
+    daily,
+    last_hit_at: rule.last_hit_at,
+    created_by: rule.created_by,
+    created_at: rule.created_at,
+    updated_at: rule.updated_at,
+  }
 }
 
 export const hashSecret = (secret: string) => createHash('sha256').update(secret).digest('hex')

@@ -110,6 +110,8 @@ With `NUXT_PUBLIC_API_MOCK=true` the mock answers real calls to your endpoints (
 4. Postman checks certificates: turn off "SSL certificate verification" (Settings → General) or add the mkcert root CA (`mkcert -CAROOT` → `rootCA.pem`) under Settings → Certificates.
 5. Client id + secret: `POST …/{apiKey}/token` with `{ "client_id": "…", "client_secret": "…" }`, then use the `access_token` as the bearer.
 
+6. Access rules and rate limits apply in the mock too. To try them from Postman, these mock-only headers stand in for what the real service reads from the connection: `X-Forwarded-For: 203.0.113.10` (the caller's IP) and `X-Debug-Country: GB` (the caller's country). `Origin: https://shop.example.com` acts as a browser caller for domain rules. A refused call answers 403 `FRM-API-1015`; over a rate limit 429 with `Retry-After`.
+
 A response sent with a live token shows up under the form's Responses (channel API). The mock keeps tokens and responses in `.data/mock`.
 
 ## Project env (`.env`, copy from `.env.example`)

@@ -570,7 +570,8 @@
     "FRM-API-1011": "Kichwa kinachohitajika hakipo au kina thamani isiyo sahihi.",
     "FRM-API-1012": "Saini ya ombi haipo, ni ya zamani mno au si sahihi.",
     "FRM-API-1013": "Hakuna rekodi yenye kitambulisho hiki.",
-    "FRM-API-1014": "Baadhi ya sehemu haziwezi kutumwa kwa endpoint hii."
+    "FRM-API-1014": "Baadhi ya sehemu haziwezi kutumwa kwa endpoint hii.",
+    "FRM-API-1015": "Sheria za ufikiaji haziruhusu mpigaji huyu."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Muunganisho",
       "api_service": "Huduma ya API",
       "api_endpoint": "Endpoint",
-      "api_token": "Tokeni ya API"
+      "api_token": "Tokeni ya API",
+      "api_rule": "Kanuni ya ufikiaji"
     },
     "field": {
       "name": "Jina",
@@ -993,7 +995,13 @@
       "api_token_updated": "Tokeni ya API imebadilishwa",
       "api_token_rotated": "Tokeni ya API imezungushwa",
       "api_token_revoked": "Tokeni ya API imebatilishwa",
-      "api_token_deleted": "Tokeni ya API imefutwa"
+      "api_token_deleted": "Tokeni ya API imefutwa",
+      "api_rule_created": "Kanuni ya ufikiaji imeundwa",
+      "api_rule_updated": "Kanuni ya ufikiaji imebadilishwa",
+      "api_rule_enabled": "Kanuni ya ufikiaji imewashwa",
+      "api_rule_disabled": "Kanuni ya ufikiaji imezimwa",
+      "api_rule_deleted": "Kanuni ya ufikiaji imefutwa",
+      "api_limits_changed": "Mipaka ya kasi ya API imebadilishwa"
     },
     "detail": {
       "who": "Nani",
@@ -3936,6 +3944,146 @@
         "chars": "Tumia herufi, nambari na alama za kawaida, hadi 200.",
         "duplicate": "Header hii tayari iko kwenye orodha.",
         "fix": "Kagua header zinazohitajika."
+      }
+    },
+    "access": {
+      "rules": "Kanuni",
+      "viewSwitch": "Kanuni au mipaka ya kasi",
+      "newTitle": "Kanuni mpya",
+      "editTitle": "Hariri kanuni",
+      "desc": "Amua nani anaweza kuita endpoint zako. Kuzuia hushinda kila wakati; kanuni za kuruhusu zinapotumika, ni wapigaji wanaolingana na mojawapo tu wanaoingia.",
+      "create": "Unda kanuni",
+      "search": "Tafuta anwani, vikoa au maelezo…",
+      "empty": "Bado hakuna kanuni za ufikiaji",
+      "emptyDesc": "Bila kanuni, kila mpigaji mwenye tokeni halali anaingia. Zuia anwani usizoziamini, au ruhusu zako pekee.",
+      "enabled": "Kanuni imewashwa",
+      "on": "Imewashwa",
+      "off": "Imezimwa",
+      "lastHit": "Iliamuliwa {when}",
+      "neverHit": "Haijatumika bado",
+      "noHits": "Hakuna simu zilizoamuliwa na kanuni hii katika siku 30 zilizopita.",
+      "noNote": "Hakuna maelezo",
+      "notePlaceholder": "Kwa nini kanuni hii ipo",
+      "pickTarget": "Chagua moja",
+      "pickCountries": "Chagua nchi",
+      "searchCountries": "Tafuta nchi…",
+      "valuesCount": "Thamani {n} | Thamani {n}",
+      "domainAllowNote": "Kanuni za kikoa zinalingana tu na simu kutoka kwa vivinjari (husoma tovuti ambayo simu inatoka). Kwa kanuni ya kuruhusu kama hii, simu kutoka kwa seva na Postman hazilingani, kwa hivyo ongeza pia kanuni ya kuruhusu kwa anwani zao za IP.",
+      "deleteTitle": "Futa kanuni hii?",
+      "deleteDesc": "{values} haitakaguliwa tena. Simu ilizozizuia zinaweza kuingia tena.",
+      "action": {
+        "allow": "Ruhusu",
+        "block": "Zuia"
+      },
+      "actionHint": {
+        "allow": "Ni wapigaji wanaolingana na kanuni ya kuruhusu tu wanaoingia (mahali kanuni za kuruhusu zinapotumika).",
+        "block": "Wapigaji wanaolingana wanakataliwa, hata kama kanuni nyingine inawaruhusu."
+      },
+      "kind": {
+        "ip": "Anwani ya IP",
+        "domain": "Kikoa cha tovuti",
+        "country": "Nchi",
+        "region": "Eneo"
+      },
+      "kindHint": {
+        "ip": "Anwani moja moja au safu (IPv4 na IPv6).",
+        "domain": "Tovuti ambayo simu ya kivinjari inatoka.",
+        "country": "Mahali anwani ya mpigaji ilipo.",
+        "region": "Mabara yote kwa wakati mmoja."
+      },
+      "valuesLabel": {
+        "ip": "Anwani na safu",
+        "domain": "Vikoa",
+        "country": "Nchi",
+        "region": "Maeneo"
+      },
+      "valuesHelp": {
+        "ip": "Moja kwa kila mstari, mfano 203.0.113.10 au 198.51.100.0/24.",
+        "domain": "Moja kwa kila mstari; *.example.com inajumuisha vikoa vidogo vyote.",
+        "country": "Chagua moja au zaidi.",
+        "region": "Chagua moja au zaidi."
+      },
+      "region": {
+        "AF": "Afrika",
+        "AS": "Asia",
+        "EU": "Ulaya",
+        "NA": "Amerika Kaskazini na Kati",
+        "OC": "Oceania",
+        "SA": "Amerika Kusini"
+      },
+      "scope": {
+        "all": "Endpoint zote",
+        "service": "Huduma moja",
+        "endpoint": "Endpoint moja"
+      },
+      "col": {
+        "values": "Inalingana na",
+        "action": "Kanuni",
+        "kind": "Aina",
+        "scope": "Inatumika kwa",
+        "state": "Imewashwa",
+        "hits": "Simu zilizoamuliwa (siku 30)",
+        "lastHit": "Ilitumika mwisho",
+        "note": "Maelezo"
+      },
+      "sort": {
+        "hits": "Zilizotumika zaidi",
+        "lastHit": "Zilizotumika hivi karibuni",
+        "blockFirst": "Kuzuia kwanza"
+      },
+      "kpi": {
+        "refused": "Simu zilizokataliwa na kanuni",
+        "rules": "Kanuni",
+        "limited": "Zilizopunguzwa kasi",
+        "byKind": "Kanuni kwa aina",
+        "blockWins": "Kuzuia hushinda kila wakati"
+      },
+      "invalid": {
+        "required": "Ongeza angalau thamani moja.",
+        "ip": "\"{value}\" si anwani ya IP wala safu.",
+        "domain": "\"{value}\" si kikoa.",
+        "country": "\"{value}\" si nchi.",
+        "region": "\"{value}\" si eneo."
+      },
+      "toast": {
+        "created": "Kanuni imeundwa",
+        "saved": "Kanuni imehifadhiwa",
+        "on": "Kanuni imewashwa",
+        "off": "Kanuni imezimwa",
+        "deleted": "Kanuni imefutwa"
+      },
+      "test": {
+        "title": "Jaribu mpigaji",
+        "desc": "Angalia kama mpigaji anaingia kwenye endpoint, na kanuni ipi inaamua.",
+        "ip": "Anwani ya IP ya mpigaji",
+        "origin": "Tovuti anayopigia simu",
+        "anyCountry": "Haijulikani",
+        "check": "Kagua",
+        "allowed": "Anaingia",
+        "refused": "Amekataliwa",
+        "because": {
+          "allow": "Imeruhusiwa na kanuni ya {value} ({scope}).",
+          "block": "Imezuiwa na kanuni ya {value} ({scope})."
+        },
+        "noAllow": "Kanuni za kuruhusu zinatumika kwa endpoint hii na hakuna inayolingana na mpigaji huyu.",
+        "noRules": "Hakuna kanuni inayomzuia (kanuni {n} imekaguliwa). | Hakuna kanuni inayomzuia (kanuni {n} zimekaguliwa).",
+        "region": "Eneo: {region}",
+        "openRule": "Fungua kanuni"
+      },
+      "limits": {
+        "title": "Mipaka ya kasi",
+        "desc": "Simu ngapi kwa dakika zinaruhusiwa kabla wapigaji hawajapaswa kupunguza kasi.",
+        "per_token": "Kwa tokeni",
+        "per_tokenHint": "Simu zote zilizofanywa kwa tokeni moja, kwenye endpoint zako zote.",
+        "per_ip": "Kwa anwani ya IP",
+        "per_ipHint": "Simu zote kutoka anwani moja, ukiwa na tokeni halali au bila.",
+        "per_endpoint": "Kwa endpoint",
+        "per_endpointHint": "Simu zote kwa endpoint moja, kutoka kwa wapigaji wote kwa pamoja.",
+        "perMinute": "{n} kwa dakika",
+        "none": "Hakuna kikomo",
+        "answer": "Kikomo kikipitwa, wapigaji hupata 429 pamoja na Retry-After (sekunde za kusubiri); kila jibu hutaja kikomo na kilichobaki.",
+        "saved": "Mipaka ya kasi imehifadhiwa",
+        "changed": "Imebadilishwa {when}"
       }
     }
   },

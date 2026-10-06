@@ -5,13 +5,16 @@
  *   POST   /{apiKey}/token                      client id + secret → short-lived access token
  *   GET    /{apiKey}/{endpoint}                 list (page, per_page, sort, filters)
  *   GET    /{apiKey}/{endpoint}/{recordId}      one
- *   POST   /{apiKey}/{endpoint}                 a new response (Idempotency-Key replays)
+ *   POST   /{apiKey}/{endpoint}                 a new response (Formalie-Key replays)
  *   PUT    /{apiKey}/{endpoint}/{recordId}      change accepted answers
  *   DELETE /{apiKey}/{endpoint}/{recordId}      remove (kept in the audit trail)
  *
  * Reachable in development at `https://localhost:2202/public-api/…` and, with a hosts entry, at
  * `https://api.formalie.dev:2202/…` (server/middleware/api-host.ts). Order of checks: address key →
- * endpoint → token → switched on → method → scope → required headers → signature → the form's rules.
+ * endpoint → access rules (IP, Origin domain, country) → rate limit per IP → token → rate limits per
+ * token and endpoint → switched on → method → scope → required headers → signature → the form's rules.
+ * Mock only: `X-Forwarded-For` sets the caller's IP and `X-Debug-Country` its country, so rules can
+ * be tried from Postman (the real service takes the connection's address and GeoIP).
  * Test tokens never touch real responses: writes are checked and answered, nothing is stored.
  */
 import { createHmac, timingSafeEqual } from 'node:crypto'
@@ -22,6 +25,7 @@ import { isFileField } from '#shared/utils/forms/file-answers'
 import { validateAnswer } from '#shared/utils/forms/validate'
 import { exampleRecord } from '#shared/utils/apiService/endpoints'
 import { scopeAllows, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
+import { decideAccess, rulesFor, type AccessCaller } from '#shared/utils/apiService/access'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
 import type { ApiMethod } from '#shared/utils/urls/public'
 import { recordAudit } from './core/audit'
@@ -37,9 +41,43 @@ class PublicError extends Error {
   constructor(
     readonly code: ErrorCode,
     readonly details: { field: string; message: string }[] = [],
+    readonly headers: Record<string, string> = {},
   ) {
     super(code)
   }
+}
+/** Calls in the last minute per key (`ip:…`, `token:…`, `endpoint:…`), memory only. */
+const windows = new Map<string, number[]>()
+const today = () => new Date().toISOString().slice(0, 10)
+/** Counts a call against a per-minute limit; over it → 429 with Retry-After. Returns what is left. */
+function rateLimit(tenant: MockTenant, key: string, limit: number | null): { limit: number; remaining: number } | null {
+  if (limit == null) return null
+  const now = Date.now()
+  const recent = (windows.get(key) ?? []).filter(at => at > now - 60_000)
+  if (recent.length >= limit) {
+    const api = apiOf(tenant)
+    api.limited[today()] = (api.limited[today()] ?? 0) + 1
+    const retry = Math.max(1, Math.ceil((recent[0]! + 60_000 - now) / 1000))
+    throw new PublicError('FRM-GEN-1029', [{ field: key.split(':')[0]!, message: `limit ${limit} per minute` }], { 'Retry-After': String(retry), 'X-RateLimit-Limit': String(limit), 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': String(Math.ceil((now + retry * 1000) / 1000)) })
+  }
+  recent.push(now)
+  windows.set(key, recent)
+  return { limit, remaining: limit - recent.length }
+}
+/** Who is calling: IP (mock: X-Forwarded-For first), the browser's Origin / Referer host, the country (mock: X-Debug-Country). */
+function callerOf(event: H3Event): AccessCaller {
+  const ip = (getHeader(event, 'x-forwarded-for')?.split(',')[0]?.trim() || getRequestIP(event) || '0.0.0.0').replace(/^::ffff:/i, '')
+  let domain: string | null = null
+  const origin = getHeader(event, 'origin') ?? getHeader(event, 'referer')
+  if (origin) {
+    try {
+      domain = new URL(origin).hostname.toLowerCase()
+    } catch {
+      domain = null
+    }
+  }
+  const country = getHeader(event, 'x-debug-country')?.trim().toUpperCase() || null
+  return { ip, domain, country: country && /^[A-Z]{2}$/.test(country) ? country : null }
 }
 /** Short-lived access tokens from `/{apiKey}/token` (memory only, like a cache). */
 const accessTokens = new Map<string, { tenant: string; token: string; expires: number }>()
@@ -53,6 +91,7 @@ function send(event: H3Event, status: number, body: unknown) {
 }
 const fail = (event: H3Event, error: PublicError) => {
   const definition = ERROR_CODES[error.code]
+  for (const [name, value] of Object.entries(error.headers)) setResponseHeader(event, name, value)
   return send(event, definition.status, { error: { code: error.code, message: definition.message, details: error.details } })
 }
 
@@ -134,13 +173,36 @@ export async function handlePublicApi(event: H3Event, path: string) {
     }
     if (name === 'token' && !recordRef) {
       if (method !== 'POST') throw new PublicError('FRM-API-1008')
+      // The token address: only rules for everything apply, and the per-IP limit
+      const caller = callerOf(event)
+      const decision = decideAccess(apiOf(tenant).rules.filter(rule => rule.scope.type === 'all'), caller)
+      if (!decision.allowed) throw new PublicError('FRM-API-1015', [{ field: decision.reason!, message: decision.rule?.value ?? 'no allow rule matched' }])
+      rateLimit(tenant, `ip:${tenant.id}:${caller.ip}`, apiOf(tenant).limits.per_ip)
       return issueAccessToken(event, tenant, body)
     }
 
     const api = apiOf(tenant)
     const endpoint = api.endpoints.find(item => item.name === name)
     if (!endpoint) throw new PublicError('FRM-API-1006')
+    // Access rules: a block refuses; when allow rules apply, one must match
+    const caller = callerOf(event)
+    const applies = rulesFor(api.rules, endpoint)
+    const decision = decideAccess(applies, caller)
+    const decided = decision.rule ? api.rules.find(item => item.id === decision.rule!.id) : undefined
+    if (decided) {
+      decided.hits[today()] = (decided.hits[today()] ?? 0) + 1
+      decided.last_hit_at = new Date().toISOString()
+      saveApi()
+    }
+    if (!decision.allowed) throw new PublicError('FRM-API-1015', [{ field: decision.reason!, message: decision.rule?.value ?? 'no allow rule matched' }])
+    rateLimit(tenant, `ip:${tenant.id}:${caller.ip}`, api.limits.per_ip)
     const token = callerToken(event, tenant)
+    const left = rateLimit(tenant, `token:${token.id}`, api.limits.per_token)
+    rateLimit(tenant, `endpoint:${endpoint.id}`, api.limits.per_endpoint)
+    if (left) {
+      setResponseHeader(event, 'X-RateLimit-Limit', String(left.limit))
+      setResponseHeader(event, 'X-RateLimit-Remaining', String(left.remaining))
+    }
     const service = api.services.find(item => item.id === endpoint.service_id)
     const form = formsOf(tenant).forms.find(item => item.id === endpoint.form_id && !item.deleted_at)
     const schema = form ? schemaOf(form, endpoint.version) : null
@@ -189,7 +251,7 @@ export async function handlePublicApi(event: H3Event, path: string) {
       if (required.length) throw new PublicError('FRM-RESP-1001', required.map(field => ({ field: field.key, message: 'required' })))
       const { issues, answers } = checkSubmission(schema, body)
       if (issues.length) throw new PublicError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
-      const idempotency = getHeader(event, 'idempotency-key')?.slice(0, 100)
+      const idempotency = getHeader(event, 'formalie-key')?.slice(0, 100)
       const submissionId = idempotency ? `api:${endpoint.id}:${idempotency}` : `api:${crypto.randomUUID()}`
       const earlier = idempotency ? responsesOf(tenant).responses.find(item => item.submission_id === submissionId) : undefined
       if (earlier) {

@@ -70,6 +70,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-API-1012  | 401  | The request signature is missing, too old or wrong.               | WARNING  |
 | FRM-API-1013  | 404  | There is no record with this id.                                  | INFO     |
 | FRM-API-1014  | 422  | Some fields can not be sent to this endpoint.                     | INFO     |
+| FRM-API-1015  | 403  | This caller is not allowed by the access rules.                   | WARNING  |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
 

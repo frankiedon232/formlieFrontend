@@ -570,7 +570,8 @@
     "FRM-API-1011": "Header wajib tidak ada atau nilainya salah.",
     "FRM-API-1012": "Tanda tangan permintaan tidak ada, terlalu lama, atau salah.",
     "FRM-API-1013": "Tidak ada catatan dengan id ini.",
-    "FRM-API-1014": "Beberapa kolom tidak dapat dikirim ke endpoint ini."
+    "FRM-API-1014": "Beberapa kolom tidak dapat dikirim ke endpoint ini.",
+    "FRM-API-1015": "Aturan akses tidak mengizinkan pemanggil ini."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Koneksi",
       "api_service": "Layanan API",
       "api_endpoint": "Endpoint",
-      "api_token": "Token API"
+      "api_token": "Token API",
+      "api_rule": "Aturan akses"
     },
     "field": {
       "name": "Nama",
@@ -993,7 +995,13 @@
       "api_token_updated": "Token API diubah",
       "api_token_rotated": "Token API dirotasi",
       "api_token_revoked": "Token API dicabut",
-      "api_token_deleted": "Token API dihapus"
+      "api_token_deleted": "Token API dihapus",
+      "api_rule_created": "Aturan akses dibuat",
+      "api_rule_updated": "Aturan akses diubah",
+      "api_rule_enabled": "Aturan akses diaktifkan",
+      "api_rule_disabled": "Aturan akses dinonaktifkan",
+      "api_rule_deleted": "Aturan akses dihapus",
+      "api_limits_changed": "Batas laju API diubah"
     },
     "detail": {
       "who": "Siapa",
@@ -3936,6 +3944,146 @@
         "chars": "Gunakan huruf, angka, dan simbol biasa, hingga 200.",
         "duplicate": "Header ini sudah ada di daftar.",
         "fix": "Periksa header wajib."
+      }
+    },
+    "access": {
+      "rules": "Aturan",
+      "viewSwitch": "Aturan atau batas laju",
+      "newTitle": "Aturan baru",
+      "editTitle": "Ubah aturan",
+      "desc": "Tentukan siapa yang boleh memanggil endpoint Anda. Blokir selalu menang; jika aturan izin berlaku, hanya pemanggil yang cocok dengan salah satunya yang bisa masuk.",
+      "create": "Buat aturan",
+      "search": "Cari alamat, domain, atau catatan…",
+      "empty": "Belum ada aturan akses",
+      "emptyDesc": "Tanpa aturan, setiap pemanggil dengan token valid bisa masuk. Blokir alamat yang tidak Anda percaya, atau izinkan hanya alamat Anda sendiri.",
+      "enabled": "Aturan aktif",
+      "on": "Aktif",
+      "off": "Nonaktif",
+      "lastHit": "Diputuskan {when}",
+      "neverHit": "Belum digunakan",
+      "noHits": "Tidak ada panggilan yang diputuskan aturan ini dalam 30 hari terakhir.",
+      "noNote": "Tanpa catatan",
+      "notePlaceholder": "Mengapa aturan ini ada",
+      "pickTarget": "Pilih salah satu",
+      "pickCountries": "Pilih negara",
+      "searchCountries": "Cari negara…",
+      "valuesCount": "{n} nilai | {n} nilai",
+      "domainAllowNote": "Aturan domain hanya cocok dengan panggilan dari browser (mereka membaca situs web asal panggilan). Dengan aturan izin seperti ini, panggilan dari server dan Postman tidak cocok, jadi tambahkan juga aturan izin untuk alamat IP mereka.",
+      "deleteTitle": "Hapus aturan ini?",
+      "deleteDesc": "{values} tidak akan diperiksa lagi. Panggilan yang diblokirnya bisa masuk lagi.",
+      "action": {
+        "allow": "Izinkan",
+        "block": "Blokir"
+      },
+      "actionHint": {
+        "allow": "Hanya pemanggil yang cocok dengan aturan izin yang bisa masuk (di tempat aturan izin berlaku).",
+        "block": "Pemanggil yang cocok ditolak, meskipun aturan lain mengizinkannya."
+      },
+      "kind": {
+        "ip": "Alamat IP",
+        "domain": "Domain situs web",
+        "country": "Negara",
+        "region": "Wilayah"
+      },
+      "kindHint": {
+        "ip": "Alamat tunggal atau rentang (IPv4 dan IPv6).",
+        "domain": "Situs web asal panggilan browser.",
+        "country": "Lokasi alamat pemanggil.",
+        "region": "Seluruh benua sekaligus."
+      },
+      "valuesLabel": {
+        "ip": "Alamat dan rentang",
+        "domain": "Domain",
+        "country": "Negara",
+        "region": "Wilayah"
+      },
+      "valuesHelp": {
+        "ip": "Satu per baris, mis. 203.0.113.10 atau 198.51.100.0/24.",
+        "domain": "Satu per baris; *.example.com mencakup semua subdomain.",
+        "country": "Pilih satu atau lebih.",
+        "region": "Pilih satu atau lebih."
+      },
+      "region": {
+        "AF": "Afrika",
+        "AS": "Asia",
+        "EU": "Eropa",
+        "NA": "Amerika Utara dan Tengah",
+        "OC": "Oseania",
+        "SA": "Amerika Selatan"
+      },
+      "scope": {
+        "all": "Semua endpoint",
+        "service": "Satu layanan",
+        "endpoint": "Satu endpoint"
+      },
+      "col": {
+        "values": "Cocok dengan",
+        "action": "Aturan",
+        "kind": "Jenis",
+        "scope": "Berlaku untuk",
+        "state": "Aktif",
+        "hits": "Panggilan diputuskan (30 hari)",
+        "lastHit": "Terakhir digunakan",
+        "note": "Catatan"
+      },
+      "sort": {
+        "hits": "Paling sering digunakan",
+        "lastHit": "Terakhir digunakan",
+        "blockFirst": "Blokir dulu"
+      },
+      "kpi": {
+        "refused": "Panggilan ditolak oleh aturan",
+        "rules": "Aturan",
+        "limited": "Diperlambat",
+        "byKind": "Aturan menurut jenis",
+        "blockWins": "Blokir selalu menang"
+      },
+      "invalid": {
+        "required": "Tambahkan setidaknya satu nilai.",
+        "ip": "\"{value}\" bukan alamat IP atau rentang.",
+        "domain": "\"{value}\" bukan domain.",
+        "country": "\"{value}\" bukan negara.",
+        "region": "\"{value}\" bukan wilayah."
+      },
+      "toast": {
+        "created": "Aturan dibuat",
+        "saved": "Aturan disimpan",
+        "on": "Aturan diaktifkan",
+        "off": "Aturan dinonaktifkan",
+        "deleted": "Aturan dihapus"
+      },
+      "test": {
+        "title": "Uji pemanggil",
+        "desc": "Lihat apakah pemanggil bisa masuk ke endpoint dan aturan mana yang menentukan.",
+        "ip": "Alamat IP pemanggil",
+        "origin": "Situs web asal panggilan",
+        "anyCountry": "Tidak diketahui",
+        "check": "Periksa",
+        "allowed": "Bisa masuk",
+        "refused": "Ditolak",
+        "because": {
+          "allow": "Diizinkan oleh aturan untuk {value} ({scope}).",
+          "block": "Diblokir oleh aturan untuk {value} ({scope})."
+        },
+        "noAllow": "Aturan izin berlaku untuk endpoint ini dan tidak ada yang cocok dengan pemanggil ini.",
+        "noRules": "Tidak ada aturan yang menghentikannya ({n} aturan diperiksa). | Tidak ada aturan yang menghentikannya ({n} aturan diperiksa).",
+        "region": "Wilayah: {region}",
+        "openRule": "Buka aturan"
+      },
+      "limits": {
+        "title": "Batas laju",
+        "desc": "Berapa banyak panggilan per menit yang diizinkan sebelum pemanggil harus melambat.",
+        "per_token": "Per token",
+        "per_tokenHint": "Semua panggilan dengan satu token, di seluruh endpoint Anda.",
+        "per_ip": "Per alamat IP",
+        "per_ipHint": "Semua panggilan dari satu alamat, dengan atau tanpa token valid.",
+        "per_endpoint": "Per endpoint",
+        "per_endpointHint": "Semua panggilan ke satu endpoint, dari semua pemanggil bersama-sama.",
+        "perMinute": "{n} per menit",
+        "none": "Tanpa batas",
+        "answer": "Jika melewati batas, pemanggil mendapat 429 dengan Retry-After (detik menunggu); setiap jawaban menyebutkan batas dan sisanya.",
+        "saved": "Batas laju disimpan",
+        "changed": "Diubah {when}"
       }
     }
   },

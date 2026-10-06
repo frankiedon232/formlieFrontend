@@ -570,7 +570,8 @@
     "FRM-API-1011": "缺少必需的请求头，或其值不正确。",
     "FRM-API-1012": "请求签名缺失、已过期或不正确。",
     "FRM-API-1013": "没有此 ID 的记录。",
-    "FRM-API-1014": "部分字段不能发送到此端点。"
+    "FRM-API-1014": "部分字段不能发送到此端点。",
+    "FRM-API-1015": "访问规则不允许此调用方。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -857,7 +858,8 @@
       "data_source": "连接",
       "api_service": "API 服务",
       "api_endpoint": "端点",
-      "api_token": "API 令牌"
+      "api_token": "API 令牌",
+      "api_rule": "访问规则"
     },
     "field": {
       "name": "名称",
@@ -993,7 +995,13 @@
       "api_token_updated": "已更改 API 令牌",
       "api_token_rotated": "已轮换 API 令牌",
       "api_token_revoked": "已吊销 API 令牌",
-      "api_token_deleted": "已删除 API 令牌"
+      "api_token_deleted": "已删除 API 令牌",
+      "api_rule_created": "已创建访问规则",
+      "api_rule_updated": "已更改访问规则",
+      "api_rule_enabled": "已启用访问规则",
+      "api_rule_disabled": "已停用访问规则",
+      "api_rule_deleted": "已删除访问规则",
+      "api_limits_changed": "已更改 API 速率限制"
     },
     "detail": {
       "who": "谁",
@@ -3936,6 +3944,146 @@
         "chars": "使用普通字母、数字和符号，最多 200 个字符。",
         "duplicate": "此请求头已在列表中。",
         "fix": "请检查必需的请求头。"
+      }
+    },
+    "access": {
+      "rules": "规则",
+      "viewSwitch": "规则或速率限制",
+      "newTitle": "新建规则",
+      "editTitle": "编辑规则",
+      "desc": "决定谁可以调用您的端点。拦截始终优先；一旦有允许规则生效，只有匹配其中一条的调用方才能进入。",
+      "create": "创建规则",
+      "search": "搜索地址、域名或备注…",
+      "empty": "还没有访问规则",
+      "emptyDesc": "没有规则时，任何持有有效令牌的调用方都可以进入。请拦截您不信任的地址，或只允许您自己的地址。",
+      "enabled": "规则已启用",
+      "on": "开",
+      "off": "关",
+      "lastHit": "决定于 {when}",
+      "neverHit": "尚未使用",
+      "noHits": "最近 30 天内没有调用由此规则决定。",
+      "noNote": "无备注",
+      "notePlaceholder": "设置此规则的原因",
+      "pickTarget": "请选择一项",
+      "pickCountries": "选择国家或地区",
+      "searchCountries": "搜索国家或地区…",
+      "valuesCount": "{n} 个值 | {n} 个值",
+      "domainAllowNote": "域名规则只匹配来自浏览器的调用（它们会读取调用来源的网站）。使用这样的允许规则时，来自服务器和 Postman 的调用不会匹配，因此请同时为它们的 IP 地址添加允许规则。",
+      "deleteTitle": "删除此规则？",
+      "deleteDesc": "将不再检查 {values}。它之前拦截的调用可以再次进入。",
+      "action": {
+        "allow": "允许",
+        "block": "拦截"
+      },
+      "actionHint": {
+        "allow": "只有匹配允许规则的调用方才能进入（在允许规则生效的范围内）。",
+        "block": "匹配的调用方会被拒绝，即使其他规则允许它们。"
+      },
+      "kind": {
+        "ip": "IP 地址",
+        "domain": "网站域名",
+        "country": "国家或地区",
+        "region": "区域"
+      },
+      "kindHint": {
+        "ip": "单个地址或地址段（IPv4 和 IPv6）。",
+        "domain": "浏览器调用来源的网站。",
+        "country": "调用方地址所在的位置。",
+        "region": "一次选择整个大洲。"
+      },
+      "valuesLabel": {
+        "ip": "地址和地址段",
+        "domain": "域名",
+        "country": "国家或地区",
+        "region": "区域"
+      },
+      "valuesHelp": {
+        "ip": "每行一个，例如 203.0.113.10 或 198.51.100.0/24。",
+        "domain": "每行一个；*.example.com 涵盖所有子域名。",
+        "country": "选择一个或多个。",
+        "region": "选择一个或多个。"
+      },
+      "region": {
+        "AF": "非洲",
+        "AS": "亚洲",
+        "EU": "欧洲",
+        "NA": "北美洲和中美洲",
+        "OC": "大洋洲",
+        "SA": "南美洲"
+      },
+      "scope": {
+        "all": "所有端点",
+        "service": "一个服务",
+        "endpoint": "一个端点"
+      },
+      "col": {
+        "values": "匹配",
+        "action": "规则",
+        "kind": "类型",
+        "scope": "适用于",
+        "state": "开",
+        "hits": "已决定的调用（30 天）",
+        "lastHit": "最近使用",
+        "note": "备注"
+      },
+      "sort": {
+        "hits": "使用最多",
+        "lastHit": "最近使用",
+        "blockFirst": "拦截优先"
+      },
+      "kpi": {
+        "refused": "被规则拒绝的调用",
+        "rules": "规则",
+        "limited": "被限速",
+        "byKind": "按类型统计的规则",
+        "blockWins": "拦截始终优先"
+      },
+      "invalid": {
+        "required": "请至少添加一个值。",
+        "ip": "“{value}”不是 IP 地址或地址段。",
+        "domain": "“{value}”不是域名。",
+        "country": "“{value}”不是国家或地区。",
+        "region": "“{value}”不是区域。"
+      },
+      "toast": {
+        "created": "规则已创建",
+        "saved": "规则已保存",
+        "on": "规则已启用",
+        "off": "规则已停用",
+        "deleted": "规则已删除"
+      },
+      "test": {
+        "title": "测试调用方",
+        "desc": "查看调用方能否进入某个端点，以及由哪条规则决定。",
+        "ip": "调用方的 IP 地址",
+        "origin": "调用来源网站",
+        "anyCountry": "未知",
+        "check": "检查",
+        "allowed": "可进入",
+        "refused": "已拒绝",
+        "because": {
+          "allow": "由 {value} 的规则允许（{scope}）。",
+          "block": "由 {value} 的规则拦截（{scope}）。"
+        },
+        "noAllow": "此端点适用允许规则，且没有一条匹配此调用方。",
+        "noRules": "没有规则拦截它（已检查 {n} 条规则）。 | 没有规则拦截它（已检查 {n} 条规则）。",
+        "region": "区域：{region}",
+        "openRule": "打开规则"
+      },
+      "limits": {
+        "title": "速率限制",
+        "desc": "每分钟允许多少次调用，超过后调用方必须放慢速度。",
+        "per_token": "按令牌",
+        "per_tokenHint": "使用同一令牌发出的所有调用，涵盖您的所有端点。",
+        "per_ip": "按 IP 地址",
+        "per_ipHint": "来自同一地址的所有调用，无论是否持有有效令牌。",
+        "per_endpoint": "按端点",
+        "per_endpointHint": "对同一端点的所有调用，所有调用方合计。",
+        "perMinute": "每分钟 {n} 次",
+        "none": "无限制",
+        "answer": "超过限制时，调用方会收到 429 和 Retry-After（需等待的秒数）；每个响应都会说明限制和剩余次数。",
+        "saved": "速率限制已保存",
+        "changed": "更改于 {when}"
       }
     }
   },

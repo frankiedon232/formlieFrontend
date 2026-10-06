@@ -57,7 +57,7 @@ export interface PublicForm {
 /** POST /public/forms/{key}/submit → the response and what to show next. */
 export interface PublicSubmitResult {
   response_id: string
-  /** True when this fill-in session was already submitted (same Idempotency-Key): nothing new was stored. */
+  /** True when this fill-in session was already submitted (same Formalie-Key): nothing new was stored. */
   duplicate: boolean
   thank_you: { title: string; message: string; redirect_url: string | null }
 }

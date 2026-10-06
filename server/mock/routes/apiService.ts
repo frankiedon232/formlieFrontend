@@ -194,7 +194,10 @@ export const deleteApiService = defineMockRoute(({ event }) => {
   const api = apiOf(tenant)
   const removed = api.endpoints.filter(item => item.service_id === service.id).length
   api.services.splice(api.services.indexOf(service), 1)
+  const gone = new Set(api.endpoints.filter(item => item.service_id === service.id).map(item => item.id))
   api.endpoints = api.endpoints.filter(item => item.service_id !== service.id)
+  // Rules made for it (or its endpoints) go too
+  api.rules = api.rules.filter(rule => !(rule.scope.type === 'service' && rule.scope.id === service.id) && !(rule.scope.type === 'endpoint' && gone.has(rule.scope.id ?? '')))
   saveApi()
   recordAudit(event, tenant, { action: 'api.service_deleted', actor: actorOf(user), resource: { type: 'api_service', id: service.id, name: service.name }, metadata: { endpoints: String(removed) } })
   return ok({ deleted: true, endpoints: removed })
@@ -313,6 +316,7 @@ export const deleteApiEndpoint = defineMockRoute(({ event }) => {
   const endpoint = findEndpoint(tenant, getRouterParam(event, 'id'))
   const api = apiOf(tenant)
   api.endpoints.splice(api.endpoints.indexOf(endpoint), 1)
+  api.rules = api.rules.filter(rule => !(rule.scope.type === 'endpoint' && rule.scope.id === endpoint.id))
   saveApi()
   recordAudit(event, tenant, { action: 'api.endpoint_deleted', actor: actorOf(user), resource: { type: 'api_endpoint', id: endpoint.id, name: endpoint.name } })
   return ok({ deleted: true })

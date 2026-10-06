@@ -137,6 +137,12 @@ export const AUDIT_EVENTS = {
   'api.token_rotated': { area: 'api', icon: 'i-lucide-refresh-cw' },
   'api.token_revoked': { area: 'api', icon: 'i-lucide-key-square' },
   'api.token_deleted': { area: 'api', icon: 'i-lucide-trash-2' },
+  'api.rule_created': { area: 'api', icon: 'i-lucide-shield-plus' },
+  'api.rule_updated': { area: 'api', icon: 'i-lucide-shield' },
+  'api.rule_enabled': { area: 'api', icon: 'i-lucide-shield-check' },
+  'api.rule_disabled': { area: 'api', icon: 'i-lucide-shield-off' },
+  'api.rule_deleted': { area: 'api', icon: 'i-lucide-shield-x' },
+  'api.limits_changed': { area: 'api', icon: 'i-lucide-gauge' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>

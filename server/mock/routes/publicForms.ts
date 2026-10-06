@@ -4,7 +4,7 @@
  * enveloped like every other call (anonymous handshake + pre-session CSRF).
  *
  *   GET  /public/forms/:key          the published form, its state, SEO and workspace branding
- *   POST /public/forms/:key/submit   one response per fill-in session (Idempotency-Key)
+ *   POST /public/forms/:key/submit   one response per fill-in session (Formalie-Key)
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
 import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
@@ -242,9 +242,9 @@ const SUBMISSION_ID = /^[A-Za-z0-9-]{16,64}$/
 /** POST /public/forms/:key/submit, store the response once per fill-in session. */
 export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   const key = getRouterParam(event, 'key') ?? ''
-  const submissionId = getHeader(event, 'idempotency-key') ?? ''
+  const submissionId = getHeader(event, 'formalie-key') ?? ''
   if (!SUBMISSION_ID.test(submissionId))
-    throw new MockError('FRM-GEN-1002', [{ field: 'Idempotency-Key', message: 'Send the fill-in session id as Idempotency-Key.' }])
+    throw new MockError('FRM-GEN-1002', [{ field: 'Formalie-Key', message: 'Send the fill-in session id as Formalie-Key.' }])
   const input = parseBody(submitBody, body)
   const { tenant, form, schema, visitor } = takingResponses(event, key, { ignoreLimit: true })
   const known = visitorIdentity(visitor)

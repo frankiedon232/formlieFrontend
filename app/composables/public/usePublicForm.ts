@@ -156,7 +156,7 @@ export function usePublicSubmit(key: string, channel: 'link' | 'embed', resume?:
         challenge: solved ? { token: solved.token, nonce: solved.nonce } : undefined,
         trap: trap || undefined,
       },
-      { headers: { 'Idempotency-Key': submissionId() } },
+      { headers: { 'Formalie-Key': submissionId() } },
     )
   }
 

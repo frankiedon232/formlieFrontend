@@ -15,7 +15,7 @@ const sections = [
   { key: 'services', nav: 'apiServices', icon: 'i-lucide-boxes', to: '/api-service/services', live: true },
   { key: 'endpoints', nav: 'apiEndpoints', icon: 'i-lucide-route', to: '/api-service/endpoints', live: true },
   { key: 'auth', nav: 'apiAuth', icon: 'i-lucide-key-round', to: '/api-service/auth', live: true },
-  { key: 'access', nav: 'apiAccess', icon: 'i-lucide-shield-check', to: '/api-service/access' },
+  { key: 'access', nav: 'apiAccess', icon: 'i-lucide-shield-check', to: '/api-service/access', live: true },
   { key: 'logs', nav: 'apiLogs', icon: 'i-lucide-scroll-text', to: '/api-service/logs' },
   { key: 'analytics', nav: 'apiAnalytics', icon: 'i-lucide-chart-line', to: '/api-service/analytics' },
   { key: 'docs', nav: 'apiDocs', icon: 'i-lucide-book-open', to: '/api-service/docs' },

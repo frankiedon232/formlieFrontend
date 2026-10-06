@@ -570,7 +570,8 @@
     "FRM-API-1011": "Zorunlu bir başlık eksik ya da değeri yanlış.",
     "FRM-API-1012": "İstek imzası eksik, çok eski ya da yanlış.",
     "FRM-API-1013": "Bu id ile kayıt yok.",
-    "FRM-API-1014": "Bazı alanlar bu endpoint’e gönderilemez."
+    "FRM-API-1014": "Bazı alanlar bu endpoint’e gönderilemez.",
+    "FRM-API-1015": "Erişim kuralları bu çağırana izin vermiyor."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Bağlantı",
       "api_service": "API hizmeti",
       "api_endpoint": "Endpoint",
-      "api_token": "API token'ı"
+      "api_token": "API token'ı",
+      "api_rule": "Erişim kuralı"
     },
     "field": {
       "name": "Ad",
@@ -993,7 +995,13 @@
       "api_token_updated": "API token'ı değiştirildi",
       "api_token_rotated": "API token'ı yenilendi",
       "api_token_revoked": "API token'ı iptal edildi",
-      "api_token_deleted": "API token'ı silindi"
+      "api_token_deleted": "API token'ı silindi",
+      "api_rule_created": "Erişim kuralı oluşturuldu",
+      "api_rule_updated": "Erişim kuralı değiştirildi",
+      "api_rule_enabled": "Erişim kuralı açıldı",
+      "api_rule_disabled": "Erişim kuralı kapatıldı",
+      "api_rule_deleted": "Erişim kuralı silindi",
+      "api_limits_changed": "API hız sınırları değiştirildi"
     },
     "detail": {
       "who": "Kim",
@@ -3936,6 +3944,146 @@
         "chars": "Düz harf, rakam ve simge kullanın, en fazla 200.",
         "duplicate": "Bu header zaten listede.",
         "fix": "Gerekli header'ları kontrol edin."
+      }
+    },
+    "access": {
+      "rules": "Kurallar",
+      "viewSwitch": "Kurallar veya hız sınırları",
+      "newTitle": "Yeni kural",
+      "editTitle": "Kuralı düzenle",
+      "desc": "Uç noktalarınızı kimin çağırabileceğine karar verin. Engelleme her zaman önceliklidir; izin kuralları geçerli olduğunda yalnızca birine uyan çağıranlar girebilir.",
+      "create": "Kural oluştur",
+      "search": "Adres, alan adı veya not ara…",
+      "empty": "Henüz erişim kuralı yok",
+      "emptyDesc": "Kural yoksa geçerli jetonu olan her çağıran girer. Güvenmediğiniz adresleri engelleyin veya yalnızca kendi adreslerinize izin verin.",
+      "enabled": "Kural açık",
+      "on": "Açık",
+      "off": "Kapalı",
+      "lastHit": "Karar verildi: {when}",
+      "neverHit": "Henüz kullanılmadı",
+      "noHits": "Son 30 günde bu kural hiçbir çağrıya karar vermedi.",
+      "noNote": "Not yok",
+      "notePlaceholder": "Bu kuralın neden var olduğu",
+      "pickTarget": "Birini seçin",
+      "pickCountries": "Ülke seçin",
+      "searchCountries": "Ülke ara…",
+      "valuesCount": "{n} değer | {n} değer",
+      "domainAllowNote": "Alan adı kuralları yalnızca tarayıcılardan gelen çağrılarla eşleşir (çağrının geldiği web sitesini okurlar). Böyle bir izin kuralıyla sunuculardan ve Postman'den gelen çağrılar eşleşmez, bu yüzden onların IP adresleri için de bir izin kuralı ekleyin.",
+      "deleteTitle": "Bu kural silinsin mi?",
+      "deleteDesc": "{values} artık denetlenmeyecek. Bu kuralın engellediği çağrılar yeniden girebilir.",
+      "action": {
+        "allow": "İzin ver",
+        "block": "Engelle"
+      },
+      "actionHint": {
+        "allow": "Yalnızca bir izin kuralına uyan çağıranlar girer (izin kurallarının geçerli olduğu yerlerde).",
+        "block": "Eşleşen çağıranlar, başka bir kural izin verse bile reddedilir."
+      },
+      "kind": {
+        "ip": "IP adresi",
+        "domain": "Web sitesi alan adı",
+        "country": "Ülke",
+        "region": "Bölge"
+      },
+      "kindHint": {
+        "ip": "Tek adresler veya aralıklar (IPv4 ve IPv6).",
+        "domain": "Tarayıcı çağrısının geldiği web sitesi.",
+        "country": "Çağıranın adresinin bulunduğu yer.",
+        "region": "Bir seferde tüm kıtalar."
+      },
+      "valuesLabel": {
+        "ip": "Adresler ve aralıklar",
+        "domain": "Alan adları",
+        "country": "Ülkeler",
+        "region": "Bölgeler"
+      },
+      "valuesHelp": {
+        "ip": "Satır başına bir tane, örn. 203.0.113.10 veya 198.51.100.0/24.",
+        "domain": "Satır başına bir tane; *.example.com tüm alt alan adlarını kapsar.",
+        "country": "Bir veya daha fazlasını seçin.",
+        "region": "Bir veya daha fazlasını seçin."
+      },
+      "region": {
+        "AF": "Afrika",
+        "AS": "Asya",
+        "EU": "Avrupa",
+        "NA": "Kuzey ve Orta Amerika",
+        "OC": "Okyanusya",
+        "SA": "Güney Amerika"
+      },
+      "scope": {
+        "all": "Tüm uç noktalar",
+        "service": "Tek bir hizmet",
+        "endpoint": "Tek bir uç nokta"
+      },
+      "col": {
+        "values": "Eşleşir",
+        "action": "Kural",
+        "kind": "Tür",
+        "scope": "Uygulandığı yer",
+        "state": "Açık",
+        "hits": "Karara bağlanan çağrılar (30 gün)",
+        "lastHit": "Son kullanım",
+        "note": "Not"
+      },
+      "sort": {
+        "hits": "En çok kullanılan",
+        "lastHit": "Son kullanılan",
+        "blockFirst": "Önce engellemeler"
+      },
+      "kpi": {
+        "refused": "Kurallarca reddedilen çağrılar",
+        "rules": "Kurallar",
+        "limited": "Yavaşlatılan",
+        "byKind": "Türe göre kurallar",
+        "blockWins": "Engelleme her zaman önceliklidir"
+      },
+      "invalid": {
+        "required": "En az bir değer ekleyin.",
+        "ip": "\"{value}\" bir IP adresi veya aralığı değil.",
+        "domain": "\"{value}\" bir alan adı değil.",
+        "country": "\"{value}\" bir ülke değil.",
+        "region": "\"{value}\" bir bölge değil."
+      },
+      "toast": {
+        "created": "Kural oluşturuldu",
+        "saved": "Kural kaydedildi",
+        "on": "Kural açıldı",
+        "off": "Kural kapatıldı",
+        "deleted": "Kural silindi"
+      },
+      "test": {
+        "title": "Bir çağıranı test et",
+        "desc": "Bir çağıranın uç noktaya girip giremediğini ve hangi kuralın karar verdiğini görün.",
+        "ip": "Çağıranın IP adresi",
+        "origin": "Çağrıyı yaptığı web sitesi",
+        "anyCountry": "Bilinmiyor",
+        "check": "Denetle",
+        "allowed": "Giriyor",
+        "refused": "Reddedildi",
+        "because": {
+          "allow": "{value} için kural izin verdi ({scope}).",
+          "block": "{value} için kural engelledi ({scope})."
+        },
+        "noAllow": "Bu uç noktada izin kuralları geçerli ve hiçbiri bu çağıranla eşleşmiyor.",
+        "noRules": "Hiçbir kural durdurmuyor ({n} kural denetlendi). | Hiçbir kural durdurmuyor ({n} kural denetlendi).",
+        "region": "Bölge: {region}",
+        "openRule": "Kuralı aç"
+      },
+      "limits": {
+        "title": "Hız sınırları",
+        "desc": "Çağıranların yavaşlaması gerekmeden önce dakikada kaç çağrıya izin verildiği.",
+        "per_token": "Jeton başına",
+        "per_tokenHint": "Bir jetonla yapılan tüm çağrılar, tüm uç noktalarınız genelinde.",
+        "per_ip": "IP adresi başına",
+        "per_ipHint": "Bir adresten gelen tüm çağrılar, geçerli jetonla veya jetonsuz.",
+        "per_endpoint": "Uç nokta başına",
+        "per_endpointHint": "Bir uç noktaya gelen tüm çağrılar, tüm çağıranlar birlikte.",
+        "perMinute": "Dakikada {n}",
+        "none": "Sınır yok",
+        "answer": "Sınır aşılırsa çağıranlar Retry-After ile 429 alır (beklenecek saniye); her yanıt sınırı ve kalanı bildirir.",
+        "saved": "Hız sınırları kaydedildi",
+        "changed": "Değiştirildi: {when}"
       }
     }
   },

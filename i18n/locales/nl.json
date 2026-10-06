@@ -570,7 +570,8 @@
     "FRM-API-1011": "Een verplichte header ontbreekt of heeft een verkeerde waarde.",
     "FRM-API-1012": "De handtekening van het verzoek ontbreekt, is te oud of klopt niet.",
     "FRM-API-1013": "Er is geen record met dit id.",
-    "FRM-API-1014": "Sommige velden kunnen niet naar dit endpoint worden gestuurd."
+    "FRM-API-1014": "Sommige velden kunnen niet naar dit endpoint worden gestuurd.",
+    "FRM-API-1015": "De toegangsregels staan deze aanroeper niet toe."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Verbinding",
       "api_service": "API-service",
       "api_endpoint": "Endpoint",
-      "api_token": "API-token"
+      "api_token": "API-token",
+      "api_rule": "Toegangsregel"
     },
     "field": {
       "name": "Naam",
@@ -993,7 +995,13 @@
       "api_token_updated": "API-token gewijzigd",
       "api_token_rotated": "API-token geroteerd",
       "api_token_revoked": "API-token ingetrokken",
-      "api_token_deleted": "API-token verwijderd"
+      "api_token_deleted": "API-token verwijderd",
+      "api_rule_created": "Toegangsregel aangemaakt",
+      "api_rule_updated": "Toegangsregel gewijzigd",
+      "api_rule_enabled": "Toegangsregel ingeschakeld",
+      "api_rule_disabled": "Toegangsregel uitgeschakeld",
+      "api_rule_deleted": "Toegangsregel verwijderd",
+      "api_limits_changed": "API-snelheidslimieten gewijzigd"
     },
     "detail": {
       "who": "Wie",
@@ -3936,6 +3944,146 @@
         "chars": "Gebruik gewone letters, cijfers en symbolen, maximaal 200.",
         "duplicate": "Deze header staat al in de lijst.",
         "fix": "Controleer de vereiste headers."
+      }
+    },
+    "access": {
+      "rules": "Regels",
+      "viewSwitch": "Regels of snelheidslimieten",
+      "newTitle": "Nieuwe regel",
+      "editTitle": "Regel bewerken",
+      "desc": "Bepaal wie uw endpoints mag aanroepen. Een blokkade wint altijd; zodra toestaan-regels gelden, komen alleen aanroepers binnen die aan een ervan voldoen.",
+      "create": "Regel aanmaken",
+      "search": "Zoek adressen, domeinen of notities…",
+      "empty": "Nog geen toegangsregels",
+      "emptyDesc": "Zonder regels komt elke aanroeper met een geldig token binnen. Blokkeer adressen die u niet vertrouwt, of sta alleen uw eigen adressen toe.",
+      "enabled": "Regel staat aan",
+      "on": "Aan",
+      "off": "Uit",
+      "lastHit": "Besloten {when}",
+      "neverHit": "Nog niet gebruikt",
+      "noHits": "Geen aanroepen beslist door deze regel in de afgelopen 30 dagen.",
+      "noNote": "Geen notitie",
+      "notePlaceholder": "Waarom deze regel bestaat",
+      "pickTarget": "Kies er een",
+      "pickCountries": "Landen kiezen",
+      "searchCountries": "Landen zoeken…",
+      "valuesCount": "{n} waarde | {n} waarden",
+      "domainAllowNote": "Domeinregels komen alleen overeen met aanroepen vanuit browsers (die lezen de website waarvandaan een aanroep komt). Bij zo'n toestaan-regel komen aanroepen van servers en Postman niet overeen, voeg dus ook een toestaan-regel toe voor hun IP-adressen.",
+      "deleteTitle": "Deze regel verwijderen?",
+      "deleteDesc": "{values} wordt niet meer gecontroleerd. Aanroepen die ze blokkeerde, kunnen weer binnenkomen.",
+      "action": {
+        "allow": "Toestaan",
+        "block": "Blokkeren"
+      },
+      "actionHint": {
+        "allow": "Alleen aanroepers die aan een toestaan-regel voldoen komen binnen (waar toestaan-regels gelden).",
+        "block": "Overeenkomende aanroepers worden geweigerd, ook als een andere regel ze toestaat."
+      },
+      "kind": {
+        "ip": "IP-adres",
+        "domain": "Websitedomein",
+        "country": "Land",
+        "region": "Regio"
+      },
+      "kindHint": {
+        "ip": "Losse adressen of bereiken (IPv4 en IPv6).",
+        "domain": "De website waarvandaan een browseraanroep komt.",
+        "country": "Waar het adres van de aanroeper zich bevindt.",
+        "region": "Hele continenten in één keer."
+      },
+      "valuesLabel": {
+        "ip": "Adressen en bereiken",
+        "domain": "Domeinen",
+        "country": "Landen",
+        "region": "Regio's"
+      },
+      "valuesHelp": {
+        "ip": "Eén per regel, bijv. 203.0.113.10 of 198.51.100.0/24.",
+        "domain": "Eén per regel; *.example.com omvat elk subdomein.",
+        "country": "Kies er een of meer.",
+        "region": "Kies er een of meer."
+      },
+      "region": {
+        "AF": "Afrika",
+        "AS": "Azië",
+        "EU": "Europa",
+        "NA": "Noord- en Midden-Amerika",
+        "OC": "Oceanië",
+        "SA": "Zuid-Amerika"
+      },
+      "scope": {
+        "all": "Alle endpoints",
+        "service": "Eén service",
+        "endpoint": "Eén endpoint"
+      },
+      "col": {
+        "values": "Komt overeen met",
+        "action": "Regel",
+        "kind": "Type",
+        "scope": "Geldt voor",
+        "state": "Aan",
+        "hits": "Besliste aanroepen (30 dagen)",
+        "lastHit": "Laatst gebruikt",
+        "note": "Notitie"
+      },
+      "sort": {
+        "hits": "Meest gebruikt",
+        "lastHit": "Laatst gebruikt",
+        "blockFirst": "Blokkades eerst"
+      },
+      "kpi": {
+        "refused": "Door regels geweigerde aanroepen",
+        "rules": "Regels",
+        "limited": "Vertraagd",
+        "byKind": "Regels per type",
+        "blockWins": "Blokkeren wint altijd"
+      },
+      "invalid": {
+        "required": "Voeg minstens één waarde toe.",
+        "ip": "\"{value}\" is geen IP-adres of bereik.",
+        "domain": "\"{value}\" is geen domein.",
+        "country": "\"{value}\" is geen land.",
+        "region": "\"{value}\" is geen regio."
+      },
+      "toast": {
+        "created": "Regel aangemaakt",
+        "saved": "Regel opgeslagen",
+        "on": "Regel ingeschakeld",
+        "off": "Regel uitgeschakeld",
+        "deleted": "Regel verwijderd"
+      },
+      "test": {
+        "title": "Een aanroeper testen",
+        "desc": "Kijk of een aanroeper een endpoint binnenkomt en welke regel beslist.",
+        "ip": "IP-adres van de aanroeper",
+        "origin": "Website waarvandaan hij aanroept",
+        "anyCountry": "Onbekend",
+        "check": "Controleren",
+        "allowed": "Komt binnen",
+        "refused": "Geweigerd",
+        "because": {
+          "allow": "Toegestaan door de regel voor {value} ({scope}).",
+          "block": "Geblokkeerd door de regel voor {value} ({scope})."
+        },
+        "noAllow": "Voor dit endpoint gelden toestaan-regels en geen enkele komt overeen met deze aanroeper.",
+        "noRules": "Geen regel stopt hem ({n} regel gecontroleerd). | Geen regel stopt hem ({n} regels gecontroleerd).",
+        "region": "Regio: {region}",
+        "openRule": "Regel openen"
+      },
+      "limits": {
+        "title": "Snelheidslimieten",
+        "desc": "Hoeveel aanroepen per minuut zijn toegestaan voordat aanroepers moeten vertragen.",
+        "per_token": "Per token",
+        "per_tokenHint": "Alle aanroepen met één token, over al uw endpoints.",
+        "per_ip": "Per IP-adres",
+        "per_ipHint": "Alle aanroepen vanaf één adres, met of zonder geldig token.",
+        "per_endpoint": "Per endpoint",
+        "per_endpointHint": "Alle aanroepen naar één endpoint, van alle aanroepers samen.",
+        "perMinute": "{n} per minuut",
+        "none": "Geen limiet",
+        "answer": "Boven een limiet krijgen aanroepers 429 met Retry-After (seconden wachttijd); elk antwoord vermeldt de limiet en wat er over is.",
+        "saved": "Snelheidslimieten opgeslagen",
+        "changed": "Gewijzigd {when}"
       }
     }
   },

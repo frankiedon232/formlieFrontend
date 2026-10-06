@@ -59,7 +59,7 @@ export interface RequestOptions {
   skipAuthRefresh?: boolean
   /** Polling / counters: don't drive the top progress bar (useApi). */
   background?: boolean
-  /** Extra plain headers for this request only (e.g. `Idempotency-Key` on a form submission). */
+  /** Extra plain headers for this request only (e.g. `Formalie-Key` on a form submission). */
   headers?: Record<string, string>
 }
 

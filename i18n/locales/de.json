@@ -570,7 +570,8 @@
     "FRM-API-1011": "Ein Pflicht-Header fehlt oder hat einen falschen Wert.",
     "FRM-API-1012": "Die Signatur der Anfrage fehlt, ist zu alt oder falsch.",
     "FRM-API-1013": "Es gibt keinen Datensatz mit dieser ID.",
-    "FRM-API-1014": "Einige Felder können nicht an diesen Endpoint gesendet werden."
+    "FRM-API-1014": "Einige Felder können nicht an diesen Endpoint gesendet werden.",
+    "FRM-API-1015": "Die Zugriffsregeln lassen diesen Aufrufer nicht zu."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Verbindung",
       "api_service": "API-Service",
       "api_endpoint": "Endpoint",
-      "api_token": "API-Token"
+      "api_token": "API-Token",
+      "api_rule": "Zugriffsregel"
     },
     "field": {
       "name": "Name",
@@ -993,7 +995,13 @@
       "api_token_updated": "API-Token geändert",
       "api_token_rotated": "API-Token rotiert",
       "api_token_revoked": "API-Token widerrufen",
-      "api_token_deleted": "API-Token gelöscht"
+      "api_token_deleted": "API-Token gelöscht",
+      "api_rule_created": "Zugriffsregel erstellt",
+      "api_rule_updated": "Zugriffsregel geändert",
+      "api_rule_enabled": "Zugriffsregel eingeschaltet",
+      "api_rule_disabled": "Zugriffsregel ausgeschaltet",
+      "api_rule_deleted": "Zugriffsregel gelöscht",
+      "api_limits_changed": "API-Ratenlimits geändert"
     },
     "detail": {
       "who": "Wer",
@@ -3936,6 +3944,146 @@
         "chars": "Verwenden Sie einfache Buchstaben, Ziffern und Symbole, bis zu 200.",
         "duplicate": "Dieser Header steht bereits in der Liste.",
         "fix": "Prüfen Sie die erforderlichen Header."
+      }
+    },
+    "access": {
+      "rules": "Regeln",
+      "viewSwitch": "Regeln oder Ratenlimits",
+      "newTitle": "Neue Regel",
+      "editTitle": "Regel bearbeiten",
+      "desc": "Legen Sie fest, wer Ihre Endpunkte aufrufen darf. Eine Sperre gilt immer; sobald Erlauben-Regeln greifen, kommen nur Aufrufer hinein, die auf eine davon passen.",
+      "create": "Regel erstellen",
+      "search": "Adressen, Domains oder Notizen suchen…",
+      "empty": "Noch keine Zugriffsregeln",
+      "emptyDesc": "Ohne Regeln kommt jeder Aufrufer mit gültigem Token hinein. Sperren Sie Adressen, denen Sie nicht trauen, oder erlauben Sie nur Ihre eigenen.",
+      "enabled": "Regel ist an",
+      "on": "An",
+      "off": "Aus",
+      "lastHit": "Entschieden {when}",
+      "neverHit": "Noch nicht verwendet",
+      "noHits": "In den letzten 30 Tagen hat diese Regel keine Aufrufe entschieden.",
+      "noNote": "Keine Notiz",
+      "notePlaceholder": "Warum es diese Regel gibt",
+      "pickTarget": "Eine Option wählen",
+      "pickCountries": "Länder wählen",
+      "searchCountries": "Länder suchen…",
+      "valuesCount": "{n} Wert | {n} Werte",
+      "domainAllowNote": "Domain-Regeln greifen nur bei Aufrufen aus Browsern (sie lesen die Website, von der ein Aufruf kommt). Bei einer solchen Erlauben-Regel passen Aufrufe von Servern und Postman nicht, fügen Sie daher auch eine Erlauben-Regel für deren IP-Adressen hinzu.",
+      "deleteTitle": "Diese Regel löschen?",
+      "deleteDesc": "{values} werden nicht mehr geprüft. Aufrufe, die sie blockiert hat, können wieder hinein.",
+      "action": {
+        "allow": "Erlauben",
+        "block": "Sperren"
+      },
+      "actionHint": {
+        "allow": "Nur Aufrufer, die auf eine Erlauben-Regel passen, kommen hinein (wo Erlauben-Regeln gelten).",
+        "block": "Passende Aufrufer werden abgewiesen, auch wenn eine andere Regel sie erlaubt."
+      },
+      "kind": {
+        "ip": "IP-Adresse",
+        "domain": "Website-Domain",
+        "country": "Land",
+        "region": "Region"
+      },
+      "kindHint": {
+        "ip": "Einzelne Adressen oder Bereiche (IPv4 und IPv6).",
+        "domain": "Die Website, von der ein Browser-Aufruf kommt.",
+        "country": "Wo sich die Adresse des Aufrufers befindet.",
+        "region": "Ganze Kontinente auf einmal."
+      },
+      "valuesLabel": {
+        "ip": "Adressen und Bereiche",
+        "domain": "Domains",
+        "country": "Länder",
+        "region": "Regionen"
+      },
+      "valuesHelp": {
+        "ip": "Eine pro Zeile, z. B. 203.0.113.10 oder 198.51.100.0/24.",
+        "domain": "Eine pro Zeile; *.example.com umfasst jede Subdomain.",
+        "country": "Eine oder mehrere wählen.",
+        "region": "Eine oder mehrere wählen."
+      },
+      "region": {
+        "AF": "Afrika",
+        "AS": "Asien",
+        "EU": "Europa",
+        "NA": "Nord- und Mittelamerika",
+        "OC": "Ozeanien",
+        "SA": "Südamerika"
+      },
+      "scope": {
+        "all": "Alle Endpunkte",
+        "service": "Ein Dienst",
+        "endpoint": "Ein Endpunkt"
+      },
+      "col": {
+        "values": "Passt auf",
+        "action": "Regel",
+        "kind": "Typ",
+        "scope": "Gilt für",
+        "state": "An",
+        "hits": "Entschiedene Aufrufe (30 Tage)",
+        "lastHit": "Zuletzt verwendet",
+        "note": "Notiz"
+      },
+      "sort": {
+        "hits": "Am meisten verwendet",
+        "lastHit": "Zuletzt verwendet",
+        "blockFirst": "Sperren zuerst"
+      },
+      "kpi": {
+        "refused": "Von Regeln abgewiesene Aufrufe",
+        "rules": "Regeln",
+        "limited": "Gedrosselt",
+        "byKind": "Regeln nach Typ",
+        "blockWins": "Sperre gilt immer"
+      },
+      "invalid": {
+        "required": "Mindestens einen Wert hinzufügen.",
+        "ip": "\"{value}\" ist keine IP-Adresse und kein Bereich.",
+        "domain": "\"{value}\" ist keine Domain.",
+        "country": "\"{value}\" ist kein Land.",
+        "region": "\"{value}\" ist keine Region."
+      },
+      "toast": {
+        "created": "Regel erstellt",
+        "saved": "Regel gespeichert",
+        "on": "Regel eingeschaltet",
+        "off": "Regel ausgeschaltet",
+        "deleted": "Regel gelöscht"
+      },
+      "test": {
+        "title": "Aufrufer testen",
+        "desc": "Prüfen Sie, ob ein Aufrufer in einen Endpunkt kommt und welche Regel entscheidet.",
+        "ip": "IP-Adresse des Aufrufers",
+        "origin": "Website, von der er aufruft",
+        "anyCountry": "Unbekannt",
+        "check": "Prüfen",
+        "allowed": "Kommt hinein",
+        "refused": "Abgewiesen",
+        "because": {
+          "allow": "Erlaubt durch die Regel für {value} ({scope}).",
+          "block": "Gesperrt durch die Regel für {value} ({scope})."
+        },
+        "noAllow": "Für diesen Endpunkt gelten Erlauben-Regeln, und keine passt auf diesen Aufrufer.",
+        "noRules": "Keine Regel hält ihn auf ({n} Regel geprüft). | Keine Regel hält ihn auf ({n} Regeln geprüft).",
+        "region": "Region: {region}",
+        "openRule": "Regel öffnen"
+      },
+      "limits": {
+        "title": "Ratenlimits",
+        "desc": "Wie viele Aufrufe pro Minute erlaubt sind, bevor Aufrufer langsamer werden müssen.",
+        "per_token": "Pro Token",
+        "per_tokenHint": "Alle Aufrufe mit einem Token, über alle Ihre Endpunkte.",
+        "per_ip": "Pro IP-Adresse",
+        "per_ipHint": "Alle Aufrufe von einer Adresse, mit oder ohne gültiges Token.",
+        "per_endpoint": "Pro Endpunkt",
+        "per_endpointHint": "Alle Aufrufe an einen Endpunkt, von allen Aufrufern zusammen.",
+        "perMinute": "{n} pro Minute",
+        "none": "Kein Limit",
+        "answer": "Über dem Limit erhalten Aufrufer 429 mit Retry-After (Sekunden Wartezeit); jede Antwort nennt das Limit und den Rest.",
+        "saved": "Ratenlimits gespeichert",
+        "changed": "Geändert {when}"
       }
     }
   },

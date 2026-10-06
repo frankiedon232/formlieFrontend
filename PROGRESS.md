@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints and M2 Tokens and headers done (endpoints callable from Postman against the mock); next M3 Access rules.
+**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules done; next M4 Request logs and analytics.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -23,7 +23,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
-| F13   | API service & integrations                        | 🟡     | ~40% |
+| F13   | API service & integrations                        | 🟡     | ~55% |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
@@ -625,7 +625,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** turn any form into an API so organisations collect data from every side, **links, embeds and API**, all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** Access rules. **M4** Request logs, analytics and the API service overview in the dashboard style. **M5** Docs and testing (try-it console, Test button). **M6** Webhooks and Formalie's own API keys. App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
+**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** ✅ Access rules and rate limits. **M4** Request logs, analytics and the API service overview in the dashboard style. **M5** Docs and testing (try-it console, Test button). **M6** Webhooks and Formalie's own API keys. App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
 
 ### Addresses (decided 2026-10-03, see 03-DECISIONS → 61)
 
@@ -666,9 +666,9 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 5. Access rules (allow / block lists)
 
-- ⬜ Allow-list and block-list by IP address / range, domain (Origin / Referer for browser callers), region and country
-- ⬜ Per service and per endpoint; block wins over allow; test a caller against the rules
-- ⬜ Rate limits per token / IP / endpoint with clear `429` responses
+- ✅ Allow and block rules by IP address / range (IPv4 and IPv6), website domain (Origin / Referer, browser callers; `*.example.com`), country and region (continent); several values per rule; on / off; note; Access rules page (rule 21: chart cards, DataView, rule panel); shared rules `shared/utils/apiService/access.ts`
+- ✅ For all endpoints, one service or one endpoint; a block always wins; once allow rules apply, a caller must match one; "Test a caller" (endpoint, IP, website, country → gets in or refused, and the rule that decided); rules made for a deleted service or endpoint go with it
+- ✅ Rate limits per token, IP and endpoint (calls per minute, or none; Rate limits view): over a limit `429` (`FRM-GEN-1029`) with `Retry-After`; answers carry `X-RateLimit-Limit` / `X-RateLimit-Remaining`. The mock public API applies rules and limits (Postman: `X-Forwarded-For` and `X-Debug-Country` act as the caller's IP and country, mock only)
 
 ### 6. Logs and analytics
 
@@ -680,6 +680,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 - ⬜ Generated documentation per service (OpenAPI), code snippets (curl, JavaScript, Python, PHP, C#), copy buttons
 - ⬜ Try-it console with a test token; sandbox / test mode that doesn't write live data
+- ⬜ Examples and the console use the form's real answer values (choices, not `option_1`) and fill in a fresh `Formalie-Key` for each new record (owner, 2026-10-06)
 - ⬜ Files through the API (owner-agreed 2026-10-06), after tokens (M2) and rate limits (M3): upload first to `{apiKey}/files` (multipart; same type, size and scan checks as the form page) → a file reference, then send the reference in the JSON; file questions then become acceptable in the wizard
 
 ### 8. Safety and audit
@@ -1099,6 +1100,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 tokens: separate test and live tokens from the start; app integrations (Sheets, team chat, email) after F21 | F13 M2 · after F21 | ✅ decided |
 | 2026-10-06 | Files through the API: not in M1 (JSON only); a separate upload step with the form page's checks, once tokens and rate limits exist | F13 M5 | ⬜ |
 | 2026-10-06 | Test the API service with Postman already against the mock (tell the owner when it works) | F13 M2 (mock public API) | ✅ |
+| 2026-10-06 | Token prefixes and headers say Formalie: `formalie_live_…` tokens; `Formalie-Key` instead of `Idempotency-Key` (our own name, on purpose) | F13 M2 | ✅ |
+| 2026-10-06 | Examples with the form's real answer values; the console fills in `Formalie-Key` | F13 M5 | ⬜ |
 
 ---
 
@@ -1284,3 +1287,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F18 / F12 | Analytics (F18, brought forward): dashboard page with KPI cards (`ChartsKpi`), the conversion flow chart (`ChartsFlow`, the design's hatched two-line chart), form overview with where people stop, DataView of every form with cards and a funnel panel, CSV download, NPS on 0 to 10 questions in Responses → Insights; mock `/analytics/*`. Data sources overview rebuilt the same way: KPI cards, database traffic (operations vs responses delivered, kinds that open Activity), connection overview with uptime and latest activity, recent activity table, supported databases and shortcuts. Phone (375) checked: no overflow. Tests: `analytics/csv`. |
 | 2026-10-06 | F13 | M1 Services and endpoints: Services and Endpoints pages (rule 21, chart cards, DataView table / cards, panels), service dialog, endpoint wizard (form → name and service → methods → questions → review, address preview and example call), shared rules `shared/utils/apiService/endpoints.ts`, mock `/api-service/settings`, `/api-services`, `/api-endpoints` (+ insights, duplicate, form-fields), audit area `api` (10 events), errors `FRM-API-1001…1003`. Fixed in the mock: list filters sent as `filter[key]` were ignored by Connections, Destinations, Saved queries, explorer rows (`filtersOf`). Tests: `apiService/endpoints`. |
 | 2026-10-06 | F13 | M2 Tokens and headers: Tokens & headers page (rule 21; view switch Tokens | Headers), new token (live / test, bearer or client id + secret, scopes, expiry, signing; secrets shown once), rotate with a grace period, revoke, delete; address key rotation; required headers per endpoint (wizard, panel, example call); shared rules `shared/utils/apiService/tokens.ts`. Mock public API `server/mock/publicApi.ts` (`/public-api/**` and the `api.formalie.dev` host): token, list, one, create (Idempotency-Key replay), change, delete, the form's rules, scopes, required headers, signatures, test mode; file ids returned as references. Tests: `apiService/tokens`. |
+| 2026-10-06 | F13 | M3 Access rules: Access rules page (rule 21; view switch Rules | Rate limits), rule dialog (allow / block; IPs and ranges, domains, countries, regions; all, a service or an endpoint), rule panel, Test a caller, rate limits per token / IP / endpoint; shared rules `shared/utils/apiService/access.ts` (IPv4 / IPv6 ranges, continents); mock `/api-access-rules` (+ insights, test), `/api-service/limits`; the mock public API applies rules (`FRM-API-1015`) and limits (`429` + `Retry-After`). Also: token prefixes `formalie_…`, header `Formalie-Key` (owner). Tests: `apiService/access`. |

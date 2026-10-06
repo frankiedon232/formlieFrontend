@@ -31,7 +31,7 @@ const example = computed(() => {
       return { line: `GET ${props.url}?page=1&per_page=${Math.min(20, props.pageSize)}`, body: null, status: '200 OK', answer: json({ data: [record], meta: { page: 1, per_page: Math.min(20, props.pageSize), total: 1 } }) }
   }
 })
-const headers = computed(() => ['Authorization: Bearer <token>', ...(example.value.body ? ['Content-Type: application/json'] : []), ...(method.value === 'POST' ? ['Idempotency-Key: <unique id>'] : []), ...(props.headers ?? []).map(header => `${header.name}: ${header.value}`)].join('\n'))
+const headers = computed(() => ['Authorization: Bearer <token>', ...(example.value.body ? ['Content-Type: application/json'] : []), ...(method.value === 'POST' ? ['Formalie-Key: <unique id>'] : []), ...(props.headers ?? []).map(header => `${header.name}: ${header.value}`)].join('\n'))
 function copyText(text: string) {
   void copy(text)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })

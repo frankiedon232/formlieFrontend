@@ -23,7 +23,7 @@ onMounted(async () => {
 const STANDARD = [
   { name: 'Authorization', value: 'Bearer <token>', when: 'always' },
   { name: 'Content-Type', value: 'application/json', when: 'body' },
-  { name: 'Idempotency-Key', value: '<unique id>', when: 'post' },
+  { name: 'Formalie-Key', value: '<unique id>', when: 'post' },
   { name: 'X-Formalie-Timestamp', value: '<unix seconds>', when: 'signing' },
   { name: 'X-Formalie-Signature', value: 'sha256=<hmac>', when: 'signing' },
 ] as const

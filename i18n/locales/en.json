@@ -570,7 +570,8 @@
     "FRM-API-1011": "A required header is missing or has the wrong value.",
     "FRM-API-1012": "The request signature is missing, too old or wrong.",
     "FRM-API-1013": "There is no record with this id.",
-    "FRM-API-1014": "Some fields can not be sent to this endpoint."
+    "FRM-API-1014": "Some fields can not be sent to this endpoint.",
+    "FRM-API-1015": "This caller is not allowed by the access rules."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Connection",
       "api_service": "API service",
       "api_endpoint": "Endpoint",
-      "api_token": "API token"
+      "api_token": "API token",
+      "api_rule": "Access rule"
     },
     "field": {
       "name": "Name",
@@ -993,7 +995,13 @@
       "api_token_updated": "API token changed",
       "api_token_rotated": "API token rotated",
       "api_token_revoked": "API token revoked",
-      "api_token_deleted": "API token deleted"
+      "api_token_deleted": "API token deleted",
+      "api_rule_created": "Access rule created",
+      "api_rule_updated": "Access rule changed",
+      "api_rule_enabled": "Access rule switched on",
+      "api_rule_disabled": "Access rule switched off",
+      "api_rule_deleted": "Access rule deleted",
+      "api_limits_changed": "API rate limits changed"
     },
     "detail": {
       "who": "Who",
@@ -3936,6 +3944,146 @@
         "chars": "Use plain letters, numbers and symbols, up to 200.",
         "duplicate": "This header is already in the list.",
         "fix": "Check the required headers."
+      }
+    },
+    "access": {
+      "rules": "Rules",
+      "viewSwitch": "Rules or rate limits",
+      "newTitle": "New rule",
+      "editTitle": "Edit rule",
+      "desc": "Decide who may call your endpoints. A block always wins; once allow rules apply, only callers that match one get in.",
+      "create": "Create rule",
+      "search": "Search addresses, domains or notes…",
+      "empty": "No access rules yet",
+      "emptyDesc": "Without rules every caller with a valid token gets in. Block addresses you don't trust, or allow only your own.",
+      "enabled": "Rule is on",
+      "on": "On",
+      "off": "Off",
+      "lastHit": "Decided {when}",
+      "neverHit": "Not used yet",
+      "noHits": "No calls decided by this rule in the last 30 days.",
+      "noNote": "No note",
+      "notePlaceholder": "Why this rule exists",
+      "pickTarget": "Choose one",
+      "pickCountries": "Choose countries",
+      "searchCountries": "Search countries…",
+      "valuesCount": "{n} value | {n} values",
+      "domainAllowNote": "Domain rules only match calls from browsers (they read the website a call comes from). With an allow rule like this, calls from servers and Postman don't match it, so add an allow rule for their IP addresses too.",
+      "deleteTitle": "Delete this rule?",
+      "deleteDesc": "{values} will no longer be checked. Calls it blocked can get in again.",
+      "action": {
+        "allow": "Allow",
+        "block": "Block"
+      },
+      "actionHint": {
+        "allow": "Only callers that match an allow rule get in (where allow rules apply).",
+        "block": "Callers that match are refused, even when another rule allows them."
+      },
+      "kind": {
+        "ip": "IP address",
+        "domain": "Website domain",
+        "country": "Country",
+        "region": "Region"
+      },
+      "kindHint": {
+        "ip": "Single addresses or ranges (IPv4 and IPv6).",
+        "domain": "The website a browser call comes from.",
+        "country": "Where the caller's address is located.",
+        "region": "Whole continents at once."
+      },
+      "valuesLabel": {
+        "ip": "Addresses and ranges",
+        "domain": "Domains",
+        "country": "Countries",
+        "region": "Regions"
+      },
+      "valuesHelp": {
+        "ip": "One per line, e.g. 203.0.113.10 or 198.51.100.0/24.",
+        "domain": "One per line; *.example.com covers every subdomain.",
+        "country": "Pick one or more.",
+        "region": "Pick one or more."
+      },
+      "region": {
+        "AF": "Africa",
+        "AS": "Asia",
+        "EU": "Europe",
+        "NA": "North and Central America",
+        "OC": "Oceania",
+        "SA": "South America"
+      },
+      "scope": {
+        "all": "All endpoints",
+        "service": "One service",
+        "endpoint": "One endpoint"
+      },
+      "col": {
+        "values": "Matches",
+        "action": "Rule",
+        "kind": "Type",
+        "scope": "Applies to",
+        "state": "On",
+        "hits": "Calls decided (30 days)",
+        "lastHit": "Last used",
+        "note": "Note"
+      },
+      "sort": {
+        "hits": "Most used",
+        "lastHit": "Used last",
+        "blockFirst": "Blocks first"
+      },
+      "kpi": {
+        "refused": "Calls refused by rules",
+        "rules": "Rules",
+        "limited": "Slowed down",
+        "byKind": "Rules by type",
+        "blockWins": "Block always wins"
+      },
+      "invalid": {
+        "required": "Add at least one.",
+        "ip": "\"{value}\" isn't an IP address or range.",
+        "domain": "\"{value}\" isn't a domain.",
+        "country": "\"{value}\" isn't a country.",
+        "region": "\"{value}\" isn't a region."
+      },
+      "toast": {
+        "created": "Rule created",
+        "saved": "Rule saved",
+        "on": "Rule switched on",
+        "off": "Rule switched off",
+        "deleted": "Rule deleted"
+      },
+      "test": {
+        "title": "Test a caller",
+        "desc": "See whether a caller gets into an endpoint, and which rule decides.",
+        "ip": "Caller's IP address",
+        "origin": "Website it calls from",
+        "anyCountry": "Unknown",
+        "check": "Check",
+        "allowed": "Gets in",
+        "refused": "Refused",
+        "because": {
+          "allow": "Allowed by the rule for {value} ({scope}).",
+          "block": "Blocked by the rule for {value} ({scope})."
+        },
+        "noAllow": "Allow rules apply to this endpoint and none of them matches this caller.",
+        "noRules": "No rule stops it ({n} rule checked). | No rule stops it ({n} rules checked).",
+        "region": "Region: {region}",
+        "openRule": "Open the rule"
+      },
+      "limits": {
+        "title": "Rate limits",
+        "desc": "How many calls per minute are allowed before callers have to slow down.",
+        "per_token": "Per token",
+        "per_tokenHint": "All calls made with one token, across your endpoints.",
+        "per_ip": "Per IP address",
+        "per_ipHint": "All calls from one address, with or without a valid token.",
+        "per_endpoint": "Per endpoint",
+        "per_endpointHint": "All calls to one endpoint, from every caller together.",
+        "perMinute": "{n} per minute",
+        "none": "No limit",
+        "answer": "Over a limit, callers get 429 with Retry-After (seconds to wait); every answer says the limit and what is left.",
+        "saved": "Rate limits saved",
+        "changed": "Changed {when}"
       }
     }
   },

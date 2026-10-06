@@ -570,7 +570,8 @@
     "FRM-API-1011": "Brakuje wymaganego nagłówka lub ma on złą wartość.",
     "FRM-API-1012": "Brakuje podpisu żądania, jest za stary lub nieprawidłowy.",
     "FRM-API-1013": "Nie ma rekordu o tym id.",
-    "FRM-API-1014": "Niektórych pól nie można wysłać do tego endpointu."
+    "FRM-API-1014": "Niektórych pól nie można wysłać do tego endpointu.",
+    "FRM-API-1015": "Reguły dostępu nie zezwalają temu wywołującemu."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -857,7 +858,8 @@
       "data_source": "Połączenie",
       "api_service": "Usługa API",
       "api_endpoint": "Endpoint",
-      "api_token": "Token API"
+      "api_token": "Token API",
+      "api_rule": "Reguła dostępu"
     },
     "field": {
       "name": "Nazwa",
@@ -993,7 +995,13 @@
       "api_token_updated": "Token API zmieniony",
       "api_token_rotated": "Token API zrotowany",
       "api_token_revoked": "Token API unieważniony",
-      "api_token_deleted": "Token API usunięty"
+      "api_token_deleted": "Token API usunięty",
+      "api_rule_created": "Utworzono regułę dostępu",
+      "api_rule_updated": "Zmieniono regułę dostępu",
+      "api_rule_enabled": "Włączono regułę dostępu",
+      "api_rule_disabled": "Wyłączono regułę dostępu",
+      "api_rule_deleted": "Usunięto regułę dostępu",
+      "api_limits_changed": "Zmieniono limity zapytań API"
     },
     "detail": {
       "who": "Kto",
@@ -3936,6 +3944,146 @@
         "chars": "Użyj zwykłych liter, cyfr i symboli, do 200.",
         "duplicate": "Ten nagłówek jest już na liście.",
         "fix": "Sprawdź wymagane nagłówki."
+      }
+    },
+    "access": {
+      "rules": "Reguły",
+      "viewSwitch": "Reguły lub limity zapytań",
+      "newTitle": "Nowa reguła",
+      "editTitle": "Edytuj regułę",
+      "desc": "Zdecyduj, kto może wywoływać Twoje punkty końcowe. Blokada zawsze ma pierwszeństwo; gdy obowiązują reguły zezwalające, wchodzą tylko wywołujący pasujący do którejś z nich.",
+      "create": "Utwórz regułę",
+      "search": "Szukaj adresów, domen lub notatek…",
+      "empty": "Brak reguł dostępu",
+      "emptyDesc": "Bez reguł każdy wywołujący z prawidłowym tokenem ma dostęp. Zablokuj adresy, którym nie ufasz, lub zezwól tylko na własne.",
+      "enabled": "Reguła jest włączona",
+      "on": "Wł.",
+      "off": "Wył.",
+      "lastHit": "Rozstrzygnięto {when}",
+      "neverHit": "Jeszcze nieużywana",
+      "noHits": "W ciągu ostatnich 30 dni ta reguła nie rozstrzygnęła żadnych wywołań.",
+      "noNote": "Brak notatki",
+      "notePlaceholder": "Dlaczego ta reguła istnieje",
+      "pickTarget": "Wybierz jedną opcję",
+      "pickCountries": "Wybierz kraje",
+      "searchCountries": "Szukaj krajów…",
+      "valuesCount": "{n} wartość | {n} wartości",
+      "domainAllowNote": "Reguły domen pasują tylko do wywołań z przeglądarek (odczytują one witrynę, z której pochodzi wywołanie). Przy takiej regule zezwalającej wywołania z serwerów i Postmana nie pasują, więc dodaj też regułę zezwalającą dla ich adresów IP.",
+      "deleteTitle": "Usunąć tę regułę?",
+      "deleteDesc": "{values} nie będzie już sprawdzane. Wywołania, które blokowała, znów będą mogły wejść.",
+      "action": {
+        "allow": "Zezwól",
+        "block": "Blokuj"
+      },
+      "actionHint": {
+        "allow": "Wchodzą tylko wywołujący pasujący do reguły zezwalającej (tam, gdzie obowiązują reguły zezwalające).",
+        "block": "Pasujący wywołujący są odrzucani, nawet jeśli inna reguła im zezwala."
+      },
+      "kind": {
+        "ip": "Adres IP",
+        "domain": "Domena witryny",
+        "country": "Kraj",
+        "region": "Region"
+      },
+      "kindHint": {
+        "ip": "Pojedyncze adresy lub zakresy (IPv4 i IPv6).",
+        "domain": "Witryna, z której pochodzi wywołanie przeglądarki.",
+        "country": "Gdzie znajduje się adres wywołującego.",
+        "region": "Całe kontynenty naraz."
+      },
+      "valuesLabel": {
+        "ip": "Adresy i zakresy",
+        "domain": "Domeny",
+        "country": "Kraje",
+        "region": "Regiony"
+      },
+      "valuesHelp": {
+        "ip": "Po jednym w wierszu, np. 203.0.113.10 lub 198.51.100.0/24.",
+        "domain": "Po jednej w wierszu; *.example.com obejmuje każdą subdomenę.",
+        "country": "Wybierz jeden lub więcej.",
+        "region": "Wybierz jeden lub więcej."
+      },
+      "region": {
+        "AF": "Afryka",
+        "AS": "Azja",
+        "EU": "Europa",
+        "NA": "Ameryka Północna i Środkowa",
+        "OC": "Oceania",
+        "SA": "Ameryka Południowa"
+      },
+      "scope": {
+        "all": "Wszystkie punkty końcowe",
+        "service": "Jedna usługa",
+        "endpoint": "Jeden punkt końcowy"
+      },
+      "col": {
+        "values": "Pasuje do",
+        "action": "Reguła",
+        "kind": "Typ",
+        "scope": "Dotyczy",
+        "state": "Wł.",
+        "hits": "Rozstrzygnięte wywołania (30 dni)",
+        "lastHit": "Ostatnie użycie",
+        "note": "Notatka"
+      },
+      "sort": {
+        "hits": "Najczęściej używane",
+        "lastHit": "Ostatnio użyte",
+        "blockFirst": "Najpierw blokady"
+      },
+      "kpi": {
+        "refused": "Wywołania odrzucone przez reguły",
+        "rules": "Reguły",
+        "limited": "Spowolnione",
+        "byKind": "Reguły według typu",
+        "blockWins": "Blokada zawsze ma pierwszeństwo"
+      },
+      "invalid": {
+        "required": "Dodaj co najmniej jedną wartość.",
+        "ip": "„{value}” nie jest adresem IP ani zakresem.",
+        "domain": "„{value}” nie jest domeną.",
+        "country": "„{value}” nie jest krajem.",
+        "region": "„{value}” nie jest regionem."
+      },
+      "toast": {
+        "created": "Utworzono regułę",
+        "saved": "Zapisano regułę",
+        "on": "Włączono regułę",
+        "off": "Wyłączono regułę",
+        "deleted": "Usunięto regułę"
+      },
+      "test": {
+        "title": "Przetestuj wywołującego",
+        "desc": "Sprawdź, czy wywołujący uzyska dostęp do punktu końcowego i która reguła o tym decyduje.",
+        "ip": "Adres IP wywołującego",
+        "origin": "Witryna, z której wywołuje",
+        "anyCountry": "Nieznany",
+        "check": "Sprawdź",
+        "allowed": "Ma dostęp",
+        "refused": "Odrzucony",
+        "because": {
+          "allow": "Zezwolono regułą dla {value} ({scope}).",
+          "block": "Zablokowano regułą dla {value} ({scope})."
+        },
+        "noAllow": "Dla tego punktu końcowego obowiązują reguły zezwalające i żadna nie pasuje do tego wywołującego.",
+        "noRules": "Żadna reguła go nie zatrzymuje (sprawdzono {n} regułę). | Żadna reguła go nie zatrzymuje (sprawdzono reguły: {n}).",
+        "region": "Region: {region}",
+        "openRule": "Otwórz regułę"
+      },
+      "limits": {
+        "title": "Limity zapytań",
+        "desc": "Ile wywołań na minutę jest dozwolonych, zanim wywołujący będą musieli zwolnić.",
+        "per_token": "Na token",
+        "per_tokenHint": "Wszystkie wywołania wykonane jednym tokenem, we wszystkich Twoich punktach końcowych.",
+        "per_ip": "Na adres IP",
+        "per_ipHint": "Wszystkie wywołania z jednego adresu, z prawidłowym tokenem lub bez.",
+        "per_endpoint": "Na punkt końcowy",
+        "per_endpointHint": "Wszystkie wywołania jednego punktu końcowego, od wszystkich wywołujących łącznie.",
+        "perMinute": "{n} na minutę",
+        "none": "Bez limitu",
+        "answer": "Po przekroczeniu limitu wywołujący otrzymują 429 z Retry-After (sekundy oczekiwania); każda odpowiedź podaje limit i to, co zostało.",
+        "saved": "Zapisano limity zapytań",
+        "changed": "Zmieniono {when}"
       }
     }
   },

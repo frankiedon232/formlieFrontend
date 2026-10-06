@@ -51,7 +51,7 @@ export function checkHeaderName(name: string): 'required' | 'pattern' | 'reserve
   if (!name) return 'required'
   if (!HEADER_NAME_PATTERN.test(name)) return 'pattern'
   const lower = name.toLowerCase()
-  if (RESERVED_HEADERS.includes(lower) || lower.startsWith('x-formalie-')) return 'reserved'
+  if (RESERVED_HEADERS.includes(lower) || lower.startsWith('formalie-') || lower.startsWith('x-formalie-')) return 'reserved'
   return null
 }
 
@@ -74,4 +74,4 @@ export const ROTATION_GRACE_HOURS: number[] = [0, 24, 168]
 export const MAX_REQUIRED_HEADERS = 5
 export const HEADER_NAME_PATTERN = /^[A-Za-z][A-Za-z0-9-]{1,63}$/
 /** Set by HTTP or by Formalie itself; never a custom required header. */
-export const RESERVED_HEADERS: string[] = ['authorization', 'content-type', 'content-length', 'host', 'cookie', 'idempotency-key', 'accept', 'user-agent', 'origin', 'referer']
+export const RESERVED_HEADERS: string[] = ['authorization', 'content-type', 'content-length', 'host', 'cookie', 'formalie-key', 'accept', 'user-agent', 'origin', 'referer']

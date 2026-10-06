@@ -1,6 +1,6 @@
 /**
  * Submitted responses for the mock (F10 stores them, F11 lists and reviews them). One response per
- * fill-in session: the session's Idempotency-Key maps to the response it created, so a repeat
+ * fill-in session: the session's Formalie-Key maps to the response it created, so a repeat
  * (double click, retry after a dropped connection, back button) returns the same response.
  * Persisted across dev reloads.
  */
@@ -15,7 +15,7 @@ export interface StoredResponse {
   submitted_at: string
   language: string
   data: Record<string, unknown>
-  /** The fill-in session's submission id (Idempotency-Key). */
+  /** The fill-in session's submission id (Formalie-Key). */
   submission_id: string
   /** The browser it came from (device cookie), "already submitted from this browser" (F10). */
   device_id?: string
