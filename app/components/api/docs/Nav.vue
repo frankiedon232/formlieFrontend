@@ -1,6 +1,6 @@
 <!--
   Docs navigation (F13 M7 redesign, owner 2026-10-06): the service at the top, then Getting started
-  (address, tokens, Formalie-Key, files, signed calls, errors) and every endpoint with its methods
+  (address, tokens, the three headers, Formalie-Key, files, token expiry, errors) and every endpoint with its methods
   in their colours. The part on screen is marked as you scroll; a click scrolls there. Sticky beside
   the docs on wide screens; on smaller ones a sliding row of the endpoints instead.
 -->
@@ -14,9 +14,10 @@ const { t } = useI18n()
 const GUIDE = [
   { anchor: 'guide-address', icon: 'i-lucide-link', key: 'baseUrl' },
   { anchor: 'guide-auth', icon: 'i-lucide-key-round', key: 'auth.title' },
+  { anchor: 'guide-headers', icon: 'i-lucide-list-checks', key: 'callHeaders.title' },
   { anchor: 'guide-key', icon: 'i-lucide-fingerprint', key: 'key.title' },
   { anchor: 'guide-files', icon: 'i-lucide-paperclip', key: 'files.title' },
-  { anchor: 'guide-signing', icon: 'i-lucide-signature', key: 'signing.title' },
+  { anchor: 'guide-expiry', icon: 'i-lucide-calendar-clock', key: 'expiry.title' },
   { anchor: 'guide-errors', icon: 'i-lucide-octagon-alert', key: 'errors.title' },
 ]
 const methodAnchor = (endpoint: ApiEndpointDetail, method: ApiMethod) => `ep-${endpoint.id}-${method}`

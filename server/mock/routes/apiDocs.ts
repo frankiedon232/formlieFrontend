@@ -15,7 +15,7 @@ import { apiOf } from '../data/apiStore'
 import { issueConsoleToken } from '../publicApi'
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-const SHOWN = ['x-request-id', 'x-ratelimit-limit', 'x-ratelimit-remaining', 'retry-after', 'content-type']
+const SHOWN = ['x-request-id', 'x-ratelimit-limit', 'x-ratelimit-remaining', 'retry-after', 'content-type', 'formalie-token-expires']
 
 export const tryEndpoint = defineMockRoute(async ({ event, body }) => {
   const { tenant } = requireAdmin(event)
@@ -27,7 +27,9 @@ export const tryEndpoint = defineMockRoute(async ({ event, body }) => {
   const record = values.record_id ? (UUID.test(values.record_id) ? encodeId(values.record_id) : values.record_id) : ''
   const headers: Record<string, string> = { ...(values.headers ?? {}), authorization: `Bearer ${issueConsoleToken(tenant.id)}` }
   const writes = values.method === 'POST' || values.method === 'PUT'
-  if (writes) headers['content-type'] = 'application/json'
+  // The three headers every call sends: Content-Type (always) and a Formalie-Key when the console did not give one
+  headers['content-type'] = 'application/json'
+  if (!Object.keys(headers).some(name => name.toLowerCase() === 'formalie-key')) headers['formalie-key'] = crypto.randomUUID()
   const started = Date.now()
   const response = await $fetch.raw(`/public-api/${api.api_key}/${endpoint.name}${record ? `/${encodeURIComponent(record)}` : ''}`, {
     method: values.method,

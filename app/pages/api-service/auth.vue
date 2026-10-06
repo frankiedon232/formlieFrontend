@@ -183,7 +183,6 @@ defineShortcuts({ n: { usingInput: false, handler: () => edit(null) } })
             <span class="flex min-w-0 items-center gap-1.5">
               <UIcon v-if="format.flagged(row.original)" name="i-lucide-flag" class="size-3.5 shrink-0 text-error" :aria-label="t('apiService.tokens.needsLook')" />
               <span class="truncate font-medium text-highlighted">{{ row.original.name }}</span>
-              <UIcon v-if="row.original.signing" name="i-lucide-signature" class="size-3.5 shrink-0 text-muted" :aria-label="t('apiService.tokens.signing')" />
             </span>
             <span class="truncate font-mono text-[11px] text-muted" dir="ltr">{{ row.original.preview }}</span>
           </div>

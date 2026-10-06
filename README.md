@@ -97,7 +97,7 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 
 ### 2. Tokens
 
-1. **New token** shows four steps: kind (live or test, bearer or client id + secret) → name and what it may call (a sentence sums it up) → expiry and signed calls → the token.
+1. **New token** shows four steps: kind (live or test, bearer or client id + secret) → name and what it may call (a sentence sums it up) → expiry → the token.
 2. **See it again later:** open the token's panel → _Secret_ → **Show** → enter your password. A wrong password says how many tries are left; five wrong tries lock it for 15 minutes. The right one shows the token with Copy for 60 seconds, then it hides again. The audit trail records _API token viewed_.
 3. Tokens made before this change can't be shown again ("Rotate it to get one you can view later"); rotate them once.
 4. Rotate (old secret keeps working for the chosen grace time), Revoke (calls get `401`), Delete (only once revoked or expired).
@@ -115,10 +115,12 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 
 1. Wide screens: the navigation on the left (Getting started, every endpoint with its methods in colour: GET green, POST violet, PUT amber, DELETE red), the part on screen marked as you scroll; click to jump. Smaller screens: a sliding row of endpoints.
 2. Each method: what it does, the questions with type, required and allowed values (or the query options), and on the right the code (curl, JavaScript, Python, PHP, C#; Copy) and the answers it can give (200 / 201, 401, 422, 404, 429).
-3. **Try it** opens a drawer: method buttons in colour, the address with a record id box, Body (line numbers, the form's real values) and Headers (token and Content-Type filled in and locked, a fresh `Formalie-Key` per POST, _Keep this key_ to see a retry answered with the first record, required headers). **Send** (or Ctrl / ⌘ + Enter) shows status, time, size, the JSON or the answer's headers, and the last calls.
+3. **Try it** opens a drawer: method buttons in colour, the address with a record id box, Body (line numbers, the form's real values) and Headers (the three headers every call sends: the token and Content-Type filled in and locked, a fresh `Formalie-Key` for every call, _Keep this key_ to send a POST again and see it answered with the first record). **Send** (or Ctrl / ⌘ + Enter) shows status, time, size, the JSON or the answer's headers, and the last calls.
 4. **Download OpenAPI** and import it into Postman (Import → file).
 
 ### 5. Every failure has a clear answer (Postman)
+
+**Every call sends three headers, on every method, and no others:** `Authorization: Bearer <token>`, `Content-Type: application/json` and `Formalie-Key: <a new unique id>` (in Postman: `{{$guid}}` as the value makes a new one per send). Every answer tells the token's expiry: the `Formalie-Token-Expires` header and `meta.token_expires_at` / `meta.token_expires_in_days` next to the data.
 
 Use a live token unless the row says otherwise. Each answer is JSON `{ "error": { "code", "message", "details" } }` with an `X-Request-Id` header.
 
@@ -132,8 +134,7 @@ Use a live token unless the row says otherwise. Each answer is JSON `{ "error": 
 | Endpoint that isn't live, live token                                    | `503 FRM-API-1007` (`endpoint: not_live`)                          |
 | A method the endpoint doesn't answer, `PATCH`, or POST to `…/{id}`      | `405 FRM-API-1008`                                                 |
 | Token limited to other methods, services or endpoints                   | `403 FRM-API-1009`                                                 |
-| Endpoint with a required header: header missing or wrong value          | `400 FRM-API-1011` (names the header)                              |
-| Body sent as `text/plain`                                               | `415 FRM-API-1017`                                                 |
+| No `Formalie-Key`, or one shorter than 8 characters                     | `400 FRM-API-1011` (`Formalie-Key: missing` / `invalid`)           |
 | Broken JSON, or a JSON list instead of an object                        | `400 FRM-GEN-1001`                                                 |
 | Body over 1 MB                                                          | `413 FRM-API-1018`                                                 |
 | A question the endpoint doesn't accept                                  | `422 FRM-API-1014` (`not_accepted`)                                |
@@ -142,7 +143,6 @@ Use a live token unless the row says otherwise. Each answer is JSON `{ "error": 
 | File upload for a question that doesn't take files                      | `422 FRM-API-1014`                                                 |
 | Blocked IP (`X-Forwarded-For`), range, website (`Origin`) or network    | `403 FRM-API-1015` (the matching value)                            |
 | Client id + wrong secret on `POST …/token`                              | `401 FRM-API-1010`                                                 |
-| Token with signed calls: no signature, a wrong one, or older than 5 min | `401 FRM-API-1012`                                                 |
 | More than the rate limit in a minute (per IP 120 by default)            | `429 FRM-GEN-1029` with `Retry-After`                              |
 | Management API: no key, wrong key / missing permission / unknown form   | `401` `FRM-API-1010` / `403` `FRM-API-1009` / `404` `FRM-GEN-1004` |
 

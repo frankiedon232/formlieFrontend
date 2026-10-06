@@ -19,33 +19,39 @@ export interface SnippetCall {
 export function snippetFor(language: SnippetLanguage, call: SnippetCall): string {
   const json = call.body === undefined ? null : JSON.stringify(call.body, null, 2)
   const headers = Object.entries(call.headers)
+  const generated = KEY_CODE[language]
+  const fresh = (value: string) => value === NEW_KEY
   switch (language) {
     case 'curl':
-      return [`curl -X ${call.method} "${call.url}"`, ...headers.map(([name, value]) => `  -H "${name}: ${value}"`), ...(json ? [`  -d '${json.replace(/'/g, "'\\''")}'`] : [])].join(' \\\n')
+      return [`curl -X ${call.method} "${call.url}"`, ...headers.map(([name, value]) => `  -H "${name}: ${fresh(value) ? generated : value}"`), ...(json ? [`  -d '${json.replace(/'/g, "'\\''")}'`] : [])].join(' \\\n')
     case 'javascript':
-      return `const response = await fetch("${call.url}", {\n  method: "${call.method}",\n  headers: ${indent(JSON.stringify(Object.fromEntries(headers), null, 2), 2)},${json ? `\n  body: JSON.stringify(${indent(json, 2)}),` : ''}\n})\nconst result = await response.json()`
+      return `const response = await fetch("${call.url}", {\n  method: "${call.method}",\n  headers: ${indent(JSON.stringify(Object.fromEntries(headers), null, 2).replace(`"${NEW_KEY}"`, generated), 2)},${json ? `\n  body: JSON.stringify(${indent(json, 2)}),` : ''}\n})\nconst result = await response.json()`
     case 'python':
-      return `import requests\n\nresponse = requests.request(\n    "${call.method}",\n    "${call.url}",\n    headers=${indent(pyDict(Object.fromEntries(headers)), 4)},${json ? `\n    json=${indent(toPython(call.body), 4)},` : ''}\n)\nresult = response.json()`
+      return `import requests, uuid\n\nresponse = requests.request(\n    "${call.method}",\n    "${call.url}",\n    headers=${indent(pyDict(Object.fromEntries(headers)).replace(`"${NEW_KEY}"`, generated), 4)},${json ? `\n    json=${indent(toPython(call.body), 4)},` : ''}\n)\nresult = response.json()`
     case 'php':
-      return `<?php\n$ch = curl_init("${call.url}");\ncurl_setopt_array($ch, [\n    CURLOPT_CUSTOMREQUEST => "${call.method}",\n    CURLOPT_RETURNTRANSFER => true,\n    CURLOPT_HTTPHEADER => [\n${headers.map(([name, value]) => `        "${name}: ${value}",`).join('\n')}\n    ],${json ? `\n    CURLOPT_POSTFIELDS => json_encode(${indent(toPhp(call.body), 4)}),` : ''}\n]);\n$result = json_decode(curl_exec($ch), true);`
+      return `<?php\n$ch = curl_init("${call.url}");\ncurl_setopt_array($ch, [\n    CURLOPT_CUSTOMREQUEST => "${call.method}",\n    CURLOPT_RETURNTRANSFER => true,\n    CURLOPT_HTTPHEADER => [\n${headers.map(([name, value]) => (fresh(value) ? `        "${name}: " . ${generated},` : `        "${name}: ${value}",`)).join('\n')}\n    ],${json ? `\n    CURLOPT_POSTFIELDS => json_encode(${indent(toPhp(call.body), 4)}),` : ''}\n]);\n$result = json_decode(curl_exec($ch), true);`
     case 'csharp':
-      return `using var client = new HttpClient();\nvar request = new HttpRequestMessage(HttpMethod.${call.method === 'DELETE' ? 'Delete' : call.method[0] + call.method.slice(1).toLowerCase()}, "${call.url}");\n${headers.filter(([name]) => name.toLowerCase() !== 'content-type').map(([name, value]) => `request.Headers.TryAddWithoutValidation("${name}", "${value}");`).join('\n')}${json ? `\nrequest.Content = new StringContent(${JSON.stringify(json.replace(/\n\s*/g, ' '))}, System.Text.Encoding.UTF8, "application/json");` : ''}\nvar response = await client.SendAsync(request);\nvar result = await response.Content.ReadAsStringAsync();`
+      return `using var client = new HttpClient();\nvar request = new HttpRequestMessage(HttpMethod.${call.method === 'DELETE' ? 'Delete' : call.method[0] + call.method.slice(1).toLowerCase()}, "${call.url}");\n${headers
+        .filter(([name]) => name.toLowerCase() !== 'content-type')
+        .map(([name, value]) => `request.Headers.TryAddWithoutValidation("${name}", ${fresh(value) ? generated : `"${value}"`});`)
+        .join('\n')}${json ? `\nrequest.Content = new StringContent(${JSON.stringify(json.replace(/\n\s*/g, ' '))}, System.Text.Encoding.UTF8, "application/json");` : ''}\nvar response = await client.SendAsync(request);\nvar result = await response.Content.ReadAsStringAsync();`
   }
 }
 
 /** The calls an endpoint answers, with the headers and an example body each needs. */
-export function endpointCalls(endpoint: Pick<ApiEndpointDetail, 'methods' | 'url' | 'fields' | 'headers' | 'page_size'> & { setup?: { signing_tokens?: number } }, token = '<token>'): SnippetCall[] {
-  // The endpoint's required headers with their real values, so the examples copy and run as they are
-  const extra = Object.fromEntries(endpoint.headers.map(header => [header.name, (header as { value?: string }).value || `<${header.name}>`]))
-  // Tokens with signed calls on (owner, 2026-10-06: every header a call needs is in the example)
-  const signed: Record<string, string> = endpoint.setup?.signing_tokens ? { 'X-Formalie-Timestamp': '<unix seconds>', 'X-Formalie-Signature': 'sha256=<hmac>' } : {}
-  const auth = { Authorization: `Bearer ${token}`, ...signed }
+/** The three headers every call sends (owner, 2026-10-06): no others exist. */
+export const CALL_HEADERS = ['Authorization', 'Content-Type', 'Formalie-Key'] as const
+/** Placeholder the code samples turn into a generated id in each language. */
+export const NEW_KEY = '<new unique id>'
+
+export function endpointCalls(endpoint: Pick<ApiEndpointDetail, 'methods' | 'url' | 'fields' | 'page_size'>, token = '<token>'): SnippetCall[] {
+  const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', 'Formalie-Key': NEW_KEY }
   const body = exampleRequestBody(endpoint.fields)
   return endpoint.methods.map(method => {
-    if (method === 'GET') return { method, url: `${endpoint.url}?page=1&per_page=${Math.min(20, endpoint.page_size)}`, headers: { ...auth, ...extra } }
-    if (method === 'POST') return { method, url: endpoint.url, headers: { ...auth, 'Content-Type': 'application/json', 'Formalie-Key': '<unique id>', ...extra }, body }
-    if (method === 'PUT') return { method, url: `${endpoint.url}/<record id>`, headers: { ...auth, 'Content-Type': 'application/json', ...extra }, body }
-    return { method, url: `${endpoint.url}/<record id>`, headers: { ...auth, ...extra } }
+    if (method === 'GET') return { method, url: `${endpoint.url}?page=1&per_page=${Math.min(20, endpoint.page_size)}`, headers }
+    if (method === 'POST') return { method, url: endpoint.url, headers, body }
+    if (method === 'PUT') return { method, url: `${endpoint.url}/<record id>`, headers, body }
+    return { method, url: `${endpoint.url}/<record id>`, headers }
   })
 }
 
@@ -101,7 +107,7 @@ export function openApiFor(service: { name: string; description: string | null }
     const accepted = endpoint.fields.filter(field => field.accept)
     const record = { type: 'object', properties: { id: { type: 'string' }, submitted_at: { type: 'string', format: 'date-time' }, status: { type: 'string' }, data: { type: 'object', properties: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.name, fieldSchema(field)])) } } }
     const input = { type: 'object', properties: Object.fromEntries(accepted.map(field => [field.name, fieldSchema(field)])), required: accepted.filter(field => field.required).map(field => field.name), additionalProperties: false }
-    const headers = endpoint.headers.map(header => ({ name: header.name, in: 'header', required: true, schema: { type: 'string', ...((header as { value?: string }).value ? { example: (header as { value?: string }).value } : {}) } }))
+    const headers = [{ name: 'Formalie-Key', in: 'header', required: true, schema: { type: 'string' }, description: 'A new unique id for every call. A repeated POST with the same key answers with its first record.' }]
     const errors = { '401': { description: 'FRM-API-1010' }, '403': { description: 'FRM-API-1009, FRM-API-1015' }, '422': { description: 'FRM-RESP-1001, FRM-API-1014' }, '429': { description: 'FRM-GEN-1029' } }
     const one = `/${endpoint.name}/{id}`
     const list = `/${endpoint.name}`
@@ -110,7 +116,7 @@ export function openApiFor(service: { name: string; description: string | null }
         paths[list] = { ...paths[list], get: { summary: endpoint.description ?? endpoint.form.name, parameters: [...headers, { name: 'page', in: 'query', schema: { type: 'integer' } }, { name: 'per_page', in: 'query', schema: { type: 'integer', maximum: endpoint.page_size } }, ...endpoint.fields.filter(field => field.filter).map(field => ({ name: field.name, in: 'query', schema: fieldSchema(field) }))], responses: { '200': { description: 'OK', content: { 'application/json': { schema: { type: 'object', properties: { data: { type: 'array', items: record } } }, example: { data: [exampleRecord(endpoint.fields)] } } } }, ...errors } } }
         paths[one] = { ...paths[one], get: { parameters: [...headers, { name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { '200': { description: 'OK', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, '404': { description: 'FRM-API-1013' }, ...errors } } }
       }
-      if (method === 'POST') paths[list] = { ...paths[list], post: { parameters: [...headers, { name: 'Formalie-Key', in: 'header', schema: { type: 'string' }, description: 'Same key, same record: a retry never makes a second one.' }], requestBody: { required: true, content: { 'application/json': { schema: input, example: exampleRequestBody(endpoint.fields) } } }, responses: { '201': { description: 'Created', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, ...errors } } }
+      if (method === 'POST') paths[list] = { ...paths[list], post: { parameters: headers, requestBody: { required: true, content: { 'application/json': { schema: input, example: exampleRequestBody(endpoint.fields) } } }, responses: { '201': { description: 'Created', content: { 'application/json': { schema: { type: 'object', properties: { data: record } } } } }, ...errors } } }
       if (method === 'PUT') paths[one] = { ...paths[one], put: { parameters: [...headers, { name: 'id', in: 'path', required: true, schema: { type: 'string' } }], requestBody: { content: { 'application/json': { schema: { ...input, required: [] } } } }, responses: { '200': { description: 'OK' }, '404': { description: 'FRM-API-1013' }, ...errors } } }
       if (method === 'DELETE') paths[one] = { ...paths[one], delete: { parameters: [...headers, { name: 'id', in: 'path', required: true, schema: { type: 'string' } }], responses: { '200': { description: 'Deleted' }, '404': { description: 'FRM-API-1013' }, ...errors } } }
     }
@@ -124,6 +130,9 @@ export function openApiFor(service: { name: string; description: string | null }
     paths,
   }
 }
+
+/** A new unique id for the Formalie-Key, written in each language. */
+const KEY_CODE: Record<SnippetLanguage, string> = { curl: '$(uuidgen)', javascript: 'crypto.randomUUID()', python: 'str(uuid.uuid4())', php: 'bin2hex(random_bytes(16))', csharp: 'Guid.NewGuid().ToString()' }
 
 const indent = (text: string, spaces: number) => text.replace(/\n/g, `\n${' '.repeat(spaces)}`)
 const pyDict = (value: Record<string, string>) => `{\n${Object.entries(value).map(([k, v]) => `    "${k}": "${v}",`).join('\n')}\n}`

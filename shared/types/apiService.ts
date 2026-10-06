@@ -210,14 +210,12 @@ export interface ApiTokenSaveRequest {
   scopes: ApiTokenScopes
   expires_at: string | null
   lifetime_minutes?: number | null
-  signing?: boolean
 }
 
 /** Secrets are shown once, right after creating or rotating; Formalie keeps only a hash. */
 export interface ApiTokenSecrets {
   token?: string
   client_secret?: string
-  signing_secret?: string
 }
 export interface ApiTokenCreated {
   token: ApiToken

@@ -166,9 +166,10 @@ export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[
   // Before the Formalie prefixes (owner, 2026-10-06): the sample tokens (nobody has their secrets) get new ones
   const SEEDED = ['Website sign-ups', 'Partner sandbox', 'Mobile app', 'Old import script']
   for (const token of api.tokens ?? []) {
-    // A signing token saved without its signing secret could never be called: give it one
-    if (token.signing && !token.signing_secret) {
-      token.signing_secret = newSecret('signing', token.mode)
+    // No signed calls any more (owner, 2026-10-06: three headers, nothing else)
+    if (token.signing || token.signing_secret) {
+      token.signing = false
+      token.signing_secret = null
       saveApi()
     }
     // Before secrets could be viewed again (owner, 2026-10-06): the samples get a viewable one
@@ -186,7 +187,12 @@ export function apiOf(tenant: MockTenant): TenantApi & { tokens: StoredApiToken[
     token.secret = secret
     token.preview = secretPreview(secret)
     if (token.client_id) token.client_id = newSecret('client_id', token.mode)
-    if (token.signing_secret) token.signing_secret = newSecret('signing', token.mode)
+    saveApi()
+  }
+  // No custom headers any more (owner, 2026-10-06): endpoints lose theirs
+  for (const endpoint of api.endpoints) {
+    if (!endpoint.headers?.length) continue
+    endpoint.headers = []
     saveApi()
   }
   // Before API names (owner, 2026-10-06): every endpoint gets clean names from the labels, once, then they stay
@@ -262,7 +268,7 @@ export function newSecret(kind: ApiTokenKind | 'client_id' | 'signing', mode: Ap
   return tokenPrefix(kind, mode) + Array.from(randomBytes(length), byte => ALPHABET[byte % ALPHABET.length]).join('')
 }
 
-/** A few believable tokens: a live website token, a test partner client with signing, an expiring and a revoked one. */
+/** A few believable tokens: a live website token, a test partner client, an expiring and a revoked one. */
 function seedTokens(api: TenantApi): StoredApiToken[] {
   const by = api.services[0]?.created_by ?? { id: 'system', name: 'Formalie' }
   const make = (index: number, values: Partial<StoredApiToken> & Pick<StoredApiToken, 'name' | 'kind' | 'mode'>): StoredApiToken => {
@@ -289,12 +295,7 @@ function seedTokens(api: TenantApi): StoredApiToken[] {
     }
   }
   const [first, second] = api.services
-  return [
-    make(0, { name: 'Website sign-ups', kind: 'static', mode: 'live', scopes: { services: first ? [first.id] : [], endpoints: [], methods: ['POST'] } }),
-    make(1, { name: 'Partner sandbox', kind: 'client', mode: 'test', signing: true, signing_secret: newSecret('signing', 'test'), scopes: { services: second ? [second.id] : [], endpoints: [], methods: [] } }),
-    make(2, { name: 'Mobile app', kind: 'static', mode: 'live', expires_at: iso(Date.now() + 9 * DAY) }),
-    make(3, { name: 'Old import script', kind: 'static', mode: 'live', revoked_at: iso(Date.now() - 20 * DAY), last_used_at: iso(Date.now() - 24 * DAY) }),
-  ]
+  return [make(0, { name: 'Website sign-ups', kind: 'static', mode: 'live', scopes: { services: first ? [first.id] : [], endpoints: [], methods: ['POST'] } }), make(1, { name: 'Partner sandbox', kind: 'client', mode: 'test', signing: false, signing_secret: null, scopes: { services: second ? [second.id] : [], endpoints: [], methods: [] } }), make(2, { name: 'Mobile app', kind: 'static', mode: 'live', expires_at: iso(Date.now() + 9 * DAY) }), make(3, { name: 'Old import script', kind: 'static', mode: 'live', revoked_at: iso(Date.now() - 20 * DAY), last_used_at: iso(Date.now() - 24 * DAY) })]
 }
 
 /** 30 days of calls for a token (none once revoked or expired). */

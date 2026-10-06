@@ -591,7 +591,7 @@
     "FRM-API-1008": "Endpoint ini tidak menjawab metode ini.",
     "FRM-API-1009": "Token ini tidak boleh memanggil endpoint atau metode ini.",
     "FRM-API-1010": "Kirim token yang valid sebagai Authorization: Bearer ….",
-    "FRM-API-1011": "Header wajib tidak ada atau nilainya salah.",
+    "FRM-API-1011": "Header Formalie-Key hilang atau tidak valid. Kirim id unik baru di setiap panggilan.",
     "FRM-API-1012": "Tanda tangan permintaan tidak ada, terlalu lama, atau salah.",
     "FRM-API-1013": "Tidak ada catatan dengan id ini.",
     "FRM-API-1014": "Beberapa kolom tidak dapat dikirim ke endpoint ini.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} menit",
       "lifetime": "Masa berlaku token jangka pendek",
       "lifetimeHelp": "Berapa lama setiap token dari alamat token berlaku sebelum aplikasi meminta yang baru.",
-      "signing": "Permintaan bertanda tangan",
-      "signingHelp": "Panggilan juga harus membawa tanda tangan HMAC dari permintaan. Untuk pemanggil yang butuh perlindungan ekstra.",
-      "signingHint": "Tanda tangani setiap panggilan: X-Formalie-Timestamp (detik unix) dan X-Formalie-Signature (sha256= HMAC dari metode, path, stempel waktu, dan body dengan secret penandatanganan). Panggilan yang lebih lama dari 5 menit ditolak.",
       "clientHint": "Respons berisi token akses yang berlaku selama {n} menit; kirim sebagai Authorization: Bearer, lalu minta yang baru saat habis.",
       "howToUse": "Cara memakainya",
       "rotate": "Rotasi",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "ID klien",
         "clientSecret": "Secret klien",
-        "signing": "Secret penandatanganan",
         "title": "Rahasia"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Header yang dikirim setiap pemanggil",
-      "standardDesc": "Formalie memeriksanya di setiap panggilan; respons selalu berupa JSON.",
-      "customTitle": "Header per endpoint",
-      "customDesc": "Setiap endpoint, per layanan, beserta header yang dibutuhkan panggilannya: header miliknya sendiri (diatur di langkah Metode, mis. id mitra) dan header standar.",
-      "none": "Tidak ada endpoint yang mewajibkan header tambahan",
-      "noneDesc": "Tambahkan di langkah Metode pada endpoint saat pemanggil harus mengidentifikasi diri lebih lanjut.",
-      "requiredTitle": "Header wajib",
-      "requiredDesc": "Panggilan tanpa header dan nilai ini ditolak. Opsional, hingga 5.",
-      "name": "Nama header",
-      "value": "Nilai yang harus dimiliki",
-      "keep": "{preview} (tidak berubah)",
-      "add": "Tambah header",
-      "remove": "Hapus header",
+      "standardTitle": "Tiga header yang dikirim setiap panggilan",
+      "standardDesc": "Ketiganya di setiap panggilan dan setiap metode, tidak ada yang opsional. Formalie tidak menerima header lain.",
       "when": {
-        "always": "Setiap panggilan",
-        "body": "POST dan PUT",
-        "post": "Opsional, POST",
-        "signing": "Token bertanda tangan"
+        "always": "Setiap panggilan"
       },
-      "invalid": {
-        "required": "Isi bagian ini.",
-        "pattern": "Gunakan huruf, angka, dan tanda hubung, diawali huruf (2 sampai 64).",
-        "reserved": "Header ini diatur sendiri oleh Formalie atau HTTP. Pilih nama lain.",
-        "chars": "Gunakan huruf, angka, dan simbol biasa, hingga 200.",
-        "duplicate": "Header ini sudah ada di daftar.",
-        "fix": "Periksa header wajib."
-      },
-      "withOwn": "{n} endpoint dengan header sendiri | {n} endpoint dengan header sendiri",
-      "withoutOwn": "{n} lagi tanpa header | {n} lagi tanpa header",
-      "show": "Tampilkan nilai",
-      "hide": "Sembunyikan nilai",
-      "ownCount": "{n} endpoint punya header sendiri. | {n} endpoint punya header sendiri.",
-      "noneOwn": "Belum ada endpoint yang punya header sendiri. Tambahkan di langkah Metode sebuah endpoint saat pemanggil perlu mengidentifikasi diri lebih lanjut.",
-      "noOwn": "Tidak ada header sendiri.",
-      "addOwn": "Tambah header",
-      "collapseAll": "Ciutkan semua",
-      "expandAll": "Bentangkan semua",
-      "ownShort": "{n} dengan header sendiri"
+      "expiryTitle": "Masa berlaku token di setiap jawaban",
+      "expiryDesc": "Setiap jawaban menyebutkan kapan token yang melakukan panggilan kedaluwarsa, agar aplikasi Anda bisa memperbaruinya tepat waktu."
     },
     "access": {
       "rules": "Aturan",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Id unik yang Anda buat untuk setiap rekaman baru (UUID cocok digunakan). Jika jaringan gagal dan Anda mengirim panggilan yang sama lagi, Formalie menjawab dengan rekaman yang sudah dibuat."
+        "text": "Id unik baru untuk setiap panggilan (UUID cocok; contoh-contohnya membuatkannya untuk Anda). Setiap panggilan bisa ditemukan dengannya di Log permintaan, dan jika jaringan gagal lalu Anda mengirim POST yang sama dengan key yang sama, Formalie menjawab dengan data yang sudah dibuatnya."
       },
       "files": {
         "title": "Mengirim file",
@@ -4391,10 +4356,6 @@
         "then": "Lalu taruh id di isi JSON pada pertanyaan itu, mis. \"cv\": [\"id\"]. Jenis dan ukuran file yang sama seperti di formulir diizinkan.",
         "step1": "Unggah file",
         "step2": "Kirim id-nya bersama jawaban"
-      },
-      "signing": {
-        "title": "Panggilan bertanda tangan",
-        "text": "Saat penandatanganan diaktifkan pada token, setiap panggilan juga membawa waktu dan tanda tangan HMAC-SHA256 yang dibuat dengan rahasia penandatanganan. Panggilan yang lebih lama dari lima menit ditolak."
       },
       "errors": {
         "title": "Kesalahan",
@@ -4410,10 +4371,9 @@
         "desc": "Menjalankan semua pemeriksaan asli dengan token uji. Tidak ada yang disimpan.",
         "record": "Id rekaman",
         "recordPlaceholder": "Kosongkan untuk daftar",
-        "keyHelp": "Diisi untuk Anda; yang baru setelah setiap panggilan.",
+        "keyHelp": "Diisi otomatis; yang baru setelah setiap panggilan.",
         "newKey": "Kunci baru",
         "keepKey": "Pertahankan kunci ini (kirim panggilan yang sama lagi untuk melihat percobaan ulang)",
-        "headerHelp": "Diperlukan oleh endpoint ini.",
         "testOnly": "Mode uji: jawaban tampak nyata, tetapi tidak ada jawaban yang dibuat, diubah, atau dihapus.",
         "nothingYet": "Kirim panggilan untuk melihat jawabannya",
         "send": "Kirim",
@@ -4441,6 +4401,14 @@
         "POST": "Buat",
         "PUT": "Ubah",
         "DELETE": "Hapus"
+      },
+      "callHeaders": {
+        "title": "Header",
+        "text": "Setiap panggilan mengirim ketiga header ini, apa pun metodenya: Authorization dengan token Anda, Content-Type: application/json, dan Formalie-Key. Tidak ada yang opsional dan header lain tidak diperlukan."
+      },
+      "expiry": {
+        "title": "Masa berlaku token",
+        "text": "Setiap jawaban membawa masa berlaku token: header Formalie-Token-Expires dan, di samping data, meta.token_expires_at serta meta.token_expires_in_days (null untuk token yang tidak pernah kedaluwarsa). Perbarui token sebelum harinya tiba."
       }
     },
     "journey": {

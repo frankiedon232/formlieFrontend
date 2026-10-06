@@ -591,7 +591,7 @@
     "FRM-API-1008": "Questo endpoint non risponde a questo metodo.",
     "FRM-API-1009": "Questo token non può chiamare questo endpoint o metodo.",
     "FRM-API-1010": "Invia un token valido come Authorization: Bearer ….",
-    "FRM-API-1011": "Manca un header obbligatorio oppure ha un valore errato.",
+    "FRM-API-1011": "L'header Formalie-Key manca o non è valido. Invia un nuovo id univoco a ogni chiamata.",
     "FRM-API-1012": "La firma della richiesta manca, è troppo vecchia o è errata.",
     "FRM-API-1013": "Non esiste un record con questo id.",
     "FRM-API-1014": "Alcuni campi non possono essere inviati a questo endpoint.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} minuti",
       "lifetime": "Durata del token di breve durata",
       "lifetimeHelp": "Per quanto tempo ogni token ottenuto dall'indirizzo dei token resta valido prima che l'app ne richieda uno nuovo.",
-      "signing": "Richieste firmate",
-      "signingHelp": "Le chiamate devono includere anche una firma HMAC della richiesta. Per i chiamanti che richiedono una protezione extra.",
-      "signingHint": "Firma ogni chiamata: X-Formalie-Timestamp (secondi unix) e X-Formalie-Signature (HMAC sha256= di metodo, percorso, timestamp e corpo con il segreto di firma). Le chiamate più vecchie di 5 minuti vengono rifiutate.",
       "clientHint": "La risposta contiene un token di accesso valido per {n} minuti; invialo come Authorization: Bearer e richiedine uno nuovo quando scade.",
       "howToUse": "Come usarlo",
       "rotate": "Ruota",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "ID client",
         "clientSecret": "Segreto client",
-        "signing": "Segreto di firma",
         "title": "Segreto"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Header inviati da ogni chiamante",
-      "standardDesc": "Formalie li controlla a ogni chiamata; le risposte sono sempre in JSON.",
-      "customTitle": "Header per endpoint",
-      "customDesc": "Ogni endpoint, per servizio, con gli header che le sue chiamate richiedono: i propri (impostati nel passaggio Metodi, ad es. un id partner) e quelli standard.",
-      "none": "Nessun endpoint richiede header aggiuntivi",
-      "noneDesc": "Aggiungili nel passaggio Metodi di un endpoint quando un chiamante deve identificarsi ulteriormente.",
-      "requiredTitle": "Header obbligatori",
-      "requiredDesc": "Le chiamate senza questi header e valori vengono rifiutate. Facoltativo, fino a 5.",
-      "name": "Nome dell'header",
-      "value": "Valore richiesto",
-      "keep": "{preview} (invariato)",
-      "add": "Aggiungi header",
-      "remove": "Rimuovi header",
+      "standardTitle": "I tre header che ogni chiamata invia",
+      "standardDesc": "Tutti e tre a ogni chiamata e con ogni metodo, nessuno è facoltativo. Formalie non accetta altri header.",
       "when": {
-        "always": "Ogni chiamata",
-        "body": "POST e PUT",
-        "post": "Facoltativo, POST",
-        "signing": "Token firmati"
+        "always": "Ogni chiamata"
       },
-      "invalid": {
-        "required": "Compila questo campo.",
-        "pattern": "Usa lettere, numeri e trattini, iniziando con una lettera (da 2 a 64).",
-        "reserved": "Questo header viene impostato da Formalie o da HTTP. Scegli un altro nome.",
-        "chars": "Usa lettere, numeri e simboli semplici, fino a 200.",
-        "duplicate": "Questo header è già nell'elenco.",
-        "fix": "Controlla gli header obbligatori."
-      },
-      "withOwn": "{n} endpoint con header propri | {n} endpoint con header propri",
-      "withoutOwn": "altri {n} senza | altri {n} senza",
-      "show": "Mostra il valore",
-      "hide": "Nascondi il valore",
-      "ownCount": "{n} endpoint ha header propri. | {n} endpoint hanno header propri.",
-      "noneOwn": "Nessun endpoint ha ancora header propri. Aggiungine uno nel passaggio Metodi di un endpoint quando i chiamanti devono identificarsi ulteriormente.",
-      "noOwn": "Nessun header proprio.",
-      "addOwn": "Aggiungi un header",
-      "collapseAll": "Comprimi tutto",
-      "expandAll": "Espandi tutto",
-      "ownShort": "{n} con intestazioni proprie"
+      "expiryTitle": "Scadenza del token in ogni risposta",
+      "expiryDesc": "Ogni risposta indica quando scade il token che ha fatto la chiamata, così la tua app può rinnovarlo in tempo."
     },
     "access": {
       "rules": "Regole",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Un id univoco che crei per ogni nuovo record (un UUID va bene). Se la rete fallisce e invii di nuovo la stessa chiamata, Formalie risponde con il record già creato."
+        "text": "Un nuovo id univoco per ogni chiamata (un UUID va bene; gli esempi ne creano uno per te). Ogni chiamata si trova con esso nei Log richieste, e se la rete cade e invii di nuovo lo stesso POST con la stessa chiave, Formalie risponde con il record che ha già creato."
       },
       "files": {
         "title": "Invio di file",
@@ -4391,10 +4356,6 @@
         "then": "Poi inserisci gli id nel corpo JSON sotto quella domanda, ad es. \"cv\": [\"id\"]. Sono consentiti gli stessi tipi e dimensioni di file del modulo.",
         "step1": "Carica il file",
         "step2": "Invia il suo id con le risposte"
-      },
-      "signing": {
-        "title": "Chiamate firmate",
-        "text": "Quando un token ha la firma attiva, ogni chiamata porta anche l'ora e una firma HMAC-SHA256 creata con il segreto di firma. Le chiamate più vecchie di cinque minuti vengono rifiutate."
       },
       "errors": {
         "title": "Errori",
@@ -4410,10 +4371,9 @@
         "desc": "Esegue tutti i controlli reali con un token di test. Non viene salvato nulla.",
         "record": "ID del record",
         "recordPlaceholder": "Lascia vuoto per l'elenco",
-        "keyHelp": "Compilata per te; una nuova dopo ogni chiamata.",
+        "keyHelp": "Compilato per te; uno nuovo dopo ogni chiamata.",
         "newKey": "Nuova chiave",
         "keepKey": "Mantieni questa chiave (invia di nuovo la stessa chiamata per vedere il nuovo tentativo)",
-        "headerHelp": "Richiesto da questo endpoint.",
         "testOnly": "Modalità test: le risposte sembrano reali, ma nessuna risposta viene creata, modificata o eliminata.",
         "nothingYet": "Invia una chiamata per vedere la risposta",
         "send": "Invia",
@@ -4441,6 +4401,14 @@
         "POST": "Crea",
         "PUT": "Modifica",
         "DELETE": "Elimina"
+      },
+      "callHeaders": {
+        "title": "Header",
+        "text": "Ogni chiamata invia questi tre header, qualunque sia il metodo: Authorization con il tuo token, Content-Type: application/json e una Formalie-Key. Nessuno è facoltativo e non servono altri header."
+      },
+      "expiry": {
+        "title": "Scadenza del token",
+        "text": "Ogni risposta riporta la scadenza del token: l'header Formalie-Token-Expires e, accanto ai dati, meta.token_expires_at e meta.token_expires_in_days (null per un token che non scade mai). Rinnova il token prima del giorno."
       }
     },
     "journey": {

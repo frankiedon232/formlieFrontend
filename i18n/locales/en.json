@@ -591,7 +591,7 @@
     "FRM-API-1008": "This endpoint does not answer this method.",
     "FRM-API-1009": "This token may not call this endpoint or method.",
     "FRM-API-1010": "Send a valid token as Authorization: Bearer ….",
-    "FRM-API-1011": "A required header is missing or has the wrong value.",
+    "FRM-API-1011": "The Formalie-Key header is missing or not valid. Send a new unique id with every call.",
     "FRM-API-1012": "The request signature is missing, too old or wrong.",
     "FRM-API-1013": "There is no record with this id.",
     "FRM-API-1014": "Some fields can not be sent to this endpoint.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} minutes",
       "lifetime": "Short-lived token lasts",
       "lifetimeHelp": "How long each token from the token address works before the app asks for a new one.",
-      "signing": "Signed requests",
-      "signingHelp": "Calls must also carry an HMAC signature of the request. For callers that need extra protection.",
-      "signingHint": "Sign each call: X-Formalie-Timestamp (unix seconds) and X-Formalie-Signature (sha256= HMAC of method, path, timestamp and body with the signing secret). Calls older than 5 minutes are refused.",
       "clientHint": "The answer holds an access token that works for {n} minutes; send it as Authorization: Bearer, and ask for a new one when it runs out.",
       "howToUse": "How to use it",
       "rotate": "Rotate",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "Client id",
         "clientSecret": "Client secret",
-        "signing": "Signing secret",
         "title": "Secret"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Headers",
-      "standardTitle": "Headers every caller sends",
-      "standardDesc": "Formalie checks these on every call; answers are always JSON.",
-      "customTitle": "Headers per endpoint",
-      "customDesc": "Every endpoint, by service, with the headers its calls need: its own (set in its Methods step, e.g. a partner id) and the standard ones.",
-      "none": "No endpoint requires extra headers",
-      "noneDesc": "Add them in an endpoint's Methods step when a caller must identify itself further.",
-      "requiredTitle": "Required headers",
-      "requiredDesc": "Calls without these headers and values are refused. Optional, up to 5.",
-      "name": "Header name",
-      "value": "Value it must have",
-      "keep": "{preview} (unchanged)",
-      "add": "Add header",
-      "remove": "Remove header",
+      "standardTitle": "The three headers every call sends",
+      "standardDesc": "All three on every call and every method, none optional. Formalie accepts no other headers.",
       "when": {
-        "always": "Every call",
-        "body": "POST and PUT",
-        "post": "Optional, POST",
-        "signing": "Signed tokens"
+        "always": "Every call"
       },
-      "invalid": {
-        "required": "Fill this in.",
-        "pattern": "Use letters, numbers and hyphens, starting with a letter (2 to 64).",
-        "reserved": "Formalie or HTTP sets this header itself. Choose another name.",
-        "chars": "Use plain letters, numbers and symbols, up to 200.",
-        "duplicate": "This header is already in the list.",
-        "fix": "Check the required headers."
-      },
-      "withOwn": "{n} endpoint with its own headers | {n} endpoints with their own headers",
-      "withoutOwn": "{n} more without own headers | {n} more without own headers",
-      "show": "Show the value",
-      "hide": "Hide the value",
-      "ownCount": "{n} endpoint has headers of its own. | {n} endpoints have headers of their own.",
-      "noneOwn": "No endpoint has headers of its own yet. Add one in an endpoint's Methods step when callers must identify themselves further.",
-      "noOwn": "No headers of its own.",
-      "addOwn": "Add a header",
-      "collapseAll": "Collapse all",
-      "expandAll": "Expand all",
-      "ownShort": "{n} with own headers"
+      "expiryTitle": "Token expiry in every answer",
+      "expiryDesc": "Every answer says when the token that made the call expires, so your app can renew it in time."
     },
     "access": {
       "rules": "Rules",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "A unique id you make for each new record (a UUID works well). If the network fails and you send the same call again, Formalie answers with the record it already made."
+        "text": "A new unique id for every call (a UUID works well; the examples make one for you). Every call is found by it in Request logs, and if the network fails and you send the same POST again with the same key, Formalie answers with the record it already made."
       },
       "files": {
         "title": "Sending files",
@@ -4391,10 +4356,6 @@
         "then": "Then put the ids in the JSON body under that question, e.g. \"cv\": [\"id\"]. The same file types and sizes as on the form are allowed.",
         "step1": "Upload the file",
         "step2": "Send its id with the answers"
-      },
-      "signing": {
-        "title": "Signed calls",
-        "text": "When a token has signing switched on, every call also carries the time and an HMAC-SHA256 signature made with the signing secret. Calls older than five minutes are refused."
       },
       "errors": {
         "title": "Errors",
@@ -4413,7 +4374,6 @@
         "keyHelp": "Filled in for you; a new one after each call.",
         "newKey": "New key",
         "keepKey": "Keep this key (send the same call again to see the retry)",
-        "headerHelp": "Required by this endpoint.",
         "testOnly": "Test mode: answers look real, but no response is created, changed or deleted.",
         "nothingYet": "Send a call to see the answer",
         "send": "Send",
@@ -4441,6 +4401,14 @@
         "POST": "Create",
         "PUT": "Change",
         "DELETE": "Delete"
+      },
+      "callHeaders": {
+        "title": "Headers",
+        "text": "Every call sends these three headers, whatever the method: Authorization with your token, Content-Type: application/json, and a Formalie-Key. None is optional and no other headers are needed."
+      },
+      "expiry": {
+        "title": "Token expiry",
+        "text": "Every answer carries the token's expiry: the Formalie-Token-Expires header and, next to the data, meta.token_expires_at and meta.token_expires_in_days (null for a token that never expires). Renew the token before the day comes."
       }
     },
     "journey": {

@@ -82,7 +82,6 @@ const menu = computed<DropdownMenuItem[][]>(() => {
             <div class="mt-1 flex flex-wrap items-center gap-1.5">
               <DataStatusBadge :status="token.status" />
               <UBadge :label="t(`apiService.tokens.mode.${token.mode}`)" :icon="token.mode === 'test' ? 'i-lucide-flask-conical' : 'i-lucide-zap'" color="neutral" :variant="token.mode === 'test' ? 'soft' : 'outline'" size="sm" class="rounded-md" />
-              <UBadge v-if="token.signing" :label="t('apiService.tokens.signing')" icon="i-lucide-signature" color="neutral" variant="outline" size="sm" class="rounded-md" />
             </div>
           </div>
           <div class="flex shrink-0 items-center gap-1">
@@ -101,12 +100,16 @@ const menu = computed<DropdownMenuItem[][]>(() => {
 
     <template #body>
       <AppEmpty v-if="failed && !token" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" />
-      <div v-else-if="!token" class="flex flex-col gap-4"><div class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div></div>
+      <div v-else-if="!token" class="flex flex-col gap-4">
+        <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          <USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" />
+        </div>
+      </div>
       <template v-else>
         <UAlert v-if="token.rotating_until" icon="i-lucide-refresh-cw" color="warning" variant="subtle" :title="t('apiService.tokens.rotating', { until: dateTime(token.rotating_until) })" />
         <UAlert v-if="token.status === 'revoked'" icon="i-lucide-ban" color="error" variant="subtle" :title="t('apiService.tokens.revokedOn', { date: dateTime(token.revoked_at!) })" :description="t('apiService.tokens.revokedDesc')" />
         <UAlert v-if="token.scope_gone && token.status !== 'revoked'" icon="i-lucide-triangle-alert" color="warning" variant="subtle" :title="t('apiService.tokens.scopeGone.title', { n: token.scope_gone }, token.scope_gone)" :description="t('apiService.tokens.scopeGone.text')" :actions="[{ label: t('apiService.actions.edit'), icon: 'i-lucide-pencil', color: 'neutral', variant: 'outline', size: 'xs', onClick: () => emit('edit', token!) }]" />
-        <AppSecretReveal v-if="token.status !== 'revoked'" :preview="token.kind === 'client' ? (token.client_id ?? token.preview) : token.preview" :endpoint="`/api-tokens/${token.id}/reveal`" :viewable="token.viewable" :title="t('apiService.tokens.secret.title')" :labels="{ token: t('apiService.tokens.secret.token'), client_secret: t('apiService.tokens.secret.clientSecret'), signing_secret: t('apiService.tokens.secret.signing') }" />
+        <AppSecretReveal v-if="token.status !== 'revoked'" :preview="token.kind === 'client' ? (token.client_id ?? token.preview) : token.preview" :endpoint="`/api-tokens/${token.id}/reveal`" :viewable="token.viewable" :title="t('apiService.tokens.secret.title')" :labels="{ token: t('apiService.tokens.secret.token'), client_secret: t('apiService.tokens.secret.clientSecret') }" />
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
             <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-muted" /></span>

@@ -265,7 +265,8 @@ function checked(tenant: MockTenant, values: z.infer<typeof endpointInput>, exce
   if (values.methods.includes('GET') && !fields.some(field => field.returned)) throw new MockError('FRM-GEN-1002', [{ field: 'fields', message: 'returned' }])
   // Required headers: valid, distinct names; a null value keeps the saved one
   const saved = api.endpoints.find(item => item.id === exceptId)?.headers ?? []
-  const headers = (values.headers ?? saved.map(header => ({ name: header.name, value: null }))).map((header, index) => {
+  // No custom headers (owner, 2026-10-06): whatever is sent, an endpoint has none
+  const headers = ([] as { name: string; value: string | null }[]).map((header, index) => {
     const nameProblem = checkHeaderName(header.name)
     if (nameProblem) throw new MockError('FRM-GEN-1002', [{ field: `headers.${index}.name`, message: nameProblem }])
     const value = header.value ?? saved.find(item => item.name.toLowerCase() === header.name.toLowerCase())?.value ?? ''
@@ -352,8 +353,11 @@ const tokenInput = z.object({
   mode: z.enum(API_TOKEN_MODES),
   scopes: z.object({ services: z.array(z.string()).max(100), endpoints: z.array(z.string()).max(500), methods: z.array(z.enum(API_METHODS)).max(4) }),
   expires_at: z.string().datetime().nullable(),
-  lifetime_minutes: z.number().int().refine(n => TOKEN_LIFETIMES.includes(n)).nullish(),
-  signing: z.boolean().optional(),
+  lifetime_minutes: z
+    .number()
+    .int()
+    .refine(n => TOKEN_LIFETIMES.includes(n))
+    .nullish(),
 })
 
 function findToken(tenant: MockTenant, id: string | undefined) {
@@ -371,15 +375,14 @@ function checkToken(tenant: MockTenant, values: Pick<z.infer<typeof tokenInput>,
     if (at <= Date.now() || at > Date.now() + 731 * 86_400_000) throw new MockError('FRM-GEN-1002', [{ field: 'expires_at', message: 'range' }])
   }
 }
-/** New secrets for a token: the bearer token or client secret, and a signing secret when signing is on. */
+/** New secrets for a token: the bearer token or client secret. */
 function issue(token: StoredApiToken) {
   const secret = newSecret(token.kind, token.mode)
-  const signing = token.signing ? newSecret('signing', token.mode) : null
   token.secret_hash = hashSecret(secret)
   token.secret = secret
   token.preview = secretPreview(secret)
-  token.signing_secret = signing
-  return { ...(token.kind === 'static' ? { token: secret } : { client_secret: secret }), ...(signing ? { signing_secret: signing } : {}) }
+  token.signing_secret = null
+  return { ...(token.kind === 'static' ? { token: secret } : { client_secret: secret }) }
 }
 
 export const listApiTokens = defineMockRoute(({ event, query }) => {
@@ -430,7 +433,7 @@ export const createApiToken = defineMockRoute(({ event, body }) => {
     rotating_until: null,
     client_id: values.kind === 'client' ? newSecret('client_id', values.mode) : null,
     lifetime_minutes: values.kind === 'client' ? (values.lifetime_minutes ?? 15) : null,
-    signing: !!values.signing,
+    signing: false, // No signed calls (owner, 2026-10-06)
     signing_secret: null,
     scopes: values.scopes,
     expires_at: values.expires_at,
@@ -527,6 +530,6 @@ export const revealApiToken = defineMockRoute(({ event, body }) => {
   confirmPassword(user, (body as { password?: unknown } | null)?.password)
   if (!token.secret) throw new MockError('FRM-API-1016')
   recordAudit(event, tenant, { action: 'api.token_revealed', actor: actorOf(user), resource: { type: 'api_token', id: token.id, name: token.name } })
-  const secrets: ApiTokenSecrets = { ...(token.kind === 'static' ? { token: token.secret } : { client_secret: token.secret }), ...(token.signing_secret ? { signing_secret: token.signing_secret } : {}) }
+  const secrets: ApiTokenSecrets = { ...(token.kind === 'static' ? { token: token.secret } : { client_secret: token.secret }) }
   return ok(secrets)
 })

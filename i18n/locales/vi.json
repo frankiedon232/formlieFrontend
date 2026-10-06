@@ -591,7 +591,7 @@
     "FRM-API-1008": "Endpoint này không trả lời phương thức này.",
     "FRM-API-1009": "Token này không được gọi endpoint hoặc phương thức này.",
     "FRM-API-1010": "Hãy gửi token hợp lệ dạng Authorization: Bearer ….",
-    "FRM-API-1011": "Thiếu một header bắt buộc hoặc giá trị không đúng.",
+    "FRM-API-1011": "Header Formalie-Key bị thiếu hoặc không hợp lệ. Hãy gửi một id duy nhất mới với mỗi lượt gọi.",
     "FRM-API-1012": "Chữ ký của yêu cầu bị thiếu, quá cũ hoặc sai.",
     "FRM-API-1013": "Không có bản ghi với id này.",
     "FRM-API-1014": "Một số trường không thể gửi tới endpoint này.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} phút",
       "lifetime": "Thời hạn token ngắn hạn",
       "lifetimeHelp": "Mỗi token lấy từ địa chỉ token có hiệu lực bao lâu trước khi ứng dụng yêu cầu token mới.",
-      "signing": "Yêu cầu có chữ ký",
-      "signingHelp": "Các lệnh gọi còn phải kèm chữ ký HMAC của yêu cầu. Dành cho bên gọi cần bảo vệ thêm.",
-      "signingHint": "Ký mỗi lệnh gọi: X-Formalie-Timestamp (giây unix) và X-Formalie-Signature (sha256= HMAC của phương thức, đường dẫn, dấu thời gian và nội dung bằng signing secret). Lệnh gọi cũ hơn 5 phút sẽ bị từ chối.",
       "clientHint": "Phản hồi chứa một token truy cập có hiệu lực {n} phút; hãy gửi nó dưới dạng Authorization: Bearer và yêu cầu token mới khi hết hạn.",
       "howToUse": "Cách dùng",
       "rotate": "Xoay",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "Client id",
         "clientSecret": "Client secret",
-        "signing": "Signing secret",
         "title": "Bí mật"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Header mà mọi bên gọi đều gửi",
-      "standardDesc": "Formalie kiểm tra các header này ở mọi lệnh gọi; phản hồi luôn là JSON.",
-      "customTitle": "Header theo từng endpoint",
-      "customDesc": "Mỗi endpoint, theo dịch vụ, cùng các header mà lệnh gọi cần: header riêng (đặt ở bước Phương thức, ví dụ mã đối tác) và header tiêu chuẩn.",
-      "none": "Không endpoint nào yêu cầu thêm header",
-      "noneDesc": "Hãy thêm ở bước Phương thức của endpoint khi bên gọi phải xác định danh tính kỹ hơn.",
-      "requiredTitle": "Header bắt buộc",
-      "requiredDesc": "Các lệnh gọi thiếu những header và giá trị này sẽ bị từ chối. Tùy chọn, tối đa 5.",
-      "name": "Tên header",
-      "value": "Giá trị bắt buộc",
-      "keep": "{preview} (không đổi)",
-      "add": "Thêm header",
-      "remove": "Xóa header",
+      "standardTitle": "Ba header mà mọi lượt gọi đều gửi",
+      "standardDesc": "Cả ba trong mọi lượt gọi và mọi phương thức, không cái nào là tùy chọn. Formalie không chấp nhận header nào khác.",
       "when": {
-        "always": "Mọi lệnh gọi",
-        "body": "POST và PUT",
-        "post": "Tùy chọn, POST",
-        "signing": "Token có chữ ký"
+        "always": "Mọi lệnh gọi"
       },
-      "invalid": {
-        "required": "Hãy điền mục này.",
-        "pattern": "Dùng chữ cái, chữ số và dấu gạch ngang, bắt đầu bằng chữ cái (2 đến 64).",
-        "reserved": "Header này do Formalie hoặc HTTP tự đặt. Hãy chọn tên khác.",
-        "chars": "Dùng chữ cái, chữ số và ký hiệu thông thường, tối đa 200.",
-        "duplicate": "Header này đã có trong danh sách.",
-        "fix": "Hãy kiểm tra các header bắt buộc."
-      },
-      "withOwn": "{n} endpoint có header riêng | {n} endpoint có header riêng",
-      "withoutOwn": "{n} endpoint nữa không có | {n} endpoint nữa không có",
-      "show": "Hiện giá trị",
-      "hide": "Ẩn giá trị",
-      "ownCount": "{n} endpoint có header riêng. | {n} endpoint có header riêng.",
-      "noneOwn": "Chưa có endpoint nào có header riêng. Hãy thêm ở bước Phương thức của endpoint khi bên gọi cần xác định danh tính thêm.",
-      "noOwn": "Không có header riêng.",
-      "addOwn": "Thêm header",
-      "collapseAll": "Thu gọn tất cả",
-      "expandAll": "Mở rộng tất cả",
-      "ownShort": "{n} có header riêng"
+      "expiryTitle": "Hạn của token trong mọi phản hồi",
+      "expiryDesc": "Mỗi phản hồi cho biết khi nào token đã thực hiện lượt gọi hết hạn, để ứng dụng của bạn gia hạn kịp thời."
     },
     "access": {
       "rules": "Quy tắc",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Một id duy nhất bạn tạo cho mỗi bản ghi mới (UUID rất phù hợp). Nếu mạng lỗi và bạn gửi lại cùng lệnh gọi, Formalie sẽ trả lời bằng bản ghi đã tạo."
+        "text": "Một id duy nhất mới cho mỗi lượt gọi (UUID dùng rất tốt; các ví dụ tự tạo giúp bạn). Mỗi lượt gọi được tìm thấy bằng id này trong Nhật ký yêu cầu, và nếu mạng lỗi rồi bạn gửi lại cùng POST với cùng key, Formalie sẽ trả lời bằng bản ghi đã tạo trước đó."
       },
       "files": {
         "title": "Gửi tệp",
@@ -4391,10 +4356,6 @@
         "then": "Sau đó đặt các id vào nội dung JSON dưới câu hỏi đó, ví dụ \"cv\": [\"id\"]. Cho phép cùng loại và dung lượng tệp như trên biểu mẫu.",
         "step1": "Tải tệp lên",
         "step2": "Gửi id của tệp cùng với câu trả lời"
-      },
-      "signing": {
-        "title": "Lệnh gọi có chữ ký",
-        "text": "Khi token bật ký, mỗi lệnh gọi còn kèm thời gian và chữ ký HMAC-SHA256 tạo bằng mã bí mật ký. Các lệnh gọi cũ hơn năm phút sẽ bị từ chối."
       },
       "errors": {
         "title": "Lỗi",
@@ -4410,10 +4371,9 @@
         "desc": "Chạy mọi kiểm tra thật bằng token thử nghiệm. Không có gì được lưu.",
         "record": "Id bản ghi",
         "recordPlaceholder": "Để trống để xem danh sách",
-        "keyHelp": "Đã điền sẵn cho bạn; mới sau mỗi lệnh gọi.",
+        "keyHelp": "Được điền sẵn cho bạn; mới sau mỗi lượt gọi.",
         "newKey": "Khóa mới",
         "keepKey": "Giữ khóa này (gửi lại cùng lệnh gọi để xem lần thử lại)",
-        "headerHelp": "Endpoint này yêu cầu.",
         "testOnly": "Chế độ thử nghiệm: phản hồi trông như thật, nhưng không có phản hồi nào được tạo, thay đổi hay xóa.",
         "nothingYet": "Gửi một lệnh gọi để xem phản hồi",
         "send": "Gửi",
@@ -4441,6 +4401,14 @@
         "POST": "Tạo",
         "PUT": "Thay đổi",
         "DELETE": "Xóa"
+      },
+      "callHeaders": {
+        "title": "Header",
+        "text": "Mỗi lượt gọi gửi ba header này, dù dùng phương thức nào: Authorization kèm token của bạn, Content-Type: application/json và một Formalie-Key. Không cái nào là tùy chọn và không cần header khác."
+      },
+      "expiry": {
+        "title": "Hạn của token",
+        "text": "Mỗi phản hồi mang hạn của token: header Formalie-Token-Expires và, bên cạnh dữ liệu, meta.token_expires_at và meta.token_expires_in_days (null với token không bao giờ hết hạn). Hãy gia hạn token trước khi đến ngày đó."
       }
     },
     "journey": {

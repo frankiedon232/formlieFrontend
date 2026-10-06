@@ -19,7 +19,7 @@
  * be tried from Postman (the real service takes the connection's address and GeoIP).
  * Test tokens never touch real responses: writes are checked and answered, nothing is stored.
  */
-import { createHmac, timingSafeEqual } from 'node:crypto'
+import { timingSafeEqual } from 'node:crypto'
 import type { H3Event } from 'h3'
 import { checkSubmission } from '#shared/utils/forms/submission'
 import { allFields } from '#shared/utils/forms/build'
@@ -156,15 +156,6 @@ export function issueConsoleToken(tenantId: string) {
   return access
 }
 
-/** HMAC-SHA256 of `{timestamp}.{METHOD}.{path}.{body}` with the signing secret, within 5 minutes. */
-function checkSignature(event: H3Event, token: StoredApiToken, method: string, path: string, raw: string) {
-  const timestamp = getHeader(event, 'x-formalie-timestamp') ?? ''
-  const signature = (getHeader(event, 'x-formalie-signature') ?? '').replace(/^sha256=/, '')
-  if (!/^\d{9,11}$/.test(timestamp) || Math.abs(Date.now() / 1000 - Number(timestamp)) > 300 || !token.signing_secret) throw new PublicError('FRM-API-1012')
-  const expected = createHmac('sha256', token.signing_secret).update(`${timestamp}.${method}.${path}.${raw}`).digest('hex')
-  if (!same(expected, signature)) throw new PublicError('FRM-API-1012')
-}
-
 /** A response as the API returns it: its reference, when, status and the returned answers (file ids as references too). */
 function record(form: Parameters<typeof answersOf>[0], entry: IndexedResponse, fields: { key: string; name: string; type: string; returned: boolean }[]) {
   const data = answersOf(form, entry)
@@ -184,6 +175,8 @@ interface CallContext {
   token?: StoredApiToken
   raw: string
   caller?: AccessCaller
+  /** The call's Formalie-Key (Request logs show it). */
+  callKey?: string
   /** Question key → API name, so error details name what the app sent. */
   names?: Map<string, string>
   /** Names the app sent that the endpoint does not know: reported exactly as sent. */
@@ -197,7 +190,13 @@ export async function handlePublicApi(event: H3Event, path: string) {
   if (parts[0] === 'v1') return handleManagementApi(event, parts.slice(1))
   const context: CallContext = { raw: '' }
   const started = Date.now()
-  const result = (await handle(event, path, context)) as { error?: { code?: string } } | undefined
+  const result = (await handle(event, path, context)) as { error?: { code?: string }; data?: unknown; meta?: Record<string, unknown> } | undefined
+  // The token's expiry with every answer (owner, 2026-10-06: an expiry tracker in the data, never a surprise)
+  if (context.token && context.token.id !== '__console__') {
+    const expires = context.token.expires_at
+    setResponseHeader(event, 'Formalie-Token-Expires', expires ?? 'never')
+    if (result && 'data' in result) result.meta = { ...result.meta, token_expires_at: expires, token_expires_in_days: expires ? Math.max(0, Math.ceil((Date.parse(expires) - Date.now()) / 86_400_000)) : null }
+  }
   const tenant = context.tenant
   if (!tenant) return result
   const api = apiOf(tenant)
@@ -220,25 +219,7 @@ export async function handlePublicApi(event: H3Event, path: string) {
       .map(([name, value]) => [name, name === 'authorization' ? `Bearer ${secretPreview(String(value).replace(/^Bearer\s+/i, ''))}` : secretHeaders.has(name) ? '••••' : String(value).slice(0, 200)]),
   )
   const service = endpoint ? api.services.find(item => item.id === endpoint.service_id) : undefined
-  recordLog(tenant, {
-    id: crypto.randomUUID(),
-    at: new Date(started).toISOString(),
-    method: event.method.toUpperCase(),
-    path: path.split('?')[0]!,
-    status: getResponseStatus(event),
-    code: result?.error?.code ?? null,
-    duration_ms: Date.now() - started,
-    endpoint: endpoint ? { id: endpoint.id, name: endpoint.name } : null,
-    service: service ? { id: service.id, name: service.name } : null,
-    token: context.token ? { id: context.token.id, name: context.token.name, mode: context.token.mode } : null,
-    ip: context.caller?.ip ?? getRequestIP(event) ?? '0.0.0.0',
-    country: context.caller?.country ?? null,
-    user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 200),
-    request_id: String(getResponseHeader(event, 'x-request-id') ?? crypto.randomUUID()),
-    request_body: requestBody,
-    response_body: keep ? maskAnswers(result ?? null, personal) : null,
-    request_headers: headers,
-  })
+  recordLog(tenant, { id: crypto.randomUUID(), at: new Date(started).toISOString(), method: event.method.toUpperCase(), path: path.split('?')[0]!, status: getResponseStatus(event), code: result?.error?.code ?? null, duration_ms: Date.now() - started, endpoint: endpoint ? { id: endpoint.id, name: endpoint.name } : null, service: service ? { id: service.id, name: service.name } : null, token: context.token ? { id: context.token.id, name: context.token.name, mode: context.token.mode } : null, ip: context.caller?.ip ?? getRequestIP(event) ?? '0.0.0.0', country: context.caller?.country ?? null, user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 200), request_id: context.callKey ?? String(getResponseHeader(event, 'x-request-id') ?? crypto.randomUUID()), request_body: requestBody, response_body: keep ? maskAnswers(result ?? null, personal) : null, request_headers: headers })
   return result
 }
 
@@ -257,7 +238,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     let body: Record<string, unknown> = {}
     // Bodies: 1 MB at most, and said to be JSON (owner, 2026-10-06: a clear answer for every mistake)
     if (Buffer.byteLength(raw) > 1_000_000) throw new PublicError('FRM-API-1018', [{ field: 'body', message: '1 MB' }])
-    if (raw && !(getHeader(event, 'content-type') ?? '').toLowerCase().includes('application/json')) throw new PublicError('FRM-API-1017', [{ field: 'content-type', message: 'application/json' }])
+    // Content-Type is JSON whatever is sent (owner, 2026-10-06: JSON by default, no argument)
     if (raw) {
       try {
         const parsed = JSON.parse(raw) as unknown
@@ -327,9 +308,12 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       const part = methods.length && !methods.includes(method as ApiMethod) ? { field: 'method', message: 'not_allowed_for_token' } : endpoints.length && !endpoints.includes(endpoint.id) ? { field: 'endpoint', message: 'not_allowed_for_token' } : { field: 'service', message: services.some(id => !apiOf(tenant).services.some(item => item.id === id)) ? 'token_service_deleted' : 'not_allowed_for_token' }
       throw new PublicError('FRM-API-1009', [part])
     }
-    const missing = (endpoint.headers ?? []).filter(header => (getHeader(event, header.name) ?? '') !== header.value)
-    if (missing.length) throw new PublicError('FRM-API-1011', missing.map(header => ({ field: header.name, message: 'missing_or_wrong' })))
-    if (token.signing) checkSignature(event, token, method, `/${key}/${name}${recordRef ? `/${recordRef}` : ''}`, raw)
+    // The three headers every call sends (owner, 2026-10-06): Authorization (checked above), Content-Type (JSON by
+    // default) and Formalie-Key, a new unique id per call (a repeated POST answers with its first record; every call
+    // is found by it in Request logs). No custom headers and no signatures.
+    const callKey = getHeader(event, 'formalie-key')?.trim() ?? ''
+    if (!/^[A-Za-z0-9._:-]{8,100}$/.test(callKey)) throw new PublicError('FRM-API-1011', [{ field: 'Formalie-Key', message: callKey ? 'invalid' : 'missing' }])
+    context.callKey = callKey
     token.last_used_at = new Date().toISOString()
     saveApi()
     const test = token.mode === 'test'

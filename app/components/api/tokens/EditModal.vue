@@ -2,7 +2,7 @@
   New token / edit token (F13 M2; guided in steps since M7, owner 2026-10-06). New: 1 What a token
   is, live or test, bearer or client id + secret → 2 Name and what it may call (services,
   endpoints, methods; empty = all; preset when opened from an endpoint) → 3 Expiry, short-lived
-  lifetime, signed calls → 4 Its secrets (also viewable later in the panel, after the password)
+  lifetime → 4 Its secrets (also viewable later in the panel, after the password)
   and what comes next. Editing: name, what it may call and the expiry on one page.
 -->
 <script setup lang="ts">
@@ -18,7 +18,7 @@ const api = useApi()
 const { handle } = useErrorHandler()
 const setup = useApiSetup()
 
-const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: 'static' as 'static' | 'client', services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], expiry: '365', custom: '', lifetime: 15, signing: false })
+const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: 'static' as 'static' | 'client', services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], expiry: '365', custom: '', lifetime: 15 })
 const services = ref<ApiService[]>([])
 const endpoints = ref<ApiEndpoint[]>([])
 const created = ref<ApiTokenCreated | null>(null)
@@ -40,7 +40,6 @@ watch(open, async value => {
     expiry: token ? (token.expires_at ? 'custom' : 'never') : '365',
     custom: token?.expires_at ? token.expires_at.slice(0, 10) : '',
     lifetime: token?.lifetime_minutes ?? 15,
-    signing: token?.signing ?? false,
   })
   try {
     const [a, b] = await Promise.all([api.list<ApiService>('/api-services', { page_size: 100, sort: 'name' }, { background: true }), api.list<ApiEndpoint>('/api-endpoints', { page_size: 100, sort: 'name' }, { background: true })])
@@ -101,7 +100,7 @@ async function save() {
       emit('saved', data)
       open.value = false
     } else {
-      const body: ApiTokenSaveRequest = { name: state.name.trim(), kind: state.kind, mode: state.mode, scopes, expires_at: expiresAt(), lifetime_minutes: state.kind === 'client' ? state.lifetime : null, signing: state.signing }
+      const body: ApiTokenSaveRequest = { name: state.name.trim(), kind: state.kind, mode: state.mode, scopes, expires_at: expiresAt(), lifetime_minutes: state.kind === 'client' ? state.lifetime : null }
       const { data } = await api.post<ApiTokenCreated>('/api-tokens', body)
       created.value = data
       step.value = 3
@@ -171,7 +170,7 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
             <p class="flex items-center gap-2 rounded-md border border-default px-3 py-2 text-xs text-muted"><UIcon name="i-lucide-target" class="size-4 shrink-0" />{{ scopeSummary }}</p>
           </template>
 
-          <!-- 3 · Expiry, lifetime, signing -->
+          <!-- 3 · Expiry, lifetime -->
           <template v-if="token || step === 2">
             <div class="grid gap-4 sm:grid-cols-2">
               <UFormField :label="t('apiService.tokens.col.expires')" :help="token ? undefined : t('apiService.tokens.expiryHelp')">
@@ -182,7 +181,6 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
                 <USelect v-model="state.lifetime" :items="lifetimeItems" class="w-full" />
               </UFormField>
             </div>
-            <USwitch v-if="!token" v-model="state.signing" :label="t('apiService.tokens.signing')" :description="t('apiService.tokens.signingHelp')" />
           </template>
         </form>
       </div>

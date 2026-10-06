@@ -6,7 +6,7 @@
 import type { ApiEndpointField } from '#shared/types/apiService'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
-defineProps<{ url: string; methods: ApiMethod[]; fields: ApiEndpointField[]; pageSize: number; formName: string; headers?: { name: string; value: string }[] }>()
+defineProps<{ url: string; methods: ApiMethod[]; fields: ApiEndpointField[]; pageSize: number; formName: string }>()
 const { t } = useI18n()
 </script>
 
@@ -23,7 +23,7 @@ const { t } = useI18n()
     </div>
     <div v-if="fields.length && methods.length" class="flex flex-col gap-3 rounded-lg border border-default p-3 sm:p-4">
       <h3 class="text-sm font-semibold text-highlighted">{{ t('apiService.call.title') }}</h3>
-      <ApiEndpointsExample :methods="methods" :url="url" :fields="fields" :page-size="pageSize" :headers="headers" />
+      <ApiEndpointsExample :methods="methods" :url="url" :fields="fields" :page-size="pageSize" />
     </div>
     <div class="flex gap-2 rounded-lg border border-dashed border-default p-3 text-xs text-muted">
       <UIcon name="i-lucide-database" class="mt-0.5 size-3.5 shrink-0" />

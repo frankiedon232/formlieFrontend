@@ -1,6 +1,7 @@
 <!--
   Getting started, shared by every endpoint (F13 M5; redesigned in M7, owner 2026-10-06): the
-  address, signing in with a token, the Formalie-Key, sending files, signed calls and the errors.
+  address, signing in with a token, the three headers every call sends, the Formalie-Key, sending files,
+  the token's expiry in every answer and the errors.
   Each topic its own anchored section, text on the left and a dark code panel on the right (stacked
   on smaller screens); the error list underneath, grouped by status.
 -->
@@ -16,16 +17,12 @@ const fileField = computed(() => props.endpoint?.fields.find(field => field.acce
 const tokenCall = computed<SnippetCall>(() => ({ method: 'POST', url: `${props.base}/token`, headers: { 'Content-Type': 'application/json' }, body: { client_id: '<client id>', client_secret: '<client secret>' } }))
 const topics = computed(() => [
   { id: 'guide-auth', icon: 'i-lucide-key-round', key: 'auth', code: null as string | null },
-  { id: 'guide-key', icon: 'i-lucide-fingerprint', key: 'key', code: 'POST /…/job-applications\nAuthorization: Bearer <token>\nContent-Type: application/json\nFormalie-Key: 6f1c2a90-3d4b-4e8f-9a17-0c5d2b7e8f41' },
-  {
-    id: 'guide-files',
-    icon: 'i-lucide-paperclip',
-    key: 'files',
-    code: `# 1 · ${t('apiService.docs.files.step1')}\ncurl -X POST "${props.endpoint?.url ?? `${props.base}/<endpoint>`}/files?field=${fileField.value?.name ?? '<API name>'}" \\\n  -H "Authorization: Bearer <token>" \\\n  -F "file=@cv.pdf"\n\n# → { "data": { "id": "f_9Qm…", "name": "cv.pdf", … } }\n\n# 2 · ${t('apiService.docs.files.step2')}\n{ "${fileField.value?.name ?? 'cv'}": ["f_9Qm…"] }`,
-  },
-  { id: 'guide-signing', icon: 'i-lucide-signature', key: 'signing', code: 'X-Formalie-Timestamp: 1767225600\nX-Formalie-Signature: sha256=<hex>\n\n# hex = HMAC-SHA256(signing secret,\n#   "{timestamp}.{METHOD}.{path}.{raw body}")' },
+  { id: 'guide-headers', icon: 'i-lucide-list-checks', key: 'callHeaders', code: 'Authorization: Bearer <token>\nContent-Type: application/json\nFormalie-Key: 6f1c2a90-3d4b-4e8f-9a17-0c5d2b7e8f41' },
+  { id: 'guide-key', icon: 'i-lucide-fingerprint', key: 'key', code: '# A new id for every call\nFormalie-Key: 6f1c2a90-3d4b-4e8f-9a17-0c5d2b7e8f41\n\n# The same POST sent again with the same key\n# answers with the first record, never a second one' },
+  { id: 'guide-files', icon: 'i-lucide-paperclip', key: 'files', code: `# 1 · ${t('apiService.docs.files.step1')}\ncurl -X POST "${props.endpoint?.url ?? `${props.base}/<endpoint>`}/files?field=${fileField.value?.name ?? '<API name>'}" \\\n  -H "Authorization: Bearer <token>" \\\n  -F "file=@cv.pdf"\n\n# → { "data": { "id": "f_9Qm…", "name": "cv.pdf", … } }\n\n# 2 · ${t('apiService.docs.files.step2')}\n{ "${fileField.value?.name ?? 'cv'}": ["f_9Qm…"] }` },
+  { id: 'guide-expiry', icon: 'i-lucide-calendar-clock', key: 'expiry', code: 'HTTP/1.1 200\nFormalie-Token-Expires: 2027-01-01T00:00:00Z\n\n{\n  "data": { … },\n  "meta": {\n    "token_expires_at": "2027-01-01T00:00:00Z",\n    "token_expires_in_days": 87\n  }\n}' },
 ])
-const codes: ErrorCode[] = ['FRM-GEN-1001', 'FRM-API-1006', 'FRM-API-1007', 'FRM-API-1008', 'FRM-API-1009', 'FRM-API-1010', 'FRM-API-1011', 'FRM-API-1012', 'FRM-API-1013', 'FRM-API-1014', 'FRM-API-1015', 'FRM-RESP-1001', 'FRM-GEN-1029']
+const codes: ErrorCode[] = ['FRM-GEN-1001', 'FRM-API-1006', 'FRM-API-1007', 'FRM-API-1008', 'FRM-API-1009', 'FRM-API-1010', 'FRM-API-1011', 'FRM-API-1013', 'FRM-API-1014', 'FRM-API-1015', 'FRM-RESP-1001', 'FRM-GEN-1029']
 const dot = (status: number) => (status === 429 ? 'bg-warning' : status === 401 || status === 403 ? 'bg-secondary' : 'bg-error')
 </script>
 
@@ -44,7 +41,9 @@ const dot = (status: number) => (status === 429 ? 'bg-warning' : status === 401 
       <div class="flex min-w-0 flex-col gap-3 p-4 sm:p-5">
         <div class="flex items-center gap-2">
           <span class="flex size-8 items-center justify-center rounded-md bg-elevated"><UIcon :name="topic.icon" class="size-4 text-highlighted" /></span>
-          <h3 class="text-base font-semibold text-highlighted">{{ t(`apiService.docs.${topic.key}.title`) }}</h3>
+          <h3 class="text-base font-semibold text-highlighted">
+            {{ t(`apiService.docs.${topic.key}.title`) }}
+          </h3>
         </div>
         <p class="text-sm text-muted">{{ t(`apiService.docs.${topic.key}.text`) }}</p>
         <p v-if="topic.key === 'files'" class="text-sm text-muted">{{ t('apiService.docs.files.then') }}</p>

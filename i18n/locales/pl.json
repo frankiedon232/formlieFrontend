@@ -591,7 +591,7 @@
     "FRM-API-1008": "Ten endpoint nie obsługuje tej metody.",
     "FRM-API-1009": "Ten token nie może wywoływać tego endpointu ani metody.",
     "FRM-API-1010": "Wyślij prawidłowy token jako Authorization: Bearer ….",
-    "FRM-API-1011": "Brakuje wymaganego nagłówka lub ma on złą wartość.",
+    "FRM-API-1011": "Nagłówek Formalie-Key jest pominięty lub nieprawidłowy. Wysyłaj nowy unikalny identyfikator przy każdym wywołaniu.",
     "FRM-API-1012": "Brakuje podpisu żądania, jest za stary lub nieprawidłowy.",
     "FRM-API-1013": "Nie ma rekordu o tym id.",
     "FRM-API-1014": "Niektórych pól nie można wysłać do tego endpointu.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} min",
       "lifetime": "Czas życia krótkotrwałego tokenu",
       "lifetimeHelp": "Jak długo działa każdy token z adresu tokenów, zanim aplikacja poprosi o nowy.",
-      "signing": "Podpisane żądania",
-      "signingHelp": "Wywołania muszą też zawierać podpis HMAC żądania. Dla wywołujących, którzy potrzebują dodatkowej ochrony.",
-      "signingHint": "Podpisuj każde wywołanie: X-Formalie-Timestamp (sekundy unix) i X-Formalie-Signature (sha256= HMAC z metody, ścieżki, znacznika czasu i treści, z użyciem sekretu podpisu). Wywołania starsze niż 5 minut są odrzucane.",
       "clientHint": "Odpowiedź zawiera token dostępu ważny przez {n} min; wysyłaj go jako Authorization: Bearer i poproś o nowy, gdy wygaśnie.",
       "howToUse": "Jak go używać",
       "rotate": "Rotuj",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "ID klienta",
         "clientSecret": "Sekret klienta",
-        "signing": "Sekret podpisu",
         "title": "Sekret"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Nagłówki",
-      "standardTitle": "Nagłówki wysyłane przez każdego wywołującego",
-      "standardDesc": "Formalie sprawdza je przy każdym wywołaniu; odpowiedzi są zawsze w formacie JSON.",
-      "customTitle": "Nagłówki dla każdego endpointu",
-      "customDesc": "Każdy endpoint, według usługi, z nagłówkami potrzebnymi do jego wywołań: własnymi (ustawianymi w kroku Metody, np. identyfikator partnera) i standardowymi.",
-      "none": "Żaden endpoint nie wymaga dodatkowych nagłówków",
-      "noneDesc": "Dodaj je w kroku Metody endpointu, gdy wywołujący musi dodatkowo się zidentyfikować.",
-      "requiredTitle": "Wymagane nagłówki",
-      "requiredDesc": "Wywołania bez tych nagłówków i wartości są odrzucane. Opcjonalne, do 5.",
-      "name": "Nazwa nagłówka",
-      "value": "Wymagana wartość",
-      "keep": "{preview} (bez zmian)",
-      "add": "Dodaj nagłówek",
-      "remove": "Usuń nagłówek",
+      "standardTitle": "Trzy nagłówki wysyłane przy każdym wywołaniu",
+      "standardDesc": "Wszystkie trzy przy każdym wywołaniu i każdej metodzie, żaden nie jest opcjonalny. Formalie nie przyjmuje innych nagłówków.",
       "when": {
-        "always": "Każde wywołanie",
-        "body": "POST i PUT",
-        "post": "Opcjonalnie, POST",
-        "signing": "Podpisane tokeny"
+        "always": "Każde wywołanie"
       },
-      "invalid": {
-        "required": "Wypełnij to pole.",
-        "pattern": "Użyj liter, cyfr i myślników, zaczynając od litery (od 2 do 64).",
-        "reserved": "Ten nagłówek ustawia sam Formalie lub HTTP. Wybierz inną nazwę.",
-        "chars": "Użyj zwykłych liter, cyfr i symboli, do 200.",
-        "duplicate": "Ten nagłówek jest już na liście.",
-        "fix": "Sprawdź wymagane nagłówki."
-      },
-      "withOwn": "{n} endpoint z własnymi nagłówkami | {n} endpointów z własnymi nagłówkami",
-      "withoutOwn": "jeszcze {n} bez | jeszcze {n} bez",
-      "show": "Pokaż wartość",
-      "hide": "Ukryj wartość",
-      "ownCount": "{n} endpoint ma własne nagłówki. | Liczba endpointów z własnymi nagłówkami: {n}.",
-      "noneOwn": "Żaden endpoint nie ma jeszcze własnych nagłówków. Dodaj nagłówek w kroku Metody endpointu, gdy wywołujący muszą dodatkowo się identyfikować.",
-      "noOwn": "Brak własnych nagłówków.",
-      "addOwn": "Dodaj nagłówek",
-      "collapseAll": "Zwiń wszystko",
-      "expandAll": "Rozwiń wszystko",
-      "ownShort": "{n} z własnymi nagłówkami"
+      "expiryTitle": "Wygaśnięcie tokenu w każdej odpowiedzi",
+      "expiryDesc": "Każda odpowiedź podaje, kiedy wygasa token, który wykonał wywołanie, aby Twoja aplikacja mogła go odnowić na czas."
     },
     "access": {
       "rules": "Reguły",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Unikalny identyfikator tworzony dla każdego nowego rekordu (dobrze sprawdza się UUID). Jeśli sieć zawiedzie, a wyślesz to samo wywołanie ponownie, Formalie odpowie rekordem, który już utworzył."
+        "text": "Nowy unikalny identyfikator dla każdego wywołania (dobrze sprawdza się UUID; przykłady tworzą go za Ciebie). Każde wywołanie znajdziesz po nim w Logach żądań, a jeśli sieć zawiedzie i wyślesz ten sam POST ponownie z tym samym kluczem, Formalie odpowie rekordem, który już utworzył."
       },
       "files": {
         "title": "Wysyłanie plików",
@@ -4391,10 +4356,6 @@
         "then": "Następnie umieść identyfikatory w treści JSON pod tym pytaniem, np. \"cv\": [\"id\"]. Obowiązują te same typy i rozmiary plików co w formularzu.",
         "step1": "Prześlij plik",
         "step2": "Wyślij jego identyfikator razem z odpowiedziami"
-      },
-      "signing": {
-        "title": "Podpisane wywołania",
-        "text": "Gdy token ma włączone podpisywanie, każde wywołanie zawiera też czas i podpis HMAC-SHA256 utworzony za pomocą sekretu podpisu. Wywołania starsze niż pięć minut są odrzucane."
       },
       "errors": {
         "title": "Błędy",
@@ -4410,10 +4371,9 @@
         "desc": "Wykonuje wszystkie prawdziwe kontrole z tokenem testowym. Nic nie jest zapisywane.",
         "record": "Identyfikator rekordu",
         "recordPlaceholder": "Zostaw puste, aby uzyskać listę",
-        "keyHelp": "Wypełniony za Ciebie; nowy po każdym wywołaniu.",
+        "keyHelp": "Wypełnione za Ciebie; nowy po każdym wywołaniu.",
         "newKey": "Nowy klucz",
         "keepKey": "Zachowaj ten klucz (wyślij to samo wywołanie ponownie, aby zobaczyć ponowienie)",
-        "headerHelp": "Wymagany przez ten endpoint.",
         "testOnly": "Tryb testowy: odpowiedzi wyglądają prawdziwie, ale żadna odpowiedź nie jest tworzona, zmieniana ani usuwana.",
         "nothingYet": "Wyślij wywołanie, aby zobaczyć odpowiedź",
         "send": "Wyślij",
@@ -4441,6 +4401,14 @@
         "POST": "Tworzenie",
         "PUT": "Zmiana",
         "DELETE": "Usuwanie"
+      },
+      "callHeaders": {
+        "title": "Nagłówki",
+        "text": "Każde wywołanie wysyła te trzy nagłówki, niezależnie od metody: Authorization z Twoim tokenem, Content-Type: application/json oraz Formalie-Key. Żaden nie jest opcjonalny i nie trzeba innych nagłówków."
+      },
+      "expiry": {
+        "title": "Wygaśnięcie tokenu",
+        "text": "Każda odpowiedź zawiera wygaśnięcie tokenu: nagłówek Formalie-Token-Expires oraz, obok danych, meta.token_expires_at i meta.token_expires_in_days (null dla tokenu, który nigdy nie wygasa). Odnów token, zanim nadejdzie ten dzień."
       }
     },
     "journey": {

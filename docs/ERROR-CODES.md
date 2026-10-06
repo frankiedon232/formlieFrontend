@@ -67,13 +67,13 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-API-1008  | 405  | This endpoint does not answer this method.                        | INFO     |
 | FRM-API-1009  | 403  | This token may not call this endpoint or method.                  | WARNING  |
 | FRM-API-1010  | 401  | Send a valid token as Authorization: Bearer <token>.              | WARNING  |
-| FRM-API-1011  | 400  | A required header is missing or has the wrong value.              | INFO     |
-| FRM-API-1012  | 401  | The request signature is missing, too old or wrong.               | WARNING  |
+| FRM-API-1011  | 400  | The Formalie-Key header is missing or not valid.                  | INFO     |
+| FRM-API-1012  | 401  | Retired 2026-10-06 (signed calls removed); kept so it is not reused. | WARNING  |
 | FRM-API-1013  | 404  | There is no record with this id.                                  | INFO     |
 | FRM-API-1014  | 422  | Some fields can not be sent to this endpoint.                     | INFO     |
 | FRM-API-1015  | 403  | This caller is not allowed by the access rules.                   | WARNING  |
 | FRM-API-1016  | 409  | This secret can not be shown (made before secrets were viewable). | INFO     |
-| FRM-API-1017  | 415  | Send the body as JSON with Content-Type: application/json.        | INFO     |
+| FRM-API-1017  | 415  | Retired 2026-10-06 (bodies are read as JSON whatever is sent).    | INFO     |
 | FRM-API-1019  | 422  | This form is not open to the API service (Share → Where people can answer). | INFO     |
 | FRM-API-1018  | 413  | The body is too large (1 MB at most; files via the upload step).  | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |

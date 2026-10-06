@@ -591,7 +591,7 @@
     "FRM-API-1008": "Bu endpoint bu metodu yanıtlamıyor.",
     "FRM-API-1009": "Bu token bu endpoint veya metodu çağıramaz.",
     "FRM-API-1010": "Geçerli bir token gönderin: Authorization: Bearer ….",
-    "FRM-API-1011": "Zorunlu bir başlık eksik ya da değeri yanlış.",
+    "FRM-API-1011": "Formalie-Key başlığı eksik veya geçersiz. Her çağrıyla yeni bir benzersiz kimlik gönderin.",
     "FRM-API-1012": "İstek imzası eksik, çok eski ya da yanlış.",
     "FRM-API-1013": "Bu id ile kayıt yok.",
     "FRM-API-1014": "Bazı alanlar bu endpoint’e gönderilemez.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} dakika",
       "lifetime": "Kısa ömürlü token süresi",
       "lifetimeHelp": "Uygulama yenisini isteyene kadar token adresinden alınan her token'ın ne kadar çalışacağı.",
-      "signing": "İmzalı istekler",
-      "signingHelp": "Çağrılar ayrıca isteğin HMAC imzasını da taşımalıdır. Ekstra koruma gereken çağıranlar için.",
-      "signingHint": "Her çağrıyı imzalayın: X-Formalie-Timestamp (unix saniye) ve X-Formalie-Signature (yöntem, yol, zaman damgası ve gövdenin imzalama gizli anahtarıyla sha256= HMAC'i). 5 dakikadan eski çağrılar reddedilir.",
       "clientHint": "Yanıt, {n} dakika geçerli bir erişim token'ı içerir; bunu Authorization: Bearer olarak gönderin ve süresi dolunca yenisini isteyin.",
       "howToUse": "Nasıl kullanılır",
       "rotate": "Yenile",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "İstemci kimliği",
         "clientSecret": "İstemci gizli anahtarı",
-        "signing": "İmzalama gizli anahtarı",
         "title": "Gizli anahtar"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Header'lar",
-      "standardTitle": "Her çağıranın gönderdiği header'lar",
-      "standardDesc": "Formalie bunları her çağrıda denetler; yanıtlar her zaman JSON'dur.",
-      "customTitle": "Uç nokta başına başlıklar",
-      "customDesc": "Hizmete göre her uç nokta ve çağrılarının ihtiyaç duyduğu başlıklar: kendi başlıkları (Yöntemler adımında ayarlanır, ör. bir ortak kimliği) ve standart başlıklar.",
-      "none": "Hiçbir endpoint ek header istemiyor",
-      "noneDesc": "Bir çağıranın kendini daha fazla tanıtması gerektiğinde bunları endpoint'in Yöntemler adımında ekleyin.",
-      "requiredTitle": "Gerekli header'lar",
-      "requiredDesc": "Bu header'lar ve değerler olmadan yapılan çağrılar reddedilir. İsteğe bağlı, en fazla 5.",
-      "name": "Header adı",
-      "value": "Sahip olması gereken değer",
-      "keep": "{preview} (değişmedi)",
-      "add": "Header ekle",
-      "remove": "Header'ı kaldır",
+      "standardTitle": "Her çağrının gönderdiği üç başlık",
+      "standardDesc": "Üçü de her çağrıda ve her yöntemde gönderilir, hiçbiri isteğe bağlı değildir. Formalie başka başlık kabul etmez.",
       "when": {
-        "always": "Her çağrı",
-        "body": "POST ve PUT",
-        "post": "İsteğe bağlı, POST",
-        "signing": "İmzalı token'lar"
+        "always": "Her çağrı"
       },
-      "invalid": {
-        "required": "Bunu doldurun.",
-        "pattern": "Harf, rakam ve tire kullanın; bir harfle başlayın (2 ile 64 arası).",
-        "reserved": "Bu header'ı Formalie veya HTTP kendisi ayarlar. Başka bir ad seçin.",
-        "chars": "Düz harf, rakam ve simge kullanın, en fazla 200.",
-        "duplicate": "Bu header zaten listede.",
-        "fix": "Gerekli header'ları kontrol edin."
-      },
-      "withOwn": "Kendi başlıkları olan {n} uç nokta | Kendi başlıkları olan {n} uç nokta",
-      "withoutOwn": "{n} tane daha başlıksız | {n} tane daha başlıksız",
-      "show": "Değeri göster",
-      "hide": "Değeri gizle",
-      "ownCount": "{n} uç noktanın kendi başlıkları var. | {n} uç noktanın kendi başlıkları var.",
-      "noneOwn": "Henüz hiçbir uç noktanın kendi başlığı yok. Çağıranların kendilerini daha fazla tanıtması gerektiğinde bir uç noktanın Yöntemler adımında ekleyin.",
-      "noOwn": "Kendi başlığı yok.",
-      "addOwn": "Başlık ekle",
-      "collapseAll": "Tümünü daralt",
-      "expandAll": "Tümünü genişlet",
-      "ownShort": "Kendi başlıkları olan {n}"
+      "expiryTitle": "Her yanıtta jetonun bitiş zamanı",
+      "expiryDesc": "Her yanıt, çağrıyı yapan jetonun ne zaman sona ereceğini söyler; böylece uygulamanız jetonu zamanında yenileyebilir."
     },
     "access": {
       "rules": "Kurallar",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Her yeni kayıt için oluşturduğunuz benzersiz bir kimlik (UUID iyi çalışır). Ağ başarısız olur ve aynı çağrıyı yeniden gönderirseniz, Formalie zaten oluşturduğu kayıtla yanıt verir."
+        "text": "Her çağrı için yeni bir benzersiz kimlik (UUID iyi çalışır; örnekler sizin için bir tane üretir). Her çağrı bununla İstek kayıtlarında bulunur ve ağ başarısız olursa aynı POST'u aynı anahtarla tekrar gönderdiğinizde Formalie daha önce oluşturduğu kayıtla yanıt verir."
       },
       "files": {
         "title": "Dosya gönderme",
@@ -4391,10 +4356,6 @@
         "then": "Sonra kimlikleri JSON gövdesinde o sorunun altına yazın, örn. \"cv\": [\"id\"]. Formdakiyle aynı dosya türleri ve boyutlarına izin verilir.",
         "step1": "Dosyayı yükleyin",
         "step2": "Kimliğini yanıtlarla birlikte gönderin"
-      },
-      "signing": {
-        "title": "İmzalı çağrılar",
-        "text": "Bir jetonda imzalama açıksa, her çağrı ayrıca zamanı ve imzalama gizli anahtarıyla oluşturulmuş bir HMAC-SHA256 imzası taşır. Beş dakikadan eski çağrılar reddedilir."
       },
       "errors": {
         "title": "Hatalar",
@@ -4410,10 +4371,9 @@
         "desc": "Tüm gerçek denetimleri bir test jetonuyla çalıştırır. Hiçbir şey kaydedilmez.",
         "record": "Kayıt kimliği",
         "recordPlaceholder": "Liste için boş bırakın",
-        "keyHelp": "Sizin için dolduruldu; her çağrıdan sonra yenisi.",
+        "keyHelp": "Sizin için doldurulur; her çağrıdan sonra yenisi.",
         "newKey": "Yeni anahtar",
         "keepKey": "Bu anahtarı koru (yeniden denemeyi görmek için aynı çağrıyı tekrar gönderin)",
-        "headerHelp": "Bu endpoint için gerekli.",
         "testOnly": "Test modu: yanıtlar gerçek gibi görünür, ancak hiçbir yanıt oluşturulmaz, değiştirilmez veya silinmez.",
         "nothingYet": "Yanıtı görmek için bir çağrı gönderin",
         "send": "Gönder",
@@ -4441,6 +4401,14 @@
         "POST": "Oluştur",
         "PUT": "Değiştir",
         "DELETE": "Sil"
+      },
+      "callHeaders": {
+        "title": "Başlıklar",
+        "text": "Her çağrı, yöntem ne olursa olsun şu üç başlığı gönderir: jetonunuzla Authorization, Content-Type: application/json ve bir Formalie-Key. Hiçbiri isteğe bağlı değildir ve başka başlığa gerek yoktur."
+      },
+      "expiry": {
+        "title": "Jeton bitiş zamanı",
+        "text": "Her yanıt jetonun bitiş zamanını taşır: Formalie-Token-Expires başlığı ve verinin yanında meta.token_expires_at ile meta.token_expires_in_days (hiç bitmeyen jeton için null). Jetonu o gün gelmeden yenileyin."
       }
     },
     "journey": {

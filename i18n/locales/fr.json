@@ -591,7 +591,7 @@
     "FRM-API-1008": "Cet endpoint ne répond pas à cette méthode.",
     "FRM-API-1009": "Ce jeton ne peut pas appeler cet endpoint ou cette méthode.",
     "FRM-API-1010": "Envoyez un jeton valide sous la forme Authorization: Bearer ….",
-    "FRM-API-1011": "Un en-tête obligatoire manque ou a une valeur incorrecte.",
+    "FRM-API-1011": "L'en-tête Formalie-Key est absent ou invalide. Envoyez un nouvel identifiant unique à chaque appel.",
     "FRM-API-1012": "La signature de la requête manque, est trop ancienne ou est incorrecte.",
     "FRM-API-1013": "Aucun enregistrement avec cet identifiant.",
     "FRM-API-1014": "Certains champs ne peuvent pas être envoyés à cet endpoint.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} minutes",
       "lifetime": "Durée du jeton de courte durée",
       "lifetimeHelp": "Durée de validité de chaque jeton obtenu à l'adresse des jetons avant que l'application en demande un nouveau.",
-      "signing": "Requêtes signées",
-      "signingHelp": "Les appels doivent aussi porter une signature HMAC de la requête. Pour les appelants qui ont besoin d'une protection supplémentaire.",
-      "signingHint": "Signez chaque appel : X-Formalie-Timestamp (secondes unix) et X-Formalie-Signature (HMAC sha256= de la méthode, du chemin, de l'horodatage et du corps avec le secret de signature). Les appels de plus de 5 minutes sont refusés.",
       "clientHint": "La réponse contient un jeton d'accès valable {n} minutes ; envoyez-le sous la forme Authorization: Bearer et demandez-en un nouveau lorsqu'il expire.",
       "howToUse": "Comment l'utiliser",
       "rotate": "Renouveler",
@@ -3947,7 +3944,6 @@
         "token": "Jeton",
         "clientId": "ID client",
         "clientSecret": "Secret client",
-        "signing": "Secret de signature",
         "title": "Secret"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "En-têtes",
-      "standardTitle": "En-têtes envoyés par chaque appelant",
-      "standardDesc": "Formalie les vérifie à chaque appel ; les réponses sont toujours en JSON.",
-      "customTitle": "En-têtes par endpoint",
-      "customDesc": "Chaque endpoint, par service, avec les en-têtes que ses appels exigent : les siens (définis à l'étape Méthodes, p. ex. un identifiant partenaire) et les en-têtes standard.",
-      "none": "Aucun endpoint n'exige d'en-têtes supplémentaires",
-      "noneDesc": "Ajoutez-en à l'étape Méthodes d'un endpoint lorsqu'un appelant doit s'identifier davantage.",
-      "requiredTitle": "En-têtes obligatoires",
-      "requiredDesc": "Les appels sans ces en-têtes et valeurs sont refusés. Facultatif, jusqu'à 5.",
-      "name": "Nom de l'en-tête",
-      "value": "Valeur requise",
-      "keep": "{preview} (inchangé)",
-      "add": "Ajouter un en-tête",
-      "remove": "Supprimer l'en-tête",
+      "standardTitle": "Les trois en-têtes envoyés par chaque appel",
+      "standardDesc": "Les trois sur chaque appel et chaque méthode, aucun n'est facultatif. Formalie n'accepte aucun autre en-tête.",
       "when": {
-        "always": "Chaque appel",
-        "body": "POST et PUT",
-        "post": "Facultatif, POST",
-        "signing": "Jetons signés"
+        "always": "Chaque appel"
       },
-      "invalid": {
-        "required": "Renseignez ce champ.",
-        "pattern": "Utilisez des lettres, des chiffres et des tirets, en commençant par une lettre (2 à 64).",
-        "reserved": "Formalie ou HTTP définit lui-même cet en-tête. Choisissez un autre nom.",
-        "chars": "Utilisez des lettres, chiffres et symboles simples, jusqu'à 200.",
-        "duplicate": "Cet en-tête figure déjà dans la liste.",
-        "fix": "Vérifiez les en-têtes obligatoires."
-      },
-      "withOwn": "{n} endpoint avec ses propres en-têtes | {n} endpoints avec leurs propres en-têtes",
-      "withoutOwn": "{n} de plus sans | {n} de plus sans",
-      "show": "Afficher la valeur",
-      "hide": "Masquer la valeur",
-      "ownCount": "{n} endpoint a ses propres en-têtes. | {n} endpoints ont leurs propres en-têtes.",
-      "noneOwn": "Aucun endpoint n'a encore ses propres en-têtes. Ajoutez-en un à l'étape Méthodes d'un endpoint quand les appelants doivent s'identifier davantage.",
-      "noOwn": "Aucun en-tête propre.",
-      "addOwn": "Ajouter un en-tête",
-      "collapseAll": "Tout replier",
-      "expandAll": "Tout déplier",
-      "ownShort": "{n} avec en-têtes propres"
+      "expiryTitle": "Expiration du jeton dans chaque réponse",
+      "expiryDesc": "Chaque réponse indique quand expire le jeton qui a fait l'appel, pour que votre app puisse le renouveler à temps."
     },
     "access": {
       "rules": "Règles",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Un identifiant unique que vous créez pour chaque nouvel enregistrement (un UUID convient bien). Si le réseau échoue et que vous renvoyez le même appel, Formalie répond avec l'enregistrement déjà créé."
+        "text": "Un nouvel identifiant unique pour chaque appel (un UUID convient bien ; les exemples en créent un pour vous). Chaque appel s'y retrouve dans les Journaux, et si le réseau échoue et que vous renvoyez le même POST avec la même clé, Formalie répond avec l'enregistrement déjà créé."
       },
       "files": {
         "title": "Envoi de fichiers",
@@ -4391,10 +4356,6 @@
         "then": "Placez ensuite les identifiants dans le corps JSON sous cette question, par ex. \"cv\": [\"id\"]. Les mêmes types et tailles de fichiers que dans le formulaire sont acceptés.",
         "step1": "Téléversez le fichier",
         "step2": "Envoyez son identifiant avec les réponses"
-      },
-      "signing": {
-        "title": "Appels signés",
-        "text": "Lorsque la signature est activée sur un jeton, chaque appel porte aussi l'heure et une signature HMAC-SHA256 créée avec le secret de signature. Les appels de plus de cinq minutes sont refusés."
       },
       "errors": {
         "title": "Erreurs",
@@ -4410,10 +4371,9 @@
         "desc": "Exécute toutes les vraies vérifications avec un jeton de test. Rien n'est enregistré.",
         "record": "Identifiant de l'enregistrement",
         "recordPlaceholder": "Laisser vide pour la liste",
-        "keyHelp": "Rempli pour vous ; une nouvelle clé après chaque appel.",
+        "keyHelp": "Rempli pour vous ; un nouveau après chaque appel.",
         "newKey": "Nouvelle clé",
         "keepKey": "Garder cette clé (renvoyez le même appel pour voir le nouvel essai)",
-        "headerHelp": "Requis par cet endpoint.",
         "testOnly": "Mode test : les réponses semblent réelles, mais aucune réponse n'est créée, modifiée ou supprimée.",
         "nothingYet": "Envoyez un appel pour voir la réponse",
         "send": "Envoyer",
@@ -4441,6 +4401,14 @@
         "POST": "Créer",
         "PUT": "Modifier",
         "DELETE": "Supprimer"
+      },
+      "callHeaders": {
+        "title": "En-têtes",
+        "text": "Chaque appel envoie ces trois en-têtes, quelle que soit la méthode : Authorization avec votre jeton, Content-Type: application/json et une Formalie-Key. Aucun n'est facultatif et aucun autre en-tête n'est nécessaire."
+      },
+      "expiry": {
+        "title": "Expiration du jeton",
+        "text": "Chaque réponse porte l'expiration du jeton : l'en-tête Formalie-Token-Expires et, à côté des données, meta.token_expires_at et meta.token_expires_in_days (null pour un jeton qui n'expire jamais). Renouvelez le jeton avant l'échéance."
       }
     },
     "journey": {

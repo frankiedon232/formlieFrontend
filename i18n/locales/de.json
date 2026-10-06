@@ -591,7 +591,7 @@
     "FRM-API-1008": "Dieser Endpoint beantwortet diese Methode nicht.",
     "FRM-API-1009": "Dieses Token darf diesen Endpoint oder diese Methode nicht aufrufen.",
     "FRM-API-1010": "Senden Sie ein gültiges Token als Authorization: Bearer ….",
-    "FRM-API-1011": "Ein Pflicht-Header fehlt oder hat einen falschen Wert.",
+    "FRM-API-1011": "Der Header Formalie-Key fehlt oder ist ungültig. Senden Sie bei jedem Aufruf eine neue eindeutige ID.",
     "FRM-API-1012": "Die Signatur der Anfrage fehlt, ist zu alt oder falsch.",
     "FRM-API-1013": "Es gibt keinen Datensatz mit dieser ID.",
     "FRM-API-1014": "Einige Felder können nicht an diesen Endpoint gesendet werden.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} Minuten",
       "lifetime": "Kurzlebiges Token gilt",
       "lifetimeHelp": "Wie lange jedes Token von der Token-Adresse gültig ist, bevor die App ein neues anfordert.",
-      "signing": "Signierte Anfragen",
-      "signingHelp": "Aufrufe müssen zusätzlich eine HMAC-Signatur der Anfrage enthalten. Für Aufrufer, die zusätzlichen Schutz benötigen.",
-      "signingHint": "Signieren Sie jeden Aufruf: X-Formalie-Timestamp (unix-Sekunden) und X-Formalie-Signature (sha256= HMAC aus Methode, Pfad, Zeitstempel und Body mit dem Signing Secret). Aufrufe, die älter als 5 Minuten sind, werden abgelehnt.",
       "clientHint": "Die Antwort enthält ein Zugriffstoken, das {n} Minuten gültig ist. Senden Sie es als Authorization: Bearer und fordern Sie ein neues an, wenn es abläuft.",
       "howToUse": "So verwenden Sie es",
       "rotate": "Rotieren",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "Client-ID",
         "clientSecret": "Client-Secret",
-        "signing": "Signing Secret",
         "title": "Geheimnis"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Header, die jeder Aufrufer sendet",
-      "standardDesc": "Formalie prüft diese bei jedem Aufruf. Antworten sind immer JSON.",
-      "customTitle": "Header pro Endpunkt",
-      "customDesc": "Jeder Endpunkt, nach Service, mit den Headern, die seine Aufrufe brauchen: eigene (im Schritt Methoden festgelegt, z. B. eine Partner-ID) und die Standard-Header.",
-      "none": "Kein Endpunkt verlangt zusätzliche Header",
-      "noneDesc": "Fügen Sie sie im Schritt Methoden eines Endpunkts hinzu, wenn sich ein Aufrufer weiter ausweisen muss.",
-      "requiredTitle": "Erforderliche Header",
-      "requiredDesc": "Aufrufe ohne diese Header und Werte werden abgelehnt. Optional, bis zu 5.",
-      "name": "Header-Name",
-      "value": "Erforderlicher Wert",
-      "keep": "{preview} (unverändert)",
-      "add": "Header hinzufügen",
-      "remove": "Header entfernen",
+      "standardTitle": "Die drei Header, die jeder Aufruf sendet",
+      "standardDesc": "Alle drei bei jedem Aufruf und jeder Methode, keiner ist optional. Formalie akzeptiert keine anderen Header.",
       "when": {
-        "always": "Jeder Aufruf",
-        "body": "POST und PUT",
-        "post": "Optional, POST",
-        "signing": "Signierte Tokens"
+        "always": "Jeder Aufruf"
       },
-      "invalid": {
-        "required": "Bitte ausfüllen.",
-        "pattern": "Verwenden Sie Buchstaben, Ziffern und Bindestriche, beginnend mit einem Buchstaben (2 bis 64).",
-        "reserved": "Dieser Header wird von Formalie oder HTTP selbst gesetzt. Wählen Sie einen anderen Namen.",
-        "chars": "Verwenden Sie einfache Buchstaben, Ziffern und Symbole, bis zu 200.",
-        "duplicate": "Dieser Header steht bereits in der Liste.",
-        "fix": "Prüfen Sie die erforderlichen Header."
-      },
-      "withOwn": "{n} Endpunkt mit eigenen Headern | {n} Endpunkte mit eigenen Headern",
-      "withoutOwn": "{n} weitere ohne | {n} weitere ohne",
-      "show": "Wert anzeigen",
-      "hide": "Wert ausblenden",
-      "ownCount": "{n} Endpunkt hat eigene Header. | {n} Endpunkte haben eigene Header.",
-      "noneOwn": "Noch kein Endpunkt hat eigene Header. Fügen Sie im Schritt Methoden eines Endpunkts einen hinzu, wenn sich Aufrufer näher ausweisen müssen.",
-      "noOwn": "Keine eigenen Header.",
-      "addOwn": "Header hinzufügen",
-      "collapseAll": "Alle einklappen",
-      "expandAll": "Alle ausklappen",
-      "ownShort": "{n} mit eigenen Headern"
+      "expiryTitle": "Ablauf des Tokens in jeder Antwort",
+      "expiryDesc": "Jede Antwort nennt, wann das Token, das den Aufruf gemacht hat, abläuft, damit Ihre App es rechtzeitig erneuern kann."
     },
     "access": {
       "rules": "Regeln",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Eine eindeutige ID, die du für jeden neuen Datensatz erzeugst (eine UUID eignet sich gut). Fällt das Netzwerk aus und du sendest denselben Aufruf erneut, antwortet Formalie mit dem bereits erstellten Datensatz."
+        "text": "Eine neue eindeutige ID für jeden Aufruf (eine UUID eignet sich gut; die Beispiele erzeugen eine für Sie). Anhand davon finden Sie jeden Aufruf in den Anfrageprotokollen, und wenn das Netzwerk ausfällt und Sie denselben POST mit demselben Key erneut senden, antwortet Formalie mit dem Datensatz, den es schon angelegt hat."
       },
       "files": {
         "title": "Dateien senden",
@@ -4391,10 +4356,6 @@
         "then": "Trage die IDs dann im JSON-Body unter dieser Frage ein, z. B. \"cv\": [\"id\"]. Es gelten dieselben Dateitypen und Größen wie im Formular.",
         "step1": "Datei hochladen",
         "step2": "Ihre ID mit den Antworten senden"
-      },
-      "signing": {
-        "title": "Signierte Aufrufe",
-        "text": "Ist bei einem Token das Signieren aktiviert, enthält jeder Aufruf zusätzlich die Uhrzeit und eine HMAC-SHA256-Signatur, die mit dem Signing-Secret erstellt wird. Aufrufe, die älter als fünf Minuten sind, werden abgelehnt."
       },
       "errors": {
         "title": "Fehler",
@@ -4410,10 +4371,9 @@
         "desc": "Führt alle echten Prüfungen mit einem Testtoken aus. Nichts wird gespeichert.",
         "record": "Datensatz-ID",
         "recordPlaceholder": "Leer lassen für die Liste",
-        "keyHelp": "Automatisch ausgefüllt; nach jedem Aufruf ein neuer.",
+        "keyHelp": "Wird für Sie ausgefüllt; nach jedem Aufruf ein neuer.",
         "newKey": "Neuer Key",
         "keepKey": "Diesen Key behalten (denselben Aufruf erneut senden, um die Wiederholung zu sehen)",
-        "headerHelp": "Von diesem Endpunkt erforderlich.",
         "testOnly": "Testmodus: Die Antworten wirken echt, aber es wird keine Antwort erstellt, geändert oder gelöscht.",
         "nothingYet": "Sende einen Aufruf, um die Antwort zu sehen",
         "send": "Senden",
@@ -4441,6 +4401,14 @@
         "POST": "Erstellen",
         "PUT": "Ändern",
         "DELETE": "Löschen"
+      },
+      "callHeaders": {
+        "title": "Header",
+        "text": "Jeder Aufruf sendet diese drei Header, egal welche Methode: Authorization mit Ihrem Token, Content-Type: application/json und einen Formalie-Key. Keiner ist optional, andere Header sind nicht nötig."
+      },
+      "expiry": {
+        "title": "Ablauf des Tokens",
+        "text": "Jede Antwort enthält den Ablauf des Tokens: den Header Formalie-Token-Expires und neben den Daten meta.token_expires_at und meta.token_expires_in_days (null bei einem Token, das nie abläuft). Erneuern Sie das Token vor Ablauf."
       }
     },
     "journey": {

@@ -6,9 +6,13 @@
 <script setup lang="ts">
 import type { ApiEndpointField } from '#shared/types/apiService'
 import { exampleRecord, exampleRequestBody } from '#shared/utils/apiService/endpoints'
+import { NEW_KEY } from '#shared/utils/apiService/snippets'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
-const props = defineProps<{ methods: ApiMethod[]; url: string; fields: ApiEndpointField[]; pageSize: number; headers?: { name: string; value: string }[]; signing?: boolean }>()
+// Every answer carries the token's expiry (the expiry tracker, owner 2026-10-06)
+const EXPIRY = { token_expires_at: '2027-01-01T00:00:00Z', token_expires_in_days: 87 }
+
+const props = defineProps<{ methods: ApiMethod[]; url: string; fields: ApiEndpointField[]; pageSize: number }>()
 const { t } = useI18n()
 const { copy } = useClipboard({ legacy: true })
 const toast = useToast()
@@ -22,17 +26,17 @@ const example = computed(() => {
   const one = `${props.url}/${record.id}`
   switch (method.value) {
     case 'POST':
-      return { line: `POST ${props.url}`, body: json(exampleRequestBody(props.fields)), status: '201 Created', answer: json({ data: record }) }
+      return { line: `POST ${props.url}`, body: json(exampleRequestBody(props.fields)), status: '201 Created', answer: json({ data: record, meta: EXPIRY }) }
     case 'PUT':
-      return { line: `PUT ${one}`, body: json(exampleRequestBody(props.fields)), status: '200 OK', answer: json({ data: record }) }
+      return { line: `PUT ${one}`, body: json(exampleRequestBody(props.fields)), status: '200 OK', answer: json({ data: record, meta: EXPIRY }) }
     case 'DELETE':
-      return { line: `DELETE ${one}`, body: null, status: '200 OK', answer: json({ data: { id: record.id, deleted: true } }) }
+      return { line: `DELETE ${one}`, body: null, status: '200 OK', answer: json({ data: { id: record.id, deleted: true }, meta: EXPIRY }) }
     default:
-      return { line: `GET ${props.url}?page=1&per_page=${Math.min(20, props.pageSize)}`, body: null, status: '200 OK', answer: json({ data: [record], meta: { page: 1, per_page: Math.min(20, props.pageSize), total: 1 } }) }
+      return { line: `GET ${props.url}?page=1&per_page=${Math.min(20, props.pageSize)}`, body: null, status: '200 OK', answer: json({ data: [record], meta: { page: 1, per_page: Math.min(20, props.pageSize), total: 1, ...EXPIRY } }) }
   }
 })
-// Every header the call needs (owner, 2026-10-06): signed tokens add the timestamp and signature, the endpoint its own
-const headers = computed(() => ['Authorization: Bearer <token>', ...(props.signing ? ['X-Formalie-Timestamp: <unix seconds>', 'X-Formalie-Signature: sha256=<hmac>'] : []), ...(example.value.body ? ['Content-Type: application/json'] : []), ...(method.value === 'POST' ? ['Formalie-Key: <unique id>'] : []), ...(props.headers ?? []).map(header => `${header.name}: ${header.value}`)].join('\n'))
+// The three headers every call sends, on every method, none optional (owner, 2026-10-06)
+const headers = ['Authorization: Bearer <token>', 'Content-Type: application/json', `Formalie-Key: ${NEW_KEY}`].join('\n')
 function copyText(text: string) {
   void copy(text)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })

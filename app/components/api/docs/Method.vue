@@ -8,8 +8,11 @@
 <script setup lang="ts">
 import type { ApiEndpointDetail } from '#shared/types/apiService'
 import { exampleRecord } from '#shared/utils/apiService/endpoints'
-import { endpointCalls, fieldSchema } from '#shared/utils/apiService/snippets'
+import { CALL_HEADERS, endpointCalls, fieldSchema } from '#shared/utils/apiService/snippets'
 import type { ApiMethod } from '#shared/utils/urls/public'
+
+/** Every answer carries the token's expiry (the expiry tracker, owner 2026-10-06). */
+const EXPIRY = { token_expires_at: '2027-01-01T00:00:00Z', token_expires_in_days: 87 }
 
 const props = defineProps<{ endpoint: ApiEndpointDetail; method: ApiMethod }>()
 const emit = defineEmits<{ try: [method: ApiMethod] }>()
@@ -25,14 +28,7 @@ const typeOf = (field: ApiEndpointDetail['fields'][number]) => {
 const path = computed(() => `/${props.endpoint.name}${props.method === 'PUT' || props.method === 'DELETE' ? '/{id}' : ''}`)
 const answers = computed(() => {
   const record = exampleRecord(props.endpoint.fields)
-  const ok =
-    props.method === 'GET'
-      ? { status: 200, body: { data: [record], meta: { page: 1, per_page: Math.min(20, props.endpoint.page_size), total: 1, total_pages: 1 } } }
-      : props.method === 'POST'
-        ? { status: 201, body: { data: record } }
-        : props.method === 'PUT'
-          ? { status: 200, body: { data: record } }
-          : { status: 200, body: { data: { id: record.id, deleted: true } } }
+  const ok = props.method === 'GET' ? { status: 200, body: { data: [record], meta: { page: 1, per_page: Math.min(20, props.endpoint.page_size), total: 1, total_pages: 1, ...EXPIRY } } } : props.method === 'POST' ? { status: 201, body: { data: record, meta: EXPIRY } } : props.method === 'PUT' ? { status: 200, body: { data: record, meta: EXPIRY } } : { status: 200, body: { data: { id: record.id, deleted: true }, meta: EXPIRY } }
   const error = (status: number, code: string, details: unknown[] = []) => ({ status, body: { error: { code, message: '…', details } } })
   return [
     ok,
@@ -63,7 +59,9 @@ watch(() => props.method, () => (shownAnswer.value = 0))
     <div class="grid lg:grid-cols-2">
       <div class="flex min-w-0 flex-col gap-4 p-4 sm:p-5">
         <template v-if="writes">
-          <h4 class="text-xs font-semibold tracking-wide text-muted uppercase">{{ t('apiService.docs.body') }}</h4>
+          <h4 class="text-xs font-semibold tracking-wide text-muted uppercase">
+            {{ t('apiService.docs.body') }}
+          </h4>
           <ul class="flex flex-col divide-y divide-default rounded-lg border border-default">
             <li v-for="field in accepted" :key="field.key" class="flex flex-col gap-1 px-3 py-2.5">
               <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -84,7 +82,9 @@ watch(() => props.method, () => (shownAnswer.value = 0))
         </template>
 
         <template v-if="method === 'GET'">
-          <h4 class="text-xs font-semibold tracking-wide text-muted uppercase">{{ t('apiService.docs.query') }}</h4>
+          <h4 class="text-xs font-semibold tracking-wide text-muted uppercase">
+            {{ t('apiService.docs.query') }}
+          </h4>
           <ul class="flex flex-col divide-y divide-default rounded-lg border border-default">
             <li class="flex flex-col gap-0.5 px-3 py-2.5"><code class="font-mono text-sm font-medium text-highlighted">page</code><span class="text-xs text-muted">{{ t('apiService.docs.page') }}</span></li>
             <li class="flex flex-col gap-0.5 px-3 py-2.5"><code class="font-mono text-sm font-medium text-highlighted">per_page</code><span class="text-xs text-muted">{{ t('apiService.docs.perPage', { n: endpoint.page_size }) }}</span></li>
@@ -96,9 +96,13 @@ watch(() => props.method, () => (shownAnswer.value = 0))
 
         <p v-if="method === 'DELETE'" class="flex items-start gap-2 text-sm text-muted"><UIcon name="i-lucide-archive" class="mt-0.5 size-4 shrink-0" />{{ t('apiService.docs.deleteHint') }}</p>
 
-        <div v-if="endpoint.headers.length" class="flex flex-col gap-1.5">
-          <h4 class="text-xs font-semibold tracking-wide text-muted uppercase">{{ t('apiService.docs.headers') }}</h4>
-          <div class="flex flex-wrap gap-1.5"><code v-for="header in endpoint.headers" :key="header.name" class="rounded-md border border-default px-2 py-0.5 font-mono text-xs text-highlighted" dir="ltr">{{ header.name }}</code></div>
+        <div class="flex flex-col gap-1.5">
+          <h4 class="text-xs font-semibold tracking-wide text-muted uppercase">
+            {{ t('apiService.docs.headers') }}
+          </h4>
+          <div class="flex flex-wrap gap-1.5">
+            <code v-for="header in CALL_HEADERS" :key="header" class="rounded-md border border-default px-2 py-0.5 font-mono text-xs text-highlighted" dir="ltr">{{ header }}</code>
+          </div>
         </div>
       </div>
 

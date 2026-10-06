@@ -5,9 +5,8 @@
   click away; picking another form starts its questions afresh.
 -->
 <script setup lang="ts">
-import type { ApiEndpointDetail, ApiEndpointField, ApiEndpointSaveRequest, ApiHeaderDraft, ApiServiceSettings, ApiStatus } from '#shared/types/apiService'
+import type { ApiEndpointDetail, ApiEndpointField, ApiEndpointSaveRequest, ApiServiceSettings, ApiStatus } from '#shared/types/apiService'
 import { checkApiName, checkEndpointName, endpointNameFrom } from '#shared/utils/apiService/endpoints'
-import { checkHeaderName, checkHeaderValue } from '#shared/utils/apiService/tokens'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
 const props = defineProps<{ endpoint?: ApiEndpointDetail | null; service?: string | null }>()
@@ -36,11 +35,9 @@ const pageSize = ref(e?.page_size ?? 50)
 const status = ref<ApiStatus>(e?.status ?? 'disabled')
 const fields = ref<ApiEndpointField[]>(e ? e.fields.map(field => ({ ...field })) : [])
 const versions = ref<number[]>(e?.versions ?? [])
-const headers = ref<ApiHeaderDraft[]>((e?.headers ?? []).map(header => ({ name: header.name, value: null, preview: header.preview })))
-const headerErrors = ref(false)
 const errors = ref<Record<string, string>>({})
 
-const snapshot = () => JSON.stringify([formId.value, serviceId.value, name.value, description.value, version.value, methods.value, pageSize.value, status.value, headers.value, fields.value.map(f => [f.key, f.accept, f.required, f.returned, f.filter])])
+const snapshot = () => JSON.stringify([formId.value, serviceId.value, name.value, description.value, version.value, methods.value, pageSize.value, status.value, fields.value.map(f => [f.key, f.accept, f.required, f.returned, f.filter])])
 const initial = ref(snapshot())
 watch(() => snapshot() !== initial.value, value => emit('dirty', value), { immediate: true })
 
@@ -99,12 +96,6 @@ function check(step: Step): boolean {
     if (problem) problems.name = t(`apiService.invalid.${problem}`)
   }
   if (step === 'methods' && !methods.value.length) problems.methods = t('apiService.invalid.methods')
-  if (step === 'methods') {
-    const names = headers.value.map(header => header.name.trim().toLowerCase())
-    const bad = headers.value.some((header, i) => checkHeaderName(header.name.trim()) || names.indexOf(names[i]!) !== i || (header.value === null ? !header.preview : checkHeaderValue(header.value)))
-    headerErrors.value = bad
-    if (bad) problems.headers = t('apiService.headers.invalid.fix')
-  }
   if (step === 'fields') {
     const names = fields.value.map(field => field.name)
     if (fields.value.some((field, i) => checkApiName(field.name) || names.indexOf(field.name) !== i)) problems.fields = t('apiService.fields.nameInvalid.fix')
@@ -131,18 +122,7 @@ async function save() {
   for (const step of STEPS.slice(0, -1)) if (!check(step)) return void (current.value = step)
   saving.value = true
   try {
-    const body: ApiEndpointSaveRequest = {
-      name: name.value,
-      description: description.value.trim() || null,
-      service_id: serviceId.value!,
-      form_id: formId.value!,
-      version: version.value,
-      methods: methods.value,
-      fields: fields.value.map(({ key, name, accept, required, returned, filter }) => ({ key, name, accept, required, returned, filter })),
-      page_size: pageSize.value,
-      headers: headers.value.map(header => ({ name: header.name.trim(), value: header.value })),
-      status: status.value,
-    }
+    const body: ApiEndpointSaveRequest = { name: name.value, description: description.value.trim() || null, service_id: serviceId.value!, form_id: formId.value!, version: version.value, methods: methods.value, fields: fields.value.map(({ key, name, accept, required, returned, filter }) => ({ key, name, accept, required, returned, filter })), page_size: pageSize.value, status: status.value }
     const { data } = props.endpoint ? await api.patch<ApiEndpointDetail>(`/api-endpoints/${props.endpoint.id}`, body) : await api.post<ApiEndpointDetail>('/api-endpoints', body)
     initial.value = snapshot()
     emit('saved', data)
@@ -165,8 +145,12 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
       <template #header>
         <UStepper :model-value="current" :items="stepItems" size="xs" color="neutral" :linear="false" class="w-full" :ui="{ title: 'hidden md:block text-xs', description: 'hidden' }" @update:model-value="value => go(value as Step)" />
         <div class="flex flex-col">
-          <p class="text-xs text-muted">{{ t('apiService.wizard.stepOf', { n: index + 1, total: STEPS.length }) }}</p>
-          <h2 class="text-base font-semibold text-highlighted">{{ t(`apiService.wizard.title.${current}`) }}</h2>
+          <p class="text-xs text-muted">
+            {{ t('apiService.wizard.stepOf', { n: index + 1, total: STEPS.length }) }}
+          </p>
+          <h2 class="text-base font-semibold text-highlighted">
+            {{ t(`apiService.wizard.title.${current}`) }}
+          </h2>
           <p class="text-sm text-muted">{{ t(`apiService.wizard.desc.${current}`) }}</p>
         </div>
       </template>
@@ -176,22 +160,37 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
         <p v-if="errors.form" class="text-sm text-error">{{ errors.form }}</p>
       </div>
       <ApiWizardBasics v-else-if="current === 'basics'" v-model:service-id="serviceId" v-model:name="name" v-model:description="description" v-model:version="version" :base="base" :versions="versions" :errors="errors" />
-      <div v-else-if="current === 'methods'" class="flex flex-col gap-5">
-        <ApiWizardMethods v-model:methods="methods" v-model:page-size="pageSize" :error="errors.methods" />
-        <ApiWizardHeaders v-model="headers" :show-errors="headerErrors" />
-      </div>
+      <ApiWizardMethods v-else-if="current === 'methods'" v-model:methods="methods" v-model:page-size="pageSize" :error="errors.methods" />
       <div v-else-if="current === 'fields'" class="flex flex-col gap-3">
         <p class="flex items-start gap-2 text-xs text-muted"><UIcon name="i-lucide-braces" class="mt-0.5 size-3.5 shrink-0" />{{ t('apiService.fields.namesHint') }}</p>
-        <div v-if="loadingFields && !fields.length" class="flex flex-col gap-2"><USkeleton v-for="n in 5" :key="n" class="h-12 w-full" /></div>
+        <div v-if="loadingFields && !fields.length" class="flex flex-col gap-2">
+          <USkeleton v-for="n in 5" :key="n" class="h-12 w-full" />
+        </div>
         <ApiEndpointsFields v-else :fields="fields" editable :writes="writes" :reads="reads" :class="loadingFields ? 'opacity-60' : ''" @change="changeField" />
         <p v-if="errors.fields" class="text-sm text-error">{{ errors.fields }}</p>
       </div>
       <div v-else class="flex flex-col gap-5">
         <dl class="grid gap-x-6 gap-y-3 sm:grid-cols-2">
-          <div class="flex min-w-0 flex-col"><dt class="text-xs text-muted">{{ t('apiService.wizard.step.form') }}</dt><dd class="truncate text-sm font-medium text-highlighted">{{ formName }}</dd></div>
-          <div class="flex min-w-0 flex-col"><dt class="text-xs text-muted">{{ t('apiService.col.version') }}</dt><dd class="text-sm font-medium text-highlighted">{{ version ? t('apiService.versionN', { n: version }) : t('apiService.latestVersion') }}</dd></div>
-          <div class="flex min-w-0 flex-col"><dt class="text-xs text-muted">{{ t('apiService.col.methods') }}</dt><dd><ApiMethods :methods="methods" size="xs" /></dd></div>
-          <div class="flex min-w-0 flex-col"><dt class="text-xs text-muted">{{ t('apiService.fields.title') }}</dt><dd class="text-sm text-highlighted">{{ t('apiService.wizard.fieldsSummary', { accepted: fields.filter(f => f.accept).length, returned: fields.filter(f => f.returned).length }) }}</dd></div>
+          <div class="flex min-w-0 flex-col">
+            <dt class="text-xs text-muted">{{ t('apiService.wizard.step.form') }}</dt>
+            <dd class="truncate text-sm font-medium text-highlighted">{{ formName }}</dd>
+          </div>
+          <div class="flex min-w-0 flex-col">
+            <dt class="text-xs text-muted">{{ t('apiService.col.version') }}</dt>
+            <dd class="text-sm font-medium text-highlighted">
+              {{ version ? t('apiService.versionN', { n: version }) : t('apiService.latestVersion') }}
+            </dd>
+          </div>
+          <div class="flex min-w-0 flex-col">
+            <dt class="text-xs text-muted">{{ t('apiService.col.methods') }}</dt>
+            <dd><ApiMethods :methods="methods" size="xs" /></dd>
+          </div>
+          <div class="flex min-w-0 flex-col">
+            <dt class="text-xs text-muted">{{ t('apiService.fields.title') }}</dt>
+            <dd class="text-sm text-highlighted">
+              {{ t('apiService.wizard.fieldsSummary', { accepted: fields.filter(f => f.accept).length, returned: fields.filter(f => f.returned).length }) }}
+            </dd>
+          </div>
         </dl>
         <USwitch v-if="editing" :model-value="status === 'active'" :label="t('apiService.setup.isLive')" :description="t('apiService.wizard.answeringHint')" @update:model-value="value => (status = value ? 'active' : 'disabled')" />
         <div v-else class="flex flex-col gap-3 rounded-lg bg-elevated/40 p-4">
@@ -208,6 +207,6 @@ defineShortcuts({ meta_enter: { usingInput: true, handler: () => (current.value 
       </template>
     </UCard>
 
-    <ApiWizardAside :url="url" :methods="methods" :fields="fields" :page-size="pageSize" :form-name="formName" :headers="headers.filter(header => header.name).map(header => ({ name: header.name, value: header.value || header.preview || '…' }))" />
+    <ApiWizardAside :url="url" :methods="methods" :fields="fields" :page-size="pageSize" :form-name="formName" />
   </div>
 </template>

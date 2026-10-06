@@ -58,7 +58,6 @@ const facts = computed(() => [
         <div class="flex min-w-0 items-center gap-2">
           <UAvatar :alt="item.created_by.name" size="2xs" />
           <span class="truncate text-xs text-muted">{{ item.created_by.name }}</span>
-          <UIcon v-if="item.signing" name="i-lucide-signature" class="size-3.5 shrink-0 text-muted" :aria-label="t('apiService.tokens.signing')" />
         </div>
         <ChartsSparkline :values="item.daily.map(day => day.count)" :width="72" :height="20" />
       </div>

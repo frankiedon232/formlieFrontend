@@ -591,7 +591,7 @@
     "FRM-API-1008": "Endpoint hii haijibu njia hii.",
     "FRM-API-1009": "Tokeni hii hairuhusiwi kuita endpoint au njia hii.",
     "FRM-API-1010": "Tuma tokeni halali kama Authorization: Bearer ….",
-    "FRM-API-1011": "Kichwa kinachohitajika hakipo au kina thamani isiyo sahihi.",
+    "FRM-API-1011": "Kichwa Formalie-Key hakipo au si halali. Tuma kitambulisho kipya cha kipekee kwa kila mwito.",
     "FRM-API-1012": "Saini ya ombi haipo, ni ya zamani mno au si sahihi.",
     "FRM-API-1013": "Hakuna rekodi yenye kitambulisho hiki.",
     "FRM-API-1014": "Baadhi ya sehemu haziwezi kutumwa kwa endpoint hii.",
@@ -3925,9 +3925,6 @@
       "minutes": "Dakika {n}",
       "lifetime": "Tokeni ya muda mfupi hudumu",
       "lifetimeHelp": "Kila tokeni kutoka anwani ya tokeni hufanya kazi kwa muda gani kabla programu haijaomba mpya.",
-      "signing": "Maombi yaliyosainiwa",
-      "signingHelp": "Miito lazima pia iwe na saini ya HMAC ya ombi. Kwa wanaoita wanaohitaji ulinzi wa ziada.",
-      "signingHint": "Saini kila mwito: X-Formalie-Timestamp (sekunde za unix) na X-Formalie-Signature (sha256= HMAC ya njia, njia ya anwani, muhuri wa muda na mwili kwa siri ya kusaini). Miito ya zaidi ya dakika 5 inakataliwa.",
       "clientHint": "Jibu lina tokeni ya ufikiaji inayofanya kazi kwa dakika {n}; itume kama Authorization: Bearer, kisha omba mpya inapoisha.",
       "howToUse": "Jinsi ya kuitumia",
       "rotate": "Zungusha",
@@ -3947,7 +3944,6 @@
         "token": "Tokeni",
         "clientId": "Client id",
         "clientSecret": "Client secret",
-        "signing": "Siri ya kusaini",
         "title": "Siri"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Header",
-      "standardTitle": "Header ambazo kila mwitaji hutuma",
-      "standardDesc": "Formalie huzikagua kwa kila mwito; majibu ni JSON kila wakati.",
-      "customTitle": "Vichwa kwa kila endpoint",
-      "customDesc": "Kila endpoint, kwa huduma, pamoja na vichwa ambavyo miito yake inahitaji: vyake vyenyewe (huwekwa katika hatua ya Mbinu, mfano kitambulisho cha mshirika) na vya kawaida.",
-      "none": "Hakuna endpoint inayohitaji header za ziada",
-      "noneDesc": "Ziongeze kwenye hatua ya Njia ya endpoint mwitaji anapohitaji kujitambulisha zaidi.",
-      "requiredTitle": "Header zinazohitajika",
-      "requiredDesc": "Miito isiyo na header na thamani hizi inakataliwa. Hiari, hadi 5.",
-      "name": "Jina la header",
-      "value": "Thamani inayopaswa kuwa nayo",
-      "keep": "{preview} (haijabadilika)",
-      "add": "Ongeza header",
-      "remove": "Ondoa header",
+      "standardTitle": "Vichwa vitatu ambavyo kila mwito hutuma",
+      "standardDesc": "Vyote vitatu kwa kila mwito na kila njia, hakuna cha hiari. Formalie haikubali vichwa vingine.",
       "when": {
-        "always": "Kila mwito",
-        "body": "POST na PUT",
-        "post": "Hiari, POST",
-        "signing": "Tokeni zilizosainiwa"
+        "always": "Kila mwito"
       },
-      "invalid": {
-        "required": "Jaza hapa.",
-        "pattern": "Tumia herufi, nambari na vistariungio, ukianza na herufi (2 hadi 64).",
-        "reserved": "Formalie au HTTP huweka header hii yenyewe. Chagua jina lingine.",
-        "chars": "Tumia herufi, nambari na alama za kawaida, hadi 200.",
-        "duplicate": "Header hii tayari iko kwenye orodha.",
-        "fix": "Kagua header zinazohitajika."
-      },
-      "withOwn": "Endpoint {n} yenye vichwa vyake | Endpoint {n} zenye vichwa vyake",
-      "withoutOwn": "{n} zaidi bila | {n} zaidi bila",
-      "show": "Onyesha thamani",
-      "hide": "Ficha thamani",
-      "ownCount": "Endpoint {n} ina vichwa vyake. | Endpoint {n} zina vichwa vyake.",
-      "noneOwn": "Bado hakuna endpoint yenye vichwa vyake. Ongeza kimoja katika hatua ya Mbinu ya endpoint wakati wapigaji wanahitaji kujitambulisha zaidi.",
-      "noOwn": "Hakuna vichwa vyake.",
-      "addOwn": "Ongeza kichwa",
-      "collapseAll": "Kunja zote",
-      "expandAll": "Panua zote",
-      "ownShort": "{n} zenye vichwa vyake"
+      "expiryTitle": "Kuisha kwa tokeni katika kila jibu",
+      "expiryDesc": "Kila jibu linasema tokeni iliyofanya mwito itaisha lini, ili programu yako iweze kuifanya upya kwa wakati."
     },
     "access": {
       "rules": "Kanuni",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Kitambulisho cha kipekee unachounda kwa kila rekodi mpya (UUID inafaa). Mtandao ukifeli na ukatuma simu ile ile tena, Formalie hujibu kwa rekodi ambayo tayari iliundwa."
+        "text": "Kitambulisho kipya cha kipekee kwa kila mwito (UUID inafaa; mifano hukutengenezea kimoja). Kila mwito hupatikana kwa kitambulisho hicho katika Kumbukumbu za maombi, na mtandao ukifeli ukatuma POST ile ile kwa ufunguo ule ule, Formalie hujibu kwa rekodi iliyokwisha kuunda."
       },
       "files": {
         "title": "Kutuma faili",
@@ -4391,10 +4356,6 @@
         "then": "Kisha weka vitambulisho kwenye mwili wa JSON chini ya swali hilo, mfano \"cv\": [\"id\"]. Aina na ukubwa wa faili ni sawa na kwenye fomu.",
         "step1": "Pakia faili",
         "step2": "Tuma kitambulisho chake pamoja na majibu"
-      },
-      "signing": {
-        "title": "Simu zilizotiwa saini",
-        "text": "Tokeni ikiwa na utiaji saini umewashwa, kila simu pia hubeba wakati na saini ya HMAC-SHA256 iliyotengenezwa kwa siri ya kutia saini. Simu za zaidi ya dakika tano hukataliwa."
       },
       "errors": {
         "title": "Hitilafu",
@@ -4410,10 +4371,9 @@
         "desc": "Hufanya ukaguzi wote halisi kwa tokeni ya majaribio. Hakuna kinachohifadhiwa.",
         "record": "Kitambulisho cha rekodi",
         "recordPlaceholder": "Acha wazi kwa orodha",
-        "keyHelp": "Imejazwa kwa ajili yako; mpya baada ya kila simu.",
+        "keyHelp": "Hujazwa kwa ajili yako; mpya baada ya kila mwito.",
         "newKey": "Ufunguo mpya",
         "keepKey": "Weka ufunguo huu (tuma simu ile ile tena kuona jaribio la pili)",
-        "headerHelp": "Unahitajika na endpoint hii.",
         "testOnly": "Hali ya majaribio: majibu yanaonekana halisi, lakini hakuna jibu linaloundwa, kubadilishwa au kufutwa.",
         "nothingYet": "Tuma simu kuona jibu",
         "send": "Tuma",
@@ -4441,6 +4401,14 @@
         "POST": "Unda",
         "PUT": "Badilisha",
         "DELETE": "Futa"
+      },
+      "callHeaders": {
+        "title": "Vichwa",
+        "text": "Kila mwito hutuma vichwa hivi vitatu, njia yoyote iwe: Authorization na tokeni yako, Content-Type: application/json, na Formalie-Key. Hakuna cha hiari na hakuna vichwa vingine vinavyohitajika."
+      },
+      "expiry": {
+        "title": "Kuisha kwa tokeni",
+        "text": "Kila jibu hubeba kuisha kwa tokeni: kichwa Formalie-Token-Expires na, karibu na data, meta.token_expires_at na meta.token_expires_in_days (null kwa tokeni isiyoisha kamwe). Fanya tokeni upya kabla siku haijafika."
       }
     },
     "journey": {

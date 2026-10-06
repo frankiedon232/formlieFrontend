@@ -591,7 +591,7 @@
     "FRM-API-1008": "Este endpoint não responde a este método.",
     "FRM-API-1009": "Este token não pode chamar este endpoint ou método.",
     "FRM-API-1010": "Envie um token válido como Authorization: Bearer ….",
-    "FRM-API-1011": "Falta um cabeçalho obrigatório ou o valor está errado.",
+    "FRM-API-1011": "O cabeçalho Formalie-Key falta ou não é válido. Envie um novo id único em cada chamada.",
     "FRM-API-1012": "A assinatura da solicitação está ausente, é antiga demais ou está errada.",
     "FRM-API-1013": "Não há registro com este id.",
     "FRM-API-1014": "Alguns campos não podem ser enviados para este endpoint.",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} minutos",
       "lifetime": "Duração do token de curta vida",
       "lifetimeHelp": "Por quanto tempo cada token do endereço de tokens funciona antes de o app pedir um novo.",
-      "signing": "Requisições assinadas",
-      "signingHelp": "As chamadas também precisam levar uma assinatura HMAC da requisição. Para quem precisa de proteção extra.",
-      "signingHint": "Assine cada chamada: X-Formalie-Timestamp (segundos unix) e X-Formalie-Signature (HMAC sha256= do método, caminho, carimbo de data e hora e corpo com o segredo de assinatura). Chamadas com mais de 5 minutos são recusadas.",
       "clientHint": "A resposta contém um token de acesso válido por {n} minutos; envie-o como Authorization: Bearer e peça um novo quando expirar.",
       "howToUse": "Como usar",
       "rotate": "Rotacionar",
@@ -3947,7 +3944,6 @@
         "token": "Token",
         "clientId": "ID do cliente",
         "clientSecret": "Segredo do cliente",
-        "signing": "Segredo de assinatura",
         "title": "Segredo"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "Cabeçalhos",
-      "standardTitle": "Cabeçalhos que todo chamador envia",
-      "standardDesc": "A Formalie verifica estes em toda chamada; as respostas são sempre JSON.",
-      "customTitle": "Cabeçalhos por endpoint",
-      "customDesc": "Cada endpoint, por serviço, com os cabeçalhos que as suas chamadas precisam: os próprios (definidos no passo Métodos, p. ex. um id de parceiro) e os padrão.",
-      "none": "Nenhum endpoint exige cabeçalhos extras",
-      "noneDesc": "Adicione-os na etapa Métodos de um endpoint quando um chamador precisar se identificar melhor.",
-      "requiredTitle": "Cabeçalhos obrigatórios",
-      "requiredDesc": "Chamadas sem estes cabeçalhos e valores são recusadas. Opcional, até 5.",
-      "name": "Nome do cabeçalho",
-      "value": "Valor obrigatório",
-      "keep": "{preview} (inalterado)",
-      "add": "Adicionar cabeçalho",
-      "remove": "Remover cabeçalho",
+      "standardTitle": "Os três cabeçalhos que cada chamada envia",
+      "standardDesc": "Os três em cada chamada e em cada método, nenhum é opcional. O Formalie não aceita outros cabeçalhos.",
       "when": {
-        "always": "Toda chamada",
-        "body": "POST e PUT",
-        "post": "Opcional, POST",
-        "signing": "Tokens assinados"
+        "always": "Toda chamada"
       },
-      "invalid": {
-        "required": "Preencha este campo.",
-        "pattern": "Use letras, números e hifens, começando com uma letra (2 a 64).",
-        "reserved": "A Formalie ou o HTTP define este cabeçalho por conta própria. Escolha outro nome.",
-        "chars": "Use letras, números e símbolos simples, até 200.",
-        "duplicate": "Este cabeçalho já está na lista.",
-        "fix": "Verifique os cabeçalhos obrigatórios."
-      },
-      "withOwn": "{n} endpoint com cabeçalhos próprios | {n} endpoints com cabeçalhos próprios",
-      "withoutOwn": "mais {n} sem | mais {n} sem",
-      "show": "Mostrar o valor",
-      "hide": "Ocultar o valor",
-      "ownCount": "{n} endpoint tem cabeçalhos próprios. | {n} endpoints têm cabeçalhos próprios.",
-      "noneOwn": "Nenhum endpoint tem cabeçalhos próprios ainda. Adicione um no passo Métodos de um endpoint quando os chamadores precisarem se identificar mais.",
-      "noOwn": "Sem cabeçalhos próprios.",
-      "addOwn": "Adicionar cabeçalho",
-      "collapseAll": "Recolher tudo",
-      "expandAll": "Expandir tudo",
-      "ownShort": "{n} com cabeçalhos próprios"
+      "expiryTitle": "Validade do token em cada resposta",
+      "expiryDesc": "Cada resposta diz quando expira o token que fez a chamada, para a sua app o poder renovar a tempo."
     },
     "access": {
       "rules": "Regras",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "Um id único que você cria para cada novo registro (um UUID funciona bem). Se a rede falhar e você enviar a mesma chamada de novo, o Formalie responde com o registro que já criou."
+        "text": "Um novo id único para cada chamada (um UUID funciona bem; os exemplos criam um por si). Cada chamada encontra-se com ele nos Logs de pedidos, e se a rede falhar e enviar o mesmo POST outra vez com a mesma chave, o Formalie responde com o registo que já criou."
       },
       "files": {
         "title": "Envio de arquivos",
@@ -4391,10 +4356,6 @@
         "then": "Depois coloque os ids no corpo JSON sob essa pergunta, por ex. \"cv\": [\"id\"]. Valem os mesmos tipos e tamanhos de arquivo do formulário.",
         "step1": "Envie o arquivo",
         "step2": "Envie o id dele junto com as respostas"
-      },
-      "signing": {
-        "title": "Chamadas assinadas",
-        "text": "Quando um token tem a assinatura ativada, cada chamada também leva a hora e uma assinatura HMAC-SHA256 feita com o segredo de assinatura. Chamadas com mais de cinco minutos são recusadas."
       },
       "errors": {
         "title": "Erros",
@@ -4410,10 +4371,9 @@
         "desc": "Executa todas as verificações reais com um token de teste. Nada é salvo.",
         "record": "ID do registro",
         "recordPlaceholder": "Deixe vazio para a lista",
-        "keyHelp": "Preenchida para você; uma nova após cada chamada.",
+        "keyHelp": "Preenchido por si; um novo após cada chamada.",
         "newKey": "Nova chave",
         "keepKey": "Manter esta chave (envie a mesma chamada de novo para ver a nova tentativa)",
-        "headerHelp": "Exigido por este endpoint.",
         "testOnly": "Modo de teste: as respostas parecem reais, mas nenhuma resposta é criada, alterada ou excluída.",
         "nothingYet": "Envie uma chamada para ver a resposta",
         "send": "Enviar",
@@ -4441,6 +4401,14 @@
         "POST": "Criar",
         "PUT": "Alterar",
         "DELETE": "Excluir"
+      },
+      "callHeaders": {
+        "title": "Cabeçalhos",
+        "text": "Cada chamada envia estes três cabeçalhos, seja qual for o método: Authorization com o seu token, Content-Type: application/json e uma Formalie-Key. Nenhum é opcional e não são precisos outros cabeçalhos."
+      },
+      "expiry": {
+        "title": "Validade do token",
+        "text": "Cada resposta traz a validade do token: o cabeçalho Formalie-Token-Expires e, junto aos dados, meta.token_expires_at e meta.token_expires_in_days (null para um token que nunca expira). Renove o token antes de o dia chegar."
       }
     },
     "journey": {

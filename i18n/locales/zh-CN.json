@@ -591,7 +591,7 @@
     "FRM-API-1008": "此端点不响应该方法。",
     "FRM-API-1009": "此令牌无权调用该端点或方法。",
     "FRM-API-1010": "请以 Authorization: Bearer … 发送有效令牌。",
-    "FRM-API-1011": "缺少必需的请求头，或其值不正确。",
+    "FRM-API-1011": "Formalie-Key 请求头缺失或无效。每次调用都请发送一个新的唯一 ID。",
     "FRM-API-1012": "请求签名缺失、已过期或不正确。",
     "FRM-API-1013": "没有此 ID 的记录。",
     "FRM-API-1014": "部分字段不能发送到此端点。",
@@ -3925,9 +3925,6 @@
       "minutes": "{n} 分钟",
       "lifetime": "短期令牌有效期",
       "lifetimeHelp": "从令牌地址获取的每个令牌在应用请求新令牌之前的有效时长。",
-      "signing": "签名请求",
-      "signingHelp": "调用还必须携带请求的 HMAC 签名。适用于需要额外保护的调用方。",
-      "signingHint": "为每次调用签名：X-Formalie-Timestamp（unix 秒）和 X-Formalie-Signature（使用签名密钥对方法、路径、时间戳和请求体计算的 sha256= HMAC）。超过 5 分钟的调用会被拒绝。",
       "clientHint": "响应中包含一个有效期 {n} 分钟的访问令牌；请以 Authorization: Bearer 发送，过期后再请求新的。",
       "howToUse": "使用方法",
       "rotate": "轮换",
@@ -3947,7 +3944,6 @@
         "token": "令牌",
         "clientId": "客户端 ID",
         "clientSecret": "客户端密钥",
-        "signing": "签名密钥",
         "title": "密钥"
       },
       "mode": {
@@ -4057,44 +4053,13 @@
     },
     "headers": {
       "title": "请求头",
-      "standardTitle": "每个调用方发送的请求头",
-      "standardDesc": "Formalie 会在每次调用时检查这些请求头；响应始终为 JSON。",
-      "customTitle": "各端点的请求头",
-      "customDesc": "按服务列出每个端点及其调用所需的请求头：自有请求头（在方法步骤中设置，例如合作伙伴 ID）和标准请求头。",
-      "none": "没有端点要求额外请求头",
-      "noneDesc": "当调用方需要进一步表明身份时，请在端点的“方法”步骤中添加。",
-      "requiredTitle": "必需的请求头",
-      "requiredDesc": "缺少这些请求头和值的调用会被拒绝。可选，最多 5 个。",
-      "name": "请求头名称",
-      "value": "必须具有的值",
-      "keep": "{preview}（未更改）",
-      "add": "添加请求头",
-      "remove": "移除请求头",
+      "standardTitle": "每次调用都会发送的三个请求头",
+      "standardDesc": "这三个在每次调用、每种方法中都会发送,没有可选的。Formalie 不接受其他请求头。",
       "when": {
-        "always": "每次调用",
-        "body": "POST 和 PUT",
-        "post": "可选，POST",
-        "signing": "已签名令牌"
+        "always": "每次调用"
       },
-      "invalid": {
-        "required": "请填写此项。",
-        "pattern": "使用字母、数字和连字符，以字母开头（2 到 64 个字符）。",
-        "reserved": "此请求头由 Formalie 或 HTTP 自行设置。请选择其他名称。",
-        "chars": "使用普通字母、数字和符号，最多 200 个字符。",
-        "duplicate": "此请求头已在列表中。",
-        "fix": "请检查必需的请求头。"
-      },
-      "withOwn": "{n} 个端点有自己的请求头 | {n} 个端点有自己的请求头",
-      "withoutOwn": "另有 {n} 个没有 | 另有 {n} 个没有",
-      "show": "显示值",
-      "hide": "隐藏值",
-      "ownCount": "{n} 个端点有自己的请求头。 | {n} 个端点有自己的请求头。",
-      "noneOwn": "目前没有端点有自己的请求头。当调用方需要进一步表明身份时，请在端点的方法步骤中添加。",
-      "noOwn": "没有自己的请求头。",
-      "addOwn": "添加请求头",
-      "collapseAll": "全部折叠",
-      "expandAll": "全部展开",
-      "ownShort": "{n} 个有自己的标头"
+      "expiryTitle": "每个响应都带有令牌有效期",
+      "expiryDesc": "每个响应都会说明发起调用的令牌何时到期,让你的应用能及时续期。"
     },
     "access": {
       "rules": "规则",
@@ -4383,7 +4348,7 @@
       },
       "key": {
         "title": "Formalie-Key",
-        "text": "你为每条新记录生成的唯一 ID（推荐使用 UUID）。如果网络出错，你再次发送同一调用，Formalie 会返回已创建的记录。"
+        "text": "每次调用都用一个新的唯一 ID(UUID 很合适;示例会为你生成)。每次调用都能凭它在请求日志中找到,如果网络失败后你用同一个密钥再次发送同一个 POST,Formalie 会返回它已创建的记录。"
       },
       "files": {
         "title": "发送文件",
@@ -4391,10 +4356,6 @@
         "then": "然后把这些 ID 放在 JSON 请求体中该问题之下，例如 \"cv\": [\"id\"]。允许的文件类型和大小与表单相同。",
         "step1": "上传文件",
         "step2": "将其 ID 与答案一起发送"
-      },
-      "signing": {
-        "title": "签名调用",
-        "text": "当令牌开启签名后，每次调用还会带上时间和用签名密钥生成的 HMAC-SHA256 签名。超过五分钟的调用会被拒绝。"
       },
       "errors": {
         "title": "错误",
@@ -4410,10 +4371,9 @@
         "desc": "使用测试令牌执行所有真实检查。不会保存任何内容。",
         "record": "记录 ID",
         "recordPlaceholder": "留空以获取列表",
-        "keyHelp": "已为你填写；每次调用后会生成新的。",
+        "keyHelp": "已为你填好;每次调用后换新。",
         "newKey": "新密钥",
         "keepKey": "保留此密钥（再次发送同一调用以查看重试）",
-        "headerHelp": "此端点必需。",
         "testOnly": "测试模式：响应看起来是真实的，但不会创建、修改或删除任何回复。",
         "nothingYet": "发送调用以查看响应",
         "send": "发送",
@@ -4441,6 +4401,14 @@
         "POST": "创建",
         "PUT": "修改",
         "DELETE": "删除"
+      },
+      "callHeaders": {
+        "title": "请求头",
+        "text": "无论使用哪种方法,每次调用都会发送这三个请求头:带有你的令牌的 Authorization、Content-Type: application/json,以及 Formalie-Key。没有可选的,也不需要其他请求头。"
+      },
+      "expiry": {
+        "title": "令牌有效期",
+        "text": "每个响应都带有令牌的有效期:Formalie-Token-Expires 请求头,以及数据旁的 meta.token_expires_at 和 meta.token_expires_in_days(永不过期的令牌为 null)。请在到期日之前续期令牌。"
       }
     },
     "journey": {

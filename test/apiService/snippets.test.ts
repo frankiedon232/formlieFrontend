@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { ApiEndpointDetail } from '../../shared/types/apiService'
-import { endpointCalls, fieldSchema, openApiFor, snippetFor } from '../../shared/utils/apiService/snippets'
+import { CALL_HEADERS, endpointCalls, fieldSchema, NEW_KEY, openApiFor, snippetFor } from '../../shared/utils/apiService/snippets'
 
 const f = (key: string, type: string, extra: Record<string, unknown> = {}) => ({ key, name: key, label: key, type, page: 0, form_required: false, acceptable: true, accept: true, required: false, returned: true, filterable: true, filter: false, ...extra })
 const endpoint = {
@@ -10,7 +10,7 @@ const endpoint = {
   url: 'https://api.formalie.dev/ab12cd/job-applications',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   page_size: 50,
-  headers: [{ name: 'X-Partner', preview: '••••' }],
+  headers: [],
   form: { id: 'f1', name: 'Job application', status: 'published' },
   fields: [
     f('full_name', 'short_text', { required: true }),
@@ -24,7 +24,8 @@ describe('calls', () => {
   it('give each method its address, headers and body', () => {
     const calls = Object.fromEntries(endpointCalls(endpoint).map(call => [call.method, call]))
     expect(calls.GET!.url).toBe(`${endpoint.url}?page=1&per_page=20`)
-    expect(calls.POST!.headers).toMatchObject({ 'Authorization': 'Bearer <token>', 'Formalie-Key': '<unique id>', 'X-Partner': '<X-Partner>' })
+    for (const call of Object.values(calls)) expect(call.headers).toEqual({ Authorization: 'Bearer <token>', 'Content-Type': 'application/json', 'Formalie-Key': NEW_KEY })
+    expect(Object.keys(calls.GET!.headers)).toEqual([...CALL_HEADERS])
     expect(calls.POST!.body).toEqual({ full_name: expect.any(String), position: 'designer', cv: ['FILE_ID_FROM_FILES_UPLOAD'] })
     expect(calls.PUT!.url).toBe(`${endpoint.url}/<record id>`)
     expect(calls.DELETE!.body).toBeUndefined()
@@ -32,11 +33,19 @@ describe('calls', () => {
 
   it('come out as code in every language', () => {
     const post = endpointCalls(endpoint).find(call => call.method === 'POST')!
-    expect(snippetFor('curl', post)).toContain('-H "Formalie-Key: <unique id>"')
-    expect(snippetFor('javascript', post)).toContain('method: "POST"')
-    expect(snippetFor('python', post)).toContain('requests.request(')
+    expect(snippetFor('curl', post)).toContain('-H "Formalie-Key: $(uuidgen)"')
+    expect(snippetFor('javascript', post)).toContain('"Formalie-Key": crypto.randomUUID()')
+    expect(snippetFor('python', post)).toContain('"Formalie-Key": str(uuid.uuid4())')
+    expect(snippetFor('php', post)).toContain('"Formalie-Key: " . bin2hex(random_bytes(16))')
+    expect(snippetFor('csharp', post)).toContain('"Formalie-Key", Guid.NewGuid().ToString()')
     expect(snippetFor('php', post)).toContain('"position" => "designer"')
-    expect(snippetFor('csharp', post)).toContain('HttpMethod.Post')
+    for (const language of ['curl', 'javascript', 'python', 'php', 'csharp'] as const) expect(snippetFor(language, post)).not.toContain(NEW_KEY)
+  })
+
+  it('send the three headers on a GET too', () => {
+    const get = endpointCalls(endpoint).find(call => call.method === 'GET')!
+    const curl = snippetFor('curl', get)
+    for (const name of CALL_HEADERS) expect(curl).toContain(`-H "${name}:`)
   })
 })
 
@@ -55,5 +64,7 @@ describe('OpenAPI', () => {
     expect(Object.keys(schema.properties)).toEqual(['full_name', 'position', 'cv'])
     expect(schema.required).toEqual(['full_name'])
     expect(Object.keys(doc.paths['/job-applications/{id}']!)).toEqual(['get', 'put', 'delete'])
+    const get = doc.paths['/job-applications']!.get as { parameters: { name: string; required?: boolean }[] }
+    expect(get.parameters.find(item => item.name === 'Formalie-Key')).toMatchObject({ required: true })
   })
 })

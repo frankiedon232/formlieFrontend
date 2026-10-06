@@ -114,16 +114,15 @@ const menu = computed<DropdownMenuItem[][]>(() => {
 
     <template #body>
       <AppEmpty v-if="failed && !endpoint" icon="i-lucide-cloud-alert" :title="t('dataView.errorTitle')" :actions="[{ label: t('common.retry'), color: 'neutral', variant: 'outline', onClick: () => id && load(id) }]" />
-      <div v-else-if="!endpoint" class="flex flex-col gap-4"><USkeleton class="h-9 w-full" /><div class="grid grid-cols-2 gap-2 sm:grid-cols-3"><USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" /></div></div>
+      <div v-else-if="!endpoint" class="flex flex-col gap-4">
+        <USkeleton class="h-9 w-full" />
+        <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          <USkeleton v-for="n in 6" :key="n" class="h-14 rounded-lg" />
+        </div>
+      </div>
       <template v-else>
         <AppCopyField :value="endpoint.url" :label="t('apiService.address')" monospace />
         <ApiEndpointsSetup v-if="!endpoint.setup.live || !endpoint.setup.tokens_live" :endpoint="endpoint" :busy="busy" @test="consoleOpen = true" @live="on => emit('status', endpoint!, on)" />
-        <div v-if="endpoint.headers.length" class="flex flex-col gap-1.5">
-          <span class="text-xs font-medium text-muted">{{ t('apiService.headers.requiredTitle') }}</span>
-          <div class="flex flex-wrap gap-1.5">
-            <UBadge v-for="header in endpoint.headers" :key="header.name" color="neutral" variant="outline" size="md" class="rounded-md font-mono" dir="ltr">{{ header.name }}: <span class="text-muted">{{ header.preview }}</span></UBadge>
-          </div>
-        </div>
         <div class="grid grid-cols-2 gap-2 transition-opacity sm:grid-cols-3" :class="busy ? 'opacity-60' : ''">
           <div v-for="tile in tiles" :key="tile.key" class="flex min-w-0 items-center gap-2.5 rounded-lg border border-default p-2.5">
             <span class="flex size-8 shrink-0 items-center justify-center rounded-md bg-elevated"><UIcon :name="tile.icon" class="size-4 text-muted" /></span>
@@ -152,7 +151,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
             </UButton>
           </div>
           <ApiEndpointsFields v-if="tab === 'fields'" :fields="endpoint.fields" :writes="writes" :reads="reads" />
-          <ApiEndpointsExample v-else :methods="endpoint.methods" :url="endpoint.url" :fields="endpoint.fields" :page-size="endpoint.page_size" :headers="endpoint.headers.map(header => ({ name: header.name, value: header.value || header.preview }))" :signing="!!endpoint.setup.signing_tokens" />
+          <ApiEndpointsExample v-else :methods="endpoint.methods" :url="endpoint.url" :fields="endpoint.fields" :page-size="endpoint.page_size" />
         </section>
       </template>
     </template>
