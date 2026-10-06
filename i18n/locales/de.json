@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service}-Token"
-      }
+      },
+      "signIn": "So meldet es sich an",
+      "signInHelp": "Ein Token ist entweder das eine oder das andere, nie beides. Ein Bearer-Token wird unverändert gesendet; Client-ID und Secret werden bei /token gegen ein kurzlebiges Token getauscht.",
+      "kindRequired": "Wähle, wie sich dieses Token anmeldet."
     },
     "rotate": {
       "title": "{name} rotieren",

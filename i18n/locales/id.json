@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token {service}"
-      }
+      },
+      "signIn": "Cara masuknya",
+      "signInHelp": "Sebuah token adalah salah satunya, tidak pernah keduanya. Token Bearer dikirim apa adanya; ID klien dan secret ditukar di /token dengan token berumur pendek.",
+      "kindRequired": "Pilih cara token ini masuk."
     },
     "rotate": {
       "title": "Rotasi {name}",

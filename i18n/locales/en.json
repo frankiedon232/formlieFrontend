@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} token"
-      }
+      },
+      "signIn": "How it signs in",
+      "signInHelp": "A token is one or the other, never both. A bearer token is sent as it is; a client id and secret are traded at /token for a short-lived token.",
+      "kindRequired": "Choose how this token signs in."
     },
     "rotate": {
       "title": "Rotate {name}",

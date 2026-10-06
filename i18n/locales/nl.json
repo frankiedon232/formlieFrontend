@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service}-token"
-      }
+      },
+      "signIn": "Hoe het zich aanmeldt",
+      "signInHelp": "Een token is het een of het ander, nooit beide. Een Bearer-token wordt ongewijzigd verstuurd; een client-id en geheim worden bij /token ingeruild voor een kortlevend token.",
+      "kindRequired": "Kies hoe dit token zich aanmeldt."
     },
     "rotate": {
       "title": "{name} roteren",

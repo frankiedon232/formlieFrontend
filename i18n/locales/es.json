@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token de {service}"
-      }
+      },
+      "signIn": "Cómo inicia sesión",
+      "signInHelp": "Un token es una cosa o la otra, nunca ambas. Un token Bearer se envía tal cual; un ID de cliente y secreto se cambian en /token por un token de corta duración.",
+      "kindRequired": "Elige cómo inicia sesión este token."
     },
     "rotate": {
       "title": "Rotar {name}",

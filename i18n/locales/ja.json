@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} のトークン"
-      }
+      },
+      "signIn": "サインイン方法",
+      "signInHelp": "トークンはどちらか一方で、両方にはなりません。Bearerトークンはそのまま送り、クライアントIDとシークレットは /token で短期トークンに交換します。",
+      "kindRequired": "このトークンのサインイン方法を選んでください。"
     },
     "rotate": {
       "title": "{name} をローテーション",

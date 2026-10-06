@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Tokeni ya {service}"
-      }
+      },
+      "signIn": "Jinsi unavyoingia",
+      "signInHelp": "Tokeni ni moja au nyingine, kamwe zote mbili. Tokeni ya Bearer hutumwa kama ilivyo; client id na secret hubadilishwa kwa /token kupata tokeni ya muda mfupi.",
+      "kindRequired": "Chagua jinsi tokeni hii inavyoingia."
     },
     "rotate": {
       "title": "Zungusha {name}",

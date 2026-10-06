@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Token {service}"
-      }
+      },
+      "signIn": "Cách đăng nhập",
+      "signInHelp": "Một token là cái này hoặc cái kia, không bao giờ cả hai. Bearer token được gửi nguyên trạng; client id và secret được đổi tại /token lấy một token ngắn hạn.",
+      "kindRequired": "Chọn cách token này đăng nhập."
     },
     "rotate": {
       "title": "Xoay {name}",

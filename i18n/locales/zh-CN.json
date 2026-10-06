@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} 令牌"
-      }
+      },
+      "signIn": "登录方式",
+      "signInHelp": "一个令牌只能是其中一种,不能两者兼有。Bearer 令牌原样发送;客户端 ID 和密钥在 /token 换取短期令牌。",
+      "kindRequired": "选择此令牌的登录方式。"
     },
     "rotate": {
       "title": "轮换 {name}",

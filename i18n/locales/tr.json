@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} token'ı"
-      }
+      },
+      "signIn": "Nasıl giriş yapar",
+      "signInHelp": "Bir token ya biridir ya ötekidir, asla ikisi birden değil. Bearer token olduğu gibi gönderilir; istemci kimliği ve gizli anahtar /token'da kısa ömürlü bir token ile değiştirilir.",
+      "kindRequired": "Bu token'ın nasıl giriş yapacağını seçin."
     },
     "rotate": {
       "title": "{name} yenile",

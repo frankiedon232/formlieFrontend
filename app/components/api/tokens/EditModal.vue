@@ -18,11 +18,12 @@ const api = useApi()
 const { handle } = useErrorHandler()
 const setup = useApiSetup()
 
-const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: 'static' as 'static' | 'client', services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], expiry: '365', custom: '', lifetime: 15 })
+const state = reactive({ name: '', mode: 'live' as 'live' | 'test', kind: undefined as 'static' | 'client' | undefined, services: [] as string[], endpoints: [] as string[], methods: [] as ApiMethod[], expiry: '365', custom: '', lifetime: 15 })
 const services = ref<ApiService[]>([])
 const endpoints = ref<ApiEndpoint[]>([])
 const created = ref<ApiTokenCreated | null>(null)
 const nameError = ref<string>()
+const kindError = ref<string>()
 const step = ref(0)
 // New tokens are named after what they may call until the person types a name (owner, 2026-10-06)
 const nameTouched = ref(false)
@@ -31,6 +32,7 @@ watch(open, async value => {
   if (!value) return
   created.value = null
   nameError.value = undefined
+  kindError.value = undefined
   step.value = 0
   nameTouched.value = false
   if (!props.token) void callers.load(true)
@@ -38,7 +40,8 @@ watch(open, async value => {
   Object.assign(state, {
     name: token?.name ?? '',
     mode: token?.mode ?? 'live',
-    kind: token?.kind ?? 'static',
+    // How it signs in is a choice to make, never a default (owner, 2026-10-06)
+    kind: token?.kind,
     services: [...(token?.scopes.services ?? [])],
     endpoints: [...(token?.scopes.endpoints ?? (props.presetEndpoint ? [props.presetEndpoint] : []))],
     methods: [...(token?.scopes.methods ?? [])],
@@ -92,7 +95,14 @@ function expiresAt(): string | null {
   if (state.expiry === 'custom') return state.custom ? new Date(`${state.custom}T23:59:59Z`).toISOString() : null
   return new Date(Date.now() + Number(state.expiry) * 86_400_000).toISOString()
 }
+watch(() => state.kind, kind => kind && (kindError.value = undefined))
 function toStep(target: number) {
+  if (target >= 1 && !state.kind) {
+    kindError.value = t('apiService.tokens.kindRequired')
+    step.value = 0
+    return
+  }
+  kindError.value = undefined
   if (target >= 2 && !state.name.trim()) {
     nameError.value = t('apiService.invalid.required')
     step.value = 1
@@ -116,7 +126,7 @@ async function save() {
       emit('saved', data)
       open.value = false
     } else {
-      const body: ApiTokenSaveRequest = { name: state.name.trim(), kind: state.kind, mode: state.mode, scopes, expires_at: expiresAt(), lifetime_minutes: state.kind === 'client' ? state.lifetime : null }
+      const body: ApiTokenSaveRequest = { name: state.name.trim(), kind: state.kind ?? 'static', mode: state.mode, scopes, expires_at: expiresAt(), lifetime_minutes: state.kind === 'client' ? state.lifetime : null }
       const { data } = await api.post<ApiTokenCreated>('/api-tokens', body)
       created.value = data
       step.value = 3
@@ -162,7 +172,7 @@ const nextRule = computed(() => ({ path: '/api-service/access', query: { new: '1
             <UFormField :label="t('apiService.tokens.col.mode')">
               <URadioGroup v-model="state.mode" :items="modes" variant="card" color="neutral" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-2', item: 'w-full' }" />
             </UFormField>
-            <UFormField :label="t('apiService.tokens.col.kind')">
+            <UFormField :label="t('apiService.tokens.signIn')" :help="t('apiService.tokens.signInHelp')" :error="kindError" required>
               <URadioGroup v-model="state.kind" :items="kinds" variant="card" color="neutral" :ui="{ fieldset: 'grid gap-2 sm:grid-cols-2', item: 'w-full' }" />
             </UFormField>
           </template>

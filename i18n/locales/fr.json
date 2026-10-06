@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "Jeton {service}"
-      }
+      },
+      "signIn": "Comment il se connecte",
+      "signInHelp": "Un jeton est l'un ou l'autre, jamais les deux. Un jeton Bearer est envoyé tel quel ; un ID client et un secret sont échangés sur /token contre un jeton de courte durée.",
+      "kindRequired": "Choisissez comment ce jeton se connecte."
     },
     "rotate": {
       "title": "Renouveler {name}",

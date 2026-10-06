@@ -97,7 +97,7 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 
 ### 2. Tokens
 
-1. **New token** is named after what it may call (pick one endpoint: "Account Service · /account"; one service: "Account Service token"; type your own any time). It shows four steps: kind (live or test, bearer or client id + secret) → name and what it may call (a sentence sums it up) → expiry → the token.
+1. **New token** first asks **How it signs in** (no default): _Bearer token_ or _Client id and secret_. It is named after what it may call (pick one endpoint: "Account Service · /account"; one service: "Account Service token"; type your own any time). It shows four steps: kind (live or test, bearer or client id + secret) → name and what it may call (a sentence sums it up) → expiry → the token.
 2. **See it again later:** open the token's panel → _Secret_ → **Show** → enter your password. A wrong password says how many tries are left; five wrong tries lock it for 15 minutes. The right one shows the token with Copy for 60 seconds, then it hides again. The audit trail records _API token viewed_.
 3. Tokens made before this change can't be shown again ("Rotate it to get one you can view later"); rotate them once.
 4. Rotate (old secret keeps working for the chosen grace time), Revoke (calls get `401`), Delete (only once revoked or expired).

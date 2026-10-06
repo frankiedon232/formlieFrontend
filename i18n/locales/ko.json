@@ -4025,7 +4025,10 @@
       "autoName": {
         "endpoint": "{service} · /{name}",
         "service": "{service} 토큰"
-      }
+      },
+      "signIn": "로그인 방식",
+      "signInHelp": "토큰은 둘 중 하나이며 둘 다는 아닙니다. Bearer 토큰은 그대로 보내고, 클라이언트 ID와 시크릿은 /token에서 단기 토큰으로 교환합니다.",
+      "kindRequired": "이 토큰의 로그인 방식을 선택하세요."
     },
     "rotate": {
       "title": "{name} 교체",
