@@ -4058,8 +4058,8 @@
       "title": "Header",
       "standardTitle": "Header, die jeder Aufrufer sendet",
       "standardDesc": "Formalie prüft diese bei jedem Aufruf. Antworten sind immer JSON.",
-      "customTitle": "Endpunkte mit eigenen Headern",
-      "customDesc": "Ein Endpunkt kann zusätzliche Header mit festem Wert verlangen, z. B. eine Partner-ID. Legen Sie sie im Schritt Methoden des Endpunkts fest.",
+      "customTitle": "Header pro Endpunkt",
+      "customDesc": "Jeder Endpunkt, nach Service, mit den Headern, die seine Aufrufe brauchen: eigene (im Schritt Methoden festgelegt, z. B. eine Partner-ID) und die Standard-Header.",
       "none": "Kein Endpunkt verlangt zusätzliche Header",
       "noneDesc": "Fügen Sie sie im Schritt Methoden eines Endpunkts hinzu, wenn sich ein Aufrufer weiter ausweisen muss.",
       "requiredTitle": "Erforderliche Header",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} Endpunkt mit eigenen Headern | {n} Endpunkte mit eigenen Headern",
       "withoutOwn": "{n} weitere ohne | {n} weitere ohne",
       "show": "Wert anzeigen",
-      "hide": "Wert ausblenden"
+      "hide": "Wert ausblenden",
+      "ownCount": "{n} Endpunkt hat eigene Header. | {n} Endpunkte haben eigene Header.",
+      "noneOwn": "Noch kein Endpunkt hat eigene Header. Fügen Sie im Schritt Methoden eines Endpunkts einen hinzu, wenn sich Aufrufer näher ausweisen müssen.",
+      "noOwn": "Keine eigenen Header.",
+      "addOwn": "Header hinzufügen"
     },
     "access": {
       "rules": "Regeln",

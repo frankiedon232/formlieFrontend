@@ -4058,8 +4058,8 @@
       "title": "Header'lar",
       "standardTitle": "Her çağıranın gönderdiği header'lar",
       "standardDesc": "Formalie bunları her çağrıda denetler; yanıtlar her zaman JSON'dur.",
-      "customTitle": "Kendi header'ları olan endpoint'ler",
-      "customDesc": "Bir endpoint, örn. bir iş ortağı kimliği gibi belirli değere sahip ek header'lar isteyebilir. Bunları endpoint'in Yöntemler adımında ayarlayın.",
+      "customTitle": "Uç nokta başına başlıklar",
+      "customDesc": "Hizmete göre her uç nokta ve çağrılarının ihtiyaç duyduğu başlıklar: kendi başlıkları (Yöntemler adımında ayarlanır, ör. bir ortak kimliği) ve standart başlıklar.",
       "none": "Hiçbir endpoint ek header istemiyor",
       "noneDesc": "Bir çağıranın kendini daha fazla tanıtması gerektiğinde bunları endpoint'in Yöntemler adımında ekleyin.",
       "requiredTitle": "Gerekli header'lar",
@@ -4086,7 +4086,11 @@
       "withOwn": "Kendi başlıkları olan {n} uç nokta | Kendi başlıkları olan {n} uç nokta",
       "withoutOwn": "{n} tane daha başlıksız | {n} tane daha başlıksız",
       "show": "Değeri göster",
-      "hide": "Değeri gizle"
+      "hide": "Değeri gizle",
+      "ownCount": "{n} uç noktanın kendi başlıkları var. | {n} uç noktanın kendi başlıkları var.",
+      "noneOwn": "Henüz hiçbir uç noktanın kendi başlığı yok. Çağıranların kendilerini daha fazla tanıtması gerektiğinde bir uç noktanın Yöntemler adımında ekleyin.",
+      "noOwn": "Kendi başlığı yok.",
+      "addOwn": "Başlık ekle"
     },
     "access": {
       "rules": "Kurallar",

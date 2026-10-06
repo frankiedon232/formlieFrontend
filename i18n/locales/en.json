@@ -4058,8 +4058,8 @@
       "title": "Headers",
       "standardTitle": "Headers every caller sends",
       "standardDesc": "Formalie checks these on every call; answers are always JSON.",
-      "customTitle": "Endpoints with headers of their own",
-      "customDesc": "An endpoint can require extra headers with a set value, e.g. a partner id. Set them in the endpoint's Methods step.",
+      "customTitle": "Headers per endpoint",
+      "customDesc": "Every endpoint, by service, with the headers its calls need: its own (set in its Methods step, e.g. a partner id) and the standard ones.",
       "none": "No endpoint requires extra headers",
       "noneDesc": "Add them in an endpoint's Methods step when a caller must identify itself further.",
       "requiredTitle": "Required headers",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint with its own headers | {n} endpoints with their own headers",
       "withoutOwn": "{n} more without own headers | {n} more without own headers",
       "show": "Show the value",
-      "hide": "Hide the value"
+      "hide": "Hide the value",
+      "ownCount": "{n} endpoint has headers of its own. | {n} endpoints have headers of their own.",
+      "noneOwn": "No endpoint has headers of its own yet. Add one in an endpoint's Methods step when callers must identify themselves further.",
+      "noOwn": "No headers of its own.",
+      "addOwn": "Add a header"
     },
     "access": {
       "rules": "Rules",

@@ -4058,8 +4058,8 @@
       "title": "Header",
       "standardTitle": "Header mà mọi bên gọi đều gửi",
       "standardDesc": "Formalie kiểm tra các header này ở mọi lệnh gọi; phản hồi luôn là JSON.",
-      "customTitle": "Endpoint có header riêng",
-      "customDesc": "Một endpoint có thể yêu cầu thêm header với giá trị cố định, ví dụ mã đối tác. Đặt chúng ở bước Phương thức của endpoint.",
+      "customTitle": "Header theo từng endpoint",
+      "customDesc": "Mỗi endpoint, theo dịch vụ, cùng các header mà lệnh gọi cần: header riêng (đặt ở bước Phương thức, ví dụ mã đối tác) và header tiêu chuẩn.",
       "none": "Không endpoint nào yêu cầu thêm header",
       "noneDesc": "Hãy thêm ở bước Phương thức của endpoint khi bên gọi phải xác định danh tính kỹ hơn.",
       "requiredTitle": "Header bắt buộc",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint có header riêng | {n} endpoint có header riêng",
       "withoutOwn": "{n} endpoint nữa không có | {n} endpoint nữa không có",
       "show": "Hiện giá trị",
-      "hide": "Ẩn giá trị"
+      "hide": "Ẩn giá trị",
+      "ownCount": "{n} endpoint có header riêng. | {n} endpoint có header riêng.",
+      "noneOwn": "Chưa có endpoint nào có header riêng. Hãy thêm ở bước Phương thức của endpoint khi bên gọi cần xác định danh tính thêm.",
+      "noOwn": "Không có header riêng.",
+      "addOwn": "Thêm header"
     },
     "access": {
       "rules": "Quy tắc",

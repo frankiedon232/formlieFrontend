@@ -4058,8 +4058,8 @@
       "title": "En-têtes",
       "standardTitle": "En-têtes envoyés par chaque appelant",
       "standardDesc": "Formalie les vérifie à chaque appel ; les réponses sont toujours en JSON.",
-      "customTitle": "Endpoints avec leurs propres en-têtes",
-      "customDesc": "Un endpoint peut exiger des en-têtes supplémentaires avec une valeur fixe, p. ex. un identifiant de partenaire. Définissez-les à l'étape Méthodes de l'endpoint.",
+      "customTitle": "En-têtes par endpoint",
+      "customDesc": "Chaque endpoint, par service, avec les en-têtes que ses appels exigent : les siens (définis à l'étape Méthodes, p. ex. un identifiant partenaire) et les en-têtes standard.",
       "none": "Aucun endpoint n'exige d'en-têtes supplémentaires",
       "noneDesc": "Ajoutez-en à l'étape Méthodes d'un endpoint lorsqu'un appelant doit s'identifier davantage.",
       "requiredTitle": "En-têtes obligatoires",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint avec ses propres en-têtes | {n} endpoints avec leurs propres en-têtes",
       "withoutOwn": "{n} de plus sans | {n} de plus sans",
       "show": "Afficher la valeur",
-      "hide": "Masquer la valeur"
+      "hide": "Masquer la valeur",
+      "ownCount": "{n} endpoint a ses propres en-têtes. | {n} endpoints ont leurs propres en-têtes.",
+      "noneOwn": "Aucun endpoint n'a encore ses propres en-têtes. Ajoutez-en un à l'étape Méthodes d'un endpoint quand les appelants doivent s'identifier davantage.",
+      "noOwn": "Aucun en-tête propre.",
+      "addOwn": "Ajouter un en-tête"
     },
     "access": {
       "rules": "Règles",

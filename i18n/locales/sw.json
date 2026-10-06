@@ -4058,8 +4058,8 @@
       "title": "Header",
       "standardTitle": "Header ambazo kila mwitaji hutuma",
       "standardDesc": "Formalie huzikagua kwa kila mwito; majibu ni JSON kila wakati.",
-      "customTitle": "Endpoint zenye header zake",
-      "customDesc": "Endpoint inaweza kuhitaji header za ziada zenye thamani maalum, mf. kitambulisho cha mshirika. Ziweke kwenye hatua ya Njia ya endpoint.",
+      "customTitle": "Vichwa kwa kila endpoint",
+      "customDesc": "Kila endpoint, kwa huduma, pamoja na vichwa ambavyo miito yake inahitaji: vyake vyenyewe (huwekwa katika hatua ya Mbinu, mfano kitambulisho cha mshirika) na vya kawaida.",
       "none": "Hakuna endpoint inayohitaji header za ziada",
       "noneDesc": "Ziongeze kwenye hatua ya Njia ya endpoint mwitaji anapohitaji kujitambulisha zaidi.",
       "requiredTitle": "Header zinazohitajika",
@@ -4086,7 +4086,11 @@
       "withOwn": "Endpoint {n} yenye vichwa vyake | Endpoint {n} zenye vichwa vyake",
       "withoutOwn": "{n} zaidi bila | {n} zaidi bila",
       "show": "Onyesha thamani",
-      "hide": "Ficha thamani"
+      "hide": "Ficha thamani",
+      "ownCount": "Endpoint {n} ina vichwa vyake. | Endpoint {n} zina vichwa vyake.",
+      "noneOwn": "Bado hakuna endpoint yenye vichwa vyake. Ongeza kimoja katika hatua ya Mbinu ya endpoint wakati wapigaji wanahitaji kujitambulisha zaidi.",
+      "noOwn": "Hakuna vichwa vyake.",
+      "addOwn": "Ongeza kichwa"
     },
     "access": {
       "rules": "Kanuni",

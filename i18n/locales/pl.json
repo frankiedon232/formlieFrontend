@@ -4058,8 +4058,8 @@
       "title": "Nagłówki",
       "standardTitle": "Nagłówki wysyłane przez każdego wywołującego",
       "standardDesc": "Formalie sprawdza je przy każdym wywołaniu; odpowiedzi są zawsze w formacie JSON.",
-      "customTitle": "Endpointy z własnymi nagłówkami",
-      "customDesc": "Endpoint może wymagać dodatkowych nagłówków o stałej wartości, np. identyfikatora partnera. Ustaw je w kroku Metody endpointu.",
+      "customTitle": "Nagłówki dla każdego endpointu",
+      "customDesc": "Każdy endpoint, według usługi, z nagłówkami potrzebnymi do jego wywołań: własnymi (ustawianymi w kroku Metody, np. identyfikator partnera) i standardowymi.",
       "none": "Żaden endpoint nie wymaga dodatkowych nagłówków",
       "noneDesc": "Dodaj je w kroku Metody endpointu, gdy wywołujący musi dodatkowo się zidentyfikować.",
       "requiredTitle": "Wymagane nagłówki",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint z własnymi nagłówkami | {n} endpointów z własnymi nagłówkami",
       "withoutOwn": "jeszcze {n} bez | jeszcze {n} bez",
       "show": "Pokaż wartość",
-      "hide": "Ukryj wartość"
+      "hide": "Ukryj wartość",
+      "ownCount": "{n} endpoint ma własne nagłówki. | Liczba endpointów z własnymi nagłówkami: {n}.",
+      "noneOwn": "Żaden endpoint nie ma jeszcze własnych nagłówków. Dodaj nagłówek w kroku Metody endpointu, gdy wywołujący muszą dodatkowo się identyfikować.",
+      "noOwn": "Brak własnych nagłówków.",
+      "addOwn": "Dodaj nagłówek"
     },
     "access": {
       "rules": "Reguły",

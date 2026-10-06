@@ -4058,8 +4058,8 @@
       "title": "Header",
       "standardTitle": "Header inviati da ogni chiamante",
       "standardDesc": "Formalie li controlla a ogni chiamata; le risposte sono sempre in JSON.",
-      "customTitle": "Endpoint con header propri",
-      "customDesc": "Un endpoint può richiedere header aggiuntivi con un valore fisso, ad es. un ID partner. Impostali nel passaggio Metodi dell'endpoint.",
+      "customTitle": "Header per endpoint",
+      "customDesc": "Ogni endpoint, per servizio, con gli header che le sue chiamate richiedono: i propri (impostati nel passaggio Metodi, ad es. un id partner) e quelli standard.",
       "none": "Nessun endpoint richiede header aggiuntivi",
       "noneDesc": "Aggiungili nel passaggio Metodi di un endpoint quando un chiamante deve identificarsi ulteriormente.",
       "requiredTitle": "Header obbligatori",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint con header propri | {n} endpoint con header propri",
       "withoutOwn": "altri {n} senza | altri {n} senza",
       "show": "Mostra il valore",
-      "hide": "Nascondi il valore"
+      "hide": "Nascondi il valore",
+      "ownCount": "{n} endpoint ha header propri. | {n} endpoint hanno header propri.",
+      "noneOwn": "Nessun endpoint ha ancora header propri. Aggiungine uno nel passaggio Metodi di un endpoint quando i chiamanti devono identificarsi ulteriormente.",
+      "noOwn": "Nessun header proprio.",
+      "addOwn": "Aggiungi un header"
     },
     "access": {
       "rules": "Regole",

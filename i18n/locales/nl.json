@@ -4058,8 +4058,8 @@
       "title": "Headers",
       "standardTitle": "Headers die elke aanroeper meestuurt",
       "standardDesc": "Formalie controleert deze bij elke aanroep. Antwoorden zijn altijd JSON.",
-      "customTitle": "Endpoints met eigen headers",
-      "customDesc": "Een endpoint kan extra headers met een vaste waarde vereisen, bijv. een partner-id. Stel ze in bij de stap Methoden van het endpoint.",
+      "customTitle": "Headers per endpoint",
+      "customDesc": "Elk endpoint, per service, met de headers die de aanroepen nodig hebben: eigen headers (ingesteld in de stap Methoden, bijv. een partner-id) en de standaardheaders.",
       "none": "Geen enkel endpoint vereist extra headers",
       "noneDesc": "Voeg ze toe bij de stap Methoden van een endpoint als een aanroeper zich verder moet identificeren.",
       "requiredTitle": "Vereiste headers",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint met eigen headers | {n} endpoints met eigen headers",
       "withoutOwn": "{n} meer zonder | {n} meer zonder",
       "show": "Waarde tonen",
-      "hide": "Waarde verbergen"
+      "hide": "Waarde verbergen",
+      "ownCount": "{n} endpoint heeft eigen headers. | {n} endpoints hebben eigen headers.",
+      "noneOwn": "Nog geen enkel endpoint heeft eigen headers. Voeg er een toe in de stap Methoden van een endpoint als aanroepers zich verder moeten identificeren.",
+      "noOwn": "Geen eigen headers.",
+      "addOwn": "Header toevoegen"
     },
     "access": {
       "rules": "Regels",

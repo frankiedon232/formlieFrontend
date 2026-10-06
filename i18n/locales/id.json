@@ -4058,8 +4058,8 @@
       "title": "Header",
       "standardTitle": "Header yang dikirim setiap pemanggil",
       "standardDesc": "Formalie memeriksanya di setiap panggilan; respons selalu berupa JSON.",
-      "customTitle": "Endpoint dengan header sendiri",
-      "customDesc": "Endpoint dapat mewajibkan header tambahan dengan nilai tertentu, mis. ID mitra. Atur di langkah Metode pada endpoint.",
+      "customTitle": "Header per endpoint",
+      "customDesc": "Setiap endpoint, per layanan, beserta header yang dibutuhkan panggilannya: header miliknya sendiri (diatur di langkah Metode, mis. id mitra) dan header standar.",
       "none": "Tidak ada endpoint yang mewajibkan header tambahan",
       "noneDesc": "Tambahkan di langkah Metode pada endpoint saat pemanggil harus mengidentifikasi diri lebih lanjut.",
       "requiredTitle": "Header wajib",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint dengan header sendiri | {n} endpoint dengan header sendiri",
       "withoutOwn": "{n} lagi tanpa header | {n} lagi tanpa header",
       "show": "Tampilkan nilai",
-      "hide": "Sembunyikan nilai"
+      "hide": "Sembunyikan nilai",
+      "ownCount": "{n} endpoint punya header sendiri. | {n} endpoint punya header sendiri.",
+      "noneOwn": "Belum ada endpoint yang punya header sendiri. Tambahkan di langkah Metode sebuah endpoint saat pemanggil perlu mengidentifikasi diri lebih lanjut.",
+      "noOwn": "Tidak ada header sendiri.",
+      "addOwn": "Tambah header"
     },
     "access": {
       "rules": "Aturan",

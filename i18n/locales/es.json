@@ -4058,8 +4058,8 @@
       "title": "Encabezados",
       "standardTitle": "Encabezados que envía cada llamante",
       "standardDesc": "Formalie los comprueba en cada llamada; las respuestas son siempre JSON.",
-      "customTitle": "Endpoints con encabezados propios",
-      "customDesc": "Un endpoint puede exigir encabezados adicionales con un valor fijo, p. ej. un ID de socio. Defínalos en el paso Métodos del endpoint.",
+      "customTitle": "Cabeceras por endpoint",
+      "customDesc": "Cada endpoint, por servicio, con las cabeceras que necesitan sus llamadas: las propias (definidas en su paso Métodos, p. ej. un id de socio) y las estándar.",
       "none": "Ningún endpoint exige encabezados adicionales",
       "noneDesc": "Añádalos en el paso Métodos de un endpoint cuando un llamante deba identificarse con más detalle.",
       "requiredTitle": "Encabezados obligatorios",
@@ -4086,7 +4086,11 @@
       "withOwn": "{n} endpoint con sus propios encabezados | {n} endpoints con sus propios encabezados",
       "withoutOwn": "{n} más sin ellos | {n} más sin ellos",
       "show": "Mostrar el valor",
-      "hide": "Ocultar el valor"
+      "hide": "Ocultar el valor",
+      "ownCount": "{n} endpoint tiene cabeceras propias. | {n} endpoints tienen cabeceras propias.",
+      "noneOwn": "Ningún endpoint tiene cabeceras propias todavía. Añade una en el paso Métodos de un endpoint cuando quienes llaman deban identificarse más.",
+      "noOwn": "Sin cabeceras propias.",
+      "addOwn": "Añadir cabecera"
     },
     "access": {
       "rules": "Reglas",
