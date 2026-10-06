@@ -321,7 +321,12 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     body = Object.fromEntries(Object.entries(body).filter(([name]) => keyOf.has(name)).map(([name, value]) => [keyOf.get(name)!, value]))
     const allowed: ApiMethod[] = endpoint.methods
     if (!(['GET', 'POST', 'PUT', 'DELETE'] as const).includes(method as ApiMethod) || !allowed.includes(method as ApiMethod) || (recordRef && !upload ? method === 'POST' : method === 'PUT' || method === 'DELETE')) throw new PublicError('FRM-API-1008')
-    if (!scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service_id, method: method as ApiMethod })) throw new PublicError('FRM-API-1009')
+    if (!scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service_id, method: method as ApiMethod })) {
+      // Say which part of the token's scope refused it (owner, 2026-10-06), never what else it may call
+      const { services, endpoints, methods } = token.scopes
+      const part = methods.length && !methods.includes(method as ApiMethod) ? { field: 'method', message: 'not_allowed_for_token' } : endpoints.length && !endpoints.includes(endpoint.id) ? { field: 'endpoint', message: 'not_allowed_for_token' } : { field: 'service', message: services.some(id => !apiOf(tenant).services.some(item => item.id === id)) ? 'token_service_deleted' : 'not_allowed_for_token' }
+      throw new PublicError('FRM-API-1009', [part])
+    }
     const missing = (endpoint.headers ?? []).filter(header => (getHeader(event, header.name) ?? '') !== header.value)
     if (missing.length) throw new PublicError('FRM-API-1011', missing.map(header => ({ field: header.name, message: 'missing_or_wrong' })))
     if (token.signing) checkSignature(event, token, method, `/${key}/${name}${recordRef ? `/${recordRef}` : ''}`, raw)
