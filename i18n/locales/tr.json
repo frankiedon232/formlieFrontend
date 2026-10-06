@@ -1864,7 +1864,16 @@
       "submit": "Yayınla",
       "submitAgain": "Değişiklikleri yayınla",
       "issues": "Yayınlamadan önce {count} sorunu düzeltin | Yayınlamadan önce {count} sorunu düzeltin",
-      "done": "Yayınlandı. {n}. sürüm yayında"
+      "done": "Yayınlandı. {n}. sürüm yayında",
+      "api": {
+        "title": "Bu formu kullanan API uç noktaları",
+        "text": "{n} uç nokta en son sürümü izliyor ve yayınladığınızda bunu kullanmaya başlayacak. | {n} uç nokta en son sürümü izliyor ve yayınladığınızda bunu kullanmaya başlayacak.",
+        "same": "Hiçbir soru eklenmedi, kaldırılmadı veya zorunlu yapılmadı: anahtarlar aynı kalır, böylece uygulamalar olduğu gibi çalışmaya devam eder.",
+        "added": "Yeni sorular, bundan sonra kabul edilir ve döndürülür:",
+        "required": "Artık zorunlu: bunlar olmadan yapılan API çağrıları reddedilir.",
+        "removed": "Kaldırıldı: bunları hâlâ gönderen API çağrıları reddedilir.",
+        "pin": "Uygulama geliştiricilerine zaman tanımak için önce uç noktada mevcut sürümü sabitleyin, hazır olduklarında en son sürüme geçirin."
+      }
     },
     "issue": {
       "no_inputs": "En az bir soru ekleyin",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Çeviriden sonra değişti",
       "stillRight": "Hâlâ doğru"
+    },
+    "icons": {
+      "title": "Alan simgeleri",
+      "hint": "Tüm form için her alanın kutusunun içinde bir simge.",
+      "show": "Göster",
+      "hide": "Gizle"
     }
   },
   "renderer": {

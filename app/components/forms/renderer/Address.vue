@@ -4,6 +4,9 @@ import { isLocked, type FormField } from '#shared/utils/forms/build'
 import { requiredAddressParts, type AddressPart } from '#shared/utils/forms/validate'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live'; errorParts?: string[] }>()
+/** Field icons (Form settings): each part of the address its own. */
+const shown = inject(RENDERER_ICONS, ref(true))
+const partIcon = (name: string) => (shown.value ? name : undefined)
 const value = defineModel<unknown>()
 const { t } = useI18n()
 // Size and style follow the form theme (F8); plain defaults elsewhere.
@@ -58,6 +61,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       :model-value="address.line1 ?? ''"
       :placeholder="t('renderer.address.line1')"
       autocomplete="address-line1"
+      :icon="partIcon('i-lucide-map-pin')"
       :readonly="readonly"
       class="w-full sm:col-span-2"
       @update:model-value="v => set('line1', v)"
@@ -67,6 +71,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       :model-value="address.line2 ?? ''"
       :placeholder="t('renderer.address.line2')"
       autocomplete="address-line2"
+      :icon="partIcon('i-lucide-map-pin-plus')"
       :readonly="readonly"
       class="w-full sm:col-span-2"
       @update:model-value="v => set('line2', v)"
@@ -76,6 +81,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       :model-value="address.city ?? ''"
       :placeholder="t('renderer.address.city')"
       autocomplete="address-level2"
+      :icon="partIcon('i-lucide-building')"
       :readonly="readonly"
       class="w-full"
       @update:model-value="v => set('city', v)"
@@ -85,6 +91,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       :model-value="address.region ?? ''"
       :placeholder="optional('region', t('renderer.address.region'))"
       autocomplete="address-level1"
+      :icon="partIcon('i-lucide-map')"
       :readonly="readonly"
       class="w-full"
       @update:model-value="v => set('region', v)"
@@ -94,6 +101,7 @@ const flag = (code?: string) => (code ? `i-circle-flags-${code.toLowerCase()}` :
       :model-value="address.postal_code ?? ''"
       :placeholder="optional('postal_code', t('renderer.address.postalCode'))"
       autocomplete="postal-code"
+      :icon="partIcon('i-lucide-mailbox')"
       :readonly="readonly"
       class="w-full"
       @update:model-value="v => set('postal_code', v)"

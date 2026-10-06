@@ -1864,7 +1864,16 @@
       "submit": "Terbitkan",
       "submitAgain": "Terbitkan perubahan",
       "issues": "Perbaiki {count} hal sebelum menerbitkan | Perbaiki {count} hal sebelum menerbitkan",
-      "done": "Diterbitkan: versi {n} sudah tayang"
+      "done": "Diterbitkan: versi {n} sudah tayang",
+      "api": {
+        "title": "Endpoint API yang memakai formulir ini",
+        "text": "{n} endpoint mengikuti versi terbaru dan akan memakai versi ini begitu Anda menerbitkan. | {n} endpoint mengikuti versi terbaru dan akan memakai versi ini begitu Anda menerbitkan.",
+        "same": "Tidak ada pertanyaan yang ditambah, dihapus, atau dijadikan wajib: kunci tetap sama, jadi aplikasi tetap berjalan seperti biasa.",
+        "added": "Pertanyaan baru, diterima dan dikembalikan mulai sekarang:",
+        "required": "Sekarang wajib: panggilan API tanpa pertanyaan ini akan ditolak.",
+        "removed": "Dihapus: panggilan API yang masih mengirimkannya akan ditolak.",
+        "pin": "Agar pengembang aplikasi punya waktu, sematkan versi saat ini di endpoint terlebih dahulu, lalu alihkan ke versi terbaru saat mereka siap."
+      }
     },
     "issue": {
       "no_inputs": "Tambahkan setidaknya satu pertanyaan",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Berubah setelah diterjemahkan",
       "stillRight": "Masih benar"
+    },
+    "icons": {
+      "title": "Ikon kolom",
+      "hint": "Ikon di dalam kotak setiap kolom, untuk seluruh formulir.",
+      "show": "Tampilkan",
+      "hide": "Sembunyikan"
     }
   },
   "renderer": {

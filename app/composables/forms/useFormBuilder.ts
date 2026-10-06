@@ -21,6 +21,8 @@ export function useFormBuilder() {
    * question; every other key follows its label: "First name" → first_name, a clash → first_name_2.
    */
   const publishedKeys = ref<Set<string>>(new Set())
+  /** The live version's questions (key, label, required, type): what API endpoints use until the next publish. */
+  const liveFields = ref<{ key: string; label: string; required: boolean; type: string }[]>([])
   /** A clean key for a new field: from its label, unique among the fields and every published key. */
   const newKey = (label: string, except?: string) => keyFromLabel(label, [...fields.value.filter(f => f.id !== except).map(f => f.key), ...publishedKeys.value])
   /** A field is being dragged (the canvas shows where it can land). */
@@ -339,6 +341,7 @@ export function useFormBuilder() {
     selectedFields,
     history,
     publishedKeys,
+    liveFields,
     dragging,
     load,
     findField,

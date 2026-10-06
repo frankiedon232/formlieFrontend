@@ -1864,7 +1864,16 @@
       "submit": "Opublikuj",
       "submitAgain": "Opublikuj zmiany",
       "issues": "Do poprawienia przed publikacją: {count} | Do poprawienia przed publikacją: {count}",
-      "done": "Opublikowano: wersja {n} jest aktywna"
+      "done": "Opublikowano: wersja {n} jest aktywna",
+      "api": {
+        "title": "Punkty końcowe API korzystające z tego formularza",
+        "text": "{n} punkt końcowy śledzi najnowszą wersję i zacznie używać tej zaraz po publikacji. | {n} punktów końcowych śledzi najnowszą wersję i zacznie używać tej zaraz po publikacji.",
+        "same": "Nie dodano, nie usunięto ani nie ustawiono jako wymaganego żadnego pytania: klucze pozostają bez zmian, więc aplikacje działają dalej jak dotąd.",
+        "added": "Nowe pytania, od teraz przyjmowane i zwracane:",
+        "required": "Teraz wymagane: wywołania API bez nich zostaną odrzucone.",
+        "removed": "Usunięte: wywołania API, które nadal je wysyłają, zostaną odrzucone.",
+        "pin": "Aby dać twórcom aplikacji czas, najpierw przypnij bieżącą wersję w punkcie końcowym, a gdy będą gotowi, przełącz go na najnowszą."
+      }
     },
     "issue": {
       "no_inputs": "Dodaj co najmniej jedno pytanie",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Zmienione po przetłumaczeniu",
       "stillRight": "Nadal dobrze"
+    },
+    "icons": {
+      "title": "Ikony pól",
+      "hint": "Ikona wewnątrz pola każdego pytania, dla całego formularza.",
+      "show": "Pokaż",
+      "hide": "Ukryj"
     }
   },
   "renderer": {

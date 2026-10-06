@@ -44,11 +44,12 @@ export function useBuilderSession(formId: string) {
     loading.value = true
     failed.value = null
     try {
-      const { data } = await api.get<{ form: FormSummary; schema: FormSchemaV1; published_version: number | null; published_keys?: string[] }>(
+      const { data } = await api.get<{ form: FormSummary; schema: FormSchemaV1; published_version: number | null; published_keys?: string[]; live_fields?: { key: string; label: string; required: boolean; type: string }[] }>(
         `/forms/${formId}/builder`,
       )
       apply(data.form, data.schema)
       // Keys a published version used stay fixed; the rest follow their labels (clean keys)
+      builder.liveFields.value = data.live_fields ?? []
       builder.publishedKeys.value = new Set(data.published_keys ?? (data.form.status !== 'draft' || data.published_version !== null ? allFields(data.schema).map(field => field.key) : []))
       setLabel(`/forms/${formId}`, data.form.name)
     } catch (error) {
@@ -85,6 +86,7 @@ export function useBuilderSession(formId: string) {
     if (!result) return false
     apply(result.data.form)
     builder.publishedKeys.value = new Set([...builder.publishedKeys.value, ...builder.fields.value.map(field => field.key)])
+    builder.liveFields.value = builder.fields.value.filter(field => field.key).map(field => ({ key: field.key, label: field.label ?? '', required: !!field.required, type: field.type }))
     counts.refresh(true)
     toast.add({ title: t('builder.publish.done', { n: result.data.version.number }), icon: 'i-lucide-globe', color: 'success' })
     return true

@@ -1864,7 +1864,16 @@
       "submit": "Pubblica",
       "submitAgain": "Pubblica modifiche",
       "issues": "Correggi {count} cosa prima di pubblicare | Correggi {count} cose prima di pubblicare",
-      "done": "Pubblicato: la versione {n} è online"
+      "done": "Pubblicato: la versione {n} è online",
+      "api": {
+        "title": "Endpoint API che usano questo modulo",
+        "text": "{n} endpoint segue l'ultima versione e inizierà a usare questa non appena pubblichi. | {n} endpoint seguono l'ultima versione e inizieranno a usare questa non appena pubblichi.",
+        "same": "Nessuna domanda è stata aggiunta, rimossa o resa obbligatoria: le chiavi restano uguali, quindi le app continuano a funzionare come prima.",
+        "added": "Nuove domande, accettate e restituite da ora:",
+        "required": "Ora obbligatorie: le chiamate API senza di esse verranno rifiutate.",
+        "removed": "Rimosse: le chiamate API che le inviano ancora verranno rifiutate.",
+        "pin": "Per dare tempo agli sviluppatori delle app, blocca prima la versione attuale nell'endpoint, poi passa all'ultima quando sono pronti."
+      }
     },
     "issue": {
       "no_inputs": "Aggiungi almeno una domanda",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Modificato dopo la traduzione",
       "stillRight": "Va ancora bene"
+    },
+    "icons": {
+      "title": "Icone dei campi",
+      "hint": "Un'icona dentro la casella di ogni campo, per tutto il modulo.",
+      "show": "Mostra",
+      "hide": "Nascondi"
     }
   },
   "renderer": {

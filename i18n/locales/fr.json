@@ -1864,7 +1864,16 @@
       "submit": "Publier",
       "submitAgain": "Publier les modifications",
       "issues": "Corrigez {count} point avant de publier | Corrigez {count} points avant de publier",
-      "done": "Publié : la version {n} est en ligne"
+      "done": "Publié : la version {n} est en ligne",
+      "api": {
+        "title": "Points de terminaison API utilisant ce formulaire",
+        "text": "{n} point de terminaison suit la dernière version et utilisera celle-ci dès que vous publierez. | {n} points de terminaison suivent la dernière version et utiliseront celle-ci dès que vous publierez.",
+        "same": "Aucune question n'a été ajoutée, supprimée ou rendue obligatoire : les clés restent les mêmes, les applications continuent donc de fonctionner telles quelles.",
+        "added": "Nouvelles questions, acceptées et renvoyées à partir de maintenant :",
+        "required": "Désormais obligatoires : les appels API sans elles seront refusés.",
+        "removed": "Supprimées : les appels API qui les envoient encore seront refusés.",
+        "pin": "Pour laisser du temps aux développeurs d'applications, épinglez d'abord la version actuelle dans le point de terminaison, puis passez-le à la dernière version quand ils sont prêts."
+      }
     },
     "issue": {
       "no_inputs": "Ajoutez au moins une question",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Modifié depuis la traduction",
       "stillRight": "Toujours juste"
+    },
+    "icons": {
+      "title": "Icônes des champs",
+      "hint": "Une icône dans la zone de chaque champ, pour tout le formulaire.",
+      "show": "Afficher",
+      "hide": "Masquer"
     }
   },
   "renderer": {

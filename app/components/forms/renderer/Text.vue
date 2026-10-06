@@ -48,16 +48,8 @@ const MODES: Record<string, 'email' | 'tel' | 'url' | 'decimal'> = {
   currency: 'decimal',
   percentage: 'decimal',
 }
-const ICONS: Record<string, string> = {
-  email: 'i-lucide-mail',
-  phone: 'i-lucide-phone',
-  url: 'i-lucide-link',
-  ip_address: 'i-lucide-network',
-  domain: 'i-lucide-globe-lock',
-  mac_address: 'i-lucide-cpu',
-  iban: 'i-lucide-landmark',
-  bic: 'i-lucide-building-2',
-}
+/** The box icon (Form settings → Field icons; every type its own, owner 2026-10-06). */
+const icon = useFieldIcon(() => props.field.type)
 /** Codes are written in capitals and without spell-checking (IBAN, BIC, MAC). */
 const CODE_TYPES = ['iban', 'bic', 'mac_address', 'ip_address', 'domain']
 
@@ -101,6 +93,7 @@ const disabled = computed(() => !!props.field.disabled)
     :readonly="readonly"
     :disabled="disabled"
     autoresize
+    :icon="icon"
     class="w-full"
   />
   <UInput
@@ -115,7 +108,7 @@ const disabled = computed(() => !!props.field.disabled)
     :required="field.required"
     :readonly="readonly"
     :disabled="disabled"
-    :icon="field.type === 'calculated' ? 'i-lucide-calculator' : ICONS[field.type]"
+    :icon="icon"
     :autocomplete="field.type === 'email' ? 'email' : field.type === 'phone' ? 'tel' : CODE_TYPES.includes(field.type) ? 'off' : undefined"
     :spellcheck="CODE_TYPES.includes(field.type) ? false : undefined"
     :autocapitalize="['iban', 'bic', 'mac_address'].includes(field.type) ? 'characters' : CODE_TYPES.includes(field.type) ? 'none' : undefined"

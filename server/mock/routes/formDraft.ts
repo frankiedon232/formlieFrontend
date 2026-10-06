@@ -59,6 +59,8 @@ export const getBuilder = defineMockRoute(({ event }) => {
     schema,
     published_version: form.versions?.[0]?.number ?? null,
     published_keys: publishedKeys(form, schema),
+    // The live version's questions, so Publish can say what changes for apps using its API endpoints
+    live_fields: form.published_schema ? allFields(form.published_schema).filter(field => field.key).map(field => ({ key: field.key, label: field.label ?? '', required: !!field.required, type: field.type })) : [],
   })
 })
 

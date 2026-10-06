@@ -179,3 +179,21 @@ export const NOT_ACCEPTED_TYPES: string[] = ['signature', 'calculated', 'payment
 export const FILTER_TYPES: string[] = ['short_text', 'email', 'phone', 'number', 'currency', 'percentage', 'date', 'datetime', 'dropdown', 'radio', 'multi_select', 'checkbox', 'toggle', 'consent', 'rating', 'scale', 'slider', 'country', 'language', 'hidden']
 /** Paths the API service uses itself. */
 export const RESERVED_ENDPOINT_NAMES: string[] = ['token', 'files', 'docs', 'health', 'status', 'openapi', 'webhooks']
+
+/**
+ * What publishing a new version changes for apps calling endpoints that follow the latest version
+ * (owner, 2026-10-06): questions added (accepted and returned from then on), removed (no longer
+ * accepted), and required that were not before (calls without them start failing). Label and
+ * design changes keep the keys, so they change nothing for apps.
+ */
+export function apiChanges(live: { key: string; label: string; required: boolean; type: string }[], draft: { key: string; label?: string; required?: boolean; type: string; readonly?: boolean; disabled?: boolean }[]) {
+  const counts = (field: { type: string }) => !LAYOUT_TYPES.includes(field.type) && !NOT_ACCEPTED_TYPES.includes(field.type)
+  const before = new Map(live.filter(counts).map(field => [field.key, field]))
+  const after = draft.filter(field => field.key && counts(field))
+  const keys = new Set(after.map(field => field.key))
+  return {
+    added: after.filter(field => !before.has(field.key)).map(field => ({ key: field.key, label: field.label ?? field.key, required: !!field.required })),
+    removed: [...before.values()].filter(field => !keys.has(field.key)).map(field => ({ key: field.key, label: field.label })),
+    nowRequired: after.filter(field => field.required && before.has(field.key) && !before.get(field.key)!.required && !field.readonly && !field.disabled).map(field => ({ key: field.key, label: field.label ?? field.key })),
+  }
+}

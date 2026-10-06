@@ -168,6 +168,8 @@ async function send() {
 }
 // File questions upload as soon as files are picked (public page); Next / Submit wait for them.
 const uploadsPending = ref(0)
+// Field icons for the whole form (Form settings → Field icons; default on)
+provide(RENDERER_ICONS, computed(() => props.schema.settings?.field_icons !== false))
 provide(RENDERER_UPLOADS, { upload: props.preview ? null : (props.respondent?.upload ?? null), pending: uploadsPending })
 
 function next() {

@@ -218,6 +218,7 @@ export const listApiEndpoints = defineMockRoute(({ event, query }) => {
   const filter = filtersOf(query)
   let rows = apiOf(tenant).endpoints.map(item => toEndpoint(tenant, item))
   if (filter.service) rows = rows.filter(row => listOf(filter.service).includes(row.service.id))
+  if (filter.form) rows = rows.filter(row => listOf(filter.form).includes(row.form.id))
   if (filter.status) rows = rows.filter(row => listOf(filter.status).includes(row.status))
   if (filter.method) rows = rows.filter(row => listOf(filter.method).some(method => row.methods.includes(method as ApiMethod)))
   const sort = typeof query.sort === 'string' && query.sort ? query.sort : 'name'

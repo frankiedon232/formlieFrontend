@@ -1864,7 +1864,16 @@
       "submit": "Publicar",
       "submitAgain": "Publicar cambios",
       "issues": "Corrige {count} cosa antes de publicar | Corrige {count} cosas antes de publicar",
-      "done": "Publicado: la versión {n} está activa"
+      "done": "Publicado: la versión {n} está activa",
+      "api": {
+        "title": "Endpoints de API que usan este formulario",
+        "text": "{n} endpoint sigue la última versión y empezará a usar esta en cuanto publiques. | {n} endpoints siguen la última versión y empezarán a usar esta en cuanto publiques.",
+        "same": "No se añadió, quitó ni hizo obligatoria ninguna pregunta: las claves siguen igual, así que las apps siguen funcionando como están.",
+        "added": "Preguntas nuevas, aceptadas y devueltas a partir de ahora:",
+        "required": "Ahora obligatorias: las llamadas a la API sin ellas serán rechazadas.",
+        "removed": "Eliminadas: las llamadas a la API que sigan enviándolas serán rechazadas.",
+        "pin": "Para dar tiempo a los desarrolladores de apps, fija primero la versión actual en el endpoint y cámbialo a la última cuando estén listos."
+      }
     },
     "issue": {
       "no_inputs": "Añade al menos una pregunta",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Cambiado desde la traducción",
       "stillRight": "Sigue bien"
+    },
+    "icons": {
+      "title": "Iconos de campo",
+      "hint": "Un icono dentro del cuadro de cada campo, para todo el formulario.",
+      "show": "Mostrar",
+      "hide": "Ocultar"
     }
   },
   "renderer": {

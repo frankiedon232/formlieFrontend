@@ -16,6 +16,7 @@ import {
 import type { FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
+const icon = useFieldIcon(() => props.field.type)
 const value = defineModel<unknown>()
 const { t } = useI18n()
 // Size and style follow the form theme (F8); plain defaults elsewhere.
@@ -97,7 +98,7 @@ const setRange = (next: unknown) => {
     :disabled="disabled"
     :readonly="readonly"
     :required="field.required"
-    icon="i-lucide-clock"
+    :icon="icon"
     class="w-full"
   />
 
@@ -110,7 +111,7 @@ const setRange = (next: unknown) => {
     :disabled="disabled"
     :readonly="readonly"
     :required="field.required"
-    icon="i-lucide-calendar-range"
+    :icon="icon"
     class="w-full"
     @update:model-value="setRange"
   >
@@ -148,7 +149,7 @@ const setRange = (next: unknown) => {
     :disabled="disabled"
     :readonly="readonly"
     :required="field.required"
-    :icon="withTime ? 'i-lucide-calendar-clock' : 'i-lucide-calendar'"
+    :icon="icon"
     class="w-full"
   >
     <template #trailing>

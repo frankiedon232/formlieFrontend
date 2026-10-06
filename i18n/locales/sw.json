@@ -1864,7 +1864,16 @@
       "submit": "Chapisha",
       "submitAgain": "Chapisha mabadiliko",
       "issues": "Rekebisha jambo {count} kabla ya kuchapisha | Rekebisha mambo {count} kabla ya kuchapisha",
-      "done": "Imechapishwa. Toleo {n} liko hewani"
+      "done": "Imechapishwa. Toleo {n} liko hewani",
+      "api": {
+        "title": "Endpoint za API zinazotumia fomu hii",
+        "text": "Endpoint {n} inafuata toleo jipya zaidi na itaanza kutumia hili mara tu unapochapisha. | Endpoint {n} zinafuata toleo jipya zaidi na zitaanza kutumia hili mara tu unapochapisha.",
+        "same": "Hakuna swali lililoongezwa, kuondolewa au kufanywa la lazima: funguo zinabaki zilezile, kwa hivyo programu zinaendelea kufanya kazi kama zilivyo.",
+        "added": "Maswali mapya, yanakubaliwa na kurudishwa kuanzia sasa:",
+        "required": "Sasa ni ya lazima: miito ya API bila hayo itakataliwa.",
+        "removed": "Yameondolewa: miito ya API inayoyatuma bado itakataliwa.",
+        "pin": "Ili kuwapa wasanidi wa programu muda, bandika kwanza toleo la sasa kwenye endpoint, kisha libadilishe kuwa jipya zaidi wakiwa tayari."
+      }
     },
     "issue": {
       "no_inputs": "Ongeza angalau swali moja",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Imebadilika baada ya kutafsiriwa",
       "stillRight": "Bado ni sahihi"
+    },
+    "icons": {
+      "title": "Aikoni za sehemu",
+      "hint": "Aikoni ndani ya kisanduku cha kila sehemu, kwa fomu nzima.",
+      "show": "Onyesha",
+      "hide": "Ficha"
     }
   },
   "renderer": {

@@ -1864,7 +1864,16 @@
       "submit": "Publiceren",
       "submitAgain": "Wijzigingen publiceren",
       "issues": "Los {count} punt op voor je publiceert | Los {count} punten op voor je publiceert",
-      "done": "Gepubliceerd: versie {n} is live"
+      "done": "Gepubliceerd: versie {n} is live",
+      "api": {
+        "title": "API-eindpunten die dit formulier gebruiken",
+        "text": "{n} eindpunt volgt de nieuwste versie en gaat deze gebruiken zodra je publiceert. | {n} eindpunten volgen de nieuwste versie en gaan deze gebruiken zodra je publiceert.",
+        "same": "Er is geen vraag toegevoegd, verwijderd of verplicht gemaakt: de sleutels blijven gelijk, dus apps blijven werken zoals ze zijn.",
+        "added": "Nieuwe vragen, vanaf nu geaccepteerd en teruggegeven:",
+        "required": "Nu verplicht: API-aanroepen zonder deze vragen worden geweigerd.",
+        "removed": "Verwijderd: API-aanroepen die ze nog versturen worden geweigerd.",
+        "pin": "Om app-ontwikkelaars tijd te geven, zet je eerst de huidige versie vast in het eindpunt en schakel je het daarna over naar de nieuwste als ze klaar zijn."
+      }
     },
     "issue": {
       "no_inputs": "Voeg minstens één vraag toe",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Gewijzigd na vertalen",
       "stillRight": "Klopt nog"
+    },
+    "icons": {
+      "title": "Veldpictogrammen",
+      "hint": "Een pictogram in het vak van elk veld, voor het hele formulier.",
+      "show": "Tonen",
+      "hide": "Verbergen"
     }
   },
   "renderer": {

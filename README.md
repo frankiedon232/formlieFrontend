@@ -91,7 +91,8 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 2. Open its link, its `…/embed` address and its short link in a private window: each says the form was not found (like a form that does not exist).
 3. A **draft** form: _New endpoint_ lists it under _Not ready for the API yet_ with **Publish for the API only**. One click makes it API only, publishes it and picks it.
 4. Turn the API off for a form that has an endpoint: calls answer `503 FRM-API-1007` (`form: not_for_api`) and the endpoint checklist says why.
-5. New questions get clean keys (`first_name`); a second "First name" gets `first_name_2`. After publishing, renaming a question keeps its key.
+5. Change a form that has an endpoint: rename a question (Publish says nothing changes for apps), then add a required question and Publish: the dialog lists the endpoint and says the new key is now required. After publishing, the docs show the new question.
+6. New questions get clean keys (`first_name`); a second "First name" gets `first_name_2`. After publishing, renaming a question keeps its key.
 
 ### 2. Tokens
 

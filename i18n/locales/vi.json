@@ -1864,7 +1864,16 @@
       "submit": "Xuất bản",
       "submitAgain": "Xuất bản thay đổi",
       "issues": "Hãy sửa {count} vấn đề trước khi xuất bản | Hãy sửa {count} vấn đề trước khi xuất bản",
-      "done": "Đã xuất bản. Phiên bản {n} đang hoạt động"
+      "done": "Đã xuất bản. Phiên bản {n} đang hoạt động",
+      "api": {
+        "title": "Các endpoint API đang dùng biểu mẫu này",
+        "text": "{n} endpoint theo dõi phiên bản mới nhất và sẽ bắt đầu dùng phiên bản này ngay khi bạn xuất bản. | {n} endpoint theo dõi phiên bản mới nhất và sẽ bắt đầu dùng phiên bản này ngay khi bạn xuất bản.",
+        "same": "Không có câu hỏi nào được thêm, xóa hoặc đặt bắt buộc: các khóa giữ nguyên, nên ứng dụng vẫn hoạt động như cũ.",
+        "added": "Câu hỏi mới, được chấp nhận và trả về từ bây giờ:",
+        "required": "Nay bắt buộc: các lệnh gọi API thiếu chúng sẽ bị từ chối.",
+        "removed": "Đã xóa: các lệnh gọi API vẫn gửi chúng sẽ bị từ chối.",
+        "pin": "Để nhà phát triển ứng dụng có thời gian, hãy ghim phiên bản hiện tại trong endpoint trước, rồi chuyển sang phiên bản mới nhất khi họ sẵn sàng."
+      }
     },
     "issue": {
       "no_inputs": "Thêm ít nhất một câu hỏi",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Đã đổi sau khi dịch",
       "stillRight": "Vẫn đúng"
+    },
+    "icons": {
+      "title": "Biểu tượng trường",
+      "hint": "Một biểu tượng trong ô của mỗi trường, cho cả biểu mẫu.",
+      "show": "Hiện",
+      "hide": "Ẩn"
     }
   },
   "renderer": {

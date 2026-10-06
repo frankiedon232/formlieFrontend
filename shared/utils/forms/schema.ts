@@ -57,6 +57,8 @@ export const formSchemaV1 = z.object({
       title: text(200).optional(),
       /** Where labels sit, for the whole form: above the field (default) or beside it. */
       label_position: z.enum(['top', 'left']).optional(),
+      /** An icon inside every field's box (its type's icon), for the whole form; default on (owner, 2026-10-06). */
+      field_icons: z.boolean().optional(),
       /** Telling respondents apart (F10, shared/utils/forms/identity.ts): their own email, an ID, verification. */
       identity: z
         .object({ email: text(64).nullable(), verify: z.boolean() })

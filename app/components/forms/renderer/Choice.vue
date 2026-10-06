@@ -23,6 +23,7 @@ const on = computed({
   get: () => value.value === true,
   set: next => (value.value = next),
 })
+const icon = useFieldIcon(() => props.field.type)
 // Read-only and disabled both block changes here (Nuxt UI choice controls have no read-only state).
 const disabled = computed(() => isLocked(props.field))
 </script>
@@ -36,6 +37,7 @@ const disabled = computed(() => isLocked(props.field))
     :items="items"
     value-key="value"
     :placeholder="field.placeholder || t('renderer.choose')"
+    :icon="icon"
     :disabled="disabled"
     class="w-full"
   />
@@ -48,6 +50,7 @@ const disabled = computed(() => isLocked(props.field))
     value-key="value"
     multiple
     :placeholder="field.placeholder || t('renderer.chooseMany')"
+    :icon="icon"
     :disabled="disabled"
     class="w-full"
   />

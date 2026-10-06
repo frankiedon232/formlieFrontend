@@ -4,18 +4,33 @@
   version stays live.
 -->
 <script setup lang="ts">
+import type { ApiEndpoint } from '#shared/types/apiService'
+import { apiChanges } from '#shared/utils/apiService/endpoints'
 import { publishIssues } from '#shared/utils/forms/build'
 
-const props = defineProps<{ busy: boolean; republish: boolean }>()
+const props = defineProps<{ busy: boolean; republish: boolean; formId?: string }>()
 const open = defineModel<boolean>('open', { default: false })
 const emit = defineEmits<{ publish: [summary: string | null] }>()
 const { t } = useI18n()
 const builder = useBuilder()
 
 const summary = ref('')
-watch(open, value => {
-  if (value) summary.value = ''
+// API endpoints that follow this form's latest version: what this publish changes for their callers (owner, 2026-10-06)
+const api = useApi()
+const following = ref<ApiEndpoint[]>([])
+watch(open, async value => {
+  if (!value) return
+  summary.value = ''
+  following.value = []
+  if (!props.republish || !props.formId) return
+  try {
+    following.value = (await api.list<ApiEndpoint>('/api-endpoints', { 'filter[form]': props.formId, page_size: 100 }, { background: true })).data.filter(item => item.version === null)
+  } catch {
+    following.value = []
+  }
 })
+const changes = computed(() => apiChanges(builder.liveFields.value, builder.fields.value))
+const changed = computed(() => changes.value.added.length + changes.value.removed.length + changes.value.nowRequired.length > 0)
 const issues = computed(() => (builder.schema.value ? publishIssues(builder.schema.value) : []))
 const labelOf = (id: string | null) => {
   const field = id ? builder.findField(id)?.field : null
@@ -80,6 +95,7 @@ function goTo(id: string | null) {
           :placeholder="t('builder.publish.summaryPlaceholder')"
         />
       </UFormField>
+      <FormsBuilderPublishApi v-if="following.length && !issues.length" :endpoints="following" :changes="changes" :changed="changed" class="mt-4" />
     </template>
     <template #footer>
       <div class="flex w-full flex-col-reverse gap-2 sm:flex-row sm:justify-end">

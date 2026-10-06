@@ -1864,7 +1864,16 @@
       "submit": "Veröffentlichen",
       "submitAgain": "Änderungen veröffentlichen",
       "issues": "Vor dem Veröffentlichen {count} Punkt beheben | Vor dem Veröffentlichen {count} Punkte beheben",
-      "done": "Veröffentlicht. Version {n} ist live"
+      "done": "Veröffentlicht. Version {n} ist live",
+      "api": {
+        "title": "API-Endpunkte, die dieses Formular nutzen",
+        "text": "{n} Endpunkt folgt der neuesten Version und nutzt diese, sobald Sie veröffentlichen. | {n} Endpunkte folgen der neuesten Version und nutzen diese, sobald Sie veröffentlichen.",
+        "same": "Keine Frage wurde hinzugefügt, entfernt oder zur Pflicht gemacht: Die Schlüssel bleiben gleich, Apps funktionieren also unverändert weiter.",
+        "added": "Neue Fragen, ab jetzt akzeptiert und zurückgegeben:",
+        "required": "Jetzt Pflicht: API-Aufrufe ohne sie werden abgelehnt.",
+        "removed": "Entfernt: API-Aufrufe, die sie weiterhin senden, werden abgelehnt.",
+        "pin": "Damit App-Entwickler Zeit haben, fixieren Sie zuerst die aktuelle Version im Endpunkt und stellen ihn dann auf die neueste um, wenn sie bereit sind."
+      }
     },
     "issue": {
       "no_inputs": "Fügen Sie mindestens eine Frage hinzu",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Seit der Übersetzung geändert",
       "stillRight": "Passt noch"
+    },
+    "icons": {
+      "title": "Feldsymbole",
+      "hint": "Ein Symbol im Feld jeder Frage, für das ganze Formular.",
+      "show": "Anzeigen",
+      "hide": "Ausblenden"
     }
   },
   "renderer": {

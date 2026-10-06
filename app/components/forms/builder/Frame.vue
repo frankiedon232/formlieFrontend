@@ -180,7 +180,7 @@ defineShortcuts({
       </Teleport>
     </template>
 
-    <LazyFormsBuilderPublishModal v-if="publishUsed" v-model:open="publishOpen" :busy="s.publishing.value" :republish="form?.status === 'published'" @publish="publish" />
+    <LazyFormsBuilderPublishModal v-if="publishUsed" v-model:open="publishOpen" :busy="s.publishing.value" :republish="form?.status === 'published'" :form-id="s.formId" @publish="publish" />
     <LazyFormsBuilderPreviewModal v-if="previewUsed" v-model:open="previewOpen" :form-name="form?.name" />
   </AppPanel>
 </template>

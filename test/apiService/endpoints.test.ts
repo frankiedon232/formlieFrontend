@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { checkEndpointName, endpointFieldsOf, endpointNameFrom, exampleRecord, exampleRequestBody, notAcceptedReason } from '../../shared/utils/apiService/endpoints'
+import { apiChanges, checkEndpointName, endpointFieldsOf, endpointNameFrom, exampleRecord, exampleRequestBody, notAcceptedReason } from '../../shared/utils/apiService/endpoints'
 import type { FormSchemaV1 } from '../../shared/utils/forms/schema'
 
 const field = (key: string, type: string, extra: Record<string, unknown> = {}) => ({ id: `f_${key}`, key, type, label: key.replace(/_/g, ' '), ...extra })
@@ -76,5 +76,28 @@ describe('examples', () => {
     const record = exampleRecord(fields)
     expect(Object.keys(record.data)).toEqual(['full_name', 'cv', 'total', 'reference', 'topic'])
     expect(record).toMatchObject({ status: 'new' })
+  })
+})
+
+describe('what a new version changes for apps', () => {
+  it('lists added, removed and newly required questions; labels alone change nothing', () => {
+    const live = [
+      { key: 'first_name', label: 'First name', required: true, type: 'short_text' },
+      { key: 'email', label: 'Email', required: false, type: 'email' },
+      { key: 'notes', label: 'Notes', required: false, type: 'long_text' },
+      { key: 'intro', label: 'Intro', required: false, type: 'paragraph' },
+    ]
+    const draft = [
+      { key: 'first_name', label: 'Given name', required: true, type: 'short_text' },
+      { key: 'email', label: 'Email', required: true, type: 'email' },
+      { key: 'phone', label: 'Phone', required: true, type: 'phone' },
+      { key: 'total', label: 'Total', required: false, type: 'calculated' },
+    ]
+    expect(apiChanges(live, draft)).toEqual({
+      added: [{ key: 'phone', label: 'Phone', required: true }],
+      removed: [{ key: 'notes', label: 'Notes' }],
+      nowRequired: [{ key: 'email', label: 'Email' }],
+    })
+    expect(apiChanges(live.slice(0, 2), live.slice(0, 2).map(field => ({ ...field, label: `${field.label}!` })))).toEqual({ added: [], removed: [], nowRequired: [] })
   })
 })

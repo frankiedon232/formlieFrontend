@@ -195,3 +195,7 @@ Edit this file whenever a decision changes.
 **Trying designs freely (owner 2026-10-06).** Picking a theme, a starting point or a page design applies it at once; a toast says what was applied and offers Undo (the designer already keeps every change as an undo step), instead of asking first.
 
 **Ready-to-copy examples (owner 2026-10-06).** The docs' code samples, Try it and the OpenAPI file carry the endpoint's required headers with their values, so a copied call runs as it is. The values reach the portal only for admins (the panel still shows them masked).
+
+**Field icons (owner 2026-10-06).** Every field with a box shows its type's icon (the same as the builder palette, a few clearer inside a box; the address shows one per part; currency keeps its symbol and country its flag), so no form mixes boxes with and without icons. Form settings → Field icons turns them on or off for the whole form, like label position (`settings.field_icons`, default on).
+
+**Forms change, endpoints follow (owner 2026-10-06).** An endpoint follows the form's latest published version unless it is pinned to one. Edits in the builder reach the API only when published. Label and design changes keep the question keys, so apps keep working. New questions are accepted and returned at once, newly required and removed ones can break existing callers, so Publish names the endpoints that follow the form and exactly which keys change, and suggests pinning the current version first to give app developers time.

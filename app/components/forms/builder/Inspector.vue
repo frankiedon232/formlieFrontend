@@ -30,6 +30,15 @@ function setLabelPosition(value: string | number) {
   builder.history.record()
   schema.value.settings = { ...schema.value.settings, label_position: value === 'left' ? 'left' : 'top' }
 }
+const iconItems = computed(() => [
+  { value: 'show', label: t('builder.icons.show') },
+  { value: 'hide', label: t('builder.icons.hide') },
+])
+function setIcons(value: string | number) {
+  if (!schema.value) return
+  builder.history.record()
+  schema.value.settings = { ...schema.value.settings, field_icons: value !== 'hide' }
+}
 function setSetting(key: 'progress_bar' | 'save_resume', value: boolean) {
   if (!schema.value) return
   builder.history.record()
@@ -156,6 +165,22 @@ function setThankYou(key: 'title' | 'message', value: string) {
               class="w-full"
               :aria-label="t('builder.labels.title')"
               @update:model-value="setLabelPosition"
+            />
+          </UFormField>
+        </section>
+        <section class="flex flex-col gap-3">
+          <h3 class="text-xs font-medium text-muted uppercase">{{ t('builder.icons.title') }}</h3>
+          <UFormField :description="t('builder.icons.hint')">
+            <UTabs
+              :model-value="schema.settings?.field_icons === false ? 'hide' : 'show'"
+              :items="iconItems"
+              :content="false"
+              color="neutral"
+              size="xs"
+              :ui="{ ...SEGMENTED_UI, trigger: `${SEGMENTED_UI.trigger} flex-1 px-1.5` }"
+              class="w-full"
+              :aria-label="t('builder.icons.title')"
+              @update:model-value="setIcons"
             />
           </UFormField>
         </section>

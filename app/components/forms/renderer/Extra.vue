@@ -7,6 +7,7 @@
 import { isLocked, type FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
+const icon = useFieldIcon(() => props.field.type)
 const value = defineModel<unknown>()
 const { t, locale } = useI18n()
 const control = useControlStyle()
@@ -40,9 +41,9 @@ const safeHref = computed(() => (typeof p.value.link_href === 'string' && /^http
   <!-- Full name -->
   <div v-if="field.type === 'full_name'" :id="id" class="grid gap-2" :class="p.show_title ? '@sm:grid-cols-[6rem_minmax(0,1fr)_minmax(0,1fr)]' : '@sm:grid-cols-2'">
     <UInput v-if="p.show_title" v-bind="control" :model-value="String(obj.title ?? '')" :placeholder="t('renderer.name.title')" autocomplete="honorific-prefix" :disabled="locked" class="w-full" @update:model-value="v => setPart('title', v)" />
-    <UInput v-bind="control" :model-value="String(obj.first ?? '')" :placeholder="t('renderer.name.first')" autocomplete="given-name" :disabled="locked" class="w-full" @update:model-value="v => setPart('first', v)" />
-    <UInput v-if="p.show_middle" v-bind="control" :model-value="String(obj.middle ?? '')" :placeholder="t('renderer.name.middle')" autocomplete="additional-name" :disabled="locked" class="w-full" @update:model-value="v => setPart('middle', v)" />
-    <UInput v-bind="control" :model-value="String(obj.last ?? '')" :placeholder="t('renderer.name.last')" autocomplete="family-name" :disabled="locked" class="w-full" @update:model-value="v => setPart('last', v)" />
+    <UInput v-bind="control" :model-value="String(obj.first ?? '')" :placeholder="t('renderer.name.first')" :icon="icon" autocomplete="given-name" :disabled="locked" class="w-full" @update:model-value="v => setPart('first', v)" />
+    <UInput v-if="p.show_middle" v-bind="control" :model-value="String(obj.middle ?? '')" :placeholder="t('renderer.name.middle')" :icon="icon" autocomplete="additional-name" :disabled="locked" class="w-full" @update:model-value="v => setPart('middle', v)" />
+    <UInput v-bind="control" :model-value="String(obj.last ?? '')" :placeholder="t('renderer.name.last')" :icon="icon" autocomplete="family-name" :disabled="locked" class="w-full" @update:model-value="v => setPart('last', v)" />
   </div>
 
   <!-- Consent -->
@@ -77,6 +78,7 @@ const safeHref = computed(() => (typeof p.value.link_href === 'string' && /^http
       type="number"
       inputmode="numeric"
       :model-value="obj.hours == null ? '' : String(obj.hours)"
+      :icon="icon"
       min="0"
       max="9999"
       :disabled="locked"
@@ -90,6 +92,7 @@ const safeHref = computed(() => (typeof p.value.link_href === 'string' && /^http
       type="number"
       inputmode="numeric"
       :model-value="obj.minutes == null ? '' : String(obj.minutes)"
+      :icon="icon"
       min="0"
       max="59"
       :disabled="locked"
@@ -110,7 +113,7 @@ const safeHref = computed(() => (typeof p.value.link_href === 'string' && /^http
     value-key="value"
     :placeholder="field.placeholder || t(`renderer.pick.${field.type}`)"
     :search-input="{ placeholder: t('common.search') }"
-    :icon="field.type === 'language' ? 'i-lucide-languages' : field.type === 'timezone' ? 'i-lucide-clock-4' : 'i-lucide-coins'"
+    :icon="icon"
     :disabled="locked"
     virtualize
     class="w-full"

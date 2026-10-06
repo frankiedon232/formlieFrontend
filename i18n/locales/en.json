@@ -1872,7 +1872,16 @@
       "submit": "Publish",
       "submitAgain": "Publish changes",
       "issues": "Fix {count} thing before publishing | Fix {count} things before publishing",
-      "done": "Published. Version {n} is live"
+      "done": "Published. Version {n} is live",
+      "api": {
+        "title": "API endpoints using this form",
+        "text": "{n} endpoint follows the latest version and starts using this one as soon as you publish. | {n} endpoints follow the latest version and start using this one as soon as you publish.",
+        "same": "No question was added, removed or made required: keys stay the same, so apps keep working as they are.",
+        "added": "New questions, accepted and returned from now on:",
+        "required": "Now required: API calls without them will be refused.",
+        "removed": "Removed: API calls that still send them will be refused.",
+        "pin": "To give app developers time, pin the current version in the endpoint first, then switch it to the latest when they are ready."
+      }
     },
     "issue": {
       "no_inputs": "Add at least one question",
@@ -2223,6 +2232,12 @@
       },
       "changed": "Changed since translated",
       "stillRight": "Still right"
+    },
+    "icons": {
+      "title": "Field icons",
+      "hint": "An icon inside every field's box, for the whole form.",
+      "show": "Show",
+      "hide": "Hide"
     }
   },
   "renderer": {

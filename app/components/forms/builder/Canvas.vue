@@ -17,6 +17,8 @@ const builder = useBuilder()
 const { page, pages, pageId, selected } = builder
 
 const labelPosition = computed(() => builder.schema.value?.settings?.label_position ?? 'top')
+// Field icons (Form settings), shown on the canvas as respondents will see them
+provide(RENDERER_ICONS, computed(() => builder.schema.value?.settings?.field_icons !== false))
 const labelWidth = computed(() => labelColumnWidth(builder.fields.value))
 // Drop placeholder labels (CSS `content` needs a quoted string).
 const dropNewRow = computed(() => JSON.stringify(`↓ ${t('builder.drop.newRow')}`))
