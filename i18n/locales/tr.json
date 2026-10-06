@@ -3823,10 +3823,14 @@
       "request": "İstek",
       "answer": "Yanıt",
       "note": "Değerler örnektir. Gerçekten çağırmak için bir token gerekir.",
-      "tokenUsed": "Gösterilen token:",
       "tokenWhere": "(maskeli). Tam token'ı görmek ve kopyalamak için Token'lar ve Header'lar bölümünde açın.",
       "noToken": "Henüz hiçbir token bunu çağıramıyor.",
-      "makeToken": "Token oluştur"
+      "makeToken": "Token oluştur",
+      "signsBearer": "Bearer token ile giriş yapar:",
+      "signsClient": "İstemci kimliği ve gizli anahtar ile giriş yapar:",
+      "whereClient": "Önce /token'dan kısa ömürlü bir token alın (adım 1), sonra Bearer olarak gönderin. Gizli anahtar Token'lar ve Header'lar bölümünde.",
+      "step1": "1 · Kısa ömürlü token alın",
+      "step2": "2 · Sonra çağrı"
     },
     "invalid": {
       "required": "Bunu doldurun.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Adres",
       "baseUrlHint": "Kuruluşunuzun her endpoint adresi bu adresle başlar. Adresin ardına endpoint adını ekleyin.",
       "auth": {
-        "title": "Jetonla oturum açma",
-        "text": "Her çağrıyla birlikte Kimlik doğrulama bölümündeki bir jetonu Authorization: Bearer olarak gönderin. İstemci jetonları önce client id ve gizli anahtarlarıyla kısa ömürlü bir erişim jetonu alır, aşağıdaki gibi."
+        "title": "Giriş: iki yol, asla ikisi birden değil",
+        "text": "Her token, oluşturulurken seçilen iki yoldan biriyle giriş yapar (Token'lar ve Header'lar hangisi olduğunu gösterir). Size verilen token'ın yolunu kullanın.",
+        "static": "Token'ın kendisini her çağrıda Authorization: Bearer olarak gönderin. Başka bir şey gerekmez.",
+        "client": "İstemci kimliğini ve gizli anahtarı /token'a gönderin. Kısa ömürlü bir token alırsınız (expires_in saniye): çağrılarınızda Authorization: Bearer olarak gönderin, süresi dolunca yenisini alın.",
+        "never": "İki yolu asla karıştırmayın",
+        "neverText": "Bearer olarak gönderilen istemci kimliği veya gizli anahtar ya da /token'a gönderilen bir bearer token, 401 FRM-API-1010 ile reddedilir ve yanıt hangi yolun kullanılacağını söyler.",
+        "yours": "Endpoint'leriniz nasıl giriş yapar",
+        "both": "İkisi de çalışır: token'ınızda hangisi varsa onu kullanın."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "API başvurusu",
       "heroText": "Bir uygulamanın bu hizmetin yanıtlarını göndermesi ve okuması için gereken her şey: adres, oturum açma yöntemi ve örnekleriyle her uç nokta.",
       "liveCount": "{n} canlı",
-      "bearer": "Bearer belirteci",
       "tryFirst": "Şimdi deneyin",
       "notLiveNote": "Henüz canlı değil: test belirteçleri çağırabilir (Dene bir tane kullanır), açılana kadar canlı çağrılar reddedilir.",
       "oneHint": "Yalnızca bir kaydı okumak için adrese kayıt kimliğini ekleyin, örn. /job-applications/rsp_9fK2mQ7xLp.",

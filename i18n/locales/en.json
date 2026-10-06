@@ -3823,10 +3823,14 @@
       "request": "Request",
       "answer": "Answer",
       "note": "Values are made up. Callers need a token to call it for real.",
-      "tokenUsed": "Token shown:",
       "tokenWhere": "(masked). Open it in Tokens & headers to see and copy the full token.",
       "noToken": "No token can call this yet.",
-      "makeToken": "Make a token"
+      "makeToken": "Make a token",
+      "signsBearer": "Signs in with a bearer token:",
+      "signsClient": "Signs in with a client id and secret:",
+      "whereClient": "Get a short-lived token at /token first (step 1), then send it as Bearer. The secret is in Tokens & headers.",
+      "step1": "1 · Get a short-lived token",
+      "step2": "2 · Then the call"
     },
     "invalid": {
       "required": "Fill this in.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Address",
       "baseUrlHint": "Every endpoint of your organisation starts with this address. Add the endpoint name after it.",
       "auth": {
-        "title": "Sign in with a token",
-        "text": "Send a token from Authentication as Authorization: Bearer with every call. Client tokens first get a short-lived access token with their client id and secret, as below."
+        "title": "Sign in: two ways, never both",
+        "text": "Every token signs in one of two ways, chosen when it is made (Tokens & headers shows which). Use the way of the token you were given.",
+        "static": "Send the token itself with every call as Authorization: Bearer. Nothing else to do.",
+        "client": "Post the client id and secret to /token. You get a short-lived token (expires_in seconds): send that as Authorization: Bearer with your calls, and get a new one when it runs out.",
+        "never": "Never mix the two ways",
+        "neverText": "A client id or secret sent as Bearer, or a bearer token sent to /token, is refused with 401 FRM-API-1010, and the answer says which way to use.",
+        "yours": "How your endpoints sign in",
+        "both": "Either way works: use the one your token has."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "API reference",
       "heroText": "Everything an app needs to send and read this service's responses: the address, how to sign in, and every endpoint with examples.",
       "liveCount": "{n} live",
-      "bearer": "Bearer token",
       "tryFirst": "Try it now",
       "notLiveNote": "Not live yet: test tokens can call it (Try it uses one), live calls are refused until it is switched on.",
       "oneHint": "Add a record id to the address to read just that one, e.g. /job-applications/rsp_9fK2mQ7xLp.",

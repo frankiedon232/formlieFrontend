@@ -3823,10 +3823,14 @@
       "request": "요청",
       "answer": "응답",
       "note": "값은 예시입니다. 실제로 호출하려면 토큰이 필요합니다.",
-      "tokenUsed": "표시된 토큰:",
       "tokenWhere": "(마스킹됨). 토큰 및 헤더에서 열어 전체 토큰을 보고 복사하세요.",
       "noToken": "아직 이것을 호출할 수 있는 토큰이 없습니다.",
-      "makeToken": "토큰 만들기"
+      "makeToken": "토큰 만들기",
+      "signsBearer": "Bearer 토큰으로 로그인합니다:",
+      "signsClient": "클라이언트 ID와 시크릿으로 로그인합니다:",
+      "whereClient": "먼저 /token에서 단기 토큰을 받고(단계 1), Bearer로 보내세요. 시크릿은 토큰 및 헤더에 있습니다.",
+      "step1": "1 · 단기 토큰 받기",
+      "step2": "2 · 그다음 호출"
     },
     "invalid": {
       "required": "입력해 주세요.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "주소",
       "baseUrlHint": "조직의 모든 엔드포인트는 이 주소로 시작합니다. 그 뒤에 엔드포인트 이름을 붙이세요.",
       "auth": {
-        "title": "토큰으로 로그인",
-        "text": "모든 호출에 인증의 토큰을 Authorization: Bearer로 보내세요. 클라이언트 토큰은 먼저 client id와 시크릿으로 수명이 짧은 액세스 토큰을 받습니다. 아래를 참고하세요."
+        "title": "로그인: 두 가지 방법, 함께 쓰지 않기",
+        "text": "모든 토큰은 만들 때 정한 두 가지 방법 중 하나로 로그인합니다(토큰 및 헤더에서 확인). 받은 토큰의 방법을 사용하세요.",
+        "static": "모든 호출에 토큰 자체를 Authorization: Bearer로 보내세요. 그게 전부입니다.",
+        "client": "클라이언트 ID와 시크릿을 /token에 보내세요. 단기 토큰(expires_in 초)을 받으면 호출마다 Authorization: Bearer로 보내고, 만료되면 새로 받으세요.",
+        "never": "두 방법을 섞지 마세요",
+        "neverText": "클라이언트 ID나 시크릿을 Bearer로 보내거나 Bearer 토큰을 /token에 보내면 401 FRM-API-1010으로 거부되고, 응답에 사용할 방법이 안내됩니다.",
+        "yours": "엔드포인트의 로그인 방식",
+        "both": "둘 다 가능합니다: 토큰이 가진 방법을 사용하세요."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "API 레퍼런스",
       "heroText": "앱이 이 서비스의 응답을 보내고 읽는 데 필요한 모든 것: 주소, 로그인 방법, 예제가 포함된 모든 엔드포인트.",
       "liveCount": "{n}개 라이브",
-      "bearer": "Bearer 토큰",
       "tryFirst": "지금 사용해 보기",
       "notLiveNote": "아직 라이브가 아닙니다: 테스트 토큰으로 호출할 수 있고(사용해 보기도 하나를 사용합니다), 켤 때까지 라이브 호출은 거부됩니다.",
       "oneHint": "주소에 레코드 ID를 붙이면 해당 레코드만 읽습니다. 예: /job-applications/rsp_9fK2mQ7xLp.",

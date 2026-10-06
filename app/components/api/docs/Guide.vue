@@ -8,15 +8,12 @@
 <script setup lang="ts">
 import type { ApiEndpointDetail } from '#shared/types/apiService'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
-import type { SnippetCall } from '#shared/utils/apiService/snippets'
 
-const props = defineProps<{ base: string; endpoint: ApiEndpointDetail | null }>()
+const props = defineProps<{ base: string; endpoint: ApiEndpointDetail | null; endpoints?: ApiEndpointDetail[] }>()
 const { t } = useI18n()
 
 const fileField = computed(() => props.endpoint?.fields.find(field => field.accept && (field.type === 'file_upload' || field.type === 'image_upload')) ?? null)
-const tokenCall = computed<SnippetCall>(() => ({ method: 'POST', url: `${props.base}/token`, headers: { 'Content-Type': 'application/json' }, body: { client_id: '<client id>', client_secret: '<client secret>' } }))
 const topics = computed(() => [
-  { id: 'guide-auth', icon: 'i-lucide-key-round', key: 'auth', code: null as string | null },
   { id: 'guide-headers', icon: 'i-lucide-list-checks', key: 'callHeaders', code: '# Every call\nAuthorization: Bearer <token>\nContent-Type: application/json\n\n# POST also (required)\nFormalie-Key: 6f1c2a90-3d4b-4e8f-9a17-0c5d2b7e8f41' },
   { id: 'guide-key', icon: 'i-lucide-fingerprint', key: 'key', code: '# A new id for every POST (16 to 100 characters; a UUID)\nFormalie-Key: 6f1c2a90-3d4b-4e8f-9a17-0c5d2b7e8f41\n\n# The same POST sent again with the same key\n# answers with the first record, never a second one' },
   { id: 'guide-files', icon: 'i-lucide-paperclip', key: 'files', code: `# 1 · ${t('apiService.docs.files.step1')}\ncurl -X POST "${props.endpoint?.url ?? `${props.base}/<endpoint>`}/files?field=${fileField.value?.name ?? '<API name>'}" \\\n  -H "Authorization: Bearer <token>" \\\n  -H "Formalie-Key: $(uuidgen)" \\\n  -F "file=@cv.pdf"\n\n# → { "data": { "id": "f_9Qm…", "name": "cv.pdf", … } }\n\n# 2 · ${t('apiService.docs.files.step2')}\n{ "${fileField.value?.name ?? 'cv'}": ["f_9Qm…"] }` },
@@ -37,6 +34,8 @@ const dot = (status: number) => (status === 429 ? 'bg-warning' : status === 401 
       <AppCopyField :value="base" monospace />
     </section>
 
+    <ApiDocsAuth :base="base" :endpoints="endpoints ?? (endpoint ? [endpoint] : [])" />
+
     <section v-for="topic in topics" :id="topic.id" :key="topic.id" data-docs-section class="scroll-mt-4 grid overflow-hidden rounded-xl border border-default lg:grid-cols-2">
       <div class="flex min-w-0 flex-col gap-3 p-4 sm:p-5">
         <div class="flex items-center gap-2">
@@ -49,8 +48,7 @@ const dot = (status: number) => (status === 429 ? 'bg-warning' : status === 401 
         <p v-if="topic.key === 'files'" class="text-sm text-muted">{{ t('apiService.docs.files.then') }}</p>
       </div>
       <div class="flex min-w-0 flex-col justify-center gap-2 border-t border-default bg-neutral-950 p-4 sm:p-5 lg:border-s lg:border-t-0">
-        <ApiDocsSnippets v-if="topic.key === 'auth'" :call="tokenCall" dark />
-        <pre v-else class="overflow-auto rounded-lg bg-neutral-900 p-3 font-mono text-xs leading-relaxed text-neutral-100" dir="ltr">{{ topic.code }}</pre>
+        <pre class="overflow-auto rounded-lg bg-neutral-900 p-3 font-mono text-xs leading-relaxed text-neutral-100" dir="ltr">{{ topic.code }}</pre>
       </div>
     </section>
 

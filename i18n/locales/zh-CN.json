@@ -3823,10 +3823,14 @@
       "request": "请求",
       "answer": "响应",
       "note": "这些值是虚构的。实际调用需要令牌。",
-      "tokenUsed": "显示的令牌:",
       "tokenWhere": "(已遮盖)。在“令牌和请求头”中打开,即可查看并复制完整令牌。",
       "noToken": "目前还没有令牌可以调用它。",
-      "makeToken": "创建令牌"
+      "makeToken": "创建令牌",
+      "signsBearer": "使用 Bearer 令牌登录:",
+      "signsClient": "使用客户端 ID 和密钥登录:",
+      "whereClient": "先在 /token 获取一个短期令牌(步骤 1),再把它作为 Bearer 发送。密钥在“令牌和请求头”中。",
+      "step1": "1 · 获取短期令牌",
+      "step2": "2 · 然后调用"
     },
     "invalid": {
       "required": "请填写此项。",
@@ -4361,8 +4365,14 @@
       "baseUrl": "地址",
       "baseUrlHint": "你所在组织的每个端点都以此地址开头。在其后加上端点名称。",
       "auth": {
-        "title": "使用令牌登录",
-        "text": "每次调用都以 Authorization: Bearer 形式发送来自“身份验证”的令牌。客户端令牌先用其 client id 和密钥换取短期访问令牌，如下所示。"
+        "title": "登录:两种方式,不要同时用",
+        "text": "每个令牌在创建时选定两种登录方式之一(“令牌和请求头”会显示是哪一种)。请使用你拿到的令牌对应的方式。",
+        "static": "每次调用都把令牌本身作为 Authorization: Bearer 发送,无需其他操作。",
+        "client": "把客户端 ID 和密钥 POST 到 /token。你会得到一个短期令牌(expires_in 秒):调用时把它作为 Authorization: Bearer 发送,过期后再获取新的。",
+        "never": "不要混用两种方式",
+        "neverText": "把客户端 ID 或密钥当作 Bearer 发送,或把 bearer 令牌发送到 /token,都会被拒绝,返回 401 FRM-API-1010,响应会说明应使用哪种方式。",
+        "yours": "你的端点如何登录",
+        "both": "两种都可以:使用你的令牌所具备的方式。"
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "API 参考",
       "heroText": "应用发送和读取此服务回复所需的一切：地址、登录方式，以及带示例的每个端点。",
       "liveCount": "{n} 个已上线",
-      "bearer": "Bearer 令牌",
       "tryFirst": "立即试用",
       "notLiveNote": "尚未上线：测试令牌可以调用（试一试会使用一个），在开启之前，正式调用会被拒绝。",
       "oneHint": "在地址后加上记录 ID，即可只读取该记录，例如 /job-applications/rsp_9fK2mQ7xLp。",

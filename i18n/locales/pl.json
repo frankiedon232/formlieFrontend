@@ -3823,10 +3823,14 @@
       "request": "Żądanie",
       "answer": "Odpowiedź",
       "note": "Wartości są przykładowe. Do prawdziwego wywołania potrzebny jest token.",
-      "tokenUsed": "Pokazany token:",
       "tokenWhere": "(zamaskowany). Otwórz go w Tokeny i nagłówki, aby zobaczyć i skopiować pełny token.",
       "noToken": "Żaden token nie może jeszcze tego wywołać.",
-      "makeToken": "Utwórz token"
+      "makeToken": "Utwórz token",
+      "signsBearer": "Loguje się tokenem Bearer:",
+      "signsClient": "Loguje się ID klienta i sekretem:",
+      "whereClient": "Najpierw pobierz krótkotrwały token z /token (krok 1), potem wyślij go jako Bearer. Sekret jest w Tokeny i nagłówki.",
+      "step1": "1 · Pobierz krótkotrwały token",
+      "step2": "2 · Potem wywołanie"
     },
     "invalid": {
       "required": "Uzupełnij to pole.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Adres",
       "baseUrlHint": "Każdy endpoint Twojej organizacji zaczyna się od tego adresu. Dodaj po nim nazwę endpointu.",
       "auth": {
-        "title": "Logowanie tokenem",
-        "text": "Wysyłaj z każdym wywołaniem token z sekcji Uwierzytelnianie jako Authorization: Bearer. Tokeny klienta najpierw otrzymują krótkotrwały token dostępu za pomocą client id i sekretu, jak poniżej."
+        "title": "Logowanie: dwa sposoby, nigdy oba",
+        "text": "Każdy token loguje się jednym z dwóch sposobów, wybranym przy tworzeniu (Tokeny i nagłówki pokazuje którym). Użyj sposobu tokenu, który dostałeś.",
+        "static": "Wysyłaj sam token w każdym wywołaniu jako Authorization: Bearer. Nic więcej.",
+        "client": "Wyślij ID klienta i sekret do /token. Dostaniesz krótkotrwały token (expires_in sekund): wysyłaj go jako Authorization: Bearer w wywołaniach i pobierz nowy, gdy wygaśnie.",
+        "never": "Nigdy nie mieszaj obu sposobów",
+        "neverText": "ID klienta lub sekret wysłany jako Bearer albo token Bearer wysłany do /token jest odrzucany z 401 FRM-API-1010, a odpowiedź podaje, którego sposobu użyć.",
+        "yours": "Jak logują się Twoje endpointy",
+        "both": "Działa każdy: użyj tego, który ma Twój token."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "Dokumentacja API",
       "heroText": "Wszystko, czego aplikacja potrzebuje, by wysyłać i odczytywać odpowiedzi tej usługi: adres, sposób logowania i każdy endpoint z przykładami.",
       "liveCount": "{n} aktywnych",
-      "bearer": "Token Bearer",
       "tryFirst": "Wypróbuj teraz",
       "notLiveNote": "Jeszcze nieaktywny: tokeny testowe mogą go wywołać (Wypróbuj używa jednego), wywołania produkcyjne są odrzucane do czasu włączenia.",
       "oneHint": "Dodaj identyfikator rekordu do adresu, aby odczytać tylko ten rekord, np. /job-applications/rsp_9fK2mQ7xLp.",

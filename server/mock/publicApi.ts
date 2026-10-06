@@ -124,7 +124,11 @@ const matches = (token: StoredApiToken, secret: string) => {
 
 /** POST /{apiKey}/token: client credentials → a short-lived bearer token. */
 function issueAccessToken(event: H3Event, tenant: MockTenant, body: Record<string, unknown>) {
-  const token = apiOf(tenant).tokens.find(item => item.kind === 'client' && item.client_id === body.client_id)
+  const tokens = apiOf(tenant).tokens
+  const token = tokens.find(item => item.kind === 'client' && item.client_id === body.client_id)
+  // Two ways to sign in, never both (owner, 2026-10-06): a bearer token sent here says so
+  const sent = [body.client_secret, body.client_id, /^Bearer\s+(\S+)$/i.exec(getHeader(event, 'authorization') ?? '')?.[1]].filter((value): value is string => typeof value === 'string' && !!value)
+  if (!token && sent.some(value => tokens.some(item => item.kind === 'static' && matches(item, value)))) throw new PublicError('FRM-API-1010', [{ field: 'token', message: 'bearer_token: send it as Authorization: Bearer with each call, not to /token' }])
   if (!token || typeof body.client_secret !== 'string' || !matches(token, body.client_secret) || !live(token)) throw new PublicError('FRM-API-1010')
   const access = `${tokenPrefix('access', token.mode)}${crypto.randomUUID().replace(/-/g, '')}`
   const seconds = (token.lifetime_minutes ?? 15) * 60
@@ -142,6 +146,8 @@ function callerToken(event: H3Event, tenant: MockTenant): StoredApiToken {
   const short = accessTokens.get(bearer)
   const valid = short && short.tenant === tenant.id && short.expires > Date.now()
   const token = short ? (valid ? (short.token === CONSOLE ? consoleToken() : tokens.find(item => item.id === short.token)) : undefined) : tokens.find(item => item.kind === 'static' && matches(item, bearer))
+  // Two ways to sign in, never both (owner, 2026-10-06): a client id or secret sent as Bearer says so
+  if (!token && tokens.some(item => item.kind === 'client' && (item.client_id === bearer || matches(item, bearer)))) throw new PublicError('FRM-API-1010', [{ field: 'Authorization', message: 'client_credentials: post the client id and secret to /token first, then send that short-lived token as Bearer' }])
   if (!token || !live(token)) throw new PublicError('FRM-API-1010')
   return token
 }

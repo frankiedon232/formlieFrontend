@@ -40,7 +40,15 @@ const example = computed(() => {
 const callers = useCallerToken()
 if (props.endpoint) void callers.load(true)
 const token = computed(() => (props.endpoint && callers.tokens.value ? callers.pick(props.endpoint, method.value) : null))
-const headers = computed(() => [`Authorization: Bearer ${token.value?.preview ?? '<token>'}`, 'Content-Type: application/json', ...(method.value === 'POST' ? [`Formalie-Key: ${NEW_KEY}`] : [])].join('\n'))
+// A client id and secret first get a short-lived token at /token (owner, 2026-10-06: two ways, never both)
+const ACCESS = '<short-lived token from /token>'
+const tokenStep = computed(() => {
+  if (token.value?.kind !== 'client') return null
+  const body = json({ client_id: token.value.client_id, client_secret: '<client secret>' })
+  const answer = `{ "access_token": "…", "token_type": "Bearer", "expires_in": ${(token.value.lifetime_minutes ?? 15) * 60} }`
+  return `POST ${props.url.replace(/\/[^/]+$/, '')}/token\nContent-Type: application/json\n\n${body}\n\n→ ${answer}`
+})
+const headers = computed(() => [`Authorization: Bearer ${token.value?.kind === 'client' ? ACCESS : (token.value?.preview ?? '<token>')}`, 'Content-Type: application/json', ...(method.value === 'POST' ? [`Formalie-Key: ${NEW_KEY}`] : [])].join('\n'))
 function copyText(text: string) {
   void copy(text)
   toast.add({ title: t('common.copied'), color: 'success', icon: 'i-lucide-check' })
@@ -52,28 +60,23 @@ function copyText(text: string) {
     <UTabs v-if="methods.length > 1" v-model="method" :items="tabs" :content="false" color="neutral" size="xs" :ui="{ ...SEGMENTED_UI, label: 'font-mono' }" :aria-label="t('apiService.call.method')" />
     <AppEmpty v-if="!methods.length" size="xs" icon="i-lucide-route-off" :title="t('apiService.noMethods')" />
     <template v-else>
+      <div v-if="tokenStep" class="flex flex-col gap-1.5">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs font-medium text-muted">{{ t('apiService.call.step1') }}</span>
+          <UButton icon="i-lucide-copy" color="neutral" variant="ghost" size="xs" square :aria-label="t('common.copy')" @click="copyText(tokenStep)" />
+        </div>
+        <pre class="overflow-x-auto rounded-lg border border-default bg-elevated/50 p-3 font-mono text-xs leading-relaxed text-muted" dir="ltr">{{ tokenStep }}</pre>
+      </div>
       <div class="flex flex-col gap-1.5">
         <div class="flex items-center justify-between gap-2">
-          <span class="text-xs font-medium text-muted">{{ t('apiService.call.request') }}</span>
+          <span class="text-xs font-medium text-muted">{{ tokenStep ? t('apiService.call.step2') : t('apiService.call.request') }}</span>
           <UButton icon="i-lucide-copy" color="neutral" variant="ghost" size="xs" square :aria-label="t('common.copy')" @click="copyText(`${example.line}\n${headers}${example.body ? `\n\n${example.body}` : ''}`)" />
         </div>
         <pre class="overflow-x-auto rounded-lg border border-default bg-elevated/50 p-3 font-mono text-xs leading-relaxed text-highlighted" dir="ltr"><span class="font-semibold">{{ example.line }}</span>
 <span class="text-muted">{{ headers }}</span><template v-if="example.body">
 
 {{ example.body }}</template></pre>
-        <p v-if="endpoint && callers.tokens.value" class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted">
-          <UIcon name="i-lucide-key-round" class="size-3.5 shrink-0" />
-          <template v-if="token">
-            {{ t('apiService.call.tokenUsed') }}
-            <ULink :to="{ path: '/api-service/auth', query: { token: token.id } }" class="font-medium text-highlighted underline-offset-2 hover:underline">{{ token.name }}</ULink>
-            <UBadge :label="t(`apiService.tokens.mode.${token.mode}`)" color="neutral" variant="outline" size="xs" class="rounded-md" />
-            <span>{{ t('apiService.call.tokenWhere') }}</span>
-          </template>
-          <template v-else>
-            {{ t('apiService.call.noToken') }}
-            <ULink :to="{ path: '/api-service/auth', query: { new: '1', endpoint: endpoint.id } }" class="font-medium text-highlighted underline-offset-2 hover:underline">{{ t('apiService.call.makeToken') }}</ULink>
-          </template>
-        </p>
+        <ApiCallToken v-if="endpoint && callers.tokens.value" :token="token" :endpoint-id="endpoint.id" />
       </div>
       <div class="flex flex-col gap-1.5">
         <div class="flex items-center justify-between gap-2">

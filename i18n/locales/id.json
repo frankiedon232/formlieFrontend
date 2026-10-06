@@ -3823,10 +3823,14 @@
       "request": "Permintaan",
       "answer": "Jawaban",
       "note": "Nilainya hanya contoh. Pemanggil memerlukan token untuk memanggilnya sungguhan.",
-      "tokenUsed": "Token yang ditampilkan:",
       "tokenWhere": "(disamarkan). Buka di Token dan Header untuk melihat dan menyalin token lengkap.",
       "noToken": "Belum ada token yang bisa memanggil ini.",
-      "makeToken": "Buat token"
+      "makeToken": "Buat token",
+      "signsBearer": "Masuk dengan token Bearer:",
+      "signsClient": "Masuk dengan ID klien dan secret:",
+      "whereClient": "Ambil dulu token berumur pendek di /token (langkah 1), lalu kirim sebagai Bearer. Secret ada di Token dan Header.",
+      "step1": "1 · Ambil token berumur pendek",
+      "step2": "2 · Lalu panggilannya"
     },
     "invalid": {
       "required": "Isi bagian ini.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Alamat",
       "baseUrlHint": "Setiap endpoint organisasi Anda diawali dengan alamat ini. Tambahkan nama endpoint setelahnya.",
       "auth": {
-        "title": "Masuk dengan token",
-        "text": "Kirim token dari Autentikasi sebagai Authorization: Bearer pada setiap panggilan. Token klien lebih dulu mendapat token akses berumur pendek dengan client id dan rahasianya, seperti di bawah."
+        "title": "Masuk: dua cara, jangan keduanya",
+        "text": "Setiap token masuk dengan salah satu dari dua cara, dipilih saat dibuat (Token dan Header menunjukkan yang mana). Pakai cara dari token yang kamu terima.",
+        "static": "Kirim token itu sendiri di setiap panggilan sebagai Authorization: Bearer. Tidak ada lagi.",
+        "client": "Kirim ID klien dan secret ke /token. Kamu mendapat token berumur pendek (expires_in detik): kirim sebagai Authorization: Bearer bersama panggilanmu, dan ambil yang baru saat habis.",
+        "never": "Jangan campur kedua cara",
+        "neverText": "ID klien atau secret yang dikirim sebagai Bearer, atau token bearer yang dikirim ke /token, ditolak dengan 401 FRM-API-1010, dan jawabannya menyebutkan cara yang harus dipakai.",
+        "yours": "Cara endpoint-mu masuk",
+        "both": "Keduanya bisa: pakai yang dimiliki tokenmu."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "Referensi API",
       "heroText": "Semua yang dibutuhkan aplikasi untuk mengirim dan membaca respons layanan ini: alamat, cara masuk, dan setiap endpoint beserta contohnya.",
       "liveCount": "{n} aktif",
-      "bearer": "Token Bearer",
       "tryFirst": "Coba sekarang",
       "notLiveNote": "Belum aktif: token uji dapat memanggilnya (Coba memakai satu), panggilan live ditolak sampai diaktifkan.",
       "oneHint": "Tambahkan id catatan ke alamat untuk membaca satu catatan saja, mis. /job-applications/rsp_9fK2mQ7xLp.",

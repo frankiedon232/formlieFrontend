@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import type { ApiEndpointDetail } from '#shared/types/apiService'
 import { exampleRecord } from '#shared/utils/apiService/endpoints'
-import { CALL_HEADERS, endpointCalls, fieldSchema } from '#shared/utils/apiService/snippets'
+import { CALL_HEADERS, endpointCalls, fieldSchema, type SnippetCall } from '#shared/utils/apiService/snippets'
 import type { ApiMethod } from '#shared/utils/urls/public'
 
 /** Every answer carries the token's expiry (the expiry tracker, owner 2026-10-06). */
@@ -21,7 +21,10 @@ const { t } = useI18n()
 const callers = useCallerToken()
 void callers.load()
 const token = computed(() => (callers.tokens.value ? callers.pick(props.endpoint, props.method) : null))
-const call = computed(() => endpointCalls(props.endpoint, token.value?.preview).find(item => item.method === props.method)!)
+// A client id and secret sign in at /token first, then send that short-lived token (two ways, never both)
+const client = computed(() => token.value?.kind === 'client')
+const tokenCall = computed<SnippetCall | null>(() => (client.value ? { method: 'POST', url: `${props.endpoint.url.replace(/\/[^/]+$/, '')}/token`, headers: { 'Content-Type': 'application/json' }, body: { client_id: token.value!.client_id, client_secret: '<client secret>' } } : null))
+const call = computed(() => endpointCalls(props.endpoint, client.value ? '<short-lived token from /token>' : token.value?.preview).find(item => item.method === props.method)!)
 const writes = computed(() => props.method === 'POST' || props.method === 'PUT')
 const accepted = computed(() => props.endpoint.fields.filter(field => field.accept))
 const filters = computed(() => props.endpoint.fields.filter(field => field.filter))
@@ -111,19 +114,13 @@ watch(() => props.method, () => (shownAnswer.value = 0))
       </div>
 
       <div class="flex min-w-0 flex-col gap-3 border-t border-default bg-neutral-950 p-4 text-neutral-100 sm:p-5 lg:border-s lg:border-t-0">
+        <template v-if="tokenCall">
+          <span class="text-[11px] font-semibold tracking-wide text-neutral-400 uppercase">{{ t('apiService.call.step1') }}</span>
+          <ApiDocsSnippets :call="tokenCall" dark />
+          <span class="text-[11px] font-semibold tracking-wide text-neutral-400 uppercase">{{ t('apiService.call.step2') }}</span>
+        </template>
         <ApiDocsSnippets :call="call" dark />
-        <p v-if="callers.tokens.value" class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-neutral-400">
-          <UIcon name="i-lucide-key-round" class="size-3.5 shrink-0" />
-          <template v-if="token">
-            {{ t('apiService.call.tokenUsed') }}
-            <ULink :to="{ path: '/api-service/auth', query: { token: token.id } }" class="font-medium text-neutral-100 underline-offset-2 hover:underline">{{ token.name }}</ULink>
-            <span>{{ t('apiService.call.tokenWhere') }}</span>
-          </template>
-          <template v-else>
-            {{ t('apiService.call.noToken') }}
-            <ULink :to="{ path: '/api-service/auth', query: { new: '1', endpoint: endpoint.id } }" class="font-medium text-neutral-100 underline-offset-2 hover:underline">{{ t('apiService.call.makeToken') }}</ULink>
-          </template>
-        </p>
+        <ApiCallToken v-if="callers.tokens.value" :token="token" :endpoint-id="endpoint.id" dark />
         <div class="flex flex-col gap-2">
           <div class="flex flex-wrap items-center gap-1">
             <span class="me-2 text-[11px] font-semibold tracking-wide text-neutral-400 uppercase">{{ t('apiService.call.answer') }}</span>

@@ -3823,10 +3823,14 @@
       "request": "Richiesta",
       "answer": "Risposta",
       "note": "I valori sono inventati. Per chiamarlo davvero serve un token.",
-      "tokenUsed": "Token mostrato:",
       "tokenWhere": "(mascherato). Aprilo in Token e Header per vedere e copiare il token completo.",
       "noToken": "Nessun token può ancora chiamare questo.",
-      "makeToken": "Crea un token"
+      "makeToken": "Crea un token",
+      "signsBearer": "Accede con un token Bearer:",
+      "signsClient": "Accede con ID client e segreto:",
+      "whereClient": "Prendi prima un token di breve durata su /token (passo 1), poi invialo come Bearer. Il segreto è in Token e Header.",
+      "step1": "1 · Prendi un token di breve durata",
+      "step2": "2 · Poi la chiamata"
     },
     "invalid": {
       "required": "Compila questo campo.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Indirizzo",
       "baseUrlHint": "Ogni endpoint della tua organizzazione inizia con questo indirizzo. Aggiungi dopo di esso il nome dell'endpoint.",
       "auth": {
-        "title": "Accedi con un token",
-        "text": "Invia con ogni chiamata un token da Autenticazione come Authorization: Bearer. I token client ottengono prima un token di accesso di breve durata con il loro client id e il segreto, come sotto."
+        "title": "Accesso: due modi, mai entrambi",
+        "text": "Ogni token accede in uno di due modi, scelto alla creazione (Token e Header mostra quale). Usa il modo del token che ti è stato dato.",
+        "static": "Invia il token stesso a ogni chiamata come Authorization: Bearer. Nient'altro.",
+        "client": "Invia ID client e segreto a /token. Ricevi un token di breve durata (expires_in secondi): invialo come Authorization: Bearer con le tue chiamate e prendine uno nuovo quando scade.",
+        "never": "Non mescolare mai i due modi",
+        "neverText": "Un ID client o un segreto inviato come Bearer, o un token Bearer inviato a /token, viene rifiutato con 401 FRM-API-1010, e la risposta indica quale modo usare.",
+        "yours": "Come accedono i tuoi endpoint",
+        "both": "Vanno bene entrambi: usa quello del tuo token."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "Riferimento API",
       "heroText": "Tutto ciò che serve a un'app per inviare e leggere le risposte di questo servizio: l'indirizzo, come accedere e ogni endpoint con esempi.",
       "liveCount": "{n} attivi",
-      "bearer": "Token Bearer",
       "tryFirst": "Provalo ora",
       "notLiveNote": "Non ancora attivo: i token di test possono chiamarlo (Prova ne usa uno), le chiamate live vengono rifiutate finché non viene attivato.",
       "oneHint": "Aggiungi un id di record all'indirizzo per leggere solo quello, ad es. /job-applications/rsp_9fK2mQ7xLp.",

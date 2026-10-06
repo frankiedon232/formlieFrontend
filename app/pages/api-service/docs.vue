@@ -21,6 +21,14 @@ const router = useRouter()
 
 const services = ref<ApiService[]>([])
 const endpoints = ref<ApiEndpointDetail[]>([])
+// How this service's endpoints sign in, from the tokens that may call them (owner, 2026-10-06: two ways, never both)
+const callers = useCallerToken()
+void callers.load(true)
+const signIn = computed(() => {
+  const kinds = endpoints.value.map(endpoint => callers.kindsFor(endpoint, endpoint.methods))
+  const found = (['static', 'client'] as const).filter(kind => kinds.some(item => item[kind].length))
+  return found.length ? found : (['static'] as const)
+})
 const loading = ref(true)
 const loadingEndpoints = ref(false)
 const failed = ref(false)
@@ -152,7 +160,7 @@ function tryIt(endpoint: ApiEndpointDetail, method?: ApiMethod) {
               <UBadge :label="t('apiService.endpointsCount', { n: endpoints.length }, endpoints.length)" icon="i-lucide-route" color="neutral" variant="outline" class="rounded-full" />
               <UBadge :label="t('apiService.docs.liveCount', { n: live })" icon="i-lucide-rocket" color="neutral" variant="outline" class="rounded-full" />
               <UBadge label="HTTPS · JSON" icon="i-lucide-braces" color="neutral" variant="outline" class="rounded-full" />
-              <UBadge :label="t('apiService.docs.bearer')" icon="i-lucide-key-round" color="neutral" variant="outline" class="rounded-full" />
+              <UBadge v-for="kind in signIn" :key="kind" :label="t(`apiService.tokens.kind.${kind}`)" :icon="kind === 'client' ? 'i-lucide-key-square' : 'i-lucide-key-round'" color="neutral" variant="outline" class="rounded-full" />
             </div>
             <AppCopyField :value="base" monospace class="max-w-2xl" />
             <div class="flex flex-wrap gap-2">
@@ -172,7 +180,7 @@ function tryIt(endpoint: ApiEndpointDetail, method?: ApiMethod) {
         <!-- Getting started -->
         <div class="flex flex-col gap-4">
           <h2 class="text-lg font-semibold text-highlighted">{{ t('apiService.docs.gettingStarted') }}</h2>
-          <ApiDocsGuide :base="base" :endpoint="endpoints[0] ?? null" />
+          <ApiDocsGuide :base="base" :endpoint="endpoints[0] ?? null" :endpoints="endpoints" />
         </div>
 
         <!-- Every endpoint -->

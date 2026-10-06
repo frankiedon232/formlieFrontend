@@ -3823,10 +3823,14 @@
       "request": "Yêu cầu",
       "answer": "Phản hồi",
       "note": "Các giá trị chỉ là ví dụ. Cần có token để gọi thật.",
-      "tokenUsed": "Token đang hiển thị:",
       "tokenWhere": "(đã ẩn). Mở nó trong Token và Header để xem và sao chép token đầy đủ.",
       "noToken": "Chưa có token nào gọi được mục này.",
-      "makeToken": "Tạo token"
+      "makeToken": "Tạo token",
+      "signsBearer": "Đăng nhập bằng Bearer token:",
+      "signsClient": "Đăng nhập bằng client id và secret:",
+      "whereClient": "Trước tiên lấy một token ngắn hạn tại /token (bước 1), rồi gửi nó dưới dạng Bearer. Secret nằm trong Token và Header.",
+      "step1": "1 · Lấy token ngắn hạn",
+      "step2": "2 · Rồi gọi"
     },
     "invalid": {
       "required": "Hãy điền mục này.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Địa chỉ",
       "baseUrlHint": "Mọi endpoint của tổ chức bạn đều bắt đầu bằng địa chỉ này. Thêm tên endpoint vào sau nó.",
       "auth": {
-        "title": "Đăng nhập bằng token",
-        "text": "Gửi token từ mục Xác thực dưới dạng Authorization: Bearer với mỗi lệnh gọi. Token máy khách trước tiên nhận một token truy cập ngắn hạn bằng client id và mã bí mật của chúng, như bên dưới."
+        "title": "Đăng nhập: hai cách, không bao giờ cả hai",
+        "text": "Mỗi token đăng nhập theo một trong hai cách, chọn khi tạo (Token và Header cho biết cách nào). Hãy dùng cách của token bạn được cấp.",
+        "static": "Gửi chính token trong mọi lệnh gọi dưới dạng Authorization: Bearer. Không cần gì thêm.",
+        "client": "Gửi client id và secret tới /token. Bạn nhận một token ngắn hạn (expires_in giây): gửi nó dưới dạng Authorization: Bearer trong các lệnh gọi, và lấy token mới khi hết hạn.",
+        "never": "Đừng bao giờ trộn hai cách",
+        "neverText": "Client id hoặc secret gửi dưới dạng Bearer, hay bearer token gửi tới /token, đều bị từ chối với 401 FRM-API-1010, và phản hồi cho biết nên dùng cách nào.",
+        "yours": "Cách các endpoint của bạn đăng nhập",
+        "both": "Cách nào cũng được: dùng cách mà token của bạn có."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "Tài liệu API",
       "heroText": "Mọi thứ một ứng dụng cần để gửi và đọc phản hồi của dịch vụ này: địa chỉ, cách đăng nhập và từng endpoint kèm ví dụ.",
       "liveCount": "{n} đang chạy",
-      "bearer": "Token Bearer",
       "tryFirst": "Thử ngay",
       "notLiveNote": "Chưa chạy thật: token thử nghiệm có thể gọi (Dùng thử dùng một token), các lệnh gọi thật bị từ chối cho đến khi bật.",
       "oneHint": "Thêm id bản ghi vào địa chỉ để chỉ đọc bản ghi đó, ví dụ /job-applications/rsp_9fK2mQ7xLp.",

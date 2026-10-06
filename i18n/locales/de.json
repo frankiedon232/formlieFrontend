@@ -3823,10 +3823,14 @@
       "request": "Anfrage",
       "answer": "Antwort",
       "note": "Die Werte sind erfunden. Für echte Aufrufe brauchen Aufrufer ein Token.",
-      "tokenUsed": "Angezeigtes Token:",
       "tokenWhere": "(maskiert). Öffne es unter Tokens und Header, um das ganze Token zu sehen und zu kopieren.",
       "noToken": "Noch kein Token kann dies aufrufen.",
-      "makeToken": "Token erstellen"
+      "makeToken": "Token erstellen",
+      "signsBearer": "Meldet sich mit einem Bearer-Token an:",
+      "signsClient": "Meldet sich mit Client-ID und Secret an:",
+      "whereClient": "Hole zuerst unter /token ein kurzlebiges Token (Schritt 1) und sende es dann als Bearer. Das Secret steht unter Tokens und Header.",
+      "step1": "1 · Kurzlebiges Token holen",
+      "step2": "2 · Dann der Aufruf"
     },
     "invalid": {
       "required": "Bitte ausfüllen.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Adresse",
       "baseUrlHint": "Jeder Endpunkt deiner Organisation beginnt mit dieser Adresse. Hänge den Namen des Endpunkts daran an.",
       "auth": {
-        "title": "Mit einem Token anmelden",
-        "text": "Sende bei jedem Aufruf ein Token aus Authentifizierung als Authorization: Bearer. Client-Tokens erhalten zuerst mit ihrer Client-ID und ihrem Secret ein kurzlebiges Zugriffstoken, wie unten beschrieben."
+        "title": "Anmelden: zwei Wege, nie beide",
+        "text": "Jedes Token meldet sich auf einem von zwei Wegen an, festgelegt beim Erstellen (Tokens und Header zeigt, welcher). Nutze den Weg des Tokens, das du bekommen hast.",
+        "static": "Sende das Token selbst bei jedem Aufruf als Authorization: Bearer. Mehr ist nicht nötig.",
+        "client": "Sende Client-ID und Secret per POST an /token. Du bekommst ein kurzlebiges Token (expires_in Sekunden): Sende es mit deinen Aufrufen als Authorization: Bearer und hole ein neues, wenn es abläuft.",
+        "never": "Beide Wege nie mischen",
+        "neverText": "Eine Client-ID oder ein Secret als Bearer oder ein Bearer-Token an /token wird mit 401 FRM-API-1010 abgelehnt, und die Antwort nennt den richtigen Weg.",
+        "yours": "Wie sich deine Endpunkte anmelden",
+        "both": "Beide Wege funktionieren: Nutze den, den dein Token hat."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "API-Referenz",
       "heroText": "Alles, was eine App braucht, um die Antworten dieses Dienstes zu senden und zu lesen: die Adresse, die Anmeldung und jeder Endpunkt mit Beispielen.",
       "liveCount": "{n} live",
-      "bearer": "Bearer-Token",
       "tryFirst": "Jetzt ausprobieren",
       "notLiveNote": "Noch nicht live: Test-Tokens können ihn aufrufen (Ausprobieren nutzt eines), Live-Aufrufe werden abgelehnt, bis er eingeschaltet ist.",
       "oneHint": "Hänge eine Datensatz-ID an die Adresse an, um nur diesen einen zu lesen, z. B. /job-applications/rsp_9fK2mQ7xLp.",

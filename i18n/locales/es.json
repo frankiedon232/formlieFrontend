@@ -3823,10 +3823,14 @@
       "request": "Solicitud",
       "answer": "Respuesta",
       "note": "Los valores son inventados. Quien llame necesita un token para usarlo de verdad.",
-      "tokenUsed": "Token mostrado:",
       "tokenWhere": "(oculto). Ábrelo en Tokens y encabezados para ver y copiar el token completo.",
       "noToken": "Ningún token puede llamar a esto todavía.",
-      "makeToken": "Crear un token"
+      "makeToken": "Crear un token",
+      "signsBearer": "Inicia sesión con un token Bearer:",
+      "signsClient": "Inicia sesión con ID de cliente y secreto:",
+      "whereClient": "Primero obtén un token de corta duración en /token (paso 1) y envíalo como Bearer. El secreto está en Tokens y encabezados.",
+      "step1": "1 · Obtén un token de corta duración",
+      "step2": "2 · Luego la llamada"
     },
     "invalid": {
       "required": "Rellene este campo.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Dirección",
       "baseUrlHint": "Cada endpoint de tu organización empieza con esta dirección. Añade después el nombre del endpoint.",
       "auth": {
-        "title": "Inicia sesión con un token",
-        "text": "Envía con cada llamada un token de Autenticación como Authorization: Bearer. Los tokens de cliente primero obtienen un token de acceso de corta duración con su client id y su secreto, como se indica abajo."
+        "title": "Inicio de sesión: dos formas, nunca ambas",
+        "text": "Cada token inicia sesión de una de dos formas, elegida al crearlo (Tokens y encabezados muestra cuál). Usa la forma del token que te dieron.",
+        "static": "Envía el propio token en cada llamada como Authorization: Bearer. Nada más.",
+        "client": "Envía el ID de cliente y el secreto a /token. Recibes un token de corta duración (expires_in segundos): envíalo como Authorization: Bearer en tus llamadas y pide otro cuando caduque.",
+        "never": "Nunca mezcles las dos formas",
+        "neverText": "Un ID de cliente o secreto enviado como Bearer, o un token Bearer enviado a /token, se rechaza con 401 FRM-API-1010, y la respuesta indica qué forma usar.",
+        "yours": "Cómo inician sesión tus endpoints",
+        "both": "Sirve cualquiera: usa la que tenga tu token."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "Referencia de la API",
       "heroText": "Todo lo que una app necesita para enviar y leer las respuestas de este servicio: la dirección, cómo iniciar sesión y cada endpoint con ejemplos.",
       "liveCount": "{n} activos",
-      "bearer": "Token Bearer",
       "tryFirst": "Pruébalo ahora",
       "notLiveNote": "Aún no está activo: los tokens de prueba pueden llamarlo (Probar usa uno), las llamadas en vivo se rechazan hasta que se active.",
       "oneHint": "Añade un id de registro a la dirección para leer solo ese, p. ej. /job-applications/rsp_9fK2mQ7xLp.",

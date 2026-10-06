@@ -3823,10 +3823,14 @@
       "request": "Ombi",
       "answer": "Jibu",
       "note": "Thamani ni za mfano. Wanaopiga wanahitaji tokeni ili kuuita kweli.",
-      "tokenUsed": "Tokeni inayoonyeshwa:",
       "tokenWhere": "(imefichwa). Ifungue katika Tokeni na Header ili kuona na kunakili tokeni kamili.",
       "noToken": "Hakuna tokeni inayoweza kuita hii bado.",
-      "makeToken": "Tengeneza tokeni"
+      "makeToken": "Tengeneza tokeni",
+      "signsBearer": "Huingia kwa tokeni ya Bearer:",
+      "signsClient": "Huingia kwa client id na secret:",
+      "whereClient": "Pata kwanza tokeni ya muda mfupi kwenye /token (hatua 1), kisha itume kama Bearer. Secret iko katika Tokeni na Header.",
+      "step1": "1 · Pata tokeni ya muda mfupi",
+      "step2": "2 · Kisha mwito"
     },
     "invalid": {
       "required": "Jaza hapa.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Anwani",
       "baseUrlHint": "Kila endpoint ya shirika lako huanza na anwani hii. Ongeza jina la endpoint baada yake.",
       "auth": {
-        "title": "Ingia kwa tokeni",
-        "text": "Tuma tokeni kutoka Uthibitishaji kama Authorization: Bearer kwa kila simu. Tokeni za mteja kwanza hupata tokeni ya ufikiaji ya muda mfupi kwa client id na siri yao, kama ilivyo hapa chini."
+        "title": "Kuingia: njia mbili, kamwe zote",
+        "text": "Kila tokeni huingia kwa njia moja kati ya mbili, iliyochaguliwa wakati wa kuiunda (Tokeni na Header zinaonyesha ipi). Tumia njia ya tokeni uliyopewa.",
+        "static": "Tuma tokeni yenyewe kwa kila mwito kama Authorization: Bearer. Hakuna kingine.",
+        "client": "Tuma client id na secret kwa /token. Utapata tokeni ya muda mfupi (expires_in sekunde): itume kama Authorization: Bearer na miito yako, na upate mpya inapoisha.",
+        "never": "Usichanganye njia hizi mbili",
+        "neverText": "Client id au secret iliyotumwa kama Bearer, au tokeni ya bearer iliyotumwa kwa /token, hukataliwa kwa 401 FRM-API-1010, na jibu linasema njia ya kutumia.",
+        "yours": "Jinsi endpoints zako zinavyoingia",
+        "both": "Njia yoyote inafaa: tumia ile ambayo tokeni yako ina."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "Marejeleo ya API",
       "heroText": "Kila kitu ambacho programu inahitaji kutuma na kusoma majibu ya huduma hii: anwani, jinsi ya kuingia na kila endpoint pamoja na mifano.",
       "liveCount": "{n} zinatumika",
-      "bearer": "Tokeni ya Bearer",
       "tryFirst": "Jaribu sasa",
       "notLiveNote": "Bado haijaanza kutumika: tokeni za majaribio zinaweza kuiita (Jaribu hutumia moja), miito halisi inakataliwa hadi iwashwe.",
       "oneHint": "Ongeza kitambulisho cha rekodi kwenye anwani ili kusoma rekodi hiyo tu, mfano /job-applications/rsp_9fK2mQ7xLp.",

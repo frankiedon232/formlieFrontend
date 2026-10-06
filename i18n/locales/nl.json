@@ -3823,10 +3823,14 @@
       "request": "Verzoek",
       "answer": "Antwoord",
       "note": "De waarden zijn verzonnen. Aanroepers hebben een token nodig om het echt aan te roepen.",
-      "tokenUsed": "Getoond token:",
       "tokenWhere": "(gemaskeerd). Open het in Tokens en Headers om het volledige token te zien en te kopiëren.",
       "noToken": "Nog geen token kan dit aanroepen.",
-      "makeToken": "Maak een token"
+      "makeToken": "Maak een token",
+      "signsBearer": "Meldt zich aan met een Bearer-token:",
+      "signsClient": "Meldt zich aan met client-id en geheim:",
+      "whereClient": "Haal eerst een kortlevend token op bij /token (stap 1) en stuur dat als Bearer. Het geheim staat in Tokens en Headers.",
+      "step1": "1 · Haal een kortlevend token op",
+      "step2": "2 · Dan de aanroep"
     },
     "invalid": {
       "required": "Vul dit in.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Adres",
       "baseUrlHint": "Elk endpoint van je organisatie begint met dit adres. Voeg de naam van het endpoint erachter toe.",
       "auth": {
-        "title": "Aanmelden met een token",
-        "text": "Stuur bij elke aanroep een token uit Authenticatie mee als Authorization: Bearer. Clienttokens krijgen eerst een kortlevend toegangstoken met hun client id en secret, zoals hieronder."
+        "title": "Aanmelden: twee manieren, nooit beide",
+        "text": "Elk token meldt zich op een van twee manieren aan, gekozen bij het maken (Tokens en Headers toont welke). Gebruik de manier van het token dat je kreeg.",
+        "static": "Stuur het token zelf mee met elke aanroep als Authorization: Bearer. Meer hoeft niet.",
+        "client": "Post het client-id en geheim naar /token. Je krijgt een kortlevend token (expires_in seconden): stuur dat als Authorization: Bearer mee met je aanroepen en haal een nieuw op als het verloopt.",
+        "never": "Meng de twee manieren nooit",
+        "neverText": "Een client-id of geheim als Bearer, of een Bearer-token naar /token, wordt geweigerd met 401 FRM-API-1010, en het antwoord zegt welke manier je moet gebruiken.",
+        "yours": "Hoe je endpoints zich aanmelden",
+        "both": "Beide werken: gebruik de manier die je token heeft."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "API-referentie",
       "heroText": "Alles wat een app nodig heeft om de antwoorden van deze dienst te versturen en te lezen: het adres, hoe je inlogt en elk endpoint met voorbeelden.",
       "liveCount": "{n} live",
-      "bearer": "Bearer-token",
       "tryFirst": "Probeer het nu",
       "notLiveNote": "Nog niet live: testtokens kunnen het aanroepen (Probeer het gebruikt er een), live aanroepen worden geweigerd tot het is ingeschakeld.",
       "oneHint": "Voeg een record-id toe aan het adres om alleen dat record te lezen, bijv. /job-applications/rsp_9fK2mQ7xLp.",

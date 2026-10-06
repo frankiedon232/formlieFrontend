@@ -3823,10 +3823,14 @@
       "request": "Requête",
       "answer": "Réponse",
       "note": "Les valeurs sont fictives. Les appelants ont besoin d’un jeton pour l’appeler réellement.",
-      "tokenUsed": "Jeton affiché :",
       "tokenWhere": "(masqué). Ouvrez-le dans Jetons et en-têtes pour voir et copier le jeton complet.",
       "noToken": "Aucun jeton ne peut encore appeler ceci.",
-      "makeToken": "Créer un jeton"
+      "makeToken": "Créer un jeton",
+      "signsBearer": "Se connecte avec un jeton Bearer :",
+      "signsClient": "Se connecte avec un ID client et un secret :",
+      "whereClient": "Obtenez d'abord un jeton de courte durée sur /token (étape 1), puis envoyez-le comme Bearer. Le secret est dans Jetons et en-têtes.",
+      "step1": "1 · Obtenir un jeton de courte durée",
+      "step2": "2 · Puis l'appel"
     },
     "invalid": {
       "required": "Renseignez ce champ.",
@@ -4361,8 +4365,14 @@
       "baseUrl": "Adresse",
       "baseUrlHint": "Chaque endpoint de votre organisation commence par cette adresse. Ajoutez le nom de l'endpoint à la suite.",
       "auth": {
-        "title": "Se connecter avec un jeton",
-        "text": "Envoyez avec chaque appel un jeton de la section Authentification sous la forme Authorization: Bearer. Les jetons client obtiennent d'abord un jeton d'accès de courte durée avec leur client id et leur secret, comme indiqué ci-dessous."
+        "title": "Connexion : deux façons, jamais les deux",
+        "text": "Chaque jeton se connecte d'une de deux façons, choisie à sa création (Jetons et en-têtes indique laquelle). Utilisez la façon du jeton qu'on vous a donné.",
+        "static": "Envoyez le jeton lui-même à chaque appel dans Authorization: Bearer. Rien d'autre à faire.",
+        "client": "Envoyez l'ID client et le secret à /token. Vous recevez un jeton de courte durée (expires_in secondes) : envoyez-le dans Authorization: Bearer avec vos appels, et demandez-en un nouveau quand il expire.",
+        "never": "Ne mélangez jamais les deux façons",
+        "neverText": "Un ID client ou un secret envoyé comme Bearer, ou un jeton Bearer envoyé à /token, est refusé avec 401 FRM-API-1010, et la réponse indique la façon à utiliser.",
+        "yours": "Comment vos endpoints se connectent",
+        "both": "Les deux fonctionnent : utilisez celle de votre jeton."
       },
       "key": {
         "title": "Formalie-Key",
@@ -4408,7 +4418,6 @@
       "heroKicker": "Référence de l'API",
       "heroText": "Tout ce dont une application a besoin pour envoyer et lire les réponses de ce service : l'adresse, la connexion et chaque endpoint avec des exemples.",
       "liveCount": "{n} actifs",
-      "bearer": "Jeton Bearer",
       "tryFirst": "Essayer maintenant",
       "notLiveNote": "Pas encore actif : les jetons de test peuvent l'appeler (Essayer en utilise un), les appels en production sont refusés tant qu'il n'est pas activé.",
       "oneHint": "Ajoutez un identifiant d'enregistrement à l'adresse pour lire uniquement celui-ci, p. ex. /job-applications/rsp_9fK2mQ7xLp.",

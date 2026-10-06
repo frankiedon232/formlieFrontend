@@ -120,6 +120,8 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 
 ### 5. Every failure has a clear answer (Postman)
 
+**Two ways to sign in, never both.** A token is a _Bearer token_ (send it as `Authorization: Bearer …`) or a _Client id and secret_ (POST them to `…/token`, then send the short-lived `access_token` as Bearer). Docs & testing and each endpoint's example say which way that endpoint's token uses and show the `/token` step when needed.
+
 **Headers, and no others:** every call sends `Authorization: Bearer <token>` and `Content-Type: application/json`. **POST** also sends `Formalie-Key: <a new unique id>` (required; in Postman `{{$guid}}` makes a new one per send). On GET, PUT and DELETE the key is optional (checked if you send one). The key: 16 to 100 letters, digits and `. _ : -`, not a simple pattern (`1111…`, `abab…`, `1234…`). The same key and body within 24 hours answer with the first record (`meta.replayed`); the same key with a different body is refused. Every answer tells the token's expiry: the `Formalie-Token-Expires` header and `meta.token_expires_at` / `meta.token_expires_in_days` next to the data.
 
 Use a live token unless the row says otherwise. Each answer is JSON `{ "error": { "code", "message", "details" } }` with an `X-Request-Id` header.
@@ -146,6 +148,8 @@ Use a live token unless the row says otherwise. Each answer is JSON `{ "error": 
 | `PUT` / `DELETE` / `GET` on a record id that doesn't exist              | `404 FRM-API-1013`                                                 |
 | File upload for a question that doesn't take files                      | `422 FRM-API-1014`                                                 |
 | Blocked IP (`X-Forwarded-For`), range, website (`Origin`) or network    | `403 FRM-API-1015` (the matching value)                            |
+| Client secret or client id sent as `Authorization: Bearer`             | `401 FRM-API-1010` (`client_credentials`: go to `/token` first)    |
+| A bearer token sent to `POST …/token` (as secret or header)             | `401 FRM-API-1010` (`bearer_token`: send it as Bearer instead)     |
 | Client id + wrong secret on `POST …/token`                              | `401 FRM-API-1010`                                                 |
 | More than the rate limit in a minute (per IP 120 by default)            | `429 FRM-GEN-1029` with `Retry-After`                              |
 
