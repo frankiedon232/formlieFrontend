@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Toegangsregel ingeschakeld",
       "api_rule_disabled": "Toegangsregel uitgeschakeld",
       "api_rule_deleted": "Toegangsregel verwijderd",
-      "api_limits_changed": "API-snelheidslimieten gewijzigd"
+      "api_limits_changed": "API-snelheidslimieten gewijzigd",
+      "api_logging_changed": "Instellingen voor het API-aanvraaglogboek gewijzigd"
     },
     "detail": {
       "who": "Wie",
@@ -4084,6 +4085,86 @@
         "answer": "Boven een limiet krijgen aanroepers 429 met Retry-After (seconden wachttijd); elk antwoord vermeldt de limiet en wat er over is.",
         "saved": "Snelheidslimieten opgeslagen",
         "changed": "Gewijzigd {when}"
+      }
+    },
+    "home": {
+      "recent": "Recente aanroepen",
+      "shortcuts": "Instellen en bekijken",
+      "answering": "{n} antwoorden",
+      "last30": "laatste 30 dagen",
+      "tokensHint": "{n} test"
+    },
+    "analytics": {
+      "traffic": "Verkeer",
+      "perDay": "Gemiddeld {n} aanroepen per dag",
+      "quiet": "Geen aanroepen in deze periode",
+      "quietDesc": "Aanroepen verschijnen hier zodra apps je endpoints gebruiken.",
+      "worked": "Gelukt",
+      "failed": "Geweigerd of mislukt",
+      "endpoint": "Endpointoverzicht",
+      "previous": "Vorig endpoint",
+      "next": "Volgend endpoint",
+      "success": "Geslaagde aanroepen",
+      "errorShare": "Foutpercentage",
+      "p50": "Typische antwoordtijd",
+      "p95": "Langzaamste 5 %",
+      "tokensUsed": "Gebruikte tokens",
+      "topEndpoints": "Drukste endpoints",
+      "topCallers": "Drukste tokens",
+      "countries": "Waar aanroepen vandaan komen",
+      "period": "Periode",
+      "last7": "Laatste 7 dagen",
+      "last30": "Laatste 30 dagen"
+    },
+    "logs": {
+      "search": "Zoek op adressen, IP's, aanvraag-id's, codes of tokens…",
+      "empty": "Geen aanroepen in deze periode",
+      "emptyDesc": "Aanroepen van je endpoints verschijnen hier, met resultaat en duur. Probeer een langere periode.",
+      "byResult": "Aanroepen per resultaat",
+      "class": {
+        "2xx": "Gelukt",
+        "4xx": "Geweigerd (aanroeper)",
+        "5xx": "Mislukt (bij ons)"
+      },
+      "col": {
+        "at": "Wanneer",
+        "call": "Aanroep",
+        "status": "Resultaat",
+        "duration": "Duur",
+        "token": "Token",
+        "caller": "Aanroeper",
+        "country": "Land",
+        "code": "Foutcode",
+        "agent": "Client"
+      },
+      "sort": {
+        "newest": "Nieuwste eerst",
+        "slowest": "Langzaamste eerst",
+        "status": "Fouten eerst"
+      },
+      "requestId": "Aanvraag-id",
+      "copyId": "Aanvraag-id kopiëren",
+      "openEndpoint": "Endpoint openen",
+      "noToken": "Geen geldig token",
+      "noEndpoint": "Onbekend endpoint",
+      "unknownCountry": "Onbekend",
+      "ok": "De aanroep is gelukt.",
+      "headers": "Headers",
+      "request": "Aanvraagbody",
+      "response": "Antwoordbody",
+      "noHeaders": "Geen headers vastgelegd",
+      "notKept": "Bodies worden niet bewaard",
+      "notKeptDesc": "Schakel Bodies bewaren in bij de loginstellingen om te zien wat is verzonden en beantwoord (persoonlijke antwoorden blijven gemaskeerd).",
+      "downloaded": "Aanroepen gedownload",
+      "settings": {
+        "title": "Loginstellingen",
+        "desc": "Wat het aanvraaglogboek van elke aanroep bewaart.",
+        "keep": "Aanvraag- en antwoordbodies bewaren",
+        "keepHint": "Helpt te achterhalen waarom een aanroep is geweigerd. Antwoorden op persoonlijke vragen (namen, e-mailadressen, telefoonnummers, adressen, bankgegevens) worden altijd gemaskeerd.",
+        "for": "Bewaren gedurende",
+        "days": "{n} dag | {n} dagen",
+        "never": "Tokens worden nooit gelogd, alleen het zichtbare deel. Vereiste headerwaarden en handtekeningen worden gemaskeerd.",
+        "saved": "Loginstellingen opgeslagen"
       }
     }
   },

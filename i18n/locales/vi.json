@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Đã bật quy tắc truy cập",
       "api_rule_disabled": "Đã tắt quy tắc truy cập",
       "api_rule_deleted": "Đã xóa quy tắc truy cập",
-      "api_limits_changed": "Đã thay đổi giới hạn tốc độ API"
+      "api_limits_changed": "Đã thay đổi giới hạn tốc độ API",
+      "api_logging_changed": "Đã thay đổi cài đặt nhật ký yêu cầu API"
     },
     "detail": {
       "who": "Ai",
@@ -4084,6 +4085,86 @@
         "answer": "Khi vượt giới hạn, bên gọi nhận 429 kèm Retry-After (số giây phải chờ); mỗi phản hồi nêu giới hạn và phần còn lại.",
         "saved": "Đã lưu giới hạn tốc độ",
         "changed": "Đã thay đổi {when}"
+      }
+    },
+    "home": {
+      "recent": "Lệnh gọi gần đây",
+      "shortcuts": "Thiết lập và theo dõi",
+      "answering": "{n} đang phản hồi",
+      "last30": "30 ngày qua",
+      "tokensHint": "{n} thử nghiệm"
+    },
+    "analytics": {
+      "traffic": "Lưu lượng",
+      "perDay": "Trung bình {n} lệnh gọi mỗi ngày",
+      "quiet": "Không có lệnh gọi trong khoảng thời gian này",
+      "quietDesc": "Các lệnh gọi sẽ hiển thị ở đây ngay khi ứng dụng sử dụng endpoint của bạn.",
+      "worked": "Thành công",
+      "failed": "Bị từ chối hoặc thất bại",
+      "endpoint": "Tổng quan endpoint",
+      "previous": "Endpoint trước",
+      "next": "Endpoint tiếp theo",
+      "success": "Lệnh gọi thành công",
+      "errorShare": "Tỷ lệ lỗi",
+      "p50": "Thời gian phản hồi thông thường",
+      "p95": "5 % chậm nhất",
+      "tokensUsed": "Token đã dùng",
+      "topEndpoints": "Endpoint bận nhất",
+      "topCallers": "Token bận nhất",
+      "countries": "Lệnh gọi đến từ đâu",
+      "period": "Khoảng thời gian",
+      "last7": "7 ngày qua",
+      "last30": "30 ngày qua"
+    },
+    "logs": {
+      "search": "Tìm địa chỉ, IP, id yêu cầu, mã hoặc token…",
+      "empty": "Không có lệnh gọi trong khoảng thời gian này",
+      "emptyDesc": "Các lệnh gọi tới endpoint của bạn hiển thị ở đây cùng kết quả và thời gian xử lý. Hãy thử khoảng thời gian dài hơn.",
+      "byResult": "Lệnh gọi theo kết quả",
+      "class": {
+        "2xx": "Thành công",
+        "4xx": "Bị từ chối (bên gọi)",
+        "5xx": "Thất bại (phía chúng tôi)"
+      },
+      "col": {
+        "at": "Khi nào",
+        "call": "Lệnh gọi",
+        "status": "Kết quả",
+        "duration": "Thời gian xử lý",
+        "token": "Token",
+        "caller": "Bên gọi",
+        "country": "Quốc gia",
+        "code": "Mã lỗi",
+        "agent": "Máy khách"
+      },
+      "sort": {
+        "newest": "Mới nhất trước",
+        "slowest": "Chậm nhất trước",
+        "status": "Lỗi trước"
+      },
+      "requestId": "Id yêu cầu",
+      "copyId": "Sao chép id yêu cầu",
+      "openEndpoint": "Mở endpoint",
+      "noToken": "Không có token hợp lệ",
+      "noEndpoint": "Endpoint không xác định",
+      "unknownCountry": "Không xác định",
+      "ok": "Lệnh gọi đã thành công.",
+      "headers": "Header",
+      "request": "Nội dung yêu cầu",
+      "response": "Nội dung phản hồi",
+      "noHeaders": "Không có header nào được ghi lại",
+      "notKept": "Nội dung không được lưu",
+      "notKeptDesc": "Bật Lưu nội dung trong cài đặt nhật ký để xem những gì đã gửi và phản hồi (câu trả lời cá nhân vẫn được che).",
+      "downloaded": "Đã tải xuống lệnh gọi",
+      "settings": {
+        "title": "Cài đặt nhật ký",
+        "desc": "Nhật ký yêu cầu lưu những gì về mỗi lệnh gọi.",
+        "keep": "Lưu nội dung yêu cầu và phản hồi",
+        "keepHint": "Giúp tìm ra lý do lệnh gọi bị từ chối. Câu trả lời cho các câu hỏi cá nhân (tên, email, số điện thoại, địa chỉ, thông tin ngân hàng) luôn được che.",
+        "for": "Lưu trong",
+        "days": "{n} ngày | {n} ngày",
+        "never": "Token không bao giờ được ghi vào nhật ký, chỉ phần hiển thị của chúng. Giá trị header bắt buộc và chữ ký được che.",
+        "saved": "Đã lưu cài đặt nhật ký"
       }
     }
   },

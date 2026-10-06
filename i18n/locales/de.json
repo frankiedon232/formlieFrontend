@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Zugriffsregel eingeschaltet",
       "api_rule_disabled": "Zugriffsregel ausgeschaltet",
       "api_rule_deleted": "Zugriffsregel gelöscht",
-      "api_limits_changed": "API-Ratenlimits geändert"
+      "api_limits_changed": "API-Ratenlimits geändert",
+      "api_logging_changed": "API-Anfrageprotokoll-Einstellungen geändert"
     },
     "detail": {
       "who": "Wer",
@@ -4084,6 +4085,86 @@
         "answer": "Über dem Limit erhalten Aufrufer 429 mit Retry-After (Sekunden Wartezeit); jede Antwort nennt das Limit und den Rest.",
         "saved": "Ratenlimits gespeichert",
         "changed": "Geändert {when}"
+      }
+    },
+    "home": {
+      "recent": "Letzte Aufrufe",
+      "shortcuts": "Einrichten und überwachen",
+      "answering": "{n} antworten",
+      "last30": "letzte 30 Tage",
+      "tokensHint": "{n} Test"
+    },
+    "analytics": {
+      "traffic": "Datenverkehr",
+      "perDay": "Durchschnittlich {n} Aufrufe pro Tag",
+      "quiet": "Keine Aufrufe in diesem Zeitraum",
+      "quietDesc": "Aufrufe erscheinen hier, sobald Apps Ihre Endpunkte nutzen.",
+      "worked": "Erfolgreich",
+      "failed": "Abgelehnt oder fehlgeschlagen",
+      "endpoint": "Endpunktübersicht",
+      "previous": "Vorheriger Endpunkt",
+      "next": "Nächster Endpunkt",
+      "success": "Erfolgreiche Aufrufe",
+      "errorShare": "Fehleranteil",
+      "p50": "Typische Antwortzeit",
+      "p95": "Langsamste 5 %",
+      "tokensUsed": "Verwendete Tokens",
+      "topEndpoints": "Meistgenutzte Endpunkte",
+      "topCallers": "Meistgenutzte Tokens",
+      "countries": "Woher die Aufrufe kommen",
+      "period": "Zeitraum",
+      "last7": "Letzte 7 Tage",
+      "last30": "Letzte 30 Tage"
+    },
+    "logs": {
+      "search": "Adressen, IPs, Anfrage-IDs, Codes oder Tokens suchen…",
+      "empty": "Keine Aufrufe in diesem Zeitraum",
+      "emptyDesc": "Aufrufe Ihrer Endpunkte erscheinen hier mit Ergebnis und Dauer. Versuchen Sie einen längeren Zeitraum.",
+      "byResult": "Aufrufe nach Ergebnis",
+      "class": {
+        "2xx": "Erfolgreich",
+        "4xx": "Abgelehnt (Aufrufer)",
+        "5xx": "Fehlgeschlagen (unsere Seite)"
+      },
+      "col": {
+        "at": "Wann",
+        "call": "Aufruf",
+        "status": "Ergebnis",
+        "duration": "Dauer",
+        "token": "Token",
+        "caller": "Aufrufer",
+        "country": "Land",
+        "code": "Fehlercode",
+        "agent": "Client"
+      },
+      "sort": {
+        "newest": "Neueste zuerst",
+        "slowest": "Langsamste zuerst",
+        "status": "Fehler zuerst"
+      },
+      "requestId": "Anfrage-ID",
+      "copyId": "Anfrage-ID kopieren",
+      "openEndpoint": "Endpunkt öffnen",
+      "noToken": "Kein gültiges Token",
+      "noEndpoint": "Unbekannter Endpunkt",
+      "unknownCountry": "Unbekannt",
+      "ok": "Der Aufruf war erfolgreich.",
+      "headers": "Header",
+      "request": "Anfragetext",
+      "response": "Antworttext",
+      "noHeaders": "Keine Header aufgezeichnet",
+      "notKept": "Inhalte werden nicht gespeichert",
+      "notKeptDesc": "Aktivieren Sie in den Protokolleinstellungen „Inhalte speichern“, um zu sehen, was gesendet und beantwortet wurde (persönliche Angaben bleiben maskiert).",
+      "downloaded": "Aufrufe heruntergeladen",
+      "settings": {
+        "title": "Protokolleinstellungen",
+        "desc": "Was das Anfrageprotokoll zu jedem Aufruf speichert.",
+        "keep": "Anfrage- und Antwortinhalte speichern",
+        "keepHint": "Hilft herauszufinden, warum ein Aufruf abgelehnt wurde. Antworten auf persönliche Fragen (Namen, E-Mails, Telefonnummern, Adressen, Bankdaten) werden immer maskiert.",
+        "for": "Speichern für",
+        "days": "{n} Tag | {n} Tage",
+        "never": "Tokens werden nie protokolliert, nur ihr sichtbarer Teil. Erforderliche Header-Werte und Signaturen werden maskiert.",
+        "saved": "Protokolleinstellungen gespeichert"
       }
     }
   },

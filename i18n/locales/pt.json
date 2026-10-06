@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Regra de acesso ativada",
       "api_rule_disabled": "Regra de acesso desativada",
       "api_rule_deleted": "Regra de acesso excluída",
-      "api_limits_changed": "Limites de taxa da API alterados"
+      "api_limits_changed": "Limites de taxa da API alterados",
+      "api_logging_changed": "Configurações do registo de pedidos da API alteradas"
     },
     "detail": {
       "who": "Quem",
@@ -4084,6 +4085,86 @@
         "answer": "Acima de um limite, os chamadores recebem 429 com Retry-After (segundos de espera); cada resposta informa o limite e o que resta.",
         "saved": "Limites de taxa salvos",
         "changed": "Alterado {when}"
+      }
+    },
+    "home": {
+      "recent": "Chamadas recentes",
+      "shortcuts": "Configurar e acompanhar",
+      "answering": "{n} a responder",
+      "last30": "últimos 30 dias",
+      "tokensHint": "{n} de teste"
+    },
+    "analytics": {
+      "traffic": "Tráfego",
+      "perDay": "{n} chamadas por dia em média",
+      "quiet": "Sem chamadas neste período",
+      "quietDesc": "As chamadas aparecem aqui assim que as aplicações usarem os seus endpoints.",
+      "worked": "Bem-sucedidas",
+      "failed": "Recusadas ou com falha",
+      "endpoint": "Resumo do endpoint",
+      "previous": "Endpoint anterior",
+      "next": "Endpoint seguinte",
+      "success": "Chamadas bem-sucedidas",
+      "errorShare": "Percentagem de erros",
+      "p50": "Tempo de resposta típico",
+      "p95": "Os 5 % mais lentos",
+      "tokensUsed": "Tokens utilizados",
+      "topEndpoints": "Endpoints mais ativos",
+      "topCallers": "Tokens mais ativos",
+      "countries": "De onde vêm as chamadas",
+      "period": "Período",
+      "last7": "Últimos 7 dias",
+      "last30": "Últimos 30 dias"
+    },
+    "logs": {
+      "search": "Pesquisar endereços, IPs, ids de pedido, códigos ou tokens…",
+      "empty": "Sem chamadas neste período",
+      "emptyDesc": "As chamadas aos seus endpoints aparecem aqui, com o resultado e o tempo gasto. Experimente um período mais longo.",
+      "byResult": "Chamadas por resultado",
+      "class": {
+        "2xx": "Bem-sucedida",
+        "4xx": "Recusada (autor da chamada)",
+        "5xx": "Falhou (do nosso lado)"
+      },
+      "col": {
+        "at": "Quando",
+        "call": "Chamada",
+        "status": "Resultado",
+        "duration": "Duração",
+        "token": "Token",
+        "caller": "Autor da chamada",
+        "country": "País",
+        "code": "Código de erro",
+        "agent": "Cliente"
+      },
+      "sort": {
+        "newest": "Mais recentes primeiro",
+        "slowest": "Mais lentas primeiro",
+        "status": "Erros primeiro"
+      },
+      "requestId": "Id do pedido",
+      "copyId": "Copiar id do pedido",
+      "openEndpoint": "Abrir o endpoint",
+      "noToken": "Sem token válido",
+      "noEndpoint": "Endpoint desconhecido",
+      "unknownCountry": "Desconhecido",
+      "ok": "A chamada foi bem-sucedida.",
+      "headers": "Cabeçalhos",
+      "request": "Corpo do pedido",
+      "response": "Corpo da resposta",
+      "noHeaders": "Nenhum cabeçalho registado",
+      "notKept": "Os corpos não são guardados",
+      "notKeptDesc": "Ative Guardar corpos nas definições do registo para ver o que foi enviado e respondido (as respostas pessoais continuam mascaradas).",
+      "downloaded": "Chamadas transferidas",
+      "settings": {
+        "title": "Definições do registo",
+        "desc": "O que o registo de pedidos guarda de cada chamada.",
+        "keep": "Guardar os corpos do pedido e da resposta",
+        "keepHint": "Ajuda a descobrir porque é que uma chamada foi recusada. As respostas a perguntas pessoais (nomes, e-mails, telefones, moradas, dados bancários) são sempre mascaradas.",
+        "for": "Guardar durante",
+        "days": "{n} dia | {n} dias",
+        "never": "Os tokens nunca são registados, apenas a sua parte visível. Os valores de cabeçalhos obrigatórios e as assinaturas são mascarados.",
+        "saved": "Definições do registo guardadas"
       }
     }
   },

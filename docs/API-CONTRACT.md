@@ -241,7 +241,15 @@ Endpoints (M2): `ApiEndpoint.required_headers` (names), `ApiEndpointDetail.heade
 
 The decision: rules for all endpoints, the endpoint's service and the endpoint itself apply (enabled ones). A matching block refuses; when allow rules apply, the caller must match one. Domain rules read the Origin (else Referer) host, so they only match browser callers. Country and region come from GeoIP on the caller's address.
 
-Logs and analytics (`/api-logs`, `/api-analytics`) follow in M4.
+**Request logs and analytics (M4).** Every call to the public API is logged (never the token, only its preview; required header values and signatures masked). Audit `api.logging_changed`.
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/api-logs` | `ApiLogEntry { id, at, method, path, status, code, duration_ms, endpoint { id, name } \| null, service, token { id, name, mode } \| null, ip, country, user_agent, request_id }`; `from` / `to` (default the last 7 days), `q` (address, IP, request id, code, token), `sort` (-at · -duration_ms · -status), `filter[endpoint|class (2xx,4xx,5xx)|method|token|mode]` |
+| GET | `/api-logs/insights` | `{ calls_30d, previous_30d, errors_30d, daily, by_class { 2xx, 4xx, 5xx }, avg_ms }` |
+| GET · PUT | `/api-logs/settings` | `{ keep_bodies, days: 1\|7\|30 }`; bodies kept only when on, answers to personal question types (email, phone, name, address, IBAN, BIC, IP, signature, date) masked |
+| GET | `/api-logs/{id}` | `ApiLogDetail` = entry + `request_headers`, `request_body`, `response_body`, `bodies_kept` |
+| GET | `/api-analytics?period=7d\|30d` | `ApiAnalytics { from, to, totals { calls, errors, p50_ms, p95_ms, tokens_used }, previous, daily [{ date, calls, errors }], endpoints [{ id, name, service, calls, errors, p95_ms, trend }], tokens [{ id, name, mode, calls, errors }], countries [{ code, calls }], methods }` |
 
 ## Responses
 

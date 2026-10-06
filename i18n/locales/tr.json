@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Erişim kuralı açıldı",
       "api_rule_disabled": "Erişim kuralı kapatıldı",
       "api_rule_deleted": "Erişim kuralı silindi",
-      "api_limits_changed": "API hız sınırları değiştirildi"
+      "api_limits_changed": "API hız sınırları değiştirildi",
+      "api_logging_changed": "API istek günlüğü ayarları değiştirildi"
     },
     "detail": {
       "who": "Kim",
@@ -4084,6 +4085,86 @@
         "answer": "Sınır aşılırsa çağıranlar Retry-After ile 429 alır (beklenecek saniye); her yanıt sınırı ve kalanı bildirir.",
         "saved": "Hız sınırları kaydedildi",
         "changed": "Değiştirildi: {when}"
+      }
+    },
+    "home": {
+      "recent": "Son çağrılar",
+      "shortcuts": "Kurun ve izleyin",
+      "answering": "{n} yanıt veriyor",
+      "last30": "son 30 gün",
+      "tokensHint": "{n} test"
+    },
+    "analytics": {
+      "traffic": "Trafik",
+      "perDay": "Günde ortalama {n} çağrı",
+      "quiet": "Bu dönemde çağrı yok",
+      "quietDesc": "Uygulamalar uç noktalarınızı kullanır kullanmaz çağrılar burada görünür.",
+      "worked": "Başarılı",
+      "failed": "Reddedilen veya başarısız",
+      "endpoint": "Uç nokta özeti",
+      "previous": "Önceki uç nokta",
+      "next": "Sonraki uç nokta",
+      "success": "Başarılı çağrılar",
+      "errorShare": "Hata oranı",
+      "p50": "Tipik yanıt süresi",
+      "p95": "En yavaş %5",
+      "tokensUsed": "Kullanılan token'lar",
+      "topEndpoints": "En yoğun uç noktalar",
+      "topCallers": "En yoğun token'lar",
+      "countries": "Çağrılar nereden geliyor",
+      "period": "Dönem",
+      "last7": "Son 7 gün",
+      "last30": "Son 30 gün"
+    },
+    "logs": {
+      "search": "Adres, IP, istek kimliği, kod veya token ara…",
+      "empty": "Bu dönemde çağrı yok",
+      "emptyDesc": "Uç noktalarınıza yapılan çağrılar sonuçları ve süreleriyle burada görünür. Daha uzun bir dönem deneyin.",
+      "byResult": "Sonuca göre çağrılar",
+      "class": {
+        "2xx": "Başarılı",
+        "4xx": "Reddedildi (çağıran)",
+        "5xx": "Başarısız (bizim tarafımızda)"
+      },
+      "col": {
+        "at": "Ne zaman",
+        "call": "Çağrı",
+        "status": "Sonuç",
+        "duration": "Geçen süre",
+        "token": "Token",
+        "caller": "Çağıran",
+        "country": "Ülke",
+        "code": "Hata kodu",
+        "agent": "İstemci"
+      },
+      "sort": {
+        "newest": "Önce en yeni",
+        "slowest": "Önce en yavaş",
+        "status": "Önce hatalılar"
+      },
+      "requestId": "İstek kimliği",
+      "copyId": "İstek kimliğini kopyala",
+      "openEndpoint": "Uç noktayı aç",
+      "noToken": "Geçerli token yok",
+      "noEndpoint": "Bilinmeyen uç nokta",
+      "unknownCountry": "Bilinmiyor",
+      "ok": "Çağrı başarılı oldu.",
+      "headers": "Üst bilgiler",
+      "request": "İstek gövdesi",
+      "response": "Yanıt gövdesi",
+      "noHeaders": "Kaydedilmiş üst bilgi yok",
+      "notKept": "Gövdeler saklanmıyor",
+      "notKeptDesc": "Gönderilenleri ve verilen yanıtları görmek için günlük ayarlarında Gövdeleri sakla seçeneğini açın (kişisel yanıtlar maskeli kalır).",
+      "downloaded": "Çağrılar indirildi",
+      "settings": {
+        "title": "Günlük ayarları",
+        "desc": "İstek günlüğünün her çağrı hakkında neleri sakladığı.",
+        "keep": "İstek ve yanıt gövdelerini sakla",
+        "keepHint": "Bir çağrının neden reddedildiğini bulmaya yardımcı olur. Kişisel sorulara verilen yanıtlar (adlar, e-postalar, telefon numaraları, adresler, banka bilgileri) her zaman maskelenir.",
+        "for": "Saklama süresi",
+        "days": "{n} gün | {n} gün",
+        "never": "Token'lar asla günlüğe kaydedilmez, yalnızca görünen kısımları kaydedilir. Gerekli üst bilgi değerleri ve imzalar maskelenir.",
+        "saved": "Günlük ayarları kaydedildi"
       }
     }
   },

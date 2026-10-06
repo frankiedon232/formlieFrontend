@@ -287,3 +287,62 @@ export interface ApiAccessTestResult {
   checked: number
   region: string | null
 }
+
+// ── Request logs and analytics (F13 M4) ──────────────────────────────────────────────────
+
+/** One call to the public API, as the request log keeps it (never the token itself). */
+export interface ApiLogEntry {
+  id: string
+  at: string
+  method: string
+  /** `/{apiKey}/{endpoint}[/{id}]` */
+  path: string
+  status: number
+  /** FRM-* code of a refused call. */
+  code: string | null
+  duration_ms: number
+  endpoint: { id: string; name: string } | null
+  service: { id: string; name: string } | null
+  token: { id: string; name: string; mode: ApiTokenMode } | null
+  ip: string
+  country: string | null
+  user_agent: string
+  request_id: string
+}
+
+export interface ApiLogDetail extends ApiLogEntry {
+  /** Only when "keep bodies" is on; personal answers masked. */
+  request_body: unknown | null
+  response_body: unknown | null
+  /** Headers the caller sent, values of secrets masked. */
+  request_headers: Record<string, string>
+  bodies_kept: boolean
+}
+
+export interface ApiLogInsights {
+  calls_30d: number
+  previous_30d: number
+  errors_30d: number
+  daily: { date: string; count: number }[]
+  by_class: Record<'2xx' | '4xx' | '5xx', number>
+  avg_ms: number | null
+}
+
+export interface ApiLogSettings {
+  /** Keep request and response bodies (personal answers masked) for `days`. */
+  keep_bodies: boolean
+  days: number
+}
+
+/** GET /api-analytics?from&to: the API service's own analytics. */
+export interface ApiAnalytics {
+  from: string
+  to: string
+  totals: { calls: number; errors: number; p50_ms: number | null; p95_ms: number | null; tokens_used: number }
+  previous: { calls: number; errors: number; p50_ms: number | null; p95_ms: number | null; tokens_used: number }
+  daily: { date: string; calls: number; errors: number }[]
+  endpoints: { id: string; name: string; service: string; calls: number; errors: number; p95_ms: number | null; trend: number[] }[]
+  tokens: { id: string; name: string; mode: ApiTokenMode; calls: number; errors: number }[]
+  countries: { code: string; calls: number }[]
+  methods: Record<ApiMethod, number>
+}

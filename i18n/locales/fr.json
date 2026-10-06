@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Règle d'accès activée",
       "api_rule_disabled": "Règle d'accès désactivée",
       "api_rule_deleted": "Règle d'accès supprimée",
-      "api_limits_changed": "Limites de débit de l'API modifiées"
+      "api_limits_changed": "Limites de débit de l'API modifiées",
+      "api_logging_changed": "Paramètres du journal des requêtes API modifiés"
     },
     "detail": {
       "who": "Qui",
@@ -4084,6 +4085,86 @@
         "answer": "Au-delà d'une limite, les appelants reçoivent 429 avec Retry-After (secondes à attendre) ; chaque réponse indique la limite et ce qu'il reste.",
         "saved": "Limites de débit enregistrées",
         "changed": "Modifié {when}"
+      }
+    },
+    "home": {
+      "recent": "Appels récents",
+      "shortcuts": "Configurer et surveiller",
+      "answering": "{n} répondent",
+      "last30": "30 derniers jours",
+      "tokensHint": "{n} de test"
+    },
+    "analytics": {
+      "traffic": "Trafic",
+      "perDay": "{n} appels par jour en moyenne",
+      "quiet": "Aucun appel sur cette période",
+      "quietDesc": "Les appels s'affichent ici dès que des applications utilisent vos endpoints.",
+      "worked": "Réussis",
+      "failed": "Refusés ou en échec",
+      "endpoint": "Aperçu de l'endpoint",
+      "previous": "Endpoint précédent",
+      "next": "Endpoint suivant",
+      "success": "Appels réussis",
+      "errorShare": "Taux d'erreur",
+      "p50": "Temps de réponse typique",
+      "p95": "5 % les plus lents",
+      "tokensUsed": "Tokens utilisés",
+      "topEndpoints": "Endpoints les plus sollicités",
+      "topCallers": "Tokens les plus sollicités",
+      "countries": "D'où viennent les appels",
+      "period": "Période",
+      "last7": "7 derniers jours",
+      "last30": "30 derniers jours"
+    },
+    "logs": {
+      "search": "Rechercher des adresses, IP, ids de requête, codes ou tokens…",
+      "empty": "Aucun appel sur cette période",
+      "emptyDesc": "Les appels vers vos endpoints s'affichent ici, avec leur résultat et leur durée. Essayez une période plus longue.",
+      "byResult": "Appels par résultat",
+      "class": {
+        "2xx": "Réussi",
+        "4xx": "Refusé (appelant)",
+        "5xx": "Échec (de notre côté)"
+      },
+      "col": {
+        "at": "Quand",
+        "call": "Appel",
+        "status": "Résultat",
+        "duration": "Durée",
+        "token": "Token",
+        "caller": "Appelant",
+        "country": "Pays",
+        "code": "Code d'erreur",
+        "agent": "Client"
+      },
+      "sort": {
+        "newest": "Plus récents d'abord",
+        "slowest": "Plus lents d'abord",
+        "status": "Erreurs d'abord"
+      },
+      "requestId": "Id de requête",
+      "copyId": "Copier l'id de requête",
+      "openEndpoint": "Ouvrir l'endpoint",
+      "noToken": "Aucun token valide",
+      "noEndpoint": "Endpoint inconnu",
+      "unknownCountry": "Inconnu",
+      "ok": "L'appel a réussi.",
+      "headers": "En-têtes",
+      "request": "Corps de la requête",
+      "response": "Corps de la réponse",
+      "noHeaders": "Aucun en-tête enregistré",
+      "notKept": "Les corps ne sont pas conservés",
+      "notKeptDesc": "Activez Conserver les corps dans les paramètres du journal pour voir ce qui a été envoyé et répondu (les réponses personnelles restent masquées).",
+      "downloaded": "Appels téléchargés",
+      "settings": {
+        "title": "Paramètres du journal",
+        "desc": "Ce que le journal des requêtes conserve pour chaque appel.",
+        "keep": "Conserver les corps des requêtes et des réponses",
+        "keepHint": "Aide à comprendre pourquoi un appel a été refusé. Les réponses aux questions personnelles (noms, e-mails, numéros de téléphone, adresses, coordonnées bancaires) sont toujours masquées.",
+        "for": "Les conserver pendant",
+        "days": "{n} jour | {n} jours",
+        "never": "Les tokens ne sont jamais journalisés, seulement leur partie visible. Les valeurs d'en-têtes requises et les signatures sont masquées.",
+        "saved": "Paramètres du journal enregistrés"
       }
     }
   },

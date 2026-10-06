@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Aturan akses diaktifkan",
       "api_rule_disabled": "Aturan akses dinonaktifkan",
       "api_rule_deleted": "Aturan akses dihapus",
-      "api_limits_changed": "Batas laju API diubah"
+      "api_limits_changed": "Batas laju API diubah",
+      "api_logging_changed": "Pengaturan log permintaan API diubah"
     },
     "detail": {
       "who": "Siapa",
@@ -4084,6 +4085,86 @@
         "answer": "Jika melewati batas, pemanggil mendapat 429 dengan Retry-After (detik menunggu); setiap jawaban menyebutkan batas dan sisanya.",
         "saved": "Batas laju disimpan",
         "changed": "Diubah {when}"
+      }
+    },
+    "home": {
+      "recent": "Panggilan terbaru",
+      "shortcuts": "Siapkan dan pantau",
+      "answering": "{n} merespons",
+      "last30": "30 hari terakhir",
+      "tokensHint": "{n} uji coba"
+    },
+    "analytics": {
+      "traffic": "Lalu lintas",
+      "perDay": "Rata-rata {n} panggilan per hari",
+      "quiet": "Tidak ada panggilan pada periode ini",
+      "quietDesc": "Panggilan muncul di sini begitu aplikasi menggunakan endpoint Anda.",
+      "worked": "Berhasil",
+      "failed": "Ditolak atau gagal",
+      "endpoint": "Ringkasan endpoint",
+      "previous": "Endpoint sebelumnya",
+      "next": "Endpoint berikutnya",
+      "success": "Panggilan berhasil",
+      "errorShare": "Persentase error",
+      "p50": "Waktu respons tipikal",
+      "p95": "5 % paling lambat",
+      "tokensUsed": "Token digunakan",
+      "topEndpoints": "Endpoint tersibuk",
+      "topCallers": "Token tersibuk",
+      "countries": "Asal panggilan",
+      "period": "Periode",
+      "last7": "7 hari terakhir",
+      "last30": "30 hari terakhir"
+    },
+    "logs": {
+      "search": "Cari alamat, IP, id permintaan, kode, atau token…",
+      "empty": "Tidak ada panggilan pada periode ini",
+      "emptyDesc": "Panggilan ke endpoint Anda muncul di sini, lengkap dengan hasil dan waktunya. Coba periode yang lebih panjang.",
+      "byResult": "Panggilan menurut hasil",
+      "class": {
+        "2xx": "Berhasil",
+        "4xx": "Ditolak (pemanggil)",
+        "5xx": "Gagal (di sisi kami)"
+      },
+      "col": {
+        "at": "Kapan",
+        "call": "Panggilan",
+        "status": "Hasil",
+        "duration": "Durasi",
+        "token": "Token",
+        "caller": "Pemanggil",
+        "country": "Negara",
+        "code": "Kode error",
+        "agent": "Klien"
+      },
+      "sort": {
+        "newest": "Terbaru dulu",
+        "slowest": "Terlambat dulu",
+        "status": "Error dulu"
+      },
+      "requestId": "Id permintaan",
+      "copyId": "Salin id permintaan",
+      "openEndpoint": "Buka endpoint",
+      "noToken": "Tidak ada token valid",
+      "noEndpoint": "Endpoint tidak dikenal",
+      "unknownCountry": "Tidak diketahui",
+      "ok": "Panggilan berhasil.",
+      "headers": "Header",
+      "request": "Isi permintaan",
+      "response": "Isi respons",
+      "noHeaders": "Tidak ada header yang tercatat",
+      "notKept": "Isi tidak disimpan",
+      "notKeptDesc": "Aktifkan Simpan isi di pengaturan log untuk melihat apa yang dikirim dan dijawab (jawaban pribadi tetap disamarkan).",
+      "downloaded": "Panggilan diunduh",
+      "settings": {
+        "title": "Pengaturan log",
+        "desc": "Apa yang disimpan log permintaan tentang setiap panggilan.",
+        "keep": "Simpan isi permintaan dan respons",
+        "keepHint": "Membantu mencari tahu mengapa panggilan ditolak. Jawaban atas pertanyaan pribadi (nama, email, nomor telepon, alamat, data bank) selalu disamarkan.",
+        "for": "Simpan selama",
+        "days": "{n} hari | {n} hari",
+        "never": "Token tidak pernah dicatat di log, hanya bagian yang terlihat. Nilai header wajib dan tanda tangan disamarkan.",
+        "saved": "Pengaturan log disimpan"
       }
     }
   },

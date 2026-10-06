@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Kanuni ya ufikiaji imewashwa",
       "api_rule_disabled": "Kanuni ya ufikiaji imezimwa",
       "api_rule_deleted": "Kanuni ya ufikiaji imefutwa",
-      "api_limits_changed": "Mipaka ya kasi ya API imebadilishwa"
+      "api_limits_changed": "Mipaka ya kasi ya API imebadilishwa",
+      "api_logging_changed": "Mipangilio ya kumbukumbu ya maombi ya API imebadilishwa"
     },
     "detail": {
       "who": "Nani",
@@ -4084,6 +4085,86 @@
         "answer": "Kikomo kikipitwa, wapigaji hupata 429 pamoja na Retry-After (sekunde za kusubiri); kila jibu hutaja kikomo na kilichobaki.",
         "saved": "Mipaka ya kasi imehifadhiwa",
         "changed": "Imebadilishwa {when}"
+      }
+    },
+    "home": {
+      "recent": "Miito ya hivi karibuni",
+      "shortcuts": "Weka na ufuatilie",
+      "answering": "{n} zinajibu",
+      "last30": "siku 30 zilizopita",
+      "tokensHint": "{n} za majaribio"
+    },
+    "analytics": {
+      "traffic": "Trafiki",
+      "perDay": "Wastani wa miito {n} kwa siku",
+      "quiet": "Hakuna miito katika kipindi hiki",
+      "quietDesc": "Miito itaonekana hapa mara tu programu zitakapotumia endpoint zako.",
+      "worked": "Imefanikiwa",
+      "failed": "Imekataliwa au imeshindwa",
+      "endpoint": "Muhtasari wa endpoint",
+      "previous": "Endpoint iliyotangulia",
+      "next": "Endpoint inayofuata",
+      "success": "Miito iliyofanikiwa",
+      "errorShare": "Asilimia ya makosa",
+      "p50": "Muda wa kawaida wa jibu",
+      "p95": "5 % ya polepole zaidi",
+      "tokensUsed": "Tokeni zilizotumika",
+      "topEndpoints": "Endpoint zenye shughuli nyingi zaidi",
+      "topCallers": "Tokeni zenye shughuli nyingi zaidi",
+      "countries": "Miito inatoka wapi",
+      "period": "Kipindi",
+      "last7": "Siku 7 zilizopita",
+      "last30": "Siku 30 zilizopita"
+    },
+    "logs": {
+      "search": "Tafuta anwani, IP, vitambulisho vya ombi, misimbo au tokeni…",
+      "empty": "Hakuna miito katika kipindi hiki",
+      "emptyDesc": "Miito kwa endpoint zako huonekana hapa, pamoja na matokeo na muda uliotumika. Jaribu kipindi kirefu zaidi.",
+      "byResult": "Miito kwa matokeo",
+      "class": {
+        "2xx": "Imefanikiwa",
+        "4xx": "Imekataliwa (mpigaji)",
+        "5xx": "Imeshindwa (upande wetu)"
+      },
+      "col": {
+        "at": "Lini",
+        "call": "Mwito",
+        "status": "Matokeo",
+        "duration": "Muda uliotumika",
+        "token": "Tokeni",
+        "caller": "Mpigaji",
+        "country": "Nchi",
+        "code": "Msimbo wa hitilafu",
+        "agent": "Mteja"
+      },
+      "sort": {
+        "newest": "Mpya kwanza",
+        "slowest": "Polepole kwanza",
+        "status": "Makosa kwanza"
+      },
+      "requestId": "Kitambulisho cha ombi",
+      "copyId": "Nakili kitambulisho cha ombi",
+      "openEndpoint": "Fungua endpoint",
+      "noToken": "Hakuna tokeni halali",
+      "noEndpoint": "Endpoint isiyojulikana",
+      "unknownCountry": "Haijulikani",
+      "ok": "Mwito ulifanikiwa.",
+      "headers": "Vichwa",
+      "request": "Mwili wa ombi",
+      "response": "Mwili wa jibu",
+      "noHeaders": "Hakuna vichwa vilivyorekodiwa",
+      "notKept": "Miili haihifadhiwi",
+      "notKeptDesc": "Washa Hifadhi miili katika mipangilio ya kumbukumbu ili kuona kilichotumwa na kujibiwa (majibu ya kibinafsi hubaki yamefichwa).",
+      "downloaded": "Miito imepakuliwa",
+      "settings": {
+        "title": "Mipangilio ya kumbukumbu",
+        "desc": "Kile ambacho kumbukumbu ya maombi huhifadhi kuhusu kila mwito.",
+        "keep": "Hifadhi miili ya ombi na jibu",
+        "keepHint": "Husaidia kujua kwa nini mwito ulikataliwa. Majibu ya maswali ya kibinafsi (majina, barua pepe, nambari za simu, anwani, taarifa za benki) hufichwa kila wakati.",
+        "for": "Zihifadhi kwa",
+        "days": "siku {n} | siku {n}",
+        "never": "Tokeni hazirekodiwi kamwe kwenye kumbukumbu, ni sehemu yake inayoonekana tu. Thamani za vichwa vinavyohitajika na saini hufichwa.",
+        "saved": "Mipangilio ya kumbukumbu imehifadhiwa"
       }
     }
   },

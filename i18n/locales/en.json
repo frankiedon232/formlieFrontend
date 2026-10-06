@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Access rule switched on",
       "api_rule_disabled": "Access rule switched off",
       "api_rule_deleted": "Access rule deleted",
-      "api_limits_changed": "API rate limits changed"
+      "api_limits_changed": "API rate limits changed",
+      "api_logging_changed": "API request log settings changed"
     },
     "detail": {
       "who": "Who",
@@ -4084,6 +4085,86 @@
         "answer": "Over a limit, callers get 429 with Retry-After (seconds to wait); every answer says the limit and what is left.",
         "saved": "Rate limits saved",
         "changed": "Changed {when}"
+      }
+    },
+    "home": {
+      "recent": "Recent calls",
+      "shortcuts": "Set up and watch",
+      "answering": "{n} answering",
+      "last30": "last 30 days",
+      "tokensHint": "{n} test"
+    },
+    "analytics": {
+      "traffic": "Traffic",
+      "perDay": "{n} calls per day on average",
+      "quiet": "No calls in this period",
+      "quietDesc": "Calls show here as soon as apps use your endpoints.",
+      "worked": "Worked",
+      "failed": "Refused or failed",
+      "endpoint": "Endpoint overview",
+      "previous": "Previous endpoint",
+      "next": "Next endpoint",
+      "success": "Calls that worked",
+      "errorShare": "Error share",
+      "p50": "Typical answer time",
+      "p95": "Slowest 5 %",
+      "tokensUsed": "Tokens used",
+      "topEndpoints": "Busiest endpoints",
+      "topCallers": "Busiest tokens",
+      "countries": "Where calls come from",
+      "period": "Period",
+      "last7": "Last 7 days",
+      "last30": "Last 30 days"
+    },
+    "logs": {
+      "search": "Search addresses, IPs, request ids, codes or tokens…",
+      "empty": "No calls in this period",
+      "emptyDesc": "Calls to your endpoints show here, with their result and time taken. Try a longer period.",
+      "byResult": "Calls by result",
+      "class": {
+        "2xx": "Worked",
+        "4xx": "Refused (caller)",
+        "5xx": "Failed (on our side)"
+      },
+      "col": {
+        "at": "When",
+        "call": "Call",
+        "status": "Result",
+        "duration": "Time taken",
+        "token": "Token",
+        "caller": "Caller",
+        "country": "Country",
+        "code": "Error code",
+        "agent": "Client"
+      },
+      "sort": {
+        "newest": "Newest first",
+        "slowest": "Slowest first",
+        "status": "Errors first"
+      },
+      "requestId": "Request id",
+      "copyId": "Copy request id",
+      "openEndpoint": "Open the endpoint",
+      "noToken": "No valid token",
+      "noEndpoint": "Unknown endpoint",
+      "unknownCountry": "Unknown",
+      "ok": "The call worked.",
+      "headers": "Headers",
+      "request": "Request body",
+      "response": "Answer body",
+      "noHeaders": "No headers recorded",
+      "notKept": "Bodies aren't kept",
+      "notKeptDesc": "Switch on Keep bodies in the log settings to see what was sent and answered (personal answers stay masked).",
+      "downloaded": "Calls downloaded",
+      "settings": {
+        "title": "Log settings",
+        "desc": "What the request log keeps about each call.",
+        "keep": "Keep request and answer bodies",
+        "keepHint": "Helps find out why a call was refused. Answers to personal questions (names, emails, phone numbers, addresses, bank details) are always masked.",
+        "for": "Keep them for",
+        "days": "{n} day | {n} days",
+        "never": "Tokens are never logged, only their visible part. Required header values and signatures are masked.",
+        "saved": "Log settings saved"
       }
     }
   },

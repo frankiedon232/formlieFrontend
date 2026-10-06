@@ -96,6 +96,8 @@ interface TenantApi {
   limits?: ApiRateLimits
   /** Calls refused by a rate limit, per day. */
   limited?: Record<string, number>
+  /** Request log: keep request and response bodies (personal answers masked). */
+  logging?: { keep_bodies: boolean; days: number }
 }
 
 const DAY = 86_400_000

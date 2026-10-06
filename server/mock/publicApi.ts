@@ -24,7 +24,7 @@ import { allFields } from '#shared/utils/forms/build'
 import { isFileField } from '#shared/utils/forms/file-answers'
 import { validateAnswer } from '#shared/utils/forms/validate'
 import { exampleRecord } from '#shared/utils/apiService/endpoints'
-import { scopeAllows, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
+import { scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { decideAccess, rulesFor, type AccessCaller } from '#shared/utils/apiService/access'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
 import type { ApiMethod } from '#shared/utils/urls/public'
@@ -36,6 +36,7 @@ import { answersOf, formResponses, type IndexedResponse } from './data/responseD
 import { updateReview } from './data/responseReview'
 import { responsesOf, saveResponses } from './data/responseStore'
 import { MOCK_TENANTS, type MockTenant } from './data/tenants'
+import { recordLog } from './data/apiTraffic'
 
 class PublicError extends Error {
   constructor(
@@ -154,13 +155,82 @@ function record(form: Parameters<typeof answersOf>[0], entry: IndexedResponse, e
   return { id: encodeId(entry.id), submitted_at: new Date(entry.at).toISOString(), status: entry.status, data: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.key, value(field.key)])) }
 }
 
+/** What a call turned out to be, for the request log (filled in as the checks pass). */
+interface CallContext {
+  tenant?: MockTenant
+  endpoint?: StoredApiEndpoint
+  token?: StoredApiToken
+  raw: string
+  caller?: AccessCaller
+}
+/** Answers whose question type holds personal data are masked in kept bodies. */
+const PERSONAL = new Set(['email', 'phone', 'full_name', 'address', 'iban', 'bic', 'ip_address', 'signature', 'date'])
+const maskText = (value: unknown): unknown =>
+  typeof value === 'string' ? (value.length <= 2 ? '••' : `${value[0]}•••${value.slice(-1)}`) : Array.isArray(value) ? value.map(maskText) : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).map(([k, v]) => [k, maskText(v)])) : value == null ? value : '•••'
+function maskAnswers(value: unknown, personal: Set<string>): unknown {
+  if (Array.isArray(value)) return value.map(item => maskAnswers(item, personal))
+  if (!value || typeof value !== 'object') return value
+  return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([key, item]) => [key, personal.has(key) ? maskText(item) : key === 'data' ? maskAnswers(item, personal) : maskAnswers(item, personal)]))
+}
+
+/** Handles a call and writes it to the request log (when the address key belongs to a workspace). */
 export async function handlePublicApi(event: H3Event, path: string) {
+  const context: CallContext = { raw: '' }
+  const started = Date.now()
+  const result = (await handle(event, path, context)) as { error?: { code?: string } } | undefined
+  const tenant = context.tenant
+  if (!tenant) return result
+  const api = apiOf(tenant)
+  const endpoint = context.endpoint
+  const schema = endpoint ? (() => { const form = formsOf(tenant).forms.find(item => item.id === endpoint.form_id); return form ? schemaOf(form, endpoint.version) : null })() : null
+  const personal = new Set(schema ? allFields(schema).filter(field => PERSONAL.has(field.type)).map(field => field.key) : [])
+  const keep = api.logging?.keep_bodies ?? false
+  let requestBody: unknown = null
+  if (keep && context.raw) {
+    try {
+      requestBody = maskAnswers(JSON.parse(context.raw), personal)
+    } catch {
+      requestBody = context.raw.slice(0, 2000)
+    }
+  }
+  const secretHeaders = new Set(['authorization', 'x-formalie-signature', 'cookie', ...(endpoint?.headers ?? []).map(header => header.name.toLowerCase())])
+  const headers = Object.fromEntries(
+    Object.entries(getRequestHeaders(event))
+      .filter(([name, value]) => value !== undefined && name !== 'cookie' && name !== 'host' && !name.startsWith('sec-') && name !== 'connection')
+      .map(([name, value]) => [name, name === 'authorization' ? `Bearer ${secretPreview(String(value).replace(/^Bearer\s+/i, ''))}` : secretHeaders.has(name) ? '••••' : String(value).slice(0, 200)]),
+  )
+  const service = endpoint ? api.services.find(item => item.id === endpoint.service_id) : undefined
+  recordLog(tenant, {
+    id: crypto.randomUUID(),
+    at: new Date(started).toISOString(),
+    method: event.method.toUpperCase(),
+    path: path.split('?')[0]!,
+    status: getResponseStatus(event),
+    code: result?.error?.code ?? null,
+    duration_ms: Date.now() - started,
+    endpoint: endpoint ? { id: endpoint.id, name: endpoint.name } : null,
+    service: service ? { id: service.id, name: service.name } : null,
+    token: context.token ? { id: context.token.id, name: context.token.name, mode: context.token.mode } : null,
+    ip: context.caller?.ip ?? getRequestIP(event) ?? '0.0.0.0',
+    country: context.caller?.country ?? null,
+    user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 200),
+    request_id: String(getResponseHeader(event, 'x-request-id') ?? crypto.randomUUID()),
+    request_body: requestBody,
+    response_body: keep ? maskAnswers(result ?? null, personal) : null,
+    request_headers: headers,
+  })
+  return result
+}
+
+async function handle(event: H3Event, path: string, context: CallContext) {
   try {
     const [key = '', name = '', recordRef, extra] = path.replace(/^\/+|\/+$/g, '').split('/')
     const method = event.method.toUpperCase()
     const tenant = tenantByKey(key)
+    context.tenant = tenant ?? undefined
     if (!tenant || extra !== undefined) throw new PublicError('FRM-API-1006')
     const raw = ['POST', 'PUT'].includes(method) ? ((await readRawBody(event, 'utf8')) ?? '') : ''
+    context.raw = raw.slice(0, 20_000)
     let body: Record<string, unknown> = {}
     if (raw) {
       try {
@@ -184,8 +254,10 @@ export async function handlePublicApi(event: H3Event, path: string) {
     const api = apiOf(tenant)
     const endpoint = api.endpoints.find(item => item.name === name)
     if (!endpoint) throw new PublicError('FRM-API-1006')
+    context.endpoint = endpoint
     // Access rules: a block refuses; when allow rules apply, one must match
     const caller = callerOf(event)
+    context.caller = caller
     const applies = rulesFor(api.rules, endpoint)
     const decision = decideAccess(applies, caller)
     const decided = decision.rule ? api.rules.find(item => item.id === decision.rule!.id) : undefined
@@ -197,6 +269,7 @@ export async function handlePublicApi(event: H3Event, path: string) {
     if (!decision.allowed) throw new PublicError('FRM-API-1015', [{ field: decision.reason!, message: decision.rule?.value ?? 'no allow rule matched' }])
     rateLimit(tenant, `ip:${tenant.id}:${caller.ip}`, api.limits.per_ip)
     const token = callerToken(event, tenant)
+    context.token = token
     const left = rateLimit(tenant, `token:${token.id}`, api.limits.per_token)
     rateLimit(tenant, `endpoint:${endpoint.id}`, api.limits.per_endpoint)
     if (left) {

@@ -10,6 +10,7 @@ import * as responses from './routes/responses'
 import * as analytics from './routes/analytics'
 import * as apiService from './routes/apiService'
 import * as apiAccess from './routes/apiAccess'
+import * as apiTraffic from './routes/apiTraffic'
 import * as responseExports from './routes/responseExports'
 import * as folders from './routes/folders'
 import * as dataSources from './routes/dataSources'
@@ -91,6 +92,12 @@ const router = createRouter()
   .get('/api-service/settings', apiService.apiSettings)
   .post('/api-service/key/rotate', apiService.rotateApiKey)
   .get('/api-service/limits', apiAccess.getRateLimits)
+  .get('/api-logs', apiTraffic.listApiLogs)
+  .get('/api-logs/insights', apiTraffic.apiLogInsights)
+  .get('/api-logs/settings', apiTraffic.getApiLogSettings)
+  .put('/api-logs/settings', apiTraffic.updateApiLogSettings)
+  .get('/api-logs/:id', apiTraffic.getApiLog)
+  .get('/api-analytics', apiTraffic.apiAnalytics)
   .put('/api-service/limits', apiAccess.updateRateLimits)
   .get('/api-access-rules', apiAccess.listAccessRules)
   .get('/api-access-rules/insights', apiAccess.accessInsights)

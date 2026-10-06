@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Regla de acceso activada",
       "api_rule_disabled": "Regla de acceso desactivada",
       "api_rule_deleted": "Regla de acceso eliminada",
-      "api_limits_changed": "Límites de frecuencia de la API modificados"
+      "api_limits_changed": "Límites de frecuencia de la API modificados",
+      "api_logging_changed": "Configuración del registro de solicitudes de API modificada"
     },
     "detail": {
       "who": "Quién",
@@ -4084,6 +4085,86 @@
         "answer": "Al superar un límite, los llamadores reciben 429 con Retry-After (segundos de espera); cada respuesta indica el límite y lo que queda.",
         "saved": "Límites de frecuencia guardados",
         "changed": "Modificado {when}"
+      }
+    },
+    "home": {
+      "recent": "Llamadas recientes",
+      "shortcuts": "Configurar y supervisar",
+      "answering": "{n} respondiendo",
+      "last30": "últimos 30 días",
+      "tokensHint": "{n} de prueba"
+    },
+    "analytics": {
+      "traffic": "Tráfico",
+      "perDay": "{n} llamadas al día de media",
+      "quiet": "Sin llamadas en este período",
+      "quietDesc": "Las llamadas aparecerán aquí en cuanto las aplicaciones usen tus endpoints.",
+      "worked": "Correctas",
+      "failed": "Rechazadas o fallidas",
+      "endpoint": "Resumen del endpoint",
+      "previous": "Endpoint anterior",
+      "next": "Endpoint siguiente",
+      "success": "Llamadas correctas",
+      "errorShare": "Porcentaje de errores",
+      "p50": "Tiempo de respuesta típico",
+      "p95": "El 5 % más lento",
+      "tokensUsed": "Tokens usados",
+      "topEndpoints": "Endpoints más activos",
+      "topCallers": "Tokens más activos",
+      "countries": "De dónde vienen las llamadas",
+      "period": "Período",
+      "last7": "Últimos 7 días",
+      "last30": "Últimos 30 días"
+    },
+    "logs": {
+      "search": "Buscar direcciones, IP, ids de solicitud, códigos o tokens…",
+      "empty": "Sin llamadas en este período",
+      "emptyDesc": "Las llamadas a tus endpoints aparecen aquí con su resultado y duración. Prueba con un período más largo.",
+      "byResult": "Llamadas por resultado",
+      "class": {
+        "2xx": "Correcta",
+        "4xx": "Rechazada (llamante)",
+        "5xx": "Fallida (por nuestra parte)"
+      },
+      "col": {
+        "at": "Cuándo",
+        "call": "Llamada",
+        "status": "Resultado",
+        "duration": "Duración",
+        "token": "Token",
+        "caller": "Llamante",
+        "country": "País",
+        "code": "Código de error",
+        "agent": "Cliente"
+      },
+      "sort": {
+        "newest": "Más recientes primero",
+        "slowest": "Más lentas primero",
+        "status": "Errores primero"
+      },
+      "requestId": "Id de solicitud",
+      "copyId": "Copiar id de solicitud",
+      "openEndpoint": "Abrir el endpoint",
+      "noToken": "Sin token válido",
+      "noEndpoint": "Endpoint desconocido",
+      "unknownCountry": "Desconocido",
+      "ok": "La llamada se realizó correctamente.",
+      "headers": "Encabezados",
+      "request": "Cuerpo de la solicitud",
+      "response": "Cuerpo de la respuesta",
+      "noHeaders": "No se registraron encabezados",
+      "notKept": "Los cuerpos no se conservan",
+      "notKeptDesc": "Activa Conservar cuerpos en la configuración del registro para ver lo que se envió y respondió (las respuestas personales siguen enmascaradas).",
+      "downloaded": "Llamadas descargadas",
+      "settings": {
+        "title": "Configuración del registro",
+        "desc": "Qué conserva el registro de solicitudes de cada llamada.",
+        "keep": "Conservar los cuerpos de solicitud y respuesta",
+        "keepHint": "Ayuda a descubrir por qué se rechazó una llamada. Las respuestas a preguntas personales (nombres, correos, teléfonos, direcciones, datos bancarios) siempre se enmascaran.",
+        "for": "Conservarlos durante",
+        "days": "{n} día | {n} días",
+        "never": "Los tokens nunca se registran, solo su parte visible. Los valores de encabezados obligatorios y las firmas se enmascaran.",
+        "saved": "Configuración del registro guardada"
       }
     }
   },

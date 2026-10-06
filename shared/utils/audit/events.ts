@@ -143,6 +143,7 @@ export const AUDIT_EVENTS = {
   'api.rule_disabled': { area: 'api', icon: 'i-lucide-shield-off' },
   'api.rule_deleted': { area: 'api', icon: 'i-lucide-shield-x' },
   'api.limits_changed': { area: 'api', icon: 'i-lucide-gauge' },
+  'api.logging_changed': { area: 'api', icon: 'i-lucide-scroll-text' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>

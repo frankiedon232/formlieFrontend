@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "액세스 규칙을 켰습니다",
       "api_rule_disabled": "액세스 규칙을 껐습니다",
       "api_rule_deleted": "액세스 규칙을 삭제했습니다",
-      "api_limits_changed": "API 요청 제한을 변경했습니다"
+      "api_limits_changed": "API 요청 제한을 변경했습니다",
+      "api_logging_changed": "API 요청 로그 설정이 변경되었습니다"
     },
     "detail": {
       "who": "누가",
@@ -4084,6 +4085,86 @@
         "answer": "제한을 초과하면 호출자는 429와 Retry-After(대기할 초)를 받으며, 모든 응답에 제한 값과 남은 횟수가 표시됩니다.",
         "saved": "요청 제한을 저장했습니다",
         "changed": "{when} 변경"
+      }
+    },
+    "home": {
+      "recent": "최근 호출",
+      "shortcuts": "설정 및 모니터링",
+      "answering": "{n}개 응답 중",
+      "last30": "최근 30일",
+      "tokensHint": "테스트 {n}개"
+    },
+    "analytics": {
+      "traffic": "트래픽",
+      "perDay": "하루 평균 {n}건 호출",
+      "quiet": "이 기간에 호출이 없습니다",
+      "quietDesc": "앱이 엔드포인트를 사용하는 즉시 호출이 여기에 표시됩니다.",
+      "worked": "성공",
+      "failed": "거부 또는 실패",
+      "endpoint": "엔드포인트 개요",
+      "previous": "이전 엔드포인트",
+      "next": "다음 엔드포인트",
+      "success": "성공한 호출",
+      "errorShare": "오류 비율",
+      "p50": "일반 응답 시간",
+      "p95": "가장 느린 5 %",
+      "tokensUsed": "사용된 토큰",
+      "topEndpoints": "가장 많이 호출된 엔드포인트",
+      "topCallers": "가장 많이 사용된 토큰",
+      "countries": "호출 발생 지역",
+      "period": "기간",
+      "last7": "최근 7일",
+      "last30": "최근 30일"
+    },
+    "logs": {
+      "search": "주소, IP, 요청 ID, 코드 또는 토큰 검색…",
+      "empty": "이 기간에 호출이 없습니다",
+      "emptyDesc": "엔드포인트 호출이 결과와 소요 시간과 함께 여기에 표시됩니다. 더 긴 기간을 선택해 보세요.",
+      "byResult": "결과별 호출",
+      "class": {
+        "2xx": "성공",
+        "4xx": "거부됨(호출자)",
+        "5xx": "실패(당사 측)"
+      },
+      "col": {
+        "at": "시간",
+        "call": "호출",
+        "status": "결과",
+        "duration": "소요 시간",
+        "token": "토큰",
+        "caller": "호출자",
+        "country": "국가",
+        "code": "오류 코드",
+        "agent": "클라이언트"
+      },
+      "sort": {
+        "newest": "최신순",
+        "slowest": "느린 순",
+        "status": "오류 우선"
+      },
+      "requestId": "요청 ID",
+      "copyId": "요청 ID 복사",
+      "openEndpoint": "엔드포인트 열기",
+      "noToken": "유효한 토큰 없음",
+      "noEndpoint": "알 수 없는 엔드포인트",
+      "unknownCountry": "알 수 없음",
+      "ok": "호출이 성공했습니다.",
+      "headers": "헤더",
+      "request": "요청 본문",
+      "response": "응답 본문",
+      "noHeaders": "기록된 헤더 없음",
+      "notKept": "본문이 저장되지 않습니다",
+      "notKeptDesc": "전송 및 응답 내용을 보려면 로그 설정에서 본문 저장을 켜세요(개인 답변은 계속 마스킹됩니다).",
+      "downloaded": "호출을 다운로드했습니다",
+      "settings": {
+        "title": "로그 설정",
+        "desc": "요청 로그가 각 호출에 대해 저장하는 내용입니다.",
+        "keep": "요청 및 응답 본문 저장",
+        "keepHint": "호출이 거부된 이유를 파악하는 데 도움이 됩니다. 개인 질문에 대한 답변(이름, 이메일, 전화번호, 주소, 은행 정보)은 항상 마스킹됩니다.",
+        "for": "보관 기간",
+        "days": "{n}일 | {n}일",
+        "never": "토큰은 기록되지 않으며 보이는 부분만 기록됩니다. 필수 헤더 값과 서명은 마스킹됩니다.",
+        "saved": "로그 설정을 저장했습니다"
       }
     }
   },

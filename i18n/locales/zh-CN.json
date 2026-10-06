@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "已启用访问规则",
       "api_rule_disabled": "已停用访问规则",
       "api_rule_deleted": "已删除访问规则",
-      "api_limits_changed": "已更改 API 速率限制"
+      "api_limits_changed": "已更改 API 速率限制",
+      "api_logging_changed": "API 请求日志设置已更改"
     },
     "detail": {
       "who": "谁",
@@ -4084,6 +4085,86 @@
         "answer": "超过限制时，调用方会收到 429 和 Retry-After（需等待的秒数）；每个响应都会说明限制和剩余次数。",
         "saved": "速率限制已保存",
         "changed": "更改于 {when}"
+      }
+    },
+    "home": {
+      "recent": "最近调用",
+      "shortcuts": "设置与监控",
+      "answering": "{n} 个正在响应",
+      "last30": "最近 30 天",
+      "tokensHint": "{n} 个测试"
+    },
+    "analytics": {
+      "traffic": "流量",
+      "perDay": "平均每天 {n} 次调用",
+      "quiet": "此时间段内没有调用",
+      "quietDesc": "应用一旦使用您的端点，调用就会显示在这里。",
+      "worked": "成功",
+      "failed": "被拒绝或失败",
+      "endpoint": "端点概览",
+      "previous": "上一个端点",
+      "next": "下一个端点",
+      "success": "成功的调用",
+      "errorShare": "错误占比",
+      "p50": "典型响应时间",
+      "p95": "最慢的 5 %",
+      "tokensUsed": "已使用的令牌",
+      "topEndpoints": "最繁忙的端点",
+      "topCallers": "最繁忙的令牌",
+      "countries": "调用来自哪里",
+      "period": "时间段",
+      "last7": "最近 7 天",
+      "last30": "最近 30 天"
+    },
+    "logs": {
+      "search": "搜索地址、IP、请求 ID、代码或令牌…",
+      "empty": "此时间段内没有调用",
+      "emptyDesc": "对您端点的调用会连同结果和耗时显示在这里。请尝试更长的时间段。",
+      "byResult": "按结果统计的调用",
+      "class": {
+        "2xx": "成功",
+        "4xx": "已拒绝（调用方）",
+        "5xx": "失败（我们这边）"
+      },
+      "col": {
+        "at": "时间",
+        "call": "调用",
+        "status": "结果",
+        "duration": "耗时",
+        "token": "令牌",
+        "caller": "调用方",
+        "country": "国家/地区",
+        "code": "错误代码",
+        "agent": "客户端"
+      },
+      "sort": {
+        "newest": "最新优先",
+        "slowest": "最慢优先",
+        "status": "错误优先"
+      },
+      "requestId": "请求 ID",
+      "copyId": "复制请求 ID",
+      "openEndpoint": "打开端点",
+      "noToken": "没有有效令牌",
+      "noEndpoint": "未知端点",
+      "unknownCountry": "未知",
+      "ok": "调用成功。",
+      "headers": "请求头",
+      "request": "请求正文",
+      "response": "响应正文",
+      "noHeaders": "未记录请求头",
+      "notKept": "不保存正文",
+      "notKeptDesc": "在日志设置中开启“保存正文”，即可查看发送和返回的内容（个人答案仍会被遮蔽）。",
+      "downloaded": "调用已下载",
+      "settings": {
+        "title": "日志设置",
+        "desc": "请求日志会保存每次调用的哪些内容。",
+        "keep": "保存请求和响应正文",
+        "keepHint": "有助于查明调用被拒绝的原因。对个人问题的回答（姓名、电子邮件、电话号码、地址、银行信息）始终会被遮蔽。",
+        "for": "保存时长",
+        "days": "{n} 天 | {n} 天",
+        "never": "令牌绝不会被记录，只记录其可见部分。必需的请求头值和签名会被遮蔽。",
+        "saved": "日志设置已保存"
       }
     }
   },

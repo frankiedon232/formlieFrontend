@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Regola di accesso attivata",
       "api_rule_disabled": "Regola di accesso disattivata",
       "api_rule_deleted": "Regola di accesso eliminata",
-      "api_limits_changed": "Limiti di frequenza dell'API modificati"
+      "api_limits_changed": "Limiti di frequenza dell'API modificati",
+      "api_logging_changed": "Impostazioni del registro delle richieste API modificate"
     },
     "detail": {
       "who": "Chi",
@@ -4084,6 +4085,86 @@
         "answer": "Oltre un limite, i chiamanti ricevono 429 con Retry-After (secondi di attesa); ogni risposta indica il limite e quanto resta.",
         "saved": "Limiti di frequenza salvati",
         "changed": "Modificato {when}"
+      }
+    },
+    "home": {
+      "recent": "Chiamate recenti",
+      "shortcuts": "Configura e monitora",
+      "answering": "{n} in risposta",
+      "last30": "ultimi 30 giorni",
+      "tokensHint": "{n} di test"
+    },
+    "analytics": {
+      "traffic": "Traffico",
+      "perDay": "{n} chiamate al giorno in media",
+      "quiet": "Nessuna chiamata in questo periodo",
+      "quietDesc": "Le chiamate compaiono qui non appena le app usano i tuoi endpoint.",
+      "worked": "Riuscite",
+      "failed": "Rifiutate o non riuscite",
+      "endpoint": "Panoramica dell'endpoint",
+      "previous": "Endpoint precedente",
+      "next": "Endpoint successivo",
+      "success": "Chiamate riuscite",
+      "errorShare": "Quota di errori",
+      "p50": "Tempo di risposta tipico",
+      "p95": "Il 5 % più lento",
+      "tokensUsed": "Token usati",
+      "topEndpoints": "Endpoint più usati",
+      "topCallers": "Token più usati",
+      "countries": "Da dove arrivano le chiamate",
+      "period": "Periodo",
+      "last7": "Ultimi 7 giorni",
+      "last30": "Ultimi 30 giorni"
+    },
+    "logs": {
+      "search": "Cerca indirizzi, IP, id richiesta, codici o token…",
+      "empty": "Nessuna chiamata in questo periodo",
+      "emptyDesc": "Le chiamate ai tuoi endpoint compaiono qui, con esito e durata. Prova un periodo più lungo.",
+      "byResult": "Chiamate per esito",
+      "class": {
+        "2xx": "Riuscita",
+        "4xx": "Rifiutata (chiamante)",
+        "5xx": "Non riuscita (lato nostro)"
+      },
+      "col": {
+        "at": "Quando",
+        "call": "Chiamata",
+        "status": "Esito",
+        "duration": "Durata",
+        "token": "Token",
+        "caller": "Chiamante",
+        "country": "Paese",
+        "code": "Codice errore",
+        "agent": "Client"
+      },
+      "sort": {
+        "newest": "Più recenti prima",
+        "slowest": "Più lente prima",
+        "status": "Errori prima"
+      },
+      "requestId": "Id richiesta",
+      "copyId": "Copia id richiesta",
+      "openEndpoint": "Apri l'endpoint",
+      "noToken": "Nessun token valido",
+      "noEndpoint": "Endpoint sconosciuto",
+      "unknownCountry": "Sconosciuto",
+      "ok": "La chiamata è riuscita.",
+      "headers": "Intestazioni",
+      "request": "Corpo della richiesta",
+      "response": "Corpo della risposta",
+      "noHeaders": "Nessuna intestazione registrata",
+      "notKept": "I corpi non vengono conservati",
+      "notKeptDesc": "Attiva Conserva i corpi nelle impostazioni del registro per vedere cosa è stato inviato e risposto (le risposte personali restano mascherate).",
+      "downloaded": "Chiamate scaricate",
+      "settings": {
+        "title": "Impostazioni del registro",
+        "desc": "Cosa conserva il registro delle richieste di ogni chiamata.",
+        "keep": "Conserva i corpi di richiesta e risposta",
+        "keepHint": "Aiuta a capire perché una chiamata è stata rifiutata. Le risposte a domande personali (nomi, e-mail, numeri di telefono, indirizzi, dati bancari) sono sempre mascherate.",
+        "for": "Conservali per",
+        "days": "{n} giorno | {n} giorni",
+        "never": "I token non vengono mai registrati, solo la loro parte visibile. I valori delle intestazioni obbligatorie e le firme sono mascherati.",
+        "saved": "Impostazioni del registro salvate"
       }
     }
   },

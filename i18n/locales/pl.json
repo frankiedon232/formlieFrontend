@@ -1001,7 +1001,8 @@
       "api_rule_enabled": "Włączono regułę dostępu",
       "api_rule_disabled": "Wyłączono regułę dostępu",
       "api_rule_deleted": "Usunięto regułę dostępu",
-      "api_limits_changed": "Zmieniono limity zapytań API"
+      "api_limits_changed": "Zmieniono limity zapytań API",
+      "api_logging_changed": "Zmieniono ustawienia dziennika żądań API"
     },
     "detail": {
       "who": "Kto",
@@ -4084,6 +4085,86 @@
         "answer": "Po przekroczeniu limitu wywołujący otrzymują 429 z Retry-After (sekundy oczekiwania); każda odpowiedź podaje limit i to, co zostało.",
         "saved": "Zapisano limity zapytań",
         "changed": "Zmieniono {when}"
+      }
+    },
+    "home": {
+      "recent": "Ostatnie wywołania",
+      "shortcuts": "Skonfiguruj i obserwuj",
+      "answering": "Odpowiada: {n}",
+      "last30": "ostatnie 30 dni",
+      "tokensHint": "{n} testowe"
+    },
+    "analytics": {
+      "traffic": "Ruch",
+      "perDay": "Średnio {n} wywołań dziennie",
+      "quiet": "Brak wywołań w tym okresie",
+      "quietDesc": "Wywołania pojawią się tutaj, gdy aplikacje zaczną korzystać z Twoich endpointów.",
+      "worked": "Udane",
+      "failed": "Odrzucone lub nieudane",
+      "endpoint": "Przegląd endpointu",
+      "previous": "Poprzedni endpoint",
+      "next": "Następny endpoint",
+      "success": "Udane wywołania",
+      "errorShare": "Odsetek błędów",
+      "p50": "Typowy czas odpowiedzi",
+      "p95": "Najwolniejsze 5 %",
+      "tokensUsed": "Użyte tokeny",
+      "topEndpoints": "Najczęściej używane endpointy",
+      "topCallers": "Najczęściej używane tokeny",
+      "countries": "Skąd pochodzą wywołania",
+      "period": "Okres",
+      "last7": "Ostatnie 7 dni",
+      "last30": "Ostatnie 30 dni"
+    },
+    "logs": {
+      "search": "Szukaj adresów, IP, identyfikatorów żądań, kodów lub tokenów…",
+      "empty": "Brak wywołań w tym okresie",
+      "emptyDesc": "Wywołania Twoich endpointów pojawiają się tutaj wraz z wynikiem i czasem. Spróbuj dłuższego okresu.",
+      "byResult": "Wywołania według wyniku",
+      "class": {
+        "2xx": "Udane",
+        "4xx": "Odrzucone (wywołujący)",
+        "5xx": "Nieudane (po naszej stronie)"
+      },
+      "col": {
+        "at": "Kiedy",
+        "call": "Wywołanie",
+        "status": "Wynik",
+        "duration": "Czas trwania",
+        "token": "Token",
+        "caller": "Wywołujący",
+        "country": "Kraj",
+        "code": "Kod błędu",
+        "agent": "Klient"
+      },
+      "sort": {
+        "newest": "Najnowsze najpierw",
+        "slowest": "Najwolniejsze najpierw",
+        "status": "Błędy najpierw"
+      },
+      "requestId": "Identyfikator żądania",
+      "copyId": "Kopiuj identyfikator żądania",
+      "openEndpoint": "Otwórz endpoint",
+      "noToken": "Brak prawidłowego tokenu",
+      "noEndpoint": "Nieznany endpoint",
+      "unknownCountry": "Nieznany",
+      "ok": "Wywołanie się powiodło.",
+      "headers": "Nagłówki",
+      "request": "Treść żądania",
+      "response": "Treść odpowiedzi",
+      "noHeaders": "Nie zapisano nagłówków",
+      "notKept": "Treści nie są przechowywane",
+      "notKeptDesc": "Włącz Przechowuj treści w ustawieniach dziennika, aby zobaczyć, co wysłano i co odpowiedziano (odpowiedzi osobiste pozostają zamaskowane).",
+      "downloaded": "Pobrano wywołania",
+      "settings": {
+        "title": "Ustawienia dziennika",
+        "desc": "Co dziennik żądań zachowuje o każdym wywołaniu.",
+        "keep": "Przechowuj treści żądań i odpowiedzi",
+        "keepHint": "Pomaga ustalić, dlaczego wywołanie zostało odrzucone. Odpowiedzi na pytania osobiste (imiona i nazwiska, adresy e-mail, numery telefonów, adresy, dane bankowe) są zawsze maskowane.",
+        "for": "Przechowuj przez",
+        "days": "{n} dzień | {n} dni",
+        "never": "Tokeny nigdy nie są zapisywane w dzienniku, tylko ich widoczna część. Wymagane wartości nagłówków i podpisy są maskowane.",
+        "saved": "Zapisano ustawienia dziennika"
       }
     }
   },
