@@ -411,7 +411,6 @@
     "responsesApproved": "Approved",
     "responsesRejected": "Rejected",
     "responsesExports": "Exports",
-    "apiApps": "App integrations",
     "templatesMine": "Your templates",
     "themesSystem": "Formalie",
     "themesSaved": "Saved",
@@ -3658,8 +3657,7 @@
       "analytics": "Calls, errors and response times per service and endpoint.",
       "docs": "Ready-made documentation and a place to try each endpoint.",
       "webhooks": "Send each new response to your own systems as it arrives, with your webhook token, and retried.",
-      "apiKeys": "Keys for Formalie's own API: manage forms and responses from your code.",
-      "apps": "Connect apps such as spreadsheets and team chat."
+      "apiKeys": "Keys for Formalie's own API: manage forms and responses from your code."
     },
     "optional": "Optional",
     "address": "Address",

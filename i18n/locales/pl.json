@@ -411,7 +411,6 @@
     "responsesApproved": "Zatwierdzone",
     "responsesRejected": "Odrzucone",
     "responsesExports": "Eksporty",
-    "apiApps": "Integracje aplikacji",
     "templatesMine": "Twoje szablony",
     "themesSystem": "Formalie",
     "themesSaved": "Zapisane",
@@ -3658,8 +3657,7 @@
       "analytics": "Wywołania, błędy i czasy odpowiedzi według usługi i endpointu.",
       "docs": "Gotowa dokumentacja i miejsce do testowania każdego endpointu.",
       "webhooks": "Każda nowa odpowiedź trafia od razu do Państwa systemów, z Państwa tokenem webhooka i ponawiana w razie błędu.",
-      "apiKeys": "Klucze do API Formalie: zarządzanie formularzami i odpowiedziami z poziomu kodu.",
-      "apps": "Połączenie z aplikacjami, takimi jak arkusze kalkulacyjne i czat zespołu."
+      "apiKeys": "Klucze do API Formalie: zarządzanie formularzami i odpowiedziami z poziomu kodu."
     },
     "optional": "Opcjonalne",
     "address": "Adres",

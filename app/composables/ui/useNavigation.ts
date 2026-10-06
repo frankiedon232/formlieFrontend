@@ -198,7 +198,6 @@ const API_NAV: AppNavItem[] = [
   { key: 'apiDocs', icon: 'i-lucide-book-open', to: '/api-service/docs' },
   // Integrations (owner, 2026-10-03: they belong to the API service).
   { key: 'webhooks', icon: 'i-lucide-webhook', to: '/api-service/webhooks' },
-  { key: 'apiApps', icon: 'i-lucide-blocks', to: '/api-service/apps' },
 ]
 
 /**

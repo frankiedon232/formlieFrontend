@@ -411,7 +411,6 @@
     "responsesApproved": "Goedgekeurd",
     "responsesRejected": "Afgewezen",
     "responsesExports": "Exports",
-    "apiApps": "App-koppelingen",
     "templatesMine": "Je sjablonen",
     "themesSystem": "Formalie",
     "themesSaved": "Opgeslagen",
@@ -3658,8 +3657,7 @@
       "analytics": "Aanroepen, fouten en responstijden per service en endpoint.",
       "docs": "Kant-en-klare documentatie en een plek om elk endpoint te testen.",
       "webhooks": "Stuur elke nieuwe reactie direct naar je eigen systemen, met je webhooktoken en met herhaalpogingen.",
-      "apiKeys": "Sleutels voor de API van Formalie: beheer formulieren en reacties vanuit je code.",
-      "apps": "Koppel apps zoals spreadsheets en teamchat."
+      "apiKeys": "Sleutels voor de API van Formalie: beheer formulieren en reacties vanuit je code."
     },
     "optional": "Optioneel",
     "address": "Adres",

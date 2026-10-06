@@ -411,7 +411,6 @@
     "responsesApproved": "승인됨",
     "responsesRejected": "거부됨",
     "responsesExports": "내보내기",
-    "apiApps": "앱 연동",
     "templatesMine": "내 템플릿",
     "themesSystem": "Formalie",
     "themesSaved": "저장됨",
@@ -3658,8 +3657,7 @@
       "analytics": "서비스 및 엔드포인트별 호출 수, 오류, 응답 시간.",
       "docs": "바로 쓸 수 있는 문서와 각 엔드포인트를 테스트할 공간.",
       "webhooks": "새 응답이 도착하는 즉시 자체 시스템으로 전송합니다. 웹훅 토큰 포함, 재시도 포함.",
-      "apiKeys": "Formalie API 키: 코드에서 양식과 응답을 관리하세요.",
-      "apps": "스프레드시트, 팀 채팅 같은 앱을 연결하세요."
+      "apiKeys": "Formalie API 키: 코드에서 양식과 응답을 관리하세요."
     },
     "optional": "선택 사항",
     "address": "주소",

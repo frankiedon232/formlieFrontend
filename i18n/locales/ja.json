@@ -411,7 +411,6 @@
     "responsesApproved": "承認済み",
     "responsesRejected": "却下",
     "responsesExports": "エクスポート",
-    "apiApps": "アプリ連携",
     "templatesMine": "あなたのテンプレート",
     "themesSystem": "Formalie",
     "themesSaved": "保存済み",
@@ -3658,8 +3657,7 @@
       "analytics": "サービスとエンドポイントごとの呼び出し数、エラー、応答時間。",
       "docs": "すぐに使えるドキュメントと、各エンドポイントを試せる場所。",
       "webhooks": "新しい回答を受信と同時に自社のシステムへ送信します（Webhookトークン付き・自動再試行）。",
-      "apiKeys": "Formalie API のキー：コードからフォームと回答を管理できます。",
-      "apps": "スプレッドシートやチームチャットなどのアプリと連携します。"
+      "apiKeys": "Formalie API のキー：コードからフォームと回答を管理できます。"
     },
     "optional": "任意",
     "address": "アドレス",

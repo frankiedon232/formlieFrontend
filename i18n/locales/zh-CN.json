@@ -411,7 +411,6 @@
     "responsesApproved": "已批准",
     "responsesRejected": "已拒绝",
     "responsesExports": "导出",
-    "apiApps": "应用集成",
     "templatesMine": "你的模板",
     "themesSystem": "Formalie",
     "themesSaved": "已保存",
@@ -3658,8 +3657,7 @@
       "analytics": "按服务和端点统计的调用量、错误和响应时间。",
       "docs": "现成的文档，以及试用每个端点的地方。",
       "webhooks": "每条新回复到达后立即发送到您自己的系统，附带您的 webhook 令牌并自动重试。",
-      "apiKeys": "Formalie 自有 API 的密钥：通过代码管理表单和回复。",
-      "apps": "连接电子表格、团队聊天等应用。"
+      "apiKeys": "Formalie 自有 API 的密钥：通过代码管理表单和回复。"
     },
     "optional": "可选",
     "address": "地址",

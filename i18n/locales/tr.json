@@ -411,7 +411,6 @@
     "responsesApproved": "Onaylandı",
     "responsesRejected": "Reddedildi",
     "responsesExports": "Dışa aktarımlar",
-    "apiApps": "Uygulama entegrasyonları",
     "templatesMine": "Şablonlarınız",
     "themesSystem": "Formalie",
     "themesSaved": "Kaydedilenler",
@@ -3658,8 +3657,7 @@
       "analytics": "Hizmet ve uç nokta başına çağrılar, hatalar ve yanıt süreleri.",
       "docs": "Hazır belgeler ve her uç noktayı denemek için bir alan.",
       "webhooks": "Her yeni yanıtı geldiği anda kendi sistemlerinize gönderin. Webhook token'ınızla ve yeniden denemeli.",
-      "apiKeys": "Formalie API'si için anahtarlar: formları ve yanıtları kodunuzdan yönetin.",
-      "apps": "E-tablolar ve ekip sohbeti gibi uygulamaları bağlayın."
+      "apiKeys": "Formalie API'si için anahtarlar: formları ve yanıtları kodunuzdan yönetin."
     },
     "optional": "İsteğe bağlı",
     "address": "Adres",

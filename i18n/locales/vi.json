@@ -411,7 +411,6 @@
     "responsesApproved": "Đã duyệt",
     "responsesRejected": "Đã từ chối",
     "responsesExports": "Xuất dữ liệu",
-    "apiApps": "Tích hợp ứng dụng",
     "templatesMine": "Mẫu của bạn",
     "themesSystem": "Formalie",
     "themesSaved": "Đã lưu",
@@ -3658,8 +3657,7 @@
       "analytics": "Lượt gọi, lỗi và thời gian phản hồi theo dịch vụ và endpoint.",
       "docs": "Tài liệu sẵn có và nơi để thử từng endpoint.",
       "webhooks": "Gửi từng phản hồi mới đến hệ thống của bạn ngay khi có, kèm token webhook của bạn và tự thử lại.",
-      "apiKeys": "Khóa cho API của Formalie: quản lý biểu mẫu và phản hồi từ mã của bạn.",
-      "apps": "Kết nối các ứng dụng như bảng tính và trò chuyện nhóm."
+      "apiKeys": "Khóa cho API của Formalie: quản lý biểu mẫu và phản hồi từ mã của bạn."
     },
     "optional": "Tùy chọn",
     "address": "Địa chỉ",

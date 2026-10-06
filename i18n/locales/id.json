@@ -411,7 +411,6 @@
     "responsesApproved": "Disetujui",
     "responsesRejected": "Ditolak",
     "responsesExports": "Ekspor",
-    "apiApps": "Integrasi aplikasi",
     "templatesMine": "Templat Anda",
     "themesSystem": "Formalie",
     "themesSaved": "Tersimpan",
@@ -3658,8 +3657,7 @@
       "analytics": "Panggilan, galat, dan waktu respons per layanan dan endpoint.",
       "docs": "Dokumentasi siap pakai dan tempat untuk mencoba setiap endpoint.",
       "webhooks": "Kirim setiap tanggapan baru ke sistem Anda sendiri begitu masuk, dengan token webhook Anda dan dicoba ulang.",
-      "apiKeys": "Kunci untuk API Formalie: kelola formulir dan tanggapan dari kode Anda.",
-      "apps": "Hubungkan aplikasi seperti spreadsheet dan obrolan tim."
+      "apiKeys": "Kunci untuk API Formalie: kelola formulir dan tanggapan dari kode Anda."
     },
     "optional": "Opsional",
     "address": "Alamat",

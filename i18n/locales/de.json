@@ -411,7 +411,6 @@
     "responsesApproved": "Genehmigt",
     "responsesRejected": "Abgelehnt",
     "responsesExports": "Exporte",
-    "apiApps": "App-Integrationen",
     "templatesMine": "Eigene Vorlagen",
     "themesSystem": "Formalie",
     "themesSaved": "Gespeichert",
@@ -3658,8 +3657,7 @@
       "analytics": "Aufrufe, Fehler und Antwortzeiten pro Dienst und Endpunkt.",
       "docs": "Fertige Dokumentation und ein Ort zum Testen jedes Endpunkts.",
       "webhooks": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme, mit Ihrem Webhook-Token und mit Wiederholungsversuchen.",
-      "apiKeys": "Schlüssel für die Formalie-API: Verwalten Sie Formulare und Antworten aus Ihrem Code.",
-      "apps": "Verbinden Sie Apps wie Tabellenkalkulationen und Team-Chat."
+      "apiKeys": "Schlüssel für die Formalie-API: Verwalten Sie Formulare und Antworten aus Ihrem Code."
     },
     "optional": "Optional",
     "address": "Adresse",

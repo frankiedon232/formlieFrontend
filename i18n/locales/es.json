@@ -411,7 +411,6 @@
     "responsesApproved": "Aprobadas",
     "responsesRejected": "Rechazadas",
     "responsesExports": "Exportaciones",
-    "apiApps": "Integraciones de apps",
     "templatesMine": "Tus plantillas",
     "themesSystem": "Formalie",
     "themesSaved": "Guardados",
@@ -3658,8 +3657,7 @@
       "analytics": "Llamadas, errores y tiempos de respuesta por servicio y endpoint.",
       "docs": "Documentación lista para usar y un lugar para probar cada endpoint.",
       "webhooks": "Envía cada nueva respuesta a tus propios sistemas en cuanto llega, con tu token de webhook y con reintentos.",
-      "apiKeys": "Claves para la API de Formalie: gestiona formularios y respuestas desde tu código.",
-      "apps": "Conecte apps como hojas de cálculo y chat de equipo."
+      "apiKeys": "Claves para la API de Formalie: gestiona formularios y respuestas desde tu código."
     },
     "optional": "Opcional",
     "address": "Dirección",

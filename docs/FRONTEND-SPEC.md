@@ -23,7 +23,7 @@ Built with `UDashboardGroup` → `UDashboardSidebar` + `UDashboardPanel`.
 
 ### Menu structure
 
-Forms · Templates · Responses · Analytics · Option Sets · Data sources (own rail area) · API service (own rail area) · Integrations (webhooks) · Settings · Audit Trail (early, F4) · (later) Users · Dashboard · Roles & Access.
+Forms · Templates · Responses · Analytics · Option Sets · Data sources (own rail area) · API service (own rail area) · Webhooks · Settings · Audit Trail (early, F4) · (later) Users · Dashboard · Roles & Access.
 
 ### Navbar (`UDashboardNavbar`) and page header
 
@@ -81,7 +81,7 @@ Breadcrumbs (all segments clickable), search / command palette (`⌘K`/`Ctrl+K` 
 | `/templates` · `/templates/category/{key}` · `/templates/mine` · `/templates/{key}`                                | Formalie's categories (counts + use) → one category's templates; your own templates apart; one template (preview, use)                                              |
 | `/responses`                                                                                                           | Cross-form responses inbox                                                                                                                                      |
 | `/option-sets`                                                                                                         | Predefined select lists                                                                                                                                         |
-| `/api-service/webhooks` · `/apps`                                                                                      | Webhooks, app integrations (F13; old `/integrations/*` links redirect; API keys folded into tokens 2026-10-06)                                                                                |
+| `/api-service/webhooks`                                                                                                | Webhooks (F13; old `/integrations/*` links redirect; API keys folded into tokens and App integrations dropped 2026-10-06)                                                                                |
 | `/data-sources`                                                                                                        | Data sources area (own rail icon, own menu, F12): overview of the sections                                                                                      |
 | `/data-sources/connections` · `/explorer` · `/query` · `/saved-queries` · `/destinations` · `/transfers` · `/activity` | Connections, database explorer, query editor, saved queries, destinations (form data → tables), imports & exports, activity (placeholders until F12)            |
 | `/api-service`                                                                                                         | API service area (own rail icon, own menu, F13): overview, link · embed · API channels, example endpoint                                                       |

@@ -411,7 +411,6 @@
     "responsesApproved": "Yameidhinishwa",
     "responsesRejected": "Yamekataliwa",
     "responsesExports": "Uhamishaji",
-    "apiApps": "Miunganisho ya programu",
     "templatesMine": "Violezo vyako",
     "themesSystem": "Formalie",
     "themesSaved": "Zilizohifadhiwa",
@@ -3658,8 +3657,7 @@
       "analytics": "Miito, hitilafu na muda wa majibu kwa kila huduma na endpoint.",
       "docs": "Nyaraka zilizo tayari na mahali pa kujaribu kila endpoint.",
       "webhooks": "Tuma kila jibu jipya kwa mifumo yako mara linapofika, ukiwa na tokeni yako ya webhook, na hujaribiwa tena.",
-      "apiKeys": "Funguo za API ya Formalie: dhibiti fomu na majibu kutoka kwenye msimbo wako.",
-      "apps": "Unganisha programu kama lahajedwali na gumzo la timu."
+      "apiKeys": "Funguo za API ya Formalie: dhibiti fomu na majibu kutoka kwenye msimbo wako."
     },
     "optional": "Si lazima",
     "address": "Anwani",
