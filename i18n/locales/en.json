@@ -3713,10 +3713,10 @@
       "none": "This form has no questions yet",
       "formRequired": "required by the form",
       "why": {
-        "file": "files can't be sent through the API yet",
         "calculated": "worked out by the form",
         "payment": "payments can't be sent through the API",
-        "locked": "read-only on the form"
+        "locked": "read-only on the form",
+        "signature": "signatures are drawn on the form page"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} day | {n} days",
         "never": "Tokens are never logged, only their visible part. Required header values and signatures are masked.",
         "saved": "Log settings saved"
+      }
+    },
+    "docs": {
+      "language": "Code language",
+      "tryIt": "Try it",
+      "test": "Test",
+      "body": "Body (JSON)",
+      "col": {
+        "key": "Key",
+        "type": "Type",
+        "values": "Allowed values"
+      },
+      "fileValue": "File ids from the upload step",
+      "putHint": "Send only the answers you change; the others stay as they are.",
+      "keyHint": "Send a new Formalie-Key with every new record. A retry with the same key gets the first record back, never a second one.",
+      "query": "Query options",
+      "page": "page number, from 1",
+      "perPage": "records per page, up to {n}",
+      "sort": "oldest first (without it, newest first)",
+      "filterBy": "only records with this {label}",
+      "code": "Code",
+      "guide": "How every call works",
+      "baseUrl": "Address",
+      "baseUrlHint": "Every endpoint of your organisation starts with this address. Add the endpoint name after it.",
+      "auth": {
+        "title": "Sign in with a token",
+        "text": "Send a token from Authentication as Authorization: Bearer with every call. Client tokens first get a short-lived access token with their client id and secret, as below."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "A unique id you make for each new record (a UUID works well). If the network fails and you send the same call again, Formalie answers with the record it already made."
+      },
+      "files": {
+        "title": "Sending files",
+        "text": "Upload each file first, as form data with the field name file and the question key in field. The answer gives the file's id.",
+        "then": "Then put the ids in the JSON body under that question, e.g. \"cv\": [\"id\"]. The same file types and sizes as on the form are allowed."
+      },
+      "signing": {
+        "title": "Signed calls",
+        "text": "When a token has signing switched on, every call also carries the time and an HMAC-SHA256 signature made with the signing secret. Calls older than five minutes are refused."
+      },
+      "errors": {
+        "title": "Errors",
+        "text": "A failed call answers with a status and a JSON body with a code you can look up here."
+      },
+      "openapi": "Download OpenAPI",
+      "downloaded": "OpenAPI file downloaded",
+      "failed": "The docs could not be loaded",
+      "fromForm": "Responses of the form {form}.",
+      "headers": "Required headers",
+      "console": {
+        "title": "Try /{name}",
+        "desc": "Runs every real check with a test token. Nothing is stored.",
+        "record": "Record id",
+        "recordPlaceholder": "Leave empty for the list",
+        "keyHelp": "Filled in for you; a new one after each call.",
+        "newKey": "New key",
+        "keepKey": "Keep this key (send the same call again to see the retry)",
+        "headerHelp": "Required by this endpoint.",
+        "testOnly": "Test mode: answers look real, but no response is created, changed or deleted.",
+        "nothingYet": "Send a call to see the answer",
+        "send": "Send",
+        "badJson": "This is not valid JSON."
       }
     }
   },

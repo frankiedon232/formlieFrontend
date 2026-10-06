@@ -3713,10 +3713,10 @@
       "none": "Biểu mẫu này chưa có câu hỏi nào",
       "formRequired": "bắt buộc theo biểu mẫu",
       "why": {
-        "file": "chưa thể gửi tệp qua API",
         "calculated": "do biểu mẫu tính toán",
         "payment": "không thể gửi thanh toán qua API",
-        "locked": "chỉ đọc trên biểu mẫu"
+        "locked": "chỉ đọc trên biểu mẫu",
+        "signature": "chữ ký được vẽ trên trang biểu mẫu"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} ngày | {n} ngày",
         "never": "Token không bao giờ được ghi vào nhật ký, chỉ phần hiển thị của chúng. Giá trị header bắt buộc và chữ ký được che.",
         "saved": "Đã lưu cài đặt nhật ký"
+      }
+    },
+    "docs": {
+      "language": "Ngôn ngữ mã",
+      "tryIt": "Dùng thử",
+      "test": "Kiểm tra",
+      "body": "Nội dung (JSON)",
+      "col": {
+        "key": "Khóa",
+        "type": "Kiểu",
+        "values": "Giá trị cho phép"
+      },
+      "fileValue": "Id tệp từ bước tải lên",
+      "putHint": "Chỉ gửi các câu trả lời bạn thay đổi; những câu còn lại giữ nguyên.",
+      "keyHint": "Gửi một Formalie-Key mới với mỗi bản ghi mới. Thử lại với cùng khóa sẽ trả về bản ghi đầu tiên, không bao giờ tạo bản thứ hai.",
+      "query": "Tùy chọn truy vấn",
+      "page": "số trang, bắt đầu từ 1",
+      "perPage": "số bản ghi mỗi trang, tối đa {n}",
+      "sort": "cũ nhất trước (nếu không có, mới nhất trước)",
+      "filterBy": "chỉ các bản ghi có {label} này",
+      "code": "Mã",
+      "guide": "Mỗi lệnh gọi hoạt động thế nào",
+      "baseUrl": "Địa chỉ",
+      "baseUrlHint": "Mọi endpoint của tổ chức bạn đều bắt đầu bằng địa chỉ này. Thêm tên endpoint vào sau nó.",
+      "auth": {
+        "title": "Đăng nhập bằng token",
+        "text": "Gửi token từ mục Xác thực dưới dạng Authorization: Bearer với mỗi lệnh gọi. Token máy khách trước tiên nhận một token truy cập ngắn hạn bằng client id và mã bí mật của chúng, như bên dưới."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Một id duy nhất bạn tạo cho mỗi bản ghi mới (UUID rất phù hợp). Nếu mạng lỗi và bạn gửi lại cùng lệnh gọi, Formalie sẽ trả lời bằng bản ghi đã tạo."
+      },
+      "files": {
+        "title": "Gửi tệp",
+        "text": "Hãy tải từng tệp lên trước, dưới dạng dữ liệu biểu mẫu, với tên trường file và khóa câu hỏi trong field. Phản hồi cho biết id của tệp.",
+        "then": "Sau đó đặt các id vào nội dung JSON dưới câu hỏi đó, ví dụ \"cv\": [\"id\"]. Cho phép cùng loại và dung lượng tệp như trên biểu mẫu."
+      },
+      "signing": {
+        "title": "Lệnh gọi có chữ ký",
+        "text": "Khi token bật ký, mỗi lệnh gọi còn kèm thời gian và chữ ký HMAC-SHA256 tạo bằng mã bí mật ký. Các lệnh gọi cũ hơn năm phút sẽ bị từ chối."
+      },
+      "errors": {
+        "title": "Lỗi",
+        "text": "Một lệnh gọi thất bại trả về trạng thái và nội dung JSON có mã mà bạn có thể tra cứu ở đây."
+      },
+      "openapi": "Tải OpenAPI",
+      "downloaded": "Đã tải tệp OpenAPI",
+      "failed": "Không thể tải tài liệu",
+      "fromForm": "Phản hồi của biểu mẫu {form}.",
+      "headers": "Header bắt buộc",
+      "console": {
+        "title": "Dùng thử /{name}",
+        "desc": "Chạy mọi kiểm tra thật bằng token thử nghiệm. Không có gì được lưu.",
+        "record": "Id bản ghi",
+        "recordPlaceholder": "Để trống để xem danh sách",
+        "keyHelp": "Đã điền sẵn cho bạn; mới sau mỗi lệnh gọi.",
+        "newKey": "Khóa mới",
+        "keepKey": "Giữ khóa này (gửi lại cùng lệnh gọi để xem lần thử lại)",
+        "headerHelp": "Endpoint này yêu cầu.",
+        "testOnly": "Chế độ thử nghiệm: phản hồi trông như thật, nhưng không có phản hồi nào được tạo, thay đổi hay xóa.",
+        "nothingYet": "Gửi một lệnh gọi để xem phản hồi",
+        "send": "Gửi",
+        "badJson": "Đây không phải JSON hợp lệ."
       }
     }
   },

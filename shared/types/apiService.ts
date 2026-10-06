@@ -55,6 +55,8 @@ export interface ApiEndpointField {
   required: boolean
   returned: boolean
   filter: boolean
+  /** The question's answer values (choices), so examples and docs show real ones (M5). */
+  options?: { value: string; label: string }[]
 }
 
 export interface ApiEndpoint extends ApiUsage {
@@ -345,4 +347,20 @@ export interface ApiAnalytics {
   tokens: { id: string; name: string; mode: ApiTokenMode; calls: number; errors: number }[]
   countries: { code: string; calls: number }[]
   methods: Record<ApiMethod, number>
+}
+
+// ── Docs console (F13 M5) ────────────────────────────────────────────────────────────────
+
+/** POST /api-endpoints/{id}/try: one call through the real checks with a test token (nothing is stored). */
+export interface ApiTryRequest {
+  method: ApiMethod
+  record_id?: string | null
+  body?: unknown
+  headers?: Record<string, string>
+}
+export interface ApiTryResult {
+  status: number
+  duration_ms: number
+  headers: Record<string, string>
+  body: unknown
 }

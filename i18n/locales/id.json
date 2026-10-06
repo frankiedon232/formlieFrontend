@@ -3713,10 +3713,10 @@
       "none": "Formulir ini belum punya pertanyaan",
       "formRequired": "wajib menurut formulir",
       "why": {
-        "file": "file belum dapat dikirim melalui API",
         "calculated": "dihitung oleh formulir",
         "payment": "pembayaran tidak dapat dikirim melalui API",
-        "locked": "hanya baca di formulir"
+        "locked": "hanya baca di formulir",
+        "signature": "tanda tangan dibuat di halaman formulir"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} hari | {n} hari",
         "never": "Token tidak pernah dicatat di log, hanya bagian yang terlihat. Nilai header wajib dan tanda tangan disamarkan.",
         "saved": "Pengaturan log disimpan"
+      }
+    },
+    "docs": {
+      "language": "Bahasa kode",
+      "tryIt": "Coba",
+      "test": "Uji",
+      "body": "Isi (JSON)",
+      "col": {
+        "key": "Kunci",
+        "type": "Tipe",
+        "values": "Nilai yang diizinkan"
+      },
+      "fileValue": "ID file dari langkah unggah",
+      "putHint": "Kirim hanya jawaban yang Anda ubah; yang lain tetap seperti semula.",
+      "keyHint": "Kirim Formalie-Key baru dengan setiap rekaman baru. Percobaan ulang dengan kunci yang sama mengembalikan rekaman pertama, tidak pernah rekaman kedua.",
+      "query": "Opsi kueri",
+      "page": "nomor halaman, mulai dari 1",
+      "perPage": "rekaman per halaman, hingga {n}",
+      "sort": "terlama dulu (tanpa ini, terbaru dulu)",
+      "filterBy": "hanya rekaman dengan {label} ini",
+      "code": "Kode",
+      "guide": "Cara kerja setiap panggilan",
+      "baseUrl": "Alamat",
+      "baseUrlHint": "Setiap endpoint organisasi Anda diawali dengan alamat ini. Tambahkan nama endpoint setelahnya.",
+      "auth": {
+        "title": "Masuk dengan token",
+        "text": "Kirim token dari Autentikasi sebagai Authorization: Bearer pada setiap panggilan. Token klien lebih dulu mendapat token akses berumur pendek dengan client id dan rahasianya, seperti di bawah."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Id unik yang Anda buat untuk setiap rekaman baru (UUID cocok digunakan). Jika jaringan gagal dan Anda mengirim panggilan yang sama lagi, Formalie menjawab dengan rekaman yang sudah dibuat."
+      },
+      "files": {
+        "title": "Mengirim file",
+        "text": "Unggah setiap file lebih dulu sebagai data formulir, dengan nama bidang file dan kunci pertanyaan di field. Jawabannya memberi id file.",
+        "then": "Lalu taruh id di isi JSON pada pertanyaan itu, mis. \"cv\": [\"id\"]. Jenis dan ukuran file yang sama seperti di formulir diizinkan."
+      },
+      "signing": {
+        "title": "Panggilan bertanda tangan",
+        "text": "Saat penandatanganan diaktifkan pada token, setiap panggilan juga membawa waktu dan tanda tangan HMAC-SHA256 yang dibuat dengan rahasia penandatanganan. Panggilan yang lebih lama dari lima menit ditolak."
+      },
+      "errors": {
+        "title": "Kesalahan",
+        "text": "Panggilan yang gagal dijawab dengan status dan isi JSON berisi kode yang dapat Anda cari di sini."
+      },
+      "openapi": "Unduh OpenAPI",
+      "downloaded": "File OpenAPI diunduh",
+      "failed": "Dokumentasi tidak dapat dimuat",
+      "fromForm": "Jawaban formulir {form}.",
+      "headers": "Header yang diperlukan",
+      "console": {
+        "title": "Coba /{name}",
+        "desc": "Menjalankan semua pemeriksaan asli dengan token uji. Tidak ada yang disimpan.",
+        "record": "Id rekaman",
+        "recordPlaceholder": "Kosongkan untuk daftar",
+        "keyHelp": "Diisi untuk Anda; yang baru setelah setiap panggilan.",
+        "newKey": "Kunci baru",
+        "keepKey": "Pertahankan kunci ini (kirim panggilan yang sama lagi untuk melihat percobaan ulang)",
+        "headerHelp": "Diperlukan oleh endpoint ini.",
+        "testOnly": "Mode uji: jawaban tampak nyata, tetapi tidak ada jawaban yang dibuat, diubah, atau dihapus.",
+        "nothingYet": "Kirim panggilan untuk melihat jawabannya",
+        "send": "Kirim",
+        "badJson": "Ini bukan JSON yang valid."
       }
     }
   },

@@ -3713,10 +3713,10 @@
       "none": "Ce formulaire n'a pas encore de questions",
       "formRequired": "obligatoire dans le formulaire",
       "why": {
-        "file": "les fichiers ne peuvent pas encore être envoyés via l'API",
         "calculated": "calculée par le formulaire",
         "payment": "les paiements ne peuvent pas être envoyés via l'API",
-        "locked": "en lecture seule dans le formulaire"
+        "locked": "en lecture seule dans le formulaire",
+        "signature": "les signatures se dessinent sur la page du formulaire"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} jour | {n} jours",
         "never": "Les tokens ne sont jamais journalisés, seulement leur partie visible. Les valeurs d'en-têtes requises et les signatures sont masquées.",
         "saved": "Paramètres du journal enregistrés"
+      }
+    },
+    "docs": {
+      "language": "Langage du code",
+      "tryIt": "Essayer",
+      "test": "Tester",
+      "body": "Corps (JSON)",
+      "col": {
+        "key": "Clé",
+        "type": "Type",
+        "values": "Valeurs autorisées"
+      },
+      "fileValue": "Identifiants de fichiers de l'étape d'envoi",
+      "putHint": "N'envoyez que les réponses que vous modifiez ; les autres restent inchangées.",
+      "keyHint": "Envoyez une nouvelle Formalie-Key avec chaque nouvel enregistrement. Un nouvel essai avec la même clé renvoie le premier enregistrement, jamais un second.",
+      "query": "Options de requête",
+      "page": "numéro de page, à partir de 1",
+      "perPage": "enregistrements par page, jusqu'à {n}",
+      "sort": "du plus ancien au plus récent (sans cela, le plus récent d'abord)",
+      "filterBy": "uniquement les enregistrements avec ce {label}",
+      "code": "Code",
+      "guide": "Comment fonctionne chaque appel",
+      "baseUrl": "Adresse",
+      "baseUrlHint": "Chaque endpoint de votre organisation commence par cette adresse. Ajoutez le nom de l'endpoint à la suite.",
+      "auth": {
+        "title": "Se connecter avec un jeton",
+        "text": "Envoyez avec chaque appel un jeton de la section Authentification sous la forme Authorization: Bearer. Les jetons client obtiennent d'abord un jeton d'accès de courte durée avec leur client id et leur secret, comme indiqué ci-dessous."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Un identifiant unique que vous créez pour chaque nouvel enregistrement (un UUID convient bien). Si le réseau échoue et que vous renvoyez le même appel, Formalie répond avec l'enregistrement déjà créé."
+      },
+      "files": {
+        "title": "Envoi de fichiers",
+        "text": "Envoyez d'abord chaque fichier comme données de formulaire, avec le nom de champ file et la clé de la question dans field. La réponse donne l'identifiant du fichier.",
+        "then": "Placez ensuite les identifiants dans le corps JSON sous cette question, par ex. \"cv\": [\"id\"]. Les mêmes types et tailles de fichiers que dans le formulaire sont acceptés."
+      },
+      "signing": {
+        "title": "Appels signés",
+        "text": "Lorsque la signature est activée sur un jeton, chaque appel porte aussi l'heure et une signature HMAC-SHA256 créée avec le secret de signature. Les appels de plus de cinq minutes sont refusés."
+      },
+      "errors": {
+        "title": "Erreurs",
+        "text": "Un appel en échec répond avec un statut et un corps JSON contenant un code que vous pouvez consulter ici."
+      },
+      "openapi": "Télécharger OpenAPI",
+      "downloaded": "Fichier OpenAPI téléchargé",
+      "failed": "Impossible de charger la documentation",
+      "fromForm": "Réponses du formulaire {form}.",
+      "headers": "En-têtes requis",
+      "console": {
+        "title": "Essayer /{name}",
+        "desc": "Exécute toutes les vraies vérifications avec un jeton de test. Rien n'est enregistré.",
+        "record": "Identifiant de l'enregistrement",
+        "recordPlaceholder": "Laisser vide pour la liste",
+        "keyHelp": "Rempli pour vous ; une nouvelle clé après chaque appel.",
+        "newKey": "Nouvelle clé",
+        "keepKey": "Garder cette clé (renvoyez le même appel pour voir le nouvel essai)",
+        "headerHelp": "Requis par cet endpoint.",
+        "testOnly": "Mode test : les réponses semblent réelles, mais aucune réponse n'est créée, modifiée ou supprimée.",
+        "nothingYet": "Envoyez un appel pour voir la réponse",
+        "send": "Envoyer",
+        "badJson": "Ce n'est pas un JSON valide."
       }
     }
   },

@@ -3713,10 +3713,10 @@
       "none": "Dit formulier heeft nog geen vragen",
       "formRequired": "verplicht in het formulier",
       "why": {
-        "file": "bestanden kunnen nog niet via de API worden verstuurd",
         "calculated": "berekend door het formulier",
         "payment": "betalingen kunnen niet via de API worden verstuurd",
-        "locked": "alleen-lezen in het formulier"
+        "locked": "alleen-lezen in het formulier",
+        "signature": "handtekeningen worden op de formulierpagina getekend"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} dag | {n} dagen",
         "never": "Tokens worden nooit gelogd, alleen het zichtbare deel. Vereiste headerwaarden en handtekeningen worden gemaskeerd.",
         "saved": "Loginstellingen opgeslagen"
+      }
+    },
+    "docs": {
+      "language": "Codetaal",
+      "tryIt": "Probeer het",
+      "test": "Test",
+      "body": "Body (JSON)",
+      "col": {
+        "key": "Sleutel",
+        "type": "Type",
+        "values": "Toegestane waarden"
+      },
+      "fileValue": "Bestands-id's uit de uploadstap",
+      "putHint": "Stuur alleen de antwoorden die je wijzigt; de rest blijft zoals het is.",
+      "keyHint": "Stuur bij elk nieuw record een nieuwe Formalie-Key mee. Een nieuwe poging met dezelfde sleutel geeft het eerste record terug, nooit een tweede.",
+      "query": "Queryopties",
+      "page": "paginanummer, vanaf 1",
+      "perPage": "records per pagina, tot {n}",
+      "sort": "oudste eerst (zonder dit: nieuwste eerst)",
+      "filterBy": "alleen records met deze {label}",
+      "code": "Code",
+      "guide": "Hoe elke aanroep werkt",
+      "baseUrl": "Adres",
+      "baseUrlHint": "Elk endpoint van je organisatie begint met dit adres. Voeg de naam van het endpoint erachter toe.",
+      "auth": {
+        "title": "Aanmelden met een token",
+        "text": "Stuur bij elke aanroep een token uit Authenticatie mee als Authorization: Bearer. Clienttokens krijgen eerst een kortlevend toegangstoken met hun client id en secret, zoals hieronder."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Een unieke id die je maakt voor elk nieuw record (een UUID werkt goed). Als het netwerk uitvalt en je dezelfde aanroep opnieuw verstuurt, antwoordt Formalie met het record dat al is gemaakt."
+      },
+      "files": {
+        "title": "Bestanden versturen",
+        "text": "Upload eerst elk bestand als formulierdata, met de veldnaam file en de vraagsleutel in field. Het antwoord geeft de id van het bestand.",
+        "then": "Zet de id's daarna in de JSON-body onder die vraag, bijv. \"cv\": [\"id\"]. Dezelfde bestandstypen en groottes als in het formulier zijn toegestaan."
+      },
+      "signing": {
+        "title": "Ondertekende aanroepen",
+        "text": "Als bij een token ondertekenen aanstaat, bevat elke aanroep ook de tijd en een HMAC-SHA256-handtekening die met het signing secret is gemaakt. Aanroepen die ouder zijn dan vijf minuten worden geweigerd."
+      },
+      "errors": {
+        "title": "Fouten",
+        "text": "Een mislukte aanroep antwoordt met een status en een JSON-body met een code die je hier kunt opzoeken."
+      },
+      "openapi": "OpenAPI downloaden",
+      "downloaded": "OpenAPI-bestand gedownload",
+      "failed": "De documentatie kon niet worden geladen",
+      "fromForm": "Antwoorden van het formulier {form}.",
+      "headers": "Vereiste headers",
+      "console": {
+        "title": "/{name} proberen",
+        "desc": "Voert alle echte controles uit met een testtoken. Er wordt niets opgeslagen.",
+        "record": "Record-id",
+        "recordPlaceholder": "Leeg laten voor de lijst",
+        "keyHelp": "Voor je ingevuld; na elke aanroep een nieuwe.",
+        "newKey": "Nieuwe sleutel",
+        "keepKey": "Deze sleutel bewaren (stuur dezelfde aanroep opnieuw om de nieuwe poging te zien)",
+        "headerHelp": "Vereist door dit endpoint.",
+        "testOnly": "Testmodus: de antwoorden lijken echt, maar er wordt geen antwoord gemaakt, gewijzigd of verwijderd.",
+        "nothingYet": "Verstuur een aanroep om het antwoord te zien",
+        "send": "Versturen",
+        "badJson": "Dit is geen geldige JSON."
       }
     }
   },

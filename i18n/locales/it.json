@@ -3713,10 +3713,10 @@
       "none": "Questo modulo non ha ancora domande",
       "formRequired": "obbligatoria nel modulo",
       "why": {
-        "file": "i file non possono ancora essere inviati tramite l'API",
         "calculated": "calcolata dal modulo",
         "payment": "i pagamenti non possono essere inviati tramite l'API",
-        "locked": "in sola lettura nel modulo"
+        "locked": "in sola lettura nel modulo",
+        "signature": "le firme si disegnano nella pagina del modulo"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} giorno | {n} giorni",
         "never": "I token non vengono mai registrati, solo la loro parte visibile. I valori delle intestazioni obbligatorie e le firme sono mascherati.",
         "saved": "Impostazioni del registro salvate"
+      }
+    },
+    "docs": {
+      "language": "Linguaggio del codice",
+      "tryIt": "Prova",
+      "test": "Test",
+      "body": "Corpo (JSON)",
+      "col": {
+        "key": "Chiave",
+        "type": "Tipo",
+        "values": "Valori consentiti"
+      },
+      "fileValue": "ID dei file del passaggio di caricamento",
+      "putHint": "Invia solo le risposte che modifichi; le altre restano invariate.",
+      "keyHint": "Invia una nuova Formalie-Key con ogni nuovo record. Un nuovo tentativo con la stessa chiave restituisce il primo record, mai un secondo.",
+      "query": "Opzioni di query",
+      "page": "numero di pagina, da 1",
+      "perPage": "record per pagina, fino a {n}",
+      "sort": "dal più vecchio (senza, prima i più recenti)",
+      "filterBy": "solo record con questo {label}",
+      "code": "Codice",
+      "guide": "Come funziona ogni chiamata",
+      "baseUrl": "Indirizzo",
+      "baseUrlHint": "Ogni endpoint della tua organizzazione inizia con questo indirizzo. Aggiungi dopo di esso il nome dell'endpoint.",
+      "auth": {
+        "title": "Accedi con un token",
+        "text": "Invia con ogni chiamata un token da Autenticazione come Authorization: Bearer. I token client ottengono prima un token di accesso di breve durata con il loro client id e il segreto, come sotto."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Un id univoco che crei per ogni nuovo record (un UUID va bene). Se la rete fallisce e invii di nuovo la stessa chiamata, Formalie risponde con il record già creato."
+      },
+      "files": {
+        "title": "Invio di file",
+        "text": "Carica prima ogni file come dati del modulo, con il nome del campo file e la chiave della domanda in field. La risposta restituisce l'id del file.",
+        "then": "Poi inserisci gli id nel corpo JSON sotto quella domanda, ad es. \"cv\": [\"id\"]. Sono consentiti gli stessi tipi e dimensioni di file del modulo."
+      },
+      "signing": {
+        "title": "Chiamate firmate",
+        "text": "Quando un token ha la firma attiva, ogni chiamata porta anche l'ora e una firma HMAC-SHA256 creata con il segreto di firma. Le chiamate più vecchie di cinque minuti vengono rifiutate."
+      },
+      "errors": {
+        "title": "Errori",
+        "text": "Una chiamata non riuscita risponde con uno stato e un corpo JSON con un codice che puoi cercare qui."
+      },
+      "openapi": "Scarica OpenAPI",
+      "downloaded": "File OpenAPI scaricato",
+      "failed": "Impossibile caricare la documentazione",
+      "fromForm": "Risposte del modulo {form}.",
+      "headers": "Header richiesti",
+      "console": {
+        "title": "Prova /{name}",
+        "desc": "Esegue tutti i controlli reali con un token di test. Non viene salvato nulla.",
+        "record": "ID del record",
+        "recordPlaceholder": "Lascia vuoto per l'elenco",
+        "keyHelp": "Compilata per te; una nuova dopo ogni chiamata.",
+        "newKey": "Nuova chiave",
+        "keepKey": "Mantieni questa chiave (invia di nuovo la stessa chiamata per vedere il nuovo tentativo)",
+        "headerHelp": "Richiesto da questo endpoint.",
+        "testOnly": "Modalità test: le risposte sembrano reali, ma nessuna risposta viene creata, modificata o eliminata.",
+        "nothingYet": "Invia una chiamata per vedere la risposta",
+        "send": "Invia",
+        "badJson": "Questo non è un JSON valido."
       }
     }
   },

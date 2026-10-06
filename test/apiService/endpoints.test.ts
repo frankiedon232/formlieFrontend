@@ -18,7 +18,7 @@ describe('endpoint fields', () => {
     const byKey = Object.fromEntries(fields.map(item => [item.key, item]))
     expect(byKey.full_name).toMatchObject({ page: 0, form_required: true, accept: true, required: true, returned: true })
     expect(byKey.email).toMatchObject({ accept: true, required: false, filterable: true, filter: false })
-    expect(byKey.cv).toMatchObject({ page: 1, acceptable: false, accept: false, returned: true })
+    expect(byKey.cv).toMatchObject({ page: 1, acceptable: true, accept: true, returned: true })
     expect(byKey.total!.accept).toBe(false)
     expect(byKey.reference!.accept).toBe(false)
   })
@@ -28,16 +28,18 @@ describe('endpoint fields', () => {
       { key: 'full_name', accept: false, required: false, returned: false, filter: false },
       { key: 'email', accept: true, required: true, returned: true, filter: true },
       { key: 'cv', accept: true, required: true, returned: false, filter: true },
+      { key: 'total', accept: true, required: true, returned: true, filter: false },
     ])
     const byKey = Object.fromEntries(fields.map(item => [item.key, item]))
     expect(byKey.full_name).toMatchObject({ accept: true, required: true, returned: false })
     expect(byKey.email).toMatchObject({ accept: true, required: true, filter: true })
-    expect(byKey.cv).toMatchObject({ accept: false, required: false, returned: false, filter: false })
+    expect(byKey.cv).toMatchObject({ accept: true, required: true, returned: false, filter: false })
+    expect(byKey.total).toMatchObject({ accept: false, required: false })
   })
 
   it('says why a question cannot be sent', () => {
     const fields = Object.fromEntries(endpointFieldsOf(schema).map(item => [item.key, item]))
-    expect(notAcceptedReason(fields.cv!)).toBe('file')
+    expect(notAcceptedReason(fields.cv!)).toBeNull()
     expect(notAcceptedReason(fields.total!)).toBe('calculated')
     expect(notAcceptedReason(fields.reference!)).toBe('locked')
     expect(notAcceptedReason(fields.email!)).toBeNull()
@@ -63,9 +65,14 @@ describe('endpoint names', () => {
 })
 
 describe('examples', () => {
+  it('use the form\'s own answer values for choices', () => {
+    const withChoices = { ...schema, pages: [{ id: 'p', rows: [{ id: 'r', fields: [field('position', 'dropdown', { options: [{ value: 'designer', label: 'Designer' }, { value: 'engineer', label: 'Engineer' }] }), field('skills', 'checkbox', { options: [{ value: 'vue', label: 'Vue' }, { value: 'ts', label: 'TypeScript' }, { value: 'sql', label: 'SQL' }] })] }] }] } as unknown as FormSchemaV1
+    expect(exampleRequestBody(endpointFieldsOf(withChoices))).toEqual({ position: 'designer', skills: ['vue', 'ts'] })
+  })
+
   it('sends accepted fields (required first) and returns the returned ones', () => {
     const fields = endpointFieldsOf(schema, [{ key: 'email', accept: true, required: false, returned: false, filter: false }])
-    expect(Object.keys(exampleRequestBody(fields))).toEqual(['full_name', 'email', 'topic'])
+    expect(Object.keys(exampleRequestBody(fields))).toEqual(['full_name', 'email', 'cv', 'topic'])
     const record = exampleRecord(fields)
     expect(Object.keys(record.data)).toEqual(['full_name', 'cv', 'total', 'reference', 'topic'])
     expect(record).toMatchObject({ status: 'new' })

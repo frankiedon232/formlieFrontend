@@ -284,3 +284,29 @@ export function respondentFileBytes(id: string, tenantId: string): { data: Uint8
   if (!upload?.completed || !upload.data || !upload.respondent || upload.tenantId !== tenantId) return null
   return { data: upload.data, contentType: upload.contentType, name: upload.respondent.name }
 }
+
+/**
+ * A file sent to the API service (F13 M5, `POST /{apiKey}/{endpoint}/files`): the same checks as the
+ * form page (bytes must be a real picture for image questions, never a program unless the question
+ * lists its type), stored at once as a finished respondent file → its answer. `check` only checks.
+ */
+export function storeApiFile(input: RespondentTicketInput & { bytes: Uint8Array; check?: boolean }): FileAnswer | 'size' | 'type' {
+  if (input.bytes.length === 0 || input.bytes.length > Math.min(input.maxBytes, MAX_BYTES)) return 'size'
+  const upload: StoredUpload = {
+    id: crypto.randomUUID(),
+    tenantId: input.tenantId,
+    token: '',
+    contentType: input.contentType,
+    size: input.bytes.length,
+    maxBytes: input.maxBytes,
+    expiresAt: Date.now(),
+    data: input.bytes,
+    completed: true,
+    respondent: { formId: input.formId, field: input.field, name: input.name, kind: input.kind, listed: input.listed },
+  }
+  if (!bytesAllowed(upload, input.bytes)) return 'type'
+  if (input.check) return answerOf(upload)
+  uploads.set(upload.id, upload)
+  saveUploads()
+  return answerOf(upload)
+}

@@ -3713,10 +3713,10 @@
       "none": "此表单还没有问题",
       "formRequired": "表单要求必填",
       "why": {
-        "file": "文件暂时无法通过 API 发送",
         "calculated": "由表单计算",
         "payment": "付款无法通过 API 发送",
-        "locked": "在表单中为只读"
+        "locked": "在表单中为只读",
+        "signature": "签名需在表单页面上手写"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} 天 | {n} 天",
         "never": "令牌绝不会被记录，只记录其可见部分。必需的请求头值和签名会被遮蔽。",
         "saved": "日志设置已保存"
+      }
+    },
+    "docs": {
+      "language": "代码语言",
+      "tryIt": "试一试",
+      "test": "测试",
+      "body": "请求体 (JSON)",
+      "col": {
+        "key": "键",
+        "type": "类型",
+        "values": "允许的值"
+      },
+      "fileValue": "上传步骤返回的文件 ID",
+      "putHint": "只发送你修改的答案，其他答案保持不变。",
+      "keyHint": "每条新记录都发送一个新的 Formalie-Key。使用相同密钥重试会返回第一条记录，绝不会生成第二条。",
+      "query": "查询选项",
+      "page": "页码，从 1 开始",
+      "perPage": "每页记录数，最多 {n}",
+      "sort": "最早的在前（不设置时最新的在前）",
+      "filterBy": "仅显示此{label}的记录",
+      "code": "代码",
+      "guide": "每次调用的工作方式",
+      "baseUrl": "地址",
+      "baseUrlHint": "你所在组织的每个端点都以此地址开头。在其后加上端点名称。",
+      "auth": {
+        "title": "使用令牌登录",
+        "text": "每次调用都以 Authorization: Bearer 形式发送来自“身份验证”的令牌。客户端令牌先用其 client id 和密钥换取短期访问令牌，如下所示。"
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "你为每条新记录生成的唯一 ID（推荐使用 UUID）。如果网络出错，你再次发送同一调用，Formalie 会返回已创建的记录。"
+      },
+      "files": {
+        "title": "发送文件",
+        "text": "先将每个文件作为表单数据上传，字段名为 file，问题键放在 field 中。响应会返回文件的 ID。",
+        "then": "然后把这些 ID 放在 JSON 请求体中该问题之下，例如 \"cv\": [\"id\"]。允许的文件类型和大小与表单相同。"
+      },
+      "signing": {
+        "title": "签名调用",
+        "text": "当令牌开启签名后，每次调用还会带上时间和用签名密钥生成的 HMAC-SHA256 签名。超过五分钟的调用会被拒绝。"
+      },
+      "errors": {
+        "title": "错误",
+        "text": "失败的调用会返回状态码和带有错误代码的 JSON 正文，你可以在此查询该代码。"
+      },
+      "openapi": "下载 OpenAPI",
+      "downloaded": "OpenAPI 文件已下载",
+      "failed": "无法加载文档",
+      "fromForm": "表单 {form} 的回复。",
+      "headers": "必需的请求头",
+      "console": {
+        "title": "试用 /{name}",
+        "desc": "使用测试令牌执行所有真实检查。不会保存任何内容。",
+        "record": "记录 ID",
+        "recordPlaceholder": "留空以获取列表",
+        "keyHelp": "已为你填写；每次调用后会生成新的。",
+        "newKey": "新密钥",
+        "keepKey": "保留此密钥（再次发送同一调用以查看重试）",
+        "headerHelp": "此端点必需。",
+        "testOnly": "测试模式：响应看起来是真实的，但不会创建、修改或删除任何回复。",
+        "nothingYet": "发送调用以查看响应",
+        "send": "发送",
+        "badJson": "这不是有效的 JSON。"
       }
     }
   },

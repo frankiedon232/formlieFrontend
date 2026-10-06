@@ -3713,10 +3713,10 @@
       "none": "Bu formda henüz soru yok",
       "formRequired": "form tarafından zorunlu",
       "why": {
-        "file": "dosyalar henüz API ile gönderilemez",
         "calculated": "form tarafından hesaplanır",
         "payment": "ödemeler API ile gönderilemez",
-        "locked": "formda salt okunur"
+        "locked": "formda salt okunur",
+        "signature": "imzalar form sayfasında çizilir"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} gün | {n} gün",
         "never": "Token'lar asla günlüğe kaydedilmez, yalnızca görünen kısımları kaydedilir. Gerekli üst bilgi değerleri ve imzalar maskelenir.",
         "saved": "Günlük ayarları kaydedildi"
+      }
+    },
+    "docs": {
+      "language": "Kod dili",
+      "tryIt": "Dene",
+      "test": "Test",
+      "body": "Gövde (JSON)",
+      "col": {
+        "key": "Anahtar",
+        "type": "Tür",
+        "values": "İzin verilen değerler"
+      },
+      "fileValue": "Yükleme adımından dosya kimlikleri",
+      "putHint": "Yalnızca değiştirdiğiniz yanıtları gönderin; diğerleri olduğu gibi kalır.",
+      "keyHint": "Her yeni kayıtla birlikte yeni bir Formalie-Key gönderin. Aynı anahtarla yapılan yeniden deneme ilk kaydı geri verir, asla ikinci bir kayıt oluşturmaz.",
+      "query": "Sorgu seçenekleri",
+      "page": "sayfa numarası, 1'den başlar",
+      "perPage": "sayfa başına kayıt, en fazla {n}",
+      "sort": "önce en eskiler (bu olmadan önce en yeniler)",
+      "filterBy": "yalnızca bu {label} değerine sahip kayıtlar",
+      "code": "Kod",
+      "guide": "Her çağrı nasıl çalışır",
+      "baseUrl": "Adres",
+      "baseUrlHint": "Kuruluşunuzun her endpoint adresi bu adresle başlar. Adresin ardına endpoint adını ekleyin.",
+      "auth": {
+        "title": "Jetonla oturum açma",
+        "text": "Her çağrıyla birlikte Kimlik doğrulama bölümündeki bir jetonu Authorization: Bearer olarak gönderin. İstemci jetonları önce client id ve gizli anahtarlarıyla kısa ömürlü bir erişim jetonu alır, aşağıdaki gibi."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Her yeni kayıt için oluşturduğunuz benzersiz bir kimlik (UUID iyi çalışır). Ağ başarısız olur ve aynı çağrıyı yeniden gönderirseniz, Formalie zaten oluşturduğu kayıtla yanıt verir."
+      },
+      "files": {
+        "title": "Dosya gönderme",
+        "text": "Önce her dosyayı form verisi olarak yükleyin; alan adı file, soru anahtarı ise field içinde olsun. Yanıt dosyanın kimliğini verir.",
+        "then": "Sonra kimlikleri JSON gövdesinde o sorunun altına yazın, örn. \"cv\": [\"id\"]. Formdakiyle aynı dosya türleri ve boyutlarına izin verilir."
+      },
+      "signing": {
+        "title": "İmzalı çağrılar",
+        "text": "Bir jetonda imzalama açıksa, her çağrı ayrıca zamanı ve imzalama gizli anahtarıyla oluşturulmuş bir HMAC-SHA256 imzası taşır. Beş dakikadan eski çağrılar reddedilir."
+      },
+      "errors": {
+        "title": "Hatalar",
+        "text": "Başarısız bir çağrı, bir durum ve burada arayabileceğiniz bir kod içeren JSON gövdesiyle yanıt verir."
+      },
+      "openapi": "OpenAPI indir",
+      "downloaded": "OpenAPI dosyası indirildi",
+      "failed": "Belgeler yüklenemedi",
+      "fromForm": "{form} formunun yanıtları.",
+      "headers": "Gerekli üst bilgiler",
+      "console": {
+        "title": "/{name} dene",
+        "desc": "Tüm gerçek denetimleri bir test jetonuyla çalıştırır. Hiçbir şey kaydedilmez.",
+        "record": "Kayıt kimliği",
+        "recordPlaceholder": "Liste için boş bırakın",
+        "keyHelp": "Sizin için dolduruldu; her çağrıdan sonra yenisi.",
+        "newKey": "Yeni anahtar",
+        "keepKey": "Bu anahtarı koru (yeniden denemeyi görmek için aynı çağrıyı tekrar gönderin)",
+        "headerHelp": "Bu endpoint için gerekli.",
+        "testOnly": "Test modu: yanıtlar gerçek gibi görünür, ancak hiçbir yanıt oluşturulmaz, değiştirilmez veya silinmez.",
+        "nothingYet": "Yanıtı görmek için bir çağrı gönderin",
+        "send": "Gönder",
+        "badJson": "Bu geçerli bir JSON değil."
       }
     }
   },

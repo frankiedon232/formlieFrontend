@@ -11,6 +11,7 @@ import * as analytics from './routes/analytics'
 import * as apiService from './routes/apiService'
 import * as apiAccess from './routes/apiAccess'
 import * as apiTraffic from './routes/apiTraffic'
+import * as apiDocs from './routes/apiDocs'
 import * as responseExports from './routes/responseExports'
 import * as folders from './routes/folders'
 import * as dataSources from './routes/dataSources'
@@ -126,6 +127,7 @@ const router = createRouter()
   .get('/api-endpoints/form-fields', apiService.apiEndpointFormFields)
   .post('/api-endpoints', apiService.createApiEndpoint)
   .get('/api-endpoints/:id', apiService.getApiEndpoint)
+  .post('/api-endpoints/:id/try', apiDocs.tryEndpoint)
   .patch('/api-endpoints/:id', apiService.updateApiEndpoint)
   .delete('/api-endpoints/:id', apiService.deleteApiEndpoint)
   .get('/analytics/forms', analytics.analyticsForms)

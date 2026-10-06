@@ -8,6 +8,7 @@
  *   POST   /{apiKey}/{endpoint}                 a new response (Formalie-Key replays)
  *   PUT    /{apiKey}/{endpoint}/{recordId}      change accepted answers
  *   DELETE /{apiKey}/{endpoint}/{recordId}      remove (kept in the audit trail)
+ *   POST   /{apiKey}/{endpoint}/files?field=    one file (multipart/form-data, field "file") → its id for the JSON
  *
  * Reachable in development at `https://localhost:2202/public-api/…` and, with a hosts entry, at
  * `https://api.formalie.dev:2202/…` (server/middleware/api-host.ts). Order of checks: address key →
@@ -21,9 +22,12 @@ import { createHmac, timingSafeEqual } from 'node:crypto'
 import type { H3Event } from 'h3'
 import { checkSubmission } from '#shared/utils/forms/submission'
 import { allFields } from '#shared/utils/forms/build'
-import { isFileField } from '#shared/utils/forms/file-answers'
+import { isFileField, maxFileBytes } from '#shared/utils/forms/file-answers'
+import { acceptsFile, looksLikePicture, parseAccept, pictureAccept } from '#shared/utils/forms/file-types'
+import type { FileAnswer } from '#shared/types/public'
+import { attachRespondentFiles, respondentFile, storeApiFile } from './routes/uploads'
 import { validateAnswer } from '#shared/utils/forms/validate'
-import { exampleRecord } from '#shared/utils/apiService/endpoints'
+import { endpointFieldsOf, exampleRecord } from '#shared/utils/apiService/endpoints'
 import { scopeAllows, secretPreview, tokenPrefix, tokenStatusOf } from '#shared/utils/apiService/tokens'
 import { decideAccess, rulesFor, type AccessCaller } from '#shared/utils/apiService/access'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
@@ -129,9 +133,19 @@ function callerToken(event: H3Event, tenant: MockTenant): StoredApiToken {
   if (!bearer) throw new PublicError('FRM-API-1010')
   const tokens = apiOf(tenant).tokens
   const short = accessTokens.get(bearer)
-  const token = short ? (short.tenant === tenant.id && short.expires > Date.now() ? tokens.find(item => item.id === short.token) : undefined) : tokens.find(item => item.kind === 'static' && matches(item, bearer))
+  const valid = short && short.tenant === tenant.id && short.expires > Date.now()
+  const token = short ? (valid ? (short.token === CONSOLE ? consoleToken() : tokens.find(item => item.id === short.token)) : undefined) : tokens.find(item => item.kind === 'static' && matches(item, bearer))
   if (!token || !live(token)) throw new PublicError('FRM-API-1010')
   return token
+}
+
+/** The Docs console (F13 M5): a test token that may call everything, never stored, lives a minute. */
+const CONSOLE = '__console__'
+const consoleToken = (): StoredApiToken => ({ id: CONSOLE, name: 'Docs console', kind: 'static', mode: 'test', secret_hash: '', preview: '', previous_hash: null, rotating_until: null, client_id: null, lifetime_minutes: null, signing: false, signing_secret: null, scopes: { services: [], endpoints: [], methods: [] }, expires_at: null, last_used_at: null, created_by: { id: 'system', name: 'Formalie' }, created_at: new Date().toISOString(), revoked_at: null })
+export function issueConsoleToken(tenantId: string) {
+  const access = `${tokenPrefix('access', 'test')}${crypto.randomUUID().replace(/-/g, '')}`
+  accessTokens.set(access, { tenant: tenantId, token: CONSOLE, expires: Date.now() + 60_000 })
+  return access
 }
 
 /** HMAC-SHA256 of `{timestamp}.{METHOD}.{path}.{body}` with the signing secret, within 5 minutes. */
@@ -144,15 +158,15 @@ function checkSignature(event: H3Event, token: StoredApiToken, method: string, p
 }
 
 /** A response as the API returns it: its reference, when, status and the returned answers (file ids as references too). */
-function record(form: Parameters<typeof answersOf>[0], entry: IndexedResponse, endpoint: StoredApiEndpoint) {
+function record(form: Parameters<typeof answersOf>[0], entry: IndexedResponse, fields: { key: string; type: string; returned: boolean }[]) {
   const data = answersOf(form, entry)
-  const types = new Map(allFields(schemaOf(form, endpoint.version) ?? { schema_version: 1, pages: [] }).map(field => [field.key, field.type]))
+  const types = new Map(fields.map(field => [field.key, field.type]))
   const value = (key: string) => {
     const answer = data[key] ?? null
     if (!isFileField(types.get(key) ?? '') || !Array.isArray(answer)) return answer
     return answer.map(file => (file && typeof file === 'object' && 'id' in file ? { ...(file as Record<string, unknown>), id: encodeId(String((file as { id: unknown }).id)) } : file))
   }
-  return { id: encodeId(entry.id), submitted_at: new Date(entry.at).toISOString(), status: entry.status, data: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.key, value(field.key)])) }
+  return { id: encodeId(entry.id), submitted_at: new Date(entry.at).toISOString(), status: entry.status, data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.key, value(field.key)])) }
 }
 
 /** What a call turned out to be, for the request log (filled in as the checks pass). */
@@ -229,7 +243,9 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const tenant = tenantByKey(key)
     context.tenant = tenant ?? undefined
     if (!tenant || extra !== undefined) throw new PublicError('FRM-API-1006')
-    const raw = ['POST', 'PUT'].includes(method) ? ((await readRawBody(event, 'utf8')) ?? '') : ''
+    // A file upload carries multipart/form-data, every other write a JSON object
+    const upload = recordRef === 'files' && method === 'POST'
+    const raw = ['POST', 'PUT'].includes(method) && !upload ? ((await readRawBody(event, 'utf8')) ?? '') : ''
     context.raw = raw.slice(0, 20_000)
     let body: Record<string, unknown> = {}
     if (raw) {
@@ -280,8 +296,10 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const form = formsOf(tenant).forms.find(item => item.id === endpoint.form_id && !item.deleted_at)
     const schema = form ? schemaOf(form, endpoint.version) : null
     if (endpoint.status !== 'active' || service?.status !== 'active' || !form || form.status !== 'published' || !schema) throw new PublicError('FRM-API-1007')
+    // The choices as the portal shows them: worked out from the form (a question the form requires is always accepted)
+    const choices = endpointFieldsOf(schema, endpoint.fields)
     const allowed: ApiMethod[] = endpoint.methods
-    if (!(['GET', 'POST', 'PUT', 'DELETE'] as const).includes(method as ApiMethod) || !allowed.includes(method as ApiMethod) || (recordRef ? method === 'POST' : method === 'PUT' || method === 'DELETE')) throw new PublicError('FRM-API-1008')
+    if (!(['GET', 'POST', 'PUT', 'DELETE'] as const).includes(method as ApiMethod) || !allowed.includes(method as ApiMethod) || (recordRef && !upload ? method === 'POST' : method === 'PUT' || method === 'DELETE')) throw new PublicError('FRM-API-1008')
     if (!scopeAllows(token.scopes, { endpoint_id: endpoint.id, service_id: endpoint.service_id, method: method as ApiMethod })) throw new PublicError('FRM-API-1009')
     const missing = (endpoint.headers ?? []).filter(header => (getHeader(event, header.name) ?? '') !== header.value)
     if (missing.length) throw new PublicError('FRM-API-1011', missing.map(header => ({ field: header.name, message: 'missing_or_wrong' })))
@@ -292,10 +310,27 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     const actor = { type: 'api_key' as const, id: token.id, name: `API: ${token.name}`, email: null }
     const fields = new Map(allFields(schema).map(field => [field.key, field]))
 
+    // Files: checked like the form page, stored at once (test tokens: checked only) → an id for the JSON
+    if (upload) {
+      const key = String(getQuery(event).field ?? '')
+      const definition = fields.get(key)
+      if (!definition || !isFileField(definition.type) || !choices.some(item => item.key === key && item.accept)) throw new PublicError('FRM-API-1014', [{ field: key || 'field', message: 'not_accepted' }])
+      const file = (await readMultipartFormData(event))?.find(part => part.name === 'file' && part.filename)
+      if (!file) throw new PublicError('FRM-GEN-1001', [{ field: 'file', message: 'Send the file as multipart/form-data in a field named file.' }])
+      const props = (definition.props ?? {}) as Record<string, unknown>
+      const image = definition.type === 'image_upload'
+      const accept = image ? pictureAccept(String(props.accept ?? '')) : String(props.accept ?? '')
+      const described = { name: file.filename!.slice(0, 200), type: file.type ?? 'application/octet-stream' }
+      if (!acceptsFile(accept, described) || (image && !looksLikePicture(described))) throw new PublicError('FRM-RESP-1001', [{ field: key, message: 'file_type' }])
+      const stored = storeApiFile({ tenantId: tenant.id, formId: form.id, field: key, name: described.name, contentType: described.type, size: file.data.length, maxBytes: maxFileBytes(props), kind: image ? 'image' : 'file', listed: parseAccept(accept).filter(type => type.startsWith('.')), bytes: new Uint8Array(file.data), check: test })
+      if (stored === 'size' || stored === 'type') throw new PublicError('FRM-RESP-1001', [{ field: key, message: stored === 'size' ? 'file_size' : 'file_type' }])
+      return send(event, 201, { data: { ...stored, id: encodeId(test ? crypto.randomUUID() : stored.id) }, ...(test ? { meta: { test: true } } : {}) })
+    }
+
     // Reading
     if (method === 'GET') {
       if (test) {
-        const sample = exampleRecord(endpoint.fields.map(field => ({ ...field, label: fields.get(field.key)?.label ?? field.key, type: fields.get(field.key)?.type ?? 'short_text', page: 0, form_required: false, acceptable: true, filterable: false })))
+        const sample = exampleRecord(choices.map(field => ({ ...field, label: fields.get(field.key)?.label ?? field.key, type: fields.get(field.key)?.type ?? 'short_text', page: 0, form_required: false, acceptable: true, filterable: false })))
         return send(event, 200, recordRef ? { data: { ...sample, id: recordRef }, meta: { test: true } } : { data: [sample], meta: { page: 1, per_page: 1, total: 1, test: true } })
       }
       const entries = formResponses(tenant, form)
@@ -303,24 +338,39 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         const id = decodeId(recordRef)
         const entry = id ? entries.find(item => item.id === id) : undefined
         if (!entry) throw new PublicError('FRM-API-1013')
-        return send(event, 200, { data: record(form, entry, endpoint) })
+        return send(event, 200, { data: record(form, entry, choices) })
       }
       const query = getQuery(event)
-      const filters = endpoint.fields.filter(field => field.filter && typeof query[field.key] === 'string')
+      const filters = choices.filter(field => field.filter && typeof query[field.key] === 'string')
       let list = filters.length ? entries.filter(entry => { const data = answersOf(form, entry); return filters.every(field => { const value = data[field.key]; const wanted = String(query[field.key]); return Array.isArray(value) ? value.map(String).includes(wanted) : String(value ?? '') === wanted }) }) : entries
       list = [...list].sort((a, b) => (query.sort === 'submitted_at' ? a.at - b.at : b.at - a.at))
       const perPage = Math.min(endpoint.page_size, Math.max(1, Number(query.per_page) || Math.min(20, endpoint.page_size)))
       const page = Math.max(1, Number(query.page) || 1)
-      return send(event, 200, { data: list.slice((page - 1) * perPage, page * perPage).map(entry => record(form, entry, endpoint)), meta: { page, per_page: perPage, total: list.length, total_pages: Math.max(1, Math.ceil(list.length / perPage)) } })
+      return send(event, 200, { data: list.slice((page - 1) * perPage, page * perPage).map(entry => record(form, entry, choices)), meta: { page, per_page: perPage, total: list.length, total_pages: Math.max(1, Math.ceil(list.length / perPage)) } })
     }
 
     // Writing: only accepted questions, then the form's own rules
-    const accepted = new Set(endpoint.fields.filter(field => field.accept).map(field => field.key))
+    const accepted = new Set(choices.filter(field => field.accept).map(field => field.key))
     const refused = Object.keys(body).filter(item => !accepted.has(item))
     if (refused.length) throw new PublicError('FRM-API-1014', refused.map(item => ({ field: item, message: 'not_accepted' })))
+    // File answers: ids from …/files (or { id }) → the stored files of this form and question, not used by another response
+    const fileIds: string[] = []
+    for (const [key, value] of Object.entries(body)) {
+      const definition = fields.get(key)
+      if (!definition || !isFileField(definition.type) || value == null) continue
+      const refs = (Array.isArray(value) ? value : [value]).map(item => (typeof item === 'string' ? item : item && typeof item === 'object' && 'id' in item ? String((item as { id: unknown }).id) : ''))
+      const files = refs.map(ref => {
+        const id = decodeId(ref)
+        if (test) return id || ref ? ({ id: id ?? ref, name: 'file', size: 0, type: 'application/octet-stream' } satisfies FileAnswer) : null
+        return id ? respondentFile(id, form.id, key) : null
+      })
+      if (files.some(item => !item)) throw new PublicError('FRM-RESP-1001', [{ field: key, message: 'file' }])
+      body[key] = files
+      fileIds.push(...files.map(item => item!.id))
+    }
 
     if (method === 'POST') {
-      const required = endpoint.fields.filter(field => field.required && (body[field.key] == null || body[field.key] === ''))
+      const required = choices.filter(field => field.required && (body[field.key] == null || body[field.key] === ''))
       if (required.length) throw new PublicError('FRM-RESP-1001', required.map(field => ({ field: field.key, message: 'required' })))
       const { issues, answers } = checkSubmission(schema, body)
       if (issues.length) throw new PublicError('FRM-RESP-1001', issues.map(issue => ({ field: issue.key, message: issue.code })))
@@ -329,17 +379,18 @@ async function handle(event: H3Event, path: string, context: CallContext) {
       const earlier = idempotency ? responsesOf(tenant).responses.find(item => item.submission_id === submissionId) : undefined
       if (earlier) {
         const entry = formResponses(tenant, form).find(item => item.id === earlier.id)
-        if (entry) return send(event, 200, { data: record(form, entry, endpoint), meta: { replayed: true } })
+        if (entry) return send(event, 200, { data: record(form, entry, choices), meta: { replayed: true } })
       }
-      if (test) return send(event, 201, { data: { id: encodeId(crypto.randomUUID()), submitted_at: new Date().toISOString(), status: 'new', data: Object.fromEntries(endpoint.fields.filter(field => field.returned).map(field => [field.key, answers[field.key] ?? null])) }, meta: { test: true } })
+      if (test) return send(event, 201, { data: { id: encodeId(crypto.randomUUID()), submitted_at: new Date().toISOString(), status: 'new', data: Object.fromEntries(choices.filter(field => field.returned).map(field => [field.key, answers[field.key] ?? null])) }, meta: { test: true } })
       const stored = { id: crypto.randomUUID(), form_id: form.id, form_version: endpoint.version ?? form.versions?.[0]?.number ?? null, submitted_at: new Date().toISOString(), language: schema.settings?.language ?? 'en', data: answers, submission_id: submissionId, channel: 'api' as const, meta: { ip: getRequestIP(event, { xForwardedFor: true }) ?? 'unknown', user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 300) } }
       responsesOf(tenant).responses.unshift(stored)
       saveResponses()
+      attachRespondentFiles(fileIds, stored.id)
       form.responses_count += 1
       saveForms()
       recordAudit(event, tenant, { action: 'responses.submitted', actor, resource: { type: 'form', id: form.id, name: form.name }, changes: [{ field: 'channel', before: null, after: 'api' }], metadata: { endpoint: endpoint.name } })
       const entry = formResponses(tenant, form).find(item => item.id === stored.id)!
-      return send(event, 201, { data: record(form, entry, endpoint) })
+      return send(event, 201, { data: record(form, entry, choices) })
     }
 
     // PUT / DELETE on one record
@@ -361,13 +412,14 @@ async function handle(event: H3Event, path: string, context: CallContext) {
     if (problems.length) throw new PublicError('FRM-RESP-1001', problems)
     if (test || !entry) return send(event, 200, { data: { id: recordRef, ...body }, meta: { test: true } })
     const before = answersOf(form, entry)
+    attachRespondentFiles(fileIds, entry.id)
     updateReview(form.id, entry.id, review => {
       review.data = { ...review.data, ...body }
       review.history = [...Object.entries(body).map(([field, value]) => ({ id: crypto.randomUUID(), at: new Date().toISOString(), by: { id: token.id, name: actor.name }, field: `answer:${field}`, before: before[field] ?? null, after: value ?? null })), ...(review.history ?? [])].slice(0, 200)
     })
     recordAudit(event, tenant, { action: 'responses.updated', actor, resource: { type: 'response', id: entry.id, name: form.name }, changes: Object.keys(body).map(field => ({ field: fields.get(field)?.label ?? field, before: JSON.stringify(before[field] ?? null), after: JSON.stringify(body[field] ?? null) })), metadata: { endpoint: endpoint.name } })
     const updated = formResponses(tenant, form).find(item => item.id === entry.id)!
-    return send(event, 200, { data: record(form, updated, endpoint) })
+    return send(event, 200, { data: record(form, updated, choices) })
   } catch (error) {
     if (error instanceof PublicError) return fail(event, error)
     console.error('[public-api]', error)

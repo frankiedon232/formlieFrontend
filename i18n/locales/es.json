@@ -3713,10 +3713,10 @@
       "none": "Este formulario aún no tiene preguntas",
       "formRequired": "obligatoria en el formulario",
       "why": {
-        "file": "los archivos aún no se pueden enviar por la API",
         "calculated": "calculada por el formulario",
         "payment": "los pagos no se pueden enviar por la API",
-        "locked": "solo lectura en el formulario"
+        "locked": "solo lectura en el formulario",
+        "signature": "las firmas se dibujan en la página del formulario"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} día | {n} días",
         "never": "Los tokens nunca se registran, solo su parte visible. Los valores de encabezados obligatorios y las firmas se enmascaran.",
         "saved": "Configuración del registro guardada"
+      }
+    },
+    "docs": {
+      "language": "Lenguaje del código",
+      "tryIt": "Probar",
+      "test": "Prueba",
+      "body": "Cuerpo (JSON)",
+      "col": {
+        "key": "Clave",
+        "type": "Tipo",
+        "values": "Valores permitidos"
+      },
+      "fileValue": "IDs de archivo del paso de subida",
+      "putHint": "Envía solo las respuestas que cambias; las demás se quedan como están.",
+      "keyHint": "Envía una Formalie-Key nueva con cada registro nuevo. Un reintento con la misma clave devuelve el primer registro, nunca un segundo.",
+      "query": "Opciones de consulta",
+      "page": "número de página, desde 1",
+      "perPage": "registros por página, hasta {n}",
+      "sort": "más antiguos primero (sin esto, los más recientes primero)",
+      "filterBy": "solo registros con este {label}",
+      "code": "Código",
+      "guide": "Cómo funciona cada llamada",
+      "baseUrl": "Dirección",
+      "baseUrlHint": "Cada endpoint de tu organización empieza con esta dirección. Añade después el nombre del endpoint.",
+      "auth": {
+        "title": "Inicia sesión con un token",
+        "text": "Envía con cada llamada un token de Autenticación como Authorization: Bearer. Los tokens de cliente primero obtienen un token de acceso de corta duración con su client id y su secreto, como se indica abajo."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Un id único que creas para cada registro nuevo (un UUID funciona bien). Si la red falla y envías la misma llamada otra vez, Formalie responde con el registro que ya creó."
+      },
+      "files": {
+        "title": "Envío de archivos",
+        "text": "Sube primero cada archivo como datos de formulario, con el nombre de campo file y la clave de la pregunta en field. La respuesta da el id del archivo.",
+        "then": "Luego pon los ids en el cuerpo JSON bajo esa pregunta, p. ej. \"cv\": [\"id\"]. Se permiten los mismos tipos y tamaños de archivo que en el formulario."
+      },
+      "signing": {
+        "title": "Llamadas firmadas",
+        "text": "Cuando un token tiene la firma activada, cada llamada lleva además la hora y una firma HMAC-SHA256 hecha con el secreto de firma. Las llamadas de más de cinco minutos se rechazan."
+      },
+      "errors": {
+        "title": "Errores",
+        "text": "Una llamada fallida responde con un estado y un cuerpo JSON con un código que puedes consultar aquí."
+      },
+      "openapi": "Descargar OpenAPI",
+      "downloaded": "Archivo OpenAPI descargado",
+      "failed": "No se pudo cargar la documentación",
+      "fromForm": "Respuestas del formulario {form}.",
+      "headers": "Cabeceras requeridas",
+      "console": {
+        "title": "Probar /{name}",
+        "desc": "Ejecuta todas las comprobaciones reales con un token de prueba. No se guarda nada.",
+        "record": "ID del registro",
+        "recordPlaceholder": "Déjalo vacío para la lista",
+        "keyHelp": "Rellenada por ti; una nueva tras cada llamada.",
+        "newKey": "Nueva clave",
+        "keepKey": "Mantener esta clave (envía la misma llamada otra vez para ver el reintento)",
+        "headerHelp": "Requerida por este endpoint.",
+        "testOnly": "Modo de prueba: las respuestas parecen reales, pero no se crea, cambia ni elimina ninguna respuesta.",
+        "nothingYet": "Envía una llamada para ver la respuesta",
+        "send": "Enviar",
+        "badJson": "Esto no es un JSON válido."
       }
     }
   },

@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules and M4 Request logs, analytics and the overview done; next M5 Docs and testing.
+**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints, M2 Tokens and headers (callable from Postman against the mock) and M3 Access rules and M4 Request logs, analytics and the overview and M5 Docs and testing done; next M6 Webhooks and API keys.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -23,7 +23,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
-| F13   | API service & integrations                        | 🟡     | ~70% |
+| F13   | API service & integrations                        | 🟡     | ~85% |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
@@ -625,7 +625,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** turn any form into an API so organisations collect data from every side, **links, embeds and API**, all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** ✅ Access rules and rate limits. **M4** ✅ Request logs, analytics and the overview. **M4** Request logs, analytics and the API service overview in the dashboard style. **M5** Docs and testing (try-it console, Test button). **M6** Webhooks and Formalie's own API keys. App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
+**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** ✅ Access rules and rate limits. **M4** ✅ Request logs, analytics and the API service overview in the dashboard style. **M5** ✅ Docs and testing (try-it console, Test button, files). **M6** Webhooks and Formalie's own API keys. App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
 
 ### Addresses (decided 2026-10-03, see 03-DECISIONS → 61)
 
@@ -648,19 +648,19 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 - ✅ Create an endpoint from a form (`/api-service/endpoints/new`): form (published only) → name and service (new service in place) → methods → questions → review; address preview and an example call beside it; edit at `/api-service/endpoints/{id}/edit`. Authentication and access rules are set per organisation in M2 / M3 (the review says so)
 - ✅ Methods: **GET, POST, PUT, DELETE only** (for now); each switchable per endpoint
-- ✅ POST / PUT: choose the questions accepted and which are required; the form's required questions are always accepted and required; read-only, calculated, file and payment questions are refused (with the reason shown); `shared/utils/apiService/endpoints.ts` (wizard and server alike)
+- ✅ POST / PUT: choose the questions accepted and which are required; the form's required questions are always accepted and required; read-only, calculated, signature and payment questions are refused (with the reason shown); file questions are accepted since M5 (upload step); `shared/utils/apiService/endpoints.ts` (wizard and server alike)
 - ✅ GET: choose the questions returned and the ones it can filter by (choices, dates, numbers, short text, email), page size up to 100; never more than the chosen questions
 - ⬜ DELETE / PUT by record id; soft delete with the response kept in the audit trail
 - ⬜ Where data goes: the form's storage / destinations (built-in storage or a Data source, F12), the same pipeline as form submissions
-- ✅ Switch each endpoint on / off (row menu, panel switch); pin a form version or follow the latest published one. "Test" button: M5 (try-it console)
+- ✅ Switch each endpoint on / off (row menu, panel switch); pin a form version or follow the latest published one; "Test" button in the panel opens the try-it console (M5)
 - ✅ Example request and answer (JSON) per method, generated from the chosen questions, with Copy (panel and wizard)
 
 ### 4. Authentication and headers
 
-- ✅ Bearer tokens (long-lived, shown once, stored as a hash with a 4-character preview, prefixes `fml_live_` / `fml_test_`) or client id + secret → short-lived tokens from `POST /{apiKey}/token` (5 to 60 minutes); live and test from the start (test never touches real responses)
+- ✅ Bearer tokens (long-lived, shown once, stored as a hash with a 4-character preview, prefixes `formalie_live_` / `formalie_test_`) or client id + secret → short-lived tokens from `POST /{apiKey}/token` (5 to 60 minutes); live and test from the start (test never touches real responses)
 - ✅ Rotate (the old secret works for 0 h, 24 h or 7 days), revoke, delete once revoked or expired; expiry (30 / 90 / 365 days, a date, never), "expiring" 14 days before; scopes per service / endpoint / method; last used; tokens unused for 90 days flagged. Tokens & headers page (rule 21) with the token panel
 - ✅ Optional request signing per token: `X-Formalie-Timestamp` + `X-Formalie-Signature: sha256=HMAC(secret, "{timestamp}.{METHOD}.{path}.{body}")`, refused after 5 minutes
-- ✅ Headers: `Authorization: Bearer …` · `Content-Type: application/json` · optional `Idempotency-Key` (a POST with the same key answers the first response again) · custom required headers per endpoint (name + value, up to 5, in the endpoint wizard; Headers view lists them). `X-Formalie-Destination` dropped: a form has one storage (decision 113)
+- ✅ Headers: `Authorization: Bearer …` · `Content-Type: application/json` · optional `Formalie-Key` (a POST with the same key answers the first response again; owner named it, 2026-10-06) · custom required headers per endpoint (name + value, up to 5, in the endpoint wizard; Headers view lists them). `X-Formalie-Destination` dropped: a form has one storage (decision 113)
 - ✅ No tenant / organisation id headers: the address key and the token identify the organisation (a token only works under its own organisation's key); the address key rotates with a grace period (Headers view)
 - ✅ Answers always JSON: `{ data, meta }` or `{ error: { code, message, details } }`, codes `FRM-API-1006…1014` (+ `FRM-RESP-1001` for the form's rules). Mock public API answers real calls (`server/mock/publicApi.ts`; Postman: see 02-DEV-ENVIRONMENT → API service from Postman)
 
@@ -678,10 +678,10 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 7. Docs and testing
 
-- ⬜ Generated documentation per service (OpenAPI), code snippets (curl, JavaScript, Python, PHP, C#), copy buttons
-- ⬜ Try-it console with a test token; sandbox / test mode that doesn't write live data
-- ⬜ Examples and the console use the form's real answer values (choices, not `option_1`) and fill in a fresh `Formalie-Key` for each new record (owner, 2026-10-06)
-- ⬜ Files through the API (owner-agreed 2026-10-06), after tokens (M2) and rate limits (M3): upload first to `{apiKey}/files` (multipart; same type, size and scan checks as the form page) → a file reference, then send the reference in the JSON; file questions then become acceptable in the wizard
+- ✅ Docs & testing page (`/api-service/docs`): pick a service in the header, its endpoints at the side (a sliding row on phones); per method the body table (key, type, required, allowed values), query options, code (curl, JavaScript, Python, PHP, C#, the choice remembered, Copy) and the answer; a shared guide (address, tokens, `Formalie-Key`, files, signed calls, error codes); Download OpenAPI 3.1 per service (`shared/utils/apiService/snippets.ts`)
+- ✅ Try-it console (`ApiDocsConsole`, from each method and the endpoint panel's Test button): every real check with a console test token that lives 60 s, nothing stored; status, time taken, rate-limit headers and the JSON (`POST /api-endpoints/{id}/try`)
+- ✅ Examples and the console use the form's real answer values (choices, not `option_1`) and fill in a fresh `Formalie-Key` for each new record, with "keep this key" to see a retry (owner, 2026-10-06); every accepted question type's example passes the form's own checks (test)
+- ✅ Files through the API (owner-agreed 2026-10-06): upload first to `POST {apiKey}/{endpoint}/files?field={question}` (multipart; same type, size and scan checks as the form page) → a file reference, then send the reference in the JSON; file questions then become acceptable in the wizard
 
 ### 8. Safety and audit
 
@@ -1098,10 +1098,10 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | Query editor: Run all (every statement, a result per statement); a lazy tree for very large databases (columns load when a table is opened); open F12 items resolved (done, or moved to F15e / F22 / later) | F12 | ✅ |
 | 2026-10-05 | Before F13: Forms → Analytics (still a placeholder) and Data sources → Overview must be finished and look "Wao" in the design's dashboard style | F18 (brought forward) · F12 overview | ✅ |
 | 2026-10-06 | F13 tokens: separate test and live tokens from the start; app integrations (Sheets, team chat, email) after F21 | F13 M2 · after F21 | ✅ decided |
-| 2026-10-06 | Files through the API: not in M1 (JSON only); a separate upload step with the form page's checks, once tokens and rate limits exist | F13 M5 | ⬜ |
+| 2026-10-06 | Files through the API: not in M1 (JSON only); a separate upload step with the form page's checks, once tokens and rate limits exist | F13 M5 | ✅ |
 | 2026-10-06 | Test the API service with Postman already against the mock (tell the owner when it works) | F13 M2 (mock public API) | ✅ |
 | 2026-10-06 | Token prefixes and headers say Formalie: `formalie_live_…` tokens; `Formalie-Key` instead of `Idempotency-Key` (our own name, on purpose) | F13 M2 | ✅ |
-| 2026-10-06 | Examples with the form's real answer values; the console fills in `Formalie-Key` | F13 M5 | ⬜ |
+| 2026-10-06 | Examples with the form's real answer values; the console fills in `Formalie-Key` | F13 M5 | ✅ |
 
 ---
 
@@ -1289,3 +1289,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 | M2 Tokens and headers: Tokens & headers page (rule 21; view switch Tokens | Headers), new token (live / test, bearer or client id + secret, scopes, expiry, signing; secrets shown once), rotate with a grace period, revoke, delete; address key rotation; required headers per endpoint (wizard, panel, example call); shared rules `shared/utils/apiService/tokens.ts`. Mock public API `server/mock/publicApi.ts` (`/public-api/**` and the `api.formalie.dev` host): token, list, one, create (Idempotency-Key replay), change, delete, the form's rules, scopes, required headers, signatures, test mode; file ids returned as references. Tests: `apiService/tokens`. |
 | 2026-10-06 | F13 | M3 Access rules: Access rules page (rule 21; view switch Rules | Rate limits), rule dialog (allow / block; IPs and ranges, domains, countries, regions; all, a service or an endpoint), rule panel, Test a caller, rate limits per token / IP / endpoint; shared rules `shared/utils/apiService/access.ts` (IPv4 / IPv6 ranges, continents); mock `/api-access-rules` (+ insights, test), `/api-service/limits`; the mock public API applies rules (`FRM-API-1015`) and limits (`429` + `Retry-After`). Also: token prefixes `formalie_…`, header `Formalie-Key` (owner). Tests: `apiService/access`. |
 | 2026-10-06 | F13 | M4 Request logs and analytics: Request logs page (rule 21, panel with headers and kept bodies, log settings, CSV download), API Analytics page and the API service Overview in the dashboard style (`ChartsKpi`, `ChartsFlow`, endpoint overview, breakdowns, recent calls); mock `/api-logs` (+ insights, settings, one), `/api-analytics`; the mock public API logs every call (bodies only when kept, personal answers masked); sample history of 7 days from the endpoints' daily numbers, respecting token scopes. |
+| 2026-10-06 | F13 | M5 Docs and testing: Docs & testing page (per service: endpoints, per-method body tables with real allowed values, query options, code in five languages, answers, a shared guide with tokens, `Formalie-Key`, files, signing and error codes), Download OpenAPI 3.1, try-it console (endpoint panel Test button too; console test token, nothing stored; mock `POST /api-endpoints/{id}/try`). Files through the API: `POST {apiKey}/{endpoint}/files?field=` (multipart `file`, the form page's type and size checks) → an id for the JSON. Fixed: the public API now uses the same worked-out question choices as the portal (a form-required question is always accepted); currency, duration and IBAN examples match the form's checks. Tests: `apiService/snippets`, `apiService/samples`. |

@@ -52,6 +52,7 @@ const tiles = computed(() => {
   ]
 })
 const tab = ref<'fields' | 'example'>('fields')
+const consoleOpen = ref(false)
 const chips = computed(() => [
   { key: 'fields' as const, label: t('apiService.fields.title'), count: endpoint.value?.fields.length ?? 0 },
   { key: 'example' as const, label: t('apiService.call.title'), count: endpoint.value?.methods.length ?? 0 },
@@ -106,6 +107,7 @@ const menu = computed<DropdownMenuItem[][]>(() => {
           <span class="mx-1 h-5 w-px bg-(--ui-border)" aria-hidden="true" />
           <UButton :label="t('apiService.actions.edit')" icon="i-lucide-pencil" color="neutral" size="sm" :to="`/api-service/endpoints/${endpoint.id}/edit`" />
           <UButton :label="t('apiService.actions.copyUrl')" icon="i-lucide-link" color="neutral" variant="outline" size="sm" @click="emit('copy', endpoint)" />
+          <UButton :label="t('apiService.docs.test')" icon="i-lucide-play" color="neutral" variant="outline" size="sm" :disabled="endpoint.status !== 'active'" @click="consoleOpen = true" />
         </div>
       </div>
     </template>
@@ -166,4 +168,5 @@ const menu = computed<DropdownMenuItem[][]>(() => {
       </nav>
     </template>
   </USlideover>
+  <ApiDocsConsole v-model:open="consoleOpen" :endpoint="endpoint" />
 </template>

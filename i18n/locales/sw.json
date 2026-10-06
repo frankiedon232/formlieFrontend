@@ -3713,10 +3713,10 @@
       "none": "Fomu hii bado haina maswali",
       "formRequired": "lazima kwa mujibu wa fomu",
       "why": {
-        "file": "faili bado haziwezi kutumwa kupitia API",
         "calculated": "hukokotolewa na fomu",
         "payment": "malipo hayawezi kutumwa kupitia API",
-        "locked": "kusoma tu kwenye fomu"
+        "locked": "kusoma tu kwenye fomu",
+        "signature": "sahihi huchorwa kwenye ukurasa wa fomu"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "siku {n} | siku {n}",
         "never": "Tokeni hazirekodiwi kamwe kwenye kumbukumbu, ni sehemu yake inayoonekana tu. Thamani za vichwa vinavyohitajika na saini hufichwa.",
         "saved": "Mipangilio ya kumbukumbu imehifadhiwa"
+      }
+    },
+    "docs": {
+      "language": "Lugha ya msimbo",
+      "tryIt": "Jaribu",
+      "test": "Jaribio",
+      "body": "Mwili (JSON)",
+      "col": {
+        "key": "Ufunguo",
+        "type": "Aina",
+        "values": "Thamani zinazoruhusiwa"
+      },
+      "fileValue": "Vitambulisho vya faili kutoka hatua ya kupakia",
+      "putHint": "Tuma majibu unayobadilisha tu; mengine yanabaki kama yalivyo.",
+      "keyHint": "Tuma Formalie-Key mpya kwa kila rekodi mpya. Kujaribu tena kwa ufunguo ule ule hurudisha rekodi ya kwanza, kamwe si ya pili.",
+      "query": "Chaguo za hoja",
+      "page": "namba ya ukurasa, kuanzia 1",
+      "perPage": "rekodi kwa kila ukurasa, hadi {n}",
+      "sort": "za zamani kwanza (bila hii, mpya kwanza)",
+      "filterBy": "rekodi zenye {label} hii pekee",
+      "code": "Msimbo",
+      "guide": "Jinsi kila simu inavyofanya kazi",
+      "baseUrl": "Anwani",
+      "baseUrlHint": "Kila endpoint ya shirika lako huanza na anwani hii. Ongeza jina la endpoint baada yake.",
+      "auth": {
+        "title": "Ingia kwa tokeni",
+        "text": "Tuma tokeni kutoka Uthibitishaji kama Authorization: Bearer kwa kila simu. Tokeni za mteja kwanza hupata tokeni ya ufikiaji ya muda mfupi kwa client id na siri yao, kama ilivyo hapa chini."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Kitambulisho cha kipekee unachounda kwa kila rekodi mpya (UUID inafaa). Mtandao ukifeli na ukatuma simu ile ile tena, Formalie hujibu kwa rekodi ambayo tayari iliundwa."
+      },
+      "files": {
+        "title": "Kutuma faili",
+        "text": "Pakia kila faili kwanza, kama data ya fomu, kwa jina la sehemu file na ufunguo wa swali katika field. Jibu linatoa kitambulisho cha faili.",
+        "then": "Kisha weka vitambulisho kwenye mwili wa JSON chini ya swali hilo, mfano \"cv\": [\"id\"]. Aina na ukubwa wa faili ni sawa na kwenye fomu."
+      },
+      "signing": {
+        "title": "Simu zilizotiwa saini",
+        "text": "Tokeni ikiwa na utiaji saini umewashwa, kila simu pia hubeba wakati na saini ya HMAC-SHA256 iliyotengenezwa kwa siri ya kutia saini. Simu za zaidi ya dakika tano hukataliwa."
+      },
+      "errors": {
+        "title": "Hitilafu",
+        "text": "Simu iliyoshindwa hujibu kwa hali na mwili wa JSON wenye msimbo unaoweza kuutafuta hapa."
+      },
+      "openapi": "Pakua OpenAPI",
+      "downloaded": "Faili ya OpenAPI imepakuliwa",
+      "failed": "Nyaraka hazikuweza kupakiwa",
+      "fromForm": "Majibu ya fomu {form}.",
+      "headers": "Vichwa vinavyohitajika",
+      "console": {
+        "title": "Jaribu /{name}",
+        "desc": "Hufanya ukaguzi wote halisi kwa tokeni ya majaribio. Hakuna kinachohifadhiwa.",
+        "record": "Kitambulisho cha rekodi",
+        "recordPlaceholder": "Acha wazi kwa orodha",
+        "keyHelp": "Imejazwa kwa ajili yako; mpya baada ya kila simu.",
+        "newKey": "Ufunguo mpya",
+        "keepKey": "Weka ufunguo huu (tuma simu ile ile tena kuona jaribio la pili)",
+        "headerHelp": "Unahitajika na endpoint hii.",
+        "testOnly": "Hali ya majaribio: majibu yanaonekana halisi, lakini hakuna jibu linaloundwa, kubadilishwa au kufutwa.",
+        "nothingYet": "Tuma simu kuona jibu",
+        "send": "Tuma",
+        "badJson": "Hii si JSON halali."
       }
     }
   },

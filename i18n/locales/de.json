@@ -3713,10 +3713,10 @@
       "none": "Dieses Formular hat noch keine Fragen",
       "formRequired": "vom Formular verlangt",
       "why": {
-        "file": "Dateien können noch nicht über die API gesendet werden",
         "calculated": "vom Formular berechnet",
         "payment": "Zahlungen können nicht über die API gesendet werden",
-        "locked": "im Formular schreibgeschützt"
+        "locked": "im Formular schreibgeschützt",
+        "signature": "Unterschriften werden auf der Formularseite gezeichnet"
       }
     },
     "call": {
@@ -4165,6 +4165,69 @@
         "days": "{n} Tag | {n} Tage",
         "never": "Tokens werden nie protokolliert, nur ihr sichtbarer Teil. Erforderliche Header-Werte und Signaturen werden maskiert.",
         "saved": "Protokolleinstellungen gespeichert"
+      }
+    },
+    "docs": {
+      "language": "Codesprache",
+      "tryIt": "Ausprobieren",
+      "test": "Testen",
+      "body": "Body (JSON)",
+      "col": {
+        "key": "Schlüssel",
+        "type": "Typ",
+        "values": "Erlaubte Werte"
+      },
+      "fileValue": "Datei-IDs aus dem Upload-Schritt",
+      "putHint": "Sende nur die Antworten, die du änderst; die anderen bleiben unverändert.",
+      "keyHint": "Sende mit jedem neuen Datensatz einen neuen Formalie-Key. Eine Wiederholung mit demselben Key liefert den ersten Datensatz zurück, nie einen zweiten.",
+      "query": "Abfrageoptionen",
+      "page": "Seitennummer, ab 1",
+      "perPage": "Datensätze pro Seite, bis zu {n}",
+      "sort": "älteste zuerst (ohne Angabe: neueste zuerst)",
+      "filterBy": "nur Datensätze mit diesem Wert für {label}",
+      "code": "Code",
+      "guide": "So funktioniert jeder Aufruf",
+      "baseUrl": "Adresse",
+      "baseUrlHint": "Jeder Endpunkt deiner Organisation beginnt mit dieser Adresse. Hänge den Namen des Endpunkts daran an.",
+      "auth": {
+        "title": "Mit einem Token anmelden",
+        "text": "Sende bei jedem Aufruf ein Token aus Authentifizierung als Authorization: Bearer. Client-Tokens erhalten zuerst mit ihrer Client-ID und ihrem Secret ein kurzlebiges Zugriffstoken, wie unten beschrieben."
+      },
+      "key": {
+        "title": "Formalie-Key",
+        "text": "Eine eindeutige ID, die du für jeden neuen Datensatz erzeugst (eine UUID eignet sich gut). Fällt das Netzwerk aus und du sendest denselben Aufruf erneut, antwortet Formalie mit dem bereits erstellten Datensatz."
+      },
+      "files": {
+        "title": "Dateien senden",
+        "text": "Lade jede Datei zuerst als Formulardaten hoch, mit dem Feldnamen file und dem Fragenschlüssel in field. Die Antwort enthält die ID der Datei.",
+        "then": "Trage die IDs dann im JSON-Body unter dieser Frage ein, z. B. \"cv\": [\"id\"]. Es gelten dieselben Dateitypen und Größen wie im Formular."
+      },
+      "signing": {
+        "title": "Signierte Aufrufe",
+        "text": "Ist bei einem Token das Signieren aktiviert, enthält jeder Aufruf zusätzlich die Uhrzeit und eine HMAC-SHA256-Signatur, die mit dem Signing-Secret erstellt wird. Aufrufe, die älter als fünf Minuten sind, werden abgelehnt."
+      },
+      "errors": {
+        "title": "Fehler",
+        "text": "Ein fehlgeschlagener Aufruf antwortet mit einem Status und einem JSON-Body mit einem Code, den du hier nachschlagen kannst."
+      },
+      "openapi": "OpenAPI herunterladen",
+      "downloaded": "OpenAPI-Datei heruntergeladen",
+      "failed": "Die Dokumentation konnte nicht geladen werden",
+      "fromForm": "Antworten des Formulars {form}.",
+      "headers": "Erforderliche Header",
+      "console": {
+        "title": "/{name} ausprobieren",
+        "desc": "Führt alle echten Prüfungen mit einem Testtoken aus. Nichts wird gespeichert.",
+        "record": "Datensatz-ID",
+        "recordPlaceholder": "Leer lassen für die Liste",
+        "keyHelp": "Automatisch ausgefüllt; nach jedem Aufruf ein neuer.",
+        "newKey": "Neuer Key",
+        "keepKey": "Diesen Key behalten (denselben Aufruf erneut senden, um die Wiederholung zu sehen)",
+        "headerHelp": "Von diesem Endpunkt erforderlich.",
+        "testOnly": "Testmodus: Die Antworten wirken echt, aber es wird keine Antwort erstellt, geändert oder gelöscht.",
+        "nothingYet": "Sende einen Aufruf, um die Antwort zu sehen",
+        "send": "Senden",
+        "badJson": "Das ist kein gültiges JSON."
       }
     }
   },

@@ -32,19 +32,20 @@ export function endpointFieldsOf(schema: FormSchemaV1, saved?: { key: string; ac
         required: accept && (formRequired || !!own?.required),
         returned: own ? own.returned : true,
         filter: filterable && !!own?.filter,
+        ...(field.options?.length ? { options: field.options.map(option => ({ value: option.value, label: option.label })) } : {}),
       }
     })
 }
 
-/** Can be sent through the API: not read-only, disabled, calculated, a file or a payment. */
+/** Can be sent through the API: not read-only, disabled, calculated, a signature or a payment (files: upload first, M5). */
 export function isAcceptable(field: Pick<FormField, 'type' | 'readonly' | 'disabled'>) {
   return !field.readonly && !field.disabled && !NOT_ACCEPTED_TYPES.includes(field.type)
 }
 
 /** Why a field can't be sent, for the hint beside it (null = it can). */
-export function notAcceptedReason(field: Pick<ApiEndpointField, 'type' | 'acceptable'>): 'file' | 'calculated' | 'payment' | 'locked' | null {
+export function notAcceptedReason(field: Pick<ApiEndpointField, 'type' | 'acceptable'>): 'signature' | 'calculated' | 'payment' | 'locked' | null {
   if (field.acceptable) return null
-  if (['file_upload', 'image_upload', 'signature'].includes(field.type)) return 'file'
+  if (field.type === 'signature') return 'signature'
   if (field.type === 'calculated') return 'calculated'
   if (field.type === 'payment') return 'payment'
   return 'locked'
@@ -71,8 +72,12 @@ export function endpointNameFrom(text: string) {
 }
 
 /** A made-up value of the right shape for a question, for examples. */
-export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'label'>): unknown {
+export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'label' | 'options'>): unknown {
   const key = `${field.key} ${field.label}`.toLowerCase()
+  // The form's own answer values (owner, 2026-10-06: no made-up option_1)
+  const values = (field.options ?? []).map(option => option.value)
+  if (values.length && ['dropdown', 'radio'].includes(field.type)) return values[0]
+  if (values.length && ['multi_select', 'checkbox', 'ranking'].includes(field.type)) return field.type === 'ranking' ? values : values.slice(0, 2)
   switch (field.type) {
     case 'email':
       return 'alex.morgan@example.com'
@@ -85,7 +90,7 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
     case 'slider':
       return 42
     case 'currency':
-      return { amount: 120.5, currency: 'EUR' }
+      return 120.5
     case 'percentage':
       return 75
     case 'full_name':
@@ -99,7 +104,7 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
     case 'date_range':
       return { from: '2026-10-06', to: '2026-10-10' }
     case 'duration':
-      return 'PT1H30M'
+      return { hours: 1, minutes: 30 }
     case 'multi_select':
     case 'checkbox':
     case 'ranking':
@@ -123,6 +128,10 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
       return 'en'
     case 'timezone':
       return 'Europe/London'
+    case 'iban':
+      return 'GB33BUKB20201555555555'
+    case 'bic':
+      return 'DEUTDEFF'
     case 'currency_code':
       return 'EUR'
     case 'ip_address':
@@ -133,8 +142,9 @@ export function sampleValue(field: Pick<ApiEndpointField, 'type' | 'key' | 'labe
       return '#1F2937'
     case 'file_upload':
     case 'image_upload':
+      return ['FILE_ID_FROM_FILES_UPLOAD']
     case 'signature':
-      return { name: 'document.pdf', size: 20480, url: 'https://api.formalie.dev/files/…' }
+      return null
     case 'long_text':
     case 'rich_text':
       return 'A few sentences of text.'
@@ -155,7 +165,7 @@ export function exampleRecord(fields: ApiEndpointField[]) {
     id: 'rsp_9fK2mQ7xLp',
     submitted_at: '2026-10-06T09:30:00Z',
     status: 'new',
-    data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.key, sampleValue(field)])),
+    data: Object.fromEntries(fields.filter(field => field.returned).map(field => [field.key, ['file_upload', 'image_upload'].includes(field.type) ? [{ id: 'f_Hc71mQpZsA', name: 'document.pdf', size: 20480, type: 'application/pdf' }] : sampleValue(field)])),
   }
 }
 
@@ -163,8 +173,8 @@ export function exampleRecord(fields: ApiEndpointField[]) {
 export const API_PAGE_SIZE_MAX = 100
 /** Layout blocks are not questions. */
 export const LAYOUT_TYPES: string[] = ['section', 'paragraph', 'divider', 'image']
-/** Never sent through the API in this version: files (upload first, later), calculated values, payments. */
-export const NOT_ACCEPTED_TYPES: string[] = ['file_upload', 'image_upload', 'signature', 'calculated', 'payment']
+/** Never sent through the API: signatures (drawn on the form page), calculated values, payments. Files are uploaded first (`…/files`). */
+export const NOT_ACCEPTED_TYPES: string[] = ['signature', 'calculated', 'payment']
 /** Questions a GET list can be narrowed by. */
 export const FILTER_TYPES: string[] = ['short_text', 'email', 'phone', 'number', 'currency', 'percentage', 'date', 'datetime', 'dropdown', 'radio', 'multi_select', 'checkbox', 'toggle', 'consent', 'rating', 'scale', 'slider', 'country', 'language', 'hidden']
 /** Paths the API service uses itself. */
