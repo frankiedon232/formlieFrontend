@@ -357,7 +357,6 @@
     "integrations": "Tích hợp",
     "destinations": "Đích đến",
     "webhooks": "Webhook",
-    "apiKeys": "Khóa API",
     "settings": "Cài đặt",
     "resources": "Tài nguyên",
     "system": "Hệ thống",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Có thể gọi {n} dịch vụ hoặc endpoint đã xóa | Có thể gọi {n} dịch vụ hoặc endpoint đã xóa",
         "text": "Chúng đã bị xóa nên token này không thể gọi. Token không bao giờ được mở rộng ra tất cả; hãy sửa phạm vi gọi để trỏ đến đúng dịch vụ."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Đọc biểu mẫu",
+          "forms_write": "Mở và đóng biểu mẫu",
+          "responses_read": "Đọc phản hồi",
+          "responses_write": "Sửa phản hồi",
+          "webhooks_read": "Đọc webhook",
+          "audit_read": "Đọc nhật ký kiểm tra"
+        },
+        "title": "Quản lý biểu mẫu và phản hồi",
+        "help": "Tùy chọn. Cho phép token này dùng cả API quản lý (/v1): liệt kê biểu mẫu, mở hoặc đóng chúng, đọc và thay đổi phản hồi. Để tắt tất cả nếu token chỉ gọi endpoint.",
+        "none": "Không có. Token này chỉ gọi endpoint."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Hạn của token",
         "text": "Mỗi phản hồi mang hạn của token: header Formalie-Token-Expires và, bên cạnh dữ liệu, meta.token_expires_at và meta.token_expires_in_days (null với token không bao giờ hết hạn). Hãy gia hạn token trước khi đến ngày đó."
+      },
+      "manage": {
+        "title": "Quản lý biểu mẫu và phản hồi",
+        "text": "Ngoài các endpoint của bạn, token có thể quản lý không gian làm việc qua /v1: liệt kê biểu mẫu, mở hoặc đóng chúng, đọc, thay đổi hoặc xóa phản hồi, cùng đọc webhook và nhật ký kiểm tra. Hãy cấp các quyền này cho token ở bước “Quản lý biểu mẫu và phản hồi”. Vẫn áp dụng ba header như cũ.",
+        "base": "Địa chỉ"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Trả lời bằng bất kỳ trạng thái 2xx nào trong 10 giây; làm việc thật sau đó. Mọi phản hồi khác sẽ được thử lại."
       }
     },
-    "onceDesc": "Hãy sao chép ngay. Bạn có thể xem lại sau trong bảng của nó, sau khi xác nhận mật khẩu.",
-    "keys": {
-      "newTitle": "Khóa API mới",
-      "editTitle": "Sửa khóa API",
-      "desc": "Khóa cho phép mã của bạn dùng API quản lý của Formalie: đọc biểu mẫu và phản hồi, đổi trạng thái và nhiều hơn nữa.",
-      "create": "Tạo khóa",
-      "namePlaceholder": "vd. Tập lệnh báo cáo",
-      "scopesHelp": "Chỉ cấp cho mỗi khóa những gì nó cần.",
-      "scopesCount": "{n} quyền | {n} quyền",
-      "search": "Tìm khóa API…",
-      "empty": "Chưa có khóa API",
-      "emptyDesc": "Tạo khóa để đọc biểu mẫu và phản hồi từ mã của bạn.",
-      "lastUsed": "Dùng {when}",
-      "neverUsed": "Chưa từng dùng",
-      "lastFrom": "Dùng lần cuối từ",
-      "noCalls": "Không có lệnh gọi nào trong 30 ngày qua",
-      "secret": "Khóa API",
-      "secretTitle": "Khóa API cho {name}",
-      "secretHint": "Chỉ giữ trên máy chủ của bạn, không bao giờ đặt trong trang web hay ứng dụng mà người khác có thể tải về.",
-      "revoke": "Thu hồi",
-      "revokeTitle": "Thu hồi khóa này?",
-      "revokeDesc": "{name} ngừng hoạt động ngay lập tức. Mã vẫn dùng nó sẽ nhận lỗi.",
-      "deleteTitle": "Xóa khóa này?",
-      "deleteDesc": "{name} bị xóa khỏi danh sách. Nhật ký kiểm tra vẫn giữ những gì nó đã làm.",
-      "expiringTitle": "Hết hạn {when}",
-      "expiringDesc": "Tạo khóa mới, chuyển mã của bạn sang, rồi thu hồi khóa này.",
-      "howToCall": "Cách gọi",
-      "howToCallText": "Gửi khóa dưới dạng bearer token. Danh sách trả về data và meta (page, per_page, total); lỗi trả về mã mà bạn có thể tra trong Tài liệu & kiểm thử.",
-      "col": {
-        "name": "Khóa",
-        "status": "Trạng thái",
-        "scopes": "Quyền",
-        "calls": "Lệnh gọi",
-        "lastUsed": "Dùng lần cuối"
-      },
-      "scope": {
-        "forms_read": "Đọc biểu mẫu",
-        "forms_write": "Mở và đóng biểu mẫu",
-        "responses_read": "Đọc phản hồi",
-        "responses_write": "Sửa phản hồi",
-        "webhooks_read": "Đọc webhook",
-        "audit_read": "Đọc nhật ký kiểm tra"
-      },
-      "scopeHint": {
-        "forms_read": "Liệt kê biểu mẫu và câu hỏi của chúng",
-        "forms_write": "Chuyển biểu mẫu đã xuất bản giữa mở và đóng",
-        "responses_read": "Liệt kê phản hồi cùng câu trả lời",
-        "responses_write": "Đổi trạng thái và thẻ, xóa phản hồi",
-        "webhooks_read": "Liệt kê webhook và sự kiện của chúng",
-        "audit_read": "Đọc điều gì đã xảy ra và ai đã làm"
-      },
-      "invalid": {
-        "scopes": "Chọn ít nhất một quyền"
-      },
-      "kpi": {
-        "calls": "Lệnh gọi bằng khóa API",
-        "keys": "Khóa",
-        "unused": "Không dùng 90 ngày",
-        "byStatus": "Khóa theo trạng thái",
-        "expiringHint": "Sắp hết hạn = trong 14 ngày"
-      },
-      "sort": {
-        "lastUsed": "Dùng gần nhất",
-        "expires": "Hết hạn sớm nhất"
-      },
-      "toast": {
-        "saved": "Đã lưu khóa API",
-        "revoked": "Đã thu hồi khóa API",
-        "deleted": "Đã xóa khóa API"
-      }
-    }
+    "onceDesc": "Hãy sao chép ngay. Bạn có thể xem lại sau trong bảng của nó, sau khi xác nhận mật khẩu."
   },
   "secrets": {
     "title": "Bí mật",

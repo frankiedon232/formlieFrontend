@@ -19,7 +19,7 @@
  */
 import { z } from 'zod'
 import type { ApiInsights, ApiServiceSettings, ApiSetupSummary, ApiTokenSecrets, ApiTokenCreated, ApiTokenInsights, ApiUsage } from '#shared/types/apiService'
-import { API_STATUSES, API_TOKEN_MODES, API_TOKEN_STATUSES } from '#shared/types/apiService'
+import { API_STATUSES, API_TOKEN_MODES, API_TOKEN_STATUSES, MANAGE_SCOPES } from '#shared/types/apiService'
 import { checkHeaderName, checkHeaderValue, MAX_REQUIRED_HEADERS, ROTATION_GRACE_HOURS, secretPreview, TOKEN_LIFETIMES } from '#shared/utils/apiService/tokens'
 import { checkApiName, checkEndpointName, endpointFieldsOf, API_PAGE_SIZE_MAX } from '#shared/utils/apiService/endpoints'
 import { API_METHODS, type ApiMethod } from '#shared/utils/urls/public'
@@ -351,7 +351,7 @@ const tokenInput = z.object({
   name: z.string().trim().min(1).max(80),
   kind: z.enum(['static', 'client']),
   mode: z.enum(API_TOKEN_MODES),
-  scopes: z.object({ services: z.array(z.string()).max(100), endpoints: z.array(z.string()).max(500), methods: z.array(z.enum(API_METHODS)).max(4) }),
+  scopes: z.object({ services: z.array(z.string()).max(100), endpoints: z.array(z.string()).max(500), methods: z.array(z.enum(API_METHODS)).max(4), manage: z.array(z.enum(MANAGE_SCOPES)).max(MANAGE_SCOPES.length).optional() }),
   expires_at: z.string().datetime().nullable(),
   lifetime_minutes: z
     .number()

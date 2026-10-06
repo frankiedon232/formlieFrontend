@@ -357,7 +357,6 @@
     "integrations": "集成",
     "destinations": "目标",
     "webhooks": "Webhook",
-    "apiKeys": "API 密钥",
     "settings": "设置",
     "resources": "资源",
     "system": "系统",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "可能调用 {n} 个已删除的服务或端点 | 可能调用 {n} 个已删除的服务或端点",
         "text": "它们已被删除,因此此令牌无法调用。令牌不会被扩大到全部范围;请编辑其可调用的范围,指向正确的服务。"
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "读取表单",
+          "forms_write": "开启和关闭表单",
+          "responses_read": "读取回复",
+          "responses_write": "更改回复",
+          "webhooks_read": "读取 Webhook",
+          "audit_read": "读取审计日志"
+        },
+        "title": "管理表单和回复",
+        "help": "可选。让此令牌也能使用管理 API (/v1)：列出表单、打开或关闭表单、读取和修改回复。如果令牌只调用端点，请全部保持关闭。",
+        "none": "无。此令牌只调用端点。"
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "令牌有效期",
         "text": "每个响应都带有令牌的有效期:Formalie-Token-Expires 请求头,以及数据旁的 meta.token_expires_at 和 meta.token_expires_in_days(永不过期的令牌为 null)。请在到期日之前续期令牌。"
+      },
+      "manage": {
+        "title": "管理表单和回复",
+        "text": "除了您的端点，令牌还可以通过 /v1 管理工作区：列出表单、打开或关闭表单、读取、修改或删除回复，以及读取 Webhook 和审计追踪。请在令牌的“管理表单和回复”步骤中授予这些权限。同样适用那三个请求头。",
+        "base": "地址"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "请在 10 秒内返回任意 2xx 状态，真正的处理放在之后。其他响应都会重试。"
       }
     },
-    "onceDesc": "请现在复制。之后确认密码，即可在其面板中再次查看。",
-    "keys": {
-      "newTitle": "新建 API 密钥",
-      "editTitle": "编辑 API 密钥",
-      "desc": "密钥可让你自己的代码使用 Formalie 的管理 API：读取表单和回复、更改状态等。",
-      "create": "创建密钥",
-      "namePlaceholder": "例如：报表脚本",
-      "scopesHelp": "只给每个密钥它需要的权限。",
-      "scopesCount": "{n} 项权限 | {n} 项权限",
-      "search": "搜索 API 密钥…",
-      "empty": "还没有 API 密钥",
-      "emptyDesc": "创建一个密钥，用你自己的代码读取表单和回复。",
-      "lastUsed": "{when}使用",
-      "neverUsed": "从未使用",
-      "lastFrom": "上次使用来源",
-      "noCalls": "过去 30 天没有调用",
-      "secret": "API 密钥",
-      "secretTitle": "{name} 的 API 密钥",
-      "secretHint": "只保存在你的服务器上，切勿放进他人可下载的网站或应用。",
-      "revoke": "吊销",
-      "revokeTitle": "吊销此密钥？",
-      "revokeDesc": "{name} 会立即失效。仍在使用它的代码会收到错误。",
-      "deleteTitle": "删除此密钥？",
-      "deleteDesc": "{name} 将从列表中移除。审计日志会保留它的操作记录。",
-      "expiringTitle": "{when}到期",
-      "expiringDesc": "新建一个密钥，把代码切换过去，然后吊销此密钥。",
-      "howToCall": "调用方式",
-      "howToCallText": "将密钥作为 Bearer 令牌发送。列表返回 data 和 meta（page、per_page、total）；错误返回可在文档与测试中查询的代码。",
-      "col": {
-        "name": "密钥",
-        "status": "状态",
-        "scopes": "权限",
-        "calls": "调用",
-        "lastUsed": "上次使用"
-      },
-      "scope": {
-        "forms_read": "读取表单",
-        "forms_write": "开启和关闭表单",
-        "responses_read": "读取回复",
-        "responses_write": "更改回复",
-        "webhooks_read": "读取 Webhook",
-        "audit_read": "读取审计日志"
-      },
-      "scopeHint": {
-        "forms_read": "列出表单及其问题",
-        "forms_write": "将已发布的表单在开启和关闭之间切换",
-        "responses_read": "列出回复及其答案",
-        "responses_write": "更改状态和标签，删除回复",
-        "webhooks_read": "列出 Webhook 及其事件",
-        "audit_read": "读取发生了什么以及是谁操作的"
-      },
-      "invalid": {
-        "scopes": "请至少选择一项权限"
-      },
-      "kpi": {
-        "calls": "使用 API 密钥的调用",
-        "keys": "密钥",
-        "unused": "90 天未使用",
-        "byStatus": "按状态统计密钥",
-        "expiringHint": "即将到期 = 14 天内"
-      },
-      "sort": {
-        "lastUsed": "最近使用",
-        "expires": "最先到期"
-      },
-      "toast": {
-        "saved": "API 密钥已保存",
-        "revoked": "API 密钥已吊销",
-        "deleted": "API 密钥已删除"
-      }
-    }
+    "onceDesc": "请现在复制。之后确认密码，即可在其面板中再次查看。"
   },
   "secrets": {
     "title": "密钥",

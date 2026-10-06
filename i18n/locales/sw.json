@@ -357,7 +357,6 @@
     "integrations": "Miunganisho",
     "destinations": "Mahali pa kupeleka",
     "webhooks": "Webhooks",
-    "apiKeys": "Funguo za API",
     "settings": "Mipangilio",
     "resources": "Rasilimali",
     "system": "Mfumo",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Inaweza kupiga huduma au endpoint {n} iliyofutwa | Inaweza kupiga huduma au endpoint {n} zilizofutwa",
         "text": "Zimefutwa, kwa hiyo tokeni hii haiwezi kuzipiga. Haipanuliwi kamwe kwa kila kitu; hariri inachoweza kupiga ili iielekeze kwenye huduma sahihi."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Soma fomu",
+          "forms_write": "Fungua na funga fomu",
+          "responses_read": "Soma majibu",
+          "responses_write": "Badilisha majibu",
+          "webhooks_read": "Soma webhook",
+          "audit_read": "Soma kumbukumbu ya ukaguzi"
+        },
+        "title": "Simamia fomu na majibu",
+        "help": "Hiari. Huruhusu tokeni hii itumie pia API ya usimamizi (/v1): kuorodhesha fomu, kuzifungua au kuzifunga, kusoma na kubadilisha majibu. Acha vyote vimezimwa kwa tokeni inayoita endpoint pekee.",
+        "none": "Hakuna. Tokeni hii huita endpoint pekee."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Kuisha kwa tokeni",
         "text": "Kila jibu hubeba kuisha kwa tokeni: kichwa Formalie-Token-Expires na, karibu na data, meta.token_expires_at na meta.token_expires_in_days (null kwa tokeni isiyoisha kamwe). Fanya tokeni upya kabla siku haijafika."
+      },
+      "manage": {
+        "title": "Simamia fomu na majibu",
+        "text": "Mbali na endpoint zako, tokeni inaweza kusimamia nafasi ya kazi kupitia /v1: kuorodhesha fomu, kuzifungua au kuzifunga, kusoma, kubadilisha au kufuta majibu, na kusoma webhook na rekodi ya ukaguzi. Ipe tokeni haki hizi katika hatua ya “Simamia fomu na majibu”. Header zile zile tatu zinatumika.",
+        "base": "Anwani"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Jibu kwa hali yoyote ya 2xx ndani ya sekunde 10; fanya kazi halisi baadaye. Jibu lingine lolote hujaribiwa tena."
       }
     },
-    "onceDesc": "Nakili sasa. Unaweza kuiona tena baadaye kwenye paneli yake, baada ya kuthibitisha nenosiri lako.",
-    "keys": {
-      "newTitle": "Ufunguo mpya wa API",
-      "editTitle": "Hariri ufunguo wa API",
-      "desc": "Ufunguo huruhusu msimbo wako mwenyewe kutumia API ya usimamizi ya Formalie: kusoma fomu na majibu, kubadilisha hali na zaidi.",
-      "create": "Tengeneza ufunguo",
-      "namePlaceholder": "k.m. Hati ya ripoti",
-      "scopesHelp": "Mpe kila ufunguo kile unachohitaji tu.",
-      "scopesCount": "Ruhusa {n} | Ruhusa {n}",
-      "search": "Tafuta funguo za API…",
-      "empty": "Bado hakuna funguo za API",
-      "emptyDesc": "Tengeneza ufunguo wa kusoma fomu na majibu kutoka kwenye msimbo wako.",
-      "lastUsed": "Ilitumika {when}",
-      "neverUsed": "Haujawahi kutumika",
-      "lastFrom": "Ilitumika mara ya mwisho kutoka",
-      "noCalls": "Hakuna miito katika siku 30 zilizopita",
-      "secret": "Ufunguo wa API",
-      "secretTitle": "Ufunguo wa API wa {name}",
-      "secretHint": "Uweke kwenye seva yako pekee, kamwe usiuweke kwenye tovuti au programu ambayo wengine wanaweza kupakua.",
-      "revoke": "Batilisha",
-      "revokeTitle": "Kubatilisha ufunguo huu?",
-      "revokeDesc": "{name} huacha kufanya kazi mara moja. Msimbo unaoutumia bado utapata hitilafu.",
-      "deleteTitle": "Kufuta ufunguo huu?",
-      "deleteDesc": "{name} huondolewa kwenye orodha. Kumbukumbu ya ukaguzi huhifadhi ulichofanya.",
-      "expiringTitle": "Unaisha {when}",
-      "expiringDesc": "Tengeneza ufunguo mpya, hamishia msimbo wako kwake, kisha batilisha huu.",
-      "howToCall": "Jinsi ya kuita",
-      "howToCallText": "Tuma ufunguo kama bearer token. Orodha hujibu kwa data na meta (page, per_page, total); hitilafu kwa msimbo unaoweza kuutafuta katika Hati na majaribio.",
-      "col": {
-        "name": "Ufunguo",
-        "status": "Hali",
-        "scopes": "Ruhusa",
-        "calls": "Miito",
-        "lastUsed": "Ilitumika mwisho"
-      },
-      "scope": {
-        "forms_read": "Soma fomu",
-        "forms_write": "Fungua na funga fomu",
-        "responses_read": "Soma majibu",
-        "responses_write": "Badilisha majibu",
-        "webhooks_read": "Soma webhook",
-        "audit_read": "Soma kumbukumbu ya ukaguzi"
-      },
-      "scopeHint": {
-        "forms_read": "Orodhesha fomu na maswali yake",
-        "forms_write": "Badilisha fomu iliyochapishwa kati ya wazi na imefungwa",
-        "responses_read": "Orodhesha majibu pamoja na thamani zake",
-        "responses_write": "Badilisha hali na lebo, futa majibu",
-        "webhooks_read": "Orodhesha webhook na matukio yake",
-        "audit_read": "Soma kilichotokea na nani alifanya"
-      },
-      "invalid": {
-        "scopes": "Chagua angalau ruhusa moja"
-      },
-      "kpi": {
-        "calls": "Miito kwa funguo za API",
-        "keys": "Funguo",
-        "unused": "Haijatumika siku 90",
-        "byStatus": "Funguo kwa hali",
-        "expiringHint": "Inakaribia kuisha = ndani ya siku 14"
-      },
-      "sort": {
-        "lastUsed": "Zilizotumika hivi karibuni",
-        "expires": "Zinazoisha kwanza"
-      },
-      "toast": {
-        "saved": "Ufunguo wa API umehifadhiwa",
-        "revoked": "Ufunguo wa API umebatilishwa",
-        "deleted": "Ufunguo wa API umefutwa"
-      }
-    }
+    "onceDesc": "Nakili sasa. Unaweza kuiona tena baadaye kwenye paneli yake, baada ya kuthibitisha nenosiri lako."
   },
   "secrets": {
     "title": "Siri",

@@ -357,7 +357,6 @@
     "integrations": "Integraciones",
     "destinations": "Destinos",
     "webhooks": "Webhooks",
-    "apiKeys": "Claves API",
     "settings": "Configuración",
     "resources": "Recursos",
     "system": "Sistema",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Puede llamar a {n} servicio o endpoint eliminado | Puede llamar a {n} servicios o endpoints eliminados",
         "text": "Fueron eliminados, así que este token no puede llamarlos. Nunca se amplía a todo; edita lo que puede llamar para apuntarlo al servicio correcto."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Leer formularios",
+          "forms_write": "Abrir y cerrar formularios",
+          "responses_read": "Leer respuestas",
+          "responses_write": "Cambiar respuestas",
+          "webhooks_read": "Leer webhooks",
+          "audit_read": "Leer el registro de auditoría"
+        },
+        "title": "Gestionar formularios y respuestas",
+        "help": "Opcional. Permite que este token use también la API de gestión (/v1): listar formularios, abrirlos o cerrarlos, leer y cambiar respuestas. Deje todo desactivado si el token solo llama a endpoints.",
+        "none": "Ninguno. Este token solo llama a endpoints."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Caducidad del token",
         "text": "Cada respuesta incluye la caducidad del token: la cabecera Formalie-Token-Expires y, junto a los datos, meta.token_expires_at y meta.token_expires_in_days (null para un token que nunca caduca). Renueva el token antes de que llegue el día."
+      },
+      "manage": {
+        "title": "Gestionar formularios y respuestas",
+        "text": "Además de tus endpoints, un token puede gestionar el espacio de trabajo mediante /v1: listar formularios, abrirlos o cerrarlos, leer, cambiar o eliminar respuestas, y leer webhooks y el registro de auditoría. Da al token estos permisos en su paso «Gestionar formularios y respuestas». Se aplican los mismos tres encabezados.",
+        "base": "Dirección"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Responde con cualquier estado 2xx en 10 segundos y haz el trabajo real después. Cualquier otra respuesta se reintenta."
       }
     },
-    "onceDesc": "Cópialo ahora. Podrás verlo de nuevo más tarde en su panel, tras confirmar tu contraseña.",
-    "keys": {
-      "newTitle": "Nueva clave de API",
-      "editTitle": "Editar clave de API",
-      "desc": "Una clave permite que tu propio código use la API de gestión de Formalie: leer formularios y respuestas, cambiar estados y más.",
-      "create": "Crear clave",
-      "namePlaceholder": "p. ej. Script de informes",
-      "scopesHelp": "Da a cada clave solo lo que necesita.",
-      "scopesCount": "{n} permiso | {n} permisos",
-      "search": "Buscar claves de API…",
-      "empty": "Aún no hay claves de API",
-      "emptyDesc": "Crea una clave para leer formularios y respuestas desde tu propio código.",
-      "lastUsed": "Usada {when}",
-      "neverUsed": "Nunca usada",
-      "lastFrom": "Último uso desde",
-      "noCalls": "Sin llamadas en los últimos 30 días",
-      "secret": "Clave de API",
-      "secretTitle": "Clave de API para {name}",
-      "secretHint": "Guárdala solo en tu servidor, nunca en un sitio web o app que otros puedan descargar.",
-      "revoke": "Revocar",
-      "revokeTitle": "¿Revocar esta clave?",
-      "revokeDesc": "{name} deja de funcionar al instante. El código que aún la use recibirá un error.",
-      "deleteTitle": "¿Eliminar esta clave?",
-      "deleteDesc": "{name} se quita de la lista. El registro de auditoría conserva lo que hizo.",
-      "expiringTitle": "Caduca {when}",
-      "expiringDesc": "Crea una clave nueva, cambia tu código y luego revoca esta.",
-      "howToCall": "Cómo llamar",
-      "howToCallText": "Envía la clave como token de portador. Las listas responden con data y meta (page, per_page, total); los errores con un código que puedes consultar en Docs y pruebas.",
-      "col": {
-        "name": "Clave",
-        "status": "Estado",
-        "scopes": "Permisos",
-        "calls": "Llamadas",
-        "lastUsed": "Último uso"
-      },
-      "scope": {
-        "forms_read": "Leer formularios",
-        "forms_write": "Abrir y cerrar formularios",
-        "responses_read": "Leer respuestas",
-        "responses_write": "Cambiar respuestas",
-        "webhooks_read": "Leer webhooks",
-        "audit_read": "Leer el registro de auditoría"
-      },
-      "scopeHint": {
-        "forms_read": "Listar formularios y sus preguntas",
-        "forms_write": "Cambiar un formulario publicado entre abierto y cerrado",
-        "responses_read": "Listar respuestas con sus valores",
-        "responses_write": "Cambiar estado y etiquetas, eliminar respuestas",
-        "webhooks_read": "Listar webhooks y sus eventos",
-        "audit_read": "Leer qué pasó y quién lo hizo"
-      },
-      "invalid": {
-        "scopes": "Elige al menos un permiso"
-      },
-      "kpi": {
-        "calls": "Llamadas con claves de API",
-        "keys": "Claves",
-        "unused": "Sin uso en 90 días",
-        "byStatus": "Claves por estado",
-        "expiringHint": "Por caducar = en 14 días"
-      },
-      "sort": {
-        "lastUsed": "Usadas hace poco",
-        "expires": "Caducan primero"
-      },
-      "toast": {
-        "saved": "Clave de API guardada",
-        "revoked": "Clave de API revocada",
-        "deleted": "Clave de API eliminada"
-      }
-    }
+    "onceDesc": "Cópialo ahora. Podrás verlo de nuevo más tarde en su panel, tras confirmar tu contraseña."
   },
   "secrets": {
     "title": "Secreto",

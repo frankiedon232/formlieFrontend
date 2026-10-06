@@ -1,7 +1,7 @@
 /**
  * Webhooks and Formalie's own API keys (F13 M6, docs/API-CONTRACT.md → Integrations). Webhooks send
  * each response event to the organisation's own address, signed and retried; API keys let their code
- * use Formalie's management API (`https://api.formalie.dev/v1/…`). Admins only until F22.
+ * use Formalie's management API (`https://api.formalie.dev/v1/…`, with an API token that has management rights). Admins only until F22.
  */
 
 export const WEBHOOK_EVENTS = ['response.created', 'response.updated', 'response.status_changed', 'response.deleted'] as const
@@ -95,44 +95,3 @@ export interface WebhookInsights {
   daily: DailyCount[]
 }
 
-/** Formalie's management API (F13 M6). */
-export const API_KEY_SCOPES = ['forms:read', 'forms:write', 'responses:read', 'responses:write', 'webhooks:read', 'audit:read'] as const
-export type ApiKeyScope = (typeof API_KEY_SCOPES)[number]
-export type ApiKeyStatus = 'active' | 'expiring' | 'expired' | 'revoked'
-
-export interface ManagementKey {
-  id: string
-  name: string
-  preview: string
-  scopes: ApiKeyScope[]
-  status: ApiKeyStatus
-  expires_at: string | null
-  last_used_at: string | null
-  last_used_ip: string | null
-  calls_30d: number
-  daily: DailyCount[]
-  created_by: { id: string; name: string }
-  created_at: string
-  revoked_at: string | null
-}
-
-export interface ManagementKeySaveRequest {
-  name: string
-  scopes: ApiKeyScope[]
-  /** ISO date-time, or null for never. Only when creating. */
-  expires_at?: string | null
-}
-
-export interface ManagementKeyWithSecret {
-  key: ManagementKey
-  secret: string
-}
-
-export interface ApiKeyInsights {
-  total: number
-  by_status: Record<ApiKeyStatus, number>
-  calls_30d: number
-  previous_30d: number
-  unused_90d: number
-  daily: DailyCount[]
-}

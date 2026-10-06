@@ -357,7 +357,6 @@
     "integrations": "Integraties",
     "destinations": "Bestemmingen",
     "webhooks": "Webhooks",
-    "apiKeys": "API-sleutels",
     "settings": "Instellingen",
     "resources": "Bronnen",
     "system": "Systeem",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Roept mogelijk {n} verwijderde service of endpoint aan | Roept mogelijk {n} verwijderde services of endpoints aan",
         "text": "Die zijn verwijderd, dus deze token kan ze niet aanroepen. Hij wordt nooit uitgebreid naar alles; pas aan wat hij mag aanroepen om hem naar de juiste service te laten wijzen."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Formulieren lezen",
+          "forms_write": "Formulieren openen en sluiten",
+          "responses_read": "Antwoorden lezen",
+          "responses_write": "Antwoorden wijzigen",
+          "webhooks_read": "Webhooks lezen",
+          "audit_read": "Het auditlogboek lezen"
+        },
+        "title": "Formulieren en reacties beheren",
+        "help": "Optioneel. Laat dit token ook de beheer-API (/v1) gebruiken: formulieren weergeven, openen of sluiten, reacties lezen en wijzigen. Laat alles uit voor een token dat alleen endpoints aanroept.",
+        "none": "Geen. Dit token roept alleen endpoints aan."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Verloop van het token",
         "text": "Elk antwoord bevat het verloop van het token: de header Formalie-Token-Expires en, naast de gegevens, meta.token_expires_at en meta.token_expires_in_days (null voor een token dat nooit verloopt). Vernieuw het token voordat de dag komt."
+      },
+      "manage": {
+        "title": "Formulieren en reacties beheren",
+        "text": "Naast je endpoints kan een token de werkruimte beheren via /v1: formulieren weergeven, openen of sluiten, reacties lezen, wijzigen of verwijderen, en webhooks en het auditlogboek lezen. Geef het token deze rechten in de stap “Formulieren en reacties beheren”. Dezelfde drie headers gelden.",
+        "base": "Adres"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Antwoord binnen 10 seconden met een willekeurige 2xx-status en doe het echte werk daarna. Alles anders wordt opnieuw geprobeerd."
       }
     },
-    "onceDesc": "Kopieer het nu. Je kunt het later opnieuw bekijken in het paneel, na bevestiging van je wachtwoord.",
-    "keys": {
-      "newTitle": "Nieuwe API-sleutel",
-      "editTitle": "API-sleutel bewerken",
-      "desc": "Met een sleutel gebruikt je eigen code de beheer-API van Formalie: formulieren en antwoorden lezen, statussen wijzigen en meer.",
-      "create": "Sleutel maken",
-      "namePlaceholder": "bijv. Rapportagescript",
-      "scopesHelp": "Geef elke sleutel alleen wat hij nodig heeft.",
-      "scopesCount": "{n} machtiging | {n} machtigingen",
-      "search": "API-sleutels zoeken…",
-      "empty": "Nog geen API-sleutels",
-      "emptyDesc": "Maak een sleutel om formulieren en antwoorden vanuit je eigen code te lezen.",
-      "lastUsed": "Gebruikt {when}",
-      "neverUsed": "Nooit gebruikt",
-      "lastFrom": "Laatst gebruikt vanaf",
-      "noCalls": "Geen aanroepen in de afgelopen 30 dagen",
-      "secret": "API-sleutel",
-      "secretTitle": "API-sleutel voor {name}",
-      "secretHint": "Bewaar hem alleen op je server, nooit in een website of app die anderen kunnen downloaden.",
-      "revoke": "Intrekken",
-      "revokeTitle": "Deze sleutel intrekken?",
-      "revokeDesc": "{name} werkt meteen niet meer. Code die hem nog gebruikt krijgt een foutmelding.",
-      "deleteTitle": "Deze sleutel verwijderen?",
-      "deleteDesc": "{name} wordt uit de lijst verwijderd. Het auditlogboek bewaart wat hij deed.",
-      "expiringTitle": "Verloopt {when}",
-      "expiringDesc": "Maak een nieuwe sleutel, schakel je code over en trek dan deze in.",
-      "howToCall": "Hoe aanroepen",
-      "howToCallText": "Stuur de sleutel mee als bearer-token. Lijsten antwoorden met data en meta (page, per_page, total); fouten met een code die je kunt opzoeken in Docs en testen.",
-      "col": {
-        "name": "Sleutel",
-        "status": "Status",
-        "scopes": "Machtigingen",
-        "calls": "Aanroepen",
-        "lastUsed": "Laatst gebruikt"
-      },
-      "scope": {
-        "forms_read": "Formulieren lezen",
-        "forms_write": "Formulieren openen en sluiten",
-        "responses_read": "Antwoorden lezen",
-        "responses_write": "Antwoorden wijzigen",
-        "webhooks_read": "Webhooks lezen",
-        "audit_read": "Het auditlogboek lezen"
-      },
-      "scopeHint": {
-        "forms_read": "Formulieren en hun vragen weergeven",
-        "forms_write": "Een gepubliceerd formulier openen of sluiten",
-        "responses_read": "Antwoorden met hun waarden weergeven",
-        "responses_write": "Status en tags wijzigen, antwoorden verwijderen",
-        "webhooks_read": "Webhooks en hun gebeurtenissen weergeven",
-        "audit_read": "Lezen wat er gebeurde en wie het deed"
-      },
-      "invalid": {
-        "scopes": "Kies minstens één machtiging"
-      },
-      "kpi": {
-        "calls": "Aanroepen met API-sleutels",
-        "keys": "Sleutels",
-        "unused": "90 dagen ongebruikt",
-        "byStatus": "Sleutels per status",
-        "expiringHint": "Verloopt binnenkort = binnen 14 dagen"
-      },
-      "sort": {
-        "lastUsed": "Laatst gebruikt",
-        "expires": "Verlopen eerst"
-      },
-      "toast": {
-        "saved": "API-sleutel opgeslagen",
-        "revoked": "API-sleutel ingetrokken",
-        "deleted": "API-sleutel verwijderd"
-      }
-    }
+    "onceDesc": "Kopieer het nu. Je kunt het later opnieuw bekijken in het paneel, na bevestiging van je wachtwoord."
   },
   "secrets": {
     "title": "Geheim",

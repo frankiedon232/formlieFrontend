@@ -147,6 +147,22 @@ function callerToken(event: H3Event, tenant: MockTenant): StoredApiToken {
   return token
 }
 
+/** The token behind a bearer in any workspace (the management API has no address key), or null. */
+export function tokenByBearer(bearer: string): { tenant: MockTenant; token: StoredApiToken } | null {
+  const short = accessTokens.get(bearer)
+  if (short) {
+    if (short.expires <= Date.now() || short.token === CONSOLE) return null
+    const tenant = MOCK_TENANTS.find(item => item.id === short.tenant)
+    const token = tenant ? apiOf(tenant).tokens.find(item => item.id === short.token) : undefined
+    return tenant && token && live(token) ? { tenant, token } : null
+  }
+  for (const tenant of MOCK_TENANTS) {
+    const token = apiOf(tenant).tokens.find(item => item.kind === 'static' && matches(item, bearer))
+    if (token) return live(token) ? { tenant, token } : null
+  }
+  return null
+}
+
 /** The Docs console (F13 M5): a test token that may call everything, never stored, lives a minute. */
 const CONSOLE = '__console__'
 const consoleToken = (): StoredApiToken => ({ id: CONSOLE, name: 'Docs console', kind: 'static', mode: 'test', secret_hash: '', preview: '', previous_hash: null, rotating_until: null, client_id: null, lifetime_minutes: null, signing: false, signing_secret: null, scopes: { services: [], endpoints: [], methods: [] }, expires_at: null, last_used_at: null, created_by: { id: 'system', name: 'Formalie' }, created_at: new Date().toISOString(), revoked_at: null })
@@ -185,12 +201,11 @@ interface CallContext {
 /** Answers whose question type holds personal data are masked in kept bodies. */
 /** Handles a call and writes it to the request log (when the address key belongs to a workspace). */
 export async function handlePublicApi(event: H3Event, path: string) {
-  // Formalie's own management API (F13 M6): /v1/…, API keys instead of endpoint tokens
+  // Formalie's own management API (F13 M6): /v1/…, called with an API token that has management rights
   const parts = path.split('?')[0]!.split('/').filter(Boolean)
-  if (parts[0] === 'v1') return handleManagementApi(event, parts.slice(1))
   const context: CallContext = { raw: '' }
   const started = Date.now()
-  const result = (await handle(event, path, context)) as { error?: { code?: string }; data?: unknown; meta?: Record<string, unknown> } | undefined
+  const result = (parts[0] === 'v1' ? await handleManagementApi(event, parts.slice(1), context, tokenByBearer) : await handle(event, path, context)) as { error?: { code?: string }; data?: unknown; meta?: Record<string, unknown> } | undefined
   // The token's expiry with every answer (owner, 2026-10-06: an expiry tracker in the data, never a surprise)
   if (context.token && context.token.id !== '__console__') {
     const expires = context.token.expires_at

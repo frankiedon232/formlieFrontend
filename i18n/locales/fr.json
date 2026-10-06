@@ -357,7 +357,6 @@
     "integrations": "Intégrations",
     "destinations": "Destinations",
     "webhooks": "Webhooks",
-    "apiKeys": "Clés API",
     "settings": "Paramètres",
     "resources": "Ressources",
     "system": "Système",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Peut appeler {n} service ou endpoint supprimé | Peut appeler {n} services ou endpoints supprimés",
         "text": "Ils ont été supprimés, donc ce jeton ne peut pas les appeler. Il n'est jamais étendu à tout; modifiez ce qu'il peut appeler pour le diriger vers le bon service."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Lire les formulaires",
+          "forms_write": "Ouvrir et fermer les formulaires",
+          "responses_read": "Lire les réponses",
+          "responses_write": "Modifier les réponses",
+          "webhooks_read": "Lire les webhooks",
+          "audit_read": "Lire le journal d'audit"
+        },
+        "title": "Gérer les formulaires et les réponses",
+        "help": "Facultatif. Permet à ce jeton d'utiliser aussi l'API de gestion (/v1) : lister les formulaires, les ouvrir ou les fermer, lire et modifier les réponses. Laissez tout désactivé pour un jeton qui n'appelle que des endpoints.",
+        "none": "Aucun. Ce jeton n'appelle que des endpoints."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Expiration du jeton",
         "text": "Chaque réponse porte l'expiration du jeton : l'en-tête Formalie-Token-Expires et, à côté des données, meta.token_expires_at et meta.token_expires_in_days (null pour un jeton qui n'expire jamais). Renouvelez le jeton avant l'échéance."
+      },
+      "manage": {
+        "title": "Gérer les formulaires et les réponses",
+        "text": "En plus de vos endpoints, un jeton peut gérer l'espace de travail via /v1 : lister les formulaires, les ouvrir ou les fermer, lire, modifier ou supprimer des réponses, et lire les webhooks et le journal d'audit. Accordez ces droits au jeton à l'étape « Gérer les formulaires et les réponses ». Les trois mêmes en-têtes s'appliquent.",
+        "base": "Adresse"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Répondez avec un statut 2xx en moins de 10 secondes et faites le vrai travail ensuite. Toute autre réponse est retentée."
       }
     },
-    "onceDesc": "Copiez-le maintenant. Vous pourrez le revoir plus tard dans son panneau, après confirmation de votre mot de passe.",
-    "keys": {
-      "newTitle": "Nouvelle clé API",
-      "editTitle": "Modifier la clé API",
-      "desc": "Une clé permet à votre propre code d'utiliser l'API de gestion de Formalie : lire les formulaires et les réponses, changer les statuts et plus.",
-      "create": "Créer la clé",
-      "namePlaceholder": "p. ex. Script de reporting",
-      "scopesHelp": "Donnez à chaque clé uniquement ce dont elle a besoin.",
-      "scopesCount": "{n} autorisation | {n} autorisations",
-      "search": "Rechercher des clés API…",
-      "empty": "Aucune clé API pour le moment",
-      "emptyDesc": "Créez une clé pour lire les formulaires et les réponses depuis votre code.",
-      "lastUsed": "Utilisée {when}",
-      "neverUsed": "Jamais utilisée",
-      "lastFrom": "Dernière utilisation depuis",
-      "noCalls": "Aucun appel au cours des 30 derniers jours",
-      "secret": "Clé API",
-      "secretTitle": "Clé API pour {name}",
-      "secretHint": "Gardez-la uniquement sur votre serveur, jamais dans un site web ou une appli que d'autres peuvent télécharger.",
-      "revoke": "Révoquer",
-      "revokeTitle": "Révoquer cette clé ?",
-      "revokeDesc": "{name} cesse de fonctionner immédiatement. Le code qui l'utilise encore reçoit une erreur.",
-      "deleteTitle": "Supprimer cette clé ?",
-      "deleteDesc": "{name} est retirée de la liste. Le journal d'audit conserve ce qu'elle a fait.",
-      "expiringTitle": "Expire {when}",
-      "expiringDesc": "Créez une nouvelle clé, basculez votre code, puis révoquez celle-ci.",
-      "howToCall": "Comment appeler",
-      "howToCallText": "Envoyez la clé comme jeton porteur. Les listes répondent avec data et meta (page, per_page, total) ; les erreurs avec un code que vous pouvez consulter dans Docs et tests.",
-      "col": {
-        "name": "Clé",
-        "status": "Statut",
-        "scopes": "Autorisations",
-        "calls": "Appels",
-        "lastUsed": "Dernière utilisation"
-      },
-      "scope": {
-        "forms_read": "Lire les formulaires",
-        "forms_write": "Ouvrir et fermer les formulaires",
-        "responses_read": "Lire les réponses",
-        "responses_write": "Modifier les réponses",
-        "webhooks_read": "Lire les webhooks",
-        "audit_read": "Lire le journal d'audit"
-      },
-      "scopeHint": {
-        "forms_read": "Lister les formulaires et leurs questions",
-        "forms_write": "Basculer un formulaire publié entre ouvert et fermé",
-        "responses_read": "Lister les réponses avec leurs valeurs",
-        "responses_write": "Modifier le statut et les étiquettes, supprimer des réponses",
-        "webhooks_read": "Lister les webhooks et leurs événements",
-        "audit_read": "Lire ce qui s'est passé et qui l'a fait"
-      },
-      "invalid": {
-        "scopes": "Choisissez au moins une autorisation"
-      },
-      "kpi": {
-        "calls": "Appels avec des clés API",
-        "keys": "Clés",
-        "unused": "Inutilisées 90 jours",
-        "byStatus": "Clés par statut",
-        "expiringHint": "Expire bientôt = sous 14 jours"
-      },
-      "sort": {
-        "lastUsed": "Utilisées récemment",
-        "expires": "Expirent en premier"
-      },
-      "toast": {
-        "saved": "Clé API enregistrée",
-        "revoked": "Clé API révoquée",
-        "deleted": "Clé API supprimée"
-      }
-    }
+    "onceDesc": "Copiez-le maintenant. Vous pourrez le revoir plus tard dans son panneau, après confirmation de votre mot de passe."
   },
   "secrets": {
     "title": "Secret",

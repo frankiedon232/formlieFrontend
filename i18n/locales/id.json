@@ -357,7 +357,6 @@
     "integrations": "Integrasi",
     "destinations": "Tujuan",
     "webhooks": "Webhook",
-    "apiKeys": "Kunci API",
     "settings": "Pengaturan",
     "resources": "Sumber daya",
     "system": "Sistem",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Mungkin memanggil {n} layanan atau endpoint yang dihapus | Mungkin memanggil {n} layanan atau endpoint yang dihapus",
         "text": "Itu sudah dihapus, jadi token ini tidak dapat memanggilnya. Token tidak pernah diperluas ke semuanya; ubah apa yang boleh dipanggil agar mengarah ke layanan yang benar."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Baca formulir",
+          "forms_write": "Buka dan tutup formulir",
+          "responses_read": "Baca respons",
+          "responses_write": "Ubah respons",
+          "webhooks_read": "Baca webhook",
+          "audit_read": "Baca jejak audit"
+        },
+        "title": "Kelola formulir dan jawaban",
+        "help": "Opsional. Memungkinkan token ini memakai API manajemen (/v1) juga: melihat daftar formulir, membuka atau menutupnya, membaca dan mengubah jawaban. Biarkan semuanya mati untuk token yang hanya memanggil endpoint.",
+        "none": "Tidak ada. Token ini hanya memanggil endpoint."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Masa berlaku token",
         "text": "Setiap jawaban membawa masa berlaku token: header Formalie-Token-Expires dan, di samping data, meta.token_expires_at serta meta.token_expires_in_days (null untuk token yang tidak pernah kedaluwarsa). Perbarui token sebelum harinya tiba."
+      },
+      "manage": {
+        "title": "Kelola formulir dan jawaban",
+        "text": "Selain endpoint Anda, token dapat mengelola workspace lewat /v1: melihat daftar formulir, membuka atau menutupnya, membaca, mengubah, atau menghapus jawaban, serta membaca webhook dan jejak audit. Berikan hak ini pada token di langkah “Kelola formulir dan jawaban”. Tiga header yang sama berlaku.",
+        "base": "Alamat"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Jawab dengan status 2xx apa pun dalam 10 detik; kerjakan pekerjaan sebenarnya setelahnya. Jawaban lain akan dicoba ulang."
       }
     },
-    "onceDesc": "Salin sekarang. Anda bisa melihatnya lagi nanti di panelnya, setelah mengonfirmasi kata sandi.",
-    "keys": {
-      "newTitle": "Kunci API baru",
-      "editTitle": "Edit kunci API",
-      "desc": "Kunci memungkinkan kode Anda sendiri memakai API manajemen Formalie: membaca formulir dan respons, mengubah status, dan lainnya.",
-      "create": "Buat kunci",
-      "namePlaceholder": "mis. Skrip pelaporan",
-      "scopesHelp": "Beri setiap kunci hanya yang dibutuhkan.",
-      "scopesCount": "{n} izin | {n} izin",
-      "search": "Cari kunci API…",
-      "empty": "Belum ada kunci API",
-      "emptyDesc": "Buat kunci untuk membaca formulir dan respons dari kode Anda sendiri.",
-      "lastUsed": "Dipakai {when}",
-      "neverUsed": "Belum pernah dipakai",
-      "lastFrom": "Terakhir dipakai dari",
-      "noCalls": "Tidak ada panggilan dalam 30 hari terakhir",
-      "secret": "Kunci API",
-      "secretTitle": "Kunci API untuk {name}",
-      "secretHint": "Simpan hanya di server Anda, jangan di situs web atau aplikasi yang bisa diunduh orang lain.",
-      "revoke": "Cabut",
-      "revokeTitle": "Cabut kunci ini?",
-      "revokeDesc": "{name} langsung berhenti berfungsi. Kode yang masih memakainya akan mendapat error.",
-      "deleteTitle": "Hapus kunci ini?",
-      "deleteDesc": "{name} dihapus dari daftar. Jejak audit menyimpan apa yang pernah dilakukannya.",
-      "expiringTitle": "Kedaluwarsa {when}",
-      "expiringDesc": "Buat kunci baru, alihkan kode Anda, lalu cabut kunci ini.",
-      "howToCall": "Cara memanggil",
-      "howToCallText": "Kirim kunci sebagai bearer token. Daftar dijawab dengan data dan meta (page, per_page, total); error dengan kode yang bisa dicari di Dokumen & uji coba.",
-      "col": {
-        "name": "Kunci",
-        "status": "Status",
-        "scopes": "Izin",
-        "calls": "Panggilan",
-        "lastUsed": "Terakhir dipakai"
-      },
-      "scope": {
-        "forms_read": "Baca formulir",
-        "forms_write": "Buka dan tutup formulir",
-        "responses_read": "Baca respons",
-        "responses_write": "Ubah respons",
-        "webhooks_read": "Baca webhook",
-        "audit_read": "Baca jejak audit"
-      },
-      "scopeHint": {
-        "forms_read": "Tampilkan formulir dan pertanyaannya",
-        "forms_write": "Alihkan formulir terbit antara terbuka dan tertutup",
-        "responses_read": "Tampilkan respons beserta jawabannya",
-        "responses_write": "Ubah status dan tag, hapus respons",
-        "webhooks_read": "Tampilkan webhook dan eventnya",
-        "audit_read": "Baca apa yang terjadi dan siapa pelakunya"
-      },
-      "invalid": {
-        "scopes": "Pilih setidaknya satu izin"
-      },
-      "kpi": {
-        "calls": "Panggilan dengan kunci API",
-        "keys": "Kunci",
-        "unused": "Tidak dipakai 90 hari",
-        "byStatus": "Kunci menurut status",
-        "expiringHint": "Segera kedaluwarsa = dalam 14 hari"
-      },
-      "sort": {
-        "lastUsed": "Terakhir dipakai",
-        "expires": "Kedaluwarsa duluan"
-      },
-      "toast": {
-        "saved": "Kunci API disimpan",
-        "revoked": "Kunci API dicabut",
-        "deleted": "Kunci API dihapus"
-      }
-    }
+    "onceDesc": "Salin sekarang. Anda bisa melihatnya lagi nanti di panelnya, setelah mengonfirmasi kata sandi."
   },
   "secrets": {
     "title": "Rahasia",

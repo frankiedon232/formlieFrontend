@@ -357,7 +357,6 @@
     "integrations": "Integracje",
     "destinations": "Miejsca docelowe",
     "webhooks": "Webhooki",
-    "apiKeys": "Klucze API",
     "settings": "Ustawienia",
     "resources": "Zasoby",
     "system": "System",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Może wywoływać {n} usuniętą usługę lub endpoint | Może wywoływać {n} usuniętych usług lub endpointów",
         "text": "Zostały usunięte, więc ten token nie może ich wywołać. Nigdy nie jest rozszerzany na wszystko; zmień, co może wywoływać, aby wskazać właściwą usługę."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Odczyt formularzy",
+          "forms_write": "Otwieranie i zamykanie formularzy",
+          "responses_read": "Odczyt odpowiedzi",
+          "responses_write": "Zmiana odpowiedzi",
+          "webhooks_read": "Odczyt webhooków",
+          "audit_read": "Odczyt dziennika audytu"
+        },
+        "title": "Zarządzaj formularzami i odpowiedziami",
+        "help": "Opcjonalne. Pozwala temu tokenowi korzystać także z API zarządzania (/v1): wyświetlać formularze, otwierać je lub zamykać, odczytywać i zmieniać odpowiedzi. Zostaw wszystko wyłączone dla tokenu, który tylko wywołuje endpointy.",
+        "none": "Brak. Ten token tylko wywołuje endpointy."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Wygaśnięcie tokenu",
         "text": "Każda odpowiedź zawiera wygaśnięcie tokenu: nagłówek Formalie-Token-Expires oraz, obok danych, meta.token_expires_at i meta.token_expires_in_days (null dla tokenu, który nigdy nie wygasa). Odnów token, zanim nadejdzie ten dzień."
+      },
+      "manage": {
+        "title": "Zarządzaj formularzami i odpowiedziami",
+        "text": "Oprócz endpointów token może zarządzać przestrzenią roboczą przez /v1: wyświetlać formularze, otwierać je lub zamykać, odczytywać, zmieniać i usuwać odpowiedzi oraz odczytywać webhooki i dziennik audytu. Nadaj tokenowi te uprawnienia w kroku „Zarządzaj formularzami i odpowiedziami”. Obowiązują te same trzy nagłówki.",
+        "base": "Adres"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Odpowiedz dowolnym statusem 2xx w ciągu 10 sekund, a właściwą pracę wykonaj potem. Każda inna odpowiedź jest ponawiana."
       }
     },
-    "onceDesc": "Skopiuj go teraz. Później możesz zobaczyć go ponownie w jego panelu, po potwierdzeniu hasła.",
-    "keys": {
-      "newTitle": "Nowy klucz API",
-      "editTitle": "Edytuj klucz API",
-      "desc": "Klucz pozwala Twojemu kodowi korzystać z API zarządzania Formalie: czytać formularze i odpowiedzi, zmieniać statusy i więcej.",
-      "create": "Utwórz klucz",
-      "namePlaceholder": "np. Skrypt raportowy",
-      "scopesHelp": "Daj każdemu kluczowi tylko to, czego potrzebuje.",
-      "scopesCount": "{n} uprawnienie | {n} uprawnień",
-      "search": "Szukaj kluczy API…",
-      "empty": "Brak kluczy API",
-      "emptyDesc": "Utwórz klucz, aby czytać formularze i odpowiedzi z własnego kodu.",
-      "lastUsed": "Użyto {when}",
-      "neverUsed": "Nigdy nie użyto",
-      "lastFrom": "Ostatnio użyty z",
-      "noCalls": "Brak wywołań w ostatnich 30 dniach",
-      "secret": "Klucz API",
-      "secretTitle": "Klucz API dla {name}",
-      "secretHint": "Trzymaj go tylko na swoim serwerze, nigdy w witrynie ani aplikacji, którą inni mogą pobrać.",
-      "revoke": "Unieważnij",
-      "revokeTitle": "Unieważnić ten klucz?",
-      "revokeDesc": "{name} przestaje działać od razu. Kod, który go nadal używa, dostanie błąd.",
-      "deleteTitle": "Usunąć ten klucz?",
-      "deleteDesc": "{name} znika z listy. Dziennik audytu zachowuje, co zrobił.",
-      "expiringTitle": "Wygasa {when}",
-      "expiringDesc": "Utwórz nowy klucz, przełącz na niego kod, a potem unieważnij ten.",
-      "howToCall": "Jak wywołać",
-      "howToCallText": "Wyślij klucz jako token bearer. Listy odpowiadają polami data i meta (page, per_page, total); błędy kodem, który sprawdzisz w Dokumentacji i testach.",
-      "col": {
-        "name": "Klucz",
-        "status": "Status",
-        "scopes": "Uprawnienia",
-        "calls": "Wywołania",
-        "lastUsed": "Ostatnie użycie"
-      },
-      "scope": {
-        "forms_read": "Odczyt formularzy",
-        "forms_write": "Otwieranie i zamykanie formularzy",
-        "responses_read": "Odczyt odpowiedzi",
-        "responses_write": "Zmiana odpowiedzi",
-        "webhooks_read": "Odczyt webhooków",
-        "audit_read": "Odczyt dziennika audytu"
-      },
-      "scopeHint": {
-        "forms_read": "Lista formularzy i ich pytań",
-        "forms_write": "Przełączanie opublikowanego formularza między otwartym a zamkniętym",
-        "responses_read": "Lista odpowiedzi z ich wartościami",
-        "responses_write": "Zmiana statusu i tagów, usuwanie odpowiedzi",
-        "webhooks_read": "Lista webhooków i ich zdarzeń",
-        "audit_read": "Odczyt tego, co się stało i kto to zrobił"
-      },
-      "invalid": {
-        "scopes": "Wybierz co najmniej jedno uprawnienie"
-      },
-      "kpi": {
-        "calls": "Wywołania z kluczami API",
-        "keys": "Klucze",
-        "unused": "Nieużywane 90 dni",
-        "byStatus": "Klucze według statusu",
-        "expiringHint": "Wygasa wkrótce = w ciągu 14 dni"
-      },
-      "sort": {
-        "lastUsed": "Ostatnio użyte",
-        "expires": "Wygasają najpierw"
-      },
-      "toast": {
-        "saved": "Zapisano klucz API",
-        "revoked": "Unieważniono klucz API",
-        "deleted": "Usunięto klucz API"
-      }
-    }
+    "onceDesc": "Skopiuj go teraz. Później możesz zobaczyć go ponownie w jego panelu, po potwierdzeniu hasła."
   },
   "secrets": {
     "title": "Sekret",

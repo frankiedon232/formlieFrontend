@@ -101,7 +101,7 @@ Expected API answers along the way: a **live** token on a not-live endpoint gets
 2. **See it again later:** open the token's panel → _Secret_ → **Show** → enter your password. A wrong password says how many tries are left; five wrong tries lock it for 15 minutes. The right one shows the token with Copy for 60 seconds, then it hides again. The audit trail records _API token viewed_.
 3. Tokens made before this change can't be shown again ("Rotate it to get one you can view later"); rotate them once.
 4. Rotate (old secret keeps working for the chosen grace time), Revoke (calls get `401`), Delete (only once revoked or expired).
-5. API keys (_API keys_) and webhook secrets (webhook panel) can be seen again the same way.
+5. Webhook secrets (webhook panel) can be seen again the same way.
 
 ### 3. Access rules
 
@@ -144,7 +144,7 @@ Use a live token unless the row says otherwise. Each answer is JSON `{ "error": 
 | Blocked IP (`X-Forwarded-For`), range, website (`Origin`) or network    | `403 FRM-API-1015` (the matching value)                            |
 | Client id + wrong secret on `POST …/token`                              | `401 FRM-API-1010`                                                 |
 | More than the rate limit in a minute (per IP 120 by default)            | `429 FRM-GEN-1029` with `Retry-After`                              |
-| Management API: no key, wrong key / missing permission / unknown form   | `401` `FRM-API-1010` / `403` `FRM-API-1009` / `404` `FRM-GEN-1004` |
+| Management API: no token, wrong token / missing right / unknown form    | `401` `FRM-API-1010` / `403` `FRM-API-1009` / `404` `FRM-GEN-1004` |
 
 And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` with `Formalie-Key`; the same key again returns the first record with `meta.replayed`), change (`PUT`), delete (`DELETE`).
 
@@ -154,10 +154,10 @@ And the good paths: list (`GET`), one record (`GET …/{id}`), create (`POST` wi
 2. `POST …/{endpoint}/files?field={question key}` with Body → form-data, key `file` (type File) → `201` with an `id`. A `.exe` gets `422 FRM-RESP-1001` (`file_type`).
 3. Send the id in the JSON: `"cv_resume": ["<id>"]`.
 
-### 7. Webhooks, API keys, logs
+### 7. Webhooks, managing forms and responses, logs
 
 1. **Webhooks:** New webhook → an address (`http://localhost:{port}/…` works while developing) and events. **Send a test** shows the receiver's answer. Change a response's status in Responses → a `response.status_changed` delivery with the previous status. Deliveries: tries, request (personal answers masked), answer, **Send again**. Check the signature with the code under _Checking the signature_.
-2. **API keys:** New API key (permissions, expiry), copy it, `GET …/public-api/v1/forms` with `Authorization: Bearer formalie_key_…`. A permission it doesn't have → `403 FRM-API-1009`. View it again with your password, revoke, delete.
+2. **Manage forms and responses** (API keys were folded into tokens): edit a token → _Manage forms and responses_ → tick _Read forms_. Then `GET …/public-api/v1/forms` with the same three headers (`Authorization: Bearer <that token>`, `Content-Type`, `Formalie-Key`). A right it doesn't have → `403 FRM-API-1009` (`manage: forms:write`); a token without any → the same. Old `formalie_key_…` keys → `401 FRM-API-1010`.
 3. **Request logs and Analytics:** every call above appears with status, code, time, token and caller; Analytics and the Overview count them.
 
 ## Checks

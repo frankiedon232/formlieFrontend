@@ -356,7 +356,6 @@
     "integrations": "Integrations",
     "destinations": "Destinations",
     "webhooks": "Webhooks",
-    "apiKeys": "API keys",
     "settings": "Settings",
     "menuDescription": "Move between sections of your workspace.",
     "resources": "Resources",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "It may call {n} deleted service or endpoint | It may call {n} deleted services or endpoints",
         "text": "Those were deleted, so this token can not call them. It is never widened to everything; edit what it may call to point it at the right service."
+      },
+      "manage": {
+        "title": "Manage forms and responses",
+        "help": "Optional. Lets this token use the management API (/v1) as well: list forms, open or close them, read and change responses. Leave all off for a token that only calls endpoints.",
+        "none": "None. This token only calls endpoints.",
+        "scope": {
+          "forms_read": "Read forms",
+          "forms_write": "Open and close forms",
+          "responses_read": "Read responses",
+          "responses_write": "Change responses",
+          "webhooks_read": "Read webhooks",
+          "audit_read": "Read the audit trail"
+        }
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Token expiry",
         "text": "Every answer carries the token's expiry: the Formalie-Token-Expires header and, next to the data, meta.token_expires_at and meta.token_expires_in_days (null for a token that never expires). Renew the token before the day comes."
+      },
+      "manage": {
+        "title": "Manage forms and responses",
+        "text": "Besides your endpoints, a token can manage the workspace through /v1: list forms, open or close them, read, change or delete responses, and read webhooks and the audit trail. Give the token these rights in its Manage forms and responses step. The same three headers apply.",
+        "base": "Address"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Answer with any 2xx status within 10 seconds; do the real work afterwards. Anything else is retried."
       }
     },
-    "onceDesc": "Copy it now. You can see it again later in its panel, after confirming your password.",
-    "keys": {
-      "newTitle": "New API key",
-      "editTitle": "Edit API key",
-      "desc": "A key lets your own code use Formalie's management API: read forms and responses, change statuses and more.",
-      "create": "Create key",
-      "namePlaceholder": "e.g. Reporting script",
-      "scopesHelp": "Give each key only what it needs.",
-      "scopesCount": "{n} permission | {n} permissions",
-      "search": "Search API keys…",
-      "empty": "No API keys yet",
-      "emptyDesc": "Make a key to read forms and responses from your own code.",
-      "lastUsed": "Used {when}",
-      "neverUsed": "Never used",
-      "lastFrom": "Last used from",
-      "noCalls": "No calls in the last 30 days",
-      "secret": "API key",
-      "secretTitle": "API key for {name}",
-      "secretHint": "Keep it on your server only, never in a website or app that others can download.",
-      "revoke": "Revoke",
-      "revokeTitle": "Revoke this key?",
-      "revokeDesc": "{name} stops working at once. Code that still uses it gets an error.",
-      "deleteTitle": "Delete this key?",
-      "deleteDesc": "{name} is removed from the list. The audit trail keeps what it did.",
-      "expiringTitle": "Expires {when}",
-      "expiringDesc": "Make a new key, switch your code over, then revoke this one.",
-      "howToCall": "How to call",
-      "howToCallText": "Send the key as a bearer token. Lists answer with data and meta (page, per_page, total); errors with a code you can look up in Docs & testing.",
-      "col": {
-        "name": "Key",
-        "status": "Status",
-        "scopes": "Permissions",
-        "calls": "Calls",
-        "lastUsed": "Last used"
-      },
-      "scope": {
-        "forms_read": "Read forms",
-        "forms_write": "Open and close forms",
-        "responses_read": "Read responses",
-        "responses_write": "Change responses",
-        "webhooks_read": "Read webhooks",
-        "audit_read": "Read the audit trail"
-      },
-      "scopeHint": {
-        "forms_read": "List forms and their questions",
-        "forms_write": "Switch a published form between open and closed",
-        "responses_read": "List responses with their answers",
-        "responses_write": "Change status and tags, delete responses",
-        "webhooks_read": "List webhooks and their events",
-        "audit_read": "Read what happened and who did it"
-      },
-      "invalid": {
-        "scopes": "Choose at least one permission"
-      },
-      "kpi": {
-        "calls": "Calls with API keys",
-        "keys": "Keys",
-        "unused": "Unused 90 days",
-        "byStatus": "Keys by status",
-        "expiringHint": "Expiring = within 14 days"
-      },
-      "sort": {
-        "lastUsed": "Used last",
-        "expires": "Expires first"
-      },
-      "toast": {
-        "saved": "API key saved",
-        "revoked": "API key revoked",
-        "deleted": "API key deleted"
-      }
-    }
+    "onceDesc": "Copy it now. You can see it again later in its panel, after confirming your password."
   },
   "secrets": {
     "title": "Secret",

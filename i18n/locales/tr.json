@@ -357,7 +357,6 @@
     "integrations": "Entegrasyonlar",
     "destinations": "Hedefler",
     "webhooks": "Webhook’lar",
-    "apiKeys": "API anahtarları",
     "settings": "Ayarlar",
     "resources": "Kaynaklar",
     "system": "Sistem",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Silinmiş {n} servisi veya uç noktayı çağırabilir | Silinmiş {n} servisi veya uç noktayı çağırabilir",
         "text": "Bunlar silindi, bu yüzden bu token onları çağıramaz. Asla her şeye genişletilmez; doğru servise yöneltmek için çağırabileceklerini düzenleyin."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Formları oku",
+          "forms_write": "Formları aç ve kapat",
+          "responses_read": "Yanıtları oku",
+          "responses_write": "Yanıtları değiştir",
+          "webhooks_read": "Webhook'ları oku",
+          "audit_read": "Denetim kaydını oku"
+        },
+        "title": "Formları ve yanıtları yönet",
+        "help": "İsteğe bağlı. Bu token'ın yönetim API'sini (/v1) de kullanmasını sağlar: formları listeleme, açma veya kapatma, yanıtları okuma ve değiştirme. Yalnızca endpoint çağıran bir token için hepsini kapalı bırakın.",
+        "none": "Yok. Bu token yalnızca endpoint çağırır."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Jeton bitiş zamanı",
         "text": "Her yanıt jetonun bitiş zamanını taşır: Formalie-Token-Expires başlığı ve verinin yanında meta.token_expires_at ile meta.token_expires_in_days (hiç bitmeyen jeton için null). Jetonu o gün gelmeden yenileyin."
+      },
+      "manage": {
+        "title": "Formları ve yanıtları yönet",
+        "text": "Endpoint'lerinize ek olarak bir token, /v1 üzerinden çalışma alanını yönetebilir: formları listeleme, açma veya kapatma, yanıtları okuma, değiştirme veya silme, webhook'ları ve denetim kaydını okuma. Token'a bu hakları “Formları ve yanıtları yönet” adımında verin. Aynı üç header geçerlidir.",
+        "base": "Adres"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "10 saniye içinde herhangi bir 2xx durumuyla yanıt verin, asıl işi sonra yapın. Başka her yanıt yeniden denenir."
       }
     },
-    "onceDesc": "Şimdi kopyalayın. Parolanızı doğruladıktan sonra daha sonra panelinde yeniden görebilirsiniz.",
-    "keys": {
-      "newTitle": "Yeni API anahtarı",
-      "editTitle": "API anahtarını düzenle",
-      "desc": "Bir anahtar, kendi kodunuzun Formalie yönetim API'sini kullanmasını sağlar: formları ve yanıtları okuma, durumları değiştirme ve daha fazlası.",
-      "create": "Anahtar oluştur",
-      "namePlaceholder": "örn. Raporlama betiği",
-      "scopesHelp": "Her anahtara yalnızca ihtiyacı olanı verin.",
-      "scopesCount": "{n} izin | {n} izin",
-      "search": "API anahtarlarında ara…",
-      "empty": "Henüz API anahtarı yok",
-      "emptyDesc": "Kendi kodunuzdan form ve yanıtları okumak için bir anahtar oluşturun.",
-      "lastUsed": "{when} kullanıldı",
-      "neverUsed": "Hiç kullanılmadı",
-      "lastFrom": "Son kullanım yeri",
-      "noCalls": "Son 30 günde çağrı yok",
-      "secret": "API anahtarı",
-      "secretTitle": "{name} için API anahtarı",
-      "secretHint": "Yalnızca sunucunuzda tutun, başkalarının indirebileceği bir web sitesinde veya uygulamada asla.",
-      "revoke": "İptal et",
-      "revokeTitle": "Bu anahtar iptal edilsin mi?",
-      "revokeDesc": "{name} hemen çalışmayı bırakır. Hâlâ kullanan kod hata alır.",
-      "deleteTitle": "Bu anahtar silinsin mi?",
-      "deleteDesc": "{name} listeden kaldırılır. Denetim kaydı yaptıklarını saklar.",
-      "expiringTitle": "{when} sona erer",
-      "expiringDesc": "Yeni bir anahtar oluşturun, kodunuzu ona geçirin, sonra bunu iptal edin.",
-      "howToCall": "Nasıl çağrılır",
-      "howToCallText": "Anahtarı bearer token olarak gönderin. Listeler data ve meta (page, per_page, total) ile yanıt verir; hatalar, Belgeler ve test bölümünde arayabileceğiniz bir kodla gelir.",
-      "col": {
-        "name": "Anahtar",
-        "status": "Durum",
-        "scopes": "İzinler",
-        "calls": "Çağrılar",
-        "lastUsed": "Son kullanım"
-      },
-      "scope": {
-        "forms_read": "Formları oku",
-        "forms_write": "Formları aç ve kapat",
-        "responses_read": "Yanıtları oku",
-        "responses_write": "Yanıtları değiştir",
-        "webhooks_read": "Webhook'ları oku",
-        "audit_read": "Denetim kaydını oku"
-      },
-      "scopeHint": {
-        "forms_read": "Formları ve sorularını listele",
-        "forms_write": "Yayınlanmış bir formu açık ve kapalı arasında değiştir",
-        "responses_read": "Yanıtları değerleriyle listele",
-        "responses_write": "Durum ve etiketleri değiştir, yanıtları sil",
-        "webhooks_read": "Webhook'ları ve olaylarını listele",
-        "audit_read": "Ne olduğunu ve kimin yaptığını oku"
-      },
-      "invalid": {
-        "scopes": "En az bir izin seçin"
-      },
-      "kpi": {
-        "calls": "API anahtarlarıyla çağrılar",
-        "keys": "Anahtarlar",
-        "unused": "90 gündür kullanılmayan",
-        "byStatus": "Duruma göre anahtarlar",
-        "expiringHint": "Süresi dolmak üzere = 14 gün içinde"
-      },
-      "sort": {
-        "lastUsed": "En son kullanılan",
-        "expires": "Önce süresi dolan"
-      },
-      "toast": {
-        "saved": "API anahtarı kaydedildi",
-        "revoked": "API anahtarı iptal edildi",
-        "deleted": "API anahtarı silindi"
-      }
-    }
+    "onceDesc": "Şimdi kopyalayın. Parolanızı doğruladıktan sonra daha sonra panelinde yeniden görebilirsiniz."
   },
   "secrets": {
     "title": "Gizli anahtar",

@@ -357,7 +357,6 @@
     "integrations": "Integrazioni",
     "destinations": "Destinazioni",
     "webhooks": "Webhook",
-    "apiKeys": "Chiavi API",
     "settings": "Impostazioni",
     "resources": "Risorse",
     "system": "Sistema",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Può chiamare {n} servizio o endpoint eliminato | Può chiamare {n} servizi o endpoint eliminati",
         "text": "Sono stati eliminati, quindi questo token non può chiamarli. Non viene mai esteso a tutto; modifica cosa può chiamare per puntarlo al servizio giusto."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Leggere i moduli",
+          "forms_write": "Aprire e chiudere i moduli",
+          "responses_read": "Leggere le risposte",
+          "responses_write": "Modificare le risposte",
+          "webhooks_read": "Leggere i webhook",
+          "audit_read": "Leggere il registro di audit"
+        },
+        "title": "Gestisci moduli e risposte",
+        "help": "Facoltativo. Permette a questo token di usare anche l'API di gestione (/v1): elencare i moduli, aprirli o chiuderli, leggere e modificare le risposte. Lascia tutto disattivato per un token che chiama solo endpoint.",
+        "none": "Nessuno. Questo token chiama solo endpoint."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Scadenza del token",
         "text": "Ogni risposta riporta la scadenza del token: l'header Formalie-Token-Expires e, accanto ai dati, meta.token_expires_at e meta.token_expires_in_days (null per un token che non scade mai). Rinnova il token prima del giorno."
+      },
+      "manage": {
+        "title": "Gestisci moduli e risposte",
+        "text": "Oltre ai tuoi endpoint, un token può gestire il workspace tramite /v1: elencare i moduli, aprirli o chiuderli, leggere, modificare o eliminare le risposte e leggere webhook e audit trail. Dai al token questi diritti nel passaggio «Gestisci moduli e risposte». Valgono gli stessi tre header.",
+        "base": "Indirizzo"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Rispondi con uno stato 2xx entro 10 secondi e fai il lavoro vero dopo. Ogni altra risposta viene ritentata."
       }
     },
-    "onceDesc": "Copialo ora. Potrai rivederlo in seguito nel suo pannello, dopo aver confermato la password.",
-    "keys": {
-      "newTitle": "Nuova chiave API",
-      "editTitle": "Modifica chiave API",
-      "desc": "Una chiave permette al tuo codice di usare l'API di gestione di Formalie: leggere moduli e risposte, cambiare stati e altro.",
-      "create": "Crea chiave",
-      "namePlaceholder": "es. Script di report",
-      "scopesHelp": "Dai a ogni chiave solo ciò che le serve.",
-      "scopesCount": "{n} permesso | {n} permessi",
-      "search": "Cerca chiavi API…",
-      "empty": "Ancora nessuna chiave API",
-      "emptyDesc": "Crea una chiave per leggere moduli e risposte dal tuo codice.",
-      "lastUsed": "Usata {when}",
-      "neverUsed": "Mai usata",
-      "lastFrom": "Ultimo uso da",
-      "noCalls": "Nessuna chiamata negli ultimi 30 giorni",
-      "secret": "Chiave API",
-      "secretTitle": "Chiave API per {name}",
-      "secretHint": "Tienila solo sul tuo server, mai in un sito web o in un'app che altri possono scaricare.",
-      "revoke": "Revoca",
-      "revokeTitle": "Revocare questa chiave?",
-      "revokeDesc": "{name} smette di funzionare subito. Il codice che la usa ancora riceve un errore.",
-      "deleteTitle": "Eliminare questa chiave?",
-      "deleteDesc": "{name} viene rimossa dall'elenco. Il registro di audit conserva ciò che ha fatto.",
-      "expiringTitle": "Scade {when}",
-      "expiringDesc": "Crea una nuova chiave, passa il tuo codice a quella, poi revoca questa.",
-      "howToCall": "Come chiamare",
-      "howToCallText": "Invia la chiave come token bearer. Gli elenchi rispondono con data e meta (page, per_page, total); gli errori con un codice che puoi cercare in Docs e test.",
-      "col": {
-        "name": "Chiave",
-        "status": "Stato",
-        "scopes": "Permessi",
-        "calls": "Chiamate",
-        "lastUsed": "Ultimo uso"
-      },
-      "scope": {
-        "forms_read": "Leggere i moduli",
-        "forms_write": "Aprire e chiudere i moduli",
-        "responses_read": "Leggere le risposte",
-        "responses_write": "Modificare le risposte",
-        "webhooks_read": "Leggere i webhook",
-        "audit_read": "Leggere il registro di audit"
-      },
-      "scopeHint": {
-        "forms_read": "Elenca i moduli e le loro domande",
-        "forms_write": "Passa un modulo pubblicato da aperto a chiuso e viceversa",
-        "responses_read": "Elenca le risposte con i loro valori",
-        "responses_write": "Cambia stato e tag, elimina risposte",
-        "webhooks_read": "Elenca i webhook e i loro eventi",
-        "audit_read": "Leggi cosa è successo e chi l'ha fatto"
-      },
-      "invalid": {
-        "scopes": "Scegli almeno un permesso"
-      },
-      "kpi": {
-        "calls": "Chiamate con chiavi API",
-        "keys": "Chiavi",
-        "unused": "Inutilizzate da 90 giorni",
-        "byStatus": "Chiavi per stato",
-        "expiringHint": "In scadenza = entro 14 giorni"
-      },
-      "sort": {
-        "lastUsed": "Usate di recente",
-        "expires": "Scadono per prime"
-      },
-      "toast": {
-        "saved": "Chiave API salvata",
-        "revoked": "Chiave API revocata",
-        "deleted": "Chiave API eliminata"
-      }
-    }
+    "onceDesc": "Copialo ora. Potrai rivederlo in seguito nel suo pannello, dopo aver confermato la password."
   },
   "secrets": {
     "title": "Segreto",

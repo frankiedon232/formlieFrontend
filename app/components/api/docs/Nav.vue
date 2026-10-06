@@ -17,6 +17,7 @@ const GUIDE = [
   { anchor: 'guide-headers', icon: 'i-lucide-list-checks', key: 'callHeaders.title' },
   { anchor: 'guide-key', icon: 'i-lucide-fingerprint', key: 'key.title' },
   { anchor: 'guide-files', icon: 'i-lucide-paperclip', key: 'files.title' },
+  { anchor: 'guide-manage', icon: 'i-lucide-settings-2', key: 'manage.title' },
   { anchor: 'guide-expiry', icon: 'i-lucide-calendar-clock', key: 'expiry.title' },
   { anchor: 'guide-errors', icon: 'i-lucide-octagon-alert', key: 'errors.title' },
 ]

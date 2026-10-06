@@ -1,5 +1,5 @@
 /**
- * Webhooks and Formalie's own API keys in the mock (F13 M6), kept in `.data/mock/integrations.json`.
+ * Webhooks in the mock (F13 M6), kept in `.data/mock/integrations.json`.
  * Webhooks really call their address: each response event becomes a delivery, signed with the
  * webhook's secret, retried after 1, 5, 15, 60 and 360 minutes (timers in this process; due retries
  * are also picked up whenever the lists are read), and a webhook pauses itself after 20 failures in a
@@ -8,7 +8,7 @@
  */
 import { createHash, createHmac, randomBytes } from 'node:crypto'
 import type { H3Event } from 'h3'
-import type { ApiKeyScope, ManagementKey, Webhook, WebhookAttempt, WebhookDelivery, WebhookDeliveryDetail, WebhookDeliveryStatus, WebhookEvent } from '#shared/types/integrations'
+import type { Webhook, WebhookAttempt, WebhookDelivery, WebhookDeliveryDetail, WebhookDeliveryStatus, WebhookEvent } from '#shared/types/integrations'
 import { signedPayload, WEBHOOK_AUTO_PAUSE, WEBHOOK_RETRY_MINUTES, WEBHOOK_TIMEOUT_MS, webhookStatusOf } from '#shared/utils/integrations/webhooks'
 import { allFields } from '#shared/utils/forms/build'
 import { recordAudit } from '../core/audit'
@@ -55,28 +55,9 @@ export interface StoredDelivery {
   history: WebhookAttempt[]
 }
 
-export interface StoredManagementKey {
-  id: string
-  name: string
-  secret_hash: string
-  /** The key itself, so it can be shown again after the password: encrypted at rest by the backend, plain in the mock. */
-  secret?: string | null
-  preview: string
-  scopes: ApiKeyScope[]
-  expires_at: string | null
-  last_used_at: string | null
-  last_used_ip: string | null
-  /** Calls per day. */
-  calls: Record<string, number>
-  created_by: { id: string; name: string }
-  created_at: string
-  revoked_at: string | null
-}
-
 interface TenantIntegrations {
   webhooks: StoredWebhook[]
   deliveries: StoredDelivery[]
-  keys: StoredManagementKey[]
 }
 
 const DAY = 86_400_000
@@ -87,7 +68,6 @@ const iso = (time: number) => new Date(time).toISOString()
 const dayOf = (time: number) => iso(time).slice(0, 10)
 
 export const newWebhookSecret = () => `formalie_hook_${randomBytes(24).toString('base64url')}`
-export const newManagementKey = () => `formalie_key_${randomBytes(24).toString('base64url')}`
 export const hashKey = (secret: string) => createHash('sha256').update(secret).digest('hex')
 export const keyPreview = (secret: string) => `${/^formalie_[a-z]+_/.exec(secret)?.[0] ?? ''}…${secret.slice(-4)}`
 
@@ -98,16 +78,13 @@ export function integrationsOf(tenant: MockTenant): TenantIntegrations {
     stores.set(tenant.id, store)
     saveIntegrations()
   }
-  // Before keys could be viewed again (owner, 2026-10-06): the samples get a viewable one
-  for (const key of store.keys) {
-    if (key.secret !== undefined || !SAMPLE_KEYS.includes(key.name)) continue
-    const fresh = newManagementKey()
-    Object.assign(key, { secret: fresh, secret_hash: hashKey(fresh), preview: keyPreview(fresh) })
+  // API keys were folded into tokens (owner, 2026-10-06): saved keys are dropped
+  if ('keys' in store) {
+    delete (store as { keys?: unknown }).keys
     saveIntegrations()
   }
   return store
 }
-const SAMPLE_KEYS = ['Reporting script', 'Back-office sync', 'Old migration']
 
 // ── Seeds ─────────────────────────────────────────────────────────────────────────────────────
 
@@ -142,18 +119,7 @@ function seed(tenant: MockTenant): TenantIntegrations {
     }
   })
   deliveries.sort((a, b) => b.at.localeCompare(a.at))
-  const keys: StoredManagementKey[] = [
-    { name: 'Reporting script', scopes: ['forms:read', 'responses:read'] as ApiKeyScope[], days: 60, expires: 305, used: 0.2 },
-    { name: 'Back-office sync', scopes: ['forms:read', 'responses:read', 'responses:write'] as ApiKeyScope[], days: 140, expires: 9, used: 1 },
-    { name: 'Old migration', scopes: ['forms:read', 'forms:write'] as ApiKeyScope[], days: 200, expires: null, used: 130 },
-  ].map(sample => {
-    const secret = newManagementKey()
-    const created = Date.now() - sample.days * DAY
-    const calls: Record<string, number> = {}
-    if (sample.used < 30) for (let d = 0; d < 30; d++) calls[dayOf(Date.now() - d * DAY)] = seedOf(`${sample.name}:${d}`) % 40
-    return { id: crypto.randomUUID(), name: sample.name, secret_hash: hashKey(secret), secret, preview: keyPreview(secret), scopes: sample.scopes, expires_at: sample.expires == null ? null : iso(Date.now() + sample.expires * DAY), last_used_at: iso(Date.now() - sample.used * DAY), last_used_ip: '203.0.113.24', calls, created_by: by, created_at: iso(created), revoked_at: null }
-  })
-  return { webhooks, deliveries: deliveries.slice(0, MAX_DELIVERIES), keys }
+  return { webhooks, deliveries: deliveries.slice(0, MAX_DELIVERIES) }
 }
 
 function sampleDelivery(webhook: StoredWebhook, event: WebhookEvent, form: StoredForm | null, at: number, ok: boolean, tries: number, retrying: boolean): StoredDelivery {
@@ -246,32 +212,6 @@ export function toDelivery(tenant: MockTenant, delivery: StoredDelivery): Webhoo
 
 export function toDeliveryDetail(tenant: MockTenant, delivery: StoredDelivery): WebhookDeliveryDetail {
   return { ...toDelivery(tenant, delivery), request: { headers: delivery.request_headers, body: delivery.logged_body }, response: delivery.response, history: delivery.history }
-}
-
-export function keyStatusOf(key: Pick<StoredManagementKey, 'revoked_at' | 'expires_at'>): ManagementKey['status'] {
-  if (key.revoked_at) return 'revoked'
-  if (key.expires_at && Date.parse(key.expires_at) <= Date.now()) return 'expired'
-  if (key.expires_at && Date.parse(key.expires_at) - Date.now() < 14 * DAY) return 'expiring'
-  return 'active'
-}
-
-export function toManagementKey(key: StoredManagementKey): ManagementKey {
-  const daily = daysBack(30).map(date => ({ date, count: key.calls[date] ?? 0 }))
-  return {
-    id: key.id,
-    name: key.name,
-    preview: key.preview,
-    scopes: key.scopes,
-    status: keyStatusOf(key),
-    expires_at: key.expires_at,
-    last_used_at: key.last_used_at,
-    last_used_ip: key.last_used_ip,
-    calls_30d: daily.reduce((sum, day) => sum + day.count, 0),
-    daily,
-    created_by: key.created_by,
-    created_at: key.created_at,
-    revoked_at: key.revoked_at,
-  }
 }
 
 // ── Delivering ────────────────────────────────────────────────────────────────────────────────

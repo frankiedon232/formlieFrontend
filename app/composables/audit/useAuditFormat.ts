@@ -22,7 +22,7 @@ const RESOURCE_PAGES: Record<string, (resource: NonNullable<AuditEvent['resource
   workspace: () => '/settings',
   destination: () => '/data-sources/destinations',
   webhook: () => '/api-service/webhooks',
-  api_key: () => '/api-service/api-keys',
+  api_key: () => '/api-service/auth',
 }
 
 const DEVICE_ICONS: Record<AuditDevice['type'], string> = {

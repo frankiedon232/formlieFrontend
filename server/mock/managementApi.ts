@@ -1,6 +1,7 @@
 /**
  * Formalie's own management API in the mock (F13 M6, docs/API-CONTRACT.md → Management API): what an
- * organisation's code calls with an API key from API service → API keys. Plain HTTPS + JSON at
+ * organisation's code calls with an API token that has management rights (API service → Tokens &
+ * headers; API keys were folded into tokens, owner 2026-10-06). Plain HTTPS + JSON at
  * `https://api.formalie.dev/v1/…` (development: `https://localhost:2202/public-api/v1/…`).
  *
  *   GET    /v1/forms                       forms:read      (page, per_page, status)
@@ -13,22 +14,23 @@
  *   GET    /v1/webhooks                    webhooks:read
  *   GET    /v1/audit                       audit:read      (page, per_page)
  *
- * Ids are references (never real ids). Every call counts on the key (calls per day, last used and
- * from where) and changes are audited as the key (actor type `api_key`). 600 calls a minute per key.
+ * Ids are references (never real ids). The same three headers as every call (Authorization,
+ * Content-Type, Formalie-Key); calls show in Request logs and changes are audited as the token
+ * (actor type `api_key`). 600 calls a minute per token.
  */
 import type { H3Event } from 'h3'
-import type { ApiKeyScope } from '#shared/types/integrations'
+import type { ManageScope } from '#shared/types/apiService'
 import { RESPONSE_STATUSES, type ResponseStatus } from '#shared/types/responses'
 import { ERROR_CODES, type ErrorCode } from '#shared/utils/errors/codes'
 import { allFields } from '#shared/utils/forms/build'
 import { recordAudit, auditLogOf } from './core/audit'
 import { decodeId, encodeId } from './core/ids'
 import { formsOf, saveForms, type StoredForm } from './data/formStore'
-import { emitResponse, hashKey, integrationsOf, keyStatusOf, saveIntegrations, toWebhook, type StoredManagementKey } from './data/integrationStore'
+import { emitResponse, integrationsOf, toWebhook } from './data/integrationStore'
 import { answersOf, findResponse, formResponses, type IndexedResponse } from './data/responseData'
 import { updateReview } from './data/responseReview'
-import { schemaOf } from './data/apiStore'
-import { MOCK_TENANTS, type MockTenant } from './data/tenants'
+import { saveApi, schemaOf, type StoredApiToken } from './data/apiStore'
+import type { MockTenant } from './data/tenants'
 
 class ManagementError extends Error {
   constructor(
@@ -49,36 +51,43 @@ function send(event: H3Event, status: number, body: unknown) {
   return body
 }
 
-/** The key in `Authorization: Bearer formalie_key_…`, its organisation, and the scope it needs. */
-function callerKey(event: H3Event, scope: ApiKeyScope): { tenant: MockTenant; key: StoredManagementKey } {
-  const secret = (getHeader(event, 'authorization') ?? '').replace(/^Bearer\s+/i, '').trim()
-  if (!secret.startsWith('formalie_key_')) throw new ManagementError('FRM-API-1010')
-  const hash = hashKey(secret)
-  for (const tenant of MOCK_TENANTS) {
-    const key = integrationsOf(tenant).keys.find(item => item.secret_hash === hash)
-    if (!key) continue
-    const status = keyStatusOf(key)
-    if (status === 'revoked' || status === 'expired') throw new ManagementError('FRM-API-1010')
+/** Who is calling: filled in as the call is checked, so Request logs and the expiry tracker see it. */
+export interface ManagementCaller {
+  tenant?: MockTenant
+  token?: StoredApiToken
+  callKey?: string
+}
+type TokenFinder = (bearer: string) => { tenant: MockTenant; token: StoredApiToken } | null
+type Authorize = (scope: ManageScope) => { tenant: MockTenant; key: StoredApiToken }
+
+/** The token in `Authorization: Bearer …`, its organisation, the right it needs, and the Formalie-Key. */
+function authorizer(event: H3Event, caller: ManagementCaller, find: TokenFinder): Authorize {
+  return scope => {
+    const bearer = /^Bearer\s+(\S+)$/i.exec(getHeader(event, 'authorization') ?? '')?.[1]
+    const found = bearer ? find(bearer) : null
+    if (!found) throw new ManagementError('FRM-API-1010')
+    const { tenant, token } = found
+    caller.tenant = tenant
+    caller.token = token
     const now = Date.now()
-    const recent = (windows.get(key.id) ?? []).filter(at => at > now - 60_000)
+    const recent = (windows.get(token.id) ?? []).filter(at => at > now - 60_000)
     if (recent.length >= LIMIT) {
       const wait = Math.max(1, Math.ceil(((recent[0] ?? now) + 60_000 - now) / 1000))
       setResponseHeader(event, 'Retry-After', wait)
       throw new ManagementError('FRM-GEN-1029')
     }
-    windows.set(key.id, [...recent, now])
-    const day = new Date().toISOString().slice(0, 10)
-    key.calls[day] = (key.calls[day] ?? 0) + 1
-    key.last_used_at = new Date().toISOString()
-    key.last_used_ip = (getHeader(event, 'x-forwarded-for')?.split(',')[0]?.trim() || getRequestIP(event) || null)?.replace(/^::ffff:/i, '') ?? null
-    saveIntegrations()
-    if (!key.scopes.includes(scope)) throw new ManagementError('FRM-API-1009', [{ field: 'scope', message: scope }])
-    return { tenant, key }
+    windows.set(token.id, [...recent, now])
+    token.last_used_at = new Date().toISOString()
+    saveApi()
+    if (!(token.scopes.manage ?? []).includes(scope)) throw new ManagementError('FRM-API-1009', [{ field: 'manage', message: scope }])
+    const callKey = getHeader(event, 'formalie-key')?.trim() ?? ''
+    if (!/^[A-Za-z0-9._:-]{8,100}$/.test(callKey)) throw new ManagementError('FRM-API-1011', [{ field: 'Formalie-Key', message: callKey ? 'invalid' : 'missing' }])
+    caller.callKey = callKey
+    return { tenant, key: token }
   }
-  throw new ManagementError('FRM-API-1010')
 }
 
-const actorOf = (key: StoredManagementKey) => ({ type: 'api_key' as const, id: key.id, name: `API key: ${key.name}`, email: null })
+const actorOf = (token: StoredApiToken) => ({ type: 'api_key' as const, id: token.id, name: `API token: ${token.name}`, email: null })
 const pageOf = (event: H3Event) => {
   const query = getQuery(event)
   return { page: Math.max(1, Number(query.page) || 1), perPage: Math.min(100, Math.max(1, Number(query.per_page) || 20)) }
@@ -112,14 +121,14 @@ async function jsonBody(event: H3Event): Promise<Record<string, unknown>> {
   }
 }
 
-async function route(event: H3Event, parts: string[]) {
+async function route(event: H3Event, parts: string[], authorize: Authorize) {
   const method = event.method.toUpperCase()
   const [resource, ref, sub, extra] = parts
   if (extra !== undefined) throw new ManagementError('FRM-API-1006')
 
   if (resource === 'forms' && !ref) {
     if (method !== 'GET') throw new ManagementError('FRM-API-1008')
-    const { tenant } = callerKey(event, 'forms:read')
+    const { tenant } = authorize('forms:read')
     const { page, perPage } = pageOf(event)
     const status = getQuery(event).status
     const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && (typeof status !== 'string' || form.status === status))
@@ -127,13 +136,13 @@ async function route(event: H3Event, parts: string[]) {
   }
   if (resource === 'forms' && ref && !sub) {
     if (method === 'GET') {
-      const { tenant } = callerKey(event, 'forms:read')
+      const { tenant } = authorize('forms:read')
       const form = formById(tenant, ref)
       const schema = schemaOf(form, null)
       return send(event, 200, { data: { ...formView(form), questions: schema ? allFields(schema).map(field => ({ key: field.key, label: field.label, type: field.type, required: !!field.required })) : [] } })
     }
     if (method === 'PATCH') {
-      const { tenant, key } = callerKey(event, 'forms:write')
+      const { tenant, key } = authorize('forms:write')
       const form = formById(tenant, ref)
       const body = await jsonBody(event)
       if (body.status !== 'published' && body.status !== 'closed') throw new ManagementError('FRM-GEN-1002', [{ field: 'status', message: 'published or closed' }])
@@ -151,7 +160,7 @@ async function route(event: H3Event, parts: string[]) {
   }
   if (resource === 'forms' && ref && sub === 'responses') {
     if (method !== 'GET') throw new ManagementError('FRM-API-1008')
-    const { tenant } = callerKey(event, 'responses:read')
+    const { tenant } = authorize('responses:read')
     const form = formById(tenant, ref)
     const { page, perPage } = pageOf(event)
     const query = getQuery(event)
@@ -162,12 +171,12 @@ async function route(event: H3Event, parts: string[]) {
   }
   if (resource === 'responses' && ref && !sub) {
     if (method === 'GET') {
-      const { tenant } = callerKey(event, 'responses:read')
+      const { tenant } = authorize('responses:read')
       const { form, entry } = responseById(tenant, ref)
       return send(event, 200, { data: responseView(form, entry) })
     }
     if (method === 'PATCH') {
-      const { tenant, key } = callerKey(event, 'responses:write')
+      const { tenant, key } = authorize('responses:write')
       const { form, entry } = responseById(tenant, ref)
       const body = await jsonBody(event)
       const status = body.status as ResponseStatus | undefined
@@ -189,7 +198,7 @@ async function route(event: H3Event, parts: string[]) {
       return send(event, 200, { data: responseView(updated.form, updated.entry) })
     }
     if (method === 'DELETE') {
-      const { tenant, key } = callerKey(event, 'responses:write')
+      const { tenant, key } = authorize('responses:write')
       const { form, entry } = responseById(tenant, ref)
       updateReview(form.id, entry.id, review => (review.deleted_at = new Date().toISOString()))
       recordAudit(event, tenant, { action: 'responses.deleted', actor: actorOf(key), resource: { type: 'response', id: entry.id, name: form.name } })
@@ -200,12 +209,12 @@ async function route(event: H3Event, parts: string[]) {
   }
   if (resource === 'webhooks' && !ref) {
     if (method !== 'GET') throw new ManagementError('FRM-API-1008')
-    const { tenant } = callerKey(event, 'webhooks:read')
+    const { tenant } = authorize('webhooks:read')
     return send(event, 200, { data: integrationsOf(tenant).webhooks.map(hook => toWebhook(tenant, hook)).map(({ id, name, url, events, forms, status, created_at }) => ({ id: encodeId(id), name, url, events, forms: forms.map(form => ({ id: encodeId(form.id), name: form.name })), status, created_at })) })
   }
   if (resource === 'audit' && !ref) {
     if (method !== 'GET') throw new ManagementError('FRM-API-1008')
-    const { tenant } = callerKey(event, 'audit:read')
+    const { tenant } = authorize('audit:read')
     const { page, perPage } = pageOf(event)
     const events = auditLogOf(tenant).map(item => ({ id: encodeId(item.id), occurred_at: item.occurred_at, action: item.action, outcome: item.outcome, actor: { type: item.actor.type, name: item.actor.name }, resource: item.resource ? { type: item.resource.type, name: item.resource.name } : null }))
     return send(event, 200, paged(events, page, perPage))
@@ -214,9 +223,9 @@ async function route(event: H3Event, parts: string[]) {
 }
 
 /** `/v1/…` (path without the `/v1`). */
-export async function handleManagementApi(event: H3Event, parts: string[]) {
+export async function handleManagementApi(event: H3Event, parts: string[], caller: ManagementCaller, find: TokenFinder) {
   try {
-    return await route(event, parts)
+    return await route(event, parts, authorizer(event, caller, find))
   } catch (error) {
     if (error instanceof ManagementError) {
       const definition = ERROR_CODES[error.code]

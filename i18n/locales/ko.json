@@ -357,7 +357,6 @@
     "integrations": "연동",
     "destinations": "대상",
     "webhooks": "웹훅",
-    "apiKeys": "API 키",
     "settings": "설정",
     "resources": "리소스",
     "system": "시스템",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "삭제된 서비스 또는 엔드포인트 {n}개를 호출할 수 있습니다 | 삭제된 서비스 또는 엔드포인트 {n}개를 호출할 수 있습니다",
         "text": "삭제되었기 때문에 이 토큰은 호출할 수 없습니다. 전체로 확대되지 않습니다. 올바른 서비스를 가리키도록 호출 가능한 대상을 수정하세요."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "폼 읽기",
+          "forms_write": "폼 열기 및 닫기",
+          "responses_read": "응답 읽기",
+          "responses_write": "응답 변경",
+          "webhooks_read": "웹훅 읽기",
+          "audit_read": "감사 로그 읽기"
+        },
+        "title": "양식 및 응답 관리",
+        "help": "선택 사항. 이 토큰이 관리 API(/v1)도 사용할 수 있게 합니다. 양식 목록 보기, 열기 또는 닫기, 응답 읽기와 변경이 가능합니다. 엔드포인트만 호출하는 토큰이라면 모두 끄세요.",
+        "none": "없음. 이 토큰은 엔드포인트만 호출합니다."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "토큰 만료",
         "text": "모든 응답에 토큰 만료 정보가 담깁니다. Formalie-Token-Expires 헤더와, 데이터 옆의 meta.token_expires_at 및 meta.token_expires_in_days입니다(만료되지 않는 토큰은 null). 그날이 오기 전에 토큰을 갱신하세요."
+      },
+      "manage": {
+        "title": "양식 및 응답 관리",
+        "text": "엔드포인트 외에도 토큰은 /v1로 워크스페이스를 관리할 수 있습니다. 양식 목록 보기, 열기 또는 닫기, 응답 읽기·변경·삭제, 웹훅과 감사 추적 읽기가 가능합니다. 토큰의 '양식 및 응답 관리' 단계에서 이 권한을 부여하세요. 같은 헤더 3개가 적용됩니다.",
+        "base": "주소"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "10초 안에 아무 2xx 상태로 응답하고 실제 작업은 그 뒤에 하세요. 그 외의 응답은 재시도됩니다."
       }
     },
-    "onceDesc": "지금 복사하세요. 나중에 비밀번호를 확인하면 해당 패널에서 다시 볼 수 있습니다.",
-    "keys": {
-      "newTitle": "새 API 키",
-      "editTitle": "API 키 편집",
-      "desc": "키를 사용하면 내 코드에서 Formalie 관리 API를 쓸 수 있습니다. 폼과 응답 읽기, 상태 변경 등이 가능합니다.",
-      "create": "키 만들기",
-      "namePlaceholder": "예: 리포트 스크립트",
-      "scopesHelp": "각 키에는 필요한 권한만 부여하세요.",
-      "scopesCount": "권한 {n}개 | 권한 {n}개",
-      "search": "API 키 검색…",
-      "empty": "아직 API 키가 없습니다",
-      "emptyDesc": "키를 만들어 내 코드에서 폼과 응답을 읽어 보세요.",
-      "lastUsed": "{when} 사용",
-      "neverUsed": "사용한 적 없음",
-      "lastFrom": "마지막 사용 위치",
-      "noCalls": "최근 30일간 호출 없음",
-      "secret": "API 키",
-      "secretTitle": "{name}의 API 키",
-      "secretHint": "내 서버에만 보관하고, 다른 사람이 내려받을 수 있는 웹사이트나 앱에는 절대 넣지 마세요.",
-      "revoke": "폐기",
-      "revokeTitle": "이 키를 폐기할까요?",
-      "revokeDesc": "{name}은(는) 즉시 작동을 멈춥니다. 아직 사용 중인 코드는 오류를 받습니다.",
-      "deleteTitle": "이 키를 삭제할까요?",
-      "deleteDesc": "{name}이(가) 목록에서 제거됩니다. 수행한 작업은 감사 로그에 남습니다.",
-      "expiringTitle": "{when} 만료",
-      "expiringDesc": "새 키를 만들고 코드를 전환한 다음 이 키를 폐기하세요.",
-      "howToCall": "호출 방법",
-      "howToCallText": "키를 Bearer 토큰으로 보내세요. 목록은 data와 meta(page, per_page, total)로 응답하고, 오류는 문서 및 테스트에서 찾아볼 수 있는 코드로 응답합니다.",
-      "col": {
-        "name": "키",
-        "status": "상태",
-        "scopes": "권한",
-        "calls": "호출",
-        "lastUsed": "마지막 사용"
-      },
-      "scope": {
-        "forms_read": "폼 읽기",
-        "forms_write": "폼 열기 및 닫기",
-        "responses_read": "응답 읽기",
-        "responses_write": "응답 변경",
-        "webhooks_read": "웹훅 읽기",
-        "audit_read": "감사 로그 읽기"
-      },
-      "scopeHint": {
-        "forms_read": "폼과 질문 목록 보기",
-        "forms_write": "게시된 폼을 열림과 닫힘으로 전환",
-        "responses_read": "응답과 답변 목록 보기",
-        "responses_write": "상태와 태그 변경, 응답 삭제",
-        "webhooks_read": "웹훅과 이벤트 목록 보기",
-        "audit_read": "무슨 일이 있었고 누가 했는지 읽기"
-      },
-      "invalid": {
-        "scopes": "권한을 하나 이상 선택하세요"
-      },
-      "kpi": {
-        "calls": "API 키 호출",
-        "keys": "키",
-        "unused": "90일간 미사용",
-        "byStatus": "상태별 키",
-        "expiringHint": "만료 예정 = 14일 이내"
-      },
-      "sort": {
-        "lastUsed": "최근 사용순",
-        "expires": "만료 임박순"
-      },
-      "toast": {
-        "saved": "API 키를 저장했습니다",
-        "revoked": "API 키를 폐기했습니다",
-        "deleted": "API 키를 삭제했습니다"
-      }
-    }
+    "onceDesc": "지금 복사하세요. 나중에 비밀번호를 확인하면 해당 패널에서 다시 볼 수 있습니다."
   },
   "secrets": {
     "title": "시크릿",

@@ -357,7 +357,6 @@
     "integrations": "Integrationen",
     "destinations": "Ziele",
     "webhooks": "Webhooks",
-    "apiKeys": "API-Schlüssel",
     "settings": "Einstellungen",
     "resources": "Ressourcen",
     "system": "System",
@@ -4021,6 +4020,19 @@
       "scopeGone": {
         "title": "Kann {n} gelöschten Dienst oder Endpunkt aufrufen | Kann {n} gelöschte Dienste oder Endpunkte aufrufen",
         "text": "Diese wurden gelöscht, daher kann dieses Token sie nicht aufrufen. Es wird nie auf alles erweitert; bearbeiten Sie, was es aufrufen darf, um es auf den richtigen Dienst zu richten."
+      },
+      "manage": {
+        "scope": {
+          "forms_read": "Formulare lesen",
+          "forms_write": "Formulare öffnen und schließen",
+          "responses_read": "Antworten lesen",
+          "responses_write": "Antworten ändern",
+          "webhooks_read": "Webhooks lesen",
+          "audit_read": "Audit-Protokoll lesen"
+        },
+        "title": "Formulare und Antworten verwalten",
+        "help": "Optional. Erlaubt diesem Token auch die Verwaltungs-API (/v1): Formulare auflisten, öffnen oder schließen, Antworten lesen und ändern. Lassen Sie alles aus, wenn das Token nur Endpunkte aufruft.",
+        "none": "Keine. Dieses Token ruft nur Endpunkte auf."
       }
     },
     "rotate": {
@@ -4419,6 +4431,11 @@
       "expiry": {
         "title": "Ablauf des Tokens",
         "text": "Jede Antwort enthält den Ablauf des Tokens: den Header Formalie-Token-Expires und neben den Daten meta.token_expires_at und meta.token_expires_in_days (null bei einem Token, das nie abläuft). Erneuern Sie das Token vor Ablauf."
+      },
+      "manage": {
+        "title": "Formulare und Antworten verwalten",
+        "text": "Neben deinen Endpunkten kann ein Token den Workspace über /v1 verwalten: Formulare auflisten, öffnen oder schließen, Antworten lesen, ändern oder löschen sowie Webhooks und das Audit-Protokoll lesen. Gib dem Token diese Rechte im Schritt „Formulare und Antworten verwalten“. Es gelten dieselben drei Header.",
+        "base": "Adresse"
       }
     },
     "journey": {
@@ -6204,77 +6221,7 @@
         "answer": "Antworten Sie innerhalb von 10 Sekunden mit einem beliebigen 2xx-Status und erledigen Sie die eigentliche Arbeit danach. Alles andere wird wiederholt."
       }
     },
-    "onceDesc": "Kopieren Sie es jetzt. Sie können es später in seinem Bereich wieder ansehen, nach Bestätigung Ihres Passworts.",
-    "keys": {
-      "newTitle": "Neuer API-Schlüssel",
-      "editTitle": "API-Schlüssel bearbeiten",
-      "desc": "Mit einem Schlüssel nutzt dein eigener Code die Management-API von Formalie: Formulare und Antworten lesen, Status ändern und mehr.",
-      "create": "Schlüssel erstellen",
-      "namePlaceholder": "z. B. Reporting-Skript",
-      "scopesHelp": "Gib jedem Schlüssel nur, was er braucht.",
-      "scopesCount": "{n} Berechtigung | {n} Berechtigungen",
-      "search": "API-Schlüssel suchen…",
-      "empty": "Noch keine API-Schlüssel",
-      "emptyDesc": "Erstelle einen Schlüssel, um Formulare und Antworten aus deinem Code zu lesen.",
-      "lastUsed": "Verwendet {when}",
-      "neverUsed": "Nie verwendet",
-      "lastFrom": "Zuletzt verwendet von",
-      "noCalls": "Keine Aufrufe in den letzten 30 Tagen",
-      "secret": "API-Schlüssel",
-      "secretTitle": "API-Schlüssel für {name}",
-      "secretHint": "Bewahre ihn nur auf deinem Server auf, nie in einer Website oder App, die andere herunterladen können.",
-      "revoke": "Widerrufen",
-      "revokeTitle": "Diesen Schlüssel widerrufen?",
-      "revokeDesc": "{name} funktioniert sofort nicht mehr. Code, der ihn noch nutzt, erhält einen Fehler.",
-      "deleteTitle": "Diesen Schlüssel löschen?",
-      "deleteDesc": "{name} wird aus der Liste entfernt. Das Audit-Protokoll behält, was er getan hat.",
-      "expiringTitle": "Läuft ab {when}",
-      "expiringDesc": "Erstelle einen neuen Schlüssel, stelle deinen Code um und widerrufe dann diesen.",
-      "howToCall": "So rufst du auf",
-      "howToCallText": "Sende den Schlüssel als Bearer-Token. Listen antworten mit data und meta (page, per_page, total); Fehler mit einem Code, den du unter Doku & Tests nachschlagen kannst.",
-      "col": {
-        "name": "Schlüssel",
-        "status": "Status",
-        "scopes": "Berechtigungen",
-        "calls": "Aufrufe",
-        "lastUsed": "Zuletzt verwendet"
-      },
-      "scope": {
-        "forms_read": "Formulare lesen",
-        "forms_write": "Formulare öffnen und schließen",
-        "responses_read": "Antworten lesen",
-        "responses_write": "Antworten ändern",
-        "webhooks_read": "Webhooks lesen",
-        "audit_read": "Audit-Protokoll lesen"
-      },
-      "scopeHint": {
-        "forms_read": "Formulare und ihre Fragen auflisten",
-        "forms_write": "Ein veröffentlichtes Formular zwischen offen und geschlossen umschalten",
-        "responses_read": "Antworten mit ihren Einträgen auflisten",
-        "responses_write": "Status und Tags ändern, Antworten löschen",
-        "webhooks_read": "Webhooks und ihre Ereignisse auflisten",
-        "audit_read": "Lesen, was passiert ist und wer es getan hat"
-      },
-      "invalid": {
-        "scopes": "Wähle mindestens eine Berechtigung"
-      },
-      "kpi": {
-        "calls": "Aufrufe mit API-Schlüsseln",
-        "keys": "Schlüssel",
-        "unused": "90 Tage ungenutzt",
-        "byStatus": "Schlüssel nach Status",
-        "expiringHint": "Läuft ab = innerhalb von 14 Tagen"
-      },
-      "sort": {
-        "lastUsed": "Zuletzt verwendet",
-        "expires": "Läuft zuerst ab"
-      },
-      "toast": {
-        "saved": "API-Schlüssel gespeichert",
-        "revoked": "API-Schlüssel widerrufen",
-        "deleted": "API-Schlüssel gelöscht"
-      }
-    }
+    "onceDesc": "Kopieren Sie es jetzt. Sie können es später in seinem Bereich wieder ansehen, nach Bestätigung Ihres Passworts."
   },
   "secrets": {
     "title": "Geheimnis",
