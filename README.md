@@ -140,6 +140,8 @@ Use a live token unless the row says otherwise. Each answer is JSON `{ "error": 
 | `Formalie-Key` under 16 characters (`1234567890`), on any method       | `400 FRM-API-1011` (`Formalie-Key: short`)                         |
 | `Formalie-Key` a simple pattern (`1234567890123456`, `aaaabbbbaaaabbbb`) | `400 FRM-API-1011` (`Formalie-Key: weak`)                          |
 | POST again with the same key and a different body (within 24 hours)    | `409 FRM-API-1020` (`Formalie-Key: used_for_another_body`)         |
+| POST the same answers again with a **new** key (any key order)        | `409 FRM-RESP-1005` (`same_answers`), as on the form's web page   |
+| Form with an identity email (Form settings): POST that email again      | `409 FRM-RESP-1006` (masked email and date); a typo-close email is saved and flagged _possible duplicate_ |
 | GET, PUT or DELETE without `Formalie-Key`                               | works (`200`): the key is optional there                           |
 | Broken JSON, or a JSON list instead of an object                        | `400 FRM-GEN-1001`                                                 |
 | Body over 1 MB                                                          | `413 FRM-API-1018`                                                 |

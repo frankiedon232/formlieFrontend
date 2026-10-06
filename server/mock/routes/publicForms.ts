@@ -7,7 +7,8 @@
  *   POST /public/forms/:key/submit   one response per fill-in session (Formalie-Key)
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
-import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
+import { reviewOf } from '../data/responseReview'
+import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import { emitResponse } from '../data/integrationStore'
 import { z } from 'zod'
 import { availabilityOf } from '#shared/utils/forms/availability'
@@ -26,7 +27,7 @@ import { parseBody } from '../core/validate'
 import { findByPublicKey, findByShortCode, formsOf, saveForms, type StoredForm } from '../data/formStore'
 import { formLink, publicHosts, SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
 import { frameAncestors } from '#shared/utils/urls/embed-domains'
-import { responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
+import { fingerprintOf, responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
 import { MOCK_TENANTS, type MockTenant } from '../data/tenants'
 import { ensureSchema } from './formDraft'
 import { websiteOf } from './onboarding'
@@ -53,13 +54,6 @@ function deviceOf(event: Parameters<typeof tenantOf>[0]): string {
   // SameSite=None: embedded forms run inside other websites; the cookie is only a random id.
   setCookie(event, DEVICE_COOKIE, fresh, { httpOnly: true, secure: true, sameSite: 'none', path: '/', maxAge: 60 * 60 * 24 * 365 })
   return fresh
-}
-/** The answers in a stable order, hashed: the same response twice has the same fingerprint. */
-function fingerprintOf(answers: Record<string, unknown>): string {
-  const stable = Object.keys(answers)
-    .sort()
-    .map(key => [key, typeof answers[key] === 'string' ? (answers[key] as string).trim().toLowerCase() : answers[key]])
-  return createHash('sha256').update(JSON.stringify(stable)).digest('hex')
 }
 
 /**
@@ -304,7 +298,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
   // own email: same → refused, a typo away → asked + flagged. Without: one per browser.
   // The exact same answers are never accepted twice.
   const deviceId = deviceOf(event)
-  const earlierResponses = responsesOf(tenant).responses.filter(item => item.form_id === form.id)
+  const earlierResponses = responsesOf(tenant).responses.filter(item => item.form_id === form.id && !reviewOf(item.id)?.deleted_at) // deleted ones no longer count
   const identity = identityOf(schema)
   if (identity.verify && identity.email) {
     const email = normaliseEmail(answers[identity.email])

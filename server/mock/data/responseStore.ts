@@ -4,6 +4,7 @@
  * (double click, retry after a dropped connection, back button) returns the same response.
  * Persisted across dev reloads.
  */
+import { createHash } from 'node:crypto'
 import { loadPersisted, savePersisted } from '../core/persist'
 import type { MockTenant } from './tenants'
 
@@ -54,3 +55,11 @@ export function saveResponses() {
 /** The response a fill-in session already created, if any. */
 export const responseForSubmission = (tenant: MockTenant, formId: string, submissionId: string) =>
   responsesOf(tenant).responses.find(item => item.form_id === formId && item.submission_id === submissionId)
+
+/** The answers in a stable order, hashed: the same response twice has the same fingerprint (web form and API alike). */
+export function fingerprintOf(answers: Record<string, unknown>): string {
+  const stable = Object.keys(answers)
+    .sort()
+    .map(key => [key, typeof answers[key] === 'string' ? (answers[key] as string).trim().toLowerCase() : answers[key]])
+  return createHash('sha256').update(JSON.stringify(stable)).digest('hex')
+}

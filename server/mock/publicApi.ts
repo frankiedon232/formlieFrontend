@@ -38,8 +38,9 @@ import { decodeId, encodeId } from './core/ids'
 import { apiOf, hashSecret, saveApi, schemaOf, type StoredApiEndpoint, type StoredApiToken } from './data/apiStore'
 import { formsOf, saveForms } from './data/formStore'
 import { answersOf, formResponses, type IndexedResponse } from './data/responseData'
-import { updateReview } from './data/responseReview'
-import { responsesOf, saveResponses } from './data/responseStore'
+import { updateReview, reviewOf } from './data/responseReview'
+import { fingerprintOf, responsesOf, saveResponses } from './data/responseStore'
+import { identityOf, maskEmail, matchIdentity } from '#shared/utils/forms/identity'
 import { MOCK_TENANTS, type MockTenant } from './data/tenants'
 import { recordLog } from './data/apiTraffic'
 import { maskAnswers, PERSONAL_TYPES } from './core/mask'
@@ -404,6 +405,20 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         const entry = earlier.response_id ? formResponses(tenant, form).find(item => item.id === earlier.response_id) : undefined
         if (entry) return send(event, 200, { data: record(form, entry, choices), meta: { replayed: true } })
       }
+      // The form's own duplicate rules, exactly as on its web page (owner, 2026-10-06: a new Formalie-Key is no
+      // way round them): the same answers twice are refused; with the form's identity email, the same email is
+      // refused and one a typo away is saved but flagged "possible duplicate" for review (an app can not confirm).
+      const earlierResponses = responsesOf(tenant).responses.filter(item => item.form_id === form.id && !reviewOf(item.id)?.deleted_at) // deleted ones no longer count
+      const fingerprint = fingerprintOf(answers)
+      if (earlierResponses.some(item => item.fingerprint === fingerprint)) throw new PublicError('FRM-RESP-1005', [{ field: 'body', message: 'same_answers' }])
+      let possibleDuplicate: { of: string; reason: string } | undefined
+      const identity = identityOf(schema)
+      if (identity.email) {
+        const match = matchIdentity(schema, answers, earlierResponses, identity)
+        const hint = JSON.stringify({ at: match.record?.submitted_at, email: maskEmail(match.record?.data[identity.email]) })
+        if (match.level === 'clear') throw new PublicError('FRM-RESP-1006', [{ field: identity.email, message: hint }])
+        if (match.level === 'likely') possibleDuplicate = { of: match.record!.id, reason: match.reason! }
+      }
       const submissionId = `api:${endpoint.id}:${crypto.randomUUID()}`
       if (test) {
         const answer = { data: { id: encodeId(crypto.randomUUID()), submitted_at: new Date().toISOString(), status: 'new', data: Object.fromEntries(choices.filter(field => field.returned).map(field => [field.name, answers[field.key] ?? null])) }, meta: { test: true } }
@@ -411,7 +426,7 @@ async function handle(event: H3Event, path: string, context: CallContext) {
         saveApi()
         return send(event, 201, answer)
       }
-      const stored = { id: crypto.randomUUID(), form_id: form.id, form_version: endpoint.version ?? form.versions?.[0]?.number ?? null, submitted_at: new Date().toISOString(), language: schema.settings?.language ?? 'en', data: answers, submission_id: submissionId, channel: 'api' as const, meta: { ip: getRequestIP(event, { xForwardedFor: true }) ?? 'unknown', user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 300) } }
+      const stored = { id: crypto.randomUUID(), form_id: form.id, form_version: endpoint.version ?? form.versions?.[0]?.number ?? null, submitted_at: new Date().toISOString(), language: schema.settings?.language ?? 'en', data: answers, submission_id: submissionId, channel: 'api' as const, meta: { ip: getRequestIP(event, { xForwardedFor: true }) ?? 'unknown', user_agent: (getHeader(event, 'user-agent') ?? '').slice(0, 300) }, fingerprint, ...(possibleDuplicate ? { possible_duplicate: possibleDuplicate } : {}) }
       responsesOf(tenant).responses.unshift(stored)
       saveResponses()
       store.replays.unshift({ key: replayKey, hash, at: stored.submitted_at, response_id: stored.id })
