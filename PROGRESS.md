@@ -625,7 +625,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** turn any form into an API so organisations collect data from every side, **links, embeds and API**, all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
-**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** ✅ Access rules and rate limits. **M4** ✅ Request logs, analytics and the API service overview in the dashboard style. **M5** ✅ Docs and testing (try-it console, Test button, files). **M6** ✅ Webhooks and Formalie's own API keys (management API). App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
+**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** ✅ Tokens and headers, plus the mock public API (Postman) (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** ✅ Access rules and rate limits. **M4** ✅ Request logs, analytics and the API service overview in the dashboard style. **M5** ✅ Docs and testing (try-it console, Test button, files). **M6** ✅ Webhooks and Formalie's own API keys (management API).
 
 ### Addresses (decided 2026-10-03, see 03-DECISIONS → 61)
 
@@ -692,10 +692,9 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 9. Integrations (moved here from F15, owner 2026-10-03)
 
-- ✅ Menu entries in the API service area: Webhooks (API keys folded into tokens and App integrations dropped, 2026-10-06; old links redirect)
+- ✅ Menu entry in the API service area: Webhooks (API keys folded into tokens, 2026-10-06; old links redirect)
 - ✅ Webhooks (`/api-service/webhooks`, rule 21; view switch Webhooks | Deliveries): name, HTTPS address (public hosts only; `http://localhost` while developing), events (new response, response changed, status changed, response deleted), every form or chosen ones; signing secret shown once, new secret; Send a test (the receiver's answer in the panel); every delivery signed (`X-Formalie-Timestamp`, `X-Formalie-Signature: sha256=HMAC(secret, "{timestamp}.{body}")`, `X-Formalie-Event`, `X-Formalie-Delivery`), retried after 1, 5, 15, 60 and 360 minutes, paused by itself after 20 failures in a row; delivery log with tries, request (personal answers masked), answer, Send again / Retry now; signature check code (Node.js, Python, PHP). The mock really calls the address
 - ✅ API keys (`/api-service/api-keys`, rule 21): name, permissions (read forms, open / close forms, read / change responses, read webhooks, read the audit trail), expiry; shown once (`formalie_key_…`), edit, revoke, delete once revoked or expired; calls per day, last used and from where. Mock management API at `{base}/v1/…` (forms, a form's responses, one response: read, change status and tags, delete; webhooks; audit trail), permissions checked, changes audited as the key, webhooks fire
-- ➖ App integrations (Google Sheets, Slack / team chat): dropped for this version (owner, 2026-10-06), menu entry and page removed; maybe a later version after production. Webhooks with Zapier / Make / n8n cover it meanwhile. Email notifications to outside addresses move to F14 Settings → Notifications
 
 ### M7. Owner review (2026-10-06)
 
@@ -1107,7 +1106,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | SQL reserved words in blue in the Query editor | F12 M4 | ✅ |
 | 2026-10-05 | Query editor: Run all (every statement, a result per statement); a lazy tree for very large databases (columns load when a table is opened); open F12 items resolved (done, or moved to F15e / F22 / later) | F12 | ✅ |
 | 2026-10-05 | Before F13: Forms → Analytics (still a placeholder) and Data sources → Overview must be finished and look "Wao" in the design's dashboard style | F18 (brought forward) · F12 overview | ✅ |
-| 2026-10-06 | F13 tokens: separate test and live tokens from the start; app integrations (Sheets, team chat, email) after F21 | F13 M2 · after F21 | ✅ decided |
+| 2026-10-06 | F13 tokens: separate test and live tokens from the start | F13 M2 | ✅ decided |
 | 2026-10-06 | Files through the API: not in M1 (JSON only); a separate upload step with the form page's checks, once tokens and rate limits exist | F13 M5 | ✅ |
 | 2026-10-06 | Test the API service with Postman already against the mock (tell the owner when it works) | F13 M2 (mock public API) | ✅ |
 | 2026-10-06 | Token prefixes and headers say Formalie: `formalie_live_…` tokens; `Formalie-Key` instead of `Idempotency-Key` (our own name, on purpose) | F13 M2 | ✅ |
@@ -1348,4 +1347,3 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | F13 | "Docs & testing" is now "API Documentation" (owner): `nav.apiDocs` (menu, page title, breadcrumb, command palette) and the four guidance sentences that name it, in every language; README and dev guide follow. |
 | 2026-10-06 | F13 | Webhooks, owner review: the local receiver now requires `WEBHOOK_TOKEN` (will not start without it), refuses a missing or wrong token with 401 before reading the body, answers a repeated Formalie-Key without handling it again; webhook answers use the clean API names (the form's endpoint names, else from the labels; masking follows), never internal keys. Checked: no token 401, wrong 401, right 200, retry not handled twice; a real response.created arrived with token valid and clean names. |
 | 2026-10-06 | F13 | Owner tested the whole API service end to end (services, endpoints, tokens of all three kinds, access rules, API Documentation, Postman, duplicates and Formalie-Key, webhooks with the local receiver): phase closed. Stale open items ticked; left for the backend: TLS only and CORS for browser callers; dashboard and roles stay in F21 / F22. |
-| 2026-10-06 | F13 | App integrations dropped for this version (owner): menu entry, placeholder page and its strings removed; `/api-service/apps` redirects to Webhooks, old API keys links to Tokens & headers. Email notifications to outside addresses planned in F14 Notifications. |

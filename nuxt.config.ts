@@ -91,7 +91,7 @@ export default defineNuxtConfig({
     // Integrations moved to the API service area (owner, 2026-10-03).
     '/integrations': { redirect: '/api-service/webhooks' },
     '/integrations/webhooks': { redirect: '/api-service/webhooks' },
-    // API keys folded into tokens, App integrations dropped for now (owner, 2026-10-06): old links land somewhere real
+    // Old links land somewhere real (owner, 2026-10-06)
     '/integrations/api-keys': { redirect: '/api-service/auth' },
     '/api-service/api-keys': { redirect: '/api-service/auth' },
     '/api-service/apps': { redirect: '/api-service/webhooks' },
