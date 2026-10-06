@@ -16,7 +16,7 @@ import {
 import type { FormField } from '#shared/utils/forms/build'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
-const icon = useFieldIcon(() => props.field.type)
+const icon = useFieldIcon(() => props.field)
 const value = defineModel<unknown>()
 const { t } = useI18n()
 // Size and style follow the form theme (F8); plain defaults elsewhere.

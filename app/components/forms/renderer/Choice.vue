@@ -23,7 +23,7 @@ const on = computed({
   get: () => value.value === true,
   set: next => (value.value = next),
 })
-const icon = useFieldIcon(() => props.field.type)
+const icon = useFieldIcon(() => props.field)
 // Read-only and disabled both block changes here (Nuxt UI choice controls have no read-only state).
 const disabled = computed(() => isLocked(props.field))
 </script>

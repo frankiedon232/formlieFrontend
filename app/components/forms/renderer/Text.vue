@@ -49,7 +49,7 @@ const MODES: Record<string, 'email' | 'tel' | 'url' | 'decimal'> = {
   percentage: 'decimal',
 }
 /** The box icon (Form settings → Field icons; every type its own, owner 2026-10-06). */
-const icon = useFieldIcon(() => props.field.type)
+const icon = useFieldIcon(() => props.field)
 /** Codes are written in capitals and without spell-checking (IBAN, BIC, MAC). */
 const CODE_TYPES = ['iban', 'bic', 'mac_address', 'ip_address', 'domain']
 
