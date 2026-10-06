@@ -56,6 +56,9 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FILE-1003 | 400  | File failed security scan.                                        | WARNING  |
 | FRM-EXP-1001  | 404  | Export not found or expired.                                      | INFO     |
 | FRM-DEST-1001 | 400  | Could not connect to destination database.                        | WARNING  |
+| FRM-API-1001  | 409  | This endpoint name is already used in your organisation.          | INFO     |
+| FRM-API-1002  | 422  | Publish the form before it can be an endpoint.                    | INFO     |
+| FRM-API-1003  | 409  | A service with this name already exists.                          | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
 

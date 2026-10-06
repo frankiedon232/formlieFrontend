@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Aqui esta conexão é somente leitura: apenas instruções de leitura são executadas.",
     "FRM-DEST-1025": "O banco de dados não conseguiu executar esta instrução.",
     "FRM-DEST-1026": "Execute uma instrução por vez: selecione-a ou coloque o cursor nela.",
-    "FRM-DEST-1027": "Somente quem salvou esta consulta pode alterá-la."
+    "FRM-DEST-1027": "Somente quem salvou esta consulta pode alterá-la.",
+    "FRM-API-1001": "Este nome de endpoint já é usado na sua organização.",
+    "FRM-API-1002": "Publique o formulário antes de ele poder ser um endpoint.",
+    "FRM-API-1003": "Já existe um serviço com este nome."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -615,7 +618,8 @@
     "attention": "Requer atenção",
     "failing": "Com falha",
     "disabled": "Desativada",
-    "untested": "Não testada"
+    "untested": "Não testada",
+    "active": "Ativo"
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
@@ -807,7 +811,8 @@
       "users": "Usuários",
       "integrations": "Integrações",
       "audit": "Trilha de auditoria",
-      "data": "Fontes de dados"
+      "data": "Fontes de dados",
+      "api": "Serviço de API"
     },
     "actorType": {
       "user": "Pessoa",
@@ -835,7 +840,9 @@
       "option_list": "Lista de opções",
       "theme": "Tema",
       "template": "Modelo",
-      "data_source": "Conexão"
+      "data_source": "Conexão",
+      "api_service": "Serviço de API",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Nome",
@@ -955,7 +962,17 @@
       "data_query_run": "Consulta executada em um banco de dados",
       "data_query_exported": "Resultados da consulta exportados",
       "data_saved_query_saved": "Consulta salva",
-      "data_saved_query_deleted": "Consulta salva excluída"
+      "data_saved_query_deleted": "Consulta salva excluída",
+      "api_service_created": "Serviço de API criado",
+      "api_service_updated": "Serviço de API alterado",
+      "api_service_enabled": "Serviço de API ativado",
+      "api_service_disabled": "Serviço de API desativado",
+      "api_service_deleted": "Serviço de API excluído",
+      "api_endpoint_created": "Endpoint criado",
+      "api_endpoint_updated": "Endpoint alterado",
+      "api_endpoint_enabled": "Endpoint ativado",
+      "api_endpoint_disabled": "Endpoint desativado",
+      "api_endpoint_deleted": "Endpoint excluído"
     },
     "detail": {
       "who": "Quem",
@@ -3552,6 +3569,201 @@
       "webhooks": "Envie cada nova resposta para seus próprios sistemas assim que chegar, assinada e com novas tentativas.",
       "apiKeys": "Chaves da API da Formalie: gerencie formulários e respostas pelo seu código.",
       "apps": "Conecte apps como planilhas e chat da equipe."
+    },
+    "optional": "Opcional",
+    "address": "Endereço",
+    "answering": "Atendendo chamadas",
+    "serviceOff": "Serviço desativado",
+    "formNotPublished": "Formulário não publicado",
+    "noMethods": "Sem métodos",
+    "noDescription": "Sem descrição",
+    "neverCalled": "Ainda sem chamadas",
+    "lastCall": "Chamado {when}",
+    "noCalls": "Nenhuma chamada nos últimos 30 dias.",
+    "noEndpoints": "Este serviço ainda não tem endpoints",
+    "manyErrors": "Mais de 1 em cada 20 chamadas falhou",
+    "callsCount": "{n} chamada | {n} chamadas",
+    "endpointsCount": "{n} endpoint | {n} endpoints",
+    "createdBy": "Criado por",
+    "latestVersion": "Última versão publicada",
+    "versionN": "Versão {n}",
+    "pageSize": "Tamanho da página (GET)",
+    "navigate": "Mover entre itens",
+    "notFound": "Este endpoint não está disponível",
+    "searchServices": "Pesquisar serviços…",
+    "searchEndpoints": "Pesquisar endpoints, formulários ou serviços…",
+    "emptyServices": "Nenhum serviço ainda",
+    "emptyServicesDesc": "Um serviço agrupa endpoints, por exemplo um por app ou parceiro, para ativá-los ou desativá-los juntos.",
+    "emptyEndpoints": "Nenhum endpoint ainda",
+    "emptyEndpointsDesc": "Transforme um formulário publicado em uma API: escolha os métodos e as perguntas que ele aceita ou retorna.",
+    "kpi": {
+      "calls": "Chamadas",
+      "errors": "Erros",
+      "time": "Tempo de resposta",
+      "byStatus": "Serviços por status",
+      "byMethod": "Endpoints por método",
+      "active": "{n} ativos",
+      "none": "Nada aqui ainda"
+    },
+    "col": {
+      "service": "Serviço",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoints",
+      "status": "Status",
+      "methods": "Métodos",
+      "calls": "Chamadas (30 dias)",
+      "errors": "Erros",
+      "lastCall": "Última chamada",
+      "created": "Criado",
+      "updated": "Alterado",
+      "version": "Versão do formulário"
+    },
+    "sort": {
+      "calls": "Mais chamados",
+      "endpoints": "Mais endpoints",
+      "errors": "Mais erros",
+      "lastCall": "Chamados recentemente",
+      "created": "Mais recentes",
+      "changed": "Alterados recentemente"
+    },
+    "actions": {
+      "open": "Abrir",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "duplicate": "Duplicar",
+      "turnOn": "Ativar",
+      "turnOff": "Desativar",
+      "newEndpoint": "Novo endpoint",
+      "viewEndpoints": "Ver seus endpoints",
+      "copyUrl": "Copiar endereço",
+      "openForm": "Abrir o formulário",
+      "openService": "Abrir o serviço"
+    },
+    "delete": {
+      "serviceTitle": "Excluir {name}?",
+      "serviceDesc": "O {n} endpoint dele deixa de responder imediatamente e também é excluído. | Os {n} endpoints dele deixam de responder imediatamente e também são excluídos.",
+      "serviceEmpty": "Ele não tem endpoints. Esta ação não pode ser desfeita.",
+      "endpointTitle": "Excluir /{name}?",
+      "endpointDesc": "Os apps que o chamam receberão um erro a partir de agora. As respostas que ele já trouxe permanecem no formulário.",
+      "confirm": "Excluir"
+    },
+    "toast": {
+      "serviceCreated": "{name} criado",
+      "serviceSaved": "{name} salvo",
+      "serviceOn": "{name} está atendendo chamadas",
+      "serviceOff": "{name} está desativado",
+      "serviceDeleted": "{name} excluído",
+      "duplicated": "Foi feita uma cópia de {name} (desativada)",
+      "endpointCreated": "/{name} criado",
+      "endpointSaved": "/{name} salvo",
+      "endpointOn": "/{name} está atendendo chamadas",
+      "endpointOff": "/{name} está desativado",
+      "endpointDeleted": "/{name} excluído",
+      "urlCopied": "Endereço copiado"
+    },
+    "service": {
+      "newTitle": "Novo serviço",
+      "editTitle": "Editar serviço",
+      "desc": "Um serviço agrupa endpoints, por exemplo um por app ou parceiro.",
+      "name": "Nome",
+      "namePlaceholder": "ex.: App móvel",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Para que servem estes endpoints",
+      "active": "Atendendo chamadas",
+      "activeHint": "Desativado, todos os endpoints dele respondem com um erro claro.",
+      "create": "Criar serviço"
+    },
+    "fields": {
+      "title": "Perguntas",
+      "question": "Pergunta",
+      "accept": "Aceita",
+      "required": "Obrigatória",
+      "returned": "Retornada",
+      "filter": "Filtro",
+      "none": "Este formulário ainda não tem perguntas",
+      "formRequired": "obrigatória no formulário",
+      "why": {
+        "file": "arquivos ainda não podem ser enviados pela API",
+        "calculated": "calculada pelo formulário",
+        "payment": "pagamentos não podem ser enviados pela API",
+        "locked": "somente leitura no formulário"
+      }
+    },
+    "call": {
+      "title": "Exemplo de chamada",
+      "method": "Método",
+      "request": "Requisição",
+      "answer": "Resposta",
+      "note": "Os valores são fictícios. É preciso um token para chamá-lo de verdade."
+    },
+    "invalid": {
+      "required": "Preencha este campo.",
+      "pattern": "Use de 3 a 64 letras minúsculas, números e hifens simples, começando e terminando com uma letra ou número.",
+      "reserved": "Este nome é usado pelo próprio serviço de API. Escolha outro.",
+      "form": "Escolha um formulário.",
+      "methods": "Escolha pelo menos um método.",
+      "accept": "POST e PUT precisam de pelo menos uma pergunta aceita.",
+      "returned": "GET precisa de pelo menos uma pergunta retornada."
+    },
+    "wizard": {
+      "newCrumb": "Novo endpoint",
+      "editCrumb": "Editar",
+      "newTitle": "Novo endpoint",
+      "newDesc": "Transforme um formulário publicado em uma API",
+      "editTitle": "Editar /{name}",
+      "editDesc": "Altere o formulário, os métodos ou as perguntas",
+      "stepOf": "Etapa {n} de {total}",
+      "back": "Voltar",
+      "next": "Avançar",
+      "create": "Criar endpoint",
+      "leaveTitle": "Sair sem salvar?",
+      "leaveDesc": "O que você escolheu para este endpoint será perdido.",
+      "leave": "Sair",
+      "preview": "Seu endpoint",
+      "where": "Os dados enviados a ele passam pelas verificações do próprio formulário e são armazenados onde o formulário guarda suas respostas.",
+      "searchForms": "Pesquisar formulários publicados…",
+      "noForms": "Nenhum formulário publicado ainda",
+      "noFormsDesc": "Somente formulários publicados podem ser endpoints, para que os dados de quem chama passem pelas mesmas verificações da página do formulário.",
+      "toForms": "Ir para Formulários",
+      "pickService": "Escolha um serviço",
+      "newService": "Novo serviço",
+      "serviceHelp": "Desativar um serviço interrompe todos os seus endpoints juntos.",
+      "name": "Nome do endpoint",
+      "nameHelp": "A última parte do endereço, ex.: register-account. Único na sua organização.",
+      "descriptionPlaceholder": "Para que quem chama o usa",
+      "versionHelp": "Fixe uma versão para que mudanças posteriores no formulário não alterem o que quem chama deve enviar.",
+      "pageSizeHelp": "O máximo de registros que um GET retorna (de 1 a {max}).",
+      "fieldsSummary": "{accepted} aceitas · {returned} retornadas",
+      "answeringHint": "Desativado, ele responde com um erro claro até você ativá-lo.",
+      "tokensTitle": "Quem chama precisa de um token",
+      "tokensDesc": "Cada chamada precisa de um token Bearer. Tokens, cabeçalhos obrigatórios e regras de acesso são configurados uma vez para toda a organização.",
+      "step": {
+        "form": "Formulário",
+        "basics": "Nome",
+        "methods": "Métodos",
+        "fields": "Perguntas",
+        "review": "Revisar"
+      },
+      "title": {
+        "form": "Qual formulário?",
+        "basics": "Nome e serviço",
+        "methods": "O que quem chama pode fazer?",
+        "fields": "Quais perguntas?",
+        "review": "Verificar e criar"
+      },
+      "desc": {
+        "form": "Quem chama envia e lê as respostas deste formulário.",
+        "basics": "Onde ele fica e como se chama.",
+        "methods": "Escolha os métodos que ele atende. Você pode alterá-los depois.",
+        "fields": "O que POST e PUT aceitam, e o que GET retorna ou pode filtrar.",
+        "review": "Dê uma olhada. Ele começa a responder assim que quem chama tiver um token."
+      },
+      "method": {
+        "GET": "Ler respostas: uma lista com paginação e filtros, ou uma pelo seu id.",
+        "POST": "Enviar uma nova resposta, verificada como na página do formulário.",
+        "PUT": "Alterar uma resposta pelo seu id (somente as perguntas aceitas).",
+        "DELETE": "Remover uma resposta pelo seu id; mantido na trilha de auditoria."
+      }
     }
   },
   "ai": {

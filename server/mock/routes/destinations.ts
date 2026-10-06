@@ -21,7 +21,7 @@ import { tablesSchemaOf } from '#shared/utils/datasources/permissions'
 import { blocking, checkMapping, checkTableRest, columnNameFor, columnTypeFor, standardSettings, typedForEngine } from '#shared/utils/datasources/tables'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin, requireAuth } from '../core/auth'
-import { MockError, ok, paginate } from '../core/respond'
+import { MockError, ok, paginate, filtersOf } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { tablesOf } from '../data/databaseTables'
@@ -96,7 +96,7 @@ const inList = (value: unknown, actual: string) => typeof value !== 'string' || 
 
 export const listDestinations = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAdmin(event)
-  const filter = (query.filter ?? {}) as Record<string, unknown>
+  const filter = filtersOf(query)
   const rows = destinationsOf(tenant)
     .map(item => rowOfDestination(tenant, item))
     .filter((row): row is NonNullable<typeof row> => !!row)
@@ -269,7 +269,7 @@ export const listDeliveries = defineMockRoute(({ event, query }) => {
   const destination = findDestination(tenant, getRouterParam(event, 'id'))
   const form = formOf(tenant, destination.form_id)
   if (!form) throw new MockError('FRM-GEN-1004')
-  const filter = (query.filter ?? {}) as Record<string, unknown>
+  const filter = filtersOf(query)
   const rows = deliveriesOf(tenant, destination, form).filter(delivery => inList(filter.status, delivery.status))
   const { data, meta } = paginate(rows, { ...query, sort: undefined }, (row, q) => String(row.number).includes(q.replace('#', '')) || (row.respondent ?? '').toLowerCase().includes(q))
   return ok(data, meta)

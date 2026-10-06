@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Deze verbinding is hier alleen-lezen: alleen lezende instructies worden uitgevoerd.",
     "FRM-DEST-1025": "De database kon deze instructie niet uitvoeren.",
     "FRM-DEST-1026": "Voer één instructie tegelijk uit: selecteer ze, of zet de cursor erin.",
-    "FRM-DEST-1027": "Alleen wie deze query heeft opgeslagen, kan ze wijzigen."
+    "FRM-DEST-1027": "Alleen wie deze query heeft opgeslagen, kan ze wijzigen.",
+    "FRM-API-1001": "Deze endpointnaam wordt al gebruikt in uw organisatie.",
+    "FRM-API-1002": "Publiceer het formulier voordat het een endpoint kan zijn.",
+    "FRM-API-1003": "Er bestaat al een service met deze naam."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -615,7 +618,8 @@
     "attention": "Aandacht nodig",
     "failing": "Mislukt",
     "disabled": "Uitgeschakeld",
-    "untested": "Niet getest"
+    "untested": "Niet getest",
+    "active": "Actief"
   },
   "footer": {
     "rights": "Alle rechten voorbehouden.",
@@ -807,7 +811,8 @@
       "users": "Gebruikers",
       "integrations": "Integraties",
       "audit": "Audittrail",
-      "data": "Gegevensbronnen"
+      "data": "Gegevensbronnen",
+      "api": "API-service"
     },
     "actorType": {
       "user": "Persoon",
@@ -835,7 +840,9 @@
       "option_list": "Optielijst",
       "theme": "Thema",
       "template": "Sjabloon",
-      "data_source": "Verbinding"
+      "data_source": "Verbinding",
+      "api_service": "API-service",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Naam",
@@ -955,7 +962,17 @@
       "data_query_run": "Query uitgevoerd op een database",
       "data_query_exported": "Queryresultaten geëxporteerd",
       "data_saved_query_saved": "Query opgeslagen",
-      "data_saved_query_deleted": "Opgeslagen query verwijderd"
+      "data_saved_query_deleted": "Opgeslagen query verwijderd",
+      "api_service_created": "API-service aangemaakt",
+      "api_service_updated": "API-service gewijzigd",
+      "api_service_enabled": "API-service ingeschakeld",
+      "api_service_disabled": "API-service uitgeschakeld",
+      "api_service_deleted": "API-service verwijderd",
+      "api_endpoint_created": "Endpoint aangemaakt",
+      "api_endpoint_updated": "Endpoint gewijzigd",
+      "api_endpoint_enabled": "Endpoint ingeschakeld",
+      "api_endpoint_disabled": "Endpoint uitgeschakeld",
+      "api_endpoint_deleted": "Endpoint verwijderd"
     },
     "detail": {
       "who": "Wie",
@@ -3552,6 +3569,201 @@
       "webhooks": "Stuur elke nieuwe reactie direct naar je eigen systemen, ondertekend en met herhaalpogingen.",
       "apiKeys": "Sleutels voor de API van Formalie: beheer formulieren en reacties vanuit je code.",
       "apps": "Koppel apps zoals spreadsheets en teamchat."
+    },
+    "optional": "Optioneel",
+    "address": "Adres",
+    "answering": "Beantwoordt aanroepen",
+    "serviceOff": "Service uitgeschakeld",
+    "formNotPublished": "Formulier niet gepubliceerd",
+    "noMethods": "Geen methoden",
+    "noDescription": "Geen beschrijving",
+    "neverCalled": "Nog niet aangeroepen",
+    "lastCall": "Aangeroepen {when}",
+    "noCalls": "Geen aanroepen in de afgelopen 30 dagen.",
+    "noEndpoints": "Deze service heeft nog geen endpoints",
+    "manyErrors": "Meer dan 1 op 20 aanroepen is mislukt",
+    "callsCount": "{n} aanroep | {n} aanroepen",
+    "endpointsCount": "{n} endpoint | {n} endpoints",
+    "createdBy": "Aangemaakt door",
+    "latestVersion": "Laatst gepubliceerde versie",
+    "versionN": "Versie {n}",
+    "pageSize": "Paginagrootte (GET)",
+    "navigate": "Tussen items bewegen",
+    "notFound": "Dit endpoint is niet beschikbaar",
+    "searchServices": "Services zoeken…",
+    "searchEndpoints": "Zoek endpoints, formulieren of services…",
+    "emptyServices": "Nog geen services",
+    "emptyServicesDesc": "Een service groepeert endpoints, bijvoorbeeld één per app of partner, zodat u ze samen kunt in- of uitschakelen.",
+    "emptyEndpoints": "Nog geen endpoints",
+    "emptyEndpointsDesc": "Maak van een gepubliceerd formulier een API: kies de methoden en de vragen die het accepteert of teruggeeft.",
+    "kpi": {
+      "calls": "Aanroepen",
+      "errors": "Fouten",
+      "time": "Antwoordtijd",
+      "byStatus": "Services per status",
+      "byMethod": "Endpoints per methode",
+      "active": "{n} actief",
+      "none": "Nog niets hier"
+    },
+    "col": {
+      "service": "Service",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoints",
+      "status": "Status",
+      "methods": "Methoden",
+      "calls": "Aanroepen (30 dagen)",
+      "errors": "Fouten",
+      "lastCall": "Laatste aanroep",
+      "created": "Aangemaakt",
+      "updated": "Gewijzigd",
+      "version": "Formulierversie"
+    },
+    "sort": {
+      "calls": "Meest aangeroepen",
+      "endpoints": "Meeste endpoints",
+      "errors": "Meeste fouten",
+      "lastCall": "Laatst aangeroepen",
+      "created": "Nieuwste",
+      "changed": "Laatst gewijzigd"
+    },
+    "actions": {
+      "open": "Openen",
+      "edit": "Bewerken",
+      "delete": "Verwijderen",
+      "duplicate": "Dupliceren",
+      "turnOn": "Inschakelen",
+      "turnOff": "Uitschakelen",
+      "newEndpoint": "Nieuw endpoint",
+      "viewEndpoints": "Endpoints bekijken",
+      "copyUrl": "Adres kopiëren",
+      "openForm": "Formulier openen",
+      "openService": "Service openen"
+    },
+    "delete": {
+      "serviceTitle": "{name} verwijderen?",
+      "serviceDesc": "Het {n} endpoint ervan antwoordt direct niet meer en wordt ook verwijderd. | De {n} endpoints ervan antwoorden direct niet meer en worden ook verwijderd.",
+      "serviceEmpty": "Er zijn geen endpoints. Dit kan niet ongedaan worden gemaakt.",
+      "endpointTitle": "/{name} verwijderen?",
+      "endpointDesc": "Apps die het aanroepen krijgen vanaf nu een fout. Antwoorden die al binnen zijn, blijven bij het formulier.",
+      "confirm": "Verwijderen"
+    },
+    "toast": {
+      "serviceCreated": "{name} aangemaakt",
+      "serviceSaved": "{name} opgeslagen",
+      "serviceOn": "{name} beantwoordt aanroepen",
+      "serviceOff": "{name} is uitgeschakeld",
+      "serviceDeleted": "{name} verwijderd",
+      "duplicated": "Er is een kopie van {name} gemaakt (uitgeschakeld)",
+      "endpointCreated": "/{name} aangemaakt",
+      "endpointSaved": "/{name} opgeslagen",
+      "endpointOn": "/{name} beantwoordt aanroepen",
+      "endpointOff": "/{name} is uitgeschakeld",
+      "endpointDeleted": "/{name} verwijderd",
+      "urlCopied": "Adres gekopieerd"
+    },
+    "service": {
+      "newTitle": "Nieuwe service",
+      "editTitle": "Service bewerken",
+      "desc": "Een service groepeert endpoints, bijvoorbeeld één per app of partner.",
+      "name": "Naam",
+      "namePlaceholder": "bijv. Mobiele app",
+      "description": "Beschrijving",
+      "descriptionPlaceholder": "Waar deze endpoints voor dienen",
+      "active": "Beantwoordt aanroepen",
+      "activeHint": "Uitgeschakeld antwoordt elk endpoint erin met een duidelijke fout.",
+      "create": "Service aanmaken"
+    },
+    "fields": {
+      "title": "Vragen",
+      "question": "Vraag",
+      "accept": "Geaccepteerd",
+      "required": "Verplicht",
+      "returned": "Teruggegeven",
+      "filter": "Filter",
+      "none": "Dit formulier heeft nog geen vragen",
+      "formRequired": "verplicht in het formulier",
+      "why": {
+        "file": "bestanden kunnen nog niet via de API worden verstuurd",
+        "calculated": "berekend door het formulier",
+        "payment": "betalingen kunnen niet via de API worden verstuurd",
+        "locked": "alleen-lezen in het formulier"
+      }
+    },
+    "call": {
+      "title": "Voorbeeldaanroep",
+      "method": "Methode",
+      "request": "Verzoek",
+      "answer": "Antwoord",
+      "note": "De waarden zijn verzonnen. Aanroepers hebben een token nodig om het echt aan te roepen."
+    },
+    "invalid": {
+      "required": "Vul dit in.",
+      "pattern": "Gebruik 3 tot 64 kleine letters, cijfers en enkele koppeltekens, beginnend en eindigend met een letter of cijfer.",
+      "reserved": "Deze naam wordt door de API-service zelf gebruikt. Kies een andere.",
+      "form": "Kies een formulier.",
+      "methods": "Kies minstens één methode.",
+      "accept": "POST en PUT hebben minstens één geaccepteerde vraag nodig.",
+      "returned": "GET heeft minstens één teruggegeven vraag nodig."
+    },
+    "wizard": {
+      "newCrumb": "Nieuw endpoint",
+      "editCrumb": "Bewerken",
+      "newTitle": "Nieuw endpoint",
+      "newDesc": "Maak van een gepubliceerd formulier een API",
+      "editTitle": "/{name} bewerken",
+      "editDesc": "Wijzig het formulier, de methoden of de vragen",
+      "stepOf": "Stap {n} van {total}",
+      "back": "Terug",
+      "next": "Volgende",
+      "create": "Endpoint aanmaken",
+      "leaveTitle": "Verlaten zonder op te slaan?",
+      "leaveDesc": "Wat u voor dit endpoint hebt gekozen, gaat verloren.",
+      "leave": "Verlaten",
+      "preview": "Uw endpoint",
+      "where": "Gegevens die ernaartoe worden gestuurd doorlopen de eigen controles van het formulier en worden opgeslagen waar het formulier zijn antwoorden bewaart.",
+      "searchForms": "Gepubliceerde formulieren zoeken…",
+      "noForms": "Nog geen gepubliceerde formulieren",
+      "noFormsDesc": "Alleen gepubliceerde formulieren kunnen endpoints zijn, zodat de gegevens van aanroepers dezelfde controles doorlopen als de formulierpagina.",
+      "toForms": "Naar Formulieren",
+      "pickService": "Kies een service",
+      "newService": "Nieuwe service",
+      "serviceHelp": "Een service uitschakelen stopt al zijn endpoints tegelijk.",
+      "name": "Endpointnaam",
+      "nameHelp": "Het laatste deel van het adres, bijv. register-account. Uniek in uw organisatie.",
+      "descriptionPlaceholder": "Waar aanroepers het voor gebruiken",
+      "versionHelp": "Zet een versie vast zodat latere wijzigingen aan het formulier niet veranderen wat aanroepers moeten sturen.",
+      "pageSizeHelp": "Het maximum aantal records dat één GET teruggeeft (1 tot {max}).",
+      "fieldsSummary": "{accepted} geaccepteerd · {returned} teruggegeven",
+      "answeringHint": "Uitgeschakeld antwoordt het met een duidelijke fout totdat u het inschakelt.",
+      "tokensTitle": "Aanroepers hebben een token nodig",
+      "tokensDesc": "Elke aanroep heeft een Bearer-token nodig. Tokens, verplichte headers en toegangsregels stelt u één keer in voor uw hele organisatie.",
+      "step": {
+        "form": "Formulier",
+        "basics": "Naam",
+        "methods": "Methoden",
+        "fields": "Vragen",
+        "review": "Controleren"
+      },
+      "title": {
+        "form": "Welk formulier?",
+        "basics": "Naam en service",
+        "methods": "Wat mogen aanroepers doen?",
+        "fields": "Welke vragen?",
+        "review": "Controleren en aanmaken"
+      },
+      "desc": {
+        "form": "Aanroepers sturen en lezen de antwoorden van dit formulier.",
+        "basics": "Waar het staat en hoe het heet.",
+        "methods": "Kies de methoden waarop het antwoordt. U kunt ze later wijzigen.",
+        "fields": "Wat POST en PUT accepteren, en wat GET teruggeeft of kan filteren.",
+        "review": "Bekijk het nog eens. Het begint te antwoorden zodra aanroepers een token hebben."
+      },
+      "method": {
+        "GET": "Antwoorden lezen: een lijst met paginering en filters, of één op id.",
+        "POST": "Een nieuw antwoord sturen, gecontroleerd zoals de formulierpagina.",
+        "PUT": "Een antwoord wijzigen op id (alleen de geaccepteerde vragen).",
+        "DELETE": "Een antwoord verwijderen op id; bewaard in het auditlogboek."
+      }
     }
   },
   "ai": {

@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Muunganisho huu ni wa kusoma tu hapa: amri za kusoma pekee ndizo huendeshwa.",
     "FRM-DEST-1025": "Hifadhidata imeshindwa kuendesha amri hii.",
     "FRM-DEST-1026": "Endesha amri moja kwa wakati: ichague, au weka kishale ndani yake.",
-    "FRM-DEST-1027": "Ni aliyehifadhi hoja hii tu anayeweza kuibadilisha."
+    "FRM-DEST-1027": "Ni aliyehifadhi hoja hii tu anayeweza kuibadilisha.",
+    "FRM-API-1001": "Jina hili la endpoint tayari linatumika katika shirika lako.",
+    "FRM-API-1002": "Chapisha fomu kabla haijawa endpoint.",
+    "FRM-API-1003": "Huduma yenye jina hili tayari ipo."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -615,7 +618,8 @@
     "attention": "Inahitaji uangalizi",
     "failing": "Inashindwa",
     "disabled": "Imezimwa",
-    "untested": "Haijajaribiwa"
+    "untested": "Haijajaribiwa",
+    "active": "Inatumika"
   },
   "footer": {
     "rights": "Haki zote zimehifadhiwa.",
@@ -807,7 +811,8 @@
       "users": "Watumiaji",
       "integrations": "Miunganisho",
       "audit": "Kumbukumbu za ukaguzi",
-      "data": "Vyanzo vya data"
+      "data": "Vyanzo vya data",
+      "api": "Huduma ya API"
     },
     "actorType": {
       "user": "Mtu",
@@ -835,7 +840,9 @@
       "option_list": "Orodha ya chaguo",
       "theme": "Mandhari",
       "template": "Kiolezo",
-      "data_source": "Muunganisho"
+      "data_source": "Muunganisho",
+      "api_service": "Huduma ya API",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Jina",
@@ -955,7 +962,17 @@
       "data_query_run": "Hoja imeendeshwa kwenye hifadhidata",
       "data_query_exported": "Matokeo ya hoja yamehamishwa",
       "data_saved_query_saved": "Hoja imehifadhiwa",
-      "data_saved_query_deleted": "Hoja iliyohifadhiwa imefutwa"
+      "data_saved_query_deleted": "Hoja iliyohifadhiwa imefutwa",
+      "api_service_created": "Huduma ya API imeundwa",
+      "api_service_updated": "Huduma ya API imebadilishwa",
+      "api_service_enabled": "Huduma ya API imewashwa",
+      "api_service_disabled": "Huduma ya API imezimwa",
+      "api_service_deleted": "Huduma ya API imefutwa",
+      "api_endpoint_created": "Endpoint imeundwa",
+      "api_endpoint_updated": "Endpoint imebadilishwa",
+      "api_endpoint_enabled": "Endpoint imewashwa",
+      "api_endpoint_disabled": "Endpoint imezimwa",
+      "api_endpoint_deleted": "Endpoint imefutwa"
     },
     "detail": {
       "who": "Nani",
@@ -3552,6 +3569,201 @@
       "webhooks": "Tuma kila jibu jipya kwa mifumo yako mara linapofika. Limesainiwa na hujaribiwa tena.",
       "apiKeys": "Funguo za API ya Formalie: dhibiti fomu na majibu kutoka kwenye msimbo wako.",
       "apps": "Unganisha programu kama lahajedwali na gumzo la timu."
+    },
+    "optional": "Si lazima",
+    "address": "Anwani",
+    "answering": "Inapokea miito",
+    "serviceOff": "Huduma imezimwa",
+    "formNotPublished": "Fomu haijachapishwa",
+    "noMethods": "Hakuna mbinu",
+    "noDescription": "Hakuna maelezo",
+    "neverCalled": "Haijaitwa bado",
+    "lastCall": "Iliitwa {when}",
+    "noCalls": "Hakuna miito katika siku 30 zilizopita.",
+    "noEndpoints": "Huduma hii bado haina endpoint",
+    "manyErrors": "Zaidi ya mwito 1 kati ya 20 ulishindwa",
+    "callsCount": "Mwito {n} | Miito {n}",
+    "endpointsCount": "Endpoint {n} | Endpoint {n}",
+    "createdBy": "Imeundwa na",
+    "latestVersion": "Toleo la mwisho lililochapishwa",
+    "versionN": "Toleo {n}",
+    "pageSize": "Ukubwa wa ukurasa (GET)",
+    "navigate": "Sogea kati ya vipengee",
+    "notFound": "Endpoint hii haipatikani",
+    "searchServices": "Tafuta huduma…",
+    "searchEndpoints": "Tafuta endpoint, fomu au huduma…",
+    "emptyServices": "Bado hakuna huduma",
+    "emptyServicesDesc": "Huduma hukusanya endpoint pamoja, kwa mfano moja kwa kila programu au mshirika, ili uziwashe au kuzizima pamoja.",
+    "emptyEndpoints": "Bado hakuna endpoint",
+    "emptyEndpointsDesc": "Geuza fomu iliyochapishwa kuwa API: chagua mbinu na maswali inayopokea au kurudisha.",
+    "kpi": {
+      "calls": "Miito",
+      "errors": "Hitilafu",
+      "time": "Muda wa jibu",
+      "byStatus": "Huduma kwa hali",
+      "byMethod": "Endpoint kwa mbinu",
+      "active": "{n} zinatumika",
+      "none": "Bado hakuna kitu hapa"
+    },
+    "col": {
+      "service": "Huduma",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoint",
+      "status": "Hali",
+      "methods": "Mbinu",
+      "calls": "Miito (siku 30)",
+      "errors": "Hitilafu",
+      "lastCall": "Mwito wa mwisho",
+      "created": "Imeundwa",
+      "updated": "Imebadilishwa",
+      "version": "Toleo la fomu"
+    },
+    "sort": {
+      "calls": "Zilizoitwa zaidi",
+      "endpoints": "Endpoint nyingi zaidi",
+      "errors": "Hitilafu nyingi zaidi",
+      "lastCall": "Zilizoitwa hivi karibuni",
+      "created": "Mpya zaidi",
+      "changed": "Zilizobadilishwa hivi karibuni"
+    },
+    "actions": {
+      "open": "Fungua",
+      "edit": "Hariri",
+      "delete": "Futa",
+      "duplicate": "Rudufu",
+      "turnOn": "Washa",
+      "turnOff": "Zima",
+      "newEndpoint": "Endpoint mpya",
+      "viewEndpoints": "Tazama endpoint zake",
+      "copyUrl": "Nakili anwani",
+      "openForm": "Fungua fomu",
+      "openService": "Fungua huduma"
+    },
+    "delete": {
+      "serviceTitle": "Kufuta {name}?",
+      "serviceDesc": "Endpoint yake {n} huacha kujibu mara moja na pia hufutwa. | Endpoint zake {n} huacha kujibu mara moja na pia hufutwa.",
+      "serviceEmpty": "Haina endpoint. Hatua hii haiwezi kutenduliwa.",
+      "endpointTitle": "Kufuta /{name}?",
+      "endpointDesc": "Programu zinazoiita zitapata hitilafu kuanzia sasa. Majibu ambayo tayari imeleta hubaki kwenye fomu.",
+      "confirm": "Futa"
+    },
+    "toast": {
+      "serviceCreated": "{name} imeundwa",
+      "serviceSaved": "{name} imehifadhiwa",
+      "serviceOn": "{name} inapokea miito",
+      "serviceOff": "{name} imezimwa",
+      "serviceDeleted": "{name} imefutwa",
+      "duplicated": "Nakala ya {name} imetengenezwa (imezimwa)",
+      "endpointCreated": "/{name} imeundwa",
+      "endpointSaved": "/{name} imehifadhiwa",
+      "endpointOn": "/{name} inapokea miito",
+      "endpointOff": "/{name} imezimwa",
+      "endpointDeleted": "/{name} imefutwa",
+      "urlCopied": "Anwani imenakiliwa"
+    },
+    "service": {
+      "newTitle": "Huduma mpya",
+      "editTitle": "Hariri huduma",
+      "desc": "Huduma hukusanya endpoint pamoja, kwa mfano moja kwa kila programu au mshirika.",
+      "name": "Jina",
+      "namePlaceholder": "mf. Programu ya simu",
+      "description": "Maelezo",
+      "descriptionPlaceholder": "Endpoint hizi ni za nini",
+      "active": "Inapokea miito",
+      "activeHint": "Ikizimwa, kila endpoint ndani yake hujibu kwa hitilafu iliyo wazi.",
+      "create": "Unda huduma"
+    },
+    "fields": {
+      "title": "Maswali",
+      "question": "Swali",
+      "accept": "Linapokelewa",
+      "required": "Lazima",
+      "returned": "Linarudishwa",
+      "filter": "Kichujio",
+      "none": "Fomu hii bado haina maswali",
+      "formRequired": "lazima kwa mujibu wa fomu",
+      "why": {
+        "file": "faili bado haziwezi kutumwa kupitia API",
+        "calculated": "hukokotolewa na fomu",
+        "payment": "malipo hayawezi kutumwa kupitia API",
+        "locked": "kusoma tu kwenye fomu"
+      }
+    },
+    "call": {
+      "title": "Mwito wa mfano",
+      "method": "Mbinu",
+      "request": "Ombi",
+      "answer": "Jibu",
+      "note": "Thamani ni za mfano. Wanaopiga wanahitaji tokeni ili kuuita kweli."
+    },
+    "invalid": {
+      "required": "Jaza hapa.",
+      "pattern": "Tumia herufi ndogo, nambari na vistariungio moja 3 hadi 64, kuanzia na kuishia na herufi au nambari.",
+      "reserved": "Jina hili linatumiwa na huduma ya API yenyewe. Chagua lingine.",
+      "form": "Chagua fomu.",
+      "methods": "Chagua angalau mbinu moja.",
+      "accept": "POST na PUT zinahitaji angalau swali moja linalopokelewa.",
+      "returned": "GET inahitaji angalau swali moja linalorudishwa."
+    },
+    "wizard": {
+      "newCrumb": "Endpoint mpya",
+      "editCrumb": "Hariri",
+      "newTitle": "Endpoint mpya",
+      "newDesc": "Geuza fomu iliyochapishwa kuwa API",
+      "editTitle": "Hariri /{name}",
+      "editDesc": "Badilisha fomu, mbinu au maswali",
+      "stepOf": "Hatua ya {n} kati ya {total}",
+      "back": "Rudi",
+      "next": "Endelea",
+      "create": "Unda endpoint",
+      "leaveTitle": "Kuondoka bila kuhifadhi?",
+      "leaveDesc": "Ulichochagua kwa endpoint hii kitapotea.",
+      "leave": "Ondoka",
+      "preview": "Endpoint yako",
+      "where": "Data inayotumwa kwake hupitia ukaguzi wa fomu yenyewe na huhifadhiwa mahali fomu inapohifadhi majibu yake.",
+      "searchForms": "Tafuta fomu zilizochapishwa…",
+      "noForms": "Bado hakuna fomu zilizochapishwa",
+      "noFormsDesc": "Ni fomu zilizochapishwa pekee zinazoweza kuwa endpoint, ili data ya wanaoita ipitie ukaguzi uleule kama ukurasa wa fomu.",
+      "toForms": "Nenda kwenye Fomu",
+      "pickService": "Chagua huduma",
+      "newService": "Huduma mpya",
+      "serviceHelp": "Kuzima huduma husimamisha endpoint zake zote pamoja.",
+      "name": "Jina la endpoint",
+      "nameHelp": "Sehemu ya mwisho ya anwani, mf. register-account. Ya kipekee katika shirika lako.",
+      "descriptionPlaceholder": "Wanaoita huitumia kwa ajili ya nini",
+      "versionHelp": "Bandika toleo ili mabadiliko ya baadaye ya fomu yasibadilishe kile wanaoita wanachopaswa kutuma.",
+      "pageSizeHelp": "Rekodi nyingi zaidi ambazo GET moja hurudisha (1 hadi {max}).",
+      "fieldsSummary": "{accepted} zinapokelewa · {returned} zinarudishwa",
+      "answeringHint": "Ikizimwa, hujibu kwa hitilafu iliyo wazi hadi utakapoiwasha.",
+      "tokensTitle": "Wanaoita wanahitaji token",
+      "tokensDesc": "Kila mwito unahitaji tokeni ya Bearer. Tokeni, vichwa vinavyohitajika na sheria za ufikiaji huwekwa mara moja kwa shirika lako lote.",
+      "step": {
+        "form": "Fomu",
+        "basics": "Jina",
+        "methods": "Mbinu",
+        "fields": "Maswali",
+        "review": "Kagua"
+      },
+      "title": {
+        "form": "Fomu ipi?",
+        "basics": "Jina na huduma",
+        "methods": "Wanaoita wanaweza kufanya nini?",
+        "fields": "Maswali yapi?",
+        "review": "Kagua na uunde"
+      },
+      "desc": {
+        "form": "Wanaoita hutuma na kusoma majibu ya fomu hii.",
+        "basics": "Iko wapi na inaitwaje.",
+        "methods": "Chagua mbinu inazojibu. Unaweza kuzibadilisha baadaye.",
+        "fields": "Kile POST na PUT hupokea, na kile GET hurudisha au kinachoweza kuchujwa.",
+        "review": "Ipitie. Huanza kujibu mara tu wanaoita wanapokuwa na token."
+      },
+      "method": {
+        "GET": "Soma majibu: orodha yenye kurasa na vichujio, au moja kwa kitambulisho chake.",
+        "POST": "Tuma jibu jipya, linalokaguliwa kama ukurasa wa fomu.",
+        "PUT": "Badilisha jibu kwa kitambulisho chake (maswali yanayopokelewa pekee).",
+        "DELETE": "Ondoa jibu kwa kitambulisho chake; hubaki kwenye kumbukumbu ya ukaguzi."
+      }
     }
   },
   "ai": {

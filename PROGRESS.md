@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-05 · **Current phase:** F12 and F18 (Analytics, brought forward) done with a new Data sources overview; **waiting for the owner's review**, then F13 (API service & integrations).
+**Last updated:** 2026-10-06 · **Current phase:** F13, API service & integrations: M1 Services and endpoints done; next M2 Tokens and headers.
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -23,7 +23,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F10   | Renderer, preview, share, embed, short links, SEO | ✅     | 100% |
 | F11   | Responses                                         | ✅     | 100% |
 | F12   | Data sources & databases                          | ✅     | 100% |
-| F13   | API service & integrations                        | 🟡     | ~2%  |
+| F13   | API service & integrations                        | 🟡     | ~20% |
 | F14   | Settings                                          | ⬜     | 0%   |
 | F15   | Option sets & payments                            | ⬜     | 0%   |
 | F16   | Profile                                           | ⬜     | 0%   |
@@ -625,6 +625,8 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 **Goal:** turn any form into an API so organisations collect data from every side, **links, embeds and API**, all landing in the same storage / destinations (owner request 2026-10-02: "this option is gold"). An entire system of its own: its own rail area and menu, its own analytics, and later its own dashboard (F21). In the backend the API service runs as its own service, separate from form operations.
 
+**Plan (2026-10-06, milestones):** **M1** ✅ Services and endpoints. **M2** Tokens and headers (test and live tokens from the start, owner-confirmed 2026-10-06). **M3** Access rules. **M4** Request logs, analytics and the API service overview in the dashboard style. **M5** Docs and testing (try-it console, Test button). **M6** Webhooks and Formalie's own API keys. App integrations (Sheets, team chat, email) move to after F21 (owner-confirmed 2026-10-06).
+
 ### Addresses (decided 2026-10-03, see 03-DECISIONS → 61)
 
 - Base URL: development `https://api.formalie.dev/` · production `https://api.formalie.com/`
@@ -639,19 +641,19 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 
 ### 2. Services (containers)
 
-- ⬜ Services page in DataView (Table / Grid): name, endpoints, status, calls today, errors, last call; create, rename, duplicate, delete (confirm)
-- ⬜ Enable / disable a whole service (every endpoint in it stops answering with a clear error), one switch, audited
+- ✅ Services page (rule 21): two chart cards (calls in 30 days with daily bars; services by status, the legend filters), DataView table / cards (name, status, endpoints, methods, calls with sparkline, errors, last call); new / edit (dialog), duplicate (copies its endpoints, switched off), delete (confirm, names how many endpoints go too); panel with fact tiles, calls per day and its endpoints
+- ✅ Switch a whole service on / off in one click (row menu, panel switch); its endpoints show "Service switched off"; audited `api.service_enabled / _disabled`
 
 ### 3. Endpoints (one form each; as many as needed)
 
-- ⬜ Create an endpoint from a form: pick form (published version) → name → methods → fields → authentication → access rules → review; the full URL shown with a copy button
-- ⬜ Methods: **GET, POST, PUT, DELETE only** (for now); each switchable per endpoint
-- ⬜ POST / PUT: choose the fields (columns) accepted, which are required, read-only fields refused; validation is the form's own (`shared/utils/forms/validate.ts`), same rules as the form page
-- ⬜ GET: choose the fields (columns) returned, filters allowed, paging, sorting; never more than the chosen fields
+- ✅ Create an endpoint from a form (`/api-service/endpoints/new`): form (published only) → name and service (new service in place) → methods → questions → review; address preview and an example call beside it; edit at `/api-service/endpoints/{id}/edit`. Authentication and access rules are set per organisation in M2 / M3 (the review says so)
+- ✅ Methods: **GET, POST, PUT, DELETE only** (for now); each switchable per endpoint
+- ✅ POST / PUT: choose the questions accepted and which are required; the form's required questions are always accepted and required; read-only, calculated, file and payment questions are refused (with the reason shown); `shared/utils/apiService/endpoints.ts` (wizard and server alike)
+- ✅ GET: choose the questions returned and the ones it can filter by (choices, dates, numbers, short text, email), page size up to 100; never more than the chosen questions
 - ⬜ DELETE / PUT by record id; soft delete with the response kept in the audit trail
 - ⬜ Where data goes: the form's storage / destinations (built-in storage or a Data source, F12), the same pipeline as form submissions
-- ⬜ Enable / disable each endpoint; version pinning to a form version; "Test" button
-- ⬜ Example request and response (JSON) generated from the chosen fields
+- ✅ Switch each endpoint on / off (row menu, panel switch); pin a form version or follow the latest published one. "Test" button: M5 (try-it console)
+- ✅ Example request and answer (JSON) per method, generated from the chosen questions, with Copy (panel and wizard)
 
 ### 4. Authentication and headers
 
@@ -690,7 +692,7 @@ The page people land on from a form's link (the theme's `frame` and page backgro
 - ✅ Menu entries in the API service area: Webhooks · API keys · App integrations (placeholders; old `/integrations/*` links redirect)
 - ⬜ Webhooks: create (URL, events, secret), signed payloads, test delivery; delivery log with retries and response details
 - ⬜ API keys (Formalie's own management API): create (name, scopes, expiry), show once, copy, revoke, last used
-- ⬜ App integrations: Google Sheets, Slack / team chat, email notifications to external addresses
+- ➖ App integrations: Google Sheets, Slack / team chat, email notifications to external addresses: moved to after F21 (owner-confirmed 2026-10-06)
 
 ### 10. API (mock first)
 
@@ -1093,6 +1095,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | SQL reserved words in blue in the Query editor | F12 M4 | ✅ |
 | 2026-10-05 | Query editor: Run all (every statement, a result per statement); a lazy tree for very large databases (columns load when a table is opened); open F12 items resolved (done, or moved to F15e / F22 / later) | F12 | ✅ |
 | 2026-10-05 | Before F13: Forms → Analytics (still a placeholder) and Data sources → Overview must be finished and look "Wao" in the design's dashboard style | F18 (brought forward) · F12 overview | ✅ |
+| 2026-10-06 | F13 tokens: separate test and live tokens from the start; app integrations (Sheets, team chat, email) after F21 | F13 M2 · after F21 | ✅ decided |
 
 ---
 
@@ -1276,3 +1279,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-05 | F12 | M5: Activity page (audit trail area `data`, kinds in `shared/utils/datasources/activity.ts`, insights `GET /datasources/activity/insights`, the audit panel per event), Exports opens Activity filtered to exports, overview marks every section live, seeded data events in the mock's history; phone (375) and tablet (768) sweep of all eight Data sources pages: no overflow. F12 complete; stopped for the owner's review. |
 | 2026-10-05 | F12 | Run all in the Query editor (`useQueryRunner.runAll`, a result tab per statement in `QueryOutput`, Ctrl / ⌘ + Shift + Enter) and a lazy tree (`useDatabaseTables`: names first with `columns=none`, up to 500 and server search beyond, columns per table from `GET /explorer/columns` when opened or named in the editor). PROGRESS tidy: every open F12 item resolved (done, or moved to F15e option sets, F22 permissions, later for scheduled exports). F12 still waiting for the owner's review. |
 | 2026-10-05 | F18 / F12 | Analytics (F18, brought forward): dashboard page with KPI cards (`ChartsKpi`), the conversion flow chart (`ChartsFlow`, the design's hatched two-line chart), form overview with where people stop, DataView of every form with cards and a funnel panel, CSV download, NPS on 0 to 10 questions in Responses → Insights; mock `/analytics/*`. Data sources overview rebuilt the same way: KPI cards, database traffic (operations vs responses delivered, kinds that open Activity), connection overview with uptime and latest activity, recent activity table, supported databases and shortcuts. Phone (375) checked: no overflow. Tests: `analytics/csv`. |
+| 2026-10-06 | F13 | M1 Services and endpoints: Services and Endpoints pages (rule 21, chart cards, DataView table / cards, panels), service dialog, endpoint wizard (form → name and service → methods → questions → review, address preview and example call), shared rules `shared/utils/apiService/endpoints.ts`, mock `/api-service/settings`, `/api-services`, `/api-endpoints` (+ insights, duplicate, form-fields), audit area `api` (10 events), errors `FRM-API-1001…1003`. Fixed in the mock: list filters sent as `filter[key]` were ignored by Connections, Destinations, Saved queries, explorer rows (`filtersOf`). Tests: `apiService/endpoints`. |

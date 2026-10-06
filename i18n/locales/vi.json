@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Kết nối này ở đây chỉ đọc: chỉ các câu lệnh đọc được chạy.",
     "FRM-DEST-1025": "Cơ sở dữ liệu không chạy được câu lệnh này.",
     "FRM-DEST-1026": "Mỗi lần chỉ chạy một câu lệnh: hãy chọn nó, hoặc đặt con trỏ vào trong.",
-    "FRM-DEST-1027": "Chỉ người đã lưu truy vấn này mới có thể thay đổi nó."
+    "FRM-DEST-1027": "Chỉ người đã lưu truy vấn này mới có thể thay đổi nó.",
+    "FRM-API-1001": "Tên endpoint này đã được dùng trong tổ chức của bạn.",
+    "FRM-API-1002": "Hãy xuất bản biểu mẫu trước khi nó có thể trở thành endpoint.",
+    "FRM-API-1003": "Đã có dịch vụ với tên này."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -615,7 +618,8 @@
     "attention": "Cần chú ý",
     "failing": "Đang lỗi",
     "disabled": "Đã tắt",
-    "untested": "Chưa kiểm tra"
+    "untested": "Chưa kiểm tra",
+    "active": "Đang hoạt động"
   },
   "footer": {
     "rights": "Bảo lưu mọi quyền.",
@@ -807,7 +811,8 @@
       "users": "Người dùng",
       "integrations": "Tích hợp",
       "audit": "Nhật ký kiểm tra",
-      "data": "Nguồn dữ liệu"
+      "data": "Nguồn dữ liệu",
+      "api": "Dịch vụ API"
     },
     "actorType": {
       "user": "Người",
@@ -835,7 +840,9 @@
       "option_list": "Danh sách lựa chọn",
       "theme": "Chủ đề",
       "template": "Mẫu",
-      "data_source": "Kết nối"
+      "data_source": "Kết nối",
+      "api_service": "Dịch vụ API",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Tên",
@@ -955,7 +962,17 @@
       "data_query_run": "Đã chạy truy vấn trên cơ sở dữ liệu",
       "data_query_exported": "Đã xuất kết quả truy vấn",
       "data_saved_query_saved": "Đã lưu truy vấn",
-      "data_saved_query_deleted": "Đã xóa truy vấn đã lưu"
+      "data_saved_query_deleted": "Đã xóa truy vấn đã lưu",
+      "api_service_created": "Đã tạo dịch vụ API",
+      "api_service_updated": "Đã thay đổi dịch vụ API",
+      "api_service_enabled": "Đã bật dịch vụ API",
+      "api_service_disabled": "Đã tắt dịch vụ API",
+      "api_service_deleted": "Đã xóa dịch vụ API",
+      "api_endpoint_created": "Đã tạo endpoint",
+      "api_endpoint_updated": "Đã thay đổi endpoint",
+      "api_endpoint_enabled": "Đã bật endpoint",
+      "api_endpoint_disabled": "Đã tắt endpoint",
+      "api_endpoint_deleted": "Đã xóa endpoint"
     },
     "detail": {
       "who": "Ai",
@@ -3552,6 +3569,201 @@
       "webhooks": "Gửi từng phản hồi mới đến hệ thống của bạn ngay khi có. Được ký và tự thử lại.",
       "apiKeys": "Khóa cho API của Formalie: quản lý biểu mẫu và phản hồi từ mã của bạn.",
       "apps": "Kết nối các ứng dụng như bảng tính và trò chuyện nhóm."
+    },
+    "optional": "Tùy chọn",
+    "address": "Địa chỉ",
+    "answering": "Đang nhận lệnh gọi",
+    "serviceOff": "Dịch vụ đã tắt",
+    "formNotPublished": "Biểu mẫu chưa xuất bản",
+    "noMethods": "Chưa có phương thức",
+    "noDescription": "Không có mô tả",
+    "neverCalled": "Chưa được gọi",
+    "lastCall": "Được gọi {when}",
+    "noCalls": "Không có lệnh gọi nào trong 30 ngày qua.",
+    "noEndpoints": "Dịch vụ này chưa có endpoint nào",
+    "manyErrors": "Hơn 1 trên 20 lệnh gọi bị lỗi",
+    "callsCount": "{n} lệnh gọi | {n} lệnh gọi",
+    "endpointsCount": "{n} endpoint | {n} endpoint",
+    "createdBy": "Người tạo",
+    "latestVersion": "Phiên bản đã xuất bản mới nhất",
+    "versionN": "Phiên bản {n}",
+    "pageSize": "Kích thước trang (GET)",
+    "navigate": "Di chuyển giữa các mục",
+    "notFound": "Endpoint này không khả dụng",
+    "searchServices": "Tìm dịch vụ…",
+    "searchEndpoints": "Tìm endpoint, biểu mẫu hoặc dịch vụ…",
+    "emptyServices": "Chưa có dịch vụ nào",
+    "emptyServicesDesc": "Dịch vụ nhóm các endpoint lại, ví dụ mỗi ứng dụng hoặc đối tác một dịch vụ, để bạn bật hoặc tắt chúng cùng lúc.",
+    "emptyEndpoints": "Chưa có endpoint nào",
+    "emptyEndpointsDesc": "Biến biểu mẫu đã xuất bản thành API: chọn các phương thức và câu hỏi mà nó nhận hoặc trả về.",
+    "kpi": {
+      "calls": "Lệnh gọi",
+      "errors": "Lỗi",
+      "time": "Thời gian phản hồi",
+      "byStatus": "Dịch vụ theo trạng thái",
+      "byMethod": "Endpoint theo phương thức",
+      "active": "{n} đang hoạt động",
+      "none": "Chưa có gì ở đây"
+    },
+    "col": {
+      "service": "Dịch vụ",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoint",
+      "status": "Trạng thái",
+      "methods": "Phương thức",
+      "calls": "Lệnh gọi (30 ngày)",
+      "errors": "Lỗi",
+      "lastCall": "Lệnh gọi gần nhất",
+      "created": "Đã tạo",
+      "updated": "Đã thay đổi",
+      "version": "Phiên bản biểu mẫu"
+    },
+    "sort": {
+      "calls": "Được gọi nhiều nhất",
+      "endpoints": "Nhiều endpoint nhất",
+      "errors": "Nhiều lỗi nhất",
+      "lastCall": "Được gọi gần đây",
+      "created": "Mới nhất",
+      "changed": "Thay đổi gần đây"
+    },
+    "actions": {
+      "open": "Mở",
+      "edit": "Chỉnh sửa",
+      "delete": "Xóa",
+      "duplicate": "Nhân bản",
+      "turnOn": "Bật",
+      "turnOff": "Tắt",
+      "newEndpoint": "Endpoint mới",
+      "viewEndpoints": "Xem các endpoint của nó",
+      "copyUrl": "Sao chép địa chỉ",
+      "openForm": "Mở biểu mẫu",
+      "openService": "Mở dịch vụ"
+    },
+    "delete": {
+      "serviceTitle": "Xóa {name}?",
+      "serviceDesc": "{n} endpoint của nó ngừng phản hồi ngay và cũng bị xóa. | {n} endpoint của nó ngừng phản hồi ngay và cũng bị xóa.",
+      "serviceEmpty": "Nó không có endpoint nào. Không thể hoàn tác thao tác này.",
+      "endpointTitle": "Xóa /{name}?",
+      "endpointDesc": "Các ứng dụng gọi nó sẽ nhận lỗi từ bây giờ. Các phản hồi đã nhận vẫn nằm trong biểu mẫu.",
+      "confirm": "Xóa"
+    },
+    "toast": {
+      "serviceCreated": "Đã tạo {name}",
+      "serviceSaved": "Đã lưu {name}",
+      "serviceOn": "{name} đang nhận lệnh gọi",
+      "serviceOff": "{name} đã tắt",
+      "serviceDeleted": "Đã xóa {name}",
+      "duplicated": "Đã tạo bản sao của {name} (đã tắt)",
+      "endpointCreated": "Đã tạo /{name}",
+      "endpointSaved": "Đã lưu /{name}",
+      "endpointOn": "/{name} đang nhận lệnh gọi",
+      "endpointOff": "/{name} đã tắt",
+      "endpointDeleted": "Đã xóa /{name}",
+      "urlCopied": "Đã sao chép địa chỉ"
+    },
+    "service": {
+      "newTitle": "Dịch vụ mới",
+      "editTitle": "Chỉnh sửa dịch vụ",
+      "desc": "Dịch vụ nhóm các endpoint lại, ví dụ mỗi ứng dụng hoặc đối tác một dịch vụ.",
+      "name": "Tên",
+      "namePlaceholder": "vd. Ứng dụng di động",
+      "description": "Mô tả",
+      "descriptionPlaceholder": "Các endpoint này dùng để làm gì",
+      "active": "Đang nhận lệnh gọi",
+      "activeHint": "Khi tắt, mọi endpoint trong đó đều trả về lỗi rõ ràng.",
+      "create": "Tạo dịch vụ"
+    },
+    "fields": {
+      "title": "Câu hỏi",
+      "question": "Câu hỏi",
+      "accept": "Được nhận",
+      "required": "Bắt buộc",
+      "returned": "Được trả về",
+      "filter": "Bộ lọc",
+      "none": "Biểu mẫu này chưa có câu hỏi nào",
+      "formRequired": "bắt buộc theo biểu mẫu",
+      "why": {
+        "file": "chưa thể gửi tệp qua API",
+        "calculated": "do biểu mẫu tính toán",
+        "payment": "không thể gửi thanh toán qua API",
+        "locked": "chỉ đọc trên biểu mẫu"
+      }
+    },
+    "call": {
+      "title": "Lệnh gọi ví dụ",
+      "method": "Phương thức",
+      "request": "Yêu cầu",
+      "answer": "Phản hồi",
+      "note": "Các giá trị chỉ là ví dụ. Cần có token để gọi thật."
+    },
+    "invalid": {
+      "required": "Hãy điền mục này.",
+      "pattern": "Dùng 3 đến 64 chữ thường, chữ số và dấu gạch ngang đơn, bắt đầu và kết thúc bằng chữ cái hoặc chữ số.",
+      "reserved": "Tên này đang được chính dịch vụ API sử dụng. Hãy chọn tên khác.",
+      "form": "Hãy chọn một biểu mẫu.",
+      "methods": "Hãy chọn ít nhất một phương thức.",
+      "accept": "POST và PUT cần ít nhất một câu hỏi được nhận.",
+      "returned": "GET cần ít nhất một câu hỏi được trả về."
+    },
+    "wizard": {
+      "newCrumb": "Endpoint mới",
+      "editCrumb": "Chỉnh sửa",
+      "newTitle": "Endpoint mới",
+      "newDesc": "Biến biểu mẫu đã xuất bản thành API",
+      "editTitle": "Chỉnh sửa /{name}",
+      "editDesc": "Thay đổi biểu mẫu, phương thức hoặc câu hỏi",
+      "stepOf": "Bước {n}/{total}",
+      "back": "Quay lại",
+      "next": "Tiếp theo",
+      "create": "Tạo endpoint",
+      "leaveTitle": "Rời đi mà không lưu?",
+      "leaveDesc": "Những gì bạn đã chọn cho endpoint này sẽ bị mất.",
+      "leave": "Rời đi",
+      "preview": "Endpoint của bạn",
+      "where": "Dữ liệu gửi đến nó phải qua các bước kiểm tra riêng của biểu mẫu và được lưu ở nơi biểu mẫu lưu các phản hồi.",
+      "searchForms": "Tìm biểu mẫu đã xuất bản…",
+      "noForms": "Chưa có biểu mẫu nào được xuất bản",
+      "noFormsDesc": "Chỉ biểu mẫu đã xuất bản mới có thể là endpoint, để dữ liệu của bên gọi qua cùng các bước kiểm tra như trang biểu mẫu.",
+      "toForms": "Đến Biểu mẫu",
+      "pickService": "Chọn một dịch vụ",
+      "newService": "Dịch vụ mới",
+      "serviceHelp": "Tắt một dịch vụ sẽ dừng tất cả endpoint của nó cùng lúc.",
+      "name": "Tên endpoint",
+      "nameHelp": "Phần cuối của địa chỉ, vd. register-account. Duy nhất trong tổ chức của bạn.",
+      "descriptionPlaceholder": "Bên gọi dùng nó để làm gì",
+      "versionHelp": "Ghim một phiên bản để các thay đổi sau này của biểu mẫu không làm thay đổi những gì bên gọi phải gửi.",
+      "pageSizeHelp": "Số bản ghi tối đa một GET trả về (từ 1 đến {max}).",
+      "fieldsSummary": "{accepted} được nhận · {returned} được trả về",
+      "answeringHint": "Khi tắt, nó trả về lỗi rõ ràng cho đến khi bạn bật lại.",
+      "tokensTitle": "Bên gọi cần có token",
+      "tokensDesc": "Mỗi lệnh gọi cần một token Bearer. Token, header bắt buộc và quy tắc truy cập được thiết lập một lần cho toàn bộ tổ chức của bạn.",
+      "step": {
+        "form": "Biểu mẫu",
+        "basics": "Tên",
+        "methods": "Phương thức",
+        "fields": "Câu hỏi",
+        "review": "Xem lại"
+      },
+      "title": {
+        "form": "Biểu mẫu nào?",
+        "basics": "Tên và dịch vụ",
+        "methods": "Bên gọi có thể làm gì?",
+        "fields": "Những câu hỏi nào?",
+        "review": "Kiểm tra và tạo"
+      },
+      "desc": {
+        "form": "Bên gọi gửi và đọc các phản hồi của biểu mẫu này.",
+        "basics": "Nó nằm ở đâu và tên là gì.",
+        "methods": "Chọn các phương thức mà nó phản hồi. Bạn có thể đổi sau.",
+        "fields": "Những gì POST và PUT nhận, và những gì GET trả về hoặc có thể lọc theo.",
+        "review": "Hãy xem qua. Nó bắt đầu phản hồi ngay khi bên gọi có token."
+      },
+      "method": {
+        "GET": "Đọc phản hồi: một danh sách có phân trang và bộ lọc, hoặc một phản hồi theo id.",
+        "POST": "Gửi một phản hồi mới, được kiểm tra như trang biểu mẫu.",
+        "PUT": "Thay đổi một phản hồi theo id (chỉ các câu hỏi được nhận).",
+        "DELETE": "Xóa một phản hồi theo id; được lưu trong nhật ký kiểm tra."
+      }
     }
   },
   "ai": {

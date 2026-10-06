@@ -23,7 +23,7 @@ import type { DatabaseTable } from '#shared/types/destinations'
 import type { ColumnFacet, TableExport, TableRow, TableStructure } from '#shared/types/explorer'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin, tenantOf } from '../core/auth'
-import { MockError, ok, paginate } from '../core/respond'
+import { MockError, ok, paginate, filtersOf } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { xlsx } from '../core/xlsx'
@@ -67,7 +67,7 @@ const text = (value: unknown) =>
 /** Rows after the search (any column) and the filters (`filter[column]=a,b`), sorted. */
 function select(rows: TableRow[], query: Record<string, unknown>): TableRow[] {
   const q = typeof query.q === 'string' ? query.q.trim().toLowerCase() : ''
-  const filter = (query.filter ?? {}) as Record<string, unknown>
+  const filter = filtersOf(query)
   let list = rows.filter(
     row =>
       (!q ||

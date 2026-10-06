@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "此连接在这里为只读：只运行读取语句。",
     "FRM-DEST-1025": "数据库无法运行此语句。",
     "FRM-DEST-1026": "一次只运行一条语句：选中它，或将光标放在其中。",
-    "FRM-DEST-1027": "只有保存此查询的人才能更改它。"
+    "FRM-DEST-1027": "只有保存此查询的人才能更改它。",
+    "FRM-API-1001": "此端点名称已在您的组织中使用。",
+    "FRM-API-1002": "请先发布表单,它才能成为端点。",
+    "FRM-API-1003": "已存在同名的服务。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -615,7 +618,8 @@
     "attention": "需要关注",
     "failing": "失败",
     "disabled": "已停用",
-    "untested": "未测试"
+    "untested": "未测试",
+    "active": "活跃"
   },
   "footer": {
     "rights": "保留所有权利。",
@@ -807,7 +811,8 @@
       "users": "用户",
       "integrations": "集成",
       "audit": "审计日志",
-      "data": "数据源"
+      "data": "数据源",
+      "api": "API 服务"
     },
     "actorType": {
       "user": "人员",
@@ -835,7 +840,9 @@
       "option_list": "选项列表",
       "theme": "主题",
       "template": "模板",
-      "data_source": "连接"
+      "data_source": "连接",
+      "api_service": "API 服务",
+      "api_endpoint": "端点"
     },
     "field": {
       "name": "名称",
@@ -955,7 +962,17 @@
       "data_query_run": "在数据库上运行了查询",
       "data_query_exported": "已导出查询结果",
       "data_saved_query_saved": "已保存查询",
-      "data_saved_query_deleted": "已删除已保存的查询"
+      "data_saved_query_deleted": "已删除已保存的查询",
+      "api_service_created": "已创建 API 服务",
+      "api_service_updated": "已更改 API 服务",
+      "api_service_enabled": "已开启 API 服务",
+      "api_service_disabled": "已关闭 API 服务",
+      "api_service_deleted": "已删除 API 服务",
+      "api_endpoint_created": "已创建端点",
+      "api_endpoint_updated": "已更改端点",
+      "api_endpoint_enabled": "已开启端点",
+      "api_endpoint_disabled": "已关闭端点",
+      "api_endpoint_deleted": "已删除端点"
     },
     "detail": {
       "who": "谁",
@@ -3552,6 +3569,201 @@
       "webhooks": "每条新回复到达后立即发送到您自己的系统，已签名并自动重试。",
       "apiKeys": "Formalie 自有 API 的密钥：通过代码管理表单和回复。",
       "apps": "连接电子表格、团队聊天等应用。"
+    },
+    "optional": "可选",
+    "address": "地址",
+    "answering": "正在接收调用",
+    "serviceOff": "服务已关闭",
+    "formNotPublished": "表单未发布",
+    "noMethods": "无方法",
+    "noDescription": "无描述",
+    "neverCalled": "尚未被调用",
+    "lastCall": "调用于 {when}",
+    "noCalls": "最近 30 天没有调用。",
+    "noEndpoints": "此服务中还没有端点",
+    "manyErrors": "每 20 次调用中有超过 1 次失败",
+    "callsCount": "{n} 次调用 | {n} 次调用",
+    "endpointsCount": "{n} 个端点 | {n} 个端点",
+    "createdBy": "创建者",
+    "latestVersion": "最新发布的版本",
+    "versionN": "版本 {n}",
+    "pageSize": "页面大小 (GET)",
+    "navigate": "在各项之间移动",
+    "notFound": "此端点不可用",
+    "searchServices": "搜索服务…",
+    "searchEndpoints": "搜索端点、表单或服务…",
+    "emptyServices": "还没有服务",
+    "emptyServicesDesc": "服务用于将端点分组,例如每个应用或合作伙伴一个,这样可以一起开启或关闭。",
+    "emptyEndpoints": "还没有端点",
+    "emptyEndpointsDesc": "将已发布的表单变成 API:选择它接受的方法,以及它接收或返回的问题。",
+    "kpi": {
+      "calls": "调用",
+      "errors": "错误",
+      "time": "响应时间",
+      "byStatus": "按状态划分的服务",
+      "byMethod": "按方法划分的端点",
+      "active": "{n} 个活跃",
+      "none": "这里还没有内容"
+    },
+    "col": {
+      "service": "服务",
+      "endpoint": "端点",
+      "endpoints": "端点",
+      "status": "状态",
+      "methods": "方法",
+      "calls": "调用 (30 天)",
+      "errors": "错误",
+      "lastCall": "最近调用",
+      "created": "创建时间",
+      "updated": "更改时间",
+      "version": "表单版本"
+    },
+    "sort": {
+      "calls": "调用最多",
+      "endpoints": "端点最多",
+      "errors": "错误最多",
+      "lastCall": "最近调用",
+      "created": "最新",
+      "changed": "最近更改"
+    },
+    "actions": {
+      "open": "打开",
+      "edit": "编辑",
+      "delete": "删除",
+      "duplicate": "复制",
+      "turnOn": "开启",
+      "turnOff": "关闭",
+      "newEndpoint": "新建端点",
+      "viewEndpoints": "查看其端点",
+      "copyUrl": "复制地址",
+      "openForm": "打开表单",
+      "openService": "打开服务"
+    },
+    "delete": {
+      "serviceTitle": "删除 {name}?",
+      "serviceDesc": "它的 {n} 个端点会立即停止响应,并一同被删除。 | 它的 {n} 个端点会立即停止响应,并一同被删除。",
+      "serviceEmpty": "它没有端点。此操作无法撤销。",
+      "endpointTitle": "删除 /{name}?",
+      "endpointDesc": "调用它的应用从现在起会收到错误。它已收到的回复会保留在表单中。",
+      "confirm": "删除"
+    },
+    "toast": {
+      "serviceCreated": "已创建 {name}",
+      "serviceSaved": "已保存 {name}",
+      "serviceOn": "{name} 正在接收调用",
+      "serviceOff": "{name} 已关闭",
+      "serviceDeleted": "已删除 {name}",
+      "duplicated": "已创建 {name} 的副本 (已关闭)",
+      "endpointCreated": "已创建 /{name}",
+      "endpointSaved": "已保存 /{name}",
+      "endpointOn": "/{name} 正在接收调用",
+      "endpointOff": "/{name} 已关闭",
+      "endpointDeleted": "已删除 /{name}",
+      "urlCopied": "已复制地址"
+    },
+    "service": {
+      "newTitle": "新建服务",
+      "editTitle": "编辑服务",
+      "desc": "服务用于将端点分组,例如每个应用或合作伙伴一个。",
+      "name": "名称",
+      "namePlaceholder": "例如:移动应用",
+      "description": "描述",
+      "descriptionPlaceholder": "这些端点的用途",
+      "active": "接收调用",
+      "activeHint": "关闭后,其中每个端点都会返回明确的错误。",
+      "create": "创建服务"
+    },
+    "fields": {
+      "title": "问题",
+      "question": "问题",
+      "accept": "接受",
+      "required": "必填",
+      "returned": "返回",
+      "filter": "筛选",
+      "none": "此表单还没有问题",
+      "formRequired": "表单要求必填",
+      "why": {
+        "file": "文件暂时无法通过 API 发送",
+        "calculated": "由表单计算",
+        "payment": "付款无法通过 API 发送",
+        "locked": "在表单中为只读"
+      }
+    },
+    "call": {
+      "title": "调用示例",
+      "method": "方法",
+      "request": "请求",
+      "answer": "响应",
+      "note": "这些值是虚构的。实际调用需要令牌。"
+    },
+    "invalid": {
+      "required": "请填写此项。",
+      "pattern": "请使用 3 到 64 个小写字母、数字和单个连字符,以字母或数字开头和结尾。",
+      "reserved": "此名称已被 API 服务本身使用。请换一个。",
+      "form": "请选择一个表单。",
+      "methods": "请至少选择一种方法。",
+      "accept": "POST 和 PUT 至少需要一个接受的问题。",
+      "returned": "GET 至少需要一个返回的问题。"
+    },
+    "wizard": {
+      "newCrumb": "新建端点",
+      "editCrumb": "编辑",
+      "newTitle": "新建端点",
+      "newDesc": "将已发布的表单变成 API",
+      "editTitle": "编辑 /{name}",
+      "editDesc": "更改表单、方法或问题",
+      "stepOf": "第 {n} 步,共 {total} 步",
+      "back": "返回",
+      "next": "下一步",
+      "create": "创建端点",
+      "leaveTitle": "不保存就离开?",
+      "leaveDesc": "您为此端点所做的选择将会丢失。",
+      "leave": "离开",
+      "preview": "您的端点",
+      "where": "发送给它的数据会经过表单自身的检查,并存储在表单保存回复的位置。",
+      "searchForms": "搜索已发布的表单…",
+      "noForms": "还没有已发布的表单",
+      "noFormsDesc": "只有已发布的表单才能成为端点,这样调用方的数据会经过与表单页面相同的检查。",
+      "toForms": "前往表单",
+      "pickService": "选择服务",
+      "newService": "新建服务",
+      "serviceHelp": "关闭服务会同时停止其所有端点。",
+      "name": "端点名称",
+      "nameHelp": "地址的最后一部分,例如 register-account。在您的组织中唯一。",
+      "descriptionPlaceholder": "调用方用它来做什么",
+      "versionHelp": "固定一个版本,这样表单之后的更改不会改变调用方必须发送的内容。",
+      "pageSizeHelp": "一次 GET 最多返回的记录数 (1 到 {max})。",
+      "fieldsSummary": "接受 {accepted} · 返回 {returned}",
+      "answeringHint": "关闭时,它会返回明确的错误,直到您重新开启。",
+      "tokensTitle": "调用方需要令牌",
+      "tokensDesc": "每次调用都需要 Bearer 令牌。令牌、必需的请求头和访问规则只需为整个组织设置一次。",
+      "step": {
+        "form": "表单",
+        "basics": "名称",
+        "methods": "方法",
+        "fields": "问题",
+        "review": "检查"
+      },
+      "title": {
+        "form": "哪个表单?",
+        "basics": "名称和服务",
+        "methods": "调用方可以做什么?",
+        "fields": "哪些问题?",
+        "review": "检查并创建"
+      },
+      "desc": {
+        "form": "调用方发送并读取此表单的回复。",
+        "basics": "它位于何处,叫什么名字。",
+        "methods": "选择它响应的方法。以后可以更改。",
+        "fields": "POST 和 PUT 接受什么,以及 GET 返回什么或可按什么筛选。",
+        "review": "请检查一下。调用方一有令牌,它就会开始响应。"
+      },
+      "method": {
+        "GET": "读取回复:带分页和筛选的列表,或按 ID 读取单条。",
+        "POST": "发送新回复,检查方式与表单页面相同。",
+        "PUT": "按 ID 更改回复 (仅限接受的问题)。",
+        "DELETE": "按 ID 删除回复;会保留在审计记录中。"
+      }
     }
   },
   "ai": {

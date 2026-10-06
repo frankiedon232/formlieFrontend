@@ -178,7 +178,7 @@ Folders (F11 M4): `FormFolder { id, name, color? (one of 18 named colours in sha
 
 Public form pages live at `https://{forms | sub}.formalie.com/{formKey}/fill` and `/embed` (01-ARCHITECTURE → Public URLs); the `{key}` / `{slug}` in the paths above is that `{formKey}`, the form's `public_key` (10 letters / digits, in `FormSummary`).
 
-## API service (F13, planned)
+## API service (F13)
 
 Public endpoints for applications (not the portal API): `https://api.formalie.dev/{apiKey}/{endpoint}` (production `api.formalie.com`), see 01-ARCHITECTURE → Public URLs and SECURITY-PROTOCOL §9.
 
@@ -193,7 +193,24 @@ Public endpoints for applications (not the portal API): `https://api.formalie.de
 
 Headers: `Authorization: Bearer …` (required) · `Content-Type: application/json` · `Idempotency-Key` (optional, POST) · `X-Formalie-Destination` (optional, one of the endpoint's allowed destinations) · custom headers required by the endpoint. Responses: `{ data, meta }` or `{ error: { code: "FRM-API-…", message, details } }`.
 
-Portal management (enveloped like the rest of the portal API): `/api-services`, `/api-services/{id}/endpoints`, `/api-tokens`, `/api-access-rules`, `/api-logs`, `/api-analytics`, shapes defined when F13 starts.
+Portal management (enveloped like the rest of the portal API; admins only until F22; types in `shared/types/apiService.ts`). Every change is audited (area `api`).
+
+| Method | Path | Notes |
+| ------ | ---- | ----- |
+| GET | `/api-service/settings` | `{ api_key, base_url }`: the organisation's address handle (decision 61) and the API's base address |
+| GET | `/api-services` | `ApiService { id, name, description, status: active\|disabled, endpoints_count, methods (answered by any active endpoint), created_by, created_at, updated_at, calls_30d, previous_30d, errors_30d, daily (30), avg_ms, last_call_at }`; `q`, `sort` (name · -calls_30d · -endpoints_count · -last_call_at · -created_at), `filter[status]` |
+| GET | `/api-services/insights` | `ApiInsights { total, by_status, by_method, calls_30d, previous_30d, errors_30d, daily, avg_ms }` |
+| POST · PATCH | `/api-services` · `/api-services/{id}` | `{ name (unique, FRM-API-1003), description?, status? }`; audit `api.service_created / _updated / _enabled / _disabled` |
+| POST | `/api-services/{id}/duplicate` | a copy named "… (copy)", switched off, with copies of its endpoints (names `…-copy`, switched off) |
+| DELETE | `/api-services/{id}` | deletes its endpoints too → `{ deleted, endpoints }`; audit `api.service_deleted` |
+| GET | `/api-endpoints` | `ApiEndpoint { id, name, description, service { id, name, status }, form { id, name, status }, version (null = latest published), methods, status, url, fields_accepted, fields_returned, … usage as above }`; `q`, `sort`, `filter[service]`, `filter[method]`, `filter[status]` |
+| GET | `/api-endpoints/insights?filter[service]` | `ApiInsights` |
+| GET | `/api-endpoints/form-fields?form_id&version` | the form's questions as `ApiEndpointField[]` with defaults, and its published versions (the wizard, before saving) |
+| GET | `/api-endpoints/{id}` | `ApiEndpointDetail` = endpoint + `fields [{ key, label, type, page, form_required, acceptable, filterable, accept, required, returned, filter }]`, `page_size`, `versions` |
+| POST · PATCH | `/api-endpoints` · `/api-endpoints/{id}` | `{ name, description?, service_id, form_id, version, methods, fields [{ key, accept, required, returned, filter }], page_size (≤ 100), status? }`; PATCH with `{ status }` alone switches it on / off. Checks (`shared/utils/apiService/endpoints.ts`): name pattern (`FRM-GEN-1002` message required · pattern · reserved), unique in the organisation (`FRM-API-1001`), a published form (`FRM-API-1002`), at least one method; POST / PUT need an accepted question, GET a returned one; the form's required questions are always accepted and required; read-only, calculated, file and payment questions are never accepted. Audit `api.endpoint_created / _updated / _enabled / _disabled` |
+| DELETE | `/api-endpoints/{id}` | audit `api.endpoint_deleted` |
+
+Tokens, access rules, logs and analytics (`/api-tokens`, `/api-access-rules`, `/api-logs`, `/api-analytics`) follow in M2 to M4.
 
 ## Responses
 

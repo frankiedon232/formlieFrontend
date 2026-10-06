@@ -120,6 +120,9 @@ export const ERROR_CODES = {
   'FRM-DEST-1026': { status: 400, message: 'Run one statement at a time: select it, or put the cursor in it.' },
   'FRM-DEST-1027': { status: 403, message: 'Only the person who saved this query can change it.' },
   'FRM-DEST-1012': { status: 400, message: "This account can't create or use the response tables." },
+  'FRM-API-1001': { status: 409, message: 'This endpoint name is already used in your organisation.' },
+  'FRM-API-1002': { status: 422, message: 'Publish the form before it can be an endpoint.' },
+  'FRM-API-1003': { status: 409, message: 'A service with this name already exists.' },
   'FRM-PLAN-1001': { status: 402, message: 'Your plan limit has been reached. Upgrade to continue.' },
   'FRM-PLAN-1002': { status: 402, message: 'This feature is not included in your plan.' },
 } as const satisfies Record<string, ErrorCodeDefinition>

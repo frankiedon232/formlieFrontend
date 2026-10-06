@@ -66,3 +66,18 @@ export function paginate<T extends object>(
 
   return { data: result, meta: { page, page_size: pageSize, total, total_pages: totalPages } }
 }
+
+/**
+ * List filters from the query: `filter[key]=a,b` arrives as flat keys (the portal's query is not
+ * nested); a nested `filter` object is accepted too.
+ */
+export function filtersOf(query: Record<string, unknown>): Record<string, string | undefined> {
+  const out: Record<string, string | undefined> = {}
+  const nested = query.filter
+  if (nested && typeof nested === 'object') for (const [key, value] of Object.entries(nested)) if (typeof value === 'string') out[key] = value
+  for (const [key, value] of Object.entries(query)) {
+    const match = /^filter\[(.+)\]$/.exec(key)
+    if (match && typeof value === 'string') out[match[1]!] = value
+  }
+  return out
+}

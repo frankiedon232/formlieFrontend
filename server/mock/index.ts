@@ -8,6 +8,7 @@ import { getDirectory } from './routes/directory'
 import { getFormOverview } from './routes/formOverview'
 import * as responses from './routes/responses'
 import * as analytics from './routes/analytics'
+import * as apiService from './routes/apiService'
 import * as responseExports from './routes/responseExports'
 import * as folders from './routes/folders'
 import * as dataSources from './routes/dataSources'
@@ -86,6 +87,21 @@ const router = createRouter()
   .get('/forms/:id/responses/tags', responses.formResponseTags)
   .get('/responses/insights', responses.inboxInsights)
   .get('/analytics/overview', analytics.analyticsOverview)
+  .get('/api-service/settings', apiService.apiSettings)
+  .get('/api-services', apiService.listApiServices)
+  .get('/api-services/insights', apiService.apiServiceInsights)
+  .post('/api-services', apiService.createApiService)
+  .get('/api-services/:id', apiService.getApiService)
+  .patch('/api-services/:id', apiService.updateApiService)
+  .delete('/api-services/:id', apiService.deleteApiService)
+  .post('/api-services/:id/duplicate', apiService.duplicateApiService)
+  .get('/api-endpoints', apiService.listApiEndpoints)
+  .get('/api-endpoints/insights', apiService.apiEndpointInsights)
+  .get('/api-endpoints/form-fields', apiService.apiEndpointFormFields)
+  .post('/api-endpoints', apiService.createApiEndpoint)
+  .get('/api-endpoints/:id', apiService.getApiEndpoint)
+  .patch('/api-endpoints/:id', apiService.updateApiEndpoint)
+  .delete('/api-endpoints/:id', apiService.deleteApiEndpoint)
   .get('/analytics/forms', analytics.analyticsForms)
   .get('/analytics/forms/:id/funnel', analytics.formFunnel)
   .get('/responses/forms', responses.listResponseForms)

@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Koneksi ini hanya-baca di sini: hanya pernyataan baca yang dijalankan.",
     "FRM-DEST-1025": "Database tidak dapat menjalankan pernyataan ini.",
     "FRM-DEST-1026": "Jalankan satu pernyataan sekaligus: pilih pernyataannya, atau letakkan kursor di dalamnya.",
-    "FRM-DEST-1027": "Hanya orang yang menyimpan kueri ini yang dapat mengubahnya."
+    "FRM-DEST-1027": "Hanya orang yang menyimpan kueri ini yang dapat mengubahnya.",
+    "FRM-API-1001": "Nama endpoint ini sudah digunakan di organisasi Anda.",
+    "FRM-API-1002": "Publikasikan formulir sebelum bisa menjadi endpoint.",
+    "FRM-API-1003": "Layanan dengan nama ini sudah ada."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -615,7 +618,8 @@
     "attention": "Perlu diperiksa",
     "failing": "Gagal",
     "disabled": "Dinonaktifkan",
-    "untested": "Belum diuji"
+    "untested": "Belum diuji",
+    "active": "Aktif"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
@@ -807,7 +811,8 @@
       "users": "Pengguna",
       "integrations": "Integrasi",
       "audit": "Jejak audit",
-      "data": "Sumber data"
+      "data": "Sumber data",
+      "api": "Layanan API"
     },
     "actorType": {
       "user": "Orang",
@@ -835,7 +840,9 @@
       "option_list": "Daftar opsi",
       "theme": "Tema",
       "template": "Templat",
-      "data_source": "Koneksi"
+      "data_source": "Koneksi",
+      "api_service": "Layanan API",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Nama",
@@ -955,7 +962,17 @@
       "data_query_run": "Kueri dijalankan di database",
       "data_query_exported": "Hasil kueri diekspor",
       "data_saved_query_saved": "Kueri disimpan",
-      "data_saved_query_deleted": "Kueri tersimpan dihapus"
+      "data_saved_query_deleted": "Kueri tersimpan dihapus",
+      "api_service_created": "Layanan API dibuat",
+      "api_service_updated": "Layanan API diubah",
+      "api_service_enabled": "Layanan API dinyalakan",
+      "api_service_disabled": "Layanan API dimatikan",
+      "api_service_deleted": "Layanan API dihapus",
+      "api_endpoint_created": "Endpoint dibuat",
+      "api_endpoint_updated": "Endpoint diubah",
+      "api_endpoint_enabled": "Endpoint dinyalakan",
+      "api_endpoint_disabled": "Endpoint dimatikan",
+      "api_endpoint_deleted": "Endpoint dihapus"
     },
     "detail": {
       "who": "Siapa",
@@ -3552,6 +3569,201 @@
       "webhooks": "Kirim setiap tanggapan baru ke sistem Anda sendiri begitu masuk, ditandatangani dan dicoba ulang.",
       "apiKeys": "Kunci untuk API Formalie: kelola formulir dan tanggapan dari kode Anda.",
       "apps": "Hubungkan aplikasi seperti spreadsheet dan obrolan tim."
+    },
+    "optional": "Opsional",
+    "address": "Alamat",
+    "answering": "Menerima panggilan",
+    "serviceOff": "Layanan dimatikan",
+    "formNotPublished": "Formulir belum dipublikasikan",
+    "noMethods": "Tidak ada metode",
+    "noDescription": "Tanpa deskripsi",
+    "neverCalled": "Belum pernah dipanggil",
+    "lastCall": "Dipanggil {when}",
+    "noCalls": "Tidak ada panggilan dalam 30 hari terakhir.",
+    "noEndpoints": "Layanan ini belum punya endpoint",
+    "manyErrors": "Lebih dari 1 dari 20 panggilan gagal",
+    "callsCount": "{n} panggilan | {n} panggilan",
+    "endpointsCount": "{n} endpoint | {n} endpoint",
+    "createdBy": "Dibuat oleh",
+    "latestVersion": "Versi terbaru yang dipublikasikan",
+    "versionN": "Versi {n}",
+    "pageSize": "Ukuran halaman (GET)",
+    "navigate": "Berpindah antar item",
+    "notFound": "Endpoint ini tidak tersedia",
+    "searchServices": "Cari layanan…",
+    "searchEndpoints": "Cari endpoint, formulir, atau layanan…",
+    "emptyServices": "Belum ada layanan",
+    "emptyServicesDesc": "Layanan mengelompokkan endpoint, misalnya satu per aplikasi atau mitra, sehingga bisa dinyalakan atau dimatikan bersama.",
+    "emptyEndpoints": "Belum ada endpoint",
+    "emptyEndpointsDesc": "Ubah formulir yang dipublikasikan menjadi API: pilih metode serta pertanyaan yang diterima atau dikembalikan.",
+    "kpi": {
+      "calls": "Panggilan",
+      "errors": "Error",
+      "time": "Waktu respons",
+      "byStatus": "Layanan menurut status",
+      "byMethod": "Endpoint menurut metode",
+      "active": "{n} aktif",
+      "none": "Belum ada apa-apa"
+    },
+    "col": {
+      "service": "Layanan",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoint",
+      "status": "Status",
+      "methods": "Metode",
+      "calls": "Panggilan (30 hari)",
+      "errors": "Error",
+      "lastCall": "Panggilan terakhir",
+      "created": "Dibuat",
+      "updated": "Diubah",
+      "version": "Versi formulir"
+    },
+    "sort": {
+      "calls": "Paling sering dipanggil",
+      "endpoints": "Endpoint terbanyak",
+      "errors": "Error terbanyak",
+      "lastCall": "Terakhir dipanggil",
+      "created": "Terbaru",
+      "changed": "Terakhir diubah"
+    },
+    "actions": {
+      "open": "Buka",
+      "edit": "Edit",
+      "delete": "Hapus",
+      "duplicate": "Duplikat",
+      "turnOn": "Nyalakan",
+      "turnOff": "Matikan",
+      "newEndpoint": "Endpoint baru",
+      "viewEndpoints": "Lihat endpoint-nya",
+      "copyUrl": "Salin alamat",
+      "openForm": "Buka formulir",
+      "openService": "Buka layanan"
+    },
+    "delete": {
+      "serviceTitle": "Hapus {name}?",
+      "serviceDesc": "{n} endpoint-nya langsung berhenti merespons dan ikut dihapus. | {n} endpoint-nya langsung berhenti merespons dan ikut dihapus.",
+      "serviceEmpty": "Tidak ada endpoint. Tindakan ini tidak dapat dibatalkan.",
+      "endpointTitle": "Hapus /{name}?",
+      "endpointDesc": "Aplikasi yang memanggilnya akan mendapat error mulai sekarang. Respons yang sudah masuk tetap ada di formulir.",
+      "confirm": "Hapus"
+    },
+    "toast": {
+      "serviceCreated": "{name} dibuat",
+      "serviceSaved": "{name} disimpan",
+      "serviceOn": "{name} menerima panggilan",
+      "serviceOff": "{name} dimatikan",
+      "serviceDeleted": "{name} dihapus",
+      "duplicated": "Salinan {name} dibuat (dimatikan)",
+      "endpointCreated": "/{name} dibuat",
+      "endpointSaved": "/{name} disimpan",
+      "endpointOn": "/{name} menerima panggilan",
+      "endpointOff": "/{name} dimatikan",
+      "endpointDeleted": "/{name} dihapus",
+      "urlCopied": "Alamat disalin"
+    },
+    "service": {
+      "newTitle": "Layanan baru",
+      "editTitle": "Edit layanan",
+      "desc": "Layanan mengelompokkan endpoint, misalnya satu per aplikasi atau mitra.",
+      "name": "Nama",
+      "namePlaceholder": "mis. Aplikasi seluler",
+      "description": "Deskripsi",
+      "descriptionPlaceholder": "Untuk apa endpoint ini",
+      "active": "Menerima panggilan",
+      "activeHint": "Jika dimatikan, setiap endpoint di dalamnya menjawab dengan error yang jelas.",
+      "create": "Buat layanan"
+    },
+    "fields": {
+      "title": "Pertanyaan",
+      "question": "Pertanyaan",
+      "accept": "Diterima",
+      "required": "Wajib",
+      "returned": "Dikembalikan",
+      "filter": "Filter",
+      "none": "Formulir ini belum punya pertanyaan",
+      "formRequired": "wajib menurut formulir",
+      "why": {
+        "file": "file belum dapat dikirim melalui API",
+        "calculated": "dihitung oleh formulir",
+        "payment": "pembayaran tidak dapat dikirim melalui API",
+        "locked": "hanya baca di formulir"
+      }
+    },
+    "call": {
+      "title": "Contoh panggilan",
+      "method": "Metode",
+      "request": "Permintaan",
+      "answer": "Jawaban",
+      "note": "Nilainya hanya contoh. Pemanggil memerlukan token untuk memanggilnya sungguhan."
+    },
+    "invalid": {
+      "required": "Isi bagian ini.",
+      "pattern": "Gunakan 3 sampai 64 huruf kecil, angka, dan tanda hubung tunggal, diawali dan diakhiri huruf atau angka.",
+      "reserved": "Nama ini digunakan oleh layanan API itu sendiri. Pilih yang lain.",
+      "form": "Pilih formulir.",
+      "methods": "Pilih setidaknya satu metode.",
+      "accept": "POST dan PUT memerlukan setidaknya satu pertanyaan yang diterima.",
+      "returned": "GET memerlukan setidaknya satu pertanyaan yang dikembalikan."
+    },
+    "wizard": {
+      "newCrumb": "Endpoint baru",
+      "editCrumb": "Edit",
+      "newTitle": "Endpoint baru",
+      "newDesc": "Ubah formulir yang dipublikasikan menjadi API",
+      "editTitle": "Edit /{name}",
+      "editDesc": "Ubah formulir, metode, atau pertanyaan",
+      "stepOf": "Langkah {n} dari {total}",
+      "back": "Kembali",
+      "next": "Lanjut",
+      "create": "Buat endpoint",
+      "leaveTitle": "Keluar tanpa menyimpan?",
+      "leaveDesc": "Pilihan Anda untuk endpoint ini akan hilang.",
+      "leave": "Keluar",
+      "preview": "Endpoint Anda",
+      "where": "Data yang dikirim ke sana melewati pemeriksaan formulir itu sendiri dan disimpan di tempat formulir menyimpan responsnya.",
+      "searchForms": "Cari formulir yang dipublikasikan…",
+      "noForms": "Belum ada formulir yang dipublikasikan",
+      "noFormsDesc": "Hanya formulir yang dipublikasikan yang bisa menjadi endpoint, agar data dari pemanggil melewati pemeriksaan yang sama dengan halaman formulir.",
+      "toForms": "Buka Formulir",
+      "pickService": "Pilih layanan",
+      "newService": "Layanan baru",
+      "serviceHelp": "Mematikan layanan menghentikan semua endpoint-nya sekaligus.",
+      "name": "Nama endpoint",
+      "nameHelp": "Bagian terakhir dari alamat, mis. register-account. Unik di organisasi Anda.",
+      "descriptionPlaceholder": "Untuk apa pemanggil menggunakannya",
+      "versionHelp": "Kunci sebuah versi agar perubahan formulir di kemudian hari tidak mengubah apa yang harus dikirim pemanggil.",
+      "pageSizeHelp": "Jumlah catatan terbanyak yang dikembalikan satu GET (1 sampai {max}).",
+      "fieldsSummary": "{accepted} diterima · {returned} dikembalikan",
+      "answeringHint": "Jika dimatikan, ia menjawab dengan error yang jelas sampai Anda menyalakannya.",
+      "tokensTitle": "Pemanggil memerlukan token",
+      "tokensDesc": "Setiap panggilan memerlukan token Bearer. Token, header wajib, dan aturan akses diatur sekali untuk seluruh organisasi Anda.",
+      "step": {
+        "form": "Formulir",
+        "basics": "Nama",
+        "methods": "Metode",
+        "fields": "Pertanyaan",
+        "review": "Tinjau"
+      },
+      "title": {
+        "form": "Formulir mana?",
+        "basics": "Nama dan layanan",
+        "methods": "Apa yang dapat dilakukan pemanggil?",
+        "fields": "Pertanyaan mana?",
+        "review": "Periksa dan buat"
+      },
+      "desc": {
+        "form": "Pemanggil mengirim dan membaca respons formulir ini.",
+        "basics": "Di mana letaknya dan apa namanya.",
+        "methods": "Pilih metode yang dijawabnya. Anda dapat mengubahnya nanti.",
+        "fields": "Apa yang diterima POST dan PUT, serta apa yang dikembalikan atau dapat difilter oleh GET.",
+        "review": "Periksa dulu. Ia mulai menjawab begitu pemanggil memiliki token."
+      },
+      "method": {
+        "GET": "Baca respons: daftar dengan halaman dan filter, atau satu berdasarkan id-nya.",
+        "POST": "Kirim respons baru, diperiksa seperti halaman formulir.",
+        "PUT": "Ubah respons berdasarkan id-nya (hanya pertanyaan yang diterima).",
+        "DELETE": "Hapus respons berdasarkan id-nya; tetap tercatat di jejak audit."
+      }
     }
   },
   "ai": {

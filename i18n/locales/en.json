@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "This connection is read only here: only reading statements run.",
     "FRM-DEST-1025": "The database couldn't run this statement.",
     "FRM-DEST-1026": "Run one statement at a time: select it, or put the cursor in it.",
-    "FRM-DEST-1027": "Only the person who saved this query can change it."
+    "FRM-DEST-1027": "Only the person who saved this query can change it.",
+    "FRM-API-1001": "This endpoint name is already used in your organisation.",
+    "FRM-API-1002": "Publish the form before it can be an endpoint.",
+    "FRM-API-1003": "A service with this name already exists."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -615,7 +618,8 @@
     "attention": "Needs attention",
     "failing": "Failing",
     "disabled": "Disabled",
-    "untested": "Not tested"
+    "untested": "Not tested",
+    "active": "Active"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -807,7 +811,8 @@
       "users": "Users",
       "integrations": "Integrations",
       "audit": "Audit trail",
-      "data": "Data sources"
+      "data": "Data sources",
+      "api": "API service"
     },
     "actorType": {
       "user": "Person",
@@ -835,7 +840,9 @@
       "option_list": "Option list",
       "theme": "Theme",
       "template": "Template",
-      "data_source": "Connection"
+      "data_source": "Connection",
+      "api_service": "API service",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Name",
@@ -955,7 +962,17 @@
       "data_query_run": "Query run on a database",
       "data_query_exported": "Query results exported",
       "data_saved_query_saved": "Query saved",
-      "data_saved_query_deleted": "Saved query deleted"
+      "data_saved_query_deleted": "Saved query deleted",
+      "api_service_created": "API service created",
+      "api_service_updated": "API service changed",
+      "api_service_enabled": "API service switched on",
+      "api_service_disabled": "API service switched off",
+      "api_service_deleted": "API service deleted",
+      "api_endpoint_created": "Endpoint created",
+      "api_endpoint_updated": "Endpoint changed",
+      "api_endpoint_enabled": "Endpoint switched on",
+      "api_endpoint_disabled": "Endpoint switched off",
+      "api_endpoint_deleted": "Endpoint deleted"
     },
     "detail": {
       "who": "Who",
@@ -3552,6 +3569,201 @@
       "webhooks": "Send each new response to your own systems as it arrives, signed and retried.",
       "apiKeys": "Keys for Formalie's own API: manage forms and responses from your code.",
       "apps": "Connect apps such as spreadsheets and team chat."
+    },
+    "optional": "Optional",
+    "address": "Address",
+    "answering": "Answering calls",
+    "serviceOff": "Service switched off",
+    "formNotPublished": "Form not published",
+    "noMethods": "No methods",
+    "noDescription": "No description",
+    "neverCalled": "Not called yet",
+    "lastCall": "Called {when}",
+    "noCalls": "No calls in the last 30 days.",
+    "noEndpoints": "No endpoints in this service yet",
+    "manyErrors": "More than 1 in 20 calls failed",
+    "callsCount": "{n} call | {n} calls",
+    "endpointsCount": "{n} endpoint | {n} endpoints",
+    "createdBy": "Created by",
+    "latestVersion": "Latest published version",
+    "versionN": "Version {n}",
+    "pageSize": "Page size (GET)",
+    "navigate": "Move between items",
+    "notFound": "This endpoint isn't available",
+    "searchServices": "Search services…",
+    "searchEndpoints": "Search endpoints, forms or services…",
+    "emptyServices": "No services yet",
+    "emptyServicesDesc": "A service groups endpoints, for example one per app or partner, so you can switch them on or off together.",
+    "emptyEndpoints": "No endpoints yet",
+    "emptyEndpointsDesc": "Turn a published form into an API: choose the methods and the questions it accepts or returns.",
+    "kpi": {
+      "calls": "Calls",
+      "errors": "Errors",
+      "time": "Answer time",
+      "byStatus": "Services by status",
+      "byMethod": "Endpoints by method",
+      "active": "{n} active",
+      "none": "Nothing here yet"
+    },
+    "col": {
+      "service": "Service",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoints",
+      "status": "Status",
+      "methods": "Methods",
+      "calls": "Calls (30 days)",
+      "errors": "Errors",
+      "lastCall": "Last call",
+      "created": "Created",
+      "updated": "Changed",
+      "version": "Form version"
+    },
+    "sort": {
+      "calls": "Most called",
+      "endpoints": "Most endpoints",
+      "errors": "Most errors",
+      "lastCall": "Called last",
+      "created": "Newest",
+      "changed": "Changed last"
+    },
+    "actions": {
+      "open": "Open",
+      "edit": "Edit",
+      "delete": "Delete",
+      "duplicate": "Duplicate",
+      "turnOn": "Switch on",
+      "turnOff": "Switch off",
+      "newEndpoint": "New endpoint",
+      "viewEndpoints": "View its endpoints",
+      "copyUrl": "Copy address",
+      "openForm": "Open the form",
+      "openService": "Open the service"
+    },
+    "delete": {
+      "serviceTitle": "Delete {name}?",
+      "serviceDesc": "Its {n} endpoint stops answering at once and is deleted too. | Its {n} endpoints stop answering at once and are deleted too.",
+      "serviceEmpty": "It has no endpoints. This can't be undone.",
+      "endpointTitle": "Delete /{name}?",
+      "endpointDesc": "Apps that call it get an error from now on. Responses it already brought in stay with the form.",
+      "confirm": "Delete"
+    },
+    "toast": {
+      "serviceCreated": "{name} created",
+      "serviceSaved": "{name} saved",
+      "serviceOn": "{name} is answering calls",
+      "serviceOff": "{name} is switched off",
+      "serviceDeleted": "{name} deleted",
+      "duplicated": "A copy of {name} was made (switched off)",
+      "endpointCreated": "/{name} created",
+      "endpointSaved": "/{name} saved",
+      "endpointOn": "/{name} is answering calls",
+      "endpointOff": "/{name} is switched off",
+      "endpointDeleted": "/{name} deleted",
+      "urlCopied": "Address copied"
+    },
+    "service": {
+      "newTitle": "New service",
+      "editTitle": "Edit service",
+      "desc": "A service groups endpoints, for example one per app or partner.",
+      "name": "Name",
+      "namePlaceholder": "e.g. Mobile app",
+      "description": "Description",
+      "descriptionPlaceholder": "What these endpoints are for",
+      "active": "Answering calls",
+      "activeHint": "Switched off, every endpoint in it answers with a clear error.",
+      "create": "Create service"
+    },
+    "fields": {
+      "title": "Questions",
+      "question": "Question",
+      "accept": "Accepted",
+      "required": "Required",
+      "returned": "Returned",
+      "filter": "Filter",
+      "none": "This form has no questions yet",
+      "formRequired": "required by the form",
+      "why": {
+        "file": "files can't be sent through the API yet",
+        "calculated": "worked out by the form",
+        "payment": "payments can't be sent through the API",
+        "locked": "read-only on the form"
+      }
+    },
+    "call": {
+      "title": "Example call",
+      "method": "Method",
+      "request": "Request",
+      "answer": "Answer",
+      "note": "Values are made up. Callers need a token to call it for real."
+    },
+    "invalid": {
+      "required": "Fill this in.",
+      "pattern": "Use 3 to 64 lower-case letters, numbers and single hyphens, starting and ending with a letter or number.",
+      "reserved": "This name is used by the API service itself. Choose another.",
+      "form": "Choose a form.",
+      "methods": "Choose at least one method.",
+      "accept": "POST and PUT need at least one accepted question.",
+      "returned": "GET needs at least one returned question."
+    },
+    "wizard": {
+      "newCrumb": "New endpoint",
+      "editCrumb": "Edit",
+      "newTitle": "New endpoint",
+      "newDesc": "Turn a published form into an API",
+      "editTitle": "Edit /{name}",
+      "editDesc": "Change the form, methods or questions",
+      "stepOf": "Step {n} of {total}",
+      "back": "Back",
+      "next": "Next",
+      "create": "Create endpoint",
+      "leaveTitle": "Leave without saving?",
+      "leaveDesc": "What you chose for this endpoint will be lost.",
+      "leave": "Leave",
+      "preview": "Your endpoint",
+      "where": "Data sent to it goes through the form's own checks and is stored where the form keeps its responses.",
+      "searchForms": "Search published forms…",
+      "noForms": "No published forms yet",
+      "noFormsDesc": "Only published forms can be endpoints, so callers' data passes the same checks as the form page.",
+      "toForms": "Go to Forms",
+      "pickService": "Choose a service",
+      "newService": "New service",
+      "serviceHelp": "Switching a service off stops all its endpoints together.",
+      "name": "Endpoint name",
+      "nameHelp": "The last part of the address, e.g. register-account. Unique in your organisation.",
+      "descriptionPlaceholder": "What callers use it for",
+      "versionHelp": "Pin a version so later changes to the form don't change what callers must send.",
+      "pageSizeHelp": "The most records one GET returns (1 to {max}).",
+      "fieldsSummary": "{accepted} accepted · {returned} returned",
+      "answeringHint": "Switched off, it answers with a clear error until you switch it on.",
+      "tokensTitle": "Callers need a token",
+      "tokensDesc": "Every call needs a bearer token. Tokens, required headers and access rules are set up once for your whole organisation.",
+      "step": {
+        "form": "Form",
+        "basics": "Name",
+        "methods": "Methods",
+        "fields": "Questions",
+        "review": "Review"
+      },
+      "title": {
+        "form": "Which form?",
+        "basics": "Name and service",
+        "methods": "What can callers do?",
+        "fields": "Which questions?",
+        "review": "Check and create"
+      },
+      "desc": {
+        "form": "Callers send and read this form's responses.",
+        "basics": "Where it lives and what it is called.",
+        "methods": "Choose the methods it answers. You can change them later.",
+        "fields": "What POST and PUT accept, and what GET returns or can filter by.",
+        "review": "Look it over. It starts answering as soon as callers have a token."
+      },
+      "method": {
+        "GET": "Read responses: a list with paging and filters, or one by its id.",
+        "POST": "Send a new response, checked like the form page.",
+        "PUT": "Change a response by its id (the accepted questions only).",
+        "DELETE": "Remove a response by its id; kept in the audit trail."
+      }
     }
   },
   "ai": {

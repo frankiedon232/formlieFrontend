@@ -12,6 +12,7 @@ export const AUDIT_AREAS = [
   'settings',
   'users',
   'integrations',
+  'api',
   'data',
   'audit',
 ] as const
@@ -119,6 +120,17 @@ export const AUDIT_EVENTS = {
   'data.query_exported': { area: 'data', icon: 'i-lucide-file-down' },
   'data.saved_query_saved': { area: 'data', icon: 'i-lucide-bookmark' },
   'data.saved_query_deleted': { area: 'data', icon: 'i-lucide-bookmark-x' },
+  // API service (F13)
+  'api.service_created': { area: 'api', icon: 'i-lucide-boxes' },
+  'api.service_updated': { area: 'api', icon: 'i-lucide-pencil' },
+  'api.service_enabled': { area: 'api', icon: 'i-lucide-circle-play' },
+  'api.service_disabled': { area: 'api', icon: 'i-lucide-circle-pause' },
+  'api.service_deleted': { area: 'api', icon: 'i-lucide-trash-2' },
+  'api.endpoint_created': { area: 'api', icon: 'i-lucide-route' },
+  'api.endpoint_updated': { area: 'api', icon: 'i-lucide-pencil-line' },
+  'api.endpoint_enabled': { area: 'api', icon: 'i-lucide-circle-play' },
+  'api.endpoint_disabled': { area: 'api', icon: 'i-lucide-circle-pause' },
+  'api.endpoint_deleted': { area: 'api', icon: 'i-lucide-trash-2' },
   // The audit trail itself
   'audit.exported': { area: 'audit', icon: 'i-lucide-file-spreadsheet' },
 } as const satisfies Record<string, AuditEventDefinition>

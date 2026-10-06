@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Qui questa connessione è di sola lettura: vengono eseguite solo istruzioni di lettura.",
     "FRM-DEST-1025": "Il database non è riuscito a eseguire questa istruzione.",
     "FRM-DEST-1026": "Eseguite un’istruzione alla volta: selezionatela, o mettete il cursore al suo interno.",
-    "FRM-DEST-1027": "Solo chi ha salvato questa query può modificarla."
+    "FRM-DEST-1027": "Solo chi ha salvato questa query può modificarla.",
+    "FRM-API-1001": "Questo nome di endpoint è già in uso nella tua organizzazione.",
+    "FRM-API-1002": "Pubblica il modulo prima di poterlo usare come endpoint.",
+    "FRM-API-1003": "Esiste già un servizio con questo nome."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -615,7 +618,8 @@
     "attention": "Da controllare",
     "failing": "In errore",
     "disabled": "Disattivata",
-    "untested": "Non testata"
+    "untested": "Non testata",
+    "active": "Attivo"
   },
   "footer": {
     "rights": "Tutti i diritti riservati.",
@@ -807,7 +811,8 @@
       "users": "Utenti",
       "integrations": "Integrazioni",
       "audit": "Registro di audit",
-      "data": "Origini dati"
+      "data": "Origini dati",
+      "api": "Servizio API"
     },
     "actorType": {
       "user": "Persona",
@@ -835,7 +840,9 @@
       "option_list": "Elenco di opzioni",
       "theme": "Tema",
       "template": "Modello",
-      "data_source": "Connessione"
+      "data_source": "Connessione",
+      "api_service": "Servizio API",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Nome",
@@ -955,7 +962,17 @@
       "data_query_run": "Query eseguita su un database",
       "data_query_exported": "Risultati della query esportati",
       "data_saved_query_saved": "Query salvata",
-      "data_saved_query_deleted": "Query salvata eliminata"
+      "data_saved_query_deleted": "Query salvata eliminata",
+      "api_service_created": "Servizio API creato",
+      "api_service_updated": "Servizio API modificato",
+      "api_service_enabled": "Servizio API attivato",
+      "api_service_disabled": "Servizio API disattivato",
+      "api_service_deleted": "Servizio API eliminato",
+      "api_endpoint_created": "Endpoint creato",
+      "api_endpoint_updated": "Endpoint modificato",
+      "api_endpoint_enabled": "Endpoint attivato",
+      "api_endpoint_disabled": "Endpoint disattivato",
+      "api_endpoint_deleted": "Endpoint eliminato"
     },
     "detail": {
       "who": "Chi",
@@ -3552,6 +3569,201 @@
       "webhooks": "Invia ogni nuova risposta ai tuoi sistemi appena arriva, firmata e con nuovi tentativi.",
       "apiKeys": "Chiavi per l'API di Formalie: gestisci moduli e risposte dal tuo codice.",
       "apps": "Collega app come fogli di calcolo e chat del team."
+    },
+    "optional": "Facoltativo",
+    "address": "Indirizzo",
+    "answering": "Risponde alle chiamate",
+    "serviceOff": "Servizio disattivato",
+    "formNotPublished": "Modulo non pubblicato",
+    "noMethods": "Nessun metodo",
+    "noDescription": "Nessuna descrizione",
+    "neverCalled": "Mai chiamato",
+    "lastCall": "Chiamato {when}",
+    "noCalls": "Nessuna chiamata negli ultimi 30 giorni.",
+    "noEndpoints": "Questo servizio non ha ancora endpoint",
+    "manyErrors": "Più di 1 chiamata su 20 è fallita",
+    "callsCount": "{n} chiamata | {n} chiamate",
+    "endpointsCount": "{n} endpoint | {n} endpoint",
+    "createdBy": "Creato da",
+    "latestVersion": "Ultima versione pubblicata",
+    "versionN": "Versione {n}",
+    "pageSize": "Dimensione pagina (GET)",
+    "navigate": "Spostati tra gli elementi",
+    "notFound": "Questo endpoint non è disponibile",
+    "searchServices": "Cerca servizi…",
+    "searchEndpoints": "Cerca endpoint, moduli o servizi…",
+    "emptyServices": "Nessun servizio ancora",
+    "emptyServicesDesc": "Un servizio raggruppa endpoint, ad esempio uno per app o partner, per attivarli o disattivarli insieme.",
+    "emptyEndpoints": "Nessun endpoint ancora",
+    "emptyEndpointsDesc": "Trasforma un modulo pubblicato in un'API: scegli i metodi e le domande che accetta o restituisce.",
+    "kpi": {
+      "calls": "Chiamate",
+      "errors": "Errori",
+      "time": "Tempo di risposta",
+      "byStatus": "Servizi per stato",
+      "byMethod": "Endpoint per metodo",
+      "active": "{n} attivi",
+      "none": "Ancora niente"
+    },
+    "col": {
+      "service": "Servizio",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoint",
+      "status": "Stato",
+      "methods": "Metodi",
+      "calls": "Chiamate (30 giorni)",
+      "errors": "Errori",
+      "lastCall": "Ultima chiamata",
+      "created": "Creato",
+      "updated": "Modificato",
+      "version": "Versione del modulo"
+    },
+    "sort": {
+      "calls": "Più chiamati",
+      "endpoints": "Più endpoint",
+      "errors": "Più errori",
+      "lastCall": "Chiamati di recente",
+      "created": "Più recenti",
+      "changed": "Modificati di recente"
+    },
+    "actions": {
+      "open": "Apri",
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "duplicate": "Duplica",
+      "turnOn": "Attiva",
+      "turnOff": "Disattiva",
+      "newEndpoint": "Nuovo endpoint",
+      "viewEndpoints": "Vedi i suoi endpoint",
+      "copyUrl": "Copia indirizzo",
+      "openForm": "Apri il modulo",
+      "openService": "Apri il servizio"
+    },
+    "delete": {
+      "serviceTitle": "Eliminare {name}?",
+      "serviceDesc": "Il suo {n} endpoint smette subito di rispondere e viene eliminato a sua volta. | I suoi {n} endpoint smettono subito di rispondere e vengono eliminati a loro volta.",
+      "serviceEmpty": "Non ha endpoint. L'azione non può essere annullata.",
+      "endpointTitle": "Eliminare /{name}?",
+      "endpointDesc": "Le app che lo chiamano riceveranno un errore da ora in poi. Le risposte già ricevute restano nel modulo.",
+      "confirm": "Elimina"
+    },
+    "toast": {
+      "serviceCreated": "{name} creato",
+      "serviceSaved": "{name} salvato",
+      "serviceOn": "{name} risponde alle chiamate",
+      "serviceOff": "{name} è disattivato",
+      "serviceDeleted": "{name} eliminato",
+      "duplicated": "È stata creata una copia di {name} (disattivata)",
+      "endpointCreated": "/{name} creato",
+      "endpointSaved": "/{name} salvato",
+      "endpointOn": "/{name} risponde alle chiamate",
+      "endpointOff": "/{name} è disattivato",
+      "endpointDeleted": "/{name} eliminato",
+      "urlCopied": "Indirizzo copiato"
+    },
+    "service": {
+      "newTitle": "Nuovo servizio",
+      "editTitle": "Modifica servizio",
+      "desc": "Un servizio raggruppa endpoint, ad esempio uno per app o partner.",
+      "name": "Nome",
+      "namePlaceholder": "es. App mobile",
+      "description": "Descrizione",
+      "descriptionPlaceholder": "A cosa servono questi endpoint",
+      "active": "Risponde alle chiamate",
+      "activeHint": "Se disattivato, ogni endpoint al suo interno risponde con un errore chiaro.",
+      "create": "Crea servizio"
+    },
+    "fields": {
+      "title": "Domande",
+      "question": "Domanda",
+      "accept": "Accettata",
+      "required": "Obbligatoria",
+      "returned": "Restituita",
+      "filter": "Filtro",
+      "none": "Questo modulo non ha ancora domande",
+      "formRequired": "obbligatoria nel modulo",
+      "why": {
+        "file": "i file non possono ancora essere inviati tramite l'API",
+        "calculated": "calcolata dal modulo",
+        "payment": "i pagamenti non possono essere inviati tramite l'API",
+        "locked": "in sola lettura nel modulo"
+      }
+    },
+    "call": {
+      "title": "Chiamata di esempio",
+      "method": "Metodo",
+      "request": "Richiesta",
+      "answer": "Risposta",
+      "note": "I valori sono inventati. Per chiamarlo davvero serve un token."
+    },
+    "invalid": {
+      "required": "Compila questo campo.",
+      "pattern": "Usa da 3 a 64 lettere minuscole, numeri e trattini singoli, iniziando e finendo con una lettera o un numero.",
+      "reserved": "Questo nome è usato dal servizio API stesso. Scegline un altro.",
+      "form": "Scegli un modulo.",
+      "methods": "Scegli almeno un metodo.",
+      "accept": "POST e PUT richiedono almeno una domanda accettata.",
+      "returned": "GET richiede almeno una domanda restituita."
+    },
+    "wizard": {
+      "newCrumb": "Nuovo endpoint",
+      "editCrumb": "Modifica",
+      "newTitle": "Nuovo endpoint",
+      "newDesc": "Trasforma un modulo pubblicato in un'API",
+      "editTitle": "Modifica /{name}",
+      "editDesc": "Cambia il modulo, i metodi o le domande",
+      "stepOf": "Passaggio {n} di {total}",
+      "back": "Indietro",
+      "next": "Avanti",
+      "create": "Crea endpoint",
+      "leaveTitle": "Uscire senza salvare?",
+      "leaveDesc": "Quanto hai scelto per questo endpoint andrà perso.",
+      "leave": "Esci",
+      "preview": "Il tuo endpoint",
+      "where": "I dati inviati passano attraverso i controlli del modulo stesso e vengono archiviati dove il modulo conserva le sue risposte.",
+      "searchForms": "Cerca moduli pubblicati…",
+      "noForms": "Nessun modulo pubblicato ancora",
+      "noFormsDesc": "Solo i moduli pubblicati possono essere endpoint, così i dati di chi chiama superano gli stessi controlli della pagina del modulo.",
+      "toForms": "Vai a Moduli",
+      "pickService": "Scegli un servizio",
+      "newService": "Nuovo servizio",
+      "serviceHelp": "Disattivando un servizio, tutti i suoi endpoint si fermano insieme.",
+      "name": "Nome dell'endpoint",
+      "nameHelp": "L'ultima parte dell'indirizzo, es. register-account. Univoco nella tua organizzazione.",
+      "descriptionPlaceholder": "A cosa lo usa chi chiama",
+      "versionHelp": "Fissa una versione affinché le modifiche successive al modulo non cambino ciò che chi chiama deve inviare.",
+      "pageSizeHelp": "Il massimo di record restituiti da una GET (da 1 a {max}).",
+      "fieldsSummary": "{accepted} accettate · {returned} restituite",
+      "answeringHint": "Se disattivato, risponde con un errore chiaro finché non lo attivi.",
+      "tokensTitle": "Chi chiama ha bisogno di un token",
+      "tokensDesc": "Ogni chiamata richiede un token Bearer. Token, header obbligatori e regole di accesso si configurano una sola volta per tutta l’organizzazione.",
+      "step": {
+        "form": "Modulo",
+        "basics": "Nome",
+        "methods": "Metodi",
+        "fields": "Domande",
+        "review": "Riepilogo"
+      },
+      "title": {
+        "form": "Quale modulo?",
+        "basics": "Nome e servizio",
+        "methods": "Cosa può fare chi chiama?",
+        "fields": "Quali domande?",
+        "review": "Controlla e crea"
+      },
+      "desc": {
+        "form": "Chi chiama invia e legge le risposte di questo modulo.",
+        "basics": "Dove si trova e come si chiama.",
+        "methods": "Scegli i metodi a cui risponde. Potrai cambiarli in seguito.",
+        "fields": "Cosa accettano POST e PUT, e cosa restituisce GET o permette di filtrare.",
+        "review": "Dagli un'occhiata. Inizia a rispondere appena chi chiama ha un token."
+      },
+      "method": {
+        "GET": "Leggere le risposte: un elenco con paginazione e filtri, o una singola tramite il suo id.",
+        "POST": "Inviare una nuova risposta, controllata come nella pagina del modulo.",
+        "PUT": "Modificare una risposta tramite il suo id (solo le domande accettate).",
+        "DELETE": "Rimuovere una risposta tramite il suo id; resta nel registro di controllo."
+      }
     }
   },
   "ai": {

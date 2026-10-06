@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Bu bağlantı burada salt okunur: yalnızca okuma ifadeleri çalışır.",
     "FRM-DEST-1025": "Veritabanı bu ifadeyi çalıştıramadı.",
     "FRM-DEST-1026": "Her seferinde tek bir ifade çalıştırın: ifadeyi seçin ya da imleci içine koyun.",
-    "FRM-DEST-1027": "Bu sorguyu yalnızca kaydeden kişi değiştirebilir."
+    "FRM-DEST-1027": "Bu sorguyu yalnızca kaydeden kişi değiştirebilir.",
+    "FRM-API-1001": "Bu endpoint adı kuruluşunuzda zaten kullanılıyor.",
+    "FRM-API-1002": "Formun endpoint olabilmesi için önce yayımlayın.",
+    "FRM-API-1003": "Bu ada sahip bir hizmet zaten var."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -615,7 +618,8 @@
     "attention": "İlgi gerekiyor",
     "failing": "Başarısız",
     "disabled": "Devre dışı",
-    "untested": "Test edilmedi"
+    "untested": "Test edilmedi",
+    "active": "Etkin"
   },
   "footer": {
     "rights": "Tüm hakları saklıdır.",
@@ -807,7 +811,8 @@
       "users": "Kullanıcılar",
       "integrations": "Entegrasyonlar",
       "audit": "Denetim kaydı",
-      "data": "Veri kaynakları"
+      "data": "Veri kaynakları",
+      "api": "API hizmeti"
     },
     "actorType": {
       "user": "Kişi",
@@ -835,7 +840,9 @@
       "option_list": "Seçenek listesi",
       "theme": "Tema",
       "template": "Şablon",
-      "data_source": "Bağlantı"
+      "data_source": "Bağlantı",
+      "api_service": "API hizmeti",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Ad",
@@ -955,7 +962,17 @@
       "data_query_run": "Bir veritabanında sorgu çalıştırıldı",
       "data_query_exported": "Sorgu sonuçları dışa aktarıldı",
       "data_saved_query_saved": "Sorgu kaydedildi",
-      "data_saved_query_deleted": "Kayıtlı sorgu silindi"
+      "data_saved_query_deleted": "Kayıtlı sorgu silindi",
+      "api_service_created": "API hizmeti oluşturuldu",
+      "api_service_updated": "API hizmeti değiştirildi",
+      "api_service_enabled": "API hizmeti açıldı",
+      "api_service_disabled": "API hizmeti kapatıldı",
+      "api_service_deleted": "API hizmeti silindi",
+      "api_endpoint_created": "Endpoint oluşturuldu",
+      "api_endpoint_updated": "Endpoint değiştirildi",
+      "api_endpoint_enabled": "Endpoint açıldı",
+      "api_endpoint_disabled": "Endpoint kapatıldı",
+      "api_endpoint_deleted": "Endpoint silindi"
     },
     "detail": {
       "who": "Kim",
@@ -3552,6 +3569,201 @@
       "webhooks": "Her yeni yanıtı geldiği anda kendi sistemlerinize gönderin. İmzalı ve yeniden denemeli.",
       "apiKeys": "Formalie API'si için anahtarlar: formları ve yanıtları kodunuzdan yönetin.",
       "apps": "E-tablolar ve ekip sohbeti gibi uygulamaları bağlayın."
+    },
+    "optional": "İsteğe bağlı",
+    "address": "Adres",
+    "answering": "Çağrılara yanıt veriyor",
+    "serviceOff": "Hizmet kapalı",
+    "formNotPublished": "Form yayımlanmadı",
+    "noMethods": "Yöntem yok",
+    "noDescription": "Açıklama yok",
+    "neverCalled": "Henüz çağrılmadı",
+    "lastCall": "Çağrıldı: {when}",
+    "noCalls": "Son 30 günde çağrı yok.",
+    "noEndpoints": "Bu hizmette henüz endpoint yok",
+    "manyErrors": "Çağrıların 20'de 1'inden fazlası başarısız oldu",
+    "callsCount": "{n} çağrı | {n} çağrı",
+    "endpointsCount": "{n} endpoint | {n} endpoint",
+    "createdBy": "Oluşturan",
+    "latestVersion": "Son yayımlanan sürüm",
+    "versionN": "Sürüm {n}",
+    "pageSize": "Sayfa boyutu (GET)",
+    "navigate": "Öğeler arasında gezin",
+    "notFound": "Bu endpoint kullanılamıyor",
+    "searchServices": "Hizmet ara…",
+    "searchEndpoints": "Endpoint, form veya hizmet ara…",
+    "emptyServices": "Henüz hizmet yok",
+    "emptyServicesDesc": "Hizmet, endpoint'leri gruplar, örneğin uygulama veya iş ortağı başına bir tane; böylece birlikte açıp kapatabilirsiniz.",
+    "emptyEndpoints": "Henüz endpoint yok",
+    "emptyEndpointsDesc": "Yayımlanmış bir formu API'ye dönüştürün: kabul ettiği veya döndürdüğü yöntemleri ve soruları seçin.",
+    "kpi": {
+      "calls": "Çağrılar",
+      "errors": "Hatalar",
+      "time": "Yanıt süresi",
+      "byStatus": "Duruma göre hizmetler",
+      "byMethod": "Yönteme göre endpoint'ler",
+      "active": "{n} etkin",
+      "none": "Henüz bir şey yok"
+    },
+    "col": {
+      "service": "Hizmet",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoint'ler",
+      "status": "Durum",
+      "methods": "Yöntemler",
+      "calls": "Çağrılar (30 gün)",
+      "errors": "Hatalar",
+      "lastCall": "Son çağrı",
+      "created": "Oluşturuldu",
+      "updated": "Değiştirildi",
+      "version": "Form sürümü"
+    },
+    "sort": {
+      "calls": "En çok çağrılan",
+      "endpoints": "En çok endpoint",
+      "errors": "En çok hata",
+      "lastCall": "Son çağrılan",
+      "created": "En yeni",
+      "changed": "Son değiştirilen"
+    },
+    "actions": {
+      "open": "Aç",
+      "edit": "Düzenle",
+      "delete": "Sil",
+      "duplicate": "Çoğalt",
+      "turnOn": "Etkinleştir",
+      "turnOff": "Kapat",
+      "newEndpoint": "Yeni endpoint",
+      "viewEndpoints": "Endpoint'lerini göster",
+      "copyUrl": "Adresi kopyala",
+      "openForm": "Formu aç",
+      "openService": "Hizmeti aç"
+    },
+    "delete": {
+      "serviceTitle": "{name} silinsin mi?",
+      "serviceDesc": "{n} endpoint'i hemen yanıt vermeyi bırakır ve o da silinir. | {n} endpoint'i hemen yanıt vermeyi bırakır ve onlar da silinir.",
+      "serviceEmpty": "Hiç endpoint'i yok. Bu işlem geri alınamaz.",
+      "endpointTitle": "/{name} silinsin mi?",
+      "endpointDesc": "Onu çağıran uygulamalar artık hata alır. Zaten getirdiği yanıtlar formda kalır.",
+      "confirm": "Sil"
+    },
+    "toast": {
+      "serviceCreated": "{name} oluşturuldu",
+      "serviceSaved": "{name} kaydedildi",
+      "serviceOn": "{name} çağrılara yanıt veriyor",
+      "serviceOff": "{name} kapalı",
+      "serviceDeleted": "{name} silindi",
+      "duplicated": "{name} kopyası oluşturuldu (kapalı)",
+      "endpointCreated": "/{name} oluşturuldu",
+      "endpointSaved": "/{name} kaydedildi",
+      "endpointOn": "/{name} çağrılara yanıt veriyor",
+      "endpointOff": "/{name} kapalı",
+      "endpointDeleted": "/{name} silindi",
+      "urlCopied": "Adres kopyalandı"
+    },
+    "service": {
+      "newTitle": "Yeni hizmet",
+      "editTitle": "Hizmeti düzenle",
+      "desc": "Hizmet, endpoint'leri gruplar, örneğin uygulama veya iş ortağı başına bir tane.",
+      "name": "Ad",
+      "namePlaceholder": "örn. Mobil uygulama",
+      "description": "Açıklama",
+      "descriptionPlaceholder": "Bu endpoint'ler ne için",
+      "active": "Çağrılara yanıt veriyor",
+      "activeHint": "Kapalıyken içindeki her endpoint net bir hatayla yanıt verir.",
+      "create": "Hizmet oluştur"
+    },
+    "fields": {
+      "title": "Sorular",
+      "question": "Soru",
+      "accept": "Kabul edilen",
+      "required": "Zorunlu",
+      "returned": "Döndürülen",
+      "filter": "Filtre",
+      "none": "Bu formda henüz soru yok",
+      "formRequired": "form tarafından zorunlu",
+      "why": {
+        "file": "dosyalar henüz API ile gönderilemez",
+        "calculated": "form tarafından hesaplanır",
+        "payment": "ödemeler API ile gönderilemez",
+        "locked": "formda salt okunur"
+      }
+    },
+    "call": {
+      "title": "Örnek çağrı",
+      "method": "Yöntem",
+      "request": "İstek",
+      "answer": "Yanıt",
+      "note": "Değerler örnektir. Gerçekten çağırmak için bir token gerekir."
+    },
+    "invalid": {
+      "required": "Bunu doldurun.",
+      "pattern": "3 ile 64 arasında küçük harf, rakam ve tekli tire kullanın; harf veya rakamla başlayıp bitsin.",
+      "reserved": "Bu ad API hizmetinin kendisi tarafından kullanılıyor. Başka bir ad seçin.",
+      "form": "Bir form seçin.",
+      "methods": "En az bir yöntem seçin.",
+      "accept": "POST ve PUT için en az bir kabul edilen soru gerekir.",
+      "returned": "GET için en az bir döndürülen soru gerekir."
+    },
+    "wizard": {
+      "newCrumb": "Yeni endpoint",
+      "editCrumb": "Düzenle",
+      "newTitle": "Yeni endpoint",
+      "newDesc": "Yayımlanmış bir formu API'ye dönüştürün",
+      "editTitle": "/{name} düzenle",
+      "editDesc": "Formu, yöntemleri veya soruları değiştirin",
+      "stepOf": "Adım {n} / {total}",
+      "back": "Geri",
+      "next": "İleri",
+      "create": "Endpoint oluştur",
+      "leaveTitle": "Kaydetmeden çıkılsın mı?",
+      "leaveDesc": "Bu endpoint için seçtikleriniz kaybolacak.",
+      "leave": "Çık",
+      "preview": "Endpoint'iniz",
+      "where": "Ona gönderilen veriler formun kendi denetimlerinden geçer ve formun yanıtlarını sakladığı yerde saklanır.",
+      "searchForms": "Yayımlanmış formlarda ara…",
+      "noForms": "Henüz yayımlanmış form yok",
+      "noFormsDesc": "Yalnızca yayımlanmış formlar endpoint olabilir; böylece çağıranların verileri form sayfasıyla aynı denetimlerden geçer.",
+      "toForms": "Formlara git",
+      "pickService": "Bir hizmet seçin",
+      "newService": "Yeni hizmet",
+      "serviceHelp": "Bir hizmeti kapatmak tüm endpoint'lerini birlikte durdurur.",
+      "name": "Endpoint adı",
+      "nameHelp": "Adresin son kısmı, örn. register-account. Kuruluşunuzda benzersiz.",
+      "descriptionPlaceholder": "Çağıranlar bunu ne için kullanır",
+      "versionHelp": "Bir sürüm sabitleyin; böylece formda sonradan yapılan değişiklikler çağıranların göndermesi gerekenleri değiştirmez.",
+      "pageSizeHelp": "Tek bir GET'in döndürdüğü en fazla kayıt (1 ile {max} arası).",
+      "fieldsSummary": "{accepted} kabul edilen · {returned} döndürülen",
+      "answeringHint": "Kapalıyken siz açana kadar net bir hatayla yanıt verir.",
+      "tokensTitle": "Çağıranlar token'a ihtiyaç duyar",
+      "tokensDesc": "Her çağrı bir Bearer token gerektirir. Tokenlar, zorunlu başlıklar ve erişim kuralları tüm kuruluşunuz için bir kez ayarlanır.",
+      "step": {
+        "form": "Form",
+        "basics": "Ad",
+        "methods": "Yöntemler",
+        "fields": "Sorular",
+        "review": "Gözden geçir"
+      },
+      "title": {
+        "form": "Hangi form?",
+        "basics": "Ad ve hizmet",
+        "methods": "Çağıranlar neler yapabilir?",
+        "fields": "Hangi sorular?",
+        "review": "Kontrol edin ve oluşturun"
+      },
+      "desc": {
+        "form": "Çağıranlar bu formun yanıtlarını gönderir ve okur.",
+        "basics": "Nerede durduğu ve adı.",
+        "methods": "Yanıt verdiği yöntemleri seçin. Daha sonra değiştirebilirsiniz.",
+        "fields": "POST ve PUT'un ne kabul ettiği, GET'in ne döndürdüğü veya neye göre filtrelenebileceği.",
+        "review": "Göz atın. Çağıranların token'ı olur olmaz yanıt vermeye başlar."
+      },
+      "method": {
+        "GET": "Yanıtları oku: sayfalama ve filtrelerle bir liste ya da kimliğine göre tek bir yanıt.",
+        "POST": "Yeni bir yanıt gönder; form sayfasındaki gibi denetlenir.",
+        "PUT": "Bir yanıtı kimliğine göre değiştir (yalnızca kabul edilen sorular).",
+        "DELETE": "Bir yanıtı kimliğine göre kaldır; denetim kaydında tutulur."
+      }
     }
   },
   "ai": {

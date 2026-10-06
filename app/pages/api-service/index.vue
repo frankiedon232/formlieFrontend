@@ -12,8 +12,8 @@ useHead({ title: () => t('nav.apiService') })
 const config = useRuntimeConfig().public
 
 const sections = [
-  { key: 'services', nav: 'apiServices', icon: 'i-lucide-boxes', to: '/api-service/services' },
-  { key: 'endpoints', nav: 'apiEndpoints', icon: 'i-lucide-route', to: '/api-service/endpoints' },
+  { key: 'services', nav: 'apiServices', icon: 'i-lucide-boxes', to: '/api-service/services', live: true },
+  { key: 'endpoints', nav: 'apiEndpoints', icon: 'i-lucide-route', to: '/api-service/endpoints', live: true },
   { key: 'auth', nav: 'apiAuth', icon: 'i-lucide-key-round', to: '/api-service/auth' },
   { key: 'access', nav: 'apiAccess', icon: 'i-lucide-shield-check', to: '/api-service/access' },
   { key: 'logs', nav: 'apiLogs', icon: 'i-lucide-scroll-text', to: '/api-service/logs' },
@@ -64,7 +64,7 @@ const example = apiEndpointUrl(config.apiServiceUrl, 'k7Qm2xP9aZ', 'register-acc
         variant="outline"
         :ui="{ leadingIcon: 'size-5 text-default' }"
       >
-        <template #footer>
+        <template v-if="!('live' in section)" #footer>
           <UBadge :label="t('placeholder.title')" color="neutral" variant="soft" size="sm" />
         </template>
       </UPageCard>

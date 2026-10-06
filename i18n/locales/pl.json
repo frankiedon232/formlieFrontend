@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "To połączenie jest tutaj tylko do odczytu: działają wyłącznie instrukcje odczytu.",
     "FRM-DEST-1025": "Baza danych nie mogła wykonać tej instrukcji.",
     "FRM-DEST-1026": "Uruchamiaj jedną instrukcję naraz: zaznacz ją lub umieść w niej kursor.",
-    "FRM-DEST-1027": "Tylko osoba, która zapisała to zapytanie, może je zmienić."
+    "FRM-DEST-1027": "Tylko osoba, która zapisała to zapytanie, może je zmienić.",
+    "FRM-API-1001": "Ta nazwa endpointu jest już używana w Twojej organizacji.",
+    "FRM-API-1002": "Opublikuj formularz, zanim będzie mógł być endpointem.",
+    "FRM-API-1003": "Usługa o tej nazwie już istnieje."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -615,7 +618,8 @@
     "attention": "Wymaga uwagi",
     "failing": "Błąd",
     "disabled": "Wyłączone",
-    "untested": "Nieprzetestowane"
+    "untested": "Nieprzetestowane",
+    "active": "Aktywny"
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
@@ -807,7 +811,8 @@
       "users": "Użytkownicy",
       "integrations": "Integracje",
       "audit": "Dziennik audytu",
-      "data": "Źródła danych"
+      "data": "Źródła danych",
+      "api": "Usługa API"
     },
     "actorType": {
       "user": "Osoba",
@@ -835,7 +840,9 @@
       "option_list": "Lista opcji",
       "theme": "Motyw",
       "template": "Szablon",
-      "data_source": "Połączenie"
+      "data_source": "Połączenie",
+      "api_service": "Usługa API",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Nazwa",
@@ -955,7 +962,17 @@
       "data_query_run": "Uruchomiono zapytanie w bazie danych",
       "data_query_exported": "Wyeksportowano wyniki zapytania",
       "data_saved_query_saved": "Zapisano zapytanie",
-      "data_saved_query_deleted": "Usunięto zapisane zapytanie"
+      "data_saved_query_deleted": "Usunięto zapisane zapytanie",
+      "api_service_created": "Utworzono usługę API",
+      "api_service_updated": "Zmieniono usługę API",
+      "api_service_enabled": "Włączono usługę API",
+      "api_service_disabled": "Wyłączono usługę API",
+      "api_service_deleted": "Usunięto usługę API",
+      "api_endpoint_created": "Utworzono endpoint",
+      "api_endpoint_updated": "Zmieniono endpoint",
+      "api_endpoint_enabled": "Włączono endpoint",
+      "api_endpoint_disabled": "Wyłączono endpoint",
+      "api_endpoint_deleted": "Usunięto endpoint"
     },
     "detail": {
       "who": "Kto",
@@ -3552,6 +3569,201 @@
       "webhooks": "Każda nowa odpowiedź trafia od razu do Państwa systemów, podpisana i ponawiana w razie błędu.",
       "apiKeys": "Klucze do API Formalie: zarządzanie formularzami i odpowiedziami z poziomu kodu.",
       "apps": "Połączenie z aplikacjami, takimi jak arkusze kalkulacyjne i czat zespołu."
+    },
+    "optional": "Opcjonalne",
+    "address": "Adres",
+    "answering": "Odpowiada na wywołania",
+    "serviceOff": "Usługa wyłączona",
+    "formNotPublished": "Formularz nieopublikowany",
+    "noMethods": "Brak metod",
+    "noDescription": "Brak opisu",
+    "neverCalled": "Jeszcze nie wywołano",
+    "lastCall": "Wywołano {when}",
+    "noCalls": "Brak wywołań w ostatnich 30 dniach.",
+    "noEndpoints": "Ta usługa nie ma jeszcze endpointów",
+    "manyErrors": "Więcej niż 1 na 20 wywołań zakończyło się błędem",
+    "callsCount": "{n} wywołanie | {n} wywołań",
+    "endpointsCount": "{n} endpoint | {n} endpointów",
+    "createdBy": "Utworzył(a)",
+    "latestVersion": "Ostatnia opublikowana wersja",
+    "versionN": "Wersja {n}",
+    "pageSize": "Rozmiar strony (GET)",
+    "navigate": "Przechodzenie między elementami",
+    "notFound": "Ten endpoint jest niedostępny",
+    "searchServices": "Szukaj usług…",
+    "searchEndpoints": "Szukaj endpointów, formularzy lub usług…",
+    "emptyServices": "Brak usług",
+    "emptyServicesDesc": "Usługa grupuje endpointy, na przykład jeden na aplikację lub partnera, aby można je było włączać i wyłączać razem.",
+    "emptyEndpoints": "Brak endpointów",
+    "emptyEndpointsDesc": "Zamień opublikowany formularz w API: wybierz metody oraz pytania, które przyjmuje lub zwraca.",
+    "kpi": {
+      "calls": "Wywołania",
+      "errors": "Błędy",
+      "time": "Czas odpowiedzi",
+      "byStatus": "Usługi według statusu",
+      "byMethod": "Endpointy według metody",
+      "active": "{n} aktywnych",
+      "none": "Nic tu jeszcze nie ma"
+    },
+    "col": {
+      "service": "Usługa",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpointy",
+      "status": "Status",
+      "methods": "Metody",
+      "calls": "Wywołania (30 dni)",
+      "errors": "Błędy",
+      "lastCall": "Ostatnie wywołanie",
+      "created": "Utworzono",
+      "updated": "Zmieniono",
+      "version": "Wersja formularza"
+    },
+    "sort": {
+      "calls": "Najczęściej wywoływane",
+      "endpoints": "Najwięcej endpointów",
+      "errors": "Najwięcej błędów",
+      "lastCall": "Ostatnio wywołane",
+      "created": "Najnowsze",
+      "changed": "Ostatnio zmienione"
+    },
+    "actions": {
+      "open": "Otwórz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "duplicate": "Duplikuj",
+      "turnOn": "Włącz",
+      "turnOff": "Wyłącz",
+      "newEndpoint": "Nowy endpoint",
+      "viewEndpoints": "Pokaż jej endpointy",
+      "copyUrl": "Kopiuj adres",
+      "openForm": "Otwórz formularz",
+      "openService": "Otwórz usługę"
+    },
+    "delete": {
+      "serviceTitle": "Usunąć {name}?",
+      "serviceDesc": "Jej {n} endpoint natychmiast przestaje odpowiadać i też zostaje usunięty. | Jej {n} endpointów natychmiast przestaje odpowiadać i też zostaje usuniętych.",
+      "serviceEmpty": "Nie ma endpointów. Tej czynności nie można cofnąć.",
+      "endpointTitle": "Usunąć /{name}?",
+      "endpointDesc": "Aplikacje, które go wywołują, od teraz dostaną błąd. Odpowiedzi, które już zebrał, zostają w formularzu.",
+      "confirm": "Usuń"
+    },
+    "toast": {
+      "serviceCreated": "Utworzono {name}",
+      "serviceSaved": "Zapisano {name}",
+      "serviceOn": "{name} odpowiada na wywołania",
+      "serviceOff": "{name} jest wyłączona",
+      "serviceDeleted": "Usunięto {name}",
+      "duplicated": "Utworzono kopię {name} (wyłączoną)",
+      "endpointCreated": "Utworzono /{name}",
+      "endpointSaved": "Zapisano /{name}",
+      "endpointOn": "/{name} odpowiada na wywołania",
+      "endpointOff": "/{name} jest wyłączony",
+      "endpointDeleted": "Usunięto /{name}",
+      "urlCopied": "Skopiowano adres"
+    },
+    "service": {
+      "newTitle": "Nowa usługa",
+      "editTitle": "Edytuj usługę",
+      "desc": "Usługa grupuje endpointy, na przykład jeden na aplikację lub partnera.",
+      "name": "Nazwa",
+      "namePlaceholder": "np. Aplikacja mobilna",
+      "description": "Opis",
+      "descriptionPlaceholder": "Do czego służą te endpointy",
+      "active": "Odpowiada na wywołania",
+      "activeHint": "Gdy usługa jest wyłączona, każdy jej endpoint odpowiada czytelnym błędem.",
+      "create": "Utwórz usługę"
+    },
+    "fields": {
+      "title": "Pytania",
+      "question": "Pytanie",
+      "accept": "Przyjmowane",
+      "required": "Wymagane",
+      "returned": "Zwracane",
+      "filter": "Filtr",
+      "none": "Ten formularz nie ma jeszcze pytań",
+      "formRequired": "wymagane przez formularz",
+      "why": {
+        "file": "plików nie można jeszcze wysyłać przez API",
+        "calculated": "obliczane przez formularz",
+        "payment": "płatności nie można wysyłać przez API",
+        "locked": "tylko do odczytu w formularzu"
+      }
+    },
+    "call": {
+      "title": "Przykładowe wywołanie",
+      "method": "Metoda",
+      "request": "Żądanie",
+      "answer": "Odpowiedź",
+      "note": "Wartości są przykładowe. Do prawdziwego wywołania potrzebny jest token."
+    },
+    "invalid": {
+      "required": "Uzupełnij to pole.",
+      "pattern": "Użyj od 3 do 64 małych liter, cyfr i pojedynczych myślników, zaczynając i kończąc literą lub cyfrą.",
+      "reserved": "Ta nazwa jest używana przez samą usługę API. Wybierz inną.",
+      "form": "Wybierz formularz.",
+      "methods": "Wybierz co najmniej jedną metodę.",
+      "accept": "POST i PUT wymagają co najmniej jednego przyjmowanego pytania.",
+      "returned": "GET wymaga co najmniej jednego zwracanego pytania."
+    },
+    "wizard": {
+      "newCrumb": "Nowy endpoint",
+      "editCrumb": "Edytuj",
+      "newTitle": "Nowy endpoint",
+      "newDesc": "Zamień opublikowany formularz w API",
+      "editTitle": "Edytuj /{name}",
+      "editDesc": "Zmień formularz, metody lub pytania",
+      "stepOf": "Krok {n} z {total}",
+      "back": "Wstecz",
+      "next": "Dalej",
+      "create": "Utwórz endpoint",
+      "leaveTitle": "Wyjść bez zapisywania?",
+      "leaveDesc": "Wybory dla tego endpointu zostaną utracone.",
+      "leave": "Wyjdź",
+      "preview": "Twój endpoint",
+      "where": "Dane wysyłane do niego przechodzą przez własne kontrole formularza i są zapisywane tam, gdzie formularz przechowuje swoje odpowiedzi.",
+      "searchForms": "Szukaj opublikowanych formularzy…",
+      "noForms": "Brak opublikowanych formularzy",
+      "noFormsDesc": "Endpointami mogą być tylko opublikowane formularze, aby dane od wywołujących przechodziły te same kontrole co strona formularza.",
+      "toForms": "Przejdź do Formularzy",
+      "pickService": "Wybierz usługę",
+      "newService": "Nowa usługa",
+      "serviceHelp": "Wyłączenie usługi zatrzymuje wszystkie jej endpointy naraz.",
+      "name": "Nazwa endpointu",
+      "nameHelp": "Ostatnia część adresu, np. register-account. Unikalna w Twojej organizacji.",
+      "descriptionPlaceholder": "Do czego używają go wywołujący",
+      "versionHelp": "Przypnij wersję, aby późniejsze zmiany formularza nie zmieniały tego, co muszą wysyłać wywołujący.",
+      "pageSizeHelp": "Maksymalna liczba rekordów zwracanych przez jedno GET (od 1 do {max}).",
+      "fieldsSummary": "{accepted} przyjmowanych · {returned} zwracanych",
+      "answeringHint": "Gdy jest wyłączony, odpowiada czytelnym błędem, dopóki go nie włączysz.",
+      "tokensTitle": "Wywołujący potrzebują tokenu",
+      "tokensDesc": "Każde wywołanie wymaga tokenu Bearer. Tokeny, wymagane nagłówki i reguły dostępu ustawia się raz dla całej organizacji.",
+      "step": {
+        "form": "Formularz",
+        "basics": "Nazwa",
+        "methods": "Metody",
+        "fields": "Pytania",
+        "review": "Przegląd"
+      },
+      "title": {
+        "form": "Który formularz?",
+        "basics": "Nazwa i usługa",
+        "methods": "Co mogą robić wywołujący?",
+        "fields": "Które pytania?",
+        "review": "Sprawdź i utwórz"
+      },
+      "desc": {
+        "form": "Wywołujący wysyłają i odczytują odpowiedzi tego formularza.",
+        "basics": "Gdzie się znajduje i jak się nazywa.",
+        "methods": "Wybierz metody, na które odpowiada. Możesz je później zmienić.",
+        "fields": "Co przyjmują POST i PUT oraz co zwraca GET lub według czego można filtrować.",
+        "review": "Przejrzyj. Zacznie odpowiadać, gdy tylko wywołujący otrzymają token."
+      },
+      "method": {
+        "GET": "Odczyt odpowiedzi: lista ze stronicowaniem i filtrami albo jedna według id.",
+        "POST": "Wysłanie nowej odpowiedzi, sprawdzanej jak na stronie formularza.",
+        "PUT": "Zmiana odpowiedzi według id (tylko przyjmowane pytania).",
+        "DELETE": "Usunięcie odpowiedzi według id; zapisane w dzienniku audytu."
+      }
     }
   },
   "ai": {

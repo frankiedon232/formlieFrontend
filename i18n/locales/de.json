@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "Diese Verbindung ist hier schreibgeschützt: Nur lesende Anweisungen werden ausgeführt.",
     "FRM-DEST-1025": "Die Datenbank konnte diese Anweisung nicht ausführen.",
     "FRM-DEST-1026": "Führen Sie jeweils eine Anweisung aus: Markieren Sie sie oder setzen Sie den Cursor hinein.",
-    "FRM-DEST-1027": "Nur die Person, die diese Abfrage gespeichert hat, kann sie ändern."
+    "FRM-DEST-1027": "Nur die Person, die diese Abfrage gespeichert hat, kann sie ändern.",
+    "FRM-API-1001": "Dieser Endpoint-Name wird in Ihrer Organisation bereits verwendet.",
+    "FRM-API-1002": "Veröffentlichen Sie das Formular, bevor es ein Endpoint werden kann.",
+    "FRM-API-1003": "Ein Service mit diesem Namen existiert bereits."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -615,7 +618,8 @@
     "attention": "Prüfen",
     "failing": "Fehlerhaft",
     "disabled": "Deaktiviert",
-    "untested": "Nicht getestet"
+    "untested": "Nicht getestet",
+    "active": "Aktiv"
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -807,7 +811,8 @@
       "users": "Benutzer",
       "integrations": "Integrationen",
       "audit": "Audit-Protokoll",
-      "data": "Datenquellen"
+      "data": "Datenquellen",
+      "api": "API-Service"
     },
     "actorType": {
       "user": "Person",
@@ -835,7 +840,9 @@
       "option_list": "Optionsliste",
       "theme": "Design",
       "template": "Vorlage",
-      "data_source": "Verbindung"
+      "data_source": "Verbindung",
+      "api_service": "API-Service",
+      "api_endpoint": "Endpoint"
     },
     "field": {
       "name": "Name",
@@ -955,7 +962,17 @@
       "data_query_run": "Abfrage auf einer Datenbank ausgeführt",
       "data_query_exported": "Abfrageergebnisse exportiert",
       "data_saved_query_saved": "Abfrage gespeichert",
-      "data_saved_query_deleted": "Gespeicherte Abfrage gelöscht"
+      "data_saved_query_deleted": "Gespeicherte Abfrage gelöscht",
+      "api_service_created": "API-Service erstellt",
+      "api_service_updated": "API-Service geändert",
+      "api_service_enabled": "API-Service eingeschaltet",
+      "api_service_disabled": "API-Service ausgeschaltet",
+      "api_service_deleted": "API-Service gelöscht",
+      "api_endpoint_created": "Endpoint erstellt",
+      "api_endpoint_updated": "Endpoint geändert",
+      "api_endpoint_enabled": "Endpoint eingeschaltet",
+      "api_endpoint_disabled": "Endpoint ausgeschaltet",
+      "api_endpoint_deleted": "Endpoint gelöscht"
     },
     "detail": {
       "who": "Wer",
@@ -3552,6 +3569,201 @@
       "webhooks": "Senden Sie jede neue Antwort sofort an Ihre eigenen Systeme, signiert und mit Wiederholungsversuchen.",
       "apiKeys": "Schlüssel für die Formalie-API: Verwalten Sie Formulare und Antworten aus Ihrem Code.",
       "apps": "Verbinden Sie Apps wie Tabellenkalkulationen und Team-Chat."
+    },
+    "optional": "Optional",
+    "address": "Adresse",
+    "answering": "Nimmt Aufrufe an",
+    "serviceOff": "Service ausgeschaltet",
+    "formNotPublished": "Formular nicht veröffentlicht",
+    "noMethods": "Keine Methoden",
+    "noDescription": "Keine Beschreibung",
+    "neverCalled": "Noch nicht aufgerufen",
+    "lastCall": "Aufgerufen {when}",
+    "noCalls": "Keine Aufrufe in den letzten 30 Tagen.",
+    "noEndpoints": "In diesem Service gibt es noch keine Endpoints",
+    "manyErrors": "Mehr als 1 von 20 Aufrufen ist fehlgeschlagen",
+    "callsCount": "{n} Aufruf | {n} Aufrufe",
+    "endpointsCount": "{n} Endpoint | {n} Endpoints",
+    "createdBy": "Erstellt von",
+    "latestVersion": "Zuletzt veröffentlichte Version",
+    "versionN": "Version {n}",
+    "pageSize": "Seitengröße (GET)",
+    "navigate": "Zwischen Einträgen wechseln",
+    "notFound": "Dieser Endpoint ist nicht verfügbar",
+    "searchServices": "Services suchen…",
+    "searchEndpoints": "Endpoints, Formulare oder Services suchen…",
+    "emptyServices": "Noch keine Services",
+    "emptyServicesDesc": "Ein Service fasst Endpoints zusammen, z. B. einen pro App oder Partner, damit Sie sie gemeinsam ein- oder ausschalten können.",
+    "emptyEndpoints": "Noch keine Endpoints",
+    "emptyEndpointsDesc": "Machen Sie aus einem veröffentlichten Formular eine API: Wählen Sie die Methoden und die Fragen, die es annimmt oder zurückgibt.",
+    "kpi": {
+      "calls": "Aufrufe",
+      "errors": "Fehler",
+      "time": "Antwortzeit",
+      "byStatus": "Services nach Status",
+      "byMethod": "Endpoints nach Methode",
+      "active": "{n} aktiv",
+      "none": "Noch nichts vorhanden"
+    },
+    "col": {
+      "service": "Service",
+      "endpoint": "Endpoint",
+      "endpoints": "Endpoints",
+      "status": "Status",
+      "methods": "Methoden",
+      "calls": "Aufrufe (30 Tage)",
+      "errors": "Fehler",
+      "lastCall": "Letzter Aufruf",
+      "created": "Erstellt",
+      "updated": "Geändert",
+      "version": "Formularversion"
+    },
+    "sort": {
+      "calls": "Meist aufgerufen",
+      "endpoints": "Meiste Endpoints",
+      "errors": "Meiste Fehler",
+      "lastCall": "Zuletzt aufgerufen",
+      "created": "Neueste",
+      "changed": "Zuletzt geändert"
+    },
+    "actions": {
+      "open": "Öffnen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "duplicate": "Duplizieren",
+      "turnOn": "Einschalten",
+      "turnOff": "Ausschalten",
+      "newEndpoint": "Neuer Endpoint",
+      "viewEndpoints": "Endpoints anzeigen",
+      "copyUrl": "Adresse kopieren",
+      "openForm": "Formular öffnen",
+      "openService": "Service öffnen"
+    },
+    "delete": {
+      "serviceTitle": "{name} löschen?",
+      "serviceDesc": "Sein {n} Endpoint antwortet sofort nicht mehr und wird ebenfalls gelöscht. | Seine {n} Endpoints antworten sofort nicht mehr und werden ebenfalls gelöscht.",
+      "serviceEmpty": "Er hat keine Endpoints. Dies kann nicht rückgängig gemacht werden.",
+      "endpointTitle": "/{name} löschen?",
+      "endpointDesc": "Apps, die ihn aufrufen, erhalten ab sofort einen Fehler. Bereits eingegangene Antworten bleiben beim Formular.",
+      "confirm": "Löschen"
+    },
+    "toast": {
+      "serviceCreated": "{name} erstellt",
+      "serviceSaved": "{name} gespeichert",
+      "serviceOn": "{name} nimmt Aufrufe an",
+      "serviceOff": "{name} ist ausgeschaltet",
+      "serviceDeleted": "{name} gelöscht",
+      "duplicated": "Eine Kopie von {name} wurde erstellt (ausgeschaltet)",
+      "endpointCreated": "/{name} erstellt",
+      "endpointSaved": "/{name} gespeichert",
+      "endpointOn": "/{name} nimmt Aufrufe an",
+      "endpointOff": "/{name} ist ausgeschaltet",
+      "endpointDeleted": "/{name} gelöscht",
+      "urlCopied": "Adresse kopiert"
+    },
+    "service": {
+      "newTitle": "Neuer Service",
+      "editTitle": "Service bearbeiten",
+      "desc": "Ein Service fasst Endpoints zusammen, z. B. einen pro App oder Partner.",
+      "name": "Name",
+      "namePlaceholder": "z. B. Mobile App",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Wofür diese Endpoints gedacht sind",
+      "active": "Nimmt Aufrufe an",
+      "activeHint": "Ausgeschaltet antworten alle Endpoints darin mit einem klaren Fehler.",
+      "create": "Service erstellen"
+    },
+    "fields": {
+      "title": "Fragen",
+      "question": "Frage",
+      "accept": "Akzeptiert",
+      "required": "Erforderlich",
+      "returned": "Zurückgegeben",
+      "filter": "Filter",
+      "none": "Dieses Formular hat noch keine Fragen",
+      "formRequired": "vom Formular verlangt",
+      "why": {
+        "file": "Dateien können noch nicht über die API gesendet werden",
+        "calculated": "vom Formular berechnet",
+        "payment": "Zahlungen können nicht über die API gesendet werden",
+        "locked": "im Formular schreibgeschützt"
+      }
+    },
+    "call": {
+      "title": "Beispielaufruf",
+      "method": "Methode",
+      "request": "Anfrage",
+      "answer": "Antwort",
+      "note": "Die Werte sind erfunden. Für echte Aufrufe brauchen Aufrufer ein Token."
+    },
+    "invalid": {
+      "required": "Bitte ausfüllen.",
+      "pattern": "Verwenden Sie 3 bis 64 Kleinbuchstaben, Ziffern und einzelne Bindestriche, beginnend und endend mit einem Buchstaben oder einer Ziffer.",
+      "reserved": "Dieser Name wird vom API-Service selbst verwendet. Wählen Sie einen anderen.",
+      "form": "Wählen Sie ein Formular.",
+      "methods": "Wählen Sie mindestens eine Methode.",
+      "accept": "POST und PUT brauchen mindestens eine akzeptierte Frage.",
+      "returned": "GET braucht mindestens eine zurückgegebene Frage."
+    },
+    "wizard": {
+      "newCrumb": "Neuer Endpoint",
+      "editCrumb": "Bearbeiten",
+      "newTitle": "Neuer Endpoint",
+      "newDesc": "Machen Sie aus einem veröffentlichten Formular eine API",
+      "editTitle": "/{name} bearbeiten",
+      "editDesc": "Formular, Methoden oder Fragen ändern",
+      "stepOf": "Schritt {n} von {total}",
+      "back": "Zurück",
+      "next": "Weiter",
+      "create": "Endpoint erstellen",
+      "leaveTitle": "Ohne Speichern verlassen?",
+      "leaveDesc": "Ihre Auswahl für diesen Endpoint geht verloren.",
+      "leave": "Verlassen",
+      "preview": "Ihr Endpoint",
+      "where": "Daten, die gesendet werden, durchlaufen die eigenen Prüfungen des Formulars und werden dort gespeichert, wo das Formular seine Antworten ablegt.",
+      "searchForms": "Veröffentlichte Formulare suchen…",
+      "noForms": "Noch keine veröffentlichten Formulare",
+      "noFormsDesc": "Nur veröffentlichte Formulare können Endpoints sein, damit die Daten der Aufrufer dieselben Prüfungen wie auf der Formularseite durchlaufen.",
+      "toForms": "Zu Formulare",
+      "pickService": "Service wählen",
+      "newService": "Neuer Service",
+      "serviceHelp": "Wird ein Service ausgeschaltet, stoppen alle seine Endpoints gemeinsam.",
+      "name": "Endpoint-Name",
+      "nameHelp": "Der letzte Teil der Adresse, z. B. register-account. Eindeutig in Ihrer Organisation.",
+      "descriptionPlaceholder": "Wofür Aufrufer ihn verwenden",
+      "versionHelp": "Fixieren Sie eine Version, damit spätere Änderungen am Formular nicht ändern, was Aufrufer senden müssen.",
+      "pageSizeHelp": "Die meisten Datensätze, die ein GET zurückgibt (1 bis {max}).",
+      "fieldsSummary": "{accepted} akzeptiert · {returned} zurückgegeben",
+      "answeringHint": "Ausgeschaltet antwortet er mit einem klaren Fehler, bis Sie ihn einschalten.",
+      "tokensTitle": "Aufrufer brauchen ein Token",
+      "tokensDesc": "Jeder Aufruf braucht ein Bearer-Token. Tokens, Pflicht-Header und Zugriffsregeln richten Sie einmal für Ihre gesamte Organisation ein.",
+      "step": {
+        "form": "Formular",
+        "basics": "Name",
+        "methods": "Methoden",
+        "fields": "Fragen",
+        "review": "Prüfen"
+      },
+      "title": {
+        "form": "Welches Formular?",
+        "basics": "Name und Service",
+        "methods": "Was dürfen Aufrufer tun?",
+        "fields": "Welche Fragen?",
+        "review": "Prüfen und erstellen"
+      },
+      "desc": {
+        "form": "Aufrufer senden und lesen die Antworten dieses Formulars.",
+        "basics": "Wo er liegt und wie er heißt.",
+        "methods": "Wählen Sie die Methoden, auf die er antwortet. Sie können sie später ändern.",
+        "fields": "Was POST und PUT akzeptieren und was GET zurückgibt oder wonach gefiltert werden kann.",
+        "review": "Sehen Sie alles durch. Er antwortet, sobald Aufrufer ein Token haben."
+      },
+      "method": {
+        "GET": "Antworten lesen: eine Liste mit Seiten und Filtern oder eine einzelne per ID.",
+        "POST": "Eine neue Antwort senden, geprüft wie auf der Formularseite.",
+        "PUT": "Eine Antwort per ID ändern (nur die akzeptierten Fragen).",
+        "DELETE": "Eine Antwort per ID entfernen; im Audit-Protokoll festgehalten."
+      }
     }
   },
   "ai": {

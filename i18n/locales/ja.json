@@ -556,7 +556,10 @@
     "FRM-DEST-1024": "ここではこの接続は読み取り専用です。読み取りの文だけが実行されます。",
     "FRM-DEST-1025": "データベースはこの文を実行できませんでした。",
     "FRM-DEST-1026": "文は一度に 1 つずつ実行してください。文を選択するか、文の中にカーソルを置きます。",
-    "FRM-DEST-1027": "このクエリを変更できるのは、保存した本人だけです。"
+    "FRM-DEST-1027": "このクエリを変更できるのは、保存した本人だけです。",
+    "FRM-API-1001": "このエンドポイント名は組織内ですでに使われています。",
+    "FRM-API-1002": "エンドポイントにするには、先にフォームを公開してください。",
+    "FRM-API-1003": "この名前のサービスはすでに存在します。"
   },
   "errorUi": {
     "reference": "参照番号：{id}",
@@ -615,7 +618,8 @@
     "attention": "要確認",
     "failing": "エラー",
     "disabled": "無効",
-    "untested": "未テスト"
+    "untested": "未テスト",
+    "active": "有効"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -807,7 +811,8 @@
       "users": "ユーザー",
       "integrations": "連携",
       "audit": "監査ログ",
-      "data": "データソース"
+      "data": "データソース",
+      "api": "API サービス"
     },
     "actorType": {
       "user": "ユーザー",
@@ -835,7 +840,9 @@
       "option_list": "選択肢リスト",
       "theme": "テーマ",
       "template": "テンプレート",
-      "data_source": "接続"
+      "data_source": "接続",
+      "api_service": "API サービス",
+      "api_endpoint": "エンドポイント"
     },
     "field": {
       "name": "名前",
@@ -955,7 +962,17 @@
       "data_query_run": "データベースでクエリを実行",
       "data_query_exported": "クエリ結果をエクスポートしました",
       "data_saved_query_saved": "クエリを保存しました",
-      "data_saved_query_deleted": "保存済みクエリを削除しました"
+      "data_saved_query_deleted": "保存済みクエリを削除しました",
+      "api_service_created": "API サービスを作成しました",
+      "api_service_updated": "API サービスを変更しました",
+      "api_service_enabled": "API サービスをオンにしました",
+      "api_service_disabled": "API サービスをオフにしました",
+      "api_service_deleted": "API サービスを削除しました",
+      "api_endpoint_created": "エンドポイントを作成しました",
+      "api_endpoint_updated": "エンドポイントを変更しました",
+      "api_endpoint_enabled": "エンドポイントをオンにしました",
+      "api_endpoint_disabled": "エンドポイントをオフにしました",
+      "api_endpoint_deleted": "エンドポイントを削除しました"
     },
     "detail": {
       "who": "誰が",
@@ -3552,6 +3569,201 @@
       "webhooks": "新しい回答を受信と同時に自社のシステムへ送信します（署名付き・自動再試行）。",
       "apiKeys": "Formalie API のキー：コードからフォームと回答を管理できます。",
       "apps": "スプレッドシートやチームチャットなどのアプリと連携します。"
+    },
+    "optional": "任意",
+    "address": "アドレス",
+    "answering": "呼び出しを受け付け中",
+    "serviceOff": "サービスはオフです",
+    "formNotPublished": "フォームは未公開です",
+    "noMethods": "メソッドなし",
+    "noDescription": "説明なし",
+    "neverCalled": "まだ呼び出されていません",
+    "lastCall": "{when}に呼び出し",
+    "noCalls": "過去 30 日間の呼び出しはありません。",
+    "noEndpoints": "このサービスにはまだエンドポイントがありません",
+    "manyErrors": "20 回に 1 回を超える呼び出しが失敗しました",
+    "callsCount": "{n} 件の呼び出し | {n} 件の呼び出し",
+    "endpointsCount": "{n} 件のエンドポイント | {n} 件のエンドポイント",
+    "createdBy": "作成者",
+    "latestVersion": "最新の公開バージョン",
+    "versionN": "バージョン {n}",
+    "pageSize": "ページサイズ (GET)",
+    "navigate": "項目間を移動",
+    "notFound": "このエンドポイントは利用できません",
+    "searchServices": "サービスを検索…",
+    "searchEndpoints": "エンドポイント、フォーム、サービスを検索…",
+    "emptyServices": "サービスはまだありません",
+    "emptyServicesDesc": "サービスはエンドポイントをまとめます。たとえばアプリやパートナーごとに 1 つ作ると、まとめてオン・オフできます。",
+    "emptyEndpoints": "エンドポイントはまだありません",
+    "emptyEndpointsDesc": "公開済みのフォームを API にします。受け付けるメソッドと、受け取る・返す質問を選んでください。",
+    "kpi": {
+      "calls": "呼び出し",
+      "errors": "エラー",
+      "time": "応答時間",
+      "byStatus": "ステータス別のサービス",
+      "byMethod": "メソッド別のエンドポイント",
+      "active": "{n} 件が有効",
+      "none": "まだ何もありません"
+    },
+    "col": {
+      "service": "サービス",
+      "endpoint": "エンドポイント",
+      "endpoints": "エンドポイント",
+      "status": "ステータス",
+      "methods": "メソッド",
+      "calls": "呼び出し (30 日間)",
+      "errors": "エラー",
+      "lastCall": "最終呼び出し",
+      "created": "作成日",
+      "updated": "変更日",
+      "version": "フォームのバージョン"
+    },
+    "sort": {
+      "calls": "呼び出しが多い順",
+      "endpoints": "エンドポイントが多い順",
+      "errors": "エラーが多い順",
+      "lastCall": "最近呼び出された順",
+      "created": "新しい順",
+      "changed": "最近変更した順"
+    },
+    "actions": {
+      "open": "開く",
+      "edit": "編集",
+      "delete": "削除",
+      "duplicate": "複製",
+      "turnOn": "オンにする",
+      "turnOff": "オフにする",
+      "newEndpoint": "新しいエンドポイント",
+      "viewEndpoints": "エンドポイントを表示",
+      "copyUrl": "アドレスをコピー",
+      "openForm": "フォームを開く",
+      "openService": "サービスを開く"
+    },
+    "delete": {
+      "serviceTitle": "{name} を削除しますか?",
+      "serviceDesc": "{n} 件のエンドポイントは直ちに応答を停止し、一緒に削除されます。 | {n} 件のエンドポイントは直ちに応答を停止し、一緒に削除されます。",
+      "serviceEmpty": "エンドポイントはありません。この操作は元に戻せません。",
+      "endpointTitle": "/{name} を削除しますか?",
+      "endpointDesc": "これを呼び出すアプリは今後エラーになります。すでに受け取った回答はフォームに残ります。",
+      "confirm": "削除"
+    },
+    "toast": {
+      "serviceCreated": "{name} を作成しました",
+      "serviceSaved": "{name} を保存しました",
+      "serviceOn": "{name} は呼び出しを受け付けています",
+      "serviceOff": "{name} はオフです",
+      "serviceDeleted": "{name} を削除しました",
+      "duplicated": "{name} のコピーを作成しました (オフ)",
+      "endpointCreated": "/{name} を作成しました",
+      "endpointSaved": "/{name} を保存しました",
+      "endpointOn": "/{name} は呼び出しを受け付けています",
+      "endpointOff": "/{name} はオフです",
+      "endpointDeleted": "/{name} を削除しました",
+      "urlCopied": "アドレスをコピーしました"
+    },
+    "service": {
+      "newTitle": "新しいサービス",
+      "editTitle": "サービスを編集",
+      "desc": "サービスはエンドポイントをまとめます。たとえばアプリやパートナーごとに 1 つ作ります。",
+      "name": "名前",
+      "namePlaceholder": "例: モバイルアプリ",
+      "description": "説明",
+      "descriptionPlaceholder": "これらのエンドポイントの用途",
+      "active": "呼び出しを受け付ける",
+      "activeHint": "オフにすると、中のすべてのエンドポイントが明確なエラーを返します。",
+      "create": "サービスを作成"
+    },
+    "fields": {
+      "title": "質問",
+      "question": "質問",
+      "accept": "受け付ける",
+      "required": "必須",
+      "returned": "返す",
+      "filter": "フィルター",
+      "none": "このフォームにはまだ質問がありません",
+      "formRequired": "フォームで必須",
+      "why": {
+        "file": "ファイルはまだ API では送信できません",
+        "calculated": "フォームが計算します",
+        "payment": "支払いは API では送信できません",
+        "locked": "フォームでは読み取り専用"
+      }
+    },
+    "call": {
+      "title": "呼び出しの例",
+      "method": "メソッド",
+      "request": "リクエスト",
+      "answer": "レスポンス",
+      "note": "値は架空のものです。実際に呼び出すにはトークンが必要です。"
+    },
+    "invalid": {
+      "required": "入力してください。",
+      "pattern": "小文字、数字、単独のハイフンを 3 から 64 文字で使用し、先頭と末尾は文字か数字にしてください。",
+      "reserved": "この名前は API サービス自体が使用しています。別の名前を選んでください。",
+      "form": "フォームを選んでください。",
+      "methods": "メソッドを 1 つ以上選んでください。",
+      "accept": "POST と PUT には、受け付ける質問が 1 つ以上必要です。",
+      "returned": "GET には、返す質問が 1 つ以上必要です。"
+    },
+    "wizard": {
+      "newCrumb": "新しいエンドポイント",
+      "editCrumb": "編集",
+      "newTitle": "新しいエンドポイント",
+      "newDesc": "公開済みのフォームを API にします",
+      "editTitle": "/{name} を編集",
+      "editDesc": "フォーム、メソッド、質問を変更します",
+      "stepOf": "ステップ {n} / {total}",
+      "back": "戻る",
+      "next": "次へ",
+      "create": "エンドポイントを作成",
+      "leaveTitle": "保存せずに離れますか?",
+      "leaveDesc": "このエンドポイントで選択した内容は失われます。",
+      "leave": "離れる",
+      "preview": "あなたのエンドポイント",
+      "where": "送信されたデータはフォーム自体のチェックを通り、フォームが回答を保存する場所に保存されます。",
+      "searchForms": "公開済みのフォームを検索…",
+      "noForms": "公開済みのフォームはまだありません",
+      "noFormsDesc": "呼び出し元のデータがフォームページと同じチェックを通るよう、エンドポイントにできるのは公開済みのフォームだけです。",
+      "toForms": "フォームへ移動",
+      "pickService": "サービスを選択",
+      "newService": "新しいサービス",
+      "serviceHelp": "サービスをオフにすると、そのすべてのエンドポイントがまとめて停止します。",
+      "name": "エンドポイント名",
+      "nameHelp": "アドレスの最後の部分です。例: register-account。組織内で一意です。",
+      "descriptionPlaceholder": "呼び出し元がこれを使う目的",
+      "versionHelp": "バージョンを固定すると、フォームを後から変更しても、呼び出し元が送るべき内容は変わりません。",
+      "pageSizeHelp": "1 回の GET が返す最大レコード数 (1 から {max})。",
+      "fieldsSummary": "受け付ける {accepted} · 返す {returned}",
+      "answeringHint": "オフの間は、オンにするまで明確なエラーで応答します。",
+      "tokensTitle": "呼び出し元にはトークンが必要です",
+      "tokensDesc": "すべての呼び出しに Bearer トークンが必要です。トークン、必須ヘッダー、アクセスルールは組織全体で一度だけ設定します。",
+      "step": {
+        "form": "フォーム",
+        "basics": "名前",
+        "methods": "メソッド",
+        "fields": "質問",
+        "review": "確認"
+      },
+      "title": {
+        "form": "どのフォーム?",
+        "basics": "名前とサービス",
+        "methods": "呼び出し元は何ができますか?",
+        "fields": "どの質問?",
+        "review": "確認して作成"
+      },
+      "desc": {
+        "form": "呼び出し元はこのフォームの回答を送信・読み取りします。",
+        "basics": "どこに置くか、何と呼ぶか。",
+        "methods": "応答するメソッドを選んでください。あとから変更できます。",
+        "fields": "POST と PUT が受け付ける内容と、GET が返す内容や絞り込める条件。",
+        "review": "内容を確認してください。呼び出し元がトークンを持った時点で応答を始めます。"
+      },
+      "method": {
+        "GET": "回答の読み取り: ページングとフィルター付きの一覧、または ID で 1 件。",
+        "POST": "新しい回答の送信。フォームページと同様にチェックされます。",
+        "PUT": "ID で回答を変更します (受け付ける質問のみ)。",
+        "DELETE": "ID で回答を削除します。監査ログに残ります。"
+      }
     }
   },
   "ai": {

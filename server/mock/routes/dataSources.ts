@@ -22,7 +22,7 @@ import { hasTablesSchema } from '#shared/utils/datasources/permissions'
 import { DB_ENGINES } from '#shared/utils/integrations/databases'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
-import { MockError, ok, paginate } from '../core/respond'
+import { MockError, ok, paginate, filtersOf } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { finishedTest, planTest, testAt, type TestPlan } from '../data/dataSourceSim'
@@ -157,7 +157,7 @@ const inList = (value: unknown, actual: string) => typeof value !== 'string' || 
 
 export const listDataSources = defineMockRoute(({ event, query }) => {
   const { tenant } = requireAdmin(event)
-  const filter = (query.filter ?? {}) as Record<string, unknown>
+  const filter = filtersOf(query)
   const rows = dataSourcesOf(tenant)
     .map(source => withForms(tenant, rowOf(source)))
     .filter(row => inList(filter.status, row.status) && inList(filter.engine, row.engine) && inList(filter.access, row.access.other))

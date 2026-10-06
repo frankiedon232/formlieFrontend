@@ -15,7 +15,7 @@ import type { SavedQueryInsights } from '#shared/types/query'
 import { scriptKind, splitStatements } from '#shared/utils/datasources/sql'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAdmin } from '../core/auth'
-import { MockError, ok, paginate } from '../core/respond'
+import { MockError, ok, paginate, filtersOf } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { dataSourcesOf } from '../data/dataSourceStore'
@@ -32,7 +32,7 @@ const input = z.object({
 
 export const listSavedQueries = defineMockRoute(({ event, query }) => {
   const { tenant, user } = requireAdmin(event)
-  const filter = (query.filter ?? {}) as Record<string, string | undefined>
+  const filter = filtersOf(query)
   let rows = visibleTo(tenant, user).map(item => toSavedQuery(tenant, user, item))
   if (filter.datasource) rows = rows.filter(row => filter.datasource!.split(',').includes(row.datasource.id))
   if (filter.scope) rows = rows.filter(row => filter.scope!.split(',').some(scope => (scope === 'mine' ? row.mine : scope === 'shared' ? row.shared : true)))
