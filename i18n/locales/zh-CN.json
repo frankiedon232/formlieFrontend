@@ -566,7 +566,7 @@
     "FRM-API-1007": "此端点已关闭。",
     "FRM-API-1008": "此端点不响应该方法。",
     "FRM-API-1009": "此令牌无权调用该端点或方法。",
-    "FRM-API-1010": "请以 Authorization: Bearer <token> 发送有效令牌。",
+    "FRM-API-1010": "请以 Authorization: Bearer … 发送有效令牌。",
     "FRM-API-1011": "缺少必需的请求头，或其值不正确。",
     "FRM-API-1012": "请求签名缺失、已过期或不正确。",
     "FRM-API-1013": "没有此 ID 的记录。",

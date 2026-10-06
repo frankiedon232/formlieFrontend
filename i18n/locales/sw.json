@@ -566,7 +566,7 @@
     "FRM-API-1007": "Endpoint hii imezimwa.",
     "FRM-API-1008": "Endpoint hii haijibu njia hii.",
     "FRM-API-1009": "Tokeni hii hairuhusiwi kuita endpoint au njia hii.",
-    "FRM-API-1010": "Tuma tokeni halali kama Authorization: Bearer <token>.",
+    "FRM-API-1010": "Tuma tokeni halali kama Authorization: Bearer ….",
     "FRM-API-1011": "Kichwa kinachohitajika hakipo au kina thamani isiyo sahihi.",
     "FRM-API-1012": "Saini ya ombi haipo, ni ya zamani mno au si sahihi.",
     "FRM-API-1013": "Hakuna rekodi yenye kitambulisho hiki.",

@@ -566,7 +566,7 @@
     "FRM-API-1007": "Ten endpoint jest wyłączony.",
     "FRM-API-1008": "Ten endpoint nie obsługuje tej metody.",
     "FRM-API-1009": "Ten token nie może wywoływać tego endpointu ani metody.",
-    "FRM-API-1010": "Wyślij prawidłowy token jako Authorization: Bearer <token>.",
+    "FRM-API-1010": "Wyślij prawidłowy token jako Authorization: Bearer ….",
     "FRM-API-1011": "Brakuje wymaganego nagłówka lub ma on złą wartość.",
     "FRM-API-1012": "Brakuje podpisu żądania, jest za stary lub nieprawidłowy.",
     "FRM-API-1013": "Nie ma rekordu o tym id.",

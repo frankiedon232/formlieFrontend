@@ -566,7 +566,7 @@
     "FRM-API-1007": "Endpoint này đang tắt.",
     "FRM-API-1008": "Endpoint này không trả lời phương thức này.",
     "FRM-API-1009": "Token này không được gọi endpoint hoặc phương thức này.",
-    "FRM-API-1010": "Hãy gửi token hợp lệ dạng Authorization: Bearer <token>.",
+    "FRM-API-1010": "Hãy gửi token hợp lệ dạng Authorization: Bearer ….",
     "FRM-API-1011": "Thiếu một header bắt buộc hoặc giá trị không đúng.",
     "FRM-API-1012": "Chữ ký của yêu cầu bị thiếu, quá cũ hoặc sai.",
     "FRM-API-1013": "Không có bản ghi với id này.",

@@ -24,6 +24,14 @@ const placeholders = (text: string) => [...text.matchAll(/\{(\w+)\}/g)].map(m =>
 const english = flatten(load('en'))
 
 describe('locales', () => {
+  // vue-i18n reads <word> as HTML and refuses the whole file (dev server error, 2026-10-06)
+  it('has no HTML-like <tags> in any message', () => {
+    for (const { code } of APP_LOCALES) {
+      const tagged = Object.entries(flatten(load(code))).filter(([, text]) => /<[^>]*>/.test(text)).map(([key]) => key)
+      expect(tagged, code).toEqual([])
+    }
+  })
+
   it('translates every FRM-* error code (server catalogue + client network codes)', () => {
     const codes = [...Object.keys(ERROR_CODES), 'FRM-NET-1000', 'FRM-NET-1001', 'FRM-NET-1002']
     for (const code of codes) expect(english[`errors.${code}`], code).toBeTruthy()

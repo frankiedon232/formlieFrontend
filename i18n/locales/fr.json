@@ -566,7 +566,7 @@
     "FRM-API-1007": "Cet endpoint est désactivé.",
     "FRM-API-1008": "Cet endpoint ne répond pas à cette méthode.",
     "FRM-API-1009": "Ce jeton ne peut pas appeler cet endpoint ou cette méthode.",
-    "FRM-API-1010": "Envoyez un jeton valide sous la forme Authorization: Bearer <token>.",
+    "FRM-API-1010": "Envoyez un jeton valide sous la forme Authorization: Bearer ….",
     "FRM-API-1011": "Un en-tête obligatoire manque ou a une valeur incorrecte.",
     "FRM-API-1012": "La signature de la requête manque, est trop ancienne ou est incorrecte.",
     "FRM-API-1013": "Aucun enregistrement avec cet identifiant.",

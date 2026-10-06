@@ -566,7 +566,7 @@
     "FRM-API-1007": "Bu endpoint kapalı.",
     "FRM-API-1008": "Bu endpoint bu metodu yanıtlamıyor.",
     "FRM-API-1009": "Bu token bu endpoint veya metodu çağıramaz.",
-    "FRM-API-1010": "Geçerli bir token gönderin: Authorization: Bearer <token>.",
+    "FRM-API-1010": "Geçerli bir token gönderin: Authorization: Bearer ….",
     "FRM-API-1011": "Zorunlu bir başlık eksik ya da değeri yanlış.",
     "FRM-API-1012": "İstek imzası eksik, çok eski ya da yanlış.",
     "FRM-API-1013": "Bu id ile kayıt yok.",

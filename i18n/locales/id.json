@@ -566,7 +566,7 @@
     "FRM-API-1007": "Endpoint ini dimatikan.",
     "FRM-API-1008": "Endpoint ini tidak menjawab metode ini.",
     "FRM-API-1009": "Token ini tidak boleh memanggil endpoint atau metode ini.",
-    "FRM-API-1010": "Kirim token yang valid sebagai Authorization: Bearer <token>.",
+    "FRM-API-1010": "Kirim token yang valid sebagai Authorization: Bearer ….",
     "FRM-API-1011": "Header wajib tidak ada atau nilainya salah.",
     "FRM-API-1012": "Tanda tangan permintaan tidak ada, terlalu lama, atau salah.",
     "FRM-API-1013": "Tidak ada catatan dengan id ini.",

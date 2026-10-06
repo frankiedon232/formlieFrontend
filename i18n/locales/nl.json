@@ -566,7 +566,7 @@
     "FRM-API-1007": "Dit endpoint staat uit.",
     "FRM-API-1008": "Dit endpoint beantwoordt deze methode niet.",
     "FRM-API-1009": "Dit token mag dit endpoint of deze methode niet aanroepen.",
-    "FRM-API-1010": "Stuur een geldig token als Authorization: Bearer <token>.",
+    "FRM-API-1010": "Stuur een geldig token als Authorization: Bearer ….",
     "FRM-API-1011": "Een verplichte header ontbreekt of heeft een verkeerde waarde.",
     "FRM-API-1012": "De handtekening van het verzoek ontbreekt, is te oud of klopt niet.",
     "FRM-API-1013": "Er is geen record met dit id.",

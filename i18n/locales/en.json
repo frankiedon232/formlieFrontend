@@ -566,7 +566,7 @@
     "FRM-API-1007": "This endpoint is switched off.",
     "FRM-API-1008": "This endpoint does not answer this method.",
     "FRM-API-1009": "This token may not call this endpoint or method.",
-    "FRM-API-1010": "Send a valid token as Authorization: Bearer <token>.",
+    "FRM-API-1010": "Send a valid token as Authorization: Bearer ….",
     "FRM-API-1011": "A required header is missing or has the wrong value.",
     "FRM-API-1012": "The request signature is missing, too old or wrong.",
     "FRM-API-1013": "There is no record with this id.",
