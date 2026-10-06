@@ -3736,7 +3736,8 @@
       "serviceEmpty": "No tiene endpoints. Esta acción no se puede deshacer.",
       "endpointTitle": "¿Eliminar /{name}?",
       "endpointDesc": "Las aplicaciones que lo llamen recibirán un error a partir de ahora. Las respuestas que ya recibió se quedan en el formulario.",
-      "confirm": "Eliminar"
+      "confirm": "Eliminar",
+      "tokensNote": "{n} token está limitado a esto ({names}): ya no podrá llamar a nada aquí. Edítalo después. | {n} tokens están limitados a esto ({names}): ya no podrán llamar a nada aquí. Edítalos después."
     },
     "toast": {
       "serviceCreated": "{name} creado",

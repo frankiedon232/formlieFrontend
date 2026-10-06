@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Haina endpoint. Hatua hii haiwezi kutenduliwa.",
       "endpointTitle": "Kufuta /{name}?",
       "endpointDesc": "Programu zinazoiita zitapata hitilafu kuanzia sasa. Majibu ambayo tayari imeleta hubaki kwenye fomu.",
-      "confirm": "Futa"
+      "confirm": "Futa",
+      "tokensNote": "Tokeni {n} imewekewa hapa tu ({names}): haitaweza tena kuita chochote hapa. Ihariri baadaye. | Tokeni {n} zimewekewa hapa tu ({names}): hazitaweza tena kuita chochote hapa. Zihariri baadaye."
     },
     "toast": {
       "serviceCreated": "{name} imeundwa",

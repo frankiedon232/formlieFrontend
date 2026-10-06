@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Er zijn geen endpoints. Dit kan niet ongedaan worden gemaakt.",
       "endpointTitle": "/{name} verwijderen?",
       "endpointDesc": "Apps die het aanroepen krijgen vanaf nu een fout. Antwoorden die al binnen zijn, blijven bij het formulier.",
-      "confirm": "Verwijderen"
+      "confirm": "Verwijderen",
+      "tokensNote": "{n} token is hiertoe beperkt ({names}): het kan hier daarna niets meer aanroepen. Bewerk het daarna. | {n} tokens zijn hiertoe beperkt ({names}): ze kunnen hier daarna niets meer aanroepen. Bewerk ze daarna."
     },
     "toast": {
       "serviceCreated": "{name} aangemaakt",

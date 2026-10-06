@@ -3736,7 +3736,8 @@
       "serviceEmpty": "它没有端点。此操作无法撤销。",
       "endpointTitle": "删除 /{name}?",
       "endpointDesc": "调用它的应用从现在起会收到错误。它已收到的回复会保留在表单中。",
-      "confirm": "删除"
+      "confirm": "删除",
+      "tokensNote": "{n} 个令牌仅限于此 ({names})：之后将无法在这里调用任何内容。请随后编辑。 | {n} 个令牌仅限于此 ({names})：之后将无法在这里调用任何内容。请随后编辑。"
     },
     "toast": {
       "serviceCreated": "已创建 {name}",

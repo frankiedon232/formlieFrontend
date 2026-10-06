@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Nó không có endpoint nào. Không thể hoàn tác thao tác này.",
       "endpointTitle": "Xóa /{name}?",
       "endpointDesc": "Các ứng dụng gọi nó sẽ nhận lỗi từ bây giờ. Các phản hồi đã nhận vẫn nằm trong biểu mẫu.",
-      "confirm": "Xóa"
+      "confirm": "Xóa",
+      "tokensNote": "{n} token chỉ được dùng cho mục này ({names}): sau đó sẽ không gọi được gì ở đây nữa. Hãy sửa sau. | {n} token chỉ được dùng cho mục này ({names}): sau đó sẽ không gọi được gì ở đây nữa. Hãy sửa sau."
     },
     "toast": {
       "serviceCreated": "Đã tạo {name}",

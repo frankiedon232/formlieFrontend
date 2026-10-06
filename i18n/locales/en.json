@@ -3736,7 +3736,8 @@
       "serviceEmpty": "It has no endpoints. This can't be undone.",
       "endpointTitle": "Delete /{name}?",
       "endpointDesc": "Apps that call it get an error from now on. Responses it already brought in stay with the form.",
-      "confirm": "Delete"
+      "confirm": "Delete",
+      "tokensNote": "{n} token is limited to it ({names}): it will not be able to call anything here any more. Edit it afterwards. | {n} tokens are limited to it ({names}): they will not be able to call anything here any more. Edit them afterwards."
     },
     "toast": {
       "serviceCreated": "{name} created",

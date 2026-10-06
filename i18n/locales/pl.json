@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Nie ma endpointów. Tej czynności nie można cofnąć.",
       "endpointTitle": "Usunąć /{name}?",
       "endpointDesc": "Aplikacje, które go wywołują, od teraz dostaną błąd. Odpowiedzi, które już zebrał, zostają w formularzu.",
-      "confirm": "Usuń"
+      "confirm": "Usuń",
+      "tokensNote": "{n} token jest do tego ograniczony ({names}): nie będzie mógł tu już nic wywołać. Edytuj go potem. | Tokeny ograniczone do tego: {n} ({names}): nie będą mogły tu już nic wywołać. Edytuj je potem."
     },
     "toast": {
       "serviceCreated": "Utworzono {name}",

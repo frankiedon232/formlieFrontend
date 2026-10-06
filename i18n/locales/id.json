@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Tidak ada endpoint. Tindakan ini tidak dapat dibatalkan.",
       "endpointTitle": "Hapus /{name}?",
       "endpointDesc": "Aplikasi yang memanggilnya akan mendapat error mulai sekarang. Respons yang sudah masuk tetap ada di formulir.",
-      "confirm": "Hapus"
+      "confirm": "Hapus",
+      "tokensNote": "{n} token dibatasi ke sini ({names}): token ini tidak akan bisa memanggil apa pun di sini lagi. Edit setelahnya. | {n} token dibatasi ke sini ({names}): token-token ini tidak akan bisa memanggil apa pun di sini lagi. Edit setelahnya."
     },
     "toast": {
       "serviceCreated": "{name} dibuat",

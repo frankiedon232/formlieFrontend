@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Non ha endpoint. L'azione non può essere annullata.",
       "endpointTitle": "Eliminare /{name}?",
       "endpointDesc": "Le app che lo chiamano riceveranno un errore da ora in poi. Le risposte già ricevute restano nel modulo.",
-      "confirm": "Elimina"
+      "confirm": "Elimina",
+      "tokensNote": "{n} token è limitato a questo ({names}): non potrà più chiamare nulla qui. Modificalo dopo. | {n} token sono limitati a questo ({names}): non potranno più chiamare nulla qui. Modificali dopo."
     },
     "toast": {
       "serviceCreated": "{name} creato",

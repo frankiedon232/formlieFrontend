@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Il n'a aucun endpoint. Cette action est irréversible.",
       "endpointTitle": "Supprimer /{name} ?",
       "endpointDesc": "Les applications qui l'appellent recevront une erreur dès maintenant. Les réponses déjà reçues restent dans le formulaire.",
-      "confirm": "Supprimer"
+      "confirm": "Supprimer",
+      "tokensNote": "{n} jeton y est limité ({names}) : il ne pourra plus rien appeler ici. Modifiez-le ensuite. | {n} jetons y sont limités ({names}) : ils ne pourront plus rien appeler ici. Modifiez-les ensuite."
     },
     "toast": {
       "serviceCreated": "{name} créé",

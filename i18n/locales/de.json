@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Er hat keine Endpoints. Dies kann nicht rückgängig gemacht werden.",
       "endpointTitle": "/{name} löschen?",
       "endpointDesc": "Apps, die ihn aufrufen, erhalten ab sofort einen Fehler. Bereits eingegangene Antworten bleiben beim Formular.",
-      "confirm": "Löschen"
+      "confirm": "Löschen",
+      "tokensNote": "{n} Token ist darauf beschränkt ({names}): Es kann hier danach nichts mehr aufrufen. Bearbeite es anschließend. | {n} Tokens sind darauf beschränkt ({names}): Sie können hier danach nichts mehr aufrufen. Bearbeite sie anschließend."
     },
     "toast": {
       "serviceCreated": "{name} erstellt",

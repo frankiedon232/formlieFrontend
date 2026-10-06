@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Hiç endpoint'i yok. Bu işlem geri alınamaz.",
       "endpointTitle": "/{name} silinsin mi?",
       "endpointDesc": "Onu çağıran uygulamalar artık hata alır. Zaten getirdiği yanıtlar formda kalır.",
-      "confirm": "Sil"
+      "confirm": "Sil",
+      "tokensNote": "{n} anahtar buna sınırlı ({names}): artık burada hiçbir şeyi çağıramayacak. Sonra düzenleyin. | {n} anahtar buna sınırlı ({names}): artık burada hiçbir şeyi çağıramayacaklar. Sonra düzenleyin."
     },
     "toast": {
       "serviceCreated": "{name} oluşturuldu",

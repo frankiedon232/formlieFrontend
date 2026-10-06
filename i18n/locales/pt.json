@@ -3736,7 +3736,8 @@
       "serviceEmpty": "Ele não tem endpoints. Esta ação não pode ser desfeita.",
       "endpointTitle": "Excluir /{name}?",
       "endpointDesc": "Os apps que o chamam receberão um erro a partir de agora. As respostas que ele já trouxe permanecem no formulário.",
-      "confirm": "Excluir"
+      "confirm": "Excluir",
+      "tokensNote": "{n} token está limitado a isto ({names}): não poderá chamar mais nada aqui. Edite-o depois. | {n} tokens estão limitados a isto ({names}): não poderão chamar mais nada aqui. Edite-os depois."
     },
     "toast": {
       "serviceCreated": "{name} criado",
