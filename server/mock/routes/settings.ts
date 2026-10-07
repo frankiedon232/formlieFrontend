@@ -18,7 +18,7 @@ import { z } from 'zod'
 import type { BrandingSettings, SecurityActivity, SettingsSection } from '#shared/types/settings'
 import { SETTINGS_SECTIONS } from '#shared/types/settings'
 import { ipInCidr } from '#shared/utils/apiService/access'
-import { brandingSchema, companySchema, localisationSchema, securitySchema, signinSchema } from '#shared/utils/settings/schemas'
+import { brandingSchema, companySchema, emailsSchema, localisationSchema, notificationsSchema, securitySchema, signinSchema } from '#shared/utils/settings/schemas'
 import { actorOf, auditLogOf, recordAudit } from '../core/audit'
 import { activeSessions, callerIp, currentSessionId, requireAdmin, requireAuth, revokeSessions } from '../core/auth'
 import { MockError, ok } from '../core/respond'
@@ -28,7 +28,7 @@ import { settingsChanges, settingsOf, writeSettings } from '../data/settingsStor
 import type { MockTenant } from '../data/tenants'
 import { completedUploadUrl } from './uploads'
 
-const LABELS: Record<SettingsSection, string> = { company: 'Company', branding: 'Branding', localisation: 'Language and region', signin: 'Sign-in', security: 'Security' }
+const LABELS: Record<SettingsSection, string> = { company: 'Company', branding: 'Branding', localisation: 'Language and region', signin: 'Sign-in', security: 'Security', notifications: 'Notifications', emails: 'Email templates' }
 const lockedOut = (field: string, message: string) => new MockError('FRM-AUTH-1017', [{ field, message }])
 
 function sectionOf(value: string | undefined): SettingsSection {
@@ -105,6 +105,21 @@ export const patchSection = defineMockRoute(({ event, body }) => {
     const flat = (item: typeof value) => ({ ...item, ip_allowlist: { enabled: item.ip_allowlist.enabled, entries: item.ip_allowlist.entries.map(entry => (entry.label ? `${entry.value} (${entry.label})` : entry.value)) } })
     changes = settingsChanges(flat(settings.security) as unknown as Record<string, unknown>, flat(value) as unknown as Record<string, unknown>)
     next = writeSettings(tenant, 'security', value, by).security
+  } else if (section === 'emails') {
+    const value = parseBody(emailsSchema, body)
+    // Templates by which ones are the workspace's own, never their whole text
+    const flat = (item: typeof value) => ({ sender_name: item.sender_name, reply_to: item.reply_to, footer: item.footer, ...Object.fromEntries(Object.entries(item.custom).map(([key, langs]) => [`template.${key}`, Object.keys(langs ?? {}).sort().join(', ') || null])) })
+    const before = flat(settings.emails)
+    const after = flat(value)
+    for (const key of Object.keys(before)) if (!(key in after)) (after as Record<string, unknown>)[key] = null
+    changes = settingsChanges(before as unknown as Record<string, unknown>, after as unknown as Record<string, unknown>)
+    next = writeSettings(tenant, 'emails', value, by).emails
+  } else if (section === 'notifications') {
+    const value = parseBody(notificationsSchema, body)
+    // Rules by event, one line each in the audit trail
+    const flat = (item: typeof value) => ({ digest: item.digest, ...Object.fromEntries(Object.entries(item.events).map(([key, rule]) => [key, `${[rule.in_app && 'app', rule.email && 'email'].filter(Boolean).join(' + ') || 'off'} → ${rule.to === 'people' ? `${rule.people.length} people` : rule.to}`])) })
+    changes = settingsChanges(flat(settings.notifications) as unknown as Record<string, unknown>, flat(value) as unknown as Record<string, unknown>)
+    next = writeSettings(tenant, 'notifications', value, by).notifications
   } else {
     const value = parseBody(localisationSchema, body)
     changes = settingsChanges(settings.localisation as unknown as Record<string, unknown>, value as unknown as Record<string, unknown>)

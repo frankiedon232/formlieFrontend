@@ -47,7 +47,7 @@ const GROUPS: SettingsGroup[] = [
   {
     key: 'communication',
     items: [
-      { key: 'notifications', icon: 'i-lucide-bell-ring', soon: 'M4' },
+      { key: 'notifications', icon: 'i-lucide-bell-ring', to: '/settings/notifications' },
       { key: 'emails', icon: 'i-lucide-mail', soon: 'M4' },
     ],
   },

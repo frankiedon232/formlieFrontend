@@ -246,3 +246,6 @@ export const downloadResponseExport = defineEventHandler(event => {
   setHeader(event, 'cache-control', 'no-store')
   return item.bytes
 })
+
+/** Finished exports of a workspace that are still downloadable (notifications: "Your export is ready"). */
+export const readyExports = (tenantId: string) => [...exports.values()].filter(item => item.tenantId === tenantId && !item.deleted).map(view).filter(item => item.status === 'ready')

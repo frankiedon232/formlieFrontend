@@ -3,6 +3,7 @@
  * with company, branding and localisation. Onboarding reads and writes the same record, and the
  * workspace's public profile (sign-in page, public forms) is built from it.
  */
+import type { NotificationSettings } from '#shared/types/notifications'
 import type { SecuritySettings, SettingsChange, SettingsSection, SigninSettings, WorkspaceSettings } from '#shared/types/settings'
 import { DEFAULT_PASSWORD_POLICY } from '#shared/utils/auth/password'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
@@ -19,6 +20,23 @@ const seedSecurity = (): SecuritySettings => ({
   sessions: { idle_minutes: 60, max_hours: 168 },
   ip_allowlist: { enabled: false, entries: [] },
 })
+
+/** Notifications (F14 M4): responses in the app for everyone, problems also by email to admins. */
+const seedNotifications = (): NotificationSettings => {
+  const rule = (in_app: boolean, email: boolean, to: 'admins' | 'everyone' = 'admins') => ({ in_app, email, to, people: [] })
+  return {
+    events: {
+      response_new: rule(true, false, 'everyone'),
+      response_duplicate: rule(true, false),
+      form_limit: rule(true, true),
+      form_closing: rule(true, true),
+      export_ready: rule(true, false),
+      webhook_failing: rule(true, true),
+      security_alert: rule(true, true),
+    },
+    digest: { enabled: false, hour: 8 },
+  }
+}
 
 function seed(tenant: MockTenant): WorkspaceSettings {
   return {
@@ -38,7 +56,9 @@ function seed(tenant: MockTenant): WorkspaceSettings {
     localisation: { language: 'en', timezone: 'UTC', currency: 'USD', date_format: 'DD/MM/YYYY', number_format: '1,234.56', week_start: 'monday', form_languages: APP_LOCALES.map(item => item.code) },
     signin: seedSignin(tenant),
     security: seedSecurity(),
-    updated: { company: null, branding: null, localisation: null, signin: null, security: null },
+    notifications: seedNotifications(),
+    emails: { sender_name: null, reply_to: null, footer: null, custom: {} },
+    updated: { company: null, branding: null, localisation: null, signin: null, security: null, notifications: null, emails: null },
   }
 }
 
@@ -48,12 +68,16 @@ export function settingsOf(tenant: MockTenant): WorkspaceSettings {
     settings = seed(tenant)
     stores.set(tenant.id, settings)
     saveSettings()
-  } else if (!settings.signin || !settings.security) {
-    // Saved before sign-in and security existed (F14 M3)
+  } else if (!settings.signin || !settings.security || !settings.notifications || !settings.emails) {
+    // Saved before these sections existed (F14 M3, M4)
     settings.signin ??= seedSignin(tenant)
     settings.security ??= seedSecurity()
+    settings.notifications ??= seedNotifications()
+    settings.emails ??= { sender_name: null, reply_to: null, footer: null, custom: {} }
+    settings.updated.emails ??= null
     settings.updated.signin ??= null
     settings.updated.security ??= null
+    settings.updated.notifications ??= null
     saveSettings()
   }
   // The sign-in methods live here; the workspace record follows them

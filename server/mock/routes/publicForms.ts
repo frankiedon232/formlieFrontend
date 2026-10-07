@@ -25,6 +25,7 @@ import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
 import { findByPublicKey, findByShortCode, formsOf, saveForms, type StoredForm } from '../data/formStore'
+import { notifyResponse } from '../data/notificationStore'
 import { formLink, publicHosts, SHORT_CODE_PATTERN } from '#shared/utils/urls/public'
 import { frameAncestors } from '#shared/utils/urls/embed-domains'
 import { fingerprintOf, responseForSubmission, responsesOf, saveResponses } from '../data/responseStore'
@@ -357,6 +358,7 @@ export const submitPublicForm = defineMockRoute(async ({ event, body }) => {
     stored.responses_count += 1
     saveForms()
     emitResponse(event, tenant, 'response.created', stored, response.id)
+    notifyResponse(event, tenant, stored, response.id, !!possibleDuplicate)
   }
   recordAudit(event, tenant, {
     action: 'responses.submitted',

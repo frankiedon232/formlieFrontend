@@ -25,6 +25,8 @@ import { actorOf, anonymousActor, recordAudit } from '../core/audit'
 import { MockError, ok } from '../core/respond'
 import { defineMockRoute } from '../core/route'
 import { parseBody } from '../core/validate'
+import { notify } from '../data/notificationStore'
+import { sendEmail } from '../data/outboxStore'
 import { settingsOf } from '../data/settingsStore'
 import {
   hashPassword,
@@ -37,6 +39,15 @@ import {
 } from '../data/tenants'
 import type { H3Event } from 'h3'
 import type { Challenge, ChallengePurpose } from '../core/auth'
+
+/** Settings → Notifications: a blocked sign-in tells the admins (who, and why in words). */
+const securityAlert = (event: H3Event, tenant: MockTenant, email: string, reason: string) => notify(event, tenant, 'security_alert', { email, reason }, '/audit?area=auth&outcome=failure,blocked')
+
+/** The code email in the workspace's sent log (Settings → Email templates); the code itself is never kept there. */
+function logCodeEmail(challenge: Challenge) {
+  if (!challenge.tenant || challenge.channel !== 'email' || (challenge.purpose === 'reset' && !challenge.user)) return
+  sendEmail(challenge.tenant, { to: challenge.email, key: challenge.purpose === 'reset' ? 'password_reset' : 'signin_code', vars: { name: challenge.user?.first_name ?? '', code: '••••••', minutes: Math.round(challenge.ttlMs / 60_000) }, reason: challenge.purpose })
+}
 
 /** Verify a code and record a wrong / locked attempt in the audit trail before re-throwing. */
 function verifyAudited(event: H3Event, id: string, code: string, purpose: ChallengePurpose): Challenge {
@@ -57,6 +68,7 @@ function verifyAudited(event: H3Event, id: string, code: string, purpose: Challe
           ...(error.details[0] ? { attempts_left: error.details[0].message } : {}),
         },
       })
+      if (locked) securityAlert(event, pending.tenant, pending.email, 'code_locked')
     }
     throw error
   }
@@ -94,6 +106,7 @@ export const login = defineMockRoute(({ event, body }) => {
   // Settings → Security: only from the allowed networks (checked first, says nothing about the account)
   if (!ipAllowed(tenant, callerIp(event))) {
     recordAudit(event, tenant, { action: 'auth.login.blocked', actor: anonymousActor(input.email), outcome: 'blocked', reason: 'FRM-AUTH-1016', metadata: { method: 'password', cause: 'ip_not_allowed' } })
+    securityAlert(event, tenant, input.email, 'ip_not_allowed')
     throw new MockError('FRM-AUTH-1016')
   }
   const user = findUser(input.email, tenant.id)
@@ -116,10 +129,12 @@ export const login = defineMockRoute(({ event, body }) => {
       reason: 'FRM-AUTH-1005',
       metadata: { method: 'password' },
     })
+    securityAlert(event, tenant, user.email, 'account_disabled')
     throw new MockError('FRM-AUTH-1005')
   }
   if (!domainAllowed(tenant, user.email)) {
     recordAudit(event, tenant, { action: 'auth.login.blocked', actor: actorOf(user), outcome: 'blocked', severity: 'notice', reason: 'FRM-AUTH-1014', metadata: { method: 'password', cause: 'email_domain' } })
+    securityAlert(event, tenant, user.email, 'email_domain')
     throw new MockError('FRM-AUTH-1014')
   }
   if (passwordExpired(tenant, user)) {
@@ -140,6 +155,7 @@ export const login = defineMockRoute(({ event, body }) => {
     actor: actorOf(user),
     metadata: { channel: 'email' },
   })
+  logCodeEmail(challenge)
   return ok(describeChallenge(challenge), devMeta(challenge))
 })
 
@@ -177,6 +193,7 @@ export const resendOtp = defineMockRoute(({ event, body }) => {
       actor: challenge.user ? actorOf(challenge.user) : anonymousActor(challenge.email),
       metadata: { channel: challenge.channel, resend: String(challenge.resends) },
     })
+  logCodeEmail(challenge)
   return ok(describeChallenge(challenge), devMeta(challenge))
 })
 
@@ -319,6 +336,7 @@ export const forgotPassword = defineMockRoute(({ event, body }) => {
     outcome: user ? 'success' : 'failure',
     metadata: { channel: 'email', ...(user ? {} : { account: 'not_found' }) },
   })
+  logCodeEmail(challenge)
   return ok(describeChallenge(challenge), devMeta(challenge))
 })
 

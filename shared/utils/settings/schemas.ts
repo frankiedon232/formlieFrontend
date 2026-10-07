@@ -4,6 +4,8 @@
  */
 import { z } from 'zod'
 import { COMPANY_SIZES, DATE_FORMATS, INDUSTRIES, NUMBER_FORMATS } from '../../types/onboarding'
+import { EMAIL_TEMPLATES, type EmailTemplateKey } from '../../types/emails'
+import { NOTIFICATION_EVENTS, type NotificationEvent } from '../../types/notifications'
 import { parseCidr } from '../apiService/access'
 import { PASSWORD_LENGTH_RANGE } from '../auth/password'
 import { APP_LOCALES } from '../i18n/locales'
@@ -138,4 +140,25 @@ export const securitySchema = z.object({
       ).max(100),
     ),
   }).refine(list => !list.enabled || list.entries.length > 0, { message: 'ip_empty', path: ['entries'] }),
+})
+
+const notificationRule = z.object({
+  in_app: z.boolean(),
+  email: z.boolean(),
+  to: z.enum(['admins', 'everyone', 'people']),
+  people: z.array(z.string().max(64)).max(200),
+}).refine(rule => rule.to !== 'people' || rule.people.length > 0, { message: 'people', path: ['people'] })
+
+export const notificationsSchema = z.object({
+  events: z.object(Object.fromEntries(NOTIFICATION_EVENTS.map(key => [key, notificationRule])) as Record<NotificationEvent, typeof notificationRule>),
+  digest: z.object({ enabled: z.boolean(), hour: z.number().int().min(0).max(23) }),
+})
+
+export const emailTextSchema = z.object({ subject: z.string().trim().min(1, 'subject').max(200), body: z.string().trim().min(1, 'body').max(10_000) })
+
+export const emailsSchema = z.object({
+  sender_name: optional(80),
+  reply_to: optional(200).refine(value => !value || z.email().safeParse(value).success, 'email'),
+  footer: optional(300),
+  custom: z.partialRecord(z.enum(EMAIL_TEMPLATES), z.partialRecord(z.enum(LOCALE_CODES), emailTextSchema)) as unknown as z.ZodType<Partial<Record<EmailTemplateKey, Record<string, z.infer<typeof emailTextSchema>>>>>,
 })

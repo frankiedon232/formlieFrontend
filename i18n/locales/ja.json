@@ -6341,7 +6341,9 @@
       "signin": "サインイン方法 {n}件 | サインイン方法 {n}件",
       "idleMinutes": "{n}分操作がないとサインアウト",
       "idleHours": "{n}時間操作がないとサインアウト | {n}時間操作がないとサインアウト",
-      "allowlist": "IP許可リスト オン"
+      "allowlist": "IP許可リスト オン",
+      "notifications": "{total} 件中 {n} 件のイベントがオン",
+      "digest": "毎日のまとめ"
     },
     "next": {
       "title": "次のステップ",
@@ -6369,7 +6371,10 @@
       "methods": "サインイン方法を少なくとも1つは残してください。",
       "domain": "example.com のようなドメインを入力してください。",
       "ip": "203.0.113.0/24 のようなアドレスまたは範囲を入力してください。",
-      "ip_empty": "アドレスを少なくとも1つ追加するか、許可リストをオフにしてください。"
+      "ip_empty": "アドレスを少なくとも1つ追加するか、許可リストをオフにしてください。",
+      "people": "1 人以上選んでください。",
+      "subject": "件名を入力してください。",
+      "body": "メールの本文を入力してください。"
     },
     "company": {
       "names": "名称",
@@ -6709,6 +6714,103 @@
       "ipExamples": "単一のアドレス (198.51.100.7) または範囲 (203.0.113.0/24, 2001:db8::/32)。",
       "lockout": "自分がサインインできなくなります",
       "lockoutDesc": "ご自身のアドレスがリストにないため、保存できません。先に追加してください。"
+    },
+    "notifications": {
+      "event": "イベント",
+      "inApp": "アプリ内",
+      "email": "メール",
+      "who": "対象",
+      "whoAsked": "依頼した人",
+      "pickPeople": "ユーザーを選択…",
+      "to": {
+        "admins": "管理者",
+        "everyone": "全員",
+        "people": "選んだユーザー"
+      },
+      "group": {
+        "responses": "回答",
+        "forms": "フォームとエクスポート",
+        "problems": "問題とセキュリティ"
+      },
+      "groupHint": {
+        "responses": "フォームに回答があったとき。",
+        "forms": "フォームが満員になった、または終了したとき、ファイルの準備ができたとき。",
+        "problems": "近いうちに誰かが確認すべきこと。"
+      },
+      "name": {
+        "response_new": "新しい回答",
+        "response_duplicate": "重複の可能性",
+        "form_limit": "フォームが満員",
+        "form_closing": "フォームが 1 日以内に終了",
+        "export_ready": "エクスポート完了",
+        "webhook_failing": "Webhook の失敗",
+        "security_alert": "サインインをブロック"
+      },
+      "hint": {
+        "response_new": "すべてのフォームへのすべての回答。",
+        "response_duplicate": "以前の回答に似ている回答。",
+        "form_limit": "フォームが回答数の上限に達した。",
+        "form_closing": "フォームが 24 時間以内に回答の受付を終了する。",
+        "export_ready": "依頼したファイルをダウンロードできる。",
+        "webhook_failing": "Webhook が失敗を繰り返して一時停止された。",
+        "security_alert": "ブロックされたネットワーク、メールドメイン、アカウント、または間違ったコードが多すぎる場合。"
+      },
+      "digest": "毎日のまとめ",
+      "digestHint": "メールを減らします。そのつどではなく、1 日 1 通にします。",
+      "digestOn": "まとめメールを 1 日 1 通送る",
+      "digestOnHint": "アプリ内の通知はこれまでどおりすぐに届きます。",
+      "digestAt": "送信時刻",
+      "sendNow": "今すぐ送信",
+      "digestSent": "まとめを {n} 件送信しました | まとめを {n} 件送信しました",
+      "summary": "{total} 件中 {n} 件のイベントが誰かに通知されます。メールサービスを接続するまで、メールは 設定 → メールテンプレート → 送信済みメール に保存されます。"
+    }
+  },
+  "notifications": {
+    "today": "今日",
+    "earlier": "それ以前",
+    "markAll": "すべて既読にする",
+    "clearRead": "既読を削除",
+    "settings": "通知設定",
+    "unread": "未読",
+    "failed": "通知を読み込めませんでした",
+    "emptyDesc": "新しい回答、完了したエクスポート、アラートがここに表示されます。",
+    "bellUnread": "通知、未読 {n} 件 | 通知、未読 {n} 件",
+    "event": {
+      "response_new": {
+        "title": "{form} に新しい回答",
+        "message": "{form} に新しい回答があります。"
+      },
+      "response_duplicate": {
+        "title": "{form} に重複の可能性",
+        "message": "新しい回答が以前のものに似ています。カウントする前に確認してください。"
+      },
+      "form_limit": {
+        "title": "{form} が満員です",
+        "message": "{limit} 件の回答上限に達したため、これ以上受け付けません。"
+      },
+      "form_closing": {
+        "title": "{form} がまもなく終了",
+        "message": "{date} に回答の受付を終了します。"
+      },
+      "export_ready": {
+        "title": "エクスポートの準備ができました",
+        "message": "{file} をダウンロードできます。"
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} が失敗しています",
+        "message": "配信の失敗が続いたため一時停止しました。アドレスとトークンを確認してください。"
+      },
+      "security_alert": {
+        "title": "サインインをブロックしました",
+        "message": "{email} のサインインをブロックしました: {reason}。"
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "ネットワークが許可リストにありません",
+      "email_domain": "メールのドメインが許可されていません",
+      "code_locked": "間違ったコードが多すぎます",
+      "account_disabled": "アカウントが無効です",
+      "password_expired": "パスワードの有効期限が切れています"
     }
   }
 }

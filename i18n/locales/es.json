@@ -6341,7 +6341,9 @@
       "signin": "{n} forma de iniciar sesión | {n} formas de iniciar sesión",
       "idleMinutes": "Cierre de sesión tras {n} min de inactividad",
       "idleHours": "Cierre de sesión tras {n} hora de inactividad | Cierre de sesión tras {n} horas de inactividad",
-      "allowlist": "Lista de IP permitidas activada"
+      "allowlist": "Lista de IP permitidas activada",
+      "notifications": "{n} de {total} eventos activados",
+      "digest": "resumen diario"
     },
     "next": {
       "title": "Siguiente paso",
@@ -6369,7 +6371,10 @@
       "methods": "Mantén al menos una forma de iniciar sesión.",
       "domain": "Introduce un dominio como example.com.",
       "ip": "Introduce una dirección o un rango como 203.0.113.0/24.",
-      "ip_empty": "Añade al menos una dirección o desactiva la lista de permitidas."
+      "ip_empty": "Añade al menos una dirección o desactiva la lista de permitidas.",
+      "people": "Elige al menos una persona.",
+      "subject": "Añade un asunto.",
+      "body": "Añade el texto del correo."
     },
     "company": {
       "names": "Nombres",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Una dirección (198.51.100.7) o un rango (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Te quedarías sin acceso",
       "lockoutDesc": "Tu propia dirección no está en la lista, por eso no se puede guardar. Añádela primero."
+    },
+    "notifications": {
+      "event": "Evento",
+      "inApp": "En la app",
+      "email": "Correo",
+      "who": "Quién",
+      "whoAsked": "La persona que lo pidió",
+      "pickPeople": "Elegir personas…",
+      "to": {
+        "admins": "Administradores",
+        "everyone": "Todos",
+        "people": "Personas elegidas"
+      },
+      "group": {
+        "responses": "Respuestas",
+        "forms": "Formularios y exportaciones",
+        "problems": "Problemas y seguridad"
+      },
+      "groupHint": {
+        "responses": "Cuando alguien responde a tus formularios.",
+        "forms": "Cuando un formulario se llena o cierra, y cuando un archivo está listo.",
+        "problems": "Cosas que alguien debería revisar pronto."
+      },
+      "name": {
+        "response_new": "Nueva respuesta",
+        "response_duplicate": "Posible duplicado",
+        "form_limit": "Formulario lleno",
+        "form_closing": "Formulario cierra en un día",
+        "export_ready": "Exportación lista",
+        "webhook_failing": "Webhook fallando",
+        "security_alert": "Inicio de sesión bloqueado"
+      },
+      "hint": {
+        "response_new": "Cada respuesta a cualquier formulario.",
+        "response_duplicate": "Una respuesta que se parece a una anterior.",
+        "form_limit": "Un formulario alcanzó su límite de respuestas.",
+        "form_closing": "Un formulario dejará de aceptar respuestas en 24 horas.",
+        "export_ready": "Un archivo solicitado ya se puede descargar.",
+        "webhook_failing": "Un webhook se pausó tras fallar una y otra vez.",
+        "security_alert": "Una red, dominio de correo o cuenta bloqueados, o demasiados códigos incorrectos."
+      },
+      "digest": "Resumen diario",
+      "digestHint": "Menos correos: uno al día en lugar de uno cada vez.",
+      "digestOn": "Enviar un correo de resumen al día",
+      "digestOnHint": "Las notificaciones en la app siguen llegando de inmediato.",
+      "digestAt": "Enviar a las",
+      "sendNow": "Enviar ahora",
+      "digestSent": "{n} resumen enviado | {n} resúmenes enviados",
+      "summary": "{n} de {total} eventos avisan a alguien. Los correos se guardan en Ajustes → Plantillas de correo → Correos enviados hasta que se conecte un servicio de correo."
+    }
+  },
+  "notifications": {
+    "today": "Hoy",
+    "earlier": "Anteriores",
+    "markAll": "Marcar todo como leído",
+    "clearRead": "Borrar leídas",
+    "settings": "Ajustes de notificaciones",
+    "unread": "No leídas",
+    "failed": "No se pudieron cargar las notificaciones",
+    "emptyDesc": "Las nuevas respuestas, exportaciones terminadas y alertas aparecen aquí.",
+    "bellUnread": "Notificaciones, {n} sin leer | Notificaciones, {n} sin leer",
+    "event": {
+      "response_new": {
+        "title": "Nueva respuesta en {form}",
+        "message": "{form} tiene una nueva respuesta."
+      },
+      "response_duplicate": {
+        "title": "Posible duplicado en {form}",
+        "message": "Una nueva respuesta se parece a una anterior. Revísala antes de contarla."
+      },
+      "form_limit": {
+        "title": "{form} está lleno",
+        "message": "Alcanzó su límite de {limit} respuestas y no acepta más."
+      },
+      "form_closing": {
+        "title": "{form} cierra pronto",
+        "message": "Dejará de aceptar respuestas el {date}."
+      },
+      "export_ready": {
+        "title": "Tu exportación está lista",
+        "message": "{file} está listo para descargar."
+      },
+      "webhook_failing": {
+        "title": "El webhook {name} está fallando",
+        "message": "Los envíos siguen fallando, así que se pausó. Revisa su dirección y token."
+      },
+      "security_alert": {
+        "title": "Inicio de sesión bloqueado",
+        "message": "Se bloqueó un inicio de sesión de {email}: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "la red no está en la lista permitida",
+      "email_domain": "el dominio del correo no está permitido",
+      "code_locked": "demasiados códigos incorrectos",
+      "account_disabled": "la cuenta está desactivada",
+      "password_expired": "la contraseña ha caducado"
     }
   }
 }

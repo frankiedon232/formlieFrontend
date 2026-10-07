@@ -6341,7 +6341,9 @@
       "signin": "Njia {n} ya kuingia | Njia {n} za kuingia",
       "idleMinutes": "Kutoka baada ya dakika {n} bila shughuli",
       "idleHours": "Kutoka baada ya saa {n} bila shughuli | Kutoka baada ya saa {n} bila shughuli",
-      "allowlist": "Orodha ya IP zinazoruhusiwa imewashwa"
+      "allowlist": "Orodha ya IP zinazoruhusiwa imewashwa",
+      "notifications": "Matukio {n} kati ya {total} yamewashwa",
+      "digest": "muhtasari wa kila siku"
     },
     "next": {
       "title": "Hatua inayofuata",
@@ -6369,7 +6371,10 @@
       "methods": "Acha angalau njia moja ya kuingia.",
       "domain": "Weka kikoa kama example.com.",
       "ip": "Weka anwani au safu kama 203.0.113.0/24.",
-      "ip_empty": "Ongeza angalau anwani moja, au zima orodha ya kuruhusiwa."
+      "ip_empty": "Ongeza angalau anwani moja, au zima orodha ya kuruhusiwa.",
+      "people": "Chagua angalau mtu mmoja.",
+      "subject": "Ongeza mada.",
+      "body": "Ongeza maandishi ya barua pepe."
     },
     "company": {
       "names": "Majina",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Anwani moja (198.51.100.7) au safu (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Ungejifungia nje",
       "lockoutDesc": "Anwani yako haipo kwenye orodha, kwa hivyo kuhifadhi kunakataliwa. Iongeze kwanza."
+    },
+    "notifications": {
+      "event": "Tukio",
+      "inApp": "Ndani ya programu",
+      "email": "Barua pepe",
+      "who": "Nani",
+      "whoAsked": "Mtu aliyeomba",
+      "pickPeople": "Chagua watu…",
+      "to": {
+        "admins": "Wasimamizi",
+        "everyone": "Kila mtu",
+        "people": "Watu waliochaguliwa"
+      },
+      "group": {
+        "responses": "Majibu",
+        "forms": "Fomu na uhamishaji",
+        "problems": "Matatizo na usalama"
+      },
+      "groupHint": {
+        "responses": "Watu wanapojibu fomu zako.",
+        "forms": "Fomu inapojaa au kufungwa, na faili inapokuwa tayari.",
+        "problems": "Mambo ambayo mtu anapaswa kuyaangalia hivi karibuni."
+      },
+      "name": {
+        "response_new": "Jibu jipya",
+        "response_duplicate": "Huenda ni nakala",
+        "form_limit": "Fomu imejaa",
+        "form_closing": "Fomu inafungwa ndani ya siku moja",
+        "export_ready": "Uhamishaji uko tayari",
+        "webhook_failing": "Webhook inashindwa",
+        "security_alert": "Kuingia kumezuiwa"
+      },
+      "hint": {
+        "response_new": "Kila jibu kwa fomu yoyote.",
+        "response_duplicate": "Jibu linalofanana na la awali.",
+        "form_limit": "Fomu imefikia kikomo cha majibu.",
+        "form_closing": "Fomu itaacha kupokea majibu ndani ya saa 24.",
+        "export_ready": "Faili iliyoombwa inaweza kupakuliwa.",
+        "webhook_failing": "Webhook ilisitishwa baada ya kushindwa mara kwa mara.",
+        "security_alert": "Mtandao, kikoa cha barua pepe au akaunti iliyozuiwa, au misimbo mingi isiyo sahihi."
+      },
+      "digest": "Muhtasari wa kila siku",
+      "digestHint": "Barua pepe chache: moja kwa siku badala ya moja kila mara.",
+      "digestOn": "Tuma barua pepe moja ya muhtasari kwa siku",
+      "digestOnHint": "Arifa ndani ya programu bado zinafika mara moja.",
+      "digestAt": "Tuma saa",
+      "sendNow": "Tuma sasa",
+      "digestSent": "Muhtasari {n} umetumwa | Muhtasari {n} imetumwa",
+      "summary": "Matukio {n} kati ya {total} humwarifu mtu. Barua pepe huhifadhiwa katika Mipangilio → Violezo vya barua pepe → Barua pepe zilizotumwa hadi huduma ya barua pepe iunganishwe."
+    }
+  },
+  "notifications": {
+    "today": "Leo",
+    "earlier": "Awali",
+    "markAll": "Weka zote zimesomwa",
+    "clearRead": "Futa zilizosomwa",
+    "settings": "Mipangilio ya arifa",
+    "unread": "Hazijasomwa",
+    "failed": "Arifa hazikuweza kupakiwa",
+    "emptyDesc": "Majibu mapya, uhamishaji uliokamilika na tahadhari huonekana hapa.",
+    "bellUnread": "Arifa, {n} haijasomwa | Arifa, {n} hazijasomwa",
+    "event": {
+      "response_new": {
+        "title": "Jibu jipya kwa {form}",
+        "message": "{form} ina jibu jipya."
+      },
+      "response_duplicate": {
+        "title": "Huenda ni nakala katika {form}",
+        "message": "Jibu jipya linafanana na la awali. Liangalie kabla ya kulihesabu."
+      },
+      "form_limit": {
+        "title": "{form} imejaa",
+        "message": "Imefikia kikomo cha majibu {limit} na haikubali zaidi."
+      },
+      "form_closing": {
+        "title": "{form} inafungwa hivi karibuni",
+        "message": "Itaacha kupokea majibu tarehe {date}."
+      },
+      "export_ready": {
+        "title": "Uhamishaji wako uko tayari",
+        "message": "{file} iko tayari kupakuliwa."
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} inashindwa",
+        "message": "Utumaji unaendelea kushindwa, kwa hiyo imesitishwa. Angalia anwani na tokeni yake."
+      },
+      "security_alert": {
+        "title": "Kuingia kumezuiwa",
+        "message": "Kuingia kwa {email} kumezuiwa: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "mtandao haumo kwenye orodha inayoruhusiwa",
+      "email_domain": "kikoa cha barua pepe hakiruhusiwi",
+      "code_locked": "misimbo mingi isiyo sahihi",
+      "account_disabled": "akaunti imezimwa",
+      "password_expired": "nenosiri limeisha muda"
     }
   }
 }

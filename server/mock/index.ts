@@ -34,6 +34,8 @@ import * as formInvites from './routes/formInvites'
 import * as forms from './routes/forms'
 import { navigationCounts } from './routes/navigation'
 import * as onboarding from './routes/onboarding'
+import * as emails from './routes/emails'
+import * as notifications from './routes/notifications'
 import * as settings from './routes/settings'
 import * as org from './routes/org'
 import * as uploads from './routes/uploads'
@@ -272,6 +274,11 @@ const router = createRouter()
   .delete('/page-designs/:id', pageDesigns.deletePageDesign)
   .get('/navigation/counts', navigationCounts)
   // onboarding + uploads
+  // notifications (F14 M4)
+  .get('/notifications', notifications.getFeed)
+  .post('/notifications/read', notifications.readNotifications)
+  .delete('/notifications/read', notifications.clearNotifications)
+  .post('/notifications/digest/send', notifications.sendDigest)
   // workspace settings (F14)
   .get('/org/:kind', org.listOrg)
   .get('/org/:kind/insights', org.orgInsights)
@@ -290,6 +297,15 @@ const router = createRouter()
   .patch('/settings/localisation', settings.patchSection)
   // Like localisation: the deeper security addresses shadow /settings/:section for "security"
   .get('/settings/security', settings.getSection)
+  .get('/settings/emails/templates/:key', emails.getTemplate)
+  .post('/settings/emails/preview', emails.previewEmail)
+  .post('/settings/emails/test', emails.testEmail)
+  .get('/settings/emails/sent', emails.listSent)
+  .get('/settings/emails/sent/:id', emails.getSent)
+  .get('/settings/emails', settings.getSection)
+  .patch('/settings/emails', settings.patchSection)
+  .get('/settings/notifications', settings.getSection)
+  .patch('/settings/notifications', settings.patchSection)
   .patch('/settings/security', settings.patchSection)
   .get('/settings/security/sessions', settings.listSessions)
   .post('/settings/security/sessions/sign-out', settings.signOutSessions)

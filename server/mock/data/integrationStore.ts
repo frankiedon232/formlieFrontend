@@ -6,6 +6,7 @@
  * row. Delivery logs show the body with personal answers masked; the body as sent is kept for
  * retries and Send again (the real backend keeps it encrypted, 30 days). A few samples are seeded.
  */
+import { notify } from './notificationStore'
 import type { H3Event } from 'h3'
 import type { Webhook, WebhookAttempt, WebhookDelivery, WebhookDeliveryDetail, WebhookDeliveryStatus, WebhookEvent } from '#shared/types/integrations'
 import { WEBHOOK_AUTO_PAUSE, WEBHOOK_RETRY_MINUTES, WEBHOOK_TIMEOUT_MS, webhookStatusOf } from '#shared/utils/integrations/webhooks'
@@ -304,6 +305,7 @@ export async function attempt(tenant: MockTenant, delivery: StoredDelivery, even
     if (webhook.enabled && webhook.consecutive_failures >= WEBHOOK_AUTO_PAUSE) {
       webhook.enabled = false
       webhook.paused_reason = 'failures'
+      notify(event ?? null, tenant, 'webhook_failing', { name: webhook.name }, '/api-service/webhooks')
       if (event) recordAudit(event, tenant, { action: 'integrations.webhook_paused', actor: { type: 'system', id: null, name: 'Formalie', email: null }, resource: { type: 'webhook', id: webhook.id, name: webhook.name }, reason: `${WEBHOOK_AUTO_PAUSE} failed deliveries in a row` })
     }
   }

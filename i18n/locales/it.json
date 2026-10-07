@@ -6341,7 +6341,9 @@
       "signin": "{n} modo di accedere | {n} modi di accedere",
       "idleMinutes": "Disconnessione dopo {n} min di inattività",
       "idleHours": "Disconnessione dopo {n} ora di inattività | Disconnessione dopo {n} ore di inattività",
-      "allowlist": "Lista IP consentiti attiva"
+      "allowlist": "Lista IP consentiti attiva",
+      "notifications": "{n} eventi su {total} attivi",
+      "digest": "riepilogo giornaliero"
     },
     "next": {
       "title": "Prossimo passo",
@@ -6369,7 +6371,10 @@
       "methods": "Mantieni almeno un modo per accedere.",
       "domain": "Inserisci un dominio come example.com.",
       "ip": "Inserisci un indirizzo o un intervallo come 203.0.113.0/24.",
-      "ip_empty": "Aggiungi almeno un indirizzo oppure disattiva la lista consentiti."
+      "ip_empty": "Aggiungi almeno un indirizzo oppure disattiva la lista consentiti.",
+      "people": "Scegli almeno una persona.",
+      "subject": "Aggiungi un oggetto.",
+      "body": "Aggiungi il testo dell'e-mail."
     },
     "company": {
       "names": "Nomi",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Un indirizzo (198.51.100.7) o un intervallo (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Ti bloccheresti l'accesso",
       "lockoutDesc": "Il tuo indirizzo non è nella lista, quindi il salvataggio viene rifiutato. Aggiungilo prima."
+    },
+    "notifications": {
+      "event": "Evento",
+      "inApp": "Nell'app",
+      "email": "E-mail",
+      "who": "Chi",
+      "whoAsked": "La persona che lo ha richiesto",
+      "pickPeople": "Scegli persone…",
+      "to": {
+        "admins": "Amministratori",
+        "everyone": "Tutti",
+        "people": "Persone scelte"
+      },
+      "group": {
+        "responses": "Risposte",
+        "forms": "Moduli ed esportazioni",
+        "problems": "Problemi e sicurezza"
+      },
+      "groupHint": {
+        "responses": "Quando le persone rispondono ai tuoi moduli.",
+        "forms": "Quando un modulo si riempie o chiude, e quando un file è pronto.",
+        "problems": "Cose che qualcuno dovrebbe controllare presto."
+      },
+      "name": {
+        "response_new": "Nuova risposta",
+        "response_duplicate": "Possibile duplicato",
+        "form_limit": "Modulo pieno",
+        "form_closing": "Il modulo chiude entro un giorno",
+        "export_ready": "Esportazione pronta",
+        "webhook_failing": "Webhook in errore",
+        "security_alert": "Accesso bloccato"
+      },
+      "hint": {
+        "response_new": "Ogni risposta a qualsiasi modulo.",
+        "response_duplicate": "Una risposta che somiglia a una precedente.",
+        "form_limit": "Un modulo ha raggiunto il limite di risposte.",
+        "form_closing": "Un modulo smette di accettare risposte entro 24 ore.",
+        "export_ready": "Un file richiesto può essere scaricato.",
+        "webhook_failing": "Un webhook è stato messo in pausa dopo ripetuti errori.",
+        "security_alert": "Una rete, un dominio e-mail o un account bloccato, o troppi codici errati."
+      },
+      "digest": "Riepilogo giornaliero",
+      "digestHint": "Meno e-mail: una al giorno invece di una ogni volta.",
+      "digestOn": "Invia una e-mail di riepilogo al giorno",
+      "digestOnHint": "Le notifiche nell'app arrivano comunque subito.",
+      "digestAt": "Invia alle",
+      "sendNow": "Invia ora",
+      "digestSent": "{n} riepilogo inviato | {n} riepiloghi inviati",
+      "summary": "{n} eventi su {total} avvisano qualcuno. Le e-mail finiscono in Impostazioni → Modelli e-mail → E-mail inviate finché non è collegato un servizio di posta."
+    }
+  },
+  "notifications": {
+    "today": "Oggi",
+    "earlier": "Precedenti",
+    "markAll": "Segna tutto come letto",
+    "clearRead": "Cancella le lette",
+    "settings": "Impostazioni notifiche",
+    "unread": "Non lette",
+    "failed": "Impossibile caricare le notifiche",
+    "emptyDesc": "Nuove risposte, esportazioni completate e avvisi compaiono qui.",
+    "bellUnread": "Notifiche, {n} non letta | Notifiche, {n} non lette",
+    "event": {
+      "response_new": {
+        "title": "Nuova risposta a {form}",
+        "message": "{form} ha una nuova risposta."
+      },
+      "response_duplicate": {
+        "title": "Possibile duplicato in {form}",
+        "message": "Una nuova risposta somiglia a una precedente. Dagli un'occhiata prima di contarla."
+      },
+      "form_limit": {
+        "title": "{form} è pieno",
+        "message": "Ha raggiunto il limite di {limit} risposte e non ne accetta altre."
+      },
+      "form_closing": {
+        "title": "{form} chiude presto",
+        "message": "Smette di accettare risposte il {date}."
+      },
+      "export_ready": {
+        "title": "La tua esportazione è pronta",
+        "message": "{file} è pronto da scaricare."
+      },
+      "webhook_failing": {
+        "title": "Il webhook {name} non funziona",
+        "message": "Gli invii continuano a fallire, quindi è stato messo in pausa. Controlla indirizzo e token."
+      },
+      "security_alert": {
+        "title": "Accesso bloccato",
+        "message": "Un accesso di {email} è stato bloccato: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "la rete non è nell'elenco consentito",
+      "email_domain": "il dominio dell'e-mail non è consentito",
+      "code_locked": "troppi codici errati",
+      "account_disabled": "l'account è disattivato",
+      "password_expired": "la password è scaduta"
     }
   }
 }

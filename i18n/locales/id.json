@@ -6341,7 +6341,9 @@
       "signin": "{n} cara masuk | {n} cara masuk",
       "idleMinutes": "Keluar otomatis setelah {n} mnt tidak aktif",
       "idleHours": "Keluar otomatis setelah {n} jam tidak aktif | Keluar otomatis setelah {n} jam tidak aktif",
-      "allowlist": "Daftar IP yang diizinkan aktif"
+      "allowlist": "Daftar IP yang diizinkan aktif",
+      "notifications": "{n} dari {total} peristiwa aktif",
+      "digest": "ringkasan harian"
     },
     "next": {
       "title": "Langkah berikutnya",
@@ -6369,7 +6371,10 @@
       "methods": "Sisakan setidaknya satu cara untuk masuk.",
       "domain": "Masukkan domain seperti example.com.",
       "ip": "Masukkan alamat atau rentang seperti 203.0.113.0/24.",
-      "ip_empty": "Tambahkan setidaknya satu alamat, atau matikan daftar yang diizinkan."
+      "ip_empty": "Tambahkan setidaknya satu alamat, atau matikan daftar yang diizinkan.",
+      "people": "Pilih setidaknya satu orang.",
+      "subject": "Tambahkan subjek.",
+      "body": "Tambahkan isi email."
     },
     "company": {
       "names": "Nama",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Satu alamat (198.51.100.7) atau satu rentang (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Anda akan mengunci diri sendiri",
       "lockoutDesc": "Alamat Anda sendiri tidak ada di daftar, jadi penyimpanan ditolak. Tambahkan dulu."
+    },
+    "notifications": {
+      "event": "Peristiwa",
+      "inApp": "Di aplikasi",
+      "email": "Email",
+      "who": "Siapa",
+      "whoAsked": "Orang yang memintanya",
+      "pickPeople": "Pilih orang…",
+      "to": {
+        "admins": "Admin",
+        "everyone": "Semua orang",
+        "people": "Orang pilihan"
+      },
+      "group": {
+        "responses": "Respons",
+        "forms": "Formulir dan ekspor",
+        "problems": "Masalah dan keamanan"
+      },
+      "groupHint": {
+        "responses": "Saat orang menjawab formulir Anda.",
+        "forms": "Saat formulir penuh atau ditutup, dan saat file sudah siap.",
+        "problems": "Hal yang perlu segera diperiksa seseorang."
+      },
+      "name": {
+        "response_new": "Respons baru",
+        "response_duplicate": "Kemungkinan duplikat",
+        "form_limit": "Formulir penuh",
+        "form_closing": "Formulir ditutup dalam sehari",
+        "export_ready": "Ekspor siap",
+        "webhook_failing": "Webhook gagal",
+        "security_alert": "Masuk diblokir"
+      },
+      "hint": {
+        "response_new": "Setiap respons ke formulir apa pun.",
+        "response_duplicate": "Respons yang mirip dengan yang sebelumnya.",
+        "form_limit": "Formulir mencapai batas respons.",
+        "form_closing": "Formulir berhenti menerima respons dalam 24 jam.",
+        "export_ready": "File yang diminta bisa diunduh.",
+        "webhook_failing": "Webhook dijeda setelah gagal berulang kali.",
+        "security_alert": "Jaringan, domain email, atau akun yang diblokir, atau terlalu banyak kode salah."
+      },
+      "digest": "Ringkasan harian",
+      "digestHint": "Lebih sedikit email: satu per hari, bukan satu setiap kali.",
+      "digestOn": "Kirim satu email ringkasan per hari",
+      "digestOnHint": "Notifikasi di aplikasi tetap masuk langsung.",
+      "digestAt": "Kirim pukul",
+      "sendNow": "Kirim sekarang",
+      "digestSent": "{n} ringkasan terkirim | {n} ringkasan terkirim",
+      "summary": "{n} dari {total} peristiwa memberi tahu seseorang. Email masuk ke Pengaturan → Template email → Email terkirim sampai layanan email terhubung."
+    }
+  },
+  "notifications": {
+    "today": "Hari ini",
+    "earlier": "Sebelumnya",
+    "markAll": "Tandai semua sudah dibaca",
+    "clearRead": "Hapus yang sudah dibaca",
+    "settings": "Pengaturan notifikasi",
+    "unread": "Belum dibaca",
+    "failed": "Notifikasi tidak dapat dimuat",
+    "emptyDesc": "Respons baru, ekspor yang selesai, dan peringatan muncul di sini.",
+    "bellUnread": "Notifikasi, {n} belum dibaca | Notifikasi, {n} belum dibaca",
+    "event": {
+      "response_new": {
+        "title": "Respons baru untuk {form}",
+        "message": "{form} punya respons baru."
+      },
+      "response_duplicate": {
+        "title": "Kemungkinan duplikat di {form}",
+        "message": "Respons baru mirip dengan yang sebelumnya. Periksa dulu sebelum dihitung."
+      },
+      "form_limit": {
+        "title": "{form} penuh",
+        "message": "Batas {limit} respons tercapai dan tidak menerima lagi."
+      },
+      "form_closing": {
+        "title": "{form} segera ditutup",
+        "message": "Berhenti menerima respons pada {date}."
+      },
+      "export_ready": {
+        "title": "Ekspor Anda sudah siap",
+        "message": "{file} siap diunduh."
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} gagal",
+        "message": "Pengiriman terus gagal, jadi dijeda. Periksa alamat dan tokennya."
+      },
+      "security_alert": {
+        "title": "Masuk diblokir",
+        "message": "Percobaan masuk oleh {email} diblokir: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "jaringan tidak ada dalam daftar yang diizinkan",
+      "email_domain": "domain email tidak diizinkan",
+      "code_locked": "terlalu banyak kode salah",
+      "account_disabled": "akun dinonaktifkan",
+      "password_expired": "kata sandi sudah kedaluwarsa"
     }
   }
 }

@@ -6341,7 +6341,9 @@
       "signin": "{n} cách đăng nhập | {n} cách đăng nhập",
       "idleMinutes": "Đăng xuất sau {n} phút không hoạt động",
       "idleHours": "Đăng xuất sau {n} giờ không hoạt động | Đăng xuất sau {n} giờ không hoạt động",
-      "allowlist": "Danh sách IP cho phép đang bật"
+      "allowlist": "Danh sách IP cho phép đang bật",
+      "notifications": "{n} trên {total} sự kiện đang bật",
+      "digest": "tóm tắt hằng ngày"
     },
     "next": {
       "title": "Bước tiếp theo",
@@ -6369,7 +6371,10 @@
       "methods": "Giữ ít nhất một cách đăng nhập.",
       "domain": "Nhập một tên miền như example.com.",
       "ip": "Nhập một địa chỉ hoặc dải như 203.0.113.0/24.",
-      "ip_empty": "Thêm ít nhất một địa chỉ, hoặc tắt danh sách cho phép."
+      "ip_empty": "Thêm ít nhất một địa chỉ, hoặc tắt danh sách cho phép.",
+      "people": "Chọn ít nhất một người.",
+      "subject": "Thêm tiêu đề.",
+      "body": "Thêm nội dung email."
     },
     "company": {
       "names": "Tên",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Một địa chỉ (198.51.100.7) hoặc một dải (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Bạn sẽ tự khóa mình ở ngoài",
       "lockoutDesc": "Địa chỉ của chính bạn không có trong danh sách, nên việc lưu bị từ chối. Hãy thêm nó trước."
+    },
+    "notifications": {
+      "event": "Sự kiện",
+      "inApp": "Trong ứng dụng",
+      "email": "Email",
+      "who": "Ai",
+      "whoAsked": "Người đã yêu cầu",
+      "pickPeople": "Chọn người…",
+      "to": {
+        "admins": "Quản trị viên",
+        "everyone": "Mọi người",
+        "people": "Người được chọn"
+      },
+      "group": {
+        "responses": "Phản hồi",
+        "forms": "Biểu mẫu và bản xuất",
+        "problems": "Sự cố và bảo mật"
+      },
+      "groupHint": {
+        "responses": "Khi mọi người trả lời biểu mẫu của bạn.",
+        "forms": "Khi biểu mẫu đầy hoặc đóng, và khi tệp đã sẵn sàng.",
+        "problems": "Những việc ai đó nên xem sớm."
+      },
+      "name": {
+        "response_new": "Phản hồi mới",
+        "response_duplicate": "Có thể trùng lặp",
+        "form_limit": "Biểu mẫu đã đầy",
+        "form_closing": "Biểu mẫu đóng trong một ngày",
+        "export_ready": "Bản xuất sẵn sàng",
+        "webhook_failing": "Webhook đang lỗi",
+        "security_alert": "Đăng nhập bị chặn"
+      },
+      "hint": {
+        "response_new": "Mọi phản hồi cho mọi biểu mẫu.",
+        "response_duplicate": "Một phản hồi giống phản hồi trước.",
+        "form_limit": "Một biểu mẫu đã đạt giới hạn phản hồi.",
+        "form_closing": "Một biểu mẫu sẽ ngừng nhận phản hồi trong 24 giờ.",
+        "export_ready": "Một tệp được yêu cầu có thể tải xuống.",
+        "webhook_failing": "Một webhook bị tạm dừng sau nhiều lần thất bại.",
+        "security_alert": "Mạng, tên miền email hoặc tài khoản bị chặn, hoặc quá nhiều mã sai."
+      },
+      "digest": "Tóm tắt hằng ngày",
+      "digestHint": "Ít email hơn: một email mỗi ngày thay vì mỗi lần một email.",
+      "digestOn": "Gửi một email tóm tắt mỗi ngày",
+      "digestOnHint": "Thông báo trong ứng dụng vẫn đến ngay.",
+      "digestAt": "Gửi lúc",
+      "sendNow": "Gửi ngay",
+      "digestSent": "Đã gửi {n} bản tóm tắt | Đã gửi {n} bản tóm tắt",
+      "summary": "{n} trên {total} sự kiện sẽ báo cho ai đó. Email nằm trong Cài đặt → Mẫu email → Email đã gửi cho đến khi kết nối dịch vụ email."
+    }
+  },
+  "notifications": {
+    "today": "Hôm nay",
+    "earlier": "Trước đó",
+    "markAll": "Đánh dấu tất cả đã đọc",
+    "clearRead": "Xóa mục đã đọc",
+    "settings": "Cài đặt thông báo",
+    "unread": "Chưa đọc",
+    "failed": "Không thể tải thông báo",
+    "emptyDesc": "Phản hồi mới, bản xuất đã xong và cảnh báo sẽ hiện ở đây.",
+    "bellUnread": "Thông báo, {n} chưa đọc | Thông báo, {n} chưa đọc",
+    "event": {
+      "response_new": {
+        "title": "Phản hồi mới cho {form}",
+        "message": "{form} có phản hồi mới."
+      },
+      "response_duplicate": {
+        "title": "Có thể trùng lặp trong {form}",
+        "message": "Một phản hồi mới giống phản hồi trước. Hãy xem trước khi tính."
+      },
+      "form_limit": {
+        "title": "{form} đã đầy",
+        "message": "Đã đạt giới hạn {limit} phản hồi và không nhận thêm."
+      },
+      "form_closing": {
+        "title": "{form} sắp đóng",
+        "message": "Sẽ ngừng nhận phản hồi vào {date}."
+      },
+      "export_ready": {
+        "title": "Bản xuất của bạn đã sẵn sàng",
+        "message": "{file} đã sẵn sàng để tải xuống."
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} đang lỗi",
+        "message": "Việc gửi liên tục thất bại nên đã bị tạm dừng. Hãy kiểm tra địa chỉ và token."
+      },
+      "security_alert": {
+        "title": "Đăng nhập bị chặn",
+        "message": "Lượt đăng nhập của {email} đã bị chặn: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "mạng không nằm trong danh sách cho phép",
+      "email_domain": "tên miền email không được phép",
+      "code_locked": "quá nhiều mã sai",
+      "account_disabled": "tài khoản đã bị vô hiệu hóa",
+      "password_expired": "mật khẩu đã hết hạn"
     }
   }
 }

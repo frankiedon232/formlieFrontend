@@ -6341,7 +6341,9 @@
       "signin": "{n} sposób logowania | {n} sposoby logowania",
       "idleMinutes": "Wylogowanie po {n} min bezczynności",
       "idleHours": "Wylogowanie po {n} godzinie bezczynności | Wylogowanie po {n} godzinach bezczynności",
-      "allowlist": "Lista dozwolonych adresów IP włączona"
+      "allowlist": "Lista dozwolonych adresów IP włączona",
+      "notifications": "Włączono {n} z {total} zdarzeń",
+      "digest": "codzienne podsumowanie"
     },
     "next": {
       "title": "Następny krok",
@@ -6369,7 +6371,10 @@
       "methods": "Zostaw co najmniej jeden sposób logowania.",
       "domain": "Wpisz domenę, na przykład example.com.",
       "ip": "Wpisz adres lub zakres, na przykład 203.0.113.0/24.",
-      "ip_empty": "Dodaj co najmniej jeden adres albo wyłącz listę dozwolonych."
+      "ip_empty": "Dodaj co najmniej jeden adres albo wyłącz listę dozwolonych.",
+      "people": "Wybierz co najmniej jedną osobę.",
+      "subject": "Dodaj temat.",
+      "body": "Dodaj treść wiadomości."
     },
     "company": {
       "names": "Nazwy",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Jeden adres (198.51.100.7) lub zakres (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Zablokowałbyś sobie dostęp",
       "lockoutDesc": "Twojego adresu nie ma na liście, więc zapis jest odrzucany. Najpierw go dodaj."
+    },
+    "notifications": {
+      "event": "Zdarzenie",
+      "inApp": "W aplikacji",
+      "email": "E-mail",
+      "who": "Kto",
+      "whoAsked": "Osoba, która o to poprosiła",
+      "pickPeople": "Wybierz osoby…",
+      "to": {
+        "admins": "Administratorzy",
+        "everyone": "Wszyscy",
+        "people": "Wybrane osoby"
+      },
+      "group": {
+        "responses": "Odpowiedzi",
+        "forms": "Formularze i eksporty",
+        "problems": "Problemy i bezpieczeństwo"
+      },
+      "groupHint": {
+        "responses": "Gdy ktoś odpowiada na Twoje formularze.",
+        "forms": "Gdy formularz się zapełni lub zamknie oraz gdy plik jest gotowy.",
+        "problems": "Rzeczy, które ktoś powinien wkrótce sprawdzić."
+      },
+      "name": {
+        "response_new": "Nowa odpowiedź",
+        "response_duplicate": "Możliwy duplikat",
+        "form_limit": "Formularz jest pełny",
+        "form_closing": "Formularz zamyka się w ciągu doby",
+        "export_ready": "Eksport gotowy",
+        "webhook_failing": "Webhook nie działa",
+        "security_alert": "Logowanie zablokowane"
+      },
+      "hint": {
+        "response_new": "Każda odpowiedź w każdym formularzu.",
+        "response_duplicate": "Odpowiedź podobna do wcześniejszej.",
+        "form_limit": "Formularz osiągnął limit odpowiedzi.",
+        "form_closing": "Formularz przestanie przyjmować odpowiedzi w ciągu 24 godzin.",
+        "export_ready": "Zamówiony plik można pobrać.",
+        "webhook_failing": "Webhook wstrzymano po wielokrotnych błędach.",
+        "security_alert": "Zablokowana sieć, domena e-mail lub konto albo zbyt wiele błędnych kodów."
+      },
+      "digest": "Codzienne podsumowanie",
+      "digestHint": "Mniej e-maili: jeden dziennie zamiast jednego za każdym razem.",
+      "digestOn": "Wysyłaj jeden e-mail z podsumowaniem dziennie",
+      "digestOnHint": "Powiadomienia w aplikacji nadal przychodzą od razu.",
+      "digestAt": "Wyślij o",
+      "sendNow": "Wyślij teraz",
+      "digestSent": "Wysłano {n} podsumowanie | Wysłano {n} podsumowań",
+      "summary": "{n} z {total} zdarzeń informuje kogoś. E-maile trafiają do Ustawienia → Szablony e-mail → Wysłane e-maile, dopóki nie połączysz usługi pocztowej."
+    }
+  },
+  "notifications": {
+    "today": "Dzisiaj",
+    "earlier": "Wcześniej",
+    "markAll": "Oznacz wszystko jako przeczytane",
+    "clearRead": "Wyczyść przeczytane",
+    "settings": "Ustawienia powiadomień",
+    "unread": "Nieprzeczytane",
+    "failed": "Nie udało się wczytać powiadomień",
+    "emptyDesc": "Nowe odpowiedzi, gotowe eksporty i alerty pojawią się tutaj.",
+    "bellUnread": "Powiadomienia, {n} nieprzeczytane | Powiadomienia, {n} nieprzeczytanych",
+    "event": {
+      "response_new": {
+        "title": "Nowa odpowiedź w formularzu {form}",
+        "message": "{form} ma nową odpowiedź."
+      },
+      "response_duplicate": {
+        "title": "Możliwy duplikat w {form}",
+        "message": "Nowa odpowiedź wygląda jak wcześniejsza. Sprawdź ją, zanim ją doliczysz."
+      },
+      "form_limit": {
+        "title": "{form} jest pełny",
+        "message": "Osiągnięto limit {limit} odpowiedzi, kolejne nie są przyjmowane."
+      },
+      "form_closing": {
+        "title": "{form} wkrótce się zamyka",
+        "message": "Przestaje przyjmować odpowiedzi: {date}."
+      },
+      "export_ready": {
+        "title": "Twój eksport jest gotowy",
+        "message": "{file} jest gotowy do pobrania."
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} nie działa",
+        "message": "Wysyłki ciągle się nie udają, więc go wstrzymano. Sprawdź adres i token."
+      },
+      "security_alert": {
+        "title": "Logowanie zablokowane",
+        "message": "Logowanie użytkownika {email} zostało zablokowane: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "sieć nie jest na liście dozwolonych",
+      "email_domain": "domena e-mail jest niedozwolona",
+      "code_locked": "zbyt wiele błędnych kodów",
+      "account_disabled": "konto jest wyłączone",
+      "password_expired": "hasło wygasło"
     }
   }
 }

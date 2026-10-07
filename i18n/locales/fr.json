@@ -6341,7 +6341,9 @@
       "signin": "{n} moyen de connexion | {n} moyens de connexion",
       "idleMinutes": "Déconnexion après {n} min d'inactivité",
       "idleHours": "Déconnexion après {n} heure d'inactivité | Déconnexion après {n} heures d'inactivité",
-      "allowlist": "Liste d'autorisation IP activée"
+      "allowlist": "Liste d'autorisation IP activée",
+      "notifications": "{n} événements sur {total} activés",
+      "digest": "résumé quotidien"
     },
     "next": {
       "title": "Étape suivante",
@@ -6369,7 +6371,10 @@
       "methods": "Gardez au moins un moyen de vous connecter.",
       "domain": "Saisissez un domaine tel que example.com.",
       "ip": "Saisissez une adresse ou une plage telle que 203.0.113.0/24.",
-      "ip_empty": "Ajoutez au moins une adresse ou désactivez la liste d'autorisation."
+      "ip_empty": "Ajoutez au moins une adresse ou désactivez la liste d'autorisation.",
+      "people": "Choisissez au moins une personne.",
+      "subject": "Ajoutez un objet.",
+      "body": "Ajoutez le texte de l'e-mail."
     },
     "company": {
       "names": "Noms",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Une adresse (198.51.100.7) ou une plage (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Vous vous bloqueriez l'accès",
       "lockoutDesc": "Votre propre adresse n'est pas dans la liste, l'enregistrement est donc refusé. Ajoutez-la d'abord."
+    },
+    "notifications": {
+      "event": "Événement",
+      "inApp": "Dans l'app",
+      "email": "E-mail",
+      "who": "Qui",
+      "whoAsked": "La personne qui l'a demandé",
+      "pickPeople": "Choisir des personnes…",
+      "to": {
+        "admins": "Admins",
+        "everyone": "Tout le monde",
+        "people": "Personnes choisies"
+      },
+      "group": {
+        "responses": "Réponses",
+        "forms": "Formulaires et exports",
+        "problems": "Problèmes et sécurité"
+      },
+      "groupHint": {
+        "responses": "Quand des personnes répondent à vos formulaires.",
+        "forms": "Quand un formulaire est complet ou ferme, et quand un fichier est prêt.",
+        "problems": "Des points que quelqu'un devrait vérifier bientôt."
+      },
+      "name": {
+        "response_new": "Nouvelle réponse",
+        "response_duplicate": "Doublon possible",
+        "form_limit": "Formulaire complet",
+        "form_closing": "Formulaire fermant d'ici un jour",
+        "export_ready": "Export prêt",
+        "webhook_failing": "Webhook en échec",
+        "security_alert": "Connexion bloquée"
+      },
+      "hint": {
+        "response_new": "Chaque réponse à chaque formulaire.",
+        "response_duplicate": "Une réponse qui ressemble à une précédente.",
+        "form_limit": "Un formulaire a atteint sa limite de réponses.",
+        "form_closing": "Un formulaire n'accepte plus de réponses d'ici 24 heures.",
+        "export_ready": "Un fichier demandé peut être téléchargé.",
+        "webhook_failing": "Un webhook a été mis en pause après des échecs répétés.",
+        "security_alert": "Un réseau, un domaine d'e-mail ou un compte bloqué, ou trop de codes erronés."
+      },
+      "digest": "Résumé quotidien",
+      "digestHint": "Moins d'e-mails : un par jour au lieu d'un à chaque fois.",
+      "digestOn": "Envoyer un e-mail de résumé par jour",
+      "digestOnHint": "Les notifications dans l'app arrivent toujours immédiatement.",
+      "digestAt": "Envoyer à",
+      "sendNow": "Envoyer maintenant",
+      "digestSent": "{n} résumé envoyé | {n} résumés envoyés",
+      "summary": "{n} événements sur {total} préviennent quelqu'un. Les e-mails arrivent dans Paramètres → Modèles d'e-mail → E-mails envoyés tant qu'un service de messagerie n'est pas connecté."
+    }
+  },
+  "notifications": {
+    "today": "Aujourd'hui",
+    "earlier": "Plus tôt",
+    "markAll": "Tout marquer comme lu",
+    "clearRead": "Effacer les lues",
+    "settings": "Paramètres de notification",
+    "unread": "Non lues",
+    "failed": "Impossible de charger les notifications",
+    "emptyDesc": "Les nouvelles réponses, exports terminés et alertes apparaissent ici.",
+    "bellUnread": "Notifications, {n} non lue | Notifications, {n} non lues",
+    "event": {
+      "response_new": {
+        "title": "Nouvelle réponse à {form}",
+        "message": "{form} a une nouvelle réponse."
+      },
+      "response_duplicate": {
+        "title": "Doublon possible dans {form}",
+        "message": "Une nouvelle réponse ressemble à une précédente. Jetez-y un œil avant de la compter."
+      },
+      "form_limit": {
+        "title": "{form} est complet",
+        "message": "La limite de {limit} réponses est atteinte, plus aucune n'est acceptée."
+      },
+      "form_closing": {
+        "title": "{form} ferme bientôt",
+        "message": "Il n'accepte plus de réponses à partir du {date}."
+      },
+      "export_ready": {
+        "title": "Votre export est prêt",
+        "message": "{file} est prêt à être téléchargé."
+      },
+      "webhook_failing": {
+        "title": "Le webhook {name} échoue",
+        "message": "Les envois échouent sans cesse, il a donc été mis en pause. Vérifiez son adresse et son jeton."
+      },
+      "security_alert": {
+        "title": "Connexion bloquée",
+        "message": "Une connexion de {email} a été bloquée : {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "le réseau n'est pas dans la liste autorisée",
+      "email_domain": "le domaine de l'e-mail n'est pas autorisé",
+      "code_locked": "trop de codes erronés",
+      "account_disabled": "le compte est désactivé",
+      "password_expired": "le mot de passe a expiré"
     }
   }
 }

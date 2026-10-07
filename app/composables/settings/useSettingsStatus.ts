@@ -50,6 +50,10 @@ export function useSettingsStatus(settings: Ref<WorkspaceSettings | null>) {
       const text = idle < 60 ? t('settings.status.idleMinutes', { n: idle }) : t('settings.status.idleHours', { n: idle / 60 }, idle / 60)
       return { text: s.security.ip_allowlist.enabled ? `${text} · ${t('settings.status.allowlist')}` : text, tone: 'info' }
     }
+    if (key === 'notifications') {
+      const on = Object.values(s.notifications.events).filter(rule => rule.in_app || rule.email).length
+      return { text: t('settings.status.notifications', { n: on, total: Object.keys(s.notifications.events).length }) + (s.notifications.digest.enabled ? ` · ${t('settings.status.digest')}` : ''), tone: 'info' }
+    }
     if (key === 'themes' && counts.value) return { text: t('settings.status.themes', { n: counts.value.themes.total }, counts.value.themes.total), tone: 'info' }
     if (key === 'landingPages' && counts.value) return { text: t('settings.status.pages', { n: counts.value.pages.total }, counts.value.pages.total), tone: 'info' }
     return null

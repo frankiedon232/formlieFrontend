@@ -6341,7 +6341,9 @@
       "signin": "{n} 种登录方式 | {n} 种登录方式",
       "idleMinutes": "闲置 {n} 分钟后退出登录",
       "idleHours": "闲置 {n} 小时后退出登录 | 闲置 {n} 小时后退出登录",
-      "allowlist": "IP 允许列表已开启"
+      "allowlist": "IP 允许列表已开启",
+      "notifications": "已开启 {n} / {total} 个事件",
+      "digest": "每日摘要"
     },
     "next": {
       "title": "下一步",
@@ -6369,7 +6371,10 @@
       "methods": "请至少保留一种登录方式。",
       "domain": "请输入域名，例如 example.com。",
       "ip": "请输入地址或范围，例如 203.0.113.0/24。",
-      "ip_empty": "请至少添加一个地址，或关闭允许列表。"
+      "ip_empty": "请至少添加一个地址，或关闭允许列表。",
+      "people": "请至少选择一人。",
+      "subject": "请添加主题。",
+      "body": "请添加邮件正文。"
     },
     "company": {
       "names": "名称",
@@ -6709,6 +6714,103 @@
       "ipExamples": "单个地址 (198.51.100.7) 或范围 (203.0.113.0/24, 2001:db8::/32)。",
       "lockout": "你将无法登录",
       "lockoutDesc": "你自己的地址不在列表中，因此无法保存。请先添加。"
+    },
+    "notifications": {
+      "event": "事件",
+      "inApp": "应用内",
+      "email": "邮件",
+      "who": "通知谁",
+      "whoAsked": "提出请求的人",
+      "pickPeople": "选择人员…",
+      "to": {
+        "admins": "管理员",
+        "everyone": "所有人",
+        "people": "指定人员"
+      },
+      "group": {
+        "responses": "回复",
+        "forms": "表单和导出",
+        "problems": "问题和安全"
+      },
+      "groupHint": {
+        "responses": "有人回复你的表单时。",
+        "forms": "表单已满或关闭时，以及文件就绪时。",
+        "problems": "需要有人尽快查看的事项。"
+      },
+      "name": {
+        "response_new": "新回复",
+        "response_duplicate": "可能重复",
+        "form_limit": "表单已满",
+        "form_closing": "表单一天内关闭",
+        "export_ready": "导出就绪",
+        "webhook_failing": "Webhook 失败",
+        "security_alert": "登录被阻止"
+      },
+      "hint": {
+        "response_new": "任何表单的每条回复。",
+        "response_duplicate": "与之前相似的回复。",
+        "form_limit": "表单达到回复上限。",
+        "form_closing": "表单将在 24 小时内停止接收回复。",
+        "export_ready": "请求的文件可以下载。",
+        "webhook_failing": "Webhook 多次失败后被暂停。",
+        "security_alert": "被阻止的网络、邮箱域名或账号，或错误验证码过多。"
+      },
+      "digest": "每日摘要",
+      "digestHint": "减少邮件：每天一封，而不是每次一封。",
+      "digestOn": "每天发送一封摘要邮件",
+      "digestOnHint": "应用内通知仍会立即送达。",
+      "digestAt": "发送时间",
+      "sendNow": "立即发送",
+      "digestSent": "已发送 {n} 份摘要 | 已发送 {n} 份摘要",
+      "summary": "{total} 个事件中有 {n} 个会通知相关人员。在连接邮件服务之前，邮件会保存在 设置 → 邮件模板 → 已发送邮件 中。"
+    }
+  },
+  "notifications": {
+    "today": "今天",
+    "earlier": "更早",
+    "markAll": "全部标为已读",
+    "clearRead": "清除已读",
+    "settings": "通知设置",
+    "unread": "未读",
+    "failed": "无法加载通知",
+    "emptyDesc": "新回复、已完成的导出和提醒会显示在这里。",
+    "bellUnread": "通知，{n} 条未读 | 通知，{n} 条未读",
+    "event": {
+      "response_new": {
+        "title": "{form} 有新回复",
+        "message": "{form} 收到了一条新回复。"
+      },
+      "response_duplicate": {
+        "title": "{form} 中可能有重复",
+        "message": "新回复与之前的相似。计入前请先查看。"
+      },
+      "form_limit": {
+        "title": "{form} 已满",
+        "message": "已达到 {limit} 条回复上限，不再接收。"
+      },
+      "form_closing": {
+        "title": "{form} 即将关闭",
+        "message": "将于 {date} 停止接收回复。"
+      },
+      "export_ready": {
+        "title": "你的导出已就绪",
+        "message": "{file} 可以下载了。"
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} 失败",
+        "message": "多次投递失败，已暂停。请检查其地址和令牌。"
+      },
+      "security_alert": {
+        "title": "登录已被阻止",
+        "message": "{email} 的登录已被阻止：{reason}。"
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "该网络不在允许列表中",
+      "email_domain": "该邮箱域名不被允许",
+      "code_locked": "错误验证码过多",
+      "account_disabled": "账号已停用",
+      "password_expired": "密码已过期"
     }
   }
 }

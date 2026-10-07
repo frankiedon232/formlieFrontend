@@ -17,6 +17,10 @@ const props = defineProps<{
 
 const { t } = useI18n()
 const { notificationsOpen } = useAppUi()
+// The bell's unread count, checked every minute (F14 M4)
+const notifications = useNotifications()
+onMounted(notifications.start)
+const unread = computed(() => notifications.feed.value?.unread ?? 0)
 const { items: crumbs } = useBreadcrumbs()
 const { current, locales, locale, changeLocale } = useAppLocale()
 
@@ -103,14 +107,16 @@ const languageItems = computed(() =>
       </UDropdownMenu>
 
       <UTooltip :text="t('navbar.notifications')">
-        <UButton
-          icon="i-lucide-bell"
-          color="neutral"
-          variant="outline"
-          square
-          :aria-label="t('navbar.notifications')"
-          @click="notificationsOpen = true"
-        />
+        <UChip :show="!!unread" :text="unread > 9 ? '9+' : unread" color="error" size="3xl" inset>
+          <UButton
+            icon="i-lucide-bell"
+            color="neutral"
+            variant="outline"
+            square
+            :aria-label="unread ? t('notifications.bellUnread', { n: unread }, unread) : t('navbar.notifications')"
+            @click="notificationsOpen = true"
+          />
+        </UChip>
       </UTooltip>
 
       <UColorModeButton color="neutral" variant="outline" class="lg:hidden" />

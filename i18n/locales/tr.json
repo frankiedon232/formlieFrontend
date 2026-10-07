@@ -6341,7 +6341,9 @@
       "signin": "{n} oturum açma yöntemi | {n} oturum açma yöntemi",
       "idleMinutes": "{n} dk işlem yapılmazsa oturum kapatılır",
       "idleHours": "{n} saat işlem yapılmazsa oturum kapatılır | {n} saat işlem yapılmazsa oturum kapatılır",
-      "allowlist": "IP izin listesi açık"
+      "allowlist": "IP izin listesi açık",
+      "notifications": "{total} olaydan {n} tanesi açık",
+      "digest": "günlük özet"
     },
     "next": {
       "title": "Sonraki adım",
@@ -6369,7 +6371,10 @@
       "methods": "En az bir oturum açma yöntemini açık tutun.",
       "domain": "example.com gibi bir alan adı girin.",
       "ip": "203.0.113.0/24 gibi bir adres veya aralık girin.",
-      "ip_empty": "En az bir adres ekleyin veya izin listesini kapatın."
+      "ip_empty": "En az bir adres ekleyin veya izin listesini kapatın.",
+      "people": "En az bir kişi seç.",
+      "subject": "Bir konu ekle.",
+      "body": "E-postanın metnini ekle."
     },
     "company": {
       "names": "Adlar",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Tek bir adres (198.51.100.7) veya bir aralık (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Kendinizi dışarıda bırakırsınız",
       "lockoutDesc": "Kendi adresiniz listede yok, bu yüzden kaydetme reddedilir. Önce onu ekleyin."
+    },
+    "notifications": {
+      "event": "Olay",
+      "inApp": "Uygulamada",
+      "email": "E-posta",
+      "who": "Kim",
+      "whoAsked": "İsteyen kişi",
+      "pickPeople": "Kişi seç…",
+      "to": {
+        "admins": "Yöneticiler",
+        "everyone": "Herkes",
+        "people": "Seçilen kişiler"
+      },
+      "group": {
+        "responses": "Yanıtlar",
+        "forms": "Formlar ve dışa aktarmalar",
+        "problems": "Sorunlar ve güvenlik"
+      },
+      "groupHint": {
+        "responses": "İnsanlar formlarını yanıtladığında.",
+        "forms": "Bir form dolduğunda ya da kapandığında ve bir dosya hazır olduğunda.",
+        "problems": "Birinin yakında bakması gereken şeyler."
+      },
+      "name": {
+        "response_new": "Yeni yanıt",
+        "response_duplicate": "Olası kopya",
+        "form_limit": "Form doldu",
+        "form_closing": "Form bir gün içinde kapanıyor",
+        "export_ready": "Dışa aktarma hazır",
+        "webhook_failing": "Webhook başarısız",
+        "security_alert": "Giriş engellendi"
+      },
+      "hint": {
+        "response_new": "Her forma gelen her yanıt.",
+        "response_duplicate": "Öncekine benzeyen bir yanıt.",
+        "form_limit": "Bir form yanıt sınırına ulaştı.",
+        "form_closing": "Bir form 24 saat içinde yanıt almayı durduruyor.",
+        "export_ready": "İstenen bir dosya indirilebilir.",
+        "webhook_failing": "Bir webhook defalarca başarısız olduktan sonra durduruldu.",
+        "security_alert": "Engellenen bir ağ, e-posta alan adı veya hesap ya da çok fazla yanlış kod."
+      },
+      "digest": "Günlük özet",
+      "digestHint": "Daha az e-posta: her seferinde bir tane yerine günde bir.",
+      "digestOn": "Günde bir özet e-postası gönder",
+      "digestOnHint": "Uygulamadaki bildirimler yine hemen gelir.",
+      "digestAt": "Gönderim saati",
+      "sendNow": "Şimdi gönder",
+      "digestSent": "{n} özet gönderildi | {n} özet gönderildi",
+      "summary": "{total} olaydan {n} tanesi birine haber verir. Bir posta hizmeti bağlanana kadar e-postalar Ayarlar → E-posta şablonları → Gönderilen e-postalar içinde görünür."
+    }
+  },
+  "notifications": {
+    "today": "Bugün",
+    "earlier": "Daha önce",
+    "markAll": "Tümünü okundu işaretle",
+    "clearRead": "Okunanları temizle",
+    "settings": "Bildirim ayarları",
+    "unread": "Okunmamış",
+    "failed": "Bildirimler yüklenemedi",
+    "emptyDesc": "Yeni yanıtlar, hazır dışa aktarmalar ve uyarılar burada görünür.",
+    "bellUnread": "Bildirimler, {n} okunmamış | Bildirimler, {n} okunmamış",
+    "event": {
+      "response_new": {
+        "title": "{form} için yeni yanıt",
+        "message": "{form} formuna yeni bir yanıt geldi."
+      },
+      "response_duplicate": {
+        "title": "{form} içinde olası kopya",
+        "message": "Yeni bir yanıt öncekine benziyor. Saymadan önce bir göz at."
+      },
+      "form_limit": {
+        "title": "{form} doldu",
+        "message": "{limit} yanıt sınırına ulaştı ve yenisini kabul etmiyor."
+      },
+      "form_closing": {
+        "title": "{form} yakında kapanıyor",
+        "message": "{date} tarihinde yanıt almayı durduracak."
+      },
+      "export_ready": {
+        "title": "Dışa aktarman hazır",
+        "message": "{file} indirilmeye hazır."
+      },
+      "webhook_failing": {
+        "title": "{name} webhooku başarısız oluyor",
+        "message": "Gönderimler sürekli başarısız olduğu için durduruldu. Adresini ve belirtecini kontrol et."
+      },
+      "security_alert": {
+        "title": "Giriş engellendi",
+        "message": "{email} adresinin girişi engellendi: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "ağ izin verilenler listesinde değil",
+      "email_domain": "e-posta alan adına izin verilmiyor",
+      "code_locked": "çok fazla yanlış kod",
+      "account_disabled": "hesap devre dışı",
+      "password_expired": "parolanın süresi doldu"
     }
   }
 }

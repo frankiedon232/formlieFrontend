@@ -6341,7 +6341,9 @@
       "signin": "{n} forma de entrar | {n} formas de entrar",
       "idleMinutes": "Sessão terminada após {n} min de inatividade",
       "idleHours": "Sessão terminada após {n} hora de inatividade | Sessão terminada após {n} horas de inatividade",
-      "allowlist": "Lista de IPs permitidos ativa"
+      "allowlist": "Lista de IPs permitidos ativa",
+      "notifications": "{n} de {total} eventos ativados",
+      "digest": "resumo diário"
     },
     "next": {
       "title": "Próximo passo",
@@ -6369,7 +6371,10 @@
       "methods": "Mantenha pelo menos uma forma de entrar.",
       "domain": "Introduza um domínio como example.com.",
       "ip": "Introduza um endereço ou um intervalo como 203.0.113.0/24.",
-      "ip_empty": "Adicione pelo menos um endereço ou desative a lista de permitidos."
+      "ip_empty": "Adicione pelo menos um endereço ou desative a lista de permitidos.",
+      "people": "Escolha pelo menos uma pessoa.",
+      "subject": "Adicione um assunto.",
+      "body": "Adicione o texto do e-mail."
     },
     "company": {
       "names": "Nomes",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Um endereço (198.51.100.7) ou um intervalo (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Ficaria sem acesso",
       "lockoutDesc": "O seu próprio endereço não está na lista, por isso a gravação é recusada. Adicione-o primeiro."
+    },
+    "notifications": {
+      "event": "Evento",
+      "inApp": "No app",
+      "email": "E-mail",
+      "who": "Quem",
+      "whoAsked": "A pessoa que pediu",
+      "pickPeople": "Escolher pessoas…",
+      "to": {
+        "admins": "Administradores",
+        "everyone": "Todos",
+        "people": "Pessoas escolhidas"
+      },
+      "group": {
+        "responses": "Respostas",
+        "forms": "Formulários e exportações",
+        "problems": "Problemas e segurança"
+      },
+      "groupHint": {
+        "responses": "Quando as pessoas respondem aos seus formulários.",
+        "forms": "Quando um formulário enche ou fecha, e quando um arquivo está pronto.",
+        "problems": "Coisas que alguém deve verificar em breve."
+      },
+      "name": {
+        "response_new": "Nova resposta",
+        "response_duplicate": "Possível duplicata",
+        "form_limit": "Formulário cheio",
+        "form_closing": "Formulário fecha em um dia",
+        "export_ready": "Exportação pronta",
+        "webhook_failing": "Webhook falhando",
+        "security_alert": "Login bloqueado"
+      },
+      "hint": {
+        "response_new": "Toda resposta a qualquer formulário.",
+        "response_duplicate": "Uma resposta parecida com uma anterior.",
+        "form_limit": "Um formulário atingiu o limite de respostas.",
+        "form_closing": "Um formulário para de aceitar respostas em 24 horas.",
+        "export_ready": "Um arquivo pedido já pode ser baixado.",
+        "webhook_failing": "Um webhook foi pausado após falhar repetidamente.",
+        "security_alert": "Uma rede, domínio de e-mail ou conta bloqueados, ou muitos códigos errados."
+      },
+      "digest": "Resumo diário",
+      "digestHint": "Menos e-mails: um por dia em vez de um a cada vez.",
+      "digestOn": "Enviar um e-mail de resumo por dia",
+      "digestOnHint": "As notificações no app continuam chegando na hora.",
+      "digestAt": "Enviar às",
+      "sendNow": "Enviar agora",
+      "digestSent": "{n} resumo enviado | {n} resumos enviados",
+      "summary": "{n} de {total} eventos avisam alguém. Os e-mails ficam em Configurações → Modelos de e-mail → E-mails enviados até que um serviço de e-mail seja conectado."
+    }
+  },
+  "notifications": {
+    "today": "Hoje",
+    "earlier": "Anteriores",
+    "markAll": "Marcar tudo como lido",
+    "clearRead": "Limpar lidas",
+    "settings": "Configurações de notificações",
+    "unread": "Não lidas",
+    "failed": "Não foi possível carregar as notificações",
+    "emptyDesc": "Novas respostas, exportações concluídas e alertas aparecem aqui.",
+    "bellUnread": "Notificações, {n} não lida | Notificações, {n} não lidas",
+    "event": {
+      "response_new": {
+        "title": "Nova resposta em {form}",
+        "message": "{form} tem uma nova resposta."
+      },
+      "response_duplicate": {
+        "title": "Possível duplicata em {form}",
+        "message": "Uma nova resposta parece com uma anterior. Dê uma olhada antes de contá-la."
+      },
+      "form_limit": {
+        "title": "{form} está cheio",
+        "message": "Atingiu o limite de {limit} respostas e não aceita mais."
+      },
+      "form_closing": {
+        "title": "{form} fecha em breve",
+        "message": "Para de aceitar respostas em {date}."
+      },
+      "export_ready": {
+        "title": "Sua exportação está pronta",
+        "message": "{file} está pronto para baixar."
+      },
+      "webhook_failing": {
+        "title": "O webhook {name} está falhando",
+        "message": "As entregas continuam falhando, por isso foi pausado. Verifique o endereço e o token."
+      },
+      "security_alert": {
+        "title": "Login bloqueado",
+        "message": "Um login de {email} foi bloqueado: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "a rede não está na lista permitida",
+      "email_domain": "o domínio do e-mail não é permitido",
+      "code_locked": "muitos códigos errados",
+      "account_disabled": "a conta está desativada",
+      "password_expired": "a senha expirou"
     }
   }
 }

@@ -6341,7 +6341,9 @@
       "signin": "{n} manier om in te loggen | {n} manieren om in te loggen",
       "idleMinutes": "Uitgelogd na {n} min inactiviteit",
       "idleHours": "Uitgelogd na {n} uur inactiviteit | Uitgelogd na {n} uur inactiviteit",
-      "allowlist": "IP-toelatingslijst aan"
+      "allowlist": "IP-toelatingslijst aan",
+      "notifications": "{n} van {total} gebeurtenissen aan",
+      "digest": "dagelijks overzicht"
     },
     "next": {
       "title": "Volgende stap",
@@ -6369,7 +6371,10 @@
       "methods": "Houd minstens één manier om in te loggen.",
       "domain": "Voer een domein in zoals example.com.",
       "ip": "Voer een adres of bereik in zoals 203.0.113.0/24.",
-      "ip_empty": "Voeg minstens één adres toe of zet de toelatingslijst uit."
+      "ip_empty": "Voeg minstens één adres toe of zet de toelatingslijst uit.",
+      "people": "Kies minstens één persoon.",
+      "subject": "Voeg een onderwerp toe.",
+      "body": "Voeg de tekst van de e-mail toe."
     },
     "company": {
       "names": "Namen",
@@ -6709,6 +6714,103 @@
       "ipExamples": "Eén adres (198.51.100.7) of een bereik (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "Je zou jezelf buitensluiten",
       "lockoutDesc": "Je eigen adres staat niet op de lijst, dus opslaan wordt geweigerd. Voeg het eerst toe."
+    },
+    "notifications": {
+      "event": "Gebeurtenis",
+      "inApp": "In de app",
+      "email": "E-mail",
+      "who": "Wie",
+      "whoAsked": "De persoon die erom vroeg",
+      "pickPeople": "Kies mensen…",
+      "to": {
+        "admins": "Beheerders",
+        "everyone": "Iedereen",
+        "people": "Gekozen mensen"
+      },
+      "group": {
+        "responses": "Reacties",
+        "forms": "Formulieren en exports",
+        "problems": "Problemen en beveiliging"
+      },
+      "groupHint": {
+        "responses": "Wanneer mensen je formulieren invullen.",
+        "forms": "Wanneer een formulier vol raakt of sluit, en wanneer een bestand klaar is.",
+        "problems": "Dingen die iemand snel moet bekijken."
+      },
+      "name": {
+        "response_new": "Nieuwe reactie",
+        "response_duplicate": "Mogelijk dubbel",
+        "form_limit": "Formulier is vol",
+        "form_closing": "Formulier sluit binnen een dag",
+        "export_ready": "Export klaar",
+        "webhook_failing": "Webhook mislukt",
+        "security_alert": "Inloggen geblokkeerd"
+      },
+      "hint": {
+        "response_new": "Elke reactie op elk formulier.",
+        "response_duplicate": "Een reactie die op een eerdere lijkt.",
+        "form_limit": "Een formulier heeft de reactielimiet bereikt.",
+        "form_closing": "Een formulier neemt binnen 24 uur geen reacties meer aan.",
+        "export_ready": "Een aangevraagd bestand kan worden gedownload.",
+        "webhook_failing": "Een webhook is gepauzeerd na herhaald mislukken.",
+        "security_alert": "Een geblokkeerd netwerk, e-maildomein of account, of te veel foute codes."
+      },
+      "digest": "Dagelijks overzicht",
+      "digestHint": "Minder e-mails: één per dag in plaats van één per keer.",
+      "digestOn": "Eén overzichtsmail per dag sturen",
+      "digestOnHint": "Meldingen in de app komen nog steeds direct binnen.",
+      "digestAt": "Versturen om",
+      "sendNow": "Nu versturen",
+      "digestSent": "{n} overzicht verstuurd | {n} overzichten verstuurd",
+      "summary": "{n} van {total} gebeurtenissen waarschuwen iemand. E-mails komen in Instellingen → E-mailsjablonen → Verzonden e-mails terecht tot een mailservice is gekoppeld."
+    }
+  },
+  "notifications": {
+    "today": "Vandaag",
+    "earlier": "Eerder",
+    "markAll": "Alles als gelezen markeren",
+    "clearRead": "Gelezen wissen",
+    "settings": "Meldingsinstellingen",
+    "unread": "Ongelezen",
+    "failed": "Meldingen konden niet worden geladen",
+    "emptyDesc": "Nieuwe reacties, klare exports en waarschuwingen verschijnen hier.",
+    "bellUnread": "Meldingen, {n} ongelezen | Meldingen, {n} ongelezen",
+    "event": {
+      "response_new": {
+        "title": "Nieuwe reactie op {form}",
+        "message": "{form} heeft een nieuwe reactie."
+      },
+      "response_duplicate": {
+        "title": "Mogelijk dubbel in {form}",
+        "message": "Een nieuwe reactie lijkt op een eerdere. Bekijk hem voordat je hem meetelt."
+      },
+      "form_limit": {
+        "title": "{form} is vol",
+        "message": "De limiet van {limit} reacties is bereikt, er komen geen meer bij."
+      },
+      "form_closing": {
+        "title": "{form} sluit binnenkort",
+        "message": "Neemt vanaf {date} geen reacties meer aan."
+      },
+      "export_ready": {
+        "title": "Je export is klaar",
+        "message": "{file} staat klaar om te downloaden."
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} mislukt",
+        "message": "Verzendingen blijven mislukken, dus hij is gepauzeerd. Controleer het adres en de token."
+      },
+      "security_alert": {
+        "title": "Inloggen geblokkeerd",
+        "message": "Een inlogpoging van {email} is geblokkeerd: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "het netwerk staat niet op de toegestane lijst",
+      "email_domain": "het e-maildomein is niet toegestaan",
+      "code_locked": "te veel foute codes",
+      "account_disabled": "het account is uitgeschakeld",
+      "password_expired": "het wachtwoord is verlopen"
     }
   }
 }

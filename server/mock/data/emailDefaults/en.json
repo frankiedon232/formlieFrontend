@@ -1,0 +1,75 @@
+{
+  "templates": {
+    "signin_code": {
+      "subject": "Your sign-in code for {{workspace}}",
+      "body": "Hello {{name}},\n\nYour code is {{code}}. It works for {{minutes}} minutes.\n\nIf you didn't try to sign in, change your password and tell your administrator."
+    },
+    "password_reset": {
+      "subject": "Reset your {{workspace}} password",
+      "body": "Hello {{name}},\n\nUse the code {{code}} to choose a new password. It works for {{minutes}} minutes.\n\nIf you didn't ask for this, you can ignore this email. Your password stays the same."
+    },
+    "invitation": {
+      "subject": "{{inviter}} invited you to {{workspace}}",
+      "body": "Hello {{name}},\n\n{{inviter}} invited you to work with them in {{workspace}} on Formalie.\n\nAccept the invitation: {{link}}"
+    },
+    "response_receipt": {
+      "subject": "Your answers to {{form}}",
+      "body": "Thank you for filling in {{form}}.\n\nHere is a copy of what you sent on {{date}} (reference {{number}}):\n\n{{answers}}\n\nKeep this email for your records."
+    },
+    "response_notification": {
+      "subject": "New response to {{form}}",
+      "body": "{{form}} has a new response (number {{number}}, {{date}}).\n\n{{answers}}\n\nOpen it in Formalie: {{link}}"
+    },
+    "notification": {
+      "subject": "{{title}}",
+      "body": "{{message}}\n\nOpen Formalie: {{link}}"
+    },
+    "daily_digest": {
+      "subject": "Your day in {{workspace}}",
+      "body": "Hello {{name}},\n\nHere is what happened since yesterday:\n\n{{summary}}\n\nOpen Formalie: {{link}}"
+    }
+  },
+  "events": {
+    "response_new": {
+      "title": "New response to {{form}}",
+      "message": "{{form}} has a new response."
+    },
+    "response_duplicate": {
+      "title": "Possible duplicate in {{form}}",
+      "message": "A new response to {{form}} looks like an earlier one. Have a look before you count it."
+    },
+    "form_limit": {
+      "title": "{{form}} is full",
+      "message": "{{form}} reached its limit of {{limit}} responses and takes no more."
+    },
+    "form_closing": {
+      "title": "{{form}} closes soon",
+      "message": "{{form}} stops taking responses on {{date}}."
+    },
+    "export_ready": {
+      "title": "Your export is ready",
+      "message": "{{file}} is ready to download."
+    },
+    "webhook_failing": {
+      "title": "Webhook {{name}} is failing",
+      "message": "Deliveries to {{name}} keep failing, so it was paused. Check its address and token."
+    },
+    "security_alert": {
+      "title": "Sign-in blocked in {{workspace}}",
+      "message": "A sign-in by {{email}} was blocked: {{reason}}."
+    }
+  },
+  "layout": {
+    "footer": "You get this email because of your account in {{workspace}}.",
+    "answers": "Answers",
+    "open": "Open",
+    "summary": "{{count}} × {{title}}"
+  },
+  "reasons": {
+    "ip_not_allowed": "the network is not on the allowed list",
+    "email_domain": "the email domain is not allowed",
+    "code_locked": "too many wrong codes",
+    "account_disabled": "the account is disabled",
+    "password_expired": "the password has expired"
+  }
+}

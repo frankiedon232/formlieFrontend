@@ -6341,7 +6341,9 @@
       "signin": "{n} way to sign in | {n} ways to sign in",
       "idleMinutes": "Signed out after {n} min idle",
       "idleHours": "Signed out after {n} hour idle | Signed out after {n} hours idle",
-      "allowlist": "IP allowlist on"
+      "allowlist": "IP allowlist on",
+      "notifications": "{n} of {total} events on",
+      "digest": "daily summary"
     },
     "next": {
       "title": "Next step",
@@ -6369,7 +6371,10 @@
       "methods": "Keep at least one way to sign in.",
       "domain": "Enter a domain such as example.com.",
       "ip": "Enter an address or a range such as 203.0.113.0/24.",
-      "ip_empty": "Add at least one address, or turn the allowlist off."
+      "ip_empty": "Add at least one address, or turn the allowlist off.",
+      "people": "Choose at least one person.",
+      "subject": "Add a subject.",
+      "body": "Add the text of the email."
     },
     "company": {
       "names": "Names",
@@ -6709,6 +6714,103 @@
       "ipExamples": "One address (198.51.100.7) or a range (203.0.113.0/24, 2001:db8::/32).",
       "lockout": "You would lock yourself out",
       "lockoutDesc": "Your own address is not on the list, so saving is refused. Add it first."
+    },
+    "notifications": {
+      "event": "Event",
+      "inApp": "In the app",
+      "email": "Email",
+      "who": "Who",
+      "whoAsked": "The person who asked for it",
+      "pickPeople": "Choose people…",
+      "to": {
+        "admins": "Admins",
+        "everyone": "Everyone",
+        "people": "Chosen people"
+      },
+      "group": {
+        "responses": "Responses",
+        "forms": "Forms and exports",
+        "problems": "Problems and security"
+      },
+      "groupHint": {
+        "responses": "When people answer your forms.",
+        "forms": "When a form fills up or closes, and when a file is ready.",
+        "problems": "Things someone should look at soon."
+      },
+      "name": {
+        "response_new": "New response",
+        "response_duplicate": "Possible duplicate",
+        "form_limit": "Form is full",
+        "form_closing": "Form closes within a day",
+        "export_ready": "Export ready",
+        "webhook_failing": "Webhook failing",
+        "security_alert": "Sign-in blocked"
+      },
+      "hint": {
+        "response_new": "Every response to any form.",
+        "response_duplicate": "A response that looks like an earlier one.",
+        "form_limit": "A form reached its response limit.",
+        "form_closing": "A form stops taking responses within 24 hours.",
+        "export_ready": "A file someone asked for can be downloaded.",
+        "webhook_failing": "A webhook was paused after failing again and again.",
+        "security_alert": "A blocked network, email domain or account, or too many wrong codes."
+      },
+      "digest": "Daily summary",
+      "digestHint": "Fewer emails: one a day instead of one each time.",
+      "digestOn": "Send one summary email a day",
+      "digestOnHint": "Notifications in the app still arrive straight away.",
+      "digestAt": "Send at",
+      "sendNow": "Send it now",
+      "digestSent": "{n} summary sent | {n} summaries sent",
+      "summary": "{n} of {total} events tell someone. Emails land in Settings → Email templates → Sent emails until a mail service is connected."
+    }
+  },
+  "notifications": {
+    "today": "Today",
+    "earlier": "Earlier",
+    "markAll": "Mark all read",
+    "clearRead": "Clear read",
+    "settings": "Notification settings",
+    "unread": "Unread",
+    "failed": "Notifications could not be loaded",
+    "emptyDesc": "New responses, finished exports and alerts show up here.",
+    "bellUnread": "Notifications, {n} unread | Notifications, {n} unread",
+    "event": {
+      "response_new": {
+        "title": "New response to {form}",
+        "message": "{form} has a new response."
+      },
+      "response_duplicate": {
+        "title": "Possible duplicate in {form}",
+        "message": "A new response looks like an earlier one. Have a look before you count it."
+      },
+      "form_limit": {
+        "title": "{form} is full",
+        "message": "It reached its limit of {limit} responses and takes no more."
+      },
+      "form_closing": {
+        "title": "{form} closes soon",
+        "message": "It stops taking responses on {date}."
+      },
+      "export_ready": {
+        "title": "Your export is ready",
+        "message": "{file} is ready to download."
+      },
+      "webhook_failing": {
+        "title": "Webhook {name} is failing",
+        "message": "Deliveries keep failing, so it was paused. Check its address and token."
+      },
+      "security_alert": {
+        "title": "Sign-in blocked",
+        "message": "A sign-in by {email} was blocked: {reason}."
+      }
+    },
+    "reason": {
+      "ip_not_allowed": "the network is not on the allowed list",
+      "email_domain": "the email domain is not allowed",
+      "code_locked": "too many wrong codes",
+      "account_disabled": "the account is disabled",
+      "password_expired": "the password has expired"
     }
   }
 }
