@@ -8,9 +8,6 @@ import type { OrgItem, OrgKind } from '#shared/types/org'
 export const SETTINGS_ORG_ICONS: Record<OrgKind, string> = {
   departments: 'i-lucide-network',
   job_titles: 'i-lucide-id-card',
-  teams: 'i-lucide-users-round',
-  locations: 'i-lucide-map-pin',
-  cost_centres: 'i-lucide-wallet',
 }
 
 export function useOrgActions(kind: MaybeRefOrGetter<OrgKind>, done: () => unknown) {

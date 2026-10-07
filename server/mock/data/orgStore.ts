@@ -1,6 +1,6 @@
 /**
  * Organisation data in the mock (F14 M2), kept in `.data/mock/org.json`: each workspace's departments,
- * job titles, teams, locations and cost centres, with the people in them. New workspaces start empty
+ * job titles, with the people in them. New workspaces start empty
  * (owner, 2026-10-03: no built-in samples once Settings exist); the demo workspaces keep the sample
  * departments their forms already use (same ids) and a few job titles.
  */

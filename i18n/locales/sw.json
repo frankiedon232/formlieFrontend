@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Onyesha yaliyotangulia",
       "more": "Onyesha zaidi"
-    }
+    },
+    "poweredBy": "Inaendeshwa na {brand}"
   },
   "common": {
     "loading": "Inapakia…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "Nenosiri lako limeisha muda. Weka jipya.",
     "FRM-AUTH-1016": "Kuingia hakuruhusiwi kutoka mtandao huu.",
     "FRM-AUTH-1017": "Mabadiliko haya yangekufungia nje. Angalia kikoa na anwani yako ya barua pepe.",
-    "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine.",
-    "FRM-ORG-1003": "Shirika kuu haliwezi kuhifadhiwa kwenye kumbukumbu."
+    "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Chapa",
       "language": "Lugha na eneo",
       "appearance": "Mwonekano",
-      "address": "Anwani na kikoa",
+      "address": "Anwani ya eneo la kazi",
       "departments": "Idara",
       "jobTitles": "Vyeo vya kazi",
-      "places": "Timu na maeneo",
       "lists": "Orodha",
       "signin": "Kuingia",
       "security": "Usalama",
@@ -6347,8 +6346,7 @@
       "privacy": "Faragha na data",
       "formDefaults": "Chaguo-msingi za fomu",
       "themes": "Mandhari",
-      "landingPages": "Kurasa za kutua",
-      "organisations": "Mashirika"
+      "landingPages": "Kurasa za kutua"
     },
     "desc": {
       "overview": "Kila kitu kuhusu eneo lako la kazi mahali pamoja.",
@@ -6356,10 +6354,9 @@
       "branding": "Nembo, ikoni ya kichupo cha kivinjari, rangi ya chapa na ukurasa wako wa kuingia.",
       "language": "Lugha, saa za eneo, sarafu, miundo ya tarehe na nambari, na lugha za fomu.",
       "appearance": "Rangi na mwonekano wako mwenyewe kwa lango zima.",
-      "address": "Anwani ya eneo lako la kazi na kikoa chako mwenyewe.",
+      "address": "Mahali timu yako inapoingia na fomu zako zinapokaa.",
       "departments": "Idara ambazo fomu na kanuni zako za ufikiaji zinaweza kutumia.",
       "jobTitles": "Vyeo vya kazi vya watu katika shirika lako.",
-      "places": "Orodha za hiari kama timu, maeneo na vituo vya gharama.",
       "lists": "Orodha za chaguo zinazoweza kutumika tena kwa maswali ya kuchagua.",
       "signin": "Njia za kuingia ambazo watu wako wanaweza kutumia, misimbo na kuingia kwa hatua mbili.",
       "security": "Kanuni za nenosiri, muda wa kipindi na anwani za IP zinazoruhusiwa.",
@@ -6368,8 +6365,7 @@
       "privacy": "Majibu huhifadhiwa kwa muda gani, maandishi ya idhini na maombi ya data.",
       "formDefaults": "Mipangilio ambayo fomu mpya huanza nayo, na chaguo-msingi za kupachika.",
       "themes": "Miundo ya fomu ambayo eneo lako la kazi linaweza kutumia.",
-      "landingPages": "Miundo ya kurasa za umma za fomu zako.",
-      "organisations": "Kampuni tanzu au matawi: kila fomu ni ya moja, na upau wa pembeni hubadilisha kati yao."
+      "landingPages": "Miundo ya kurasa za umma za fomu zako."
     },
     "status": {
       "complete": "Imekamilika",
@@ -6389,8 +6385,7 @@
       "notice": "notisi ya faragha imewekwa",
       "withTheme": "Fomu mpya huanza na mandhari",
       "workspaceLook": "Fomu mpya hutumia mwonekano wa eneo la kazi",
-      "customLook": "Mwonekano wako mwenyewe",
-      "organisations": "Shirika {n} | Mashirika {n}"
+      "customLook": "Mwonekano wako mwenyewe"
     },
     "next": {
       "title": "Hatua inayofuata",
@@ -6534,45 +6529,6 @@
           "placeholder": "mf. Kiongozi wa timu",
           "examples": "Meneja\nKiongozi wa timu\nMchambuzi",
           "peopleHint": "Nani ana cheo cha kazi"
-        },
-        "teams": {
-          "many": "Timu",
-          "new": "Timu mpya",
-          "create": "Unda timu",
-          "import": "Ingiza timu",
-          "hint": "Vikundi vya watu vya hiari vinavyovuka idara.",
-          "empty": "Bado hakuna timu",
-          "emptyDesc": "Ongeza timu kama shirika lako linafanya kazi kwa timu, au ziingize kutoka kwenye orodha.",
-          "search": "Tafuta timu",
-          "placeholder": "mf. Mafanikio ya wateja",
-          "examples": "Mafanikio ya wateja\nKuwapokea wapya\nTimu ya uwandani",
-          "peopleHint": "Nani yuko kwenye timu"
-        },
-        "locations": {
-          "many": "Maeneo",
-          "new": "Eneo jipya",
-          "create": "Unda eneo",
-          "import": "Ingiza maeneo",
-          "hint": "Maeneo, ofisi au matawi ya hiari.",
-          "empty": "Bado hakuna maeneo",
-          "emptyDesc": "Ongeza maeneo, ofisi au matawi wanakofanyia kazi watu, au yaingize kutoka kwenye orodha.",
-          "search": "Tafuta maeneo",
-          "placeholder": "mf. Ofisi kuu",
-          "examples": "Ofisi kuu\nTawi la kaskazini\nGhala",
-          "peopleHint": "Nani anafanya kazi katika eneo"
-        },
-        "cost_centres": {
-          "many": "Vituo vya gharama",
-          "new": "Kituo kipya cha gharama",
-          "create": "Unda kituo cha gharama",
-          "import": "Ingiza vituo vya gharama",
-          "hint": "Vituo vya gharama vya hiari kwa bajeti na idhini.",
-          "empty": "Bado hakuna vituo vya gharama",
-          "emptyDesc": "Ongeza vituo vya gharama kama fomu zako zinavihitaji, au viingize kutoka kwenye orodha.",
-          "search": "Tafuta vituo vya gharama",
-          "placeholder": "mf. CC-100 Masoko",
-          "examples": "CC-100 Masoko\nCC-200 Uendeshaji",
-          "peopleHint": "Nani anatozwa kwenye kituo cha gharama"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Hutolewa kila wakati, kwa anwani ambayo watu huingia nayo.",
       "sms": "Ujumbe mfupi",
       "smsHint": "Hutolewa kwa watu wenye namba ya simu ya mkononi kwenye akaunti yao.",
-      "app": "Programu ya uthibitishaji",
-      "appHint": "Misimbo kutoka programu kwenye simu yao.",
       "expiry": "Msimbo hudumu kwa",
       "expiryHint": "Baada ya hapo, watu huomba mpya.",
       "attempts": "Majaribio mabaya yanayoruhusiwa",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Washiriki wa timu wanaoongezwa kwenye barua pepe za majibu za kila fomu mpya.",
       "embed": "Tovuti zinazoruhusiwa kupachika",
       "embedAny": "Tovuti yoyote inaweza kupachika fomu mpya.",
-      "embedPlaceholder": "www.example.com, kisha Enter"
+      "embedPlaceholder": "www.example.com, kisha Enter",
+      "themeShown": "Fomu mpya huanza na {name}.",
+      "workspaceShown": "Fomu mpya huanza na mwonekano wa eneo lako la kazi."
     },
     "appearance": {
       "reset": "Rudisha kwa Formalie",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} inakuwa {url}. Kila mtu anaingia kwenye anwani mpya; ya zamani inaendelea kuleta hapa kwa siku 90, ili viungo vilivyoshirikiwa viendelee kufanya kazi.",
       "typeNew": "Andika {name} ili kuthibitisha",
       "changed": "Nafasi ya kazi sasa iko {url}",
-      "domain": "Kikoa chako mwenyewe",
-      "domainHint": "Onyesha fomu zako kwenye anwani yako mwenyewe, kama forms.example.com.",
-      "addDomain": "Ongeza kikoa",
-      "addRecords": "Ongeza rekodi hizi mbili kwa mtoa huduma wa kikoa chako, kisha kagua. Inaweza kuchukua saa chache kabla zionekane.",
-      "verifiedDesc": "Imethibitishwa. Fomu zinatumia anwani hii, na HTTPS imewekwa kiotomatiki.",
-      "type": "Aina",
-      "name": "Jina",
-      "value": "Thamani",
-      "found": "Imepatikana",
-      "missing": "Haijapatikana bado",
-      "check": "Kagua sasa",
-      "checked": "Ilikaguliwa {when}",
-      "remove": "Ondoa kikoa",
-      "removeTitle": "Kuondoa {domain}?",
-      "removeDesc": "Fomu zinarudi kwenye anwani ya nafasi yako ya kazi. Viungo vyenye kikoa chako vinaacha kufanya kazi.",
-      "status": {
-        "pending": "Inasubiri DNS",
-        "verified": "Imethibitishwa",
-        "failed": "Inaelekeza kwingine"
-      },
-      "problem": {
-        "not_found": "Rekodi hazijapatikana bado. Mabadiliko kwa mtoa huduma wa kikoa yanaweza kuchukua saa chache.",
-        "wrong_target": "Rekodi ya CNAME inaelekeza kwingine. Ibadilishe iwe thamani iliyo juu.",
-        "dns_error": "DNS haikufikiwa kwa sasa. Jaribu tena baada ya muda mfupi."
-      },
-      "formsAt": "Fomu zako ziko https://{host}",
-      "short": "Viungo vifupi",
-      "shortHint": "Kikoa chako mwenyewe kwa viungo vifupi vya fomu.",
-      "shortLater": "Inakuja baadaye. Hadi hapo viungo vifupi vinatumia anwani ya Formalie."
+      "formsAt": "Fomu zako ziko https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "akaunti imezimwa",
       "password_expired": "nenosiri limeisha muda"
     }
-  },
-  "organisations": {
-    "title": "Mashirika",
-    "all": "Mashirika yote",
-    "switch": "Shirika: {name}",
-    "manage": "Simamia mashirika",
-    "new": "Shirika jipya",
-    "create": "Unda shirika",
-    "editTitle": "Hariri {name}",
-    "editDesc": "Jina na nembo yake huonekana kwenye kurasa za umma za fomu zake.",
-    "name": "Jina",
-    "namePlaceholder": "mf. Example Ltd UK",
-    "nameTaken": "Shirika lenye jina hili tayari lipo.",
-    "shortName": "Jina fupi",
-    "shortNameHelp": "Kwa sehemu finyu, mf. upau wa pembeni.",
-    "website": "Tovuti",
-    "logo": "Nembo",
-    "logoHint": "PNG, JPEG au WebP, hadi 2 MB.",
-    "state": "Hali",
-    "active": "Linatumika",
-    "archived": "Limehifadhiwa kwenye kumbukumbu",
-    "forms": "Fomu",
-    "responses": "Majibu",
-    "updated": "Imesasishwa",
-    "formsCount": "Fomu {n} | Fomu {n}",
-    "activeCount": "linatumika | yanatumika",
-    "shareOfForms": "Sehemu ya fomu",
-    "noWebsite": "Hakuna tovuti",
-    "main": "Kuu",
-    "formsBy": "Fomu kwa shirika",
-    "formsByHint": "Fomu za nafasi ya kazi ni za shirika gani.",
-    "oneOnly": "Ongeza shirika ili kugawanya fomu kati yao.",
-    "byState": "Kwa hali",
-    "sortForms": "Fomu nyingi zaidi",
-    "sortResponses": "Majibu mengi zaidi",
-    "sortUpdated": "Zilizosasishwa hivi karibuni",
-    "search": "Tafuta mashirika",
-    "empty": "Hakuna shirika linalolingana",
-    "emptyDesc": "Futa vichujio, au ongeza shirika.",
-    "saved": "{name} imehifadhiwa",
-    "created": "{name} imeundwa",
-    "archive": "Hifadhi kwenye kumbukumbu",
-    "restore": "Rejesha",
-    "archivedToast": "{name} imehifadhiwa kwenye kumbukumbu",
-    "restoredToast": "{name} imerejeshwa",
-    "showForms": "Onyesha fomu zake",
-    "formSetting": "Shirika",
-    "formSettingHint": "Jina na nembo yake huonekana kwenye kurasa za umma za fomu hii. Huhifadhiwa papo hapo.",
-    "moved": "Fomu sasa ni ya {name}"
   }
 }

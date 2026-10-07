@@ -6,7 +6,6 @@
  * writes a real .xlsx (core/xlsx.ts), CSV, and a designed PDF report (data/responseReport.ts).
  * Every export, download and removal is in the audit trail.
  */
-import { inScope } from '../data/organisationStore'
 import { z } from 'zod'
 import type { H3Event } from 'h3'
 import type { ResponseExport, ResponseExportFormat } from '#shared/types/responses'
@@ -172,7 +171,7 @@ function visible(tenant: MockTenant, user: MockUser) {
   const forms = new Map(formsOf(tenant).forms.map(form => [form.id, form]))
   return [...exports.values()].filter(item => {
     const form = forms.get(item.form.id)
-    return item.tenantId === tenant.id && !item.deleted && !!form && levelOf(form, user) !== 'none' && inScope(tenant, form)
+    return item.tenantId === tenant.id && !item.deleted && !!form && levelOf(form, user) !== 'none'
   })
 }
 function findExport(tenant: MockTenant, user: MockUser, id: string | undefined) {

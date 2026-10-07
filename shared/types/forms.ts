@@ -42,8 +42,6 @@ export interface FolderRow {
 export interface FormSummary {
   /** Where people can answer (missing = all three). */
   channels?: FormChannel[]
-  /** The organisation it belongs to (F14 M7); null = the workspace's main one. */
-  organisation_id?: string | null
   /** Where its responses are kept (lists only; F12 M2). */
   storage?: import('./destinations').StorageMark
   id: string

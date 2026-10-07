@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Mostrar anteriores",
       "more": "Mostrar más"
-    }
+    },
+    "poweredBy": "Con tecnología de {brand}"
   },
   "common": {
     "loading": "Cargando…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "Tu contraseña ha caducado. Establece una nueva.",
     "FRM-AUTH-1016": "No se permite iniciar sesión desde esta red.",
     "FRM-AUTH-1017": "Este cambio te dejaría fuera. Revisa tu propio dominio y dirección de correo.",
-    "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra.",
-    "FRM-ORG-1003": "La organización principal no se puede archivar."
+    "FRM-AUTH-1018": "Usaste esta contraseña hace poco. Elige otra."
   },
   "errorUi": {
     "reference": "Referencia: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Marca",
       "language": "Idioma y región",
       "appearance": "Apariencia",
-      "address": "Dirección y dominio",
+      "address": "Dirección del espacio de trabajo",
       "departments": "Departamentos",
       "jobTitles": "Cargos",
-      "places": "Equipos y ubicaciones",
       "lists": "Listas",
       "signin": "Inicio de sesión",
       "security": "Seguridad",
@@ -6347,8 +6346,7 @@
       "privacy": "Privacidad y datos",
       "formDefaults": "Valores predeterminados de formularios",
       "themes": "Temas",
-      "landingPages": "Páginas de destino",
-      "organisations": "Organizaciones"
+      "landingPages": "Páginas de destino"
     },
     "desc": {
       "overview": "Todo sobre tu espacio de trabajo en un solo lugar.",
@@ -6356,10 +6354,9 @@
       "branding": "Logotipo, icono de la pestaña del navegador, color de marca y tu página de inicio de sesión.",
       "language": "Idioma, zona horaria, moneda, formatos de fecha y número, e idiomas de los formularios.",
       "appearance": "Tus propios colores y el aspecto de todo el portal.",
-      "address": "La dirección de tu espacio de trabajo y tu propio dominio.",
+      "address": "Dónde inicia sesión tu equipo y dónde están tus formularios.",
       "departments": "Los departamentos que pueden usar tus formularios y reglas de acceso.",
       "jobTitles": "Los cargos de las personas de tu organización.",
-      "places": "Listas opcionales como equipos, sedes y centros de costes.",
       "lists": "Listas de opciones reutilizables para preguntas de elección.",
       "signin": "Qué métodos de inicio de sesión puede usar tu gente, códigos y verificación en dos pasos.",
       "security": "Reglas de contraseña, duración de la sesión y direcciones IP permitidas.",
@@ -6368,8 +6365,7 @@
       "privacy": "Cuánto se conservan las respuestas, textos de consentimiento y solicitudes de datos.",
       "formDefaults": "Los ajustes con los que empiezan los formularios nuevos y los valores de inserción.",
       "themes": "Diseños de formulario que tu espacio de trabajo puede usar.",
-      "landingPages": "Diseños de página para las páginas públicas de tus formularios.",
-      "organisations": "Filiales o sucursales: cada formulario pertenece a una, y la barra lateral permite cambiar entre ellas."
+      "landingPages": "Diseños de página para las páginas públicas de tus formularios."
     },
     "status": {
       "complete": "Completo",
@@ -6389,8 +6385,7 @@
       "notice": "aviso de privacidad definido",
       "withTheme": "Los formularios nuevos empiezan con un tema",
       "workspaceLook": "Los formularios nuevos usan el aspecto del espacio de trabajo",
-      "customLook": "Tu propio estilo",
-      "organisations": "{n} organización | {n} organizaciones"
+      "customLook": "Tu propio estilo"
     },
     "next": {
       "title": "Siguiente paso",
@@ -6534,45 +6529,6 @@
           "placeholder": "p. ej. Jefe de equipo",
           "examples": "Gerente\nJefe de equipo\nAnalista",
           "peopleHint": "Quién ocupa un puesto"
-        },
-        "teams": {
-          "many": "Equipos",
-          "new": "Nuevo equipo",
-          "create": "Crear equipo",
-          "import": "Importar equipos",
-          "hint": "Grupos de personas opcionales que cruzan departamentos.",
-          "empty": "Aún no hay equipos",
-          "emptyDesc": "Añade equipos si tu organización trabaja con ellos, o impórtalos desde una lista.",
-          "search": "Buscar equipos",
-          "placeholder": "p. ej. Éxito del cliente",
-          "examples": "Éxito del cliente\nIncorporación\nEquipo de campo",
-          "peopleHint": "Quién está en un equipo"
-        },
-        "locations": {
-          "many": "Ubicaciones",
-          "new": "Nueva ubicación",
-          "create": "Crear ubicación",
-          "import": "Importar ubicaciones",
-          "hint": "Sedes, oficinas o sucursales opcionales.",
-          "empty": "Aún no hay ubicaciones",
-          "emptyDesc": "Añade las sedes, oficinas o sucursales donde trabaja la gente, o impórtalas desde una lista.",
-          "search": "Buscar ubicaciones",
-          "placeholder": "p. ej. Oficina central",
-          "examples": "Oficina central\nSucursal norte\nAlmacén",
-          "peopleHint": "Quién trabaja en una ubicación"
-        },
-        "cost_centres": {
-          "many": "Centros de coste",
-          "new": "Nuevo centro de coste",
-          "create": "Crear centro de coste",
-          "import": "Importar centros de coste",
-          "hint": "Centros de coste opcionales para presupuestos y aprobaciones.",
-          "empty": "Aún no hay centros de coste",
-          "emptyDesc": "Añade centros de coste si tus formularios los necesitan, o impórtalos desde una lista.",
-          "search": "Buscar centros de coste",
-          "placeholder": "p. ej. CC-100 Marketing",
-          "examples": "CC-100 Marketing\nCC-200 Operaciones",
-          "peopleHint": "Quién se carga a un centro de coste"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Siempre disponible, en la dirección con la que inician sesión.",
       "sms": "SMS",
       "smsHint": "Se ofrece a las personas con un número móvil en su cuenta.",
-      "app": "App de autenticación",
-      "appHint": "Códigos de una aplicación en su teléfono.",
       "expiry": "Un código dura",
       "expiryHint": "Después, las personas piden uno nuevo.",
       "attempts": "Intentos fallidos permitidos",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Miembros del equipo añadidos a los correos de respuesta de cada formulario nuevo.",
       "embed": "Sitios web con permiso para insertar",
       "embedAny": "Cualquier sitio web puede insertar formularios nuevos.",
-      "embedPlaceholder": "www.example.com, luego Enter"
+      "embedPlaceholder": "www.example.com, luego Enter",
+      "themeShown": "Los formularios nuevos empiezan con {name}.",
+      "workspaceShown": "Los formularios nuevos empiezan con el aspecto de tu espacio de trabajo."
     },
     "appearance": {
       "reset": "Restablecer a Formalie",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} pasa a ser {url}. Todos inician sesión en la nueva dirección; la antigua sigue llevando aquí durante 90 días, así que los enlaces compartidos siguen funcionando.",
       "typeNew": "Escribe {name} para confirmar",
       "changed": "El espacio de trabajo ahora está en {url}",
-      "domain": "Tu propio dominio",
-      "domainHint": "Muestra tus formularios en tu propia dirección, como forms.example.com.",
-      "addDomain": "Añadir dominio",
-      "addRecords": "Añade estos dos registros en tu proveedor de dominio y luego comprueba. Pueden pasar unas horas hasta que sean visibles.",
-      "verifiedDesc": "Verificado. Los formularios usan esta dirección, con HTTPS configurado automáticamente.",
-      "type": "Tipo",
-      "name": "Nombre",
-      "value": "Valor",
-      "found": "Encontrado",
-      "missing": "Aún no encontrado",
-      "check": "Comprobar ahora",
-      "checked": "Comprobado {when}",
-      "remove": "Quitar dominio",
-      "removeTitle": "¿Quitar {domain}?",
-      "removeDesc": "Los formularios vuelven a la dirección de tu espacio de trabajo. Los enlaces con tu dominio dejan de funcionar.",
-      "status": {
-        "pending": "Esperando al DNS",
-        "verified": "Verificado",
-        "failed": "Apunta a otro sitio"
-      },
-      "problem": {
-        "not_found": "Aún no se encontraron los registros. Los cambios en tu proveedor de dominio pueden tardar unas horas.",
-        "wrong_target": "El registro CNAME apunta a otro sitio. Cámbialo al valor de arriba.",
-        "dns_error": "No se pudo acceder al DNS en este momento. Inténtalo de nuevo en un momento."
-      },
-      "formsAt": "Tus formularios están en https://{host}",
-      "short": "Enlaces cortos",
-      "shortHint": "Tu propio dominio para enlaces cortos de formularios.",
-      "shortLater": "Llegará más adelante. Mientras tanto, los enlaces cortos usan la dirección de Formalie."
+      "formsAt": "Tus formularios están en https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "la cuenta está desactivada",
       "password_expired": "la contraseña ha caducado"
     }
-  },
-  "organisations": {
-    "title": "Organizaciones",
-    "all": "Todas las organizaciones",
-    "switch": "Organización: {name}",
-    "manage": "Gestionar organizaciones",
-    "new": "Nueva organización",
-    "create": "Crear organización",
-    "editTitle": "Editar {name}",
-    "editDesc": "Su nombre y logotipo se muestran en las páginas públicas de sus formularios.",
-    "name": "Nombre",
-    "namePlaceholder": "p. ej. Example Ltd UK",
-    "nameTaken": "Ya existe una organización con este nombre.",
-    "shortName": "Nombre corto",
-    "shortNameHelp": "Para espacios reducidos, p. ej. la barra lateral.",
-    "website": "Sitio web",
-    "logo": "Logotipo",
-    "logoHint": "PNG, JPEG o WebP, hasta 2 MB.",
-    "state": "Estado",
-    "active": "Activa",
-    "archived": "Archivada",
-    "forms": "Formularios",
-    "responses": "Respuestas",
-    "updated": "Actualizada",
-    "formsCount": "{n} formulario | {n} formularios",
-    "activeCount": "activa | activas",
-    "shareOfForms": "Porcentaje de formularios",
-    "noWebsite": "Sin sitio web",
-    "main": "Principal",
-    "formsBy": "Formularios por organización",
-    "formsByHint": "A qué organización pertenecen los formularios del espacio de trabajo.",
-    "oneOnly": "Añade una organización para repartir los formularios entre ellas.",
-    "byState": "Por estado",
-    "sortForms": "Más formularios",
-    "sortResponses": "Más respuestas",
-    "sortUpdated": "Actualizadas recientemente",
-    "search": "Buscar organizaciones",
-    "empty": "Ninguna organización coincide",
-    "emptyDesc": "Borra los filtros o añade una organización.",
-    "saved": "{name} guardada",
-    "created": "{name} creada",
-    "archive": "Archivar",
-    "restore": "Restaurar",
-    "archivedToast": "{name} archivada",
-    "restoredToast": "{name} restaurada",
-    "showForms": "Mostrar sus formularios",
-    "formSetting": "Organización",
-    "formSettingHint": "Su nombre y logotipo se muestran en las páginas públicas de este formulario. Se guarda al instante.",
-    "moved": "El formulario ahora pertenece a {name}"
   }
 }

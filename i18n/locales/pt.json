@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Mostrar anteriores",
       "more": "Mostrar mais"
-    }
+    },
+    "poweredBy": "Desenvolvido por {brand}"
   },
   "common": {
     "loading": "Carregando…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "A sua senha expirou. Defina uma nova.",
     "FRM-AUTH-1016": "Não é permitido entrar a partir desta rede.",
     "FRM-AUTH-1017": "Esta alteração bloquearia o seu acesso. Verifique o seu próprio domínio e endereço de email.",
-    "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra.",
-    "FRM-ORG-1003": "A organização principal não pode ser arquivada."
+    "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Marca",
       "language": "Idioma e região",
       "appearance": "Aparência",
-      "address": "Endereço e domínio",
+      "address": "Endereço do espaço de trabalho",
       "departments": "Departamentos",
       "jobTitles": "Cargos",
-      "places": "Equipes e locais",
       "lists": "Listas",
       "signin": "Login",
       "security": "Segurança",
@@ -6347,8 +6346,7 @@
       "privacy": "Privacidade e dados",
       "formDefaults": "Padrões de formulários",
       "themes": "Temas",
-      "landingPages": "Páginas de destino",
-      "organisations": "Organizações"
+      "landingPages": "Páginas de destino"
     },
     "desc": {
       "overview": "Tudo sobre o seu espaço de trabalho em um só lugar.",
@@ -6356,10 +6354,9 @@
       "branding": "Logotipo, ícone da aba do navegador, cor da marca e sua página de login.",
       "language": "Idioma, fuso horário, moeda, formatos de data e número e idiomas dos formulários.",
       "appearance": "Suas próprias cores e o visual de todo o portal.",
-      "address": "O endereço do seu espaço de trabalho e seu próprio domínio.",
+      "address": "Onde sua equipe entra e onde ficam seus formulários.",
       "departments": "Os departamentos que seus formulários e regras de acesso podem usar.",
       "jobTitles": "Os cargos das pessoas da sua organização.",
-      "places": "Listas opcionais, como equipes, locais e centros de custo.",
       "lists": "Listas de opções reutilizáveis para perguntas de escolha.",
       "signin": "Quais métodos de login suas pessoas podem usar, códigos e login em duas etapas.",
       "security": "Regras de senha, duração da sessão e endereços IP permitidos.",
@@ -6368,8 +6365,7 @@
       "privacy": "Por quanto tempo as respostas são mantidas, textos de consentimento e solicitações de dados.",
       "formDefaults": "As configurações com que os novos formulários começam e os padrões de incorporação.",
       "themes": "Designs de formulário que seu espaço de trabalho pode usar.",
-      "landingPages": "Designs de página para as páginas públicas dos seus formulários.",
-      "organisations": "Subsidiárias ou filiais: cada formulário pertence a uma, e a barra lateral alterna entre elas."
+      "landingPages": "Designs de página para as páginas públicas dos seus formulários."
     },
     "status": {
       "complete": "Completo",
@@ -6389,8 +6385,7 @@
       "notice": "aviso de privacidade definido",
       "withTheme": "Novos formulários começam com um tema",
       "workspaceLook": "Novos formulários usam o visual do espaço de trabalho",
-      "customLook": "Seu próprio visual",
-      "organisations": "{n} organização | {n} organizações"
+      "customLook": "Seu próprio visual"
     },
     "next": {
       "title": "Próximo passo",
@@ -6534,45 +6529,6 @@
           "placeholder": "ex.: Líder de equipe",
           "examples": "Gerente\nLíder de equipe\nAnalista",
           "peopleHint": "Quem ocupa um cargo"
-        },
-        "teams": {
-          "many": "Equipes",
-          "new": "Nova equipe",
-          "create": "Criar equipe",
-          "import": "Importar equipes",
-          "hint": "Grupos opcionais de pessoas entre departamentos.",
-          "empty": "Ainda não há equipes",
-          "emptyDesc": "Adicione equipes se sua organização trabalha assim, ou importe-as de uma lista.",
-          "search": "Pesquisar equipes",
-          "placeholder": "ex.: Sucesso do cliente",
-          "examples": "Sucesso do cliente\nIntegração\nEquipe de campo",
-          "peopleHint": "Quem está em uma equipe"
-        },
-        "locations": {
-          "many": "Locais",
-          "new": "Novo local",
-          "create": "Criar local",
-          "import": "Importar locais",
-          "hint": "Unidades, escritórios ou filiais opcionais.",
-          "empty": "Ainda não há locais",
-          "emptyDesc": "Adicione as unidades, escritórios ou filiais onde as pessoas trabalham, ou importe-os de uma lista.",
-          "search": "Pesquisar locais",
-          "placeholder": "ex.: Sede",
-          "examples": "Sede\nFilial norte\nArmazém",
-          "peopleHint": "Quem trabalha em um local"
-        },
-        "cost_centres": {
-          "many": "Centros de custo",
-          "new": "Novo centro de custo",
-          "create": "Criar centro de custo",
-          "import": "Importar centros de custo",
-          "hint": "Centros de custo opcionais para orçamentos e aprovações.",
-          "empty": "Ainda não há centros de custo",
-          "emptyDesc": "Adicione centros de custo se seus formulários precisarem, ou importe-os de uma lista.",
-          "search": "Pesquisar centros de custo",
-          "placeholder": "ex.: CC-100 Marketing",
-          "examples": "CC-100 Marketing\nCC-200 Operações",
-          "peopleHint": "Quem é cobrado em um centro de custo"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Sempre oferecido, para o endereço com que as pessoas entram.",
       "sms": "SMS",
       "smsHint": "Oferecido a quem tem um número de telemóvel na conta.",
-      "app": "App de autenticação",
-      "appHint": "Códigos de uma app no telemóvel.",
       "expiry": "Um código dura",
       "expiryHint": "Depois, as pessoas pedem um novo.",
       "attempts": "Tentativas erradas permitidas",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Membros da equipe adicionados aos e-mails de resposta de cada novo formulário.",
       "embed": "Sites autorizados a incorporar",
       "embedAny": "Qualquer site pode incorporar novos formulários.",
-      "embedPlaceholder": "www.example.com, depois Enter"
+      "embedPlaceholder": "www.example.com, depois Enter",
+      "themeShown": "Novos formulários começam com {name}.",
+      "workspaceShown": "Novos formulários começam com a aparência do seu espaço de trabalho."
     },
     "appearance": {
       "reset": "Redefinir para Formalie",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} passa a ser {url}. Todos entram pelo novo endereço; o antigo continua levando para cá por 90 dias, então os links compartilhados continuam funcionando.",
       "typeNew": "Digite {name} para confirmar",
       "changed": "O espaço de trabalho agora está em {url}",
-      "domain": "Seu próprio domínio",
-      "domainHint": "Mostre seus formulários no seu próprio endereço, como forms.example.com.",
-      "addDomain": "Adicionar domínio",
-      "addRecords": "Adicione estes dois registros no seu provedor de domínio e depois verifique. Pode levar algumas horas até ficarem visíveis.",
-      "verifiedDesc": "Verificado. Os formulários usam este endereço, com HTTPS configurado automaticamente.",
-      "type": "Tipo",
-      "name": "Nome",
-      "value": "Valor",
-      "found": "Encontrado",
-      "missing": "Ainda não encontrado",
-      "check": "Verificar agora",
-      "checked": "Verificado {when}",
-      "remove": "Remover domínio",
-      "removeTitle": "Remover {domain}?",
-      "removeDesc": "Os formulários voltam para o endereço do seu espaço de trabalho. Links com o seu domínio deixam de funcionar.",
-      "status": {
-        "pending": "Aguardando DNS",
-        "verified": "Verificado",
-        "failed": "Aponta para outro lugar"
-      },
-      "problem": {
-        "not_found": "Os registros ainda não foram encontrados. Alterações no seu provedor de domínio podem levar algumas horas.",
-        "wrong_target": "O registro CNAME aponta para outro lugar. Altere para o valor acima.",
-        "dns_error": "Não foi possível acessar o DNS agora. Tente novamente em instantes."
-      },
-      "formsAt": "Seus formulários estão em https://{host}",
-      "short": "Links curtos",
-      "shortHint": "Seu próprio domínio para links curtos de formulários.",
-      "shortLater": "Em breve. Até lá, os links curtos usam o endereço do Formalie."
+      "formsAt": "Seus formulários estão em https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "a conta está desativada",
       "password_expired": "a senha expirou"
     }
-  },
-  "organisations": {
-    "title": "Organizações",
-    "all": "Todas as organizações",
-    "switch": "Organização: {name}",
-    "manage": "Gerenciar organizações",
-    "new": "Nova organização",
-    "create": "Criar organização",
-    "editTitle": "Editar {name}",
-    "editDesc": "O nome e o logotipo aparecem nas páginas públicas dos formulários dela.",
-    "name": "Nome",
-    "namePlaceholder": "ex.: Example Ltda",
-    "nameTaken": "Já existe uma organização com este nome.",
-    "shortName": "Nome curto",
-    "shortNameHelp": "Para espaços pequenos, ex.: a barra lateral.",
-    "website": "Site",
-    "logo": "Logotipo",
-    "logoHint": "PNG, JPEG ou WebP, até 2 MB.",
-    "state": "Situação",
-    "active": "Ativa",
-    "archived": "Arquivada",
-    "forms": "Formulários",
-    "responses": "Respostas",
-    "updated": "Atualizada",
-    "formsCount": "{n} formulário | {n} formulários",
-    "activeCount": "ativa | ativas",
-    "shareOfForms": "Parcela dos formulários",
-    "noWebsite": "Sem site",
-    "main": "Principal",
-    "formsBy": "Formulários por organização",
-    "formsByHint": "A qual organização os formulários do espaço de trabalho pertencem.",
-    "oneOnly": "Adicione uma organização para dividir os formulários entre elas.",
-    "byState": "Por situação",
-    "sortForms": "Mais formulários",
-    "sortResponses": "Mais respostas",
-    "sortUpdated": "Atualizadas recentemente",
-    "search": "Pesquisar organizações",
-    "empty": "Nenhuma organização encontrada",
-    "emptyDesc": "Limpe os filtros ou adicione uma organização.",
-    "saved": "{name} salva",
-    "created": "{name} criada",
-    "archive": "Arquivar",
-    "restore": "Restaurar",
-    "archivedToast": "{name} arquivada",
-    "restoredToast": "{name} restaurada",
-    "showForms": "Mostrar seus formulários",
-    "formSetting": "Organização",
-    "formSettingHint": "O nome e o logotipo aparecem nas páginas públicas deste formulário. Salvo na hora.",
-    "moved": "O formulário agora pertence a {name}"
   }
 }

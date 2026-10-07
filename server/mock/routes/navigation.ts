@@ -1,4 +1,3 @@
-import { inScope } from '../data/organisationStore'
 import type { NavCounts } from '#shared/types/navigation'
 import { DATASOURCE_STATUSES, type DataSourceStatus } from '#shared/types/datasources'
 import { SYSTEM_TEMPLATES, TEMPLATE_CATEGORY_KEYS } from '#shared/templates'
@@ -19,7 +18,7 @@ import { destinationsOf, rowOfDestination } from '../data/destinationStore'
 export const navigationCounts = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
   // People access: forms someone may not see aren't counted for them either.
-  const all = formsOf(tenant).forms.filter(form => canSee(form, user) && inScope(tenant, form))
+  const all = formsOf(tenant).forms.filter(form => canSee(form, user))
   const live = all.filter(form => !form.deleted_at)
   const count = (status: string) => live.filter(form => form.status === status).length
 

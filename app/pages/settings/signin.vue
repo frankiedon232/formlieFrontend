@@ -1,6 +1,6 @@
 <!--
   Settings → Sign-in (F14 M3): the ways people sign in (only these show on the workspace sign-in page),
-  the one-time code every sign-in asks for (channels, how long it lasts, how many tries), and the email
+  the one-time code every sign-in asks for (by email; text message optional), how long it lasts, how many tries, and the email
   domains allowed to sign in. A live miniature of the sign-in page sits beside it. The server refuses a
   domain list without the admin's own domain (FRM-AUTH-1017); the page says so before saving.
 -->
@@ -63,11 +63,6 @@ const name = computed(() => store.settings.value?.company.display_name ?? '')
               <UIcon name="i-lucide-message-square" class="size-4 shrink-0 text-muted" />
               <span class="flex min-w-0 flex-1 flex-col"><span class="text-sm text-highlighted">{{ t('settings.signin.sms') }}</span><span class="text-xs text-muted">{{ t('settings.signin.smsHint') }}</span></span>
               <USwitch v-model="draft.code.sms" color="neutral" :aria-label="t('settings.signin.sms')" />
-            </div>
-            <div class="flex items-center gap-3 px-3 py-2.5 opacity-60">
-              <UIcon name="i-lucide-smartphone" class="size-4 shrink-0 text-muted" />
-              <span class="flex min-w-0 flex-1 flex-col"><span class="text-sm text-highlighted">{{ t('settings.signin.app') }}</span><span class="text-xs text-muted">{{ t('settings.signin.appHint') }}</span></span>
-              <UBadge :label="t('settings.soon')" color="neutral" variant="soft" size="sm" />
             </div>
           </div>
 

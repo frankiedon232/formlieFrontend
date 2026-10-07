@@ -5,7 +5,8 @@
     "scroller": {
       "back": "이전 보기",
       "more": "더 보기"
-    }
+    },
+    "poweredBy": "{brand} 제공"
   },
   "common": {
     "loading": "불러오는 중…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "비밀번호가 만료되었습니다. 새 비밀번호를 설정하세요.",
     "FRM-AUTH-1016": "이 네트워크에서는 로그인할 수 없습니다.",
     "FRM-AUTH-1017": "이 변경으로 본인이 로그인할 수 없게 됩니다. 본인의 이메일 도메인과 주소를 확인하세요.",
-    "FRM-AUTH-1018": "최근에 사용한 비밀번호입니다. 다른 비밀번호를 선택하세요.",
-    "FRM-ORG-1003": "기본 조직은 보관할 수 없습니다."
+    "FRM-AUTH-1018": "최근에 사용한 비밀번호입니다. 다른 비밀번호를 선택하세요."
   },
   "errorUi": {
     "reference": "참조 번호: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "브랜딩",
       "language": "언어 및 지역",
       "appearance": "모양",
-      "address": "주소 및 도메인",
+      "address": "워크스페이스 주소",
       "departments": "부서",
       "jobTitles": "직함",
-      "places": "팀과 위치",
       "lists": "목록",
       "signin": "로그인",
       "security": "보안",
@@ -6347,8 +6346,7 @@
       "privacy": "개인정보 및 데이터",
       "formDefaults": "양식 기본값",
       "themes": "테마",
-      "landingPages": "랜딩 페이지",
-      "organisations": "조직"
+      "landingPages": "랜딩 페이지"
     },
     "desc": {
       "overview": "워크스페이스에 관한 모든 것을 한곳에서 확인하세요.",
@@ -6356,10 +6354,9 @@
       "branding": "로고, 브라우저 탭 아이콘, 브랜드 색상, 로그인 페이지.",
       "language": "언어, 시간대, 통화, 날짜와 숫자 형식, 양식 언어.",
       "appearance": "포털 전체에 적용되는 나만의 색상과 모양.",
-      "address": "워크스페이스 주소와 나만의 도메인.",
+      "address": "팀이 로그인하는 곳이자 양식이 있는 곳입니다.",
       "departments": "양식과 접근 규칙에서 사용할 수 있는 부서.",
       "jobTitles": "조직 구성원의 직함.",
-      "places": "팀, 사업장, 비용 센터 같은 선택 목록.",
       "lists": "선택형 질문에 재사용할 수 있는 옵션 목록.",
       "signin": "구성원이 사용할 수 있는 로그인 방법, 코드, 2단계 로그인.",
       "security": "비밀번호 규칙, 세션 길이, 허용할 IP 주소.",
@@ -6368,8 +6365,7 @@
       "privacy": "응답 보관 기간, 동의 문구, 데이터 요청.",
       "formDefaults": "새 양식의 시작 설정과 삽입 기본값.",
       "themes": "워크스페이스에서 사용할 수 있는 양식 디자인.",
-      "landingPages": "양식 공개 페이지용 페이지 디자인.",
-      "organisations": "자회사 또는 지점: 각 양식은 하나의 조직에 속하며, 사이드바에서 조직을 전환합니다."
+      "landingPages": "양식 공개 페이지용 페이지 디자인."
     },
     "status": {
       "complete": "완료",
@@ -6389,8 +6385,7 @@
       "notice": "개인정보 안내 설정됨",
       "withTheme": "새 양식은 테마와 함께 시작",
       "workspaceLook": "새 양식은 워크스페이스 디자인 사용",
-      "customLook": "나만의 스타일",
-      "organisations": "조직 {n}개 | 조직 {n}개"
+      "customLook": "나만의 스타일"
     },
     "next": {
       "title": "다음 단계",
@@ -6534,45 +6529,6 @@
           "placeholder": "예: 팀장",
           "examples": "매니저\n팀장\n분석가",
           "peopleHint": "직함을 가진 사람"
-        },
-        "teams": {
-          "many": "팀",
-          "new": "새 팀",
-          "create": "팀 만들기",
-          "import": "팀 가져오기",
-          "hint": "부서를 가로지르는 선택형 사람 그룹입니다.",
-          "empty": "아직 팀이 없습니다",
-          "emptyDesc": "조직이 팀으로 일한다면 팀을 추가하거나 목록에서 가져오세요.",
-          "search": "팀 검색",
-          "placeholder": "예: 고객 성공",
-          "examples": "고객 성공\n온보딩\n현장 팀",
-          "peopleHint": "팀에 속한 사람"
-        },
-        "locations": {
-          "many": "위치",
-          "new": "새 위치",
-          "create": "위치 만들기",
-          "import": "위치 가져오기",
-          "hint": "선택형 사업장, 사무실 또는 지점입니다.",
-          "empty": "아직 위치가 없습니다",
-          "emptyDesc": "사람들이 일하는 사업장, 사무실 또는 지점을 추가하거나 목록에서 가져오세요.",
-          "search": "위치 검색",
-          "placeholder": "예: 본사",
-          "examples": "본사\n북부 지점\n창고",
-          "peopleHint": "위치에서 일하는 사람"
-        },
-        "cost_centres": {
-          "many": "비용 센터",
-          "new": "새 비용 센터",
-          "create": "비용 센터 만들기",
-          "import": "비용 센터 가져오기",
-          "hint": "예산과 승인을 위한 선택형 비용 센터입니다.",
-          "empty": "아직 비용 센터가 없습니다",
-          "emptyDesc": "양식에 필요하면 비용 센터를 추가하거나 목록에서 가져오세요.",
-          "search": "비용 센터 검색",
-          "placeholder": "예: CC-100 마케팅",
-          "examples": "CC-100 마케팅\nCC-200 운영",
-          "peopleHint": "비용 센터에 배정된 사람"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "항상 제공되며, 로그인에 사용하는 주소로 전송됩니다.",
       "sms": "문자 메시지",
       "smsHint": "계정에 휴대폰 번호가 있는 사용자에게 제공됩니다.",
-      "app": "인증 앱",
-      "appHint": "휴대폰 앱에서 생성한 코드입니다.",
       "expiry": "코드 유효 시간",
       "expiryHint": "이후에는 새 코드를 요청해야 합니다.",
       "attempts": "허용되는 오입력 횟수",
@@ -6954,7 +6908,9 @@
       "teamHelp": "모든 새 양식의 응답 이메일에 추가되는 팀원입니다.",
       "embed": "삽입을 허용하는 웹사이트",
       "embedAny": "모든 웹사이트가 새 양식을 삽입할 수 있습니다.",
-      "embedPlaceholder": "www.example.com 입력 후 Enter"
+      "embedPlaceholder": "www.example.com 입력 후 Enter",
+      "themeShown": "새 양식은 {name}(으)로 시작합니다.",
+      "workspaceShown": "새 양식은 워크스페이스 스타일로 시작합니다."
     },
     "appearance": {
       "reset": "Formalie 기본값으로 재설정",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} 주소가 {url}(으)로 바뀝니다. 모두 새 주소로 로그인하며, 이전 주소는 90일 동안 이곳으로 연결되어 공유된 링크도 계속 작동합니다.",
       "typeNew": "확인하려면 {name}을(를) 입력하세요",
       "changed": "워크스페이스가 이제 {url}에 있습니다",
-      "domain": "내 도메인",
-      "domainHint": "forms.example.com처럼 내 주소로 양식을 표시하세요.",
-      "addDomain": "도메인 추가",
-      "addRecords": "도메인 제공업체에서 이 두 레코드를 추가한 다음 확인하세요. 반영되기까지 몇 시간이 걸릴 수 있습니다.",
-      "verifiedDesc": "확인됨. 양식이 이 주소를 사용하며 HTTPS는 자동으로 설정됩니다.",
-      "type": "유형",
-      "name": "이름",
-      "value": "값",
-      "found": "찾음",
-      "missing": "아직 찾지 못함",
-      "check": "지금 확인",
-      "checked": "{when} 확인함",
-      "remove": "도메인 제거",
-      "removeTitle": "{domain}을(를) 제거할까요?",
-      "removeDesc": "양식이 워크스페이스 주소로 돌아갑니다. 내 도메인을 쓰는 링크는 작동하지 않게 됩니다.",
-      "status": {
-        "pending": "DNS 대기 중",
-        "verified": "확인됨",
-        "failed": "다른 곳을 가리킴"
-      },
-      "problem": {
-        "not_found": "레코드를 아직 찾지 못했습니다. 도메인 제공업체에서의 변경은 몇 시간이 걸릴 수 있습니다.",
-        "wrong_target": "CNAME 레코드가 다른 곳을 가리키고 있습니다. 위의 값으로 바꾸세요.",
-        "dns_error": "지금은 DNS에 연결할 수 없습니다. 잠시 후 다시 시도하세요."
-      },
-      "formsAt": "양식은 https://{host}에 있습니다",
-      "short": "짧은 링크",
-      "shortHint": "양식 짧은 링크에 쓸 내 도메인입니다.",
-      "shortLater": "나중에 제공됩니다. 그때까지 짧은 링크는 Formalie 주소를 사용합니다."
+      "formsAt": "양식은 https://{host}에 있습니다"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "계정이 비활성화되었습니다",
       "password_expired": "비밀번호가 만료되었습니다"
     }
-  },
-  "organisations": {
-    "title": "조직",
-    "all": "모든 조직",
-    "switch": "조직: {name}",
-    "manage": "조직 관리",
-    "new": "새 조직",
-    "create": "조직 만들기",
-    "editTitle": "{name} 편집",
-    "editDesc": "이름과 로고는 해당 조직 양식의 공개 페이지에 표시됩니다.",
-    "name": "이름",
-    "namePlaceholder": "예: Example Ltd UK",
-    "nameTaken": "이 이름의 조직이 이미 있습니다.",
-    "shortName": "짧은 이름",
-    "shortNameHelp": "사이드바처럼 좁은 곳에 쓰입니다.",
-    "website": "웹사이트",
-    "logo": "로고",
-    "logoHint": "PNG, JPEG 또는 WebP, 최대 2 MB.",
-    "state": "상태",
-    "active": "활성",
-    "archived": "보관됨",
-    "forms": "양식",
-    "responses": "응답",
-    "updated": "업데이트",
-    "formsCount": "양식 {n}개 | 양식 {n}개",
-    "activeCount": "활성 | 활성",
-    "shareOfForms": "양식 비율",
-    "noWebsite": "웹사이트 없음",
-    "main": "기본",
-    "formsBy": "조직별 양식",
-    "formsByHint": "워크스페이스의 양식이 어느 조직에 속하는지 보여 줍니다.",
-    "oneOnly": "조직을 추가하면 양식을 나눌 수 있습니다.",
-    "byState": "상태별",
-    "sortForms": "양식 많은 순",
-    "sortResponses": "응답 많은 순",
-    "sortUpdated": "최근 업데이트순",
-    "search": "조직 검색",
-    "empty": "일치하는 조직이 없습니다",
-    "emptyDesc": "필터를 지우거나 조직을 추가하세요.",
-    "saved": "{name} 저장됨",
-    "created": "{name} 생성됨",
-    "archive": "보관",
-    "restore": "복원",
-    "archivedToast": "{name} 보관됨",
-    "restoredToast": "{name} 복원됨",
-    "showForms": "양식 보기",
-    "formSetting": "조직",
-    "formSettingHint": "이름과 로고는 이 양식의 공개 페이지에 표시됩니다. 바로 저장됩니다.",
-    "moved": "이제 양식이 {name}에 속합니다"
   }
 }

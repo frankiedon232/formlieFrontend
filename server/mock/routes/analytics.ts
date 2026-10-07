@@ -9,7 +9,6 @@
  * numbers agree with Responses. Views, starts and where people stop are estimates that stay the
  * same per form and day (the real backend counts them from the fill-in page's events).
  */
-import { inScope } from '../data/organisationStore'
 import type { AnalyticsDay, AnalyticsOverview, AnalyticsTotals, FormAnalyticsRow, FormFunnel, FunnelField, FunnelPage } from '#shared/types/analytics'
 import { requireAuth } from '../core/auth'
 import { MockError, ok, paginate } from '../core/respond'
@@ -84,7 +83,7 @@ function totalsOf(daily: AnalyticsDay[], within: IndexedResponse[]): AnalyticsTo
   return { views, starts, completions, completion_rate: starts ? Math.round((completions / starts) * 1000) / 10 : 0, median_seconds: median(within) }
 }
 
-const visibleForms = (tenant: MockTenant, user: MockUser) => formsOf(tenant).forms.filter(form => !form.deleted_at && inScope(tenant, form) && canSee(form, user))
+const visibleForms = (tenant: MockTenant, user: MockUser) => formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user))
 
 /** Where people stop: the form's starters walk its questions in order; leavers spread by how hard each question is. */
 function funnelOf(form: StoredForm, totals: AnalyticsTotals): { pages: FunnelPage[]; fields: FunnelField[] } {

@@ -63,6 +63,7 @@ const formLogo = computed(() => (mode.value === 'dark' ? (props.logoDark ?? prop
             <span class="h-4 rounded" :class="mode === 'dark' ? 'bg-white' : 'bg-neutral-900'" />
           </template>
           <span class="h-0.5 w-8 rounded-full" :style="{ backgroundColor: accent }" />
+          <span class="mt-1 flex items-center gap-1 text-[8px]" :class="mode === 'dark' ? 'text-white/70' : 'text-neutral-500'"><span class="flex size-2.5 items-center justify-center rounded-sm" :class="mode === 'dark' ? 'bg-white text-neutral-950' : 'bg-neutral-900 text-white'"><UIcon name="i-lucide-file-check-2" class="size-2" /></span>{{ t('app.poweredBy', { brand: 'Formalie' }) }}</span>
         </div>
       </div>
     </div>

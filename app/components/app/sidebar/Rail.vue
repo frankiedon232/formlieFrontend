@@ -49,21 +49,10 @@ const createItems = computed<DropdownMenuItem[][]>(() => [
   ],
 ])
 
-// The workspace, and with several organisations a switcher that narrows the portal to one (F14 M7)
+// Current workspace; the organisation switcher (several orgs per tenant) joins in F14.
 const tenant = useTenant()
-const session = useSession()
-const organisations = useOrganisations()
 const workspaces = computed(() => [
   { name: tenant.profile.value?.name ?? t('app.name'), icon: 'i-lucide-building-2', active: true },
-])
-const orgLabel = computed(() => organisations.current.value?.name ?? t('organisations.all'))
-const orgItems = computed<DropdownMenuItem[][]>(() => [
-  [
-    { type: 'label' as const, label: t('organisations.title') },
-    { label: t('organisations.all'), icon: 'i-lucide-layers', type: 'checkbox' as const, checked: !organisations.currentId.value, onSelect: () => organisations.choose(null) },
-    ...organisations.active.value.map(org => ({ label: org.name, avatar: org.logo_url ? { src: org.logo_url, alt: '' } : { text: organisationInitials(org), alt: '' }, type: 'checkbox' as const, checked: organisations.currentId.value === org.id, onSelect: () => organisations.choose(org.id) })),
-  ],
-  ...(session.user.value?.role !== 'member' ? [[{ label: t('organisations.manage'), icon: 'i-lucide-settings-2', to: '/settings/organisations' }]] : []),
 ])
 </script>
 
@@ -82,16 +71,6 @@ const orgItems = computed<DropdownMenuItem[][]>(() => [
       <USeparator class="w-8" />
 
       <nav :aria-label="t('nav.workspaces')" class="flex flex-col items-center gap-3">
-        <UDropdownMenu v-if="organisations.several.value" :items="orgItems" :content="{ side: 'right', align: 'start' }" :ui="{ content: 'max-h-96 w-64 overflow-y-auto' }">
-          <UTooltip :text="t('organisations.switch', { name: orgLabel })" :content="{ side: 'right' }">
-            <UButton color="neutral" variant="outline" size="lg" square :aria-label="t('organisations.switch', { name: orgLabel })" class="relative">
-              <img v-if="organisations.current.value?.logo_url" :src="organisations.current.value.logo_url" alt="" class="size-5 rounded object-contain">
-              <span v-else-if="organisations.current.value" class="text-[11px] font-semibold">{{ organisationInitials(organisations.current.value) }}</span>
-              <UIcon v-else name="i-lucide-layers" class="size-5" />
-              <span class="absolute -end-1 -bottom-1 flex size-3.5 items-center justify-center rounded-full bg-inverted text-inverted"><UIcon name="i-lucide-chevrons-up-down" class="size-2.5" /></span>
-            </UButton>
-          </UTooltip>
-        </UDropdownMenu>
         <UTooltip v-for="workspace in workspaces" :key="workspace.name" :text="workspace.name" :content="{ side: 'right' }">
           <UButton
             to="/forms"

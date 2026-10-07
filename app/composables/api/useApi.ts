@@ -1,4 +1,3 @@
-import { ORGANISATION_HEADER } from '#shared/types/organisations'
 import type { ApiSuccess, ListMeta } from '#shared/types/api'
 import type { AuthTokens } from '#shared/types/auth'
 import type { ApiClient, HttpMethod, RequestOptions } from '~/utils/api/client'
@@ -43,11 +42,8 @@ function getClient(): ApiClient {
     },
     getAccessToken: () => session.accessToken.value,
     // Dev only: tenant chosen with ?tenant= on localhost / LAN IP (decision 19). The mock honours it.
-    getExtraHeaders: (): Record<string, string> => ({
-      ...(import.meta.dev && devTenant.value ? { 'x-formalie-dev-tenant': devTenant.value } : {}),
-      // The organisation chosen in the rail narrows lists (F14 M7)
-      ...(currentOrganisation.value ? { [ORGANISATION_HEADER]: currentOrganisation.value } : {}),
-    }),
+    getExtraHeaders: (): Record<string, string> =>
+      import.meta.dev && devTenant.value ? { 'x-formalie-dev-tenant': devTenant.value } : {},
     refreshAccessToken: async () => {
       try {
         const { data } = await client!.request<AuthTokens>('POST', '/auth/refresh', { skipAuthRefresh: true })

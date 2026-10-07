@@ -1,9 +1,9 @@
 /**
  * Organisation data (F14 M2, docs/API-CONTRACT.md → Organisation data): each workspace's own departments,
- * job titles, teams, locations and cost centres. The form builder, field access and logic only ever
+ * job titles (teams and locations were dropped, owner 2026-10-07: forms are not team work; people get access per form). The form builder, field access and logic only ever
  * offer what the workspace has here. Job titles are what people do, not permission roles (F22).
  */
-export const ORG_KINDS = ['departments', 'job_titles', 'teams', 'locations', 'cost_centres'] as const
+export const ORG_KINDS = ['departments', 'job_titles'] as const
 export type OrgKind = (typeof ORG_KINDS)[number]
 export type OrgStatus = 'active' | 'archived'
 

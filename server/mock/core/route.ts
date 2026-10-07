@@ -11,7 +11,6 @@ import {
 } from '#shared/utils/crypto/envelope'
 import { MockError, fail, type MockReply } from './respond'
 import { decodeIds, decodeRouteParams, encodeIds } from './ids'
-import { requestScope } from './scope'
 import { claimNonce, isCsrfTokenValid, useSessionKey } from './store'
 
 export interface MockRouteContext {
@@ -53,7 +52,7 @@ export function defineMockRoute(
     if (options.plain) {
       try {
         const body = method === 'GET' ? null : await readBody(event)
-        return sendPlain(event, await requestScope.run(event, () => handler({ event, kid: '', query: getQuery(event), body })))
+        return sendPlain(event, await handler({ event, kid: '', query: getQuery(event), body }))
       } catch (error) {
         return sendPlain(
           event,
@@ -104,7 +103,7 @@ export function defineMockRoute(
     decodeRouteParams(event.context.params)
     try {
       return reply(
-        await requestScope.run(event, () => handler({ event, kid: envelope.kid, query: decodeIds(payload.query ?? {}), body: decodeIds(payload.body) })),
+        await handler({ event, kid: envelope.kid, query: decodeIds(payload.query ?? {}), body: decodeIds(payload.body) }),
       )
     } catch (error) {
       if (error instanceof MockError) return reply(fail(error.code, error.details))

@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Mostra precedenti",
       "more": "Mostra altri"
-    }
+    },
+    "poweredBy": "Offerto da {brand}"
   },
   "common": {
     "loading": "Caricamento…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "La tua password è scaduta. Imposta una nuova password.",
     "FRM-AUTH-1016": "L'accesso non è consentito da questa rete.",
     "FRM-AUTH-1017": "Questa modifica ti bloccherebbe l'accesso. Controlla il tuo dominio e il tuo indirizzo email.",
-    "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra.",
-    "FRM-ORG-1003": "L'organizzazione principale non può essere archiviata."
+    "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Branding",
       "language": "Lingua e area geografica",
       "appearance": "Aspetto",
-      "address": "Indirizzo e dominio",
+      "address": "Indirizzo dello spazio di lavoro",
       "departments": "Reparti",
       "jobTitles": "Ruoli professionali",
-      "places": "Team e sedi",
       "lists": "Elenchi",
       "signin": "Accesso",
       "security": "Sicurezza",
@@ -6347,8 +6346,7 @@
       "privacy": "Privacy e dati",
       "formDefaults": "Impostazioni predefinite dei moduli",
       "themes": "Temi",
-      "landingPages": "Landing page",
-      "organisations": "Organizzazioni"
+      "landingPages": "Landing page"
     },
     "desc": {
       "overview": "Tutto sul tuo spazio di lavoro in un unico posto.",
@@ -6356,10 +6354,9 @@
       "branding": "Logo, icona della scheda del browser, colore del brand e pagina di accesso.",
       "language": "Lingua, fuso orario, valuta, formati di data e numero e lingue dei moduli.",
       "appearance": "I tuoi colori e l’aspetto dell’intero portale.",
-      "address": "L’indirizzo del tuo spazio di lavoro e il tuo dominio.",
+      "address": "Dove il tuo team accede e dove si trovano i tuoi moduli.",
       "departments": "I reparti che i tuoi moduli e le regole di accesso possono usare.",
       "jobTitles": "I ruoli professionali delle persone della tua organizzazione.",
-      "places": "Elenchi facoltativi come team, sedi e centri di costo.",
       "lists": "Elenchi di opzioni riutilizzabili per le domande a scelta.",
       "signin": "Quali metodi di accesso possono usare le persone, codici e accesso in due passaggi.",
       "security": "Regole della password, durata della sessione e indirizzi IP consentiti.",
@@ -6368,8 +6365,7 @@
       "privacy": "Per quanto tempo si conservano le risposte, testi di consenso e richieste sui dati.",
       "formDefaults": "Le impostazioni da cui partono i nuovi moduli e i valori predefiniti per l’incorporamento.",
       "themes": "Design dei moduli che il tuo spazio di lavoro può usare.",
-      "landingPages": "Design delle pagine pubbliche dei tuoi moduli.",
-      "organisations": "Filiali o sedi: ogni modulo appartiene a una di esse e la barra laterale permette di passare dall'una all'altra."
+      "landingPages": "Design delle pagine pubbliche dei tuoi moduli."
     },
     "status": {
       "complete": "Completo",
@@ -6389,8 +6385,7 @@
       "notice": "informativa sulla privacy impostata",
       "withTheme": "I nuovi moduli partono con un tema",
       "workspaceLook": "I nuovi moduli usano l'aspetto dello spazio di lavoro",
-      "customLook": "Il tuo stile",
-      "organisations": "{n} organizzazione | {n} organizzazioni"
+      "customLook": "Il tuo stile"
     },
     "next": {
       "title": "Prossimo passo",
@@ -6534,45 +6529,6 @@
           "placeholder": "es. Responsabile di team",
           "examples": "Manager\nResponsabile di team\nAnalista",
           "peopleHint": "Chi ricopre un ruolo professionale"
-        },
-        "teams": {
-          "many": "Team",
-          "new": "Nuovo team",
-          "create": "Crea team",
-          "import": "Importa team",
-          "hint": "Gruppi di persone facoltativi che attraversano i reparti.",
-          "empty": "Ancora nessun team",
-          "emptyDesc": "Aggiungi team se la tua organizzazione lavora così, oppure importali da un elenco.",
-          "search": "Cerca team",
-          "placeholder": "es. Customer success",
-          "examples": "Customer success\nAccoglienza\nSquadra sul campo",
-          "peopleHint": "Chi fa parte di un team"
-        },
-        "locations": {
-          "many": "Sedi",
-          "new": "Nuova sede",
-          "create": "Crea sede",
-          "import": "Importa sedi",
-          "hint": "Sedi, uffici o filiali facoltativi.",
-          "empty": "Ancora nessuna sede",
-          "emptyDesc": "Aggiungi le sedi, gli uffici o le filiali dove lavorano le persone, oppure importali da un elenco.",
-          "search": "Cerca sedi",
-          "placeholder": "es. Sede centrale",
-          "examples": "Sede centrale\nFiliale nord\nMagazzino",
-          "peopleHint": "Chi lavora in una sede"
-        },
-        "cost_centres": {
-          "many": "Centri di costo",
-          "new": "Nuovo centro di costo",
-          "create": "Crea centro di costo",
-          "import": "Importa centri di costo",
-          "hint": "Centri di costo facoltativi per budget e approvazioni.",
-          "empty": "Ancora nessun centro di costo",
-          "emptyDesc": "Aggiungi centri di costo se i tuoi moduli ne hanno bisogno, oppure importali da un elenco.",
-          "search": "Cerca centri di costo",
-          "placeholder": "es. CC-100 Marketing",
-          "examples": "CC-100 Marketing\nCC-200 Operazioni",
-          "peopleHint": "Chi è addebitato a un centro di costo"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Sempre offerto, all'indirizzo con cui le persone accedono.",
       "sms": "SMS",
       "smsHint": "Offerto alle persone con un numero di cellulare nel loro account.",
-      "app": "App di autenticazione",
-      "appHint": "Codici da un'app sul telefono.",
       "expiry": "Un codice dura",
       "expiryHint": "Dopo, le persone ne chiedono uno nuovo.",
       "attempts": "Tentativi errati consentiti",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Membri del team aggiunti alle email di risposta di ogni nuovo modulo.",
       "embed": "Siti web autorizzati a incorporare",
       "embedAny": "Qualsiasi sito web può incorporare i nuovi moduli.",
-      "embedPlaceholder": "www.example.com, poi Invio"
+      "embedPlaceholder": "www.example.com, poi Invio",
+      "themeShown": "I nuovi moduli partono con {name}.",
+      "workspaceShown": "I nuovi moduli partono con l'aspetto del tuo spazio di lavoro."
     },
     "appearance": {
       "reset": "Ripristina Formalie",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} diventa {url}. Tutti accedono al nuovo indirizzo; il vecchio continua a portare qui per 90 giorni, così i link condivisi continuano a funzionare.",
       "typeNew": "Scrivi {name} per confermare",
       "changed": "Lo spazio di lavoro ora si trova su {url}",
-      "domain": "Il tuo dominio",
-      "domainHint": "Mostra i tuoi moduli sul tuo indirizzo, come forms.example.com.",
-      "addDomain": "Aggiungi dominio",
-      "addRecords": "Aggiungi questi due record presso il tuo provider di dominio, poi controlla. Possono servire alcune ore prima che siano visibili.",
-      "verifiedDesc": "Verificato. I moduli usano questo indirizzo, con HTTPS configurato automaticamente.",
-      "type": "Tipo",
-      "name": "Nome",
-      "value": "Valore",
-      "found": "Trovato",
-      "missing": "Non ancora trovato",
-      "check": "Controlla ora",
-      "checked": "Controllato {when}",
-      "remove": "Rimuovi dominio",
-      "removeTitle": "Rimuovere {domain}?",
-      "removeDesc": "I moduli tornano all'indirizzo del tuo spazio di lavoro. I link con il tuo dominio smettono di funzionare.",
-      "status": {
-        "pending": "In attesa del DNS",
-        "verified": "Verificato",
-        "failed": "Punta altrove"
-      },
-      "problem": {
-        "not_found": "I record non sono ancora stati trovati. Le modifiche presso il tuo provider di dominio possono richiedere alcune ore.",
-        "wrong_target": "Il record CNAME punta altrove. Cambialo con il valore qui sopra.",
-        "dns_error": "Il DNS non è raggiungibile al momento. Riprova tra poco."
-      },
-      "formsAt": "I tuoi moduli sono su https://{host}",
-      "short": "Link brevi",
-      "shortHint": "Il tuo dominio per i link brevi dei moduli.",
-      "shortLater": "In arrivo. Nel frattempo i link brevi usano l'indirizzo di Formalie."
+      "formsAt": "I tuoi moduli sono su https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "l'account è disattivato",
       "password_expired": "la password è scaduta"
     }
-  },
-  "organisations": {
-    "title": "Organizzazioni",
-    "all": "Tutte le organizzazioni",
-    "switch": "Organizzazione: {name}",
-    "manage": "Gestisci organizzazioni",
-    "new": "Nuova organizzazione",
-    "create": "Crea organizzazione",
-    "editTitle": "Modifica {name}",
-    "editDesc": "Il suo nome e il logo compaiono sulle pagine pubbliche dei suoi moduli.",
-    "name": "Nome",
-    "namePlaceholder": "es. Example Ltd UK",
-    "nameTaken": "Esiste già un'organizzazione con questo nome.",
-    "shortName": "Nome breve",
-    "shortNameHelp": "Per spazi ridotti, es. la barra laterale.",
-    "website": "Sito web",
-    "logo": "Logo",
-    "logoHint": "PNG, JPEG o WebP, fino a 2 MB.",
-    "state": "Stato",
-    "active": "Attiva",
-    "archived": "Archiviata",
-    "forms": "Moduli",
-    "responses": "Risposte",
-    "updated": "Aggiornata",
-    "formsCount": "{n} modulo | {n} moduli",
-    "activeCount": "attiva | attive",
-    "shareOfForms": "Quota dei moduli",
-    "noWebsite": "Nessun sito web",
-    "main": "Principale",
-    "formsBy": "Moduli per organizzazione",
-    "formsByHint": "A quale organizzazione appartengono i moduli dello spazio di lavoro.",
-    "oneOnly": "Aggiungi un'organizzazione per suddividere i moduli tra di esse.",
-    "byState": "Per stato",
-    "sortForms": "Più moduli",
-    "sortResponses": "Più risposte",
-    "sortUpdated": "Aggiornate di recente",
-    "search": "Cerca organizzazioni",
-    "empty": "Nessuna organizzazione corrisponde",
-    "emptyDesc": "Cancella i filtri o aggiungi un'organizzazione.",
-    "saved": "{name} salvata",
-    "created": "{name} creata",
-    "archive": "Archivia",
-    "restore": "Ripristina",
-    "archivedToast": "{name} archiviata",
-    "restoredToast": "{name} ripristinata",
-    "showForms": "Mostra i suoi moduli",
-    "formSetting": "Organizzazione",
-    "formSettingHint": "Il suo nome e il logo compaiono sulle pagine pubbliche di questo modulo. Salvato subito.",
-    "moved": "Il modulo ora appartiene a {name}"
   }
 }

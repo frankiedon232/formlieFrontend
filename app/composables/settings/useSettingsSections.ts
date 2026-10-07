@@ -31,10 +31,8 @@ const GROUPS: SettingsGroup[] = [
   {
     key: 'organisation',
     items: [
-      { key: 'organisations', icon: 'i-lucide-building', to: '/settings/organisations' },
       { key: 'departments', icon: 'i-lucide-network', to: '/settings/departments' },
       { key: 'jobTitles', icon: 'i-lucide-id-card', to: '/settings/job-titles' },
-      { key: 'places', icon: 'i-lucide-map-pin', to: '/settings/places' },
       { key: 'lists', icon: 'i-lucide-list-tree', to: '/option-sets' },
     ],
   },

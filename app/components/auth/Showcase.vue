@@ -11,7 +11,7 @@
 // Explicit import: shared constant (a new shared/utils folder is only auto-imported after a dev restart).
 import { SUPPORTED_DATABASES } from '#shared/utils/integrations/databases'
 
-const props = defineProps<{ brand: string; logo?: string | null; image?: string | null; message?: string | null; color?: string | null }>()
+const props = defineProps<{ brand: string; logo?: string | null; image?: string | null; message?: string | null; color?: string | null; workspace?: boolean }>()
 const { t } = useI18n()
 const { number } = useFormat()
 
@@ -35,6 +35,7 @@ const badges = computed(() => [
     <div class="relative flex items-center gap-3">
       <span v-if="props.logo" class="flex size-10 items-center justify-center overflow-hidden rounded-xl bg-white/95 p-1"><img :src="props.logo" alt="" class="max-h-full max-w-full object-contain"></span>
       <span class="text-lg font-semibold tracking-tight">{{ props.brand }}</span>
+      <AppPoweredBy v-if="workspace" tone="light" class="ms-auto" />
     </div>
     <h2 class="relative max-w-lg text-4xl leading-[1.08] font-semibold tracking-tight xl:text-[44px]">{{ props.message || t('authLayout.headline') }}</h2>
   </div>
@@ -66,6 +67,7 @@ const badges = computed(() => [
         <UIcon name="i-lucide-file-check-2" class="size-5" />
       </span>
       <span class="text-lg font-semibold tracking-tight">{{ props.brand }}</span>
+      <AppPoweredBy v-if="workspace" tone="light" class="ms-auto" />
     </div>
 
     <div class="relative mt-10 max-w-lg">

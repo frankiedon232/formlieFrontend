@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Pokaż wcześniejsze",
       "more": "Pokaż więcej"
-    }
+    },
+    "poweredBy": "Obsługiwane przez {brand}"
   },
   "common": {
     "loading": "Ładowanie…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "Twoje hasło wygasło. Ustaw nowe.",
     "FRM-AUTH-1016": "Logowanie z tej sieci jest niedozwolone.",
     "FRM-AUTH-1017": "Ta zmiana zablokowałaby Ci dostęp. Sprawdź własną domenę i adres e-mail.",
-    "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne.",
-    "FRM-ORG-1003": "Głównej organizacji nie można zarchiwizować."
+    "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Branding",
       "language": "Język i region",
       "appearance": "Wygląd",
-      "address": "Adres i domena",
+      "address": "Adres przestrzeni roboczej",
       "departments": "Działy",
       "jobTitles": "Stanowiska",
-      "places": "Zespoły i lokalizacje",
       "lists": "Listy",
       "signin": "Logowanie",
       "security": "Bezpieczeństwo",
@@ -6347,8 +6346,7 @@
       "privacy": "Prywatność i dane",
       "formDefaults": "Domyślne ustawienia formularzy",
       "themes": "Motywy",
-      "landingPages": "Strony docelowe",
-      "organisations": "Organizacje"
+      "landingPages": "Strony docelowe"
     },
     "desc": {
       "overview": "Wszystko o Twoim obszarze roboczym w jednym miejscu.",
@@ -6356,10 +6354,9 @@
       "branding": "Logo, ikona karty przeglądarki, kolor marki i strona logowania.",
       "language": "Język, strefa czasowa, waluta, formaty daty i liczb oraz języki formularzy.",
       "appearance": "Własne kolory i wygląd całego portalu.",
-      "address": "Adres Twojego obszaru roboczego i własna domena.",
+      "address": "Tutaj Twój zespół się loguje i tutaj znajdują się Twoje formularze.",
       "departments": "Działy, których mogą używać Twoje formularze i reguły dostępu.",
       "jobTitles": "Stanowiska osób w Twojej organizacji.",
-      "places": "Opcjonalne listy, takie jak zespoły, lokalizacje i centra kosztów.",
       "lists": "Listy opcji wielokrotnego użytku dla pytań z wyborem.",
       "signin": "Jakich metod logowania mogą używać Twoi ludzie, kody i logowanie dwuetapowe.",
       "security": "Zasady haseł, czas trwania sesji i dozwolone adresy IP.",
@@ -6368,8 +6365,7 @@
       "privacy": "Jak długo przechowywane są odpowiedzi, teksty zgód i wnioski o dane.",
       "formDefaults": "Ustawienia, z którymi startują nowe formularze, oraz domyślne wartości osadzania.",
       "themes": "Projekty formularzy, z których może korzystać Twój obszar roboczy.",
-      "landingPages": "Projekty stron publicznych Twoich formularzy.",
-      "organisations": "Spółki zależne lub oddziały: każdy formularz należy do jednej, a pasek boczny przełącza między nimi."
+      "landingPages": "Projekty stron publicznych Twoich formularzy."
     },
     "status": {
       "complete": "Kompletne",
@@ -6389,8 +6385,7 @@
       "notice": "ustawiono informację o prywatności",
       "withTheme": "Nowe formularze zaczynają z motywem",
       "workspaceLook": "Nowe formularze używają wyglądu przestrzeni roboczej",
-      "customLook": "Własny wygląd",
-      "organisations": "{n} organizacja | {n} organizacji"
+      "customLook": "Własny wygląd"
     },
     "next": {
       "title": "Następny krok",
@@ -6534,45 +6529,6 @@
           "placeholder": "np. Kierownik zespołu",
           "examples": "Menedżer\nKierownik zespołu\nAnalityk",
           "peopleHint": "Kto zajmuje stanowisko"
-        },
-        "teams": {
-          "many": "Zespoły",
-          "new": "Nowy zespół",
-          "create": "Utwórz zespół",
-          "import": "Importuj zespoły",
-          "hint": "Opcjonalne grupy osób ponad działami.",
-          "empty": "Brak zespołów",
-          "emptyDesc": "Dodaj zespoły, jeśli Twoja organizacja tak pracuje, lub zaimportuj je z listy.",
-          "search": "Szukaj zespołów",
-          "placeholder": "np. Obsługa klienta",
-          "examples": "Obsługa klienta\nWdrożenie\nZespół terenowy",
-          "peopleHint": "Kto jest w zespole"
-        },
-        "locations": {
-          "many": "Lokalizacje",
-          "new": "Nowa lokalizacja",
-          "create": "Utwórz lokalizację",
-          "import": "Importuj lokalizacje",
-          "hint": "Opcjonalne miejsca, biura lub oddziały.",
-          "empty": "Brak lokalizacji",
-          "emptyDesc": "Dodaj miejsca, biura lub oddziały, w których pracują ludzie, lub zaimportuj je z listy.",
-          "search": "Szukaj lokalizacji",
-          "placeholder": "np. Siedziba główna",
-          "examples": "Siedziba główna\nOddział północ\nMagazyn",
-          "peopleHint": "Kto pracuje w lokalizacji"
-        },
-        "cost_centres": {
-          "many": "Centra kosztów",
-          "new": "Nowe centrum kosztów",
-          "create": "Utwórz centrum kosztów",
-          "import": "Importuj centra kosztów",
-          "hint": "Opcjonalne centra kosztów dla budżetów i akceptacji.",
-          "empty": "Brak centrów kosztów",
-          "emptyDesc": "Dodaj centra kosztów, jeśli Twoje formularze ich potrzebują, lub zaimportuj je z listy.",
-          "search": "Szukaj centrów kosztów",
-          "placeholder": "np. CC-100 Marketing",
-          "examples": "CC-100 Marketing\nCC-200 Operacje",
-          "peopleHint": "Kto jest obciążany na centrum kosztów"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Zawsze dostępne, na adres, którym osoby się logują.",
       "sms": "SMS",
       "smsHint": "Dostępne dla osób z numerem komórkowym na koncie.",
-      "app": "Aplikacja uwierzytelniająca",
-      "appHint": "Kody z aplikacji w telefonie.",
       "expiry": "Kod ważny przez",
       "expiryHint": "Potem osoby proszą o nowy.",
       "attempts": "Dozwolone błędne próby",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Członkowie zespołu dodawani do e-maili z odpowiedziami w każdym nowym formularzu.",
       "embed": "Strony z zezwoleniem na osadzanie",
       "embedAny": "Każda strona może osadzać nowe formularze.",
-      "embedPlaceholder": "www.example.com, potem Enter"
+      "embedPlaceholder": "www.example.com, potem Enter",
+      "themeShown": "Nowe formularze zaczynają od motywu {name}.",
+      "workspaceShown": "Nowe formularze zaczynają od wyglądu Twojej przestrzeni roboczej."
     },
     "appearance": {
       "reset": "Przywróć wygląd Formalie",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} zmieni się w {url}. Wszyscy logują się pod nowym adresem; stary przez 90 dni nadal tu prowadzi, więc udostępnione linki działają.",
       "typeNew": "Wpisz {name}, aby potwierdzić",
       "changed": "Przestrzeń robocza jest teraz pod adresem {url}",
-      "domain": "Twoja własna domena",
-      "domainHint": "Pokazuj formularze pod własnym adresem, takim jak forms.example.com.",
-      "addDomain": "Dodaj domenę",
-      "addRecords": "Dodaj te dwa rekordy u swojego dostawcy domeny, a potem sprawdź. Ich pojawienie się może potrwać kilka godzin.",
-      "verifiedDesc": "Zweryfikowano. Formularze używają tego adresu, a HTTPS jest ustawiany automatycznie.",
-      "type": "Typ",
-      "name": "Nazwa",
-      "value": "Wartość",
-      "found": "Znaleziono",
-      "missing": "Jeszcze nie znaleziono",
-      "check": "Sprawdź teraz",
-      "checked": "Sprawdzono {when}",
-      "remove": "Usuń domenę",
-      "removeTitle": "Usunąć {domain}?",
-      "removeDesc": "Formularze wracają do adresu przestrzeni roboczej. Linki z Twoją domeną przestaną działać.",
-      "status": {
-        "pending": "Oczekiwanie na DNS",
-        "verified": "Zweryfikowano",
-        "failed": "Wskazuje gdzie indziej"
-      },
-      "problem": {
-        "not_found": "Rekordów jeszcze nie znaleziono. Zmiany u dostawcy domeny mogą potrwać kilka godzin.",
-        "wrong_target": "Rekord CNAME wskazuje gdzie indziej. Zmień go na wartość powyżej.",
-        "dns_error": "DNS jest teraz niedostępny. Spróbuj ponownie za chwilę."
-      },
-      "formsAt": "Twoje formularze są pod adresem https://{host}",
-      "short": "Krótkie linki",
-      "shortHint": "Twoja własna domena dla krótkich linków do formularzy.",
-      "shortLater": "Wkrótce. Do tego czasu krótkie linki używają adresu Formalie."
+      "formsAt": "Twoje formularze są pod adresem https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "konto jest wyłączone",
       "password_expired": "hasło wygasło"
     }
-  },
-  "organisations": {
-    "title": "Organizacje",
-    "all": "Wszystkie organizacje",
-    "switch": "Organizacja: {name}",
-    "manage": "Zarządzaj organizacjami",
-    "new": "Nowa organizacja",
-    "create": "Utwórz organizację",
-    "editTitle": "Edytuj {name}",
-    "editDesc": "Jej nazwa i logo pojawiają się na publicznych stronach jej formularzy.",
-    "name": "Nazwa",
-    "namePlaceholder": "np. Example Sp. z o.o.",
-    "nameTaken": "Organizacja o tej nazwie już istnieje.",
-    "shortName": "Krótka nazwa",
-    "shortNameHelp": "Do ciasnych miejsc, np. paska bocznego.",
-    "website": "Strona internetowa",
-    "logo": "Logo",
-    "logoHint": "PNG, JPEG lub WebP, do 2 MB.",
-    "state": "Stan",
-    "active": "Aktywna",
-    "archived": "Zarchiwizowana",
-    "forms": "Formularze",
-    "responses": "Odpowiedzi",
-    "updated": "Zaktualizowano",
-    "formsCount": "{n} formularz | {n} formularzy",
-    "activeCount": "aktywna | aktywne",
-    "shareOfForms": "Udział formularzy",
-    "noWebsite": "Brak strony internetowej",
-    "main": "Główna",
-    "formsBy": "Formularze według organizacji",
-    "formsByHint": "Do kogo należą formularze przestrzeni roboczej.",
-    "oneOnly": "Dodaj organizację, aby podzielić formularze między nie.",
-    "byState": "Według stanu",
-    "sortForms": "Najwięcej formularzy",
-    "sortResponses": "Najwięcej odpowiedzi",
-    "sortUpdated": "Ostatnio zaktualizowane",
-    "search": "Szukaj organizacji",
-    "empty": "Brak pasujących organizacji",
-    "emptyDesc": "Wyczyść filtry lub dodaj organizację.",
-    "saved": "Zapisano {name}",
-    "created": "Utworzono {name}",
-    "archive": "Archiwizuj",
-    "restore": "Przywróć",
-    "archivedToast": "Zarchiwizowano {name}",
-    "restoredToast": "Przywrócono {name}",
-    "showForms": "Pokaż jej formularze",
-    "formSetting": "Organizacja",
-    "formSettingHint": "Jej nazwa i logo pojawiają się na publicznych stronach tego formularza. Zapisywane od razu.",
-    "moved": "Formularz należy teraz do {name}"
   }
 }

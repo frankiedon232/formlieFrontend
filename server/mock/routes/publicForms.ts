@@ -7,7 +7,6 @@
  *   POST /public/forms/:key/submit   one response per fill-in session (Formalie-Key)
  *   POST /public/forms/:key/uploads  a pre-signed link for one file of a file question (+ /:id/complete)
  */
-import { organisationOfForm } from '../data/organisationStore'
 import { reviewOf } from '../data/responseReview'
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
 import { emitResponse } from '../data/integrationStore'
@@ -206,8 +205,7 @@ export function publicFormView(event: Parameters<typeof tenantOf>[0], key: strin
     opens_at: form.opens_at ?? null,
     closes_at: form.closes_at ?? null,
     schema: locked ? null : schema,
-    // The form's organisation (F14 M7): a subsidiary shows its own name, logo and website
-    workspace: (org => ({ name: org.main ? tenant.name : org.name, logo_url: (org.main ? null : org.logo_url) ?? tenant.logo_url ?? null, primary: tenant.brand_color ?? null, subdomain: tenant.subdomain ?? null, website: (org.main ? null : org.website) ?? websiteOf(tenant) }))(organisationOfForm(tenant, form)),
+    workspace: { name: tenant.name, logo_url: tenant.logo_url ?? null, primary: tenant.brand_color ?? null, subdomain: tenant.subdomain ?? null, website: websiteOf(tenant) },
     // Search & link preview (decision 95): the creator's text and image, else from the form.
     seo: {
       title: seo.title,

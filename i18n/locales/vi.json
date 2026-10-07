@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Hiện mục trước",
       "more": "Hiện thêm"
-    }
+    },
+    "poweredBy": "Được hỗ trợ bởi {brand}"
   },
   "common": {
     "loading": "Đang tải…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "Mật khẩu của bạn đã hết hạn. Hãy đặt mật khẩu mới.",
     "FRM-AUTH-1016": "Không cho phép đăng nhập từ mạng này.",
     "FRM-AUTH-1017": "Thay đổi này sẽ khóa bạn ở ngoài. Hãy kiểm tra tên miền và địa chỉ email của chính bạn.",
-    "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác.",
-    "FRM-ORG-1003": "Không thể lưu trữ tổ chức chính."
+    "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Thương hiệu",
       "language": "Ngôn ngữ và khu vực",
       "appearance": "Giao diện",
-      "address": "Địa chỉ và tên miền",
+      "address": "Địa chỉ không gian làm việc",
       "departments": "Phòng ban",
       "jobTitles": "Chức danh",
-      "places": "Nhóm và địa điểm",
       "lists": "Danh sách",
       "signin": "Đăng nhập",
       "security": "Bảo mật",
@@ -6347,8 +6346,7 @@
       "privacy": "Quyền riêng tư và dữ liệu",
       "formDefaults": "Mặc định của biểu mẫu",
       "themes": "Giao diện biểu mẫu",
-      "landingPages": "Trang đích",
-      "organisations": "Tổ chức"
+      "landingPages": "Trang đích"
     },
     "desc": {
       "overview": "Mọi thứ về không gian làm việc của bạn ở một nơi.",
@@ -6356,10 +6354,9 @@
       "branding": "Logo, biểu tượng tab trình duyệt, màu thương hiệu và trang đăng nhập của bạn.",
       "language": "Ngôn ngữ, múi giờ, tiền tệ, định dạng ngày và số, cùng ngôn ngữ biểu mẫu.",
       "appearance": "Màu sắc và diện mạo riêng của bạn cho toàn bộ cổng.",
-      "address": "Địa chỉ không gian làm việc và tên miền riêng của bạn.",
+      "address": "Nơi nhóm của bạn đăng nhập và nơi các biểu mẫu của bạn nằm.",
       "departments": "Các phòng ban mà biểu mẫu và quy tắc truy cập của bạn có thể dùng.",
       "jobTitles": "Chức danh của những người trong tổ chức của bạn.",
-      "places": "Các danh sách tùy chọn như nhóm, địa điểm và trung tâm chi phí.",
       "lists": "Danh sách lựa chọn có thể dùng lại cho câu hỏi chọn.",
       "signin": "Những cách đăng nhập mọi người có thể dùng, mã và đăng nhập hai bước.",
       "security": "Quy tắc mật khẩu, thời lượng phiên và các địa chỉ IP được phép.",
@@ -6368,8 +6365,7 @@
       "privacy": "Phản hồi được giữ bao lâu, nội dung đồng ý và yêu cầu dữ liệu.",
       "formDefaults": "Cài đặt mà biểu mẫu mới bắt đầu với, và mặc định khi nhúng.",
       "themes": "Thiết kế biểu mẫu mà không gian làm việc của bạn có thể dùng.",
-      "landingPages": "Thiết kế trang cho các trang công khai của biểu mẫu.",
-      "organisations": "Công ty con hoặc chi nhánh: mỗi biểu mẫu thuộc về một tổ chức, và thanh bên chuyển đổi giữa chúng."
+      "landingPages": "Thiết kế trang cho các trang công khai của biểu mẫu."
     },
     "status": {
       "complete": "Hoàn tất",
@@ -6389,8 +6385,7 @@
       "notice": "đã đặt thông báo quyền riêng tư",
       "withTheme": "Biểu mẫu mới bắt đầu với một giao diện",
       "workspaceLook": "Biểu mẫu mới dùng giao diện của không gian làm việc",
-      "customLook": "Giao diện riêng của bạn",
-      "organisations": "{n} tổ chức | {n} tổ chức"
+      "customLook": "Giao diện riêng của bạn"
     },
     "next": {
       "title": "Bước tiếp theo",
@@ -6534,45 +6529,6 @@
           "placeholder": "vd. Trưởng nhóm",
           "examples": "Quản lý\nTrưởng nhóm\nChuyên viên phân tích",
           "peopleHint": "Ai giữ một chức danh"
-        },
-        "teams": {
-          "many": "Nhóm",
-          "new": "Nhóm mới",
-          "create": "Tạo nhóm",
-          "import": "Nhập nhóm",
-          "hint": "Các nhóm người tùy chọn, xuyên các phòng ban.",
-          "empty": "Chưa có nhóm",
-          "emptyDesc": "Thêm nhóm nếu tổ chức của bạn làm việc theo nhóm, hoặc nhập từ danh sách.",
-          "search": "Tìm nhóm",
-          "placeholder": "vd. Chăm sóc khách hàng",
-          "examples": "Chăm sóc khách hàng\nHướng dẫn nhân viên mới\nNhóm hiện trường",
-          "peopleHint": "Ai thuộc một nhóm"
-        },
-        "locations": {
-          "many": "Địa điểm",
-          "new": "Địa điểm mới",
-          "create": "Tạo địa điểm",
-          "import": "Nhập địa điểm",
-          "hint": "Các cơ sở, văn phòng hoặc chi nhánh tùy chọn.",
-          "empty": "Chưa có địa điểm",
-          "emptyDesc": "Thêm các cơ sở, văn phòng hoặc chi nhánh nơi mọi người làm việc, hoặc nhập từ danh sách.",
-          "search": "Tìm địa điểm",
-          "placeholder": "vd. Trụ sở chính",
-          "examples": "Trụ sở chính\nChi nhánh phía Bắc\nKho",
-          "peopleHint": "Ai làm việc tại một địa điểm"
-        },
-        "cost_centres": {
-          "many": "Trung tâm chi phí",
-          "new": "Trung tâm chi phí mới",
-          "create": "Tạo trung tâm chi phí",
-          "import": "Nhập trung tâm chi phí",
-          "hint": "Các trung tâm chi phí tùy chọn cho ngân sách và phê duyệt.",
-          "empty": "Chưa có trung tâm chi phí",
-          "emptyDesc": "Thêm trung tâm chi phí nếu biểu mẫu của bạn cần, hoặc nhập từ danh sách.",
-          "search": "Tìm trung tâm chi phí",
-          "placeholder": "vd. CC-100 Tiếp thị",
-          "examples": "CC-100 Tiếp thị\nCC-200 Vận hành",
-          "peopleHint": "Ai được tính vào một trung tâm chi phí"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Luôn có sẵn, gửi đến địa chỉ mà mọi người dùng để đăng nhập.",
       "sms": "Tin nhắn SMS",
       "smsHint": "Dành cho người có số điện thoại di động trong tài khoản.",
-      "app": "Ứng dụng xác thực",
-      "appHint": "Mã từ một ứng dụng trên điện thoại của họ.",
       "expiry": "Một mã có hiệu lực trong",
       "expiryHint": "Sau đó, mọi người yêu cầu mã mới.",
       "attempts": "Số lần nhập sai cho phép",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Thành viên nhóm được thêm vào email phản hồi của mọi biểu mẫu mới.",
       "embed": "Trang web được phép nhúng",
       "embedAny": "Bất kỳ trang web nào cũng có thể nhúng biểu mẫu mới.",
-      "embedPlaceholder": "www.example.com, rồi nhấn Enter"
+      "embedPlaceholder": "www.example.com, rồi nhấn Enter",
+      "themeShown": "Biểu mẫu mới bắt đầu với {name}.",
+      "workspaceShown": "Biểu mẫu mới bắt đầu với giao diện không gian làm việc của bạn."
     },
     "appearance": {
       "reset": "Đặt lại về Formalie",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} sẽ thành {url}. Mọi người đăng nhập ở địa chỉ mới; địa chỉ cũ vẫn dẫn về đây trong 90 ngày, nên các liên kết đã chia sẻ vẫn hoạt động.",
       "typeNew": "Nhập {name} để xác nhận",
       "changed": "Không gian làm việc hiện ở {url}",
-      "domain": "Tên miền riêng của bạn",
-      "domainHint": "Hiển thị biểu mẫu tại địa chỉ riêng của bạn, như forms.example.com.",
-      "addDomain": "Thêm tên miền",
-      "addRecords": "Thêm hai bản ghi này tại nhà cung cấp tên miền của bạn, rồi kiểm tra. Có thể mất vài giờ để chúng hiển thị.",
-      "verifiedDesc": "Đã xác minh. Biểu mẫu dùng địa chỉ này, HTTPS được thiết lập tự động.",
-      "type": "Loại",
-      "name": "Tên",
-      "value": "Giá trị",
-      "found": "Đã tìm thấy",
-      "missing": "Chưa tìm thấy",
-      "check": "Kiểm tra ngay",
-      "checked": "Đã kiểm tra {when}",
-      "remove": "Xóa tên miền",
-      "removeTitle": "Xóa {domain}?",
-      "removeDesc": "Biểu mẫu quay về địa chỉ không gian làm việc của bạn. Các liên kết dùng tên miền của bạn sẽ ngừng hoạt động.",
-      "status": {
-        "pending": "Đang chờ DNS",
-        "verified": "Đã xác minh",
-        "failed": "Trỏ đến nơi khác"
-      },
-      "problem": {
-        "not_found": "Chưa tìm thấy các bản ghi. Thay đổi tại nhà cung cấp tên miền có thể mất vài giờ.",
-        "wrong_target": "Bản ghi CNAME đang trỏ đến nơi khác. Hãy đổi thành giá trị ở trên.",
-        "dns_error": "Hiện không thể kết nối DNS. Hãy thử lại sau ít phút."
-      },
-      "formsAt": "Biểu mẫu của bạn ở https://{host}",
-      "short": "Liên kết rút gọn",
-      "shortHint": "Tên miền riêng cho liên kết rút gọn của biểu mẫu.",
-      "shortLater": "Sẽ có sau. Cho đến lúc đó, liên kết rút gọn dùng địa chỉ của Formalie."
+      "formsAt": "Biểu mẫu của bạn ở https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "tài khoản đã bị vô hiệu hóa",
       "password_expired": "mật khẩu đã hết hạn"
     }
-  },
-  "organisations": {
-    "title": "Tổ chức",
-    "all": "Tất cả tổ chức",
-    "switch": "Tổ chức: {name}",
-    "manage": "Quản lý tổ chức",
-    "new": "Tổ chức mới",
-    "create": "Tạo tổ chức",
-    "editTitle": "Sửa {name}",
-    "editDesc": "Tên và logo hiển thị trên các trang công khai của biểu mẫu thuộc tổ chức.",
-    "name": "Tên",
-    "namePlaceholder": "vd. Example Ltd UK",
-    "nameTaken": "Đã có tổ chức với tên này.",
-    "shortName": "Tên ngắn",
-    "shortNameHelp": "Dùng cho chỗ chật, vd. thanh bên.",
-    "website": "Trang web",
-    "logo": "Logo",
-    "logoHint": "PNG, JPEG hoặc WebP, tối đa 2 MB.",
-    "state": "Trạng thái",
-    "active": "Đang hoạt động",
-    "archived": "Đã lưu trữ",
-    "forms": "Biểu mẫu",
-    "responses": "Phản hồi",
-    "updated": "Cập nhật",
-    "formsCount": "{n} biểu mẫu | {n} biểu mẫu",
-    "activeCount": "hoạt động | hoạt động",
-    "shareOfForms": "Tỷ lệ biểu mẫu",
-    "noWebsite": "Không có trang web",
-    "main": "Chính",
-    "formsBy": "Biểu mẫu theo tổ chức",
-    "formsByHint": "Các biểu mẫu của không gian làm việc thuộc về tổ chức nào.",
-    "oneOnly": "Thêm một tổ chức để chia biểu mẫu giữa chúng.",
-    "byState": "Theo trạng thái",
-    "sortForms": "Nhiều biểu mẫu nhất",
-    "sortResponses": "Nhiều phản hồi nhất",
-    "sortUpdated": "Mới cập nhật",
-    "search": "Tìm tổ chức",
-    "empty": "Không có tổ chức phù hợp",
-    "emptyDesc": "Xóa bộ lọc, hoặc thêm một tổ chức.",
-    "saved": "Đã lưu {name}",
-    "created": "Đã tạo {name}",
-    "archive": "Lưu trữ",
-    "restore": "Khôi phục",
-    "archivedToast": "Đã lưu trữ {name}",
-    "restoredToast": "Đã khôi phục {name}",
-    "showForms": "Hiện biểu mẫu của tổ chức",
-    "formSetting": "Tổ chức",
-    "formSettingHint": "Tên và logo hiển thị trên các trang công khai của biểu mẫu này. Được lưu ngay.",
-    "moved": "Biểu mẫu hiện thuộc về {name}"
   }
 }

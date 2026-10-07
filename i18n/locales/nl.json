@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Eerdere tonen",
       "more": "Meer tonen"
-    }
+    },
+    "poweredBy": "Mogelijk gemaakt door {brand}"
   },
   "common": {
     "loading": "Laden…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "Je wachtwoord is verlopen. Stel een nieuw wachtwoord in.",
     "FRM-AUTH-1016": "Inloggen vanaf dit netwerk is niet toegestaan.",
     "FRM-AUTH-1017": "Met deze wijziging sluit je jezelf buiten. Controleer je eigen e-maildomein en -adres.",
-    "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord.",
-    "FRM-ORG-1003": "De hoofdorganisatie kan niet worden gearchiveerd."
+    "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Huisstijl",
       "language": "Taal en regio",
       "appearance": "Uiterlijk",
-      "address": "Adres en domein",
+      "address": "Werkruimteadres",
       "departments": "Afdelingen",
       "jobTitles": "Functietitels",
-      "places": "Teams en locaties",
       "lists": "Lijsten",
       "signin": "Aanmelden",
       "security": "Beveiliging",
@@ -6347,8 +6346,7 @@
       "privacy": "Privacy en gegevens",
       "formDefaults": "Standaard voor formulieren",
       "themes": "Thema's",
-      "landingPages": "Landingspagina's",
-      "organisations": "Organisaties"
+      "landingPages": "Landingspagina's"
     },
     "desc": {
       "overview": "Alles over je werkruimte op één plek.",
@@ -6356,10 +6354,9 @@
       "branding": "Logo, pictogram voor het browsertabblad, huisstijlkleur en je aanmeldpagina.",
       "language": "Taal, tijdzone, valuta, datum- en getalnotaties en formuliertalen.",
       "appearance": "Je eigen kleuren en de look van het hele portaal.",
-      "address": "Het adres van je werkruimte en je eigen domein.",
+      "address": "Waar je team inlogt en waar je formulieren staan.",
       "departments": "De afdelingen die je formulieren en toegangsregels kunnen gebruiken.",
       "jobTitles": "De functietitels van de mensen in je organisatie.",
-      "places": "Optionele lijsten zoals teams, locaties en kostenplaatsen.",
       "lists": "Herbruikbare optielijsten voor keuzevragen.",
       "signin": "Welke aanmeldmethoden je mensen kunnen gebruiken, codes en aanmelden in twee stappen.",
       "security": "Wachtwoordregels, sessieduur en toegestane IP-adressen.",
@@ -6368,8 +6365,7 @@
       "privacy": "Hoe lang antwoorden bewaard blijven, toestemmingsteksten en gegevensverzoeken.",
       "formDefaults": "De instellingen waarmee nieuwe formulieren beginnen en de standaard voor insluiten.",
       "themes": "Formulierontwerpen die je werkruimte kan gebruiken.",
-      "landingPages": "Paginaontwerpen voor de openbare pagina's van je formulieren.",
-      "organisations": "Dochterbedrijven of vestigingen: elk formulier hoort bij één organisatie, en de balk schakelt ertussen."
+      "landingPages": "Paginaontwerpen voor de openbare pagina's van je formulieren."
     },
     "status": {
       "complete": "Compleet",
@@ -6389,8 +6385,7 @@
       "notice": "privacyverklaring ingesteld",
       "withTheme": "Nieuwe formulieren starten met een thema",
       "workspaceLook": "Nieuwe formulieren gebruiken de look van de werkruimte",
-      "customLook": "Je eigen stijl",
-      "organisations": "{n} organisatie | {n} organisaties"
+      "customLook": "Je eigen stijl"
     },
     "next": {
       "title": "Volgende stap",
@@ -6534,45 +6529,6 @@
           "placeholder": "bijv. Teamleider",
           "examples": "Manager\nTeamleider\nAnalist",
           "peopleHint": "Wie een functie heeft"
-        },
-        "teams": {
-          "many": "Teams",
-          "new": "Nieuw team",
-          "create": "Team maken",
-          "import": "Teams importeren",
-          "hint": "Optionele groepen mensen over afdelingen heen.",
-          "empty": "Nog geen teams",
-          "emptyDesc": "Voeg teams toe als je organisatie zo werkt, of importeer ze uit een lijst.",
-          "search": "Teams zoeken",
-          "placeholder": "bijv. Klantsucces",
-          "examples": "Klantsucces\nOnboarding\nBuitendienst",
-          "peopleHint": "Wie in een team zit"
-        },
-        "locations": {
-          "many": "Locaties",
-          "new": "Nieuwe locatie",
-          "create": "Locatie maken",
-          "import": "Locaties importeren",
-          "hint": "Optionele vestigingen, kantoren of filialen.",
-          "empty": "Nog geen locaties",
-          "emptyDesc": "Voeg de vestigingen, kantoren of filialen toe waar mensen werken, of importeer ze uit een lijst.",
-          "search": "Locaties zoeken",
-          "placeholder": "bijv. Hoofdkantoor",
-          "examples": "Hoofdkantoor\nFiliaal noord\nMagazijn",
-          "peopleHint": "Wie op een locatie werkt"
-        },
-        "cost_centres": {
-          "many": "Kostenplaatsen",
-          "new": "Nieuwe kostenplaats",
-          "create": "Kostenplaats maken",
-          "import": "Kostenplaatsen importeren",
-          "hint": "Optionele kostenplaatsen voor budgetten en goedkeuringen.",
-          "empty": "Nog geen kostenplaatsen",
-          "emptyDesc": "Voeg kostenplaatsen toe als je formulieren ze nodig hebben, of importeer ze uit een lijst.",
-          "search": "Kostenplaatsen zoeken",
-          "placeholder": "bijv. CC-100 Marketing",
-          "examples": "CC-100 Marketing\nCC-200 Operatie",
-          "peopleHint": "Wie op een kostenplaats wordt geboekt"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Altijd beschikbaar, op het adres waarmee mensen inloggen.",
       "sms": "Sms",
       "smsHint": "Aangeboden aan mensen met een mobiel nummer in hun account.",
-      "app": "Authenticator-app",
-      "appHint": "Codes uit een app op hun telefoon.",
       "expiry": "Een code is geldig",
       "expiryHint": "Daarna vragen mensen een nieuwe aan.",
       "attempts": "Toegestane foute pogingen",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Teamleden die worden toegevoegd aan de antwoordmails van elk nieuw formulier.",
       "embed": "Websites die mogen insluiten",
       "embedAny": "Elke website mag nieuwe formulieren insluiten.",
-      "embedPlaceholder": "www.example.com, dan Enter"
+      "embedPlaceholder": "www.example.com, dan Enter",
+      "themeShown": "Nieuwe formulieren starten met {name}.",
+      "workspaceShown": "Nieuwe formulieren starten met de look van je werkruimte."
     },
     "appearance": {
       "reset": "Terug naar Formalie",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} wordt {url}. Iedereen logt in op het nieuwe adres; het oude blijft 90 dagen hierheen leiden, zodat gedeelde links blijven werken.",
       "typeNew": "Typ {name} om te bevestigen",
       "changed": "De werkruimte staat nu op {url}",
-      "domain": "Je eigen domein",
-      "domainHint": "Toon je formulieren op je eigen adres, zoals forms.example.com.",
-      "addDomain": "Domein toevoegen",
-      "addRecords": "Voeg deze twee records toe bij je domeinprovider en controleer dan. Het kan een paar uur duren voordat ze zichtbaar zijn.",
-      "verifiedDesc": "Geverifieerd. Formulieren gebruiken dit adres, met automatisch ingestelde HTTPS.",
-      "type": "Type",
-      "name": "Naam",
-      "value": "Waarde",
-      "found": "Gevonden",
-      "missing": "Nog niet gevonden",
-      "check": "Nu controleren",
-      "checked": "Gecontroleerd {when}",
-      "remove": "Domein verwijderen",
-      "removeTitle": "{domain} verwijderen?",
-      "removeDesc": "Formulieren gaan terug naar je werkruimteadres. Links met je domein werken niet meer.",
-      "status": {
-        "pending": "Wachten op DNS",
-        "verified": "Geverifieerd",
-        "failed": "Verwijst elders naartoe"
-      },
-      "problem": {
-        "not_found": "De records zijn nog niet gevonden. Wijzigingen bij je domeinprovider kunnen een paar uur duren.",
-        "wrong_target": "Het CNAME-record verwijst elders naartoe. Wijzig het naar de waarde hierboven.",
-        "dns_error": "DNS is nu niet bereikbaar. Probeer het zo meteen opnieuw."
-      },
-      "formsAt": "Je formulieren staan op https://{host}",
-      "short": "Korte links",
-      "shortHint": "Je eigen domein voor korte formulierlinks.",
-      "shortLater": "Komt later. Tot die tijd gebruiken korte links het adres van Formalie."
+      "formsAt": "Je formulieren staan op https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "het account is uitgeschakeld",
       "password_expired": "het wachtwoord is verlopen"
     }
-  },
-  "organisations": {
-    "title": "Organisaties",
-    "all": "Alle organisaties",
-    "switch": "Organisatie: {name}",
-    "manage": "Organisaties beheren",
-    "new": "Nieuwe organisatie",
-    "create": "Organisatie maken",
-    "editTitle": "{name} bewerken",
-    "editDesc": "De naam en het logo staan op de openbare pagina's van de bijbehorende formulieren.",
-    "name": "Naam",
-    "namePlaceholder": "bijv. Example B.V.",
-    "nameTaken": "Er bestaat al een organisatie met deze naam.",
-    "shortName": "Korte naam",
-    "shortNameHelp": "Voor krappe plekken, bijv. de balk.",
-    "website": "Website",
-    "logo": "Logo",
-    "logoHint": "PNG, JPEG of WebP, tot 2 MB.",
-    "state": "Status",
-    "active": "Actief",
-    "archived": "Gearchiveerd",
-    "forms": "Formulieren",
-    "responses": "Reacties",
-    "updated": "Bijgewerkt",
-    "formsCount": "{n} formulier | {n} formulieren",
-    "activeCount": "actief | actief",
-    "shareOfForms": "Aandeel van formulieren",
-    "noWebsite": "Geen website",
-    "main": "Hoofd",
-    "formsBy": "Formulieren per organisatie",
-    "formsByHint": "Waar de formulieren van de werkruimte bij horen.",
-    "oneOnly": "Voeg een organisatie toe om formulieren te verdelen.",
-    "byState": "Per status",
-    "sortForms": "Meeste formulieren",
-    "sortResponses": "Meeste reacties",
-    "sortUpdated": "Recent bijgewerkt",
-    "search": "Organisaties zoeken",
-    "empty": "Geen organisaties gevonden",
-    "emptyDesc": "Wis de filters of voeg een organisatie toe.",
-    "saved": "{name} opgeslagen",
-    "created": "{name} gemaakt",
-    "archive": "Archiveren",
-    "restore": "Herstellen",
-    "archivedToast": "{name} gearchiveerd",
-    "restoredToast": "{name} hersteld",
-    "showForms": "Toon de formulieren",
-    "formSetting": "Organisatie",
-    "formSettingHint": "De naam en het logo staan op de openbare pagina's van dit formulier. Direct opgeslagen.",
-    "moved": "Het formulier hoort nu bij {name}"
   }
 }

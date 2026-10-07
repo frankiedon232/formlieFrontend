@@ -2,7 +2,6 @@
  * Mock forms + folders (docs/API-CONTRACT.md → Forms). Every change bumps `row_version`
  * (mismatch → FRM-GEN-1009) and is recorded in the audit trail with before / after values.
  */
-import { inScope, organisationForNewForm } from '../data/organisationStore'
 import type { H3Event } from 'h3'
 import { newPublicKey } from '#shared/utils/urls/public'
 import { z } from 'zod'
@@ -98,7 +97,6 @@ export const listForms = defineMockRoute(({ event, query }) => {
     const updated = Date.parse(form.updated_at)
     return (
       canSee(form, user) &&
-      inScope(tenant, form) &&
       !!form.deleted_at === trash &&
       // Archived forms only show when asked for explicitly (and always in Trash).
       (trash || (status ? status.includes(form.status) : form.status !== 'archived')) &&
@@ -122,7 +120,7 @@ export const listForms = defineMockRoute(({ event, query }) => {
 
 export const formFacets = defineMockRoute(({ event }) => {
   const { tenant, user } = requireAuth(event)
-  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && inScope(tenant, form) && canSee(form, user))
+  const forms = formsOf(tenant).forms.filter(form => !form.deleted_at && canSee(form, user))
   const owners = new Map(forms.map(form => [form.owner.id, form.owner]))
   return ok<FormFacets>({
     owners: [...owners.values()].sort((a, b) => a.name.localeCompare(b.name)),
@@ -203,7 +201,6 @@ function newForm(
     previous_status: null,
     schema: input.schema ?? (input.template_key ? schemaForTemplate(tenant, input.template_key, input.language) : null) ?? blankFormSchema(input.language),
     template_key: input.template_key ?? null,
-    organisation_id: organisationForNewForm(tenant),
   }
   store.forms.unshift(form)
   saveForms()
@@ -528,7 +525,7 @@ export const listFolders = defineMockRoute(({ event }) => {
         ...folder,
         // Only forms this person can see (people access): hidden forms don't show up as numbers either.
         // Archived forms are not counted, like the forms list and the sidebar.
-        forms_count: store.forms.filter(form => !form.deleted_at && form.status !== 'archived' && form.folder?.id === folder.id && inScope(tenant, form) && canSee(form, user)).length,
+        forms_count: store.forms.filter(form => !form.deleted_at && form.status !== 'archived' && form.folder?.id === folder.id && canSee(form, user)).length,
       }))
       .sort((a, b) => a.name.localeCompare(b.name)),
   )

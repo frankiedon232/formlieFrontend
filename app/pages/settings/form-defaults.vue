@@ -27,6 +27,11 @@ const NONE = '__workspace'
 const themeName = (theme: SavedTheme) => (theme.name_key ? t(theme.name_key) : theme.name)
 const themeItems = computed(() => [{ value: NONE, label: t('settings.formDefaults.workspaceLook'), icon: 'i-lucide-building-2' }, ...themes.value.map(theme => ({ value: theme.id, label: themeName(theme), icon: theme.source === 'system' ? 'i-lucide-sparkles' : 'i-lucide-swatch-book' }))])
 const themeId = computed({ get: () => draft.value?.theme_id ?? NONE, set: value => draft.value && (draft.value.theme_id = value === NONE ? null : value) })
+// A picture of the chosen theme (owner, 2026-10-07: people shouldn't choose blind); the workspace look without one
+const tenant = useTenant()
+const chosenTheme = computed(() => themes.value.find(theme => theme.id === draft.value?.theme_id) ?? null)
+const thumbTokens = computed(() => (chosenTheme.value?.tokens ?? defaultTheme({ logo_url: tenant.profile.value?.logo_url ?? null, primary: tenant.profile.value?.colors.primary ?? null })) as unknown as Record<string, unknown>)
+const thumbLabels = computed(() => [t('themes.previewName'), t('themes.previewEmail'), t('themes.previewMessage')])
 const missingTheme = computed(() => !!draft.value?.theme_id && themes.value.length > 0 && !themes.value.some(theme => theme.id === draft.value?.theme_id))
 
 const positions = computed(() => [
@@ -65,6 +70,12 @@ const badDomains = computed(() => domains.value.filter(item => !isEmbedDomain(it
         <UFormField :label="t('settings.formDefaults.theme')" :help="t('settings.formDefaults.themeHelp')">
           <USelectMenu v-model="themeId" :items="themeItems" value-key="value" :search-input="{ placeholder: t('common.search') }" class="w-full sm:max-w-sm" />
         </UFormField>
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+          <span class="w-full max-w-xs shrink-0 overflow-hidden rounded-lg border border-default bg-elevated shadow-sm sm:w-56" aria-hidden="true">
+            <TemplatesThumb :key="draft.theme_id ?? 'workspace'" :theme="thumbTokens" :title="chosenTheme ? themeName(chosenTheme) : t('settings.formDefaults.workspaceLook')" :labels="thumbLabels" tile />
+          </span>
+          <p class="text-xs text-muted">{{ chosenTheme ? t('settings.formDefaults.themeShown', { name: themeName(chosenTheme) }) : t('settings.formDefaults.workspaceShown') }}</p>
+        </div>
         <UAlert v-if="missingTheme" color="warning" variant="subtle" icon="i-lucide-triangle-alert" :description="t('settings.formDefaults.themeGone')" />
       </SettingsBlock>
 

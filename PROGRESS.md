@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-07 (F14 M7 address, domain and organisations; F14 done, ready for review)
+**Last updated:** 2026-10-07 (F14 owner feedback applied)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -750,7 +750,7 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 - ✅ **Departments:** create, rename, merge (people and field restrictions move), archive / restore (forms keep them, flagged), delete when unused; members per department; import from CSV or pasted names with a preview
 - ✅ **Job titles:** the workspace's own list (separate from the permission roles of F22); people can hold several; a Field access choice of their own
-- ✅ **Teams, locations / sites, cost centres** (optional lists, same pattern, one page with a switch)
+- ➖ **Teams, locations / sites, cost centres:** removed (owner, 2026-10-07: not collaborative; access per form in Share settings)
 - ✅ **Lists (option sets):** reachable from Settings (navigator link) as well as Resources → Option sets; their kinds stay F15
 - ✅ Builder pickers read these live: field access (departments, job titles, roles, people) with an empty state linking to Settings; removed / archived entries are flagged on forms that still use them (choice fields "from a list" and logic conditions on people's departments come with F15 / F22)
 - ✅ Mock: `/directory` serves the workspace's own departments and job titles (`orgStore`), no fixed samples
@@ -758,19 +758,19 @@ Every workspace sets up its own reference data here; the builder, field access a
 ### Domain & workspace address
 
 - ✅ Workspace subdomain (change with availability check and typed confirmation; the old one keeps leading here for 90 days)
-- ✅ Custom domain (CNAME + TXT records to add, real DNS check, status and reason; HTTPS issued by the backend once verified)
-- ⬜ Custom short-link domain (later)
+- ➖ Custom domain: removed for now (owner, 2026-10-07: the subdomain is enough)
+- ➖ Custom short-link domain: not for now
 
 ### Organisations
 
-- ✅ Several organisations per workspace (subsidiaries, branches; owner's choice: shared team): create, edit (name, short name, website, logo), archive / restore; each form belongs to one (builder setting), its name and logo on the form's public pages
-- ✅ Organisation switcher in the rail (with two or more): All or one, every list follows it, new forms go to it
+- ➖ Several organisations per workspace: removed (owner, 2026-10-07: one organisation, Company covers it)
+- ➖ Organisation switcher: removed with organisations
 
 ### Authentication
 
 - ✅ Sign-in methods: enable / disable email + password, Google, Microsoft, Apple, Facebook, only enabled ones appear on the workspace sign-in page (at least one; turning off email and password asks first; live sign-in page preview, also on Branding)
 - ⬜ Single sign-on: SAML / OIDC set-up (metadata, certificates, test sign-in), later
-- ✅ One-time code policy: channels (email always, SMS on / off; authenticator app later), expiry 5 / 10 / 15 min, wrong tries 3 / 5 / 10 (code length stays 6 digits)
+- ✅ One-time code policy: email always, text message optional (off for new workspaces), expiry 5 / 10 / 15 min, wrong tries 3 / 5 / 10 (no authenticator app, owner 2026-10-07)
 - ✅ Multi-factor authentication: always on for everyone (every sign-in asks for a code), shown as such
 - ✅ Allowed email domains (optional; sign-in checks them now, invites in F22); your own domain must stay on the list
 
@@ -1132,6 +1132,12 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | Headers tab: endpoints with headers of their own grouped by service, values masked with view and copy | F13 | ✅ |
 | 2026-10-07 | Sign-in / sign-up pages: new design for the left side, owner to describe later | F2 auth pages (later) | ⏳ waiting for owner |
 | 2026-10-07 | Forgot password for the person who signed the workspace up (code, confirm, new password): the flow exists at the workspace sign-in ("Forgot password?"), owner to try it and say what is missing | F2 auth (review) | ⏳ waiting for owner |
+| 2026-10-07 | Formalie always present whatever a workspace brands (sign-in page, emails) | F14 feedback | ✅ |
+| 2026-10-07 | No own domain for now, the subdomain is enough | F14 M7 | ✅ removed |
+| 2026-10-07 | One organisation per workspace (Company covers it): no sub-organisations | F14 M7 | ✅ removed |
+| 2026-10-07 | No teams, locations, cost centres (not collaborative; access per form) | F14 M2 | ✅ removed |
+| 2026-10-07 | Sign-in codes: no authenticator app; text messages optional, email is the standard | F14 M3 | ✅ |
+| 2026-10-07 | Form defaults: show a picture of the selected theme | F14 M5 | ✅ |
 | 2026-10-06 | Menu "Docs & testing" renamed "API Documentation" (menu, page title, breadcrumbs and the guidance that points to it) | F13 | ✅ |
 | 2026-10-06 | Webhooks send a webhook token from Tokens & headers (new type For webhooks; Authorization: Bearer, Content-Type, Formalie-Key = delivery id), no separate secrets or signatures; clean FRM-RESP-1006 details | F13 | ✅ |
 | 2026-10-06 | API POST follows the form's duplicate rules (same answers 409 whatever the key; identity email same person 409, typo-close flagged); deleted responses no longer block re-sending | F13 | ✅ |
@@ -1359,3 +1365,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-07 | F14 | M5 Privacy, data and form defaults: sections `privacy` and `form_defaults`; retention (`retentionStore`: per-form or workspace limit, preview, removal on save and daily, audited), Keep responses in the builder's form settings; privacy notice link and consent line on public forms; data requests (find, export JSON, delete with typed confirmation, audited with masked address); form defaults applied to new blank and template forms and preselected in the new-form dialog. Checked in the browser: retention preview (30 days → 47,717 sample responses) and the confirmation on Ctrl+S, not saved; data request search for a test respondent; notice and consent on a live form, then turned off; defaults set, a new form starting with them (then moved to Trash), defaults put back. |
 | 2026-10-07 | F14 | M6 Appearance: section `appearance` (presets, primary incl. brand with contrast check, greys, background, corners, font, text size, dark rail / menu, menu counts, breadcrumbs, search, footer, width, spacing); `useAppearance` applies it for everyone (Nuxt UI colours + CSS variables, the primary also takes the design's inverted accent), the shell reads the rest; the Appearance page makes the real portal the live preview while editing. Checked in the browser: Midnight (dark rail and menu in light mode), Ocean saved with centred and compact, the Forms page in light and dark wearing it, then Reset to Formalie saved. |
 | 2026-10-07 | F14 | M7 Address, domain and organisations: `addressStore` (subdomain change with 90-day redirect via the host resolver, own domain with CNAME / TXT and a real DNS check, verified domains resolve to the workspace), Settings → Address and domain; organisations (`organisationStore`, `/organisations` routes, archive / restore, form move), request scope (`core/scope.ts`, header `x-formalie-organisation`) narrowing every list, new forms in the chosen organisation, public pages with the form's organisation; Settings → Organisations in the list format, the rail switcher, the builder's Organisation setting. Checked in the browser: availability (taken / free), a real change to remedylegal-uk and back (still signed in, old address listed), a test domain with a DNS check (not found) then removed, a second organisation created, the switcher narrowing Forms to it (empty), Visitor sign-in moved there (public page shows its name) and back, the test organisation archived. F14 complete; stopped for review. |
+| 2026-10-07 | F14 | Owner feedback: "Powered by Formalie" on the workspace sign-in page, Branding preview and every email; own domain and short-link domain removed (Workspace address keeps the subdomain change); organisations, the rail switcher and the form setting removed; teams, locations and cost centres removed; sign-in codes without an authenticator app, text messages off by default; Form defaults show the chosen theme. Checked in the browser: sign-in page (Samath Tax, Remedy Legal) with the mark in the showcase and under the form, the settings menu, the theme picture changing with the choice, the email preview HTML with the Formalie mark. |

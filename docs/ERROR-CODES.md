@@ -84,7 +84,6 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-API-1018  | 413  | The body is too large (1 MB at most; files via the upload step).  | INFO     |
 | FRM-ORG-1001  | 409  | An entry with this name already exists.                          | INFO     |
 | FRM-ORG-1002  | 409  | Forms still use it. Archive it, or merge it into another one.    | INFO     |
-| FRM-ORG-1003  | 409  | The main organisation can't be archived.                         | INFO     |
 | FRM-PLAN-1001 | 402  | Your plan limit has been reached. Upgrade to continue.            | INFO     |
 | FRM-PLAN-1002 | 402  | This feature is not included in your plan.                        | INFO     |
 

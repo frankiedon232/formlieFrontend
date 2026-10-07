@@ -5,7 +5,8 @@
     "scroller": {
       "back": "Öncekileri göster",
       "more": "Daha fazla göster"
-    }
+    },
+    "poweredBy": "{brand} tarafından desteklenmektedir"
   },
   "common": {
     "loading": "Yükleniyor…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "Parolanızın süresi doldu. Yeni bir parola belirleyin.",
     "FRM-AUTH-1016": "Bu ağdan oturum açmaya izin verilmiyor.",
     "FRM-AUTH-1017": "Bu değişiklik sizi dışarıda bırakır. Kendi e-posta alan adınızı ve adresinizi kontrol edin.",
-    "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin.",
-    "FRM-ORG-1003": "Ana kuruluş arşivlenemez."
+    "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -6335,10 +6335,9 @@
       "branding": "Marka",
       "language": "Dil ve bölge",
       "appearance": "Görünüm",
-      "address": "Adres ve alan adı",
+      "address": "Çalışma alanı adresi",
       "departments": "Departmanlar",
       "jobTitles": "Unvanlar",
-      "places": "Ekipler ve konumlar",
       "lists": "Listeler",
       "signin": "Giriş",
       "security": "Güvenlik",
@@ -6347,8 +6346,7 @@
       "privacy": "Gizlilik ve veriler",
       "formDefaults": "Form varsayılanları",
       "themes": "Temalar",
-      "landingPages": "Açılış sayfaları",
-      "organisations": "Kuruluşlar"
+      "landingPages": "Açılış sayfaları"
     },
     "desc": {
       "overview": "Çalışma alanınızla ilgili her şey tek yerde.",
@@ -6356,10 +6354,9 @@
       "branding": "Logo, tarayıcı sekmesi simgesi, marka rengi ve giriş sayfanız.",
       "language": "Dil, saat dilimi, para birimi, tarih ve sayı biçimleri ile form dilleri.",
       "appearance": "Tüm portal için kendi renkleriniz ve görünümünüz.",
-      "address": "Çalışma alanınızın adresi ve kendi alan adınız.",
+      "address": "Ekibinizin oturum açtığı ve formlarınızın bulunduğu yer.",
       "departments": "Formlarınızın ve erişim kurallarınızın kullanabileceği departmanlar.",
       "jobTitles": "Kuruluşunuzdaki kişilerin unvanları.",
-      "places": "Ekipler, konumlar ve maliyet merkezleri gibi isteğe bağlı listeler.",
       "lists": "Seçmeli sorular için yeniden kullanılabilir seçenek listeleri.",
       "signin": "İnsanlarınızın hangi giriş yöntemlerini kullanabileceği, kodlar ve iki adımlı giriş.",
       "security": "Parola kuralları, oturum süresi ve izin verilen IP adresleri.",
@@ -6368,8 +6365,7 @@
       "privacy": "Yanıtların ne kadar saklanacağı, onay metinleri ve veri talepleri.",
       "formDefaults": "Yeni formların başladığı ayarlar ve gömme varsayılanları.",
       "themes": "Çalışma alanınızın kullanabileceği form tasarımları.",
-      "landingPages": "Formlarınızın herkese açık sayfaları için sayfa tasarımları.",
-      "organisations": "İştirakler veya şubeler: her form birine aittir ve kenar çubuğu aralarında geçiş yapar."
+      "landingPages": "Formlarınızın herkese açık sayfaları için sayfa tasarımları."
     },
     "status": {
       "complete": "Tamam",
@@ -6389,8 +6385,7 @@
       "notice": "gizlilik bildirimi ayarlandı",
       "withTheme": "Yeni formlar bir temayla başlar",
       "workspaceLook": "Yeni formlar çalışma alanının görünümünü kullanır",
-      "customLook": "Kendi görünümünüz",
-      "organisations": "{n} kuruluş | {n} kuruluş"
+      "customLook": "Kendi görünümünüz"
     },
     "next": {
       "title": "Sonraki adım",
@@ -6534,45 +6529,6 @@
           "placeholder": "örn. Ekip lideri",
           "examples": "Müdür\nEkip lideri\nAnalist",
           "peopleHint": "Bir unvanı kimler taşıyor"
-        },
-        "teams": {
-          "many": "Ekipler",
-          "new": "Yeni ekip",
-          "create": "Ekip oluştur",
-          "import": "Ekipleri içe aktar",
-          "hint": "Departmanlar arasında isteğe bağlı kişi grupları.",
-          "empty": "Henüz ekip yok",
-          "emptyDesc": "Kuruluşunuz ekiplerle çalışıyorsa ekip ekleyin veya bir listeden içe aktarın.",
-          "search": "Ekip ara",
-          "placeholder": "örn. Müşteri başarısı",
-          "examples": "Müşteri başarısı\nBaşlangıç eğitimi\nSaha ekibi",
-          "peopleHint": "Bir ekipte kimler var"
-        },
-        "locations": {
-          "many": "Konumlar",
-          "new": "Yeni konum",
-          "create": "Konum oluştur",
-          "import": "Konumları içe aktar",
-          "hint": "İsteğe bağlı tesisler, ofisler veya şubeler.",
-          "empty": "Henüz konum yok",
-          "emptyDesc": "İnsanların çalıştığı tesisleri, ofisleri veya şubeleri ekleyin ya da bir listeden içe aktarın.",
-          "search": "Konum ara",
-          "placeholder": "örn. Genel merkez",
-          "examples": "Genel merkez\nKuzey şubesi\nDepo",
-          "peopleHint": "Bir konumda kimler çalışıyor"
-        },
-        "cost_centres": {
-          "many": "Maliyet merkezleri",
-          "new": "Yeni maliyet merkezi",
-          "create": "Maliyet merkezi oluştur",
-          "import": "Maliyet merkezlerini içe aktar",
-          "hint": "Bütçeler ve onaylar için isteğe bağlı maliyet merkezleri.",
-          "empty": "Henüz maliyet merkezi yok",
-          "emptyDesc": "Formlarınızın ihtiyacı varsa maliyet merkezi ekleyin veya bir listeden içe aktarın.",
-          "search": "Maliyet merkezi ara",
-          "placeholder": "örn. CC-100 Pazarlama",
-          "examples": "CC-100 Pazarlama\nCC-200 Operasyon",
-          "peopleHint": "Bir maliyet merkezine kimler bağlı"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "Her zaman sunulur, kişilerin oturum açtığı adrese.",
       "sms": "SMS",
       "smsHint": "Hesabında cep telefonu numarası olan kişilere sunulur.",
-      "app": "Kimlik doğrulama uygulaması",
-      "appHint": "Telefonlarındaki bir uygulamadan gelen kodlar.",
       "expiry": "Bir kod şu kadar geçerlidir",
       "expiryHint": "Sonrasında kişiler yeni bir kod ister.",
       "attempts": "İzin verilen hatalı deneme",
@@ -6954,7 +6908,9 @@
       "teamHelp": "Her yeni formun yanıt e-postalarına eklenen ekip üyeleri.",
       "embed": "Gömmeye izin verilen web siteleri",
       "embedAny": "Her web sitesi yeni formları gömebilir.",
-      "embedPlaceholder": "www.example.com, ardından Enter"
+      "embedPlaceholder": "www.example.com, ardından Enter",
+      "themeShown": "Yeni formlar {name} ile başlar.",
+      "workspaceShown": "Yeni formlar çalışma alanınızın görünümüyle başlar."
     },
     "appearance": {
       "reset": "Formalie'ye sıfırla",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} adresi {url} olur. Herkes yeni adresten giriş yapar; eski adres 90 gün boyunca buraya yönlendirmeye devam eder, böylece paylaşılan bağlantılar çalışır.",
       "typeNew": "Onaylamak için {name} yazın",
       "changed": "Çalışma alanı artık {url} adresinde",
-      "domain": "Kendi alan adınız",
-      "domainHint": "Formlarınızı forms.example.com gibi kendi adresinizde gösterin.",
-      "addDomain": "Alan adı ekle",
-      "addRecords": "Bu iki kaydı alan adı sağlayıcınızda ekleyin, sonra denetleyin. Görünür olması birkaç saat sürebilir.",
-      "verifiedDesc": "Doğrulandı. Formlar bu adresi kullanır, HTTPS otomatik kurulur.",
-      "type": "Tür",
-      "name": "Ad",
-      "value": "Değer",
-      "found": "Bulundu",
-      "missing": "Henüz bulunamadı",
-      "check": "Şimdi denetle",
-      "checked": "{when} denetlendi",
-      "remove": "Alan adını kaldır",
-      "removeTitle": "{domain} kaldırılsın mı?",
-      "removeDesc": "Formlar çalışma alanı adresinize döner. Alan adınızla verilen bağlantılar çalışmaz.",
-      "status": {
-        "pending": "DNS bekleniyor",
-        "verified": "Doğrulandı",
-        "failed": "Başka yere işaret ediyor"
-      },
-      "problem": {
-        "not_found": "Kayıtlar henüz bulunamadı. Alan adı sağlayıcınızdaki değişiklikler birkaç saat sürebilir.",
-        "wrong_target": "CNAME kaydı başka yere işaret ediyor. Yukarıdaki değere değiştirin.",
-        "dns_error": "DNS şu anda erişilemiyor. Birazdan tekrar deneyin."
-      },
-      "formsAt": "Formlarınız https://{host} adresinde",
-      "short": "Kısa bağlantılar",
-      "shortHint": "Kısa form bağlantıları için kendi alan adınız.",
-      "shortLater": "Daha sonra gelecek. O zamana kadar kısa bağlantılar Formalie adresini kullanır."
+      "formsAt": "Formlarınız https://{host} adresinde"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "hesap devre dışı",
       "password_expired": "parolanın süresi doldu"
     }
-  },
-  "organisations": {
-    "title": "Kuruluşlar",
-    "all": "Tüm kuruluşlar",
-    "switch": "Kuruluş: {name}",
-    "manage": "Kuruluşları yönet",
-    "new": "Yeni kuruluş",
-    "create": "Kuruluş oluştur",
-    "editTitle": "{name} düzenle",
-    "editDesc": "Adı ve logosu, formlarının herkese açık sayfalarında görünür.",
-    "name": "Ad",
-    "namePlaceholder": "örn. Example Ltd UK",
-    "nameTaken": "Bu ada sahip bir kuruluş zaten var.",
-    "shortName": "Kısa ad",
-    "shortNameHelp": "Dar yerler için, örn. kenar çubuğu.",
-    "website": "Web sitesi",
-    "logo": "Logo",
-    "logoHint": "PNG, JPEG veya WebP, en fazla 2 MB.",
-    "state": "Durum",
-    "active": "Etkin",
-    "archived": "Arşivlendi",
-    "forms": "Formlar",
-    "responses": "Yanıtlar",
-    "updated": "Güncellendi",
-    "formsCount": "{n} form | {n} form",
-    "activeCount": "etkin | etkin",
-    "shareOfForms": "Formların payı",
-    "noWebsite": "Web sitesi yok",
-    "main": "Ana",
-    "formsBy": "Kuruluşa göre formlar",
-    "formsByHint": "Çalışma alanındaki formların ait olduğu yer.",
-    "oneOnly": "Formları aralarında bölmek için bir kuruluş ekleyin.",
-    "byState": "Duruma göre",
-    "sortForms": "En çok form",
-    "sortResponses": "En çok yanıt",
-    "sortUpdated": "Son güncellenen",
-    "search": "Kuruluşlarda ara",
-    "empty": "Eşleşen kuruluş yok",
-    "emptyDesc": "Filtreleri temizleyin veya bir kuruluş ekleyin.",
-    "saved": "{name} kaydedildi",
-    "created": "{name} oluşturuldu",
-    "archive": "Arşivle",
-    "restore": "Geri yükle",
-    "archivedToast": "{name} arşivlendi",
-    "restoredToast": "{name} geri yüklendi",
-    "showForms": "Formlarını göster",
-    "formSetting": "Kuruluş",
-    "formSettingHint": "Adı ve logosu bu formun herkese açık sayfalarında görünür. Hemen kaydedilir.",
-    "moved": "Form artık {name} kuruluşuna ait"
   }
 }

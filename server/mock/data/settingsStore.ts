@@ -15,8 +15,8 @@ import type { MockTenant } from './tenants'
 const stores = new Map<string, WorkspaceSettings>(Object.entries(loadPersisted<Record<string, WorkspaceSettings>>('settings', {})))
 export const saveSettings = () => savePersisted('settings', () => Object.fromEntries(stores))
 
-/** Sign-in and security start from the workspace's methods and Formalie's defaults (F14 M3). */
-const seedSignin = (tenant: MockTenant): SigninSettings => ({ methods: [...tenant.auth_providers], code: { sms: true, expiry_minutes: 5, max_attempts: 5 }, allowed_domains: [] })
+/** Sign-in and security start from the workspace's methods and Formalie's defaults (F14 M3); codes by email, text messages only when switched on (owner, 2026-10-07). */
+const seedSignin = (tenant: MockTenant): SigninSettings => ({ methods: [...tenant.auth_providers], code: { sms: false, expiry_minutes: 5, max_attempts: 5 }, allowed_domains: [] })
 const seedSecurity = (): SecuritySettings => ({
   password: { ...DEFAULT_PASSWORD_POLICY, reuse_last: 0, expiry_days: 0 },
   sessions: { idle_minutes: 60, max_hours: 168 },

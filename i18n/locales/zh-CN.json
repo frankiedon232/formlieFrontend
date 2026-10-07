@@ -5,7 +5,8 @@
     "scroller": {
       "back": "显示前面的",
       "more": "显示更多"
-    }
+    },
+    "poweredBy": "由 {brand} 提供支持"
   },
   "common": {
     "loading": "加载中…",
@@ -607,8 +608,7 @@
     "FRM-AUTH-1015": "你的密码已过期。请设置新密码。",
     "FRM-AUTH-1016": "不允许从此网络登录。",
     "FRM-AUTH-1017": "此更改会让你自己无法登录。请检查你自己的邮箱域名和地址。",
-    "FRM-AUTH-1018": "你最近用过这个密码。请换一个。",
-    "FRM-ORG-1003": "主组织无法归档。"
+    "FRM-AUTH-1018": "你最近用过这个密码。请换一个。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -6335,10 +6335,9 @@
       "branding": "品牌",
       "language": "语言与地区",
       "appearance": "外观",
-      "address": "地址与域名",
+      "address": "工作区地址",
       "departments": "部门",
       "jobTitles": "职位",
-      "places": "团队和地点",
       "lists": "列表",
       "signin": "登录",
       "security": "安全",
@@ -6347,8 +6346,7 @@
       "privacy": "隐私与数据",
       "formDefaults": "表单默认值",
       "themes": "主题",
-      "landingPages": "落地页",
-      "organisations": "组织"
+      "landingPages": "落地页"
     },
     "desc": {
       "overview": "关于工作区的一切，集中在一处。",
@@ -6356,10 +6354,9 @@
       "branding": "徽标、浏览器标签页图标、品牌颜色和登录页面。",
       "language": "语言、时区、货币、日期和数字格式，以及表单语言。",
       "appearance": "整个门户专属于你的颜色和外观。",
-      "address": "工作区地址和你自己的域名。",
+      "address": "团队登录的地方，也是表单所在的地方。",
       "departments": "表单和访问规则可使用的部门。",
       "jobTitles": "组织中成员的职位。",
-      "places": "可选列表，例如团队、地点和成本中心。",
       "lists": "可重复使用的选项列表，用于选择题。",
       "signin": "成员可使用的登录方式、验证码和两步登录。",
       "security": "密码规则、会话时长和允许的 IP 地址。",
@@ -6368,8 +6365,7 @@
       "privacy": "回复保留多久、同意声明文本和数据请求。",
       "formDefaults": "新表单的初始设置和嵌入默认值。",
       "themes": "工作区可使用的表单设计。",
-      "landingPages": "表单公开页面的页面设计。",
-      "organisations": "子公司或分支机构：每个表单属于其中一个，侧边栏可在它们之间切换。"
+      "landingPages": "表单公开页面的页面设计。"
     },
     "status": {
       "complete": "已完成",
@@ -6389,8 +6385,7 @@
       "notice": "已设置隐私声明",
       "withTheme": "新表单以主题开始",
       "workspaceLook": "新表单使用工作区外观",
-      "customLook": "自定义外观",
-      "organisations": "{n} 个组织 | {n} 个组织"
+      "customLook": "自定义外观"
     },
     "next": {
       "title": "下一步",
@@ -6534,45 +6529,6 @@
           "placeholder": "例如：团队负责人",
           "examples": "经理\n团队负责人\n分析师",
           "peopleHint": "谁担任某个职位"
-        },
-        "teams": {
-          "many": "团队",
-          "new": "新建团队",
-          "create": "创建团队",
-          "import": "导入团队",
-          "hint": "可选的跨部门人员分组。",
-          "empty": "还没有团队",
-          "emptyDesc": "如果你的组织按团队工作，请添加团队，或从列表导入。",
-          "search": "搜索团队",
-          "placeholder": "例如：客户成功",
-          "examples": "客户成功\n新人入职\n现场团队",
-          "peopleHint": "谁在某个团队中"
-        },
-        "locations": {
-          "many": "地点",
-          "new": "新建地点",
-          "create": "创建地点",
-          "import": "导入地点",
-          "hint": "可选的场所、办公室或分支机构。",
-          "empty": "还没有地点",
-          "emptyDesc": "添加人们工作的场所、办公室或分支机构，或从列表导入。",
-          "search": "搜索地点",
-          "placeholder": "例如：总部",
-          "examples": "总部\n北部分部\n仓库",
-          "peopleHint": "谁在某个地点工作"
-        },
-        "cost_centres": {
-          "many": "成本中心",
-          "new": "新建成本中心",
-          "create": "创建成本中心",
-          "import": "导入成本中心",
-          "hint": "用于预算和审批的可选成本中心。",
-          "empty": "还没有成本中心",
-          "emptyDesc": "如果表单需要，请添加成本中心，或从列表导入。",
-          "search": "搜索成本中心",
-          "placeholder": "例如：CC-100 市场",
-          "examples": "CC-100 市场\nCC-200 运营",
-          "peopleHint": "谁计入某个成本中心"
         }
       },
       "col": {
@@ -6671,8 +6627,6 @@
       "emailHint": "始终可用，发送到用户登录所用的地址。",
       "sms": "短信",
       "smsHint": "提供给账号中有手机号码的用户。",
-      "app": "验证器应用",
-      "appHint": "来自手机应用的验证码。",
       "expiry": "验证码有效期",
       "expiryHint": "之后用户需要获取新的验证码。",
       "attempts": "允许的错误次数",
@@ -6954,7 +6908,9 @@
       "teamHelp": "添加到每个新表单回复邮件中的团队成员。",
       "embed": "允许嵌入的网站",
       "embedAny": "任何网站都可以嵌入新表单。",
-      "embedPlaceholder": "www.example.com,然后按 Enter"
+      "embedPlaceholder": "www.example.com,然后按 Enter",
+      "themeShown": "新表单默认使用 {name}。",
+      "workspaceShown": "新表单默认使用工作区的外观。"
     },
     "appearance": {
       "reset": "恢复为 Formalie 默认",
@@ -7081,35 +7037,7 @@
       "confirmDesc": "{old} 将变为 {url}。所有人用新地址登录；旧地址会在 90 天内继续指向这里，已分享的链接仍然有效。",
       "typeNew": "输入 {name} 以确认",
       "changed": "工作区现在位于 {url}",
-      "domain": "你自己的域名",
-      "domainHint": "用你自己的地址展示表单，例如 forms.example.com。",
-      "addDomain": "添加域名",
-      "addRecords": "请在域名服务商处添加这两条记录，然后检查。可能需要几个小时才会生效。",
-      "verifiedDesc": "已验证。表单使用此地址，并自动设置 HTTPS。",
-      "type": "类型",
-      "name": "名称",
-      "value": "值",
-      "found": "已找到",
-      "missing": "尚未找到",
-      "check": "立即检查",
-      "checked": "{when} 已检查",
-      "remove": "移除域名",
-      "removeTitle": "移除 {domain}？",
-      "removeDesc": "表单将回到工作区地址。使用你域名的链接将失效。",
-      "status": {
-        "pending": "等待 DNS",
-        "verified": "已验证",
-        "failed": "指向其他位置"
-      },
-      "problem": {
-        "not_found": "尚未找到这些记录。在域名服务商处的更改可能需要几个小时。",
-        "wrong_target": "CNAME 记录指向了其他位置。请改为上面的值。",
-        "dns_error": "暂时无法连接 DNS。请稍后再试。"
-      },
-      "formsAt": "你的表单位于 https://{host}",
-      "short": "短链接",
-      "shortHint": "用于表单短链接的你自己的域名。",
-      "shortLater": "稍后推出。在此之前，短链接使用 Formalie 的地址。"
+      "formsAt": "你的表单位于 https://{host}"
     }
   },
   "notifications": {
@@ -7159,54 +7087,5 @@
       "account_disabled": "账号已停用",
       "password_expired": "密码已过期"
     }
-  },
-  "organisations": {
-    "title": "组织",
-    "all": "所有组织",
-    "switch": "组织：{name}",
-    "manage": "管理组织",
-    "new": "新建组织",
-    "create": "创建组织",
-    "editTitle": "编辑 {name}",
-    "editDesc": "其名称和徽标会显示在该组织表单的公开页面上。",
-    "name": "名称",
-    "namePlaceholder": "例如 Example Ltd UK",
-    "nameTaken": "已存在同名组织。",
-    "shortName": "简称",
-    "shortNameHelp": "用于空间紧凑的位置，例如侧边栏。",
-    "website": "网站",
-    "logo": "徽标",
-    "logoHint": "PNG、JPEG 或 WebP，最大 2 MB。",
-    "state": "状态",
-    "active": "活跃",
-    "archived": "已归档",
-    "forms": "表单",
-    "responses": "回复",
-    "updated": "更新时间",
-    "formsCount": "{n} 个表单 | {n} 个表单",
-    "activeCount": "活跃 | 活跃",
-    "shareOfForms": "表单占比",
-    "noWebsite": "无网站",
-    "main": "主组织",
-    "formsBy": "按组织统计表单",
-    "formsByHint": "工作区的表单属于哪个组织。",
-    "oneOnly": "添加组织即可在它们之间分配表单。",
-    "byState": "按状态",
-    "sortForms": "表单最多",
-    "sortResponses": "回复最多",
-    "sortUpdated": "最近更新",
-    "search": "搜索组织",
-    "empty": "没有匹配的组织",
-    "emptyDesc": "清除筛选，或添加一个组织。",
-    "saved": "已保存 {name}",
-    "created": "已创建 {name}",
-    "archive": "归档",
-    "restore": "恢复",
-    "archivedToast": "已归档 {name}",
-    "restoredToast": "已恢复 {name}",
-    "showForms": "显示其表单",
-    "formSetting": "组织",
-    "formSettingHint": "其名称和徽标会显示在此表单的公开页面上。立即保存。",
-    "moved": "该表单现在属于 {name}"
   }
 }

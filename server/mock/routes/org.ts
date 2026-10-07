@@ -1,6 +1,6 @@
 /**
  * Organisation data (F14 M2, docs/API-CONTRACT.md → Organisation data). Admins only; the builder reads the
- * same lists through /directory. `:kind` = departments · job_titles · teams · locations · cost_centres.
+ * same lists through /directory. `:kind` = departments · job_titles.
  *
  *   GET    /org/:kind                 list (q, sort, filter[status]) · /insights · /:id · /:id/usage
  *   POST   /org/:kind                 { name, code, description, member_ids } → the entry (names unique per kind)
@@ -22,7 +22,7 @@ import { saveForms } from '../data/formStore'
 import { moveAudience, orgOf, peopleOf, saveOrg, toOrgItem, usageOf, type StoredOrgItem } from '../data/orgStore'
 import type { MockTenant } from '../data/tenants'
 
-const LABEL: Record<OrgKind, string> = { departments: 'Department', job_titles: 'Job title', teams: 'Team', locations: 'Location', cost_centres: 'Cost centre' }
+const LABEL: Record<OrgKind, string> = { departments: 'Department', job_titles: 'Job title' }
 const optional = (max: number) => z.string().trim().max(max).nullable().transform(value => value || null)
 const input = z.object({ name: z.string().trim().min(1).max(80), code: optional(20), description: optional(200), member_ids: z.array(z.string().max(100)).max(1000) })
 
