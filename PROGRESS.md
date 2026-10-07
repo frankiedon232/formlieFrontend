@@ -1129,6 +1129,8 @@ Owner requests added during development, and where they landed.
 | 2026-10-06 | API payloads and answers use the label names (`first_name`), for every endpoint, old ones too; editable per endpoint; example values fit the label | F13 | ✅ |
 | 2026-10-06 | Examples carry every header a call needs: signing headers when a signing token can call the endpoint, the endpoint's own headers with values | F13 | ✅ |
 | 2026-10-06 | Headers tab: endpoints with headers of their own grouped by service, values masked with view and copy | F13 | ✅ |
+| 2026-10-07 | Sign-in / sign-up pages: new design for the left side, owner to describe later | F2 auth pages (later) | ⏳ waiting for owner |
+| 2026-10-07 | Forgot password for the person who signed the workspace up (code, confirm, new password): the flow exists at the workspace sign-in ("Forgot password?"), owner to try it and say what is missing | F2 auth (review) | ⏳ waiting for owner |
 | 2026-10-06 | Menu "Docs & testing" renamed "API Documentation" (menu, page title, breadcrumbs and the guidance that points to it) | F13 | ✅ |
 | 2026-10-06 | Webhooks send a webhook token from Tokens & headers (new type For webhooks; Authorization: Bearer, Content-Type, Formalie-Key = delivery id), no separate secrets or signatures; clean FRM-RESP-1006 details | F13 | ✅ |
 | 2026-10-06 | API POST follows the form's duplicate rules (same answers 409 whatever the key; identity email same person 409, typo-close flagged); deleted responses no longer block re-sending | F13 | ✅ |
