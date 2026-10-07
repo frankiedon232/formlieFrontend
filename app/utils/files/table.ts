@@ -6,7 +6,7 @@
 
 /** CSV text → rows. The delimiter is guessed from the first line when not given. */
 export function parseCsv(text: string, delimiter?: string): string[][] {
-  const clean = text.replace(/^﻿/, '')
+  const clean = text.charCodeAt(0) === 0xfeff ? text.slice(1) : text
   const first = clean.split(/\r?\n/, 1)[0] ?? ''
   const sep = delimiter ?? (['\t', ';', ','].map(char => [char, first.split(char).length] as const).sort((a, b) => b[1] - a[1])[0]![0])
   const rows: string[][] = []
