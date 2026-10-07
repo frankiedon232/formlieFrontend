@@ -10,6 +10,7 @@ import { z } from 'zod'
 import type { H3Event } from 'h3'
 import type { ResponseExport, ResponseExportFormat } from '#shared/types/responses'
 import { answerText } from '#shared/utils/forms/answer-text'
+import { appearanceInk } from '#shared/utils/settings/appearance-ink'
 import { requireAuth, tenantOf } from '../core/auth'
 import { actorOf, recordAudit } from '../core/audit'
 import { xlsx } from '../core/xlsx'
@@ -20,11 +21,10 @@ import { formsOf } from '../data/formStore'
 import { levelOf } from '../data/formPermissions'
 import { answersOf, formResponses } from '../data/responseData'
 import { responseReport } from '../data/responseReport'
+import { settingsOf } from '../data/settingsStore'
 import type { MockTenant, MockUser } from '../data/tenants'
 import { filterResponses, formFor, questionsOf } from './responses'
 
-/** The portal's ink colour (docs/design: monochrome). */
-const APP_INK = '#18181b'
 const KEEP_MS = 7 * 24 * 60 * 60 * 1000
 const LINK_MS = 5 * 60 * 1000
 
@@ -110,9 +110,10 @@ export const exportFormResponses = defineMockRoute(({ event, body: raw }) => {
     // A designed report (owner 2026-10-05), not a text dump.
     const counts = { new: 0, reviewed: 0, approved: 0, rejected: 0 }
     for (const { entry } of picked) counts[entry.status]++
-    // The application's own look (owner 2026-10-05), not the form's theme: monochrome ink with the
-    // app's status colours. Follows the workspace's appearance once F14 Settings → Appearance exists.
-    const brand = APP_INK
+    // The application's own look (owner 2026-10-05), not the form's theme: the workspace's Appearance
+    // colour (black and white = the portal's ink) with the app's status colours.
+    const settings = settingsOf(tenant)
+    const brand = appearanceInk(settings.appearance, settings.branding.brand_color)
     const SCOPE = { all: 'All responses', filtered: 'Matching the filters', selected: 'Selected responses' }
     bytes = responseReport({
       org: tenant.name,

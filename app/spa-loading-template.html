@@ -2,7 +2,9 @@
   First-load screen for client-rendered portal pages (shown until the app has started: secure
   handshake, workspace check, session restore). Plain HTML + inline CSS because Vue and Nuxt UI
   are not loaded yet. Same monochrome look as the portal; follows the saved light / dark mode
-  (the color-mode script sets `html.dark` before this renders) and reduced motion.
+  (the color-mode script sets `html.dark` before this renders) and reduced motion. The workspace's
+  Appearance (colours, background, font) comes from the look the app last applied in this browser
+  (`formalie-loading-look`, written by useAppearance); without it, Formalie's own look.
 -->
 <div class="formalie-boot" role="status" aria-live="polite">
   <div class="formalie-boot__bar"><span></span></div>
@@ -28,26 +30,48 @@
     <span class="formalie-boot__sr">Loading…</span>
   </div>
 </div>
+<script>
+  ;(function () {
+    try {
+      var look = JSON.parse(localStorage.getItem('formalie-loading-look') || 'null')
+      var root = document.documentElement
+      if (!look) return
+      var set = function (name, value) {
+        if (typeof value === 'string' && value && value.length < 200) root.style.setProperty(name, value)
+      }
+      ;['light', 'dark'].forEach(function (mode) {
+        var m = look[mode] || {}
+        set('--boot-' + mode + '-bg', m.bg)
+        set('--boot-' + mode + '-text', m.text)
+        set('--boot-' + mode + '-accent', m.accent)
+        set('--boot-' + mode + '-on', m.on)
+      })
+      set('--boot-font', look.font)
+    } catch (e) {
+      // No saved look (or storage blocked): Formalie's own
+    }
+  })()
+</script>
 <style>
   .formalie-boot {
     position: fixed;
     inset: 0;
     display: grid;
     place-items: center;
-    background: #fff;
-    color: #18181b;
-    font-family:
-      Manrope,
-      ui-sans-serif,
-      system-ui,
-      -apple-system,
-      'Segoe UI',
-      sans-serif;
+    --boot-bg: var(--boot-light-bg, #fff);
+    --boot-text: var(--boot-light-text, #09090b);
+    --boot-accent: var(--boot-light-accent, #18181b);
+    --boot-on: var(--boot-light-on, #fff);
+    background: var(--boot-bg);
+    color: var(--boot-text);
+    font-family: var(--boot-font, Manrope, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif);
     z-index: 9999;
   }
   html.dark .formalie-boot {
-    background: #09090b;
-    color: #fafafa;
+    --boot-bg: var(--boot-dark-bg, #18181b);
+    --boot-text: var(--boot-dark-text, #fff);
+    --boot-accent: var(--boot-dark-accent, #f4f4f5);
+    --boot-on: var(--boot-dark-on, #18181b);
   }
   .formalie-boot__bar {
     position: fixed;
@@ -59,7 +83,7 @@
     position: absolute;
     inset: 0 auto 0 0;
     width: 40%;
-    background: currentColor;
+    background: var(--boot-accent);
     animation: formalie-boot-bar 1.1s ease-in-out infinite;
   }
   .formalie-boot__center {
@@ -74,12 +98,8 @@
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: #18181b;
-    color: #fff;
-  }
-  html.dark .formalie-boot__mark {
-    background: #fafafa;
-    color: #18181b;
+    background: var(--boot-accent);
+    color: var(--boot-on);
   }
   .formalie-boot__name {
     font-size: 18px;
@@ -94,7 +114,7 @@
     width: 6px;
     height: 6px;
     border-radius: 2px;
-    background: currentColor;
+    background: var(--boot-accent);
     opacity: 0.25;
     animation: formalie-boot-dot 1s ease-in-out infinite;
   }

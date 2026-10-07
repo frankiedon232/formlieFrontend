@@ -18,6 +18,8 @@ const FONTS = {
   rounded: "ui-rounded, 'SF Pro Rounded', 'Nunito', 'Varela Round', system-ui, sans-serif",
 } as const
 const SIZES = { sm: '15px', md: '16px', lg: '17px' } as const
+/** Read by the inline script in app/spa-loading-template.html (keep the name in step). */
+const LOADING_LOOK_KEY = 'formalie-loading-look'
 
 /** Relative luminance contrast of white text on a colour (WCAG), to warn about unreadable brand colours. */
 export function contrastWithWhite(hex: string): number {
@@ -75,6 +77,32 @@ export function useAppearance() {
     return [light.length ? `html:root { ${light.join('; ')} }` : '', dark.length ? `html.dark { ${dark.join('; ')} }` : '', size].filter(Boolean).join('\n')
   })
 
+  /**
+   * The first-load screen (`spa-loading-template.html`) starts before the app, so it can't ask the API:
+   * the saved look's resolved colours and font are kept in this browser for it (display values only,
+   * nothing secret; each workspace address has its own storage).
+   */
+  async function rememberForLoading() {
+    const a = saved.value
+    if (!a) return
+    await nextTick()
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+    const styles = getComputedStyle(document.documentElement)
+    const token = (name: string) => styles.getPropertyValue(`--ui-color-${name}`).trim()
+    const mono = a.primary === 'mono' || (a.primary === 'brand' && !brand.value)
+    const accent = (shade: number) => (a.primary === 'brand' && brand.value ? brand.value : token(`primary-${shade}`))
+    const look = {
+      font: FONTS[a.font],
+      light: { bg: a.background === 'tinted' ? token('neutral-50') : '#ffffff', text: token('neutral-950'), accent: mono ? token('neutral-900') : accent(600), on: '#ffffff' },
+      dark: { bg: a.background === 'tinted' ? token('neutral-950') : token('neutral-900'), text: '#ffffff', accent: mono ? token('neutral-100') : accent(500), on: mono ? token('neutral-900') : '#ffffff' },
+    }
+    try {
+      localStorage.setItem(LOADING_LOOK_KEY, JSON.stringify(look))
+    } catch {
+      // Storage blocked: the loading screen keeps Formalie's own look
+    }
+  }
+
   /** Applies the look to the page (called once, from the portal layout). */
   function apply() {
     watchEffect(() => {
@@ -82,6 +110,7 @@ export function useAppearance() {
       updateAppConfig({ ui: { colors: { neutral: a.neutral, primary: a.primary === 'mono' || a.primary === 'brand' ? 'indigo' : a.primary } } })
     })
     useHead({ style: [{ key: 'formalie-appearance', textContent: css }] })
+    if (import.meta.client) watch([saved, brand], () => void rememberForLoading(), { immediate: true })
   }
 
   return { current, saved, preview, brand, load, put, apply }
