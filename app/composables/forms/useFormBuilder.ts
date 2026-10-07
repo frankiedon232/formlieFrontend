@@ -1,4 +1,4 @@
-import { offeredOptions } from '#shared/utils/forms/options'
+import { levelsOf, offeredOptions } from '#shared/utils/forms/options'
 import type { InjectionKey } from 'vue'
 import { newId, keyFromLabel, fieldKey, allFields, type FormField, type FormPage } from '#shared/utils/forms/build'
 import type { OptionList, SavedField } from '#shared/types/forms'
@@ -108,6 +108,42 @@ export function useFormBuilder() {
     field.options = offeredOptions(toRaw(list))
     field.option_set_id = list.id
     return field
+  }
+
+  /**
+   * Fields for a list (F15 M2): one field for a plain list; for a list with levels one field per level
+   * (Country → Region → City), each offering its level and linked to the one above, so each choice
+   * narrows the next. `type` = dropdown (one choice) or multi_select (several) for every level.
+   */
+  function createListFields(list: OptionList, type: FieldType = 'dropdown'): FormField[] {
+    const levels = levelsOf(list)
+    if (!levels) return [createFromList(list, type)]
+    const fields: FormField[] = []
+    const taken: string[] = []
+    levels.forEach((level, index) => {
+      const field = createField(type)
+      field.label = level.label
+      field.key = keyFromLabel(level.label, [...allFields(schema.value!).map(item => item.key), ...taken])
+      taken.push(field.key)
+      field.options = offeredOptions(toRaw(list), index)
+      field.option_set_id = list.id
+      field.option_level = index
+      if (index > 0) field.option_parent = fields[index - 1]!.id
+      fields.push(field)
+    })
+    return fields
+  }
+
+  /** Puts fields side by side in one new row (after the selected field, else at the end of the page). */
+  function placeRow(fields: FormField[]): FormField | null {
+    if (!schema.value || !page.value || !fields.length) return null
+    history.record()
+    const anchor = selected.value.length === 1 ? findField(selected.value[0]!) : null
+    const destPage = anchor?.page ?? page.value
+    destPage.rows.splice(anchor ? anchor.rowIndex + 1 : destPage.rows.length, 0, { id: newId('row'), fields })
+    pageId.value = destPage.id
+    selected.value = [fields[0]!.id]
+    return fields[0]!
   }
 
   /** Puts a field in its own row, after the selected field, else at the end of the page. */
@@ -349,6 +385,8 @@ export function useFormBuilder() {
     createField,
     createFromSaved,
     createFromList,
+    createListFields,
+    placeRow,
     place,
     addField,
     updateField,

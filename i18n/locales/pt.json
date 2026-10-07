@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Não é permitido entrar a partir desta rede.",
     "FRM-AUTH-1017": "Esta alteração bloquearia o seu acesso. Verifique o seu próprio domínio e endereço de email.",
     "FRM-AUTH-1018": "Usou esta senha recentemente. Escolha outra.",
-    "FRM-FORM-1020": "Duas opções têm o mesmo valor. Cada valor deve ser diferente."
+    "FRM-FORM-1020": "Duas opções têm o mesmo valor. Cada valor deve ser diferente.",
+    "FRM-FORM-1021": "Uma opção não tem nenhuma opção acima. Escolha onde ela fica."
   },
   "errorUi": {
     "reference": "Referência: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "A escolha do espaço de trabalho ({value})",
       "keep": "Até alguém excluir",
       "days": "{n} dia | {n} dias"
+    },
+    "level": {
+      "title": "Nível",
+      "chain": "Níveis desta lista",
+      "filtered": "Nível {n} de {total}: abre com o que está sob a escolha em {parent} e fica fechado quando não há nada.",
+      "top": "Nível superior de {total}: a escolha aqui abre o próximo nível.",
+      "fromList": "As opções vêm de {name}.",
+      "deletedList": "uma lista excluída",
+      "several": "Permitir várias escolhas",
+      "severalHint": "Com várias escolhidas, o próximo nível oferece o que está sob qualquer uma delas.",
+      "editList": "Editar a lista"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Lista “{name}” excluída"
     },
     "listChanged": "{name} mudou desde que estas opções foram preenchidas.",
-    "updateFromList": "Atualizar a partir da lista"
+    "updateFromList": "Atualizar a partir da lista",
+    "oneChoice": "Uma escolha",
+    "severalChoices": "Várias escolhas",
+    "levels": "{n} níveis",
+    "openInListOption": "Abrir em Lista de opções"
   },
   "designer": {
     "crumb": "Design",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} ignoradas (vazias ou repetidas)",
       "retired": "{n} opções que não estão nele serão retiradas",
       "needLabel": "Escolha a coluna que contém os rótulos.",
-      "apply": "Aplicar"
+      "apply": "Aplicar",
+      "pathsDesc": "Uma linha por caminho, uma coluna por nível ({chain}). Linhas com o mesmo início são mescladas.",
+      "pathsSummary": "{rows} linhas: {added} novas, {kept} já existentes",
+      "needTop": "Escolha a coluna que contém {name}."
     },
     "translations": {
       "none": "Seus formulários usam um só idioma",
@@ -7222,6 +7241,28 @@
       "update": "Atualizar",
       "synced": "{n} formulário atualizado | {n} formulários atualizados",
       "publishHint": "{n} deles está publicado: publique-o para mostrar as novas opções. | {n} deles estão publicados: publique-os para mostrar as novas opções."
+    },
+    "levels": {
+      "plain": "Um nível",
+      "plainHint": "Uma lista simples. Adicione níveis para escolhas que vão se restringindo, como País, Região, Cidade.",
+      "start": "Adicionar níveis",
+      "title": "{n} níveis",
+      "hint": "Cada opção fica sob uma do nível acima. Em um formulário, cada nível abre só com o que está sob a escolha acima.",
+      "chain": "Níveis",
+      "nameN": "Nível {n}",
+      "nameOf": "Nome do nível {n}",
+      "add": "Adicionar nível",
+      "remove": "Remover nível",
+      "removeTitle": "Remover o nível {name}?",
+      "removeDesc": "A sua {n} opção é removida junto. As respostas que a usaram mantêm o valor. | As suas {n} opções são removidas junto. As respostas que as usaram mantêm o valor.",
+      "under": "Sob",
+      "anyAbove": "Qualquer {name}",
+      "pickAbove": "Escolher",
+      "above": "{name} sob o qual fica",
+      "underIt": "{n} abaixo dela",
+      "aboveFirst": "Adicione primeiro opções a {name} e depois, aqui, as que ficam sob elas.",
+      "orphans": "{n} opção ainda não tem nada acima. Escolha onde ela fica. | {n} opções ainda não têm nada acima. Escolha onde elas ficam.",
+      "unnamed": "Dê um nome a cada nível."
     }
   }
 }

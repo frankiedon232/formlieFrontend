@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "不允许从此网络登录。",
     "FRM-AUTH-1017": "此更改会让你自己无法登录。请检查你自己的邮箱域名和地址。",
     "FRM-AUTH-1018": "你最近用过这个密码。请换一个。",
-    "FRM-FORM-1020": "有两个选项的值相同。每个值都必须不同。"
+    "FRM-FORM-1020": "有两个选项的值相同。每个值都必须不同。",
+    "FRM-FORM-1021": "有选项上方没有选项。请选择它所属的位置。"
   },
   "errorUi": {
     "reference": "参考编号：{id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "工作区的选择({value})",
       "keep": "直到有人删除",
       "days": "{n} 天 | {n} 天"
+    },
+    "level": {
+      "title": "层级",
+      "chain": "此列表的层级",
+      "filtered": "第{n}级，共{total}级：打开时显示{parent}中所选项下的内容，没有内容时保持关闭。",
+      "top": "{total}级中的最高级：此处的选择会打开下一级。",
+      "fromList": "选项来自{name}。",
+      "deletedList": "已删除的列表",
+      "several": "允许多选",
+      "severalHint": "选择多项时，下一级会提供其中任意一项下的内容。",
+      "editList": "编辑列表"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "列表“{name}”已删除"
     },
     "listChanged": "自填充这些选项以来，{name}已更改。",
-    "updateFromList": "从列表更新"
+    "updateFromList": "从列表更新",
+    "oneChoice": "单选",
+    "severalChoices": "多选",
+    "levels": "{n}个层级",
+    "openInListOption": "在选项列表中打开"
   },
   "designer": {
     "crumb": "设计",
@@ -7200,7 +7216,10 @@
       "skipped": "已跳过 {n} 个（为空或重复）",
       "retired": "其中没有的 {n} 个选项将被停用",
       "needLabel": "请选择包含标签的列。",
-      "apply": "应用"
+      "apply": "应用",
+      "pathsDesc": "每条路径一行，每个层级一列({chain})。开头相同的行会合并。",
+      "pathsSummary": "{rows}行：新增{added}行，已有{kept}行",
+      "needTop": "请选择包含{name}的列。"
     },
     "translations": {
       "none": "你的表单使用一种语言",
@@ -7222,6 +7241,28 @@
       "update": "更新",
       "synced": "已更新 {n} 个表单 | 已更新 {n} 个表单",
       "publishHint": "其中 {n} 个已发布：请重新发布以显示新选项。 | 其中 {n} 个已发布：请重新发布以显示新选项。"
+    },
+    "levels": {
+      "plain": "一个层级",
+      "plainHint": "普通列表。对于逐步缩小范围的选择，如国家、地区、城市，请添加层级。",
+      "start": "添加层级",
+      "title": "{n}个层级",
+      "hint": "每个选项都位于上一级的某个选项之下。在表单中，每一级只显示上方所选项下的内容。",
+      "chain": "层级",
+      "nameN": "第{n}级",
+      "nameOf": "第{n}级的名称",
+      "add": "添加层级",
+      "remove": "移除层级",
+      "removeTitle": "移除层级“{name}”？",
+      "removeDesc": "它的{n}个选项会一并移除。使用过它们的回答保留其值。 | 它的{n}个选项会一并移除。使用过它们的回答保留其值。",
+      "under": "隶属于",
+      "anyAbove": "任意{name}",
+      "pickAbove": "选择",
+      "above": "所属的{name}",
+      "underIt": "其下有{n}个",
+      "aboveFirst": "请先向{name}添加选项，再在此添加它们下面的选项。",
+      "orphans": "{n}个选项上方还没有内容。请选择它所属的位置。 | {n}个选项上方还没有内容。请选择它们所属的位置。",
+      "unnamed": "请为每个层级命名。"
     }
   }
 }

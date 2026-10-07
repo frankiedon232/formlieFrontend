@@ -10,6 +10,8 @@ import { SEEDED_TENANT_IDS, type MockTenant } from './tenants'
 interface TenantLibrary {
   fields: SavedField[]
   lists: OptionList[]
+  /** The sample list with levels was added once (F15 M2); deleting it keeps it gone. */
+  placesSeeded?: boolean
   /** Saved designs; `forms_count` is computed when listing. */
   themes?: (Omit<SavedTheme, 'forms_count' | 'source' | 'name_key'> & { source?: SavedTheme['source'] })[]
   /** Saved page designs (Resources → Landing pages); `forms_count` is computed when listing. */
@@ -46,11 +48,34 @@ const list = (id: string, name: string, labels: string[]): OptionList => ({
   created_at: at,
   updated_at: at,
 })
+/** Country → Region → City, a few neutral places on several continents (sample list with levels). */
+const PLACES: Record<string, Record<string, string[]>> = {
+  Brazil: { 'São Paulo': ['São Paulo', 'Campinas', 'Santos'], 'Rio de Janeiro': ['Rio de Janeiro', 'Niterói'] },
+  Canada: { Ontario: ['Toronto', 'Ottawa', 'Hamilton'], Quebec: ['Montréal', 'Québec City'] },
+  Germany: { Bavaria: ['Munich', 'Nuremberg', 'Augsburg'], Hesse: ['Frankfurt', 'Wiesbaden'] },
+  India: { Maharashtra: ['Mumbai', 'Pune', 'Nagpur'], Karnataka: ['Bengaluru', 'Mysuru'] },
+  Japan: { Tokyo: ['Shinjuku', 'Shibuya'], Osaka: ['Osaka', 'Sakai'] },
+  Kenya: { Nairobi: ['Nairobi', 'Westlands'], Mombasa: ['Mombasa', 'Nyali'] },
+}
+const slug = (text: string) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+function placesList(): OptionList {
+  const options: OptionList['options'] = []
+  for (const [country, regions] of Object.entries(PLACES)) {
+    options.push({ value: slug(country), label: country })
+    for (const [region, cities] of Object.entries(regions)) {
+      options.push({ value: `${slug(country)}_${slug(region)}`, label: region, level: 1, parent: slug(country) })
+      for (const city of cities) options.push({ value: `${slug(country)}_${slug(region)}_${slug(city)}`, label: city, level: 2, parent: `${slug(country)}_${slug(region)}` })
+    }
+  }
+  return { id: 'lst_places', name: 'Places', description: 'Country, region and city', levels: [{ key: 'country', label: 'Country' }, { key: 'region', label: 'Region' }, { key: 'city', label: 'City' }], options, created_by: SYSTEM, created_at: at, updated_at: at }
+}
+
 const SAMPLE_LISTS = () => [
   list('lst_priority', 'Priority', ['Low', 'Medium', 'High', 'Critical']),
   list('lst_departments', 'Departments', ['Finance', 'Operations', 'People', 'Sales', 'Support', 'Technology']),
   list('lst_weekdays', 'Days of the week', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
   list('lst_satisfaction', 'Satisfaction', ['Very unhappy', 'Unhappy', 'Neutral', 'Happy', 'Very happy']),
+  placesList(),
 ]
 
 export function libraryOf(tenant: MockTenant): TenantLibrary {
@@ -58,6 +83,10 @@ export function libraryOf(tenant: MockTenant): TenantLibrary {
   if (!store) {
     store = { fields: [], lists: SEEDED_TENANT_IDS.has(tenant.id) ? SAMPLE_LISTS() : [] }
     stores.set(tenant.id, store)
+  } else if (SEEDED_TENANT_IDS.has(tenant.id) && !store.lists.some(item => item.id === 'lst_places') && !store.placesSeeded) {
+    store.lists.push(placesList())
+    store.placesSeeded = true
+    saveLibrary()
   }
   return store
 }

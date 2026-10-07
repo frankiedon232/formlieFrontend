@@ -1,12 +1,13 @@
 <!--
   One option list (F15 M1): name and description, then Options (edit, reorder, retire, paste, import),
   Translations (labels per language) and Used in (forms using it, "Update forms"). Changes are a draft
-  until Save (Ctrl / ⌘ + S); Discard puts them back; leaving with unsaved changes asks first.
+  until Save (Ctrl / ⌘ + S); Discard puts them back; leaving with unsaved changes asks first. Levels
+  (F15 M2) sit above the tabs: a plain list or Country → Region → City.
 -->
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { LocalisationSettings } from '#shared/types/settings'
-import type { OptionItem, OptionListRow } from '#shared/types/forms'
+import type { OptionItem, OptionLevel, OptionListRow } from '#shared/types/forms'
 
 definePageMeta({ breadcrumb: 'nav.optionSets' })
 const { t } = useI18n()
@@ -21,7 +22,9 @@ const breadcrumbs = useBreadcrumbs()
 
 const list = ref<OptionListRow | null>(null)
 const failed = ref(false)
-const draft = ref<{ name: string; description: string | null; options: OptionItem[] } | null>(null)
+type Draft = { name: string; description: string | null; levels: OptionLevel[] | null; options: OptionItem[] }
+const draft = ref<Draft | null>(null)
+const draftOf = (row: OptionListRow): Draft => clone({ name: row.name, description: row.description ?? null, levels: row.levels ?? null, options: row.options })
 function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T
 }
@@ -29,7 +32,7 @@ async function load() {
   failed.value = false
   try {
     list.value = (await api.get<OptionListRow>(`/option-lists/${id}`)).data
-    draft.value = clone({ name: list.value.name, description: list.value.description ?? null, options: list.value.options })
+    draft.value = draftOf(list.value)
     breadcrumbs.setLabel(route.path, list.value.name)
   } catch (error) {
     failed.value = true
@@ -49,7 +52,7 @@ onMounted(async () => {
 })
 useHead({ title: () => list.value?.name ?? t('nav.optionSets') })
 
-const saved = computed(() => (list.value ? { name: list.value.name, description: list.value.description ?? null, options: list.value.options } : null))
+const saved = computed(() => (list.value ? draftOf(list.value) : null))
 const dirty = computed(() => !!draft.value && JSON.stringify(draft.value) !== JSON.stringify(saved.value))
 const savedValues = computed(() => new Set((list.value?.options ?? []).map(option => option.value)))
 const tab = ref<'items' | 'translations' | 'usage'>('items')
@@ -68,10 +71,17 @@ async function save() {
     toast.add({ title: t('optionSets.emptyLabels', { n: empty.length }, empty.length), color: 'warning', icon: 'i-lucide-triangle-alert' })
     return
   }
+  const levels = draft.value.levels
+  const above = (at: number) => new Set(draft.value!.options.filter(option => (option.level ?? 0) === at).map(option => option.value))
+  const orphans = levels ? draft.value.options.filter(option => (option.level ?? 0) > 0 && !above((option.level ?? 0) - 1).has(option.parent ?? '')) : []
+  if (levels?.some(level => !level.label.trim()) || orphans.length) {
+    toast.add({ title: orphans.length ? t('optionSets.levels.orphans', { n: orphans.length }, orphans.length) : t('optionSets.levels.unnamed'), color: 'warning', icon: 'i-lucide-triangle-alert' })
+    return
+  }
   saving.value = true
   try {
-    list.value = (await api.patch<OptionListRow>(`/option-lists/${id}`, { name: draft.value.name, description: draft.value.description, options: draft.value.options })).data
-    draft.value = clone({ name: list.value.name, description: list.value.description ?? null, options: list.value.options })
+    list.value = (await api.patch<OptionListRow>(`/option-lists/${id}`, { name: draft.value.name, description: draft.value.description, levels: draft.value.levels ?? [], options: draft.value.options })).data
+    draft.value = draftOf(list.value)
     toast.add({ title: t('optionSets.saved'), description: list.value.forms_count ? t('optionSets.savedUsed', { n: list.value.forms_count }, list.value.forms_count) : undefined, color: 'success', icon: 'i-lucide-circle-check' })
     void usageRef.value?.load()
   } catch (error) {
@@ -142,12 +152,13 @@ async function remove() {
           <UInput :model-value="draft.description ?? ''" maxlength="300" :placeholder="t('optionSets.descriptionPlaceholder')" class="w-full" @update:model-value="value => draft && (draft.description = String(value) || null)" />
         </UFormField>
       </div>
+      <OptionSetsLevels v-model:levels="draft.levels" v-model:options="draft.options" :saved-values="savedValues" />
       <UTabs v-model="tab" :items="tabs" :content="false" color="neutral" variant="link" class="w-full" />
-      <OptionSetsItems v-if="tab === 'items'" v-model="draft.options" :saved-values="savedValues" @paste="openImport('paste')" @import="openImport('file')" />
+      <OptionSetsItems v-if="tab === 'items'" v-model="draft.options" :saved-values="savedValues" :levels="draft.levels" @paste="openImport('paste')" @import="openImport('file')" />
       <OptionSetsTranslations v-else-if="tab === 'translations'" v-model="draft.options" :languages="languages" />
       <OptionSetsUsage v-show="tab === 'usage'" ref="usage" :list-id="id" :dirty="dirty" @synced="load" />
     </template>
 
-    <OptionSetsImportModal v-if="draft" v-model:open="importOpen" :source="importSource" :options="draft.options" :languages="languages" @apply="applyImport" />
+    <OptionSetsImportModal v-if="draft" v-model:open="importOpen" :source="importSource" :options="draft.options" :languages="languages" :levels="draft.levels" @apply="applyImport" />
   </AppPanel>
 </template>

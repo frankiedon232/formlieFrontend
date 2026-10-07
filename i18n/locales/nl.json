@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Inloggen vanaf dit netwerk is niet toegestaan.",
     "FRM-AUTH-1017": "Met deze wijziging sluit je jezelf buiten. Controleer je eigen e-maildomein en -adres.",
     "FRM-AUTH-1018": "Je hebt dit wachtwoord onlangs gebruikt. Kies een ander wachtwoord.",
-    "FRM-FORM-1020": "Twee opties hebben dezelfde waarde. Elke waarde moet anders zijn."
+    "FRM-FORM-1020": "Twee opties hebben dezelfde waarde. Elke waarde moet anders zijn.",
+    "FRM-FORM-1021": "Een optie heeft geen optie boven zich. Kies waar hij hoort."
   },
   "errorUi": {
     "reference": "Referentie: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "De keuze van de werkruimte ({value})",
       "keep": "Tot iemand ze verwijdert",
       "days": "{n} dag | {n} dagen"
+    },
+    "level": {
+      "title": "Niveau",
+      "chain": "Niveaus van deze lijst",
+      "filtered": "Niveau {n} van {total}: opent met wat onder de keuze in {parent} valt en blijft dicht als er niets is.",
+      "top": "Hoogste niveau van {total}: de keuze hier opent het volgende niveau.",
+      "fromList": "Opties komen uit {name}.",
+      "deletedList": "een verwijderde lijst",
+      "several": "Meerdere keuzes toestaan",
+      "severalHint": "Bij meerdere keuzes biedt het volgende niveau wat onder een van die keuzes valt.",
+      "editList": "Lijst bewerken"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Lijst “{name}” verwijderd"
     },
     "listChanged": "{name} is veranderd sinds deze opties zijn ingevuld.",
-    "updateFromList": "Bijwerken vanuit de lijst"
+    "updateFromList": "Bijwerken vanuit de lijst",
+    "oneChoice": "Eén keuze",
+    "severalChoices": "Meerdere keuzes",
+    "levels": "{n} niveaus",
+    "openInListOption": "Openen in Optielijst"
   },
   "designer": {
     "crumb": "Ontwerp",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} overgeslagen (leeg of dubbel)",
       "retired": "{n} opties die er niet in staan worden ingetrokken",
       "needLabel": "Kies de kolom met de labels.",
-      "apply": "Toepassen"
+      "apply": "Toepassen",
+      "pathsDesc": "Eén rij per pad, één kolom per niveau ({chain}). Rijen met dezelfde start worden samengevoegd.",
+      "pathsSummary": "{rows} rijen: {added} nieuw, {kept} al aanwezig",
+      "needTop": "Kies de kolom met {name}."
     },
     "translations": {
       "none": "Je formulieren gebruiken één taal",
@@ -7222,6 +7241,28 @@
       "update": "Bijwerken",
       "synced": "{n} formulier bijgewerkt | {n} formulieren bijgewerkt",
       "publishHint": "{n} ervan is gepubliceerd: publiceer het om de nieuwe opties te tonen. | {n} ervan zijn gepubliceerd: publiceer ze om de nieuwe opties te tonen."
+    },
+    "levels": {
+      "plain": "Eén niveau",
+      "plainHint": "Een gewone lijst. Voeg niveaus toe voor keuzes die steeds smaller worden, zoals Land, Regio, Stad.",
+      "start": "Niveaus toevoegen",
+      "title": "{n} niveaus",
+      "hint": "Elke optie valt onder één optie van het niveau erboven. In een formulier opent elk niveau alleen met wat onder de keuze erboven valt.",
+      "chain": "Niveaus",
+      "nameN": "Niveau {n}",
+      "nameOf": "Naam van niveau {n}",
+      "add": "Niveau toevoegen",
+      "remove": "Niveau verwijderen",
+      "removeTitle": "Het niveau {name} verwijderen?",
+      "removeDesc": "De {n} optie wordt mee verwijderd. Antwoorden die de optie gebruikten, behouden hun waarde. | De {n} opties worden mee verwijderd. Antwoorden die ze gebruikten, behouden hun waarde.",
+      "under": "Onder",
+      "anyAbove": "Elke {name}",
+      "pickAbove": "Kies",
+      "above": "{name} waaronder het valt",
+      "underIt": "{n} eronder",
+      "aboveFirst": "Voeg eerst opties toe aan {name}, daarna hier die eronder.",
+      "orphans": "{n} optie heeft nog niets boven zich. Kies waar hij hoort. | {n} opties hebben nog niets boven zich. Kies waar ze horen.",
+      "unnamed": "Geef elk niveau een naam."
     }
   }
 }

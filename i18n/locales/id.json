@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Masuk dari jaringan ini tidak diizinkan.",
     "FRM-AUTH-1017": "Perubahan ini akan mengunci Anda. Periksa domain dan alamat email Anda sendiri.",
     "FRM-AUTH-1018": "Anda baru saja memakai kata sandi ini. Pilih yang lain.",
-    "FRM-FORM-1020": "Dua opsi memiliki nilai yang sama. Setiap nilai harus berbeda."
+    "FRM-FORM-1020": "Dua opsi memiliki nilai yang sama. Setiap nilai harus berbeda.",
+    "FRM-FORM-1021": "Ada opsi yang tidak punya opsi di atasnya. Pilih tempatnya."
   },
   "errorUi": {
     "reference": "Referensi: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "Pilihan ruang kerja ({value})",
       "keep": "Sampai seseorang menghapusnya",
       "days": "{n} hari | {n} hari"
+    },
+    "level": {
+      "title": "Tingkat",
+      "chain": "Tingkat daftar ini",
+      "filtered": "Tingkat {n} dari {total}: terbuka dengan isi di bawah pilihan pada {parent}, dan tetap tertutup jika tidak ada.",
+      "top": "Tingkat teratas dari {total}: pilihan di sini membuka tingkat berikutnya.",
+      "fromList": "Opsi berasal dari {name}.",
+      "deletedList": "daftar yang dihapus",
+      "several": "Izinkan beberapa pilihan",
+      "severalHint": "Jika beberapa dipilih, tingkat berikutnya menawarkan isi di bawah salah satunya.",
+      "editList": "Edit daftar"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Daftar “{name}” dihapus"
     },
     "listChanged": "{name} telah berubah sejak opsi ini diisi.",
-    "updateFromList": "Perbarui dari daftar"
+    "updateFromList": "Perbarui dari daftar",
+    "oneChoice": "Satu pilihan",
+    "severalChoices": "Beberapa pilihan",
+    "levels": "{n} tingkat",
+    "openInListOption": "Buka di Daftar Opsi"
   },
   "designer": {
     "crumb": "Desain",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} dilewati (kosong atau berulang)",
       "retired": "{n} opsi yang tidak ada di dalamnya akan dinonaktifkan",
       "needLabel": "Pilih kolom yang berisi label.",
-      "apply": "Terapkan"
+      "apply": "Terapkan",
+      "pathsDesc": "Satu baris per jalur, satu kolom per tingkat ({chain}). Baris dengan awal yang sama digabung.",
+      "pathsSummary": "{rows} baris: {added} baru, {kept} sudah ada",
+      "needTop": "Pilih kolom yang berisi {name}."
     },
     "translations": {
       "none": "Formulir Anda memakai satu bahasa",
@@ -7222,6 +7241,28 @@
       "update": "Perbarui",
       "synced": "{n} formulir diperbarui | {n} formulir diperbarui",
       "publishHint": "{n} di antaranya dipublikasikan: publikasikan agar opsi baru tampil. | {n} di antaranya dipublikasikan: publikasikan agar opsi baru tampil."
+    },
+    "levels": {
+      "plain": "Satu tingkat",
+      "plainHint": "Daftar biasa. Tambahkan tingkat untuk pilihan yang makin menyempit, seperti Negara, Wilayah, Kota.",
+      "start": "Tambah tingkat",
+      "title": "{n} tingkat",
+      "hint": "Setiap opsi berada di bawah satu opsi pada tingkat di atasnya. Dalam formulir, setiap tingkat hanya terbuka dengan isi di bawah pilihan di atasnya.",
+      "chain": "Tingkat",
+      "nameN": "Tingkat {n}",
+      "nameOf": "Nama tingkat {n}",
+      "add": "Tambah tingkat",
+      "remove": "Hapus tingkat",
+      "removeTitle": "Hapus tingkat {name}?",
+      "removeDesc": "{n} opsinya ikut dihapus. Jawaban yang menggunakannya tetap menyimpan nilainya. | {n} opsinya ikut dihapus. Jawaban yang menggunakannya tetap menyimpan nilainya.",
+      "under": "Di bawah",
+      "anyAbove": "Semua {name}",
+      "pickAbove": "Pilih",
+      "above": "{name} tempatnya berada",
+      "underIt": "{n} di bawahnya",
+      "aboveFirst": "Tambahkan opsi ke {name} dulu, lalu yang berada di bawahnya di sini.",
+      "orphans": "{n} opsi belum punya induk di atasnya. Pilih tempatnya. | {n} opsi belum punya induk di atasnya. Pilih tempatnya.",
+      "unnamed": "Beri nama setiap tingkat."
     }
   }
 }

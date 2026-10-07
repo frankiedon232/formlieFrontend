@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "La connexion n'est pas autorisée depuis ce réseau.",
     "FRM-AUTH-1017": "Ce changement vous bloquerait l'accès. Vérifiez votre propre domaine et adresse e-mail.",
     "FRM-AUTH-1018": "Vous avez utilisé ce mot de passe récemment. Choisissez-en un autre.",
-    "FRM-FORM-1020": "Deux options ont la même valeur. Chaque valeur doit être différente."
+    "FRM-FORM-1020": "Deux options ont la même valeur. Chaque valeur doit être différente.",
+    "FRM-FORM-1021": "Une option n’a aucune option au-dessus. Choisissez où la placer."
   },
   "errorUi": {
     "reference": "Référence : {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "Le choix de l'espace de travail ({value})",
       "keep": "Jusqu'à ce que quelqu'un les supprime",
       "days": "{n} jour | {n} jours"
+    },
+    "level": {
+      "title": "Niveau",
+      "chain": "Niveaux de cette liste",
+      "filtered": "Niveau {n} sur {total} : s’ouvre avec ce qui se trouve sous le choix de {parent}, et reste fermé s’il n’y a rien.",
+      "top": "Niveau supérieur sur {total} : le choix ici ouvre le niveau suivant.",
+      "fromList": "Les options viennent de {name}.",
+      "deletedList": "une liste supprimée",
+      "several": "Autoriser plusieurs choix",
+      "severalHint": "Avec plusieurs choix, le niveau suivant propose ce qui se trouve sous l’un d’eux.",
+      "editList": "Modifier la liste"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Liste « {name} » supprimée"
     },
     "listChanged": "{name} a changé depuis le remplissage de ces options.",
-    "updateFromList": "Mettre à jour depuis la liste"
+    "updateFromList": "Mettre à jour depuis la liste",
+    "oneChoice": "Un choix",
+    "severalChoices": "Plusieurs choix",
+    "levels": "{n} niveaux",
+    "openInListOption": "Ouvrir dans Liste d’options"
   },
   "designer": {
     "crumb": "Design",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} ignorées (vides ou répétées)",
       "retired": "{n} options absentes seront retirées",
       "needLabel": "Choisissez la colonne qui contient les libellés.",
-      "apply": "Appliquer"
+      "apply": "Appliquer",
+      "pathsDesc": "Une ligne par chemin, une colonne par niveau ({chain}). Les lignes qui partagent un début sont fusionnées.",
+      "pathsSummary": "{rows} lignes : {added} nouvelles, {kept} déjà présentes",
+      "needTop": "Choisissez la colonne qui contient {name}."
     },
     "translations": {
       "none": "Vos formulaires utilisent une seule langue",
@@ -7222,6 +7241,28 @@
       "update": "Mettre à jour",
       "synced": "{n} formulaire mis à jour | {n} formulaires mis à jour",
       "publishHint": "{n} d’entre eux est publié : publiez-le pour afficher les nouvelles options. | {n} d’entre eux sont publiés : publiez-les pour afficher les nouvelles options."
+    },
+    "levels": {
+      "plain": "Un niveau",
+      "plainHint": "Une liste simple. Ajoutez des niveaux pour des choix qui se précisent, comme Pays, Région, Ville.",
+      "start": "Ajouter des niveaux",
+      "title": "{n} niveaux",
+      "hint": "Chaque option se place sous une option du niveau supérieur. Dans un formulaire, chaque niveau s’ouvre avec seulement ce qui se trouve sous le choix au-dessus.",
+      "chain": "Niveaux",
+      "nameN": "Niveau {n}",
+      "nameOf": "Nom du niveau {n}",
+      "add": "Ajouter un niveau",
+      "remove": "Supprimer le niveau",
+      "removeTitle": "Supprimer le niveau {name} ?",
+      "removeDesc": "Son option ({n}) est supprimée avec lui. Les réponses qui l’utilisaient gardent leur valeur. | Ses {n} options sont supprimées avec lui. Les réponses qui les utilisaient gardent leur valeur.",
+      "under": "Sous",
+      "anyAbove": "N’importe quel {name}",
+      "pickAbove": "Choisir",
+      "above": "{name} sous lequel elle se trouve",
+      "underIt": "{n} dessous",
+      "aboveFirst": "Ajoutez d’abord des options à {name}, puis celles qui se trouvent dessous ici.",
+      "orphans": "{n} option n’a encore rien au-dessus. Choisissez où la placer. | {n} options n’ont encore rien au-dessus. Choisissez où les placer.",
+      "unnamed": "Donnez un nom à chaque niveau."
     }
   }
 }

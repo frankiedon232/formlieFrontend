@@ -35,11 +35,14 @@ export const formFieldSchema = z.object({
     .optional(),
   validation: z.record(z.string(), z.unknown()).optional(),
   options: z
-    .array(z.object({ value: text(200), label: text(500), score: z.number().finite().optional() }))
-    .max(500)
+    .array(z.object({ value: text(200), label: text(500), score: z.number().finite().optional(), parent: text(200).optional() }))
+    .max(5000)
     .nullable()
     .optional(),
   option_set_id: z.string().nullable().optional(),
+  /** Lists with levels (F15 M2, shared/utils/forms/cascade.ts): this field's level (0 = top) and the field one level up. */
+  option_level: z.number().int().min(0).max(4).optional(),
+  option_parent: z.string().max(64).nullable().optional(),
   default: z.unknown().optional(),
   props: z.record(z.string(), z.unknown()).optional(),
 })

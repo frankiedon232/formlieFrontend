@@ -55,6 +55,7 @@ Format: `FRM-<DOMAIN>-<NNNN>`. Ranges: 1000–1999 client/validation, 5000–599
 | FRM-FORM-1013 | 409  | This folder still has forms. Move them to another folder first.   | INFO     |
 | FRM-FORM-1014 | 403  | System themes can’t be changed. Duplicate it to make your own.    | INFO     |
 | FRM-FORM-1020 | 422  | Two options share the same value. Each value must be different.  | INFO     |
+| FRM-FORM-1021 | 422  | An option has no option above it. Choose where it belongs.       | INFO     |
 | FRM-RESP-1001 | 422  | Submission is invalid.                                            | INFO     |
 | FRM-RESP-1002 | 400  | Verification failed. (captcha)                                    | WARNING  |
 | FRM-RESP-1003 | 409  | This form was already submitted from this session.                | WARNING  |

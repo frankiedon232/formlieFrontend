@@ -2,7 +2,7 @@
 
 The single place to see **what we are building, what is done and what is next**. Every phase lists every task. New work is added to the right phase (and to [New requests](#new-requests-log)) the moment it comes up.
 
-**Last updated:** 2026-10-07 (F15 M1 list manager)
+**Last updated:** 2026-10-07 (F15 M2 lists with levels)
 
 Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backend
 
@@ -25,7 +25,7 @@ Legend: ✅ done · 🟡 in progress · ⬜ not started · ⏸ waiting on backen
 | F12   | Data sources & databases                          | ✅     | 100% |
 | F13   | API service & integrations                        | ✅     | 100% (owner-tested 2026-10-06) |
 | F14   | Settings                                          | ✅     | 100% (M1 to M7 ✅; billing in F23) |
-| F15   | Option sets & payments                            | 🟡     | ~15% (M1 ✅) |
+| F15   | Option sets & payments                            | 🟡     | ~30% (M1, M2 ✅) |
 | F16   | Profile                                           | ⬜     | 0%   |
 | F17   | Users                                             | ⬜     | 0%   |
 | F18   | Analytics                                         | ✅     | 100% |
@@ -817,15 +817,15 @@ Every workspace sets up its own reference data here; the builder, field access a
 
 ### Option sets (reusable choice lists)
 
-**Plan (2026-10-07, milestones):** **M1** ✅ List manager (F15a: Option sets page in the list format, list editor with items, values, retire, reorder, bulk paste, CSV / Excel import with column mapping, translations, used in, update forms). **M2** Large lists and search as you type (F15b). **M3** Cascading lists (F15c). **M4** Details and auto-fill (F15d). **M5** Dynamic lists (F15e). **M6** Payments.
+**Plan (2026-10-07, milestones):** **M1** ✅ List manager (F15a: Option sets page in the list format, list editor with items, values, retire, reorder, bulk paste, CSV / Excel import with column mapping, translations, used in, update forms). **M2** ✅ Lists with levels (F15c, brought forward by the owner 2026-10-07). **M3** Large lists and search as you type (F15b). **M4** Details and auto-fill (F15d). **M5** Dynamic lists (F15e). **M6** Payments.
 
 Full plan: [docs/OPTION-LISTS.md](docs/OPTION-LISTS.md) (owner request 2026-10-02). Simple saved lists already exist (F7).
 
 - ✅ **F15a List manager:** Option sets page (locked list format), create, rename, duplicate, delete (asks first, says how many forms use it; forms keep their copies)
 - ✅ Items: add, edit, retire, bulk paste, import CSV / XLSX with column mapping and preview, reorder (drag + keyboard), values vs labels, scores, translations
 - ✅ "Used in" list of forms and fields, up-to-date marks, Update forms (drafts, with translations); the builder flags a changed list
-- ⬜ **F15b Large lists + autocomplete:** items on the server, "search as you type" field mode, paging
-- ⬜ **F15c Cascading lists (levels):** tree lists (e.g. State → City → Location, up to 5 levels), "Cascading choice" field group, child opens with the parent's items only, changing the parent clears children
+- ✅ **F15c Lists with levels (M2):** up to 5 named levels (Country → Region → City, Product → Category → Type → Brand); the editor edits one level at a time with the option above (searchable), a filter by it and "N under it" to go down; import by path (one column per level); the builder Lists tab shows plain or levels with the chain and adds one field per level as one choice or several; each level's settings show the chain and switch one / several; in the form a level opens only with what is under the choice above and stays closed (not required) when nothing matches; changing a choice clears what no longer fits; the server checks the same
+- ⬜ **F15b Large lists + autocomplete (M3):** items on the server, "search as you type" field mode, paging
 - ⬜ **F15d Details + auto-fill:** extra columns on items; choosing an item fills other fields (optionally read-only); columns usable in formulas and logic
 - ⬜ **F15e Dynamic lists:** live sources, another form's responses, a connected database (a saved read query from the F12 Query editor), a JSON URL, a refreshed CSV; refresh schedule and sync log
 - ⬜ Public option lookups for respondents (rate limited, published lists only); answers store value + label (+ path)
@@ -1141,6 +1141,7 @@ Owner requests added during development, and where they landed.
 | 2026-10-07 | Sign-in codes: no authenticator app; text messages optional, email is the standard | F14 M3 | ✅ |
 | 2026-10-07 | Form defaults: show a picture of the selected theme | F14 M5 | ✅ |
 | 2026-10-07 | Rename "Option sets" to "List Option" (menu, Settings navigator, page title; the address stays /option-sets) | F15 | ✅ |
+| 2026-10-07 | Lists with levels before search: list multi select; levels single or multi select (Country → State → City, Product → Category → Type → Brand), chosen in the form design; the Lists tab says plain or levels; each level shows only what matches the choice above and does not open when nothing matches | F15 M2 | ✅ |
 | 2026-10-06 | Menu "Docs & testing" renamed "API Documentation" (menu, page title, breadcrumbs and the guidance that points to it) | F13 | ✅ |
 | 2026-10-06 | Webhooks send a webhook token from Tokens & headers (new type For webhooks; Authorization: Bearer, Content-Type, Formalie-Key = delivery id), no separate secrets or signatures; clean FRM-RESP-1006 details | F13 | ✅ |
 | 2026-10-06 | API POST follows the form's duplicate rules (same answers 409 whatever the key; identity email same person 409, typo-close flagged); deleted responses no longer block re-sending | F13 | ✅ |
@@ -1370,3 +1371,4 @@ Owner requests added during development, and where they landed.
 | 2026-10-07 | F14 | M7 Address, domain and organisations: `addressStore` (subdomain change with 90-day redirect via the host resolver, own domain with CNAME / TXT and a real DNS check, verified domains resolve to the workspace), Settings → Address and domain; organisations (`organisationStore`, `/organisations` routes, archive / restore, form move), request scope (`core/scope.ts`, header `x-formalie-organisation`) narrowing every list, new forms in the chosen organisation, public pages with the form's organisation; Settings → Organisations in the list format, the rail switcher, the builder's Organisation setting. Checked in the browser: availability (taken / free), a real change to remedylegal-uk and back (still signed in, old address listed), a test domain with a DNS check (not found) then removed, a second organisation created, the switcher narrowing Forms to it (empty), Visitor sign-in moved there (public page shows its name) and back, the test organisation archived. F14 complete; stopped for review. |
 | 2026-10-07 | F14 | Owner feedback: "Powered by Formalie" on the workspace sign-in page, Branding preview and every email; own domain and short-link domain removed (Workspace address keeps the subdomain change); organisations, the rail switcher and the form setting removed; teams, locations and cost centres removed; sign-in codes without an authenticator app, text messages off by default; Form defaults show the chosen theme. Checked in the browser: sign-in page (Samath Tax, Remedy Legal) with the mark in the showcase and under the form, the settings menu, the theme picture changing with the choice, the email preview HTML with the Formalie mark. |
 | 2026-10-07 | F15 | M1 List manager: `/option-lists` paged rows, insights, detail, usage, sync (copies into drafts with translations), duplicate; FRM-FORM-1020 repeated values; Option sets page (chart cards, table / cards), list editor (Options with values, scores, retire, reorder by drag or keyboard, Paste / Import with column mapping and preview, Translations, Used in with Update); CSV / XLSX reader in the browser (`app/utils/files/table.ts`); builder takes active options only and flags a changed list. Checked in the browser: the page, Departments: paste (2 new, 1 updated), retire, values, save, Used in reporting the older form, Update (the form got the new options without the retired one), then put back (Sales offered, the two test options retired, form updated back to its original six); the Excel reader with a compressed workbook and the CSV parser; the Translations tab. |
+| 2026-10-07 | F15 | M2 Lists with levels: `OptionList.levels`, `OptionItem.level / parent` (FRM-FORM-1021 when an option has nothing above it), sample list Places (Country → Region → City); `shared/utils/forms/cascade.ts` (options under the choice above, closed levels, answers that no longer fit) used by the renderer and the submission check; fields `option_level` / `option_parent`; builder Lists tab (plain or levels, one choice / several), level settings (`InspectorLevel`); editor Levels card, per-level options with the option above, "N under it", import by path (`importPaths`); cards and rows show the chain. Checked in the browser: the Places editor (levels, Canada → Ontario, Quebec; Japan → Tokyo, Osaka), import dialog by path, a test form "Places test" with Country (one), Region (several), City: only Country shows at first, Canada opens Ontario and Quebec, both chosen give the cities of both, Japan clears Region and closes City. |

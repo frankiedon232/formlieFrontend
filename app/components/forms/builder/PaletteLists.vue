@@ -1,10 +1,12 @@
 <!--
-  "Lists" palette tab: reusable option lists (countries, regions, products …). Click or drag adds
-  a dropdown filled with the list; ⋯ adds it as radio buttons / checkboxes / multi-select, or
-  edits / deletes the list. "New list" creates one.
+  "Lists" palette tab: reusable option lists (countries, regions, products …), each marked plain or
+  with its levels (Country → Region → City). Click opens the ways to add it: one choice or several
+  (plain lists also as radio buttons / checkboxes); a list with levels becomes one linked field per
+  level, side by side, each narrowing the next. Dragging a plain list adds a dropdown. ⋯ edits /
+  deletes the list or opens it in List Option. "New list" creates one.
 -->
 <script setup lang="ts">
-import { offeredOptions } from '#shared/utils/forms/options'
+import { levelsOf, offeredOptions } from '#shared/utils/forms/options'
 import type { DropdownMenuItem } from '@nuxt/ui'
 import { VueDraggable } from 'vue-draggable-plus'
 import type { OptionList } from '#shared/types/forms'
@@ -29,7 +31,19 @@ function openEditor(list: OptionList | null) {
 }
 
 function add(list: OptionList, type: FieldType = 'dropdown') {
-  if (builder.place(builder.createFromList(list, type))) emit('added')
+  expanded.value = null
+  if (builder.placeRow(builder.createListFields(list, type))) emit('added')
+}
+// Click shows the ways to add a list (one choice, several …)
+const expanded = ref<string | null>(null)
+const ways = (list: OptionList): { type: FieldType; label: string; icon: string }[] => [
+  { type: 'dropdown', label: t('library.oneChoice'), icon: 'i-lucide-circle-dot' },
+  { type: 'multi_select', label: t('library.severalChoices'), icon: 'i-lucide-list-checks' },
+  ...(levelsOf(list) ? [] : [{ type: 'radio' as FieldType, label: t('builder.field.radio'), icon: fieldIcon('radio') }, { type: 'checkbox' as FieldType, label: t('builder.field.checkbox'), icon: fieldIcon('checkbox') }]),
+]
+const kindOf = (list: OptionList) => {
+  const levels = levelsOf(list)
+  return levels ? levels.map(level => level.label).join(' → ') : t('library.optionCount', { count: offeredOptions(list).length }, offeredOptions(list).length)
 }
 const drag = usePaletteDrag(() => emit('added'))
 const clone = (list: OptionList) => drag.track(builder.createFromList(list))
@@ -46,15 +60,10 @@ async function remove(list: OptionList) {
   }
 }
 
-const AS: FieldType[] = ['dropdown', 'radio', 'checkbox', 'multi_select']
 const menu = (list: OptionList): DropdownMenuItem[][] => [
-  AS.map(type => ({
-    label: t('library.addAs', { type: t(`builder.field.${type}`) }),
-    icon: fieldIcon(type),
-    onSelect: () => add(list, type),
-  })),
   [
-    { label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => openEditor(list) },
+    { label: t('library.editList'), icon: 'i-lucide-pencil', onSelect: () => (levelsOf(list) ? void navigateTo(`/option-sets/${list.id}`) : openEditor(list)) },
+    { label: t('library.openInListOption'), icon: 'i-lucide-external-link', onSelect: () => void navigateTo(`/option-sets/${list.id}`) },
     { label: t('library.deleteList'), icon: 'i-lucide-trash-2', color: 'error' as const, onSelect: () => void remove(list) },
   ],
 ]
@@ -94,21 +103,25 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
         <div
           v-for="list in items"
           :key="list.id"
-          class="flex items-center gap-1 rounded-md hover:bg-elevated/60"
-          :class="busyId === list.id ? 'pointer-events-none opacity-60' : ''"
+          class="flex flex-col rounded-md hover:bg-elevated/60"
+          :class="[busyId === list.id ? 'pointer-events-none opacity-60' : '', expanded === list.id ? 'bg-elevated/60' : '']"
         >
+          <div class="flex items-center gap-1">
           <UButton
-            icon="i-lucide-list"
+            :icon="levelsOf(list) ? 'i-lucide-network' : 'i-lucide-list'"
             color="neutral"
             variant="ghost"
             size="sm"
-            class="min-w-0 flex-1 cursor-grab justify-start gap-2 text-default active:cursor-grabbing"
+            class="min-w-0 flex-1 justify-start gap-2 text-default"
+            :class="levelsOf(list) ? '' : 'cursor-grab active:cursor-grabbing'"
+            :data-no-drag="levelsOf(list) ? '' : undefined"
+            :aria-expanded="expanded === list.id"
             :aria-label="t('library.addList', { name: list.name })"
-            @click="add(list)"
+            @click="expanded = expanded === list.id ? null : list.id"
           >
             <span class="flex min-w-0 flex-col items-start">
-              <span class="max-w-full truncate">{{ list.name }}</span>
-              <span class="text-xs font-normal text-muted">{{ t('library.optionCount', { count: offeredOptions(list).length }, offeredOptions(list).length) }}</span>
+              <span class="flex max-w-full items-center gap-1.5"><span class="truncate">{{ list.name }}</span><UBadge v-if="levelsOf(list)" :label="t('library.levels', { n: levelsOf(list)!.length })" color="neutral" variant="soft" size="sm" class="shrink-0" /></span>
+              <span class="max-w-full truncate text-xs font-normal text-muted">{{ kindOf(list) }}</span>
             </span>
           </UButton>
           <UDropdownMenu :items="menu(list)" :content="{ align: 'end' }">
@@ -123,6 +136,10 @@ const menu = (list: OptionList): DropdownMenuItem[][] => [
               :aria-label="t('library.listMenu', { name: list.name })"
             />
           </UDropdownMenu>
+          </div>
+          <div v-if="expanded === list.id" data-no-drag class="grid grid-cols-2 gap-1 px-1.5 pb-1.5">
+            <UButton v-for="way in ways(list)" :key="way.type" :label="way.label" :icon="way.icon" color="neutral" variant="outline" size="xs" class="justify-start" @click="add(list, way.type)" />
+          </div>
         </div>
       </VueDraggable>
     </div>

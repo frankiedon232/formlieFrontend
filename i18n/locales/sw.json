@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Kuingia hakuruhusiwi kutoka mtandao huu.",
     "FRM-AUTH-1017": "Mabadiliko haya yangekufungia nje. Angalia kikoa na anwani yako ya barua pepe.",
     "FRM-AUTH-1018": "Ulitumia nenosiri hili hivi karibuni. Chagua lingine.",
-    "FRM-FORM-1020": "Chaguo mbili zina thamani moja. Kila thamani lazima iwe tofauti."
+    "FRM-FORM-1020": "Chaguo mbili zina thamani moja. Kila thamani lazima iwe tofauti.",
+    "FRM-FORM-1021": "Chaguo moja halina chaguo juu yake. Chagua linapoenda."
   },
   "errorUi": {
     "reference": "Kumbukumbu: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "Chaguo la eneo la kazi ({value})",
       "keep": "Hadi mtu ayafute",
       "days": "Siku {n} | Siku {n}"
+    },
+    "level": {
+      "title": "Ngazi",
+      "chain": "Ngazi za orodha hii",
+      "filtered": "Ngazi ya {n} kati ya {total}: hufunguka na kilicho chini ya chaguo katika {parent}, na hubaki imefungwa kama hakuna chochote.",
+      "top": "Ngazi ya juu kati ya {total}: chaguo hapa hufungua ngazi inayofuata.",
+      "fromList": "Chaguo hutoka {name}.",
+      "deletedList": "orodha iliyofutwa",
+      "several": "Ruhusu chaguo kadhaa",
+      "severalHint": "Zikichaguliwa kadhaa, ngazi inayofuata hutoa kilicho chini ya yoyote kati yake.",
+      "editList": "Hariri orodha"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Orodha “{name}” imefutwa"
     },
     "listChanged": "{name} imebadilika tangu chaguo hizi zilipojazwa.",
-    "updateFromList": "Sasisha kutoka orodha"
+    "updateFromList": "Sasisha kutoka orodha",
+    "oneChoice": "Chaguo moja",
+    "severalChoices": "Chaguo kadhaa",
+    "levels": "Ngazi {n}",
+    "openInListOption": "Fungua katika Orodha ya Chaguo"
   },
   "designer": {
     "crumb": "Muundo",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} imerukwa (tupu au imerudiwa)",
       "retired": "Chaguo {n} ambazo hazimo zitasitishwa",
       "needLabel": "Chagua safu wima yenye lebo.",
-      "apply": "Tumia"
+      "apply": "Tumia",
+      "pathsDesc": "Safu mlalo moja kwa kila njia, safu wima moja kwa kila ngazi ({chain}). Safu mlalo zenye mwanzo mmoja huunganishwa.",
+      "pathsSummary": "Safu mlalo {rows}: {added} mpya, {kept} tayari zipo",
+      "needTop": "Chagua safu wima yenye {name}."
     },
     "translations": {
       "none": "Fomu zako zinatumia lugha moja",
@@ -7222,6 +7241,28 @@
       "update": "Sasisha",
       "synced": "Fomu {n} imesasishwa | Fomu {n} zimesasishwa",
       "publishHint": "{n} kati yake imechapishwa: ichapishe ili kuonyesha chaguo mpya. | {n} kati yake zimechapishwa: zichapishe ili kuonyesha chaguo mpya."
+    },
+    "levels": {
+      "plain": "Ngazi moja",
+      "plainHint": "Orodha ya kawaida. Ongeza ngazi kwa chaguo zinazopungua, kama Nchi, Mkoa, Jiji.",
+      "start": "Ongeza ngazi",
+      "title": "Ngazi {n}",
+      "hint": "Kila chaguo liko chini ya moja la ngazi ya juu. Kwenye fomu, kila ngazi hufunguka na kilicho chini ya chaguo la juu tu.",
+      "chain": "Ngazi",
+      "nameN": "Ngazi ya {n}",
+      "nameOf": "Jina la ngazi ya {n}",
+      "add": "Ongeza ngazi",
+      "remove": "Ondoa ngazi",
+      "removeTitle": "Ondoa ngazi ya {name}?",
+      "removeDesc": "Chaguo lake {n} huondolewa pamoja nayo. Majibu yaliyolitumia yanabaki na thamani yake. | Chaguo zake {n} huondolewa pamoja nayo. Majibu yaliyozitumia yanabaki na thamani yake.",
+      "under": "Chini ya",
+      "anyAbove": "{name} yoyote",
+      "pickAbove": "Chagua",
+      "above": "{name} ambayo liko chini yake",
+      "underIt": "{n} chini yake",
+      "aboveFirst": "Ongeza kwanza chaguo kwenye {name}, kisha zile za chini yake hapa.",
+      "orphans": "Chaguo {n} halina chochote juu yake bado. Chagua linapoenda. | Chaguo {n} hazina chochote juu yake bado. Chagua zinapoenda.",
+      "unnamed": "Patia kila ngazi jina."
     }
   }
 }

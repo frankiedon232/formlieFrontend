@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Logowanie z tej sieci jest niedozwolone.",
     "FRM-AUTH-1017": "Ta zmiana zablokowałaby Ci dostęp. Sprawdź własną domenę i adres e-mail.",
     "FRM-AUTH-1018": "Niedawno używasz tego hasła. Wybierz inne.",
-    "FRM-FORM-1020": "Dwie opcje mają tę samą wartość. Każda wartość musi być inna."
+    "FRM-FORM-1020": "Dwie opcje mają tę samą wartość. Każda wartość musi być inna.",
+    "FRM-FORM-1021": "Jedna opcja nie ma opcji nad sobą. Wybierz, gdzie należy."
   },
   "errorUi": {
     "reference": "Identyfikator: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "Wybór przestrzeni roboczej ({value})",
       "keep": "Dopóki ktoś ich nie usunie",
       "days": "{n} dzień | {n} dni"
+    },
+    "level": {
+      "title": "Poziom",
+      "chain": "Poziomy tej listy",
+      "filtered": "Poziom {n} z {total}: otwiera się z tym, co jest pod wyborem w {parent}, i pozostaje zamknięty, gdy nic tam nie ma.",
+      "top": "Najwyższy poziom z {total}: wybór tutaj otwiera następny poziom.",
+      "fromList": "Opcje pochodzą z {name}.",
+      "deletedList": "usunięta lista",
+      "several": "Zezwalaj na kilka wyborów",
+      "severalHint": "Przy kilku wyborach następny poziom pokazuje to, co jest pod którymkolwiek z nich.",
+      "editList": "Edytuj listę"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Usunięto listę „{name}”"
     },
     "listChanged": "Lista {name} zmieniła się od czasu wypełnienia tych opcji.",
-    "updateFromList": "Zaktualizuj z listy"
+    "updateFromList": "Zaktualizuj z listy",
+    "oneChoice": "Jeden wybór",
+    "severalChoices": "Kilka wyborów",
+    "levels": "Poziomy: {n}",
+    "openInListOption": "Otwórz w Liście opcji"
   },
   "designer": {
     "crumb": "Wygląd",
@@ -7200,7 +7216,10 @@
       "skipped": "Pominięto: {n} (puste lub powtórzone)",
       "retired": "Opcje, których w nim nie ma ({n}), zostaną wycofane",
       "needLabel": "Wybierz kolumnę z etykietami.",
-      "apply": "Zastosuj"
+      "apply": "Zastosuj",
+      "pathsDesc": "Jeden wiersz na ścieżkę, jedna kolumna na poziom ({chain}). Wiersze o wspólnym początku są scalane.",
+      "pathsSummary": "Wiersze: {rows}, nowe: {added}, już istniejące: {kept}",
+      "needTop": "Wybierz kolumnę z {name}."
     },
     "translations": {
       "none": "Twoje formularze używają jednego języka",
@@ -7222,6 +7241,28 @@
       "update": "Zaktualizuj",
       "synced": "Zaktualizowano {n} formularz | Zaktualizowano {n} formularzy",
       "publishHint": "{n} z nich jest opublikowany: opublikuj go, aby pokazać nowe opcje. | {n} z nich jest opublikowanych: opublikuj je, aby pokazać nowe opcje."
+    },
+    "levels": {
+      "plain": "Jeden poziom",
+      "plainHint": "Zwykła lista. Dodaj poziomy dla wyborów, które się zawężają, np. Kraj, Region, Miasto.",
+      "start": "Dodaj poziomy",
+      "title": "Poziomy: {n}",
+      "hint": "Każda opcja jest pod jedną z poziomu wyżej. W formularzu każdy poziom otwiera się tylko z tym, co jest pod wyborem wyżej.",
+      "chain": "Poziomy",
+      "nameN": "Poziom {n}",
+      "nameOf": "Nazwa poziomu {n}",
+      "add": "Dodaj poziom",
+      "remove": "Usuń poziom",
+      "removeTitle": "Usunąć poziom {name}?",
+      "removeDesc": "Jego {n} opcja zostanie usunięta razem z nim. Odpowiedzi, które jej użyły, zachowują wartość. | Jego opcje ({n}) zostaną usunięte razem z nim. Odpowiedzi, które ich użyły, zachowują wartość.",
+      "under": "Pod",
+      "anyAbove": "Dowolny element: {name}",
+      "pickAbove": "Wybierz",
+      "above": "{name}, pod którym się znajduje",
+      "underIt": "{n} pod nią",
+      "aboveFirst": "Najpierw dodaj opcje do {name}, a potem tutaj te, które są pod nimi.",
+      "orphans": "{n} opcja nie ma jeszcze nic nad sobą. Wybierz, gdzie należy. | Opcje bez niczego nad sobą: {n}. Wybierz, gdzie należą.",
+      "unnamed": "Nadaj nazwę każdemu poziomowi."
     }
   }
 }

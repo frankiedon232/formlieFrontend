@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Von diesem Netzwerk aus ist die Anmeldung nicht erlaubt.",
     "FRM-AUTH-1017": "Diese Änderung würde Sie aussperren. Prüfen Sie Ihre eigene E-Mail-Domain und -Adresse.",
     "FRM-AUTH-1018": "Sie haben dieses Passwort kürzlich verwendet. Wählen Sie ein anderes.",
-    "FRM-FORM-1020": "Zwei Optionen haben denselben Wert. Jeder Wert muss unterschiedlich sein."
+    "FRM-FORM-1020": "Zwei Optionen haben denselben Wert. Jeder Wert muss unterschiedlich sein.",
+    "FRM-FORM-1021": "Eine Option hat keine Option über sich. Wählen Sie, wohin sie gehört."
   },
   "errorUi": {
     "reference": "Referenz: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "Vorgabe des Arbeitsbereichs ({value})",
       "keep": "Bis jemand sie löscht",
       "days": "{n} Tag | {n} Tage"
+    },
+    "level": {
+      "title": "Ebene",
+      "chain": "Ebenen dieser Liste",
+      "filtered": "Ebene {n} von {total}: zeigt, was unter der Auswahl in {parent} liegt, und bleibt geschlossen, wenn nichts darunter liegt.",
+      "top": "Oberste Ebene von {total}: Die Auswahl hier öffnet die nächste Ebene.",
+      "fromList": "Die Optionen stammen aus {name}.",
+      "deletedList": "eine gelöschte Liste",
+      "several": "Mehrfachauswahl erlauben",
+      "severalHint": "Bei mehreren Auswahlen zeigt die nächste Ebene, was unter einer davon liegt.",
+      "editList": "Liste bearbeiten"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Liste „{name}“ gelöscht"
     },
     "listChanged": "{name} hat sich geändert, seit diese Optionen ausgefüllt wurden.",
-    "updateFromList": "Aus der Liste aktualisieren"
+    "updateFromList": "Aus der Liste aktualisieren",
+    "oneChoice": "Eine Auswahl",
+    "severalChoices": "Mehrere Auswahlmöglichkeiten",
+    "levels": "{n} Ebenen",
+    "openInListOption": "In Optionsliste öffnen"
   },
   "designer": {
     "crumb": "Design",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} übersprungen (leer oder wiederholt)",
       "retired": "{n} Optionen, die nicht enthalten sind, werden zurückgezogen",
       "needLabel": "Wählen Sie die Spalte mit den Beschriftungen.",
-      "apply": "Anwenden"
+      "apply": "Anwenden",
+      "pathsDesc": "Eine Zeile pro Pfad, eine Spalte pro Ebene ({chain}). Zeilen mit gleichem Anfang werden zusammengeführt.",
+      "pathsSummary": "{rows} Zeilen: {added} neu, {kept} bereits vorhanden",
+      "needTop": "Wählen Sie die Spalte mit {name}."
     },
     "translations": {
       "none": "Ihre Formulare verwenden eine Sprache",
@@ -7222,6 +7241,28 @@
       "update": "Aktualisieren",
       "synced": "{n} Formular aktualisiert | {n} Formulare aktualisiert",
       "publishHint": "{n} davon ist veröffentlicht: Veröffentlichen Sie es, um die neuen Optionen anzuzeigen. | {n} davon sind veröffentlicht: Veröffentlichen Sie sie, um die neuen Optionen anzuzeigen."
+    },
+    "levels": {
+      "plain": "Eine Ebene",
+      "plainHint": "Eine einfache Liste. Fügen Sie Ebenen für Auswahlen hinzu, die sich eingrenzen, etwa Land, Region, Stadt.",
+      "start": "Ebenen hinzufügen",
+      "title": "{n} Ebenen",
+      "hint": "Jede Option liegt unter einer Option der Ebene darüber. Im Formular zeigt jede Ebene nur, was unter der Auswahl darüber liegt.",
+      "chain": "Ebenen",
+      "nameN": "Ebene {n}",
+      "nameOf": "Name der Ebene {n}",
+      "add": "Ebene hinzufügen",
+      "remove": "Ebene entfernen",
+      "removeTitle": "Die Ebene {name} entfernen?",
+      "removeDesc": "Ihre {n} Option wird mit entfernt. Antworten, die sie verwendet haben, behalten ihren Wert. | Ihre {n} Optionen werden mit entfernt. Antworten, die sie verwendet haben, behalten ihren Wert.",
+      "under": "Unter",
+      "anyAbove": "Beliebige(s) {name}",
+      "pickAbove": "Auswählen",
+      "above": "{name}, unter dem sie liegt",
+      "underIt": "{n} darunter",
+      "aboveFirst": "Fügen Sie zuerst Optionen zu {name} hinzu, dann hier die darunter liegenden.",
+      "orphans": "{n} Option hat noch nichts über sich. Wählen Sie, wohin sie gehört. | {n} Optionen haben noch nichts über sich. Wählen Sie, wohin sie gehören.",
+      "unnamed": "Geben Sie jeder Ebene einen Namen."
     }
   }
 }

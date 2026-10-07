@@ -117,6 +117,7 @@ const rowActions = (row: OptionListRow): DropdownMenuItem[][] => [
             <span class="truncate font-medium text-highlighted">{{ row.original.name }}</span>
           </span>
           <span v-if="row.original.description" class="max-w-80 truncate text-xs text-muted">{{ row.original.description }}</span>
+          <span v-if="row.original.levels" class="flex max-w-80 items-center gap-1 text-xs text-default"><UIcon name="i-lucide-network" class="size-3 shrink-0 text-muted" /><span class="truncate">{{ row.original.levels.map((level: { label: string }) => level.label).join(' → ') }}</span></span>
         </div>
       </template>
       <template #items_count-cell="{ row }"><span class="text-muted tabular-nums">{{ t('optionSets.itemsCount', { n: number(row.original.items_count) }, row.original.items_count) }}<template v-if="row.original.retired_count"> · {{ t('optionSets.retiredCount', { n: row.original.retired_count }, row.original.retired_count) }}</template></span></template>

@@ -18,6 +18,7 @@ import { z } from 'zod'
 import type { FormSchemaV1 } from '#shared/utils/forms/schema'
 import type { OptionItem, OptionList, OptionListInsights, OptionListRow, OptionListUsage } from '#shared/types/forms'
 import { allFields } from '#shared/utils/forms/build'
+import { matchesList, offeredOptions } from '#shared/utils/forms/options'
 import { formLanguages, mainLanguage, textHash } from '#shared/utils/forms/translations'
 import { actorOf, recordAudit } from '../core/audit'
 import { requireAuth } from '../core/auth'
@@ -36,26 +37,36 @@ const item = z.object({
   score: z.number().finite().optional(),
   active: z.boolean().optional(),
   translations: z.record(z.string().max(10), z.string().max(500)).optional(),
+  level: z.number().int().min(0).max(4).optional(),
+  parent: z.string().trim().max(200).optional(),
 })
-const listBody = z.object({ name, description: z.string().trim().max(300).nullable().optional(), options: z.array(item).min(1).max(5000) })
+const level = z.object({ key: z.string().trim().min(1).max(40), label: z.string().trim().min(1).max(60) })
+const listBody = z.object({ name, description: z.string().trim().max(300).nullable().optional(), levels: z.array(level).max(5).optional(), options: z.array(item).min(1).max(20000) })
 
 const authorOf = (user: MockUser) => ({ id: user.id, name: `${user.first_name} ${user.last_name}`.trim() })
 const audit = (event: H3Event, tenant: MockTenant, user: MockUser, action: 'forms.list_created' | 'forms.list_updated' | 'forms.list_deleted' | 'forms.list_synced', list: { id: string; name: string }, extra: { changes?: { field: string; before: string | null; after: string | null }[]; metadata?: Record<string, string> } = {}) =>
   recordAudit(event, tenant, { action, actor: actorOf(user), resource: { type: 'option_list', id: list.id, name: list.name }, ...extra })
 
-/** Clean items: tidy translations, refuse repeated values. */
-function cleanOptions(options: OptionItem[]): OptionItem[] {
+/** Clean items: tidy translations, refuse repeated values; lists with levels: every option sits under one on the level above. */
+function cleanOptions(options: OptionItem[], levels: number): OptionItem[] {
   const seen = new Set<string>()
+  const byLevel = new Map<number, Set<string>>()
   for (const option of options) {
     const key = option.value.toLowerCase()
     if (seen.has(key)) throw new MockError('FRM-FORM-1020', [{ field: 'options', message: option.value }])
     seen.add(key)
+    const at = Math.min(option.level ?? 0, levels - 1)
+    if (!byLevel.has(at)) byLevel.set(at, new Set())
+    byLevel.get(at)!.add(option.value)
   }
   return options.map(option => {
+    const at = levels > 1 ? Math.min(option.level ?? 0, levels - 1) : 0
+    if (at > 0 && (!option.parent || !byLevel.get(at - 1)?.has(option.parent))) throw new MockError('FRM-FORM-1021', [{ field: 'options', message: option.label }])
     const translations = Object.fromEntries(Object.entries(option.translations ?? {}).filter(([, text]) => text.trim()))
-    return { value: option.value, label: option.label, ...(option.score !== undefined ? { score: option.score } : {}), ...(option.active === false ? { active: false } : {}), ...(Object.keys(translations).length ? { translations } : {}) }
+    return { value: option.value, label: option.label, ...(option.score !== undefined ? { score: option.score } : {}), ...(option.active === false ? { active: false } : {}), ...(Object.keys(translations).length ? { translations } : {}), ...(at > 0 ? { level: at, parent: option.parent } : {}) }
   })
 }
+const cleanLevels = (levels: { key: string; label: string }[] | undefined) => (levels && levels.length > 1 ? levels.map(item => ({ key: item.key, label: item.label })) : undefined)
 const assertName = (lists: OptionList[], value: string, except?: string) => {
   if (lists.some(list => list.id !== except && list.name.toLowerCase() === value.toLowerCase())) throw new MockError('FRM-FORM-1009', [{ field: 'name', message: 'taken' }])
 }
@@ -67,18 +78,13 @@ const findList = (tenant: MockTenant, id: string | undefined) => {
 
 // ── Where a list is used ─────────────────────────────────────────────────────────────
 
-const activeOptions = (list: OptionList) => list.options.filter(option => option.active !== false).map(({ value, label, score }) => ({ value, label, ...(score !== undefined ? { score } : {}) }))
-const sameOptions = (a: { value: string; label: string; score?: number }[] | null | undefined, b: { value: string; label: string; score?: number }[]) =>
-  !!a && a.length === b.length && a.every((option, i) => option.value === b[i]!.value && option.label === b[i]!.label && (option.score ?? null) === (b[i]!.score ?? null))
-
 function usageOf(tenant: MockTenant, list: OptionList): OptionListUsage[] {
-  const wanted = activeOptions(list)
   return formsOf(tenant)
     .forms.filter(form => !form.deleted_at)
     .flatMap(form => {
       const schema = form.schema ?? form.published_schema
       const fields = schema ? allFields(schema).filter(field => field.option_set_id === list.id) : []
-      return fields.length ? [{ form: { id: form.id, name: form.name, status: form.status }, fields: fields.map(field => ({ id: field.id, key: field.key, label: field.label?.trim() || field.key, in_sync: sameOptions(field.options, wanted) })) }] : []
+      return fields.length ? [{ form: { id: form.id, name: form.name, status: form.status }, fields: fields.map(field => ({ id: field.id, key: field.key, label: field.label?.trim() || field.key, in_sync: matchesList(field.options, list, field.option_level ?? 0) })) }] : []
     })
 }
 
@@ -141,7 +147,8 @@ export const createOptionList = defineMockRoute(({ event, body }) => {
   const store = libraryOf(tenant)
   assertName(store.lists, input.name)
   const now = new Date().toISOString()
-  const created: OptionList = { id: crypto.randomUUID(), name: input.name, description: input.description ?? null, options: cleanOptions(input.options), created_by: authorOf(user), created_at: now, updated_at: now }
+  const levels = cleanLevels(input.levels)
+  const created: OptionList = { id: crypto.randomUUID(), name: input.name, description: input.description ?? null, ...(levels ? { levels } : {}), options: cleanOptions(input.options, levels?.length ?? 1), created_by: authorOf(user), created_at: now, updated_at: now }
   store.lists.push(created)
   saveLibrary()
   audit(event, tenant, user, 'forms.list_created', created, { metadata: { options: String(created.options.length) } })
@@ -154,15 +161,19 @@ export const updateOptionList = defineMockRoute(({ event, body }) => {
   const store = libraryOf(tenant)
   const found = findList(tenant, getRouterParam(event, 'id'))
   if (input.name) assertName(store.lists, input.name, found.id)
-  const options = input.options ? cleanOptions(input.options) : undefined
+  const levels = input.levels !== undefined ? cleanLevels(input.levels) : found.levels
+  const options = input.options || input.levels !== undefined ? cleanOptions(input.options ?? found.options, levels?.length ?? 1) : undefined
   const retiredBefore = found.options.filter(option => option.active === false).length
-  const changes = [
+  const changes: { field: string; before: string | null; after: string | null }[] = [
     ...(input.name && input.name !== found.name ? [{ field: 'name', before: found.name, after: input.name }] : []),
     ...(input.description !== undefined && (input.description ?? null) !== (found.description ?? null) ? [{ field: 'description', before: found.description ?? null, after: input.description ?? null }] : []),
     ...(options && options.length !== found.options.length ? [{ field: 'options', before: String(found.options.length), after: String(options.length) }] : []),
     ...(options && options.filter(option => option.active === false).length !== retiredBefore ? [{ field: 'retired', before: String(retiredBefore), after: String(options.filter(option => option.active === false).length) }] : []),
   ]
+  if ((levels?.length ?? 1) !== (found.levels?.length ?? 1)) changes.push({ field: 'levels', before: String(found.levels?.length ?? 1), after: String(levels?.length ?? 1) })
   Object.assign(found, { ...(input.name ? { name: input.name } : {}), ...(input.description !== undefined ? { description: input.description ?? null } : {}), ...(options ? { options } : {}), updated_at: new Date().toISOString() })
+  if (levels) found.levels = levels
+  else delete found.levels
   saveLibrary()
   audit(event, tenant, user, 'forms.list_updated', found, { changes })
   return ok(rowOf(tenant, found, allLanguages(tenant)))
@@ -187,14 +198,14 @@ export const optionListUsage = defineMockRoute(({ event }) => {
 
 /** Copies the list into a draft: options of every linked field, and label translations for the languages the form offers. */
 function syncSchema(schema: FormSchemaV1, list: OptionList): number {
-  const options = activeOptions(list)
   const languages = formLanguages(schema).filter(code => code !== mainLanguage(schema))
   let changed = 0
   for (const field of allFields(schema).filter(item => item.option_set_id === list.id)) {
-    if (!sameOptions(field.options, options)) changed++
-    field.options = structuredClone(options)
+    const level = field.option_level ?? 0
+    if (!matchesList(field.options, list, level)) changed++
+    field.options = offeredOptions(list, level)
     for (const language of languages)
-      for (const option of list.options.filter(item => item.active !== false && item.translations?.[language])) {
+      for (const option of list.options.filter(item => item.active !== false && (item.level ?? 0) === level && item.translations?.[language])) {
         const key = `field.${field.id}.option.${option.value}`
         schema.translations = { ...schema.translations, [language]: { ...schema.translations?.[language], [key]: option.translations![language]! } }
         schema.translated_from = { ...schema.translated_from, [language]: { ...schema.translated_from?.[language], [key]: textHash(option.label) } }

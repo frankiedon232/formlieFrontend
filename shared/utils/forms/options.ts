@@ -31,12 +31,28 @@ export const repeatedValues = (values: string[]) => {
   return repeated
 }
 
-/** What a field gets from a list: its active options, value / label / score only (translations travel separately). */
-export const offeredOptions = (list: { options: { value: string; label: string; score?: number; active?: boolean }[] }) =>
-  list.options.filter(option => option.active !== false).map(({ value, label, score }) => ({ value, label, ...(score !== undefined ? { score } : {}) }))
+type ListLike = { levels?: { key: string; label: string }[]; options: { value: string; label: string; score?: number; active?: boolean; level?: number; parent?: string }[] }
 
-/** A field's options still match its list (same values, labels and scores, same order). */
-export const matchesList = (options: { value: string; label: string; score?: number }[] | null | undefined, list: Parameters<typeof offeredOptions>[0]) => {
-  const wanted = offeredOptions(list)
-  return !!options && options.length === wanted.length && options.every((option, i) => option.value === wanted[i]!.value && option.label === wanted[i]!.label && (option.score ?? null) === (wanted[i]!.score ?? null))
+/** The named levels of a list with levels (two or more), else null for a plain list. */
+export const levelsOf = (list: Pick<ListLike, 'levels'>) => (list.levels && list.levels.length > 1 ? list.levels : null)
+
+/** Options offered at a level: active ones whose whole path above is active too. */
+function offeredAt(list: ListLike, level: number) {
+  let open = new Set<string | undefined>([undefined])
+  let result: ListLike['options'] = []
+  for (let at = 0; at <= level; at++) {
+    result = list.options.filter(option => (option.level ?? 0) === at && option.active !== false && (at === 0 || open.has(option.parent)))
+    open = new Set(result.map(option => option.value))
+  }
+  return result
+}
+
+/** What a level field gets from a list (level 0 for plain lists): value / label / score, and the option it sits under. */
+export const offeredOptions = (list: ListLike, level = 0) =>
+  offeredAt(list, level).map(({ value, label, score, parent }) => ({ value, label, ...(score !== undefined ? { score } : {}), ...(level > 0 && parent !== undefined ? { parent } : {}) }))
+
+/** A field's options still match its list at its level (same values, labels, scores and parents, same order). */
+export const matchesList = (options: { value: string; label: string; score?: number; parent?: string }[] | null | undefined, list: ListLike, level = 0) => {
+  const wanted = offeredOptions(list, level)
+  return !!options && options.length === wanted.length && options.every((option, i) => option.value === wanted[i]!.value && option.label === wanted[i]!.label && (option.score ?? null) === (wanted[i]!.score ?? null) && (option.parent ?? null) === ((wanted[i] as { parent?: string }).parent ?? null))
 }

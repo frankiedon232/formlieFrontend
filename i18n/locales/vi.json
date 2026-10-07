@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Không cho phép đăng nhập từ mạng này.",
     "FRM-AUTH-1017": "Thay đổi này sẽ khóa bạn ở ngoài. Hãy kiểm tra tên miền và địa chỉ email của chính bạn.",
     "FRM-AUTH-1018": "Bạn đã dùng mật khẩu này gần đây. Hãy chọn mật khẩu khác.",
-    "FRM-FORM-1020": "Hai tùy chọn có cùng giá trị. Mỗi giá trị phải khác nhau."
+    "FRM-FORM-1020": "Hai tùy chọn có cùng giá trị. Mỗi giá trị phải khác nhau.",
+    "FRM-FORM-1021": "Có tùy chọn không có tùy chọn nào ở trên. Hãy chọn nơi nó thuộc về."
   },
   "errorUi": {
     "reference": "Mã tham chiếu: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "Lựa chọn của không gian làm việc ({value})",
       "keep": "Cho đến khi có người xóa",
       "days": "{n} ngày | {n} ngày"
+    },
+    "level": {
+      "title": "Cấp",
+      "chain": "Các cấp của danh sách này",
+      "filtered": "Cấp {n} trên {total}: mở ra với những gì nằm dưới lựa chọn trong {parent}, và giữ đóng khi không có gì.",
+      "top": "Cấp cao nhất trong {total}: lựa chọn ở đây mở cấp tiếp theo.",
+      "fromList": "Các tùy chọn lấy từ {name}.",
+      "deletedList": "một danh sách đã xóa",
+      "several": "Cho phép nhiều lựa chọn",
+      "severalHint": "Khi chọn nhiều, cấp tiếp theo hiển thị những gì nằm dưới bất kỳ lựa chọn nào trong số đó.",
+      "editList": "Chỉnh sửa danh sách"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Đã xóa danh sách “{name}”"
     },
     "listChanged": "{name} đã thay đổi kể từ khi các tùy chọn này được điền.",
-    "updateFromList": "Cập nhật từ danh sách"
+    "updateFromList": "Cập nhật từ danh sách",
+    "oneChoice": "Một lựa chọn",
+    "severalChoices": "Nhiều lựa chọn",
+    "levels": "{n} cấp",
+    "openInListOption": "Mở trong Danh sách tùy chọn"
   },
   "designer": {
     "crumb": "Thiết kế",
@@ -7200,7 +7216,10 @@
       "skipped": "Đã bỏ qua {n} (trống hoặc lặp)",
       "retired": "{n} tùy chọn không có trong đó sẽ bị ngừng",
       "needLabel": "Hãy chọn cột chứa các nhãn.",
-      "apply": "Áp dụng"
+      "apply": "Áp dụng",
+      "pathsDesc": "Một hàng cho mỗi đường dẫn, một cột cho mỗi cấp ({chain}). Các hàng có phần đầu giống nhau được gộp lại.",
+      "pathsSummary": "{rows} hàng: {added} mới, {kept} đã có",
+      "needTop": "Chọn cột chứa {name}."
     },
     "translations": {
       "none": "Biểu mẫu của bạn dùng một ngôn ngữ",
@@ -7222,6 +7241,28 @@
       "update": "Cập nhật",
       "synced": "Đã cập nhật {n} biểu mẫu | Đã cập nhật {n} biểu mẫu",
       "publishHint": "{n} trong số đó đã được xuất bản: hãy xuất bản để hiển thị các tùy chọn mới. | {n} trong số đó đã được xuất bản: hãy xuất bản để hiển thị các tùy chọn mới."
+    },
+    "levels": {
+      "plain": "Một cấp",
+      "plainHint": "Một danh sách thường. Thêm cấp cho các lựa chọn thu hẹp dần, như Quốc gia, Khu vực, Thành phố.",
+      "start": "Thêm cấp",
+      "title": "{n} cấp",
+      "hint": "Mỗi tùy chọn nằm dưới một tùy chọn ở cấp trên. Trong biểu mẫu, mỗi cấp chỉ mở ra với những gì nằm dưới lựa chọn ở trên.",
+      "chain": "Các cấp",
+      "nameN": "Cấp {n}",
+      "nameOf": "Tên của cấp {n}",
+      "add": "Thêm cấp",
+      "remove": "Xóa cấp",
+      "removeTitle": "Xóa cấp {name}?",
+      "removeDesc": "{n} tùy chọn của cấp này cũng bị xóa theo. Các câu trả lời đã dùng chúng vẫn giữ giá trị. | {n} tùy chọn của cấp này cũng bị xóa theo. Các câu trả lời đã dùng chúng vẫn giữ giá trị.",
+      "under": "Thuộc",
+      "anyAbove": "Bất kỳ {name}",
+      "pickAbove": "Chọn",
+      "above": "{name} mà nó thuộc về",
+      "underIt": "{n} bên dưới",
+      "aboveFirst": "Hãy thêm tùy chọn vào {name} trước, rồi thêm những tùy chọn nằm dưới chúng ở đây.",
+      "orphans": "{n} tùy chọn chưa có gì ở trên. Hãy chọn nơi nó thuộc về. | {n} tùy chọn chưa có gì ở trên. Hãy chọn nơi chúng thuộc về.",
+      "unnamed": "Hãy đặt tên cho mọi cấp."
     }
   }
 }

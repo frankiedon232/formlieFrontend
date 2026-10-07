@@ -103,7 +103,8 @@ const prefillExample = computed(() => `?${String(p.value.prefill_param || props.
 
     <FormsBuilderInspectorAudience v-if="hasAccess" :field="field" />
 
-    <FormsBuilderInspectorOptions v-if="has('options') || has('matrix_rows')" :field="field" />
+    <FormsBuilderInspectorLevel v-if="field.option_level !== undefined && field.option_set_id" :field="field" />
+    <FormsBuilderInspectorOptions v-else-if="has('options') || has('matrix_rows')" :field="field" />
 
     <FormsBuilderInspectorRules
       v-if="has('length') || has('range') || has('pattern') || has('files') || has('selection_count')"

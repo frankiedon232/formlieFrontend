@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Bu ağdan oturum açmaya izin verilmiyor.",
     "FRM-AUTH-1017": "Bu değişiklik sizi dışarıda bırakır. Kendi e-posta alan adınızı ve adresinizi kontrol edin.",
     "FRM-AUTH-1018": "Bu parolayı yakın zamanda kullandınız. Başka bir parola seçin.",
-    "FRM-FORM-1020": "İki seçenek aynı değere sahip. Her değer farklı olmalı."
+    "FRM-FORM-1020": "İki seçenek aynı değere sahip. Her değer farklı olmalı.",
+    "FRM-FORM-1021": "Bir seçeneğin üstünde seçenek yok. Nereye ait olduğunu seçin."
   },
   "errorUi": {
     "reference": "Referans: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "Çalışma alanının seçimi ({value})",
       "keep": "Biri silene kadar",
       "days": "{n} gün | {n} gün"
+    },
+    "level": {
+      "title": "Düzey",
+      "chain": "Bu listenin düzeyleri",
+      "filtered": "{total} düzeyden {n}. düzey: {parent} içindeki seçimin altındakilerle açılır, altında hiçbir şey yoksa kapalı kalır.",
+      "top": "{total} düzeyin en üst düzeyi: buradaki seçim sonraki düzeyi açar.",
+      "fromList": "Seçenekler {name} listesinden gelir.",
+      "deletedList": "silinmiş bir liste",
+      "several": "Birden çok seçime izin ver",
+      "severalHint": "Birden çok seçildiğinde sonraki düzey, bunlardan herhangi birinin altındakileri sunar.",
+      "editList": "Listeyi düzenle"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "“{name}” listesi silindi"
     },
     "listChanged": "Bu seçenekler doldurulduktan sonra {name} değişti.",
-    "updateFromList": "Listeden güncelle"
+    "updateFromList": "Listeden güncelle",
+    "oneChoice": "Tek seçim",
+    "severalChoices": "Birden çok seçim",
+    "levels": "{n} düzey",
+    "openInListOption": "Seçenek Listesi’nde aç"
   },
   "designer": {
     "crumb": "Tasarım",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} atlandı (boş veya tekrar eden)",
       "retired": "İçinde olmayan {n} seçenek kaldırılacak",
       "needLabel": "Etiketleri içeren sütunu seçin.",
-      "apply": "Uygula"
+      "apply": "Uygula",
+      "pathsDesc": "Her yol için bir satır, her düzey için bir sütun ({chain}). Başlangıcı aynı olan satırlar birleştirilir.",
+      "pathsSummary": "{rows} satır: {added} yeni, {kept} zaten var",
+      "needTop": "{name} içeren sütunu seçin."
     },
     "translations": {
       "none": "Formlarınız tek dil kullanıyor",
@@ -7222,6 +7241,28 @@
       "update": "Güncelle",
       "synced": "{n} form güncellendi | {n} form güncellendi",
       "publishHint": "Bunların {n} tanesi yayında: yeni seçenekleri göstermek için yayınlayın. | Bunların {n} tanesi yayında: yeni seçenekleri göstermek için yayınlayın."
+    },
+    "levels": {
+      "plain": "Tek düzey",
+      "plainHint": "Düz bir liste. Ülke, Bölge, Şehir gibi daralan seçimler için düzey ekleyin.",
+      "start": "Düzey ekle",
+      "title": "{n} düzey",
+      "hint": "Her seçenek bir üst düzeydeki bir seçeneğin altında yer alır. Formda her düzey yalnızca yukarıdaki seçimin altındakilerle açılır.",
+      "chain": "Düzeyler",
+      "nameN": "Düzey {n}",
+      "nameOf": "Düzey {n} adı",
+      "add": "Düzey ekle",
+      "remove": "Düzeyi kaldır",
+      "removeTitle": "{name} düzeyi kaldırılsın mı?",
+      "removeDesc": "{n} seçeneği de onunla birlikte kaldırılır. Onu kullanan yanıtlar değerini korur. | {n} seçeneği de onunla birlikte kaldırılır. Onları kullanan yanıtlar değerini korur.",
+      "under": "Altında",
+      "anyAbove": "Herhangi bir {name}",
+      "pickAbove": "Seçin",
+      "above": "Altında yer aldığı {name}",
+      "underIt": "Altında {n} var",
+      "aboveFirst": "Önce {name} listesine seçenek ekleyin, ardından altındakileri burada ekleyin.",
+      "orphans": "{n} seçeneğin henüz üstünde bir şey yok. Nereye ait olduğunu seçin. | {n} seçeneğin henüz üstünde bir şey yok. Nereye ait olduklarını seçin.",
+      "unnamed": "Her düzeye bir ad verin."
     }
   }
 }

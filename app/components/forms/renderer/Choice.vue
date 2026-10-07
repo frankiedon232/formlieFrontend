@@ -1,6 +1,7 @@
-<!-- Dropdown, multi-select, radio, checkboxes and toggle. Options come from the field (option sets in F15). -->
+<!-- Dropdown, multi-select, radio, checkboxes and toggle. Options come from the field; a level of a list with levels shows only what is under the choice above (F15 M2). -->
 <script setup lang="ts">
 import { isLocked, type FormField } from '#shared/utils/forms/build'
+import { cascadeOptions } from '#shared/utils/forms/cascade'
 
 const props = defineProps<{ id: string; field: FormField; mode: 'builder' | 'live' }>()
 const value = defineModel<unknown>()
@@ -8,8 +9,10 @@ const { t } = useI18n()
 // Size and style follow the form theme (F8); plain defaults elsewhere.
 const control = useControlStyle()
 
+// A level of a list with levels offers only what sits under the choice above (F15 M2)
+const live = inject(RENDERER_ANSWERS, null)
 const items = computed(() =>
-  (props.field.options ?? []).map(option => ({ value: option.value, label: option.label })),
+  (props.mode === 'live' && live && props.field.option_parent ? cascadeOptions(props.field, live.fieldsById.value, live.answers.value) : (props.field.options ?? [])).map(option => ({ value: option.value, label: option.label })),
 )
 const one = computed({
   get: () => (typeof value.value === 'string' ? value.value : undefined),

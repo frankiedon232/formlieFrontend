@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "Sign-in isn't allowed from this network.",
     "FRM-AUTH-1017": "This change would lock you out. Check your own email domain and address.",
     "FRM-AUTH-1018": "You used this password recently. Choose another one.",
-    "FRM-FORM-1020": "Two options share the same value. Each value must be different."
+    "FRM-FORM-1020": "Two options share the same value. Each value must be different.",
+    "FRM-FORM-1021": "An option has no option above it. Choose where it belongs."
   },
   "errorUi": {
     "reference": "Reference: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "The workspace's choice ({value})",
       "keep": "Until someone deletes them",
       "days": "{n} day | {n} days"
+    },
+    "level": {
+      "title": "Level",
+      "chain": "Levels of this list",
+      "filtered": "Level {n} of {total}: opens with what is under the choice in {parent}, and stays closed when nothing is.",
+      "top": "Top level of {total}: the choice here opens the next level.",
+      "fromList": "Options come from {name}.",
+      "deletedList": "a deleted list",
+      "several": "Allow several choices",
+      "severalHint": "With several chosen, the next level offers what is under any of them.",
+      "editList": "Edit the list"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "List “{name}” deleted"
     },
     "listChanged": "{name} changed since these options were filled in.",
-    "updateFromList": "Update from the list"
+    "updateFromList": "Update from the list",
+    "oneChoice": "One choice",
+    "severalChoices": "Several choices",
+    "levels": "{n} levels",
+    "openInListOption": "Open in List Option"
   },
   "designer": {
     "crumb": "Design",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} skipped (empty or repeated)",
       "retired": "{n} options not in it will be retired",
       "needLabel": "Choose the column that holds the labels.",
-      "apply": "Apply"
+      "apply": "Apply",
+      "pathsDesc": "One row per path, one column per level ({chain}). Rows that share a start are merged.",
+      "pathsSummary": "{rows} rows: {added} new, {kept} already there",
+      "needTop": "Choose the column that holds {name}."
     },
     "translations": {
       "none": "Your forms use one language",
@@ -7222,6 +7241,28 @@
       "update": "Update",
       "synced": "{n} form updated | {n} forms updated",
       "publishHint": "{n} of them is published: publish it to show the new options. | {n} of them are published: publish them to show the new options."
+    },
+    "levels": {
+      "plain": "One level",
+      "plainHint": "A plain list. Add levels for choices that narrow down, such as Country, Region, City.",
+      "start": "Add levels",
+      "title": "{n} levels",
+      "hint": "Each option sits under one on the level above. In a form, each level opens with only what is under the choice above.",
+      "chain": "Levels",
+      "nameN": "Level {n}",
+      "nameOf": "Name of level {n}",
+      "add": "Add level",
+      "remove": "Remove level",
+      "removeTitle": "Remove the level {name}?",
+      "removeDesc": "Its {n} option is removed with it. Answers that used it keep their value. | Its {n} options are removed with it. Answers that used them keep their value.",
+      "under": "Under",
+      "anyAbove": "Any {name}",
+      "pickAbove": "Choose",
+      "above": "{name} it sits under",
+      "underIt": "{n} under it",
+      "aboveFirst": "Add options to {name} first, then the ones under them here.",
+      "orphans": "{n} option has nothing above it yet. Choose where it belongs. | {n} options have nothing above them yet. Choose where they belong.",
+      "unnamed": "Give every level a name."
     }
   }
 }

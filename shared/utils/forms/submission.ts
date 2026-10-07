@@ -10,6 +10,7 @@
  */
 import { allFields, cannotBeRequired, isLocked, type FormField } from './build'
 import { isInputField } from './fields'
+import { cascadeClosed, fitAnswer } from './cascade'
 import { calculateResult } from './formula'
 import { END_OF_FORM, evaluateLogic, type LogicState } from './logic'
 import type { FormSchemaV1 } from './schema'
@@ -69,13 +70,23 @@ export interface SubmissionIssue extends ValidationIssue {
 
 /** Every problem with a submission (empty when it can be stored) and the answers to store. */
 export function checkSubmission(schema: FormSchemaV1, input: Record<string, unknown>): { issues: SubmissionIssue[]; answers: Record<string, unknown> } {
-  const answers = settleAnswers(schema, input)
+  const settled = settleAnswers(schema, input)
+  // Lists with levels: a level only counts when it has something under the choice above (F15 M2)
+  const byId = new Map(allFields(schema).map(item => [item.id, item]))
+  const dropped = new Set<string>()
+  for (const field of byId.values()) {
+    if (!field.option_parent) continue
+    const fitted = fitAnswer(field, byId, settled)
+    if (fitted === undefined) dropped.add(field.key)
+    settled[field.key] = fitted
+  }
+  const answers = Object.fromEntries(Object.entries(settled).filter(([key]) => !dropped.has(key)))
   const logic = evaluateLogic(schema, answers)
   const issues: SubmissionIssue[] = []
   for (const index of pathPages(schema, logic))
     for (const row of schema.pages[index]!.rows)
       for (const raw of row.fields as FormField[]) {
-        if (logic.hidden.has(raw.id)) continue
+        if (logic.hidden.has(raw.id) || cascadeClosed(raw, byId, answers)) continue
         const field = effectiveField(raw, logic)
         if (!isInputField(field.type) || field.type === 'hidden' || field.type === 'calculated' || isLocked(field)) continue
         const issue = validateAnswer(field, answers[field.key], !!field.required)

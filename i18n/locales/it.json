@@ -609,7 +609,8 @@
     "FRM-AUTH-1016": "L'accesso non è consentito da questa rete.",
     "FRM-AUTH-1017": "Questa modifica ti bloccherebbe l'accesso. Controlla il tuo dominio e il tuo indirizzo email.",
     "FRM-AUTH-1018": "Hai usato questa password di recente. Scegline un'altra.",
-    "FRM-FORM-1020": "Due opzioni hanno lo stesso valore. Ogni valore deve essere diverso."
+    "FRM-FORM-1020": "Due opzioni hanno lo stesso valore. Ogni valore deve essere diverso.",
+    "FRM-FORM-1021": "Un’opzione non ha nessuna opzione sopra. Scegli dove va."
   },
   "errorUi": {
     "reference": "Riferimento: {id}",
@@ -2303,6 +2304,17 @@
       "workspaceIs": "La scelta dello spazio di lavoro ({value})",
       "keep": "Finché qualcuno non le elimina",
       "days": "{n} giorno | {n} giorni"
+    },
+    "level": {
+      "title": "Livello",
+      "chain": "Livelli di questo elenco",
+      "filtered": "Livello {n} di {total}: si apre con ciò che sta sotto la scelta in {parent} e resta chiuso se non c’è nulla.",
+      "top": "Livello superiore di {total}: la scelta qui apre il livello successivo.",
+      "fromList": "Le opzioni provengono da {name}.",
+      "deletedList": "un elenco eliminato",
+      "several": "Consenti più scelte",
+      "severalHint": "Con più scelte, il livello successivo offre ciò che sta sotto una qualsiasi di esse.",
+      "editList": "Modifica l’elenco"
     }
   },
   "renderer": {
@@ -2790,7 +2802,11 @@
       "listDeleted": "Elenco “{name}” eliminato"
     },
     "listChanged": "{name} è cambiato da quando queste opzioni sono state compilate.",
-    "updateFromList": "Aggiorna dall’elenco"
+    "updateFromList": "Aggiorna dall’elenco",
+    "oneChoice": "Una scelta",
+    "severalChoices": "Più scelte",
+    "levels": "{n} livelli",
+    "openInListOption": "Apri in Elenco opzioni"
   },
   "designer": {
     "crumb": "Design",
@@ -7200,7 +7216,10 @@
       "skipped": "{n} saltate (vuote o ripetute)",
       "retired": "{n} opzioni non presenti verranno ritirate",
       "needLabel": "Scegli la colonna che contiene le etichette.",
-      "apply": "Applica"
+      "apply": "Applica",
+      "pathsDesc": "Una riga per percorso, una colonna per livello ({chain}). Le righe con lo stesso inizio vengono unite.",
+      "pathsSummary": "{rows} righe: {added} nuove, {kept} già presenti",
+      "needTop": "Scegli la colonna che contiene {name}."
     },
     "translations": {
       "none": "I tuoi moduli usano una sola lingua",
@@ -7222,6 +7241,28 @@
       "update": "Aggiorna",
       "synced": "{n} modulo aggiornato | {n} moduli aggiornati",
       "publishHint": "{n} di essi è pubblicato: pubblicalo per mostrare le nuove opzioni. | {n} di essi sono pubblicati: pubblicali per mostrare le nuove opzioni."
+    },
+    "levels": {
+      "plain": "Un livello",
+      "plainHint": "Un elenco semplice. Aggiungi livelli per scelte che si restringono, come Paese, Regione, Città.",
+      "start": "Aggiungi livelli",
+      "title": "{n} livelli",
+      "hint": "Ogni opzione sta sotto una del livello superiore. In un modulo, ogni livello si apre solo con ciò che sta sotto la scelta sopra.",
+      "chain": "Livelli",
+      "nameN": "Livello {n}",
+      "nameOf": "Nome del livello {n}",
+      "add": "Aggiungi livello",
+      "remove": "Rimuovi livello",
+      "removeTitle": "Rimuovere il livello {name}?",
+      "removeDesc": "La sua {n} opzione viene rimossa con esso. Le risposte che la usavano mantengono il valore. | Le sue {n} opzioni vengono rimosse con esso. Le risposte che le usavano mantengono il valore.",
+      "under": "Sotto",
+      "anyAbove": "Qualsiasi {name}",
+      "pickAbove": "Scegli",
+      "above": "{name} sotto cui si trova",
+      "underIt": "{n} sotto di essa",
+      "aboveFirst": "Aggiungi prima le opzioni a {name}, poi qui quelle che stanno sotto.",
+      "orphans": "{n} opzione non ha ancora nulla sopra. Scegli dove va. | {n} opzioni non hanno ancora nulla sopra. Scegli dove vanno.",
+      "unnamed": "Dai un nome a ogni livello."
     }
   }
 }

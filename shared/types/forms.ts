@@ -229,12 +229,23 @@ export interface OptionItem {
   active?: boolean
   /** The label per language (forms that offer it get it when updated from the list). */
   translations?: Record<string, string>
+  /** Lists with levels (F15 M2): the level (0 = top, missing = 0) and the value of the option it sits under. */
+  level?: number
+  parent?: string
+}
+
+/** A level of a list with levels, e.g. Country → State → City. */
+export interface OptionLevel {
+  key: string
+  label: string
 }
 
 export interface OptionList {
   id: string
   name: string
   description?: string | null
+  /** Two to five named levels for a list with levels; missing or one = a plain list. */
+  levels?: OptionLevel[]
   options: OptionItem[]
   created_by: { id: string; name: string }
   created_at: string

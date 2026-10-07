@@ -3,14 +3,15 @@
   column is mapped to label, value, score or a language (guessed from the header); a preview says what
   will be added and updated. "Add and update" keeps the rest; "Replace" makes the list match the file
   (options missing from it are retired, never deleted, so old answers keep reading). Nothing changes
-  until Apply, and the list still needs Save.
+  until Apply, and the list still needs Save. Lists with levels (F15 M2): each column is a level and
+  every row a path (Country, Region, City); see importPaths.
 -->
 <script setup lang="ts">
-import type { OptionItem } from '#shared/types/forms'
+import type { OptionItem, OptionLevel } from '#shared/types/forms'
 import { APP_LOCALES } from '#shared/utils/i18n/locales'
 import { uniqueValue, valueFromLabel } from '#shared/utils/forms/options'
 
-const props = defineProps<{ source: 'paste' | 'file'; options: OptionItem[]; languages: string[] }>()
+const props = defineProps<{ source: 'paste' | 'file'; options: OptionItem[]; languages: string[]; levels?: OptionLevel[] | null }>()
 const open = defineModel<boolean>('open', { required: true })
 const emit = defineEmits<{ apply: [options: OptionItem[]] }>()
 const { t } = useI18n()
@@ -36,20 +37,28 @@ watch(file, async value => {
 })
 
 // Columns and what each one is
-type Role = 'label' | 'value' | 'score' | 'skip' | `lang:${string}`
+type Role = 'label' | 'value' | 'score' | 'skip' | `lang:${string}` | `lvl:${number}`
 const width = computed(() => Math.max(0, ...rows.value.map(row => row.length)))
 const roles = ref<Role[]>([])
 const languageName = (code: string) => APP_LOCALES.find(item => item.code === code)?.name ?? code
 function guess(name: string, index: number): Role {
   const n = name.trim().toLowerCase()
+  if (props.levels) {
+    const at = props.levels.findIndex(level => level.label.toLowerCase() === n || level.key.toLowerCase() === n)
+    return at >= 0 ? `lvl:${at}` : !n && index < props.levels.length ? `lvl:${index}` : 'skip'
+  }
   if (['value', 'code', 'id', 'key'].includes(n)) return 'value'
   if (['score', 'points', 'weight'].includes(n)) return 'score'
   const lang = props.languages.find(code => n === code.toLowerCase() || n === languageName(code).toLowerCase() || n === APP_LOCALES.find(item => item.code === code)?.englishName.toLowerCase())
   if (lang) return `lang:${lang}`
   return index === 0 ? 'label' : 'skip'
 }
-watch([rows, header], () => (roles.value = Array.from({ length: width.value }, (_, i) => (header.value ? guess(rows.value[0]?.[i] ?? '', i) : i === 0 ? 'label' : 'skip'))), { immediate: true })
-const roleItems = computed(() => [
+const plainRole = (i: number): Role => (props.levels ? (i < props.levels.length ? `lvl:${i}` : 'skip') : i === 0 ? 'label' : 'skip')
+watch([rows, header], () => (roles.value = Array.from({ length: width.value }, (_, i) => (header.value ? guess(rows.value[0]?.[i] ?? '', i) : plainRole(i)))), { immediate: true })
+const roleItems = computed(() => props.levels ? [
+  ...props.levels.map((level, i) => ({ value: `lvl:${i}`, label: level.label })),
+  { value: 'skip', label: t('optionSets.import.role.skip') },
+] : [
   { value: 'label', label: t('optionSets.import.role.label') },
   { value: 'value', label: t('optionSets.import.role.value') },
   { value: 'score', label: t('optionSets.import.role.score') },
@@ -60,6 +69,7 @@ const columnName = (i: number) => (header.value ? rows.value[0]?.[i] || t('optio
 const body = computed(() => (header.value ? rows.value.slice(1) : rows.value))
 
 // What applying would do
+const paths = computed(() => (props.levels ? importPaths(props.options, body.value, props.levels.map((_, i) => roles.value.indexOf(`lvl:${i}`)), mode.value === 'replace') : null))
 const result = computed(() => {
   const labelAt = roles.value.indexOf('label')
   const valueAt = roles.value.indexOf('value')
@@ -101,10 +111,11 @@ const result = computed(() => {
   for (const option of list) if (option.active !== false) delete option.active
   return { list, added, updated, skipped, retired }
 })
-const canApply = computed(() => roles.value.includes('label') && (result.value.added > 0 || result.value.updated > 0))
+const needs = computed(() => (props.levels ? 'lvl:0' : 'label'))
+const canApply = computed(() => roles.value.includes(needs.value) && (paths.value ? paths.value.added > 0 || paths.value.retired > 0 : result.value.added > 0 || result.value.updated > 0))
 function apply() {
   if (!canApply.value) return
-  emit('apply', result.value.list)
+  emit('apply', paths.value?.list ?? result.value.list)
   open.value = false
 }
 const modes = computed(() => [
@@ -114,7 +125,7 @@ const modes = computed(() => [
 </script>
 
 <template>
-  <AppModal v-model:open="open" :title="source === 'paste' ? t('optionSets.import.pasteTitle') : t('optionSets.import.fileTitle')" :description="source === 'paste' ? t('optionSets.import.pasteDesc') : t('optionSets.import.fileDesc')" keep-open :ui="{ content: 'sm:max-w-3xl' }">
+  <AppModal v-model:open="open" :title="source === 'paste' ? t('optionSets.import.pasteTitle') : t('optionSets.import.fileTitle')" :description="levels ? t('optionSets.import.pathsDesc', { chain: levels.map(level => level.label).join(', ') }) : source === 'paste' ? t('optionSets.import.pasteDesc') : t('optionSets.import.fileDesc')" keep-open :ui="{ content: 'sm:max-w-3xl' }">
     <template #body>
       <div class="flex flex-col gap-4">
         <UTextarea v-if="source === 'paste'" v-model="text" :rows="6" autoresize :maxrows="12" :placeholder="t('optionSets.import.pastePlaceholder')" class="w-full" autofocus />
@@ -143,8 +154,9 @@ const modes = computed(() => [
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-muted">{{ t('optionSets.import.summary', { rows: number(body.length), added: number(result.added), updated: number(result.updated) }) }}<template v-if="result.skipped"> · {{ t('optionSets.import.skipped', { n: number(result.skipped) }) }}</template><template v-if="result.retired"> · <span class="text-warning">{{ t('optionSets.import.retired', { n: number(result.retired) }) }}</span></template></p>
-          <p v-if="!roles.includes('label')" class="text-xs text-error">{{ t('optionSets.import.needLabel') }}</p>
+          <p v-if="paths" class="text-xs text-muted">{{ t('optionSets.import.pathsSummary', { rows: number(body.length), added: number(paths.added), kept: number(paths.kept) }) }}<template v-if="paths.skipped"> · {{ t('optionSets.import.skipped', { n: number(paths.skipped) }) }}</template><template v-if="paths.retired"> · <span class="text-warning">{{ t('optionSets.import.retired', { n: number(paths.retired) }) }}</span></template></p>
+          <p v-else class="text-xs text-muted">{{ t('optionSets.import.summary', { rows: number(body.length), added: number(result.added), updated: number(result.updated) }) }}<template v-if="result.skipped"> · {{ t('optionSets.import.skipped', { n: number(result.skipped) }) }}</template><template v-if="result.retired"> · <span class="text-warning">{{ t('optionSets.import.retired', { n: number(result.retired) }) }}</span></template></p>
+          <p v-if="!roles.includes(needs)" class="text-xs text-error">{{ levels ? t('optionSets.import.needTop', { name: levels[0]?.label ?? '' }) : t('optionSets.import.needLabel') }}</p>
         </template>
       </div>
     </template>
